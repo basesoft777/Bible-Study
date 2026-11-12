@@ -68,7 +68,7 @@ class TestRegiszter(unittest.TestCase):
     def test_101_elem_egyedi_id(self):
         # F104: +5 (a BDB vers szerinti jelölése); F210: +2 (biblia-gomb, biblia-jegy); F213: +26 (a szókártya), −12 (a régi vázlat és jelölő)
         self.assertEqual(len(self.r.elemek), 83 + 18 + 5 + 2 + 26 - 12)
-        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5 + 2)      # F104: +5 (a BDB vers szerinti jelölése); F210: +2
+        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5 + 2 + 26 - 12)      # F104: +5; F210: +2; F213: +26, −12
         self.assertNotIn('tajolo', {e['id'] for e in self.r.elemek})
 
     def test_a_mufajszinek_irhatok(self):

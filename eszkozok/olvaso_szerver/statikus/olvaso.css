@@ -177,12 +177,12 @@ abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0;
 .szk-lenyilok > details, .szk-also > details { justify-self: stretch; }
 .szk-lenyilok > details > summary, .szk-also > details > summary, .szk-jelmagyarazat > summary { cursor: pointer; list-style: none; display: inline-flex; align-items: center; gap: 6px; min-height: 28px;
   font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); padding: var(--space-gomb-fugg) var(--space-gomb-vizsz); border: 1px solid var(--rule); border-radius: var(--radius-kiemeles); }
-.szk-lenyilok > details > summary::before, .szk-also > details > summary::before, .szk-jelmagyarazat > summary::before { content: '▸'; }
+.szk-lenyilok > details > summary::before, .szk-also > details > summary::before, .szk-jelmagyarazat > summary::before { content: '▸'; font-size: var(--fs-megjegyzes); }
 .szk-lenyilok > details[open] > summary::before, .szk-also > details[open] > summary::before, .szk-jelmagyarazat[open] > summary::before { content: '▾'; }
 .szk-lenyilok > details[open] > summary, .szk-also > details[open] > summary { color: var(--fg); border-color: var(--accent); background: var(--accent-soft); }
 .szk-lenyilok summary::-webkit-details-marker, .szk-also summary::-webkit-details-marker, .szk-jel-d > summary::-webkit-details-marker, .szk-jelmagyarazat > summary::-webkit-details-marker { display: none; }
 .szk-tj { padding: var(--space-utmutato-fugg) var(--space-utmutato-vizsz); background: var(--panel); border: 1px solid var(--rule); border-radius: var(--radius-panel); }
-.szk-tj-cim { margin: 0 0 4px; font: 600 var(--fs-forrascim) var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.szk-tj-cim { margin: 0 0 4px; font: 600 var(--fs-apparatus-cim) var(--font-ui); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
 .szk-tj ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
 .szk-tj-sor { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; padding: 1px 4px; border-radius: var(--radius-kiemeles); }
 .szk-tj-sor.szk-van-mot { background: var(--gold-soft); }

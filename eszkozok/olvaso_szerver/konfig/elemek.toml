@@ -961,7 +961,7 @@ nev = "Szókártya: a tartalomjegyzék felirata"
 csoport = "BDB-jelentésszerkezet"
 szelektor = ".szk-tj-cim"
 tulajdonsag = [
-  { nev = "Betűméret", token = "fs-forrascim" },
+  { nev = "Betűméret", token = "fs-apparatus-cim" },
   { nev = "Szín", token = "muted" },
 ]
 

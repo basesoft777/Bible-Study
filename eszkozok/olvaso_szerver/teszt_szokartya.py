@@ -23,7 +23,7 @@ sys.path.insert(0, D)
 import bdb_szokartya as szk  # noqa: E402
 from teszt_olvaso_szerver import VAN_DB, VAN_FLASK, app_keszit  # noqa: E402
 
-_REF = re.compile(r'(\d+):(\d+)')
+_REF = re.compile(r'(?:\d?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,6}\s)?(\d+):(\d+)')     # a könyvnévvel, mint a blokkok._ref_tokenek
 
 
 def ref_tokenek(s):
@@ -67,6 +67,7 @@ class Szabalyok(unittest.TestCase):
         self.assertTrue(szk.csak_szofaj('hímnemű'))
         self.assertTrue(szk.csak_szofaj('főnév, nőnemű'))
         self.assertFalse(szk.csak_szofaj('reggel'))
+        self.assertFalse(szk.csak_szofaj('kő'))
 
     def test_vers_kulcsok(self):
         self.assertEqual(szk.vers_kulcsok('Sof 1:2-3'), {'Sof 1:2', 'Sof 1:3'})
@@ -143,6 +144,8 @@ class Szokartya(unittest.TestCase):
 
     def test_lxx_par_jelentesenkent(self):
         b = blokk(self.get('/szo/H0216'))
+        import unicodedata
+        b = unicodedata.normalize('NFC', b)                                  # a görög ékezet (oxia/tonos) egységesen
         j6 = b[b.index('<li id="bdb-0-6"'):b.index('<li id="bdb-0-7"')]
         self.assertIn('φέγγος', j6)
         self.assertIn('φῶς', j6)

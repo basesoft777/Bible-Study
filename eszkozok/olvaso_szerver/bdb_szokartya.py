@@ -137,8 +137,8 @@ def alap_nemi_tanu(alap):
 
 
 def csak_szofaj(t):
-    """Igaz, ha a szöveg csak szófaji szavakból áll (pl. „hímnemű”): ilyen alapjelentés nem fogadható el."""
-    return len(SZOFAJ_SZAVAK.sub('', t or '')) <= 2
+    """Igaz, ha a szöveg csak szófaji szavakból áll (pl. „hímnemű”): ilyen alapjelentés nem fogadható el. A rövid szó („kő”) jelentés."""
+    return not BETU.search(SZOFAJ_SZAVAK.sub(' ', t or ''))
 
 
 _IG = re.compile(r'^(.+?) (\d+):(\d+)(?:\s*[-–]\s*(\d+))?$')

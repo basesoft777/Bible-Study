@@ -1555,10 +1555,10 @@ def _szk_apparatus(cx, dom, forras, app):
                       Markup('<li><span class="szk-app-fajta">%s</span> %s</li>') % (f, t) for f, t in elemek))
 
 
-def _szk_angol(en):
+def _szk_angol(en, talalt=None):
     if not en:
         return Markup('')
-    return Markup('<details class="szk-en"><summary>Angol eredeti</summary><p class="szk-en-szoveg" lang="en">%s</p></details>') % en
+    return Markup('<details class="szk-en"><summary>Angol eredeti</summary><p class="szk-en-szoveg" lang="en">%s</p></details>') % _jeles(en, talalt)
 
 
 def _szk_en_terkep(en_fa):
@@ -1594,7 +1594,7 @@ def _szk_csomopont(cx, n, nid, elotag, ti, jel, al, tn, cimke, en_kulcs=None):
         db, _szk_lxx(cx, nid),
         Markup('<span class="szk-tag szk-tag-kezi" title="szerkesztői címke (adat/szotar_szakasz_cimke.tsv)">szerkesztői címke</span>') if kezi else '',
         mot, _jelzes(szint, _okok(vj, nid)) if szint else '')
-    also = _szk_apparatus(cx, nid, forras, app) + _szk_angol(cx['en'].get(en_kulcs or (elotag, ti, jel, al)))
+    also = _szk_apparatus(cx, nid, forras, app) + _szk_angol(cx['en'].get(en_kulcs or (elotag, ti, jel, al)), talalt)
     egyben = Markup('<p class="szk-egyben jsz">%s</p>') % _jeles(n['szoveg'], talalt) if n['szoveg'] else Markup('')
     return gl, kezi, sorok, also, egyben, meta, szint, van_mot
 
