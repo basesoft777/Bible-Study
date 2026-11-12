@@ -257,7 +257,10 @@ class Melleklet(unittest.TestCase):
 class Generator(unittest.TestCase):
     def test_alkalmazas_kivezetes_csak_hamart(self):
         self.assertTrue(LG.res_kivezetett('HAMART-001', 'alkalmazas'))
-        self.assertFalse(LG.res_kivezetett('ISTENTISZT-001', 'alkalmazas'))
+        # F194 (2. fázis): az ISTENTISZT-001 is az új szerkezetben áll, az alkalmazas rése kivezetve; a régi
+        # (befagyasztott) lapok rése marad
+        self.assertTrue(LG.res_kivezetett('ISTENTISZT-001', 'alkalmazas'))
+        self.assertFalse(LG.res_kivezetett('KIRALY-001', 'alkalmazas'))
 
     def test_jelolt_labjegyzet(self):
         t = LG.jelolt_labjegyzet_olvasoi('forrás: TSK 1Móz 6:5 (25); Károli-KH is; napló: a motívum korábbi '

@@ -6,7 +6,12 @@ A `naplok/F123_ISTTELJ_meres.py` három hálóját futtatja változatlanul, két
   nem a formula); az ÓSZ-feltétel változatlan (H7121 + H9003 + H8034 + H3068);
 - a kimenet: `naplok/F194_teljesseg_ISTENTISZT-001.{md,tsv}` és `_blokkok.tsv` (az F123-as mérés fájljai, amelyekre a
   `jeloltek.tsv` összesítő sorai hivatkoznak, nem íródnak felül).
-Csak olvas, adattáblát nem ír. Futtatás: python naplok/F194_teljesseg_meres.py
+Csak olvas, adattáblát nem ír. Futtatás: python naplok/F194_teljesseg_meres.py [--lap]
+
+`--lap` (F194.20, a 2. fázis; a teljesség-kapu, F212): a soronkénti kimenetet a lap mérésfájljába is kiírja
+(`naplok/F123_teljesseg_ISTENTISZT-001.tsv`, ezt olvassa a `lexikon_general.teljesseg_halok`), a strong-háló
+proveniencia-sorában a motívum mai Strong-halmazával (`strong=G1941+H7121+H8034`, a kapu ezt veti össze). Az F123-as
+leírás (`.md`) és a kézzel bővített `_blokkok.tsv` (a `jeloltek.tsv` összesítő sorainak hivatkozása) nem íródik felül.
 """
 import os
 import sys
@@ -50,5 +55,29 @@ def main():
         f.write(fej + t)
 
 
+LAP_TSV = os.path.join(GYOKER, 'naplok', 'F123_teljesseg_ISTENTISZT-001.tsv')
+MAI_STRONG = 'G1941+H7121+H8034'
+
+
+def lap_tsv():
+    """A mérés soronkénti kimenete a lap mérésfájljába; a strong-háló proveniencia-sora a mai Strong-halmazzal."""
+    with open(M.KI + '.tsv', encoding='utf-8') as f:
+        sorok = [x.rstrip('\n') for x in f]
+    ki = ['# GENERÁLT: naplok/F194_teljesseg_meres.py --lap (az ISTENTISZT-001 2. kiadása; leírás: '
+          'naplok/F194_teljesseg_ISTENTISZT-001.md) — kézzel nem szerkesztendő (DT548)']
+    for x in sorok:
+        if x.startswith('#'):
+            continue
+        c = x.split('\t')
+        if c[0] == 'strong' and len(c) == 6 and 'strong=' not in c[5]:
+            c[5] = c[5].replace(' | n=', ' | strong=%s | n=' % MAI_STRONG, 1)
+        ki.append('\t'.join(c))
+    with open(LAP_TSV, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join(ki) + '\n')
+    print('lap mérésfájl:', LAP_TSV, len(ki) - 2, 'sor')
+
+
 if __name__ == '__main__':
     main()
+    if '--lap' in sys.argv[1:]:
+        lap_tsv()

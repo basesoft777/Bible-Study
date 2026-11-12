@@ -1972,10 +1972,12 @@ _LXX_OSSZESITES_RX = re.compile(
     r'(?:versszámozás miatt nem párosítva|szamozas_elteres)=(\d+)\.\*')
 
 
-def lxx_egyezes_kapu(szoveg, motivum_id):
+def lxx_egyezes_kapu(szoveg, motivum_id, szopar=False):
     """F212 (Sz1, egyezés-kapu): az új szerkezetű lap LXX-számai blokkonként (a két 4.6 rövid mondata, az 5. szakasz
     összegzője és Összesítése, a görög 4.6 mondata, a héber 4.6 szavankénti mondatainak összege) ugyanazt mondják.
-    Eltérésnél ValueError: a lap nem íródik ki (BUKÁS). Visszaad: a mért értékek (a teszthez)."""
+    Eltérésnél ValueError: a lap nem íródik ki (BUKÁS). Visszaad: a mért értékek (a teszthez).
+    `szopar` (F194, a 2. fázis): szópáros (formulaikus) motívumnál a pár minden tagja a motívum minden ószövetségi
+    versében áll, ezért a héber 4.6 szavankénti mondatai nem összeadódnak: mindegyiknek a teljes versszámot kell mondania."""
     lathato = re.sub(r'<!--.*?-->', '', szoveg, flags=re.S)
     m = _LXX_OSSZESITES_RX.search(lathato)
     if not m:
@@ -2000,7 +2002,10 @@ def lxx_egyezes_kapu(szoveg, motivum_id):
     if g and (int(g.group(1)), int(g.group(2)), int(g.group(3) or 0)) != (n, egy, csal):
         hibak.append('görög 4.6 %s/%s/%s ↔ Összesítés %d/%d/%d' % (g.group(1), g.group(2), g.group(3) or 0, n, egy, csal))
     szo = [int(x) for x in re.findall(r'\ba motívum (\d+) ószövetségi versében áll', lathato)]
-    if szo and sum(szo) != n:
+    if szo and szopar:
+        if any(x != n for x in szo):
+            hibak.append('a héber 4.6 szavankénti száma (szópár) %s ↔ Összesítés %d' % ('/'.join(map(str, szo)), n))
+    elif szo and sum(szo) != n:
         hibak.append('a héber 4.6 szavankénti összege %d ↔ Összesítés %d' % (sum(szo), n))
     if hibak:
         raise ValueError('%s: az LXX-számok a blokkok között eltérnek (egyezés-kapu, F212): %s'
@@ -5389,7 +5394,10 @@ def lxx_egyforras_ellenoriz(motivum_id, tabla_sorok):
         # saját párja kell álljon, nem a vers egy másik szaváé (F182 javítókör, ELLENOR_F182 #4: 1Móz 3:17 adámá ↔ γῆ)
         kulcs_st = [st for st, _l in vh if _heber_kulcsszo_strong(vers, st) == cellak[2]]
         for st in kulcs_st:
-            if _nfc_ekezet_nelkul(idx[(vers, st)][0]) not in g_szavak:
+            # F194 (2. fázis): a 4.11-sor több lemmát is hordozhat ` · `-tal (a versben kétszer álló héber szó két
+            # görög megfelelője, pl. 1Kir 18:24 βοάω · ἐπικαλέω); mindegyiknek a cellában kell állnia
+            lemmak = [x.strip() for x in idx[(vers, st)][0].split('·') if x.strip()]
+            if not all(_nfc_ekezet_nelkul(x) in g_szavak for x in lemmak):
                 elter.append((vers, st, gorog, idx[(vers, st)][0]))
     return elter
 
@@ -7096,7 +7104,7 @@ def modell_epit(m, sorai, konyv_sorrend, hianyzo_konyvek, lexikon_szoveg=None):
 # Egyeztetett eltérés (a felhasználó, 2026-11-08: „Előbb csak a hamart”): az új szerkezet első lépésben csak a
 # HAMART-001 lapján áll; a többi lap a felhasználó átnézése után egy körben követi, akkor a halmaz megszűnik
 # (minden lap az új szerkezetre). Addig a többi lap generálása bájtra változatlan (E28).
-UJ_LAPSZERKEZET = frozenset({'HAMART-001'})
+UJ_LAPSZERKEZET = frozenset({'HAMART-001', 'ISTENTISZT-001'})
 
 
 def uj_szerkezet(motivum_id):
@@ -9996,7 +10004,8 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             # lap-javit HAMART-001 (a felhasználó átnézése, 2., 12.; „mehet így”): a jegyzetek és a forrássorok olvasói
             # alakja, a 2. és 3. tábla jegyzetei a tábla alatt
             uj_szoveg = TJ.alkalmaz(uj_szoveg)
-            lxx_egyezes_kapu(uj_szoveg, m['id'])   # F212 (Sz1): eltérő LXX-szám a blokkok közt = BUKÁS
+            lxx_egyezes_kapu(uj_szoveg, m['id'],   # F212 (Sz1): eltérő LXX-szám a blokkok közt = BUKÁS
+                             szopar=any('+' in (s.get('gerinc_elem') or '') for s in sorai))   # F194: szópár
             hely_egyseg_kapu(uj_szoveg, m['id'])   # F212 (Sz4): az azonos egységű helyszám a blokkok közt = BUKÁS
             teljesseg_kapu(uj_szoveg, m['id'], sorai)   # F212: a mérés forrássora nem a törzsben, a halmaza a mai
             allapot = ('új fájl' if meglevo_uj is None else
