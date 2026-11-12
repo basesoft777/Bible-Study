@@ -66,8 +66,8 @@ class TestRegiszter(unittest.TestCase):
         cls.r = tervezo.Regiszter.betolt(cls.a.adat)
 
     def test_101_elem_egyedi_id(self):
-        self.assertEqual(len(self.r.elemek), 83 + 18 + 5)          # F104: +5 (a BDB vers szerinti jelölése)
-        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5)          # F104: +5 (a BDB vers szerinti jelölése)
+        self.assertEqual(len(self.r.elemek), 83 + 18 + 5 + 2)      # F104: +5 (a BDB vers szerinti jelölése); F210: +2 (biblia-gomb, biblia-jegy)
+        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5 + 2)      # F104: +5 (a BDB vers szerinti jelölése); F210: +2
         self.assertNotIn('tajolo', {e['id'] for e in self.r.elemek})
 
     def test_a_mufajszinek_irhatok(self):
@@ -758,7 +758,7 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
         self.assertEqual(r.headers['Cache-Control'], 'no-cache')
         self.assertEqual(self.c.get('/tervezo/terkep.json', headers={'If-None-Match': r.headers['ETag']}).status_code, 304)
         t = r.get_json()
-        self.assertEqual(len(t['regiszter']), 83 + 18 + 5)                # a tájoló pirula kikerült (DT-F134n); F104: +5 (a BDB vers szerinti jelölése)
+        self.assertEqual(len(t['regiszter']), 83 + 18 + 5 + 2)            # a tájoló pirula kikerült (DT-F134n); F104: +5 (a BDB vers szerinti jelölése); F210: +2
         self.assertEqual(t['arculat_hash'], self.gyar.arculat.hash)
         self.assertEqual(t['tokenek']['bg'], {'csoport': 'szin', 'tipus': 'szin', 'ertek': {'light': '#f5f2ea', 'dark': '#151918'}, 'irhato': True})
         self.assertFalse(t['tokenek']['fs-csempe-megj']['irhato'])                            # regiszteren kívüli: csak előnézet
@@ -907,7 +907,7 @@ class TestIlleszto(unittest.TestCase):
 # a lapok, amelyeken a regiszter minden szelektorának találnia kell (a belső kiadás alapértelmezett szintjén)
 LAPOK = (
     '/', '/1Moz', '/nincs-ilyen-konyv',
-    '/1Moz/1', '/1Moz/1?reteg=il', '/1Moz/1?ful=info',
+    '/1Moz/1', '/1Moz/1?reteg=il', '/1Moz/1?ful=info', '/1Moz/1?biblia=tahot',   # F210: a bibliaválasztó Bibliájának jegye (.biblia-jegy)
     '/1Moz/1/1?szo=H0430&ful=szo', '/1Moz/1/2?ful=vers', '/1Moz/1/2?ful=kh', '/1Moz/1/2?ful=temak', '/1Moz/1/2?ful=motivum',
     '/Jan/1/1?szo=G3056&ful=szo', '/Jan/1/1?reteg=il', '/Zsolt/22/2?szo=H0410&ful=szo&reteg=il',
     '/szo/H0430', '/szo/G3056', '/szo/H7307', '/szo/H6440',

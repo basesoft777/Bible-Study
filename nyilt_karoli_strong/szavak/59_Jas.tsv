@@ -1,0 +1,3621 @@
+# GENERÁLT: a Logosz-lexikon – Károli 1908 – Strong szóillesztés nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERATED: export of the Logosz Lexikon – Károli 1908 – Strong word alignment open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+osis	oldal	token	alak_1908	allapot	partner_token	strong	bizonyossag
+Jas.1.1	hu	1	Jakab	parositva	1	G2385	alacsony
+Jas.1.1	hu	2	Istennek	parositva	2	G2316	alacsony
+Jas.1.1	hu	3	és	parositva	3	G2532	alacsony
+Jas.1.1	hu	4	az	betoldas			alacsony
+Jas.1.1	hu	5	Úr	parositva	4	G2962	alacsony
+Jas.1.1	hu	6	Jézus	parositva	5	G2424	alacsony
+Jas.1.1	hu	7	Krisztusnak	parositva	6	G5547	alacsony
+Jas.1.1	hu	8	szolgája	parositva	7	G1401	alacsony
+Jas.1.1	hu	9	az	betoldas			alacsony
+Jas.1.1	hu	10	elszórtan	parositva	12,14	G1722+G1290	alacsony
+Jas.1.1	hu	11	levő	parositva	12,14	G1722+G1290	alacsony
+Jas.1.1	hu	12	tizenkét	parositva	9	G1427	alacsony
+Jas.1.1	hu	13	nemzetségnek	parositva	10	G5443	alacsony
+Jas.1.1	hu	14	üdvözletemet	parositva	15	G5463	alacsony
+Jas.1.1	er	1		parositva	1	G2385	alacsony
+Jas.1.1	er	2		parositva	2	G2316	alacsony
+Jas.1.1	er	3		parositva	3	G2532	alacsony
+Jas.1.1	er	4		parositva	5	G2962	alacsony
+Jas.1.1	er	5		parositva	6	G2424	alacsony
+Jas.1.1	er	6		parositva	7	G5547	alacsony
+Jas.1.1	er	7		parositva	8	G1401	alacsony
+Jas.1.1	er	8		forditatlan		G3588	alacsony
+Jas.1.1	er	9		parositva	12	G1427	alacsony
+Jas.1.1	er	10		parositva	13	G5443	alacsony
+Jas.1.1	er	11		forditatlan		G3588	alacsony
+Jas.1.1	er	12		parositva	10,11	G1722	alacsony
+Jas.1.1	er	13		forditatlan		G3588	alacsony
+Jas.1.1	er	14		parositva	10,11	G1290	alacsony
+Jas.1.1	er	15		parositva	14	G5463	alacsony
+Jas.1.2	hu	1	Teljes	parositva	1	G3956	alacsony
+Jas.1.2	hu	2	örömnek	parositva	2	G5479	alacsony
+Jas.1.2	hu	3	tartsátok	parositva	3	G2233	alacsony
+Jas.1.2	hu	4	atyámfiai	parositva	4,5	G0080+G3165	alacsony
+Jas.1.2	hu	5	mikor	parositva	6	G3752	alacsony
+Jas.1.2	hu	6	különféle	parositva	9	G4164	alacsony
+Jas.1.2	hu	7	kísértésekbe	parositva	7	G3986	alacsony
+Jas.1.2	hu	8	estek	parositva	8	G4045	alacsony
+Jas.1.2	er	1		parositva	1	G3956	alacsony
+Jas.1.2	er	2		parositva	2	G5479	alacsony
+Jas.1.2	er	3		parositva	3	G2233	alacsony
+Jas.1.2	er	4		parositva	4	G0080	alacsony
+Jas.1.2	er	5		parositva	4	G3165	alacsony
+Jas.1.2	er	6		parositva	5	G3752	alacsony
+Jas.1.2	er	7		parositva	7	G3986	alacsony
+Jas.1.2	er	8		parositva	8	G4045	alacsony
+Jas.1.2	er	9		parositva	6	G4164	alacsony
+Jas.1.3	hu	1	Tudván	parositva	1	G1097	alacsony
+Jas.1.3	hu	2	hogy	parositva	2	G3754	alacsony
+Jas.1.3	hu	3	a	betoldas			alacsony
+Jas.1.3	hu	4	ti	parositva	5	G4771	alacsony
+Jas.1.3	hu	5	hiteteknek	parositva	6,7	G3588+G4102	alacsony
+Jas.1.3	hu	6	megpróbáltatása	parositva	3,4	G3588+G1383	alacsony
+Jas.1.3	hu	7	kitartást	parositva	9	G5281	alacsony
+Jas.1.3	hu	8	szerez	parositva	8	G2716	alacsony
+Jas.1.3	er	1		parositva	1	G1097	alacsony
+Jas.1.3	er	2		parositva	2	G3754	alacsony
+Jas.1.3	er	3		parositva	6	G3588	alacsony
+Jas.1.3	er	4		parositva	6	G1383	alacsony
+Jas.1.3	er	5		parositva	4	G4771	alacsony
+Jas.1.3	er	6		parositva	5	G3588	alacsony
+Jas.1.3	er	7		parositva	5	G4102	alacsony
+Jas.1.3	er	8		parositva	8	G2716	alacsony
+Jas.1.3	er	9		parositva	7	G5281	alacsony
+Jas.1.4	hu	1	A	betoldas			alacsony
+Jas.1.4	hu	2	kitartásban	parositva	2	G1161	alacsony
+Jas.1.4	hu	3	pedig	parositva	1,3	G3588+G5281	alacsony
+Jas.1.4	hu	4	tökéletes	parositva	5	G5046	alacsony
+Jas.1.4	hu	5	cselekedet	parositva	4	G2041	alacsony
+Jas.1.4	hu	6	legyen	parositva	6	G2192	alacsony
+Jas.1.4	hu	7	hogy	parositva	7	G2443	alacsony
+Jas.1.4	hu	8	tökéletesek	parositva	9	G5046	alacsony
+Jas.1.4	hu	9	és	parositva	10	G2532	alacsony
+Jas.1.4	hu	10	épek	parositva	11	G3648	alacsony
+Jas.1.4	hu	11	legyetek	parositva	8	G1510	alacsony
+Jas.1.4	hu	12	minden	parositva	13	G3367	alacsony
+Jas.1.4	hu	13	fogyatkozás	parositva	12,13	G1722+G3367	alacsony
+Jas.1.4	hu	14	nélkül	parositva	14	G3007	alacsony
+Jas.1.4	er	1		parositva	3	G3588	alacsony
+Jas.1.4	er	2		parositva	2	G1161	alacsony
+Jas.1.4	er	3		parositva	3	G5281	alacsony
+Jas.1.4	er	4		parositva	5	G2041	alacsony
+Jas.1.4	er	5		parositva	4	G5046	alacsony
+Jas.1.4	er	6		parositva	6	G2192	alacsony
+Jas.1.4	er	7		parositva	7	G2443	alacsony
+Jas.1.4	er	8		parositva	11	G1510	alacsony
+Jas.1.4	er	9		parositva	8	G5046	alacsony
+Jas.1.4	er	10		parositva	9	G2532	alacsony
+Jas.1.4	er	11		parositva	10	G3648	alacsony
+Jas.1.4	er	12		parositva	13	G1722	alacsony
+Jas.1.4	er	13		parositva	12,13	G3367	alacsony
+Jas.1.4	er	14		parositva	14	G3007	alacsony
+Jas.1.5	hu	1	Ha	parositva	1	G1487	alacsony
+Jas.1.5	hu	2	pedig	parositva	2	G1161	alacsony
+Jas.1.5	hu	3	valakinek	parositva	3	G5100	alacsony
+Jas.1.5	hu	4	közületek	parositva	4	G4771	alacsony
+Jas.1.5	hu	5	nincsen	parositva	5	G3007	alacsony
+Jas.1.5	hu	6	bölcsessége	parositva	6	G4678	alacsony
+Jas.1.5	hu	7	kérje	parositva	7	G0154	alacsony
+Jas.1.5	hu	8	Istentől	parositva	8	G3844	alacsony
+Jas.1.5	hu	9	a	betoldas			alacsony
+Jas.1.5	hu	10	ki	parositva	9	G3588	alacsony
+Jas.1.5	hu	11	mindenkinek	parositva	12	G3956	alacsony
+Jas.1.5	hu	12	készségesen	parositva	13	G0574	alacsony
+Jas.1.5	hu	13	és	parositva	14	G2532	alacsony
+Jas.1.5	hu	14	szemrehányás	parositva	16	G3679	alacsony
+Jas.1.5	hu	15	nélkül	parositva	15	G3361	alacsony
+Jas.1.5	hu	16	adja	parositva	10,11	G1325+G2316	alacsony
+Jas.1.5	hu	17	és	parositva	17	G2532	alacsony
+Jas.1.5	hu	18	megadatik	parositva	18	G1325	alacsony
+Jas.1.5	hu	19	néki	parositva	19	G0846	alacsony
+Jas.1.5	er	1		parositva	1	G1487	alacsony
+Jas.1.5	er	2		parositva	2	G1161	alacsony
+Jas.1.5	er	3		parositva	3	G5100	alacsony
+Jas.1.5	er	4		parositva	4	G4771	alacsony
+Jas.1.5	er	5		parositva	5	G3007	alacsony
+Jas.1.5	er	6		parositva	6	G4678	alacsony
+Jas.1.5	er	7		parositva	7	G0154	alacsony
+Jas.1.5	er	8		parositva	8	G3844	alacsony
+Jas.1.5	er	9		parositva	10	G3588	alacsony
+Jas.1.5	er	10		parositva	16	G1325	alacsony
+Jas.1.5	er	11		parositva	16	G2316	alacsony
+Jas.1.5	er	12		parositva	11	G3956	alacsony
+Jas.1.5	er	13		parositva	12	G0574	alacsony
+Jas.1.5	er	14		parositva	13	G2532	alacsony
+Jas.1.5	er	15		parositva	15	G3361	alacsony
+Jas.1.5	er	16		parositva	14	G3679	alacsony
+Jas.1.5	er	17		parositva	17	G2532	alacsony
+Jas.1.5	er	18		parositva	18	G1325	alacsony
+Jas.1.5	er	19		parositva	19	G0846	alacsony
+Jas.1.6	hu	1	De	parositva	2	G1161	alacsony
+Jas.1.6	hu	2	kérje	parositva	1	G0154	alacsony
+Jas.1.6	hu	3	hittel	parositva	3,4	G1722+G4102	alacsony
+Jas.1.6	hu	4	semmit	parositva	5	G3367	alacsony
+Jas.1.6	hu	5	sem	parositva	5	G3367	alacsony
+Jas.1.6	hu	6	kételkedvén	parositva	6	G1252	alacsony
+Jas.1.6	hu	7	mert	parositva	8	G1063	alacsony
+Jas.1.6	hu	8	a	betoldas			alacsony
+Jas.1.6	hu	9	ki	parositva	7	G3588	alacsony
+Jas.1.6	hu	10	kételkedik	parositva	9	G1252	alacsony
+Jas.1.6	hu	11	hasonlatos	parositva	10	G1503	alacsony
+Jas.1.6	hu	12	a	betoldas			alacsony
+Jas.1.6	hu	13	tenger	parositva	11,12	G2830+G2281	alacsony
+Jas.1.6	hu	14	habjához	parositva	11	G2830	alacsony
+Jas.1.6	hu	15	a	betoldas			alacsony
+Jas.1.6	hu	16	melyet	parositva	13	G0416	alacsony
+Jas.1.6	hu	17	a	betoldas			alacsony
+Jas.1.6	hu	18	szél	parositva	13	G0416	alacsony
+Jas.1.6	hu	19	hajt	parositva	13	G0416	alacsony
+Jas.1.6	hu	20	és	parositva	14	G2532	alacsony
+Jas.1.6	hu	21	ide	parositva	15	G4494	alacsony
+Jas.1.6	hu	22	s	betoldas			alacsony
+Jas.1.6	hu	23	tova	parositva	15	G4494	alacsony
+Jas.1.6	hu	24	hány	parositva	15	G4494	alacsony
+Jas.1.6	er	1		parositva	2	G0154	alacsony
+Jas.1.6	er	2		parositva	1	G1161	alacsony
+Jas.1.6	er	3		parositva	3	G1722	alacsony
+Jas.1.6	er	4		parositva	3	G4102	alacsony
+Jas.1.6	er	5		parositva	4,5	G3367	alacsony
+Jas.1.6	er	6		parositva	6	G1252	alacsony
+Jas.1.6	er	7		parositva	9	G3588	alacsony
+Jas.1.6	er	8		parositva	7	G1063	alacsony
+Jas.1.6	er	9		parositva	10	G1252	alacsony
+Jas.1.6	er	10		parositva	11	G1503	alacsony
+Jas.1.6	er	11		parositva	13,14	G2830	alacsony
+Jas.1.6	er	12		parositva	13	G2281	alacsony
+Jas.1.6	er	13		parositva	16,18,19	G0416	alacsony
+Jas.1.6	er	14		parositva	20	G2532	alacsony
+Jas.1.6	er	15		parositva	21,23,24	G4494	alacsony
+Jas.1.7	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.1.7	hu	2	ne	parositva	1	G3361	alacsony
+Jas.1.7	hu	3	vélje	parositva	3	G3633	alacsony
+Jas.1.7	hu	4	az	betoldas			alacsony
+Jas.1.7	hu	5	ilyen	parositva	6	G1565	alacsony
+Jas.1.7	hu	6	ember	parositva	5	G0444	alacsony
+Jas.1.7	hu	7	hogy	parositva	7	G3754	alacsony
+Jas.1.7	hu	8	kaphat	parositva	8	G2983	alacsony
+Jas.1.7	hu	9	valamit	parositva	9	G5100	alacsony
+Jas.1.7	hu	10	az	betoldas			alacsony
+Jas.1.7	hu	11	Úrtól	parositva	10,11,12	G3844+G3588+G2962	alacsony
+Jas.1.7	er	1		parositva	2	G3361	alacsony
+Jas.1.7	er	2		parositva	1	G1063	alacsony
+Jas.1.7	er	3		parositva	3	G3633	alacsony
+Jas.1.7	er	4		forditatlan		G3588	alacsony
+Jas.1.7	er	5		parositva	6	G0444	alacsony
+Jas.1.7	er	6		parositva	5	G1565	alacsony
+Jas.1.7	er	7		parositva	7	G3754	alacsony
+Jas.1.7	er	8		parositva	8	G2983	alacsony
+Jas.1.7	er	9		parositva	9	G5100	alacsony
+Jas.1.7	er	10		parositva	11	G3844	alacsony
+Jas.1.7	er	11		parositva	11	G3588	alacsony
+Jas.1.7	er	12		parositva	11	G2962	alacsony
+Jas.1.8	hu	1	A	betoldas			alacsony
+Jas.1.8	hu	2	kétszívű	parositva	2	G1374	alacsony
+Jas.1.8	hu	3	a	betoldas			alacsony
+Jas.1.8	hu	4	minden	parositva	5	G3956	alacsony
+Jas.1.8	hu	5	útjában	parositva	7,8	G3598+G0846	alacsony
+Jas.1.8	hu	6	állhatatlan	parositva	3	G0182	alacsony
+Jas.1.8	hu	7	ember	parositva	1	G0435	alacsony
+Jas.1.8	er	1		parositva	7	G0435	alacsony
+Jas.1.8	er	2		parositva	2	G1374	alacsony
+Jas.1.8	er	3		parositva	6	G0182	alacsony
+Jas.1.8	er	4		forditatlan		G1722	alacsony
+Jas.1.8	er	5		parositva	4	G3956	alacsony
+Jas.1.8	er	6		forditatlan		G3588	alacsony
+Jas.1.8	er	7		parositva	5	G3598	alacsony
+Jas.1.8	er	8		parositva	5	G0846	alacsony
+Jas.1.9	hu	1	Dicsekedjék	parositva	1	G2744	alacsony
+Jas.1.9	hu	2	pedig	parositva	2	G1161	alacsony
+Jas.1.9	hu	3	az	betoldas			alacsony
+Jas.1.9	hu	4	alacsony	parositva	6	G5011	alacsony
+Jas.1.9	hu	5	sorsú	parositva	6	G5011	alacsony
+Jas.1.9	hu	6	atyafi	parositva	4	G0080	alacsony
+Jas.1.9	hu	7	az	betoldas			alacsony
+Jas.1.9	hu	8	ő	parositva	10	G0846	alacsony
+Jas.1.9	hu	9	nagyságával	parositva	9,10	G5311+G0846	alacsony
+Jas.1.9	er	1		parositva	1	G2744	alacsony
+Jas.1.9	er	2		parositva	2	G1161	alacsony
+Jas.1.9	er	3		forditatlan		G3588	alacsony
+Jas.1.9	er	4		parositva	6	G0080	alacsony
+Jas.1.9	er	5		forditatlan		G3588	alacsony
+Jas.1.9	er	6		parositva	4,5	G5011	alacsony
+Jas.1.9	er	7		forditatlan		G1722	alacsony
+Jas.1.9	er	8		forditatlan		G3588	alacsony
+Jas.1.9	er	9		parositva	9	G5311	alacsony
+Jas.1.9	er	10		parositva	8,9	G0846	alacsony
+Jas.1.10	hu	1	A	betoldas			alacsony
+Jas.1.10	hu	2	gazdag	parositva	3	G4145	alacsony
+Jas.1.10	hu	3	pedig	parositva	2	G1161	alacsony
+Jas.1.10	hu	4	az	betoldas			alacsony
+Jas.1.10	hu	5	ő	parositva	7	G0846	alacsony
+Jas.1.10	hu	6	alacsonyságával	parositva	4,6,7	G1722+G5014+G0846	alacsony
+Jas.1.10	hu	7	mert	parositva	8	G3754	alacsony
+Jas.1.10	hu	8	elmúlik	parositva	12	G3928	alacsony
+Jas.1.10	hu	9	mint	parositva	9	G5613	alacsony
+Jas.1.10	hu	10	a	betoldas			alacsony
+Jas.1.10	hu	11	fűnek	parositva	11	G5528	alacsony
+Jas.1.10	hu	12	virága	parositva	10	G0438	alacsony
+Jas.1.10	er	1		forditatlan		G3588	alacsony
+Jas.1.10	er	2		parositva	3	G1161	alacsony
+Jas.1.10	er	3		parositva	2	G4145	alacsony
+Jas.1.10	er	4		parositva	6	G1722	alacsony
+Jas.1.10	er	5		forditatlan		G3588	alacsony
+Jas.1.10	er	6		parositva	6	G5014	alacsony
+Jas.1.10	er	7		parositva	5,6	G0846	alacsony
+Jas.1.10	er	8		parositva	7	G3754	alacsony
+Jas.1.10	er	9		parositva	9	G5613	alacsony
+Jas.1.10	er	10		parositva	12	G0438	alacsony
+Jas.1.10	er	11		parositva	11	G5528	alacsony
+Jas.1.10	er	12		parositva	8	G3928	alacsony
+Jas.1.11	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.1.11	hu	2	felkél	parositva	1	G0393	alacsony
+Jas.1.11	hu	3	a	betoldas			alacsony
+Jas.1.11	hu	4	nap	parositva	4	G2246	alacsony
+Jas.1.11	hu	5	az	betoldas			alacsony
+Jas.1.11	hu	6	ő	betoldas			alacsony
+Jas.1.11	hu	7	hévségével	parositva	5,7	G4862+G2742	alacsony
+Jas.1.11	hu	8	és	parositva	8	G2532	alacsony
+Jas.1.11	hu	9	megszárítja	parositva	9	G3583	alacsony
+Jas.1.11	hu	10	a	betoldas			alacsony
+Jas.1.11	hu	11	füvet	parositva	11	G5528	alacsony
+Jas.1.11	hu	12	és	parositva	12	G2532	alacsony
+Jas.1.11	hu	13	annak	parositva	15	G0846	alacsony
+Jas.1.11	hu	14	virága	parositva	14,15	G0438+G0846	alacsony
+Jas.1.11	hu	15	elhull	parositva	16	G1601	alacsony
+Jas.1.11	hu	16	és	parositva	17	G2532	alacsony
+Jas.1.11	hu	17	ábrázatának	parositva	21,22	G4383+G0846	alacsony
+Jas.1.11	hu	18	kedvessége	parositva	19	G2143	alacsony
+Jas.1.11	hu	19	elvész	parositva	23	G0622	alacsony
+Jas.1.11	hu	20	így	parositva	24	G3779	alacsony
+Jas.1.11	hu	21	hervad	parositva	32	G3133	alacsony
+Jas.1.11	hu	22	el	parositva	32	G3133	alacsony
+Jas.1.11	hu	23	a	betoldas			alacsony
+Jas.1.11	hu	24	gazdag	parositva	27	G4145	alacsony
+Jas.1.11	hu	25	is	parositva	25	G2532	alacsony
+Jas.1.11	hu	26	az	betoldas			alacsony
+Jas.1.11	hu	27	ő	parositva	31	G0846	alacsony
+Jas.1.11	hu	28	útaiban	parositva	28,30,31	G1722+G4197+G0846	alacsony
+Jas.1.11	er	1		parositva	2	G0393	alacsony
+Jas.1.11	er	2		parositva	1	G1063	alacsony
+Jas.1.11	er	3		forditatlan		G3588	alacsony
+Jas.1.11	er	4		parositva	4	G2246	alacsony
+Jas.1.11	er	5		parositva	7	G4862	alacsony
+Jas.1.11	er	6		forditatlan		G3588	alacsony
+Jas.1.11	er	7		parositva	7	G2742	alacsony
+Jas.1.11	er	8		parositva	8	G2532	alacsony
+Jas.1.11	er	9		parositva	9	G3583	alacsony
+Jas.1.11	er	10		forditatlan		G3588	alacsony
+Jas.1.11	er	11		parositva	11	G5528	alacsony
+Jas.1.11	er	12		parositva	12	G2532	alacsony
+Jas.1.11	er	13		forditatlan		G3588	alacsony
+Jas.1.11	er	14		parositva	14	G0438	alacsony
+Jas.1.11	er	15		parositva	13,14	G0846	alacsony
+Jas.1.11	er	16		parositva	15	G1601	alacsony
+Jas.1.11	er	17		parositva	16	G2532	alacsony
+Jas.1.11	er	18		forditatlan		G3588	alacsony
+Jas.1.11	er	19		parositva	18	G2143	alacsony
+Jas.1.11	er	20		forditatlan		G3588	alacsony
+Jas.1.11	er	21		parositva	17	G4383	alacsony
+Jas.1.11	er	22		parositva	17	G0846	alacsony
+Jas.1.11	er	23		parositva	19	G0622	alacsony
+Jas.1.11	er	24		parositva	20	G3779	alacsony
+Jas.1.11	er	25		parositva	25	G2532	alacsony
+Jas.1.11	er	26		forditatlan		G3588	alacsony
+Jas.1.11	er	27		parositva	24	G4145	alacsony
+Jas.1.11	er	28		parositva	28	G1722	alacsony
+Jas.1.11	er	29		forditatlan		G3588	alacsony
+Jas.1.11	er	30		parositva	28	G4197	alacsony
+Jas.1.11	er	31		parositva	27,28	G0846	alacsony
+Jas.1.11	er	32		parositva	21,22	G3133	alacsony
+Jas.1.12	hu	1	Boldog	parositva	1	G3107	alacsony
+Jas.1.12	hu	2	ember	parositva	2	G0435	alacsony
+Jas.1.12	hu	3	az	betoldas			alacsony
+Jas.1.12	hu	4	a	parositva	3	G3739	alacsony
+Jas.1.12	hu	5	ki	parositva	3	G3739	alacsony
+Jas.1.12	hu	6	a	betoldas			alacsony
+Jas.1.12	hu	7	kísértésben	parositva	5	G3986	alacsony
+Jas.1.12	hu	8	kitart	parositva	4	G5278	alacsony
+Jas.1.12	hu	9	mert	parositva	6	G3754	alacsony
+Jas.1.12	hu	10	minekutána	parositva	8	G1096	alacsony
+Jas.1.12	hu	11	megpróbáltatott	parositva	7,8	G1384+G1096	alacsony
+Jas.1.12	hu	12	elveszi	parositva	9	G2983	alacsony
+Jas.1.12	hu	13	az	betoldas			alacsony
+Jas.1.12	hu	14	életnek	parositva	13	G2222	alacsony
+Jas.1.12	hu	15	koronáját	parositva	11	G4735	alacsony
+Jas.1.12	hu	16	a	parositva	14	G3739	alacsony
+Jas.1.12	hu	17	mit	parositva	14	G3739	alacsony
+Jas.1.12	hu	18	az	betoldas			alacsony
+Jas.1.12	hu	19	Úr	parositva	17	G2962	alacsony
+Jas.1.12	hu	20	ígért	parositva	15	G1861	alacsony
+Jas.1.12	hu	21	az	betoldas			alacsony
+Jas.1.12	hu	22	őt	parositva	20	G0846	alacsony
+Jas.1.12	hu	23	szeretőknek	parositva	19	G0025	alacsony
+Jas.1.12	er	1		parositva	1	G3107	alacsony
+Jas.1.12	er	2		parositva	2	G0435	alacsony
+Jas.1.12	er	3		parositva	4,5	G3739	alacsony
+Jas.1.12	er	4		parositva	8	G5278	alacsony
+Jas.1.12	er	5		parositva	7	G3986	alacsony
+Jas.1.12	er	6		parositva	9	G3754	alacsony
+Jas.1.12	er	7		parositva	11	G1384	alacsony
+Jas.1.12	er	8		parositva	10,11	G1096	alacsony
+Jas.1.12	er	9		parositva	12	G2983	alacsony
+Jas.1.12	er	10		forditatlan		G3588	alacsony
+Jas.1.12	er	11		parositva	15	G4735	alacsony
+Jas.1.12	er	12		forditatlan		G3588	alacsony
+Jas.1.12	er	13		parositva	14	G2222	alacsony
+Jas.1.12	er	14		parositva	16,17	G3739	alacsony
+Jas.1.12	er	15		parositva	20	G1861	alacsony
+Jas.1.12	er	16		forditatlan		G3588	alacsony
+Jas.1.12	er	17		parositva	19	G2962	alacsony
+Jas.1.12	er	18		forditatlan		G3588	alacsony
+Jas.1.12	er	19		parositva	23	G0025	alacsony
+Jas.1.12	er	20		parositva	22	G0846	alacsony
+Jas.1.13	hu	1	Senki	parositva	1	G3367	alacsony
+Jas.1.13	hu	2	se	parositva	1	G3367	alacsony
+Jas.1.13	hu	3	mondja	parositva	3	G3004	alacsony
+Jas.1.13	hu	4	mikor	parositva	2	G3985	alacsony
+Jas.1.13	hu	5	kísértetik	parositva	2	G3985	alacsony
+Jas.1.13	hu	6	Az	betoldas			alacsony
+Jas.1.13	hu	7	Istentől	parositva	5,7	G0575+G2316	alacsony
+Jas.1.13	hu	8	kísértetem	parositva	8	G3985	alacsony
+Jas.1.13	hu	9	mert	parositva	10	G1063	alacsony
+Jas.1.13	hu	10	az	betoldas			alacsony
+Jas.1.13	hu	11	Isten	parositva	11	G2316	alacsony
+Jas.1.13	hu	12	gonoszsággal	parositva	14	G2556	alacsony
+Jas.1.13	hu	13	nem	parositva	12	G0551	alacsony
+Jas.1.13	hu	14	kísérthető	parositva	12,13	G0551+G1510	alacsony
+Jas.1.13	hu	15	ő	parositva	17	G0846	alacsony
+Jas.1.13	hu	16	maga	parositva	17	G0846	alacsony
+Jas.1.13	hu	17	pedig	parositva	16	G1161	alacsony
+Jas.1.13	hu	18	senkit	parositva	18	G3762	alacsony
+Jas.1.13	hu	19	sem	parositva	18	G3762	alacsony
+Jas.1.13	hu	20	kísért	parositva	15	G3985	alacsony
+Jas.1.13	er	1		parositva	1,2	G3367	alacsony
+Jas.1.13	er	2		parositva	4,5	G3985	alacsony
+Jas.1.13	er	3		parositva	3	G3004	alacsony
+Jas.1.13	er	4		forditatlan		G3754	alacsony
+Jas.1.13	er	5		parositva	7	G0575	alacsony
+Jas.1.13	er	6		forditatlan		G3588	alacsony
+Jas.1.13	er	7		parositva	7	G2316	alacsony
+Jas.1.13	er	8		parositva	8	G3985	alacsony
+Jas.1.13	er	9		forditatlan		G3588	alacsony
+Jas.1.13	er	10		parositva	9	G1063	alacsony
+Jas.1.13	er	11		parositva	11	G2316	alacsony
+Jas.1.13	er	12		parositva	13,14	G0551	alacsony
+Jas.1.13	er	13		parositva	14	G1510	alacsony
+Jas.1.13	er	14		parositva	12	G2556	alacsony
+Jas.1.13	er	15		parositva	20	G3985	alacsony
+Jas.1.13	er	16		parositva	17	G1161	alacsony
+Jas.1.13	er	17		parositva	15,16	G0846	alacsony
+Jas.1.13	er	18		parositva	18,19	G3762	alacsony
+Jas.1.14	hu	1	Hanem	parositva	2	G1161	alacsony
+Jas.1.14	hu	2	mindenki	parositva	1	G1538	alacsony
+Jas.1.14	hu	3	kísértetik	parositva	3	G3985	alacsony
+Jas.1.14	hu	4	a	betoldas			alacsony
+Jas.1.14	hu	5	mikor	betoldas			alacsony
+Jas.1.14	hu	6	vonja	parositva	8	G1828	alacsony
+Jas.1.14	hu	7	és	parositva	9	G2532	alacsony
+Jas.1.14	hu	8	édesgeti	parositva	10	G1185	alacsony
+Jas.1.14	hu	9	a	betoldas			alacsony
+Jas.1.14	hu	10	tulajdon	parositva	6	G2398	alacsony
+Jas.1.14	hu	11	kívánsága	parositva	4,7	G5259+G1939	alacsony
+Jas.1.14	er	1		parositva	2	G1538	alacsony
+Jas.1.14	er	2		parositva	1	G1161	alacsony
+Jas.1.14	er	3		parositva	3	G3985	alacsony
+Jas.1.14	er	4		parositva	11	G5259	alacsony
+Jas.1.14	er	5		forditatlan		G3588	alacsony
+Jas.1.14	er	6		parositva	10	G2398	alacsony
+Jas.1.14	er	7		parositva	11	G1939	alacsony
+Jas.1.14	er	8		parositva	6	G1828	alacsony
+Jas.1.14	er	9		parositva	7	G2532	alacsony
+Jas.1.14	er	10		parositva	8	G1185	alacsony
+Jas.1.15	hu	1	Azután	parositva	1	G1534	alacsony
+Jas.1.15	hu	2	a	betoldas			alacsony
+Jas.1.15	hu	3	kívánság	parositva	3	G1939	alacsony
+Jas.1.15	hu	4	megfoganván	parositva	4	G4815	alacsony
+Jas.1.15	hu	5	bűnt	parositva	6	G0266	alacsony
+Jas.1.15	hu	6	szűl	parositva	5	G5088	alacsony
+Jas.1.15	hu	7	a	betoldas			alacsony
+Jas.1.15	hu	8	bűn	parositva	9	G0266	alacsony
+Jas.1.15	hu	9	pedig	parositva	8	G1161	alacsony
+Jas.1.15	hu	10	teljességre	parositva	10	G0658	alacsony
+Jas.1.15	hu	11	jutván	parositva	10	G0658	alacsony
+Jas.1.15	hu	12	halált	parositva	12	G2288	alacsony
+Jas.1.15	hu	13	nemz	parositva	11	G0616	alacsony
+Jas.1.15	er	1		parositva	1	G1534	alacsony
+Jas.1.15	er	2		forditatlan		G3588	alacsony
+Jas.1.15	er	3		parositva	3	G1939	alacsony
+Jas.1.15	er	4		parositva	4	G4815	alacsony
+Jas.1.15	er	5		parositva	6	G5088	alacsony
+Jas.1.15	er	6		parositva	5	G0266	alacsony
+Jas.1.15	er	7		forditatlan		G3588	alacsony
+Jas.1.15	er	8		parositva	9	G1161	alacsony
+Jas.1.15	er	9		parositva	8	G0266	alacsony
+Jas.1.15	er	10		parositva	10,11	G0658	alacsony
+Jas.1.15	er	11		parositva	13	G0616	alacsony
+Jas.1.15	er	12		parositva	12	G2288	alacsony
+Jas.1.16	hu	1	Ne	parositva	1	G3361	alacsony
+Jas.1.16	hu	2	tévelyegjetek	parositva	2	G4105	alacsony
+Jas.1.16	hu	3	szeretett	parositva	5	G0027	alacsony
+Jas.1.16	hu	4	atyámfiai	parositva	3,4	G0080+G3165	alacsony
+Jas.1.16	er	1		parositva	1	G3361	alacsony
+Jas.1.16	er	2		parositva	2	G4105	alacsony
+Jas.1.16	er	3		parositva	4	G0080	alacsony
+Jas.1.16	er	4		parositva	4	G3165	alacsony
+Jas.1.16	er	5		parositva	3	G0027	alacsony
+Jas.1.17	hu	1	Minden	parositva	1	G3956	alacsony
+Jas.1.17	hu	2	jó	parositva	3	G0018	alacsony
+Jas.1.17	hu	3	adomány	parositva	2	G1394	alacsony
+Jas.1.17	hu	4	és	parositva	4	G2532	alacsony
+Jas.1.17	hu	5	minden	parositva	5	G3956	alacsony
+Jas.1.17	hu	6	tökéletes	parositva	7	G5046	alacsony
+Jas.1.17	hu	7	ajándék	parositva	6	G1434	alacsony
+Jas.1.17	hu	8	felülről	parositva	8	G0509	alacsony
+Jas.1.17	hu	9	való	parositva	9	G1510	alacsony
+Jas.1.17	hu	10	és	betoldas			alacsony
+Jas.1.17	hu	11	a	betoldas			alacsony
+Jas.1.17	hu	12	világosságok	parositva	15	G5457	alacsony
+Jas.1.17	hu	13	Atyjától	parositva	11,13	G0575+G3962	alacsony
+Jas.1.17	hu	14	száll	parositva	10	G2597	alacsony
+Jas.1.17	hu	15	alá	parositva	10	G2597	alacsony
+Jas.1.17	hu	16	a	parositva	16,17	G3844+G3739	alacsony
+Jas.1.17	hu	17	kinél	parositva	16,17	G3844+G3739	alacsony
+Jas.1.17	hu	18	nincs	parositva	18,19	G3756+G1762	alacsony
+Jas.1.17	hu	19	változás	parositva	20	G3883	alacsony
+Jas.1.17	hu	20	vagy	parositva	21	G2228	alacsony
+Jas.1.17	hu	21	változásnak	parositva	22	G5157	alacsony
+Jas.1.17	hu	22	árnyéka	parositva	23	G0644	alacsony
+Jas.1.17	er	1		parositva	1	G3956	alacsony
+Jas.1.17	er	2		parositva	3	G1394	alacsony
+Jas.1.17	er	3		parositva	2	G0018	alacsony
+Jas.1.17	er	4		parositva	4	G2532	alacsony
+Jas.1.17	er	5		parositva	5	G3956	alacsony
+Jas.1.17	er	6		parositva	7	G1434	alacsony
+Jas.1.17	er	7		parositva	6	G5046	alacsony
+Jas.1.17	er	8		parositva	8	G0509	alacsony
+Jas.1.17	er	9		parositva	9	G1510	alacsony
+Jas.1.17	er	10		parositva	14,15	G2597	alacsony
+Jas.1.17	er	11		parositva	13	G0575	alacsony
+Jas.1.17	er	12		forditatlan		G3588	alacsony
+Jas.1.17	er	13		parositva	13	G3962	alacsony
+Jas.1.17	er	14		forditatlan		G3588	alacsony
+Jas.1.17	er	15		parositva	12	G5457	alacsony
+Jas.1.17	er	16		parositva	16,17	G3844	alacsony
+Jas.1.17	er	17		parositva	16,17	G3739	alacsony
+Jas.1.17	er	18		parositva	18	G3756	alacsony
+Jas.1.17	er	19		parositva	18	G1762	alacsony
+Jas.1.17	er	20		parositva	19	G3883	alacsony
+Jas.1.17	er	21		parositva	20	G2228	alacsony
+Jas.1.17	er	22		parositva	21	G5157	alacsony
+Jas.1.17	er	23		parositva	22	G0644	alacsony
+Jas.1.18	hu	1	Az	betoldas			alacsony
+Jas.1.18	hu	2	ő	betoldas			alacsony
+Jas.1.18	hu	3	akarata	parositva	1	G1014	alacsony
+Jas.1.18	hu	4	szült	parositva	2	G0616	alacsony
+Jas.1.18	hu	5	minket	parositva	3	G3165	alacsony
+Jas.1.18	hu	6	az	betoldas			alacsony
+Jas.1.18	hu	7	igazságnak	parositva	5	G0225	alacsony
+Jas.1.18	hu	8	ígéje	parositva	4	G3056	alacsony
+Jas.1.18	hu	9	által	parositva	4	G3056	alacsony
+Jas.1.18	hu	10	hogy	parositva	6	G1519	alacsony
+Jas.1.18	hu	11	az	betoldas			alacsony
+Jas.1.18	hu	12	ő	parositva	13	G0846	alacsony
+Jas.1.18	hu	13	teremtményeinek	parositva	13,14	G0846+G2938	alacsony
+Jas.1.18	hu	14	valami	parositva	11	G5100	alacsony
+Jas.1.18	hu	15	zsengéje	parositva	10	G0536	alacsony
+Jas.1.18	hu	16	legyünk	parositva	8,9	G1511+G3165	alacsony
+Jas.1.18	er	1		parositva	3	G1014	alacsony
+Jas.1.18	er	2		parositva	4	G0616	alacsony
+Jas.1.18	er	3		parositva	5	G3165	alacsony
+Jas.1.18	er	4		parositva	8,9	G3056	alacsony
+Jas.1.18	er	5		parositva	7	G0225	alacsony
+Jas.1.18	er	6		parositva	10	G1519	alacsony
+Jas.1.18	er	7		forditatlan		G3588	alacsony
+Jas.1.18	er	8		parositva	16	G1511	alacsony
+Jas.1.18	er	9		parositva	16	G3165	alacsony
+Jas.1.18	er	10		parositva	15	G0536	alacsony
+Jas.1.18	er	11		parositva	14	G5100	alacsony
+Jas.1.18	er	12		forditatlan		G3588	alacsony
+Jas.1.18	er	13		parositva	12,13	G0846	alacsony
+Jas.1.18	er	14		parositva	13	G2938	alacsony
+Jas.1.19	hu	1	Azért	betoldas			alacsony
+Jas.1.19	hu	2	szeretett	parositva	4	G0027	alacsony
+Jas.1.19	hu	3	atyámfiai	parositva	2,3	G0080+G3165	alacsony
+Jas.1.19	hu	4	legyen	parositva	5	G1510	alacsony
+Jas.1.19	hu	5	minden	parositva	7	G3956	alacsony
+Jas.1.19	hu	6	ember	parositva	8	G0444	alacsony
+Jas.1.19	hu	7	gyors	parositva	9	G5036	alacsony
+Jas.1.19	hu	8	a	betoldas			alacsony
+Jas.1.19	hu	9	hallásra	parositva	10,11,12	G1519+G3588+G0191	alacsony
+Jas.1.19	hu	10	késedelmes	parositva	13	G1021	alacsony
+Jas.1.19	hu	11	a	betoldas			alacsony
+Jas.1.19	hu	12	szólásra	parositva	14,15,16	G1519+G3588+G2980	alacsony
+Jas.1.19	hu	13	késedelmes	parositva	17	G1021	alacsony
+Jas.1.19	hu	14	a	betoldas			alacsony
+Jas.1.19	hu	15	haragra	parositva	18,19	G1519+G3709	alacsony
+Jas.1.19	er	1		forditatlan		G6063	alacsony
+Jas.1.19	er	2		parositva	3	G0080	alacsony
+Jas.1.19	er	3		parositva	3	G3165	alacsony
+Jas.1.19	er	4		parositva	2	G0027	alacsony
+Jas.1.19	er	5		parositva	4	G1510	alacsony
+Jas.1.19	er	6		forditatlan		G1161	alacsony
+Jas.1.19	er	7		parositva	5	G3956	alacsony
+Jas.1.19	er	8		parositva	6	G0444	alacsony
+Jas.1.19	er	9		parositva	7	G5036	alacsony
+Jas.1.19	er	10		parositva	9	G1519	alacsony
+Jas.1.19	er	11		parositva	9	G3588	alacsony
+Jas.1.19	er	12		parositva	9	G0191	alacsony
+Jas.1.19	er	13		parositva	10	G1021	alacsony
+Jas.1.19	er	14		parositva	12	G1519	alacsony
+Jas.1.19	er	15		parositva	12	G3588	alacsony
+Jas.1.19	er	16		parositva	12	G2980	alacsony
+Jas.1.19	er	17		parositva	13	G1021	alacsony
+Jas.1.19	er	18		parositva	15	G1519	alacsony
+Jas.1.19	er	19		parositva	15	G3709	alacsony
+Jas.1.20	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.1.20	hu	2	ember	parositva	3	G0435	alacsony
+Jas.1.20	hu	3	haragja	parositva	1	G3709	alacsony
+Jas.1.20	hu	4	Isten	parositva	5	G2316	alacsony
+Jas.1.20	hu	5	igazságát	parositva	4	G1343	alacsony
+Jas.1.20	hu	6	nem	parositva	6	G3756	alacsony
+Jas.1.20	hu	7	munkálja	betoldas			alacsony
+Jas.1.20	er	1		parositva	3	G3709	alacsony
+Jas.1.20	er	2		parositva	1	G1063	alacsony
+Jas.1.20	er	3		parositva	2	G0435	alacsony
+Jas.1.20	er	4		parositva	5	G1343	alacsony
+Jas.1.20	er	5		parositva	4	G2316	alacsony
+Jas.1.20	er	6		parositva	6	G3756	alacsony
+Jas.1.20	er	7		forditatlan		G2038	alacsony
+Jas.1.21	hu	1	Elvetvén	parositva	2	G0659	alacsony
+Jas.1.21	hu	2	azért	parositva	1	G1352	alacsony
+Jas.1.21	hu	3	minden	parositva	3	G3956	alacsony
+Jas.1.21	hu	4	undokságot	parositva	4	G4507	alacsony
+Jas.1.21	hu	5	és	parositva	5	G2532	alacsony
+Jas.1.21	hu	6	a	betoldas			alacsony
+Jas.1.21	hu	7	gonoszságnak	parositva	7	G2549	alacsony
+Jas.1.21	hu	8	sokaságát	parositva	6	G4050	alacsony
+Jas.1.21	hu	9	szelídséggel	parositva	8,9	G1722+G4236	alacsony
+Jas.1.21	hu	10	fogadjátok	parositva	10	G1209	alacsony
+Jas.1.21	hu	11	a	betoldas			alacsony
+Jas.1.21	hu	12	beoltott	parositva	12	G1721	alacsony
+Jas.1.21	hu	13	ígét	parositva	13	G3056	alacsony
+Jas.1.21	hu	14	a	parositva	14	G3588	alacsony
+Jas.1.21	hu	15	mely	parositva	14	G3588	alacsony
+Jas.1.21	hu	16	megtarthatja	parositva	15,16	G1410+G4982	alacsony
+Jas.1.21	hu	17	a	betoldas			alacsony
+Jas.1.21	hu	18	ti	parositva	19	G4771	alacsony
+Jas.1.21	hu	19	lelkeiteket	parositva	18,19	G5590+G4771	alacsony
+Jas.1.21	er	1		parositva	2	G1352	alacsony
+Jas.1.21	er	2		parositva	1	G0659	alacsony
+Jas.1.21	er	3		parositva	3	G3956	alacsony
+Jas.1.21	er	4		parositva	4	G4507	alacsony
+Jas.1.21	er	5		parositva	5	G2532	alacsony
+Jas.1.21	er	6		parositva	8	G4050	alacsony
+Jas.1.21	er	7		parositva	7	G2549	alacsony
+Jas.1.21	er	8		parositva	9	G1722	alacsony
+Jas.1.21	er	9		parositva	9	G4236	alacsony
+Jas.1.21	er	10		parositva	10	G1209	alacsony
+Jas.1.21	er	11		forditatlan		G3588	alacsony
+Jas.1.21	er	12		parositva	12	G1721	alacsony
+Jas.1.21	er	13		parositva	13	G3056	alacsony
+Jas.1.21	er	14		parositva	14,15	G3588	alacsony
+Jas.1.21	er	15		parositva	16	G1410	alacsony
+Jas.1.21	er	16		parositva	16	G4982	alacsony
+Jas.1.21	er	17		forditatlan		G3588	alacsony
+Jas.1.21	er	18		parositva	19	G5590	alacsony
+Jas.1.21	er	19		parositva	18,19	G4771	alacsony
+Jas.1.22	hu	1	Az	betoldas			alacsony
+Jas.1.22	hu	2	ígének	parositva	4	G3056	alacsony
+Jas.1.22	hu	3	pedig	parositva	2	G1161	alacsony
+Jas.1.22	hu	4	megtartói	parositva	3	G4163	alacsony
+Jas.1.22	hu	5	legyetek	parositva	1	G1096	alacsony
+Jas.1.22	hu	6	és	parositva	5	G2532	alacsony
+Jas.1.22	hu	7	ne	parositva	6	G3361	alacsony
+Jas.1.22	hu	8	csak	parositva	7	G3441	alacsony
+Jas.1.22	hu	9	hallgatói	parositva	8	G0202	alacsony
+Jas.1.22	hu	10	megcsalván	parositva	9	G3884	alacsony
+Jas.1.22	hu	11	magatokat	parositva	10	G1438	alacsony
+Jas.1.22	er	1		parositva	5	G1096	alacsony
+Jas.1.22	er	2		parositva	3	G1161	alacsony
+Jas.1.22	er	3		parositva	4	G4163	alacsony
+Jas.1.22	er	4		parositva	2	G3056	alacsony
+Jas.1.22	er	5		parositva	6	G2532	alacsony
+Jas.1.22	er	6		parositva	7	G3361	alacsony
+Jas.1.22	er	7		parositva	8	G3441	alacsony
+Jas.1.22	er	8		parositva	9	G0202	alacsony
+Jas.1.22	er	9		parositva	10	G3884	alacsony
+Jas.1.22	er	10		parositva	11	G1438	alacsony
+Jas.1.23	hu	1	Mert	parositva	1	G3754	alacsony
+Jas.1.23	hu	2	ha	parositva	2	G1487	alacsony
+Jas.1.23	hu	3	valaki	parositva	3	G5100	alacsony
+Jas.1.23	hu	4	hallgatója	parositva	4	G0202	alacsony
+Jas.1.23	hu	5	az	betoldas			alacsony
+Jas.1.23	hu	6	ígének	parositva	5	G3056	alacsony
+Jas.1.23	hu	7	és	parositva	7	G2532	alacsony
+Jas.1.23	hu	8	nem	parositva	8	G3756	alacsony
+Jas.1.23	hu	9	megtartója	parositva	9	G4163	alacsony
+Jas.1.23	hu	10	az	betoldas			alacsony
+Jas.1.23	hu	11	ilyen	parositva	10	G3778	alacsony
+Jas.1.23	hu	12	hasonlatos	parositva	11	G1503	alacsony
+Jas.1.23	hu	13	ahhoz	betoldas			alacsony
+Jas.1.23	hu	14	az	betoldas			alacsony
+Jas.1.23	hu	15	emberhez	parositva	12	G0435	alacsony
+Jas.1.23	hu	16	a	betoldas			alacsony
+Jas.1.23	hu	17	ki	betoldas			alacsony
+Jas.1.23	hu	18	tükörben	parositva	19,20	G1722+G2072	alacsony
+Jas.1.23	hu	19	nézi	parositva	13	G2657	alacsony
+Jas.1.23	hu	20	az	betoldas			alacsony
+Jas.1.23	hu	21	ő	parositva	18	G0846	alacsony
+Jas.1.23	hu	22	természet	parositva	17	G1078	alacsony
+Jas.1.23	hu	23	szerinti	parositva	17	G1078	alacsony
+Jas.1.23	hu	24	ábrázatát	parositva	15,18	G4383+G0846	alacsony
+Jas.1.23	er	1		parositva	1	G3754	alacsony
+Jas.1.23	er	2		parositva	2	G1487	alacsony
+Jas.1.23	er	3		parositva	3	G5100	alacsony
+Jas.1.23	er	4		parositva	4	G0202	alacsony
+Jas.1.23	er	5		parositva	6	G3056	alacsony
+Jas.1.23	er	6		forditatlan		G1510	alacsony
+Jas.1.23	er	7		parositva	7	G2532	alacsony
+Jas.1.23	er	8		parositva	8	G3756	alacsony
+Jas.1.23	er	9		parositva	9	G4163	alacsony
+Jas.1.23	er	10		parositva	11	G3778	alacsony
+Jas.1.23	er	11		parositva	12	G1503	alacsony
+Jas.1.23	er	12		parositva	15	G0435	alacsony
+Jas.1.23	er	13		parositva	19	G2657	alacsony
+Jas.1.23	er	14		forditatlan		G3588	alacsony
+Jas.1.23	er	15		parositva	24	G4383	alacsony
+Jas.1.23	er	16		forditatlan		G3588	alacsony
+Jas.1.23	er	17		parositva	22,23	G1078	alacsony
+Jas.1.23	er	18		parositva	21,24	G0846	alacsony
+Jas.1.23	er	19		parositva	18	G1722	alacsony
+Jas.1.23	er	20		parositva	18	G2072	alacsony
+Jas.1.24	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.1.24	hu	2	megnézte	parositva	1	G2657	alacsony
+Jas.1.24	hu	3	magát	parositva	3	G1438	alacsony
+Jas.1.24	hu	4	és	parositva	4	G2532	alacsony
+Jas.1.24	hu	5	elment	parositva	5	G0565	alacsony
+Jas.1.24	hu	6	és	parositva	6	G2532	alacsony
+Jas.1.24	hu	7	azonnal	parositva	7	G2112	alacsony
+Jas.1.24	hu	8	elfelejtette	parositva	8	G1950	alacsony
+Jas.1.24	hu	9	milyen	parositva	9	G3697	alacsony
+Jas.1.24	hu	10	volt	parositva	10	G1510	alacsony
+Jas.1.24	er	1		parositva	2	G2657	alacsony
+Jas.1.24	er	2		parositva	1	G1063	alacsony
+Jas.1.24	er	3		parositva	3	G1438	alacsony
+Jas.1.24	er	4		parositva	4	G2532	alacsony
+Jas.1.24	er	5		parositva	5	G0565	alacsony
+Jas.1.24	er	6		parositva	6	G2532	alacsony
+Jas.1.24	er	7		parositva	7	G2112	alacsony
+Jas.1.24	er	8		parositva	8	G1950	alacsony
+Jas.1.24	er	9		parositva	9	G3697	alacsony
+Jas.1.24	er	10		parositva	10	G1510	alacsony
+Jas.1.25	hu	1	De	parositva	2	G1161	alacsony
+Jas.1.25	hu	2	a	parositva	1	G3588	alacsony
+Jas.1.25	hu	3	ki	parositva	1	G3588	alacsony
+Jas.1.25	hu	4	belenéz	parositva	3	G3879	alacsony
+Jas.1.25	hu	5	a	betoldas			alacsony
+Jas.1.25	hu	6	szabadság	parositva	9	G1657	alacsony
+Jas.1.25	hu	7	tökéletes	parositva	6	G5046	alacsony
+Jas.1.25	hu	8	törvényébe	parositva	4,5	G1519+G3551	alacsony
+Jas.1.25	hu	9	és	parositva	10	G2532	alacsony
+Jas.1.25	hu	10	megmarad	parositva	11	G3887	alacsony
+Jas.1.25	hu	11	a	betoldas			alacsony
+Jas.1.25	hu	12	mellett	betoldas			alacsony
+Jas.1.25	hu	13	az	parositva	12	G3778	alacsony
+Jas.1.25	hu	14	nem	parositva	13	G3756	alacsony
+Jas.1.25	hu	15	feledékeny	parositva	15	G1953	alacsony
+Jas.1.25	hu	16	hallgató	parositva	14	G0202	alacsony
+Jas.1.25	hu	17	sőt	parositva	17	G0235	alacsony
+Jas.1.25	hu	18	cselekedet	parositva	19	G2041	alacsony
+Jas.1.25	hu	19	követője	parositva	18	G4163	alacsony
+Jas.1.25	hu	20	lévén	parositva	16	G1096	alacsony
+Jas.1.25	hu	21	az	parositva	20	G3778	alacsony
+Jas.1.25	hu	22	boldog	parositva	21	G3107	alacsony
+Jas.1.25	hu	23	lesz	parositva	26	G1510	alacsony
+Jas.1.25	hu	24	az	betoldas			alacsony
+Jas.1.25	hu	25	ő	parositva	25	G0846	alacsony
+Jas.1.25	hu	26	cselekedetében	parositva	22,24,25	G1722+G4160+G0846	alacsony
+Jas.1.25	er	1		parositva	2,3	G3588	alacsony
+Jas.1.25	er	2		parositva	1	G1161	alacsony
+Jas.1.25	er	3		parositva	4	G3879	alacsony
+Jas.1.25	er	4		parositva	8	G1519	alacsony
+Jas.1.25	er	5		parositva	8	G3551	alacsony
+Jas.1.25	er	6		parositva	7	G5046	alacsony
+Jas.1.25	er	7		forditatlan		G3588	alacsony
+Jas.1.25	er	8		forditatlan		G3588	alacsony
+Jas.1.25	er	9		parositva	6	G1657	alacsony
+Jas.1.25	er	10		parositva	9	G2532	alacsony
+Jas.1.25	er	11		parositva	10	G3887	alacsony
+Jas.1.25	er	12		parositva	13	G3778	alacsony
+Jas.1.25	er	13		parositva	14	G3756	alacsony
+Jas.1.25	er	14		parositva	16	G0202	alacsony
+Jas.1.25	er	15		parositva	15	G1953	alacsony
+Jas.1.25	er	16		parositva	20	G1096	alacsony
+Jas.1.25	er	17		parositva	17	G0235	alacsony
+Jas.1.25	er	18		parositva	19	G4163	alacsony
+Jas.1.25	er	19		parositva	18	G2041	alacsony
+Jas.1.25	er	20		parositva	21	G3778	alacsony
+Jas.1.25	er	21		parositva	22	G3107	alacsony
+Jas.1.25	er	22		parositva	26	G1722	alacsony
+Jas.1.25	er	23		forditatlan		G3588	alacsony
+Jas.1.25	er	24		parositva	26	G4160	alacsony
+Jas.1.25	er	25		parositva	25,26	G0846	alacsony
+Jas.1.25	er	26		parositva	23	G1510	alacsony
+Jas.1.26	hu	1	Ha	parositva	1	G1487	alacsony
+Jas.1.26	hu	2	valaki	parositva	2	G5100	alacsony
+Jas.1.26	hu	3	istentisztelőnek	parositva	4	G2357	alacsony
+Jas.1.26	hu	4	látszik	parositva	3,5	G1380+G1511	alacsony
+Jas.1.26	hu	5	köztetek	parositva	6,7	G1722+G4771	alacsony
+Jas.1.26	hu	6	de	betoldas			alacsony
+Jas.1.26	hu	7	nem	parositva	8	G3361	alacsony
+Jas.1.26	hu	8	zabolázza	parositva	9	G5468	alacsony
+Jas.1.26	hu	9	meg	parositva	9	G5468	alacsony
+Jas.1.26	hu	10	nyelvét	parositva	10,11	G1100+G0846	alacsony
+Jas.1.26	hu	11	sőt	parositva	12	G0235	alacsony
+Jas.1.26	hu	12	megcsalja	parositva	13	G0538	alacsony
+Jas.1.26	hu	13	a	betoldas			alacsony
+Jas.1.26	hu	14	maga	parositva	15	G0846	alacsony
+Jas.1.26	hu	15	szívét	parositva	14,15	G2588+G0846	alacsony
+Jas.1.26	hu	16	annak	parositva	16	G3778	alacsony
+Jas.1.26	hu	17	az	betoldas			alacsony
+Jas.1.26	hu	18	istentisztelete	parositva	19	G2356	alacsony
+Jas.1.26	hu	19	hiábavaló	parositva	17	G3152	alacsony
+Jas.1.26	er	1		parositva	1	G1487	alacsony
+Jas.1.26	er	2		parositva	2	G5100	alacsony
+Jas.1.26	er	3		parositva	4	G1380	alacsony
+Jas.1.26	er	4		parositva	3	G2357	alacsony
+Jas.1.26	er	5		parositva	4	G1511	alacsony
+Jas.1.26	er	6		parositva	5	G1722	alacsony
+Jas.1.26	er	7		parositva	5	G4771	alacsony
+Jas.1.26	er	8		parositva	7	G3361	alacsony
+Jas.1.26	er	9		parositva	8,9	G5468	alacsony
+Jas.1.26	er	10		parositva	10	G1100	alacsony
+Jas.1.26	er	11		parositva	10	G0846	alacsony
+Jas.1.26	er	12		parositva	11	G0235	alacsony
+Jas.1.26	er	13		parositva	12	G0538	alacsony
+Jas.1.26	er	14		parositva	15	G2588	alacsony
+Jas.1.26	er	15		parositva	14,15	G0846	alacsony
+Jas.1.26	er	16		parositva	16	G3778	alacsony
+Jas.1.26	er	17		parositva	19	G3152	alacsony
+Jas.1.26	er	18		forditatlan		G3588	alacsony
+Jas.1.26	er	19		parositva	18	G2356	alacsony
+Jas.1.27	hu	1	Tiszta	parositva	2	G2513	alacsony
+Jas.1.27	hu	2	és	parositva	3	G2532	alacsony
+Jas.1.27	hu	3	szeplő	parositva	4	G0283	alacsony
+Jas.1.27	hu	4	nélkül	parositva	4	G0283	alacsony
+Jas.1.27	hu	5	való	betoldas			alacsony
+Jas.1.27	hu	6	istentisztelet	parositva	1	G2356	alacsony
+Jas.1.27	hu	7	az	betoldas			alacsony
+Jas.1.27	hu	8	Isten	parositva	7	G2316	alacsony
+Jas.1.27	hu	9	és	parositva	8	G2532	alacsony
+Jas.1.27	hu	10	az	betoldas			alacsony
+Jas.1.27	hu	11	Atya	parositva	9	G3962	alacsony
+Jas.1.27	hu	12	előtt	parositva	5	G3844	alacsony
+Jas.1.27	hu	13	ez	parositva	10,11	G3778+G1510	alacsony
+Jas.1.27	hu	14	meglátogatni	parositva	12	G1980	alacsony
+Jas.1.27	hu	15	az	betoldas			alacsony
+Jas.1.27	hu	16	árvákat	parositva	13	G3737	alacsony
+Jas.1.27	hu	17	és	parositva	14	G2532	alacsony
+Jas.1.27	hu	18	özvegyeket	parositva	15	G5503	alacsony
+Jas.1.27	hu	19	az	betoldas			alacsony
+Jas.1.27	hu	20	ő	parositva	19	G0846	alacsony
+Jas.1.27	hu	21	nyomorúságukban	parositva	16,18,19	G1722+G2347+G0846	alacsony
+Jas.1.27	hu	22	és	betoldas			alacsony
+Jas.1.27	hu	23	szeplő	parositva	20	G0784	alacsony
+Jas.1.27	hu	24	nélkül	parositva	20	G0784	alacsony
+Jas.1.27	hu	25	megtartani	parositva	22	G5083	alacsony
+Jas.1.27	hu	26	magát	parositva	21	G1438	alacsony
+Jas.1.27	hu	27	e	parositva	24	G3588	alacsony
+Jas.1.27	hu	28	világtól	parositva	23,25	G0575+G2889	alacsony
+Jas.1.27	er	1		parositva	6	G2356	alacsony
+Jas.1.27	er	2		parositva	1	G2513	alacsony
+Jas.1.27	er	3		parositva	2	G2532	alacsony
+Jas.1.27	er	4		parositva	3,4	G0283	alacsony
+Jas.1.27	er	5		parositva	12	G3844	alacsony
+Jas.1.27	er	6		forditatlan		G3588	alacsony
+Jas.1.27	er	7		parositva	8	G2316	alacsony
+Jas.1.27	er	8		parositva	9	G2532	alacsony
+Jas.1.27	er	9		parositva	11	G3962	alacsony
+Jas.1.27	er	10		parositva	13	G3778	alacsony
+Jas.1.27	er	11		parositva	13	G1510	alacsony
+Jas.1.27	er	12		parositva	14	G1980	alacsony
+Jas.1.27	er	13		parositva	16	G3737	alacsony
+Jas.1.27	er	14		parositva	17	G2532	alacsony
+Jas.1.27	er	15		parositva	18	G5503	alacsony
+Jas.1.27	er	16		parositva	21	G1722	alacsony
+Jas.1.27	er	17		forditatlan		G3588	alacsony
+Jas.1.27	er	18		parositva	21	G2347	alacsony
+Jas.1.27	er	19		parositva	20,21	G0846	alacsony
+Jas.1.27	er	20		parositva	23,24	G0784	alacsony
+Jas.1.27	er	21		parositva	26	G1438	alacsony
+Jas.1.27	er	22		parositva	25	G5083	alacsony
+Jas.1.27	er	23		parositva	28	G0575	alacsony
+Jas.1.27	er	24		parositva	27	G3588	alacsony
+Jas.1.27	er	25		parositva	28	G2889	alacsony
+Jas.2.1	hu	1	Atyámfiai	parositva	1,2	G0080+G3165	alacsony
+Jas.2.1	hu	2	ne	parositva	3	G3361	alacsony
+Jas.2.1	hu	3	legyen	parositva	6	G2192	alacsony
+Jas.2.1	hu	4	személyválogatás	parositva	4,5	G1722+G4382	alacsony
+Jas.2.1	hu	5	a	betoldas			alacsony
+Jas.2.1	hu	6	ti	betoldas			alacsony
+Jas.2.1	hu	7	hitetekben	parositva	7,8	G3588+G4102	alacsony
+Jas.2.1	hu	8	a	betoldas			alacsony
+Jas.2.1	hu	9	mely	betoldas			alacsony
+Jas.2.1	hu	10	van	betoldas			alacsony
+Jas.2.1	hu	11	a	betoldas			alacsony
+Jas.2.1	hu	12	dicsőség	parositva	15	G1391	alacsony
+Jas.2.1	hu	13	Urában	parositva	10	G2962	alacsony
+Jas.2.1	hu	14	a	betoldas			alacsony
+Jas.2.1	hu	15	mi	parositva	11	G3165	alacsony
+Jas.2.1	hu	16	Jézus	parositva	12	G2424	alacsony
+Jas.2.1	hu	17	Krisztusunkban	parositva	11,13	G3165+G5547	alacsony
+Jas.2.1	er	1		parositva	1	G0080	alacsony
+Jas.2.1	er	2		parositva	1	G3165	alacsony
+Jas.2.1	er	3		parositva	2	G3361	alacsony
+Jas.2.1	er	4		parositva	4	G1722	alacsony
+Jas.2.1	er	5		parositva	4	G4382	alacsony
+Jas.2.1	er	6		parositva	3	G2192	alacsony
+Jas.2.1	er	7		parositva	7	G3588	alacsony
+Jas.2.1	er	8		parositva	7	G4102	alacsony
+Jas.2.1	er	9		forditatlan		G3588	alacsony
+Jas.2.1	er	10		parositva	13	G2962	alacsony
+Jas.2.1	er	11		parositva	15,17	G3165	alacsony
+Jas.2.1	er	12		parositva	16	G2424	alacsony
+Jas.2.1	er	13		parositva	17	G5547	alacsony
+Jas.2.1	er	14		forditatlan		G3588	alacsony
+Jas.2.1	er	15		parositva	12	G1391	alacsony
+Jas.2.2	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.2.2	hu	2	ha	parositva	1	G1437	alacsony
+Jas.2.2	hu	3	a	betoldas			alacsony
+Jas.2.2	hu	4	ti	parositva	7	G4771	alacsony
+Jas.2.2	hu	5	gyülekezetetekbe	parositva	4,6,7	G1519+G4864+G4771	alacsony
+Jas.2.2	hu	6	bemegy	parositva	3	G1525	alacsony
+Jas.2.2	hu	7	egy	betoldas			alacsony
+Jas.2.2	hu	8	aranygyűrűs	parositva	9	G5554	alacsony
+Jas.2.2	hu	9	férfiú	parositva	8	G0435	alacsony
+Jas.2.2	hu	10	fényes	parositva	12	G2986	alacsony
+Jas.2.2	hu	11	ruhában	parositva	10,11	G1722+G2066	alacsony
+Jas.2.2	hu	12	bemegy	parositva	13	G1525	alacsony
+Jas.2.2	hu	13	pedig	parositva	14	G1161	alacsony
+Jas.2.2	hu	14	egy	betoldas			alacsony
+Jas.2.2	hu	15	szegény	parositva	16	G4434	alacsony
+Jas.2.2	hu	16	is	parositva	15	G2532	alacsony
+Jas.2.2	hu	17	szennyes	parositva	18	G4508	alacsony
+Jas.2.2	hu	18	ruhában	parositva	17,19	G1722+G2066	alacsony
+Jas.2.2	er	1		parositva	2	G1437	alacsony
+Jas.2.2	er	2		parositva	1	G1063	alacsony
+Jas.2.2	er	3		parositva	6	G1525	alacsony
+Jas.2.2	er	4		parositva	5	G1519	alacsony
+Jas.2.2	er	5		forditatlan		G3588	alacsony
+Jas.2.2	er	6		parositva	5	G4864	alacsony
+Jas.2.2	er	7		parositva	4,5	G4771	alacsony
+Jas.2.2	er	8		parositva	9	G0435	alacsony
+Jas.2.2	er	9		parositva	8	G5554	alacsony
+Jas.2.2	er	10		parositva	11	G1722	alacsony
+Jas.2.2	er	11		parositva	11	G2066	alacsony
+Jas.2.2	er	12		parositva	10	G2986	alacsony
+Jas.2.2	er	13		parositva	12	G1525	alacsony
+Jas.2.2	er	14		parositva	13	G1161	alacsony
+Jas.2.2	er	15		parositva	16	G2532	alacsony
+Jas.2.2	er	16		parositva	15	G4434	alacsony
+Jas.2.2	er	17		parositva	18	G1722	alacsony
+Jas.2.2	er	18		parositva	17	G4508	alacsony
+Jas.2.2	er	19		parositva	18	G2066	alacsony
+Jas.2.3	hu	1	És	parositva	1	G2532	alacsony
+Jas.2.3	hu	2	rátekinttek	parositva	2,4	G1914+G1909	alacsony
+Jas.2.3	hu	3	arra	parositva	5	G3588	alacsony
+Jas.2.3	hu	4	a	betoldas			alacsony
+Jas.2.3	hu	5	kin	betoldas			alacsony
+Jas.2.3	hu	6	a	betoldas			alacsony
+Jas.2.3	hu	7	fényes	parositva	10	G2986	alacsony
+Jas.2.3	hu	8	ruha	parositva	8	G2066	alacsony
+Jas.2.3	hu	9	van	parositva	6	G5409	alacsony
+Jas.2.3	hu	10	és	parositva	11	G2532	alacsony
+Jas.2.3	hu	11	azt	betoldas			alacsony
+Jas.2.3	hu	12	mondjátok	parositva	12	G2036	alacsony
+Jas.2.3	hu	13	néki	parositva	13	G0846	alacsony
+Jas.2.3	hu	14	Te	parositva	14	G4771	alacsony
+Jas.2.3	hu	15	ülj	parositva	15	G2521	alacsony
+Jas.2.3	hu	16	ide	parositva	16	G5602	alacsony
+Jas.2.3	hu	17	szépen	parositva	17	G2573	alacsony
+Jas.2.3	hu	18	és	parositva	18	G2532	alacsony
+Jas.2.3	hu	19	a	betoldas			alacsony
+Jas.2.3	hu	20	szegénynek	parositva	19,20	G3588+G4434	alacsony
+Jas.2.3	hu	21	ezt	betoldas			alacsony
+Jas.2.3	hu	22	mondjátok	parositva	21	G2036	alacsony
+Jas.2.3	hu	23	Te	parositva	22	G4771	alacsony
+Jas.2.3	hu	24	állj	parositva	23	G2476	alacsony
+Jas.2.3	hu	25	ott	parositva	24	G1563	alacsony
+Jas.2.3	hu	26	vagy	parositva	25	G2228	alacsony
+Jas.2.3	hu	27	ülj	parositva	26	G2521	alacsony
+Jas.2.3	hu	28	ide	parositva	27	G5602	alacsony
+Jas.2.3	hu	29	az	betoldas			alacsony
+Jas.2.3	hu	30	én	parositva	31	G3165	alacsony
+Jas.2.3	hu	31	zsámolyom	parositva	30,31	G5286+G3165	alacsony
+Jas.2.3	hu	32	mellé	parositva	28	G5259	alacsony
+Jas.2.3	er	1		parositva	1	G2532	alacsony
+Jas.2.3	er	2		parositva	2	G1914	alacsony
+Jas.2.3	er	3		forditatlan		G1161	alacsony
+Jas.2.3	er	4		parositva	2	G1909	alacsony
+Jas.2.3	er	5		parositva	3	G3588	alacsony
+Jas.2.3	er	6		parositva	9	G5409	alacsony
+Jas.2.3	er	7		forditatlan		G3588	alacsony
+Jas.2.3	er	8		parositva	8	G2066	alacsony
+Jas.2.3	er	9		forditatlan		G3588	alacsony
+Jas.2.3	er	10		parositva	7	G2986	alacsony
+Jas.2.3	er	11		parositva	10	G2532	alacsony
+Jas.2.3	er	12		parositva	12	G2036	alacsony
+Jas.2.3	er	13		parositva	13	G0846	alacsony
+Jas.2.3	er	14		parositva	14	G4771	alacsony
+Jas.2.3	er	15		parositva	15	G2521	alacsony
+Jas.2.3	er	16		parositva	16	G5602	alacsony
+Jas.2.3	er	17		parositva	17	G2573	alacsony
+Jas.2.3	er	18		parositva	18	G2532	alacsony
+Jas.2.3	er	19		parositva	20	G3588	alacsony
+Jas.2.3	er	20		parositva	20	G4434	alacsony
+Jas.2.3	er	21		parositva	22	G2036	alacsony
+Jas.2.3	er	22		parositva	23	G4771	alacsony
+Jas.2.3	er	23		parositva	24	G2476	alacsony
+Jas.2.3	er	24		parositva	25	G1563	alacsony
+Jas.2.3	er	25		parositva	26	G2228	alacsony
+Jas.2.3	er	26		parositva	27	G2521	alacsony
+Jas.2.3	er	27		parositva	28	G5602	alacsony
+Jas.2.3	er	28		parositva	32	G5259	alacsony
+Jas.2.3	er	29		forditatlan		G3588	alacsony
+Jas.2.3	er	30		parositva	31	G5286	alacsony
+Jas.2.3	er	31		parositva	30,31	G3165	alacsony
+Jas.2.4	hu	1	Nem	parositva	2	G3756	alacsony
+Jas.2.4	hu	2	mondtatok	parositva	3	G1252	alacsony
+Jas.2.4	hu	3	é	betoldas			alacsony
+Jas.2.4	hu	4	ellent	parositva	3	G1252	alacsony
+Jas.2.4	hu	5	magatoknak	parositva	4,5	G1722+G1438	alacsony
+Jas.2.4	hu	6	és	parositva	6	G2532	alacsony
+Jas.2.4	hu	7	nem	parositva	2	G3756	alacsony
+Jas.2.4	hu	8	lettetek	parositva	7	G1096	alacsony
+Jas.2.4	hu	9	é	betoldas			alacsony
+Jas.2.4	hu	10	gonosz	parositva	10	G4190	alacsony
+Jas.2.4	hu	11	gondolkozású	parositva	9	G1261	alacsony
+Jas.2.4	hu	12	birákká	parositva	8	G2923	alacsony
+Jas.2.4	er	1		forditatlan		G2532	alacsony
+Jas.2.4	er	2		parositva	1,7	G3756	alacsony
+Jas.2.4	er	3		parositva	2,4	G1252	alacsony
+Jas.2.4	er	4		parositva	5	G1722	alacsony
+Jas.2.4	er	5		parositva	5	G1438	alacsony
+Jas.2.4	er	6		parositva	6	G2532	alacsony
+Jas.2.4	er	7		parositva	8	G1096	alacsony
+Jas.2.4	er	8		parositva	12	G2923	alacsony
+Jas.2.4	er	9		parositva	11	G1261	alacsony
+Jas.2.4	er	10		parositva	10	G4190	alacsony
+Jas.2.5	hu	1	Halljátok	parositva	1	G0191	alacsony
+Jas.2.5	hu	2	meg	parositva	1	G0191	alacsony
+Jas.2.5	hu	3	szeretett	parositva	4	G0027	alacsony
+Jas.2.5	hu	4	atyámfiai	parositva	2,3	G0080+G3165	alacsony
+Jas.2.5	hu	5	avagy	betoldas			alacsony
+Jas.2.5	hu	6	nem	parositva	5	G3756	alacsony
+Jas.2.5	hu	7	az	betoldas			alacsony
+Jas.2.5	hu	8	Isten	parositva	7	G2316	alacsony
+Jas.2.5	hu	9	választotta	parositva	8	G1586	alacsony
+Jas.2.5	hu	10	é	betoldas			alacsony
+Jas.2.5	hu	11	ki	parositva	8	G1586	alacsony
+Jas.2.5	hu	12	e	parositva	13	G3778	alacsony
+Jas.2.5	hu	13	világ	betoldas			alacsony
+Jas.2.5	hu	14	szegényeit	parositva	9,10	G3588+G4434	alacsony
+Jas.2.5	hu	15	hogy	betoldas			alacsony
+Jas.2.5	hu	16	gazdagok	parositva	14	G4145	alacsony
+Jas.2.5	hu	17	legyenek	betoldas			alacsony
+Jas.2.5	hu	18	hitben	parositva	15,16	G1722+G4102	alacsony
+Jas.2.5	hu	19	és	parositva	17	G2532	alacsony
+Jas.2.5	hu	20	örökösei	parositva	18	G2818	alacsony
+Jas.2.5	hu	21	az	betoldas			alacsony
+Jas.2.5	hu	22	országnak	parositva	20	G0932	alacsony
+Jas.2.5	hu	23	a	parositva	21	G3739	alacsony
+Jas.2.5	hu	24	melyet	parositva	21	G3739	alacsony
+Jas.2.5	hu	25	azoknak	parositva	23	G3588	alacsony
+Jas.2.5	hu	26	ígért	parositva	22	G1861	alacsony
+Jas.2.5	hu	27	a	betoldas			alacsony
+Jas.2.5	hu	28	kik	betoldas			alacsony
+Jas.2.5	hu	29	őt	parositva	25	G0846	alacsony
+Jas.2.5	hu	30	szeretik	parositva	24	G0025	alacsony
+Jas.2.5	er	1		parositva	1,2	G0191	alacsony
+Jas.2.5	er	2		parositva	4	G0080	alacsony
+Jas.2.5	er	3		parositva	4	G3165	alacsony
+Jas.2.5	er	4		parositva	3	G0027	alacsony
+Jas.2.5	er	5		parositva	6	G3756	alacsony
+Jas.2.5	er	6		forditatlan		G3588	alacsony
+Jas.2.5	er	7		parositva	8	G2316	alacsony
+Jas.2.5	er	8		parositva	9,11	G1586	alacsony
+Jas.2.5	er	9		parositva	14	G3588	alacsony
+Jas.2.5	er	10		parositva	14	G4434	alacsony
+Jas.2.5	er	11		forditatlan		G3588	alacsony
+Jas.2.5	er	12		forditatlan		G2889	alacsony
+Jas.2.5	er	13		parositva	12	G3778	alacsony
+Jas.2.5	er	14		parositva	16	G4145	alacsony
+Jas.2.5	er	15		parositva	18	G1722	alacsony
+Jas.2.5	er	16		parositva	18	G4102	alacsony
+Jas.2.5	er	17		parositva	19	G2532	alacsony
+Jas.2.5	er	18		parositva	20	G2818	alacsony
+Jas.2.5	er	19		forditatlan		G3588	alacsony
+Jas.2.5	er	20		parositva	22	G0932	alacsony
+Jas.2.5	er	21		parositva	23,24	G3739	alacsony
+Jas.2.5	er	22		parositva	26	G1861	alacsony
+Jas.2.5	er	23		parositva	25	G3588	alacsony
+Jas.2.5	er	24		parositva	30	G0025	alacsony
+Jas.2.5	er	25		parositva	29	G0846	alacsony
+Jas.2.6	hu	1	Ti	parositva	1	G4771	alacsony
+Jas.2.6	hu	2	pedig	parositva	2	G1161	alacsony
+Jas.2.6	hu	3	meggyaláztátok	parositva	3	G0818	alacsony
+Jas.2.6	hu	4	a	betoldas			alacsony
+Jas.2.6	hu	5	szegényt	parositva	5	G4434	alacsony
+Jas.2.6	hu	6	Avagy	betoldas			alacsony
+Jas.2.6	hu	7	nem	parositva	6	G3756	alacsony
+Jas.2.6	hu	8	a	betoldas			alacsony
+Jas.2.6	hu	9	gazdagok	parositva	8	G4145	alacsony
+Jas.2.6	hu	10	hatalmaskodnak	parositva	9	G2616	alacsony
+Jas.2.6	hu	11	é	betoldas			alacsony
+Jas.2.6	hu	12	rajtatok	parositva	10	G4771	alacsony
+Jas.2.6	hu	13	és	parositva	11	G2532	alacsony
+Jas.2.6	hu	14	nem	parositva	6	G3756	alacsony
+Jas.2.6	hu	15	ők	parositva	12	G0846	alacsony
+Jas.2.6	hu	16	hurczolnak	parositva	13	G1670	alacsony
+Jas.2.6	hu	17	é	betoldas			alacsony
+Jas.2.6	hu	18	titeket	parositva	14	G4771	alacsony
+Jas.2.6	hu	19	a	betoldas			alacsony
+Jas.2.6	hu	20	törvény	parositva	16	G2922	alacsony
+Jas.2.6	hu	21	elé	parositva	15	G1519	alacsony
+Jas.2.6	er	1		parositva	1	G4771	alacsony
+Jas.2.6	er	2		parositva	2	G1161	alacsony
+Jas.2.6	er	3		parositva	3	G0818	alacsony
+Jas.2.6	er	4		forditatlan		G3588	alacsony
+Jas.2.6	er	5		parositva	5	G4434	alacsony
+Jas.2.6	er	6		parositva	7,14	G3756	alacsony
+Jas.2.6	er	7		forditatlan		G3588	alacsony
+Jas.2.6	er	8		parositva	9	G4145	alacsony
+Jas.2.6	er	9		parositva	10	G2616	alacsony
+Jas.2.6	er	10		parositva	12	G4771	alacsony
+Jas.2.6	er	11		parositva	13	G2532	alacsony
+Jas.2.6	er	12		parositva	15	G0846	alacsony
+Jas.2.6	er	13		parositva	16	G1670	alacsony
+Jas.2.6	er	14		parositva	18	G4771	alacsony
+Jas.2.6	er	15		parositva	21	G1519	alacsony
+Jas.2.6	er	16		parositva	20	G2922	alacsony
+Jas.2.7	hu	1	Nem	parositva	1	G3756	alacsony
+Jas.2.7	hu	2	ők	parositva	2	G0846	alacsony
+Jas.2.7	hu	3	káromolják	parositva	3	G0987	alacsony
+Jas.2.7	hu	4	é	betoldas			alacsony
+Jas.2.7	hu	5	azt	betoldas			alacsony
+Jas.2.7	hu	6	a	betoldas			alacsony
+Jas.2.7	hu	7	szép	parositva	5	G2570	alacsony
+Jas.2.7	hu	8	nevet	parositva	6	G3686	alacsony
+Jas.2.7	hu	9	a	parositva	7	G3588	alacsony
+Jas.2.7	hu	10	melyről	parositva	7,9	G3588+G1909	alacsony
+Jas.2.7	hu	11	neveztettek	parositva	8,10	G1941+G4771	alacsony
+Jas.2.7	er	1		parositva	1	G3756	alacsony
+Jas.2.7	er	2		parositva	2	G0846	alacsony
+Jas.2.7	er	3		parositva	3	G0987	alacsony
+Jas.2.7	er	4		forditatlan		G3588	alacsony
+Jas.2.7	er	5		parositva	7	G2570	alacsony
+Jas.2.7	er	6		parositva	8	G3686	alacsony
+Jas.2.7	er	7		parositva	9,10	G3588	alacsony
+Jas.2.7	er	8		parositva	11	G1941	alacsony
+Jas.2.7	er	9		parositva	10	G1909	alacsony
+Jas.2.7	er	10		parositva	11	G4771	alacsony
+Jas.2.8	hu	1	Ha	parositva	1	G1487	alacsony
+Jas.2.8	hu	2	ellenben	parositva	2	G3305	alacsony
+Jas.2.8	hu	3	megtartjátok	parositva	4	G5055	alacsony
+Jas.2.8	hu	4	a	betoldas			alacsony
+Jas.2.8	hu	5	királyi	parositva	5	G0937	alacsony
+Jas.2.8	hu	6	törvényt	parositva	3	G3551	alacsony
+Jas.2.8	hu	7	az	betoldas			alacsony
+Jas.2.8	hu	8	Írás	parositva	8	G1124	alacsony
+Jas.2.8	hu	9	szerint	parositva	6	G2596	alacsony
+Jas.2.8	hu	10	Szeressed	parositva	9	G0025	alacsony
+Jas.2.8	hu	11	felebarátodat	parositva	11,12	G4139+G4771	alacsony
+Jas.2.8	hu	12	mint	parositva	13	G5613	alacsony
+Jas.2.8	hu	13	tenmagadat	parositva	14	G4771	alacsony
+Jas.2.8	hu	14	jól	parositva	15	G2573	alacsony
+Jas.2.8	hu	15	cselekesztek	parositva	16	G4160	alacsony
+Jas.2.8	er	1		parositva	1	G1487	alacsony
+Jas.2.8	er	2		parositva	2	G3305	alacsony
+Jas.2.8	er	3		parositva	6	G3551	alacsony
+Jas.2.8	er	4		parositva	3	G5055	alacsony
+Jas.2.8	er	5		parositva	5	G0937	alacsony
+Jas.2.8	er	6		parositva	9	G2596	alacsony
+Jas.2.8	er	7		forditatlan		G3588	alacsony
+Jas.2.8	er	8		parositva	8	G1124	alacsony
+Jas.2.8	er	9		parositva	10	G0025	alacsony
+Jas.2.8	er	10		forditatlan		G3588	alacsony
+Jas.2.8	er	11		parositva	11	G4139	alacsony
+Jas.2.8	er	12		parositva	11	G4771	alacsony
+Jas.2.8	er	13		parositva	12	G5613	alacsony
+Jas.2.8	er	14		parositva	13	G4771	alacsony
+Jas.2.8	er	15		parositva	14	G2573	alacsony
+Jas.2.8	er	16		parositva	15	G4160	alacsony
+Jas.2.9	hu	1	De	parositva	2	G1161	alacsony
+Jas.2.9	hu	2	ha	parositva	1	G1487	alacsony
+Jas.2.9	hu	3	személyválogatók	parositva	3	G4380	alacsony
+Jas.2.9	hu	4	vagytok	parositva	3	G4380	alacsony
+Jas.2.9	hu	5	vétkeztek	parositva	4,5	G0266+G2038	alacsony
+Jas.2.9	hu	6	elmarasztaltatva	parositva	6	G1651	alacsony
+Jas.2.9	hu	7	a	betoldas			alacsony
+Jas.2.9	hu	8	törvény	parositva	9	G3551	alacsony
+Jas.2.9	hu	9	által	parositva	7	G5259	alacsony
+Jas.2.9	hu	10	mint	parositva	10	G5613	alacsony
+Jas.2.9	hu	11	annak	betoldas			alacsony
+Jas.2.9	hu	12	megrontói	parositva	11	G3848	alacsony
+Jas.2.9	er	1		parositva	2	G1487	alacsony
+Jas.2.9	er	2		parositva	1	G1161	alacsony
+Jas.2.9	er	3		parositva	3,4	G4380	alacsony
+Jas.2.9	er	4		parositva	5	G0266	alacsony
+Jas.2.9	er	5		parositva	5	G2038	alacsony
+Jas.2.9	er	6		parositva	6	G1651	alacsony
+Jas.2.9	er	7		parositva	9	G5259	alacsony
+Jas.2.9	er	8		forditatlan		G3588	alacsony
+Jas.2.9	er	9		parositva	8	G3551	alacsony
+Jas.2.9	er	10		parositva	10	G5613	alacsony
+Jas.2.9	er	11		parositva	12	G3848	alacsony
+Jas.2.10	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.2.10	hu	2	ha	parositva	1	G3748	alacsony
+Jas.2.10	hu	3	valaki	parositva	1	G3748	alacsony
+Jas.2.10	hu	4	az	betoldas			alacsony
+Jas.2.10	hu	5	egész	parositva	3	G3650	alacsony
+Jas.2.10	hu	6	törvényt	parositva	5	G3551	alacsony
+Jas.2.10	hu	7	megtartja	betoldas			alacsony
+Jas.2.10	hu	8	is	betoldas			alacsony
+Jas.2.10	hu	9	de	parositva	8	G1161	alacsony
+Jas.2.10	hu	10	vét	betoldas			alacsony
+Jas.2.10	hu	11	egy	parositva	10	G1520	alacsony
+Jas.2.10	hu	12	ellen	parositva	9	G1722	alacsony
+Jas.2.10	hu	13	az	betoldas			alacsony
+Jas.2.10	hu	14	egésznek	parositva	12	G3956	alacsony
+Jas.2.10	hu	15	megrontásában	betoldas			alacsony
+Jas.2.10	hu	16	bűnös	parositva	11,13	G1096+G1777	alacsony
+Jas.2.10	er	1		parositva	2,3	G3748	alacsony
+Jas.2.10	er	2		parositva	1	G1063	alacsony
+Jas.2.10	er	3		parositva	5	G3650	alacsony
+Jas.2.10	er	4		forditatlan		G3588	alacsony
+Jas.2.10	er	5		parositva	6	G3551	alacsony
+Jas.2.10	er	6		forditatlan		G5083	alacsony
+Jas.2.10	er	7		forditatlan		G4417	alacsony
+Jas.2.10	er	8		parositva	9	G1161	alacsony
+Jas.2.10	er	9		parositva	12	G1722	alacsony
+Jas.2.10	er	10		parositva	11	G1520	alacsony
+Jas.2.10	er	11		parositva	16	G1096	alacsony
+Jas.2.10	er	12		parositva	14	G3956	alacsony
+Jas.2.10	er	13		parositva	16	G1777	alacsony
+Jas.2.11	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.2.11	hu	2	a	parositva	1	G3588	alacsony
+Jas.2.11	hu	3	ki	parositva	1	G3588	alacsony
+Jas.2.11	hu	4	ezt	betoldas			alacsony
+Jas.2.11	hu	5	mondotta	parositva	3	G2036	alacsony
+Jas.2.11	hu	6	Ne	parositva	4	G3361	alacsony
+Jas.2.11	hu	7	paráználkodjál	parositva	5	G3431	alacsony
+Jas.2.11	hu	8	ezt	betoldas			alacsony
+Jas.2.11	hu	9	is	parositva	7	G2532	alacsony
+Jas.2.11	hu	10	mondotta	parositva	6	G2036	alacsony
+Jas.2.11	hu	11	Ne	parositva	8	G3361	alacsony
+Jas.2.11	hu	12	ölj	parositva	9	G5407	alacsony
+Jas.2.11	hu	13	És	parositva	11	G1161	alacsony
+Jas.2.11	hu	14	ha	parositva	10	G1487	alacsony
+Jas.2.11	hu	15	nem	parositva	12	G3756	alacsony
+Jas.2.11	hu	16	paráználkodol	betoldas			alacsony
+Jas.2.11	hu	17	de	parositva	15	G1161	alacsony
+Jas.2.11	hu	18	ölsz	betoldas			alacsony
+Jas.2.11	hu	19	törvényszegővé	parositva	17,18	G3848+G3551	alacsony
+Jas.2.11	hu	20	lettél	parositva	16	G1096	alacsony
+Jas.2.11	er	1		parositva	2,3	G3588	alacsony
+Jas.2.11	er	2		parositva	1	G1063	alacsony
+Jas.2.11	er	3		parositva	5	G2036	alacsony
+Jas.2.11	er	4		parositva	6	G3361	alacsony
+Jas.2.11	er	5		parositva	7	G3431	alacsony
+Jas.2.11	er	6		parositva	10	G2036	alacsony
+Jas.2.11	er	7		parositva	9	G2532	alacsony
+Jas.2.11	er	8		parositva	11	G3361	alacsony
+Jas.2.11	er	9		parositva	12	G5407	alacsony
+Jas.2.11	er	10		parositva	14	G1487	alacsony
+Jas.2.11	er	11		parositva	13	G1161	alacsony
+Jas.2.11	er	12		parositva	15	G3756	alacsony
+Jas.2.11	er	13		forditatlan		G3431	alacsony
+Jas.2.11	er	14		forditatlan		G5407	alacsony
+Jas.2.11	er	15		parositva	17	G1161	alacsony
+Jas.2.11	er	16		parositva	20	G1096	alacsony
+Jas.2.11	er	17		parositva	19	G3848	alacsony
+Jas.2.11	er	18		parositva	19	G3551	alacsony
+Jas.2.12	hu	1	Úgy	parositva	1	G3779	alacsony
+Jas.2.12	hu	2	szóljatok	parositva	2	G2980	alacsony
+Jas.2.12	hu	3	és	parositva	3	G2532	alacsony
+Jas.2.12	hu	4	úgy	parositva	4	G3779	alacsony
+Jas.2.12	hu	5	cselekedjetek	parositva	5	G4160	alacsony
+Jas.2.12	hu	6	mint	parositva	6	G5613	alacsony
+Jas.2.12	hu	7	a	betoldas			alacsony
+Jas.2.12	hu	8	kiket	betoldas			alacsony
+Jas.2.12	hu	9	a	betoldas			alacsony
+Jas.2.12	hu	10	szabadság	parositva	9	G1657	alacsony
+Jas.2.12	hu	11	törvénye	parositva	7,8	G1223+G3551	alacsony
+Jas.2.12	hu	12	fog	parositva	10	G3195	alacsony
+Jas.2.12	hu	13	megítélni	parositva	11	G2919	alacsony
+Jas.2.12	er	1		parositva	1	G3779	alacsony
+Jas.2.12	er	2		parositva	2	G2980	alacsony
+Jas.2.12	er	3		parositva	3	G2532	alacsony
+Jas.2.12	er	4		parositva	4	G3779	alacsony
+Jas.2.12	er	5		parositva	5	G4160	alacsony
+Jas.2.12	er	6		parositva	6	G5613	alacsony
+Jas.2.12	er	7		parositva	11	G1223	alacsony
+Jas.2.12	er	8		parositva	11	G3551	alacsony
+Jas.2.12	er	9		parositva	10	G1657	alacsony
+Jas.2.12	er	10		parositva	12	G3195	alacsony
+Jas.2.12	er	11		parositva	13	G2919	alacsony
+Jas.2.13	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.2.13	hu	2	az	betoldas			alacsony
+Jas.2.13	hu	3	ítélet	parositva	3	G2920	alacsony
+Jas.2.13	hu	4	irgalmatlan	parositva	4	G0448	alacsony
+Jas.2.13	hu	5	az	parositva	5	G3588	alacsony
+Jas.2.13	hu	6	iránt	parositva	5	G3588	alacsony
+Jas.2.13	hu	7	a	betoldas			alacsony
+Jas.2.13	hu	8	ki	betoldas			alacsony
+Jas.2.13	hu	9	nem	parositva	6	G3361	alacsony
+Jas.2.13	hu	10	cselekszik	parositva	7	G4160	alacsony
+Jas.2.13	hu	11	irgalmasságot	parositva	8	G1656	alacsony
+Jas.2.13	hu	12	és	parositva	9	G2532	alacsony
+Jas.2.13	hu	13	dicsekedik	parositva	10	G2620	alacsony
+Jas.2.13	hu	14	az	betoldas			alacsony
+Jas.2.13	hu	15	irgalmasság	parositva	11	G1656	alacsony
+Jas.2.13	hu	16	az	betoldas			alacsony
+Jas.2.13	hu	17	ítélet	parositva	12	G2920	alacsony
+Jas.2.13	hu	18	ellen	parositva	10	G2620	alacsony
+Jas.2.13	er	1		forditatlan		G3588	alacsony
+Jas.2.13	er	2		parositva	1	G1063	alacsony
+Jas.2.13	er	3		parositva	3	G2920	alacsony
+Jas.2.13	er	4		parositva	4	G0448	alacsony
+Jas.2.13	er	5		parositva	5,6	G3588	alacsony
+Jas.2.13	er	6		parositva	9	G3361	alacsony
+Jas.2.13	er	7		parositva	10	G4160	alacsony
+Jas.2.13	er	8		parositva	11	G1656	alacsony
+Jas.2.13	er	9		parositva	12	G2532	alacsony
+Jas.2.13	er	10		parositva	13,18	G2620	alacsony
+Jas.2.13	er	11		parositva	15	G1656	alacsony
+Jas.2.13	er	12		parositva	17	G2920	alacsony
+Jas.2.14	hu	1	Mi	parositva	1	G5101	alacsony
+Jas.2.14	hu	2	a	betoldas			alacsony
+Jas.2.14	hu	3	haszna	parositva	3	G3786	alacsony
+Jas.2.14	hu	4	atyámfiai	parositva	4,5	G0080+G3165	alacsony
+Jas.2.14	hu	5	ha	parositva	6	G1437	alacsony
+Jas.2.14	hu	6	valaki	parositva	9	G5100	alacsony
+Jas.2.14	hu	7	azt	betoldas			alacsony
+Jas.2.14	hu	8	mondja	parositva	8	G3004	alacsony
+Jas.2.14	hu	9	hogy	betoldas			alacsony
+Jas.2.14	hu	10	hite	parositva	7	G4102	alacsony
+Jas.2.14	hu	11	van	parositva	10	G2192	alacsony
+Jas.2.14	hu	12	cselekedetei	parositva	11	G2041	alacsony
+Jas.2.14	hu	13	pedig	parositva	12	G1161	alacsony
+Jas.2.14	hu	14	nincsenek	parositva	13,14	G3361+G2192	alacsony
+Jas.2.14	hu	15	Avagy	parositva	15	G3361	alacsony
+Jas.2.14	hu	16	megtarthatja	parositva	16,19	G1410+G4982	alacsony
+Jas.2.14	hu	17	é	parositva	15	G3361	alacsony
+Jas.2.14	hu	18	őt	parositva	20	G0846	alacsony
+Jas.2.14	hu	19	a	betoldas			alacsony
+Jas.2.14	hu	20	hit	parositva	18	G4102	alacsony
+Jas.2.14	er	1		parositva	1	G5101	alacsony
+Jas.2.14	er	2		forditatlan		G3588	alacsony
+Jas.2.14	er	3		parositva	3	G3786	alacsony
+Jas.2.14	er	4		parositva	4	G0080	alacsony
+Jas.2.14	er	5		parositva	4	G3165	alacsony
+Jas.2.14	er	6		parositva	5	G1437	alacsony
+Jas.2.14	er	7		parositva	10	G4102	alacsony
+Jas.2.14	er	8		parositva	8	G3004	alacsony
+Jas.2.14	er	9		parositva	6	G5100	alacsony
+Jas.2.14	er	10		parositva	11	G2192	alacsony
+Jas.2.14	er	11		parositva	12	G2041	alacsony
+Jas.2.14	er	12		parositva	13	G1161	alacsony
+Jas.2.14	er	13		parositva	14	G3361	alacsony
+Jas.2.14	er	14		parositva	14	G2192	alacsony
+Jas.2.14	er	15		parositva	15,17	G3361	alacsony
+Jas.2.14	er	16		parositva	16	G1410	alacsony
+Jas.2.14	er	17		forditatlan		G3588	alacsony
+Jas.2.14	er	18		parositva	20	G4102	alacsony
+Jas.2.14	er	19		parositva	16	G4982	alacsony
+Jas.2.14	er	20		parositva	18	G0846	alacsony
+Jas.2.15	hu	1	Ha	parositva	1	G1437	alacsony
+Jas.2.15	hu	2	pedig	parositva	2	G1161	alacsony
+Jas.2.15	hu	3	az	betoldas			alacsony
+Jas.2.15	hu	4	atyafiak	parositva	3	G0080	alacsony
+Jas.2.15	hu	5	férfiak	parositva	3	G0080	alacsony
+Jas.2.15	hu	6	vagy	parositva	4	G2228	alacsony
+Jas.2.15	hu	7	nők	parositva	5	G0079	alacsony
+Jas.2.15	hu	8	mezítelenek	parositva	6,7	G1131+G5225	alacsony
+Jas.2.15	hu	9	és	parositva	8	G2532	alacsony
+Jas.2.15	hu	10	szűkölködnek	parositva	9,10	G3007+G1510	alacsony
+Jas.2.15	hu	11	mindennapi	parositva	12	G2184	alacsony
+Jas.2.15	hu	12	eledel	parositva	13	G5160	alacsony
+Jas.2.15	hu	13	nélkül	parositva	9	G3007	alacsony
+Jas.2.15	er	1		parositva	1	G1437	alacsony
+Jas.2.15	er	2		parositva	2	G1161	alacsony
+Jas.2.15	er	3		parositva	4,5	G0080	alacsony
+Jas.2.15	er	4		parositva	6	G2228	alacsony
+Jas.2.15	er	5		parositva	7	G0079	alacsony
+Jas.2.15	er	6		parositva	8	G1131	alacsony
+Jas.2.15	er	7		parositva	8	G5225	alacsony
+Jas.2.15	er	8		parositva	9	G2532	alacsony
+Jas.2.15	er	9		parositva	10,13	G3007	alacsony
+Jas.2.15	er	10		parositva	10	G1510	alacsony
+Jas.2.15	er	11		forditatlan		G3588	alacsony
+Jas.2.15	er	12		parositva	11	G2184	alacsony
+Jas.2.15	er	13		parositva	12	G5160	alacsony
+Jas.2.16	hu	1	És	parositva	2	G1161	alacsony
+Jas.2.16	hu	2	azt	betoldas			alacsony
+Jas.2.16	hu	3	mondja	parositva	1	G2036	alacsony
+Jas.2.16	hu	4	nékik	parositva	4	G0846	alacsony
+Jas.2.16	hu	5	valaki	parositva	3	G5100	alacsony
+Jas.2.16	hu	6	ti	parositva	6	G4771	alacsony
+Jas.2.16	hu	7	közületek	parositva	5,6	G1537+G4771	alacsony
+Jas.2.16	hu	8	Menjetek	parositva	7	G5217	alacsony
+Jas.2.16	hu	9	el	parositva	7	G5217	alacsony
+Jas.2.16	hu	10	békességgel	parositva	8,9	G1722+G1515	alacsony
+Jas.2.16	hu	11	melegedjetek	parositva	10	G2328	alacsony
+Jas.2.16	hu	12	meg	parositva	10	G2328	alacsony
+Jas.2.16	hu	13	és	parositva	11	G2532	alacsony
+Jas.2.16	hu	14	lakjatok	parositva	12	G5526	alacsony
+Jas.2.16	hu	15	jól	parositva	12	G5526	alacsony
+Jas.2.16	hu	16	de	parositva	15	G1161	alacsony
+Jas.2.16	hu	17	nem	parositva	13	G3361	alacsony
+Jas.2.16	hu	18	adjátok	parositva	14	G1325	alacsony
+Jas.2.16	hu	19	meg	parositva	14	G1325	alacsony
+Jas.2.16	hu	20	nékik	parositva	16	G0846	alacsony
+Jas.2.16	hu	21	a	betoldas			alacsony
+Jas.2.16	hu	22	mikre	parositva	18	G2006	alacsony
+Jas.2.16	hu	23	szüksége	parositva	18	G2006	alacsony
+Jas.2.16	hu	24	van	betoldas			alacsony
+Jas.2.16	hu	25	a	betoldas			alacsony
+Jas.2.16	hu	26	testnek	parositva	19,20	G3588+G4983	alacsony
+Jas.2.16	hu	27	mi	parositva	21	G5101	alacsony
+Jas.2.16	hu	28	annak	betoldas			alacsony
+Jas.2.16	hu	29	a	betoldas			alacsony
+Jas.2.16	hu	30	haszna	parositva	23	G3786	alacsony
+Jas.2.16	er	1		parositva	3	G2036	alacsony
+Jas.2.16	er	2		parositva	1	G1161	alacsony
+Jas.2.16	er	3		parositva	5	G5100	alacsony
+Jas.2.16	er	4		parositva	4	G0846	alacsony
+Jas.2.16	er	5		parositva	7	G1537	alacsony
+Jas.2.16	er	6		parositva	6,7	G4771	alacsony
+Jas.2.16	er	7		parositva	8,9	G5217	alacsony
+Jas.2.16	er	8		parositva	10	G1722	alacsony
+Jas.2.16	er	9		parositva	10	G1515	alacsony
+Jas.2.16	er	10		parositva	11,12	G2328	alacsony
+Jas.2.16	er	11		parositva	13	G2532	alacsony
+Jas.2.16	er	12		parositva	14,15	G5526	alacsony
+Jas.2.16	er	13		parositva	17	G3361	alacsony
+Jas.2.16	er	14		parositva	18,19	G1325	alacsony
+Jas.2.16	er	15		parositva	16	G1161	alacsony
+Jas.2.16	er	16		parositva	20	G0846	alacsony
+Jas.2.16	er	17		forditatlan		G3588	alacsony
+Jas.2.16	er	18		parositva	22,23	G2006	alacsony
+Jas.2.16	er	19		parositva	26	G3588	alacsony
+Jas.2.16	er	20		parositva	26	G4983	alacsony
+Jas.2.16	er	21		parositva	27	G5101	alacsony
+Jas.2.16	er	22		forditatlan		G3588	alacsony
+Jas.2.16	er	23		parositva	30	G3786	alacsony
+Jas.2.17	hu	1	Azonképen	parositva	1	G3779	alacsony
+Jas.2.17	hu	2	a	betoldas			alacsony
+Jas.2.17	hu	3	hit	parositva	4	G4102	alacsony
+Jas.2.17	hu	4	is	parositva	2	G2532	alacsony
+Jas.2.17	hu	5	ha	parositva	5	G1437	alacsony
+Jas.2.17	hu	6	cselekedetei	parositva	8	G2041	alacsony
+Jas.2.17	hu	7	nincsenek	parositva	6,7	G3361+G2192	alacsony
+Jas.2.17	hu	8	megholt	parositva	9,10	G3498+G1510	alacsony
+Jas.2.17	hu	9	ő	parositva	12	G1438	alacsony
+Jas.2.17	hu	10	magában	parositva	11,12	G2596+G1438	alacsony
+Jas.2.17	er	1		parositva	1	G3779	alacsony
+Jas.2.17	er	2		parositva	4	G2532	alacsony
+Jas.2.17	er	3		forditatlan		G3588	alacsony
+Jas.2.17	er	4		parositva	3	G4102	alacsony
+Jas.2.17	er	5		parositva	5	G1437	alacsony
+Jas.2.17	er	6		parositva	7	G3361	alacsony
+Jas.2.17	er	7		parositva	7	G2192	alacsony
+Jas.2.17	er	8		parositva	6	G2041	alacsony
+Jas.2.17	er	9		parositva	8	G3498	alacsony
+Jas.2.17	er	10		parositva	8	G1510	alacsony
+Jas.2.17	er	11		parositva	10	G2596	alacsony
+Jas.2.17	er	12		parositva	9,10	G1438	alacsony
+Jas.2.18	hu	1	De	parositva	1	G0235	alacsony
+Jas.2.18	hu	2	mondhatja	parositva	2	G4483	alacsony
+Jas.2.18	hu	3	valaki	parositva	3	G5100	alacsony
+Jas.2.18	hu	4	Néked	parositva	4	G4771	alacsony
+Jas.2.18	hu	5	hited	parositva	5	G4102	alacsony
+Jas.2.18	hu	6	van	parositva	6	G2192	alacsony
+Jas.2.18	hu	7	nékem	parositva	7	G2532+G1473	alacsony
+Jas.2.18	hu	8	pedig	parositva	7	G2532+G1473	alacsony
+Jas.2.18	hu	9	cselekedeteim	parositva	8	G2041	alacsony
+Jas.2.18	hu	10	vannak	parositva	9	G2192	alacsony
+Jas.2.18	hu	11	Mutasd	parositva	10	G1166	alacsony
+Jas.2.18	hu	12	meg	parositva	10	G1166	alacsony
+Jas.2.18	hu	13	nékem	parositva	11	G3165	alacsony
+Jas.2.18	hu	14	a	betoldas			alacsony
+Jas.2.18	hu	15	te	parositva	14	G4771	alacsony
+Jas.2.18	hu	16	hitedet	parositva	13,14	G4102+G4771	alacsony
+Jas.2.18	hu	17	a	betoldas			alacsony
+Jas.2.18	hu	18	te	parositva	18	G4771	alacsony
+Jas.2.18	hu	19	cselekedeteidből	parositva	17,18	G2041+G4771	alacsony
+Jas.2.18	hu	20	és	parositva	19	G2532+G1473	alacsony
+Jas.2.18	hu	21	én	parositva	19	G2532+G1473	alacsony
+Jas.2.18	hu	22	meg	parositva	21	G1166	alacsony
+Jas.2.18	hu	23	fogom	betoldas			alacsony
+Jas.2.18	hu	24	néked	parositva	20	G4771	alacsony
+Jas.2.18	hu	25	mutatni	parositva	21	G1166	alacsony
+Jas.2.18	hu	26	az	betoldas			alacsony
+Jas.2.18	hu	27	én	parositva	25	G3165	alacsony
+Jas.2.18	hu	28	cselekedeteimből	parositva	22,24,25	G1537+G2041+G3165	alacsony
+Jas.2.18	hu	29	az	betoldas			alacsony
+Jas.2.18	hu	30	én	parositva	28	G3165	alacsony
+Jas.2.18	hu	31	hitemet	parositva	27,28	G4102+G3165	alacsony
+Jas.2.18	er	1		parositva	1	G0235	alacsony
+Jas.2.18	er	2		parositva	2	G4483	alacsony
+Jas.2.18	er	3		parositva	3	G5100	alacsony
+Jas.2.18	er	4		parositva	4	G4771	alacsony
+Jas.2.18	er	5		parositva	5	G4102	alacsony
+Jas.2.18	er	6		parositva	6	G2192	alacsony
+Jas.2.18	er	7		parositva	7,8	G2532+G1473	alacsony
+Jas.2.18	er	8		parositva	9	G2041	alacsony
+Jas.2.18	er	9		parositva	10	G2192	alacsony
+Jas.2.18	er	10		parositva	11,12	G1166	alacsony
+Jas.2.18	er	11		parositva	13	G3165	alacsony
+Jas.2.18	er	12		forditatlan		G3588	alacsony
+Jas.2.18	er	13		parositva	16	G4102	alacsony
+Jas.2.18	er	14		parositva	15,16	G4771	alacsony
+Jas.2.18	er	15		forditatlan		G5565	alacsony
+Jas.2.18	er	16		forditatlan		G3588	alacsony
+Jas.2.18	er	17		parositva	19	G2041	alacsony
+Jas.2.18	er	18		parositva	18,19	G4771	alacsony
+Jas.2.18	er	19		parositva	20,21	G2532+G1473	alacsony
+Jas.2.18	er	20		parositva	24	G4771	alacsony
+Jas.2.18	er	21		parositva	22,25	G1166	alacsony
+Jas.2.18	er	22		parositva	28	G1537	alacsony
+Jas.2.18	er	23		forditatlan		G3588	alacsony
+Jas.2.18	er	24		parositva	28	G2041	alacsony
+Jas.2.18	er	25		parositva	27,28	G3165	alacsony
+Jas.2.18	er	26		forditatlan		G3588	alacsony
+Jas.2.18	er	27		parositva	31	G4102	alacsony
+Jas.2.18	er	28		parositva	30,31	G3165	alacsony
+Jas.2.19	hu	1	Te	parositva	1	G4771	alacsony
+Jas.2.19	hu	2	hiszed	parositva	2	G4100	alacsony
+Jas.2.19	hu	3	hogy	parositva	3	G3754	alacsony
+Jas.2.19	hu	4	az	betoldas			alacsony
+Jas.2.19	hu	5	Isten	parositva	7	G2316	alacsony
+Jas.2.19	hu	6	egy	parositva	4,5	G1520+G1510	alacsony
+Jas.2.19	hu	7	Jól	parositva	8	G2573	alacsony
+Jas.2.19	hu	8	teszed	parositva	9	G4160	alacsony
+Jas.2.19	hu	9	Az	betoldas			alacsony
+Jas.2.19	hu	10	ördögök	parositva	12	G1140	alacsony
+Jas.2.19	hu	11	is	parositva	10	G2532	alacsony
+Jas.2.19	hu	12	hiszik	parositva	13	G4100	alacsony
+Jas.2.19	hu	13	és	parositva	14	G2532	alacsony
+Jas.2.19	hu	14	rettegnek	parositva	15	G5425	alacsony
+Jas.2.19	er	1		parositva	1	G4771	alacsony
+Jas.2.19	er	2		parositva	2	G4100	alacsony
+Jas.2.19	er	3		parositva	3	G3754	alacsony
+Jas.2.19	er	4		parositva	6	G1520	alacsony
+Jas.2.19	er	5		parositva	6	G1510	alacsony
+Jas.2.19	er	6		forditatlan		G3588	alacsony
+Jas.2.19	er	7		parositva	5	G2316	alacsony
+Jas.2.19	er	8		parositva	7	G2573	alacsony
+Jas.2.19	er	9		parositva	8	G4160	alacsony
+Jas.2.19	er	10		parositva	11	G2532	alacsony
+Jas.2.19	er	11		forditatlan		G3588	alacsony
+Jas.2.19	er	12		parositva	10	G1140	alacsony
+Jas.2.19	er	13		parositva	12	G4100	alacsony
+Jas.2.19	er	14		parositva	13	G2532	alacsony
+Jas.2.19	er	15		parositva	14	G5425	alacsony
+Jas.2.20	hu	1	Akarod	parositva	1	G2309	alacsony
+Jas.2.20	hu	2	é	betoldas			alacsony
+Jas.2.20	hu	3	pedig	parositva	2	G1161	alacsony
+Jas.2.20	hu	4	tudni	parositva	3	G1097	alacsony
+Jas.2.20	hu	5	te	parositva	4	G5599	alacsony
+Jas.2.20	hu	6	hiábavaló	parositva	6	G2756	alacsony
+Jas.2.20	hu	7	ember	parositva	5	G0444	alacsony
+Jas.2.20	hu	8	hogy	parositva	7	G3754	alacsony
+Jas.2.20	hu	9	a	betoldas			alacsony
+Jas.2.20	hu	10	hit	parositva	9	G4102	alacsony
+Jas.2.20	hu	11	cselekedetek	parositva	12	G2041	alacsony
+Jas.2.20	hu	12	nélkül	parositva	10	G5565	alacsony
+Jas.2.20	hu	13	megholt	parositva	13,14	G0692+G1510	alacsony
+Jas.2.20	er	1		parositva	1	G2309	alacsony
+Jas.2.20	er	2		parositva	3	G1161	alacsony
+Jas.2.20	er	3		parositva	4	G1097	alacsony
+Jas.2.20	er	4		parositva	5	G5599	alacsony
+Jas.2.20	er	5		parositva	7	G0444	alacsony
+Jas.2.20	er	6		parositva	6	G2756	alacsony
+Jas.2.20	er	7		parositva	8	G3754	alacsony
+Jas.2.20	er	8		forditatlan		G3588	alacsony
+Jas.2.20	er	9		parositva	10	G4102	alacsony
+Jas.2.20	er	10		parositva	12	G5565	alacsony
+Jas.2.20	er	11		forditatlan		G3588	alacsony
+Jas.2.20	er	12		parositva	11	G2041	alacsony
+Jas.2.20	er	13		parositva	13	G0692	alacsony
+Jas.2.20	er	14		parositva	13	G1510	alacsony
+Jas.2.21	hu	1	Avagy	betoldas			alacsony
+Jas.2.21	hu	2	Ábrahám	parositva	1	G0011	alacsony
+Jas.2.21	hu	3	a	betoldas			alacsony
+Jas.2.21	hu	4	mi	parositva	4	G3165	alacsony
+Jas.2.21	hu	5	atyánk	parositva	3,4	G3962+G3165	alacsony
+Jas.2.21	hu	6	nem	parositva	5	G3756	alacsony
+Jas.2.21	hu	7	cselekedetekből	parositva	6,7	G1537+G2041	alacsony
+Jas.2.21	hu	8	igazíttatott	parositva	8	G1344	alacsony
+Jas.2.21	hu	9	é	betoldas			alacsony
+Jas.2.21	hu	10	meg	parositva	8	G1344	alacsony
+Jas.2.21	hu	11	felvivén	parositva	9	G0399	alacsony
+Jas.2.21	hu	12	Izsákot	parositva	10	G2464	alacsony
+Jas.2.21	hu	13	az	betoldas			alacsony
+Jas.2.21	hu	14	ő	parositva	13	G0846	alacsony
+Jas.2.21	hu	15	fiát	parositva	12,13	G5207+G0846	alacsony
+Jas.2.21	hu	16	az	betoldas			alacsony
+Jas.2.21	hu	17	oltárra	parositva	14,16	G1909+G2379	alacsony
+Jas.2.21	er	1		parositva	2	G0011	alacsony
+Jas.2.21	er	2		forditatlan		G3588	alacsony
+Jas.2.21	er	3		parositva	5	G3962	alacsony
+Jas.2.21	er	4		parositva	4,5	G3165	alacsony
+Jas.2.21	er	5		parositva	6	G3756	alacsony
+Jas.2.21	er	6		parositva	7	G1537	alacsony
+Jas.2.21	er	7		parositva	7	G2041	alacsony
+Jas.2.21	er	8		parositva	8,10	G1344	alacsony
+Jas.2.21	er	9		parositva	11	G0399	alacsony
+Jas.2.21	er	10		parositva	12	G2464	alacsony
+Jas.2.21	er	11		forditatlan		G3588	alacsony
+Jas.2.21	er	12		parositva	15	G5207	alacsony
+Jas.2.21	er	13		parositva	14,15	G0846	alacsony
+Jas.2.21	er	14		parositva	17	G1909	alacsony
+Jas.2.21	er	15		forditatlan		G3588	alacsony
+Jas.2.21	er	16		parositva	17	G2379	alacsony
+Jas.2.22	hu	1	Látod	parositva	1	G0991	alacsony
+Jas.2.22	hu	2	hogy	parositva	2	G3754	alacsony
+Jas.2.22	hu	3	a	betoldas			alacsony
+Jas.2.22	hu	4	hit	parositva	4	G4102	alacsony
+Jas.2.22	hu	5	együtt	parositva	5	G4903	alacsony
+Jas.2.22	hu	6	munkálkodott	parositva	5	G4903	alacsony
+Jas.2.22	hu	7	az	betoldas			alacsony
+Jas.2.22	hu	8	ő	parositva	8	G0846	alacsony
+Jas.2.22	hu	9	cselekedeteivel	parositva	7,8	G2041+G0846	alacsony
+Jas.2.22	hu	10	és	parositva	9	G2532	alacsony
+Jas.2.22	hu	11	a	betoldas			alacsony
+Jas.2.22	hu	12	cselekedetekből	parositva	10,12	G1537+G2041	alacsony
+Jas.2.22	hu	13	lett	parositva	15	G5048	alacsony
+Jas.2.22	hu	14	teljessé	parositva	15	G5048	alacsony
+Jas.2.22	hu	15	a	betoldas			alacsony
+Jas.2.22	hu	16	hit	parositva	14	G4102	alacsony
+Jas.2.22	er	1		parositva	1	G0991	alacsony
+Jas.2.22	er	2		parositva	2	G3754	alacsony
+Jas.2.22	er	3		forditatlan		G3588	alacsony
+Jas.2.22	er	4		parositva	4	G4102	alacsony
+Jas.2.22	er	5		parositva	5,6	G4903	alacsony
+Jas.2.22	er	6		forditatlan		G3588	alacsony
+Jas.2.22	er	7		parositva	9	G2041	alacsony
+Jas.2.22	er	8		parositva	8,9	G0846	alacsony
+Jas.2.22	er	9		parositva	10	G2532	alacsony
+Jas.2.22	er	10		parositva	12	G1537	alacsony
+Jas.2.22	er	11		forditatlan		G3588	alacsony
+Jas.2.22	er	12		parositva	12	G2041	alacsony
+Jas.2.22	er	13		forditatlan		G3588	alacsony
+Jas.2.22	er	14		parositva	16	G4102	alacsony
+Jas.2.22	er	15		parositva	13,14	G5048	alacsony
+Jas.2.23	hu	1	És	parositva	1	G2532	alacsony
+Jas.2.23	hu	2	beteljesedett	parositva	2	G4137	alacsony
+Jas.2.23	hu	3	az	betoldas			alacsony
+Jas.2.23	hu	4	Írás	parositva	4	G1124	alacsony
+Jas.2.23	hu	5	a	parositva	5	G3588	alacsony
+Jas.2.23	hu	6	mely	parositva	5	G3588	alacsony
+Jas.2.23	hu	7	ezt	betoldas			alacsony
+Jas.2.23	hu	8	mondja	parositva	6	G3004	alacsony
+Jas.2.23	hu	9	Hitt	parositva	7	G4100	alacsony
+Jas.2.23	hu	10	pedig	parositva	8	G1161	alacsony
+Jas.2.23	hu	11	Ábrahám	parositva	9	G0011	alacsony
+Jas.2.23	hu	12	az	betoldas			alacsony
+Jas.2.23	hu	13	Istennek	parositva	11	G2316	alacsony
+Jas.2.23	hu	14	és	parositva	12	G2532	alacsony
+Jas.2.23	hu	15	tulajdoníttatott	parositva	13	G3049	alacsony
+Jas.2.23	hu	16	néki	parositva	14	G0846	alacsony
+Jas.2.23	hu	17	igazságul	parositva	15,16	G1519+G1343	alacsony
+Jas.2.23	hu	18	és	parositva	17	G2532	alacsony
+Jas.2.23	hu	19	Isten	parositva	19	G2316	alacsony
+Jas.2.23	hu	20	barátjának	parositva	18	G5384	alacsony
+Jas.2.23	hu	21	neveztetett	parositva	20	G2564	alacsony
+Jas.2.23	er	1		parositva	1	G2532	alacsony
+Jas.2.23	er	2		parositva	2	G4137	alacsony
+Jas.2.23	er	3		forditatlan		G3588	alacsony
+Jas.2.23	er	4		parositva	4	G1124	alacsony
+Jas.2.23	er	5		parositva	5,6	G3588	alacsony
+Jas.2.23	er	6		parositva	8	G3004	alacsony
+Jas.2.23	er	7		parositva	9	G4100	alacsony
+Jas.2.23	er	8		parositva	10	G1161	alacsony
+Jas.2.23	er	9		parositva	11	G0011	alacsony
+Jas.2.23	er	10		forditatlan		G3588	alacsony
+Jas.2.23	er	11		parositva	13	G2316	alacsony
+Jas.2.23	er	12		parositva	14	G2532	alacsony
+Jas.2.23	er	13		parositva	15	G3049	alacsony
+Jas.2.23	er	14		parositva	16	G0846	alacsony
+Jas.2.23	er	15		parositva	17	G1519	alacsony
+Jas.2.23	er	16		parositva	17	G1343	alacsony
+Jas.2.23	er	17		parositva	18	G2532	alacsony
+Jas.2.23	er	18		parositva	20	G5384	alacsony
+Jas.2.23	er	19		parositva	19	G2316	alacsony
+Jas.2.23	er	20		parositva	21	G2564	alacsony
+Jas.2.24	hu	1	Látjátok	parositva	1	G3708	alacsony
+Jas.2.24	hu	2	tehát	parositva	2	G5106	alacsony
+Jas.2.24	hu	3	hogy	parositva	3	G3754	alacsony
+Jas.2.24	hu	4	cselekedetekből	parositva	4,5	G1537+G2041	alacsony
+Jas.2.24	hu	5	igazul	parositva	6	G1344	alacsony
+Jas.2.24	hu	6	meg	parositva	6	G1344	alacsony
+Jas.2.24	hu	7	az	betoldas			alacsony
+Jas.2.24	hu	8	ember	parositva	7	G0444	alacsony
+Jas.2.24	hu	9	és	parositva	8	G2532	alacsony
+Jas.2.24	hu	10	nem	parositva	9	G3756	alacsony
+Jas.2.24	hu	11	csupán	parositva	12	G3441	alacsony
+Jas.2.24	hu	12	hitből	parositva	10,11	G1537+G4102	alacsony
+Jas.2.24	er	1		parositva	1	G3708	alacsony
+Jas.2.24	er	2		parositva	2	G5106	alacsony
+Jas.2.24	er	3		parositva	3	G3754	alacsony
+Jas.2.24	er	4		parositva	4	G1537	alacsony
+Jas.2.24	er	5		parositva	4	G2041	alacsony
+Jas.2.24	er	6		parositva	5,6	G1344	alacsony
+Jas.2.24	er	7		parositva	8	G0444	alacsony
+Jas.2.24	er	8		parositva	9	G2532	alacsony
+Jas.2.24	er	9		parositva	10	G3756	alacsony
+Jas.2.24	er	10		parositva	12	G1537	alacsony
+Jas.2.24	er	11		parositva	12	G4102	alacsony
+Jas.2.24	er	12		parositva	11	G3441	alacsony
+Jas.2.25	hu	1	Hasonlatosképen	parositva	1	G3668	alacsony
+Jas.2.25	hu	2	pedig	parositva	2	G1161	alacsony
+Jas.2.25	hu	3	a	betoldas			alacsony
+Jas.2.25	hu	4	tisztátalan	parositva	6	G4204	alacsony
+Jas.2.25	hu	5	Ráháb	parositva	4	G4460	alacsony
+Jas.2.25	hu	6	is	parositva	3	G2532	alacsony
+Jas.2.25	hu	7	avagy	betoldas			alacsony
+Jas.2.25	hu	8	nem	parositva	7	G3756	alacsony
+Jas.2.25	hu	9	cselekedetekből	parositva	8,9	G1537+G2041	alacsony
+Jas.2.25	hu	10	igazíttatott	parositva	10	G1344	alacsony
+Jas.2.25	hu	11	é	betoldas			alacsony
+Jas.2.25	hu	12	meg	parositva	10	G1344	alacsony
+Jas.2.25	hu	13	a	betoldas			alacsony
+Jas.2.25	hu	14	mikor	betoldas			alacsony
+Jas.2.25	hu	15	a	betoldas			alacsony
+Jas.2.25	hu	16	követeket	parositva	13	G0032	alacsony
+Jas.2.25	hu	17	házába	betoldas			alacsony
+Jas.2.25	hu	18	fogadta	parositva	11	G5264	alacsony
+Jas.2.25	hu	19	és	parositva	14	G2532	alacsony
+Jas.2.25	hu	20	más	parositva	15	G2087	alacsony
+Jas.2.25	hu	21	úton	parositva	16	G3598	alacsony
+Jas.2.25	hu	22	bocsátotta	parositva	17	G1544	alacsony
+Jas.2.25	hu	23	ki	parositva	17	G1544	alacsony
+Jas.2.25	er	1		parositva	1	G3668	alacsony
+Jas.2.25	er	2		parositva	2	G1161	alacsony
+Jas.2.25	er	3		parositva	6	G2532	alacsony
+Jas.2.25	er	4		parositva	5	G4460	alacsony
+Jas.2.25	er	5		forditatlan		G3588	alacsony
+Jas.2.25	er	6		parositva	4	G4204	alacsony
+Jas.2.25	er	7		parositva	8	G3756	alacsony
+Jas.2.25	er	8		parositva	9	G1537	alacsony
+Jas.2.25	er	9		parositva	9	G2041	alacsony
+Jas.2.25	er	10		parositva	10,12	G1344	alacsony
+Jas.2.25	er	11		parositva	18	G5264	alacsony
+Jas.2.25	er	12		forditatlan		G3588	alacsony
+Jas.2.25	er	13		parositva	16	G0032	alacsony
+Jas.2.25	er	14		parositva	19	G2532	alacsony
+Jas.2.25	er	15		parositva	20	G2087	alacsony
+Jas.2.25	er	16		parositva	21	G3598	alacsony
+Jas.2.25	er	17		parositva	22,23	G1544	alacsony
+Jas.2.26	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.2.26	hu	2	a	betoldas			alacsony
+Jas.2.26	hu	3	miképen	parositva	1	G5618	alacsony
+Jas.2.26	hu	4	holt	parositva	7,8	G3498+G1510	alacsony
+Jas.2.26	hu	5	a	betoldas			alacsony
+Jas.2.26	hu	6	test	parositva	4	G4983	alacsony
+Jas.2.26	hu	7	lélek	parositva	6	G4151	alacsony
+Jas.2.26	hu	8	nélkül	parositva	5	G5565	alacsony
+Jas.2.26	hu	9	akképen	parositva	9	G3779	alacsony
+Jas.2.26	hu	10	holt	parositva	16,17	G3498+G1510	alacsony
+Jas.2.26	hu	11	a	betoldas			alacsony
+Jas.2.26	hu	12	hit	parositva	12	G4102	alacsony
+Jas.2.26	hu	13	is	parositva	10	G2532	alacsony
+Jas.2.26	hu	14	cselekedetek	parositva	15	G2041	alacsony
+Jas.2.26	hu	15	nélkül	parositva	13	G5565	alacsony
+Jas.2.26	er	1		parositva	3	G5618	alacsony
+Jas.2.26	er	2		parositva	1	G1063	alacsony
+Jas.2.26	er	3		forditatlan		G3588	alacsony
+Jas.2.26	er	4		parositva	6	G4983	alacsony
+Jas.2.26	er	5		parositva	8	G5565	alacsony
+Jas.2.26	er	6		parositva	7	G4151	alacsony
+Jas.2.26	er	7		parositva	4	G3498	alacsony
+Jas.2.26	er	8		parositva	4	G1510	alacsony
+Jas.2.26	er	9		parositva	9	G3779	alacsony
+Jas.2.26	er	10		parositva	13	G2532	alacsony
+Jas.2.26	er	11		forditatlan		G3588	alacsony
+Jas.2.26	er	12		parositva	12	G4102	alacsony
+Jas.2.26	er	13		parositva	15	G5565	alacsony
+Jas.2.26	er	14		forditatlan		G3588	alacsony
+Jas.2.26	er	15		parositva	14	G2041	alacsony
+Jas.2.26	er	16		parositva	10	G3498	alacsony
+Jas.2.26	er	17		parositva	10	G1510	alacsony
+Jas.3.1	hu	1	Atyámfiai	parositva	5,6	G0080+G3165	alacsony
+Jas.3.1	hu	2	ne	parositva	1	G3361	alacsony
+Jas.3.1	hu	3	legyetek	parositva	4	G1096	alacsony
+Jas.3.1	hu	4	sokan	parositva	2	G4183	alacsony
+Jas.3.1	hu	5	tanítók	parositva	3	G1320	alacsony
+Jas.3.1	hu	6	tudván	parositva	7	G6063	alacsony
+Jas.3.1	hu	7	azt	betoldas			alacsony
+Jas.3.1	hu	8	hogy	parositva	8	G3754	alacsony
+Jas.3.1	hu	9	súlyosabb	parositva	9	G3173	alacsony
+Jas.3.1	hu	10	ítéletünk	parositva	10	G2917	alacsony
+Jas.3.1	hu	11	lészen	parositva	11	G2983	alacsony
+Jas.3.1	er	1		parositva	2	G3361	alacsony
+Jas.3.1	er	2		parositva	4	G4183	alacsony
+Jas.3.1	er	3		parositva	5	G1320	alacsony
+Jas.3.1	er	4		parositva	3	G1096	alacsony
+Jas.3.1	er	5		parositva	1	G0080	alacsony
+Jas.3.1	er	6		parositva	1	G3165	alacsony
+Jas.3.1	er	7		parositva	6	G6063	alacsony
+Jas.3.1	er	8		parositva	8	G3754	alacsony
+Jas.3.1	er	9		parositva	9	G3173	alacsony
+Jas.3.1	er	10		parositva	10	G2917	alacsony
+Jas.3.1	er	11		parositva	11	G2983	alacsony
+Jas.3.2	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.3.2	hu	2	mindnyájan	parositva	4	G0537	alacsony
+Jas.3.2	hu	3	sokképen	parositva	1	G4183	alacsony
+Jas.3.2	hu	4	vétkezünk	parositva	3	G4417	alacsony
+Jas.3.2	hu	5	Ha	parositva	5	G1487	alacsony
+Jas.3.2	hu	6	valaki	parositva	6	G5100	alacsony
+Jas.3.2	hu	7	beszédben	parositva	7,8	G1722+G3056	alacsony
+Jas.3.2	hu	8	nem	parositva	9	G3756	alacsony
+Jas.3.2	hu	9	vétkezik	parositva	10	G4417	alacsony
+Jas.3.2	hu	10	az	betoldas			alacsony
+Jas.3.2	hu	11	tökéletes	parositva	12	G5046	alacsony
+Jas.3.2	hu	12	ember	parositva	13	G0435	alacsony
+Jas.3.2	hu	13	képes	parositva	14	G1415	alacsony
+Jas.3.2	hu	14	az	betoldas			alacsony
+Jas.3.2	hu	15	egész	parositva	17	G3650	alacsony
+Jas.3.2	hu	16	testét	parositva	19	G4983	alacsony
+Jas.3.2	hu	17	is	parositva	16	G2532	alacsony
+Jas.3.2	hu	18	megzabolázni	parositva	15	G5468	alacsony
+Jas.3.2	er	1		parositva	3	G4183	alacsony
+Jas.3.2	er	2		parositva	1	G1063	alacsony
+Jas.3.2	er	3		parositva	4	G4417	alacsony
+Jas.3.2	er	4		parositva	2	G0537	alacsony
+Jas.3.2	er	5		parositva	5	G1487	alacsony
+Jas.3.2	er	6		parositva	6	G5100	alacsony
+Jas.3.2	er	7		parositva	7	G1722	alacsony
+Jas.3.2	er	8		parositva	7	G3056	alacsony
+Jas.3.2	er	9		parositva	8	G3756	alacsony
+Jas.3.2	er	10		parositva	9	G4417	alacsony
+Jas.3.2	er	11		forditatlan		G3778	alacsony
+Jas.3.2	er	12		parositva	11	G5046	alacsony
+Jas.3.2	er	13		parositva	12	G0435	alacsony
+Jas.3.2	er	14		parositva	13	G1415	alacsony
+Jas.3.2	er	15		parositva	18	G5468	alacsony
+Jas.3.2	er	16		parositva	17	G2532	alacsony
+Jas.3.2	er	17		parositva	15	G3650	alacsony
+Jas.3.2	er	18		forditatlan		G3588	alacsony
+Jas.3.2	er	19		parositva	16	G4983	alacsony
+Jas.3.3	hu	1	Ímé	betoldas			alacsony
+Jas.3.3	hu	2	a	betoldas			alacsony
+Jas.3.3	hu	3	lovaknak	parositva	4	G2462	alacsony
+Jas.3.3	hu	4	szájába	parositva	7,9	G1519+G4750	alacsony
+Jas.3.3	hu	5	zabolát	parositva	6	G5469	alacsony
+Jas.3.3	hu	6	vetünk	parositva	10	G0906	alacsony
+Jas.3.3	hu	7	hogy	parositva	12	G3588	alacsony
+Jas.3.3	hu	8	engedelmeskedjenek	parositva	13,14	G3982+G0846	alacsony
+Jas.3.3	hu	9	nékünk	parositva	15	G3165	alacsony
+Jas.3.3	hu	10	és	parositva	16	G2532	alacsony
+Jas.3.3	hu	11	az	betoldas			alacsony
+Jas.3.3	hu	12	ő	parositva	20	G0846	alacsony
+Jas.3.3	hu	13	egész	parositva	17	G3650	alacsony
+Jas.3.3	hu	14	testöket	parositva	19,20	G4983+G0846	alacsony
+Jas.3.3	hu	15	igazgatjuk	parositva	21	G3329	alacsony
+Jas.3.3	er	1		forditatlan		G1487	alacsony
+Jas.3.3	er	2		forditatlan		G1161	alacsony
+Jas.3.3	er	3		forditatlan		G3588	alacsony
+Jas.3.3	er	4		parositva	3	G2462	alacsony
+Jas.3.3	er	5		forditatlan		G3588	alacsony
+Jas.3.3	er	6		parositva	5	G5469	alacsony
+Jas.3.3	er	7		parositva	4	G1519	alacsony
+Jas.3.3	er	8		forditatlan		G3588	alacsony
+Jas.3.3	er	9		parositva	4	G4750	alacsony
+Jas.3.3	er	10		parositva	6	G0906	alacsony
+Jas.3.3	er	11		forditatlan		G1519	alacsony
+Jas.3.3	er	12		parositva	7	G3588	alacsony
+Jas.3.3	er	13		parositva	8	G3982	alacsony
+Jas.3.3	er	14		parositva	8	G0846	alacsony
+Jas.3.3	er	15		parositva	9	G3165	alacsony
+Jas.3.3	er	16		parositva	10	G2532	alacsony
+Jas.3.3	er	17		parositva	13	G3650	alacsony
+Jas.3.3	er	18		forditatlan		G3588	alacsony
+Jas.3.3	er	19		parositva	14	G4983	alacsony
+Jas.3.3	er	20		parositva	12,14	G0846	alacsony
+Jas.3.3	er	21		parositva	15	G3329	alacsony
+Jas.3.4	hu	1	Ímé	parositva	1	G2400	alacsony
+Jas.3.4	hu	2	a	betoldas			alacsony
+Jas.3.4	hu	3	hajók	parositva	4	G4143	alacsony
+Jas.3.4	hu	4	is	parositva	2	G2532	alacsony
+Jas.3.4	hu	5	noha	betoldas			alacsony
+Jas.3.4	hu	6	mily	parositva	5	G5082	alacsony
+Jas.3.4	hu	7	nagyok	parositva	5,6	G5082+G1510	alacsony
+Jas.3.4	hu	8	és	parositva	7	G2532	alacsony
+Jas.3.4	hu	9	erős	parositva	10	G4642	alacsony
+Jas.3.4	hu	10	szelektől	parositva	8,9	G5259+G0417	alacsony
+Jas.3.4	hu	11	hajtatnak	parositva	11	G1643	alacsony
+Jas.3.4	hu	12	mindazáltal	betoldas			alacsony
+Jas.3.4	hu	13	igen	parositva	14	G1646	alacsony
+Jas.3.4	hu	14	kis	parositva	14	G1646	alacsony
+Jas.3.4	hu	15	kormánytól	parositva	13,15	G5259+G4079	alacsony
+Jas.3.4	hu	16	oda	parositva	12	G3329	alacsony
+Jas.3.4	hu	17	fordíttatnak	parositva	12	G3329	alacsony
+Jas.3.4	hu	18	a	betoldas			alacsony
+Jas.3.4	hu	19	hová	parositva	16,17	G3699+G0302	alacsony
+Jas.3.4	hu	20	a	betoldas			alacsony
+Jas.3.4	hu	21	kormányos	parositva	21	G2116	alacsony
+Jas.3.4	hu	22	szándéka	parositva	19	G3730	alacsony
+Jas.3.4	hu	23	akarja	parositva	22	G1014	alacsony
+Jas.3.4	er	1		parositva	1	G2400	alacsony
+Jas.3.4	er	2		parositva	4	G2532	alacsony
+Jas.3.4	er	3		forditatlan		G3588	alacsony
+Jas.3.4	er	4		parositva	3	G4143	alacsony
+Jas.3.4	er	5		parositva	6,7	G5082	alacsony
+Jas.3.4	er	6		parositva	7	G1510	alacsony
+Jas.3.4	er	7		parositva	8	G2532	alacsony
+Jas.3.4	er	8		parositva	10	G5259	alacsony
+Jas.3.4	er	9		parositva	10	G0417	alacsony
+Jas.3.4	er	10		parositva	9	G4642	alacsony
+Jas.3.4	er	11		parositva	11	G1643	alacsony
+Jas.3.4	er	12		parositva	16,17	G3329	alacsony
+Jas.3.4	er	13		parositva	15	G5259	alacsony
+Jas.3.4	er	14		parositva	13,14	G1646	alacsony
+Jas.3.4	er	15		parositva	15	G4079	alacsony
+Jas.3.4	er	16		parositva	19	G3699	alacsony
+Jas.3.4	er	17		parositva	19	G0302	alacsony
+Jas.3.4	er	18		forditatlan		G3588	alacsony
+Jas.3.4	er	19		parositva	22	G3730	alacsony
+Jas.3.4	er	20		forditatlan		G3588	alacsony
+Jas.3.4	er	21		parositva	21	G2116	alacsony
+Jas.3.4	er	22		parositva	23	G1014	alacsony
+Jas.3.5	hu	1	Ezenképen	parositva	1	G3779	alacsony
+Jas.3.5	hu	2	a	betoldas			alacsony
+Jas.3.5	hu	3	nyelv	parositva	4	G1100	alacsony
+Jas.3.5	hu	4	is	parositva	2	G2532	alacsony
+Jas.3.5	hu	5	kicsiny	parositva	5	G3398	alacsony
+Jas.3.5	hu	6	tag	parositva	6,7	G3196+G1510	alacsony
+Jas.3.5	hu	7	és	parositva	8	G2532	alacsony
+Jas.3.5	hu	8	nagy	parositva	9	G3173	alacsony
+Jas.3.5	hu	9	dolgokkal	parositva	9	G3173	alacsony
+Jas.3.5	hu	10	hányja	parositva	10	G6094	alacsony
+Jas.3.5	hu	11	magát	betoldas			alacsony
+Jas.3.5	hu	12	Ímé	parositva	11	G2400	alacsony
+Jas.3.5	hu	13	csekély	betoldas			alacsony
+Jas.3.5	hu	14	tűz	parositva	13	G4442	alacsony
+Jas.3.5	hu	15	mily	parositva	14	G2245	alacsony
+Jas.3.5	hu	16	nagy	parositva	14	G2245	alacsony
+Jas.3.5	hu	17	erdőt	parositva	15	G5208	alacsony
+Jas.3.5	hu	18	felgyújt	parositva	16	G0381	alacsony
+Jas.3.5	er	1		parositva	1	G3779	alacsony
+Jas.3.5	er	2		parositva	4	G2532	alacsony
+Jas.3.5	er	3		forditatlan		G3588	alacsony
+Jas.3.5	er	4		parositva	3	G1100	alacsony
+Jas.3.5	er	5		parositva	5	G3398	alacsony
+Jas.3.5	er	6		parositva	6	G3196	alacsony
+Jas.3.5	er	7		parositva	6	G1510	alacsony
+Jas.3.5	er	8		parositva	7	G2532	alacsony
+Jas.3.5	er	9		parositva	8,9	G3173	alacsony
+Jas.3.5	er	10		parositva	10	G6094	alacsony
+Jas.3.5	er	11		parositva	12	G2400	alacsony
+Jas.3.5	er	12		forditatlan		G2245	alacsony
+Jas.3.5	er	13		parositva	14	G4442	alacsony
+Jas.3.5	er	14		parositva	15,16	G2245	alacsony
+Jas.3.5	er	15		parositva	17	G5208	alacsony
+Jas.3.5	er	16		parositva	18	G0381	alacsony
+Jas.3.6	hu	1	A	betoldas			alacsony
+Jas.3.6	hu	2	nyelv	parositva	3	G1100	alacsony
+Jas.3.6	hu	3	is	parositva	1	G2532	alacsony
+Jas.3.6	hu	4	tűz	parositva	4	G4442	alacsony
+Jas.3.6	hu	5	a	betoldas			alacsony
+Jas.3.6	hu	6	gonoszságnak	parositva	8	G0093	alacsony
+Jas.3.6	hu	7	összessége	parositva	6	G2889	alacsony
+Jas.3.6	hu	8	Úgy	parositva	9	G3779	alacsony
+Jas.3.6	hu	9	van	parositva	12	G2525	alacsony
+Jas.3.6	hu	10	a	betoldas			alacsony
+Jas.3.6	hu	11	nyelv	parositva	11	G1100	alacsony
+Jas.3.6	hu	12	a	betoldas			alacsony
+Jas.3.6	hu	13	mi	parositva	16	G3165	alacsony
+Jas.3.6	hu	14	tagjaink	parositva	15,16	G3196+G3165	alacsony
+Jas.3.6	hu	15	között	parositva	13	G1722	alacsony
+Jas.3.6	hu	16	hogy	parositva	17	G3588	alacsony
+Jas.3.6	hu	17	megszeplősíti	parositva	18	G4695	alacsony
+Jas.3.6	hu	18	az	betoldas			alacsony
+Jas.3.6	hu	19	egész	parositva	19	G3650	alacsony
+Jas.3.6	hu	20	testet	parositva	21	G4983	alacsony
+Jas.3.6	hu	21	és	parositva	22	G2532	alacsony
+Jas.3.6	hu	22	lángba	parositva	23	G5394	alacsony
+Jas.3.6	hu	23	borítja	parositva	23	G5394	alacsony
+Jas.3.6	hu	24	életünk	parositva	27	G1078	alacsony
+Jas.3.6	hu	25	folyását	parositva	25	G5164	alacsony
+Jas.3.6	hu	26	maga	parositva	28	G2532	alacsony
+Jas.3.6	hu	27	is	parositva	28	G2532	alacsony
+Jas.3.6	hu	28	lángba	parositva	29	G5394	alacsony
+Jas.3.6	hu	29	boríttatván	parositva	29	G5394	alacsony
+Jas.3.6	hu	30	a	betoldas			alacsony
+Jas.3.6	hu	31	gyehennától	parositva	30,32	G5259+G1067	alacsony
+Jas.3.6	er	1		parositva	3	G2532	alacsony
+Jas.3.6	er	2		forditatlan		G3588	alacsony
+Jas.3.6	er	3		parositva	2	G1100	alacsony
+Jas.3.6	er	4		parositva	4	G4442	alacsony
+Jas.3.6	er	5		forditatlan		G3588	alacsony
+Jas.3.6	er	6		parositva	7	G2889	alacsony
+Jas.3.6	er	7		forditatlan		G3588	alacsony
+Jas.3.6	er	8		parositva	6	G0093	alacsony
+Jas.3.6	er	9		parositva	8	G3779	alacsony
+Jas.3.6	er	10		forditatlan		G3588	alacsony
+Jas.3.6	er	11		parositva	11	G1100	alacsony
+Jas.3.6	er	12		parositva	9	G2525	alacsony
+Jas.3.6	er	13		parositva	15	G1722	alacsony
+Jas.3.6	er	14		forditatlan		G3588	alacsony
+Jas.3.6	er	15		parositva	14	G3196	alacsony
+Jas.3.6	er	16		parositva	13,14	G3165	alacsony
+Jas.3.6	er	17		parositva	16	G3588	alacsony
+Jas.3.6	er	18		parositva	17	G4695	alacsony
+Jas.3.6	er	19		parositva	19	G3650	alacsony
+Jas.3.6	er	20		forditatlan		G3588	alacsony
+Jas.3.6	er	21		parositva	20	G4983	alacsony
+Jas.3.6	er	22		parositva	21	G2532	alacsony
+Jas.3.6	er	23		parositva	22,23	G5394	alacsony
+Jas.3.6	er	24		forditatlan		G3588	alacsony
+Jas.3.6	er	25		parositva	25	G5164	alacsony
+Jas.3.6	er	26		forditatlan		G3588	alacsony
+Jas.3.6	er	27		parositva	24	G1078	alacsony
+Jas.3.6	er	28		parositva	26,27	G2532	alacsony
+Jas.3.6	er	29		parositva	28,29	G5394	alacsony
+Jas.3.6	er	30		parositva	31	G5259	alacsony
+Jas.3.6	er	31		forditatlan		G3588	alacsony
+Jas.3.6	er	32		parositva	31	G1067	alacsony
+Jas.3.7	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.3.7	hu	2	minden	parositva	1	G3956	alacsony
+Jas.3.7	hu	3	természet	parositva	3	G5449	alacsony
+Jas.3.7	hu	4	vadállatoké	parositva	4	G2342	alacsony
+Jas.3.7	hu	5	madaraké	parositva	7	G4071	alacsony
+Jas.3.7	hu	6	csúszómászóké	parositva	8	G2062	alacsony
+Jas.3.7	hu	7	és	parositva	10	G2532	alacsony
+Jas.3.7	hu	8	vízieké	parositva	11	G1724	alacsony
+Jas.3.7	hu	9	megszelídíthető	parositva	12	G1150	alacsony
+Jas.3.7	hu	10	és	parositva	13	G2532	alacsony
+Jas.3.7	hu	11	meg	parositva	14	G1150	alacsony
+Jas.3.7	hu	12	is	parositva	14	G1150	alacsony
+Jas.3.7	hu	13	szelidíttetett	parositva	14	G1150	alacsony
+Jas.3.7	hu	14	az	betoldas			alacsony
+Jas.3.7	hu	15	emberi	parositva	18	G0442	alacsony
+Jas.3.7	hu	16	természet	parositva	16	G5449	alacsony
+Jas.3.7	hu	17	által	parositva	15	G3588	alacsony
+Jas.3.7	er	1		parositva	2	G3956	alacsony
+Jas.3.7	er	2		parositva	1	G1063	alacsony
+Jas.3.7	er	3		parositva	3	G5449	alacsony
+Jas.3.7	er	4		parositva	4	G2342	alacsony
+Jas.3.7	er	5		forditatlan		G5037	alacsony
+Jas.3.7	er	6		forditatlan		G2532	alacsony
+Jas.3.7	er	7		parositva	5	G4071	alacsony
+Jas.3.7	er	8		parositva	6	G2062	alacsony
+Jas.3.7	er	9		forditatlan		G5037	alacsony
+Jas.3.7	er	10		parositva	7	G2532	alacsony
+Jas.3.7	er	11		parositva	8	G1724	alacsony
+Jas.3.7	er	12		parositva	9	G1150	alacsony
+Jas.3.7	er	13		parositva	10	G2532	alacsony
+Jas.3.7	er	14		parositva	11,12,13	G1150	alacsony
+Jas.3.7	er	15		parositva	17	G3588	alacsony
+Jas.3.7	er	16		parositva	16	G5449	alacsony
+Jas.3.7	er	17		forditatlan		G3588	alacsony
+Jas.3.7	er	18		parositva	15	G0442	alacsony
+Jas.3.8	hu	1	De	parositva	2	G1161	alacsony
+Jas.3.8	hu	2	a	betoldas			alacsony
+Jas.3.8	hu	3	nyelvet	parositva	3	G1100	alacsony
+Jas.3.8	hu	4	az	betoldas			alacsony
+Jas.3.8	hu	5	emberek	parositva	7	G0444	alacsony
+Jas.3.8	hu	6	közül	parositva	7	G0444	alacsony
+Jas.3.8	hu	7	senki	parositva	4	G3762	alacsony
+Jas.3.8	hu	8	sem	parositva	4	G3762	alacsony
+Jas.3.8	hu	9	szelidítheti	parositva	5,6	G1150+G1410	alacsony
+Jas.3.8	hu	10	meg	parositva	5	G1150	alacsony
+Jas.3.8	hu	11	fékezhetetlen	parositva	8	G0182	alacsony
+Jas.3.8	hu	12	gonosz	parositva	9	G2556	alacsony
+Jas.3.8	hu	13	az	betoldas			alacsony
+Jas.3.8	hu	14	halálos	parositva	12	G2287	alacsony
+Jas.3.8	hu	15	méreggel	parositva	11	G2447	alacsony
+Jas.3.8	hu	16	teljes	parositva	10	G3324	alacsony
+Jas.3.8	er	1		forditatlan		G3588	alacsony
+Jas.3.8	er	2		parositva	1	G1161	alacsony
+Jas.3.8	er	3		parositva	3	G1100	alacsony
+Jas.3.8	er	4		parositva	7,8	G3762	alacsony
+Jas.3.8	er	5		parositva	9,10	G1150	alacsony
+Jas.3.8	er	6		parositva	9	G1410	alacsony
+Jas.3.8	er	7		parositva	5,6	G0444	alacsony
+Jas.3.8	er	8		parositva	11	G0182	alacsony
+Jas.3.8	er	9		parositva	12	G2556	alacsony
+Jas.3.8	er	10		parositva	16	G3324	alacsony
+Jas.3.8	er	11		parositva	15	G2447	alacsony
+Jas.3.8	er	12		parositva	14	G2287	alacsony
+Jas.3.9	hu	1	Ezzel	parositva	1,2	G1722+G0846	alacsony
+Jas.3.9	hu	2	áldjuk	parositva	3	G2127	alacsony
+Jas.3.9	hu	3	az	betoldas			alacsony
+Jas.3.9	hu	4	Istent	betoldas			alacsony
+Jas.3.9	hu	5	és	parositva	6	G2532	alacsony
+Jas.3.9	hu	6	Atyát	parositva	7	G3962	alacsony
+Jas.3.9	hu	7	és	parositva	8	G2532	alacsony
+Jas.3.9	hu	8	ezzel	parositva	9,10	G1722+G0846	alacsony
+Jas.3.9	hu	9	átkozzuk	parositva	11	G2672	alacsony
+Jas.3.9	hu	10	az	betoldas			alacsony
+Jas.3.9	hu	11	embereket	parositva	13	G0444	alacsony
+Jas.3.9	hu	12	a	betoldas			alacsony
+Jas.3.9	hu	13	kik	betoldas			alacsony
+Jas.3.9	hu	14	az	betoldas			alacsony
+Jas.3.9	hu	15	Isten	parositva	17	G2316	alacsony
+Jas.3.9	hu	16	hasonlatosságára	parositva	15,16	G2596+G3669	alacsony
+Jas.3.9	hu	17	teremttettek	parositva	18	G1096	alacsony
+Jas.3.9	er	1		parositva	1	G1722	alacsony
+Jas.3.9	er	2		parositva	1	G0846	alacsony
+Jas.3.9	er	3		parositva	2	G2127	alacsony
+Jas.3.9	er	4		forditatlan		G3588	alacsony
+Jas.3.9	er	5		forditatlan		G2962	alacsony
+Jas.3.9	er	6		parositva	5	G2532	alacsony
+Jas.3.9	er	7		parositva	6	G3962	alacsony
+Jas.3.9	er	8		parositva	7	G2532	alacsony
+Jas.3.9	er	9		parositva	8	G1722	alacsony
+Jas.3.9	er	10		parositva	8	G0846	alacsony
+Jas.3.9	er	11		parositva	9	G2672	alacsony
+Jas.3.9	er	12		forditatlan		G3588	alacsony
+Jas.3.9	er	13		parositva	11	G0444	alacsony
+Jas.3.9	er	14		forditatlan		G3588	alacsony
+Jas.3.9	er	15		parositva	16	G2596	alacsony
+Jas.3.9	er	16		parositva	16	G3669	alacsony
+Jas.3.9	er	17		parositva	15	G2316	alacsony
+Jas.3.9	er	18		parositva	17	G1096	alacsony
+Jas.3.10	hu	1	Ugyanabból	parositva	1,3	G1537+G0846	alacsony
+Jas.3.10	hu	2	a	betoldas			alacsony
+Jas.3.10	hu	3	szájból	parositva	4	G4750	alacsony
+Jas.3.10	hu	4	jő	parositva	5	G1831	alacsony
+Jas.3.10	hu	5	ki	parositva	5	G1831	alacsony
+Jas.3.10	hu	6	áldás	parositva	6	G2129	alacsony
+Jas.3.10	hu	7	és	parositva	7	G2532	alacsony
+Jas.3.10	hu	8	átok	parositva	8	G2671	alacsony
+Jas.3.10	hu	9	Atyámfiai	parositva	11,12	G0080+G3165	alacsony
+Jas.3.10	hu	10	nem	parositva	9	G3756	alacsony
+Jas.3.10	hu	11	kellene	parositva	10	G5534	alacsony
+Jas.3.10	hu	12	ezeknek	parositva	13	G3778	alacsony
+Jas.3.10	hu	13	így	parositva	14	G3779	alacsony
+Jas.3.10	hu	14	lenni	parositva	15	G1096	alacsony
+Jas.3.10	er	1		parositva	1	G1537	alacsony
+Jas.3.10	er	2		forditatlan		G3588	alacsony
+Jas.3.10	er	3		parositva	1	G0846	alacsony
+Jas.3.10	er	4		parositva	3	G4750	alacsony
+Jas.3.10	er	5		parositva	4,5	G1831	alacsony
+Jas.3.10	er	6		parositva	6	G2129	alacsony
+Jas.3.10	er	7		parositva	7	G2532	alacsony
+Jas.3.10	er	8		parositva	8	G2671	alacsony
+Jas.3.10	er	9		parositva	10	G3756	alacsony
+Jas.3.10	er	10		parositva	11	G5534	alacsony
+Jas.3.10	er	11		parositva	9	G0080	alacsony
+Jas.3.10	er	12		parositva	9	G3165	alacsony
+Jas.3.10	er	13		parositva	12	G3778	alacsony
+Jas.3.10	er	14		parositva	13	G3779	alacsony
+Jas.3.10	er	15		parositva	14	G1096	alacsony
+Jas.3.11	hu	1	Vajjon	parositva	1	G3385	alacsony
+Jas.3.11	hu	2	a	betoldas			alacsony
+Jas.3.11	hu	3	forrás	parositva	3	G4077	alacsony
+Jas.3.11	hu	4	ugyan	betoldas			alacsony
+Jas.3.11	hu	5	abból	parositva	4,5,6	G1537+G3588+G0846	alacsony
+Jas.3.11	hu	6	a	betoldas			alacsony
+Jas.3.11	hu	7	nyílásból	parositva	7	G3692	alacsony
+Jas.3.11	hu	8	csörgedeztet	parositva	8	G1032	alacsony
+Jas.3.11	hu	9	é	parositva	1	G3385	alacsony
+Jas.3.11	hu	10	édest	parositva	10	G1099	alacsony
+Jas.3.11	hu	11	és	parositva	11	G2532	alacsony
+Jas.3.11	hu	12	keserűt	parositva	13	G4089	alacsony
+Jas.3.11	er	1		parositva	1,9	G3385	alacsony
+Jas.3.11	er	2		forditatlan		G3588	alacsony
+Jas.3.11	er	3		parositva	3	G4077	alacsony
+Jas.3.11	er	4		parositva	5	G1537	alacsony
+Jas.3.11	er	5		parositva	5	G3588	alacsony
+Jas.3.11	er	6		parositva	5	G0846	alacsony
+Jas.3.11	er	7		parositva	7	G3692	alacsony
+Jas.3.11	er	8		parositva	8	G1032	alacsony
+Jas.3.11	er	9		forditatlan		G3588	alacsony
+Jas.3.11	er	10		parositva	10	G1099	alacsony
+Jas.3.11	er	11		parositva	11	G2532	alacsony
+Jas.3.11	er	12		forditatlan		G3588	alacsony
+Jas.3.11	er	13		parositva	12	G4089	alacsony
+Jas.3.12	hu	1	Avagy	betoldas			alacsony
+Jas.3.12	hu	2	atyámfiai	parositva	3,4	G0080+G3165	alacsony
+Jas.3.12	hu	3	teremhet	parositva	2,7	G1410+G4160	alacsony
+Jas.3.12	hu	4	é	parositva	1	G3361	alacsony
+Jas.3.12	hu	5	a	betoldas			alacsony
+Jas.3.12	hu	6	fügefa	parositva	5	G4808	alacsony
+Jas.3.12	hu	7	olajmagvakat	parositva	6	G1636	alacsony
+Jas.3.12	hu	8	vagy	parositva	8	G2228	alacsony
+Jas.3.12	hu	9	a	betoldas			alacsony
+Jas.3.12	hu	10	szőlőtő	parositva	9	G0288	alacsony
+Jas.3.12	hu	11	fügét	parositva	10	G4810	alacsony
+Jas.3.12	hu	12	Azonképen	parositva	11	G3779	alacsony
+Jas.3.12	hu	13	egy	betoldas			alacsony
+Jas.3.12	hu	14	forrás	parositva	13	G4077	alacsony
+Jas.3.12	hu	15	sem	betoldas			alacsony
+Jas.3.12	hu	16	adhat	parositva	17	G4160	alacsony
+Jas.3.12	hu	17	sós	parositva	14	G0252	alacsony
+Jas.3.12	hu	18	és	parositva	15	G2532	alacsony
+Jas.3.12	hu	19	édes	parositva	16	G1099	alacsony
+Jas.3.12	hu	20	vizet	parositva	18	G5204	alacsony
+Jas.3.12	er	1		parositva	4	G3361	alacsony
+Jas.3.12	er	2		parositva	3	G1410	alacsony
+Jas.3.12	er	3		parositva	2	G0080	alacsony
+Jas.3.12	er	4		parositva	2	G3165	alacsony
+Jas.3.12	er	5		parositva	6	G4808	alacsony
+Jas.3.12	er	6		parositva	7	G1636	alacsony
+Jas.3.12	er	7		parositva	3	G4160	alacsony
+Jas.3.12	er	8		parositva	8	G2228	alacsony
+Jas.3.12	er	9		parositva	10	G0288	alacsony
+Jas.3.12	er	10		parositva	11	G4810	alacsony
+Jas.3.12	er	11		parositva	12	G3779	alacsony
+Jas.3.12	er	12		forditatlan		G3777	alacsony
+Jas.3.12	er	13		parositva	14	G4077	alacsony
+Jas.3.12	er	14		parositva	17	G0252	alacsony
+Jas.3.12	er	15		parositva	18	G2532	alacsony
+Jas.3.12	er	16		parositva	19	G1099	alacsony
+Jas.3.12	er	17		parositva	16	G4160	alacsony
+Jas.3.12	er	18		parositva	20	G5204	alacsony
+Jas.3.13	hu	1	Kicsoda	parositva	1	G5101	alacsony
+Jas.3.13	hu	2	köztetek	parositva	5,6	G1722+G4771	alacsony
+Jas.3.13	hu	3	bölcs	parositva	2	G4680	alacsony
+Jas.3.13	hu	4	és	parositva	3	G2532	alacsony
+Jas.3.13	hu	5	okos	parositva	4	G1990	alacsony
+Jas.3.13	hu	6	Mutassa	parositva	7	G1166	alacsony
+Jas.3.13	hu	7	meg	parositva	7	G1166	alacsony
+Jas.3.13	hu	8	az	betoldas			alacsony
+Jas.3.13	hu	9	ő	parositva	14	G0846	alacsony
+Jas.3.13	hu	10	jó	parositva	10	G2570	alacsony
+Jas.3.13	hu	11	életéből	parositva	8,11,14	G1537+G0391+G0846	alacsony
+Jas.3.13	hu	12	az	betoldas			alacsony
+Jas.3.13	hu	13	ő	parositva	14	G0846	alacsony
+Jas.3.13	hu	14	cselekedeteit	parositva	13,14	G2041+G0846	alacsony
+Jas.3.13	hu	15	bölcsességnek	parositva	17	G4678	alacsony
+Jas.3.13	hu	16	szelídségével	parositva	15,16	G1722+G4236	alacsony
+Jas.3.13	er	1		parositva	1	G5101	alacsony
+Jas.3.13	er	2		parositva	3	G4680	alacsony
+Jas.3.13	er	3		parositva	4	G2532	alacsony
+Jas.3.13	er	4		parositva	5	G1990	alacsony
+Jas.3.13	er	5		parositva	2	G1722	alacsony
+Jas.3.13	er	6		parositva	2	G4771	alacsony
+Jas.3.13	er	7		parositva	6,7	G1166	alacsony
+Jas.3.13	er	8		parositva	11	G1537	alacsony
+Jas.3.13	er	9		forditatlan		G3588	alacsony
+Jas.3.13	er	10		parositva	10	G2570	alacsony
+Jas.3.13	er	11		parositva	11	G0391	alacsony
+Jas.3.13	er	12		forditatlan		G3588	alacsony
+Jas.3.13	er	13		parositva	14	G2041	alacsony
+Jas.3.13	er	14		parositva	9,11,13,14	G0846	alacsony
+Jas.3.13	er	15		parositva	16	G1722	alacsony
+Jas.3.13	er	16		parositva	16	G4236	alacsony
+Jas.3.13	er	17		parositva	15	G4678	alacsony
+Jas.3.14	hu	1	Ha	parositva	1	G1487	alacsony
+Jas.3.14	hu	2	pedig	parositva	2	G1161	alacsony
+Jas.3.14	hu	3	keserű	parositva	4	G4089	alacsony
+Jas.3.14	hu	4	irígység	parositva	3	G2205	alacsony
+Jas.3.14	hu	5	és	parositva	6	G2532	alacsony
+Jas.3.14	hu	6	czivódás	parositva	7	G2052	alacsony
+Jas.3.14	hu	7	van	parositva	5	G2192	alacsony
+Jas.3.14	hu	8	a	betoldas			alacsony
+Jas.3.14	hu	9	ti	parositva	11	G4771	alacsony
+Jas.3.14	hu	10	szívetekben	parositva	8,10,11	G1722+G2588+G4771	alacsony
+Jas.3.14	hu	11	ne	parositva	12	G3361	alacsony
+Jas.3.14	hu	12	dicsekedjetek	parositva	13	G2620	alacsony
+Jas.3.14	hu	13	és	parositva	14	G2532	alacsony
+Jas.3.14	hu	14	ne	parositva	12	G3361	alacsony
+Jas.3.14	hu	15	hazudjatok	parositva	15	G5574	alacsony
+Jas.3.14	hu	16	az	betoldas			alacsony
+Jas.3.14	hu	17	igazság	parositva	18	G0225	alacsony
+Jas.3.14	hu	18	ellen	parositva	16	G2596	alacsony
+Jas.3.14	er	1		parositva	1	G1487	alacsony
+Jas.3.14	er	2		parositva	2	G1161	alacsony
+Jas.3.14	er	3		parositva	4	G2205	alacsony
+Jas.3.14	er	4		parositva	3	G4089	alacsony
+Jas.3.14	er	5		parositva	7	G2192	alacsony
+Jas.3.14	er	6		parositva	5	G2532	alacsony
+Jas.3.14	er	7		parositva	6	G2052	alacsony
+Jas.3.14	er	8		parositva	10	G1722	alacsony
+Jas.3.14	er	9		forditatlan		G3588	alacsony
+Jas.3.14	er	10		parositva	10	G2588	alacsony
+Jas.3.14	er	11		parositva	9,10	G4771	alacsony
+Jas.3.14	er	12		parositva	11,14	G3361	alacsony
+Jas.3.14	er	13		parositva	12	G2620	alacsony
+Jas.3.14	er	14		parositva	13	G2532	alacsony
+Jas.3.14	er	15		parositva	15	G5574	alacsony
+Jas.3.14	er	16		parositva	18	G2596	alacsony
+Jas.3.14	er	17		forditatlan		G3588	alacsony
+Jas.3.14	er	18		parositva	17	G0225	alacsony
+Jas.3.15	hu	1	Ez	parositva	3	G3778	alacsony
+Jas.3.15	hu	2	nem	parositva	1	G3756	alacsony
+Jas.3.15	hu	3	az	parositva	2	G1510	alacsony
+Jas.3.15	hu	4	a	betoldas			alacsony
+Jas.3.15	hu	5	bölcsesség	parositva	5	G4678	alacsony
+Jas.3.15	hu	6	a	betoldas			alacsony
+Jas.3.15	hu	7	mely	betoldas			alacsony
+Jas.3.15	hu	8	felülről	parositva	6	G0509	alacsony
+Jas.3.15	hu	9	jő	parositva	7	G2718	alacsony
+Jas.3.15	hu	10	hanem	parositva	8	G0235	alacsony
+Jas.3.15	hu	11	földi	parositva	9	G1919	alacsony
+Jas.3.15	hu	12	testi	parositva	10	G5591	alacsony
+Jas.3.15	hu	13	és	betoldas			alacsony
+Jas.3.15	hu	14	ördögi	parositva	11	G1141	alacsony
+Jas.3.15	er	1		parositva	2	G3756	alacsony
+Jas.3.15	er	2		parositva	3	G1510	alacsony
+Jas.3.15	er	3		parositva	1	G3778	alacsony
+Jas.3.15	er	4		forditatlan		G3588	alacsony
+Jas.3.15	er	5		parositva	5	G4678	alacsony
+Jas.3.15	er	6		parositva	8	G0509	alacsony
+Jas.3.15	er	7		parositva	9	G2718	alacsony
+Jas.3.15	er	8		parositva	10	G0235	alacsony
+Jas.3.15	er	9		parositva	11	G1919	alacsony
+Jas.3.15	er	10		parositva	12	G5591	alacsony
+Jas.3.15	er	11		parositva	14	G1141	alacsony
+Jas.3.16	hu	1	Mert	parositva	2	G1063	alacsony
+Jas.3.16	hu	2	a	parositva	1	G3699	alacsony
+Jas.3.16	hu	3	hol	parositva	1	G3699	alacsony
+Jas.3.16	hu	4	irígység	parositva	3	G2205	alacsony
+Jas.3.16	hu	5	és	parositva	4	G2532	alacsony
+Jas.3.16	hu	6	czivakodás	parositva	5	G2052	alacsony
+Jas.3.16	hu	7	van	betoldas			alacsony
+Jas.3.16	hu	8	ott	parositva	6	G1563	alacsony
+Jas.3.16	hu	9	háborúság	parositva	7	G0181	alacsony
+Jas.3.16	hu	10	és	parositva	8	G2532	alacsony
+Jas.3.16	hu	11	minden	parositva	9	G3956	alacsony
+Jas.3.16	hu	12	gonosz	parositva	10	G5337	alacsony
+Jas.3.16	hu	13	cselekedet	parositva	11	G4229	alacsony
+Jas.3.16	hu	14	is	betoldas			alacsony
+Jas.3.16	hu	15	van	betoldas			alacsony
+Jas.3.16	er	1		parositva	2,3	G3699	alacsony
+Jas.3.16	er	2		parositva	1	G1063	alacsony
+Jas.3.16	er	3		parositva	4	G2205	alacsony
+Jas.3.16	er	4		parositva	5	G2532	alacsony
+Jas.3.16	er	5		parositva	6	G2052	alacsony
+Jas.3.16	er	6		parositva	8	G1563	alacsony
+Jas.3.16	er	7		parositva	9	G0181	alacsony
+Jas.3.16	er	8		parositva	10	G2532	alacsony
+Jas.3.16	er	9		parositva	11	G3956	alacsony
+Jas.3.16	er	10		parositva	12	G5337	alacsony
+Jas.3.16	er	11		parositva	13	G4229	alacsony
+Jas.3.17	hu	1	A	betoldas			alacsony
+Jas.3.17	hu	2	felülről	parositva	3	G0509	alacsony
+Jas.3.17	hu	3	való	parositva	3	G0509	alacsony
+Jas.3.17	hu	4	bölcsesség	parositva	4	G4678	alacsony
+Jas.3.17	hu	5	pedig	parositva	2	G1161	alacsony
+Jas.3.17	hu	6	először	parositva	5	G4413	alacsony
+Jas.3.17	hu	7	is	parositva	6	G3303	alacsony
+Jas.3.17	hu	8	tiszta	parositva	7,8	G0053+G1510	alacsony
+Jas.3.17	hu	9	azután	parositva	9	G1899	alacsony
+Jas.3.17	hu	10	békeszerető	parositva	10	G1516	alacsony
+Jas.3.17	hu	11	méltányos	parositva	11	G1933	alacsony
+Jas.3.17	hu	12	engedelmes	parositva	12	G2138	alacsony
+Jas.3.17	hu	13	irgalmassággal	parositva	14	G1656	alacsony
+Jas.3.17	hu	14	és	parositva	15	G2532	alacsony
+Jas.3.17	hu	15	jó	parositva	17	G0018	alacsony
+Jas.3.17	hu	16	gyümölcsökkel	parositva	16	G2590	alacsony
+Jas.3.17	hu	17	teljes	parositva	13	G3324	alacsony
+Jas.3.17	hu	18	nem	parositva	18	G0087	alacsony
+Jas.3.17	hu	19	kételkedő	parositva	18	G0087	alacsony
+Jas.3.17	hu	20	és	parositva	19	G2532	alacsony
+Jas.3.17	hu	21	nem	parositva	20	G0505	alacsony
+Jas.3.17	hu	22	képmutató	parositva	20	G0505	alacsony
+Jas.3.17	er	1		forditatlan		G3588	alacsony
+Jas.3.17	er	2		parositva	5	G1161	alacsony
+Jas.3.17	er	3		parositva	2,3	G0509	alacsony
+Jas.3.17	er	4		parositva	4	G4678	alacsony
+Jas.3.17	er	5		parositva	6	G4413	alacsony
+Jas.3.17	er	6		parositva	7	G3303	alacsony
+Jas.3.17	er	7		parositva	8	G0053	alacsony
+Jas.3.17	er	8		parositva	8	G1510	alacsony
+Jas.3.17	er	9		parositva	9	G1899	alacsony
+Jas.3.17	er	10		parositva	10	G1516	alacsony
+Jas.3.17	er	11		parositva	11	G1933	alacsony
+Jas.3.17	er	12		parositva	12	G2138	alacsony
+Jas.3.17	er	13		parositva	17	G3324	alacsony
+Jas.3.17	er	14		parositva	13	G1656	alacsony
+Jas.3.17	er	15		parositva	14	G2532	alacsony
+Jas.3.17	er	16		parositva	16	G2590	alacsony
+Jas.3.17	er	17		parositva	15	G0018	alacsony
+Jas.3.17	er	18		parositva	18,19	G0087	alacsony
+Jas.3.17	er	19		parositva	20	G2532	alacsony
+Jas.3.17	er	20		parositva	21,22	G0505	alacsony
+Jas.3.18	hu	1	Az	betoldas			alacsony
+Jas.3.18	hu	2	igazság	parositva	4	G1343	alacsony
+Jas.3.18	hu	3	gyümölcse	parositva	1	G2590	alacsony
+Jas.3.18	hu	4	pedig	parositva	2	G1161	alacsony
+Jas.3.18	hu	5	békességben	parositva	5,6	G1722+G1515	alacsony
+Jas.3.18	hu	6	vettetik	parositva	7	G4687	alacsony
+Jas.3.18	hu	7	azoknak	parositva	8	G3588	alacsony
+Jas.3.18	hu	8	a	betoldas			alacsony
+Jas.3.18	hu	9	kik	betoldas			alacsony
+Jas.3.18	hu	10	békességesen	parositva	10	G1515	alacsony
+Jas.3.18	hu	11	munkálkodnak	parositva	9	G4160	alacsony
+Jas.3.18	er	1		parositva	3	G2590	alacsony
+Jas.3.18	er	2		parositva	4	G1161	alacsony
+Jas.3.18	er	3		forditatlan		G3588	alacsony
+Jas.3.18	er	4		parositva	2	G1343	alacsony
+Jas.3.18	er	5		parositva	5	G1722	alacsony
+Jas.3.18	er	6		parositva	5	G1515	alacsony
+Jas.3.18	er	7		parositva	6	G4687	alacsony
+Jas.3.18	er	8		parositva	7	G3588	alacsony
+Jas.3.18	er	9		parositva	11	G4160	alacsony
+Jas.3.18	er	10		parositva	10	G1515	alacsony
+Jas.4.1	hu	1	Honnét	parositva	1	G4159	alacsony
+Jas.4.1	hu	2	vannak	betoldas			alacsony
+Jas.4.1	hu	3	háborúk	parositva	2	G4171	alacsony
+Jas.4.1	hu	4	és	parositva	3	G2532	alacsony
+Jas.4.1	hu	5	harczok	parositva	5	G3163	alacsony
+Jas.4.1	hu	6	közöttetek	parositva	6,7	G1722+G4771	alacsony
+Jas.4.1	hu	7	Nem	parositva	8	G3756	alacsony
+Jas.4.1	hu	8	onnan	parositva	9	G1782	alacsony
+Jas.4.1	hu	9	é	betoldas			alacsony
+Jas.4.1	hu	10	a	betoldas			alacsony
+Jas.4.1	hu	11	ti	parositva	13	G4771	alacsony
+Jas.4.1	hu	12	gerjedelmeitekből	parositva	10,12,13	G1537+G2237+G4771	alacsony
+Jas.4.1	hu	13	a	parositva	14	G3588	alacsony
+Jas.4.1	hu	14	melyek	parositva	14	G3588	alacsony
+Jas.4.1	hu	15	a	betoldas			alacsony
+Jas.4.1	hu	16	ti	parositva	19	G4771	alacsony
+Jas.4.1	hu	17	tagjaitokban	parositva	16,18,19	G1722+G3196+G4771	alacsony
+Jas.4.1	hu	18	vitézkednek	parositva	15	G4754	alacsony
+Jas.4.1	er	1		parositva	1	G4159	alacsony
+Jas.4.1	er	2		parositva	3	G4171	alacsony
+Jas.4.1	er	3		parositva	4	G2532	alacsony
+Jas.4.1	er	4		forditatlan		G4159	alacsony
+Jas.4.1	er	5		parositva	5	G3163	alacsony
+Jas.4.1	er	6		parositva	6	G1722	alacsony
+Jas.4.1	er	7		parositva	6	G4771	alacsony
+Jas.4.1	er	8		parositva	7	G3756	alacsony
+Jas.4.1	er	9		parositva	8	G1782	alacsony
+Jas.4.1	er	10		parositva	12	G1537	alacsony
+Jas.4.1	er	11		forditatlan		G3588	alacsony
+Jas.4.1	er	12		parositva	12	G2237	alacsony
+Jas.4.1	er	13		parositva	11,12	G4771	alacsony
+Jas.4.1	er	14		parositva	13,14	G3588	alacsony
+Jas.4.1	er	15		parositva	18	G4754	alacsony
+Jas.4.1	er	16		parositva	17	G1722	alacsony
+Jas.4.1	er	17		forditatlan		G3588	alacsony
+Jas.4.1	er	18		parositva	17	G3196	alacsony
+Jas.4.1	er	19		parositva	16,17	G4771	alacsony
+Jas.4.2	hu	1	Kívántok	parositva	1	G1937	alacsony
+Jas.4.2	hu	2	valamit	betoldas			alacsony
+Jas.4.2	hu	3	és	parositva	2	G2532	alacsony
+Jas.4.2	hu	4	nincs	parositva	3,4	G3756+G2192	alacsony
+Jas.4.2	hu	5	néktek	betoldas			alacsony
+Jas.4.2	hu	6	gyilkoltok	parositva	5	G5407	alacsony
+Jas.4.2	hu	7	és	parositva	6	G2532	alacsony
+Jas.4.2	hu	8	irígykedtek	parositva	7	G2206	alacsony
+Jas.4.2	hu	9	és	parositva	8	G2532	alacsony
+Jas.4.2	hu	10	nem	parositva	9	G3756	alacsony
+Jas.4.2	hu	11	nyerhetitek	parositva	10,11	G1410+G2013	alacsony
+Jas.4.2	hu	12	meg	parositva	11	G2013	alacsony
+Jas.4.2	hu	13	harczoltok	parositva	12	G3164	alacsony
+Jas.4.2	hu	14	és	parositva	13	G2532	alacsony
+Jas.4.2	hu	15	háborúskodtok	parositva	14	G4170	alacsony
+Jas.4.2	hu	16	és	parositva	17	G1161	alacsony
+Jas.4.2	hu	17	nincsen	parositva	15,16	G3756+G2192	alacsony
+Jas.4.2	hu	18	semmitek	betoldas			alacsony
+Jas.4.2	hu	19	mert	parositva	18	G1223	alacsony
+Jas.4.2	hu	20	nem	parositva	20	G3361	alacsony
+Jas.4.2	hu	21	kéritek	parositva	21,22	G0154+G4771	alacsony
+Jas.4.2	er	1		parositva	1	G1937	alacsony
+Jas.4.2	er	2		parositva	3	G2532	alacsony
+Jas.4.2	er	3		parositva	4	G3756	alacsony
+Jas.4.2	er	4		parositva	4	G2192	alacsony
+Jas.4.2	er	5		parositva	6	G5407	alacsony
+Jas.4.2	er	6		parositva	7	G2532	alacsony
+Jas.4.2	er	7		parositva	8	G2206	alacsony
+Jas.4.2	er	8		parositva	9	G2532	alacsony
+Jas.4.2	er	9		parositva	10	G3756	alacsony
+Jas.4.2	er	10		parositva	11	G1410	alacsony
+Jas.4.2	er	11		parositva	11,12	G2013	alacsony
+Jas.4.2	er	12		parositva	13	G3164	alacsony
+Jas.4.2	er	13		parositva	14	G2532	alacsony
+Jas.4.2	er	14		parositva	15	G4170	alacsony
+Jas.4.2	er	15		parositva	17	G3756	alacsony
+Jas.4.2	er	16		parositva	17	G2192	alacsony
+Jas.4.2	er	17		parositva	16	G1161	alacsony
+Jas.4.2	er	18		parositva	19	G1223	alacsony
+Jas.4.2	er	19		forditatlan		G3588	alacsony
+Jas.4.2	er	20		parositva	20	G3361	alacsony
+Jas.4.2	er	21		parositva	21	G0154	alacsony
+Jas.4.2	er	22		parositva	21	G4771	alacsony
+Jas.4.3	hu	1	Kéritek	parositva	1	G0154	alacsony
+Jas.4.3	hu	2	de	parositva	2	G2532	alacsony
+Jas.4.3	hu	3	nem	parositva	3	G3756	alacsony
+Jas.4.3	hu	4	kapjátok	parositva	4	G2983	alacsony
+Jas.4.3	hu	5	mert	parositva	5	G1360	alacsony
+Jas.4.3	hu	6	nem	parositva	6	G2560	alacsony
+Jas.4.3	hu	7	jól	parositva	6	G2560	alacsony
+Jas.4.3	hu	8	kéritek	parositva	7	G0154	alacsony
+Jas.4.3	hu	9	hogy	parositva	8	G2443	alacsony
+Jas.4.3	hu	10	gerjedelmeitekre	parositva	9,11,12	G1722+G2237+G4771	alacsony
+Jas.4.3	hu	11	költsétek	parositva	13	G1159	alacsony
+Jas.4.3	hu	12	azt	betoldas			alacsony
+Jas.4.3	er	1		parositva	1	G0154	alacsony
+Jas.4.3	er	2		parositva	2	G2532	alacsony
+Jas.4.3	er	3		parositva	3	G3756	alacsony
+Jas.4.3	er	4		parositva	4	G2983	alacsony
+Jas.4.3	er	5		parositva	5	G1360	alacsony
+Jas.4.3	er	6		parositva	6,7	G2560	alacsony
+Jas.4.3	er	7		parositva	8	G0154	alacsony
+Jas.4.3	er	8		parositva	9	G2443	alacsony
+Jas.4.3	er	9		parositva	10	G1722	alacsony
+Jas.4.3	er	10		forditatlan		G3588	alacsony
+Jas.4.3	er	11		parositva	10	G2237	alacsony
+Jas.4.3	er	12		parositva	10	G4771	alacsony
+Jas.4.3	er	13		parositva	11	G1159	alacsony
+Jas.4.4	hu	1	Parázna	parositva	1	G3432	alacsony
+Jas.4.4	hu	2	férfiak	parositva	1	G3432	alacsony
+Jas.4.4	hu	3	és	parositva	2	G2532	alacsony
+Jas.4.4	hu	4	asszonyok	parositva	3	G3428	alacsony
+Jas.4.4	hu	5	nem	parositva	4	G3756	alacsony
+Jas.4.4	hu	6	tudjátok	parositva	5	G6063	alacsony
+Jas.4.4	hu	7	é	betoldas			alacsony
+Jas.4.4	hu	8	hogy	parositva	6	G3754	alacsony
+Jas.4.4	hu	9	a	betoldas			alacsony
+Jas.4.4	hu	10	világ	parositva	10	G2889	alacsony
+Jas.4.4	hu	11	barátsága	parositva	8	G5373	alacsony
+Jas.4.4	hu	12	ellenségeskedés	parositva	11	G2189	alacsony
+Jas.4.4	hu	13	az	betoldas			alacsony
+Jas.4.4	hu	14	Istennel	parositva	13	G2316	alacsony
+Jas.4.4	hu	15	A	parositva	15	G3739	alacsony
+Jas.4.4	hu	16	ki	parositva	15	G3739	alacsony
+Jas.4.4	hu	17	azért	parositva	17	G3767	alacsony
+Jas.4.4	hu	18	e	parositva	21	G3588	alacsony
+Jas.4.4	hu	19	világ	parositva	22	G2889	alacsony
+Jas.4.4	hu	20	barátja	parositva	19	G5384	alacsony
+Jas.4.4	hu	21	akar	parositva	18	G1014	alacsony
+Jas.4.4	hu	22	lenni	parositva	20	G1511	alacsony
+Jas.4.4	hu	23	az	betoldas			alacsony
+Jas.4.4	hu	24	Isten	parositva	25	G2316	alacsony
+Jas.4.4	hu	25	ellenségévé	parositva	23	G2190	alacsony
+Jas.4.4	hu	26	lesz	parositva	26	G2525	alacsony
+Jas.4.4	er	1		parositva	1,2	G3432	alacsony
+Jas.4.4	er	2		parositva	3	G2532	alacsony
+Jas.4.4	er	3		parositva	4	G3428	alacsony
+Jas.4.4	er	4		parositva	5	G3756	alacsony
+Jas.4.4	er	5		parositva	6	G6063	alacsony
+Jas.4.4	er	6		parositva	8	G3754	alacsony
+Jas.4.4	er	7		forditatlan		G3588	alacsony
+Jas.4.4	er	8		parositva	11	G5373	alacsony
+Jas.4.4	er	9		forditatlan		G3588	alacsony
+Jas.4.4	er	10		parositva	10	G2889	alacsony
+Jas.4.4	er	11		parositva	12	G2189	alacsony
+Jas.4.4	er	12		forditatlan		G3588	alacsony
+Jas.4.4	er	13		parositva	14	G2316	alacsony
+Jas.4.4	er	14		forditatlan		G1510	alacsony
+Jas.4.4	er	15		parositva	15,16	G3739	alacsony
+Jas.4.4	er	16		forditatlan		G1437	alacsony
+Jas.4.4	er	17		parositva	17	G3767	alacsony
+Jas.4.4	er	18		parositva	21	G1014	alacsony
+Jas.4.4	er	19		parositva	20	G5384	alacsony
+Jas.4.4	er	20		parositva	22	G1511	alacsony
+Jas.4.4	er	21		parositva	18	G3588	alacsony
+Jas.4.4	er	22		parositva	19	G2889	alacsony
+Jas.4.4	er	23		parositva	25	G2190	alacsony
+Jas.4.4	er	24		forditatlan		G3588	alacsony
+Jas.4.4	er	25		parositva	24	G2316	alacsony
+Jas.4.4	er	26		parositva	26	G2525	alacsony
+Jas.4.5	hu	1	Vagy	parositva	1	G2228	alacsony
+Jas.4.5	hu	2	azt	betoldas			alacsony
+Jas.4.5	hu	3	gondoljátok	parositva	2	G1380	alacsony
+Jas.4.5	hu	4	hogy	parositva	3	G3754	alacsony
+Jas.4.5	hu	5	az	betoldas			alacsony
+Jas.4.5	hu	6	Írás	parositva	6	G1124	alacsony
+Jas.4.5	hu	7	hiába	parositva	4	G2761	alacsony
+Jas.4.5	hu	8	mondja	parositva	7	G3004	alacsony
+Jas.4.5	hu	9	Irígységre	parositva	8,9	G4314+G5355	alacsony
+Jas.4.5	hu	10	kívánkozik	parositva	10	G1971	alacsony
+Jas.4.5	hu	11	a	betoldas			alacsony
+Jas.4.5	hu	12	lélek	parositva	12	G4151	alacsony
+Jas.4.5	hu	13	a	parositva	13	G3739	alacsony
+Jas.4.5	hu	14	mely	parositva	13	G3739	alacsony
+Jas.4.5	hu	15	bennünk	parositva	15,16	G1722+G3165	alacsony
+Jas.4.5	hu	16	lakozik	parositva	14	G6052	alacsony
+Jas.4.5	er	1		parositva	1	G2228	alacsony
+Jas.4.5	er	2		parositva	3	G1380	alacsony
+Jas.4.5	er	3		parositva	4	G3754	alacsony
+Jas.4.5	er	4		parositva	7	G2761	alacsony
+Jas.4.5	er	5		forditatlan		G3588	alacsony
+Jas.4.5	er	6		parositva	6	G1124	alacsony
+Jas.4.5	er	7		parositva	8	G3004	alacsony
+Jas.4.5	er	8		parositva	9	G4314	alacsony
+Jas.4.5	er	9		parositva	9	G5355	alacsony
+Jas.4.5	er	10		parositva	10	G1971	alacsony
+Jas.4.5	er	11		forditatlan		G3588	alacsony
+Jas.4.5	er	12		parositva	12	G4151	alacsony
+Jas.4.5	er	13		parositva	13,14	G3739	alacsony
+Jas.4.5	er	14		parositva	16	G6052	alacsony
+Jas.4.5	er	15		parositva	15	G1722	alacsony
+Jas.4.5	er	16		parositva	15	G3165	alacsony
+Jas.4.6	hu	1	De	parositva	2	G1161	alacsony
+Jas.4.6	hu	2	majd	betoldas			alacsony
+Jas.4.6	hu	3	nagyobb	parositva	1	G3173	alacsony
+Jas.4.6	hu	4	kegyelmet	parositva	4	G5485	alacsony
+Jas.4.6	hu	5	ád	parositva	3	G1325	alacsony
+Jas.4.6	hu	6	ezért	parositva	5	G1352	alacsony
+Jas.4.6	hu	7	mondja	parositva	6	G3004	alacsony
+Jas.4.6	hu	8	Az	betoldas			alacsony
+Jas.4.6	hu	9	Isten	parositva	8	G2316	alacsony
+Jas.4.6	hu	10	a	betoldas			alacsony
+Jas.4.6	hu	11	kevélyeknek	parositva	9	G5244	alacsony
+Jas.4.6	hu	12	ellenök	parositva	10	G0498	alacsony
+Jas.4.6	hu	13	áll	parositva	10	G0498	alacsony
+Jas.4.6	hu	14	az	betoldas			alacsony
+Jas.4.6	hu	15	alázatosoknak	parositva	11	G5011	alacsony
+Jas.4.6	hu	16	pedig	parositva	12	G1161	alacsony
+Jas.4.6	hu	17	kegyelmet	parositva	14	G5485	alacsony
+Jas.4.6	hu	18	ád	parositva	13	G1325	alacsony
+Jas.4.6	er	1		parositva	3	G3173	alacsony
+Jas.4.6	er	2		parositva	1	G1161	alacsony
+Jas.4.6	er	3		parositva	5	G1325	alacsony
+Jas.4.6	er	4		parositva	4	G5485	alacsony
+Jas.4.6	er	5		parositva	6	G1352	alacsony
+Jas.4.6	er	6		parositva	7	G3004	alacsony
+Jas.4.6	er	7		forditatlan		G3588	alacsony
+Jas.4.6	er	8		parositva	9	G2316	alacsony
+Jas.4.6	er	9		parositva	11	G5244	alacsony
+Jas.4.6	er	10		parositva	12,13	G0498	alacsony
+Jas.4.6	er	11		parositva	15	G5011	alacsony
+Jas.4.6	er	12		parositva	16	G1161	alacsony
+Jas.4.6	er	13		parositva	18	G1325	alacsony
+Jas.4.6	er	14		parositva	17	G5485	alacsony
+Jas.4.7	hu	1	Engedelmeskedjetek	parositva	1	G5293	alacsony
+Jas.4.7	hu	2	azért	parositva	2	G3767	alacsony
+Jas.4.7	hu	3	az	betoldas			alacsony
+Jas.4.7	hu	4	Istennek	parositva	4	G2316	alacsony
+Jas.4.7	hu	5	álljatok	parositva	5	G0436	alacsony
+Jas.4.7	hu	6	ellene	parositva	5	G0436	alacsony
+Jas.4.7	hu	7	az	betoldas			alacsony
+Jas.4.7	hu	8	ördögnek	parositva	8	G1228	alacsony
+Jas.4.7	hu	9	és	parositva	9	G2532	alacsony
+Jas.4.7	hu	10	elfut	parositva	10	G5343	alacsony
+Jas.4.7	hu	11	tőletek	parositva	11,12	G0575+G4771	alacsony
+Jas.4.7	er	1		parositva	1	G5293	alacsony
+Jas.4.7	er	2		parositva	2	G3767	alacsony
+Jas.4.7	er	3		forditatlan		G3588	alacsony
+Jas.4.7	er	4		parositva	4	G2316	alacsony
+Jas.4.7	er	5		parositva	5,6	G0436	alacsony
+Jas.4.7	er	6		forditatlan		G1161	alacsony
+Jas.4.7	er	7		forditatlan		G3588	alacsony
+Jas.4.7	er	8		parositva	8	G1228	alacsony
+Jas.4.7	er	9		parositva	9	G2532	alacsony
+Jas.4.7	er	10		parositva	10	G5343	alacsony
+Jas.4.7	er	11		parositva	11	G0575	alacsony
+Jas.4.7	er	12		parositva	11	G4771	alacsony
+Jas.4.8	hu	1	Közeledjetek	parositva	1	G1448	alacsony
+Jas.4.8	hu	2	az	betoldas			alacsony
+Jas.4.8	hu	3	Istenhez	parositva	3	G2316	alacsony
+Jas.4.8	hu	4	és	parositva	4	G2532	alacsony
+Jas.4.8	hu	5	közeledni	parositva	5	G1448	alacsony
+Jas.4.8	hu	6	fog	betoldas			alacsony
+Jas.4.8	hu	7	hozzátok	parositva	6	G4771	alacsony
+Jas.4.8	hu	8	Tisztítsátok	parositva	7	G2511	alacsony
+Jas.4.8	hu	9	meg	parositva	7	G2511	alacsony
+Jas.4.8	hu	10	kezeiteket	parositva	8	G5495	alacsony
+Jas.4.8	hu	11	ti	betoldas			alacsony
+Jas.4.8	hu	12	bűnösök	parositva	9	G0268	alacsony
+Jas.4.8	hu	13	és	parositva	10	G2532	alacsony
+Jas.4.8	hu	14	szenteljétek	parositva	11	G0048	alacsony
+Jas.4.8	hu	15	meg	parositva	11	G0048	alacsony
+Jas.4.8	hu	16	szíveiteket	parositva	12	G2588	alacsony
+Jas.4.8	hu	17	ti	betoldas			alacsony
+Jas.4.8	hu	18	kétszívűek	parositva	13	G1374	alacsony
+Jas.4.8	er	1		parositva	1	G1448	alacsony
+Jas.4.8	er	2		forditatlan		G3588	alacsony
+Jas.4.8	er	3		parositva	3	G2316	alacsony
+Jas.4.8	er	4		parositva	4	G2532	alacsony
+Jas.4.8	er	5		parositva	5	G1448	alacsony
+Jas.4.8	er	6		parositva	7	G4771	alacsony
+Jas.4.8	er	7		parositva	8,9	G2511	alacsony
+Jas.4.8	er	8		parositva	10	G5495	alacsony
+Jas.4.8	er	9		parositva	12	G0268	alacsony
+Jas.4.8	er	10		parositva	13	G2532	alacsony
+Jas.4.8	er	11		parositva	14,15	G0048	alacsony
+Jas.4.8	er	12		parositva	16	G2588	alacsony
+Jas.4.8	er	13		parositva	18	G1374	alacsony
+Jas.4.9	hu	1	Nyomorkodjatok	parositva	1	G5003	alacsony
+Jas.4.9	hu	2	és	parositva	2	G2532	alacsony
+Jas.4.9	hu	3	gyászoljatok	parositva	3	G3996	alacsony
+Jas.4.9	hu	4	és	parositva	4	G2532	alacsony
+Jas.4.9	hu	5	sírjatok	parositva	5	G2799	alacsony
+Jas.4.9	hu	6	a	betoldas			alacsony
+Jas.4.9	hu	7	ti	parositva	8	G4771	alacsony
+Jas.4.9	hu	8	nevetéstek	parositva	7,8	G1071+G4771	alacsony
+Jas.4.9	hu	9	gyászra	parositva	9,10	G1519+G3997	alacsony
+Jas.4.9	hu	10	forduljon	parositva	11	G6060	alacsony
+Jas.4.9	hu	11	és	parositva	12	G2532	alacsony
+Jas.4.9	hu	12	örömötök	parositva	14	G5479	alacsony
+Jas.4.9	hu	13	szomorúságra	parositva	15,16	G1519+G2726	alacsony
+Jas.4.9	er	1		parositva	1	G5003	alacsony
+Jas.4.9	er	2		parositva	2	G2532	alacsony
+Jas.4.9	er	3		parositva	3	G3996	alacsony
+Jas.4.9	er	4		parositva	4	G2532	alacsony
+Jas.4.9	er	5		parositva	5	G2799	alacsony
+Jas.4.9	er	6		forditatlan		G3588	alacsony
+Jas.4.9	er	7		parositva	8	G1071	alacsony
+Jas.4.9	er	8		parositva	7,8	G4771	alacsony
+Jas.4.9	er	9		parositva	9	G1519	alacsony
+Jas.4.9	er	10		parositva	9	G3997	alacsony
+Jas.4.9	er	11		parositva	10	G6060	alacsony
+Jas.4.9	er	12		parositva	11	G2532	alacsony
+Jas.4.9	er	13		forditatlan		G3588	alacsony
+Jas.4.9	er	14		parositva	12	G5479	alacsony
+Jas.4.9	er	15		parositva	13	G1519	alacsony
+Jas.4.9	er	16		parositva	13	G2726	alacsony
+Jas.4.10	hu	1	Alázzátok	parositva	1	G5013	alacsony
+Jas.4.10	hu	2	meg	parositva	1	G5013	alacsony
+Jas.4.10	hu	3	magatokat	betoldas			alacsony
+Jas.4.10	hu	4	az	betoldas			alacsony
+Jas.4.10	hu	5	Úr	parositva	4	G2962	alacsony
+Jas.4.10	hu	6	előtt	parositva	2	G1799	alacsony
+Jas.4.10	hu	7	és	parositva	5	G2532	alacsony
+Jas.4.10	hu	8	felmagasztal	parositva	6	G5312	alacsony
+Jas.4.10	hu	9	titeket	parositva	7	G4771	alacsony
+Jas.4.10	er	1		parositva	1,2	G5013	alacsony
+Jas.4.10	er	2		parositva	6	G1799	alacsony
+Jas.4.10	er	3		forditatlan		G3588	alacsony
+Jas.4.10	er	4		parositva	5	G2962	alacsony
+Jas.4.10	er	5		parositva	7	G2532	alacsony
+Jas.4.10	er	6		parositva	8	G5312	alacsony
+Jas.4.10	er	7		parositva	9	G4771	alacsony
+Jas.4.11	hu	1	Ne	parositva	1	G3361	alacsony
+Jas.4.11	hu	2	szóljátok	parositva	2	G2635	alacsony
+Jas.4.11	hu	3	meg	parositva	2	G2635	alacsony
+Jas.4.11	hu	4	egymást	parositva	3	G0240	alacsony
+Jas.4.11	hu	5	atyámfiai	parositva	4	G0080	alacsony
+Jas.4.11	hu	6	A	betoldas			alacsony
+Jas.4.11	hu	7	ki	parositva	5	G3588	alacsony
+Jas.4.11	hu	8	megszólja	parositva	6	G2635	alacsony
+Jas.4.11	hu	9	atyjafiát	parositva	7	G0080	alacsony
+Jas.4.11	hu	10	és	betoldas			alacsony
+Jas.4.11	hu	11	a	betoldas			alacsony
+Jas.4.11	hu	12	ki	betoldas			alacsony
+Jas.4.11	hu	13	kárhoztatja	parositva	9	G2919	alacsony
+Jas.4.11	hu	14	atyjafiát	parositva	10,11,12	G3588+G0080+G0846	alacsony
+Jas.4.11	hu	15	az	betoldas			alacsony
+Jas.4.11	hu	16	a	betoldas			alacsony
+Jas.4.11	hu	17	törvény	parositva	14	G3551	alacsony
+Jas.4.11	hu	18	ellen	parositva	13	G2635	alacsony
+Jas.4.11	hu	19	szól	parositva	13	G2635	alacsony
+Jas.4.11	hu	20	és	parositva	15	G2532	alacsony
+Jas.4.11	hu	21	a	betoldas			alacsony
+Jas.4.11	hu	22	törvényt	parositva	17	G3551	alacsony
+Jas.4.11	hu	23	kárhoztatja	parositva	16	G2919	alacsony
+Jas.4.11	hu	24	Ha	parositva	18	G1487	alacsony
+Jas.4.11	hu	25	pedig	parositva	19	G1161	alacsony
+Jas.4.11	hu	26	a	betoldas			alacsony
+Jas.4.11	hu	27	törvényt	parositva	20	G3551	alacsony
+Jas.4.11	hu	28	kárhoztatod	parositva	21	G2919	alacsony
+Jas.4.11	hu	29	nem	parositva	22	G3756	alacsony
+Jas.4.11	hu	30	megtartója	parositva	23,24	G1510+G4163	alacsony
+Jas.4.11	hu	31	hanem	parositva	26	G0235	alacsony
+Jas.4.11	hu	32	bírája	parositva	27	G2923	alacsony
+Jas.4.11	hu	33	vagy	betoldas			alacsony
+Jas.4.11	hu	34	a	betoldas			alacsony
+Jas.4.11	hu	35	törvénynek	parositva	25	G3551	alacsony
+Jas.4.11	er	1		parositva	1	G3361	alacsony
+Jas.4.11	er	2		parositva	2,3	G2635	alacsony
+Jas.4.11	er	3		parositva	4	G0240	alacsony
+Jas.4.11	er	4		parositva	5	G0080	alacsony
+Jas.4.11	er	5		parositva	7	G3588	alacsony
+Jas.4.11	er	6		parositva	8	G2635	alacsony
+Jas.4.11	er	7		parositva	9	G0080	alacsony
+Jas.4.11	er	8		forditatlan		G2228	alacsony
+Jas.4.11	er	9		parositva	13	G2919	alacsony
+Jas.4.11	er	10		parositva	14	G3588	alacsony
+Jas.4.11	er	11		parositva	14	G0080	alacsony
+Jas.4.11	er	12		parositva	14	G0846	alacsony
+Jas.4.11	er	13		parositva	18,19	G2635	alacsony
+Jas.4.11	er	14		parositva	17	G3551	alacsony
+Jas.4.11	er	15		parositva	20	G2532	alacsony
+Jas.4.11	er	16		parositva	23	G2919	alacsony
+Jas.4.11	er	17		parositva	22	G3551	alacsony
+Jas.4.11	er	18		parositva	24	G1487	alacsony
+Jas.4.11	er	19		parositva	25	G1161	alacsony
+Jas.4.11	er	20		parositva	27	G3551	alacsony
+Jas.4.11	er	21		parositva	28	G2919	alacsony
+Jas.4.11	er	22		parositva	29	G3756	alacsony
+Jas.4.11	er	23		parositva	30	G1510	alacsony
+Jas.4.11	er	24		parositva	30	G4163	alacsony
+Jas.4.11	er	25		parositva	35	G3551	alacsony
+Jas.4.11	er	26		parositva	31	G0235	alacsony
+Jas.4.11	er	27		parositva	32	G2923	alacsony
+Jas.4.12	hu	1	Egy	parositva	1	G1520	alacsony
+Jas.4.12	hu	2	a	betoldas			alacsony
+Jas.4.12	hu	3	törvényhozó	parositva	4	G3550	alacsony
+Jas.4.12	hu	4	a	parositva	7	G3588	alacsony
+Jas.4.12	hu	5	ki	parositva	7	G3588	alacsony
+Jas.4.12	hu	6	hatalmas	parositva	8	G1410	alacsony
+Jas.4.12	hu	7	megtartani	parositva	9	G4982	alacsony
+Jas.4.12	hu	8	és	parositva	10	G2532	alacsony
+Jas.4.12	hu	9	elveszíteni	parositva	11	G0622	alacsony
+Jas.4.12	hu	10	kicsoda	parositva	14	G5101	alacsony
+Jas.4.12	hu	11	vagy	parositva	15	G1510	alacsony
+Jas.4.12	hu	12	te	parositva	12	G4771	alacsony
+Jas.4.12	hu	13	hogy	betoldas			alacsony
+Jas.4.12	hu	14	kárhoztatod	parositva	17	G2919	alacsony
+Jas.4.12	hu	15	a	betoldas			alacsony
+Jas.4.12	hu	16	másikat	parositva	19	G4139	alacsony
+Jas.4.12	er	1		parositva	1	G1520	alacsony
+Jas.4.12	er	2		forditatlan		G1510	alacsony
+Jas.4.12	er	3		forditatlan		G3588	alacsony
+Jas.4.12	er	4		parositva	3	G3550	alacsony
+Jas.4.12	er	5		forditatlan		G2532	alacsony
+Jas.4.12	er	6		forditatlan		G2923	alacsony
+Jas.4.12	er	7		parositva	4,5	G3588	alacsony
+Jas.4.12	er	8		parositva	6	G1410	alacsony
+Jas.4.12	er	9		parositva	7	G4982	alacsony
+Jas.4.12	er	10		parositva	8	G2532	alacsony
+Jas.4.12	er	11		parositva	9	G0622	alacsony
+Jas.4.12	er	12		parositva	12	G4771	alacsony
+Jas.4.12	er	13		forditatlan		G1161	alacsony
+Jas.4.12	er	14		parositva	10	G5101	alacsony
+Jas.4.12	er	15		parositva	11	G1510	alacsony
+Jas.4.12	er	16		forditatlan		G3588	alacsony
+Jas.4.12	er	17		parositva	14	G2919	alacsony
+Jas.4.12	er	18		forditatlan		G3588	alacsony
+Jas.4.12	er	19		parositva	16	G4139	alacsony
+Jas.4.13	hu	1	Nosza	parositva	1	G0071	alacsony
+Jas.4.13	hu	2	immár	parositva	2	G3568	alacsony
+Jas.4.13	hu	3	ti	betoldas			alacsony
+Jas.4.13	hu	4	a	parositva	3	G3588	alacsony
+Jas.4.13	hu	5	kik	parositva	3	G3588	alacsony
+Jas.4.13	hu	6	azt	betoldas			alacsony
+Jas.4.13	hu	7	mondjátok	parositva	4	G3004	alacsony
+Jas.4.13	hu	8	Ma	parositva	5	G4594	alacsony
+Jas.4.13	hu	9	vagy	betoldas			alacsony
+Jas.4.13	hu	10	holnap	parositva	7	G0839	alacsony
+Jas.4.13	hu	11	elmegyünk	betoldas			alacsony
+Jas.4.13	hu	12	ama	parositva	10,11	G3592+G3588	alacsony
+Jas.4.13	hu	13	városba	parositva	9,12	G1519+G4172	alacsony
+Jas.4.13	hu	14	és	parositva	13	G2532	alacsony
+Jas.4.13	hu	15	ott	parositva	15	G1563	alacsony
+Jas.4.13	hu	16	töltünk	betoldas			alacsony
+Jas.4.13	hu	17	egy	parositva	17	G1520	alacsony
+Jas.4.13	hu	18	esztendőt	parositva	16	G1763	alacsony
+Jas.4.13	hu	19	és	parositva	18	G2532	alacsony
+Jas.4.13	hu	20	kalmárkodunk	betoldas			alacsony
+Jas.4.13	hu	21	és	parositva	20	G2532	alacsony
+Jas.4.13	hu	22	nyerünk	betoldas			alacsony
+Jas.4.13	er	1		parositva	1	G0071	alacsony
+Jas.4.13	er	2		parositva	2	G3568	alacsony
+Jas.4.13	er	3		parositva	4,5	G3588	alacsony
+Jas.4.13	er	4		parositva	7	G3004	alacsony
+Jas.4.13	er	5		parositva	8	G4594	alacsony
+Jas.4.13	er	6		forditatlan		G2228	alacsony
+Jas.4.13	er	7		parositva	10	G0839	alacsony
+Jas.4.13	er	8		forditatlan		G4198	alacsony
+Jas.4.13	er	9		parositva	13	G1519	alacsony
+Jas.4.13	er	10		parositva	12	G3592	alacsony
+Jas.4.13	er	11		parositva	12	G3588	alacsony
+Jas.4.13	er	12		parositva	13	G4172	alacsony
+Jas.4.13	er	13		parositva	14	G2532	alacsony
+Jas.4.13	er	14		forditatlan		G4160	alacsony
+Jas.4.13	er	15		parositva	15	G1563	alacsony
+Jas.4.13	er	16		parositva	18	G1763	alacsony
+Jas.4.13	er	17		parositva	17	G1520	alacsony
+Jas.4.13	er	18		parositva	19	G2532	alacsony
+Jas.4.13	er	19		forditatlan		G1710	alacsony
+Jas.4.13	er	20		parositva	21	G2532	alacsony
+Jas.4.13	er	21		forditatlan		G2770	alacsony
+Jas.4.14	hu	1	A	betoldas			alacsony
+Jas.4.14	hu	2	kik	parositva	1	G3748	alacsony
+Jas.4.14	hu	3	nem	parositva	2	G3756	alacsony
+Jas.4.14	hu	4	tudjátok	parositva	3	G1987	alacsony
+Jas.4.14	hu	5	mit	parositva	4	G3588	alacsony
+Jas.4.14	hu	6	hoz	betoldas			alacsony
+Jas.4.14	hu	7	a	betoldas			alacsony
+Jas.4.14	hu	8	holnap	parositva	5,6	G3588+G0839	alacsony
+Jas.4.14	hu	9	mert	parositva	8	G1063	alacsony
+Jas.4.14	hu	10	micsoda	parositva	7	G4169	alacsony
+Jas.4.14	hu	11	a	betoldas			alacsony
+Jas.4.14	hu	12	ti	parositva	11	G4771	alacsony
+Jas.4.14	hu	13	életetek	parositva	10,11	G2222+G4771	alacsony
+Jas.4.14	hu	14	Bizony	parositva	13	G1063	alacsony
+Jas.4.14	hu	15	pára	parositva	12	G0822	alacsony
+Jas.4.14	hu	16	az	betoldas			alacsony
+Jas.4.14	hu	17	a	parositva	15	G3588	alacsony
+Jas.4.14	hu	18	mely	parositva	15	G3588	alacsony
+Jas.4.14	hu	19	rövid	parositva	17	G3641	alacsony
+Jas.4.14	hu	20	ideig	parositva	16,17	G4314+G3641	alacsony
+Jas.4.14	hu	21	látszik	parositva	18	G5316	alacsony
+Jas.4.14	hu	22	azután	parositva	19	G1899	alacsony
+Jas.4.14	hu	23	pedig	parositva	20	G1161	alacsony
+Jas.4.14	hu	24	eltűnik	parositva	22	G0853	alacsony
+Jas.4.14	er	1		parositva	2	G3748	alacsony
+Jas.4.14	er	2		parositva	3	G3756	alacsony
+Jas.4.14	er	3		parositva	4	G1987	alacsony
+Jas.4.14	er	4		parositva	5	G3588	alacsony
+Jas.4.14	er	5		parositva	8	G3588	alacsony
+Jas.4.14	er	6		parositva	8	G0839	alacsony
+Jas.4.14	er	7		parositva	10	G4169	alacsony
+Jas.4.14	er	8		parositva	9	G1063	alacsony
+Jas.4.14	er	9		forditatlan		G3588	alacsony
+Jas.4.14	er	10		parositva	13	G2222	alacsony
+Jas.4.14	er	11		parositva	12,13	G4771	alacsony
+Jas.4.14	er	12		parositva	15	G0822	alacsony
+Jas.4.14	er	13		parositva	14	G1063	alacsony
+Jas.4.14	er	14		forditatlan		G1510	alacsony
+Jas.4.14	er	15		parositva	17,18	G3588	alacsony
+Jas.4.14	er	16		parositva	20	G4314	alacsony
+Jas.4.14	er	17		parositva	19,20	G3641	alacsony
+Jas.4.14	er	18		parositva	21	G5316	alacsony
+Jas.4.14	er	19		parositva	22	G1899	alacsony
+Jas.4.14	er	20		parositva	23	G1161	alacsony
+Jas.4.14	er	21		forditatlan		G2532	alacsony
+Jas.4.14	er	22		parositva	24	G0853	alacsony
+Jas.4.15	hu	1	Holott	parositva	1	G0473	alacsony
+Jas.4.15	hu	2	ezt	betoldas			alacsony
+Jas.4.15	hu	3	kellene	betoldas			alacsony
+Jas.4.15	hu	4	mondanotok	parositva	3,4	G3004+G4771	alacsony
+Jas.4.15	hu	5	Ha	parositva	5	G1437	alacsony
+Jas.4.15	hu	6	az	betoldas			alacsony
+Jas.4.15	hu	7	Úr	parositva	7	G2962	alacsony
+Jas.4.15	hu	8	akarja	parositva	8	G2309	alacsony
+Jas.4.15	hu	9	és	parositva	9	G2532	alacsony
+Jas.4.15	hu	10	élünk	betoldas			alacsony
+Jas.4.15	hu	11	ím	betoldas			alacsony
+Jas.4.15	hu	12	ezt	parositva	13	G3778	alacsony
+Jas.4.15	hu	13	vagy	parositva	14	G2228	alacsony
+Jas.4.15	hu	14	amazt	parositva	15	G1565	alacsony
+Jas.4.15	hu	15	fogjuk	betoldas			alacsony
+Jas.4.15	hu	16	cselekedni	betoldas			alacsony
+Jas.4.15	er	1		parositva	1	G0473	alacsony
+Jas.4.15	er	2		forditatlan		G3588	alacsony
+Jas.4.15	er	3		parositva	4	G3004	alacsony
+Jas.4.15	er	4		parositva	4	G4771	alacsony
+Jas.4.15	er	5		parositva	5	G1437	alacsony
+Jas.4.15	er	6		forditatlan		G3588	alacsony
+Jas.4.15	er	7		parositva	7	G2962	alacsony
+Jas.4.15	er	8		parositva	8	G2309	alacsony
+Jas.4.15	er	9		parositva	9	G2532	alacsony
+Jas.4.15	er	10		forditatlan		G2198	alacsony
+Jas.4.15	er	11		forditatlan		G2532	alacsony
+Jas.4.15	er	12		forditatlan		G4160	alacsony
+Jas.4.15	er	13		parositva	12	G3778	alacsony
+Jas.4.15	er	14		parositva	13	G2228	alacsony
+Jas.4.15	er	15		parositva	14	G1565	alacsony
+Jas.4.16	hu	1	Ti	betoldas			alacsony
+Jas.4.16	hu	2	ellenben	parositva	1,2	G3568+G1161	alacsony
+Jas.4.16	hu	3	elbizakodottságtokban	parositva	4,5,6,7	G1722+G3588+G0212+G4771	alacsony
+Jas.4.16	hu	4	dicsekedtek	parositva	3	G2744	alacsony
+Jas.4.16	hu	5	Minden	parositva	8	G3956	alacsony
+Jas.4.16	hu	6	ilyen	parositva	10	G5108	alacsony
+Jas.4.16	hu	7	dicsekedés	parositva	9	G2746	alacsony
+Jas.4.16	hu	8	gonosz	parositva	11	G4190	alacsony
+Jas.4.16	er	1		parositva	2	G3568	alacsony
+Jas.4.16	er	2		parositva	2	G1161	alacsony
+Jas.4.16	er	3		parositva	4	G2744	alacsony
+Jas.4.16	er	4		parositva	3	G1722	alacsony
+Jas.4.16	er	5		parositva	3	G3588	alacsony
+Jas.4.16	er	6		parositva	3	G0212	alacsony
+Jas.4.16	er	7		parositva	3	G4771	alacsony
+Jas.4.16	er	8		parositva	5	G3956	alacsony
+Jas.4.16	er	9		parositva	7	G2746	alacsony
+Jas.4.16	er	10		parositva	6	G5108	alacsony
+Jas.4.16	er	11		parositva	8	G4190	alacsony
+Jas.4.16	er	12		forditatlan		G1510	alacsony
+Jas.4.17	hu	1	A	betoldas			alacsony
+Jas.4.17	hu	2	ki	betoldas			alacsony
+Jas.4.17	hu	3	azért	parositva	2	G3767	alacsony
+Jas.4.17	hu	4	tudna	parositva	1	G6063	alacsony
+Jas.4.17	hu	5	jót	parositva	3	G2570	alacsony
+Jas.4.17	hu	6	cselekedni	parositva	4	G4160	alacsony
+Jas.4.17	hu	7	és	parositva	5	G2532	alacsony
+Jas.4.17	hu	8	nem	parositva	6	G3361	alacsony
+Jas.4.17	hu	9	cselekeszik	parositva	7	G4160	alacsony
+Jas.4.17	hu	10	bűne	parositva	8,9	G0266+G0846	alacsony
+Jas.4.17	hu	11	az	parositva	10	G1510	alacsony
+Jas.4.17	hu	12	annak	parositva	9	G0846	alacsony
+Jas.4.17	er	1		parositva	4	G6063	alacsony
+Jas.4.17	er	2		parositva	3	G3767	alacsony
+Jas.4.17	er	3		parositva	5	G2570	alacsony
+Jas.4.17	er	4		parositva	6	G4160	alacsony
+Jas.4.17	er	5		parositva	7	G2532	alacsony
+Jas.4.17	er	6		parositva	8	G3361	alacsony
+Jas.4.17	er	7		parositva	9	G4160	alacsony
+Jas.4.17	er	8		parositva	10	G0266	alacsony
+Jas.4.17	er	9		parositva	10,12	G0846	alacsony
+Jas.4.17	er	10		parositva	11	G1510	alacsony
+Jas.5.1	hu	1	Nosza	parositva	1	G0071	alacsony
+Jas.5.1	hu	2	immár	parositva	2	G3568	alacsony
+Jas.5.1	hu	3	ti	parositva	3	G3588	alacsony
+Jas.5.1	hu	4	gazdagok	parositva	4	G4145	alacsony
+Jas.5.1	hu	5	sírjatok	parositva	5	G2799	alacsony
+Jas.5.1	hu	6	jajgatván	parositva	6	G3649	alacsony
+Jas.5.1	hu	7	a	betoldas			alacsony
+Jas.5.1	hu	8	ti	parositva	10	G4771	alacsony
+Jas.5.1	hu	9	nyomorúságaitok	parositva	8,9,10	G3588+G5004+G4771	alacsony
+Jas.5.1	hu	10	miatt	parositva	7	G1909	alacsony
+Jas.5.1	hu	11	a	parositva	11	G3588	alacsony
+Jas.5.1	hu	12	melyek	parositva	11	G3588	alacsony
+Jas.5.1	hu	13	elkövetkeznek	parositva	12	G1904	alacsony
+Jas.5.1	hu	14	reátok	betoldas			alacsony
+Jas.5.1	er	1		parositva	1	G0071	alacsony
+Jas.5.1	er	2		parositva	2	G3568	alacsony
+Jas.5.1	er	3		parositva	3	G3588	alacsony
+Jas.5.1	er	4		parositva	4	G4145	alacsony
+Jas.5.1	er	5		parositva	5	G2799	alacsony
+Jas.5.1	er	6		parositva	6	G3649	alacsony
+Jas.5.1	er	7		parositva	10	G1909	alacsony
+Jas.5.1	er	8		parositva	9	G3588	alacsony
+Jas.5.1	er	9		parositva	9	G5004	alacsony
+Jas.5.1	er	10		parositva	8,9	G4771	alacsony
+Jas.5.1	er	11		parositva	11,12	G3588	alacsony
+Jas.5.1	er	12		parositva	13	G1904	alacsony
+Jas.5.2	hu	1	Gazdagságotok	parositva	2,3	G4149+G4771	alacsony
+Jas.5.2	hu	2	megrothadt	parositva	4	G4595	alacsony
+Jas.5.2	hu	3	és	parositva	5	G2532	alacsony
+Jas.5.2	hu	4	a	betoldas			alacsony
+Jas.5.2	hu	5	ruháitokat	parositva	7,8	G2440+G4771	alacsony
+Jas.5.2	hu	6	moly	parositva	9	G4598	alacsony
+Jas.5.2	hu	7	ette	parositva	9,10	G4598+G1096	alacsony
+Jas.5.2	hu	8	meg	parositva	9,10	G4598+G1096	alacsony
+Jas.5.2	er	1		forditatlan		G3588	alacsony
+Jas.5.2	er	2		parositva	1	G4149	alacsony
+Jas.5.2	er	3		parositva	1	G4771	alacsony
+Jas.5.2	er	4		parositva	2	G4595	alacsony
+Jas.5.2	er	5		parositva	3	G2532	alacsony
+Jas.5.2	er	6		forditatlan		G3588	alacsony
+Jas.5.2	er	7		parositva	5	G2440	alacsony
+Jas.5.2	er	8		parositva	5	G4771	alacsony
+Jas.5.2	er	9		parositva	6,7,8	G4598	alacsony
+Jas.5.2	er	10		parositva	7,8	G1096	alacsony
+Jas.5.3	hu	1	Aranyotokat	parositva	2,3	G5557+G4771	alacsony
+Jas.5.3	hu	2	és	parositva	4	G2532	alacsony
+Jas.5.3	hu	3	ezüstötöket	parositva	3,6	G4771+G0696	alacsony
+Jas.5.3	hu	4	rozsda	parositva	7	G2728	alacsony
+Jas.5.3	hu	5	fogta	parositva	7	G2728	alacsony
+Jas.5.3	hu	6	meg	parositva	7	G2728	alacsony
+Jas.5.3	hu	7	és	parositva	8	G2532	alacsony
+Jas.5.3	hu	8	azok	parositva	11	G0846	alacsony
+Jas.5.3	hu	9	rozsdája	parositva	10	G2447	alacsony
+Jas.5.3	hu	10	bizonyság	parositva	12,13	G1519+G3142	alacsony
+Jas.5.3	hu	11	ellenetek	parositva	14	G4771	alacsony
+Jas.5.3	hu	12	és	parositva	16	G2532	alacsony
+Jas.5.3	hu	13	megemészti	parositva	17	G5315	alacsony
+Jas.5.3	hu	14	a	betoldas			alacsony
+Jas.5.3	hu	15	ti	parositva	20	G4771	alacsony
+Jas.5.3	hu	16	testeteket	parositva	19,20	G4561+G4771	alacsony
+Jas.5.3	hu	17	mint	parositva	21	G5613	alacsony
+Jas.5.3	hu	18	a	betoldas			alacsony
+Jas.5.3	hu	19	tűz	parositva	22	G4442	alacsony
+Jas.5.3	hu	20	Kincset	parositva	23	G2343	alacsony
+Jas.5.3	hu	21	gyűjtöttetek	parositva	23	G2343	alacsony
+Jas.5.3	hu	22	az	betoldas			alacsony
+Jas.5.3	hu	23	utolsó	parositva	25	G2078	alacsony
+Jas.5.3	hu	24	napokban	parositva	24,26	G1722+G2250	alacsony
+Jas.5.3	er	1		forditatlan		G3588	alacsony
+Jas.5.3	er	2		parositva	1	G5557	alacsony
+Jas.5.3	er	3		parositva	1,3	G4771	alacsony
+Jas.5.3	er	4		parositva	2	G2532	alacsony
+Jas.5.3	er	5		forditatlan		G3588	alacsony
+Jas.5.3	er	6		parositva	3	G0696	alacsony
+Jas.5.3	er	7		parositva	4,5,6	G2728	alacsony
+Jas.5.3	er	8		parositva	7	G2532	alacsony
+Jas.5.3	er	9		forditatlan		G3588	alacsony
+Jas.5.3	er	10		parositva	9	G2447	alacsony
+Jas.5.3	er	11		parositva	8	G0846	alacsony
+Jas.5.3	er	12		parositva	10	G1519	alacsony
+Jas.5.3	er	13		parositva	10	G3142	alacsony
+Jas.5.3	er	14		parositva	11	G4771	alacsony
+Jas.5.3	er	15		forditatlan		G1510	alacsony
+Jas.5.3	er	16		parositva	12	G2532	alacsony
+Jas.5.3	er	17		parositva	13	G5315	alacsony
+Jas.5.3	er	18		forditatlan		G3588	alacsony
+Jas.5.3	er	19		parositva	16	G4561	alacsony
+Jas.5.3	er	20		parositva	15,16	G4771	alacsony
+Jas.5.3	er	21		parositva	17	G5613	alacsony
+Jas.5.3	er	22		parositva	19	G4442	alacsony
+Jas.5.3	er	23		parositva	20,21	G2343	alacsony
+Jas.5.3	er	24		parositva	24	G1722	alacsony
+Jas.5.3	er	25		parositva	23	G2078	alacsony
+Jas.5.3	er	26		parositva	24	G2250	alacsony
+Jas.5.4	hu	1	Ímé	parositva	1	G2400	alacsony
+Jas.5.4	hu	2	a	betoldas			alacsony
+Jas.5.4	hu	3	ti	parositva	10	G4771	alacsony
+Jas.5.4	hu	4	mezőiteket	parositva	9,10	G5561+G4771	alacsony
+Jas.5.4	hu	5	learató	parositva	7	G0270	alacsony
+Jas.5.4	hu	6	munkások	parositva	5	G2040	alacsony
+Jas.5.4	hu	7	bére	parositva	3	G3408	alacsony
+Jas.5.4	hu	8	a	parositva	11	G3588	alacsony
+Jas.5.4	hu	9	mit	parositva	11	G3588	alacsony
+Jas.5.4	hu	10	ti	parositva	14	G4771	alacsony
+Jas.5.4	hu	11	elfogtatok	parositva	12,13	G0650+G0575	alacsony
+Jas.5.4	hu	12	kiált	parositva	15	G2896	alacsony
+Jas.5.4	hu	13	És	parositva	16	G2532	alacsony
+Jas.5.4	hu	14	az	betoldas			alacsony
+Jas.5.4	hu	15	aratók	parositva	20	G2325	alacsony
+Jas.5.4	hu	16	kiáltásai	parositva	18	G0995	alacsony
+Jas.5.4	hu	17	eljutottak	parositva	26	G1525	alacsony
+Jas.5.4	hu	18	a	betoldas			alacsony
+Jas.5.4	hu	19	Seregek	parositva	25	G4519	alacsony
+Jas.5.4	hu	20	Urának	parositva	24	G2962	alacsony
+Jas.5.4	hu	21	füleihez	parositva	21,23	G1519+G3775	alacsony
+Jas.5.4	er	1		parositva	1	G2400	alacsony
+Jas.5.4	er	2		forditatlan		G3588	alacsony
+Jas.5.4	er	3		parositva	7	G3408	alacsony
+Jas.5.4	er	4		forditatlan		G3588	alacsony
+Jas.5.4	er	5		parositva	6	G2040	alacsony
+Jas.5.4	er	6		forditatlan		G3588	alacsony
+Jas.5.4	er	7		parositva	5	G0270	alacsony
+Jas.5.4	er	8		forditatlan		G3588	alacsony
+Jas.5.4	er	9		parositva	4	G5561	alacsony
+Jas.5.4	er	10		parositva	3,4	G4771	alacsony
+Jas.5.4	er	11		parositva	8,9	G3588	alacsony
+Jas.5.4	er	12		parositva	11	G0650	alacsony
+Jas.5.4	er	13		parositva	11	G0575	alacsony
+Jas.5.4	er	14		parositva	10	G4771	alacsony
+Jas.5.4	er	15		parositva	12	G2896	alacsony
+Jas.5.4	er	16		parositva	13	G2532	alacsony
+Jas.5.4	er	17		forditatlan		G3588	alacsony
+Jas.5.4	er	18		parositva	16	G0995	alacsony
+Jas.5.4	er	19		forditatlan		G3588	alacsony
+Jas.5.4	er	20		parositva	15	G2325	alacsony
+Jas.5.4	er	21		parositva	21	G1519	alacsony
+Jas.5.4	er	22		forditatlan		G3588	alacsony
+Jas.5.4	er	23		parositva	21	G3775	alacsony
+Jas.5.4	er	24		parositva	20	G2962	alacsony
+Jas.5.4	er	25		parositva	19	G4519	alacsony
+Jas.5.4	er	26		parositva	17	G1525	alacsony
+Jas.5.5	hu	1	Dőzsöltetek	parositva	1	G5171	alacsony
+Jas.5.5	hu	2	e	parositva	2,3	G1909+G3588	alacsony
+Jas.5.5	hu	3	földön	parositva	2,4	G1909+G1093	alacsony
+Jas.5.5	hu	4	és	parositva	5	G2532	alacsony
+Jas.5.5	hu	5	dobzódtatok	parositva	6	G4684	alacsony
+Jas.5.5	hu	6	szívetek	parositva	9,10	G2588+G4771	alacsony
+Jas.5.5	hu	7	legeltettétek	parositva	7	G5142	alacsony
+Jas.5.5	hu	8	mint	parositva	11	G5613	alacsony
+Jas.5.5	hu	9	áldozás	parositva	14	G4967	alacsony
+Jas.5.5	hu	10	napján	parositva	12,13	G1722+G2250	alacsony
+Jas.5.5	er	1		parositva	1	G5171	alacsony
+Jas.5.5	er	2		parositva	2,3	G1909	alacsony
+Jas.5.5	er	3		parositva	2	G3588	alacsony
+Jas.5.5	er	4		parositva	3	G1093	alacsony
+Jas.5.5	er	5		parositva	4	G2532	alacsony
+Jas.5.5	er	6		parositva	5	G4684	alacsony
+Jas.5.5	er	7		parositva	7	G5142	alacsony
+Jas.5.5	er	8		forditatlan		G3588	alacsony
+Jas.5.5	er	9		parositva	6	G2588	alacsony
+Jas.5.5	er	10		parositva	6	G4771	alacsony
+Jas.5.5	er	11		parositva	8	G5613	alacsony
+Jas.5.5	er	12		parositva	10	G1722	alacsony
+Jas.5.5	er	13		parositva	10	G2250	alacsony
+Jas.5.5	er	14		parositva	9	G4967	alacsony
+Jas.5.6	hu	1	Elkárhoztattátok	parositva	1	G2613	alacsony
+Jas.5.6	hu	2	megöltétek	parositva	2	G5407	alacsony
+Jas.5.6	hu	3	az	betoldas			alacsony
+Jas.5.6	hu	4	igazat	parositva	4	G1342	alacsony
+Jas.5.6	hu	5	nem	parositva	5	G3756	alacsony
+Jas.5.6	hu	6	áll	parositva	6	G0498	alacsony
+Jas.5.6	hu	7	ellent	parositva	6	G0498	alacsony
+Jas.5.6	hu	8	néktek	parositva	7	G4771	alacsony
+Jas.5.6	er	1		parositva	1	G2613	alacsony
+Jas.5.6	er	2		parositva	2	G5407	alacsony
+Jas.5.6	er	3		forditatlan		G3588	alacsony
+Jas.5.6	er	4		parositva	4	G1342	alacsony
+Jas.5.6	er	5		parositva	5	G3756	alacsony
+Jas.5.6	er	6		parositva	6,7	G0498	alacsony
+Jas.5.6	er	7		parositva	8	G4771	alacsony
+Jas.5.7	hu	1	Legyetek	parositva	1	G3114	alacsony
+Jas.5.7	hu	2	azért	parositva	2	G3767	alacsony
+Jas.5.7	hu	3	atyámfiai	parositva	3	G0080	alacsony
+Jas.5.7	hu	4	béketűrők	parositva	1	G3114	alacsony
+Jas.5.7	hu	5	az	betoldas			alacsony
+Jas.5.7	hu	6	Úrnak	parositva	8	G2962	alacsony
+Jas.5.7	hu	7	eljöveteléig	parositva	4,6	G2193+G3952	alacsony
+Jas.5.7	hu	8	Ímé	parositva	9	G2400	alacsony
+Jas.5.7	hu	9	a	betoldas			alacsony
+Jas.5.7	hu	10	szántóvető	parositva	11	G1092	alacsony
+Jas.5.7	hu	11	várja	parositva	12	G1551	alacsony
+Jas.5.7	hu	12	a	betoldas			alacsony
+Jas.5.7	hu	13	földnek	parositva	17	G1093	alacsony
+Jas.5.7	hu	14	drága	parositva	14	G5093	alacsony
+Jas.5.7	hu	15	gyümölcsét	parositva	15	G2590	alacsony
+Jas.5.7	hu	16	béketűréssel	parositva	18	G3114	alacsony
+Jas.5.7	hu	17	várja	parositva	19,20	G1909+G0846	alacsony
+Jas.5.7	hu	18	míg	parositva	21,22	G2193+G0302	alacsony
+Jas.5.7	hu	19	reggeli	parositva	25	G4406	alacsony
+Jas.5.7	hu	20	és	parositva	26	G2532	alacsony
+Jas.5.7	hu	21	estveli	parositva	27	G3797	alacsony
+Jas.5.7	hu	22	esőt	parositva	24	G5205	alacsony
+Jas.5.7	hu	23	kap	parositva	23	G2983	alacsony
+Jas.5.7	er	1		parositva	1,4	G3114	alacsony
+Jas.5.7	er	2		parositva	2	G3767	alacsony
+Jas.5.7	er	3		parositva	3	G0080	alacsony
+Jas.5.7	er	4		parositva	7	G2193	alacsony
+Jas.5.7	er	5		forditatlan		G3588	alacsony
+Jas.5.7	er	6		parositva	7	G3952	alacsony
+Jas.5.7	er	7		forditatlan		G3588	alacsony
+Jas.5.7	er	8		parositva	6	G2962	alacsony
+Jas.5.7	er	9		parositva	8	G2400	alacsony
+Jas.5.7	er	10		forditatlan		G3588	alacsony
+Jas.5.7	er	11		parositva	10	G1092	alacsony
+Jas.5.7	er	12		parositva	11	G1551	alacsony
+Jas.5.7	er	13		forditatlan		G3588	alacsony
+Jas.5.7	er	14		parositva	14	G5093	alacsony
+Jas.5.7	er	15		parositva	15	G2590	alacsony
+Jas.5.7	er	16		forditatlan		G3588	alacsony
+Jas.5.7	er	17		parositva	13	G1093	alacsony
+Jas.5.7	er	18		parositva	16	G3114	alacsony
+Jas.5.7	er	19		parositva	17	G1909	alacsony
+Jas.5.7	er	20		parositva	17	G0846	alacsony
+Jas.5.7	er	21		parositva	18	G2193	alacsony
+Jas.5.7	er	22		parositva	18	G0302	alacsony
+Jas.5.7	er	23		parositva	23	G2983	alacsony
+Jas.5.7	er	24		parositva	22	G5205	alacsony
+Jas.5.7	er	25		parositva	19	G4406	alacsony
+Jas.5.7	er	26		parositva	20	G2532	alacsony
+Jas.5.7	er	27		parositva	21	G3797	alacsony
+Jas.5.8	hu	1	Legyetek	parositva	1	G3114	alacsony
+Jas.5.8	hu	2	ti	parositva	3	G4771	alacsony
+Jas.5.8	hu	3	is	parositva	2	G2532	alacsony
+Jas.5.8	hu	4	béketűrők	parositva	1	G3114	alacsony
+Jas.5.8	hu	5	és	betoldas			alacsony
+Jas.5.8	hu	6	erősítsétek	parositva	4	G4741	alacsony
+Jas.5.8	hu	7	meg	parositva	4	G4741	alacsony
+Jas.5.8	hu	8	szíveteket	parositva	6,7	G2588+G4771	alacsony
+Jas.5.8	hu	9	mert	parositva	8	G3754	alacsony
+Jas.5.8	hu	10	az	betoldas			alacsony
+Jas.5.8	hu	11	Úrnak	parositva	12	G2962	alacsony
+Jas.5.8	hu	12	eljövetele	parositva	10	G3952	alacsony
+Jas.5.8	hu	13	közel	parositva	13	G1448	alacsony
+Jas.5.8	hu	14	van	parositva	13	G1448	alacsony
+Jas.5.8	er	1		parositva	1,4	G3114	alacsony
+Jas.5.8	er	2		parositva	3	G2532	alacsony
+Jas.5.8	er	3		parositva	2	G4771	alacsony
+Jas.5.8	er	4		parositva	6,7	G4741	alacsony
+Jas.5.8	er	5		forditatlan		G3588	alacsony
+Jas.5.8	er	6		parositva	8	G2588	alacsony
+Jas.5.8	er	7		parositva	8	G4771	alacsony
+Jas.5.8	er	8		parositva	9	G3754	alacsony
+Jas.5.8	er	9		forditatlan		G3588	alacsony
+Jas.5.8	er	10		parositva	12	G3952	alacsony
+Jas.5.8	er	11		forditatlan		G3588	alacsony
+Jas.5.8	er	12		parositva	11	G2962	alacsony
+Jas.5.8	er	13		parositva	13,14	G1448	alacsony
+Jas.5.9	hu	1	Ne	parositva	1	G3361	alacsony
+Jas.5.9	hu	2	sóhajtozzatok	parositva	2	G4727	alacsony
+Jas.5.9	hu	3	egymás	parositva	5	G0240	alacsony
+Jas.5.9	hu	4	ellen	parositva	4	G2596	alacsony
+Jas.5.9	hu	5	atyámfiai	parositva	3	G0080	alacsony
+Jas.5.9	hu	6	hogy	parositva	6	G2443	alacsony
+Jas.5.9	hu	7	el	betoldas			alacsony
+Jas.5.9	hu	8	ne	parositva	7	G3361	alacsony
+Jas.5.9	hu	9	ítéltessetek	betoldas			alacsony
+Jas.5.9	hu	10	ímé	parositva	9	G2400	alacsony
+Jas.5.9	hu	11	a	betoldas			alacsony
+Jas.5.9	hu	12	Bíró	parositva	11	G2923	alacsony
+Jas.5.9	hu	13	az	betoldas			alacsony
+Jas.5.9	hu	14	ajtó	parositva	14	G2374	alacsony
+Jas.5.9	hu	15	előtt	parositva	12	G4253	alacsony
+Jas.5.9	hu	16	áll	parositva	15	G2476	alacsony
+Jas.5.9	er	1		parositva	1	G3361	alacsony
+Jas.5.9	er	2		parositva	2	G4727	alacsony
+Jas.5.9	er	3		parositva	5	G0080	alacsony
+Jas.5.9	er	4		parositva	4	G2596	alacsony
+Jas.5.9	er	5		parositva	3	G0240	alacsony
+Jas.5.9	er	6		parositva	6	G2443	alacsony
+Jas.5.9	er	7		parositva	8	G3361	alacsony
+Jas.5.9	er	8		forditatlan		G2919	alacsony
+Jas.5.9	er	9		parositva	10	G2400	alacsony
+Jas.5.9	er	10		forditatlan		G3588	alacsony
+Jas.5.9	er	11		parositva	12	G2923	alacsony
+Jas.5.9	er	12		parositva	15	G4253	alacsony
+Jas.5.9	er	13		forditatlan		G3588	alacsony
+Jas.5.9	er	14		parositva	14	G2374	alacsony
+Jas.5.9	er	15		parositva	16	G2476	alacsony
+Jas.5.10	hu	1	Például	parositva	1	G5262	alacsony
+Jas.5.10	hu	2	vegyétek	parositva	2	G2983	alacsony
+Jas.5.10	hu	3	atyámfiai	parositva	3,4	G0080+G3165	alacsony
+Jas.5.10	hu	4	a	betoldas			alacsony
+Jas.5.10	hu	5	szenvedésben	parositva	6	G2552	alacsony
+Jas.5.10	hu	6	és	parositva	7	G2532	alacsony
+Jas.5.10	hu	7	béketűrésben	parositva	9	G3115	alacsony
+Jas.5.10	hu	8	a	betoldas			alacsony
+Jas.5.10	hu	9	prófétákat	parositva	11	G4396	alacsony
+Jas.5.10	hu	10	a	parositva	12	G3739	alacsony
+Jas.5.10	hu	11	kik	parositva	12	G3739	alacsony
+Jas.5.10	hu	12	az	betoldas			alacsony
+Jas.5.10	hu	13	Úr	parositva	17	G2962	alacsony
+Jas.5.10	hu	14	nevében	parositva	16	G3686	alacsony
+Jas.5.10	hu	15	szólottak	parositva	13	G2980	alacsony
+Jas.5.10	er	1		parositva	1	G5262	alacsony
+Jas.5.10	er	2		parositva	2	G2983	alacsony
+Jas.5.10	er	3		parositva	3	G0080	alacsony
+Jas.5.10	er	4		parositva	3	G3165	alacsony
+Jas.5.10	er	5		forditatlan		G3588	alacsony
+Jas.5.10	er	6		parositva	5	G2552	alacsony
+Jas.5.10	er	7		parositva	6	G2532	alacsony
+Jas.5.10	er	8		forditatlan		G3588	alacsony
+Jas.5.10	er	9		parositva	7	G3115	alacsony
+Jas.5.10	er	10		forditatlan		G3588	alacsony
+Jas.5.10	er	11		parositva	9	G4396	alacsony
+Jas.5.10	er	12		parositva	10,11	G3739	alacsony
+Jas.5.10	er	13		parositva	15	G2980	alacsony
+Jas.5.10	er	14		forditatlan		G1722	alacsony
+Jas.5.10	er	15		forditatlan		G3588	alacsony
+Jas.5.10	er	16		parositva	14	G3686	alacsony
+Jas.5.10	er	17		parositva	13	G2962	alacsony
+Jas.5.11	hu	1	Ímé	parositva	1	G2400	alacsony
+Jas.5.11	hu	2	boldogoknak	parositva	2	G3106	alacsony
+Jas.5.11	hu	3	mondjuk	parositva	2	G3106	alacsony
+Jas.5.11	hu	4	a	betoldas			alacsony
+Jas.5.11	hu	5	tűrni	betoldas			alacsony
+Jas.5.11	hu	6	tudókat	betoldas			alacsony
+Jas.5.11	hu	7	Jóbnak	parositva	7	G2492	alacsony
+Jas.5.11	hu	8	tűrését	parositva	6	G5281	alacsony
+Jas.5.11	hu	9	hallottátok	parositva	8	G0191	alacsony
+Jas.5.11	hu	10	és	parositva	9	G2532	alacsony
+Jas.5.11	hu	11	az	betoldas			alacsony
+Jas.5.11	hu	12	Úrtól	parositva	12	G2962	alacsony
+Jas.5.11	hu	13	való	betoldas			alacsony
+Jas.5.11	hu	14	végét	parositva	11	G5056	alacsony
+Jas.5.11	hu	15	láttátok	parositva	13	G1492	alacsony
+Jas.5.11	hu	16	hogy	parositva	14	G3754	alacsony
+Jas.5.11	hu	17	igen	parositva	15	G4184	alacsony
+Jas.5.11	hu	18	irgalmas	parositva	15	G4184	alacsony
+Jas.5.11	hu	19	az	betoldas			alacsony
+Jas.5.11	hu	20	Úr	parositva	18	G2962	alacsony
+Jas.5.11	hu	21	és	parositva	19	G2532	alacsony
+Jas.5.11	hu	22	könyörületes	parositva	20	G3629	alacsony
+Jas.5.11	er	1		parositva	1	G2400	alacsony
+Jas.5.11	er	2		parositva	2,3	G3106	alacsony
+Jas.5.11	er	3		forditatlan		G3588	alacsony
+Jas.5.11	er	4		forditatlan		G5278	alacsony
+Jas.5.11	er	5		forditatlan		G3588	alacsony
+Jas.5.11	er	6		parositva	8	G5281	alacsony
+Jas.5.11	er	7		parositva	7	G2492	alacsony
+Jas.5.11	er	8		parositva	9	G0191	alacsony
+Jas.5.11	er	9		parositva	10	G2532	alacsony
+Jas.5.11	er	10		forditatlan		G3588	alacsony
+Jas.5.11	er	11		parositva	14	G5056	alacsony
+Jas.5.11	er	12		parositva	12	G2962	alacsony
+Jas.5.11	er	13		parositva	15	G1492	alacsony
+Jas.5.11	er	14		parositva	16	G3754	alacsony
+Jas.5.11	er	15		parositva	17,18	G4184	alacsony
+Jas.5.11	er	16		forditatlan		G1510	alacsony
+Jas.5.11	er	17		forditatlan		G3588	alacsony
+Jas.5.11	er	18		parositva	20	G2962	alacsony
+Jas.5.11	er	19		parositva	21	G2532	alacsony
+Jas.5.11	er	20		parositva	22	G3629	alacsony
+Jas.5.12	hu	1	Mindeneknek	parositva	2	G3956	alacsony
+Jas.5.12	hu	2	előtte	parositva	1	G4253	alacsony
+Jas.5.12	hu	3	pedig	parositva	3	G1161	alacsony
+Jas.5.12	hu	4	ne	parositva	6	G3361	alacsony
+Jas.5.12	hu	5	esküdjetek	parositva	7	G3660	alacsony
+Jas.5.12	hu	6	atyámfiai	parositva	4,5	G0080+G3165	alacsony
+Jas.5.12	hu	7	se	parositva	8	G3383	alacsony
+Jas.5.12	hu	8	az	betoldas			alacsony
+Jas.5.12	hu	9	égre	parositva	10	G3772	alacsony
+Jas.5.12	hu	10	se	parositva	11	G3383	alacsony
+Jas.5.12	hu	11	a	betoldas			alacsony
+Jas.5.12	hu	12	földre	parositva	13	G1093	alacsony
+Jas.5.12	hu	13	se	parositva	14	G3383	alacsony
+Jas.5.12	hu	14	semmi	parositva	16	G5100	alacsony
+Jas.5.12	hu	15	más	parositva	15	G0243	alacsony
+Jas.5.12	hu	16	esküvéssel	parositva	17	G3727	alacsony
+Jas.5.12	hu	17	Hanem	parositva	19	G1161	alacsony
+Jas.5.12	hu	18	legyen	parositva	18	G1510	alacsony
+Jas.5.12	hu	19	a	betoldas			alacsony
+Jas.5.12	hu	20	ti	parositva	20	G4771	alacsony
+Jas.5.12	hu	21	igenetek	parositva	20,22	G4771+G3483	alacsony
+Jas.5.12	hu	22	igen	parositva	23	G3483	alacsony
+Jas.5.12	hu	23	és	parositva	24	G2532	alacsony
+Jas.5.12	hu	24	a	betoldas			alacsony
+Jas.5.12	hu	25	nem	parositva	26	G3756	alacsony
+Jas.5.12	hu	26	nem	parositva	27	G3756	alacsony
+Jas.5.12	hu	27	hogy	parositva	28	G2443	alacsony
+Jas.5.12	hu	28	kárhoztatás	betoldas			alacsony
+Jas.5.12	hu	29	alá	betoldas			alacsony
+Jas.5.12	hu	30	ne	parositva	29	G3361	alacsony
+Jas.5.12	hu	31	essetek	parositva	32	G4098	alacsony
+Jas.5.12	er	1		parositva	2	G4253	alacsony
+Jas.5.12	er	2		parositva	1	G3956	alacsony
+Jas.5.12	er	3		parositva	3	G1161	alacsony
+Jas.5.12	er	4		parositva	6	G0080	alacsony
+Jas.5.12	er	5		parositva	6	G3165	alacsony
+Jas.5.12	er	6		parositva	4	G3361	alacsony
+Jas.5.12	er	7		parositva	5	G3660	alacsony
+Jas.5.12	er	8		parositva	7	G3383	alacsony
+Jas.5.12	er	9		forditatlan		G3588	alacsony
+Jas.5.12	er	10		parositva	9	G3772	alacsony
+Jas.5.12	er	11		parositva	10	G3383	alacsony
+Jas.5.12	er	12		forditatlan		G3588	alacsony
+Jas.5.12	er	13		parositva	12	G1093	alacsony
+Jas.5.12	er	14		parositva	13	G3383	alacsony
+Jas.5.12	er	15		parositva	15	G0243	alacsony
+Jas.5.12	er	16		parositva	14	G5100	alacsony
+Jas.5.12	er	17		parositva	16	G3727	alacsony
+Jas.5.12	er	18		parositva	18	G1510	alacsony
+Jas.5.12	er	19		parositva	17	G1161	alacsony
+Jas.5.12	er	20		parositva	20,21	G4771	alacsony
+Jas.5.12	er	21		forditatlan		G3588	alacsony
+Jas.5.12	er	22		parositva	21	G3483	alacsony
+Jas.5.12	er	23		parositva	22	G3483	alacsony
+Jas.5.12	er	24		parositva	23	G2532	alacsony
+Jas.5.12	er	25		forditatlan		G3588	alacsony
+Jas.5.12	er	26		parositva	25	G3756	alacsony
+Jas.5.12	er	27		parositva	26	G3756	alacsony
+Jas.5.12	er	28		parositva	27	G2443	alacsony
+Jas.5.12	er	29		parositva	30	G3361	alacsony
+Jas.5.12	er	30		forditatlan		G5259	alacsony
+Jas.5.12	er	31		forditatlan		G2920	alacsony
+Jas.5.12	er	32		parositva	31	G4098	alacsony
+Jas.5.13	hu	1	Szenved	parositva	1	G2553	alacsony
+Jas.5.13	hu	2	é	betoldas			alacsony
+Jas.5.13	hu	3	valaki	parositva	2	G5100	alacsony
+Jas.5.13	hu	4	köztetek	parositva	3,4	G1722+G4771	alacsony
+Jas.5.13	hu	5	Imádkozzék	parositva	5	G4336	alacsony
+Jas.5.13	hu	6	Öröme	parositva	6	G2114	alacsony
+Jas.5.13	hu	7	van	parositva	6	G2114	alacsony
+Jas.5.13	hu	8	é	betoldas			alacsony
+Jas.5.13	hu	9	valakinek	parositva	7	G5100	alacsony
+Jas.5.13	hu	10	Dícséretet	parositva	8	G5567	alacsony
+Jas.5.13	hu	11	énekeljen	parositva	8	G5567	alacsony
+Jas.5.13	er	1		parositva	1	G2553	alacsony
+Jas.5.13	er	2		parositva	3	G5100	alacsony
+Jas.5.13	er	3		parositva	4	G1722	alacsony
+Jas.5.13	er	4		parositva	4	G4771	alacsony
+Jas.5.13	er	5		parositva	5	G4336	alacsony
+Jas.5.13	er	6		parositva	6,7	G2114	alacsony
+Jas.5.13	er	7		parositva	9	G5100	alacsony
+Jas.5.13	er	8		parositva	10,11	G5567	alacsony
+Jas.5.14	hu	1	Beteg	parositva	1	G0770	alacsony
+Jas.5.14	hu	2	é	betoldas			alacsony
+Jas.5.14	hu	3	valaki	parositva	2	G5100	alacsony
+Jas.5.14	hu	4	köztetek	parositva	3,4	G1722+G4771	alacsony
+Jas.5.14	hu	5	Hívja	parositva	5	G4341	alacsony
+Jas.5.14	hu	6	magához	parositva	5	G4341	alacsony
+Jas.5.14	hu	7	a	betoldas			alacsony
+Jas.5.14	hu	8	gyülekezet	parositva	9	G1577	alacsony
+Jas.5.14	hu	9	véneit	parositva	7	G4245	alacsony
+Jas.5.14	hu	10	és	parositva	10	G2532	alacsony
+Jas.5.14	hu	11	imádkozzanak	parositva	11	G4336	alacsony
+Jas.5.14	hu	12	felette	parositva	12,13	G1909+G0846	alacsony
+Jas.5.14	hu	13	megkenvén	parositva	14	G0218	alacsony
+Jas.5.14	hu	14	őt	parositva	15	G0846	alacsony
+Jas.5.14	hu	15	olajjal	parositva	16	G1637	alacsony
+Jas.5.14	hu	16	az	betoldas			alacsony
+Jas.5.14	hu	17	Úrnak	parositva	21	G2962	alacsony
+Jas.5.14	hu	18	nevében	parositva	17,19	G1722+G3686	alacsony
+Jas.5.14	er	1		parositva	1	G0770	alacsony
+Jas.5.14	er	2		parositva	3	G5100	alacsony
+Jas.5.14	er	3		parositva	4	G1722	alacsony
+Jas.5.14	er	4		parositva	4	G4771	alacsony
+Jas.5.14	er	5		parositva	5,6	G4341	alacsony
+Jas.5.14	er	6		forditatlan		G3588	alacsony
+Jas.5.14	er	7		parositva	9	G4245	alacsony
+Jas.5.14	er	8		forditatlan		G3588	alacsony
+Jas.5.14	er	9		parositva	8	G1577	alacsony
+Jas.5.14	er	10		parositva	10	G2532	alacsony
+Jas.5.14	er	11		parositva	11	G4336	alacsony
+Jas.5.14	er	12		parositva	12	G1909	alacsony
+Jas.5.14	er	13		parositva	12	G0846	alacsony
+Jas.5.14	er	14		parositva	13	G0218	alacsony
+Jas.5.14	er	15		parositva	14	G0846	alacsony
+Jas.5.14	er	16		parositva	15	G1637	alacsony
+Jas.5.14	er	17		parositva	18	G1722	alacsony
+Jas.5.14	er	18		forditatlan		G3588	alacsony
+Jas.5.14	er	19		parositva	18	G3686	alacsony
+Jas.5.14	er	20		forditatlan		G3588	alacsony
+Jas.5.14	er	21		parositva	17	G2962	alacsony
+Jas.5.15	hu	1	És	parositva	1	G2532	alacsony
+Jas.5.15	hu	2	a	betoldas			alacsony
+Jas.5.15	hu	3	hitből	parositva	5	G4102	alacsony
+Jas.5.15	hu	4	való	betoldas			alacsony
+Jas.5.15	hu	5	imádság	parositva	3	G2171	alacsony
+Jas.5.15	hu	6	megtartja	parositva	6	G4982	alacsony
+Jas.5.15	hu	7	a	betoldas			alacsony
+Jas.5.15	hu	8	beteget	parositva	8	G2577	alacsony
+Jas.5.15	hu	9	és	parositva	9	G2532	alacsony
+Jas.5.15	hu	10	az	betoldas			alacsony
+Jas.5.15	hu	11	Úr	parositva	13	G2962	alacsony
+Jas.5.15	hu	12	felsegíti	parositva	10	G1453	alacsony
+Jas.5.15	hu	13	őt	parositva	11	G0846	alacsony
+Jas.5.15	hu	14	És	parositva	14	G1437+G2532	alacsony
+Jas.5.15	hu	15	ha	parositva	14	G1437+G2532	alacsony
+Jas.5.15	hu	16	bűnt	parositva	15	G0266	alacsony
+Jas.5.15	hu	17	követett	parositva	16,17	G1510+G4160	alacsony
+Jas.5.15	hu	18	is	parositva	14	G1437+G2532	alacsony
+Jas.5.15	hu	19	el	parositva	16,17	G1510+G4160	alacsony
+Jas.5.15	hu	20	megbocsáttatik	parositva	18	G0863	alacsony
+Jas.5.15	hu	21	néki	parositva	19	G0846	alacsony
+Jas.5.15	er	1		parositva	1	G2532	alacsony
+Jas.5.15	er	2		forditatlan		G3588	alacsony
+Jas.5.15	er	3		parositva	5	G2171	alacsony
+Jas.5.15	er	4		forditatlan		G3588	alacsony
+Jas.5.15	er	5		parositva	3	G4102	alacsony
+Jas.5.15	er	6		parositva	6	G4982	alacsony
+Jas.5.15	er	7		forditatlan		G3588	alacsony
+Jas.5.15	er	8		parositva	8	G2577	alacsony
+Jas.5.15	er	9		parositva	9	G2532	alacsony
+Jas.5.15	er	10		parositva	12	G1453	alacsony
+Jas.5.15	er	11		parositva	13	G0846	alacsony
+Jas.5.15	er	12		forditatlan		G3588	alacsony
+Jas.5.15	er	13		parositva	11	G2962	alacsony
+Jas.5.15	er	14		parositva	14,15,18	G1437+G2532	alacsony
+Jas.5.15	er	15		parositva	16	G0266	alacsony
+Jas.5.15	er	16		parositva	17,19	G1510	alacsony
+Jas.5.15	er	17		parositva	17,19	G4160	alacsony
+Jas.5.15	er	18		parositva	20	G0863	alacsony
+Jas.5.15	er	19		parositva	21	G0846	alacsony
+Jas.5.16	hu	1	Valljátok	parositva	1	G1843	alacsony
+Jas.5.16	hu	2	meg	parositva	1	G1843	alacsony
+Jas.5.16	hu	3	bűneiteket	betoldas			alacsony
+Jas.5.16	hu	4	egymásnak	parositva	3	G0240	alacsony
+Jas.5.16	hu	5	és	parositva	6	G2532	alacsony
+Jas.5.16	hu	6	imádkozzatok	parositva	7	G2172	alacsony
+Jas.5.16	hu	7	egymásért	parositva	8,9	G5228+G0240	alacsony
+Jas.5.16	hu	8	hogy	parositva	10	G3704	alacsony
+Jas.5.16	hu	9	meggyógyuljatok	parositva	11	G2390	alacsony
+Jas.5.16	hu	10	mert	betoldas			alacsony
+Jas.5.16	hu	11	igen	parositva	12	G4183	alacsony
+Jas.5.16	hu	12	hasznos	parositva	13	G2480	alacsony
+Jas.5.16	hu	13	az	betoldas			alacsony
+Jas.5.16	hu	14	igaznak	parositva	15	G1342	alacsony
+Jas.5.16	hu	15	buzgóságos	parositva	16	G1754	alacsony
+Jas.5.16	hu	16	könyörgése	parositva	14	G1162	alacsony
+Jas.5.16	er	1		parositva	1,2	G1843	alacsony
+Jas.5.16	er	2		forditatlan		G3767	alacsony
+Jas.5.16	er	3		parositva	4	G0240	alacsony
+Jas.5.16	er	4		forditatlan		G3588	alacsony
+Jas.5.16	er	5		forditatlan		G0266	alacsony
+Jas.5.16	er	6		parositva	5	G2532	alacsony
+Jas.5.16	er	7		parositva	6	G2172	alacsony
+Jas.5.16	er	8		parositva	7	G5228	alacsony
+Jas.5.16	er	9		parositva	7	G0240	alacsony
+Jas.5.16	er	10		parositva	8	G3704	alacsony
+Jas.5.16	er	11		parositva	9	G2390	alacsony
+Jas.5.16	er	12		parositva	11	G4183	alacsony
+Jas.5.16	er	13		parositva	12	G2480	alacsony
+Jas.5.16	er	14		parositva	16	G1162	alacsony
+Jas.5.16	er	15		parositva	14	G1342	alacsony
+Jas.5.16	er	16		parositva	15	G1754	alacsony
+Jas.5.17	hu	1	Illés	parositva	1	G2243	alacsony
+Jas.5.17	hu	2	ember	parositva	2	G0444	alacsony
+Jas.5.17	hu	3	volt	parositva	3	G1510	alacsony
+Jas.5.17	hu	4	hozzánk	parositva	5	G3165	alacsony
+Jas.5.17	hu	5	hasonló	parositva	4	G3663	alacsony
+Jas.5.17	hu	6	természetű	parositva	4	G3663	alacsony
+Jas.5.17	hu	7	és	parositva	6	G2532	alacsony
+Jas.5.17	hu	8	imádsággal	parositva	7	G4335	alacsony
+Jas.5.17	hu	9	kéré	parositva	8	G4336	alacsony
+Jas.5.17	hu	10	hogy	parositva	9	G3588	alacsony
+Jas.5.17	hu	11	ne	parositva	10	G3361	alacsony
+Jas.5.17	hu	12	legyen	parositva	11	G1026	alacsony
+Jas.5.17	hu	13	eső	parositva	11	G1026	alacsony
+Jas.5.17	hu	14	és	parositva	12	G2532	alacsony
+Jas.5.17	hu	15	nem	parositva	13	G3756	alacsony
+Jas.5.17	hu	16	volt	parositva	14	G1026	alacsony
+Jas.5.17	hu	17	eső	parositva	14	G1026	alacsony
+Jas.5.17	hu	18	a	betoldas			alacsony
+Jas.5.17	hu	19	földön	parositva	15,17	G1909+G1093	alacsony
+Jas.5.17	hu	20	három	parositva	19	G5140	alacsony
+Jas.5.17	hu	21	esztendeig	parositva	18	G1763	alacsony
+Jas.5.17	hu	22	és	parositva	20	G2532	alacsony
+Jas.5.17	hu	23	hat	parositva	22	G1803	alacsony
+Jas.5.17	hu	24	hónapig	parositva	21	G3376	alacsony
+Jas.5.17	er	1		parositva	1	G2243	alacsony
+Jas.5.17	er	2		parositva	2	G0444	alacsony
+Jas.5.17	er	3		parositva	3	G1510	alacsony
+Jas.5.17	er	4		parositva	5,6	G3663	alacsony
+Jas.5.17	er	5		parositva	4	G3165	alacsony
+Jas.5.17	er	6		parositva	7	G2532	alacsony
+Jas.5.17	er	7		parositva	8	G4335	alacsony
+Jas.5.17	er	8		parositva	9	G4336	alacsony
+Jas.5.17	er	9		parositva	10	G3588	alacsony
+Jas.5.17	er	10		parositva	11	G3361	alacsony
+Jas.5.17	er	11		parositva	12,13	G1026	alacsony
+Jas.5.17	er	12		parositva	14	G2532	alacsony
+Jas.5.17	er	13		parositva	15	G3756	alacsony
+Jas.5.17	er	14		parositva	16,17	G1026	alacsony
+Jas.5.17	er	15		parositva	19	G1909	alacsony
+Jas.5.17	er	16		forditatlan		G3588	alacsony
+Jas.5.17	er	17		parositva	19	G1093	alacsony
+Jas.5.17	er	18		parositva	21	G1763	alacsony
+Jas.5.17	er	19		parositva	20	G5140	alacsony
+Jas.5.17	er	20		parositva	22	G2532	alacsony
+Jas.5.17	er	21		parositva	24	G3376	alacsony
+Jas.5.17	er	22		parositva	23	G1803	alacsony
+Jas.5.18	hu	1	És	parositva	1	G2532	alacsony
+Jas.5.18	hu	2	ismét	parositva	2	G3825	alacsony
+Jas.5.18	hu	3	imádkozott	parositva	3	G4336	alacsony
+Jas.5.18	hu	4	és	parositva	4	G2532	alacsony
+Jas.5.18	hu	5	az	betoldas			alacsony
+Jas.5.18	hu	6	ég	parositva	6	G3772	alacsony
+Jas.5.18	hu	7	esőt	parositva	7	G5205	alacsony
+Jas.5.18	hu	8	adott	parositva	8	G1325	alacsony
+Jas.5.18	hu	9	és	parositva	9	G2532	alacsony
+Jas.5.18	hu	10	a	betoldas			alacsony
+Jas.5.18	hu	11	föld	parositva	11	G1093	alacsony
+Jas.5.18	hu	12	megtermé	parositva	12	G0985	alacsony
+Jas.5.18	hu	13	az	betoldas			alacsony
+Jas.5.18	hu	14	ő	parositva	15	G0846	alacsony
+Jas.5.18	hu	15	gyümölcsét	parositva	14,15	G2590+G0846	alacsony
+Jas.5.18	er	1		parositva	1	G2532	alacsony
+Jas.5.18	er	2		parositva	2	G3825	alacsony
+Jas.5.18	er	3		parositva	3	G4336	alacsony
+Jas.5.18	er	4		parositva	4	G2532	alacsony
+Jas.5.18	er	5		forditatlan		G3588	alacsony
+Jas.5.18	er	6		parositva	6	G3772	alacsony
+Jas.5.18	er	7		parositva	7	G5205	alacsony
+Jas.5.18	er	8		parositva	8	G1325	alacsony
+Jas.5.18	er	9		parositva	9	G2532	alacsony
+Jas.5.18	er	10		forditatlan		G3588	alacsony
+Jas.5.18	er	11		parositva	11	G1093	alacsony
+Jas.5.18	er	12		parositva	12	G0985	alacsony
+Jas.5.18	er	13		forditatlan		G3588	alacsony
+Jas.5.18	er	14		parositva	15	G2590	alacsony
+Jas.5.18	er	15		parositva	14,15	G0846	alacsony
+Jas.5.19	hu	1	Atyámfiai	parositva	1	G0080	alacsony
+Jas.5.19	hu	2	hogyha	parositva	3	G1437	alacsony
+Jas.5.19	hu	3	valaki	parositva	4	G5100	alacsony
+Jas.5.19	hu	4	ti	parositva	6	G4771	alacsony
+Jas.5.19	hu	5	köztetek	parositva	5,6	G1722+G4771	alacsony
+Jas.5.19	hu	6	eltévelyedik	parositva	7	G4105	alacsony
+Jas.5.19	hu	7	az	betoldas			alacsony
+Jas.5.19	hu	8	igazságtól	parositva	8,10	G0575+G0225	alacsony
+Jas.5.19	hu	9	és	parositva	11	G2532	alacsony
+Jas.5.19	hu	10	megtéríti	parositva	12	G1994	alacsony
+Jas.5.19	hu	11	őt	parositva	14	G0846	alacsony
+Jas.5.19	hu	12	valaki	parositva	13	G5100	alacsony
+Jas.5.19	er	1		parositva	1	G0080	alacsony
+Jas.5.19	er	2		forditatlan		G3165	alacsony
+Jas.5.19	er	3		parositva	2	G1437	alacsony
+Jas.5.19	er	4		parositva	3	G5100	alacsony
+Jas.5.19	er	5		parositva	5	G1722	alacsony
+Jas.5.19	er	6		parositva	4,5	G4771	alacsony
+Jas.5.19	er	7		parositva	6	G4105	alacsony
+Jas.5.19	er	8		parositva	8	G0575	alacsony
+Jas.5.19	er	9		forditatlan		G3588	alacsony
+Jas.5.19	er	10		parositva	8	G0225	alacsony
+Jas.5.19	er	11		parositva	9	G2532	alacsony
+Jas.5.19	er	12		parositva	10	G1994	alacsony
+Jas.5.19	er	13		parositva	12	G5100	alacsony
+Jas.5.19	er	14		parositva	11	G0846	alacsony
+Jas.5.20	hu	1	Tudja	parositva	1	G1097	alacsony
+Jas.5.20	hu	2	meg	parositva	1	G1097	alacsony
+Jas.5.20	hu	3	hogy	parositva	2	G3754	alacsony
+Jas.5.20	hu	4	a	parositva	3	G3588	alacsony
+Jas.5.20	hu	5	ki	parositva	3	G3588	alacsony
+Jas.5.20	hu	6	bűnöst	parositva	5	G0268	alacsony
+Jas.5.20	hu	7	térít	parositva	4	G1994	alacsony
+Jas.5.20	hu	8	meg	parositva	4	G1994	alacsony
+Jas.5.20	hu	9	az	betoldas			alacsony
+Jas.5.20	hu	10	ő	parositva	9	G0846	alacsony
+Jas.5.20	hu	11	tévelygő	parositva	7	G4106	alacsony
+Jas.5.20	hu	12	útjáról	parositva	6,8,9	G1537+G3598+G0846	alacsony
+Jas.5.20	hu	13	lelket	parositva	11	G5590	alacsony
+Jas.5.20	hu	14	ment	parositva	10	G4982	alacsony
+Jas.5.20	hu	15	meg	parositva	10	G4982	alacsony
+Jas.5.20	hu	16	a	betoldas			alacsony
+Jas.5.20	hu	17	haláltól	parositva	13,14	G1537+G2288	alacsony
+Jas.5.20	hu	18	és	parositva	15	G2532	alacsony
+Jas.5.20	hu	19	sok	parositva	17	G4128	alacsony
+Jas.5.20	hu	20	bűnt	parositva	18	G0266	alacsony
+Jas.5.20	hu	21	elfedez	parositva	16	G2572	alacsony
+Jas.5.20	er	1		parositva	1,2	G1097	alacsony
+Jas.5.20	er	2		parositva	3	G3754	alacsony
+Jas.5.20	er	3		parositva	4,5	G3588	alacsony
+Jas.5.20	er	4		parositva	7,8	G1994	alacsony
+Jas.5.20	er	5		parositva	6	G0268	alacsony
+Jas.5.20	er	6		parositva	12	G1537	alacsony
+Jas.5.20	er	7		parositva	11	G4106	alacsony
+Jas.5.20	er	8		parositva	12	G3598	alacsony
+Jas.5.20	er	9		parositva	10,12	G0846	alacsony
+Jas.5.20	er	10		parositva	14,15	G4982	alacsony
+Jas.5.20	er	11		parositva	13	G5590	alacsony
+Jas.5.20	er	12		forditatlan		G0846	alacsony
+Jas.5.20	er	13		parositva	17	G1537	alacsony
+Jas.5.20	er	14		parositva	17	G2288	alacsony
+Jas.5.20	er	15		parositva	18	G2532	alacsony
+Jas.5.20	er	16		parositva	21	G2572	alacsony
+Jas.5.20	er	17		parositva	19	G4128	alacsony
+Jas.5.20	er	18		parositva	20	G0266	alacsony

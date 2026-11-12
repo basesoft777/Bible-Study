@@ -25,6 +25,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 import adatbazis
 import allapot as allapot_modul
 import arculat as arculat_modul
+import bibliak
 import hozzaferes as hozz_modul
 import kereses as kereses_modul
 import lekerdezesek
@@ -172,8 +173,11 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         szo = lekerdezesek.hnorm(request.args.get('szo', '')[:12]) or ''
         # a lap módja és a versmód füle (#134 M1): szo | info | vers | kh | temak | motivum
         ful = request.args.get('ful', '') if request.args.get('ful') in oldalak.FUL_ERTEKEK else ''
-        ut = request.path + ('?' + urlencode([(k, v) for k, v in (('szo', szo), ('ful', ful)) if v]) if (szo or ful) else '')
-        return kiszolgal({'szo': szo, 'ful': ful}, lambda reteg, szint: gyar.fejezet_lap(konyv, fej, vers, reteg, szint, szo, ful, ut))
+        # F210: a választott Biblia (`?biblia=<kód>`); ismeretlen érték és a Károli kódja = az alap, a címben nem áll
+        b = bibliak.kod_kerese(request.args.get('biblia', ''))
+        bkod = '' if b == bibliak.ALAP else b
+        ut = request.path + ('?' + urlencode([(k, v) for k, v in (('szo', szo), ('ful', ful), ('biblia', bkod)) if v]) if (szo or ful or bkod) else '')
+        return kiszolgal({'szo': szo, 'ful': ful, 'biblia': bkod}, lambda reteg, szint: gyar.fejezet_lap(konyv, fej, vers, reteg, szint, szo, ful, ut, b))
 
     @app.get('/<konyv>/<int:fej>')
     def fejezet_lap(konyv, fej):

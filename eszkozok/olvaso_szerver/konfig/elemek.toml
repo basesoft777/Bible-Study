@@ -1215,6 +1215,32 @@ tulajdonsag = [
 # mindkettőt ellenőrzi). Az állapot- és szövegrész-osztályok, amelyek egy szelektorban szerepelnek (pl. aktiv, kijelolt, he,
 # gk, st), regisztráltnak számítanak, ezért nincsenek itt.
 # ---------------------------------------------------------------------------------------------------------------------
+# F210: a bibliaválasztó (a könyvválasztó legfelső szintje; a mockup Mk_08_Konyvvalaszto-ja)
+[[elem]]
+id = "biblia-gomb"
+nev = "Biblia gombja a bibliaválasztóban"
+csoport = "Navigáció"
+szelektor = ".biblia-gomb"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-gomb" },
+  { nev = "Szöveg", token = "fg" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-csempe" },
+  { nev = "Háttér rámutatva", token = "accent-soft" },
+  { nev = "A választott Biblia háttere", token = "accent" },
+]
+
+[[elem]]
+id = "biblia-jegy"
+nev = "A választott Biblia jegye a szövegoszlop tetején"
+csoport = "Folyó szöveg"
+szelektor = ".biblia-jegy"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-szoveg-jegy" },
+  { nev = "Szín", token = "muted" },
+  { nev = "Keret", token = "rule" },
+]
+
 [kizart]
 # az olvasó elrendezése (#134 M1): a szöveg és a részletek lapja; elrendezés-szerkesztés nincs a hatókörben
 olvaso-elrendezes = "a fejezet-lap rács-tárolója (szöveg + részletek lapja, 900 px alatt egy oszlop); az oszlopköz (space-oszlopkoz) elrendezési érték, a tartalékon át állítható"
@@ -1351,3 +1377,12 @@ betu-sans = "állapot-osztály a szövegoszlopon (Aa: IBM Plex Sans; a JS adja);
 szel-keskeny = "állapot-osztály a szövegoszlopon (Aa: keskeny sor, 48ch; a JS adja); literál, saját token nélkül"
 szel-kozepes = "állapot-osztály a szövegoszlopon (Aa: közepes sor, 60ch; a JS adja; DT-F134o: már nem az alap); literál, saját token nélkül"
 szel-szeles = "állapot-osztály a szövegoszlopon (Aa: széles sor, 80ch; a JS adja); literál, saját token nélkül"
+# F210: a bibliaválasztó szerkezeti részei; a megjelenésük a tokenekből (muted, rule, fs-megjegyzes, fs-forrascim)
+valaszto-cim = "a könyvválasztó párbeszédablakának címe („Biblia és könyv kiválasztása”); fs-alcim, fg tokenek"
+bibliavalaszto = "a Biblia-szint tárolója a könyvválasztóban (rács, alsó vonal: rule)"
+bibliavalaszto-cim = "a „Biblia” és a „Könyv” felirat a könyvválasztóban; a menu-cim mintájára (fs-forrascim, muted)"
+biblia-csoport = "egy nyelvi csoport (Magyar, Eredeti nyelv, Angol) sora: flex-tároló"
+biblia-csoport-cim = "a csoport neve a sor elején; fs-megjegyzes, muted"
+bibliavalaszto-megj = "a bibliaválasztó megjegyzése (minden szöveg szavanként Strong-jelölt); fs-megjegyzes, muted"
+morzsa-biblia = "a morzsában a választott Biblia neve („Károli 1908 ·”); fs-megjegyzes, muted"
+forras-versszam = "a forrás eltérő versszáma a vers elején (LXX, KJV); fs-megjegyzes, muted"

@@ -1,0 +1,870 @@
+# GENERÁLT: a Logosz-lexikon – Károli 1908 – Strong szóillesztés nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERATED: export of the Logosz Lexikon – Károli 1908 – Strong word alignment open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+osis	oldal	token	alak_1908	allapot	partner_token	strong	bizonyossag
+Obad.1.1	hu	1	Abdiás	parositva	2	H5662	alacsony
+Obad.1.1	hu	2	látása	parositva	1	H2377	alacsony
+Obad.1.1	hu	3	Így	parositva	3	H3541	alacsony
+Obad.1.1	hu	4	szól	parositva	4	H0559	alacsony
+Obad.1.1	hu	5	az	betoldas			alacsony
+Obad.1.1	hu	6	Úr	parositva	5	H0136	alacsony
+Obad.1.1	hu	7	Isten	parositva	6	H3069	alacsony
+Obad.1.1	hu	8	Edomról	parositva	7,8	H9005+H0123	alacsony
+Obad.1.1	hu	9	Hírt	parositva	9	H8052	alacsony
+Obad.1.1	hu	10	hallottunk	parositva	10	H8085	alacsony
+Obad.1.1	hu	11	az	betoldas			alacsony
+Obad.1.1	hu	12	Úrtól	parositva	11,12,13	H9006+H0854+H3068	alacsony
+Obad.1.1	hu	13	És	parositva	14	H9002	alacsony
+Obad.1.1	hu	14	hírnök	parositva	15	H6735	alacsony
+Obad.1.1	hu	15	küldetett	parositva	18	H7971	alacsony
+Obad.1.1	hu	16	a	betoldas			alacsony
+Obad.1.1	hu	17	népekhez	parositva	16,17	H9003+H1471	alacsony
+Obad.1.1	hu	18	keljetek	parositva	19	H6965	alacsony
+Obad.1.1	hu	19	fel	parositva	19	H6965	alacsony
+Obad.1.1	hu	20	és	parositva	20	H9002	alacsony
+Obad.1.1	hu	21	támadjunk	parositva	21	H6965	alacsony
+Obad.1.1	hu	22	reá	parositva	22,23	H5921+H9034	alacsony
+Obad.1.1	hu	23	haddal	parositva	24,25	H9005+H4421	alacsony
+Obad.1.1	er	1		parositva	2	H2377	alacsony
+Obad.1.1	er	2		parositva	1	H5662	alacsony
+Obad.1.1	er	3		parositva	3	H3541	alacsony
+Obad.1.1	er	4		parositva	4	H0559	alacsony
+Obad.1.1	er	5		parositva	6	H0136	alacsony
+Obad.1.1	er	6		parositva	7	H3069	alacsony
+Obad.1.1	er	7		parositva	8	H9005	alacsony
+Obad.1.1	er	8		parositva	8	H0123	alacsony
+Obad.1.1	er	9		parositva	9	H8052	alacsony
+Obad.1.1	er	10		parositva	10	H8085	alacsony
+Obad.1.1	er	11		parositva	12	H9006	alacsony
+Obad.1.1	er	12		parositva	12	H0854	alacsony
+Obad.1.1	er	13		parositva	12	H3068	alacsony
+Obad.1.1	er	14		parositva	13	H9002	alacsony
+Obad.1.1	er	15		parositva	14	H6735	alacsony
+Obad.1.1	er	16		parositva	17	H9003	alacsony
+Obad.1.1	er	17		parositva	17	H1471	alacsony
+Obad.1.1	er	18		parositva	15	H7971	alacsony
+Obad.1.1	er	19		parositva	18,19	H6965	alacsony
+Obad.1.1	er	20		parositva	20	H9002	alacsony
+Obad.1.1	er	21		parositva	21	H6965	alacsony
+Obad.1.1	er	22		parositva	22	H5921	alacsony
+Obad.1.1	er	23		parositva	22	H9034	alacsony
+Obad.1.1	er	24		parositva	23	H9005	alacsony
+Obad.1.1	er	25		parositva	23	H4421	alacsony
+Obad.1.2	hu	1	Ímé	parositva	1	H2009	alacsony
+Obad.1.2	hu	2	kicsinynyé	parositva	2	H6996	alacsony
+Obad.1.2	hu	3	tettelek	parositva	3,4	H5414+H9031	alacsony
+Obad.1.2	hu	4	a	betoldas			alacsony
+Obad.1.2	hu	5	népek	parositva	6	H1471	alacsony
+Obad.1.2	hu	6	között	parositva	5	H9003	alacsony
+Obad.1.2	hu	7	felettébb	parositva	9	H3966	alacsony
+Obad.1.2	hu	8	útálatos	parositva	7	H0959	alacsony
+Obad.1.2	hu	9	vagy	parositva	8	H0859	alacsony
+Obad.1.2	er	1		parositva	1	H2009	alacsony
+Obad.1.2	er	2		parositva	2	H6996	alacsony
+Obad.1.2	er	3		parositva	3	H5414	alacsony
+Obad.1.2	er	4		parositva	3	H9031	alacsony
+Obad.1.2	er	5		parositva	6	H9003	alacsony
+Obad.1.2	er	6		parositva	5	H1471	alacsony
+Obad.1.2	er	7		parositva	8	H0959	alacsony
+Obad.1.2	er	8		parositva	9	H0859	alacsony
+Obad.1.2	er	9		parositva	7	H3966	alacsony
+Obad.1.3	hu	1	Szíved	parositva	2,3	H3820+H9021	alacsony
+Obad.1.3	hu	2	kevélysége	parositva	1	H2087	alacsony
+Obad.1.3	hu	3	csalt	parositva	4	H5377	alacsony
+Obad.1.3	hu	4	meg	parositva	4	H5377	alacsony
+Obad.1.3	hu	5	téged	parositva	5	H9031	alacsony
+Obad.1.3	hu	6	ki	parositva	6	H7931	alacsony
+Obad.1.3	hu	7	szikla	parositva	9	H5553	alacsony
+Obad.1.3	hu	8	hasadékokban	parositva	7,8	H9003+H2288	alacsony
+Obad.1.3	hu	9	lakozol	parositva	6	H7931	alacsony
+Obad.1.3	hu	10	kinek	parositva	12	H9023	alacsony
+Obad.1.3	hu	11	lakóhelye	parositva	11,12	H7675+H9023	alacsony
+Obad.1.3	hu	12	magasan	parositva	10	H4791	alacsony
+Obad.1.3	hu	13	van	betoldas			alacsony
+Obad.1.3	hu	14	a	betoldas			alacsony
+Obad.1.3	hu	15	ki	betoldas			alacsony
+Obad.1.3	hu	16	mondja	parositva	13	H0559	alacsony
+Obad.1.3	hu	17	az	betoldas			alacsony
+Obad.1.3	hu	18	ő	parositva	16	H9023	alacsony
+Obad.1.3	hu	19	szívében	parositva	14,15,16	H9003+H3820+H9023	alacsony
+Obad.1.3	hu	20	Ki	parositva	17	H4310	alacsony
+Obad.1.3	hu	21	vonhatna	parositva	18	H3381	alacsony
+Obad.1.3	hu	22	le	parositva	18	H3381	alacsony
+Obad.1.3	hu	23	engem	parositva	19	H9030	alacsony
+Obad.1.3	hu	24	a	betoldas			alacsony
+Obad.1.3	hu	25	síkra	parositva	20	H0776	alacsony
+Obad.1.3	er	1		parositva	2	H2087	alacsony
+Obad.1.3	er	2		parositva	1	H3820	alacsony
+Obad.1.3	er	3		parositva	1	H9021	alacsony
+Obad.1.3	er	4		parositva	3,4	H5377	alacsony
+Obad.1.3	er	5		parositva	5	H9031	alacsony
+Obad.1.3	er	6		parositva	6,9	H7931	alacsony
+Obad.1.3	er	7		parositva	8	H9003	alacsony
+Obad.1.3	er	8		parositva	8	H2288	alacsony
+Obad.1.3	er	9		parositva	7	H5553	alacsony
+Obad.1.3	er	10		parositva	12	H4791	alacsony
+Obad.1.3	er	11		parositva	11	H7675	alacsony
+Obad.1.3	er	12		parositva	10,11	H9023	alacsony
+Obad.1.3	er	13		parositva	16	H0559	alacsony
+Obad.1.3	er	14		parositva	19	H9003	alacsony
+Obad.1.3	er	15		parositva	19	H3820	alacsony
+Obad.1.3	er	16		parositva	18,19	H9023	alacsony
+Obad.1.3	er	17		parositva	20	H4310	alacsony
+Obad.1.3	er	18		parositva	21,22	H3381	alacsony
+Obad.1.3	er	19		parositva	23	H9030	alacsony
+Obad.1.3	er	20		parositva	25	H0776	alacsony
+Obad.1.4	hu	1	Ha	parositva	1	H0518	alacsony
+Obad.1.4	hu	2	oly	betoldas			alacsony
+Obad.1.4	hu	3	magasra	parositva	2	H1361	alacsony
+Obad.1.4	hu	4	szállnál	parositva	2	H1361	alacsony
+Obad.1.4	hu	5	is	betoldas			alacsony
+Obad.1.4	hu	6	mint	parositva	3	H9004	alacsony
+Obad.1.4	hu	7	a	betoldas			alacsony
+Obad.1.4	hu	8	sas	parositva	4	H5404	alacsony
+Obad.1.4	hu	9	és	parositva	5	H9002	alacsony
+Obad.1.4	hu	10	ha	parositva	6	H0518	alacsony
+Obad.1.4	hu	11	a	betoldas			alacsony
+Obad.1.4	hu	12	csillagok	parositva	8	H3556	alacsony
+Obad.1.4	hu	13	közé	parositva	7	H0996	alacsony
+Obad.1.4	hu	14	raknád	parositva	9	H7760	alacsony
+Obad.1.4	hu	15	is	betoldas			alacsony
+Obad.1.4	hu	16	fészkedet	parositva	10,11	H7064+H9021	alacsony
+Obad.1.4	hu	17	onnan	parositva	12,13	H9006+H8033	alacsony
+Obad.1.4	hu	18	is	betoldas			alacsony
+Obad.1.4	hu	19	levonnálak	parositva	14,15	H3381+H9031	alacsony
+Obad.1.4	hu	20	ezt	betoldas			alacsony
+Obad.1.4	hu	21	mondja	parositva	16	H5002	alacsony
+Obad.1.4	hu	22	az	betoldas			alacsony
+Obad.1.4	hu	23	Úr	parositva	17	H3068	alacsony
+Obad.1.4	er	1		parositva	1	H0518	alacsony
+Obad.1.4	er	2		parositva	3,4	H1361	alacsony
+Obad.1.4	er	3		parositva	6	H9004	alacsony
+Obad.1.4	er	4		parositva	8	H5404	alacsony
+Obad.1.4	er	5		parositva	9	H9002	alacsony
+Obad.1.4	er	6		parositva	10	H0518	alacsony
+Obad.1.4	er	7		parositva	13	H0996	alacsony
+Obad.1.4	er	8		parositva	12	H3556	alacsony
+Obad.1.4	er	9		parositva	14	H7760	alacsony
+Obad.1.4	er	10		parositva	16	H7064	alacsony
+Obad.1.4	er	11		parositva	16	H9021	alacsony
+Obad.1.4	er	12		parositva	17	H9006	alacsony
+Obad.1.4	er	13		parositva	17	H8033	alacsony
+Obad.1.4	er	14		parositva	19	H3381	alacsony
+Obad.1.4	er	15		parositva	19	H9031	alacsony
+Obad.1.4	er	16		parositva	21	H5002	alacsony
+Obad.1.4	er	17		parositva	23	H3068	alacsony
+Obad.1.5	hu	1	Ha	parositva	1	H0518	alacsony
+Obad.1.5	hu	2	tolvajok	parositva	2	H1590	alacsony
+Obad.1.5	hu	3	törnének	parositva	3	H0935	alacsony
+Obad.1.5	hu	4	reád	parositva	4,5	H9005+H9031	alacsony
+Obad.1.5	hu	5	avagy	parositva	6	H0518	alacsony
+Obad.1.5	hu	6	éjjeli	parositva	8	H3915	alacsony
+Obad.1.5	hu	7	rablók	parositva	7	H7703	alacsony
+Obad.1.5	hu	8	hogy	parositva	9	H0349	alacsony
+Obad.1.5	hu	9	elpusztíttattál	parositva	10	H1820	alacsony
+Obad.1.5	hu	10	nem	parositva	12	H3808	alacsony
+Obad.1.5	hu	11	annyit	betoldas			alacsony
+Obad.1.5	hu	12	lopnának	parositva	13,15	H1589+H9028	alacsony
+Obad.1.5	hu	13	é	parositva	11	H9008	alacsony
+Obad.1.5	hu	14	a	betoldas			alacsony
+Obad.1.5	hu	15	mennyi	betoldas			alacsony
+Obad.1.5	hu	16	elegendő	parositva	14	H1767	alacsony
+Obad.1.5	hu	17	Ha	parositva	16	H0518	alacsony
+Obad.1.5	hu	18	szőlőszedők	parositva	17	H1219	alacsony
+Obad.1.5	hu	19	jönnének	parositva	18	H0935	alacsony
+Obad.1.5	hu	20	reád	parositva	19,20	H9005+H9032	alacsony
+Obad.1.5	hu	21	nem	parositva	22	H3808	alacsony
+Obad.1.5	hu	22	hagynának	parositva	23	H7604	alacsony
+Obad.1.5	hu	23	é	parositva	21	H9008	alacsony
+Obad.1.5	hu	24	gerezdeket	parositva	24	H5955	alacsony
+Obad.1.5	er	1		parositva	1	H0518	alacsony
+Obad.1.5	er	2		parositva	2	H1590	alacsony
+Obad.1.5	er	3		parositva	3	H0935	alacsony
+Obad.1.5	er	4		parositva	4	H9005	alacsony
+Obad.1.5	er	5		parositva	4	H9031	alacsony
+Obad.1.5	er	6		parositva	5	H0518	alacsony
+Obad.1.5	er	7		parositva	7	H7703	alacsony
+Obad.1.5	er	8		parositva	6	H3915	alacsony
+Obad.1.5	er	9		parositva	8	H0349	alacsony
+Obad.1.5	er	10		parositva	9	H1820	alacsony
+Obad.1.5	er	11		parositva	13	H9008	alacsony
+Obad.1.5	er	12		parositva	10	H3808	alacsony
+Obad.1.5	er	13		parositva	12	H1589	alacsony
+Obad.1.5	er	14		parositva	16	H1767	alacsony
+Obad.1.5	er	15		parositva	12	H9028	alacsony
+Obad.1.5	er	16		parositva	17	H0518	alacsony
+Obad.1.5	er	17		parositva	18	H1219	alacsony
+Obad.1.5	er	18		parositva	19	H0935	alacsony
+Obad.1.5	er	19		parositva	20	H9005	alacsony
+Obad.1.5	er	20		parositva	20	H9032	alacsony
+Obad.1.5	er	21		parositva	23	H9008	alacsony
+Obad.1.5	er	22		parositva	21	H3808	alacsony
+Obad.1.5	er	23		parositva	22	H7604	alacsony
+Obad.1.5	er	24		parositva	24	H5955	alacsony
+Obad.1.6	hu	1	Mennyire	parositva	1	H0349	alacsony
+Obad.1.6	hu	2	kifosztogatták	parositva	2	H2664	alacsony
+Obad.1.6	hu	3	Ézsaut	parositva	3	H6215	alacsony
+Obad.1.6	hu	4	felkutatták	parositva	4	H1158	alacsony
+Obad.1.6	hu	5	rejtett	parositva	5	H4710	alacsony
+Obad.1.6	hu	6	kincseit	parositva	5,6	H4710+H9023	alacsony
+Obad.1.6	er	1		parositva	1	H0349	alacsony
+Obad.1.6	er	2		parositva	2	H2664	alacsony
+Obad.1.6	er	3		parositva	3	H6215	alacsony
+Obad.1.6	er	4		parositva	4	H1158	alacsony
+Obad.1.6	er	5		parositva	5,6	H4710	alacsony
+Obad.1.6	er	6		parositva	6	H9023	alacsony
+Obad.1.7	hu	1	A	betoldas			alacsony
+Obad.1.7	hu	2	határig	parositva	1,3	H5704+H1366	alacsony
+Obad.1.7	hu	3	űznek	parositva	4,5	H7971+H9031	alacsony
+Obad.1.7	hu	4	ki	parositva	4	H7971	alacsony
+Obad.1.7	hu	5	összes	parositva	6	H3605	alacsony
+Obad.1.7	hu	6	frigytársaid	parositva	7,8,9	H0582+H1285+H9021	alacsony
+Obad.1.7	hu	7	megcsalnak	parositva	10,11	H5377+H9031	alacsony
+Obad.1.7	hu	8	levernek	parositva	12,13,14	H3201+H9005+H9031	alacsony
+Obad.1.7	hu	9	szövetségeseid	parositva	15,16,17	H0582+H7965+H9021	alacsony
+Obad.1.7	hu	10	kenyeredet	parositva	18,19	H3899+H9021	alacsony
+Obad.1.7	hu	11	tőrül	parositva	21	H4204	alacsony
+Obad.1.7	hu	12	vetik	parositva	20	H7760	alacsony
+Obad.1.7	hu	13	alád	parositva	22,23	H8478+H9031	alacsony
+Obad.1.7	hu	14	Nincsen	parositva	24	H0369	alacsony
+Obad.1.7	hu	15	benne	parositva	26,27	H9003+H9033	alacsony
+Obad.1.7	hu	16	okosság	parositva	25	H8394	alacsony
+Obad.1.7	er	1		parositva	2	H5704	alacsony
+Obad.1.7	er	2		forditatlan		H9009	alacsony
+Obad.1.7	er	3		parositva	2	H1366	alacsony
+Obad.1.7	er	4		parositva	3,4	H7971	alacsony
+Obad.1.7	er	5		parositva	3	H9031	alacsony
+Obad.1.7	er	6		parositva	5	H3605	alacsony
+Obad.1.7	er	7		parositva	6	H0582	alacsony
+Obad.1.7	er	8		parositva	6	H1285	alacsony
+Obad.1.7	er	9		parositva	6	H9021	alacsony
+Obad.1.7	er	10		parositva	7	H5377	alacsony
+Obad.1.7	er	11		parositva	7	H9031	alacsony
+Obad.1.7	er	12		parositva	8	H3201	alacsony
+Obad.1.7	er	13		parositva	8	H9005	alacsony
+Obad.1.7	er	14		parositva	8	H9031	alacsony
+Obad.1.7	er	15		parositva	9	H0582	alacsony
+Obad.1.7	er	16		parositva	9	H7965	alacsony
+Obad.1.7	er	17		parositva	9	H9021	alacsony
+Obad.1.7	er	18		parositva	10	H3899	alacsony
+Obad.1.7	er	19		parositva	10	H9021	alacsony
+Obad.1.7	er	20		parositva	12	H7760	alacsony
+Obad.1.7	er	21		parositva	11	H4204	alacsony
+Obad.1.7	er	22		parositva	13	H8478	alacsony
+Obad.1.7	er	23		parositva	13	H9031	alacsony
+Obad.1.7	er	24		parositva	14	H0369	alacsony
+Obad.1.7	er	25		parositva	16	H8394	alacsony
+Obad.1.7	er	26		parositva	15	H9003	alacsony
+Obad.1.7	er	27		parositva	15	H9033	alacsony
+Obad.1.8	hu	1	Azon	parositva	6	H1931	alacsony
+Obad.1.8	hu	2	a	betoldas			alacsony
+Obad.1.8	hu	3	napon	parositva	3,4	H9003+H3117	alacsony
+Obad.1.8	hu	4	ezt	betoldas			alacsony
+Obad.1.8	hu	5	mondja	parositva	7	H5002	alacsony
+Obad.1.8	hu	6	az	betoldas			alacsony
+Obad.1.8	hu	7	Úr	parositva	8	H3068	alacsony
+Obad.1.8	hu	8	nem	parositva	2	H3808	alacsony
+Obad.1.8	hu	9	vesztem	parositva	10	H0006	alacsony
+Obad.1.8	hu	10	é	parositva	1	H9008	alacsony
+Obad.1.8	hu	11	ki	parositva	10	H0006	alacsony
+Obad.1.8	hu	12	a	betoldas			alacsony
+Obad.1.8	hu	13	bölcseket	parositva	11	H2450	alacsony
+Obad.1.8	hu	14	Edomból	parositva	12,13	H9006+H0123	alacsony
+Obad.1.8	hu	15	és	parositva	14	H9002	alacsony
+Obad.1.8	hu	16	az	betoldas			alacsony
+Obad.1.8	hu	17	értelmet	parositva	15	H8394	alacsony
+Obad.1.8	hu	18	az	betoldas			alacsony
+Obad.1.8	hu	19	Ézsau	parositva	18	H6215	alacsony
+Obad.1.8	hu	20	hegyéről	parositva	16,17	H9006+H2022	alacsony
+Obad.1.8	er	1		parositva	10	H9008	alacsony
+Obad.1.8	er	2		parositva	8	H3808	alacsony
+Obad.1.8	er	3		parositva	3	H9003	alacsony
+Obad.1.8	er	4		parositva	3	H3117	alacsony
+Obad.1.8	er	5		forditatlan		H9009	alacsony
+Obad.1.8	er	6		parositva	1	H1931	alacsony
+Obad.1.8	er	7		parositva	5	H5002	alacsony
+Obad.1.8	er	8		parositva	7	H3068	alacsony
+Obad.1.8	er	9		forditatlan		H9001	alacsony
+Obad.1.8	er	10		parositva	9,11	H0006	alacsony
+Obad.1.8	er	11		parositva	13	H2450	alacsony
+Obad.1.8	er	12		parositva	14	H9006	alacsony
+Obad.1.8	er	13		parositva	14	H0123	alacsony
+Obad.1.8	er	14		parositva	15	H9002	alacsony
+Obad.1.8	er	15		parositva	17	H8394	alacsony
+Obad.1.8	er	16		parositva	20	H9006	alacsony
+Obad.1.8	er	17		parositva	20	H2022	alacsony
+Obad.1.8	er	18		parositva	19	H6215	alacsony
+Obad.1.9	hu	1	És	parositva	1	H9001	alacsony
+Obad.1.9	hu	2	megrémülnek	parositva	2	H2865	alacsony
+Obad.1.9	hu	3	a	betoldas			alacsony
+Obad.1.9	hu	4	te	parositva	4	H9021	alacsony
+Obad.1.9	hu	5	vitézeid	parositva	3,4	H1368+H9021	alacsony
+Obad.1.9	hu	6	oh	betoldas			alacsony
+Obad.1.9	hu	7	Témán	parositva	5	H8487	alacsony
+Obad.1.9	hu	8	hogy	parositva	6	H4616	alacsony
+Obad.1.9	hu	9	kiirtassék	parositva	7	H3772	alacsony
+Obad.1.9	hu	10	mindenki	parositva	8	H0376	alacsony
+Obad.1.9	hu	11	az	betoldas			alacsony
+Obad.1.9	hu	12	Ézsau	parositva	11	H6215	alacsony
+Obad.1.9	hu	13	hegyéről	parositva	9,10	H9006+H2022	alacsony
+Obad.1.9	hu	14	az	betoldas			alacsony
+Obad.1.9	hu	15	öldöklés	parositva	13	H6993	alacsony
+Obad.1.9	hu	16	által	parositva	12	H9006	alacsony
+Obad.1.9	er	1		parositva	1	H9001	alacsony
+Obad.1.9	er	2		parositva	2	H2865	alacsony
+Obad.1.9	er	3		parositva	5	H1368	alacsony
+Obad.1.9	er	4		parositva	4,5	H9021	alacsony
+Obad.1.9	er	5		parositva	7	H8487	alacsony
+Obad.1.9	er	6		parositva	8	H4616	alacsony
+Obad.1.9	er	7		parositva	9	H3772	alacsony
+Obad.1.9	er	8		parositva	10	H0376	alacsony
+Obad.1.9	er	9		parositva	13	H9006	alacsony
+Obad.1.9	er	10		parositva	13	H2022	alacsony
+Obad.1.9	er	11		parositva	12	H6215	alacsony
+Obad.1.9	er	12		parositva	16	H9006	alacsony
+Obad.1.9	er	13		parositva	15	H6993	alacsony
+Obad.1.10	hu	1	A	betoldas			alacsony
+Obad.1.10	hu	2	Jákób	parositva	5	H3290	alacsony
+Obad.1.10	hu	3	öcséd	parositva	3,4	H0251+H9021	alacsony
+Obad.1.10	hu	4	ellen	betoldas			alacsony
+Obad.1.10	hu	5	elkövetett	betoldas			alacsony
+Obad.1.10	hu	6	erőszakért	parositva	1,2	H9006+H2555	alacsony
+Obad.1.10	hu	7	szégyen	parositva	8	H0955	alacsony
+Obad.1.10	hu	8	borul	parositva	6	H3680	alacsony
+Obad.1.10	hu	9	reád	parositva	7	H9031	alacsony
+Obad.1.10	hu	10	és	parositva	9	H9001	alacsony
+Obad.1.10	hu	11	kivágatol	parositva	10	H3772	alacsony
+Obad.1.10	hu	12	mindörökre	parositva	11,12	H9005+H5769	alacsony
+Obad.1.10	er	1		parositva	6	H9006	alacsony
+Obad.1.10	er	2		parositva	6	H2555	alacsony
+Obad.1.10	er	3		parositva	3	H0251	alacsony
+Obad.1.10	er	4		parositva	3	H9021	alacsony
+Obad.1.10	er	5		parositva	2	H3290	alacsony
+Obad.1.10	er	6		parositva	8	H3680	alacsony
+Obad.1.10	er	7		parositva	9	H9031	alacsony
+Obad.1.10	er	8		parositva	7	H0955	alacsony
+Obad.1.10	er	9		parositva	10	H9001	alacsony
+Obad.1.10	er	10		parositva	11	H3772	alacsony
+Obad.1.10	er	11		parositva	12	H9005	alacsony
+Obad.1.10	er	12		parositva	12	H5769	alacsony
+Obad.1.11	hu	1	A	parositva	1,2	H9003+H3117	alacsony
+Obad.1.11	hu	2	mikor	parositva	1,2	H9003+H3117	alacsony
+Obad.1.11	hu	3	vele	parositva	5,6	H9006+H5048	alacsony
+Obad.1.11	hu	4	szembeálltál	parositva	3,4	H5975+H9041	alacsony
+Obad.1.11	hu	5	a	parositva	7,8	H9003+H3117	alacsony
+Obad.1.11	hu	6	mikor	parositva	7,8	H9003+H3117	alacsony
+Obad.1.11	hu	7	serege	parositva	11,12	H2428+H9023	alacsony
+Obad.1.11	hu	8	idegenek	parositva	10	H2114	alacsony
+Obad.1.11	hu	9	rabjává	parositva	9	H7617	alacsony
+Obad.1.11	hu	10	lett	betoldas			alacsony
+Obad.1.11	hu	11	és	parositva	13	H9002	alacsony
+Obad.1.11	hu	12	idegenek	parositva	14	H5237	alacsony
+Obad.1.11	hu	13	törtek	parositva	15	H0935	alacsony
+Obad.1.11	hu	14	be	parositva	15	H0935	alacsony
+Obad.1.11	hu	15	kapuján	parositva	16,17	H8179+H9023	alacsony
+Obad.1.11	hu	16	és	parositva	18	H9002	alacsony
+Obad.1.11	hu	17	Jeruzsálemre	parositva	19,20	H5921+H3389	alacsony
+Obad.1.11	hu	18	sorsot	parositva	22	H1486	alacsony
+Obad.1.11	hu	19	vetettek	parositva	21	H3032	alacsony
+Obad.1.11	hu	20	olyan	betoldas			alacsony
+Obad.1.11	hu	21	voltál	betoldas			alacsony
+Obad.1.11	hu	22	te	parositva	24	H0859	alacsony
+Obad.1.11	hu	23	is	parositva	23	H1571	alacsony
+Obad.1.11	hu	24	mint	parositva	25	H9004	alacsony
+Obad.1.11	hu	25	bármelyik	parositva	26	H0259	alacsony
+Obad.1.11	hu	26	közülök	parositva	27,28	H9006+H9038	alacsony
+Obad.1.11	er	1		parositva	1,2	H9003	alacsony
+Obad.1.11	er	2		parositva	1,2	H3117	alacsony
+Obad.1.11	er	3		parositva	4	H5975	alacsony
+Obad.1.11	er	4		parositva	4	H9041	alacsony
+Obad.1.11	er	5		parositva	3	H9006	alacsony
+Obad.1.11	er	6		parositva	3	H5048	alacsony
+Obad.1.11	er	7		parositva	5,6	H9003	alacsony
+Obad.1.11	er	8		parositva	5,6	H3117	alacsony
+Obad.1.11	er	9		parositva	9	H7617	alacsony
+Obad.1.11	er	10		parositva	8	H2114	alacsony
+Obad.1.11	er	11		parositva	7	H2428	alacsony
+Obad.1.11	er	12		parositva	7	H9023	alacsony
+Obad.1.11	er	13		parositva	11	H9002	alacsony
+Obad.1.11	er	14		parositva	12	H5237	alacsony
+Obad.1.11	er	15		parositva	13,14	H0935	alacsony
+Obad.1.11	er	16		parositva	15	H8179	alacsony
+Obad.1.11	er	17		parositva	15	H9023	alacsony
+Obad.1.11	er	18		parositva	16	H9002	alacsony
+Obad.1.11	er	19		parositva	17	H5921	alacsony
+Obad.1.11	er	20		parositva	17	H3389	alacsony
+Obad.1.11	er	21		parositva	19	H3032	alacsony
+Obad.1.11	er	22		parositva	18	H1486	alacsony
+Obad.1.11	er	23		parositva	23	H1571	alacsony
+Obad.1.11	er	24		parositva	22	H0859	alacsony
+Obad.1.11	er	25		parositva	24	H9004	alacsony
+Obad.1.11	er	26		parositva	25	H0259	alacsony
+Obad.1.11	er	27		parositva	26	H9006	alacsony
+Obad.1.11	er	28		parositva	26	H9038	alacsony
+Obad.1.12	hu	1	De	parositva	1	H9002	alacsony
+Obad.1.12	hu	2	ne	parositva	2	H0408	alacsony
+Obad.1.12	hu	3	gyönyörködjél	parositva	3	H7200	alacsony
+Obad.1.12	hu	4	öcsédnek	parositva	6,7	H0251+H9021	alacsony
+Obad.1.12	hu	5	napján	parositva	4,5	H9003+H3117	alacsony
+Obad.1.12	hu	6	az	betoldas			alacsony
+Obad.1.12	hu	7	ő	parositva	11	H9023	alacsony
+Obad.1.12	hu	8	szerencsétlenségének	parositva	10,11	H5235+H9023	alacsony
+Obad.1.12	hu	9	napján	parositva	8,9	H9003+H3117	alacsony
+Obad.1.12	hu	10	és	parositva	12	H9002	alacsony
+Obad.1.12	hu	11	ne	parositva	13	H0408	alacsony
+Obad.1.12	hu	12	örvendj	parositva	14	H8055	alacsony
+Obad.1.12	hu	13	a	betoldas			alacsony
+Obad.1.12	hu	14	Júda	parositva	17	H3063	alacsony
+Obad.1.12	hu	15	fiain	parositva	15,16	H9005+H1121	alacsony
+Obad.1.12	hu	16	az	betoldas			alacsony
+Obad.1.12	hu	17	ő	parositva	21	H9048	alacsony
+Obad.1.12	hu	18	veszedelmök	parositva	20,21	H0006+H9048	alacsony
+Obad.1.12	hu	19	napján	parositva	18,19	H9003+H3117	alacsony
+Obad.1.12	hu	20	és	parositva	22	H9002	alacsony
+Obad.1.12	hu	21	ne	parositva	23	H0408	alacsony
+Obad.1.12	hu	22	kérkedjél	parositva	24,25,26	H1431+H6310+H9021	alacsony
+Obad.1.12	hu	23	a	betoldas			alacsony
+Obad.1.12	hu	24	szorongattatás	parositva	29	H6869	alacsony
+Obad.1.12	hu	25	napján	parositva	27,28	H9003+H3117	alacsony
+Obad.1.12	er	1		parositva	1	H9002	alacsony
+Obad.1.12	er	2		parositva	2	H0408	alacsony
+Obad.1.12	er	3		parositva	3	H7200	alacsony
+Obad.1.12	er	4		parositva	5	H9003	alacsony
+Obad.1.12	er	5		parositva	5	H3117	alacsony
+Obad.1.12	er	6		parositva	4	H0251	alacsony
+Obad.1.12	er	7		parositva	4	H9021	alacsony
+Obad.1.12	er	8		parositva	9	H9003	alacsony
+Obad.1.12	er	9		parositva	9	H3117	alacsony
+Obad.1.12	er	10		parositva	8	H5235	alacsony
+Obad.1.12	er	11		parositva	7,8	H9023	alacsony
+Obad.1.12	er	12		parositva	10	H9002	alacsony
+Obad.1.12	er	13		parositva	11	H0408	alacsony
+Obad.1.12	er	14		parositva	12	H8055	alacsony
+Obad.1.12	er	15		parositva	15	H9005	alacsony
+Obad.1.12	er	16		parositva	15	H1121	alacsony
+Obad.1.12	er	17		parositva	14	H3063	alacsony
+Obad.1.12	er	18		parositva	19	H9003	alacsony
+Obad.1.12	er	19		parositva	19	H3117	alacsony
+Obad.1.12	er	20		parositva	18	H0006	alacsony
+Obad.1.12	er	21		parositva	17,18	H9048	alacsony
+Obad.1.12	er	22		parositva	20	H9002	alacsony
+Obad.1.12	er	23		parositva	21	H0408	alacsony
+Obad.1.12	er	24		parositva	22	H1431	alacsony
+Obad.1.12	er	25		parositva	22	H6310	alacsony
+Obad.1.12	er	26		parositva	22	H9021	alacsony
+Obad.1.12	er	27		parositva	25	H9003	alacsony
+Obad.1.12	er	28		parositva	25	H3117	alacsony
+Obad.1.12	er	29		parositva	24	H6869	alacsony
+Obad.1.13	hu	1	Ne	parositva	1	H0408	alacsony
+Obad.1.13	hu	2	törj	parositva	2	H0935	alacsony
+Obad.1.13	hu	3	be	parositva	2	H0935	alacsony
+Obad.1.13	hu	4	népem	parositva	5,6	H5971+H9020	alacsony
+Obad.1.13	hu	5	kapuján	parositva	3,4	H9003+H8179	alacsony
+Obad.1.13	hu	6	nyomorúságuk	parositva	9,10	H0343+H9028	alacsony
+Obad.1.13	hu	7	napján	parositva	7,8	H9003+H3117	alacsony
+Obad.1.13	hu	8	ne	parositva	11	H0408	alacsony
+Obad.1.13	hu	9	gyönyörködjél	parositva	12	H7200	alacsony
+Obad.1.13	hu	10	te	parositva	14	H0859	alacsony
+Obad.1.13	hu	11	is	parositva	13	H1571	alacsony
+Obad.1.13	hu	12	a	betoldas			alacsony
+Obad.1.13	hu	13	baján	parositva	15,16,17	H9003+H7451+H9023	alacsony
+Obad.1.13	hu	14	nyomorúsága	parositva	20,21	H0343+H9023	alacsony
+Obad.1.13	hu	15	napján	parositva	18,19	H9003+H3117	alacsony
+Obad.1.13	hu	16	és	parositva	22	H9002	alacsony
+Obad.1.13	hu	17	ne	parositva	23	H0408	alacsony
+Obad.1.13	hu	18	nyúlj	parositva	24	H7971	alacsony
+Obad.1.13	hu	19	az	betoldas			alacsony
+Obad.1.13	hu	20	ő	parositva	27	H9023	alacsony
+Obad.1.13	hu	21	jószágához	parositva	25,26,27	H9003+H2428+H9023	alacsony
+Obad.1.13	hu	22	nyomorúsága	parositva	30,31	H0343+H9023	alacsony
+Obad.1.13	hu	23	napján	parositva	28,29	H9003+H3117	alacsony
+Obad.1.13	er	1		parositva	1	H0408	alacsony
+Obad.1.13	er	2		parositva	2,3	H0935	alacsony
+Obad.1.13	er	3		parositva	5	H9003	alacsony
+Obad.1.13	er	4		parositva	5	H8179	alacsony
+Obad.1.13	er	5		parositva	4	H5971	alacsony
+Obad.1.13	er	6		parositva	4	H9020	alacsony
+Obad.1.13	er	7		parositva	7	H9003	alacsony
+Obad.1.13	er	8		parositva	7	H3117	alacsony
+Obad.1.13	er	9		parositva	6	H0343	alacsony
+Obad.1.13	er	10		parositva	6	H9028	alacsony
+Obad.1.13	er	11		parositva	8	H0408	alacsony
+Obad.1.13	er	12		parositva	9	H7200	alacsony
+Obad.1.13	er	13		parositva	11	H1571	alacsony
+Obad.1.13	er	14		parositva	10	H0859	alacsony
+Obad.1.13	er	15		parositva	13	H9003	alacsony
+Obad.1.13	er	16		parositva	13	H7451	alacsony
+Obad.1.13	er	17		parositva	13	H9023	alacsony
+Obad.1.13	er	18		parositva	15	H9003	alacsony
+Obad.1.13	er	19		parositva	15	H3117	alacsony
+Obad.1.13	er	20		parositva	14	H0343	alacsony
+Obad.1.13	er	21		parositva	14	H9023	alacsony
+Obad.1.13	er	22		parositva	16	H9002	alacsony
+Obad.1.13	er	23		parositva	17	H0408	alacsony
+Obad.1.13	er	24		parositva	18	H7971	alacsony
+Obad.1.13	er	25		parositva	21	H9003	alacsony
+Obad.1.13	er	26		parositva	21	H2428	alacsony
+Obad.1.13	er	27		parositva	20,21	H9023	alacsony
+Obad.1.13	er	28		parositva	23	H9003	alacsony
+Obad.1.13	er	29		parositva	23	H3117	alacsony
+Obad.1.13	er	30		parositva	22	H0343	alacsony
+Obad.1.13	er	31		parositva	22	H9023	alacsony
+Obad.1.14	hu	1	A	betoldas			alacsony
+Obad.1.14	hu	2	résre	parositva	4,5,6	H5921+H9009+H6563	alacsony
+Obad.1.14	hu	3	se	parositva	2	H0408	alacsony
+Obad.1.14	hu	4	állj	parositva	3	H5975	alacsony
+Obad.1.14	hu	5	fel	parositva	3	H5975	alacsony
+Obad.1.14	hu	6	menekülőit	parositva	10,11	H6412+H9023	alacsony
+Obad.1.14	hu	7	elveszíteni	parositva	7,8	H9005+H3772	alacsony
+Obad.1.14	hu	8	és	parositva	12	H9002	alacsony
+Obad.1.14	hu	9	ne	parositva	13	H0408	alacsony
+Obad.1.14	hu	10	áruld	parositva	14	H5462	alacsony
+Obad.1.14	hu	11	el	parositva	14	H5462	alacsony
+Obad.1.14	hu	12	az	betoldas			alacsony
+Obad.1.14	hu	13	ő	parositva	16	H9023	alacsony
+Obad.1.14	hu	14	megmaradottait	parositva	15,16	H8300+H9023	alacsony
+Obad.1.14	hu	15	a	betoldas			alacsony
+Obad.1.14	hu	16	szorongattatás	parositva	19	H6869	alacsony
+Obad.1.14	hu	17	napján	parositva	17,18	H9003+H3117	alacsony
+Obad.1.14	er	1		forditatlan		H9002	alacsony
+Obad.1.14	er	2		parositva	3	H0408	alacsony
+Obad.1.14	er	3		parositva	4,5	H5975	alacsony
+Obad.1.14	er	4		parositva	2	H5921	alacsony
+Obad.1.14	er	5		parositva	2	H9009	alacsony
+Obad.1.14	er	6		parositva	2	H6563	alacsony
+Obad.1.14	er	7		parositva	7	H9005	alacsony
+Obad.1.14	er	8		parositva	7	H3772	alacsony
+Obad.1.14	er	9		forditatlan		H0853	alacsony
+Obad.1.14	er	10		parositva	6	H6412	alacsony
+Obad.1.14	er	11		parositva	6	H9023	alacsony
+Obad.1.14	er	12		parositva	8	H9002	alacsony
+Obad.1.14	er	13		parositva	9	H0408	alacsony
+Obad.1.14	er	14		parositva	10,11	H5462	alacsony
+Obad.1.14	er	15		parositva	14	H8300	alacsony
+Obad.1.14	er	16		parositva	13,14	H9023	alacsony
+Obad.1.14	er	17		parositva	17	H9003	alacsony
+Obad.1.14	er	18		parositva	17	H3117	alacsony
+Obad.1.14	er	19		parositva	16	H6869	alacsony
+Obad.1.15	hu	1	Mert	parositva	1	H3588	alacsony
+Obad.1.15	hu	2	közel	parositva	2	H7138	alacsony
+Obad.1.15	hu	3	van	betoldas			alacsony
+Obad.1.15	hu	4	az	betoldas			alacsony
+Obad.1.15	hu	5	Úrnak	parositva	4	H3068	alacsony
+Obad.1.15	hu	6	napja	parositva	3	H3117	alacsony
+Obad.1.15	hu	7	minden	parositva	6	H3605	alacsony
+Obad.1.15	hu	8	népek	parositva	8	H1471	alacsony
+Obad.1.15	hu	9	ellen	parositva	5	H5921	alacsony
+Obad.1.15	hu	10	A	parositva	9,10	H9004+H0834	alacsony
+Obad.1.15	hu	11	mint	parositva	9,10	H9004+H0834	alacsony
+Obad.1.15	hu	12	cselekedtél	parositva	11	H6213	alacsony
+Obad.1.15	hu	13	úgy	betoldas			alacsony
+Obad.1.15	hu	14	cselekesznek	parositva	12	H6213	alacsony
+Obad.1.15	hu	15	veled	parositva	13,14	H9005+H9032	alacsony
+Obad.1.15	hu	16	a	betoldas			alacsony
+Obad.1.15	hu	17	mit	betoldas			alacsony
+Obad.1.15	hu	18	te	parositva	16	H9021	alacsony
+Obad.1.15	hu	19	fizettél	parositva	15	H1576	alacsony
+Obad.1.15	hu	20	visszaszáll	parositva	17	H7725	alacsony
+Obad.1.15	hu	21	fejedre	parositva	18,19,20	H9003+H7218+H9021	alacsony
+Obad.1.15	er	1		parositva	1	H3588	alacsony
+Obad.1.15	er	2		parositva	2	H7138	alacsony
+Obad.1.15	er	3		parositva	6	H3117	alacsony
+Obad.1.15	er	4		parositva	5	H3068	alacsony
+Obad.1.15	er	5		parositva	9	H5921	alacsony
+Obad.1.15	er	6		parositva	7	H3605	alacsony
+Obad.1.15	er	7		forditatlan		H9009	alacsony
+Obad.1.15	er	8		parositva	8	H1471	alacsony
+Obad.1.15	er	9		parositva	10,11	H9004	alacsony
+Obad.1.15	er	10		parositva	10,11	H0834	alacsony
+Obad.1.15	er	11		parositva	12	H6213	alacsony
+Obad.1.15	er	12		parositva	14	H6213	alacsony
+Obad.1.15	er	13		parositva	15	H9005	alacsony
+Obad.1.15	er	14		parositva	15	H9032	alacsony
+Obad.1.15	er	15		parositva	19	H1576	alacsony
+Obad.1.15	er	16		parositva	18	H9021	alacsony
+Obad.1.15	er	17		parositva	20	H7725	alacsony
+Obad.1.15	er	18		parositva	21	H9003	alacsony
+Obad.1.15	er	19		parositva	21	H7218	alacsony
+Obad.1.15	er	20		parositva	21	H9021	alacsony
+Obad.1.16	hu	1	Mert	parositva	1	H3588	alacsony
+Obad.1.16	hu	2	a	parositva	2,3	H9004+H0834	alacsony
+Obad.1.16	hu	3	mint	parositva	2,3	H9004+H0834	alacsony
+Obad.1.16	hu	4	ti	betoldas			alacsony
+Obad.1.16	hu	5	ittatok	parositva	4	H8354	alacsony
+Obad.1.16	hu	6	szent	parositva	7	H6944	alacsony
+Obad.1.16	hu	7	hegyemen	parositva	5,6,8	H5921+H2022+H9020	alacsony
+Obad.1.16	hu	8	úgy	betoldas			alacsony
+Obad.1.16	hu	9	isznak	parositva	9	H8354	alacsony
+Obad.1.16	hu	10	szüntelen	parositva	13	H8548	alacsony
+Obad.1.16	hu	11	az	betoldas			alacsony
+Obad.1.16	hu	12	összes	parositva	10	H3605	alacsony
+Obad.1.16	hu	13	népek	parositva	12	H1471	alacsony
+Obad.1.16	hu	14	bizony	betoldas			alacsony
+Obad.1.16	hu	15	isznak	parositva	15	H8354	alacsony
+Obad.1.16	hu	16	és	parositva	16	H9001	alacsony
+Obad.1.16	hu	17	hörpengetnek	parositva	17	H3886	alacsony
+Obad.1.16	hu	18	és	parositva	18	H9001	alacsony
+Obad.1.16	hu	19	olyanok	betoldas			alacsony
+Obad.1.16	hu	20	lesznek	parositva	19	H1961	alacsony
+Obad.1.16	hu	21	mintha	parositva	20	H9004	alacsony
+Obad.1.16	hu	22	nem	parositva	21	H3808	alacsony
+Obad.1.16	hu	23	lettek	parositva	22	H1961	alacsony
+Obad.1.16	hu	24	volna	parositva	22	H1961	alacsony
+Obad.1.16	er	1		parositva	1	H3588	alacsony
+Obad.1.16	er	2		parositva	2,3	H9004	alacsony
+Obad.1.16	er	3		parositva	2,3	H0834	alacsony
+Obad.1.16	er	4		parositva	5	H8354	alacsony
+Obad.1.16	er	5		parositva	7	H5921	alacsony
+Obad.1.16	er	6		parositva	7	H2022	alacsony
+Obad.1.16	er	7		parositva	6	H6944	alacsony
+Obad.1.16	er	8		parositva	7	H9020	alacsony
+Obad.1.16	er	9		parositva	9	H8354	alacsony
+Obad.1.16	er	10		parositva	12	H3605	alacsony
+Obad.1.16	er	11		forditatlan		H9009	alacsony
+Obad.1.16	er	12		parositva	13	H1471	alacsony
+Obad.1.16	er	13		parositva	10	H8548	alacsony
+Obad.1.16	er	14		forditatlan		H9001	alacsony
+Obad.1.16	er	15		parositva	15	H8354	alacsony
+Obad.1.16	er	16		parositva	16	H9001	alacsony
+Obad.1.16	er	17		parositva	17	H3886	alacsony
+Obad.1.16	er	18		parositva	18	H9001	alacsony
+Obad.1.16	er	19		parositva	20	H1961	alacsony
+Obad.1.16	er	20		parositva	21	H9004	alacsony
+Obad.1.16	er	21		parositva	22	H3808	alacsony
+Obad.1.16	er	22		parositva	23,24	H1961	alacsony
+Obad.1.17	hu	1	De	parositva	1	H9002	alacsony
+Obad.1.17	hu	2	a	betoldas			alacsony
+Obad.1.17	hu	3	Sion	parositva	4	H6726	alacsony
+Obad.1.17	hu	4	hegyén	parositva	2,3	H9003+H2022	alacsony
+Obad.1.17	hu	5	szabadulás	parositva	6	H6413	alacsony
+Obad.1.17	hu	6	lészen	parositva	5	H1961	alacsony
+Obad.1.17	hu	7	és	parositva	7	H9001	alacsony
+Obad.1.17	hu	8	szentté	parositva	9	H6944	alacsony
+Obad.1.17	hu	9	lészen	parositva	8	H1961	alacsony
+Obad.1.17	hu	10	az	betoldas			alacsony
+Obad.1.17	hu	11	és	parositva	10	H9001	alacsony
+Obad.1.17	hu	12	a	betoldas			alacsony
+Obad.1.17	hu	13	Jákób	parositva	13	H3290	alacsony
+Obad.1.17	hu	14	háza	parositva	12	H1004	alacsony
+Obad.1.17	hu	15	birtokba	parositva	11	H3423	alacsony
+Obad.1.17	hu	16	veszi	parositva	11	H3423	alacsony
+Obad.1.17	hu	17	az	betoldas			alacsony
+Obad.1.17	hu	18	ő	parositva	16	H9028	alacsony
+Obad.1.17	hu	19	örökségét	parositva	15,16	H4180+H9028	alacsony
+Obad.1.17	er	1		parositva	1	H9002	alacsony
+Obad.1.17	er	2		parositva	4	H9003	alacsony
+Obad.1.17	er	3		parositva	4	H2022	alacsony
+Obad.1.17	er	4		parositva	3	H6726	alacsony
+Obad.1.17	er	5		parositva	6	H1961	alacsony
+Obad.1.17	er	6		parositva	5	H6413	alacsony
+Obad.1.17	er	7		parositva	7	H9001	alacsony
+Obad.1.17	er	8		parositva	9	H1961	alacsony
+Obad.1.17	er	9		parositva	8	H6944	alacsony
+Obad.1.17	er	10		parositva	11	H9001	alacsony
+Obad.1.17	er	11		parositva	15,16	H3423	alacsony
+Obad.1.17	er	12		parositva	14	H1004	alacsony
+Obad.1.17	er	13		parositva	13	H3290	alacsony
+Obad.1.17	er	14		forditatlan		H0853	alacsony
+Obad.1.17	er	15		parositva	19	H4180	alacsony
+Obad.1.17	er	16		parositva	18,19	H9028	alacsony
+Obad.1.18	hu	1	És	parositva	1	H9001	alacsony
+Obad.1.18	hu	2	a	betoldas			alacsony
+Obad.1.18	hu	3	Jákób	parositva	4	H3290	alacsony
+Obad.1.18	hu	4	háza	parositva	3	H1004	alacsony
+Obad.1.18	hu	5	tűz	parositva	5	H0784	alacsony
+Obad.1.18	hu	6	lészen	parositva	2	H1961	alacsony
+Obad.1.18	hu	7	és	parositva	6	H9002	alacsony
+Obad.1.18	hu	8	a	betoldas			alacsony
+Obad.1.18	hu	9	József	parositva	8	H3130	alacsony
+Obad.1.18	hu	10	háza	parositva	7	H1004	alacsony
+Obad.1.18	hu	11	láng	parositva	9	H3852	alacsony
+Obad.1.18	hu	12	az	betoldas			alacsony
+Obad.1.18	hu	13	Ézsau	parositva	12	H6215	alacsony
+Obad.1.18	hu	14	háza	parositva	11	H1004	alacsony
+Obad.1.18	hu	15	pedig	parositva	10	H9002	alacsony
+Obad.1.18	hu	16	pozdorja	parositva	13,14	H9005+H7179	alacsony
+Obad.1.18	hu	17	és	parositva	15	H9001	alacsony
+Obad.1.18	hu	18	meggyújtják	parositva	16,17,18	H1814+H9003+H9038	alacsony
+Obad.1.18	hu	19	és	parositva	19	H9001	alacsony
+Obad.1.18	hu	20	megemésztik	parositva	20	H0398	alacsony
+Obad.1.18	hu	21	őket	parositva	21	H9038	alacsony
+Obad.1.18	hu	22	és	parositva	22	H9002	alacsony
+Obad.1.18	hu	23	nem	parositva	23	H3808	alacsony
+Obad.1.18	hu	24	marad	parositva	24	H1961	alacsony
+Obad.1.18	hu	25	meg	parositva	24	H1961	alacsony
+Obad.1.18	hu	26	senki	parositva	25	H8300	alacsony
+Obad.1.18	hu	27	Ézsau	parositva	28	H6215	alacsony
+Obad.1.18	hu	28	házából	parositva	26,27	H9005+H1004	alacsony
+Obad.1.18	hu	29	mert	parositva	29	H3588	alacsony
+Obad.1.18	hu	30	az	betoldas			alacsony
+Obad.1.18	hu	31	Úr	parositva	30	H3068	alacsony
+Obad.1.18	hu	32	szólott	parositva	31	H1696	alacsony
+Obad.1.18	er	1		parositva	1	H9001	alacsony
+Obad.1.18	er	2		parositva	6	H1961	alacsony
+Obad.1.18	er	3		parositva	4	H1004	alacsony
+Obad.1.18	er	4		parositva	3	H3290	alacsony
+Obad.1.18	er	5		parositva	5	H0784	alacsony
+Obad.1.18	er	6		parositva	7	H9002	alacsony
+Obad.1.18	er	7		parositva	10	H1004	alacsony
+Obad.1.18	er	8		parositva	9	H3130	alacsony
+Obad.1.18	er	9		parositva	11	H3852	alacsony
+Obad.1.18	er	10		parositva	15	H9002	alacsony
+Obad.1.18	er	11		parositva	14	H1004	alacsony
+Obad.1.18	er	12		parositva	13	H6215	alacsony
+Obad.1.18	er	13		parositva	16	H9005	alacsony
+Obad.1.18	er	14		parositva	16	H7179	alacsony
+Obad.1.18	er	15		parositva	17	H9001	alacsony
+Obad.1.18	er	16		parositva	18	H1814	alacsony
+Obad.1.18	er	17		parositva	18	H9003	alacsony
+Obad.1.18	er	18		parositva	18	H9038	alacsony
+Obad.1.18	er	19		parositva	19	H9001	alacsony
+Obad.1.18	er	20		parositva	20	H0398	alacsony
+Obad.1.18	er	21		parositva	21	H9038	alacsony
+Obad.1.18	er	22		parositva	22	H9002	alacsony
+Obad.1.18	er	23		parositva	23	H3808	alacsony
+Obad.1.18	er	24		parositva	24,25	H1961	alacsony
+Obad.1.18	er	25		parositva	26	H8300	alacsony
+Obad.1.18	er	26		parositva	28	H9005	alacsony
+Obad.1.18	er	27		parositva	28	H1004	alacsony
+Obad.1.18	er	28		parositva	27	H6215	alacsony
+Obad.1.18	er	29		parositva	29	H3588	alacsony
+Obad.1.18	er	30		parositva	31	H3068	alacsony
+Obad.1.18	er	31		parositva	32	H1696	alacsony
+Obad.1.19	hu	1	A	betoldas			alacsony
+Obad.1.19	hu	2	déliek	parositva	4	H5045	alacsony
+Obad.1.19	hu	3	örökség	parositva	2	H3423	alacsony
+Obad.1.19	hu	4	szerint	betoldas			alacsony
+Obad.1.19	hu	5	bírják	parositva	2	H3423	alacsony
+Obad.1.19	hu	6	az	betoldas			alacsony
+Obad.1.19	hu	7	Ézsau	parositva	7	H6215	alacsony
+Obad.1.19	hu	8	hegyét	parositva	6	H2022	alacsony
+Obad.1.19	hu	9	a	betoldas			alacsony
+Obad.1.19	hu	10	síkon	parositva	10	H8219	alacsony
+Obad.1.19	hu	11	lakók	betoldas			alacsony
+Obad.1.19	hu	12	pedig	parositva	8	H9002	alacsony
+Obad.1.19	hu	13	a	betoldas			alacsony
+Obad.1.19	hu	14	Filiszteusokat	parositva	12	H6430	alacsony
+Obad.1.19	hu	15	És	parositva	13	H9001	alacsony
+Obad.1.19	hu	16	örökség	parositva	14	H3423	alacsony
+Obad.1.19	hu	17	szerint	betoldas			alacsony
+Obad.1.19	hu	18	bírják	parositva	14	H3423	alacsony
+Obad.1.19	hu	19	az	betoldas			alacsony
+Obad.1.19	hu	20	Efraim	parositva	17	H0669	alacsony
+Obad.1.19	hu	21	mezőit	parositva	16	H7704	alacsony
+Obad.1.19	hu	22	és	parositva	18	H9002	alacsony
+Obad.1.19	hu	23	Samaria	parositva	21	H8111	alacsony
+Obad.1.19	hu	24	mezőit	parositva	20	H7704	alacsony
+Obad.1.19	hu	25	Benjámin	parositva	23	H1144	alacsony
+Obad.1.19	hu	26	pedig	parositva	22	H9002	alacsony
+Obad.1.19	hu	27	a	betoldas			alacsony
+Obad.1.19	hu	28	Gileádot	parositva	26	H1568	alacsony
+Obad.1.19	er	1		forditatlan		H9001	alacsony
+Obad.1.19	er	2		parositva	3,5	H3423	alacsony
+Obad.1.19	er	3		forditatlan		H9009	alacsony
+Obad.1.19	er	4		parositva	2	H5045	alacsony
+Obad.1.19	er	5		forditatlan		H0853	alacsony
+Obad.1.19	er	6		parositva	8	H2022	alacsony
+Obad.1.19	er	7		parositva	7	H6215	alacsony
+Obad.1.19	er	8		parositva	12	H9002	alacsony
+Obad.1.19	er	9		forditatlan		H9009	alacsony
+Obad.1.19	er	10		parositva	10	H8219	alacsony
+Obad.1.19	er	11		forditatlan		H0853	alacsony
+Obad.1.19	er	12		parositva	14	H6430	alacsony
+Obad.1.19	er	13		parositva	15	H9001	alacsony
+Obad.1.19	er	14		parositva	16,18	H3423	alacsony
+Obad.1.19	er	15		forditatlan		H0853	alacsony
+Obad.1.19	er	16		parositva	21	H7704	alacsony
+Obad.1.19	er	17		parositva	20	H0669	alacsony
+Obad.1.19	er	18		parositva	22	H9002	alacsony
+Obad.1.19	er	19		forditatlan		H0853	alacsony
+Obad.1.19	er	20		parositva	24	H7704	alacsony
+Obad.1.19	er	21		parositva	23	H8111	alacsony
+Obad.1.19	er	22		parositva	26	H9002	alacsony
+Obad.1.19	er	23		parositva	25	H1144	alacsony
+Obad.1.19	er	24		forditatlan		H0853	alacsony
+Obad.1.19	er	25		forditatlan		H9009	alacsony
+Obad.1.19	er	26		parositva	28	H1568	alacsony
+Obad.1.20	hu	1	Izráel	parositva	9	H3478	alacsony
+Obad.1.20	hu	2	fiainak	parositva	7,8	H9005+H1121	alacsony
+Obad.1.20	hu	3	ez	parositva	5,6	H9009+H2088	alacsony
+Obad.1.20	hu	4	a	betoldas			alacsony
+Obad.1.20	hu	5	száműzött	parositva	2	H1546	alacsony
+Obad.1.20	hu	6	serege	parositva	4	H2426	alacsony
+Obad.1.20	hu	7	azokat	betoldas			alacsony
+Obad.1.20	hu	8	a	parositva	10	H0834	alacsony
+Obad.1.20	hu	9	melyek	parositva	10	H0834	alacsony
+Obad.1.20	hu	10	a	betoldas			alacsony
+Obad.1.20	hu	11	Kananeusoké	parositva	11	H3669	alacsony
+Obad.1.20	hu	12	mind	betoldas			alacsony
+Obad.1.20	hu	13	Sarfátig	parositva	12,13	H5704+H6886	alacsony
+Obad.1.20	hu	14	a	betoldas			alacsony
+Obad.1.20	hu	15	jeruzsálemi	parositva	16	H3389	alacsony
+Obad.1.20	hu	16	száműzöttek	parositva	15	H1546	alacsony
+Obad.1.20	hu	17	pedig	parositva	14	H9002	alacsony
+Obad.1.20	hu	18	a	parositva	17	H0834	alacsony
+Obad.1.20	hu	19	kik	parositva	17	H0834	alacsony
+Obad.1.20	hu	20	Szefarádban	parositva	18,19	H9003+H5614	alacsony
+Obad.1.20	hu	21	vannak	betoldas			alacsony
+Obad.1.20	hu	22	elfoglalják	parositva	20	H3423	alacsony
+Obad.1.20	hu	23	majd	betoldas			alacsony
+Obad.1.20	hu	24	a	betoldas			alacsony
+Obad.1.20	hu	25	déli	parositva	24	H5045	alacsony
+Obad.1.20	hu	26	városokat	parositva	22	H5892	alacsony
+Obad.1.20	er	1		forditatlan		H9002	alacsony
+Obad.1.20	er	2		parositva	5	H1546	alacsony
+Obad.1.20	er	3		forditatlan		H9009	alacsony
+Obad.1.20	er	4		parositva	6	H2426	alacsony
+Obad.1.20	er	5		parositva	3	H9009	alacsony
+Obad.1.20	er	6		parositva	3	H2088	alacsony
+Obad.1.20	er	7		parositva	2	H9005	alacsony
+Obad.1.20	er	8		parositva	2	H1121	alacsony
+Obad.1.20	er	9		parositva	1	H3478	alacsony
+Obad.1.20	er	10		parositva	8,9	H0834	alacsony
+Obad.1.20	er	11		parositva	11	H3669	alacsony
+Obad.1.20	er	12		parositva	13	H5704	alacsony
+Obad.1.20	er	13		parositva	13	H6886	alacsony
+Obad.1.20	er	14		parositva	17	H9002	alacsony
+Obad.1.20	er	15		parositva	16	H1546	alacsony
+Obad.1.20	er	16		parositva	15	H3389	alacsony
+Obad.1.20	er	17		parositva	18,19	H0834	alacsony
+Obad.1.20	er	18		parositva	20	H9003	alacsony
+Obad.1.20	er	19		parositva	20	H5614	alacsony
+Obad.1.20	er	20		parositva	22	H3423	alacsony
+Obad.1.20	er	21		forditatlan		H0853	alacsony
+Obad.1.20	er	22		parositva	26	H5892	alacsony
+Obad.1.20	er	23		forditatlan		H9009	alacsony
+Obad.1.20	er	24		parositva	25	H5045	alacsony
+Obad.1.21	hu	1	És	parositva	1	H9001	alacsony
+Obad.1.21	hu	2	a	betoldas			alacsony
+Obad.1.21	hu	3	Sion	parositva	6	H6726	alacsony
+Obad.1.21	hu	4	hegyére	parositva	4,5	H9003+H2022	alacsony
+Obad.1.21	hu	5	szabadítók	parositva	3	H3467	alacsony
+Obad.1.21	hu	6	mennek	parositva	2	H5927	alacsony
+Obad.1.21	hu	7	fel	parositva	2	H5927	alacsony
+Obad.1.21	hu	8	hogy	parositva	7	H9005	alacsony
+Obad.1.21	hu	9	megítéljék	parositva	8	H8199	alacsony
+Obad.1.21	hu	10	az	betoldas			alacsony
+Obad.1.21	hu	11	Ézsau	parositva	11	H6215	alacsony
+Obad.1.21	hu	12	hegyét	parositva	10	H2022	alacsony
+Obad.1.21	hu	13	és	parositva	12	H9001	alacsony
+Obad.1.21	hu	14	az	betoldas			alacsony
+Obad.1.21	hu	15	Úré	parositva	14,15	H9005+H3068	alacsony
+Obad.1.21	hu	16	lesz	parositva	13	H1961	alacsony
+Obad.1.21	hu	17	a	betoldas			alacsony
+Obad.1.21	hu	18	királyság	parositva	17	H4410	alacsony
+Obad.1.21	er	1		parositva	1	H9001	alacsony
+Obad.1.21	er	2		parositva	6,7	H5927	alacsony
+Obad.1.21	er	3		parositva	5	H3467	alacsony
+Obad.1.21	er	4		parositva	4	H9003	alacsony
+Obad.1.21	er	5		parositva	4	H2022	alacsony
+Obad.1.21	er	6		parositva	3	H6726	alacsony
+Obad.1.21	er	7		parositva	8	H9005	alacsony
+Obad.1.21	er	8		parositva	9	H8199	alacsony
+Obad.1.21	er	9		forditatlan		H0853	alacsony
+Obad.1.21	er	10		parositva	12	H2022	alacsony
+Obad.1.21	er	11		parositva	11	H6215	alacsony
+Obad.1.21	er	12		parositva	13	H9001	alacsony
+Obad.1.21	er	13		parositva	16	H1961	alacsony
+Obad.1.21	er	14		parositva	15	H9005	alacsony
+Obad.1.21	er	15		parositva	15	H3068	alacsony
+Obad.1.21	er	16		forditatlan		H9009	alacsony
+Obad.1.21	er	17		parositva	18	H4410	alacsony

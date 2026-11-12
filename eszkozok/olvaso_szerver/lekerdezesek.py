@@ -989,3 +989,77 @@ def kereses_er_versek(con, kisek):
 def kereses_er_tokenek(con, kis):
     """[(igehely, sorszam)] a héber tokenek, amelyek `szo_kis`-e a megadott (fedő index, `ix_token_karoli_2`)."""
     return con.execute("SELECT igehely, sorszam FROM token_karoli WHERE szo_kis=? AND oldal='er' ORDER BY igehely, sorszam", (kis,)).fetchall()
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# F210: a bibliaválasztó szövegei (a Károli 1908 a `vers`/`token_karoli`-ból; a többi az itteni lekérdezésekkel)
+# ---------------------------------------------------------------------------------------------------------------------
+def biblia_fejezetek_karoli_kulcs(con, tabla):
+    """{kk: [fejezet, ...]} a Károli-kulcsos szövegtáblára: a Károli-fejezetek, amelyekben a táblának van sora. A `tabla`
+    a hívó rögzített listájából jön (`bibliak.py`), nem a kérésből."""
+    sql = {
+        'szoveg_modern': 'SELECT DISTINCT v.konyv, v.fejezet FROM szoveg_modern t JOIN vers v ON v.igehely=t.igehely',
+        'szoveg_kjv': 'SELECT DISTINCT v.konyv, v.fejezet FROM szoveg_kjv t JOIN vers v ON v.igehely=t.igehely',
+        'bsb': 'SELECT DISTINCT v.konyv, v.fejezet FROM bsb t JOIN vers v ON v.igehely=t.igehely',
+        'lxx_token': 'SELECT DISTINCT v.konyv, v.fejezet FROM vers v WHERE EXISTS (SELECT 1 FROM lxx_token t WHERE t.karoli_igehely=v.igehely)',
+        'token_eredeti:H': "SELECT DISTINCT v.konyv, v.fejezet FROM vers v WHERE EXISTS (SELECT 1 FROM token_eredeti t WHERE t.igehely=v.igehely AND t.nyelv='H')",
+        'token_eredeti:G': "SELECT DISTINCT v.konyv, v.fejezet FROM vers v WHERE EXISTS (SELECT 1 FROM token_eredeti t WHERE t.igehely=v.igehely AND t.nyelv='G')",
+    }[tabla]
+    ki = defaultdict(list)
+    for kk, f in con.execute(sql + ' ORDER BY v.sorrend'):
+        if f not in ki[kk]:
+            ki[kk].append(f)
+    return {kk: sorted(fl) for kk, fl in ki.items()}
+
+
+def modern_fejezet(con, kk, fej):
+    """({igehely: modern versszöveg}, {igehely: [(sorszam, alak)]}) a modernizált Károli fejezetére."""
+    szoveg = dict(con.execute('SELECT t.igehely, t.szoveg FROM szoveg_modern t JOIN vers v ON v.igehely=t.igehely WHERE v.konyv=? AND v.fejezet=?', (kk, fej)))
+    tok = defaultdict(list)
+    for ig, sz, alak in con.execute('SELECT t.igehely, t.sorszam, t.alak FROM token_modern t JOIN vers v ON v.igehely=t.igehely '
+                                    'WHERE v.konyv=? AND v.fejezet=? ORDER BY v.vers, t.sorszam', (kk, fej)):
+        tok[ig].append((sz, alak))
+    return szoveg, tok
+
+
+def eredeti_fejezet(con, kk, fej, nyelv):
+    """{igehely: [(sorszam, alak, strong_lanc)]} a TAHOT (`H`) vagy a TAGNT (`G`) tokenjei a Károli-fejezetre."""
+    ki = defaultdict(list)
+    for ig, sz, alak, st in con.execute('SELECT t.igehely, t.sorszam, t.alak, t.strong_lanc FROM token_eredeti t JOIN vers v ON v.igehely=t.igehely '
+                                        'WHERE v.konyv=? AND v.fejezet=? AND t.nyelv=? ORDER BY v.vers, t.sorszam', (kk, fej, nyelv)):
+        ki[ig].append((sz, alak or '', st or ''))
+    return ki
+
+
+def lxx_fejezet(con, kk, fej):
+    """{igehely: [(szovegforma, lxx_igehely, szoalak, strong)]} a Septuaginta tokenjei a Károli-fejezet verseire (a szövegbeli
+    sorrendben); a Károli-vers nélküli LXX-szakasz nincs benne."""
+    ki = defaultdict(list)
+    for ig, forma, lxx_ig, szo, st in con.execute(
+            'SELECT t.karoli_igehely, t.szovegforma, t.lxx_igehely, t.szoalak, t.strong FROM lxx_token t JOIN vers v ON v.igehely=t.karoli_igehely '
+            'WHERE v.konyv=? AND v.fejezet=? ORDER BY v.vers, t.szovegforma, CAST(t.pozicio AS INTEGER), t.rowid', (kk, fej)):
+        ki[ig].append((forma or '', lxx_ig or '', szo or '', st or ''))
+    return ki
+
+
+def kjv_fejezet(con, kk, fej):
+    """({igehely: [(step_nyers, szoveg)]}, {igehely: [(angol_szo, strong)]}) a KJV fejezetére (Károli-kulcs): a teljes szöveg és a
+    Strong-címkés szavak (a `kjv` tábla; a kiadás kizárhatja, ilyenkor a KJV nem választható, bibliak.Tar.van)."""
+    szoveg = defaultdict(list)
+    for ig, step, sz in con.execute('SELECT t.igehely, t.step_nyers, t.szoveg FROM szoveg_kjv t JOIN vers v ON v.igehely=t.igehely '
+                                    'WHERE v.konyv=? AND v.fejezet=? ORDER BY v.vers, t.sorrend', (kk, fej)):
+        szoveg[ig].append((step or '', sz or ''))
+    cimke = defaultdict(list)
+    for ig, szo, st in con.execute('SELECT t.igehely, t.angol_szo, t.strong FROM kjv t JOIN vers v ON v.igehely=t.igehely '
+                                   'WHERE v.konyv=? AND v.fejezet=? ORDER BY v.vers, t.sorszam', (kk, fej)):
+        cimke[ig].append((szo or '', st or ''))
+    return szoveg, cimke
+
+
+def bsb_fejezet(con, kk, fej):
+    """{igehely: [(angol_szo, strong)]} a BSB fejezetére (Károli-kulcs), az angol szórendben; az elhagyott (üres) szó nélkül."""
+    ki = defaultdict(list)
+    for ig, szo, st in con.execute("SELECT t.igehely, t.angol_szo, t.strong FROM bsb t JOIN vers v ON v.igehely=t.igehely "
+                                   "WHERE v.konyv=? AND v.fejezet=? AND t.angol_szo<>'' ORDER BY v.vers, t.sorszam", (kk, fej)):
+        ki[ig].append((szo, st or ''))
+    return ki
