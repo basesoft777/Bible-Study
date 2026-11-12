@@ -1,0 +1,74 @@
+# GENERÁLT: a Logosz-lexikon – Károli 1908 – Strong szóillesztés nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERATED: export of the Logosz Lexikon – Károli 1908 – Strong word alignment open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+szakasz	cimke	n	x	p	also95	felso95	modszer
+reteg	OSZ_mozes_magas	200	198	0.9900	0.9643	0.9973	wilson95
+reteg	OSZ_mozes_alacsony	200	184	0.9200	0.8740	0.9502	wilson95
+reteg	OSZ_tortenet	200	190	0.9500	0.9104	0.9726	wilson95
+reteg	OSZ_koltoi	200	190	0.9500	0.9104	0.9726	wilson95
+reteg	OSZ_profeta	200	186	0.9300	0.8859	0.9578	wilson95
+reteg	USZ_evangelium	200	196	0.9800	0.9497	0.9922	wilson95
+reteg	USZ_level	200	191	0.9550	0.9167	0.9761	wilson95
+reteg	USZ_jelenesek	200	193	0.9650	0.9295	0.9829	wilson95
+sulyozott	OSZ	1000	948	0.9450	0.9295	0.9605	retegzett_normal95
+sulyozott	USZ	600	580	0.9707	0.9555	0.9859	retegzett_normal95
+sulyozott	OSSZES	1600	1528	0.9506	0.9381	0.9632	retegzett_normal95
+bontas	OSZ_tartalmi_szo	661	637	0.9627	0.9473	0.9781	retegzett_leiro
+bontas	OSSZES_tartalmi_szo	1261	1217	0.9644	0.9520	0.9769	retegzett_leiro
+bontas	OSZ_morfema	339	311	0.9074	0.8718	0.9429	retegzett_leiro
+bontas	OSSZES_morfema	339	311	0.9074	0.8718	0.9429	retegzett_leiro
+hibatipus	OSZ_mozes_magas:folos_par	2	0				darab
+hibatipus	OSZ_mozes_magas:azonos_lexema_mas_elofordulas	2	0				darab
+hibatipus	OSZ_mozes_magas:szomszedos_token	2	2				darab
+hibatipus	OSZ_mozes_magas:rossz_szo_a_versben	2	0				darab
+hibatipus	OSZ_mozes_alacsony:folos_par	16	4				darab
+hibatipus	OSZ_mozes_alacsony:azonos_lexema_mas_elofordulas	16	0				darab
+hibatipus	OSZ_mozes_alacsony:szomszedos_token	16	8				darab
+hibatipus	OSZ_mozes_alacsony:rossz_szo_a_versben	16	4				darab
+hibatipus	OSZ_tortenet:folos_par	10	1				darab
+hibatipus	OSZ_tortenet:azonos_lexema_mas_elofordulas	10	0				darab
+hibatipus	OSZ_tortenet:szomszedos_token	10	5				darab
+hibatipus	OSZ_tortenet:rossz_szo_a_versben	10	4				darab
+hibatipus	OSZ_koltoi:folos_par	10	1				darab
+hibatipus	OSZ_koltoi:azonos_lexema_mas_elofordulas	10	1				darab
+hibatipus	OSZ_koltoi:szomszedos_token	10	6				darab
+hibatipus	OSZ_koltoi:rossz_szo_a_versben	10	2				darab
+hibatipus	OSZ_profeta:folos_par	14	4				darab
+hibatipus	OSZ_profeta:azonos_lexema_mas_elofordulas	14	1				darab
+hibatipus	OSZ_profeta:szomszedos_token	14	5				darab
+hibatipus	OSZ_profeta:rossz_szo_a_versben	14	4				darab
+hibatipus	USZ_evangelium:folos_par	4	2				darab
+hibatipus	USZ_evangelium:azonos_lexema_mas_elofordulas	4	0				darab
+hibatipus	USZ_evangelium:szomszedos_token	4	1				darab
+hibatipus	USZ_evangelium:rossz_szo_a_versben	4	1				darab
+hibatipus	USZ_level:folos_par	9	2				darab
+hibatipus	USZ_level:azonos_lexema_mas_elofordulas	9	0				darab
+hibatipus	USZ_level:szomszedos_token	9	7				darab
+hibatipus	USZ_level:rossz_szo_a_versben	9	0				darab
+hibatipus	USZ_jelenesek:folos_par	7	2				darab
+hibatipus	USZ_jelenesek:azonos_lexema_mas_elofordulas	7	0				darab
+hibatipus	USZ_jelenesek:szomszedos_token	7	3				darab
+hibatipus	USZ_jelenesek:rossz_szo_a_versben	7	2				darab
+hibatipus	OSSZES:folos_par	72	16				darab
+hibatipus	OSSZES:azonos_lexema_mas_elofordulas	72	2				darab
+hibatipus	OSSZES:szomszedos_token	72	37				darab
+hibatipus	OSSZES:rossz_szo_a_versben	72	17				darab
+hibatipus	OSSZES_tartalmi_szo:folos_par	44	12				darab
+hibatipus	OSSZES_tartalmi_szo:azonos_lexema_mas_elofordulas	44	0				darab
+hibatipus	OSSZES_tartalmi_szo:szomszedos_token	44	20				darab
+hibatipus	OSSZES_tartalmi_szo:rossz_szo_a_versben	44	12				darab
+hibatipus	OSSZES_morfema:folos_par	28	4				darab
+hibatipus	OSSZES_morfema:azonos_lexema_mas_elofordulas	28	2				darab
+hibatipus	OSSZES_morfema:szomszedos_token	28	17				darab
+hibatipus	OSSZES_morfema:rossz_szo_a_versben	28	5				darab
+leiro	hianyzo_par	1600	18				darab
+kalibracio	ellenor_kezi_minta	374	362	0.9679	0.9448	0.9816	wilson95
+kalibracio	gepi_kezi_minta	374	363	0.9706	0.9481	0.9835	wilson95
+kalibracio	ellenor_kezi_minta_javitott	371	362	0.9757	0.9545	0.9872	wilson95
+kalibracio	gepi_kezi_minta_javitott	371	363	0.9784	0.9580	0.9890	wilson95
+kalibracio	kezi_minta_nem_merheto		9				darab
+kulso	OSSZES_fo_szo	2663	2629	0.9872	0.9822	0.9908	wilson95
+kulso	OSSZES_fo_szo_haromutas	2663	2658	0.9981	0.9956	0.9992	wilson95
+kulso	OSZ_fo_szo	1397	1382	0.9893	0.9824	0.9935	wilson95
+kulso	OSZ_fo_szo_haromutas	1397	1393	0.9971	0.9927	0.9989	wilson95
+kulso	USZ_fo_szo	1266	1247	0.9850	0.9767	0.9904	wilson95
+kulso	USZ_fo_szo_haromutas	1266	1265	0.9992	0.9955	0.9999	wilson95
