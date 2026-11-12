@@ -1,0 +1,2 @@
+- **N-F190a** — #190 KESZ_LAP_KOVETELMENY folytatása: a követelménylista K67a–K67f sorainak pontosítása a #183 (visszhang 2) után. A brief fejléce lezárva (a PR #683 a main-en); ez a maradék tétel innen indul. (2026-11-12)
+- **N-F196a** — #196 GYOKEROK_KAPUK: az állítás–adat kapu és a követelménylista-kapu HIBA-szintre emelése (DT771), a HAMART-001 1. kiadása (#696) után, a felhasználó külön döntésével. (2026-11-12)
