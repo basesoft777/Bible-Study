@@ -1271,8 +1271,8 @@ def csomag_szamok(fajlok, lezart, nyitva_db, kizartak, datum):
         'mot': len(mot), 'lezart': len(zart), 'regi': len(mot) - len(zart),
         'lezart_lista_hu': SZ.felsorol([m['motivum_azonosito'] for m in zart], 'hu'),
         'lezart_lista_en': SZ.felsorol([m['motivum_azonosito'] for m in zart], 'en'),
-        'lezart_cimkek_hu': SZ.felsorol(['„%s”' % m['rovid_cimke'] for m in zart], 'hu'),
-        'lezart_cimkek_en': SZ.felsorol(['“%s”' % m['rovid_cimke_en'] for m in zart], 'en'),
+        'lezart_cimkek_hu': SZ.felsorol(['„%s”' % m['cim'] for m in zart], 'hu'),   # a motívum címe, nem a rövid címke
+        'lezart_cimkek_en': SZ.felsorol(['“%s”' % m['cim_en'] for m in zart], 'en'),
         'tipus_hu': lista(tipus, 'hu'),
         'tipus_en': lista(tipus, 'en'),
         'horgony_hu': lista(horg, 'hu'), 'horgony_en': lista(horg, 'en'),

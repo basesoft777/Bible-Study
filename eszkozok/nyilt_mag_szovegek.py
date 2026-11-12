@@ -748,11 +748,14 @@ hagyta ki.
 vagy a görög szöveg egy szaván áll, mellette a Károli-fordítás megfelelő szavával. A kizárások ugyanilyen részletesek:
 {kiz_egyedi} egyenként eldöntött hely és {csoport_vers} csoportban elutasított vers, {okok} okkal és indoklással.
 
-**Hogyan.** A jelölteket programok hozzák elő a héber és görög szövegből; hogy egy hely a motívumhoz tartozik-e,
-arról mesterséges intelligenciával segített szerkesztői munkamenet dönt, és minden döntés indoklással rögzül. Minden
-motívumnak van kizáró jegye és egy tágabb fogalma, amely felé a határa szétfolyna; ami csak ezen át kapcsolódik,
-kimarad. Minden sor megnevezi, honnan származik: melyik lekérdezésből, vagy hogy kézi döntés. Ahol a keresés üres
-volt, az adat is üres: a hiányt semmi nem tölti ki.
+**Hogyan.** Minden motívum négy kérdéssel indul, és a legfontosabb közülük az, hogy mi az a legkisebb jegy, amely
+nélkül egy hely nem tartozik ide. A jelölteket hat, rögzített sorrendű keresés hozza elő a héber és a görög
+szövegből; öt közülük program, ugyanarra a bemenetre mindig ugyanazt adja, a hatodik, a szemantikai mező feltevése
+emberi lépés, ezért a szavait rögzítjük. Találatból nem lesz közvetlenül előfordulás: minden jelöltről döntés
+születik indoklással, és ezt a döntést mesterséges intelligenciával segített szerkesztői munkamenet hozza meg. A
+„nem” ugyanúgy megmarad, mint az „igen”: az elutasított hely okot és indoklást kap, így a motívum határát nem a
+meghatározása rajzolja meg, hanem a kizárásai. Minden sor megnevezi, honnan származik, lekérdezésből vagy kézi
+döntésből. Ahol pedig a keresés üres volt, az adat is üres marad, mert az üres eredmény is eredmény.
 
 **Az ókori visszhang.** Egyes motívumoknál a kulcsszavak megfelelője is szerepel a Targumban, a Vulgatában és a
 Septuagintában, egyházatyai és rabbinikus tanúkkal, idézet nélkül, forrásonként a licenccel.
@@ -781,12 +784,15 @@ a word of the Hebrew or Greek text, with the corresponding word of the Károli t
 are just as detailed: {kiz_egyedi} passages decided one by one and {csoport_vers} verses rejected in groups, with
 {okok} reasons and a rationale.
 
-**How.** Candidates are brought up from the Hebrew and Greek text by programs; whether a passage belongs to the
-motif is decided in an editorial working session assisted by artificial intelligence, and every decision is
-recorded with a rationale. Every motif has an exclusion criterion and a broader concept towards which its boundary
-would dissolve; whatever is connected only through that concept is left out. Every row names its origin: the query
-it comes from, or that it is an editorial decision. Where a search was empty, the data are empty: nothing fills the
-gap.
+**How.** Every motif starts with four questions, and the most important of them is this: what is the smallest
+feature without which a passage does not belong here? Candidates are brought up from the Hebrew and the Greek text
+by six searches in a fixed order; five of them are programs and always give the same result for the same input, while
+the sixth, the hypothesis of the semantic field, is a human step, so its words are recorded. A hit never becomes an
+occurrence directly: every candidate receives a decision with a rationale, and that decision is made in an editorial
+working session assisted by artificial intelligence. The “no” is kept just as the “yes” is: a rejected passage
+receives a reason and a rationale, so the boundary of the motif is drawn not by its definition but by its
+exclusions. Every row names its origin, a query or a decision made by hand. And where a search was empty, the data
+stay empty, because an empty result is a result too.
 
 **The ancient echo.** For some motifs the counterparts of the key words in the Targum, the Vulgate and the
 Septuagint are included, with patristic and rabbinic witnesses, without quotation, and with the licence of each

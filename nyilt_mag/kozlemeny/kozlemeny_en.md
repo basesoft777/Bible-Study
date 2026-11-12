@@ -6,17 +6,20 @@ When does a verse belong to a biblical motif, and when does it not? The Logosz L
 research under an open licence. It records not only where a motif occurs, but also which passages were examined
 and why they were left out.
 
-**What is in it.** 9 motifs, among them “Hades/Sheol”, “Pneuma/pszükhé” and “Calling on the name”, with 250 occurrences in all. Every occurrence rests on
+**What is in it.** 9 motifs, among them “Hades (Sheol) — the realm of the dead”, “Pneuma/pszükhé distinction” and “Calling on the name of the Lord”, with 250 occurrences in all. Every occurrence rests on
 a word of the Hebrew or Greek text, with the corresponding word of the Károli translation beside it. The exclusions
 are just as detailed: 443 passages decided one by one and 3,984 verses rejected in groups, with
 61 reasons and a rationale.
 
-**How.** Candidates are brought up from the Hebrew and Greek text by programs; whether a passage belongs to the
-motif is decided in an editorial working session assisted by artificial intelligence, and every decision is
-recorded with a rationale. Every motif has an exclusion criterion and a broader concept towards which its boundary
-would dissolve; whatever is connected only through that concept is left out. Every row names its origin: the query
-it comes from, or that it is an editorial decision. Where a search was empty, the data are empty: nothing fills the
-gap.
+**How.** Every motif starts with four questions, and the most important of them is this: what is the smallest
+feature without which a passage does not belong here? Candidates are brought up from the Hebrew and the Greek text
+by six searches in a fixed order; five of them are programs and always give the same result for the same input, while
+the sixth, the hypothesis of the semantic field, is a human step, so its words are recorded. A hit never becomes an
+occurrence directly: every candidate receives a decision with a rationale, and that decision is made in an editorial
+working session assisted by artificial intelligence. The “no” is kept just as the “yes” is: a rejected passage
+receives a reason and a rationale, so the boundary of the motif is drawn not by its definition but by its
+exclusions. Every row names its origin, a query or a decision made by hand. And where a search was empty, the data
+stay empty, because an empty result is a result too.
 
 **The ancient echo.** For some motifs the counterparts of the key words in the Targum, the Vulgate and the
 Septuagint are included, with patristic and rabbinic witnesses, without quotation, and with the licence of each
