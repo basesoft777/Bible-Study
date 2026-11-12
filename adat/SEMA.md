@@ -2715,8 +2715,8 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E36 | HIBA | hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, a SEMA szakaszszámai egyediek | `eszkozok/ellenorzes/szabalyok.py` |
 | E37 | HIBA | az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal | `eszkozok/ellenorzes/szabalyok.py` |
 | E38 | HIBA | állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott lapon (`--minden --szigoru`) | `eszkozok/ellenorzes/allitas_adat.py` |
-| E39 | HIBA | követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés jelentés (`--szigoru`, DT-F212b) | `eszkozok/ellenorzes/kovetelmeny_kapu.py` |
-| E40 | HIBA | a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a `karoli_kh_szuro` hozzáférési pontját hívja (DT-F212c) | `eszkozok/ellenorzes/szabalyok.py` |
+| E39 | HIBA | követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés jelentés (`--szigoru`, a kapuemelési döntés) | `eszkozok/ellenorzes/kovetelmeny_kapu.py` |
+| E40 | HIBA | a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a `karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés) | `eszkozok/ellenorzes/szabalyok.py` |
 <!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->
 
 ---
