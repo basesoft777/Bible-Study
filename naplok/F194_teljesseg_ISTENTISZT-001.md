@@ -1,7 +1,7 @@
 <!-- F194.2: a mérés a `naplok/F194_teljesseg_meres.py` futtatója, az F123-as hálókkal és az új ÚSZ-feltétellel (DT-F194a: ἐπικαλέω + ὄνομα + az Úr megnevezése, G2962/G2424). Az alábbi szöveg az F123-as szkript sablonja; a 4. szakasz rögzített mondatai az F123-as mércét írják le. A 2. kiadás mércéjén az E-versek közül a görög feltételt a TAGNT kritikai szövegén az ApCsel 22:16 sem teljesíti (ott αὐτοῦ áll, κυρίου nélkül); a Károli a Textus Receptust követi („az Úrnak nevét”), ezért a vers marad (DT-F194a). A LXX-híd (6. lépés): naplok/F194_lxx_hid_ISTENTISZT-001.tsv, a döntések: naplok/F194_lxx_jeloltek.py. -->
 # F123 U1 — az ISTENTISZT-001 teljesség-mérése három hálóval (DT548)
 
-*#123 MIGRACIO2 v2 · U1 (`munka: adat`) · ág: `claude/relaxed-raman-0562d4` · modell: claude-sonnet-5-5 · 2026-11-12*
+*#194 ISTENTISZT_UJ_CIKK · F194.2 (`munka: adat`) · ág: `claude/istentiszt-uj-cikk-992f57` · modell: claude-opus-5-5 · 2026-11-12 (a fejléc szövege az F123-as szkript sablonjából: a futtató az F123-as függvényeket hívja)*
 
 *Döntés nélküli mérés az arany lap (kiadott, 1. kiadás) kifejezésére. Eszköz: `eszkozok/teljesseg_meres.py` függvényei, a motívum-specifikus futtató `naplok/F123_ISTTELJ_meres.py` (a kifejezés ellenőrzése tokensorrendből). Soronkénti kimenet: `naplok/F123_teljesseg_ISTENTISZT-001.tsv` (695 sor, minden sor mellett a háló proveniencia-sora); a tömeges, kifejezés nélküli osztályok: `naplok/F123_teljesseg_ISTENTISZT-001_blokkok.tsv`. A `jeloltek.tsv`-be ez a menet nem írt.*
 
@@ -49,7 +49,7 @@ Az `epikaleo_onoma_nelkul` és `besem_JHVH_nelkul` versek száma és tartalma a 
 
 Ide azok a versek kerülnek, amelyek (a) legalább egy hálóban ELTÉRÉS-ként szerepelnek (az `elofordulasok.tsv`-ben és a `jeloltek.tsv`-ben sincsenek), és (b) a héber/görög szövegben a fenti kifejezés áll. A lista keresési eredmény, nem döntés; a felvétel a 2. kiadás menetében, a negatív kritérium és a `jeloltek.tsv` döntéssel történik. Ez a menet nem ír a `jeloltek.tsv`-be.
 
-**Nincs ilyen vers: a három háló a kifejezéssel mért teljes ÓSZ/ÚSZ-ben nem hozott új helyet.** Az 1. kiadás listája (22 vers) a mérce szerint teljes. A határesetek a 4. szakaszban állnak.
+**Nincs ilyen vers: a három háló a kifejezéssel mért teljes ÓSZ/ÚSZ-ben nem hozott új helyet.** A 2. kiadás listája (20 vers; az 1. kiadásé 22 volt, az ApCsel 9:14 és 9:21 a DT-F194a szerint kikerült) a mérce szerint teljes. A határesetek a 4. szakaszban állnak.
 
 Proveniencia: `scope=ISTENTISZT-001 ELTÉRÉS × TAHOT_kivonat.tsv+TAGNT_kivonat.tsv (tokensorrend) | forras=naplok/F123_ISTTELJ_meres.py | ts=2026-11-12T06:58Z`
 
