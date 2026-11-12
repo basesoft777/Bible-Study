@@ -27,6 +27,46 @@
   function tarol(kulcs, ertek) { try { window.localStorage.setItem(kulcs, ertek); } catch (e) { /* tiltott tároló: a beállítás csak az oldalra érvényes */ } }
   function olvas(kulcs) { try { return window.localStorage.getItem(kulcs); } catch (e) { return null; } }
 
+  // F213: a BDB-szókártya nézetkapcsolója (olvasói nézet / szócikk egyben / minden apparátus nyitva) és a „még N hely”. A választás
+  // a böngészőben marad (localStorage), a `?nezet=egyben|app` paraméter felülírja (megosztható link). JS nélkül az olvasói nézet áll,
+  // minden hely látszik, és a lenyílók kézzel nyithatók.
+  var SZK_KULCS = 'pardes_szk_nezet';
+  function szkNezet(kartya, nezet) {
+    kartya.setAttribute('data-nezet', nezet);
+    kartya.querySelectorAll('[data-szk-nezet]').forEach(function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-szk-nezet') === nezet ? 'true' : 'false'); });
+    if (nezet === 'olvaso') {
+      kartya.querySelectorAll('details[data-szk-nyitotta]').forEach(function (d) { d.open = false; d.removeAttribute('data-szk-nyitotta'); });
+      return;
+    }
+    kartya.querySelectorAll('details').forEach(function (d) {
+      if (!d.open && (nezet === 'app' || d.classList.contains('szk-jel-d'))) { d.setAttribute('data-szk-nyitotta', ''); d.open = true; }
+    });
+  }
+  function szkInit(gyoker) {
+    var nezet = null;
+    try { nezet = new URLSearchParams(window.location.search).get('nezet'); } catch (e) { nezet = null; }
+    if (nezet !== 'egyben' && nezet !== 'app' && nezet !== 'olvaso') { nezet = olvas(SZK_KULCS); }
+    gyoker.querySelectorAll('.szk').forEach(function (k) {
+      k.querySelectorAll('.szk-nezet').forEach(function (s) { s.hidden = false; });
+      if (nezet === 'egyben' || nezet === 'app') { szkNezet(k, nezet); }
+    });
+  }
+  document.addEventListener('click', function (ev) {
+    var g = ev.target.closest ? ev.target.closest('[data-szk-nezet]') : null;
+    if (g) {
+      var n = g.getAttribute('data-szk-nezet');
+      szkNezet(g.closest('.szk'), n);
+      tarol(SZK_KULCS, n);
+      return;
+    }
+    var t = ev.target.closest ? ev.target.closest('.szk-tobb') : null;
+    if (t) {
+      var nyitva = t.closest('.szk-sor').classList.toggle('szk-kinyitva');
+      t.textContent = nyitva ? 'kevesebb' : 'még ' + t.getAttribute('data-db') + ' hely';
+    }
+  });
+  szkInit(document);
+
   var kicsiMedia = window.matchMedia ? window.matchMedia('(max-width: 899.98px)') : null;
   function kicsi() { return kicsiMedia ? kicsiMedia.matches : false; }
 
@@ -469,7 +509,7 @@
   function bdbOdagorget() {
     var cel = tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] li.bdb-itt')
       || tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] a.bdb-itt')
-      || tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] li.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] div.torzs.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] a.bdb-vonatkozhat');
+      || tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] li.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] .torzs.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] a.bdb-vonatkozhat');
     if (!cel) { return; }
     // a görgetés a végleges elrendezésen (betűk, ragadós fejléc-igazítás után): a teljes lapnál a load után, töredéknél a következő képkockán
     // a lap ragadós fejsora (lapFej) ne takarja a jelölés elejét
@@ -494,7 +534,7 @@
       if (all.mod === 'vers') { fulValt(all.ful || 'vers'); }
     }
     lap.scrollTop = 0;
-    if (all.mod === 'szo') { bdbOdagorget(); }
+    if (all.mod === 'szo') { szkInit(tartalom); bdbOdagorget(); }
     var vers = helybeliVers(all);
     var el = kijelol(vers);
     muveletsor();

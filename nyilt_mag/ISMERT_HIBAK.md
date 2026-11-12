@@ -2,7 +2,7 @@
 
 <!-- GENERÁLT: a Logosz-lexikon nyílt adatmagjának exportja, a projekt adataiból generálva; kézzel nem szerkesztendő. -->
 
-*Logosz-lexikon — nyílt adatmag · adatállapot: 2026-11-10*
+*Logosz-lexikon — nyílt adatmag · adatállapot: 2026-11-12*
 
 Itt mondjuk ki azokat a forráshibákat, amelyeket a saját méréseink kimutattak, és azt, hogyan kezeli őket a csomag. A hiányt nem töltjük ki: ahol a forrás hibás vagy hiányos, az üres eredmény nem negatív lelet. A módszer korlátait a `MODSZER.md` 12. pontja sorolja fel.
 
@@ -20,7 +20,7 @@ A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthiva
 
 A második tanútól átvett sorok maradék hibája a MEK saját elírása; ezt szúrópróbával mértük.
 
-**Használat.** A jelöltkeresés és az olvasó adatbázisa a javított táblának csak a megerősített sorait használja. A lexikonlapok kereszthivatkozás-blokkja még nem a javított táblából készül.
+**Használat.** A jelöltkeresés és az olvasó adatbázisa a javított táblának csak a megerősített sorait használja. A lexikonlapok is csak a megerősített sorokat használják.
 
 **Nyitva.** A jelölt szintű 181 sorról még nincs döntés; amíg nincs, egyik fogyasztó sem használja őket.
 

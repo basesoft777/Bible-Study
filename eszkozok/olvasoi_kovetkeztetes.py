@@ -356,10 +356,26 @@ def lxx_hid(n, egyezo, szocsalad, eltero, nincs_par, nincs_megall, szamozas, hia
         ki.append(_lista(tobbi)[0].upper() + _lista(tobbi)[1:] + '.')
     if par_n:
         arany = (egyezo + szocsalad) / par_n
-        jelzo = 'erős' if arany >= 0.67 else 'részleges' if arany >= 0.34 else 'gyenge'
+        jelzo = lxx_hid_jelzo(arany)
         ki.append('%s a nyelvi híd %s szón át vezet, és ott %s: szócsalád szerint %d/%d vers.'
                   % (KOVETKEZTETES, _SZAMNEV.get(len(par_nevek), str(len(par_nevek))), jelzo, egyezo + szocsalad, par_n))
     return ' '.join(ki)
+
+
+def lxx_hid_jelzo(arany):
+    return 'erős' if arany >= 0.67 else 'részleges' if arany >= 0.34 else 'gyenge'
+
+
+def lxx_hid_rovid(egyezo, szocsalad, eltero, par_nevek, link):
+    """F212 (I1): a 4.6 egy mondata — a szóhíd összegzése az 5. szakasz számaiból, a teljes összegzésre mutató
+    hivatkozással. Párral bíró szó nélkül a mondat csak a hivatkozást adja."""
+    par_n = egyezo + szocsalad + eltero
+    if not par_nevek or not par_n:
+        return 'Az ószövetségi helyek görög fordításának versenkénti összevetése: %s.' % link
+    return ('A görög Ószövetség és az Újszövetség közti szóhíd %s szón át vezet (%s szaván), és ott %s: szócsalád '
+            'szerint %d/%d vers; a versenkénti összevetés: %s.'
+            % (_SZAMNEV.get(len(par_nevek), str(len(par_nevek))), _lista(par_nevek),
+               lxx_hid_jelzo((egyezo + szocsalad) / par_n), egyezo + szocsalad, par_n, link))
 
 
 def lxx_szo_uj(nev, n, egyezo, szocsalad, eltero, nincs_par, hianyzik, egyeb, szamozas, van_par):

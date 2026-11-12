@@ -200,7 +200,8 @@ class Lap(unittest.TestCase):
         p48 = heber.split('#### 4.8. Nyelvi háttér', 1)[1].split('#### 4.9.', 1)[0]
         self.assertIn('##### Háttér: rokon nyelvek (BDB)', p48)
         self.assertNotIn('a 2. szerepben', p48)
-        self.assertIn('#### 4.11. Visszhang: ókori fordítások\n', self.lap)
+        # F212 (L5): a 4.11 címe mutat a 9. szakaszra, a továbbküldő mondat nélkül
+        self.assertRegex(self.lap, r'(?m)^#### 4\.11\. Visszhang: ókori fordítások \(l\. \[9\. Hatástörténet\]\(#[^)]+\)\)$')
 
     def test_nincs_belso_utvonal(self):
         self.assertIsNone(re.search(r'(?<![\w./-])(?:adat|konkordancia|naplok)/\w', self.lathato))
@@ -328,9 +329,11 @@ class Generator(unittest.TestCase):
         tabla = LG.lxx_osszevetes(sorai, LG.motivum_strong_tokenek(sorai))[0]
         s317 = [s for s in tabla if s.startswith('| 1Móz 3:17 |')]
         self.assertEqual(len(s317), 1)
-        self.assertIn('γῆ', s317[0])
-        self.assertNotIn('ἐπικατάρατος', s317[0])
-        self.assertNotIn('| egyező |', s317[0])
+        # F212 (Sz3, a felhasználó döntése): a hídszó elsőbbsége — az 1Móz 3:17-ben az átok szava (árar) a kulcsszó, a
+        # görög cellában a saját párja (ἐπικατάρατος) áll, nem a föld párja (γῆ); a saját-pár kapu változatlanul él
+        self.assertIn('ἐπικατάρατος', s317[0])
+        self.assertNotIn('γῆ', s317[0])
+        self.assertIn('| egyező |', s317[0])
         self.assertEqual(LG.lxx_egyforras_ellenoriz('HAMART-001', tabla), [])
         kulcsszo = LG._heber_kulcsszo_strong('1Móz 3:17', 'H0127')
         rontott = '| 1Móz 3:17 | 1Móz 3:17 | %s | ἐπικατάρατος (epikataratosz) | egyező | Septuaginta |' % kulcsszo
@@ -595,9 +598,9 @@ class KiadasElott(unittest.TestCase):
         self.assertNotIn('nem az újszövetségi szót használja', lathato)
         self.assertEqual(lathato.count('szóhíd két szón át vezet'), 3)          # a két 4.6 és az 5. szakasz
         self.assertIn('Ez a tábla a láncon belüli fordítói következetességet méri', lathato)
-        self.assertIn('HCF (HistoricalChristianFaith', lathato)
+        self.assertNotIn('(HCF:', lathato)   # F212 (M14): a tanú adatbázis-évszáma a lapon nem áll
         self.assertNotIn('az [2.', lathato)
-        self.assertIn('érint a 47-ből', lathato)
+        self.assertIn('érint a 49-ből', lathato)   # F212: Jer 12:4 és Jer 23:10 bekerült
         self.assertNotIn('leggyakoribb szava ugyanazokban', lathato)
         self.assertNotIn('| Emberi lektorálás |', lathato)
         self.assertRegex(lathato, r'\| Szerkesztői átnézés és javítás \|[^\n]*\n\| Modell-lektor \(claude-[\w.-]+\) \| '
@@ -608,8 +611,9 @@ class KiadasElott(unittest.TestCase):
         self.assertIn('| G2652 |', jel)
         # az 5. szakasz: négy egyezés-érték, és a 4.6 szavankénti összege = az összesítés
         i = lap.index('## 5. LXX-fordítói döntések')
-        ertekek = {s.split(' | ')[4] for s in lap[i:lap.index('## 6.', i)].split('\n')
-                   if s.startswith('| ') and s.count(' | ') >= 5 and not s.startswith('| Igehely')}
+        # F212 (M10): a tábla öt oszlopos (a „Forrás” oszlop helyett magyarázó sor); az egyezés az 5. cella
+        ertekek = {s.strip().strip('|').split('|')[4].strip() for s in lap[i:lap.index('## 6.', i)].split('\n')
+                   if s.startswith('| ') and s.count('|') >= 6 and not s.startswith('| Igehely')}
         self.assertTrue({'egyező', 'ugyanaz a szócsalád', 'eltérő', 'nincs újszövetségi pár'} <= ertekek, ertekek)
         ossz = re.search(r'\*Összesítés: egyező=(\d+), ugyanaz a szócsalád=(\d+), eltérő=(\d+), nincs újszövetségi '
                          r'pár=(\d+)', lap)
@@ -659,8 +663,10 @@ class TablaAlattiJegyzet(unittest.TestCase):
         szam = {}
         for m in re.finditer(r'(?m)^- <span class="lj-szam" id="j-(\d+)-\d+">', lap):
             szam[m.group(1)] = szam.get(m.group(1), 0) + 1
-        # a Fable mérése: a 2. táblánál 47 helyett 18; a 3. szakasz táblái 270 helyett 46, a 6. 99 helyett 11
-        self.assertEqual(szam, {'2': 18, '3': 46, '6': 11})
+        # a Fable mérése: a 2. táblánál 47 helyett 18; a 3. szakasz táblái 270 helyett 46, a 6. 99 helyett 11;
+        # F212 (I4): a cellát ismétlő jegyzet elmarad — a 3. szakaszban 7, a 6.-ban 2 marad
+        # F212 (Jer 12:4, Jer 23:10): a 2. táblában a két új sor jelentés-jegyzete, a 3.-ban az egyenkénti döntés jegyzete
+        self.assertEqual(szam, {'2': 20, '3': 8, '6': 2})
         celok = set(re.findall(r'id="(j-[\d-]+)"', lap))
         for h in set(re.findall(r'href="#(j-[\d-]+)"', lap)):
             self.assertIn(h, celok)
@@ -687,7 +693,7 @@ class Onreferencia(unittest.TestCase):
                          _olvas(os.path.join(GYOKER, 'motivumok', 'HAMART-001.md')), flags=re.S)
         self.assertIsNone(re.search(r'(?<![\w-])[Ll]ap(?:ja|on|ra|ról)?(?![\w-])', lathato))
         self.assertIn('Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig', lap)
-        self.assertIn('A motívum 47 helyen, 54 versben áll: 23 a Genezisben', lap)
+        self.assertIn('A motívum 49 helyen, 56 versben áll: 23 a Genezisben', lap)
 
 
 class GyorsKor(unittest.TestCase):
@@ -727,7 +733,7 @@ class GyorsKor(unittest.TestCase):
         self.assertIn('**אָבַל (ával)** · H0056', ki)
         lap = _olvas(LAP)
         hb = lap.split('\n### Héber szavak', 1)[1].split('\n### ', 1)[0]
-        for alpont in ('4.5', '4.6', '4.10'):
+        for alpont in ('4.6', '4.10'):   # F212 (L1): a héber 4.5 egy mondat, szavanként nincs sora
             resz = hb.split('\n#### %s.' % alpont, 1)[1].split('\n#### ', 1)[0]
             self.assertIsNone(re.search(r'(?m)^\*\*H\d{4}\*\* ·', resz), alpont)
             self.assertRegex(resz, r'(?m)^\*\*אָבַל \(ával\)\*\* (?:— .* )?· H0056$')

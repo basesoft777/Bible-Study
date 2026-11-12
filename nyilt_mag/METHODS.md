@@ -1,12 +1,12 @@
 # Methods — the motif data core
 
-*Logosz Lexikon — open data core · data state: 2026-11-10 · DOI: 10.5281/zenodo.24141612*
+*Logosz Lexikon — open data core · data state: 2026-11-12 · DOI: 10.5281/zenodo.24141612*
 
 ## 1. What this dataset is
 
 This package is an open dataset of biblical motifs. By a motif we mean a recurring biblical theme whose presence in
 a verse can be checked on the Hebrew or Greek text: on a word, on a fixed phrase or on a co-occurrence of words. The
-package contains 9 motifs with 250 occurrences. The other side is recorded in the same detail: 540
+package contains 9 motifs with 252 occurrences. The other side is recorded in the same detail: 548
 exclusion rows record, with a rationale, the passages that we examined but did not assign to the motif.
 
 The open data core is the data layer of the lexicon; the lexicon itself (its interpretive text, the Hungarian translation of the dictionaries, and the printed volume) is a separate work, all rights reserved. The data core holds decisions and short rationales, not interpretive prose.
@@ -53,11 +53,11 @@ correction are described in section 1 of `KNOWN_ISSUES.md`.
 ## 4. A decision on every candidate
 
 A search hit never becomes an occurrence directly: every candidate receives a decision with a rationale. An accepted
-candidate goes into `elofordulasok.tsv`, the rationale of the decision into `beepitesi_dontesek.tsv` (252 rows).
-A rejected candidate goes into `kizarasok.tsv`, with an exclusion reason (61 reasons) and a rationale.
+candidate goes into `elofordulasok.tsv`, the rationale of the decision into `beepitesi_dontesek.tsv` (254 rows).
+A rejected candidate goes into `kizarasok.tsv`, with an exclusion reason (62 reasons) and a rationale.
 
-Of the exclusion rows, 443 concern a single passage each. 97 rows are summary rows: each stands for
-a group whose verses were all rejected for the same reason. The 3,984 verses of the groups are listed in
+Of the exclusion rows, 449 concern a single passage each. 99 rows are summary rows: each stands for
+a group whose verses were all rejected for the same reason. The 4,020 verses of the groups are listed in
 `kizaras_csoportok.tsv`, and the rationale of the summary row applies to every verse of the group.
 
 If a search is empty, the result stays empty: a gap is not filled with weak or associative material. Candidates not
@@ -66,20 +66,20 @@ of the decision (`NYD-nnn`) is resolved in `dontesnaplo.tsv` (15 decisions).
 
 ## 5. The occurrence row
 
-Every occurrence is a passage, and it names what its assignment rests on (`horgony_tipus`, `horgony`): lexical base: 197; shared lexical base: 33; collocation (word pair in one verse): 13; thematic link: 4; formula link: 1; reference link: 1; quotation link: 1.
+Every occurrence is a passage, and it names what its assignment rests on (`horgony_tipus`, `horgony`): lexical base: 197; shared lexical base: 33; collocation (word pair in one verse): 13; thematic link: 6; formula link: 1; reference link: 1; quotation link: 1.
 The `strong` column is the Strong's number of the anchor word, `jelentes_en` an excerpt of the dictionary meaning,
 `strong_glossza_en` the short English gloss of STEPBible.
 
 **The Károli word.** Every occurrence also gives also give the corresponding word of the Károli translation. The Károli word is not
 evidence: it shows what the Hungarian reader sees of the passage. The alignment (`azonositas_modja`) was made by the
-editor reading the Károli text in 223 cases, by machine word alignment in 25 cases (only a
+editor reading the Károli text in 225 cases, by machine word alignment in 25 cases (only a
 high-confidence pair may justify a row) and by inference in 2 cases. The confidence (`megbizhatosag`)
-is high in 234 cases and medium in 16. The alignment of the other words of the verse is not
+is high in 234 cases and medium in 18. The alignment of the other words of the verse is not
 part of this dataset; it is in the related Károli – Strong datasets.
 
 **Provenance.** Every row names where it comes from. If it comes from a query, it gives the type of the query, the
 source, its licence and the date; if not, it states that it is a decision made by hand, without a query. Of the
-occurrences, 246 are decisions made by hand and 4 the direct result of a query. "Made by hand" does not
+occurrences, 248 are decisions made by hand and 4 the direct result of a query. "Made by hand" does not
 mean that the row was verified; it means that no single query produced it. For 181 rows the Strong's
 assignment was traced back item by item on the Hebrew text of TAHOT (`igazolas`).
 

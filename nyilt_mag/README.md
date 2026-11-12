@@ -13,10 +13,10 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 | file | content | rows |
 |---|---|---:|
 | `motivumok.tsv` | the motifs: title, definition, carrier of identity, exclusion criterion, superordinate concept, processing stage | 9 |
-| `elofordulasok.tsv` | the occurrences: passage, anchor word and its Strong's number, dictionary meaning, Károli word, provenance | 250 |
-| `beepitesi_dontesek.tsv` | the inclusion decisions, with rationale | 252 |
-| `kizarasok.tsv` | the passages examined but excluded, with reason and rationale; a summary row stands for a group | 540 |
-| `kizaras_csoportok.tsv` | every verse of the summary-row groups | 3,984 |
+| `elofordulasok.tsv` | the occurrences: passage, anchor word and its Strong's number, dictionary meaning, Károli word, provenance | 252 |
+| `beepitesi_dontesek.tsv` | the inclusion decisions, with rationale | 254 |
+| `kizarasok.tsv` | the passages examined but excluded, with reason and rationale; a summary row stands for a group | 548 |
+| `kizaras_csoportok.tsv` | every verse of the summary-row groups | 4,020 |
 | `kapcsolatok.tsv` | relations between passages within a motif | 88 |
 | `motivum_kapcsolatok.tsv` | relations between two motifs | 3 |
 | `dontesnaplo.tsv` | the editorial decisions referred to (`NYD-nnn`) | 15 |
@@ -25,7 +25,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 | `vitatott_forrasok.tsv` | the peer-reviewed literature on the disputed points (bibliographic data) | 3 |
 | `sblgnt_apparatus.tsv` | the critical apparatus of the SBL Greek New Testament for the New Testament passages | 61 |
 | `forrasok_es_licencek.tsv` | the project's source inventory: licence and role in the package | 65 |
-| `kodkonyv.tsv` | description of the columns, values and codes (Hungarian and English) | 440 |
+| `kodkonyv.tsv` | description of the columns, values and codes (Hungarian and English) | 441 |
 | `KODKONYV.md` | the same in readable form |  |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | semantic domains (UBS SDBH/SDGNT), **separate licence: CC BY-SA 4.0** | 231 |
 | `cc_by_sa_reteg/OLVASSEL.md` | licence and attribution of the separate layer |  |
@@ -40,8 +40,8 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 ## In numbers
 
 - 9 motifs. Closed releases: 1; earlier processing, being rewritten: 8, and their data stay in the package (`motivumok.tsv`, `feldolgozasi_allapot`).
-- 250 occurrences and 252 inclusion decisions.
-- 540 exclusion rows with 61 reasons: 443 passages decided one by one, and 97 summary rows standing for 3,984 verses.
+- 252 occurrences and 254 inclusion decisions.
+- 548 exclusion rows with 62 reasons: 449 passages decided one by one, and 99 summary rows standing for 4,020 verses.
 - 88 relations between passages, 3 relations between motifs, 15 public editorial decisions.
 - In the echo layer: 101 counterparts, 6 witnesses, 3 disputed points and 61 apparatus notes.
 
@@ -54,7 +54,7 @@ Three questions, step by step, on the motif `HAMART-001`. The numbers in the ans
 ### 1. Which verses belong to HAMART-001, and on which word?
 
 1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `HAMART-001`.
-2. The result is 47 rows: each row is one passage (`igehely`), a verse or a range of verses.
+2. The result is 49 rows: each row is one passage (`igehely`), a verse or a range of verses.
 3. The `horgony` column gives the Hebrew or Greek word (Strong's number or word combination) the verse rests on: `H0127` (10 rows), `H7843` (7 rows), `málé + chámász` (6 rows), and 13 further anchors. The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. 1Móz 12:3: "megátkozom").
 4. The processing stage of the motif is in the `feldolgozasi_allapot` column of `motivumok.tsv`: "lezárt kiadás".
 
@@ -66,9 +66,9 @@ Three questions, step by step, on the motif `HAMART-001`. The numbers in the ans
 
 ### 3. Was every place where the words of the motif occur examined?
 
-1. Among the `HAMART-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 76. Each stands for a group of verses excluded for one reason: "más szó áll a versben, nem a motívum lexémája" (573 verses, word: רַע, ra‘; first verse: 1Kir 1:52); "a szó áll, de általános használatban, a lánc nélkül" (255 verses, word: חַטָּאת, chattát; first verse: 1Kir 8:36); "a szó áll, de általános használatban, a lánc nélkül" (174 verses, word: אֲדָמָה, adámá; first verse: 1Kir 7:46); and 73 further groups.
-2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `HAMART-001`): 1520 verses.
-3. Together: 47 occurrences, 212 passages excluded one by one and 1520 verses excluded in groups, 1779 rows with a decision in all. The unit of counting is the row, and one row may cover several verses (for example: 1Kir 14:15-16); this total may therefore differ from the number of verses in the decision path of the lexicon page. Candidates not yet decided are not in the package; their number is given under "What is in it and what is not".
+1. Among the `HAMART-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 78. Each stands for a group of verses excluded for one reason: "más szó áll a versben, nem a motívum lexémája" (571 verses, word: רַע, ra‘; first verse: 1Kir 1:52); "a szó áll, de általános használatban, a lánc nélkül" (255 verses, word: חַטָּאת, chattát; first verse: 1Kir 8:36); "a szó áll, de általános használatban, a lánc nélkül" (173 verses, word: אֲדָמָה, adámá; first verse: 1Kir 7:46); and 75 further groups.
+2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `HAMART-001`): 1556 verses.
+3. Together: 49 occurrences, 218 passages excluded one by one and 1556 verses excluded in groups, 1823 rows with a decision in all. The unit of counting is the row, and one row may cover several verses (for example: 1Kir 14:15-16); this total may therefore differ from the number of verses in the decision path of the lexicon page. Candidates not yet decided are not in the package; their number is given under "What is in it and what is not".
 
 ## What is in it and what is not (the data core and the lexicon)
 

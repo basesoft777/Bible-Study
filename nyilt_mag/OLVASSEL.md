@@ -13,10 +13,10 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 | fájl | tartalom | sor |
 |---|---|---:|
 | `motivumok.tsv` | a motívumok: cím, meghatározás, az azonosság hordozója, kizáró jegy, fölérendelt fogalom, feldolgozási állapot | 9 |
-| `elofordulasok.tsv` | az előfordulások: igehely, a horgonyszó és Strong-száma, szótári jelentés, Károli-szó, eredetjelölés | 250 |
-| `beepitesi_dontesek.tsv` | a felvett helyek döntése, indoklással | 252 |
-| `kizarasok.tsv` | a vizsgált, de kizárt helyek, okkal és indoklással; az összesítő sor egy csoportot képvisel | 540 |
-| `kizaras_csoportok.tsv` | az összesítő sorok csoportjainak minden verse | 3 984 |
+| `elofordulasok.tsv` | az előfordulások: igehely, a horgonyszó és Strong-száma, szótári jelentés, Károli-szó, eredetjelölés | 252 |
+| `beepitesi_dontesek.tsv` | a felvett helyek döntése, indoklással | 254 |
+| `kizarasok.tsv` | a vizsgált, de kizárt helyek, okkal és indoklással; az összesítő sor egy csoportot képvisel | 548 |
+| `kizaras_csoportok.tsv` | az összesítő sorok csoportjainak minden verse | 4 020 |
 | `kapcsolatok.tsv` | igehely-kapcsolatok egy motívumon belül | 88 |
 | `motivum_kapcsolatok.tsv` | kapcsolatok két motívum között | 3 |
 | `dontesnaplo.tsv` | a hivatkozott szerkesztői döntések (`NYD-nnn`) | 15 |
@@ -25,7 +25,7 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 | `vitatott_forrasok.tsv` | a vitatott pontok lektorált szakirodalma (bibliográfiai adat) | 3 |
 | `sblgnt_apparatus.tsv` | az SBL Greek New Testament kritikai apparátusa az újszövetségi helyekhez | 61 |
 | `forrasok_es_licencek.tsv` | a projekt forrásleltára: licenc és szerep a csomagban | 65 |
-| `kodkonyv.tsv` | az oszlopok, értékek és kódok leírása (magyarul és angolul) | 440 |
+| `kodkonyv.tsv` | az oszlopok, értékek és kódok leírása (magyarul és angolul) | 441 |
 | `KODKONYV.md` | ugyanez olvasható formában |  |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | szemantikai domének (UBS SDBH/SDGNT), **külön licenc: CC BY-SA 4.0** | 231 |
 | `cc_by_sa_reteg/OLVASSEL.md` | a külön réteg licence és forrásmegjelölése |  |
@@ -40,8 +40,8 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 ## Számokban
 
 - 9 motívum: 1 lezárt kiadás, 8 korábbi feldolgozás, újraírás alatt; az adatuk a csomagban marad (`motivumok.tsv`, `feldolgozasi_allapot`).
-- 250 előfordulás és 252 felvételi döntés.
-- 540 kizárás-sor 61 okkal: 443 egyenként eldöntött hely, és 97 összesítő sor, amely 3 984 verset képvisel.
+- 252 előfordulás és 254 felvételi döntés.
+- 548 kizárás-sor 62 okkal: 449 egyenként eldöntött hely, és 99 összesítő sor, amely 4 020 verset képvisel.
 - 88 igehely-kapcsolat, 3 motívumközi kapcsolat, 15 nyilvános szerkesztői döntés.
 - A visszhang-rétegben 101 megfelelő, 6 tanú, 3 vitatott pont és 61 apparátus-jegyzet.
 
@@ -54,7 +54,7 @@ Három kérdés lépésről lépésre, a `HAMART-001` motívumon (A bűn követk
 ### 1. Mely versek tartoznak a HAMART-001-hez, és melyik szón?
 
 1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot a `HAMART-001` értékre.
-2. Az eredmény 47 sor: minden sor egy igehely (`igehely`), egy vers vagy egy versszakasz.
+2. Az eredmény 49 sor: minden sor egy igehely (`igehely`), egy vers vagy egy versszakasz.
 3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon vagy szókapcsolaton) áll a vers: `H0127` (10 sor), `H7843` (7 sor), `málé + chámász` (6 sor), és további 13 horgony. A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például 1Móz 12:3: „megátkozom”).
 4. A motívum feldolgozási állapota a `motivumok.tsv` `feldolgozasi_allapot` oszlopában: „lezárt kiadás”.
 
@@ -66,9 +66,9 @@ Három kérdés lépésről lépésre, a `HAMART-001` motívumon (A bűn követk
 
 ### 3. Átnézték-e minden helyet, ahol a motívum szavai előfordulnak?
 
-1. A `kizarasok.tsv`-ben a `HAMART-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 76 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „más szó áll a versben, nem a motívum lexémája” (573 vers, szó: רַע, ra‘; első verse: 1Kir 1:52); „a szó áll, de általános használatban, a lánc nélkül” (255 vers, szó: חַטָּאת, chattát; első verse: 1Kir 8:36); „a szó áll, de általános használatban, a lánc nélkül” (174 vers, szó: אֲדָמָה, adámá; első verse: 1Kir 7:46); és további 73 csoport.
-2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `HAMART-001`): 1520 vers.
-3. Együtt: 47 előfordulás, 212 egyenként kizárt hely és 1520 csoportban kizárt vers, összesen 1779 sor, amelyről döntés van. A számlálás egysége a sor, és egy sor több verset is fedhet (például: 1Kir 14:15-16); ezért ez az összeg eltérhet a lexikonlap döntési útjának versszámától. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, mi nincs” szakasz adja.
+1. A `kizarasok.tsv`-ben a `HAMART-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 78 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „más szó áll a versben, nem a motívum lexémája” (571 vers, szó: רַע, ra‘; első verse: 1Kir 1:52); „a szó áll, de általános használatban, a lánc nélkül” (255 vers, szó: חַטָּאת, chattát; első verse: 1Kir 8:36); „a szó áll, de általános használatban, a lánc nélkül” (173 vers, szó: אֲדָמָה, adámá; első verse: 1Kir 7:46); és további 75 csoport.
+2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `HAMART-001`): 1556 vers.
+3. Együtt: 49 előfordulás, 218 egyenként kizárt hely és 1556 csoportban kizárt vers, összesen 1823 sor, amelyről döntés van. A számlálás egysége a sor, és egy sor több verset is fedhet (például: 1Kir 14:15-16); ezért ez az összeg eltérhet a lexikonlap döntési útjának versszámától. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, mi nincs” szakasz adja.
 
 ## Mi van benne, mi nincs (az adatmag és a lexikon)
 

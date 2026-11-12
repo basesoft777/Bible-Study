@@ -2,7 +2,7 @@
 
 <!-- GENERATED: export of the Logosz Lexikon open data core, generated from the project data; do not edit by hand. -->
 
-*Logosz Lexikon — open data core · data state: 2026-11-10*
+*Logosz Lexikon — open data core · data state: 2026-11-12*
 
 We state here the source errors that our own measurements revealed, and how the package handles them. A gap is not filled: where a source is faulty or incomplete, an empty result is not a negative finding. The limitations of the method are listed in section 12 of `METHODS.md`.
 
@@ -20,7 +20,7 @@ Part of the cross-reference table of the Károli Bible (the cross-references of 
 
 The remaining error of the rows taken over from the second witness is the MEK's own misprints; we measured it with a sample check.
 
-**Use.** The candidate search and the reader database use only the confirmed rows of the corrected table. The cross-reference block of the lexicon pages is not yet built from the corrected table.
+**Use.** The candidate search and the reader database use only the confirmed rows of the corrected table. The lexicon pages, too, use only the confirmed rows.
 
 **Open.** The 181 rows at the candidate level are not yet decided; until they are, no consumer uses them.
 

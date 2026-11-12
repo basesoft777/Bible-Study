@@ -6,9 +6,9 @@ Mikor tartozik egy vers egy bibliai motívumhoz, és mikor nem? A Logosz-lexikon
 adatrétegét. Ez az adat nemcsak azt rögzíti, hol fordul elő egy motívum, hanem azt is, mely helyeket vizsgáltuk meg,
 és miért hagytuk ki őket.
 
-**Mi van benne.** 9 motívum, köztük „A bűn következményeinek gyűrűzése — átok, föld és romlás”, összesen 250 előfordulással. Minden előfordulás a héber
+**Mi van benne.** 9 motívum, köztük „A bűn következményeinek gyűrűzése — átok, föld és romlás”, összesen 252 előfordulással. Minden előfordulás a héber
 vagy a görög szöveg egy szaván áll, és mellette ott van a Károli-fordítás megfelelő szava. A kizárások ugyanilyen
-részletesek: 443 egyenként eldöntött hely és 3 984 csoportban elutasított vers, 61 okkal és
+részletesek: 449 egyenként eldöntött hely és 4 020 csoportban elutasított vers, 62 okkal és
 indoklással.
 
 **Hogyan.** Minden motívum négy kérdéssel indul, és a legfontosabb közülük az, hogy mi az a legkisebb jegy, amely
