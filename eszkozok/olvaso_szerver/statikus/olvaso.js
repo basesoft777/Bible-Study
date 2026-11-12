@@ -126,7 +126,7 @@
       var a = document.createElement('a');
       a.classList.add('fejezetgomb');
       if (String(f) === ittFej) { a.classList.add('itt'); }
-      a.href = '/' + slugK + '/' + f;
+      a.href = '/' + slugK + '/' + f + ((konyvvalaszto && konyvvalaszto.getAttribute('data-bq')) || '');   // F210: a választott Biblia marad
       a.textContent = String(f);
       fejezetracs.appendChild(a);
     }
@@ -333,6 +333,7 @@
   var VERS_FULEK = ['vers', 'kh', 'temak', 'motivum'];
   var MAX_ELOZMENY = 20;
   var fejezet = (lap.getAttribute('data-fejezet') || '').split('/');      // [slug, fej]
+  var bq = lap.getAttribute('data-bq') || '';                              // F210: a választott Biblia (`biblia=<kód>`; a Károlinál üres)
   var slug = fejezet[0], fej = fejezet[1];
   var lapFej = lap.querySelector('.lap-fej');
   var cimFo = lap.querySelector('.lap-cim-fo');
@@ -378,13 +379,18 @@
 
   // a lap címe (JS nélkül is ez a cím): a böngésző címsora az állapotot követi, így az újratöltés ugyanezt mutatja
   function lapUrl(all) {
-    if (all.mod === 'vers') { return '/' + slug + '/' + fej + '/' + all.vers + (all.ful && all.ful !== 'vers' ? '?ful=' + all.ful : '') + '#v' + all.vers; }
+    if (all.mod === 'vers') {
+      var q = [];
+      if (all.ful && all.ful !== 'vers') { q.push('ful=' + all.ful); }
+      if (bq) { q.push(bq); }
+      return '/' + slug + '/' + fej + '/' + all.vers + (q.length ? '?' + q.join('&') : '') + '#v' + all.vers;
+    }
     if (all.mod === 'szo') {
       var helyben = all.ig && all.ig[0] === slug && String(all.ig[1]) === String(fej);
       var alap = helyben ? '/' + slug + '/' + fej + '/' + all.ig[2] : '/' + slug + '/' + fej;
-      return alap + '?szo=' + encodeURIComponent(all.strong) + '&ful=szo' + (helyben ? '#v' + all.ig[2] : '');
+      return alap + '?szo=' + encodeURIComponent(all.strong) + '&ful=szo' + (bq ? '&' + bq : '') + (helyben ? '#v' + all.ig[2] : '');
     }
-    return '/' + slug + '/' + fej;
+    return '/' + slug + '/' + fej + (bq ? '?' + bq : '');
   }
 
   function helybeliVers(all) {

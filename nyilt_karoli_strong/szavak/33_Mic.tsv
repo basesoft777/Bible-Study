@@ -1,0 +1,4220 @@
+# GENERÁLT: a Logosz-lexikon – Károli 1908 – Strong szóillesztés nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERATED: export of the Logosz Lexikon – Károli 1908 – Strong word alignment open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+osis	oldal	token	alak_1908	allapot	partner_token	strong	bizonyossag
+Mic.1.1	hu	1	Az	betoldas			alacsony
+Mic.1.1	hu	2	Úr	parositva	2	H3068	alacsony
+Mic.1.1	hu	3	igéje	parositva	1	H1697	alacsony
+Mic.1.1	hu	4	a	parositva	3	H0834	alacsony
+Mic.1.1	hu	5	mely	parositva	3	H0834	alacsony
+Mic.1.1	hu	6	lőn	parositva	4	H1961	alacsony
+Mic.1.1	hu	7	a	betoldas			alacsony
+Mic.1.1	hu	8	moreseti	parositva	8	H4183	alacsony
+Mic.1.1	hu	9	Mikeáshoz	parositva	5,6	H0413+H4318	alacsony
+Mic.1.1	hu	10	Jótám	parositva	11	H3147	alacsony
+Mic.1.1	hu	11	Akház	parositva	12	H0271	alacsony
+Mic.1.1	hu	12	és	betoldas			alacsony
+Mic.1.1	hu	13	Ezékiásnak	parositva	13	H3169	alacsony
+Mic.1.1	hu	14	Júda	parositva	15	H3063	alacsony
+Mic.1.1	hu	15	királyainak	parositva	14	H4428	alacsony
+Mic.1.1	hu	16	idejében	parositva	9,10	H9003+H3117	alacsony
+Mic.1.1	hu	17	a	parositva	16	H0834	alacsony
+Mic.1.1	hu	18	melyet	parositva	16	H0834	alacsony
+Mic.1.1	hu	19	látott	parositva	17	H2372	alacsony
+Mic.1.1	hu	20	Samária	parositva	19	H8111	alacsony
+Mic.1.1	hu	21	és	parositva	20	H9002	alacsony
+Mic.1.1	hu	22	Jeruzsálem	parositva	21	H3389	alacsony
+Mic.1.1	hu	23	felől	parositva	18	H5921	alacsony
+Mic.1.1	er	1		parositva	3	H1697	alacsony
+Mic.1.1	er	2		parositva	2	H3068	alacsony
+Mic.1.1	er	3		parositva	4,5	H0834	alacsony
+Mic.1.1	er	4		parositva	6	H1961	alacsony
+Mic.1.1	er	5		parositva	9	H0413	alacsony
+Mic.1.1	er	6		parositva	9	H4318	alacsony
+Mic.1.1	er	7		forditatlan		H9009	alacsony
+Mic.1.1	er	8		parositva	8	H4183	alacsony
+Mic.1.1	er	9		parositva	16	H9003	alacsony
+Mic.1.1	er	10		parositva	16	H3117	alacsony
+Mic.1.1	er	11		parositva	10	H3147	alacsony
+Mic.1.1	er	12		parositva	11	H0271	alacsony
+Mic.1.1	er	13		parositva	13	H3169	alacsony
+Mic.1.1	er	14		parositva	15	H4428	alacsony
+Mic.1.1	er	15		parositva	14	H3063	alacsony
+Mic.1.1	er	16		parositva	17,18	H0834	alacsony
+Mic.1.1	er	17		parositva	19	H2372	alacsony
+Mic.1.1	er	18		parositva	23	H5921	alacsony
+Mic.1.1	er	19		parositva	20	H8111	alacsony
+Mic.1.1	er	20		parositva	21	H9002	alacsony
+Mic.1.1	er	21		parositva	22	H3389	alacsony
+Mic.1.2	hu	1	Halljátok	parositva	1	H8085	alacsony
+Mic.1.2	hu	2	meg	parositva	1	H8085	alacsony
+Mic.1.2	hu	3	minden	parositva	3,4	H3605+H9028	alacsony
+Mic.1.2	hu	4	népek	parositva	2	H5971	alacsony
+Mic.1.2	hu	5	figyelmezz	parositva	5	H7181	alacsony
+Mic.1.2	hu	6	föld	parositva	6	H0776	alacsony
+Mic.1.2	hu	7	és	parositva	7	H9002	alacsony
+Mic.1.2	hu	8	annak	parositva	9	H9024	alacsony
+Mic.1.2	hu	9	teljessége	parositva	8,9	H4393+H9024	alacsony
+Mic.1.2	hu	10	És	parositva	10	H9002	alacsony
+Mic.1.2	hu	11	az	betoldas			alacsony
+Mic.1.2	hu	12	Úr	parositva	12	H0136	alacsony
+Mic.1.2	hu	13	Isten	parositva	13	H3069	alacsony
+Mic.1.2	hu	14	legyen	parositva	11	H1961	alacsony
+Mic.1.2	hu	15	bizonyság	parositva	16,17	H9005+H5707	alacsony
+Mic.1.2	hu	16	ellenetek	parositva	14,15	H9003+H9036	alacsony
+Mic.1.2	hu	17	az	betoldas			alacsony
+Mic.1.2	hu	18	Úr	parositva	18	H0136	alacsony
+Mic.1.2	hu	19	az	betoldas			alacsony
+Mic.1.2	hu	20	ő	parositva	22	H9023	alacsony
+Mic.1.2	hu	21	szent	parositva	21	H6944	alacsony
+Mic.1.2	hu	22	templomából	parositva	19,20,22	H9006+H1964+H9023	alacsony
+Mic.1.2	er	1		parositva	1,2	H8085	alacsony
+Mic.1.2	er	2		parositva	4	H5971	alacsony
+Mic.1.2	er	3		parositva	3	H3605	alacsony
+Mic.1.2	er	4		parositva	3	H9028	alacsony
+Mic.1.2	er	5		parositva	5	H7181	alacsony
+Mic.1.2	er	6		parositva	6	H0776	alacsony
+Mic.1.2	er	7		parositva	7	H9002	alacsony
+Mic.1.2	er	8		parositva	9	H4393	alacsony
+Mic.1.2	er	9		parositva	8,9	H9024	alacsony
+Mic.1.2	er	10		parositva	10	H9002	alacsony
+Mic.1.2	er	11		parositva	14	H1961	alacsony
+Mic.1.2	er	12		parositva	12	H0136	alacsony
+Mic.1.2	er	13		parositva	13	H3069	alacsony
+Mic.1.2	er	14		parositva	16	H9003	alacsony
+Mic.1.2	er	15		parositva	16	H9036	alacsony
+Mic.1.2	er	16		parositva	15	H9005	alacsony
+Mic.1.2	er	17		parositva	15	H5707	alacsony
+Mic.1.2	er	18		parositva	18	H0136	alacsony
+Mic.1.2	er	19		parositva	22	H9006	alacsony
+Mic.1.2	er	20		parositva	22	H1964	alacsony
+Mic.1.2	er	21		parositva	21	H6944	alacsony
+Mic.1.2	er	22		parositva	20,22	H9023	alacsony
+Mic.1.3	hu	1	Mert	parositva	1	H3588	alacsony
+Mic.1.3	hu	2	ímé	parositva	2	H2009	alacsony
+Mic.1.3	hu	3	kijő	parositva	4	H3318	alacsony
+Mic.1.3	hu	4	az	betoldas			alacsony
+Mic.1.3	hu	5	Úr	parositva	3	H3068	alacsony
+Mic.1.3	hu	6	az	betoldas			alacsony
+Mic.1.3	hu	7	ő	parositva	7	H9023	alacsony
+Mic.1.3	hu	8	helyéről	parositva	5,6,7	H9006+H4725+H9023	alacsony
+Mic.1.3	hu	9	és	parositva	8	H9001	alacsony
+Mic.1.3	hu	10	leszáll	parositva	9	H3381	alacsony
+Mic.1.3	hu	11	és	parositva	10	H9001	alacsony
+Mic.1.3	hu	12	lépdel	parositva	11	H1869	alacsony
+Mic.1.3	hu	13	a	betoldas			alacsony
+Mic.1.3	hu	14	földnek	parositva	14	H0776	alacsony
+Mic.1.3	hu	15	magaslatain	parositva	12,13	H5921+H1116	alacsony
+Mic.1.3	er	1		parositva	1	H3588	alacsony
+Mic.1.3	er	2		parositva	2	H2009	alacsony
+Mic.1.3	er	3		parositva	5	H3068	alacsony
+Mic.1.3	er	4		parositva	3	H3318	alacsony
+Mic.1.3	er	5		parositva	8	H9006	alacsony
+Mic.1.3	er	6		parositva	8	H4725	alacsony
+Mic.1.3	er	7		parositva	7,8	H9023	alacsony
+Mic.1.3	er	8		parositva	9	H9001	alacsony
+Mic.1.3	er	9		parositva	10	H3381	alacsony
+Mic.1.3	er	10		parositva	11	H9001	alacsony
+Mic.1.3	er	11		parositva	12	H1869	alacsony
+Mic.1.3	er	12		parositva	15	H5921	alacsony
+Mic.1.3	er	13		parositva	15	H1116	alacsony
+Mic.1.3	er	14		parositva	14	H0776	alacsony
+Mic.1.4	hu	1	És	parositva	1	H9001	alacsony
+Mic.1.4	hu	2	szétmállanak	parositva	2	H4549	alacsony
+Mic.1.4	hu	3	alatta	parositva	5,6	H8478+H9033	alacsony
+Mic.1.4	hu	4	a	betoldas			alacsony
+Mic.1.4	hu	5	hegyek	parositva	4	H2022	alacsony
+Mic.1.4	hu	6	a	betoldas			alacsony
+Mic.1.4	hu	7	völgyek	parositva	9	H6010	alacsony
+Mic.1.4	hu	8	pedig	parositva	7	H9002	alacsony
+Mic.1.4	hu	9	szétszakadoznak	parositva	10	H1234	alacsony
+Mic.1.4	hu	10	mint	parositva	11	H9004	alacsony
+Mic.1.4	hu	11	a	betoldas			alacsony
+Mic.1.4	hu	12	viasz	parositva	12	H1749	alacsony
+Mic.1.4	hu	13	a	betoldas			alacsony
+Mic.1.4	hu	14	tűz	parositva	16	H0784	alacsony
+Mic.1.4	hu	15	előtt	parositva	13,14	H9006+H6440	alacsony
+Mic.1.4	hu	16	mint	parositva	17	H9004	alacsony
+Mic.1.4	hu	17	a	betoldas			alacsony
+Mic.1.4	hu	18	meredekről	parositva	20,21	H9003+H4174	alacsony
+Mic.1.4	hu	19	leszakadó	parositva	19	H5064	alacsony
+Mic.1.4	hu	20	vizek	parositva	18	H4325	alacsony
+Mic.1.4	er	1		parositva	1	H9001	alacsony
+Mic.1.4	er	2		parositva	2	H4549	alacsony
+Mic.1.4	er	3		forditatlan		H9009	alacsony
+Mic.1.4	er	4		parositva	5	H2022	alacsony
+Mic.1.4	er	5		parositva	3	H8478	alacsony
+Mic.1.4	er	6		parositva	3	H9033	alacsony
+Mic.1.4	er	7		parositva	8	H9002	alacsony
+Mic.1.4	er	8		forditatlan		H9009	alacsony
+Mic.1.4	er	9		parositva	7	H6010	alacsony
+Mic.1.4	er	10		parositva	9	H1234	alacsony
+Mic.1.4	er	11		parositva	10	H9004	alacsony
+Mic.1.4	er	12		parositva	12	H1749	alacsony
+Mic.1.4	er	13		parositva	15	H9006	alacsony
+Mic.1.4	er	14		parositva	15	H6440	alacsony
+Mic.1.4	er	15		forditatlan		H9009	alacsony
+Mic.1.4	er	16		parositva	14	H0784	alacsony
+Mic.1.4	er	17		parositva	16	H9004	alacsony
+Mic.1.4	er	18		parositva	20	H4325	alacsony
+Mic.1.4	er	19		parositva	19	H5064	alacsony
+Mic.1.4	er	20		parositva	18	H9003	alacsony
+Mic.1.4	er	21		parositva	18	H4174	alacsony
+Mic.1.5	hu	1	A	betoldas			alacsony
+Mic.1.5	hu	2	Jákób	parositva	3	H3290	alacsony
+Mic.1.5	hu	3	vétkéért	parositva	1,2	H9003+H6588	alacsony
+Mic.1.5	hu	4	lészen	betoldas			alacsony
+Mic.1.5	hu	5	mindez	parositva	4,5	H3605+H2063	alacsony
+Mic.1.5	hu	6	és	parositva	6	H9002	alacsony
+Mic.1.5	hu	7	az	betoldas			alacsony
+Mic.1.5	hu	8	Izráel	parositva	10	H3478	alacsony
+Mic.1.5	hu	9	házának	parositva	9	H1004	alacsony
+Mic.1.5	hu	10	bűnei	parositva	8	H2403	alacsony
+Mic.1.5	hu	11	miatt	parositva	7	H9003	alacsony
+Mic.1.5	hu	12	Micsoda	parositva	11	H4310	alacsony
+Mic.1.5	hu	13	a	betoldas			alacsony
+Mic.1.5	hu	14	Jákób	parositva	13	H3290	alacsony
+Mic.1.5	hu	15	vétke	parositva	12	H6588	alacsony
+Mic.1.5	hu	16	Avagy	parositva	14	H9008	alacsony
+Mic.1.5	hu	17	nem	parositva	15	H3808	alacsony
+Mic.1.5	hu	18	Samária	parositva	16	H8111	alacsony
+Mic.1.5	hu	19	é	betoldas			alacsony
+Mic.1.5	hu	20	És	parositva	17	H9002	alacsony
+Mic.1.5	hu	21	mik	parositva	18	H4310	alacsony
+Mic.1.5	hu	22	a	betoldas			alacsony
+Mic.1.5	hu	23	Júda	parositva	20	H3063	alacsony
+Mic.1.5	hu	24	magaslatai	parositva	19	H1116	alacsony
+Mic.1.5	hu	25	Avagy	parositva	21	H9008	alacsony
+Mic.1.5	hu	26	nem	parositva	22	H3808	alacsony
+Mic.1.5	hu	27	Jeruzsálem	parositva	23	H3389	alacsony
+Mic.1.5	hu	28	é	betoldas			alacsony
+Mic.1.5	er	1		parositva	3	H9003	alacsony
+Mic.1.5	er	2		parositva	3	H6588	alacsony
+Mic.1.5	er	3		parositva	2	H3290	alacsony
+Mic.1.5	er	4		parositva	5	H3605	alacsony
+Mic.1.5	er	5		parositva	5	H2063	alacsony
+Mic.1.5	er	6		parositva	6	H9002	alacsony
+Mic.1.5	er	7		parositva	11	H9003	alacsony
+Mic.1.5	er	8		parositva	10	H2403	alacsony
+Mic.1.5	er	9		parositva	9	H1004	alacsony
+Mic.1.5	er	10		parositva	8	H3478	alacsony
+Mic.1.5	er	11		parositva	12	H4310	alacsony
+Mic.1.5	er	12		parositva	15	H6588	alacsony
+Mic.1.5	er	13		parositva	14	H3290	alacsony
+Mic.1.5	er	14		parositva	16	H9008	alacsony
+Mic.1.5	er	15		parositva	17	H3808	alacsony
+Mic.1.5	er	16		parositva	18	H8111	alacsony
+Mic.1.5	er	17		parositva	20	H9002	alacsony
+Mic.1.5	er	18		parositva	21	H4310	alacsony
+Mic.1.5	er	19		parositva	24	H1116	alacsony
+Mic.1.5	er	20		parositva	23	H3063	alacsony
+Mic.1.5	er	21		parositva	25	H9008	alacsony
+Mic.1.5	er	22		parositva	26	H3808	alacsony
+Mic.1.5	er	23		parositva	27	H3389	alacsony
+Mic.1.6	hu	1	De	parositva	1	H9001	alacsony
+Mic.1.6	hu	2	olyanná	parositva	4	H9005	alacsony
+Mic.1.6	hu	3	teszem	parositva	2	H7760	alacsony
+Mic.1.6	hu	4	Samáriát	parositva	3	H8111	alacsony
+Mic.1.6	hu	5	mint	betoldas			alacsony
+Mic.1.6	hu	6	a	betoldas			alacsony
+Mic.1.6	hu	7	mezőben	parositva	7	H7704	alacsony
+Mic.1.6	hu	8	való	betoldas			alacsony
+Mic.1.6	hu	9	kőrakás	parositva	5	H5856	alacsony
+Mic.1.6	hu	10	szőlő	parositva	10	H3754	alacsony
+Mic.1.6	hu	11	plánták	parositva	9	H4302	alacsony
+Mic.1.6	hu	12	helyévé	parositva	8	H9005	alacsony
+Mic.1.6	hu	13	és	parositva	11	H9001	alacsony
+Mic.1.6	hu	14	lezúdítom	parositva	12	H5064	alacsony
+Mic.1.6	hu	15	a	betoldas			alacsony
+Mic.1.6	hu	16	völgybe	parositva	13,14	H9005+H1516	alacsony
+Mic.1.6	hu	17	az	betoldas			alacsony
+Mic.1.6	hu	18	ő	parositva	16	H9024	alacsony
+Mic.1.6	hu	19	köveit	parositva	15,16	H0068+H9024	alacsony
+Mic.1.6	hu	20	és	parositva	17	H9002	alacsony
+Mic.1.6	hu	21	még	betoldas			alacsony
+Mic.1.6	hu	22	fundamentomit	parositva	18,19	H3247+H9024	alacsony
+Mic.1.6	hu	23	is	betoldas			alacsony
+Mic.1.6	hu	24	kimutatom	parositva	20	H1540	alacsony
+Mic.1.6	er	1		parositva	1	H9001	alacsony
+Mic.1.6	er	2		parositva	3	H7760	alacsony
+Mic.1.6	er	3		parositva	4	H8111	alacsony
+Mic.1.6	er	4		parositva	2	H9005	alacsony
+Mic.1.6	er	5		parositva	9	H5856	alacsony
+Mic.1.6	er	6		forditatlan		H9009	alacsony
+Mic.1.6	er	7		parositva	7	H7704	alacsony
+Mic.1.6	er	8		parositva	12	H9005	alacsony
+Mic.1.6	er	9		parositva	11	H4302	alacsony
+Mic.1.6	er	10		parositva	10	H3754	alacsony
+Mic.1.6	er	11		parositva	13	H9001	alacsony
+Mic.1.6	er	12		parositva	14	H5064	alacsony
+Mic.1.6	er	13		parositva	16	H9005	alacsony
+Mic.1.6	er	14		parositva	16	H1516	alacsony
+Mic.1.6	er	15		parositva	19	H0068	alacsony
+Mic.1.6	er	16		parositva	18,19	H9024	alacsony
+Mic.1.6	er	17		parositva	20	H9002	alacsony
+Mic.1.6	er	18		parositva	22	H3247	alacsony
+Mic.1.6	er	19		parositva	22	H9024	alacsony
+Mic.1.6	er	20		parositva	24	H1540	alacsony
+Mic.1.7	hu	1	Faragott	parositva	3	H6456	alacsony
+Mic.1.7	hu	2	képei	parositva	3,4	H6456+H9024	alacsony
+Mic.1.7	hu	3	mind	parositva	2	H3605	alacsony
+Mic.1.7	hu	4	összetöretnek	parositva	5	H3807	alacsony
+Mic.1.7	hu	5	és	parositva	6	H9002	alacsony
+Mic.1.7	hu	6	minden	parositva	7	H3605	alacsony
+Mic.1.7	hu	7	ajándékát	parositva	8,9	H0868+H9024	alacsony
+Mic.1.7	hu	8	tűz	parositva	11,12	H9003+H0784	alacsony
+Mic.1.7	hu	9	égeti	parositva	10	H8313	alacsony
+Mic.1.7	hu	10	meg	parositva	10	H8313	alacsony
+Mic.1.7	hu	11	Minden	parositva	14	H3605	alacsony
+Mic.1.7	hu	12	bálványait	parositva	15,16	H6091+H9024	alacsony
+Mic.1.7	hu	13	semmivé	parositva	18	H8077	alacsony
+Mic.1.7	hu	14	teszem	parositva	17	H7760	alacsony
+Mic.1.7	hu	15	mert	parositva	19	H3588	alacsony
+Mic.1.7	hu	16	paráznaság	parositva	22	H2181	alacsony
+Mic.1.7	hu	17	béréből	parositva	20,21	H9006+H0868	alacsony
+Mic.1.7	hu	18	gyűjtögette	parositva	23	H6908	alacsony
+Mic.1.7	hu	19	azokat	betoldas			alacsony
+Mic.1.7	hu	20	azért	parositva	24	H9002	alacsony
+Mic.1.7	hu	21	ismét	parositva	28	H7725	alacsony
+Mic.1.7	hu	22	paráznaság	parositva	27	H2181	alacsony
+Mic.1.7	hu	23	bérévé	parositva	25,26	H5704+H0868	alacsony
+Mic.1.7	hu	24	legyenek	parositva	28	H7725	alacsony
+Mic.1.7	er	1		forditatlan		H9002	alacsony
+Mic.1.7	er	2		parositva	3	H3605	alacsony
+Mic.1.7	er	3		parositva	1,2	H6456	alacsony
+Mic.1.7	er	4		parositva	2	H9024	alacsony
+Mic.1.7	er	5		parositva	4	H3807	alacsony
+Mic.1.7	er	6		parositva	5	H9002	alacsony
+Mic.1.7	er	7		parositva	6	H3605	alacsony
+Mic.1.7	er	8		parositva	7	H0868	alacsony
+Mic.1.7	er	9		parositva	7	H9024	alacsony
+Mic.1.7	er	10		parositva	9,10	H8313	alacsony
+Mic.1.7	er	11		parositva	8	H9003	alacsony
+Mic.1.7	er	12		parositva	8	H0784	alacsony
+Mic.1.7	er	13		forditatlan		H9002	alacsony
+Mic.1.7	er	14		parositva	11	H3605	alacsony
+Mic.1.7	er	15		parositva	12	H6091	alacsony
+Mic.1.7	er	16		parositva	12	H9024	alacsony
+Mic.1.7	er	17		parositva	14	H7760	alacsony
+Mic.1.7	er	18		parositva	13	H8077	alacsony
+Mic.1.7	er	19		parositva	15	H3588	alacsony
+Mic.1.7	er	20		parositva	17	H9006	alacsony
+Mic.1.7	er	21		parositva	17	H0868	alacsony
+Mic.1.7	er	22		parositva	16	H2181	alacsony
+Mic.1.7	er	23		parositva	18	H6908	alacsony
+Mic.1.7	er	24		parositva	20	H9002	alacsony
+Mic.1.7	er	25		parositva	23	H5704	alacsony
+Mic.1.7	er	26		parositva	23	H0868	alacsony
+Mic.1.7	er	27		parositva	22	H2181	alacsony
+Mic.1.7	er	28		parositva	21,24	H7725	alacsony
+Mic.1.8	hu	1	E	parositva	2	H2063	alacsony
+Mic.1.8	hu	2	miatt	parositva	1	H5921	alacsony
+Mic.1.8	hu	3	kesergek	parositva	3	H5594	alacsony
+Mic.1.8	hu	4	és	parositva	4	H9002	alacsony
+Mic.1.8	hu	5	jajgatok	parositva	5	H3213	alacsony
+Mic.1.8	hu	6	ruhátalan	parositva	7	H7758	alacsony
+Mic.1.8	hu	7	és	parositva	8	H9002	alacsony
+Mic.1.8	hu	8	mezítelen	parositva	9	H6174	alacsony
+Mic.1.8	hu	9	járok	parositva	6	H1980	alacsony
+Mic.1.8	hu	10	Üvöltök	parositva	10,11	H6213+H4553	alacsony
+Mic.1.8	hu	11	mint	parositva	12	H9004	alacsony
+Mic.1.8	hu	12	a	betoldas			alacsony
+Mic.1.8	hu	13	sakálok	parositva	13	H8577	alacsony
+Mic.1.8	hu	14	és	parositva	14	H9002	alacsony
+Mic.1.8	hu	15	sikongok	parositva	15	H0060	alacsony
+Mic.1.8	hu	16	mint	parositva	16	H9004	alacsony
+Mic.1.8	hu	17	a	betoldas			alacsony
+Mic.1.8	hu	18	struczmadarak	parositva	17,18	H1323+H3284	alacsony
+Mic.1.8	er	1		parositva	2	H5921	alacsony
+Mic.1.8	er	2		parositva	1	H2063	alacsony
+Mic.1.8	er	3		parositva	3	H5594	alacsony
+Mic.1.8	er	4		parositva	4	H9002	alacsony
+Mic.1.8	er	5		parositva	5	H3213	alacsony
+Mic.1.8	er	6		parositva	9	H1980	alacsony
+Mic.1.8	er	7		parositva	6	H7758	alacsony
+Mic.1.8	er	8		parositva	7	H9002	alacsony
+Mic.1.8	er	9		parositva	8	H6174	alacsony
+Mic.1.8	er	10		parositva	10	H6213	alacsony
+Mic.1.8	er	11		parositva	10	H4553	alacsony
+Mic.1.8	er	12		parositva	11	H9004	alacsony
+Mic.1.8	er	13		parositva	13	H8577	alacsony
+Mic.1.8	er	14		parositva	14	H9002	alacsony
+Mic.1.8	er	15		parositva	15	H0060	alacsony
+Mic.1.8	er	16		parositva	16	H9004	alacsony
+Mic.1.8	er	17		parositva	18	H1323	alacsony
+Mic.1.8	er	18		parositva	18	H3284	alacsony
+Mic.1.9	hu	1	Mert	parositva	1	H3588	alacsony
+Mic.1.9	hu	2	halálosak	parositva	2	H0605	alacsony
+Mic.1.9	hu	3	az	betoldas			alacsony
+Mic.1.9	hu	4	ő	parositva	4	H9024	alacsony
+Mic.1.9	hu	5	sebei	parositva	3,4	H4347+H9024	alacsony
+Mic.1.9	hu	6	Bizony	parositva	5	H3588	alacsony
+Mic.1.9	hu	7	Júdáig	parositva	7,8	H5704+H3063	alacsony
+Mic.1.9	hu	8	ér	parositva	6	H0935	alacsony
+Mic.1.9	hu	9	népem	parositva	12,13	H5971+H9020	alacsony
+Mic.1.9	hu	10	kapujáig	parositva	10,11	H5704+H8179	alacsony
+Mic.1.9	hu	11	hatol	parositva	9	H5060	alacsony
+Mic.1.9	hu	12	Jeruzsálemig	parositva	14,15	H5704+H3389	alacsony
+Mic.1.9	er	1		parositva	1	H3588	alacsony
+Mic.1.9	er	2		parositva	2	H0605	alacsony
+Mic.1.9	er	3		parositva	5	H4347	alacsony
+Mic.1.9	er	4		parositva	4,5	H9024	alacsony
+Mic.1.9	er	5		parositva	6	H3588	alacsony
+Mic.1.9	er	6		parositva	8	H0935	alacsony
+Mic.1.9	er	7		parositva	7	H5704	alacsony
+Mic.1.9	er	8		parositva	7	H3063	alacsony
+Mic.1.9	er	9		parositva	11	H5060	alacsony
+Mic.1.9	er	10		parositva	10	H5704	alacsony
+Mic.1.9	er	11		parositva	10	H8179	alacsony
+Mic.1.9	er	12		parositva	9	H5971	alacsony
+Mic.1.9	er	13		parositva	9	H9020	alacsony
+Mic.1.9	er	14		parositva	12	H5704	alacsony
+Mic.1.9	er	15		parositva	12	H3389	alacsony
+Mic.1.10	hu	1	Gáthban	parositva	1,2	H9003+H1661	alacsony
+Mic.1.10	hu	2	hírül	parositva	4	H5046	alacsony
+Mic.1.10	hu	3	ne	parositva	3	H0408	alacsony
+Mic.1.10	hu	4	adjátok	parositva	4	H5046	alacsony
+Mic.1.10	hu	5	sírván	parositva	5	H1058	alacsony
+Mic.1.10	hu	6	ne	parositva	6	H0408	alacsony
+Mic.1.10	hu	7	sírjatok	parositva	7	H1058	alacsony
+Mic.1.10	hu	8	Beth	parositva	9	H1036	alacsony
+Mic.1.10	hu	9	le	parositva	10	H1036	alacsony
+Mic.1.10	hu	10	Afrában	parositva	8,10	H9003+H1036	alacsony
+Mic.1.10	hu	11	porba	parositva	11	H6083	alacsony
+Mic.1.10	hu	12	heveredtem	parositva	12	H6428	alacsony
+Mic.1.10	er	1		parositva	1	H9003	alacsony
+Mic.1.10	er	2		parositva	1	H1661	alacsony
+Mic.1.10	er	3		parositva	3	H0408	alacsony
+Mic.1.10	er	4		parositva	2,4	H5046	alacsony
+Mic.1.10	er	5		parositva	5	H1058	alacsony
+Mic.1.10	er	6		parositva	6	H0408	alacsony
+Mic.1.10	er	7		parositva	7	H1058	alacsony
+Mic.1.10	er	8		parositva	10	H9003	alacsony
+Mic.1.10	er	9		parositva	8	H1036	alacsony
+Mic.1.10	er	10		parositva	9,10	H1036	alacsony
+Mic.1.10	er	11		parositva	11	H6083	alacsony
+Mic.1.10	er	12		parositva	12	H6428	alacsony
+Mic.1.11	hu	1	Költözzetek	parositva	1,2,3	H5674+H9005+H9036	alacsony
+Mic.1.11	hu	2	el	parositva	1	H5674	alacsony
+Mic.1.11	hu	3	Safirnak	parositva	5	H8208	alacsony
+Mic.1.11	hu	4	lakója	parositva	4	H3427	alacsony
+Mic.1.11	hu	5	gyalázatos	parositva	7	H1322	alacsony
+Mic.1.11	hu	6	meztelenül	parositva	6	H6181	alacsony
+Mic.1.11	hu	7	Nem	parositva	8	H3808	alacsony
+Mic.1.11	hu	8	vonult	parositva	9	H3318	alacsony
+Mic.1.11	hu	9	ki	parositva	9	H3318	alacsony
+Mic.1.11	hu	10	Saanán	parositva	11	H6630	alacsony
+Mic.1.11	hu	11	lakosa	parositva	10	H3427	alacsony
+Mic.1.11	hu	12	Beth	parositva	13	H1018	alacsony
+Mic.1.11	hu	13	Eselnek	parositva	14	H1018	alacsony
+Mic.1.11	hu	14	siralma	parositva	12	H4553	alacsony
+Mic.1.11	hu	15	nem	betoldas			alacsony
+Mic.1.11	hu	16	enged	parositva	15,16,17	H3947+H9006+H9036	alacsony
+Mic.1.11	hu	17	tartózkodni	parositva	18,19	H5979+H9023	alacsony
+Mic.1.11	er	1		parositva	1,2	H5674	alacsony
+Mic.1.11	er	2		parositva	1	H9005	alacsony
+Mic.1.11	er	3		parositva	1	H9036	alacsony
+Mic.1.11	er	4		parositva	4	H3427	alacsony
+Mic.1.11	er	5		parositva	3	H8208	alacsony
+Mic.1.11	er	6		parositva	6	H6181	alacsony
+Mic.1.11	er	7		parositva	5	H1322	alacsony
+Mic.1.11	er	8		parositva	7	H3808	alacsony
+Mic.1.11	er	9		parositva	8,9	H3318	alacsony
+Mic.1.11	er	10		parositva	11	H3427	alacsony
+Mic.1.11	er	11		parositva	10	H6630	alacsony
+Mic.1.11	er	12		parositva	14	H4553	alacsony
+Mic.1.11	er	13		parositva	12	H1018	alacsony
+Mic.1.11	er	14		parositva	13	H1018	alacsony
+Mic.1.11	er	15		parositva	16	H3947	alacsony
+Mic.1.11	er	16		parositva	16	H9006	alacsony
+Mic.1.11	er	17		parositva	16	H9036	alacsony
+Mic.1.11	er	18		parositva	17	H5979	alacsony
+Mic.1.11	er	19		parositva	17	H9023	alacsony
+Mic.1.12	hu	1	Mert	parositva	1	H3588	alacsony
+Mic.1.12	hu	2	beteg	parositva	2	H2342	alacsony
+Mic.1.12	hu	3	lett	betoldas			alacsony
+Mic.1.12	hu	4	Marótnak	parositva	6	H4796	alacsony
+Mic.1.12	hu	5	lakosa	parositva	5	H3427	alacsony
+Mic.1.12	hu	6	az	betoldas			alacsony
+Mic.1.12	hu	7	ő	betoldas			alacsony
+Mic.1.12	hu	8	javai	parositva	4	H2896	alacsony
+Mic.1.12	hu	9	miatt	parositva	3	H9005	alacsony
+Mic.1.12	hu	10	mert	parositva	7	H3588	alacsony
+Mic.1.12	hu	11	veszedelem	parositva	9	H7451	alacsony
+Mic.1.12	hu	12	szállt	parositva	8	H3381	alacsony
+Mic.1.12	hu	13	le	parositva	8	H3381	alacsony
+Mic.1.12	hu	14	az	betoldas			alacsony
+Mic.1.12	hu	15	Úrtól	parositva	10,11,12	H9006+H0854+H3068	alacsony
+Mic.1.12	hu	16	Jeruzsálemnek	parositva	15	H3389	alacsony
+Mic.1.12	hu	17	kapujára	parositva	13,14	H9005+H8179	alacsony
+Mic.1.12	er	1		parositva	1	H3588	alacsony
+Mic.1.12	er	2		parositva	2	H2342	alacsony
+Mic.1.12	er	3		parositva	9	H9005	alacsony
+Mic.1.12	er	4		parositva	8	H2896	alacsony
+Mic.1.12	er	5		parositva	5	H3427	alacsony
+Mic.1.12	er	6		parositva	4	H4796	alacsony
+Mic.1.12	er	7		parositva	10	H3588	alacsony
+Mic.1.12	er	8		parositva	12,13	H3381	alacsony
+Mic.1.12	er	9		parositva	11	H7451	alacsony
+Mic.1.12	er	10		parositva	15	H9006	alacsony
+Mic.1.12	er	11		parositva	15	H0854	alacsony
+Mic.1.12	er	12		parositva	15	H3068	alacsony
+Mic.1.12	er	13		parositva	17	H9005	alacsony
+Mic.1.12	er	14		parositva	17	H8179	alacsony
+Mic.1.12	er	15		parositva	16	H3389	alacsony
+Mic.1.13	hu	1	Gyors	parositva	5	H7409	alacsony
+Mic.1.13	hu	2	paripához	parositva	4,5	H9005+H7409	alacsony
+Mic.1.13	hu	3	kösd	parositva	1	H7573	alacsony
+Mic.1.13	hu	4	a	betoldas			alacsony
+Mic.1.13	hu	5	szekeret	parositva	3	H4818	alacsony
+Mic.1.13	hu	6	Lákisnak	parositva	7	H3923	alacsony
+Mic.1.13	hu	7	lakója	parositva	6	H3427	alacsony
+Mic.1.13	hu	8	ki	parositva	10	H1931	alacsony
+Mic.1.13	hu	9	a	betoldas			alacsony
+Mic.1.13	hu	10	bűnnek	parositva	9	H2403	alacsony
+Mic.1.13	hu	11	kezdője	parositva	8	H7225	alacsony
+Mic.1.13	hu	12	valál	betoldas			alacsony
+Mic.1.13	hu	13	a	betoldas			alacsony
+Mic.1.13	hu	14	Sion	parositva	13	H6726	alacsony
+Mic.1.13	hu	15	leányánál	parositva	11,12	H9005+H1323	alacsony
+Mic.1.13	hu	16	Bizony	parositva	14	H3588	alacsony
+Mic.1.13	hu	17	te	parositva	16	H9032	alacsony
+Mic.1.13	hu	18	benned	parositva	15,16	H9003+H9032	alacsony
+Mic.1.13	hu	19	találtatnak	parositva	17	H4672	alacsony
+Mic.1.13	hu	20	Izráel	parositva	19	H3478	alacsony
+Mic.1.13	hu	21	vétkei	parositva	18	H6588	alacsony
+Mic.1.13	er	1		parositva	3	H7573	alacsony
+Mic.1.13	er	2		forditatlan		H9009	alacsony
+Mic.1.13	er	3		parositva	5	H4818	alacsony
+Mic.1.13	er	4		parositva	2	H9005	alacsony
+Mic.1.13	er	5		parositva	1,2	H7409	alacsony
+Mic.1.13	er	6		parositva	7	H3427	alacsony
+Mic.1.13	er	7		parositva	6	H3923	alacsony
+Mic.1.13	er	8		parositva	11	H7225	alacsony
+Mic.1.13	er	9		parositva	10	H2403	alacsony
+Mic.1.13	er	10		parositva	8	H1931	alacsony
+Mic.1.13	er	11		parositva	15	H9005	alacsony
+Mic.1.13	er	12		parositva	15	H1323	alacsony
+Mic.1.13	er	13		parositva	14	H6726	alacsony
+Mic.1.13	er	14		parositva	16	H3588	alacsony
+Mic.1.13	er	15		parositva	18	H9003	alacsony
+Mic.1.13	er	16		parositva	17,18	H9032	alacsony
+Mic.1.13	er	17		parositva	19	H4672	alacsony
+Mic.1.13	er	18		parositva	21	H6588	alacsony
+Mic.1.13	er	19		parositva	20	H3478	alacsony
+Mic.1.14	hu	1	Azért	parositva	1,2	H9005+H3651	alacsony
+Mic.1.14	hu	2	adj	parositva	3	H5414	alacsony
+Mic.1.14	hu	3	válólevelet	parositva	4	H7964	alacsony
+Mic.1.14	hu	4	Moreset	parositva	6	H4182	alacsony
+Mic.1.14	hu	5	Gátnak	parositva	5,7	H5921+H4182	alacsony
+Mic.1.14	hu	6	Akzib	parositva	9	H0392	alacsony
+Mic.1.14	hu	7	házai	parositva	8	H1004	alacsony
+Mic.1.14	hu	8	megcsalják	parositva	10,11	H9005+H0391	alacsony
+Mic.1.14	hu	9	Izráel	parositva	14	H3478	alacsony
+Mic.1.14	hu	10	királyait	parositva	12,13	H9005+H4428	alacsony
+Mic.1.14	er	1		parositva	1	H9005	alacsony
+Mic.1.14	er	2		parositva	1	H3651	alacsony
+Mic.1.14	er	3		parositva	2	H5414	alacsony
+Mic.1.14	er	4		parositva	3	H7964	alacsony
+Mic.1.14	er	5		parositva	5	H5921	alacsony
+Mic.1.14	er	6		parositva	4	H4182	alacsony
+Mic.1.14	er	7		parositva	5	H4182	alacsony
+Mic.1.14	er	8		parositva	7	H1004	alacsony
+Mic.1.14	er	9		parositva	6	H0392	alacsony
+Mic.1.14	er	10		parositva	8	H9005	alacsony
+Mic.1.14	er	11		parositva	8	H0391	alacsony
+Mic.1.14	er	12		parositva	10	H9005	alacsony
+Mic.1.14	er	13		parositva	10	H4428	alacsony
+Mic.1.14	er	14		parositva	9	H3478	alacsony
+Mic.1.15	hu	1	Még	parositva	1	H5750	alacsony
+Mic.1.15	hu	2	hozok	parositva	4	H0935	alacsony
+Mic.1.15	hu	3	én	betoldas			alacsony
+Mic.1.15	hu	4	te	parositva	6	H9032	alacsony
+Mic.1.15	hu	5	néked	parositva	5,6	H9005+H9032	alacsony
+Mic.1.15	hu	6	örököst	parositva	2,3	H9009+H3423	alacsony
+Mic.1.15	hu	7	Marésa	parositva	8	H4762	alacsony
+Mic.1.15	hu	8	lakosa	parositva	7	H3427	alacsony
+Mic.1.15	hu	9	Adullámig	parositva	9,10	H5704+H5725	alacsony
+Mic.1.15	hu	10	hat	parositva	11	H0935	alacsony
+Mic.1.15	hu	11	el	parositva	11	H0935	alacsony
+Mic.1.15	hu	12	Izráel	parositva	13	H3478	alacsony
+Mic.1.15	hu	13	dicsősége	parositva	12	H3519	alacsony
+Mic.1.15	er	1		parositva	1	H5750	alacsony
+Mic.1.15	er	2		parositva	6	H9009	alacsony
+Mic.1.15	er	3		parositva	6	H3423	alacsony
+Mic.1.15	er	4		parositva	2	H0935	alacsony
+Mic.1.15	er	5		parositva	5	H9005	alacsony
+Mic.1.15	er	6		parositva	4,5	H9032	alacsony
+Mic.1.15	er	7		parositva	8	H3427	alacsony
+Mic.1.15	er	8		parositva	7	H4762	alacsony
+Mic.1.15	er	9		parositva	9	H5704	alacsony
+Mic.1.15	er	10		parositva	9	H5725	alacsony
+Mic.1.15	er	11		parositva	10,11	H0935	alacsony
+Mic.1.15	er	12		parositva	13	H3519	alacsony
+Mic.1.15	er	13		parositva	12	H3478	alacsony
+Mic.1.16	hu	1	Nyírd	parositva	3	H1494	alacsony
+Mic.1.16	hu	2	le	parositva	3	H1494	alacsony
+Mic.1.16	hu	3	kopaszítsd	parositva	1	H7139	alacsony
+Mic.1.16	hu	4	meg	parositva	1	H7139	alacsony
+Mic.1.16	hu	5	magadat	betoldas			alacsony
+Mic.1.16	hu	6	a	betoldas			alacsony
+Mic.1.16	hu	7	te	parositva	7	H9022	alacsony
+Mic.1.16	hu	8	gyönyörűséges	parositva	6	H8588	alacsony
+Mic.1.16	hu	9	fiaidért	parositva	4,5,7	H5921+H1121+H9022	alacsony
+Mic.1.16	hu	10	Szélesítsd	parositva	8	H7337	alacsony
+Mic.1.16	hu	11	meg	parositva	8	H7337	alacsony
+Mic.1.16	hu	12	kopaszságodat	parositva	9,10	H7144+H9022	alacsony
+Mic.1.16	hu	13	mint	parositva	11	H9004	alacsony
+Mic.1.16	hu	14	a	betoldas			alacsony
+Mic.1.16	hu	15	keselyű	parositva	12	H5404	alacsony
+Mic.1.16	hu	16	mert	parositva	13	H3588	alacsony
+Mic.1.16	hu	17	rabságra	parositva	14	H1540	alacsony
+Mic.1.16	hu	18	vitettek	parositva	14	H1540	alacsony
+Mic.1.16	hu	19	el	parositva	14	H1540	alacsony
+Mic.1.16	hu	20	tőled	parositva	15,16	H4480+H9032	alacsony
+Mic.1.16	er	1		parositva	3,4	H7139	alacsony
+Mic.1.16	er	2		forditatlan		H9002	alacsony
+Mic.1.16	er	3		parositva	1,2	H1494	alacsony
+Mic.1.16	er	4		parositva	9	H5921	alacsony
+Mic.1.16	er	5		parositva	9	H1121	alacsony
+Mic.1.16	er	6		parositva	8	H8588	alacsony
+Mic.1.16	er	7		parositva	7,9	H9022	alacsony
+Mic.1.16	er	8		parositva	10,11	H7337	alacsony
+Mic.1.16	er	9		parositva	12	H7144	alacsony
+Mic.1.16	er	10		parositva	12	H9022	alacsony
+Mic.1.16	er	11		parositva	13	H9004	alacsony
+Mic.1.16	er	12		parositva	15	H5404	alacsony
+Mic.1.16	er	13		parositva	16	H3588	alacsony
+Mic.1.16	er	14		parositva	17,18,19	H1540	alacsony
+Mic.1.16	er	15		parositva	20	H4480	alacsony
+Mic.1.16	er	16		parositva	20	H9032	alacsony
+Mic.2.1	hu	1	Jaj	parositva	1	H1945	alacsony
+Mic.2.1	hu	2	azoknak	betoldas			alacsony
+Mic.2.1	hu	3	a	betoldas			alacsony
+Mic.2.1	hu	4	kik	betoldas			alacsony
+Mic.2.1	hu	5	hamisságot	parositva	3	H0205	alacsony
+Mic.2.1	hu	6	gondolnak	parositva	2	H2803	alacsony
+Mic.2.1	hu	7	és	parositva	4	H9002	alacsony
+Mic.2.1	hu	8	a	betoldas			alacsony
+Mic.2.1	hu	9	kik	betoldas			alacsony
+Mic.2.1	hu	10	ágyasházukban	parositva	7,8,9	H5921+H4904+H9028	alacsony
+Mic.2.1	hu	11	gonoszságot	parositva	6	H7451	alacsony
+Mic.2.1	hu	12	cselekesznek	parositva	5	H6466	alacsony
+Mic.2.1	hu	13	és	betoldas			alacsony
+Mic.2.1	hu	14	végrehajtják	parositva	14	H6213	alacsony
+Mic.2.1	hu	15	azt	parositva	15	H9034	alacsony
+Mic.2.1	hu	16	mihelyt	parositva	10,11	H9003+H0216	alacsony
+Mic.2.1	hu	17	megvirrad	parositva	13	H1242	alacsony
+Mic.2.1	hu	18	mert	parositva	16	H3588	alacsony
+Mic.2.1	hu	19	hatalmuk	parositva	19,20,21	H0410+H3027+H9028	alacsony
+Mic.2.1	hu	20	van	parositva	17	H3426	alacsony
+Mic.2.1	hu	21	hozzá	parositva	18	H9005	alacsony
+Mic.2.1	er	1		parositva	1	H1945	alacsony
+Mic.2.1	er	2		parositva	6	H2803	alacsony
+Mic.2.1	er	3		parositva	5	H0205	alacsony
+Mic.2.1	er	4		parositva	7	H9002	alacsony
+Mic.2.1	er	5		parositva	12	H6466	alacsony
+Mic.2.1	er	6		parositva	11	H7451	alacsony
+Mic.2.1	er	7		parositva	10	H5921	alacsony
+Mic.2.1	er	8		parositva	10	H4904	alacsony
+Mic.2.1	er	9		parositva	10	H9028	alacsony
+Mic.2.1	er	10		parositva	16	H9003	alacsony
+Mic.2.1	er	11		parositva	16	H0216	alacsony
+Mic.2.1	er	12		forditatlan		H9009	alacsony
+Mic.2.1	er	13		parositva	17	H1242	alacsony
+Mic.2.1	er	14		parositva	14	H6213	alacsony
+Mic.2.1	er	15		parositva	15	H9034	alacsony
+Mic.2.1	er	16		parositva	18	H3588	alacsony
+Mic.2.1	er	17		parositva	20	H3426	alacsony
+Mic.2.1	er	18		parositva	21	H9005	alacsony
+Mic.2.1	er	19		parositva	19	H0410	alacsony
+Mic.2.1	er	20		parositva	19	H3027	alacsony
+Mic.2.1	er	21		parositva	19	H9028	alacsony
+Mic.2.2	hu	1	Megkívánják	parositva	2	H2530	alacsony
+Mic.2.2	hu	2	a	betoldas			alacsony
+Mic.2.2	hu	3	mezőket	parositva	3	H7704	alacsony
+Mic.2.2	hu	4	és	parositva	4	H9001	alacsony
+Mic.2.2	hu	5	elrabolják	parositva	5	H1497	alacsony
+Mic.2.2	hu	6	és	parositva	6	H9002	alacsony
+Mic.2.2	hu	7	a	betoldas			alacsony
+Mic.2.2	hu	8	házakat	parositva	7	H1004	alacsony
+Mic.2.2	hu	9	és	parositva	8	H9001	alacsony
+Mic.2.2	hu	10	elszedik	parositva	9	H5375	alacsony
+Mic.2.2	hu	11	és	parositva	10	H9001	alacsony
+Mic.2.2	hu	12	nyomorgatják	parositva	11	H6231	alacsony
+Mic.2.2	hu	13	a	betoldas			alacsony
+Mic.2.2	hu	14	gazdát	parositva	12	H1397	alacsony
+Mic.2.2	hu	15	és	parositva	13	H9002	alacsony
+Mic.2.2	hu	16	az	betoldas			alacsony
+Mic.2.2	hu	17	ő	parositva	15	H9023	alacsony
+Mic.2.2	hu	18	házanépét	parositva	14,15	H1004+H9023	alacsony
+Mic.2.2	hu	19	az	betoldas			alacsony
+Mic.2.2	hu	20	embert	parositva	17	H0376	alacsony
+Mic.2.2	hu	21	és	parositva	18	H9002	alacsony
+Mic.2.2	hu	22	az	betoldas			alacsony
+Mic.2.2	hu	23	ő	parositva	20	H9023	alacsony
+Mic.2.2	hu	24	örökségét	parositva	19,20	H5159+H9023	alacsony
+Mic.2.2	er	1		forditatlan		H9001	alacsony
+Mic.2.2	er	2		parositva	1	H2530	alacsony
+Mic.2.2	er	3		parositva	3	H7704	alacsony
+Mic.2.2	er	4		parositva	4	H9001	alacsony
+Mic.2.2	er	5		parositva	5	H1497	alacsony
+Mic.2.2	er	6		parositva	6	H9002	alacsony
+Mic.2.2	er	7		parositva	8	H1004	alacsony
+Mic.2.2	er	8		parositva	9	H9001	alacsony
+Mic.2.2	er	9		parositva	10	H5375	alacsony
+Mic.2.2	er	10		parositva	11	H9001	alacsony
+Mic.2.2	er	11		parositva	12	H6231	alacsony
+Mic.2.2	er	12		parositva	14	H1397	alacsony
+Mic.2.2	er	13		parositva	15	H9002	alacsony
+Mic.2.2	er	14		parositva	18	H1004	alacsony
+Mic.2.2	er	15		parositva	17,18	H9023	alacsony
+Mic.2.2	er	16		forditatlan		H9002	alacsony
+Mic.2.2	er	17		parositva	20	H0376	alacsony
+Mic.2.2	er	18		parositva	21	H9002	alacsony
+Mic.2.2	er	19		parositva	24	H5159	alacsony
+Mic.2.2	er	20		parositva	23,24	H9023	alacsony
+Mic.2.3	hu	1	Annakokáért	parositva	1,2	H9005+H3651	alacsony
+Mic.2.3	hu	2	ezt	parositva	3	H3541	alacsony
+Mic.2.3	hu	3	mondja	parositva	4	H0559	alacsony
+Mic.2.3	hu	4	az	betoldas			alacsony
+Mic.2.3	hu	5	Úr	parositva	5	H3068	alacsony
+Mic.2.3	hu	6	Ímé	parositva	6	H2005	alacsony
+Mic.2.3	hu	7	én	parositva	7	H9040	alacsony
+Mic.2.3	hu	8	is	betoldas			alacsony
+Mic.2.3	hu	9	gonoszt	parositva	14	H7451	alacsony
+Mic.2.3	hu	10	gondolok	parositva	8	H2803	alacsony
+Mic.2.3	hu	11	e	parositva	13	H2063	alacsony
+Mic.2.3	hu	12	nemzetség	parositva	11	H4940	alacsony
+Mic.2.3	hu	13	ellen	parositva	9	H5921	alacsony
+Mic.2.3	hu	14	melyből	parositva	15	H0834	alacsony
+Mic.2.3	hu	15	ki	parositva	18,19	H9006+H8033	alacsony
+Mic.2.3	hu	16	nem	parositva	16	H3808	alacsony
+Mic.2.3	hu	17	vonhatjátok	parositva	17	H4185	alacsony
+Mic.2.3	hu	18	a	betoldas			alacsony
+Mic.2.3	hu	19	ti	parositva	21	H9026	alacsony
+Mic.2.3	hu	20	nyakatokat	parositva	20,21	H6677+H9026	alacsony
+Mic.2.3	hu	21	és	parositva	22	H9002	alacsony
+Mic.2.3	hu	22	nem	parositva	23	H3808	alacsony
+Mic.2.3	hu	23	jártok	parositva	24	H1980	alacsony
+Mic.2.3	hu	24	kevélyen	parositva	25	H7317	alacsony
+Mic.2.3	hu	25	mivel	parositva	26	H3588	alacsony
+Mic.2.3	hu	26	gonosz	parositva	28	H7451	alacsony
+Mic.2.3	hu	27	idő	parositva	27	H6256	alacsony
+Mic.2.3	hu	28	lészen	parositva	29	H1931	alacsony
+Mic.2.3	hu	29	az	betoldas			alacsony
+Mic.2.3	er	1		parositva	1	H9005	alacsony
+Mic.2.3	er	2		parositva	1	H3651	alacsony
+Mic.2.3	er	3		parositva	2	H3541	alacsony
+Mic.2.3	er	4		parositva	3	H0559	alacsony
+Mic.2.3	er	5		parositva	5	H3068	alacsony
+Mic.2.3	er	6		parositva	6	H2005	alacsony
+Mic.2.3	er	7		parositva	7	H9040	alacsony
+Mic.2.3	er	8		parositva	10	H2803	alacsony
+Mic.2.3	er	9		parositva	13	H5921	alacsony
+Mic.2.3	er	10		forditatlan		H9009	alacsony
+Mic.2.3	er	11		parositva	12	H4940	alacsony
+Mic.2.3	er	12		forditatlan		H9009	alacsony
+Mic.2.3	er	13		parositva	11	H2063	alacsony
+Mic.2.3	er	14		parositva	9	H7451	alacsony
+Mic.2.3	er	15		parositva	14	H0834	alacsony
+Mic.2.3	er	16		parositva	16	H3808	alacsony
+Mic.2.3	er	17		parositva	17	H4185	alacsony
+Mic.2.3	er	18		parositva	15	H9006	alacsony
+Mic.2.3	er	19		parositva	15	H8033	alacsony
+Mic.2.3	er	20		parositva	20	H6677	alacsony
+Mic.2.3	er	21		parositva	19,20	H9026	alacsony
+Mic.2.3	er	22		parositva	21	H9002	alacsony
+Mic.2.3	er	23		parositva	22	H3808	alacsony
+Mic.2.3	er	24		parositva	23	H1980	alacsony
+Mic.2.3	er	25		parositva	24	H7317	alacsony
+Mic.2.3	er	26		parositva	25	H3588	alacsony
+Mic.2.3	er	27		parositva	27	H6256	alacsony
+Mic.2.3	er	28		parositva	26	H7451	alacsony
+Mic.2.3	er	29		parositva	28	H1931	alacsony
+Mic.2.4	hu	1	Azon	parositva	4	H1931	alacsony
+Mic.2.4	hu	2	a	betoldas			alacsony
+Mic.2.4	hu	3	napon	parositva	1,2	H9003+H3117	alacsony
+Mic.2.4	hu	4	példabeszéd	parositva	8	H4912	alacsony
+Mic.2.4	hu	5	támad	parositva	5	H5375	alacsony
+Mic.2.4	hu	6	rólatok	parositva	6,7	H5921+H9036	alacsony
+Mic.2.4	hu	7	és	parositva	9	H9001	alacsony
+Mic.2.4	hu	8	siralmat	parositva	11	H5092	alacsony
+Mic.2.4	hu	9	sírnak	parositva	10	H5091	alacsony
+Mic.2.4	hu	10	mondván	parositva	13	H0559	alacsony
+Mic.2.4	hu	11	Oda	parositva	12	H1961	alacsony
+Mic.2.4	hu	12	van	parositva	12	H1961	alacsony
+Mic.2.4	hu	13	elpusztultunk	parositva	14,15	H7703	alacsony
+Mic.2.4	hu	14	Népem	parositva	17,18	H5971+H9020	alacsony
+Mic.2.4	hu	15	örökségét	parositva	16	H2506	alacsony
+Mic.2.4	hu	16	felcserélte	parositva	19	H4171	alacsony
+Mic.2.4	hu	17	Miként	parositva	20	H0349	alacsony
+Mic.2.4	hu	18	rabolja	parositva	21	H4185	alacsony
+Mic.2.4	hu	19	el	parositva	21	H4185	alacsony
+Mic.2.4	hu	20	tőlem	parositva	22,23	H9005+H9030	alacsony
+Mic.2.4	hu	21	hűtelennek	parositva	24,25	H9005+H7728	alacsony
+Mic.2.4	hu	22	osztja	parositva	28	H2505	alacsony
+Mic.2.4	hu	23	ki	parositva	28	H2505	alacsony
+Mic.2.4	hu	24	mezeinket	parositva	26,27	H7704+H9025	alacsony
+Mic.2.4	er	1		parositva	3	H9003	alacsony
+Mic.2.4	er	2		parositva	3	H3117	alacsony
+Mic.2.4	er	3		forditatlan		H9009	alacsony
+Mic.2.4	er	4		parositva	1	H1931	alacsony
+Mic.2.4	er	5		parositva	5	H5375	alacsony
+Mic.2.4	er	6		parositva	6	H5921	alacsony
+Mic.2.4	er	7		parositva	6	H9036	alacsony
+Mic.2.4	er	8		parositva	4	H4912	alacsony
+Mic.2.4	er	9		parositva	7	H9001	alacsony
+Mic.2.4	er	10		parositva	9	H5091	alacsony
+Mic.2.4	er	11		parositva	8	H5092	alacsony
+Mic.2.4	er	12		parositva	11,12	H1961	alacsony
+Mic.2.4	er	13		parositva	10	H0559	alacsony
+Mic.2.4	er	14		parositva	13	H7703	alacsony
+Mic.2.4	er	15		parositva	13	H7703	alacsony
+Mic.2.4	er	16		parositva	15	H2506	alacsony
+Mic.2.4	er	17		parositva	14	H5971	alacsony
+Mic.2.4	er	18		parositva	14	H9020	alacsony
+Mic.2.4	er	19		parositva	16	H4171	alacsony
+Mic.2.4	er	20		parositva	17	H0349	alacsony
+Mic.2.4	er	21		parositva	18,19	H4185	alacsony
+Mic.2.4	er	22		parositva	20	H9005	alacsony
+Mic.2.4	er	23		parositva	20	H9030	alacsony
+Mic.2.4	er	24		parositva	21	H9005	alacsony
+Mic.2.4	er	25		parositva	21	H7728	alacsony
+Mic.2.4	er	26		parositva	24	H7704	alacsony
+Mic.2.4	er	27		parositva	24	H9025	alacsony
+Mic.2.4	er	28		parositva	22,23	H2505	alacsony
+Mic.2.5	hu	1	Azért	parositva	1,2	H9005+H3651	alacsony
+Mic.2.5	hu	2	nem	parositva	3	H3808	alacsony
+Mic.2.5	hu	3	lesz	parositva	4	H1961	alacsony
+Mic.2.5	hu	4	néked	parositva	5,6	H9005+H9031	alacsony
+Mic.2.5	hu	5	a	betoldas			alacsony
+Mic.2.5	hu	6	ki	betoldas			alacsony
+Mic.2.5	hu	7	mérőzsinórt	parositva	8	H2256	alacsony
+Mic.2.5	hu	8	vessen	parositva	7	H7993	alacsony
+Mic.2.5	hu	9	sors	parositva	10	H1486	alacsony
+Mic.2.5	hu	10	szerint	parositva	9	H9003	alacsony
+Mic.2.5	hu	11	az	betoldas			alacsony
+Mic.2.5	hu	12	Úrnak	parositva	13	H3068	alacsony
+Mic.2.5	hu	13	gyülekezetében	parositva	11,12	H9003+H6951	alacsony
+Mic.2.5	er	1		parositva	1	H9005	alacsony
+Mic.2.5	er	2		parositva	1	H3651	alacsony
+Mic.2.5	er	3		parositva	2	H3808	alacsony
+Mic.2.5	er	4		parositva	3	H1961	alacsony
+Mic.2.5	er	5		parositva	4	H9005	alacsony
+Mic.2.5	er	6		parositva	4	H9031	alacsony
+Mic.2.5	er	7		parositva	8	H7993	alacsony
+Mic.2.5	er	8		parositva	7	H2256	alacsony
+Mic.2.5	er	9		parositva	10	H9003	alacsony
+Mic.2.5	er	10		parositva	9	H1486	alacsony
+Mic.2.5	er	11		parositva	13	H9003	alacsony
+Mic.2.5	er	12		parositva	13	H6951	alacsony
+Mic.2.5	er	13		parositva	12	H3068	alacsony
+Mic.2.6	hu	1	Ne	parositva	1	H0408	alacsony
+Mic.2.6	hu	2	prófétáljatok	parositva	2	H5197	alacsony
+Mic.2.6	hu	3	prófétálnak	parositva	3	H5197	alacsony
+Mic.2.6	hu	4	ők	betoldas			alacsony
+Mic.2.6	hu	5	Ha	betoldas			alacsony
+Mic.2.6	hu	6	nem	parositva	5	H3808	alacsony
+Mic.2.6	hu	7	prófétálnak	parositva	6	H5197	alacsony
+Mic.2.6	hu	8	ezeknek	parositva	7,8	H9005+H0428	alacsony
+Mic.2.6	hu	9	nem	parositva	9	H3808	alacsony
+Mic.2.6	hu	10	múlik	parositva	10	H5253	alacsony
+Mic.2.6	hu	11	el	parositva	10	H5253	alacsony
+Mic.2.6	hu	12	a	betoldas			alacsony
+Mic.2.6	hu	13	gyalázat	parositva	11	H3639	alacsony
+Mic.2.6	er	1		parositva	1	H0408	alacsony
+Mic.2.6	er	2		parositva	2	H5197	alacsony
+Mic.2.6	er	3		parositva	3	H5197	alacsony
+Mic.2.6	er	4		forditatlan		H9013	alacsony
+Mic.2.6	er	5		parositva	6	H3808	alacsony
+Mic.2.6	er	6		parositva	7	H5197	alacsony
+Mic.2.6	er	7		parositva	8	H9005	alacsony
+Mic.2.6	er	8		parositva	8	H0428	alacsony
+Mic.2.6	er	9		parositva	9	H3808	alacsony
+Mic.2.6	er	10		parositva	10,11	H5253	alacsony
+Mic.2.6	er	11		parositva	13	H3639	alacsony
+Mic.2.7	hu	1	Oh	betoldas			alacsony
+Mic.2.7	hu	2	te	betoldas			alacsony
+Mic.2.7	hu	3	ki	betoldas			alacsony
+Mic.2.7	hu	4	Jákób	parositva	4	H3290	alacsony
+Mic.2.7	hu	5	házának	parositva	3	H1004	alacsony
+Mic.2.7	hu	6	mondatol	parositva	2	H0559	alacsony
+Mic.2.7	hu	7	hát	parositva	1	H9008	alacsony
+Mic.2.7	hu	8	türelmetlen	parositva	6	H7114	alacsony
+Mic.2.7	hu	9	é	parositva	5	H9008	alacsony
+Mic.2.7	hu	10	az	betoldas			alacsony
+Mic.2.7	hu	11	Úrnak	parositva	8	H3068	alacsony
+Mic.2.7	hu	12	lelke	parositva	7	H7307	alacsony
+Mic.2.7	hu	13	avagy	parositva	9	H0518	alacsony
+Mic.2.7	hu	14	ezek	parositva	10	H0428	alacsony
+Mic.2.7	hu	15	é	betoldas			alacsony
+Mic.2.7	hu	16	az	betoldas			alacsony
+Mic.2.7	hu	17	ő	parositva	12	H9023	alacsony
+Mic.2.7	hu	18	cselekedetei	parositva	11,12	H4611+H9023	alacsony
+Mic.2.7	hu	19	Nem	parositva	14	H3808	alacsony
+Mic.2.7	hu	20	javára	parositva	17	H3190	alacsony
+Mic.2.7	hu	21	válnak	parositva	17	H3190	alacsony
+Mic.2.7	hu	22	é	parositva	13	H9008	alacsony
+Mic.2.7	hu	23	az	betoldas			alacsony
+Mic.2.7	hu	24	én	parositva	16	H9020	alacsony
+Mic.2.7	hu	25	cselekedeteim	parositva	15,16	H1697+H9020	alacsony
+Mic.2.7	hu	26	annak	parositva	18	H5973	alacsony
+Mic.2.7	hu	27	a	betoldas			alacsony
+Mic.2.7	hu	28	ki	betoldas			alacsony
+Mic.2.7	hu	29	igazán	parositva	20	H3477	alacsony
+Mic.2.7	hu	30	jár	parositva	21	H1980	alacsony
+Mic.2.7	er	1		parositva	7	H9008	alacsony
+Mic.2.7	er	2		parositva	6	H0559	alacsony
+Mic.2.7	er	3		parositva	5	H1004	alacsony
+Mic.2.7	er	4		parositva	4	H3290	alacsony
+Mic.2.7	er	5		parositva	9	H9008	alacsony
+Mic.2.7	er	6		parositva	8	H7114	alacsony
+Mic.2.7	er	7		parositva	12	H7307	alacsony
+Mic.2.7	er	8		parositva	11	H3068	alacsony
+Mic.2.7	er	9		parositva	13	H0518	alacsony
+Mic.2.7	er	10		parositva	14	H0428	alacsony
+Mic.2.7	er	11		parositva	18	H4611	alacsony
+Mic.2.7	er	12		parositva	17,18	H9023	alacsony
+Mic.2.7	er	13		parositva	22	H9008	alacsony
+Mic.2.7	er	14		parositva	19	H3808	alacsony
+Mic.2.7	er	15		parositva	25	H1697	alacsony
+Mic.2.7	er	16		parositva	24,25	H9020	alacsony
+Mic.2.7	er	17		parositva	20,21	H3190	alacsony
+Mic.2.7	er	18		parositva	26	H5973	alacsony
+Mic.2.7	er	19		forditatlan		H9009	alacsony
+Mic.2.7	er	20		parositva	29	H3477	alacsony
+Mic.2.7	er	21		parositva	30	H1980	alacsony
+Mic.2.8	hu	1	A	betoldas			alacsony
+Mic.2.8	hu	2	minap	parositva	2	H0865	alacsony
+Mic.2.8	hu	3	mint	parositva	5	H9005	alacsony
+Mic.2.8	hu	4	egy	betoldas			alacsony
+Mic.2.8	hu	5	ellenség	parositva	6	H0341	alacsony
+Mic.2.8	hu	6	támadt	parositva	7	H6965	alacsony
+Mic.2.8	hu	7	fel	parositva	7	H6965	alacsony
+Mic.2.8	hu	8	az	betoldas			alacsony
+Mic.2.8	hu	9	én	parositva	4	H9020	alacsony
+Mic.2.8	hu	10	népem	parositva	3,4	H5971+H9020	alacsony
+Mic.2.8	hu	11	a	betoldas			alacsony
+Mic.2.8	hu	12	köntösről	parositva	8,9,10	H9006+H4136+H8008	alacsony
+Mic.2.8	hu	13	a	betoldas			alacsony
+Mic.2.8	hu	14	palástot	parositva	11	H0145	alacsony
+Mic.2.8	hu	15	letépik	parositva	12	H6584	alacsony
+Mic.2.8	hu	16	a	betoldas			alacsony
+Mic.2.8	hu	17	gyanútlanul	parositva	16	H0983	alacsony
+Mic.2.8	hu	18	járókról	parositva	14,15	H9006+H5674	alacsony
+Mic.2.8	hu	19	a	betoldas			alacsony
+Mic.2.8	hu	20	háborútól	parositva	18	H4421	alacsony
+Mic.2.8	hu	21	idegenkedőkről	parositva	17	H7725	alacsony
+Mic.2.8	er	1		forditatlan		H9002	alacsony
+Mic.2.8	er	2		parositva	2	H0865	alacsony
+Mic.2.8	er	3		parositva	10	H5971	alacsony
+Mic.2.8	er	4		parositva	9,10	H9020	alacsony
+Mic.2.8	er	5		parositva	3	H9005	alacsony
+Mic.2.8	er	6		parositva	5	H0341	alacsony
+Mic.2.8	er	7		parositva	6,7	H6965	alacsony
+Mic.2.8	er	8		parositva	12	H9006	alacsony
+Mic.2.8	er	9		parositva	12	H4136	alacsony
+Mic.2.8	er	10		parositva	12	H8008	alacsony
+Mic.2.8	er	11		parositva	14	H0145	alacsony
+Mic.2.8	er	12		parositva	15	H6584	alacsony
+Mic.2.8	er	13		forditatlan		H9013	alacsony
+Mic.2.8	er	14		parositva	18	H9006	alacsony
+Mic.2.8	er	15		parositva	18	H5674	alacsony
+Mic.2.8	er	16		parositva	17	H0983	alacsony
+Mic.2.8	er	17		parositva	21	H7725	alacsony
+Mic.2.8	er	18		parositva	20	H4421	alacsony
+Mic.2.9	hu	1	Népem	parositva	2,3	H5971+H9020	alacsony
+Mic.2.9	hu	2	asszonyait	parositva	1	H0802	alacsony
+Mic.2.9	hu	3	kiűzitek	parositva	4	H1644	alacsony
+Mic.2.9	hu	4	boldogságuk	parositva	8,9	H8588+H9024	alacsony
+Mic.2.9	hu	5	házából	parositva	6,7	H9006+H1004	alacsony
+Mic.2.9	hu	6	kisdedeiktől	parositva	10,11,12,13	H9006+H5921+H5768+H9024	alacsony
+Mic.2.9	hu	7	örökre	parositva	17,18	H9005+H5769	alacsony
+Mic.2.9	hu	8	elveszitek	parositva	14	H3947	alacsony
+Mic.2.9	hu	9	az	betoldas			alacsony
+Mic.2.9	hu	10	én	parositva	16	H9020	alacsony
+Mic.2.9	hu	11	dicsőségemet	parositva	15,16	H1926+H9020	alacsony
+Mic.2.9	er	1		parositva	2	H0802	alacsony
+Mic.2.9	er	2		parositva	1	H5971	alacsony
+Mic.2.9	er	3		parositva	1	H9020	alacsony
+Mic.2.9	er	4		parositva	3	H1644	alacsony
+Mic.2.9	er	5		forditatlan		H9013	alacsony
+Mic.2.9	er	6		parositva	5	H9006	alacsony
+Mic.2.9	er	7		parositva	5	H1004	alacsony
+Mic.2.9	er	8		parositva	4	H8588	alacsony
+Mic.2.9	er	9		parositva	4	H9024	alacsony
+Mic.2.9	er	10		parositva	6	H9006	alacsony
+Mic.2.9	er	11		parositva	6	H5921	alacsony
+Mic.2.9	er	12		parositva	6	H5768	alacsony
+Mic.2.9	er	13		parositva	6	H9024	alacsony
+Mic.2.9	er	14		parositva	8	H3947	alacsony
+Mic.2.9	er	15		parositva	11	H1926	alacsony
+Mic.2.9	er	16		parositva	10,11	H9020	alacsony
+Mic.2.9	er	17		parositva	7	H9005	alacsony
+Mic.2.9	er	18		parositva	7	H5769	alacsony
+Mic.2.10	hu	1	Keljetek	parositva	1	H6965	alacsony
+Mic.2.10	hu	2	fel	parositva	1	H6965	alacsony
+Mic.2.10	hu	3	és	parositva	2	H9002	alacsony
+Mic.2.10	hu	4	menjetek	parositva	3	H1980	alacsony
+Mic.2.10	hu	5	ki	parositva	3	H1980	alacsony
+Mic.2.10	hu	6	mert	parositva	4	H3588	alacsony
+Mic.2.10	hu	7	ez	parositva	6	H2063	alacsony
+Mic.2.10	hu	8	nem	parositva	5	H3808	alacsony
+Mic.2.10	hu	9	a	betoldas			alacsony
+Mic.2.10	hu	10	nyugalomnak	parositva	8	H4496	alacsony
+Mic.2.10	hu	11	helye	parositva	8	H4496	alacsony
+Mic.2.10	hu	12	a	betoldas			alacsony
+Mic.2.10	hu	13	tisztátalanság	parositva	11	H2930	alacsony
+Mic.2.10	hu	14	miatt	parositva	9,10	H9003+H5668	alacsony
+Mic.2.10	hu	15	a	betoldas			alacsony
+Mic.2.10	hu	16	mely	betoldas			alacsony
+Mic.2.10	hu	17	elveszít	parositva	12	H2254	alacsony
+Mic.2.10	hu	18	és	parositva	13	H9002	alacsony
+Mic.2.10	hu	19	pedig	betoldas			alacsony
+Mic.2.10	hu	20	borzasztó	parositva	15	H4834	alacsony
+Mic.2.10	hu	21	veszedelemmel	parositva	14	H2256	alacsony
+Mic.2.10	er	1		parositva	1,2	H6965	alacsony
+Mic.2.10	er	2		parositva	3	H9002	alacsony
+Mic.2.10	er	3		parositva	4,5	H1980	alacsony
+Mic.2.10	er	4		parositva	6	H3588	alacsony
+Mic.2.10	er	5		parositva	8	H3808	alacsony
+Mic.2.10	er	6		parositva	7	H2063	alacsony
+Mic.2.10	er	7		forditatlan		H9009	alacsony
+Mic.2.10	er	8		parositva	10,11	H4496	alacsony
+Mic.2.10	er	9		parositva	14	H9003	alacsony
+Mic.2.10	er	10		parositva	14	H5668	alacsony
+Mic.2.10	er	11		parositva	13	H2930	alacsony
+Mic.2.10	er	12		parositva	17	H2254	alacsony
+Mic.2.10	er	13		parositva	18	H9002	alacsony
+Mic.2.10	er	14		parositva	21	H2256	alacsony
+Mic.2.10	er	15		parositva	20	H4834	alacsony
+Mic.2.11	hu	1	Ha	parositva	1	H3863	alacsony
+Mic.2.11	hu	2	valamely	parositva	2	H0376	alacsony
+Mic.2.11	hu	3	szélházi	parositva	3,4	H1980+H7307	alacsony
+Mic.2.11	hu	4	és	parositva	5	H9002	alacsony
+Mic.2.11	hu	5	csalárd	parositva	6	H8267	alacsony
+Mic.2.11	hu	6	így	betoldas			alacsony
+Mic.2.11	hu	7	hazudoznék	parositva	7	H3576	alacsony
+Mic.2.11	hu	8	Prédikálok	parositva	8	H5197	alacsony
+Mic.2.11	hu	9	néked	parositva	9,10	H9005+H9031	alacsony
+Mic.2.11	hu	10	borról	parositva	11,12	H9005+H3196	alacsony
+Mic.2.11	hu	11	és	parositva	13	H9002	alacsony
+Mic.2.11	hu	12	részegítő	parositva	15	H7941	alacsony
+Mic.2.11	hu	13	italról	parositva	14,15	H9005+H7941	alacsony
+Mic.2.11	hu	14	az	betoldas			alacsony
+Mic.2.11	hu	15	volna	parositva	17	H1961	alacsony
+Mic.2.11	hu	16	e	parositva	22	H2088	alacsony
+Mic.2.11	hu	17	népnek	parositva	20	H5971	alacsony
+Mic.2.11	hu	18	prófétája	parositva	18	H5197	alacsony
+Mic.2.11	er	1		parositva	1	H3863	alacsony
+Mic.2.11	er	2		parositva	2	H0376	alacsony
+Mic.2.11	er	3		parositva	3	H1980	alacsony
+Mic.2.11	er	4		parositva	3	H7307	alacsony
+Mic.2.11	er	5		parositva	4	H9002	alacsony
+Mic.2.11	er	6		parositva	5	H8267	alacsony
+Mic.2.11	er	7		parositva	7	H3576	alacsony
+Mic.2.11	er	8		parositva	8	H5197	alacsony
+Mic.2.11	er	9		parositva	9	H9005	alacsony
+Mic.2.11	er	10		parositva	9	H9031	alacsony
+Mic.2.11	er	11		parositva	10	H9005	alacsony
+Mic.2.11	er	12		parositva	10	H3196	alacsony
+Mic.2.11	er	13		parositva	11	H9002	alacsony
+Mic.2.11	er	14		parositva	13	H9005	alacsony
+Mic.2.11	er	15		parositva	12,13	H7941	alacsony
+Mic.2.11	er	16		forditatlan		H9001	alacsony
+Mic.2.11	er	17		parositva	15	H1961	alacsony
+Mic.2.11	er	18		parositva	18	H5197	alacsony
+Mic.2.11	er	19		forditatlan		H9009	alacsony
+Mic.2.11	er	20		parositva	17	H5971	alacsony
+Mic.2.11	er	21		forditatlan		H9009	alacsony
+Mic.2.11	er	22		parositva	16	H2088	alacsony
+Mic.2.12	hu	1	Mindenestől	parositva	4,5	H3605+H9031	alacsony
+Mic.2.12	hu	2	egybegyűjtelek	parositva	1,2,10	H0622+H3162	alacsony
+Mic.2.12	hu	3	téged	parositva	5	H9031	alacsony
+Mic.2.12	hu	4	Jákób	parositva	3	H3290	alacsony
+Mic.2.12	hu	5	Összetakarítom	parositva	6,7	H6908	alacsony
+Mic.2.12	hu	6	Izráel	parositva	9	H3478	alacsony
+Mic.2.12	hu	7	maradékát	parositva	8	H7611	alacsony
+Mic.2.12	hu	8	Összegyűjtöm	parositva	11	H7760	alacsony
+Mic.2.12	hu	9	őket	parositva	12	H9033	alacsony
+Mic.2.12	hu	10	mint	parositva	13	H9004	alacsony
+Mic.2.12	hu	11	a	betoldas			alacsony
+Mic.2.12	hu	12	boczrai	parositva	15	H1223	alacsony
+Mic.2.12	hu	13	juhokat	parositva	14	H6629	alacsony
+Mic.2.12	hu	14	mint	parositva	16	H9004	alacsony
+Mic.2.12	hu	15	a	betoldas			alacsony
+Mic.2.12	hu	16	nyájat	parositva	17	H5739	alacsony
+Mic.2.12	hu	17	az	betoldas			alacsony
+Mic.2.12	hu	18	ő	parositva	22	H9023	alacsony
+Mic.2.12	hu	19	karámja	parositva	21,22	H1699+H9023	alacsony
+Mic.2.12	hu	20	közé	parositva	18,19	H9003+H8432	alacsony
+Mic.2.12	hu	21	hemzsegnek	parositva	23	H1949	alacsony
+Mic.2.12	hu	22	majd	betoldas			alacsony
+Mic.2.12	hu	23	az	betoldas			alacsony
+Mic.2.12	hu	24	ember	parositva	25	H0120	alacsony
+Mic.2.12	hu	25	sokaság	betoldas			alacsony
+Mic.2.12	hu	26	miatt	parositva	24	H9006	alacsony
+Mic.2.12	er	1		parositva	2	H0622	alacsony
+Mic.2.12	er	2		parositva	2	H0622	alacsony
+Mic.2.12	er	3		parositva	4	H3290	alacsony
+Mic.2.12	er	4		parositva	1	H3605	alacsony
+Mic.2.12	er	5		parositva	1,3	H9031	alacsony
+Mic.2.12	er	6		parositva	5	H6908	alacsony
+Mic.2.12	er	7		parositva	5	H6908	alacsony
+Mic.2.12	er	8		parositva	7	H7611	alacsony
+Mic.2.12	er	9		parositva	6	H3478	alacsony
+Mic.2.12	er	10		parositva	2	H3162	alacsony
+Mic.2.12	er	11		parositva	8	H7760	alacsony
+Mic.2.12	er	12		parositva	9	H9033	alacsony
+Mic.2.12	er	13		parositva	10	H9004	alacsony
+Mic.2.12	er	14		parositva	13	H6629	alacsony
+Mic.2.12	er	15		parositva	12	H1223	alacsony
+Mic.2.12	er	16		parositva	14	H9004	alacsony
+Mic.2.12	er	17		parositva	16	H5739	alacsony
+Mic.2.12	er	18		parositva	20	H9003	alacsony
+Mic.2.12	er	19		parositva	20	H8432	alacsony
+Mic.2.12	er	20		forditatlan		H9009	alacsony
+Mic.2.12	er	21		parositva	19	H1699	alacsony
+Mic.2.12	er	22		parositva	18,19	H9023	alacsony
+Mic.2.12	er	23		parositva	21	H1949	alacsony
+Mic.2.12	er	24		parositva	26	H9006	alacsony
+Mic.2.12	er	25		parositva	24	H0120	alacsony
+Mic.2.13	hu	1	Előttök	parositva	4,5,6	H9005+H6440+H9028	alacsony
+Mic.2.13	hu	2	megy	parositva	1	H5927	alacsony
+Mic.2.13	hu	3	fel	parositva	1	H5927	alacsony
+Mic.2.13	hu	4	az	betoldas			alacsony
+Mic.2.13	hu	5	úttörő	parositva	3	H6555	alacsony
+Mic.2.13	hu	6	kitörnek	parositva	7	H6555	alacsony
+Mic.2.13	hu	7	és	parositva	8	H9001	alacsony
+Mic.2.13	hu	8	átmennek	parositva	9	H5674	alacsony
+Mic.2.13	hu	9	a	betoldas			alacsony
+Mic.2.13	hu	10	kapun	parositva	10	H8179	alacsony
+Mic.2.13	hu	11	és	parositva	11	H9001	alacsony
+Mic.2.13	hu	12	kivonulnak	parositva	12	H3318	alacsony
+Mic.2.13	hu	13	és	parositva	15	H9001	alacsony
+Mic.2.13	hu	14	előttök	parositva	19,20,21	H9005+H6440+H9028	alacsony
+Mic.2.13	hu	15	megy	parositva	16	H5674	alacsony
+Mic.2.13	hu	16	a	betoldas			alacsony
+Mic.2.13	hu	17	királyuk	parositva	17,18	H4428+H9028	alacsony
+Mic.2.13	hu	18	és	parositva	22	H9002	alacsony
+Mic.2.13	hu	19	élükön	parositva	24,25,26	H9003+H7218+H9028	alacsony
+Mic.2.13	hu	20	az	betoldas			alacsony
+Mic.2.13	hu	21	Úr	parositva	23	H3068	alacsony
+Mic.2.13	er	1		parositva	2,3	H5927	alacsony
+Mic.2.13	er	2		forditatlan		H9009	alacsony
+Mic.2.13	er	3		parositva	5	H6555	alacsony
+Mic.2.13	er	4		parositva	1	H9005	alacsony
+Mic.2.13	er	5		parositva	1	H6440	alacsony
+Mic.2.13	er	6		parositva	1	H9028	alacsony
+Mic.2.13	er	7		parositva	6	H6555	alacsony
+Mic.2.13	er	8		parositva	7	H9001	alacsony
+Mic.2.13	er	9		parositva	8	H5674	alacsony
+Mic.2.13	er	10		parositva	10	H8179	alacsony
+Mic.2.13	er	11		parositva	11	H9001	alacsony
+Mic.2.13	er	12		parositva	12	H3318	alacsony
+Mic.2.13	er	13		forditatlan		H9003	alacsony
+Mic.2.13	er	14		forditatlan		H9033	alacsony
+Mic.2.13	er	15		parositva	13	H9001	alacsony
+Mic.2.13	er	16		parositva	15	H5674	alacsony
+Mic.2.13	er	17		parositva	17	H4428	alacsony
+Mic.2.13	er	18		parositva	17	H9028	alacsony
+Mic.2.13	er	19		parositva	14	H9005	alacsony
+Mic.2.13	er	20		parositva	14	H6440	alacsony
+Mic.2.13	er	21		parositva	14	H9028	alacsony
+Mic.2.13	er	22		parositva	18	H9002	alacsony
+Mic.2.13	er	23		parositva	21	H3068	alacsony
+Mic.2.13	er	24		parositva	19	H9003	alacsony
+Mic.2.13	er	25		parositva	19	H7218	alacsony
+Mic.2.13	er	26		parositva	19	H9028	alacsony
+Mic.3.1	hu	1	És	parositva	1	H9001	alacsony
+Mic.3.1	hu	2	mondám	parositva	2	H0559	alacsony
+Mic.3.1	hu	3	én	betoldas			alacsony
+Mic.3.1	hu	4	Halljátok	parositva	3	H8085	alacsony
+Mic.3.1	hu	5	kérlek	parositva	4	H4994	alacsony
+Mic.3.1	hu	6	Jákób	parositva	6	H3290	alacsony
+Mic.3.1	hu	7	fejedelmei	parositva	5	H7218	alacsony
+Mic.3.1	hu	8	és	parositva	7	H9002	alacsony
+Mic.3.1	hu	9	Izráel	parositva	10	H3478	alacsony
+Mic.3.1	hu	10	házának	parositva	9	H1004	alacsony
+Mic.3.1	hu	11	vezérei	parositva	8	H7101	alacsony
+Mic.3.1	hu	12	Nem	parositva	12	H3808	alacsony
+Mic.3.1	hu	13	a	betoldas			alacsony
+Mic.3.1	hu	14	ti	parositva	14	H9036	alacsony
+Mic.3.1	hu	15	tisztetek	parositva	13,14	H9005+H9036	alacsony
+Mic.3.1	hu	16	é	parositva	11	H9008	alacsony
+Mic.3.1	hu	17	tudni	parositva	15,16	H9005+H3045	alacsony
+Mic.3.1	hu	18	az	betoldas			alacsony
+Mic.3.1	hu	19	ítéletet	parositva	19	H4941	alacsony
+Mic.3.1	er	1		parositva	1	H9001	alacsony
+Mic.3.1	er	2		parositva	2	H0559	alacsony
+Mic.3.1	er	3		parositva	4	H8085	alacsony
+Mic.3.1	er	4		parositva	5	H4994	alacsony
+Mic.3.1	er	5		parositva	7	H7218	alacsony
+Mic.3.1	er	6		parositva	6	H3290	alacsony
+Mic.3.1	er	7		parositva	8	H9002	alacsony
+Mic.3.1	er	8		parositva	11	H7101	alacsony
+Mic.3.1	er	9		parositva	10	H1004	alacsony
+Mic.3.1	er	10		parositva	9	H3478	alacsony
+Mic.3.1	er	11		parositva	16	H9008	alacsony
+Mic.3.1	er	12		parositva	12	H3808	alacsony
+Mic.3.1	er	13		parositva	15	H9005	alacsony
+Mic.3.1	er	14		parositva	14,15	H9036	alacsony
+Mic.3.1	er	15		parositva	17	H9005	alacsony
+Mic.3.1	er	16		parositva	17	H3045	alacsony
+Mic.3.1	er	17		forditatlan		H0853	alacsony
+Mic.3.1	er	18		forditatlan		H9009	alacsony
+Mic.3.1	er	19		parositva	19	H4941	alacsony
+Mic.3.2	hu	1	Ti	betoldas			alacsony
+Mic.3.2	hu	2	kik	betoldas			alacsony
+Mic.3.2	hu	3	gyűlölitek	parositva	1	H8130	alacsony
+Mic.3.2	hu	4	a	betoldas			alacsony
+Mic.3.2	hu	5	jót	parositva	2	H2896	alacsony
+Mic.3.2	hu	6	és	parositva	3	H9002	alacsony
+Mic.3.2	hu	7	kedvelitek	parositva	4	H0157	alacsony
+Mic.3.2	hu	8	a	betoldas			alacsony
+Mic.3.2	hu	9	gonoszt	parositva	5	H7451	alacsony
+Mic.3.2	hu	10	A	betoldas			alacsony
+Mic.3.2	hu	11	kik	betoldas			alacsony
+Mic.3.2	hu	12	levonszátok	parositva	6	H1497	alacsony
+Mic.3.2	hu	13	róluk	parositva	9,10,11	H9006+H5921+H9038	alacsony
+Mic.3.2	hu	14	bőrüket	parositva	7,8	H5785+H9028	alacsony
+Mic.3.2	hu	15	és	parositva	12	H9002	alacsony
+Mic.3.2	hu	16	csontjaikról	parositva	15,16,17,18	H9006+H5921+H6106+H9028	alacsony
+Mic.3.2	hu	17	az	betoldas			alacsony
+Mic.3.2	hu	18	ő	parositva	14	H9028	alacsony
+Mic.3.2	hu	19	húsokat	parositva	13,14	H7607+H9028	alacsony
+Mic.3.2	er	1		parositva	3	H8130	alacsony
+Mic.3.2	er	2		parositva	5	H2896	alacsony
+Mic.3.2	er	3		parositva	6	H9002	alacsony
+Mic.3.2	er	4		parositva	7	H0157	alacsony
+Mic.3.2	er	5		parositva	9	H7451	alacsony
+Mic.3.2	er	6		parositva	12	H1497	alacsony
+Mic.3.2	er	7		parositva	14	H5785	alacsony
+Mic.3.2	er	8		parositva	14	H9028	alacsony
+Mic.3.2	er	9		parositva	13	H9006	alacsony
+Mic.3.2	er	10		parositva	13	H5921	alacsony
+Mic.3.2	er	11		parositva	13	H9038	alacsony
+Mic.3.2	er	12		parositva	15	H9002	alacsony
+Mic.3.2	er	13		parositva	19	H7607	alacsony
+Mic.3.2	er	14		parositva	18,19	H9028	alacsony
+Mic.3.2	er	15		parositva	16	H9006	alacsony
+Mic.3.2	er	16		parositva	16	H5921	alacsony
+Mic.3.2	er	17		parositva	16	H6106	alacsony
+Mic.3.2	er	18		parositva	16	H9028	alacsony
+Mic.3.3	hu	1	A	parositva	2	H0834	alacsony
+Mic.3.3	hu	2	kik	parositva	2	H0834	alacsony
+Mic.3.3	hu	3	megeszik	parositva	3	H0398	alacsony
+Mic.3.3	hu	4	az	betoldas			alacsony
+Mic.3.3	hu	5	én	parositva	6	H9020	alacsony
+Mic.3.3	hu	6	népemnek	parositva	5,6	H5971+H9020	alacsony
+Mic.3.3	hu	7	húsát	parositva	4	H7607	alacsony
+Mic.3.3	hu	8	és	parositva	7	H9002	alacsony
+Mic.3.3	hu	9	lenyúzzák	parositva	13	H6584	alacsony
+Mic.3.3	hu	10	róluk	parositva	10,11,12	H9006+H5921+H9038	alacsony
+Mic.3.3	hu	11	bőrüket	parositva	8,9	H5785+H9028	alacsony
+Mic.3.3	hu	12	és	parositva	14	H9002	alacsony
+Mic.3.3	hu	13	összetörik	parositva	18	H6476	alacsony
+Mic.3.3	hu	14	csontjaikat	parositva	16,17	H6106+H9028	alacsony
+Mic.3.3	hu	15	és	parositva	19	H9002	alacsony
+Mic.3.3	hu	16	feldarabolják	parositva	20	H6566	alacsony
+Mic.3.3	hu	17	akár	parositva	21,22	H9004+H0834	alacsony
+Mic.3.3	hu	18	csak	parositva	21,22	H9004+H0834	alacsony
+Mic.3.3	hu	19	a	betoldas			alacsony
+Mic.3.3	hu	20	fazékba	parositva	23,24	H9003+H5518	alacsony
+Mic.3.3	hu	21	és	parositva	25	H9002	alacsony
+Mic.3.3	hu	22	mint	parositva	26	H9004	alacsony
+Mic.3.3	hu	23	húst	parositva	27	H1320	alacsony
+Mic.3.3	hu	24	a	betoldas			alacsony
+Mic.3.3	hu	25	tálba	parositva	28,29,30	H9003+H8432+H7037	alacsony
+Mic.3.3	er	1		forditatlan		H9002	alacsony
+Mic.3.3	er	2		parositva	1,2	H0834	alacsony
+Mic.3.3	er	3		parositva	3	H0398	alacsony
+Mic.3.3	er	4		parositva	7	H7607	alacsony
+Mic.3.3	er	5		parositva	6	H5971	alacsony
+Mic.3.3	er	6		parositva	5,6	H9020	alacsony
+Mic.3.3	er	7		parositva	8	H9002	alacsony
+Mic.3.3	er	8		parositva	11	H5785	alacsony
+Mic.3.3	er	9		parositva	11	H9028	alacsony
+Mic.3.3	er	10		parositva	10	H9006	alacsony
+Mic.3.3	er	11		parositva	10	H5921	alacsony
+Mic.3.3	er	12		parositva	10	H9038	alacsony
+Mic.3.3	er	13		parositva	9	H6584	alacsony
+Mic.3.3	er	14		parositva	12	H9002	alacsony
+Mic.3.3	er	15		forditatlan		H0853	alacsony
+Mic.3.3	er	16		parositva	14	H6106	alacsony
+Mic.3.3	er	17		parositva	14	H9028	alacsony
+Mic.3.3	er	18		parositva	13	H6476	alacsony
+Mic.3.3	er	19		parositva	15	H9002	alacsony
+Mic.3.3	er	20		parositva	16	H6566	alacsony
+Mic.3.3	er	21		parositva	17,18	H9004	alacsony
+Mic.3.3	er	22		parositva	17,18	H0834	alacsony
+Mic.3.3	er	23		parositva	20	H9003	alacsony
+Mic.3.3	er	24		parositva	20	H5518	alacsony
+Mic.3.3	er	25		parositva	21	H9002	alacsony
+Mic.3.3	er	26		parositva	22	H9004	alacsony
+Mic.3.3	er	27		parositva	23	H1320	alacsony
+Mic.3.3	er	28		parositva	25	H9003	alacsony
+Mic.3.3	er	29		parositva	25	H8432	alacsony
+Mic.3.3	er	30		parositva	25	H7037	alacsony
+Mic.3.4	hu	1	Kiáltanak	parositva	2	H2199	alacsony
+Mic.3.4	hu	2	majd	parositva	1	H0227	alacsony
+Mic.3.4	hu	3	az	betoldas			alacsony
+Mic.3.4	hu	4	Úrhoz	parositva	3,4	H0413+H3068	alacsony
+Mic.3.4	hu	5	de	parositva	5	H9002	alacsony
+Mic.3.4	hu	6	nem	parositva	6	H3808	alacsony
+Mic.3.4	hu	7	hallgatja	parositva	7	H6030	alacsony
+Mic.3.4	hu	8	meg	parositva	7	H6030	alacsony
+Mic.3.4	hu	9	őket	parositva	9	H9038	alacsony
+Mic.3.4	hu	10	sőt	parositva	10	H9002	alacsony
+Mic.3.4	hu	11	elrejti	parositva	11	H5641	alacsony
+Mic.3.4	hu	12	akkor	parositva	16,17,18,19	H9003+H6256+H9009+H1931	alacsony
+Mic.3.4	hu	13	orczáját	parositva	12,13	H6440+H9023	alacsony
+Mic.3.4	hu	14	előlök	parositva	14,15	H9006+H9038	alacsony
+Mic.3.4	hu	15	mivelhogy	parositva	20,21	H9004+H0834	alacsony
+Mic.3.4	hu	16	gonoszokká	parositva	22	H7489	alacsony
+Mic.3.4	hu	17	lettek	parositva	22	H7489	alacsony
+Mic.3.4	hu	18	cselekedeteik	parositva	23,24	H4611+H9028	alacsony
+Mic.3.4	er	1		parositva	2	H0227	alacsony
+Mic.3.4	er	2		parositva	1	H2199	alacsony
+Mic.3.4	er	3		parositva	4	H0413	alacsony
+Mic.3.4	er	4		parositva	4	H3068	alacsony
+Mic.3.4	er	5		parositva	5	H9002	alacsony
+Mic.3.4	er	6		parositva	6	H3808	alacsony
+Mic.3.4	er	7		parositva	7,8	H6030	alacsony
+Mic.3.4	er	8		forditatlan		H0853	alacsony
+Mic.3.4	er	9		parositva	9	H9038	alacsony
+Mic.3.4	er	10		parositva	10	H9002	alacsony
+Mic.3.4	er	11		parositva	11	H5641	alacsony
+Mic.3.4	er	12		parositva	13	H6440	alacsony
+Mic.3.4	er	13		parositva	13	H9023	alacsony
+Mic.3.4	er	14		parositva	14	H9006	alacsony
+Mic.3.4	er	15		parositva	14	H9038	alacsony
+Mic.3.4	er	16		parositva	12	H9003	alacsony
+Mic.3.4	er	17		parositva	12	H6256	alacsony
+Mic.3.4	er	18		parositva	12	H9009	alacsony
+Mic.3.4	er	19		parositva	12	H1931	alacsony
+Mic.3.4	er	20		parositva	15	H9004	alacsony
+Mic.3.4	er	21		parositva	15	H0834	alacsony
+Mic.3.4	er	22		parositva	16,17	H7489	alacsony
+Mic.3.4	er	23		parositva	18	H4611	alacsony
+Mic.3.4	er	24		parositva	18	H9028	alacsony
+Mic.3.5	hu	1	Így	parositva	1	H3541	alacsony
+Mic.3.5	hu	2	szól	parositva	2	H0559	alacsony
+Mic.3.5	hu	3	az	betoldas			alacsony
+Mic.3.5	hu	4	Úr	parositva	3	H3068	alacsony
+Mic.3.5	hu	5	a	betoldas			alacsony
+Mic.3.5	hu	6	próféták	parositva	6	H5030	alacsony
+Mic.3.5	hu	7	ellen	parositva	4	H5921	alacsony
+Mic.3.5	hu	8	a	parositva	7	H9009	alacsony
+Mic.3.5	hu	9	kik	parositva	7	H9009	alacsony
+Mic.3.5	hu	10	elámítják	parositva	8	H8582	alacsony
+Mic.3.5	hu	11	az	betoldas			alacsony
+Mic.3.5	hu	12	én	parositva	11	H9020	alacsony
+Mic.3.5	hu	13	népemet	parositva	10,11	H5971+H9020	alacsony
+Mic.3.5	hu	14	a	parositva	12	H9009	alacsony
+Mic.3.5	hu	15	kik	parositva	12	H9009	alacsony
+Mic.3.5	hu	16	ha	parositva	17	H9001	alacsony
+Mic.3.5	hu	17	van	betoldas			alacsony
+Mic.3.5	hu	18	mit	betoldas			alacsony
+Mic.3.5	hu	19	rágniok	parositva	13,14,15,16	H5391+H9003+H8127+H9028	alacsony
+Mic.3.5	hu	20	békességet	parositva	19	H7965	alacsony
+Mic.3.5	hu	21	hirdetnek	parositva	18	H7121	alacsony
+Mic.3.5	hu	22	az	parositva	30	H9033	alacsony
+Mic.3.5	hu	23	ellen	parositva	29,30	H5921+H9033	alacsony
+Mic.3.5	hu	24	pedig	parositva	20	H9002	alacsony
+Mic.3.5	hu	25	a	parositva	21	H0834	alacsony
+Mic.3.5	hu	26	ki	parositva	21	H0834	alacsony
+Mic.3.5	hu	27	nem	parositva	22	H3808	alacsony
+Mic.3.5	hu	28	vet	parositva	23	H5414	alacsony
+Mic.3.5	hu	29	valamit	betoldas			alacsony
+Mic.3.5	hu	30	szájokba	parositva	24,25,26	H5921+H6310+H9028	alacsony
+Mic.3.5	hu	31	hadat	parositva	31	H4421	alacsony
+Mic.3.5	hu	32	indítanak	parositva	28	H6942	alacsony
+Mic.3.5	er	1		parositva	1	H3541	alacsony
+Mic.3.5	er	2		parositva	2	H0559	alacsony
+Mic.3.5	er	3		parositva	4	H3068	alacsony
+Mic.3.5	er	4		parositva	7	H5921	alacsony
+Mic.3.5	er	5		forditatlan		H9009	alacsony
+Mic.3.5	er	6		parositva	6	H5030	alacsony
+Mic.3.5	er	7		parositva	8,9	H9009	alacsony
+Mic.3.5	er	8		parositva	10	H8582	alacsony
+Mic.3.5	er	9		forditatlan		H0853	alacsony
+Mic.3.5	er	10		parositva	13	H5971	alacsony
+Mic.3.5	er	11		parositva	12,13	H9020	alacsony
+Mic.3.5	er	12		parositva	14,15	H9009	alacsony
+Mic.3.5	er	13		parositva	19	H5391	alacsony
+Mic.3.5	er	14		parositva	19	H9003	alacsony
+Mic.3.5	er	15		parositva	19	H8127	alacsony
+Mic.3.5	er	16		parositva	19	H9028	alacsony
+Mic.3.5	er	17		parositva	16	H9001	alacsony
+Mic.3.5	er	18		parositva	21	H7121	alacsony
+Mic.3.5	er	19		parositva	20	H7965	alacsony
+Mic.3.5	er	20		parositva	24	H9002	alacsony
+Mic.3.5	er	21		parositva	25,26	H0834	alacsony
+Mic.3.5	er	22		parositva	27	H3808	alacsony
+Mic.3.5	er	23		parositva	28	H5414	alacsony
+Mic.3.5	er	24		parositva	30	H5921	alacsony
+Mic.3.5	er	25		parositva	30	H6310	alacsony
+Mic.3.5	er	26		parositva	30	H9028	alacsony
+Mic.3.5	er	27		forditatlan		H9001	alacsony
+Mic.3.5	er	28		parositva	32	H6942	alacsony
+Mic.3.5	er	29		parositva	23	H5921	alacsony
+Mic.3.5	er	30		parositva	22,23	H9033	alacsony
+Mic.3.5	er	31		parositva	31	H4421	alacsony
+Mic.3.6	hu	1	Azért	parositva	1,2	H9005+H3651	alacsony
+Mic.3.6	hu	2	éjszaka	parositva	3	H3915	alacsony
+Mic.3.6	hu	3	száll	betoldas			alacsony
+Mic.3.6	hu	4	rátok	parositva	4,5	H9005+H9036	alacsony
+Mic.3.6	hu	5	hogy	parositva	6	H9006	alacsony
+Mic.3.6	hu	6	ne	parositva	6	H9006	alacsony
+Mic.3.6	hu	7	lássatok	parositva	7	H2377	alacsony
+Mic.3.6	hu	8	és	parositva	8	H9001	alacsony
+Mic.3.6	hu	9	sötétség	parositva	9	H2821	alacsony
+Mic.3.6	hu	10	jő	betoldas			alacsony
+Mic.3.6	hu	11	rátok	parositva	10,11	H9005+H9036	alacsony
+Mic.3.6	hu	12	hogy	parositva	12	H9006	alacsony
+Mic.3.6	hu	13	ne	parositva	12	H9006	alacsony
+Mic.3.6	hu	14	jövendölhessetek	parositva	13	H7080	alacsony
+Mic.3.6	hu	15	és	parositva	14	H9001	alacsony
+Mic.3.6	hu	16	a	betoldas			alacsony
+Mic.3.6	hu	17	nap	parositva	17	H8121	alacsony
+Mic.3.6	hu	18	lemegy	parositva	15	H0935	alacsony
+Mic.3.6	hu	19	a	betoldas			alacsony
+Mic.3.6	hu	20	próféták	parositva	20	H5030	alacsony
+Mic.3.6	hu	21	felett	parositva	18	H5921	alacsony
+Mic.3.6	hu	22	és	parositva	21	H9001	alacsony
+Mic.3.6	hu	23	elsötétül	parositva	22	H6937	alacsony
+Mic.3.6	hu	24	rajtok	parositva	23,24	H5921+H9038	alacsony
+Mic.3.6	hu	25	a	betoldas			alacsony
+Mic.3.6	hu	26	nappal	parositva	26	H3117	alacsony
+Mic.3.6	er	1		parositva	1	H9005	alacsony
+Mic.3.6	er	2		parositva	1	H3651	alacsony
+Mic.3.6	er	3		parositva	2	H3915	alacsony
+Mic.3.6	er	4		parositva	4	H9005	alacsony
+Mic.3.6	er	5		parositva	4	H9036	alacsony
+Mic.3.6	er	6		parositva	5,6	H9006	alacsony
+Mic.3.6	er	7		parositva	7	H2377	alacsony
+Mic.3.6	er	8		parositva	8	H9001	alacsony
+Mic.3.6	er	9		parositva	9	H2821	alacsony
+Mic.3.6	er	10		parositva	11	H9005	alacsony
+Mic.3.6	er	11		parositva	11	H9036	alacsony
+Mic.3.6	er	12		parositva	12,13	H9006	alacsony
+Mic.3.6	er	13		parositva	14	H7080	alacsony
+Mic.3.6	er	14		parositva	15	H9001	alacsony
+Mic.3.6	er	15		parositva	18	H0935	alacsony
+Mic.3.6	er	16		forditatlan		H9009	alacsony
+Mic.3.6	er	17		parositva	17	H8121	alacsony
+Mic.3.6	er	18		parositva	21	H5921	alacsony
+Mic.3.6	er	19		forditatlan		H9009	alacsony
+Mic.3.6	er	20		parositva	20	H5030	alacsony
+Mic.3.6	er	21		parositva	22	H9001	alacsony
+Mic.3.6	er	22		parositva	23	H6937	alacsony
+Mic.3.6	er	23		parositva	24	H5921	alacsony
+Mic.3.6	er	24		parositva	24	H9038	alacsony
+Mic.3.6	er	25		forditatlan		H9009	alacsony
+Mic.3.6	er	26		parositva	26	H3117	alacsony
+Mic.3.7	hu	1	És	parositva	1	H9001	alacsony
+Mic.3.7	hu	2	megszégyenülnek	parositva	2	H0954	alacsony
+Mic.3.7	hu	3	a	betoldas			alacsony
+Mic.3.7	hu	4	látók	parositva	4	H2374	alacsony
+Mic.3.7	hu	5	és	parositva	5	H9001	alacsony
+Mic.3.7	hu	6	elpirulnak	parositva	6	H2659	alacsony
+Mic.3.7	hu	7	a	betoldas			alacsony
+Mic.3.7	hu	8	jövendőmondók	parositva	8	H7080	alacsony
+Mic.3.7	hu	9	és	parositva	9	H9001	alacsony
+Mic.3.7	hu	10	elfedik	parositva	10	H5844	alacsony
+Mic.3.7	hu	11	szájokat	parositva	11,12,14	H5921+H8222+H9028	alacsony
+Mic.3.7	hu	12	mindnyájan	parositva	13,14	H3605+H9028	alacsony
+Mic.3.7	hu	13	mert	parositva	15	H3588	alacsony
+Mic.3.7	hu	14	nem	parositva	16	H0369	alacsony
+Mic.3.7	hu	15	lészen	parositva	16	H0369	alacsony
+Mic.3.7	hu	16	felelet	parositva	17	H4617	alacsony
+Mic.3.7	hu	17	Istentől	parositva	18	H0430	alacsony
+Mic.3.7	er	1		parositva	1	H9001	alacsony
+Mic.3.7	er	2		parositva	2	H0954	alacsony
+Mic.3.7	er	3		forditatlan		H9009	alacsony
+Mic.3.7	er	4		parositva	4	H2374	alacsony
+Mic.3.7	er	5		parositva	5	H9001	alacsony
+Mic.3.7	er	6		parositva	6	H2659	alacsony
+Mic.3.7	er	7		forditatlan		H9009	alacsony
+Mic.3.7	er	8		parositva	8	H7080	alacsony
+Mic.3.7	er	9		parositva	9	H9001	alacsony
+Mic.3.7	er	10		parositva	10	H5844	alacsony
+Mic.3.7	er	11		parositva	11	H5921	alacsony
+Mic.3.7	er	12		parositva	11	H8222	alacsony
+Mic.3.7	er	13		parositva	12	H3605	alacsony
+Mic.3.7	er	14		parositva	11,12	H9028	alacsony
+Mic.3.7	er	15		parositva	13	H3588	alacsony
+Mic.3.7	er	16		parositva	14,15	H0369	alacsony
+Mic.3.7	er	17		parositva	16	H4617	alacsony
+Mic.3.7	er	18		parositva	17	H0430	alacsony
+Mic.3.8	hu	1	Én	parositva	3	H0595	alacsony
+Mic.3.8	hu	2	ellenben	parositva	1,2	H9002+H0199	alacsony
+Mic.3.8	hu	3	megteljesedem	parositva	4	H4390	alacsony
+Mic.3.8	hu	4	az	betoldas			alacsony
+Mic.3.8	hu	5	Úr	parositva	8	H3068	alacsony
+Mic.3.8	hu	6	lelkének	parositva	7	H7307	alacsony
+Mic.3.8	hu	7	erejével	parositva	5,6	H3581+H0853	alacsony
+Mic.3.8	hu	8	és	parositva	9	H9002	alacsony
+Mic.3.8	hu	9	ítélettel	parositva	10	H4941	alacsony
+Mic.3.8	hu	10	és	parositva	11	H9002	alacsony
+Mic.3.8	hu	11	hatalommal	parositva	12	H1369	alacsony
+Mic.3.8	hu	12	hogy	parositva	13	H9005	alacsony
+Mic.3.8	hu	13	hirdessem	parositva	14	H5046	alacsony
+Mic.3.8	hu	14	Jákóbnak	parositva	15,16	H9005+H3290	alacsony
+Mic.3.8	hu	15	az	betoldas			alacsony
+Mic.3.8	hu	16	ő	parositva	18	H9023	alacsony
+Mic.3.8	hu	17	vétkét	parositva	17,18	H6588+H9023	alacsony
+Mic.3.8	hu	18	és	parositva	19	H9002	alacsony
+Mic.3.8	hu	19	Izráelnek	parositva	20,21	H9005+H3478	alacsony
+Mic.3.8	hu	20	az	betoldas			alacsony
+Mic.3.8	hu	21	ő	parositva	23	H9023	alacsony
+Mic.3.8	hu	22	bűnét	parositva	22,23	H2403+H9023	alacsony
+Mic.3.8	er	1		parositva	2	H9002	alacsony
+Mic.3.8	er	2		parositva	2	H0199	alacsony
+Mic.3.8	er	3		parositva	1	H0595	alacsony
+Mic.3.8	er	4		parositva	3	H4390	alacsony
+Mic.3.8	er	5		parositva	7	H3581	alacsony
+Mic.3.8	er	6		parositva	7	H0853	alacsony
+Mic.3.8	er	7		parositva	6	H7307	alacsony
+Mic.3.8	er	8		parositva	5	H3068	alacsony
+Mic.3.8	er	9		parositva	8	H9002	alacsony
+Mic.3.8	er	10		parositva	9	H4941	alacsony
+Mic.3.8	er	11		parositva	10	H9002	alacsony
+Mic.3.8	er	12		parositva	11	H1369	alacsony
+Mic.3.8	er	13		parositva	12	H9005	alacsony
+Mic.3.8	er	14		parositva	13	H5046	alacsony
+Mic.3.8	er	15		parositva	14	H9005	alacsony
+Mic.3.8	er	16		parositva	14	H3290	alacsony
+Mic.3.8	er	17		parositva	17	H6588	alacsony
+Mic.3.8	er	18		parositva	16,17	H9023	alacsony
+Mic.3.8	er	19		parositva	18	H9002	alacsony
+Mic.3.8	er	20		parositva	19	H9005	alacsony
+Mic.3.8	er	21		parositva	19	H3478	alacsony
+Mic.3.8	er	22		parositva	22	H2403	alacsony
+Mic.3.8	er	23		parositva	21,22	H9023	alacsony
+Mic.3.9	hu	1	Halljátok	parositva	1	H8085	alacsony
+Mic.3.9	hu	2	ezt	parositva	3	H2063	alacsony
+Mic.3.9	hu	3	kérlek	parositva	2	H4994	alacsony
+Mic.3.9	hu	4	Jákób	parositva	6	H3290	alacsony
+Mic.3.9	hu	5	házának	parositva	5	H1004	alacsony
+Mic.3.9	hu	6	fejei	parositva	4	H7218	alacsony
+Mic.3.9	hu	7	és	parositva	7	H9002	alacsony
+Mic.3.9	hu	8	Izráel	parositva	10	H3478	alacsony
+Mic.3.9	hu	9	házának	parositva	9	H1004	alacsony
+Mic.3.9	hu	10	vezérei	parositva	8	H7101	alacsony
+Mic.3.9	hu	11	a	parositva	11	H9009	alacsony
+Mic.3.9	hu	12	kik	parositva	11	H9009	alacsony
+Mic.3.9	hu	13	útáljátok	parositva	12	H8581	alacsony
+Mic.3.9	hu	14	az	betoldas			alacsony
+Mic.3.9	hu	15	ítéletet	parositva	13	H4941	alacsony
+Mic.3.9	hu	16	és	parositva	14	H9002	alacsony
+Mic.3.9	hu	17	minden	parositva	16	H3605	alacsony
+Mic.3.9	hu	18	igazságot	parositva	18	H3477	alacsony
+Mic.3.9	hu	19	elcsavartok	parositva	19	H6140	alacsony
+Mic.3.9	er	1		parositva	1	H8085	alacsony
+Mic.3.9	er	2		parositva	3	H4994	alacsony
+Mic.3.9	er	3		parositva	2	H2063	alacsony
+Mic.3.9	er	4		parositva	6	H7218	alacsony
+Mic.3.9	er	5		parositva	5	H1004	alacsony
+Mic.3.9	er	6		parositva	4	H3290	alacsony
+Mic.3.9	er	7		parositva	7	H9002	alacsony
+Mic.3.9	er	8		parositva	10	H7101	alacsony
+Mic.3.9	er	9		parositva	9	H1004	alacsony
+Mic.3.9	er	10		parositva	8	H3478	alacsony
+Mic.3.9	er	11		parositva	11,12	H9009	alacsony
+Mic.3.9	er	12		parositva	13	H8581	alacsony
+Mic.3.9	er	13		parositva	15	H4941	alacsony
+Mic.3.9	er	14		parositva	16	H9002	alacsony
+Mic.3.9	er	15		forditatlan		H0853	alacsony
+Mic.3.9	er	16		parositva	17	H3605	alacsony
+Mic.3.9	er	17		forditatlan		H9009	alacsony
+Mic.3.9	er	18		parositva	18	H3477	alacsony
+Mic.3.9	er	19		parositva	19	H6140	alacsony
+Mic.3.10	hu	1	A	betoldas			alacsony
+Mic.3.10	hu	2	kik	betoldas			alacsony
+Mic.3.10	hu	3	vérrel	parositva	3,4	H9003+H1818	alacsony
+Mic.3.10	hu	4	építitek	parositva	1	H1129	alacsony
+Mic.3.10	hu	5	a	betoldas			alacsony
+Mic.3.10	hu	6	Siont	parositva	2	H6726	alacsony
+Mic.3.10	hu	7	és	parositva	5	H9002	alacsony
+Mic.3.10	hu	8	Jeruzsálemet	parositva	6	H3389	alacsony
+Mic.3.10	hu	9	hamissággal	parositva	7,8	H9003+H5766	alacsony
+Mic.3.10	er	1		parositva	4	H1129	alacsony
+Mic.3.10	er	2		parositva	6	H6726	alacsony
+Mic.3.10	er	3		parositva	3	H9003	alacsony
+Mic.3.10	er	4		parositva	3	H1818	alacsony
+Mic.3.10	er	5		parositva	7	H9002	alacsony
+Mic.3.10	er	6		parositva	8	H3389	alacsony
+Mic.3.10	er	7		parositva	9	H9003	alacsony
+Mic.3.10	er	8		parositva	9	H5766	alacsony
+Mic.3.11	hu	1	Kiknek	parositva	2	H9024	alacsony
+Mic.3.11	hu	2	fejedelmei	parositva	1,2	H7218+H9024	alacsony
+Mic.3.11	hu	3	ajándékért	parositva	3,4	H9003+H7810	alacsony
+Mic.3.11	hu	4	ítélnek	parositva	5	H8199	alacsony
+Mic.3.11	hu	5	és	parositva	6	H9002	alacsony
+Mic.3.11	hu	6	papjaik	parositva	7,8	H3548+H9024	alacsony
+Mic.3.11	hu	7	jutalomért	parositva	9,10	H9003+H4242	alacsony
+Mic.3.11	hu	8	tanítanak	parositva	11	H3384	alacsony
+Mic.3.11	hu	9	és	parositva	12	H9002	alacsony
+Mic.3.11	hu	10	prófétáik	parositva	13,14	H5030+H9024	alacsony
+Mic.3.11	hu	11	pénzért	parositva	15,16	H9003+H3701	alacsony
+Mic.3.11	hu	12	jövendölnek	parositva	17	H7080	alacsony
+Mic.3.11	hu	13	és	parositva	18	H9002	alacsony
+Mic.3.11	hu	14	mégis	betoldas			alacsony
+Mic.3.11	hu	15	az	betoldas			alacsony
+Mic.3.11	hu	16	Úrra	parositva	19,20	H5921+H3068	alacsony
+Mic.3.11	hu	17	támaszkodnak	parositva	21	H8172	alacsony
+Mic.3.11	hu	18	mondván	parositva	22,23	H9005+H0559	alacsony
+Mic.3.11	hu	19	Avagy	parositva	24	H9008	alacsony
+Mic.3.11	hu	20	nincsen	parositva	25	H3808	alacsony
+Mic.3.11	hu	21	é	parositva	24	H9008	alacsony
+Mic.3.11	hu	22	közöttünk	parositva	27,28,29	H9003+H7130+H9025	alacsony
+Mic.3.11	hu	23	az	betoldas			alacsony
+Mic.3.11	hu	24	Úr	parositva	26	H3068	alacsony
+Mic.3.11	hu	25	Nem	parositva	30	H3808	alacsony
+Mic.3.11	hu	26	következik	parositva	31	H0935	alacsony
+Mic.3.11	hu	27	mi	parositva	33	H9035	alacsony
+Mic.3.11	hu	28	reánk	parositva	32,33	H5921+H9035	alacsony
+Mic.3.11	hu	29	veszedelem	parositva	34	H7451	alacsony
+Mic.3.11	er	1		parositva	2	H7218	alacsony
+Mic.3.11	er	2		parositva	1,2	H9024	alacsony
+Mic.3.11	er	3		parositva	3	H9003	alacsony
+Mic.3.11	er	4		parositva	3	H7810	alacsony
+Mic.3.11	er	5		parositva	4	H8199	alacsony
+Mic.3.11	er	6		parositva	5	H9002	alacsony
+Mic.3.11	er	7		parositva	6	H3548	alacsony
+Mic.3.11	er	8		parositva	6	H9024	alacsony
+Mic.3.11	er	9		parositva	7	H9003	alacsony
+Mic.3.11	er	10		parositva	7	H4242	alacsony
+Mic.3.11	er	11		parositva	8	H3384	alacsony
+Mic.3.11	er	12		parositva	9	H9002	alacsony
+Mic.3.11	er	13		parositva	10	H5030	alacsony
+Mic.3.11	er	14		parositva	10	H9024	alacsony
+Mic.3.11	er	15		parositva	11	H9003	alacsony
+Mic.3.11	er	16		parositva	11	H3701	alacsony
+Mic.3.11	er	17		parositva	12	H7080	alacsony
+Mic.3.11	er	18		parositva	13	H9002	alacsony
+Mic.3.11	er	19		parositva	16	H5921	alacsony
+Mic.3.11	er	20		parositva	16	H3068	alacsony
+Mic.3.11	er	21		parositva	17	H8172	alacsony
+Mic.3.11	er	22		parositva	18	H9005	alacsony
+Mic.3.11	er	23		parositva	18	H0559	alacsony
+Mic.3.11	er	24		parositva	19,21	H9008	alacsony
+Mic.3.11	er	25		parositva	20	H3808	alacsony
+Mic.3.11	er	26		parositva	24	H3068	alacsony
+Mic.3.11	er	27		parositva	22	H9003	alacsony
+Mic.3.11	er	28		parositva	22	H7130	alacsony
+Mic.3.11	er	29		parositva	22	H9025	alacsony
+Mic.3.11	er	30		parositva	25	H3808	alacsony
+Mic.3.11	er	31		parositva	26	H0935	alacsony
+Mic.3.11	er	32		parositva	28	H5921	alacsony
+Mic.3.11	er	33		parositva	27,28	H9035	alacsony
+Mic.3.11	er	34		parositva	29	H7451	alacsony
+Mic.3.12	hu	1	Azért	parositva	1,2	H9005+H3651	alacsony
+Mic.3.12	hu	2	ti	parositva	5	H9036	alacsony
+Mic.3.12	hu	3	miattatok	parositva	3,4,5	H9003+H1558+H9036	alacsony
+Mic.3.12	hu	4	mezővé	parositva	7	H7704	alacsony
+Mic.3.12	hu	5	szántatik	parositva	8	H2790	alacsony
+Mic.3.12	hu	6	a	betoldas			alacsony
+Mic.3.12	hu	7	Sion	parositva	6	H6726	alacsony
+Mic.3.12	hu	8	és	parositva	9	H9002	alacsony
+Mic.3.12	hu	9	kőhalommá	parositva	11	H5856	alacsony
+Mic.3.12	hu	10	lesz	parositva	12	H1961	alacsony
+Mic.3.12	hu	11	Jeruzsálem	parositva	10	H3389	alacsony
+Mic.3.12	hu	12	a	betoldas			alacsony
+Mic.3.12	hu	13	templom	parositva	16	H1004	alacsony
+Mic.3.12	hu	14	hegye	parositva	14	H2022	alacsony
+Mic.3.12	hu	15	pedig	parositva	13	H9002	alacsony
+Mic.3.12	hu	16	erdős	parositva	19	H3293	alacsony
+Mic.3.12	hu	17	hegygyé	parositva	17,18	H9005+H1116	alacsony
+Mic.3.12	er	1		parositva	1	H9005	alacsony
+Mic.3.12	er	2		parositva	1	H3651	alacsony
+Mic.3.12	er	3		parositva	3	H9003	alacsony
+Mic.3.12	er	4		parositva	3	H1558	alacsony
+Mic.3.12	er	5		parositva	2,3	H9036	alacsony
+Mic.3.12	er	6		parositva	7	H6726	alacsony
+Mic.3.12	er	7		parositva	4	H7704	alacsony
+Mic.3.12	er	8		parositva	5	H2790	alacsony
+Mic.3.12	er	9		parositva	8	H9002	alacsony
+Mic.3.12	er	10		parositva	11	H3389	alacsony
+Mic.3.12	er	11		parositva	9	H5856	alacsony
+Mic.3.12	er	12		parositva	10	H1961	alacsony
+Mic.3.12	er	13		parositva	15	H9002	alacsony
+Mic.3.12	er	14		parositva	14	H2022	alacsony
+Mic.3.12	er	15		forditatlan		H9009	alacsony
+Mic.3.12	er	16		parositva	13	H1004	alacsony
+Mic.3.12	er	17		parositva	17	H9005	alacsony
+Mic.3.12	er	18		parositva	17	H1116	alacsony
+Mic.3.12	er	19		parositva	16	H3293	alacsony
+Mic.4.1	hu	1	És	parositva	1	H9001	alacsony
+Mic.4.1	hu	2	lészen	parositva	2	H1961	alacsony
+Mic.4.1	hu	3	az	betoldas			alacsony
+Mic.4.1	hu	4	utolsó	parositva	4	H0319	alacsony
+Mic.4.1	hu	5	időben	parositva	3,6	H9003+H3117	alacsony
+Mic.4.1	hu	6	az	betoldas			alacsony
+Mic.4.1	hu	7	Úr	parositva	10	H3068	alacsony
+Mic.4.1	hu	8	házának	parositva	9	H1004	alacsony
+Mic.4.1	hu	9	hegye	parositva	8	H2022	alacsony
+Mic.4.1	hu	10	a	betoldas			alacsony
+Mic.4.1	hu	11	hegyek	parositva	15	H2022	alacsony
+Mic.4.1	hu	12	fölé	parositva	12,13	H9003+H7218	alacsony
+Mic.4.1	hu	13	helyeztetik	parositva	7,11	H1961+H3559	alacsony
+Mic.4.1	hu	14	és	parositva	16	H9002	alacsony
+Mic.4.1	hu	15	felülemelkedik	parositva	17	H5375	alacsony
+Mic.4.1	hu	16	az	parositva	18	H1931	alacsony
+Mic.4.1	hu	17	a	betoldas			alacsony
+Mic.4.1	hu	18	halmokon	parositva	19,20	H9006+H1389	alacsony
+Mic.4.1	hu	19	és	parositva	21	H9001	alacsony
+Mic.4.1	hu	20	népek	parositva	25	H5971	alacsony
+Mic.4.1	hu	21	özönlenek	parositva	22	H5102	alacsony
+Mic.4.1	hu	22	reá	parositva	23,24	H5921+H9033	alacsony
+Mic.4.1	er	1		parositva	1	H9001	alacsony
+Mic.4.1	er	2		parositva	2	H1961	alacsony
+Mic.4.1	er	3		parositva	5	H9003	alacsony
+Mic.4.1	er	4		parositva	4	H0319	alacsony
+Mic.4.1	er	5		forditatlan		H9009	alacsony
+Mic.4.1	er	6		parositva	5	H3117	alacsony
+Mic.4.1	er	7		parositva	13	H1961	alacsony
+Mic.4.1	er	8		parositva	9	H2022	alacsony
+Mic.4.1	er	9		parositva	8	H1004	alacsony
+Mic.4.1	er	10		parositva	7	H3068	alacsony
+Mic.4.1	er	11		parositva	13	H3559	alacsony
+Mic.4.1	er	12		parositva	12	H9003	alacsony
+Mic.4.1	er	13		parositva	12	H7218	alacsony
+Mic.4.1	er	14		forditatlan		H9009	alacsony
+Mic.4.1	er	15		parositva	11	H2022	alacsony
+Mic.4.1	er	16		parositva	14	H9002	alacsony
+Mic.4.1	er	17		parositva	15	H5375	alacsony
+Mic.4.1	er	18		parositva	16	H1931	alacsony
+Mic.4.1	er	19		parositva	18	H9006	alacsony
+Mic.4.1	er	20		parositva	18	H1389	alacsony
+Mic.4.1	er	21		parositva	19	H9001	alacsony
+Mic.4.1	er	22		parositva	21	H5102	alacsony
+Mic.4.1	er	23		parositva	22	H5921	alacsony
+Mic.4.1	er	24		parositva	22	H9033	alacsony
+Mic.4.1	er	25		parositva	20	H5971	alacsony
+Mic.4.2	hu	1	Pogányok	parositva	3	H1471	alacsony
+Mic.4.2	hu	2	is	parositva	1	H9001	alacsony
+Mic.4.2	hu	3	sokan	parositva	4	H7227	alacsony
+Mic.4.2	hu	4	mennek	parositva	2	H1980	alacsony
+Mic.4.2	hu	5	és	parositva	5	H9001	alacsony
+Mic.4.2	hu	6	mondják	parositva	6	H0559	alacsony
+Mic.4.2	hu	7	Jertek	parositva	7	H1980	alacsony
+Mic.4.2	hu	8	menjünk	parositva	9	H5927	alacsony
+Mic.4.2	hu	9	fel	parositva	9	H5927	alacsony
+Mic.4.2	hu	10	az	betoldas			alacsony
+Mic.4.2	hu	11	Úr	parositva	12	H3068	alacsony
+Mic.4.2	hu	12	hegyére	parositva	10,11	H0413+H2022	alacsony
+Mic.4.2	hu	13	és	parositva	13	H9002	alacsony
+Mic.4.2	hu	14	a	betoldas			alacsony
+Mic.4.2	hu	15	Jákób	parositva	17	H3290	alacsony
+Mic.4.2	hu	16	Istenének	parositva	16	H0430	alacsony
+Mic.4.2	hu	17	házához	parositva	14,15	H0413+H1004	alacsony
+Mic.4.2	hu	18	hogy	parositva	18	H9002	alacsony
+Mic.4.2	hu	19	megtanítson	parositva	19	H3384	alacsony
+Mic.4.2	hu	20	minket	parositva	20	H9035	alacsony
+Mic.4.2	hu	21	az	betoldas			alacsony
+Mic.4.2	hu	22	ő	parositva	23	H9023	alacsony
+Mic.4.2	hu	23	útaira	parositva	21,22,23	H9006+H1870+H9023	alacsony
+Mic.4.2	hu	24	és	parositva	24	H9002	alacsony
+Mic.4.2	hu	25	járjunk	parositva	25	H1980	alacsony
+Mic.4.2	hu	26	az	betoldas			alacsony
+Mic.4.2	hu	27	ő	parositva	28	H9023	alacsony
+Mic.4.2	hu	28	ösvényein	parositva	26,27,28	H9003+H0734+H9023	alacsony
+Mic.4.2	hu	29	Mert	parositva	29	H3588	alacsony
+Mic.4.2	hu	30	Sionból	parositva	30,31	H9006+H6726	alacsony
+Mic.4.2	hu	31	jő	parositva	32	H3318	alacsony
+Mic.4.2	hu	32	ki	parositva	32	H3318	alacsony
+Mic.4.2	hu	33	a	betoldas			alacsony
+Mic.4.2	hu	34	törvény	parositva	33	H8451	alacsony
+Mic.4.2	hu	35	és	parositva	34	H9002	alacsony
+Mic.4.2	hu	36	az	betoldas			alacsony
+Mic.4.2	hu	37	Úr	parositva	36	H3068	alacsony
+Mic.4.2	hu	38	beszéde	parositva	35	H1697	alacsony
+Mic.4.2	hu	39	Jeruzsálemből	parositva	37,38	H9006+H3389	alacsony
+Mic.4.2	er	1		parositva	2	H9001	alacsony
+Mic.4.2	er	2		parositva	4	H1980	alacsony
+Mic.4.2	er	3		parositva	1	H1471	alacsony
+Mic.4.2	er	4		parositva	3	H7227	alacsony
+Mic.4.2	er	5		parositva	5	H9001	alacsony
+Mic.4.2	er	6		parositva	6	H0559	alacsony
+Mic.4.2	er	7		parositva	7	H1980	alacsony
+Mic.4.2	er	8		forditatlan		H9002	alacsony
+Mic.4.2	er	9		parositva	8,9	H5927	alacsony
+Mic.4.2	er	10		parositva	12	H0413	alacsony
+Mic.4.2	er	11		parositva	12	H2022	alacsony
+Mic.4.2	er	12		parositva	11	H3068	alacsony
+Mic.4.2	er	13		parositva	13	H9002	alacsony
+Mic.4.2	er	14		parositva	17	H0413	alacsony
+Mic.4.2	er	15		parositva	17	H1004	alacsony
+Mic.4.2	er	16		parositva	16	H0430	alacsony
+Mic.4.2	er	17		parositva	15	H3290	alacsony
+Mic.4.2	er	18		parositva	18	H9002	alacsony
+Mic.4.2	er	19		parositva	19	H3384	alacsony
+Mic.4.2	er	20		parositva	20	H9035	alacsony
+Mic.4.2	er	21		parositva	23	H9006	alacsony
+Mic.4.2	er	22		parositva	23	H1870	alacsony
+Mic.4.2	er	23		parositva	22,23	H9023	alacsony
+Mic.4.2	er	24		parositva	24	H9002	alacsony
+Mic.4.2	er	25		parositva	25	H1980	alacsony
+Mic.4.2	er	26		parositva	28	H9003	alacsony
+Mic.4.2	er	27		parositva	28	H0734	alacsony
+Mic.4.2	er	28		parositva	27,28	H9023	alacsony
+Mic.4.2	er	29		parositva	29	H3588	alacsony
+Mic.4.2	er	30		parositva	30	H9006	alacsony
+Mic.4.2	er	31		parositva	30	H6726	alacsony
+Mic.4.2	er	32		parositva	31,32	H3318	alacsony
+Mic.4.2	er	33		parositva	34	H8451	alacsony
+Mic.4.2	er	34		parositva	35	H9002	alacsony
+Mic.4.2	er	35		parositva	38	H1697	alacsony
+Mic.4.2	er	36		parositva	37	H3068	alacsony
+Mic.4.2	er	37		parositva	39	H9006	alacsony
+Mic.4.2	er	38		parositva	39	H3389	alacsony
+Mic.4.3	hu	1	És	parositva	1	H9001	alacsony
+Mic.4.3	hu	2	sok	parositva	5	H7227	alacsony
+Mic.4.3	hu	3	népek	parositva	4	H5971	alacsony
+Mic.4.3	hu	4	között	parositva	3	H0996	alacsony
+Mic.4.3	hu	5	ítéletet	parositva	2	H8199	alacsony
+Mic.4.3	hu	6	tészen	parositva	2	H8199	alacsony
+Mic.4.3	hu	7	és	parositva	6	H9001	alacsony
+Mic.4.3	hu	8	megfedd	parositva	7	H3198	alacsony
+Mic.4.3	hu	9	erős	parositva	10	H6099	alacsony
+Mic.4.3	hu	10	nemzeteket	parositva	8,9	H9005+H1471	alacsony
+Mic.4.3	hu	11	nagy	parositva	12	H7350	alacsony
+Mic.4.3	hu	12	messze	parositva	12	H7350	alacsony
+Mic.4.3	hu	13	földig	parositva	11	H5704	alacsony
+Mic.4.3	hu	14	és	parositva	13	H9001	alacsony
+Mic.4.3	hu	15	fegyvereiket	parositva	15,16	H2719+H9028	alacsony
+Mic.4.3	hu	16	kapákká	parositva	17,18	H9005+H0855	alacsony
+Mic.4.3	hu	17	kovácsolják	parositva	14	H3807	alacsony
+Mic.4.3	hu	18	dárdáikat	parositva	20,21	H2595+H9028	alacsony
+Mic.4.3	hu	19	pedig	parositva	19	H9002	alacsony
+Mic.4.3	hu	20	sarlókká	parositva	22,23	H9005+H4211	alacsony
+Mic.4.3	hu	21	nép	parositva	26	H1471	alacsony
+Mic.4.3	hu	22	népre	parositva	27,28	H0413+H1471	alacsony
+Mic.4.3	hu	23	fegyvert	parositva	29	H2719	alacsony
+Mic.4.3	hu	24	nem	parositva	24	H3808	alacsony
+Mic.4.3	hu	25	emel	parositva	25	H5375	alacsony
+Mic.4.3	hu	26	és	parositva	30	H9002	alacsony
+Mic.4.3	hu	27	hadakozást	parositva	35	H4421	alacsony
+Mic.4.3	hu	28	többé	parositva	34	H5750	alacsony
+Mic.4.3	hu	29	nem	parositva	31	H3808	alacsony
+Mic.4.3	hu	30	tanulnak	parositva	32	H3925	alacsony
+Mic.4.3	er	1		parositva	1	H9001	alacsony
+Mic.4.3	er	2		parositva	5,6	H8199	alacsony
+Mic.4.3	er	3		parositva	4	H0996	alacsony
+Mic.4.3	er	4		parositva	3	H5971	alacsony
+Mic.4.3	er	5		parositva	2	H7227	alacsony
+Mic.4.3	er	6		parositva	7	H9001	alacsony
+Mic.4.3	er	7		parositva	8	H3198	alacsony
+Mic.4.3	er	8		parositva	10	H9005	alacsony
+Mic.4.3	er	9		parositva	10	H1471	alacsony
+Mic.4.3	er	10		parositva	9	H6099	alacsony
+Mic.4.3	er	11		parositva	13	H5704	alacsony
+Mic.4.3	er	12		parositva	11,12	H7350	alacsony
+Mic.4.3	er	13		parositva	14	H9001	alacsony
+Mic.4.3	er	14		parositva	17	H3807	alacsony
+Mic.4.3	er	15		parositva	15	H2719	alacsony
+Mic.4.3	er	16		parositva	15	H9028	alacsony
+Mic.4.3	er	17		parositva	16	H9005	alacsony
+Mic.4.3	er	18		parositva	16	H0855	alacsony
+Mic.4.3	er	19		parositva	19	H9002	alacsony
+Mic.4.3	er	20		parositva	18	H2595	alacsony
+Mic.4.3	er	21		parositva	18	H9028	alacsony
+Mic.4.3	er	22		parositva	20	H9005	alacsony
+Mic.4.3	er	23		parositva	20	H4211	alacsony
+Mic.4.3	er	24		parositva	24	H3808	alacsony
+Mic.4.3	er	25		parositva	25	H5375	alacsony
+Mic.4.3	er	26		parositva	21	H1471	alacsony
+Mic.4.3	er	27		parositva	22	H0413	alacsony
+Mic.4.3	er	28		parositva	22	H1471	alacsony
+Mic.4.3	er	29		parositva	23	H2719	alacsony
+Mic.4.3	er	30		parositva	26	H9002	alacsony
+Mic.4.3	er	31		parositva	29	H3808	alacsony
+Mic.4.3	er	32		parositva	30	H3925	alacsony
+Mic.4.3	er	33		forditatlan		H9013	alacsony
+Mic.4.3	er	34		parositva	28	H5750	alacsony
+Mic.4.3	er	35		parositva	27	H4421	alacsony
+Mic.4.4	hu	1	És	parositva	1	H9001	alacsony
+Mic.4.4	hu	2	kiki	parositva	3	H0376	alacsony
+Mic.4.4	hu	3	nyugszik	parositva	2	H3427	alacsony
+Mic.4.4	hu	4	az	betoldas			alacsony
+Mic.4.4	hu	5	ő	parositva	6	H9023	alacsony
+Mic.4.4	hu	6	szőlője	parositva	5,6	H1612+H9023	alacsony
+Mic.4.4	hu	7	alatt	parositva	4	H8478	alacsony
+Mic.4.4	hu	8	és	parositva	7	H9002	alacsony
+Mic.4.4	hu	9	fügefája	parositva	9,10	H8384+H9023	alacsony
+Mic.4.4	hu	10	alatt	parositva	8	H8478	alacsony
+Mic.4.4	hu	11	és	parositva	11	H9002	alacsony
+Mic.4.4	hu	12	senki	parositva	12	H0369	alacsony
+Mic.4.4	hu	13	meg	parositva	13	H2729	alacsony
+Mic.4.4	hu	14	nem	parositva	12	H0369	alacsony
+Mic.4.4	hu	15	rettenti	parositva	13	H2729	alacsony
+Mic.4.4	hu	16	őket	betoldas			alacsony
+Mic.4.4	hu	17	mert	parositva	14	H3588	alacsony
+Mic.4.4	hu	18	a	betoldas			alacsony
+Mic.4.4	hu	19	Seregek	parositva	17	H6635	alacsony
+Mic.4.4	hu	20	Urának	parositva	16	H3068	alacsony
+Mic.4.4	hu	21	szája	parositva	15	H6310	alacsony
+Mic.4.4	hu	22	szólott	parositva	18	H1696	alacsony
+Mic.4.4	er	1		parositva	1	H9001	alacsony
+Mic.4.4	er	2		parositva	3	H3427	alacsony
+Mic.4.4	er	3		parositva	2	H0376	alacsony
+Mic.4.4	er	4		parositva	7	H8478	alacsony
+Mic.4.4	er	5		parositva	6	H1612	alacsony
+Mic.4.4	er	6		parositva	5,6	H9023	alacsony
+Mic.4.4	er	7		parositva	8	H9002	alacsony
+Mic.4.4	er	8		parositva	10	H8478	alacsony
+Mic.4.4	er	9		parositva	9	H8384	alacsony
+Mic.4.4	er	10		parositva	9	H9023	alacsony
+Mic.4.4	er	11		parositva	11	H9002	alacsony
+Mic.4.4	er	12		parositva	12,14	H0369	alacsony
+Mic.4.4	er	13		parositva	13,15	H2729	alacsony
+Mic.4.4	er	14		parositva	17	H3588	alacsony
+Mic.4.4	er	15		parositva	21	H6310	alacsony
+Mic.4.4	er	16		parositva	20	H3068	alacsony
+Mic.4.4	er	17		parositva	19	H6635	alacsony
+Mic.4.4	er	18		parositva	22	H1696	alacsony
+Mic.4.5	hu	1	Mert	parositva	1	H3588	alacsony
+Mic.4.5	hu	2	minden	parositva	2	H3605	alacsony
+Mic.4.5	hu	3	nép	parositva	4	H5971	alacsony
+Mic.4.5	hu	4	a	betoldas			alacsony
+Mic.4.5	hu	5	maga	parositva	6,10	H0376+H9023	alacsony
+Mic.4.5	hu	6	istenének	parositva	9,10	H0430+H9023	alacsony
+Mic.4.5	hu	7	nevében	parositva	7,8	H9003+H8034	alacsony
+Mic.4.5	hu	8	jár	parositva	5	H1980	alacsony
+Mic.4.5	hu	9	és	parositva	11	H9002	alacsony
+Mic.4.5	hu	10	mi	parositva	12	H0587	alacsony
+Mic.4.5	hu	11	is	betoldas			alacsony
+Mic.4.5	hu	12	a	betoldas			alacsony
+Mic.4.5	hu	13	mi	parositva	18	H9025	alacsony
+Mic.4.5	hu	14	Urunk	parositva	16	H3068	alacsony
+Mic.4.5	hu	15	Istenünk	parositva	17,18	H0430+H9025	alacsony
+Mic.4.5	hu	16	nevében	parositva	14,15	H9003+H8034	alacsony
+Mic.4.5	hu	17	járunk	parositva	13	H1980	alacsony
+Mic.4.5	hu	18	örökkön	parositva	19,20	H9005+H5769	alacsony
+Mic.4.5	hu	19	örökké	parositva	21,22	H9002+H5703	alacsony
+Mic.4.5	er	1		parositva	1	H3588	alacsony
+Mic.4.5	er	2		parositva	2	H3605	alacsony
+Mic.4.5	er	3		forditatlan		H9009	alacsony
+Mic.4.5	er	4		parositva	3	H5971	alacsony
+Mic.4.5	er	5		parositva	8	H1980	alacsony
+Mic.4.5	er	6		parositva	5	H0376	alacsony
+Mic.4.5	er	7		parositva	7	H9003	alacsony
+Mic.4.5	er	8		parositva	7	H8034	alacsony
+Mic.4.5	er	9		parositva	6	H0430	alacsony
+Mic.4.5	er	10		parositva	5,6	H9023	alacsony
+Mic.4.5	er	11		parositva	9	H9002	alacsony
+Mic.4.5	er	12		parositva	10	H0587	alacsony
+Mic.4.5	er	13		parositva	17	H1980	alacsony
+Mic.4.5	er	14		parositva	16	H9003	alacsony
+Mic.4.5	er	15		parositva	16	H8034	alacsony
+Mic.4.5	er	16		parositva	14	H3068	alacsony
+Mic.4.5	er	17		parositva	15	H0430	alacsony
+Mic.4.5	er	18		parositva	13,15	H9025	alacsony
+Mic.4.5	er	19		parositva	18	H9005	alacsony
+Mic.4.5	er	20		parositva	18	H5769	alacsony
+Mic.4.5	er	21		parositva	19	H9002	alacsony
+Mic.4.5	er	22		parositva	19	H5703	alacsony
+Mic.4.6	hu	1	Azon	parositva	3,4	H9009+H1931	alacsony
+Mic.4.6	hu	2	a	betoldas			alacsony
+Mic.4.6	hu	3	napon	parositva	1,2	H9003+H3117	alacsony
+Mic.4.6	hu	4	azt	betoldas			alacsony
+Mic.4.6	hu	5	mondja	parositva	5	H5002	alacsony
+Mic.4.6	hu	6	az	betoldas			alacsony
+Mic.4.6	hu	7	Úr	parositva	6	H3068	alacsony
+Mic.4.6	hu	8	összegyűjtöm	parositva	7	H0622	alacsony
+Mic.4.6	hu	9	a	betoldas			alacsony
+Mic.4.6	hu	10	sántát	parositva	9	H6760	alacsony
+Mic.4.6	hu	11	és	parositva	10	H9002	alacsony
+Mic.4.6	hu	12	összeszedem	parositva	13	H6908	alacsony
+Mic.4.6	hu	13	az	betoldas			alacsony
+Mic.4.6	hu	14	elszéledetteket	parositva	12	H5080	alacsony
+Mic.4.6	hu	15	és	parositva	14	H9002	alacsony
+Mic.4.6	hu	16	a	parositva	15	H0834	alacsony
+Mic.4.6	hu	17	kiket	parositva	15	H0834	alacsony
+Mic.4.6	hu	18	megsanyargattam	parositva	16	H7489	alacsony
+Mic.4.6	er	1		parositva	3	H9003	alacsony
+Mic.4.6	er	2		parositva	3	H3117	alacsony
+Mic.4.6	er	3		parositva	1	H9009	alacsony
+Mic.4.6	er	4		parositva	1	H1931	alacsony
+Mic.4.6	er	5		parositva	5	H5002	alacsony
+Mic.4.6	er	6		parositva	7	H3068	alacsony
+Mic.4.6	er	7		parositva	8	H0622	alacsony
+Mic.4.6	er	8		forditatlan		H9009	alacsony
+Mic.4.6	er	9		parositva	10	H6760	alacsony
+Mic.4.6	er	10		parositva	11	H9002	alacsony
+Mic.4.6	er	11		forditatlan		H9009	alacsony
+Mic.4.6	er	12		parositva	14	H5080	alacsony
+Mic.4.6	er	13		parositva	12	H6908	alacsony
+Mic.4.6	er	14		parositva	15	H9002	alacsony
+Mic.4.6	er	15		parositva	16,17	H0834	alacsony
+Mic.4.6	er	16		parositva	18	H7489	alacsony
+Mic.4.7	hu	1	És	parositva	1	H9001	alacsony
+Mic.4.7	hu	2	a	betoldas			alacsony
+Mic.4.7	hu	3	sántát	parositva	5	H6760	alacsony
+Mic.4.7	hu	4	maradékká	parositva	6,7	H9005+H7611	alacsony
+Mic.4.7	hu	5	teszem	parositva	2	H7760	alacsony
+Mic.4.7	hu	6	az	betoldas			alacsony
+Mic.4.7	hu	7	elszélesztettet	parositva	10	H1972	alacsony
+Mic.4.7	hu	8	pedig	parositva	8	H9002	alacsony
+Mic.4.7	hu	9	erős	parositva	13	H6099	alacsony
+Mic.4.7	hu	10	nemzetté	parositva	11,12	H9005+H1471	alacsony
+Mic.4.7	hu	11	és	parositva	14	H9001	alacsony
+Mic.4.7	hu	12	az	betoldas			alacsony
+Mic.4.7	hu	13	Úr	parositva	16	H3068	alacsony
+Mic.4.7	hu	14	uralkodik	parositva	15	H4427	alacsony
+Mic.4.7	hu	15	rajtok	parositva	17,18	H5921+H9038	alacsony
+Mic.4.7	hu	16	a	betoldas			alacsony
+Mic.4.7	hu	17	Sion	parositva	21	H6726	alacsony
+Mic.4.7	hu	18	hegyén	parositva	19,20	H9003+H2022	alacsony
+Mic.4.7	hu	19	mostantól	parositva	22,23	H9006+H6258	alacsony
+Mic.4.7	hu	20	fogva	parositva	22	H9006	alacsony
+Mic.4.7	hu	21	mindörökké	parositva	25,26	H5704+H5769	alacsony
+Mic.4.7	er	1		parositva	1	H9001	alacsony
+Mic.4.7	er	2		parositva	5	H7760	alacsony
+Mic.4.7	er	3		forditatlan		H0853	alacsony
+Mic.4.7	er	4		forditatlan		H9009	alacsony
+Mic.4.7	er	5		parositva	3	H6760	alacsony
+Mic.4.7	er	6		parositva	4	H9005	alacsony
+Mic.4.7	er	7		parositva	4	H7611	alacsony
+Mic.4.7	er	8		parositva	8	H9002	alacsony
+Mic.4.7	er	9		forditatlan		H9009	alacsony
+Mic.4.7	er	10		parositva	7	H1972	alacsony
+Mic.4.7	er	11		parositva	10	H9005	alacsony
+Mic.4.7	er	12		parositva	10	H1471	alacsony
+Mic.4.7	er	13		parositva	9	H6099	alacsony
+Mic.4.7	er	14		parositva	11	H9001	alacsony
+Mic.4.7	er	15		parositva	14	H4427	alacsony
+Mic.4.7	er	16		parositva	13	H3068	alacsony
+Mic.4.7	er	17		parositva	15	H5921	alacsony
+Mic.4.7	er	18		parositva	15	H9038	alacsony
+Mic.4.7	er	19		parositva	18	H9003	alacsony
+Mic.4.7	er	20		parositva	18	H2022	alacsony
+Mic.4.7	er	21		parositva	17	H6726	alacsony
+Mic.4.7	er	22		parositva	19,20	H9006	alacsony
+Mic.4.7	er	23		parositva	19	H6258	alacsony
+Mic.4.7	er	24		forditatlan		H9002	alacsony
+Mic.4.7	er	25		parositva	21	H5704	alacsony
+Mic.4.7	er	26		parositva	21	H5769	alacsony
+Mic.4.8	hu	1	És	parositva	1	H9002	alacsony
+Mic.4.8	hu	2	te	parositva	2	H0859	alacsony
+Mic.4.8	hu	3	nyájnak	parositva	4	H4029	alacsony
+Mic.4.8	hu	4	tornya	parositva	3	H4029	alacsony
+Mic.4.8	hu	5	Sion	parositva	7	H6726	alacsony
+Mic.4.8	hu	6	leányának	parositva	6	H1323	alacsony
+Mic.4.8	hu	7	vára	parositva	5	H6076	alacsony
+Mic.4.8	hu	8	Eljő	parositva	10	H0857	alacsony
+Mic.4.8	hu	9	tehozzád	parositva	8,9	H5704+H9031	alacsony
+Mic.4.8	hu	10	és	parositva	11	H9001	alacsony
+Mic.4.8	hu	11	elérkezik	parositva	12	H0935	alacsony
+Mic.4.8	hu	12	az	betoldas			alacsony
+Mic.4.8	hu	13	előbbi	parositva	15,16	H9009+H7223	alacsony
+Mic.4.8	hu	14	hatalom	parositva	14	H4475	alacsony
+Mic.4.8	hu	15	a	betoldas			alacsony
+Mic.4.8	hu	16	Jeruzsálem	parositva	20	H3389	alacsony
+Mic.4.8	hu	17	leányának	parositva	18,19	H9005+H1323	alacsony
+Mic.4.8	hu	18	birodalma	parositva	17	H4467	alacsony
+Mic.4.8	er	1		parositva	1	H9002	alacsony
+Mic.4.8	er	2		parositva	2	H0859	alacsony
+Mic.4.8	er	3		parositva	4	H4029	alacsony
+Mic.4.8	er	4		parositva	3	H4029	alacsony
+Mic.4.8	er	5		parositva	7	H6076	alacsony
+Mic.4.8	er	6		parositva	6	H1323	alacsony
+Mic.4.8	er	7		parositva	5	H6726	alacsony
+Mic.4.8	er	8		parositva	9	H5704	alacsony
+Mic.4.8	er	9		parositva	9	H9031	alacsony
+Mic.4.8	er	10		parositva	8	H0857	alacsony
+Mic.4.8	er	11		parositva	10	H9001	alacsony
+Mic.4.8	er	12		parositva	11	H0935	alacsony
+Mic.4.8	er	13		forditatlan		H9009	alacsony
+Mic.4.8	er	14		parositva	14	H4475	alacsony
+Mic.4.8	er	15		parositva	13	H9009	alacsony
+Mic.4.8	er	16		parositva	13	H7223	alacsony
+Mic.4.8	er	17		parositva	18	H4467	alacsony
+Mic.4.8	er	18		parositva	17	H9005	alacsony
+Mic.4.8	er	19		parositva	17	H1323	alacsony
+Mic.4.8	er	20		parositva	16	H3389	alacsony
+Mic.4.9	hu	1	Miért	parositva	2,3	H9005+H4100	alacsony
+Mic.4.9	hu	2	kiáltasz	parositva	4	H7321	alacsony
+Mic.4.9	hu	3	hát	parositva	1	H6258	alacsony
+Mic.4.9	hu	4	kiáltva	parositva	5	H7452	alacsony
+Mic.4.9	hu	5	Nincsen	parositva	8	H0369	alacsony
+Mic.4.9	hu	6	é	parositva	6	H9008	alacsony
+Mic.4.9	hu	7	közötted	parositva	9,10	H9003+H9032	alacsony
+Mic.4.9	hu	8	király	parositva	7	H4428	alacsony
+Mic.4.9	hu	9	Elveszett	parositva	14	H0006	alacsony
+Mic.4.9	hu	10	é	parositva	11	H0518	alacsony
+Mic.4.9	hu	11	a	betoldas			alacsony
+Mic.4.9	hu	12	te	parositva	13	H9032	alacsony
+Mic.4.9	hu	13	tanácsadód	parositva	12,13	H3289+H9032	alacsony
+Mic.4.9	hu	14	hogy	parositva	15	H3588	alacsony
+Mic.4.9	hu	15	úgy	parositva	19	H9004	alacsony
+Mic.4.9	hu	16	elfogott	parositva	16,17	H2388+H9032	alacsony
+Mic.4.9	hu	17	a	betoldas			alacsony
+Mic.4.9	hu	18	fájdalom	parositva	18	H2427	alacsony
+Mic.4.9	hu	19	mint	parositva	19	H9004	alacsony
+Mic.4.9	hu	20	a	betoldas			alacsony
+Mic.4.9	hu	21	gyermek	parositva	20	H3205	alacsony
+Mic.4.9	hu	22	szűlőt	parositva	20	H3205	alacsony
+Mic.4.9	er	1		parositva	3	H6258	alacsony
+Mic.4.9	er	2		parositva	1	H9005	alacsony
+Mic.4.9	er	3		parositva	1	H4100	alacsony
+Mic.4.9	er	4		parositva	2	H7321	alacsony
+Mic.4.9	er	5		parositva	4	H7452	alacsony
+Mic.4.9	er	6		parositva	6	H9008	alacsony
+Mic.4.9	er	7		parositva	8	H4428	alacsony
+Mic.4.9	er	8		parositva	5	H0369	alacsony
+Mic.4.9	er	9		parositva	7	H9003	alacsony
+Mic.4.9	er	10		parositva	7	H9032	alacsony
+Mic.4.9	er	11		parositva	10	H0518	alacsony
+Mic.4.9	er	12		parositva	13	H3289	alacsony
+Mic.4.9	er	13		parositva	12,13	H9032	alacsony
+Mic.4.9	er	14		parositva	9	H0006	alacsony
+Mic.4.9	er	15		parositva	14	H3588	alacsony
+Mic.4.9	er	16		parositva	16	H2388	alacsony
+Mic.4.9	er	17		parositva	16	H9032	alacsony
+Mic.4.9	er	18		parositva	18	H2427	alacsony
+Mic.4.9	er	19		parositva	15,19	H9004	alacsony
+Mic.4.9	er	20		parositva	21,22	H3205	alacsony
+Mic.4.10	hu	1	Gyötrődj	parositva	1	H2342	alacsony
+Mic.4.10	hu	2	és	parositva	2	H9002	alacsony
+Mic.4.10	hu	3	kinlódj	parositva	3	H1518	alacsony
+Mic.4.10	hu	4	Sionnak	parositva	5	H6726	alacsony
+Mic.4.10	hu	5	leánya	parositva	4	H1323	alacsony
+Mic.4.10	hu	6	mint	parositva	6	H9004	alacsony
+Mic.4.10	hu	7	a	betoldas			alacsony
+Mic.4.10	hu	8	gyermek	parositva	7	H3205	alacsony
+Mic.4.10	hu	9	szülő	parositva	7	H3205	alacsony
+Mic.4.10	hu	10	Mert	parositva	8	H3588	alacsony
+Mic.4.10	hu	11	ímé	parositva	9	H6258	alacsony
+Mic.4.10	hu	12	kimégy	parositva	10	H3318	alacsony
+Mic.4.10	hu	13	a	betoldas			alacsony
+Mic.4.10	hu	14	városból	parositva	11,12	H9006+H7151	alacsony
+Mic.4.10	hu	15	és	parositva	13	H9001	alacsony
+Mic.4.10	hu	16	a	betoldas			alacsony
+Mic.4.10	hu	17	mezőn	parositva	15,16	H9003+H7704	alacsony
+Mic.4.10	hu	18	tanyázol	parositva	14	H7931	alacsony
+Mic.4.10	hu	19	és	parositva	17	H9001	alacsony
+Mic.4.10	hu	20	egészen	parositva	19	H5704	alacsony
+Mic.4.10	hu	21	Bábelig	parositva	19,20	H5704+H0894	alacsony
+Mic.4.10	hu	22	mégysz	parositva	18	H0935	alacsony
+Mic.4.10	hu	23	Ott	parositva	21	H8033	alacsony
+Mic.4.10	hu	24	szabadíttatol	parositva	22	H5337	alacsony
+Mic.4.10	hu	25	meg	parositva	22	H5337	alacsony
+Mic.4.10	hu	26	ott	parositva	23	H8033	alacsony
+Mic.4.10	hu	27	vált	parositva	24	H1350	alacsony
+Mic.4.10	hu	28	ki	parositva	24	H1350	alacsony
+Mic.4.10	hu	29	téged	parositva	25	H9032	alacsony
+Mic.4.10	hu	30	az	betoldas			alacsony
+Mic.4.10	hu	31	Úr	parositva	26	H3068	alacsony
+Mic.4.10	hu	32	ellenségednek	parositva	29,30	H0341+H9022	alacsony
+Mic.4.10	hu	33	kezéből	parositva	27,28	H9006+H3709	alacsony
+Mic.4.10	er	1		parositva	1	H2342	alacsony
+Mic.4.10	er	2		parositva	2	H9002	alacsony
+Mic.4.10	er	3		parositva	3	H1518	alacsony
+Mic.4.10	er	4		parositva	5	H1323	alacsony
+Mic.4.10	er	5		parositva	4	H6726	alacsony
+Mic.4.10	er	6		parositva	6	H9004	alacsony
+Mic.4.10	er	7		parositva	8,9	H3205	alacsony
+Mic.4.10	er	8		parositva	10	H3588	alacsony
+Mic.4.10	er	9		parositva	11	H6258	alacsony
+Mic.4.10	er	10		parositva	12	H3318	alacsony
+Mic.4.10	er	11		parositva	14	H9006	alacsony
+Mic.4.10	er	12		parositva	14	H7151	alacsony
+Mic.4.10	er	13		parositva	15	H9001	alacsony
+Mic.4.10	er	14		parositva	18	H7931	alacsony
+Mic.4.10	er	15		parositva	17	H9003	alacsony
+Mic.4.10	er	16		parositva	17	H7704	alacsony
+Mic.4.10	er	17		parositva	19	H9001	alacsony
+Mic.4.10	er	18		parositva	22	H0935	alacsony
+Mic.4.10	er	19		parositva	20,21	H5704	alacsony
+Mic.4.10	er	20		parositva	21	H0894	alacsony
+Mic.4.10	er	21		parositva	23	H8033	alacsony
+Mic.4.10	er	22		parositva	24,25	H5337	alacsony
+Mic.4.10	er	23		parositva	26	H8033	alacsony
+Mic.4.10	er	24		parositva	27,28	H1350	alacsony
+Mic.4.10	er	25		parositva	29	H9032	alacsony
+Mic.4.10	er	26		parositva	31	H3068	alacsony
+Mic.4.10	er	27		parositva	33	H9006	alacsony
+Mic.4.10	er	28		parositva	33	H3709	alacsony
+Mic.4.10	er	29		parositva	32	H0341	alacsony
+Mic.4.10	er	30		parositva	32	H9022	alacsony
+Mic.4.11	hu	1	Mert	parositva	1	H9002	alacsony
+Mic.4.11	hu	2	ímé	parositva	2	H6258	alacsony
+Mic.4.11	hu	3	sok	parositva	7	H7227	alacsony
+Mic.4.11	hu	4	nemzetség	parositva	6	H1471	alacsony
+Mic.4.11	hu	5	gyűlt	parositva	3	H0622	alacsony
+Mic.4.11	hu	6	össze	parositva	3	H0622	alacsony
+Mic.4.11	hu	7	ellened	parositva	4,5	H5921+H9032	alacsony
+Mic.4.11	hu	8	a	parositva	8	H9009	alacsony
+Mic.4.11	hu	9	kik	parositva	8	H9009	alacsony
+Mic.4.11	hu	10	ezt	betoldas			alacsony
+Mic.4.11	hu	11	mondják	parositva	9	H0559	alacsony
+Mic.4.11	hu	12	Legyen	parositva	10	H2610	alacsony
+Mic.4.11	hu	13	szentségtelen	parositva	10	H2610	alacsony
+Mic.4.11	hu	14	és	parositva	11	H9002	alacsony
+Mic.4.11	hu	15	legeltessük	parositva	12	H2372	alacsony
+Mic.4.11	hu	16	szemeinket	parositva	15,16	H5869+H9025	alacsony
+Mic.4.11	hu	17	a	betoldas			alacsony
+Mic.4.11	hu	18	Sionon	parositva	13,14	H9003+H6726	alacsony
+Mic.4.11	er	1		parositva	1	H9002	alacsony
+Mic.4.11	er	2		parositva	2	H6258	alacsony
+Mic.4.11	er	3		parositva	5,6	H0622	alacsony
+Mic.4.11	er	4		parositva	7	H5921	alacsony
+Mic.4.11	er	5		parositva	7	H9032	alacsony
+Mic.4.11	er	6		parositva	4	H1471	alacsony
+Mic.4.11	er	7		parositva	3	H7227	alacsony
+Mic.4.11	er	8		parositva	8,9	H9009	alacsony
+Mic.4.11	er	9		parositva	11	H0559	alacsony
+Mic.4.11	er	10		parositva	12,13	H2610	alacsony
+Mic.4.11	er	11		parositva	14	H9002	alacsony
+Mic.4.11	er	12		parositva	15	H2372	alacsony
+Mic.4.11	er	13		parositva	18	H9003	alacsony
+Mic.4.11	er	14		parositva	18	H6726	alacsony
+Mic.4.11	er	15		parositva	16	H5869	alacsony
+Mic.4.11	er	16		parositva	16	H9025	alacsony
+Mic.4.12	hu	1	De	parositva	1	H9002	alacsony
+Mic.4.12	hu	2	ők	parositva	2	H1992	alacsony
+Mic.4.12	hu	3	nem	parositva	3	H3808	alacsony
+Mic.4.12	hu	4	tudják	parositva	4	H3045	alacsony
+Mic.4.12	hu	5	az	betoldas			alacsony
+Mic.4.12	hu	6	Úr	parositva	6	H3068	alacsony
+Mic.4.12	hu	7	gondolatait	parositva	5	H4284	alacsony
+Mic.4.12	hu	8	és	parositva	7	H9002	alacsony
+Mic.4.12	hu	9	nem	parositva	8	H3808	alacsony
+Mic.4.12	hu	10	értik	parositva	9	H0995	alacsony
+Mic.4.12	hu	11	az	betoldas			alacsony
+Mic.4.12	hu	12	ő	parositva	11	H9023	alacsony
+Mic.4.12	hu	13	szándékát	parositva	10,11	H6098+H9023	alacsony
+Mic.4.12	hu	14	hogy	parositva	12	H3588	alacsony
+Mic.4.12	hu	15	összegyűjti	parositva	13	H6908	alacsony
+Mic.4.12	hu	16	őket	parositva	14	H9038	alacsony
+Mic.4.12	hu	17	mint	parositva	15	H9004	alacsony
+Mic.4.12	hu	18	a	betoldas			alacsony
+Mic.4.12	hu	19	kévét	parositva	16	H5995	alacsony
+Mic.4.12	hu	20	a	betoldas			alacsony
+Mic.4.12	hu	21	szérűre	parositva	17,18	H1637+H9011	alacsony
+Mic.4.12	er	1		parositva	1	H9002	alacsony
+Mic.4.12	er	2		parositva	2	H1992	alacsony
+Mic.4.12	er	3		parositva	3	H3808	alacsony
+Mic.4.12	er	4		parositva	4	H3045	alacsony
+Mic.4.12	er	5		parositva	7	H4284	alacsony
+Mic.4.12	er	6		parositva	6	H3068	alacsony
+Mic.4.12	er	7		parositva	8	H9002	alacsony
+Mic.4.12	er	8		parositva	9	H3808	alacsony
+Mic.4.12	er	9		parositva	10	H0995	alacsony
+Mic.4.12	er	10		parositva	13	H6098	alacsony
+Mic.4.12	er	11		parositva	12,13	H9023	alacsony
+Mic.4.12	er	12		parositva	14	H3588	alacsony
+Mic.4.12	er	13		parositva	15	H6908	alacsony
+Mic.4.12	er	14		parositva	16	H9038	alacsony
+Mic.4.12	er	15		parositva	17	H9004	alacsony
+Mic.4.12	er	16		parositva	19	H5995	alacsony
+Mic.4.12	er	17		parositva	21	H1637	alacsony
+Mic.4.12	er	18		parositva	21	H9011	alacsony
+Mic.4.13	hu	1	Kelj	parositva	1	H6965	alacsony
+Mic.4.13	hu	2	fel	parositva	1	H6965	alacsony
+Mic.4.13	hu	3	és	parositva	2	H9002	alacsony
+Mic.4.13	hu	4	csépelj	parositva	3	H1758	alacsony
+Mic.4.13	hu	5	Sionnak	parositva	5	H6726	alacsony
+Mic.4.13	hu	6	leánya	parositva	4	H1323	alacsony
+Mic.4.13	hu	7	Mert	parositva	6	H3588	alacsony
+Mic.4.13	hu	8	vassá	parositva	10	H1270	alacsony
+Mic.4.13	hu	9	teszem	parositva	9	H7760	alacsony
+Mic.4.13	hu	10	a	betoldas			alacsony
+Mic.4.13	hu	11	te	parositva	8	H9022	alacsony
+Mic.4.13	hu	12	szarvaidat	parositva	7,8	H7161+H9022	alacsony
+Mic.4.13	hu	13	körmeidet	parositva	12,13	H6541+H9022	alacsony
+Mic.4.13	hu	14	pedig	parositva	11	H9002	alacsony
+Mic.4.13	hu	15	aczéllá	parositva	15	H5154	alacsony
+Mic.4.13	hu	16	teszem	parositva	14	H7760	alacsony
+Mic.4.13	hu	17	és	parositva	16	H9001	alacsony
+Mic.4.13	hu	18	széttiporsz	parositva	17	H1854	alacsony
+Mic.4.13	hu	19	sok	parositva	19	H7227	alacsony
+Mic.4.13	hu	20	népeket	parositva	18	H5971	alacsony
+Mic.4.13	hu	21	és	parositva	20	H9001	alacsony
+Mic.4.13	hu	22	rablott	parositva	24	H1215	alacsony
+Mic.4.13	hu	23	kincseiket	parositva	24,25	H1215+H9028	alacsony
+Mic.4.13	hu	24	az	betoldas			alacsony
+Mic.4.13	hu	25	Úrnak	parositva	22,23	H9005+H3068	alacsony
+Mic.4.13	hu	26	áldozom	parositva	21	H2763	alacsony
+Mic.4.13	hu	27	javaikat	parositva	27,28	H2428+H9028	alacsony
+Mic.4.13	hu	28	pedig	parositva	26	H9002	alacsony
+Mic.4.13	hu	29	az	betoldas			alacsony
+Mic.4.13	hu	30	egész	parositva	31	H3605	alacsony
+Mic.4.13	hu	31	föld	parositva	33	H0776	alacsony
+Mic.4.13	hu	32	Urának	parositva	29,30	H9005+H0113	alacsony
+Mic.4.13	er	1		parositva	1,2	H6965	alacsony
+Mic.4.13	er	2		parositva	3	H9002	alacsony
+Mic.4.13	er	3		parositva	4	H1758	alacsony
+Mic.4.13	er	4		parositva	6	H1323	alacsony
+Mic.4.13	er	5		parositva	5	H6726	alacsony
+Mic.4.13	er	6		parositva	7	H3588	alacsony
+Mic.4.13	er	7		parositva	12	H7161	alacsony
+Mic.4.13	er	8		parositva	11,12	H9022	alacsony
+Mic.4.13	er	9		parositva	9	H7760	alacsony
+Mic.4.13	er	10		parositva	8	H1270	alacsony
+Mic.4.13	er	11		parositva	14	H9002	alacsony
+Mic.4.13	er	12		parositva	13	H6541	alacsony
+Mic.4.13	er	13		parositva	13	H9022	alacsony
+Mic.4.13	er	14		parositva	16	H7760	alacsony
+Mic.4.13	er	15		parositva	15	H5154	alacsony
+Mic.4.13	er	16		parositva	17	H9001	alacsony
+Mic.4.13	er	17		parositva	18	H1854	alacsony
+Mic.4.13	er	18		parositva	20	H5971	alacsony
+Mic.4.13	er	19		parositva	19	H7227	alacsony
+Mic.4.13	er	20		parositva	21	H9001	alacsony
+Mic.4.13	er	21		parositva	26	H2763	alacsony
+Mic.4.13	er	22		parositva	25	H9005	alacsony
+Mic.4.13	er	23		parositva	25	H3068	alacsony
+Mic.4.13	er	24		parositva	22,23	H1215	alacsony
+Mic.4.13	er	25		parositva	23	H9028	alacsony
+Mic.4.13	er	26		parositva	28	H9002	alacsony
+Mic.4.13	er	27		parositva	27	H2428	alacsony
+Mic.4.13	er	28		parositva	27	H9028	alacsony
+Mic.4.13	er	29		parositva	32	H9005	alacsony
+Mic.4.13	er	30		parositva	32	H0113	alacsony
+Mic.4.13	er	31		parositva	30	H3605	alacsony
+Mic.4.13	er	32		forditatlan		H9009	alacsony
+Mic.4.13	er	33		parositva	31	H0776	alacsony
+Mic.5.1	hu	1	Seregelj	parositva	2	H1413	alacsony
+Mic.5.1	hu	2	hát	parositva	1	H6258	alacsony
+Mic.5.1	hu	3	egybe	parositva	2	H1413	alacsony
+Mic.5.1	hu	4	seregek	parositva	4	H1416	alacsony
+Mic.5.1	hu	5	leánya	parositva	3	H1323	alacsony
+Mic.5.1	hu	6	Ostrommal	parositva	5	H4692	alacsony
+Mic.5.1	hu	7	támadt	parositva	6	H7760	alacsony
+Mic.5.1	hu	8	ellenünk	parositva	7,8	H5921+H9035	alacsony
+Mic.5.1	hu	9	pálczával	parositva	9,10	H9003+H7626	alacsony
+Mic.5.1	hu	10	verjék	parositva	11	H5221	alacsony
+Mic.5.1	hu	11	arczul	parositva	12,14	H5921+H3895	alacsony
+Mic.5.1	hu	12	Izráel	parositva	17	H3478	alacsony
+Mic.5.1	hu	13	biráját	parositva	16	H8199	alacsony
+Mic.5.1	er	1		parositva	2	H6258	alacsony
+Mic.5.1	er	2		parositva	1,3	H1413	alacsony
+Mic.5.1	er	3		parositva	5	H1323	alacsony
+Mic.5.1	er	4		parositva	4	H1416	alacsony
+Mic.5.1	er	5		parositva	6	H4692	alacsony
+Mic.5.1	er	6		parositva	7	H7760	alacsony
+Mic.5.1	er	7		parositva	8	H5921	alacsony
+Mic.5.1	er	8		parositva	8	H9035	alacsony
+Mic.5.1	er	9		parositva	9	H9003	alacsony
+Mic.5.1	er	10		parositva	9	H7626	alacsony
+Mic.5.1	er	11		parositva	10	H5221	alacsony
+Mic.5.1	er	12		parositva	11	H5921	alacsony
+Mic.5.1	er	13		forditatlan		H9009	alacsony
+Mic.5.1	er	14		parositva	11	H3895	alacsony
+Mic.5.1	er	15		forditatlan		H0853	alacsony
+Mic.5.1	er	16		parositva	13	H8199	alacsony
+Mic.5.1	er	17		parositva	12	H3478	alacsony
+Mic.5.2	hu	1	De	parositva	1	H9002	alacsony
+Mic.5.2	hu	2	te	parositva	2	H0859	alacsony
+Mic.5.2	hu	3	Efratának	parositva	5	H0672	alacsony
+Mic.5.2	hu	4	Bethleheme	parositva	3,4	H1035	alacsony
+Mic.5.2	hu	5	bár	betoldas			alacsony
+Mic.5.2	hu	6	kicsiny	parositva	6	H6810	alacsony
+Mic.5.2	hu	7	vagy	parositva	7,8	H9005+H1961	alacsony
+Mic.5.2	hu	8	a	betoldas			alacsony
+Mic.5.2	hu	9	Júda	parositva	11	H3063	alacsony
+Mic.5.2	hu	10	ezrei	parositva	10	H0505	alacsony
+Mic.5.2	hu	11	között	parositva	9	H9003	alacsony
+Mic.5.2	hu	12	belőled	parositva	12,13	H4480+H9031	alacsony
+Mic.5.2	hu	13	származik	parositva	16	H3318	alacsony
+Mic.5.2	hu	14	nékem	parositva	14,15	H9005+H9030	alacsony
+Mic.5.2	hu	15	a	betoldas			alacsony
+Mic.5.2	hu	16	ki	betoldas			alacsony
+Mic.5.2	hu	17	uralkodó	parositva	17,18,19	H9005+H1961+H4910	alacsony
+Mic.5.2	hu	18	az	betoldas			alacsony
+Mic.5.2	hu	19	Izráelen	parositva	20,21	H9003+H3478	alacsony
+Mic.5.2	hu	20	a	betoldas			alacsony
+Mic.5.2	hu	21	kinek	parositva	24	H9023	alacsony
+Mic.5.2	hu	22	származása	parositva	23,24	H4163+H9023	alacsony
+Mic.5.2	hu	23	eleitől	parositva	25,26	H9006+H6924	alacsony
+Mic.5.2	hu	24	fogva	parositva	25	H9006	alacsony
+Mic.5.2	hu	25	öröktől	parositva	27,28,29	H9006+H3117+H5769	alacsony
+Mic.5.2	hu	26	fogva	parositva	27	H9006	alacsony
+Mic.5.2	hu	27	van	betoldas			alacsony
+Mic.5.2	er	1		parositva	1	H9002	alacsony
+Mic.5.2	er	2		parositva	2	H0859	alacsony
+Mic.5.2	er	3		parositva	4	H1035	alacsony
+Mic.5.2	er	4		parositva	4	H1035	alacsony
+Mic.5.2	er	5		parositva	3	H0672	alacsony
+Mic.5.2	er	6		parositva	6	H6810	alacsony
+Mic.5.2	er	7		parositva	7	H9005	alacsony
+Mic.5.2	er	8		parositva	7	H1961	alacsony
+Mic.5.2	er	9		parositva	11	H9003	alacsony
+Mic.5.2	er	10		parositva	10	H0505	alacsony
+Mic.5.2	er	11		parositva	9	H3063	alacsony
+Mic.5.2	er	12		parositva	12	H4480	alacsony
+Mic.5.2	er	13		parositva	12	H9031	alacsony
+Mic.5.2	er	14		parositva	14	H9005	alacsony
+Mic.5.2	er	15		parositva	14	H9030	alacsony
+Mic.5.2	er	16		parositva	13	H3318	alacsony
+Mic.5.2	er	17		parositva	17	H9005	alacsony
+Mic.5.2	er	18		parositva	17	H1961	alacsony
+Mic.5.2	er	19		parositva	17	H4910	alacsony
+Mic.5.2	er	20		parositva	19	H9003	alacsony
+Mic.5.2	er	21		parositva	19	H3478	alacsony
+Mic.5.2	er	22		forditatlan		H9002	alacsony
+Mic.5.2	er	23		parositva	22	H4163	alacsony
+Mic.5.2	er	24		parositva	21,22	H9023	alacsony
+Mic.5.2	er	25		parositva	23,24	H9006	alacsony
+Mic.5.2	er	26		parositva	23	H6924	alacsony
+Mic.5.2	er	27		parositva	25,26	H9006	alacsony
+Mic.5.2	er	28		parositva	25	H3117	alacsony
+Mic.5.2	er	29		parositva	25	H5769	alacsony
+Mic.5.3	hu	1	Azért	parositva	1,2	H9005+H3651	alacsony
+Mic.5.3	hu	2	odaadja	parositva	3	H5414	alacsony
+Mic.5.3	hu	3	őket	parositva	4	H9038	alacsony
+Mic.5.3	hu	4	míg	parositva	5,6	H5704+H6256	alacsony
+Mic.5.3	hu	5	a	betoldas			alacsony
+Mic.5.3	hu	6	szűlő	parositva	7	H3205	alacsony
+Mic.5.3	hu	7	szűl	parositva	8	H3205	alacsony
+Mic.5.3	hu	8	de	parositva	9	H9002	alacsony
+Mic.5.3	hu	9	az	betoldas			alacsony
+Mic.5.3	hu	10	ő	parositva	12	H9023	alacsony
+Mic.5.3	hu	11	atyjafiainak	parositva	11,12	H0251+H9023	alacsony
+Mic.5.3	hu	12	maradékai	parositva	10	H3499	alacsony
+Mic.5.3	hu	13	visszatérnek	parositva	13	H7725	alacsony
+Mic.5.3	hu	14	Izráel	parositva	17	H3478	alacsony
+Mic.5.3	hu	15	fiaihoz	parositva	15,16	H5921+H1121	alacsony
+Mic.5.3	er	1		parositva	1	H9005	alacsony
+Mic.5.3	er	2		parositva	1	H3651	alacsony
+Mic.5.3	er	3		parositva	2	H5414	alacsony
+Mic.5.3	er	4		parositva	3	H9038	alacsony
+Mic.5.3	er	5		parositva	4	H5704	alacsony
+Mic.5.3	er	6		parositva	4	H6256	alacsony
+Mic.5.3	er	7		parositva	6	H3205	alacsony
+Mic.5.3	er	8		parositva	7	H3205	alacsony
+Mic.5.3	er	9		parositva	8	H9002	alacsony
+Mic.5.3	er	10		parositva	12	H3499	alacsony
+Mic.5.3	er	11		parositva	11	H0251	alacsony
+Mic.5.3	er	12		parositva	10,11	H9023	alacsony
+Mic.5.3	er	13		parositva	13	H7725	alacsony
+Mic.5.3	er	14		forditatlan		H9013	alacsony
+Mic.5.3	er	15		parositva	15	H5921	alacsony
+Mic.5.3	er	16		parositva	15	H1121	alacsony
+Mic.5.3	er	17		parositva	14	H3478	alacsony
+Mic.5.4	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.4	hu	2	megáll	parositva	2	H5975	alacsony
+Mic.5.4	hu	3	és	parositva	3	H9001	alacsony
+Mic.5.4	hu	4	legeltet	parositva	4	H7462	alacsony
+Mic.5.4	hu	5	az	betoldas			alacsony
+Mic.5.4	hu	6	Úrnak	parositva	7	H3068	alacsony
+Mic.5.4	hu	7	erejével	parositva	5,6	H9003+H5797	alacsony
+Mic.5.4	hu	8	az	betoldas			alacsony
+Mic.5.4	hu	9	Úrnak	parositva	11	H3068	alacsony
+Mic.5.4	hu	10	az	betoldas			alacsony
+Mic.5.4	hu	11	ő	parositva	13	H9023	alacsony
+Mic.5.4	hu	12	Istenének	parositva	12,13	H0430+H9023	alacsony
+Mic.5.4	hu	13	fenséges	parositva	9	H1347	alacsony
+Mic.5.4	hu	14	nevével	parositva	8,10	H9003+H8034	alacsony
+Mic.5.4	hu	15	és	parositva	14	H9001	alacsony
+Mic.5.4	hu	16	bátorsággal	betoldas			alacsony
+Mic.5.4	hu	17	lakoznak	parositva	15	H3427	alacsony
+Mic.5.4	hu	18	mert	parositva	16	H3588	alacsony
+Mic.5.4	hu	19	ímé	parositva	17	H6258	alacsony
+Mic.5.4	hu	20	felmagasztaltatik	parositva	18	H1431	alacsony
+Mic.5.4	hu	21	a	betoldas			alacsony
+Mic.5.4	hu	22	földnek	parositva	21	H0776	alacsony
+Mic.5.4	hu	23	határáig	parositva	19,20	H5704+H0657	alacsony
+Mic.5.4	er	1		parositva	1	H9001	alacsony
+Mic.5.4	er	2		parositva	2	H5975	alacsony
+Mic.5.4	er	3		parositva	3	H9001	alacsony
+Mic.5.4	er	4		parositva	4	H7462	alacsony
+Mic.5.4	er	5		parositva	7	H9003	alacsony
+Mic.5.4	er	6		parositva	7	H5797	alacsony
+Mic.5.4	er	7		parositva	6	H3068	alacsony
+Mic.5.4	er	8		parositva	14	H9003	alacsony
+Mic.5.4	er	9		parositva	13	H1347	alacsony
+Mic.5.4	er	10		parositva	14	H8034	alacsony
+Mic.5.4	er	11		parositva	9	H3068	alacsony
+Mic.5.4	er	12		parositva	12	H0430	alacsony
+Mic.5.4	er	13		parositva	11,12	H9023	alacsony
+Mic.5.4	er	14		parositva	15	H9001	alacsony
+Mic.5.4	er	15		parositva	17	H3427	alacsony
+Mic.5.4	er	16		parositva	18	H3588	alacsony
+Mic.5.4	er	17		parositva	19	H6258	alacsony
+Mic.5.4	er	18		parositva	20	H1431	alacsony
+Mic.5.4	er	19		parositva	23	H5704	alacsony
+Mic.5.4	er	20		parositva	23	H0657	alacsony
+Mic.5.4	er	21		parositva	22	H0776	alacsony
+Mic.5.5	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.5	hu	2	ő	parositva	2,3	H1961+H2088	alacsony
+Mic.5.5	hu	3	a	betoldas			alacsony
+Mic.5.5	hu	4	mi	betoldas			alacsony
+Mic.5.5	hu	5	békességünk	parositva	4	H7965	alacsony
+Mic.5.5	hu	6	Ha	parositva	6	H3588	alacsony
+Mic.5.5	hu	7	az	betoldas			alacsony
+Mic.5.5	hu	8	Assirus	parositva	5	H0804	alacsony
+Mic.5.5	hu	9	eljő	parositva	7	H0935	alacsony
+Mic.5.5	hu	10	a	betoldas			alacsony
+Mic.5.5	hu	11	mi	parositva	10	H9025	alacsony
+Mic.5.5	hu	12	földünkre	parositva	8,9,10	H9003+H0776+H9025	alacsony
+Mic.5.5	hu	13	és	parositva	11,12	H9002+H3588	alacsony
+Mic.5.5	hu	14	megtapodja	parositva	13	H1869	alacsony
+Mic.5.5	hu	15	palotáinkat	parositva	14,15,16	H9003+H0759+H9025	alacsony
+Mic.5.5	hu	16	állatunk	parositva	18	H6965	alacsony
+Mic.5.5	hu	17	ellene	parositva	19,20	H5921+H9033	alacsony
+Mic.5.5	hu	18	hét	parositva	21	H7651	alacsony
+Mic.5.5	hu	19	pásztort	parositva	22	H7462	alacsony
+Mic.5.5	hu	20	és	parositva	23	H9002	alacsony
+Mic.5.5	hu	21	nyolcz	parositva	24	H8083	alacsony
+Mic.5.5	hu	22	fejedelmi	parositva	25	H5257	alacsony
+Mic.5.5	hu	23	férfiút	parositva	26	H0120	alacsony
+Mic.5.5	er	1		parositva	1	H9001	alacsony
+Mic.5.5	er	2		parositva	2	H1961	alacsony
+Mic.5.5	er	3		parositva	2	H2088	alacsony
+Mic.5.5	er	4		parositva	5	H7965	alacsony
+Mic.5.5	er	5		parositva	8	H0804	alacsony
+Mic.5.5	er	6		parositva	6	H3588	alacsony
+Mic.5.5	er	7		parositva	9	H0935	alacsony
+Mic.5.5	er	8		parositva	12	H9003	alacsony
+Mic.5.5	er	9		parositva	12	H0776	alacsony
+Mic.5.5	er	10		parositva	11,12	H9025	alacsony
+Mic.5.5	er	11		parositva	13	H9002	alacsony
+Mic.5.5	er	12		parositva	13	H3588	alacsony
+Mic.5.5	er	13		parositva	14	H1869	alacsony
+Mic.5.5	er	14		parositva	15	H9003	alacsony
+Mic.5.5	er	15		parositva	15	H0759	alacsony
+Mic.5.5	er	16		parositva	15	H9025	alacsony
+Mic.5.5	er	17		forditatlan		H9001	alacsony
+Mic.5.5	er	18		parositva	16	H6965	alacsony
+Mic.5.5	er	19		parositva	17	H5921	alacsony
+Mic.5.5	er	20		parositva	17	H9033	alacsony
+Mic.5.5	er	21		parositva	18	H7651	alacsony
+Mic.5.5	er	22		parositva	19	H7462	alacsony
+Mic.5.5	er	23		parositva	20	H9002	alacsony
+Mic.5.5	er	24		parositva	21	H8083	alacsony
+Mic.5.5	er	25		parositva	22	H5257	alacsony
+Mic.5.5	er	26		parositva	23	H0120	alacsony
+Mic.5.6	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.6	hu	2	megrontják	parositva	2	H7462	alacsony
+Mic.5.6	hu	3	Assiria	parositva	5	H0804	alacsony
+Mic.5.6	hu	4	földjét	parositva	4	H0776	alacsony
+Mic.5.6	hu	5	fegyverrel	parositva	6,7	H9003+H2719	alacsony
+Mic.5.6	hu	6	Nimród	parositva	11	H5248	alacsony
+Mic.5.6	hu	7	földjét	parositva	10	H0776	alacsony
+Mic.5.6	hu	8	is	parositva	8	H9002	alacsony
+Mic.5.6	hu	9	az	betoldas			alacsony
+Mic.5.6	hu	10	ő	parositva	14	H9024	alacsony
+Mic.5.6	hu	11	kapuiban	parositva	12,13,14	H9003+H6607+H9024	alacsony
+Mic.5.6	hu	12	és	parositva	15	H9001	alacsony
+Mic.5.6	hu	13	megszabadít	parositva	16	H5337	alacsony
+Mic.5.6	hu	14	az	betoldas			alacsony
+Mic.5.6	hu	15	Assirustól	parositva	17,18	H9006+H0804	alacsony
+Mic.5.6	hu	16	ha	parositva	19	H3588	alacsony
+Mic.5.6	hu	17	a	betoldas			alacsony
+Mic.5.6	hu	18	mi	parositva	23	H9025	alacsony
+Mic.5.6	hu	19	földünkre	parositva	21,22,23	H9003+H0776+H9025	alacsony
+Mic.5.6	hu	20	eljő	parositva	20	H0935	alacsony
+Mic.5.6	hu	21	és	parositva	24,25	H9002+H3588	alacsony
+Mic.5.6	hu	22	a	betoldas			alacsony
+Mic.5.6	hu	23	mi	parositva	29	H9025	alacsony
+Mic.5.6	hu	24	határunkba	parositva	27,28,29	H9003+H1366+H9025	alacsony
+Mic.5.6	hu	25	lép	parositva	26	H1869	alacsony
+Mic.5.6	er	1		parositva	1	H9001	alacsony
+Mic.5.6	er	2		parositva	2	H7462	alacsony
+Mic.5.6	er	3		forditatlan		H0853	alacsony
+Mic.5.6	er	4		parositva	4	H0776	alacsony
+Mic.5.6	er	5		parositva	3	H0804	alacsony
+Mic.5.6	er	6		parositva	5	H9003	alacsony
+Mic.5.6	er	7		parositva	5	H2719	alacsony
+Mic.5.6	er	8		parositva	8	H9002	alacsony
+Mic.5.6	er	9		forditatlan		H0853	alacsony
+Mic.5.6	er	10		parositva	7	H0776	alacsony
+Mic.5.6	er	11		parositva	6	H5248	alacsony
+Mic.5.6	er	12		parositva	11	H9003	alacsony
+Mic.5.6	er	13		parositva	11	H6607	alacsony
+Mic.5.6	er	14		parositva	10,11	H9024	alacsony
+Mic.5.6	er	15		parositva	12	H9001	alacsony
+Mic.5.6	er	16		parositva	13	H5337	alacsony
+Mic.5.6	er	17		parositva	15	H9006	alacsony
+Mic.5.6	er	18		parositva	15	H0804	alacsony
+Mic.5.6	er	19		parositva	16	H3588	alacsony
+Mic.5.6	er	20		parositva	20	H0935	alacsony
+Mic.5.6	er	21		parositva	19	H9003	alacsony
+Mic.5.6	er	22		parositva	19	H0776	alacsony
+Mic.5.6	er	23		parositva	18,19	H9025	alacsony
+Mic.5.6	er	24		parositva	21	H9002	alacsony
+Mic.5.6	er	25		parositva	21	H3588	alacsony
+Mic.5.6	er	26		parositva	25	H1869	alacsony
+Mic.5.6	er	27		parositva	24	H9003	alacsony
+Mic.5.6	er	28		parositva	24	H1366	alacsony
+Mic.5.6	er	29		parositva	23,24	H9025	alacsony
+Mic.5.7	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.7	hu	2	a	betoldas			alacsony
+Mic.5.7	hu	3	Jákóbnak	parositva	4	H3290	alacsony
+Mic.5.7	hu	4	maradéka	parositva	3	H7611	alacsony
+Mic.5.7	hu	5	olyan	betoldas			alacsony
+Mic.5.7	hu	6	lészen	parositva	2	H1961	alacsony
+Mic.5.7	hu	7	a	betoldas			alacsony
+Mic.5.7	hu	8	sok	parositva	8	H7227	alacsony
+Mic.5.7	hu	9	nép	parositva	7	H5971	alacsony
+Mic.5.7	hu	10	között	parositva	5,6	H9003+H7130	alacsony
+Mic.5.7	hu	11	mint	parositva	9	H9004	alacsony
+Mic.5.7	hu	12	az	betoldas			alacsony
+Mic.5.7	hu	13	Úrtól	parositva	11,12,13	H9006+H0854+H3068	alacsony
+Mic.5.7	hu	14	való	betoldas			alacsony
+Mic.5.7	hu	15	harmat	parositva	10	H2919	alacsony
+Mic.5.7	hu	16	mint	parositva	14	H9004	alacsony
+Mic.5.7	hu	17	a	betoldas			alacsony
+Mic.5.7	hu	18	zápor	parositva	15	H7241	alacsony
+Mic.5.7	hu	19	a	betoldas			alacsony
+Mic.5.7	hu	20	fűnek	parositva	16,17	H5921+H6212	alacsony
+Mic.5.7	hu	21	mely	parositva	18	H0834	alacsony
+Mic.5.7	hu	22	nem	parositva	19	H3808	alacsony
+Mic.5.7	hu	23	emberben	parositva	21,22	H9005+H0376	alacsony
+Mic.5.7	hu	24	reménykedik	parositva	20	H6960	alacsony
+Mic.5.7	hu	25	és	parositva	23	H9002	alacsony
+Mic.5.7	hu	26	nem	parositva	24	H3808	alacsony
+Mic.5.7	hu	27	bízik	parositva	25	H3176	alacsony
+Mic.5.7	hu	28	embernek	parositva	28	H0120	alacsony
+Mic.5.7	hu	29	fiaiban	parositva	26,27	H9005+H1121	alacsony
+Mic.5.7	er	1		parositva	1	H9001	alacsony
+Mic.5.7	er	2		parositva	6	H1961	alacsony
+Mic.5.7	er	3		parositva	4	H7611	alacsony
+Mic.5.7	er	4		parositva	3	H3290	alacsony
+Mic.5.7	er	5		parositva	10	H9003	alacsony
+Mic.5.7	er	6		parositva	10	H7130	alacsony
+Mic.5.7	er	7		parositva	9	H5971	alacsony
+Mic.5.7	er	8		parositva	8	H7227	alacsony
+Mic.5.7	er	9		parositva	11	H9004	alacsony
+Mic.5.7	er	10		parositva	15	H2919	alacsony
+Mic.5.7	er	11		parositva	13	H9006	alacsony
+Mic.5.7	er	12		parositva	13	H0854	alacsony
+Mic.5.7	er	13		parositva	13	H3068	alacsony
+Mic.5.7	er	14		parositva	16	H9004	alacsony
+Mic.5.7	er	15		parositva	18	H7241	alacsony
+Mic.5.7	er	16		parositva	20	H5921	alacsony
+Mic.5.7	er	17		parositva	20	H6212	alacsony
+Mic.5.7	er	18		parositva	21	H0834	alacsony
+Mic.5.7	er	19		parositva	22	H3808	alacsony
+Mic.5.7	er	20		parositva	24	H6960	alacsony
+Mic.5.7	er	21		parositva	23	H9005	alacsony
+Mic.5.7	er	22		parositva	23	H0376	alacsony
+Mic.5.7	er	23		parositva	25	H9002	alacsony
+Mic.5.7	er	24		parositva	26	H3808	alacsony
+Mic.5.7	er	25		parositva	27	H3176	alacsony
+Mic.5.7	er	26		parositva	29	H9005	alacsony
+Mic.5.7	er	27		parositva	29	H1121	alacsony
+Mic.5.7	er	28		parositva	28	H0120	alacsony
+Mic.5.8	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.8	hu	2	a	betoldas			alacsony
+Mic.5.8	hu	3	Jákób	parositva	4	H3290	alacsony
+Mic.5.8	hu	4	maradéka	parositva	3	H7611	alacsony
+Mic.5.8	hu	5	a	betoldas			alacsony
+Mic.5.8	hu	6	pogányok	parositva	6	H1471	alacsony
+Mic.5.8	hu	7	között	parositva	5	H9003	alacsony
+Mic.5.8	hu	8	a	betoldas			alacsony
+Mic.5.8	hu	9	sok	parositva	10	H7227	alacsony
+Mic.5.8	hu	10	nép	parositva	9	H5971	alacsony
+Mic.5.8	hu	11	között	parositva	7,8	H9003+H7130	alacsony
+Mic.5.8	hu	12	olyan	betoldas			alacsony
+Mic.5.8	hu	13	lészen	parositva	2	H1961	alacsony
+Mic.5.8	hu	14	mint	parositva	11	H9004	alacsony
+Mic.5.8	hu	15	az	betoldas			alacsony
+Mic.5.8	hu	16	oroszlán	parositva	12	H0738	alacsony
+Mic.5.8	hu	17	az	betoldas			alacsony
+Mic.5.8	hu	18	erdei	parositva	15	H3293	alacsony
+Mic.5.8	hu	19	vadak	parositva	14	H0929	alacsony
+Mic.5.8	hu	20	között	parositva	13	H9003	alacsony
+Mic.5.8	hu	21	mint	parositva	16	H9004	alacsony
+Mic.5.8	hu	22	az	betoldas			alacsony
+Mic.5.8	hu	23	oroszlán	parositva	17	H3715	alacsony
+Mic.5.8	hu	24	kölyök	parositva	17	H3715	alacsony
+Mic.5.8	hu	25	a	betoldas			alacsony
+Mic.5.8	hu	26	juhoknak	parositva	20	H6629	alacsony
+Mic.5.8	hu	27	nyája	parositva	19	H5739	alacsony
+Mic.5.8	hu	28	között	parositva	18	H9003	alacsony
+Mic.5.8	hu	29	a	betoldas			alacsony
+Mic.5.8	hu	30	mely	parositva	21	H0834	alacsony
+Mic.5.8	hu	31	ha	parositva	22	H0518	alacsony
+Mic.5.8	hu	32	betör	parositva	23	H5674	alacsony
+Mic.5.8	hu	33	tipor	parositva	25	H7429	alacsony
+Mic.5.8	hu	34	és	parositva	26	H9001	alacsony
+Mic.5.8	hu	35	tép	parositva	27	H2963	alacsony
+Mic.5.8	hu	36	és	parositva	28	H9002	alacsony
+Mic.5.8	hu	37	nincs	parositva	29	H0369	alacsony
+Mic.5.8	hu	38	a	betoldas			alacsony
+Mic.5.8	hu	39	ki	betoldas			alacsony
+Mic.5.8	hu	40	tőle	betoldas			alacsony
+Mic.5.8	hu	41	megszabadítson	parositva	30	H5337	alacsony
+Mic.5.8	er	1		parositva	1	H9001	alacsony
+Mic.5.8	er	2		parositva	13	H1961	alacsony
+Mic.5.8	er	3		parositva	4	H7611	alacsony
+Mic.5.8	er	4		parositva	3	H3290	alacsony
+Mic.5.8	er	5		parositva	7	H9003	alacsony
+Mic.5.8	er	6		parositva	6	H1471	alacsony
+Mic.5.8	er	7		parositva	11	H9003	alacsony
+Mic.5.8	er	8		parositva	11	H7130	alacsony
+Mic.5.8	er	9		parositva	10	H5971	alacsony
+Mic.5.8	er	10		parositva	9	H7227	alacsony
+Mic.5.8	er	11		parositva	14	H9004	alacsony
+Mic.5.8	er	12		parositva	16	H0738	alacsony
+Mic.5.8	er	13		parositva	20	H9003	alacsony
+Mic.5.8	er	14		parositva	19	H0929	alacsony
+Mic.5.8	er	15		parositva	18	H3293	alacsony
+Mic.5.8	er	16		parositva	21	H9004	alacsony
+Mic.5.8	er	17		parositva	23,24	H3715	alacsony
+Mic.5.8	er	18		parositva	28	H9003	alacsony
+Mic.5.8	er	19		parositva	27	H5739	alacsony
+Mic.5.8	er	20		parositva	26	H6629	alacsony
+Mic.5.8	er	21		parositva	30	H0834	alacsony
+Mic.5.8	er	22		parositva	31	H0518	alacsony
+Mic.5.8	er	23		parositva	32	H5674	alacsony
+Mic.5.8	er	24		forditatlan		H9002	alacsony
+Mic.5.8	er	25		parositva	33	H7429	alacsony
+Mic.5.8	er	26		parositva	34	H9001	alacsony
+Mic.5.8	er	27		parositva	35	H2963	alacsony
+Mic.5.8	er	28		parositva	36	H9002	alacsony
+Mic.5.8	er	29		parositva	37	H0369	alacsony
+Mic.5.8	er	30		parositva	41	H5337	alacsony
+Mic.5.9	hu	1	Erőt	parositva	1	H7311	alacsony
+Mic.5.9	hu	2	vészen	parositva	1	H7311	alacsony
+Mic.5.9	hu	3	a	betoldas			alacsony
+Mic.5.9	hu	4	te	parositva	3	H9021	alacsony
+Mic.5.9	hu	5	kezed	parositva	2,3	H3027+H9021	alacsony
+Mic.5.9	hu	6	szorongatóidon	parositva	4,5,6	H5921+H6862+H9021	alacsony
+Mic.5.9	hu	7	és	parositva	7	H9002	alacsony
+Mic.5.9	hu	8	minden	parositva	8	H3605	alacsony
+Mic.5.9	hu	9	ellenségeid	parositva	9,10	H0341+H9021	alacsony
+Mic.5.9	hu	10	kivágattatnak	parositva	11	H3772	alacsony
+Mic.5.9	er	1		parositva	1,2	H7311	alacsony
+Mic.5.9	er	2		parositva	5	H3027	alacsony
+Mic.5.9	er	3		parositva	4,5	H9021	alacsony
+Mic.5.9	er	4		parositva	6	H5921	alacsony
+Mic.5.9	er	5		parositva	6	H6862	alacsony
+Mic.5.9	er	6		parositva	6	H9021	alacsony
+Mic.5.9	er	7		parositva	7	H9002	alacsony
+Mic.5.9	er	8		parositva	8	H3605	alacsony
+Mic.5.9	er	9		parositva	9	H0341	alacsony
+Mic.5.9	er	10		parositva	9	H9021	alacsony
+Mic.5.9	er	11		parositva	10	H3772	alacsony
+Mic.5.10	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.10	hu	2	lészen	parositva	2	H1961	alacsony
+Mic.5.10	hu	3	azon	parositva	3,6	H9003+H1931	alacsony
+Mic.5.10	hu	4	a	betoldas			alacsony
+Mic.5.10	hu	5	napon	parositva	4	H3117	alacsony
+Mic.5.10	hu	6	azt	betoldas			alacsony
+Mic.5.10	hu	7	mondja	parositva	7	H5002	alacsony
+Mic.5.10	hu	8	az	betoldas			alacsony
+Mic.5.10	hu	9	Úr	parositva	8	H3068	alacsony
+Mic.5.10	hu	10	kivágom	parositva	10	H3772	alacsony
+Mic.5.10	hu	11	lovaidat	parositva	11,12	H5483+H9021	alacsony
+Mic.5.10	hu	12	közüled	parositva	13,14,15	H9006+H7130+H9021	alacsony
+Mic.5.10	hu	13	és	parositva	16	H9001	alacsony
+Mic.5.10	hu	14	elvesztem	parositva	17	H0006	alacsony
+Mic.5.10	hu	15	hadi	betoldas			alacsony
+Mic.5.10	hu	16	szekereidet	parositva	18,19	H4818+H9021	alacsony
+Mic.5.10	er	1		parositva	1	H9001	alacsony
+Mic.5.10	er	2		parositva	2	H1961	alacsony
+Mic.5.10	er	3		parositva	3	H9003	alacsony
+Mic.5.10	er	4		parositva	5	H3117	alacsony
+Mic.5.10	er	5		forditatlan		H9009	alacsony
+Mic.5.10	er	6		parositva	3	H1931	alacsony
+Mic.5.10	er	7		parositva	7	H5002	alacsony
+Mic.5.10	er	8		parositva	9	H3068	alacsony
+Mic.5.10	er	9		forditatlan		H9001	alacsony
+Mic.5.10	er	10		parositva	10	H3772	alacsony
+Mic.5.10	er	11		parositva	11	H5483	alacsony
+Mic.5.10	er	12		parositva	11	H9021	alacsony
+Mic.5.10	er	13		parositva	12	H9006	alacsony
+Mic.5.10	er	14		parositva	12	H7130	alacsony
+Mic.5.10	er	15		parositva	12	H9021	alacsony
+Mic.5.10	er	16		parositva	13	H9001	alacsony
+Mic.5.10	er	17		parositva	14	H0006	alacsony
+Mic.5.10	er	18		parositva	16	H4818	alacsony
+Mic.5.10	er	19		parositva	16	H9021	alacsony
+Mic.5.11	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.11	hu	2	kivágom	parositva	2	H3772	alacsony
+Mic.5.11	hu	3	földednek	parositva	4,5	H0776+H9021	alacsony
+Mic.5.11	hu	4	városait	parositva	3	H5892	alacsony
+Mic.5.11	hu	5	és	parositva	6	H9001	alacsony
+Mic.5.11	hu	6	ledöntöm	parositva	7	H2040	alacsony
+Mic.5.11	hu	7	minden	parositva	8	H3605	alacsony
+Mic.5.11	hu	8	erősségeidet	parositva	9,10	H4013+H9021	alacsony
+Mic.5.11	er	1		parositva	1	H9001	alacsony
+Mic.5.11	er	2		parositva	2	H3772	alacsony
+Mic.5.11	er	3		parositva	4	H5892	alacsony
+Mic.5.11	er	4		parositva	3	H0776	alacsony
+Mic.5.11	er	5		parositva	3	H9021	alacsony
+Mic.5.11	er	6		parositva	5	H9001	alacsony
+Mic.5.11	er	7		parositva	6	H2040	alacsony
+Mic.5.11	er	8		parositva	7	H3605	alacsony
+Mic.5.11	er	9		parositva	8	H4013	alacsony
+Mic.5.11	er	10		parositva	8	H9021	alacsony
+Mic.5.12	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.12	hu	2	kivágom	parositva	2	H3772	alacsony
+Mic.5.12	hu	3	kezedből	parositva	4,5,6	H9006+H3027+H9021	alacsony
+Mic.5.12	hu	4	a	betoldas			alacsony
+Mic.5.12	hu	5	bűvszereket	parositva	3	H3785	alacsony
+Mic.5.12	hu	6	és	parositva	7	H9002	alacsony
+Mic.5.12	hu	7	szemfényvesztőid	parositva	8	H6049	alacsony
+Mic.5.12	hu	8	nem	parositva	9	H3808	alacsony
+Mic.5.12	hu	9	lesznek	parositva	10	H1961	alacsony
+Mic.5.12	hu	10	néked	parositva	11,12	H9005+H9032	alacsony
+Mic.5.12	er	1		parositva	1	H9001	alacsony
+Mic.5.12	er	2		parositva	2	H3772	alacsony
+Mic.5.12	er	3		parositva	5	H3785	alacsony
+Mic.5.12	er	4		parositva	3	H9006	alacsony
+Mic.5.12	er	5		parositva	3	H3027	alacsony
+Mic.5.12	er	6		parositva	3	H9021	alacsony
+Mic.5.12	er	7		parositva	6	H9002	alacsony
+Mic.5.12	er	8		parositva	7	H6049	alacsony
+Mic.5.12	er	9		parositva	8	H3808	alacsony
+Mic.5.12	er	10		parositva	9	H1961	alacsony
+Mic.5.12	er	11		parositva	10	H9005	alacsony
+Mic.5.12	er	12		parositva	10	H9032	alacsony
+Mic.5.13	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.13	hu	2	kivágom	parositva	2	H3772	alacsony
+Mic.5.13	hu	3	faragott	parositva	3	H6456	alacsony
+Mic.5.13	hu	4	képeidet	parositva	3,4	H6456+H9021	alacsony
+Mic.5.13	hu	5	és	parositva	5	H9002	alacsony
+Mic.5.13	hu	6	bálványaidat	parositva	6,7	H4676+H9021	alacsony
+Mic.5.13	hu	7	közüled	parositva	8,9,10	H9006+H7130+H9021	alacsony
+Mic.5.13	hu	8	és	parositva	11	H9002	alacsony
+Mic.5.13	hu	9	nem	parositva	12	H3808	alacsony
+Mic.5.13	hu	10	imádod	parositva	13	H7812	alacsony
+Mic.5.13	hu	11	többé	parositva	14	H5750	alacsony
+Mic.5.13	hu	12	kezeidnek	parositva	17,18	H3027+H9021	alacsony
+Mic.5.13	hu	13	csinálmányait	parositva	15,16	H9005+H4639	alacsony
+Mic.5.13	er	1		parositva	1	H9001	alacsony
+Mic.5.13	er	2		parositva	2	H3772	alacsony
+Mic.5.13	er	3		parositva	3,4	H6456	alacsony
+Mic.5.13	er	4		parositva	4	H9021	alacsony
+Mic.5.13	er	5		parositva	5	H9002	alacsony
+Mic.5.13	er	6		parositva	6	H4676	alacsony
+Mic.5.13	er	7		parositva	6	H9021	alacsony
+Mic.5.13	er	8		parositva	7	H9006	alacsony
+Mic.5.13	er	9		parositva	7	H7130	alacsony
+Mic.5.13	er	10		parositva	7	H9021	alacsony
+Mic.5.13	er	11		parositva	8	H9002	alacsony
+Mic.5.13	er	12		parositva	9	H3808	alacsony
+Mic.5.13	er	13		parositva	10	H7812	alacsony
+Mic.5.13	er	14		parositva	11	H5750	alacsony
+Mic.5.13	er	15		parositva	13	H9005	alacsony
+Mic.5.13	er	16		parositva	13	H4639	alacsony
+Mic.5.13	er	17		parositva	12	H3027	alacsony
+Mic.5.13	er	18		parositva	12	H9021	alacsony
+Mic.5.14	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.14	hu	2	kiszaggatom	parositva	2	H5428	alacsony
+Mic.5.14	hu	3	a	betoldas			alacsony
+Mic.5.14	hu	4	te	parositva	4	H9021	alacsony
+Mic.5.14	hu	5	berkeidet	parositva	3,4	H0842+H9021	alacsony
+Mic.5.14	hu	6	közüled	parositva	5,6,7	H9006+H7130+H9021	alacsony
+Mic.5.14	hu	7	és	parositva	8	H9001	alacsony
+Mic.5.14	hu	8	elpusztítom	parositva	9	H8045	alacsony
+Mic.5.14	hu	9	a	betoldas			alacsony
+Mic.5.14	hu	10	te	parositva	11	H9021	alacsony
+Mic.5.14	hu	11	városaidat	parositva	10,11	H5892+H9021	alacsony
+Mic.5.14	er	1		parositva	1	H9001	alacsony
+Mic.5.14	er	2		parositva	2	H5428	alacsony
+Mic.5.14	er	3		parositva	5	H0842	alacsony
+Mic.5.14	er	4		parositva	4,5	H9021	alacsony
+Mic.5.14	er	5		parositva	6	H9006	alacsony
+Mic.5.14	er	6		parositva	6	H7130	alacsony
+Mic.5.14	er	7		parositva	6	H9021	alacsony
+Mic.5.14	er	8		parositva	7	H9001	alacsony
+Mic.5.14	er	9		parositva	8	H8045	alacsony
+Mic.5.14	er	10		parositva	11	H5892	alacsony
+Mic.5.14	er	11		parositva	10,11	H9021	alacsony
+Mic.5.15	hu	1	És	parositva	1	H9001	alacsony
+Mic.5.15	hu	2	haraggal	parositva	3,4	H9003+H0639	alacsony
+Mic.5.15	hu	3	és	parositva	5	H9002	alacsony
+Mic.5.15	hu	4	hévvel	parositva	6,7	H9003+H2534	alacsony
+Mic.5.15	hu	5	állok	parositva	2	H6213	alacsony
+Mic.5.15	hu	6	bosszút	parositva	8	H5359	alacsony
+Mic.5.15	hu	7	a	betoldas			alacsony
+Mic.5.15	hu	8	pogányokon	parositva	9,11	H0854+H1471	alacsony
+Mic.5.15	hu	9	a	parositva	12	H0834	alacsony
+Mic.5.15	hu	10	kik	parositva	12	H0834	alacsony
+Mic.5.15	hu	11	nem	parositva	13	H3808	alacsony
+Mic.5.15	hu	12	engedelmeskedtek	parositva	14	H8085	alacsony
+Mic.5.15	er	1		parositva	1	H9001	alacsony
+Mic.5.15	er	2		parositva	5	H6213	alacsony
+Mic.5.15	er	3		parositva	2	H9003	alacsony
+Mic.5.15	er	4		parositva	2	H0639	alacsony
+Mic.5.15	er	5		parositva	3	H9002	alacsony
+Mic.5.15	er	6		parositva	4	H9003	alacsony
+Mic.5.15	er	7		parositva	4	H2534	alacsony
+Mic.5.15	er	8		parositva	6	H5359	alacsony
+Mic.5.15	er	9		parositva	8	H0854	alacsony
+Mic.5.15	er	10		forditatlan		H9009	alacsony
+Mic.5.15	er	11		parositva	8	H1471	alacsony
+Mic.5.15	er	12		parositva	9,10	H0834	alacsony
+Mic.5.15	er	13		parositva	11	H3808	alacsony
+Mic.5.15	er	14		parositva	12	H8085	alacsony
+Mic.6.1	hu	1	Halljátok	parositva	1	H8085	alacsony
+Mic.6.1	hu	2	csak	parositva	2	H4994	alacsony
+Mic.6.1	hu	3	a	parositva	4	H0834	alacsony
+Mic.6.1	hu	4	mit	parositva	4	H0834	alacsony
+Mic.6.1	hu	5	mond	parositva	6	H0559	alacsony
+Mic.6.1	hu	6	az	betoldas			alacsony
+Mic.6.1	hu	7	Úr	parositva	5	H3068	alacsony
+Mic.6.1	hu	8	Kelj	parositva	7	H6965	alacsony
+Mic.6.1	hu	9	fel	parositva	7	H6965	alacsony
+Mic.6.1	hu	10	perelj	parositva	8	H7378	alacsony
+Mic.6.1	hu	11	a	betoldas			alacsony
+Mic.6.1	hu	12	hegyekkel	parositva	9,11	H0854+H2022	alacsony
+Mic.6.1	hu	13	és	parositva	12	H9002	alacsony
+Mic.6.1	hu	14	hallják	parositva	13	H8085	alacsony
+Mic.6.1	hu	15	meg	parositva	13	H8085	alacsony
+Mic.6.1	hu	16	szódat	parositva	16,17	H6963+H9021	alacsony
+Mic.6.1	hu	17	a	betoldas			alacsony
+Mic.6.1	hu	18	halmok	parositva	15	H1389	alacsony
+Mic.6.1	er	1		parositva	1	H8085	alacsony
+Mic.6.1	er	2		parositva	2	H4994	alacsony
+Mic.6.1	er	3		forditatlan		H0853	alacsony
+Mic.6.1	er	4		parositva	3,4	H0834	alacsony
+Mic.6.1	er	5		parositva	7	H3068	alacsony
+Mic.6.1	er	6		parositva	5	H0559	alacsony
+Mic.6.1	er	7		parositva	8,9	H6965	alacsony
+Mic.6.1	er	8		parositva	10	H7378	alacsony
+Mic.6.1	er	9		parositva	12	H0854	alacsony
+Mic.6.1	er	10		forditatlan		H9009	alacsony
+Mic.6.1	er	11		parositva	12	H2022	alacsony
+Mic.6.1	er	12		parositva	13	H9002	alacsony
+Mic.6.1	er	13		parositva	14,15	H8085	alacsony
+Mic.6.1	er	14		forditatlan		H9009	alacsony
+Mic.6.1	er	15		parositva	18	H1389	alacsony
+Mic.6.1	er	16		parositva	16	H6963	alacsony
+Mic.6.1	er	17		parositva	16	H9021	alacsony
+Mic.6.2	hu	1	Halljátok	parositva	1	H8085	alacsony
+Mic.6.2	hu	2	meg	parositva	1	H8085	alacsony
+Mic.6.2	hu	3	hegyek	parositva	2	H2022	alacsony
+Mic.6.2	hu	4	az	betoldas			alacsony
+Mic.6.2	hu	5	Úr	parositva	5	H3068	alacsony
+Mic.6.2	hu	6	peres	parositva	4	H7379	alacsony
+Mic.6.2	hu	7	dolgát	parositva	4	H7379	alacsony
+Mic.6.2	hu	8	és	parositva	6	H9002	alacsony
+Mic.6.2	hu	9	ti	betoldas			alacsony
+Mic.6.2	hu	10	a	betoldas			alacsony
+Mic.6.2	hu	11	földnek	parositva	10	H0776	alacsony
+Mic.6.2	hu	12	örök	parositva	8	H0386	alacsony
+Mic.6.2	hu	13	alapjai	parositva	9	H4144	alacsony
+Mic.6.2	hu	14	Mert	parositva	11	H3588	alacsony
+Mic.6.2	hu	15	pere	parositva	12	H7379	alacsony
+Mic.6.2	hu	16	van	betoldas			alacsony
+Mic.6.2	hu	17	az	betoldas			alacsony
+Mic.6.2	hu	18	Úrnak	parositva	13,14	H9005+H3068	alacsony
+Mic.6.2	hu	19	az	betoldas			alacsony
+Mic.6.2	hu	20	ő	parositva	17	H9023	alacsony
+Mic.6.2	hu	21	népével	parositva	15,16,17	H5973+H5971+H9023	alacsony
+Mic.6.2	hu	22	és	parositva	18	H9002	alacsony
+Mic.6.2	hu	23	az	betoldas			alacsony
+Mic.6.2	hu	24	Izráellel	parositva	19,20	H5973+H3478	alacsony
+Mic.6.2	hu	25	is	betoldas			alacsony
+Mic.6.2	hu	26	perbe	parositva	21	H3198	alacsony
+Mic.6.2	hu	27	száll	parositva	21	H3198	alacsony
+Mic.6.2	er	1		parositva	1,2	H8085	alacsony
+Mic.6.2	er	2		parositva	3	H2022	alacsony
+Mic.6.2	er	3		forditatlan		H0853	alacsony
+Mic.6.2	er	4		parositva	6,7	H7379	alacsony
+Mic.6.2	er	5		parositva	5	H3068	alacsony
+Mic.6.2	er	6		parositva	8	H9002	alacsony
+Mic.6.2	er	7		forditatlan		H9009	alacsony
+Mic.6.2	er	8		parositva	12	H0386	alacsony
+Mic.6.2	er	9		parositva	13	H4144	alacsony
+Mic.6.2	er	10		parositva	11	H0776	alacsony
+Mic.6.2	er	11		parositva	14	H3588	alacsony
+Mic.6.2	er	12		parositva	15	H7379	alacsony
+Mic.6.2	er	13		parositva	18	H9005	alacsony
+Mic.6.2	er	14		parositva	18	H3068	alacsony
+Mic.6.2	er	15		parositva	21	H5973	alacsony
+Mic.6.2	er	16		parositva	21	H5971	alacsony
+Mic.6.2	er	17		parositva	20,21	H9023	alacsony
+Mic.6.2	er	18		parositva	22	H9002	alacsony
+Mic.6.2	er	19		parositva	24	H5973	alacsony
+Mic.6.2	er	20		parositva	24	H3478	alacsony
+Mic.6.2	er	21		parositva	26,27	H3198	alacsony
+Mic.6.3	hu	1	Én	parositva	2	H9020	alacsony
+Mic.6.3	hu	2	népem	parositva	1,2	H5971+H9020	alacsony
+Mic.6.3	hu	3	mit	parositva	3	H4100	alacsony
+Mic.6.3	hu	4	vétettem	parositva	4	H6213	alacsony
+Mic.6.3	hu	5	te	parositva	6	H9031	alacsony
+Mic.6.3	hu	6	ellened	parositva	5,6	H9005+H9031	alacsony
+Mic.6.3	hu	7	és	parositva	7	H9002	alacsony
+Mic.6.3	hu	8	mivel	parositva	8	H4100	alacsony
+Mic.6.3	hu	9	fárasztottalak	parositva	9	H3811	alacsony
+Mic.6.3	hu	10	el	parositva	9	H3811	alacsony
+Mic.6.3	hu	11	téged	parositva	10	H9031	alacsony
+Mic.6.3	hu	12	Tégy	parositva	11	H6030	alacsony
+Mic.6.3	hu	13	vallást	parositva	11	H6030	alacsony
+Mic.6.3	hu	14	ellenem	parositva	12,13	H9003+H9030	alacsony
+Mic.6.3	er	1		parositva	2	H5971	alacsony
+Mic.6.3	er	2		parositva	1,2	H9020	alacsony
+Mic.6.3	er	3		parositva	3	H4100	alacsony
+Mic.6.3	er	4		parositva	4	H6213	alacsony
+Mic.6.3	er	5		parositva	6	H9005	alacsony
+Mic.6.3	er	6		parositva	5,6	H9031	alacsony
+Mic.6.3	er	7		parositva	7	H9002	alacsony
+Mic.6.3	er	8		parositva	8	H4100	alacsony
+Mic.6.3	er	9		parositva	9,10	H3811	alacsony
+Mic.6.3	er	10		parositva	11	H9031	alacsony
+Mic.6.3	er	11		parositva	12,13	H6030	alacsony
+Mic.6.3	er	12		parositva	14	H9003	alacsony
+Mic.6.3	er	13		parositva	14	H9030	alacsony
+Mic.6.4	hu	1	Hiszen	parositva	1	H3588	alacsony
+Mic.6.4	hu	2	felhoztalak	parositva	2,3	H5927+H9031	alacsony
+Mic.6.4	hu	3	Égyiptom	parositva	6	H4714	alacsony
+Mic.6.4	hu	4	földjéről	parositva	4,5	H9006+H0776	alacsony
+Mic.6.4	hu	5	és	parositva	7	H9002	alacsony
+Mic.6.4	hu	6	a	betoldas			alacsony
+Mic.6.4	hu	7	szolgák	parositva	10	H5650	alacsony
+Mic.6.4	hu	8	házából	parositva	8,9	H9006+H1004	alacsony
+Mic.6.4	hu	9	megváltottalak	parositva	11,12	H6299+H9031	alacsony
+Mic.6.4	hu	10	és	parositva	13	H9001	alacsony
+Mic.6.4	hu	11	előtted	parositva	15,16,17	H9005+H6440+H9021	alacsony
+Mic.6.4	hu	12	küldém	parositva	14	H7971	alacsony
+Mic.6.4	hu	13	Mózest	parositva	19	H4872	alacsony
+Mic.6.4	hu	14	Áront	parositva	20	H0175	alacsony
+Mic.6.4	hu	15	és	parositva	21	H9002	alacsony
+Mic.6.4	hu	16	Máriát	parositva	22	H4813	alacsony
+Mic.6.4	er	1		parositva	1	H3588	alacsony
+Mic.6.4	er	2		parositva	2	H5927	alacsony
+Mic.6.4	er	3		parositva	2	H9031	alacsony
+Mic.6.4	er	4		parositva	4	H9006	alacsony
+Mic.6.4	er	5		parositva	4	H0776	alacsony
+Mic.6.4	er	6		parositva	3	H4714	alacsony
+Mic.6.4	er	7		parositva	5	H9002	alacsony
+Mic.6.4	er	8		parositva	8	H9006	alacsony
+Mic.6.4	er	9		parositva	8	H1004	alacsony
+Mic.6.4	er	10		parositva	7	H5650	alacsony
+Mic.6.4	er	11		parositva	9	H6299	alacsony
+Mic.6.4	er	12		parositva	9	H9031	alacsony
+Mic.6.4	er	13		parositva	10	H9001	alacsony
+Mic.6.4	er	14		parositva	12	H7971	alacsony
+Mic.6.4	er	15		parositva	11	H9005	alacsony
+Mic.6.4	er	16		parositva	11	H6440	alacsony
+Mic.6.4	er	17		parositva	11	H9021	alacsony
+Mic.6.4	er	18		forditatlan		H0853	alacsony
+Mic.6.4	er	19		parositva	13	H4872	alacsony
+Mic.6.4	er	20		parositva	14	H0175	alacsony
+Mic.6.4	er	21		parositva	15	H9002	alacsony
+Mic.6.4	er	22		parositva	16	H4813	alacsony
+Mic.6.5	hu	1	Én	parositva	2	H9020	alacsony
+Mic.6.5	hu	2	népem	parositva	1,2	H5971+H9020	alacsony
+Mic.6.5	hu	3	Emlékezzél	parositva	3	H2142	alacsony
+Mic.6.5	hu	4	csak	parositva	4	H4994	alacsony
+Mic.6.5	hu	5	mit	parositva	5	H4100	alacsony
+Mic.6.5	hu	6	koholt	parositva	6	H3289	alacsony
+Mic.6.5	hu	7	Bálák	parositva	7	H1111	alacsony
+Mic.6.5	hu	8	Moábnak	parositva	9	H4124	alacsony
+Mic.6.5	hu	9	királya	parositva	8	H4428	alacsony
+Mic.6.5	hu	10	és	parositva	10	H9002	alacsony
+Mic.6.5	hu	11	mit	parositva	11	H4100	alacsony
+Mic.6.5	hu	12	felelt	parositva	12	H6030	alacsony
+Mic.6.5	hu	13	néki	parositva	14	H9033	alacsony
+Mic.6.5	hu	14	Bálám	parositva	15	H1109	alacsony
+Mic.6.5	hu	15	a	betoldas			alacsony
+Mic.6.5	hu	16	Beor	parositva	17	H1160	alacsony
+Mic.6.5	hu	17	fia	parositva	16	H1121	alacsony
+Mic.6.5	hu	18	Sittimtől	parositva	18,20	H4480+H7851	alacsony
+Mic.6.5	hu	19	fogva	parositva	18	H4480	alacsony
+Mic.6.5	hu	20	Gilgálig	parositva	21,23	H5704+H1537	alacsony
+Mic.6.5	hu	21	hogy	parositva	24	H4616	alacsony
+Mic.6.5	hu	22	megismerjed	parositva	25	H3045	alacsony
+Mic.6.5	hu	23	az	betoldas			alacsony
+Mic.6.5	hu	24	Úr	parositva	27	H3068	alacsony
+Mic.6.5	hu	25	igazságos	parositva	26	H6666	alacsony
+Mic.6.5	hu	26	cselekedeteit	parositva	26	H6666	alacsony
+Mic.6.5	er	1		parositva	2	H5971	alacsony
+Mic.6.5	er	2		parositva	1,2	H9020	alacsony
+Mic.6.5	er	3		parositva	3	H2142	alacsony
+Mic.6.5	er	4		parositva	4	H4994	alacsony
+Mic.6.5	er	5		parositva	5	H4100	alacsony
+Mic.6.5	er	6		parositva	6	H3289	alacsony
+Mic.6.5	er	7		parositva	7	H1111	alacsony
+Mic.6.5	er	8		parositva	9	H4428	alacsony
+Mic.6.5	er	9		parositva	8	H4124	alacsony
+Mic.6.5	er	10		parositva	10	H9002	alacsony
+Mic.6.5	er	11		parositva	11	H4100	alacsony
+Mic.6.5	er	12		parositva	12	H6030	alacsony
+Mic.6.5	er	13		forditatlan		H0853	alacsony
+Mic.6.5	er	14		parositva	13	H9033	alacsony
+Mic.6.5	er	15		parositva	14	H1109	alacsony
+Mic.6.5	er	16		parositva	17	H1121	alacsony
+Mic.6.5	er	17		parositva	16	H1160	alacsony
+Mic.6.5	er	18		parositva	18,19	H4480	alacsony
+Mic.6.5	er	19		forditatlan		H9009	alacsony
+Mic.6.5	er	20		parositva	18	H7851	alacsony
+Mic.6.5	er	21		parositva	20	H5704	alacsony
+Mic.6.5	er	22		forditatlan		H9009	alacsony
+Mic.6.5	er	23		parositva	20	H1537	alacsony
+Mic.6.5	er	24		parositva	21	H4616	alacsony
+Mic.6.5	er	25		parositva	22	H3045	alacsony
+Mic.6.5	er	26		parositva	25,26	H6666	alacsony
+Mic.6.5	er	27		parositva	24	H3068	alacsony
+Mic.6.6	hu	1	Mivel	parositva	1,2	H9003+H4100	alacsony
+Mic.6.6	hu	2	menjek	parositva	3	H6923	alacsony
+Mic.6.6	hu	3	eleibe	parositva	3	H6923	alacsony
+Mic.6.6	hu	4	az	betoldas			alacsony
+Mic.6.6	hu	5	Úrnak	parositva	4	H3068	alacsony
+Mic.6.6	hu	6	Hajlongjak	parositva	5	H3721	alacsony
+Mic.6.6	hu	7	é	betoldas			alacsony
+Mic.6.6	hu	8	a	betoldas			alacsony
+Mic.6.6	hu	9	magasságos	parositva	8	H4791	alacsony
+Mic.6.6	hu	10	Istennek	parositva	6,7	H9005+H0430	alacsony
+Mic.6.6	hu	11	Égőáldozatokkal	parositva	12,13	H9003+H5930	alacsony
+Mic.6.6	hu	12	menjek	parositva	10	H6923	alacsony
+Mic.6.6	hu	13	é	parositva	9	H9008	alacsony
+Mic.6.6	hu	14	elébe	parositva	10,11	H6923+H9033	alacsony
+Mic.6.6	hu	15	esztendős	parositva	16,17	H1121+H8141	alacsony
+Mic.6.6	hu	16	borjúkkal	parositva	14,15	H9003+H5695	alacsony
+Mic.6.6	er	1		parositva	1	H9003	alacsony
+Mic.6.6	er	2		parositva	1	H4100	alacsony
+Mic.6.6	er	3		parositva	2,3	H6923	alacsony
+Mic.6.6	er	4		parositva	5	H3068	alacsony
+Mic.6.6	er	5		parositva	6	H3721	alacsony
+Mic.6.6	er	6		parositva	10	H9005	alacsony
+Mic.6.6	er	7		parositva	10	H0430	alacsony
+Mic.6.6	er	8		parositva	9	H4791	alacsony
+Mic.6.6	er	9		parositva	13	H9008	alacsony
+Mic.6.6	er	10		parositva	12,14	H6923	alacsony
+Mic.6.6	er	11		parositva	14	H9033	alacsony
+Mic.6.6	er	12		parositva	11	H9003	alacsony
+Mic.6.6	er	13		parositva	11	H5930	alacsony
+Mic.6.6	er	14		parositva	16	H9003	alacsony
+Mic.6.6	er	15		parositva	16	H5695	alacsony
+Mic.6.6	er	16		parositva	15	H1121	alacsony
+Mic.6.6	er	17		parositva	15	H8141	alacsony
+Mic.6.7	hu	1	Kedvét	parositva	2	H7521	alacsony
+Mic.6.7	hu	2	leli	parositva	2	H7521	alacsony
+Mic.6.7	hu	3	é	parositva	1	H9008	alacsony
+Mic.6.7	hu	4	az	betoldas			alacsony
+Mic.6.7	hu	5	Úr	parositva	3	H3068	alacsony
+Mic.6.7	hu	6	ezernyi	parositva	5	H0505	alacsony
+Mic.6.7	hu	7	kosokban	parositva	4,6	H9003+H0352	alacsony
+Mic.6.7	hu	8	vagy	betoldas			alacsony
+Mic.6.7	hu	9	tízezernyi	parositva	7,8	H9003+H7233	alacsony
+Mic.6.7	hu	10	olaj	parositva	10	H8081	alacsony
+Mic.6.7	hu	11	patakokban	parositva	9	H5158	alacsony
+Mic.6.7	hu	12	Elsőszülöttemet	parositva	13,14	H1060+H9020	alacsony
+Mic.6.7	hu	13	adjam	parositva	12	H5414	alacsony
+Mic.6.7	hu	14	é	parositva	11	H9008	alacsony
+Mic.6.7	hu	15	vétkemért	parositva	15,16	H6588+H9020	alacsony
+Mic.6.7	hu	16	vagy	betoldas			alacsony
+Mic.6.7	hu	17	méhem	parositva	18,19	H0990+H9020	alacsony
+Mic.6.7	hu	18	gyümölcsét	parositva	17	H6529	alacsony
+Mic.6.7	hu	19	lelkemnek	parositva	21,22	H5315+H9020	alacsony
+Mic.6.7	hu	20	bűnéért	parositva	20	H2403	alacsony
+Mic.6.7	er	1		parositva	3	H9008	alacsony
+Mic.6.7	er	2		parositva	1,2	H7521	alacsony
+Mic.6.7	er	3		parositva	5	H3068	alacsony
+Mic.6.7	er	4		parositva	7	H9003	alacsony
+Mic.6.7	er	5		parositva	6	H0505	alacsony
+Mic.6.7	er	6		parositva	7	H0352	alacsony
+Mic.6.7	er	7		parositva	9	H9003	alacsony
+Mic.6.7	er	8		parositva	9	H7233	alacsony
+Mic.6.7	er	9		parositva	11	H5158	alacsony
+Mic.6.7	er	10		parositva	10	H8081	alacsony
+Mic.6.7	er	11		parositva	14	H9008	alacsony
+Mic.6.7	er	12		parositva	13	H5414	alacsony
+Mic.6.7	er	13		parositva	12	H1060	alacsony
+Mic.6.7	er	14		parositva	12	H9020	alacsony
+Mic.6.7	er	15		parositva	15	H6588	alacsony
+Mic.6.7	er	16		parositva	15	H9020	alacsony
+Mic.6.7	er	17		parositva	18	H6529	alacsony
+Mic.6.7	er	18		parositva	17	H0990	alacsony
+Mic.6.7	er	19		parositva	17	H9020	alacsony
+Mic.6.7	er	20		parositva	20	H2403	alacsony
+Mic.6.7	er	21		parositva	19	H5315	alacsony
+Mic.6.7	er	22		parositva	19	H9020	alacsony
+Mic.6.8	hu	1	Megjelentette	parositva	1	H5046	alacsony
+Mic.6.8	hu	2	néked	parositva	2,3	H9005+H9031	alacsony
+Mic.6.8	hu	3	oh	betoldas			alacsony
+Mic.6.8	hu	4	ember	parositva	4	H0120	alacsony
+Mic.6.8	hu	5	mi	parositva	5	H4100	alacsony
+Mic.6.8	hu	6	légyen	betoldas			alacsony
+Mic.6.8	hu	7	a	betoldas			alacsony
+Mic.6.8	hu	8	jó	parositva	6	H2896	alacsony
+Mic.6.8	hu	9	és	parositva	7	H9002	alacsony
+Mic.6.8	hu	10	mit	parositva	8	H4100	alacsony
+Mic.6.8	hu	11	kiván	parositva	10	H1875	alacsony
+Mic.6.8	hu	12	az	betoldas			alacsony
+Mic.6.8	hu	13	Úr	parositva	9	H3068	alacsony
+Mic.6.8	hu	14	te	parositva	12	H9031	alacsony
+Mic.6.8	hu	15	tőled	parositva	11,12	H4480+H9031	alacsony
+Mic.6.8	hu	16	Csak	parositva	14	H0518	alacsony
+Mic.6.8	hu	17	azt	betoldas			alacsony
+Mic.6.8	hu	18	hogy	parositva	13	H3588	alacsony
+Mic.6.8	hu	19	igazságot	parositva	16	H4941	alacsony
+Mic.6.8	hu	20	cselekedjél	parositva	15	H6213	alacsony
+Mic.6.8	hu	21	szeressed	parositva	18	H0157	alacsony
+Mic.6.8	hu	22	az	betoldas			alacsony
+Mic.6.8	hu	23	irgalmasságot	parositva	19	H2617	alacsony
+Mic.6.8	hu	24	és	parositva	20	H9002	alacsony
+Mic.6.8	hu	25	hogy	betoldas			alacsony
+Mic.6.8	hu	26	alázatosan	parositva	21	H6800	alacsony
+Mic.6.8	hu	27	járj	parositva	22	H1980	alacsony
+Mic.6.8	hu	28	a	betoldas			alacsony
+Mic.6.8	hu	29	te	parositva	25	H9021	alacsony
+Mic.6.8	hu	30	Isteneddel	parositva	23,24,25	H5973+H0430+H9021	alacsony
+Mic.6.8	er	1		parositva	1	H5046	alacsony
+Mic.6.8	er	2		parositva	2	H9005	alacsony
+Mic.6.8	er	3		parositva	2	H9031	alacsony
+Mic.6.8	er	4		parositva	4	H0120	alacsony
+Mic.6.8	er	5		parositva	5	H4100	alacsony
+Mic.6.8	er	6		parositva	8	H2896	alacsony
+Mic.6.8	er	7		parositva	9	H9002	alacsony
+Mic.6.8	er	8		parositva	10	H4100	alacsony
+Mic.6.8	er	9		parositva	13	H3068	alacsony
+Mic.6.8	er	10		parositva	11	H1875	alacsony
+Mic.6.8	er	11		parositva	15	H4480	alacsony
+Mic.6.8	er	12		parositva	14,15	H9031	alacsony
+Mic.6.8	er	13		parositva	18	H3588	alacsony
+Mic.6.8	er	14		parositva	16	H0518	alacsony
+Mic.6.8	er	15		parositva	20	H6213	alacsony
+Mic.6.8	er	16		parositva	19	H4941	alacsony
+Mic.6.8	er	17		forditatlan		H9002	alacsony
+Mic.6.8	er	18		parositva	21	H0157	alacsony
+Mic.6.8	er	19		parositva	23	H2617	alacsony
+Mic.6.8	er	20		parositva	24	H9002	alacsony
+Mic.6.8	er	21		parositva	26	H6800	alacsony
+Mic.6.8	er	22		parositva	27	H1980	alacsony
+Mic.6.8	er	23		parositva	30	H5973	alacsony
+Mic.6.8	er	24		parositva	30	H0430	alacsony
+Mic.6.8	er	25		parositva	29,30	H9021	alacsony
+Mic.6.9	hu	1	Az	betoldas			alacsony
+Mic.6.9	hu	2	Úrnak	parositva	2	H3068	alacsony
+Mic.6.9	hu	3	szava	parositva	1	H6963	alacsony
+Mic.6.9	hu	4	kiált	parositva	5	H7121	alacsony
+Mic.6.9	hu	5	a	betoldas			alacsony
+Mic.6.9	hu	6	városnak	parositva	3,4	H9005+H5892	alacsony
+Mic.6.9	hu	7	és	parositva	6	H9002	alacsony
+Mic.6.9	hu	8	a	betoldas			alacsony
+Mic.6.9	hu	9	te	parositva	10	H9021	alacsony
+Mic.6.9	hu	10	neved	parositva	9,10	H8034+H9021	alacsony
+Mic.6.9	hu	11	néz	parositva	8	H7200	alacsony
+Mic.6.9	hu	12	bölcseségre	parositva	7	H8454	alacsony
+Mic.6.9	hu	13	Halljátok	parositva	11	H8085	alacsony
+Mic.6.9	hu	14	meg	parositva	11	H8085	alacsony
+Mic.6.9	hu	15	a	betoldas			alacsony
+Mic.6.9	hu	16	vesszőt	parositva	12	H4294	alacsony
+Mic.6.9	hu	17	és	parositva	13	H9002	alacsony
+Mic.6.9	hu	18	ki	parositva	14	H4310	alacsony
+Mic.6.9	hu	19	rendeli	parositva	15	H3259	alacsony
+Mic.6.9	hu	20	azt	parositva	16	H9034	alacsony
+Mic.6.9	er	1		parositva	3	H6963	alacsony
+Mic.6.9	er	2		parositva	2	H3068	alacsony
+Mic.6.9	er	3		parositva	6	H9005	alacsony
+Mic.6.9	er	4		parositva	6	H5892	alacsony
+Mic.6.9	er	5		parositva	4	H7121	alacsony
+Mic.6.9	er	6		parositva	7	H9002	alacsony
+Mic.6.9	er	7		parositva	12	H8454	alacsony
+Mic.6.9	er	8		parositva	11	H7200	alacsony
+Mic.6.9	er	9		parositva	10	H8034	alacsony
+Mic.6.9	er	10		parositva	9,10	H9021	alacsony
+Mic.6.9	er	11		parositva	13,14	H8085	alacsony
+Mic.6.9	er	12		parositva	16	H4294	alacsony
+Mic.6.9	er	13		parositva	17	H9002	alacsony
+Mic.6.9	er	14		parositva	18	H4310	alacsony
+Mic.6.9	er	15		parositva	19	H3259	alacsony
+Mic.6.9	er	16		parositva	20	H9034	alacsony
+Mic.6.10	hu	1	Vannak	parositva	3	H0786	alacsony
+Mic.6.10	hu	2	é	parositva	2	H9008	alacsony
+Mic.6.10	hu	3	még	parositva	1	H5750	alacsony
+Mic.6.10	hu	4	a	betoldas			alacsony
+Mic.6.10	hu	5	gonosznak	parositva	5	H7563	alacsony
+Mic.6.10	hu	6	házában	parositva	4	H1004	alacsony
+Mic.6.10	hu	7	hamissággal	parositva	7	H7562	alacsony
+Mic.6.10	hu	8	gyűjtött	betoldas			alacsony
+Mic.6.10	hu	9	kincsek	parositva	6	H0214	alacsony
+Mic.6.10	hu	10	és	parositva	8	H9002	alacsony
+Mic.6.10	hu	11	ösztövér	parositva	10	H7332	alacsony
+Mic.6.10	hu	12	véka	parositva	9	H0374	alacsony
+Mic.6.10	hu	13	a	betoldas			alacsony
+Mic.6.10	hu	14	mely	betoldas			alacsony
+Mic.6.10	hu	15	útálatos	parositva	11	H2194	alacsony
+Mic.6.10	er	1		parositva	3	H5750	alacsony
+Mic.6.10	er	2		parositva	2	H9008	alacsony
+Mic.6.10	er	3		parositva	1	H0786	alacsony
+Mic.6.10	er	4		parositva	6	H1004	alacsony
+Mic.6.10	er	5		parositva	5	H7563	alacsony
+Mic.6.10	er	6		parositva	9	H0214	alacsony
+Mic.6.10	er	7		parositva	7	H7562	alacsony
+Mic.6.10	er	8		parositva	10	H9002	alacsony
+Mic.6.10	er	9		parositva	12	H0374	alacsony
+Mic.6.10	er	10		parositva	11	H7332	alacsony
+Mic.6.10	er	11		parositva	15	H2194	alacsony
+Mic.6.11	hu	1	Vajjon	parositva	1	H9008	alacsony
+Mic.6.11	hu	2	jóváhagyom	parositva	2	H2135	alacsony
+Mic.6.11	hu	3	é	parositva	1	H9008	alacsony
+Mic.6.11	hu	4	a	betoldas			alacsony
+Mic.6.11	hu	5	hamis	parositva	5	H7562	alacsony
+Mic.6.11	hu	6	mértéket	parositva	3,4	H9003+H3976	alacsony
+Mic.6.11	hu	7	és	parositva	6	H9002	alacsony
+Mic.6.11	hu	8	a	betoldas			alacsony
+Mic.6.11	hu	9	zsákba	parositva	7,8	H9003+H3599	alacsony
+Mic.6.11	hu	10	rejtett	betoldas			alacsony
+Mic.6.11	hu	11	csalárd	parositva	10	H4820	alacsony
+Mic.6.11	hu	12	fontokat	parositva	9	H0068	alacsony
+Mic.6.11	er	1		parositva	1,3	H9008	alacsony
+Mic.6.11	er	2		parositva	2	H2135	alacsony
+Mic.6.11	er	3		parositva	6	H9003	alacsony
+Mic.6.11	er	4		parositva	6	H3976	alacsony
+Mic.6.11	er	5		parositva	5	H7562	alacsony
+Mic.6.11	er	6		parositva	7	H9002	alacsony
+Mic.6.11	er	7		parositva	9	H9003	alacsony
+Mic.6.11	er	8		parositva	9	H3599	alacsony
+Mic.6.11	er	9		parositva	12	H0068	alacsony
+Mic.6.11	er	10		parositva	11	H4820	alacsony
+Mic.6.12	hu	1	Mert	parositva	1	H0834	alacsony
+Mic.6.12	hu	2	a	betoldas			alacsony
+Mic.6.12	hu	3	gazdagok	parositva	2	H6223	alacsony
+Mic.6.12	hu	4	megtöltöztek	parositva	4	H4390	alacsony
+Mic.6.12	hu	5	köztök	parositva	3	H9024	alacsony
+Mic.6.12	hu	6	ragadománynyal	parositva	5	H2555	alacsony
+Mic.6.12	hu	7	lakosai	parositva	7,8	H3427+H9024	alacsony
+Mic.6.12	hu	8	pedig	parositva	6	H9002	alacsony
+Mic.6.12	hu	9	hazugságot	parositva	10	H8267	alacsony
+Mic.6.12	hu	10	szólnak	parositva	9	H1696	alacsony
+Mic.6.12	hu	11	és	parositva	11	H9002	alacsony
+Mic.6.12	hu	12	nyelvök	parositva	12,13	H3956+H9028	alacsony
+Mic.6.12	hu	13	csalárd	parositva	14	H7423	alacsony
+Mic.6.12	hu	14	az	betoldas			alacsony
+Mic.6.12	hu	15	ő	parositva	17	H9028	alacsony
+Mic.6.12	hu	16	szájokban	parositva	15,16,17	H9003+H6310+H9028	alacsony
+Mic.6.12	er	1		parositva	1	H0834	alacsony
+Mic.6.12	er	2		parositva	3	H6223	alacsony
+Mic.6.12	er	3		parositva	5	H9024	alacsony
+Mic.6.12	er	4		parositva	4	H4390	alacsony
+Mic.6.12	er	5		parositva	6	H2555	alacsony
+Mic.6.12	er	6		parositva	8	H9002	alacsony
+Mic.6.12	er	7		parositva	7	H3427	alacsony
+Mic.6.12	er	8		parositva	7	H9024	alacsony
+Mic.6.12	er	9		parositva	10	H1696	alacsony
+Mic.6.12	er	10		parositva	9	H8267	alacsony
+Mic.6.12	er	11		parositva	11	H9002	alacsony
+Mic.6.12	er	12		parositva	12	H3956	alacsony
+Mic.6.12	er	13		parositva	12	H9028	alacsony
+Mic.6.12	er	14		parositva	13	H7423	alacsony
+Mic.6.12	er	15		parositva	16	H9003	alacsony
+Mic.6.12	er	16		parositva	16	H6310	alacsony
+Mic.6.12	er	17		parositva	15,16	H9028	alacsony
+Mic.6.13	hu	1	Én	parositva	3	H0589	alacsony
+Mic.6.13	hu	2	is	parositva	2	H1571	alacsony
+Mic.6.13	hu	3	azért	parositva	1	H9002	alacsony
+Mic.6.13	hu	4	megvervén	parositva	5	H5221	alacsony
+Mic.6.13	hu	5	beteggé	parositva	4	H2470	alacsony
+Mic.6.13	hu	6	teszlek	parositva	4	H2470	alacsony
+Mic.6.13	hu	7	téged	parositva	6	H9031	alacsony
+Mic.6.13	hu	8	elpusztítalak	parositva	7	H8074	alacsony
+Mic.6.13	hu	9	a	betoldas			alacsony
+Mic.6.13	hu	10	te	parositva	10	H9021	alacsony
+Mic.6.13	hu	11	bűneid	parositva	9,10	H2403+H9021	alacsony
+Mic.6.13	hu	12	miatt	parositva	8	H5921	alacsony
+Mic.6.13	er	1		parositva	3	H9002	alacsony
+Mic.6.13	er	2		parositva	2	H1571	alacsony
+Mic.6.13	er	3		parositva	1	H0589	alacsony
+Mic.6.13	er	4		parositva	5,6	H2470	alacsony
+Mic.6.13	er	5		parositva	4	H5221	alacsony
+Mic.6.13	er	6		parositva	7	H9031	alacsony
+Mic.6.13	er	7		parositva	8	H8074	alacsony
+Mic.6.13	er	8		parositva	12	H5921	alacsony
+Mic.6.13	er	9		parositva	11	H2403	alacsony
+Mic.6.13	er	10		parositva	10,11	H9021	alacsony
+Mic.6.14	hu	1	Eszel	parositva	2	H0398	alacsony
+Mic.6.14	hu	2	te	parositva	1	H0859	alacsony
+Mic.6.14	hu	3	de	parositva	3	H9002	alacsony
+Mic.6.14	hu	4	meg	parositva	5	H7646	alacsony
+Mic.6.14	hu	5	nem	parositva	4	H3808	alacsony
+Mic.6.14	hu	6	elégszel	parositva	5	H7646	alacsony
+Mic.6.14	hu	7	és	parositva	6	H9002	alacsony
+Mic.6.14	hu	8	benned	parositva	9,10,11	H9003+H7130+H9021	alacsony
+Mic.6.14	hu	9	marad	betoldas			alacsony
+Mic.6.14	hu	10	a	betoldas			alacsony
+Mic.6.14	hu	11	te	parositva	8	H9021	alacsony
+Mic.6.14	hu	12	éhséged	parositva	7,8	H3445+H9021	alacsony
+Mic.6.14	hu	13	és	parositva	12	H9002	alacsony
+Mic.6.14	hu	14	gyűjtesz	parositva	13	H5253	alacsony
+Mic.6.14	hu	15	de	parositva	14	H9002	alacsony
+Mic.6.14	hu	16	nem	parositva	15	H3808	alacsony
+Mic.6.14	hu	17	takarítasz	parositva	16	H6403	alacsony
+Mic.6.14	hu	18	és	parositva	17	H9002	alacsony
+Mic.6.14	hu	19	a	betoldas			alacsony
+Mic.6.14	hu	20	mit	parositva	18	H0834	alacsony
+Mic.6.14	hu	21	megtakarítsz	parositva	19	H6403	alacsony
+Mic.6.14	hu	22	is	betoldas			alacsony
+Mic.6.14	hu	23	fegyverre	parositva	20,21	H9005+H2719	alacsony
+Mic.6.14	hu	24	hányom	parositva	22	H5414	alacsony
+Mic.6.14	er	1		parositva	2	H0859	alacsony
+Mic.6.14	er	2		parositva	1	H0398	alacsony
+Mic.6.14	er	3		parositva	3	H9002	alacsony
+Mic.6.14	er	4		parositva	5	H3808	alacsony
+Mic.6.14	er	5		parositva	4,6	H7646	alacsony
+Mic.6.14	er	6		parositva	7	H9002	alacsony
+Mic.6.14	er	7		parositva	12	H3445	alacsony
+Mic.6.14	er	8		parositva	11,12	H9021	alacsony
+Mic.6.14	er	9		parositva	8	H9003	alacsony
+Mic.6.14	er	10		parositva	8	H7130	alacsony
+Mic.6.14	er	11		parositva	8	H9021	alacsony
+Mic.6.14	er	12		parositva	13	H9002	alacsony
+Mic.6.14	er	13		parositva	14	H5253	alacsony
+Mic.6.14	er	14		parositva	15	H9002	alacsony
+Mic.6.14	er	15		parositva	16	H3808	alacsony
+Mic.6.14	er	16		parositva	17	H6403	alacsony
+Mic.6.14	er	17		parositva	18	H9002	alacsony
+Mic.6.14	er	18		parositva	20	H0834	alacsony
+Mic.6.14	er	19		parositva	21	H6403	alacsony
+Mic.6.14	er	20		parositva	23	H9005	alacsony
+Mic.6.14	er	21		parositva	23	H2719	alacsony
+Mic.6.14	er	22		parositva	24	H5414	alacsony
+Mic.6.15	hu	1	Vetsz	parositva	2	H2232	alacsony
+Mic.6.15	hu	2	te	parositva	1	H0859	alacsony
+Mic.6.15	hu	3	de	parositva	3	H9002	alacsony
+Mic.6.15	hu	4	nem	parositva	4	H3808	alacsony
+Mic.6.15	hu	5	aratsz	parositva	5	H7114	alacsony
+Mic.6.15	hu	6	olajat	parositva	8	H2132	alacsony
+Mic.6.15	hu	7	sajtolsz	parositva	7	H1869	alacsony
+Mic.6.15	hu	8	te	parositva	6	H0859	alacsony
+Mic.6.15	hu	9	de	parositva	9	H9002	alacsony
+Mic.6.15	hu	10	nem	parositva	10	H3808	alacsony
+Mic.6.15	hu	11	kened	parositva	11	H5480	alacsony
+Mic.6.15	hu	12	magadat	betoldas			alacsony
+Mic.6.15	hu	13	olajjal	parositva	12	H8081	alacsony
+Mic.6.15	hu	14	és	parositva	13	H9002	alacsony
+Mic.6.15	hu	15	mustot	parositva	14	H8492	alacsony
+Mic.6.15	hu	16	is	betoldas			alacsony
+Mic.6.15	hu	17	de	parositva	15	H9002	alacsony
+Mic.6.15	hu	18	bort	parositva	18	H3196	alacsony
+Mic.6.15	hu	19	nem	parositva	16	H3808	alacsony
+Mic.6.15	hu	20	iszol	parositva	17	H8354	alacsony
+Mic.6.15	er	1		parositva	2	H0859	alacsony
+Mic.6.15	er	2		parositva	1	H2232	alacsony
+Mic.6.15	er	3		parositva	3	H9002	alacsony
+Mic.6.15	er	4		parositva	4	H3808	alacsony
+Mic.6.15	er	5		parositva	5	H7114	alacsony
+Mic.6.15	er	6		parositva	8	H0859	alacsony
+Mic.6.15	er	7		parositva	7	H1869	alacsony
+Mic.6.15	er	8		parositva	6	H2132	alacsony
+Mic.6.15	er	9		parositva	9	H9002	alacsony
+Mic.6.15	er	10		parositva	10	H3808	alacsony
+Mic.6.15	er	11		parositva	11	H5480	alacsony
+Mic.6.15	er	12		parositva	13	H8081	alacsony
+Mic.6.15	er	13		parositva	14	H9002	alacsony
+Mic.6.15	er	14		parositva	15	H8492	alacsony
+Mic.6.15	er	15		parositva	17	H9002	alacsony
+Mic.6.15	er	16		parositva	19	H3808	alacsony
+Mic.6.15	er	17		parositva	20	H8354	alacsony
+Mic.6.15	er	18		parositva	18	H3196	alacsony
+Mic.6.16	hu	1	Mert	parositva	1	H9002	alacsony
+Mic.6.16	hu	2	az	betoldas			alacsony
+Mic.6.16	hu	3	Omri	parositva	4	H6018	alacsony
+Mic.6.16	hu	4	parancsolataihoz	parositva	3	H2708	alacsony
+Mic.6.16	hu	5	szabjátok	parositva	2	H8104	alacsony
+Mic.6.16	hu	6	magatokat	betoldas			alacsony
+Mic.6.16	hu	7	és	parositva	5	H9002	alacsony
+Mic.6.16	hu	8	az	betoldas			alacsony
+Mic.6.16	hu	9	Ákháb	parositva	9	H0256	alacsony
+Mic.6.16	hu	10	házának	parositva	8	H1004	alacsony
+Mic.6.16	hu	11	minden	parositva	6	H3605	alacsony
+Mic.6.16	hu	12	dolgához	parositva	7	H4639	alacsony
+Mic.6.16	hu	13	és	parositva	10	H9001	alacsony
+Mic.6.16	hu	14	azoknak	parositva	14	H9028	alacsony
+Mic.6.16	hu	15	tanácsán	parositva	12,13	H9003+H4156	alacsony
+Mic.6.16	hu	16	jártok	parositva	11	H1980	alacsony
+Mic.6.16	hu	17	Hogy	parositva	15	H4616	alacsony
+Mic.6.16	hu	18	pusztasággá	parositva	20,21	H9005+H8047	alacsony
+Mic.6.16	hu	19	tegyelek	parositva	16,17	H5414+H9040	alacsony
+Mic.6.16	hu	20	tégedet	parositva	19	H9031	alacsony
+Mic.6.16	hu	21	az	betoldas			alacsony
+Mic.6.16	hu	22	ő	parositva	24	H9024	alacsony
+Mic.6.16	hu	23	lakosait	parositva	23,24	H3427+H9024	alacsony
+Mic.6.16	hu	24	pedig	parositva	22	H9002	alacsony
+Mic.6.16	hu	25	csúfsággá	parositva	25,26	H9005+H8322	alacsony
+Mic.6.16	hu	26	és	parositva	27	H9002	alacsony
+Mic.6.16	hu	27	hordozzátok	parositva	31	H5375	alacsony
+Mic.6.16	hu	28	népemnek	parositva	29,30	H5971+H9020	alacsony
+Mic.6.16	hu	29	gyalázatát	parositva	28	H2781	alacsony
+Mic.6.16	er	1		parositva	1	H9002	alacsony
+Mic.6.16	er	2		parositva	5	H8104	alacsony
+Mic.6.16	er	3		parositva	4	H2708	alacsony
+Mic.6.16	er	4		parositva	3	H6018	alacsony
+Mic.6.16	er	5		parositva	7	H9002	alacsony
+Mic.6.16	er	6		parositva	11	H3605	alacsony
+Mic.6.16	er	7		parositva	12	H4639	alacsony
+Mic.6.16	er	8		parositva	10	H1004	alacsony
+Mic.6.16	er	9		parositva	9	H0256	alacsony
+Mic.6.16	er	10		parositva	13	H9001	alacsony
+Mic.6.16	er	11		parositva	16	H1980	alacsony
+Mic.6.16	er	12		parositva	15	H9003	alacsony
+Mic.6.16	er	13		parositva	15	H4156	alacsony
+Mic.6.16	er	14		parositva	14	H9028	alacsony
+Mic.6.16	er	15		parositva	17	H4616	alacsony
+Mic.6.16	er	16		parositva	19	H5414	alacsony
+Mic.6.16	er	17		parositva	19	H9040	alacsony
+Mic.6.16	er	18		forditatlan		H0853	alacsony
+Mic.6.16	er	19		parositva	20	H9031	alacsony
+Mic.6.16	er	20		parositva	18	H9005	alacsony
+Mic.6.16	er	21		parositva	18	H8047	alacsony
+Mic.6.16	er	22		parositva	24	H9002	alacsony
+Mic.6.16	er	23		parositva	23	H3427	alacsony
+Mic.6.16	er	24		parositva	22,23	H9024	alacsony
+Mic.6.16	er	25		parositva	25	H9005	alacsony
+Mic.6.16	er	26		parositva	25	H8322	alacsony
+Mic.6.16	er	27		parositva	26	H9002	alacsony
+Mic.6.16	er	28		parositva	29	H2781	alacsony
+Mic.6.16	er	29		parositva	28	H5971	alacsony
+Mic.6.16	er	30		parositva	28	H9020	alacsony
+Mic.6.16	er	31		parositva	27	H5375	alacsony
+Mic.7.1	hu	1	Jaj	parositva	1	H0480	alacsony
+Mic.7.1	hu	2	nékem	parositva	2,3	H9005+H9030	alacsony
+Mic.7.1	hu	3	mert	parositva	4	H3588	alacsony
+Mic.7.1	hu	4	olyanná	betoldas			alacsony
+Mic.7.1	hu	5	lettem	parositva	5	H1961	alacsony
+Mic.7.1	hu	6	mint	parositva	6	H9004	alacsony
+Mic.7.1	hu	7	a	betoldas			alacsony
+Mic.7.1	hu	8	letakarított	parositva	7	H0625	alacsony
+Mic.7.1	hu	9	mező	parositva	8	H7019	alacsony
+Mic.7.1	hu	10	mint	parositva	9	H9004	alacsony
+Mic.7.1	hu	11	a	betoldas			alacsony
+Mic.7.1	hu	12	megszedett	parositva	10	H5955	alacsony
+Mic.7.1	hu	13	szőlő	parositva	11	H1210	alacsony
+Mic.7.1	hu	14	egy	betoldas			alacsony
+Mic.7.1	hu	15	enni	parositva	14,15	H9005+H0398	alacsony
+Mic.7.1	hu	16	való	betoldas			alacsony
+Mic.7.1	hu	17	gerezd	parositva	13	H0811	alacsony
+Mic.7.1	hu	18	sem	parositva	12	H0369	alacsony
+Mic.7.1	hu	19	maradott	betoldas			alacsony
+Mic.7.1	hu	20	pedig	betoldas			alacsony
+Mic.7.1	hu	21	zsengére	parositva	16	H1063	alacsony
+Mic.7.1	hu	22	vágyott	parositva	17	H0183	alacsony
+Mic.7.1	hu	23	a	betoldas			alacsony
+Mic.7.1	hu	24	lelkem	parositva	18,19	H5315+H9020	alacsony
+Mic.7.1	er	1		parositva	1	H0480	alacsony
+Mic.7.1	er	2		parositva	2	H9005	alacsony
+Mic.7.1	er	3		parositva	2	H9030	alacsony
+Mic.7.1	er	4		parositva	3	H3588	alacsony
+Mic.7.1	er	5		parositva	5	H1961	alacsony
+Mic.7.1	er	6		parositva	6	H9004	alacsony
+Mic.7.1	er	7		parositva	8	H0625	alacsony
+Mic.7.1	er	8		parositva	9	H7019	alacsony
+Mic.7.1	er	9		parositva	10	H9004	alacsony
+Mic.7.1	er	10		parositva	12	H5955	alacsony
+Mic.7.1	er	11		parositva	13	H1210	alacsony
+Mic.7.1	er	12		parositva	18	H0369	alacsony
+Mic.7.1	er	13		parositva	17	H0811	alacsony
+Mic.7.1	er	14		parositva	15	H9005	alacsony
+Mic.7.1	er	15		parositva	15	H0398	alacsony
+Mic.7.1	er	16		parositva	21	H1063	alacsony
+Mic.7.1	er	17		parositva	22	H0183	alacsony
+Mic.7.1	er	18		parositva	24	H5315	alacsony
+Mic.7.1	er	19		parositva	24	H9020	alacsony
+Mic.7.2	hu	1	Elveszett	parositva	1	H0006	alacsony
+Mic.7.2	hu	2	e	parositva	4	H9009	alacsony
+Mic.7.2	hu	3	földről	parositva	3,5	H4480+H0776	alacsony
+Mic.7.2	hu	4	a	betoldas			alacsony
+Mic.7.2	hu	5	kegyes	parositva	2	H2623	alacsony
+Mic.7.2	hu	6	és	parositva	6	H9002	alacsony
+Mic.7.2	hu	7	igaz	parositva	7	H3477	alacsony
+Mic.7.2	hu	8	sincs	parositva	10	H0369	alacsony
+Mic.7.2	hu	9	az	betoldas			alacsony
+Mic.7.2	hu	10	emberek	parositva	9	H0120	alacsony
+Mic.7.2	hu	11	között	parositva	8	H9003	alacsony
+Mic.7.2	hu	12	Mindnyájan	parositva	11,12	H3605+H9028	alacsony
+Mic.7.2	hu	13	vér	parositva	14	H1818	alacsony
+Mic.7.2	hu	14	után	parositva	13	H9005	alacsony
+Mic.7.2	hu	15	ólálkodnak	parositva	15	H0693	alacsony
+Mic.7.2	hu	16	kiki	parositva	16	H0376	alacsony
+Mic.7.2	hu	17	hálóval	parositva	21	H2764	alacsony
+Mic.7.2	hu	18	vadássza	parositva	20	H6679	alacsony
+Mic.7.2	hu	19	atyjafiát	parositva	18,19	H0251+H9023	alacsony
+Mic.7.2	er	1		parositva	1	H0006	alacsony
+Mic.7.2	er	2		parositva	5	H2623	alacsony
+Mic.7.2	er	3		parositva	3	H4480	alacsony
+Mic.7.2	er	4		parositva	2	H9009	alacsony
+Mic.7.2	er	5		parositva	3	H0776	alacsony
+Mic.7.2	er	6		parositva	6	H9002	alacsony
+Mic.7.2	er	7		parositva	7	H3477	alacsony
+Mic.7.2	er	8		parositva	11	H9003	alacsony
+Mic.7.2	er	9		parositva	10	H0120	alacsony
+Mic.7.2	er	10		parositva	8	H0369	alacsony
+Mic.7.2	er	11		parositva	12	H3605	alacsony
+Mic.7.2	er	12		parositva	12	H9028	alacsony
+Mic.7.2	er	13		parositva	14	H9005	alacsony
+Mic.7.2	er	14		parositva	13	H1818	alacsony
+Mic.7.2	er	15		parositva	15	H0693	alacsony
+Mic.7.2	er	16		parositva	16	H0376	alacsony
+Mic.7.2	er	17		forditatlan		H0853	alacsony
+Mic.7.2	er	18		parositva	19	H0251	alacsony
+Mic.7.2	er	19		parositva	19	H9023	alacsony
+Mic.7.2	er	20		parositva	18	H6679	alacsony
+Mic.7.2	er	21		parositva	17	H2764	alacsony
+Mic.7.3	hu	1	Gonoszságra	parositva	1,3	H5921+H7451	alacsony
+Mic.7.3	hu	2	készek	betoldas			alacsony
+Mic.7.3	hu	3	a	betoldas			alacsony
+Mic.7.3	hu	4	kezek	parositva	4	H3709	alacsony
+Mic.7.3	hu	5	hogy	parositva	5	H9005	alacsony
+Mic.7.3	hu	6	jól	parositva	6	H3190	alacsony
+Mic.7.3	hu	7	vigyék	parositva	6	H3190	alacsony
+Mic.7.3	hu	8	véghez	parositva	6	H3190	alacsony
+Mic.7.3	hu	9	a	betoldas			alacsony
+Mic.7.3	hu	10	fejedelem	parositva	8	H8269	alacsony
+Mic.7.3	hu	11	követelőzik	parositva	9	H7592	alacsony
+Mic.7.3	hu	12	és	parositva	10	H9002	alacsony
+Mic.7.3	hu	13	a	betoldas			alacsony
+Mic.7.3	hu	14	biró	parositva	12	H8199	alacsony
+Mic.7.3	hu	15	fizetésre	parositva	13,14	H9003+H7966	alacsony
+Mic.7.3	hu	16	vár	betoldas			alacsony
+Mic.7.3	hu	17	a	betoldas			alacsony
+Mic.7.3	hu	18	főember	parositva	17	H1419	alacsony
+Mic.7.3	hu	19	is	parositva	15	H9002	alacsony
+Mic.7.3	hu	20	maga	parositva	22	H1931	alacsony
+Mic.7.3	hu	21	mondja	parositva	18	H1696	alacsony
+Mic.7.3	hu	22	el	parositva	18	H1696	alacsony
+Mic.7.3	hu	23	lelke	parositva	20,21	H5315+H9023	alacsony
+Mic.7.3	hu	24	kívánságát	parositva	19	H1942	alacsony
+Mic.7.3	hu	25	és	parositva	23	H9001	alacsony
+Mic.7.3	hu	26	összeszövik	parositva	24	H5686	alacsony
+Mic.7.3	hu	27	azt	parositva	25	H9034	alacsony
+Mic.7.3	er	1		parositva	1	H5921	alacsony
+Mic.7.3	er	2		forditatlan		H9009	alacsony
+Mic.7.3	er	3		parositva	1	H7451	alacsony
+Mic.7.3	er	4		parositva	4	H3709	alacsony
+Mic.7.3	er	5		parositva	5	H9005	alacsony
+Mic.7.3	er	6		parositva	6,7,8	H3190	alacsony
+Mic.7.3	er	7		forditatlan		H9009	alacsony
+Mic.7.3	er	8		parositva	10	H8269	alacsony
+Mic.7.3	er	9		parositva	11	H7592	alacsony
+Mic.7.3	er	10		parositva	12	H9002	alacsony
+Mic.7.3	er	11		forditatlan		H9009	alacsony
+Mic.7.3	er	12		parositva	14	H8199	alacsony
+Mic.7.3	er	13		parositva	15	H9003	alacsony
+Mic.7.3	er	14		parositva	15	H7966	alacsony
+Mic.7.3	er	15		parositva	19	H9002	alacsony
+Mic.7.3	er	16		forditatlan		H9009	alacsony
+Mic.7.3	er	17		parositva	18	H1419	alacsony
+Mic.7.3	er	18		parositva	21,22	H1696	alacsony
+Mic.7.3	er	19		parositva	24	H1942	alacsony
+Mic.7.3	er	20		parositva	23	H5315	alacsony
+Mic.7.3	er	21		parositva	23	H9023	alacsony
+Mic.7.3	er	22		parositva	20	H1931	alacsony
+Mic.7.3	er	23		parositva	25	H9001	alacsony
+Mic.7.3	er	24		parositva	26	H5686	alacsony
+Mic.7.3	er	25		parositva	27	H9034	alacsony
+Mic.7.4	hu	1	A	betoldas			alacsony
+Mic.7.4	hu	2	ki	betoldas			alacsony
+Mic.7.4	hu	3	jó	parositva	1	H2896	alacsony
+Mic.7.4	hu	4	közöttök	parositva	2	H9028	alacsony
+Mic.7.4	hu	5	olyan	betoldas			alacsony
+Mic.7.4	hu	6	mint	parositva	3	H9004	alacsony
+Mic.7.4	hu	7	a	betoldas			alacsony
+Mic.7.4	hu	8	tüske	parositva	4	H2312	alacsony
+Mic.7.4	hu	9	az	betoldas			alacsony
+Mic.7.4	hu	10	igaz	parositva	5	H3477	alacsony
+Mic.7.4	hu	11	olyan	parositva	6	H9006	alacsony
+Mic.7.4	hu	12	mint	parositva	6	H9006	alacsony
+Mic.7.4	hu	13	a	betoldas			alacsony
+Mic.7.4	hu	14	tövisbokor	parositva	7	H4534	alacsony
+Mic.7.4	hu	15	A	betoldas			alacsony
+Mic.7.4	hu	16	te	parositva	10	H9031	alacsony
+Mic.7.4	hu	17	őrállóidnak	parositva	9,10	H6822+H9031	alacsony
+Mic.7.4	hu	18	napja	parositva	8	H3117	alacsony
+Mic.7.4	hu	19	a	betoldas			alacsony
+Mic.7.4	hu	20	te	parositva	12	H9021	alacsony
+Mic.7.4	hu	21	megítélésed	parositva	11,12	H6486+H9021	alacsony
+Mic.7.4	hu	22	eljött	parositva	13	H0935	alacsony
+Mic.7.4	hu	23	most	parositva	14	H6258	alacsony
+Mic.7.4	hu	24	következik	parositva	15	H1961	alacsony
+Mic.7.4	hu	25	el	parositva	15	H1961	alacsony
+Mic.7.4	hu	26	az	betoldas			alacsony
+Mic.7.4	hu	27	ő	parositva	17	H9028	alacsony
+Mic.7.4	hu	28	zűrzavaruk	parositva	16,17	H3998+H9028	alacsony
+Mic.7.4	er	1		parositva	3	H2896	alacsony
+Mic.7.4	er	2		parositva	4	H9028	alacsony
+Mic.7.4	er	3		parositva	6	H9004	alacsony
+Mic.7.4	er	4		parositva	8	H2312	alacsony
+Mic.7.4	er	5		parositva	10	H3477	alacsony
+Mic.7.4	er	6		parositva	11,12	H9006	alacsony
+Mic.7.4	er	7		parositva	14	H4534	alacsony
+Mic.7.4	er	8		parositva	18	H3117	alacsony
+Mic.7.4	er	9		parositva	17	H6822	alacsony
+Mic.7.4	er	10		parositva	16,17	H9031	alacsony
+Mic.7.4	er	11		parositva	21	H6486	alacsony
+Mic.7.4	er	12		parositva	20,21	H9021	alacsony
+Mic.7.4	er	13		parositva	22	H0935	alacsony
+Mic.7.4	er	14		parositva	23	H6258	alacsony
+Mic.7.4	er	15		parositva	24,25	H1961	alacsony
+Mic.7.4	er	16		parositva	28	H3998	alacsony
+Mic.7.4	er	17		parositva	27,28	H9028	alacsony
+Mic.7.5	hu	1	Ne	parositva	1	H0408	alacsony
+Mic.7.5	hu	2	higyjetek	parositva	2	H0539	alacsony
+Mic.7.5	hu	3	a	betoldas			alacsony
+Mic.7.5	hu	4	barátnak	parositva	3,4	H9003+H7453	alacsony
+Mic.7.5	hu	5	ne	parositva	5	H0408	alacsony
+Mic.7.5	hu	6	bízzatok	parositva	6	H0982	alacsony
+Mic.7.5	hu	7	a	betoldas			alacsony
+Mic.7.5	hu	8	tanácsadóban	parositva	7,8	H9003+H0441	alacsony
+Mic.7.5	hu	9	az	betoldas			alacsony
+Mic.7.5	hu	10	öledben	parositva	11,12	H2436+H9021	alacsony
+Mic.7.5	hu	11	ülő	parositva	10	H7901	alacsony
+Mic.7.5	hu	12	előtt	parositva	9	H9006	alacsony
+Mic.7.5	hu	13	is	betoldas			alacsony
+Mic.7.5	hu	14	zárd	parositva	13	H8104	alacsony
+Mic.7.5	hu	15	be	parositva	13	H8104	alacsony
+Mic.7.5	hu	16	szádnak	parositva	15,16	H6310+H9021	alacsony
+Mic.7.5	hu	17	ajtaját	parositva	14	H6607	alacsony
+Mic.7.5	er	1		parositva	1	H0408	alacsony
+Mic.7.5	er	2		parositva	2	H0539	alacsony
+Mic.7.5	er	3		parositva	4	H9003	alacsony
+Mic.7.5	er	4		parositva	4	H7453	alacsony
+Mic.7.5	er	5		parositva	5	H0408	alacsony
+Mic.7.5	er	6		parositva	6	H0982	alacsony
+Mic.7.5	er	7		parositva	8	H9003	alacsony
+Mic.7.5	er	8		parositva	8	H0441	alacsony
+Mic.7.5	er	9		parositva	12	H9006	alacsony
+Mic.7.5	er	10		parositva	11	H7901	alacsony
+Mic.7.5	er	11		parositva	10	H2436	alacsony
+Mic.7.5	er	12		parositva	10	H9021	alacsony
+Mic.7.5	er	13		parositva	14,15	H8104	alacsony
+Mic.7.5	er	14		parositva	17	H6607	alacsony
+Mic.7.5	er	15		parositva	16	H6310	alacsony
+Mic.7.5	er	16		parositva	16	H9021	alacsony
+Mic.7.6	hu	1	Mert	parositva	1	H3588	alacsony
+Mic.7.6	hu	2	a	betoldas			alacsony
+Mic.7.6	hu	3	fiú	parositva	2	H1121	alacsony
+Mic.7.6	hu	4	bolondnak	parositva	3	H5034	alacsony
+Mic.7.6	hu	5	tartja	parositva	3	H5034	alacsony
+Mic.7.6	hu	6	atyját	parositva	4	H0001	alacsony
+Mic.7.6	hu	7	a	betoldas			alacsony
+Mic.7.6	hu	8	leány	parositva	5	H1323	alacsony
+Mic.7.6	hu	9	anyja	parositva	8,9	H0517+H9024	alacsony
+Mic.7.6	hu	10	ellen	parositva	7	H9003	alacsony
+Mic.7.6	hu	11	támad	parositva	6	H6965	alacsony
+Mic.7.6	hu	12	a	betoldas			alacsony
+Mic.7.6	hu	13	meny	parositva	10	H3618	alacsony
+Mic.7.6	hu	14	az	betoldas			alacsony
+Mic.7.6	hu	15	ő	parositva	13	H9024	alacsony
+Mic.7.6	hu	16	napára	parositva	11,12,13	H9003+H2545+H9024	alacsony
+Mic.7.6	hu	17	az	betoldas			alacsony
+Mic.7.6	hu	18	embernek	parositva	15	H0376	alacsony
+Mic.7.6	hu	19	saját	parositva	18	H9023	alacsony
+Mic.7.6	hu	20	háznépe	parositva	16,17,18	H0582+H1004+H9023	alacsony
+Mic.7.6	hu	21	az	betoldas			alacsony
+Mic.7.6	hu	22	ellensége	parositva	14	H0341	alacsony
+Mic.7.6	er	1		parositva	1	H3588	alacsony
+Mic.7.6	er	2		parositva	3	H1121	alacsony
+Mic.7.6	er	3		parositva	4,5	H5034	alacsony
+Mic.7.6	er	4		parositva	6	H0001	alacsony
+Mic.7.6	er	5		parositva	8	H1323	alacsony
+Mic.7.6	er	6		parositva	11	H6965	alacsony
+Mic.7.6	er	7		parositva	10	H9003	alacsony
+Mic.7.6	er	8		parositva	9	H0517	alacsony
+Mic.7.6	er	9		parositva	9	H9024	alacsony
+Mic.7.6	er	10		parositva	13	H3618	alacsony
+Mic.7.6	er	11		parositva	16	H9003	alacsony
+Mic.7.6	er	12		parositva	16	H2545	alacsony
+Mic.7.6	er	13		parositva	15,16	H9024	alacsony
+Mic.7.6	er	14		parositva	22	H0341	alacsony
+Mic.7.6	er	15		parositva	18	H0376	alacsony
+Mic.7.6	er	16		parositva	20	H0582	alacsony
+Mic.7.6	er	17		parositva	20	H1004	alacsony
+Mic.7.6	er	18		parositva	19,20	H9023	alacsony
+Mic.7.7	hu	1	De	parositva	1	H9002	alacsony
+Mic.7.7	hu	2	én	parositva	2	H0589	alacsony
+Mic.7.7	hu	3	az	betoldas			alacsony
+Mic.7.7	hu	4	Úrra	parositva	3,4	H9003+H3068	alacsony
+Mic.7.7	hu	5	nézek	parositva	5	H6822	alacsony
+Mic.7.7	hu	6	várom	parositva	6	H3176	alacsony
+Mic.7.7	hu	7	az	betoldas			alacsony
+Mic.7.7	hu	8	én	parositva	10	H9020	alacsony
+Mic.7.7	hu	9	szabadításom	parositva	9,10	H3468+H9020	alacsony
+Mic.7.7	hu	10	Istenét	parositva	7,8	H9005+H0430	alacsony
+Mic.7.7	hu	11	meghallgat	parositva	11	H8085	alacsony
+Mic.7.7	hu	12	engem	parositva	12	H9030	alacsony
+Mic.7.7	hu	13	az	betoldas			alacsony
+Mic.7.7	hu	14	én	parositva	14	H9020	alacsony
+Mic.7.7	hu	15	Istenem	parositva	13,14	H0430+H9020	alacsony
+Mic.7.7	er	1		parositva	1	H9002	alacsony
+Mic.7.7	er	2		parositva	2	H0589	alacsony
+Mic.7.7	er	3		parositva	4	H9003	alacsony
+Mic.7.7	er	4		parositva	4	H3068	alacsony
+Mic.7.7	er	5		parositva	5	H6822	alacsony
+Mic.7.7	er	6		parositva	6	H3176	alacsony
+Mic.7.7	er	7		parositva	10	H9005	alacsony
+Mic.7.7	er	8		parositva	10	H0430	alacsony
+Mic.7.7	er	9		parositva	9	H3468	alacsony
+Mic.7.7	er	10		parositva	8,9	H9020	alacsony
+Mic.7.7	er	11		parositva	11	H8085	alacsony
+Mic.7.7	er	12		parositva	12	H9030	alacsony
+Mic.7.7	er	13		parositva	15	H0430	alacsony
+Mic.7.7	er	14		parositva	14,15	H9020	alacsony
+Mic.7.8	hu	1	Ne	parositva	1	H0408	alacsony
+Mic.7.8	hu	2	örülj	parositva	2	H8055	alacsony
+Mic.7.8	hu	3	én	parositva	4	H9020	alacsony
+Mic.7.8	hu	4	ellenségem	parositva	3,4	H0341+H9020	alacsony
+Mic.7.8	hu	5	Elestem	parositva	8	H5307	alacsony
+Mic.7.8	hu	6	ugyan	betoldas			alacsony
+Mic.7.8	hu	7	de	parositva	7	H3588	alacsony
+Mic.7.8	hu	8	felkelek	parositva	9	H6965	alacsony
+Mic.7.8	hu	9	mert	parositva	10	H3588	alacsony
+Mic.7.8	hu	10	ha	betoldas			alacsony
+Mic.7.8	hu	11	még	betoldas			alacsony
+Mic.7.8	hu	12	a	betoldas			alacsony
+Mic.7.8	hu	13	setétségben	parositva	12,13	H9003+H2822	alacsony
+Mic.7.8	hu	14	ülnék	parositva	11	H3427	alacsony
+Mic.7.8	hu	15	is	betoldas			alacsony
+Mic.7.8	hu	16	az	betoldas			alacsony
+Mic.7.8	hu	17	Úr	parositva	14	H3068	alacsony
+Mic.7.8	hu	18	az	betoldas			alacsony
+Mic.7.8	hu	19	én	parositva	17	H9030	alacsony
+Mic.7.8	hu	20	világosságom	parositva	15,16,17	H0216+H9005+H9030	alacsony
+Mic.7.8	er	1		parositva	1	H0408	alacsony
+Mic.7.8	er	2		parositva	2	H8055	alacsony
+Mic.7.8	er	3		parositva	4	H0341	alacsony
+Mic.7.8	er	4		parositva	3,4	H9020	alacsony
+Mic.7.8	er	5		forditatlan		H9005	alacsony
+Mic.7.8	er	6		forditatlan		H9030	alacsony
+Mic.7.8	er	7		parositva	7	H3588	alacsony
+Mic.7.8	er	8		parositva	5	H5307	alacsony
+Mic.7.8	er	9		parositva	8	H6965	alacsony
+Mic.7.8	er	10		parositva	9	H3588	alacsony
+Mic.7.8	er	11		parositva	14	H3427	alacsony
+Mic.7.8	er	12		parositva	13	H9003	alacsony
+Mic.7.8	er	13		parositva	13	H2822	alacsony
+Mic.7.8	er	14		parositva	17	H3068	alacsony
+Mic.7.8	er	15		parositva	20	H0216	alacsony
+Mic.7.8	er	16		parositva	20	H9005	alacsony
+Mic.7.8	er	17		parositva	19,20	H9030	alacsony
+Mic.7.9	hu	1	Az	betoldas			alacsony
+Mic.7.9	hu	2	Úr	parositva	2	H3068	alacsony
+Mic.7.9	hu	3	haragját	parositva	1	H2197	alacsony
+Mic.7.9	hu	4	hordozom	parositva	3	H5375	alacsony
+Mic.7.9	hu	5	mert	parositva	4	H3588	alacsony
+Mic.7.9	hu	6	vétkeztem	parositva	5	H2398	alacsony
+Mic.7.9	hu	7	ellene	parositva	6,7	H9005+H9033	alacsony
+Mic.7.9	hu	8	mindaddig	parositva	8	H5704	alacsony
+Mic.7.9	hu	9	a	parositva	9	H0834	alacsony
+Mic.7.9	hu	10	míg	parositva	9	H0834	alacsony
+Mic.7.9	hu	11	leperli	parositva	10	H7378	alacsony
+Mic.7.9	hu	12	peremet	parositva	11,12	H7379+H9020	alacsony
+Mic.7.9	hu	13	és	parositva	13	H9001	alacsony
+Mic.7.9	hu	14	meghozza	parositva	14	H6213	alacsony
+Mic.7.9	hu	15	ítéletemet	parositva	15,16	H4941+H9020	alacsony
+Mic.7.9	hu	16	Kivisz	parositva	17	H3318	alacsony
+Mic.7.9	hu	17	engem	parositva	18	H9030	alacsony
+Mic.7.9	hu	18	a	betoldas			alacsony
+Mic.7.9	hu	19	világosságra	parositva	19,20	H9005+H0216	alacsony
+Mic.7.9	hu	20	meglátom	parositva	21,22	H7200+H9003	alacsony
+Mic.7.9	hu	21	az	betoldas			alacsony
+Mic.7.9	hu	22	ő	parositva	24	H9023	alacsony
+Mic.7.9	hu	23	igazságát	parositva	23,24	H6666+H9023	alacsony
+Mic.7.9	er	1		parositva	3	H2197	alacsony
+Mic.7.9	er	2		parositva	2	H3068	alacsony
+Mic.7.9	er	3		parositva	4	H5375	alacsony
+Mic.7.9	er	4		parositva	5	H3588	alacsony
+Mic.7.9	er	5		parositva	6	H2398	alacsony
+Mic.7.9	er	6		parositva	7	H9005	alacsony
+Mic.7.9	er	7		parositva	7	H9033	alacsony
+Mic.7.9	er	8		parositva	8	H5704	alacsony
+Mic.7.9	er	9		parositva	9,10	H0834	alacsony
+Mic.7.9	er	10		parositva	11	H7378	alacsony
+Mic.7.9	er	11		parositva	12	H7379	alacsony
+Mic.7.9	er	12		parositva	12	H9020	alacsony
+Mic.7.9	er	13		parositva	13	H9001	alacsony
+Mic.7.9	er	14		parositva	14	H6213	alacsony
+Mic.7.9	er	15		parositva	15	H4941	alacsony
+Mic.7.9	er	16		parositva	15	H9020	alacsony
+Mic.7.9	er	17		parositva	16	H3318	alacsony
+Mic.7.9	er	18		parositva	17	H9030	alacsony
+Mic.7.9	er	19		parositva	19	H9005	alacsony
+Mic.7.9	er	20		parositva	19	H0216	alacsony
+Mic.7.9	er	21		parositva	20	H7200	alacsony
+Mic.7.9	er	22		parositva	20	H9003	alacsony
+Mic.7.9	er	23		parositva	23	H6666	alacsony
+Mic.7.9	er	24		parositva	22,23	H9023	alacsony
+Mic.7.10	hu	1	De	parositva	1	H9002	alacsony
+Mic.7.10	hu	2	meglátja	parositva	2	H7200	alacsony
+Mic.7.10	hu	3	ellenségem	parositva	3,4	H0341+H9020	alacsony
+Mic.7.10	hu	4	is	betoldas			alacsony
+Mic.7.10	hu	5	és	parositva	5	H9002	alacsony
+Mic.7.10	hu	6	szégyen	parositva	8	H0955	alacsony
+Mic.7.10	hu	7	borítja	parositva	6	H3680	alacsony
+Mic.7.10	hu	8	el	parositva	6	H3680	alacsony
+Mic.7.10	hu	9	a	parositva	9	H9009	alacsony
+Mic.7.10	hu	10	ki	parositva	9	H9009	alacsony
+Mic.7.10	hu	11	ezt	betoldas			alacsony
+Mic.7.10	hu	12	mondja	parositva	10	H0559	alacsony
+Mic.7.10	hu	13	nékem	parositva	11,12	H0413+H9030	alacsony
+Mic.7.10	hu	14	Hol	parositva	13,14	H0335+H9043	alacsony
+Mic.7.10	hu	15	az	betoldas			alacsony
+Mic.7.10	hu	16	Úr	parositva	15	H3068	alacsony
+Mic.7.10	hu	17	a	betoldas			alacsony
+Mic.7.10	hu	18	te	parositva	17	H9022	alacsony
+Mic.7.10	hu	19	Istened	parositva	16,17	H0430+H9022	alacsony
+Mic.7.10	hu	20	Meglátják	parositva	20	H7200	alacsony
+Mic.7.10	hu	21	őt	parositva	21,22	H9003+H9034	alacsony
+Mic.7.10	hu	22	az	betoldas			alacsony
+Mic.7.10	hu	23	én	parositva	19	H9020	alacsony
+Mic.7.10	hu	24	szemeim	parositva	18,19	H5869+H9020	alacsony
+Mic.7.10	hu	25	hogy	betoldas			alacsony
+Mic.7.10	hu	26	ímé	parositva	23	H6258	alacsony
+Mic.7.10	hu	27	széttapostatik	parositva	24,25,26	H1961+H9005+H4823	alacsony
+Mic.7.10	hu	28	mint	parositva	27	H9004	alacsony
+Mic.7.10	hu	29	az	betoldas			alacsony
+Mic.7.10	hu	30	utcza	parositva	29	H2351	alacsony
+Mic.7.10	hu	31	sár	parositva	28	H2916	alacsony
+Mic.7.10	er	1		parositva	1	H9002	alacsony
+Mic.7.10	er	2		parositva	2	H7200	alacsony
+Mic.7.10	er	3		parositva	3	H0341	alacsony
+Mic.7.10	er	4		parositva	3	H9020	alacsony
+Mic.7.10	er	5		parositva	5	H9002	alacsony
+Mic.7.10	er	6		parositva	7,8	H3680	alacsony
+Mic.7.10	er	7		forditatlan		H9034	alacsony
+Mic.7.10	er	8		parositva	6	H0955	alacsony
+Mic.7.10	er	9		parositva	9,10	H9009	alacsony
+Mic.7.10	er	10		parositva	12	H0559	alacsony
+Mic.7.10	er	11		parositva	13	H0413	alacsony
+Mic.7.10	er	12		parositva	13	H9030	alacsony
+Mic.7.10	er	13		parositva	14	H0335	alacsony
+Mic.7.10	er	14		parositva	14	H9043	alacsony
+Mic.7.10	er	15		parositva	16	H3068	alacsony
+Mic.7.10	er	16		parositva	19	H0430	alacsony
+Mic.7.10	er	17		parositva	18,19	H9022	alacsony
+Mic.7.10	er	18		parositva	24	H5869	alacsony
+Mic.7.10	er	19		parositva	23,24	H9020	alacsony
+Mic.7.10	er	20		parositva	20	H7200	alacsony
+Mic.7.10	er	21		parositva	21	H9003	alacsony
+Mic.7.10	er	22		parositva	21	H9034	alacsony
+Mic.7.10	er	23		parositva	26	H6258	alacsony
+Mic.7.10	er	24		parositva	27	H1961	alacsony
+Mic.7.10	er	25		parositva	27	H9005	alacsony
+Mic.7.10	er	26		parositva	27	H4823	alacsony
+Mic.7.10	er	27		parositva	28	H9004	alacsony
+Mic.7.10	er	28		parositva	31	H2916	alacsony
+Mic.7.10	er	29		parositva	30	H2351	alacsony
+Mic.7.11	hu	1	Falaid	parositva	4,5	H1447+H9022	alacsony
+Mic.7.11	hu	2	megépítésének	parositva	2,3	H9005+H1129	alacsony
+Mic.7.11	hu	3	napja	parositva	1	H3117	alacsony
+Mic.7.11	hu	4	e	parositva	7,8	H9009+H1931	alacsony
+Mic.7.11	hu	5	napon	parositva	6	H3117	alacsony
+Mic.7.11	hu	6	távol	parositva	9	H7368	alacsony
+Mic.7.11	hu	7	lesz	betoldas			alacsony
+Mic.7.11	hu	8	a	betoldas			alacsony
+Mic.7.11	hu	9	törvény	parositva	10	H2706	alacsony
+Mic.7.11	er	1		parositva	3	H3117	alacsony
+Mic.7.11	er	2		parositva	2	H9005	alacsony
+Mic.7.11	er	3		parositva	2	H1129	alacsony
+Mic.7.11	er	4		parositva	1	H1447	alacsony
+Mic.7.11	er	5		parositva	1	H9022	alacsony
+Mic.7.11	er	6		parositva	5	H3117	alacsony
+Mic.7.11	er	7		parositva	4	H9009	alacsony
+Mic.7.11	er	8		parositva	4	H1931	alacsony
+Mic.7.11	er	9		parositva	6	H7368	alacsony
+Mic.7.11	er	10		parositva	9	H2706	alacsony
+Mic.7.12	hu	1	Azon	parositva	2	H1931	alacsony
+Mic.7.12	hu	2	a	betoldas			alacsony
+Mic.7.12	hu	3	napon	parositva	1	H3117	alacsony
+Mic.7.12	hu	4	eljőnek	parositva	6	H0935	alacsony
+Mic.7.12	hu	5	hozzád	parositva	4,5	H5704+H9031	alacsony
+Mic.7.12	hu	6	Assiriából	parositva	7,8,9	H9005+H4480+H0804	alacsony
+Mic.7.12	hu	7	és	parositva	10	H9002	alacsony
+Mic.7.12	hu	8	Égyiptom	parositva	12	H4693	alacsony
+Mic.7.12	hu	9	városaiból	parositva	11	H5892	alacsony
+Mic.7.12	hu	10	Égyiptomtól	parositva	14,15,16	H9005+H4480+H4693	alacsony
+Mic.7.12	hu	11	a	betoldas			alacsony
+Mic.7.12	hu	12	folyamig	parositva	18,19	H5704+H5104	alacsony
+Mic.7.12	hu	13	tengertől	parositva	21	H3220	alacsony
+Mic.7.12	hu	14	tengerig	parositva	22,23	H9006+H3220	alacsony
+Mic.7.12	hu	15	és	parositva	24	H9002	alacsony
+Mic.7.12	hu	16	hegytől	parositva	25	H2022	alacsony
+Mic.7.12	hu	17	hegyig	parositva	26,27	H9009+H2022	alacsony
+Mic.7.12	er	1		parositva	3	H3117	alacsony
+Mic.7.12	er	2		parositva	1	H1931	alacsony
+Mic.7.12	er	3		forditatlan		H9002	alacsony
+Mic.7.12	er	4		parositva	5	H5704	alacsony
+Mic.7.12	er	5		parositva	5	H9031	alacsony
+Mic.7.12	er	6		parositva	4	H0935	alacsony
+Mic.7.12	er	7		parositva	6	H9005	alacsony
+Mic.7.12	er	8		parositva	6	H4480	alacsony
+Mic.7.12	er	9		parositva	6	H0804	alacsony
+Mic.7.12	er	10		parositva	7	H9002	alacsony
+Mic.7.12	er	11		parositva	9	H5892	alacsony
+Mic.7.12	er	12		parositva	8	H4693	alacsony
+Mic.7.12	er	13		forditatlan		H9002	alacsony
+Mic.7.12	er	14		parositva	10	H9005	alacsony
+Mic.7.12	er	15		parositva	10	H4480	alacsony
+Mic.7.12	er	16		parositva	10	H4693	alacsony
+Mic.7.12	er	17		forditatlan		H9002	alacsony
+Mic.7.12	er	18		parositva	12	H5704	alacsony
+Mic.7.12	er	19		parositva	12	H5104	alacsony
+Mic.7.12	er	20		forditatlan		H9002	alacsony
+Mic.7.12	er	21		parositva	13	H3220	alacsony
+Mic.7.12	er	22		parositva	14	H9006	alacsony
+Mic.7.12	er	23		parositva	14	H3220	alacsony
+Mic.7.12	er	24		parositva	15	H9002	alacsony
+Mic.7.12	er	25		parositva	16	H2022	alacsony
+Mic.7.12	er	26		parositva	17	H9009	alacsony
+Mic.7.12	er	27		parositva	17	H2022	alacsony
+Mic.7.13	hu	1	És	parositva	1	H9001	alacsony
+Mic.7.13	hu	2	pusztává	parositva	5,6	H9005+H8077	alacsony
+Mic.7.13	hu	3	lesz	parositva	2	H1961	alacsony
+Mic.7.13	hu	4	a	betoldas			alacsony
+Mic.7.13	hu	5	föld	parositva	4	H0776	alacsony
+Mic.7.13	hu	6	az	betoldas			alacsony
+Mic.7.13	hu	7	ő	parositva	9	H9024	alacsony
+Mic.7.13	hu	8	lakói	parositva	8,9	H3427+H9024	alacsony
+Mic.7.13	hu	9	miatt	parositva	7	H5921	alacsony
+Mic.7.13	hu	10	az	betoldas			alacsony
+Mic.7.13	hu	11	ő	parositva	13	H9028	alacsony
+Mic.7.13	hu	12	cselekedeteik	parositva	12,13	H4611+H9028	alacsony
+Mic.7.13	hu	13	gyümölcséért	parositva	10,11	H9006+H6529	alacsony
+Mic.7.13	er	1		parositva	1	H9001	alacsony
+Mic.7.13	er	2		parositva	3	H1961	alacsony
+Mic.7.13	er	3		forditatlan		H9009	alacsony
+Mic.7.13	er	4		parositva	5	H0776	alacsony
+Mic.7.13	er	5		parositva	2	H9005	alacsony
+Mic.7.13	er	6		parositva	2	H8077	alacsony
+Mic.7.13	er	7		parositva	9	H5921	alacsony
+Mic.7.13	er	8		parositva	8	H3427	alacsony
+Mic.7.13	er	9		parositva	7,8	H9024	alacsony
+Mic.7.13	er	10		parositva	13	H9006	alacsony
+Mic.7.13	er	11		parositva	13	H6529	alacsony
+Mic.7.13	er	12		parositva	12	H4611	alacsony
+Mic.7.13	er	13		parositva	11,12	H9028	alacsony
+Mic.7.14	hu	1	Legeltesd	parositva	1	H7462	alacsony
+Mic.7.14	hu	2	népedet	parositva	2,3	H5971+H9021	alacsony
+Mic.7.14	hu	3	a	betoldas			alacsony
+Mic.7.14	hu	4	te	parositva	6	H9021	alacsony
+Mic.7.14	hu	5	vessződdel	parositva	4,5,6	H9003+H7626+H9021	alacsony
+Mic.7.14	hu	6	a	betoldas			alacsony
+Mic.7.14	hu	7	te	parositva	9	H9021	alacsony
+Mic.7.14	hu	8	örökségednek	parositva	8,9	H5159+H9021	alacsony
+Mic.7.14	hu	9	nyáját	parositva	7	H6629	alacsony
+Mic.7.14	hu	10	a	betoldas			alacsony
+Mic.7.14	hu	11	mely	betoldas			alacsony
+Mic.7.14	hu	12	magánosan	parositva	11,12	H9005+H0910	alacsony
+Mic.7.14	hu	13	lakozik	parositva	10	H7931	alacsony
+Mic.7.14	hu	14	az	betoldas			alacsony
+Mic.7.14	hu	15	erdőben	parositva	13	H3293	alacsony
+Mic.7.14	hu	16	a	betoldas			alacsony
+Mic.7.14	hu	17	Kármel	parositva	16	H3759	alacsony
+Mic.7.14	hu	18	közepén	parositva	14,15	H9003+H8432	alacsony
+Mic.7.14	hu	19	Legeljenek	parositva	17	H7462	alacsony
+Mic.7.14	hu	20	Básánban	parositva	18	H1316	alacsony
+Mic.7.14	hu	21	és	parositva	19	H9002	alacsony
+Mic.7.14	hu	22	Gileádban	parositva	20	H1568	alacsony
+Mic.7.14	hu	23	mint	parositva	21	H9004	alacsony
+Mic.7.14	hu	24	a	betoldas			alacsony
+Mic.7.14	hu	25	hajdankor	parositva	23	H5769	alacsony
+Mic.7.14	hu	26	napjain	parositva	22	H3117	alacsony
+Mic.7.14	er	1		parositva	1	H7462	alacsony
+Mic.7.14	er	2		parositva	2	H5971	alacsony
+Mic.7.14	er	3		parositva	2	H9021	alacsony
+Mic.7.14	er	4		parositva	5	H9003	alacsony
+Mic.7.14	er	5		parositva	5	H7626	alacsony
+Mic.7.14	er	6		parositva	4,5	H9021	alacsony
+Mic.7.14	er	7		parositva	9	H6629	alacsony
+Mic.7.14	er	8		parositva	8	H5159	alacsony
+Mic.7.14	er	9		parositva	7,8	H9021	alacsony
+Mic.7.14	er	10		parositva	13	H7931	alacsony
+Mic.7.14	er	11		parositva	12	H9005	alacsony
+Mic.7.14	er	12		parositva	12	H0910	alacsony
+Mic.7.14	er	13		parositva	15	H3293	alacsony
+Mic.7.14	er	14		parositva	18	H9003	alacsony
+Mic.7.14	er	15		parositva	18	H8432	alacsony
+Mic.7.14	er	16		parositva	17	H3759	alacsony
+Mic.7.14	er	17		parositva	19	H7462	alacsony
+Mic.7.14	er	18		parositva	20	H1316	alacsony
+Mic.7.14	er	19		parositva	21	H9002	alacsony
+Mic.7.14	er	20		parositva	22	H1568	alacsony
+Mic.7.14	er	21		parositva	23	H9004	alacsony
+Mic.7.14	er	22		parositva	26	H3117	alacsony
+Mic.7.14	er	23		parositva	25	H5769	alacsony
+Mic.7.15	hu	1	Mint	parositva	1	H9004	alacsony
+Mic.7.15	hu	2	az	betoldas			alacsony
+Mic.7.15	hu	3	Égyiptom	parositva	7	H4714	alacsony
+Mic.7.15	hu	4	földéről	parositva	5,6	H9006+H0776	alacsony
+Mic.7.15	hu	5	kijövetelednek	parositva	3,4	H3318+H9041	alacsony
+Mic.7.15	hu	6	idején	parositva	2	H3117	alacsony
+Mic.7.15	hu	7	láttatok	parositva	8	H7200	alacsony
+Mic.7.15	hu	8	vele	parositva	9	H9033	alacsony
+Mic.7.15	hu	9	csodadolgokat	parositva	10	H6381	alacsony
+Mic.7.15	er	1		parositva	1	H9004	alacsony
+Mic.7.15	er	2		parositva	6	H3117	alacsony
+Mic.7.15	er	3		parositva	5	H3318	alacsony
+Mic.7.15	er	4		parositva	5	H9041	alacsony
+Mic.7.15	er	5		parositva	4	H9006	alacsony
+Mic.7.15	er	6		parositva	4	H0776	alacsony
+Mic.7.15	er	7		parositva	3	H4714	alacsony
+Mic.7.15	er	8		parositva	7	H7200	alacsony
+Mic.7.15	er	9		parositva	8	H9033	alacsony
+Mic.7.15	er	10		parositva	9	H6381	alacsony
+Mic.7.16	hu	1	Látják	parositva	1	H7200	alacsony
+Mic.7.16	hu	2	ezt	betoldas			alacsony
+Mic.7.16	hu	3	a	betoldas			alacsony
+Mic.7.16	hu	4	pogányok	parositva	2	H1471	alacsony
+Mic.7.16	hu	5	és	parositva	3	H9002	alacsony
+Mic.7.16	hu	6	megszégyenülnek	parositva	4	H0954	alacsony
+Mic.7.16	hu	7	minden	parositva	6	H3605	alacsony
+Mic.7.16	hu	8	erejökkel	parositva	5,7,8	H9006+H1369+H9028	alacsony
+Mic.7.16	hu	9	Kezöket	parositva	10	H3027	alacsony
+Mic.7.16	hu	10	szájokra	parositva	11,12	H5921+H6310	alacsony
+Mic.7.16	hu	11	teszik	parositva	9	H7760	alacsony
+Mic.7.16	hu	12	füleik	parositva	13,14	H0241+H9028	alacsony
+Mic.7.16	hu	13	megsiketülnek	parositva	15	H2790	alacsony
+Mic.7.16	er	1		parositva	1	H7200	alacsony
+Mic.7.16	er	2		parositva	4	H1471	alacsony
+Mic.7.16	er	3		parositva	5	H9002	alacsony
+Mic.7.16	er	4		parositva	6	H0954	alacsony
+Mic.7.16	er	5		parositva	8	H9006	alacsony
+Mic.7.16	er	6		parositva	7	H3605	alacsony
+Mic.7.16	er	7		parositva	8	H1369	alacsony
+Mic.7.16	er	8		parositva	8	H9028	alacsony
+Mic.7.16	er	9		parositva	11	H7760	alacsony
+Mic.7.16	er	10		parositva	9	H3027	alacsony
+Mic.7.16	er	11		parositva	10	H5921	alacsony
+Mic.7.16	er	12		parositva	10	H6310	alacsony
+Mic.7.16	er	13		parositva	12	H0241	alacsony
+Mic.7.16	er	14		parositva	12	H9028	alacsony
+Mic.7.16	er	15		parositva	13	H2790	alacsony
+Mic.7.17	hu	1	Nyalják	parositva	1	H3897	alacsony
+Mic.7.17	hu	2	a	betoldas			alacsony
+Mic.7.17	hu	3	port	parositva	2	H6083	alacsony
+Mic.7.17	hu	4	mint	parositva	3	H9004	alacsony
+Mic.7.17	hu	5	a	betoldas			alacsony
+Mic.7.17	hu	6	kígyó	parositva	4	H5175	alacsony
+Mic.7.17	hu	7	mint	parositva	5	H9004	alacsony
+Mic.7.17	hu	8	a	betoldas			alacsony
+Mic.7.17	hu	9	föld	parositva	7	H0776	alacsony
+Mic.7.17	hu	10	férgei	parositva	6	H2119	alacsony
+Mic.7.17	hu	11	reszketve	parositva	8	H7264	alacsony
+Mic.7.17	hu	12	jőnek	betoldas			alacsony
+Mic.7.17	hu	13	rejtekeikből	parositva	9,10,11	H9006+H4526+H9028	alacsony
+Mic.7.17	hu	14	remegve	betoldas			alacsony
+Mic.7.17	hu	15	folyamodnak	parositva	16	H6342	alacsony
+Mic.7.17	hu	16	az	betoldas			alacsony
+Mic.7.17	hu	17	Úrhoz	parositva	12,13	H0413+H3068	alacsony
+Mic.7.17	hu	18	a	betoldas			alacsony
+Mic.7.17	hu	19	mi	parositva	14,15	H0430+H9025	alacsony
+Mic.7.17	hu	20	Istenünkhöz	parositva	14,15	H0430+H9025	alacsony
+Mic.7.17	hu	21	és	parositva	17	H9002	alacsony
+Mic.7.17	hu	22	félnek	parositva	18	H3372	alacsony
+Mic.7.17	hu	23	tetőled	parositva	19,20	H4480+H9031	alacsony
+Mic.7.17	er	1		parositva	1	H3897	alacsony
+Mic.7.17	er	2		parositva	3	H6083	alacsony
+Mic.7.17	er	3		parositva	4	H9004	alacsony
+Mic.7.17	er	4		parositva	6	H5175	alacsony
+Mic.7.17	er	5		parositva	7	H9004	alacsony
+Mic.7.17	er	6		parositva	10	H2119	alacsony
+Mic.7.17	er	7		parositva	9	H0776	alacsony
+Mic.7.17	er	8		parositva	11	H7264	alacsony
+Mic.7.17	er	9		parositva	13	H9006	alacsony
+Mic.7.17	er	10		parositva	13	H4526	alacsony
+Mic.7.17	er	11		parositva	13	H9028	alacsony
+Mic.7.17	er	12		parositva	17	H0413	alacsony
+Mic.7.17	er	13		parositva	17	H3068	alacsony
+Mic.7.17	er	14		parositva	19,20	H0430	alacsony
+Mic.7.17	er	15		parositva	19,20	H9025	alacsony
+Mic.7.17	er	16		parositva	15	H6342	alacsony
+Mic.7.17	er	17		parositva	21	H9002	alacsony
+Mic.7.17	er	18		parositva	22	H3372	alacsony
+Mic.7.17	er	19		parositva	23	H4480	alacsony
+Mic.7.17	er	20		parositva	23	H9031	alacsony
+Mic.7.18	hu	1	Kicsoda	parositva	1	H4310	alacsony
+Mic.7.18	hu	2	olyan	parositva	3	H3644	alacsony
+Mic.7.18	hu	3	Isten	parositva	2	H0410	alacsony
+Mic.7.18	hu	4	mint	parositva	3	H3644	alacsony
+Mic.7.18	hu	5	te	parositva	4	H9031	alacsony
+Mic.7.18	hu	6	a	parositva	5	H5375	alacsony
+Mic.7.18	hu	7	ki	parositva	5	H5375	alacsony
+Mic.7.18	hu	8	megbocsátja	parositva	5	H5375	alacsony
+Mic.7.18	hu	9	a	betoldas			alacsony
+Mic.7.18	hu	10	bűnt	parositva	6	H5771	alacsony
+Mic.7.18	hu	11	és	parositva	7	H9002	alacsony
+Mic.7.18	hu	12	elengedi	parositva	8,9	H5674+H5921	alacsony
+Mic.7.18	hu	13	öröksége	parositva	13,14	H5159+H9023	alacsony
+Mic.7.18	hu	14	maradékának	parositva	12	H7611	alacsony
+Mic.7.18	hu	15	vétkét	parositva	10	H6588	alacsony
+Mic.7.18	hu	16	Nem	parositva	15	H3808	alacsony
+Mic.7.18	hu	17	tartja	parositva	16	H2388	alacsony
+Mic.7.18	hu	18	meg	parositva	16	H2388	alacsony
+Mic.7.18	hu	19	haragját	parositva	19,20	H0639+H9023	alacsony
+Mic.7.18	hu	20	örökké	parositva	17,18	H9005+H5703	alacsony
+Mic.7.18	hu	21	mert	parositva	21	H3588	alacsony
+Mic.7.18	hu	22	gyönyörködik	parositva	22	H2655	alacsony
+Mic.7.18	hu	23	az	betoldas			alacsony
+Mic.7.18	hu	24	irgalmasságban	parositva	23	H2617	alacsony
+Mic.7.18	er	1		parositva	1	H4310	alacsony
+Mic.7.18	er	2		parositva	3	H0410	alacsony
+Mic.7.18	er	3		parositva	2,4	H3644	alacsony
+Mic.7.18	er	4		parositva	5	H9031	alacsony
+Mic.7.18	er	5		parositva	6,7,8	H5375	alacsony
+Mic.7.18	er	6		parositva	10	H5771	alacsony
+Mic.7.18	er	7		parositva	11	H9002	alacsony
+Mic.7.18	er	8		parositva	12	H5674	alacsony
+Mic.7.18	er	9		parositva	12	H5921	alacsony
+Mic.7.18	er	10		parositva	15	H6588	alacsony
+Mic.7.18	er	11		forditatlan		H9005	alacsony
+Mic.7.18	er	12		parositva	14	H7611	alacsony
+Mic.7.18	er	13		parositva	13	H5159	alacsony
+Mic.7.18	er	14		parositva	13	H9023	alacsony
+Mic.7.18	er	15		parositva	16	H3808	alacsony
+Mic.7.18	er	16		parositva	17,18	H2388	alacsony
+Mic.7.18	er	17		parositva	20	H9005	alacsony
+Mic.7.18	er	18		parositva	20	H5703	alacsony
+Mic.7.18	er	19		parositva	19	H0639	alacsony
+Mic.7.18	er	20		parositva	19	H9023	alacsony
+Mic.7.18	er	21		parositva	21	H3588	alacsony
+Mic.7.18	er	22		parositva	22	H2655	alacsony
+Mic.7.18	er	23		parositva	24	H2617	alacsony
+Mic.7.18	er	24		forditatlan		H1931	alacsony
+Mic.7.19	hu	1	Hozzánk	parositva	1	H7725	alacsony
+Mic.7.19	hu	2	térvén	parositva	1	H7725	alacsony
+Mic.7.19	hu	3	könyörül	parositva	2	H7355	alacsony
+Mic.7.19	hu	4	rajtunk	parositva	3	H9035	alacsony
+Mic.7.19	hu	5	eltapodja	parositva	4	H3533	alacsony
+Mic.7.19	hu	6	álnokságainkat	parositva	5,6	H5771+H9025	alacsony
+Mic.7.19	hu	7	Bizony	parositva	7	H9002	alacsony
+Mic.7.19	hu	8	a	betoldas			alacsony
+Mic.7.19	hu	9	tenger	parositva	11	H3220	alacsony
+Mic.7.19	hu	10	mélységébe	parositva	9,10	H9003+H4688	alacsony
+Mic.7.19	hu	11	veted	parositva	8	H7993	alacsony
+Mic.7.19	hu	12	minden	parositva	12	H3605	alacsony
+Mic.7.19	hu	13	bűnünket	parositva	13,14	H2403+H9028	alacsony
+Mic.7.19	er	1		parositva	1,2	H7725	alacsony
+Mic.7.19	er	2		parositva	3	H7355	alacsony
+Mic.7.19	er	3		parositva	4	H9035	alacsony
+Mic.7.19	er	4		parositva	5	H3533	alacsony
+Mic.7.19	er	5		parositva	6	H5771	alacsony
+Mic.7.19	er	6		parositva	6	H9025	alacsony
+Mic.7.19	er	7		parositva	7	H9002	alacsony
+Mic.7.19	er	8		parositva	11	H7993	alacsony
+Mic.7.19	er	9		parositva	10	H9003	alacsony
+Mic.7.19	er	10		parositva	10	H4688	alacsony
+Mic.7.19	er	11		parositva	9	H3220	alacsony
+Mic.7.19	er	12		parositva	12	H3605	alacsony
+Mic.7.19	er	13		parositva	13	H2403	alacsony
+Mic.7.19	er	14		parositva	13	H9028	alacsony
+Mic.7.20	hu	1	Hűséget	parositva	2	H0571	alacsony
+Mic.7.20	hu	2	mutatsz	parositva	1	H5414	alacsony
+Mic.7.20	hu	3	a	betoldas			alacsony
+Mic.7.20	hu	4	Jákóbnak	parositva	3,4	H9005+H3290	alacsony
+Mic.7.20	hu	5	irgalmasságot	parositva	5	H2617	alacsony
+Mic.7.20	hu	6	Ábrahámnak	parositva	6,7	H9005+H0085	alacsony
+Mic.7.20	hu	7	a	betoldas			alacsony
+Mic.7.20	hu	8	mint	parositva	8	H0834	alacsony
+Mic.7.20	hu	9	megesküdtél	parositva	9	H7650	alacsony
+Mic.7.20	hu	10	atyáinknak	parositva	10,11,12	H9005+H0001+H9025	alacsony
+Mic.7.20	hu	11	még	parositva	13	H9006	alacsony
+Mic.7.20	hu	12	az	betoldas			alacsony
+Mic.7.20	hu	13	ősidőkben	parositva	14,15	H3117+H6924	alacsony
+Mic.7.20	er	1		parositva	2	H5414	alacsony
+Mic.7.20	er	2		parositva	1	H0571	alacsony
+Mic.7.20	er	3		parositva	4	H9005	alacsony
+Mic.7.20	er	4		parositva	4	H3290	alacsony
+Mic.7.20	er	5		parositva	5	H2617	alacsony
+Mic.7.20	er	6		parositva	6	H9005	alacsony
+Mic.7.20	er	7		parositva	6	H0085	alacsony
+Mic.7.20	er	8		parositva	8	H0834	alacsony
+Mic.7.20	er	9		parositva	9	H7650	alacsony
+Mic.7.20	er	10		parositva	10	H9005	alacsony
+Mic.7.20	er	11		parositva	10	H0001	alacsony
+Mic.7.20	er	12		parositva	10	H9025	alacsony
+Mic.7.20	er	13		parositva	11	H9006	alacsony
+Mic.7.20	er	14		parositva	13	H3117	alacsony
+Mic.7.20	er	15		parositva	13	H6924	alacsony
