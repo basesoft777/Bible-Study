@@ -49,6 +49,9 @@ KAPUK = (
                      'a jelölt alak (hivatkozás + felső index, DT602) és a táblázat „Strong” oszlopa nem hiba; a „(kézi)” / '
                      '„(generált)” szerzőségi jelölés a lap bármely látható sorában, a Tartalomjegyzékben is, DT603)'),
     ('MOTIVUM_ID', FIGY, 'más motívum azonosítója link nélkül'),
+    ('ONREF', FIGY, 'önreferáló „a lap” fordulat az új szerkezetű lap látható szövegében (a lap az oldal önmagára utalva: '
+                    'helyette a valódi alany, a motívum, a vizsgálat, a keresés vagy a szócikk); kivétel a Kolofon és a '
+                    'más motívum lapjára utaló fordulat (a felhasználó v8-átnézése, 4.)'),
     ('PONT', BUKAS, '„N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS'),
     ('ANGOL', BUKAS, 'angol maradék és munkazsargon a szólistából'),
     ('ANGOL_SOR', FIGY, '≥3 angol funkciószó egy sorban'),
@@ -1578,6 +1581,11 @@ def lap_meres(szoveg, kh=True, atvett=True, arany=True):
             continue
         ki += f(sorok)
     ki += ell_szint(sorok, arany_szoszam() if arany else None)
+    if KIVETEL_NELKUL:
+        import tablajegyzet as TJ
+        for n, _sz, reszlet in TJ.onref_talalatok(szoveg):
+            ki.append(talalat('ONREF', FIGY, n, reszlet, 'önreferáló „lap”: a valódi alany kell (motívum, vizsgálat, '
+                                                          'keresés, szócikk)'))
     megj = []
     if atvett:
         a, megj = ell_atvett(szoveg)

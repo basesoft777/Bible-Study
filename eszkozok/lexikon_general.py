@@ -5360,8 +5360,8 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                    'Károli-fordítás utalásaival; %d hely ad legalább egy utalást (összesen %d).'
                    % (len(sorai_rendezve), len(bekezdesek), talalat_szam))
         if nem_vizsgalhato:
-            hatokor += (' %d hely több versre terjed (%s): a gyűjtemények versenként adnak utalást, ezért ezekre a lap '
-                        'nem keres.' % (len(nem_vizsgalhato), ', '.join(nem_vizsgalhato)))
+            hatokor += (' %d hely több versre terjed (%s): a gyűjtemények versenként adnak utalást, ezért ezekre a '
+                        'keresés nem terjed ki.' % (len(nem_vizsgalhato), ', '.join(nem_vizsgalhato)))
         if kh_kihagyva:
             hatokor += (' %d hely Károli-utalásai nem állnak itt, mert egy másik vers utalás-listájának (teljes vagy '
                         'részleges) másolatai: %s.' % (len(kh_kihagyva), '; '.join(
@@ -6361,7 +6361,7 @@ def adatres_alatamasztas(motivum_id, kapcsolat_sorok):
         if uj_szerkezet(motivum_id):
             # a felhasználó átnézése (14.): olvasói mondat; a döntés dátuma és a nyers farok a rejtett megjegyzésben
             sorok += ['', '*Az egyezéseket a héber és a görög szöveg, a Septuaginta és a két kereszthivatkozás-gyűjtemény '
-                      '(TSK, Károli) méri; az indoklás a lap szerkesztőjéé.*%s'
+                      '(TSK, Károli) méri; az indoklás a szerkesztőé.*%s'
                       % ''.join('<!-- %s%s -->' % (f.replace('--', '—'),
                                                    (' (%s)' % ', '.join(datumok)) if datumok else '') for f in farkak)]
         else:
@@ -7036,7 +7036,7 @@ def egyszerusitett_kolofon(m):
         '**Mi tartozik ide, és mi nem.** %s' % (m.get('negativ_kriterium') or EM_DASH),
         '**Fölérendelt fogalom** (a tágabb kategória: ha egy hely csak ezen át tartozna ide, kimarad). %s.'
         % _nagy_kezdo((m.get('folerendelt_fogalom') or EM_DASH).rstrip('.')),
-        '*A lap azonosító és technikai adatai (azonosító, téma, PaRDeS-szint, státusz, azonosság típusa) a '
+        '*Az azonosító és technikai adatok (azonosító, téma, PaRDeS-szint, státusz, azonosság típusa) a '
         '[Kolofonban](#kolofon) állnak.*'])
 
 
@@ -7312,9 +7312,10 @@ def kizarasok_melleklet(m, sorai):
                 ki += ['<details>', '<summary>A %s vers</summary>' % OK._ezres(len(vv)), '', lista, '', '</details>']
             else:
                 ki.append(lista)
-    ki += ['', '*Forrás: a jelöltek döntésnaplója és a lap teljesség-mérésének csoportlistája (a nyílt adatkészletben is: '
+    ki += ['', '*Forrás: a jelöltek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: '
            'a kizárások és a csoportos kizárások táblája); generálva: %s.*' % G.TS, '']
-    return '\n'.join(ki)
+    # a felhasználó v8-átnézése (4.): az adatcellák önreferáló „lap” fordulata itt is az olvasói alakban
+    return TJ.onref_csere('\n'.join(ki))
 
 
 def _reszletek(cim, n, szoveg_reszek, nyitva=False):
@@ -7402,7 +7403,7 @@ def blokk_dontesi_ut(m, sorai):
                  'helyeivel |' % OK._ezres(a['osszes']))
     r2.append('\n'.join(tabla))
     if halok:
-        r2.append('*A keresések versszáma a lap teljesség-méréséből.*%s'
+        r2.append('*A keresések versszáma a teljesség-mérésből.*%s'
                   % ''.join('<!-- %s -->' % p.replace('--', '—') for _h, _n, p in halok))
     reszek.append('\n\n'.join(r2))
 
@@ -7489,9 +7490,11 @@ def blokk_dontesi_ut(m, sorai):
         r5.append('A motívumnak nincs határesete és nyitott kérdése.')
     reszek.append('\n\n'.join(r5))
 
-    olv = ('A lap első lépése, az igehelyek előtt: mit keres a lap, hol keresett, mi esett ki és miért, és mi maradt. '
-           '%s megvizsgált versből %s tartozik a motívumhoz; minden vers egyszer számít, és a számok összeadódnak.'
-           % (OK._ezres(a['osszes']), OK._ezres(a['bent'])))
+    # a felhasználó v8-átnézése (1., 4.): a szakasz alanya a vizsgálat, nem „a lap”
+    olv = ('Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig: mit keresett, hol, mi esett ki és '
+           'miért, és mi maradt. %s %s megvizsgált versből %s tartozik a motívumhoz; minden vers egyszer számít, így a '
+           'számok összeadódnak.' % (OK.nevelo_szam(a['osszes']).capitalize(), OK._ezres(a['osszes']),
+                                     OK._ezres(a['bent'])))
     torzs = '\n\n'.join(reszek)
     hatokor = ('A Döntési út: a motívum keresésének és döntéseinek összegzése; a részletek a 2. és a 3. szakaszban.')
     return _lexikon_blokk(mid, 'dontesi_ut', ['adat/jeloltek.tsv', 'adat/elofordulasok.tsv', 'adat/motivumok.tsv',
@@ -7544,8 +7547,8 @@ OLVASOI_FORRASNEV = (
     (r'tW_szocikkek\.tsv', 'a', 'translationWords szócikkei'),
     (r'TBESH\.txt', 'a', 'STEPBible héber rövid szótára (TBESH)'),
     (r'TBESG\.txt', 'a', 'STEPBible görög rövid szótára (TBESG)'),
-    (r'forditasok\.tsv', 'a', 'lap fordítástáblája'),
-    (r'lexikon_hivatkozasok\.tsv', 'a', 'lap szótári hivatkozástáblája'),
+    (r'forditasok\.tsv', 'a', 'lexikon fordítástáblája'),
+    (r'lexikon_hivatkozasok\.tsv', 'a', 'lexikon szótári hivatkozástáblája'),
     (r'tematikus_temak\.tsv', 'a', 'tematikus index döntései'),
     (r'nave_tema_hu\.tsv', 'a', 'Nave-témák magyar nevei'),
     (r'Nave_\w+\.tsv', '', 'Nave tárgymutatója (1897)'),
@@ -7839,9 +7842,10 @@ UJ_JELMAGYARAZAT_CSERE = (
     ('**Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen\n'
      'körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az\n'
      'ellenőrzéshez való, olvasáskor átugorható.',
-     '**Forrásmegjelölés** (dőlt sor vagy lábjegyzet, „forrás: …” alakú): melyik adattáblából vagy lekérdezésből és mikor\n'
-     'származik a fölötte álló adat; a „kézi szerkesztés” kézi rögzítést jelöl. A teljes, gépi alakú forrássor a lap\n'
-     'forrásában, megjegyzésként áll. Az ellenőrzéshez való, olvasáskor átugorható.'),
+     '**Forrásmegjelölés** (dőlt sor vagy a tábla alatti számozott jegyzet, „forrás: …” alakú): melyik adattáblából vagy\n'
+     'lekérdezésből és mikor származik a fölötte álló adat; a „kézi szerkesztés” kézi rögzítést jelöl. A tábla sorában a\n'
+     'jegyzet száma áll (pl. 2.5); az azonos jegyzet a tábla alatt egyszer szerepel, és több sor is mutathat rá. A teljes,\n'
+     'gépi alakú forrássor a forrásfájlban, megjegyzésként áll. Az ellenőrzéshez való, olvasáskor átugorható.'),
     # a felhasználó átnézése (2.): a közös forrásmegjelölés jele (‹E1› …) a jegyzetekben nem áll, a feloldása a rejtett
     # megjegyzésben; a jelmagyarázata ezért nem áll a lapon
     ('\n\n**Közös forrásmegjelölés** (‹E1›, ‹K1›, ‹M1› …): ha egy blokk több sora ugyanabból a forrásból jön, a soron csak a jel\n'
@@ -8017,7 +8021,7 @@ def uj_szerkezet_alkalmaz(szoveg, m, sorai):
         '## 10. Alkalmazás\n\n### Alkalmazás és tanítványság', '## 10. Alkalmazás')))
     szoveg = szoveg.replace(
         'hogy egy nevesített magyarázó egy helyet ténylegesen hogyan olvasott,\nazt a Tanítói egyezés dokumentálja, '
-        'ahol van.', 'nevesített magyarázók olvasatát a lap nem\ngyűjti; az ókori fordítások és értelmezők olvasatát a '
+        'ahol van.', 'nevesített magyarázók olvasata itt nem\nszerepel; az ókori fordítások és értelmezők olvasatát a '
         '9. szakasz mutatja.')
     szoveg = attekinto_beszur(szoveg, m, sorai)
     szoveg = visszhang_beszur(szoveg, m, sorai)
@@ -8996,8 +9000,9 @@ def blokk_hatas_tanuk(m, sorai):
         bevezeto = ('Ez a rész azt mutatja, hogyan olvasták a motívum helyeit az ókori értelmezők. Két fajta tanú áll '
                     'itt. Az egyiknél egy mondatos összefoglaló mondja meg a forrás szövege alapján, mit lát a tanú a '
                     'helyben; ahol a tanú a lánc egy másik helyére is utal, a mondat megnevezi. A másik fajta tanú egy '
-                    'versláncban idézi a helyet a lánc más verseivel együtt (a Chain Lineage Browser adata); a kapcsolat '
-                    'értelmezését a lap ezekről nem állítja. Hagyományonként (görög, latin, szír, rabbinikus) helyenként '
+                    'versláncban idézi a helyet a lánc más verseivel együtt (a Chain Lineage Browser adata); ez az '
+                    'együtt-idézés ténye, a kapcsolat értelmezéséről nem állít semmit. Hagyományonként (görög, latin, '
+                    'szír, rabbinikus) helyenként '
                     'legfeljebb egy tanú áll, csak a Remez- és Sod-szintű helyeken; idézet nincs.')
     if tanuk:
         bevezeto += ' A motívum %d helyén %d tanú áll.' % (len({r['igehely'] for r in tanuk}), len(tanuk))
@@ -9034,7 +9039,7 @@ def blokk_hatas_tanuk(m, sorai):
                'rabbinikus források), a Glossa Ordinaria jegyzetei és a Chain Lineage Browser. Az összefoglaló mondat a '
                'forrásszövegen ellenőrizve áll a táblázatban; a versláncok adata (szerző, mű, század, nyelv, az együtt '
                'idézett versek) a lekérdezés megismétlésével ellenőrizve. Az egyházatyák és a rabbinikus források '
-               'szövegét a lap nem idézi. A Chain Lineage Browser bibliai hivatkozásai a BiblIndexből valók (Institut '
+               'szövegéből itt nincs idézet. A Chain Lineage Browser bibliai hivatkozásai a BiblIndexből valók (Institut '
                'des Sources Chrétiennes, CNRS – HiSoMA, Lyon).*')
     reszek = [olvasoi_bekezdes(bevezeto)]
     if tanuk:

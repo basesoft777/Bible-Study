@@ -2541,6 +2541,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 |---|---|---|
 | `BELSO` | BUKÁS | belső jelölés az olvasói szövegben (DT/N/F-tétel, #nnn, P1–P7, ELLENOR_, orkesztrátor, gerinc, .tsv, manual, belső fájl; a csupasz Strong-szám, ahol mellette ott a héber/görög szó és a kiejtése — a jelölt alak (hivatkozás + felső index, DT602) és a táblázat „Strong” oszlopa nem hiba; a „(kézi)” / „(generált)” szerzőségi jelölés a lap bármely látható sorában, a Tartalomjegyzékben is, DT603) |
 | `MOTIVUM_ID` | FIGYELMEZTETÉS | más motívum azonosítója link nélkül |
+| `ONREF` | FIGYELMEZTETÉS | önreferáló „a lap” fordulat az új szerkezetű lap látható szövegében (a lap az oldal önmagára utalva: helyette a valódi alany, a motívum, a vizsgálat, a keresés vagy a szócikk); kivétel a Kolofon és a más motívum lapjára utaló fordulat (a felhasználó v8-átnézése, 4.) |
 | `PONT` | BUKÁS | „N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS |
 | `ANGOL` | BUKÁS | angol maradék és munkazsargon a szólistából |
 | `ANGOL_SOR` | FIGYELMEZTETÉS | ≥3 angol funkciószó egy sorban |

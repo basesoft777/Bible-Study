@@ -563,6 +563,10 @@ kapcsolatok explicit el vannak-e választva egymástól.*
 
 **Olvasható döntések, belső jel olvasói formában:** fájlnév, döntés- és feladatazonosító, a blokk technikai kódja, a nyers proveniencia-sor helyett olvasói forrásnév és dátum; a nyers proveniencia-sor a lap forrásában HTML-megjegyzésben megmarad (CLAUDE.md 1. szabály). A döntés olvasói neve „szerkesztői döntés”.
 
+**Táblajegyzet a tábla alatt** (a felhasználó v8-átnézése, 2026-11-12, 1.; a lektor javaslata): a számozott szakaszok tábláinak jegyzetei közvetlenül a tábla alatt, helyi számozott listában állnak (`2.5`: szakasz.sorszám, a szakaszon belül folyamatos); a sorban csak a jel. Az azonos szövegű jegyzet egyszer áll, több sor is mutathat rá. A rejtett `<!-- eredeti: … -->` megjegyzések a lista sorában maradnak; mellékletbe semmi nem kerül (`tablajegyzet.tabla_ala`).
+
+**Nincs önreferáló „lap”** (a felhasználó v8-átnézése, 2026-11-12, 4.): a „lap” szó (lap, lapon, lapra …) az oldal önmagára utalásaként nem áll az olvasói szövegben — sem a prózában, sem a generált mondatokban, sem a jegyzetekben. Helyette a valódi alany (a motívum, a vizsgálat, a keresés, a lista, a szócikk), vagy átfogalmazás. Kivétel a más motívum lapjára utaló fordulat és a Kolofon technikai adatai. Gépi védelem: az olvasói kapu `ONREF` figyelmeztetése az új szerkezetű lapon.
+
 **Visszhang-blokk (a 9. Hatástörténet első része, a visszhang 1; DT639, DT645, DT664, DT766):** lánc-szavanként egy sor (Targum, Vulgata, LXX, Mit mutat); a szabályok tételesen alább („A 4.11 visszhang-blokk szabályai”; a kiemelés: 3. pont). Forrás: `adat/visszhang_megfelelok.tsv` (SEMA 2.53), ellenőrizetlen sor nem renderel.
 
 **A 9. Hatástörténet szabályai** (DT766, DT767; a felhasználó, 2026-11-11: „a visszhang 1-2 kötelező”):

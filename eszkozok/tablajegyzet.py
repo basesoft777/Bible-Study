@@ -4,8 +4,9 @@
 tablajegyzet.py -- az új szerkezetű lexikonlap jegyzeteinek és forrássorainak olvasói alakja (lap-javit HAMART-001; a
 felhasználó átnézése, 2. és 12. tétel, „Csak az A) csoport”).
 
-A lap kész szövegén fut, a generálás végén, csak az új szerkezetű lapon. A lap szerkezete nem változik: blokk nem
-tűnik el, semmi nem kerül mellékletbe, a jegyzetek a helyükön maradnak.
+A lap kész szövegén fut, a generálás végén, csak az új szerkezetű lapon. Blokk nem tűnik el, semmi nem kerül
+mellékletbe. A táblák jegyzetei közvetlenül a tábla alá kerülnek, helyi számozott listába, az azonos jegyzet egyszer
+(`tabla_ala`; a felhasználó v8-átnézése, 1.), és az önreferáló „lap” fordulat olvasói alakra vált (`onref_csere`, 4.).
   - A jegyzet látható szövegéből kikerül a közös forrásmegjelölés jele (‹E1›, ‹K1›), a hozzárendelés mechanikája („a
     szerkesztői hozzárendelés (X → Y) alá esik …”), a szavazatszám, a döntés dátuma, a felmérés-rész és a munkamenet-
     jel (U2:). A rejtett `<!-- eredeti: … -->` megjegyzés marad: a proveniencia ott áll (CLAUDE.md 1. szabály).
@@ -131,7 +132,7 @@ def alkalmaz(szoveg):
         if md:
             azon = md.group(1)
             olv = olvasoi_jegyzet(defs[azon][0], ujszov=azon in ujszov_ref)
-            ki.append('[^%s]: %s%s' % (azon, olv or 'Forrás: a lap adatai.', defs[azon][1]))
+            ki.append('[^%s]: %s%s' % (azon, olv or 'Forrás: a motívum adattáblái.', defs[azon][1]))
             i += 1
             continue
         t = s.strip()
@@ -155,7 +156,125 @@ def alkalmaz(szoveg):
                 continue
         ki.append(s)
         i += 1
-    return _szam_link_nevelo(re.sub(r'\n{3,}', '\n\n', '\n'.join(ki)))
+    return onref_csere(_szam_link_nevelo(re.sub(r'\n{3,}', '\n\n', tabla_ala('\n'.join(ki)))))
+
+
+# A felhasználó v8-átnézése (4. szabály): a „lap” szó az oldal önmagára utalásaként nem áll az olvasói szövegben.
+# Itt csak az a szöveg cserélődik, amelynek a forrása a régi lapokon is fut (közös generátormondat), vagy egy adattábla
+# cellája, amelyhez a nyílt mag angol fordítása kötődik (a forras_hash miatt az adatcella a fordítás új körével
+# változik, l. a jelentést). A csak új szerkezetű generátormondatok és a próza a forrásukban javultak. A rejtett
+# megjegyzésekben (proveniencia) nincs csere.
+ONREF_CSERE = (
+    # közös generátormondatok (OLVASOI_SABLON, Jelmagyarázat)
+    ('A lap szakaszai. Hogy melyik szakaszt', 'A szócikk szakaszai. Hogy melyik szakaszt'),
+    ('A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.',
+     'Az itt használt rövidítések, jelek és forrásnevek feloldása. Ha egy jelet nem értesz, itt keresd.'),
+    ('mondat a lap készítőinek szól.', 'mondat a szerkesztőknek szól.'),
+    ('Hogyan hivatkozz erre a lapra,', 'Hogyan hivatkozz erre a szócikkre,'),
+    # adatcellák (motivumok.tsv, elutasitasi_okok.tsv / jeloltek.tsv, elofordulasok.tsv, kapcsolatok.tsv)
+    ('ezeket a lap egyenként, tematikus helyként veszi fel.', 'ezek egyenként, tematikus helyként állnak a listán.'),
+    ('amelyet a lap nem dönt el', 'amelyet ez a vizsgálat nem dönt el'),
+    ('azt a lap vitatott pontként tárgyalja', 'azt a vitatott pontok tárgyalják'),
+    ('amely a lánc szavai nélkül áll a lapon,', 'amely a lánc szavai nélkül áll a listán,'),
+)
+
+
+def onref_csere(szoveg):
+    """Az ONREF_CSERE párjai a látható szövegben (a `<!-- … -->` megjegyzéseken kívül)."""
+    reszek = re.split(r'(<!--.*?-->)', szoveg, flags=re.S)
+    for i in range(0, len(reszek), 2):
+        for a, b in ONREF_CSERE:
+            reszek[i] = reszek[i].replace(a, b)
+    return ''.join(reszek)
+
+
+# az olvasói kapu figyelmeztetése (a felhasználó v8-átnézése, 4.): önreferáló „lap” az új szerkezetű lap látható
+# szövegében; kivétel a Kolofon (technikai adatok) és a más motívum lapjára utaló fordulat
+ONREF_RX = re.compile(r'(?<![\w-])(?:[Aa] lap|[Ee]rre a lapra|[Aa] lapon|[Aa] lapra|[Aa] lapról)(?![\w-])')
+ONREF_KIVETEL_RX = re.compile(r'motívum lapján|\[[^\]]*lap\]\(')
+
+
+def onref_talalatok(szoveg):
+    """[(sorszám, szakasz, részlet)] az önreferáló „lap” fordulatokról, a Kolofonon és a megjegyzéseken kívül."""
+    ki, szakasz = [], ''
+    lathato = _KOMMENT_RX.sub(lambda m: '\n' * m.group(0).count('\n'), szoveg)   # a sorszám a forrásé marad
+    for n, sor in enumerate(lathato.split('\n'), 1):
+        if sor.startswith('## '):
+            szakasz = sor[3:].strip()
+        if szakasz.startswith('Kolofon') or ONREF_KIVETEL_RX.search(sor):
+            continue
+        for m in ONREF_RX.finditer(sor):
+            ki.append((n, szakasz, sor[max(0, m.start() - 40):m.end() + 40]))
+    return ki
+
+
+def _szakasz_szam(cim):
+    m = re.match(r'^##\s+(\d+)\.', cim)
+    return m.group(1) if m else None
+
+
+def tabla_ala(szoveg):
+    """A táblák jegyzetei a tábla alá, helyi számozott listába (a felhasználó v8-átnézése, 1.; a lektor javaslata).
+
+    A táblasorban csak a jel áll (`2.5`); közvetlenül a tábla alatt a jegyzetlista. Az azonos szövegű jegyzet egyszer
+    áll, több sor is mutathat rá. A szám a szakaszon belül folyamatos (egy szakasz több táblája nem ütközik). A rejtett
+    `<!-- eredeti: … -->` megjegyzések a lista sorában maradnak (CLAUDE.md 1. szabály); mellékletbe semmi nem kerül.
+    Számozott szakaszon kívüli tábla és táblán kívüli lábjegyzet változatlan marad."""
+    sorok = szoveg.split('\n')
+    defs = {}
+    for s in sorok:
+        m = _LABJ_DEF_RX.match(s)
+        if m:
+            defs[m.group(1)] = m.group(2)
+    # a tábla alá kerülő lábjegyzetek: számozott szakasz táblájában hivatkozottak
+    szakasz, tabla_ref = None, set()
+    for s in sorok:
+        if s.startswith('## '):
+            szakasz = _szakasz_szam(s)
+        if szakasz and s.startswith('|'):
+            tabla_ref.update(x for x in _LABJ_REF_RX.findall(s) if x in defs)
+    if not tabla_ref:
+        return szoveg
+    ki, i, szakasz, sorszam = [], 0, None, {}
+    while i < len(sorok):
+        s = sorok[i]
+        if s.startswith('## '):
+            szakasz = _szakasz_szam(s)
+        md = _LABJ_DEF_RX.match(s)
+        if md and md.group(1) in tabla_ref:
+            i += 1
+            continue
+        if not (szakasz and s.startswith('|')):
+            ki.append(s)
+            i += 1
+            continue
+        blokk = []
+        while i < len(sorok) and sorok[i].startswith('|'):
+            blokk.append(sorok[i])
+            i += 1
+        helyi = {}                     # látható olvasói szöveg -> [szám, [rejtett megjegyzések]]
+
+        def csere(mm):
+            azon = mm.group(1)
+            if azon not in tabla_ref:
+                return mm.group(0)
+            lathato = _KOMMENT_RX.sub('', defs[azon]).strip()
+            if lathato not in helyi:
+                sorszam[szakasz] = sorszam.get(szakasz, 0) + 1
+                helyi[lathato] = ['%s.%d' % (szakasz, sorszam[szakasz]), []]
+            szam, rejtett = helyi[lathato]
+            for k in _KOMMENT_RX.findall(defs[azon]):
+                if k not in rejtett:
+                    rejtett.append(k)
+            return '<sup class="lj"><a href="#j-%s">%s</a></sup>' % (szam.replace('.', '-'), szam)
+        ki.extend(_LABJ_REF_RX.sub(csere, b) for b in blokk)
+        if helyi:
+            ki.append('')
+            for lathato, (szam, rejtett) in helyi.items():
+                ki.append('- <span class="lj-szam" id="j-%s">%s</span>%s%s' % (szam.replace('.', '-'), szam, lathato,
+                                                                             ''.join(rejtett)))
+            ki.append('')
+    return '\n'.join(ki)
 
 
 _SZAM_LINK_RX = re.compile(r'(?<![\w-])([Aa]z?) \[(\d+)\.')

@@ -86,7 +86,7 @@ tr:last-child td { border-bottom: 0; }
 sup.lj a { font: 600 11px/1 var(--adat); text-decoration: none; padding: 0 1px; }
 sup.strong { font: 500 .62em/1 var(--adat); color: var(--halvany); opacity: .75; margin-left: 1px; cursor: help; }
 li.lj { font-size: 14px; color: var(--halvany); }
-li.lj:target { background: var(--kiemel-halvany); }
+li.lj:target, li.lj:has(.lj-szam:target) { background: var(--kiemel-halvany); }
 .lj-szam { font: 600 12px var(--adat); color: var(--kiemel); margin-right: 6px; }
 .mermaid { background: var(--lap); overflow-x: auto; }
 .lab { grid-column: 1 / -1; font: 13px/1.5 var(--adat); color: var(--halvany); }
@@ -144,6 +144,7 @@ renderer.code = function (code, lang) {
 };
 renderer.listitem = function (text) {
   if (text.indexOf('{{LJ}}') !== -1) return '<li class="lj">' + text.replace(/ ?\{\{LJ\}\}/g, '') + '</li>\n';
+  if (text.indexOf('class="lj-szam"') !== -1) return '<li class="lj">' + text + '</li>\n';   // a tábla alatti jegyzetlista
   return '<li>' + text + '</li>\n';
 };
 marked.use({ renderer: renderer, gfm: true });

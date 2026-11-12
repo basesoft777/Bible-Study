@@ -68,7 +68,7 @@ class Lap(unittest.TestCase):
         # az előfordulás-táblánál csak az adatoszlopok vannak a nyílt magban (ELLENOR_HAMART_lapkeret 1.)
         sor = [s for s in kolofon.split('\n') if s.startswith('| Motívum előfordulás-táblája |')]
         self.assertTrue(sor and 'adatoszlopok: CC BY 4.0' in sor[0] and 'magyarázat' in sor[0])
-        sor = [s for s in kolofon.split('\n') if s.startswith('| Lap fordítástáblája |')]
+        sor = [s for s in kolofon.split('\n') if s.startswith('| Lexikon fordítástáblája |')]   # v8-átnézés, 4.
         self.assertTrue(sor and 'közkincs, minden jog fenntartva' not in sor[0])
 
     def test_olvasoi_licencek_generator(self):
@@ -92,7 +92,8 @@ class Lap(unittest.TestCase):
         blokk = LG.egyszerusitett_kolofon(m)
         self.assertIn(m['negativ_kriterium'], blokk)
         self.assertIn(m['folerendelt_fogalom'][1:].rstrip('.'), blokk)
-        self.assertIn(blokk, self.lap)
+        import tablajegyzet as TJ   # a v8-átnézés (4.): az adatcella önreferáló „lap” fordulata a lapon olvasói alakban
+        self.assertIn(TJ.onref_csere(blokk), self.lap)
         rontott = dict(m, negativ_kriterium='')
         self.assertIn('**Mi tartozik ide, és mi nem.** —', LG.egyszerusitett_kolofon(rontott))
         # lektor 1.: „A motívum.” nem a címet ismétli, hanem az azonosság hordozóját mondja
@@ -488,16 +489,20 @@ class Tablajegyzet(unittest.TestCase):
         self.assertEqual(TJ.olvasoi_jegyzet(lath),
                          'A héber szöveg (TAHOT) igazolja; a jelentés: a BDB a Qal szakaszban maga idézi a helyet.')
 
-    def test_jegyzet_a_helyen_marad(self):
-        # a lap szerkezete nem változik: a tábla és a hivatkozás-jel marad, a jegyzet a helyén, olvasói szöveggel
+    def test_jegyzet_a_tabla_alatt(self):
+        # a felhasználó v8-átnézése (1.): a táblajegyzet a tábla alatt, helyi számmal; a sorban csak a jel
         import tablajegyzet as TJ
         lap = '\n'.join(['## 2. Előfordulások', '', '| A | B |', '|---|---|', '| x[^1] | y[^1] |', '',
                          '[^1]: forrás: TSK-ajánlás (1Móz 4:11; szavazat: 2) · ‹K1›<!-- eredeti: E1 -->',
                          '[^k3]: forrás: Strong-keresés: אָרַר (árar) · ‹K1›', '',
                          '*A közös forrásmegjelölések: ‹K1› = forrás: a napló*<!-- eredeti: N -->', ''])
         ki = TJ.alkalmaz(lap)
-        self.assertIn('| x[^1] | y[^1] |', ki)
-        self.assertIn('[^1]: Forrás: TSK-ajánlás (1Móz 4:11).<!-- eredeti: E1 -->', ki)
+        jel = '<sup class="lj"><a href="#j-2-1">2.1</a></sup>'
+        self.assertIn('| x%s | y%s |' % (jel, jel), ki)
+        self.assertIn('- <span class="lj-szam" id="j-2-1">2.1</span>Forrás: TSK-ajánlás (1Móz 4:11).<!-- eredeti: E1 -->',
+                      ki)
+        self.assertNotIn('[^1]', ki)
+        # a táblában nem hivatkozott lábjegyzet a helyén marad
         self.assertIn('[^k3]: Forrás: szókeresés: אָרַר (árar).', ki)
         self.assertNotIn('‹K1›', re.sub(r'<!--.*?-->', '', ki, flags=re.S))
         self.assertIn('<!-- közös forrásmegjelölés: A közös forrásmegjelölések: ‹K1› = forrás: a napló --><!-- eredeti: N -->',
@@ -520,9 +525,9 @@ class Tablajegyzet(unittest.TestCase):
         jel = next(s for s in lap.split('\n') if s.startswith('| [Jel 22:3]'))
         self.assertNotIn('— —', jel)
         self.assertNotIn('| — |', jel)
-        refek = re.findall(r'\[\^(\w+)\]', jel)
+        refek = re.findall(r'href="#(j-[\d-]+)"', jel)
         self.assertEqual(len(refek), 1)
-        jegyzet = next(s for s in lathato.split('\n') if s.startswith('[^%s]:' % refek[0]))
+        jegyzet = next(s for s in lathato.split('\n') if 'id="%s"' % refek[0] in s)
         self.assertNotIn('TAHOT', jegyzet)
 
 
@@ -613,6 +618,71 @@ class KiadasElott(unittest.TestCase):
         # a 4.2: az 1Móz 5:29 az adámá (H0127) szócikkében is kiemelt (a sora az iccávón szaván áll)
         h0127 = lap[lap.index('##### H0127'):lap.index('##### H0423')]
         self.assertIn('title="a motívum helye: 1Móz 5:29"', h0127)
+
+
+class TablaAlattiJegyzet(unittest.TestCase):
+    """A felhasználó v8-átnézése (1.; „én ezt kértem, a lektor javaslatát vezesd végig”): a 2., 3. és 6. szakasz
+    tábláinak jegyzetei közvetlenül a tábla alatt, helyi számozott listában; az azonos jegyzet egyszer."""
+
+    def test_osszevonas_es_szamozas(self):
+        import tablajegyzet as TJ
+        lap = '\n'.join([
+            '## 3. Kizárt', '', '| A |', '|---|', '| a[^k1] |', '| b[^k2] |', '| c[^k3] |', '', 'szöveg', '',
+            '| B |', '|---|', '| d[^k4] |', '',
+            '[^k1]: Forrás: X.<!-- eredeti: 1 -->', '[^k2]: Forrás: X.<!-- eredeti: 2 -->',
+            '[^k3]: Forrás: Y.<!-- eredeti: 3 -->', '[^k4]: Forrás: X.<!-- eredeti: 4 -->', ''])
+        ki = TJ.tabla_ala(lap)
+        self.assertEqual(ki.count('id="j-3-1"'), 1)
+        self.assertIn('| a<sup class="lj"><a href="#j-3-1">3.1</a></sup> |', ki)
+        self.assertIn('| b<sup class="lj"><a href="#j-3-1">3.1</a></sup> |', ki)
+        # az azonos szöveg egyszer, mindkét rejtett megjegyzéssel
+        self.assertIn('- <span class="lj-szam" id="j-3-1">3.1</span>Forrás: X.<!-- eredeti: 1 --><!-- eredeti: 2 -->', ki)
+        # a második tábla a szakaszon belül folytatja a számozást, és a listája a saját táblája alatt áll
+        self.assertIn('id="j-3-3">3.3</span>Forrás: X.<!-- eredeti: 4 -->', ki)
+        self.assertLess(ki.index('id="j-3-2"'), ki.index('szöveg'))
+        self.assertGreater(ki.index('id="j-3-3"'), ki.index('| d'))
+        self.assertNotIn('[^k', ki)
+
+    def test_szamozatlan_szakasz_valtozatlan(self):
+        import tablajegyzet as TJ
+        lap = '\n'.join(['## Kolofon', '', '| A |', '|---|', '| a[^x] |', '', '[^x]: Forrás: X.', ''])
+        self.assertEqual(TJ.tabla_ala(lap), lap)
+
+    def test_a_lapon(self):
+        lap = _olvas(LAP)
+        self.assertEqual(re.findall(r'(?m)^\[\^[\w.-]+\]:', lap), [])
+        szam = {}
+        for m in re.finditer(r'(?m)^- <span class="lj-szam" id="j-(\d+)-\d+">', lap):
+            szam[m.group(1)] = szam.get(m.group(1), 0) + 1
+        # a Fable mérése: a 2. táblánál 47 helyett 18; a 3. szakasz táblái 270 helyett 46, a 6. 99 helyett 11
+        self.assertEqual(szam, {'2': 18, '3': 46, '6': 11})
+        celok = set(re.findall(r'id="(j-[\d-]+)"', lap))
+        for h in set(re.findall(r'href="#(j-[\d-]+)"', lap)):
+            self.assertIn(h, celok)
+
+
+class Onreferencia(unittest.TestCase):
+    """A felhasználó v8-átnézése (4. szabály): a „lap” szó az oldal önmagára utalásaként nem áll az olvasói szövegben."""
+
+    def test_csere_a_megjegyzesen_kivul(self):
+        import tablajegyzet as TJ
+        ki = TJ.onref_csere('kérdés, amelyet a lap nem dönt el<!-- amelyet a lap nem dönt el -->')
+        self.assertEqual(ki, 'kérdés, amelyet ez a vizsgálat nem dönt el<!-- amelyet a lap nem dönt el -->')
+
+    def test_kapu_jelez(self):
+        self.assertTrue(kapu(uj_lap('## 2. Előfordulások\n\nAzt a lap nem dönti el.\n'), 'ONREF'))
+        self.assertFalse(kapu(uj_lap('## 2. Előfordulások\n\nA HODIT-001 motívum lapján áll.\n'), 'ONREF'))
+        self.assertFalse(kapu(uj_lap('## Kolofon\n\nA lap technikai adatai.\n'), 'ONREF'))
+
+    def test_a_lapon(self):
+        import tablajegyzet as TJ
+        lap = _olvas(LAP)
+        self.assertEqual(TJ.onref_talalatok(lap), [])
+        lathato = re.sub(r'<!--.*?-->|【.*?】|\*Proveniencia:.*?\*', '',
+                         _olvas(os.path.join(GYOKER, 'motivumok', 'HAMART-001.md')), flags=re.S)
+        self.assertIsNone(re.search(r'(?<![\w-])[Ll]ap(?:ja|on|ra|ról)?(?![\w-])', lathato))
+        self.assertIn('Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig', lap)
+        self.assertIn('A motívum 47 helyen, 54 versben áll: 23 a Genezisben', lap)
 
 
 if __name__ == '__main__':
