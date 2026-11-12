@@ -3124,6 +3124,11 @@ KULSO_SZABALYOK = (
      '`eszkozok/ellenoriz.py`'),
     ('E18', 'HIBA', 'a brief-fejlécek érvényessége; a `FELADATOK.md` generált blokkját a PR nem módosítja',
      '`eszkozok/feladatok.py ellenoriz`'),
+    # F212 (DT-F212b, a felhasználó: „Igen, a CS3 után”, „mehet”): a gyökérok-kapuk gátlóak, a befagyasztott lap kimarad
+    ('E38', 'HIBA', 'állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott '
+     'lapon (`--minden --szigoru`)', '`eszkozok/ellenorzes/allitas_adat.py`'),
+    ('E39', 'HIBA', 'követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés '
+     'jelentés (`--szigoru`, DT-F212b)', '`eszkozok/ellenorzes/kovetelmeny_kapu.py`'),
 )
 
 

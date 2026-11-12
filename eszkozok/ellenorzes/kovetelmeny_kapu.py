@@ -424,17 +424,24 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description='Követelménylista-kapu (F196): a K-sorok gépi szabályai egy lapra, JELENTÉS.')
     ap.add_argument('id', nargs='*', default=['HAMART-001'], help='motívum-azonosító(k); alap: HAMART-001')
     ap.add_argument('--e28', action='store_true', help='az E28 (generátor-futtatás, lassú) is fusson')
-    ap.add_argument('--szigoru', action='store_true', help='nem teljesülő gépi sornál 1-es kilépési kód (a HIBA-szintre emelés után)')
+    ap.add_argument('--szigoru', action='store_true',
+                    help='gátló szintű nem teljesülő gépi sornál 1-es kilépési kód (DT-F212b: a figyelmeztetés JELENTÉS)')
     args = ap.parse_args(argv)
     sorok = lista_sorai()
-    print('# Követelménylista-kapu (F196, JELENTÉS)\n')
-    print('*Forrás: `sablonok/KESZ_LAP_KOVETELMENY.md` (%d K-sor). Szint: JELENTÉS, nem gátol (a HIBA-szint külön döntés).*\n' % len(sorok))
+    print('# Követelménylista-kapu (F196, E39)\n')
+    print('*Forrás: `sablonok/KESZ_LAP_KOVETELMENY.md` (%d K-sor). Szint: a CI-ben E39 (DT-F212b): a gátló szintű hiány HIBA, a figyelmeztetés JELENTÉS; a befagyasztott lap kimarad.*\n' % len(sorok))
     van_nem = False
     eredmenyek = []
+    import lap_befagyasztas
+    fagy = lap_befagyasztas.befagyasztott_idk()
     for mid in args.id:
+        if mid in fagy:   # F212 (DT-F212b): a befagyasztott lapot az E28 jelölésével kihagyja
+            print('%s: befagyasztva, nem mérve (adat/lap_befagyasztas.tsv)\n' % mid)
+            continue
         e = meres(mid, sorok, e28=args.e28)
         eredmenyek.append((mid, e))
-        van_nem = van_nem or any(m.osztaly == GEPI and not m.teljesul for m in e)
+        # F212 (DT-F212b): szigorú módban csak a gátló szintű hiány bukik; a figyelmeztetés jelentés marad
+        van_nem = van_nem or any(m.osztaly == GEPI and not m.teljesul and m.kemeny for m in e)
     for mid, e in eredmenyek:
         print(osszegzo_sor(mid, e))
     print()
