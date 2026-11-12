@@ -26,7 +26,7 @@ Forrás: a jóváhagyott tervezet (`GYORS_UT_TERVEZET_2026-11-12.md`, a felhaszn
 - **F209.1** `/lap-javit` 7. pont „Gyors út” (négy feltétel, menet, ami kimarad, biztosíték, `[GYORS]` előtag); az 1. pont K1-je mellett kimondott kivétel.
 - **F209.2** `MUNKAMENET.md` „Menet-ellenőrzés”: `gyors` sor, hivatkozással a `/lap-javit`-ra.
 - **F209.3** `lapnezet.py --valtozas <alap-commit>`: csak a változott blokkok, előtte–utána párban, kiemelve; önálló HTML, a `lapnezet_sablon.html`-hez nem nyúltunk (a #699 miatt); teszt: `teszt_lektor_felulet.py` `Valtozas`.
-- **F209.4** `feladatok.py szint` nem módosult; nyitott tétel: N-F209a.
+- **F209.4** `feladatok.py szint` nem módosult; nyitott tétel: N159.
 
 ## Határ
 Nem érintett: `lexikon_general.py`, `olvasoi_kapu.py`, `lexikon/*`, `motivumok/*`, `adat/*`, `nyilt_*`, `sablonok/*`, `CLAUDE.md`.

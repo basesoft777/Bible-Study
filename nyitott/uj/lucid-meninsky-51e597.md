@@ -1,2 +1,0 @@
-- **N-F209a** `feladatok.py szint`: a `gyors` szint levezetése (opcionális; a szint ma a `/lap-javit` 7. pontja szerint, nem brief-feladat). Nem sürgős.
-- **N-F209b** A gyors út mérése az első két használat után (tényleges idő a megjegyzéslista lezárásától a merge-ig, visszaesések, piros CI oka); a `/lap-javit` 7. pont „Mérés” bekezdése szerint.
