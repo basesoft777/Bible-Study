@@ -3,7 +3,7 @@ szövegekhez. Flask és SQL nélkül: az SQL a `lekerdezesek.py`-ban áll.
 
 A Károli 1908 az alapnézet (döntés, 2026-10-22): a választás a `?biblia=<kód>` paraméterben él, a Károli kódja nem kerül a
 címbe, így a meglévő Károli-útvonalak változatlanok. Minden szöveg az adatbázisban a Károli-vers kulcsán áll (modern Károli,
-TAHOT, TAGNT, BSB; a KJV és a Septuaginta a meglévő leképező táblával): a lap a Károli-fejezetet mutatja, a versszám a Károlié,
+TAHOT, TAGNT (a BSB F214: 66 könyv híján nem választható); a KJV és a Septuaginta a meglévő leképező táblával): a lap a Károli-fejezetet mutatja, a versszám a Károlié,
 az eltérő forrásszám a vers elején áll.
 
 A választóba csak szószintű Strong-kapcsolatú szöveg kerül (a felhasználó, 2026-11-12: „ahol nincs strong kapcsolat olyan szöveg
@@ -51,8 +51,6 @@ BIBLIAK = (
            'A Septuaginta (lxx-morph) a Károli-versekhez rendelve, a meglévő versmegfeleltetés szerint; ahol az LXX számozása eltér, a vers elején áll. A Károli-vers nélküli LXX-szakasz itt nem jelenik meg.'),
     Biblia('kjv', 'KJV', 'KJV', 'angol', 'Strong', 'szoveg_kjv', ('kjv',), 'en', 'ltr', ('szoveg_kjv', 'kjv'),
            'A King James Version (1769) szövege, a Károli-versek kulcsán (a versmegfeleltetés szerint).'),
-    Biblia('bsb', 'BSB', 'BSB', 'angol', 'csak Ószövetség · Strong', 'bsb', ('bsb',), 'en', 'ltr', ('bsb',),
-           'A Berean Standard Bible ószövetségi szövege a Strong-táblából (szavanként, írásjel nélkül), a Károli-versek kulcsán; a forrásfájlból (BSB_Strongs.tsv) hiányzik a 2Sám, az Ezsd és a Dán.'),
 )
 BIBLIA = {b.kod: b for b in BIBLIAK}
 KODOK = tuple(BIBLIA)
@@ -228,13 +226,5 @@ def fejezet_versek(con, kozos, b, kk, fej, karoli_versek, karoli_szavak, szofaj_
             jel = '' if szam == ['%d:%d' % (fej, v)] else 'KJV ' + ', '.join(szam)
             ws = _kjv_szavak(sz, cimke.get(ig, []), ny)
             ki.append({'vers': v, 'ig': ig, 'link': True, 'szavak': ws, 'szoveg': sz, 'jel': jel})
-        return ki
-    if b.kod == 'bsb':
-        tok = q.bsb_fejezet(con, kk, fej)
-        for ig, v, _ in karoli_versek:
-            if ig not in tok:
-                continue
-            ws = [{'kiir': szo, 'szokoz': True, 'fo': (q.hnorm(st) if q.hnorm(st) not in ny else None) if st else None} for szo, st in tok[ig]]
-            ki.append({'vers': v, 'ig': ig, 'link': True, 'szavak': ws, 'szoveg': '', 'jel': ''})
         return ki
     raise ValueError('ismeretlen Biblia: %s' % b.kod)

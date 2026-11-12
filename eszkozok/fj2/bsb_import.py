@@ -31,8 +31,13 @@ BELSO VERSOSZTAS (F16.11): ahol egy BSB-vers a v+k MT-versre nem illeszkedik, de
 a ket szomszedos BSB-vers unioja), a fejezet nem igazolhato (Zsolt 13): kimarad a merestol es az importbol.
 A nem-zsoltar konyvek (1Sam 24, Pred 12, Ezs 3/9, Hos 12, Jon 2 ...) hasonlo eltolasat ez a szkript NEM
 javitja (l. DT6); azokra a F06-modszer (eltolas nelkul) marad.
-UJSZOVETSEG: a BSB-import az Ószovetseg miatt keszult (a gorog reteg forrasa a Macula, #87): a 27 USZ-konyv
-merese tajekoztato, az importbol szandekosan kimarad (eredmeny=USZ_KIHAGYVA, nem kuszob alatti hiba).
+F214 (FELADATOK #214, N48; felhasznaloi dontes 2026.11.12): (1) az egyenertekű Strong-szamok normalizalasa az egyezes elott: heber/arami oldalon a TBESH.txt
+`a Spelling of` / `a form of` / `in Aramaic of` soraibol (tbesh_normalizalo; ugyanaz a mechanizmus, mint a gorog TBESG-normalizalo), gorog oldalon a TBESG
+`Form/Spelling/Meaning of` soraibol; mindket oldal halmaza ugyanarra a fo szamra kepezve, a kuszob (95%) es a definicio (TAHOT/TAGNT ⊆ BSB) valtozatlan (DT6);
+(2) az UJSZOVETSEG is ugyanazzal a merceval merodik (a forras a TAGNT, a kulcs a BSB-vers szama: a Karoli_versmegfeleltetes nem tartalmaz USZ-sort, azonos szam);
+a kuszobot elero konyv importalodik, a tobbi explicit ures eredmeny (NEM_ERI_EL). A nyers (normalizalas nelkuli) szazalek az `egyezes_szazalek` oszlopban marad
+(elotte), az `egyezes_normalizalt` a kuszob alapja (utana); a konyvenkenti elotte-utana tabla: a könyvenkénti előtte–utána napló (még nincs meg). Az NA28-szurt USZ-meres
+(NT_NA28_SZURES, --nt-na28) a kuszob alapjava csak felhasznaloi dontessel valik (DT-F214b); alapertelmezetten kikapcsolt.
 A kuszobot elero OSZ-konyveket importalja: konkordancia/BSB_Strongs.tsv (a KJV_Strongs_*.tsv
 formatumaban: Igehely STEP-alakban, Szosorszam, Strong-szam, Angol szo, Morfologiai kod (ures)).
 
@@ -60,6 +65,9 @@ SZURT = {'nem_szamjegy_versszam_kulcs (meres)': 0, 'nem_szamjegy_versszam_kulcs 
 
 def szur(kat, n=1):
     SZURT[kat] = SZURT.get(kat, 0) + n
+
+
+NT_NA28_SZURES = False  # F214 (DT-F214b): True = az USZ meresenek forrasa a TAGNT NA28-cimkes sorai (a kuszob alapja); alapertelmezetten a teljes TAGNT
 
 
 # DT-F41c (a): a BSB(KJV)-szamozas marad, sorszinten jelolve (7. oszlop `Számozás` = `kjv` a Jób 41-re; mt / ellenorizetlen a többire, DT-F41f/g)
@@ -484,6 +492,46 @@ def tbesg_normalizalo():
                 if a is not None and b is not None and a != b:
                     ki[a] = b
     return ki
+
+
+TBESH_EKVIVALENS = ('a spelling of', 'a form of', 'in aramaic of')  # F214: ugyanannak a szonak irasvaltozata / alakja / arami megfeleloje (a TBESH sajat relacio-jelolese)
+
+
+def tbesh_normalizalo():
+    """F214 (N48): ({Strong-szam(int): fő Strong-szam(int)}, [konfliktusos szamok], {relacio: darab}) a TBESH.txt soraibol, amelyeknek a 2. oszlopa
+    ` = a Spelling of` / ` = a form of` / ` = in Aramaic of` vegu, es a 3. oszlop pontosan EGY, a sor szamatol kulonbozo Strong-szamra mutat (a betujeles
+    alsor-jeloles, H0001G, nem szamit: csak a szam). A tobbszoros hivatkozas (`H2438H, `), az `a Name of`, `a group of`, `a Part of`, `combination of`,
+    `in Hebrew of` es `a Meaning of` NEM ekvivalencia (kulon szo / kulon szemely / osszetetel): nem kerul be. Ha egy szam ket kulonbozo celra mutat, a szam
+    kimarad (konfliktus). A lanc (a -> b -> c) a vegpontig oldodik (legfeljebb 5 lepes). Csak a meresre hasznalt tabla; adatot nem ir."""
+    ki, konf, rel_db = {}, set(), {}
+    with open(os.path.join(kozos.KONKORDANCIA, 'TBESH.txt'), encoding='utf-8') as f:
+        for sor in f:
+            mezo = sor.split('	')
+            if len(mezo) < 3 or not re.match(r'H\d', mezo[0]):
+                continue
+            r = re.search(r' = ((?:a |in )?[A-Za-z]+ of)$', mezo[1].strip())
+            if not r or r.group(1).lower() not in TBESH_EKVIVALENS:
+                continue
+            cel = re.findall(r'H\d+[A-Za-z]?', mezo[2])
+            if len(cel) != 1 or not re.fullmatch(r'H\d+[A-Za-z]?', mezo[2].strip()):
+                continue
+            a, b = kozos.strong_szam(mezo[0]), kozos.strong_szam(cel[0])
+            if a is None or b is None or a == b:
+                continue
+            if a in ki and ki[a] != b:
+                konf.add(a)
+            ki[a] = b
+            rel_db[r.group(1).lower()] = rel_db.get(r.group(1).lower(), 0) + 1
+    for a in konf:
+        ki.pop(a, None)
+
+    def fo(x):
+        for _ in range(5):
+            if x not in ki:
+                break
+            x = ki[x]
+        return x
+    return {a: fo(a) for a in ki}, sorted(konf), rel_db
 
 
 def vers_strongok(adat, nyelv):
