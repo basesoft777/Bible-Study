@@ -1,6 +1,6 @@
 # 2. Tanulmány sablon (PaRDeS) — teljes, részletes verzió
 
-*v23 — 2026.11.12 (F205, DT-F205a: új 4/b. pont — igehelyenkénti jelölt blokkok a motívumcikknek: funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás; gépileg olvasható jelölők, `üres` + ok, a vak olvasás sorrendje (a motívumtól független pontok az A1–A2-ben, a funkció és a negatív próba az A4 ⛔ után), minta a HAMART-001 1Móz 8:21-es sorával; l. `MUNKAMENET.md` A-szakasz.)*
+*v23 — 2026.11.12 (F205, DT803: új 4/b. pont — igehelyenkénti jelölt blokkok a motívumcikknek: funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás; gépileg olvasható jelölők, `üres` + ok, a vak olvasás sorrendje (a motívumtól független pontok az A1–A2-ben, a funkció és a negatív próba az A4 ⛔ után), minta a HAMART-001 1Móz 8:21-es sorával; l. `MUNKAMENET.md` A-szakasz.)*
 
 *v22 — 2026.11.01 (F125, DT405: a gerinc-kártya az A3b lépésben; a kulcsszó-táblázat a kártya **előtt** készül, a kártya és az összevetés két listája a 4. pont naplójába kerül; kiejtés-szabály pontosítva, DT426/DT430; l. `MUNKAMENET.md` A3b/A3c.)*
 
@@ -201,7 +201,7 @@ kapcsolódásokhoz, anélkül hogy a fő szöveget túlterhelné.
 
 ## 4/b. Igehelyenkénti jelölt blokkok *(a motívumcikknek)*
 
-**Miért.** A tanulmány a szakasz minden versét egyszer és alaposan olvassa, kontextusban; a motívumcikk sok verset olvas, futólag. Amit az alapos olvasás úgyis lát, azt a blokk olyan alakban rögzíti, amelyet a motívumcikk átvehet (F205, DT-F205a). A blokk **jelölt, nem döntés**: a kinyerő csak jelölt-sort ír belőle az `adat/jeloltek.tsv`-be (`dontes=nyitva`, `manual` proveniencia), a döntés a motívum menetében születik. A határt nem a blokk zárja.
+**Miért.** A tanulmány a szakasz minden versét egyszer és alaposan olvassa, kontextusban; a motívumcikk sok verset olvas, futólag. Amit az alapos olvasás úgyis lát, azt a blokk olyan alakban rögzíti, amelyet a motívumcikk átvehet (F205, DT803). A blokk **jelölt, nem döntés**: a kinyerő csak jelölt-sort ír belőle az `adat/jeloltek.tsv`-be (`dontes=nyitva`, `manual` proveniencia), a döntés a motívum menetében születik. A határt nem a blokk zárja.
 
 **Melyik vershez.** A feldolgozott szakasz versei közül ahhoz, amelyhez a hat pont valamelyikére anyag van; a 4. pont kapcsolódó igehelyei nem kapnak blokkot. Egy blokk = egy vers és egy motívum: ha a vers két motívumhoz tartozik, két blokk áll, és a motívumtól független pontot (jelentéspont, vita, visszhang, versszámozás) mindkettőben ki kell írni, mert a jelölt motívumonként kerül át. Meglévő tanulmány utólag nem kap blokkot.
 
