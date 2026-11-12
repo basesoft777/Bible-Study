@@ -51,3 +51,25 @@ Mérés: `origin/main` @ `d30c7787`, a táblák adatsorai a fejléc és a `#`-so
 
   Jelezve az orkesztrátornak (⛔).
 - A #699 az `adat/SEMA.md`-t, az `eszkozok/ellenoriz.py`-t és az `adat/jeloltek.tsv`-t írja. Az orkesztrátor döntése: az M3–M5 a #699 merge-e után, behozott main-nel készül.
+
+## 2. M1–M2 (2026-11-12)
+
+- **M1** (F205.1): a `sablonok/2_PaRDeS_bovitett_sablon.md` 4/b. pontja (v23). A blokk-alak: `<!-- IGEHELY-BLOKK: [igehely] | motivum: [ID | új | —] | gerinc: [gerinc_elem | —] -->` … `<!-- IGEHELY-BLOKK-VÉGE -->`; a hat pont `- **[pont]:**` sorokban, mezőelválasztó ` · `, proveniencia szögletes zárójelben; `üres — [ok]`. A minta a HAMART-001 1Móz 8:21-es sorából, a repó adatával: `bdb_vers_jelentes.tsv` (H7043, `s.br.aa`, pont nélkül), `visszhang_tanuk.tsv` (Szent Ambrus), `Karoli_versmegfeleltetes.tsv` + `LXX_OS/genesis.tsv` (8:21 mindhárom számozásban). A vita pontja `üres`, mert a HAMART-001 „Az 1Móz 8:21 hatóköre” pontjának nincs nevesített képviselője (a `vitatott_forrasok.tsv` hiány-sora) — a minta így az `üres` szabályt is mutatja.
+- **M2** (F205.2): a `MUNKAMENET.md` A-szakasza: A2b, A2c, A4b, A4c, A4d. A még nem létező eszköz `F8 — nincs eszköz` (a fájl szabálya); az A2c az M4-gyel létező parancsot kapott.
+
+## 3. M4 — szakasz-fordítás (2026-11-12)
+
+`eszkozok/szakasz_forditas.py` (+ `teszt_szakasz_forditas.py`, 15 teszt). Új fordítómotor nincs, a meglévő állapot-szabályokat importálja:
+- BDB: `bdb_jelolt/szakasz_bemenet` (szakaszok, `strong_magyar_sorok`) és a `thayer_jelolt/szolista.allapot` lefedés-szabálya; a nem `elavult` `teljes` sor érvényes (a 13. szabály a lefedést csak a szakaszsorral bíró Strongon méri); a másodlagos Strong a `BDB_strong_alias.tsv` szerinti szócikk-Strongon.
+- Thayer: `thayer_jelolt/szolista.allapot` (az M3 szólistájáé).
+- TBESG rövid glossza: `glossza_lexikon_forditas.tovabbi_forras` (a 13. szabályé), `forras_hash`-összevetéssel.
+
+**Ellenőrzés a mért alapvonalon.** Az F182.17 szerint a HAMART-001 Strongjai mind érvényes fordítással állnak. Az eszköz ugyanezt adja: az 1Móz 8:20-22 szakaszon 0 fordítandó (37 BDB-Strong kész, 1 a BDB-n kívül: H5668; 13 nyelvtani kihagyva); a G1944, G2671, G5356 a Thayer- és a TBESG-láncban kész.
+
+**Próba egy meglévő szakaszon (G6): Gal 3:10-14** (5 vers, 49 Strong, 15 nyelvtani kihagyva). Fordítandó: Thayer 18 Strong (8 `hianyos`, 10 `hianyzik`; 111 hiányzó szakasz, 51 141 forráskarakter), TBESG 28 rövid glossza (225 karakter), BDB 0. A láncok saját száraz futása a kiadott bemeneten, repón kívüli munkamappával, hálózat nélkül:
+- `thayer_api_koteg.py szaraz --adag 9205 --strongok …`: 18 Strong, 25 kérés, forrás 140 546 karakter (a lánc a Strong **összes** szakaszát küldi, nem csak a hiányzókat), becslés 3,77 USD Batch-áron (első kör 2,28 + javító kör 1,48; `manual`);
+- `glossza_api_koteg.py szaraz --lista …`: 28 egység, 2 kérés, 0,056 USD (`manual`, mérés nélkül).
+
+Fordítás és API-hívás nem futott; a repóban fájl nem keletkezett (teszt: `test_repo_erintetlen`).
+
+**Rés, nyitott tétel:** a `bdb_api_koteg.py`-nak nincs Strong-listás bemenete (az adagot a sorrend-fájl adja), ezért a BDB-listát kézzel kell az adagba venni. A TBESH héber glossza (`glosszak_heber_hu.tsv`) nem része a három láncnak, és a brief sem kérte.
