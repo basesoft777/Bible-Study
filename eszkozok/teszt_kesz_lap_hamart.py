@@ -690,5 +690,48 @@ class Onreferencia(unittest.TestCase):
         self.assertIn('A motívum 47 helyen, 54 versben áll: 23 a Genezisben', lap)
 
 
+class GyorsKor(unittest.TestCase):
+    """A kiadás előtti gyors kör (a felhasználó: „Gyors kör 1–4, utána kiadás”)."""
+
+    def test_rovidített_sor_kiemelve(self):
+        lap = _olvas(LAP)
+        self.assertIn('lent 4, fent) <mark class="motivumhely" title="a motívum helye: 1Móz 12:3">1Móz 12:3</mark> …', lap)
+        self.assertIn('átok alá vetni <mark class="motivumhely" title="a motívum helye: 1Móz 5:29">1Móz 5:29</mark> (J) …',
+                      lap)
+        # a kiemelő a folytatásos („3:17, 23”) és a könyvnév nélküli alakot is a teljes igehelyre köti
+        ki = LG.kiemel('1Móz 3:17, 23 vö. 5:29', [], mark=True, extra=['1Móz 3:23', '1Móz 5:29'])[0]
+        self.assertIn('title="a motívum helye: 1Móz 3:23">23</mark>', ki)
+        self.assertIn('title="a motívum helye: 1Móz 5:29">5:29</mark>', ki)
+
+    def test_kizarasok_horgony_a_cimre(self):
+        lap = _olvas(LAP)
+        mell = _olvas(os.path.join(GYOKER, 'lexikon', 'HAMART-001_KIZARASOK.md'))
+        cimek = {LG._heading_slug(m.group(1)) for m in re.finditer(r'(?m)^#{2,4} (.*)$', mell)}
+        linkek = re.findall(r'KIZARASOK\.md#([^)"\s]+)', lap)
+        self.assertTrue(linkek)
+        self.assertEqual([x for x in linkek if x not in cimek], [])
+        self.assertEqual(LG.kizarasok_cim('amelyet a lap nem dönt el', 2), 'amelyet ez a vizsgálat nem dönt el — 2 vers')
+
+    def test_kolofon_datum(self):
+        lap = _olvas(LAP)
+        self.assertRegex(lap, r'\| Szerkesztői átnézés és javítás \|[^\n|]*\(2026\.11\.11–12\) \|')
+        self.assertIn('| Modell-lektor (claude-fable-5-2) | 43 jelzett hely (2026.11.11) |', lap)
+
+    def test_szo_a_strong_mellett(self):
+        import tablajegyzet as TJ
+        minta = '\n'.join(['#### 4.5. Tömör', '', '**H0056** · x', '', '**G1311** · y', '', '#### 4.10. Kiejtés', '',
+                           '**H0056** · אָבַל (ával)', ''])
+        ki = TJ.strong_szo_elol(minta)
+        self.assertIn('**אָבַל (ával)** — x · H0056', ki)
+        self.assertIn('**G1311** · y', ki)
+        self.assertIn('**אָבַל (ával)** · H0056', ki)
+        lap = _olvas(LAP)
+        hb = lap.split('\n### Héber szavak', 1)[1].split('\n### ', 1)[0]
+        for alpont in ('4.5', '4.6', '4.10'):
+            resz = hb.split('\n#### %s.' % alpont, 1)[1].split('\n#### ', 1)[0]
+            self.assertIsNone(re.search(r'(?m)^\*\*H\d{4}\*\* ·', resz), alpont)
+            self.assertRegex(resz, r'(?m)^\*\*אָבַל \(ával\)\*\* (?:— .* )?· H0056$')
+
+
 if __name__ == '__main__':
     unittest.main()

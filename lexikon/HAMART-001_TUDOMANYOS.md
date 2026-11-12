@@ -181,7 +181,7 @@ Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig: mit 
 <details><summary><strong>egy bent lévő hely folytatása, a szerkezet ott áll</strong> — 4 vers</summary><p>a szomszédos vers a motívumban van, ott áll a szerkezet</p><p>Versek: Ez 28:17, Mik 6:13, Róm 8:20, Róm 8:22.</p><p>A <a href="HAMART-001_KIZARASOK.md#egy-bent-lévő-hely-folytatása-a-szerkezet-ott-áll--4-vers">kizárt helyek mellékletében</a> is.</p></details>
 <details><summary><strong>száműzetés-büntetés, a föld kulcsszava nélkül</strong> — 4 vers</summary><p>a bujdosás büntetés, de a föld szava nem áll a versben</p><p>Versek: Hós 9:17, Jer 20:3, Jer 20:4, Zsolt 109:10.</p><p>A <a href="HAMART-001_KIZARASOK.md#száműzetés-büntetés-a-föld-kulcsszava-nélkül--4-vers">kizárt helyek mellékletében</a> is.</p></details>
 <details><summary><strong>az „Isten előtt” kifejezés, nem a motívum</strong> — 3 vers</summary><p>az „Isten előtt” kifejezés miatt felhozott hely</p><p>Versek: 2Krón 34:27, Luk 1:6, Róm 2:13.</p><p>A <a href="HAMART-001_KIZARASOK.md#az-isten-előtt-kifejezés-nem-a-motívum--3-vers">kizárt helyek mellékletében</a> is.</p></details>
-<details><summary><strong>az öröklött bűnösség kérdése, amelyet ez a vizsgálat nem dönt el</strong> — 2 vers</summary><p>az öröklött bűnösség kérdése, amelyet ez a vizsgálat nem dönt el</p><p>Versek: Ef 2:1, Ef 2:3.</p><p>A <a href="HAMART-001_KIZARASOK.md#az-öröklött-bűnösség-kérdése-amelyet-a-lap-nem-dönt-el--2-vers">kizárt helyek mellékletében</a> is.</p></details>
+<details><summary><strong>az öröklött bűnösség kérdése, amelyet ez a vizsgálat nem dönt el</strong> — 2 vers</summary><p>az öröklött bűnösség kérdése, amelyet ez a vizsgálat nem dönt el</p><p>Versek: Ef 2:1, Ef 2:3.</p><p>A <a href="HAMART-001_KIZARASOK.md#az-öröklött-bűnösség-kérdése-amelyet-ez-a-vizsgálat-nem-dönt-el--2-vers">kizárt helyek mellékletében</a> is.</p></details>
 
 ### 1.4. Mi maradt és miért
 
@@ -1470,7 +1470,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <summary>5. – 7. (3 szakasz): ország, terület, vidék · az egész föld, a lakott föld · tulajdonnév, helynév</summary>
 
 - 5 — ország, terület, vidék (= ארץ‎) 1Móz 47:19 (J) 3Móz 20:24 (J ? — || ארץ) status constructus…
-- 6 — az egész föld, a lakott föld (ritkán; vö. még פְּנֵי הָא׳ (pené há) lent 4, fent) 1Móz 12:3 …
+- 6 — az egész föld, a lakott föld (ritkán; vö. még פְּנֵי הָא׳ (pené há) lent 4, fent) <mark class="motivumhely" title="a motívum helye: 1Móz 12:3">1Móz 12:3</mark> …
 - 7 — tulajdonnév, helynév …
 
 </details>
@@ -1554,7 +1554,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <summary>Niph'al – Hoph'al (3 szakasz): átkozott · átkozni, átok alá vetni · átkozottnak lenni</summary>
 
 - Niph'al — participium נֵאָרִים (néárím) átkozott Mal 3:9.
-- Pi'el — 3. hímnemű egyes szám suffixummal אֵרֲרָהּ (éraráh) átkozni, átok alá vetni 1Móz 5:29 (J) …
+- Pi'el — 3. hímnemű egyes szám suffixummal אֵרֲרָהּ (éraráh) átkozni, átok alá vetni <mark class="motivumhely" title="a motívum helye: 1Móz 5:29">1Móz 5:29</mark> (J) …
 - Hoph'al — imperfectum יוּאָ֑ר (júár) átkozottnak lenni 4Móz 22:6 (E).
 
 </details>
@@ -1943,25 +1943,25 @@ A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szav
 
 A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.<!-- olvasói -->
 
-**H0056** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H0056) · forrás: az UBS Dictionary of Biblical Hebrew
+**אָבַל (ával)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H0056) · forrás: az UBS Dictionary of Biblical Hebrew · H0056
 
-**H0127** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H0127) · forrás: az UBS Dictionary of Biblical Hebrew
+**אֲדָמָה (adámá)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H0127) · forrás: az UBS Dictionary of Biblical Hebrew · H0127
 
-**H0423** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H0423) · forrás: az UBS Dictionary of Biblical Hebrew
+**אָלָה (álá)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H0423) · forrás: az UBS Dictionary of Biblical Hebrew · H0423
 
-**H0779** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H0779) · forrás: az UBS Dictionary of Biblical Hebrew
+**אָרַר (árar)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H0779) · forrás: az UBS Dictionary of Biblical Hebrew · H0779
 
-**H2403** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H2403) · forrás: az UBS Dictionary of Biblical Hebrew
+**חַטָּאת (chattát)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H2403) · forrás: az UBS Dictionary of Biblical Hebrew · H2403
 
-**H2555** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H2555) · forrás: az UBS Dictionary of Biblical Hebrew
+**חָמָס (chámász)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H2555) · forrás: az UBS Dictionary of Biblical Hebrew · H2555
 
-**H6093** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H6093) · forrás: az UBS Dictionary of Biblical Hebrew
+**עִצָּבוֹן (iccávón)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H6093) · forrás: az UBS Dictionary of Biblical Hebrew · H6093
 
-**H6975** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H6975) · forrás: az UBS Dictionary of Biblical Hebrew
+**קוֹץ (kóc)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H6975) · forrás: az UBS Dictionary of Biblical Hebrew · H6975
 
-**H7451** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H7451) · forrás: az UBS Dictionary of Biblical Hebrew
+**רַע (ra)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H7451) · forrás: az UBS Dictionary of Biblical Hebrew · H7451
 
-**H7843** · az UBS DBH jelentései a szónézetben: [szónézet](/szo/H7843) · forrás: az UBS Dictionary of Biblical Hebrew
+**שָׁחַת (sáchat)** — az UBS DBH jelentései a szónézetben: [szónézet](/szo/H7843) · forrás: az UBS Dictionary of Biblical Hebrew · H7843
 
 #### 4.6. LXX-híd
 
@@ -1991,25 +1991,25 @@ A שָׁחַת (sáchat) a motívum 7 ószövetségi versében áll; a görög f
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a szó összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H0056** · *a forrás nem tárgyalja* *(LXX versszintű párok)*
+**אָבַל (ával)** — *a forrás nem tárgyalja* *(LXX versszintű párok)* · H0056
 
-**H0127** · 209 vers a Septuagintában (ebből 209 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 200 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 81 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 74 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 50 vers; δίδωμι ([didómi](/szo/G1325)<sup class="strong" title="G1325">G1325</sup>): 49 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 47 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 46 vers; ἡμέρα ([hémera](/szo/G2250)<sup class="strong" title="G2250">G2250</sup>): 34 vers; πρόσωπον ([proszópon](/szo/G4383)<sup class="strong" title="G4383">G4383</sup>): 34 vers; πατήρ ([patér](/szo/G3962)<sup class="strong" title="G3962">G3962</sup>): 24 vers
+**אֲדָמָה (adámá)** — 209 vers a Septuagintában (ebből 209 vers görög tartalmi szóval); leggyakoribb görög társak: γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 200 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 81 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 74 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 50 vers; δίδωμι ([didómi](/szo/G1325)<sup class="strong" title="G1325">G1325</sup>): 49 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 47 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 46 vers; ἡμέρα ([hémera](/szo/G2250)<sup class="strong" title="G2250">G2250</sup>): 34 vers; πρόσωπον ([proszópon](/szo/G4383)<sup class="strong" title="G4383">G4383</sup>): 34 vers; πατήρ ([patér](/szo/G3962)<sup class="strong" title="G3962">G3962</sup>): 24 vers · H0127
 
-**H0423** · *a forrás nem tárgyalja* *(LXX versszintű párok)*
+**אָלָה (álá)** — *a forrás nem tárgyalja* *(LXX versszintű párok)* · H0423
 
-**H0779** · 52 vers a Septuagintában (ebből 52 vers görög tartalmi szóval); leggyakoribb görög társak: ἐπικατάρατος ([epikataratosz](/szo/G1944)<sup class="strong" title="G1944 · átkozott">G1944</sup>): 36 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 32 vers; λαός ([laosz](/szo/G2992)<sup class="strong" title="G2992 · nép">G2992</sup>): 18 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 17 vers; γίνομαι ([ginomai](/szo/G1096)<sup class="strong" title="G1096">G1096</sup>): 15 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 13 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 10 vers; καταράομαι ([kataraomai](/szo/G2672)<sup class="strong" title="G2672 · megátkozni">G2672</sup>): 10 vers; ἄνθρωπος ([anthróposz](/szo/G0444)<sup class="strong" title="G0444 · ember">G0444</sup>): 9 vers; γυνή ([güné](/szo/G1135)<sup class="strong" title="G1135">G1135</sup>): 9 vers
+**אָרַר (árar)** — 52 vers a Septuagintában (ebből 52 vers görög tartalmi szóval); leggyakoribb görög társak: ἐπικατάρατος ([epikataratosz](/szo/G1944)<sup class="strong" title="G1944 · átkozott">G1944</sup>): 36 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 32 vers; λαός ([laosz](/szo/G2992)<sup class="strong" title="G2992 · nép">G2992</sup>): 18 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 17 vers; γίνομαι ([ginomai](/szo/G1096)<sup class="strong" title="G1096">G1096</sup>): 15 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 13 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 10 vers; καταράομαι ([kataraomai](/szo/G2672)<sup class="strong" title="G2672 · megátkozni">G2672</sup>): 10 vers; ἄνθρωπος ([anthróposz](/szo/G0444)<sup class="strong" title="G0444 · ember">G0444</sup>): 9 vers; γυνή ([güné](/szo/G1135)<sup class="strong" title="G1135">G1135</sup>): 9 vers · H0779
 
-**H2403** · 267 vers a Septuagintában (ebből 267 vers görög tartalmi szóval); leggyakoribb görög társak: ἁμαρτία ([hamartia](/szo/G0266)<sup class="strong" title="G0266 · bűn">G0266</sup>): 243 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 85 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 66 vers; ποιέω ([poieó](/szo/G4160)<sup class="strong" title="G4160">G4160</sup>): 59 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 53 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 39 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 35 vers; ὁλοκαύτωμα ([holokautóma](/szo/G3646)<sup class="strong" title="G3646">G3646</sup>): 33 vers; ἁμαρτάνω ([hamartanó](/szo/G0264)<sup class="strong" title="G0264 · vétkezni">G0264</sup>): 32 vers; ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>): 31 vers
+**חַטָּאת (chattát)** — 267 vers a Septuagintában (ebből 267 vers görög tartalmi szóval); leggyakoribb görög társak: ἁμαρτία ([hamartia](/szo/G0266)<sup class="strong" title="G0266 · bűn">G0266</sup>): 243 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 85 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 66 vers; ποιέω ([poieó](/szo/G4160)<sup class="strong" title="G4160">G4160</sup>): 59 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 53 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 39 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 35 vers; ὁλοκαύτωμα ([holokautóma](/szo/G3646)<sup class="strong" title="G3646">G3646</sup>): 33 vers; ἁμαρτάνω ([hamartanó](/szo/G0264)<sup class="strong" title="G0264 · vétkezni">G0264</sup>): 32 vers; ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>): 31 vers · H2403
 
-**H2555** · 58 vers a Septuagintában (ebből 58 vers görög tartalmi szóval); leggyakoribb görög társak: ἀδικία ([adikia](/szo/G0093)<sup class="strong" title="G0093 · igazságtalanság">G0093</sup>): 15 vers; ἀσέβεια ([aszebeia](/szo/G0763)<sup class="strong" title="G0763 · istentelenség">G0763</sup>): 12 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 12 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 12 vers; ἄδικος ([adikosz](/szo/G0094)<sup class="strong" title="G0094 · igazságtalan">G0094</sup>): 11 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 10 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 10 vers; ἄνθρωπος ([anthróposz](/szo/G0444)<sup class="strong" title="G0444 · ember">G0444</sup>): 8 vers; ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>): 8 vers; ταλαιπωρία ([talaipória](/szo/G5004)<sup class="strong" title="G5004">G5004</sup>): 8 vers
+**חָמָס (chámász)** — 58 vers a Septuagintában (ebből 58 vers görög tartalmi szóval); leggyakoribb görög társak: ἀδικία ([adikia](/szo/G0093)<sup class="strong" title="G0093 · igazságtalanság">G0093</sup>): 15 vers; ἀσέβεια ([aszebeia](/szo/G0763)<sup class="strong" title="G0763 · istentelenség">G0763</sup>): 12 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 12 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 12 vers; ἄδικος ([adikosz](/szo/G0094)<sup class="strong" title="G0094 · igazságtalan">G0094</sup>): 11 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 10 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 10 vers; ἄνθρωπος ([anthróposz](/szo/G0444)<sup class="strong" title="G0444 · ember">G0444</sup>): 8 vers; ἀνομία ([anomia](/szo/G0458)<sup class="strong" title="G0458 · törvénytelenség">G0458</sup>): 8 vers; ταλαιπωρία ([talaipória](/szo/G5004)<sup class="strong" title="G5004">G5004</sup>): 8 vers · H2555
 
-**H6093** · 3 vers a Septuagintában (ebből 3 vers görög tartalmi szóval); leggyakoribb görög társak: λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 3 vers; λύπη ([lüpé](/szo/G3077)<sup class="strong" title="G3077">G3077</sup>): 3 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 2 vers; γυνή ([güné](/szo/G1135)<sup class="strong" title="G1135">G1135</sup>): 2 vers; ἔργον ([ergon](/szo/G2041)<sup class="strong" title="G2041">G2041</sup>): 2 vers; Ἀδάμ ([Adam](/szo/G0076)<sup class="strong" title="G0076">G0076</sup>): 1 vers; ἀκούω ([akúó](/szo/G0191)<sup class="strong" title="G0191">G0191</sup>): 1 vers; ἀνήρ ([anér](/szo/G0435)<sup class="strong" title="G0435 · férfi">G0435</sup>): 1 vers; ἐντέλλω ([entelló](/szo/G1781)<sup class="strong" title="G1781">G1781</sup>): 1 vers; ἐπικατάρατος ([epikataratosz](/szo/G1944)<sup class="strong" title="G1944 · átkozott">G1944</sup>): 1 vers
+**עִצָּבוֹן (iccávón)** — 3 vers a Septuagintában (ebből 3 vers görög tartalmi szóval); leggyakoribb görög társak: λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 3 vers; λύπη ([lüpé](/szo/G3077)<sup class="strong" title="G3077">G3077</sup>): 3 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 2 vers; γυνή ([güné](/szo/G1135)<sup class="strong" title="G1135">G1135</sup>): 2 vers; ἔργον ([ergon](/szo/G2041)<sup class="strong" title="G2041">G2041</sup>): 2 vers; Ἀδάμ ([Adam](/szo/G0076)<sup class="strong" title="G0076">G0076</sup>): 1 vers; ἀκούω ([akúó](/szo/G0191)<sup class="strong" title="G0191">G0191</sup>): 1 vers; ἀνήρ ([anér](/szo/G0435)<sup class="strong" title="G0435 · férfi">G0435</sup>): 1 vers; ἐντέλλω ([entelló](/szo/G1781)<sup class="strong" title="G1781">G1781</sup>): 1 vers; ἐπικατάρατος ([epikataratosz](/szo/G1944)<sup class="strong" title="G1944 · átkozott">G1944</sup>): 1 vers · H6093
 
-**H6975** · 12 vers a Septuagintában (ebből 12 vers görög tartalmi szóval); leggyakoribb görög társak: ἄκανθα ([akantha](/szo/G0173)<sup class="strong" title="G0173 · tövis">G0173</sup>): 12 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 5 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 3 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 3 vers; ἀγρός ([agrosz](/szo/G0068)<sup class="strong" title="G0068">G0068</sup>): 2 vers; ἀλοάω ([aloaó](/szo/G0248)<sup class="strong" title="G0248">G0248</sup>): 2 vers; ἀναβαίνω ([anabainó](/szo/G0305)<sup class="strong" title="G0305">G0305</sup>): 2 vers; ἀνήρ ([anér](/szo/G0435)<sup class="strong" title="G0435 · férfi">G0435</sup>): 2 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 2 vers; ἐκκαίω ([ekkaió](/szo/G1572)<sup class="strong" title="G1572">G1572</sup>): 2 vers
+**קוֹץ (kóc)** — 12 vers a Septuagintában (ebből 12 vers görög tartalmi szóval); leggyakoribb görög társak: ἄκανθα ([akantha](/szo/G0173)<sup class="strong" title="G0173 · tövis">G0173</sup>): 12 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 5 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 3 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 3 vers; ἀγρός ([agrosz](/szo/G0068)<sup class="strong" title="G0068">G0068</sup>): 2 vers; ἀλοάω ([aloaó](/szo/G0248)<sup class="strong" title="G0248">G0248</sup>): 2 vers; ἀναβαίνω ([anabainó](/szo/G0305)<sup class="strong" title="G0305">G0305</sup>): 2 vers; ἀνήρ ([anér](/szo/G0435)<sup class="strong" title="G0435 · férfi">G0435</sup>): 2 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 2 vers; ἐκκαίω ([ekkaió](/szo/G1572)<sup class="strong" title="G1572">G1572</sup>): 2 vers · H6975
 
-**H7451** · 609 vers a Septuagintában (ebből 609 vers görög tartalmi szóval); leggyakoribb görög társak: πονηρός ([ponérosz](/szo/G4190)<sup class="strong" title="G4190 · gonosz/rossz">G4190</sup>): 235 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 209 vers; κακός ([kakosz](/szo/G2556)<sup class="strong" title="G2556 · gonosz/kár: gonosz">G2556</sup>): 198 vers; ποιέω ([poieó](/szo/G4160)<sup class="strong" title="G4160">G4160</sup>): 157 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 155 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 140 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 121 vers; κακία ([kakia](/szo/G2549)<sup class="strong" title="G2549">G2549</sup>): 90 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 84 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 68 vers
+**רַע (ra)** — 609 vers a Septuagintában (ebből 609 vers görög tartalmi szóval); leggyakoribb görög társak: πονηρός ([ponérosz](/szo/G4190)<sup class="strong" title="G4190 · gonosz/rossz">G4190</sup>): 235 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 209 vers; κακός ([kakosz](/szo/G2556)<sup class="strong" title="G2556 · gonosz/kár: gonosz">G2556</sup>): 198 vers; ποιέω ([poieó](/szo/G4160)<sup class="strong" title="G4160">G4160</sup>): 157 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 155 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 140 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 121 vers; κακία ([kakia](/szo/G2549)<sup class="strong" title="G2549">G2549</sup>): 90 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 84 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 68 vers · H7451
 
-**H7843** · 135 vers a Septuagintában (ebből 135 vers görög tartalmi szóval); leggyakoribb görög társak: κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 58 vers; διαφθείρω ([diaftheiró](/szo/G1311)<sup class="strong" title="G1311 · elpusztítani">G1311</sup>): 48 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 43 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 36 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 33 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 26 vers; ποιέω ([poieó](/szo/G4160)<sup class="strong" title="G4160">G4160</sup>): 25 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 23 vers; βασιλεύς ([baszileusz](/szo/G0935)<sup class="strong" title="G0935">G0935</sup>): 15 vers; λαός ([laosz](/szo/G2992)<sup class="strong" title="G2992 · nép">G2992</sup>): 15 vers
+**שָׁחַת (sáchat)** — 135 vers a Septuagintában (ebből 135 vers görög tartalmi szóval); leggyakoribb görög társak: κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 58 vers; διαφθείρω ([diaftheiró](/szo/G1311)<sup class="strong" title="G1311 · elpusztítani">G1311</sup>): 48 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 43 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 36 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 33 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 26 vers; ποιέω ([poieó](/szo/G4160)<sup class="strong" title="G4160">G4160</sup>): 25 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 23 vers; βασιλεύς ([baszileusz](/szo/G0935)<sup class="strong" title="G0935">G0935</sup>): 15 vers; λαός ([laosz](/szo/G2992)<sup class="strong" title="G2992 · nép">G2992</sup>): 15 vers · H7843
 
 *Proveniencia (a tábla soraiból): forrás: a grammatikai szavak listája, 2026-10-11*<!-- eredeti: *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z* -->
 
@@ -2212,25 +2212,25 @@ A héber szavak közül az אָבַל (ával), az אֲדָמָה (adámá), az �
 
 A szó magyaros kiejtése.<!-- olvasói -->
 
-**H0056** · אָבַל (ával)
+**אָבַל (ával)** · H0056
 
-**H0127** · אֲדָמָה (adámá)
+**אֲדָמָה (adámá)** · H0127
 
-**H0423** · אָלָה (álá)
+**אָלָה (álá)** · H0423
 
-**H0779** · אָרַר (árar)
+**אָרַר (árar)** · H0779
 
-**H2403** · חַטָּאת (chattát)
+**חַטָּאת (chattát)** · H2403
 
-**H2555** · חָמָס (chámász)
+**חָמָס (chámász)** · H2555
 
-**H6093** · עִצָּבוֹן (iccávón)
+**עִצָּבוֹן (iccávón)** · H6093
 
-**H6975** · קוֹץ (kóc)
+**קוֹץ (kóc)** · H6975
 
-**H7451** · רַע (ra)
+**רַע (ra)** · H7451
 
-**H7843** · שָׁחַת (sáchat)
+**שָׁחַת (sáchat)** · H7843
 
 ### Nyelvfüggetlen szerepek
 
@@ -3258,7 +3258,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Generálva | 2026-11-12 |
 | Kiadás | nincs kiadva — feldolgozás alatt |
 | Próza modellje | nincs kiadva — feldolgozás alatt |
-| Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által jelzett helyek javítását ő hagyta jóvá, módosította vagy vetette el (2026.11.11) |
+| Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által jelzett helyek javítását ő hagyta jóvá, módosította vagy vetette el (2026.11.11–12) |
 | Modell-lektor (claude-fable-5-2) | 43 jelzett hely (2026.11.11) |
 
 **Változásjegyzék**

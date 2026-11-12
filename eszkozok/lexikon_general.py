@@ -4113,6 +4113,11 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, 
                 # hiányát 21-ről 126-ra emelné a HAMART-001-en
                 vazlat = '- `%s` — %s' % (jel, vegyes_cim_nelkul(jel, cimke) if cimke else
                                          vegyes_cim_nelkul(jel, _elso_tagmondat(hu or angol, csonkit_jel=True)))
+                if extra:
+                    # a v8-átnézés (kiadás előtti gyors kör, 1.): az összecsukott, rövidített sorban is kiemelt a
+                    # motívum helye (1Móz 12:3 az adámánál, 1Móz 5:29 az árar Pi'elnél); csak a motívum versei, a
+                    # jelentéspont-hozzárendelés (`talalt`) nem változik
+                    vazlat = kiemel(vazlat, [], mark=True, extra=extra)[0]
             if kat == 'horgonnyal':
                 # ELLENOR_SZOTARI_GERINC 4. (7.2a): a határjelölés az összecsukott szakaszon is látszik
                 vazlat += HORGONNYAL_JELOLES
@@ -7290,7 +7295,9 @@ def _konyvenkent(versek):
 
 
 def kizarasok_cim(ok, n):
-    return '%s — %s vers' % (ok, OK._ezres(n))
+    # a cím olvasói alakja (az önreferáló „lap” fordulat cseréje) itt áll, hogy a melléklet címe és a lapról mutató
+    # horgony (`kizarasok_link`) mindig ugyanabból a szövegből képződjön (a v8-átnézés, gyors kör, 2.)
+    return TJ.onref_csere('%s — %s vers' % (ok, OK._ezres(n)))
 
 
 def kizarasok_link(mid, ok, n):

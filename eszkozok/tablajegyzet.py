@@ -156,7 +156,44 @@ def alkalmaz(szoveg):
                 continue
         ki.append(s)
         i += 1
-    return onref_csere(_szam_link_nevelo(re.sub(r'\n{3,}', '\n\n', tabla_ala('\n'.join(ki)))))
+    return strong_szo_elol(onref_csere(_szam_link_nevelo(re.sub(r'\n{3,}', '\n\n', tabla_ala('\n'.join(ki))))))
+
+
+_ALPONT_RX = re.compile(r'^#{3,5}\s+4\.(\d+)\.')
+_HSOR_RX = re.compile(r'^\*\*(H\d{4,5}[a-z]?)\*\* · (.*)$')
+
+
+def strong_szo_elol(szoveg):
+    """A héber 4.5, 4.6 és 4.10 sorában elöl a szó, a Strong-szám hátul, a 4.1 mintájára (a v8-átnézés, kiadás előtti
+    gyors kör, 4.): `**H0056** · …` → `**אָבַל (ával)** — … · H0056`; a 4.10-ben (ott a szó maga a tartalom)
+    `**אָבַל (ával)** · H0056`. A szó a lap saját 4.10-es sorából (a szó és a magyaros kiejtése); ahol nincs, a sor
+    változatlan. A görög sorok nem változnak."""
+    sorok = szoveg.split('\n')
+    szo, alpont = {}, None
+    for s in sorok:
+        m = _ALPONT_RX.match(s)
+        if m:
+            alpont = m.group(1)
+        elif s.startswith('### '):
+            alpont = None
+        m = _HSOR_RX.match(s)
+        if m and alpont == '10' and re.fullmatch(r'\S+ \([^()]+\)', m.group(2).strip()):
+            szo[m.group(1)] = m.group(2).strip()
+    if not szo:
+        return szoveg
+    ki, alpont = [], None
+    for s in sorok:
+        m = _ALPONT_RX.match(s)
+        if m:
+            alpont = m.group(1)
+        elif s.startswith('### '):
+            alpont = None
+        m = _HSOR_RX.match(s)
+        if m and alpont in ('5', '6', '10') and m.group(1) in szo:
+            h, tobbi = m.group(1), m.group(2).rstrip()
+            s = ('**%s** · %s' % (szo[h], h)) if alpont == '10' else ('**%s** — %s · %s' % (szo[h], tobbi, h))
+        ki.append(s)
+    return '\n'.join(ki)
 
 
 # A felhasználó v8-átnézése (4. szabály): a „lap” szó az oldal önmagára utalásaként nem áll az olvasói szövegben.
