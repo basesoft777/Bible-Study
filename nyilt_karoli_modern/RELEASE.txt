@@ -1,4 +1,4 @@
-release_id: 2026-11-01-64d0b160cd4595ac
+release_id: 2026-11-01-ed49d9a054d0157c
 data_state_date: 2026-11-01
-content_hash_sha256: 64d0b160cd4595ace2b20d6596aa22facc48b2f522a2bb736a877d5bca1fdfee
+content_hash_sha256: ed49d9a054d0157c2855eeb8bfdbad1dd5e102841e5ff5b49872becaf72c8f40
 publication_place: https://doi.org/10.5281/zenodo.24141950

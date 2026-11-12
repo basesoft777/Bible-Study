@@ -84,15 +84,19 @@ words are therefore kept.
 An automatic self-check runs on every verse: re-tokenising the modern text must give exactly the modern forms of the
 non-dropped words, in order, and the punctuation skeleton must not change. Every word key is in the table.
 
-An independent reviewer examined the text in four rounds, followed by two correction rounds. Measured on samples:
+An independent reviewer examined the text in four rounds, followed by two correction rounds. Measured on samples (the
+Wilson 95% intervals are computed by the release from the measured counts):
 
-- spelling: the replacements in the sample 230/230 correct; on the check set for bare *a mi*
-  101/102 (99.0%);
+- spelling: 230 of the 230 replacements in the sample correct (95% upper bound of the error rate
+  1.6%); on the 102-item check set for bare *a mi* 1 error (101/102,
+  99.0%);
 - verb forms: on the 120-verse sample 120 verses without error; on the second, 140-verse
-  sample 216 replacements, 0 wrong;
-- coverage (did archaic verb forms remain): 94.8% on the independent reviewer's fresh sample (92
-  replacements, 5 misses). The higher figure of the second sample is biased, because later rounds targeted
-  exactly its misses.
+  sample 216 replacements, 0 wrong (upper bound 1.7%); on the independent
+  reviewer's fresh 100-verse sample 92 replacements, 0 wrong (upper bound 4.0%);
+- coverage (did archaic verb forms remain): 94.8% on the same fresh sample (92 replacements,
+  5 misses; 95%: 88.5–97.8%). This projects to about 1,560 verb forms left archaic in the
+  whole text (95% Poisson band about 500–3,600). The higher coverage of the second sample is biased, because
+  later rounds targeted exactly its misses.
 
 The remaining known issues are listed in `KNOWN_ISSUES.md`.
 

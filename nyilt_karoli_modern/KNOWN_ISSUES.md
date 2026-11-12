@@ -7,8 +7,11 @@
 1. **Archaic verb forms left as candidates.** For 3,290 words the rule or a model proposed a replacement, but
    there was no agreement, so the word stayed archaic.
 2. **Vowel-initial verb after demonstrative *az*** (*az monda*, *az felele*): some such verbs stayed archaic.
-3. **Person error:** in three places a third-person plural form stands instead of first-person singular
-   (Gen 39:15, Dan 7:16, Ezek 22:30).
+3. **Person error:** in three places a first-person singular past verb of the 1908 text became third-person plural
+   in the modern text: Gen 39:15 *kezdék* → *kezdték* (correctly *kezdtem*, "I began"), Dan 7:16 *kérék* → *kérték*
+   (correctly *kértem*, "I asked"), Ezek 22:30 *keresék* → *keresték* (correctly *kerestem*, "I sought"). The old
+   ending *-ék* can be either first-person singular or third-person plural; in these verses the speaker uses the
+   first person.
 4. **Review misses:** *egybegyűle, sétála, Helybenhagyák, felveheték, béméne, elplántálám, lövének, megszerzém*
    remained archaic.
 5. **Back-vowel possessive *-ok*** (without *j*) is left on purpose, as it coincides with the plural.

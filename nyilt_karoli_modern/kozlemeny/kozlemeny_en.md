@@ -14,8 +14,12 @@ is documented in the methods description. Of the text's 31,158 verses, 21,636 ch
 **How.** Most of the work was done by rules, word by word, with the project's own dictionary table and conjugation
 module. Rare and doubtful verb forms were reviewed by language models, blind, in five rounds; a form changed only where
 at least two independent proposals agreed and the stem check let it through. An independent reviewer examined the text
-in four rounds; in the measured samples a single one of several hundred replacements was wrong, and the share of verbs
-left in archaic form is a few per cent. The remaining errors are named in the published list of known issues.
+in four rounds. On the reviewer's fresh 100-verse sample 0 of the 92 verb-form replacements
+were wrong (95% upper bound of the error rate 4.0%), and 0 of the 230 replacements
+in the spelling sample; the 102-item check set for bare "a mi" had 1 error. On the same fresh sample
+94.8% of archaic verb forms were modernised (92 replacements, 5 misses; 95%:
+88.5–97.8%), which projects to about 1,560 verb forms left archaic in the whole text (95% band about
+500–3,600). The remaining errors are named in the published list of known issues.
 
 **The Strong's numbers.** The word alignment was made on the 1908 Károli text and is also published as a separate
 dataset. Since the modernisation left every word in its place, the two layers join on a simple key — verse and word

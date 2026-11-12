@@ -7,8 +7,10 @@
 1. **Jelöltként maradt régies igealakok.** 3 290 szónál a szabály vagy egy modell cserét javasolt, de nem
    volt egyezés, ezért a szó régies alakban maradt.
 2. **Magánhangzóval kezdődő ige a mutató *az* után** (*az monda*, *az felele*): néhány ilyen ige régies alakban maradt.
-3. **Személyhiba:** három helyen egyes szám első személy helyett többes szám harmadik személyű alak áll
-   (1Móz 39:15, Dán 7:16, Ez 22:30).
+3. **Személyhiba:** három helyen az 1908-as szöveg egyes szám első személyű múlt idejű igéje a modern szövegben
+   többes szám harmadik személyű lett: 1Móz 39:15 *kezdék* → *kezdték* (helyesen *kezdtem*), Dán 7:16 *kérék* →
+   *kérték* (helyesen *kértem*), Ez 22:30 *keresék* → *keresték* (helyesen *kerestem*). A *-ék* végű régi alak
+   egyes szám első és többes szám harmadik személyű is lehet; ezekben a versekben a beszélő első személyben szól.
 4. **Az ellenőrzés kihagyásai:** *egybegyűle, sétála, Helybenhagyák, felveheték, béméne, elplántálám, lövének,
    megszerzém* régies alakban maradt.
 5. **A mély hangrendű birtokos *-ok*** (*atyjok*-típus *j* nélkül) szándékosan marad, mert a többes számmal egybeesik.

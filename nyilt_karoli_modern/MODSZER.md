@@ -80,15 +80,19 @@ megmarad, és a modern szövegben a gazdaszóhoz tartozik. Összevonásnál így
 Minden versen gépi önellenőrzés fut: a modern szöveget újra szavakra bontva pontosan a nem kieső szavak modern
 alakjait kell adnia, sorrendben, és az írásjelek váza nem változhat. Minden szó kulcsa a táblában van.
 
-A szöveget független ellenőr négy körben vizsgálta, ezek után két javítókör következett. A mérés mintákon:
+A szöveget független ellenőr négy körben vizsgálta, ezek után két javítókör következett. A mérés mintákon (a
+Wilson-féle 95%-os intervallumot a kiadás számolja a mért darabszámokból):
 
-- helyesírás: a minta cseréi 230/230 helyesek; a puszta *a mi* ellenőrző halmazán 101/102
-  (99,0%);
+- helyesírás: a minta 230 cseréjéből 230 helyes (a hibaarány 95%-os felső határa
+  1,6%); a puszta *a mi* 102 elemes ellenőrző halmazán 1 hiba (101/102,
+  99,0%);
 - igealak: a 120 verses mintán 120 vers hibátlan; a második, 140 verses mintán
-  216 csere, ebből 0 hibás;
-- lefedettség (maradt-e régies igealak): a független ellenőr friss mintáján 94,8% (92 csere,
-  5 kihagyás). A második minta ennél magasabb értéke torzított, mert a későbbi körök éppen a kihagyásait
-  vették célba.
+  216 csere, ebből 0 hibás (felső határ 1,7%); a független ellenőr friss,
+  100 verses mintáján 92 csere, ebből 0 hibás (felső határ 4,0%);
+- lefedettség (maradt-e régies igealak): ugyanezen a friss mintán 94,8% (92 csere, 5
+  kihagyás; 95%: 88,5–97,8%). Ebből a teljes szövegben kb. 1 560 régies alakban maradt igealak
+  becsülhető (95%-os Poisson-sáv kb. 500–3 600). A második minta magasabb lefedettsége torzított, mert a
+  későbbi körök éppen a kihagyásait vették célba.
 
 A maradék ismert hibákat az `ISMERT_HIBAK.md` sorolja fel.
 

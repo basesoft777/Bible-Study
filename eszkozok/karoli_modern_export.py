@@ -184,6 +184,15 @@ def _napló(rel, rx, nev):
     return m
 
 
+def wilson(x, n, z=1.959964):
+    """Wilson 95%-os intervallum (alsó, felső) az x/n arányra."""
+    p = x / n
+    k = z * z / n
+    kozep = (p + k / 2) / (1 + k)
+    fel = z * ((p * (1 - p) / n + k / (4 * n)) ** 0.5) / (1 + k)
+    return max(0.0, kozep - fel), min(1.0, kozep + fel)
+
+
 def _f172(rel, oszlop, ertek):
     _, ss = tsv(rel)
     for s in ss:
@@ -251,6 +260,21 @@ def szamok(modern, konyvek, par_db, allapot, versek):
     N['ami_jo'], N['ami_ossz'], N['ami_p'] = int(m.group(1)), int(m.group(2)), m.group(3)
     m = _napló(NAPLO_ELLENOR, r'Lefedettség igealakra: (\d+) / \(\d+ \+ (\d+)\) = (\d+,\d)%', 'lefedettség')
     N['lef_csere'], N['lef_kihagyas'], N['lef_p'] = int(m.group(1)), int(m.group(2)), m.group(3)
+    m = _napló(NAPLO_ELLENOR, r'\*\*Összesen \((\d+) vers\):\*\*\n- igealak: \*\*(\d+) csere, (\d+) hiba, (\d+) kihagyás\*\*',
+               'a független ellenőr mintája')
+    N['ell_vers'], N['ell_hiba'] = int(m.group(1)), int(m.group(3))
+    if (int(m.group(2)), int(m.group(4))) != (N['lef_csere'], N['lef_kihagyas']):
+        raise SystemExit('szám: a független ellenőr mintájának két sora ellentmond (%s)' % NAPLO_ELLENOR)
+    m = _napló(NAPLO_ELLENOR, r'Korpuszbecslés: kb\. ([\d ]+) token; Poisson 95%-os sáv kb\. ([\d ]+)–([\d ]+)\.',
+               'korpuszbecslés')
+    N['korp'], N['korp_a'], N['korp_f'] = (int(m.group(i).replace(' ', '')) for i in (1, 2, 3))
+    # Wilson 95% (a kiadás számolja a mért darabszámokból; a forrásnaplóban intervallum nincs)
+    N['lef_w'] = wilson(N['lef_csere'], N['lef_csere'] + N['lef_kihagyas'])
+    N['ell_hiba_w'] = wilson(N['ell_hiba'], N['lef_csere'])
+    N['minta2_hiba_w'] = wilson(N['minta2_hiba'], N['minta2_csere'])
+    N['hminta_hiba_w'] = wilson(N['hminta_ossz'] - N['hminta_jo'], N['hminta_ossz'])
+    N['ami_hiba'] = N['ami_ossz'] - N['ami_jo']
+    N['hminta_ossz_hiba'] = N['hminta_ossz'] - N['hminta_jo']
     # a párosítás pontossága (#172)
     o = _f172(F172_MERES, 'cimke', 'OSSZES (súlyozott)')
     N['p_osszes'], N['p_osszes_a'], N['p_osszes_f'] = o['p'], o['also95'], o['felso95']
@@ -301,6 +325,10 @@ def fmt(N, nyelv):
     F['k_mi'] = N['k_mi']
     F['llm_sonnet_m'] = millio(N['llm_sonnet'], nyelv)
     F['llm_opus_m'] = millio(N['llm_opus'], nyelv)
+    for k in ('lef_w', 'ell_hiba_w', 'minta2_hiba_w', 'hminta_hiba_w'):
+        for i, utotag in ((0, '_a'), (1, '_f')):
+            s = '%.1f' % (N[k][i] * 100)
+            F[k + utotag] = s.replace('.', ',') if nyelv == 'hu' else s
     F['lef_p'] = N['lef_p'] if nyelv == 'hu' else N['lef_p'].replace(',', '.')
     F['ami_p'] = N['ami_p'] if nyelv == 'hu' else N['ami_p'].replace(',', '.')
     F['doi'] = DOI
@@ -577,15 +605,19 @@ megmarad, és a modern szövegben a gazdaszóhoz tartozik. Összevonásnál így
 Minden versen gépi önellenőrzés fut: a modern szöveget újra szavakra bontva pontosan a nem kieső szavak modern
 alakjait kell adnia, sorrendben, és az írásjelek váza nem változhat. Minden szó kulcsa a táblában van.
 
-A szöveget független ellenőr négy körben vizsgálta, ezek után két javítókör következett. A mérés mintákon:
+A szöveget független ellenőr négy körben vizsgálta, ezek után két javítókör következett. A mérés mintákon (a
+Wilson-féle 95%-os intervallumot a kiadás számolja a mért darabszámokból):
 
-- helyesírás: a minta cseréi {hminta_jo}/{hminta_ossz} helyesek; a puszta *a mi* ellenőrző halmazán {ami_jo}/{ami_ossz}
-  ({ami_p}%);
+- helyesírás: a minta {hminta_ossz} cseréjéből {hminta_jo} helyes (a hibaarány 95%-os felső határa
+  {hminta_hiba_w_f}%); a puszta *a mi* {ami_ossz} elemes ellenőrző halmazán {ami_hiba} hiba ({ami_jo}/{ami_ossz},
+  {ami_p}%);
 - igealak: a {minta1_vers} verses mintán {minta1_jo} vers hibátlan; a második, {minta2_vers} verses mintán
-  {minta2_csere} csere, ebből {minta2_hiba} hibás;
-- lefedettség (maradt-e régies igealak): a független ellenőr friss mintáján {lef_p}% ({lef_csere} csere,
-  {lef_kihagyas} kihagyás). A második minta ennél magasabb értéke torzított, mert a későbbi körök éppen a kihagyásait
-  vették célba.
+  {minta2_csere} csere, ebből {minta2_hiba} hibás (felső határ {minta2_hiba_w_f}%); a független ellenőr friss,
+  {ell_vers} verses mintáján {lef_csere} csere, ebből {ell_hiba} hibás (felső határ {ell_hiba_w_f}%);
+- lefedettség (maradt-e régies igealak): ugyanezen a friss mintán {lef_p}% ({lef_csere} csere, {lef_kihagyas}
+  kihagyás; 95%: {lef_w_a}–{lef_w_f}%). Ebből a teljes szövegben kb. {korp} régies alakban maradt igealak
+  becsülhető (95%-os Poisson-sáv kb. {korp_a}–{korp_f}). A második minta magasabb lefedettsége torzított, mert a
+  későbbi körök éppen a kihagyásait vették célba.
 
 A maradék ismert hibákat az `ISMERT_HIBAK.md` sorolja fel.
 
@@ -704,15 +736,19 @@ words are therefore kept.
 An automatic self-check runs on every verse: re-tokenising the modern text must give exactly the modern forms of the
 non-dropped words, in order, and the punctuation skeleton must not change. Every word key is in the table.
 
-An independent reviewer examined the text in four rounds, followed by two correction rounds. Measured on samples:
+An independent reviewer examined the text in four rounds, followed by two correction rounds. Measured on samples (the
+Wilson 95% intervals are computed by the release from the measured counts):
 
-- spelling: the replacements in the sample {hminta_jo}/{hminta_ossz} correct; on the check set for bare *a mi*
-  {ami_jo}/{ami_ossz} ({ami_p}%);
+- spelling: {hminta_jo} of the {hminta_ossz} replacements in the sample correct (95% upper bound of the error rate
+  {hminta_hiba_w_f}%); on the {ami_ossz}-item check set for bare *a mi* {ami_hiba} error ({ami_jo}/{ami_ossz},
+  {ami_p}%);
 - verb forms: on the {minta1_vers}-verse sample {minta1_jo} verses without error; on the second, {minta2_vers}-verse
-  sample {minta2_csere} replacements, {minta2_hiba} wrong;
-- coverage (did archaic verb forms remain): {lef_p}% on the independent reviewer's fresh sample ({lef_csere}
-  replacements, {lef_kihagyas} misses). The higher figure of the second sample is biased, because later rounds targeted
-  exactly its misses.
+  sample {minta2_csere} replacements, {minta2_hiba} wrong (upper bound {minta2_hiba_w_f}%); on the independent
+  reviewer's fresh {ell_vers}-verse sample {lef_csere} replacements, {ell_hiba} wrong (upper bound {ell_hiba_w_f}%);
+- coverage (did archaic verb forms remain): {lef_p}% on the same fresh sample ({lef_csere} replacements,
+  {lef_kihagyas} misses; 95%: {lef_w_a}–{lef_w_f}%). This projects to about {korp} verb forms left archaic in the
+  whole text (95% Poisson band about {korp_a}–{korp_f}). The higher coverage of the second sample is biased, because
+  later rounds targeted exactly its misses.
 
 The remaining known issues are listed in `KNOWN_ISSUES.md`.
 
@@ -757,8 +793,10 @@ ISMERT_HIBAK = """# Ismert hibák és korlátok
 1. **Jelöltként maradt régies igealakok.** {jelolt_maradt} szónál a szabály vagy egy modell cserét javasolt, de nem
    volt egyezés, ezért a szó régies alakban maradt.
 2. **Magánhangzóval kezdődő ige a mutató *az* után** (*az monda*, *az felele*): néhány ilyen ige régies alakban maradt.
-3. **Személyhiba:** három helyen egyes szám első személy helyett többes szám harmadik személyű alak áll
-   (1Móz 39:15, Dán 7:16, Ez 22:30).
+3. **Személyhiba:** három helyen az 1908-as szöveg egyes szám első személyű múlt idejű igéje a modern szövegben
+   többes szám harmadik személyű lett: 1Móz 39:15 *kezdék* → *kezdték* (helyesen *kezdtem*), Dán 7:16 *kérék* →
+   *kérték* (helyesen *kértem*), Ez 22:30 *keresék* → *keresték* (helyesen *kerestem*). A *-ék* végű régi alak
+   egyes szám első és többes szám harmadik személyű is lehet; ezekben a versekben a beszélő első személyben szól.
 4. **Az ellenőrzés kihagyásai:** *egybegyűle, sétála, Helybenhagyák, felveheték, béméne, elplántálám, lövének,
    megszerzém* régies alakban maradt.
 5. **A mély hangrendű birtokos *-ok*** (*atyjok*-típus *j* nélkül) szándékosan marad, mert a többes számmal egybeesik.
@@ -792,8 +830,11 @@ KNOWN_ISSUES = """# Known issues and limitations
 1. **Archaic verb forms left as candidates.** For {jelolt_maradt} words the rule or a model proposed a replacement, but
    there was no agreement, so the word stayed archaic.
 2. **Vowel-initial verb after demonstrative *az*** (*az monda*, *az felele*): some such verbs stayed archaic.
-3. **Person error:** in three places a third-person plural form stands instead of first-person singular
-   (Gen 39:15, Dan 7:16, Ezek 22:30).
+3. **Person error:** in three places a first-person singular past verb of the 1908 text became third-person plural
+   in the modern text: Gen 39:15 *kezdék* → *kezdték* (correctly *kezdtem*, "I began"), Dan 7:16 *kérék* → *kérték*
+   (correctly *kértem*, "I asked"), Ezek 22:30 *keresék* → *keresték* (correctly *kerestem*, "I sought"). The old
+   ending *-ék* can be either first-person singular or third-person plural; in these verses the speaker uses the
+   first person.
 4. **Review misses:** *egybegyűle, sétála, Helybenhagyák, felveheték, béméne, elplántálám, lövének, megszerzém*
    remained archaic.
 5. **Back-vowel possessive *-ok*** (without *j*) is left on purpose, as it coincides with the plural.
@@ -877,9 +918,13 @@ módszertani leírásban olvasható. A szöveg {vers} versében {valtozo_vers} v
 
 **Hogyan.** A munka nagy része szabályokkal készült, szavanként, saját szótári táblával és igeragozó modullal. A ritka
 és kétes igealakokat nyelvi modellek nézték át, vakon, öt körben; egy alak csak ott változott, ahol legalább két
-független javaslat egyezett, és a szótő ellenőrzése átengedte. A szöveget független ellenőr négy körben vizsgálta; a
-mért mintákon a több száz csere közül egyetlen volt hibás, a régies alakban maradt igék aránya pedig néhány
-százalék. A maradék hibákat a közölt ismert-hibák lista meg is nevezi.
+független javaslat egyezett, és a szótő ellenőrzése átengedte. A szöveget független ellenőr négy körben vizsgálta. Az ő
+friss, {ell_vers} verses mintáján a {lef_csere} igealak-cseréből {ell_hiba} volt hibás (a hibaarány
+95%-os felső határa {ell_hiba_w_f}%), a helyesírási minta {hminta_ossz} cseréjéből szintén {hminta_ossz_hiba}; a
+puszta „a mi” {ami_ossz} elemes ellenőrző halmazán {ami_hiba} hiba volt. Ugyanezen a friss mintán a régies igealakok
+{lef_p}%-a lett modern ({lef_csere} csere, {lef_kihagyas} kihagyás; 95%: {lef_w_a}–{lef_w_f}%); ebből a teljes
+szövegben kb. {korp} régies alakban maradt igealak becsülhető (95%-os sáv kb. {korp_a}–{korp_f}). A maradék ismert
+hibákat a közölt ismert-hibák lista meg is nevezi.
 
 **A Strong-számok.** A szópárosítás a Károli 1908-as szövegén készült, és önálló adatkészletként is megjelenik. Mivel a
 modernizálás minden szót a helyén hagyott, a két réteg egyszerű kulccsal — vers és szósorszám — összekapcsolható:
@@ -910,8 +955,12 @@ is documented in the methods description. Of the text's {vers} verses, {valtozo_
 **How.** Most of the work was done by rules, word by word, with the project's own dictionary table and conjugation
 module. Rare and doubtful verb forms were reviewed by language models, blind, in five rounds; a form changed only where
 at least two independent proposals agreed and the stem check let it through. An independent reviewer examined the text
-in four rounds; in the measured samples a single one of several hundred replacements was wrong, and the share of verbs
-left in archaic form is a few per cent. The remaining errors are named in the published list of known issues.
+in four rounds. On the reviewer's fresh {ell_vers}-verse sample {ell_hiba} of the {lef_csere} verb-form replacements
+were wrong (95% upper bound of the error rate {ell_hiba_w_f}%), and {hminta_ossz_hiba} of the {hminta_ossz} replacements
+in the spelling sample; the {ami_ossz}-item check set for bare "a mi" had {ami_hiba} error. On the same fresh sample
+{lef_p}% of archaic verb forms were modernised ({lef_csere} replacements, {lef_kihagyas} misses; 95%:
+{lef_w_a}–{lef_w_f}%), which projects to about {korp} verb forms left archaic in the whole text (95% band about
+{korp_a}–{korp_f}). The remaining errors are named in the published list of known issues.
 
 **The Strong's numbers.** The word alignment was made on the 1908 Károli text and is also published as a separate
 dataset. Since the modernisation left every word in its place, the two layers join on a simple key — verse and word
