@@ -175,7 +175,7 @@ Mérés a valós git-történeten:
   szónézetet érinti, lapot nem.
 - **N88 (1) `{L:…}`:** a lapokon ma 0 előfordulás; a `forditasok.tsv` 17 UBS-definíciójában, a forrásban 5 395 DBH- és 1 249
   DNTG-sorban áll. A fordítási prompt szabálya szerint a jelölés betűre marad, ezért az átalakítás a megjelenítő dolga
-  (lapgenerátor és olvasó). Hogy mivé alakuljon (Károli-név, héber szó vagy angol név), tartalmi döntés: **DT-F203a** (🟡,
+  (lapgenerátor és olvasó). Hogy mivé alakuljon (Károli-név, héber szó vagy angol név), tartalmi döntés: **DT805** (🟡,
   javaslat: Károli-alak, közös segédfüggvény). A lapgenerátor ebben a csomagban nem írható.
 
 ## 5. Tesztek
@@ -240,7 +240,7 @@ sz2-é: `teszt_forditas_atkulcsol.py` `Mai` második állítása ezt gépileg ig
   hamis „c” pontja kiesik, „a szócikk egésze — kárhoztatás, átkozódás, átok”, az új fej-fordítás; tooltipek). Más blokk nem változott;
   a HAMART változása a Thayer-láncból (és a F203.4b tooltip-glosszáiból) jön. Generált blokk-változás: a következő kiadás
   változásjegyzékébe (F168), lektori kör nélkül.
-- **F203.9 (DT-F203b, orkesztrátori hatókör-bővítés)** — a G2671 új fordítása („Protevangelium Jacobi, c. 3. (Aiszkhülosz, …)”) az
+- **F203.9 (DT806, orkesztrátori hatókör-bővítés)** — a G2671 új fordítása („Protevangelium Jacobi, c. 3. (Aiszkhülosz, …)”) az
   olvasói kapu `SZAKASZ_HIV_NEV` mintáján hamis BUKÁS-t adott (a „c. 3. (…)” caput-hivatkozás „a lap 3. szakasza”), és ezzel az
   `ellenoriz.py` 32. és 40. szabálya SÉRTÉS lett, a nyílt mag pedig a HAMART-ot „régi feldolgozás”-ba sorolta volna. Javítás:
   negatív lookbehind a „c.”, „p.”, „§” után; teszt: `teszt_olvasoi_kapu.py`
