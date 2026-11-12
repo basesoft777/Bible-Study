@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: fut
+allapot: megallt
 ad: a Károli–héber/görög szóillesztés a #172-ben mért állapotban, CC BY 4.0 alatt közölhető nyílt magként (nyilt_karoli_strong/: generált export, kétnyelvű kódkönyv, ismert hibák, MODSZER.md, saját kapu), a közlemények magonkénti mappába rendezése, és a hozzá tartozó második data paper kézirata (hu/en)
-kovetkezo: "fut: (1) export, kapu, MODSZER, közlemény (claude/peaceful-leavitt-ccb923); a (3) repó-átrendezés a #710 (F208) merge-e után, ⛔ döntéssel; a Zenodo-feltöltés a felhasználóé"
+kovetkezo: "Te: az 1–2. lépés kész (nyilt_karoli_strong/, kapu 0 BUKÁS, MODSZER, közlemény és kézirat hu/en; DT-F175a átnézése); a 3. lépés (repó-átrendezés) a #710 merge-e után, az N-F175a döntésével; a Zenodo-feltöltés a felhasználóé"
 olvas: [naplok/KAROLI_PONTOSSAG_jelentes.md, f172/, adat/karoli_strong/, adat/SEMA.md, adat/licencek.tsv, adat/datasetek.tsv, F162_NYILT_MAG_BRIEF.md, F174_KAROLI_MODERN_STRONG_BRIEF.md, CITATION.cff, DONTESEK.md]
 ir: [nyilt_karoli_strong/, nyilt_mag/kozlemeny/, eszkozok/karoli_strong_export.py, eszkozok/karoli_strong_szovegek.py, eszkozok/karoli_strong_kapu.py, eszkozok/teszt_karoli_strong_export.py]
 fugg: [171, 172, 174]
