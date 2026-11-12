@@ -602,7 +602,11 @@ class EgysegesKeszlet(Alap):
 
     def test_tartalomjegyzek_sorszam(self):
         f = self.uj()
-        f['README.md'] = f['README.md'].replace('| 3,984 |', '| 3,985 |')
+        # a szám az adatból (rögzített szám a #715 után elavult; a csoportversek száma változhat)
+        n = self.info['stat']['kizaras_csoportok.tsv']
+        regi = '| %s |' % E.SZ.ezres(n, 'en')
+        self.assertIn(regi, f['README.md'])
+        f['README.md'] = f['README.md'].replace(regi, '| %s |' % E.SZ.ezres(n + 1, 'en'))
         self.assertTrue(bukasok(f, 'KETNYELV'))
 
     def test_szamok_a_csomagbol(self):
