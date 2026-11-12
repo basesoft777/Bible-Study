@@ -5,11 +5,11 @@ kod: ISTENTISZT_UJ_CIKK
 tipus: feladat
 fazis: lexikon
 modell: opus
-allapot: dontesre_var
+allapot: megallt
 ag: claude/istentiszt-uj-cikk-992f57
 pr: 709
 ad: az ISTENTISZT-001 határa, jelöltjei, előfordulás-prózája, hiányzó fordításai és hatástörténet-anyaga a kész lap követelménylistája szerint, lépésenkénti méréssel
-kovetkezo: "Te: (1) a lap E28-eltérése — a lap a 2. fázisig elavult, vagy a 2. fázis előtt újragenerálódik; (2) a nyílt mag angol párja (129 elavult cella); (3) a kritérium teljes szövegének jóváhagyása (⛔). Utána a 2. fázis (próza U3, lap), külön jelre."
+kovetkezo: "Várakozás a felhasználói sorrend szerint: a 2. fázis a CS3 (generátor-kör) és a #699 merge-e után jön, külön jelre. Akkor egy menetben: a main behozása, a `motivumok.tsv` kritériuma és meghatározása (DT-F194a, DT-F194e), a próza (U3), a lap újragenerálása (E28) és a nyílt mag 129 cellájának angol párja."
 munka: adat
 olvas: [sablonok/KESZ_LAP_KOVETELMENY.md, naplok/HATAR_ISTENTISZT-001.md, naplok/F123_teljesseg_ISTENTISZT-001.md, MUNKAMENET.md, adat/SEMA.md]
 ir: [adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, naplok/F194_meres.md, naplok/F194_naplo.md, naplok/HATAR_ISTENTISZT-001.md, naplok/F194_jelentes.md, adat/kapcsolatok.tsv, adat/elutasitasi_okok.tsv, adat/nyilt_kodkonyv.tsv, adat/tematikus_temak.tsv, naplok/F123_teljesseg_ISTENTISZT-001_blokkok.tsv, dontesek/uj/istentiszt-uj-cikk-992f57.md, nyitott/uj/istentiszt-uj-cikk-992f57.md, F194_ISTENTISZT_UJ_CIKK_BRIEF.md]

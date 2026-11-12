@@ -88,3 +88,4 @@ A megbízó kérésére a jelentést válaszként adom, a `naplok/ELLENOR_F194.m
 - **A #699 után:** a `motivumok.tsv` kritériuma és meghatározása (DT-F194a, DT-F194e).
 - **Mérés:** `naplok/F194_meres.md` — fő szál 256 030 output-token (18 lépés), subagentek 91 201 (4 futás). A 131 indoklás átírása a HAMART-hoz képest többletmunka; a lektor-összevetéshez a hatókörnek a HAMART-éval (teljes próza, 2 kör) kell egyeznie.
 - **PR:** https://github.com/basesoft777/Bible-Study/pull/709 (draft; a merge az orkesztrátoré).
+- **Döntések a zárás után (a felhasználó, 2026-11-12, az orkesztrátoron át):** a kritérium szövege jóváhagyva, az utolsó, döntés-jegyzet mondata nélkül („Igen, a mondat nélkül”; DT-F194a 🟢). Az E28 és a 129 angol cella: „A 2. fázisban” — a CS3 és a #699 után, egy menetben; a #709 addig draft. A brief `megallt` (F194.14).
