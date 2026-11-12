@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-12",
-   "commit": "79807601"
+   "commit": "65a9e7fc"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -62,12 +62,12 @@
   {
    "kulcs": "stop",
    "cimke": "Megállt, rád vár",
-   "db": 30
+   "db": 29
   },
   {
    "kulcs": "run",
    "cimke": "Fut",
-   "db": 6
+   "db": 7
   },
   {
    "kulcs": "ready",
@@ -77,7 +77,7 @@
   {
    "kulcs": "wait",
    "cimke": "Függésre vár",
-   "db": 16
+   "db": 15
   },
   {
    "kulcs": "plan",
@@ -87,7 +87,7 @@
   {
    "kulcs": "dt",
    "cimke": "Nyitott döntés",
-   "db": 25
+   "db": 27
   }
  ],
  "sor": [],
@@ -197,7 +197,7 @@
    "allapot": "run",
    "brief_allapot": "fut",
    "most": "A4 (új session, az A3 PR mergelése után): adag704 = naplok/THAYER_ELES_sorrend.tsv adag=4 (265 Strong, 68 kicsi/közepes B-kérésre és nagyokra bontva a `bszaraz` szerint), --effort high, prompt v5.2; becslés 10,12 USD (első kör 7,61 + javító 2,51), adagplafon 13,16, --plafon 57,14 és --elozo-kiadas 43.9775 (kumulatív: az eddigi mért 43,9775 + 13,16); naplok/THAYER_ELES_naplo.md A3 8.; a `beir --megjegyzes` rögzítse: `prompt v5.2`, az adag- és batch-azonosítót.",
-   "fugg": "#3 (kész), #5 (kész), #14 (kész), #154*, #159 (kész), #161*",
+   "fugg": "#3 (kész), #5 (kész), #14 (kész), #154*, #159 (kész), #161*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -213,7 +213,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "a #123 motívumonkénti lezárásai után indul (az ISTENTISZT-001 lezárva: 1. kiadás, 2026-11-02; a hét másik lapot a #123 új cikk-menete zárja le, U6 + C5, DT546); első lépés a P előfeltétel-ellenőrzés, utána L0 és a zárómérés",
-   "fugg": "#8 (kész), #9 (kész), #11 (kész), #113 (kész), #121*, #123*, #156*, #178*, #179*",
+   "fugg": "#8 (kész), #9 (kész), #11 (kész), #113 (kész), #121*, #123*, #156*, #178*, #179*, #203*",
    "tervezett": false,
    "reszletes": "A 8 lexikonoldal mérhető feltételek (L1–L7) szerinti lezárása. Briefet még nem kapott; előtte el kell döntened az L6 és L7 feltételt (DT2), és meg kell lennie a #9-nek és a #11-nek.",
    "roviden": "A 8 kész lexikonoldal hivatalos lezárása.",
@@ -277,7 +277,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: a 13–14. adag (sorrend 5671–8073, a BDB-fordítás utolsó két adagja) Batch API-n kész, ellenőrzésre vár (PR); a sorrendtábla mind a 8073 sora kész — az Mz zárás (terminológiai javaslatok, szúrópróba, hibás-lista összesítés) a felhasználó jelzésére indul",
-   "fugg": "#34 (kész), #56 (kész), #67 (kész), #72 (kész), #73 (kész), #107 (kész), #128 (kész), #154*, #161*",
+   "fugg": "#34 (kész), #56 (kész), #67 (kész), #72 (kész), #73 (kész), #107 (kész), #128 (kész), #154*, #161*, #203*",
    "tervezett": false,
    "reszletes": "A BDB, a legrészletesebb héber szótár mind a 8 090 szócikke magyarra fordul, gyakorisági sorrendben, adagonként, gépi minőségkapukkal. Öt adag (406 szócikk) kész; a hatodik a DT-F38i döntésre vár.",
    "roviden": "A nagy héber szótár magyarítása — most egy igen/nemre vár, hogy mehet-e tovább.",
@@ -389,7 +389,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "/kovetkezo (a #74 lezárása után): T0 ⛔ (a DT61 öt esete); a DT254 eldöntve (1., tartalmi javítás megengedett, két korláttal)",
-   "fugg": "#37 (kész), #74*, #123*, #181*, #188*, #192*",
+   "fugg": "#37 (kész), #74*, #123*, #181*, #188*, #192*, #205*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -421,7 +421,7 @@
    "allapot": "stop",
    "brief_allapot": "dontesre_var",
    "most": "Te: döntés a DT-F86a–g pontokról (5. szakasz), utána a 3.1 lépés",
-   "fugg": "#7*, #38*, #52*, #76 (kész), #79 (kész), #121*, #123*, #153*, #154*, #161*",
+   "fugg": "#7*, #38*, #52*, #76 (kész), #79 (kész), #121*, #123*, #153*, #154*, #161*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -461,22 +461,6 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "BDB_MEGJELENITES",
-   "szam": 104,
-   "kod": "BDB_MEGJELENITES",
-   "cim": "BDB-blokk megjelenítése — „ebben a versben” kiemelés (DT178), kattintható helyek, pontos hivatkozásszám",
-   "fazis": "1",
-   "allapot": "stop",
-   "brief_allapot": "megallt",
-   "most": "Te: [elteres_kor 1/2] ELLENOR_F104_2 TISZTA (a 4.2 számai a táblából, a bizonytalan okkód gyenge, E27 javítva); felhasználói próba a futó szerveren (H1242, H7451, H3615, versből) és a bekapcsolt 4.2-minta átnézése (repón kívül); nyitott: a jelentések rendjében a csak gyenge sor által idézett pont félkövére; a KETRETEGU_BDB_KARTYA kapcsolót a #182 kapcsolja be",
-   "fugg": "#99 (kész), #102*, #103 (kész), #197*, #202*",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "BDB_MAGYARAZAT",
    "szam": 106,
    "kod": "BDB_MAGYARAZAT",
@@ -485,7 +469,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "Indítható a fugg szerint (a #105 után); a DT169 a próba költségmérése után dől el",
-   "fugg": "#99 (kész), #102*, #103 (kész), #104, #105 (kész), #123*, #197*, #202*",
+   "fugg": "#99 (kész), #102*, #103 (kész), #104 (kész), #105 (kész), #123*, #197*, #202*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -517,7 +501,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: az ALVIL-001 menet (13 sor) draft PR-je; a merge a felhasználóé",
-   "fugg": "#11 (kész), #104*, #123*, #153*, #154*, #161*, #178*, #179*",
+   "fugg": "#11 (kész), #123*, #153*, #154*, #161*, #178*, #179*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -549,7 +533,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: [elteres_kor 2/2] HAMART-001 (#639): az ELLENOR_F123_HAMART3_javitokor3 mindkét tétele rendezve (2. mechanikus: F123.HAMART3.43; 1. tartalmi: DT687 a felhasználó szavával); új kör nincs (korlát). Következik: a renderelt lap átnézése (orkesztrátor, majd a felhasználó), merge a felhasználótól.",
-   "fugg": "#11 (kész), #12 (kész), #102*, #126 (kész), #127 (kész), #151*, #156*, #157*, #179*, #181*, #197*, #202*",
+   "fugg": "#11 (kész), #12 (kész), #102*, #126 (kész), #127 (kész), #151*, #156*, #157*, #179*, #181*, #197*, #202*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -565,7 +549,7 @@
    "allapot": "stop",
    "brief_allapot": "nem_indult",
    "most": "Te: az M0 ⛔ döntései (DT-F129a–e); a próbakötet (M1–M4) a #128 után indulhat, a teljes kiadás (M6) csak a #38 lezárása után",
-   "fugg": "#102*, #123*, #128 (kész), #133*, #153*, #154*, #161*, #197*, #202*",
+   "fugg": "#102*, #123*, #128 (kész), #133*, #153*, #154*, #161*, #197*, #202*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -645,7 +629,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "A /kovetkezo a #134 zárása után indíthatja (M0 ⛔: terv)",
-   "fugg": "#134, #161*",
+   "fugg": "#134, #161*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -693,7 +677,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: a draft PR #503 merge-re vár (merge a felhasználóé); a PR #502-vel együtt a később mergelt ágon az ISTENTISZT-001 újragenerálása; nyitva: N-F146a, N-F146b",
-   "fugg": "#104*, #117 (kész), #123*, #131 (kész), #138*, #178*, #179*",
+   "fugg": "#117 (kész), #123*, #131 (kész), #138*, #178*, #179*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -709,7 +693,7 @@
    "allapot": "stop",
    "brief_allapot": "nem_indult",
    "most": "Te: befogadás a /befogad-dal; utána M0 mérés, ⛔ a mérés után (a javaslatok szabályai: elgépelési küszöb, ékezet-tolerancia, a tartomány-ugrás célja)",
-   "fugg": "#101*, #104*, #121*, #122*, #134*, #137*, #139*, #149*, #164*",
+   "fugg": "#101*, #121*, #122*, #134*, #137*, #139*, #149*, #164*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -757,7 +741,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: [elteres_kor 2/2] ELLENOR_F153_3 1. javítva a felhasználó engedélyével (F153.19), újraellenőrzés nincs; zárás a felhasználó döntésére; kezi sor listán: G1941 teljes; N66 (Sigla-teszt) hatókörön kívül",
-   "fugg": "#161*",
+   "fugg": "#161*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -773,7 +757,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "/kovetkezo (M0 ⛔: a csere módja — (a) a fordítás szövegében megjegyzéssel, vagy (b) a renderelőben)",
-   "fugg": "#144 (kész), #161*, #202*",
+   "fugg": "#144 (kész), #161*, #202*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -789,7 +773,7 @@
    "allapot": "wait",
    "brief_allapot": "nem_indult",
    "most": "/kovetkezo, M0 (a kész-kritérium az ISTENTISZT-001-en), ⛔ DT-F<nn>b a mérés után",
-   "fugg": "#104*, #160*, #161*, #179*, #188*, #201*",
+   "fugg": "#160*, #161*, #179*, #188*, #201*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -805,7 +789,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "/kovetkezo, 0. ellenőrzés (db capability), M0",
-   "fugg": "#179*",
+   "fugg": "#179*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -821,7 +805,7 @@
    "allapot": "run",
    "brief_allapot": "fut",
    "most": "/kovetkezo; utána a #27 (FP3) M1-e ezzel fut",
-   "fugg": "#161*",
+   "fugg": "#161*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -853,7 +837,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: draft PR; a merge a felhasználóé; utána az ANTROP-001 lapja a #608 ágán újragenerálódik (az ANTROP-001 sessionje), a többi hét lap a saját új-cikk sessionjében",
-   "fugg": "#104*",
+   "fugg": "#203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -957,22 +941,6 @@
    "leiras_hiany": true
   },
   {
-   "kulcs": "KAROLI_SZOILLESZTES_NYILT",
-   "szam": 175,
-   "kod": "KAROLI_SZOILLESZTES_NYILT",
-   "cim": "A Károli–Strong szóillesztés mint második nyílt mag — 1. változat (nyilt_karoli_strong/, repó-átrendezés, kézirat)",
-   "fazis": "folyamat",
-   "allapot": "stop",
-   "brief_allapot": "nem_indult",
-   "most": "Te: a PR #644 mergelése; utána /kovetkezo, de csak a #174 lezárása után. Sorrend: a #174 (vetítés, MODSZER, közlemény) → ez: (1) export és kapu, (2) kézirat, (3) repó-átrendezés. A Zenodo-feltöltés a felhasználóé",
-   "fugg": "#163*, #171, #172, #174 (kész)",
-   "tervezett": false,
-   "reszletes": "",
-   "roviden": "",
-   "leiras_forras": null,
-   "leiras_hiany": true
-  },
-  {
    "kulcs": "LEXIKON_AG_LEZARAS",
    "szam": 178,
    "kod": "LEXIKON_AG_LEZARAS",
@@ -981,7 +949,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: [elteres_kor 2/2] ELLENOR_F178_3 1. mechanikus, 2. mechanikus, 3. mechanikus, 4. mechanikus, 5. mechanikus — a korlát elérve; a maradék N-F178a, a nyitott adatpontok N-F178b (a következő HAMART-menet); draft PR, a merge a felhasználóé",
-   "fugg": "#123*, #176 (kész), #179*",
+   "fugg": "#123*, #176 (kész), #179*, #203*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -997,7 +965,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: [elteres_kor 2/2] ELLENOR_F179_3 1. mechanikus (a 3. teendő DT-F179a-ra utalása)",
-   "fugg": "#38*, #104*",
+   "fugg": "#38*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -1077,7 +1045,7 @@
    "allapot": "stop",
    "brief_allapot": "megallt",
    "most": "Te: a draft PR áttekintése és merge-e; utána az N156 (a lexikonlap-nézet és a lektor-felület átállása) a HAMART-001 lezárása után",
-   "fugg": "#102*, #104*, #106*, #121*, #122*, #134*, #135*, #138*, #139*, #149*",
+   "fugg": "#102*, #106*, #121*, #122*, #134*, #135*, #138*, #139*, #149*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -1149,15 +1117,31 @@
    "leiras_hiany": true
   },
   {
+   "kulcs": "THAYER_FORDITAS",
+   "szam": 203,
+   "kod": "THAYER_FORDITAS",
+   "cim": "A Thayer-lánc, a fordítási lista és a Feed 9. kapujának hibajavítása (generátor-hibaleltár C7, C8, B6, B4)",
+   "fazis": "folyamat",
+   "allapot": "stop",
+   "brief_allapot": "megallt",
+   "most": "Te: a #704 merge-e (az orkesztrátoré). A HAMART-001 lapjának generált blokk-változása (G2671, tooltip-glosszák) a következő kiadás változásjegyzékébe (F168). Döntésre vár: DT805, N-F203a; N-F203c az olvasó-fázisé",
+   "fugg": "—",
+   "tervezett": false,
+   "reszletes": "",
+   "roviden": "",
+   "leiras_forras": null,
+   "leiras_hiany": true
+  },
+  {
    "kulcs": "IGESZAKASZ_ELOKESZITES",
    "szam": 205,
    "kod": "IGESZAKASZ_ELOKESZITES",
    "cim": "Az igeszakasz-tanulmány előkészíti a motívumcikket — igehelyenkénti jelölt blokkok, kinyerés a jeloltek.tsv-n át, a szakasz hiányzó szótári fordításai egy kötegben",
    "fazis": "folyamat",
-   "allapot": "wait",
-   "brief_allapot": "nem_indult",
-   "most": "a HAMART-001 1. kiadása (/kiadas, PR #696) merge-e után indul; első lépés az M0 séma-javaslat ⛔",
-   "fugg": "#74*, #121*, #123*, #125 (kész), #178*, #179*",
+   "allapot": "run",
+   "brief_allapot": "fut",
+   "most": "M3 és M5: az F212 (CS3) merge-e után, behozott main-nel; előtte az ir visszabővítése (general.py, ellenoriz.py, 9. és 10. sablon, proza_allitas pár) és fuggesek",
+   "fugg": "#121*, #123*, #125 (kész), #178*, #179*",
    "tervezett": false,
    "reszletes": "",
    "roviden": "",
@@ -1249,7 +1233,6 @@
    "ELOFIZETES_FEED",
    "ADATBAZIS_FRISSITES",
    "BDB_SZELETELO_JAVITAS",
-   "BDB_MEGJELENITES",
    "BDB_MAGYARAZAT",
    "ELTERES",
    "GLOSSZA_FORDITAS",
@@ -1280,7 +1263,6 @@
    "KAROLI_HANGSULY",
    "KAROLI_PONTOSSAG",
    "KAROLI_PAROSITAS_JAVITAS",
-   "KAROLI_SZOILLESZTES_NYILT",
    "LEXIKON_AG_LEZARAS",
    "USZ_KONYVLISTA",
    "KAROLI_KH_JELOLTEK",
@@ -1292,11 +1274,12 @@
    "NYILT_MAG_HATASTORTENET",
    "SZAMKIOSZTAS",
    "BDB_LANC",
+   "THAYER_FORDITAS",
    "IGESZAKASZ_ELOKESZITES",
    "TERV_BEFOGAD"
   ]
  },
- "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::wait\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::stop\n  T104[\"#104 BDB_MEGJELENITES\"]:::stop\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T111[\"#111 ELTERES\"]:::stop\n  T121[\"#121 GLOSSZA_FORDITAS\"]:::stop\n  T122[\"#122 KJV_MEGJELENITES\"]:::wait\n  T123[\"#123 MIGRACIO2\"]:::stop\n  T129[\"#129 BDB_KIADAS\"]:::stop\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T133[\"#133 BDB_FEJLEC_DT\"]:::wait\n  T134[\"#134 OLVASO_ALAPNEZET\"]:::stop\n  T135[\"#135 OLVASO_VPS\"]:::wait\n  T137[\"#137 KAROLI_MODERN_DB\"]:::idle\n  T138[\"#138 ALAPJELENTES_JAVITAS\"]:::wait\n  T139[\"#139 SZOLAP_FEJLEC\"]:::wait\n  T140[\"#140 GLOSSZA_FORDITAS\"]:::stop\n  T146[\"#146 VERSMEGF_MT_JAVITAS\"]:::stop\n  T147[\"#147 OLVASO_KERESO\"]:::stop\n  T149[\"#149 OLVASO_TANULMANY\"]:::stop\n  T151[\"#151 MOTIVUM_HATAR\"]:::stop\n  T153[\"#153 THAYER_KAROLI_TELJES\"]:::stop\n  T154[\"#154 BDB_H7585_PELD_15_11_HU\"]:::wait\n  T156[\"#156 MUHELY_FEED_STASH\"]:::wait\n  T157[\"#157 LEKTOR_FELULET\"]:::stop\n  T158[\"#158 THAYER_API_KOTEG\"]:::run\n  T160[\"#160 JELOLT_ELOSZURES_LEXIKAI\"]:::run\n  T161[\"#161 GLOSSZA_LANC\"]:::stop\n  T163[\"#163 TUD_OLCSO\"]:::stop\n  T164[\"#164 OLVASO_MOTIVUM_LAP\"]:::stop\n  T165[\"#165 LAPJAVIT_ARTIFACT\"]:::run\n  T171[\"#171 KAROLI_HANGSULY\"]:::stop\n  T172[\"#172 KAROLI_PONTOSSAG\"]:::stop\n  T173[\"#173 KAROLI_PAROSITAS_JAVITAS\"]:::wait\n  T175[\"#175 KAROLI_SZOILLESZTES_NYILT\"]:::stop\n  T178[\"#178 LEXIKON_AG_LEZARAS\"]:::stop\n  T179[\"#179 USZ_KONYVLISTA\"]:::stop\n  T181[\"#181 KAROLI_KH_JELOLTEK\"]:::stop\n  T188[\"#188 TEHER_CSOKKENTES\"]:::ready\n  T191[\"#191 TANUINDEX\"]:::ready\n  T192[\"#192 ELLENOR_SZUKITES\"]:::stop\n  T195[\"#195 DESIGN_SYSTEM\"]:::stop\n  T197[\"#197 BDB_HARMADIK_TANU\"]:::wait\n  T198[\"#198 NYILT_MAG_HATASTORTENET\"]:::run\n  T201[\"#201 SZAMKIOSZTAS\"]:::run\n  T202[\"#202 BDB_LANC\"]:::stop\n  T205[\"#205 IGESZAKASZ_ELOKESZITES\"]:::wait\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T38[\"#38 BDB_FORDITAS\"]:::stop\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::ready\n  T7[\"#7 THAYER_ELES\"]:::run\n  T70[\"#70 SZOTAR_S26\"]:::ready\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::wait\n  T75[\"#75 TANULMANY_JAVITAS\"]:::wait\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::wait\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT234{{\"DT234\"}}:::dt\n  D_DT235{{\"DT235\"}}:::dt\n  D_DT236{{\"DT236\"}}:::dt\n  D_DT237{{\"DT237\"}}:::dt\n  D_DT238{{\"DT238\"}}:::dt\n  D_DT239{{\"DT239\"}}:::dt\n  D_DT240{{\"DT240\"}}:::dt\n  D_DT241{{\"DT241\"}}:::dt\n  D_DT242{{\"DT242\"}}:::dt\n  D_DT245{{\"DT245\"}}:::dt\n  D_DT246{{\"DT246\"}}:::dt\n  D_DT247{{\"DT247\"}}:::dt\n  D_DT248{{\"DT248\"}}:::dt\n  D_DT254{{\"DT254\"}}:::dt\n  D_DT269{{\"DT269\"}}:::dt\n  D_DT271{{\"DT271\"}}:::dt\n  D_DT272{{\"DT272\"}}:::dt\n  D_DT292{{\"DT292\"}}:::dt\n  D_DT293{{\"DT293\"}}:::dt\n  D_DT294{{\"DT294\"}}:::dt\n  D_DT295{{\"DT295\"}}:::dt\n  D_DT296{{\"DT296\"}}:::dt\n  D_DT297{{\"DT297\"}}:::dt\n  D_DT298{{\"DT298\"}}:::dt\n  D_DT323{{\"DT323\"}}:::dt\n  D_DT324{{\"DT324\"}}:::dt\n  D_DT325{{\"DT325\"}}:::dt\n  D_DT326{{\"DT326\"}}:::dt\n  D_DT338{{\"DT338\"}}:::dt\n  D_DT339{{\"DT339\"}}:::dt\n  D_DT340{{\"DT340\"}}:::dt\n  D_DT341{{\"DT341\"}}:::dt\n  D_DT342{{\"DT342\"}}:::dt\n  D_DT357{{\"DT357\"}}:::dt\n  D_DT358{{\"DT358\"}}:::dt\n  D_DT359{{\"DT359\"}}:::dt\n  D_DT361{{\"DT361\"}}:::dt\n  D_DT362{{\"DT362\"}}:::dt\n  D_DT363{{\"DT363\"}}:::dt\n  D_DT365{{\"DT365\"}}:::dt\n  D_DT367{{\"DT367\"}}:::dt\n  D_DT387{{\"DT387\"}}:::dt\n  D_DT388{{\"DT388\"}}:::dt\n  D_DT389{{\"DT389\"}}:::dt\n  D_DT390{{\"DT390\"}}:::dt\n  D_DT391{{\"DT391\"}}:::dt\n  D_DT393{{\"DT393\"}}:::dt\n  D_DT394{{\"DT394\"}}:::dt\n  D_DT395{{\"DT395\"}}:::dt\n  D_DT396{{\"DT396\"}}:::dt\n  D_DT397{{\"DT397\"}}:::dt\n  D_DT408{{\"DT408\"}}:::dt\n  D_DT409{{\"DT409\"}}:::dt\n  D_DT410{{\"DT410\"}}:::dt\n  D_DT411{{\"DT411\"}}:::dt\n  D_DT428{{\"DT428\"}}:::dt\n  D_DT458{{\"DT458\"}}:::dt\n  D_DT459{{\"DT459\"}}:::dt\n  D_DT460{{\"DT460\"}}:::dt\n  D_DT461{{\"DT461\"}}:::dt\n  D_DT462{{\"DT462\"}}:::dt\n  D_DT463{{\"DT463\"}}:::dt\n  D_DT464{{\"DT464\"}}:::dt\n  D_DT465{{\"DT465\"}}:::dt\n  D_DT466{{\"DT466\"}}:::dt\n  D_DT467{{\"DT467\"}}:::dt\n  D_DT468{{\"DT468\"}}:::dt\n  D_DT469{{\"DT469\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT543{{\"DT543\"}}:::dt\n  D_DT546{{\"DT546\"}}:::dt\n  D_DT547{{\"DT547\"}}:::dt\n  D_DT548{{\"DT548\"}}:::dt\n  D_DT549{{\"DT549\"}}:::dt\n  D_DT553{{\"DT553\"}}:::dt\n  D_DT554{{\"DT554\"}}:::dt\n  D_DT555{{\"DT555\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT563{{\"DT563\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT573{{\"DT573\"}}:::dt\n  D_DT574{{\"DT574\"}}:::dt\n  D_DT575{{\"DT575\"}}:::dt\n  D_DT576{{\"DT576\"}}:::dt\n  D_DT577{{\"DT577\"}}:::dt\n  D_DT578{{\"DT578\"}}:::dt\n  D_DT579{{\"DT579\"}}:::dt\n  D_DT622{{\"DT622\"}}:::dt\n  D_DT623{{\"DT623\"}}:::dt\n  D_DT624{{\"DT624\"}}:::dt\n  D_DT637{{\"DT637\"}}:::dt\n  D_DT643{{\"DT643\"}}:::dt\n  D_DT644{{\"DT644\"}}:::dt\n  D_DT645{{\"DT645\"}}:::dt\n  D_DT646{{\"DT646\"}}:::dt\n  D_DT647{{\"DT647\"}}:::dt\n  D_DT648{{\"DT648\"}}:::dt\n  D_DT657{{\"DT657\"}}:::dt\n  D_DT658{{\"DT658\"}}:::dt\n  D_DT659{{\"DT659\"}}:::dt\n  D_DT660{{\"DT660\"}}:::dt\n  D_DT661{{\"DT661\"}}:::dt\n  D_DT662{{\"DT662\"}}:::dt\n  D_DT689{{\"DT689\"}}:::dt\n  D_DT690{{\"DT690\"}}:::dt\n  D_DT691{{\"DT691\"}}:::dt\n  D_DT695{{\"DT695\"}}:::dt\n  D_DT696{{\"DT696\"}}:::dt\n  D_DT697{{\"DT697\"}}:::dt\n  D_DT698{{\"DT698\"}}:::dt\n  D_DT699{{\"DT699\"}}:::dt\n  D_DT700{{\"DT700\"}}:::dt\n  D_DT701{{\"DT701\"}}:::dt\n  D_DT702{{\"DT702\"}}:::dt\n  D_DT703{{\"DT703\"}}:::dt\n  D_DT704{{\"DT704\"}}:::dt\n  D_DT705{{\"DT705\"}}:::dt\n  D_DT706{{\"DT706\"}}:::dt\n  D_DT707{{\"DT707\"}}:::dt\n  D_DT708{{\"DT708\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT720{{\"DT720\"}}:::dt\n  D_DT721{{\"DT721\"}}:::dt\n  D_DT722{{\"DT722\"}}:::dt\n  D_DT723{{\"DT723\"}}:::dt\n  D_DT724{{\"DT724\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT742{{\"DT742\"}}:::dt\n  D_DT759{{\"DT759\"}}:::dt\n  D_DT763{{\"DT763\"}}:::dt\n  D_DT764{{\"DT764\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT776{{\"DT776\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT245\n  T10 --> D_DT246\n  T10 --> D_DT247\n  T10 --> D_DT547\n  T10 --> D_DT553\n  T10 --> D_DT555\n  T10 --> D_DT74\n  T10 --> D_DT759\n  T10 --> T121\n  T10 --> T123\n  T10 --> T156\n  T10 --> T178\n  T10 --> T179\n  T101 --> T134\n  T102 --> D_DT297\n  T102 --> D_DT657\n  T102 --> D_DT658\n  T102 --> D_DT659\n  T102 --> D_DT660\n  T102 --> D_DT661\n  T102 --> D_DT662\n  T104 --> D_DT689\n  T104 --> D_DT690\n  T104 --> D_DT691\n  T104 --> T102\n  T104 --> T197\n  T104 --> T202\n  T106 --> D_DT297\n  T106 --> T102\n  T106 --> T104\n  T106 --> T123\n  T106 --> T197\n  T106 --> T202\n  T111 --> T188\n  T111 --> T201\n  T121 --> D_DT234\n  T121 --> D_DT235\n  T121 --> D_DT236\n  T121 --> D_DT237\n  T121 --> D_DT238\n  T121 --> D_DT239\n  T121 --> D_DT240\n  T121 --> D_DT241\n  T121 --> D_DT242\n  T121 --> D_DT271\n  T121 --> D_DT272\n  T121 --> D_DT338\n  T121 --> D_DT387\n  T121 --> D_DT388\n  T121 --> D_DT389\n  T121 --> D_DT390\n  T121 --> D_DT391\n  T121 --> D_DT393\n  T121 --> D_DT394\n  T121 --> D_DT395\n  T121 --> D_DT396\n  T121 --> D_DT408\n  T121 --> D_DT409\n  T121 --> D_DT410\n  T121 --> D_DT411\n  T121 --> D_DT428\n  T121 --> T104\n  T121 --> T123\n  T121 --> T153\n  T121 --> T154\n  T121 --> T161\n  T121 --> T178\n  T121 --> T179\n  T122 --> T140\n  T122 --> T146\n  T122 --> T181\n  T122 --> T22\n  T122 --> T38\n  T123 --> D_DT543\n  T123 --> D_DT546\n  T123 --> D_DT547\n  T123 --> D_DT548\n  T123 --> D_DT549\n  T123 --> D_DT563\n  T123 --> D_DT573\n  T123 --> D_DT574\n  T123 --> T102\n  T123 --> T151\n  T123 --> T156\n  T123 --> T157\n  T123 --> T179\n  T123 --> T181\n  T123 --> T197\n  T123 --> T202\n  T129 --> T102\n  T129 --> T123\n  T129 --> T133\n  T129 --> T153\n  T129 --> T154\n  T129 --> T161\n  T129 --> T197\n  T129 --> T202\n  T13 --> T10\n  T133 --> T123\n  T133 --> T201\n  T133 --> T202\n  T134 --> D_DT292\n  T134 --> D_DT293\n  T134 --> D_DT294\n  T134 --> D_DT295\n  T134 --> D_DT296\n  T134 --> D_DT298\n  T134 --> D_DT458\n  T134 --> D_DT459\n  T134 --> D_DT460\n  T134 --> D_DT461\n  T134 --> D_DT462\n  T134 --> D_DT463\n  T134 --> D_DT464\n  T134 --> D_DT465\n  T134 --> D_DT466\n  T134 --> D_DT467\n  T134 --> D_DT468\n  T134 --> D_DT469\n  T135 --> T122\n  T135 --> T140\n  T135 --> T181\n  T135 --> T52\n  T137 --> T140\n  T137 --> T181\n  T138 --> T134\n  T138 --> T161\n  T139 --> T134\n  T139 --> T138\n  T139 --> T140\n  T140 --> D_DT338\n  T140 --> T7\n  T146 --> D_DT397\n  T146 --> T104\n  T146 --> T123\n  T146 --> T138\n  T146 --> T178\n  T146 --> T179\n  T147 --> T101\n  T147 --> T104\n  T147 --> T121\n  T147 --> T122\n  T147 --> T134\n  T147 --> T137\n  T147 --> T139\n  T147 --> T149\n  T147 --> T164\n  T149 --> T134\n  T149 --> T140\n  T149 --> T181\n  T149 --> T38\n  T151 --> T160\n  T151 --> T188\n  T151 --> T192\n  T153 --> T161\n  T154 --> T161\n  T154 --> T202\n  T156 --> D_DT553\n  T156 --> D_DT554\n  T156 --> D_DT555\n  T156 --> T104\n  T156 --> T160\n  T156 --> T161\n  T156 --> T179\n  T156 --> T188\n  T156 --> T201\n  T157 --> T179\n  T158 --> T161\n  T161 --> D_DT575\n  T161 --> D_DT576\n  T161 --> D_DT577\n  T161 --> D_DT578\n  T161 --> D_DT579\n  T161 --> T104\n  T163 --> T123\n  T163 --> T178\n  T163 --> T74\n  T164 --> T123\n  T164 --> T52\n  T165 --> D_DT637\n  T165 --> T123\n  T172 --> D_DT622\n  T172 --> D_DT623\n  T172 --> D_DT624\n  T173 --> T172\n  T175 --> T163\n  T175 --> T171\n  T175 --> T172\n  T178 --> D_DT643\n  T178 --> D_DT644\n  T178 --> D_DT645\n  T178 --> D_DT646\n  T178 --> D_DT647\n  T178 --> D_DT648\n  T178 --> T123\n  T178 --> T179\n  T179 --> T104\n  T179 --> T38\n  T181 --> D_DT695\n  T181 --> D_DT696\n  T181 --> D_DT697\n  T181 --> D_DT698\n  T181 --> D_DT699\n  T181 --> D_DT700\n  T181 --> D_DT701\n  T181 --> D_DT702\n  T181 --> D_DT703\n  T181 --> D_DT704\n  T181 --> D_DT705\n  T181 --> D_DT706\n  T181 --> D_DT707\n  T181 --> D_DT708\n  T188 --> D_DT720\n  T188 --> D_DT721\n  T188 --> D_DT722\n  T188 --> D_DT723\n  T188 --> D_DT724\n  T192 --> D_DT742\n  T192 --> T188\n  T195 --> D_DT763\n  T195 --> D_DT764\n  T195 --> T102\n  T195 --> T104\n  T195 --> T106\n  T195 --> T121\n  T195 --> T122\n  T195 --> T134\n  T195 --> T135\n  T195 --> T138\n  T195 --> T139\n  T195 --> T149\n  T197 --> D_DT776\n  T197 --> T202\n  T198 --> T171\n  T198 --> T178\n  T198 --> T191\n  T205 --> T121\n  T205 --> T123\n  T205 --> T178\n  T205 --> T179\n  T205 --> T74\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T22 --> T138\n  T38 --> D_DT181\n  T38 --> D_DT269\n  T38 --> D_DT271\n  T38 --> D_DT323\n  T38 --> D_DT324\n  T38 --> D_DT325\n  T38 --> D_DT326\n  T38 --> D_DT339\n  T38 --> D_DT340\n  T38 --> D_DT341\n  T38 --> D_DT342\n  T38 --> D_DT361\n  T38 --> D_DT362\n  T38 --> D_DT363\n  T38 --> D_DT367\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T154\n  T38 --> T161\n  T48 --> T138\n  T48 --> T146\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T69 --> D_DT248\n  T7 --> T154\n  T7 --> T161\n  T70 --> D_DT74\n  T74 --> T188\n  T75 --> D_DT254\n  T75 --> T123\n  T75 --> T181\n  T75 --> T188\n  T75 --> T192\n  T75 --> T74\n  T81 --> T123\n  T81 --> T138\n  T81 --> T181\n  T86 --> D_DT298\n  T86 --> D_DT357\n  T86 --> D_DT358\n  T86 --> D_DT359\n  T86 --> D_DT365\n  T86 --> T121\n  T86 --> T123\n  T86 --> T153\n  T86 --> T154\n  T86 --> T161\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7",
+ "terkep": "flowchart LR\n  classDef stop fill:#d93025,stroke:#8c1d18,color:#ffffff,stroke-width:2px\n  classDef run fill:#1e8e3e,stroke:#0d5226,color:#ffffff,stroke-width:2px\n  classDef ready fill:#1a73e8,stroke:#0b3d91,color:#ffffff,stroke-width:2px\n  classDef wait fill:#f9ab00,stroke:#a86f00,color:#2b1d00,stroke-width:2px\n  classDef plan fill:#8e44ad,stroke:#5b2470,color:#ffffff,stroke-width:2px,stroke-dasharray:6 3\n  classDef idle fill:#80868b,stroke:#4a4f54,color:#ffffff\n  classDef dt fill:#ff6d00,stroke:#a34500,color:#ffffff,stroke-width:2px\n\n  P_MCP_BUROK[\"MCP_BUROK\"]:::plan\n  P_SZPA_AUDIT[\"SZPA_AUDIT\"]:::plan\n  P_TERV_BEFOGAD[\"TERV_BEFOGAD\"]:::plan\n  T10[\"#10 LEXIKON_LEZARAS\"]:::wait\n  T101[\"#101 ADATBAZIS_FRISSITES\"]:::idle\n  T102[\"#102 BDB_SZELETELO_JAVITAS\"]:::stop\n  T106[\"#106 BDB_MAGYARAZAT\"]:::wait\n  T111[\"#111 ELTERES\"]:::stop\n  T121[\"#121 GLOSSZA_FORDITAS\"]:::stop\n  T122[\"#122 KJV_MEGJELENITES\"]:::wait\n  T123[\"#123 MIGRACIO2\"]:::stop\n  T129[\"#129 BDB_KIADAS\"]:::stop\n  T13[\"#13 1Móz 17-től a…\"]:::idle\n  T133[\"#133 BDB_FEJLEC_DT\"]:::wait\n  T134[\"#134 OLVASO_ALAPNEZET\"]:::stop\n  T135[\"#135 OLVASO_VPS\"]:::wait\n  T137[\"#137 KAROLI_MODERN_DB\"]:::idle\n  T138[\"#138 ALAPJELENTES_JAVITAS\"]:::wait\n  T139[\"#139 SZOLAP_FEJLEC\"]:::wait\n  T140[\"#140 GLOSSZA_FORDITAS\"]:::stop\n  T146[\"#146 VERSMEGF_MT_JAVITAS\"]:::stop\n  T147[\"#147 OLVASO_KERESO\"]:::stop\n  T149[\"#149 OLVASO_TANULMANY\"]:::stop\n  T151[\"#151 MOTIVUM_HATAR\"]:::stop\n  T153[\"#153 THAYER_KAROLI_TELJES\"]:::stop\n  T154[\"#154 BDB_H7585_PELD_15_11_HU\"]:::wait\n  T156[\"#156 MUHELY_FEED_STASH\"]:::wait\n  T157[\"#157 LEKTOR_FELULET\"]:::stop\n  T158[\"#158 THAYER_API_KOTEG\"]:::run\n  T160[\"#160 JELOLT_ELOSZURES_LEXIKAI\"]:::run\n  T161[\"#161 GLOSSZA_LANC\"]:::stop\n  T163[\"#163 TUD_OLCSO\"]:::stop\n  T164[\"#164 OLVASO_MOTIVUM_LAP\"]:::stop\n  T165[\"#165 LAPJAVIT_ARTIFACT\"]:::run\n  T171[\"#171 KAROLI_HANGSULY\"]:::stop\n  T172[\"#172 KAROLI_PONTOSSAG\"]:::stop\n  T173[\"#173 KAROLI_PAROSITAS_JAVITAS\"]:::wait\n  T178[\"#178 LEXIKON_AG_LEZARAS\"]:::stop\n  T179[\"#179 USZ_KONYVLISTA\"]:::stop\n  T181[\"#181 KAROLI_KH_JELOLTEK\"]:::stop\n  T188[\"#188 TEHER_CSOKKENTES\"]:::ready\n  T191[\"#191 TANUINDEX\"]:::ready\n  T192[\"#192 ELLENOR_SZUKITES\"]:::stop\n  T195[\"#195 DESIGN_SYSTEM\"]:::stop\n  T197[\"#197 BDB_HARMADIK_TANU\"]:::wait\n  T198[\"#198 NYILT_MAG_HATASTORTENET\"]:::run\n  T201[\"#201 SZAMKIOSZTAS\"]:::run\n  T202[\"#202 BDB_LANC\"]:::stop\n  T203[\"#203 THAYER_FORDITAS\"]:::stop\n  T205[\"#205 IGESZAKASZ_ELOKESZITES\"]:::run\n  T22[\"#22 Károli–Strong párosítás…\"]:::stop\n  T25[\"#25 OLVASOI_HTML\"]:::idle\n  T38[\"#38 BDB_FORDITAS\"]:::stop\n  T48[\"#48 KJV_REGI_KIVEZETES\"]:::wait\n  T52[\"#52 TERV_SZINKRON\"]:::stop\n  T59[\"#59 SZOSZEDET\"]:::ready\n  T69[\"#69 SEMA_DATASET_SZAM\"]:::ready\n  T7[\"#7 THAYER_ELES\"]:::run\n  T70[\"#70 SZOTAR_S26\"]:::ready\n  T74[\"#74 TANULMANY_JAVITAS_GEPI\"]:::wait\n  T75[\"#75 TANULMANY_JAVITAS\"]:::wait\n  T81[\"#81 KAROLI_UJJLENYOMAT\"]:::wait\n  T86[\"#86 ELOFIZETES_FEED\"]:::stop\n  D_DT_F38i{{\"DT-F38i\"}}:::dt\n  D_DT_M3{{\"DT-M3\"}}:::dt\n  D_DT_M5{{\"DT-M5\"}}:::dt\n  D_DT_M7{{\"DT-M7\"}}:::dt\n  D_DT_M8{{\"DT-M8\"}}:::dt\n  D_DT181{{\"DT181\"}}:::dt\n  D_DT2{{\"DT2\"}}:::dt\n  D_DT234{{\"DT234\"}}:::dt\n  D_DT235{{\"DT235\"}}:::dt\n  D_DT236{{\"DT236\"}}:::dt\n  D_DT237{{\"DT237\"}}:::dt\n  D_DT238{{\"DT238\"}}:::dt\n  D_DT239{{\"DT239\"}}:::dt\n  D_DT240{{\"DT240\"}}:::dt\n  D_DT241{{\"DT241\"}}:::dt\n  D_DT242{{\"DT242\"}}:::dt\n  D_DT245{{\"DT245\"}}:::dt\n  D_DT246{{\"DT246\"}}:::dt\n  D_DT247{{\"DT247\"}}:::dt\n  D_DT248{{\"DT248\"}}:::dt\n  D_DT254{{\"DT254\"}}:::dt\n  D_DT269{{\"DT269\"}}:::dt\n  D_DT271{{\"DT271\"}}:::dt\n  D_DT272{{\"DT272\"}}:::dt\n  D_DT292{{\"DT292\"}}:::dt\n  D_DT293{{\"DT293\"}}:::dt\n  D_DT294{{\"DT294\"}}:::dt\n  D_DT295{{\"DT295\"}}:::dt\n  D_DT296{{\"DT296\"}}:::dt\n  D_DT297{{\"DT297\"}}:::dt\n  D_DT298{{\"DT298\"}}:::dt\n  D_DT323{{\"DT323\"}}:::dt\n  D_DT324{{\"DT324\"}}:::dt\n  D_DT325{{\"DT325\"}}:::dt\n  D_DT326{{\"DT326\"}}:::dt\n  D_DT338{{\"DT338\"}}:::dt\n  D_DT339{{\"DT339\"}}:::dt\n  D_DT340{{\"DT340\"}}:::dt\n  D_DT341{{\"DT341\"}}:::dt\n  D_DT342{{\"DT342\"}}:::dt\n  D_DT357{{\"DT357\"}}:::dt\n  D_DT358{{\"DT358\"}}:::dt\n  D_DT359{{\"DT359\"}}:::dt\n  D_DT361{{\"DT361\"}}:::dt\n  D_DT362{{\"DT362\"}}:::dt\n  D_DT363{{\"DT363\"}}:::dt\n  D_DT365{{\"DT365\"}}:::dt\n  D_DT367{{\"DT367\"}}:::dt\n  D_DT387{{\"DT387\"}}:::dt\n  D_DT388{{\"DT388\"}}:::dt\n  D_DT389{{\"DT389\"}}:::dt\n  D_DT390{{\"DT390\"}}:::dt\n  D_DT391{{\"DT391\"}}:::dt\n  D_DT393{{\"DT393\"}}:::dt\n  D_DT394{{\"DT394\"}}:::dt\n  D_DT395{{\"DT395\"}}:::dt\n  D_DT396{{\"DT396\"}}:::dt\n  D_DT397{{\"DT397\"}}:::dt\n  D_DT408{{\"DT408\"}}:::dt\n  D_DT409{{\"DT409\"}}:::dt\n  D_DT410{{\"DT410\"}}:::dt\n  D_DT411{{\"DT411\"}}:::dt\n  D_DT428{{\"DT428\"}}:::dt\n  D_DT458{{\"DT458\"}}:::dt\n  D_DT459{{\"DT459\"}}:::dt\n  D_DT460{{\"DT460\"}}:::dt\n  D_DT461{{\"DT461\"}}:::dt\n  D_DT462{{\"DT462\"}}:::dt\n  D_DT463{{\"DT463\"}}:::dt\n  D_DT464{{\"DT464\"}}:::dt\n  D_DT465{{\"DT465\"}}:::dt\n  D_DT466{{\"DT466\"}}:::dt\n  D_DT467{{\"DT467\"}}:::dt\n  D_DT468{{\"DT468\"}}:::dt\n  D_DT469{{\"DT469\"}}:::dt\n  D_DT52{{\"DT52\"}}:::dt\n  D_DT543{{\"DT543\"}}:::dt\n  D_DT546{{\"DT546\"}}:::dt\n  D_DT547{{\"DT547\"}}:::dt\n  D_DT548{{\"DT548\"}}:::dt\n  D_DT549{{\"DT549\"}}:::dt\n  D_DT553{{\"DT553\"}}:::dt\n  D_DT554{{\"DT554\"}}:::dt\n  D_DT555{{\"DT555\"}}:::dt\n  D_DT56{{\"DT56\"}}:::dt\n  D_DT563{{\"DT563\"}}:::dt\n  D_DT57{{\"DT57\"}}:::dt\n  D_DT573{{\"DT573\"}}:::dt\n  D_DT574{{\"DT574\"}}:::dt\n  D_DT575{{\"DT575\"}}:::dt\n  D_DT576{{\"DT576\"}}:::dt\n  D_DT577{{\"DT577\"}}:::dt\n  D_DT578{{\"DT578\"}}:::dt\n  D_DT579{{\"DT579\"}}:::dt\n  D_DT622{{\"DT622\"}}:::dt\n  D_DT623{{\"DT623\"}}:::dt\n  D_DT624{{\"DT624\"}}:::dt\n  D_DT637{{\"DT637\"}}:::dt\n  D_DT643{{\"DT643\"}}:::dt\n  D_DT644{{\"DT644\"}}:::dt\n  D_DT645{{\"DT645\"}}:::dt\n  D_DT646{{\"DT646\"}}:::dt\n  D_DT647{{\"DT647\"}}:::dt\n  D_DT648{{\"DT648\"}}:::dt\n  D_DT657{{\"DT657\"}}:::dt\n  D_DT658{{\"DT658\"}}:::dt\n  D_DT659{{\"DT659\"}}:::dt\n  D_DT660{{\"DT660\"}}:::dt\n  D_DT661{{\"DT661\"}}:::dt\n  D_DT662{{\"DT662\"}}:::dt\n  D_DT695{{\"DT695\"}}:::dt\n  D_DT696{{\"DT696\"}}:::dt\n  D_DT697{{\"DT697\"}}:::dt\n  D_DT698{{\"DT698\"}}:::dt\n  D_DT699{{\"DT699\"}}:::dt\n  D_DT700{{\"DT700\"}}:::dt\n  D_DT701{{\"DT701\"}}:::dt\n  D_DT702{{\"DT702\"}}:::dt\n  D_DT703{{\"DT703\"}}:::dt\n  D_DT704{{\"DT704\"}}:::dt\n  D_DT705{{\"DT705\"}}:::dt\n  D_DT706{{\"DT706\"}}:::dt\n  D_DT707{{\"DT707\"}}:::dt\n  D_DT708{{\"DT708\"}}:::dt\n  D_DT71{{\"DT71\"}}:::dt\n  D_DT720{{\"DT720\"}}:::dt\n  D_DT721{{\"DT721\"}}:::dt\n  D_DT722{{\"DT722\"}}:::dt\n  D_DT723{{\"DT723\"}}:::dt\n  D_DT724{{\"DT724\"}}:::dt\n  D_DT74{{\"DT74\"}}:::dt\n  D_DT742{{\"DT742\"}}:::dt\n  D_DT759{{\"DT759\"}}:::dt\n  D_DT763{{\"DT763\"}}:::dt\n  D_DT764{{\"DT764\"}}:::dt\n  D_DT77{{\"DT77\"}}:::dt\n  D_DT776{{\"DT776\"}}:::dt\n  D_DT78{{\"DT78\"}}:::dt\n  D_DT803{{\"DT803\"}}:::dt\n  D_DT805{{\"DT805\"}}:::dt\n  D_DT806{{\"DT806\"}}:::dt\n  D_DT90{{\"DT90\"}}:::dt\n\n  P_MCP_BUROK --> D_DT_M3\n  P_MCP_BUROK --> D_DT_M5\n  P_MCP_BUROK --> D_DT_M7\n  P_SZPA_AUDIT --> D_DT77\n  P_TERV_BEFOGAD --> D_DT_M8\n  T10 --> D_DT2\n  T10 --> D_DT245\n  T10 --> D_DT246\n  T10 --> D_DT247\n  T10 --> D_DT547\n  T10 --> D_DT553\n  T10 --> D_DT555\n  T10 --> D_DT74\n  T10 --> D_DT759\n  T10 --> T121\n  T10 --> T123\n  T10 --> T156\n  T10 --> T178\n  T10 --> T179\n  T10 --> T203\n  T101 --> T134\n  T102 --> D_DT297\n  T102 --> D_DT657\n  T102 --> D_DT658\n  T102 --> D_DT659\n  T102 --> D_DT660\n  T102 --> D_DT661\n  T102 --> D_DT662\n  T106 --> D_DT297\n  T106 --> T102\n  T106 --> T123\n  T106 --> T197\n  T106 --> T202\n  T111 --> T188\n  T111 --> T201\n  T121 --> D_DT234\n  T121 --> D_DT235\n  T121 --> D_DT236\n  T121 --> D_DT237\n  T121 --> D_DT238\n  T121 --> D_DT239\n  T121 --> D_DT240\n  T121 --> D_DT241\n  T121 --> D_DT242\n  T121 --> D_DT271\n  T121 --> D_DT272\n  T121 --> D_DT338\n  T121 --> D_DT387\n  T121 --> D_DT388\n  T121 --> D_DT389\n  T121 --> D_DT390\n  T121 --> D_DT391\n  T121 --> D_DT393\n  T121 --> D_DT394\n  T121 --> D_DT395\n  T121 --> D_DT396\n  T121 --> D_DT408\n  T121 --> D_DT409\n  T121 --> D_DT410\n  T121 --> D_DT411\n  T121 --> D_DT428\n  T121 --> T123\n  T121 --> T153\n  T121 --> T154\n  T121 --> T161\n  T121 --> T178\n  T121 --> T179\n  T121 --> T203\n  T122 --> T140\n  T122 --> T146\n  T122 --> T181\n  T122 --> T22\n  T122 --> T38\n  T123 --> D_DT543\n  T123 --> D_DT546\n  T123 --> D_DT547\n  T123 --> D_DT548\n  T123 --> D_DT549\n  T123 --> D_DT563\n  T123 --> D_DT573\n  T123 --> D_DT574\n  T123 --> T102\n  T123 --> T151\n  T123 --> T156\n  T123 --> T157\n  T123 --> T179\n  T123 --> T181\n  T123 --> T197\n  T123 --> T202\n  T123 --> T203\n  T129 --> T102\n  T129 --> T123\n  T129 --> T133\n  T129 --> T153\n  T129 --> T154\n  T129 --> T161\n  T129 --> T197\n  T129 --> T202\n  T129 --> T203\n  T13 --> T10\n  T133 --> T123\n  T133 --> T201\n  T133 --> T202\n  T134 --> D_DT292\n  T134 --> D_DT293\n  T134 --> D_DT294\n  T134 --> D_DT295\n  T134 --> D_DT296\n  T134 --> D_DT298\n  T134 --> D_DT458\n  T134 --> D_DT459\n  T134 --> D_DT460\n  T134 --> D_DT461\n  T134 --> D_DT462\n  T134 --> D_DT463\n  T134 --> D_DT464\n  T134 --> D_DT465\n  T134 --> D_DT466\n  T134 --> D_DT467\n  T134 --> D_DT468\n  T134 --> D_DT469\n  T135 --> T122\n  T135 --> T140\n  T135 --> T181\n  T135 --> T52\n  T137 --> T140\n  T137 --> T181\n  T138 --> T134\n  T138 --> T161\n  T138 --> T203\n  T139 --> T134\n  T139 --> T138\n  T139 --> T140\n  T140 --> D_DT338\n  T140 --> T7\n  T146 --> D_DT397\n  T146 --> T123\n  T146 --> T138\n  T146 --> T178\n  T146 --> T179\n  T147 --> T101\n  T147 --> T121\n  T147 --> T122\n  T147 --> T134\n  T147 --> T137\n  T147 --> T139\n  T147 --> T149\n  T147 --> T164\n  T149 --> T134\n  T149 --> T140\n  T149 --> T181\n  T149 --> T38\n  T151 --> T160\n  T151 --> T188\n  T151 --> T192\n  T153 --> T161\n  T153 --> T203\n  T154 --> T161\n  T154 --> T202\n  T154 --> T203\n  T156 --> D_DT553\n  T156 --> D_DT554\n  T156 --> D_DT555\n  T156 --> T160\n  T156 --> T161\n  T156 --> T179\n  T156 --> T188\n  T156 --> T201\n  T156 --> T203\n  T157 --> T179\n  T157 --> T203\n  T158 --> T161\n  T158 --> T203\n  T161 --> D_DT575\n  T161 --> D_DT576\n  T161 --> D_DT577\n  T161 --> D_DT578\n  T161 --> D_DT579\n  T161 --> T203\n  T163 --> T123\n  T163 --> T178\n  T163 --> T74\n  T164 --> T123\n  T164 --> T52\n  T165 --> D_DT637\n  T165 --> T123\n  T172 --> D_DT622\n  T172 --> D_DT623\n  T172 --> D_DT624\n  T173 --> T172\n  T178 --> D_DT643\n  T178 --> D_DT644\n  T178 --> D_DT645\n  T178 --> D_DT646\n  T178 --> D_DT647\n  T178 --> D_DT648\n  T178 --> T123\n  T178 --> T179\n  T178 --> T203\n  T179 --> T38\n  T181 --> D_DT695\n  T181 --> D_DT696\n  T181 --> D_DT697\n  T181 --> D_DT698\n  T181 --> D_DT699\n  T181 --> D_DT700\n  T181 --> D_DT701\n  T181 --> D_DT702\n  T181 --> D_DT703\n  T181 --> D_DT704\n  T181 --> D_DT705\n  T181 --> D_DT706\n  T181 --> D_DT707\n  T181 --> D_DT708\n  T188 --> D_DT720\n  T188 --> D_DT721\n  T188 --> D_DT722\n  T188 --> D_DT723\n  T188 --> D_DT724\n  T192 --> D_DT742\n  T192 --> T188\n  T195 --> D_DT763\n  T195 --> D_DT764\n  T195 --> T102\n  T195 --> T106\n  T195 --> T121\n  T195 --> T122\n  T195 --> T134\n  T195 --> T135\n  T195 --> T138\n  T195 --> T139\n  T195 --> T149\n  T197 --> D_DT776\n  T197 --> T202\n  T198 --> T171\n  T198 --> T178\n  T198 --> T191\n  T203 --> D_DT805\n  T203 --> D_DT806\n  T205 --> D_DT803\n  T205 --> T121\n  T205 --> T123\n  T205 --> T178\n  T205 --> T179\n  T22 --> D_DT56\n  T22 --> D_DT57\n  T22 --> D_DT71\n  T22 --> T138\n  T38 --> D_DT181\n  T38 --> D_DT269\n  T38 --> D_DT271\n  T38 --> D_DT323\n  T38 --> D_DT324\n  T38 --> D_DT325\n  T38 --> D_DT326\n  T38 --> D_DT339\n  T38 --> D_DT340\n  T38 --> D_DT341\n  T38 --> D_DT342\n  T38 --> D_DT361\n  T38 --> D_DT362\n  T38 --> D_DT363\n  T38 --> D_DT367\n  T38 --> D_DT52\n  T38 --> D_DT56\n  T38 --> D_DT_F38i\n  T38 --> T154\n  T38 --> T161\n  T38 --> T203\n  T48 --> T138\n  T48 --> T146\n  T48 --> T22\n  T52 --> D_DT78\n  T52 --> D_DT90\n  T69 --> D_DT248\n  T7 --> T154\n  T7 --> T161\n  T7 --> T203\n  T70 --> D_DT74\n  T74 --> T188\n  T75 --> D_DT254\n  T75 --> T123\n  T75 --> T181\n  T75 --> T188\n  T75 --> T192\n  T75 --> T205\n  T75 --> T74\n  T81 --> T123\n  T81 --> T138\n  T81 --> T181\n  T86 --> D_DT298\n  T86 --> D_DT357\n  T86 --> D_DT358\n  T86 --> D_DT359\n  T86 --> D_DT365\n  T86 --> T121\n  T86 --> T123\n  T86 --> T153\n  T86 --> T154\n  T86 --> T161\n  T86 --> T203\n  T86 --> T38\n  T86 --> T52\n  T86 --> T7",
  "dontesek": {
   "nyitott": [
    {
@@ -1548,6 +1531,26 @@
      "🟡"
     ],
     "sor": 678
+   },
+   {
+    "id": "DT805",
+    "feladat": "#203 THAYER_FORDITAS (C8, N88 (1): a UBS-definíciók `{L:…}` hivatkozás-jelölése; 2026-11-11)",
+    "kerdes": "Az `adat/forditasok.tsv` 17 `UBS_DBH` magyar definíciója (és a forrás 5 395 DBH- és 1 249 DNTG-sora) a fordítási prompt szerint betűre megtartja a `{L:Név<SDBH:héber>}` jelölést (`forditas/prompt_glossza_v2.md` 4. szabály); a lapon ma nincs ilyen, de a szónézet (olvasó) és minden új lap nyersen mutatná („{L:king<SDBH:מֶלֶךְ>} vagy {L:queen<SDBH:מַלְכָּה>}”, „{L:abode of the dead<SDBH:שְׁאֹול>}”). Mivé alakuljon a megjelenítésben?",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 793
+   },
+   {
+    "id": "DT814",
+    "feladat": "#213 SZOTARI_NEZET (a szókártya a szerveren: ahol a megvalósítás a jóváhagyott mockuptól eltér, vagy a mockup nem döntött; 2026-11-12)",
+    "kerdes": "(1) Hol éljen a nézetkapcsoló állapota? (2) Honnan jöjjön a jelentés glosszája? A mockup a H0216 11. jelentésénél a héber kifejezést is a glosszában tartotta („az Úr: א׳ יִשְׂרָאֵל”). (3) Álljon-e a mért pontosság az „Ebben a versben” dobozban? A mockup sávja mutatta (94,0%), a DT-F185h (felhasználó, 2026-11-10: „semmi helye ott”) kivette.",
+    "allapot": "nyitott",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 799
    }
   ],
   "alkalmazasra_var": [
@@ -5834,6 +5837,26 @@
      "🟢"
     ],
     "sor": 790
+   },
+   {
+    "id": "DT803",
+    "feladat": "#205 IGESZAKASZ_ELOKESZITES (az igehelyenkénti blokkok jelölt-alakja; 2026-11-12)",
+    "kerdes": "Hol álljanak a tanulmány igehelyenkénti blokkjaiból kinyert jelöltek (funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás), és hol a jelentéspont saját olvasata? Két kényszer van. (1) A `jeloltek.tsv` `id`-je kötelező motívum-ID, a jelentéspont, a vita és a versszámozás viszont motívumtól független (K2), és a blokk motívuma lehet még „új”. (2) A mai kulcs (`id` + `igehely` + `jelolt_tipus` + `cel_id`) nem különbözteti meg az egy versen belüli több jelentéspontot, tanút vagy vitát (`naplok/F205_jelentes.md` 1.2).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 792
+   },
+   {
+    "id": "DT806",
+    "feladat": "#203 THAYER_FORDITAS (a #704 lap-újragenerálása után; 2026-11-12)",
+    "kerdes": "A G2671 új Thayer-fordítása („Protevangelium Jacobi, c. 3. (Aiszkhülosz, …)”) az olvasói kapu SZAKASZ_HIV szabályán hamis BUKÁS-t ad (a „c. 3. (…)” caput-hivatkozást a lap 3. szakaszának veszi), és a HAMART-001-et a nyílt magban „régi feldolgozás”-ba sorolná. Hol javuljon?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 794
    }
   ],
   "javasolt": [],
@@ -6784,6 +6807,54 @@
     ],
     "sor": 791,
     "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT808",
+    "feladat": "#175 KAROLI_SZOILLESZTES_NYILT (a csomag tartalma; 2026-11-12)",
+    "kerdes": "Mit tartalmazzon a `nyilt_karoli_strong/`? A brief az exportoszlopok között „héber/görög szó”-t említ, de ugyanott tiltja a TAHOT/TAGNT nyers szövegét.",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 795,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT809",
+    "feladat": "#175 KAROLI_SZOILLESZTES_NYILT (a közlemény és a kézirat helye; 2026-11-12)",
+    "kerdes": "A brief 3. lépése a `kozlemeny/data_paper/`-t a `nyilt_mag/kozlemeny/` alá költöztetné; a #710 (F208) óta az a mappa a `nyilt_mag_export.py` generált kimenete (rövid közlemény), amely az idegen fájlokat törli. Hová kerüljön a folyóiratcikk kézirata?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 796,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT811",
+    "feladat": "#210 OLVASO_BIBLIAVALASZTO (a bibliaválasztó a szerveren; 2026-11-12)",
+    "kerdes": "Hogyan éljen a választott Biblia, és milyen számozással álljanak a nem Károli 1908-as szövegek az olvasóban?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟡"
+    ],
+    "sor": 797,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT813",
+    "feladat": "#213 SZOTARI_NEZET (a szófej alapjelentése; 2026-11-12)",
+    "kerdes": "Az alapjelentés elsődleges forrása a magyar glossza legyen (B), vagy marad a magyar BDB-fejsor (A, DT-F76f)? Mérés: 311 magyar BDB-fejsor kezdődik nemi tanúval („főnév hímnemű^…”), ezeknél a mai kivágás hibás (H1242: „hímnemű” a „reggel” helyett); a H0127-nél a két forrás eltér („föld, termőföld” / „föld: talaj”). Viszony a korábbiakhoz: a DT302 (a) már a magyar TBESH-glosszát tette a BDB-kivágás elé, de angol szöveget a kiemelt sorba nem engedett; az itteni sorrend utolsó lépése angol. *(proveniencia: scope=adat/bdb_szakasz_hu.tsv fej-sorai, adat/glosszak_heber_hu.tsv",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 798,
+    "oszlopszam": 10,
     "fejlec_oszlopszam": 8
    }
   ],

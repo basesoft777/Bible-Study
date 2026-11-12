@@ -304,5 +304,48 @@ class TeljesUt(Alap):
             self.assertEqual(a.read(), b.read())
 
 
+class Menetjel(unittest.TestCase):
+    """F203 (ELLENOR_F203): a sor megjegyzése a menetet is azonosítja; a `rogzit` CLI-ben a `--menet` kötelező."""
+
+    def test_cid_menettel(self):
+        self.assertEqual(L.cid_menettel('G001-p1', 'F203'), 'F203/G001-p1')
+        self.assertEqual(L.cid_menettel('G001-p1', None), 'G001-p1')
+
+    def test_rogzit_menet_nelkul_megall(self):
+        regi = sys.argv
+        try:
+            sys.argv = ['glossza_api_koteg.py', 'rogzit', '--munka', tempfile.mkdtemp()]
+            with self.assertRaises(SystemExit) as cm:
+                L.main()
+            self.assertEqual(cm.exception.code, 2)
+        finally:
+            sys.argv = regi
+
+    def test_a_valos_f203_sorok_menetjele(self):
+        sorok = [l.split('\t') for l in open(GLF.FORDITASOK, encoding='utf-8').read().split('\n')
+                 if l.startswith('TBESG\t') and '\t2026.11.11\t' in l]
+        f203 = [s for s in sorok if 'F203/G0' in s[-1]]
+        self.assertEqual(len(f203), 68)
+        self.assertTrue(all(s[-1].startswith(L.MENETJEL + ' (glossza-lánc') for s in f203))
+
+
+class Tulajdonnev(unittest.TestCase):
+    """F203 (N88 (2), második előfordulás): a TIPNR-Strong kisbetűs fordítása jelzés (a beírás `--jelzes-atnezve`-t kér)."""
+
+    def test_kisbetus_tulajdonnev_jelzes(self):
+        t = {'G0076', 'G3019'}
+        self.assertTrue(L.tulajdonnev_jelzes('G0076', 'ádám', t))
+        self.assertEqual(L.tulajdonnev_jelzes('G0076', 'Ádám', t), '')
+        self.assertTrue(L.tulajdonnev_jelzes('G3019', 'lévita', t))      # a jelzés átnézője dönt (a népnév kisbetűs)
+        self.assertEqual(L.tulajdonnev_jelzes('G0068', 'mező', t), '')   # nem tulajdonnév
+
+    def test_a_valos_tipnr(self):
+        t = L.tipnr_strongok()
+        if not t:
+            self.skipTest('nincs TIPNR_kivonat.tsv')
+        self.assertIn('G0076', t)
+        self.assertNotIn('G0068', t)
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

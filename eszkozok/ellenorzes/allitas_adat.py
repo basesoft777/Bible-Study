@@ -237,7 +237,7 @@ class Adat(object):
     # -- a generátor függvényei, egyszer hívva -------------------------------------
     def _dontesi(self):
         if '_d' not in self._cache:
-            self._cache['_d'] = self.LG.dontesi_ut_adat(self.m, self.sorai)
+            self._cache['_d'] = _olvasoi_kulcsok(self.LG.dontesi_ut_adat(self.m, self.sorai), ('csoport_ok', 'egyen_ok'))
         return self._cache['_d']
 
     def _kizart_sorok(self):
@@ -261,7 +261,7 @@ class Adat(object):
             if not osz:
                 self._cache['_lxx'] = collections.Counter()
             else:
-                _sorok, szamlalo, _f, _h = self.LG.lxx_osszevetes(self.sorai, tok)
+                _sorok, szamlalo, _f, _h = self.LG.lxx_statisztika(self.sorai)   # F212 (Sz1)
                 self._cache['_lxx'] = szamlalo
         return self._cache['_lxx']
 
@@ -273,7 +273,7 @@ class Adat(object):
 
     def _melleklet(self):
         if '_mell' not in self._cache:
-            self._cache['_mell'] = self.LG.kizarasok_adat(self.m, self.sorai)
+            self._cache['_mell'] = _olvasoi_kulcsok(self.LG.kizarasok_adat(self.m, self.sorai), ('csoport', 'egyen'))
         return self._cache['_mell']
 
 
@@ -314,7 +314,7 @@ ALLITASOK = [
      r'súlypontja [^(]{1,80}\(%s helyből %s\)' % (_n('hely'), _n('top')),
      [('hely', 'hely'), ('top', 'top_konyv')], 'lap'),
     ('ELOF_HATOKOR', 'a 2. blokk hatókör-sora: igehely-sorok száma',
-     r'Ez a blokk a motívum %s igehely-sorát fedi' % _n('hely'), [('hely', 'hely')], 'lap'),
+     r'(?:Ez a blokk|A táblázat) a motívum %s igehely(?:-sorát fedi|ét sorolja fel)' % _n('hely'), [('hely', 'hely')], 'lap'),
     ('KIVONAT_HELY_VERS', 'a Kivonat: hely és vers',
      r'%s helyet sorol fel %s versben' % (_n('hely'), _n('vers')), [('hely', 'hely'), ('vers', 'vers')], 'lap'),
     ('KIVONAT_BONTAS', 'a Kivonat: Genezis / többi ÓSZ / ÚSZ helyei',
@@ -355,7 +355,7 @@ ALLITASOK = [
      r'Ezek közül %s nem tartozik a motívumhoz, %s döntésre vár' % (_n('elut'), _n('nyitva')),
      [('elut', 'k_elutasitva'), ('nyitva', 'k_nyitva')], 'lap'),
     ('KIZART_HATOKOR', 'a 3. blokk hatókör-sora: elutasított/nyitva maradt jelölt-sorok',
-     r'motívum %s elutasított/nyitva maradt jelöltjét fedi' % _n('sor'), [('sor', 'kizart_sor')], 'lap'),
+     r'motívum %s elutasított(?:/| vagy )nyitva maradt jelölt(?:jét fedi|sorát sorolja fel)' % _n('sor'), [('sor', 'kizart_sor')], 'lap'),
     # --- 5. LXX ---
     ('LXX', 'az LXX-összegzés (versben): összes, egyező, eltérő, hiányzó, nem megállapított',
      r'ószövetségi helyei %s versre terjednek; ezek közül %s versben a görög fordítás \(Septuaginta\) ugyanazt a szót '
@@ -385,7 +385,7 @@ ALLITASOK = [
      [('n', 'kapcs'), ('csomopont', 'kapcs_csomopont'), ('magas', 'kapcs_magas'), ('alacsony', 'kapcs_alacsonyabb')],
      'lap'),
     ('KAPCS_HATOKOR', 'a 7. blokk hatókör-sora: kapcsolat-sorok és csomópontok',
-     r'motívum %s kapcsolat-sorát fedi[^,]*, %s igehely-csomóponttal' % (_n('n'), _n('csomopont')),
+     r'motívum %s kapcsolat(?:-sorát fedi|át sorolja fel)[^,;]*[,;] (?:a kapcsolatok )?%s igehely(?:-csomóponttal|et kötnek össze)' % (_n('n'), _n('csomopont')),
      [('n', 'kapcs'), ('csomopont', 'kapcs_csomopont')], 'lap'),
     # --- 8. Kapcsolódó motívumok ---
     ('KAPCSOLODO', 'a 8. szakasz: motívumközi kapcsolatok és másik motívumok',
@@ -504,6 +504,20 @@ def meres_szoveg(szoveg, adat, fajl='lap'):
     return ki
 
 
+def _olvasoi_kulcsok(d, mezok):
+    """F212: az ok-nevek (szótárkulcsok) a lap olvasói alakjában — a lap a `tablajegyzet.onref_csere` cseréjét viszi
+    („amelyet a lap nem dönt el” → „amelyet ez a vizsgálat nem dönt el”), ezért a kapu is így keres (a régi lapon a
+    csere nem fut, ott a kulcs változatlan, mert a csere-pár ott nem áll)."""
+    import tablajegyzet as TJ
+    for mezo in mezok:
+        if isinstance(d.get(mezo), dict):
+            uj = d[mezo].__class__()
+            for k, v in d[mezo].items():
+                uj[TJ.onref_csere(k) if isinstance(k, str) else k] = v
+            d[mezo] = uj
+    return d
+
+
 def _melleklet_listak(lat, adat):
     """A melléklet okonkénti címsora (`### <ok> — N vers`) és a felsorolt versek az adathoz mérve."""
     ki = []
@@ -580,9 +594,13 @@ def meres(mid):
 
 
 def osszes_lap_id():
+    """Minden lap, a befagyasztottak nélkül (F212, a befagyasztási döntés: a befagyasztott lap nem generálódik újra, a számai a
+    régi adatot mutatják; új cikkként készül)."""
+    import lap_befagyasztas
+    fagy = lap_befagyasztas.befagyasztott_idk()
     ki = []
     for nev in sorted(os.listdir(LEXIKON)):
-        if nev.endswith('_TUDOMANYOS.md'):
+        if nev.endswith('_TUDOMANYOS.md') and nev[:-len('_TUDOMANYOS.md')] not in fagy:
             ki.append(nev[:-len('_TUDOMANYOS.md')])
     return ki
 
@@ -597,8 +615,8 @@ def _cella(x):
 
 def jelentes(eredmenyek, reszletes=False):
     """Markdown jelentés: {mid: meres(mid)} → szöveg."""
-    ki = ['# Állítás–adat kapu (F196, JELENTÉS)', '',
-          '*A lap számai és „nincs …” mondatai a saját adatukhoz mérve. Szint: JELENTÉS, nem gátol (a HIBA-szint külön döntés).*', '']
+    ki = ['# Állítás–adat kapu (F196, E38)', '',
+          '*A lap számai és „nincs …” mondatai a saját adatukhoz mérve. Szint: a CI-ben E38 (a kapuemelési döntés): minden eltérés HIBA; a befagyasztott lap kimarad.*', '']
     for mid, e in eredmenyek.items():
         if e['hiba']:
             ki += ['## %s' % mid, '', 'Nem mérhető: %s' % e['hiba'], '']

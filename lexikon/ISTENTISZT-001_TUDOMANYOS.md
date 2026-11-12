@@ -863,9 +863,9 @@ A motívum 16 ószövetségi helyéből 13 helyen a görög fordítás (Septuagi
 
 *Versszintű együtt-előfordulás, nem szóillesztés (a token összes ÓSZ-i helye, a grammatikai szavak szűrésével; nem LXX-fordítói döntés):*
 
-**H7121** · 680 vers a Septuagintában (ebből 680 vers görög tartalmi szóval); leggyakoribb görög társak: καλέω ([kaleó](/szo/G2564)<sup class="strong" title="G2564 · hívni">G2564</sup>): 346 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 267 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 236 vers; ὄνομα ([onoma](/szo/G3686)<sup class="strong" title="G3686 · név">G3686</sup>): 193 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 129 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 129 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 127 vers; ἐπικαλέω ([epikaleó](/szo/G1941)<sup class="strong" title="G1941 · hívni (segítségül)/nevezni">G1941</sup>): 108 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 98 vers; ἡμέρα ([hémera](/szo/G2250)<sup class="strong" title="G2250">G2250</sup>): 84 vers
+**H7121** · 680 vers a Septuagintában (ebből 680 vers görög tartalmi szóval); leggyakoribb görög társak: καλέω ([kaleó](/szo/G2564)<sup class="strong" title="G2564 · hívni">G2564</sup>): 346 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004 · mondani">G3004</sup>): 267 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 236 vers; ὄνομα ([onoma](/szo/G3686)<sup class="strong" title="G3686 · név">G3686</sup>): 193 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510 · lenni">G1510</sup>): 129 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956 · minden">G3956</sup>): 129 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 127 vers; ἐπικαλέω ([epikaleó](/szo/G1941)<sup class="strong" title="G1941 · hívni (segítségül)/nevezni">G1941</sup>): 108 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 98 vers; ἡμέρα ([hémera](/szo/G2250)<sup class="strong" title="G2250 · nap">G2250</sup>): 84 vers
 
-**H8034** · 764 vers a Septuagintában (ebből 764 vers görög tartalmi szóval); leggyakoribb görög társak: ὄνομα ([onoma](/szo/G3686)<sup class="strong" title="G3686 · név">G3686</sup>): 721 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 294 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 185 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510">G1510</sup>): 180 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004">G3004</sup>): 171 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 138 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956">G3956</sup>): 128 vers; καλέω ([kaleó](/szo/G2564)<sup class="strong" title="G2564 · hívni">G2564</sup>): 116 vers; οἶκος ([oikosz](/szo/G3624)<sup class="strong" title="G3624 · ház: otthon">G3624</sup>): 99 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 87 vers
+**H8034** · 764 vers a Septuagintában (ebből 764 vers görög tartalmi szóval); leggyakoribb görög társak: ὄνομα ([onoma](/szo/G3686)<sup class="strong" title="G3686 · név">G3686</sup>): 721 vers; κύριος ([küriosz](/szo/G2962)<sup class="strong" title="G2962 · úr: Isten">G2962</sup>): 294 vers; υἱός ([ühiosz](/szo/G5207)<sup class="strong" title="G5207 · fia">G5207</sup>): 185 vers; εἰμί ([eimi](/szo/G1510)<sup class="strong" title="G1510 · lenni">G1510</sup>): 180 vers; λέγω ([legó](/szo/G3004)<sup class="strong" title="G3004 · mondani">G3004</sup>): 171 vers; θεός ([theosz](/szo/G2316)<sup class="strong" title="G2316 · Isten">G2316</sup>): 138 vers; πᾶς ([pasz](/szo/G3956)<sup class="strong" title="G3956 · minden">G3956</sup>): 128 vers; καλέω ([kaleó](/szo/G2564)<sup class="strong" title="G2564 · hívni">G2564</sup>): 116 vers; οἶκος ([oikosz](/szo/G3624)<sup class="strong" title="G3624 · ház: otthon">G3624</sup>): 99 vers; γῆ ([gé](/szo/G1093)<sup class="strong" title="G1093 · föld: bolygó">G1093</sup>): 87 vers
 
 *Proveniencia (a tábla soraiból): scope=LXX_OS-versszint | forras=LXX_OS/*.tsv+grammatikai_strongok.tsv | ts=2026-10-11T12:00Z*
 
@@ -1180,9 +1180,9 @@ A motívum 16 ószövetségi helyéből 13 helyen a görög fordítás (Septuagi
 
 <!-- GENERÁLT-KEZDET: general.py --cel lexikon#ISTENTISZT-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-04 -->
 
-A motívum 22 helyéből 11 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 21. **Következtetés:** a helyek 50%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
+A motívum 22 helyéből 9 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 20. **Következtetés:** a helyek 41%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
-*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 22 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 11 igehely ad legalább egy találatot (21 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 3 igehely Károli-KH listája kimaradt, mert egy másik vers listájának másolata (`eszkozok/karoli_kh_epseg.py`, DT557): Zsolt 116:13, ApCsel 2:21, ApCsel 9:14.*
+*Ez a blokk a `[ID: ISTENTISZT-001]` motívum 22 igehelyét veti össze a TSK (Votes ≥ 15) és a Károli-KH táblával; 9 igehely ad legalább egy találatot (20 találat összesen), 0 igehely versenkénti kereséssel nem vizsgálható. 9 Károli-KH sor nem áll itt (6 igehelyen): a MEK 00161 kiadás nem erősíti meg.*
 
 #### 1Móz 13:4
 - Károli-KH: 1Móz 12:8
@@ -1193,17 +1193,13 @@ A motívum 22 helyéből 11 helyről mutat utalás más bibliai helyre a hagyom�
 #### 2Móz 34:5
 - Károli-KH: 2Móz 33:19
 
-#### Zsolt 116:17
-- Károli-KH: 2Sám 7:9
-
 #### Jóel 2:32
 - TSK: Róm 10:11 (Votes: 19)
 - TSK: Róm 10:14 (Votes: 19)
 - Károli-KH: Róm 10:13
-
-#### Sof 3:9
-- Károli-KH: Zsolt 113:3
-- Károli-KH: Zsolt 114:2
+- Károli-KH: Ézs 10:21
+- Károli-KH: Ézs 10:22
+- Károli-KH: Abd 1:17
 
 #### ApCsel 2:21
 - TSK: Róm 10:12 (Votes: 29)
@@ -1216,7 +1212,6 @@ A motívum 22 helyéből 11 helyről mutat utalás más bibliai helyre a hagyom�
 
 #### ApCsel 22:16
 - TSK: ApCsel 2:38 (Votes: 15)
-- Károli-KH: Jón 1:5
 
 #### Róm 10:13
 - TSK: ApCsel 2:21 (Votes: 106)
@@ -1231,13 +1226,13 @@ A motívum 22 helyéből 11 helyről mutat utalás más bibliai helyre a hagyom�
 
 ### Minősítés
 
-A 21 utalásból 8 a motívum két saját helyét köti össze, ez 7 helyet érint a 22-ból. **Következtetés:** a motívum helyeinek a 32%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
+A 20 utalásból 9 a motívum két saját helyét köti össze, ez 7 helyet érint a 22-ból. **Következtetés:** a motívum helyeinek a 32%-a két független gyűjteményben is összetartozik, ez gyenge külső megerősítés.<!-- olvasói -->
 
 <!-- GENERÁLT-RÉS: minosites | general.py --cel lexikon | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv -->
 
 *Generált: a független megerősítés a TSK (Votes ≥ 15) és a Károli-KH találatainak metszete a motívum előfordulás-igehelyeivel; a minősített jelöltek a `jeloltek.tsv`-ből (`forras_kereses`: TSK / Károli-KH).*
 
-**Független megerősítés** (8 pár):
+**Független megerősítés** (9 pár):
 
 - 1Móz 13:4 → 1Móz 12:8 — Károli-KH
 - Jóel 2:32 → Róm 10:13 — Károli-KH
@@ -1247,6 +1242,7 @@ A 21 utalásból 8 a motívum két saját helyét köti össze, ez 7 helyet éri
 - Róm 10:13 → Jóel 2:32 — TSK (Votes 103)
 - Róm 10:13 → ApCsel 2:21 — TSK (Votes 106)
 - Róm 10:13 → Jóel 2:32 — Károli-KH
+- Róm 10:13 → ApCsel 2:21 — Károli-KH
 
 <details>
 <summary>Kereszthivatkozásból minősített jelöltek (61 sor; elutasítva 61)</summary>

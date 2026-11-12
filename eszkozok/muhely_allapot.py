@@ -459,9 +459,21 @@ def vizualis_atnezes(motivum):
     commit = lap_commit(motivum)
     if not commit:
         return None
-    for s in tsv(ATNEZES_TABLA):
+    sorok = tsv(ATNEZES_TABLA)
+    for s in sorok:
         if atnezes_ervenyes(s, motivum, commit):
             return s
+    # F203 (N-F184a, DT665): egy korábbi lapváltozat átnézése érvényes marad, ha azóta csak a generált szótári/KH blokk (és a
+    # kolofon) változott — blokkszintű lapdiff (`lapdiff_blokk.py`); a legutóbbi ilyen sor számít
+    import lapdiff_blokk as LB
+    for s in reversed(sorok):
+        lc = (s.get('lap_commit') or '').strip()
+        if not (s.get('id') == motivum and len(lc) >= 7 and (s.get('ki') or '').strip() == 'felhasználó'
+                and (s.get('idezet') or '').strip()):
+            continue
+        d = LB.atnezes_dt665(motivum, lc, commit, GYOKER)
+        if d['ervenyes']:
+            return dict(s, dt665=d)
     return None
 
 
@@ -482,6 +494,10 @@ def kriterium_9(motivum):
     reszlet += megj
     reszlet.append('vizuális átnézés: %s' % ('%s, %s' % (atnez.get('datum', ''), atnez.get('ki', '')) if atnez
                                              else 'nincs a lap mai változatáról'))
+    if atnez and atnez.get('dt665'):
+        reszlet.append('DT665 kivétel (a %s változat átnézése): %s%s' % (
+            atnez['lap_commit'][:12], atnez['dt665']['ok'],
+            '' if atnez['dt665']['kolofon'] else '; a kolofon nem változott — a (c) a jelentésben ellenőrizendő'))
     e = uj(ZOLD if buk == 0 and atnez else PIROS, '%d BUKÁS, %d FIGYELMEZTETÉS, átnézés: %s' % (
         buk, figy, 'van' if atnez else 'nincs'), mero, motivum, reszlet, {'n': buk, 'figy': figy, 'atnezes': int(bool(atnez))})
     return e
@@ -733,7 +749,9 @@ def main():
     if a.motivum:
         motivumok = [m for m in motivumok if m['id'] in a.motivum]
     ids = [m['id'] for m in motivumok]
-    jeloltek = tsv('adat/jeloltek.tsv')
+    # F212 (C6): a kapcsolat-jelölt (motívumon belüli igehely-pár) nem hely-jelölt: a jelöltszámok és a nyilvános
+    # „kizárva” mondat nem számolja
+    jeloltek = [j for j in tsv('adat/jeloltek.tsv') if j.get('jelolt_tipus') != 'kapcsolat']
     elofordulasok = tsv('adat/elofordulasok.tsv')
     kapcsolatok = tsv('adat/motivum_kapcsolatok.tsv')
     usz = usz_konyvek()

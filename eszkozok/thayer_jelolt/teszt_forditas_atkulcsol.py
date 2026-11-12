@@ -141,14 +141,84 @@ class Iras(unittest.TestCase):
             FA.ellenoriz_iras(regi, ['\t'.join(FEJ), sor('sz1', 'A2')], [], FEJ)
 
 
+def szak(*elemek):
+    """[(hash, szöveg)] -> a `thayer_bemenet.szakaszok` alakja."""
+    return [{'sorszam': i, 'hash': h, 'szoveg': t, 'utvonal': h} for i, (h, t) in enumerate(elemek, 1)]
+
+
+class TervTabla(unittest.TestCase):
+    """F203: az általános mód (a régi és a mai szakasztábla összevetése; `terv_tabla`)."""
+
+    def terv(self, sorok, regi, mai):
+        return FA.terv_tabla(adat(sorok), lambda sp: regi, lambda sp: mai)
+
+    def test_toredek_osszevonva_osszefuz_es_tagsor(self):
+        # a régi sz3 (hamis fej, töredék) az sz2-be olvad: az sz2 és az sz3 fordítása összefűzve sz2-n (elavult), az sz3 tagsor;
+        # a régi sz4 azonos hash-sel sz3-ra kulcsolódik
+        regi = szak(('A', 'cim'), ('B', 'fej szoveg'), ('C', 'c. 3.'), ('D', 'a. masik'))
+        mai = szak(('A', 'cim'), ('BC', 'fej szoveg c. 3.'), ('D', 'a. masik'))
+        v = {(x['regi'], x['tipus'], x['uj_kulcs']) for x in self.terv([sor('sz1', 'A'), sor('sz2', 'B'), sor('sz3', 'C'),
+                                                                          sor('sz4', 'D')], regi, mai)}
+        self.assertEqual(v, {(2, 'osszefuz', 'sz2'), (3, 'tagsor', 'sz2~3'), (4, 'atkulcsol', 'sz3')})
+
+    def test_vagas_elavul_es_athelyez(self):
+        # a régi sz2 kettévált (új fej a bekezdésen belül): elavult, a kulcsa a nagyobb átfedésű mai szakasz; a régi elavult sz3 követi
+        regi = szak(('A', 'cim'), ('B', 'a. rovid Rec. b. hosszabb resz itt'), ('C', 'c. z'))
+        mai = szak(('A', 'cim'), ('B1', 'a. rovid Rec.'), ('B2', 'b. hosszabb resz itt'), ('C', 'c. z'))
+        v = {(x['regi'], x['tipus'], x['uj_kulcs']) for x in self.terv([sor('sz1', 'A'), sor('sz2', 'B'),
+                                                                          sor('sz3', 'X', allapot='elavult')], regi, mai)}
+        self.assertEqual(v, {(2, 'elavult', 'sz3'), (3, 'athelyez', 'sz4')})
+
+    def test_valtozatlan_strong_kimarad_es_idempotens(self):
+        regi = szak(('A', 'cim'), ('B', 'x'))
+        self.assertEqual(self.terv([sor('sz1', 'A'), sor('sz2', 'B')], regi, regi), [])
+
+    def test_kezi_sor_nem_avulhat_el(self):
+        regi = szak(('A', 'cim'), ('B', 'x'), ('C', 'y'))
+        mai = szak(('A', 'cim'), ('BC', 'x y'))
+        with self.assertRaises(SystemExit):
+            self.terv([sor('sz2', 'B', allapot='kezi')], regi, mai)
+
+    def test_tagsor_koveti_a_fosort(self):
+        regi = szak(('A', 'cim'), ('Z', 'uj elso'), ('B', 'x'))
+        mai = szak(('A', 'cim'), ('B', 'uj elso x'))
+        sorok = [sor('sz3', 'B0', allapot='elavult'), sor('sz3~5', 'B0', allapot='elavult')]
+        v = {(x['tipus'], x['uj_kulcs']) for x in self.terv(sorok, regi, mai)}
+        self.assertEqual(v, {('athelyez', 'sz2'), ('tagsor_kovet', 'sz2~5')})
+
+    def test_iras_bajtorzo(self):
+        regi = szak(('A', 'cim'), ('B', 'x'), ('C', 'y'))
+        mai = szak(('A', 'cim'), ('C', 'y'))
+        sorok = ['	'.join(FEJ), sor('sz1', 'A'), sor('sz3', 'C'), sor('sz1', 'X', strong='H0001', szotar='BDB')]
+        v = FA.terv_tabla(adat(sorok[1:]), lambda sp: regi, lambda sp: mai)
+        for x in v:
+            x['i'] += 1
+        uj = FA.alkalmaz_tabla(sorok, FEJ, v, '2026.11.11')
+        FA.ellenoriz_iras(sorok, uj, v, FEJ)
+        self.assertEqual(uj[0], sorok[0])
+        self.assertEqual(uj[3], sorok[3])
+        self.assertTrue(uj[2].split('	')[3] == 'sz2' and 'F203 (2026.11.11): átkulcsolva sz3 → sz2' in uj[2])
+
+
 class Mai(unittest.TestCase):
-    def test_osszevonas_ujrafuttatva_nincs_teendo(self):
-        # ELLENOR_F186_2/3: az --osszevonas a mai adaton idempotens (a második futás 0 változás; a G4151 és a G5590 is jelölt)
+    def test_altalanos_mod_a_mai_tablan_ures_es_hash_egyezik(self):
+        # F203: a mai táblát önmagával összevetve nincs teendő, és minden nem elavult Thayer-sor hash-e a kulcsa szakaszáé (a #186
+        # két egyszeri módja — `bekezdes_elso`, `osszevonas_terkep` — a saját szabálykörükhöz kötött; az általános mód utána is fut)
         szoveg, sorok, fej, adat_ = FA.beolvas(FA.FORDITASOK_UT)
-        import bont
         import thayer_bemenet as TB
-        lex = bont.lexikon_beolvas()
-        self.assertEqual(FA.terv_osszevonas(adat_, TB.szakaszok, lambda sp: FA.osszevonas_terkep(sp, lex)), [])
+        self.assertEqual(FA.terv_tabla(adat_, TB.szakaszok, TB.szakaszok), [])
+        rossz = []
+        for _, r in adat_:
+            m = FA.SZ.match(r.get('jelentes_szam', ''))
+            if r.get('szotar') == 'Thayer' and r.get('mezo') == 'forditas_hu' and m and r.get('allapot') != 'elavult':
+                sz = {x['sorszam']: x['hash'] for x in (TB.szakaszok(r['strong']) or [])}
+                if sz.get(int(m.group(1))) != r.get('forras_hash'):
+                    rossz.append((r['strong'], r['jelentes_szam']))
+        self.assertEqual(rossz, [])
+
+    def test_osszevonas_jelolt(self):
+        # ELLENOR_F186_2/3: a G4151 és a G5590 az összevonás jegyét viseli
+        szoveg, sorok, fej, adat_ = FA.beolvas(FA.FORDITASOK_UT)
         for sp in ('G4151', 'G5590'):
             self.assertTrue(any(FA.OSSZEVONAS_JEGY in r.get('megjegyzes', '') for _, r in adat_
                                 if r.get('szotar') == 'Thayer' and r.get('strong') == sp), sp)

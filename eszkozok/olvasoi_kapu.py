@@ -513,6 +513,33 @@ MUNKASZAVAK = [
     (re.compile(r'↳\s*Alpont:'), 'belső címke (↳ Alpont:)'),
     (re.compile(r'független\w*\s+keresés\w*', re.I), 'közös bemenetű keresések „független”-ként (F24 (a))'),
     (re.compile(r'[Mm]ért pontosság'), 'mért BDB-pontosság a lapon (F35: csak a módszertani dokumentációban)'),
+    # F212 (N-F206a; a sablonmondat-lista M1–M14, A1 osztálya, a felhasználó döntése: „javaslat szerint”): a generált
+    # műhelyszavak — második előfordulás, gépi védelem
+    (re.compile(r'\bhígul\w*', re.I), 'munkaszó (hígul…)'),
+    (re.compile(r'séma-korlát\w*', re.I), 'munkaszó (séma-korlát)'),
+    (re.compile(r'Strong-keresés|\bmintakeresés'), 'munkaszó (keresés neve)'),
+    (re.compile(r'\blánc-?vers\w*'), 'munkaszó (láncvers)'),
+    (re.compile(r'Peshat-mag'), 'munkaszó (Peshat-mag)'),
+    (re.compile(r'\balapvonal\w*'), 'munkaszó (alapvonal)'),
+    (re.compile(r'\b[Cc]ell(?:a|ája|ában|ák|ákban)\b|-cella\b'), 'munkaszó (cella)'),
+    (re.compile(r'kinyerő tábl\w*'), 'munkaszó (kinyerő tábla)'),
+    (re.compile(r'\bVotes\b'), 'munkaszó (Votes)'),
+    (re.compile(r'versenkénti kereséssel'), 'munkaszó (versenkénti keresés)'),
+    (re.compile(r'modell emeli ki|másik kéz'), 'munkaszó (munkamenet)'),
+    (re.compile(r'még nem történt meg'), 'munkaszó (munkaállapot)'),
+    (re.compile(r'renderidej\w*'), 'munkaszó (renderidejű)'),
+    (re.compile(r'Dice-társulás\w*|\bszóillesztés\w*'), 'munkaszó (mérési zsargon)'),
+    (re.compile(r'teljesség-mérés\w*'), 'munkaszó (teljesség-mérés)'),
+    (re.compile(r'\w+-háló\b|szó háló\b'), 'munkaszó (háló)'),
+    (re.compile(r'\bProveniencia\b'), 'munkaszó (Proveniencia)'),
+    (re.compile(r'Kutatói megjegyzés'), 'munkaszó (Kutatói megjegyzés)'),
+    (re.compile(r'\*Generált:'), 'munkaszó (Generált:)'),
+    (re.compile(r'\bEz a blokk\b|\b(?:sorát|jelöltjét|tokenjét) fedi\b'), 'munkaszó (blokk-hatókör)'),
+    (re.compile(r'\(HCF: \d+\)'), 'munkaszó (adatbázis-azonosító)'),
+    (re.compile(r'Összesítő sor \d+'), 'munkaszó (összesítő sor)'),
+    (re.compile(r'LSJ-sor|jelölt hiány'), 'munkaszó (szerepmátrix)'),
+    (re.compile(r'[Cc]sak megjelenítés'), 'munkaszó (csak megjelenítés)'),
+    (re.compile(r'gépi (?:Strong-|lánc-|szópár-|frázis-)?keresés|gépi teljesség|gépi illesztés'), 'munkaszó (gépi …)'),
 ]
 
 
@@ -618,6 +645,7 @@ def ell_kov_ism(sorok):
 # szó, szókapcsolat; „A + B”, „A, B”, „A … B” egy csoport) után zárójeles vagy vesszős kiejtés áll („(chámász)”,
 # „(φθορά, fthora)”, „(adámá: föld)”); a jelölt Strong-szám („עֶצֶב H6089 (ecev)”) közbeállhat.
 INDOKLAS_CELLA_RX = re.compile(r'\*\*(?:elutasítva|beépítve|nyitva)\*\*')
+INDOK_FEJLEC_RX = re.compile(r'^\|\s*Igehely\s*\|\s*Miért lett jelölt\s*\|\s*(?:Döntés és indok|Indok)\s*\|')
 _IRAS_BETU = '\u0590-\u05FF\uFB1D-\uFB4F\u0370-\u03FF\u1F00-\u1FFF'
 IRAS_FUTAM_RX = re.compile(r'[%s](?:[%s\u05BE׳״]|[ ](?=[%s]))*' % (_IRAS_BETU, _IRAS_BETU, _IRAS_BETU))
 IRAS_LANC_RX = re.compile(r'\s*(?:\+|,|/|\.\.\.|…)\s*(?=[%s])' % _IRAS_BETU)
@@ -651,13 +679,27 @@ def ell_indoklas(sorok):
     if not KIVETEL_NELKUL:
         return []
     ki = []
+    indok_tabla = False
     for s in sorok:
+        # F212 (I5): az elutasított sor cellája jel nélkül áll („| Igehely | Miért lett jelölt | Indok |” tábla); az
+        # indoklás-cella a fejlécről is megtalálható, így a kapu a jel elhagyásával nem gyengül
+        if INDOK_FEJLEC_RX.match(s.szoveg):
+            indok_tabla = True
+            continue
+        if not s.szoveg.startswith('|'):
+            indok_tabla = False
         if not s.olvasoi:
             continue
         m = INDOKLAS_CELLA_RX.search(s.szoveg)
-        if not m:
+        if m:
+            t = s.szoveg[m.end():]
+        elif indok_tabla and not s.szoveg.startswith('|---'):
+            cellak = s.szoveg.strip().strip('|').split('|')
+            if len(cellak) < 3:
+                continue
+            t = '|'.join(cellak[2:])
+        else:
             continue
-        t = s.szoveg[m.end():]
         for f in iras_kiejtes_nelkul(t):
             ki.append(talalat('INDOKLAS', BUKAS, s.n, f, 'írás kiejtés nélkül az indoklásban', f))
         for rx, nev in INDOKLAS_TILOS:
@@ -679,7 +721,9 @@ def ell_munkaszo(sorok):
     return ki
 
 
-SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\)')
+# F203 (orkesztrátori hatókör-bővítés, 2026-11-12; DT-F203b): a hivatkozás-rövidítés („c.” caput, „p.” pagina, „§”) utáni szám
+# forrás-hivatkozás, nem a lap szakasza (G2671: „Protevangelium Jacobi, c. 3. (Aiszkhülosz, …)” — hamis BUKÁS volt)
+SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(?<!\bc\. )(?<!\bp\. )(?<!§ )(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\)')
 SZAKASZ_HIV_SZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*szakasz\w*(?:\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\))?')
 SZAKASZ_HIV_CIMSZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s+([A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{3,})')
 SZAKASZ_HIV_IDEGEN = re.compile(r'(?:BDB|Thayer|szócikk\w*|szótár\w*)[^.;]{0,25}$')

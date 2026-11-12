@@ -24,7 +24,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 - Hádész (Seol) — a halottak birodalma `[ID: ALVIL-001]` — 6 fő előfordulás / 74 igehely-sor — publikálható (v3, 2026.11.03)
 
 **Hamartológia**
-- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 47 igehely-sor — publikálható (v2, 2026.11.12)
+- A bűn következményeinek gyűrűzése — átok, föld és romlás `[ID: HAMART-001]` — 4 fő előfordulás / 49 igehely-sor — publikálható (v3, 2026.11.12)
 
 **Krisztológia**
 - Melkizedek — király-pap rendje, kenyér és bor `[ID: KIRALY-001]` — 1 fő előfordulás / 9 igehely-sor — publikálható (v2, 2026.09.10)
@@ -155,7 +155,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 **Pneuma/pszükhé megkülönböztetés** `[ID: ANTROP-001]` — publikálható (v4, 2026.11.03), 7 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/ANTROP-001.md`-ből fűződik ide)*
 
-**A bűn következményeinek gyűrűzése — átok, föld és romlás** `[ID: HAMART-001]` — publikálható (v2, 2026.11.12), 4 fő előfordulás.
+**A bűn következményeinek gyűrűzése — átok, föld és romlás** `[ID: HAMART-001]` — publikálható (v3, 2026.11.12), 4 fő előfordulás.
 *(a bekezdés-próza a G2 után a `motivumok/HAMART-001.md`-ből fűződik ide)*
 
 **Rafeusok/óriás-népek** `[ID: HODIT-001]` — publikálható (v3, 2026.09.10), 1 fő előfordulás.
@@ -491,7 +491,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 
 <!-- GENERÁLT-KEZDET: general.py --cel naplo#konyv_index | forrás: adat/elofordulasok.tsv | ts=2026-09-15 -->
 
-*Ez a blokk az elofordulasok.tsv mind a 248 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
+*Ez a blokk az elofordulasok.tsv mind a 250 sorát könyv szerint bontja, a táblában betöltött motívum-ID-kre korlátozva; a könyvek és az igehelyek kanonikus sorrendben állnak (K13).*
 
 | Könyv | Igehely-sor | Tételek |
 |---|---|---|
@@ -511,7 +511,7 @@ Ez a fájl a projektben készült PaRDeS-tanulmányok ismétlődő témáit/mot�
 | Préd | 1 | Préd 9:12 [ALVIL-001] |
 | Én | 1 | Én 8:6 [ALVIL-001] |
 | Ézs | 19 | Ézs 5:14 [ALVIL-001], Ézs 7:11 [ALVIL-001], Ézs 14:9 [ALVIL-001], Ézs 14:9 [HODIT-001], Ézs 14:11 [ALVIL-001], Ézs 14:15 [ALVIL-001], Ézs 17:5 [HODIT-001], Ézs 24:5-6 [HAMART-001], Ézs 26:14 [HODIT-001], Ézs 26:19 [HODIT-001], Ézs 28:15 [ALVIL-001], Ézs 28:18 [ALVIL-001], Ézs 34:11 [TEREMT-002], Ézs 38:10 [ALVIL-001], Ézs 38:18 [ALVIL-001], Ézs 51:10 [TEREMT-001], Ézs 57:9 [ALVIL-001], Ézs 60:18 [HAMART-001], Ézs 63:13 [TEREMT-001] |
-| Jer | 3 | Jer 4:23 [TEREMT-002], Jer 6:7 [HAMART-001], Jer 51:46 [HAMART-001] |
+| Jer | 5 | Jer 4:23 [TEREMT-002], Jer 6:7 [HAMART-001], Jer 12:4 [HAMART-001], Jer 23:10 [HAMART-001], Jer 51:46 [HAMART-001] |
 | Ez | 12 | Ez 7:23 [HAMART-001], Ez 8:17 [HAMART-001], Ez 12:19 [HAMART-001], Ez 26:19 [TEREMT-001], Ez 28:16 [HAMART-001], Ez 31:4 [TEREMT-001], Ez 31:15 [TEREMT-001], Ez 31:15 [ALVIL-001], Ez 31:16 [ALVIL-001], Ez 31:17 [ALVIL-001], Ez 32:21 [ALVIL-001], Ez 32:27 [ALVIL-001] |
 | Hós | 3 | Hós 4:1-3 [HAMART-001], Hós 10:8 [HAMART-001], Hós 13:14 [ALVIL-001] |
 | Jóel | 1 | Jóel 2:32 [ISTENTISZT-001] |

@@ -20,7 +20,8 @@ Eltérésnél JELEZ, nem választ és nem tölt ki (CLAUDE.md 3. szabály):
     python eszkozok/szakasz_cimke_levezet.py ellenoriz --id ALVIL-001 [--ki FAJL]
     python eszkozok/szakasz_cimke_levezet.py ellenoriz --id ALVIL-001 --ir
 
-Kimenet: `naplok/F148_levezetes_<ID>.tsv`, soronként proveniencia-sorral. Az `--ir` csak a jelzés nélküli
+Kimenet: a `--ki`, különben a repón kívüli ideiglenes könyvtár `F148_levezetes_<ID>.tsv`-je (F203, N-F12e: a repóba csak
+kifejezett `--ki` ír), soronként proveniencia-sorral. Az `--ir` csak a jelzés nélküli
 sorokat írja a `adat/szotar_szakasz_cimke.tsv`-be: új sort (gépi címkével, DT439 (1)), vagy egy meglévő
 sor üres `lexikon_jelentes_szam`-ját pótolja; meglévő címkét nem ír felül. Írás előtt az eredeti sorokkal
 összevet, eltérésnél megáll (minta: `eszkozok/igazolas_migracio.py`).
@@ -388,12 +389,18 @@ def kiir(ki, ut):
             f.write('\t'.join(str(r[k]).replace('\t', ' ').replace('\n', ' ') for k in KI_FEJ) + '\n')
 
 
+def ki_ut_alap(mid):
+    """F203 (N-F12e): a `--ki` nélküli kimenet a repón kívül (az ideiglenes könyvtárban), nem a `naplok/`-ban."""
+    import tempfile
+    return os.path.join(tempfile.gettempdir(), 'F148_levezetes_%s.tsv' % mid)
+
+
 def main():
     a = sys.argv[1:]
     if not a or a[0] != 'ellenoriz' or '--id' not in a:
         raise SystemExit('hasznalat: szakasz_cimke_levezet.py ellenoriz --id <ID> [--ki FAJL] [--ir]')
     mid = a[a.index('--id') + 1]
-    ki_ut = a[a.index('--ki') + 1] if '--ki' in a else os.path.join(ROOT, 'naplok', 'F148_levezetes_%s.tsv' % mid)
+    ki_ut = a[a.index('--ki') + 1] if '--ki' in a else ki_ut_alap(mid)
     ts = datetime.date.today().isoformat()
     ki = ellenoriz(mid, ts=ts)
     kiir(ki, ki_ut)

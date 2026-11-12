@@ -29,6 +29,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valam
 | `kiadasok.tsv` | `id` + `kiadas` | kézzel / a `/kiadas` 5. lépése (2.46) |
 | `lap_atnezesek.tsv` | `id` + `lap_commit` | kézzel, a felhasználó szavával (2.48) |
 | `lap_javitasok.tsv` | `id` + `hely` + `datum` | a `/lap-javit` parancs, a jóváhagyó szavával (2.49) |
+| `lap_befagyasztas.tsv` | `id` | kézzel, a felhasználó döntésével (2.59) |
 
 ---
 
@@ -328,7 +329,7 @@ Kulcs: `forras_igehely` + `cel_igehely` + `id`.
 
 ### 2.4 `jeloltek.tsv` — a kereszthivatkozás-napló gépi alakja
 
-Kulcs: `id` + `igehely` + `jelolt_tipus` + `cel_id` (DT277 (i), #127; előtte `id` + `igehely`).
+Kulcs: `id` + `igehely` + `jelolt_tipus` + `cel_id` (DT277 (i), #127; előtte `id` + `igehely`); a `kapcsolat` jelöltnél `cel_id` helyett `cel_igehely` (F212, C6: egy forrás-helyről több cél).
 **Ez a tábla a rendszer legfontosabb szerkezeti javítása.**
 
 A tábla két jelöltfajtát hordoz, és ez az egyetlen kapu mindkettőhöz (2. szabály):
@@ -352,9 +353,9 @@ nem kizárt hely, nem a motívum vizsgált verse, és nem igazol előfordulást.
 | `azonositas_modja` | `AZONOSITAS_MODJA` | | |
 | `megbizhatosag` | `MEGBIZHATOSAG` | | |
 | `datum` | `DATUM` | ✔ | |
-| `jelolt_tipus` | zárt | ✔ | `elofordulas` \| `motivumkozi` (DT277). A #127 előtti 627 sor `elofordulas`. |
-| `cel_id` | motívum-id | `motivumkozi`-nál ✔, egyébként üres | A kapcsolat másik motívuma; létező, a sajáttól eltérő ID. |
-| `cel_igehely` | `IGEHELY`-lista (`; `-vel elválasztva) | `motivumkozi`-nál ✔, egyébként üres | A másik motívum oldali igehely(ek); nem kulcs (DT279). |
+| `jelolt_tipus` | zárt | ✔ | `elofordulas` \| `motivumkozi` (DT277) \| `kapcsolat` (F212, C6, N151, DT759: a motívumon belüli igehely-pár jelöltje — az `igehely` a kapcsolat forrása, a `cel_igehely` a célja, a `cel_id` üres; a `beépítve` jelölt a `kapcsolatok.tsv` sora lesz (2.3), és az `ellenoriz.py` 2/b. szabálya szerint a kapcsolat-jelöltes motívum minden kapcsolat-sora mögött beépített kapcsolat-jelölt áll; a mérés bizonyítékai és a kapcsolat típusa a `dontes_ref`-ben; előfordulást nem igazol, a nyílt mag kizárásai nem viszik; az első 103 sor: a HAMART-001, `naplok/F212_kapcsolat_atkoltoztet.py`). A #127 előtti 627 sor `elofordulas`. |
+| `cel_id` | motívum-id | `motivumkozi`-nál ✔, egyébként üres | A kapcsolat másik motívuma; létező, a sajáttól eltérő ID. A `kapcsolat` jelöltnél üres. |
+| `cel_igehely` | `IGEHELY`-lista (`; `-vel elválasztva) | `motivumkozi`-nál és `kapcsolat`-nál ✔, egyébként üres | A másik motívum oldali igehely(ek); nem kulcs (DT279). A `kapcsolat` jelöltnél pontosan egy igehely, a motívum saját helye, és kulcs. |
 | `cel_alpont` | szabad szöveg (a célalpont neve) | | DT277 (C): a kapcsolat célja a másik motívum egy ↳ alpontja. Amíg az alpontnak nincs adatbeli azonosítója, a jelölt `nyitva` marad (az `ellenoriz.py` 2/b. szabálya a `beépítve` + `cel_alpont` párt elutasítja), kapcsolat-sor nem keletkezik belőle. Nem kulcs (DT279). |
 | `dontes_ref` | szabad szöveg (elemei ` · `-tal elválasztva) | | A döntés gépi nyoma (F123.INDOKLAS, 2026-11-04): a döntés-azonosító(k) (`DT476 K2`, `N59`, `F110`), a hivatkozott fájl(ok) (`naplok/…`, `motivumok.tsv folerendelt_fogalom`), az indoklás proveniencia-sora(i) (`scope=… \| forras=… \| ts=…`), a kinyerés gerinc-eleme (`gerinc: H7121`, DT202 (d)). A nyílt adat kutatója ezen át éri el a döntés forrását (kódkönyv: `DONTESEK.md`, `NYITOTT_FELADATOK.md`); a lapon csak a lábjegyzetben jelenik meg. Üres, ha az indoklás nem hivatkozik semmire. A 2026-11-04-i szétválasztás régi → új alakja soronként: `naplok/INDOKLAS_szetvalasztas.md`. Nem kulcs. |
 
@@ -862,7 +863,11 @@ sz5), a többi régi sor **összevonási tagsor**: `jelentes_szam = sz<új>~<ré
 `entry_id` + `jelentes_szam` + mező) így egyedi marad. A tagsor nem `sz<n>` alakú, ezért a szakasz-fogyasztók (a lefedés, a
 Strong magyar szövege, a szólista, az E19) kihagyják. A 13. szabály a forrásszöveg nélküli **`elavult`** tagsort JELENTÉS-nek
 veszi (külön számlálóval), a nem `elavult` tagsort SÉRTÉS-nek. Írja: `eszkozok/thayer_jelolt/forditas_atkulcsol.py --osszevonas`
-(egyszeri, idempotens, bájtőrző). Az átkulcsolt és a változatlan sor `datum`-a és `terminologia_verzio`-ja a fordításé marad;
+(egyszeri, idempotens, bájtőrző). **Általános mód (F203):** a `bont.py` bármely későbbi szabályváltozása után a
+`forditas_atkulcsol.py --regi-rev HEAD [--ir]` fut (a commit előtt, a régi tábla a HEAD-ből): a régi szakaszt a szócikk szövegében
+elfoglalt helye szerint a mai szakaszra vetíti (legnagyobb átfedés), azonos hash-nél átkulcsol, különben `elavult`; az egy mai
+szakaszra eső több régi sor a fenti összefűzött sor + tagsor alakot kapja, a meglévő tagsor a fősorát követi. A mai táblán
+önmagával összevetve a terv üres (`teszt_forditas_atkulcsol.py`, `Mai`). Az átkulcsolt és a változatlan sor `datum`-a és `terminologia_verzio`-ja a fordításé marad;
 új dátumot csak a ténylegesen új vagy összefűzött sor kaphat.
 A hívás egysége (DT287 (2)): 20 000 karakterig a Strong egészben, fölötte ≤ ~10 000 karakteres szakaszcsoportok
 tokenhatáron. A kapuk: a 14. szakasz-kapu (`forditas_kapuk.ellenoriz_szakasz`), a 9. tagolás szakaszonként, a többi a token
@@ -1539,14 +1544,15 @@ lehet közvetlenül study-sor (CLAUDE.md 2. szabály).
 | `strong` | `Strong_padded` (`G0012`); a lexikon `Topic`-ja (`G12`) az `eszkozok/thayer_jelolt/kulcs.py` `strong_pad` függvényével normalizálva (DT328 (4): egyetlen függvény) |
 | `sorszam` | a szakasz sorszáma a szócikkben (1-től; az 1. a cím). Az F186 óta a bekezdésen belüli fej új szakaszt nyit, ezért az érintett szócikkekben a későbbi szakaszok sorszáma eltolódott (a tételes lista: `naplok/F186_jelentes.md` 9.5) |
 | `utvonal` | `<felső>/<szám>/<betű>`, a hiányzó szint `-` (pl. `-/1/-`, `II/1/a`, `A.I/2/-`); a felső szint a nagybetűs fej (`A.`, sima szöveg, csak a sorban következő betű) és a római fej (`<span class="lexheading">I.</span>`) ponttal; különleges: `cim` (a `<b>G… — …</b>` címsor; újabb címsor a fejállapotot törli), `fej` (a cím után, az első fej előtti bekezdés). Fej nélküli szakasz az előző útvonalát örökli |
-| `jel` | a szakasz elején álló fej a forrás alakjában (`1.`, `a.`, `I.`, `A.`, a bekezdésen belüli fejnél `a:` is); üres, ha nincs. **Bekezdés eleji fej** (`bont.fej_felismer`): a félkövér szám/betű, a római `lexheading`, a sorban következő nagybetű; nem fej a félkövér jelölő, amelyet „)”, „,”, „;”, „]”, kettőzött betű („bb.”) vagy „at the end)”, „above)”, „below)” követ — a forrás kereszthivatkozás közepén tört bekezdést (F186 K2, K2b; G4151 „**b.** bb.;”, G1909 „**c.**)):”, G1519 „**d.** at the end):”). **Bekezdésen belüli fej** (F186 K1, `bont.belso_fejek`; az F132 M1 feltevése, hogy ilyen nincs, csak a félkövér fejre igaz): a kisbetű (`a.`, `a:`, `i.:`) vagy a szám (`2.`) a bekezdés belsejében, ha a sorrendben várt következő jelölő (betű: az aktuális utáni — i után k is, a Thayer a „j”-t kihagyja (K1c) — vagy `a`; szám: az aktuális utáni vagy `1`), és nem hivatkozás vagy rövidítés: betűnél utána nem áll szám, egybetűs (kis- vagy nagybetűs) rövidítés („a. d.”, „i. e.”, „d. N. T.”), „below/above/at the end”, „)”, „,”, „;”, és nem a bekezdés vége; előtte nem számjegy, „§”, „(”; az előző szó nem rövidítés vagy utalás („cf.”, „see”, „p.”, „an”, római szám …); nem felsorolt utalás („1 a. and c.”); és nincs nyitott zárójelen belül (K1b: a „,” és a „to” előzmény a második kör óta nem kizáró, „applied to a. the O. T. prophets”); számnál előtte mondatzáró írásjel és szóköz, utána szóköz és szó áll, de nem római szám, és a szám előtti szó nem egybetűs rövidítés („c. 1.”, „N. 1.”). Mérés: `naplok/F186_jelentes.md` |
+| `jel` | a szakasz elején álló fej a forrás alakjában (`1.`, `a.`, `I.`, `A.`, a bekezdésen belüli fejnél `a:` is); üres, ha nincs. **Bekezdés eleji fej** (`bont.fej_felismer`): a félkövér szám/betű, a római `lexheading`, a sorban következő nagybetű; nem fej a félkövér jelölő, amelyet „)”, „,”, „;”, „]”, kettőzött betű („bb.”) vagy „at the end)”, „above)”, „below)” követ — a forrás kereszthivatkozás közepén tört bekezdést (F186 K2, K2b; G4151 „**b.** bb.;”, G1909 „**c.**)):”, G1519 „**d.** at the end):”). F203 (N126): betűjelölőnél nem fej továbbá, ha (K2c) szám vagy felsorolt utalás („and d.”) követi, vagy az utána álló első 80 nem címke karakterben, a kettőspont előtt, a bekezdésben nem nyitott „)” áll („**d.** Br. an d. Gal., p. 194ff):”, „**b.** (aa.)),”); és (K2d) ha az első fej előtti bekezdés vége felé nyílt kerek zárójel még nyitva van, és a következő három bekezdés egyikében lezárul (zárójeles etimológia, G0536 „(from ἀπάρχομαι: **a.** … **b.** …)”). Számjelölőre a K2c (3) és a K2d nem vonatkozik (`bont.hamis_fej`). **Bekezdésen belüli fej** (F186 K1, `bont.belso_fejek`; az F132 M1 feltevése, hogy ilyen nincs, csak a félkövér fejre igaz): a kisbetű (`a.`, `a:`, `i.:`) vagy a szám (`2.`) a bekezdés belsejében, ha a sorrendben várt következő jelölő (betű: az aktuális utáni — i után k is, a Thayer a „j”-t kihagyja (K1c) — vagy `a`; szám: az aktuális utáni vagy `1`), és nem hivatkozás vagy rövidítés: betűnél utána nem áll szám, egybetűs (kis- vagy nagybetűs) rövidítés („a. d.”, „i. e.”, „d. N. T.”), „below/above/at the end”, „)”, „,”, „;”, és nem a bekezdés vége; előtte nem számjegy, „§”, „(”; az előző szó nem rövidítés vagy utalás („cf.”, „see”, „p.”, „an”, római szám …; a „Rec.” F203 óta nem kizáró, K1d); nem felsorolt utalás („1 a. and c.”); és nincs nyitott zárójelen belül (K1b: a „,” és a „to” előzmény a második kör óta nem kizáró, „applied to a. the O. T. prophets”); számnál előtte mondatzáró írásjel és szóköz, utána szóköz és szó áll, de nem római szám, és a szám előtti szó nem egybetűs rövidítés („c. 1.”, „N. 1.”). Mérés: `naplok/F186_jelentes.md` |
 | `szoveg` | a bekezdés szövege a `jel` után, a `Thayer_teljes.tsv` szövegéből (a szóközök összevonva, tab nélkül); `sikertelen` illesztésnél üres (explicit hiány). **Nyers:** a `thayer_forras_javitas.tsv` (2.38) beszúrásai nem kerülnek bele; a javított szöveg nézet (`thayer_bemenet.szakaszok`) |
 | `illesztes` | a Strong illesztési kategóriája: `egyezik` (a bekezdések szóközök nélküli szövege sorban, hézag és maradék nélkül kiadja a TSV szövegét) \| `javitassal` (így van, de csak a 2.38 `javitva` sorainak beszúrásával: a határok pontosak, a `szoveg` nyers; DT333 (2)) \| `reszleges` (nem így: a határok a difflib egyező blokkjain át vetülnek a TSV-szövegre; a szöveg közelítő) \| `sikertelen` (a TSV-ben nincs ilyen Strong) |
 | `forras` | `Thayer.lexicon:<Topic>#<sorszam>` (a szerkezet helye; a `#` után a szakasz sorszáma) |
 | `forras_hash` | a szakasz nyers HTML-jének SHA-256-ja, 16 jegy (az elavulás jele) |
 | `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/bont.py (fejléc) \| ts=<nap>`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban (a 2.29 mintája) |
 
-Kulcs: `strong` + `sorszam`. Állapot (F186, az összevonás után, 2026-11-10): 5 426 Strong, **17 261 sor** (17 093 bekezdés + 224 bekezdésen belüli fejnél
+Kulcs: `strong` + `sorszam`. Állapot (F203, 2026-11-11): 5 426 Strong, **17 220 sor** (a K2c/K2d hamis fejek az előző szakaszba
+olvadnak, a K1d belső fejek nyitnak; 64 Strong változott; mérés: `naplok/F203_jelentes.md`). Az F186 utáni állapot (az összevonás után, 2026-11-10): 17 261 sor (17 093 bekezdés + 224 bekezdésen belüli fejnél
 nyíló szakasz, 152 Strongban, − 56 összevont szakasz, 44 Strongban); illesztés változatlan. Az F132.11-es állapot (2026-10-25): 5 426 Strong, 17 093 sor; illesztés: `egyezik` 5 411, `javitassal` 15,
 `reszleges` 0, `sikertelen` 0; fejes szócikk 1 687. A 15 `javitassal` Strong mindegyikében a `Thayer_teljes.tsv` egy összefüggő
 szövegrészt elveszít (összesen 2 715 karakter szóközök nélkül, a G4151-ben 18), jellemzően egy `πρωι` / `νοι` / `Νινευι` alak után (a
@@ -1577,9 +1583,9 @@ sor `# GENERÁLT: …` és `# forras: …`, a harmadik a fejléc. Olvasás `spli
 | `szakasz` | a hivatkozást tartalmazó szakasz `sorszam`-a a `thayer_szakaszok.tsv`-ben (2.34; a `strong` + `szakasz` oda mutat). Az F186 óta a szakasz a bekezdésen belüli fejnél is kezdődhet, így a hivatkozás a bekezdésen belül nyitó pontra mutat (a `teszt_vers_jelentes.py` `Aranyminta` osztálya ellenőrzi, hogy a `szakasz` útvonala a sor útvonala) |
 | `konyv` | `bcv`-sor: a `bcv` könyvszáma (1–66) a `Konyv_normalizalo_tabla.tsv` k-adik adatsorának `Magyar rövidítés`-e (`1Móz`, `Mt`, `JSir`); folytatás-sor: a lánc előző tagjától öröklött könyv |
 | `fejezet`, `vers` | `bcv`-sor: a `bcv` fejezet- és versszáma, változatlanul; folytatás-sor: a vers (és `; c:v`-nél a fejezet) a `</ref>` utáni szövegből visszafejtve, `,v`-nél a fejezet öröklött; a sor jelölése a `proveniencia` `folytatas`-a |
-| `karoli_vers` | a Károli-vers a `Karoli_1908.tsv` `Igehely` kulcsa szerint (a Siralmak ott `Sir`); **üres, ha nincs ilyen kulcs** (kitöltés és átkulcsolás nélkül). ÚSZ-helyen a számozás egyezik; az ÓSZ-hivatkozás (LXX-utalás, pl. `Zsolt 103:30`) LXX-számozása csak akkor látszik, ha a vers a Károliban nem létezik — a létező, de eltolt vers nem jelölt |
+| `karoli_vers` | a Károli-vers a `Karoli_1908.tsv` `Igehely` kulcsa szerint (a Siralmak ott `Sir`); **üres, ha nincs ilyen kulcs** (kitöltés és átkulcsolás nélkül), és üres a nem bibliai mű hivatkozásánál (F203, N124: a hivatkozás egy `(cf. Ascensio Isa. …` kezdetű nyitott zárójelben áll, `vers_jelentes.NEM_BIBLIAI_MU`; a sor és a nyers koordináta marad, a `proveniencia` `nem_bibliai`; ma 3 sor, G0027). ÚSZ-helyen a számozás egyezik; az ÓSZ-hivatkozás (LXX-utalás, pl. `Zsolt 103:30`) LXX-számozása csak akkor látszik, ha a vers a Károliban nem létezik — a létező, de eltolt vers nem jelölt |
 | `utvonal` | a `szakasz` útvonala (2.34) |
-| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/vers_jelentes.py (fejléc) \| ts=<nap>`; a jelöletlen folytatás sora: `forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas)`; a bemenetek és a kód hash-e a `# forras:` fejlécsorban |
+| `proveniencia` | `scope=<Strong> \| forras=thayer_jelolt/vers_jelentes.py (fejléc) \| ts=<nap>`; a jelöletlen folytatás sora: `forras=thayer_jelolt/vers_jelentes.py (fejléc, folytatas)`; a nem bibliai mű hivatkozása: `(fejléc, nem_bibliai)` (F203); a bemenetek és a kód hash-e a `# forras:` fejlécsorban |
 
 Kulcs: `strong` + `sorszam`. Állapot (F132 M2, 2026-10-25): 63 953 sor (ÚSZ 58 266, ÓSZ 5 687); `karoli_vers` üres: ÚSZ 28, ÓSZ 12.
 *(F131.8, 2026-10-28: 64 431 sor = 63 953 `bcv` + 478 jelöletlen folytatás, 150 szócikkben; ÚSZ 58 712, ÓSZ 5 719; `karoli_vers`
@@ -1974,7 +1980,12 @@ olvassa a vizuális feltételt; a gépi feltétel az `eszkozok/olvasoi_kapu.py` 
 a 9. kapu piros, és új átnézés kell. Kivétel (DT665, a DT569 általánosítása): a **gépi** szótári és Károli-KH
 forrásadat-javítás nem érvényteleníti az átnézést, ha (a) a próza, a minősítés és a határ nem változik, (b) a lapdiff
 csak a generált szótári/KH blokkokat érinti (gépileg ellenőrizve), és (c) a változást a kolofon vagy a jelentés
-felsorolja; minden más lapváltozás érvényteleníti. A (b) gépi ellenőrzése a 9. kapuban még nincs meg (N-F184a). Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
+felsorolja; minden más lapváltozás érvényteleníti. A (b) gépi ellenőrzése (F203, N-F184a): `eszkozok/lapdiff_blokk.py` a lap
+két változatát blokkokra bontja (a generált blokk a jelölője `#<név>`-e, a kívüli szöveg az előző `##` címsor szerint; a jelölősor
+`ts=`-e nem számít), és a (b) akkor teljesül, ha csak a `szocikkek`, a `kereszthivatkozasok` és a `kolofon` blokk változott. A 9.
+kapu (`muhely_allapot.vizualis_atnezes`) a lap mai commitjáról szóló sor híján a legutóbbi olyan felhasználói sort fogadja el,
+amelynek a változatától a mai lapig a (b) teljesül, és az átnézett változat őse a mainak; a részletben a kivételt és a kolofon
+változását (a (c) jele) kiírja. A (c) jelentésbeli felsorolását a kapu nem olvassa. Érvénytelen a sor akkor is, ha a `ki` nem `felhasználó`, vagy az `idezet` üres: session vagy modell
 nem írhat ide „átnézte” sort a felhasználó idézete nélkül. A régi sorok maradnak (a lap átnézési története).
 
 Kulcs: `id` + `lap_commit`. Állapot (2026-11-04): 8 sor — ALVIL-001 4, ANTROP-001 3, ISTENTISZT-001 1.
@@ -2351,6 +2362,26 @@ ne csak a témáról. Ha nincs ilyen, a sor ezt mondja ki (hiány-sor). Író: `
 **Kulcs:** `motivum` + `pont`. A lapon: a pont bekezdése után „*Szakirodalom:* …” sor; a forrás-sor teljes hivatkozása a 12.
 Irodalom „Szakirodalom (a vitatott pontokhoz)” listájában (`lexikon_general.szakirodalom_beszur`).
 
+### 2.59 `lap_befagyasztas.tsv` — a befagyasztott lexikonlapok (F212, DT-F212a, 2026-11-12)
+
+A felhasználó döntése (2026-11-12, „Igen, így”): a hét régi lap (KIRALY-001, TEREMT-001, ALVIL-001, MENNY-001,
+ANTROP-001, HODIT-001, TEREMT-002) befagyasztva várja az újraírást; új cikkként, nulláról készül (F123). A
+generátorjavítások után a lapja **nem generálódik újra**; az adata és a forrása a helyén marad, a nyílt magban az
+adata benne marad. Egy hely, gépileg olvasható: a jegyzéket csak az `eszkozok/lap_befagyasztas.py`
+(`befagyasztott_idk`) olvassa, és ebből kapja a generátor (`lexikon_general.run`: a lapot nem írja), az E28
+(`ellenorzes/szabalyok.py`: nem veti össze; a jelentés megnevezi a kihagyott lapot) és az állítás–adat kapu
+(`ellenorzes/allitas_adat.py --minden`: nem méri).
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a motívum azonosítója |
+| `ok` | miért befagyasztott, és mi következik (pl. „új cikkként, nulláról készül újra (F123), később”) |
+| `dontes` | a döntés forrása: a felhasználó szava, dátummal; a döntés azonosítója |
+| `datum` | a befagyasztás napja |
+
+**Kulcs:** `id`. A sor törlése (a lap új cikkének elkészültekor) a befagyasztást megszünteti: onnantól a lap
+generálódik, és az E28 újra méri.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
@@ -2683,6 +2714,9 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E35 | HIBA | a commitolt `nyilt_mag/` naprakész | `eszkozok/ellenorzes/szabalyok.py` |
 | E36 | HIBA | hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, a SEMA szakaszszámai egyediek | `eszkozok/ellenorzes/szabalyok.py` |
 | E37 | HIBA | az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal | `eszkozok/ellenorzes/szabalyok.py` |
+| E38 | HIBA | állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott lapon (`--minden --szigoru`) | `eszkozok/ellenorzes/allitas_adat.py` |
+| E39 | HIBA | követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés jelentés (`--szigoru`, a kapuemelési döntés) | `eszkozok/ellenorzes/kovetelmeny_kapu.py` |
+| E40 | HIBA | a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a `karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés) | `eszkozok/ellenorzes/szabalyok.py` |
 <!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->
 
 ---

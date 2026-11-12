@@ -66,8 +66,9 @@ class TestRegiszter(unittest.TestCase):
         cls.r = tervezo.Regiszter.betolt(cls.a.adat)
 
     def test_101_elem_egyedi_id(self):
-        self.assertEqual(len(self.r.elemek), 83 + 18 + 5)          # F104: +5 (a BDB vers szerinti jelölése)
-        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5)          # F104: +5 (a BDB vers szerinti jelölése)
+        # F104: +5 (a BDB vers szerinti jelölése); F210: +2 (biblia-gomb, biblia-jegy); F213: +26 (a szókártya), −12 (a régi vázlat és jelölő)
+        self.assertEqual(len(self.r.elemek), 83 + 18 + 5 + 2 + 26 - 12)
+        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5 + 2 + 26 - 12)      # F104: +5; F210: +2; F213: +26, −12
         self.assertNotIn('tajolo', {e['id'] for e in self.r.elemek})
 
     def test_a_mufajszinek_irhatok(self):
@@ -81,8 +82,9 @@ class TestRegiszter(unittest.TestCase):
         self.assertEqual(nev['he-szo'], ('Héber szócsempe', '.he-szo'))
         self.assertEqual(nev['versszam'], ('Versszám', '.versszam'))
         self.assertEqual(nev['jelleg-modell'], ('Jelleg-címke: modell-kimenet', '.jelleg-modell'))
-        self.assertEqual(nev['jelentes-jelolo'], ('Jelentés-jelölő a részletes listában (1, 2 … / a., b. …)', 'ol.jel > li, ol.al > li'))
-        self.assertEqual(nev['jel-vazlat'][0], 'Jelentésszerkezet vázlata (a BDB-blokk elején)')
+        self.assertEqual(nev['szk-glossza'], ('Szókártya: a jelentés glosszája (félkövér)', '.szk-glossza'))
+        self.assertEqual(nev['szk-tj'][0], 'Szókártya: a jelentések rendje (tartalomjegyzék)')
+        self.assertNotIn('jel-vazlat', nev)                       # F213: a vázlat helyén a szókártya tartalomjegyzéke
         self.assertEqual(nev['tema-aktiv'][1], '.tema button[aria-pressed="true"]')
 
     def test_minden_token_letezik_es_nem_betucsalad(self):
@@ -272,8 +274,8 @@ class TestSzabalyterkep(unittest.TestCase):
         # a dinamikus állapot levágva, de megjelölve
         r = [x for x in self.sz if x['szelektor'].startswith('.szo:hover')][0]
         self.assertEqual((r['reszek'][0]['alap'], r['reszek'][0]['allapot']), ('.szo', ':hover'))
-        r = [x for x in self.sz if x['szelektor'].startswith('ol.jel > li::before')][0]
-        self.assertEqual(r['reszek'][0]['alap'], 'ol.jel > li')
+        r = [x for x in self.sz if x['szelektor'].startswith('.szk-lenyilok > details > summary::before')][0]
+        self.assertEqual(r['reszek'][0]['alap'], '.szk-lenyilok > details > summary')
         # média-lekérdezés
         self.assertTrue(any(r['media'].startswith('@media (max-width: 640px)') for r in self.sz))
         # a csak ál-elemből álló szelektor kimarad (::selection)
@@ -758,7 +760,7 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
         self.assertEqual(r.headers['Cache-Control'], 'no-cache')
         self.assertEqual(self.c.get('/tervezo/terkep.json', headers={'If-None-Match': r.headers['ETag']}).status_code, 304)
         t = r.get_json()
-        self.assertEqual(len(t['regiszter']), 83 + 18 + 5)                # a tájoló pirula kikerült (DT-F134n); F104: +5 (a BDB vers szerinti jelölése)
+        self.assertEqual(len(t['regiszter']), 83 + 18 + 5 + 2 + 26 - 12)  # a tájoló pirula kikerült (DT-F134n); F104: +5; F210: +2; F213: +26, −12
         self.assertEqual(t['arculat_hash'], self.gyar.arculat.hash)
         self.assertEqual(t['tokenek']['bg'], {'csoport': 'szin', 'tipus': 'szin', 'ertek': {'light': '#f5f2ea', 'dark': '#151918'}, 'irhato': True})
         self.assertFalse(t['tokenek']['fs-csempe-megj']['irhato'])                            # regiszteren kívüli: csak előnézet
@@ -907,11 +909,12 @@ class TestIlleszto(unittest.TestCase):
 # a lapok, amelyeken a regiszter minden szelektorának találnia kell (a belső kiadás alapértelmezett szintjén)
 LAPOK = (
     '/', '/1Moz', '/nincs-ilyen-konyv',
-    '/1Moz/1', '/1Moz/1?reteg=il', '/1Moz/1?ful=info',
+    '/1Moz/1', '/1Moz/1?reteg=il', '/1Moz/1?ful=info', '/1Moz/1?biblia=tahot',   # F210: a bibliaválasztó Bibliájának jegye (.biblia-jegy)
     '/1Moz/1/1?szo=H0430&ful=szo', '/1Moz/1/2?ful=vers', '/1Moz/1/2?ful=kh', '/1Moz/1/2?ful=temak', '/1Moz/1/2?ful=motivum',
     '/Jan/1/1?szo=G3056&ful=szo', '/Jan/1/1?reteg=il', '/Zsolt/22/2?szo=H0410&ful=szo&reteg=il',
     '/szo/H0430', '/szo/G3056', '/szo/H7307', '/szo/H6440',
-    '/szo/H1254',                       # ige: törzscímek (.torzs h5, .vz-torzs)
+    '/szo/H1254',                       # ige: törzscímek (.szk-torzsnev)
+    '/szo/H0127', '/szo/H0216',         # F213: a szókártya motívum-, kézicímke- és nem azonosítható helye (HAMART-001; H0216 7.)
 )
 # Az F128/F38 fordítások óta a pardes.db mind a 8099 BDB-szócikkének van magyar fordítása, ezért két adat-állapotú elem ma nem jelenhet meg
 # egy valódi lapon sem: a „nem teljes” BDB-címke (.cimke.arany: a lap héber szavai közül nem mind fordított) és a „Magyar fordítás nincs”

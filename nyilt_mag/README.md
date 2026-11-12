@@ -39,15 +39,15 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 
 | File | Rows |
 |---|---|
-| `beepitesi_dontesek.tsv` | 250 |
+| `beepitesi_dontesek.tsv` | 252 |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | 231 |
 | `dontesnaplo.tsv` | 15 |
-| `elofordulasok.tsv` | 248 |
+| `elofordulasok.tsv` | 250 |
 | `forrasok_es_licencek.tsv` | 65 |
 | `kapcsolatok.tsv` | 86 |
-| `kizaras_csoportok.tsv` | 3998 |
-| `kizarasok.tsv` | 546 |
-| `kodkonyv.tsv` | 440 |
+| `kizaras_csoportok.tsv` | 4034 |
+| `kizarasok.tsv` | 554 |
+| `kodkonyv.tsv` | 441 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 | `sblgnt_apparatus.tsv` | 60 |

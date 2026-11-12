@@ -312,9 +312,14 @@ class TestPilotAranymintaval(unittest.TestCase):
                 K = self.K(strong=strong)
                 a = blokkok.alapjelentes(K)
                 b = blokkok._bdb_bontas(K)
-                if b and b['hu'] and b['alap'] and b['alap'].get('szoveg'):
-                    self.assertEqual((a['szoveg'], a['nyelv'], a['tisztitott']), (b['alap']['szoveg'], 'hu', b['alap']['tisztitott']), strong)
-                    self.assertEqual(b['alap'], blokkok._alap_jelentes(b['appar']['alap']), strong)
+                g = blokkok.q.glossza_heber_hu(K.con, strong)
+                # F213 (DT-F213a, a felhasználó, 2026-11-12): a magyar glossza elöl, ennek híján a magyar BDB-fejsor, végül az angol
+                if g:
+                    self.assertEqual((a['szoveg'], a['nyelv'], a['forras']), (g[0], 'hu', 'glossza'), strong)
+                    hu += 1
+                elif b and b['hu'] and b['alap'] and b['alap'].get('szoveg') and not blokkok.bdb_szokartya.csak_szofaj(b['alap']['szoveg']):
+                    self.assertEqual((a['szoveg'], a['nyelv'], a['forras']), (b['alap']['szoveg'], 'hu', 'bdb'), strong)
+                    self.assertEqual(b['alap'], blokkok._alap_jelentes(blokkok.bdb_szokartya.alap_nemi_tanu(b['appar']['alap'])), strong)
                     self.assertNotRegex(a['szoveg'], r'\d+:\d+', strong)         # H0559: „… mondani Gen 3:17” — a hivatkozás nem jelentés
                     hu += 1
                 else:
@@ -322,7 +327,7 @@ class TestPilotAranymintaval(unittest.TestCase):
                 n += 1
         self.assertGreater(hu, 100)
         t = szoveg(self.szo_panel('H6440', '1Móz 1:2'))
-        self.assertIn('Alapjelentés arc, arcok is', t)
+        self.assertIn('Alapjelentés arc', t)                               # F213 (DT-F213a): a magyar glossza
         self.assertIn('face', t)                                          # az angol Strong-glossza a Strong-szótár blokkban megmarad
 
     BDB_TAGOLAS_HIANYZIK = {'H4725'}
@@ -360,9 +365,11 @@ class TestPilotAranymintaval(unittest.TestCase):
         blokk = h[i:h.index('</section>', i)]
         t = szoveg(blokk)
         self.assertIn('Lefordítva · %s' % l['bdb_hu_meta'], t)
-        self.assertIn('hibás határ előfordulhat', t)
-        for cim in ('Címszó', 'Alapjelentés és szófaj', 'Alakok (alaktani apparátus)', 'Jelentésszerkezet'):
-            self.assertRegex(blokk, r'<h4>\s*%s' % re.escape(cim))
+        self.assertNotIn('hibás határ előfordulhat', t)              # F213: az elavult címke kivezetve
+        # F213: a szókártya részei (fej, alakok, a jelentések rendje, jelentésenként glossza és lenyílók)
+        for resz in ('<div class="szk-lemma">', '<details class="szk-alakok"><summary>Alakok</summary>', '<nav class="szk-tj"',
+                     '<span class="szk-glossza">', '<details class="szk-en"><summary>Angol eredeti</summary>'):
+            self.assertIn(resz, blokk)
         for jelleg in ('jelleg-forras', 'jelleg-modell', 'jelleg-gepi'):
             self.assertIn(jelleg, blokk[:blokk.index('</h3>')])
         self.assertIn('arc, arcok is', t)

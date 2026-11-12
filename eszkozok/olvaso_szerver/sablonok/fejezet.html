@@ -1,7 +1,7 @@
 {% extends "alap.html" %}
-{% macro szavak(v) %}{% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}{% if not v.szavak %}{{ v.szoveg }}{% endif %}{% endmacro %}
+{% macro szavak(v) %}{% for w in v.szavak %}{% if w.fo %}<a class="szo{{ ' par-' ~ w.biz if w.biz else '' }}" href="/{{ slug }}/{{ fej }}/{{ v.vers }}?szo={{ w.fo }}&amp;ful=szo{% if bq %}&amp;{{ bq }}{% endif %}#v{{ v.vers }}" data-strong="{{ w.fo }}">{{ w.kiir }}</a>{% else %}<span class="szo-nincs">{{ w.kiir }}</span>{% endif %}{{ '' if w.szokoz is false else ' ' }}{% endfor %}{% if not v.szavak %}{{ v.szoveg }}{% endif %}{% endmacro %}
 {% macro tan_jel(v) %}{% for t in v.tan %}{% set felirat = ('Folytatás – ' if t[3] else '') ~ ('Mélyelemzés' if t[1] == 'melyelemzes' else 'Tanulmány') ~ ': ' ~ t[2] %}<a class="tan-jel" href="/tanulmany/{{ t[0] }}" data-jel="▸ {{ felirat }}" aria-label="{{ felirat }}" title="A tanulmány oldala"></a>{% endfor %}{% endmacro %}
-{% macro vers_folyo(v) %}{{ tan_jel(v) }}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>{{ szavak(v) }}</span> {% endmacro %}
+{% macro vers_folyo(v) %}{{ tan_jel(v) }}<span class="vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}"><a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}{{ '?' ~ bq if bq else '' }}#v{{ v.vers }}">{{ v.vers }}</a>{% if v.jel %}<span class="forras-versszam">{{ v.jel }}</span>{% endif %}{{ szavak(v) }}</span> {% endmacro %}
 {% macro interlinearis(v) %}
 {{ tan_jel(v) }}<div class="il-vers{% if vers == v.vers %} kijelolt{% endif %}" id="v{{ v.vers }}">
   <a class="versszam" href="/{{ slug }}/{{ fej }}/{{ v.vers }}#v{{ v.vers }}">{{ v.vers }}</a>
@@ -34,30 +34,33 @@
    a részletek lapja: 900 px alatt alulról felugró lap, 900 px-től állandó oldalblokk. A lap módja (ures | vers | szo) a szerverről érkezik
    (JS nélkül is működik), a JS (statikus/olvaso.js) töredékekkel vált köztük, bezárás nélkül, előzménylánccal. #}
 <div class="olvaso-elrendezes">
-  <section class="szoveg-oszlop versenkent" aria-label="{{ 'Interlineáris szöveg' if il else 'Károli-szöveg' }}">
+  {% set il = il and biblia.kod == 'karoli' %}
+  <section class="szoveg-oszlop versenkent" aria-label="{{ 'Interlineáris szöveg' if il else ('Károli-szöveg' if biblia.kod == 'karoli' else biblia.nev) }}">
     <div class="fejezetfej">
       {# 900 px alatt a fejezetcím nyitja a navigációs lapot (#134 M2); JS nélkül a #navigacio cél #}
       <h1><a class="navlap-nyito" href="#navigacio" aria-controls="navigacio" title="Navigáció: kereső, könyvek, fejezetek, beállítások">{{ nev }} {{ fej }}</a></h1>
       <p class="lapozo">
-        {% if elozo %}<a href="/{{ slug }}/{{ elozo }}">← {{ elozo }}. fejezet</a>{% endif %}
+        {% if elozo %}<a href="/{{ slug }}/{{ elozo }}{{ '?' ~ bq if bq else '' }}">← {{ elozo }}. fejezet</a>{% endif %}
         <a href="/{{ slug }}">{{ nev }}</a>
-        {% if kovetkezo %}<a href="/{{ slug }}/{{ kovetkezo }}">{{ kovetkezo }}. fejezet →</a>{% endif %}
-        <a class="lap-info" href="/{{ slug }}/{{ fej }}?ful=info">Forrás és számlálók</a>
+        {% if kovetkezo %}<a href="/{{ slug }}/{{ kovetkezo }}{{ '?' ~ bq if bq else '' }}">{{ kovetkezo }}. fejezet →</a>{% endif %}
+        <a class="lap-info" href="/{{ slug }}/{{ fej }}?ful=info{% if bq %}&amp;{{ bq }}{% endif %}">Forrás és számlálók</a>
       </p>
+      {# F210: a nem Károli 1908-as Biblia jegye: mi ez, hogyan olvasható, a számozása #}
+      {% if bjegy %}<div class="biblia-jegy"><p><b>{{ biblia.nev }}.</b> {{ bjegy.leiras }}</p><p>{{ bjegy.mod }} {{ bjegy.szam }}</p></div>{% endif %}
     </div>
     {% if il %}
     {% for v in versek %}{{ interlinearis(v) }}{% endfor %}
     {% else %}
-    <p class="folyo" id="szoveg">{% for v in versek %}{{ vers_folyo(v) }}{% endfor %}</p>
+    <p class="folyo{{ ' heb' if biblia.irany == 'rtl' else '' }}{{ ' gor' if biblia.lang == 'el' else '' }}" id="szoveg"{% if biblia.kod != 'karoli' %} lang="{{ biblia.lang }}" dir="{{ biblia.irany }}"{% endif %}>{% for v in versek %}{{ vers_folyo(v) }}{% endfor %}</p>
     {% endif %}
   </section>
-  <aside class="jobb-oszlop reszletek" id="reszletek" aria-label="Részletek" data-fejezet="{{ slug }}/{{ fej }}" data-kk="{{ kk }}" data-mod="{{ mod }}"{% if vers %} data-vers="{{ vers }}"{% endif %}{% if szo %} data-strong="{{ szo }}"{% endif %} data-ful="{{ vers_ful }}" data-uresfo="{{ ures_fo }}" data-uresal="{{ ures_al }}">
+  <aside class="jobb-oszlop reszletek" id="reszletek" aria-label="Részletek" data-fejezet="{{ slug }}/{{ fej }}" data-kk="{{ kk }}" data-mod="{{ mod }}"{% if vers %} data-vers="{{ vers }}"{% endif %}{% if szo %} data-strong="{{ szo }}"{% endif %} data-ful="{{ vers_ful }}" data-bq="{{ bq }}" data-uresfo="{{ ures_fo }}" data-uresal="{{ ures_al }}">
     <div class="lap-fej">
       <span class="lap-fogo" aria-hidden="true"></span>
       <button type="button" class="lap-gomb lap-vissza" aria-label="Vissza az előző részletre" title="Vissza az előző részletre" hidden>‹</button>
       <p class="lap-cim"><b class="lap-cim-fo">{{ lap_cim if mod != 'ures' else ures_fo }}</b> <span class="lap-cim-al">{{ lap_al if mod != 'ures' else ures_al }}</span></p>
       <button type="button" class="lap-gomb lap-teljes" aria-label="Teljes nézet" title="Teljes nézet" aria-pressed="false">⤢</button>
-      <a class="lap-gomb lap-zar" href="/{{ slug }}/{{ fej }}" aria-label="Bezárás" title="Bezárás">✕</a>
+      <a class="lap-gomb lap-zar" href="/{{ slug }}/{{ fej }}{{ '?' ~ bq if bq else '' }}" aria-label="Bezárás" title="Bezárás">✕</a>
       <div class="lap-muv" id="lap-muv"></div>
     </div>
     <div class="lap-ures"{% if mod != 'ures' %} hidden{% endif %}>
@@ -70,6 +73,7 @@
         </ol>
       </details>
       {{ szoveg_jegy }}
+      {% if bjegy and bjegy.forras %}<div class="szoveg-jegy"><p><b>{{ biblia.nev }}</b> <span class="jelleg jelleg-forras" title="változtatás nélkül egy adatkészletből">forrásadat</span><br><span class="forras">{{ bjegy.forras }}</span></p></div>{% endif %}
       <div class="cimkek" id="cimkek">
         {% for szoveg, arany in cimkek %}<span class="cimke{{ ' arany' if arany else '' }}">{{ szoveg }}</span>
         {% endfor %}

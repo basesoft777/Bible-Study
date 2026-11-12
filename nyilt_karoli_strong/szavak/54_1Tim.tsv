@@ -1,0 +1,3429 @@
+# GENERÁLT: a Logosz-lexikon – Károli 1908 – Strong szóillesztés nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERATED: export of the Logosz Lexikon – Károli 1908 – Strong word alignment open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+osis	oldal	token	alak_1908	allapot	partner_token	strong	bizonyossag
+1Tim.1.1	hu	1	Pál	parositva	1	G3972	alacsony
+1Tim.1.1	hu	2	Jézus	parositva	5	G2424	alacsony
+1Tim.1.1	hu	3	Krisztus	parositva	4	G5547	alacsony
+1Tim.1.1	hu	4	apostola	parositva	2	G0652	alacsony
+1Tim.1.1	hu	5	a	betoldas			alacsony
+1Tim.1.1	hu	6	mi	parositva	10	G3165	alacsony
+1Tim.1.1	hu	7	megtartó	parositva	9	G4990	alacsony
+1Tim.1.1	hu	8	Istenünknek	parositva	8,10	G2316+G3165	alacsony
+1Tim.1.1	hu	9	és	parositva	11	G2532	alacsony
+1Tim.1.1	hu	10	Jézus	parositva	14	G2424	alacsony
+1Tim.1.1	hu	11	Krisztusnak	parositva	13	G5547	alacsony
+1Tim.1.1	hu	12	a	betoldas			alacsony
+1Tim.1.1	hu	13	mi	parositva	17	G3165	alacsony
+1Tim.1.1	hu	14	reménységünknek	parositva	16,17	G1680+G3165	alacsony
+1Tim.1.1	hu	15	rendelése	parositva	7	G2003	alacsony
+1Tim.1.1	hu	16	szerint	parositva	6	G2596	alacsony
+1Tim.1.1	er	1		parositva	1	G3972	alacsony
+1Tim.1.1	er	2		parositva	4	G0652	alacsony
+1Tim.1.1	er	3		forditatlan		G2962	alacsony
+1Tim.1.1	er	4		parositva	3	G5547	alacsony
+1Tim.1.1	er	5		parositva	2	G2424	alacsony
+1Tim.1.1	er	6		parositva	16	G2596	alacsony
+1Tim.1.1	er	7		parositva	15	G2003	alacsony
+1Tim.1.1	er	8		parositva	8	G2316	alacsony
+1Tim.1.1	er	9		parositva	7	G4990	alacsony
+1Tim.1.1	er	10		parositva	6,8	G3165	alacsony
+1Tim.1.1	er	11		parositva	9	G2532	alacsony
+1Tim.1.1	er	12		forditatlan		G2962	alacsony
+1Tim.1.1	er	13		parositva	11	G5547	alacsony
+1Tim.1.1	er	14		parositva	10	G2424	alacsony
+1Tim.1.1	er	15		forditatlan		G3588	alacsony
+1Tim.1.1	er	16		parositva	14	G1680	alacsony
+1Tim.1.1	er	17		parositva	13,14	G3165	alacsony
+1Tim.1.2	hu	1	Timótheusnak	parositva	1	G5095	alacsony
+1Tim.1.2	hu	2	az	betoldas			alacsony
+1Tim.1.2	hu	3	én	betoldas			alacsony
+1Tim.1.2	hu	4	igaz	parositva	2	G1103	alacsony
+1Tim.1.2	hu	5	fiamnak	parositva	3	G5043	alacsony
+1Tim.1.2	hu	6	a	betoldas			alacsony
+1Tim.1.2	hu	7	hitben	parositva	4,5	G1722+G4102	alacsony
+1Tim.1.2	hu	8	Kegyelem	parositva	6	G5485	alacsony
+1Tim.1.2	hu	9	irgalmasság	parositva	7	G1656	alacsony
+1Tim.1.2	hu	10	és	betoldas			alacsony
+1Tim.1.2	hu	11	békesség	parositva	8	G1515	alacsony
+1Tim.1.2	hu	12	Istentől	parositva	9,10	G0575+G2316	alacsony
+1Tim.1.2	hu	13	a	betoldas			alacsony
+1Tim.1.2	hu	14	mi	parositva	12	G3165	alacsony
+1Tim.1.2	hu	15	Atyánktól	parositva	11,12	G3962+G3165	alacsony
+1Tim.1.2	hu	16	és	parositva	13	G2532	alacsony
+1Tim.1.2	hu	17	Krisztus	parositva	14	G5547	alacsony
+1Tim.1.2	hu	18	Jézustól	parositva	15	G2424	alacsony
+1Tim.1.2	hu	19	a	betoldas			alacsony
+1Tim.1.2	hu	20	mi	parositva	18	G3165	alacsony
+1Tim.1.2	hu	21	Urunktól	parositva	17,18	G2962+G3165	alacsony
+1Tim.1.2	er	1		parositva	1	G5095	alacsony
+1Tim.1.2	er	2		parositva	4	G1103	alacsony
+1Tim.1.2	er	3		parositva	5	G5043	alacsony
+1Tim.1.2	er	4		parositva	7	G1722	alacsony
+1Tim.1.2	er	5		parositva	7	G4102	alacsony
+1Tim.1.2	er	6		parositva	8	G5485	alacsony
+1Tim.1.2	er	7		parositva	9	G1656	alacsony
+1Tim.1.2	er	8		parositva	11	G1515	alacsony
+1Tim.1.2	er	9		parositva	12	G0575	alacsony
+1Tim.1.2	er	10		parositva	12	G2316	alacsony
+1Tim.1.2	er	11		parositva	15	G3962	alacsony
+1Tim.1.2	er	12		parositva	14,15	G3165	alacsony
+1Tim.1.2	er	13		parositva	16	G2532	alacsony
+1Tim.1.2	er	14		parositva	17	G5547	alacsony
+1Tim.1.2	er	15		parositva	18	G2424	alacsony
+1Tim.1.2	er	16		forditatlan		G3588	alacsony
+1Tim.1.2	er	17		parositva	21	G2962	alacsony
+1Tim.1.2	er	18		parositva	20,21	G3165	alacsony
+1Tim.1.3	hu	1	A	parositva	1	G2531	alacsony
+1Tim.1.3	hu	2	miképpen	parositva	1	G2531	alacsony
+1Tim.1.3	hu	3	Maczedóniába	parositva	8,9	G1519+G3109	alacsony
+1Tim.1.3	hu	4	menetelemkor	parositva	7	G4198	alacsony
+1Tim.1.3	hu	5	kértelek	parositva	2	G3870	alacsony
+1Tim.1.3	hu	6	téged	parositva	3	G4771	alacsony
+1Tim.1.3	hu	7	hogy	betoldas			alacsony
+1Tim.1.3	hu	8	maradj	parositva	4	G4357	alacsony
+1Tim.1.3	hu	9	Efézusban	parositva	5,6	G1722+G2181	alacsony
+1Tim.1.3	hu	10	hogy	parositva	10	G2443	alacsony
+1Tim.1.3	hu	11	megmondjad	parositva	11	G3853	alacsony
+1Tim.1.3	hu	12	némelyeknek	parositva	12	G5100	alacsony
+1Tim.1.3	hu	13	ne	parositva	13	G3361	alacsony
+1Tim.1.3	hu	14	tanítsanak	parositva	14	G2085	alacsony
+1Tim.1.3	hu	15	más	parositva	14	G2085	alacsony
+1Tim.1.3	hu	16	tudományt	parositva	14	G2085	alacsony
+1Tim.1.3	er	1		parositva	1,2	G2531	alacsony
+1Tim.1.3	er	2		parositva	5	G3870	alacsony
+1Tim.1.3	er	3		parositva	6	G4771	alacsony
+1Tim.1.3	er	4		parositva	8	G4357	alacsony
+1Tim.1.3	er	5		parositva	9	G1722	alacsony
+1Tim.1.3	er	6		parositva	9	G2181	alacsony
+1Tim.1.3	er	7		parositva	4	G4198	alacsony
+1Tim.1.3	er	8		parositva	3	G1519	alacsony
+1Tim.1.3	er	9		parositva	3	G3109	alacsony
+1Tim.1.3	er	10		parositva	10	G2443	alacsony
+1Tim.1.3	er	11		parositva	11	G3853	alacsony
+1Tim.1.3	er	12		parositva	12	G5100	alacsony
+1Tim.1.3	er	13		parositva	13	G3361	alacsony
+1Tim.1.3	er	14		parositva	14,15,16	G2085	alacsony
+1Tim.1.4	hu	1	Se	parositva	1	G3366	alacsony
+1Tim.1.4	hu	2	mesékkel	parositva	3	G3454	alacsony
+1Tim.1.4	hu	3	és	parositva	4	G2532	alacsony
+1Tim.1.4	hu	4	végehossza	parositva	6	G0562	alacsony
+1Tim.1.4	hu	5	nélkül	parositva	6	G0562	alacsony
+1Tim.1.4	hu	6	való	parositva	6	G0562	alacsony
+1Tim.1.4	hu	7	nemzetségi	parositva	5	G1076	alacsony
+1Tim.1.4	hu	8	táblázatokkal	parositva	5	G1076	alacsony
+1Tim.1.4	hu	9	ne	parositva	1	G3366	alacsony
+1Tim.1.4	hu	10	foglalkozzanak	parositva	2	G4337	alacsony
+1Tim.1.4	hu	11	a	parositva	7	G3748	alacsony
+1Tim.1.4	hu	12	melyek	parositva	7	G3748	alacsony
+1Tim.1.4	hu	13	inkább	parositva	10	G3123	alacsony
+1Tim.1.4	hu	14	versengéseket	betoldas			alacsony
+1Tim.1.4	hu	15	támasztanak	parositva	9	G3930	alacsony
+1Tim.1.4	hu	16	mint	parositva	11	G2228	alacsony
+1Tim.1.4	hu	17	Istenben	parositva	13	G2316	alacsony
+1Tim.1.4	hu	18	való	betoldas			alacsony
+1Tim.1.4	hu	19	épülést	parositva	12	G3622	alacsony
+1Tim.1.4	hu	20	a	betoldas			alacsony
+1Tim.1.4	hu	21	hit	parositva	16	G4102	alacsony
+1Tim.1.4	hu	22	által	parositva	15	G1722	alacsony
+1Tim.1.4	er	1		parositva	1,9	G3366	alacsony
+1Tim.1.4	er	2		parositva	10	G4337	alacsony
+1Tim.1.4	er	3		parositva	2	G3454	alacsony
+1Tim.1.4	er	4		parositva	3	G2532	alacsony
+1Tim.1.4	er	5		parositva	7,8	G1076	alacsony
+1Tim.1.4	er	6		parositva	4,5,6	G0562	alacsony
+1Tim.1.4	er	7		parositva	11,12	G3748	alacsony
+1Tim.1.4	er	8		forditatlan		G6027	alacsony
+1Tim.1.4	er	9		parositva	15	G3930	alacsony
+1Tim.1.4	er	10		parositva	13	G3123	alacsony
+1Tim.1.4	er	11		parositva	16	G2228	alacsony
+1Tim.1.4	er	12		parositva	19	G3622	alacsony
+1Tim.1.4	er	13		parositva	17	G2316	alacsony
+1Tim.1.4	er	14		forditatlan		G3588	alacsony
+1Tim.1.4	er	15		parositva	22	G1722	alacsony
+1Tim.1.4	er	16		parositva	21	G4102	alacsony
+1Tim.1.5	hu	1	A	betoldas			alacsony
+1Tim.1.5	hu	2	parancsolatnak	parositva	5	G3852	alacsony
+1Tim.1.5	hu	3	vége	parositva	3	G5056	alacsony
+1Tim.1.5	hu	4	pedig	parositva	2	G1161	alacsony
+1Tim.1.5	hu	5	a	betoldas			alacsony
+1Tim.1.5	hu	6	tiszta	parositva	9	G2513	alacsony
+1Tim.1.5	hu	7	szívből	parositva	8,10	G1537+G2588	alacsony
+1Tim.1.5	hu	8	jó	parositva	13	G0018	alacsony
+1Tim.1.5	hu	9	lelkiismeretből	parositva	8,12	G1537+G4893	alacsony
+1Tim.1.5	hu	10	és	parositva	14	G2532	alacsony
+1Tim.1.5	hu	11	igaz	parositva	16	G0505	alacsony
+1Tim.1.5	hu	12	hitből	parositva	8,15	G1537+G4102	alacsony
+1Tim.1.5	hu	13	való	parositva	6	G1510	alacsony
+1Tim.1.5	hu	14	szeretet	parositva	7	G0026	alacsony
+1Tim.1.5	er	1		forditatlan		G3588	alacsony
+1Tim.1.5	er	2		parositva	4	G1161	alacsony
+1Tim.1.5	er	3		parositva	3	G5056	alacsony
+1Tim.1.5	er	4		forditatlan		G3588	alacsony
+1Tim.1.5	er	5		parositva	2	G3852	alacsony
+1Tim.1.5	er	6		parositva	13	G1510	alacsony
+1Tim.1.5	er	7		parositva	14	G0026	alacsony
+1Tim.1.5	er	8		parositva	7,9,12	G1537	alacsony
+1Tim.1.5	er	9		parositva	6	G2513	alacsony
+1Tim.1.5	er	10		parositva	7	G2588	alacsony
+1Tim.1.5	er	11		forditatlan		G2532	alacsony
+1Tim.1.5	er	12		parositva	9	G4893	alacsony
+1Tim.1.5	er	13		parositva	8	G0018	alacsony
+1Tim.1.5	er	14		parositva	10	G2532	alacsony
+1Tim.1.5	er	15		parositva	12	G4102	alacsony
+1Tim.1.5	er	16		parositva	11	G0505	alacsony
+1Tim.1.6	hu	1	Melyektől	parositva	1	G3739	alacsony
+1Tim.1.6	hu	2	némelyek	parositva	2	G5100	alacsony
+1Tim.1.6	hu	3	eltévelyedvén	parositva	3	G0795	alacsony
+1Tim.1.6	hu	4	hiábavaló	parositva	6	G3150	alacsony
+1Tim.1.6	hu	5	beszédre	parositva	5,6	G1519+G3150	alacsony
+1Tim.1.6	hu	6	hajlottak	parositva	4	G1624	alacsony
+1Tim.1.6	er	1		parositva	1	G3739	alacsony
+1Tim.1.6	er	2		parositva	2	G5100	alacsony
+1Tim.1.6	er	3		parositva	3	G0795	alacsony
+1Tim.1.6	er	4		parositva	6	G1624	alacsony
+1Tim.1.6	er	5		parositva	5	G1519	alacsony
+1Tim.1.6	er	6		parositva	4,5	G3150	alacsony
+1Tim.1.7	hu	1	Kik	betoldas			alacsony
+1Tim.1.7	hu	2	törvénytanítók	parositva	3	G3547	alacsony
+1Tim.1.7	hu	3	akarván	parositva	1	G2309	alacsony
+1Tim.1.7	hu	4	lenni	parositva	2	G1511	alacsony
+1Tim.1.7	hu	5	nem	parositva	4	G3361	alacsony
+1Tim.1.7	hu	6	értik	parositva	5	G3539	alacsony
+1Tim.1.7	hu	7	sem	parositva	6	G3383	alacsony
+1Tim.1.7	hu	8	a	parositva	7	G3739	alacsony
+1Tim.1.7	hu	9	miket	parositva	7	G3739	alacsony
+1Tim.1.7	hu	10	beszélnek	parositva	8	G3004	alacsony
+1Tim.1.7	hu	11	sem	parositva	9	G3383	alacsony
+1Tim.1.7	hu	12	a	parositva	10,11	G4012+G5101	alacsony
+1Tim.1.7	hu	13	miket	parositva	10,11	G4012+G5101	alacsony
+1Tim.1.7	hu	14	erősítgetnek	parositva	12	G1226	alacsony
+1Tim.1.7	er	1		parositva	3	G2309	alacsony
+1Tim.1.7	er	2		parositva	4	G1511	alacsony
+1Tim.1.7	er	3		parositva	2	G3547	alacsony
+1Tim.1.7	er	4		parositva	5	G3361	alacsony
+1Tim.1.7	er	5		parositva	6	G3539	alacsony
+1Tim.1.7	er	6		parositva	7	G3383	alacsony
+1Tim.1.7	er	7		parositva	8,9	G3739	alacsony
+1Tim.1.7	er	8		parositva	10	G3004	alacsony
+1Tim.1.7	er	9		parositva	11	G3383	alacsony
+1Tim.1.7	er	10		parositva	12,13	G4012	alacsony
+1Tim.1.7	er	11		parositva	12,13	G5101	alacsony
+1Tim.1.7	er	12		parositva	14	G1226	alacsony
+1Tim.1.8	hu	1	Tudjuk	parositva	1	G6063	alacsony
+1Tim.1.8	hu	2	pedig	parositva	2	G1161	alacsony
+1Tim.1.8	hu	3	hogy	parositva	3	G3754	alacsony
+1Tim.1.8	hu	4	a	betoldas			alacsony
+1Tim.1.8	hu	5	törvény	parositva	6	G3551	alacsony
+1Tim.1.8	hu	6	jó	parositva	4	G2570	alacsony
+1Tim.1.8	hu	7	ha	parositva	7	G1437	alacsony
+1Tim.1.8	hu	8	valaki	parositva	8	G5100	alacsony
+1Tim.1.8	hu	9	törvényszerűen	parositva	10	G3545	alacsony
+1Tim.1.8	hu	10	él	parositva	11	G5530	alacsony
+1Tim.1.8	hu	11	vele	parositva	9	G0846	alacsony
+1Tim.1.8	er	1		parositva	1	G6063	alacsony
+1Tim.1.8	er	2		parositva	2	G1161	alacsony
+1Tim.1.8	er	3		parositva	3	G3754	alacsony
+1Tim.1.8	er	4		parositva	6	G2570	alacsony
+1Tim.1.8	er	5		forditatlan		G3588	alacsony
+1Tim.1.8	er	6		parositva	5	G3551	alacsony
+1Tim.1.8	er	7		parositva	7	G1437	alacsony
+1Tim.1.8	er	8		parositva	8	G5100	alacsony
+1Tim.1.8	er	9		parositva	11	G0846	alacsony
+1Tim.1.8	er	10		parositva	9	G3545	alacsony
+1Tim.1.8	er	11		parositva	10	G5530	alacsony
+1Tim.1.9	hu	1	Tudván	parositva	1	G6063	alacsony
+1Tim.1.9	hu	2	azt	parositva	2	G3778	alacsony
+1Tim.1.9	hu	3	hogy	parositva	3	G3754	alacsony
+1Tim.1.9	hu	4	a	betoldas			alacsony
+1Tim.1.9	hu	5	törvény	parositva	5	G3551	alacsony
+1Tim.1.9	hu	6	nem	parositva	6	G3756	alacsony
+1Tim.1.9	hu	7	az	betoldas			alacsony
+1Tim.1.9	hu	8	igazért	parositva	4	G1342	alacsony
+1Tim.1.9	hu	9	van	parositva	7	G2749	alacsony
+1Tim.1.9	hu	10	hanem	parositva	9	G1161	alacsony
+1Tim.1.9	hu	11	a	betoldas			alacsony
+1Tim.1.9	hu	12	törvénytaposókért	parositva	8	G0459	alacsony
+1Tim.1.9	hu	13	és	parositva	10	G2532	alacsony
+1Tim.1.9	hu	14	engedetlenekért	parositva	11	G0506	alacsony
+1Tim.1.9	hu	15	az	betoldas			alacsony
+1Tim.1.9	hu	16	istentelenekért	parositva	12	G0765	alacsony
+1Tim.1.9	hu	17	és	parositva	13	G2532	alacsony
+1Tim.1.9	hu	18	bűnösökért	parositva	14	G0268	alacsony
+1Tim.1.9	hu	19	a	betoldas			alacsony
+1Tim.1.9	hu	20	latrokért	parositva	15	G0462	alacsony
+1Tim.1.9	hu	21	és	parositva	16	G2532	alacsony
+1Tim.1.9	hu	22	fertelmesekért	parositva	17	G0952	alacsony
+1Tim.1.9	hu	23	az	betoldas			alacsony
+1Tim.1.9	hu	24	atya	parositva	18	G3964	alacsony
+1Tim.1.9	hu	25	és	parositva	19	G2532	alacsony
+1Tim.1.9	hu	26	anyagyilkosokért	parositva	20	G3389	alacsony
+1Tim.1.9	hu	27	emberölőkért	parositva	21	G0409	alacsony
+1Tim.1.9	er	1		parositva	1	G6063	alacsony
+1Tim.1.9	er	2		parositva	2	G3778	alacsony
+1Tim.1.9	er	3		parositva	3	G3754	alacsony
+1Tim.1.9	er	4		parositva	8	G1342	alacsony
+1Tim.1.9	er	5		parositva	5	G3551	alacsony
+1Tim.1.9	er	6		parositva	6	G3756	alacsony
+1Tim.1.9	er	7		parositva	9	G2749	alacsony
+1Tim.1.9	er	8		parositva	12	G0459	alacsony
+1Tim.1.9	er	9		parositva	10	G1161	alacsony
+1Tim.1.9	er	10		parositva	13	G2532	alacsony
+1Tim.1.9	er	11		parositva	14	G0506	alacsony
+1Tim.1.9	er	12		parositva	16	G0765	alacsony
+1Tim.1.9	er	13		parositva	17	G2532	alacsony
+1Tim.1.9	er	14		parositva	18	G0268	alacsony
+1Tim.1.9	er	15		parositva	20	G0462	alacsony
+1Tim.1.9	er	16		parositva	21	G2532	alacsony
+1Tim.1.9	er	17		parositva	22	G0952	alacsony
+1Tim.1.9	er	18		parositva	24	G3964	alacsony
+1Tim.1.9	er	19		parositva	25	G2532	alacsony
+1Tim.1.9	er	20		parositva	26	G3389	alacsony
+1Tim.1.9	er	21		parositva	27	G0409	alacsony
+1Tim.1.10	hu	1	Paráznákért	parositva	1	G4205	alacsony
+1Tim.1.10	hu	2	férfifertőztetőkért	parositva	2	G0733	alacsony
+1Tim.1.10	hu	3	emberrablókért	parositva	3	G0405	alacsony
+1Tim.1.10	hu	4	hazugokért	parositva	4	G5583	alacsony
+1Tim.1.10	hu	5	hamisan	parositva	5	G1965	alacsony
+1Tim.1.10	hu	6	esküvőkért	parositva	5	G1965	alacsony
+1Tim.1.10	hu	7	és	parositva	6	G2532	alacsony
+1Tim.1.10	hu	8	a	parositva	8	G5100	alacsony
+1Tim.1.10	hu	9	mi	parositva	8	G5100	alacsony
+1Tim.1.10	hu	10	egyéb	parositva	9	G2087	alacsony
+1Tim.1.10	hu	11	csak	parositva	7	G1487	alacsony
+1Tim.1.10	hu	12	az	betoldas			alacsony
+1Tim.1.10	hu	13	egészséges	parositva	11	G5198	alacsony
+1Tim.1.10	hu	14	tudománynyal	parositva	12	G1319	alacsony
+1Tim.1.10	hu	15	ellenkezik	parositva	13	G0480	alacsony
+1Tim.1.10	er	1		parositva	1	G4205	alacsony
+1Tim.1.10	er	2		parositva	2	G0733	alacsony
+1Tim.1.10	er	3		parositva	3	G0405	alacsony
+1Tim.1.10	er	4		parositva	4	G5583	alacsony
+1Tim.1.10	er	5		parositva	5,6	G1965	alacsony
+1Tim.1.10	er	6		parositva	7	G2532	alacsony
+1Tim.1.10	er	7		parositva	11	G1487	alacsony
+1Tim.1.10	er	8		parositva	8,9	G5100	alacsony
+1Tim.1.10	er	9		parositva	10	G2087	alacsony
+1Tim.1.10	er	10		forditatlan		G3588	alacsony
+1Tim.1.10	er	11		parositva	13	G5198	alacsony
+1Tim.1.10	er	12		parositva	14	G1319	alacsony
+1Tim.1.10	er	13		parositva	15	G0480	alacsony
+1Tim.1.11	hu	1	A	betoldas			alacsony
+1Tim.1.11	hu	2	boldog	parositva	7	G3107	alacsony
+1Tim.1.11	hu	3	Isten	parositva	8	G2316	alacsony
+1Tim.1.11	hu	4	dicsőségének	parositva	5	G1391	alacsony
+1Tim.1.11	hu	5	evangyélioma	parositva	3	G2098	alacsony
+1Tim.1.11	hu	6	szerint	parositva	1	G2596	alacsony
+1Tim.1.11	hu	7	mely	parositva	9	G3739	alacsony
+1Tim.1.11	hu	8	reám	parositva	11	G1473	alacsony
+1Tim.1.11	hu	9	bízatott	parositva	10	G4100	alacsony
+1Tim.1.11	er	1		parositva	6	G2596	alacsony
+1Tim.1.11	er	2		forditatlan		G3588	alacsony
+1Tim.1.11	er	3		parositva	5	G2098	alacsony
+1Tim.1.11	er	4		forditatlan		G3588	alacsony
+1Tim.1.11	er	5		parositva	4	G1391	alacsony
+1Tim.1.11	er	6		forditatlan		G3588	alacsony
+1Tim.1.11	er	7		parositva	2	G3107	alacsony
+1Tim.1.11	er	8		parositva	3	G2316	alacsony
+1Tim.1.11	er	9		parositva	7	G3739	alacsony
+1Tim.1.11	er	10		parositva	9	G4100	alacsony
+1Tim.1.11	er	11		parositva	8	G1473	alacsony
+1Tim.1.12	hu	1	És	parositva	1	G2532	alacsony
+1Tim.1.12	hu	2	hálát	parositva	2	G5485	alacsony
+1Tim.1.12	hu	3	adok	parositva	3	G2192	alacsony
+1Tim.1.12	hu	4	annak	parositva	4	G3588	alacsony
+1Tim.1.12	hu	5	a	betoldas			alacsony
+1Tim.1.12	hu	6	ki	betoldas			alacsony
+1Tim.1.12	hu	7	engem	parositva	6	G3165	alacsony
+1Tim.1.12	hu	8	megerősített	parositva	5	G1743	alacsony
+1Tim.1.12	hu	9	a	betoldas			alacsony
+1Tim.1.12	hu	10	Krisztus	parositva	7	G5547	alacsony
+1Tim.1.12	hu	11	Jézusnak	parositva	8	G2424	alacsony
+1Tim.1.12	hu	12	a	betoldas			alacsony
+1Tim.1.12	hu	13	mi	parositva	11	G3165	alacsony
+1Tim.1.12	hu	14	Urunknak	parositva	10,11	G2962+G3165	alacsony
+1Tim.1.12	hu	15	hogy	parositva	12	G3754	alacsony
+1Tim.1.12	hu	16	engem	parositva	14	G3165	alacsony
+1Tim.1.12	hu	17	hívnek	parositva	13	G4103	alacsony
+1Tim.1.12	hu	18	ítélt	parositva	15	G2233	alacsony
+1Tim.1.12	hu	19	rendelvén	parositva	16	G5087	alacsony
+1Tim.1.12	hu	20	a	betoldas			alacsony
+1Tim.1.12	hu	21	szolgálatra	parositva	17,18	G1519+G1248	alacsony
+1Tim.1.12	er	1		parositva	1	G2532	alacsony
+1Tim.1.12	er	2		parositva	2	G5485	alacsony
+1Tim.1.12	er	3		parositva	3	G2192	alacsony
+1Tim.1.12	er	4		parositva	4	G3588	alacsony
+1Tim.1.12	er	5		parositva	8	G1743	alacsony
+1Tim.1.12	er	6		parositva	7	G3165	alacsony
+1Tim.1.12	er	7		parositva	10	G5547	alacsony
+1Tim.1.12	er	8		parositva	11	G2424	alacsony
+1Tim.1.12	er	9		forditatlan		G3588	alacsony
+1Tim.1.12	er	10		parositva	14	G2962	alacsony
+1Tim.1.12	er	11		parositva	13,14	G3165	alacsony
+1Tim.1.12	er	12		parositva	15	G3754	alacsony
+1Tim.1.12	er	13		parositva	17	G4103	alacsony
+1Tim.1.12	er	14		parositva	16	G3165	alacsony
+1Tim.1.12	er	15		parositva	18	G2233	alacsony
+1Tim.1.12	er	16		parositva	19	G5087	alacsony
+1Tim.1.12	er	17		parositva	21	G1519	alacsony
+1Tim.1.12	er	18		parositva	21	G1248	alacsony
+1Tim.1.13	hu	1	Ki	betoldas			alacsony
+1Tim.1.13	hu	2	előbb	parositva	2	G4386	alacsony
+1Tim.1.13	hu	3	istenkáromló	parositva	4	G0989	alacsony
+1Tim.1.13	hu	4	üldöző	parositva	6	G1376	alacsony
+1Tim.1.13	hu	5	és	parositva	7	G2532	alacsony
+1Tim.1.13	hu	6	erőszakoskodó	parositva	8	G5197	alacsony
+1Tim.1.13	hu	7	valék	parositva	3	G1510	alacsony
+1Tim.1.13	hu	8	de	parositva	9	G0235	alacsony
+1Tim.1.13	hu	9	könyörült	parositva	10	G1653	alacsony
+1Tim.1.13	hu	10	rajtam	parositva	10	G1653	alacsony
+1Tim.1.13	hu	11	mert	parositva	11	G3754	alacsony
+1Tim.1.13	hu	12	tudatlanul	parositva	12	G0050	alacsony
+1Tim.1.13	hu	13	cselekedtem	parositva	13	G4160	alacsony
+1Tim.1.13	hu	14	hitetlenségben	parositva	14,15	G1722+G0570	alacsony
+1Tim.1.13	er	1		forditatlan		G3588	alacsony
+1Tim.1.13	er	2		parositva	2	G4386	alacsony
+1Tim.1.13	er	3		parositva	7	G1510	alacsony
+1Tim.1.13	er	4		parositva	3	G0989	alacsony
+1Tim.1.13	er	5		forditatlan		G2532	alacsony
+1Tim.1.13	er	6		parositva	4	G1376	alacsony
+1Tim.1.13	er	7		parositva	5	G2532	alacsony
+1Tim.1.13	er	8		parositva	6	G5197	alacsony
+1Tim.1.13	er	9		parositva	8	G0235	alacsony
+1Tim.1.13	er	10		parositva	9,10	G1653	alacsony
+1Tim.1.13	er	11		parositva	11	G3754	alacsony
+1Tim.1.13	er	12		parositva	12	G0050	alacsony
+1Tim.1.13	er	13		parositva	13	G4160	alacsony
+1Tim.1.13	er	14		parositva	14	G1722	alacsony
+1Tim.1.13	er	15		parositva	14	G0570	alacsony
+1Tim.1.14	hu	1	Szerfelett	parositva	1	G5250	alacsony
+1Tim.1.14	hu	2	megsokasodott	parositva	1	G5250	alacsony
+1Tim.1.14	hu	3	pedig	parositva	2	G1161	alacsony
+1Tim.1.14	hu	4	a	betoldas			alacsony
+1Tim.1.14	hu	5	mi	parositva	7	G3165	alacsony
+1Tim.1.14	hu	6	Urunknak	parositva	6,7	G2962+G3165	alacsony
+1Tim.1.14	hu	7	kegyelme	parositva	4	G5485	alacsony
+1Tim.1.14	hu	8	a	betoldas			alacsony
+1Tim.1.14	hu	9	Krisztus	parositva	14	G5547	alacsony
+1Tim.1.14	hu	10	Jézusban	parositva	13,15	G1722+G2424	alacsony
+1Tim.1.14	hu	11	való	parositva	12	G3588	alacsony
+1Tim.1.14	hu	12	hittel	parositva	8,9	G3326+G4102	alacsony
+1Tim.1.14	hu	13	és	parositva	10	G2532	alacsony
+1Tim.1.14	hu	14	szeretettel	parositva	11	G0026	alacsony
+1Tim.1.14	er	1		parositva	1,2	G5250	alacsony
+1Tim.1.14	er	2		parositva	3	G1161	alacsony
+1Tim.1.14	er	3		forditatlan		G3588	alacsony
+1Tim.1.14	er	4		parositva	7	G5485	alacsony
+1Tim.1.14	er	5		forditatlan		G3588	alacsony
+1Tim.1.14	er	6		parositva	6	G2962	alacsony
+1Tim.1.14	er	7		parositva	5,6	G3165	alacsony
+1Tim.1.14	er	8		parositva	12	G3326	alacsony
+1Tim.1.14	er	9		parositva	12	G4102	alacsony
+1Tim.1.14	er	10		parositva	13	G2532	alacsony
+1Tim.1.14	er	11		parositva	14	G0026	alacsony
+1Tim.1.14	er	12		parositva	11	G3588	alacsony
+1Tim.1.14	er	13		parositva	10	G1722	alacsony
+1Tim.1.14	er	14		parositva	9	G5547	alacsony
+1Tim.1.14	er	15		parositva	10	G2424	alacsony
+1Tim.1.15	hu	1	Igaz	parositva	1	G4103	alacsony
+1Tim.1.15	hu	2	beszéd	parositva	3	G3056	alacsony
+1Tim.1.15	hu	3	ez	betoldas			alacsony
+1Tim.1.15	hu	4	és	parositva	4	G2532	alacsony
+1Tim.1.15	hu	5	teljes	parositva	5	G3956	alacsony
+1Tim.1.15	hu	6	elfogadásra	parositva	6	G0594	alacsony
+1Tim.1.15	hu	7	méltó	parositva	7	G0514	alacsony
+1Tim.1.15	hu	8	hogy	parositva	8	G3754	alacsony
+1Tim.1.15	hu	9	Krisztus	parositva	9	G5547	alacsony
+1Tim.1.15	hu	10	Jézus	parositva	10	G2424	alacsony
+1Tim.1.15	hu	11	azért	betoldas			alacsony
+1Tim.1.15	hu	12	jött	parositva	11	G2064	alacsony
+1Tim.1.15	hu	13	e	parositva	13	G3588	alacsony
+1Tim.1.15	hu	14	világra	parositva	12,14	G1519+G2889	alacsony
+1Tim.1.15	hu	15	hogy	betoldas			alacsony
+1Tim.1.15	hu	16	megtartsa	parositva	16	G4982	alacsony
+1Tim.1.15	hu	17	a	betoldas			alacsony
+1Tim.1.15	hu	18	bűnösöket	parositva	15	G0268	alacsony
+1Tim.1.15	hu	19	a	parositva	17	G3739	alacsony
+1Tim.1.15	hu	20	kik	parositva	17	G3739	alacsony
+1Tim.1.15	hu	21	közül	parositva	17	G3739	alacsony
+1Tim.1.15	hu	22	első	parositva	18	G4413	alacsony
+1Tim.1.15	hu	23	vagyok	parositva	19	G1510	alacsony
+1Tim.1.15	hu	24	én	parositva	20	G1473	alacsony
+1Tim.1.15	er	1		parositva	1	G4103	alacsony
+1Tim.1.15	er	2		forditatlan		G3588	alacsony
+1Tim.1.15	er	3		parositva	2	G3056	alacsony
+1Tim.1.15	er	4		parositva	4	G2532	alacsony
+1Tim.1.15	er	5		parositva	5	G3956	alacsony
+1Tim.1.15	er	6		parositva	6	G0594	alacsony
+1Tim.1.15	er	7		parositva	7	G0514	alacsony
+1Tim.1.15	er	8		parositva	8	G3754	alacsony
+1Tim.1.15	er	9		parositva	9	G5547	alacsony
+1Tim.1.15	er	10		parositva	10	G2424	alacsony
+1Tim.1.15	er	11		parositva	12	G2064	alacsony
+1Tim.1.15	er	12		parositva	14	G1519	alacsony
+1Tim.1.15	er	13		parositva	13	G3588	alacsony
+1Tim.1.15	er	14		parositva	14	G2889	alacsony
+1Tim.1.15	er	15		parositva	18	G0268	alacsony
+1Tim.1.15	er	16		parositva	16	G4982	alacsony
+1Tim.1.15	er	17		parositva	19,20,21	G3739	alacsony
+1Tim.1.15	er	18		parositva	22	G4413	alacsony
+1Tim.1.15	er	19		parositva	23	G1510	alacsony
+1Tim.1.15	er	20		parositva	24	G1473	alacsony
+1Tim.1.16	hu	1	De	parositva	1	G0235	alacsony
+1Tim.1.16	hu	2	azért	parositva	2,3	G1223+G3778	alacsony
+1Tim.1.16	hu	3	könyörült	parositva	4	G1653	alacsony
+1Tim.1.16	hu	4	rajtam	parositva	4	G1653	alacsony
+1Tim.1.16	hu	5	hogy	parositva	5	G2443	alacsony
+1Tim.1.16	hu	6	Jézus	parositva	11	G2424	alacsony
+1Tim.1.16	hu	7	Krisztus	parositva	10	G5547	alacsony
+1Tim.1.16	hu	8	bennem	parositva	6,7,8	G1722+G1473+G4413	alacsony
+1Tim.1.16	hu	9	mutassa	parositva	9	G1731	alacsony
+1Tim.1.16	hu	10	meg	parositva	9	G1731	alacsony
+1Tim.1.16	hu	11	legelőbb	parositva	8	G4413	alacsony
+1Tim.1.16	hu	12	a	betoldas			alacsony
+1Tim.1.16	hu	13	teljes	betoldas			alacsony
+1Tim.1.16	hu	14	hosszútűrését	parositva	14	G3115	alacsony
+1Tim.1.16	hu	15	példa	parositva	16	G5296	alacsony
+1Tim.1.16	hu	16	gyanánt	parositva	15	G4314	alacsony
+1Tim.1.16	hu	17	azoknak	parositva	17	G3588	alacsony
+1Tim.1.16	hu	18	a	betoldas			alacsony
+1Tim.1.16	hu	19	kik	betoldas			alacsony
+1Tim.1.16	hu	20	hiendenek	parositva	18,19	G3195+G4100	alacsony
+1Tim.1.16	hu	21	ő	parositva	21	G0846	alacsony
+1Tim.1.16	hu	22	benne	parositva	20,21	G1909+G0846	alacsony
+1Tim.1.16	hu	23	az	betoldas			alacsony
+1Tim.1.16	hu	24	örök	parositva	24	G0166	alacsony
+1Tim.1.16	hu	25	életre	parositva	22,23	G1519+G2222	alacsony
+1Tim.1.16	er	1		parositva	1	G0235	alacsony
+1Tim.1.16	er	2		parositva	2	G1223	alacsony
+1Tim.1.16	er	3		parositva	2	G3778	alacsony
+1Tim.1.16	er	4		parositva	3,4	G1653	alacsony
+1Tim.1.16	er	5		parositva	5	G2443	alacsony
+1Tim.1.16	er	6		parositva	8	G1722	alacsony
+1Tim.1.16	er	7		parositva	8	G1473	alacsony
+1Tim.1.16	er	8		parositva	8,11	G4413	alacsony
+1Tim.1.16	er	9		parositva	9,10	G1731	alacsony
+1Tim.1.16	er	10		parositva	7	G5547	alacsony
+1Tim.1.16	er	11		parositva	6	G2424	alacsony
+1Tim.1.16	er	12		forditatlan		G3588	alacsony
+1Tim.1.16	er	13		forditatlan		G0537	alacsony
+1Tim.1.16	er	14		parositva	14	G3115	alacsony
+1Tim.1.16	er	15		parositva	16	G4314	alacsony
+1Tim.1.16	er	16		parositva	15	G5296	alacsony
+1Tim.1.16	er	17		parositva	17	G3588	alacsony
+1Tim.1.16	er	18		parositva	20	G3195	alacsony
+1Tim.1.16	er	19		parositva	20	G4100	alacsony
+1Tim.1.16	er	20		parositva	22	G1909	alacsony
+1Tim.1.16	er	21		parositva	21,22	G0846	alacsony
+1Tim.1.16	er	22		parositva	25	G1519	alacsony
+1Tim.1.16	er	23		parositva	25	G2222	alacsony
+1Tim.1.16	er	24		parositva	24	G0166	alacsony
+1Tim.1.17	hu	1	Az	betoldas			alacsony
+1Tim.1.17	hu	2	örökkévaló	parositva	5	G0165	alacsony
+1Tim.1.17	hu	3	királynak	parositva	3	G0935	alacsony
+1Tim.1.17	hu	4	pedig	parositva	2	G1161	alacsony
+1Tim.1.17	hu	5	a	betoldas			alacsony
+1Tim.1.17	hu	6	halhatatlan	parositva	6	G0862	alacsony
+1Tim.1.17	hu	7	láthatatlan	parositva	7	G0517	alacsony
+1Tim.1.17	hu	8	egyedül	parositva	8	G3441	alacsony
+1Tim.1.17	hu	9	bölcs	parositva	9	G4680	alacsony
+1Tim.1.17	hu	10	Istennek	parositva	10	G2316	alacsony
+1Tim.1.17	hu	11	tisztesség	parositva	11	G5092	alacsony
+1Tim.1.17	hu	12	és	parositva	12	G2532	alacsony
+1Tim.1.17	hu	13	dicsőség	parositva	13	G1391	alacsony
+1Tim.1.17	hu	14	örökkön	parositva	14,16	G1519+G0165	alacsony
+1Tim.1.17	hu	15	örökké	parositva	18	G0165	alacsony
+1Tim.1.17	hu	16	Ámen	parositva	19	G0281	alacsony
+1Tim.1.17	er	1		forditatlan		G3588	alacsony
+1Tim.1.17	er	2		parositva	4	G1161	alacsony
+1Tim.1.17	er	3		parositva	3	G0935	alacsony
+1Tim.1.17	er	4		forditatlan		G3588	alacsony
+1Tim.1.17	er	5		parositva	2	G0165	alacsony
+1Tim.1.17	er	6		parositva	6	G0862	alacsony
+1Tim.1.17	er	7		parositva	7	G0517	alacsony
+1Tim.1.17	er	8		parositva	8	G3441	alacsony
+1Tim.1.17	er	9		parositva	9	G4680	alacsony
+1Tim.1.17	er	10		parositva	10	G2316	alacsony
+1Tim.1.17	er	11		parositva	11	G5092	alacsony
+1Tim.1.17	er	12		parositva	12	G2532	alacsony
+1Tim.1.17	er	13		parositva	13	G1391	alacsony
+1Tim.1.17	er	14		parositva	14	G1519	alacsony
+1Tim.1.17	er	15		forditatlan		G3588	alacsony
+1Tim.1.17	er	16		parositva	14	G0165	alacsony
+1Tim.1.17	er	17		forditatlan		G3588	alacsony
+1Tim.1.17	er	18		parositva	15	G0165	alacsony
+1Tim.1.17	er	19		parositva	16	G0281	alacsony
+1Tim.1.18	hu	1	Ezt	parositva	1	G3778	alacsony
+1Tim.1.18	hu	2	a	betoldas			alacsony
+1Tim.1.18	hu	3	parancsolatot	parositva	3	G3852	alacsony
+1Tim.1.18	hu	4	adom	parositva	4	G3908	alacsony
+1Tim.1.18	hu	5	néked	parositva	5	G4771	alacsony
+1Tim.1.18	hu	6	fiam	parositva	6	G5043	alacsony
+1Tim.1.18	hu	7	Timótheus	parositva	7	G5095	alacsony
+1Tim.1.18	hu	8	a	betoldas			alacsony
+1Tim.1.18	hu	9	rólad	parositva	11,12	G1909+G4771	alacsony
+1Tim.1.18	hu	10	való	betoldas			alacsony
+1Tim.1.18	hu	11	korábbi	parositva	10	G4254	alacsony
+1Tim.1.18	hu	12	jövendölések	parositva	13	G4394	alacsony
+1Tim.1.18	hu	13	szerint	parositva	8	G2596	alacsony
+1Tim.1.18	hu	14	hogy	parositva	14	G2443	alacsony
+1Tim.1.18	hu	15	vitézkedjél	parositva	15	G4754	alacsony
+1Tim.1.18	hu	16	azokban	parositva	16,17	G1722+G0846	alacsony
+1Tim.1.18	hu	17	ama	parositva	18	G3588	alacsony
+1Tim.1.18	hu	18	jó	parositva	19	G2570	alacsony
+1Tim.1.18	hu	19	vitézséggel	parositva	20	G4752	alacsony
+1Tim.1.18	er	1		parositva	1	G3778	alacsony
+1Tim.1.18	er	2		forditatlan		G3588	alacsony
+1Tim.1.18	er	3		parositva	3	G3852	alacsony
+1Tim.1.18	er	4		parositva	4	G3908	alacsony
+1Tim.1.18	er	5		parositva	5	G4771	alacsony
+1Tim.1.18	er	6		parositva	6	G5043	alacsony
+1Tim.1.18	er	7		parositva	7	G5095	alacsony
+1Tim.1.18	er	8		parositva	13	G2596	alacsony
+1Tim.1.18	er	9		forditatlan		G3588	alacsony
+1Tim.1.18	er	10		parositva	11	G4254	alacsony
+1Tim.1.18	er	11		parositva	9	G1909	alacsony
+1Tim.1.18	er	12		parositva	9	G4771	alacsony
+1Tim.1.18	er	13		parositva	12	G4394	alacsony
+1Tim.1.18	er	14		parositva	14	G2443	alacsony
+1Tim.1.18	er	15		parositva	15	G4754	alacsony
+1Tim.1.18	er	16		parositva	16	G1722	alacsony
+1Tim.1.18	er	17		parositva	16	G0846	alacsony
+1Tim.1.18	er	18		parositva	17	G3588	alacsony
+1Tim.1.18	er	19		parositva	18	G2570	alacsony
+1Tim.1.18	er	20		parositva	19	G4752	alacsony
+1Tim.1.19	hu	1	Megtartván	parositva	1	G2192	alacsony
+1Tim.1.19	hu	2	a	betoldas			alacsony
+1Tim.1.19	hu	3	hitet	parositva	2	G4102	alacsony
+1Tim.1.19	hu	4	és	parositva	3	G2532	alacsony
+1Tim.1.19	hu	5	jó	parositva	4	G0018	alacsony
+1Tim.1.19	hu	6	lelkiismeretet	parositva	5	G4893	alacsony
+1Tim.1.19	hu	7	melyet	parositva	6	G3739	alacsony
+1Tim.1.19	hu	8	némelyek	parositva	7	G5100	alacsony
+1Tim.1.19	hu	9	elvetvén	parositva	8	G0683	alacsony
+1Tim.1.19	hu	10	a	betoldas			alacsony
+1Tim.1.19	hu	11	hit	parositva	11	G4102	alacsony
+1Tim.1.19	hu	12	dolgában	parositva	9	G4012	alacsony
+1Tim.1.19	hu	13	hajótörést	parositva	12	G3489	alacsony
+1Tim.1.19	hu	14	szenvedtek	parositva	12	G3489	alacsony
+1Tim.1.19	er	1		parositva	1	G2192	alacsony
+1Tim.1.19	er	2		parositva	3	G4102	alacsony
+1Tim.1.19	er	3		parositva	4	G2532	alacsony
+1Tim.1.19	er	4		parositva	5	G0018	alacsony
+1Tim.1.19	er	5		parositva	6	G4893	alacsony
+1Tim.1.19	er	6		parositva	7	G3739	alacsony
+1Tim.1.19	er	7		parositva	8	G5100	alacsony
+1Tim.1.19	er	8		parositva	9	G0683	alacsony
+1Tim.1.19	er	9		parositva	12	G4012	alacsony
+1Tim.1.19	er	10		forditatlan		G3588	alacsony
+1Tim.1.19	er	11		parositva	11	G4102	alacsony
+1Tim.1.19	er	12		parositva	13,14	G3489	alacsony
+1Tim.1.20	hu	1	Kik	parositva	1	G3739	alacsony
+1Tim.1.20	hu	2	közül	parositva	1	G3739	alacsony
+1Tim.1.20	hu	3	való	parositva	2	G1510	alacsony
+1Tim.1.20	hu	4	Himenéus	parositva	3	G5211	alacsony
+1Tim.1.20	hu	5	és	parositva	4	G2532	alacsony
+1Tim.1.20	hu	6	Alexander	parositva	5	G0223	alacsony
+1Tim.1.20	hu	7	kiket	parositva	6	G3739	alacsony
+1Tim.1.20	hu	8	átadtam	parositva	7	G3860	alacsony
+1Tim.1.20	hu	9	a	betoldas			alacsony
+1Tim.1.20	hu	10	sátánnak	parositva	9	G4567	alacsony
+1Tim.1.20	hu	11	hogy	parositva	10	G2443	alacsony
+1Tim.1.20	hu	12	megtanulják	parositva	11	G3811	alacsony
+1Tim.1.20	hu	13	hogy	betoldas			alacsony
+1Tim.1.20	hu	14	ne	parositva	12	G3361	alacsony
+1Tim.1.20	hu	15	káromkodjanak	parositva	13	G0987	alacsony
+1Tim.1.20	er	1		parositva	1,2	G3739	alacsony
+1Tim.1.20	er	2		parositva	3	G1510	alacsony
+1Tim.1.20	er	3		parositva	4	G5211	alacsony
+1Tim.1.20	er	4		parositva	5	G2532	alacsony
+1Tim.1.20	er	5		parositva	6	G0223	alacsony
+1Tim.1.20	er	6		parositva	7	G3739	alacsony
+1Tim.1.20	er	7		parositva	8	G3860	alacsony
+1Tim.1.20	er	8		forditatlan		G3588	alacsony
+1Tim.1.20	er	9		parositva	10	G4567	alacsony
+1Tim.1.20	er	10		parositva	11	G2443	alacsony
+1Tim.1.20	er	11		parositva	12	G3811	alacsony
+1Tim.1.20	er	12		parositva	14	G3361	alacsony
+1Tim.1.20	er	13		parositva	15	G0987	alacsony
+1Tim.2.1	hu	1	Intelek	parositva	1	G3870	alacsony
+1Tim.2.1	hu	2	azért	parositva	2	G3767	alacsony
+1Tim.2.1	hu	3	mindenek	parositva	4	G3956	alacsony
+1Tim.2.1	hu	4	előtt	parositva	3	G4413	alacsony
+1Tim.2.1	hu	5	hogy	betoldas			alacsony
+1Tim.2.1	hu	6	tartassanak	parositva	5	G4160	alacsony
+1Tim.2.1	hu	7	könyörgések	parositva	6	G1162	alacsony
+1Tim.2.1	hu	8	imádságok	parositva	7	G4335	alacsony
+1Tim.2.1	hu	9	esedezések	parositva	8	G1783	alacsony
+1Tim.2.1	hu	10	hálaadások	parositva	9	G2169	alacsony
+1Tim.2.1	hu	11	minden	parositva	11	G3956	alacsony
+1Tim.2.1	hu	12	emberekért	parositva	10,12	G5228+G0444	alacsony
+1Tim.2.1	er	1		parositva	1	G3870	alacsony
+1Tim.2.1	er	2		parositva	2	G3767	alacsony
+1Tim.2.1	er	3		parositva	4	G4413	alacsony
+1Tim.2.1	er	4		parositva	3	G3956	alacsony
+1Tim.2.1	er	5		parositva	6	G4160	alacsony
+1Tim.2.1	er	6		parositva	7	G1162	alacsony
+1Tim.2.1	er	7		parositva	8	G4335	alacsony
+1Tim.2.1	er	8		parositva	9	G1783	alacsony
+1Tim.2.1	er	9		parositva	10	G2169	alacsony
+1Tim.2.1	er	10		parositva	12	G5228	alacsony
+1Tim.2.1	er	11		parositva	11	G3956	alacsony
+1Tim.2.1	er	12		parositva	12	G0444	alacsony
+1Tim.2.2	hu	1	Királyokért	parositva	1,2	G5228+G0935	alacsony
+1Tim.2.2	hu	2	és	parositva	3	G2532	alacsony
+1Tim.2.2	hu	3	minden	parositva	4	G3956	alacsony
+1Tim.2.2	hu	4	méltóságban	parositva	6,7	G1722+G5247	alacsony
+1Tim.2.2	hu	5	levőkért	parositva	5,8	G3588+G1510	alacsony
+1Tim.2.2	hu	6	hogy	parositva	9	G2443	alacsony
+1Tim.2.2	hu	7	csendes	parositva	10	G2263	alacsony
+1Tim.2.2	hu	8	és	parositva	11	G2532	alacsony
+1Tim.2.2	hu	9	nyugodalmas	parositva	12	G2272	alacsony
+1Tim.2.2	hu	10	életet	parositva	13	G0979	alacsony
+1Tim.2.2	hu	11	éljünk	parositva	14	G1236	alacsony
+1Tim.2.2	hu	12	teljes	parositva	16	G3956	alacsony
+1Tim.2.2	hu	13	istenfélelemmel	parositva	15,17	G1722+G2150	alacsony
+1Tim.2.2	hu	14	és	parositva	18	G2532	alacsony
+1Tim.2.2	hu	15	tisztességgel	parositva	19	G4587	alacsony
+1Tim.2.2	er	1		parositva	1	G5228	alacsony
+1Tim.2.2	er	2		parositva	1	G0935	alacsony
+1Tim.2.2	er	3		parositva	2	G2532	alacsony
+1Tim.2.2	er	4		parositva	3	G3956	alacsony
+1Tim.2.2	er	5		parositva	5	G3588	alacsony
+1Tim.2.2	er	6		parositva	4	G1722	alacsony
+1Tim.2.2	er	7		parositva	4	G5247	alacsony
+1Tim.2.2	er	8		parositva	5	G1510	alacsony
+1Tim.2.2	er	9		parositva	6	G2443	alacsony
+1Tim.2.2	er	10		parositva	7	G2263	alacsony
+1Tim.2.2	er	11		parositva	8	G2532	alacsony
+1Tim.2.2	er	12		parositva	9	G2272	alacsony
+1Tim.2.2	er	13		parositva	10	G0979	alacsony
+1Tim.2.2	er	14		parositva	11	G1236	alacsony
+1Tim.2.2	er	15		parositva	13	G1722	alacsony
+1Tim.2.2	er	16		parositva	12	G3956	alacsony
+1Tim.2.2	er	17		parositva	13	G2150	alacsony
+1Tim.2.2	er	18		parositva	14	G2532	alacsony
+1Tim.2.2	er	19		parositva	15	G4587	alacsony
+1Tim.2.3	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.2.3	hu	2	ez	parositva	1	G3778	alacsony
+1Tim.2.3	hu	3	jó	parositva	3	G2570	alacsony
+1Tim.2.3	hu	4	és	parositva	4	G2532	alacsony
+1Tim.2.3	hu	5	kedves	parositva	5	G0587	alacsony
+1Tim.2.3	hu	6	dolog	betoldas			alacsony
+1Tim.2.3	hu	7	a	betoldas			alacsony
+1Tim.2.3	hu	8	mi	parositva	9	G3165	alacsony
+1Tim.2.3	hu	9	megtartó	parositva	8	G4990	alacsony
+1Tim.2.3	hu	10	Istenünk	parositva	9,10	G3165+G2316	alacsony
+1Tim.2.3	hu	11	előtt	parositva	6	G1799	alacsony
+1Tim.2.3	er	1		parositva	2	G3778	alacsony
+1Tim.2.3	er	2		parositva	1	G1063	alacsony
+1Tim.2.3	er	3		parositva	3	G2570	alacsony
+1Tim.2.3	er	4		parositva	4	G2532	alacsony
+1Tim.2.3	er	5		parositva	5	G0587	alacsony
+1Tim.2.3	er	6		parositva	11	G1799	alacsony
+1Tim.2.3	er	7		forditatlan		G3588	alacsony
+1Tim.2.3	er	8		parositva	9	G4990	alacsony
+1Tim.2.3	er	9		parositva	8,10	G3165	alacsony
+1Tim.2.3	er	10		parositva	10	G2316	alacsony
+1Tim.2.4	hu	1	A	parositva	1	G3739	alacsony
+1Tim.2.4	hu	2	ki	parositva	1	G3739	alacsony
+1Tim.2.4	hu	3	azt	betoldas			alacsony
+1Tim.2.4	hu	4	akarja	parositva	4	G2309	alacsony
+1Tim.2.4	hu	5	hogy	betoldas			alacsony
+1Tim.2.4	hu	6	minden	parositva	2	G3956	alacsony
+1Tim.2.4	hu	7	ember	parositva	3	G0444	alacsony
+1Tim.2.4	hu	8	idvezüljön	parositva	5	G4982	alacsony
+1Tim.2.4	hu	9	és	parositva	6	G2532	alacsony
+1Tim.2.4	hu	10	az	betoldas			alacsony
+1Tim.2.4	hu	11	igazság	parositva	9	G0225	alacsony
+1Tim.2.4	hu	12	ismeretére	parositva	7,8	G1519+G1922	alacsony
+1Tim.2.4	hu	13	eljusson	parositva	10	G2064	alacsony
+1Tim.2.4	er	1		parositva	1,2	G3739	alacsony
+1Tim.2.4	er	2		parositva	6	G3956	alacsony
+1Tim.2.4	er	3		parositva	7	G0444	alacsony
+1Tim.2.4	er	4		parositva	4	G2309	alacsony
+1Tim.2.4	er	5		parositva	8	G4982	alacsony
+1Tim.2.4	er	6		parositva	9	G2532	alacsony
+1Tim.2.4	er	7		parositva	12	G1519	alacsony
+1Tim.2.4	er	8		parositva	12	G1922	alacsony
+1Tim.2.4	er	9		parositva	11	G0225	alacsony
+1Tim.2.4	er	10		parositva	13	G2064	alacsony
+1Tim.2.5	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.2.5	hu	2	egy	parositva	1	G1520	alacsony
+1Tim.2.5	hu	3	az	betoldas			alacsony
+1Tim.2.5	hu	4	Isten	parositva	3	G2316	alacsony
+1Tim.2.5	hu	5	egy	parositva	4	G1520	alacsony
+1Tim.2.5	hu	6	a	betoldas			alacsony
+1Tim.2.5	hu	7	közbenjáró	parositva	6	G3316	alacsony
+1Tim.2.5	hu	8	is	parositva	5	G2532	alacsony
+1Tim.2.5	hu	9	Isten	parositva	7	G2316	alacsony
+1Tim.2.5	hu	10	és	parositva	8	G2532	alacsony
+1Tim.2.5	hu	11	emberek	parositva	9	G0444	alacsony
+1Tim.2.5	hu	12	között	parositva	9	G0444	alacsony
+1Tim.2.5	hu	13	az	betoldas			alacsony
+1Tim.2.5	hu	14	ember	parositva	10	G0444	alacsony
+1Tim.2.5	hu	15	Krisztus	parositva	11	G5547	alacsony
+1Tim.2.5	hu	16	Jézus	parositva	12	G2424	alacsony
+1Tim.2.5	er	1		parositva	2	G1520	alacsony
+1Tim.2.5	er	2		parositva	1	G1063	alacsony
+1Tim.2.5	er	3		parositva	4	G2316	alacsony
+1Tim.2.5	er	4		parositva	5	G1520	alacsony
+1Tim.2.5	er	5		parositva	8	G2532	alacsony
+1Tim.2.5	er	6		parositva	7	G3316	alacsony
+1Tim.2.5	er	7		parositva	9	G2316	alacsony
+1Tim.2.5	er	8		parositva	10	G2532	alacsony
+1Tim.2.5	er	9		parositva	11,12	G0444	alacsony
+1Tim.2.5	er	10		parositva	14	G0444	alacsony
+1Tim.2.5	er	11		parositva	15	G5547	alacsony
+1Tim.2.5	er	12		parositva	16	G2424	alacsony
+1Tim.2.6	hu	1	A	parositva	1	G3588	alacsony
+1Tim.2.6	hu	2	ki	parositva	1	G3588	alacsony
+1Tim.2.6	hu	3	adta	parositva	2	G1325	alacsony
+1Tim.2.6	hu	4	önmagát	parositva	3	G1438	alacsony
+1Tim.2.6	hu	5	váltságul	parositva	4	G0487	alacsony
+1Tim.2.6	hu	6	mindenekért	parositva	5,6	G5228+G3956	alacsony
+1Tim.2.6	hu	7	mint	betoldas			alacsony
+1Tim.2.6	hu	8	tanúbizonyság	parositva	8	G3142	alacsony
+1Tim.2.6	hu	9	a	betoldas			alacsony
+1Tim.2.6	hu	10	maga	parositva	10	G2398	alacsony
+1Tim.2.6	hu	11	idejében	parositva	9	G2540	alacsony
+1Tim.2.6	er	1		parositva	1,2	G3588	alacsony
+1Tim.2.6	er	2		parositva	3	G1325	alacsony
+1Tim.2.6	er	3		parositva	4	G1438	alacsony
+1Tim.2.6	er	4		parositva	5	G0487	alacsony
+1Tim.2.6	er	5		parositva	6	G5228	alacsony
+1Tim.2.6	er	6		parositva	6	G3956	alacsony
+1Tim.2.6	er	7		forditatlan		G3588	alacsony
+1Tim.2.6	er	8		parositva	8	G3142	alacsony
+1Tim.2.6	er	9		parositva	11	G2540	alacsony
+1Tim.2.6	er	10		parositva	10	G2398	alacsony
+1Tim.2.7	hu	1	A	parositva	2	G3739	alacsony
+1Tim.2.7	hu	2	mi	parositva	2	G3739	alacsony
+1Tim.2.7	hu	3	végett	parositva	1	G1519	alacsony
+1Tim.2.7	hu	4	rendeltettem	parositva	3	G5087	alacsony
+1Tim.2.7	hu	5	én	parositva	4	G1473	alacsony
+1Tim.2.7	hu	6	hirdetővé	parositva	5	G2783	alacsony
+1Tim.2.7	hu	7	és	parositva	6	G2532	alacsony
+1Tim.2.7	hu	8	apostollá	parositva	7	G0652	alacsony
+1Tim.2.7	hu	9	igazságot	parositva	8	G0225	alacsony
+1Tim.2.7	hu	10	szólok	parositva	9	G3004	alacsony
+1Tim.2.7	hu	11	a	betoldas			alacsony
+1Tim.2.7	hu	12	Krisztusban	parositva	10,11	G1722+G5547	alacsony
+1Tim.2.7	hu	13	nem	parositva	12	G3756	alacsony
+1Tim.2.7	hu	14	hazudok	parositva	13	G5574	alacsony
+1Tim.2.7	hu	15	pogányok	parositva	15	G1484	alacsony
+1Tim.2.7	hu	16	tanítójává	parositva	14	G1320	alacsony
+1Tim.2.7	hu	17	hitben	parositva	16,17	G1722+G4102	alacsony
+1Tim.2.7	hu	18	és	parositva	18	G2532	alacsony
+1Tim.2.7	hu	19	igazságban	parositva	19	G0225	alacsony
+1Tim.2.7	er	1		parositva	3	G1519	alacsony
+1Tim.2.7	er	2		parositva	1,2	G3739	alacsony
+1Tim.2.7	er	3		parositva	4	G5087	alacsony
+1Tim.2.7	er	4		parositva	5	G1473	alacsony
+1Tim.2.7	er	5		parositva	6	G2783	alacsony
+1Tim.2.7	er	6		parositva	7	G2532	alacsony
+1Tim.2.7	er	7		parositva	8	G0652	alacsony
+1Tim.2.7	er	8		parositva	9	G0225	alacsony
+1Tim.2.7	er	9		parositva	10	G3004	alacsony
+1Tim.2.7	er	10		parositva	12	G1722	alacsony
+1Tim.2.7	er	11		parositva	12	G5547	alacsony
+1Tim.2.7	er	12		parositva	13	G3756	alacsony
+1Tim.2.7	er	13		parositva	14	G5574	alacsony
+1Tim.2.7	er	14		parositva	16	G1320	alacsony
+1Tim.2.7	er	15		parositva	15	G1484	alacsony
+1Tim.2.7	er	16		parositva	17	G1722	alacsony
+1Tim.2.7	er	17		parositva	17	G4102	alacsony
+1Tim.2.7	er	18		parositva	18	G2532	alacsony
+1Tim.2.7	er	19		parositva	19	G0225	alacsony
+1Tim.2.8	hu	1	Akarom	parositva	1	G1014	alacsony
+1Tim.2.8	hu	2	azért	parositva	2	G3767	alacsony
+1Tim.2.8	hu	3	hogy	betoldas			alacsony
+1Tim.2.8	hu	4	imádkozzanak	parositva	3	G4336	alacsony
+1Tim.2.8	hu	5	a	betoldas			alacsony
+1Tim.2.8	hu	6	férfiak	parositva	5	G0435	alacsony
+1Tim.2.8	hu	7	minden	parositva	7	G3956	alacsony
+1Tim.2.8	hu	8	helyen	parositva	6,8	G1722+G5117	alacsony
+1Tim.2.8	hu	9	tiszta	parositva	10	G3741	alacsony
+1Tim.2.8	hu	10	kezeket	parositva	11	G5495	alacsony
+1Tim.2.8	hu	11	emelvén	parositva	9	G1869	alacsony
+1Tim.2.8	hu	12	föl	parositva	9	G1869	alacsony
+1Tim.2.8	hu	13	harag	parositva	13	G3709	alacsony
+1Tim.2.8	hu	14	és	parositva	14	G2532	alacsony
+1Tim.2.8	hu	15	versengés	parositva	15	G1261	alacsony
+1Tim.2.8	hu	16	nélkül	parositva	12	G5565	alacsony
+1Tim.2.8	er	1		parositva	1	G1014	alacsony
+1Tim.2.8	er	2		parositva	2	G3767	alacsony
+1Tim.2.8	er	3		parositva	4	G4336	alacsony
+1Tim.2.8	er	4		forditatlan		G3588	alacsony
+1Tim.2.8	er	5		parositva	6	G0435	alacsony
+1Tim.2.8	er	6		parositva	8	G1722	alacsony
+1Tim.2.8	er	7		parositva	7	G3956	alacsony
+1Tim.2.8	er	8		parositva	8	G5117	alacsony
+1Tim.2.8	er	9		parositva	11,12	G1869	alacsony
+1Tim.2.8	er	10		parositva	9	G3741	alacsony
+1Tim.2.8	er	11		parositva	10	G5495	alacsony
+1Tim.2.8	er	12		parositva	16	G5565	alacsony
+1Tim.2.8	er	13		parositva	13	G3709	alacsony
+1Tim.2.8	er	14		parositva	14	G2532	alacsony
+1Tim.2.8	er	15		parositva	15	G1261	alacsony
+1Tim.2.9	hu	1	Hasonlatosképen	parositva	1	G5615	alacsony
+1Tim.2.9	hu	2	az	betoldas			alacsony
+1Tim.2.9	hu	3	asszonyok	parositva	4	G1135	alacsony
+1Tim.2.9	hu	4	tisztességes	parositva	7	G2887	alacsony
+1Tim.2.9	hu	5	öltözetben	parositva	5,6	G1722+G2689	alacsony
+1Tim.2.9	hu	6	szemérmetességgel	parositva	8,9	G3326+G0127	alacsony
+1Tim.2.9	hu	7	és	parositva	10	G2532	alacsony
+1Tim.2.9	hu	8	mértékletességgel	parositva	11	G4997	alacsony
+1Tim.2.9	hu	9	ékesítsék	parositva	12	G2885	alacsony
+1Tim.2.9	hu	10	magokat	parositva	13	G1438	alacsony
+1Tim.2.9	hu	11	nem	parositva	14	G3361	alacsony
+1Tim.2.9	hu	12	hajfonatokkal	parositva	15,16	G1722+G4117	alacsony
+1Tim.2.9	hu	13	és	betoldas			alacsony
+1Tim.2.9	hu	14	aranynyal	betoldas			alacsony
+1Tim.2.9	hu	15	vagy	parositva	19	G2228	alacsony
+1Tim.2.9	hu	16	gyöngyökkel	parositva	20	G3135	alacsony
+1Tim.2.9	hu	17	vagy	parositva	21	G2228	alacsony
+1Tim.2.9	hu	18	drága	parositva	23	G4185	alacsony
+1Tim.2.9	hu	19	öltözékkel	parositva	22	G2441	alacsony
+1Tim.2.9	er	1		parositva	1	G5615	alacsony
+1Tim.2.9	er	2		forditatlan		G2532	alacsony
+1Tim.2.9	er	3		forditatlan		G3588	alacsony
+1Tim.2.9	er	4		parositva	3	G1135	alacsony
+1Tim.2.9	er	5		parositva	5	G1722	alacsony
+1Tim.2.9	er	6		parositva	5	G2689	alacsony
+1Tim.2.9	er	7		parositva	4	G2887	alacsony
+1Tim.2.9	er	8		parositva	6	G3326	alacsony
+1Tim.2.9	er	9		parositva	6	G0127	alacsony
+1Tim.2.9	er	10		parositva	7	G2532	alacsony
+1Tim.2.9	er	11		parositva	8	G4997	alacsony
+1Tim.2.9	er	12		parositva	9	G2885	alacsony
+1Tim.2.9	er	13		parositva	10	G1438	alacsony
+1Tim.2.9	er	14		parositva	11	G3361	alacsony
+1Tim.2.9	er	15		parositva	12	G1722	alacsony
+1Tim.2.9	er	16		parositva	12	G4117	alacsony
+1Tim.2.9	er	17		forditatlan		G2532	alacsony
+1Tim.2.9	er	18		forditatlan		G5553	alacsony
+1Tim.2.9	er	19		parositva	15	G2228	alacsony
+1Tim.2.9	er	20		parositva	16	G3135	alacsony
+1Tim.2.9	er	21		parositva	17	G2228	alacsony
+1Tim.2.9	er	22		parositva	19	G2441	alacsony
+1Tim.2.9	er	23		parositva	18	G4185	alacsony
+1Tim.2.10	hu	1	Hanem	parositva	1	G0235	alacsony
+1Tim.2.10	hu	2	a	parositva	2	G3739	alacsony
+1Tim.2.10	hu	3	mint	parositva	2	G3739	alacsony
+1Tim.2.10	hu	4	illik	parositva	3	G4241	alacsony
+1Tim.2.10	hu	5	az	betoldas			alacsony
+1Tim.2.10	hu	6	istenfélelmet	parositva	6	G2317	alacsony
+1Tim.2.10	hu	7	valló	parositva	5	G1861	alacsony
+1Tim.2.10	hu	8	asszonyokhoz	parositva	4	G1135	alacsony
+1Tim.2.10	hu	9	jó	parositva	9	G0018	alacsony
+1Tim.2.10	hu	10	cselekedetekkel	parositva	7,8	G1223+G2041	alacsony
+1Tim.2.10	er	1		parositva	1	G0235	alacsony
+1Tim.2.10	er	2		parositva	2,3	G3739	alacsony
+1Tim.2.10	er	3		parositva	4	G4241	alacsony
+1Tim.2.10	er	4		parositva	8	G1135	alacsony
+1Tim.2.10	er	5		parositva	7	G1861	alacsony
+1Tim.2.10	er	6		parositva	6	G2317	alacsony
+1Tim.2.10	er	7		parositva	10	G1223	alacsony
+1Tim.2.10	er	8		parositva	10	G2041	alacsony
+1Tim.2.10	er	9		parositva	9	G0018	alacsony
+1Tim.2.11	hu	1	Az	betoldas			alacsony
+1Tim.2.11	hu	2	asszony	parositva	1	G1135	alacsony
+1Tim.2.11	hu	3	csendességben	parositva	2,3	G1722+G2271	alacsony
+1Tim.2.11	hu	4	tanuljon	parositva	4	G3129	alacsony
+1Tim.2.11	hu	5	teljes	parositva	6	G3956	alacsony
+1Tim.2.11	hu	6	engedelmességgel	parositva	5,7	G1722+G5292	alacsony
+1Tim.2.11	er	1		parositva	2	G1135	alacsony
+1Tim.2.11	er	2		parositva	3	G1722	alacsony
+1Tim.2.11	er	3		parositva	3	G2271	alacsony
+1Tim.2.11	er	4		parositva	4	G3129	alacsony
+1Tim.2.11	er	5		parositva	6	G1722	alacsony
+1Tim.2.11	er	6		parositva	5	G3956	alacsony
+1Tim.2.11	er	7		parositva	6	G5292	alacsony
+1Tim.2.12	hu	1	A	betoldas			alacsony
+1Tim.2.12	hu	2	tanítást	parositva	1	G1321	alacsony
+1Tim.2.12	hu	3	pedig	parositva	2	G1161	alacsony
+1Tim.2.12	hu	4	nem	parositva	4	G3756	alacsony
+1Tim.2.12	hu	5	engedem	parositva	5	G2010	alacsony
+1Tim.2.12	hu	6	meg	parositva	5	G2010	alacsony
+1Tim.2.12	hu	7	az	betoldas			alacsony
+1Tim.2.12	hu	8	asszonynak	parositva	3	G1135	alacsony
+1Tim.2.12	hu	9	sem	parositva	6	G3761	alacsony
+1Tim.2.12	hu	10	hogy	betoldas			alacsony
+1Tim.2.12	hu	11	a	betoldas			alacsony
+1Tim.2.12	hu	12	férfin	parositva	8	G0435	alacsony
+1Tim.2.12	hu	13	uralkodjék	parositva	7	G0831	alacsony
+1Tim.2.12	hu	14	hanem	parositva	9	G0235	alacsony
+1Tim.2.12	hu	15	legyen	parositva	10	G1511	alacsony
+1Tim.2.12	hu	16	csendességben	parositva	11,12	G1722+G2271	alacsony
+1Tim.2.12	er	1		parositva	2	G1321	alacsony
+1Tim.2.12	er	2		parositva	3	G1161	alacsony
+1Tim.2.12	er	3		parositva	8	G1135	alacsony
+1Tim.2.12	er	4		parositva	4	G3756	alacsony
+1Tim.2.12	er	5		parositva	5,6	G2010	alacsony
+1Tim.2.12	er	6		parositva	9	G3761	alacsony
+1Tim.2.12	er	7		parositva	13	G0831	alacsony
+1Tim.2.12	er	8		parositva	12	G0435	alacsony
+1Tim.2.12	er	9		parositva	14	G0235	alacsony
+1Tim.2.12	er	10		parositva	15	G1511	alacsony
+1Tim.2.12	er	11		parositva	16	G1722	alacsony
+1Tim.2.12	er	12		parositva	16	G2271	alacsony
+1Tim.2.13	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.2.13	hu	2	Ádám	parositva	1	G0076	alacsony
+1Tim.2.13	hu	3	teremtetett	parositva	4	G4111	alacsony
+1Tim.2.13	hu	4	elsőnek	parositva	3	G4413	alacsony
+1Tim.2.13	hu	5	azután	parositva	5	G1534	alacsony
+1Tim.2.13	hu	6	Éva	parositva	6	G2096	alacsony
+1Tim.2.13	er	1		parositva	2	G0076	alacsony
+1Tim.2.13	er	2		parositva	1	G1063	alacsony
+1Tim.2.13	er	3		parositva	4	G4413	alacsony
+1Tim.2.13	er	4		parositva	3	G4111	alacsony
+1Tim.2.13	er	5		parositva	5	G1534	alacsony
+1Tim.2.13	er	6		parositva	6	G2096	alacsony
+1Tim.2.14	hu	1	És	parositva	1	G2532	alacsony
+1Tim.2.14	hu	2	Ádám	parositva	2	G0076	alacsony
+1Tim.2.14	hu	3	nem	parositva	3	G3756	alacsony
+1Tim.2.14	hu	4	csalattatott	parositva	4	G0538	alacsony
+1Tim.2.14	hu	5	meg	parositva	4	G0538	alacsony
+1Tim.2.14	hu	6	hanem	parositva	6	G1161	alacsony
+1Tim.2.14	hu	7	az	betoldas			alacsony
+1Tim.2.14	hu	8	asszony	parositva	7	G1135	alacsony
+1Tim.2.14	hu	9	megcsalattatván	parositva	8	G1818	alacsony
+1Tim.2.14	hu	10	bűnbe	parositva	9,10	G1722+G3847	alacsony
+1Tim.2.14	hu	11	esett	parositva	11	G1096	alacsony
+1Tim.2.14	er	1		parositva	1	G2532	alacsony
+1Tim.2.14	er	2		parositva	2	G0076	alacsony
+1Tim.2.14	er	3		parositva	3	G3756	alacsony
+1Tim.2.14	er	4		parositva	4,5	G0538	alacsony
+1Tim.2.14	er	5		forditatlan		G3588	alacsony
+1Tim.2.14	er	6		parositva	6	G1161	alacsony
+1Tim.2.14	er	7		parositva	8	G1135	alacsony
+1Tim.2.14	er	8		parositva	9	G1818	alacsony
+1Tim.2.14	er	9		parositva	10	G1722	alacsony
+1Tim.2.14	er	10		parositva	10	G3847	alacsony
+1Tim.2.14	er	11		parositva	11	G1096	alacsony
+1Tim.2.15	hu	1	Mindazáltal	parositva	2	G1161	alacsony
+1Tim.2.15	hu	2	megtartatik	parositva	1	G4982	alacsony
+1Tim.2.15	hu	3	a	betoldas			alacsony
+1Tim.2.15	hu	4	gyermekszüléskor	parositva	3,5	G1223+G5042	alacsony
+1Tim.2.15	hu	5	ha	parositva	6	G1437	alacsony
+1Tim.2.15	hu	6	megmaradnak	parositva	7	G3306	alacsony
+1Tim.2.15	hu	7	a	betoldas			alacsony
+1Tim.2.15	hu	8	hitben	parositva	8,9	G1722+G4102	alacsony
+1Tim.2.15	hu	9	és	parositva	10	G2532	alacsony
+1Tim.2.15	hu	10	szeretetben	parositva	11	G0026	alacsony
+1Tim.2.15	hu	11	és	parositva	12	G2532	alacsony
+1Tim.2.15	hu	12	a	betoldas			alacsony
+1Tim.2.15	hu	13	szent	parositva	13	G0038	alacsony
+1Tim.2.15	hu	14	életben	parositva	13	G0038	alacsony
+1Tim.2.15	hu	15	mértékletességgel	parositva	14,15	G3326+G4997	alacsony
+1Tim.2.15	er	1		parositva	2	G4982	alacsony
+1Tim.2.15	er	2		parositva	1	G1161	alacsony
+1Tim.2.15	er	3		parositva	4	G1223	alacsony
+1Tim.2.15	er	4		forditatlan		G3588	alacsony
+1Tim.2.15	er	5		parositva	4	G5042	alacsony
+1Tim.2.15	er	6		parositva	5	G1437	alacsony
+1Tim.2.15	er	7		parositva	6	G3306	alacsony
+1Tim.2.15	er	8		parositva	8	G1722	alacsony
+1Tim.2.15	er	9		parositva	8	G4102	alacsony
+1Tim.2.15	er	10		parositva	9	G2532	alacsony
+1Tim.2.15	er	11		parositva	10	G0026	alacsony
+1Tim.2.15	er	12		parositva	11	G2532	alacsony
+1Tim.2.15	er	13		parositva	13,14	G0038	alacsony
+1Tim.2.15	er	14		parositva	15	G3326	alacsony
+1Tim.2.15	er	15		parositva	15	G4997	alacsony
+1Tim.3.1	hu	1	Igaz	parositva	1	G4103	alacsony
+1Tim.3.1	hu	2	ez	parositva	2	G3588	alacsony
+1Tim.3.1	hu	3	a	betoldas			alacsony
+1Tim.3.1	hu	4	beszéd	parositva	3	G3056	alacsony
+1Tim.3.1	hu	5	Ha	parositva	4	G1487	alacsony
+1Tim.3.1	hu	6	valaki	parositva	5	G5100	alacsony
+1Tim.3.1	hu	7	püspökséget	parositva	6	G1984	alacsony
+1Tim.3.1	hu	8	kiván	parositva	7	G3713	alacsony
+1Tim.3.1	hu	9	jó	parositva	8	G2570	alacsony
+1Tim.3.1	hu	10	dolgot	parositva	9	G2041	alacsony
+1Tim.3.1	hu	11	kíván	parositva	10	G1937	alacsony
+1Tim.3.1	er	1		parositva	1	G4103	alacsony
+1Tim.3.1	er	2		parositva	2	G3588	alacsony
+1Tim.3.1	er	3		parositva	4	G3056	alacsony
+1Tim.3.1	er	4		parositva	5	G1487	alacsony
+1Tim.3.1	er	5		parositva	6	G5100	alacsony
+1Tim.3.1	er	6		parositva	7	G1984	alacsony
+1Tim.3.1	er	7		parositva	8	G3713	alacsony
+1Tim.3.1	er	8		parositva	9	G2570	alacsony
+1Tim.3.1	er	9		parositva	10	G2041	alacsony
+1Tim.3.1	er	10		parositva	11	G1937	alacsony
+1Tim.3.2	hu	1	Szükséges	parositva	1	G1163	alacsony
+1Tim.3.2	hu	2	annakokáért	parositva	2	G3767	alacsony
+1Tim.3.2	hu	3	hogy	betoldas			alacsony
+1Tim.3.2	hu	4	a	betoldas			alacsony
+1Tim.3.2	hu	5	püspök	parositva	4	G1985	alacsony
+1Tim.3.2	hu	6	feddhetetlen	parositva	5	G0423	alacsony
+1Tim.3.2	hu	7	legyen	parositva	6	G1511	alacsony
+1Tim.3.2	hu	8	egy	parositva	7	G1520	alacsony
+1Tim.3.2	hu	9	feleségű	parositva	8	G1135	alacsony
+1Tim.3.2	hu	10	férfiú	parositva	9	G0435	alacsony
+1Tim.3.2	hu	11	józan	parositva	10	G3524	alacsony
+1Tim.3.2	hu	12	mértékletes	parositva	11	G4998	alacsony
+1Tim.3.2	hu	13	illedelmes	parositva	12	G2887	alacsony
+1Tim.3.2	hu	14	vendégszerető	parositva	13	G5382	alacsony
+1Tim.3.2	hu	15	a	betoldas			alacsony
+1Tim.3.2	hu	16	tanításra	parositva	14	G1317	alacsony
+1Tim.3.2	hu	17	alkalmatos	parositva	14	G1317	alacsony
+1Tim.3.2	er	1		parositva	1	G1163	alacsony
+1Tim.3.2	er	2		parositva	2	G3767	alacsony
+1Tim.3.2	er	3		forditatlan		G3588	alacsony
+1Tim.3.2	er	4		parositva	5	G1985	alacsony
+1Tim.3.2	er	5		parositva	6	G0423	alacsony
+1Tim.3.2	er	6		parositva	7	G1511	alacsony
+1Tim.3.2	er	7		parositva	8	G1520	alacsony
+1Tim.3.2	er	8		parositva	9	G1135	alacsony
+1Tim.3.2	er	9		parositva	10	G0435	alacsony
+1Tim.3.2	er	10		parositva	11	G3524	alacsony
+1Tim.3.2	er	11		parositva	12	G4998	alacsony
+1Tim.3.2	er	12		parositva	13	G2887	alacsony
+1Tim.3.2	er	13		parositva	14	G5382	alacsony
+1Tim.3.2	er	14		parositva	16,17	G1317	alacsony
+1Tim.3.3	hu	1	Nem	parositva	1	G3361	alacsony
+1Tim.3.3	hu	2	borozó	parositva	2	G3943	alacsony
+1Tim.3.3	hu	3	nem	parositva	3	G3361	alacsony
+1Tim.3.3	hu	4	verekedő	parositva	4	G4131	alacsony
+1Tim.3.3	hu	5	nem	parositva	5	G3361	alacsony
+1Tim.3.3	hu	6	rút	parositva	6	G0146	alacsony
+1Tim.3.3	hu	7	nyereségre	parositva	6	G0146	alacsony
+1Tim.3.3	hu	8	vágyó	parositva	6	G0146	alacsony
+1Tim.3.3	hu	9	hanem	parositva	7	G0235	alacsony
+1Tim.3.3	hu	10	szelíd	parositva	8	G1933	alacsony
+1Tim.3.3	hu	11	versengéstől	parositva	9	G0269	alacsony
+1Tim.3.3	hu	12	ment	parositva	9	G0269	alacsony
+1Tim.3.3	hu	13	nem	parositva	10	G0866	alacsony
+1Tim.3.3	hu	14	pénzsóvárgó	parositva	10	G0866	alacsony
+1Tim.3.3	er	1		parositva	1	G3361	alacsony
+1Tim.3.3	er	2		parositva	2	G3943	alacsony
+1Tim.3.3	er	3		parositva	3	G3361	alacsony
+1Tim.3.3	er	4		parositva	4	G4131	alacsony
+1Tim.3.3	er	5		parositva	5	G3361	alacsony
+1Tim.3.3	er	6		parositva	6,7,8	G0146	alacsony
+1Tim.3.3	er	7		parositva	9	G0235	alacsony
+1Tim.3.3	er	8		parositva	10	G1933	alacsony
+1Tim.3.3	er	9		parositva	11,12	G0269	alacsony
+1Tim.3.3	er	10		parositva	13,14	G0866	alacsony
+1Tim.3.4	hu	1	Ki	betoldas			alacsony
+1Tim.3.4	hu	2	a	betoldas			alacsony
+1Tim.3.4	hu	3	maga	parositva	2	G2398	alacsony
+1Tim.3.4	hu	4	házát	parositva	3	G3624	alacsony
+1Tim.3.4	hu	5	jól	parositva	4	G2573	alacsony
+1Tim.3.4	hu	6	igazgatja	parositva	5	G4291	alacsony
+1Tim.3.4	hu	7	gyermekeit	parositva	6	G5043	alacsony
+1Tim.3.4	hu	8	engedelmességben	parositva	8,9	G1722+G5292	alacsony
+1Tim.3.4	hu	9	tartja	parositva	7	G2192	alacsony
+1Tim.3.4	hu	10	minden	parositva	11	G3956	alacsony
+1Tim.3.4	hu	11	tisztességgel	parositva	10,12	G3326+G4587	alacsony
+1Tim.3.4	er	1		forditatlan		G3588	alacsony
+1Tim.3.4	er	2		parositva	3	G2398	alacsony
+1Tim.3.4	er	3		parositva	4	G3624	alacsony
+1Tim.3.4	er	4		parositva	5	G2573	alacsony
+1Tim.3.4	er	5		parositva	6	G4291	alacsony
+1Tim.3.4	er	6		parositva	7	G5043	alacsony
+1Tim.3.4	er	7		parositva	9	G2192	alacsony
+1Tim.3.4	er	8		parositva	8	G1722	alacsony
+1Tim.3.4	er	9		parositva	8	G5292	alacsony
+1Tim.3.4	er	10		parositva	11	G3326	alacsony
+1Tim.3.4	er	11		parositva	10	G3956	alacsony
+1Tim.3.4	er	12		parositva	11	G4587	alacsony
+1Tim.3.5	hu	1	Mert	parositva	2	G1161	alacsony
+1Tim.3.5	hu	2	ha	parositva	1	G1487	alacsony
+1Tim.3.5	hu	3	valaki	parositva	3	G5100	alacsony
+1Tim.3.5	hu	4	az	betoldas			alacsony
+1Tim.3.5	hu	5	ő	parositva	5	G2398	alacsony
+1Tim.3.5	hu	6	tulajdon	parositva	5	G2398	alacsony
+1Tim.3.5	hu	7	házát	parositva	6	G3624	alacsony
+1Tim.3.5	hu	8	nem	parositva	8	G3756	alacsony
+1Tim.3.5	hu	9	tudja	parositva	9	G6063	alacsony
+1Tim.3.5	hu	10	igazgatni	parositva	7	G4291	alacsony
+1Tim.3.5	hu	11	mimódon	parositva	10	G4459	alacsony
+1Tim.3.5	hu	12	visel	parositva	13	G1959	alacsony
+1Tim.3.5	hu	13	gondot	parositva	13	G1959	alacsony
+1Tim.3.5	hu	14	az	betoldas			alacsony
+1Tim.3.5	hu	15	Isten	parositva	12	G2316	alacsony
+1Tim.3.5	hu	16	egyházára	parositva	11	G1577	alacsony
+1Tim.3.5	er	1		parositva	2	G1487	alacsony
+1Tim.3.5	er	2		parositva	1	G1161	alacsony
+1Tim.3.5	er	3		parositva	3	G5100	alacsony
+1Tim.3.5	er	4		forditatlan		G3588	alacsony
+1Tim.3.5	er	5		parositva	5,6	G2398	alacsony
+1Tim.3.5	er	6		parositva	7	G3624	alacsony
+1Tim.3.5	er	7		parositva	10	G4291	alacsony
+1Tim.3.5	er	8		parositva	8	G3756	alacsony
+1Tim.3.5	er	9		parositva	9	G6063	alacsony
+1Tim.3.5	er	10		parositva	11	G4459	alacsony
+1Tim.3.5	er	11		parositva	16	G1577	alacsony
+1Tim.3.5	er	12		parositva	15	G2316	alacsony
+1Tim.3.5	er	13		parositva	12,13	G1959	alacsony
+1Tim.3.6	hu	1	Ne	parositva	1	G3361	alacsony
+1Tim.3.6	hu	2	legyen	betoldas			alacsony
+1Tim.3.6	hu	3	új	parositva	2	G3504	alacsony
+1Tim.3.6	hu	4	ember	parositva	2	G3504	alacsony
+1Tim.3.6	hu	5	nehogy	parositva	3,4	G2443+G3361	alacsony
+1Tim.3.6	hu	6	felfuvalkodván	parositva	5	G5187	alacsony
+1Tim.3.6	hu	7	az	betoldas			alacsony
+1Tim.3.6	hu	8	ördög	parositva	10	G1228	alacsony
+1Tim.3.6	hu	9	kárhozatába	parositva	6,7	G1519+G2917	alacsony
+1Tim.3.6	hu	10	essék	parositva	8	G1706	alacsony
+1Tim.3.6	er	1		parositva	1	G3361	alacsony
+1Tim.3.6	er	2		parositva	3,4	G3504	alacsony
+1Tim.3.6	er	3		parositva	5	G2443	alacsony
+1Tim.3.6	er	4		parositva	5	G3361	alacsony
+1Tim.3.6	er	5		parositva	6	G5187	alacsony
+1Tim.3.6	er	6		parositva	9	G1519	alacsony
+1Tim.3.6	er	7		parositva	9	G2917	alacsony
+1Tim.3.6	er	8		parositva	10	G1706	alacsony
+1Tim.3.6	er	9		forditatlan		G3588	alacsony
+1Tim.3.6	er	10		parositva	8	G1228	alacsony
+1Tim.3.7	hu	1	Szükséges	parositva	1	G1163	alacsony
+1Tim.3.7	hu	2	pedig	parositva	2	G1161	alacsony
+1Tim.3.7	hu	3	hogy	betoldas			alacsony
+1Tim.3.7	hu	4	jó	parositva	6	G2570	alacsony
+1Tim.3.7	hu	5	bizonysága	parositva	3,5	G0846+G3141	alacsony
+1Tim.3.7	hu	6	is	parositva	4	G2532	alacsony
+1Tim.3.7	hu	7	legyen	parositva	7	G2192	alacsony
+1Tim.3.7	hu	8	a	betoldas			alacsony
+1Tim.3.7	hu	9	kívülvalóktól	parositva	8,9,10	G0575+G3588+G1855	alacsony
+1Tim.3.7	hu	10	hogy	parositva	11	G2443	alacsony
+1Tim.3.7	hu	11	gyalázatba	parositva	13,14	G1519+G3680	alacsony
+1Tim.3.7	hu	12	és	parositva	16	G2532	alacsony
+1Tim.3.7	hu	13	az	betoldas			alacsony
+1Tim.3.7	hu	14	ördög	parositva	19	G1228	alacsony
+1Tim.3.7	hu	15	tőribe	parositva	17	G3803	alacsony
+1Tim.3.7	hu	16	ne	parositva	12	G3361	alacsony
+1Tim.3.7	hu	17	essék	parositva	15	G1706	alacsony
+1Tim.3.7	er	1		parositva	1	G1163	alacsony
+1Tim.3.7	er	2		parositva	2	G1161	alacsony
+1Tim.3.7	er	3		parositva	5	G0846	alacsony
+1Tim.3.7	er	4		parositva	6	G2532	alacsony
+1Tim.3.7	er	5		parositva	5	G3141	alacsony
+1Tim.3.7	er	6		parositva	4	G2570	alacsony
+1Tim.3.7	er	7		parositva	7	G2192	alacsony
+1Tim.3.7	er	8		parositva	9	G0575	alacsony
+1Tim.3.7	er	9		parositva	9	G3588	alacsony
+1Tim.3.7	er	10		parositva	9	G1855	alacsony
+1Tim.3.7	er	11		parositva	10	G2443	alacsony
+1Tim.3.7	er	12		parositva	16	G3361	alacsony
+1Tim.3.7	er	13		parositva	11	G1519	alacsony
+1Tim.3.7	er	14		parositva	11	G3680	alacsony
+1Tim.3.7	er	15		parositva	17	G1706	alacsony
+1Tim.3.7	er	16		parositva	12	G2532	alacsony
+1Tim.3.7	er	17		parositva	15	G3803	alacsony
+1Tim.3.7	er	18		forditatlan		G3588	alacsony
+1Tim.3.7	er	19		parositva	14	G1228	alacsony
+1Tim.3.8	hu	1	Hasonlóképpen	parositva	2	G5615	alacsony
+1Tim.3.8	hu	2	a	betoldas			alacsony
+1Tim.3.8	hu	3	diakónusok	parositva	1	G1249	alacsony
+1Tim.3.8	hu	4	tisztességesek	parositva	3	G4586	alacsony
+1Tim.3.8	hu	5	legyenek	betoldas			alacsony
+1Tim.3.8	hu	6	nem	parositva	4	G3361	alacsony
+1Tim.3.8	hu	7	kétnyelvűek	parositva	5	G1351	alacsony
+1Tim.3.8	hu	8	nem	parositva	6	G3361	alacsony
+1Tim.3.8	hu	9	sok	parositva	8	G4183	alacsony
+1Tim.3.8	hu	10	borivásba	parositva	7	G3631	alacsony
+1Tim.3.8	hu	11	merültek	parositva	9	G4337	alacsony
+1Tim.3.8	hu	12	nem	parositva	10	G3361	alacsony
+1Tim.3.8	hu	13	rút	parositva	11	G0146	alacsony
+1Tim.3.8	hu	14	nyereségre	parositva	11	G0146	alacsony
+1Tim.3.8	hu	15	vágyók	parositva	11	G0146	alacsony
+1Tim.3.8	er	1		parositva	3	G1249	alacsony
+1Tim.3.8	er	2		parositva	1	G5615	alacsony
+1Tim.3.8	er	3		parositva	4	G4586	alacsony
+1Tim.3.8	er	4		parositva	6	G3361	alacsony
+1Tim.3.8	er	5		parositva	7	G1351	alacsony
+1Tim.3.8	er	6		parositva	8	G3361	alacsony
+1Tim.3.8	er	7		parositva	10	G3631	alacsony
+1Tim.3.8	er	8		parositva	9	G4183	alacsony
+1Tim.3.8	er	9		parositva	11	G4337	alacsony
+1Tim.3.8	er	10		parositva	12	G3361	alacsony
+1Tim.3.8	er	11		parositva	13,14,15	G0146	alacsony
+1Tim.3.9	hu	1	Kiknél	betoldas			alacsony
+1Tim.3.9	hu	2	megvan	parositva	1	G2192	alacsony
+1Tim.3.9	hu	3	a	betoldas			alacsony
+1Tim.3.9	hu	4	hit	parositva	5	G4102	alacsony
+1Tim.3.9	hu	5	titka	parositva	3	G3466	alacsony
+1Tim.3.9	hu	6	tiszta	parositva	7	G2513	alacsony
+1Tim.3.9	hu	7	lelkiismerettel	parositva	6,8	G1722+G4893	alacsony
+1Tim.3.9	er	1		parositva	2	G2192	alacsony
+1Tim.3.9	er	2		forditatlan		G3588	alacsony
+1Tim.3.9	er	3		parositva	5	G3466	alacsony
+1Tim.3.9	er	4		forditatlan		G3588	alacsony
+1Tim.3.9	er	5		parositva	4	G4102	alacsony
+1Tim.3.9	er	6		parositva	7	G1722	alacsony
+1Tim.3.9	er	7		parositva	6	G2513	alacsony
+1Tim.3.9	er	8		parositva	7	G4893	alacsony
+1Tim.3.10	hu	1	És	parositva	3	G1161	alacsony
+1Tim.3.10	hu	2	ezek	parositva	2	G3778	alacsony
+1Tim.3.10	hu	3	is	parositva	1	G2532	alacsony
+1Tim.3.10	hu	4	először	parositva	5	G4413	alacsony
+1Tim.3.10	hu	5	megpróbáltassanak	parositva	4	G1381	alacsony
+1Tim.3.10	hu	6	azután	parositva	6	G1534	alacsony
+1Tim.3.10	hu	7	szolgáljanak	parositva	7	G1247	alacsony
+1Tim.3.10	hu	8	ha	parositva	9	G1510	alacsony
+1Tim.3.10	hu	9	feddhetetlenek	parositva	8	G0410	alacsony
+1Tim.3.10	er	1		parositva	3	G2532	alacsony
+1Tim.3.10	er	2		parositva	2	G3778	alacsony
+1Tim.3.10	er	3		parositva	1	G1161	alacsony
+1Tim.3.10	er	4		parositva	5	G1381	alacsony
+1Tim.3.10	er	5		parositva	4	G4413	alacsony
+1Tim.3.10	er	6		parositva	6	G1534	alacsony
+1Tim.3.10	er	7		parositva	7	G1247	alacsony
+1Tim.3.10	er	8		parositva	9	G0410	alacsony
+1Tim.3.10	er	9		parositva	8	G1510	alacsony
+1Tim.3.11	hu	1	Feleségeik	parositva	1	G1135	alacsony
+1Tim.3.11	hu	2	hasonlóképen	parositva	2	G5615	alacsony
+1Tim.3.11	hu	3	tisztességesek	parositva	3	G4586	alacsony
+1Tim.3.11	hu	4	nem	parositva	4	G3361	alacsony
+1Tim.3.11	hu	5	patvarkodók	parositva	5	G1228	alacsony
+1Tim.3.11	hu	6	józanok	betoldas			alacsony
+1Tim.3.11	hu	7	mindenben	parositva	8,9	G1722+G3956	alacsony
+1Tim.3.11	hu	8	hívek	parositva	7	G4103	alacsony
+1Tim.3.11	hu	9	legyenek	betoldas			alacsony
+1Tim.3.11	er	1		parositva	1	G1135	alacsony
+1Tim.3.11	er	2		parositva	2	G5615	alacsony
+1Tim.3.11	er	3		parositva	3	G4586	alacsony
+1Tim.3.11	er	4		parositva	4	G3361	alacsony
+1Tim.3.11	er	5		parositva	5	G1228	alacsony
+1Tim.3.11	er	6		forditatlan		G3524	alacsony
+1Tim.3.11	er	7		parositva	8	G4103	alacsony
+1Tim.3.11	er	8		parositva	7	G1722	alacsony
+1Tim.3.11	er	9		parositva	7	G3956	alacsony
+1Tim.3.12	hu	1	A	betoldas			alacsony
+1Tim.3.12	hu	2	diakónusok	parositva	1	G1249	alacsony
+1Tim.3.12	hu	3	egy	parositva	3	G1520	alacsony
+1Tim.3.12	hu	4	feleségű	parositva	4	G1135	alacsony
+1Tim.3.12	hu	5	férfiak	parositva	5	G0435	alacsony
+1Tim.3.12	hu	6	legyenek	parositva	2	G1510	alacsony
+1Tim.3.12	hu	7	a	betoldas			alacsony
+1Tim.3.12	hu	8	kik	betoldas			alacsony
+1Tim.3.12	hu	9	gyermekeiket	parositva	6	G5043	alacsony
+1Tim.3.12	hu	10	és	parositva	9	G2532	alacsony
+1Tim.3.12	hu	11	tulajdon	parositva	11	G2398	alacsony
+1Tim.3.12	hu	12	házaikat	parositva	12	G3624	alacsony
+1Tim.3.12	hu	13	jól	parositva	7	G2573	alacsony
+1Tim.3.12	hu	14	igazgatják	parositva	8	G4291	alacsony
+1Tim.3.12	er	1		parositva	2	G1249	alacsony
+1Tim.3.12	er	2		parositva	6	G1510	alacsony
+1Tim.3.12	er	3		parositva	3	G1520	alacsony
+1Tim.3.12	er	4		parositva	4	G1135	alacsony
+1Tim.3.12	er	5		parositva	5	G0435	alacsony
+1Tim.3.12	er	6		parositva	9	G5043	alacsony
+1Tim.3.12	er	7		parositva	13	G2573	alacsony
+1Tim.3.12	er	8		parositva	14	G4291	alacsony
+1Tim.3.12	er	9		parositva	10	G2532	alacsony
+1Tim.3.12	er	10		forditatlan		G3588	alacsony
+1Tim.3.12	er	11		parositva	11	G2398	alacsony
+1Tim.3.12	er	12		parositva	12	G3624	alacsony
+1Tim.3.13	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.3.13	hu	2	a	parositva	1	G3588	alacsony
+1Tim.3.13	hu	3	kik	parositva	1	G3588	alacsony
+1Tim.3.13	hu	4	jól	parositva	3	G2573	alacsony
+1Tim.3.13	hu	5	szolgálnak	parositva	4	G1247	alacsony
+1Tim.3.13	hu	6	szép	parositva	7	G2570	alacsony
+1Tim.3.13	hu	7	tisztességet	parositva	5	G0898	alacsony
+1Tim.3.13	hu	8	szereznek	parositva	8	G4046	alacsony
+1Tim.3.13	hu	9	magoknak	parositva	6	G1438	alacsony
+1Tim.3.13	hu	10	és	parositva	9	G2532	alacsony
+1Tim.3.13	hu	11	sok	parositva	10	G4183	alacsony
+1Tim.3.13	hu	12	bizodalmat	parositva	11	G3954	alacsony
+1Tim.3.13	hu	13	a	betoldas			alacsony
+1Tim.3.13	hu	14	Jézus	parositva	17	G2424	alacsony
+1Tim.3.13	hu	15	Krisztusban	parositva	15,16	G1722+G5547	alacsony
+1Tim.3.13	hu	16	való	parositva	14	G3588	alacsony
+1Tim.3.13	hu	17	hitben	parositva	12,13	G1722+G4102	alacsony
+1Tim.3.13	er	1		parositva	2,3	G3588	alacsony
+1Tim.3.13	er	2		parositva	1	G1063	alacsony
+1Tim.3.13	er	3		parositva	4	G2573	alacsony
+1Tim.3.13	er	4		parositva	5	G1247	alacsony
+1Tim.3.13	er	5		parositva	7	G0898	alacsony
+1Tim.3.13	er	6		parositva	9	G1438	alacsony
+1Tim.3.13	er	7		parositva	6	G2570	alacsony
+1Tim.3.13	er	8		parositva	8	G4046	alacsony
+1Tim.3.13	er	9		parositva	10	G2532	alacsony
+1Tim.3.13	er	10		parositva	11	G4183	alacsony
+1Tim.3.13	er	11		parositva	12	G3954	alacsony
+1Tim.3.13	er	12		parositva	17	G1722	alacsony
+1Tim.3.13	er	13		parositva	17	G4102	alacsony
+1Tim.3.13	er	14		parositva	16	G3588	alacsony
+1Tim.3.13	er	15		parositva	15	G1722	alacsony
+1Tim.3.13	er	16		parositva	15	G5547	alacsony
+1Tim.3.13	er	17		parositva	14	G2424	alacsony
+1Tim.3.14	hu	1	Ezeket	parositva	1	G3778	alacsony
+1Tim.3.14	hu	2	írom	parositva	3	G1125	alacsony
+1Tim.3.14	hu	3	néked	parositva	2	G4771	alacsony
+1Tim.3.14	hu	4	remélvén	parositva	4	G1679	alacsony
+1Tim.3.14	hu	5	hogy	betoldas			alacsony
+1Tim.3.14	hu	6	nem	betoldas			alacsony
+1Tim.3.14	hu	7	sokára	betoldas			alacsony
+1Tim.3.14	hu	8	hozzád	parositva	6,7	G4314+G4771	alacsony
+1Tim.3.14	hu	9	megyek	parositva	5	G2064	alacsony
+1Tim.3.14	er	1		parositva	1	G3778	alacsony
+1Tim.3.14	er	2		parositva	3	G4771	alacsony
+1Tim.3.14	er	3		parositva	2	G1125	alacsony
+1Tim.3.14	er	4		parositva	4	G1679	alacsony
+1Tim.3.14	er	5		parositva	9	G2064	alacsony
+1Tim.3.14	er	6		parositva	8	G4314	alacsony
+1Tim.3.14	er	7		parositva	8	G4771	alacsony
+1Tim.3.14	er	8		forditatlan		G1722	alacsony
+1Tim.3.14	er	9		forditatlan		G5034	alacsony
+1Tim.3.15	hu	1	De	parositva	2	G1161	alacsony
+1Tim.3.15	hu	2	ha	parositva	1	G1437	alacsony
+1Tim.3.15	hu	3	késném	parositva	3	G1019	alacsony
+1Tim.3.15	hu	4	hogy	parositva	4	G2443	alacsony
+1Tim.3.15	hu	5	tudd	parositva	5	G6063	alacsony
+1Tim.3.15	hu	6	meg	parositva	5	G6063	alacsony
+1Tim.3.15	hu	7	mimódon	parositva	6	G4459	alacsony
+1Tim.3.15	hu	8	kell	parositva	7	G1163	alacsony
+1Tim.3.15	hu	9	forgolódni	parositva	11	G0390	alacsony
+1Tim.3.15	hu	10	az	betoldas			alacsony
+1Tim.3.15	hu	11	Isten	parositva	10	G2316	alacsony
+1Tim.3.15	hu	12	házában	parositva	8,9	G1722+G3624	alacsony
+1Tim.3.15	hu	13	mely	parositva	12	G3748	alacsony
+1Tim.3.15	hu	14	az	betoldas			alacsony
+1Tim.3.15	hu	15	élő	parositva	16	G2198	alacsony
+1Tim.3.15	hu	16	Istennek	parositva	15	G2316	alacsony
+1Tim.3.15	hu	17	egyháza	parositva	13,14	G1510+G1577	alacsony
+1Tim.3.15	hu	18	az	betoldas			alacsony
+1Tim.3.15	hu	19	igazságnak	parositva	21	G0225	alacsony
+1Tim.3.15	hu	20	oszlopa	parositva	17	G4769	alacsony
+1Tim.3.15	hu	21	és	parositva	18	G2532	alacsony
+1Tim.3.15	hu	22	erőssége	parositva	19	G1477	alacsony
+1Tim.3.15	er	1		parositva	2	G1437	alacsony
+1Tim.3.15	er	2		parositva	1	G1161	alacsony
+1Tim.3.15	er	3		parositva	3	G1019	alacsony
+1Tim.3.15	er	4		parositva	4	G2443	alacsony
+1Tim.3.15	er	5		parositva	5,6	G6063	alacsony
+1Tim.3.15	er	6		parositva	7	G4459	alacsony
+1Tim.3.15	er	7		parositva	8	G1163	alacsony
+1Tim.3.15	er	8		parositva	12	G1722	alacsony
+1Tim.3.15	er	9		parositva	12	G3624	alacsony
+1Tim.3.15	er	10		parositva	11	G2316	alacsony
+1Tim.3.15	er	11		parositva	9	G0390	alacsony
+1Tim.3.15	er	12		parositva	13	G3748	alacsony
+1Tim.3.15	er	13		parositva	17	G1510	alacsony
+1Tim.3.15	er	14		parositva	17	G1577	alacsony
+1Tim.3.15	er	15		parositva	16	G2316	alacsony
+1Tim.3.15	er	16		parositva	15	G2198	alacsony
+1Tim.3.15	er	17		parositva	20	G4769	alacsony
+1Tim.3.15	er	18		parositva	21	G2532	alacsony
+1Tim.3.15	er	19		parositva	22	G1477	alacsony
+1Tim.3.15	er	20		forditatlan		G3588	alacsony
+1Tim.3.15	er	21		parositva	19	G0225	alacsony
+1Tim.3.16	hu	1	És	parositva	1	G2532	alacsony
+1Tim.3.16	hu	2	minden	parositva	2	G3672	alacsony
+1Tim.3.16	hu	3	versengés	parositva	2	G3672	alacsony
+1Tim.3.16	hu	4	nélkül	parositva	2	G3672	alacsony
+1Tim.3.16	hu	5	nagy	parositva	3	G3173	alacsony
+1Tim.3.16	hu	6	a	betoldas			alacsony
+1Tim.3.16	hu	7	kegyességnek	parositva	6,7	G3588+G2150	alacsony
+1Tim.3.16	hu	8	eme	betoldas			alacsony
+1Tim.3.16	hu	9	titka	parositva	8	G3466	alacsony
+1Tim.3.16	hu	10	Isten	betoldas			alacsony
+1Tim.3.16	hu	11	megjelent	parositva	10	G5319	alacsony
+1Tim.3.16	hu	12	testben	parositva	11,12	G1722+G4561	alacsony
+1Tim.3.16	hu	13	megigazíttatott	parositva	13	G1344	alacsony
+1Tim.3.16	hu	14	lélekben	parositva	14,15	G1722+G4151	alacsony
+1Tim.3.16	hu	15	megláttatott	parositva	16	G3700	alacsony
+1Tim.3.16	hu	16	az	betoldas			alacsony
+1Tim.3.16	hu	17	angyaloktól	parositva	17	G0032	alacsony
+1Tim.3.16	hu	18	hirdettetett	parositva	18	G2784	alacsony
+1Tim.3.16	hu	19	a	betoldas			alacsony
+1Tim.3.16	hu	20	pogányok	parositva	20	G1484	alacsony
+1Tim.3.16	hu	21	közt	parositva	19	G1722	alacsony
+1Tim.3.16	hu	22	hittek	parositva	21	G4100	alacsony
+1Tim.3.16	hu	23	benne	betoldas			alacsony
+1Tim.3.16	hu	24	a	betoldas			alacsony
+1Tim.3.16	hu	25	világon	parositva	22,23	G1722+G2889	alacsony
+1Tim.3.16	hu	26	felvitetett	parositva	24	G0353	alacsony
+1Tim.3.16	hu	27	dicsőségbe	parositva	25,26	G1722+G1391	alacsony
+1Tim.3.16	er	1		parositva	1	G2532	alacsony
+1Tim.3.16	er	2		parositva	2,3,4	G3672	alacsony
+1Tim.3.16	er	3		parositva	5	G3173	alacsony
+1Tim.3.16	er	4		forditatlan		G1510	alacsony
+1Tim.3.16	er	5		forditatlan		G3588	alacsony
+1Tim.3.16	er	6		parositva	7	G3588	alacsony
+1Tim.3.16	er	7		parositva	7	G2150	alacsony
+1Tim.3.16	er	8		parositva	9	G3466	alacsony
+1Tim.3.16	er	9		forditatlan		G3739	alacsony
+1Tim.3.16	er	10		parositva	11	G5319	alacsony
+1Tim.3.16	er	11		parositva	12	G1722	alacsony
+1Tim.3.16	er	12		parositva	12	G4561	alacsony
+1Tim.3.16	er	13		parositva	13	G1344	alacsony
+1Tim.3.16	er	14		parositva	14	G1722	alacsony
+1Tim.3.16	er	15		parositva	14	G4151	alacsony
+1Tim.3.16	er	16		parositva	15	G3700	alacsony
+1Tim.3.16	er	17		parositva	17	G0032	alacsony
+1Tim.3.16	er	18		parositva	18	G2784	alacsony
+1Tim.3.16	er	19		parositva	21	G1722	alacsony
+1Tim.3.16	er	20		parositva	20	G1484	alacsony
+1Tim.3.16	er	21		parositva	22	G4100	alacsony
+1Tim.3.16	er	22		parositva	25	G1722	alacsony
+1Tim.3.16	er	23		parositva	25	G2889	alacsony
+1Tim.3.16	er	24		parositva	26	G0353	alacsony
+1Tim.3.16	er	25		parositva	27	G1722	alacsony
+1Tim.3.16	er	26		parositva	27	G1391	alacsony
+1Tim.4.1	hu	1	A	betoldas			alacsony
+1Tim.4.1	hu	2	Lélek	parositva	3	G4151	alacsony
+1Tim.4.1	hu	3	pedig	parositva	2	G1161	alacsony
+1Tim.4.1	hu	4	nyilván	parositva	4	G4490	alacsony
+1Tim.4.1	hu	5	mondja	parositva	5	G3004	alacsony
+1Tim.4.1	hu	6	hogy	parositva	6	G3754	alacsony
+1Tim.4.1	hu	7	az	betoldas			alacsony
+1Tim.4.1	hu	8	utolsó	parositva	8	G5306	alacsony
+1Tim.4.1	hu	9	időben	parositva	7,9	G1722+G2540	alacsony
+1Tim.4.1	hu	10	némelyek	parositva	11	G5100	alacsony
+1Tim.4.1	hu	11	elszakadnak	parositva	10	G0868	alacsony
+1Tim.4.1	hu	12	a	betoldas			alacsony
+1Tim.4.1	hu	13	hittől	parositva	12,13	G3588+G4102	alacsony
+1Tim.4.1	hu	14	hitető	parositva	16	G4108	alacsony
+1Tim.4.1	hu	15	lelkekre	parositva	15	G4151	alacsony
+1Tim.4.1	hu	16	és	parositva	17	G2532	alacsony
+1Tim.4.1	hu	17	gonosz	parositva	19	G1140	alacsony
+1Tim.4.1	hu	18	lelkek	parositva	19	G1140	alacsony
+1Tim.4.1	hu	19	tanításaira	parositva	18	G1319	alacsony
+1Tim.4.1	hu	20	figyelmezvén	parositva	14	G4337	alacsony
+1Tim.4.1	er	1		forditatlan		G3588	alacsony
+1Tim.4.1	er	2		parositva	3	G1161	alacsony
+1Tim.4.1	er	3		parositva	2	G4151	alacsony
+1Tim.4.1	er	4		parositva	4	G4490	alacsony
+1Tim.4.1	er	5		parositva	5	G3004	alacsony
+1Tim.4.1	er	6		parositva	6	G3754	alacsony
+1Tim.4.1	er	7		parositva	9	G1722	alacsony
+1Tim.4.1	er	8		parositva	8	G5306	alacsony
+1Tim.4.1	er	9		parositva	9	G2540	alacsony
+1Tim.4.1	er	10		parositva	11	G0868	alacsony
+1Tim.4.1	er	11		parositva	10	G5100	alacsony
+1Tim.4.1	er	12		parositva	13	G3588	alacsony
+1Tim.4.1	er	13		parositva	13	G4102	alacsony
+1Tim.4.1	er	14		parositva	20	G4337	alacsony
+1Tim.4.1	er	15		parositva	15	G4151	alacsony
+1Tim.4.1	er	16		parositva	14	G4108	alacsony
+1Tim.4.1	er	17		parositva	16	G2532	alacsony
+1Tim.4.1	er	18		parositva	19	G1319	alacsony
+1Tim.4.1	er	19		parositva	17,18	G1140	alacsony
+1Tim.4.2	hu	1	Hazug	parositva	3	G5573	alacsony
+1Tim.4.2	hu	2	beszédűeknek	parositva	3	G5573	alacsony
+1Tim.4.2	hu	3	képmutatása	parositva	2	G5272	alacsony
+1Tim.4.2	hu	4	által	parositva	1	G1722	alacsony
+1Tim.4.2	hu	5	kik	betoldas			alacsony
+1Tim.4.2	hu	6	meg	parositva	4	G2743	alacsony
+1Tim.4.2	hu	7	vannak	parositva	4	G2743	alacsony
+1Tim.4.2	hu	8	bélyegezve	parositva	4	G2743	alacsony
+1Tim.4.2	hu	9	a	betoldas			alacsony
+1Tim.4.2	hu	10	saját	parositva	6	G2398	alacsony
+1Tim.4.2	hu	11	lelkiismeretökben	parositva	7	G4893	alacsony
+1Tim.4.2	er	1		parositva	4	G1722	alacsony
+1Tim.4.2	er	2		parositva	3	G5272	alacsony
+1Tim.4.2	er	3		parositva	1,2	G5573	alacsony
+1Tim.4.2	er	4		parositva	6,7,8	G2743	alacsony
+1Tim.4.2	er	5		forditatlan		G3588	alacsony
+1Tim.4.2	er	6		parositva	10	G2398	alacsony
+1Tim.4.2	er	7		parositva	11	G4893	alacsony
+1Tim.4.3	hu	1	A	betoldas			alacsony
+1Tim.4.3	hu	2	kik	betoldas			alacsony
+1Tim.4.3	hu	3	tiltják	parositva	1	G2967	alacsony
+1Tim.4.3	hu	4	a	betoldas			alacsony
+1Tim.4.3	hu	5	házasságot	parositva	2	G1060	alacsony
+1Tim.4.3	hu	6	sürgetik	parositva	3	G0568	alacsony
+1Tim.4.3	hu	7	az	betoldas			alacsony
+1Tim.4.3	hu	8	eledelektől	parositva	4	G1033	alacsony
+1Tim.4.3	hu	9	való	betoldas			alacsony
+1Tim.4.3	hu	10	tartózkodást	parositva	3	G0568	alacsony
+1Tim.4.3	hu	11	melyeket	parositva	5	G3739	alacsony
+1Tim.4.3	hu	12	Isten	parositva	7	G2316	alacsony
+1Tim.4.3	hu	13	teremtett	parositva	8	G2936	alacsony
+1Tim.4.3	hu	14	hálaadással	parositva	11,12	G3326+G2169	alacsony
+1Tim.4.3	hu	15	való	betoldas			alacsony
+1Tim.4.3	hu	16	élvezésre	parositva	9,10	G1519+G3336	alacsony
+1Tim.4.3	hu	17	a	betoldas			alacsony
+1Tim.4.3	hu	18	hívőknek	parositva	14	G4103	alacsony
+1Tim.4.3	hu	19	és	parositva	15	G2532	alacsony
+1Tim.4.3	hu	20	azoknak	betoldas			alacsony
+1Tim.4.3	hu	21	a	betoldas			alacsony
+1Tim.4.3	hu	22	kik	betoldas			alacsony
+1Tim.4.3	hu	23	megismerték	parositva	16	G1921	alacsony
+1Tim.4.3	hu	24	az	betoldas			alacsony
+1Tim.4.3	hu	25	igazságot	parositva	18	G0225	alacsony
+1Tim.4.3	er	1		parositva	3	G2967	alacsony
+1Tim.4.3	er	2		parositva	5	G1060	alacsony
+1Tim.4.3	er	3		parositva	6,10	G0568	alacsony
+1Tim.4.3	er	4		parositva	8	G1033	alacsony
+1Tim.4.3	er	5		parositva	11	G3739	alacsony
+1Tim.4.3	er	6		forditatlan		G3588	alacsony
+1Tim.4.3	er	7		parositva	12	G2316	alacsony
+1Tim.4.3	er	8		parositva	13	G2936	alacsony
+1Tim.4.3	er	9		parositva	16	G1519	alacsony
+1Tim.4.3	er	10		parositva	16	G3336	alacsony
+1Tim.4.3	er	11		parositva	14	G3326	alacsony
+1Tim.4.3	er	12		parositva	14	G2169	alacsony
+1Tim.4.3	er	13		forditatlan		G3588	alacsony
+1Tim.4.3	er	14		parositva	18	G4103	alacsony
+1Tim.4.3	er	15		parositva	19	G2532	alacsony
+1Tim.4.3	er	16		parositva	23	G1921	alacsony
+1Tim.4.3	er	17		forditatlan		G3588	alacsony
+1Tim.4.3	er	18		parositva	25	G0225	alacsony
+1Tim.4.4	hu	1	Mert	parositva	1	G3754	alacsony
+1Tim.4.4	hu	2	Istennek	parositva	4	G2316	alacsony
+1Tim.4.4	hu	3	minden	parositva	2	G3956	alacsony
+1Tim.4.4	hu	4	teremtett	parositva	3	G2938	alacsony
+1Tim.4.4	hu	5	állata	parositva	3	G2938	alacsony
+1Tim.4.4	hu	6	jó	parositva	5	G2570	alacsony
+1Tim.4.4	hu	7	és	parositva	6	G2532	alacsony
+1Tim.4.4	hu	8	semmi	parositva	7	G3762	alacsony
+1Tim.4.4	hu	9	sem	parositva	7	G3762	alacsony
+1Tim.4.4	hu	10	megvetendő	parositva	8	G0579	alacsony
+1Tim.4.4	hu	11	ha	betoldas			alacsony
+1Tim.4.4	hu	12	hálaadással	parositva	9,10	G3326+G2169	alacsony
+1Tim.4.4	hu	13	élnek	parositva	11	G2983	alacsony
+1Tim.4.4	hu	14	azzal	betoldas			alacsony
+1Tim.4.4	er	1		parositva	1	G3754	alacsony
+1Tim.4.4	er	2		parositva	3	G3956	alacsony
+1Tim.4.4	er	3		parositva	4,5	G2938	alacsony
+1Tim.4.4	er	4		parositva	2	G2316	alacsony
+1Tim.4.4	er	5		parositva	6	G2570	alacsony
+1Tim.4.4	er	6		parositva	7	G2532	alacsony
+1Tim.4.4	er	7		parositva	8,9	G3762	alacsony
+1Tim.4.4	er	8		parositva	10	G0579	alacsony
+1Tim.4.4	er	9		parositva	12	G3326	alacsony
+1Tim.4.4	er	10		parositva	12	G2169	alacsony
+1Tim.4.4	er	11		parositva	13	G2983	alacsony
+1Tim.4.5	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.4.5	hu	2	megszenteltetik	parositva	1	G0037	alacsony
+1Tim.4.5	hu	3	Istennek	parositva	5	G2316	alacsony
+1Tim.4.5	hu	4	ígéje	parositva	4	G3056	alacsony
+1Tim.4.5	hu	5	és	parositva	6	G2532	alacsony
+1Tim.4.5	hu	6	könyörgés	parositva	7	G1783	alacsony
+1Tim.4.5	hu	7	által	parositva	3	G1223	alacsony
+1Tim.4.5	er	1		parositva	2	G0037	alacsony
+1Tim.4.5	er	2		parositva	1	G1063	alacsony
+1Tim.4.5	er	3		parositva	7	G1223	alacsony
+1Tim.4.5	er	4		parositva	4	G3056	alacsony
+1Tim.4.5	er	5		parositva	3	G2316	alacsony
+1Tim.4.5	er	6		parositva	5	G2532	alacsony
+1Tim.4.5	er	7		parositva	6	G1783	alacsony
+1Tim.4.6	hu	1	Ezeket	parositva	1	G3778	alacsony
+1Tim.4.6	hu	2	ha	betoldas			alacsony
+1Tim.4.6	hu	3	eleikbe	parositva	2	G5294	alacsony
+1Tim.4.6	hu	4	adod	parositva	2	G5294	alacsony
+1Tim.4.6	hu	5	az	betoldas			alacsony
+1Tim.4.6	hu	6	atyafiaknak	parositva	4	G0080	alacsony
+1Tim.4.6	hu	7	Krisztus	parositva	8	G5547	alacsony
+1Tim.4.6	hu	8	Jézusnak	parositva	9	G2424	alacsony
+1Tim.4.6	hu	9	jó	parositva	5	G2570	alacsony
+1Tim.4.6	hu	10	szolgája	parositva	7	G1249	alacsony
+1Tim.4.6	hu	11	leszel	parositva	6	G1510	alacsony
+1Tim.4.6	hu	12	táplálkozván	parositva	10	G1789	alacsony
+1Tim.4.6	hu	13	a	betoldas			alacsony
+1Tim.4.6	hu	14	hitnek	parositva	14	G4102	alacsony
+1Tim.4.6	hu	15	és	parositva	15	G2532	alacsony
+1Tim.4.6	hu	16	jó	parositva	17	G2570	alacsony
+1Tim.4.6	hu	17	tudománynak	parositva	18	G1319	alacsony
+1Tim.4.6	hu	18	beszédeivel	parositva	12	G3056	alacsony
+1Tim.4.6	hu	19	a	parositva	19	G3739	alacsony
+1Tim.4.6	hu	20	melyet	parositva	19	G3739	alacsony
+1Tim.4.6	hu	21	követtél	parositva	20	G3877	alacsony
+1Tim.4.6	er	1		parositva	1	G3778	alacsony
+1Tim.4.6	er	2		parositva	3,4	G5294	alacsony
+1Tim.4.6	er	3		forditatlan		G3588	alacsony
+1Tim.4.6	er	4		parositva	6	G0080	alacsony
+1Tim.4.6	er	5		parositva	9	G2570	alacsony
+1Tim.4.6	er	6		parositva	11	G1510	alacsony
+1Tim.4.6	er	7		parositva	10	G1249	alacsony
+1Tim.4.6	er	8		parositva	7	G5547	alacsony
+1Tim.4.6	er	9		parositva	8	G2424	alacsony
+1Tim.4.6	er	10		parositva	12	G1789	alacsony
+1Tim.4.6	er	11		forditatlan		G3588	alacsony
+1Tim.4.6	er	12		parositva	18	G3056	alacsony
+1Tim.4.6	er	13		forditatlan		G3588	alacsony
+1Tim.4.6	er	14		parositva	14	G4102	alacsony
+1Tim.4.6	er	15		parositva	15	G2532	alacsony
+1Tim.4.6	er	16		forditatlan		G3588	alacsony
+1Tim.4.6	er	17		parositva	16	G2570	alacsony
+1Tim.4.6	er	18		parositva	17	G1319	alacsony
+1Tim.4.6	er	19		parositva	19,20	G3739	alacsony
+1Tim.4.6	er	20		parositva	21	G3877	alacsony
+1Tim.4.7	hu	1	A	betoldas			alacsony
+1Tim.4.7	hu	2	szentségtelen	parositva	3	G0952	alacsony
+1Tim.4.7	hu	3	és	parositva	4	G2532	alacsony
+1Tim.4.7	hu	4	vénasszonyos	parositva	5	G1126	alacsony
+1Tim.4.7	hu	5	meséket	parositva	6	G3454	alacsony
+1Tim.4.7	hu	6	pedig	parositva	2	G1161	alacsony
+1Tim.4.7	hu	7	eltávoztasd	parositva	7	G3868	alacsony
+1Tim.4.7	hu	8	Hanem	parositva	9	G1161	alacsony
+1Tim.4.7	hu	9	gyakorold	parositva	8	G1128	alacsony
+1Tim.4.7	hu	10	magadat	parositva	10	G4771	alacsony
+1Tim.4.7	hu	11	a	betoldas			alacsony
+1Tim.4.7	hu	12	kegyességre	parositva	11,12	G4314+G2150	alacsony
+1Tim.4.7	er	1		forditatlan		G3588	alacsony
+1Tim.4.7	er	2		parositva	6	G1161	alacsony
+1Tim.4.7	er	3		parositva	2	G0952	alacsony
+1Tim.4.7	er	4		parositva	3	G2532	alacsony
+1Tim.4.7	er	5		parositva	4	G1126	alacsony
+1Tim.4.7	er	6		parositva	5	G3454	alacsony
+1Tim.4.7	er	7		parositva	7	G3868	alacsony
+1Tim.4.7	er	8		parositva	9	G1128	alacsony
+1Tim.4.7	er	9		parositva	8	G1161	alacsony
+1Tim.4.7	er	10		parositva	10	G4771	alacsony
+1Tim.4.7	er	11		parositva	12	G4314	alacsony
+1Tim.4.7	er	12		parositva	12	G2150	alacsony
+1Tim.4.8	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.4.8	hu	2	a	betoldas			alacsony
+1Tim.4.8	hu	3	test	parositva	3	G4984	alacsony
+1Tim.4.8	hu	4	gyakorlásának	parositva	4	G1129	alacsony
+1Tim.4.8	hu	5	kevés	parositva	5,6	G4314+G3641	alacsony
+1Tim.4.8	hu	6	haszna	parositva	8	G5624	alacsony
+1Tim.4.8	hu	7	van	parositva	7	G1510	alacsony
+1Tim.4.8	hu	8	de	parositva	10	G1161	alacsony
+1Tim.4.8	hu	9	a	betoldas			alacsony
+1Tim.4.8	hu	10	kegyesség	parositva	11	G2150	alacsony
+1Tim.4.8	hu	11	mindenre	parositva	12,13	G4314+G3956	alacsony
+1Tim.4.8	hu	12	hasznos	parositva	14,15	G5624+G1510	alacsony
+1Tim.4.8	hu	13	meglévén	parositva	17	G2192	alacsony
+1Tim.4.8	hu	14	benne	betoldas			alacsony
+1Tim.4.8	hu	15	a	betoldas			alacsony
+1Tim.4.8	hu	16	jelenvaló	parositva	20	G3568	alacsony
+1Tim.4.8	hu	17	és	parositva	21	G2532	alacsony
+1Tim.4.8	hu	18	a	betoldas			alacsony
+1Tim.4.8	hu	19	jövő	parositva	23	G3195	alacsony
+1Tim.4.8	hu	20	életnek	parositva	18	G2222	alacsony
+1Tim.4.8	hu	21	ígérete	parositva	16	G1860	alacsony
+1Tim.4.8	er	1		forditatlan		G3588	alacsony
+1Tim.4.8	er	2		parositva	1	G1063	alacsony
+1Tim.4.8	er	3		parositva	3	G4984	alacsony
+1Tim.4.8	er	4		parositva	4	G1129	alacsony
+1Tim.4.8	er	5		parositva	5	G4314	alacsony
+1Tim.4.8	er	6		parositva	5	G3641	alacsony
+1Tim.4.8	er	7		parositva	7	G1510	alacsony
+1Tim.4.8	er	8		parositva	6	G5624	alacsony
+1Tim.4.8	er	9		forditatlan		G3588	alacsony
+1Tim.4.8	er	10		parositva	8	G1161	alacsony
+1Tim.4.8	er	11		parositva	10	G2150	alacsony
+1Tim.4.8	er	12		parositva	11	G4314	alacsony
+1Tim.4.8	er	13		parositva	11	G3956	alacsony
+1Tim.4.8	er	14		parositva	12	G5624	alacsony
+1Tim.4.8	er	15		parositva	12	G1510	alacsony
+1Tim.4.8	er	16		parositva	21	G1860	alacsony
+1Tim.4.8	er	17		parositva	13	G2192	alacsony
+1Tim.4.8	er	18		parositva	20	G2222	alacsony
+1Tim.4.8	er	19		forditatlan		G3588	alacsony
+1Tim.4.8	er	20		parositva	16	G3568	alacsony
+1Tim.4.8	er	21		parositva	17	G2532	alacsony
+1Tim.4.8	er	22		forditatlan		G3588	alacsony
+1Tim.4.8	er	23		parositva	19	G3195	alacsony
+1Tim.4.9	hu	1	Igaz	parositva	1	G4103	alacsony
+1Tim.4.9	hu	2	ez	parositva	2	G3588	alacsony
+1Tim.4.9	hu	3	a	betoldas			alacsony
+1Tim.4.9	hu	4	beszéd	parositva	3	G3056	alacsony
+1Tim.4.9	hu	5	és	parositva	4	G2532	alacsony
+1Tim.4.9	hu	6	méltó	parositva	7	G0514	alacsony
+1Tim.4.9	hu	7	hogy	betoldas			alacsony
+1Tim.4.9	hu	8	mindenképpen	parositva	5	G3956	alacsony
+1Tim.4.9	hu	9	elfogadjuk	parositva	6	G0594	alacsony
+1Tim.4.9	er	1		parositva	1	G4103	alacsony
+1Tim.4.9	er	2		parositva	2	G3588	alacsony
+1Tim.4.9	er	3		parositva	4	G3056	alacsony
+1Tim.4.9	er	4		parositva	5	G2532	alacsony
+1Tim.4.9	er	5		parositva	8	G3956	alacsony
+1Tim.4.9	er	6		parositva	9	G0594	alacsony
+1Tim.4.9	er	7		parositva	6	G0514	alacsony
+1Tim.4.10	hu	1	Mert	parositva	3	G1063	alacsony
+1Tim.4.10	hu	2	azért	parositva	1,2	G1519+G3778	alacsony
+1Tim.4.10	hu	3	fáradunk	parositva	5	G2872	alacsony
+1Tim.4.10	hu	4	és	parositva	6	G2532	alacsony
+1Tim.4.10	hu	5	szenvedünk	betoldas			alacsony
+1Tim.4.10	hu	6	szidalmakat	betoldas			alacsony
+1Tim.4.10	hu	7	mivelhogy	parositva	8	G3754	alacsony
+1Tim.4.10	hu	8	reménységünket	parositva	9	G1679	alacsony
+1Tim.4.10	hu	9	vetettük	parositva	9	G1679	alacsony
+1Tim.4.10	hu	10	az	betoldas			alacsony
+1Tim.4.10	hu	11	élő	parositva	12	G2198	alacsony
+1Tim.4.10	hu	12	Istenben	parositva	10,11	G1909+G2316	alacsony
+1Tim.4.10	hu	13	a	parositva	13	G3739	alacsony
+1Tim.4.10	hu	14	ki	parositva	13	G3739	alacsony
+1Tim.4.10	hu	15	minden	parositva	16	G3956	alacsony
+1Tim.4.10	hu	16	embernek	parositva	17	G0444	alacsony
+1Tim.4.10	hu	17	megtartója	parositva	14,15	G1510+G4990	alacsony
+1Tim.4.10	hu	18	kiváltképen	parositva	18	G3122	alacsony
+1Tim.4.10	hu	19	a	betoldas			alacsony
+1Tim.4.10	hu	20	hívőknek	parositva	19	G4103	alacsony
+1Tim.4.10	er	1		parositva	2	G1519	alacsony
+1Tim.4.10	er	2		parositva	2	G3778	alacsony
+1Tim.4.10	er	3		parositva	1	G1063	alacsony
+1Tim.4.10	er	4		forditatlan		G2532	alacsony
+1Tim.4.10	er	5		parositva	3	G2872	alacsony
+1Tim.4.10	er	6		parositva	4	G2532	alacsony
+1Tim.4.10	er	7		forditatlan		G0075	alacsony
+1Tim.4.10	er	8		parositva	7	G3754	alacsony
+1Tim.4.10	er	9		parositva	8,9	G1679	alacsony
+1Tim.4.10	er	10		parositva	12	G1909	alacsony
+1Tim.4.10	er	11		parositva	12	G2316	alacsony
+1Tim.4.10	er	12		parositva	11	G2198	alacsony
+1Tim.4.10	er	13		parositva	13,14	G3739	alacsony
+1Tim.4.10	er	14		parositva	17	G1510	alacsony
+1Tim.4.10	er	15		parositva	17	G4990	alacsony
+1Tim.4.10	er	16		parositva	15	G3956	alacsony
+1Tim.4.10	er	17		parositva	16	G0444	alacsony
+1Tim.4.10	er	18		parositva	18	G3122	alacsony
+1Tim.4.10	er	19		parositva	20	G4103	alacsony
+1Tim.4.11	hu	1	Ezeket	parositva	2	G3778	alacsony
+1Tim.4.11	hu	2	hirdessed	parositva	1	G3853	alacsony
+1Tim.4.11	hu	3	és	parositva	3	G2532	alacsony
+1Tim.4.11	hu	4	tanítsad	parositva	4	G1321	alacsony
+1Tim.4.11	er	1		parositva	2	G3853	alacsony
+1Tim.4.11	er	2		parositva	1	G3778	alacsony
+1Tim.4.11	er	3		parositva	3	G2532	alacsony
+1Tim.4.11	er	4		parositva	4	G1321	alacsony
+1Tim.4.12	hu	1	Senki	parositva	1	G3367	alacsony
+1Tim.4.12	hu	2	a	betoldas			alacsony
+1Tim.4.12	hu	3	te	parositva	2	G4771	alacsony
+1Tim.4.12	hu	4	ifjúságodat	parositva	2,4	G4771+G3503	alacsony
+1Tim.4.12	hu	5	meg	parositva	5	G2706	alacsony
+1Tim.4.12	hu	6	ne	parositva	5	G2706	alacsony
+1Tim.4.12	hu	7	vesse	parositva	5	G2706	alacsony
+1Tim.4.12	hu	8	hanem	parositva	6	G0235	alacsony
+1Tim.4.12	hu	9	légy	parositva	8	G1096	alacsony
+1Tim.4.12	hu	10	példa	parositva	7	G5179	alacsony
+1Tim.4.12	hu	11	a	betoldas			alacsony
+1Tim.4.12	hu	12	hívőknek	parositva	9,10	G3588+G4103	alacsony
+1Tim.4.12	hu	13	a	betoldas			alacsony
+1Tim.4.12	hu	14	beszédben	parositva	11,12	G1722+G3056	alacsony
+1Tim.4.12	hu	15	a	betoldas			alacsony
+1Tim.4.12	hu	16	magaviseletben	parositva	13,14	G1722+G0391	alacsony
+1Tim.4.12	hu	17	a	betoldas			alacsony
+1Tim.4.12	hu	18	szeretetben	parositva	15,16	G1722+G0026	alacsony
+1Tim.4.12	hu	19	a	betoldas			alacsony
+1Tim.4.12	hu	20	lélekben	parositva	17,18	G1722+G4151	alacsony
+1Tim.4.12	hu	21	a	betoldas			alacsony
+1Tim.4.12	hu	22	hitben	parositva	19,20	G1722+G4102	alacsony
+1Tim.4.12	hu	23	a	betoldas			alacsony
+1Tim.4.12	hu	24	tisztaságban	parositva	21,22	G1722+G0047	alacsony
+1Tim.4.12	er	1		parositva	1	G3367	alacsony
+1Tim.4.12	er	2		parositva	3,4	G4771	alacsony
+1Tim.4.12	er	3		forditatlan		G3588	alacsony
+1Tim.4.12	er	4		parositva	4	G3503	alacsony
+1Tim.4.12	er	5		parositva	5,6,7	G2706	alacsony
+1Tim.4.12	er	6		parositva	8	G0235	alacsony
+1Tim.4.12	er	7		parositva	10	G5179	alacsony
+1Tim.4.12	er	8		parositva	9	G1096	alacsony
+1Tim.4.12	er	9		parositva	12	G3588	alacsony
+1Tim.4.12	er	10		parositva	12	G4103	alacsony
+1Tim.4.12	er	11		parositva	14	G1722	alacsony
+1Tim.4.12	er	12		parositva	14	G3056	alacsony
+1Tim.4.12	er	13		parositva	16	G1722	alacsony
+1Tim.4.12	er	14		parositva	16	G0391	alacsony
+1Tim.4.12	er	15		parositva	18	G1722	alacsony
+1Tim.4.12	er	16		parositva	18	G0026	alacsony
+1Tim.4.12	er	17		parositva	20	G1722	alacsony
+1Tim.4.12	er	18		parositva	20	G4151	alacsony
+1Tim.4.12	er	19		parositva	22	G1722	alacsony
+1Tim.4.12	er	20		parositva	22	G4102	alacsony
+1Tim.4.12	er	21		parositva	24	G1722	alacsony
+1Tim.4.12	er	22		parositva	24	G0047	alacsony
+1Tim.4.13	hu	1	A	parositva	1	G2193	alacsony
+1Tim.4.13	hu	2	míg	parositva	1	G2193	alacsony
+1Tim.4.13	hu	3	oda	parositva	2	G2064	alacsony
+1Tim.4.13	hu	4	megyek	parositva	2	G2064	alacsony
+1Tim.4.13	hu	5	legyen	parositva	3	G4337	alacsony
+1Tim.4.13	hu	6	gondod	parositva	3	G4337	alacsony
+1Tim.4.13	hu	7	a	betoldas			alacsony
+1Tim.4.13	hu	8	felolvasásra	parositva	5	G0320	alacsony
+1Tim.4.13	hu	9	az	betoldas			alacsony
+1Tim.4.13	hu	10	intésre	parositva	7	G3874	alacsony
+1Tim.4.13	hu	11	és	betoldas			alacsony
+1Tim.4.13	hu	12	a	betoldas			alacsony
+1Tim.4.13	hu	13	tanításra	parositva	9	G1319	alacsony
+1Tim.4.13	er	1		parositva	1,2	G2193	alacsony
+1Tim.4.13	er	2		parositva	3,4	G2064	alacsony
+1Tim.4.13	er	3		parositva	5,6	G4337	alacsony
+1Tim.4.13	er	4		forditatlan		G3588	alacsony
+1Tim.4.13	er	5		parositva	8	G0320	alacsony
+1Tim.4.13	er	6		forditatlan		G3588	alacsony
+1Tim.4.13	er	7		parositva	10	G3874	alacsony
+1Tim.4.13	er	8		forditatlan		G3588	alacsony
+1Tim.4.13	er	9		parositva	13	G1319	alacsony
+1Tim.4.14	hu	1	Meg	parositva	2	G0272	alacsony
+1Tim.4.14	hu	2	ne	parositva	1	G3361	alacsony
+1Tim.4.14	hu	3	vesd	parositva	2	G0272	alacsony
+1Tim.4.14	hu	4	a	betoldas			alacsony
+1Tim.4.14	hu	5	kegyelemnek	parositva	6	G5486	alacsony
+1Tim.4.14	hu	6	benned	parositva	4,5	G1722+G4771	alacsony
+1Tim.4.14	hu	7	való	betoldas			alacsony
+1Tim.4.14	hu	8	ajándékát	parositva	6	G5486	alacsony
+1Tim.4.14	hu	9	a	parositva	7	G3739	alacsony
+1Tim.4.14	hu	10	mely	parositva	7	G3739	alacsony
+1Tim.4.14	hu	11	adatott	parositva	8	G1325	alacsony
+1Tim.4.14	hu	12	néked	parositva	9	G4771	alacsony
+1Tim.4.14	hu	13	prófétálás	parositva	11	G4394	alacsony
+1Tim.4.14	hu	14	által	parositva	10	G1223	alacsony
+1Tim.4.14	hu	15	a	betoldas			alacsony
+1Tim.4.14	hu	16	presbitérium	parositva	17	G4244	alacsony
+1Tim.4.14	hu	17	kezeinek	parositva	15	G5495	alacsony
+1Tim.4.14	hu	18	reád	betoldas			alacsony
+1Tim.4.14	hu	19	tevésével	parositva	12,13	G3326+G1936	alacsony
+1Tim.4.14	er	1		parositva	2	G3361	alacsony
+1Tim.4.14	er	2		parositva	1,3	G0272	alacsony
+1Tim.4.14	er	3		forditatlan		G3588	alacsony
+1Tim.4.14	er	4		parositva	6	G1722	alacsony
+1Tim.4.14	er	5		parositva	6	G4771	alacsony
+1Tim.4.14	er	6		parositva	5,8	G5486	alacsony
+1Tim.4.14	er	7		parositva	9,10	G3739	alacsony
+1Tim.4.14	er	8		parositva	11	G1325	alacsony
+1Tim.4.14	er	9		parositva	12	G4771	alacsony
+1Tim.4.14	er	10		parositva	14	G1223	alacsony
+1Tim.4.14	er	11		parositva	13	G4394	alacsony
+1Tim.4.14	er	12		parositva	19	G3326	alacsony
+1Tim.4.14	er	13		parositva	19	G1936	alacsony
+1Tim.4.14	er	14		forditatlan		G3588	alacsony
+1Tim.4.14	er	15		parositva	17	G5495	alacsony
+1Tim.4.14	er	16		forditatlan		G3588	alacsony
+1Tim.4.14	er	17		parositva	16	G4244	alacsony
+1Tim.4.15	hu	1	Ezekről	parositva	1	G3778	alacsony
+1Tim.4.15	hu	2	gondoskodjál	parositva	2	G3191	alacsony
+1Tim.4.15	hu	3	ezeken	parositva	3,4	G1722+G3778	alacsony
+1Tim.4.15	hu	4	légy	parositva	5	G1510	alacsony
+1Tim.4.15	hu	5	hogy	parositva	6	G2443	alacsony
+1Tim.4.15	hu	6	előhaladásod	parositva	7,9	G4771+G4297	alacsony
+1Tim.4.15	hu	7	nyilvánvaló	parositva	10	G5318	alacsony
+1Tim.4.15	hu	8	legyen	parositva	11	G1510	alacsony
+1Tim.4.15	hu	9	mindenek	parositva	13	G3956	alacsony
+1Tim.4.15	hu	10	előtt	parositva	12	G1722	alacsony
+1Tim.4.15	er	1		parositva	1	G3778	alacsony
+1Tim.4.15	er	2		parositva	2	G3191	alacsony
+1Tim.4.15	er	3		parositva	3	G1722	alacsony
+1Tim.4.15	er	4		parositva	3	G3778	alacsony
+1Tim.4.15	er	5		parositva	4	G1510	alacsony
+1Tim.4.15	er	6		parositva	5	G2443	alacsony
+1Tim.4.15	er	7		parositva	6	G4771	alacsony
+1Tim.4.15	er	8		forditatlan		G3588	alacsony
+1Tim.4.15	er	9		parositva	6	G4297	alacsony
+1Tim.4.15	er	10		parositva	7	G5318	alacsony
+1Tim.4.15	er	11		parositva	8	G1510	alacsony
+1Tim.4.15	er	12		parositva	10	G1722	alacsony
+1Tim.4.15	er	13		parositva	9	G3956	alacsony
+1Tim.4.16	hu	1	Gondot	parositva	1	G1907	alacsony
+1Tim.4.16	hu	2	viselj	parositva	1	G1907	alacsony
+1Tim.4.16	hu	3	magadról	parositva	2	G4771	alacsony
+1Tim.4.16	hu	4	és	parositva	3	G2532	alacsony
+1Tim.4.16	hu	5	a	betoldas			alacsony
+1Tim.4.16	hu	6	tudományról	parositva	5	G1319	alacsony
+1Tim.4.16	hu	7	maradj	parositva	6	G1961	alacsony
+1Tim.4.16	hu	8	meg	parositva	6	G1961	alacsony
+1Tim.4.16	hu	9	azokban	parositva	7	G0846	alacsony
+1Tim.4.16	hu	10	mert	parositva	9	G1063	alacsony
+1Tim.4.16	hu	11	ezt	parositva	8	G3778	alacsony
+1Tim.4.16	hu	12	cselekedvén	parositva	10	G4160	alacsony
+1Tim.4.16	hu	13	mind	parositva	11	G2532	alacsony
+1Tim.4.16	hu	14	magadat	parositva	12	G4771	alacsony
+1Tim.4.16	hu	15	megtartod	parositva	13	G4982	alacsony
+1Tim.4.16	hu	16	mind	parositva	14	G2532	alacsony
+1Tim.4.16	hu	17	a	betoldas			alacsony
+1Tim.4.16	hu	18	te	parositva	17	G4771	alacsony
+1Tim.4.16	hu	19	hallgatóidat	parositva	16,17	G0191+G4771	alacsony
+1Tim.4.16	er	1		parositva	1,2	G1907	alacsony
+1Tim.4.16	er	2		parositva	3	G4771	alacsony
+1Tim.4.16	er	3		parositva	4	G2532	alacsony
+1Tim.4.16	er	4		forditatlan		G3588	alacsony
+1Tim.4.16	er	5		parositva	6	G1319	alacsony
+1Tim.4.16	er	6		parositva	7,8	G1961	alacsony
+1Tim.4.16	er	7		parositva	9	G0846	alacsony
+1Tim.4.16	er	8		parositva	11	G3778	alacsony
+1Tim.4.16	er	9		parositva	10	G1063	alacsony
+1Tim.4.16	er	10		parositva	12	G4160	alacsony
+1Tim.4.16	er	11		parositva	13	G2532	alacsony
+1Tim.4.16	er	12		parositva	14	G4771	alacsony
+1Tim.4.16	er	13		parositva	15	G4982	alacsony
+1Tim.4.16	er	14		parositva	16	G2532	alacsony
+1Tim.4.16	er	15		forditatlan		G3588	alacsony
+1Tim.4.16	er	16		parositva	19	G0191	alacsony
+1Tim.4.16	er	17		parositva	18,19	G4771	alacsony
+1Tim.5.1	hu	1	Az	betoldas			alacsony
+1Tim.5.1	hu	2	idősb	parositva	1	G4245	alacsony
+1Tim.5.1	hu	3	embert	betoldas			alacsony
+1Tim.5.1	hu	4	ne	parositva	2	G3361	alacsony
+1Tim.5.1	hu	5	dorgáld	parositva	3	G1969	alacsony
+1Tim.5.1	hu	6	meg	parositva	3	G1969	alacsony
+1Tim.5.1	hu	7	hanem	parositva	4	G0235	alacsony
+1Tim.5.1	hu	8	intsed	parositva	5	G3870	alacsony
+1Tim.5.1	hu	9	mint	parositva	6	G5613	alacsony
+1Tim.5.1	hu	10	atyádat	parositva	7	G3962	alacsony
+1Tim.5.1	hu	11	az	betoldas			alacsony
+1Tim.5.1	hu	12	ifjabbakat	parositva	8	G3501	alacsony
+1Tim.5.1	hu	13	mint	parositva	9	G5613	alacsony
+1Tim.5.1	hu	14	atyádfiait	parositva	10	G0080	alacsony
+1Tim.5.1	er	1		parositva	2	G4245	alacsony
+1Tim.5.1	er	2		parositva	4	G3361	alacsony
+1Tim.5.1	er	3		parositva	5,6	G1969	alacsony
+1Tim.5.1	er	4		parositva	7	G0235	alacsony
+1Tim.5.1	er	5		parositva	8	G3870	alacsony
+1Tim.5.1	er	6		parositva	9	G5613	alacsony
+1Tim.5.1	er	7		parositva	10	G3962	alacsony
+1Tim.5.1	er	8		parositva	12	G3501	alacsony
+1Tim.5.1	er	9		parositva	13	G5613	alacsony
+1Tim.5.1	er	10		parositva	14	G0080	alacsony
+1Tim.5.2	hu	1	Az	betoldas			alacsony
+1Tim.5.2	hu	2	idősb	parositva	1	G4245	alacsony
+1Tim.5.2	hu	3	asszonyokat	betoldas			alacsony
+1Tim.5.2	hu	4	mint	parositva	2	G5613	alacsony
+1Tim.5.2	hu	5	anyákat	parositva	3	G3384	alacsony
+1Tim.5.2	hu	6	az	betoldas			alacsony
+1Tim.5.2	hu	7	ifjabbakat	parositva	4	G3501	alacsony
+1Tim.5.2	hu	8	mint	parositva	5	G5613	alacsony
+1Tim.5.2	hu	9	nőtestvéreidet	parositva	6	G0079	alacsony
+1Tim.5.2	hu	10	teljes	parositva	8	G3956	alacsony
+1Tim.5.2	hu	11	tisztasággal	parositva	7,9	G1722+G0047	alacsony
+1Tim.5.2	er	1		parositva	2	G4245	alacsony
+1Tim.5.2	er	2		parositva	4	G5613	alacsony
+1Tim.5.2	er	3		parositva	5	G3384	alacsony
+1Tim.5.2	er	4		parositva	7	G3501	alacsony
+1Tim.5.2	er	5		parositva	8	G5613	alacsony
+1Tim.5.2	er	6		parositva	9	G0079	alacsony
+1Tim.5.2	er	7		parositva	11	G1722	alacsony
+1Tim.5.2	er	8		parositva	10	G3956	alacsony
+1Tim.5.2	er	9		parositva	11	G0047	alacsony
+1Tim.5.3	hu	1	Az	betoldas			alacsony
+1Tim.5.3	hu	2	özvegyasszonyokat	parositva	1	G5503	alacsony
+1Tim.5.3	hu	3	a	parositva	3	G3588	alacsony
+1Tim.5.3	hu	4	kik	parositva	3	G3588	alacsony
+1Tim.5.3	hu	5	valóban	parositva	4	G3689	alacsony
+1Tim.5.3	hu	6	özvegyek	parositva	5	G5503	alacsony
+1Tim.5.3	hu	7	tiszteld	parositva	2	G5091	alacsony
+1Tim.5.3	er	1		parositva	2	G5503	alacsony
+1Tim.5.3	er	2		parositva	7	G5091	alacsony
+1Tim.5.3	er	3		parositva	3,4	G3588	alacsony
+1Tim.5.3	er	4		parositva	5	G3689	alacsony
+1Tim.5.3	er	5		parositva	6	G5503	alacsony
+1Tim.5.4	hu	1	Ha	parositva	1	G1487	alacsony
+1Tim.5.4	hu	2	pedig	parositva	2	G1161	alacsony
+1Tim.5.4	hu	3	valamely	parositva	3	G5100	alacsony
+1Tim.5.4	hu	4	özvegyasszonynak	parositva	4	G5503	alacsony
+1Tim.5.4	hu	5	gyermekei	parositva	5	G5043	alacsony
+1Tim.5.4	hu	6	vagy	parositva	6	G2228	alacsony
+1Tim.5.4	hu	7	unokái	parositva	7	G1549	alacsony
+1Tim.5.4	hu	8	vannak	parositva	8	G2192	alacsony
+1Tim.5.4	hu	9	tanulják	parositva	9	G3129	alacsony
+1Tim.5.4	hu	10	meg	parositva	9	G3129	alacsony
+1Tim.5.4	hu	11	hogy	betoldas			alacsony
+1Tim.5.4	hu	12	első	parositva	10	G4413	alacsony
+1Tim.5.4	hu	13	sorban	parositva	10	G4413	alacsony
+1Tim.5.4	hu	14	a	betoldas			alacsony
+1Tim.5.4	hu	15	maguk	parositva	12	G2398	alacsony
+1Tim.5.4	hu	16	háza	parositva	13	G3624	alacsony
+1Tim.5.4	hu	17	iránt	parositva	13	G3624	alacsony
+1Tim.5.4	hu	18	legyenek	parositva	14	G2151	alacsony
+1Tim.5.4	hu	19	istenfélők	parositva	14	G2151	alacsony
+1Tim.5.4	hu	20	és	parositva	15	G2532	alacsony
+1Tim.5.4	hu	21	adják	parositva	17	G0591	alacsony
+1Tim.5.4	hu	22	meg	parositva	17	G0591	alacsony
+1Tim.5.4	hu	23	szüleiknek	parositva	19	G4269	alacsony
+1Tim.5.4	hu	24	a	betoldas			alacsony
+1Tim.5.4	hu	25	viszont	parositva	16	G0287	alacsony
+1Tim.5.4	hu	26	tartozást	parositva	16	G0287	alacsony
+1Tim.5.4	hu	27	mert	parositva	21	G1063	alacsony
+1Tim.5.4	hu	28	ez	parositva	20	G3778	alacsony
+1Tim.5.4	hu	29	szép	parositva	23	G2570	alacsony
+1Tim.5.4	hu	30	és	parositva	24	G2532	alacsony
+1Tim.5.4	hu	31	kedves	parositva	25	G0587	alacsony
+1Tim.5.4	hu	32	dolog	betoldas			alacsony
+1Tim.5.4	hu	33	Isten	parositva	28	G2316	alacsony
+1Tim.5.4	hu	34	előtt	parositva	26	G1799	alacsony
+1Tim.5.4	er	1		parositva	1	G1487	alacsony
+1Tim.5.4	er	2		parositva	2	G1161	alacsony
+1Tim.5.4	er	3		parositva	3	G5100	alacsony
+1Tim.5.4	er	4		parositva	4	G5503	alacsony
+1Tim.5.4	er	5		parositva	5	G5043	alacsony
+1Tim.5.4	er	6		parositva	6	G2228	alacsony
+1Tim.5.4	er	7		parositva	7	G1549	alacsony
+1Tim.5.4	er	8		parositva	8	G2192	alacsony
+1Tim.5.4	er	9		parositva	9,10	G3129	alacsony
+1Tim.5.4	er	10		parositva	12,13	G4413	alacsony
+1Tim.5.4	er	11		forditatlan		G3588	alacsony
+1Tim.5.4	er	12		parositva	15	G2398	alacsony
+1Tim.5.4	er	13		parositva	16,17	G3624	alacsony
+1Tim.5.4	er	14		parositva	18,19	G2151	alacsony
+1Tim.5.4	er	15		parositva	20	G2532	alacsony
+1Tim.5.4	er	16		parositva	25,26	G0287	alacsony
+1Tim.5.4	er	17		parositva	21,22	G0591	alacsony
+1Tim.5.4	er	18		forditatlan		G3588	alacsony
+1Tim.5.4	er	19		parositva	23	G4269	alacsony
+1Tim.5.4	er	20		parositva	28	G3778	alacsony
+1Tim.5.4	er	21		parositva	27	G1063	alacsony
+1Tim.5.4	er	22		forditatlan		G1510	alacsony
+1Tim.5.4	er	23		parositva	29	G2570	alacsony
+1Tim.5.4	er	24		parositva	30	G2532	alacsony
+1Tim.5.4	er	25		parositva	31	G0587	alacsony
+1Tim.5.4	er	26		parositva	34	G1799	alacsony
+1Tim.5.4	er	27		forditatlan		G3588	alacsony
+1Tim.5.4	er	28		parositva	33	G2316	alacsony
+1Tim.5.5	hu	1	A	betoldas			alacsony
+1Tim.5.5	hu	2	valóban	parositva	3	G3689	alacsony
+1Tim.5.5	hu	3	özvegy	parositva	4	G5503	alacsony
+1Tim.5.5	hu	4	és	parositva	5	G2532	alacsony
+1Tim.5.5	hu	5	magára	parositva	6	G3443	alacsony
+1Tim.5.5	hu	6	hagyatott	parositva	6	G3443	alacsony
+1Tim.5.5	hu	7	asszony	betoldas			alacsony
+1Tim.5.5	hu	8	pedig	parositva	2	G1161	alacsony
+1Tim.5.5	hu	9	reménységét	parositva	7	G1679	alacsony
+1Tim.5.5	hu	10	az	betoldas			alacsony
+1Tim.5.5	hu	11	Istenben	parositva	8,10	G1909+G2316	alacsony
+1Tim.5.5	hu	12	veti	parositva	7	G1679	alacsony
+1Tim.5.5	hu	13	és	parositva	11	G2532	alacsony
+1Tim.5.5	hu	14	foglalatos	parositva	12	G4357	alacsony
+1Tim.5.5	hu	15	a	betoldas			alacsony
+1Tim.5.5	hu	16	könyörgésekben	parositva	14	G1162	alacsony
+1Tim.5.5	hu	17	és	parositva	15	G2532	alacsony
+1Tim.5.5	hu	18	imádságokban	parositva	17	G4335	alacsony
+1Tim.5.5	hu	19	éjjel	parositva	18	G3571	alacsony
+1Tim.5.5	hu	20	és	parositva	19	G2532	alacsony
+1Tim.5.5	hu	21	nappal	parositva	20	G2250	alacsony
+1Tim.5.5	er	1		forditatlan		G3588	alacsony
+1Tim.5.5	er	2		parositva	8	G1161	alacsony
+1Tim.5.5	er	3		parositva	2	G3689	alacsony
+1Tim.5.5	er	4		parositva	3	G5503	alacsony
+1Tim.5.5	er	5		parositva	4	G2532	alacsony
+1Tim.5.5	er	6		parositva	5,6	G3443	alacsony
+1Tim.5.5	er	7		parositva	9,12	G1679	alacsony
+1Tim.5.5	er	8		parositva	11	G1909	alacsony
+1Tim.5.5	er	9		forditatlan		G3588	alacsony
+1Tim.5.5	er	10		parositva	11	G2316	alacsony
+1Tim.5.5	er	11		parositva	13	G2532	alacsony
+1Tim.5.5	er	12		parositva	14	G4357	alacsony
+1Tim.5.5	er	13		forditatlan		G3588	alacsony
+1Tim.5.5	er	14		parositva	16	G1162	alacsony
+1Tim.5.5	er	15		parositva	17	G2532	alacsony
+1Tim.5.5	er	16		forditatlan		G3588	alacsony
+1Tim.5.5	er	17		parositva	18	G4335	alacsony
+1Tim.5.5	er	18		parositva	19	G3571	alacsony
+1Tim.5.5	er	19		parositva	20	G2532	alacsony
+1Tim.5.5	er	20		parositva	21	G2250	alacsony
+1Tim.5.6	hu	1	A	betoldas			alacsony
+1Tim.5.6	hu	2	bujálkodó	parositva	3	G4684	alacsony
+1Tim.5.6	hu	3	pedig	parositva	2	G1161	alacsony
+1Tim.5.6	hu	4	élvén	parositva	4	G2198	alacsony
+1Tim.5.6	hu	5	megholt	parositva	5	G2348	alacsony
+1Tim.5.6	er	1		forditatlan		G3588	alacsony
+1Tim.5.6	er	2		parositva	3	G1161	alacsony
+1Tim.5.6	er	3		parositva	2	G4684	alacsony
+1Tim.5.6	er	4		parositva	4	G2198	alacsony
+1Tim.5.6	er	5		parositva	5	G2348	alacsony
+1Tim.5.7	hu	1	És	parositva	1	G2532	alacsony
+1Tim.5.7	hu	2	ezeket	parositva	2	G3778	alacsony
+1Tim.5.7	hu	3	hirdesd	parositva	3	G3853	alacsony
+1Tim.5.7	hu	4	hogy	parositva	4	G2443	alacsony
+1Tim.5.7	hu	5	feddhetetlenek	parositva	5	G0423	alacsony
+1Tim.5.7	hu	6	legyenek	parositva	6	G1510	alacsony
+1Tim.5.7	er	1		parositva	1	G2532	alacsony
+1Tim.5.7	er	2		parositva	2	G3778	alacsony
+1Tim.5.7	er	3		parositva	3	G3853	alacsony
+1Tim.5.7	er	4		parositva	4	G2443	alacsony
+1Tim.5.7	er	5		parositva	5	G0423	alacsony
+1Tim.5.7	er	6		parositva	6	G1510	alacsony
+1Tim.5.8	hu	1	Ha	parositva	1	G1487	alacsony
+1Tim.5.8	hu	2	pedig	parositva	2	G1161	alacsony
+1Tim.5.8	hu	3	valaki	parositva	3	G5100	alacsony
+1Tim.5.8	hu	4	az	betoldas			alacsony
+1Tim.5.8	hu	5	övéiről	parositva	5	G2398	alacsony
+1Tim.5.8	hu	6	és	parositva	6	G2532	alacsony
+1Tim.5.8	hu	7	főképen	parositva	7	G3122	alacsony
+1Tim.5.8	hu	8	az	betoldas			alacsony
+1Tim.5.8	hu	9	ő	parositva	9	G3609	alacsony
+1Tim.5.8	hu	10	házanépéről	parositva	9	G3609	alacsony
+1Tim.5.8	hu	11	gondot	betoldas			alacsony
+1Tim.5.8	hu	12	nem	parositva	10	G3756	alacsony
+1Tim.5.8	hu	13	visel	betoldas			alacsony
+1Tim.5.8	hu	14	a	betoldas			alacsony
+1Tim.5.8	hu	15	hitet	parositva	13	G4102	alacsony
+1Tim.5.8	hu	16	megtagadta	parositva	14	G0720	alacsony
+1Tim.5.8	hu	17	és	parositva	15	G2532	alacsony
+1Tim.5.8	hu	18	rosszabb	parositva	18	G5501	alacsony
+1Tim.5.8	hu	19	a	betoldas			alacsony
+1Tim.5.8	hu	20	hitetlennél	parositva	17	G0571	alacsony
+1Tim.5.8	er	1		parositva	1	G1487	alacsony
+1Tim.5.8	er	2		parositva	2	G1161	alacsony
+1Tim.5.8	er	3		parositva	3	G5100	alacsony
+1Tim.5.8	er	4		forditatlan		G3588	alacsony
+1Tim.5.8	er	5		parositva	5	G2398	alacsony
+1Tim.5.8	er	6		parositva	6	G2532	alacsony
+1Tim.5.8	er	7		parositva	7	G3122	alacsony
+1Tim.5.8	er	8		forditatlan		G3588	alacsony
+1Tim.5.8	er	9		parositva	9,10	G3609	alacsony
+1Tim.5.8	er	10		parositva	12	G3756	alacsony
+1Tim.5.8	er	11		forditatlan		G4306	alacsony
+1Tim.5.8	er	12		forditatlan		G3588	alacsony
+1Tim.5.8	er	13		parositva	15	G4102	alacsony
+1Tim.5.8	er	14		parositva	16	G0720	alacsony
+1Tim.5.8	er	15		parositva	17	G2532	alacsony
+1Tim.5.8	er	16		forditatlan		G1510	alacsony
+1Tim.5.8	er	17		parositva	20	G0571	alacsony
+1Tim.5.8	er	18		parositva	18	G5501	alacsony
+1Tim.5.9	hu	1	Özvegyasszonyul	parositva	1	G5503	alacsony
+1Tim.5.9	hu	2	hatvan	parositva	6	G1835	alacsony
+1Tim.5.9	hu	3	éven	parositva	5	G2094	alacsony
+1Tim.5.9	hu	4	alul	parositva	4	G1640	alacsony
+1Tim.5.9	hu	5	levő	parositva	4	G1640	alacsony
+1Tim.5.9	hu	6	meg	parositva	2	G2639	alacsony
+1Tim.5.9	hu	7	ne	parositva	3	G3361	alacsony
+1Tim.5.9	hu	8	választassék	parositva	2	G2639	alacsony
+1Tim.5.9	hu	9	egy	parositva	8	G1520	alacsony
+1Tim.5.9	hu	10	férj	parositva	9	G0435	alacsony
+1Tim.5.9	hu	11	felesége	parositva	10	G1135	alacsony
+1Tim.5.9	hu	12	lett	parositva	7	G1096	alacsony
+1Tim.5.9	hu	13	légyen	parositva	7	G1096	alacsony
+1Tim.5.9	er	1		parositva	1	G5503	alacsony
+1Tim.5.9	er	2		parositva	6,8	G2639	alacsony
+1Tim.5.9	er	3		parositva	7	G3361	alacsony
+1Tim.5.9	er	4		parositva	4,5	G1640	alacsony
+1Tim.5.9	er	5		parositva	3	G2094	alacsony
+1Tim.5.9	er	6		parositva	2	G1835	alacsony
+1Tim.5.9	er	7		parositva	12,13	G1096	alacsony
+1Tim.5.9	er	8		parositva	9	G1520	alacsony
+1Tim.5.9	er	9		parositva	10	G0435	alacsony
+1Tim.5.9	er	10		parositva	11	G1135	alacsony
+1Tim.5.10	hu	1	A	betoldas			alacsony
+1Tim.5.10	hu	2	kinek	betoldas			alacsony
+1Tim.5.10	hu	3	jó	parositva	3	G2570	alacsony
+1Tim.5.10	hu	4	cselekedetekről	parositva	1,2	G1722+G2041	alacsony
+1Tim.5.10	hu	5	bizonysága	parositva	4	G3140	alacsony
+1Tim.5.10	hu	6	van	parositva	4	G3140	alacsony
+1Tim.5.10	hu	7	ha	parositva	5	G1487	alacsony
+1Tim.5.10	hu	8	gyermeket	parositva	6	G5044	alacsony
+1Tim.5.10	hu	9	nevelt	parositva	6	G5044	alacsony
+1Tim.5.10	hu	10	ha	parositva	7	G1487	alacsony
+1Tim.5.10	hu	11	vendéglátó	parositva	8	G3580	alacsony
+1Tim.5.10	hu	12	volt	parositva	8	G3580	alacsony
+1Tim.5.10	hu	13	ha	parositva	9	G1487	alacsony
+1Tim.5.10	hu	14	a	betoldas			alacsony
+1Tim.5.10	hu	15	szentek	parositva	10	G0040	alacsony
+1Tim.5.10	hu	16	lábait	parositva	11	G4228	alacsony
+1Tim.5.10	hu	17	mosta	parositva	12	G3538	alacsony
+1Tim.5.10	hu	18	ha	parositva	13	G1487	alacsony
+1Tim.5.10	hu	19	a	betoldas			alacsony
+1Tim.5.10	hu	20	nyomorultakon	parositva	14	G2346	alacsony
+1Tim.5.10	hu	21	segített	parositva	15	G1884	alacsony
+1Tim.5.10	hu	22	ha	parositva	16	G1487	alacsony
+1Tim.5.10	hu	23	minden	parositva	17	G3956	alacsony
+1Tim.5.10	hu	24	jó	parositva	19	G0018	alacsony
+1Tim.5.10	hu	25	cselekedetben	parositva	18	G2041	alacsony
+1Tim.5.10	hu	26	foglalatos	parositva	20	G1872	alacsony
+1Tim.5.10	hu	27	vala	parositva	20	G1872	alacsony
+1Tim.5.10	er	1		parositva	4	G1722	alacsony
+1Tim.5.10	er	2		parositva	4	G2041	alacsony
+1Tim.5.10	er	3		parositva	3	G2570	alacsony
+1Tim.5.10	er	4		parositva	5,6	G3140	alacsony
+1Tim.5.10	er	5		parositva	7	G1487	alacsony
+1Tim.5.10	er	6		parositva	8,9	G5044	alacsony
+1Tim.5.10	er	7		parositva	10	G1487	alacsony
+1Tim.5.10	er	8		parositva	11,12	G3580	alacsony
+1Tim.5.10	er	9		parositva	13	G1487	alacsony
+1Tim.5.10	er	10		parositva	15	G0040	alacsony
+1Tim.5.10	er	11		parositva	16	G4228	alacsony
+1Tim.5.10	er	12		parositva	17	G3538	alacsony
+1Tim.5.10	er	13		parositva	18	G1487	alacsony
+1Tim.5.10	er	14		parositva	20	G2346	alacsony
+1Tim.5.10	er	15		parositva	21	G1884	alacsony
+1Tim.5.10	er	16		parositva	22	G1487	alacsony
+1Tim.5.10	er	17		parositva	23	G3956	alacsony
+1Tim.5.10	er	18		parositva	25	G2041	alacsony
+1Tim.5.10	er	19		parositva	24	G0018	alacsony
+1Tim.5.10	er	20		parositva	26,27	G1872	alacsony
+1Tim.5.11	hu	1	A	betoldas			alacsony
+1Tim.5.11	hu	2	fiatalabb	parositva	1	G3501	alacsony
+1Tim.5.11	hu	3	özvegyasszonyokat	parositva	3	G5503	alacsony
+1Tim.5.11	hu	4	pedig	parositva	2	G1161	alacsony
+1Tim.5.11	hu	5	mellőzd	parositva	4	G3868	alacsony
+1Tim.5.11	hu	6	mert	parositva	6	G1063	alacsony
+1Tim.5.11	hu	7	ha	parositva	5	G3752	alacsony
+1Tim.5.11	hu	8	gerjedeznek	parositva	7	G2691	alacsony
+1Tim.5.11	hu	9	Krisztus	parositva	9	G5547	alacsony
+1Tim.5.11	hu	10	ellenére	parositva	7	G2691	alacsony
+1Tim.5.11	hu	11	férjhez	parositva	10	G1060	alacsony
+1Tim.5.11	hu	12	akarnak	parositva	11	G2309	alacsony
+1Tim.5.11	hu	13	menni	parositva	10	G1060	alacsony
+1Tim.5.11	er	1		parositva	2	G3501	alacsony
+1Tim.5.11	er	2		parositva	4	G1161	alacsony
+1Tim.5.11	er	3		parositva	3	G5503	alacsony
+1Tim.5.11	er	4		parositva	5	G3868	alacsony
+1Tim.5.11	er	5		parositva	7	G3752	alacsony
+1Tim.5.11	er	6		parositva	6	G1063	alacsony
+1Tim.5.11	er	7		parositva	8,10	G2691	alacsony
+1Tim.5.11	er	8		forditatlan		G3588	alacsony
+1Tim.5.11	er	9		parositva	9	G5547	alacsony
+1Tim.5.11	er	10		parositva	11,13	G1060	alacsony
+1Tim.5.11	er	11		parositva	12	G2309	alacsony
+1Tim.5.12	hu	1	Ezeknek	betoldas			alacsony
+1Tim.5.12	hu	2	ítélete	parositva	2	G2917	alacsony
+1Tim.5.12	hu	3	megvan	parositva	1	G2192	alacsony
+1Tim.5.12	hu	4	mivelhogy	parositva	3	G3754	alacsony
+1Tim.5.12	hu	5	az	betoldas			alacsony
+1Tim.5.12	hu	6	első	parositva	5	G4413	alacsony
+1Tim.5.12	hu	7	hitet	parositva	6	G4102	alacsony
+1Tim.5.12	hu	8	megvetették	parositva	7	G0114	alacsony
+1Tim.5.12	er	1		parositva	3	G2192	alacsony
+1Tim.5.12	er	2		parositva	2	G2917	alacsony
+1Tim.5.12	er	3		parositva	4	G3754	alacsony
+1Tim.5.12	er	4		forditatlan		G3588	alacsony
+1Tim.5.12	er	5		parositva	6	G4413	alacsony
+1Tim.5.12	er	6		parositva	7	G4102	alacsony
+1Tim.5.12	er	7		parositva	8	G0114	alacsony
+1Tim.5.13	hu	1	Egyszersmind	parositva	1	G0260	alacsony
+1Tim.5.13	hu	2	pedig	parositva	2	G1161	alacsony
+1Tim.5.13	hu	3	dologkerülők	parositva	4	G0692	alacsony
+1Tim.5.13	hu	4	lévén	betoldas			alacsony
+1Tim.5.13	hu	5	megtanulják	parositva	5	G3129	alacsony
+1Tim.5.13	hu	6	a	betoldas			alacsony
+1Tim.5.13	hu	7	házról	parositva	8	G3614	alacsony
+1Tim.5.13	hu	8	házra	parositva	8	G3614	alacsony
+1Tim.5.13	hu	9	való	betoldas			alacsony
+1Tim.5.13	hu	10	járogatást	parositva	6	G4022	alacsony
+1Tim.5.13	hu	11	sőt	parositva	11	G1161	alacsony
+1Tim.5.13	hu	12	nemcsak	parositva	9,10	G3756+G3441	alacsony
+1Tim.5.13	hu	13	dologkerülők	parositva	12	G0692	alacsony
+1Tim.5.13	hu	14	hanem	parositva	13	G0235	alacsony
+1Tim.5.13	hu	15	fecsegők	parositva	15	G5397	alacsony
+1Tim.5.13	hu	16	is	parositva	14	G2532	alacsony
+1Tim.5.13	hu	17	és	parositva	16	G2532	alacsony
+1Tim.5.13	hu	18	más	parositva	17	G4021	alacsony
+1Tim.5.13	hu	19	dolgába	parositva	17	G4021	alacsony
+1Tim.5.13	hu	20	avatkozók	parositva	17	G4021	alacsony
+1Tim.5.13	hu	21	olyanokat	betoldas			alacsony
+1Tim.5.13	hu	22	szólván	parositva	18	G2980	alacsony
+1Tim.5.13	hu	23	a	parositva	19	G3588	alacsony
+1Tim.5.13	hu	24	miket	parositva	19	G3588	alacsony
+1Tim.5.13	hu	25	nem	parositva	20	G3361	alacsony
+1Tim.5.13	hu	26	kellene	parositva	21	G1163	alacsony
+1Tim.5.13	er	1		parositva	1	G0260	alacsony
+1Tim.5.13	er	2		parositva	2	G1161	alacsony
+1Tim.5.13	er	3		forditatlan		G2532	alacsony
+1Tim.5.13	er	4		parositva	3	G0692	alacsony
+1Tim.5.13	er	5		parositva	5	G3129	alacsony
+1Tim.5.13	er	6		parositva	10	G4022	alacsony
+1Tim.5.13	er	7		forditatlan		G3588	alacsony
+1Tim.5.13	er	8		parositva	7,8	G3614	alacsony
+1Tim.5.13	er	9		parositva	12	G3756	alacsony
+1Tim.5.13	er	10		parositva	12	G3441	alacsony
+1Tim.5.13	er	11		parositva	11	G1161	alacsony
+1Tim.5.13	er	12		parositva	13	G0692	alacsony
+1Tim.5.13	er	13		parositva	14	G0235	alacsony
+1Tim.5.13	er	14		parositva	16	G2532	alacsony
+1Tim.5.13	er	15		parositva	15	G5397	alacsony
+1Tim.5.13	er	16		parositva	17	G2532	alacsony
+1Tim.5.13	er	17		parositva	18,19,20	G4021	alacsony
+1Tim.5.13	er	18		parositva	22	G2980	alacsony
+1Tim.5.13	er	19		parositva	23,24	G3588	alacsony
+1Tim.5.13	er	20		parositva	25	G3361	alacsony
+1Tim.5.13	er	21		parositva	26	G1163	alacsony
+1Tim.5.14	hu	1	Akarom	parositva	1	G1014	alacsony
+1Tim.5.14	hu	2	tehát	parositva	2	G3767	alacsony
+1Tim.5.14	hu	3	hogy	betoldas			alacsony
+1Tim.5.14	hu	4	a	betoldas			alacsony
+1Tim.5.14	hu	5	fiatalabbak	parositva	3	G3501	alacsony
+1Tim.5.14	hu	6	férjhez	parositva	4	G1060	alacsony
+1Tim.5.14	hu	7	menjenek	parositva	4	G1060	alacsony
+1Tim.5.14	hu	8	gyermekeket	parositva	5	G5041	alacsony
+1Tim.5.14	hu	9	szűljenek	parositva	5	G5041	alacsony
+1Tim.5.14	hu	10	háztartást	parositva	6	G3616	alacsony
+1Tim.5.14	hu	11	vigyenek	parositva	6	G3616	alacsony
+1Tim.5.14	hu	12	és	betoldas			alacsony
+1Tim.5.14	hu	13	semminemű	parositva	7	G3367	alacsony
+1Tim.5.14	hu	14	alkalmat	parositva	8	G0874	alacsony
+1Tim.5.14	hu	15	se	parositva	7	G3367	alacsony
+1Tim.5.14	hu	16	adjanak	parositva	9	G1325	alacsony
+1Tim.5.14	hu	17	az	betoldas			alacsony
+1Tim.5.14	hu	18	ellenségnek	parositva	10,11	G3588+G0480	alacsony
+1Tim.5.14	hu	19	a	betoldas			alacsony
+1Tim.5.14	hu	20	szidalmazásra	parositva	12,13	G3059+G5484	alacsony
+1Tim.5.14	er	1		parositva	1	G1014	alacsony
+1Tim.5.14	er	2		parositva	2	G3767	alacsony
+1Tim.5.14	er	3		parositva	5	G3501	alacsony
+1Tim.5.14	er	4		parositva	6,7	G1060	alacsony
+1Tim.5.14	er	5		parositva	8,9	G5041	alacsony
+1Tim.5.14	er	6		parositva	10,11	G3616	alacsony
+1Tim.5.14	er	7		parositva	13,15	G3367	alacsony
+1Tim.5.14	er	8		parositva	14	G0874	alacsony
+1Tim.5.14	er	9		parositva	16	G1325	alacsony
+1Tim.5.14	er	10		parositva	18	G3588	alacsony
+1Tim.5.14	er	11		parositva	18	G0480	alacsony
+1Tim.5.14	er	12		parositva	20	G3059	alacsony
+1Tim.5.14	er	13		parositva	20	G5484	alacsony
+1Tim.5.15	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.5.15	hu	2	némelyek	parositva	3	G5100	alacsony
+1Tim.5.15	hu	3	már	parositva	1	G2235	alacsony
+1Tim.5.15	hu	4	elhajlottak	parositva	4	G1624	alacsony
+1Tim.5.15	hu	5	a	betoldas			alacsony
+1Tim.5.15	hu	6	Sátánhoz	parositva	5,6,7	G3694+G3588+G4567	alacsony
+1Tim.5.15	er	1		parositva	3	G2235	alacsony
+1Tim.5.15	er	2		parositva	1	G1063	alacsony
+1Tim.5.15	er	3		parositva	2	G5100	alacsony
+1Tim.5.15	er	4		parositva	4	G1624	alacsony
+1Tim.5.15	er	5		parositva	6	G3694	alacsony
+1Tim.5.15	er	6		parositva	6	G3588	alacsony
+1Tim.5.15	er	7		parositva	6	G4567	alacsony
+1Tim.5.16	hu	1	Ha	parositva	1	G1487	alacsony
+1Tim.5.16	hu	2	valamely	parositva	2	G5100	alacsony
+1Tim.5.16	hu	3	hívő	parositva	3	G4103	alacsony
+1Tim.5.16	hu	4	férfinak	parositva	3	G4103	alacsony
+1Tim.5.16	hu	5	vagy	parositva	4	G2228	alacsony
+1Tim.5.16	hu	6	nőnek	parositva	5	G4103	alacsony
+1Tim.5.16	hu	7	vannak	parositva	6	G2192	alacsony
+1Tim.5.16	hu	8	özvegyei	parositva	7	G5503	alacsony
+1Tim.5.16	hu	9	segítse	parositva	8	G1884	alacsony
+1Tim.5.16	hu	10	azokat	parositva	9	G0846	alacsony
+1Tim.5.16	hu	11	és	parositva	10	G2532	alacsony
+1Tim.5.16	hu	12	ne	parositva	11	G3361	alacsony
+1Tim.5.16	hu	13	terheltessék	parositva	12	G0916	alacsony
+1Tim.5.16	hu	14	meg	parositva	12	G0916	alacsony
+1Tim.5.16	hu	15	a	betoldas			alacsony
+1Tim.5.16	hu	16	gyülekezet	parositva	14	G1577	alacsony
+1Tim.5.16	hu	17	hogy	parositva	15	G2443	alacsony
+1Tim.5.16	hu	18	azokat	betoldas			alacsony
+1Tim.5.16	hu	19	segíthesse	parositva	19	G1884	alacsony
+1Tim.5.16	hu	20	a	betoldas			alacsony
+1Tim.5.16	hu	21	kik	parositva	16	G3588	alacsony
+1Tim.5.16	hu	22	valóban	parositva	17	G3689	alacsony
+1Tim.5.16	hu	23	özvegyek	parositva	18	G5503	alacsony
+1Tim.5.16	er	1		parositva	1	G1487	alacsony
+1Tim.5.16	er	2		parositva	2	G5100	alacsony
+1Tim.5.16	er	3		parositva	3,4	G4103	alacsony
+1Tim.5.16	er	4		parositva	5	G2228	alacsony
+1Tim.5.16	er	5		parositva	6	G4103	alacsony
+1Tim.5.16	er	6		parositva	7	G2192	alacsony
+1Tim.5.16	er	7		parositva	8	G5503	alacsony
+1Tim.5.16	er	8		parositva	9	G1884	alacsony
+1Tim.5.16	er	9		parositva	10	G0846	alacsony
+1Tim.5.16	er	10		parositva	11	G2532	alacsony
+1Tim.5.16	er	11		parositva	12	G3361	alacsony
+1Tim.5.16	er	12		parositva	13,14	G0916	alacsony
+1Tim.5.16	er	13		forditatlan		G3588	alacsony
+1Tim.5.16	er	14		parositva	16	G1577	alacsony
+1Tim.5.16	er	15		parositva	17	G2443	alacsony
+1Tim.5.16	er	16		parositva	21	G3588	alacsony
+1Tim.5.16	er	17		parositva	22	G3689	alacsony
+1Tim.5.16	er	18		parositva	23	G5503	alacsony
+1Tim.5.16	er	19		parositva	19	G1884	alacsony
+1Tim.5.17	hu	1	A	betoldas			alacsony
+1Tim.5.17	hu	2	jól	parositva	2	G2573	alacsony
+1Tim.5.17	hu	3	forgolódó	parositva	3	G4291	alacsony
+1Tim.5.17	hu	4	presbiterek	parositva	4	G4245	alacsony
+1Tim.5.17	hu	5	kettős	parositva	5	G1362	alacsony
+1Tim.5.17	hu	6	tisztességre	parositva	6	G5092	alacsony
+1Tim.5.17	hu	7	méltattassanak	parositva	7	G0515	alacsony
+1Tim.5.17	hu	8	főképen	parositva	8	G3122	alacsony
+1Tim.5.17	hu	9	a	parositva	9	G3588	alacsony
+1Tim.5.17	hu	10	kik	parositva	9	G3588	alacsony
+1Tim.5.17	hu	11	a	betoldas			alacsony
+1Tim.5.17	hu	12	beszédben	parositva	11,12	G1722+G3056	alacsony
+1Tim.5.17	hu	13	és	parositva	13	G2532	alacsony
+1Tim.5.17	hu	14	tanításban	parositva	14	G1319	alacsony
+1Tim.5.17	hu	15	fáradoznak	parositva	10	G2872	alacsony
+1Tim.5.17	er	1		forditatlan		G3588	alacsony
+1Tim.5.17	er	2		parositva	2	G2573	alacsony
+1Tim.5.17	er	3		parositva	3	G4291	alacsony
+1Tim.5.17	er	4		parositva	4	G4245	alacsony
+1Tim.5.17	er	5		parositva	5	G1362	alacsony
+1Tim.5.17	er	6		parositva	6	G5092	alacsony
+1Tim.5.17	er	7		parositva	7	G0515	alacsony
+1Tim.5.17	er	8		parositva	8	G3122	alacsony
+1Tim.5.17	er	9		parositva	9,10	G3588	alacsony
+1Tim.5.17	er	10		parositva	15	G2872	alacsony
+1Tim.5.17	er	11		parositva	12	G1722	alacsony
+1Tim.5.17	er	12		parositva	12	G3056	alacsony
+1Tim.5.17	er	13		parositva	13	G2532	alacsony
+1Tim.5.17	er	14		parositva	14	G1319	alacsony
+1Tim.5.18	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.5.18	hu	2	azt	betoldas			alacsony
+1Tim.5.18	hu	3	mondja	parositva	1	G3004	alacsony
+1Tim.5.18	hu	4	az	betoldas			alacsony
+1Tim.5.18	hu	5	Írás	parositva	4	G1124	alacsony
+1Tim.5.18	hu	6	A	betoldas			alacsony
+1Tim.5.18	hu	7	nyomtató	parositva	6	G0248	alacsony
+1Tim.5.18	hu	8	ökörnek	parositva	5	G1016	alacsony
+1Tim.5.18	hu	9	ne	parositva	7	G3756	alacsony
+1Tim.5.18	hu	10	kösd	parositva	8	G5392	alacsony
+1Tim.5.18	hu	11	be	parositva	8	G5392	alacsony
+1Tim.5.18	hu	12	a	betoldas			alacsony
+1Tim.5.18	hu	13	száját	betoldas			alacsony
+1Tim.5.18	hu	14	és	parositva	9	G2532	alacsony
+1Tim.5.18	hu	15	Méltó	parositva	10	G0514	alacsony
+1Tim.5.18	hu	16	a	betoldas			alacsony
+1Tim.5.18	hu	17	munkás	parositva	12	G2040	alacsony
+1Tim.5.18	hu	18	a	betoldas			alacsony
+1Tim.5.18	hu	19	maga	parositva	15	G0846	alacsony
+1Tim.5.18	hu	20	jutalmára	parositva	14,15	G3408+G0846	alacsony
+1Tim.5.18	er	1		parositva	3	G3004	alacsony
+1Tim.5.18	er	2		parositva	1	G1063	alacsony
+1Tim.5.18	er	3		forditatlan		G3588	alacsony
+1Tim.5.18	er	4		parositva	5	G1124	alacsony
+1Tim.5.18	er	5		parositva	8	G1016	alacsony
+1Tim.5.18	er	6		parositva	7	G0248	alacsony
+1Tim.5.18	er	7		parositva	9	G3756	alacsony
+1Tim.5.18	er	8		parositva	10,11	G5392	alacsony
+1Tim.5.18	er	9		parositva	14	G2532	alacsony
+1Tim.5.18	er	10		parositva	15	G0514	alacsony
+1Tim.5.18	er	11		forditatlan		G3588	alacsony
+1Tim.5.18	er	12		parositva	17	G2040	alacsony
+1Tim.5.18	er	13		forditatlan		G3588	alacsony
+1Tim.5.18	er	14		parositva	20	G3408	alacsony
+1Tim.5.18	er	15		parositva	19,20	G0846	alacsony
+1Tim.5.19	hu	1	Presbiter	parositva	2	G4245	alacsony
+1Tim.5.19	hu	2	ellen	parositva	1	G2596	alacsony
+1Tim.5.19	hu	3	vádat	parositva	3	G2724	alacsony
+1Tim.5.19	hu	4	ne	parositva	4	G3361	alacsony
+1Tim.5.19	hu	5	fogadj	parositva	5	G3858	alacsony
+1Tim.5.19	hu	6	el	parositva	5	G3858	alacsony
+1Tim.5.19	hu	7	hanem	parositva	6	G1622	alacsony
+1Tim.5.19	hu	8	csak	parositva	7,8	G1487+G3361	alacsony
+1Tim.5.19	hu	9	két	parositva	10	G1417	alacsony
+1Tim.5.19	hu	10	vagy	parositva	11	G2228	alacsony
+1Tim.5.19	hu	11	három	parositva	12	G5140	alacsony
+1Tim.5.19	hu	12	tanúbizonyságra	parositva	9,13	G1909+G3144	alacsony
+1Tim.5.19	er	1		parositva	2	G2596	alacsony
+1Tim.5.19	er	2		parositva	1	G4245	alacsony
+1Tim.5.19	er	3		parositva	3	G2724	alacsony
+1Tim.5.19	er	4		parositva	4	G3361	alacsony
+1Tim.5.19	er	5		parositva	5,6	G3858	alacsony
+1Tim.5.19	er	6		parositva	7	G1622	alacsony
+1Tim.5.19	er	7		parositva	8	G1487	alacsony
+1Tim.5.19	er	8		parositva	8	G3361	alacsony
+1Tim.5.19	er	9		parositva	12	G1909	alacsony
+1Tim.5.19	er	10		parositva	9	G1417	alacsony
+1Tim.5.19	er	11		parositva	10	G2228	alacsony
+1Tim.5.19	er	12		parositva	11	G5140	alacsony
+1Tim.5.19	er	13		parositva	12	G3144	alacsony
+1Tim.5.20	hu	1	A	betoldas			alacsony
+1Tim.5.20	hu	2	vétkeseket	parositva	1,3	G3588+G0264	alacsony
+1Tim.5.20	hu	3	mindenek	parositva	5	G3956	alacsony
+1Tim.5.20	hu	4	előtt	parositva	4	G1799	alacsony
+1Tim.5.20	hu	5	fedd	parositva	6	G1651	alacsony
+1Tim.5.20	hu	6	meg	parositva	6	G1651	alacsony
+1Tim.5.20	hu	7	hogy	parositva	7	G2443	alacsony
+1Tim.5.20	hu	8	a	betoldas			alacsony
+1Tim.5.20	hu	9	többiek	parositva	9,10	G3588+G3062	alacsony
+1Tim.5.20	hu	10	is	parositva	8	G2532	alacsony
+1Tim.5.20	hu	11	megfélemljenek	parositva	11,12	G5401+G2192	alacsony
+1Tim.5.20	er	1		parositva	2	G3588	alacsony
+1Tim.5.20	er	2		forditatlan		G1161	alacsony
+1Tim.5.20	er	3		parositva	2	G0264	alacsony
+1Tim.5.20	er	4		parositva	4	G1799	alacsony
+1Tim.5.20	er	5		parositva	3	G3956	alacsony
+1Tim.5.20	er	6		parositva	5,6	G1651	alacsony
+1Tim.5.20	er	7		parositva	7	G2443	alacsony
+1Tim.5.20	er	8		parositva	10	G2532	alacsony
+1Tim.5.20	er	9		parositva	9	G3588	alacsony
+1Tim.5.20	er	10		parositva	9	G3062	alacsony
+1Tim.5.20	er	11		parositva	11	G5401	alacsony
+1Tim.5.20	er	12		parositva	11	G2192	alacsony
+1Tim.5.21	hu	1	Kérve	parositva	1	G1263	alacsony
+1Tim.5.21	hu	2	kérlek	parositva	1	G1263	alacsony
+1Tim.5.21	hu	3	az	betoldas			alacsony
+1Tim.5.21	hu	4	Istenre	parositva	2,3,4	G1799+G3588+G2316	alacsony
+1Tim.5.21	hu	5	és	parositva	5	G2532	alacsony
+1Tim.5.21	hu	6	Krisztus	parositva	7	G5547	alacsony
+1Tim.5.21	hu	7	Jézusra	parositva	8	G2424	alacsony
+1Tim.5.21	hu	8	és	parositva	9	G2532	alacsony
+1Tim.5.21	hu	9	a	betoldas			alacsony
+1Tim.5.21	hu	10	kiválasztott	parositva	11	G1588	alacsony
+1Tim.5.21	hu	11	angyalokra	parositva	12	G0032	alacsony
+1Tim.5.21	hu	12	hogy	parositva	13	G2443	alacsony
+1Tim.5.21	hu	13	ezeket	parositva	14	G3778	alacsony
+1Tim.5.21	hu	14	tartsd	parositva	15	G5442	alacsony
+1Tim.5.21	hu	15	meg	parositva	15	G5442	alacsony
+1Tim.5.21	hu	16	előítélet	parositva	17	G4299	alacsony
+1Tim.5.21	hu	17	nélkül	parositva	16	G5565	alacsony
+1Tim.5.21	hu	18	semmit	parositva	18	G3367	alacsony
+1Tim.5.21	hu	19	sem	parositva	18	G3367	alacsony
+1Tim.5.21	hu	20	cselekedvén	parositva	19	G4160	alacsony
+1Tim.5.21	hu	21	részrehajlásból	parositva	20,21	G2596+G4346	alacsony
+1Tim.5.21	er	1		parositva	1,2	G1263	alacsony
+1Tim.5.21	er	2		parositva	4	G1799	alacsony
+1Tim.5.21	er	3		parositva	4	G3588	alacsony
+1Tim.5.21	er	4		parositva	4	G2316	alacsony
+1Tim.5.21	er	5		parositva	5	G2532	alacsony
+1Tim.5.21	er	6		forditatlan		G2962	alacsony
+1Tim.5.21	er	7		parositva	6	G5547	alacsony
+1Tim.5.21	er	8		parositva	7	G2424	alacsony
+1Tim.5.21	er	9		parositva	8	G2532	alacsony
+1Tim.5.21	er	10		forditatlan		G3588	alacsony
+1Tim.5.21	er	11		parositva	10	G1588	alacsony
+1Tim.5.21	er	12		parositva	11	G0032	alacsony
+1Tim.5.21	er	13		parositva	12	G2443	alacsony
+1Tim.5.21	er	14		parositva	13	G3778	alacsony
+1Tim.5.21	er	15		parositva	14,15	G5442	alacsony
+1Tim.5.21	er	16		parositva	17	G5565	alacsony
+1Tim.5.21	er	17		parositva	16	G4299	alacsony
+1Tim.5.21	er	18		parositva	18,19	G3367	alacsony
+1Tim.5.21	er	19		parositva	20	G4160	alacsony
+1Tim.5.21	er	20		parositva	21	G2596	alacsony
+1Tim.5.21	er	21		parositva	21	G4346	alacsony
+1Tim.5.22	hu	1	A	betoldas			alacsony
+1Tim.5.22	hu	2	kézrátevést	parositva	1	G5495	alacsony
+1Tim.5.22	hu	3	el	parositva	4	G2007	alacsony
+1Tim.5.22	hu	4	ne	parositva	3	G3367	alacsony
+1Tim.5.22	hu	5	hirtelenkedd	parositva	2,4	G5030+G2007	alacsony
+1Tim.5.22	hu	6	se	parositva	5	G3366	alacsony
+1Tim.5.22	hu	7	ne	parositva	5	G3366	alacsony
+1Tim.5.22	hu	8	légy	parositva	6	G2841	alacsony
+1Tim.5.22	hu	9	részes	parositva	6	G2841	alacsony
+1Tim.5.22	hu	10	a	betoldas			alacsony
+1Tim.5.22	hu	11	más	parositva	8	G0245	alacsony
+1Tim.5.22	hu	12	bűneiben	parositva	7	G0266	alacsony
+1Tim.5.22	hu	13	tenmagadat	parositva	9	G4771	alacsony
+1Tim.5.22	hu	14	tisztán	parositva	10	G0053	alacsony
+1Tim.5.22	hu	15	tartsd	parositva	11	G5083	alacsony
+1Tim.5.22	er	1		parositva	2	G5495	alacsony
+1Tim.5.22	er	2		parositva	5	G5030	alacsony
+1Tim.5.22	er	3		parositva	4	G3367	alacsony
+1Tim.5.22	er	4		parositva	3,5	G2007	alacsony
+1Tim.5.22	er	5		parositva	6,7	G3366	alacsony
+1Tim.5.22	er	6		parositva	8,9	G2841	alacsony
+1Tim.5.22	er	7		parositva	12	G0266	alacsony
+1Tim.5.22	er	8		parositva	11	G0245	alacsony
+1Tim.5.22	er	9		parositva	13	G4771	alacsony
+1Tim.5.22	er	10		parositva	14	G0053	alacsony
+1Tim.5.22	er	11		parositva	15	G5083	alacsony
+1Tim.5.23	hu	1	Ne	parositva	1	G3371	alacsony
+1Tim.5.23	hu	2	légy	parositva	2	G5202	alacsony
+1Tim.5.23	hu	3	tovább	parositva	1	G3371	alacsony
+1Tim.5.23	hu	4	vízivó	parositva	2	G5202	alacsony
+1Tim.5.23	hu	5	hanem	parositva	3	G0235	alacsony
+1Tim.5.23	hu	6	élj	parositva	6	G5530	alacsony
+1Tim.5.23	hu	7	egy	parositva	5	G3641	alacsony
+1Tim.5.23	hu	8	kevés	parositva	5	G3641	alacsony
+1Tim.5.23	hu	9	borral	parositva	4	G3631	alacsony
+1Tim.5.23	hu	10	gyomrodra	parositva	9,10	G4751+G4771	alacsony
+1Tim.5.23	hu	11	és	parositva	11	G2532	alacsony
+1Tim.5.23	hu	12	gyakori	parositva	13	G4437	alacsony
+1Tim.5.23	hu	13	gyengélkedésedre	parositva	14,15	G4771+G0769	alacsony
+1Tim.5.23	hu	14	való	betoldas			alacsony
+1Tim.5.23	hu	15	tekintetből	parositva	7	G1223	alacsony
+1Tim.5.23	er	1		parositva	1,3	G3371	alacsony
+1Tim.5.23	er	2		parositva	2,4	G5202	alacsony
+1Tim.5.23	er	3		parositva	5	G0235	alacsony
+1Tim.5.23	er	4		parositva	9	G3631	alacsony
+1Tim.5.23	er	5		parositva	7,8	G3641	alacsony
+1Tim.5.23	er	6		parositva	6	G5530	alacsony
+1Tim.5.23	er	7		parositva	15	G1223	alacsony
+1Tim.5.23	er	8		forditatlan		G3588	alacsony
+1Tim.5.23	er	9		parositva	10	G4751	alacsony
+1Tim.5.23	er	10		parositva	10	G4771	alacsony
+1Tim.5.23	er	11		parositva	11	G2532	alacsony
+1Tim.5.23	er	12		forditatlan		G3588	alacsony
+1Tim.5.23	er	13		parositva	12	G4437	alacsony
+1Tim.5.23	er	14		parositva	13	G4771	alacsony
+1Tim.5.23	er	15		parositva	13	G0769	alacsony
+1Tim.5.24	hu	1	Némely	parositva	1	G5100	alacsony
+1Tim.5.24	hu	2	embereknek	parositva	2	G0444	alacsony
+1Tim.5.24	hu	3	a	betoldas			alacsony
+1Tim.5.24	hu	4	bűnei	parositva	4	G0266	alacsony
+1Tim.5.24	hu	5	nyilvánvalók	parositva	5,6	G4271+G1510	alacsony
+1Tim.5.24	hu	6	előttök	parositva	7	G4254	alacsony
+1Tim.5.24	hu	7	mennek	parositva	7	G4254	alacsony
+1Tim.5.24	hu	8	az	betoldas			alacsony
+1Tim.5.24	hu	9	ítéletre	parositva	8,9	G1519+G2920	alacsony
+1Tim.5.24	hu	10	némelyeket	parositva	10	G5100	alacsony
+1Tim.5.24	hu	11	pedig	parositva	11	G1161	alacsony
+1Tim.5.24	hu	12	hátul	parositva	13	G1872	alacsony
+1Tim.5.24	hu	13	követnek	parositva	13	G1872	alacsony
+1Tim.5.24	hu	14	is	parositva	12	G2532	alacsony
+1Tim.5.24	er	1		parositva	1	G5100	alacsony
+1Tim.5.24	er	2		parositva	2	G0444	alacsony
+1Tim.5.24	er	3		forditatlan		G3588	alacsony
+1Tim.5.24	er	4		parositva	4	G0266	alacsony
+1Tim.5.24	er	5		parositva	5	G4271	alacsony
+1Tim.5.24	er	6		parositva	5	G1510	alacsony
+1Tim.5.24	er	7		parositva	6,7	G4254	alacsony
+1Tim.5.24	er	8		parositva	9	G1519	alacsony
+1Tim.5.24	er	9		parositva	9	G2920	alacsony
+1Tim.5.24	er	10		parositva	10	G5100	alacsony
+1Tim.5.24	er	11		parositva	11	G1161	alacsony
+1Tim.5.24	er	12		parositva	14	G2532	alacsony
+1Tim.5.24	er	13		parositva	12,13	G1872	alacsony
+1Tim.5.25	hu	1	Hasonlóképen	parositva	1	G5615	alacsony
+1Tim.5.25	hu	2	a	betoldas			alacsony
+1Tim.5.25	hu	3	jó	parositva	6	G2570	alacsony
+1Tim.5.25	hu	4	cselekedetek	parositva	4	G2041	alacsony
+1Tim.5.25	hu	5	is	parositva	2	G2532	alacsony
+1Tim.5.25	hu	6	nyilvánvalók	parositva	7,8	G4271+G1510	alacsony
+1Tim.5.25	hu	7	és	parositva	9	G2532	alacsony
+1Tim.5.25	hu	8	a	parositva	10	G3588	alacsony
+1Tim.5.25	hu	9	melyek	parositva	10	G3588	alacsony
+1Tim.5.25	hu	10	másképen	parositva	11	G0247	alacsony
+1Tim.5.25	hu	11	vannak	parositva	12	G2192	alacsony
+1Tim.5.25	hu	12	azok	betoldas			alacsony
+1Tim.5.25	hu	13	sem	parositva	14	G3756	alacsony
+1Tim.5.25	hu	14	titkolhatók	parositva	13	G2928	alacsony
+1Tim.5.25	hu	15	el	parositva	13	G2928	alacsony
+1Tim.5.25	er	1		parositva	1	G5615	alacsony
+1Tim.5.25	er	2		parositva	5	G2532	alacsony
+1Tim.5.25	er	3		forditatlan		G3588	alacsony
+1Tim.5.25	er	4		parositva	4	G2041	alacsony
+1Tim.5.25	er	5		forditatlan		G3588	alacsony
+1Tim.5.25	er	6		parositva	3	G2570	alacsony
+1Tim.5.25	er	7		parositva	6	G4271	alacsony
+1Tim.5.25	er	8		parositva	6	G1510	alacsony
+1Tim.5.25	er	9		parositva	7	G2532	alacsony
+1Tim.5.25	er	10		parositva	8,9	G3588	alacsony
+1Tim.5.25	er	11		parositva	10	G0247	alacsony
+1Tim.5.25	er	12		parositva	11	G2192	alacsony
+1Tim.5.25	er	13		parositva	14,15	G2928	alacsony
+1Tim.5.25	er	14		parositva	13	G3756	alacsony
+1Tim.5.25	er	15		forditatlan		G1410	alacsony
+1Tim.6.1	hu	1	A	parositva	1	G3745	alacsony
+1Tim.6.1	hu	2	kik	parositva	1	G3745	alacsony
+1Tim.6.1	hu	3	iga	parositva	4	G2218	alacsony
+1Tim.6.1	hu	4	alatt	parositva	3	G5259	alacsony
+1Tim.6.1	hu	5	vannak	parositva	2	G1510	alacsony
+1Tim.6.1	hu	6	mint	betoldas			alacsony
+1Tim.6.1	hu	7	szolgák	parositva	5	G1401	alacsony
+1Tim.6.1	hu	8	az	betoldas			alacsony
+1Tim.6.1	hu	9	ő	parositva	7	G2398	alacsony
+1Tim.6.1	hu	10	uraikat	parositva	8	G1203	alacsony
+1Tim.6.1	hu	11	minden	parositva	9	G3956	alacsony
+1Tim.6.1	hu	12	tisztességre	parositva	10	G5092	alacsony
+1Tim.6.1	hu	13	méltóknak	parositva	11	G0514	alacsony
+1Tim.6.1	hu	14	tekintsék	parositva	12	G2233	alacsony
+1Tim.6.1	hu	15	hogy	parositva	13	G2443	alacsony
+1Tim.6.1	hu	16	Isten	parositva	18	G2316	alacsony
+1Tim.6.1	hu	17	neve	parositva	16	G3686	alacsony
+1Tim.6.1	hu	18	és	parositva	19	G2532	alacsony
+1Tim.6.1	hu	19	a	betoldas			alacsony
+1Tim.6.1	hu	20	tudomány	parositva	21	G1319	alacsony
+1Tim.6.1	hu	21	ne	parositva	14	G3361	alacsony
+1Tim.6.1	hu	22	káromoltassék	parositva	22	G0987	alacsony
+1Tim.6.1	er	1		parositva	1,2	G3745	alacsony
+1Tim.6.1	er	2		parositva	5	G1510	alacsony
+1Tim.6.1	er	3		parositva	4	G5259	alacsony
+1Tim.6.1	er	4		parositva	3	G2218	alacsony
+1Tim.6.1	er	5		parositva	7	G1401	alacsony
+1Tim.6.1	er	6		forditatlan		G3588	alacsony
+1Tim.6.1	er	7		parositva	9	G2398	alacsony
+1Tim.6.1	er	8		parositva	10	G1203	alacsony
+1Tim.6.1	er	9		parositva	11	G3956	alacsony
+1Tim.6.1	er	10		parositva	12	G5092	alacsony
+1Tim.6.1	er	11		parositva	13	G0514	alacsony
+1Tim.6.1	er	12		parositva	14	G2233	alacsony
+1Tim.6.1	er	13		parositva	15	G2443	alacsony
+1Tim.6.1	er	14		parositva	21	G3361	alacsony
+1Tim.6.1	er	15		forditatlan		G3588	alacsony
+1Tim.6.1	er	16		parositva	17	G3686	alacsony
+1Tim.6.1	er	17		forditatlan		G3588	alacsony
+1Tim.6.1	er	18		parositva	16	G2316	alacsony
+1Tim.6.1	er	19		parositva	18	G2532	alacsony
+1Tim.6.1	er	20		forditatlan		G3588	alacsony
+1Tim.6.1	er	21		parositva	20	G1319	alacsony
+1Tim.6.1	er	22		parositva	22	G0987	alacsony
+1Tim.6.2	hu	1	A	parositva	1	G3588	alacsony
+1Tim.6.2	hu	2	kiknek	parositva	1	G3588	alacsony
+1Tim.6.2	hu	3	pedig	parositva	2	G1161	alacsony
+1Tim.6.2	hu	4	hívő	parositva	3	G4103	alacsony
+1Tim.6.2	hu	5	uraik	parositva	5	G1203	alacsony
+1Tim.6.2	hu	6	vannak	parositva	4	G2192	alacsony
+1Tim.6.2	hu	7	azokat	betoldas			alacsony
+1Tim.6.2	hu	8	meg	parositva	7	G2706	alacsony
+1Tim.6.2	hu	9	ne	parositva	6	G3361	alacsony
+1Tim.6.2	hu	10	vessék	parositva	7	G2706	alacsony
+1Tim.6.2	hu	11	mivelhogy	parositva	8	G3754	alacsony
+1Tim.6.2	hu	12	atyafiak	parositva	9,10	G0080+G1510	alacsony
+1Tim.6.2	hu	13	hanem	parositva	11	G0235	alacsony
+1Tim.6.2	hu	14	annál	parositva	12	G3123	alacsony
+1Tim.6.2	hu	15	inkább	parositva	12	G3123	alacsony
+1Tim.6.2	hu	16	szolgáljanak	parositva	13	G1398	alacsony
+1Tim.6.2	hu	17	mivelhogy	parositva	14	G3754	alacsony
+1Tim.6.2	hu	18	hívők	parositva	15,16	G4103+G1510	alacsony
+1Tim.6.2	hu	19	és	parositva	17	G2532	alacsony
+1Tim.6.2	hu	20	szeretettek	parositva	18	G0027	alacsony
+1Tim.6.2	hu	21	kik	parositva	19	G3588	alacsony
+1Tim.6.2	hu	22	a	betoldas			alacsony
+1Tim.6.2	hu	23	jótevésben	parositva	20,21	G3588+G2108	alacsony
+1Tim.6.2	hu	24	buzgólkodnak	parositva	22	G0482	alacsony
+1Tim.6.2	hu	25	Ezekre	parositva	23	G3778	alacsony
+1Tim.6.2	hu	26	taníts	parositva	24	G1321	alacsony
+1Tim.6.2	hu	27	és	parositva	25	G2532	alacsony
+1Tim.6.2	hu	28	ints	parositva	26	G3870	alacsony
+1Tim.6.2	er	1		parositva	1,2	G3588	alacsony
+1Tim.6.2	er	2		parositva	3	G1161	alacsony
+1Tim.6.2	er	3		parositva	4	G4103	alacsony
+1Tim.6.2	er	4		parositva	6	G2192	alacsony
+1Tim.6.2	er	5		parositva	5	G1203	alacsony
+1Tim.6.2	er	6		parositva	9	G3361	alacsony
+1Tim.6.2	er	7		parositva	8,10	G2706	alacsony
+1Tim.6.2	er	8		parositva	11	G3754	alacsony
+1Tim.6.2	er	9		parositva	12	G0080	alacsony
+1Tim.6.2	er	10		parositva	12	G1510	alacsony
+1Tim.6.2	er	11		parositva	13	G0235	alacsony
+1Tim.6.2	er	12		parositva	14,15	G3123	alacsony
+1Tim.6.2	er	13		parositva	16	G1398	alacsony
+1Tim.6.2	er	14		parositva	17	G3754	alacsony
+1Tim.6.2	er	15		parositva	18	G4103	alacsony
+1Tim.6.2	er	16		parositva	18	G1510	alacsony
+1Tim.6.2	er	17		parositva	19	G2532	alacsony
+1Tim.6.2	er	18		parositva	20	G0027	alacsony
+1Tim.6.2	er	19		parositva	21	G3588	alacsony
+1Tim.6.2	er	20		parositva	23	G3588	alacsony
+1Tim.6.2	er	21		parositva	23	G2108	alacsony
+1Tim.6.2	er	22		parositva	24	G0482	alacsony
+1Tim.6.2	er	23		parositva	25	G3778	alacsony
+1Tim.6.2	er	24		parositva	26	G1321	alacsony
+1Tim.6.2	er	25		parositva	27	G2532	alacsony
+1Tim.6.2	er	26		parositva	28	G3870	alacsony
+1Tim.6.3	hu	1	Ha	parositva	1	G1487	alacsony
+1Tim.6.3	hu	2	valaki	parositva	2	G5100	alacsony
+1Tim.6.3	hu	3	másképen	parositva	3	G2085	alacsony
+1Tim.6.3	hu	4	tanít	parositva	3	G2085	alacsony
+1Tim.6.3	hu	5	és	parositva	4	G2532	alacsony
+1Tim.6.3	hu	6	nem	parositva	5	G3361	alacsony
+1Tim.6.3	hu	7	követi	parositva	6	G4334	alacsony
+1Tim.6.3	hu	8	a	betoldas			alacsony
+1Tim.6.3	hu	9	mi	parositva	12	G3165	alacsony
+1Tim.6.3	hu	10	Urunk	parositva	11,12	G2962+G3165	alacsony
+1Tim.6.3	hu	11	Jézus	parositva	13	G2424	alacsony
+1Tim.6.3	hu	12	Krisztus	parositva	14	G5547	alacsony
+1Tim.6.3	hu	13	egészséges	parositva	7	G5198	alacsony
+1Tim.6.3	hu	14	beszédeit	parositva	8	G3056	alacsony
+1Tim.6.3	hu	15	és	parositva	15	G2532	alacsony
+1Tim.6.3	hu	16	a	betoldas			alacsony
+1Tim.6.3	hu	17	kegyesség	parositva	18	G2150	alacsony
+1Tim.6.3	hu	18	szerint	parositva	17	G2596	alacsony
+1Tim.6.3	hu	19	való	betoldas			alacsony
+1Tim.6.3	hu	20	tudományt	parositva	19	G1319	alacsony
+1Tim.6.3	er	1		parositva	1	G1487	alacsony
+1Tim.6.3	er	2		parositva	2	G5100	alacsony
+1Tim.6.3	er	3		parositva	3,4	G2085	alacsony
+1Tim.6.3	er	4		parositva	5	G2532	alacsony
+1Tim.6.3	er	5		parositva	6	G3361	alacsony
+1Tim.6.3	er	6		parositva	7	G4334	alacsony
+1Tim.6.3	er	7		parositva	13	G5198	alacsony
+1Tim.6.3	er	8		parositva	14	G3056	alacsony
+1Tim.6.3	er	9		forditatlan		G3588	alacsony
+1Tim.6.3	er	10		forditatlan		G3588	alacsony
+1Tim.6.3	er	11		parositva	10	G2962	alacsony
+1Tim.6.3	er	12		parositva	9,10	G3165	alacsony
+1Tim.6.3	er	13		parositva	11	G2424	alacsony
+1Tim.6.3	er	14		parositva	12	G5547	alacsony
+1Tim.6.3	er	15		parositva	15	G2532	alacsony
+1Tim.6.3	er	16		forditatlan		G3588	alacsony
+1Tim.6.3	er	17		parositva	18	G2596	alacsony
+1Tim.6.3	er	18		parositva	17	G2150	alacsony
+1Tim.6.3	er	19		parositva	20	G1319	alacsony
+1Tim.6.4	hu	1	Az	betoldas			alacsony
+1Tim.6.4	hu	2	felfuvalkodott	parositva	1	G5187	alacsony
+1Tim.6.4	hu	3	a	betoldas			alacsony
+1Tim.6.4	hu	4	ki	betoldas			alacsony
+1Tim.6.4	hu	5	semmit	parositva	2	G3367	alacsony
+1Tim.6.4	hu	6	sem	parositva	2	G3367	alacsony
+1Tim.6.4	hu	7	ért	parositva	3	G1987	alacsony
+1Tim.6.4	hu	8	hanem	parositva	4	G0235	alacsony
+1Tim.6.4	hu	9	vitatkozásokban	parositva	6,7	G4012+G2214	alacsony
+1Tim.6.4	hu	10	és	parositva	8	G2532	alacsony
+1Tim.6.4	hu	11	szóharczokban	parositva	9	G3055	alacsony
+1Tim.6.4	hu	12	szenved	parositva	5	G3552	alacsony
+1Tim.6.4	hu	13	a	parositva	10,11	G1537+G3739	alacsony
+1Tim.6.4	hu	14	melyekből	parositva	10,11	G1537+G3739	alacsony
+1Tim.6.4	hu	15	származik	parositva	12	G1096	alacsony
+1Tim.6.4	hu	16	irígység	parositva	13	G5355	alacsony
+1Tim.6.4	hu	17	viszálykodás	parositva	14	G2054	alacsony
+1Tim.6.4	hu	18	káromlások	parositva	15	G0988	alacsony
+1Tim.6.4	hu	19	rosszakaratú	parositva	17	G4190	alacsony
+1Tim.6.4	hu	20	gyanúsítások	parositva	16	G5283	alacsony
+1Tim.6.4	er	1		parositva	2	G5187	alacsony
+1Tim.6.4	er	2		parositva	5,6	G3367	alacsony
+1Tim.6.4	er	3		parositva	7	G1987	alacsony
+1Tim.6.4	er	4		parositva	8	G0235	alacsony
+1Tim.6.4	er	5		parositva	12	G3552	alacsony
+1Tim.6.4	er	6		parositva	9	G4012	alacsony
+1Tim.6.4	er	7		parositva	9	G2214	alacsony
+1Tim.6.4	er	8		parositva	10	G2532	alacsony
+1Tim.6.4	er	9		parositva	11	G3055	alacsony
+1Tim.6.4	er	10		parositva	13,14	G1537	alacsony
+1Tim.6.4	er	11		parositva	13,14	G3739	alacsony
+1Tim.6.4	er	12		parositva	15	G1096	alacsony
+1Tim.6.4	er	13		parositva	16	G5355	alacsony
+1Tim.6.4	er	14		parositva	17	G2054	alacsony
+1Tim.6.4	er	15		parositva	18	G0988	alacsony
+1Tim.6.4	er	16		parositva	20	G5283	alacsony
+1Tim.6.4	er	17		parositva	19	G4190	alacsony
+1Tim.6.5	hu	1	Megbomlott	parositva	2	G1311	alacsony
+1Tim.6.5	hu	2	elméjű	parositva	5	G3563	alacsony
+1Tim.6.5	hu	3	és	parositva	6	G2532	alacsony
+1Tim.6.5	hu	4	az	betoldas			alacsony
+1Tim.6.5	hu	5	igazságtól	parositva	8,9	G3588+G0225	alacsony
+1Tim.6.5	hu	6	megfosztott	parositva	7	G0650	alacsony
+1Tim.6.5	hu	7	embereknek	parositva	3	G0444	alacsony
+1Tim.6.5	hu	8	hiábavaló	parositva	1	G3859	alacsony
+1Tim.6.5	hu	9	torzsalkodásai	parositva	1	G3859	alacsony
+1Tim.6.5	hu	10	a	betoldas			alacsony
+1Tim.6.5	hu	11	kik	betoldas			alacsony
+1Tim.6.5	hu	12	az	betoldas			alacsony
+1Tim.6.5	hu	13	istenfélelmet	parositva	14	G2150	alacsony
+1Tim.6.5	hu	14	nyerekedésnek	parositva	11	G4200	alacsony
+1Tim.6.5	hu	15	tekintik	parositva	10,12	G3543+G1511	alacsony
+1Tim.6.5	hu	16	Azoktól	parositva	16,17	G0575+G3588	alacsony
+1Tim.6.5	hu	17	a	betoldas			alacsony
+1Tim.6.5	hu	18	kik	betoldas			alacsony
+1Tim.6.5	hu	19	ilyenek	parositva	18	G5108	alacsony
+1Tim.6.5	hu	20	eltávozzál	parositva	15	G0868	alacsony
+1Tim.6.5	er	1		parositva	8,9	G3859	alacsony
+1Tim.6.5	er	2		parositva	1	G1311	alacsony
+1Tim.6.5	er	3		parositva	7	G0444	alacsony
+1Tim.6.5	er	4		forditatlan		G3588	alacsony
+1Tim.6.5	er	5		parositva	2	G3563	alacsony
+1Tim.6.5	er	6		parositva	3	G2532	alacsony
+1Tim.6.5	er	7		parositva	6	G0650	alacsony
+1Tim.6.5	er	8		parositva	5	G3588	alacsony
+1Tim.6.5	er	9		parositva	5	G0225	alacsony
+1Tim.6.5	er	10		parositva	15	G3543	alacsony
+1Tim.6.5	er	11		parositva	14	G4200	alacsony
+1Tim.6.5	er	12		parositva	15	G1511	alacsony
+1Tim.6.5	er	13		forditatlan		G3588	alacsony
+1Tim.6.5	er	14		parositva	13	G2150	alacsony
+1Tim.6.5	er	15		parositva	20	G0868	alacsony
+1Tim.6.5	er	16		parositva	16	G0575	alacsony
+1Tim.6.5	er	17		parositva	16	G3588	alacsony
+1Tim.6.5	er	18		parositva	19	G5108	alacsony
+1Tim.6.6	hu	1	De	parositva	2	G1161	alacsony
+1Tim.6.6	hu	2	valóban	parositva	1	G1510	alacsony
+1Tim.6.6	hu	3	nagy	parositva	4	G3173	alacsony
+1Tim.6.6	hu	4	nyereség	parositva	3	G4200	alacsony
+1Tim.6.6	hu	5	az	betoldas			alacsony
+1Tim.6.6	hu	6	Istenfélelem	parositva	6	G2150	alacsony
+1Tim.6.6	hu	7	megelégedéssel	parositva	7,8	G3326+G0841	alacsony
+1Tim.6.6	er	1		parositva	2	G1510	alacsony
+1Tim.6.6	er	2		parositva	1	G1161	alacsony
+1Tim.6.6	er	3		parositva	4	G4200	alacsony
+1Tim.6.6	er	4		parositva	3	G3173	alacsony
+1Tim.6.6	er	5		forditatlan		G3588	alacsony
+1Tim.6.6	er	6		parositva	6	G2150	alacsony
+1Tim.6.6	er	7		parositva	7	G3326	alacsony
+1Tim.6.6	er	8		parositva	7	G0841	alacsony
+1Tim.6.7	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.6.7	hu	2	semmit	parositva	1	G3762	alacsony
+1Tim.6.7	hu	3	sem	parositva	1	G3762	alacsony
+1Tim.6.7	hu	4	hoztunk	parositva	3	G1533	alacsony
+1Tim.6.7	hu	5	a	betoldas			alacsony
+1Tim.6.7	hu	6	világra	parositva	4,6	G1519+G2889	alacsony
+1Tim.6.7	hu	7	világos	parositva	7	G1212	alacsony
+1Tim.6.7	hu	8	hogy	parositva	8	G3754	alacsony
+1Tim.6.7	hu	9	ki	parositva	10	G1627	alacsony
+1Tim.6.7	hu	10	sem	parositva	9	G3761	alacsony
+1Tim.6.7	hu	11	vihetünk	parositva	10,12	G1627+G1410	alacsony
+1Tim.6.7	hu	12	semmit	parositva	11	G5100	alacsony
+1Tim.6.7	er	1		parositva	2,3	G3762	alacsony
+1Tim.6.7	er	2		parositva	1	G1063	alacsony
+1Tim.6.7	er	3		parositva	4	G1533	alacsony
+1Tim.6.7	er	4		parositva	6	G1519	alacsony
+1Tim.6.7	er	5		forditatlan		G3588	alacsony
+1Tim.6.7	er	6		parositva	6	G2889	alacsony
+1Tim.6.7	er	7		parositva	7	G1212	alacsony
+1Tim.6.7	er	8		parositva	8	G3754	alacsony
+1Tim.6.7	er	9		parositva	10	G3761	alacsony
+1Tim.6.7	er	10		parositva	9,11	G1627	alacsony
+1Tim.6.7	er	11		parositva	12	G5100	alacsony
+1Tim.6.7	er	12		parositva	11	G1410	alacsony
+1Tim.6.8	hu	1	De	parositva	2	G1161	alacsony
+1Tim.6.8	hu	2	ha	betoldas			alacsony
+1Tim.6.8	hu	3	van	parositva	1	G2192	alacsony
+1Tim.6.8	hu	4	élelmünk	parositva	3	G1305	alacsony
+1Tim.6.8	hu	5	és	parositva	4	G2532	alacsony
+1Tim.6.8	hu	6	ruházatunk	parositva	5	G4629	alacsony
+1Tim.6.8	hu	7	elégedjünk	parositva	7	G0714	alacsony
+1Tim.6.8	hu	8	meg	parositva	7	G0714	alacsony
+1Tim.6.8	hu	9	vele	parositva	6	G3778	alacsony
+1Tim.6.8	er	1		parositva	3	G2192	alacsony
+1Tim.6.8	er	2		parositva	1	G1161	alacsony
+1Tim.6.8	er	3		parositva	4	G1305	alacsony
+1Tim.6.8	er	4		parositva	5	G2532	alacsony
+1Tim.6.8	er	5		parositva	6	G4629	alacsony
+1Tim.6.8	er	6		parositva	9	G3778	alacsony
+1Tim.6.8	er	7		parositva	7,8	G0714	alacsony
+1Tim.6.9	hu	1	A	parositva	1	G3588	alacsony
+1Tim.6.9	hu	2	kik	parositva	1	G3588	alacsony
+1Tim.6.9	hu	3	pedig	parositva	2	G1161	alacsony
+1Tim.6.9	hu	4	meg	parositva	3	G1014	alacsony
+1Tim.6.9	hu	5	akarnak	parositva	3	G1014	alacsony
+1Tim.6.9	hu	6	gazdagodni	parositva	4	G4147	alacsony
+1Tim.6.9	hu	7	kísértetbe	parositva	6,7	G1519+G3986	alacsony
+1Tim.6.9	hu	8	meg	parositva	8	G2532	alacsony
+1Tim.6.9	hu	9	tőrbe	parositva	9	G3803	alacsony
+1Tim.6.9	hu	10	és	parositva	10	G2532	alacsony
+1Tim.6.9	hu	11	sok	parositva	12	G4183	alacsony
+1Tim.6.9	hu	12	esztelen	parositva	13	G0453	alacsony
+1Tim.6.9	hu	13	és	parositva	14	G2532	alacsony
+1Tim.6.9	hu	14	káros	parositva	15	G0983	alacsony
+1Tim.6.9	hu	15	kívánságba	parositva	11	G1939	alacsony
+1Tim.6.9	hu	16	esnek	parositva	5	G1706	alacsony
+1Tim.6.9	hu	17	melyek	parositva	16	G3748	alacsony
+1Tim.6.9	hu	18	az	betoldas			alacsony
+1Tim.6.9	hu	19	embereket	parositva	19	G0444	alacsony
+1Tim.6.9	hu	20	veszedelembe	parositva	20,21	G1519+G3639	alacsony
+1Tim.6.9	hu	21	és	parositva	22	G2532	alacsony
+1Tim.6.9	hu	22	romlásba	parositva	23	G0684	alacsony
+1Tim.6.9	hu	23	merítik	parositva	17	G1036	alacsony
+1Tim.6.9	er	1		parositva	1,2	G3588	alacsony
+1Tim.6.9	er	2		parositva	3	G1161	alacsony
+1Tim.6.9	er	3		parositva	4,5	G1014	alacsony
+1Tim.6.9	er	4		parositva	6	G4147	alacsony
+1Tim.6.9	er	5		parositva	16	G1706	alacsony
+1Tim.6.9	er	6		parositva	7	G1519	alacsony
+1Tim.6.9	er	7		parositva	7	G3986	alacsony
+1Tim.6.9	er	8		parositva	8	G2532	alacsony
+1Tim.6.9	er	9		parositva	9	G3803	alacsony
+1Tim.6.9	er	10		parositva	10	G2532	alacsony
+1Tim.6.9	er	11		parositva	15	G1939	alacsony
+1Tim.6.9	er	12		parositva	11	G4183	alacsony
+1Tim.6.9	er	13		parositva	12	G0453	alacsony
+1Tim.6.9	er	14		parositva	13	G2532	alacsony
+1Tim.6.9	er	15		parositva	14	G0983	alacsony
+1Tim.6.9	er	16		parositva	17	G3748	alacsony
+1Tim.6.9	er	17		parositva	23	G1036	alacsony
+1Tim.6.9	er	18		forditatlan		G3588	alacsony
+1Tim.6.9	er	19		parositva	19	G0444	alacsony
+1Tim.6.9	er	20		parositva	20	G1519	alacsony
+1Tim.6.9	er	21		parositva	20	G3639	alacsony
+1Tim.6.9	er	22		parositva	21	G2532	alacsony
+1Tim.6.9	er	23		parositva	22	G0684	alacsony
+1Tim.6.10	hu	1	Mert	parositva	2	G1063	alacsony
+1Tim.6.10	hu	2	minden	parositva	3	G3956	alacsony
+1Tim.6.10	hu	3	rossznak	parositva	5	G2556	alacsony
+1Tim.6.10	hu	4	gyökere	parositva	1	G4491	alacsony
+1Tim.6.10	hu	5	a	betoldas			alacsony
+1Tim.6.10	hu	6	pénz	parositva	8	G5365	alacsony
+1Tim.6.10	hu	7	szerelme	parositva	8	G5365	alacsony
+1Tim.6.10	hu	8	mely	parositva	9	G3739	alacsony
+1Tim.6.10	hu	9	után	parositva	9	G3739	alacsony
+1Tim.6.10	hu	10	sóvárogván	parositva	11	G3713	alacsony
+1Tim.6.10	hu	11	némelyek	parositva	10	G5100	alacsony
+1Tim.6.10	hu	12	eltévelyedtek	parositva	12	G0635	alacsony
+1Tim.6.10	hu	13	a	betoldas			alacsony
+1Tim.6.10	hu	14	hittől	parositva	13,15	G0575+G4102	alacsony
+1Tim.6.10	hu	15	és	parositva	16	G2532	alacsony
+1Tim.6.10	hu	16	magokat	parositva	17	G1438	alacsony
+1Tim.6.10	hu	17	általszegezték	parositva	18	G4044	alacsony
+1Tim.6.10	hu	18	sok	parositva	20	G4183	alacsony
+1Tim.6.10	hu	19	fájdalommal	parositva	19	G3601	alacsony
+1Tim.6.10	er	1		parositva	4	G4491	alacsony
+1Tim.6.10	er	2		parositva	1	G1063	alacsony
+1Tim.6.10	er	3		parositva	2	G3956	alacsony
+1Tim.6.10	er	4		forditatlan		G3588	alacsony
+1Tim.6.10	er	5		parositva	3	G2556	alacsony
+1Tim.6.10	er	6		forditatlan		G1510	alacsony
+1Tim.6.10	er	7		forditatlan		G3588	alacsony
+1Tim.6.10	er	8		parositva	6,7	G5365	alacsony
+1Tim.6.10	er	9		parositva	8,9	G3739	alacsony
+1Tim.6.10	er	10		parositva	11	G5100	alacsony
+1Tim.6.10	er	11		parositva	10	G3713	alacsony
+1Tim.6.10	er	12		parositva	12	G0635	alacsony
+1Tim.6.10	er	13		parositva	14	G0575	alacsony
+1Tim.6.10	er	14		forditatlan		G3588	alacsony
+1Tim.6.10	er	15		parositva	14	G4102	alacsony
+1Tim.6.10	er	16		parositva	15	G2532	alacsony
+1Tim.6.10	er	17		parositva	16	G1438	alacsony
+1Tim.6.10	er	18		parositva	17	G4044	alacsony
+1Tim.6.10	er	19		parositva	19	G3601	alacsony
+1Tim.6.10	er	20		parositva	18	G4183	alacsony
+1Tim.6.11	hu	1	De	parositva	2	G1161	alacsony
+1Tim.6.11	hu	2	te	parositva	1	G4771	alacsony
+1Tim.6.11	hu	3	óh	parositva	3	G5599	alacsony
+1Tim.6.11	hu	4	Istennek	parositva	6	G2316	alacsony
+1Tim.6.11	hu	5	embere	parositva	4	G0444	alacsony
+1Tim.6.11	hu	6	ezeket	parositva	7	G3778	alacsony
+1Tim.6.11	hu	7	kerüld	parositva	8	G5343	alacsony
+1Tim.6.11	hu	8	hanem	parositva	10	G1161	alacsony
+1Tim.6.11	hu	9	kövessed	parositva	9	G1377	alacsony
+1Tim.6.11	hu	10	az	betoldas			alacsony
+1Tim.6.11	hu	11	igazságot	parositva	11	G1343	alacsony
+1Tim.6.11	hu	12	az	betoldas			alacsony
+1Tim.6.11	hu	13	istenfélelmet	parositva	12	G2150	alacsony
+1Tim.6.11	hu	14	a	betoldas			alacsony
+1Tim.6.11	hu	15	hitet	parositva	13	G4102	alacsony
+1Tim.6.11	hu	16	a	betoldas			alacsony
+1Tim.6.11	hu	17	szeretetet	parositva	14	G0026	alacsony
+1Tim.6.11	hu	18	a	betoldas			alacsony
+1Tim.6.11	hu	19	békességes	parositva	15	G5281	alacsony
+1Tim.6.11	hu	20	tűrést	parositva	15	G5281	alacsony
+1Tim.6.11	hu	21	a	betoldas			alacsony
+1Tim.6.11	hu	22	szelídséget	parositva	16	G6073	alacsony
+1Tim.6.11	er	1		parositva	2	G4771	alacsony
+1Tim.6.11	er	2		parositva	1	G1161	alacsony
+1Tim.6.11	er	3		parositva	3	G5599	alacsony
+1Tim.6.11	er	4		parositva	5	G0444	alacsony
+1Tim.6.11	er	5		forditatlan		G3588	alacsony
+1Tim.6.11	er	6		parositva	4	G2316	alacsony
+1Tim.6.11	er	7		parositva	6	G3778	alacsony
+1Tim.6.11	er	8		parositva	7	G5343	alacsony
+1Tim.6.11	er	9		parositva	9	G1377	alacsony
+1Tim.6.11	er	10		parositva	8	G1161	alacsony
+1Tim.6.11	er	11		parositva	11	G1343	alacsony
+1Tim.6.11	er	12		parositva	13	G2150	alacsony
+1Tim.6.11	er	13		parositva	15	G4102	alacsony
+1Tim.6.11	er	14		parositva	17	G0026	alacsony
+1Tim.6.11	er	15		parositva	19,20	G5281	alacsony
+1Tim.6.11	er	16		parositva	22	G6073	alacsony
+1Tim.6.12	hu	1	Harczold	parositva	1	G0075	alacsony
+1Tim.6.12	hu	2	meg	parositva	1	G0075	alacsony
+1Tim.6.12	hu	3	a	betoldas			alacsony
+1Tim.6.12	hu	4	hitnek	parositva	6	G4102	alacsony
+1Tim.6.12	hu	5	szép	parositva	3	G2570	alacsony
+1Tim.6.12	hu	6	harczát	parositva	4	G0073	alacsony
+1Tim.6.12	hu	7	nyerd	parositva	7	G1949	alacsony
+1Tim.6.12	hu	8	el	parositva	7	G1949	alacsony
+1Tim.6.12	hu	9	az	betoldas			alacsony
+1Tim.6.12	hu	10	örök	parositva	9	G0166	alacsony
+1Tim.6.12	hu	11	életet	parositva	10	G2222	alacsony
+1Tim.6.12	hu	12	a	parositva	11,12	G1519+G3739	alacsony
+1Tim.6.12	hu	13	melyre	parositva	11,12	G1519+G3739	alacsony
+1Tim.6.12	hu	14	hívattattál	parositva	14	G2564	alacsony
+1Tim.6.12	hu	15	és	parositva	15	G2532	alacsony
+1Tim.6.12	hu	16	szép	parositva	18	G2570	alacsony
+1Tim.6.12	hu	17	vallástétellel	parositva	19	G3671	alacsony
+1Tim.6.12	hu	18	vallást	parositva	16	G3670	alacsony
+1Tim.6.12	hu	19	tettél	parositva	16	G3670	alacsony
+1Tim.6.12	hu	20	sok	parositva	21	G4183	alacsony
+1Tim.6.12	hu	21	bizonyság	parositva	22	G3144	alacsony
+1Tim.6.12	hu	22	előtt	parositva	20	G1799	alacsony
+1Tim.6.12	er	1		parositva	1,2	G0075	alacsony
+1Tim.6.12	er	2		forditatlan		G3588	alacsony
+1Tim.6.12	er	3		parositva	5	G2570	alacsony
+1Tim.6.12	er	4		parositva	6	G0073	alacsony
+1Tim.6.12	er	5		forditatlan		G3588	alacsony
+1Tim.6.12	er	6		parositva	4	G4102	alacsony
+1Tim.6.12	er	7		parositva	7,8	G1949	alacsony
+1Tim.6.12	er	8		forditatlan		G3588	alacsony
+1Tim.6.12	er	9		parositva	10	G0166	alacsony
+1Tim.6.12	er	10		parositva	11	G2222	alacsony
+1Tim.6.12	er	11		parositva	12,13	G1519	alacsony
+1Tim.6.12	er	12		parositva	12,13	G3739	alacsony
+1Tim.6.12	er	13		forditatlan		G2532	alacsony
+1Tim.6.12	er	14		parositva	14	G2564	alacsony
+1Tim.6.12	er	15		parositva	15	G2532	alacsony
+1Tim.6.12	er	16		parositva	18,19	G3670	alacsony
+1Tim.6.12	er	17		forditatlan		G3588	alacsony
+1Tim.6.12	er	18		parositva	16	G2570	alacsony
+1Tim.6.12	er	19		parositva	17	G3671	alacsony
+1Tim.6.12	er	20		parositva	22	G1799	alacsony
+1Tim.6.12	er	21		parositva	20	G4183	alacsony
+1Tim.6.12	er	22		parositva	21	G3144	alacsony
+1Tim.6.13	hu	1	Meghagyom	parositva	1	G3853	alacsony
+1Tim.6.13	hu	2	néked	parositva	2	G4771	alacsony
+1Tim.6.13	hu	3	Isten	parositva	5	G2316	alacsony
+1Tim.6.13	hu	4	előtt	parositva	3	G1799	alacsony
+1Tim.6.13	hu	5	a	parositva	6	G3588	alacsony
+1Tim.6.13	hu	6	ki	parositva	6	G3588	alacsony
+1Tim.6.13	hu	7	megelevenít	betoldas			alacsony
+1Tim.6.13	hu	8	mindeneket	parositva	9	G3956	alacsony
+1Tim.6.13	hu	9	és	parositva	10	G2532	alacsony
+1Tim.6.13	hu	10	Krisztus	parositva	11	G5547	alacsony
+1Tim.6.13	hu	11	Jézus	parositva	12	G2424	alacsony
+1Tim.6.13	hu	12	előtt	parositva	3	G1799	alacsony
+1Tim.6.13	hu	13	a	parositva	13	G3588	alacsony
+1Tim.6.13	hu	14	ki	parositva	13	G3588	alacsony
+1Tim.6.13	hu	15	bizonyságot	parositva	14	G3140	alacsony
+1Tim.6.13	hu	16	tett	parositva	14	G3140	alacsony
+1Tim.6.13	hu	17	Ponczius	parositva	16	G4194	alacsony
+1Tim.6.13	hu	18	Pilátus	parositva	17	G4091	alacsony
+1Tim.6.13	hu	19	alatt	parositva	15	G1909	alacsony
+1Tim.6.13	hu	20	ama	betoldas			alacsony
+1Tim.6.13	hu	21	szép	parositva	19	G2570	alacsony
+1Tim.6.13	hu	22	vallástétellel	parositva	20	G3671	alacsony
+1Tim.6.13	er	1		parositva	1	G3853	alacsony
+1Tim.6.13	er	2		parositva	2	G4771	alacsony
+1Tim.6.13	er	3		parositva	4,12	G1799	alacsony
+1Tim.6.13	er	4		forditatlan		G3588	alacsony
+1Tim.6.13	er	5		parositva	3	G2316	alacsony
+1Tim.6.13	er	6		parositva	5,6	G3588	alacsony
+1Tim.6.13	er	7		forditatlan		G2225	alacsony
+1Tim.6.13	er	8		forditatlan		G3588	alacsony
+1Tim.6.13	er	9		parositva	8	G3956	alacsony
+1Tim.6.13	er	10		parositva	9	G2532	alacsony
+1Tim.6.13	er	11		parositva	10	G5547	alacsony
+1Tim.6.13	er	12		parositva	11	G2424	alacsony
+1Tim.6.13	er	13		parositva	13,14	G3588	alacsony
+1Tim.6.13	er	14		parositva	15,16	G3140	alacsony
+1Tim.6.13	er	15		parositva	19	G1909	alacsony
+1Tim.6.13	er	16		parositva	17	G4194	alacsony
+1Tim.6.13	er	17		parositva	18	G4091	alacsony
+1Tim.6.13	er	18		forditatlan		G3588	alacsony
+1Tim.6.13	er	19		parositva	21	G2570	alacsony
+1Tim.6.13	er	20		parositva	22	G3671	alacsony
+1Tim.6.14	hu	1	Hogy	betoldas			alacsony
+1Tim.6.14	hu	2	tartsd	parositva	1,2	G5083+G4771	alacsony
+1Tim.6.14	hu	3	meg	parositva	1	G5083	alacsony
+1Tim.6.14	hu	4	a	betoldas			alacsony
+1Tim.6.14	hu	5	parancsolatot	parositva	4	G1785	alacsony
+1Tim.6.14	hu	6	mocsoktalanul	parositva	5	G0784	alacsony
+1Tim.6.14	hu	7	feddhetetlenül	parositva	6	G0423	alacsony
+1Tim.6.14	hu	8	a	betoldas			alacsony
+1Tim.6.14	hu	9	mi	parositva	12	G3165	alacsony
+1Tim.6.14	hu	10	Urunk	parositva	11,12	G2962+G3165	alacsony
+1Tim.6.14	hu	11	Jézus	parositva	13	G2424	alacsony
+1Tim.6.14	hu	12	Krisztus	parositva	14	G5547	alacsony
+1Tim.6.14	hu	13	megjelenéséig	parositva	7,9	G3360+G2015	alacsony
+1Tim.6.14	er	1		parositva	2,3	G5083	alacsony
+1Tim.6.14	er	2		parositva	2	G4771	alacsony
+1Tim.6.14	er	3		forditatlan		G3588	alacsony
+1Tim.6.14	er	4		parositva	5	G1785	alacsony
+1Tim.6.14	er	5		parositva	6	G0784	alacsony
+1Tim.6.14	er	6		parositva	7	G0423	alacsony
+1Tim.6.14	er	7		parositva	13	G3360	alacsony
+1Tim.6.14	er	8		forditatlan		G3588	alacsony
+1Tim.6.14	er	9		parositva	13	G2015	alacsony
+1Tim.6.14	er	10		forditatlan		G3588	alacsony
+1Tim.6.14	er	11		parositva	10	G2962	alacsony
+1Tim.6.14	er	12		parositva	9,10	G3165	alacsony
+1Tim.6.14	er	13		parositva	11	G2424	alacsony
+1Tim.6.14	er	14		parositva	12	G5547	alacsony
+1Tim.6.15	hu	1	A	parositva	1	G3739	alacsony
+1Tim.6.15	hu	2	mit	parositva	1	G3739	alacsony
+1Tim.6.15	hu	3	a	betoldas			alacsony
+1Tim.6.15	hu	4	maga	parositva	3	G2398	alacsony
+1Tim.6.15	hu	5	idejében	parositva	2	G2540	alacsony
+1Tim.6.15	hu	6	megmutat	parositva	4	G1166	alacsony
+1Tim.6.15	hu	7	ama	betoldas			alacsony
+1Tim.6.15	hu	8	boldog	parositva	6	G3107	alacsony
+1Tim.6.15	hu	9	és	parositva	7	G2532	alacsony
+1Tim.6.15	hu	10	egyedül	parositva	8	G3441	alacsony
+1Tim.6.15	hu	11	hatalmas	parositva	9	G1413	alacsony
+1Tim.6.15	hu	12	a	betoldas			alacsony
+1Tim.6.15	hu	13	királyoknak	parositva	13	G0936	alacsony
+1Tim.6.15	hu	14	Királya	parositva	11	G0935	alacsony
+1Tim.6.15	hu	15	és	parositva	14	G2532	alacsony
+1Tim.6.15	hu	16	az	betoldas			alacsony
+1Tim.6.15	hu	17	uraknak	parositva	17	G2961	alacsony
+1Tim.6.15	hu	18	Ura	parositva	15	G2962	alacsony
+1Tim.6.15	er	1		parositva	1,2	G3739	alacsony
+1Tim.6.15	er	2		parositva	5	G2540	alacsony
+1Tim.6.15	er	3		parositva	4	G2398	alacsony
+1Tim.6.15	er	4		parositva	6	G1166	alacsony
+1Tim.6.15	er	5		forditatlan		G3588	alacsony
+1Tim.6.15	er	6		parositva	8	G3107	alacsony
+1Tim.6.15	er	7		parositva	9	G2532	alacsony
+1Tim.6.15	er	8		parositva	10	G3441	alacsony
+1Tim.6.15	er	9		parositva	11	G1413	alacsony
+1Tim.6.15	er	10		forditatlan		G3588	alacsony
+1Tim.6.15	er	11		parositva	14	G0935	alacsony
+1Tim.6.15	er	12		forditatlan		G3588	alacsony
+1Tim.6.15	er	13		parositva	13	G0936	alacsony
+1Tim.6.15	er	14		parositva	15	G2532	alacsony
+1Tim.6.15	er	15		parositva	18	G2962	alacsony
+1Tim.6.15	er	16		forditatlan		G3588	alacsony
+1Tim.6.15	er	17		parositva	17	G2961	alacsony
+1Tim.6.16	hu	1	Kié	parositva	3	G2192	alacsony
+1Tim.6.16	hu	2	egyedül	parositva	2	G3441	alacsony
+1Tim.6.16	hu	3	a	betoldas			alacsony
+1Tim.6.16	hu	4	halhatatlanság	parositva	4	G0110	alacsony
+1Tim.6.16	hu	5	a	betoldas			alacsony
+1Tim.6.16	hu	6	ki	betoldas			alacsony
+1Tim.6.16	hu	7	hozzáférhetetlen	parositva	7	G0676	alacsony
+1Tim.6.16	hu	8	világosságban	parositva	5	G5457	alacsony
+1Tim.6.16	hu	9	lakozik	parositva	6	G3611	alacsony
+1Tim.6.16	hu	10	a	parositva	8	G3739	alacsony
+1Tim.6.16	hu	11	kit	parositva	8	G3739	alacsony
+1Tim.6.16	hu	12	az	betoldas			alacsony
+1Tim.6.16	hu	13	emberek	parositva	11	G0444	alacsony
+1Tim.6.16	hu	14	közül	parositva	11	G0444	alacsony
+1Tim.6.16	hu	15	senki	parositva	10	G3762	alacsony
+1Tim.6.16	hu	16	nem	parositva	10	G3762	alacsony
+1Tim.6.16	hu	17	látott	parositva	9	G1492	alacsony
+1Tim.6.16	hu	18	sem	parositva	12	G3761	alacsony
+1Tim.6.16	hu	19	nem	parositva	12	G3761	alacsony
+1Tim.6.16	hu	20	láthat	parositva	13,14	G1492+G1410	alacsony
+1Tim.6.16	hu	21	a	parositva	15	G3739	alacsony
+1Tim.6.16	hu	22	kinek	parositva	15	G3739	alacsony
+1Tim.6.16	hu	23	tisztesség	parositva	16	G5092	alacsony
+1Tim.6.16	hu	24	és	parositva	17	G2532	alacsony
+1Tim.6.16	hu	25	örökké	parositva	19	G0166	alacsony
+1Tim.6.16	hu	26	való	parositva	19	G0166	alacsony
+1Tim.6.16	hu	27	hatalom	parositva	18	G2904	alacsony
+1Tim.6.16	hu	28	Ámen	parositva	20	G0281	alacsony
+1Tim.6.16	er	1		forditatlan		G3588	alacsony
+1Tim.6.16	er	2		parositva	2	G3441	alacsony
+1Tim.6.16	er	3		parositva	1	G2192	alacsony
+1Tim.6.16	er	4		parositva	4	G0110	alacsony
+1Tim.6.16	er	5		parositva	8	G5457	alacsony
+1Tim.6.16	er	6		parositva	9	G3611	alacsony
+1Tim.6.16	er	7		parositva	7	G0676	alacsony
+1Tim.6.16	er	8		parositva	10,11	G3739	alacsony
+1Tim.6.16	er	9		parositva	17	G1492	alacsony
+1Tim.6.16	er	10		parositva	15,16	G3762	alacsony
+1Tim.6.16	er	11		parositva	13,14	G0444	alacsony
+1Tim.6.16	er	12		parositva	18,19	G3761	alacsony
+1Tim.6.16	er	13		parositva	20	G1492	alacsony
+1Tim.6.16	er	14		parositva	20	G1410	alacsony
+1Tim.6.16	er	15		parositva	21,22	G3739	alacsony
+1Tim.6.16	er	16		parositva	23	G5092	alacsony
+1Tim.6.16	er	17		parositva	24	G2532	alacsony
+1Tim.6.16	er	18		parositva	27	G2904	alacsony
+1Tim.6.16	er	19		parositva	25,26	G0166	alacsony
+1Tim.6.16	er	20		parositva	28	G0281	alacsony
+1Tim.6.17	hu	1	Azoknak	parositva	1	G3588	alacsony
+1Tim.6.17	hu	2	a	betoldas			alacsony
+1Tim.6.17	hu	3	kik	betoldas			alacsony
+1Tim.6.17	hu	4	gazdagok	parositva	2	G4145	alacsony
+1Tim.6.17	hu	5	e	parositva	4,5	G3588+G3568	alacsony
+1Tim.6.17	hu	6	világon	parositva	3,6	G1722+G0165	alacsony
+1Tim.6.17	hu	7	mondd	parositva	7	G3853	alacsony
+1Tim.6.17	hu	8	meg	parositva	7	G3853	alacsony
+1Tim.6.17	hu	9	hogy	betoldas			alacsony
+1Tim.6.17	hu	10	ne	parositva	8	G3361	alacsony
+1Tim.6.17	hu	11	fuvalkodjanak	parositva	9	G5309	alacsony
+1Tim.6.17	hu	12	fel	parositva	9	G5309	alacsony
+1Tim.6.17	hu	13	se	parositva	10	G3366	alacsony
+1Tim.6.17	hu	14	ne	parositva	10	G3366	alacsony
+1Tim.6.17	hu	15	reménykedjenek	parositva	11	G1679	alacsony
+1Tim.6.17	hu	16	a	betoldas			alacsony
+1Tim.6.17	hu	17	bizonytalan	parositva	14	G0083	alacsony
+1Tim.6.17	hu	18	gazdagságban	parositva	12,13	G1909+G4149	alacsony
+1Tim.6.17	hu	19	hanem	parositva	15	G0235	alacsony
+1Tim.6.17	hu	20	az	betoldas			alacsony
+1Tim.6.17	hu	21	élő	parositva	20	G2198	alacsony
+1Tim.6.17	hu	22	Istenben	parositva	18	G2316	alacsony
+1Tim.6.17	hu	23	a	parositva	21	G3588	alacsony
+1Tim.6.17	hu	24	ki	parositva	21	G3588	alacsony
+1Tim.6.17	hu	25	bőségesen	parositva	25	G4146	alacsony
+1Tim.6.17	hu	26	megad	parositva	22	G3930	alacsony
+1Tim.6.17	hu	27	nékünk	parositva	23	G3165	alacsony
+1Tim.6.17	hu	28	mindent	parositva	24	G3956	alacsony
+1Tim.6.17	hu	29	a	betoldas			alacsony
+1Tim.6.17	hu	30	mi	parositva	23	G3165	alacsony
+1Tim.6.17	hu	31	tápláltatásunkra	parositva	23,26,27	G3165+G1519+G0619	alacsony
+1Tim.6.17	er	1		parositva	1	G3588	alacsony
+1Tim.6.17	er	2		parositva	4	G4145	alacsony
+1Tim.6.17	er	3		parositva	6	G1722	alacsony
+1Tim.6.17	er	4		parositva	5	G3588	alacsony
+1Tim.6.17	er	5		parositva	5	G3568	alacsony
+1Tim.6.17	er	6		parositva	6	G0165	alacsony
+1Tim.6.17	er	7		parositva	7,8	G3853	alacsony
+1Tim.6.17	er	8		parositva	10	G3361	alacsony
+1Tim.6.17	er	9		parositva	11,12	G5309	alacsony
+1Tim.6.17	er	10		parositva	13,14	G3366	alacsony
+1Tim.6.17	er	11		parositva	15	G1679	alacsony
+1Tim.6.17	er	12		parositva	18	G1909	alacsony
+1Tim.6.17	er	13		parositva	18	G4149	alacsony
+1Tim.6.17	er	14		parositva	17	G0083	alacsony
+1Tim.6.17	er	15		parositva	19	G0235	alacsony
+1Tim.6.17	er	16		forditatlan		G1909	alacsony
+1Tim.6.17	er	17		forditatlan		G3588	alacsony
+1Tim.6.17	er	18		parositva	22	G2316	alacsony
+1Tim.6.17	er	19		forditatlan		G3588	alacsony
+1Tim.6.17	er	20		parositva	21	G2198	alacsony
+1Tim.6.17	er	21		parositva	23,24	G3588	alacsony
+1Tim.6.17	er	22		parositva	26	G3930	alacsony
+1Tim.6.17	er	23		parositva	27,30,31	G3165	alacsony
+1Tim.6.17	er	24		parositva	28	G3956	alacsony
+1Tim.6.17	er	25		parositva	25	G4146	alacsony
+1Tim.6.17	er	26		parositva	31	G1519	alacsony
+1Tim.6.17	er	27		parositva	31	G0619	alacsony
+1Tim.6.18	hu	1	Hogy	betoldas			alacsony
+1Tim.6.18	hu	2	jót	parositva	1	G0014	alacsony
+1Tim.6.18	hu	3	tegyenek	parositva	1	G0014	alacsony
+1Tim.6.18	hu	4	legyenek	parositva	2	G4147	alacsony
+1Tim.6.18	hu	5	gazdagok	parositva	2	G4147	alacsony
+1Tim.6.18	hu	6	a	betoldas			alacsony
+1Tim.6.18	hu	7	jó	parositva	5	G2570	alacsony
+1Tim.6.18	hu	8	cselekedetekben	parositva	3,4	G1722+G2041	alacsony
+1Tim.6.18	hu	9	legyenek	parositva	7	G1511	alacsony
+1Tim.6.18	hu	10	szíves	parositva	6	G2130	alacsony
+1Tim.6.18	hu	11	adakozók	parositva	6	G2130	alacsony
+1Tim.6.18	hu	12	közlők	parositva	8	G2843	alacsony
+1Tim.6.18	er	1		parositva	2,3	G0014	alacsony
+1Tim.6.18	er	2		parositva	4,5	G4147	alacsony
+1Tim.6.18	er	3		parositva	8	G1722	alacsony
+1Tim.6.18	er	4		parositva	8	G2041	alacsony
+1Tim.6.18	er	5		parositva	7	G2570	alacsony
+1Tim.6.18	er	6		parositva	10,11	G2130	alacsony
+1Tim.6.18	er	7		parositva	9	G1511	alacsony
+1Tim.6.18	er	8		parositva	12	G2843	alacsony
+1Tim.6.19	hu	1	Kincset	parositva	1	G0597	alacsony
+1Tim.6.19	hu	2	gyűjtvén	parositva	1	G0597	alacsony
+1Tim.6.19	hu	3	magoknak	parositva	2	G1438	alacsony
+1Tim.6.19	hu	4	jó	parositva	4	G2570	alacsony
+1Tim.6.19	hu	5	alapul	parositva	3	G2310	alacsony
+1Tim.6.19	hu	6	a	betoldas			alacsony
+1Tim.6.19	hu	7	jövőre	parositva	5,7	G1519+G3195	alacsony
+1Tim.6.19	hu	8	hogy	parositva	8	G2443	alacsony
+1Tim.6.19	hu	9	elnyerjék	parositva	9	G1949	alacsony
+1Tim.6.19	hu	10	az	betoldas			alacsony
+1Tim.6.19	hu	11	örök	betoldas			alacsony
+1Tim.6.19	hu	12	életet	parositva	12	G2222	alacsony
+1Tim.6.19	er	1		parositva	1,2	G0597	alacsony
+1Tim.6.19	er	2		parositva	3	G1438	alacsony
+1Tim.6.19	er	3		parositva	5	G2310	alacsony
+1Tim.6.19	er	4		parositva	4	G2570	alacsony
+1Tim.6.19	er	5		parositva	7	G1519	alacsony
+1Tim.6.19	er	6		forditatlan		G3588	alacsony
+1Tim.6.19	er	7		parositva	7	G3195	alacsony
+1Tim.6.19	er	8		parositva	8	G2443	alacsony
+1Tim.6.19	er	9		parositva	9	G1949	alacsony
+1Tim.6.19	er	10		forditatlan		G3588	alacsony
+1Tim.6.19	er	11		forditatlan		G3689	alacsony
+1Tim.6.19	er	12		parositva	12	G2222	alacsony
+1Tim.6.20	hu	1	Óh	parositva	1	G5599	alacsony
+1Tim.6.20	hu	2	Timótheus	parositva	2	G5095	alacsony
+1Tim.6.20	hu	3	őrizd	parositva	5	G5442	alacsony
+1Tim.6.20	hu	4	meg	parositva	5	G5442	alacsony
+1Tim.6.20	hu	5	a	betoldas			alacsony
+1Tim.6.20	hu	6	mi	betoldas			alacsony
+1Tim.6.20	hu	7	rád	betoldas			alacsony
+1Tim.6.20	hu	8	van	betoldas			alacsony
+1Tim.6.20	hu	9	bízva	betoldas			alacsony
+1Tim.6.20	hu	10	elfordulván	parositva	6	G1624	alacsony
+1Tim.6.20	hu	11	a	betoldas			alacsony
+1Tim.6.20	hu	12	szentségtelen	parositva	8	G0952	alacsony
+1Tim.6.20	hu	13	üres	parositva	9	G2757	alacsony
+1Tim.6.20	hu	14	beszédektől	parositva	9	G2757	alacsony
+1Tim.6.20	hu	15	és	parositva	10	G2532	alacsony
+1Tim.6.20	hu	16	a	betoldas			alacsony
+1Tim.6.20	hu	17	hamis	parositva	13	G5581	alacsony
+1Tim.6.20	hu	18	nevű	parositva	13	G5581	alacsony
+1Tim.6.20	hu	19	ismeretnek	parositva	14	G1108	alacsony
+1Tim.6.20	hu	20	ellenvetéseitől	parositva	11	G0477	alacsony
+1Tim.6.20	er	1		parositva	1	G5599	alacsony
+1Tim.6.20	er	2		parositva	2	G5095	alacsony
+1Tim.6.20	er	3		forditatlan		G3588	alacsony
+1Tim.6.20	er	4		forditatlan		G3866	alacsony
+1Tim.6.20	er	5		parositva	3,4	G5442	alacsony
+1Tim.6.20	er	6		parositva	10	G1624	alacsony
+1Tim.6.20	er	7		forditatlan		G3588	alacsony
+1Tim.6.20	er	8		parositva	12	G0952	alacsony
+1Tim.6.20	er	9		parositva	13,14	G2757	alacsony
+1Tim.6.20	er	10		parositva	15	G2532	alacsony
+1Tim.6.20	er	11		parositva	20	G0477	alacsony
+1Tim.6.20	er	12		forditatlan		G3588	alacsony
+1Tim.6.20	er	13		parositva	17,18	G5581	alacsony
+1Tim.6.20	er	14		parositva	19	G1108	alacsony
+1Tim.6.21	hu	1	A	parositva	1	G3739	alacsony
+1Tim.6.21	hu	2	melylyel	parositva	1	G3739	alacsony
+1Tim.6.21	hu	3	némelyek	parositva	2	G5100	alacsony
+1Tim.6.21	hu	4	kevélykedvén	parositva	3	G1861	alacsony
+1Tim.6.21	hu	5	a	betoldas			alacsony
+1Tim.6.21	hu	6	hit	parositva	6	G4102	alacsony
+1Tim.6.21	hu	7	mellől	parositva	4	G4012	alacsony
+1Tim.6.21	hu	8	eltévelyedtek	parositva	7	G0795	alacsony
+1Tim.6.21	hu	9	Kegyelem	parositva	9	G5485	alacsony
+1Tim.6.21	hu	10	veled	parositva	10	G3326	alacsony
+1Tim.6.21	hu	11	Ámen	parositva	12	G0281	alacsony
+1Tim.6.21	er	1		parositva	1,2	G3739	alacsony
+1Tim.6.21	er	2		parositva	3	G5100	alacsony
+1Tim.6.21	er	3		parositva	4	G1861	alacsony
+1Tim.6.21	er	4		parositva	7	G4012	alacsony
+1Tim.6.21	er	5		forditatlan		G3588	alacsony
+1Tim.6.21	er	6		parositva	6	G4102	alacsony
+1Tim.6.21	er	7		parositva	8	G0795	alacsony
+1Tim.6.21	er	8		forditatlan		G3588	alacsony
+1Tim.6.21	er	9		parositva	9	G5485	alacsony
+1Tim.6.21	er	10		parositva	10	G3326	alacsony
+1Tim.6.21	er	11		forditatlan		G4771	alacsony
+1Tim.6.21	er	12		parositva	11	G0281	alacsony
+1Tim.6.21	er	13		forditatlan		G4314	alacsony
+1Tim.6.21	er	14		forditatlan		G5095	alacsony
+1Tim.6.21	er	15		forditatlan		G4413	alacsony
+1Tim.6.21	er	16		forditatlan		G1125	alacsony
+1Tim.6.21	er	17		forditatlan		G0575	alacsony
+1Tim.6.21	er	18		forditatlan		G2993	alacsony
+1Tim.6.21	er	19		forditatlan		G3748	alacsony
+1Tim.6.21	er	20		forditatlan		G1510	alacsony
+1Tim.6.21	er	21		forditatlan		G3390	alacsony
+1Tim.6.21	er	22		forditatlan		G5435	alacsony
+1Tim.6.21	er	23		forditatlan		G3588	alacsony
+1Tim.6.21	er	24		forditatlan		G3818	alacsony

@@ -27,6 +27,46 @@
   function tarol(kulcs, ertek) { try { window.localStorage.setItem(kulcs, ertek); } catch (e) { /* tiltott tároló: a beállítás csak az oldalra érvényes */ } }
   function olvas(kulcs) { try { return window.localStorage.getItem(kulcs); } catch (e) { return null; } }
 
+  // F213: a BDB-szókártya nézetkapcsolója (olvasói nézet / szócikk egyben / minden apparátus nyitva) és a „még N hely”. A választás
+  // a böngészőben marad (localStorage), a `?nezet=egyben|app` paraméter felülírja (megosztható link). JS nélkül az olvasói nézet áll,
+  // minden hely látszik, és a lenyílók kézzel nyithatók.
+  var SZK_KULCS = 'pardes_szk_nezet';
+  function szkNezet(kartya, nezet) {
+    kartya.setAttribute('data-nezet', nezet);
+    kartya.querySelectorAll('[data-szk-nezet]').forEach(function (g) { g.setAttribute('aria-pressed', g.getAttribute('data-szk-nezet') === nezet ? 'true' : 'false'); });
+    if (nezet === 'olvaso') {
+      kartya.querySelectorAll('details[data-szk-nyitotta]').forEach(function (d) { d.open = false; d.removeAttribute('data-szk-nyitotta'); });
+      return;
+    }
+    kartya.querySelectorAll('details').forEach(function (d) {
+      if (!d.open && (nezet === 'app' || d.classList.contains('szk-jel-d'))) { d.setAttribute('data-szk-nyitotta', ''); d.open = true; }
+    });
+  }
+  function szkInit(gyoker) {
+    var nezet = null;
+    try { nezet = new URLSearchParams(window.location.search).get('nezet'); } catch (e) { nezet = null; }
+    if (nezet !== 'egyben' && nezet !== 'app' && nezet !== 'olvaso') { nezet = olvas(SZK_KULCS); }
+    gyoker.querySelectorAll('.szk').forEach(function (k) {
+      k.querySelectorAll('.szk-nezet').forEach(function (s) { s.hidden = false; });
+      if (nezet === 'egyben' || nezet === 'app') { szkNezet(k, nezet); }
+    });
+  }
+  document.addEventListener('click', function (ev) {
+    var g = ev.target.closest ? ev.target.closest('[data-szk-nezet]') : null;
+    if (g) {
+      var n = g.getAttribute('data-szk-nezet');
+      szkNezet(g.closest('.szk'), n);
+      tarol(SZK_KULCS, n);
+      return;
+    }
+    var t = ev.target.closest ? ev.target.closest('.szk-tobb') : null;
+    if (t) {
+      var nyitva = t.closest('.szk-sor').classList.toggle('szk-kinyitva');
+      t.textContent = nyitva ? 'kevesebb' : 'még ' + t.getAttribute('data-db') + ' hely';
+    }
+  });
+  szkInit(document);
+
   var kicsiMedia = window.matchMedia ? window.matchMedia('(max-width: 899.98px)') : null;
   function kicsi() { return kicsiMedia ? kicsiMedia.matches : false; }
 
@@ -126,7 +166,7 @@
       var a = document.createElement('a');
       a.classList.add('fejezetgomb');
       if (String(f) === ittFej) { a.classList.add('itt'); }
-      a.href = '/' + slugK + '/' + f;
+      a.href = '/' + slugK + '/' + f + ((konyvvalaszto && konyvvalaszto.getAttribute('data-bq')) || '');   // F210: a választott Biblia marad
       a.textContent = String(f);
       fejezetracs.appendChild(a);
     }
@@ -333,6 +373,7 @@
   var VERS_FULEK = ['vers', 'kh', 'temak', 'motivum'];
   var MAX_ELOZMENY = 20;
   var fejezet = (lap.getAttribute('data-fejezet') || '').split('/');      // [slug, fej]
+  var bq = lap.getAttribute('data-bq') || '';                              // F210: a választott Biblia (`biblia=<kód>`; a Károlinál üres)
   var slug = fejezet[0], fej = fejezet[1];
   var lapFej = lap.querySelector('.lap-fej');
   var cimFo = lap.querySelector('.lap-cim-fo');
@@ -378,13 +419,18 @@
 
   // a lap címe (JS nélkül is ez a cím): a böngésző címsora az állapotot követi, így az újratöltés ugyanezt mutatja
   function lapUrl(all) {
-    if (all.mod === 'vers') { return '/' + slug + '/' + fej + '/' + all.vers + (all.ful && all.ful !== 'vers' ? '?ful=' + all.ful : '') + '#v' + all.vers; }
+    if (all.mod === 'vers') {
+      var q = [];
+      if (all.ful && all.ful !== 'vers') { q.push('ful=' + all.ful); }
+      if (bq) { q.push(bq); }
+      return '/' + slug + '/' + fej + '/' + all.vers + (q.length ? '?' + q.join('&') : '') + '#v' + all.vers;
+    }
     if (all.mod === 'szo') {
       var helyben = all.ig && all.ig[0] === slug && String(all.ig[1]) === String(fej);
       var alap = helyben ? '/' + slug + '/' + fej + '/' + all.ig[2] : '/' + slug + '/' + fej;
-      return alap + '?szo=' + encodeURIComponent(all.strong) + '&ful=szo' + (helyben ? '#v' + all.ig[2] : '');
+      return alap + '?szo=' + encodeURIComponent(all.strong) + '&ful=szo' + (bq ? '&' + bq : '') + (helyben ? '#v' + all.ig[2] : '');
     }
-    return '/' + slug + '/' + fej;
+    return '/' + slug + '/' + fej + (bq ? '?' + bq : '');
   }
 
   function helybeliVers(all) {
@@ -463,7 +509,7 @@
   function bdbOdagorget() {
     var cel = tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] li.bdb-itt')
       || tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] a.bdb-itt')
-      || tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] li.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] div.torzs.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] a.bdb-vonatkozhat');
+      || tartalom.querySelector('[data-blokk="szo.bdb_apparatus"] li.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] .torzs.bdb-vonatkozhat, [data-blokk="szo.bdb_apparatus"] a.bdb-vonatkozhat');
     if (!cel) { return; }
     // a görgetés a végleges elrendezésen (betűk, ragadós fejléc-igazítás után): a teljes lapnál a load után, töredéknél a következő képkockán
     // a lap ragadós fejsora (lapFej) ne takarja a jelölés elejét
@@ -488,7 +534,7 @@
       if (all.mod === 'vers') { fulValt(all.ful || 'vers'); }
     }
     lap.scrollTop = 0;
-    if (all.mod === 'szo') { bdbOdagorget(); }
+    if (all.mod === 'szo') { szkInit(tartalom); bdbOdagorget(); }
     var vers = helybeliVers(all);
     var el = kijelol(vers);
     muveletsor();
