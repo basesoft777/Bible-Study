@@ -3529,9 +3529,13 @@ def hivatkozasok_a_szovegben(szoveg):
     return out
 
 
-def kiemel(szoveg, celok):
+def kiemel(szoveg, celok, mark=False):
     """A célversek (`[(vers, azonosító)]`, vers Károli-alakban: `1Móz 4:26`) előfordulásait a szövegben
     felirat nélkül kiemeli (`**…**`). Versenként a k-adik előfordulás a k-adik azonosítóé.
+    `mark` (az új szerkezetű lap; a felhasználó a v6-on: „a félkövér nem erőteljes, nem jól látható … látványosabb
+    jelölés kell”): a kiemelés `<mark class="motivumhely" title="a motívum helye: 1Móz 3:23">`; a title a teljes
+    igehely, mert a BDB folytatásos írásmódjában a hivatkozás gyakran csak versszám („3:17, 23”). A BDB szövege
+    nem változik.
     Visszaad: (új szöveg, [kiemelt azonosítók], [meg nem talált azonosítók])."""
     hiv = hivatkozasok_a_szovegben(szoveg)
     poz = {}
@@ -3541,18 +3545,27 @@ def kiemel(szoveg, celok):
     csoport = {}
     for vers, azon in celok:
         csoport.setdefault(vers, []).append(azon)
-    talalt, hianyzik, jelolok = [], [], []
+    talalt, hianyzik, jelolok = [], [], {}
     for vers, azonok in csoport.items():
         helyek = poz.get(vers, [])
         for i, azon in enumerate(azonok):
             if i < len(helyek):
-                jelolok.append(helyek[i])
+                jelolok.setdefault(helyek[i], vers)
                 talalt.append(azon)
             else:
                 hianyzik.append(azon)
-    for kezd, veg in sorted(set(jelolok), reverse=True):
-        szoveg = szoveg[:kezd] + '**' + szoveg[kezd:veg] + '**' + szoveg[veg:]
+    for (kezd, veg), vers in sorted(jelolok.items(), reverse=True):
+        if mark:
+            nyit = '<mark class="motivumhely" title="a motívum helye: %s">' % _vers_teljes(vers)
+            szoveg = szoveg[:kezd] + nyit + szoveg[kezd:veg] + '</mark>' + szoveg[veg:]
+        else:
+            szoveg = szoveg[:kezd] + '**' + szoveg[kezd:veg] + '**' + szoveg[veg:]
     return szoveg, talalt, hianyzik
+
+
+def _vers_teljes(vers):
+    """A kiemelés title-je: a Károli-alakú igehely (a forrásjavított „26:35” alak is könyvnévvel áll)."""
+    return vers.replace('"', '&quot;')
 
 
 def _elso_tagmondat(szoveg, hatar=90, csonkit_jel=False):
@@ -3982,7 +3995,7 @@ def gerinc_szakasz_lista(szakaszok, hordozo, celok, adat_cimke, szotar, strong, 
             gl = thayer_glossza(jel, '', hu)
             fej = '- **`%s` — %s**' % (jel, gl) if gl else fej
         if hu:
-            szoveg, talalt, hiany = kiemel(jelolo_levag(hu, jel), celok.get(k, []))
+            szoveg, talalt, hiany = kiemel(jelolo_levag(hu, jel), celok.get(k, []), mark=bool(uj))
             talalt_ossz += talalt
             hiany_ossz += hiany
             bek = [fej, '', '  > %s' % szoveg]
@@ -4174,7 +4187,7 @@ def gerinc_blokk(adat, szotar, strong, motivum_sorai, ctx=None):
         fej = sz['fej']
         fc = fej_celok.get(sz['bdb_id'], [])
         if fej and fej[2]:
-            szov, t, h = kiemel(fej[2], fc)
+            szov, t, h = kiemel(fej[2], fc, mark=bool(uj))
             napl['kiemelt'] += t
             napl['nem_talalt'] += h
             if fej[0] in elnyelo:

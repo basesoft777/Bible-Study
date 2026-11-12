@@ -24,7 +24,7 @@ A motívum tehát nem a bűn és következményei általában, hanem az a saját
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-12 -->
 
 A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
 
@@ -50,7 +50,7 @@ A lap szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata m
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-12 -->
 
 A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -111,7 +111,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Döntési út
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#dontesi_ut | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/elutasitasi_okok.tsv, konkordancia/Karoli_1908.tsv | licenc: minden jog fenntartva, közkincs | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#dontesi_ut | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/elutasitasi_okok.tsv, konkordancia/Karoli_1908.tsv | licenc: minden jog fenntartva, közkincs | ts=2026-11-12 -->
 
 A lap első lépése, az igehelyek előtt: mit keres a lap, hol keresett, mi esett ki és miért, és mi maradt. 1 796 megvizsgált versből 54 tartozik a motívumhoz; minden vers egyszer számít, és a számok összeadódnak.<!-- olvasói -->
 
@@ -221,7 +221,7 @@ A kérdések kifejtése a 10. (Értelmezés) és a 11. szakaszban (Módszertan �
 
 ## 2. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-12 -->
 
 A motívum 47 igehelyen fordul elő, 14 bibliai könyvben (41 ószövetségi, 6 újszövetségi hely). 42 hely azonosítása magas megbízhatóságú, 5 alacsonyabb. **Következtetés:** a motívum súlypontja Mózes első könyve (47 helyből 23); főként ószövetségi; az Újszövetségben 6 hely.<!-- olvasói -->
 
@@ -674,7 +674,7 @@ Funkció: a kánon zárása: az átok megszűnik
 
 ## 3. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-12 -->
 
 A motívum 47 helyén túl további 1 742 vers került vizsgálat alá: a motívum szavainak keresése a teljes Ó- és Újszövetségre kiterjedt, és a kereszthivatkozások ajánlásaira is. Egyik sem tartozik a motívumhoz: 236 versről egyenként született döntés, 1 506 versről közös ok alapján, csoportosan. A leggyakoribb ok: „más szó áll a versben, nem a motívum lexémája” (887 vers), utána „a szó áll, de általános használatban, a lánc nélkül” (577 vers). A jelöltek forrása (vers): Gépi keresés 1612, TSK-ajánlás 99, Kutatói felvetés 31. **Következtetés:** a motívum minden helyére átlagosan 37 vizsgált vers jut (1742 vizsgált vers, 47 motívumhely). A határt leginkább ez az ok húzza meg: „más szó áll a versben, nem a motívum lexémája”.<!-- olvasói -->
 
@@ -1263,7 +1263,7 @@ További 18 ok, összesen 118 vers: emberi átkozódás, nem a genezisi lánc fo
 
 ## 4. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-12 -->
 
 A motívumot 10 héber szó és 5 görög szó hordozza; héberül: אָבַל (ával), אֲדָמָה (adámá), אָלָה (álá), אָרַר (árar), חַטָּאת (chattát), חָמָס (chámász), עִצָּבוֹן (iccávón), קוֹץ (kóc), רַע (ra) és שָׁחַת (sáchat); görögül: διαφθείρω (diaftheiró), ἐπικατάρατος (epikataratosz), κατάρα (katara), φθείρω (ftheiró) és φθορά (fthora). Szavanként számozott pontok követik egymást (a pontok rendje a Jelmagyarázatban áll); a 4.2 pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
@@ -1342,7 +1342,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 - **1 — megront, rosszabbá tesz**
 
-  > rosszabbra változtatni, megrontani: az elméket, az erkölcsöket; τήν γῆν, azaz a földet lakó embereket, **Jel 11:18**; διεφθαρμένοι τόν νοῦν, 1Tim 6:5 (τήν διάνοιαν, Platón, legg. 10, o. 888 a.; τόν γνώμην, Dionysius Halicarnassus Antiquities 5, 21; τούς ὀφθαλμούς, Xenophón, an. 4, 5, 12).
+  > rosszabbra változtatni, megrontani: az elméket, az erkölcsöket; τήν γῆν, azaz a földet lakó embereket, <mark class="motivumhely" title="a motívum helye: Jel 11:18">Jel 11:18</mark>; διεφθαρμένοι τόν νοῦν, 1Tim 6:5 (τήν διάνοιαν, Platón, legg. 10, o. 888 a.; τόν γνώμην, Dionysius Halicarnassus Antiquities 5, 21; τούς ὀφθαλμούς, Xenophón, an. 4, 5, 12).
 
 <details>
 <summary>2. – 2.a (2 szakasz): elpusztítani, tönkretenni · felemészteni, a testi erőről és erőnlétről</summary>
@@ -1354,7 +1354,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 - **2.b — elpusztítani**
 
-  > elpusztítani (latin delere): Jel 8:9; megölni, διαφθείρειν τούς, stb. **Jel 11:18**.
+  > elpusztítani (latin delere): Jel 8:9; megölni, διαφθείρειν τούς, stb. <mark class="motivumhely" title="a motívum helye: Jel 11:18">Jel 11:18</mark>.
 
 *A teljes szócikk: [szónézet](/szo/G1311) · forrás: a Thayer-szótár*
 
@@ -1379,7 +1379,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
-**A szócikk feje (nyelvi háttér).** ἐπικατάρατον (ἐπικαταράομαι átkot mondani valakire), csak bibliai és egyházi használatban: átkozott, utálatos, isteni bosszúnak kitett, Isten átka alatt álló: Ján 7:49 R G; Gal 3:10 (5Móz 27:26); **Gal 3:13** (5Móz 21:23); (Bölcs 3:12 ( Bölcs 3:13); Bölcs 14:8>; 4Makk 2:19; a Septuaginta gyakran használja a אָרוּר szóra).
+**A szócikk feje (nyelvi háttér).** ἐπικατάρατον (ἐπικαταράομαι átkot mondani valakire), csak bibliai és egyházi használatban: átkozott, utálatos, isteni bosszúnak kitett, Isten átka alatt álló: Ján 7:49 R G; Gal 3:10 (5Móz 27:26); <mark class="motivumhely" title="a motívum helye: Gal 3:13">Gal 3:13</mark> (5Móz 21:23); (Bölcs 3:12 ( Bölcs 3:13); Bölcs 14:8>; 4Makk 2:19; a Septuaginta gyakran használja a אָרוּר szóra).
 
 *ⓘ Kutatói megjegyzés: a szótár nem idézi: Gal 3:14.*
 
@@ -1407,7 +1407,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
-**A szócikk feje (nyelvi háttér).** κατάρας, ἡ (κατά és ἄρα, vö. német Verfiuchung,Verwünschung (vö. κατά, III. 4)); a Septuaginta főként a כְּלָלָה szóra; kiátkozás, elátkozás, átok: szemben a εὐλογία szóval, az elátkozottsággal szemben (l. ott), Jak 3:10; γῆ κατάρας ἐγγύς, Isten közelében, azaz a terméketlenségnek való kiszolgáltatottság közelében (utalás az 1Móz 3:17k.-ra), **Zsid 6:8**; ὑπό κατάραν εἶναι, átok alatt lenni, azaz az elátkozás megszabott büntetésének hatálya alá tartozni, Gal 3:10; ἐξαγοράζειν τινα ἐκ τῆς κατάρας, megváltani azt, aki az átok kimondott büntetésének van kitéve, Gal 3:13; τέκνα κατάρας, kiátkozásra méltó emberek, 2Pét 2:14; elvont jelentés konkrétként: az, akiben az átok megmutatkozik, azaz aki az elátkozás megszabott büntetését szenvedi, Gal 3:13; ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi,
+**A szócikk feje (nyelvi háttér).** κατάρας, ἡ (κατά és ἄρα, vö. német Verfiuchung,Verwünschung (vö. κατά, III. 4)); a Septuaginta főként a כְּלָלָה szóra; kiátkozás, elátkozás, átok: szemben a εὐλογία szóval, az elátkozottsággal szemben (l. ott), Jak 3:10; γῆ κατάρας ἐγγύς, Isten közelében, azaz a terméketlenségnek való kiszolgáltatottság közelében (utalás az 1Móz 3:17k.-ra), <mark class="motivumhely" title="a motívum helye: Zsid 6:8">Zsid 6:8</mark>; ὑπό κατάραν εἶναι, átok alatt lenni, azaz az elátkozás megszabott büntetésének hatálya alá tartozni, Gal 3:10; ἐξαγοράζειν τινα ἐκ τῆς κατάρας, megváltani azt, aki az átok kimondott büntetésének van kitéve, Gal 3:13; τέκνα κατάρας, kiátkozásra méltó emberek, 2Pét 2:14; elvont jelentés konkrétként: az, akiben az átok megmutatkozik, azaz aki az elátkozás megszabott büntetését szenvedi, Gal 3:13; ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi,
 
 <details>
 <summary>c (hivatkozás nélkül)</summary>
@@ -1441,7 +1441,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 *A magyar szöveg a szakaszonkénti Thayer-fordításból (a lap fordítástáblája, sz<n> sorok,; szerkesztői döntés, 2026-10-26).*
 
-**A szócikk feje (nyelvi háttér).** jövő idő φθερῶ; 1. aorisztosz ἐφθειρα; szenvedő alak, jelen idő φθείρομαι; 2. aorisztosz ἐφθάρην; 2. jövő idő φθαρήσομαι; (rokon a német verderben szóval); a Septuaginta a שִׁחֵת szóra; (Homérosztól kezdve); megrontani, elpusztítani: tulajdonképpen τόν ναόν τοῦ Θεοῦ (a zsidók véleménye szerint a templom megrontatott, vagy 'elpusztult', ha valaki bármit beszennyezett vagy a legkisebb mértékben megrongált benne, vagy ha őrei elhanyagolták kötelességeiket; vö. Deyling, Observations, sacrae, II. köt., o. 505 kk.), a képet elhagyva: egy keresztény gyülekezetet elvezetni attól az ismereti és szentségi állapottól, amelyben maradnia kellene, 1Kor 3:17a; τινα, halállal büntetni, 1Kor 3:17{b}; = szükségbe vagy koldusságra juttatni (vö. a mi 'tönkretenni' szavunkat (A. V. corrupt)), 2Kor 7:2; szenvedő alakban: elpusztulni, elveszni: ἐν τίνι, valamitől, Júd 1:10; ἐν részes esettel, amely az állapotot jelöli, ἐν τῇ φθορά αὐτῶν, 2Pét 2:12 L T Tr WH. Erkölcsi értelemben megrontani, megvesztegetni: φθείρουσιν ἔθη χρηστά ὁμιλίαι κακαί (Menander mondása (l. ἦθος, 2), amely úgy látszik, közmondássá vált (l. Wetstein a helynél; Gataker, Advers. misc. l. i. c. 1, o. 174 kk.)), 1Kor 15:33; a föld lakóinak jelleme, **Jel 19:2**; szenvedő alakban φθείρομαι ἀπό τίνος, annyira megromlani, hogy valamitől elpártol (l. ἀπό, I. 3 d.), 2Kor 11:3; φθειρόμενον κατά τάς ἐπιθυμίας (R. V. waxeth corrupt stb.), Ef 4:22. (Hasonlítsd össze: διαφθείρω, καταφθείρω.)
+**A szócikk feje (nyelvi háttér).** jövő idő φθερῶ; 1. aorisztosz ἐφθειρα; szenvedő alak, jelen idő φθείρομαι; 2. aorisztosz ἐφθάρην; 2. jövő idő φθαρήσομαι; (rokon a német verderben szóval); a Septuaginta a שִׁחֵת szóra; (Homérosztól kezdve); megrontani, elpusztítani: tulajdonképpen τόν ναόν τοῦ Θεοῦ (a zsidók véleménye szerint a templom megrontatott, vagy 'elpusztult', ha valaki bármit beszennyezett vagy a legkisebb mértékben megrongált benne, vagy ha őrei elhanyagolták kötelességeiket; vö. Deyling, Observations, sacrae, II. köt., o. 505 kk.), a képet elhagyva: egy keresztény gyülekezetet elvezetni attól az ismereti és szentségi állapottól, amelyben maradnia kellene, 1Kor 3:17a; τινα, halállal büntetni, 1Kor 3:17{b}; = szükségbe vagy koldusságra juttatni (vö. a mi 'tönkretenni' szavunkat (A. V. corrupt)), 2Kor 7:2; szenvedő alakban: elpusztulni, elveszni: ἐν τίνι, valamitől, Júd 1:10; ἐν részes esettel, amely az állapotot jelöli, ἐν τῇ φθορά αὐτῶν, 2Pét 2:12 L T Tr WH. Erkölcsi értelemben megrontani, megvesztegetni: φθείρουσιν ἔθη χρηστά ὁμιλίαι κακαί (Menander mondása (l. ἦθος, 2), amely úgy látszik, közmondássá vált (l. Wetstein a helynél; Gataker, Advers. misc. l. i. c. 1, o. 174 kk.)), 1Kor 15:33; a föld lakóinak jelleme, <mark class="motivumhely" title="a motívum helye: Jel 19:2">Jel 19:2</mark>; szenvedő alakban φθείρομαι ἀπό τίνος, annyira megromlani, hogy valamitől elpártol (l. ἀπό, I. 3 d.), 2Kor 11:3; φθειρόμενον κατά τάς ἐπιθυμίας (R. V. waxeth corrupt stb.), Ef 4:22. (Hasonlítsd össze: διαφθείρω, καταφθείρω.)
 
 *A teljes szócikk: [szónézet](/szo/G5351) · forrás: a Thayer-szótár*
 
@@ -1470,7 +1470,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a 
 
 - **1 — romlás, enyészet, pusztulás**
 
-  > megromlás, pusztulás, elmúlás (szemben a γένεσις szóval, eredet, gyakran Platón, Arisztotelész, Plutarkhosz; szemben a σωτηρία szóval, Platón, Phileb., o. 35 e.; a שַׁחַת szóra, Zsolt 102:4; Jón 2:7): **Róm 8:21** (ehhez l. δουλεία); 2Pét 2:12a (egyesek (vö. R. V. széljegyzet) a φθορά szót itt cselekvő értelemben veszik: εἰς φθοράν, elpusztítani); ἐν φθορά, a megromlás vagy bomlás állapotában (a testről a temetéskor), 1Kor 15:42; metonímiával: ami a romlásnak van kitéve, ami mulandó, szemben a ἀφθαρσία szóval, 1Kor 15:50; keresztény értelemben az üdvösség elvesztése, örök nyomorúság (amelyet másutt ἀπώλεια néven neveznek), Kol 2:22 (l. ἀπόχρησις); szemben a ζωή αἰώνιος kifejezéssel, Gal 6:8, vö. Schott a helynél. 2. az Újszövetségben erkölcsi értelemben romlottság, azaz erkölcsi hanyatlás: 2Pét 1:4; 2Pét 2:12{b} (egyesek itt a szót cselekvő értelemben veszik (R. V. szöveg: in their destroying), mások az 1. ponthoz kötik), 2Pét 2:19; a τῆς ζωῆς hozzátételével, Bölcs 14:12.
+  > megromlás, pusztulás, elmúlás (szemben a γένεσις szóval, eredet, gyakran Platón, Arisztotelész, Plutarkhosz; szemben a σωτηρία szóval, Platón, Phileb., o. 35 e.; a שַׁחַת szóra, Zsolt 102:4; Jón 2:7): <mark class="motivumhely" title="a motívum helye: Róm 8:21">Róm 8:21</mark> (ehhez l. δουλεία); 2Pét 2:12a (egyesek (vö. R. V. széljegyzet) a φθορά szót itt cselekvő értelemben veszik: εἰς φθοράν, elpusztítani); ἐν φθορά, a megromlás vagy bomlás állapotában (a testről a temetéskor), 1Kor 15:42; metonímiával: ami a romlásnak van kitéve, ami mulandó, szemben a ἀφθαρσία szóval, 1Kor 15:50; keresztény értelemben az üdvösség elvesztése, örök nyomorúság (amelyet másutt ἀπώλεια néven neveznek), Kol 2:22 (l. ἀπόχρησις); szemben a ζωή αἰώνιος kifejezéssel, Gal 6:8, vö. Schott a helynél. 2. az Újszövetségben erkölcsi értelemben romlottság, azaz erkölcsi hanyatlás: 2Pét 1:4; 2Pét 2:12{b} (egyesek itt a szót cselekvő értelemben veszik (R. V. szöveg: in their destroying), mások az 1. ponthoz kötik), 2Pét 2:19; a τῆς ζωῆς hozzátételével, Bölcs 14:12.
 
 *A teljes szócikk: [szónézet](/szo/G5356) · forrás: a Thayer-szótár*
 
@@ -1667,7 +1667,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **Qal — gyászol, búsul**
 
-  > Qal perfectum אָבַל Ézs 24:7 összesen 2-szer stb. imperfectum 3. nőnemű egyes szám תֶּאֱבַל **Hós 4:3** összesen 3-szor — gyászolni, siratni (költői és emelkedett stílusban); abszolút, emberi alany Jóel 1:9; Ámós 8:8; 9:5; Ézs 19:8 (|| אנה) vö. Jób 14:22 (alany נַפְשׁוֺ); követve על Hós 10:5; gyakrabban képletesen, élettelen alany, kapuk 1Sám 3:26 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; föld 1Sám 24:4; Ézs 33:9; **Hós 4:3**; Jóel 1:10; Jer 4:28 (követve על‎) 12:4; 23:10; vö. 12:11 (követve על), יְהוּדָה‎ 14:2; legelők Ámós 1:2.
+  > Qal perfectum אָבַל Ézs 24:7 összesen 2-szer stb. imperfectum 3. nőnemű egyes szám תֶּאֱבַל <mark class="motivumhely" title="a motívum helye: Hós 4:3">Hós 4:3</mark> összesen 3-szor — gyászolni, siratni (költői és emelkedett stílusban); abszolút, emberi alany Jóel 1:9; Ámós 8:8; 9:5; Ézs 19:8 (|| אנה) vö. Jób 14:22 (alany נַפְשׁוֺ); követve על Hós 10:5; gyakrabban képletesen, élettelen alany, kapuk 1Sám 3:26 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; föld 1Sám 24:4; Ézs 33:9; <mark class="motivumhely" title="a motívum helye: Hós 4:3">Hós 4:3</mark>; Jóel 1:10; Jer 4:28 (követve על‎) 12:4; 23:10; vö. 12:11 (követve על), יְהוּדָה‎ 14:2; legelők Ámós 1:2.
 
 <details>
 <summary>Hithpa'el – Hiph'il (2 szakasz): gyászolni · gyászoltatni</summary>
@@ -1708,7 +1708,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **1 — a megművelt föld, amely táplál**
 
-  > föld (mint megművelt, eltartást adó) 1Móz 2:5, 9; **3:17**, **23**; 4:2-3, **12**; 5:29; **8:21**; 19:25; 47:23; 2Móz 34:26 (mind J); 23:19 (E) 5Móz 7:13; 11:17; 26:2, 10, 15; 28:4, 11, 18, 33, 42, 51; 30:9; 2Sám 9:10; Ézs 1:7; 28:24; 30:23 (a versben kétszer); 30:24; Jer 7:20; 14:4; 25:33; Hag 1:11; Mal 3:11; Zsolt 83:11; 105:35; Péld 12:10 (héber számozás: 12:11); 28:19; 1Krón 27:26; Neh 10:35 (héber számozás: 10:36); 10:37 (héber számozás: 10:38), vö. átvitt értelemben Jób 5:6 (|| עפר); megszemélyesítve 31:38; Jóel 1:10; továbbá אִישׁ הָא׳‎ 1Móz 9:20 (J): földművelő, gazda; metonímiával אֹהֵב <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr>‎ 2Krón 26:10, azaz a földművelés kedvelője (vagy ezek a földművelés korábbi jelentésére utalnak ? vö. Dl Pr 105) אִישׁ עֹבֵד <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> Zak 13:5.
+  > föld (mint megművelt, eltartást adó) 1Móz 2:5, 9; <mark class="motivumhely" title="a motívum helye: 1Móz 3:17">3:17</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 3:23">23</mark>; 4:2-3, <mark class="motivumhely" title="a motívum helye: 1Móz 4:12">12</mark>; 5:29; <mark class="motivumhely" title="a motívum helye: 1Móz 8:21">8:21</mark>; 19:25; 47:23; 2Móz 34:26 (mind J); 23:19 (E) 5Móz 7:13; 11:17; 26:2, 10, 15; 28:4, 11, 18, 33, 42, 51; 30:9; 2Sám 9:10; Ézs 1:7; 28:24; 30:23 (a versben kétszer); 30:24; Jer 7:20; 14:4; 25:33; Hag 1:11; Mal 3:11; Zsolt 83:11; 105:35; Péld 12:10 (héber számozás: 12:11); 28:19; 1Krón 27:26; Neh 10:35 (héber számozás: 10:36); 10:37 (héber számozás: 10:38), vö. átvitt értelemben Jób 5:6 (|| עפר); megszemélyesítve 31:38; Jóel 1:10; továbbá אִישׁ הָא׳‎ 1Móz 9:20 (J): földművelő, gazda; metonímiával אֹהֵב <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr>‎ 2Krón 26:10, azaz a földművelés kedvelője (vagy ezek a földművelés korábbi jelentésére utalnak ? vö. Dl Pr 105) אִישׁ עֹבֵד <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> Zak 13:5.
 
 <details>
 <summary>2. — földdarab, földbirtok (6 hivatkozás)</summary>
@@ -1719,11 +1719,11 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **3 — a föld mint anyag, amelyből az ember lett**
 
-  > föld mint anyag; amiből az ember készült 1Móz 2:7 (מִן־הָא ׳עָפָר); így az állatok 2:19 (׳מִן־הָא); oltár 2Móz 20:24; cserépedények חַרְשֵׂי <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> Ézs 45:9; a fejen, a gyász jeleként 1Sám 4:12; 2Sám 1:2; 15:32; a bűnbánatéként Neh 9:1 (vö. עָפָר אֵפֶר,; מַעֲבֵה הָא׳‎ 1Kir 7:46, vö. 2Krón 4:17 (a föld szilárdsága, szilárd föld, agyagos talaj öntőformákhoz; vagy agyagformák (Berthau) ? vagy ez tulajdonnév ? Klo הָאֲדֻמָּה בַּמְּעָרָה-t javasol: a vörös barlangban); öszvérterhek belőle 2Kir 5:17; benne fekszenek a halottak מִיְּשֵׁנֵי אַדְמַת־עָפָר Dán 12:2, vö. **1Móz 3:19**, **23**; Zsolt 146:4.
+  > föld mint anyag; amiből az ember készült 1Móz 2:7 (מִן־הָא ׳עָפָר); így az állatok 2:19 (׳מִן־הָא); oltár 2Móz 20:24; cserépedények חַרְשֵׂי <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> Ézs 45:9; a fejen, a gyász jeleként 1Sám 4:12; 2Sám 1:2; 15:32; a bűnbánatéként Neh 9:1 (vö. עָפָר אֵפֶר,; מַעֲבֵה הָא׳‎ 1Kir 7:46, vö. 2Krón 4:17 (a föld szilárdsága, szilárd föld, agyagos talaj öntőformákhoz; vagy agyagformák (Berthau) ? vagy ez tulajdonnév ? Klo הָאֲדֻמָּה בַּמְּעָרָה-t javasol: a vörös barlangban); öszvérterhek belőle 2Kir 5:17; benne fekszenek a halottak מִיְּשֵׁנֵי אַדְמַת־עָפָר Dán 12:2, vö. <mark class="motivumhely" title="a motívum helye: 1Móz 3:19">1Móz 3:19</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 3:23">23</mark>; Zsolt 146:4.
 
 - **4 — a föld látható felszíne, a föld színe**
 
-  > föld mint a föld látható felszíne; הָא ׳רֶמֶס‎ 1Móz 1:25; 6:20 (mindkettő P) Hós 2:17 (héber számozás: 2:20), vö. 1Móz 7:8; 9:2 (J ?) 3Móz 20:25 (P) 5Móz 4:18; Ez 38:20; továbbá 1Móz 4:10 (J) Ézs 24:21; Ámós 3:5; **Sof 1:2**-3, mint harmattal nedves 2Sám 17:12; eső 1Kir 17:14; 18:1; vö. megszemélyesítve פָּֽצְתָה הָא׳ אֶת־מִּיהָ‎ 4Móz 16:30 (P) (|| ארץ‎ 16:32), l. 16:31; egy bizonyos helyről, pontról <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> קֹדֶשׁ‎ 2Móz 3:5, különösen mint az ember lakóhelye 1Móz 4:11; 2Móz 10:6; 5Móz 4:10, 40; 12:1; 1Sám 20:31; 2Sám 14:7; gyakran פְּנֵי הָא׳‎ 1Móz 2:6; **4:14**; 6:1, **7**; **7:4**, **23**; 8:8, 13; 2Móz 32:12; 33:16; 4Móz 12:3; 5Móz 6:15; 7:6 (mind J, D) 1Sám 20:15, összesen 9-szer.
+  > föld mint a föld látható felszíne; הָא ׳רֶמֶס‎ 1Móz 1:25; 6:20 (mindkettő P) Hós 2:17 (héber számozás: 2:20), vö. 1Móz 7:8; 9:2 (J ?) 3Móz 20:25 (P) 5Móz 4:18; Ez 38:20; továbbá 1Móz 4:10 (J) Ézs 24:21; Ámós 3:5; <mark class="motivumhely" title="a motívum helye: Sof 1:2">Sof 1:2</mark>-3, mint harmattal nedves 2Sám 17:12; eső 1Kir 17:14; 18:1; vö. megszemélyesítve פָּֽצְתָה הָא׳ אֶת־מִּיהָ‎ 4Móz 16:30 (P) (|| ארץ‎ 16:32), l. 16:31; egy bizonyos helyről, pontról <abbr class="rovidites" title="a címszó: אֲדָמָה (adámá)">א׳</abbr> קֹדֶשׁ‎ 2Móz 3:5, különösen mint az ember lakóhelye 1Móz 4:11; 2Móz 10:6; 5Móz 4:10, 40; 12:1; 1Sám 20:31; 2Sám 14:7; gyakran פְּנֵי הָא׳‎ 1Móz 2:6; <mark class="motivumhely" title="a motívum helye: 1Móz 4:14">4:14</mark>; 6:1, <mark class="motivumhely" title="a motívum helye: 1Móz 6:7">7</mark>; <mark class="motivumhely" title="a motívum helye: 1Móz 7:4">7:4</mark>, <mark class="motivumhely" title="a motívum helye: 1Móz 7:23">23</mark>; 8:8, 13; 2Móz 32:12; 33:16; 4Móz 12:3; 5Móz 6:15; 7:6 (mind J, D) 1Sám 20:15, összesen 9-szer.
 
 <details>
 <summary>5. – 7. (3 szakasz): ország, terület, vidék · az egész föld, a lakott föld · tulajdonnév, helynév</summary>
@@ -1770,7 +1770,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **3 — átok, Istentől**
 
-  > átok (a) Istentől 4Móz 5:23 (P) 5Móz 29:19 (héber számozás: 29:18); 29:20 (héber számozás: 29:19); 29:21 (héber számozás: 29:20); 30:7; 2Krón 34:24; **Ézs 24:6**; Jer 23:10; Dán 9:11; Zak 5:3; (b) emberektől Jób 31:30; Zsolt 10:7; 59:13.
+  > átok (a) Istentől 4Móz 5:23 (P) 5Móz 29:19 (héber számozás: 29:18); 29:20 (héber számozás: 29:19); 29:21 (héber számozás: 29:20); 30:7; 2Krón 34:24; <mark class="motivumhely" title="a motívum helye: Ézs 24:6">Ézs 24:6</mark>; Jer 23:10; Dán 9:11; Zak 5:3; (b) emberektől Jób 31:30; Zsolt 10:7; 59:13.
 
 <details>
 <summary>4. — átkozódás (4 hivatkozás)</summary>
@@ -1807,7 +1807,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **Qal — átkoz, átkozott**
 
-  > Qal perfectum אָרוֺתִיהָ וְאָרוֺתִ֫י, Mal 2:2; imperfectum 2. hímnemű egyes szám תָּאֹר‎ 2Móz 22:28 (héber számozás: 22:27); 4Móz 22:6, 12; אָאֹר‎ **1Móz 12:3**; imperativus אָ֫רָה‎ 4Móz 22:6; 23:7; אֹרוּ אוֺרוּ, & infinitivus absolutus אָרוֺר mind Bír 5:23; participium אֹרֲרֵי Jób 3:8; אֹרֲרֶיךָ‎ 1Móz 27:29; 4Móz 24:9; אָרוּר‎ **1Móz 3:14**, összesen 36-szor stb.; — átkozni || בֵּרֵךְ áldani, főként a J E D költői és jogi forrásaiban & későbbi utánzataikban: **12:3**; 27:29 (J) 4Móz 22:6, 12; 23:7; 24:9 (E) 2Móz 22:28 (héber számozás: 22:27) (E) Mal 2:2; אֹרוּ אָרוֺר ישְׁבֶיהָ = átkozzátok örökre a lakóit Bír 5:23; אֹרֲרֵי יוֺם a nap átkozói (varázslók, akiknek átkai szerencsétlenné tették a napokat) Jób 3:8. Passzív participium אָרוּר, főként felkiáltásként, || בָּרוּךְ‎ **1Móz 3:14**, 17; **4:11**; 9:25; 27:29; 49:7; 4Móz 22:12; 24:9 (E, költészet) 5Móz 27:15-26 Bír 21:18; 1Sám 14:24; 14:28; 1Sám 26:29 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Jer 11:3; 17:5; 20:14-15, 48:10 (a versben kétszer); Mal 1:14; אֲרוּרִים הַשֹּׁגִים מִמִּצְוֺתֶיךָ átkozottak, akik eltévelyednek parancsolataidtól Zsolt 119:21 (ᵑ6 ᵐ5 Jerome De Ri), הָאֲרוּרָה הַזּאֹת ez az átkozott asszony 2Kir 9:34.
+  > Qal perfectum אָרוֺתִיהָ וְאָרוֺתִ֫י, Mal 2:2; imperfectum 2. hímnemű egyes szám תָּאֹר‎ 2Móz 22:28 (héber számozás: 22:27); 4Móz 22:6, 12; אָאֹר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 12:3">1Móz 12:3</mark>; imperativus אָ֫רָה‎ 4Móz 22:6; 23:7; אֹרוּ אוֺרוּ, & infinitivus absolutus אָרוֺר mind Bír 5:23; participium אֹרֲרֵי Jób 3:8; אֹרֲרֶיךָ‎ 1Móz 27:29; 4Móz 24:9; אָרוּר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 3:14">1Móz 3:14</mark>, összesen 36-szor stb.; — átkozni || בֵּרֵךְ áldani, főként a J E D költői és jogi forrásaiban & későbbi utánzataikban: <mark class="motivumhely" title="a motívum helye: 1Móz 12:3">12:3</mark>; 27:29 (J) 4Móz 22:6, 12; 23:7; 24:9 (E) 2Móz 22:28 (héber számozás: 22:27) (E) Mal 2:2; אֹרוּ אָרוֺר ישְׁבֶיהָ = átkozzátok örökre a lakóit Bír 5:23; אֹרֲרֵי יוֺם a nap átkozói (varázslók, akiknek átkai szerencsétlenné tették a napokat) Jób 3:8. Passzív participium אָרוּר, főként felkiáltásként, || בָּרוּךְ‎ <mark class="motivumhely" title="a motívum helye: 1Móz 3:14">1Móz 3:14</mark>, 17; <mark class="motivumhely" title="a motívum helye: 1Móz 4:11">4:11</mark>; 9:25; 27:29; 49:7; 4Móz 22:12; 24:9 (E, költészet) 5Móz 27:15-26 Bír 21:18; 1Sám 14:24; 14:28; 1Sám 26:29 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Jer 11:3; 17:5; 20:14-15, 48:10 (a versben kétszer); Mal 1:14; אֲרוּרִים הַשֹּׁגִים מִמִּצְוֺתֶיךָ átkozottak, akik eltévelyednek parancsolataidtól Zsolt 119:21 (ᵑ6 ᵐ5 Jerome De Ri), הָאֲרוּרָה הַזּאֹת ez az átkozott asszony 2Kir 9:34.
 
 <details>
 <summary>Niph'al – Hoph'al (3 szakasz): átkozott · átkozni, átok alá vetni · átkozottnak lenni</summary>
@@ -1857,7 +1857,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 **BDB 2699. szócikk** *(a H2403 1. BDB-szócikke a 2-ből)*
 
-**A szócikk feje (nyelvi háttér).** חַטָּאת nőnemű főnév 1Sám 14:38 (az **1Móz 4:7** nem kivétel, mert a רֹבֵץ főnév = lesben kuporgó vadállat): bűn, bűnért való áldozat, <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr>‎ **4:7**, összesen 124-szer; לְחַטָּ֯ת‎ 4Móz 15:24 (szövegromlás לחטאת helyett), לְחַטַּאת Zak 13:1 (de olv. לְחַטָּאת Sta ZAW i. 35); status constructus חַטַּאת‎ 2Móz 30:10, összesen 19-szer; suffixummal חַטָּאתִי‎ 1Móz 31:36, összesen 16-szor; חַטָּאתֹיו֯ 1Kir 16:26, חַטַּאתְכֶם‎ 2Móz 32:30, összesen 3-szor; stb., + 52-szer suffixummal; többes szám חַטָּאוֺת‎ 2Kir 12:16 (héber számozás: 12:17), összesen 3-szor; status constructus חַטּאֹות Zsolt 25:7, összesen 17-szer; חַטּאֹת‎ 4Móz 5:6, összesen 6-szor; suffixummal חַטּאֹותָ֑י Zsolt 25:18; חַטּאֹתָו֯ Ez 18:21; 33:16 stb., + 40-szer suffixummal; —
+**A szócikk feje (nyelvi háttér).** חַטָּאת nőnemű főnév 1Sám 14:38 (az <mark class="motivumhely" title="a motívum helye: 1Móz 4:7">1Móz 4:7</mark> nem kivétel, mert a רֹבֵץ főnév = lesben kuporgó vadállat): bűn, bűnért való áldozat, <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr>‎ <mark class="motivumhely" title="a motívum helye: 1Móz 4:7">4:7</mark>, összesen 124-szer; לְחַטָּ֯ת‎ 4Móz 15:24 (szövegromlás לחטאת helyett), לְחַטַּאת Zak 13:1 (de olv. לְחַטָּאת Sta ZAW i. 35); status constructus חַטַּאת‎ 2Móz 30:10, összesen 19-szer; suffixummal חַטָּאתִי‎ 1Móz 31:36, összesen 16-szor; חַטָּאתֹיו֯ 1Kir 16:26, חַטַּאתְכֶם‎ 2Móz 32:30, összesen 3-szor; stb., + 52-szer suffixummal; többes szám חַטָּאוֺת‎ 2Kir 12:16 (héber számozás: 12:17), összesen 3-szor; status constructus חַטּאֹות Zsolt 25:7, összesen 17-szer; חַטּאֹת‎ 4Móz 5:6, összesen 6-szor; suffixummal חַטּאֹותָ֑י Zsolt 25:18; חַטּאֹתָו֯ Ez 18:21; 33:16 stb., + 40-szer suffixummal; —
 
 - **1 — bűn**
 
@@ -1872,7 +1872,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **1.b**
 
-  > Isten ellen 3Móz 4:14, 23, 28 (P), 1Sám 2:17; 14:38; 1Kir 16:13 (a versben kétszer); 2Kir 21:16; 21:17; 2Krón 33:19; Ézs 3:10 (héber számozás: 3:9); 30:1; 58:1; 59:2; 59:12; 16:10; Jer 16:18; 30:14; 30:15; Jer 50:20; JSir 4:6, 22; Ez 16:51; 18:14; 21:24 (héber számozás: 21:29); 33:10, 16; Ámós 5:12 (We Kl. Proph. olvasata חטאיכם), mint Ézs 1:18 — l. חֵטא — a hímnemű עצומים tárgyesetéről), Mik 1:13; 3:8; Zsolt 32:5; 51:5; 59:4; Péld 5:22; 13:6; 14:34; 21:4; 24:9; Jób 13:23; Jób 14:23 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Dán 9:20 (a versben kétszer); <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נעורי ifjúságom bűnei Zsolt 25:7; פרי בטני <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נפשׁי Mik 6:7: testem gyümölcsét (gyermekemet áldozatul) a magam bűnéért; a jóslás bűne 1Sám 15:23; a szájé Zsolt 59:13; <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> עמי יאכלו Hós 4:8: népem bűnét eszik (abból szerzik mindennapi eledelüket, vö. We; ᵑ7 Hi Or és mások: bűnért való áldozat, de ez a korai prófétáknál másutt nem fordul elő, és || עָוֺן ez ellen szól, l. We Prol. 3. 76); לפתח חטאת רבץ‎ **1Móz 4:7** (J): az ajtónál (Káinénál) a bűn lesben kuporgó vadállat; a nép bűne az aranyborjúban testesül meg 5Móz 9:21; és Bét-Áven magaslataiban Hós 10:8; בְּ-val: a bűn miatt Neh 9:37; a bűnért Mik 1:5; 2Kir 24:3; Ézs 40:2; Jer 15:13; 17:3; Ez 16:52; bűnnel vagy bűn által 1Kir 14:22; 16:2; Ézs 43:24; בח ׳הלך bűnben járni 1Kir 15:3, 26, 34; 16:19, 26, 31; 2Kir 17:22; בח ׳דבק ragaszkodni a bűnhöz 3:3; עַל-val: a bűn miatt 5Móz 9:18; 1Kir 15:30; 16:19; Mik 6:13; a bűnért 3Móz 4:3, 28, 35; 5:6, 13 (P) 19:22; 26:18, 24, 28 (H); ח על ׳יסף bűnt bűnre halmozni 1Sám 12:19; 2Krón 28:13; Ézs 30:1; Jób 34:37; כְּ-val: a bűn szerint 3Móz 26:21; לְ-val: bűnre vagy bűnért 16:16, 21; 5Móz 19:15; 1Kir 12:30; 13:34; Péld 10:16; Zak 13:1; מִן-val: a bűn miatt 3Móz 4:26; 5:6, 10; 16:34 (P), 19:22 (H), JSir 4:13; inkább, mint a bűn Jób 35:3; טָהַרְתִּי מֵחַטָּאתִי tiszta vagyok bűnömtől Péld 20:9; ח ׳מגני a bűn miatt Zsolt 38:4; בגלל <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> a bűn miatt 1Kir 14:16; ח ׳אחר הלך a bűn után járni 2Kir 13:2.
+  > Isten ellen 3Móz 4:14, 23, 28 (P), 1Sám 2:17; 14:38; 1Kir 16:13 (a versben kétszer); 2Kir 21:16; 21:17; 2Krón 33:19; Ézs 3:10 (héber számozás: 3:9); 30:1; 58:1; 59:2; 59:12; 16:10; Jer 16:18; 30:14; 30:15; Jer 50:20; JSir 4:6, 22; Ez 16:51; 18:14; 21:24 (héber számozás: 21:29); 33:10, 16; Ámós 5:12 (We Kl. Proph. olvasata חטאיכם), mint Ézs 1:18 — l. חֵטא — a hímnemű עצומים tárgyesetéről), Mik 1:13; 3:8; Zsolt 32:5; 51:5; 59:4; Péld 5:22; 13:6; 14:34; 21:4; 24:9; Jób 13:23; Jób 14:23 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Dán 9:20 (a versben kétszer); <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נעורי ifjúságom bűnei Zsolt 25:7; פרי בטני <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> נפשׁי Mik 6:7: testem gyümölcsét (gyermekemet áldozatul) a magam bűnéért; a jóslás bűne 1Sám 15:23; a szájé Zsolt 59:13; <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> עמי יאכלו Hós 4:8: népem bűnét eszik (abból szerzik mindennapi eledelüket, vö. We; ᵑ7 Hi Or és mások: bűnért való áldozat, de ez a korai prófétáknál másutt nem fordul elő, és || עָוֺן ez ellen szól, l. We Prol. 3. 76); לפתח חטאת רבץ‎ <mark class="motivumhely" title="a motívum helye: 1Móz 4:7">1Móz 4:7</mark> (J): az ajtónál (Káinénál) a bűn lesben kuporgó vadállat; a nép bűne az aranyborjúban testesül meg 5Móz 9:21; és Bét-Áven magaslataiban Hós 10:8; בְּ-val: a bűn miatt Neh 9:37; a bűnért Mik 1:5; 2Kir 24:3; Ézs 40:2; Jer 15:13; 17:3; Ez 16:52; bűnnel vagy bűn által 1Kir 14:22; 16:2; Ézs 43:24; בח ׳הלך bűnben járni 1Kir 15:3, 26, 34; 16:19, 26, 31; 2Kir 17:22; בח ׳דבק ragaszkodni a bűnhöz 3:3; עַל-val: a bűn miatt 5Móz 9:18; 1Kir 15:30; 16:19; Mik 6:13; a bűnért 3Móz 4:3, 28, 35; 5:6, 13 (P) 19:22; 26:18, 24, 28 (H); ח על ׳יסף bűnt bűnre halmozni 1Sám 12:19; 2Krón 28:13; Ézs 30:1; Jób 34:37; כְּ-val: a bűn szerint 3Móz 26:21; לְ-val: bűnre vagy bűnért 16:16, 21; 5Móz 19:15; 1Kir 12:30; 13:34; Péld 10:16; Zak 13:1; מִן-val: a bűn miatt 3Móz 4:26; 5:6, 10; 16:34 (P), 19:22 (H), JSir 4:13; inkább, mint a bűn Jób 35:3; טָהַרְתִּי מֵחַטָּאתִי tiszta vagyok bűnömtől Péld 20:9; ח ׳מגני a bűn miatt Zsolt 38:4; בגלל <abbr class="rovidites" title="a címszó: חַטָּאת (chattát)">ח׳</abbr> a bűn miatt 1Kir 14:16; ח ׳אחר הלך a bűn után járni 2Kir 13:2.
 
 <details>
 <summary>1.c – 5. (11 szakasz): az embereknek meg kell térniük a bűnből · Isten bánása a bűnnel · engesztelés szerezhető érte · a pap engesztelést szerez valakiért …</summary>
@@ -1957,11 +1957,11 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 <details>
 <summary>Szótári apparátus</summary>
 
-**A szócikk feje (nyelvi háttér).** I. קוֺץ hímnemű főnév Ez 28:24: tövisbokor, tövis; — status absolutus <abbr class="rovidites" title="a címszó: קוֹץ (kóc)">ק׳</abbr>‎ **1Móz 3:18** és máshol; többes szám קֹצִים‎ 2Móz 22:6 (héber számozás: 22:5) és máshol, קוֺצִים Ézs 33:12 és máshol; status constructus קוֺצֵי Bír 8:7, 16; —
+**A szócikk feje (nyelvi háttér).** I. קוֺץ hímnemű főnév Ez 28:24: tövisbokor, tövis; — status absolutus <abbr class="rovidites" title="a címszó: קוֹץ (kóc)">ק׳</abbr>‎ <mark class="motivumhely" title="a motívum helye: 1Móz 3:18">1Móz 3:18</mark> és máshol; többes szám קֹצִים‎ 2Móz 22:6 (héber számozás: 22:5) és máshol, קוֺצִים Ézs 33:12 és máshol; status constructus קוֺצֵי Bír 8:7, 16; —
 
 - **1 — tövisbokor, a bogánccsal együtt**
 
-  > tövisbokor, + דַּרְדַּר (l. ott) **1Móz 3:18** (J), **Hós 10:8**; + שָׁמִיר Ézs 32:13; + בַּרְקָנִים (l. ott), <abbr class="rovidites" title="a címszó: קוֹץ (kóc)">ק׳</abbr> הַמִדְבָּר Bír 8:7, 16; <abbr class="rovidites" title="a címszó: קוֹץ (kóc)">ק׳</abbr> önmagában 2Móz 22:6 (héber számozás: 22:5) (E); קוֺצִים בְּאֵשׁ Zsolt 118:12 (az ellenségek hasonlataként); különféle átvitt értelemben Ézs 33:12; Jer 4:3; Jer 12:18 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*.
+  > tövisbokor, + דַּרְדַּר (l. ott) <mark class="motivumhely" title="a motívum helye: 1Móz 3:18">1Móz 3:18</mark> (J), <mark class="motivumhely" title="a motívum helye: Hós 10:8">Hós 10:8</mark>; + שָׁמִיר Ézs 32:13; + בַּרְקָנִים (l. ott), <abbr class="rovidites" title="a címszó: קוֹץ (kóc)">ק׳</abbr> הַמִדְבָּר Bír 8:7, 16; <abbr class="rovidites" title="a címszó: קוֹץ (kóc)">ק׳</abbr> önmagában 2Móz 22:6 (héber számozás: 22:5) (E); קוֺצִים בְּאֵשׁ Zsolt 118:12 (az ellenségek hasonlataként); különféle átvitt értelemben Ézs 33:12; Jer 4:3; Jer 12:18 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*.
 
 <details>
 <summary>2. — tövis, átvitt értelemben (2 hivatkozás)</summary>
@@ -2013,7 +2013,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 **BDB 8032. szócikk** *(a H7451 1. BDB-szócikke a 3-ből)*
 
-**A szócikk feje (nyelvi háttér).** I. רַע melléknév: rossz, gonosz (a főnévtől és az ige perfectum 3. hímnemű egyes számú alakjától néha nem könnyű megkülönböztetni, és a vélemények eltérnek); — hímnemű egyes szám רַע‎ **1Móz 6:5** és máshol; רָ֑ע‎ 31:24 és máshol; többes szám רָעַים‎ 13:13 és máshol; status constructus רָעֵי Ez 7:24 (Co törli); nőnemű egyes szám רָעָה‎ 1Móz 37:2, összesen 37-szer (ez az alak rendszerint főnév), többes szám רָעוֺת‎ 28:8, összesen 14-szer; רָעֹת‎ 41:27 (18-szor főnév); —
+**A szócikk feje (nyelvi háttér).** I. רַע melléknév: rossz, gonosz (a főnévtől és az ige perfectum 3. hímnemű egyes számú alakjától néha nem könnyű megkülönböztetni, és a vélemények eltérnek); — hímnemű egyes szám רַע‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:5">1Móz 6:5</mark> és máshol; רָ֑ע‎ 31:24 és máshol; többes szám רָעַים‎ 13:13 és máshol; status constructus רָעֵי Ez 7:24 (Co törli); nőnemű egyes szám רָעָה‎ 1Móz 37:2, összesen 37-szer (ez az alak rendszerint főnév), többes szám רָעוֺת‎ 28:8, összesen 14-szer; רָעֹת‎ 41:27 (18-szor főnév); —
 
 <details>
 <summary>1. – 10.b (12 szakasz): rossz, kellemetlen, ártalmas · rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó · rossz, nem tetsző · a maga nemében rossz …</summary>
@@ -2035,7 +2035,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **10.c — gonosz (a szív gondolatairól)**
 
-  > gondolatokról, יֵצֶר‎ **1Móz 6:5**; 8:21 (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; szavakról, רעות Péld 15:28.
+  > gondolatokról, יֵצֶר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:5">1Móz 6:5</mark>; 8:21 (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; szavakról, רעות Péld 15:28.
 
 <details>
 <summary>10.d — tettekről, cselekedetekről (28 hivatkozás)</summary>
@@ -2102,7 +2102,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **Niph'al — megromlik, tönkremegy**
 
-  > Niphal: megromlani, elrontódni, perfectum 3. hímnemű egyes szám נִשְׁחַת, ágyékkötőről Jer 13:7, edényről 18:4; megsérülni, sőt (túlzással) tönkremenni, imperfectum 3. nőnemű egyes szám תִּשָּׁחֵת‎ 2Móz 8:24 (héber számozás: 8:20) (J), földről (מִפְנֵי הֶעָרֹב); megromlani, romlottnak lenni erkölcsben és vallásban, a földről, perfectum 3. nőnemű egyes szám נִשְׁחָ֑תָה‎ **1Móz 6:12** (P), imperfectum 3. nőnemű egyes szám וַתִּשּׁ׳ לִפְנֵי הָא׳‎ **6:11** (P); így a nőnemű többes számú participium melléknévként נִשְׁחָתוֺת Ez 20:44.
+  > Niphal: megromlani, elrontódni, perfectum 3. hímnemű egyes szám נִשְׁחַת, ágyékkötőről Jer 13:7, edényről 18:4; megsérülni, sőt (túlzással) tönkremenni, imperfectum 3. nőnemű egyes szám תִּשָּׁחֵת‎ 2Móz 8:24 (héber számozás: 8:20) (J), földről (מִפְנֵי הֶעָרֹב); megromlani, romlottnak lenni erkölcsben és vallásban, a földről, perfectum 3. nőnemű egyes szám נִשְׁחָ֑תָה‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:12">1Móz 6:12</mark> (P), imperfectum 3. nőnemű egyes szám וַתִּשּׁ׳ לִפְנֵי הָא׳‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:11">6:11</mark> (P); így a nőnemű többes számú participium melléknévként נִשְׁחָתוֺת Ez 20:44.
 
 <details>
 <summary>Pi'el (5 hivatkozás)</summary>
@@ -2113,7 +2113,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **Pi'el 1 — elront, elpusztít**
 
-  > elrontani, tönkretenni, a szem tárgyesetével 2Móz 21:26 (E), szőlőé Jer 12:10 (átvitt értelemben), ágaké Náh 2:2 (héber számozás: 2:3) (átvitt értelemben), továbbá = elpusztítani, a személy tárgyesetével 2Sám 1:14; 14:11 (a tárgyeset elmarad), Ez 5:16; 20:17, כָּלבָשָׂר‎ **1Móz 6:17**; **9:15** (P), várost, erődöt stb., 13:10; 19:13, 29 (mind J), 2Sám 24:16; Jer 5:10 (a tárgyeset elmarad), 48:18; Ez 26:4; 43:3; JSir 2:5, templomot tönkretenni 2:6, nemzetet Hós 11:9; 13:9 (olv. talán שִׁחַתִּךָ Oort Now), földet 2Kir 19:12 (Hiphil a || Ézs 37:12-ben), Bír 6:5; Józs 22:33 (P), Ez 22:30; 30:11, a földet **1Móz 9:11** (P); ל tárggyal (ל‎ 3b), várost 1Sám 23:10, személyt 4Móz 32:15 (P); רַחֲמָיו tárgyesettel Ámós 1:11: elfojtotta könyörületét (vagy RS K 28 és mások szerint a rokonság kötelékeit, l. רַחֲמִים), בְּרִית Mal 2:8, azaz megszegni, l. különösen ׳וְשׁ אַרְצָה (azaz a magot) 1Móz 38:9 (J): a földre vesztegette (azt), hatástalanná tette, = szavakat vesztegetni Péld 23:8.
+  > elrontani, tönkretenni, a szem tárgyesetével 2Móz 21:26 (E), szőlőé Jer 12:10 (átvitt értelemben), ágaké Náh 2:2 (héber számozás: 2:3) (átvitt értelemben), továbbá = elpusztítani, a személy tárgyesetével 2Sám 1:14; 14:11 (a tárgyeset elmarad), Ez 5:16; 20:17, כָּלבָשָׂר‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:17">1Móz 6:17</mark>; <mark class="motivumhely" title="a motívum helye: 1Móz 9:15">9:15</mark> (P), várost, erődöt stb., 13:10; 19:13, 29 (mind J), 2Sám 24:16; Jer 5:10 (a tárgyeset elmarad), 48:18; Ez 26:4; 43:3; JSir 2:5, templomot tönkretenni 2:6, nemzetet Hós 11:9; 13:9 (olv. talán שִׁחַתִּךָ Oort Now), földet 2Kir 19:12 (Hiphil a || Ézs 37:12-ben), Bír 6:5; Józs 22:33 (P), Ez 22:30; 30:11, a földet <mark class="motivumhely" title="a motívum helye: 1Móz 9:11">1Móz 9:11</mark> (P); ל tárggyal (ל‎ 3b), várost 1Sám 23:10, személyt 4Móz 32:15 (P); רַחֲמָיו tárgyesettel Ámós 1:11: elfojtotta könyörületét (vagy RS K 28 és mások szerint a rokonság kötelékeit, l. רַחֲמִים), בְּרִית Mal 2:8, azaz megszegni, l. különösen ׳וְשׁ אַרְצָה (azaz a magot) 1Móz 38:9 (J): a földre vesztegette (azt), hatástalanná tette, = szavakat vesztegetni Péld 23:8.
 
 <details>
 <summary>Pi'el 2 — elferdíteni, megrontani, a bölcsesség tárgyesetével (5 hivatkozás)</summary>
@@ -2124,7 +2124,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **Hiph'il**
 
-  > Hiphil perfectum 3. hímnemű egyes szám הִשְׁחִית‎ **1Móz 6:12** és máshol;
+  > Hiphil perfectum 3. hímnemű egyes szám הִשְׁחִית‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:12">1Móz 6:12</mark> és máshol;
 
 <details>
 <summary>Hiph'il 1 — elront, tönkretesz (termést, földet) (54 hivatkozás)</summary>
@@ -2135,7 +2135,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 
 - **Hiph'il 2 — erkölcsileg megront, romlottan cselekszik**
 
-  > hímnemű többes szám תַּשְׁחִתוּן‎ 5Móz 4:16; 31:29; imperativus hímnemű egyes szám suffixummal הַשְׁחִיתָהּ‎ 2Kir 18:25 = Ézs 36:10; infinitivus absolutus הַשְׁחֵת‎ 5Móz 31:29; constructus הַשְׁחִית‎ 1Sám 26:15 és máshol, stb.; participium מַשְׁחִית‎ 1Móz 19:14 és máshol, stb.; — 1 elrontani, tönkretenni, a termés tárgyesetével Bír 6:4; Mal 3:11, fákét 5Móz 20:19-20, Jer 11:19 (átvitt értelemben), edényekét 2Krón 36:19, házakét 34:11, palotákét Jer 6:5, vö. Ézs 65:8; 3Móz 19:27 (H), Ruth 4:6; ׳הִשׁ דַּיָּם Jer 49:9: a tolvajok annyi kárt tesznek, amennyit akarnak; a személy tárgyesetével = tönkretenni, elpusztítani, 1Sám 26:9, 15; Bír 20:21, 25 (+ אַ֫רְצָה‎), 20:35; 20:42; 2Kir 13:23; 2Krón 24:23 (+ מִן separ.), + 12-szer, + (a személy tárgyesete elmarad) Ézs 51:13, összesen 4-szer, דָּוִד בֵּית tárgyesettel 2Krón 21:7, abszolút használatban Ézs 11:9 = 65:25; továbbá valakit (szavakkal) tönkretenni Péld 11:9; עַם tárgyesettel 2Sám 24:16; 5Móz 9:26; földet 1Sám 6:5; Jer 36:29; Dán 11:17 (l. Dr); városfalat 2Sám 20:15 (Ew Th itt denominativumnak veszi a שַׁחַת-ből: vermet ástak; < ᵐ5 We (?) Klo Dr Bu HPS Now מְחַשְּׁבִים: tervelték), JSir 2:8, városokat és nemzeteket 1Móz 18:28 (a versben kétszer) (J, a tárgyeset elmarad), 19:13-14, (J), Ézs 37:12 (Pi`el a || 2Kir 19:12-ben), Ézs 36:10 (a versben kétszer) = 18:25 *(a Károliban nincs ilyen vers: a szótár hivatkozása)* (a versben kétszer) + 11-szer + (a megszemélyesített Izráelt) 5Móz 4:31; 10:10; 2Kir 8:19, Júda kevélységét Jer 13:9, a földet 51:1; abszolút használatban határozói tárgyesettel Dán 8:24 (l. Dr; Bev sejtése יְשׂחֵחַ vagy יָשִׂיחַ: szörnyűségeket beszél), vö. 1Krón 21:12; a participium melléknévként, oroszlánról Jer 2:30, angyalról 1Krón 21:15; = pusztító 2Móz 12:23 (J), Jer 22:7; Ézs 54:16, <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">מ׳</abbr> גּוֺיִם Jer 4:7, רוּחַ <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">מ׳</abbr>‎ 51:1; egyes szám gyűjtőnévként (׳הַמּ Ges § 126l; a pusztító csapat, vö. Dr Bu Now) 1Sám 13:17; 14:15 (fosztogatók, pusztítók); átvitt értelemben tőrről, csapdáról, Jer 5:26. 2 elferdíteni, megrontani, erkölcsileg, דֶּרֶךְ tárgyesettel **1Móz 6:12** (P; l. דֶּרֶךְ‎ 6), נַפְשׁוֺ Péld 6:32, vö. Sof 3:7; Ez 23:11 (מִן comparativus); עֲלִילָה הִתְעִיבוּ ׳הִשׁ **Zsolt 14:1** = **53:2**; הַשְׁחֵת תַּשְׁח׳ (+ egy bizonyos cselekedet igéje) 5Móz 4:16; 31:29; declar. = romlottan cselekedni, Ézs 1:4; 5Móz 4:28 (+ a cselekedet igéje), 2Krón 27:2, + מִן comparativus Bír 2:19; Ez 16:47; a participium főnévként Jer 6:28, אִישׁ מַשׁ׳ Péld 28:24 (a 18:9-hez l. alább). — אַלתַּשְׁחֵת ne pusztítsd el (egy régi ének vagy dallam kezdőszava ?) a zsoltárfeliratokban: Péld 57:1 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Péld 58:1 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Péld 59:1 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Zsolt 75:1.
+  > hímnemű többes szám תַּשְׁחִתוּן‎ 5Móz 4:16; 31:29; imperativus hímnemű egyes szám suffixummal הַשְׁחִיתָהּ‎ 2Kir 18:25 = Ézs 36:10; infinitivus absolutus הַשְׁחֵת‎ 5Móz 31:29; constructus הַשְׁחִית‎ 1Sám 26:15 és máshol, stb.; participium מַשְׁחִית‎ 1Móz 19:14 és máshol, stb.; — 1 elrontani, tönkretenni, a termés tárgyesetével Bír 6:4; Mal 3:11, fákét 5Móz 20:19-20, Jer 11:19 (átvitt értelemben), edényekét 2Krón 36:19, házakét 34:11, palotákét Jer 6:5, vö. Ézs 65:8; 3Móz 19:27 (H), Ruth 4:6; ׳הִשׁ דַּיָּם Jer 49:9: a tolvajok annyi kárt tesznek, amennyit akarnak; a személy tárgyesetével = tönkretenni, elpusztítani, 1Sám 26:9, 15; Bír 20:21, 25 (+ אַ֫רְצָה‎), 20:35; 20:42; 2Kir 13:23; 2Krón 24:23 (+ מִן separ.), + 12-szer, + (a személy tárgyesete elmarad) Ézs 51:13, összesen 4-szer, דָּוִד בֵּית tárgyesettel 2Krón 21:7, abszolút használatban Ézs 11:9 = 65:25; továbbá valakit (szavakkal) tönkretenni Péld 11:9; עַם tárgyesettel 2Sám 24:16; 5Móz 9:26; földet 1Sám 6:5; Jer 36:29; Dán 11:17 (l. Dr); városfalat 2Sám 20:15 (Ew Th itt denominativumnak veszi a שַׁחַת-ből: vermet ástak; < ᵐ5 We (?) Klo Dr Bu HPS Now מְחַשְּׁבִים: tervelték), JSir 2:8, városokat és nemzeteket 1Móz 18:28 (a versben kétszer) (J, a tárgyeset elmarad), 19:13-14, (J), Ézs 37:12 (Pi`el a || 2Kir 19:12-ben), Ézs 36:10 (a versben kétszer) = 18:25 *(a Károliban nincs ilyen vers: a szótár hivatkozása)* (a versben kétszer) + 11-szer + (a megszemélyesített Izráelt) 5Móz 4:31; 10:10; 2Kir 8:19, Júda kevélységét Jer 13:9, a földet 51:1; abszolút használatban határozói tárgyesettel Dán 8:24 (l. Dr; Bev sejtése יְשׂחֵחַ vagy יָשִׂיחַ: szörnyűségeket beszél), vö. 1Krón 21:12; a participium melléknévként, oroszlánról Jer 2:30, angyalról 1Krón 21:15; = pusztító 2Móz 12:23 (J), Jer 22:7; Ézs 54:16, <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">מ׳</abbr> גּוֺיִם Jer 4:7, רוּחַ <abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">מ׳</abbr>‎ 51:1; egyes szám gyűjtőnévként (׳הַמּ Ges § 126l; a pusztító csapat, vö. Dr Bu Now) 1Sám 13:17; 14:15 (fosztogatók, pusztítók); átvitt értelemben tőrről, csapdáról, Jer 5:26. 2 elferdíteni, megrontani, erkölcsileg, דֶּרֶךְ tárgyesettel <mark class="motivumhely" title="a motívum helye: 1Móz 6:12">1Móz 6:12</mark> (P; l. דֶּרֶךְ‎ 6), נַפְשׁוֺ Péld 6:32, vö. Sof 3:7; Ez 23:11 (מִן comparativus); עֲלִילָה הִתְעִיבוּ ׳הִשׁ <mark class="motivumhely" title="a motívum helye: Zsolt 14:1">Zsolt 14:1</mark> = <mark class="motivumhely" title="a motívum helye: Zsolt 53:2">53:2</mark>; הַשְׁחֵת תַּשְׁח׳ (+ egy bizonyos cselekedet igéje) 5Móz 4:16; 31:29; declar. = romlottan cselekedni, Ézs 1:4; 5Móz 4:28 (+ a cselekedet igéje), 2Krón 27:2, + מִן comparativus Bír 2:19; Ez 16:47; a participium főnévként Jer 6:28, אִישׁ מַשׁ׳ Péld 28:24 (a 18:9-hez l. alább). — אַלתַּשְׁחֵת ne pusztítsd el (egy régi ének vagy dallam kezdőszava ?) a zsoltárfeliratokban: Péld 57:1 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Péld 58:1 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Péld 59:1 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*; Zsolt 75:1.
 
 <details>
 <summary>Hoph'al — elrontott, tönkretett, forrásról (2 hivatkozás)</summary>
@@ -2530,7 +2530,7 @@ Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, a
   - <span title="Of Adam and Eve, from Eden">Ádámé és Éváé Édenből</span>: 1Móz 3:23
   - <span title="Of Cain, to be “a fugitive and vagabond,”">Kainé, hogy „bujdosó és vándorló” legyen</span>: 1Móz 4:14
 
-*(forrás: Nave tárgymutatója (1897); a tematikus index döntései; a Nave-témák magyar nevei, 2026-11-11)*<!-- eredeti: *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=7 | ts=2026-11-11)* -->
+*(forrás: Nave tárgymutatója (1897); a tematikus index döntései; a Nave-témák magyar nevei, 2026-11-12)*<!-- eredeti: *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=7 | ts=2026-11-12)* -->
 
 #### 4.13. Károli-megfelelők
 
@@ -2562,7 +2562,7 @@ A motívum 47 igehelyén a Károli 23 különböző magyar szót használ (szóc
 - **zsaroló** (1) — zsaroló: Zsolt 74:20
 - **álnokság** (1) — álnoksága: Ez 12:19
 
-*(forrás: a motívum előfordulás-táblája; a Károli-szavak szótári alakjai, 2026-11-11)*<!-- eredeti: *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=47 | ts=2026-11-11)* -->
+*(forrás: a motívum előfordulás-táblája; a Károli-szavak szótári alakjai, 2026-11-12)*<!-- eredeti: *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=47 | ts=2026-11-12)* -->
 
 #### 4.14. Rejtett / hamis párhuzam
 
@@ -2638,7 +2638,7 @@ A rejtett és a hamis párhuzam a Károli állandó magyar kulcsszavával mérhe
 
 </details>
 
-*(forrás: a Károli-fordítás (1908); a STEPBible héber szövege (TAHOT); a STEPBible görög szövege (TAGNT); a motívum előfordulás-táblája; a Károli-szavak szótári alakjai, 2026-11-11)*<!-- eredeti: *(proveniencia: scope=Károli teljes (H0127: „föld”; H0779: „átkoz”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=2313 | ts=2026-11-11)* -->
+*(forrás: a Károli-fordítás (1908); a STEPBible héber szövege (TAHOT); a STEPBible görög szövege (TAGNT); a motívum előfordulás-táblája; a Károli-szavak szótári alakjai, 2026-11-12)*<!-- eredeti: *(proveniencia: scope=Károli teljes (H0127: „föld”; H0779: „átkoz”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=2313 | ts=2026-11-12)* -->
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#szocikkek -->
 
@@ -2674,7 +2674,7 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasó
 
 ## 5. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: adat/lxx_dontesek.tsv, adat/visszhang_megfelelok.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: adat/lxx_dontesek.tsv, adat/visszhang_megfelelok.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-12 -->
 
 A motívum ószövetségi helyei 46 versre terjednek; ezek közül 6 versben a görög fordítás (Septuaginta) ugyanazt a szót használja, mint az Újszövetség; 28 versben mást, 12 versben a megfelelő nincs megállapítva. **Következtetés:** a görög Ószövetség csak a versek 13%-ában használja ugyanazt a szót: a kapcsolat nem nyelvi, csak tartalmi.<!-- olvasói -->
 
@@ -2735,7 +2735,7 @@ A motívum ószövetségi helyei 46 versre terjednek; ezek közül 6 versben a g
 
 ## 6. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-12 -->
 
 A motívum 47 helyéből 26 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 112. **Következtetés:** a helyek 55%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -3132,11 +3132,11 @@ A 112 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet ér
 
 *Minden sor forrásmegjelölése (‹M1›): forrás: a motívum korábbi kereszthivatkozás-naplója; kézi szerkesztés, 2026-10-11*<!-- eredeti: *Minden sor forrásmegjelölése (‹M1›): `scope=manual | forras=Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md | ts=2026-10-11`* -->
 
-*Forrás: a jelöltek döntésnaplója; a motívum előfordulás-táblája; a Treasury of Scripture Knowledge; a Károli-kereszthivatkozások, 2026-11-11*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-11`* -->
+*Forrás: a jelöltek döntésnaplója; a motívum előfordulás-táblája; a Treasury of Scripture Knowledge; a Károli-kereszthivatkozások, 2026-11-12*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-12`* -->
 
 ## 7. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-12 -->
 
 56 kapcsolat 42 helyet köt össze: 43 párhuzam, 7 kontraszt, 6 variáns; 26 magas, 30 közepes bizonyosságú. **Következtetés:** a motívum helyeit túlnyomórészt párhuzam köti össze: a későbbi hely ugyanazt a szót vagy szerkezetet hozza vissza, nem egy korábbi ígéretet teljesít be, és a kapcsolatok többsége közepes bizonyosságú.<!-- olvasói -->
 
@@ -3367,11 +3367,11 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 *Az indoklások egy szerkesztői döntésből valók (2026-11-10); a mért egyezéseket a héber és a görög szöveg, a Septuaginta és a két hagyományos kereszthivatkozás-gyűjtemény (TSK, Károli) adja.*<!-- DT748 | scope=manual | forras=naplok/F182_kapcsolat_jeloltek.tsv (bizonyíték: TSK, Károli-KH, TAHOT, TAGNT, LXX; naplok/F182_kapcsolat.py); a szöveg: naplok/F125_lapjavit_kapcsolat.py (lap-javit HAMART-001, ts=2026-11-11) | ts=2026-11-10 -->
 
-*Forrás: a kapcsolat-tábla, 2026-11-11*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-11`* -->
+*Forrás: a kapcsolat-tábla, 2026-11-12*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-12`* -->
 
 ## 8. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-12 -->
 
 1 kapcsolat 1 másik motívummal (ISTENTISZT-001 1), mind „szomszédos”; további 1 döntésre vár. **Következtetés:** a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva.<!-- olvasói -->
 
@@ -3383,7 +3383,7 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 *Döntésre váró motívumközi jelölt (a jelöltek döntésnaplója, nyitva): 1 — ISTENTISZT-001: 1.*
 
-*Forrás: a motívumközi kapcsolatok táblája; a jelöltek döntésnaplója, 2026-11-11*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-11`* -->
+*Forrás: a motívumközi kapcsolatok táblája; a jelöltek döntésnaplója, 2026-11-12*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-12`* -->
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#kapcsolodo -->
 
@@ -3506,7 +3506,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 ## 12. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-12 -->
 
 Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -3575,7 +3575,7 @@ Hogyan hivatkozz erre a lapra, és mely szótárakból, adatforrásokból kész�
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lap_javitasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, adat/vitatott_forrasok.tsv, chain-lineages, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Glossa_Ordinaria.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Targum_PD.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva, minden jog fenntartva, © Mounce 1993 | ts=2026-11-11 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/lap_javitasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, adat/vitatott_forrasok.tsv, chain-lineages, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Glossa_Ordinaria.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Targum_PD.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva, minden jog fenntartva, © Mounce 1993 | ts=2026-11-12 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
@@ -3583,7 +3583,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 
 **Szerzőség.** Az értelmező szakaszok (Kivonat, Miért fontos ez a lelet, Értelmezés, Módszertan és nyitott kérdések) még nincsenek kiadva: a szerző nem hagyta jóvá őket. A többi szakasz az adattáblákból generált. A mesterséges intelligencia szerepét, az ellenőrzés menetét és azt, amit az ellenőrzés nem állít, a [Nyilatkozat a mesterséges intelligencia használatáról](../kozlemeny/MI_NYILATKOZAT.md) írja le.
 
-**Hogyan idézd.** Demeter Tamás: *Logosz-lexikon*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), kiadás előtti változat, még nem idézhető, 2026-11-11, https://logoszlexikon.hu/HAMART-001. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: https://doi.org/10.5281/zenodo.24141612.
+**Hogyan idézd.** Demeter Tamás: *Logosz-lexikon*, „A bűn következményeinek gyűrűzése — átok, föld és romlás” (HAMART-001), kiadás előtti változat, még nem idézhető, 2026-11-12, https://logoszlexikon.hu/HAMART-001. A lap adatai (előfordulások, kizárt helyek) nyílt adatkészletként is elérhetők: https://doi.org/10.5281/zenodo.24141612.
 
 **Módszertani elvek.** A bibliai intertextualitás-kutatás bevett mércéje Richard B. Hays hét kérdése arról, valóban visszhangoz-e egy szöveg egy korábbit. A módszer a tematikus koherenciát fedi (a kizáró feltétel és a fölérendelt fogalom); részben fedi a hozzáférhetőséget (a Septuaginta-megfelelés), a hangerőt (a közös szavak és szópárok) és az értelmezéstörténetet; a visszatérést a teljes korpuszon méri, nem szerzőnként; a kielégítő értelem csak értelmezésként, mérés nélkül áll; a történeti hihetőséget nem fedi, mert ókori közel-keleti és keltezési réteg nincs. A részletes leképezés a lexikon módszertani közleményében áll („A módszer Hays hét kritériumának tükrében”).
 
@@ -3602,7 +3602,7 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Negatív kritérium | A versben az 1Mózes 3–9. fejezetének szóláncából (átok, föld, fáradság, bűn, erőszak, romlás) egy szó áll — héberül az átok (árar), a föld (adámá), a fájdalom és fáradság (iccávón), a bűn (chattát), az erőszak (chámász) vagy a romlás igéje (sáchat); görögül az átkozott (ἐπικατάρατος, epikataratosz), az átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró) —, vagy a lánc szópárja (tövis és bogáncs; megtelt erőszakkal), vagy az erőszak szava a hallás igéjével ugyanabban a versben, és a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, az erőszak a megtelés és a hallás szava nélkül, romlandó test), és az sem, amely az átkot vagy a föld elvesztését a szövetség rendjében, a szövetség megszegésének büntetéseként mondja ki. A lánc szavai nélkül csak az a néhány hely tartozik ide, amely ugyanezt a szerkezetet más szavakkal mondja ki; ezeket a lap egyenként, tematikus helyként veszi fel. Az újszövetségi helyeknél a Textus Receptus a mérce. |
 | Fölérendelt fogalom | A bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül |
 | Sablon-megfelelőség | v14 |
-| Generálva | 2026-11-11 |
+| Generálva | 2026-11-12 |
 | Kiadás | nincs kiadva — feldolgozás alatt |
 | Próza modellje | nincs kiadva — feldolgozás alatt |
 | Emberi lektorálás | 32 hely (2026.11.11); lektorálók: szerkesztő |

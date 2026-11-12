@@ -410,4 +410,4 @@ az öröklött bűnösség kérdése, amelyet a lap nem dönt el
 
 - **Ef** (2): 2:1, 2:3
 
-*Forrás: a jelöltek döntésnaplója és a lap teljesség-mérésének csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: 2026-11-11.*
+*Forrás: a jelöltek döntésnaplója és a lap teljesség-mérésének csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: 2026-11-12.*

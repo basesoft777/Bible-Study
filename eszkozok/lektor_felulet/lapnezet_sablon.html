@@ -21,6 +21,8 @@
   --kiemel-halvany: #e6ecf6;
   --kod-hatter: #eef1f5;
   --rov-hatter: #fbefc9;
+  --mh-hatter: #ffd95e;
+  --mh-vonal: #b07d00;
   --display: "Alegreya", "Georgia", serif;
   --szoveg: "Source Serif 4", "Georgia", "Times New Roman", serif;
   --adat: "IBM Plex Mono", ui-monospace, "Consolas", monospace;
@@ -28,10 +30,10 @@
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
   --papir: #12151b; --lap: #181c24; --tinta: #e3e6ec; --halvany: #9aa3b4; --vonal: #2c3240;
-  --kiemel: #9db7e3; --kiemel-halvany: #222c3d; --kod-hatter: #1f2430; --rov-hatter: #3a3220; color-scheme: dark; } }
+  --kiemel: #9db7e3; --kiemel-halvany: #222c3d; --kod-hatter: #1f2430; --rov-hatter: #3a3220; --mh-hatter: #6e5410; --mh-vonal: #e0b43c; color-scheme: dark; } }
 :root[data-theme="dark"] {
   --papir: #12151b; --lap: #181c24; --tinta: #e3e6ec; --halvany: #9aa3b4; --vonal: #2c3240;
-  --kiemel: #9db7e3; --kiemel-halvany: #222c3d; --kod-hatter: #1f2430; --rov-hatter: #3a3220; color-scheme: dark; }
+  --kiemel: #9db7e3; --kiemel-halvany: #222c3d; --kod-hatter: #1f2430; --rov-hatter: #3a3220; --mh-hatter: #6e5410; --mh-vonal: #e0b43c; color-scheme: dark; }
 
 html { scroll-padding-top: 16px; }
 body { background: var(--papir); color: var(--tinta); font: 17px/1.6 var(--szoveg); }
@@ -68,6 +70,9 @@ code { font: .86em/1.4 var(--adat); background: var(--kod-hatter); padding: .08e
 pre { background: var(--kod-hatter); padding: 12px 14px; border-radius: 4px; overflow-x: auto; font: 13px/1.5 var(--adat); }
 pre code { background: none; padding: 0; }
 abbr.rovidites { background: var(--rov-hatter); border-radius: 3px; padding: 0 2px; text-decoration: underline dotted; cursor: help; }
+/* a szótári szövegben a motívum helye (a BDB/Thayer saját példahelye); a title a teljes igehely */
+mark.motivumhely { background: var(--mh-hatter); color: var(--tinta); font-weight: 700; border-radius: 3px; padding: 0 3px;
+  box-shadow: inset 0 -2px 0 var(--mh-vonal); cursor: help; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 blockquote { margin: 16px 0; padding: 4px 16px; border-left: 3px solid var(--vonal); color: var(--halvany); }
 hr { border: 0; border-top: 1px solid var(--vonal); margin: 32px 0; }
 div.tabla { overflow-x: auto; margin: 16px 0; border: 1px solid var(--vonal); border-radius: 4px; }
