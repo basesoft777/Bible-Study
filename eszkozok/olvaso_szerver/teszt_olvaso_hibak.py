@@ -89,7 +89,7 @@ class TestOlvasoHibakLap(unittest.TestCase):
         self.assertIn('SS', feloldott)
         self.assertIn('Wetzst', feloldott)
         # a szövegben már nem áll feloldatlanul (<abbr> nélküli) az SS és a Wetzst
-        szoveg = b[:b.index('<h4>Jelmagyarázat</h4>')]
+        szoveg = b[:b.index('<details class="szk-jelmagyarazat">')]
         szoveg = re.sub(r'<abbr[^>]*>[^<]*</abbr>', '', szoveg)
         szoveg = re.sub(r'<[^>]+>', ' ', szoveg)
         self.assertIsNone(re.search(r'(?<![\w])(SS|Wetzst)(?![\w])', szoveg), 'feloldatlan jel maradt')
@@ -102,7 +102,7 @@ class TestOlvasoHibakLap(unittest.TestCase):
         t = r.get_data(as_text=True)
         self.assertIn('class="bdb-ebben"', t)
         self.assertIn('a BDB itt idézi ezt a verset', t)
-        self.assertRegex(t, r'<li id="bdb-0-1e" data-jel="e\." class="bdb-itt">')
+        self.assertRegex(t, r'<li id="bdb-0-1e" data-jel="e\." class="szk-alpont bdb-itt">')
         self.assertIn('data-blokk="szo.ebben"', t)
         # vers nélkül nincs jelölés; érvénytelen vagy nem szigorú alak is figyelmen kívül marad
         for rossz in ('/szo/H1242', '/szo/H1242?vers=nincs/1/5', '/szo/H1242?vers=1Moz/1/5;drop', '/szo/H1242?vers=1Moz/x/5'):

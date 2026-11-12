@@ -715,26 +715,6 @@ tulajdonsag = [
 # K. BDB-apparátus
 # ---------------------------------------------------------------------------------------------------------------------
 [[elem]]
-id = "app-cim"
-nev = "Apparátus szakaszcím (nagybetűs)"
-csoport = "BDB-apparátus"
-szelektor = ".app h4"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-apparatus-cim" },
-  { nev = "Szín", token = "accent" },
-]
-
-[[elem]]
-id = "app-alcim"
-nev = "Apparátus törzscím (Qal, Nif'ál …)"
-csoport = "BDB-apparátus"
-szelektor = ".torzs h5, .app h5"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-apparatus-alcim" },
-  { nev = "Sorköz", token = "lh-apparatus-alcim" },
-]
-
-[[elem]]
 id = "szocikk"
 nev = "Szócikk-szöveg"
 csoport = "BDB-apparátus"
@@ -754,15 +734,6 @@ tulajdonsag = [
   { nev = "Háttér", token = "bg" },
   { nev = "Keret", token = "rule" },
   { nev = "Lekerekítés", token = "radius-pill" },
-]
-
-[[elem]]
-id = "cimszo-heber"
-nev = "Apparátus címszó (héber)"
-csoport = "BDB-apparátus"
-szelektor = ".cimszo .he"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-cimszo-heber" },
 ]
 
 [[elem]]
@@ -853,80 +824,6 @@ tulajdonsag = [
 # M. BDB-jelentésszerkezet (F98.11–F98.13; jóváhagyva 2026-10-15)
 # ---------------------------------------------------------------------------------------------------------------------
 [[elem]]
-id = "jel-vazlat"
-nev = "Jelentésszerkezet vázlata (a BDB-blokk elején)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".jel-vazlat"
-tulajdonsag = [
-  { nev = "Háttér", token = "panel" },
-  { nev = "Keret", token = "rule" },
-  { nev = "Lekerekítés", token = "radius-panel" },
-  { nev = "Betűméret", token = "fs-sor" },
-  { nev = "Sorköz", token = "lh-forrassor" },
-  { nev = "Belső térköz (függőleges)", token = "space-utmutato-fugg" },
-  { nev = "Belső térköz (vízszintes)", token = "space-utmutato-vizsz" },
-  { nev = "Hivatkozás színe rámutatáskor", token = "accent" },
-]
-
-[[elem]]
-id = "vz-torzs"
-nev = "Vázlat: törzscím (Qal, Nif'ál …)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".jel-vazlat .vz-torzs"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-apparatus-alcim" },
-]
-
-[[elem]]
-id = "vz-fo"
-nev = "Vázlat: főjelentés sora"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".jel-vazlat .vz-fo"
-tulajdonsag = [
-  { nev = "Szín rámutatáskor", token = "accent" },
-]
-
-[[elem]]
-id = "vz-jel"
-nev = "Vázlat: jelentés-jelölő (1, 2 …)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".jel-vazlat .vz-jel"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-jelentes-jel" },
-  { nev = "Szín", token = "accent" },
-]
-
-[[elem]]
-id = "vz-al"
-nev = "Vázlat: alpontok sora (a., b. …)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".jel-vazlat .vz-al"
-tulajdonsag = [
-  { nev = "Szín", token = "muted" },
-]
-
-[[elem]]
-id = "jcim"
-nev = "Jelentéscím (a részletes listában)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".jcim"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-jelentes-cim" },
-  { nev = "Sorköz", token = "lh-jelentes-cim" },
-  { nev = "Háttér, ha a jelentésre ugrottak", token = "accent-soft" },
-  { nev = "Lekerekítés, ha a jelentésre ugrottak", token = "radius-kiemeles" },
-]
-
-[[elem]]
-id = "kolcsonzott"
-nev = "Kölcsönzött jelentéscím (az első alpontból)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".kolcsonzott"
-tulajdonsag = [
-  { nev = "Szín", token = "muted" },
-]
-
-[[elem]]
 id = "jelmagyarazat"
 nev = "BDB-jelmagyarázat (a blokk végén)"
 csoport = "BDB-jelentésszerkezet"
@@ -946,19 +843,6 @@ szelektor = ".jsz abbr[title], abbr.rovidites"
 tulajdonsag = [
   { nev = "Aláhúzás színe", token = "muted" },
   { nev = "Egybetűs rövidítés háttere (N-F131x)", token = "gold-soft" },
-]
-
-[[elem]]
-id = "jelentes-jelolo"
-nev = "Jelentés-jelölő a részletes listában (1, 2 … / a., b. …)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = "ol.jel > li, ol.al > li"
-tulajdonsag = [
-  { nev = "Jelölő betűmérete", token = "fs-jelentes-jel" },
-  { nev = "Jelölő színe", token = "accent" },
-  { nev = "Alpontlista bal vonala", token = "accent-soft" },
-  { nev = "„összecsuk” felirat betűmérete", token = "fs-megjegyzes" },
-  { nev = "„összecsuk” felirat színe", token = "muted" },
 ]
 
 # F104 (FELADATOK #104, DT178): a BDB-blokk vers szerinti jelölése (a versből megnyitott szó-lapon)
@@ -1006,13 +890,291 @@ tulajdonsag = [
   { nev = "Szín (gyenge)", token = "gold" },
 ]
 
+# F213 (FELADATOK #213): a BDB-szókártya (a design-vászon „Szótári nézet” mockupja, jóváhagyva 2026-11-12)
 [[elem]]
-id = "bdb-csop"
-nev = "Használati csoport sora a jelentésen belül (F103)"
+id = "szk-nezet"
+nev = "Szókártya: nézetkapcsoló (olvasói nézet / szócikk egyben / minden apparátus nyitva)"
 csoport = "BDB-jelentésszerkezet"
-szelektor = ".bdb-csop"
+szelektor = ".szk-nezet button"
 tulajdonsag = [
-  { nev = "Behúzás", token = "space-gomb-vizsz" },
+  { nev = "Betűméret", token = "fs-gomb-kis" },
+  { nev = "Kiválasztott háttér", token = "accent" },
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+  { nev = "Belső térköz (függőleges)", token = "space-gomb-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-gomb-vizsz" },
+]
+
+[[elem]]
+id = "szk-cimszo"
+nev = "Szókártya: a címszó héberül"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-cimszo"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-szocim-heber" },
+  { nev = "Sorköz", token = "lh-szocim-heber" },
+]
+
+[[elem]]
+id = "szk-db"
+nev = "Szókártya: darabszám a címszónál és a törzsnél (előfordulás a BDB szerint)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-db"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-helyszam" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "szk-lenyilo"
+nev = "Szókártya: lenyíló felirata (Alakok, Rokon nyelvek, Apparátus, Angol eredeti, Jelmagyarázat)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-lenyilok > details > summary, .szk-also > details > summary, .szk-jelmagyarazat > summary"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "muted" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Nyitott keret", token = "accent" },
+  { nev = "Nyitott háttér", token = "accent-soft" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+  { nev = "Belső térköz (függőleges)", token = "space-gomb-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-gomb-vizsz" },
+]
+
+[[elem]]
+id = "szk-tj"
+nev = "Szókártya: a jelentések rendje (tartalomjegyzék)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tj"
+tulajdonsag = [
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-panel" },
+  { nev = "Belső térköz (függőleges)", token = "space-utmutato-fugg" },
+  { nev = "Belső térköz (vízszintes)", token = "space-utmutato-vizsz" },
+]
+
+[[elem]]
+id = "szk-tj-cim"
+nev = "Szókártya: a tartalomjegyzék felirata"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tj-cim"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-forrascim" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "szk-tj-sor"
+nev = "Szókártya: a tartalomjegyzék sora (a motívum jelentése kiemelve)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tj-sor, .szk-tj-sor.szk-van-mot"
+tulajdonsag = [
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+  { nev = "A motívum jelentésének háttere", token = "gold-soft" },
+]
+
+[[elem]]
+id = "szk-tj-gl"
+nev = "Szókártya: glossza a tartalomjegyzékben"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tj-gl"
+tulajdonsag = [
+  { nev = "Szín rámutatáskor", token = "accent" },
+]
+
+[[elem]]
+id = "szk-tj-db"
+nev = "Szókártya: hivatkozásszám a tartalomjegyzékben"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tj-db"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-strong-szam" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "szk-tj-torzs"
+nev = "Szókártya: törzs- vagy szakaszcím a tartalomjegyzékben"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tj-torzs"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "szk-torzsnev"
+nev = "Szókártya: törzs- és szakaszcím (Qal, Nif'ál …; homonima)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-torzsnev, .szk-szakasz-cim"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-apparatus-alcim" },
+  { nev = "Sorköz", token = "lh-apparatus-alcim" },
+]
+
+[[elem]]
+id = "szk-jel"
+nev = "Szókártya: egy jelentés (a motívum jelentése bal sávval)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-jel, .szk-jel.szk-van-mot"
+tulajdonsag = [
+  { nev = "Elválasztó vonal", token = "rule" },
+  { nev = "A motívum sávja", token = "gold" },
+]
+
+[[elem]]
+id = "szk-jelszam"
+nev = "Szókártya: jelentés-jelölő (1, 2 … / a., b. …)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-jelszam"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-jelentes-jel" },
+  { nev = "Háttér", token = "fg" },
+  { nev = "Szín", token = "panel" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "szk-glossza"
+nev = "Szókártya: a jelentés glosszája (félkövér)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-glossza"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-jelentes-cim" },
+  { nev = "Sorköz", token = "lh-jelentes-cim" },
+]
+
+[[elem]]
+id = "szk-meta"
+nev = "Szókártya: a jelentés adatsora (hivatkozásszám, LXX, címkék)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-meta"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-helyszam" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "szk-tag"
+nev = "Szókártya: címke (motívum, ez a vers, szerkesztői címke)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tag, .szk-tag-mot, .szk-tag-ez, .szk-tag-kezi"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-jel-cimke" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+  { nev = "Motívum háttere", token = "gold" },
+  { nev = "Ez a vers háttere", token = "accent" },
+  { nev = "Felirat színe", token = "panel" },
+]
+
+[[elem]]
+id = "szk-szerk"
+nev = "Szókártya: a használati sor szerkezete (héber kifejezés)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-szerk"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-cimszo-heber" },
+  { nev = "Sorköz", token = "lh-csempe" },
+]
+
+[[elem]]
+id = "szk-magy"
+nev = "Szókártya: a használati sor magyar magyarázata"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-magy"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-szocikk" },
+  { nev = "Sorköz", token = "lh-szocikk" },
+]
+
+[[elem]]
+id = "szk-helyek"
+nev = "Szókártya: igehely a használati sorban (és a nem azonosítható hely)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-helyek a.igehely, .szk-na"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-helyszam" },
+  { nev = "Szín", token = "accent" },
+  { nev = "Háttér", token = "panel" },
+  { nev = "Keret", token = "rule" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "szk-mot"
+nev = "Szókártya: a motívum helye (a sor ezen a szón: teli; más szón: pontozott keret)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-helyek a.szk-mot, .szk-helyek a.szk-mot2"
+tulajdonsag = [
+  { nev = "Háttér", token = "gold-soft" },
+  { nev = "Keret és aláhúzás", token = "gold" },
+  { nev = "Szín", token = "fg" },
+]
+
+[[elem]]
+id = "szk-tk"
+nev = "Szókártya: szó a helyek között (vö., héber kifejezés, „a versben kétszer”)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tk"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "szk-tobb"
+nev = "Szókártya: „még N hely” gomb"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-tobb"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "accent" },
+]
+
+[[elem]]
+id = "szk-app-lista"
+nev = "Szókártya: Apparátus és szövegkritika (a jelentésnél)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-app-lista"
+tulajdonsag = [
+  { nev = "Háttér", token = "bg" },
+  { nev = "Betűméret", token = "fs-sor" },
+  { nev = "Sorköz", token = "lh-forrassor" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "szk-app-fajta"
+nev = "Szókártya: az apparátus-sor fajtája (forrásjel, megjegyzés, számozás)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-app-fajta"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-forrascim" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "szk-en-szoveg"
+nev = "Szókártya: Angol eredeti (a jelentésnél)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-en-szoveg"
+tulajdonsag = [
+  { nev = "Háttér", token = "bg" },
+  { nev = "Betűméret", token = "fs-sor" },
+  { nev = "Sorköz", token = "lh-forrassor" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
+id = "angol-kis"
+nev = "Az angol eredeti a magyar mellett (Strong-szótár, glossza, UBS)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".angol-kis"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-megjegyzes" },
+  { nev = "Szín", token = "muted" },
 ]
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -1386,3 +1548,32 @@ biblia-csoport-cim = "a csoport neve a sor elején; fs-megjegyzes, muted"
 bibliavalaszto-megj = "a bibliaválasztó megjegyzése (minden szöveg szavanként Strong-jelölt); fs-megjegyzes, muted"
 morzsa-biblia = "a morzsában a választott Biblia neve („Károli 1908 ·”); fs-megjegyzes, muted"
 forras-versszam = "a forrás eltérő versszáma a vers elején (LXX, KJV); fs-megjegyzes, muted"
+# F213: a BDB-szókártya szerkezeti osztályai (a megjelenés a gyermek-elemeken, vagy literál, saját token nélkül)
+szk = "a szókártya tárolója (rács); a `data-nezet` attribútum a nézet (olvaso | egyben | app); a megjelenés a gyermek-elemeken"
+szk-lemma = "a szókártya feje (címszó, alapjelentés, lenyílók): rács-tároló, alsó vonal (rule)"
+szk-lemma-sor = "a címszó sora (héber, kiejtés, darabszámok): flex-tároló"
+szk-kiejtes = "a címszó kiejtése (dőlt, a font-text); saját token nélkül"
+szk-alap = "a címszó alapjelentés-sora a szótár szerint; a megjelenés a .jsz tokenjein"
+szk-alakok = "az Alakok lenyílója (details); a felirat a szk-lenyilo elem"
+szk-rokon = "a Rokon nyelvek és eredet lenyílója (details); a felirat a szk-lenyilo elem"
+szk-szakasz = "további BDB-szakasz (homonima, másik lemma, fő tagolás) tárolója; a cím a szk-torzsnev elem"
+szk-torzs = "egy törzs (Qal, Nif'ál …) jelentéseinek tárolója; a cím a szk-torzsnev elem"
+szk-jelentesek = "a jelentések listája (rács, a köz a space-blokkkoz)"
+szk-al = "az alpontok listája (rács)"
+szk-jel-d = "a jelentés lenyílója (details; szónézetben nyitva, motívumlap-nézetben a motívum jelentései nyitva)"
+szk-sorok = "a használati sorok listája (rács, behúzás literál)"
+szk-sor = "egy használati sor (szaggatott alsó vonal: rule); a megjelenés a gyermek-elemeken"
+szk-egesz = "állapot-osztály: a nem bontható használati sor (a teljes szövegrész); saját token nélkül"
+szk-sor-fo = "a használati sor első sora (szerkezet + magyarázat): flex-tároló"
+szk-rejt = "a „még N hely” mögötti hely burkolója (display: contents; a JS-szel rejtve); saját token nélkül"
+szk-kinyitva = "állapot-osztály: a használati sor minden helye látszik (a JS adja a „még N hely” gombra)"
+szk-egyben = "a jelentés teljes magyar szövege a „Szócikk egyben” nézetben (a .jsz tokenjein); más nézetben rejtve"
+szk-alpont = "egy alpont (a., b. …) tárolója (behúzás literál)"
+szk-alcim = "az alpont címsora (jelölő, glossza, adatsor): flex-tároló"
+szk-app = "az Apparátus és szövegkritika lenyílója (details); a felirat a szk-lenyilo, a lista a szk-app-lista elem"
+szk-en = "az Angol eredeti lenyílója (details); a felirat a szk-lenyilo, a szöveg a szk-en-szoveg elem"
+szk-lxx = "a jelentés LXX-párja az adatsorban; a görög szó a .gr horog, a méret és a szín a szk-meta elemé"
+glossza-sor = "az „Ebben a versben” glossza-sora (F213); a megjegyzés (megj) tokenjeit örökli"
+torzs = "a BDB-szókártya törzs-tárolója (Qal, Nif'ál …; F213); JavaScript-horog a gyenge jelöléshez (odagörgetés); a cím a szk-torzsnev elem"
+angol-eredeti = "a szótári szócikk angol eredetije a magyar fordítás alatt (details; F213); a felirat a megjegyzés tokenjeit örökli"
+al = "a versszintű LXX-pár sorának alsora (a görög Strongok; a lxx_par blokk); a megjegyzés tokenjeit örökli, saját token nélkül"
