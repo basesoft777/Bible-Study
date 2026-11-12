@@ -51,7 +51,7 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 | `sblgnt_apparatus.tsv` | 60 |
-| `visszhang_megfelelok.tsv` | 130 |
+| `visszhang_megfelelok.tsv` | 144 |
 | `visszhang_tanuk.tsv` | 8 |
 | `vitatott_forrasok.tsv` | 3 |
 

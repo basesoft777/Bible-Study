@@ -51,7 +51,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 | `sblgnt_apparatus.tsv` | 60 |
-| `visszhang_megfelelok.tsv` | 130 |
+| `visszhang_megfelelok.tsv` | 144 |
 | `visszhang_tanuk.tsv` | 8 |
 | `vitatott_forrasok.tsv` | 3 |
 

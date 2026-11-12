@@ -84,3 +84,29 @@ A 11 tételből ez a kör javít: 3 (a mérés commitolva, az F194.0-sor ÓSZ/Ú
 **6. Glossa és SBLGNT (a brief 5. lépése; `konkordancia/Glossa_Ordinaria.tsv`, `konkordancia/SBLGNT_apparatus.tsv`, a 20 versen; a Glossa kulcsa Vulgata-számozású, a Zsolt 116 versei a 114:4, 115:4, 115:8 kulcson):**
 - *Glossa:* jegyzet 7 versnél áll. Érdemi a formulára kettő: az 1Móz 4:26 (Énós neve „ember”, aki „elkezdte segítségül hívni az Úr nevét”, Ábel és Séth krisztológiai olvasatával) és a 2Móz 33:19 (Ágoston, quaest. 154: a „vocabo” cselekvő ige szenvedő helyett, a K8/DT-F194b kérdéséhez). A többi (1Móz 12:8, 21:33, Zsolt 114:4, 115:8, 1Kor 1:2) a vers más elemét magyarázza. A Zsolt 115:4, a Jóel 2:32 és a többi 11 vers: nincs jegyzet. **Tanúsor nem készült:** az 1Móz 4:26 latin tanúja jelölt, a kinyerése (két kézzel) a 2. fázis előtti visszhang-kör tárgya.
 - *SBLGNT-apparátus:* három vers. Az ApCsel 22:16-on αὐτοῦ (WH, Treg, NA28) ↔ τοῦ κυρίου (RP): ez a DT-F194a TR-mércéjének szövegtörténeti alapja. Az ApCsel 2:21 (ἐάν/ἄν) és az 1Kor 1:2 két változata (szórend, τε) a formulát nem érinti. A Róm 10:13-on nincs változat.
+
+## F194.15 — a main behozása; a `motivumok.tsv` kritériuma és meghatározása (2026-11-12)
+
+Az orkesztrátor (2026-11-12): a HAMART-001 1. kiadása a main-en van (#696, a #699 előtte), a #709 folytatódhat; a CS3-tól (F212) független adatlépések mennek, a kapcsolat-lépés (C6) és a próza nem.
+
+- **Merge:** az `origin/main` (860b6618) behozva. Ütközés csak az öt generált `nyilt_mag/` fájlban volt (ELLENORZO_OSSZEG, KIADAS, OLVASSEL, README, RELEASE): ezeknél a main változata maradt, majd a `nyilt_mag_export.py` újrafuttatása. Az adattáblák (`jeloltek`, `elofordulasok`, `kapcsolatok`, `nyilt_kodkonyv`) automatikusan egyesültek.
+- **`adat/motivumok.tsv`, ISTENTISZT-001:** a `negativ_kriterium` az F194.1 jóváhagyott szövege, az utolsó mondat nélkül (DT-F194a); a `meghatarozas` az F194.6 jóváhagyott szövege (DT-F194e). A beírás szkripttel történt, a táblában csak ez az egy sor változott.
+- **Fordítás (a brief 4. lépése) újramérve a main-en:** a `glossza_lexikon_forditas.py lista --id ISTENTISZT-001` ugyanazt az öt egységet adja, mint az F194.5. A négy görög rövid glossza a #704-ben van, amely még nyitott, így itt nincs mit fordítani; a H8034 nem fordul (N87). Új fordítás nem készült.
+- **A nyílt mag angol rétege:** nem ebben a lépésben készül. A felhasználó döntése szerint (2026-11-12, „A 2. fázisban”) a 2. fázisban, egy menetben jön (a 129 cella, és most a kritérium és a meghatározás is).
+
+## F194.16 — visszhang, 2. adag: a 14 LXX-sor és a Glossa a Remez-helyeken (K66, K67d; 2026-11-12)
+
+- **LXX (N-F194e):** a H7121 14 ószövetségi LXX-sorát a gépi kinyerés nem tudta eldönteni, mert az ἐπικαλέω és az ὄνομα a szópár miatt azonos súllyal állt. Ezeket modell nyerte ki a `konkordancia/LXX_OS` versszövegéből, a HAMART-001 modell-sorainak mintájára. Első kéz: claude-opus-5-5, `naplok/F194_lxx_glossza_kinyeres.py` → `naplok/F194_lxx_kinyert.tsv`; második kéz: claude-sonnet-5-5, független subagent → `naplok/F194_lxx_atnezes.tsv`.
+  - Első kör: 11 jó, 3 elvetve. Mindhárom elvetett sorban a megjegyzés állított többet a forrásnál. Az 1Móz 13:4 és a 26:25 szerkezete nem „szó szerint ugyanaz”, mint a többi pátriárka-helyé (a 12:8-ban elöljárós alak áll, a 13:4-ben az ἐκεῖ és az alany az ige és a tárgy között). A Sof 3:9-ben a „megtisztított” jelzőnek nincs görög megfelelője.
+  - Egy javítókör: a három megjegyzést az első kéz javította, a második kéz mind a hármat jónak ítélte.
+  - `megfelelo_kinyer.py beolvas … --ellenor claude-sonnet-5-5`: 14 sor `modell`, mind ellenőrzött; `ellenoriz`: 0 hiba.
+  - A sorok lelete (a próza anyaga, nem értelmezés): az 1Kir 18:24 két hívás-igéjét a görög kettéválasztja: a Baál-prófétákét βοᾶτε (boate, „kiáltsatok”), Illését ἐπικαλέσομαι adja vissza. Az 1Móz 4:26-ban Énós „remélte” (ἤλπισεν) segítségül hívni a nevet. A 2Kir 5:11-ben az Úr neve (κυρίου) nem áll. A Jóel 2:32 (LXX 3:5) görög mondata az, amelyet az ApCsel 2:21 és a Róm 10:13 idéz. A Zsolt 116:17-ben (LXX 115:8) az LXX_OS versében csak a vers első fele áll, a segítségül hívás mondata nincs meg: ez alak nélküli sor, a hiány kimondva. A második kéz megjegyzése szerint a hagyományos kiadásokban emlékezete szerint a második félvers is áll; ezt a repó nem igazolja, a sor a forrás állapotát rögzíti.
+  - A négy újszövetségi G1941 LXX-sor (1Kor 1:2, ApCsel 2:21, 22:16, Róm 10:13) gépi és ellenőrizetlen marad: az ÚSZ-versnek nincs LXX-e (N-F194e 2.). Nem renderel.
+- **Glossa a 15 Remez-helyen (K67d; az 5 Drash-hely, köztük az 1Móz 4:26, a szabály szerint nem kap tanút):** a helyenkénti nyom a `naplok/F194_glossza_atnezes.tsv`-ben.
+  - Jegyzet 5 helyen áll, a kispróféták (Sof, Jóel) a forrásban nincsenek. A zsoltárok Glossa-kulcsai egy verssel elmaradnak a Vulgatától, ezért ott a szomszédos kulcsot is átnéztük (N-F194g).
+  - Tanújelölt egy volt, a 2Móz 33:19: Ágoston, quaest. 154, a „vocabo” cselekvő igealakról. A második kéz elvetette (`naplok/F194_glossza_tanu_atnezes.tsv`). Indoka: Ágoston csak feltételesen olvassa bele, hogy az Urat minden nép hívja („forte”), és a nevet meg a formula szerkezetét nem érinti, így nem ugyanazt a kapcsolatot látja, mint a DT-F194b. Az első kéz elfogadta, tanúsor nem készült. A jegyzet a próza számára a K8-kérdés (DT-F194b) recepciótörténeti adaléka lehet, tanúként nem áll a lapon.
+  - Eredmény: a Glossa az ISTENTISZT-001 egyik Remez-helyén sem ad tanút. Ez a lap kimondott hiánya (K67f).
+- **Új nyitott tételek:**
+  - N-F194f: a `lxx` parancs újrafuttatása a második kézzel ellenőrzött `modell` LXX-sorokat is törli; ez a HAMART-001 3 sorát is érinti.
+  - N-F194g: a Glossa zsoltárkulcsainak eltolódása, és a kispróféták hiánya a forrásban.
+- **Generált nézetek:** `nyilt_mag/` újragenerálva; a motívumnapló, az index és a nyitott-blokk változatlan.

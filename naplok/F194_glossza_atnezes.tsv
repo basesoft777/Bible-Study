@@ -1,0 +1,17 @@
+# F194 — a Glossa Ordinaria átnézése az ISTENTISZT-001 15 Remez-helyén (K67d; a HAMART-001 F183 mintája). Forrás: konkordancia/Glossa_Ordinaria.tsv; a zsoltároknál a Vulgata számozása. Ítélet: claude-opus-5-5 (kinyerő), 2026-11-12. A Drash-szintű 5 hely (1Móz 4:26, 12:8, 13:4, 21:33, 26:25) a K67d szerint nem kap tanút.
+igehely	pardes_szint	glossza_kulcsok	jegyzet_db	itelet
+1Kir 18:24	Remez	1Kir 18:24	0	nincs jegyzet
+1Kir 18:25	Remez	1Kir 18:25	0	nincs jegyzet
+1Kir 18:26	Remez	1Kir 18:26	0	nincs jegyzet
+2Kir 5:11	Remez	2Kir 5:11	0	nincs jegyzet
+Sof 3:9	Remez	Sof 3:9	0	nincs a forrásban: a Glossa-fájl a kispróféták könyveit nem tartalmazza
+Zsolt 116:4	Remez	Zsolt 114:4, Zsolt 114:5	2	nem tanú: a Glossa zsoltárkulcsai egy verssel el vannak tolva, ezért mindkét szomszédos kulcs átnézve; a 114:4 jegyzete a szorongatás és a fájdalom hasznáról, a 114:5-é a szabadításért kiáltó könyörgésről és az Úr irgalmáról szól; az Úr nevét és a formulát egyik sem érinti
+Zsolt 116:13	Remez	Zsolt 115:3, Zsolt 115:4	1	nem tanú: a vers jegyzete a 115:3 kulcson áll (a szabadulás pohara mint a szenvedés képe), a segítségül hívásról nem szól
+Zsolt 116:17	Remez	Zsolt 115:7, Zsolt 115:8	2	nem tanú: a 115:7 jegyzete a bilincsek széttöréséről, a 115:8-é a következő vers fogadalmáról szól; a segítségül hívásról egyik sem
+Jóel 2:32	Remez	Jóel 2:32	0	nincs a forrásban: a Glossa-fájl a kispróféták könyveit nem tartalmazza
+1Kor 1:2	Remez	1Kor 1:2	1	nem tanú: a jegyzet a levél címzettjeiről szól (Korinthus környéke), a név segítségül hívásáról nem
+ApCsel 22:16	Remez	ApCsel 22:16	0	nincs jegyzet
+2Móz 33:19	Remez	2Móz 33:19	1	nem tanú: az Ágoston-jegyzet (quaest. 154) a cselekvő igealakot magyarázza, és csak feltételesen olvassa bele, hogy az Urat minden nép hívja; a nevet és a formula szerkezetét nem érinti (a tanújelöltet a második kéz elvetette, naplok/F194_glossza_tanu_atnezes.tsv)
+2Móz 34:5	Remez	2Móz 34:5	0	nincs jegyzet
+ApCsel 2:21	Remez	ApCsel 2:21	0	nincs jegyzet
+Róm 10:13	Remez	Róm 10:13	0	nincs jegyzet

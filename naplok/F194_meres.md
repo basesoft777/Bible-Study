@@ -35,8 +35,10 @@
 | 15 | Lezárás-előkészítés: mérés újraszámolása, helyi CI ×3, F194.8 (kódkönyv), F194.9 (generált nézetek) | 11-12 08:28–09:06 | 24 834 | 66 | 5 726 306 | 51 227 | 31 | 14 / 3 (helyi CI) | 2 kódkönyvsor; 4 generált nézet | — |
 | 16 | A független ellenőr futása alatt (a fő szál vár) | 11-12 09:06–09:24 | 1 722 | 6 | 632 371 | 3 212 | 3 | 1 / 0 | — | — |
 | 17 | F194.10–11: a jelentés mentése, javítókör (8 tétel), Glossa/SBLGNT, a mérés zárása | 11-12 09:24–09:31 | 27 403 | 54 | 6 230 794 | 50 004 | 26 | 15 / 3 (261 mérése, ujjlenyomat, Glossa) | 11 ellenőri tétel | — |
+| 18 | F194.15: a main behozása (5 generált ütközés), a kritérium és a meghatározás a `motivumok.tsv`-ben, a fordítás újramérése; a 2. adag felmérése és első keze (LXX, Glossa) | 11-12 13:38–13:46 | 29 703 | 78 | 5 350 110 | 124 568 | 39 | 12 / 3 (sorösszevetés, export, fordítási lista) | 1 merge; 2 mező; 14 LXX-sor; 15 Glossa-hely | — |
+| 19 | F194.16: a második kéz alatt N-F194f/g, javítókör (3 megjegyzés), beolvasás, generált nézetek, napló | 11-12 13:46–13:53 | 15 453 | 42 | 3 748 731 | 28 127 | 19 | 8 / 2 (`ellenoriz`, Glossa-kulcsok) | 14 LXX-sor; 1 elvetett tanújelölt | — |
 
-**Összesen (fő szál, 0–17):** output 256 030, input 486, cache-olvasás 69 274 680, cache-írás 967 472, 232 üzenet.
+**Összesen (fő szál, 0–19):** output 301 186, input 606, cache-olvasás 78 373 521, cache-írás 1 120 167, 290 üzenet. *A 19. lépés után a helyi CI, a commit és a push nincs mérve.*
 
 ## Subagentek
 
@@ -46,8 +48,10 @@
 | S2 | Második kéz: 36 megfelelő, 2 tanú átnézése | claude-sonnet-5-5 | 11-12 08:23–08:26 | 24 638 | 24 | 1 002 481 | 111 646 | 12 | 38 sor (2 elvetve) |
 | S3 | Második kéz, javítókör: 2 sor újranézése | claude-sonnet-5-5 | 11-12 08:27 | 3 262 | 12 | 570 032 | 6 407 | 5 | 2 sor |
 | S4 | Független ellenőr (`fuggetlen-ellenor`), teljes szint, 99da7c34..20cc4c15 | claude-opus-5-5 | 11-12 09:06–09:24 | 58 265 | 162 | 10 213 080 | 202 572 | 81 | 13 commit; 11 eltérés |
+| S5 | Második kéz, 2. adag: 14 LXX-sor, 1 Glossa-tanújelölt, a Glossa-nyom | claude-sonnet-5-5 | 11-12 13:46–13:50 | 26 936 | 38 | 1 724 171 | 121 424 | 19 | 15 sor (3 + 1 elvetve) |
+| S6 | Második kéz, 2. adag javítóköre: 3 LXX-sor | claude-sonnet-5-5 | 11-12 13:51 | 2 437 | 8 | 371 133 | 6 118 | 3 | 3 sor |
 
-**Összesen (subagentek):** output 91 201, input 208, cache-olvasás 12 095 262, cache-írás 408 690, 103 üzenet.
+**Összesen (subagentek):** output 120 574, input 254, cache-olvasás 14 190 566, cache-írás 536 232, 125 üzenet.
 
 **Megjegyzés a 2. lépéshez:** a jelöltindoklások olvasói átírása (131 sor, ebből 94 sértette a kapu-szabályokat) **többletmunka, amely a HAMART-nál ebben a fázisban nem volt**: a HAMART indoklásait a #182 javító menete hozta olvasói alakra (F182.33, F182.53). Arányosításnál ezt az egységet külön kell számolni.
 
