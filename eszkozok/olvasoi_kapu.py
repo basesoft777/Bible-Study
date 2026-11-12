@@ -890,13 +890,16 @@ def PONTOZATLAN_HEBER(szo):
 def kiejtes_parok(sorok):
     """[(héber/görög kulcs, kiejtés, sor)] a lapon álló „szó (kiejtés)” párokból."""
     egy, tobb = [], []
+    rokon = False   # F194: a rokon nyelvi tábla szakasza („Háttér: rokon nyelvek”)
     for s in sorok:
+        if s.szoveg.startswith('#'):
+            rokon = 'rokon nyelvek' in s.szoveg
         if s.fajta in ('komment', 'kod', 'ures'):
             continue
         for m in PAR_RX.finditer(s.szoveg):
-            # F194 (az orkesztrátor döntése, 2026-11-12): a pontozatlan héber írású alak (pl. rokon nyelvi szó) nem
-            # hordoz kiejtést, ezért a kiejtések összevetéséből kimarad
-            if PONTOZATLAN_HEBER(m.group(1)):
+            # F194 (az orkesztrátor döntése, 2026-11-12): a rokon nyelvi tábla pontozatlan alakja nem hordoz
+            # kiejtést, ezért a kiejtések összevetéséből kimarad; máshol a pontozatlan alak is összevetendő
+            if rokon and PONTOZATLAN_HEBER(m.group(1)):
                 continue
             szavak = [heber_kulcs(w) for w in re.split(r'[\s־]+', m.group(1)) if w]
             belso = re.sub(r'\b[HG]\d{3,5}[a-z]?\b', ' ', m.group(2))

@@ -122,7 +122,10 @@ class PontozatlanRokonAlak(unittest.TestCase):
         import olvasoi_kapu as K
         self.assertTrue(K.PONTOZATLAN_HEBER('קרא'))
         self.assertFalse(K.PONTOZATLAN_HEBER('קָרָא'))
-        jo = K.tagol('A szó קָרָא (kárá).\n\nAz óarámi alak קרא (kr), átírás nélkül.\n')
+        jo = K.tagol('A szó קָרָא (kárá).\n\n##### Háttér: rokon nyelvek (BDB)\n\nAz óarámi alak קרא (kr), átírás nélkül.\n')
+        # a rokon táblán kívül a pontozatlan alak is összevetendő (a független ellenőr 10. tétele)
+        kivul = K.tagol('A szó קָרָא (kárá).\n\nA szótár szövegében קרא (kara).\n')
+        self.assertTrue([x for x in K.ell_atiras(kivul) if 'ATIRAS' in str(x)])
         self.assertEqual([x for x in K.ell_atiras(jo) if 'ATIRAS' in str(x)], [])
         # a pontozott alak két kiejtése továbbra is BUKÁS
         rossz = K.tagol('A szó קָרָא (kárá).\n\nMásutt קָרָא (kara).\n')

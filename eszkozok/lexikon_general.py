@@ -8741,7 +8741,8 @@ def visszhang_cella(forras, sorok_f, versek):
         r = jo.get(h)
         if not r:
             continue
-        c = _vh_csalad(forras, r['lemma'].split(' · ')[0])
+        # F194.31: a több lemmás sor (1Kir 18:24 βοάω · ἐπικαλέω) minden lemmája számít a szócsaládhoz
+        c = frozenset().union(*[_vh_csalad(forras, x.strip()) for x in r['lemma'].split(' · ') if x.strip()])
         kulcs = next((k for k in csal if k & c), c)
         csal.setdefault(kulcs, []).append(h)
     if not csal:
@@ -9029,7 +9030,9 @@ def blokk_visszhang(m, sorai):
         versek = lanc_versek[s]
         ss = [r for r in lanc if r['strong'] == s and r['igehely'] in versek and (s, r['igehely']) not in betoldas_kulcs]
         for f, _nev in VISSZHANG_FORRASOK:
-            fv = [v for v in versek if f != 'targum' or v.split(' ')[0] in TORA_KONYVEK]
+            # F194.31: ahol a versnek van Targum-sora (Jonatan, ellenőrizetlen), a cella „nincs ellenőrzött adat”
+            fv = [v for v in versek if f != 'targum' or v.split(' ')[0] in TORA_KONYVEK
+                  or any(r['igehely'] == v and r['forras'] == 'targum' for r in lanc)]
             kivul = [v for v in versek if v not in fv]
             tobbi, sf = [], [r for r in ss if r['forras'] == f]
             if not fv:

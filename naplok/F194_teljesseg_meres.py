@@ -45,6 +45,11 @@ def kifejezes(toks):
 def main():
     M.kifejezes = kifejezes
     M.KI = os.path.join(GYOKER, 'naplok', 'F194_teljesseg_ISTENTISZT-001')
+    if '--lap' in sys.argv[1:]:
+        # F194.31 (a független ellenőr 8. tétele): a lap-mód ideiglenes helyre számol, az F194.2 leírását
+        # (`naplok/F194_teljesseg_ISTENTISZT-001.{md,tsv}`, `_blokkok.tsv`) nem írja felül
+        import tempfile
+        M.KI = os.path.join(tempfile.mkdtemp(prefix='f194_telj_'), 'F194_teljesseg_ISTENTISZT-001')
     M.main()
     ut = M.KI + '.md'
     with open(ut, encoding='utf-8') as f:

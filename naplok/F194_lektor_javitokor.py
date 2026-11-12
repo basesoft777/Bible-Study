@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """F194.30 — a lektor 22 tételének javítóköre (az egyetlen) a forrásban: motivumok/ISTENTISZT-001.md.
 
-A tételszámok a naplok/KIADAS_ISTENTISZT-001_lektor.md szerintiek. Bekezdésenként cserél: a régi bekezdés elejét
+A tételszámok a naplok/KIADAS_ISTENTISZT-001_lektor_2kiadas.md szerintiek. Bekezdésenként cserél: a régi bekezdés elejét
 ellenőrzi (előtag), és a teljes sort az új szövegre cseréli. A 2. és a 21. tétel a lap elején álló, a felhasználó által
 jóváhagyott kritériumot is érinti; azt ez a kör nem írja át (N-F194h), csak a Kivonat határ-bekezdését.
 Futtatás a repó gyökeréből: python naplok/F194_lektor_javitokor.py"""
