@@ -12,8 +12,9 @@ ad: az ISTENTISZT-001 határa, jelöltjei, előfordulás-prózája, hiányzó fo
 kovetkezo: "Az 1. fázis CS3-tól független adatlépései kész (F194.15–16: a main behozva, a kritérium és a meghatározás a motivumok.tsv-ben, a 14 LXX-sor és a Glossa két kézzel). Vár: a kapcsolat-lépés a CS3 C6-jára (N-F194a); a próza (U3), a lap újragenerálása (E28) és a nyílt mag angol rétege a CS3, az F202 és az F203 után, egyszer, külön jelre."
 munka: adat
 olvas: [sablonok/KESZ_LAP_KOVETELMENY.md, naplok/HATAR_ISTENTISZT-001.md, naplok/F123_teljesseg_ISTENTISZT-001.md, MUNKAMENET.md, adat/SEMA.md]
-ir: [adat/jeloltek.tsv, adat/motivumok.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, naplok/F194_meres.md, naplok/F194_naplo.md, naplok/HATAR_ISTENTISZT-001.md, naplok/F194_jelentes.md, adat/kapcsolatok.tsv, adat/elutasitasi_okok.tsv, adat/nyilt_kodkonyv.tsv, adat/tematikus_temak.tsv, naplok/F123_teljesseg_ISTENTISZT-001_blokkok.tsv, dontesek/uj/istentiszt-uj-cikk-992f57.md, nyitott/uj/istentiszt-uj-cikk-992f57.md, F194_ISTENTISZT_UJ_CIKK_BRIEF.md]
+ir: [adat/jeloltek.tsv, adat/motivumok.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, naplok/F194_meres.md, naplok/F194_naplo.md, naplok/F194_jelentes.md, adat/kapcsolatok.tsv, adat/elutasitasi_okok.tsv, adat/nyilt_kodkonyv.tsv, adat/tematikus_temak.tsv, naplok/F123_teljesseg_ISTENTISZT-001_blokkok.tsv, dontesek/uj/istentiszt-uj-cikk-992f57.md, nyitott/uj/istentiszt-uj-cikk-992f57.md, F194_ISTENTISZT_UJ_CIKK_BRIEF.md]
 fugg: []
+nem_fugg: [151]
 ---
 
 # F194_ISTENTISZT_UJ_CIKK_BRIEF.md — Az ISTENTISZT-001 új cikke, 1. fázis
