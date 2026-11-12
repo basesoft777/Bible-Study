@@ -10,7 +10,10 @@ forrásvers hordoz ilyen másolt listát. Csak olvas; adatot nem javít (a javí
 Gyanús (másolt) egy forrásvers, ha
   (1) a KH-listája szó szerint megegyezik legalább egy másik forrásvers listájával, ÉS
   (2) a saját listájának egyetlen eleme sem támogatott, ÉS
-  (3) a vele azonos listájú versek közül legalább egy támogatott.
+  (3) a vele azonos listájú versek közül legalább egy támogatott;
+VAGY (részlista-másolat, lap-javit HAMART-001, lektor 15.: a Sof 1:9 listája a Mt 12:22 listájának része, a Mt 9:34
+nélkül) a listája legalább 2 elemű, a fenti (2) áll, egyik eleme sem lexikailag támogatott, és a lista egy másik,
+támogatott forrásvers listájának valódi része.
 Egy elem (forrás → cél) támogatott, ha a TSK a forrást a cél fejezetének ±3 vers széles környezetével köti
 össze (bármely irányban), vagy a cél saját Károli-KH listája visszamutat a forrás ±3 versére.
 
@@ -36,6 +39,7 @@ KH = 'konkordancia/Karoli_kereszthivatkozasok.tsv'
 TSK = 'konkordancia/TSK_kereszthivatkozasok.tsv'
 NORM = 'konkordancia/Konyv_normalizalo_tabla.tsv'
 KORNYEZET = 3
+RESZLISTA_MIN = 2   # a részlista-másolat legkisebb hossza (egyelemű egyezés túl gyakori)
 
 
 def sorok(rel):
@@ -138,7 +142,7 @@ def lexikai_tamogatas(forras, cel):
     return {s for s in versek.get(forras, set()) & cel_strong if gyak[s] < RITKA_STRONG}
 
 
-def gyanus_forrasok(kh=None, tsk=None):
+def gyanus_forrasok(kh=None, tsk=None, reszlista=True):
     """{forrásvers: [azonos listájú, támogatott forrásversek]} a gyanús (másolt) listákra.
     Pontosítás (az 52 lapsor kézi igazolása, 2026-11-02): nem gyanús az a lista, amelynek valamelyik eleme
     ritka tartalmi Strong-számon osztozik a forrásverssel (lexikai támogatás)."""
@@ -158,6 +162,31 @@ def gyanus_forrasok(kh=None, tsk=None):
         for k in tagok:
             if not tam[k] and not any(lexikai_tamogatas(k, c) for c in kh[k]):
                 ki[k] = jo
+    # részlista-másolat: a lista egy másik forrásvers listájának valódi része (a csonkán másolt lista); a történeti
+    # karantén-fájl (`karoli_kh_gyanus_general.py`, archív) a régi szabállyal készült: ott `reszlista=False`
+    if not reszlista:
+        return ki
+    elem_idx = collections.defaultdict(set)
+    for k, v in kh.items():
+        for c in set(v):
+            elem_idx[c].add(k)
+    tam_cache = {}
+
+    def van_tam(k):
+        if k not in tam_cache:
+            tam_cache[k] = any(tamogatott(k, c, kh, tsk) for c in kh[k])
+        return tam_cache[k]
+    for k, v in kh.items():
+        sajat = set(v)
+        if k in ki or len(sajat) < RESZLISTA_MIN:
+            continue
+        jeloltek = set.intersection(*(elem_idx[c] for c in sajat)) - {k}
+        gazdak = sorted(j for j in jeloltek if len(set(kh[j])) > len(sajat))
+        if not gazdak or van_tam(k):
+            continue
+        jo = [j for j in gazdak if van_tam(j)]
+        if jo and not any(lexikai_tamogatas(k, c) for c in sajat):
+            ki[k] = jo
     return ki
 
 

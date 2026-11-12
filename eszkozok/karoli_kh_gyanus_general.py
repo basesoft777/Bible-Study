@@ -57,7 +57,7 @@ def osztalyoz(kh=None, tsk=None):
     """[(forrás, osztály, eltolás, [gazdák])] a kanonikus sorrendben; osztály: 'blokk' | 'egyedi'."""
     if kh is None:
         kh, tsk = E.betolt()
-    gy = E.gyanus_forrasok(kh, tsk)
+    gy = E.gyanus_forrasok(kh, tsk, reszlista=False)   # archív: a régi (teljes egyezéses) szabály
     sz = sorszamok()
     elt = {}
     for k, gazdak in gy.items():

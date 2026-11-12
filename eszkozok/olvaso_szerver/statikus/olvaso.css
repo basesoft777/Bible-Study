@@ -239,6 +239,8 @@ h1 { font: 600 var(--fs-oldalcim)/var(--lh-oldalcim) var(--font-text); text-wrap
 .talalat { font: var(--fs-karoli-panel)/var(--lh-karoli-panel) var(--font-text); }
 .talalat > a:first-child { font-weight: 600; margin-right: 4px; white-space: nowrap; }
 .talalat mark { background: var(--accent-soft); color: inherit; border-radius: var(--radius-kiemeles); padding: 0 1px; }
+/* a szótári szövegben a motívum helye (a lexikonlap BDB/Thayer-szövege); a title a teljes igehely */
+mark.motivumhely { background: var(--gold-soft); color: inherit; font-weight: 700; border-radius: var(--radius-kiemeles); padding: 0 3px; box-shadow: inset 0 -2px 0 var(--gold); cursor: help; }
 .talalat .heb { margin-right: 4px; }
 /* #134 M1: a részletek lapja (DT293) — egy komponens, két mód (szó / vers), két alak: 900 px-től állandó oldalblokk, alatta alulról
    felugró lap (betekintés a képernyő feléig, ⤢: teljes nézet). A lap állapota a body osztálya (lap-nyitva, lap-egesz): a szerver a

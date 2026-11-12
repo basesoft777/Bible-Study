@@ -196,6 +196,19 @@ class Megjelenites(unittest.TestCase):
         self.assertEqual(sorted(t), ['a', 'b'])
         self.assertEqual(h, ['c'])
 
+    def test_kiemeles_mark_alakban(self):
+        # az új szerkezetű lap: <mark class="motivumhely">, a title a teljes igehely akkor is, ha a BDB csak a
+        # versszámot írja („12:8, 23”); a régi út (mark nélkül) változatlanul félkövér
+        sz = '3 név … 1Móz 4:26 (J): valamivel hívni, így 12:8, 23; 13:4'
+        uj, t, h = LG.kiemel(sz, [('1Móz 4:26', 'a'), ('1Móz 12:23', 'b')], mark=True)
+        self.assertIn('<mark class="motivumhely" title="a motívum helye: 1Móz 4:26">1Móz 4:26</mark>', uj)
+        self.assertIn('12:8, <mark class="motivumhely" title="a motívum helye: 1Móz 12:23">23</mark>;', uj)
+        self.assertNotIn('**', uj)
+        self.assertEqual((sorted(t), h), (['a', 'b'], []))
+        regi, _t, _h = LG.kiemel(sz, [('1Móz 4:26', 'a')])
+        self.assertIn('**1Móz 4:26**', regi)
+        self.assertNotIn('<mark', regi)
+
     def test_jelolo_levag(self):
         # a kibontott szakasz idézete nem ismétli a címke jelét („`3` — név…” után „> 3 név…”)
         self.assertEqual(LG.jelolo_levag('3 név, mint Isten megjelölése', '3'), 'név, mint Isten megjelölése')
@@ -879,7 +892,8 @@ class KetreteguBdbKartya(unittest.TestCase):
         self.assertNotIn('(J)', olvasoi)
         # kutatói réteg: semmi nem vész el — a teljes magyar szöveg, a rövidítéssel, a nem idézett hely kutatói alakja
         self.assertIn('(J)', app)
-        self.assertIn('= emlékjel **Ézs 55:13**', app)
+        # a felhasználó a v6-on: „látványosabb jelölés kell” — az új szerkezetben <mark>, a title a teljes igehely
+        self.assertIn('= emlékjel <mark class="motivumhely" title="a motívum helye: Ézs 55:13">Ézs 55:13</mark>', app)
         self.assertIn('a szótár nem idézi: Ézs 1:1', app)
         # a csukott cím glosszával (F10 (2)), nem „4 (1 szakasz)”
         self.assertIn('<summary>4. — hamis istenekről (1 hivatkozás)</summary>', app)
@@ -888,9 +902,12 @@ class KetreteguBdbKartya(unittest.TestCase):
     def test_bevezeto_egyszer(self):
         ctx = {'bdb_kartya': True, 'fl': {}}
         elso, masodik = self._blokk(ctx), self._blokk(ctx)
-        self.assertEqual(elso.count('Szótári tagolás (DT272)'), 1)
-        self.assertLess(elso.index('Szótári tagolás'), elso.index('##### H8034'))
-        self.assertNotIn('Szótári tagolás', masodik)
+        # a felhasználó átnézése (5.): a bevezető olvasói mondat, döntés-hivatkozás és dátum nélkül
+        bev = 'Szavanként előbb a jelentések rendje áll a BDB szerint'
+        self.assertEqual(elso.count(bev), 1)
+        self.assertNotIn('DT272', elso)
+        self.assertLess(elso.index(bev), elso.index('##### H8034'))
+        self.assertNotIn(bev, masodik)
 
     def test_regi_ut_valtozatlan(self):
         szov = self._blokk(None)

@@ -47,7 +47,7 @@ Three questions, step by step, on the motif `ISTENTISZT-001`. The numbers in the
 | `kapcsolatok.tsv` | 88 |
 | `kizaras_csoportok.tsv` | 3984 |
 | `kizarasok.tsv` | 540 |
-| `kodkonyv.tsv` | 438 |
+| `kodkonyv.tsv` | 440 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
 | `sblgnt_apparatus.tsv` | 61 |
