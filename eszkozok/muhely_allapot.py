@@ -749,7 +749,9 @@ def main():
     if a.motivum:
         motivumok = [m for m in motivumok if m['id'] in a.motivum]
     ids = [m['id'] for m in motivumok]
-    jeloltek = tsv('adat/jeloltek.tsv')
+    # F212 (C6): a kapcsolat-jelölt (motívumon belüli igehely-pár) nem hely-jelölt: a jelöltszámok és a nyilvános
+    # „kizárva” mondat nem számolja
+    jeloltek = [j for j in tsv('adat/jeloltek.tsv') if j.get('jelolt_tipus') != 'kapcsolat']
     elofordulasok = tsv('adat/elofordulasok.tsv')
     kapcsolatok = tsv('adat/motivum_kapcsolatok.tsv')
     usz = usz_konyvek()

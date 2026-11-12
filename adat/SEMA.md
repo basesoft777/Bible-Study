@@ -29,6 +29,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valam
 | `kiadasok.tsv` | `id` + `kiadas` | kézzel / a `/kiadas` 5. lépése (2.46) |
 | `lap_atnezesek.tsv` | `id` + `lap_commit` | kézzel, a felhasználó szavával (2.48) |
 | `lap_javitasok.tsv` | `id` + `hely` + `datum` | a `/lap-javit` parancs, a jóváhagyó szavával (2.49) |
+| `lap_befagyasztas.tsv` | `id` | kézzel, a felhasználó döntésével (2.59) |
 
 ---
 
@@ -328,7 +329,7 @@ Kulcs: `forras_igehely` + `cel_igehely` + `id`.
 
 ### 2.4 `jeloltek.tsv` — a kereszthivatkozás-napló gépi alakja
 
-Kulcs: `id` + `igehely` + `jelolt_tipus` + `cel_id` (DT277 (i), #127; előtte `id` + `igehely`).
+Kulcs: `id` + `igehely` + `jelolt_tipus` + `cel_id` (DT277 (i), #127; előtte `id` + `igehely`); a `kapcsolat` jelöltnél `cel_id` helyett `cel_igehely` (F212, C6: egy forrás-helyről több cél).
 **Ez a tábla a rendszer legfontosabb szerkezeti javítása.**
 
 A tábla két jelöltfajtát hordoz, és ez az egyetlen kapu mindkettőhöz (2. szabály):
@@ -352,9 +353,9 @@ nem kizárt hely, nem a motívum vizsgált verse, és nem igazol előfordulást.
 | `azonositas_modja` | `AZONOSITAS_MODJA` | | |
 | `megbizhatosag` | `MEGBIZHATOSAG` | | |
 | `datum` | `DATUM` | ✔ | |
-| `jelolt_tipus` | zárt | ✔ | `elofordulas` \| `motivumkozi` (DT277). A #127 előtti 627 sor `elofordulas`. |
-| `cel_id` | motívum-id | `motivumkozi`-nál ✔, egyébként üres | A kapcsolat másik motívuma; létező, a sajáttól eltérő ID. |
-| `cel_igehely` | `IGEHELY`-lista (`; `-vel elválasztva) | `motivumkozi`-nál ✔, egyébként üres | A másik motívum oldali igehely(ek); nem kulcs (DT279). |
+| `jelolt_tipus` | zárt | ✔ | `elofordulas` \| `motivumkozi` (DT277) \| `kapcsolat` (F212, C6, N151, DT759: a motívumon belüli igehely-pár jelöltje — az `igehely` a kapcsolat forrása, a `cel_igehely` a célja, a `cel_id` üres; a `beépítve` jelölt a `kapcsolatok.tsv` sora lesz (2.3), és az `ellenoriz.py` 2/b. szabálya szerint a kapcsolat-jelöltes motívum minden kapcsolat-sora mögött beépített kapcsolat-jelölt áll; a mérés bizonyítékai és a kapcsolat típusa a `dontes_ref`-ben; előfordulást nem igazol, a nyílt mag kizárásai nem viszik; az első 103 sor: a HAMART-001, `naplok/F212_kapcsolat_atkoltoztet.py`). A #127 előtti 627 sor `elofordulas`. |
+| `cel_id` | motívum-id | `motivumkozi`-nál ✔, egyébként üres | A kapcsolat másik motívuma; létező, a sajáttól eltérő ID. A `kapcsolat` jelöltnél üres. |
+| `cel_igehely` | `IGEHELY`-lista (`; `-vel elválasztva) | `motivumkozi`-nál és `kapcsolat`-nál ✔, egyébként üres | A másik motívum oldali igehely(ek); nem kulcs (DT279). A `kapcsolat` jelöltnél pontosan egy igehely, a motívum saját helye, és kulcs. |
 | `cel_alpont` | szabad szöveg (a célalpont neve) | | DT277 (C): a kapcsolat célja a másik motívum egy ↳ alpontja. Amíg az alpontnak nincs adatbeli azonosítója, a jelölt `nyitva` marad (az `ellenoriz.py` 2/b. szabálya a `beépítve` + `cel_alpont` párt elutasítja), kapcsolat-sor nem keletkezik belőle. Nem kulcs (DT279). |
 | `dontes_ref` | szabad szöveg (elemei ` · `-tal elválasztva) | | A döntés gépi nyoma (F123.INDOKLAS, 2026-11-04): a döntés-azonosító(k) (`DT476 K2`, `N59`, `F110`), a hivatkozott fájl(ok) (`naplok/…`, `motivumok.tsv folerendelt_fogalom`), az indoklás proveniencia-sora(i) (`scope=… \| forras=… \| ts=…`), a kinyerés gerinc-eleme (`gerinc: H7121`, DT202 (d)). A nyílt adat kutatója ezen át éri el a döntés forrását (kódkönyv: `DONTESEK.md`, `NYITOTT_FELADATOK.md`); a lapon csak a lábjegyzetben jelenik meg. Üres, ha az indoklás nem hivatkozik semmire. A 2026-11-04-i szétválasztás régi → új alakja soronként: `naplok/INDOKLAS_szetvalasztas.md`. Nem kulcs. |
 
@@ -2361,6 +2362,26 @@ ne csak a témáról. Ha nincs ilyen, a sor ezt mondja ki (hiány-sor). Író: `
 **Kulcs:** `motivum` + `pont`. A lapon: a pont bekezdése után „*Szakirodalom:* …” sor; a forrás-sor teljes hivatkozása a 12.
 Irodalom „Szakirodalom (a vitatott pontokhoz)” listájában (`lexikon_general.szakirodalom_beszur`).
 
+### 2.59 `lap_befagyasztas.tsv` — a befagyasztott lexikonlapok (F212, DT816, 2026-11-12)
+
+A felhasználó döntése (2026-11-12, „Igen, így”): a hét régi lap (KIRALY-001, TEREMT-001, ALVIL-001, MENNY-001,
+ANTROP-001, HODIT-001, TEREMT-002) befagyasztva várja az újraírást; új cikkként, nulláról készül (F123). A
+generátorjavítások után a lapja **nem generálódik újra**; az adata és a forrása a helyén marad, a nyílt magban az
+adata benne marad. Egy hely, gépileg olvasható: a jegyzéket csak az `eszkozok/lap_befagyasztas.py`
+(`befagyasztott_idk`) olvassa, és ebből kapja a generátor (`lexikon_general.run`: a lapot nem írja), az E28
+(`ellenorzes/szabalyok.py`: nem veti össze; a jelentés megnevezi a kihagyott lapot) és az állítás–adat kapu
+(`ellenorzes/allitas_adat.py --minden`: nem méri).
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a motívum azonosítója |
+| `ok` | miért befagyasztott, és mi következik (pl. „új cikkként, nulláról készül újra (F123), később”) |
+| `dontes` | a döntés forrása: a felhasználó szava, dátummal; a döntés azonosítója |
+| `datum` | a befagyasztás napja |
+
+**Kulcs:** `id`. A sor törlése (a lap új cikkének elkészültekor) a befagyasztást megszünteti: onnantól a lap
+generálódik, és az E28 újra méri.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
@@ -2693,6 +2714,9 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E35 | HIBA | a commitolt `nyilt_mag/` naprakész | `eszkozok/ellenorzes/szabalyok.py` |
 | E36 | HIBA | hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, a SEMA szakaszszámai egyediek | `eszkozok/ellenorzes/szabalyok.py` |
 | E37 | HIBA | az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal | `eszkozok/ellenorzes/szabalyok.py` |
+| E38 | HIBA | állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott lapon (`--minden --szigoru`) | `eszkozok/ellenorzes/allitas_adat.py` |
+| E39 | HIBA | követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés jelentés (`--szigoru`, a kapuemelési döntés) | `eszkozok/ellenorzes/kovetelmeny_kapu.py` |
+| E40 | HIBA | a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a `karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés) | `eszkozok/ellenorzes/szabalyok.py` |
 <!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->
 
 ---
