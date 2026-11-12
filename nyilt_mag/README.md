@@ -8,7 +8,7 @@
 
 **What this is.** The open core of a study of biblical motifs (the PaRDeS method): the defining features of the motifs, the list of occurrences, the excluded passages with reasons, the relations between passages and the decision log. The files are reader-facing views generated from the data; working marks are resolved. The columns and codes are described in `kodkonyv.tsv` / `KODKONYV.md` (Hungarian and English).
 
-**Processing stage.** Of the motifs, 3 are closed releases (their lexicon page is released and passed the reader check without error) and 6 come from an earlier stage and will be updated in later versions; the `feldolgozasi_allapot` column of `motivumok.tsv` gives the stage of each motif.
+**Processing stage.** Of the motifs, 4 are closed releases (their lexicon page is released and passed the reader check without error) and 5 come from an earlier stage and will be updated in later versions; the `feldolgozasi_allapot` column of `motivumok.tsv` gives the stage of each motif.
 
 **Known errors:** see `KNOWN_ISSUES.md`.
 
