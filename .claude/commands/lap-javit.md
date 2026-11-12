@@ -122,7 +122,7 @@ Ha bármelyik nem teljesül: a rendes út (1–6. pont, független ellenőrrel).
 
 **Mi marad ki:** független ellenőr, teljes tesztsor, lassú tesztek, javítókör (a CI ezeket a PR-on úgyis futtatja; ellenőrzési szint: `gyors`, `MUNKAMENET.md` „Menet-ellenőrzés”).
 
-**Biztosíték.** A CI változatlanul fut (E28 frissesség, olvasói kapu, szabálytesztek), és zöldnek kell lennie a merge-hez (az orkesztrátor merge-el). **Piros CI-nél nem javítgatsz a gyors úton:** megnevezed a hibát, és a rendes útra kerül. Kiadott lapnál a gyors út javítása a következő kiadás változásjegyzékébe kerül, új lektori kör nélkül.
+**Biztosíték.** A CI változatlanul fut (E28 frissesség, olvasói kapu, szabálytesztek), és zöldnek kell lennie a merge-hez (az orkesztrátor merge-el); a CI-eredmény csak a pusholt commitra érvényes (`/kovetkezo` 10. lépés, CI-szabály). **Piros CI-nél nem javítgatsz a gyors úton:** megnevezed a hibát, és a rendes útra kerül. Kiadott lapnál a gyors út javítása a következő kiadás változásjegyzékébe kerül, új lektori kör nélkül.
 
 **Mérés.** Cél: a megjegyzéslista lezárásától a merge-ig legfeljebb 30 perc (ebből a CI kb. 10). Az első két gyors út után a tényleges idő és a visszaesések (piros CI, és miért) a jelentésbe és az `N-F209…` tételbe kerülnek.
 
