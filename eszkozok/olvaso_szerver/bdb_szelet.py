@@ -643,6 +643,8 @@ def alap_jelentes(alap):
     if not alap:
         return None
     t = re.split(r";| — |\(", re.sub(r",_\d+", "", alap))[0].strip()
+    # a sor végi igehely-hivatkozás nem jelentés (H0559: „ige: kimondani, mondani Gen 3:17; Num …”: a szakasztábla fejében a jelentés után áll)
+    t = re.sub(r"\s+(?:\d?[A-Za-z]{1,8}\.?\s+)?\d+:\d+.*$", "", t).strip()
     tiszta = bool(t) and not HEB_BETU.search(t) and not re.search(r"\bl\.\s", t) and len(CSAK_SZOFAJ.sub("", t)) > 2
     if tiszta and len(t) <= 70 and "^" not in t:
         return {"szoveg": t, "tisztitott": False}

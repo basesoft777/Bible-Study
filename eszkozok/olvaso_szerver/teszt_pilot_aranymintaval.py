@@ -303,12 +303,19 @@ class TestPilotAranymintaval(unittest.TestCase):
     # -- 7. a döntések (DT-F76e–i, felhasználó, 2026-10-14) kódja: valódi tesztek ---------------------------------------------
     def test_DT_F76f_magyar_alapjelentes_a_szo_lapon(self):
         """DT-F76f (a): a fejlécben a magyar alapjelentés (a pilot `alap_jelentes()` szabálya), híján az angol Strong-glossza; minden pilot-lapra."""
+        # Az F182.10 (09c74179) óta a bontás — így az `alap` szöveg is — a szakasztáblából épül, nem a pilot szeletelőjéből: a pilot
+        # `alapjelentes`-ével nem vethető össze. Az invariánsok: magyar bontás esetén az alapjelentés a közös `bdb_szelet.alap_jelentes`
+        # eredménye, hivatkozás nélkül; különben az angol Strong-glossza (a pilot `rovid`-je).
         n = hu = 0
         for azon, adat in self.pilot.items():
             for strong, l in adat['lapok'].items():
-                a = blokkok.alapjelentes(self.K(strong=strong))
-                if l['alapjelentes'] and l['alapjelentes']['szoveg']:
-                    self.assertEqual((a['szoveg'], a['nyelv'], a['tisztitott']), (l['alapjelentes']['szoveg'], 'hu', l['alapjelentes']['tisztitott']), strong)
+                K = self.K(strong=strong)
+                a = blokkok.alapjelentes(K)
+                b = blokkok._bdb_bontas(K)
+                if b and b['hu'] and b['alap'] and b['alap'].get('szoveg'):
+                    self.assertEqual((a['szoveg'], a['nyelv'], a['tisztitott']), (b['alap']['szoveg'], 'hu', b['alap']['tisztitott']), strong)
+                    self.assertEqual(b['alap'], blokkok.bdb_szelet.alap_jelentes(b['appar']['alap']), strong)
+                    self.assertNotRegex(a['szoveg'], r'\d+:\d+', strong)         # H0559: „… mondani Gen 3:17” — a hivatkozás nem jelentés
                     hu += 1
                 else:
                     self.assertEqual((a['szoveg'], a['nyelv']) if a else None, (l['rovid'], 'en') if l['rovid'] else None, strong)
@@ -318,9 +325,13 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertIn('Alapjelentés arc, arcok is', t)
         self.assertIn('face', t)                                          # az angol Strong-glossza a Strong-szótár blokkban megmarad
 
+    BDB_TAGOLAS_HIANYZIK = {'H4725'}
+
     def test_DT_F76g_bdb_bontas_egyezik_a_pilottal_szocikkenkent(self):
-        """DT-F76g (b): a szerver a pilot `bdb_szelet.py`-ját hívja; a bontás, a jelölés és az alias szócikkenként egyezik a pilotéval."""
-        import json
+        """DT-F76g (b): a bontás megléte, a magyar jelölés és az alias szócikkenként egyezik a pilotéval. A bontás *tartalma* (fej, törzsek,
+        irodalom, krit …) az F182.10 (09c74179) óta a szakasztáblából épül (`bdb_tagolas.szeletelo_alak`, egy forrás a kártyával), nem a
+        pilot szeletelőjéből: a pilot aranya ebben mind a 256 lapnál eltér, ezért a tartalmat nem hasonlítjuk hozzá; azt az
+        `eszkozok/teszt_bdb_tagolas.py` fedi. Itt a szerkezet-invariáns: a fej a szakasztábla alakját hordozza (`cimke`)."""
         n = 0
         for azon, adat in self.pilot.items():
             for strong, l in adat['lapok'].items():
@@ -328,8 +339,14 @@ class TestPilotAranymintaval(unittest.TestCase):
                 if l['appar'] is None:
                     self.assertIsNone(d, strong)
                     continue
+                if strong in self.BDB_TAGOLAS_HIANYZIK:
+                    # N-F207a: a szakasztáblában (`adat/bdb_szakaszok.tsv`) nincs sora, noha van BDB-szócikke és magyar fordítása — adathiány, nem
+                    # a szerver hibája. Az engedmény lejár: ha a sor megjelenik, a teszt bukik, és a kivételt törölni kell.
+                    self.assertIsNone(d, '%s: a szakasztábla-sor megvan — töröld a BDB_TAGOLAS_HIANYZIK-ból' % strong)
+                    continue
                 self.assertIsNotNone(d, strong)
-                self.assertEqual(json.dumps(d['appar'], sort_keys=True, ensure_ascii=False), json.dumps(l['appar'], sort_keys=True, ensure_ascii=False), strong)
+                self.assertIn('cimke', d['appar']['fej'], strong)
+                self.assertTrue(d['appar']['torzsek'] or d['appar'].get('szakaszok'), strong)
                 self.assertEqual(d['hu'], bool(l['bdb_hu']), strong)
                 self.assertEqual(d['meta'], l['bdb_hu_meta'], strong)
                 self.assertEqual(bool(d['alias']), bool(l['bdb_alias']), strong)
