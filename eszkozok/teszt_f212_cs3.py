@@ -136,6 +136,27 @@ class Munkaszo(unittest.TestCase):
             self.assertFalse(any(rx.search(szoveg) for rx, _n in K.MUNKASZAVAK), szoveg)
 
 
+class TeljessegKapu(unittest.TestCase):
+    """F212: a teljesség-mérés forrássora nem a lap törzsében, a mérés Strong-halmaza a motívum mai halmaza."""
+
+    def setUp(self):
+        import general as G
+        self.sorai = [r for r in G.tsv_beolvas(os.path.join(os.path.dirname(ESZKOZOK), 'adat', 'elofordulasok.tsv'))[1]
+                      if r['id'] == 'HAMART-001']
+
+    def test_a_repo_lapja_atmegy(self):
+        lap = open(os.path.join(os.path.dirname(ESZKOZOK), 'lexikon', 'HAMART-001_TUDOMANYOS.md'), encoding='utf-8').read()
+        self.assertTrue(LG.teljesseg_kapu(lap, 'HAMART-001', self.sorai))
+
+    def test_forrassor_a_torzsben_bukik(self):
+        with self.assertRaises(ValueError):
+            LG.teljesseg_kapu('x<!-- scope=TAHOT-teljes+TAGNT-teljes | n=1 -->', 'HAMART-001', self.sorai)
+
+    def test_elavult_halmaz_bukik(self):
+        with self.assertRaises(ValueError):
+            LG.teljesseg_kapu('', 'HAMART-001', self.sorai[:1])
+
+
 class KaroliKhHozzaferes(unittest.TestCase):
     """F212 (a Károli-KH döntés): a nyers Károli-KH tábla egyetlen hozzáférési pontja (E40) és a lap Károli-KH sorai."""
 

@@ -7540,6 +7540,30 @@ def kizarasok_link(mid, ok, n):
     return '%s%s#%s' % (mid, KIZARASOK_UTOTAG, _heading_slug(kizarasok_cim(ok, n)))
 
 
+TELJESSEG_CIM = 'A teljesség-mérés forrássorai'
+TELJESSEG_HORGONY = _heading_slug(TELJESSEG_CIM)
+_TELJ_TORZS_RX = re.compile(r'<!--\s*scope=[^>]*(?:TAHOT-teljes|Karoli_1908-teljes|bdb_vers_jelentes\.tsv\+)')
+
+
+def teljesseg_kapu(szoveg, motivum_id, sorai):
+    """F212 (gyökérok-kapu, az orkesztrátor lelete: a pillanatkép csendben elavult): (1) a teljesség-mérés nyers
+    forrássora nem áll a lap törzsében (a melléklet viszi); (2) a mérés Strong-halmaza a motívum mai Strong-halmaza.
+    Eltérésnél ValueError: a lap nem íródik ki."""
+    hibak = []
+    if _TELJ_TORZS_RX.search(szoveg):
+        hibak.append('a teljesség-mérés nyers forrássora a lap törzsében áll')
+    halok = teljesseg_halok(motivum_id)
+    ma = set(motivum_strong_tokenek(sorai))
+    for h, _n, p in halok:
+        mm = re.search(r'strong=([\w+]+)', p)
+        if h == 'strong' and mm and set(mm.group(1).split('+')) != ma:
+            hibak.append('a mérés Strong-halmaza (%s) nem a motívum mai halmaza (%s): futtasd újra a '
+                         'teljesség-mérést' % (mm.group(1), '+'.join(sorted(ma))))
+    if hibak:
+        raise ValueError('%s: teljesség-kapu (F212): %s' % (motivum_id, '; '.join(hibak)))
+    return True
+
+
 def kizarasok_melleklet(m, sorai):
     d = kizarasok_adat(m, sorai)
     mid, a = m['id'], d['a']
@@ -7566,6 +7590,13 @@ def kizarasok_melleklet(m, sorai):
                 ki += ['<details>', '<summary>A %s vers</summary>' % OK._ezres(len(vv)), '', lista, '', '</details>']
             else:
                 ki.append(lista)
+    halok = teljesseg_halok(mid)
+    if halok:
+        # F212: a teljesség-mérés forrássorai (a lap 1.2 pontja ide hivatkozik), hálónként adatkulccsal
+        ki += ['', '## %s' % TELJESSEG_CIM, '',
+               'A Döntési út 1.2 pontjának versszámai ebből a mérésből jönnek (`naplok/F123_teljesseg_%s.tsv`). '
+               'Hálónként a mérés saját forrássora:' % mid, '']
+        ki += ['- **%s** (%s vers): `%s`' % (h, OK._ezres(n), p) for h, n, p in halok]
     ki += ['', '*Forrás: a jelöltek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: '
            'a kizárások és a csoportos kizárások táblája); generálva: %s.*' % G.TS, '']
     # a felhasználó v8-átnézése (4.): az adatcellák önreferáló „lap” fordulata itt is az olvasói alakban
@@ -7657,8 +7688,10 @@ def blokk_dontesi_ut(m, sorai):
                  'helyeivel |' % OK._ezres(a['osszes']))
     r2.append('\n'.join(tabla))
     if halok:
-        r2.append('*A keresések versszáma a teljesség-mérésből.*%s'
-                  % ''.join('<!-- %s -->' % p.replace('--', '—') for _h, _n, p in halok))
+        # F212 (a lektor és a Fable javaslata, jóváhagyva; az orkesztrátor döntése: csak ez a sor): a teljesség-mérés
+        # nyers forrássorai nem a lap törzsében, hanem a melléklet adatkulcsú pontján állnak; a lapon a hivatkozás
+        r2.append('*A versszámok a motívum szavainak teljes bibliai kereséséből ([a mérés forrássorai](%s%s#%s)).*'
+                  % (m['id'], KIZARASOK_UTOTAG, TELJESSEG_HORGONY))
     reszek.append('\n\n'.join(r2))
 
     # 1.3 Mi esett ki és miért
@@ -9965,6 +9998,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = TJ.alkalmaz(uj_szoveg)
             lxx_egyezes_kapu(uj_szoveg, m['id'])   # F212 (Sz1): eltérő LXX-szám a blokkok közt = BUKÁS
             hely_egyseg_kapu(uj_szoveg, m['id'])   # F212 (Sz4): az azonos egységű helyszám a blokkok közt = BUKÁS
+            teljesseg_kapu(uj_szoveg, m['id'], sorai)   # F212: a mérés forrássora nem a törzsben, a halmaza a mai
             allapot = ('új fájl' if meglevo_uj is None else
                        'változatlan' if uj_szoveg == meglevo_uj else 'frissítve')
         elif os.path.exists(cel_ut):

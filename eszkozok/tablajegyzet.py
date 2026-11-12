@@ -80,7 +80,7 @@ def olvasoi_jegyzet(lathato, ujszov=False):
             seg = 'újszövetségi hely: a szó a görög szövegből (TAGNT)' if ujszov else \
                 'a héber szöveg-igazolás itt nem alkalmazható'
         if seg.startswith('teljesség-mérés'):
-            m = re.search(r'csoportos sor:\s*([\d\s]+) vers', seg)
+            m = re.search(r'(?:csoportos sor|blokk-sor)[^:]*:\s*([\d\s]+) vers', seg)   # F212: a „blokk-sor: N vers” is
             seg = 'csoportos kizárás, %s vers' % m.group(1).strip() if m else 'a teljességi keresés csoportos kizárása'
         if seg.startswith('négy forrás összevetése'):
             seg = 'a motívum korábbi kereszthivatkozás-naplója'

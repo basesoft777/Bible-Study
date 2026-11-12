@@ -45,8 +45,8 @@ Három kérdés lépésről lépésre, az `ISTENTISZT-001` motívumon (Segítsé
 | `elofordulasok.tsv` | 250 |
 | `forrasok_es_licencek.tsv` | 65 |
 | `kapcsolatok.tsv` | 88 |
-| `kizaras_csoportok.tsv` | 3984 |
-| `kizarasok.tsv` | 540 |
+| `kizaras_csoportok.tsv` | 4028 |
+| `kizarasok.tsv` | 542 |
 | `kodkonyv.tsv` | 440 |
 | `motivum_kapcsolatok.tsv` | 3 |
 | `motivumok.tsv` | 9 |
