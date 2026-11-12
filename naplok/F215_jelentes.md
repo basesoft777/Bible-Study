@@ -38,8 +38,8 @@ A felmérés további pontjai (a `betu_javitasok` ~2,4% nem fedett alakja, az el
 | `olvaso_szerver/lekerdezesek.bdb_angol` | `bdb.teljes_szocikk` | igen: a szöveg már javított (2. pont); a pe/mem- és sorrendjavítást a megjelenítési lánc végzi |
 | `olvaso_szerver/lekerdezesek.thayer` | `thayer` + `thayer_forras_javitas` | javított (ez a feladat) |
 | `thayer_jelolt/*` (bont, forras_javit, thayer_bemenet) | `Thayer_teljes.tsv` | igen: ez a javítás *forrása*; a bemenet a javított szöveget adja a fordításnak |
-| `lexikon_general.py` (:3021) | `Thayer_teljes.tsv` | **nem ellenőrzött**: az F212 területe; a lapon idézett angol Thayer-szöveg nyers lehet a 15 Strongon (N-F215a) |
-| `fordit.py` (:62), `emeles.py` (:64, :135) | `Thayer_teljes.tsv`, `BDB_teljes_unabridged.tsv` | **nem ellenőrzött**: régi, egész-szócikkes fordítási út; a szakaszos (javított) út a `thayer_jelolt`/`szakasz_bemenet`; nem futtattam, nem döntöttem el, él-e még (N-F215a) |
+| `lexikon_general.py` (:3021) | `Thayer_teljes.tsv` | **nem ellenőrzött**: az F212 területe; a lapon idézett angol Thayer-szöveg nyers lehet a 15 Strongon (N178) |
+| `fordit.py` (:62), `emeles.py` (:64, :135) | `Thayer_teljes.tsv`, `BDB_teljes_unabridged.tsv` | **nem ellenőrzött**: régi, egész-szócikkes fordítási út; a szakaszos (javított) út a `thayer_jelolt`/`szakasz_bemenet`; nem futtattam, nem döntöttem el, él-e még (N178) |
 | `istentiszt_2b_d1_toltes.py` | `Thayer_teljes.tsv` G0994 | igen: G0994 nincs a 15 között |
 | `olvaso_pilot/*`, `olvaso_mockup/bdb_kinyer.py` | `thayer`/`bdb` tábla és TSV | igen: nem éles mérő/mockup szkriptek |
 | `sqlite_epit.py` (:1570) | `bdb` (hosszmérés, 13. mérés) | igen: csak `length(teljes_szocikk)` |
@@ -47,4 +47,4 @@ A felmérés további pontjai (a `betu_javitasok` ~2,4% nem fedett alakja, az el
 
 ## Zárás
 
-Az angol Thayer a javított szöveget adja (15 Strong, +3291 karakter); az angol BDB-nek nincs teendője (0 Strong változott, a javítás a TSV-ben már benne van), ezt teszt őrzi. A `lexikon_general.py`-hoz és az `sqlite_epit.py`-hoz nem nyúltam. Nyitott: N-F215a (a nem ellenőrzött fogyasztók). A CI-állapot és a PR a PR-leírásban.
+Az angol Thayer a javított szöveget adja (15 Strong, +3291 karakter); az angol BDB-nek nincs teendője (0 Strong változott, a javítás a TSV-ben már benne van), ezt teszt őrzi. A `lexikon_general.py`-hoz és az `sqlite_epit.py`-hoz nem nyúltam. Nyitott: N178 (a nem ellenőrzött fogyasztók). A CI-állapot és a PR a PR-leírásban.
