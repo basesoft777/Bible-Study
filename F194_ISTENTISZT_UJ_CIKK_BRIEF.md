@@ -14,7 +14,7 @@ munka: adat
 olvas: [sablonok/KESZ_LAP_KOVETELMENY.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", naplok/HATAR_ISTENTISZT-001.md, naplok/F123_teljesseg_ISTENTISZT-001.md, MUNKAMENET.md, adat/SEMA.md]
 ir: [adat/res_forras.tsv, motivumok/ISTENTISZT-001.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, lexikon/ISTENTISZT-001_KIZARASOK.md, naplok/F123_teljesseg_ISTENTISZT-001.tsv, eszkozok/lexikon_general.py, eszkozok/teszt_f194_szopar.py, eszkozok/teszt_kesz_lap_hamart.py, adat/jeloltek.tsv, adat/motivumok.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, naplok/F194_meres.md, naplok/F194_naplo.md, naplok/F194_jelentes.md, adat/kapcsolatok.tsv, adat/elutasitasi_okok.tsv, adat/nyilt_kodkonyv.tsv, adat/tematikus_temak.tsv, naplok/F123_teljesseg_ISTENTISZT-001_blokkok.tsv, dontesek/uj/istentiszt-uj-cikk-992f57.md, nyitott/uj/istentiszt-uj-cikk-992f57.md, F194_ISTENTISZT_UJ_CIKK_BRIEF.md]
 fugg: []
-nem_fugg: [151]
+nem_fugg: [151, 123, 178, 179, 70, 203, 212]
 ---
 
 # F194_ISTENTISZT_UJ_CIKK_BRIEF.md — Az ISTENTISZT-001 új cikke, 1. fázis
