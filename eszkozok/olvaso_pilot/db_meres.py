@@ -195,7 +195,10 @@ def _van_oszlop(con, tabla, oszlop):
 def db_gorog(con, g):
     tb = con.execute('SELECT szo, atiras, gloss, jelentes FROM tbesg WHERE strong=? ORDER BY rowid LIMIT 1', (g,)).fetchone()
     th = con.execute('SELECT teljes_szocikk FROM thayer WHERE strong=?', (g,)).fetchone()
-    hu = con.execute("SELECT COUNT(*) FROM forditasok WHERE szotar IN ('Thayer','UBS_DNTG') AND strong=? AND forditas_hu <> ''", (g,)).fetchone()[0]
+    # F187 (N-F186g): csak az érvényes sor — az `elavult` és az összevonási tagsor (`sz<n>~<m>`) nem; ugyanaz, mint az adat.py és a lekerdezesek.magyar_gorog
+    allapot = " AND COALESCE(allapot, '') <> 'elavult'" if _van_oszlop(con, 'forditasok', 'allapot') else ''
+    hu = con.execute("SELECT COUNT(*) FROM forditasok WHERE szotar IN ('Thayer','UBS_DNTG') AND strong=? AND forditas_hu <> ''%s "
+                     "AND jelentes_szam NOT LIKE '%%~%%'" % allapot, (g,)).fetchone()[0]
     usz = con.execute('SELECT COUNT(*), COUNT(DISTINCT igehely) FROM token_strong WHERE strong=?', (g,)).fetchone()
     heb = sorted(((int(c), h) for h, c in con.execute('SELECT hebrew_strong, count FROM lxx_bridge WHERE greek_strong=?', (g,))), reverse=True)[:5]
     return {'tbesg': tisztit_tbesg(tb[3]) if tb else '', 'tbesg_alak': (tb[0], tb[1], tb[2]) if tb else None,

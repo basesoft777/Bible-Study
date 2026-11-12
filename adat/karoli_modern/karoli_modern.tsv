@@ -1,4 +1,4 @@
-# GENERÁLT: eszkozok/karoli_modern/karoli_modern.py (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d53bcbfe52b4c7939b6b041cdd276ced019b6bf4ee61872bd3236) + adat/szoto/karoli_szotari_alak.tsv (sha256:edba33e6d65af46535ede231f36d2d7e4eeaab8ece2905ae831c1ddaf593a022) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:630707ece6efd83efc019fcabdefdb1eeedf32772119f08a2358c122d9d32798) + adat/karoli_modern/igealak_tokenek.tsv (sha256:a4a0e9f79fbffa479c7f6822ee729913111bd61861f868fca0aaf1c858d01fec) + adat/karoli_modern/igealak_llm.tsv (sha256:fb540cadf65f4e588bc9f98149a45603ee2f2ea723c0c37ed7d3762cdb346268) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:6e947298cbc991624dfe687e10ba9dc38595b0b6aa970e6f38c7321c03c759f4) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:575112b2a9cd6a9542757be2284dda80e6198f130c6ef8f58cfa4bc89ae1984e) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:07872406670a457b527716350a2250802492bb602fb394d0e42e4377179d4a71) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:e9aff9518b1fea01b1616b2ba695012f2b379e700c4d853109e2425654a7e5a5) + eszkozok/karoli_strong/tokenek.py (sha256:705ccda729d06fb62d573d1edae410107a25a67ca75eba876f328e276e82ba54) + eszkozok/karoli_modern/fedettseg.py (sha256:beba874f8859dcfa4590e516ce9ffc91945f63971900b89fd47a9e34c4ccfc05) + eszkozok/karoli_modern/helyesiras.py (sha256:dbfd948155d621defed65b5b100ac268b2e299bfb99cb2a85ee7f48540ea4764) + eszkozok/karoli_modern/igealak.py (sha256:ac0c36936f3864195618d153292dd8a331ffbbb3a8957028db677667a83c7912) + eszkozok/karoli_modern/igeragozas.py (sha256:172887f578377c6238140c791fb6d84cf6bc0246c2bf364425c7d7e717cc0f64) + eszkozok/karoli_modern/karoli_modern.py (sha256:8217fdc4d096e953fd07852eacea9cfc27d755cae0e2a427168920c41c8a9f02) + adat/karoli_strong/szavak_*.tsv (61 fájl, a K3b bemenete, összesített sha256:c441cc76e5f3b1c2d9bd2a97b458679254dfdbe3523e8131fb1f7dd4ba7c2a96) | a modernizálás szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson illeszthető, a réteg Strongot nem tárol, DT-F96f, DT-F96o) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 (.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT-F96q; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT-F96r), 12. (DT-F96s) és 14. (az 5. kör, DT-F96u), modell-ellenőrzés, a felhasználó elfogadta | ts=2026-10-25T21:13Z | scope=a Károli 1908 minden tokenje (599367), versenként a tokenizal sorrendjében
+# GENERÁLT: eszkozok/karoli_modern/karoli_modern.py (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=konkordancia/Karoli_1908.tsv (sha256:49335bbcc77d53bcbfe52b4c7939b6b041cdd276ced019b6bf4ee61872bd3236) + adat/szoto/karoli_szotari_alak.tsv (sha256:2a9c4b80441b66147b6980f5853065046e74ed0ba249e772ff66217de092b286) + adat/karoli_modern/helyesiras_tokenek.tsv (sha256:630707ece6efd83efc019fcabdefdb1eeedf32772119f08a2358c122d9d32798) + adat/karoli_modern/igealak_tokenek.tsv (sha256:7604f1177a4ddf3d688a58b07094f9edaf8a2e4e631b874807fc14bc3cf3e7c6) + adat/karoli_modern/igealak_llm.tsv (sha256:fb540cadf65f4e588bc9f98149a45603ee2f2ea723c0c37ed7d3762cdb346268) + adat/karoli_modern/igealak_llm_opus.tsv (sha256:6e947298cbc991624dfe687e10ba9dc38595b0b6aa970e6f38c7321c03c759f4) + adat/karoli_modern/igealak_llm_kor3.tsv (sha256:575112b2a9cd6a9542757be2284dda80e6198f130c6ef8f58cfa4bc89ae1984e) + adat/karoli_modern/igealak_llm_kor4.tsv (sha256:07872406670a457b527716350a2250802492bb602fb394d0e42e4377179d4a71) + adat/karoli_modern/igealak_llm_kor5.tsv (sha256:e9aff9518b1fea01b1616b2ba695012f2b379e700c4d853109e2425654a7e5a5) + eszkozok/karoli_strong/tokenek.py (sha256:5517eafd93824e13e4f5216f6af0c0e67848ecafed1680fa7c2993a6a597ee2a) + eszkozok/karoli_modern/fedettseg.py (sha256:8b619de60e420c36df9f44968c41c36313bf89454ecb9522e57236766ee042c9) + eszkozok/karoli_modern/helyesiras.py (sha256:b2b82470b154afdd8ff298956fd0708d08b289b246d78ff25c797486ab4a71ec) + eszkozok/karoli_modern/igealak.py (sha256:25dfdb96a8bb34e62058489f0e0c1dbdeb1d688525cdb1680714465ffd8057df) + eszkozok/karoli_modern/igeragozas.py (sha256:ba0d06c7a31a5e66582a6952edcf556ce2ca34ba80a55fcf1b9e4805ad5564fd) + eszkozok/karoli_modern/karoli_modern.py (sha256:3c07d1b8d9cc9e044f2e83477f1a81c255d9551b3517115ab225fbd98dc04e6e) + adat/karoli_strong/szavak_*.tsv (66 fájl, a K3b bemenete, összesített sha256:bffca4d6f38c987b1f0abbb2ce84700f97a2e18bf73338ab8d5af33b18c439cf) | a modernizálás szintje: helyesírás + igealak, szókincs, szórend, írásjel és betoldás-jelölés változatlan (DT128) | tokenizálás: eszkozok/karoli_strong/tokenek.py tokenizal (a #22 hu_sorszam-a; a Strong token-kulcson illeszthető, a réteg Strongot nem tárol, DT-F96f, DT-F96o) | mérés: naplok/KAROLI_MODERN_meres.md 4.9 (.1, K1 246/246), 5.7 és 7.–8. (.2, K1 a javítások után a 8. szakasz szerint), 10. (a 3. kör, DT-F96q; a lefedettséget is mérő K1: igealak_minta2.tsv) 11. (a 4. kör, DT-F96r), 12. (DT-F96s) és 14. (az 5. kör, DT-F96u), modell-ellenőrzés, a felhasználó elfogadta | ts=2026-11-12T09:51Z | scope=a Károli 1908 minden tokenje (599367), versenként a tokenizal sorrendjében
 igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 1:1	1	Kezdetben	Kezdetben				
 1Móz 1:1	2	teremté	teremtette			igealak:mult.targyas.E3	
@@ -22277,7 +22277,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 1Móz 39:15	6	vala		segedige	5	vala_segedige_jelen	
 1Móz 39:15	7	hogy	hogy				
 1Móz 39:15	8	fenszóval	fenszóval				
-1Móz 39:15	9	kezdék	kezdték			igealak:mult.E1	ek_E1_T3
+1Móz 39:15	9	kezdék	kezdtem			token_kivetel	
 1Móz 39:15	10	kiáltani	kiáltani				
 1Móz 39:15	11	ruháját	ruháját				
 1Móz 39:15	12	nálam	nálam				
@@ -47758,7 +47758,7 @@ igehely	sorszam	alak_1908	alak_modern	kieso	kieso_gazda	szabaly	bizonytalan
 2Móz 32:7	7	menj	menj				
 2Móz 32:7	8	alá	alá				
 2Móz 32:7	9	mert	mert				
-2Móz 32:7	10	megromlott	megromlott				
+2Móz 32:7	10	megromlott	megromlott			gyanu:kivetel_jegy_nelkul	
 2Móz 32:7	11	a	a				
 2Móz 32:7	12	te	te				
 2Móz 32:7	13	néped	néped				
@@ -134128,7 +134128,7 @@ Bír 2:19	5	meghalt	meghalt
 Bír 2:19	6	visszatértek	visszatértek				
 Bír 2:19	7	és	és				
 Bír 2:19	8	jobban	jobban				
-Bír 2:19	9	megromlottak	megromlottak				
+Bír 2:19	9	megromlottak	megromlottak			gyanu:kivetel_jegy_nelkul	
 Bír 2:19	10	mint	mint				
 Bír 2:19	11	atyáik	atyáik				
 Bír 2:19	12	más	más				
@@ -277883,7 +277883,7 @@ Jób 6:7	6	azok	azok
 Jób 6:7	7	nékem	nekem			neki	
 Jób 6:7	8	mint	mint				
 Jób 6:7	9	a	a				
-Jób 6:7	10	megromlott	megromlott				
+Jób 6:7	10	megromlott	megromlott			gyanu:kivetel_jegy_nelkul	
 Jób 6:7	11	kenyér	kenyér				
 Jób 6:8	1	Oh	Oh				
 Jób 6:8	2	ha	ha				
@@ -280844,7 +280844,7 @@ Jób 15:16	3	az	az
 Jób 15:16	4	útálatos	útálatos				
 Jób 15:16	5	és	és				
 Jób 15:16	6	a	a				
-Jób 15:16	7	megromlott	megromlott				
+Jób 15:16	7	megromlott	megromlott			gyanu:kivetel_jegy_nelkul	
 Jób 15:16	8	ember	ember				
 Jób 15:16	9	a		osszevonva	10	nevmas	
 Jób 15:16	10	ki	aki			nevmas:ki	
@@ -291678,7 +291678,7 @@ Zsolt 14:1	9	ő	ő
 Zsolt 14:1	10	szívében	szívében				
 Zsolt 14:1	11	Nincs	Nincs				
 Zsolt 14:1	12	Isten	Isten				
-Zsolt 14:1	13	Megromlottak	Megromlottak				
+Zsolt 14:1	13	Megromlottak	Megromlottak			gyanu:kivetel_jegy_nelkul	
 Zsolt 14:1	14	útálatosságot	útálatosságot				
 Zsolt 14:1	15	cselekedtek	cselekedtek				
 Zsolt 14:1	16	nincs	nincs				
@@ -300012,7 +300012,7 @@ Zsolt 53:2	6	ő	ő
 Zsolt 53:2	7	szívében	szívében				
 Zsolt 53:2	8	Nincs	Nincs				
 Zsolt 53:2	9	Isten	Isten				
-Zsolt 53:2	10	Megromlottak	Megromlottak				
+Zsolt 53:2	10	Megromlottak	Megromlottak			gyanu:kivetel_jegy_nelkul	
 Zsolt 53:2	11	és	és				
 Zsolt 53:2	12	útálatos	útálatos				
 Zsolt 53:2	13	hamisságot	hamisságot				
@@ -300041,7 +300041,7 @@ Zsolt 53:4	1	Mindnyájan	Mindnyájan
 Zsolt 53:4	2	elhajlottak	elhajlottak				
 Zsolt 53:4	3	és	és				
 Zsolt 53:4	4	valamennyien	valamennyien				
-Zsolt 53:4	5	megromlottak	megromlottak				
+Zsolt 53:4	5	megromlottak	megromlottak			gyanu:kivetel_jegy_nelkul	
 Zsolt 53:4	6	nincsen	nincsen				
 Zsolt 53:4	7	a		osszevonva	8	nevmas	
 Zsolt 53:4	8	ki	aki			nevmas:ki	
@@ -308842,7 +308842,7 @@ Zsolt 90:7	8	a	a
 Zsolt 90:7	9	te	te				
 Zsolt 90:7	10	búsulásod	búsulásod				
 Zsolt 90:7	11	miatt	miatt				
-Zsolt 90:7	12	megromlunk	megromlunk				
+Zsolt 90:7	12	megromlunk	megromlunk			gyanu:kivetel_jegy_nelkul	
 Zsolt 90:8	1	Elédbe	Elédbe				
 Zsolt 90:8	2	vetetted	vetetted				
 Zsolt 90:8	3	a	a				
@@ -330523,7 +330523,7 @@ Péld 25:26	2	a	a
 Péld 25:26	3	megháborított	megháborított				
 Péld 25:26	4	forrás	forrás				
 Péld 25:26	5	és	és				
-Péld 25:26	6	megromlott	megromlott				
+Péld 25:26	6	megromlott	megromlott			gyanu:kivetel_jegy_nelkul	
 Péld 25:26	7	kútfő	kútfő				
 Péld 25:26	8	olyan	olyan				
 Péld 25:26	9	az	az				
@@ -330548,7 +330548,7 @@ Péld 25:27	11	keresni	keresni
 Péld 25:27	12	dicsőség	dicsőség				
 Péld 25:28	1	Mint	Mint				
 Péld 25:28	2	a	a				
-Péld 25:28	3	megromlott	megromlott				
+Péld 25:28	3	megromlott	megromlott			gyanu:kivetel_jegy_nelkul	
 Péld 25:28	4	és	és				
 Péld 25:28	5	kerítés	kerítés				
 Péld 25:28	6	nélkül	nélkül				
@@ -340898,7 +340898,7 @@ Préd 12:16	16	az	az
 Ézs 3:8	21	nép	nép				
 Ézs 3:8	22	fejedelmévé	fejedelmévé				
 Ézs 3:9	1	Mert	Mert				
-Ézs 3:9	2	megromlott	megromlott				
+Ézs 3:9	2	megromlott	megromlott			gyanu:kivetel_jegy_nelkul	
 Ézs 3:9	3	Jeruzsálem	Jeruzsálem				
 Ézs 3:9	4	és	és				
 Ézs 3:9	5	Júda	Júda				
@@ -369664,7 +369664,7 @@ Jer 8:21	3	népem	népem
 Jer 8:21	4	leányának	leányának				
 Jer 8:21	5	romlása	romlása				
 Jer 8:21	6	miatt	miatt				
-Jer 8:21	7	megromlottam	megromlottam				
+Jer 8:21	7	megromlottam	megromlottam			gyanu:kivetel_jegy_nelkul	
 Jer 8:21	8	szomorkodom	szomorkodom				
 Jer 8:21	9	iszonyat	iszonyat				
 Jer 8:21	10	fogott	fogott				
@@ -410543,7 +410543,7 @@ Ez 22:29	16	jövevényt	jövevényt
 Ez 22:29	17	törvénytelen	törvénytelen				
 Ez 22:29	18	nyomorgatja	nyomorgatja				
 Ez 22:30	1	És	És				
-Ez 22:30	2	keresék	keresték			igealak_ritka:mult.E1+tobbseg:szabaly+sonnet	ek_E1_T3
+Ez 22:30	2	keresék	kerestem			token_kivetel	
 Ez 22:30	3	közülök	közülök				
 Ez 22:30	4	valakit	valakit				
 Ez 22:30	5	a		osszevonva	6	nevmas	
@@ -431539,7 +431539,7 @@ Dán 7:16	6	állók	állók
 Dán 7:16	7	közül	közül				
 Dán 7:16	8	és	és				
 Dán 7:16	9	bizonyosat	bizonyosat				
-Dán 7:16	10	kérék	kérték			igealak:mult.E1	ek_E1_T3
+Dán 7:16	10	kérék	kértem			token_kivetel	
 Dán 7:16	11	tőle	tőle				
 Dán 7:16	12	mindezek	mindezek				
 Dán 7:16	13	felől	felől				
@@ -574874,7 +574874,7 @@ Kol 4:18	18	Ámen	Ámen
 2Tim 3:8	13	állanak	állanak				
 2Tim 3:8	14	az	az				
 2Tim 3:8	15	igazságnak	igazságnak				
-2Tim 3:8	16	megromlott	megromlott				
+2Tim 3:8	16	megromlott	megromlott			gyanu:kivetel_jegy_nelkul	
 2Tim 3:8	17	elméjű	elméjű				
 2Tim 3:8	18	a	a				
 2Tim 3:8	19	hitre	hitre				
