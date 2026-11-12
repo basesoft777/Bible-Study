@@ -8862,6 +8862,9 @@ def _visszhang_mondat_lxx(eredm):
         reszek = []
         if mas:
             reszek.append('egy versben más szó' if mas == 1 else '%d versben más szó' % mas)
+        nincs_szo = eredm.get('nincs_szo', 0)
+        if nincs_szo:
+            reszek.append('%s nincs megfelelő szó' % ('egy versben' if nincs_szo == 1 else '%d versben' % nincs_szo))
         if hianyzo:
             reszek.append('%s nincs ellenőrzött adat' % ('egy versben' if hianyzo == 1 else '%d versben' % hianyzo))
         return 'LXX: %s.' % '; '.join(reszek)
@@ -8944,12 +8947,25 @@ def lanc_szavak(m, sorai):
             szavak.append(g)
     mag = lanc_mag(m, sorai)
     if mag is None:
-        return [], None
-    versek = []
-    for s in sorai:
-        for v in igehely_lista(s['igehely']):
-            if v not in versek and _magban(v, mag):
-                versek.append(v)
+        ige = szopar_ige(sorai) if not szavak else None
+        if ige is None:
+            return [], None
+        # DT-F194h (a DT-F178g kiterjesztése szópárra): a szópáros (formulaikus) motívumnak nincs Peshat-magja; a
+        # lánc-szó a formula igéje, a versek a motívum saját beépített ószövetségi versei, amelyekben az ige áll
+        szavak, mag = [ige], SZOPAR_MAG
+        versek = []
+        for s in sorai:
+            for v in igehely_lista(s['igehely']):
+                if v not in versek and G.konyv_teszamentum(G.konyv_token(v)) == 'ÓSZ':
+                    versek.append(v)
+        ks = G.konyv_sorrend_betolt()
+        versek.sort(key=lambda v: G.igehely_rendezo_kulcs(v, ks, set()))
+    else:
+        versek = []
+        for s in sorai:
+            for v in igehely_lista(s['igehely']):
+                if v not in versek and _magban(v, mag):
+                    versek.append(v)
     idx = tahot_vers_index()
     ki = []
     for g in szavak:
@@ -8959,12 +8975,46 @@ def lanc_szavak(m, sorai):
     return ki, mag
 
 
+SZOPAR_MAG = ('szópár',)   # DT-F194h: a lánc nem Peshat-magból, hanem a szópáros formula verseiből áll
+
+
+def szopar_ige(sorai):
+    """DT-F194h: a szópáros (formulaikus) motívum formulájának igéje — a beépített sorok első `H…+H…` gerinc-elemének
+    első tagja (ISTENTISZT-001: H7121+H8034 → H7121, a kárá); szópár nélkül None."""
+    for s in sorai:
+        mm = re.fullmatch(r'(H\d{4})\+H\d{4}', (s.get('gerinc_elem') or '').strip())
+        if mm:
+            return mm.group(1)
+    return None
+
+
+def szopar_motivum(sorai):
+    """DT-F194h: tisztán szópáros (formulaikus) motívum-e: van `H…+H…` gerinc-eleme, és egyetlen héber gerinc-eleme
+    sem egyetlen Strong (a HAMART-001 egyes szavas lánca mellett álló szópárjai nem teszik szópárossá)."""
+    gerinc = [(s.get('gerinc_elem') or '').strip() for s in sorai]
+    return any(re.fullmatch(r'H\d{4}\+H\d{4}', g) for g in gerinc) and not any(re.fullmatch(r'H\d{4}', g) for g in gerinc)
+
+
+def par_nev(sorai, ige):
+    """DT-F194h: a szópár másik tagja az igéhez (ISTENTISZT-001: H7121 → H8034, a sém)."""
+    for s in sorai:
+        mm = re.fullmatch(r'(H\d{4})\+(H\d{4})', (s.get('gerinc_elem') or '').strip())
+        if mm and mm.group(1) == ige:
+            return mm.group(2)
+    return ige
+
+
+def _es_felsorolas(nevek):
+    return nevek[0] if len(nevek) == 1 else '%s és %s' % (', '.join(nevek[:-1]), nevek[-1])
+
+
 def blokk_visszhang(m, sorai):
     sorok = visszhang_sorok(m['id'])
     lanc = [r for r in sorok if r['forras'] in ('targum', 'vulgata', 'lxx')]
     szolista, mag = lanc_szavak(m, sorai)
     if not lanc or not szolista:
         return ''
+    szopar = mag == SZOPAR_MAG   # DT-F194h: a formula versei nem a Genezis-lánc, a könyvnév kiírva
     szavak = [s for s, _ in szolista]
     lanc_versek = collections.OrderedDict(szolista)
     minden_lancvers = {v for vv in lanc_versek.values() for v in vv}
@@ -8989,8 +9039,11 @@ def blokk_visszhang(m, sorai):
                 alap = lxx_alapvonal(s.split('+')[0], fo, set(versek))
             # az eltérő versek: más szó (ellenőrzött sor alakkal) vagy adat nélkül — a mondat a kettőt nem keveri
             mas = sum(1 for h in tobbi if any(r['igehely'] == h and r['ellenorzes'] and r['alak'] for r in sf))
+            # DT-F194h: az ellenőrzött, alak nélküli sor kimondott hiány (a fordításban nincs megfelelő szó), nem adathiány
+            nincs_szo = sum(1 for h in tobbi if not any(r['igehely'] == h and r['ellenorzes'] and r['alak'] for r in sf)
+                            and any(r['igehely'] == h and r['ellenorzes'] and not r['alak'] for r in sf))
             eredmeny[(s, f)] = {'cella': c, 'n': n, 'N': N, 'fo': fo, 'lemmak': lemmak, 'kulonbozo': kul, 'alap': alap,
-                                'mas': mas, 'hianyzo': len(tobbi) - mas}
+                                'mas': mas, 'nincs_szo': nincs_szo, 'hianyzo': len(tobbi) - mas - nincs_szo}
     # két különböző héber lánc-szó egy szóval / szócsaláddal: a mondat az első szó sorában, a másodikban utalás
     egyesites, utal = {}, {}
     for f, _nev in VISSZHANG_FORRASOK:
@@ -9026,7 +9079,7 @@ def blokk_visszhang(m, sorai):
         if len(tv) == 2 and tv[0].split(' ', 2)[2] == tv[1].split(' ', 2)[2]:
             mondatok = ['A Targum és a Vulgata ' + tv[0].split(' ', 2)[2]] + [x for x in mondatok if x not in tv]
         tabla.append('| %s<br>%s | %s | %s |' % (_lanc_szo_cim(s, lanc_versek[s]),
-                                               ', '.join(_rovid_hely(h) for h in lanc_versek[s]),
+                                               ', '.join(h if szopar else _rovid_hely(h) for h in lanc_versek[s]),
                                                ' | '.join(cellak), ' '.join(mondatok)))
     for s, h in sorted(betoldas_kulcs):
         cellak, betoldo = [], []
@@ -9047,10 +9100,12 @@ def blokk_visszhang(m, sorai):
             _rovid_hely(h), szo, ' | '.join(cellak),
             ('Betoldás: %s a lánc szavát (%s) olyan láncversbe teszi, ahol a héberben nincs.'
              % (' és '.join(betoldo), szo)) if betoldo else '—'))
-    honnan = ('A lánc %d kulcsszava a motívum helyeit összekötő egyes héber szavak, soronként egy (az 1.2 teljes '
-              'szólistája ennél bővebb: szópárokat és görög szavakat is felsorol); láncvers a motívum Peshat-magjának '
-              '(%s %d–%d) azon verse, amelyben a kulcsszó a héber szövegben áll; a magon kívüli helyek a lánc bibliai '
-              'visszhangjai, a 2. szakaszban állnak.' % ((len(szavak),) + tuple(mag)))
+    szopar = mag == SZOPAR_MAG   # DT-F194h
+    honnan = '' if szopar else (
+        'A lánc %d kulcsszava a motívum helyeit összekötő egyes héber szavak, soronként egy (az 1.2 teljes '
+        'szólistája ennél bővebb: szópárokat és görög szavakat is felsorol); láncvers a motívum Peshat-magjának '
+        '(%s %d–%d) azon verse, amelyben a kulcsszó a héber szövegben áll; a magon kívüli helyek a lánc bibliai '
+        'visszhangjai, a 2. szakaszban állnak.' % ((len(szavak),) + tuple(mag)))
     bevezeto = ('A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító ugyanazzal a szóval adja-e vissza a héber '
                 'szót minden láncversben. %s A motívum %d lánc-szavából a Targum %d, a Vulgata %d, a LXX %d szót ad '
                 'vissza minden láncversben ugyanazzal a szóval vagy szócsaláddal. Hogy ez lelet-e, az alapvonal dönti el: a '
@@ -9061,7 +9116,7 @@ def blokk_visszhang(m, sorai):
         # lap-javit HAMART-001 (lektor 23–25.): műhelyszavak nélkül; a „láncvers” a Genezis-lánc verse (a szintje az
         # adat szerint Peshat vagy Remez); az egyverses szó a következetesség számlálásából kimarad
         szam_szavak = len(szavak) - len(egyverses)
-        bevezeto = ('A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító a Genezis láncának minden versében '
+        bevezeto = '' if szopar else ('A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító a Genezis láncának minden versében '
                     'ugyanazzal a szóval adja-e vissza a héber szót. A lánc %d kulcsszava a motívum helyeit összekötő '
                     'egyes héber szavak, soronként egy (az 1.2 teljes szólistája ennél bővebb: szópárokat és görög '
                     'szavakat is felsorol). A versek a Genezis láncának (%s %d–%d) azok a versei, amelyekben a kulcsszó '
@@ -9073,6 +9128,22 @@ def blokk_visszhang(m, sorai):
                     % ((len(szavak),) + tuple(mag) + (szam_szavak, teljes['targum'], teljes['vulgata'], teljes['lxx'],
                        ('; a csak egy versben álló szónál (%s) a következetesség nem mérhető'
                         % ', '.join(_szo_nev(s.split('+')[0]) for s in egyverses)) if egyverses else '')))
+        if szopar:
+            # DT-F194h: a szópáros formula a motívum ószövetségi helyein; a táblázat a formula igéjét követi
+            kovet = [nev for f, nev in (('targum', 'a Targum'), ('vulgata', 'a Vulgata'), ('lxx', 'a Septuaginta'))
+                     if teljes[f]]
+            bevezeto = ('A táblázat azt mutatja, hogyan adja vissza az ókori fordító a formulát a motívum ószövetségi '
+                        'helyein. A formulát két szó hordozza együtt, a hívás igéje és a név (%s és %s), és a név után '
+                        'az Úr neve áll; a táblázat a formula igéjét követi, mert a fordítás szavát a táblázat igénként '
+                        'rögzíti, a név pedig minden versben a formula része. A versek a motívum azon ószövetségi '
+                        'helyei, amelyekben az ige a héber szövegben áll (%d vers). %s Hogy az egyezés lelet-e, azon '
+                        'múlik, szokásos fordítás-e: a Septuagintánál ez mérhető (hogyan fordítja ugyanazt a héber '
+                        'szót a motívumon kívül), a Targumnál és a Vulgatánál ebből a forrásból nem, ott a táblázat '
+                        'csak a motívum verseit mutatja.'
+                        % (_szo_nev(szavak[0]), _szo_nev(par_nev(sorai, szavak[0])), len(lanc_versek[szavak[0]]),
+                           ('Minden versben ugyanazzal a szóval vagy szócsaláddal adja vissza az igét %s.'
+                            % _es_felsorolas(kovet)) if kovet else
+                           'Egyik fordítás sem adja vissza az igét minden versben ugyanazzal a szóval vagy szócsaláddal.'))
     reszek = ['#### 4.11. Visszhang: ókori fordítások' if uj_szerkezet(m['id']) else
               '#### 4.11. Visszhang: ókori fordítások és rokon nyelvek', olvasoi_bekezdes(bevezeto), '\n'.join(tabla),
               '*A cella a fordítás szava (kiejtéssel) és hogy hány láncversben ugyanaz (n/N). A „Mit mutat” a LXX '
@@ -10005,7 +10076,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             # alakja, a 2. és 3. tábla jegyzetei a tábla alatt
             uj_szoveg = TJ.alkalmaz(uj_szoveg)
             lxx_egyezes_kapu(uj_szoveg, m['id'],   # F212 (Sz1): eltérő LXX-szám a blokkok közt = BUKÁS
-                             szopar=any('+' in (s.get('gerinc_elem') or '') for s in sorai))   # F194: szópár
+                             szopar=szopar_motivum(sorai))   # F194, DT-F194h: csak a tisztán szópáros motívum
             hely_egyseg_kapu(uj_szoveg, m['id'])   # F212 (Sz4): az azonos egységű helyszám a blokkok közt = BUKÁS
             teljesseg_kapu(uj_szoveg, m['id'], sorai)   # F212: a mérés forrássora nem a törzsben, a halmaza a mai
             allapot = ('új fájl' if meglevo_uj is None else

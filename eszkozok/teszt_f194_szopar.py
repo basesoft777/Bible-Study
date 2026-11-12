@@ -67,5 +67,46 @@ class TobbLemma(unittest.TestCase):
         self.assertTrue(LG.lxx_egyforras_ellenoriz('X-001', [self.sor('ἐπικαλέω (epikaleó)')]))
 
 
+class SzoparLanc(unittest.TestCase):
+    """DT-F194h (a DT-F178g kiterjesztése szópárra): a szópáros motívum 9. Hatástörténet-lánca a formula igéjéből és a
+    motívum saját ószövetségi verseiből áll, Peshat-mag nélkül; az egyes szavas lánc (HAMART-001) nem változik."""
+
+    def test_szopar_felismeres(self):
+        par = [{'gerinc_elem': 'H7121+H8034'}, {'gerinc_elem': 'G1941'}]
+        self.assertTrue(LG.szopar_motivum(par))
+        self.assertEqual(LG.szopar_ige(par), 'H7121')
+        self.assertEqual(LG.par_nev(par, 'H7121'), 'H8034')
+        # az egyes szavas lánc melletti szópár nem teszi szópárossá (HAMART-001: málé + chámász)
+        self.assertFalse(LG.szopar_motivum(par + [{'gerinc_elem': 'H2555'}]))
+        self.assertFalse(LG.szopar_motivum([{'gerinc_elem': 'H0779'}]))
+
+    def test_istentiszt_lanc(self):
+        sorai = [r for r in self.elofordulasok() if r['id'] == 'ISTENTISZT-001']
+        szavak, mag = LG.lanc_szavak({'id': 'ISTENTISZT-001', 'negativ_kriterium': ''}, sorai)
+        self.assertEqual(mag, LG.SZOPAR_MAG)
+        self.assertEqual([s for s, _ in szavak], ['H7121'])
+        versek = szavak[0][1]
+        self.assertEqual(len(versek), 16)
+        self.assertEqual(versek[0], '1Móz 4:26')
+        self.assertTrue(all(not v.startswith(('ApCsel', 'Róm', '1Kor')) for v in versek))
+
+    def test_hamart_lanc_valtozatlan(self):
+        sorai = [r for r in self.elofordulasok() if r['id'] == 'HAMART-001']
+        m = next(r for r in self.motivumok() if r['id'] == 'HAMART-001')
+        _szavak, mag = LG.lanc_szavak(m, sorai)
+        self.assertNotEqual(mag, LG.SZOPAR_MAG)
+        self.assertFalse(LG.szopar_motivum(sorai))
+
+    @staticmethod
+    def elofordulasok():
+        import general as G
+        return G.tsv_beolvas(os.path.join(os.path.dirname(ESZKOZOK), 'adat', 'elofordulasok.tsv'))[1]
+
+    @staticmethod
+    def motivumok():
+        import general as G
+        return G.tsv_beolvas(os.path.join(os.path.dirname(ESZKOZOK), 'adat', 'motivumok.tsv'))[1]
+
+
 if __name__ == '__main__':
     unittest.main()

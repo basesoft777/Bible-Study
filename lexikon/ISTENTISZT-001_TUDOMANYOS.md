@@ -945,6 +945,14 @@ A szó eredete és nyelvi háttere.<!-- olvasói -->
 
 A szavak teljes BDB-szócikkfeje (a nyelvtani alakokkal) a 4.2 pontban áll.
 
+##### Háttér: rokon nyelvek (BDB)
+
+A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/asszír, arab, etióp, szír, arámi, óarámi, Tell el-Amarna, sabeus), kiejtéssel és magyar jelentéssel. A rokon nyelv a szó eredetéről szól, nem a motívum funkciójáról.<!-- olvasói -->
+
+| Szó | Rokon nyelv · szó (kiejtés) | Jelentés | Megjegyzés |
+|---|---|---|---|
+| קָרָא (kárá) — hívni: megszólítani | A rokon nyelvi adat kinyerése még nem történt meg | — | — |
+
 #### 4.9. Versenkénti jelentés
 
 A héber szavak közül a שֵׁם (sém) jelentése a helyén egyértelmű; a קָרָא (kárá) (1Móz 4:26, Jóel 2:32) helyén a szótár több jelentést enged, ezeknél a vers dönt (ez 2 hely a motívum 16 ószövetségi helyéből). **Következtetés:** a szavak jelentése a motívum helyein szinte mindenütt egyértelmű.<!-- olvasói -->
@@ -966,6 +974,8 @@ A szó magyaros kiejtése.<!-- olvasói -->
 ### Nyelvfüggetlen szerepek
 
 A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.<!-- olvasói -->
+
+#### 4.11. Visszhang: ókori fordítások (l. [9. Hatástörténet](#9-hatástörténet-ókori-fordítások-és-értelmezők))
 
 #### 4.12. Tematikus index (témák és igehely-hivatkozások)
 
@@ -1451,13 +1461,27 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 A szakasz azt mutatja, hogyan olvasták a motívum láncát a legkorábbi fordítók és értelmezők: az ószövetségi lánc ókori fordításai (Targum, Vulgata, Septuaginta), az újszövetségi helyek latin fordítása és szövegváltozatai, végül az egyházatyák és a rabbinikus hagyomány tanúi.<!-- olvasói -->
 
+### Ókori fordítások: Ószövetség
+
+A táblázat azt mutatja, hogyan adja vissza az ókori fordító a formulát a motívum ószövetségi helyein. A formulát két szó hordozza együtt, a hívás igéje és a név (a kárá és a sém), és a név után az Úr neve áll; a táblázat a formula igéjét követi, mert a fordítás szavát a táblázat igénként rögzíti, a név pedig minden versben a formula része. A versek a motívum azon ószövetségi helyei, amelyekben az ige a héber szövegben áll (16 vers). Egyik fordítás sem adja vissza az igét minden versben ugyanazzal a szóval vagy szócsaláddal. Hogy az egyezés lelet-e, azon múlik, szokásos fordítás-e: a Septuagintánál ez mérhető (hogyan fordítja ugyanazt a héber szót a motívumon kívül), a Targumnál és a Vulgatánál ebből a forrásból nem, ott a táblázat csak a motívum verseit mutatja.<!-- olvasói -->
+
+| Lánc-szó · versek | Targum | Vulgata | LXX | Mit mutat |
+|---|---|---|---|---|
+| קָרָא (kárá) — hívni: megszólítani<br>1Móz 4:26, 1Móz 12:8, 1Móz 13:4, 1Móz 21:33, 1Móz 26:25, 2Móz 33:19, 2Móz 34:5, 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Sof 3:9 | צְלָא (celá) · 5/7; más szó: 2Móz 33:19 קְרָא (kerá); 2Móz 34:5 קְרָא (kerá); 1Kir 18:24, 1Kir 18:25, 1Kir 18:26, 2Kir 5:11, Zsolt 116:4, Zsolt 116:13, Zsolt 116:17, Jóel 2:32, Sof 3:9: nincs Targum-forrás (az Onkelos csak a Mózes-könyveket fedi) | *invoco* · 12/16; négy versben: 2Móz 33:19 *voco*; Zsolt 116:4 nincs ellenőrzött adat; Zsolt 116:13 nincs ellenőrzött adat; Zsolt 116:17 nincs ellenőrzött adat | ἐπικαλέω (epikaleó) · καλέω (kaleó) · 14/16; két versben: 1Kir 18:24 βοάω (boaó); Zsolt 116:17 nincs megfelelő szó | LXX: egy versben más szó; egy versben nincs megfelelő szó. |
+
+*Egy-egy mező a fordítás szava (kiejtéssel) és az, a lánc hány versében áll ugyanaz (n/N). A „Mit mutat” azt mondja meg, szokásos-e ez a fordítás: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli jelentéssel) a görög versben ugyanaz a szócsalád áll-e. A mérés versenként veti össze a két szöveget, nem szavanként; 80% felett szokásos fordítás, 40–80% gyakori, de nem kizárólagos, 40% alatt a láncban választott szó (félkövér). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A görög megfelelő a Septuaginta szövegéből versenként társítva, az arámi és a latin megfelelő a fordítás szövegéből, a forrásszövegen ellenőrizve; ellenőrizetlen sor nem áll a táblázatban.*
+
+Ez a tábla a láncon belüli fordítói következetességet méri: ugyanazzal a szóval adja-e vissza a fordító a héber szót a lánc minden versében. Hogy a görög szó azonos-e az újszövetségi helyek szavával, azt az [5. szakasz](#5-lxx-fordítói-döntések) mutatja.
+
+A lánc szavainak rokon nyelvi hátterét (a BDB-szótár szerint) a héber szavak 4.8 pontja adja.
+
 ### Ókori fordítások: Újszövetség
 
 A motívum lexikai újszövetségi helyein a lánc görög szavai állnak. A táblázat szócsaládonként azt mutatja, hogy a latin Vulgata ugyanazzal a latin szóval adja-e vissza őket, van-e a lánc szavát érintő szövegváltozat, és a Genezis-lánc mely Septuaginta-verseiben áll ugyanez a görög szócsalád. A 1 görög szócsaládból 0 esetében a Vulgata a két szövetségben ugyanazt a latin szócsaládot használja.<!-- olvasói -->
 
 | Görög szó · helyek | Vulgata | Szövegváltozat | Ugyanez a szó a Genezis-lánc Septuagintájában | Mit mutat |
 |---|---|---|---|---|
-| ἐπικαλέω (epikaleó)<br>1Kor 1:2, ApCsel 22:16, ApCsel 2:21, Róm 10:13 | 1Kor 1:2 *invocant*; ApCsel 22:16 *invocato*; ApCsel 2:21 *invocaverit*; Róm 10:13 *invocaverit* · 4/4 | nincs a lánc szavát érintő változat | nincs a láncversekben | A Vulgata az újszövetségi helyeken 4/4 versben a *invoc-* szócsaládot használja. |
+| ἐπικαλέω (epikaleó)<br>1Kor 1:2, ApCsel 22:16, ApCsel 2:21, Róm 10:13 | 1Kor 1:2 *invocant*; ApCsel 22:16 *invocato*; ApCsel 2:21 *invocaverit*; Róm 10:13 *invocaverit* · 4/4 | nincs a lánc szavát érintő változat | 1Kir 18:25, 1Kir 18:26, 12:8, 13:4, 21:33, 26:25, 4:26, 2Kir 5:11, 2Móz 33:19, 2Móz 34:5, Jóel 2:32, Sof 3:9, Zsolt 116:13, Zsolt 116:4 (ἐπικαλέω, καλέω) | A Vulgata az újszövetségi helyeken 4/4 versben a *invoc-* szócsaládot használja; a Genezis-lánc azon 12 versében, ahol a görög fordításban ugyanez a görög szócsalád áll, 11 versben: a latin szóválasztás a két szövetség között csak részben egyezik. |
 
 *A Vulgata oszlopa a versben álló latin szó és az, hány versben áll a fő latin szócsalád (n/N); a latin megfelelő a Vulgata szövegéből, a forrásszövegen ellenőrizve. Szövegváltozat: az SBL Greek New Testament apparátusa (CC BY 4.0) és a STEPBible TAGNT változatjegyzéke (CC BY 4.0), csak ahol a lánc szavát érinti. A Genezis-lánc Septuagintája: ugyanaz a görög szócsalád a Genezis-lánc ellenőrzött Septuaginta-soraiban (az ószövetségi táblázat LXX-oszlopa); ez szóegyezés, nem tipológiai állítás. Vulgata: Clementina (közkincs). A szír fordítás (Peshitta) nem vizsgált: szabad, digitális forrása nem áll rendelkezésre.*
 
