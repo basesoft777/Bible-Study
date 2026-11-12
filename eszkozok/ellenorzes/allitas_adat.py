@@ -261,7 +261,7 @@ class Adat(object):
             if not osz:
                 self._cache['_lxx'] = collections.Counter()
             else:
-                _sorok, szamlalo, _f, _h = self.LG.lxx_osszevetes(self.sorai, tok)
+                _sorok, szamlalo, _f, _h = self.LG.lxx_statisztika(self.sorai)   # F212 (Sz1)
                 self._cache['_lxx'] = szamlalo
         return self._cache['_lxx']
 
@@ -314,7 +314,7 @@ ALLITASOK = [
      r'súlypontja [^(]{1,80}\(%s helyből %s\)' % (_n('hely'), _n('top')),
      [('hely', 'hely'), ('top', 'top_konyv')], 'lap'),
     ('ELOF_HATOKOR', 'a 2. blokk hatókör-sora: igehely-sorok száma',
-     r'Ez a blokk a motívum %s igehely-sorát fedi' % _n('hely'), [('hely', 'hely')], 'lap'),
+     r'(?:Ez a blokk|A táblázat) a motívum %s igehely(?:-sorát fedi|ét sorolja fel)' % _n('hely'), [('hely', 'hely')], 'lap'),
     ('KIVONAT_HELY_VERS', 'a Kivonat: hely és vers',
      r'%s helyet sorol fel %s versben' % (_n('hely'), _n('vers')), [('hely', 'hely'), ('vers', 'vers')], 'lap'),
     ('KIVONAT_BONTAS', 'a Kivonat: Genezis / többi ÓSZ / ÚSZ helyei',
@@ -355,7 +355,7 @@ ALLITASOK = [
      r'Ezek közül %s nem tartozik a motívumhoz, %s döntésre vár' % (_n('elut'), _n('nyitva')),
      [('elut', 'k_elutasitva'), ('nyitva', 'k_nyitva')], 'lap'),
     ('KIZART_HATOKOR', 'a 3. blokk hatókör-sora: elutasított/nyitva maradt jelölt-sorok',
-     r'motívum %s elutasított/nyitva maradt jelöltjét fedi' % _n('sor'), [('sor', 'kizart_sor')], 'lap'),
+     r'motívum %s elutasított(?:/| vagy )nyitva maradt jelölt(?:jét fedi|sorát sorolja fel)' % _n('sor'), [('sor', 'kizart_sor')], 'lap'),
     # --- 5. LXX ---
     ('LXX', 'az LXX-összegzés (versben): összes, egyező, eltérő, hiányzó, nem megállapított',
      r'ószövetségi helyei %s versre terjednek; ezek közül %s versben a görög fordítás \(Septuaginta\) ugyanazt a szót '
@@ -385,7 +385,7 @@ ALLITASOK = [
      [('n', 'kapcs'), ('csomopont', 'kapcs_csomopont'), ('magas', 'kapcs_magas'), ('alacsony', 'kapcs_alacsonyabb')],
      'lap'),
     ('KAPCS_HATOKOR', 'a 7. blokk hatókör-sora: kapcsolat-sorok és csomópontok',
-     r'motívum %s kapcsolat-sorát fedi[^,]*, %s igehely-csomóponttal' % (_n('n'), _n('csomopont')),
+     r'motívum %s kapcsolat(?:-sorát fedi|át sorolja fel)[^,;]*[,;] (?:a kapcsolatok )?%s igehely(?:-csomóponttal|et kötnek össze)' % (_n('n'), _n('csomopont')),
      [('n', 'kapcs'), ('csomopont', 'kapcs_csomopont')], 'lap'),
     # --- 8. Kapcsolódó motívumok ---
     ('KAPCSOLODO', 'a 8. szakasz: motívumközi kapcsolatok és másik motívumok',

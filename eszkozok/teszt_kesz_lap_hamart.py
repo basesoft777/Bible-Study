@@ -200,7 +200,8 @@ class Lap(unittest.TestCase):
         p48 = heber.split('#### 4.8. Nyelvi háttér', 1)[1].split('#### 4.9.', 1)[0]
         self.assertIn('##### Háttér: rokon nyelvek (BDB)', p48)
         self.assertNotIn('a 2. szerepben', p48)
-        self.assertIn('#### 4.11. Visszhang: ókori fordítások\n', self.lap)
+        # F212 (L5): a 4.11 címe mutat a 9. szakaszra, a továbbküldő mondat nélkül
+        self.assertRegex(self.lap, r'(?m)^#### 4\.11\. Visszhang: ókori fordítások \(l\. \[9\. Hatástörténet\]\(#[^)]+\)\)$')
 
     def test_nincs_belso_utvonal(self):
         self.assertIsNone(re.search(r'(?<![\w./-])(?:adat|konkordancia|naplok)/\w', self.lathato))

@@ -160,7 +160,7 @@ def alkalmaz(szoveg):
 
 
 _ALPONT_RX = re.compile(r'^#{3,5}\s+4\.(\d+)\.')
-_HSOR_RX = re.compile(r'^\*\*(H\d{4,5}[a-z]?)\*\* · (.*)$')
+_HSOR_RX = re.compile(r'^\*\*([HG]\d{4,5}[a-z]?)\*\* · (.*)$')   # F212 (E2): a görög sor is a szóval kezd
 
 
 def strong_szo_elol(szoveg):
@@ -250,6 +250,27 @@ def _szakasz_szam(cim):
     return m.group(1) if m else None
 
 
+# F212 (I4, a felhasználó döntése: „javaslat szerint”): a 3. (kizárt helyek) és a 6. (minősítés) táblájában a jelölés
+# forrását a „Miért lett jelölt” cella már kimondja; az a jegyzet, amely csak ezt ismétli, elmarad. Ismétlő az a
+# jegyzet, amelynek kulcsadata (a TSK-ajánlás helye, a keresett szó, a csoportos kizárás versszáma) a sorban már áll.
+ISMETLO_SZAKASZ = ('3', '6')
+_ISMETLO_RX = (
+    (re.compile(r'^Forrás: TSK-ajánlás \(([^)]*)\)((?:; a Károli-kereszthivatkozás is)?)\.$'),
+     lambda m, sor: all(h.strip() in sor for h in re.split(r',\s*', m.group(1))) and (not m.group(2) or 'Károli' in sor)),
+    (re.compile(r'^Forrás: (?:szókeresés|szócsalád-keresés): (.*)\.$'), lambda m, sor: m.group(1).strip() in sor),
+    (re.compile(r'^Forrás: csoportos kizárás, (\d+) vers\.$'), lambda m, sor: (' %s vers' % m.group(1)) in sor),
+)
+
+
+def ismetlo_jegyzet(lathato, sor):
+    """Igaz, ha a jegyzet csak a sor cellájában már álló jelölési forrást ismétli (I4)."""
+    for rx, feltetel in _ISMETLO_RX:
+        m = rx.match(lathato)
+        if m:
+            return feltetel(m, sor)
+    return False
+
+
 def tabla_ala(szoveg):
     """A táblák jegyzetei a tábla alá, helyi számozott listába (a felhasználó v8-átnézése, 1.; a lektor javaslata).
 
@@ -290,12 +311,15 @@ def tabla_ala(szoveg):
             blokk.append(sorok[i])
             i += 1
         helyi = {}                     # látható olvasói szöveg -> [szám, [rejtett megjegyzések]]
+        sor_most = ['']
 
         def csere(mm):
             azon = mm.group(1)
             if azon not in tabla_ref:
                 return mm.group(0)
             lathato = _KOMMENT_RX.sub('', defs[azon]).strip()
+            if szakasz in ISMETLO_SZAKASZ and ismetlo_jegyzet(lathato, sor_most[0]):
+                return ''               # F212 (I4): a jegyzet a cellát ismétli; a jel és a jegyzet elmarad
             if lathato not in helyi:
                 sorszam[szakasz] = sorszam.get(szakasz, 0) + 1
                 helyi[lathato] = ['%s.%d' % (szakasz, sorszam[szakasz]), []]
@@ -304,7 +328,9 @@ def tabla_ala(szoveg):
                 if k not in rejtett:
                     rejtett.append(k)
             return '<sup class="lj"><a href="#j-%s">%s</a></sup>' % (szam.replace('.', '-'), szam)
-        ki.extend(_LABJ_REF_RX.sub(csere, b) for b in blokk)
+        for b in blokk:
+            sor_most[0] = _LABJ_REF_RX.sub('', b)
+            ki.append(_LABJ_REF_RX.sub(csere, b))
         if helyi:
             ki.append('')
             for lathato, (szam, rejtett) in helyi.items():
