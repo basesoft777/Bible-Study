@@ -193,6 +193,98 @@ class SzakaszValos(unittest.TestCase):
         self.assertEqual((r3[7], r4[7]), ('szakasz', 'szakasz'))
 
 
+def bsor(bdb, jel, szoveg, jelolo='point', ut='-/1/-', sorszam='3'):
+    return {'bdb_id': bdb, 'jel': jel, 'jelolo': jelolo, 'szoveg': szoveg, 'utvonal': ut, 'sorszam': sorszam}
+
+
+class Szocikkhatar(unittest.TestCase):
+    """F202.1 (C1; N147, N100, K56): a jelölő nélküli szócikkfej a magyarban a forrás címszavánál kezdődik."""
+
+    def test_romai_es_cimszo_hatarnal(self):
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'רַע adjective', 'fej', 'fej'),
+                 bsor('B1', '1', 'bad Gen 2:9'), bsor('B2', '', 'II. רַע noun masculine^Job 30:26 evil', 'fej', 'fej')]
+        hu = 'רַע melléknév 1 rossz 1Móz 2:9; vö. רַע alább. II. רַע_126 hímnemű főnév^Jób 30:26 rossz'
+        e = hi.strong_illeszt(sorok, hu)[0]
+        self.assertEqual(e[3], ['jelolo_nelkul', 'II. רַע', hu.index('II. רַע')])
+
+    def test_tobb_talalatbol_az_elso_tagolasjel_utani(self):
+        # a címszó az előző szócikk szövegében is előfordul (utalásként), de nem tagolásjel után
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'A noun', 'fej', 'fej'), bsor('B1', '1', 'see שׁחל below'),
+                 bsor('B2', '', 'שׁחל (√ of following)', 'fej', 'fej')]
+        hu = 'A főnév 1 l. lent שׁחל szót. שׁחל (a következő √-je)'
+        e = hi.strong_illeszt(sorok, hu)[0]
+        self.assertEqual(e[3][2], hu.rindex('שׁחל'))
+
+    def test_tagolasjel_nelkul_az_utolso(self):
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'A', 'fej', 'fej'), bsor('B1', '1', 'see above'),
+                 bsor('B2', '', 'IV. צַר noun flint', 'fej', 'fej')]
+        hu = 'A 1 vö. a IV. צַר-ral, l. fent IV. צַר [hímnemű] főnév: kova'
+        self.assertEqual(hi.strong_illeszt(sorok, hu)[0][3][2], hu.rindex('IV. צַר'))
+
+    def test_masodik_fej_nem_kot_az_elso_belsejebe(self):
+        # H0520: „III. [אַמָּה]” és utána „[אַמָּה K^§ 51”: a második fej horgonya csak az első UTÁN állhat
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'A', 'fej', 'fej'), bsor('B1', '1', 'cubit'),
+                 bsor('B2', '', 'III. [אַמָּה] noun feminine', 'fej', 'fej'), bsor('B3', '', '[אַמָּה K^§ 51] noun', 'fej', 'fej')]
+        hu = 'A 1 könyök. III. [אַמָּה] nőnemű főnév (kétes). [אַמָּה K^§ 51] nőnemű főnév'
+        e = hi.strong_illeszt(sorok, hu)[0]
+        self.assertEqual(e[3][2], hu.index('III. ['))
+        self.assertEqual(e[4][2], hu.rindex('[אַמָּה'))
+
+    def test_zarojeles_cimszo(self):
+        # H0310 BDB3524: „(ו)ייחר Kt 2Sam 20:5”
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'A', 'fej', 'fej'), bsor('B1', '1', 'after'),
+                 bsor('B2', '', '(ו)ייחר Kt 2Sam 20:5', 'fej', 'fej')]
+        hu = 'A 1 után. (ו)ייחר Kt 2Sám 20:5'
+        self.assertEqual(hi.strong_illeszt(sorok, hu)[0][3][2], hu.index('(ו)'))
+
+    def test_hosszabb_heber_szosor_elobb(self):
+        # H7585 BDB8375: a fordítás a két fejet egy mondatba vonta („l. שְׁאוֺל 1, a שְׁאֹל שְׁאוֺל alatt”); az első szó („שְׁאֹל”)
+        # tagolásjel után a szócikk belsejében is áll, a teljes szósor („שְׁאֹל שְׁאוֺל”) csak a fejnél
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'שְׁאָלָה Isa 7:11 see below', 'fej', 'fej'),
+                 bsor('B2', '', 'שְׁאֹל שְׁאוֺל, noun feminine', 'fej', 'fej')]
+        hu = 'שְׁאָלָה Ézs 7:11, l. a שְׁאֹל שְׁאוֺל alatt, nőnemű főnév; — שְׁאֹל 1Kir 2:6'
+        e = hi.strong_illeszt(sorok, hu)[0]
+        self.assertEqual(e[2][1:], ['שְׁאֹל שְׁאוֺל', hu.index('שְׁאֹל שְׁאוֺל')])
+
+    def test_heber_cimszo_nelkul_valtozatlan(self):
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'A', 'fej', 'fej'), bsor('B1', '1', 'thus'),
+                 bsor('B2', '', 'adverb thus, as follows', 'fej', 'fej')]
+        self.assertEqual(hi.strong_illeszt(sorok, 'A 1 így. határozószó: így')[0][3], ['jelolo_nelkul', '', None])
+
+    def test_ugyanaz_a_szocikk_nem_hatar(self):
+        sorok = [bsor('B1', '', 'x', 'cim', 'cim'), bsor('B1', '', 'A', 'fej', 'fej'), bsor('B1', '1', 'x'),
+                 bsor('B1', '', 'רַע noun', 'bekezdes', '-/1/-')]
+        self.assertIsNone(hi.strong_illeszt(sorok, 'A 1 x. רַע főnév')[0][3][2])
+
+
+class SzocikkhatarValos(unittest.TestCase):
+    """A commitolt táblákon: a szócikkhatáron át elnyelt sorok száma legfeljebb a mért maradék (F202.1 előtt 316 sor / 191
+    Strong; utána 4 / 3: H3651 24 és a H9003 3–4 (a forrássor nem héber címszóval nyit, ill. a következő sor jelölője a fejre
+    köt), H3754 4 (a 2.30 töredéke)); a HAMART-001 három szócikkhatára az általános szabályból, a kézi lista nélkül."""
+
+    @classmethod
+    def setUpClass(cls):
+        def tsv(ut):
+            with open(ut, encoding='utf-8', newline='') as f:
+                s = f.read().split('\n')
+            fej = s[2].split('\t')
+            return [dict(zip(fej, x.rstrip('\r').split('\t'))) for x in s[3:] if x.strip()]
+        cls.szak = tsv(hi.TABLA)
+        cls.hu = tsv(hi.KI_UT)
+
+    def test_felso_korlat(self):
+        j = hi.szocikkhatar_jelentesek(self.szak, self.hu)
+        self.assertLessEqual(len(j), 4, j)
+
+    def test_hamart_szocikkhatarok(self):
+        hu = {(r['strong'], r['sorszam']): r for r in self.hu}
+        self.assertTrue(hu[('H2403', '18')]['szoveg_hu'].startswith('חַטָּיָא nőnemű főnév: bűnért való áldozat'))
+        self.assertTrue(hu[('H7451', '18')]['szoveg_hu'].startswith('II. רַע_126 hímnemű főnév^Jób 30:26'))
+        self.assertTrue(hu[('H7451', '23')]['szoveg_hu'].startswith('רָעָה_310 nőnemű főnév: rossz, nyomorúság'))
+        self.assertNotIn('חַטָּיָא', hu[('H2403', '17')]['szoveg_hu'])
+        self.assertEqual(hi.SZOCIKKHATAR_KEZI, {})
+
+
 class Kapu(unittest.TestCase):
     """F123.BDBILL, DT-F123z: az `ellenoriz.py` 26. szabálya (`kapu_elteresek`) a mai adat másolatán, ideiglenes könyvtárban."""
 

@@ -1,5 +1,5 @@
 # GENERÁLT: eszkozok/olvaso_szerver/bdb_vers_jelentes.py --ts 2026-11-10 — kézzel nem szerkesztendő (F99 M2; séma: adat/SEMA.md 2.29).
-# forras: konkordancia/BDB_teljes_unabridged.tsv@d4b15b2faea6 + Macula_heber_*.tsv (39 fájl)@cd5307d181c7 (MT-versek, MT→Károli) + Karoli_versmegfeleltetes.tsv@139d94c1abea + Karoli_1908.tsv@49335bbcc77d (Károli-versek; az Ézs 3 eltolásának forrása is, DT179) + naplok/F85_macula_elvetve.tsv@03be2dac2de8 + naplok/F85_esetlista.tsv@901567590faf (DT173) + OSHL_lexikalis_index.tsv@5a1d48582b61 (bdb_id) + Strong_szotar.tsv@5d0fd9d91d7e (lemma) + TAHOT_kivonat.tsv@4c876f570aad (DT173, DT176; az Ézs 3 eltolásának megerősítése, DT179) + adat/bdb_forras_javitas.tsv@c28c142f34d8 (a hivatkozas_kezi sorok, DT381 (a)) + adat/bdb_szakaszok.tsv@1686b8c5161a (a jelentéspont forrása: a szakasztábla, F185); kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py+bdb_sefaria_tanu.py@0acd04caaf15+1aa04ff64b9d+a9c1bc357803+1af7d1c404f2+d264ac3d19f5 (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + F103 (csoport) + F185 (a szakasztábla és a sorbelső fejek; bizonyosság: P2)
+# forras: konkordancia/BDB_teljes_unabridged.tsv@d4b15b2faea6 + Macula_heber_*.tsv (39 fájl)@cd5307d181c7 (MT-versek, MT→Károli) + Karoli_versmegfeleltetes.tsv@139d94c1abea + Karoli_1908.tsv@49335bbcc77d (Károli-versek; az Ézs 3 eltolásának forrása is, DT179) + naplok/F85_macula_elvetve.tsv@03be2dac2de8 + naplok/F85_esetlista.tsv@901567590faf (DT173) + OSHL_lexikalis_index.tsv@5a1d48582b61 (bdb_id) + Strong_szotar.tsv@5d0fd9d91d7e (lemma) + TAHOT_kivonat.tsv@4c876f570aad (DT173, DT176; az Ézs 3 eltolásának megerősítése, DT179) + adat/bdb_forras_javitas.tsv@8234fa67f03c (a hivatkozas_kezi sorok, DT381 (a)) + adat/bdb_szakaszok.tsv@443623981345 (a jelentéspont forrása: a szakasztábla, F185); kód: bdb_szelet.py+bdb_vers_jelentes.py+bdb_konyv_javit.py+normalizal.py+bdb_sefaria_tanu.py@e62d6fcb61a4+8cd659cc4ae7+a9c1bc357803+1af7d1c404f2+d264ac3d19f5 (LF-re normalizált tartalom; DT172: a kód-hash csak itt áll, a sorok proveniencia-mezője erre a fejlécre hivatkozik); szabály: DT166, DT173, DT174, DT175, DT176, DT179, DT167 + F103 (csoport) + F185 (a szakasztábla és a sorbelső fejek; bizonyosság: P2)
 strong	bdb_id	sorszam	poz	nyers	konyv_feloldas	mt_vers	karoli_vers	vers_feloldas	szakasz	resz	utvonal	okkod	szurt	csoport	csoport_jel	proveniencia	bizonyossag
 H0001	a.ae.ab	1	158	Gen 44:19	kiirt	1Móz 44:19	1Móz 44:19	azonos			fej		0			scope=H0001 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H0001	a.ae.ab	2	188	17:4	orokolt	1Móz 17:4	1Móz 17:4	azonos			fej		0			scope=H0001 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -4310,7 +4310,7 @@ H0270	a.cl.aa	36	943	Ruth 3:15	kiirt	Ruth 3:15	Ruth 3:15	azonos			Qal/-		0			sco
 H0270	a.cl.aa	37	971	1Kin 6:6	kiirt	1Kir 6:6	1Kir 6:6	azonos			Qal/-		0			scope=H0270 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H0270	a.cl.aa	38	1047	Job 8:17	kiirt	Jób 8:17	Jób 8:17	azonos			Qal/-		0			scope=H0270 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H0270	a.cl.aa	39	1091	Cant 7:9	kiirt	Én 7:9	Én 7:8	atkulcsolt			Qal/-		0			scope=H0270 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H0270	a.cl.aa	40	1191	16:12	feloldhatatlan						Qal/-	orokles_hibas	0			scope=H0270 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H0270	a.cl.aa	40	1191	16:12	orokolt	Jób 16:12	Jób 16:12	azonos			Qal/-	orokles_tahot	0			scope=H0270 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H0270	a.cl.aa	41	1221	Psa 73:23	kiirt	Zsolt 73:23	Zsolt 73:23	azonos			Qal/-		0			scope=H0270 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H0270	a.cl.aa	42	1256	Deut 32:41	kiirt	5Móz 32:41	5Móz 32:41	azonos			Qal/-		0			scope=H0270 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H0270	a.cl.aa	43	1308	Job 23:11	kiirt	Jób 23:11	Jób 23:11	azonos			Qal/-		0			scope=H0270 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -18030,10 +18030,10 @@ H1004	b.bo.ad,b.bp.aa	282	9140	7:26	orokolt	2Sám 7:26	2Sám 7:26	azonos			-/5/c
 H1004	b.bo.ad,b.bp.aa	283	9147	1Chr 17:24	kiirt	1Krón 17:24	1Krón 17:24	azonos			-/5/c		0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H1004	b.bo.ad,b.bp.aa	284	9185	1Kin 12:19	kiirt	1Kir 12:19	1Kir 12:19	azonos			-/5/c		0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H1004	b.bo.ad,b.bp.aa	285	9196	2Chr 10:19	kiirt	2Krón 10:19	2Krón 10:19	azonos			-/5/c		0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H1004	b.bo.ad,b.bp.aa	286	9208	2 Chronicles 10:20	kiirt	2Krón 10:20		nem_letezo_vers			-/5/c	nem_letezo_vers	0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H1004	b.bo.ad,b.bp.aa	287	9228	2 Chronicles 10:26	kiirt	2Krón 10:26		nem_letezo_vers			-/5/c	nem_letezo_vers	0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H1004	b.bo.ad,b.bp.aa	288	9248	13:2	orokolt	2Krón 13:2	2Krón 13:2	azonos			-/5/c		0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H1004	b.bo.ad,b.bp.aa	289	9254	14:8	orokolt	2Krón 14:8	2Krón 14:9	atkulcsolt			-/5/c		0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H1004	b.bo.ad,b.bp.aa	286	9208	2 Chronicles 10:20	kiirt	1Kir 12:20	1Kir 12:20	azonos			-/5/c	forras_javitas	0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H1004	b.bo.ad,b.bp.aa	287	9228	2 Chronicles 10:26	kiirt	1Kir 12:26	1Kir 12:26	azonos			-/5/c	forras_javitas	0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H1004	b.bo.ad,b.bp.aa	288	9248	13:2	orokolt	1Kir 13:2	1Kir 13:2	azonos			-/5/c	forras_javitas	0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H1004	b.bo.ad,b.bp.aa	289	9254	14:8	orokolt	1Kir 14:8	1Kir 14:8	azonos			-/5/c	forras_javitas	0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H1004	b.bo.ad,b.bp.aa	290	9260	2Kin 17:21	kiirt	2Kir 17:21	2Kir 17:21	azonos			-/5/c		0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H1004	b.bo.ad,b.bp.aa	291	9272	Isa 7:2	kiirt	Ézs 7:2	Ézs 7:2	azonos			-/5/c		0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H1004	b.bo.ad,b.bp.aa	292	9281	, 13	folytatas	Ézs 7:13	Ézs 7:13	azonos			-/5/c		0			scope=H1004 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
@@ -19814,8 +19814,8 @@ H1121	b.ca.aa,b.ca.aj	341	7838	Ezek 40:46	kiirt	Ez 40:46	Ez 40:46	azonos			-/1/j
 H1121	b.ca.aa,b.ca.aj	342	7908	1Chr 9:18	kiirt	1Krón 9:18	1Krón 9:18	azonos			-/1/j		0	+5	(ε)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1121	b.ca.aa,b.ca.aj	343	7935	12:27	orokolt	1Krón 12:27	1Krón 12:26	atkulcsolt			-/1/j		0	+5	(ε)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1121	b.ca.aa,b.ca.aj	344	7942	Nehemiah 10:40	kiirt	Neh 10:40	Neh 10:39	atkulcsolt			-/1/j		0	+5	(ε)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1121	b.ca.aa,b.ca.aj	345	7976	15:15	feloldhatatlan						-/1/j	orokles_hibas	0	+5	(ε)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1121	b.ca.aa,b.ca.aj	346	7983	24:30	feloldhatatlan						-/1/j	orokles_hibas	0	+5	(ε)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1121	b.ca.aa,b.ca.aj	345	7976	15:15	orokolt	1Krón 15:15	1Krón 15:15	azonos			-/1/j	orokles_tahot	0	+5	(ε)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1121	b.ca.aa,b.ca.aj	346	7983	24:30	orokolt	1Krón 24:30	1Krón 24:30	azonos			-/1/j	orokles_tahot	0	+5	(ε)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1121	b.ca.aa,b.ca.aj	347	8039	Exod 28:1	kiirt	2Móz 28:1	2Móz 28:1	azonos			-/1/j		0	+6	(ζ)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1121	b.ca.aa,b.ca.aj	348	8050	, 40	folytatas	2Móz 28:40	2Móz 28:40	azonos			-/1/j		0	+6	(ζ)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1121	b.ca.aa,b.ca.aj	349	8054	1 Chronicles 5:29	kiirt	1Krón 5:29	1Krón 6:3	atkulcsolt			-/1/j		0	+6	(ζ)	scope=H1121 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -25531,7 +25531,7 @@ H1413	c.ao.aa	3	301	59:4	orokolt	Zsolt 59:4	Zsolt 59:4	azonos			Qal/-		0			scope
 H1413	c.ao.aa	4	391	Hosea 6:9	kiirt	Hós 6:9	Hós 6:9	azonos			Qal/-		0			scope=H1413 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1413	c.ao.aa	5	472	Jer 16:6	kiirt	Jer 16:6	Jer 16:6	azonos			Hithpo'el/-		0			scope=H1413 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1413	c.ao.aa	6	515	Micah 4:14	kiirt	Mik 4:14	Mik 5:1	atkulcsolt			Hithpo'el/-		0			scope=H1413 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1413	c.ao.aa	7	543	47:5	feloldhatatlan						Hithpo'el/-	orokles_hibas	0			scope=H1413 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1413	c.ao.aa	7	543	47:5	orokolt	Jer 47:5	Jer 47:5	azonos			Hithpo'el/-	orokles_tahot	0			scope=H1413 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1413	c.ao.aa	8	572	1Kin 18:28	kiirt	1Kir 18:28	1Kir 18:28	azonos			Hithpo'el/-		0			scope=H1413 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1413	c.ao.aa	9	599	Jer 5:7	kiirt	Jer 5:7	Jer 5:7	azonos			Hithpo'el/-		0			scope=H1413 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1413	c.ao.aa	10	609	Hosea 7:11	kiirt	Hós 7:11	Hós 7:11	azonos			Hithpo'el/-		0			scope=H1413 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -26891,7 +26891,7 @@ H1500	c.bl.ac	1	65	Leviticus 5:23	kiirt	3Móz 5:23	3Móz 6:4	atkulcsolt			tagola
 H1500	c.bl.ac	2	104	Isa 3:14	kiirt	Ézs 3:14	Ézs 3:15	atkulcsolt_karoli_szoveg			tagolatlan		0			scope=H1500 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1500	c.bl.ac	3	124	Ezek 18:12	kiirt	Ez 18:12	Ez 18:12	azonos			tagolatlan		0			scope=H1500 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1500	c.bl.ac	4	158	Leviticus 5:23	kiirt	3Móz 5:23	3Móz 6:4	atkulcsolt			tagolatlan		0			scope=H1500 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1500	c.bl.ac	5	177	33:15	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H1500 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1500	c.bl.ac	5	177	33:15	orokolt	Ez 33:15	Ez 33:15	azonos			tagolatlan	orokles_tahot	0			scope=H1500 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1500	c.bl.ac	6	201	Isa 3:14	kiirt	Ézs 3:14	Ézs 3:15	atkulcsolt_karoli_szoveg			tagolatlan		0			scope=H1500 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1500	c.bl.ac	7	255	Ezek 18:7	kiirt	Ez 18:7	Ez 18:7	azonos			tagolatlan		0			scope=H1500 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1500	c.bl.ac	8	266	, 12	folytatas	Ez 18:12	Ez 18:12	azonos			tagolatlan		0			scope=H1500 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -27722,9 +27722,9 @@ H1552	c.cd.am	1	73	Ezek 47:8	kiirt	Ez 47:8	Ez 47:8	azonos			tagolatlan		0			scop
 H1552	c.cd.am	2	112	Josh 13:2	kiirt	Józs 13:2	Józs 13:2	azonos			tagolatlan		0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1552	c.cd.am	3	123	22:10	orokolt	Józs 22:10	Józs 22:10	azonos			tagolatlan		0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1552	c.cd.am	4	133	Joel 4:4	kiirt	Jóel 4:4	Jóel 3:4	atkulcsolt			tagolatlan		0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1552	c.cd.am	5	198	13:2	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1552	c.cd.am	5	198	13:2	orokolt	Józs 13:2	Józs 13:2	azonos			tagolatlan	orokles_tahot	0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1552	c.cd.am	6	211	Joel 4:4	kiirt	Jóel 4:4	Jóel 3:4	atkulcsolt			tagolatlan		0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1552	c.cd.am	7	260	22:10	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1552	c.cd.am	7	260	22:10	orokolt	Józs 22:10	Józs 22:10	azonos			tagolatlan	orokles_tahot	0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1552	c.cd.am	8	317	Ezek 47:8	kiirt	Ez 47:8	Ez 47:8	azonos			tagolatlan		0			scope=H1552 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1553	c.cd.an	1	140	Josh 18:17	kiirt	Józs 18:17	Józs 18:17	azonos			-/1		0			scope=H1553 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_hatar
 H1553	c.cd.an	2	172	15:7	orokolt	Józs 15:7	Józs 15:7	azonos			-/1		0			scope=H1553 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -28251,7 +28251,7 @@ H1579	c.ci.ad	1	237	2Chr 28:18	kiirt	2Krón 28:18	2Krón 28:18	azonos			tagolatl
 H1580	c.cj.aa	1	134	2Chr 35:19	kiirt	2Krón 35:19	2Krón 35:19	azonos			-/3		0			scope=H1580 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1580	c.cj.aa	2	397	Psa 13:6	kiirt	Zsolt 13:6	Zsolt 13:6	azonos_tahot			Qal/-	karoli_tahot	0			scope=H1580 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1580	c.cj.aa	3	427	Numbers 17:23	kiirt	4Móz 17:23	4Móz 17:8	atkulcsolt			Qal/-		0			scope=H1580 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1580	c.cj.aa	4	462	119:17	feloldhatatlan						Qal/-	orokles_hibas	0			scope=H1580 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1580	c.cj.aa	4	462	119:17	orokolt	Zsolt 119:17	Zsolt 119:17	azonos			Qal/-	orokles_tahot	0			scope=H1580 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1580	c.cj.aa	5	502	1Sam 1:23	kiirt	1Sám 1:23	1Sám 1:23	azonos			Qal/-		0			scope=H1580 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1580	c.cj.aa	6	531	Prov 11:17	kiirt	Péld 11:17	Péld 11:17	azonos			Qal/-		0			scope=H1580 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1580	c.cj.aa	7	561	Isa 11:8	kiirt	Ézs 11:8	Ézs 11:8	azonos			Qal/-		0			scope=H1580 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -30951,7 +30951,7 @@ H1732	d.as.ag	26	1078	Psa 89:36	kiirt	Zsolt 89:36	Zsolt 89:36	azonos			fej		0			
 H1732	d.as.ag	27	1089	Psa 89:50	kiirt	Zsolt 89:50	Zsolt 89:50	azonos			-/-/j		0			scope=H1732 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1732	d.as.ag	28	1100	Psa 122:5	kiirt	Zsolt 122:5	Zsolt 122:5	azonos			-/-/j		0			scope=H1732 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
 H1732	d.as.ag	29	1111	2Sam 132:1132	kiirt	2Sám 132:113		nem_letezo_vers			-/-/j	nem_letezo_vers	0			scope=H1732 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
-H1732	d.as.ag	30	1129	132:17	feloldhatatlan						-/-/j	orokles_hibas	0			scope=H1732 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
+H1732	d.as.ag	30	1129	132:17	orokolt	Zsolt 132:17	Zsolt 132:17	azonos			-/-/j	orokles_tahot	0			scope=H1732 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
 H1732	d.as.ag	31	1161	3:18	orokolt	2Sám 3:18	2Sám 3:18	azonos			-/-/j		0			scope=H1732 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
 H1732	d.as.ag	32	1167	7:5	orokolt	2Sám 7:5	2Sám 7:5	azonos			-/-/j		0			scope=H1732 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
 H1732	d.as.ag	33	1172	, 8	folytatas	2Sám 7:8	2Sám 7:8	azonos			-/-/j		0			scope=H1732 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -31092,10 +31092,10 @@ H1736	d.as.ah	1	38	Gen 30:14	kiirt	1Móz 30:14	1Móz 30:14	azonos			tagolatlan		
 H1736	d.as.ah	2	85	Di 30:14	kiirt						tagolatlan	nem_bibliai	1			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1736	d.as.ah	3	148	30:14	orokolt	1Móz 30:14	1Móz 30:14	azonos			tagolatlan		0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1736	d.as.ah	4	155	Cant 7:14	kiirt	Én 7:14	Én 7:13	atkulcsolt			tagolatlan		0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1736	d.as.ah	5	186	30:14	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1736	d.as.ah	6	263	30:14	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1736	d.as.ah	7	287	30:15	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1736	d.as.ah	8	311	30:16	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1736	d.as.ah	5	186	30:14	orokolt	1Móz 30:14	1Móz 30:14	azonos			tagolatlan	orokles_tahot	0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1736	d.as.ah	6	263	30:14	orokolt	1Móz 30:14	1Móz 30:14	azonos			tagolatlan	orokles_tahot	0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1736	d.as.ah	7	287	30:15	orokolt	1Móz 30:15	1Móz 30:15	azonos			tagolatlan	orokles_tahot	0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1736	d.as.ah	8	311	30:16	orokolt	1Móz 30:16	1Móz 30:16	azonos			tagolatlan	orokles_tahot	0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1736	d.as.ah	9	327	Cant 7:14	kiirt	Én 7:14	Én 7:13	atkulcsolt			tagolatlan		0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1736	d.as.ah	10	375	Jer 24:1	kiirt	Jer 24:1	Jer 24:1	azonos			tagolatlan		0			scope=H1736 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1737	d.as.ae	1	62	1Chr 27:4	kiirt	1Krón 27:4	1Krón 27:4	azonos			tagolatlan		0			scope=H1737 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -31228,9 +31228,9 @@ H1755	d.az.ac	36	1245	119:90	orokolt	Zsolt 119:90	Zsolt 119:90	azonos	I		-/1/b		
 H1755	d.az.ac	37	1253	135:13	orokolt	Zsolt 135:13	Zsolt 135:13	azonos	I		-/1/b		0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1755	d.az.ac	38	1261	146:10	orokolt	Zsolt 146:10	Zsolt 146:10	azonos	I		-/1/b		0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1755	d.az.ac	39	1269	Joel 4:20	kiirt	Jóel 4:20	Jóel 3:20	atkulcsolt	I		-/1/b		0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1755	d.az.ac	40	1293	89:2	feloldhatatlan				I		-/1/b	orokles_hibas	0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1755	d.az.ac	41	1308	89:5	feloldhatatlan				I		-/1/b	orokles_hibas	0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1755	d.az.ac	42	1326	106:31	feloldhatatlan				I		-/1/b	orokles_hibas	0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1755	d.az.ac	40	1293	89:2	orokolt	Zsolt 89:2	Zsolt 89:2	azonos	I		-/1/b	orokles_tahot	0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1755	d.az.ac	41	1308	89:5	orokolt	Zsolt 89:5	Zsolt 89:5	azonos	I		-/1/b	orokles_tahot	0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1755	d.az.ac	42	1326	106:31	orokolt	Zsolt 106:31	Zsolt 106:31	azonos	I		-/1/b	orokles_tahot	0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1755	d.az.ac	43	1342	Isa 34:17	kiirt	Ézs 34:17	Ézs 34:17	azonos	I		-/1/b		0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1755	d.az.ac	44	1362	Psa 77:9	kiirt	Zsolt 77:9	Zsolt 77:9	azonos	I		-/1/b		0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1755	d.az.ac	45	1397	100:5	orokolt	Zsolt 100:5	Zsolt 100:5	azonos	I		-/1/b		0			scope=H1755 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -31865,7 +31865,7 @@ H1802	d.bm.aa	11	950	30:4	orokolt	Zsolt 30:4	Zsolt 30:4	azonos			Pi'el/-		0			sc
 H1803	d.bo.ac,d.bo.ad	1	99	Isa 38:12	kiirt	Ézs 38:12	Ézs 38:12	azonos	I		tagolatlan		0			scope=H1803 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1803	d.bo.ac,d.bo.ad	2	128	Cant 7:6	kiirt	Én 7:6	Én 7:5	atkulcsolt	I		tagolatlan		0			scope=H1803 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1803	d.bo.ac,d.bo.ad	3	154	Cant 7:6	kiirt	Én 7:6	Én 7:5	atkulcsolt	I		tagolatlan		0			scope=H1803 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1803	d.bo.ac,d.bo.ad	4	256	38:12	feloldhatatlan				I		tagolatlan	orokles_hibas	0			scope=H1803 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1803	d.bo.ac,d.bo.ad	4	256	38:12	orokolt	Ézs 38:12	Ézs 38:12	azonos	I		tagolatlan	orokles_tahot	0			scope=H1803 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1803	d.bo.ac,d.bo.ad	5	320	Jer 40:7	kiirt	Jer 40:7	Jer 40:7	azonos	II		tagolatlan		0			scope=H1803 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1803	d.bo.ac,d.bo.ad	6	350	52:15	orokolt	Jer 52:15	Jer 52:15	azonos	II		tagolatlan		0			scope=H1803 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1803	d.bo.ac,d.bo.ad	7	405	40:7	orokolt	Jer 40:7	Jer 40:7	azonos	II		tagolatlan		0			scope=H1803 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -37475,7 +37475,7 @@ H1995	e.bt.ab,e.bv.ac	17	497	Isa 31:4	kiirt	Ézs 31:4	Ézs 31:4	azonos			fej		0	
 H1995	e.bt.ab,e.bv.ac	18	507	Ezek 7:11	kiirt	Ez 7:11	Ez 7:11	azonos			fej		0			scope=H1995 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1995	e.bt.ab,e.bv.ac	19	534	Joel 4:14	kiirt	Jóel 4:14	Jóel 3:14	atkulcsolt			fej		0			scope=H1995 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1995	e.bt.ab,e.bv.ac	20	580	32:30	feloldhatatlan						fej	orokles_hibas	0			scope=H1995 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H1995	e.bt.ab,e.bv.ac	21	599	5:7	feloldhatatlan						fej	orokles_hibas	0			scope=H1995 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H1995	e.bt.ab,e.bv.ac	21	599	5:7	orokolt	Ez 5:7	Ez 5:7	azonos			fej	orokles_tahot	0			scope=H1995 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1995	e.bt.ab,e.bv.ac	22	712	Psa 65:8	kiirt	Zsolt 65:8	Zsolt 65:8	azonos			-/1		0			scope=H1995 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1995	e.bt.ab,e.bv.ac	23	776	Isa 13:4	kiirt	Ézs 13:4	Ézs 13:4	azonos			-/1		0			scope=H1995 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H1995	e.bt.ab,e.bv.ac	24	822	33:3	orokolt	Ézs 33:3	Ézs 33:3	azonos			-/1		0			scope=H1995 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -44641,8 +44641,8 @@ H2372	h.bp.aa	17	639	33:17	orokolt	Ézs 33:17	Ézs 33:17	azonos	I		Qal/-		0			sc
 H2372	h.bp.aa	18	659	30:10	orokolt	Ézs 30:10	Ézs 30:10	azonos	I		Qal/-		0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2372	h.bp.aa	19	666	Cant 7:1	kiirt	Én 7:1	Én 6:10	atkulcsolt_f85	I		Qal/-		0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2372	h.bp.aa	20	694	Cant 7:1	kiirt	Én 7:1	Én 6:10	atkulcsolt_f85	I		Qal/-		0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H2372	h.bp.aa	21	721	33:20	feloldhatatlan				I		Qal/-	orokles_hibas	0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H2372	h.bp.aa	22	728	48:6	feloldhatatlan				I		Qal/-	orokles_hibas	0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H2372	h.bp.aa	21	721	33:20	orokolt	Ézs 33:20	Ézs 33:20	azonos	I		Qal/-	orokles_tahot	0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H2372	h.bp.aa	22	728	48:6	orokolt	Ézs 48:6	Ézs 48:6	azonos	I		Qal/-	orokles_tahot	0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2372	h.bp.aa	23	740	Psa 46:9	kiirt	Zsolt 46:9	Zsolt 46:9	azonos	I		Qal/-		0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2372	h.bp.aa	24	750	Isa 30:10	kiirt	Ézs 30:10	Ézs 30:10	azonos	I		Qal/-		0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2372	h.bp.aa	25	785	Psa 27:4	kiirt	Zsolt 27:4	Zsolt 27:4	azonos	I		Qal/-		0			scope=H2372 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -45833,7 +45833,7 @@ H2403	h.bu.ad,h.bu.af	168	3555	Isa 44:22	kiirt	Ézs 44:22	Ézs 44:22	azonos			-/
 H2403	h.bu.ad,h.bu.af	169	3566	Jer 18:23	kiirt	Jer 18:23	Jer 18:23	azonos			-/1/d		0	+4	(4)	scope=H2403 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2403	h.bu.ad,h.bu.af	170	3577	Psa 109:14	kiirt	Zsolt 109:14	Zsolt 109:14	azonos			-/1/d		0	+4	(4)	scope=H2403 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2403	h.bu.ad,h.bu.af	171	3589	Nehemiah 3:37	kiirt	Neh 3:37	Neh 4:5	atkulcsolt			-/1/d		0	+4	(4)	scope=H2403 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H2403	h.bu.ad,h.bu.af	172	3635	51:4	feloldhatatlan						-/1/d	orokles_hibas	0	+4	(4)	scope=H2403 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H2403	h.bu.ad,h.bu.af	172	3635	51:4	orokolt	Zsolt 51:4	Zsolt 51:4	azonos			-/1/d	orokles_tahot	0	+4	(4)	scope=H2403 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2403	h.bu.ad,h.bu.af	173	3670	Zech 13:1	kiirt	Zak 13:1	Zak 13:1	azonos			-/1/d		0	+4	(4)	scope=H2403 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2403	h.bu.ad,h.bu.af	174	3715	Isa 43:25	kiirt	Ézs 43:25	Ézs 43:25	azonos			-/1/d		0	+5	(5)	scope=H2403 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H2403	h.bu.ad,h.bu.af	175	3737	Jer 31:34	kiirt	Jer 31:34	Jer 31:34	azonos			-/1/d		0	+5	(5)	scope=H2403 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -58661,7 +58661,7 @@ H3068	e.az.ae	231	7874	16:12	orokolt	2Móz 16:12	2Móz 16:12	azonos		II	-/2/b		0
 H3068	e.az.ae	232	7881	Deut 29:5	kiirt	5Móz 29:5	5Móz 29:6	atkulcsolt		II	-/2/b		0			scope=H3068 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H3068	e.az.ae	233	7895	Exod 20:20	kiirt	2Móz 20:20	2Móz 20:20	azonos		II	-/2/b		0			scope=H3068 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H3068	e.az.ae	234	7907	Joel 4:17	kiirt	Jóel 4:17	Jóel 3:17	atkulcsolt		II	-/2/b		0			scope=H3068 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H3068	e.az.ae	235	7934	29:46	feloldhatatlan					II	-/2/b	orokles_hibas	0			scope=H3068 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H3068	e.az.ae	235	7934	29:46	orokolt	2Móz 29:46	2Móz 29:46	azonos		II	-/2/b	orokles_tahot	0			scope=H3068 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H3068	e.az.ae	236	7944	Ezek 28:26	kiirt	Ez 28:26	Ez 28:26	azonos		II	-/2/b		0			scope=H3068 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H3068	e.az.ae	237	7956	34:30	orokolt	Ez 34:30	Ez 34:30	azonos		II	-/2/b		0			scope=H3068 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H3068	e.az.ae	238	7963	39:22	orokolt	Ez 39:22	Ez 39:22	azonos		II	-/2/b		0			scope=H3068 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
@@ -59554,7 +59554,7 @@ H3117	j.ay.aa	219	5898	, 13	folytatas	Ez 39:13	Ez 39:13	azonos			-/3		0			scope=
 H3117	j.ay.aa	220	5903	Obad 15	kiirt	Abd 1:15	Abd 1:15	azonos			-/3		0			scope=H3117 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3117	j.ay.aa	221	5912	Zech 14:1	kiirt	Zak 14:1	Zak 14:1	azonos			-/3		0			scope=H3117 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3117	j.ay.aa	222	5923	Malachi 3:23	kiirt	Mal 3:23	Mal 4:5	atkulcsolt			-/3		0			scope=H3117 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3117	j.ay.aa	223	5945	14:7	feloldhatatlan						-/3	orokles_hibas	0			scope=H3117 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3117	j.ay.aa	223	5945	14:7	orokolt	Zak 14:7	Zak 14:7	azonos			-/3	orokles_tahot	0			scope=H3117 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3117	j.ay.aa	224	5951	Mal 3:2	kiirt	Mal 3:2	Mal 3:2	azonos			-/3		0			scope=H3117 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3117	j.ay.aa	225	5960	, 17	folytatas	Mal 3:17	Mal 3:17	azonos			-/3		0			scope=H3117 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3117	j.ay.aa	226	5964	Malachi 3:19	kiirt	Mal 3:19	Mal 4:1	atkulcsolt			-/3		0			scope=H3117 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -66869,7 +66869,7 @@ H3464	j.dx.ac	1	86	1Chr 11:34	kiirt	1Krón 11:34	1Krón 11:34	azonos	II		tagolat
 H3465	j.dx.ad	1	221	Lev 25:22	kiirt	3Móz 25:22	3Móz 25:22	azonos			tagolatlan		0			scope=H3465 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3465	j.dx.ad	2	253	Isa 22:11	kiirt	Ézs 22:11	Ézs 22:11	azonos			tagolatlan		0			scope=H3465 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3465	j.dx.ad	3	284	Cant 7:14	kiirt	Én 7:14	Én 7:13	atkulcsolt			tagolatlan		0			scope=H3465 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3465	j.dx.ad	4	323	22:11	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H3465 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3465	j.dx.ad	4	323	22:11	orokolt	Ézs 22:11	Ézs 22:11	azonos			tagolatlan	orokles_tahot	0			scope=H3465 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3465	j.dx.ad	5	346	Neh 3:6	kiirt	Neh 3:6	Neh 3:6	azonos			tagolatlan		0			scope=H3465 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3465	j.dx.ad	6	358	12:39	orokolt	Neh 12:39	Neh 12:39	azonos			tagolatlan		0			scope=H3465 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3465	j.dx.ad	7	383	Cant 7:14	kiirt	Én 7:14	Én 7:13	atkulcsolt			tagolatlan		0			scope=H3465 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -68671,7 +68671,7 @@ H3546	xk.ac.aa	4	258	, 15	folytatas	Dán 5:15	Dán 5:15	azonos			Pe'al/-		0			sc
 H3547	k.as.ac	1	87	Exod 40:13	kiirt	2Móz 40:13	2Móz 40:13	azonos	II		Pi'el/-		0			scope=H3547 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3547	k.as.ac	2	99	1 Chronicles 5:36	kiirt	1Krón 5:36	1Krón 6:10	atkulcsolt	II		Pi'el/-		0			scope=H3547 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3547	k.as.ac	3	145	28:41	orokolt	1Krón 28:41		nem_letezo_vers	II		Pi'el/-	nem_letezo_vers	0			scope=H3547 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3547	k.as.ac	4	152	40:15	feloldhatatlan				II		Pi'el/-	orokles_hibas	0			scope=H3547 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3547	k.as.ac	4	152	40:15	orokolt	2Móz 40:15	2Móz 40:15	azonos	II		Pi'el/-	orokles_tahot	0			scope=H3547 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3547	k.as.ac	5	196	Num 3:4	kiirt	4Móz 3:4	4Móz 3:4	azonos	II		Pi'el/-		0			scope=H3547 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3547	k.as.ac	6	226	1Chr 24:2	kiirt	1Krón 24:2	1Krón 24:2	azonos	II		Pi'el/-		0			scope=H3547 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3547	k.as.ac	7	265	Exod 29:1	kiirt	2Móz 29:1	2Móz 29:1	azonos	II		Pi'el/-		0			scope=H3547 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -69427,7 +69427,7 @@ H3559	n.dk.ad,k.aw.aa	166	5581	1Chr 22:5	kiirt	1Krón 22:5	1Krón 22:5	azonos	I	
 H3559	n.dk.ad,k.aw.aa	167	5596	22:5	orokolt	1Krón 22:5	1Krón 22:5	azonos	I		Hiph'il/2/a		0	+3	figurative	scope=H3559 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3559	n.dk.ad,k.aw.aa	168	5636	28:2	orokolt	1Krón 28:2	1Krón 28:2	azonos	I		Hiph'il/2/a		0	+4	followed by	scope=H3559 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3559	n.dk.ad,k.aw.aa	169	5678	1 Kings 5:32	kiirt	1Kir 5:32	1Kir 5:18	atkulcsolt	I		Hiph'il/2/a		0	+4	followed by	scope=H3559 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3559	n.dk.ad,k.aw.aa	170	5692	29:16	feloldhatatlan				I		Hiph'il/2/a	orokles_hibas	0	+4	followed by	scope=H3559 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3559	n.dk.ad,k.aw.aa	170	5692	29:16	orokolt	1Krón 29:16	1Krón 29:16	azonos	I		Hiph'il/2/a	orokles_tahot	0	+4	followed by	scope=H3559 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3559	n.dk.ad,k.aw.aa	171	5722	1Sam 23:22	kiirt	1Sám 23:22	1Sám 23:22	azonos	I		Hiph'il/2/a		0	+4	followed by	scope=H3559 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3559	n.dk.ad,k.aw.aa	172	5734	Nahum 2:4	kiirt	Náh 2:4	Náh 2:3	atkulcsolt	I		Hiph'il/2/a		0	+4	followed by	scope=H3559 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3559	n.dk.ad,k.aw.aa	173	5745	Ezek 7:14	kiirt	Ez 7:14	Ez 7:14	azonos	I		Hiph'il/2/a		0	+4	followed by	scope=H3559 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -73898,7 +73898,7 @@ H3715	k.cv.ab,k.cv.ah	26	763	58:7	orokolt	Zsolt 58:7	Zsolt 58:7	azonos			tagolat
 H3715	k.cv.ab,k.cv.ah	27	769	Jer 2:15	kiirt	Jer 2:15	Jer 2:15	azonos			tagolatlan		0			scope=H3715 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3715	k.cv.ab,k.cv.ah	28	787	Ezek 32:2	kiirt	Ez 32:2	Ez 32:2	azonos			tagolatlan		0			scope=H3715 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3715	k.cv.ab,k.cv.ah	29	816	Nahum 2:14	kiirt	Náh 2:14	Náh 2:13	atkulcsolt			tagolatlan		0			scope=H3715 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3715	k.cv.ab,k.cv.ah	30	828	38:13	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H3715 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3715	k.cv.ab,k.cv.ah	30	828	38:13	orokolt	Ez 38:13	Ez 38:13	azonos			tagolatlan	orokles_tahot	0			scope=H3715 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3715	k.cv.ab,k.cv.ah	31	878	Prov 28:1	kiirt	Péld 28:1	Péld 28:1	azonos			tagolatlan		0			scope=H3715 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3715	k.cv.ab,k.cv.ah	32	919	19:12	orokolt	Péld 19:12	Péld 19:12	azonos			tagolatlan		0			scope=H3715 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3715	k.cv.ab,k.cv.ah	33	926	20:2	orokolt	Péld 20:2	Péld 20:2	azonos			tagolatlan		0			scope=H3715 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -77686,7 +77686,7 @@ H3894	l.bh.ac	7	843	Zeph 1:17	kiirt	Sof 1:17	Sof 1:17	azonos			tagolatlan		0			s
 H3895	l.be.ab	1	37	Song of Solomon 1:10	kiirt	Én 1:10	Én 1:10	azonos	I		fej		0			scope=H3895 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3895	l.be.ab	2	175	Judg 15:17	kiirt	Bír 15:17	Bír 15:17	azonos	I		fej		0			scope=H3895 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3895	l.be.ab	3	187	Micah 4:14	kiirt	Mik 4:14	Mik 5:1	atkulcsolt	I		fej		0			scope=H3895 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3895	l.be.ab	4	209	15:15	feloldhatatlan				I		fej	orokles_hibas	0			scope=H3895 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3895	l.be.ab	4	209	15:15	orokolt	Bír 15:15	Bír 15:15	azonos	I		fej	orokles_tahot	0			scope=H3895 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3895	l.be.ab	5	227	1Kin 22:24	kiirt	1Kir 22:24	1Kir 22:24	azonos	I		fej		0			scope=H3895 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3895	l.be.ab	6	244	Judg 15:19	kiirt	Bír 15:19	Bír 15:19	azonos	I		fej		0			scope=H3895 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3895	l.be.ab	7	288	Job 40:26	kiirt	Jób 40:26	Jób 41:2	atkulcsolt	I		fej		0			scope=H3895 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -78980,7 +78980,7 @@ H3952	l.bz.aa	7	387	1Kin 21:19	kiirt	1Kir 21:19	1Kir 21:19	azonos			Qal/-		0			s
 H3952	l.bz.aa	8	416	22:38	orokolt	1Kir 22:38	1Kir 22:38	azonos			Qal/-		0			scope=H3952 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3952	l.bz.aa	9	474	Judg 7:6	kiirt	Bír 7:6	Bír 7:6	azonos			Pi'el/-		0			scope=H3952 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3952	l.bz.aa	10	535	7:7	orokolt	Bír 7:7	Bír 7:7	azonos			Pi'el/-		0			scope=H3952 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3952	l.bz.aa	11	569	Judg 7:5	kiirt	Bír 7:5	Bír 7:5	azonos			fej		0			scope=H3952 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3952	l.bz.aa	11	569	Judg 7:5	kiirt	Bír 7:5	Bír 7:5	azonos			Pi'el/-		0			scope=H3952 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3952	l.bz.aa	12	739	Job 24:6	kiirt						fej	sigla_tapadt	1			scope=H3952 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3953	l.ca.ad	1	273	Job 24:6	kiirt	Jób 24:6	Jób 24:6	azonos			Pi'el/-		0			scope=H3953 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3953	l.ca.ad	2	461	Psa 32:4	kiirt	Zsolt 32:4	Zsolt 32:4	azonos			fej		0			scope=H3953 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -79055,11 +79055,11 @@ H3956	l.cd.ab	64	2176	Prov 6:24	kiirt	Péld 6:24	Péld 6:24	azonos			-/1/b		0			
 H3956	l.cd.ab	65	2201	Psa 78:36	kiirt	Zsolt 78:36	Zsolt 78:36	azonos			-/1/b		0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3956	l.cd.ab	66	2268	15:3	orokolt	Zsolt 15:3	Zsolt 15:3	azonos			-/1/b		0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3956	l.cd.ab	67	2312	Prov 25:23	kiirt	Péld 25:23	Péld 25:23	azonos			-/1/b		0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
-H3956	l.cd.ab	68	2336	39:2	feloldhatatlan						-/1/b	orokles_hibas	0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3956	l.cd.ab	69	2350	64:9	feloldhatatlan						-/1/b	orokles_hibas	0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3956	l.cd.ab	68	2336	39:2	orokolt	Zsolt 39:2	Zsolt 39:2	azonos			-/1/b	orokles_tahot	0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3956	l.cd.ab	69	2350	64:9	orokolt	Zsolt 64:9	Zsolt 64:9	azonos			-/1/b	orokles_tahot	0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3956	l.cd.ab	70	2431	12:5	orokolt	Péld 12:5	Péld 12:4	atkulcsolt_f85			-/1/b		0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3956	l.cd.ab	71	2445	12:4	orokolt	Péld 12:4	Péld 12:3	atkulcsolt_f85			-/1/b		0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H3956	l.cd.ab	72	2500	52:4	feloldhatatlan						-/1/b	orokles_hibas	0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H3956	l.cd.ab	72	2500	52:4	orokolt	Zsolt 52:4	Zsolt 52:4	azonos			-/1/b	orokles_tahot	0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3956	l.cd.ab	73	2524	Prov 17:4	kiirt	Péld 17:4	Péld 17:4	azonos			-/1/b		0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3956	l.cd.ab	74	2556	Psa 50:19	kiirt	Zsolt 50:19	Zsolt 50:19	azonos			-/1/b		0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H3956	l.cd.ab	75	2599	34:14	orokolt	Zsolt 34:14	Zsolt 34:14	azonos			-/1/b		0			scope=H3956 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -79900,10 +79900,10 @@ H4022	m.aj.ab	1	140	Deut 33:13	kiirt	5Móz 33:13	5Móz 33:13	azonos			tagolatlan
 H4022	m.aj.ab	2	187	Cant 4:13	kiirt	Én 4:13	Én 4:13	azonos			tagolatlan		0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4022	m.aj.ab	3	198	Song 7:14	kiirt	Én 7:14	Én 7:13	atkulcsolt			tagolatlan		0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4022	m.aj.ab	4	225	Cant 4:16	kiirt	Én 4:16	Én 4:16	azonos			tagolatlan		0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H4022	m.aj.ab	5	315	33:13	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H4022	m.aj.ab	6	372	33:14	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H4022	m.aj.ab	7	398	33:14	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H4022	m.aj.ab	8	425	33:15	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H4022	m.aj.ab	5	315	33:13	orokolt	5Móz 33:13	5Móz 33:13	azonos			tagolatlan	orokles_tahot	0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H4022	m.aj.ab	6	372	33:14	orokolt	5Móz 33:14	5Móz 33:14	azonos			tagolatlan	orokles_tahot	0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H4022	m.aj.ab	7	398	33:14	orokolt	5Móz 33:14	5Móz 33:14	azonos			tagolatlan	orokles_tahot	0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H4022	m.aj.ab	8	425	33:15	orokolt	5Móz 33:15	5Móz 33:15	azonos			tagolatlan	orokles_tahot	0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4022	m.aj.ab	9	523	Song 4:13	kiirt	Én 4:13	Én 4:13	azonos			tagolatlan		0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4022	m.aj.ab	10	534	, 16	folytatas	Én 4:16	Én 4:16	azonos			tagolatlan		0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4022	m.aj.ab	11	560	Songs 7:14	kiirt	Én 7:14	Én 7:13	atkulcsolt			tagolatlan		0			scope=H4022 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -81468,9 +81468,9 @@ H4136	m.ay.aa	18	979	Exod 34:3	kiirt	2Móz 34:3	2Móz 34:3	azonos	I		-/2/a		0			
 H4136	m.ay.aa	19	1033	Josh 8:33	kiirt	Józs 8:33	Józs 8:33	azonos	I		-/2/a		0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
 H4136	m.ay.aa	20	1061	9:1	orokolt	Józs 9:1	Józs 9:1	azonos	I		-/2/a		0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4136	m.ay.aa	21	1066	22:11	orokolt	Józs 22:11	Józs 22:11	azonos	I		-/2/a		0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H4136	m.ay.aa	22	1171	26:9	feloldhatatlan				I		-/2/a	orokles_hibas	0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H4136	m.ay.aa	23	1177	28:25	feloldhatatlan				I		-/2/a	orokles_hibas	0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H4136	m.ay.aa	24	1187	39:18	feloldhatatlan				I		-/2/a	orokles_hibas	0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H4136	m.ay.aa	22	1171	26:9	orokolt	2Móz 26:9	2Móz 26:9	azonos	I		-/2/a	orokles_tahot	0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H4136	m.ay.aa	23	1177	28:25	orokolt	2Móz 28:25	2Móz 28:25	azonos	I		-/2/a	orokles_tahot	0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H4136	m.ay.aa	24	1187	39:18	orokolt	2Móz 39:18	2Móz 39:18	azonos	I		-/2/a	orokles_tahot	0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4136	m.ay.aa	25	1195	39:37	feloldhatatlan				I		-/2/a	orokles_hibas	0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4136	m.ay.aa	26	1202	Lev 8:9	kiirt	3Móz 8:9	3Móz 8:9	azonos	I		-/2/a		0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4136	m.ay.aa	27	1211	Num 8:2	kiirt	4Móz 8:2	4Móz 8:2	azonos	I		-/2/a		0			scope=H4136 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
@@ -83045,7 +83045,7 @@ H4229	m.bl.aa,m.bm.aa,m.bn.ad	38	1939	Deut 25:6	kiirt	5Móz 25:6	5Móz 25:6	azon
 H4229	m.bl.aa,m.bm.aa,m.bn.ad	39	1958	Judg 21:17	kiirt	Bír 21:17	Bír 21:17	azonos			-/2		0			scope=H4229 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4229	m.bl.aa,m.bm.aa,m.bn.ad	40	1990	Psa 109:13	kiirt	Zsolt 109:13	Zsolt 109:13	azonos			-/2		0			scope=H4229 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4229	m.bl.aa,m.bm.aa,m.bn.ad	41	2023	Nehemiah 3:37	kiirt	Neh 3:37	Neh 4:5	atkulcsolt			-/2		0			scope=H4229 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H4229	m.bl.aa,m.bm.aa,m.bn.ad	42	2038	109:14	feloldhatatlan						-/2	orokles_hibas	0			scope=H4229 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H4229	m.bl.aa,m.bm.aa,m.bn.ad	42	2038	109:14	orokolt	Zsolt 109:14	Zsolt 109:14	azonos			-/2	orokles_tahot	0			scope=H4229 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4229	m.bl.aa,m.bm.aa,m.bn.ad	43	2056	Prov 6:33	kiirt	Péld 6:33	Péld 6:33	azonos			-/2		0			scope=H4229 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4229	m.bl.aa,m.bm.aa,m.bn.ad	44	2098	Gen 7:23	kiirt	1Móz 7:23	1Móz 7:23	azonos			-/3		0			scope=H4229 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H4229	m.bl.aa,m.bm.aa,m.bn.ad	45	2142	Ezek 6:6	kiirt	Ez 6:6	Ez 6:6	azonos			-/3		0			scope=H4229 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
@@ -83144,7 +83144,7 @@ H4246	h.bf.am	8	225	Judg 21:21	kiirt	Bír 21:21	Bír 21:21	azonos			tagolatlan		
 H4246	h.bf.am	9	257	Exod 15:20	kiirt	2Móz 15:20	2Móz 15:20	azonos			tagolatlan		0			scope=H4246 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4246	h.bf.am	10	298	32:19	orokolt	2Móz 32:19	2Móz 32:19	azonos			tagolatlan		0			scope=H4246 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4246	h.bf.am	11	335	Cant 7:1	kiirt	Én 7:1	Én 6:10	atkulcsolt_f85			tagolatlan		0			scope=H4246 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H4246	h.bf.am	12	366	15:20	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H4246 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H4246	h.bf.am	12	366	15:20	orokolt	2Móz 15:20	2Móz 15:20	azonos			tagolatlan	orokles_tahot	0			scope=H4246 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4246	h.bf.am	13	373	Judg 11:34	kiirt	Bír 11:34	Bír 11:34	azonos			tagolatlan		0			scope=H4246 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4246	h.bf.am	14	400	Exod 15:20	kiirt	2Móz 15:20	2Móz 15:20	azonos			tagolatlan		0			scope=H4246 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4246	h.bf.am	15	412	1Sam 18:6	kiirt	1Sám 18:6	1Sám 18:6	azonos			tagolatlan		0			scope=H4246 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -92430,9 +92430,9 @@ H4832	t.dv.am	11	410	12:18	orokolt	Péld 12:18	Péld 12:17	atkulcsolt_f85			-/2	
 H4832	t.dv.am	12	417	13:17	orokolt	Péld 13:17	Péld 13:17	azonos			-/2		0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4832	t.dv.am	13	424	16:24	orokolt	Péld 16:24	Péld 16:24	azonos			-/2		0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4832	t.dv.am	14	458	Malachi 3:20	kiirt	Mal 3:20	Mal 4:2	atkulcsolt			-/2		0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H4832	t.dv.am	15	480	6:15	feloldhatatlan						-/2	orokles_hibas	0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H4832	t.dv.am	16	487	29:1	feloldhatatlan						-/2	orokles_hibas	0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H4832	t.dv.am	17	500	14:30	feloldhatatlan						-/2	orokles_hibas	0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H4832	t.dv.am	15	480	6:15	orokolt	Péld 6:15	Péld 6:15	azonos			-/2	orokles_tahot	0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H4832	t.dv.am	16	487	29:1	orokolt	Péld 29:1	Péld 29:1	azonos			-/2	orokles_tahot	0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H4832	t.dv.am	17	500	14:30	orokolt	Péld 14:30	Péld 14:30	azonos			-/2	orokles_tahot	0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4832	t.dv.am	18	579	Eccl 10:4	kiirt	Préd 10:4	Préd 10:1	atkulcsolt_f85			-/2		0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H4832	t.dv.am	19	600	Prov 15:4	kiirt	Péld 15:4	Péld 15:4	azonos			-/2		0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
 H4832	t.dv.am	20	694	2Chr 21:18	kiirt	2Krón 21:18	2Krón 21:18	azonos			-/3		0			scope=H4832 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -99587,9 +99587,9 @@ H5203	n.de.aa	16	747	Neh 10:32	kiirt	Neh 10:32	Neh 10:31	atkulcsolt			Qal/1		0		
 H5203	n.de.aa	17	848	Num 11:31	kiirt	4Móz 11:31	4Móz 11:31	azonos			Qal/1		0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5203	n.de.aa	18	910	1Sam 30:16	kiirt	1Sám 30:16	1Sám 30:16	azonos			Qal/1		0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5203	n.de.aa	19	983	Hosea 12:15	kiirt	Hós 12:15	Hós 12:14	atkulcsolt_f85			Qal/1		0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5203	n.de.aa	20	1092	17:20	feloldhatatlan						Qal/1	orokles_hibas	0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5203	n.de.aa	21	1099	, 28	feloldhatatlan						Qal/1	orokles_hibas	0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5203	n.de.aa	22	1111	17:22	feloldhatatlan						Qal/1	orokles_hibas	0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5203	n.de.aa	20	1092	17:20	orokolt	1Sám 17:20	1Sám 17:20	azonos			Qal/1	orokles_tahot	0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5203	n.de.aa	21	1099	, 28	orokolt	1Sám 17:28	1Sám 17:28	azonos			Qal/1	orokles_tahot	0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5203	n.de.aa	22	1111	17:22	orokolt	1Sám 17:22	1Sám 17:22	azonos			Qal/1	orokles_tahot	0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5203	n.de.aa	23	1169	1Sam 10:2	kiirt	1Sám 10:2	1Sám 10:2	azonos			Qal/2		0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5203	n.de.aa	24	1280	Prov 17:14	kiirt	Péld 17:14	Péld 17:14	azonos			Qal/2		0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5203	n.de.aa	25	1354	Judg 6:13	kiirt	Bír 6:13	Bír 6:13	azonos			Qal/2		0			scope=H5203 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -105403,7 +105403,7 @@ H5493	o.au.aa	125	4128	1Sam 22:14	kiirt	1Sám 22:14	1Sám 22:14	azonos			Qal/4		
 H5493	o.au.aa	126	4192	Lam 3:11	kiirt	JSir 3:11	Sir 3:11	azonos			Qal/4		0			scope=H5493 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5493	o.au.aa	127	4283	2Kin 18:4	kiirt	2Kir 18:4	2Kir 18:4	azonos			Hiph'il/-		0			scope=H5493 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5493	o.au.aa	128	4360	1 Kings 3:31	kiirt	1Kir 3:31		nem_letezo_vers			Hiph'il/-	nem_letezo_vers	0			scope=H5493 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5493	o.au.aa	129	4396	23:27	feloldhatatlan						Hiph'il/-	orokles_hibas	0			scope=H5493 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5493	o.au.aa	129	4396	23:27	orokolt	2Kir 23:27	2Kir 23:27	azonos			Hiph'il/-	orokles_tahot	0			scope=H5493 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5493	o.au.aa	130	4418	1Sam 17:46	kiirt	1Sám 17:46	1Sám 17:46	azonos			Hiph'il/-		0			scope=H5493 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5493	o.au.aa	131	4450	2Chr 30:14	kiirt	2Krón 30:14	2Krón 30:14	azonos			Hiph'il/-		0			scope=H5493 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5493	o.au.aa	132	4504	Isa 3:18	kiirt	Ézs 3:18	Ézs 3:19	atkulcsolt_karoli_szoveg			Hiph'il/-		0			scope=H5493 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -110019,7 +110019,7 @@ H5750	p.bc.ab	23	900	Jer 33:1	kiirt	Jer 33:1	Jer 33:1	azonos			-/1/a		0			scope=
 H5750	p.bc.ab	24	910	2Chr 34:3	kiirt	2Krón 34:3	2Krón 34:3	azonos			-/1/a		0			scope=H5750 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5750	p.bc.ab	25	922	29:7	orokolt	2Krón 29:7	2Krón 29:7	azonos			-/1/a		0			scope=H5750 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5750	p.bc.ab	26	967	31:14	orokolt	2Krón 31:14	2Krón 31:14	azonos			-/1/a		0			scope=H5750 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5750	p.bc.ab	27	974	43:7	feloldhatatlan						-/1/a	orokles_hibas	0			scope=H5750 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5750	p.bc.ab	27	974	43:7	orokolt	1Móz 43:7	1Móz 43:7	azonos			-/1/a	orokles_tahot	0			scope=H5750 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5750	p.bc.ab	28	1000	Gen 43:27	kiirt	1Móz 43:27	1Móz 43:27	azonos			-/1/a		0			scope=H5750 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
 H5750	p.bc.ab	29	1011	Gen 45:3	kiirt	1Móz 45:3	1Móz 45:3	azonos			-/1/a		0			scope=H5750 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_illesztes
 H5750	p.bc.ab	30	1021	Exod 4:18	kiirt	2Móz 4:18	2Móz 4:18	azonos			-/1/a		0			scope=H5750 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -110468,7 +110468,7 @@ H5769	p.cz.ab	122	2884	47:7	orokolt	Ézs 47:7	Ézs 47:7	azonos			Hiph'il/2/b		0	
 H5769	p.cz.ab	123	2914	Psa 81:16	kiirt	Zsolt 81:16	Zsolt 81:16	azonos			Hiph'il/2/b		0			scope=H5769 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H5769	p.cz.ab	124	2925	Obadiah 10	kiirt	Abd 1:10	Abd 1:10	azonos			Hiph'il/2/b		0			scope=H5769 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H5769	p.cz.ab	125	2954	Joel 4:20	kiirt	Jóel 4:20	Jóel 3:20	atkulcsolt			Hiph'il/2/b		0			scope=H5769 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H5769	p.cz.ab	126	2978	49:12	feloldhatatlan						Hiph'il/2/b	orokles_hibas	0			scope=H5769 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H5769	p.cz.ab	126	2978	49:12	orokolt	Zsolt 49:12	Zsolt 49:12	azonos			Hiph'il/2/b	orokles_tahot	0			scope=H5769 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H5769	p.cz.ab	127	2985	Isa 14:20	kiirt	Ézs 14:20	Ézs 14:20	azonos			Hiph'il/2/b		0			scope=H5769 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H5769	p.cz.ab	128	3016	1Sam 13:13	kiirt	1Sám 13:13	1Sám 13:13	azonos			Hiph'il/2/b		0			scope=H5769 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H5769	p.cz.ab	129	3041	2:30	orokolt	1Sám 2:30	1Sám 2:30	azonos			Hiph'il/2/b		0			scope=H5769 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
@@ -111144,7 +111144,7 @@ H5782	p.bp.aa	69	3546	Hag 1:14	kiirt	Hag 1:14	Hag 1:14	azonos	I		Hiph'il/-		0			
 H5782	p.bp.aa	70	3578	Zech 4:1	kiirt	Zak 4:1	Zak 4:1	azonos	I		Hiph'il/-		0			scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	71	3633	Psa 35:23	kiirt	Zsolt 35:23	Zsolt 35:23	azonos	I		Hiph'il/-		0			scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	72	3670	Joel 4:9	kiirt	Jóel 4:9	Jóel 3:9	atkulcsolt	I		Hiph'il/-		0			scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5782	p.bp.aa	73	3713	73:20	feloldhatatlan				I		Hiph'il/-	orokles_hibas	0			scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5782	p.bp.aa	73	3713	73:20	orokolt	Zsolt 73:20	Zsolt 73:20	azonos	I		Hiph'il/-	orokles_tahot	0			scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	74	3750	Isa 13:17	kiirt	Ézs 13:17	Ézs 13:17	azonos	I		Hiph'il/-		0			scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	75	3779	Joel 4:7	kiirt	Jóel 4:7	Jóel 3:7	atkulcsolt	I		Hiph'il/-		0			scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	76	3812	Zech 4:1	kiirt	Zak 4:1	Zak 4:1	azonos	I		Hiph'il/1		0			scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -111153,7 +111153,7 @@ H5782	p.bp.aa	78	4001	Isa 45:13	kiirt	Ézs 45:13	Ézs 45:13	azonos	I		Hiph'il/1	
 H5782	p.bp.aa	79	4027	41:2	orokolt	Ézs 41:2	Ézs 41:2	azonos	I		Hiph'il/1		0	+2	with	scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	80	4033	, 25	folytatas	Ézs 41:25	Ézs 41:25	azonos	I		Hiph'il/1		0	+2	with	scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	81	4037	Joel 4:7	kiirt	Jóel 4:7	Jóel 3:7	atkulcsolt	I		Hiph'il/1		0	+2	with	scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5782	p.bp.aa	82	4061	13:17	feloldhatatlan				I		Hiph'il/1	orokles_hibas	0	+2	with	scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5782	p.bp.aa	82	4061	13:17	orokolt	Ézs 13:17	Ézs 13:17	azonos	I		Hiph'il/1	orokles_tahot	0	+2	with	scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	83	4076	Jer 50:9	kiirt	Jer 50:9	Jer 50:9	azonos	I		Hiph'il/1		0	+2	with	scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	84	4086	51:1	orokolt	Jer 51:1	Jer 51:1	azonos	I		Hiph'il/1		0	+2	with	scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5782	p.bp.aa	85	4092	Ezek 23:22	kiirt	Ez 23:22	Ez 23:22	azonos	I		Hiph'il/1		0	+2	with	scope=H5782 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -115849,27 +115849,27 @@ H5973	p.dj.aa,p.dj.ab	388	11820	Psa 121:2	kiirt	Zsolt 121:2	Zsolt 121:2	azonos		
 H5973	p.dj.aa,p.dj.ab	389	11845	Ruth 2:12	kiirt	Ruth 2:12	Ruth 2:12	azonos			-/5/d		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H5973	p.dj.aa,p.dj.ab	390	11899	2Sam 3:28	kiirt	2Sám 3:28	2Sám 3:28	azonos			-/5/d		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H5973	p.dj.aa,p.dj.ab	391	11950	Job 34:33	kiirt	Jób 34:33	Jób 34:33	azonos			-/5/d		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H5973	p.dj.aa,p.dj.ab	392	12129	Daniel 3:32	kiirt	Dán 3:32	Dán 3:32	atkulcsolt_f85	h:עם		fej		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	393	12150	Ezra 7:13	kiirt	Ezsd 7:13	Ezsd 7:13	azonos	h:עם		fej		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	394	12168	Dan 2:22	kiirt	Dán 2:22	Dán 2:22	azonos	h:עם		fej		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	395	12188	Ezra 5:2	kiirt	Ezsd 5:2	Ezsd 5:2	azonos	h:עם		fej		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	396	12221	Dan 2:18	kiirt	Dán 2:18	Dán 2:18	azonos	h:עם		-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	397	12231	, 43	folytatas	Dán 2:43	Dán 2:43	azonos	h:עם		-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	398	12235	7:13	orokolt	Dán 7:13	Dán 7:13	azonos	h:עם		-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	399	12262	Ezra 5:2	kiirt	Ezsd 5:2	Ezsd 5:2	azonos	h:עם		-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	400	12313	Dan 2:11	kiirt	Dán 2:11	Dán 2:11	azonos	h:עם		-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	401	12323	, 22	folytatas	Dán 2:22	Dán 2:22	azonos	h:עם		-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	402	12327	4:12	orokolt	Dán 4:12	Dán 4:12	atkulcsolt_f85	h:עם		-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	403	12333	5:21	orokolt	Dán 5:21	Dán 5:21	azonos	h:עם		-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	404	12356	Dan 6:22	kiirt	Dán 6:22	Dán 6:21	atkulcsolt	h:עם		-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	405	12383	7:21	orokolt	Dán 7:21	Dán 7:21	azonos	h:עם		-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	406	12413	Daniel 3:32	kiirt	Dán 3:32	Dán 3:32	atkulcsolt_f85	h:עם		-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	407	12452	Psa 86:17	kiirt	Zsolt 86:17	Zsolt 86:17	azonos	h:עם		-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	408	12472	Ezra 6:8	kiirt	Ezsd 6:8	Ezsd 6:8	azonos	h:עם		-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	409	12509	Dan 6:21	kiirt	Dán 6:21	Dán 6:20	atkulcsolt	h:עם		-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	410	12530	Daniel 3:33	kiirt	Dán 3:33	Dán 3:33	atkulcsolt_f85	h:עם		-/2		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	411	12544	Dan 4:31	kiirt	Dán 4:31	Dán 4:31	atkulcsolt_f85	h:עם		-/2		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H5973	p.dj.aa,p.dj.ab	412	12631	7:2	orokolt	Dán 7:2	Dán 7:2	azonos	h:עם		-/2		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	392	12129	Daniel 3:32	kiirt	Dán 3:32	Dán 3:32	atkulcsolt_f85			fej		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	393	12150	Ezra 7:13	kiirt	Ezsd 7:13	Ezsd 7:13	azonos			fej		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	394	12168	Dan 2:22	kiirt	Dán 2:22	Dán 2:22	azonos			fej		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	395	12188	Ezra 5:2	kiirt	Ezsd 5:2	Ezsd 5:2	azonos			fej		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	396	12221	Dan 2:18	kiirt	Dán 2:18	Dán 2:18	azonos			-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	397	12231	, 43	folytatas	Dán 2:43	Dán 2:43	azonos			-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	398	12235	7:13	orokolt	Dán 7:13	Dán 7:13	azonos			-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	399	12262	Ezra 5:2	kiirt	Ezsd 5:2	Ezsd 5:2	azonos			-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	400	12313	Dan 2:11	kiirt	Dán 2:11	Dán 2:11	azonos			-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	401	12323	, 22	folytatas	Dán 2:22	Dán 2:22	azonos			-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	402	12327	4:12	orokolt	Dán 4:12	Dán 4:12	atkulcsolt_f85			-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	403	12333	5:21	orokolt	Dán 5:21	Dán 5:21	azonos			-/1/a		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	404	12356	Dan 6:22	kiirt	Dán 6:22	Dán 6:21	atkulcsolt			-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	405	12383	7:21	orokolt	Dán 7:21	Dán 7:21	azonos			-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	406	12413	Daniel 3:32	kiirt	Dán 3:32	Dán 3:32	atkulcsolt_f85			-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	407	12452	Psa 86:17	kiirt	Zsolt 86:17	Zsolt 86:17	azonos			-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	408	12472	Ezra 6:8	kiirt	Ezsd 6:8	Ezsd 6:8	azonos			-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	409	12509	Dan 6:21	kiirt	Dán 6:21	Dán 6:20	atkulcsolt			-/1/b		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	410	12530	Daniel 3:33	kiirt	Dán 3:33	Dán 3:33	atkulcsolt_f85			-/2		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	411	12544	Dan 4:31	kiirt	Dán 4:31	Dán 4:31	atkulcsolt_f85			-/2		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H5973	p.dj.aa,p.dj.ab	412	12631	7:2	orokolt	Dán 7:2	Dán 7:2	azonos			-/2		0			scope=H5973 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5975	p.df.aa	1	429	Gen 19:27	kiirt	1Móz 19:27	1Móz 19:27	azonos			Qal/-		0			scope=H5975 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5975	p.df.aa	2	471	2Kin 13:6	kiirt	2Kir 13:6	2Kir 13:6	azonos			Qal/-		0			scope=H5975 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H5975	p.df.aa	3	508	Exod 21:21	kiirt	2Móz 21:21	2Móz 21:21	azonos			Qal/-		0			scope=H5975 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -117257,8 +117257,8 @@ H6057	p.ea.ab	2	158	Psa 80:11	kiirt	Zsolt 80:11	Zsolt 80:11	azonos			tagolatlan	
 H6057	p.ea.ab	3	218	Lev 23:40	kiirt	3Móz 23:40	3Móz 23:40	azonos			tagolatlan		0			scope=H6057 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6057	p.ea.ab	4	283	Ezek 36:8	kiirt	Ez 36:8	Ez 36:8	azonos			tagolatlan		0			scope=H6057 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6057	p.ea.ab	5	328	Malachi 3:19	kiirt	Mal 3:19	Mal 4:1	atkulcsolt			tagolatlan		0			scope=H6057 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6057	p.ea.ab	6	351	17:23	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6057 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6057	p.ea.ab	7	358	31:3	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6057 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6057	p.ea.ab	6	351	17:23	orokolt	Ez 17:23	Ez 17:23	azonos			tagolatlan	orokles_tahot	0			scope=H6057 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6057	p.ea.ab	7	358	31:3	orokolt	Ez 31:3	Ez 31:3	azonos			tagolatlan	orokles_tahot	0			scope=H6057 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6058	p.ea.ac	1	77	Ezek 19:10	kiirt	Ez 19:10	Ez 19:10	azonos			tagolatlan		0			scope=H6058 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6059	p.eb.ad	1	100	Psa 73:6	kiirt	Zsolt 73:6	Zsolt 73:6	azonos			Qal/-		0			scope=H6059 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6059	p.eb.ad	2	202	Deut 15:14	kiirt	5Móz 15:14	5Móz 15:14	azonos			Hiph'il/-		0			scope=H6059 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -118774,7 +118774,7 @@ H6194	p.fl.ab	4	129	Neh 13:15	kiirt	Neh 13:15	Neh 13:15	azonos			tagolatlan		0		
 H6194	p.fl.ab	5	152	Nehemiah 3:34	kiirt	Neh 3:34	Neh 4:2	atkulcsolt			tagolatlan		0			scope=H6194 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6194	p.fl.ab	6	185	Jer 50:26	kiirt	Jer 50:26	Jer 50:26	azonos			tagolatlan		0			scope=H6194 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6194	p.fl.ab	7	222	Nehemiah 3:34	kiirt	Neh 3:34	Neh 4:2	atkulcsolt			tagolatlan		0			scope=H6194 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6194	p.fl.ab	8	252	50:26	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6194 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6194	p.fl.ab	8	252	50:26	orokolt	Jer 50:26	Jer 50:26	azonos			tagolatlan	orokles_tahot	0			scope=H6194 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6194	p.fl.ab	9	331	Hag 2:16	kiirt	Hag 2:16	Hag 2:16	azonos			tagolatlan		0			scope=H6194 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6194	p.fl.ab	10	341	Neh 13:15	kiirt	Neh 13:15	Neh 13:15	azonos			tagolatlan		0			scope=H6194 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6194	p.fl.ab	11	352	Ruth 3:7	kiirt	Ruth 3:7	Ruth 3:7	azonos			tagolatlan		0			scope=H6194 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -119457,12 +119457,12 @@ H6215	p.fz.ab	24	423	, 22	folytatas	5Móz 2:22	5Móz 2:22	azonos			tagolatlan		0
 H6215	p.fz.ab	25	427	, 29	folytatas	5Móz 2:29	5Móz 2:29	azonos			tagolatlan		0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6215	p.fz.ab	26	444	Jer 49:8	kiirt	Jer 49:8	Jer 49:8	azonos			tagolatlan		0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6215	p.fz.ab	27	454	Obadiah 6	kiirt	Abd 1:6	Abd 1:6	azonos			tagolatlan		0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6215	p.fz.ab	28	477	49:18	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6215	p.fz.ab	29	484	49:18	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6215	p.fz.ab	30	501	49:18	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6215	p.fz.ab	31	508	49:9	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6215	p.fz.ab	32	514	49:19	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6215	p.fz.ab	33	521	49:21	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6215	p.fz.ab	28	477	49:18	orokolt	Abd 1:18	Abd 1:18	azonos			tagolatlan	orokles_tahot	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6215	p.fz.ab	29	484	49:18	orokolt	Abd 1:18	Abd 1:18	azonos			tagolatlan	orokles_tahot	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6215	p.fz.ab	30	501	49:18	orokolt	Abd 1:18	Abd 1:18	azonos			tagolatlan	orokles_tahot	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6215	p.fz.ab	31	508	49:9	orokolt	Abd 1:9	Abd 1:9	azonos			tagolatlan	orokles_tahot	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6215	p.fz.ab	32	514	49:19	orokolt	Abd 1:19	Abd 1:19	azonos			tagolatlan	orokles_tahot	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6215	p.fz.ab	33	521	49:21	orokolt	Abd 1:21	Abd 1:21	azonos			tagolatlan	orokles_tahot	0			scope=H6215 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6216	p.gd.ae	1	63	Jer 22:3	kiirt	Jer 22:3	Jer 22:3	azonos			tagolatlan		0			scope=H6216 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6216	p.gd.ae	2	80	21:12	orokolt	Jer 21:12	Jer 21:12	azonos			tagolatlan		0			scope=H6216 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6217	p.gd.af	1	74	Amos 3:9	kiirt	Ámós 3:9	Ámós 3:9	azonos			tagolatlan		0			scope=H6217 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -126145,14 +126145,14 @@ H6666	r.ar.ac	87	2079	Isa 54:17	kiirt	Ézs 54:17	Ézs 54:17	azonos			-/6/a		0			
 H6666	r.ar.ac	88	2099	Psa 36:11	kiirt	Zsolt 36:11	Zsolt 36:11	azonos			-/6/a		0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6666	r.ar.ac	89	2110	103:17	orokolt	Zsolt 103:17	Zsolt 103:17	azonos			-/6/a		0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6666	r.ar.ac	90	2127	Malachi 3:20	kiirt	Mal 3:20	Mal 4:2	atkulcsolt			-/6/a		0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6666	r.ar.ac	91	2223	5:9	feloldhatatlan						-/6/a	orokles_hibas	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6666	r.ar.ac	92	2228	31:2	feloldhatatlan						-/6/a	orokles_hibas	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6666	r.ar.ac	93	2234	71:2	feloldhatatlan						-/6/a	orokles_hibas	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6666	r.ar.ac	94	2240	89:17	feloldhatatlan						-/6/a	orokles_hibas	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6666	r.ar.ac	95	2247	119:40	feloldhatatlan						-/6/a	orokles_hibas	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6666	r.ar.ac	96	2255	143:1	feloldhatatlan						-/6/a	orokles_hibas	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6666	r.ar.ac	97	2262	143:11	feloldhatatlan						-/6/a	orokles_hibas	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6666	r.ar.ac	98	2297	69:28	feloldhatatlan						-/6/a	orokles_hibas	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6666	r.ar.ac	91	2223	5:9	orokolt	Zsolt 5:9	Zsolt 5:9	azonos			-/6/a	orokles_tahot	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6666	r.ar.ac	92	2228	31:2	orokolt	Zsolt 31:2	Zsolt 31:2	azonos			-/6/a	orokles_tahot	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6666	r.ar.ac	93	2234	71:2	orokolt	Zsolt 71:2	Zsolt 71:2	azonos			-/6/a	orokles_tahot	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6666	r.ar.ac	94	2240	89:17	orokolt	Zsolt 89:17	Zsolt 89:17	azonos			-/6/a	orokles_tahot	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6666	r.ar.ac	95	2247	119:40	orokolt	Zsolt 119:40	Zsolt 119:40	azonos			-/6/a	orokles_tahot	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6666	r.ar.ac	96	2255	143:1	orokolt	Zsolt 143:1	Zsolt 143:1	azonos			-/6/a	orokles_tahot	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6666	r.ar.ac	97	2262	143:11	orokolt	Zsolt 143:11	Zsolt 143:11	azonos			-/6/a	orokles_tahot	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6666	r.ar.ac	98	2297	69:28	orokolt	Zsolt 69:28	Zsolt 69:28	azonos			-/6/a	orokles_tahot	0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6666	r.ar.ac	99	2400	Psalm 22:32	kiirt	Zsolt 22:32	Zsolt 22:32	azonos			-/6/a		0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6666	r.ar.ac	100	2413	40:11	orokolt	Zsolt 40:11	Zsolt 40:11	azonos			-/6/a		0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6666	r.ar.ac	101	2420	51:16	orokolt	Zsolt 51:16	Zsolt 51:16	azonos			-/6/a		0			scope=H6666 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -128133,7 +128133,7 @@ H6845	r.di.aa	18	796	Psa 119:11	kiirt	Zsolt 119:11	Zsolt 119:11	azonos			Qal/1		
 H6845	r.di.aa	19	816	Job 23:12	kiirt	Jób 23:12	Jób 23:12	azonos			Qal/1		0			scope=H6845 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6845	r.di.aa	20	838	Prov 13:22	kiirt	Péld 13:22	Péld 13:22	azonos			Qal/1		0			scope=H6845 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6845	r.di.aa	21	850	Cant 7:14	kiirt	Én 7:14	Én 7:13	atkulcsolt			Qal/1		0			scope=H6845 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H6845	r.di.aa	22	872	21:19	feloldhatatlan						Qal/1	orokles_hibas	0			scope=H6845 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H6845	r.di.aa	22	872	21:19	orokolt	Jób 21:19	Jób 21:19	azonos			Qal/1	orokles_tahot	0			scope=H6845 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6845	r.di.aa	23	905	Psa 31:20	kiirt	Zsolt 31:20	Zsolt 31:20	azonos			Qal/1		0			scope=H6845 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6845	r.di.aa	24	916	Prov 2:7	kiirt	Péld 2:7	Péld 2:7	azonos			Qal/1		0			scope=H6845 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H6845	r.di.aa	25	931	Job 17:4	kiirt	Jób 17:4	Jób 17:3	atkulcsolt_f85			Qal/1		0			scope=H6845 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -134225,8 +134225,8 @@ H7179	s.dx.ab	12	415	Joel 2:5	kiirt	Jóel 2:5	Jóel 2:5	azonos			tagolatlan		0		
 H7179	s.dx.ab	13	440	Isa 33:11	kiirt	Ézs 33:11	Ézs 33:11	azonos			tagolatlan		0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7179	s.dx.ab	14	451	Obadiah 18	kiirt	Abd 1:18	Abd 1:18	azonos			tagolatlan		0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7179	s.dx.ab	15	463	Malachi 3:19	kiirt	Mal 3:19	Mal 4:1	atkulcsolt			tagolatlan		0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H7179	s.dx.ab	16	506	40:24	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H7179	s.dx.ab	17	513	41:2	feloldhatatlan						tagolatlan	orokles_hibas	0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H7179	s.dx.ab	16	506	40:24	orokolt	Ézs 40:24	Ézs 40:24	azonos			tagolatlan	orokles_tahot	0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H7179	s.dx.ab	17	513	41:2	orokolt	Ézs 41:2	Ézs 41:2	azonos			tagolatlan	orokles_tahot	0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7179	s.dx.ab	18	519	Jer 13:24	kiirt	Jer 13:24	Jer 13:24	azonos			tagolatlan		0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7179	s.dx.ab	19	530	Psa 83:14	kiirt	Zsolt 83:14	Zsolt 83:14	azonos			tagolatlan		0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7179	s.dx.ab	20	569	Job 13:25	kiirt	Jób 13:25	Jób 13:25	azonos			tagolatlan		0			scope=H7179 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -144097,7 +144097,7 @@ H7704	u.ak.ab,u.ak.ac	13	419	50:11	orokolt	Zsolt 50:11	Zsolt 50:11	azonos			-/2	
 H7704	u.ak.ab,u.ak.ac	14	426	80:14	orokolt	Zsolt 80:14	Zsolt 80:14	azonos			-/2		0			scope=H7704 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7704	u.ak.ab,u.ak.ac	15	461	Jer 18:14	kiirt	Jer 18:14	Jer 18:14	azonos			-/3		0			scope=H7704 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7704	u.ak.ab,u.ak.ac	16	526	Psa 96:12	kiirt	Zsolt 96:12	Zsolt 96:12	azonos			-/4		0			scope=H7704 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H7704	u.ak.ab,u.ak.ac	17	564	Psa 98:7	kiirt	Zsolt 98:7	Zsolt 98:7	azonos			fej		0			scope=H7704 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H7704	u.ak.ab,u.ak.ac	17	564	Psa 98:7	kiirt	Zsolt 98:7	Zsolt 98:7	azonos			-/4		0			scope=H7704 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7704	u.ak.ab,u.ak.ac	18	600	Lev 27:24	kiirt	3Móz 27:24	3Móz 27:24	azonos			fej		0			scope=H7704 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7704	u.ak.ab,u.ak.ac	19	669	Gen 2:5	kiirt	1Móz 2:5	1Móz 2:5	azonos			fej		0			scope=H7704 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7704	u.ak.ab,u.ak.ac	20	713	14:7	orokolt	1Móz 14:7	1Móz 14:7	azonos			fej		0			scope=H7704 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -148785,7 +148785,7 @@ H7971	v.dl.aa	152	5547	Deut 22:7	kiirt	5Móz 22:7	5Móz 22:7	azonos	I		Pi'el/-		
 H7971	v.dl.aa	153	5558	1Kin 11:22	kiirt	1Kir 11:22	1Kir 11:22	azonos	I		Pi'el/-		0			scope=H7971 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7971	v.dl.aa	154	5588	Gen 8:10	kiirt	1Móz 8:10	1Móz 8:10	azonos	I		Pi'el/-		0			scope=H7971 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7971	v.dl.aa	155	5610	Exodus 7:27	kiirt	2Móz 7:27	2Móz 8:2	atkulcsolt	I		Pi'el/-		0			scope=H7971 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H7971	v.dl.aa	156	5652	43:4	feloldhatatlan				I		Pi'el/-	orokles_hibas	0			scope=H7971 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H7971	v.dl.aa	156	5652	43:4	orokolt	1Móz 43:4	1Móz 43:4	azonos	I		Pi'el/-	orokles_tahot	0			scope=H7971 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7971	v.dl.aa	157	5738	Josh 24:28	kiirt	Józs 24:28	Józs 24:28	azonos	I		Pi'el/1/a		0			scope=H7971 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7971	v.dl.aa	158	5754	Judg 7:8	kiirt	Bír 7:8	Bír 7:8	azonos	I		Pi'el/1/a		0			scope=H7971 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H7971	v.dl.aa	159	5764	1Sam 10:23	kiirt	1Sám 10:23	1Sám 10:23	azonos	I		Pi'el/1/a		0			scope=H7971 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -149601,8 +149601,8 @@ H8018	v.ds.az	4	176	38:1	orokolt	Jer 38:1	Jer 38:1	azonos			-/-/c		0			scope=H80
 H8018	v.ds.az	5	207	1Chr 26:14	kiirt	1Krón 26:14	1Krón 26:14	azonos			-/2		0			scope=H8018 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H8018	v.ds.az	6	288	Neh 3:30	kiirt	Neh 3:30	Neh 3:30	azonos			-/3/a		0			scope=H8018 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H8018	v.ds.az	7	328	Neh 13:13	kiirt	Neh 13:13	Neh 13:13	azonos			-/3/b		0			scope=H8018 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H8018	v.ds.az	8	381	Ezra 10:39	kiirt	Ezsd 10:39	Ezsd 10:39	azonos			-/-/c		0			scope=H8018 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
-H8018	v.ds.az	9	412	Ezra 10:41	kiirt	Ezsd 10:41	Ezsd 10:41	azonos			-/-/d		0			scope=H8018 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H8018	v.ds.az	8	381	Ezra 10:39	kiirt	Ezsd 10:39	Ezsd 10:39	azonos			-/3/c		0			scope=H8018 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
+H8018	v.ds.az	9	412	Ezra 10:41	kiirt	Ezsd 10:41	Ezsd 10:41	azonos			-/3/d		0			scope=H8018 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	ketes:jp_tanu_elter
 H8019	v.ds.au,v.ds.av	1	81	Lev 24:11	kiirt	3Móz 24:11	3Móz 24:11	azonos	II		-/1		0			scope=H8019 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H8019	v.ds.au,v.ds.av	2	117	1Chr 3:19	kiirt	1Krón 3:19	1Krón 3:19	azonos	II		-/2		0			scope=H8019 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H8020	v.ds.ba	1	231	Hosea 10:14	kiirt						tagolatlan	sigla_tapadt	1			scope=H8020 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
@@ -153338,11 +153338,11 @@ H8199	v.fg.aa	168	4666	1Chr 16:33	kiirt	1Krón 16:33	1Krón 16:33	azonos			Qal/3
 H8199	v.fg.aa	169	4678	Psa 98:9	kiirt	Zsolt 98:9	Zsolt 98:9	azonos			Qal/3/d		0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H8199	v.fg.aa	170	4696	82:8	orokolt	Zsolt 82:8	Zsolt 82:8	azonos			Qal/3/d		0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H8199	v.fg.aa	171	4711	Joel 4:12	kiirt	Jóel 4:12	Jóel 3:12	atkulcsolt			Qal/3/d		0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H8199	v.fg.aa	172	4727	67:5	feloldhatatlan						Qal/3/d	orokles_hibas	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H8199	v.fg.aa	173	4737	9:9	feloldhatatlan						Qal/3/d	orokles_hibas	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H8199	v.fg.aa	174	4742	96:13	feloldhatatlan						Qal/3/d	orokles_hibas	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H8199	v.fg.aa	175	4750	98:9	feloldhatatlan						Qal/3/d	orokles_hibas	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
-H8199	v.fg.aa	176	4766	75:3	feloldhatatlan						Qal/3/d	orokles_hibas	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H8199	v.fg.aa	172	4727	67:5	orokolt	Zsolt 67:5	Zsolt 67:5	azonos			Qal/3/d	orokles_tahot	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H8199	v.fg.aa	173	4737	9:9	orokolt	Zsolt 9:9	Zsolt 9:9	azonos			Qal/3/d	orokles_tahot	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H8199	v.fg.aa	174	4742	96:13	orokolt	Zsolt 96:13	Zsolt 96:13	azonos			Qal/3/d	orokles_tahot	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H8199	v.fg.aa	175	4750	98:9	orokolt	Zsolt 98:9	Zsolt 98:9	azonos			Qal/3/d	orokles_tahot	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
+H8199	v.fg.aa	176	4766	75:3	orokolt	Zsolt 75:3	Zsolt 75:3	azonos			Qal/3/d	orokles_tahot	0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H8199	v.fg.aa	177	4811	Ezek 20:36	kiirt	Ez 20:36	Ez 20:36	azonos			Niph'al/-		0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H8199	v.fg.aa	178	4856	20:36	orokolt	Ez 20:36	Ez 20:36	azonos			Niph'al/-		0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos
 H8199	v.fg.aa	179	4876	1Sam 12:7	kiirt	1Sám 12:7	1Sám 12:7	azonos			Niph'al/-		0			scope=H8199 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10	biztos

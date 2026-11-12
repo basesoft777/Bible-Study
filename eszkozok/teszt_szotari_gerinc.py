@@ -1226,5 +1226,19 @@ class F182LathatoHibak(unittest.TestCase):
         self.assertEqual(LG.jelentes_cella(a, sor)[0], '*(nincs hozzárendelés)*')
         self.assertTrue(LG.jelentes_cella(a, sor, uj=True)[0].startswith('a szócikk egésze'))
 
+class SzocikkfejRovid(unittest.TestCase):
+    """F202 (N-F202e): a rövid nyelvi háttér a puszta utaló első szócikk (szakasz nélkül) helyett a fő szócikk fejéből."""
+
+    def test_utalo_elso_szocikk(self):
+        # H7585: a BDB8371 („שְׁאָ֫לָה Isa 7:11 see שְׁאוֺל 1 below”) után a BDB8375 feje adja a gyököt és a rokon nyelveket
+        s = LG._gerinc_bdb_fej_rovid('heber', 0, ['H7585'], None, {'id': 'ALVIL-001'})[0]
+        self.assertIn('gyök (√): kétséges', s)
+        self.assertIn('rokon nyelvi adat: óarámi, szír, asszír (kétséges)', s)
+
+    def test_fo_szocikk_elso_nem_valtozik(self):
+        # H2403: az első szócikk (BDB2699) a fő szócikk; az arámi BDB9520 („bűnért való áldozat”) nem lép a helyére
+        s = LG._gerinc_bdb_fej_rovid('heber', 0, ['H2403'], None, {'id': 'HAMART-001'})[0]
+        self.assertIn('alapjelentés: bűn *(a STEPBible rövid szótára szerint)*', s)
+
 if __name__ == '__main__':
     unittest.main()
