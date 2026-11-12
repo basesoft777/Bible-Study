@@ -1,405 +1,21 @@
 {
  "_generalt": "eszkozok/muhely_allapot.py — GENERÁLT, kézzel szerkeszteni tilos; feed_nyilvanos.json (belső réteg) (a belső réteg fehérlistás szűrése)",
- "generalva": "2026-11-02T09:08Z",
- "commit": "a930b886",
+ "generalva": "2026-11-12T12:36Z",
+ "commit": "6a6d75f0",
  "rendszer": "PaRDeS műhely — Feed/Stash (F156)",
  "motivumok": [
-  {
-   "id": "KIRALY-001",
-   "cim": "Melkizedek-rend",
-   "tema": "Krisztológia",
-   "pardes_szint": "Drash/Sod",
-   "allasfokozat": "Ellenőrzés alatt",
-   "zold_db": 2,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 13,
-   "beepitett_jelolt_db": 9,
-   "stash": null,
-   "olvasoi_mondat": "9 igehely feldolgozva, 13 kizárva; a nyolc ellenőrzési lépésből 2 teljesül.",
-   "lanc": [
-    {
-     "nev": "Felmerült",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Feldolgozás",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Ellenőrzés",
-     "allapot": "aktualis"
-    },
-    {
-     "nev": "Kész",
-     "allapot": "kovetkezo"
-    },
-    {
-     "nev": "Kötetben",
-     "allapot": "kovetkezo"
-    }
-   ],
-   "teljesult_lepesek": [
-    {
-     "sorszam": 1,
-     "olvasoi_nev": "Az adatok összhangja",
-     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
-    },
-    {
-     "sorszam": 8,
-     "olvasoi_nev": "Függő munka",
-     "olvasoi_szoveg": "A motívum körül minden kérdés rendezett."
-    }
-   ]
-  },
-  {
-   "id": "ISTENTISZT-001",
-   "cim": "Névbe vetett segítségülhívás",
-   "tema": "Pneumatológia/istentisztelet",
-   "pardes_szint": "Drash",
-   "allasfokozat": "Kész",
-   "zold_db": 8,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 106,
-   "beepitett_jelolt_db": 24,
-   "stash": {
-    "cim": "Segítségül hívni az Úr nevét",
-    "tema": "Pneumatológia/istentisztelet",
-    "pardes_szint": "Drash",
-    "negativ_kriterium": "az igehelynek a קָרָא (kárá) + בְּשֵׁם (besém) + יְהוָה (JHVH) mintát kell mutatnia (aktív, invokáló szerkezet: \"[valaki] hívja segítségül az Úr nevét\"), a besém után a JHVH szóval; ahol névmási rag áll a helyén („nevemet”, „nevedet”, „nevét”: Zak 13:9, Zsolt 105:1, Jer 10:25, Ézs 43:1, 45:3) vagy más név (Ézs 44:5), az nem tartozik ide (DT478, DT476 K4). Az Újszövetségben az ἐπικαλέομαι mellett a névnek (ὄνομα) kell állnia; név nélkül a segítségül hívás a fölérendelt fogalomhoz tartozik (2Tim 2:22, Róm 10:12, 14; DT476 K2). Kivétel: a kontrasztként megtartott 1Kir 18:25–26, ahol a besém után elohéchem, illetve ha-Báal áll (DT476 K5). A passzív נִקְרָא...עַל (nikrá … al) szerkezet (birtoklás/hovatartozás kifejezése, nem invokáció) kizárja a besorolást, még akkor is, ha ugyanazt a két gyököt használja (l. D-minta, 2Sám 6:2, Jer 7:10-14, 5Móz 28:10, ÚSZ-párja Zsid 11:16)",
-    "folerendelt_fogalom": "istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül)",
-    "terjedelem_szo": 26827,
-    "kotet": null,
-    "elofordulas_osz": 16,
-    "elofordulas_usz": 6,
-    "kapcsolatok_db": 3,
-    "forditasi_lefedettseg": 0.955,
-    "utolso_generalas_commit": "3bce7209",
-    "verzio": "v4",
-    "kotet_olvasoi": "Kötetbe még nincs beosztva"
-   },
-   "olvasoi_mondat": "22 igehely feldolgozva, 106 kizárva; a nyolc ellenőrzési lépésből 8 teljesül.",
-   "lanc": [
-    {
-     "nev": "Felmerült",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Feldolgozás",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Ellenőrzés",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Kész",
-     "allapot": "aktualis"
-    },
-    {
-     "nev": "Kötetben",
-     "allapot": "kovetkezo"
-    }
-   ],
-   "teljesult_lepesek": [
-    {
-     "sorszam": 1,
-     "olvasoi_nev": "Az adatok összhangja",
-     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
-    },
-    {
-     "sorszam": 2,
-     "olvasoi_nev": "A szövegek ellenőrzése",
-     "olvasoi_szoveg": "A lap szövegei átmentek az ellenőrzésen."
-    },
-    {
-     "sorszam": 3,
-     "olvasoi_nev": "Egy szerkesztett forrásból épül",
-     "olvasoi_szoveg": "A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz."
-    },
-    {
-     "sorszam": 4,
-     "olvasoi_nev": "Eldöntendő igehelyek",
-     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
-    },
-    {
-     "sorszam": 5,
-     "olvasoi_nev": "A motívum határa",
-     "olvasoi_szoveg": "A motívum határa tisztázott."
-    },
-    {
-     "sorszam": 6,
-     "olvasoi_nev": "Olvasható lap",
-     "olvasoi_szoveg": "A lap minden része magyarázattal, kiejtéssel és fordítással áll."
-    },
-    {
-     "sorszam": 7,
-     "olvasoi_nev": "Lektori átolvasás",
-     "olvasoi_szoveg": "A lektori átolvasás lezárult. 2. kiadáshoz: 17 kérdés."
-    },
-    {
-     "sorszam": 8,
-     "olvasoi_nev": "Függő munka",
-     "olvasoi_szoveg": "A motívum körül minden kérdés rendezett."
-    }
-   ]
-  },
-  {
-   "id": "TEREMT-001",
-   "cim": "Tehóm/Abüsszosz",
-   "tema": "Teremtéstan",
-   "pardes_szint": "Remez/Drash",
-   "allasfokozat": "Ellenőrzés alatt",
-   "zold_db": 3,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 2,
-   "beepitett_jelolt_db": 42,
-   "stash": null,
-   "olvasoi_mondat": "42 igehely feldolgozva, 2 kizárva; a nyolc ellenőrzési lépésből 3 teljesül.",
-   "lanc": [
-    {
-     "nev": "Felmerült",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Feldolgozás",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Ellenőrzés",
-     "allapot": "aktualis"
-    },
-    {
-     "nev": "Kész",
-     "allapot": "kovetkezo"
-    },
-    {
-     "nev": "Kötetben",
-     "allapot": "kovetkezo"
-    }
-   ],
-   "teljesult_lepesek": [
-    {
-     "sorszam": 1,
-     "olvasoi_nev": "Az adatok összhangja",
-     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
-    },
-    {
-     "sorszam": 4,
-     "olvasoi_nev": "Eldöntendő igehelyek",
-     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
-    },
-    {
-     "sorszam": 8,
-     "olvasoi_nev": "Függő munka",
-     "olvasoi_szoveg": "A motívum körül minden kérdés rendezett."
-    }
-   ]
-  },
-  {
-   "id": "ALVIL-001",
-   "cim": "Hádész/Seol",
-   "tema": "Eszkatológia",
-   "pardes_szint": "Remez/Drash",
-   "allasfokozat": "Ellenőrzés alatt",
-   "zold_db": 4,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 5,
-   "beepitett_jelolt_db": 72,
-   "stash": null,
-   "olvasoi_mondat": "72 igehely feldolgozva, 5 kizárva; a nyolc ellenőrzési lépésből 4 teljesül.",
-   "lanc": [
-    {
-     "nev": "Felmerült",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Feldolgozás",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Ellenőrzés",
-     "allapot": "aktualis"
-    },
-    {
-     "nev": "Kész",
-     "allapot": "kovetkezo"
-    },
-    {
-     "nev": "Kötetben",
-     "allapot": "kovetkezo"
-    }
-   ],
-   "teljesult_lepesek": [
-    {
-     "sorszam": 1,
-     "olvasoi_nev": "Az adatok összhangja",
-     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
-    },
-    {
-     "sorszam": 2,
-     "olvasoi_nev": "A szövegek ellenőrzése",
-     "olvasoi_szoveg": "A lap szövegei átmentek az ellenőrzésen."
-    },
-    {
-     "sorszam": 3,
-     "olvasoi_nev": "Egy szerkesztett forrásból épül",
-     "olvasoi_szoveg": "A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz."
-    },
-    {
-     "sorszam": 4,
-     "olvasoi_nev": "Eldöntendő igehelyek",
-     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
-    }
-   ]
-  },
-  {
-   "id": "MENNY-001",
-   "cim": "Isten fiai/Nefilim",
-   "tema": "Angyalológia",
-   "pardes_szint": "Remez/Drash",
-   "allasfokozat": "Ellenőrzés alatt",
-   "zold_db": 2,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 1,
-   "beepitett_jelolt_db": 9,
-   "stash": null,
-   "olvasoi_mondat": "9 igehely feldolgozva, 1 kizárva; a nyolc ellenőrzési lépésből 2 teljesül.",
-   "lanc": [
-    {
-     "nev": "Felmerült",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Feldolgozás",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Ellenőrzés",
-     "allapot": "aktualis"
-    },
-    {
-     "nev": "Kész",
-     "allapot": "kovetkezo"
-    },
-    {
-     "nev": "Kötetben",
-     "allapot": "kovetkezo"
-    }
-   ],
-   "teljesult_lepesek": [
-    {
-     "sorszam": 1,
-     "olvasoi_nev": "Az adatok összhangja",
-     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
-    },
-    {
-     "sorszam": 8,
-     "olvasoi_nev": "Függő munka",
-     "olvasoi_szoveg": "A motívum körül minden kérdés rendezett."
-    }
-   ]
-  },
-  {
-   "id": "ANTROP-001",
-   "cim": "Pneuma/pszükhé",
-   "tema": "Antropológia",
-   "pardes_szint": "Pshat/Drash",
-   "allasfokozat": "Ellenőrzés alatt",
-   "zold_db": 1,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 0,
-   "beepitett_jelolt_db": 8,
-   "stash": null,
-   "olvasoi_mondat": "8 igehely feldolgozva; a nyolc ellenőrzési lépésből 1 teljesül.",
-   "lanc": [
-    {
-     "nev": "Felmerült",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Feldolgozás",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Ellenőrzés",
-     "allapot": "aktualis"
-    },
-    {
-     "nev": "Kész",
-     "allapot": "kovetkezo"
-    },
-    {
-     "nev": "Kötetben",
-     "allapot": "kovetkezo"
-    }
-   ],
-   "teljesult_lepesek": [
-    {
-     "sorszam": 1,
-     "olvasoi_nev": "Az adatok összhangja",
-     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
-    }
-   ]
-  },
-  {
-   "id": "HODIT-001",
-   "cim": "Refáim/óriás-népek",
-   "tema": "Teremtéstan",
-   "pardes_szint": "Remez/Drash",
-   "allasfokozat": "Ellenőrzés alatt",
-   "zold_db": 2,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 4,
-   "beepitett_jelolt_db": 33,
-   "stash": null,
-   "olvasoi_mondat": "33 igehely feldolgozva, 4 kizárva; a nyolc ellenőrzési lépésből 2 teljesül.",
-   "lanc": [
-    {
-     "nev": "Felmerült",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Feldolgozás",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Ellenőrzés",
-     "allapot": "aktualis"
-    },
-    {
-     "nev": "Kész",
-     "allapot": "kovetkezo"
-    },
-    {
-     "nev": "Kötetben",
-     "allapot": "kovetkezo"
-    }
-   ],
-   "teljesult_lepesek": [
-    {
-     "sorszam": 1,
-     "olvasoi_nev": "Az adatok összhangja",
-     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
-    },
-    {
-     "sorszam": 8,
-     "olvasoi_nev": "Függő munka",
-     "olvasoi_szoveg": "A motívum körül minden kérdés rendezett."
-    }
-   ]
-  },
   {
    "id": "HAMART-001",
    "cim": "Bűn gyűrűzése",
    "tema": "Hamartológia",
    "pardes_szint": "Remez/Drash",
    "allasfokozat": "Ellenőrzés alatt",
-   "zold_db": 3,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 163,
-   "beepitett_jelolt_db": 52,
+   "zold_db": 5,
+   "ossz_db": 9,
+   "elvetett_jelolt_db": 288,
+   "beepitett_jelolt_db": 47,
    "stash": null,
-   "olvasoi_mondat": "52 igehely feldolgozva, 163 kizárva; a nyolc ellenőrzési lépésből 3 teljesül.",
+   "olvasoi_mondat": "47 igehely feldolgozva, 288 kizárva; a kilenc ellenőrzési lépésből 5 teljesül.",
    "lanc": [
     {
      "nev": "Felmerült",
@@ -429,9 +45,19 @@
      "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
     },
     {
-     "sorszam": 5,
-     "olvasoi_nev": "A motívum határa",
-     "olvasoi_szoveg": "A motívum határa tisztázott."
+     "sorszam": 2,
+     "olvasoi_nev": "A szövegek ellenőrzése",
+     "olvasoi_szoveg": "A lap szövegei átmentek az ellenőrzésen."
+    },
+    {
+     "sorszam": 3,
+     "olvasoi_nev": "Egy szerkesztett forrásból épül",
+     "olvasoi_szoveg": "A lap egyetlen szerkesztett forrásból készül, és újraépítve ugyanaz."
+    },
+    {
+     "sorszam": 4,
+     "olvasoi_nev": "Eldöntendő igehelyek",
+     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
     },
     {
      "sorszam": 7,
@@ -439,97 +65,45 @@
      "olvasoi_szoveg": "A lektori átolvasás lezárult."
     }
    ]
-  },
-  {
-   "id": "TEREMT-002",
-   "cim": "Tohu va-vohu",
-   "tema": "Teremtéstan + Eszkatológia",
-   "pardes_szint": "Remez",
-   "allasfokozat": "Feldolgozás alatt",
-   "zold_db": 4,
-   "ossz_db": 8,
-   "elvetett_jelolt_db": 63,
-   "beepitett_jelolt_db": 3,
-   "stash": null,
-   "olvasoi_mondat": "3 igehely feldolgozva, 63 kizárva; a nyolc ellenőrzési lépésből 4 teljesül.",
-   "lanc": [
-    {
-     "nev": "Felmerült",
-     "allapot": "kesz"
-    },
-    {
-     "nev": "Feldolgozás",
-     "allapot": "aktualis"
-    },
-    {
-     "nev": "Ellenőrzés",
-     "allapot": "kovetkezo"
-    },
-    {
-     "nev": "Kész",
-     "allapot": "kovetkezo"
-    },
-    {
-     "nev": "Kötetben",
-     "allapot": "kovetkezo"
-    }
-   ],
-   "teljesult_lepesek": [
-    {
-     "sorszam": 1,
-     "olvasoi_nev": "Az adatok összhangja",
-     "olvasoi_szoveg": "Az adattáblák egymásnak megfelelnek."
-    },
-    {
-     "sorszam": 2,
-     "olvasoi_nev": "A szövegek ellenőrzése",
-     "olvasoi_szoveg": "A lap szövegei átmentek az ellenőrzésen."
-    },
-    {
-     "sorszam": 4,
-     "olvasoi_nev": "Eldöntendő igehelyek",
-     "olvasoi_szoveg": "Minden vizsgált igehelyről döntöttünk."
-    },
-    {
-     "sorszam": 8,
-     "olvasoi_nev": "Függő munka",
-     "olvasoi_szoveg": "A motívum körül minden kérdés rendezett."
-    }
-   ]
   }
  ],
  "merok_osszesen": {
-  "motivum_db": 9,
-  "kesz_db": 1,
-  "kapu_zold": 29,
-  "kapu_ossz": 72
+  "motivum_db": 1,
+  "kesz_db": 0,
+  "kapu_zold": 5,
+  "kapu_ossz": 9
  },
  "heti_tortenes": [
   {
-   "datum": "2026-11-02",
-   "motivum": "ISTENTISZT-001",
-   "olvasoi_esemeny": "1 igehelyet kizártunk, mert nem illik a motívum határába"
+   "datum": "2026-11-10",
+   "motivum": "HAMART-001",
+   "olvasoi_esemeny": "2 igehelyet kizártunk, mert nem illik a motívum határába"
   },
   {
-   "datum": "2026-11-02",
-   "motivum": "ISTENTISZT-001",
-   "olvasoi_esemeny": "A motívum lapja új változatot kapott (4. változat)"
+   "datum": "2026-11-10",
+   "motivum": "HAMART-001",
+   "olvasoi_esemeny": "7 igehely bekerült a motívumba"
   },
   {
-   "datum": "2026-11-01",
-   "motivum": "ISTENTISZT-001",
+   "datum": "2026-11-08",
+   "motivum": "HAMART-001",
    "olvasoi_esemeny": "16 igehelyet kizártunk, mert nem illik a motívum határába"
   },
   {
-   "datum": "2026-10-29",
-   "motivum": "ISTENTISZT-001",
-   "olvasoi_esemeny": "1 igehelyet kizártunk, mert nem illik a motívum határába"
+   "datum": "2026-11-08",
+   "motivum": "HAMART-001",
+   "olvasoi_esemeny": "4 igehely bekerült a motívumba"
   },
   {
-   "datum": "2026-10-28",
-   "motivum": "ALVIL-001",
-   "olvasoi_esemeny": "3 igehelyet kizártunk, mert nem illik a motívum határába"
+   "datum": "2026-11-05",
+   "motivum": "HAMART-001",
+   "olvasoi_esemeny": "105 igehelyet kizártunk, mert nem illik a motívum határába"
+  },
+  {
+   "datum": "2026-11-05",
+   "motivum": "HAMART-001",
+   "olvasoi_esemeny": "6 igehely bekerült a motívumba"
   }
  ],
- "elvetett_jeloltek_osszesen": 357
+ "elvetett_jeloltek_osszesen": 288
 }
