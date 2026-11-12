@@ -132,5 +132,20 @@ class PontozatlanRokonAlak(unittest.TestCase):
         self.assertTrue([x for x in K.ell_atiras(rossz) if 'ATIRAS' in str(x)])
 
 
+
+
+class Szabaly42Cimke(unittest.TestCase):
+    """F194: a 42. szabály a Thayer-szakasz jóváhagyott címkéjét (szotar_szakasz_cimke.tsv) is elfogadja a csukott
+    vázlatsorban; a címke nélküli szakasz fordításának eleje továbbra is kell."""
+
+    def test_cimke_kepviseli_a_szakaszt(self):
+        import ellenoriz as E
+        adat = os.path.join(os.path.dirname(ESZKOZOK), 'adat')
+        self.assertTrue(E._thayer_cimke_a_lapon(adat, 'G1941', '1. nevet adni valakinek, elnevezni: τινα',
+                                                ' a szó 1 elnevezni a vázlatban '))
+        self.assertFalse(E._thayer_cimke_a_lapon(adat, 'G1941', '1. nevet adni valakinek', ' más szöveg '))
+        self.assertFalse(E._thayer_cimke_a_lapon(adat, 'G1941', 'nincs szakaszszám', ' elnevezni '))
+
+
 if __name__ == '__main__':
     unittest.main()

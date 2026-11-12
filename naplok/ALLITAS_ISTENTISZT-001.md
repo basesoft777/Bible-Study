@@ -773,4 +773,4 @@ Minden tételnél a kérdés: azt mondja-e a vers (a Károli és a héber/görö
   - Károli: Mert minden, a ki segítségül hívja az Úr nevét, megtartatik.
   - Héber/görög: πᾶς G3956 ‘all’ · ἄν G0302 ‘if’ · ἐπικαλέω G1941 ‘to call (on)/name’ · ὄνομα G3686 ‘name’ · κύριος G2962 ‘lord’ · σῴζω G4982 ‘to save’
 
-(proveniencia: scope=motivumok/ISTENTISZT-001.md (rések) + adat/elofordulasok.tsv kapcsolodas (id=ISTENTISZT-001), 122 egység | forras=eszkozok/proza_allitas.py; TAHOT_kivonat.tsv, TAGNT_kivonat.tsv, Karoli_1908.tsv, adat/elofordulasok.tsv, adat/karoli_strong/parok_*.tsv (modell-kimenet, javaslat: csak jelzés) | ts=2026-11-12T21:51Z)
+(proveniencia: scope=motivumok/ISTENTISZT-001.md (rések) + adat/elofordulasok.tsv kapcsolodas (id=ISTENTISZT-001), 122 egység | forras=eszkozok/proza_allitas.py; TAHOT_kivonat.tsv, TAGNT_kivonat.tsv, Karoli_1908.tsv, adat/elofordulasok.tsv, adat/karoli_strong/parok_*.tsv (modell-kimenet, javaslat: csak jelzés) | ts=2026-11-12T21:58Z)
