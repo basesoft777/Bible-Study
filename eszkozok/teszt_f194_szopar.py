@@ -108,5 +108,26 @@ class SzoparLanc(unittest.TestCase):
         return G.tsv_beolvas(os.path.join(os.path.dirname(ESZKOZOK), 'adat', 'motivumok.tsv'))[1]
 
 
+class PontozatlanRokonAlak(unittest.TestCase):
+    """Az orkesztrátor döntése (2026-11-12): a pontozatlan rokon nyelvi alak átírás nélkül áll, és az ATIRAS-kapu nem
+    veti össze a szó kiejtésével (a vokalizációt az adat nem adja)."""
+
+    def test_tabla_atiras_nelkul(self):
+        r = {'strong': 'H7121', 'lemma': 'óarámi', 'alak': 'קרא', 'kiejtes': '', 'jelentes': 'hív', 'megjegyzes': '',
+             'ellenorzes': 'x'}
+        ki = LG._hatter_sorok([r])
+        self.assertEqual(ki[0][1], ['קרא'])
+
+    def test_kapu_nem_veti_ossze(self):
+        import olvasoi_kapu as K
+        self.assertTrue(K.PONTOZATLAN_HEBER('קרא'))
+        self.assertFalse(K.PONTOZATLAN_HEBER('קָרָא'))
+        jo = K.tagol('A szó קָרָא (kárá).\n\nAz óarámi alak קרא (kr), átírás nélkül.\n')
+        self.assertEqual([x for x in K.ell_atiras(jo) if 'ATIRAS' in str(x)], [])
+        # a pontozott alak két kiejtése továbbra is BUKÁS
+        rossz = K.tagol('A szó קָרָא (kárá).\n\nMásutt קָרָא (kara).\n')
+        self.assertTrue([x for x in K.ell_atiras(rossz) if 'ATIRAS' in str(x)])
+
+
 if __name__ == '__main__':
     unittest.main()

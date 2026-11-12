@@ -882,6 +882,11 @@ def heber_kulcs(szo):
     return ekezet_nelkul(szo.lower())
 
 
+def PONTOZATLAN_HEBER(szo):
+    """F194: héber írású, de magánhangzójel nélküli alak (pl. a BDB rokon nyelvi szava)."""
+    return bool(re.search('[א-ת]', szo)) and not re.search('[ְ-ׇ]', szo)
+
+
 def kiejtes_parok(sorok):
     """[(héber/görög kulcs, kiejtés, sor)] a lapon álló „szó (kiejtés)” párokból."""
     egy, tobb = [], []
@@ -889,6 +894,10 @@ def kiejtes_parok(sorok):
         if s.fajta in ('komment', 'kod', 'ures'):
             continue
         for m in PAR_RX.finditer(s.szoveg):
+            # F194 (az orkesztrátor döntése, 2026-11-12): a pontozatlan héber írású alak (pl. rokon nyelvi szó) nem
+            # hordoz kiejtést, ezért a kiejtések összevetéséből kimarad
+            if PONTOZATLAN_HEBER(m.group(1)):
+                continue
             szavak = [heber_kulcs(w) for w in re.split(r'[\s־]+', m.group(1)) if w]
             belso = re.sub(r'\b[HG]\d{3,5}[a-z]?\b', ' ', m.group(2))
             belso = re.sub(r'[*_;,]', ' ', belso.split(':')[0])

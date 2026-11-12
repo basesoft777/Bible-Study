@@ -741,7 +741,7 @@ ellenőrzéshez való, olvasáskor átugorható.
 vizsgált helyek, M a minősítés.
 
 **Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy
-betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (JHVH), a Károliban „az Úr”; a szócikk címszavának
+betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának
 kezdőbetűje (pl. **ק׳** a קָרָא szócikkében, **שׁ׳** a שֵׁם szócikkében) maga a címszó. Más betűnél a feloldás a
 szócikk szövegéből derül ki.
 
@@ -9726,8 +9726,12 @@ def _hatter_sorok(hs, nyelv_nev_elotag=''):
         szavak, jelek, megj = [], [], set()
         for r, jel in lista:
             for a in [x.strip() for x in r['alak'].split('·') if x.strip()]:
-                if re.search('[֐-׿]', a):
-                    k = HK.kiejt(a) or _azonos_iras_kiejtes(a, r['strong']) or massalhangzos_atiras(a)
+                if re.search('[֐-׿]', a) and not re.search('[ְ-ׇ]', a):
+                    # F194 (az orkesztrátor döntése, 2026-11-12): a pontozatlan rokon alak átírás nélkül áll; a
+                    # vokalizációját az adat nem adja, a héber szó kiejtése más nyelv alakjára nem vihető át
+                    k = ''
+                elif re.search('[֐-׿]', a):
+                    k = HK.kiejt(a) or massalhangzos_atiras(a)
                 else:
                     k = re.sub(r'\s*\(.*?\)', '', r['kiejtes'] or '').split('·')[0].strip()
                 szavak.append('%s (%s)' % (a, k) if k else a)
@@ -9741,16 +9745,6 @@ def _hatter_sorok(hs, nyelv_nev_elotag=''):
                 jelek.append(jel)
         ki.append((nyelv, szavak, jelek, '; '.join(sorted(megj)) or '—'))
     return ki
-
-
-def _azonos_iras_kiejtes(alak, strong):
-    """F194 (K07, egy szónak egy kiejtése): a pontozatlan rokon alak, amelynek mássalhangzói a lánc-szó lemmájáéval
-    azonosak (óarámi קרא ~ héber קָרָא), a lánc-szó kiejtését kapja, nem gépi mássalhangzós átírást; különben ''."""
-    lk = lemma_kiejtes(strong)
-    if not lk:
-        return ''
-    massal = lambda x: re.sub('[֑-ׇ]', '', x or '')
-    return (lk[1] or '') if massal(lk[0]) == massal(alak) else ''
 
 
 def _to_iras_kiejtes(strong):
