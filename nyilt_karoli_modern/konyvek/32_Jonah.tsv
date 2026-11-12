@@ -1,0 +1,1219 @@
+# GENERÁLT: a(z) Logosz-lexikon – Modernizált Károli – Strong nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERATED: export of the Logosz Lexikon – Modernised Károli – Strong open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
+osis	token	alak_1908	alak_modern	valtozott	kieso	gazda_token	bizonytalan	allapot	strong	eredeti_token	kapcsolat	bizonyossag
+Jonah.1.1	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.1.1	2	lőn	lett	igen				javaslat	H1961	2	szo	alacsony
+Jonah.1.1	3	az	az					betoldas				
+Jonah.1.1	4	Úrnak	Úrnak					javaslat	H3068	4	szo	alacsony
+Jonah.1.1	5	szava	szava					javaslat	H1697	3	szo	alacsony
+Jonah.1.1	6	Jónáshoz	Jónáshoz					javaslat	H0413	5	szo	alacsony
+Jonah.1.1	6	Jónáshoz	Jónáshoz					javaslat	H3124	6	szo	alacsony
+Jonah.1.1	7	az	az					betoldas				
+Jonah.1.1	8	Amittai	Amittai					javaslat	H0573	8	szo	alacsony
+Jonah.1.1	9	fiához	fiához					javaslat	H1121	7	szo	alacsony
+Jonah.1.1	10	mondván	mondva	igen				javaslat	H9005	9	morfema	alacsony
+Jonah.1.1	10	mondván	mondva	igen				javaslat	H0559	10	szo	alacsony
+Jonah.1.2	1	Kelj	Kelj					javaslat	H6965	1	szo	alacsony
+Jonah.1.2	2	fel	fel					javaslat	H6965	1	szo	alacsony
+Jonah.1.2	3	menj	menj					javaslat	H1980	2	szo	alacsony
+Jonah.1.2	4	Ninivébe	Ninivébe					javaslat	H0413	3	szo	alacsony
+Jonah.1.2	4	Ninivébe	Ninivébe					javaslat	H5210	4	szo	alacsony
+Jonah.1.2	5	a	a					betoldas				
+Jonah.1.2	6	nagy	nagy					javaslat	H1419	8	szo	alacsony
+Jonah.1.2	7	városba	városba					javaslat	H9009	5	morfema	alacsony
+Jonah.1.2	7	városba	városba					javaslat	H5892	6	szo	alacsony
+Jonah.1.2	8	és	és					javaslat	H9002	9	morfema	alacsony
+Jonah.1.2	9	kiálts	kiálts					javaslat	H7121	10	szo	alacsony
+Jonah.1.2	10	ellene	ellene					javaslat	H5921	11	szo	alacsony
+Jonah.1.2	10	ellene	ellene					javaslat	H9034	12	morfema	alacsony
+Jonah.1.2	11	mert	mert					javaslat	H3588	13	szo	alacsony
+Jonah.1.2	12	gonoszságuk	gonoszságuk					javaslat	H7451	15	szo	alacsony
+Jonah.1.2	12	gonoszságuk	gonoszságuk					javaslat	H9028	16	morfema	alacsony
+Jonah.1.2	13	felhatolt	felhatolt					javaslat	H5927	14	szo	alacsony
+Jonah.1.2	14	elémbe	elémbe					javaslat	H9005	17	morfema	alacsony
+Jonah.1.2	14	elémbe	elémbe					javaslat	H6440	18	szo	alacsony
+Jonah.1.2	14	elémbe	elémbe					javaslat	H9020	19	morfema	alacsony
+Jonah.1.3	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.1.3	2	felkele	felkelt	igen				javaslat	H6965	2	szo	alacsony
+Jonah.1.3	3	Jónás	Jónás					javaslat	H3124	3	szo	alacsony
+Jonah.1.3	4	hogy	hogy					javaslat	H9005	4	morfema	alacsony
+Jonah.1.3	5	Tarsisba	Tarsisba					javaslat	H8659	6	szo	alacsony
+Jonah.1.3	5	Tarsisba	Tarsisba					javaslat	H9011	7	morfema	alacsony
+Jonah.1.3	6	szaladna	szaladna					javaslat	H1272	5	szo	alacsony
+Jonah.1.3	7	az	az					betoldas				
+Jonah.1.3	8	Úr	Úr					javaslat	H3068	11	szo	alacsony
+Jonah.1.3	9	elől	elől					javaslat	H9006	8	morfema	alacsony
+Jonah.1.3	9	elől	elől					javaslat	H9005	9	morfema	alacsony
+Jonah.1.3	9	elől	elől					javaslat	H6440	10	szo	alacsony
+Jonah.1.3	10	Leméne	Lement	igen				javaslat	H3381	13	szo	alacsony
+Jonah.1.3	11	azért	azért					betoldas				
+Jonah.1.3	12	Jáfóba	Jáfóba					javaslat	H3305	14	szo	alacsony
+Jonah.1.3	13	és	és					javaslat	H9001	15	morfema	alacsony
+Jonah.1.3	14	talála	talált	igen				javaslat	H4672	16	szo	alacsony
+Jonah.1.3	15	ott	ott					betoldas				
+Jonah.1.3	16	egy	egy					betoldas				
+Jonah.1.3	17	hajót	hajót					javaslat	H0591	17	szo	alacsony
+Jonah.1.3	18	a		igen	osszevonva	19		betoldas				
+Jonah.1.3	19	mely	amely	igen				betoldas				
+Jonah.1.3	20	méne	ment	igen				javaslat	H0935	18	szo	alacsony
+Jonah.1.3	21	Tarsisba	Tarsisba					javaslat	H8659	19	szo	alacsony
+Jonah.1.3	22	és	és					javaslat	H9001	20	morfema	alacsony
+Jonah.1.3	23	megadván	megadva	igen				javaslat	H5414	21	szo	alacsony
+Jonah.1.3	24	a	a					betoldas				
+Jonah.1.3	25	hajóbért	hajóbért					javaslat	H7939	22	szo	alacsony
+Jonah.1.3	25	hajóbért	hajóbért					javaslat	H9024	23	morfema	alacsony
+Jonah.1.3	26	beszálla	beszállt	igen				javaslat	H3381	25	szo	alacsony
+Jonah.1.3	27	abba	abba					javaslat	H9003	26	morfema	alacsony
+Jonah.1.3	27	abba	abba					javaslat	H9034	27	morfema	alacsony
+Jonah.1.3	28	hogy	hogy					javaslat	H9005	28	morfema	alacsony
+Jonah.1.3	29	Tarsisba	Tarsisba					javaslat	H8659	32	szo	alacsony
+Jonah.1.3	29	Tarsisba	Tarsisba					javaslat	H9011	33	morfema	alacsony
+Jonah.1.3	30	menne	menne					javaslat	H0935	29	szo	alacsony
+Jonah.1.3	31	velök	velük	igen				javaslat	H5973	30	szo	alacsony
+Jonah.1.3	31	velök	velük	igen				javaslat	H9038	31	morfema	alacsony
+Jonah.1.3	32	az	az					betoldas				
+Jonah.1.3	33	Úr	Úr					javaslat	H3068	37	szo	alacsony
+Jonah.1.3	34	színe	színe					javaslat	H6440	36	szo	alacsony
+Jonah.1.3	35	elől	elől					javaslat	H9006	34	morfema	alacsony
+Jonah.1.3	35	elől	elől					javaslat	H9005	35	morfema	alacsony
+Jonah.1.4	1	Az	Az					betoldas				
+Jonah.1.4	2	Úr	Úr					javaslat	H3068	2	szo	alacsony
+Jonah.1.4	3	pedig	pedig					javaslat	H9002	1	morfema	alacsony
+Jonah.1.4	4	nagy	nagy					javaslat	H1419	5	szo	alacsony
+Jonah.1.4	5	szelet	szelet					javaslat	H7307	4	szo	alacsony
+Jonah.1.4	6	bocsáta	bocsátott	igen				javaslat	H2904	3	szo	alacsony
+Jonah.1.4	7	a	a					betoldas				
+Jonah.1.4	8	tengerre	tengerre					javaslat	H0413	6	szo	alacsony
+Jonah.1.4	8	tengerre	tengerre					javaslat	H3220	8	szo	alacsony
+Jonah.1.4	9	és	és					javaslat	H9001	9	morfema	alacsony
+Jonah.1.4	10	nagy	nagy					javaslat	H1419	12	szo	alacsony
+Jonah.1.4	11	vihar	vihar					javaslat	H5591	11	szo	alacsony
+Jonah.1.4	12	lőn	lett	igen				javaslat	H1961	10	szo	alacsony
+Jonah.1.4	13	a	a					betoldas				
+Jonah.1.4	14	tengeren	tengeren					javaslat	H9003	13	morfema	alacsony
+Jonah.1.4	14	tengeren	tengeren					javaslat	H3220	14	szo	alacsony
+Jonah.1.4	15	és	és					javaslat	H9002	15	morfema	alacsony
+Jonah.1.4	16	a	a					betoldas				
+Jonah.1.4	17	hajó	hajó					javaslat	H0591	17	szo	alacsony
+Jonah.1.4	18	már	már					javaslat	H2803	18	szo	alacsony
+Jonah.1.4	19	már	már					javaslat	H2803	18	szo	alacsony
+Jonah.1.4	20	töredezik	töredezett	igen				javaslat	H9005	19	morfema	alacsony
+Jonah.1.4	20	töredezik	töredezett	igen				javaslat	H7665	20	szo	alacsony
+Jonah.1.4	21	vala		igen	segedige	20		betoldas				
+Jonah.1.5	1	Megfélemlének	Megfélemlettek	igen				javaslat	H9001	1	morfema	alacsony
+Jonah.1.5	1	Megfélemlének	Megfélemlettek	igen				javaslat	H3372	2	szo	alacsony
+Jonah.1.5	2	azért	azért					betoldas				
+Jonah.1.5	3	a	a					betoldas				
+Jonah.1.5	4	hajósok	hajósok					javaslat	H4419	4	szo	alacsony
+Jonah.1.5	5	és	és					javaslat	H9001	5	morfema	alacsony
+Jonah.1.5	6	kiáltának	kiáltottak	igen			igen	javaslat	H2199	6	szo	alacsony
+Jonah.1.5	7	kiki	kiki					javaslat	H0376	7	szo	alacsony
+Jonah.1.5	8	az	az					betoldas				
+Jonah.1.5	9	ő	ő					javaslat	H9023	10	morfema	alacsony
+Jonah.1.5	10	istenéhez	istenéhez					javaslat	H0413	8	szo	alacsony
+Jonah.1.5	10	istenéhez	istenéhez					javaslat	H0430	9	szo	alacsony
+Jonah.1.5	10	istenéhez	istenéhez					javaslat	H9023	10	morfema	alacsony
+Jonah.1.5	11	és	és					javaslat	H9001	11	morfema	alacsony
+Jonah.1.5	12	a	a					betoldas				
+Jonah.1.5	13	hajóban	hajóban					javaslat	H9003	17	morfema	alacsony
+Jonah.1.5	13	hajóban	hajóban					javaslat	H0591	18	szo	alacsony
+Jonah.1.5	14	lévő	lévő					javaslat	H0834	16	szo	alacsony
+Jonah.1.5	15	holmit	holmit					javaslat	H3627	15	szo	alacsony
+Jonah.1.5	16	a	a					betoldas				
+Jonah.1.5	17	tengerbe	tengerbe					javaslat	H0413	19	szo	alacsony
+Jonah.1.5	17	tengerbe	tengerbe					javaslat	H3220	21	szo	alacsony
+Jonah.1.5	18	hányák	hányták	igen				javaslat	H2904	12	szo	alacsony
+Jonah.1.5	19	hogy	hogy					javaslat	H9005	22	morfema	alacsony
+Jonah.1.5	20	könnyítsenek	könnyítsenek					javaslat	H7043	23	szo	alacsony
+Jonah.1.5	21	magukon	magukon					javaslat	H9006	24	morfema	alacsony
+Jonah.1.5	21	magukon	magukon					javaslat	H5921	25	szo	alacsony
+Jonah.1.5	21	magukon	magukon					javaslat	H9038	26	morfema	alacsony
+Jonah.1.5	22	Jónás	Jónás					javaslat	H3124	28	szo	alacsony
+Jonah.1.5	23	pedig	pedig					javaslat	H9002	27	morfema	alacsony
+Jonah.1.5	24	leméne	lement	igen				javaslat	H3381	29	szo	alacsony
+Jonah.1.5	25	a	a					betoldas				
+Jonah.1.5	26	hajó	hajó					javaslat	H5600	33	szo	alacsony
+Jonah.1.5	27	aljába	aljába					javaslat	H0413	30	szo	alacsony
+Jonah.1.5	27	aljába	aljába					javaslat	H3411	31	szo	alacsony
+Jonah.1.5	28	és	és					javaslat	H9001	34	morfema	alacsony
+Jonah.1.5	29	lefeküdt	lefeküdt					javaslat	H7901	35	szo	alacsony
+Jonah.1.5	30	és	és					javaslat	H9001	36	morfema	alacsony
+Jonah.1.5	31	elaludt	elaludt					javaslat	H7290	37	szo	alacsony
+Jonah.1.6	1	De	De					javaslat	H9001	1	morfema	alacsony
+Jonah.1.6	2	hozzáméne	hozzáment	igen				javaslat	H7126	2	szo	alacsony
+Jonah.1.6	2	hozzáméne	hozzáment	igen				javaslat	H0413	3	szo	alacsony
+Jonah.1.6	2	hozzáméne	hozzáment	igen				javaslat	H9033	4	morfema	alacsony
+Jonah.1.6	3	a	a					betoldas				
+Jonah.1.6	4	kormányos	kormányos					javaslat	H2259	7	szo	alacsony
+Jonah.1.6	5	mester	mester					javaslat	H7227	5	szo	alacsony
+Jonah.1.6	6	és	és					javaslat	H9001	8	morfema	alacsony
+Jonah.1.6	7	mondá	mondta	igen				javaslat	H0559	9	szo	alacsony
+Jonah.1.6	8	néki	neki	igen				javaslat	H9005	10	morfema	alacsony
+Jonah.1.6	8	néki	neki	igen				javaslat	H9033	11	morfema	alacsony
+Jonah.1.6	9	Mi	Mi					javaslat	H4100	12	szo	alacsony
+Jonah.1.6	10	lelt	lelt					javaslat	H9005	13	morfema	alacsony
+Jonah.1.6	11	te	te					javaslat	H9031	14	morfema	alacsony
+Jonah.1.6	12	nagy	nagy					javaslat	H7290	15	szo	alacsony
+Jonah.1.6	13	alvó	alvó					javaslat	H7290	15	szo	alacsony
+Jonah.1.6	14	Kelj	Kelj					javaslat	H6965	16	szo	alacsony
+Jonah.1.6	15	fel	fel					javaslat	H6965	16	szo	alacsony
+Jonah.1.6	16	kiálts	kiálts					javaslat	H7121	17	szo	alacsony
+Jonah.1.6	17	a	a					betoldas				
+Jonah.1.6	18	te	te					javaslat	H9021	20	morfema	alacsony
+Jonah.1.6	19	Istenedhez	Istenedhez					javaslat	H0413	18	szo	alacsony
+Jonah.1.6	19	Istenedhez	Istenedhez					javaslat	H0430	19	szo	alacsony
+Jonah.1.6	19	Istenedhez	Istenedhez					javaslat	H9021	20	morfema	alacsony
+Jonah.1.6	20	hát	hát					betoldas				
+Jonah.1.6	21	ha	ha					javaslat	H0194	21	szo	alacsony
+Jonah.1.6	22	gondol	gondol					javaslat	H6245	22	szo	alacsony
+Jonah.1.6	23	velünk	velünk					javaslat	H9005	25	morfema	alacsony
+Jonah.1.6	23	velünk	velünk					javaslat	H9035	26	morfema	alacsony
+Jonah.1.6	24	az	az					betoldas				
+Jonah.1.6	25	Isten	Isten					javaslat	H0430	24	szo	alacsony
+Jonah.1.6	26	és	és					javaslat	H9002	27	morfema	alacsony
+Jonah.1.6	27	nem	nem					javaslat	H3808	28	szo	alacsony
+Jonah.1.6	28	veszünk	veszünk					javaslat	H0006	29	szo	alacsony
+Jonah.1.6	29	el	el					javaslat	H0006	29	szo	alacsony
+Jonah.1.7	1	Egymásnak	Egymásnak					javaslat	H0376	3	szo	alacsony
+Jonah.1.7	1	Egymásnak	Egymásnak					javaslat	H0413	4	szo	alacsony
+Jonah.1.7	1	Egymásnak	Egymásnak					javaslat	H7453	5	szo	alacsony
+Jonah.1.7	1	Egymásnak	Egymásnak					javaslat	H9023	6	morfema	alacsony
+Jonah.1.7	2	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Jonah.1.7	3	ezt	ezt					betoldas				
+Jonah.1.7	4	mondák	mondták	igen				javaslat	H0559	2	szo	alacsony
+Jonah.1.7	5	Jertek	Jertek					javaslat	H1980	7	szo	alacsony
+Jonah.1.7	6	vessünk	vessünk					javaslat	H5307	9	szo	alacsony
+Jonah.1.7	7	sorsot	sorsot					javaslat	H1486	10	szo	alacsony
+Jonah.1.7	8	hogy	hogy					javaslat	H9002	11	morfema	alacsony
+Jonah.1.7	9	megtudhassuk	megtudhassuk					javaslat	H3045	12	szo	alacsony
+Jonah.1.7	10	mi	mi					javaslat	H4310	16	szo	alacsony
+Jonah.1.7	11	miatt	miatt					javaslat	H9003	13	morfema	alacsony
+Jonah.1.7	11	miatt	miatt					javaslat	H9007	14	morfema	alacsony
+Jonah.1.7	11	miatt	miatt					javaslat	H9005	15	morfema	alacsony
+Jonah.1.7	12	van	van					betoldas				
+Jonah.1.7	13	rajtunk	rajtunk					javaslat	H9005	21	morfema	alacsony
+Jonah.1.7	13	rajtunk	rajtunk					javaslat	H9035	22	morfema	alacsony
+Jonah.1.7	14	e	e					javaslat	H9009	19	morfema	alacsony
+Jonah.1.7	14	e	e					javaslat	H2063	20	szo	alacsony
+Jonah.1.7	15	veszedelem	veszedelem					javaslat	H7451	18	szo	alacsony
+Jonah.1.7	16	És	És					javaslat	H9001	23	morfema	alacsony
+Jonah.1.7	17	sorsot	sorsot					javaslat	H1486	25	szo	alacsony
+Jonah.1.7	18	vetének	vetettek	igen			igen	javaslat	H5307	24	szo	alacsony
+Jonah.1.7	19	és	és					javaslat	H9001	26	morfema	alacsony
+Jonah.1.7	20	a	a					betoldas				
+Jonah.1.7	21	sors	sors					javaslat	H1486	29	szo	alacsony
+Jonah.1.7	22	Jónásra	Jónásra					javaslat	H5921	30	szo	alacsony
+Jonah.1.7	22	Jónásra	Jónásra					javaslat	H3124	31	szo	alacsony
+Jonah.1.7	23	esék	esett	igen				javaslat	H5307	27	szo	alacsony
+Jonah.1.8	1	Mondák	Mondták	igen				javaslat	H0559	2	szo	alacsony
+Jonah.1.8	2	azért	azért					betoldas				
+Jonah.1.8	3	néki	neki	igen				javaslat	H0413	3	szo	alacsony
+Jonah.1.8	3	néki	neki	igen				javaslat	H9033	4	morfema	alacsony
+Jonah.1.8	4	Kérünk	Kérünk					javaslat	H4994	7	szo	alacsony
+Jonah.1.8	5	beszéld	beszéld					javaslat	H5046	5	szo	alacsony
+Jonah.1.8	6	el	el					javaslat	H5046	5	szo	alacsony
+Jonah.1.8	7	nékünk	nekünk	igen				javaslat	H9005	8	morfema	alacsony
+Jonah.1.8	7	nékünk	nekünk	igen				javaslat	H9035	9	morfema	alacsony
+Jonah.1.8	8	mi	mi					javaslat	H4310	13	szo	alacsony
+Jonah.1.8	9	miatt	miatt					javaslat	H9003	10	morfema	alacsony
+Jonah.1.8	9	miatt	miatt					javaslat	H0834	11	szo	alacsony
+Jonah.1.8	9	miatt	miatt					javaslat	H9005	12	morfema	alacsony
+Jonah.1.8	10	van	van					betoldas				
+Jonah.1.8	11	rajtunk	rajtunk					javaslat	H9005	18	morfema	alacsony
+Jonah.1.8	11	rajtunk	rajtunk					javaslat	H9035	19	morfema	alacsony
+Jonah.1.8	12	e	e					javaslat	H9009	16	morfema	alacsony
+Jonah.1.8	12	e	e					javaslat	H2063	17	szo	alacsony
+Jonah.1.8	13	veszedelem	veszedelem					javaslat	H9009	14	morfema	alacsony
+Jonah.1.8	13	veszedelem	veszedelem					javaslat	H7451	15	szo	alacsony
+Jonah.1.8	14	Mi	Mi					javaslat	H4100	20	szo	alacsony
+Jonah.1.8	15	a	a					betoldas				
+Jonah.1.8	16	te	te					javaslat	H9021	22	morfema	alacsony
+Jonah.1.8	17	foglalkozásod	foglalkozásod					javaslat	H4399	21	szo	alacsony
+Jonah.1.8	17	foglalkozásod	foglalkozásod					javaslat	H9021	22	morfema	alacsony
+Jonah.1.8	18	és	és					javaslat	H9002	23	morfema	alacsony
+Jonah.1.8	19	honnan	honnan					javaslat	H9006	24	morfema	alacsony
+Jonah.1.8	19	honnan	honnan					javaslat	H0370	25	szo	alacsony
+Jonah.1.8	20	jösz	jösz					javaslat	H0935	26	szo	alacsony
+Jonah.1.8	21	Melyik	Melyik					javaslat	H4100	27	szo	alacsony
+Jonah.1.8	22	a	a					betoldas				
+Jonah.1.8	23	te	te					javaslat	H9021	29	morfema	alacsony
+Jonah.1.8	24	hazád	hazád					javaslat	H0776	28	szo	alacsony
+Jonah.1.8	24	hazád	hazád					javaslat	H9021	29	morfema	alacsony
+Jonah.1.8	25	és	és					javaslat	H9002	30	morfema	alacsony
+Jonah.1.8	26	miféle	miféle					javaslat	H0335	31	szo	alacsony
+Jonah.1.8	27	népből	népből					javaslat	H9006	32	morfema	alacsony
+Jonah.1.8	27	népből	népből					javaslat	H2088	33	szo	alacsony
+Jonah.1.8	27	népből	népből					javaslat	H5971	34	szo	alacsony
+Jonah.1.8	28	való	való					betoldas				
+Jonah.1.8	29	vagy	vagy					javaslat	H0859	35	szo	alacsony
+Jonah.1.8	30	te	te					javaslat	H0859	35	szo	alacsony
+Jonah.1.9	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.1.9	2	monda	mondta	igen				javaslat	H0559	2	szo	alacsony
+Jonah.1.9	3	nékik	nekik	igen				javaslat	H0413	3	szo	alacsony
+Jonah.1.9	3	nékik	nekik	igen				javaslat	H9038	4	morfema	alacsony
+Jonah.1.9	4	Héber	Héber					javaslat	H5680	5	szo	alacsony
+Jonah.1.9	5	vagyok	vagyok					betoldas				
+Jonah.1.9	6	én	én					javaslat	H0595	6	szo	alacsony
+Jonah.1.9	7	és	és					javaslat	H9002	7	morfema	alacsony
+Jonah.1.9	8	az	az					betoldas				
+Jonah.1.9	9	Urat	Urat					javaslat	H3068	9	szo	alacsony
+Jonah.1.9	10	az	az					betoldas				
+Jonah.1.9	11	egek	egek					javaslat	H8064	12	szo	alacsony
+Jonah.1.9	12	Istenét	Istenét					javaslat	H0430	10	szo	alacsony
+Jonah.1.9	13	félem	félem					javaslat	H3373	14	szo	alacsony
+Jonah.1.9	14	én	én					javaslat	H0589	13	szo	alacsony
+Jonah.1.9	15	a		igen	osszevonva	16		javaslat	H0834	15	szo	alacsony
+Jonah.1.9	16	ki	aki	igen				javaslat	H0834	15	szo	alacsony
+Jonah.1.9	17	a	a					betoldas				
+Jonah.1.9	18	tengert	tengert					javaslat	H3220	19	szo	alacsony
+Jonah.1.9	19	és	és					javaslat	H9002	20	morfema	alacsony
+Jonah.1.9	20	a	a					betoldas				
+Jonah.1.9	21	szárazt	szárazt					javaslat	H3004	23	szo	alacsony
+Jonah.1.9	22	teremtette	teremtette					javaslat	H6213	16	szo	alacsony
+Jonah.1.10	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.1.10	2	megfélemlének	megfélemlettek	igen				javaslat	H3372	2	szo	alacsony
+Jonah.1.10	3	az	az					betoldas				
+Jonah.1.10	4	emberek	emberek					javaslat	H0582	4	szo	alacsony
+Jonah.1.10	5	nagy	nagy					javaslat	H1419	6	szo	alacsony
+Jonah.1.10	6	félelemmel	félelemmel					javaslat	H3374	5	szo	alacsony
+Jonah.1.10	7	és	és					javaslat	H9001	7	morfema	alacsony
+Jonah.1.10	8	mondák	mondták	igen				javaslat	H0559	8	szo	alacsony
+Jonah.1.10	9	néki	neki	igen				javaslat	H0413	9	szo	alacsony
+Jonah.1.10	9	néki	neki	igen				javaslat	H9033	10	morfema	alacsony
+Jonah.1.10	10	Mit	Mit					javaslat	H4100	11	szo	alacsony
+Jonah.1.10	10	Mit	Mit					javaslat	H2063	12	szo	alacsony
+Jonah.1.10	11	cselekedtél	cselekedtél					javaslat	H6213	13	szo	alacsony
+Jonah.1.10	12	Mert	Mert					javaslat	H3588	14	szo	alacsony
+Jonah.1.10	13	megtudták	megtudták					javaslat	H3045	15	szo	alacsony
+Jonah.1.10	14	azok	azok					betoldas				
+Jonah.1.10	15	az	az					betoldas				
+Jonah.1.10	16	emberek	emberek					javaslat	H0582	17	szo	alacsony
+Jonah.1.10	17	hogy	hogy					javaslat	H3588	18	szo	alacsony
+Jonah.1.10	18	az	az					betoldas				
+Jonah.1.10	19	Úr	Úr					javaslat	H3068	22	szo	alacsony
+Jonah.1.10	20	színe	színe					javaslat	H6440	21	szo	alacsony
+Jonah.1.10	21	elől	elől					javaslat	H9006	19	morfema	alacsony
+Jonah.1.10	21	elől	elől					javaslat	H9005	20	morfema	alacsony
+Jonah.1.10	22	fut	fut					javaslat	H1931	23	szo	alacsony
+Jonah.1.10	22	fut	fut					javaslat	H1272	24	szo	alacsony
+Jonah.1.10	23	mivelhogy	mivelhogy					javaslat	H3588	25	szo	alacsony
+Jonah.1.10	24	elbeszélé	elbeszélte	igen				javaslat	H5046	26	szo	alacsony
+Jonah.1.10	25	nékik	nekik	igen				javaslat	H9005	27	morfema	alacsony
+Jonah.1.10	25	nékik	nekik	igen				javaslat	H9038	28	morfema	alacsony
+Jonah.1.11	1	Mondák	Mondták	igen				javaslat	H0559	2	szo	alacsony
+Jonah.1.11	2	azután	azután					javaslat	H9001	1	morfema	alacsony
+Jonah.1.11	3	néki	neki	igen				javaslat	H0413	3	szo	alacsony
+Jonah.1.11	3	néki	neki	igen				javaslat	H9033	4	morfema	alacsony
+Jonah.1.11	4	Mit	Mit					javaslat	H4100	5	szo	alacsony
+Jonah.1.11	5	cselekedjünk	cselekedjünk					javaslat	H6213	6	szo	alacsony
+Jonah.1.11	6	veled	veled					javaslat	H9005	7	morfema	alacsony
+Jonah.1.11	6	veled	veled					javaslat	H9031	8	morfema	alacsony
+Jonah.1.11	7	hogy	hogy					javaslat	H9002	9	morfema	alacsony
+Jonah.1.11	8	a	a					betoldas				
+Jonah.1.11	9	tenger	tenger					javaslat	H9009	11	morfema	alacsony
+Jonah.1.11	9	tenger	tenger					javaslat	H3220	12	szo	alacsony
+Jonah.1.11	10	megcsendesedjék	megcsendesedjék					javaslat	H8367	10	szo	alacsony
+Jonah.1.11	11	ellenünk	ellenünk					javaslat	H9006	13	morfema	alacsony
+Jonah.1.11	11	ellenünk	ellenünk					javaslat	H5921	14	szo	alacsony
+Jonah.1.11	11	ellenünk	ellenünk					javaslat	H9035	15	morfema	alacsony
+Jonah.1.11	12	Mert	Mert					javaslat	H3588	16	szo	alacsony
+Jonah.1.11	13	a	a					betoldas				
+Jonah.1.11	14	tenger	tenger					javaslat	H9009	17	morfema	alacsony
+Jonah.1.11	14	tenger	tenger					javaslat	H3220	18	szo	alacsony
+Jonah.1.11	15	háborgása	háborgása					javaslat	H5590	21	szo	alacsony
+Jonah.1.11	16	növekedék	növekedett	igen				javaslat	H1980	19	szo	alacsony
+Jonah.1.12	1	Ő	Ő					betoldas				
+Jonah.1.12	2	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Jonah.1.12	3	monda	mondta	igen				javaslat	H0559	2	szo	alacsony
+Jonah.1.12	4	nékik	nekik	igen				javaslat	H0413	3	szo	alacsony
+Jonah.1.12	4	nékik	nekik	igen				javaslat	H9038	4	morfema	alacsony
+Jonah.1.12	5	Fogjatok	Fogjatok					javaslat	H5375	5	szo	alacsony
+Jonah.1.12	6	meg	meg					javaslat	H5375	5	szo	alacsony
+Jonah.1.12	7	és	és					javaslat	H9002	7	morfema	alacsony
+Jonah.1.12	8	vessetek	vessetek					javaslat	H2904	8	szo	alacsony
+Jonah.1.12	9	engem	engem					javaslat	H9030	6	morfema	alacsony
+Jonah.1.12	9	engem	engem					javaslat	H9030	9	morfema	alacsony
+Jonah.1.12	10	a	a					betoldas				
+Jonah.1.12	11	tengerbe	tengerbe					javaslat	H0413	10	szo	alacsony
+Jonah.1.12	11	tengerbe	tengerbe					javaslat	H9009	11	morfema	alacsony
+Jonah.1.12	11	tengerbe	tengerbe					javaslat	H3220	12	szo	alacsony
+Jonah.1.12	12	és	és					javaslat	H9002	13	morfema	alacsony
+Jonah.1.12	13	megcsendesedik	megcsendesedik					javaslat	H8367	14	szo	alacsony
+Jonah.1.12	14	a	a					betoldas				
+Jonah.1.12	15	tenger	tenger					javaslat	H9009	15	morfema	alacsony
+Jonah.1.12	15	tenger	tenger					javaslat	H3220	16	szo	alacsony
+Jonah.1.12	16	ellenetek	ellenetek					javaslat	H9006	17	morfema	alacsony
+Jonah.1.12	16	ellenetek	ellenetek					javaslat	H5921	18	szo	alacsony
+Jonah.1.12	16	ellenetek	ellenetek					javaslat	H9036	19	morfema	alacsony
+Jonah.1.12	17	mert	mert					javaslat	H3588	20	szo	alacsony
+Jonah.1.12	18	tudom	tudom					javaslat	H3045	21	szo	alacsony
+Jonah.1.12	19	én	én					javaslat	H0589	22	szo	alacsony
+Jonah.1.12	20	hogy	hogy					javaslat	H3588	23	szo	alacsony
+Jonah.1.12	21	miattam	miattam					javaslat	H9003	24	morfema	alacsony
+Jonah.1.12	21	miattam	miattam					javaslat	H9007	25	morfema	alacsony
+Jonah.1.12	21	miattam	miattam					javaslat	H9005	26	morfema	alacsony
+Jonah.1.12	21	miattam	miattam					javaslat	H9030	27	morfema	alacsony
+Jonah.1.12	22	van	van					betoldas				
+Jonah.1.12	23	ez	ez					javaslat	H2088	33	szo	alacsony
+Jonah.1.12	24	a	a					betoldas				
+Jonah.1.12	25	nagy	nagy					javaslat	H1419	31	szo	alacsony
+Jonah.1.12	26	vihar	vihar					javaslat	H5591	29	szo	alacsony
+Jonah.1.12	27	rajtatok	rajtatok					javaslat	H5921	34	szo	alacsony
+Jonah.1.12	27	rajtatok	rajtatok					javaslat	H9036	35	morfema	alacsony
+Jonah.1.13	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.1.13	2	erőlködtek	erőlködtek					javaslat	H2864	2	szo	alacsony
+Jonah.1.13	3	azok	azok					betoldas				
+Jonah.1.13	4	az	az					betoldas				
+Jonah.1.13	5	emberek	emberek					javaslat	H0582	4	szo	alacsony
+Jonah.1.13	6	hogy	hogy					javaslat	H9005	5	morfema	alacsony
+Jonah.1.13	7	visszajussanak	visszajussanak					javaslat	H7725	6	szo	alacsony
+Jonah.1.13	8	a	a					betoldas				
+Jonah.1.13	9	szárazra	szárazra					javaslat	H0413	7	szo	alacsony
+Jonah.1.13	9	szárazra	szárazra					javaslat	H9009	8	morfema	alacsony
+Jonah.1.13	9	szárazra	szárazra					javaslat	H3004	9	szo	alacsony
+Jonah.1.13	10	de	de					javaslat	H9002	10	morfema	alacsony
+Jonah.1.13	11	nem	nem					javaslat	H3808	11	szo	alacsony
+Jonah.1.13	12	tudtak	tudtak					javaslat	H3201	12	szo	alacsony
+Jonah.1.13	13	mert	mert					javaslat	H3588	13	szo	alacsony
+Jonah.1.13	14	a	a					betoldas				
+Jonah.1.13	15	tenger	tenger					javaslat	H9009	14	morfema	alacsony
+Jonah.1.13	15	tenger	tenger					javaslat	H3220	15	szo	alacsony
+Jonah.1.13	16	háborgása	háborgása					javaslat	H5590	18	szo	alacsony
+Jonah.1.13	17	növekedék	növekedett	igen				javaslat	H1980	16	szo	alacsony
+Jonah.1.13	18	ellenök	ellenük	igen				javaslat	H5921	19	szo	alacsony
+Jonah.1.13	18	ellenök	ellenük	igen				javaslat	H9038	20	morfema	alacsony
+Jonah.1.14	1	Kiáltának	Kiáltottak	igen			igen	javaslat	H7121	2	szo	alacsony
+Jonah.1.14	2	azért	azért					javaslat	H9001	1	morfema	alacsony
+Jonah.1.14	3	az	az					betoldas				
+Jonah.1.14	4	Úrhoz	Úrhoz					javaslat	H0413	3	szo	alacsony
+Jonah.1.14	4	Úrhoz	Úrhoz					javaslat	H3068	4	szo	alacsony
+Jonah.1.14	5	és	és					javaslat	H9001	5	morfema	alacsony
+Jonah.1.14	6	mondák	mondták	igen				javaslat	H0559	6	szo	alacsony
+Jonah.1.14	7	Kérünk	Kérünk					javaslat	H0577	7	szo	alacsony
+Jonah.1.14	8	Uram	Uram					javaslat	H3068	8	szo	alacsony
+Jonah.1.14	9	kérünk	kérünk					javaslat	H4994	10	szo	alacsony
+Jonah.1.14	10	ne	ne					javaslat	H0408	9	szo	alacsony
+Jonah.1.14	11	veszszünk	vesszünk	igen				javaslat	H0006	11	szo	alacsony
+Jonah.1.14	12	el	el					javaslat	H0006	11	szo	alacsony
+Jonah.1.14	13	ez	ez					javaslat	H9009	16	morfema	alacsony
+Jonah.1.14	13	ez	ez					javaslat	H2088	17	szo	alacsony
+Jonah.1.14	14	ember	ember					javaslat	H0376	15	szo	alacsony
+Jonah.1.14	15	lelkéért	lelkéért					javaslat	H9003	12	morfema	alacsony
+Jonah.1.14	15	lelkéért	lelkéért					javaslat	H5315	13	szo	alacsony
+Jonah.1.14	16	és	és					javaslat	H9002	18	morfema	alacsony
+Jonah.1.14	17	ne	ne					javaslat	H0408	19	szo	alacsony
+Jonah.1.14	18	háríts	háríts					javaslat	H5414	20	szo	alacsony
+Jonah.1.14	19	reánk	ránk	igen				javaslat	H5921	21	szo	alacsony
+Jonah.1.14	19	reánk	ránk	igen				javaslat	H9035	22	morfema	alacsony
+Jonah.1.14	20	ártatlan	ártatlan					javaslat	H5355	24	szo	alacsony
+Jonah.1.14	21	vért	vért					javaslat	H1818	23	szo	alacsony
+Jonah.1.14	22	mert	mert					javaslat	H3588	25	szo	alacsony
+Jonah.1.14	23	te	te					javaslat	H0859	26	szo	alacsony
+Jonah.1.14	24	Uram	Uram					javaslat	H3068	27	szo	alacsony
+Jonah.1.14	25	úgy	úgy					betoldas				
+Jonah.1.14	26	cselekedtél	cselekedtél					javaslat	H6213	31	szo	alacsony
+Jonah.1.14	27	a		igen	osszevonva	28		javaslat	H9004	28	morfema	alacsony
+Jonah.1.14	27	a		igen	osszevonva	28		javaslat	H0834	29	szo	alacsony
+Jonah.1.14	28	mint	amint	igen				javaslat	H9004	28	morfema	alacsony
+Jonah.1.14	28	mint	amint	igen				javaslat	H0834	29	szo	alacsony
+Jonah.1.14	29	akartad	akartad					javaslat	H2654	30	szo	alacsony
+Jonah.1.15	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.1.15	2	felragadák	felragadták	igen				javaslat	H5375	2	szo	alacsony
+Jonah.1.15	3	Jónást	Jónást					javaslat	H3124	4	szo	alacsony
+Jonah.1.15	4	és	és					javaslat	H9001	5	morfema	alacsony
+Jonah.1.15	5	beveték	bevetették	igen				javaslat	H2904	6	szo	alacsony
+Jonah.1.15	6	őt	őt					javaslat	H9033	7	morfema	alacsony
+Jonah.1.15	7	a	a					betoldas				
+Jonah.1.15	8	tengerbe	tengerbe					javaslat	H0413	8	szo	alacsony
+Jonah.1.15	8	tengerbe	tengerbe					javaslat	H9009	9	morfema	alacsony
+Jonah.1.15	8	tengerbe	tengerbe					javaslat	H3220	10	szo	alacsony
+Jonah.1.15	9	és	és					javaslat	H9001	11	morfema	alacsony
+Jonah.1.15	10	megszűnék	megszűnt	igen				javaslat	H5975	12	szo	alacsony
+Jonah.1.15	11	a	a					betoldas				
+Jonah.1.15	12	tenger	tenger					javaslat	H9009	13	morfema	alacsony
+Jonah.1.15	12	tenger	tenger					javaslat	H3220	14	szo	alacsony
+Jonah.1.15	13	az	az					betoldas				
+Jonah.1.15	14	ő	ő					javaslat	H9023	17	morfema	alacsony
+Jonah.1.15	15	háborgásától	háborgásától					javaslat	H9006	15	morfema	alacsony
+Jonah.1.15	15	háborgásától	háborgásától					javaslat	H2197	16	szo	alacsony
+Jonah.1.15	15	háborgásától	háborgásától					javaslat	H9023	17	morfema	alacsony
+Jonah.1.16	1	Azok	Azok					betoldas				
+Jonah.1.16	2	az	az					betoldas				
+Jonah.1.16	3	emberek	emberek					javaslat	H0582	4	szo	alacsony
+Jonah.1.16	4	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Jonah.1.16	5	nagy	nagy					javaslat	H1419	6	szo	alacsony
+Jonah.1.16	6	félelemmel	félelemmel					javaslat	H3374	5	szo	alacsony
+Jonah.1.16	7	félék	félték	igen			igen	javaslat	H3372	2	szo	alacsony
+Jonah.1.16	8	az	az					betoldas				
+Jonah.1.16	9	Urat	Urat					javaslat	H3068	8	szo	alacsony
+Jonah.1.16	10	és	és					javaslat	H9001	9	morfema	alacsony
+Jonah.1.16	11	áldozattal	áldozattal					javaslat	H2077	11	szo	alacsony
+Jonah.1.16	12	áldozának	áldoztak	igen			igen	javaslat	H2076	10	szo	alacsony
+Jonah.1.16	13	az	az					betoldas				
+Jonah.1.16	14	Úrnak	Úrnak					javaslat	H9005	12	morfema	alacsony
+Jonah.1.16	14	Úrnak	Úrnak					javaslat	H3068	13	szo	alacsony
+Jonah.1.16	15	és	és					javaslat	H9001	14	morfema	alacsony
+Jonah.1.16	16	fogadásokat	fogadásokat					javaslat	H5088	16	szo	alacsony
+Jonah.1.16	17	fogadának	fogadtak	igen			igen	javaslat	H5087	15	szo	alacsony
+Jonah.2.1	1	Az	Az					betoldas				
+Jonah.2.1	2	Úr	Úr					javaslat	H3068	3	szo	alacsony
+Jonah.2.1	3	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Jonah.2.1	4	egy	egy					betoldas				
+Jonah.2.1	5	nagy	nagy					javaslat	H1419	5	szo	alacsony
+Jonah.2.1	6	halat	halat					javaslat	H1709	4	szo	alacsony
+Jonah.2.1	7	rendelt	rendelt					javaslat	H4487	2	szo	alacsony
+Jonah.2.1	8	hogy	hogy					javaslat	H9005	6	morfema	alacsony
+Jonah.2.1	9	benyelje	benyelje					javaslat	H1104	7	szo	alacsony
+Jonah.2.1	10	Jónást	Jónást					javaslat	H3124	9	szo	alacsony
+Jonah.2.1	11	És	És					javaslat	H9001	10	morfema	alacsony
+Jonah.2.1	12	lőn	lett	igen				javaslat	H1961	11	szo	alacsony
+Jonah.2.1	13	Jónás	Jónás					javaslat	H3124	12	szo	alacsony
+Jonah.2.1	14	a	a					betoldas				
+Jonah.2.1	15	halnak	halnak					javaslat	H1709	16	szo	alacsony
+Jonah.2.1	16	gyomrában	gyomrában					javaslat	H9003	13	morfema	alacsony
+Jonah.2.1	16	gyomrában	gyomrában					javaslat	H4578	14	szo	alacsony
+Jonah.2.1	17	három	három					javaslat	H7969	17	szo	alacsony
+Jonah.2.1	18	nap	nap					javaslat	H3117	18	szo	alacsony
+Jonah.2.1	19	és	és					javaslat	H9002	19	morfema	alacsony
+Jonah.2.1	20	három	három					javaslat	H7969	20	szo	alacsony
+Jonah.2.1	21	éjjel	éjjel					javaslat	H3915	21	szo	alacsony
+Jonah.2.2	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.2.2	2	könyörge	könyörgött	igen				javaslat	H6419	2	szo	alacsony
+Jonah.2.2	3	Jónás	Jónás					javaslat	H3124	3	szo	alacsony
+Jonah.2.2	4	az	az					betoldas				
+Jonah.2.2	5	Úrnak	Úrnak					javaslat	H0413	4	szo	alacsony
+Jonah.2.2	5	Úrnak	Úrnak					javaslat	H3068	5	szo	alacsony
+Jonah.2.2	6	az	az					betoldas				
+Jonah.2.2	7	ő	ő					javaslat	H9023	7	morfema	alacsony
+Jonah.2.2	8	Istenének	Istenének					javaslat	H0430	6	szo	alacsony
+Jonah.2.2	8	Istenének	Istenének					javaslat	H9023	7	morfema	alacsony
+Jonah.2.2	9	a	a					betoldas				
+Jonah.2.2	10	halnak	halnak					javaslat	H1710	11	szo	alacsony
+Jonah.2.2	11	gyomrából	gyomrából					javaslat	H9006	8	morfema	alacsony
+Jonah.2.2	11	gyomrából	gyomrából					javaslat	H4578	9	szo	alacsony
+Jonah.2.3	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.2.3	2	mondá	mondta	igen				javaslat	H0559	2	szo	alacsony
+Jonah.2.3	3	Nyomorúságomban	Nyomorúságomban					javaslat	H9006	4	morfema	alacsony
+Jonah.2.3	3	Nyomorúságomban	Nyomorúságomban					javaslat	H6869	5	szo	alacsony
+Jonah.2.3	3	Nyomorúságomban	Nyomorúságomban					javaslat	H9005	6	morfema	alacsony
+Jonah.2.3	3	Nyomorúságomban	Nyomorúságomban					javaslat	H9030	7	morfema	alacsony
+Jonah.2.3	4	az	az					betoldas				
+Jonah.2.3	5	Úrhoz	Úrhoz					javaslat	H0413	8	szo	alacsony
+Jonah.2.3	5	Úrhoz	Úrhoz					javaslat	H3068	9	szo	alacsony
+Jonah.2.3	6	kiálték	kiáltottam	igen				javaslat	H7121	3	szo	alacsony
+Jonah.2.3	7	és	és					javaslat	H9001	10	morfema	alacsony
+Jonah.2.3	8	meghallgata	meghallgatott	igen				javaslat	H6030	11	szo	alacsony
+Jonah.2.3	9	engem	engem					javaslat	H9030	12	morfema	alacsony
+Jonah.2.3	10	a	a					betoldas				
+Jonah.2.3	11	Seol	Seol					javaslat	H7585	15	szo	alacsony
+Jonah.2.3	12	torkából	torkából					javaslat	H9006	13	morfema	alacsony
+Jonah.2.3	12	torkából	torkából					javaslat	H0990	14	szo	alacsony
+Jonah.2.3	13	sikolték	sikoltottam	igen				javaslat	H7768	16	szo	alacsony
+Jonah.2.3	14	és	és					betoldas				
+Jonah.2.3	15	meghallád	meghallottad	igen				javaslat	H8085	17	szo	alacsony
+Jonah.2.3	16	az	az					betoldas				
+Jonah.2.3	17	én	én					javaslat	H9020	19	morfema	alacsony
+Jonah.2.3	18	szómat	szómat					javaslat	H6963	18	szo	alacsony
+Jonah.2.3	18	szómat	szómat					javaslat	H9020	19	morfema	alacsony
+Jonah.2.4	1	Mert	Mert					javaslat	H9001	1	morfema	alacsony
+Jonah.2.4	2	mélységbe	mélységbe					javaslat	H4688	4	szo	alacsony
+Jonah.2.4	3	vetettél	vetettél					javaslat	H7993	2	szo	alacsony
+Jonah.2.4	4	engem	engem					javaslat	H9030	3	morfema	alacsony
+Jonah.2.4	5	tenger	tenger					javaslat	H3220	7	szo	alacsony
+Jonah.2.4	6	közepébe	közepébe					javaslat	H9003	5	morfema	alacsony
+Jonah.2.4	6	közepébe	közepébe					javaslat	H3824	6	szo	alacsony
+Jonah.2.4	7	és	és					javaslat	H9002	8	morfema	alacsony
+Jonah.2.4	8	körülfogott	körülfogott					javaslat	H5437	10	szo	alacsony
+Jonah.2.4	9	engem	engem					javaslat	H9030	11	morfema	alacsony
+Jonah.2.4	10	a	a					betoldas				
+Jonah.2.4	11	víz	víz					javaslat	H5104	9	szo	alacsony
+Jonah.2.4	12	örvényeid	örvényeid					javaslat	H4867	13	szo	alacsony
+Jonah.2.4	12	örvényeid	örvényeid					javaslat	H9021	14	morfema	alacsony
+Jonah.2.4	13	és	és					javaslat	H9002	15	morfema	alacsony
+Jonah.2.4	14	habjaid	habjaid					javaslat	H1530	16	szo	alacsony
+Jonah.2.4	14	habjaid	habjaid					javaslat	H9021	17	morfema	alacsony
+Jonah.2.4	15	mind	mind					javaslat	H3605	12	szo	alacsony
+Jonah.2.4	16	átmentek	átmentek					javaslat	H5674	20	szo	alacsony
+Jonah.2.4	17	rajtam	rajtam					javaslat	H5921	18	szo	alacsony
+Jonah.2.4	17	rajtam	rajtam					javaslat	H9030	19	morfema	alacsony
+Jonah.2.5	1	És	És					javaslat	H9002	1	morfema	alacsony
+Jonah.2.5	2	én	én					javaslat	H0589	2	szo	alacsony
+Jonah.2.5	3	mondám	mondtam	igen				javaslat	H0559	3	szo	alacsony
+Jonah.2.5	4	Elvettettem	Elvettettem					javaslat	H1644	4	szo	alacsony
+Jonah.2.5	5	a	a					betoldas				
+Jonah.2.5	6	te	te					javaslat	H9021	8	morfema	alacsony
+Jonah.2.5	7	szemeid	szemeid					javaslat	H5869	7	szo	alacsony
+Jonah.2.5	8	elől	elől					javaslat	H9006	5	morfema	alacsony
+Jonah.2.5	8	elől	elől					javaslat	H5048	6	szo	alacsony
+Jonah.2.5	9	vajha	vajha					javaslat	H0389	9	szo	alacsony
+Jonah.2.5	10	láthatnám	láthatnám					javaslat	H3254	10	szo	alacsony
+Jonah.2.5	10	láthatnám	láthatnám					javaslat	H9005	11	morfema	alacsony
+Jonah.2.5	10	láthatnám	láthatnám					javaslat	H5027	12	szo	alacsony
+Jonah.2.5	11	még	még					javaslat	H3254	10	szo	alacsony
+Jonah.2.5	12	szentséged	szentséged					javaslat	H9021	16	morfema	alacsony
+Jonah.2.5	13	templomát	templomát					javaslat	H0413	13	szo	alacsony
+Jonah.2.5	13	templomát	templomát					javaslat	H1964	14	szo	alacsony
+Jonah.2.5	13	templomát	templomát					javaslat	H6944	15	szo	alacsony
+Jonah.2.6	1	Körülvettek	Körülvettek					javaslat	H0661	1	szo	alacsony
+Jonah.2.6	2	engem	engem					javaslat	H9030	2	morfema	alacsony
+Jonah.2.6	3	a	a					betoldas				
+Jonah.2.6	4	vizek	vizek					javaslat	H4325	3	szo	alacsony
+Jonah.2.6	5	lelkemig	lelkemig					javaslat	H5704	4	szo	alacsony
+Jonah.2.6	5	lelkemig	lelkemig					javaslat	H5315	5	szo	alacsony
+Jonah.2.6	6	mély	mély					javaslat	H8415	6	szo	alacsony
+Jonah.2.6	7	ár	ár					javaslat	H8415	6	szo	alacsony
+Jonah.2.6	8	kerített	kerített					javaslat	H5437	7	szo	alacsony
+Jonah.2.6	9	be	be					javaslat	H5437	7	szo	alacsony
+Jonah.2.6	10	engem	engem					javaslat	H9030	8	morfema	alacsony
+Jonah.2.6	11	hinár	hinár					javaslat	H5488	9	szo	alacsony
+Jonah.2.6	12	szövődött	szövődött					javaslat	H2280	10	szo	alacsony
+Jonah.2.6	13	fejemre	fejemre					javaslat	H9005	11	morfema	alacsony
+Jonah.2.6	13	fejemre	fejemre					javaslat	H7218	12	szo	alacsony
+Jonah.2.6	13	fejemre	fejemre					javaslat	H9020	13	morfema	alacsony
+Jonah.2.7	1	A	A					betoldas				
+Jonah.2.7	2	hegyek	hegyek					javaslat	H2022	3	szo	alacsony
+Jonah.2.7	3	alapjáig	alapjáig					javaslat	H9005	1	morfema	alacsony
+Jonah.2.7	3	alapjáig	alapjáig					javaslat	H7095	2	szo	alacsony
+Jonah.2.7	4	sülyedtem	sülyedtem					javaslat	H3381	4	szo	alacsony
+Jonah.2.7	5	alá	alá					javaslat	H3381	4	szo	alacsony
+Jonah.2.7	6	bezáródtak	bezáródtak					javaslat	H1280	7	szo	alacsony
+Jonah.2.7	7	a	a					betoldas				
+Jonah.2.7	8	föld	föld					javaslat	H9009	5	morfema	alacsony
+Jonah.2.7	8	föld	föld					javaslat	H0776	6	szo	alacsony
+Jonah.2.7	9	závárjai	závárjai					javaslat	H1280	7	szo	alacsony
+Jonah.2.7	9	závárjai	závárjai					javaslat	H9024	8	morfema	alacsony
+Jonah.2.7	10	felettem	felettem					javaslat	H1157	9	szo	alacsony
+Jonah.2.7	10	felettem	felettem					javaslat	H9030	10	morfema	alacsony
+Jonah.2.7	11	örökre	örökre					javaslat	H9005	11	morfema	alacsony
+Jonah.2.7	11	örökre	örökre					javaslat	H5769	12	szo	alacsony
+Jonah.2.7	12	Mindazáltal	Mindazáltal					javaslat	H9001	13	morfema	alacsony
+Jonah.2.7	13	kiemelted	kiemelted					javaslat	H5927	14	szo	alacsony
+Jonah.2.7	14	éltemet	éltemet					javaslat	H2416	17	szo	alacsony
+Jonah.2.7	14	éltemet	éltemet					javaslat	H9020	18	morfema	alacsony
+Jonah.2.7	15	a	a					betoldas				
+Jonah.2.7	16	mulásból	mulásból					javaslat	H9006	15	morfema	alacsony
+Jonah.2.7	16	mulásból	mulásból					javaslat	H7845	16	szo	alacsony
+Jonah.2.7	17	oh	oh					javaslat	H3068	19	szo	alacsony
+Jonah.2.7	18	Uram	Uram					javaslat	H3068	19	szo	alacsony
+Jonah.2.7	19	Istenem	Istenem					javaslat	H0430	20	szo	alacsony
+Jonah.2.7	19	Istenem	Istenem					javaslat	H9020	21	morfema	alacsony
+Jonah.2.8	1	Mikor	Mikor					javaslat	H9003	1	morfema	alacsony
+Jonah.2.8	2	elcsüggedt	elcsüggedt					javaslat	H5848	2	szo	alacsony
+Jonah.2.8	3	bennem	bennem					javaslat	H5921	3	szo	alacsony
+Jonah.2.8	3	bennem	bennem					javaslat	H9030	4	morfema	alacsony
+Jonah.2.8	4	az	az					betoldas				
+Jonah.2.8	5	én	én					javaslat	H9020	6	morfema	alacsony
+Jonah.2.8	6	lelkem	lelkem					javaslat	H5315	5	szo	alacsony
+Jonah.2.8	7	megemlékeztem	megemlékeztem					javaslat	H2142	9	szo	alacsony
+Jonah.2.8	8	az	az					betoldas				
+Jonah.2.8	9	Úrról	Úrról					javaslat	H0853	7	szo	alacsony
+Jonah.2.8	9	Úrról	Úrról					javaslat	H3068	8	szo	alacsony
+Jonah.2.8	10	és	és					javaslat	H9001	10	morfema	alacsony
+Jonah.2.8	11	bejutott	bejutott					javaslat	H0935	11	szo	alacsony
+Jonah.2.8	12	az	az					betoldas				
+Jonah.2.8	13	én	én					javaslat	H9020	15	morfema	alacsony
+Jonah.2.8	14	könyörgésem	könyörgésem					javaslat	H8605	14	szo	alacsony
+Jonah.2.8	15	te	te					javaslat	H9031	13	morfema	alacsony
+Jonah.2.8	16	hozzád	hozzád					javaslat	H0413	12	szo	alacsony
+Jonah.2.8	16	hozzád	hozzád					javaslat	H9031	13	morfema	alacsony
+Jonah.2.8	17	a	a					betoldas				
+Jonah.2.8	18	te	te					javaslat	H9021	19	morfema	alacsony
+Jonah.2.8	19	szentséged	szentséged					javaslat	H6944	18	szo	alacsony
+Jonah.2.8	20	templomába	templomába					javaslat	H0413	16	szo	alacsony
+Jonah.2.8	20	templomába	templomába					javaslat	H1964	17	szo	alacsony
+Jonah.2.9	1	A		igen	osszevonva	2		betoldas				
+Jonah.2.9	2	kik	Akik	igen				javaslat	H8104	1	szo	alacsony
+Jonah.2.9	3	hiú	hiú					javaslat	H7723	3	szo	alacsony
+Jonah.2.9	4	bálványokra	bálványokra					javaslat	H1892	2	szo	alacsony
+Jonah.2.9	5	ügyelnek	ügyelnek					javaslat	H8104	1	szo	alacsony
+Jonah.2.9	6	elhagyják	elhagyják					javaslat	H5800	6	szo	alacsony
+Jonah.2.9	7	boldogságukat	boldogságukat					javaslat	H2617	4	szo	alacsony
+Jonah.2.9	7	boldogságukat	boldogságukat					javaslat	H9028	5	morfema	alacsony
+Jonah.2.10	1	De	De					javaslat	H9002	1	morfema	alacsony
+Jonah.2.10	2	én	én					javaslat	H0589	2	szo	alacsony
+Jonah.2.10	3	hálaadó	hálaadó					javaslat	H9003	3	morfema	alacsony
+Jonah.2.10	4	szóval	szóval					javaslat	H6963	4	szo	alacsony
+Jonah.2.10	4	szóval	szóval					javaslat	H8426	5	szo	alacsony
+Jonah.2.10	5	áldozom	áldozom					javaslat	H2076	6	szo	alacsony
+Jonah.2.10	6	néked	neked	igen				javaslat	H9005	7	morfema	alacsony
+Jonah.2.10	6	néked	neked	igen				javaslat	H9031	8	morfema	alacsony
+Jonah.2.10	7	megadom	megadom					javaslat	H7999	11	szo	alacsony
+Jonah.2.10	8	a		igen	osszevonva	9		betoldas				
+Jonah.2.10	9	mit	amit	igen				javaslat	H0834	9	szo	alacsony
+Jonah.2.10	10	fogadtam	fogadtam					javaslat	H5087	10	szo	alacsony
+Jonah.2.10	11	Az	Az					betoldas				
+Jonah.2.10	12	Úré	Úré					javaslat	H9005	13	morfema	alacsony
+Jonah.2.10	12	Úré	Úré					javaslat	H3068	14	szo	alacsony
+Jonah.2.10	13	a	a					betoldas				
+Jonah.2.10	14	szabadítás	szabadítás					javaslat	H3444	12	szo	alacsony
+Jonah.2.11	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.2.11	2	szóla	szólt	igen				javaslat	H0559	2	szo	alacsony
+Jonah.2.11	3	az	az					betoldas				
+Jonah.2.11	4	Úr	Úr					javaslat	H3068	3	szo	alacsony
+Jonah.2.11	5	a	a					betoldas				
+Jonah.2.11	6	halnak	halnak					javaslat	H9005	4	morfema	alacsony
+Jonah.2.11	6	halnak	halnak					javaslat	H1709	5	szo	alacsony
+Jonah.2.11	7	és	és					javaslat	H9001	6	morfema	alacsony
+Jonah.2.11	8	kiveté	kivetette	igen				javaslat	H6958	7	szo	alacsony
+Jonah.2.11	9	Jónást	Jónást					javaslat	H3124	9	szo	alacsony
+Jonah.2.11	10	a	a					betoldas				
+Jonah.2.11	11	szárazra	szárazra					javaslat	H0413	10	szo	alacsony
+Jonah.2.11	11	szárazra	szárazra					javaslat	H3004	12	szo	alacsony
+Jonah.3.1	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.3.1	2	lőn	lett	igen				javaslat	H1961	2	szo	alacsony
+Jonah.3.1	3	az	az					betoldas				
+Jonah.3.1	4	Úrnak	Úrnak					javaslat	H3068	4	szo	alacsony
+Jonah.3.1	5	szava	szava					javaslat	H1697	3	szo	alacsony
+Jonah.3.1	6	Jónáshoz	Jónáshoz					javaslat	H0413	5	szo	alacsony
+Jonah.3.1	6	Jónáshoz	Jónáshoz					javaslat	H3124	6	szo	alacsony
+Jonah.3.1	7	másodszor	másodszor					javaslat	H8145	7	szo	alacsony
+Jonah.3.1	8	is	is					betoldas				
+Jonah.3.1	9	mondván	mondva	igen				javaslat	H9005	8	morfema	alacsony
+Jonah.3.1	9	mondván	mondva	igen				javaslat	H0559	9	szo	alacsony
+Jonah.3.2	1	Kelj	Kelj					javaslat	H6965	1	szo	alacsony
+Jonah.3.2	2	fel	fel					betoldas				
+Jonah.3.2	3	menj	menj					javaslat	H1980	2	szo	alacsony
+Jonah.3.2	4	Ninivébe	Ninivébe					javaslat	H0413	3	szo	alacsony
+Jonah.3.2	4	Ninivébe	Ninivébe					javaslat	H5210	4	szo	alacsony
+Jonah.3.2	5	a	a					betoldas				
+Jonah.3.2	6	nagy	nagy					javaslat	H1419	8	szo	alacsony
+Jonah.3.2	7	városba	városba					javaslat	H9009	5	morfema	alacsony
+Jonah.3.2	7	városba	városba					javaslat	H5892	6	szo	alacsony
+Jonah.3.2	7	városba	városba					javaslat	H9009	7	morfema	alacsony
+Jonah.3.2	8	és	és					javaslat	H9002	9	morfema	alacsony
+Jonah.3.2	9	hirdesd	hirdesd					javaslat	H7121	10	szo	alacsony
+Jonah.3.2	10	néki	neki	igen				javaslat	H0413	11	szo	alacsony
+Jonah.3.2	10	néki	neki	igen				javaslat	H9034	12	morfema	alacsony
+Jonah.3.2	11	azt	azt					betoldas				
+Jonah.3.2	12	a	a					betoldas				
+Jonah.3.2	13	beszédet	beszédet					javaslat	H7150	15	szo	alacsony
+Jonah.3.2	14	a		igen	osszevonva	15		betoldas				
+Jonah.3.2	15	mit	amit	igen				javaslat	H0834	16	szo	alacsony
+Jonah.3.2	16	én	én					javaslat	H0595	17	szo	alacsony
+Jonah.3.2	17	parancsolok	parancsolok					javaslat	H1696	18	szo	alacsony
+Jonah.3.2	18	néked	neked	igen				javaslat	H0413	19	szo	alacsony
+Jonah.3.2	18	néked	neked	igen				javaslat	H9031	20	morfema	alacsony
+Jonah.3.3	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.3.3	2	felkele	felkelt	igen				javaslat	H6965	2	szo	alacsony
+Jonah.3.3	3	Jónás	Jónás					javaslat	H3124	3	szo	alacsony
+Jonah.3.3	4	és	és					javaslat	H9001	4	morfema	alacsony
+Jonah.3.3	5	elméne	elment	igen				javaslat	H1980	5	szo	alacsony
+Jonah.3.3	6	Ninivébe	Ninivébe					javaslat	H0413	6	szo	alacsony
+Jonah.3.3	6	Ninivébe	Ninivébe					javaslat	H5210	7	szo	alacsony
+Jonah.3.3	7	az	az					betoldas				
+Jonah.3.3	8	Úr	Úr					javaslat	H3068	10	szo	alacsony
+Jonah.3.3	9	szava	szava					javaslat	H1697	9	szo	alacsony
+Jonah.3.3	10	szerint	szerint					javaslat	H9004	8	morfema	alacsony
+Jonah.3.3	11	Ninive	Ninive					javaslat	H5210	12	szo	alacsony
+Jonah.3.3	12	pedig	pedig					javaslat	H9002	11	morfema	alacsony
+Jonah.3.3	13	nagy	nagy					javaslat	H1419	15	szo	alacsony
+Jonah.3.3	14	városa	városa					javaslat	H5892	14	szo	alacsony
+Jonah.3.3	15	vala	volt	igen				betoldas				
+Jonah.3.3	16	Istennek	Istennek					javaslat	H9005	16	morfema	alacsony
+Jonah.3.3	16	Istennek	Istennek					javaslat	H0430	17	szo	alacsony
+Jonah.3.3	17	három	három					javaslat	H7969	19	szo	alacsony
+Jonah.3.3	18	napi	napi					javaslat	H4109	18	szo	alacsony
+Jonah.3.3	19	járó	járó					javaslat	H4109	18	szo	alacsony
+Jonah.3.3	20	föld	föld					javaslat	H3117	20	szo	alacsony
+Jonah.3.4	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.3.4	2	kezde	kezdett	igen				javaslat	H2490	2	szo	alacsony
+Jonah.3.4	3	Jónás	Jónás					javaslat	H3124	3	szo	alacsony
+Jonah.3.4	4	bemenni	bemenni					javaslat	H9005	4	morfema	alacsony
+Jonah.3.4	4	bemenni	bemenni					javaslat	H0935	5	szo	alacsony
+Jonah.3.4	5	a	a					betoldas				
+Jonah.3.4	6	városba	városba					javaslat	H9003	6	morfema	alacsony
+Jonah.3.4	6	városba	városba					javaslat	H5892	7	szo	alacsony
+Jonah.3.4	7	egy	egy					javaslat	H0259	10	szo	alacsony
+Jonah.3.4	8	napi	napi					javaslat	H3117	9	szo	alacsony
+Jonah.3.4	9	járóra	járóra					javaslat	H4109	8	szo	alacsony
+Jonah.3.4	10	és	és					javaslat	H9001	11	morfema	alacsony
+Jonah.3.4	11	kiálta	kiáltott	igen				javaslat	H7121	12	szo	alacsony
+Jonah.3.4	12	és	és					javaslat	H9001	13	morfema	alacsony
+Jonah.3.4	13	monda	mondta	igen				javaslat	H0559	14	szo	alacsony
+Jonah.3.4	14	Még	Még					javaslat	H5750	15	szo	alacsony
+Jonah.3.4	15	negyven	negyven					javaslat	H0705	16	szo	alacsony
+Jonah.3.4	16	nap	nap					javaslat	H3117	17	szo	alacsony
+Jonah.3.4	17	és	és					javaslat	H9002	18	morfema	alacsony
+Jonah.3.4	18	elpusztul	elpusztul					javaslat	H2015	20	szo	alacsony
+Jonah.3.4	19	Ninive	Ninive					javaslat	H5210	19	szo	alacsony
+Jonah.3.5	1	A	A					betoldas				
+Jonah.3.5	2	niniveiek	niniveiek					javaslat	H0582	3	szo	alacsony
+Jonah.3.5	2	niniveiek	niniveiek					javaslat	H5210	4	szo	alacsony
+Jonah.3.5	3	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Jonah.3.5	4	hivének	hittek	igen			igen	javaslat	H0539	2	szo	alacsony
+Jonah.3.5	5	Istenben	Istenben					javaslat	H9003	5	morfema	alacsony
+Jonah.3.5	5	Istenben	Istenben					javaslat	H0430	6	szo	alacsony
+Jonah.3.5	6	és	és					javaslat	H9001	7	morfema	alacsony
+Jonah.3.5	7	bőjtöt	bőjtöt					javaslat	H6685	9	szo	alacsony
+Jonah.3.5	8	hirdetének	hirdettek	igen			igen	javaslat	H7121	8	szo	alacsony
+Jonah.3.5	9	és	és					javaslat	H9001	10	morfema	alacsony
+Jonah.3.5	10	nagyjaiktól	nagyjaiktól					javaslat	H9006	13	morfema	alacsony
+Jonah.3.5	10	nagyjaiktól	nagyjaiktól					javaslat	H1419	14	szo	alacsony
+Jonah.3.5	10	nagyjaiktól	nagyjaiktól					javaslat	H9028	15	morfema	alacsony
+Jonah.3.5	11	fogva	fogva					betoldas				
+Jonah.3.5	12	kicsinyeikig	kicsinyeikig					javaslat	H5704	17	szo	alacsony
+Jonah.3.5	12	kicsinyeikig	kicsinyeikig					javaslat	H6996	18	szo	alacsony
+Jonah.3.5	12	kicsinyeikig	kicsinyeikig					javaslat	H9028	19	morfema	alacsony
+Jonah.3.5	13	zsákba	zsákba					javaslat	H8242	12	szo	alacsony
+Jonah.3.5	14	öltözének	öltöztek	igen			igen	javaslat	H3847	11	szo	alacsony
+Jonah.3.6	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.3.6	2	eljuta	eljutott	igen				javaslat	H5060	2	szo	alacsony
+Jonah.3.6	3	a	a					betoldas				
+Jonah.3.6	4	beszéd	beszéd					javaslat	H1697	4	szo	alacsony
+Jonah.3.6	5	Ninive	Ninive					javaslat	H5210	7	szo	alacsony
+Jonah.3.6	6	királyához	királyához					javaslat	H0413	5	szo	alacsony
+Jonah.3.6	6	királyához	királyához					javaslat	H4428	6	szo	alacsony
+Jonah.3.6	7	és	és					javaslat	H9001	8	morfema	alacsony
+Jonah.3.6	8	felkele	felkelt	igen				javaslat	H6965	9	szo	alacsony
+Jonah.3.6	9	királyi	királyi					betoldas				
+Jonah.3.6	10	székéből	székéből					javaslat	H9006	10	morfema	alacsony
+Jonah.3.6	10	székéből	székéből					javaslat	H3678	11	szo	alacsony
+Jonah.3.6	10	székéből	székéből					javaslat	H9023	12	morfema	alacsony
+Jonah.3.6	11	és	és					javaslat	H9001	13	morfema	alacsony
+Jonah.3.6	12	leveté	levetette	igen				javaslat	H5674	14	szo	alacsony
+Jonah.3.6	13	magáról	magáról					javaslat	H9006	17	morfema	alacsony
+Jonah.3.6	13	magáról	magáról					javaslat	H5921	18	szo	alacsony
+Jonah.3.6	13	magáról	magáról					javaslat	H9033	19	morfema	alacsony
+Jonah.3.6	14	az	az					betoldas				
+Jonah.3.6	15	ő	ő					javaslat	H9023	16	morfema	alacsony
+Jonah.3.6	16	királyi	királyi					betoldas				
+Jonah.3.6	17	ruháját	ruháját					javaslat	H0155	15	szo	alacsony
+Jonah.3.6	17	ruháját	ruháját					javaslat	H9023	16	morfema	alacsony
+Jonah.3.6	18	és	és					javaslat	H9001	20	morfema	alacsony
+Jonah.3.6	19	zsákba	zsákba					javaslat	H8242	22	szo	alacsony
+Jonah.3.6	20	borítkozék	borítkozott	igen			igen	javaslat	H3680	21	szo	alacsony
+Jonah.3.6	21	és	és					javaslat	H9001	23	morfema	alacsony
+Jonah.3.6	22	üle	ült	igen				javaslat	H3427	24	szo	alacsony
+Jonah.3.6	23	a	a					betoldas				
+Jonah.3.6	24	porba	porba					javaslat	H5921	25	szo	alacsony
+Jonah.3.6	24	porba	porba					javaslat	H0665	27	szo	alacsony
+Jonah.3.7	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.3.7	2	kiáltának	kiáltottak	igen			igen	javaslat	H2199	2	szo	alacsony
+Jonah.3.7	3	és	és					javaslat	H9001	3	morfema	alacsony
+Jonah.3.7	4	szólának	szóltak	igen			igen	javaslat	H0559	4	szo	alacsony
+Jonah.3.7	5	Ninivében	Ninivében					javaslat	H9003	5	morfema	alacsony
+Jonah.3.7	5	Ninivében	Ninivében					javaslat	H5210	6	szo	alacsony
+Jonah.3.7	6	a	a					betoldas				
+Jonah.3.7	7	királynak	királynak					javaslat	H4428	10	szo	alacsony
+Jonah.3.7	8	és	és					javaslat	H9002	11	morfema	alacsony
+Jonah.3.7	9	főembereinek	főembereinek					javaslat	H1419	12	szo	alacsony
+Jonah.3.7	9	főembereinek	főembereinek					javaslat	H9023	13	morfema	alacsony
+Jonah.3.7	10	akaratából	akaratából					javaslat	H9006	7	morfema	alacsony
+Jonah.3.7	10	akaratából	akaratából					javaslat	H2940	8	szo	alacsony
+Jonah.3.7	11	mondván	mondva	igen				javaslat	H9005	14	morfema	alacsony
+Jonah.3.7	11	mondván	mondva	igen				javaslat	H0559	15	szo	alacsony
+Jonah.3.7	12	Emberek	Emberek					javaslat	H0120	17	szo	alacsony
+Jonah.3.7	13	és	és					javaslat	H9002	18	morfema	alacsony
+Jonah.3.7	14	barmok	barmok					javaslat	H0929	20	szo	alacsony
+Jonah.3.7	15	ökrök	ökrök					javaslat	H1241	22	szo	alacsony
+Jonah.3.7	16	és	és					javaslat	H9002	23	morfema	alacsony
+Jonah.3.7	17	juhok	juhok					javaslat	H6629	25	szo	alacsony
+Jonah.3.7	18	semmit	semmit					javaslat	H3972	28	szo	alacsony
+Jonah.3.7	19	meg	meg					javaslat	H2938	27	szo	alacsony
+Jonah.3.7	20	ne	ne					javaslat	H0408	26	szo	alacsony
+Jonah.3.7	21	kóstoljanak	kóstoljanak					javaslat	H2938	27	szo	alacsony
+Jonah.3.7	22	ne	ne					javaslat	H0408	29	szo	alacsony
+Jonah.3.7	23	legeljenek	legeljenek					javaslat	H7462	30	szo	alacsony
+Jonah.3.7	24	és	és					javaslat	H9002	31	morfema	alacsony
+Jonah.3.7	25	vizet	vizet					javaslat	H4325	32	szo	alacsony
+Jonah.3.7	26	se	se					javaslat	H0408	33	szo	alacsony
+Jonah.3.7	27	igyanak	igyanak					javaslat	H8354	34	szo	alacsony
+Jonah.3.8	1	Hanem	Hanem					javaslat	H9002	1	morfema	alacsony
+Jonah.3.8	2	öltözzenek	öltözzenek					javaslat	H3680	2	szo	alacsony
+Jonah.3.8	3	zsákba	zsákba					javaslat	H8242	3	szo	alacsony
+Jonah.3.8	4	az	az					betoldas				
+Jonah.3.8	5	emberek	emberek					javaslat	H0120	5	szo	alacsony
+Jonah.3.8	6	és	és					javaslat	H9002	6	morfema	alacsony
+Jonah.3.8	7	barmok	barmok					javaslat	H0929	8	szo	alacsony
+Jonah.3.8	8	és	és					javaslat	H9002	9	morfema	alacsony
+Jonah.3.8	9	kiáltsanak	kiáltsanak					javaslat	H7121	10	szo	alacsony
+Jonah.3.8	10	az	az					betoldas				
+Jonah.3.8	11	Istenhez	Istenhez					javaslat	H0413	11	szo	alacsony
+Jonah.3.8	11	Istenhez	Istenhez					javaslat	H0430	12	szo	alacsony
+Jonah.3.8	12	erősen	erősen					javaslat	H9003	13	morfema	alacsony
+Jonah.3.8	12	erősen	erősen					javaslat	H2394	14	szo	alacsony
+Jonah.3.8	13	és	és					javaslat	H9002	15	morfema	alacsony
+Jonah.3.8	14	térjen	térjen					javaslat	H7725	16	szo	alacsony
+Jonah.3.8	15	meg	meg					javaslat	H7725	16	szo	alacsony
+Jonah.3.8	16	kiki	kiki					javaslat	H0376	17	szo	alacsony
+Jonah.3.8	17	az	az					betoldas				
+Jonah.3.8	18	ő	ő					javaslat	H9023	20	morfema	alacsony
+Jonah.3.8	19	gonosz	gonosz					javaslat	H7451	22	szo	alacsony
+Jonah.3.8	20	útáról	útáról					javaslat	H9006	18	morfema	alacsony
+Jonah.3.8	20	útáról	útáról					javaslat	H1870	19	szo	alacsony
+Jonah.3.8	20	útáról	útáról					javaslat	H9023	20	morfema	alacsony
+Jonah.3.8	21	és	és					javaslat	H9002	23	morfema	alacsony
+Jonah.3.8	22	az	az					betoldas				
+Jonah.3.8	23	erőszakosságból	erőszakosságból					javaslat	H4480	24	szo	alacsony
+Jonah.3.8	23	erőszakosságból	erőszakosságból					javaslat	H2555	26	szo	alacsony
+Jonah.3.8	24	a		igen	osszevonva	25		javaslat	H0834	27	szo	alacsony
+Jonah.3.8	25	mely	amely	igen				javaslat	H0834	27	szo	alacsony
+Jonah.3.8	26	az	az					betoldas				
+Jonah.3.8	27	ő	ő					javaslat	H9028	30	morfema	alacsony
+Jonah.3.8	28	kezökben	kezükben	igen				javaslat	H9003	28	morfema	alacsony
+Jonah.3.8	28	kezökben	kezükben	igen				javaslat	H3709	29	szo	alacsony
+Jonah.3.8	28	kezökben	kezükben	igen				javaslat	H9028	30	morfema	alacsony
+Jonah.3.8	29	van	van					betoldas				
+Jonah.3.9	1	Ki	Ki					javaslat	H4310	1	szo	alacsony
+Jonah.3.9	2	tudja	tudja					javaslat	H3045	2	szo	alacsony
+Jonah.3.9	3	talán	talán					betoldas				
+Jonah.3.9	4	visszatér	visszatér					javaslat	H7725	3	szo	alacsony
+Jonah.3.9	5	és	és					javaslat	H9001	4	morfema	alacsony
+Jonah.3.9	6	megengesztelődik	megengesztelődik					javaslat	H5162	5	szo	alacsony
+Jonah.3.9	7	az	az					betoldas				
+Jonah.3.9	8	Isten	Isten					javaslat	H0430	7	szo	alacsony
+Jonah.3.9	9	és	és					javaslat	H9001	8	morfema	alacsony
+Jonah.3.9	10	elfordul	elfordul					javaslat	H7725	9	szo	alacsony
+Jonah.3.9	11	haragjának	haragjának					javaslat	H0639	12	szo	alacsony
+Jonah.3.9	11	haragjának	haragjának					javaslat	H9023	13	morfema	alacsony
+Jonah.3.9	12	búsulásától	búsulásától					javaslat	H9006	10	morfema	alacsony
+Jonah.3.9	12	búsulásától	búsulásától					javaslat	H2740	11	szo	alacsony
+Jonah.3.9	13	és	és					javaslat	H9002	14	morfema	alacsony
+Jonah.3.9	14	nem	nem					javaslat	H3808	15	szo	alacsony
+Jonah.3.9	15	veszünk	veszünk					javaslat	H0006	16	szo	alacsony
+Jonah.3.9	16	el	el					javaslat	H0006	16	szo	alacsony
+Jonah.3.10	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.3.10	2	látá	látta	igen				javaslat	H7200	2	szo	alacsony
+Jonah.3.10	3	Isten	Isten					javaslat	H0430	4	szo	alacsony
+Jonah.3.10	4	az	az					betoldas				
+Jonah.3.10	5	ő	ő					javaslat	H9028	7	morfema	alacsony
+Jonah.3.10	6	cselekedeteiket	cselekedeteiket					javaslat	H4639	6	szo	alacsony
+Jonah.3.10	6	cselekedeteiket	cselekedeteiket					javaslat	H9028	7	morfema	alacsony
+Jonah.3.10	7	hogy	hogy					javaslat	H3588	8	szo	alacsony
+Jonah.3.10	8	megtértek	megtértek					javaslat	H7725	9	szo	alacsony
+Jonah.3.10	9	az	az					betoldas				
+Jonah.3.10	10	ő	ő					javaslat	H9028	12	morfema	alacsony
+Jonah.3.10	11	gonosz	gonosz					javaslat	H7451	14	szo	alacsony
+Jonah.3.10	12	útjokról	útjukról	igen				javaslat	H9006	10	morfema	alacsony
+Jonah.3.10	12	útjokról	útjukról	igen				javaslat	H1870	11	szo	alacsony
+Jonah.3.10	12	útjokról	útjukról	igen				javaslat	H9028	12	morfema	alacsony
+Jonah.3.10	13	és	és					javaslat	H9001	15	morfema	alacsony
+Jonah.3.10	14	megbáná	megbánta	igen				javaslat	H5162	16	szo	alacsony
+Jonah.3.10	15	az	az					betoldas				
+Jonah.3.10	16	Isten	Isten					javaslat	H0430	18	szo	alacsony
+Jonah.3.10	17	azt	azt					betoldas				
+Jonah.3.10	18	a	a					betoldas				
+Jonah.3.10	19	gonoszt	gonoszt					javaslat	H5921	19	szo	alacsony
+Jonah.3.10	19	gonoszt	gonoszt					javaslat	H7451	21	szo	alacsony
+Jonah.3.10	20	a		igen	osszevonva	21		javaslat	H0834	22	szo	alacsony
+Jonah.3.10	21	melyről	amelyről	igen				javaslat	H0834	22	szo	alacsony
+Jonah.3.10	22	mondá	mondta	igen				javaslat	H1696	23	szo	alacsony
+Jonah.3.10	23	hogy	hogy					javaslat	H9005	24	morfema	alacsony
+Jonah.3.10	24	végrehajtja	végrehajtja					javaslat	H6213	25	szo	alacsony
+Jonah.3.10	25	rajtok	rajtok					javaslat	H9005	26	morfema	alacsony
+Jonah.3.10	25	rajtok	rajtok					javaslat	H9038	27	morfema	alacsony
+Jonah.3.10	26	és	és					javaslat	H9002	28	morfema	alacsony
+Jonah.3.10	27	nem	nem					javaslat	H3808	29	szo	alacsony
+Jonah.3.10	28	hajtá	hajtotta	igen				javaslat	H6213	30	szo	alacsony
+Jonah.3.10	29	végre	végre					javaslat	H6213	30	szo	alacsony
+Jonah.4.1	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.4.1	2	igen	igen					javaslat	H1419	6	szo	alacsony
+Jonah.4.1	3	rossznak	rossznak					javaslat	H7451	5	szo	alacsony
+Jonah.4.1	4	látszék	látszott	igen				javaslat	H7489	2	szo	alacsony
+Jonah.4.1	5	ez	ez					betoldas				
+Jonah.4.1	6	Jónás	Jónás					javaslat	H3124	4	szo	alacsony
+Jonah.4.1	7	előtt	előtt					javaslat	H0413	3	szo	alacsony
+Jonah.4.1	8	és	és					javaslat	H9001	7	morfema	alacsony
+Jonah.4.1	9	megharaguvék	megharagudott	igen				javaslat	H2734	8	szo	alacsony
+Jonah.4.1	9	megharaguvék	megharagudott	igen				javaslat	H9005	9	morfema	alacsony
+Jonah.4.1	9	megharaguvék	megharagudott	igen				javaslat	H9033	10	morfema	alacsony
+Jonah.4.2	1	Könyörge	Könyörgött	igen				javaslat	H6419	2	szo	alacsony
+Jonah.4.2	2	azért	azért					betoldas				
+Jonah.4.2	3	az	az					betoldas				
+Jonah.4.2	4	Úrhoz	Úrhoz					javaslat	H0413	3	szo	alacsony
+Jonah.4.2	4	Úrhoz	Úrhoz					javaslat	H3068	4	szo	alacsony
+Jonah.4.2	5	és	és					javaslat	H9001	5	morfema	alacsony
+Jonah.4.2	6	mondá	mondta	igen				javaslat	H0559	6	szo	alacsony
+Jonah.4.2	7	Kérlek	Kérlek					javaslat	H0577	7	szo	alacsony
+Jonah.4.2	8	Uram	Uram					javaslat	H3068	8	szo	alacsony
+Jonah.4.2	9	Avagy	Avagy					javaslat	H9008	9	morfema	alacsony
+Jonah.4.2	10	nem	nem					javaslat	H3808	10	szo	alacsony
+Jonah.4.2	11	ez	ez					javaslat	H2088	11	szo	alacsony
+Jonah.4.2	12	vala	volt	igen				betoldas				
+Jonah.4.2	13	é	é					javaslat	H9008	9	morfema	alacsony
+Jonah.4.2	14	az	az					betoldas				
+Jonah.4.2	15	én	én					javaslat	H9020	13	morfema	alacsony
+Jonah.4.2	16	mondásom	mondásom					javaslat	H1697	12	szo	alacsony
+Jonah.4.2	16	mondásom	mondásom					javaslat	H9020	13	morfema	alacsony
+Jonah.4.2	17	mikor	mikor					javaslat	H5704	14	szo	alacsony
+Jonah.4.2	18	még	még					javaslat	H5704	14	szo	alacsony
+Jonah.4.2	19	az	az					betoldas				
+Jonah.4.2	20	én	én					javaslat	H9020	19	morfema	alacsony
+Jonah.4.2	21	hazámban	hazámban					javaslat	H5921	17	szo	alacsony
+Jonah.4.2	21	hazámban	hazámban					javaslat	H0127	18	szo	alacsony
+Jonah.4.2	21	hazámban	hazámban					javaslat	H9020	19	morfema	alacsony
+Jonah.4.2	22	valék	voltam	igen				javaslat	H1961	15	szo	alacsony
+Jonah.4.2	22	valék	voltam	igen				javaslat	H9040	16	morfema	alacsony
+Jonah.4.2	23	azért	azért					javaslat	H5921	20	szo	alacsony
+Jonah.4.2	23	azért	azért					javaslat	H3651	21	szo	alacsony
+Jonah.4.2	24	siettem	siettem					javaslat	H6923	22	szo	alacsony
+Jonah.4.2	25	hogy	hogy					javaslat	H9005	23	morfema	alacsony
+Jonah.4.2	26	Tarsisba	Tarsisba					javaslat	H8659	25	szo	alacsony
+Jonah.4.2	26	Tarsisba	Tarsisba					javaslat	H9011	26	morfema	alacsony
+Jonah.4.2	27	futnék	futnék					javaslat	H1272	24	szo	alacsony
+Jonah.4.2	28	mert	mert					javaslat	H3588	27	szo	alacsony
+Jonah.4.2	29	tudtam	tudtam					javaslat	H3045	28	szo	alacsony
+Jonah.4.2	30	hogy	hogy					javaslat	H3588	29	szo	alacsony
+Jonah.4.2	31	te	te					javaslat	H0859	30	szo	alacsony
+Jonah.4.2	32	irgalmas	irgalmas					javaslat	H2587	32	szo	alacsony
+Jonah.4.2	33	és	és					javaslat	H9002	33	morfema	alacsony
+Jonah.4.2	34	kegyelmes	kegyelmes					javaslat	H7349	34	szo	alacsony
+Jonah.4.2	35	Isten	Isten					javaslat	H0410	31	szo	alacsony
+Jonah.4.2	36	vagy	vagy					betoldas				
+Jonah.4.2	37	nagy	nagy					javaslat	H0750	35	szo	alacsony
+Jonah.4.2	38	türelmű	türelmű					javaslat	H0639	36	szo	alacsony
+Jonah.4.2	39	és	és					javaslat	H9002	37	morfema	alacsony
+Jonah.4.2	40	nagy	nagy					javaslat	H7227	38	szo	alacsony
+Jonah.4.2	41	irgalmasságú	irgalmasságú					javaslat	H2617	39	szo	alacsony
+Jonah.4.2	42	és	és					javaslat	H9002	40	morfema	alacsony
+Jonah.4.2	43	a	a					betoldas				
+Jonah.4.2	44	gonosz	gonosz					javaslat	H7451	44	szo	alacsony
+Jonah.4.2	45	miatt	miatt					javaslat	H5921	42	szo	alacsony
+Jonah.4.2	46	is	is					betoldas				
+Jonah.4.2	47	bánkódó	bánkódó					javaslat	H5162	41	szo	alacsony
+Jonah.4.3	1	Most	Most					javaslat	H6258	2	szo	alacsony
+Jonah.4.3	2	azért	azért					javaslat	H9002	1	morfema	alacsony
+Jonah.4.3	3	Uram	Uram					javaslat	H3068	3	szo	alacsony
+Jonah.4.3	4	vedd	vedd					javaslat	H3947	4	szo	alacsony
+Jonah.4.3	5	el	el					javaslat	H3947	4	szo	alacsony
+Jonah.4.3	6	kérlek	kérlek					javaslat	H4994	5	szo	alacsony
+Jonah.4.3	7	az	az					betoldas				
+Jonah.4.3	8	én	én					javaslat	H9020	8	morfema	alacsony
+Jonah.4.3	9	lelkemet	lelkemet					javaslat	H5315	7	szo	alacsony
+Jonah.4.3	9	lelkemet	lelkemet					javaslat	H9020	8	morfema	alacsony
+Jonah.4.3	10	én	én					javaslat	H9030	10	morfema	alacsony
+Jonah.4.3	11	tőlem	tőlem					javaslat	H4480	9	szo	alacsony
+Jonah.4.3	11	tőlem	tőlem					javaslat	H9030	10	morfema	alacsony
+Jonah.4.3	12	mert	mert					javaslat	H3588	11	szo	alacsony
+Jonah.4.3	13	jobb	jobb					javaslat	H2896	12	szo	alacsony
+Jonah.4.3	14	meghalnom	meghalnom					javaslat	H4194	13	szo	alacsony
+Jonah.4.3	14	meghalnom	meghalnom					javaslat	H9020	14	morfema	alacsony
+Jonah.4.3	15	mintsem	mintsem					javaslat	H9006	15	morfema	alacsony
+Jonah.4.3	16	élnem	élnem					javaslat	H2416	16	szo	alacsony
+Jonah.4.3	16	élnem	élnem					javaslat	H9020	17	morfema	alacsony
+Jonah.4.4	1	Az	Az					betoldas				
+Jonah.4.4	2	Úr	Úr					javaslat	H3068	3	szo	alacsony
+Jonah.4.4	3	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Jonah.4.4	4	mondá	mondta	igen				javaslat	H0559	2	szo	alacsony
+Jonah.4.4	5	Avagy	Avagy					betoldas				
+Jonah.4.4	6	méltán	méltán					javaslat	H3190	5	szo	alacsony
+Jonah.4.4	7	haragszol	haragszol					javaslat	H2734	6	szo	alacsony
+Jonah.4.4	7	haragszol	haragszol					javaslat	H9005	7	morfema	alacsony
+Jonah.4.4	7	haragszol	haragszol					javaslat	H9031	8	morfema	alacsony
+Jonah.4.4	8	é	é					javaslat	H9008	4	morfema	alacsony
+Jonah.4.5	1	Majd	Majd					javaslat	H9001	1	morfema	alacsony
+Jonah.4.5	2	kiméne	kiment	igen				javaslat	H3318	2	szo	alacsony
+Jonah.4.5	3	Jónás	Jónás					javaslat	H3124	3	szo	alacsony
+Jonah.4.5	4	a	a					betoldas				
+Jonah.4.5	5	városból	városból					javaslat	H4480	4	szo	alacsony
+Jonah.4.5	5	városból	városból					javaslat	H5892	6	szo	alacsony
+Jonah.4.5	6	és	és					javaslat	H9001	7	morfema	alacsony
+Jonah.4.5	7	üle	ült	igen				javaslat	H3427	8	szo	alacsony
+Jonah.4.5	8	a	a					betoldas				
+Jonah.4.5	9	város	város					javaslat	H9005	11	morfema	alacsony
+Jonah.4.5	9	város	város					javaslat	H5892	12	szo	alacsony
+Jonah.4.5	10	keleti	keleti					javaslat	H6924	10	szo	alacsony
+Jonah.4.5	11	része	része					javaslat	H6924	10	szo	alacsony
+Jonah.4.5	12	felől	felől					javaslat	H9006	9	morfema	alacsony
+Jonah.4.5	13	és	és					javaslat	H9001	13	morfema	alacsony
+Jonah.4.5	14	csinála	csinált	igen				javaslat	H6213	14	szo	alacsony
+Jonah.4.5	15	ott	ott					javaslat	H8033	17	szo	alacsony
+Jonah.4.5	16	magának	magának					javaslat	H9005	15	morfema	alacsony
+Jonah.4.5	16	magának	magának					javaslat	H9033	16	morfema	alacsony
+Jonah.4.5	17	hajlékot	hajlékot					javaslat	H5521	18	szo	alacsony
+Jonah.4.5	18	és	és					javaslat	H9001	19	morfema	alacsony
+Jonah.4.5	19	üle	ült	igen				javaslat	H3427	20	szo	alacsony
+Jonah.4.5	20	az	az					javaslat	H9034	22	morfema	alacsony
+Jonah.4.5	21	alatt	alatt					javaslat	H8478	21	szo	alacsony
+Jonah.4.5	22	az	az					betoldas				
+Jonah.4.5	23	árnyékban	árnyékban					javaslat	H9003	23	morfema	alacsony
+Jonah.4.5	23	árnyékban	árnyékban					javaslat	H6738	24	szo	alacsony
+Jonah.4.5	24	a		igen	osszevonva	25		betoldas				
+Jonah.4.5	25	míg	amíg	igen				javaslat	H5704	25	szo	alacsony
+Jonah.4.5	25	míg	amíg	igen				javaslat	H0834	26	szo	alacsony
+Jonah.4.5	26	megláthatná	megláthatná					javaslat	H7200	27	szo	alacsony
+Jonah.4.5	27	mi	mi					javaslat	H4100	28	szo	alacsony
+Jonah.4.5	28	lészen	lesz	igen				javaslat	H1961	29	szo	alacsony
+Jonah.4.5	29	a	a					betoldas				
+Jonah.4.5	30	városból	városból					javaslat	H9003	30	morfema	alacsony
+Jonah.4.5	30	városból	városból					javaslat	H5892	31	szo	alacsony
+Jonah.4.6	1	Az	Az					betoldas				
+Jonah.4.6	2	Úr	Úr					javaslat	H3068	3	szo	alacsony
+Jonah.4.6	3	Isten	Isten					javaslat	H0430	4	szo	alacsony
+Jonah.4.6	4	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Jonah.4.6	5	egy	egy					betoldas				
+Jonah.4.6	6	tököt	tököt					javaslat	H7021	5	szo	alacsony
+Jonah.4.6	7	rendele	rendelt	igen				javaslat	H4487	2	szo	alacsony
+Jonah.4.6	8	és	és					javaslat	H9001	6	morfema	alacsony
+Jonah.4.6	9	felnöve	felnöve					javaslat	H5927	7	szo	alacsony
+Jonah.4.6	10	az	az					betoldas				
+Jonah.4.6	11	Jónás	Jónás					javaslat	H3124	11	szo	alacsony
+Jonah.4.6	12	fölé	fölé					javaslat	H9006	8	morfema	alacsony
+Jonah.4.6	12	fölé	fölé					javaslat	H5921	9	szo	alacsony
+Jonah.4.6	12	fölé	fölé					javaslat	H9005	10	morfema	alacsony
+Jonah.4.6	13	hogy	hogy					javaslat	H9005	12	morfema	alacsony
+Jonah.4.6	14	árnyékot	árnyékot					javaslat	H6738	14	szo	alacsony
+Jonah.4.6	15	tartson	tartson					javaslat	H1961	13	szo	alacsony
+Jonah.4.6	16	feje	feje					javaslat	H7218	16	szo	alacsony
+Jonah.4.6	16	feje	feje					javaslat	H9023	17	morfema	alacsony
+Jonah.4.6	17	fölött	fölött					javaslat	H5921	15	szo	alacsony
+Jonah.4.6	18	és	és					betoldas				
+Jonah.4.6	19	megoltalmazza	megoltalmazza					javaslat	H9005	18	morfema	alacsony
+Jonah.4.6	19	megoltalmazza	megoltalmazza					javaslat	H5337	19	szo	alacsony
+Jonah.4.6	20	őt	őt					javaslat	H9005	20	morfema	alacsony
+Jonah.4.6	20	őt	őt					javaslat	H9033	21	morfema	alacsony
+Jonah.4.6	21	a	a					betoldas				
+Jonah.4.6	22	hévség	hévség					javaslat	H7451	23	szo	alacsony
+Jonah.4.6	23	bántásától	bántásától					javaslat	H9006	22	morfema	alacsony
+Jonah.4.6	23	bántásától	bántásától					javaslat	H7451	23	szo	alacsony
+Jonah.4.6	23	bántásától	bántásától					javaslat	H9023	24	morfema	alacsony
+Jonah.4.6	24	És	És					javaslat	H9001	25	morfema	alacsony
+Jonah.4.6	25	nagy	nagy					javaslat	H1419	32	szo	alacsony
+Jonah.4.6	26	örömmel	örömmel					javaslat	H8057	31	szo	alacsony
+Jonah.4.6	27	örvendezék	örvendezett	igen				javaslat	H8055	26	szo	alacsony
+Jonah.4.6	28	Jónás	Jónás					javaslat	H3124	27	szo	alacsony
+Jonah.4.6	29	a	a					betoldas				
+Jonah.4.6	30	tök	tök					javaslat	H7021	30	szo	alacsony
+Jonah.4.6	31	miatt	miatt					javaslat	H5921	28	szo	alacsony
+Jonah.4.6	31	miatt	miatt					javaslat	H9009	29	morfema	alacsony
+Jonah.4.7	1	De	De					javaslat	H9001	1	morfema	alacsony
+Jonah.4.7	2	másnapra	másnapra					javaslat	H9005	10	morfema	alacsony
+Jonah.4.7	2	másnapra	másnapra					javaslat	H4283	11	szo	alacsony
+Jonah.4.7	3	férget	férget					javaslat	H8438	5	szo	alacsony
+Jonah.4.7	4	rendele	rendelt	igen				javaslat	H4487	2	szo	alacsony
+Jonah.4.7	5	az	az					betoldas				
+Jonah.4.7	6	Isten	Isten					javaslat	H0430	4	szo	alacsony
+Jonah.4.7	7	hajnal	hajnal					javaslat	H7837	9	szo	alacsony
+Jonah.4.7	8	költekor	költekor					javaslat	H9003	6	morfema	alacsony
+Jonah.4.7	8	költekor	költekor					javaslat	H5927	7	szo	alacsony
+Jonah.4.7	9	és	és					javaslat	H9001	12	morfema	alacsony
+Jonah.4.7	10	megszúrá	megszúrta	igen				javaslat	H5221	13	szo	alacsony
+Jonah.4.7	11	az	az					betoldas				
+Jonah.4.7	12	a	a					betoldas				
+Jonah.4.7	13	tököt	tököt					javaslat	H7021	16	szo	alacsony
+Jonah.4.7	14	és	és					javaslat	H9001	17	morfema	alacsony
+Jonah.4.7	15	elszárada	elszáradt	igen				javaslat	H3001	18	szo	alacsony
+Jonah.4.8	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.4.8	2	lőn	lett	igen				javaslat	H1961	2	szo	alacsony
+Jonah.4.8	3	napköltekor	napköltekor					javaslat	H2224	4	szo	alacsony
+Jonah.4.8	3	napköltekor	napköltekor					javaslat	H8121	6	szo	alacsony
+Jonah.4.8	4	hogy	hogy					javaslat	H9004	3	morfema	alacsony
+Jonah.4.8	5	tikkasztó	tikkasztó					javaslat	H2759	12	szo	alacsony
+Jonah.4.8	6	keleti	keleti					javaslat	H6921	11	szo	alacsony
+Jonah.4.8	7	szelet	szelet					javaslat	H7307	10	szo	alacsony
+Jonah.4.8	8	rendele	rendelt	igen				javaslat	H4487	8	szo	alacsony
+Jonah.4.8	9	Isten	Isten					javaslat	H0430	9	szo	alacsony
+Jonah.4.8	10	és	és					javaslat	H9001	13	morfema	alacsony
+Jonah.4.8	11	a	a					betoldas				
+Jonah.4.8	12	nap	nap					javaslat	H8121	16	szo	alacsony
+Jonah.4.8	13	rátűzött	rátűzött					javaslat	H5221	14	szo	alacsony
+Jonah.4.8	14	a	a					betoldas				
+Jonah.4.8	15	Jónás	Jónás					javaslat	H3124	19	szo	alacsony
+Jonah.4.8	16	fejére	fejére					javaslat	H5921	17	szo	alacsony
+Jonah.4.8	16	fejére	fejére					javaslat	H7218	18	szo	alacsony
+Jonah.4.8	17	és	és					javaslat	H9001	20	morfema	alacsony
+Jonah.4.8	18	ő	ő					betoldas				
+Jonah.4.8	19	elbágyada	elbágyadt	igen			igen	javaslat	H5968	21	szo	alacsony
+Jonah.4.8	20	Kiváná	Kívánta	igen				javaslat	H7592	23	szo	alacsony
+Jonah.4.8	21	azért	azért					betoldas				
+Jonah.4.8	22	magának	magának					javaslat	H5315	25	szo	alacsony
+Jonah.4.8	22	magának	magának					javaslat	H9023	26	morfema	alacsony
+Jonah.4.8	23	a	a					betoldas				
+Jonah.4.8	24	halált	halált					javaslat	H9005	27	morfema	alacsony
+Jonah.4.8	24	halált	halált					javaslat	H4191	28	szo	alacsony
+Jonah.4.8	25	és	és					javaslat	H9001	29	morfema	alacsony
+Jonah.4.8	26	monda	mondta	igen				javaslat	H0559	30	szo	alacsony
+Jonah.4.8	27	Jobb	Jobb					javaslat	H2896	31	szo	alacsony
+Jonah.4.8	28	halnom	halnom					javaslat	H4194	32	szo	alacsony
+Jonah.4.8	28	halnom	halnom					javaslat	H9020	33	morfema	alacsony
+Jonah.4.8	29	mint	mint					javaslat	H9006	34	morfema	alacsony
+Jonah.4.8	30	élnem	élnem					javaslat	H2416	35	szo	alacsony
+Jonah.4.8	30	élnem	élnem					javaslat	H9020	36	morfema	alacsony
+Jonah.4.9	1	És	És					javaslat	H9001	1	morfema	alacsony
+Jonah.4.9	2	monda	mondta	igen				javaslat	H0559	2	szo	alacsony
+Jonah.4.9	3	az	az					betoldas				
+Jonah.4.9	4	Isten	Isten					javaslat	H0430	3	szo	alacsony
+Jonah.4.9	5	Jónásnak	Jónásnak					javaslat	H0413	4	szo	alacsony
+Jonah.4.9	5	Jónásnak	Jónásnak					javaslat	H3124	5	szo	alacsony
+Jonah.4.9	6	Avagy	Avagy					betoldas				
+Jonah.4.9	7	méltán	méltán					javaslat	H3190	7	szo	alacsony
+Jonah.4.9	8	haragszol	haragszol					javaslat	H2734	8	szo	alacsony
+Jonah.4.9	8	haragszol	haragszol					javaslat	H9005	9	morfema	alacsony
+Jonah.4.9	8	haragszol	haragszol					javaslat	H9031	10	morfema	alacsony
+Jonah.4.9	9	é	é					javaslat	H9008	6	morfema	alacsony
+Jonah.4.9	10	a	a					betoldas				
+Jonah.4.9	11	tök	tök					javaslat	H7021	13	szo	alacsony
+Jonah.4.9	12	miatt	miatt					javaslat	H5921	11	szo	alacsony
+Jonah.4.9	13	És	És					javaslat	H9001	14	morfema	alacsony
+Jonah.4.9	14	monda	mondta	igen				javaslat	H0559	15	szo	alacsony
+Jonah.4.9	15	Méltán	Méltán					javaslat	H3190	16	szo	alacsony
+Jonah.4.9	16	haragszom	haragszom					javaslat	H2734	17	szo	alacsony
+Jonah.4.9	16	haragszom	haragszom					javaslat	H9005	18	morfema	alacsony
+Jonah.4.9	16	haragszom	haragszom					javaslat	H9030	19	morfema	alacsony
+Jonah.4.9	17	mind	mind					betoldas				
+Jonah.4.9	18	halálig	halálig					javaslat	H5704	20	szo	alacsony
+Jonah.4.9	18	halálig	halálig					javaslat	H4194	21	szo	alacsony
+Jonah.4.10	1	Az	Az					betoldas				
+Jonah.4.10	2	Úr	Úr					javaslat	H3068	3	szo	alacsony
+Jonah.4.10	3	pedig	pedig					javaslat	H9001	1	morfema	alacsony
+Jonah.4.10	4	monda	mondta	igen				javaslat	H0559	2	szo	alacsony
+Jonah.4.10	5	Te	Te					javaslat	H0859	4	szo	alacsony
+Jonah.4.10	6	szánod	szánod					javaslat	H2347	5	szo	alacsony
+Jonah.4.10	6	szánod	szánod					javaslat	H5921	6	szo	alacsony
+Jonah.4.10	7	a	a					betoldas				
+Jonah.4.10	8	tököt	tököt					javaslat	H7021	8	szo	alacsony
+Jonah.4.10	9	a		igen	osszevonva	10		javaslat	H0834	9	szo	alacsony
+Jonah.4.10	10	melyért	amelyért	igen				javaslat	H0834	9	szo	alacsony
+Jonah.4.10	10	melyért	amelyért	igen				javaslat	H9003	12	morfema	alacsony
+Jonah.4.10	10	melyért	amelyért	igen				javaslat	H9033	13	morfema	alacsony
+Jonah.4.10	11	nem	nem					javaslat	H3808	10	szo	alacsony
+Jonah.4.10	12	fáradtál	fáradtál					javaslat	H5998	11	szo	alacsony
+Jonah.4.10	13	és	és					javaslat	H9002	14	morfema	alacsony
+Jonah.4.10	14	a		igen	osszevonva	15		betoldas				
+Jonah.4.10	15	melyet	amelyet	igen				javaslat	H9033	17	morfema	alacsony
+Jonah.4.10	16	nem	nem					javaslat	H3808	15	szo	alacsony
+Jonah.4.10	17	neveltél	neveltél					javaslat	H1431	16	szo	alacsony
+Jonah.4.10	18	a		igen	osszevonva	19		javaslat	H9007	18	morfema	alacsony
+Jonah.4.10	19	mely	amely	igen				javaslat	H9007	18	morfema	alacsony
+Jonah.4.10	20	egy	egy					javaslat	H1121	19	szo	alacsony
+Jonah.4.10	21	éjjel	éjjel					javaslat	H3915	20	szo	alacsony
+Jonah.4.10	22	támadt	támadt					javaslat	H1961	21	szo	alacsony
+Jonah.4.10	23	és	és					javaslat	H9002	22	morfema	alacsony
+Jonah.4.10	24	más	más					javaslat	H1121	23	szo	alacsony
+Jonah.4.10	25	éjjel	éjjel					javaslat	H3915	24	szo	alacsony
+Jonah.4.10	26	elveszett	elveszett					javaslat	H0006	25	szo	alacsony
+Jonah.4.11	1	Én	Én					javaslat	H0589	2	szo	alacsony
+Jonah.4.11	2	pedig	pedig					javaslat	H9002	1	morfema	alacsony
+Jonah.4.11	3	ne	ne					javaslat	H3808	3	szo	alacsony
+Jonah.4.11	4	szánjam	szánjam					javaslat	H2347	4	szo	alacsony
+Jonah.4.11	4	szánjam	szánjam					javaslat	H5921	5	szo	alacsony
+Jonah.4.11	5	Ninivét	Ninivét					javaslat	H5210	6	szo	alacsony
+Jonah.4.11	6	a	a					betoldas				
+Jonah.4.11	7	nagy	nagy					javaslat	H1419	10	szo	alacsony
+Jonah.4.11	8	várost	várost					javaslat	H5892	8	szo	alacsony
+Jonah.4.11	9	a		igen	osszevonva	10		javaslat	H0834	11	szo	alacsony
+Jonah.4.11	10	melyben	amelyben	igen				javaslat	H0834	11	szo	alacsony
+Jonah.4.11	10	melyben	amelyben	igen				javaslat	H9003	13	morfema	alacsony
+Jonah.4.11	10	melyben	amelyben	igen				javaslat	H9034	14	morfema	alacsony
+Jonah.4.11	11	több	több					javaslat	H7235	15	szo	alacsony
+Jonah.4.11	11	több	több					javaslat	H9006	16	morfema	alacsony
+Jonah.4.11	12	van	van					javaslat	H3426	12	szo	alacsony
+Jonah.4.11	13	tizenkétszer	tizenkétszer					javaslat	H8147	17	szo	alacsony
+Jonah.4.11	13	tizenkétszer	tizenkétszer					javaslat	H6240	18	szo	alacsony
+Jonah.4.11	14	tízezer	tízezer					javaslat	H7239	19	szo	alacsony
+Jonah.4.11	15	embernél	embernél					javaslat	H0120	20	szo	alacsony
+Jonah.4.11	16	a		igen	osszevonva	17		betoldas				
+Jonah.4.11	17	kik	akik	igen				javaslat	H0834	21	szo	alacsony
+Jonah.4.11	18	nem	nem					javaslat	H3808	22	szo	alacsony
+Jonah.4.11	19	tudnak	tudnak					javaslat	H3045	23	szo	alacsony
+Jonah.4.11	20	különbséget	különbséget					javaslat	H0996	24	szo	alacsony
+Jonah.4.11	21	tenni	tenni					betoldas				
+Jonah.4.11	22	jobb	jobb					javaslat	H3225	25	szo	alacsony
+Jonah.4.11	23	és	és					javaslat	H9005	27	morfema	alacsony
+Jonah.4.11	24	balkezük	balkezük					javaslat	H8040	28	szo	alacsony
+Jonah.4.11	25	között	között					javaslat	H0996	24	szo	alacsony
+Jonah.4.11	26	és	és					javaslat	H9002	30	morfema	alacsony
+Jonah.4.11	27	barom	barom					javaslat	H0929	31	szo	alacsony
+Jonah.4.11	28	is	is					betoldas				
+Jonah.4.11	29	sok	sok					javaslat	H7227	32	szo	alacsony
+Jonah.4.11	30	van	van					betoldas				
