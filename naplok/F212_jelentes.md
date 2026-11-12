@@ -58,6 +58,14 @@
   nem változott. ISTENTISZT-001: 21 → 20 utalás, 8 → 9 megerősített pár (szándékos változás). Gyökérok-kapu: E40 (HIBA).
   Az `ellenoriz.py` 11. szabálya a befagyasztott lapot kihagyja (DT-F212a).
 
+## F212.14 — a gyászoló föld helyei (a felhasználó döntése, 2026-11-12)
+
+- **Be, tematikus előfordulásként, a 2.1 kerek mondatával:** Jer 12:4 (H0056; „A benne lakók gonoszsága miatt pusztul el barom és madár”) és Jer 23:10 (H0423 álá, BDB 3. jelentés „átok, Istentől”; a Károli „hamis esküvés”). A motívum 47 → 49 hely, 54 → 56 vers; a próza (`motivumok/HAMART-001.md`) pontcseréje: a számok, a „Hat hely a lánc szavai nélkül” mondat és a helyek rendje.
+- **Ki, egyenként, indoklással:** Jóel 1:10 (határeset: bűn nem okként), Jer 12:11, Jer 14:2, Ámós 1:2, Hós 10:5, Sir 2:8. Új elutasítási ok-minta (124): „a föld gyásza vagy pusztulása megnevezett bűn és a lánc szava nélkül”; a Sir 2:8 a meglévő „fizikai pusztítás” okra illeszkedik.
+- **A többi csoportos marad;** a kivett versek elhagyták a blokkjukat (ellenoriz 36.), az összesítők: H7451 573 → 571, H0127 174 → 173, H7843 112 → 111, f212 H0056 29 → 25.
+- **Generátor:** a teljesség-mérés blokk-sor nélküli forrássora a lábjegyzetben „egyenkénti döntés”, nem „csoportos kizárás” (`eszkozok/tablajegyzet.py`). A teszt elvárt számai (47 → 49; jegyzetszám 2.: 18 → 20, 3.: 7 → 8) a két új sorral nőttek.
+- **Kapuk:** ellenoriz 0 SÉRTÉS; E38 143/143 és 43/43; E39 0 gátló; olvasói kapu 0 BUKÁS; teszt_kesz_lap_hamart és teszt_f212_cs3 OK.
+
 ## Zárás
 
 - **Kész:** F212.1–F212.6 a draft PR #715-ön. A sablonmondat-lista 32 döntése, a befagyasztás, a Kolofon-forrássor, az egyezés-kapu és a C6 a generátorban és az adatban; a HAMART-001 lapja generáltan frissült.

@@ -600,7 +600,7 @@ class KiadasElott(unittest.TestCase):
         self.assertIn('Ez a tábla a láncon belüli fordítói következetességet méri', lathato)
         self.assertNotIn('(HCF:', lathato)   # F212 (M14): a tanú adatbázis-évszáma a lapon nem áll
         self.assertNotIn('az [2.', lathato)
-        self.assertIn('érint a 47-ből', lathato)
+        self.assertIn('érint a 49-ből', lathato)   # F212: Jer 12:4 és Jer 23:10 bekerült
         self.assertNotIn('leggyakoribb szava ugyanazokban', lathato)
         self.assertNotIn('| Emberi lektorálás |', lathato)
         self.assertRegex(lathato, r'\| Szerkesztői átnézés és javítás \|[^\n]*\n\| Modell-lektor \(claude-[\w.-]+\) \| '
@@ -665,7 +665,8 @@ class TablaAlattiJegyzet(unittest.TestCase):
             szam[m.group(1)] = szam.get(m.group(1), 0) + 1
         # a Fable mérése: a 2. táblánál 47 helyett 18; a 3. szakasz táblái 270 helyett 46, a 6. 99 helyett 11;
         # F212 (I4): a cellát ismétlő jegyzet elmarad — a 3. szakaszban 7, a 6.-ban 2 marad
-        self.assertEqual(szam, {'2': 18, '3': 7, '6': 2})
+        # F212 (Jer 12:4, Jer 23:10): a 2. táblában a két új sor jelentés-jegyzete, a 3.-ban az egyenkénti döntés jegyzete
+        self.assertEqual(szam, {'2': 20, '3': 8, '6': 2})
         celok = set(re.findall(r'id="(j-[\d-]+)"', lap))
         for h in set(re.findall(r'href="#(j-[\d-]+)"', lap)):
             self.assertIn(h, celok)
@@ -692,7 +693,7 @@ class Onreferencia(unittest.TestCase):
                          _olvas(os.path.join(GYOKER, 'motivumok', 'HAMART-001.md')), flags=re.S)
         self.assertIsNone(re.search(r'(?<![\w-])[Ll]ap(?:ja|on|ra|ról)?(?![\w-])', lathato))
         self.assertIn('Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig', lap)
-        self.assertIn('A motívum 47 helyen, 54 versben áll: 23 a Genezisben', lap)
+        self.assertIn('A motívum 49 helyen, 56 versben áll: 23 a Genezisben', lap)
 
 
 class GyorsKor(unittest.TestCase):

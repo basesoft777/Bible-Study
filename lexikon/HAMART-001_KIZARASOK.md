@@ -2,18 +2,18 @@
 
 # 📎 HAMART-001 — Kizárt és vizsgált versek (melléklet)
 
-A [HAMART-001 lap](HAMART-001_TUDOMANYOS.md#1-döntési-út) Döntési útjának melléklete: a motívum 54 versén túl megvizsgált, a motívumhoz nem tartozó mind az 1 786 vers, okonként, a saját indokával. A csoportosan kizárt verseket gépi mérés sorolja egy közös okba, az egyenként elutasítottakat egyedi döntés. Egy vers egyszer áll: ha két keresés csoportjában is szerepel, az elsőnél.
+A [HAMART-001 lap](HAMART-001_TUDOMANYOS.md#1-döntési-út) Döntési útjának melléklete: a motívum 56 versén túl megvizsgált, a motívumhoz nem tartozó mind az 1 784 vers, okonként, a saját indokával. A csoportosan kizárt verseket gépi mérés sorolja egy közös okba, az egyenként elutasítottakat egyedi döntés. Egy vers egyszer áll: ha két keresés csoportjában is szerepel, az elsőnél.
 
-**Összeadás:** 1 550 (csoportosan kizárva) + 236 (egyenként elutasítva) = 1 786 vers.
+**Összeadás:** 1 542 (csoportosan kizárva) + 242 (egyenként elutasítva) = 1 784 vers.
 
 ## Csoportosan kizárt versek, okonként
 
-### más szó áll a versben, nem a motívum lexémája — 931 vers
+### más szó áll a versben, nem a motívum lexémája — 925 vers
 
 a Károli magyar szava itt más héber vagy görög szót fordít; a motívum szava a versben nem áll
 
 <details>
-<summary>A 931 vers</summary>
+<summary>A 925 vers</summary>
 
 - **1Móz** (35): 2:17, 3:5, 3:22, 8:11, 16:4, 19:19, 24:41, 24:50, 26:28, 26:29, 28:8, 31:24, 31:29, 31:52, 34:2, 37:2, 37:20, 37:33, 37:34, 38:7, 39:9, 40:7, 41:3, 41:4, 41:19, 41:20, 41:21, 41:27, 44:4, 44:29, 44:34, 47:9, 48:16, 50:15, 50:20
 - **2Móz** (11): 5:19, 10:7, 10:10, 18:22, 21:17, 22:6, 23:2, 31:14, 32:14, 32:22, 33:4
@@ -37,12 +37,12 @@ a Károli magyar szava itt más héber vagy görög szót fordít; a motívum sz
 - **Préd** (32): 2:22, 4:1, 4:3, 4:8, 5:1, 5:13, 5:14, 5:16, 6:1, 6:2, 7:6, 7:14, 7:15, 7:21, 7:22, 8:3, 8:5, 8:6, 8:9, 8:11, 8:12, 9:4, 9:14, 10:2, 10:7, 10:10, 10:17, 11:2, 12:2, 12:3, 12:8, 12:16
 - **Én** (1): 2:2
 - **Ézs** (59): 3:7, 3:27, 5:5, 5:20, 7:5, 7:8, 7:15, 7:19, 7:24, 7:25, 8:9, 8:21, 9:1, 9:18, 10:17, 10:27, 11:15, 13:11, 14:25, 19:8, 22:4, 23:9, 24:4, 24:7, 24:19, 25:3, 27:4, 30:13, 30:14, 30:16, 30:26, 31:2, 32:7, 33:9, 33:12, 33:15, 34:2, 34:13, 38:14, 44:25, 45:7, 47:10, 47:11, 49:6, 51:6, 51:19, 53:10, 55:13, 56:2, 57:1, 57:15, 58:12, 59:7, 59:15, 65:12, 65:15, 65:20, 66:4, 66:10
-- **Jer** (131): 1:14, 1:16, 2:3, 2:13, 2:19, 2:27, 2:28, 2:33, 3:2, 3:5, 3:17, 4:6, 4:13, 4:18, 4:24, 5:12, 5:28, 6:1, 6:14, 6:19, 6:29, 7:6, 7:12, 7:30, 8:3, 8:6, 8:11, 8:21, 9:3, 10:19, 11:8, 11:11, 11:12, 11:14, 11:15, 11:17, 11:23, 12:4, 12:11, 13:10, 14:2, 14:16, 15:10, 15:11, 15:21, 16:12, 17:17, 17:18, 18:7, 18:8, 18:10, 18:11, 18:12, 18:20, 19:3, 19:8, 19:15, 21:10, 22:17, 22:22, 23:10, 23:11, 23:12, 23:14, 23:17, 23:22, 24:2, 24:3, 24:8, 24:9, 25:7, 25:18, 25:32, 26:3, 26:13, 26:19, 28:8, 29:11, 29:18, 29:22, 31:28, 31:32, 32:23, 32:30, 32:32, 32:42, 33:5, 35:17, 36:7, 36:31, 38:4, 39:12, 39:16, 40:2, 41:11, 42:6, 42:10, 42:17, 42:18, 44:2, 44:3, 44:5, 44:7, 44:8, 44:9, 44:11, 44:12, 44:17, 44:22, 44:23, 44:27, 44:29, 45:4, 45:5, 46:16, 46:21, 47:4, 48:2, 48:3, 48:16, 49:13, 49:21, 49:23, 49:37, 50:22, 51:2, 51:24, 51:54, 51:60, 51:64, 52:2
+- **Jer** (127): 1:14, 1:16, 2:3, 2:13, 2:19, 2:27, 2:28, 2:33, 3:2, 3:5, 3:17, 4:6, 4:13, 4:18, 4:24, 5:12, 5:28, 6:1, 6:14, 6:19, 6:29, 7:6, 7:12, 7:30, 8:3, 8:6, 8:11, 8:21, 9:3, 10:19, 11:8, 11:11, 11:12, 11:14, 11:15, 11:17, 11:23, 13:10, 14:16, 15:10, 15:11, 15:21, 16:12, 17:17, 17:18, 18:7, 18:8, 18:10, 18:11, 18:12, 18:20, 19:3, 19:8, 19:15, 21:10, 22:17, 22:22, 23:11, 23:12, 23:14, 23:17, 23:22, 24:2, 24:3, 24:8, 24:9, 25:7, 25:18, 25:32, 26:3, 26:13, 26:19, 28:8, 29:11, 29:18, 29:22, 31:28, 31:32, 32:23, 32:30, 32:32, 32:42, 33:5, 35:17, 36:7, 36:31, 38:4, 39:12, 39:16, 40:2, 41:11, 42:6, 42:10, 42:17, 42:18, 44:2, 44:3, 44:5, 44:7, 44:8, 44:9, 44:11, 44:12, 44:17, 44:22, 44:23, 44:27, 44:29, 45:4, 45:5, 46:16, 46:21, 47:4, 48:2, 48:3, 48:16, 49:13, 49:21, 49:23, 49:37, 50:22, 51:2, 51:24, 51:54, 51:60, 51:64, 52:2
 - **Ez** (39): 2:6, 5:17, 6:9, 6:10, 6:11, 7:5, 7:12, 7:24, 7:26, 7:27, 8:9, 11:2, 13:22, 14:15, 14:21, 14:22, 16:23, 16:57, 16:59, 17:13, 17:16, 17:18, 17:19, 18:10, 20:43, 21:21, 22:7, 22:10, 22:11, 22:26, 26:15, 28:24, 30:12, 31:15, 32:9, 33:11, 34:25, 36:31, 38:10
 - **Dán** (12): 2:44, 6:26, 7:25, 9:11, 9:12, 9:13, 9:14, 10:2, 11:4, 11:14, 11:20, 11:26
-- **Hós** (10): 2:5, 7:1, 7:2, 7:3, 7:15, 9:6, 9:15, 10:5, 10:15, 13:14
+- **Hós** (9): 2:5, 7:1, 7:2, 7:3, 7:15, 9:6, 9:15, 10:15, 13:14
 - **Jóel** (3): 1:9, 2:13, 3:13
-- **Ámós** (11): 1:2, 3:6, 4:1, 5:13, 5:14, 5:15, 6:6, 8:8, 9:4, 9:5, 9:10
+- **Ámós** (10): 3:6, 4:1, 5:13, 5:14, 5:15, 6:6, 8:8, 9:4, 9:5, 9:10
 - **Abd** (1): 1:13
 - **Jón** (7): 1:2, 1:5, 1:7, 1:8, 3:10, 4:1, 4:6
 - **Mik** (8): 1:12, 2:1, 2:3, 3:2, 3:11, 5:6, 7:3, 7:4
@@ -69,12 +69,12 @@ a Károli magyar szava itt más héber vagy görög szót fordít; a motívum sz
 
 </details>
 
-### a szó áll, de általános használatban, a lánc nélkül — 577 vers
+### a szó áll, de általános használatban, a lánc nélkül — 575 vers
 
 a lánc szava áll a versben, de köznapi értelemben (föld mint talaj, bűnáldozat, pusztítás), és a hely nem utal vissza a Genezisre
 
 <details>
-<summary>A 577 vers</summary>
+<summary>A 575 vers</summary>
 
 - **1Móz** (27): 1:25, 2:5, 2:6, 2:7, 2:9, 2:19, 7:8, 13:10, 18:20, 18:28, 18:31, 18:32, 19:13, 19:14, 19:25, 19:29, 28:14, 28:15, 31:36, 38:9, 47:18, 47:19, 47:20, 47:22, 47:23, 47:26, 50:17
 - **2Móz** (23): 3:5, 8:21, 8:24, 10:6, 10:17, 12:23, 20:12, 20:24, 21:26, 23:1, 23:19, 29:14, 29:36, 30:10, 32:7, 32:12, 32:30, 32:32, 32:34, 33:16, 34:7, 34:9, 34:26
@@ -100,7 +100,7 @@ a lánc szava áll a versben, de köznapi értelemben (föld mint talaj, bűnál
 - **Ez** (61): 3:20, 5:16, 7:11, 9:8, 11:17, 12:22, 13:9, 16:47, 16:51, 16:52, 18:2, 18:14, 18:21, 18:24, 20:17, 20:38, 20:42, 20:44, 21:2, 21:3, 21:24, 22:30, 23:11, 25:3, 25:6, 26:4, 28:25, 30:11, 33:10, 33:14, 33:16, 33:24, 34:13, 34:27, 36:6, 36:17, 36:24, 37:12, 37:14, 37:21, 38:18, 38:19, 38:20, 39:26, 39:28, 40:39, 42:13, 43:3, 43:19, 43:21, 43:22, 43:25, 44:27, 44:29, 45:9, 45:17, 45:19, 45:22, 45:23, 45:25, 46:20
 - **Dán** (8): 8:25, 9:20, 9:24, 9:26, 11:9, 11:17, 11:39, 12:2
 - **Hós** (6): 2:17, 4:8, 8:13, 11:9, 13:9, 13:12
-- **Jóel** (3): 1:10, 2:21, 3:19
+- **Jóel** (2): 2:21, 3:19
 - **Ámós** (11): 1:11, 3:2, 3:5, 3:10, 5:2, 5:12, 6:3, 7:11, 7:17, 9:8, 9:15
 - **Abd** (1): 1:10
 - **Jón** (1): 4:2
@@ -110,7 +110,7 @@ a lánc szava áll a versben, de köznapi értelemben (föld mint talaj, bűnál
 - **Hag** (1): 1:11
 - **Zak** (5): 2:12, 9:16, 13:1, 13:5, 14:19
 - **Mal** (2): 2:8, 2:16
-- **JSir** (6): 2:5, 2:6, 2:8, 4:13, 4:22, 4:6
+- **JSir** (5): 2:5, 2:6, 4:13, 4:22, 4:6
 
 </details>
 
@@ -313,6 +313,16 @@ Noé vagy az özönvíz felidézése, az átok terjedése nélkül
 - **1Pét** (2): 3:19, 3:20
 - **2Pét** (5): 2:5, 3:6, 3:7, 3:10, 3:12
 
+### fizikai pusztítás, nem erkölcsi megromlás — 8 vers
+
+épület, ország vagy termés fizikai pusztulása, nem erkölcsi megromlás
+
+- **2Krón** (1): 34:11
+- **Ézs** (1): 37:12
+- **Jer** (4): 36:29, 49:9, 51:20, 51:25
+- **Sir** (1): 2:8
+- **Dán** (1): 8:24
+
 ### más szókapcsolat (Isten letekint, minden test), nem a romlás szerkezete — 8 vers
 
 más szókapcsolat (Isten letekint, minden test), nem a romlás láncához tartozik
@@ -328,15 +338,6 @@ más szókapcsolat (Isten letekint, minden test), nem a romlás láncához tarto
 a föld szava elbeszélésben áll, átok nélkül
 
 - **1Móz** (8): 4:2, 4:3, 6:1, 6:20, 8:8, 8:13, 9:2, 9:20
-
-### fizikai pusztítás, nem erkölcsi megromlás — 7 vers
-
-épület, ország vagy termés fizikai pusztulása, nem erkölcsi megromlás
-
-- **2Krón** (1): 34:11
-- **Ézs** (1): 37:12
-- **Jer** (4): 36:29, 49:9, 51:20, 51:25
-- **Dán** (1): 8:24
 
 ### a mező füve mint táplálék, nem a tövis-átok — 6 vers
 
@@ -362,6 +363,15 @@ jogi szabály, bűnbánat vagy panasz; a két szó egymás mellett áll, visszau
 - **5Móz** (2): 19:15, 19:16
 - **Neh** (2): 9:1, 9:2
 - **Zsolt** (2): 25:18, 25:19
+
+### a föld gyásza vagy pusztulása megnevezett bűn és a lánc szava nélkül — 5 vers
+
+a föld gyászol vagy pusztul, de a vers nem nevez meg bűnt okként, és a lánc szava nem áll benne
+
+- **Jer** (2): 12:11, 14:2
+- **Hós** (1): 10:5
+- **Jóel** (1): 1:10
+- **Ámós** (1): 1:2
 
 ### a „vég” formulája, más kulcsszóval — 5 vers
 
@@ -414,8 +424,8 @@ az öröklött bűnösség kérdése, amelyet ez a vizsgálat nem dönt el
 
 A Döntési út 1.2 pontjának versszámai ebből a mérésből jönnek (`naplok/F123_teljesseg_HAMART-001.tsv`). Hálónként a mérés saját forrássora:
 
-- **strong** (1 392 vers): `scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G1311+G1944+G2671+G5351+G5356+H0056+H0127+H0423+H0779+H2403+H2555+H6093+H6975+H7451+H7843 | n=1392 | ts=2026-11-12T18:04Z`
-- **karoli** (412 vers): `scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=elront+elátkoz+erőszak+megromol+megront+megátkoz+romlás+romol+tövis+átkoz+átkozott+átok | n=412 | ts=2026-11-12T18:04Z`
-- **szotar** (1 073 vers): `scope=G1311+G1944+G2671+G5351+G5356+H0056+H0127+H0423+H0779+H2403+H2555+H6093+H6975+H7451+H7843 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=1073 | ts=2026-11-12T18:04Z`
+- **strong** (1 392 vers): `scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G1311+G1944+G2671+G5351+G5356+H0056+H0127+H0423+H0779+H2403+H2555+H6093+H6975+H7451+H7843 | n=1392 | ts=2026-11-12T18:20Z`
+- **karoli** (412 vers): `scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=elront+elátkoz+erőszak+megromol+megront+megátkoz+romlás+romol+tövis+átkoz+átkozott+átok | n=412 | ts=2026-11-12T18:20Z`
+- **szotar** (1 073 vers): `scope=G1311+G1944+G2671+G5351+G5356+H0056+H0127+H0423+H0779+H2403+H2555+H6093+H6975+H7451+H7843 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=1073 | ts=2026-11-12T18:20Z`
 
 *Forrás: a jelöltek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: 2026-11-12.*

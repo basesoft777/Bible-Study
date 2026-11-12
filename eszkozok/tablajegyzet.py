@@ -81,7 +81,8 @@ def olvasoi_jegyzet(lathato, ujszov=False):
                 'a héber szöveg-igazolás itt nem alkalmazható'
         if seg.startswith('teljesség-mérés'):
             m = re.search(r'(?:csoportos sor|blokk-sor)[^:]*:\s*([\d\s]+) vers', seg)   # F212: a „blokk-sor: N vers” is
-            seg = 'csoportos kizárás, %s vers' % m.group(1).strip() if m else 'a teljességi keresés csoportos kizárása'
+            seg = 'csoportos kizárás, %s vers' % m.group(1).strip() if m else \
+                'a motívum szavainak teljes bibliai keresése, egyenkénti döntés'   # F212: blokk-sor nélkül nem csoportos
         if seg.startswith('négy forrás összevetése'):
             seg = 'a motívum korábbi kereszthivatkozás-naplója'
         seg = re.sub(r'^Strong-keresés:', 'szókeresés:', seg)
