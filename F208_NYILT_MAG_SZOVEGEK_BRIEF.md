@@ -5,10 +5,10 @@ kod: NYILT_MAG_SZOVEGEK
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: megallt
 munka: folyamat
 ad: a `nyilt_mag/` ugyanazt a fájlkészletet adja, mint a modernizált Károli – Strong csomag (MODSZER/METHODS, LICENSE, ATTRIBUCIO, CITATION.cff, kozlemeny/ hu/en, .gitattributes), generált számokkal, a kapu nyilvános szöveg-szabályaival
-kovetkezo: "Folytatás: a generátor bővítése, a kapu, majd ⛔ a szövegek átnézése a draft PR-ban"
+kovetkezo: "Te (⛔): a nyilt_mag/ szövegeinek átnézése a draft PR-ban (MODSZER/METHODS, OLVASSEL/README, ATTRIBUCIO, LICENSE, CITATION.cff, kozlemeny/); utána merge, majd a Zenodo-feltöltés a te lépésed"
 olvas: [F162_NYILT_MAG_BRIEF.md, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py, adat/licencek.tsv, CITATION.cff, kozlemeny/MI_NYILATKOZAT.md, kozlemeny/data_paper/kezirat_hu.md]
 ir: [nyilt_mag/, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_szovegek.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py]
 fugg: [162]
