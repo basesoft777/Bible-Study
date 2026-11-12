@@ -31,3 +31,5 @@ Rendben: G/2.1 (lépéslista), G/2.3 (napló, megjegyzéssel: a logsor nem tarta
 ## Zárás
 
 Állapot: az 1. ellenőrzés ELTÉRÉS-t jelzett (3 tétel), a menet a 9. lépés szerint megáll; a javítókör külön sessionben: `/elteres F216`. A kapu működik és a CI zöld a pusholt sha-n, a hátralévő tételek az egyezés-kapu szigorítása (dinamikus argumentumok, kikommentelés), az elmaradt-ág figyelmeztetés (merge-base ≠ `origin/main` csúcsa) és két parancsfájl-mondat.
+
+*Kiegészítés az ellenőr végső válaszához:* a `python eszkozok/teszt_futtat.py --diff 63f3f126` 14 fájl zöld mellett a `teszt_visszhang_kapu.py`-n bukott (2 hiba); a diff nem érinti a visszhang-kódot, a CI nem futtatja, az alapon való meglétét nem igazoltuk — külön nyitott tételnek javasolt, nem az F216 hatóköre.
