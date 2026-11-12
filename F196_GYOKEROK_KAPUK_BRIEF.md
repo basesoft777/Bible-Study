@@ -5,11 +5,12 @@ kod: GYOKEROK_KAPUK
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: lezarva
+lezarva_osszegzes: állítás–adat kapu és követelménylista-kapu JELENTÉS szinten; a HIBA-szintre emelés (DT771) külön döntés: N-F196a
 ag: claude/gyokerok-kapuk-a1d120
 pr: 689
 ad: két gépi kapu a visszatérő laphibák gyökérokára — a lap számai és „nincs …” mondatai a saját adatukhoz mérve; a kész lap követelménylistájának gépi sorai „N/M követelmény teljesül (gépi)” összegzéssel a CI-ben; mindkettő JELENTÉS
-kovetkezo: "Te: a draft PR #689 áttekintése és merge-e; a HIBA-szintre emelés (DT771) a HAMART-001 kiadása után, külön döntéssel"
+kovetkezo: "lezárva; a PR #689 a main-en"
 munka: folyamat
 olvas: [sablonok/KESZ_LAP_KOVETELMENY.md, eszkozok/lexikon_general.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, eszkozok/ellenorzes/szabalyok.py, .github/workflows/ellenorzes.yml]
 ir: [eszkozok/ellenorzes/allitas_adat.py, eszkozok/ellenorzes/kovetelmeny_kapu.py, eszkozok/teszt_gyokerok_kapuk.py, .github/workflows/ellenorzes.yml, naplok/F196_jelentes.md, naplok/ELLENOR_F196.md, dontesek/uj/gyokerok-kapuk-a1d120.md, nyitott/uj/gyokerok-kapuk-a1d120.md, F196_GYOKEROK_KAPUK_BRIEF.md]
