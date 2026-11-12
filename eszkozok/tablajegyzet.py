@@ -168,13 +168,13 @@ ONREF_CSERE = (
     # közös generátormondatok (OLVASOI_SABLON, Jelmagyarázat)
     ('A lap szakaszai. Hogy melyik szakaszt', 'A szócikk szakaszai. Hogy melyik szakaszt'),
     ('A lapon használt rövidítések, jelek és forrásnevek feloldása. Ha a lap egy jelét nem érted, itt keresd.',
-     'Az itt használt rövidítések, jelek és forrásnevek feloldása. Ha egy jelet nem értesz, itt keresd.'),
-    ('mondat a lap készítőinek szól.', 'mondat a szerkesztőknek szól.'),
+     'A szócikkben használt rövidítések, jelek és forrásnevek feloldása. Ha a szócikk egy jelét nem érted, itt keresd.'),
+    ('mondat a lap készítőinek szól.', 'mondat a szócikk készítőinek szól.'),
     ('Hogyan hivatkozz erre a lapra,', 'Hogyan hivatkozz erre a szócikkre,'),
     # adatcellák (motivumok.tsv, elutasitasi_okok.tsv / jeloltek.tsv, elofordulasok.tsv, kapcsolatok.tsv)
-    ('ezeket a lap egyenként, tematikus helyként veszi fel.', 'ezek egyenként, tematikus helyként állnak a listán.'),
+    ('ezeket a lap egyenként, tematikus helyként veszi fel.', 'ezeket a vizsgálat egyenként, tematikus helyként veszi fel.'),
     ('amelyet a lap nem dönt el', 'amelyet ez a vizsgálat nem dönt el'),
-    ('azt a lap vitatott pontként tárgyalja', 'azt a vitatott pontok tárgyalják'),
+    ('azt a lap vitatott pontként tárgyalja', 'azt a szócikk vitatott pontként tárgyalja'),
     ('amely a lánc szavai nélkül áll a lapon,', 'amely a lánc szavai nélkül áll a listán,'),
 )
 

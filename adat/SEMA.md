@@ -1998,11 +1998,13 @@ tab és sortörés nem állhat (többsoros szövegrész egy sorba vonva).
 (dátumok); lektorálók: …”. Az N a nem `generátor` típusú sorok száma (a lapon ténylegesen javított helyek), a dátumok és a
 lektorálók (`jovahagyta`) ugyanezekből a sorokból, ismétlés nélkül, rendezve. Sor nélkül a Kolofon nem ír semmit, és a blokk
 forráslistája változatlan. A `generátor`-sor a naplóban marad (a hely emberi észlelése), de a lapon addig nem javult.
-Az új szerkezetű lapon (HAMART-001-től, a felhasználó döntése, 2026-11-12) e sor helyett kettő áll: „Modell-lektor
-(<modell>) | N jelzett hely (dátum)” — a `/kiadas` lektorának kérdéslistájából (`naplok/KIADAS_<ID>_lektor.md`: a
-„Lektor:” sor `claude-…` neve, a „Lektor kérdései” szakasz számozott tételei) — és „Szerkesztői átnézés és jóváhagyás |
-a teljes lap; a jelzett helyek javításait a szerkesztő hagyta jóvá (dátumok)” (a `lap_javitasok.tsv` felhasználó által
-jóváhagyott soraiból). Az „Emberi lektorálás” sor egy későbbi, nevesített emberi lektornak marad.
+Az új szerkezetű lapon (HAMART-001-től, a felhasználó döntése, 2026-11-12) e sor helyett kettő áll, ebben a
+sorrendben: elöl „Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által jelzett
+helyek javítását ő hagyta jóvá, módosította vagy vetette el (dátumtartomány)” (a `lap_javitasok.tsv` felhasználó által
+jóváhagyott soraiból; a felhasználó: „de ember hagyja jóvá és változtat”), utána „Modell-lektor (<modell>) | N jelzett
+hely (dátum)” — a `/kiadas` lektorának kérdéslistájából (`naplok/KIADAS_<ID>_lektor.md`: a „Lektor:” sor `claude-…`
+neve, a „Lektor kérdései” szakasz számozott tételei). Az „Emberi lektorálás” sor egy későbbi, nevesített emberi
+lektornak marad.
 
 **Kiadott lapnál** a javítás után a `kiadasok.tsv`-be új sor kerül (`kiadas` + 1, 2.46), és a javított lapot a felhasználó újra
 átnézi (`lap_atnezesek.tsv`; az érvényesség: 2.48); mindkettő csak a felhasználó ténylegesen elhangzott szavával íródik.

@@ -578,11 +578,15 @@ class KiadasElott(unittest.TestCase):
                         '**1. A › b**\n- x\n\n**2. C › d**\n\n## Orkesztrátori észrevételek\n\n**3. E**\n')
             with io.open(jav, 'w', encoding='utf-8') as f:
                 f.write('id\thely\ttipus\tgond\tregi\tuj\tjavasolta\tjovahagyta\tdatum\tproveniencia\n'
-                        'X-001\th\tpróza\thomályos\ta\tb\tclaude-opus-5-5\tfelhasználó\t2026.11.11\tscope=manual\n')
+                        'X-001\th\tpróza\thomályos\ta\tb\tclaude-opus-5-5\tfelhasználó\t2026.11.11\tscope=manual\n'
+                        'X-001\th2\tpróza\thomályos\ta\tb\tclaude-opus-5-5\tfelhasználó\t2026.11.12\tscope=manual\n')
             sorok = LG.kolofon_lektor_uj('X-001', lektor_ut=lek, javitas_ut=jav)
-        self.assertEqual(sorok, ['| Modell-lektor (claude-fable-5-2) | 2 jelzett hely (2026.11.11) |',
-                                 '| Szerkesztői átnézés és jóváhagyás | a teljes lap; a jelzett helyek javításait a '
-                                 'szerkesztő hagyta jóvá (2026.11.11) |'])
+        # a szerkesztői sor elöl (a felhasználó: „de ember hagyja jóvá és változtat”), a dátum tartományként
+        self.assertEqual(sorok, ['| Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor '
+                                 'által jelzett helyek javítását ő hagyta jóvá, módosította vagy vetette el '
+                                 '(2026.11.11–12) |',
+                                 '| Modell-lektor (claude-fable-5-2) | 2 jelzett hely (2026.11.11) |'])
+        self.assertEqual(LG._datum_tartomany(['2026-10-30', '2026-11-02']), '2026.10.30–2026.11.02')
 
     def test_a_lapon(self):
         lap = _olvas(LAP)
@@ -596,7 +600,8 @@ class KiadasElott(unittest.TestCase):
         self.assertIn('érint a 47-ből', lathato)
         self.assertNotIn('leggyakoribb szava ugyanazokban', lathato)
         self.assertNotIn('| Emberi lektorálás |', lathato)
-        self.assertRegex(lathato, r'\| Modell-lektor \(claude-[\w.-]+\) \| \d+ jelzett hely')
+        self.assertRegex(lathato, r'\| Szerkesztői átnézés és javítás \|[^\n]*\n\| Modell-lektor \(claude-[\w.-]+\) \| '
+                                  r'\d+ jelzett hely')
         jel = next(s for s in lap.split('\n') if s.startswith('| [Jel 22:3]'))
         self.assertIn('elátkozott — ', jel)
         self.assertIn(' (katathema) |', jel)

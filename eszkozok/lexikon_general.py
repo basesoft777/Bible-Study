@@ -5361,7 +5361,7 @@ def blokk_kereszthivatkozasok(m, sorai, konyv_sorrend, hianyzo_konyvek):
                    % (len(sorai_rendezve), len(bekezdesek), talalat_szam))
         if nem_vizsgalhato:
             hatokor += (' %d hely több versre terjed (%s): a gyűjtemények versenként adnak utalást, ezért ezekre a '
-                        'keresés nem terjed ki.' % (len(nem_vizsgalhato), ', '.join(nem_vizsgalhato)))
+                        'vizsgálat nem keres.' % (len(nem_vizsgalhato), ', '.join(nem_vizsgalhato)))
         if kh_kihagyva:
             hatokor += (' %d hely Károli-utalásai nem állnak itt, mert egy másik vers utalás-listájának (teljes vagy '
                         'részleges) másolatai: %s.' % (len(kh_kihagyva), '; '.join(
@@ -5905,9 +5905,19 @@ def kolofon_lektor_uj(motivum_id, lektor_ut=None, javitas_ut=None):
     """Az új szerkezetű lap Kolofonjának lektori sorai. (1) „Modell-lektor (<modell>) | N jelzett hely (dátum)”: a
     `/kiadas` lektorának kérdéslistájából (`naplok/KIADAS_<ID>_lektor.md`): a modell a „Lektor:” sor `claude-…` neve, az
     N a „Lektor kérdései” szakasz számozott tételei (az orkesztrátori észrevételek nélkül), a dátum a szakasz első
-    dátuma. (2) „Szerkesztői átnézés és jóváhagyás”: a `lap_javitasok.tsv` felhasználó által jóváhagyott sorainak
-    dátumaival. Forrás nélkül a sor nem áll."""
+    dátuma. (2) „Szerkesztői átnézés és javítás”: a `lap_javitasok.tsv` felhasználó által jóváhagyott sorainak
+    dátumaival. A szerkesztői sor áll elöl (a felhasználó: „de ember hagyja jóvá és változtat”). Forrás nélkül a sor
+    nem áll."""
     ki = []
+    javitas_ut = javitas_ut or LAP_JAVITASOK_TSV
+    if os.path.isfile(javitas_ut):
+        sorok = [r for r in L.read_tsv_skip_comments(javitas_ut)
+                 if (r.get('id') or '').strip() == motivum_id and (r.get('jovahagyta') or '').strip() == 'felhasználó']
+        datumok = sorted({(r.get('datum') or '').strip() for r in sorok if (r.get('datum') or '').strip()})
+        if sorok:
+            ki.append('| Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által '
+                      'jelzett helyek javítását ő hagyta jóvá, módosította vagy vetette el%s |'
+                      % ((' (%s)' % _datum_tartomany(datumok)) if datumok else ''))
     lektor_ut = lektor_ut or KIADAS_LEKTOR_MD % motivum_id
     if os.path.isfile(lektor_ut):
         with io.open(lektor_ut, encoding='utf-8') as f:
@@ -5920,15 +5930,16 @@ def kolofon_lektor_uj(motivum_id, lektor_ut=None, javitas_ut=None):
             if n:
                 ki.append('| Modell-lektor (%s) | %d jelzett hely%s |' % (
                     mm.group(1), n, (' (%s.%s.%s)' % d.groups()) if d else ''))
-    javitas_ut = javitas_ut or LAP_JAVITASOK_TSV
-    if os.path.isfile(javitas_ut):
-        sorok = [r for r in L.read_tsv_skip_comments(javitas_ut)
-                 if (r.get('id') or '').strip() == motivum_id and (r.get('jovahagyta') or '').strip() == 'felhasználó']
-        datumok = sorted({(r.get('datum') or '').strip() for r in sorok if (r.get('datum') or '').strip()})
-        if sorok:
-            ki.append('| Szerkesztői átnézés és jóváhagyás | a teljes lap; a jelzett helyek javításait a szerkesztő '
-                      'hagyta jóvá (%s) |' % ', '.join(datumok))
     return ki
+
+
+def _datum_tartomany(datumok):
+    """['2026-11-11', '2026-11-12'] → '2026.11.11–12'; egy dátum → '2026.11.11'; eltérő hónap → teljes alakok."""
+    ds = [re.sub(r'[-.]', '.', d) for d in datumok]
+    if len(ds) == 1:
+        return ds[0]
+    a, b = ds[0], ds[-1]
+    return '%s–%s' % (a, b[8:]) if a[:8] == b[:8] else '%s–%s' % (a, b)
 
 
 # F182 (B10, K91): az új szerkezetű lap Kolofonjának forrástáblája forrásonként egy sor, „Fájl” oszlop nélkül (a fájlnév nem
@@ -7842,10 +7853,9 @@ UJ_JELMAGYARAZAT_CSERE = (
     ('**Proveniencia-sor** (dőlt, `scope=… | forras=… | ts=…` alakú): honnan és mikor származik a fölötte álló adat — milyen\n'
      'körre (`scope`), melyik adattáblából vagy lekérdezésből (`forras`), mikor (`ts`); a `manual` kézi rögzítést jelöl. Az\n'
      'ellenőrzéshez való, olvasáskor átugorható.',
-     '**Forrásmegjelölés** (dőlt sor vagy a tábla alatti számozott jegyzet, „forrás: …” alakú): melyik adattáblából vagy\n'
-     'lekérdezésből és mikor származik a fölötte álló adat; a „kézi szerkesztés” kézi rögzítést jelöl. A tábla sorában a\n'
-     'jegyzet száma áll (pl. 2.5); az azonos jegyzet a tábla alatt egyszer szerepel, és több sor is mutathat rá. A teljes,\n'
-     'gépi alakú forrássor a forrásfájlban, megjegyzésként áll. Az ellenőrzéshez való, olvasáskor átugorható.'),
+     '**Forrásmegjelölés** (dőlt sor vagy a tábla alatti jegyzet, „forrás: …” alakú): melyik adattáblából vagy lekérdezésből és mikor\n'
+     'származik a fölötte álló adat; a „kézi szerkesztés” kézi rögzítést jelöl. A teljes, gépi alakú forrássor a szócikk\n'
+     'forrásában, megjegyzésként áll. Az ellenőrzéshez való, olvasáskor átugorható.'),
     # a felhasználó átnézése (2.): a közös forrásmegjelölés jele (‹E1› …) a jegyzetekben nem áll, a feloldása a rejtett
     # megjegyzésben; a jelmagyarázata ezért nem áll a lapon
     ('\n\n**Közös forrásmegjelölés** (‹E1›, ‹K1›, ‹M1› …): ha egy blokk több sora ugyanabból a forrásból jön, a soron csak a jel\n'
@@ -8021,7 +8031,7 @@ def uj_szerkezet_alkalmaz(szoveg, m, sorai):
         '## 10. Alkalmazás\n\n### Alkalmazás és tanítványság', '## 10. Alkalmazás')))
     szoveg = szoveg.replace(
         'hogy egy nevesített magyarázó egy helyet ténylegesen hogyan olvasott,\nazt a Tanítói egyezés dokumentálja, '
-        'ahol van.', 'nevesített magyarázók olvasata itt nem\nszerepel; az ókori fordítások és értelmezők olvasatát a '
+        'ahol van.', 'nevesített magyarázók olvasatát a szócikk nem\ngyűjti; az ókori fordítások és értelmezők olvasatát a '
         '9. szakasz mutatja.')
     szoveg = attekinto_beszur(szoveg, m, sorai)
     szoveg = visszhang_beszur(szoveg, m, sorai)
@@ -9000,9 +9010,8 @@ def blokk_hatas_tanuk(m, sorai):
         bevezeto = ('Ez a rész azt mutatja, hogyan olvasták a motívum helyeit az ókori értelmezők. Két fajta tanú áll '
                     'itt. Az egyiknél egy mondatos összefoglaló mondja meg a forrás szövege alapján, mit lát a tanú a '
                     'helyben; ahol a tanú a lánc egy másik helyére is utal, a mondat megnevezi. A másik fajta tanú egy '
-                    'versláncban idézi a helyet a lánc más verseivel együtt (a Chain Lineage Browser adata); ez az '
-                    'együtt-idézés ténye, a kapcsolat értelmezéséről nem állít semmit. Hagyományonként (görög, latin, '
-                    'szír, rabbinikus) helyenként '
+                    'versláncban idézi a helyet a lánc más verseivel együtt (a Chain Lineage Browser adata); a kapcsolat '
+                    'értelmezését a szócikk ezekről nem állítja. Hagyományonként (görög, latin, szír, rabbinikus) helyenként '
                     'legfeljebb egy tanú áll, csak a Remez- és Sod-szintű helyeken; idézet nincs.')
     if tanuk:
         bevezeto += ' A motívum %d helyén %d tanú áll.' % (len({r['igehely'] for r in tanuk}), len(tanuk))
@@ -9039,7 +9048,7 @@ def blokk_hatas_tanuk(m, sorai):
                'rabbinikus források), a Glossa Ordinaria jegyzetei és a Chain Lineage Browser. Az összefoglaló mondat a '
                'forrásszövegen ellenőrizve áll a táblázatban; a versláncok adata (szerző, mű, század, nyelv, az együtt '
                'idézett versek) a lekérdezés megismétlésével ellenőrizve. Az egyházatyák és a rabbinikus források '
-               'szövegéből itt nincs idézet. A Chain Lineage Browser bibliai hivatkozásai a BiblIndexből valók (Institut '
+               'szövegét a szócikk nem idézi. A Chain Lineage Browser bibliai hivatkozásai a BiblIndexből valók (Institut '
                'des Sources Chrétiennes, CNRS – HiSoMA, Lyon).*')
     reszek = [olvasoi_bekezdes(bevezeto)]
     if tanuk:
