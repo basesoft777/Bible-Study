@@ -17,12 +17,14 @@ A brief 1. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
     NYILVANOS   (e) nyilvános szövegben nincs belső jelölés (DT/N/F-szám, belső útvonal, proveniencia-kulcs,
                 `manual`), „orkesztrátor”, „felhasználó…”, „termék”, GitHub, helyőrző; a „PaRDeS” nem áll benne
                 (így nem is központi keretezés); a „repó-gyökér” kimondva a README-ben és az OLVASSEL-ben — BUKÁS
-    KOZLEMENY   a `kozlemeny/` hu/en tervezete megvan, nincs az ellenőrző összegben, a `.gitattributes`
-                kihagyja a kiadásból (export-ignore)                                                    — BUKÁS
+    KOZLEMENY   a `kozlemeny/` hu/en tervezete (rövid közlemény) megvan, nincs az ellenőrző összegben, a
+                `.gitattributes` kihagyja a kiadásból (export-ignore)                                    — BUKÁS
+    KEZIRAT     a második data paper kézirata (`kozlemeny/data_paper/karoli_strong_kezirat_hu/en.md`, a repó
+                gyökerében, a csomagon kívül; DT-F175b) a generálttal azonos, és a törzse a nyilvános
+                szövegszabályok szerint tiszta (az UJRA ponttal fut)                                     — BUKÁS
     OSSZEG      az `ELLENORZO_OSSZEG.sha256` minden kiadott fájlt helyes összeggel listáz; a `KIADAS.txt`
                 tartalmi hash-e egyezik                                                                 — BUKÁS
-    VALTOZATLAN a `nyilt_mag/` adatfájljai (a `kozlemeny/` almappa nélkül) és a gyökérbeli `CITATION.cff`
-                változatlan a main-hez képest                                                          — BUKÁS
+    VALTOZATLAN a `nyilt_mag/` és a gyökérbeli `CITATION.cff` változatlan (a main-nel közös bázishoz képest)                                                         — BUKÁS
                 (FIGYELEM, ha a main nem érhető el)
 
 Kilépési kód: 0, ha nincs BUKÁS. TSV-olvasás `split('\\t')`.
@@ -54,7 +56,7 @@ Talalat = collections.namedtuple('Talalat', 'azon suly uzenet')
 
 ENGEDETT_NEV = re.compile(r'^(?:(?:parok|szavak)/\d{2}_[1-3]?[A-Z][A-Za-z]+\.tsv|versek\.tsv|meres\.tsv|'
                           r'kodkonyv\.tsv|[A-Z_]+\.md|LICENSE|CITATION\.cff|\.gitattributes|ELLENORZO_OSSZEG\.sha256|'
-                          r'KIADAS\.txt|RELEASE\.txt|kozlemeny/(?:kozlemeny|kezirat)_(?:hu|en)\.md)$')
+                          r'KIADAS\.txt|RELEASE\.txt|kozlemeny/kozlemeny_(?:hu|en)\.md)$')
 HEBER_GOROG = re.compile('[֐-׿Ͱ-Ͽἀ-῿יִ-ﭏ]')
 ZART_FORRAS = re.compile(r'Bible[- ]?Discovery|Biblia[- ]?Felfedez', re.I)
 NEM_KOMPATIBILIS = re.compile(r'\bNC\b|NonCommercial|nem kereskedelmi|BY-SA|ShareAlike|\bGPL|minden jog fenntartva|'
@@ -231,7 +233,7 @@ def nyilvanos(fajlok):
 
 def kozlemeny(fajlok):
     ki = []
-    for n in ('kozlemeny_hu.md', 'kozlemeny_en.md', 'kezirat_hu.md', 'kezirat_en.md'):
+    for n in ('kozlemeny_hu.md', 'kozlemeny_en.md'):
         if E.KOZLEMENY_DIR + n not in fajlok:
             ki.append(Talalat('KOZLEMENY', BUKAS, 'hiányzik: %s%s' % (E.KOZLEMENY_DIR, n)))
     if 'kozlemeny/ export-ignore' not in fajlok.get('.gitattributes', ''):
@@ -274,18 +276,46 @@ def valtozatlan():
     for ref in ('origin/main', 'main'):
         r = subprocess.run(['git', 'rev-parse', '--verify', '-q', ref], cwd=GYOKER, capture_output=True)
         if r.returncode == 0:
-            d = subprocess.run(['git', 'diff', '--name-only', ref, '--', 'nyilt_mag', ':(exclude)nyilt_mag/kozlemeny',
-                                'CITATION.cff'], cwd=GYOKER, capture_output=True, text=True, encoding='utf-8')
+            # a merge-bázishoz képest: a main közben mozoghat (pl. a #710), ez nem ennek az ágnak a változása
+            b = subprocess.run(['git', 'merge-base', ref, 'HEAD'], cwd=GYOKER, capture_output=True, text=True)
+            alap = b.stdout.strip() or ref
+            d = subprocess.run(['git', 'diff', '--name-only', alap, '--', 'nyilt_mag', 'CITATION.cff'], cwd=GYOKER,
+                               capture_output=True, text=True, encoding='utf-8')
             if d.stdout.strip():
                 return [Talalat('VALTOZATLAN', BUKAS, 'változott a %s-hoz képest: %s' % (ref, d.stdout.split()))]
-            return [Talalat('VALTOZATLAN', OK, 'a nyilt_mag/ adatfájljai és a CITATION.cff változatlan (%s)' % ref)]
+            return [Talalat('VALTOZATLAN', OK, 'a nyilt_mag/ és a CITATION.cff változatlan (%s)' % ref)]
     return [Talalat('VALTOZATLAN', FIGYELEM, 'a main nem érhető el, nem mérve')]
+
+
+def kezirat(N, lemez=True):
+    """A csomagon kívüli kézirat (DT-F175b): a törzse a nyilvános szövegszabályok szerint tiszta; a lemezen álló
+    fájl a generált szöveggel azonos (ha `lemez`)."""
+    ki = []
+    for rel, (torzs, szoveg) in E.kezirat(N).items():
+        for rx, nev in TILTOTT:
+            for m in rx.finditer(torzs):
+                ki.append(Talalat('KEZIRAT', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
+        for rx, nev in ((HEBER_GOROG, 'héber/görög írásjel'), (ZART_FORRAS, 'zárt külső forrás neve'),
+                        (NEM_KOMPATIBILIS, 'nem kompatibilis licenc')):
+            m = rx.search(torzs)
+            if m:
+                ki.append(Talalat('KEZIRAT', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
+        if lemez:
+            ut = os.path.join(GYOKER, rel)
+            if not os.path.exists(ut):
+                ki.append(Talalat('KEZIRAT', BUKAS, 'hiányzik: %s' % rel))
+            else:
+                with open(ut, encoding='utf-8', newline='') as f:
+                    if f.read().replace('\r\n', '\n') != szoveg:     # a gyökérben nincs eol=lf (autocrlf)
+                        ki.append(Talalat('KEZIRAT', BUKAS, 'a lemezen álló kézirat eltér a generálttól: %s' % rel))
+    return ki or [Talalat('KEZIRAT', OK, 'a kézirat (hu/en) generált, a szövegszabályok szerint tiszta')]
 
 
 def mer(fajlok, ujra_is=True, git_is=True):
     t = teljesseg(fajlok) + licenc(fajlok) + harmadik(fajlok) + nyilvanos(fajlok) + kozlemeny(fajlok) + osszeg(fajlok)
     if ujra_is:
         t += ujra(fajlok)
+        t += kezirat(E.export()[1])
     if git_is:
         t += valtozatlan()
     return t

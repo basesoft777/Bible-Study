@@ -752,7 +752,7 @@ KOZLEMENY = [
     ('kozlemeny_en.md', KOZLEMENY_EN, 'en'),
 ]
 
-# ----------------------------------------------------------------------------- a data paper kézirata (tervezet)
+# ----------------------------------------------------------------------------- a második data paper kézirata (tervezet; a csomagon kívül)
 
 KEZIRAT_HU = """# A Károli-biblia 1908-as szövegének szavankénti párosítása a héber és görög eredetivel: nyílt adatkészlet mért pontossággal
 
@@ -1029,7 +1029,11 @@ fee-free alternative is a data mining and digital humanities journal that accept
 Zenodo deposit is a precondition for all three; the same manuscript may be submitted to only one venue at a time.
 """
 
-KOZLEMENY += [
-    ('kezirat_hu.md', KEZIRAT_HU, 'hu'),
-    ('kezirat_en.md', KEZIRAT_EN, 'en'),
+# a kézirat nem része a csomagnak: a repó gyökerében, a folyóiratcikkek mellett áll (DT-F175b)
+KEZIRAT = [
+    ('kozlemeny/data_paper/karoli_strong_kezirat_hu.md', KEZIRAT_HU, 'hu'),
+    ('kozlemeny/data_paper/karoli_strong_kezirat_en.md', KEZIRAT_EN, 'en'),
 ]
+KEZIRAT_FEJ = ('<!-- GENERÁLT: eszkozok/karoli_strong_export.py (a próza: eszkozok/karoli_strong_szovegek.py, a számok: '
+               'adat/karoli_strong/ és f172/) — kézzel nem szerkesztendő; a #175 második data paperének kézirata, '
+               'nem része a nyilt_karoli_strong/ csomagnak. -->\n')

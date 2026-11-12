@@ -12,7 +12,7 @@ szerkesztői döntés: harmadik fél adata nem megy be). A külső összevetés 
 egyezés.
 
 Kimenet: `nyilt_karoli_strong/` — a mappa tartalma 1:1-ben a nyilvános adatrepó gyökere. Determinisztikus,
-újrafuttatva bájtazonos. A `kozlemeny/` almappa (a közlemény hu/en tervezete) generált, de nincs az ellenőrző
+újrafuttatva bájtazonos. A `kozlemeny/` almappa (a rövid közlemény hu/en tervezete) generált, de nincs az ellenőrző
 összegben, és a `.gitattributes` a kiadási archívumból kihagyja (export-ignore) a megjelenésig.
 
 A nyilvános szövegek prózája itt áll; minden szám az adatból vagy a #172 mérőtábláiból számolódik (`szamok()`),
@@ -412,6 +412,23 @@ def export():
     return fajlok, N
 
 
+def kezirat(N):
+    """A második data paper kézirata (hu/en): a repó gyökeréhez viszonyított út -> (törzs, teljes szöveg). A törzs
+    a nyilvános szöveg (a kapu ezt ellenőrzi), a teljes szöveg a GENERÁLT-jelöléssel kezdődik."""
+    hu, en = fmt(N, 'hu'), fmt(N, 'en')
+    ki = {}
+    for rel, sablon, d in SZ.KEZIRAT:
+        torzs = sablon.format(**(hu if d == 'hu' else en))
+        ki[rel] = (torzs, SZ.KEZIRAT_FEJ + torzs)
+    return ki
+
+
+def kezirat_kiir(N):
+    for rel, (_, szoveg) in kezirat(N).items():
+        with open(os.path.join(GYOKER, rel), 'w', encoding='utf-8', newline='\n') as f:
+            f.write(szoveg)
+
+
 def kiir(fajlok, kimenet):
     abs_ki = os.path.join(GYOKER, kimenet) if not os.path.isabs(kimenet) else kimenet
     if os.path.isdir(abs_ki):
@@ -434,6 +451,8 @@ def main():
     a = ap.parse_args()
     fajlok, N = export()
     ut = kiir(fajlok, a.kimenet)
+    if a.kimenet == KIMENET:
+        kezirat_kiir(N)          # a kézirat csak a kanonikus futáskor (a --kimenet próba a repón kívül marad)
     print('Károli 1908 – Strong szóillesztés exportálva: %s (%d fájl)' % (ut, len(fajlok)))
     for k in ('konyv', 'vers', 'par', 'hu_token', 'er_token', 'hu_parositva', 'hu_betoldas', 'hu_fuggoben',
               'er_parositva', 'er_forditatlan', 'er_fuggoben', 'morfema', 'nem_tr', 'keret'):

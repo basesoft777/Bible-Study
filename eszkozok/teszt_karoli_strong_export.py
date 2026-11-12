@@ -188,6 +188,14 @@ class Csomag(unittest.TestCase):
         del f['kozlemeny/kozlemeny_en.md']
         self.assertTrue(bukasok(f, 'KOZLEMENY'))
 
+    def test_kezirat_a_csomagon_kivul(self):
+        self.assertEqual(G.kezirat(self.N, lemez=False)[0].suly, G.OK)
+        self.assertFalse(any('kezirat' in rel for rel in self.fajlok))
+        k = E.kezirat(self.N)
+        self.assertEqual(sorted(k), ['kozlemeny/data_paper/karoli_strong_kezirat_en.md',
+                                     'kozlemeny/data_paper/karoli_strong_kezirat_hu.md'])
+        self.assertTrue(all(sz.startswith('<!-- GENERÁLT:') for _, sz in k.values()))
+
     def test_szamok(self):
         N = self.N
         self.assertEqual(N['par'], N['magas'] + N['alacsony'])
