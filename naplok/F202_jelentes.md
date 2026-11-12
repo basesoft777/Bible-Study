@@ -76,6 +76,12 @@ A base (`00ae46e9`) és a fej adataival, ugyanazzal a generátorral (`general.py
   szócikk (BDB8371). Ez a generátor hibája (N-F202e); az ALVIL újragenerálása előtt javítandó.
 - a többi lap változatlan.
 
+**Újragenerálás (F202.12, 2026-11-12; a HAMART-001 1. kiadása után, az orkesztrátor (c) útja szerint).** Az `origin/main`
+beolvasztva (F202.10). A lapok a saját dátumukkal (`PARDES_DATUM`, az E28 szerint) próbagenerálva, a main generátorával is: a
+HAMART-001 és a többi lap generált kimenete nem változik (a 2026-10-20-as régi lapok sodródása a main generátorával azonos, nem ezé az
+ágé). Újragenerálva (`--ir`): ISTENTISZT-001 (3 blokk) és ALVIL-001 (3 blokk). Az N-F202e a generátorban javítva (a puszta utaló első
+szócikk helyett a fő szócikk feje), így az ALVIL H7585 nyelvi háttere megmarad. `eszkozok/ellenorzes/futtat.py` a diff fájljain: 0 HIBA.
+
 ## 6. Tesztek
 
 - `bdb_jelolt`: `teszt_bont.py` 79/79, `teszt_hu_illeszt.py` 29/29 zöld. `teszt_szakasz_bemenet.py`: 1 előzetes bukás (a base-en is; N-F202d).
