@@ -16,12 +16,13 @@ from markupsafe import Markup, escape
 
 import adatbazis
 import arculat as arculat_modul
+import bibliak
 import blokkok
 import kereses as kereses_modul
 import lekerdezesek as q
 import tanulmany_oldal as oldal_megjelenito
 
-SABLON_VERZIO = 'f149-m3'
+SABLON_VERZIO = 'f210'
 # nézetek helyett rétegek (#134, DT294, DT-F134f (b), DT-F134g (c)): egyetlen réteg, az interlineáris sor (`il`); az alap a folyó
 # Károli-szöveg réteg nélkül. A réteg-állapot szöveg: a bekapcsolt rétegek vesszővel, a RETEGEK sorrendjében ('' = nincs réteg).
 RETEGEK = ('il',)
@@ -178,6 +179,8 @@ class OldalGyar:
             blokkok.forras_sor(b, self.kozos)
         # elgépelt blokk-azonosító a hozzáférési konfigban indulási hiba (ne maradjon csendben nyitva); a keresési módok azonosítói is ismertek
         self.hozz.ellenoriz_blokkok(blokkok.ismert_azonositok())
+        # F210: a bibliaválasztó Bibliáinak elérhetősége (könyvenként a fejezetek, lustán számolva)
+        self.bibliak = bibliak.Tar(db, self.kozos)
         # a magyar szótokenek nélküli könyvek (a 9 párosítatlan ÚSZ-könyv): a magyar keresés ott nem talál, a keresőlap kiírja
         self.token_nelkuli_konyvek = [kk for kk, sl, _, _ in self.kozos.konyvek if sl not in set(self.kozos.karoli_strong_konyvek)]
 
@@ -311,11 +314,34 @@ class OldalGyar:
             raise NemTalalhato('ismeretlen könyv')
         return self._render('konyv.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fejezetek=self.kozos.fejezet_szam[kk], reteg=reteg, ut=ut, szint=szint, cim=self.kozos.nev[kk])
 
-    def navigacio(self, kk, fej, elozo, kovetkezo, jeloles, tan_jeloles=False):
+    def bibliavalaszto(self, kod, kk, fej):
+        """F210: a könyvválasztó legfelső szintje, a Biblia (a mockup `Mk_08_Konyvvalaszto`-ja): csoportonként a gombok, a céljuk
+        ugyanaz a könyv és fejezet (ha a Bibliában nincs, a könyv vagy a Biblia első fejezete). Az adatbázisból hiányzó (vagy a
+        kiadásban kizárt) Biblia gombja nem hivatkozás."""
+        csop = []
+        for ck, cn in bibliak.CSOPORTOK:
+            gombok = []
+            for b in bibliak.BIBLIAK:
+                if b.csoport != ck:
+                    continue
+                cel = self.bibliak.cel(b.kod, kk, fej)
+                bq = bibliak.parameter(b.kod)
+                alcim = b.alcim if (b.strong == self.bibliak.strong_is(b)) else b.alcim.replace('Strong', 'Strong nélkül ebben a kiadásban')
+                gombok.append({'kod': b.kod, 'nev': b.nev, 'alcim': alcim, 'itt': b.kod == kod,
+                               'href': ('/%s/%d' % cel + ('?' + bq if bq else '')) if cel else None})
+            csop.append({'nev': cn, 'gombok': gombok})
+        return csop
+
+    def navigacio(self, kk, fej, elozo, kovetkezo, jeloles, tan_jeloles=False, biblia=bibliak.ALAP):
         """A fejezet-lap navigációja (#134 M2): 900 px alatt a fejezetcímre nyíló navigációs lap, fölötte a fejléc. A könyvválasztó
         (műfaji csoportok, a könyv fejezetei), a kánon-sáv (a könyvek szélessége a fejezetszámukkal arányos, SVG-téglalapok: a CSP
         miatt `style=""` nélkül) és a kereső kliensoldali javaslatának könyvlistája (DT-F134k (b)) ugyanabból a meglévő
-        könyvlistából (`Kozos.konyvek`, `Kozos.fejezet_szam`); új adat és új végpont nincs."""
+        könyvlistából (`Kozos.konyvek`, `Kozos.fejezet_szam`); új adat és új végpont nincs. F210: a legfelső szint a bibliaválasztó;
+        a könyvrács a választott Biblia könyveit mutatja (a többi nem jelenik meg), a fejezetrács a Biblia fejezeteit, és minden
+        hivatkozás a `?biblia=` paraméterrel (a Károlinál paraméter nélkül) marad a Bibliában."""
+        b = bibliak.BIBLIA[biblia]
+        bq = bibliak.parameter(biblia)
+        bfej = self.bibliak.fejezetek(biblia)
         konyvek = self.kozos.konyvek
         if len(konyvek) == sum(n for _, _, n, _ in MUFAJOK):
             csop, i = [], 0
@@ -329,20 +355,45 @@ class OldalGyar:
             sor = []
             for kk_, sl, kn, srd in kl:
                 fl = [f for f, _ in self.kozos.fejezet_szam[kk_]]
-                # a fejezetrácsot a JS csak folytonos (1..n) fejezetszámozásnál rajzolja helyben; különben a könyv lapja nyílik
-                fejszam = len(fl) if fl == list(range(1, len(fl) + 1)) else ''
-                sor.append({'kk': kk_, 'slug': sl, 'nev': kn, 'nf': len(fl), 'fejszam': fejszam, 'itt': kk_ == kk})
+                bfl = bfej.get(kk_, [])
+                # a fejezetrácsot a JS csak folytonos (1..n) fejezetszámozásnál rajzolja helyben; különben a könyv lapja nyílik (a
+                # nem Károli Bibliánál a könyv első fejezete a Bibliában)
+                fejszam = len(bfl) if bfl and bfl == list(range(1, len(bfl) + 1)) else ''
+                href = '/%s' % sl if biblia == bibliak.ALAP else ('/%s/%d?%s' % (sl, bfl[0], bq) if bfl else '/%s' % sl)
+                if bfl:
+                    sor.append({'kk': kk_, 'slug': sl, 'nev': kn, 'nf': len(bfl), 'fejszam': fejszam, 'itt': kk_ == kk, 'href': href})
                 if kanon and srd >= 39 and kanon[-1]['srd'] < 39:
                     x += 6                                                # az Ó- és az Újszövetség határa
                 w = max(len(fl), 3)
-                kanon.append({'kk': kk_, 'slug': sl, 'nev': kn, 'nf': len(fl), 'szin': szin, 'itt': kk_ == kk, 'x': '%g' % x, 'w': '%g' % w, 'srd': srd})
+                kanon.append({'kk': kk_, 'slug': sl, 'nev': kn, 'nf': len(fl), 'szin': szin, 'itt': kk_ == kk, 'x': '%g' % x, 'w': '%g' % w, 'srd': srd,
+                              'href': href})
                 x += w + 1
-            mufajok.append({'kod': kod, 'nev': nev, 'konyvek': sor})
+            if sor:
+                mufajok.append({'kod': kod, 'nev': nev, 'konyvek': sor})
         return {'kk': kk, 'slug': self.kozos.slug[kk], 'nev': self.kozos.nev[kk], 'fej': fej, 'elozo': elozo, 'kovetkezo': kovetkezo,
-                'fejezetek': [f for f, _ in self.kozos.fejezet_szam[kk]], 'mufajok': mufajok, 'kanon': kanon, 'kanon_w': '%g' % max(x - 1, 1),
-                'jeloles': jeloles, 'tan_jeloles': tan_jeloles}
+                'fejezetek': bfej.get(kk, []), 'mufajok': mufajok, 'kanon': kanon, 'kanon_w': '%g' % max(x - 1, 1),
+                'jeloles': jeloles, 'tan_jeloles': tan_jeloles, 'biblia': b, 'bq': ('?' + bq) if bq else '',
+                'bibliak': self.bibliavalaszto(biblia, kk, fej)}
 
-    def fejezet_lap(self, slug, fej, vers, reteg, szint, szo, ful, ut):
+    def _biblia_jegy(self, b, strong_is):
+        """A nem Károli 1908-as Biblia jegye a szövegoszlop tetején: mi ez, hogyan olvasható (szóra koppintva vagy versenként), és
+        a számozása; alatta a forrás- és licencsor (a `tabla_licenc`-ből)."""
+        if strong_is:
+            mod = 'A Strong-számmal jelölt szóra koppintva a szó lapja nyílik; a versszámra koppintva a Károli-vers részletei.'
+        elif b.strong:
+            mod = 'Ebben a kiadásban a Strong-jelölés nem érhető el: a szöveg versenként olvasható, szóra koppintani nem lehet.'
+        else:
+            mod = 'Versenként olvasható: Strong-jelölés nincs, szóra koppintani nem lehet.'
+        if b.szamozas == 'forras':
+            szam = ('A versszámozás a forrás saját számozása, és eltérhet a Károlitól (pl. a zsoltárokban); versegyezést nem állítunk. '
+                    'A † jelű vers száma a Károliban nem létezik.')
+        else:
+            szam = 'A versszámozás a Károlié; ahol a forrás számozása eltér, a vers elején áll.'
+        tablak = tuple(t for t in b.licenc_tablak if t in self.kozos.licenc and t not in self.db.kizart)
+        forras = blokkok.forras_sor(blokkok.Blokk('szoveg.' + b.kod, 'vers', b.nev, 'forras', tablak, None, None), self.kozos) if tablak else ''
+        return {'leiras': b.leiras, 'mod': mod, 'szam': szam, 'forras': forras}
+
+    def fejezet_lap(self, slug, fej, vers, reteg, szint, szo, ful, ut, biblia=bibliak.ALAP):
         """A fejezet-lap: a Károli-szöveg (réteg nélkül folyó szöveg, az `il` réteggel versenkénti interlineáris csempék) és a
         részletek lapja (#134 M1). `reteg`: a réteg-állapot (a régi nézetnév is, álnévként). A lap módja: `ful=szo` és ismert
         szó → szómód; vers a címben → versmód (a `ful` a versmód füle); csak szó → szómód; különben üres állapot (útmutató,
@@ -352,6 +403,8 @@ class OldalGyar:
         if kk is None:
             raise NemTalalhato('ismeretlen könyv')
         con = self.con()
+        if biblia != bibliak.ALAP:
+            return self._biblia_fejezet_lap(kk, slug, fej, vers, reteg, szint, szo, ful, ut, biblia)
         fejezetek = dict(self.kozos.fejezet_szam[kk])
         if fej not in fejezetek:
             raise NemTalalhato('ismeretlen fejezet')
@@ -410,8 +463,59 @@ class OldalGyar:
         return self._render('fejezet.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fej=fej, vers=vers, versek=vlista, reteg=reteg,
                             szo=szo_n if mod == 'szo' else None, lap_html=lap_html, lap_cim=lap_cim, lap_al=lap_al, mod=mod, vers_ful=vers_ful,
                             lap_nyitva=(mod != 'ures' or ful == 'info'), ures_fo=cim, ures_al='Útmutató, forrás és számlálók',
-                            ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek, nav=self.navigacio(kk, fej, elozo, kovetkezo, not il, bool(sav)),
-                            szint=szint, cim=cim, szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, il))
+                            ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek, nav=self.navigacio(kk, fej, elozo, kovetkezo, not il, bool(sav), bibliak.ALAP),
+                            szint=szint, cim=cim, szoveg_jegy=blokkok.szoveg_jegy_html(self.kozos, il), biblia=bibliak.BIBLIA[bibliak.ALAP], bq='', bjegy=None)
+
+    def _biblia_fejezet_lap(self, kk, slug, fej, vers, reteg, szint, szo, ful, ut, kod):
+        """F210: a fejezet-lap a nem Károli 1908-as Bibliával. A Károli-kulcsos szövegnél a részletek lapja (szó, vers) a meglévő
+        Károli-töredék; a forrás-számozású szövegnél (Targum, Vulgata) a lap csak az útmutatót és a forrást mutatja, a vers
+        kijelölése a forrás versszámát követi."""
+        b = bibliak.BIBLIA[kod]
+        bfej = self.bibliak.fejezetek(kod)
+        if fej not in bfej.get(kk, []):
+            raise NemTalalhato('ebben a Bibliában nincs ilyen fejezet')
+        con = self.con()
+        strong_is = self.bibliak.strong_is(b)
+        if b.szamozas == 'karoli':
+            kversek = q.fejezet_versek(con, kk, fej)
+            kszavak = q.fejezet_szavak(con, kk, fej) if b.kod == 'modern' else {}
+        else:
+            kversek, kszavak = [], {}
+        vlista = bibliak.fejezet_versek(con, self.kozos, b, kk, fej, kversek, kszavak, lambda st: q.szofajok(con, st), strong_is)
+        for v in vlista:
+            v['tan'] = []
+            v['parositatlan'] = []
+            v['van_par'] = any(w.get('fo') for w in v['szavak'])
+        if vers is not None and vers not in {v['vers'] for v in vlista}:
+            raise NemTalalhato('ismeretlen vers')
+        ful = ful if ful in FUL_ERTEKEK else ''
+        szo_n = q.hnorm(szo) if szo else None
+        lap_html, lap_cim, lap_al, mod = None, '', '', 'ures'
+        if b.szamozas == 'karoli':
+            if szo_n and (ful == 'szo' or vers is None):
+                try:
+                    lap_html, lap_cim, lap_al = self.szo_resz(szo_n, szint, ('%s %d:%d' % (kk, fej, vers)) if vers is not None else None)
+                    mod = 'szo'
+                except NemTalalhato:
+                    szo_n = None
+            if mod == 'ures' and vers is not None and ful != 'info':
+                lap_html, lap_cim, lap_al = self.vers_resz(slug, fej, vers, szint, ful if ful in dict(VERS_FULEK) else 'vers')
+                mod = 'vers'
+        vers_ful = ful if (mod == 'vers' and ful in dict(VERS_FULEK)) else 'vers'
+        lap_html = Markup(lap_html) if lap_html else None
+        fl = bfej[kk]
+        elozo = fl[fl.index(fej) - 1] if fl.index(fej) > 0 else None
+        kovetkezo = fl[fl.index(fej) + 1] if fl.index(fej) + 1 < len(fl) else None
+        cim = '%s %d' % (self.kozos.nev[kk], fej)
+        bjegy = self._biblia_jegy(b, strong_is)
+        cimkek = self.cimkek(self.szamlalok([v['ig'] for v in vlista if v['ig']], szint)) if b.szamozas == 'karoli' else []
+        bq = bibliak.parameter(kod)
+        return self._render('fejezet.html', kk=kk, slug=slug, nev=self.kozos.nev[kk], fej=fej, vers=vers, versek=vlista, reteg=reteg,
+                            szo=szo_n if mod == 'szo' else None, lap_html=lap_html, lap_cim=lap_cim, lap_al=lap_al, mod=mod, vers_ful=vers_ful,
+                            lap_nyitva=(mod != 'ures' or ful == 'info'), ures_fo='%s · %s' % (b.morzsa, cim), ures_al='Útmutató és forrás',
+                            ut=ut, elozo=elozo, kovetkezo=kovetkezo, cimkek=cimkek,
+                            nav=self.navigacio(kk, fej, elozo, kovetkezo, strong_is and b.strong, False, kod),
+                            szint=szint, cim='%s · %s' % (cim, b.morzsa), szoveg_jegy='', biblia=b, bq=bq, bjegy=bjegy)
 
     # -- tanulmány-oldal (F149 M3) -----------------------------------------------------------------------------------
     def _tan_kar(self, con):

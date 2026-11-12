@@ -26,16 +26,29 @@
   {% endif %}
   <a class="logo" href="/">PaRDeS olvasó</a>
   {% if nav %}
-  <details class="konyvvalaszto" id="konyvvalaszto">
-    <summary class="morzsa" aria-label="Könyv és fejezet kiválasztása">{{ nav.kk }} {{ nav.fej }}<span class="morzsa-jel" aria-hidden="true"> ▾</span></summary>
-    <div class="konyvpanel">
-      <p class="fejezetracs-cim" id="fejezetracs-cim">{{ nav.nev }} · fejezetek</p>
-      <div class="fejezetracs" id="fejezetracs" data-kk="{{ nav.kk }}">{% for f in nav.fejezetek %}<a class="fejezetgomb{{ ' itt' if f == nav.fej else '' }}" href="/{{ nav.slug }}/{{ f }}"{% if f == nav.fej %} aria-current="page"{% endif %}>{{ f }}</a>{% endfor %}</div>
+  {# F210 (a mockup Mk_08_Konyvvalaszto, Mk_01_Fejlec): a választó legfelső szintje a Biblia, alatta a könyvrács, majd a fejezet;
+     a morzsa a választott Bibliát is mutatja. A választás a címben él (`?biblia=`, a Károli 1908 az alap, paraméter nélkül). #}
+  <details class="konyvvalaszto" id="konyvvalaszto" data-bq="{{ nav.bq }}">
+    <summary class="morzsa" aria-label="Biblia, könyv és fejezet kiválasztása ({{ nav.biblia.morzsa }}, {{ nav.kk }} {{ nav.fej }})"><span class="morzsa-biblia">{{ nav.biblia.morzsa }} ·</span> {{ nav.kk }} {{ nav.fej }}<span class="morzsa-jel" aria-hidden="true"> ▾</span></summary>
+    <div class="konyvpanel" role="dialog" aria-label="Biblia és könyv kiválasztása">
+      <p class="valaszto-cim">Biblia és könyv kiválasztása</p>
+      <div class="bibliavalaszto" role="group" aria-label="Biblia">
+        <p class="bibliavalaszto-cim">Biblia</p>
+        {% for cs in nav.bibliak %}
+        <div class="biblia-csoport"><span class="biblia-csoport-cim">{{ cs.nev }}</span>
+          {% for g in cs.gombok %}{% if g.href %}<a class="biblia-gomb{{ ' itt' if g.itt else '' }}" href="{{ g.href }}" data-biblia="{{ g.kod }}"{% if g.itt %} aria-current="true"{% endif %}>{{ g.nev }}<small>{{ g.alcim }}</small></a>{% else %}<span class="biblia-gomb biblia-nincs" title="Ez a szöveg az adatbázisban (vagy ebben a kiadásban) nem érhető el">{{ g.nev }}<small>nincs az adatbázisban</small></span>{% endif %}{% endfor %}
+        </div>
+        {% endfor %}
+        <p class="bibliavalaszto-megj">A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. A Strong-jelölés nélküli szöveg versenként olvasható, szóra koppintani nem lehet benne.</p>
+      </div>
+      <p class="bibliavalaszto-cim">Könyv</p>
       {% for m in nav.mufajok %}
       <div class="mufaj" data-mufaj="{{ m.kod }}"><p class="mufaj-cim">{{ m.nev }}</p>
-        <div class="konyvracs">{% for k in m.konyvek %}<a class="konyvgomb{{ ' itt' if k.itt else '' }}" href="/{{ k.slug }}" data-kk="{{ k.kk }}" data-nev="{{ k.nev }}" data-slug="{{ k.slug }}" data-fejszam="{{ k.fejszam }}" title="{{ k.nev }} · {{ k.nf }} fejezet">{{ k.kk }}</a>{% endfor %}</div>
+        <div class="konyvracs">{% for k in m.konyvek %}<a class="konyvgomb{{ ' itt' if k.itt else '' }}" href="{{ k.href }}" data-kk="{{ k.kk }}" data-nev="{{ k.nev }}" data-slug="{{ k.slug }}" data-fejszam="{{ k.fejszam }}" title="{{ k.nev }} · {{ k.nf }} fejezet">{{ k.kk }}</a>{% endfor %}</div>
       </div>
       {% endfor %}
+      <p class="fejezetracs-cim" id="fejezetracs-cim">{{ nav.nev }} · fejezetek</p>
+      <div class="fejezetracs" id="fejezetracs" data-kk="{{ nav.kk }}">{% for f in nav.fejezetek %}<a class="fejezetgomb{{ ' itt' if f == nav.fej else '' }}" href="/{{ nav.slug }}/{{ f }}{{ nav.bq }}"{% if f == nav.fej %} aria-current="page"{% endif %}>{{ f }}</a>{% endfor %}</div>
     </div>
   </details>
   {% endif %}
@@ -46,8 +59,8 @@
   </form>
   {% if nav %}
   <nav class="lepteto" aria-label="Fejezetek">
-    {% if nav.elozo %}<a class="lap-gomb" href="/{{ nav.slug }}/{{ nav.elozo }}" aria-label="Előző fejezet" title="Előző fejezet ({{ nav.kk }} {{ nav.elozo }})">‹</a>{% endif %}
-    {% if nav.kovetkezo %}<a class="lap-gomb" href="/{{ nav.slug }}/{{ nav.kovetkezo }}" aria-label="Következő fejezet" title="Következő fejezet ({{ nav.kk }} {{ nav.kovetkezo }})">›</a>{% endif %}
+    {% if nav.elozo %}<a class="lap-gomb" href="/{{ nav.slug }}/{{ nav.elozo }}{{ nav.bq }}" aria-label="Előző fejezet" title="Előző fejezet ({{ nav.kk }} {{ nav.elozo }})">‹</a>{% endif %}
+    {% if nav.kovetkezo %}<a class="lap-gomb" href="/{{ nav.slug }}/{{ nav.kovetkezo }}{{ nav.bq }}" aria-label="Következő fejezet" title="Következő fejezet ({{ nav.kk }} {{ nav.kovetkezo }})">›</a>{% endif %}
   </nav>
   <details class="aa" id="aa">
     <summary class="lap-gomb" aria-label="Szövegbeállítások" title="Szövegbeállítások">Aa</summary>
@@ -103,7 +116,7 @@
      alatt a keresőt, a kánon-sávot és a „Legutóbb”-ot (JS nélkül a #navigacio cél); 900 px-től rejtett #}
   <a class="lap-gomb navlap-gomb" href="#navigacio" aria-controls="navigacio" aria-expanded="false" aria-label="Keresés és navigáció" title="Keresés és navigáció">⌕</a>
   <svg class="kanon" id="kanon" viewBox="0 0 {{ nav.kanon_w }} 10" preserveAspectRatio="none" role="group" aria-label="A kánon könyvei (a szélesség a fejezetszámmal arányos)">
-    {% for k in nav.kanon %}<a href="/{{ k.slug }}" data-kk="{{ k.kk }}" aria-label="{{ k.nev }}, {{ k.nf }} fejezet"><title>{{ k.nev }} · {{ k.nf }} fejezet</title><rect class="kanon-konyv{{ ' itt' if k.itt else '' }}" data-mufaj="{{ k.szin }}" x="{{ k.x }}" y="0" width="{{ k.w }}" height="10"></rect></a>{% endfor %}
+    {% for k in nav.kanon %}<a href="{{ k.href }}" data-kk="{{ k.kk }}" aria-label="{{ k.nev }}, {{ k.nf }} fejezet"><title>{{ k.nev }} · {{ k.nf }} fejezet</title><rect class="kanon-konyv{{ ' itt' if k.itt else '' }}" data-mufaj="{{ k.szin }}" x="{{ k.x }}" y="0" width="{{ k.w }}" height="10"></rect></a>{% endfor %}
   </svg>
   <div class="nav-extra">
     <div class="legutobb" id="legutobb" hidden><span class="legutobb-cim">Legutóbb:</span></div>

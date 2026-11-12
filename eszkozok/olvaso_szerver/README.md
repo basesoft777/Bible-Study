@@ -10,6 +10,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 | `oldalak.py` | a lapelőállítás (HTML-szöveg), **nem függ a Flasktól**; a statikus export erre épül |
 | `blokkok.py` | a blokk-regiszter (46 azonosító: az M2 40-e a pilot 39 mért adatblokkjára + az M2b 6 új blokkja a pilot kirajzolt készletéhez), jelleg-címke, forrás- és licencsor |
 | `lekerdezesek.py` | az összes SQL, paraméterezve (N-F76c) |
+| `bibliak.py` | a bibliaválasztó (F210): a választható Bibliák regisztere (Károli 1908 = alap; modern Károli, TAHOT, TAGNT, Septuaginta, KJV, BSB, Targum, Vulgata), az elérhetőség (könyvenként a fejezetek), és a nem Károli 1908-as fejezet szövegoszlopának modellje; Flask és SQL nélkül |
 | `kereses.py` | a keresés (M3): a bemenet értelmezése és normalizálása, a négy ág (Strong, magyar szó három móddal, magyar frázis, héber frázis), a héber előtag-toleráns illesztés, a kulcsos lapozás, a kiemelés; Flask és SQL nélkül |
 | `adatbazis.py` | csak olvasó kapcsolat, `set_authorizer` a kiadás szerint kizárt táblákra |
 | `hozzaferes.py` | hozzáférési szintek a `konfig/hozzaferes.toml`-ból |
@@ -35,7 +36,7 @@ Szerveroldali Flask-alkalmazás, amely a `pardes.db`-ből (csak olvasásra) áll
 
 ## Útvonalak
 
-`/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` (`?ful=szo|vers|kh|temak|motivum|info`: a részletek lapjának módja és füle; `?reteg=il`) · `/szo/<H0216|G1504>` · `/kereses?q=…` (`tipus`, `mod`) vagy `?strong=` · `?szo=` (`mod=pontos|szoto|szoto_strong`) · `?frazis=` · `?heber=` (`tol`: lapozás) · `/reteg/il/<be|ki>?vissza=` (a `pardes_reteg` süti csak itt jön létre) · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` (a régi cím: 302 a megfelelő réteggel) · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/arculat.css?v=<hash>` (a token-blokk) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
+`/` kezdőlap · `/<könyv>` · `/<könyv>/<fejezet>` · `/<könyv>/<fejezet>/<vers>` (`?ful=szo|vers|kh|temak|motivum|info`: a részletek lapjának módja és füle; `?reteg=il`) · `?biblia=<modern|tahot|tagnt|lxx|kjv|bsb|targum|vulgata>` a fejezet-lapon (F210: a választott Biblia; a Károli 1908 az alap, paraméter nélkül; a Targum és a Vulgata a forrás saját fejezet- és versszámával) · `/szo/<H0216|G1504>` · `/kereses?q=…` (`tipus`, `mod`) vagy `?strong=` · `?szo=` (`mod=pontos|szoto|szoto_strong`) · `?frazis=` · `?heber=` (`tol`: lapozás) · `/reteg/il/<be|ki>?vissza=` (a `pardes_reteg` süti csak itt jön létre) · `/nezet/<olvaso|interlinearis|munkaasztal>?vissza=` (a régi cím: 302 a megfelelő réteggel) · `/ugras?q=` · `/r/szo/<strong>`, `/r/vers/…` (töredékek) · `/arculat.css?v=<hash>` (a token-blokk) · `/statusz` · `/robots.txt`. A könyvkód ASCII-sített (`1Moz`). `.db`/`.tsv` nincs kiszolgálva.
 
 Csak a `belso` kiadásban (más kiadásban 404): `/tervezo/tervezo.js`, `/tervezo/tervezo.css`, `/tervezo/terkep.json` (a regiszter és a szabálytérkép), `/tervezo/kod` (egyszeri kód, csak helyi kérésre), `POST /tervezo/mentes`, `POST /tervezo/visszaallit`.
 
