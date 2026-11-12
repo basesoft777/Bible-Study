@@ -29,7 +29,8 @@ _MUNKA_NEVEK = ('a lap munkaanyaga', 'a lap munkanaplója', 'kézi szerkesztés'
 def _jelentes_olvasoi(t):
     """A „jelentés címkéje” rész olvasói alakja: mi a jelentés, a hozzárendelés mechanikája nélkül."""
     t = t.strip()
-    m = re.match(r'BDB-példa:\s*(.*?)(?:\s*\([^)]*versenkénti jelentései\))?;\s*ez a szerkesztői hozzárendelés.*$', t)
+    m = re.match(r'BDB-példa:\s*(.*?)(?:\s*\([^)]*(?:versenkénti jelentései|BDB-szótár|Thayer-szótár)\))?;\s*'
+                 r'ez a szerkesztői hozzárendelés.*$', t)   # F212: a tábla „BDB-szótár” néven is
     if m:
         return m.group(1).strip()
     m = re.match(r'BDB-példa:\s*(.*?)(?:\s*\([^)]*\))?\s*$', t)
@@ -47,7 +48,8 @@ def _jelentes_olvasoi(t):
     m = re.match(r'(.*?)(?:;\s*(?:ez )?a szerkesztői hozzárendelés.*)$', t)
     if m:
         t = m.group(1).strip()
-    return re.sub(r'\s*\(a [^)]*versenkénti jelentései\)', '', t)
+    # F212 (Kolofon-forrássor): a versenkénti jelentések táblája „BDB-szótár” néven fut; a jegyzetben nem ismétlődik
+    return re.sub(r'\s*\(a [^)]*versenkénti jelentései\)|\s*\(a (?:BDB|Thayer)-szótár\)', '', t)
 
 
 def olvasoi_jegyzet(lathato, ujszov=False):

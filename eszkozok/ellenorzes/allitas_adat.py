@@ -237,7 +237,7 @@ class Adat(object):
     # -- a generátor függvényei, egyszer hívva -------------------------------------
     def _dontesi(self):
         if '_d' not in self._cache:
-            self._cache['_d'] = self.LG.dontesi_ut_adat(self.m, self.sorai)
+            self._cache['_d'] = _olvasoi_kulcsok(self.LG.dontesi_ut_adat(self.m, self.sorai), ('csoport_ok', 'egyen_ok'))
         return self._cache['_d']
 
     def _kizart_sorok(self):
@@ -273,7 +273,7 @@ class Adat(object):
 
     def _melleklet(self):
         if '_mell' not in self._cache:
-            self._cache['_mell'] = self.LG.kizarasok_adat(self.m, self.sorai)
+            self._cache['_mell'] = _olvasoi_kulcsok(self.LG.kizarasok_adat(self.m, self.sorai), ('csoport', 'egyen'))
         return self._cache['_mell']
 
 
@@ -502,6 +502,20 @@ def meres_szoveg(szoveg, adat, fajl='lap'):
     else:
         ki += _melleklet_listak(lat, adat)
     return ki
+
+
+def _olvasoi_kulcsok(d, mezok):
+    """F212: az ok-nevek (szótárkulcsok) a lap olvasói alakjában — a lap a `tablajegyzet.onref_csere` cseréjét viszi
+    („amelyet a lap nem dönt el” → „amelyet ez a vizsgálat nem dönt el”), ezért a kapu is így keres (a régi lapon a
+    csere nem fut, ott a kulcs változatlan, mert a csere-pár ott nem áll)."""
+    import tablajegyzet as TJ
+    for mezo in mezok:
+        if isinstance(d.get(mezo), dict):
+            uj = d[mezo].__class__()
+            for k, v in d[mezo].items():
+                uj[TJ.onref_csere(k) if isinstance(k, str) else k] = v
+            d[mezo] = uj
+    return d
 
 
 def _melleklet_listak(lat, adat):

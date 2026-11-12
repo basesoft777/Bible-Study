@@ -7898,8 +7898,8 @@ UJ_OLVASOI_MUNKASZO = (
     (re.compile(r'Ez a blokk a motívum (\d[\d  ]*) igehely-sorát fedi'),
      r'A táblázat a motívum \1 igehelyét sorolja fel'),
     (re.compile(r'az UBS-jelentés renderidejű hozzárendelésével'), 'az UBS-jelentéssel'),
-    (re.compile(r'Ez a blokk a motívum (\d[\d  ]*) elutasított/nyitva maradt jelöltjét fedi'),
-     r'A táblázat a motívum \1 elutasított vagy nyitva maradt jelöltsorát sorolja fel (egy sor több verset is fedhet)'),
+    (re.compile(r'Ez a blokk a motívum (\d[\d  ]*) elutasított/nyitva maradt jelöltjét fedi( \(forrás: [^)]*\))?\.'),
+     r'A táblázat a motívum \1 elutasított vagy nyitva maradt jelöltsorát sorolja fel\2; egy sor több verset is fedhet.'),
     (re.compile(r'Ez a blokk a motívum (\d+) Strong-számát fedi, szerepenként a szerepmátrix \(a szótári pontok rendje\) '
                 r'sorrendjében, (?:van|nincs) jelentés-hivatkozással'),
      r'A szakasz a motívum \1 szavát tárgyalja, szavanként a szótári pontok rendjében'),
