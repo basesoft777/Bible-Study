@@ -1,5 +1,7 @@
 # 2. Tanulmány sablon (PaRDeS) — teljes, részletes verzió
 
+*v23 — 2026.11.12 (F205, DT-F205a: új 4/b. pont — igehelyenkénti jelölt blokkok a motívumcikknek: funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás; gépileg olvasható jelölők, `üres` + ok, a vak olvasás sorrendje (a motívumtól független pontok az A1–A2-ben, a funkció és a negatív próba az A4 ⛔ után), minta a HAMART-001 1Móz 8:21-es sorával; l. `MUNKAMENET.md` A-szakasz.)*
+
 *v22 — 2026.11.01 (F125, DT405: a gerinc-kártya az A3b lépésben; a kulcsszó-táblázat a kártya **előtt** készül, a kártya és az összevetés két listája a 4. pont naplójába kerül; kiejtés-szabály pontosítva, DT426/DT430; l. `MUNKAMENET.md` A3b/A3c.)*
 
 *v21 — 2026.10.19 (F11 T1, DT84 (7), DT182: a 7. pont v18-as „Tartalmi visszaírás lezárt tematikus tanulmányba” szabálya — 2026.10.17 óta felfüggesztve — teljesen átírva: a tanulmányban felmerült lelet adatrésze az `adat/jeloltek.tsv`-n át, döntéssel kerül az adatrétegbe; az értelmezés saját szöveggel a `motivumok/[ID].md`-be; a túloldalon csak (generált) hivatkozás áll; kézi másolás egyik irányban sincs. A „Korlát” bekezdés a tematikus sablon v18-ához igazítva. A 7. pont 4. alpontja pontosítva [ELLENOR_F11_NMT 3.]: a `Lezart_tematikus_tanulmanyok_index.md`-nek csak a generált blokkja nem szerkesztendő kézzel, a „Megjegyzések” szakasza kézi, ID-hez kötve [D12].)*
@@ -194,6 +196,60 @@ kapcsolódásokhoz, anélkül hogy a fő szöveget túlterhelné.
 5. Záró mondat, hogy érdemes-e frissíteni ennek fényében a fő tanulmány 4. pontját vagy a `PaRDeS_motivumok.md` naplót.
 
 **STEPBible-ellenőrzés:** ha közös görög/héber szó feltételezhető két igehely között, ellenőrizd a STEPBible TAGNT/TAHOT adatbázisban (`konkordancia/TAGNT_kivonat.tsv`, `konkordancia/TAHOT_kivonat.tsv`) mindkét igehely releváns szavának Strong-számát és szótövét, és a nyers eredményt (Strong-szám, szótő, morfológiai alak) építsd be az összevetésbe — ne csak háttér-ellenőrzésként használd. Ha a Strong-szám azonos, de a szótő eltér, vagy fordítva, ezt a tényt explicit rögzítsd a kapcsolódás leírásában.
+
+---
+
+## 4/b. Igehelyenkénti jelölt blokkok *(a motívumcikknek)*
+
+**Miért.** A tanulmány a szakasz minden versét egyszer és alaposan olvassa, kontextusban; a motívumcikk sok verset olvas, futólag. Amit az alapos olvasás úgyis lát, azt a blokk olyan alakban rögzíti, amelyet a motívumcikk átvehet (F205, DT-F205a). A blokk **jelölt, nem döntés**: a kinyerő csak jelölt-sort ír belőle az `adat/jeloltek.tsv`-be (`dontes=nyitva`, `manual` proveniencia), a döntés a motívum menetében születik. A határt nem a blokk zárja.
+
+**Melyik vershez.** A feldolgozott szakasz versei közül ahhoz, amelyhez a hat pont valamelyikére anyag van; a 4. pont kapcsolódó igehelyei nem kapnak blokkot. Egy blokk = egy vers és egy motívum: ha a vers két motívumhoz tartozik, két blokk áll, és a motívumtól független pontot (jelentéspont, vita, visszhang, versszámozás) mindkettőben ki kell írni, mert a jelölt motívumonként kerül át. Meglévő tanulmány utólag nem kap blokkot.
+
+**Alak.** Saját sorban álló kezdő- és zárójelölő; köztük a hat pont, mindegyik pontosan egyszer (a jelentéspont, a vita és a visszhang tárgyanként ismételhető), ebben a sorrendben:
+
+```
+<!-- IGEHELY-BLOKK: [igehely] | motivum: [ID | új | —] | gerinc: [gerinc_elem | —] -->
+- **funkció:** [egy kerek mondat] | üres — [ok]
+- **negatív próba:** [igen | nem] — [indoklás egy mondatban] | üres — [ok]
+- **jelentéspont:** [Strong] · szótár: [szótár és pont | nincs] [proveniencia] · olvasat: [a mi olvasatunk] · eltér: [igen — mert … | nem | nem mérhető — ok] | üres — [ok]
+- **vita:** [a vitatott pont rövid címe] · [nevesített képviselő(k)] · [a vita egy mondatban] | üres — [ok]
+- **visszhang:** [gorog | latin | szir | rabbinikus] · [tanú] · [mű] · [egy saját szavas mondat] · [forrás] | üres — [ok]
+- **versszámozás:** [azonos | az eltérés leírása] [proveniencia] | üres — [ok]
+<!-- IGEHELY-BLOKK-VÉGE -->
+```
+
+- Az igehely a projekt alakja (`1Móz 8:21`, CLAUDE.md „Igehely-formátum”), Károli-versszámmal.
+- A mezőelválasztó a ` · `; a lekérdezésből jövő érték mellé szögletes zárójelben a lekérdezés saját proveniencia-sora kerül (`[scope=… | forras=… | ts=…]`, CLAUDE.md 1. szabály). Proveniencia nélküli kitöltött pont `scope=manual`.
+- A `motivum` és a `gerinc` a fejlécben az A4 ⛔ előtt `—`; a kinyerés csak az A4 után fut. `új` motívumú blokkból a kinyerő nem ír sort, csak jelenti; az ID kiosztása után az újrafuttatás veszi fel.
+
+**Mikor tölthető (a vak olvasás sorrendje, K2).** A **jelentéspont, a vita, a visszhang és a versszámozás** a motívumot nem feltételezi: az A1–A2-ben, a szöveg olvasása közben tölthető. A **funkció és a negatív próba** a motívumot feltételezi: csak az A4 ⛔ után, a motívum döntése alapján. Az A1–A2-ben készülő pontok szövege nem támaszkodhat motívum-jelöltlistára.
+
+**A hat pont.**
+1. **funkció** — mit tesz ez a vers a motívum ívében, egy kerek, önálló mondatban (az 1/a mércéje: teljes mondat, nem címke vagy töredék). A cikk szó szerint átveheti, ezért olvasói nyelven áll.
+2. **negatív próba** — *csak a fölérendelt fogalmon át tartozik ide?* A fölérendelt fogalom a `motivumok.tsv` `folerendelt_fogalom` mezője (új motívumnál az A6b-ben javasolt). `igen` = a vers csak a tágabb kategórián át kapcsolódik, tehát kizárandó; `nem` = a motívum minimális jegye a versben áll. Az indoklás azt nevezi meg, ami a versben a jegyet hordozza (vagy hiányzik).
+3. **jelentéspont** — a vers kulcsszavának jelentése a szótárban (BDB / Thayer pontja, a `bdb_vers_jelentes.tsv`, `thayer_vers_jelentes.tsv` lekérdezésével), és mellette **a mi olvasatunk**. Ha eltér, az okkal (`eltér: igen — mert …`). Az olvasat a mienk, `manual`; a szótár adatát nem írja felül, a `JELENTESPONT_KEZI` továbbra is csak a szótár félreolvasását javítja. Ha a szótár-sor pontot nem ad, `eltér: nem mérhető`.
+4. **vita** — a versre vonatkozó érdemi értelmezési vita, nevesített képviselővel. Homályos „egyesek szerint” nem elég: ha a vitának nincs nevesíthető képviselője, a pont `üres`, okkal.
+5. **visszhang** — ókori fordítás vagy értelmező, aki a verset ugyanazzal a kapcsolattal olvassa, a visszhang-réteg mezői szerint (`adat/visszhang_tanuk.tsv`: hagyomány, tanú, mű, kapcsolat, forrás). Idézet nincs, csak egy saját szavas mondat; a kor és a lelőhely a forrásból, emlékezetből nem.
+6. **versszámozás** — eltérés a Károli, az MT és az LXX versbeosztása között. Az ÓSZ-ben gépi: a `konkordancia/Karoli_versmegfeleltetes.tsv` (+ `_javitas`) és a `pardes.db` `lxx_versszam` táblája (vagy a `konkordancia/LXX_OS/` verskulcsa) adja; a blokk a lekérdezés eredményét és proveniencia-sorát írja, a kinyerő ezt csak összeveti. Az ÚSZ-ben nincs megfeleltető tábla: ott a pont kézi.
+
+**Üres pont (K3).** Csak arra a pontra kötelező tartalom, amelyre a versben van anyag. A többi `üres — [ok]` jelölést kap, rövid, valódi okkal (pl. `üres — a versre nincs nevesíthető képviselőjű vita`). Gyenge vagy asszociatív anyaggal nem töltjük ki (CLAUDE.md 3. szabály). Hiányzó pont (sem tartalom, sem `üres`) hiba: a kinyerő megáll.
+
+**Olvasói nyelv.** A funkció, az indoklás, az olvasat és a mondatok a lapra kerülhetnek, ezért olvasói nyelven állnak: műhelyszó (pl. „gerinc”, „cella”, „kinyerő”), fájlnév, döntés-azonosító és nyers jel nem állhat bennük. A kinyerő a blokkok szövegére lefuttatja a lap szövegkapuit; bukásnál nem ír.
+
+**Minta** *(a HAMART-001 meglévő sorával; csak forma-minta, adat nem keletkezik belőle):*
+
+```
+<!-- IGEHELY-BLOKK: 1Móz 8:21 | motivum: HAMART-001 | gerinc: H0127 -->
+- **funkció:** Az özönvíz utáni ígéret a föld további megátkozását zárja ki, de más igével mondja, mint az 1Móz 3:17, és az ember szívének gonoszságát változatlannak nevezi, így a lánc itt megáll, nem zárul le.
+- **negatív próba:** nem — a versben a lánc egyik szava, a föld (adámá) áll, és az átok kérdéséről szól, tehát nem csak a bűn és következményei általános fogalmán át kapcsolódik.
+- **jelentéspont:** H7043 · szótár: BDB s.br.aa, pont nélkül [scope=H7043 | forras=bdb_vers_jelentes.py (fejléc) | ts=2026-11-10] · olvasat: itt nem az átok igéje (árar) áll, hanem a qalal, ezért a mondat egy újabb ítéletet zár ki, nem a 3:17 átkát vonja vissza · eltér: nem mérhető — a szótár-sor pontot nem ad
+- **vita:** üres — a vers hatókörének két olvasatához a HAMART-001 menetében nem került elő nevesített képviselő
+- **visszhang:** latin · Szent Ambrus · On Noah and the Ark 22.80 · A föld újabb megátkozásának elmaradását Isten irgalmaként magyarázza, aki egyszer, példaként büntetett, a továbbiakban kímél. · hcf
+- **versszámozás:** azonos — Károli 8:21 = KJV 8:21 = LXX 8:21 [scope=1Móz 8:21 | forras=Karoli_versmegfeleltetes.tsv + LXX_OS/genesis.tsv | ts=2026-11-12]
+<!-- IGEHELY-BLOKK-VÉGE -->
+```
+
+**Utána.** A kinyerés és a hozzá tartozó lépések helye: `MUNKAMENET.md`, A-szakasz (A2 után a szakasz-fordítás, A4 után a funkció, a negatív próba és a kinyerés). A jelölt-fajták és a kinyerés adatszabálya: `adat/SEMA.md` 2.4 és 3.10.5. A BDB-től eltérő olvasat megjelenése a motívumcikkben: `sablonok/9_PaRDeS_motivum_forras_sablon.md`.
 
 ---
 
