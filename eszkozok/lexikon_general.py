@@ -4602,6 +4602,13 @@ def _gerinc_bdb_fej_rovid(nyelv, n, tokenek_ny, reszek, ctx):
         # F123.BDBGER: a Strong első BDB-szócikkének feje (több szócikknél a többi a 2. szerepben, szócikkenként)
         szocikkek = bdb_gerinc_szocikkek(adat, t)[0]
         fej = szocikkek[0]['fej'] if szocikkek else None
+        if szocikkek and not szocikkek[0]['szakaszok']:
+            # F202 (N-F202e): az első szócikk puszta utalás, szakasz nélkül (H7585 BDB8371 „שְׁאָ֫לָה Isa 7:11 see שְׁאוֺל 1
+            # below”): a rövid nyelvi háttér az első szakaszokkal bíró szócikk fejéből (a szócikkhatár javítása előtt a két fej
+            # magyar szövege egy sorban állt)
+            fo = next((sz for sz in szocikkek[1:] if sz['szakaszok'] and sz['fej'] and sz['fej'][2]), None)
+            if fo:
+                fej = fo['fej']
         if not fej or not fej[2]:
             out.append('**%s** · a BDB-szócikk feje magyarul nem áll rendelkezésre; a forrásszöveg a 2. szerepben.' % t)
             continue
