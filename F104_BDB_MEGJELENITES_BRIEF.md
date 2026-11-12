@@ -6,10 +6,12 @@ tipus: feladat
 fazis: 1
 modell: opus
 munka: folyamat
-allapot: megallt
+allapot: lezarva
 ag: claude/f104-bdb-megjelenites
+pr: 671
+lezarva_osszegzes: a kétszintű „ebben a versben” jelölés, a kattintható helyek és a pontos hivatkozásszám a main-en (PR #671); a hátralévő felhasználói próba és a nyitott pontok a #213-ba olvadtak (F213_SZOTARI_NEZET_BRIEF.md, 2.)
 ad: a szó-lap BDB-blokkjában a teljes szócikk mindig látszik, két jelölési szinttel (erős: „a BDB itt idézi”; gyenge: „vonatkozhat”), kattintható igehelyekkel és pontos hivatkozásszámmal, a „próba” felirat és a mért pontosság a kiemelés mellett
-kovetkezo: "Te: [elteres_kor 1/2] ELLENOR_F104_2 TISZTA (a 4.2 számai a táblából, a bizonytalan okkód gyenge, E27 javítva); felhasználói próba a futó szerveren (H1242, H7451, H3615, versből) és a bekapcsolt 4.2-minta átnézése (repón kívül); nyitott: a jelentések rendjében a csak gyenge sor által idézett pont félkövére; a KETRETEGU_BDB_KARTYA kapcsolót a #182 kapcsolja be"
+kovetkezo: "Beolvadt a #213-ba (2026-11-12): a felhasználói próba (H1242, H7451, H3615, versből) és a nyitott pont (a csak gyenge sor által idézett pont félkövére) ott folytatódik; a KETRETEGU_BDB_KARTYA kapcsoló a #182-é"
 olvas: [eszkozok/olvaso_szerver/, adat/bdb_vers_jelentes.tsv, konkordancia/TAHOT_kivonat.tsv, eszkozok/olvaso_szerver/konfig/bdb_jelek.tsv, naplok/BDB_SZELETELO_M0.md]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/bdb_szelet.py, eszkozok/olvaso_szerver/konfig/bdb_pontossag.toml, eszkozok/olvaso_szerver/teszt_tervezo.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/lexikon_general.py, eszkozok/teszt_szotari_gerinc.py, eszkozok/olvasoi_kapu.py, eszkozok/teszt_olvasoi_kapu.py, adat/SEMA.md, eszkozok/bdb_vj_szabaly.py]
 fugg: [99, 102, 103]

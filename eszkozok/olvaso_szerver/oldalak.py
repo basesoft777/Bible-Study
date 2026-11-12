@@ -135,6 +135,9 @@ class Kontekst:
         self.con, self.kozos, self.ig, self.strong = con, kozos, ig, strong
         self._memo = {}
         self.magyar_ok = True        # a magyar BDB (`forditasok`) olvasható-e ezen a lapon (szint és kiadás szerint); a hívó állítja
+        self.glossza_ok = True       # F213: a magyar glossza (a TBESH/TBESG glosszájának fordítása) olvasható-e; a hívó állítja
+        self.ubs_hu_ok = True        # F213: a magyar UBS DBH-fordítás (a `szo.ubs_dbh` blokk szintje) olvasható-e; a hívó állítja
+        self.szotar_ok = True        # F213: az angol Strong-szótár (a `szo.szotar` blokk szintje) olvasható-e; a hívó állítja
 
     def memo(self, kulcs, f):
         if kulcs not in self._memo:
@@ -242,19 +245,24 @@ class OldalGyar:
         K = Kontekst(con, self.kozos, ig=ig, strong=s)
         K.magyar_ok = self._latszik('szo.bdb_magyar', szint) and self._latszik('szo.bdb_apparatus', szint)
         oldal = 'szo_h' if s[0] == 'H' else 'szo_g'
+        # F213 (DT-F213a): a magyar glossza a forrásblokkja (TBESH, ill. TBESG) láthatóságát követi
+        K.glossza_ok = self._latszik('szo.tbesh' if s[0] == 'H' else 'szo.tbesg', szint)
+        K.ubs_hu_ok = self._latszik('szo.ubs_dbh', szint)
+        K.szotar_ok = self._latszik('szo.szotar', szint)
         sz = q.strong_szotar(con, s)
-        alapjel = None
         if s[0] == 'G':
             tb = q.tbesg(con, s) if self._latszik('szo.tbesg', szint) else None
             if tb:
                 fej = (tb[0], tb[1], tb[2])
             else:                                                      # tiltott TBESG: a Strong-szótár (szótő, kiejtés, rövid jelentés), ha az látszik
                 fej = (sz[0], sz[1], sz[3]) if (sz and self._latszik('szo.szotar', szint)) else ('', '', '')
+            # F213: a görög fej is a DT-F213a sorrendjében: a magyar TBESG-glossza, ennek híján az angol (a TBESG-blokk szűrésén át)
+            alapjel = blokkok.alapjelentes(K, False, self._latszik('szo.tbesg', szint), K.glossza_ok)
         else:
-            # szótő, kiejtés, szófaj (a Strong-szótár blokk láthatóságát követi, mint a görög ág); az alapjelentés külön sor (DT-F76f)
+            # szótő, kiejtés, szófaj (a Strong-szótár blokk láthatóságát követi, mint a görög ág); az alapjelentés külön sor
             fej = (sz[0], sz[1], sz[2]) if (sz and self._latszik('szo.szotar', szint)) else ('', '', '')
-            # az alapjelentés is átmegy a blokk-szűrésen (kiadás és hozzáférési szint): tiltott BDB/Strong-szótár esetén nem olvas és nem szivárog
-            alapjel = blokkok.alapjelentes(K, K.magyar_ok, self._latszik('szo.szotar', szint))
+            # az alapjelentés is átmegy a blokk-szűrésen (kiadás és hozzáférési szint): tiltott forrást nem olvas, nem szivárog
+            alapjel = blokkok.alapjelentes(K, K.magyar_ok, self._latszik('szo.szotar', szint), K.glossza_ok)
         return s, fej, self._blokkok(oldal, K, szint), alapjel
 
     def szo_resz(self, strong, szint, ig=None):

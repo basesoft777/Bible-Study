@@ -787,6 +787,108 @@ def thayer_szakasz_sorok(con, g):
         return []
 
 
+def glossza_heber_hu(con, s):
+    """F213 (DT-F213a): a TBESH-glossza magyar fordításának fő sora (`glosszak_heber_hu`, SEMA 2.39, `fo=igen`): (magyar, angol)
+    vagy None (nincs sor, vagy a tábla hiányzik)."""
+    try:
+        r = con.execute("SELECT glossza_hu, glossza_en FROM glosszak_heber_hu WHERE strong=? AND fo='igen' AND glossza_hu <> '' "
+                        "ORDER BY rowid LIMIT 1", (s,)).fetchone()
+    except sqlite3.OperationalError:
+        return None
+    return (r[0], r[1] or '') if r else None
+
+
+def glossza_gorog_hu(con, g):
+    """F213 (DT-F213a): a TBESG rövid glosszájának magyar fordítása (`forditasok`, `szotar='TBESG'`, `mezo='glosszak_hu'`),
+    az elavult sor nélkül; '' ha nincs."""
+    oszl = {r[1] for r in con.execute('PRAGMA table_info(forditasok)')}
+    allapot = " AND COALESCE(allapot, '') <> 'elavult'" if 'allapot' in oszl else ''
+    sql = "SELECT forditas_hu FROM forditasok WHERE szotar='TBESG' AND mezo='glosszak_hu' AND strong=? AND forditas_hu <> ''" + allapot + \
+        " ORDER BY rowid LIMIT 1"
+    r = con.execute(sql, (g,)).fetchone()
+    return r[0] if r else ''
+
+
+def bdb_cimkek(con, s):
+    """F213: {utvonal: cimke_hu} a BDB jóváhagyott szakaszcímkéiből (`adat/szotar_szakasz_cimke.tsv`, SEMA 2.40); {}, ha nincs."""
+    try:
+        return {sz: c for sz, c in con.execute(
+            "SELECT szakasz, cimke_hu FROM szotar_szakasz_cimke WHERE szotar='BDB' AND strong=? AND cimke_hu <> ''", (s,))}
+    except sqlite3.OperationalError:
+        return {}
+
+
+def lxx_par_szo(con, s):
+    """F213: {Károli-vers: [görög Strong]} a héber szó szószintű LXX-párjai (Macula, `token_macula.lxx_strong`); a pár nélküli
+    token üres szövegként áll. {} ha a tábla hiányzik."""
+    ki = defaultdict(list)
+    try:
+        for ig, g in con.execute('SELECT igehely, lxx_strong FROM token_macula WHERE strong=? ORDER BY igehely, sorszam', (s,)):
+            ki[ig].append(g or '')
+    except sqlite3.OperationalError:
+        return {}
+    return dict(ki)
+
+
+def motivum_helyek_szo(con, s):
+    """F213: a szó motívumai: {motívum-id: (a szó saját motívumsorainak igehelyei, a motívum összes igehelye)} (`elofordulasok`);
+    az igehely a tábla kulcsa (tartomány is lehet: „Sof 1:2-3”)."""
+    try:
+        sajat = defaultdict(set)
+        for m, ig in con.execute('SELECT id, igehely FROM elofordulasok WHERE strong=?', (s,)):
+            sajat[m].add(ig)
+        if not sajat:
+            return {}
+        osszes = defaultdict(set)
+        for m, ig in _in(con, 'SELECT id, igehely FROM elofordulasok WHERE id IN ', '', list(sajat)):
+            osszes[m].add(ig)
+    except sqlite3.OperationalError:
+        return {}
+    return {m: (sajat[m], osszes[m]) for m in sorted(sajat)}
+
+
+def ubs_dbh_hu(con, s):
+    """F213: {(lexid, mező): magyar} a héber Strong UBS DBH-jelentéseinek magyar fordítása (`forditasok`, `szotar='UBS_DBH'`)."""
+    return {(e, m): f for e, m, f in con.execute(
+        "SELECT entry_id, mezo, forditas_hu FROM forditasok WHERE szotar='UBS_DBH' AND strong=? AND forditas_hu <> ''", (s,))}
+
+
+def forditas_bejegyzesek(con, szotar, entryk):
+    """F213 (bekötési audit): egy szótár magyar fordításai a `forditasok`-ból a bejegyzések szerint (a Thayer-minta, `magyar_gorog`:
+    az elavult sor és az összevonási tagsor nélkül): {(entry_id, jelentes_szam, mezo): magyar}. A bejegyzés a szótár saját kulcsa
+    (TBESG/LSJ/TBESH: a Strong; SDBH/SDGNT: a doménkód; tW: a tW-azonosító), így a fordítás minden szónál megjelenik, amelyik
+    ugyanazt a bejegyzést mutatja."""
+    entryk = sorted({x for x in entryk if x})
+    if not entryk:
+        return {}
+    oszl = {r[1] for r in con.execute('PRAGMA table_info(forditasok)')}
+    allapot = " AND COALESCE(allapot, '') <> 'elavult'" if 'allapot' in oszl else ''
+    ki = {}
+    sql = ("SELECT entry_id, jelentes_szam, mezo, forditas_hu FROM forditasok WHERE szotar=? AND forditas_hu <> ''" + allapot +
+           " AND COALESCE(jelentes_szam, '') NOT LIKE '%~%' AND entry_id IN ")
+    for e, j, m, f in _in(con, sql, ' ORDER BY rowid', entryk, (szotar,)):
+        ki.setdefault((e, j or '', m), f)
+    return ki
+
+
+def glosszak_heber_hu_angol(con, s):
+    """F213: {angol glossza: magyar} a héber Strong TBESH-glosszáinak fordítása (`glosszak_heber_hu`, minden sor, nem csak a fő)."""
+    try:
+        return {en: hu for en, hu in con.execute(
+            "SELECT glossza_en, glossza_hu FROM glosszak_heber_hu WHERE strong=? AND glossza_hu <> '' ORDER BY rowid", (s,)) if en}
+    except sqlite3.OperationalError:
+        return {}
+
+
+def nave_tema_hu(con, tema_idk):
+    """F213: {(tema_id, angol cím vagy ''): magyar} a Nave-témák magyar nevei (`nave_tema_hu`; a téma sora üres `cimke_en`-nel)."""
+    try:
+        return {(t, c or ''): m for t, c, m in _in(con, "SELECT tema_id, cimke_en, magyar FROM nave_tema_hu WHERE magyar <> '' AND tema_id IN ",
+                                                  '', sorted({str(x) for x in tema_idk if x}))}
+    except sqlite3.OperationalError:
+        return {}
+
+
 def thayer_cimkek(con, g):
     """F187: {utvonal: cimke_hu} a jóváhagyott szakaszcímkékből (`adat/szotar_szakasz_cimke.tsv`, Thayer); {}, ha a tábla
     hiányzik."""
