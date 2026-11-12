@@ -20,7 +20,7 @@ Part of the cross-reference table of the Károli Bible (the cross-references of 
 
 The remaining error of the rows taken over from the second witness is the MEK's own misprints; we measured it with a sample check.
 
-**Use.** The candidate search and the reader database use only the confirmed rows of the corrected table. The generator of the lexicon pages does not yet read through the corrected table.
+**Use.** The candidate search and the reader database use only the confirmed rows of the corrected table. The cross-reference block of the lexicon pages is not yet built from the corrected table.
 
 **Open.** The 181 rows at the candidate level are not yet decided; until they are, no consumer uses them.
 

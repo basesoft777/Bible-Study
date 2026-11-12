@@ -54,7 +54,7 @@ Három kérdés lépésről lépésre, a `HAMART-001` motívumon (A bűn követk
 ### 1. Mely versek tartoznak a HAMART-001-hez, és melyik szón?
 
 1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot a `HAMART-001` értékre.
-2. Az eredmény 47 sor: minden sor egy vers (`igehely`).
+2. Az eredmény 47 sor: minden sor egy igehely (`igehely`), egy vers vagy egy versszakasz.
 3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon vagy szókapcsolaton) áll a vers: `H0127` (10 sor), `H7843` (7 sor), `málé + chámász` (6 sor), és további 13 horgony. A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például 1Móz 12:3: „megátkozom”).
 4. A motívum feldolgozási állapota a `motivumok.tsv` `feldolgozasi_allapot` oszlopában: „lezárt kiadás”.
 
@@ -66,9 +66,9 @@ Három kérdés lépésről lépésre, a `HAMART-001` motívumon (A bűn követk
 
 ### 3. Átnézték-e minden helyet, ahol a motívum szavai előfordulnak?
 
-1. A `kizarasok.tsv`-ben a `HAMART-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 76 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „más szó áll a versben, nem a motívum lexémája” (573 vers, első verse: 1Kir 1:52); „a szó áll, de általános használatban, a lánc nélkül” (255 vers, első verse: 1Kir 8:36); „a szó áll, de általános használatban, a lánc nélkül” (174 vers, első verse: 1Kir 7:46); és további 73 csoport.
+1. A `kizarasok.tsv`-ben a `HAMART-001` sorai közül azok összesítő sorok, amelyeknek a `csoport_versszam` oszlopa ki van töltve: 76 ilyen sor van. Mindegyik egy azonos okból kizárt versek csoportját képviseli: „más szó áll a versben, nem a motívum lexémája” (573 vers, szó: רַע, ra‘; első verse: 1Kir 1:52); „a szó áll, de általános használatban, a lánc nélkül” (255 vers, szó: חַטָּאת, chattát; első verse: 1Kir 8:36); „a szó áll, de általános használatban, a lánc nélkül” (174 vers, szó: אֲדָמָה, adámá; első verse: 1Kir 7:46); és további 73 csoport.
 2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = `HAMART-001`): 1520 vers.
-3. Együtt: 47 előfordulás, 212 egyenként kizárt vers és 1520 csoportban kizárt vers, összesen 1779 vers, amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, mi nincs” szakasz adja.
+3. Együtt: 47 előfordulás, 212 egyenként kizárt hely és 1520 csoportban kizárt vers, összesen 1779 sor, amelyről döntés van. A számlálás egysége a sor, és egy sor több verset is fedhet (például: 1Kir 14:15-16); ezért ez az összeg eltérhet a lexikonlap döntési útjának versszámától. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, mi nincs” szakasz adja.
 
 ## Mi van benne, mi nincs (az adatmag és a lexikon)
 

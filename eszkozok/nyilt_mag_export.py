@@ -898,8 +898,9 @@ def kh_javitott():
 KH_FOGYASZTOK = [
     ('eszkozok/lekerdez.py', 'a jelöltkeresés', 'the candidate search'),
     ('eszkozok/sqlite_epit.py', 'az olvasó adatbázisa', 'the reader database'),
-    ('eszkozok/lexikon_general.py', 'a lexikonlapok generátora', 'the generator of the lexicon pages'),
 ]
+# a lexikonlapok generátora külön mondatot kap (g1, a szerkesztő, 2026-11-12)
+KH_LEXIKON = 'eszkozok/lexikon_general.py'
 
 
 def kh_hasznalat():
@@ -910,6 +911,12 @@ def kh_hasznalat():
         kod = olvas(rel) if os.path.exists(ut) else ''
         ki.append((hu, en, 'karoli_kh_szuro' in kod))
     return ki
+
+
+def kh_lexikon_bekotve():
+    """Igaz, ha a lexikonlapok generátora a javított táblát a `karoli_kh_szuro`-n át olvassa."""
+    ut = os.path.join(GYOKER, KH_LEXIKON)
+    return os.path.exists(ut) and 'karoli_kh_szuro' in olvas(KH_LEXIKON)
 
 
 def _kezdo_nagy(s):
@@ -941,6 +948,8 @@ def kh_pont_hu(kh, j, hasznalat):
             mondat.append('%s a javított táblának csak a megerősített sorait használja.' % _kezdo_nagy(SZ.felsorol(be, 'hu')))
         if nem:
             mondat.append('%s még nem a javított táblán át olvas.' % _kezdo_nagy(SZ.felsorol(nem, 'hu')))
+        mondat.append('A lexikonlapok is csak a megerősített sorokat használják.' if kh_lexikon_bekotve() else
+                      'A lexikonlapok kereszthivatkozás-blokkja még nem a javított táblából készül.')
         ki += ['**Használat.** ' + ' '.join(mondat), '']
         ki += ['**Nyitva.** ' + ('A jelölt szintű %s sorról még nincs döntés; amíg nincs, egyik fogyasztó sem '
                                 'használja őket.' % SZ.ezres(j['jelolt'], 'hu') if j.get('jelolt')
@@ -992,6 +1001,8 @@ def kh_pont_en(kh, j, hasznalat):
         if nem:
             mondat.append('%s %s not yet read through the corrected table.'
                           % (_kezdo_nagy(SZ.felsorol(nem, 'en')), 'does' if len(nem) == 1 else 'do'))
+        mondat.append('The lexicon pages, too, use only the confirmed rows.' if kh_lexikon_bekotve() else
+                      'The cross-reference block of the lexicon pages is not yet built from the corrected table.')
         ki += ['**Use.** ' + ' '.join(mondat), '']
         ki += ['**Open.** ' + ('The %s rows at the candidate level are not yet decided; until they are, no consumer '
                                'uses them.' % SZ.ezres(j['jelolt'], 'en') if j.get('jelolt')
@@ -1134,6 +1145,11 @@ def olvasasi_peldak(fajlok):
     csoportok = [x for x in kiz if x['motivum_azonosito'] == PELDA_MOTIVUM and x['csoport_versszam']]
     tagok = [x for x in csop if x['motivum_azonosito'] == PELDA_MOTIVUM]
     ok = lambda x: x['kizaras_oka'].replace(' (összesítő sor)', '')
+    # g3 (a szerkesztő, 2026-11-12): az azonos okú csoportok a szavukban különböznek; a szó az indoklásból
+    def szo(x):
+        m = CSOPORT_SZO_RX.search(x['indoklas'])
+        return '%s, %s' % (m.group(1), m.group(2).strip()) if m else ''
+    tobbverses = sorted(x['igehely'] for x in e + egyedi if '-' in x['igehely'])
     return {
         'motivum': PELDA_MOTIVUM, 'cim': m[0]['cim'], 'allapot': m[0]['feldolgozasi_allapot'],
         'elo_db': len(e), 'horgony': sorted(horgony.items(), key=lambda h: (-h[1], h[0])),
@@ -1141,21 +1157,25 @@ def olvasasi_peldak(fajlok):
         'kizart': PELDA_KIZART, 'kizart_ok': k[0]['kizaras_oka'], 'kizart_dontes': k[0]['dontesek'],
         'egyedi_db': len(egyedi),
         'csoport_db': len(csoportok),
-        'csoportok': [(x['igehely'], ok(x), int(x['csoport_versszam'])) for x in
+        'csoportok': [(x['igehely'], ok(x), int(x['csoport_versszam']), szo(x)) for x in
                       sorted(csoportok, key=lambda x: (-int(x['csoport_versszam']), x['igehely']))],
         'tag_db': len(tagok),
         'osszes': len(e) + len(egyedi) + len(tagok),
+        'tobbverses': tobbverses[0] if tobbverses else '',
     }
 
 
 nevelo = SZ.nevelo  # a névelő-szabály egy helyen: nyilt_mag_szovegek.nevelo
+# az összesítő sor indoklásának szava: „a חַטָּאת (chattát, bűn …) szava” / „az אֲדָמָה (adámá: föld …)”
+CSOPORT_SZO_RX = re.compile(r'\b[Aa]z? ([\u0590-\u05FF\u0370-\u03FF\u1F00-\u1FFF\uFB1D-\uFB4F]\S*) \(([^,:;)]+)')
 
 
 def hogyan_olvasd_hu(p):
     h = ', '.join('`%s` (%d sor)' % hd for hd in p['horgony'][:PELDA_LISTA])
     if len(p['horgony']) > PELDA_LISTA:
         h += ', és további %d horgony' % (len(p['horgony']) - PELDA_LISTA)
-    cs_ = '; '.join('„%s” (%d vers, első verse: %s)' % (o, n, ig) for ig, o, n in p['csoportok'][:PELDA_LISTA])
+    cs_ = '; '.join('„%s” (%d vers, %selső verse: %s)' % (o, n, ('szó: %s; ' % s) if s else '', ig)
+                    for ig, o, n, s in p['csoportok'][:PELDA_LISTA])
     if len(p['csoportok']) > PELDA_LISTA:
         cs_ += '; és további %d csoport' % (len(p['csoportok']) - PELDA_LISTA)
     dontes = ('`%s`' % p['kizart_dontes']) if p['kizart_dontes'] else 'itt üres'
@@ -1165,7 +1185,7 @@ def hogyan_olvasd_hu(p):
             '### 1. Mely versek tartoznak %s %s-hez, és melyik szón?' % (nevelo(p['motivum']), p['motivum']), '',
             '1. Nyisd meg az `elofordulasok.tsv`-t, és szűrd a `motivum_azonosito` oszlopot %s `%s` értékre.'
             % (nevelo(p['motivum']), p['motivum']),
-            '2. Az eredmény %d sor: minden sor egy vers (`igehely`).' % p['elo_db'],
+            '2. Az eredmény %d sor: minden sor egy igehely (`igehely`), egy vers vagy egy versszakasz.' % p['elo_db'],
             '3. A `horgony` oszlop mondja meg, melyik héber vagy görög szón (Strong-számon vagy szókapcsolaton) áll a vers: %s. '
             'A `karoli_szo` oszlop a Károli-fordítás megfelelő szavát adja (például %s: „%s”).'
             % (h, p['elso']['igehely'], p['elso']['karoli_szo']),
@@ -1184,17 +1204,20 @@ def hogyan_olvasd_hu(p):
             'képviseli: %s.' % (nevelo(p['motivum']), p['motivum'], p['csoport_db'], cs_),
             '2. A csoportok összes versét a `kizaras_csoportok.tsv` sorolja fel (szűrés: `motivum_azonosito` = '
             '`%s`): %d vers.' % (p['motivum'], p['tag_db']),
-            '3. Együtt: %d előfordulás, %d egyenként kizárt vers és %d csoportban kizárt vers, összesen %d vers, '
-            'amelyről döntés van. A még el nem döntött jelöltek nincsenek a csomagban; számukat a „Mi van benne, '
-            'mi nincs” szakasz adja.'
-            % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes']), '']
+            '3. Együtt: %d előfordulás, %d egyenként kizárt hely és %d csoportban kizárt vers, összesen %d sor, '
+            'amelyről döntés van. A számlálás egysége a sor, és egy sor több verset is fedhet%s; ezért ez az '
+            'összeg eltérhet a lexikonlap döntési útjának versszámától. A még el nem döntött jelöltek nincsenek a '
+            'csomagban; számukat a „Mi van benne, mi nincs” szakasz adja.'
+            % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes'],
+               (' (például: %s)' % p['tobbverses']) if p['tobbverses'] else ''), '']
 
 
 def hogyan_olvasd_en(p):
     h = ', '.join('`%s` (%d rows)' % hd for hd in p['horgony'][:PELDA_LISTA])
     if len(p['horgony']) > PELDA_LISTA:
         h += ', and %d further anchors' % (len(p['horgony']) - PELDA_LISTA)
-    cs_ = '; '.join('"%s" (%d verses, first verse: %s)' % (o, n, ig) for ig, o, n in p['csoportok'][:PELDA_LISTA])
+    cs_ = '; '.join('"%s" (%d verses, %sfirst verse: %s)' % (o, n, ('word: %s; ' % s) if s else '', ig)
+                    for ig, o, n, s in p['csoportok'][:PELDA_LISTA])
     if len(p['csoportok']) > PELDA_LISTA:
         cs_ += '; and %d further groups' % (len(p['csoportok']) - PELDA_LISTA)
     dontes = ('`%s`' % p['kizart_dontes']) if p['kizart_dontes'] else 'empty here'
@@ -1205,7 +1228,7 @@ def hogyan_olvasd_en(p):
             'and every column is explained in `KODKONYV.md`.' % p['motivum'], '',
             '### 1. Which verses belong to %s, and on which word?' % p['motivum'], '',
             '1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `%s`.' % p['motivum'],
-            '2. The result is %d rows: each row is one verse (`igehely`).' % p['elo_db'],
+            '2. The result is %d rows: each row is one passage (`igehely`), a verse or a range of verses.' % p['elo_db'],
             "3. The `horgony` column gives the Hebrew or Greek word (Strong's number or word combination) the verse rests on: %s. "
             'The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. %s: "%s").'
             % (h, p['elso']['igehely'], p['elso']['karoli_szo']),
@@ -1223,10 +1246,13 @@ def hogyan_olvasd_en(p):
             % (p['motivum'], p['csoport_db'], cs_),
             '2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `%s`): '
             '%d verses.' % (p['motivum'], p['tag_db']),
-            '3. Together: %d occurrences, %d verses excluded one by one and %d verses excluded in groups, %d verses '
-            'with a decision in all. Candidates not yet decided are not in the package; their number is given under '
-            '"What is in it and what is not".'
-            % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes']), '']
+            '3. Together: %d occurrences, %d passages excluded one by one and %d verses excluded in groups, %d rows '
+            'with a decision in all. The unit of counting is the row, and one row may cover several verses%s; this '
+            'total may therefore differ from the number of verses in the decision path of the lexicon page. '
+            'Candidates not yet decided are not in the package; their number is given under "What is in it and '
+            'what is not".'
+            % (p['elo_db'], p['egyedi_db'], p['tag_db'], p['osszes'],
+               (' (for example: %s)' % p['tobbverses']) if p['tobbverses'] else ''), '']
 
 
 # --- a visszhang-réteg (hatástörténet) táblái (F198): a jóváhagyott források, forrásonként a licenccel. Csak a második

@@ -20,7 +20,7 @@ A Károli-Biblia kereszthivatkozás-táblájának (a Károli-kiadás kereszthiva
 
 A második tanútól átvett sorok maradék hibája a MEK saját elírása; ezt szúrópróbával mértük.
 
-**Használat.** A jelöltkeresés és az olvasó adatbázisa a javított táblának csak a megerősített sorait használja. A lexikonlapok generátora még nem a javított táblán át olvas.
+**Használat.** A jelöltkeresés és az olvasó adatbázisa a javított táblának csak a megerősített sorait használja. A lexikonlapok kereszthivatkozás-blokkja még nem a javított táblából készül.
 
 **Nyitva.** A jelölt szintű 181 sorról még nincs döntés; amíg nincs, egyik fogyasztó sem használja őket.
 

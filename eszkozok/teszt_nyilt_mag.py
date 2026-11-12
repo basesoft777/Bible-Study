@@ -637,6 +637,19 @@ class EgysegesKeszlet(Alap):
         szoveg = '\n'.join(E.kh_pont_hu(E.kh_meres(), dict(j, jelolt=0), mind))
         self.assertIn('Nincs döntés nélküli sor.', szoveg)
 
+    def test_hogyan_olvasd_egyseg_es_csoportszo(self):
+        # g2/g3 (a szerkesztő, 2026-11-12): a számlálás egysége a sor; az azonos okú csoportok szava kiírva
+        self.assertIn('A számlálás egysége a sor', self.fajlok['OLVASSEL.md'])
+        self.assertIn('The unit of counting is the row', self.fajlok['README.md'])
+        p = E.olvasasi_peldak(self.fajlok)
+        okok = [o for _, o, _, _ in p['csoportok'][:E.PELDA_LISTA]]
+        for _, o, _, s in p['csoportok'][:E.PELDA_LISTA]:
+            if okok.count(o) > 1:
+                self.assertTrue(s, o)
+        lex = E.kh_lexikon_bekotve()
+        self.assertEqual(lex, 'A lexikonlapok is csak a megerősített sorokat használják.' in
+                         self.fajlok['ISMERT_HIBAK.md'])
+
     def test_nevelo_szabaly(self):
         self.assertEqual('az', E.SZ.nevelo('1Móz 9:25'))
         self.assertEqual('a', E.SZ.nevelo('2Kir 1:1'))

@@ -54,7 +54,7 @@ Three questions, step by step, on the motif `HAMART-001`. The numbers in the ans
 ### 1. Which verses belong to HAMART-001, and on which word?
 
 1. Open `elofordulasok.tsv` and filter the `motivum_azonosito` column on `HAMART-001`.
-2. The result is 47 rows: each row is one verse (`igehely`).
+2. The result is 47 rows: each row is one passage (`igehely`), a verse or a range of verses.
 3. The `horgony` column gives the Hebrew or Greek word (Strong's number or word combination) the verse rests on: `H0127` (10 rows), `H7843` (7 rows), `málé + chámász` (6 rows), and 13 further anchors. The `karoli_szo` column gives the corresponding word of the Károli translation (e.g. 1Móz 12:3: "megátkozom").
 4. The processing stage of the motif is in the `feldolgozasi_allapot` column of `motivumok.tsv`: "lezárt kiadás".
 
@@ -66,9 +66,9 @@ Three questions, step by step, on the motif `HAMART-001`. The numbers in the ans
 
 ### 3. Was every place where the words of the motif occur examined?
 
-1. Among the `HAMART-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 76. Each stands for a group of verses excluded for one reason: "más szó áll a versben, nem a motívum lexémája" (573 verses, first verse: 1Kir 1:52); "a szó áll, de általános használatban, a lánc nélkül" (255 verses, first verse: 1Kir 8:36); "a szó áll, de általános használatban, a lánc nélkül" (174 verses, first verse: 1Kir 7:46); and 73 further groups.
+1. Among the `HAMART-001` rows of `kizarasok.tsv`, those with a filled `csoport_versszam` column are summary rows: there are 76. Each stands for a group of verses excluded for one reason: "más szó áll a versben, nem a motívum lexémája" (573 verses, word: רַע, ra‘; first verse: 1Kir 1:52); "a szó áll, de általános használatban, a lánc nélkül" (255 verses, word: חַטָּאת, chattát; first verse: 1Kir 8:36); "a szó áll, de általános használatban, a lánc nélkül" (174 verses, word: אֲדָמָה, adámá; first verse: 1Kir 7:46); and 73 further groups.
 2. `kizaras_csoportok.tsv` lists every verse of these groups (filter: `motivum_azonosito` = `HAMART-001`): 1520 verses.
-3. Together: 47 occurrences, 212 verses excluded one by one and 1520 verses excluded in groups, 1779 verses with a decision in all. Candidates not yet decided are not in the package; their number is given under "What is in it and what is not".
+3. Together: 47 occurrences, 212 passages excluded one by one and 1520 verses excluded in groups, 1779 rows with a decision in all. The unit of counting is the row, and one row may cover several verses (for example: 1Kir 14:15-16); this total may therefore differ from the number of verses in the decision path of the lexicon page. Candidates not yet decided are not in the package; their number is given under "What is in it and what is not".
 
 ## What is in it and what is not (the data core and the lexicon)
 
