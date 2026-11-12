@@ -12,7 +12,7 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 
 | fájl | tartalom | sor |
 |---|---|---:|
-| `motivumok.tsv` | a motívumok: cím, az azonosság hordozója, kizáró jegy, fölérendelt fogalom, feldolgozási állapot | 9 |
+| `motivumok.tsv` | a motívumok: cím, meghatározás, az azonosság hordozója, kizáró jegy, fölérendelt fogalom, feldolgozási állapot | 9 |
 | `elofordulasok.tsv` | az előfordulások: igehely, a horgonyszó és Strong-száma, szótári jelentés, Károli-szó, eredetjelölés | 250 |
 | `beepitesi_dontesek.tsv` | a felvett helyek döntése, indoklással | 252 |
 | `kizarasok.tsv` | a vizsgált, de kizárt helyek, okkal és indoklással; az összesítő sor egy csoportot képvisel | 540 |
@@ -25,7 +25,7 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 | `vitatott_forrasok.tsv` | a vitatott pontok lektorált szakirodalma (bibliográfiai adat) | 3 |
 | `sblgnt_apparatus.tsv` | az SBL Greek New Testament kritikai apparátusa az újszövetségi helyekhez | 61 |
 | `forrasok_es_licencek.tsv` | a projekt forrásleltára: licenc és szerep a csomagban | 65 |
-| `kodkonyv.tsv` | az oszlopok, értékek és kódok leírása (magyarul és angolul) | 438 |
+| `kodkonyv.tsv` | az oszlopok, értékek és kódok leírása (magyarul és angolul) | 440 |
 | `KODKONYV.md` | ugyanez olvasható formában |  |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | szemantikai domének (UBS SDBH/SDGNT), **külön licenc: CC BY-SA 4.0** | 231 |
 | `cc_by_sa_reteg/OLVASSEL.md` | a külön réteg licence és forrásmegjelölése |  |
@@ -39,7 +39,7 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 
 ## Számokban
 
-- 9 motívum: 3 lezárt kiadás, 6 régi feldolgozás, amely a későbbi változatokban frissül (`motivumok.tsv`, `feldolgozasi_allapot`).
+- 9 motívum: 4 lezárt kiadás, 5 régi feldolgozás, amely a későbbi változatokban frissül (`motivumok.tsv`, `feldolgozasi_allapot`).
 - 250 előfordulás és 252 felvételi döntés.
 - 540 kizárás-sor 61 okkal: 443 egyenként eldöntött hely, és 97 összesítő sor, amely 3 984 verset képvisel.
 - 88 igehely-kapcsolat, 3 motívumközi kapcsolat, 15 nyilvános szerkesztői döntés.

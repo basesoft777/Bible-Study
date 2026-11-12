@@ -228,4 +228,4 @@ A `fuggetlen-ellenor` (claude-opus-5-5) az F206.0–F206.4 tartományát (`5b2d9
 
 A javítás után a próba számai változatlanok (gépi 5, kézi 19, ebből ⚑ 13, nem látja 10), a tesztek 31 OK.
 
-**A megjegyzésekből.** Az F206.5 „jó” példája a javítás előtti Kivonat-mondatot idézte. Közben a lap-javit ága (LJ7, DT-F125j) valódi meghatározást kapott a lap elejére. Ezért a példa most ez a javított mondat lett.
+**A megjegyzésekből.** Az F206.5 „jó” példája a javítás előtti Kivonat-mondatot idézte. Közben a lap-javit ága (LJ7, DT799) valódi meghatározást kapott a lap elejére. Ezért a példa most ez a javított mondat lett.

@@ -5,11 +5,12 @@ kod: SZABALYHELYEK
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: lezarva
+lezarva_osszegzes: a szabályhelyek (sablon 6/9/10, MUNKAMENET, DONTESEK) igazítása a HAMART-001 aranyához és a követelménylistához
 ag: claude/szabalyhelyek-97e545
 pr: 687
 ad: a sablon 6, 9, 10 és a MUNKAMENET a HAMART új szerkezetét (9. Hatástörténet, 10–12. átszámozva) és a KESZ_LAP_KOVETELMENY (b) és J döntéseit írja elő; az ISTENTISZT-001 prózaírója nem ismétli a „10. Alkalmazás”-hibát
-kovetkezo: "Te: a draft PR áttekintése és merge-e; az ISTENTISZT-001 prózája ezután és a visszhang 2 adata (#183) után indulhat (sablon 10 előfeltétel 3.)"
+kovetkezo: "lezárva; a PR #687 a main-en"
 munka: folyamat
 olvas: [sablonok/KESZ_LAP_KOVETELMENY.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, DONTESEK.md]
 ir: [sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, .claude/commands/kiadas.md, DONTESEK.md, naplok/ELLENOR_F193.md, dontesek/uj/szabalyhelyek-97e545.md, nyitott/uj/szabalyhelyek-97e545.md, F193_SZABALYHELYEK_BRIEF.md]

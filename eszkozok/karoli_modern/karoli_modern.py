@@ -157,6 +157,7 @@ def main():
         with open(ut, 'rb') as f:
             h.update(f.read())
     hk += ' + %s (%d fájl, a K3b bemenete, összesített sha256:%s)' % (STRONG_SZAVAK, len(szavak), h.hexdigest())
+    hk = hk.replace(os.sep, '/')  # F174.9: platformfüggetlen fejléc (posix útvonal)
     fejlec = ('# GENERÁLT: %s (F96.3) — kézzel nem szerkeszthető; a javítás a szabályban (helyesiras.py, igealak.py, '
               'igeragozas.py) vagy a kivételtáblában (helyesiras.py: KIVETEL_LEMMA, ALAK_KIVETEL; igealak.py: KEZI, GYANU_KEZI, '
               'VALA_ELOTT_KEZI, VALA_ELOTT_MULT_KEZI, TOKEN_KIVETEL, E1_TARGYAS_KEZI, OK_KEZI, E1_MINDIG_VEG, KOR3_VALA_HOMOGRAF) | forras=%s | a modernizálás '

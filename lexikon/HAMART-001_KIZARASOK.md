@@ -404,10 +404,10 @@ az „Isten előtt” kifejezés miatt felhozott hely
 - **Luk** (1): 1:6
 - **Róm** (1): 2:13
 
-### az öröklött bűnösség kérdése, amelyet a lap nem dönt el — 2 vers
+### az öröklött bűnösség kérdése, amelyet ez a vizsgálat nem dönt el — 2 vers
 
-az öröklött bűnösség kérdése, amelyet a lap nem dönt el
+az öröklött bűnösség kérdése, amelyet ez a vizsgálat nem dönt el
 
 - **Ef** (2): 2:1, 2:3
 
-*Forrás: a jelöltek döntésnaplója és a lap teljesség-mérésének csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: 2026-11-11.*
+*Forrás: a jelöltek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: 2026-11-12.*

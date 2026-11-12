@@ -183,7 +183,7 @@ def cimke_bovit(tabla, fej, sorok):
 # export csak kiolvassa. Kulcs: tábla + oszlop + sorkulcs; a fordítás csak akkor kerül a csomagba, ha a tárolt
 # forrás-hash a mai magyar cella hash-e (különben a magyar forrás újabb: a fordítás elavult, a kapu bukik).
 SZABAD = {
-    'motivumok.tsv': ['cim', 'rovid_cimke', 'tema', 'negativ_kriterium', 'folerendelt_fogalom'],
+    'motivumok.tsv': ['cim', 'rovid_cimke', 'tema', 'negativ_kriterium', 'folerendelt_fogalom', 'meghatarozas'],
     'elofordulasok.tsv': ['funkcio'],
     'kizarasok.tsv': ['indoklas', 'korabbi_minosites'],
     'beepitesi_dontesek.tsv': ['indoklas', 'korabbi_minosites'],
@@ -1269,6 +1269,7 @@ def csomag_szamok(fajlok, lezart, nyitva_db, kizartak, datum):
         'orcid': ORCID, 'doi': DOI_MAG, 'doi_karoli_strong': DOI_KAROLI_STRONG, 'doi_karoli_modern': DOI_KAROLI_MODERN,
         'kanonikus': KANONIKUS_HELY, 'domain': DOMAIN, 'datum': datum,
         'mot': len(mot), 'lezart': len(zart), 'regi': len(mot) - len(zart),
+        'meghat': sum(1 for m in mot if (m.get('meghatarozas') or '').strip()),
         'lezart_lista_hu': SZ.felsorol([m['motivum_azonosito'] for m in zart], 'hu'),
         'lezart_lista_en': SZ.felsorol([m['motivum_azonosito'] for m in zart], 'en'),
         'lezart_cimkek_hu': SZ.felsorol(['„%s”' % m['cim'] for m in zart], 'hu'),   # a motívum címe, nem a rövid címke
@@ -1348,13 +1349,15 @@ def export(kimenet):
     # --- motivumok.tsv
     lezart = feldolgozasi_allapot()
     fej = ['motivum_azonosito', 'cim', 'rovid_cimke', 'tema', 'pardes_szint', 'statusz', 'statusz_datum',
-           'feldolgozasi_allapot', 'azonossag_tipusa', 'negativ_kriterium', 'folerendelt_fogalom']
+           'feldolgozasi_allapot', 'azonossag_tipusa', 'negativ_kriterium', 'folerendelt_fogalom', 'meghatarozas']
     sorok = [{'motivum_azonosito': m['id'], 'cim': m['cim'], 'rovid_cimke': m['ui_cimke'], 'tema': m['tema'],
               'pardes_szint': m['pardes_szint'], 'statusz': m['statusz'], 'statusz_datum': m['statusz_datum'],
               'feldolgozasi_allapot': lezart.get(m['id'], ALLAPOT_REGI),
               'azonossag_tipusa': m['azonossag_tipusa'],
               'negativ_kriterium': tisztit(m['negativ_kriterium'], dn),
-              'folerendelt_fogalom': tisztit(m['folerendelt_fogalom'], dn)} for m in mot]
+              'folerendelt_fogalom': tisztit(m['folerendelt_fogalom'], dn),
+              # a motívum meghatározása (lap-javit HAMART-001; a felhasználó, 2026-11-11: „Igen, kerüljön be”)
+              'meghatarozas': tisztit(m.get('meghatarozas') or '', dn)} for m in mot]
     fajlok['motivumok.tsv'] = oszlop_tsv(fej, sorok, 'motivumok.tsv')
     stat['motivumok.tsv'] = len(sorok)
 

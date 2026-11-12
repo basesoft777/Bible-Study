@@ -12,7 +12,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 
 | file | content | rows |
 |---|---|---:|
-| `motivumok.tsv` | the motifs: title, carrier of identity, exclusion criterion, superordinate concept, processing stage | 9 |
+| `motivumok.tsv` | the motifs: title, definition, carrier of identity, exclusion criterion, superordinate concept, processing stage | 9 |
 | `elofordulasok.tsv` | the occurrences: passage, anchor word and its Strong's number, dictionary sense, Károli word, provenance | 250 |
 | `beepitesi_dontesek.tsv` | the inclusion decisions, with rationale | 252 |
 | `kizarasok.tsv` | the passages examined but excluded, with reason and rationale; a summary row stands for a group | 540 |
@@ -25,7 +25,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 | `vitatott_forrasok.tsv` | the peer-reviewed literature on the disputed points (bibliographic data) | 3 |
 | `sblgnt_apparatus.tsv` | the critical apparatus of the SBL Greek New Testament for the New Testament passages | 61 |
 | `forrasok_es_licencek.tsv` | the project's source inventory: licence and role in the package | 65 |
-| `kodkonyv.tsv` | description of the columns, values and codes (Hungarian and English) | 438 |
+| `kodkonyv.tsv` | description of the columns, values and codes (Hungarian and English) | 440 |
 | `KODKONYV.md` | the same in readable form |  |
 | `cc_by_sa_reteg/szemantikai_domenek.tsv` | semantic domains (UBS SDBH/SDGNT), **separate licence: CC BY-SA 4.0** | 231 |
 | `cc_by_sa_reteg/OLVASSEL.md` | licence and attribution of the separate layer |  |
@@ -39,7 +39,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 
 ## In numbers
 
-- 9 motifs: 3 closed releases, 6 from an earlier stage that will be updated in later versions (`motivumok.tsv`, `feldolgozasi_allapot`).
+- 9 motifs: 4 closed releases, 5 from an earlier stage that will be updated in later versions (`motivumok.tsv`, `feldolgozasi_allapot`).
 - 250 occurrences and 252 inclusion decisions.
 - 540 exclusion rows with 61 reasons: 443 passages decided one by one, and 97 summary rows standing for 3,984 verses.
 - 88 relations between passages, 3 relations between motifs, 15 public editorial decisions.

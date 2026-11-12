@@ -52,8 +52,9 @@ def felsorol(elemek, nyelv):
 
 FAJL_LEIRAS = [
     # (fájl, magyar leírás, angol leírás)
-    ('motivumok.tsv', 'a motívumok: cím, az azonosság hordozója, kizáró jegy, fölérendelt fogalom, feldolgozási állapot',
-     'the motifs: title, carrier of identity, exclusion criterion, superordinate concept, processing stage'),
+    ('motivumok.tsv', 'a motívumok: cím, meghatározás, az azonosság hordozója, kizáró jegy, fölérendelt fogalom, '
+     'feldolgozási állapot',
+     'the motifs: title, definition, carrier of identity, exclusion criterion, superordinate concept, processing stage'),
     ('elofordulasok.tsv', 'az előfordulások: igehely, a horgonyszó és Strong-száma, szótári jelentés, Károli-szó, '
      'eredetjelölés', 'the occurrences: passage, anchor word and its Strong\'s number, dictionary sense, Károli word, '
      'provenance'),
@@ -240,8 +241,9 @@ szerepe a kettőben; és nem részhalmaza-e egy másik motívumnak. Minden motí
 amely felé a határa szétfolyna (fölérendelt fogalom). Ha egy hely csak ezen keresztül kapcsolódik, kimarad.
 
 A `motivumok.tsv` ezt három oszlopban adja: az azonosság hordozója (`azonossag_tipusa`; ebben a kiadásban
-{tipus_hu}), a kizáró jegy (`negativ_kriterium`) és a fölérendelt fogalom (`folerendelt_fogalom`). A motívum
-határát így nem a meghatározás rajzolja meg, hanem a kizárások.
+{tipus_hu}), a kizáró jegy (`negativ_kriterium`) és a fölérendelt fogalom (`folerendelt_fogalom`). Az olvasói
+meghatározás (`meghatarozas`) egy-két mondatban mondja meg, mi a motívum; ebben a kiadásban {meghat} motívumnál áll,
+a többinél üres. A motívum határát azonban nem a meghatározás rajzolja meg, hanem a kizárások.
 
 ## 3. A jelöltek gyűjtése
 
@@ -393,7 +395,9 @@ that concept is left out.
 
 `motivumok.tsv` gives this in three columns: the carrier of identity (`azonossag_tipusa`; in this release
 {tipus_en}), the exclusion criterion (`negativ_kriterium`) and the superordinate concept (`folerendelt_fogalom`).
-The boundary of a motif is thus drawn by the exclusions, not by the definition.
+The reader-facing definition (`meghatarozas`) says in one or two sentences what the motif is; in this release it is
+given for {meghat} of the motifs and empty for the rest. The boundary of a motif, however, is drawn by the exclusions,
+not by the definition.
 
 ## 3. Gathering candidates
 

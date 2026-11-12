@@ -11,7 +11,7 @@
 | `eszkozok/teszt_gyokerok_kapuk.py` | 27 teszt (áladat + a valódi HAMART-001 egy rontott másolaton) |
 | `.github/workflows/ellenorzes.yml` | új, nem bukó lépés (a két kapu a Step Summary-ba), a tesztfájl a „Szabaly-tesztek” lépésben |
 
-Az állítás–adat kapu katalógusa 46 mintát mér (előfordulás, Kivonat, Döntési út, kizárt helyek, LXX régi és új alak, kapcsolatok típusonként, kapcsolódó motívumok, 4.13, 4.14, 12 „nincs” mondat, melléklet összegei, okonkénti címsorai és felsorolt versei tagonként). Az adat a generátor saját függvényeiből jön; hat helyen a kapu a blokkfüggvény számolását ismétli (`SAJAT_SZAMOLAS`, N-F196a). Futásidő: 9 lap 23 mp.
+Az állítás–adat kapu katalógusa 46 mintát mér (előfordulás, Kivonat, Döntési út, kizárt helyek, LXX régi és új alak, kapcsolatok típusonként, kapcsolódó motívumok, 4.13, 4.14, 12 „nincs” mondat, melléklet összegei, okonkénti címsorai és felsorolt versei tagonként). Az adat a generátor saját függvényeiből jön; hat helyen a kapu a blokkfüggvény számolását ismétli (`SAJAT_SZAMOLAS`, N165). Futásidő: 9 lap 23 mp.
 
 A követelménylista-kapu 109 K-sorból 55-öt mér gépi szabállyal (ebből 5-öt csak részben: a cella lektori, „grep” vagy „nincs” része nem gépi); 47 sort ember ellenőriz (lektor, szerkesztő, „gépi: nincs”, „gépi: tervezett”), 7 sor gépi, de nem gyűjthető (az F24, F27 (b) kapuja, a lap 1.2 táblája, `megfelelo_kinyer.py`, `muhely_allapot.py`, „gépi + szerkesztő”, és az E28, amely a generátort futtatja: csak `--e28`-cal fut, a HAMART-on 15 perc alatt sem végzett, ezért leállítottam). Futásidő: 1–3 perc lapanként (az `ellenoriz.py` szabályai).
 
@@ -55,7 +55,7 @@ A négy régi lap a mai adatnál régebbi generálás: a lapon álló szám igaz
 ## 5. Ami nyitva marad
 
 - **DT771:** a HIBA-szintre emelés a HAMART-001 kiadása után (E-szám, SEMA 3.11, `--szigoru`).
-- **N-F196a:** a hat `SAJAT_SZAMOLAS` hely kiemelése a generátorba közös függvénnyé.
+- **N165:** a hat `SAJAT_SZAMOLAS` hely kiemelése a generátorba közös függvénnyé.
 - **N-F196b:** a négy régi lap újragenerálása.
 - **N-F196c:** további állítás-típusok (6. Kereszthivatkozások, 1.2 keresési számai, 4.6 szavankénti LXX, szabad próza).
 - **N-F196d:** a követelménylista K19/K77 „Ellenőrzés” cellája nevezze meg az állítás–adat kaput (a kapu a hivatkozást már felismeri).

@@ -196,6 +196,19 @@ class Megjelenites(unittest.TestCase):
         self.assertEqual(sorted(t), ['a', 'b'])
         self.assertEqual(h, ['c'])
 
+    def test_kiemeles_mark_alakban(self):
+        # az új szerkezetű lap: <mark class="motivumhely">, a title a teljes igehely akkor is, ha a BDB csak a
+        # versszámot írja („12:8, 23”); a régi út (mark nélkül) változatlanul félkövér
+        sz = '3 név … 1Móz 4:26 (J): valamivel hívni, így 12:8, 23; 13:4'
+        uj, t, h = LG.kiemel(sz, [('1Móz 4:26', 'a'), ('1Móz 12:23', 'b')], mark=True)
+        self.assertIn('<mark class="motivumhely" title="a motívum helye: 1Móz 4:26">1Móz 4:26</mark>', uj)
+        self.assertIn('12:8, <mark class="motivumhely" title="a motívum helye: 1Móz 12:23">23</mark>;', uj)
+        self.assertNotIn('**', uj)
+        self.assertEqual((sorted(t), h), (['a', 'b'], []))
+        regi, _t, _h = LG.kiemel(sz, [('1Móz 4:26', 'a')])
+        self.assertIn('**1Móz 4:26**', regi)
+        self.assertNotIn('<mark', regi)
+
     def test_jelolo_levag(self):
         # a kibontott szakasz idézete nem ismétli a címke jelét („`3` — név…” után „> 3 név…”)
         self.assertEqual(LG.jelolo_levag('3 név, mint Isten megjelölése', '3'), 'név, mint Isten megjelölése')
@@ -264,7 +277,8 @@ class Megjelenites(unittest.TestCase):
     def test_kapcsolo(self):
         self.assertTrue(LG.gerinc_aktiv('ISTENTISZT-001'))
         self.assertTrue(LG.gerinc_aktiv('ALVIL-001'))  # F123 (DT-F123g (a)): a migrációval bekapcsolva
-        for mid in ('HAMART-001', 'KIRALY-001', 'TEREMT-001', None):
+        self.assertTrue(LG.gerinc_aktiv('HAMART-001'))  # a HAMART-001 migrált (F123.HAMART3.5, 51949f07): `aktiv`, nem kivétel
+        for mid in ('KIRALY-001', 'TEREMT-001', None):
             self.assertFalse(LG.gerinc_aktiv(mid))
 
     def test_kivetellista_adatbol(self):
@@ -878,7 +892,8 @@ class KetreteguBdbKartya(unittest.TestCase):
         self.assertNotIn('(J)', olvasoi)
         # kutatói réteg: semmi nem vész el — a teljes magyar szöveg, a rövidítéssel, a nem idézett hely kutatói alakja
         self.assertIn('(J)', app)
-        self.assertIn('= emlékjel **Ézs 55:13**', app)
+        # a felhasználó a v6-on: „látványosabb jelölés kell” — az új szerkezetben <mark>, a title a teljes igehely
+        self.assertIn('= emlékjel <mark class="motivumhely" title="a motívum helye: Ézs 55:13">Ézs 55:13</mark>', app)
         self.assertIn('a szótár nem idézi: Ézs 1:1', app)
         # a csukott cím glosszával (F10 (2)), nem „4 (1 szakasz)”
         self.assertIn('<summary>4. — hamis istenekről (1 hivatkozás)</summary>', app)
@@ -887,9 +902,12 @@ class KetreteguBdbKartya(unittest.TestCase):
     def test_bevezeto_egyszer(self):
         ctx = {'bdb_kartya': True, 'fl': {}}
         elso, masodik = self._blokk(ctx), self._blokk(ctx)
-        self.assertEqual(elso.count('Szótári tagolás (DT272)'), 1)
-        self.assertLess(elso.index('Szótári tagolás'), elso.index('##### H8034'))
-        self.assertNotIn('Szótári tagolás', masodik)
+        # a felhasználó átnézése (5.): a bevezető olvasói mondat, döntés-hivatkozás és dátum nélkül
+        bev = 'Szavanként előbb a jelentések rendje áll a BDB szerint'
+        self.assertEqual(elso.count(bev), 1)
+        self.assertNotIn('DT272', elso)
+        self.assertLess(elso.index(bev), elso.index('##### H8034'))
+        self.assertNotIn(bev, masodik)
 
     def test_regi_ut_valtozatlan(self):
         szov = self._blokk(None)
@@ -1207,6 +1225,20 @@ class F182LathatoHibak(unittest.TestCase):
         sor = next(r for r in elo if r['id'] == 'HAMART-001' and r['igehely'] == '1Móz 3:16')
         self.assertEqual(LG.jelentes_cella(a, sor)[0], '*(nincs hozzárendelés)*')
         self.assertTrue(LG.jelentes_cella(a, sor, uj=True)[0].startswith('a szócikk egésze'))
+
+class SzocikkfejRovid(unittest.TestCase):
+    """F202 (N-F202e): a rövid nyelvi háttér a puszta utaló első szócikk (szakasz nélkül) helyett a fő szócikk fejéből."""
+
+    def test_utalo_elso_szocikk(self):
+        # H7585: a BDB8371 („שְׁאָ֫לָה Isa 7:11 see שְׁאוֺל 1 below”) után a BDB8375 feje adja a gyököt és a rokon nyelveket
+        s = LG._gerinc_bdb_fej_rovid('heber', 0, ['H7585'], None, {'id': 'ALVIL-001'})[0]
+        self.assertIn('gyök (√): kétséges', s)
+        self.assertIn('rokon nyelvi adat: óarámi, szír, asszír (kétséges)', s)
+
+    def test_fo_szocikk_elso_nem_valtozik(self):
+        # H2403: az első szócikk (BDB2699) a fő szócikk; az arámi BDB9520 („bűnért való áldozat”) nem lép a helyére
+        s = LG._gerinc_bdb_fej_rovid('heber', 0, ['H2403'], None, {'id': 'HAMART-001'})[0]
+        self.assertIn('alapjelentés: bűn *(a STEPBible rövid szótára szerint)*', s)
 
 if __name__ == '__main__':
     unittest.main()

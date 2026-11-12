@@ -21,7 +21,9 @@ that concept is left out.
 
 `motivumok.tsv` gives this in three columns: the carrier of identity (`azonossag_tipusa`; in this release
 lexical: 6; formulaic: 2; structural: 1), the exclusion criterion (`negativ_kriterium`) and the superordinate concept (`folerendelt_fogalom`).
-The boundary of a motif is thus drawn by the exclusions, not by the definition.
+The reader-facing definition (`meghatarozas`) says in one or two sentences what the motif is; in this release it is
+given for 1 of the motifs and empty for the rest. The boundary of a motif, however, is drawn by the exclusions,
+not by the definition.
 
 ## 3. Gathering candidates
 
@@ -76,8 +78,8 @@ Hebrew text of TAHOT (`igazolas`).
 
 ## 6. Processing stage
 
-3 motifs are closed releases (ALVIL-001, ANTROP-001 and ISTENTISZT-001): their lexicon pages are released and passed the reader check
-without error. The other 6 were made at an earlier stage of the project with an older procedure. Their data are
+4 motifs are closed releases (ALVIL-001, ANTROP-001, HAMART-001 and ISTENTISZT-001): their lexicon pages are released and passed the reader check
+without error. The other 5 were made at an earlier stage of the project with an older procedure. Their data are
 in the current schema and pass the same check, but the reviews of the release procedure do not yet cover them, and
 they may change in later versions. The stage is in the `feldolgozasi_allapot` column of `motivumok.tsv`; to work only
 with the closed material, filter on it.
@@ -146,7 +148,7 @@ This is not independent peer review: apart from the author, every checker is a p
 
 ## 12. Limitations
 
-- Only 3 motifs are closed releases; 6 come from an earlier stage (section 6).
+- Only 4 motifs are closed releases; 5 come from an earlier stage (section 6).
 - Completeness is not proven. The searches measure how much the list catches on lexical features; thematic links
   are not measured.
 - There was no independent peer review and no inter-annotator agreement measurement.

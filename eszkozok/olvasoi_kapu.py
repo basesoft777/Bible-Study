@@ -49,6 +49,9 @@ KAPUK = (
                      'a jelölt alak (hivatkozás + felső index, DT602) és a táblázat „Strong” oszlopa nem hiba; a „(kézi)” / '
                      '„(generált)” szerzőségi jelölés a lap bármely látható sorában, a Tartalomjegyzékben is, DT603)'),
     ('MOTIVUM_ID', FIGY, 'más motívum azonosítója link nélkül'),
+    ('ONREF', FIGY, 'önreferáló „a lap” fordulat az új szerkezetű lap látható szövegében (a lap az oldal önmagára utalva: '
+                    'helyette a valódi alany, a motívum, a vizsgálat, a keresés vagy a szócikk); kivétel a Kolofon és a '
+                    'más motívum lapjára utaló fordulat (a felhasználó v8-átnézése, 4.)'),
     ('PONT', BUKAS, '„N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS'),
     ('ANGOL', BUKAS, 'angol maradék és munkazsargon a szólistából'),
     ('ANGOL_SOR', FIGY, '≥3 angol funkciószó egy sorban'),
@@ -65,7 +68,8 @@ KAPUK = (
     ('KOLOFON', BUKAS, 'hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező'),
     ('HIANYJEL', FIGY, 'belső hiányjelzés az olvasói cellában („(nincs …)”)'),
     ('SZINT_ALATT', FIGY, 'üres vagy az arany laphoz mérve szint alatti blokk'),
-    ('KH_MASOLT', FIGY, 'a Károli-KH lista más vers másolata (`karoli_kh_epseg.py`; javítás: N-F156a)'),
+    ('KH_MASOLT', FIGY, 'a Károli-KH lista más vers listájának teljes vagy részleges másolata (`karoli_kh_epseg.py`; '
+                        'javítás: N-F156a); az új szerkezetű lapon BUKÁS (lap-javit HAMART-001, lektor 15.)'),
     ('LABJEGYZET', BUKAS, 'definíció nélküli lábjegyzet (átvett: `ellenoriz.lap_labjegyzet_hianyok`, ha a main-en van)'),
     ('PROZA_1A', BUKAS, 'az 1/a igehely alatt nincs kerek próza vagy „Funkció:” sor (átvett: `proza_1a.meres`)'),
     ('CELLA_ISMETLES', BUKAS, 'egy táblacellában ugyanaz a hivatkozott elem („… [ⓘ](…)”) többször áll (F123.HAMART3)'),
@@ -91,6 +95,11 @@ KAPUK = (
                        'B07, K12)'),
     ('NEVELO', BUKAS, '„a” névelő magánhangzóval kezdődő szó előtt („a adamá”, „A arar”), az idézeten kívül; csak az új '
                       'szerkezetű lapon (F182: A06, F4 (c), K48)'),
+    ('MEGHATAROZAS', BUKAS, 'a lap elején „A motívum.” bekezdés üres, a címet ismétli vagy csak az azonosság típusát mondja, '
+                            'vagy a Kolofonban nincs „Meghatározás” sor; csak az új szerkezetű lapon (lap-javit HAMART-001)'),
+    ('LISTA_NEVELO', BUKAS, 'lista- vagy táblaelem kisbetűs „a”/„az” névelővel kezdődik („a BDB-szótár (közkincs)”): a név '
+                            'és a leíró elem névelő nélkül áll, a névelőt csak a folyó szöveg teszi elé; csak az új '
+                            'szerkezetű lapon (lap-javit HAMART-001, orkesztrátori tétel)'),
     ('KOV_ISM', BUKAS, 'ugyanaz a „Következtetés:” mondat legalább háromszor egy szakaszban (a V6 kiterjesztése minden '
                        'pontra); csak az új szerkezetű lapon (F182: A14, A16, F12, K10)'),
     ('INDOKLAS', BUKAS, 'a döntés indoklásában (a „**elutasítva**”, „**beépítve**”, „**nyitva**” cella) héber vagy görög '
@@ -670,7 +679,9 @@ def ell_munkaszo(sorok):
     return ki
 
 
-SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\)')
+# F203 (orkesztrátori hatókör-bővítés, 2026-11-12; DT-F203b): a hivatkozás-rövidítés („c.” caput, „p.” pagina, „§”) utáni szám
+# forrás-hivatkozás, nem a lap szakasza (G2671: „Protevangelium Jacobi, c. 3. (Aiszkhülosz, …)” — hamis BUKÁS volt)
+SZAKASZ_HIV_NEV = re.compile(r'(?<![\d.:])(?<!\bc\. )(?<!\bp\. )(?<!§ )(\d{1,2})\.\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\)')
 SZAKASZ_HIV_SZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s*szakasz\w*(?:\s*\(([A-ZÁÉÍÓÖŐÚÜŰ][^)]{1,60})\))?')
 SZAKASZ_HIV_CIMSZO = re.compile(r'(?<![\d.:])(\d{1,2})\.\s+([A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{3,})')
 SZAKASZ_HIV_IDEGEN = re.compile(r'(?:BDB|Thayer|szócikk\w*|szótár\w*)[^.;]{0,25}$')
@@ -690,6 +701,67 @@ def ell_helyorzo(sorok):
         m = HELYORZO_RX.search(s.szoveg)
         if m:
             ki.append(talalat('HELYORZO', BUKAS, s.n, kornyezet(s.szoveg, m), 'nyers helyőrző a lapon: „%s”' % m.group(0)))
+    return ki
+
+
+# Névelő a lista- és táblaelem elején (lap-javit HAMART-001, orkesztrátori tétel, a felhasználó: „pedig ezt külön
+# megjelöltük” — második előfordulás; LISTA_NEVELO): a forrásnév a listában és a táblacellában névelő nélkül áll („BDB-szótár
+# (közkincs)”, nem „a BDB-szótár (közkincs)”); a névelőt csak a folyó szöveg teszi elé. A kisbetűs „a”/„az” a
+# névtöredék jele; a nagybetűs „A”/„Az” mondatkezdő listaelem (pl. a Nyitott kérdések pontjai), az megengedett.
+NEVELO_ELEM_RX = re.compile(r'^(?:\*\*|\*|\[|`)?(?:a|az)\s')
+NEVELO_LISTA_RX = re.compile(r'^\s*(?:[-*]|\d+\.)\s+(.*)$')
+
+
+def ell_lista_nevelo(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    for s in sorok:
+        if s.fajta in ('komment', 'kod', 'ures', 'cim'):
+            continue
+        t = re.sub(r'<!--.*?-->', '', s.nyers).strip()
+        elemek = []
+        if t.startswith('|'):
+            if re.match(r'^\|[\s:|-]+\|$', t):
+                continue
+            elemek = [c.strip() for c in re.split(r'(?<!\\)\|', t.strip('|'))]
+        else:
+            m = NEVELO_LISTA_RX.match(t)
+            if m:
+                elemek = [m.group(1).strip()]
+        for e in elemek:
+            if NEVELO_ELEM_RX.match(e):
+                ki.append(talalat('LISTA_NEVELO', BUKAS, s.n, e[:80], 'a lista- vagy táblaelem névelővel kezdődik: a név '
+                                  'névelő nélkül álljon, a névelőt csak a folyó szöveg teszi elé'))
+    return ki
+
+
+# A motívum meghatározása (a felhasználó, 2026-11-11: „hiányolom a motívum definíciót … a kolofonban is és az elején”):
+# az új szerkezetű lapon a „**A motívum.**” bekezdés nem üres, nem a cím, és nem csak az azonosság típusának mondata;
+# a Kolofonban „Meghatározás” sor áll, értékkel.
+AZONOSSAG_MONDAT_RX = re.compile(r'(?:Szavas|Fordulat-|Utalás-|Fogalmi|Szerkezeti) ?motívum: [^.]*\.')
+MEGHATAROZAS_MIN_SZO = 8
+
+
+def ell_meghatarozas(sorok):
+    if not KIVETEL_NELKUL:
+        return []
+    ki = []
+    cim = next((re.sub(r'^#\s+(?:\S+\s+)?[\w-]+\s+—\s+', '', s.nyers.strip()) for s in sorok
+                if s.nyers.startswith('# ')), '')
+    bek = next((s for s in sorok if s.nyers.strip().startswith('**A motívum.**')), None)
+    if bek is None:
+        ki.append(talalat('MEGHATAROZAS', BUKAS, 1, '', 'a lap elején nincs „A motívum.” bekezdés'))
+    else:
+        t = bek.nyers.strip()[len('**A motívum.**'):].strip()
+        marad = AZONOSSAG_MONDAT_RX.sub('', t).strip()
+        if not t or t.rstrip('.') == cim.rstrip('.') or len(marad.split()) < MEGHATAROZAS_MIN_SZO \
+                or marad.rstrip('.') == cim.rstrip('.'):
+            ki.append(talalat('MEGHATAROZAS', BUKAS, bek.n, t[:80], '„A motívum.” bekezdés üres, a címet ismétli, vagy '
+                              'csak az azonosság típusát mondja: a motívum meghatározása hiányzik'))
+    kol = [s for s in sorok if s.szakasz.startswith('Kolofon') and re.match(r'^\|\s*Meghatározás\s*\|', s.nyers.strip())]
+    if not kol or not re.sub(r'[\s|—-]', '', kol[0].nyers.strip()[len('| Meghatározás'):]):
+        ki.append(talalat('MEGHATAROZAS', BUKAS, kol[0].n if kol else 1, '', 'a Kolofonban nincs „Meghatározás” sor értékkel'))
     return ki
 
 
@@ -1175,7 +1247,9 @@ def ell_kh(sorok):
     _, step, _ = konyvek()
     ki, jelzett = [], set()
     for s in sorok:
-        if not s.szakasz.startswith('4. Kereszthivatkoz') or not s.szoveg.strip().startswith('- Károli-KH'):
+        # a szakasz száma a lapszerkezettől függ (régi lap: 4., új szerkezet: 6.); lap-javit HAMART-001, lektor 15.:
+        # a „4.” rögzítése miatt az új szerkezetű lapon az ellenőrzés nem futott
+        if not re.match(r'\d+\. Kereszthivatkoz', s.szakasz) or not s.szoveg.strip().startswith('- Károli-KH'):
             continue
         m = re.match(r'(\S+)\s+(\d+):(\d+)', s.alszakasz)
         if not m or m.group(1) not in step:
@@ -1183,9 +1257,11 @@ def ell_kh(sorok):
         forras = '%s.%s.%s' % (step[m.group(1)], m.group(2), m.group(3))
         if forras in _KH_GYANUS and forras not in jelzett:
             jelzett.add(forras)
-            ki.append(talalat('KH_MASOLT', FIGY, s.n, '%s → %s' % (s.alszakasz, s.szoveg.strip()[2:]),
-                              'a Károli-KH lista feltehetően más vers másolata (azonos listájú: %s); javítás: N-F156a'
-                              % ', '.join(_KH_GYANUS[forras][:3])))
+            # új szerkezetű lapon (KIVETEL_NELKUL) a másolt lista BUKÁS: a generátor kiszűri, a lapra nem kerülhet
+            ki.append(talalat('KH_MASOLT', BUKAS if KIVETEL_NELKUL else FIGY, s.n,
+                              '%s → %s' % (s.alszakasz, s.szoveg.strip()[2:]),
+                              'a Károli-KH lista feltehetően más vers listájának (teljes vagy részleges) másolata (gazdája: '
+                              '%s); javítás: N-F156a' % ', '.join(_KH_GYANUS[forras][:3])))
     return ki
 
 
@@ -1479,7 +1555,7 @@ def ell_bdb_olvasoi(sorok):
 
 ELLENORZESEK = [ell_belso, ell_pont, ell_angol, ell_idezojel, ell_atiras, ell_konyv, ell_bdb, ell_funkcio,
                 ell_idezet, ell_kivonat, ell_kolofon, ell_hianyjel, ell_kh, ell_cella_ismetles, ell_nave_angol,
-                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_helyorzo, ell_nyers_jel, ell_mi_hang,
+                ell_visszhang, ell_bdb_olvasoi, ell_munkaszo, ell_szakasz_hiv, ell_helyorzo, ell_lista_nevelo, ell_meghatarozas, ell_nyers_jel, ell_mi_hang,
                 ell_nevelo, ell_kov_ism, ell_indoklas]
 
 
@@ -1507,6 +1583,11 @@ def lap_meres(szoveg, kh=True, atvett=True, arany=True):
             continue
         ki += f(sorok)
     ki += ell_szint(sorok, arany_szoszam() if arany else None)
+    if KIVETEL_NELKUL:
+        import tablajegyzet as TJ
+        for n, _sz, reszlet in TJ.onref_talalatok(szoveg):
+            ki.append(talalat('ONREF', FIGY, n, reszlet, 'önreferáló „lap”: a valódi alany kell (motívum, vizsgálat, '
+                                                          'keresés, szócikk)'))
     megj = []
     if atvett:
         a, megj = ell_atvett(szoveg)
