@@ -15,7 +15,8 @@
 | F218.3 | kész | tesztváz (`teszt_vaz.py`): 35 követelmény név + docstring + `skip` alakban, a szelet megnevezésével; a HN-03 a felhasználó döntésére vár; a mutációs próba (GK-26) az S9-ben. A tesztek állása: 121 teszt, 86 zöld, 35 kihagyva |
 | ⛔ az S1 után | **ELTÉRÉS (11 tétel)**; megállt | 1. független ellenőrzés (`fuggetlen-ellenor`, opus) és a felhasználó első átnézése: a lista a `naplok/F218_jelentes.md` „Amit a felhasználónak látnia kell az S1 után” pontja |
 | Javítókör (1. kör) | **kész** (2026-11-13, a 2. session) | az 1. ellenőrzés 11 tételéből 9 javítva, a 6. (halasztások) változatlan, az önreferencia három párja nyitva (DT-F218l); részletek: `naplok/F218_jelentes.md` „Javítókör az 1. ellenőrzés után”. Az S1 engedélysorai 5-ről 1-re csökkentek (S1-FORRAS). Az újraellenőrzés az S2 végi célzott ellenőrzéssel együtt fut |
-| 2. ellenőrzés (célzott, a javítókörre) | **ELTÉRÉS: 4 tétel** | `naplok/F218_jelentes.md` „Független ellenőrzés — 2. ellenőrzés”; a besorolási javaslat ugyanott, egyeztetésre vár (kör: 2 / 2) |
+| 2. ellenőrzés (célzott, a javítókörre) | **ELTÉRÉS: 4 tétel** | `naplok/F218_jelentes.md` „Független ellenőrzés — 2. ellenőrzés”; a besorolást az orkesztrátor hozta (1a, 2, 3, 4 mechanikus; 1b döntés: DT-F218m) |
+| Javítókör (2. kör) | **kész** (2026-11-13, a 3. session) | mind a 4 tétel javítva: `naplok/F218_jelentes.md` „A 2. ellenőrzés javítóköre”. Új: B68 (a jegyzék saját sora), 2 sablonmondat (`e2.jel.szocikkel`, `e2.jel.szocikk_sorszam`; `dontes=var`), DT-F218m. Az újraellenőrzés az S2 végi célzott ellenőrzéssel együtt fut |
 | F218.5 (S2), első fele | **kész** | a vizsgálat közös modellje kapukkal és a kizárt versek melléklete: 431 sorból 421 egyezik, 10 engedélysor, engedély nélküli diff-sor 0; festékpróba 0; 144 teszt |
 | F218.5 (S2), második fele | nem indult | „1. Döntési út” (1.1–1.5) |
 | F218.6–F218.13 | nem indult | |

@@ -81,11 +81,24 @@ def _kulcsszo(ny, sor):
     return ny.s('e2.kulcsszo', karoli=sor.karoli_szo, alakok=alakok)
 
 
+def _szakaszjel(ny, szakaszjel):
+    """A szakasz jele látható szövegként. Ha a jel a szó több szócikkében is áll, a szócikk megnevezése áll
+    mellette: a szótár saját címszava a homográf-számával (idézet), híján a szócikk sorszáma sablonmondatban."""
+    if szakaszjel.szocikk is None:
+        return szakaszjel.jel
+    szocikk = szakaszjel.szocikk
+    if szocikk.cimszo is not None:
+        nev = szocikk.cimszo
+    else:
+        nev = ny.s('e2.jel.szocikk_sorszam', szotar=ny.nev('szotar', szocikk.szotar), n=szocikk.sorszam)
+    return ny.s('e2.jel.szocikkel', jel=szakaszjel.jel, szocikk=nev)
+
+
 def _token_jel(ny, t):
     """A szakasz jele a cellában: a BDB jele magában áll, más szótáré a szótár nevével („Thayer 1”)."""
     if t.jel_szotar is None:
-        return t.jel
-    return ny.s('e2.jel.szotarral', szotar=ny.nev('szotar', t.jel_szotar), jel=t.jel)
+        return _szakaszjel(ny, t.jel)
+    return ny.s('e2.jel.szotarral', szotar=ny.nev('szotar', t.jel_szotar), jel=_szakaszjel(ny, t.jel))
 
 
 def _jelentes_token(ny, t, cellakezdo):
@@ -218,7 +231,7 @@ def _hanyszor(ny, indok):
 def _kutatoi(ny, indok):
     if indok.fej:
         return ny.s('e2.jm.kutatoi.fej', szotar=ny.nev('szotar', indok.szotar))
-    return ny.s('e2.jm.kutatoi', szotar=ny.nev('szotar', indok.szotar), jel=indok.jel)
+    return ny.s('e2.jm.kutatoi', szotar=ny.nev('szotar', indok.szotar), jel=_szakaszjel(ny, indok.jel))
 
 
 def _jelentes_mondat(ny, token):
@@ -229,9 +242,10 @@ def _jelentes_mondat(ny, token):
     elso = token.indokok[0]
     fajtak = [i.fajta for i in token.indokok]
     if elso.fajta is IndokFajta.BDB_PELDA:
-        return ny.s('e2.jm.bdb_pelda', szakasz=elso.szakaszok[0])
+        return ny.s('e2.jm.bdb_pelda', szakasz=_szakaszjel(ny, elso.szakaszok[0]))
     if elso.fajta is IndokFajta.MASUTT_IS:
-        return ny.s('e2.jm.masutt_is', szakaszok=ny.s('lista.vesszo', elemek=elso.szakaszok))
+        return ny.s('e2.jm.masutt_is', szakaszok=ny.s(
+            'lista.vesszo', elemek=tuple(_szakaszjel(ny, szakasz) for szakasz in elso.szakaszok)))
     if elso.fajta in _KUTATOI:
         return _kutatoi(ny, elso)
     if elso.fajta is IndokFajta.TAGOLATLAN:

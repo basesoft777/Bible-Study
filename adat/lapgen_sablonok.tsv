@@ -125,3 +125,5 @@ kz.forrassorok.bevezeto	A Döntési út {szakasz}.{alpont} pontjának versszáma
 kz.forrassorok.kereses	- **{kereses}** ({n} vers)	kereses:nev(halo), n:szam(ezres)	melleklet	uj	var
 kz.forras	*Forrás: a vizsgált helyek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: {datum}.*	datum:datum	melleklet	kizarasok_melleklet	-
 kz.forras.datum_nelkul	*Forrás: a vizsgált helyek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája).*	-	melleklet	kizarasok_melleklet (a dátum nélküli alak)	-
+e2.jel.szocikkel	{jel} ({szocikk})	jel:lathato, szocikk:lathato	2	uj	var
+e2.jel.szocikk_sorszam	{szotar|a} {n}. szócikke	szotar:nev(szotar), n:szam	2	uj	var

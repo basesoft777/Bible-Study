@@ -87,7 +87,8 @@ def alap_minirepo(nevek=(), sablonok=(), tovabbi=None, jegyzek_sorok=()):
     jegyzek = [JEGYZEK_FEJLEC,
                ('B59', 'adat/lap_befagyasztas.tsv', 'befagyasztott', 'igen', '-', '-', 'aktiv', '-', '-', 'manual'),
                ('B65', 'adat/olvasoi_nevtabla.tsv', 'nevtabla', 'igen', '-', '-', 'aktiv', '-', '-', 'manual'),
-               ('B66', 'adat/lapgen_sablonok.tsv', 'sablonok', 'igen', '-', '-', 'aktiv', '-', '-', 'manual')]
+               ('B66', 'adat/lapgen_sablonok.tsv', 'sablonok', 'igen', '-', '-', 'aktiv', '-', '-', 'manual'),
+               ('B68', 'adat/lapgen_bemenetek.tsv', 'jegyzek', 'igen', '-', '-', 'aktiv', '-', '-', 'manual')]
     jegyzek.extend(jegyzek_sorok)
     fajlok = {
         'adat/lapgen_bemenetek.tsv': tsv('# teszt', *jegyzek),

@@ -2403,7 +2403,9 @@ nélkül hiba (a `lapgen/tesztek` statikus tesztje őrzi).
 | `olvasoi_nev_kulcs` | a forrás olvasói neve: az `olvasoi_nevtabla.tsv` `forras` típusú kulcsa, vagy `-` |
 | `forras` | `PROVENIENCIA` (1.5): honnan jön a sor |
 
-**Kulcs:** `id`. A táblát kézzel írjuk (`forras=manual`), a szelettel együtt.
+**Kulcs:** `id`. A táblát kézzel írjuk (`forras=manual`), a szelettel együtt. Pontosan egy sor magára a táblára
+mutat (`B68`): a jegyzék olvasása így kerül az olvasási naplóba (naplózás nélküli olvasás nincs); e sor nélkül a
+generátor nem indul el.
 
 ### 2.61 `lapgen_sablonok.tsv` — a lap gépi mondatai (F218a, DT823, 2026-11-13)
 

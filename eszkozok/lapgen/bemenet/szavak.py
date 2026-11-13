@@ -128,7 +128,7 @@ def b54_karoli_parok(b):
     def betolt():
         konyv_utvonal = {}
         for utvonal in b._utvonalak('B54'):
-            for sor in b._fejsorok(utvonal, 8):
+            for sor in b._fejsorok('B54', utvonal, 8):
                 m = _VERS_KONYV_RX.match(sor.split('\t')[0]) if not sor.startswith('#') else None
                 if m:
                     konyv_utvonal.setdefault(m.group(1), utvonal)

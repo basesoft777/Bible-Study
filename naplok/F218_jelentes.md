@@ -368,7 +368,7 @@ Munka közben a munkafában egy nem commitolt `naplok/F218_folytatas.md`-változ
 
 | Tábla | Sor | Bontás |
 |---|---|---|
-| `adat/lapgen_sablonok.tsv` | 111 | **szakasz szerint:** 2. Előfordulások 100, 2.1 pont 6, keret 5. **Eredet szerint:** betűre átvett a régi generátorból 103 (`blokk_elofordulasok` 25, `olvasoi_kovetkeztetes.elofordulasok_uj` 13, `dbh_jelentes_cella` 9, `ubs_jelentes_cella` 7, `tablajegyzet._jelentes_tomor` 7, `tablajegyzet.olvasoi_jegyzet` 6, `jelentes_cella` 6, `_tagolatlan_olvasoi` 4, a többi tizenhárom szimbólum 26), új mondat 8 (`dontes=var`) |
+| `adat/lapgen_sablonok.tsv` | 111 | **szakasz szerint:** 2. Előfordulások 100, 2.1 pont 6, keret 5. **Eredet szerint:** betűre átvett a régi generátorból 103 (`blokk_elofordulasok` 25, `olvasoi_kovetkeztetes.elofordulasok_uj` 13, `dbh_jelentes_cella` 9, `ubs_jelentes_cella` 7, `tablajegyzet._jelentes_tomor` 7, `tablajegyzet.olvasoi_jegyzet` 6, `jelentes_cella` 6, `_tagolatlan_olvasoi` 4, a többi tizennégy szimbólum 26), új mondat 8 (`dontes=var`) |
 | `adat/olvasoi_nevtabla.tsv` | 27 | **típus szerint:** `forras` 7, `pardes_szint` 4, `hanyszor` 4, `azonositas_modja` 3, `megbizhatosag` 3, `szotar` 3, `cimke_cella` 3 |
 | `adat/lapgen_bemenetek.tsv` | 24 | **szelet szerint:** T (F218.2) 6: B01, B51, B59, B63, B65, B66; S1 (F218.4) 17: B03, B07, B08, B09, B12, B13, B14, B16, B17, B18, B19, B21, B22, B32, B33, B34, B67; javítókör 1: B54 |
 
@@ -468,3 +468,27 @@ Ideiglenes fájlok csak a scratchpadben: `C:\Users\bases\AppData\Local\Temp\clau
 | 3 | a DT-F218j és a DT-F218k állapota 🟢, ✅ helyett | mechanikus (formai) | a két sor állapotjele ✅ |
 | 4 | a bontási naplóban „tizenhárom” szimbólum, a helyes szám 14 | mechanikus (formai) | a szó javítása |
 
+
+## A 2. ellenőrzés javítóköre (2. kör; `claude-fable-5-2`, 2026-11-13, a 3. session)
+
+*A besorolást az orkesztrátor hozta (2026-11-13): az 1a, a 2., a 3. és a 4. tétel mechanikus, a fenti javaslat szerint; az 1b döntés (DT-F218m); a DT-F218l-ről külön rendelkezett (l. a következő szakaszt). Az újraellenőrzés az S2 végi célzott független ellenőrzéssel együtt fut.*
+
+| # | Tétel | Mi történt |
+|---|---|---|
+| 1a | belső mezőből `.ertek`-en át látható igehely és szám | a verstartomány kezdő verse a bemeneti rétegben képzett `Igehely` (a könyvnév a normalizáló táblán ellenőrizve), nem `Belso`; a Thayer-példa jelentésszáma a bemeneti rétegben képzett szám (`ThayerPelda.jelentesszam`), nem a belső kulcsból a számításban kibontott érték. Statikus teszt: a `szamitas/` rétegben burkoló `ertek` mezőjéből szám és igehely nem képződik |
+| 1b | a szakaszjel a szótár belső szócikk-azonosítójával | DT-F218m: a látható jel csak a szócikken belüli tagolás (`Gerinc.jel`); ha a jel a szó több szócikkében is áll, mellette a szótár saját címszava áll a homográf-számával, szó szerinti idézetként (`Gerinc.jel_szocikke`; „1 (II. רַע)”), híján sablonmondat a szócikk sorszámával („Qal 1 (a BDB 1. szócikke)”). A belső azonosítós alak (`kulcs_jel`) csak megjegyzésbe, rendezéshez és kereséshez jut. A két mintalapon ez az út továbbra sem él (teszt: a látható szövegben nincs belső szócikk-azonosító) |
+| 2 | az olvasási napló hézaga | a jegyzéktábla saját sort kapott (B68), az olvasása a naplóba kerül, e sor nélkül a munkamenet nem nyílik meg; a párosítás (B54) könyv–fájl leképezése naplózott olvasás lett (mind a 66 fájl a hash-ével). Teszt: a bemeneti réteg magjában egy fájlnyitás áll, és minden hívója naplóz. A referencia-tábla 11 `uj_bemenet` sorral bővült (10 párosítás-fájl és a jegyzék) |
+| 3 | a DT-F218j és a DT-F218k állapota | ✅ |
+| 4 | „tizenhárom” szimbólum | javítva: tizennégy |
+
+**Két új sablonmondat** (`eredet=uj`, `dontes=var`; a 218a végi listába kerül): `e2.jel.szocikkel` („{jel} ({szocikk})”) és `e2.jel.szocikk_sorszam` („{szotar|a} {n}. szócikke”, pl. „a BDB 2. szócikke”). Egyik sem áll a két mintalapon.
+
+**A megnevezés rendje (DT-F218m).** Az orkesztrátor példája („רַע I”) a homográf-számot a címszó mögé tette; a lapon a szótár saját rendje áll („II. רַע”), mert a megnevezés szó szerinti idézet (a BDB-szakasztábla szócikkfejének eleje, változtatás nélkül).
+
+**Mérés a szócikk-megnevezésről.** A 3 471 több szócikkes BDB-szócikkből 1 029 megnevezésében áll homográf-szám, 2 192-nek a címszava egyedi a szón belül, 250-nél a sorszám áll. Megnevezést 454 szakaszjel kér: 414 címszóval, 40 sorszámmal.
+*Proveniencia: `scope=a BDB-szakasztábla több szócikkes Strong-számai, szócikkenként és megnevezést kérő szakaszjelenként (Gerinc._cimszavak, Gerinc.jel_szocikke) | forras=adat/bdb_szakaszok.tsv | ts=2026-11-13`.*
+
+**Állás a 2. javítókör után (HAMART-001, `PARDES_DATUM=2026-11-13`).** „2. Előfordulások”: 1 engedélysor (S1-FORRAS); a melléklet: 10 engedélysor; engedély nélküli diff-sor 0. Tesztek: 152 futott, 119 zöld, 33 kihagyva (a váz). Festékpróba: 0 szivárgás (HAMART: belső 171, idézet 326, kézi 240 látott jelzőszó; ISTENTISZT: 114, 183, 121; a belső jelzőszó az ISTENTISZT-lapon 2-vel kevesebb, mert a tartomány kezdő verse már nem belső szöveg).
+*Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py; general.py --cel lexikon2 --id HAMART-001 + python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001 | forras=a munkafa a javítókör commitja előtt | ts=2026-11-13`.*
+
+**Új táblasorok:** a jegyzék +1 (B68; összesen 29), a sablontábla +2 (összesen 127).

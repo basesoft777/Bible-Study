@@ -3,7 +3,8 @@
 Ez az egyetlen modul, amely fájlt nyit olvasásra. Az útvonalak a jegyzéktáblából jönnek
 (`JEGYZEK_UTVONAL`); a kódban más adat-útvonal nem áll (GK-01). Minden olvasás a naplóba kerül
 (B-azonosító, útvonal, hash): ebből jön a blokkfejlécek, az Irodalom és a Kolofon forráslistája
-(GK-07) és a regresszió bemenet-hash őre.
+(GK-07) és a regresszió bemenet-hash őre. Naplózás nélküli olvasás nincs: a jegyzéktábla saját olvasása is a
+naplóba kerül (a jegyzék egy sora magára a jegyzékre mutat).
 
 A hash a sorvég-normalizált tartalomból számolódik (`\\r\\n` → `\\n`), így Windowson és a CI-n egyezik.
 """
@@ -103,6 +104,13 @@ def _tsv_ertelmez(szoveg, utvonal):
     return Tabla(fejlec, ki)
 
 
+def b68_jegyzek(b):
+    """B68 — a bemenetek jegyzéke (maga a jegyzéktábla): a munkamenet megnyitásakor olvasódik, és az olvasása a
+    naplóba kerül. Visszaadja a jegyzék azonosítóit."""
+    b.jegyzek_sor('B68')
+    return b.jegyzek_azonositok()
+
+
 class Bemenet:
     """Egy generálás bemeneti munkamenete: a jegyzék, a fájlok tartalma, az olvasási napló.
 
@@ -122,7 +130,7 @@ class Bemenet:
     # --- jegyzék -------------------------------------------------------------
 
     def _jegyzek_betolt(self):
-        tartalom, _sha = self._fajl(JEGYZEK_UTVONAL)
+        tartalom, sha = self._fajl(JEGYZEK_UTVONAL)
         tabla = _tsv_ertelmez(tartalom, JEGYZEK_UTVONAL)
         if tabla.fejlec != JEGYZEK_OSZLOPOK:
             raise BemenetHiba('%s: a fejléc eltér a várt oszlopoktól: %r' % (JEGYZEK_UTVONAL, tabla.fejlec))
@@ -135,6 +143,11 @@ class Bemenet:
             if sor['allapot'] not in ALLAPOTOK:
                 raise BemenetHiba('%s: %s: ismeretlen állapot: %r' % (JEGYZEK_UTVONAL, sor['id'], sor['allapot']))
             jegyzek[sor['id']] = JegyzekSor(**sor)
+        sajat = [a for a, sor in jegyzek.items() if sor.utvonal.strip() == JEGYZEK_UTVONAL]
+        if len(sajat) != 1:
+            raise BemenetHiba('%s: a jegyzék pontosan egy sora mutasson magára a jegyzékre (az olvasása így kerül '
+                              'a naplóba); most %d ilyen sor van' % (JEGYZEK_UTVONAL, len(sajat)))
+        self._naploz(sajat[0], JEGYZEK_UTVONAL, sha)
         return jegyzek
 
     def jegyzek_sor(self, b_id):
@@ -163,15 +176,12 @@ class Bemenet:
         self._tar[utvonal] = (bajtok.decode('utf-8'), sha)
         return self._tar[utvonal]
 
-    def _fejsorok(self, utvonal, darab):
-        """Egy repó-relatív fájl első sorai a fájl beolvasása és naplózása nélkül (annak megállapítására, mit
-        tartalmaz a fájl: pl. melyik könyv párosítását). Tartalom innen nem kerül a lapra."""
-        teljes = os.path.join(self.gyoker, *utvonal.split('/'))
-        try:
-            with open(teljes, 'r', encoding='utf-8', newline='') as f:
-                return [f.readline().rstrip('\r\n') for _ in range(darab)]
-        except FileNotFoundError:
-            raise BemenetHiba('hiányzó bemeneti fájl: %s' % utvonal) from None
+    def _fejsorok(self, b_id, utvonal, darab):
+        """Egy bemeneti fájl első sorai (annak megállapítására, mit tartalmaz a fájl: pl. melyik könyv
+        párosítását). Ez is olvasás: a fájl hash-ével a naplóba kerül, így a regresszió bemenet-hash őre méri."""
+        tartalom, sha = self._fajl(utvonal)
+        self._naploz(b_id, utvonal, sha)
+        return tartalom.split('\n', darab)[:darab]
 
     def _utvonalak(self, b_id, motivum=None):
         """A bemenet útvonalai a jegyzékből: `;`-vel több útvonal adható, a `*` glob, az `<ID>` a motívum."""

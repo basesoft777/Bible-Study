@@ -280,6 +280,98 @@ class Szerkezet(unittest.TestCase):
                 self.assertIsNone(minta.search(lathato(s)), '%s: %s' % (azonosito, lathato(s)[:120]))
 
 
+class SzakaszJelek(unittest.TestCase):
+    """A 2. független ellenőrzés 1. tétele: belső mezőből látható szöveg nem képződik; a több szócikk egyikét a
+    szótár saját jelölése nevezi meg, belső azonosító nélkül."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.b = bemenet.Bemenet(kozos.GYOKER)
+        cls.g = gerinc_be.gerinc(cls.b)
+        cls.ny = bemenet.nyelv(cls.b)
+
+    def _latszik(self, szotar, strong, kulcs, prozai=False):
+        from lapgen.megjelenites.md import elofordulas as md
+        from lapgen.szamitas import szotari_gerinc
+        return kiiras(md._szakaszjel(self.ny, szotari_gerinc._szakaszjel(self.g, szotar, strong, kulcs, prozai)))
+
+    def test_a_tartomany_kezdo_verse_igehely(self):
+        """A verstartomány kezdő verse a bemeneti rétegben képzett igehely (nem belső szöveg), a Thayer-példa
+        jelentésszáma a bemeneti rétegben képzett szám (nem belső kulcs): a típus egyezik a használattal."""
+        tartomanyok = self.g.tartomanyban('H8034', '1Kir 18:25')
+        self.assertTrue(tartomanyok)
+        self.assertEqual([(type(t.kezdo_vers), t.kezdo_vers.kod, t.veg) for t in tartomanyok],
+                         [(Igehely, '1Kir 18:24', 25)])
+        peldak = [p for kulcs in list(self.g._th_vj)[:400] for p in self.g.thayer_peldak(kulcs[0], [kulcs[1]])]
+        self.assertTrue(any(p.jelentesszam is not None for p in peldak))
+        for p in peldak:
+            if p.jel.ertek.isdigit():
+                self.assertEqual(p.jelentesszam, int(p.jel.ertek))
+            else:
+                self.assertIsNone(p.jelentesszam)
+
+    def test_a_szamitas_nem_bont_ki_belso_erteket_lathato_szovegge(self):
+        """Statikus őr: a `szamitas/` rétegben a burkoló `ertek` mezőjéből nem képződik szám és igehely (`int(…
+        .ertek)`, `igehely(… .ertek)`): ilyen érték a bemeneti rétegből jön, a saját típusában."""
+        hibak = []
+        for rel in kodfajlok('szamitas'):
+            for csomo in ast.walk(fa(rel)):
+                if not isinstance(csomo, ast.Call):
+                    continue
+                nev = csomo.func.id if isinstance(csomo.func, ast.Name) else getattr(csomo.func, 'attr', '')
+                if nev in ('int', 'float', 'igehely', 'Igehely', 'Strong', 'vers_igehely') and any(
+                        isinstance(a, ast.Attribute) and a.attr == 'ertek' for arg in csomo.args
+                        for a in ast.walk(arg)):
+                    hibak.append('%s:%d %s(… .ertek)' % (rel, csomo.lineno, nev))
+        self.assertEqual(hibak, [])
+
+    def test_a_szocikk_megnevezese_a_szotar_sajat_jelolese(self):
+        """Ha a szakasz jele a szó több szócikkében is áll, a jel mellett a szótár saját címszava áll a
+        homográf-számával, szó szerinti idézetként; a jel maga csak a szócikken belüli tagolás."""
+        kulcs = ('BDB8033', '-/1/-')
+        szocikk = self.g.jel_szocikke('BDB', 'H7451', kulcs)
+        self.assertEqual((nfc(szocikk.cimszo.ertek), szocikk.sorszam), (nfc('II. רַע'), 2))
+        self.assertIsInstance(szocikk.cimszo, Forrasszoveg)
+        self.assertEqual(self.g.jel('BDB', 'H7451', kulcs).ertek, '1')
+        kiirt = self._latszik('BDB', 'H7451', kulcs)
+        self.assertEqual(nfc(kiirt.szoveg), nfc('1 (II. רַע)'))
+        self.assertEqual([f for _k, _v, f in kiirt.tartomanyok],
+                         [Fajta.IDEZET, Fajta.SABLON, Fajta.IDEZET, Fajta.SABLON])
+        # egy szócikkes szónál és a szócikken belül egyértelmű jelnél nincs megnevezés
+        self.assertIsNone(self.g.jel_szocikke('BDB', 'H0127', ('BDB109', '-/1/-')))
+        self.assertEqual(self._latszik('BDB', 'H0127', ('BDB109', '-/1/-'), prozai=True).szoveg, '1.')
+
+    def test_homograf_szam_hijan_a_szocikk_sorszama_all(self):
+        """Ha a szótár jelölése a szócikket nem különbözteti meg (a címszó másik szócikké is, és nincs
+        homográf-szám), a megnevezés sablonmondat a szótár nevével és a szócikk sorszámával."""
+        elso, masodik = ('BDB8035', 'Qal/1/-'), ('BDB8036', 'Qal/-/-')
+        self.assertIsNone(self.g.jel_szocikke('BDB', 'H7489', elso).cimszo)
+        self.assertEqual(self.g.jel_szocikke('BDB', 'H7489', elso).sorszam, 1)
+        self.assertEqual(self._latszik('BDB', 'H7489', elso).szoveg, 'Qal 1 (a BDB 1. szócikke)')
+        self.assertEqual(nfc(self._latszik('BDB', 'H7489', masodik).szoveg), nfc('Qal (II. [רָעַע])'))
+
+    def test_belso_szocikk_azonosito_nem_all_a_lathato_jelben(self):
+        """A több szócikkes szavak minden szakaszjelén: a látható alakban nincs belső szócikk-azonosító (a belső
+        alak, amely megjegyzésbe kerül, tartalmazza)."""
+        azonosito = re.compile(r'BDB\d+')
+        vizsgalt = 0
+        for strong in ('H7451', 'H7489', 'H0068', 'H8034', 'H0001'):
+            for r in self.g._bdb_sz.get(strong, []):
+                kulcs = (r['bdb_id'], r['utvonal'])
+                if r['utvonal'] in ('fej', 'cim') or self.g.jel_szocikke('BDB', strong, kulcs) is None:
+                    continue
+                vizsgalt += 1
+                self.assertIsNotNone(azonosito.search(self.g.kulcs_jel('BDB', strong, kulcs)))
+                for prozai in (False, True):
+                    self.assertIsNone(azonosito.search(self._latszik('BDB', strong, kulcs, prozai).szoveg))
+        self.assertGreater(vizsgalt, 10)
+
+    def test_a_mintalapokon_nincs_belso_szocikk_azonosito(self):
+        for azonosito in MINTALAPOK:
+            for sor in lap(azonosito):
+                self.assertIsNone(re.search(r'BDB\d+', lathato(sor)), '%s: %s' % (azonosito, lathato(sor)[:100]))
+
+
 class JegyzetOsszevonas(unittest.TestCase):
     def test_azonos_mondatu_jegyzet_egyszer_all(self):
         """Az azonos látható mondatú jegyzet egyszer áll; a számozás az első hivatkozás sorrendje; a sor végén
