@@ -5,10 +5,10 @@ kod: GENERALAS_MAINEN
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/f217-generalas-mainen-f752cc
 ad: a generált nézeteket nem az ágak commitolják, hanem egy Action generálja újra a main-en egy jegyzék (`adat/generalt_nezetek.tsv`) szerint; a párhuzamos PR-ok nem várnak egymásra a generált fájlok miatt; a jegyzék a bemeneti jegyzék első lépése
-kovetkezo: "F217.1: leltár és terv (naplok/F217_terv.md) a ⛔-ig; a megvalósítás a #709 mergelése után"
+kovetkezo: "Te: ⛔ a leltár és a terv (naplok/F217_terv.md) orkesztrátori átnézése, O1–O6; a megvalósítás (F217.2–) a #709 mergelése után"
 munka: folyamat
 olvas: [adat/SEMA.md, adat/lap_befagyasztas.tsv, eszkozok/szamkiosztas.py]
 ir: [adat/generalt_nezetek.tsv, adat/SEMA.md, .github/workflows/generalt_nezetek.yml, .github/workflows/ellenorzes.yml, .claude/commands/kiadas.md, eszkozok/generalt_nezetek.py, eszkozok/teszt_generalt_nezetek.py]
