@@ -16,6 +16,7 @@ import bdb_tagolas
 import szotari_glossza
 
 from lapgen.bemenet.jegyzek import BemenetHiba
+from lapgen.bemenet.nyelv import cimke_cellaalakok
 from lapgen.bemenet.szavak import b08_tahot
 
 SZOTAR_BDB = 'BDB'
@@ -119,6 +120,13 @@ def _fej_glossza(hu):
     return szotari_glossza.olvasoi_glossza('', '', s[kp[-1].end():]) if kp else None
 
 
+def _cella_alak_egyezik(cimke, alak):
+    """Igaz, ha az `alak` a címke cellakezdő alakja: nagy kezdőbetűvel, a kezdő névelővel vagy anélkül."""
+    kisbetus = alak[:1].lower() + alak[1:]
+    nevelotlen = re.sub(r'^(?:a|az)\s+', '', cimke)
+    return alak[:1].isupper() and kisbetus in (cimke, nevelotlen)
+
+
 class Tartomany:
     """A BDB a verset csak egy verstartomány belsejében idézi: a szakasz, a tartomány és a forrás alakja."""
     __slots__ = ('kulcs', 'kezdo_vers', 'veg', 'nyers', 'folytatas', 'sorszam')
@@ -131,8 +139,14 @@ class Tartomany:
 class Gerinc:
     """A szótári gerinc indexei egy munkamenetben. A `_` kezdetű mezők a nyers táblasorok."""
 
-    def __init__(self, b, cimke, bdb_sz, bdb_hu, bdb_vj, th_vj, bdb_en, zarojel, tahot):
+    def __init__(self, b, cimke, bdb_sz, bdb_hu, bdb_vj, th_vj, bdb_en, zarojel, tahot, cella_alakok):
         self._b, self._cimke, self._bdb_sz, self._bdb_hu = b, cimke, bdb_sz, bdb_hu
+        self._cella_alakok = cella_alakok
+        for kulcs, alak in cella_alakok.items():
+            nyers = (cimke.get(kulcs) or {}).get('cimke_hu') or ''
+            if not nyers or not _cella_alak_egyezik(nyers, alak.ertek):
+                raise GerincHiba('B65: a(z) %s cellakezdő alakja („%s”) nem a címke („%s”) cellakezdő alakja: a kettő '
+                                 'csak a kezdő névelőben és a kezdőbetűben térhet el' % (kulcs, alak.ertek, nyers))
         self._bdb_vj, self._th_vj, self._bdb_en, self._zarojel, self._tahot = bdb_vj, th_vj, bdb_en, zarojel, tahot
         self._kezdet, self._poz_ok, self._vj_strong, self._fa = {}, {}, None, {}
 
@@ -312,6 +326,12 @@ class Gerinc:
         nyers = (sor or {}).get('cimke_hu') or ''
         return self._b.kezi('B16', 'cimke_hu', nyers) if nyers else None
 
+    def cimke_cella(self, szotar, strong, kulcs):
+        """A szakasz címkéje cellakezdő alakban, kézi szövegként: a névtábla `cimke_cella` sora, híján maga a
+        címke (a címkét a generátor nem írja át)."""
+        alak = self._cella_alakok.get((szotar, strong) + kulcs)
+        return alak if alak is not None else self.cimke(szotar, strong, kulcs)
+
     def jel_szoveg(self, jel, strong):
         """A szakasz jele idézhető forrásszövegként (a szótár saját tagolása)."""
         return self._b.forrasszoveg('B17', 'szakasz_jel', jel, strong)
@@ -410,5 +430,6 @@ def gerinc(b):
     def epit():
         szakaszok, zarojel = b17_bdb_szakaszok(b)
         return Gerinc(b, b16_szakasz_cimkek(b), szakaszok, b18_bdb_szakasz_hu(b), b19_bdb_vers_jelentes(b),
-                      b21_thayer_vers_jelentes(b), b22_bdb_teljes(b), zarojel, b08_tahot(b))
+                      b21_thayer_vers_jelentes(b), b22_bdb_teljes(b), zarojel, b08_tahot(b),
+                      cimke_cellaalakok(b))
     return b.egyszer('gerinc', epit)

@@ -1,4 +1,3 @@
 # Az F218a regresszió engedélyfájlja (brief 8.1): minden diff-sor pontosan egy sorhoz tartozik; a `sor` kötésnél a `regi` és az `uj` a sor sha256-ának első 16 jegye. Napló, nem adattábla.
 id	fajl	szakasz	mechanizmus	kotes	regi	uj	elvart_db	ok
-S1-ONREF	TUDOMANYOS	2. Előfordulások	M-CSERE	sor	3780ae9b4c490e73	9edf9dd8a18bf746	1	a régi generátor a kézi prózát utólag írta át (ONREF_CSERE: „a lap” → „a szócikk”); az új a prózát változatlanul adja; a forrás javítása (az adatcella vagy javítótábla) döntésre vár, l. a jelentést
-S1-FORRAS	TUDOMANYOS	2. Előfordulások	GK-07	sor	29a73682dd2638c5	4a5bf4bb87d785b1	1	a blokkfejléc forrás- és licenclistája a szakasz valódi olvasásaiból jön (olvasási napló), nem kódba írt listából; a brief 8.1 (b) osztálya
+S1-FORRAS	TUDOMANYOS	2. Előfordulások	GK-07	sor	29a73682dd2638c5	efdea26fd9859722	1	a blokkfejléc forrás- és licenclistája a szakasz valódi olvasásaiból jön (olvasási napló), nem kódba írt listából; a brief 8.1 (b) osztálya

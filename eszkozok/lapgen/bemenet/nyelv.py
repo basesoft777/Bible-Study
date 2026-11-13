@@ -10,6 +10,8 @@ from lapgen.szoveg import Kulcs, Nev, SablonSor, sablon
 
 NEVTABLA_OSZLOPOK = ('tipus', 'kulcs', 'olvasoi_nev', 'eredet')
 SABLON_OSZLOPOK = ('kulcs', 'mondat', 'parameterek', 'szakasz', 'eredet', 'dontes')
+CIMKE_CELLA_TIPUS = 'cimke_cella'   # a szótári szakaszcímke cellakezdő alakja; kulcs: szótár|Strong|szócikk|szakasz
+_KULCS_ELVALASZTO = '|'
 
 
 class NevHiba(KeyError):
@@ -17,8 +19,13 @@ class NevHiba(KeyError):
 
 
 class Nevtabla:
-    def __init__(self, nevek):
+    def __init__(self, nevek, nyers=None):
         self._nevek = dict(nevek)
+        self._nyers = dict(nyers or {})
+
+    def nyers_nevek(self, tipus):
+        """Egy típus sorai nyersen ({kulcs: név}); csak a bemeneti réteg hívja, burkoláshoz."""
+        return {k: nev for (t, k), nev in self._nyers.items() if t == tipus}
 
     def nev(self, tipus, kulcs):
         """A (típus, kulcs) olvasói neve. A kulcs lehet `Kulcs`, felsorolás-érték vagy kódba írt kulcsszó."""
@@ -79,7 +86,7 @@ class Nyelv:
 def b65_nevtabla(b):
     """B65 — az olvasói névtábla."""
     tabla = b._tabla('B65', oszlopok=NEVTABLA_OSZLOPOK)
-    nevek = {}
+    nevek, nyers = {}, {}
     for sor in tabla.szotarak():
         kulcs = (sor['tipus'], sor['kulcs'])
         if kulcs in nevek:
@@ -87,7 +94,22 @@ def b65_nevtabla(b):
         if not sor['olvasoi_nev']:
             raise BemenetHiba('B65: üres olvasói név: %s / %s' % kulcs)
         nevek[kulcs] = Nev(sor['tipus'], sor['kulcs'], sor['olvasoi_nev'])
-    return Nevtabla(nevek)
+        nyers[kulcs] = sor['olvasoi_nev']
+    return Nevtabla(nevek, nyers)
+
+
+def cimke_cellaalakok(b):
+    """A szótári szakaszcímkék cellakezdő alakja (B65, `cimke_cella` típus) kézi szövegként:
+    {(szótár, Strong, szócikk, szakasz): Kezi}. A címke a táblacella elején ebben az alakban áll; az alak adat,
+    a generátor a címkét nem írja át (a címke és az alakja egyezését a szótári gerinc betöltése ellenőrzi)."""
+    ki = {}
+    for kulcs, nev in b65_nevtabla(b).nyers_nevek(CIMKE_CELLA_TIPUS).items():
+        reszek = tuple(kulcs.split(_KULCS_ELVALASZTO))
+        if len(reszek) != 4:
+            raise BemenetHiba('B65: a `%s` kulcsa szótár|Strong|szócikk|szakasz alakú legyen: %r'
+                              % (CIMKE_CELLA_TIPUS, kulcs))
+        ki[reszek] = b.kezi('B65', CIMKE_CELLA_TIPUS, nev)
+    return ki
 
 
 def b66_sablonok(b):

@@ -2438,6 +2438,14 @@ hiba**: a generátor megáll, nem írja ki a kulcsot.
 
 **Kulcs:** `tipus` + `kulcs`. Az `eredet=uj` sorokat a felhasználó hagyja jóvá.
 
+**A `cimke_cella` típus (DT-F218k).** A szótári szakaszcímke (`szotar_szakasz_cimke.tsv` `cimke_hu`) cellakezdő
+alakja: a `kulcs` a címke kulcsa `szotar|strong|bdb_id|szakasz` alakban, az `olvasoi_nev` a címke úgy, ahogy a
+táblacella elején áll (nagy kezdőbetűvel, a kezdő névelővel vagy anélkül). Erre azért van szükség, mert a címke a
+lap más helyein mondat közben áll, a generátor pedig szöveget nem ír át: a cella értéke az adatban a végleges alak.
+Csak annak a címkének kell sor, amelynek a cellakezdő alakja eltér magától a címkétől. A sor kézi adat (a lapon
+prózaként áll, nem sablonszövegként). **Kapu:** a cellakezdő alak a címkétől csak a kezdő névelőben és a
+kezdőbetűben térhet el, és a kulcsának létező címkére kell mutatnia; különben a generálás megáll.
+
 ### 2.63 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
 
 A lánc szava nélküli tematikus hely (az `elofordulasok.tsv` sorának `gerinc_elem` mezője `tematikus:` kezdetű, a

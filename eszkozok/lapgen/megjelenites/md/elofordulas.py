@@ -81,13 +81,17 @@ def _kulcsszo(ny, sor):
     return ny.s('e2.kulcsszo', karoli=sor.karoli_szo, alakok=alakok)
 
 
-def _jelentes_token(ny, t):
+def _jelentes_token(ny, t, cellakezdo):
+    """Egy szó jelentése; `cellakezdo`: a szöveg a cella elején áll (a címke és a sablonmondat cellakezdő
+    alakja adat, illetve külön sablonsor; átírás nincs)."""
     if t.fajta in (JelentesFajta.CIMKE, JelentesFajta.GLOSSZA):
-        return ny.s('e2.jelentes.cimke', cimke=t.cimke, jel=t.jel)
+        cimke = t.cimke_cella if cellakezdo and t.cimke_cella is not None else t.cimke
+        return ny.s('e2.jelentes.cimke', cimke=cimke, jel=t.jel)
     if t.fajta is JelentesFajta.SZOCIKK_EGESZE:
+        kulcs = ny.kulcs('e2.jelentes.szocikk_egesze', 'cella') if cellakezdo else 'e2.jelentes.szocikk_egesze'
         if t.cimke is not None:
-            return ny.s('e2.jelentes.szocikk_egesze', glossza=t.cimke)
-        return ny.s('e2.jelentes.szocikk_egesze.ures')
+            return ny.s(kulcs, glossza=t.cimke)
+        return ny.s(ny.kulcs(kulcs, 'ures'))
     if t.fajta is JelentesFajta.NINCS_CIMKE:
         return ny.s('e2.jelentes.nincs_cimke', jel=t.jel)
     return ny.s('e2.jelentes.nincs_hozzarendeles')
@@ -99,9 +103,10 @@ def _jelentes(ny, sor):
     if not sor.jelentes:
         return ny.s('jel.nincs')
     if len(sor.jelentes) == 1:
-        return _jelentes_token(ny, sor.jelentes[0])
+        return _jelentes_token(ny, sor.jelentes[0], True)
     return ny.s('e2.jelentes.tokenek', tokenek=tuple(
-        ny.s('e2.jelentes.tokenenkent', strong=t.strong, tartalom=_jelentes_token(ny, t)) for t in sor.jelentes))
+        ny.s('e2.jelentes.tokenenkent', strong=t.strong, tartalom=_jelentes_token(ny, t, False))
+        for t in sor.jelentes))
 
 
 def _ubs_glossza(ny, g, strong):
@@ -159,8 +164,8 @@ def _nev_vagy_jel(ny, tipus, kulcs):
 
 
 def _cella(ny, tartalom, *jelek):
-    """Egy táblacella: a tartalom cellakezdő alakban, utána az esetleges jegyzetjel."""
-    return (ny.s('tabla.cella', t=tartalom),) + jelek
+    """Egy táblacella: a tartalom változatlanul, utána az esetleges jegyzetjel."""
+    return (tartalom,) + jelek
 
 
 def _tabla_sor(iro, ny, sor, szakasz, jegyzetszam):

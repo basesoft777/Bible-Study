@@ -41,6 +41,7 @@ class TokenJelentes:
     cimke: Optional[Lathato]
     jel: Optional[Lathato]
     indokok: Tuple[Indok, ...]
+    cimke_cella: Optional[Lathato] = None      # a címke cellakezdő alakja (adat), ha a cella vele kezdődik
 
 
 def _proza_jelek(g, strong, jelek):
@@ -199,7 +200,8 @@ def token_jelentes(g, f, sor, strong, versek):
     cimke = g.cimke(szotar, st, valasztott) if valasztott is not None else None
     jel_lathato = idezet(g.jel_szoveg(jel, strong)) if jel else None
     if cimke is not None:
-        return TokenJelentes(strong, JelentesFajta.CIMKE, proza(cimke), jel_lathato, tuple(indokok))
+        return TokenJelentes(strong, JelentesFajta.CIMKE, proza(cimke), jel_lathato, tuple(indokok),
+                             cimke_cella=proza(g.cimke_cella(szotar, st, valasztott)))
     if jel and szotar == G.SZOTAR_BDB:
         glossza = g.szakasz_glossza(st, jel)
         if glossza is not None:

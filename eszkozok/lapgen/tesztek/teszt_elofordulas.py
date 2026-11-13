@@ -11,10 +11,11 @@ import unittest
 import kozos
 from kozos import MINTALAPOK, fa, kodfajlok, szovegliteralok
 from lapgen import bemenet, fo
+from lapgen.bemenet import gerinc as gerinc_be
 from lapgen.bemenet import szavak
 from lapgen.megjelenites.md.iro import MEGJEGYZES
-from lapgen.szoveg import (Fajta, Forrasszoveg, Igehely, Kezi, MotivumId, SablonSor, Strong, idezet, kiiras, proza,
-                           sablon)
+from lapgen.szoveg import (Fajta, Forrasszoveg, Igehely, Kezi, MotivumId, SablonHiba, SablonSor, Strong, idezet,
+                           kiiras, proza, sablon)
 
 DATUM = datetime.date(2026, 11, 13)
 _LAPOK = {}
@@ -45,28 +46,46 @@ def _q(szoveg):
 
 
 class Modositok(unittest.TestCase):
-    def test_cellakezdet_rovid_elem_nevelo_nelkul(self):
-        """A cellakezdő alak: a rövid elem eleji névelő elmarad, az elem nagy kezdőbetűt kap."""
-        s = _sor('{t|cella}', 't:lathato')
-        self.assertEqual(kiiras(sablon(s, t=sablon(_sor('a szócikk egésze — {g}', 'g:lathato'),
-                                                    g=_q('fájdalom, fáradság')))).szoveg,
-                         'Szócikk egésze — fájdalom, fáradság')
-        self.assertEqual(kiiras(sablon(s, t=proza(Kezi('az átok', 'm')))).szoveg, 'Átok')
+    def test_a_cella_modosito_megszunt(self):
+        """A cellakezdő alak nem a sablonmondat dolga (az is csere volna): `cella` módosító nincs."""
+        with self.assertRaises(SablonHiba):
+            sablon(_sor('{t|cella}', 't:lathato'), t=_q('a föld'))
 
-    def test_cellakezdet_mondat_erteku_elem_megtartja_a_nevelot(self):
-        """Hat vagy több szónál a névelő marad, nagy kezdőbetűvel; a fajta-térkép megmarad."""
-        s = _sor('{t|cella}', 't:lathato')
-        belso = sablon(_sor('{c} · {j}', 'c:lathato, j:lathato'), c=proza(Kezi('a megművelt föld, amely táplál', 'm')),
-                       j=_q('1'))
-        kiirt = kiiras(sablon(s, t=belso))
-        self.assertEqual(kiirt.szoveg, 'A megművelt föld, amely táplál · 1')
-        self.assertEqual(kiirt.tartomanyok[0][2], Fajta.PROZA)
-        self.assertEqual(kiirt.tartomanyok[-1][2], Fajta.IDEZET)
+    def test_a_sablon_a_prozat_es_az_idezetet_valtozatlanul_adja(self):
+        """A sablonmondat a látható paraméterét nem írja át: a névelő-módosító csak sablonszöveget tesz elé."""
+        for modosito in ('', '|a', '|A'):
+            s = _sor('x {t%s} y' % modosito, 't:lathato')
+            for ertek in (proza(Kezi('az átok', 'm')), _q('a föld színe'), _q('A megművelt föld')):
+                kiirt = kiiras(sablon(s, t=ertek))
+                self.assertEqual([kiirt.szoveg[k:v] for k, v, f in kiirt.tartomanyok if f is not Fajta.SABLON],
+                                 [kiiras(ertek).szoveg])
 
-    def test_cellakezdet_mas_elem_valtozatlan(self):
-        s = _sor('{t|cella}', 't:lathato')
-        for szoveg in ('átkoz, átkozott · Qal', 'A föld', 'azonos szó', '—', 'a', '[1Móz 3:14](#ige-1móz-3-14)'):
-            self.assertEqual(kiiras(sablon(s, t=_q(szoveg))).szoveg, szoveg)
+    def test_a_cimke_cellakezdo_alakja_adat(self):
+        """A címke cellakezdő alakja a névtábla `cimke_cella` sora (kézi adat); híján maga a címke áll."""
+        g = gerinc_be.gerinc(bemenet.Bemenet(kozos.GYOKER))
+        kulcs = ('BDB109', '-/1/-')
+        self.assertEqual(g.cimke('BDB', 'H0127', kulcs).ertek, 'a megművelt föld, amely táplál')
+        self.assertEqual(g.cimke_cella('BDB', 'H0127', kulcs).ertek, 'A megművelt föld, amely táplál')
+        self.assertIsInstance(g.cimke_cella('BDB', 'H0127', kulcs), Kezi)
+        mas = ('BDB7550', 'Qal/2/c')
+        self.assertEqual(g.cimke_cella('BDB', 'H7121', mas), g.cimke('BDB', 'H7121', mas))
+
+    def test_a_cellakezdo_alak_csak_a_cimke_alakja_lehet(self):
+        """Kapu: a cellakezdő alak a címkétől csak a kezdő névelőben és a kezdőbetűben térhet el."""
+        egyezik = gerinc_be._cella_alak_egyezik
+        self.assertTrue(egyezik('a megművelt föld, amely táplál', 'A megművelt föld, amely táplál'))
+        self.assertTrue(egyezik('az átok', 'Átok'))
+        self.assertFalse(egyezik('az átok', 'Áldás'))
+        self.assertFalse(egyezik('az átok', 'az átok'))
+        self.assertFalse(egyezik('a megművelt föld', 'A megművelt föld, amely táplál'))
+
+    def test_a_tabla_cellai_cellakezdo_alakban_allnak(self):
+        """A HAMART-001 2. táblájában a jelentéscella a címke adatbeli cellakezdő alakjával, illetve a cellakezdő
+        sablonmondattal kezdődik; a szöveg közepén a címke saját alakja áll."""
+        cellak = [lathato(sor).split(' | ')[2] for sor in lap('HAMART-001') if sor.szoveg.startswith('| [')]
+        self.assertTrue(any(c.startswith('A megművelt föld, amely táplál · 1') for c in cellak))
+        self.assertTrue(any(c.startswith('Szócikk egésze — ') for c in cellak))
+        self.assertFalse([c for c in cellak if re.match(r'(a|az) ', c)])
 
     def test_nevelo_a_masik_parameter_szerint(self):
         """A görög szó névelője a kiejtés szerint áll (`a:kiejtes`)."""
