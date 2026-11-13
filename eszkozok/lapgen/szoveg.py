@@ -292,6 +292,7 @@ class Fajta(enum.Enum):
     PROZA = 'proza'
     SABLON = 'sablon'
     IDEZET = 'idezet'
+    HORGONY = 'horgony'   # link célja vagy horgony azonosítója a sablonmondatban: szerkezeti azonosító, nem olvasott szöveg
 
 
 _ENGEDELY = object()
@@ -462,7 +463,8 @@ def _skalar_szegmensek(kulcs, nev, tipus, arg, ertek, modosito):
     elif tipus == 'horgony':
         if not isinstance(ertek, Horgony):
             raise SzovegHiba('%s: a(z) %s paraméter Horgony legyen' % (kulcs, nev))
-        szoveg = ertek._ertek
+        # a horgony saját fajta: a címsorból képzett azonosító kézi szöveg átalakított alakját is hordozhatja
+        return [(Fajta.HORGONY, ertek._ertek)]
     elif tipus == 'datum':
         if not isinstance(ertek, datetime.date) or isinstance(ertek, datetime.datetime):
             raise SzovegHiba('%s: a(z) %s paraméter dátum legyen' % (kulcs, nev))

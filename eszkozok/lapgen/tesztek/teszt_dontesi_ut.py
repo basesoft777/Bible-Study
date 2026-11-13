@@ -207,6 +207,22 @@ class Bemenetek(unittest.TestCase):
         self.assertIn(nfc('חַטָּאת (chattát), bűn;'), szavak_lapon[0])
         self.assertTrue(szavak_lapon[0].startswith(nfc('**A motívum szavai:** אֲדָמָה (adámá), föld: talaj; ')))
 
+    def test_ismeretlen_hordozo_elotagnal_a_generalas_megall(self):
+        """A hordozó elem fajtája zárt készlet (Strong-számok, kézzel elnevezett szópár, `tematikus:`): ismeretlen
+        típusjelölő előtagnál (`referencia:`, `idézet:`, `formula:`) a bemenet kimondott hibával megáll, a lap nem
+        találgat nevet. (Valós adat: a MENNY-001 három sora.)"""
+        with self.assertRaises(bemenet.BemenetHiba) as hiba:
+            bemenet.b03_elofordulasok(bemenet.Bemenet(kozos.GYOKER), MotivumId('MENNY-001'))
+        self.assertIn('ismeretlen hordozó-előtag', str(hiba.exception))
+        from lapgen.bemenet import elofordulas
+        for elem, elotag in (('referencia:1Énokh 10:4-6', 'referencia'), ('idézet:1Énokh 1:9', 'idézet'),
+                             ('formula:οὐκ ἐφείσατο (nem kegyelmezett)', 'formula'), ('tematikus:1Móz 6:5', 'tematikus')):
+            self.assertEqual(elofordulas._ELOTAG_RX.match(elem).group(1), elotag)
+        for elem in ('H0127', 'H6975+H1863', 'málé+chámász'):
+            self.assertIsNone(elofordulas._ELOTAG_RX.match(elem))
+        for azonosito in MINTALAPOK:
+            self.assertTrue(bemenet.b03_elofordulasok(bemenet.Bemenet(kozos.GYOKER), MotivumId(azonosito)))
+
     def test_a_rovid_jelentes_egy_uton_jon(self):
         jelentes = motivum_be.rovid_jelentes(bemenet.Bemenet(kozos.GYOKER))
         self.assertEqual(jelentes.magyar(Strong('H0779')).ertek, 'megátkozni')

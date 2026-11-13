@@ -17,6 +17,8 @@ _STRONG_RX = re.compile(r'^[HG]\d{4}[A-Za-z]?$')
 _IKON_RX = re.compile(r'^[^\w"„(]+')
 _TEMATIKUS_ELOTAG = 'tematikus:'
 _RESZ_ELVALASZTO = '+'
+# A hordozó elem típusjelölő előtagja (`tematikus:`). A készlet zárt: más előtagot a lap nem tud megnevezni.
+_ELOTAG_RX = re.compile(r'^([^\s:+]+):')
 # A proveniencia-hármas alakja (`scope=… | forras=… | ts=…`, a lekérdezés további mezőivel), ahogy a lekérdező írja.
 _ELV = r'\s\\?\|\s*'
 _HARMAS_RX = re.compile(r'scope=[^|`\n]*?' + _ELV + r'forras=[^|`\n]*?(?:' + _ELV + r'(?!ts=)[a-z_]+=[^|`\n]*?)*'
@@ -128,6 +130,12 @@ def b03_elofordulasok(b, motivum):
         e.funkcio_magyarazat = b.kezi('B03', 'funkcio', _IKON_RX.sub('', magyarazat))
         e.gerinc_elem = b.kulcs('B03', 'gerinc_elem', mezo('gerinc_elem'))
         e.tematikus = mezo('gerinc_elem').startswith(_TEMATIKUS_ELOTAG)
+        elotag = _ELOTAG_RX.match(mezo('gerinc_elem'))
+        if elotag and not e.tematikus:
+            raise BemenetHiba('B03: ismeretlen hordozó-előtag: `%s:` (%s, %s). A hordozó elem Strong-szám(ok), '
+                              'kézzel elnevezett szópár vagy `%s` kezdetű tematikus hely lehet; más fajtát a lap nem '
+                              'tud megnevezni, ezért nem készül el'
+                              % (elotag.group(1), motivum.kod, mezo('igehely'), _TEMATIKUS_ELOTAG))
         # a hordozó elem részei (`+`-szal tagolva): Strong-szám, vagy a szópár kézzel írt neve („málé”)
         e.gerinc_reszek = () if e.tematikus else tuple(
             Strong(resz) if _STRONG_RX.match(resz) else b.kezi('B03', 'gerinc_nev', resz)

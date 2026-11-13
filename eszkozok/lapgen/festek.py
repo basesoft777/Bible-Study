@@ -27,8 +27,13 @@ from lapgen.megjelenites.md.iro import MEGJEGYZES  # noqa: E402
 from lapgen.szoveg import FESTEK_ELOTAG, FESTEK_UTOTAG, Fajta, MotivumId  # noqa: E402
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-_JEL_RX = re.compile(re.escape(FESTEK_ELOTAG) + r'[A-Za-z0-9_]+?' + re.escape(FESTEK_UTOTAG))
-_ENGEDETT = {'belso': (MEGJEGYZES,), 'kezi': (MEGJEGYZES, Fajta.PROZA), 'idezet': (MEGJEGYZES, Fajta.IDEZET)}
+# A jelzőszót kis- és nagybetűtől függetlenül keressük: az átalakított (pl. kisbetűsített) jelzőszó is látszik.
+_JEL_RX = re.compile(re.escape(FESTEK_ELOTAG) + r'[A-Za-z0-9_]+?' + re.escape(FESTEK_UTOTAG), re.IGNORECASE)
+# A horgony (link célja, horgony azonosítója) a címsorból képzett szerkezeti azonosító: a kézi és az idézett szöveg
+# jelzőszava ott megengedett (átalakított alakban is); a belső mezőé ott is szivárgás.
+_ENGEDETT = {'belso': (MEGJEGYZES,), 'kezi': (MEGJEGYZES, Fajta.PROZA, Fajta.HORGONY),
+             'idezet': (MEGJEGYZES, Fajta.IDEZET, Fajta.HORGONY)}
+ATALAKITOTT = 'átalakított'
 
 
 def _fajta_itt(sor, hol):
@@ -42,15 +47,24 @@ def szivargasok(eredmeny):
     """A festett futás szivárgásai: [(nézet, sorszám, jelzőszó, kategória, fajta)]. A második visszaadott
     érték a lapon látott jelzőszavak száma kategóriánként (a próba ereje: 0 látott jelzőszó üres próba)."""
     kategoriak = eredmeny.festo.kategoriak
+    kisbetus = {}
+    for jel, kategoria in kategoriak.items():
+        # két jelzőszó, amely csak a betűk méretében tér el, nem azonosítható: ismeretlenként szivárgás lesz
+        kisbetus[jel.lower()] = kategoria if kisbetus.get(jel.lower(), kategoria) == kategoria else 'ismeretlen'
     ki, latott = [], {}
     for nezet, sorok in eredmeny.nezetek.items():
         for n, sor in enumerate(sorok, start=1):
             for m in _JEL_RX.finditer(sor.szoveg):
-                kategoria = kategoriak.get(m.group(0), 'ismeretlen')
+                kategoria = kisbetus.get(m.group(0).lower(), 'ismeretlen')
                 fajta = _fajta_itt(sor, m.start())
                 latott[kategoria] = latott.get(kategoria, 0) + 1
+                if fajta is Fajta.HORGONY:
+                    latott[Fajta.HORGONY.value] = latott.get(Fajta.HORGONY.value, 0) + 1
                 if fajta not in _ENGEDETT.get(kategoria, ()):
                     ki.append((nezet, n, m.group(0), kategoria, fajta))
+                elif m.group(0) not in kategoriak and fajta not in (Fajta.HORGONY, MEGJEGYZES):
+                    # a jelzőszó átalakítva áll (a szöveget valami átírta): horgonyon kívül ez is szivárgás
+                    ki.append((nezet, n, m.group(0), kategoria, ATALAKITOTT))
     return ki, latott
 
 

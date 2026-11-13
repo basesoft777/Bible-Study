@@ -6,7 +6,7 @@ from kozos import MINTALAPOK
 from lapgen import festek
 from lapgen.bemenet.jegyzek import Festo
 from lapgen.megjelenites.md.iro import Lapiro
-from lapgen.szoveg import Forrasszoveg, Kezi, SablonSor, idezet, prov, proza, sablon
+from lapgen.szoveg import Forrasszoveg, Kezi, SablonSor, cim_horgony, idezet, prov, proza, sablon
 
 
 class _Eredmeny:
@@ -56,7 +56,53 @@ class ProbaEreje(unittest.TestCase):
         self.assertEqual(len(festek.szivargasok(self._lap(rossz))[0]), 1)
 
 
+class Horgony(unittest.TestCase):
+    """A 3. független ellenőrzés 2. tétele: a horgonyba kerülő, átalakított jelzőszót is látja a próba."""
+
+    def setUp(self):
+        self.festo = Festo()
+        self.link = SablonSor('t', '[{cim}](#{horgony})', 'cim:lathato, horgony:horgony')
+
+    def _lap(self, *darabok):
+        lap = Lapiro()
+        lap.sor(*darabok)
+        return _Eredmeny(lap.kesz(), self.festo)
+
+    def test_a_kezi_cim_jelzoszava_a_horgonyban_megengedett(self):
+        """A címsorból képzett horgony a kézi cím kisbetűs alakját hordozza: a próba látja (kis- és nagybetűtől
+        függetlenül keres), és a kézi szöveg jelzőszavát a horgonyban megengedi."""
+        jel = self.festo.jel('kezi', 'B56_cimke')
+        cim = proza(Kezi('Az ok címe', 'cimke', jel))
+        horgony = cim_horgony(cim)
+        self.assertIn(jel.lower(), horgony.kod)
+        szivargas, latott = festek.szivargasok(self._lap(sablon(self.link, cim=cim, horgony=horgony)))
+        self.assertEqual(szivargas, [])
+        self.assertEqual(latott, {'kezi': 2, 'horgony': 1})
+
+    def test_belso_mezo_jelzoszava_a_horgonyban_is_szivargas(self):
+        jel = self.festo.jel('belso', 'B04_indoklas')
+        cim = proza(Kezi('belső szöveg', 'indoklas', jel))
+        szivargas, _latott = festek.szivargasok(self._lap(sablon(self.link, cim=cim, horgony=cim_horgony(cim))))
+        self.assertEqual(sorted(s[3] for s in szivargas), ['belso', 'belso'])
+
+    def test_atalakitott_jelzoszo_a_horgonyon_kivul_szivargas(self):
+        """Ha a jelzőszó átalakítva (kisbetűvel) áll a horgonyon kívül, a szöveget valami átírta: szivárgás,
+        akkor is, ha a kategóriája ott megengedett volna."""
+        jel = self.festo.jel('kezi', 'B03_kapcsolodas')
+        atirt = proza(Kezi('próza', 'kapcsolodas', jel.lower()))
+        szivargas, _latott = festek.szivargasok(self._lap(atirt))
+        self.assertEqual([(s[3], s[4]) for s in szivargas], [('kezi', festek.ATALAKITOTT)])
+
+
 class Mintalapok(unittest.TestCase):
+    def test_a_mintalapok_horgonyaiban_latszik_a_jelzoszo(self):
+        """A próba ereje: a két mintalapon a mellékletre mutató horgonyokban álló (kisbetűs) jelzőszavakat a
+        próba megszámolja, és mind kézi szövegé."""
+        for azonosito in MINTALAPOK:
+            szivargas, latott, _eredmeny = festek.proba(azonosito, gyoker=kozos.GYOKER)
+            self.assertEqual(szivargas, [], azonosito)
+            self.assertGreater(latott.get('horgony', 0), 10, azonosito)
+
     def test_gk08b_a_ket_mintalapon_nincs_szivargas(self):
         """GK-08b: festett futásban mindkét mintalap teljes bemenetén 0 szivárgás. (Szeletenként bővül: a
         látott jelzőszavak száma a kész szakaszokkal nő.)"""

@@ -613,4 +613,4 @@ teszt: `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py`, arany minta: a HAMART-
 - Proveniencia csak HTML-megjegyzésben és a Kolofonban áll.
 - Az `eredet=uj` sablonmondatot és nevet a felhasználó hagyja jóvá.
 
-**Gépi kikényszerítés** (`eszkozok/lapgen/`; a tesztek a `lapgen/tesztek/` alatt): a látható szöveg külön típus három konstruktorral (`szoveg.py`), statikus tesztek a kódon, és a festékpróba (`festek.py`): festett futásban minden belső mező jelzőszót kap, amely a kész lapon csak megjegyzésben állhat.
+**Gépi kikényszerítés** (`eszkozok/lapgen/`; a tesztek a `lapgen/tesztek/` alatt): a látható szöveg külön típus három konstruktorral (`szoveg.py`), statikus tesztek a kódon, és a festékpróba (`festek.py`): festett futásban minden belső mező jelzőszót kap, amely a kész lapon csak megjegyzésben állhat. **Egy kimondott kivétel:** a horgony (a link célja és a horgony azonosítója) a címsorból képzett szerkezeti azonosító, ezért a kézi és az idézett szöveg átalakított (kisbetűs, írásjelek nélküli) alakját hordozhatja; belső mező a horgonyba sem kerülhet. Horgonyon kívül az átalakított szöveg szivárgásnak számít.

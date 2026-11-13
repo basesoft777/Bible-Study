@@ -20,7 +20,8 @@
 | DT-F218l (önreferencia) | **kész, ✅** (2026-11-13, a 3. session) | a három nyitott pár 8 cellája a forrásban javult, a jóváhagyott lap szavával („a vizsgálat”, „ez a vizsgálat”, „a listán”; nem egységesen „szócikk”: l. a jelentés „DT-F218l: az önreferencia a forrásban” szakaszát). A nyílt mag követi (kódkönyv-kulcs, a fordítástár hash-e, újraexport); az angol szöveg nem változott. Az S2-ONREF-1 és -2 engedélysor megszűnt. A fájlok az `ir`-en kívül esnek (a bővítés függési kört adna: a felhasználó döntése) |
 | F218.5 (S2), első fele | **kész** | a vizsgálat közös modellje kapukkal és a kizárt versek melléklete: 431 sorból 421 egyezik, 10 engedélysor, engedély nélküli diff-sor 0; festékpróba 0; 144 teszt |
 | F218.5 (S2), második fele | **kész: a szakasz-diff 0 az engedélyeken kívül** | „1. Döntési út” (1.1–1.5): 110 sorból 94 egyezik, 16 engedélysor két előre megszámolt osztályban (1 blokkfejléc, 15 funkció-magyarázat kezdőbetűje); festékpróba 0; 167 teszt (134 zöld, 33 váz). Az ISTENTISZT-lap szakasza generálódik, a kapuk zöldek |
-| 3. ellenőrzés (célzott, az S2-re és a 2. javítókörre) | **ELTÉRÉS: 2 tétel** | `fuggetlen-ellenor` (`claude-opus-5-5`); a többi pont rendben, a számok egyeznek. A két tétel: (1) a típusjelölő előtagú hordozó elem (`referencia:`, `idézet:`, `formula:`; a MENNY-001-en él) kézi névként, „szópár” címmel kerülne a lapra, kapu nélkül; (2) a festékpróba nem látja a horgonyba kerülő, kisbetűsített jelzőszót. A jelentés és a besorolási javaslat (mindkettő mechanikus) a `naplok/F218_jelentes.md` végén; egyeztetésre vár, javítás még nem történt |
+| 3. ellenőrzés (célzott, az S2-re és a 2. javítókörre) | **ELTÉRÉS: 2 tétel** | `fuggetlen-ellenor` (`claude-opus-5-5`); a többi pont rendben, a számok egyeznek. A két tétel: (1) a típusjelölő előtagú hordozó elem (`referencia:`, `idézet:`, `formula:`; a MENNY-001-en él) kézi névként, „szópár” címmel kerülne a lapra, kapu nélkül; (2) a festékpróba nem látja a horgonyba kerülő, kisbetűsített jelzőszót. A jelentés a `naplok/F218_jelentes.md`-ben |
+| Javítókör (a 3. ellenőrzésre) | **kész** (2026-11-13, a 3. session) | az orkesztrátor besorolása: mindkettő mechanikus. (1) Ismeretlen hordozó-előtagnál a bemenet megáll (a MENNY-001 generálása BUKÁS); (2) a festékpróba kis- és nagybetűtől függetlenül keres, a horgony külön tartományfajta. 172 teszt (139 zöld, 33 váz); festékpróba 0; regresszió rendben. Az újraellenőrzés az S3 végi ellenőrzéssel együtt fut |
 | F218.6 (S3) – F218.13 | nem indult | a következő: „4. Szótári háttér”, `high` |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
@@ -46,9 +47,9 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 
 ## Következő lépés
 
-**Az S2 (F218.5) kész.** A 3. session a 2. ellenőrzés javítókörét, a DT-F218l forrásjavítását és az S2 második felét végezte el; a kontextusa a végén kb. 60%. **Az xhigh eddig tartott:** az S3-tól a brief szerint `high`.
+**Az S2 (F218.5) kész, a 3. ellenőrzés két tétele is javítva; a session megállt.** A 3. session a 2. és a 3. ellenőrzés javítókörét, a DT-F218l forrásjavítását és az S2 második felét végezte el; a kontextusa a végén kb. 66%. **Az S3-at új session kezdi.** **Az xhigh eddig tartott:** az S3-tól a brief szerint `high`.
 
-1. **A 3. ellenőrzés javítóköre (2 tétel).** A besorolási javaslat a `naplok/F218_jelentes.md` végén áll (mindkettő mechanikus); az orkesztrátor egyeztetése után javítandó, az S3 előtt. (1) A hordozó elem fajtája zárt készlet a bemeneti rétegben (`bemenet/elofordulas.py` `gerinc_reszek`): ismeretlen előtag (`referencia:`, `idézet:`, `formula:`) `BemenetHiba`; teszt a MENNY-001 soraira. (2) A festékpróba (`festek.py`) kis- és nagybetűtől függetlenül keressen; a horgony saját tartományfajta, ahol a kézi és az idézett szöveg jelzőszava megengedett, a belsőé nem; a kivétel egy mondata a 6-os sablon alapszabály-szakaszába. Ez a 218a harmadik ellenőrzése volt (a brief kettőt írt elő: az S1 után és az S9-ben; a 2. és a 3. a javítókörök és az S2 célzott ellenőrzése); az újraellenőrzése az S3 végi ellenőrzéssel együtt futhat.
+1. **A 3. ellenőrzés két tétele javítva** (a jelentés „A 3. ellenőrzés javítóköre” szakasza); az újraellenőrzésük az S3 végi független ellenőrzés hatókörébe kerül (a tartomány eleje: `28be9127`).
 2. **F218.6 (S3): „4. Szótári háttér”** (Áttekintés, 4.1–4.10 BDB/Thayer-kártya, 4.12 Nave, 4.13/4.14), új Fable-sessionben, `high`. Előtte modell-ellenőrzés és `get_usage` (a küszöb 99% heti; 70% kontextus fölött zárás). A szelet nagy: két-három commitra bontva (4.1–4.5 · 4.6–4.10 · 4.11–4.14). Első lépés: a referencia-szakasz (991–2350. sor) szerkezetének kiírása rövidítve, és a régi kód szimbólumonkénti olvasása (a jelentés szimbólumtérképe, 2/b).
 
 ### Az S3 előtt eldöntendő (a felhasználóhoz, az orkesztrátoron át)
@@ -130,6 +131,7 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 - **Önreferencia (DT-F218l):** lezárva, ✅ (a forrásban javítva). Nyitva maradt belőle: a szóválasztás megerősítése („vizsgálat” / „listán”, nem „szócikk”), a nyílt mag angol szövege („the entry” maradt), és az `ir`-en kívüli hat fájl (a jelentés „DT-F218l” szakasza).
 - **Az 1.4 pont kisbetűs listaelemei** (15 engedélysor): a funkció magyarázata a forrás szerint áll; ha nagybetű kell, a mondatkezdő alak adatba kerül.
 - **„mind a 575 verse” / „A 575 vers”:** betűre a régi lap; a helyes névelő 1-1 engedélysor volna.
+- **Az `ir`-en kívüli fájlok és a függési kör:** N-F218d (a 218c kezeli; az orkesztrátor rendelkezése). **A típusjelölő előtagú hordozó elem megnevezése:** N-F218e (a MENNY-001 új lapja előtt).
 - **Három új sablonmondat `dontes=var`** az S2-ből (`e2.jel.szocikkel`, `e2.jel.szocikk_sorszam`, `d14.hely.magyarazat_nelkul`) és kettő az S2a-ból: a 218a végi listába.
 - **ISTENTISZT-001, hat kisbetűs cellakezdet:** öt Károli-idézet és egy funkciócímke („a népek ígérete”) a forrás szerint, szó szerint áll; a régi lap nagybetűsítette. Olvasói döntés (a jelentés „Javítókör” szakaszának 1. pontja).
 - **A 7 új sablonmondat `dontes` mezője:** a felhasználó jóváhagyta („Igen, mind jó”); a mező a jóváhagyás döntésszámát várja, addig `var`.
@@ -159,6 +161,7 @@ Az S1 szakasz-diffje a heti keret 89%-ánál lett 0 (az engedélyeken kívül); 
 | 3. session indul | 2026-11-13 13:35 | 79% | 5% | 20% | modell-eltérés miatt előbb megállt (opus), utána fable |
 | 2. javítókör és DT-F218l kész | 2026-11-13 | 81% | 9% | 37% | a javítókör és a forrásjavítás: 2 százalékpont heti; a kontextus 46% |
 | S2 kész (a Döntési út diffje 0) | 2026-11-13 | 82% | 12% | 47% | az S2 második fele: 1 százalékpont heti; a kontextus 59% |
+| A 3. ellenőrzés és a javítóköre kész | 2026-11-13 | 83% | 14% | 56% | az ellenőrzés (opus) és a két javítás: 1 százalékpont heti; a kontextus 65% |
 
 Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 
@@ -171,7 +174,7 @@ Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 | F218.5 (DT-F218l) | melléklet: 0 (8 engedélysor) | a két önreferencia-sor megszűnt (a forrás javult) |
 | F218.5 (S2b) | 1. Döntési út (110 sor): 0 (16 engedélysor) | az első futás 17 diff-sort adott: 16 előre várt osztály és 1 hiba (a lemma-változat szabálya hiányzott: javítva) |
 
-Festékpróba: HAMART-001 0 szivárgás (belső 191, idézet 420, kézi 364 látott jelzőszó az S2 végén; az S2a után 171, 326, 240); ISTENTISZT-001 0 (134, 208, 185). Mutációs próba: még nincs. Átszökési arány: még nincs mérés (az 1. ellenőrzés és a felhasználó átnézése után).
+Festékpróba: HAMART-001 0 szivárgás (belső 191, idézet 420, kézi 394 látott jelzőszó, ebből 30 horgonyban; az S2a után 171, 326, 240); ISTENTISZT-001 0 (134, 208, 203; 18 horgonyban). Átszökési arány az S2-ben: a zöld kapuk után az ellenőr 2 hibát talált (1 hiányzó kapu, 1 a festékpróba vakfoltja). Mutációs próba: még nincs. Átszökési arány: még nincs mérés (az 1. ellenőrzés és a felhasználó átnézése után).
 
 ## Session-váltások, kompaktálások
 
