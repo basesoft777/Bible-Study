@@ -647,3 +647,22 @@ Az ideiglenes fájlok (szkriptek, generált lapok) a repón kívül, a scratchpa
 *Proveniencia: `scope=git diff -U0 HEAD -- adat/lapgen_sablonok.tsv adat/olvasoi_nevtabla.tsv adat/lapgen_bemenetek.tsv (a hozzáadott sorok megszámolva) | forras=a munkafa az F218.6 (1) commit előtt | ts=2026-11-13`.*
 
 **Ami az S3-ból hátravan:** a 4.2 kártyák (654 sor), a 4.6–4.9 és a 4.12–4.14 pont, a B36 frissességi kapuja (GK-03), a GK-15 Thayer-része (az 5 elavult sor), GK-18, GK-19, GK-N178, HN-12, HN-15, és az S3 végi független ellenőrzés. A sorrend a folytatási fájl „Következő lépés” pontjában áll.
+
+## F218.6 — S3, második rész: a 4.7 és a 4.9 pont (`claude-fable-5-2`, 2026-11-13, a 4. session)
+
+**Mi készült el.** A 4.9 (Versenkénti jelentés) és a 4.7 (Megfelelők a másik nyelven) pont mindkét nyelven. Új modulok: `szamitas/szotari_sece.py`, `szamitas/szotari_tipusok.py` (a pontok közös adatosztályai); bővült a `bemenet/szotari.py` (B28: a kétnyelvű szótár; B42: a Strong-szótár származtatása; a szóalak → Strong index), a `bemenet/szavak.py` (a forrásban kiírt alak kiejtése, a görög betűnkénti gépi átírás, a görög szócsalád tövei) és a `szamitas/elofordulas.py` (`ubs_cellak`: a 2. tábla UBS-cellájának számítása önállóan hívható, így a 4.9 a modellből számol, nem a kiírt cella szövegéből).
+
+**Mérés.** A 4. szakasz 37 alblokkjából 21 kész (427 sor a referencia 1 360 sorából), 16 nincs kész. A kész alblokkokban 3 diff-sor áll, mind engedéllyel: `S3-FORRAS` (1; a blokkfejléc forráslistája a valódi olvasásból) és `S3-HN15` (2; a két nyelvrész betűre azonos jegyzete, ezért egy engedélysor 2 darabbal). A HN-15 előre rögzített száma (az F218.1 alapmérése) 2: egyezik. Festékpróba: 0 szivárgás mindkét lapon. Tesztek: 189 (158 zöld, 31 váz); a vázból a GK-16 és a HN-15 valódi tesztté vált.
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; python eszkozok/lapgen/tesztek/futtat.py | forras=a munkafa az F218.6 (2) commit előtt | ts=2026-11-13`.*
+
+**HN-15 (GK-28, a SECE-mondat).** A 4.7 táblái alatti jegyzet a régi lapon azt állítja, hogy a görög rövid jelentés „a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs)”. A valós állapot: a görög rövid jelentés a lexikon fordítástáblájából jön, magyarul (a tábla soraiban magyar szöveg áll). Az új mondat a két forrást a névtáblából nevezi meg (B15, B14: mindkettőt olvassa a szakasz, teszt ellenőrzi). Új sablonmondat (`s4.p7.labjegyzet`, `eredet=uj`, `dontes=var`): a 218a végi listába.
+
+**Egyeztetett eltérések a régi kódtól** (a kimenet a HN-15 két során kívül bájtra egyezik):
+- A 4.9 számlálója a lapmodellt olvassa; a régi kód a kiírt cella szövegében kereste a „[ⓘ]” jelet és a „nem egyértelmű” szót.
+- A görög szócsalád töve és a kiírt alak gépi átírása a bemeneti rétegben képződik (összevetési kulcs, illetve idézhető kiejtés); a számítási rétegben szövegművelet nincs.
+- A híd mondatában a szó rövid jelentése csak magyarul áll; a hiánya itt nem kerül a fordítás-állapot listájára (a szó a táblában jelölve áll).
+
+**Új táblasorok.** Jegyzék: +2 (B28, B42). Névtábla: +1 (`forras`: B15). Sablontábla: +52, eredet szerint: a régi generátor szimbóluma 51, `uj` 1 (`s4.p7.labjegyzet`); szakasz szerint: 4 (közös) 8, 4.7 23, 4.9 21.
+*Proveniencia: `scope=git diff -U0 HEAD -- adat/lapgen_sablonok.tsv adat/olvasoi_nevtabla.tsv adat/lapgen_bemenetek.tsv (a hozzáadott sorok megszámolva) | forras=a munkafa az F218.6 (2) commit előtt | ts=2026-11-13`.*
+
+**Megállás.** A session a kontextusa miatt zár (60% fölött; a szabály 70%-nál zárást ír elő, és a hátralévő legkisebb pont sem fér bele biztonsággal). Az S3 nem zárult le: hátravan a 4.2 (654 sor), a 4.6, a 4.8, a 4.12–4.14, a B36 frissességi kapuja (GK-03), a GK-15 Thayer-része, GK-18, GK-19, GK-N178, HN-12. **Az S3 végi célzott független ellenőrzés ezért nem futott:** az S3 lezárásakor esedékes, a 3. ellenőrzés javítókörének két tételével együtt (a tartomány eleje: `28be9127`, illetve az S3-ra `03636753`).

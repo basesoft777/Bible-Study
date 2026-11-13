@@ -169,6 +169,94 @@ class SeptuagintaMegfelelo(unittest.TestCase):
         self.assertEqual({o.utvonal: o.sha256 for o in masik.olvasasi_naplo() if o.b_id == 'B35'}, naplozott)
 
 
+class Versenkenti(unittest.TestCase):
+    def test_a_szamok_a_2_tabla_ubs_cellajabol(self):
+        """A versenkénti pont számai a 2. tábla UBS-cellájának modelljéből jönnek: szavanként a helyek száma a szó
+        nyelvének szövetségében (saját számlálás), és a három részszám kiadja a helyek számát."""
+        for azonosito in kozos.MINTALAPOK:
+            m, b = modell(azonosito)
+            sorok = bemenet.b03_elofordulasok(b, MotivumId(azonosito))
+            konyvek = bemenet.b63_konyvek(b)
+            for resz in m.nyelvek:
+                heber = resz.nyelv is sz.Nyelv.HEBER
+                for s in resz.versenkent.szavak:
+                    sajat = sum(1 for sor in sorok if s.szo.strong in sor.strongok
+                                and konyvek.ujszovetsegi(sor.igehely.konyv) != heber)
+                    self.assertEqual(s.helyek, sajat, (azonosito, s.szo.strong))
+                    self.assertGreaterEqual(s.helyek - s.egy - s.tobb, 0)
+                    self.assertEqual(len(s.nem_egy), s.helyek - s.egy)
+
+    def test_kovetkeztetes_csak_eleg_helynel(self):
+        """Ha minden szó legfeljebb `VERSENKENTI_KIS` helyen áll, a pont nem von le következtetést; különben a
+        fokozat az egy jelentésű helyek arányából jön."""
+        m, _b = modell('HAMART-001')
+        gorog, heber = m.nyelvek
+        self.assertIsNone(gorog.versenkent.fok)
+        self.assertLessEqual(max(s.helyek for s in gorog.versenkent.szavak), konfig.VERSENKENTI_KIS)
+        vannak = [s for s in heber.versenkent.szavak if s.helyek]
+        self.assertEqual(heber.versenkent.fok,
+                         sz.fok(sum(s.egy for s in vannak) / sum(s.helyek for s in vannak)))
+        self.assertIs(sz.fok(0.95), sz.Fok.SZINTE)
+        self.assertIs(sz.fok(0.67), sz.Fok.TOBBSEG)
+        self.assertIs(sz.fok(0.5), sz.Fok.FELE)
+        self.assertIs(sz.fok(0.1), sz.Fok.KEVES)
+
+
+class MasikNyelv(unittest.TestCase):
+    def test_a_hid_a_motivum_szavai_kozott(self):
+        """A kétnyelvű szótár hídja: a megfelelő a motívum saját szava (pontos), vagy héber szónál a görög megfelelő
+        szócsaládjából áll a motívum szava az Újszövetségben; a helyek listája legfeljebb `HID_HELYEK` elemű."""
+        m, _b = modell('HAMART-001')
+        gorog, heber = m.nyelvek
+        self.assertEqual([[x.strong.kod for x in p.szavak] for p in gorog.sece.pontosak], [['G1311', 'G5351']])
+        self.assertEqual([[x.strong.kod for x in p.megfelelok] for p in gorog.sece.pontosak], [['H7843']])
+        self.assertTrue(gorog.sece.pontosak[0].tovabbi)
+        self.assertEqual(len(gorog.sece.pontosak[0].helyek), konfig.HID_HELYEK)
+        self.assertEqual(gorog.sece.csaladok, ())
+        self.assertEqual([cs.szo.strong.kod for cs in heber.sece.csaladok], ['H0779'])
+        self.assertEqual([t.szo.strong.kod for t in heber.sece.csaladok[0].tagok], ['G1944', 'G2671'])
+        self.assertEqual([[x.strong.kod for x in p.megfelelok] for p in heber.sece.pontosak], [['G1311', 'G5351']])
+        self.assertIs(heber.sece.maradek, gorog.sece.maradek)
+        self.assertEqual(heber.sece.maradek.value, 'tobbi')
+
+    def test_a_tabla_minden_szora_all(self):
+        """Szavanként egy tábla (vagy a lista kimondott hiánya); a motívum szava jelölve; a Strong-szám nélküli
+        sornak nincs kiejtése és jelentése."""
+        for azonosito in kozos.MINTALAPOK:
+            m, _b = modell(azonosito)
+            sajat = {szo.strong for szo in m.szavak}
+            for resz in m.nyelvek:
+                self.assertEqual([t.szo for t in resz.sece.tablak], list(resz.szavak))
+                for tabla in resz.sece.tablak:
+                    for sor in tabla.sorok or ():
+                        self.assertEqual(sor.motivum_szava, any(st in sajat for st in sor.strongok))
+                        self.assertEqual(len(sor.jelentesek), len(sor.strongok))
+                        if not sor.strongok:
+                            self.assertIsNone(sor.kiejtes)
+
+    def test_a_kiirt_gorog_alak_gepi_atirasa(self):
+        """A szótári alaktól eltérő, forrásban kiírt görög alak kiejtése a kiírt alak gépi átírásából jön."""
+        from lapgen.bemenet import szavak
+        self.assertEqual(szavak.gorog_gepi_atiras('ἀπόλλυμι'), 'apollymi')
+        self.assertEqual(szavak.gorog_gepi_atiras('ᾅδης'), 'hadēs')
+        self.assertEqual(szavak.gorog_gepi_atiras('εὐλογέω'), 'eulogeō')
+        self.assertEqual(szavak.gorog_gepi_atiras('ῥῆμα'), 'rēma')
+
+    def test_hn15_hamis_allapotmondat(self):
+        """HN-15, GK-28 (a SECE-mondat): a megfelelők táblája alatti jegyzet a rövid jelentés forrását a valóban
+        olvasott tábla nevével nevezi meg; a hamis „magyar rövid glossza-tábla a görögre még nincs” mondat egyik új
+        lapon sem áll."""
+        for azonosito in kozos.MINTALAPOK:
+            eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito))
+            sorok = [sor.szoveg for sor in eredmeny.nezetek[konfig.NEZET_TUDOMANYOS]]
+            self.assertFalse([s for s in sorok if 'még nincs' in s and 'glossza' in s], azonosito)
+            jegyzet = [s for s in sorok if s.startswith('*A szólista és a sorrend a SECE-é')]
+            self.assertEqual(len(jegyzet), 2, azonosito)
+            self.assertTrue(all('görögül a lexikon fordítástáblája' in s for s in jegyzet))
+            self.assertIn('B14', {o.b_id for o in eredmeny.naplo})
+            self.assertIn('B15', {o.b_id for o in eredmeny.naplo})
+
+
 class ReszlegesRegresszio(unittest.TestCase):
     REGI = '## 4. Szótári háttér\n\nbevezető\n\n### A\n\n#### 4.1. x\n\nrégi egy\n\n#### 4.2. y\n\nrégi kettő\n\n' \
            '<!-- GENERÁLT-VÉGE: z -->\n\n### Rés\n\nkézi\n'

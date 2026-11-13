@@ -221,10 +221,6 @@ class Hibanaplo(unittest.TestCase):
     def test_hn12_angol_thayer_nyersen(self):
         """HN-12: nyers angol Thayer-szöveg nem kerül a lapra."""
 
-    @unittest.skip(S3)
-    def test_hn15_hamis_allapotmondat(self):
-        """HN-15: „magyar rövid glossza-tábla a görögre még nincs”: 0 találat."""
-
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

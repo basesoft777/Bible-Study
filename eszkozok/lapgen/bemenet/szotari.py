@@ -8,6 +8,7 @@ A nagy szövegkiadás (B35, B36) soraiból csak az index marad meg (`Bemenet._na
 """
 import json
 import re
+import unicodedata
 
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.szoveg import Strong
@@ -219,3 +220,82 @@ def b35_lxx_szo_versszam(b):
             raise BemenetHiba('B35: a Septuaginta szövegkiadásának egyetlen fájlja sincs meg')
         return b._nagy_index('B35', utvonalak, _versszam_index)
     return b.egyszer('B35', betolt)
+
+
+_SECE_OSZLOPOK = ('Strong_padded', 'Teljes_szocikk')
+_SECE_MEZO_RX = {'G': re.compile(r'\sHebrew:\s(.*?)\sDerivation:'), 'H': re.compile(r'\sGreek:\s(.*?)\sDerivation:')}
+_SECE_CIMSZO_VEG = ' ('
+_ALAP_HOSSZ = 5
+_SZARMAZAS_RX = re.compile(r'\((G\d{4})\)')
+
+
+def nfc(szoveg):
+    return unicodedata.normalize('NFC', szoveg.strip())
+
+
+class Sece:
+    """A kétnyelvű szótár (SECE): szavanként a másik nyelvi megfelelők listája, és a szócikkek címszavai."""
+
+    def __init__(self, b, megfelelok, cimszavak):
+        self._b, self._megfelelok, self.cimszavak = b, megfelelok, cimszavak
+
+    def megfelelok(self, strong):
+        """A szó másik nyelvi megfelelői a szótár rendjében, ismétlés nélkül, idézhető forrásszövegként; None, ha a
+        szótárnak nincs szócikke a szóra, vagy a szócikkben nincs megfelelő-lista."""
+        lista = self._megfelelok.get(strong.kod)
+        if not lista:
+            return None
+        return tuple(self._b.forrasszoveg('B28', 'megfelelo', szo, strong) for szo in lista)
+
+
+def b28_sece(b):
+    """B28 — a kétnyelvű szótár (SECE) görög és héber kötete: a görög szócikk `Hebrew:`, a héber szócikk `Greek:`
+    mezőjének szólistája, és a szócikkek címszava (a szócikk szövegének eleje az első zárójelig)."""
+    def betolt():
+        megfelelok, cimszavak = {}, []
+        for utvonal in b._utvonalak('B28'):
+            tabla = b._tabla('B28', utvonal=utvonal, oszlopok=_SECE_OSZLOPOK)
+            st, sz = (tabla.oszlop(o) for o in _SECE_OSZLOPOK)
+            for sor in tabla.sorok:
+                cimszavak.append((sor[sz].split(_SECE_CIMSZO_VEG)[0], sor[st]))
+                m = _SECE_MEZO_RX[sor[st][0]].search(sor[sz]) if sor[st][:1] in _SECE_MEZO_RX else None
+                if not m:
+                    continue
+                lista = []
+                for elem in m.group(1).split(','):
+                    if elem.strip() and elem.strip() not in lista:
+                        lista.append(elem.strip())
+                if lista:
+                    megfelelok[sor[st]] = tuple(lista)
+        return Sece(b, megfelelok, tuple(cimszavak))
+    return b.egyszer('B28', betolt)
+
+
+def b42_szarmazas(b):
+    """B42 — a Strong-szótár származtatás-mezőjében hivatkozott görög Strong-szám: {Strong kódja: a hivatkozott
+    Strong kódja} (a szócsalád megállapításához)."""
+    def betolt():
+        tabla = b._tabla('B42', oszlopok=('Strong-szám', 'Gyök/Származtatás'))
+        s, g = tabla.oszlop('Strong-szám'), tabla.oszlop('Gyök/Származtatás')
+        ki = {}
+        for sor in tabla.sorok:
+            m = _SZARMAZAS_RX.search(sor[g])
+            if m:
+                ki[sor[s]] = m.group(1)
+        return ki
+    return b.egyszer('B42', betolt)
+
+
+def lemma_strong_index(b, lemmak):
+    """A szóalak → Strong-számok index: a rövid szótárak lemmáiból (`lemmak`: {Strong kódja: (lemma, átírás)}) és a
+    kétnyelvű szótár címszavaiból; a kulcs az alak NFC-alakja, az érték a betűutótag nélküli Strong-kódok rendezve.
+    A kétnyelvű szótár megfelelő-listája csak a szóalakot adja: a Strong-szám ebből párosul (több találatnál mind)."""
+    def epit():
+        index = {}
+        for strong, (lemma, _atiras) in lemmak.items():
+            index.setdefault(nfc(lemma), set()).add(strong[:_ALAP_HOSSZ])
+        for cimszo, strong in b28_sece(b).cimszavak:
+            if nfc(cimszo):
+                index.setdefault(nfc(cimszo), set()).add(strong[:_ALAP_HOSSZ])
+        return {alak: tuple(sorted(strongok)) for alak, strongok in index.items()}
+    return b.egyszer('lemma_strong_index', epit)

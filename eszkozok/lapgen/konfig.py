@@ -79,3 +79,21 @@ DOMEN_KULCS = 'domen'
 # A lapon megnevezett forrás licence a licencleltár kulcsa szerint (a licenc szövege a leltárból jön)
 LICENC_ROVID_SZOTAR = {'gorog': 'TBESG', 'heber': 'TBESH'}
 LICENC_TW = 'tW_szocikkek'
+
+# Az arány fokozatai a következtetés mondatához: (alsó határ, fokozat), csökkenő rendben
+FOKOK = ((0.90, 'szinte'), (0.67, 'tobbseg'), (0.50, 'fele'), (0.0, 'keves'))
+VERSENKENTI_KIS = 2     # ha minden szó legfeljebb ennyi helyen áll, a versenkénti pont nem von le következtetést
+
+# 4.7 (Megfelelők a másik nyelven): a híd mondatában ennyi igehely áll; a görög szócsalád előtagjai és a tő hossza
+HID_HELYEK = 4
+GOROG_ELOTAGOK = ('επι', 'κατα', 'κατ', 'δια', 'δι', 'συν', 'εκ', 'απο', 'προ')
+GOROG_TO_HOSSZ = 3
+GOROG_ELOTAG_MARADEK = 2    # az előtag csak akkor válik le, ha utána ennél több betű marad
+
+# A görög szó betűnkénti latin átírása (a forrásban kiírt, a szótári alaktól eltérő alak kiejtéséhez)
+GOROG_BETU_ATIRAS = {
+    'α': 'a', 'β': 'b', 'γ': 'g', 'δ': 'd', 'ε': 'e', 'ζ': 'z', 'η': 'ē', 'θ': 'th', 'ι': 'i', 'κ': 'k', 'λ': 'l',
+    'μ': 'm', 'ν': 'n', 'ξ': 'x', 'ο': 'o', 'π': 'p', 'ρ': 'r', 'σ': 's', 'ς': 's', 'τ': 't', 'υ': 'y', 'φ': 'ph',
+    'χ': 'ch', 'ψ': 'ps', 'ω': 'ō',
+}
+GOROG_KETTOSHANGZO_ELOTAG = 'αεηο'   # ezek után az υ kettőshangzó része: „u”

@@ -252,18 +252,41 @@ def _ubs_dbh(igehely, strongok, versek, f):
     return UbsCella(UbsForras.DBH, tuple(tokenek))
 
 
+def _ubs_cella(sor, versek, f):
+    """A sor „UBS-jelentés” cellája: újszövetségi sornál a görög, ószövetséginél a héber UBS-szótárból."""
+    mutatott = (sor.sajat_szo,) if sor.sajat_szo is not None else sor.strongok
+    if sor.tematikus and not sor.strongok and sor.sajat_szo is None:
+        return UbsCella(UbsForras.NEM_ALKALMAZHATO, ())
+    usz_versek = ubs.usz_versek(sor.igehely, f.konyvek)
+    if usz_versek is not None:
+        return _ubs_dntg(sor.igehely, mutatott, usz_versek, f)
+    return _ubs_dbh(sor.igehely, mutatott, versek, f)
+
+
+class _UbsForrasok:
+    """Az UBS-cella bemenetei (a 2. tábla teljes bemenetkészlete nélkül)."""
+
+    def __init__(self, b):
+        self.konyvek = bemenet.b63_konyvek(b)
+        self.karoli = bemenet.b07_karoli(b)
+        self.forditasok = ubs.b14_forditasok(b)
+        self.dntg = ubs.b32_ubs_dntg(b)
+        self.dbh = ubs.b33_ubs_dbh(b)
+        self.versmegfeleltetes = ubs.b34_versmegfeleltetes(b)
+
+
+def ubs_cellak(b, sorok):
+    """Az előfordulás-sorok UBS-cellái ugyanazzal a számítással, amellyel a 2. tábla készül: [(sor, cella)]. A
+    Szótári háttér versenkénti pontja ebből számol, nem a kiírt cella szövegéből."""
+    f = _UbsForrasok(b)
+    return tuple((sor, _ubs_cella(sor, f.karoli.versek(sor.igehely), f)) for sor in sorok)
+
+
 def _sor(sor, f):
     versek = f.karoli.versek(sor.igehely)
     mutatott = (sor.sajat_szo,) if sor.sajat_szo is not None else sor.strongok
     szo_nelkul = sor.tematikus and not sor.strongok and sor.sajat_szo is None
-    if szo_nelkul:
-        ubs_cella = UbsCella(UbsForras.NEM_ALKALMAZHATO, ())
-    else:
-        usz_versek = ubs.usz_versek(sor.igehely, f.konyvek)
-        if usz_versek is not None:
-            ubs_cella = _ubs_dntg(sor.igehely, mutatott, usz_versek, f)
-        else:
-            ubs_cella = _ubs_dbh(sor.igehely, mutatott, versek, f)
+    ubs_cella = _ubs_cella(sor, versek, f)
     return ElofordulasSor(
         igehely=sor.igehely, horgony=sor.igehely.horgony(),
         karoli_szo=idezet(sor.karoli_szo) if sor.karoli_szo else None,

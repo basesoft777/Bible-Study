@@ -9,8 +9,9 @@ from lapgen.megjelenites.md import keret as K
 from lapgen.szamitas.szocikkek import Nyelv
 
 AZONOSITO = 'szocikkek'
-HATASTORTENET = 'hatastortenet'
+HATASTORTENET, ELOFORDULASOK = 'hatastortenet', 'elofordulasok'
 FEJLEC_ATTEKINTES = ('s4.att.fejlec.szo', 's4.att.fejlec.jelentes', 's4.att.fejlec.lxx', 's4.att.fejlec.helyek')
+FEJLEC_SECE = ('s4.p7.fejlec.szo', 's4.p7.fejlec.kiejtes', 's4.p7.fejlec.strong', 's4.p7.fejlec.jelentes')
 PONT_NEV_TIPUS = 'szotari_pont'
 
 
@@ -37,14 +38,14 @@ def szoveg_allapottal(ny, szoveg):
     return szoveg.szoveg
 
 
-def jelentes(ny, j):
+def jelentes(ny, j, tablaban=False):
     """A rövid jelentés: magyarul; magyar híján az angol eredeti, „fordításra vár” jelöléssel; ha az sincs, a
-    hiány kimondva."""
+    hiány kimondva (táblacellában a hiány jele áll)."""
     if j.magyar is not None:
         return ny.s('s4.felulvizsgalat', szoveg=j.magyar) if j.elavult else j.magyar
     if j.angol is not None:
         return ny.s('s4.forditasra_var', szoveg=j.angol)
-    return ny.s('s4.jelentes.nincs')
+    return ny.s('jel.nincs') if tablaban else ny.s('s4.jelentes.nincs')
 
 
 def _pont_cim(iro, ny, szakasz, pont, cim=None):
@@ -134,11 +135,145 @@ def _kiejtes(iro, ny, szakasz, resz, keret):
         _bekezdes(iro, ny.s('s4.p10.sor', szo=szo_iras(ny, szo), strong=szo.strong))
 
 
+def szo_nevelovel(ny, szo):
+    """A szó írással és kiejtéssel, határozott névelővel (a névelő a kiejtés szerint): „az אָבַל (ával)”."""
+    if szo.alak is None:
+        return ny.s('d12.szo.strong', strong=szo.strong)
+    if szo.kiejtes is None:
+        return ny.s('s4.szo.nevelovel.kiejtes_nelkul', alak=szo.alak)
+    return ny.s('s4.szo.nevelovel', alak=szo.alak, kiejtes=szo.kiejtes)
+
+
+def _szo_nagy_nevelovel(ny, szo):
+    """Mondatkezdő alak: a névelő nagybetűvel („Az אָרַר (árar)”)."""
+    if szo.alak is None:
+        return ny.s('d12.szo.strong', strong=szo.strong)
+    if szo.kiejtes is None:
+        return ny.s('s4.szo.nevelovel.nagy.kiejtes_nelkul', alak=szo.alak)
+    return ny.s('s4.szo.nevelovel.nagy', alak=szo.alak, kiejtes=szo.kiejtes)
+
+
+def _alany(ny, szavak):
+    """Mondatkezdő felsorolás: az első szó nagybetűs névelővel, a többi kisbetűssel."""
+    return tuple(_szo_nagy_nevelovel(ny, szo) if i == 0 else szo_nevelovel(ny, szo) for i, szo in enumerate(szavak))
+
+
+def _jelenteses(ny, j, szo):
+    return ny.s('s4.szo.jelentessel', szo=szo, jelentes=j.jelentes) if j.jelentes is not None else szo
+
+
+def _helyek(ny, helyek, tovabbi=False):
+    elemek = [ny.s('s4.hely', hely=hely) for hely in helyek]
+    if tovabbi:
+        elemek.append(ny.s('s4.tovabbiak'))
+    return tuple(elemek)
+
+
+def _sece_bevezeto(ny, resz):
+    nyelv, sece = resz.nyelv.value, resz.sece
+    mondatok = [ny.s(ny.kulcs('s4.p7.bevezeto', nyelv))]
+    for cs in sece.csaladok:
+        mondatok.append(ny.s(
+            's4.p7.csalad', szo=_szo_nagy_nevelovel(ny, cs.szo),
+            megfelelo=_jelenteses(ny, cs.megfelelo, szo_iras(ny, cs.megfelelo.szo)),
+            tagok=tuple(_jelenteses(ny, t, szo_nevelovel(ny, t.szo)) for t in cs.tagok), helyek=_helyek(ny, cs.helyek)))
+    for p in sece.pontosak:
+        if resz.nyelv is Nyelv.HEBER:
+            mondatok.append(ny.s('s4.p7.pontos.heber' if len(p.megfelelok) > 1 else 's4.p7.pontos.heber.egy',
+                                 szavak=_alany(ny, p.szavak), megfelelok=tuple(szo_iras(ny, m) for m in p.megfelelok),
+                                 helyek=_helyek(ny, p.helyek)))
+        else:
+            mondatok.append(ny.s('s4.p7.pontos.gorog' if len(p.szavak) > 1 else 's4.p7.pontos.gorog.egy',
+                                 szavak=_alany(ny, p.szavak),
+                                 megfelelok=tuple(szo_nevelovel(ny, m) for m in p.megfelelok),
+                                 helyek=_helyek(ny, p.helyek, p.tovabbi)))
+    if sece.maradek.value != 'nincs':
+        mondatok.append(ny.s(ny.kulcs('s4.p7.zaro', sece.maradek.value)))
+    return ny.s('s4.mondatok', mondatok=tuple(mondatok))
+
+
+def _sece_sor(ny, sor):
+    if not sor.strongok:
+        return (sor.szo, ny.s('jel.nincs'), ny.s('jel.nincs'), ny.s('jel.nincs'))
+    szo = ny.s('s4.p7.szo.motivum', szo=sor.szo) if sor.motivum_szava else sor.szo
+    kiejtes = sor.kiejtes if sor.kiejtes is not None else ny.s('jel.nincs')
+    if len(sor.strongok) == 1:
+        return (szo, kiejtes, ny.s('d12.szo.strong', strong=sor.strongok[0]),
+                jelentes(ny, sor.jelentesek[0], tablaban=True))
+    return (szo, kiejtes, ny.s('s4.p7.strongok', strongok=sor.strongok),
+            ny.s('s4.p7.jelentesek', elemek=tuple(
+                ny.s('e2.jelentes.tokenenkent', strong=st, tartalom=jelentes(ny, j, tablaban=True))
+                for st, j in zip(sor.strongok, sor.jelentesek))))
+
+
+def _masik_nyelv(iro, ny, szakasz, resz, keret):
+    nyelv = resz.nyelv.value
+    K.olvasoi_bekezdes(iro, _sece_bevezeto(ny, resz))
+    for tabla in resz.sece.tablak:
+        if tabla.sorok is None:
+            _bekezdes(iro, ny.s(ny.kulcs('s4.p7.nincs_lista', nyelv), strong=tabla.szo.strong))
+            continue
+        if tabla.szo.alak is None:
+            cim = ny.s(ny.kulcs('s4.p7.tabla_cim', nyelv, 'csak_strong'), strong=tabla.szo.strong, n=len(tabla.sorok))
+        else:
+            cim = ny.s(ny.kulcs('s4.p7.tabla_cim', nyelv), strong=tabla.szo.strong, szo=szo_iras(ny, tabla.szo),
+                       n=len(tabla.sorok))
+        _bekezdes(iro, cim)
+        iro.tabla_sor(tuple(ny.s(kulcs) for kulcs in FEJLEC_SECE))
+        iro.tabla_elvalaszto(len(FEJLEC_SECE))
+        for sor in tabla.sorok:
+            iro.tabla_sor(_sece_sor(ny, sor))
+        iro.ures()
+    if resz.sece.tablak:
+        _bekezdes(iro, ny.s('s4.p7.labjegyzet', heber=ny.nev('forras', 'B15'), gorog=ny.nev('forras', 'B14')))
+
+
+def _versenkenti_bevezeto(ny, nyelv, v):
+    """A versenkénti pont összegző mondata: lelet (mely szavak jelentése egyértelmű a helyén), és ahol az elemszám
+    engedi, következtetés."""
+    vannak = [s for s in v.szavak if s.helyek]
+    if not vannak:
+        return ny.s('s4.p9.bevezeto.ures')
+    egy = [s for s in vannak if s.egy == s.helyek]
+    tobb = [s for s in vannak if s.egy < s.helyek]
+    if not tobb:
+        lelet = ny.s(ny.kulcs('s4.p9.lelet.mind', nyelv), n=v.hely_szam)
+    else:
+        kivetelek = tuple(ny.s('s4.p9.kivetel', szo=szo_nevelovel(ny, s.szo), helyek=s.nem_egy) for s in tobb)
+        if egy:
+            lelet = ny.s(ny.kulcs('s4.p9.lelet.vegyes', nyelv), egy=tuple(szo_nevelovel(ny, s.szo) for s in egy),
+                         tobb=kivetelek, n=len({hely for s in tobb for hely in s.nem_egy}), ossz=v.hely_szam)
+        else:
+            lelet = ny.s(ny.kulcs('s4.p9.lelet.egyik_sem', nyelv), tobb=kivetelek)
+    if v.fok is None:
+        return lelet
+    return ny.s('s4.p9.kovetkeztetessel', lelet=lelet, kov=ny.s(ny.kulcs('s4.p9.kov', v.fok.value)))
+
+
+def _versenkent(iro, ny, szakasz, resz, keret):
+    nyelv, v = resz.nyelv.value, resz.versenkent
+    K.olvasoi_bekezdes(iro, _versenkenti_bevezeto(ny, nyelv, v))
+    _bekezdes(iro, ny.s('s4.p9.mutato', szam=keret.rend.sorszam(ELOFORDULASOK),
+                        cim=ny.s(keret.rend.cim_kulcs(ELOFORDULASOK)),
+                        horgony=K.szakasz_horgony(keret, ELOFORDULASOK),
+                        forras=ny.nev('forras', 'B32' if resz.nyelv is Nyelv.GOROG else 'B33')))
+    for s in v.szavak:
+        if not s.helyek:
+            _bekezdes(iro, ny.s(ny.kulcs('s4.p9.sor.nincs', nyelv), szo=szo_iras(ny, s.szo), strong=s.szo.strong))
+            continue
+        reszek = [ny.s(kulcs, n=n) for kulcs, n in (('s4.p9.egy', s.egy), ('s4.p9.tobb', s.tobb),
+                                                    ('s4.p9.nincs', s.helyek - s.egy - s.tobb)) if n]
+        _bekezdes(iro, ny.s(ny.kulcs('s4.p9.sor', nyelv), szo=szo_iras(ny, s.szo), strong=s.szo.strong, n=s.helyek,
+                            reszek=tuple(reszek)))
+
+
 _PONTOK = {
     konfig.PONT_ALAPJELENTES: _alapjelentes,
     konfig.PONT_TEOLOGIAI: _teologiai,
     konfig.PONT_DOMEN: _domen,
     konfig.PONT_TOMOR: _tomor,
+    konfig.PONT_MASIK_NYELV: _masik_nyelv,
+    konfig.PONT_VERSENKENT: _versenkent,
     konfig.PONT_KIEJTES: _kiejtes,
 }
 

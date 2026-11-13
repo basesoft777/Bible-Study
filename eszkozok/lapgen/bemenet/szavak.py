@@ -16,6 +16,7 @@ import unicodedata
 import heber_kiejtes
 import kiejtes as kiejtes_modul
 
+from lapgen import konfig
 from lapgen.bemenet.jegyzek import BemenetHiba
 
 _ZARO_IRASJEL_RX = re.compile(r'[,.;·]+$')
@@ -285,6 +286,77 @@ class Kiejtes:
                 forras, szoveg = 'B13', self._heber_gepi(lemma.split(_LEMMA_VALASZTO)[0].strip(), 0, False)
         return Szo(strong, self._b.forrasszoveg('B10', 'lemma', lemma, strong),
                    self._b.forrasszoveg(forras, 'kiejtes', szoveg, strong) if szoveg else None)
+
+
+    def gorog_tovek(self, strong):
+        """A görög szó tövei a szócsalád megállapításához (összevetési kulcsok): a szótári alak ékezetek nélkül, az
+        igekötők leválasztásával, a tő elejével. None, ha a szó nincs a szótárban."""
+        nyers = b10_lemmak(self._b)
+        sor = nyers[0].get(strong.kod) or nyers[1].get(strong.kod)
+        if not sor:
+            return None
+        alap = ''.join(c for c in unicodedata.normalize('NFD', sor[0].lower()) if not unicodedata.combining(c))
+        tovek, varolista = set(), [alap]
+        while varolista:
+            x = varolista.pop()
+            gyerek = [x[len(e):] for e in konfig.GOROG_ELOTAGOK
+                      if x.startswith(e) and len(x) > len(e) + konfig.GOROG_ELOTAG_MARADEK]
+            if gyerek:
+                varolista.extend(gyerek)   # az előtagos alak eleje nem tő: csak az előtag nélküli alaké
+            else:
+                tovek.add(x[:konfig.GOROG_TO_HOSSZ])
+        return frozenset(tovek)
+
+    def lemmak(self):
+        """A rövid szótárak szavai a szótár saját Strong-kulcsán: {Strong kódja: (lemma, átírás)}."""
+        return b10_lemmak(self._b)[0]
+
+    def alak_kiejtes(self, strong, alak, versek=()):
+        """Egy forrásban kiírt szóalak kiejtése (a kétnyelvű szótár megfelelő-listájához): ha az alak a szó szótári
+        alakja (héberül: ugyanaz a szó, legfeljebb más pontírással), a szótári alak kiejtése; ha más héber alak, annak
+        jóváhagyott vagy gépi kiejtése; ha más görög alak, a kiírt alak gépi átírásának magyaros alakja. None: nincs
+        kiejtés (kimondott hiány)."""
+        szotari = self.szotari(strong, versek)
+        if szotari is None:
+            return None
+        lemma = szotari.alak.ertek
+        if not strong.kod.startswith(_HEBER_ELOTAG):
+            if unicodedata.normalize('NFC', lemma) != unicodedata.normalize('NFC', alak.ertek):
+                gepi = kiejtes_modul.atir(gorog_gepi_atiras(alak.ertek), self._szabalyok, self._gorog_kivetelek)
+                return self._b.forrasszoveg('B12', 'kiejtes', gepi, strong) if gepi else None
+            return szotari.kiejtes
+        elso = lemma.split(_LEMMA_VALASZTO)[0]
+        if (_heber_alap(elso) != _heber_alap(alak.ertek)
+                and self._heber_gepi(alak.ertek, 0, False) != self._heber_gepi(elso, 0, False)):
+            jovahagyott = self._heber_kivetelek.get(unicodedata.normalize('NFC', alak.ertek))
+            if jovahagyott:
+                return self._b.forrasszoveg('B12', 'kiejtes', jovahagyott, strong)
+            gepi = self._heber_gepi(alak.ertek, 0, False)
+            if gepi:
+                return self._b.forrasszoveg('B13', 'kiejtes', gepi, strong)
+        return szotari.kiejtes
+
+
+_SPIRITUS_ASPER = '\u0314'
+_ELSO_BETU_RX = re.compile(r'[^\W\d_]([\u0300-\u036f]*)')
+
+
+def gorog_gepi_atiras(szo):
+    """A görög szó determinisztikus, betűnkénti latin átírása (a szótár átírása híján): ékezetek nélkül, a
+    kettőshangzó υ-ja „u”, a szókezdő erős hehezet „h” (a kezdő ρ kivételével). A betűtábla: `konfig`."""
+    nfd = unicodedata.normalize('NFD', szo)
+    alap = ''.join(c for c in nfd if unicodedata.category(c) != 'Mn').lower()
+    atirt = ''.join('u' if ch == 'υ' and i and alap[i - 1] in konfig.GOROG_KETTOSHANGZO_ELOTAG
+                    else konfig.GOROG_BETU_ATIRAS.get(ch, ch) for i, ch in enumerate(alap))
+    elso = _ELSO_BETU_RX.match(nfd)
+    if elso and _SPIRITUS_ASPER in elso.group(1) and alap[:1] != 'ρ':
+        return 'h' + atirt
+    return atirt
+
+
+def _heber_alap(alak):
+    """A héber alak összevetési kulcsa: a kantillációs jelek és a meteg nélkül, a magánhangzójelekkel."""
+    return unicodedata.normalize('NFC', heber_kiejtes.tisztit(alak).replace(heber_kiejtes.METEG, '').strip())
 
 
 def kiejtes(b):

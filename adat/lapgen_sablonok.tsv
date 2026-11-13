@@ -256,3 +256,55 @@ s4.p10.sor	**{szo}** · {strong}	szo:lathato, strong:strong	4.10	_szerep_tartalo
 cim.szocikkek.kozos	Nyelvfüggetlen szerepek	-	4	szerep_vaz	-
 s4.kozos.bevezeto	A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.	-	4	OLVASOI_SABLON[nyelvfuggetlen]	-
 s4.p11.cim	Visszhang: ókori fordítások (l. [{szam}. {nev}](#{horgony}))	szam:szam, nev:lathato, horgony:horgony	4.11	visszhang_beszur	-
+s4.szo.nevelovel	{alak|a:kiejtes} ({kiejtes})	alak:lathato, kiejtes:lathato	4	_szo_irassal_nevelovel	-
+s4.szo.nevelovel.kiejtes_nelkul	{alak|a}	alak:lathato	4	_szo_irassal_nevelovel	-
+s4.p9.bevezeto.ures	Hogy az egyes versekben a szó melyik jelentésében áll.	-	4.9	OLVASOI_SZEREP[9]	-
+s4.p9.kivetel	{szo} ({helyek|, })	szo:lathato, helyek:lista(igehely)	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.mind.heber	A héber szavak jelentése a motívum minden ószövetségi helyén egyértelmű ({n} hely).	n:szam	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.mind.gorog	A görög szavak jelentése a motívum minden újszövetségi helyén egyértelmű ({n} hely).	n:szam	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.vegyes.heber	A héber szavak közül {egy|, | és } jelentése a helyén egyértelmű; {tobb|, | és } helyén a szótár több jelentést enged, ezeknél a vers dönt (ez {n} hely a motívum {ossz} ószövetségi helyéből).	egy:lista(lathato), tobb:lista(lathato), n:szam, ossz:szam	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.vegyes.gorog	A görög szavak közül {egy|, | és } jelentése a helyén egyértelmű; {tobb|, | és } helyén a szótár több jelentést enged, ezeknél a vers dönt (ez {n} hely a motívum {ossz} újszövetségi helyéből).	egy:lista(lathato), tobb:lista(lathato), n:szam, ossz:szam	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.egyik_sem.heber	A héber szavak egyikének jelentése sem egyértelmű a helyén: {tobb|, | és }; ezeknél a vers dönt.	tobb:lista(lathato)	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.egyik_sem.gorog	A görög szavak egyikének jelentése sem egyértelmű a helyén: {tobb|, | és }; ezeknél a vers dönt.	tobb:lista(lathato)	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kovetkeztetessel	{lelet} **Következtetés:** {kov}.	lelet:lathato, kov:lathato	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kov.szinte	a szavak jelentése a motívum helyein szinte mindenütt egyértelmű	-	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kov.tobbseg	a szavak jelentése a motívum helyeinek többségén egyértelmű	-	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kov.fele	a szavak jelentése a helyek felén-kétharmadán egyértelmű; a többinél a vers dönt	-	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kov.keves	a szavak jelentését a motívum helyeinek többségén a vers dönti el	-	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.mutato	A vers-szintű jelentést a [{szam}. {cim}](#{horgony}) táblázatának „UBS-jelentés” oszlopa mutatja, a szó teljes versenkénti listáját a szónézet. Forrás: {forras}.	szam:szam, cim:lathato, horgony:horgony, forras:nev(forras)	4.9	_tartalom_ubs_oszlop	-
+s4.p9.sor.heber	**{szo}** · {strong} · {n} ószövetségi hely: {reszek|, } · [szónézet](/szo/{strong})	szo:lathato, strong:strong, n:szam, reszek:lista(lathato)	4.9	_tartalom_ubs_oszlop	-
+s4.p9.sor.gorog	**{szo}** · {strong} · {n} újszövetségi hely: {reszek|, } · [szónézet](/szo/{strong})	szo:lathato, strong:strong, n:szam, reszek:lista(lathato)	4.9	_tartalom_ubs_oszlop	-
+s4.p9.sor.nincs.heber	**{szo}** · {strong} · a motívumnak nincs ószövetségi helye ezzel a szóval.	szo:lathato, strong:strong	4.9	_tartalom_ubs_oszlop	-
+s4.p9.sor.nincs.gorog	**{szo}** · {strong} · a motívumnak nincs újszövetségi helye ezzel a szóval.	szo:lathato, strong:strong	4.9	_tartalom_ubs_oszlop	-
+s4.p9.egy	{n} helyen egy jelentés	n:szam	4.9	_tartalom_ubs_oszlop	-
+s4.p9.tobb	{n} helyen több lehetséges, nem egyértelmű jelentés	n:szam	4.9	_tartalom_ubs_oszlop	-
+s4.p9.nincs	{n} helyen nincs hozzárendelés	n:szam	4.9	_tartalom_ubs_oszlop	-
+s4.szo.nevelovel.nagy	{alak|A:kiejtes} ({kiejtes})	alak:lathato, kiejtes:lathato	4	_szo_irassal_nevelovel + _nagy_kezdo	-
+s4.szo.nevelovel.nagy.kiejtes_nelkul	{alak|A}	alak:lathato	4	_szo_irassal_nevelovel + _nagy_kezdo	-
+s4.szo.jelentessel	{szo} ’{jelentes}’	szo:lathato, jelentes:lathato	4	_jelentes_rovid	-
+s4.hely	{hely}	hely:igehely	4	sece_hid_olvasoi	-
+s4.tovabbiak	…	-	4	sece_hid_olvasoi	-
+s4.mondatok	{mondatok| }	mondatok:lista(lathato)	4	sece_hid_olvasoi	-
+s4.p7.bevezeto.heber	A görög Biblia a héber szavakat görög szavakkal adja vissza. Ha ez a görög szó ugyanaz, amely az Újszövetségben áll, a két rész szó szerint is összekapcsolódik.	-	4.7	sece_hid_olvasoi	-
+s4.p7.bevezeto.gorog	Az Újszövetség görög szavai a görög Bibliában héber szavakat fordítanak. Ha a héber szó a motívum saját szava, a két rész szó szerint is összekapcsolódik.	-	4.7	sece_hid_olvasoi	-
+s4.p7.csalad	{szo} a szótár szerint görögül {megfelelo}; ennek szócsaládjából {tagok|, | és } áll az Újszövetségben ({helyek|, }).	szo:lathato, megfelelo:lathato, tagok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.pontos.heber	{szavak|, | és } ilyen: a kétnyelvű szótár szerint görögül {megfelelok|, | és }, és az Újszövetség is ezekkel a szavakkal beszél ({helyek|, }).	szavak:lista(lathato), megfelelok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.pontos.heber.egy	{szavak|, | és } ilyen: a kétnyelvű szótár szerint görögül {megfelelok|, | és }, és az Újszövetség is ezzel a szóval beszél ({helyek|, }).	szavak:lista(lathato), megfelelok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.pontos.gorog	{szavak|, | és } ilyen: a kétnyelvű szótár szerint héberül {megfelelok|, | és } felel meg nekik, és a motívum ószövetségi helyein ez a szó áll ({helyek|, }).	szavak:lista(lathato), megfelelok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.pontos.gorog.egy	{szavak|, | és } ilyen: a kétnyelvű szótár szerint héberül {megfelelok|, | és } felel meg neki, és a motívum ószövetségi helyein ez a szó áll ({helyek|, }).	szavak:lista(lathato), megfelelok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.zaro.tobbi	A többi szónál a szótár nem ad ilyen kapcsolatot.	-	4.7	sece_hid_olvasoi	-
+s4.p7.zaro.mind	A motívum szavainál a szótár nem ad ilyen kapcsolatot.	-	4.7	sece_hid_olvasoi	-
+s4.p7.tabla_cim.gorog	**{strong} — {szo}** · SECE — héber megfelelők ({n}):	strong:strong, szo:lathato, n:szam	4.7	_tartalom_sece	-
+s4.p7.tabla_cim.heber	**{strong} — {szo}** · SECE — görög megfelelők ({n}):	strong:strong, szo:lathato, n:szam	4.7	_tartalom_sece	-
+s4.p7.tabla_cim.gorog.csak_strong	**{strong}** · SECE — héber megfelelők ({n}):	strong:strong, n:szam	4.7	_tartalom_sece	-
+s4.p7.tabla_cim.heber.csak_strong	**{strong}** · SECE — görög megfelelők ({n}):	strong:strong, n:szam	4.7	_tartalom_sece	-
+s4.p7.nincs_lista.gorog	**{strong}** · *a forrás nem tárgyalja* *(SECE: nincs héber megfelelő-lista)*	strong:strong	4.7	_tartalom_sece	-
+s4.p7.nincs_lista.heber	**{strong}** · *a forrás nem tárgyalja* *(SECE: nincs görög megfelelő-lista)*	strong:strong	4.7	_tartalom_sece	-
+s4.p7.fejlec.szo	Szó	-	4.7	sece_tabla	-
+s4.p7.fejlec.kiejtes	Kiejtés	-	4.7	sece_tabla	-
+s4.p7.fejlec.strong	Strong	-	4.7	sece_tabla	-
+s4.p7.fejlec.jelentes	Rövid jelentés	-	4.7	sece_tabla	-
+s4.p7.szo.motivum	**{szo}** *(a motívum szava)*	szo:lathato	4.7	sece_tabla	-
+s4.p7.strongok	{strongok| vagy } *(a SECE csak a szóalakot adja)*	strongok:lista(strong)	4.7	sece_tabla	-
+s4.p7.jelentesek	{elemek| / }	elemek:lista(lathato)	4.7	sece_tabla	-
+s4.p7.labjegyzet	*A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül {heber}, görögül {gorog}.*	heber:nev(forras), gorog:nev(forras)	4.7	uj	var

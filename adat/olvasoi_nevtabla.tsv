@@ -47,3 +47,4 @@ szotari_pont	12	Tematikus index (témák és igehely-hivatkozások)	szotar_szere
 szotari_pont	13	Károli-megfelelők	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
 szotari_pont	14	Rejtett / hamis párhuzam	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
 forras	B32	az UBS Dictionary of New Testament Greek	OLVASOI_FORRASNEV
+forras	B15	a héber glosszák magyar táblája	OLVASOI_FORRASNEV

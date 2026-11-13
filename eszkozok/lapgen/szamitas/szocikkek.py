@@ -17,13 +17,29 @@ from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet import szavak as szavak_be
 from lapgen.bemenet import szotari as szotari_be
 from lapgen.bemenet import ubs as ubs_be
+from lapgen.szamitas import elofordulas as elofordulas_sz
+from lapgen.szamitas import szotari_sece
+from lapgen.szamitas.szotari_sece import Sece
+from lapgen.szamitas.szotari_tipusok import Jelentes, Szo, Szoveg
 from lapgen.szamitas.vizsgalat import KapuHiba
-from lapgen.szoveg import Lathato, Proveniencia, Strong, idezet, prov
+from lapgen.szoveg import Igehely, Lathato, Proveniencia, Strong, idezet, prov
 
 
 class Nyelv(enum.Enum):
     GOROG = szotari_be.NYELV_GOROG
     HEBER = szotari_be.NYELV_HEBER
+
+
+class Fok(enum.Enum):
+    """Egy arány fokozata a következtetés mondatához (a küszöbök: `konfig.FOKOK`)."""
+    SZINTE = 'szinte'
+    TOBBSEG = 'tobbseg'
+    FELE = 'fele'
+    KEVES = 'keves'
+
+
+def fok(arany):
+    return Fok(next(nev for kuszob, nev in konfig.FOKOK if arany >= kuszob))
 
 
 class ForditasFajta(enum.Enum):
@@ -49,32 +65,6 @@ class ForditasAllapot:
 
     def tetelek(self):
         return tuple(self._tetelek)
-
-
-@dataclasses.dataclass(frozen=True)
-class Szo:
-    """A motívum egy szava: a szótári alak és a kiejtés. Az `alak` hiánya: a szó nincs a rövid szótárban (a lapon
-    ilyenkor a Strong-száma áll); a `kiejtes` hiánya kimondott hiány."""
-    strong: Strong
-    alak: Optional[Lathato]
-    kiejtes: Optional[Lathato]
-
-
-@dataclasses.dataclass(frozen=True)
-class Jelentes:
-    """Rövid jelentés: a magyar szöveg, vagy magyar híján az angol eredeti (fordításra vár); mindkettő hiánya: a
-    szótár nem ad rövid jelentést."""
-    magyar: Optional[Lathato]
-    angol: Optional[Lathato]
-    elavult: bool = False
-
-
-@dataclasses.dataclass(frozen=True)
-class Szoveg:
-    """Egy rövid forrásszöveg magyarul vagy (fordításra várva) angolul."""
-    szoveg: Lathato
-    forditasra_var: bool
-    elavult: bool = False
 
 
 @dataclasses.dataclass(frozen=True)
@@ -112,6 +102,27 @@ class DomenSor:
 
 
 @dataclasses.dataclass(frozen=True)
+class VersenkentiSzo:
+    """A versenkénti jelentés pontjának egy sora: a szó helyei a nyelve szövetségében, és ebből hány helyen áll a
+    szótár egy jelentésében, hány helyen több lehetségesben, hány helyen nincs hozzárendelés. A `nem_egy` a nem egy
+    jelentésű helyek igehelye."""
+    szo: Szo
+    helyek: int
+    egy: int
+    tobb: int
+    nem_egy: Tuple[Igehely, ...]
+
+
+@dataclasses.dataclass(frozen=True)
+class Versenkenti:
+    """A versenkénti jelentés pontja: szavanként a számok, a nyelv különböző helyeinek száma, és a következtetés
+    fokozata (None: kis elemszámnál nincs következtetés)."""
+    szavak: Tuple[VersenkentiSzo, ...]
+    hely_szam: int
+    fok: Optional[Fok]
+
+
+@dataclasses.dataclass(frozen=True)
 class Nyelvresz:
     """Egy nyelv szavai és pontjai. A `pontok` a nyelv saját pontjainak sorszámai a tábla rendjében."""
     nyelv: Nyelv
@@ -122,6 +133,8 @@ class Nyelvresz:
     teologiai: Tuple[Teologiai, ...]
     tw_licenc: Lathato
     domen: Tuple[DomenSor, ...]
+    sece: Sece
+    versenkent: Versenkenti
 
 
 @dataclasses.dataclass(frozen=True)
@@ -147,7 +160,18 @@ class _Forrasok:
         self.forditasok = ubs_be.b14_forditasok(b)
         self.licencek = bemenet.b01_licencek(b)
         self.allapot = ForditasAllapot()
+        self.konyvek = bemenet.b63_konyvek(b)
         self._szavak = {}
+        self._ubs_cellak = None
+
+    def tablaban(self, burkolo):
+        return tablaban(burkolo)
+
+    def ubs_cellak(self):
+        """A motívum sorainak UBS-cellái (a 2. tábla számításával), egyszer kiszámolva."""
+        if self._ubs_cellak is None:
+            self._ubs_cellak = elofordulas_sz.ubs_cellak(self.b, self.sorok)
+        return self._ubs_cellak
 
     def szo(self, strong):
         """A szó szótári alakja és kiejtése (a változat a motívum versei szerint, GK-13)."""
@@ -291,6 +315,37 @@ def _domen(f, strong):
         elemzetlen=tuple(prov('{}', leiras) for leiras in domenek.anomaliak(strong)))
 
 
+def _versenkenti(f, nyelv, sajat):
+    """A versenkénti jelentés számai a 2. tábla UBS-cellájának modelljéből: a szó a nyelve szövetségének soraiban
+    számít (héber szó az ószövetségi, görög az újszövetségi sorokban)."""
+    heber = nyelv is Nyelv.HEBER
+    cellak = [(sor, cella) for sor, cella in f.ubs_cellak()
+              if f.konyvek.ujszovetsegi(sor.igehely.konyv) != heber]
+    szavak = []
+    for strong in sajat:
+        helyek = egy = tobb = 0
+        nem_egy = []
+        for sor, cella in cellak:
+            if strong not in sor.strongok:
+                continue
+            helyek += 1
+            jelentesek = [g for t in cella.tokenek if t.strong == strong for g in t.glosszak if g.glossza is not None]
+            if not jelentesek:
+                nem_egy.append(sor.igehely)
+            elif len(jelentesek) > 1 or any(g.nem_egyertelmu for g in jelentesek):
+                tobb += 1
+                nem_egy.append(sor.igehely)
+            else:
+                egy += 1
+        szavak.append(VersenkentiSzo(f.szo(strong), helyek, egy, tobb, tuple(nem_egy)))
+    hely_szam = len({sor.igehely for sor, _c in cellak if any(s in sajat for s in sor.strongok)})
+    vannak = [s for s in szavak if s.helyek]
+    kovetkeztetes = None
+    if vannak and max(s.helyek for s in vannak) > konfig.VERSENKENTI_KIS:
+        kovetkeztetes = fok(sum(s.egy for s in vannak) / sum(s.helyek for s in vannak))
+    return Versenkenti(tuple(szavak), hely_szam, kovetkeztetes)
+
+
 def _nyelvresz(f, nyelv, szavak, szerepek):
     sajat = tuple(s for s in szavak if szotari_be.nyelv_kulcs(s) == nyelv.value)
     return Nyelvresz(
@@ -301,7 +356,9 @@ def _nyelvresz(f, nyelv, szavak, szerepek):
         alapjelentes=tuple(SzoJelentes(f.szo(s), f.jelentes(s)) for s in sajat),
         teologiai=tuple(_teologiai(f, s) for s in sajat),
         tw_licenc=idezet(f.licencek.cimke(konfig.LICENC_TW)),
-        domen=tuple(_domen(f, s) for s in sajat))
+        domen=tuple(_domen(f, s) for s in sajat),
+        sece=szotari_sece.szamit(f, nyelv is Nyelv.HEBER, sajat, szavak),
+        versenkent=_versenkenti(f, nyelv, sajat))
 
 
 def szamit(korny):
