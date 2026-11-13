@@ -11,6 +11,10 @@ Mit ellenőriz:
 2. **Szakasz-diff.** A lap a 2. szintű címsoroknál szakaszokra bomlik; az új lap minden szakasza
    soronként összevetődik a referencia azonos című szakaszával. `--teljes` nélkül a hiányzó szakasz
    „nincs kész” (részleges lap), `--teljes` mellett BUKÁS.
+   **Részleges szakasz.** A `RESZLEGES_SZAKASZOK` listában álló szakasz alblokkonként készül el (alblokk: a 3. és
+   a 4. szintű címsor alatti rész, és a generált blokk záró jelölője). `--teljes` nélkül az ilyen szakasznak csak
+   azok az alblokkjai vetődnek össze, amelyek az új lapon is állnak; a többi „nincs kész”, és a jelentés
+   megszámolja. `--teljes` mellett a lista nem számít: a szakasz egésze vetődik össze.
 3. **Engedély-összevetés.** Minden diff-sor pontosan egy engedélysorhoz tartozzon
    (`naplok/F218_elteres_engedely.tsv`); az engedélysor tényleges darabszáma egyezzen az elvárttal.
    A fel nem használt és a túlhasznált engedélysor is BUKÁS.
@@ -113,6 +117,25 @@ def naplo_or(motivum, uj_konyvtar, gyoker=GYOKER):
 
 
 _CIMSOR_RX = re.compile(r'^## (?!#)')
+# Alblokkonként készülő szakaszok: amíg a szakasz minden alblokkja el nem készül. A „4. Szótári háttér” a 218a S3
+# szeletétől az S8-ig részleges (a pontjai több szeletben készülnek; a „Miért fontos ez a lelet” rés a kereté).
+RESZLEGES_SZAKASZOK = ('4. Szótári háttér',)
+_ALBLOKK_RX = re.compile(r'^(?:#{3,4} |<!-- GENERÁLT-VÉGE: )')
+
+
+def alblokkok(sorok):
+    """A szakasz alblokkjai: [(kulcs, sorok)]. Az alblokk a 3. vagy a 4. szintű címsornál, illetve a generált blokk
+    záró jelölőjénél kezdődik; a kulcsa (a 3. szintű cím, a kezdősor), a szakasz eleje (None, None)."""
+    ki, harmadik = [((None, None), [])], None
+    for sor in sorok:
+        if _ALBLOKK_RX.match(sor):
+            if sor.startswith('### '):
+                harmadik = sor
+                ki.append(((harmadik, None), []))
+            else:
+                ki.append(((harmadik, sor), []))
+        ki[-1][1].append(sor)
+    return ki
 
 
 def szakaszol(szoveg):
@@ -174,6 +197,12 @@ def osszevet(fajl, referencia_szoveg, uj_szoveg, engedelyek, teljes=False):
             if teljes:
                 engedely_nelkul.extend((fajl, cim, sor, None) for sor in regi_sorok)
             continue
+        nincs_kesz = 0
+        if cim in RESZLEGES_SZAKASZOK and not teljes:
+            kesz = {kulcs for kulcs, _sorok in alblokkok(uj[cim])}
+            regi_al = alblokkok(regi_sorok)
+            nincs_kesz = sum(1 for kulcs, _sorok in regi_al if kulcs not in kesz)
+            regi_sorok = [sor for kulcs, sorok in regi_al if kulcs in kesz for sor in sorok]
         diff = sor_diff(regi_sorok, uj[cim])
         kint = 0
         for regi_sor, uj_sor in diff:
@@ -184,7 +213,10 @@ def osszevet(fajl, referencia_szoveg, uj_szoveg, engedelyek, teljes=False):
             else:
                 kint += 1
                 engedely_nelkul.append((fajl, cim, regi_sor, uj_sor))
-        jelentes.append((cim, 'egyezik' if not diff else ('engedéllyel' if not kint else 'BUKÁS'), len(diff), kint))
+        allapot = 'egyezik' if not diff else ('engedéllyel' if not kint else 'BUKÁS')
+        if nincs_kesz:
+            allapot += ' (részleges: %d alblokk nincs kész)' % nincs_kesz
+        jelentes.append((cim, allapot, len(diff), kint))
     for cim, sorok in uj_szakaszok:
         if cim not in regi:
             jelentes.append((cim, 'BUKÁS: a referenciában nincs ilyen szakasz', len(sorok), len(sorok)))

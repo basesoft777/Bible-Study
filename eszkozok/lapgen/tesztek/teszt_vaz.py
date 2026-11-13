@@ -110,10 +110,6 @@ class Szerkezeti(unittest.TestCase):
         elavult vagy hiányzó fordítás BUKÁS; a modell listázza az érintett sorokat."""
 
     @unittest.skip(S3)
-    def test_gk16_egy_glossza_ut(self):
-        """GK-16: a héber rövid jelentés egy függvényből jön, egyféle hiánnyal."""
-
-    @unittest.skip(S3)
     def test_gk18_bdb_betujavitas_mindenutt(self):
         """GK-18: a kártya és az olvasói réteg ugyanazt a teljesen javított BDB-szöveget adja."""
 

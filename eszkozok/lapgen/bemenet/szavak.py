@@ -159,12 +159,17 @@ def b54_karoli_parok(b):
     return b.egyszer('B54', betolt)
 
 
+_ROVID_OSZLOP = 6
+_ALAP_HOSSZ = 5
+
+
 def b10_lemmak(b):
-    """B10 — a szavak szótári alakja és átírása a két rövid szótárból (görög, héber): (pontos, alap). A `pontos` a
-    szótár saját Strong-kulcsa (az első sor számít); az `alap` a betűutótag nélküli Strong-számra esik vissza
-    (a szótár egy részt jelentésenként bont: `H2416a`, `H2416b`)."""
+    """B10 — a szavak szótári alakja és átírása a két rövid szótárból (görög, héber): (pontos, alap, rövid). A
+    `pontos` a szótár saját Strong-kulcsa (az első sor számít); az `alap` a betűutótag nélküli Strong-számra esik
+    vissza (a szótár egy részt jelentésenként bont: `H2416a`, `H2416b`); a `rövid` a szótár egyszavas angol jelentése
+    a betűutótag nélküli Strong-számra (csak a magyar rövid jelentés hiányának kimondásához: „fordításra vár”)."""
     def betolt():
-        pontos, alap = {}, {}
+        pontos, alap, rovid = {}, {}, {}
         for utvonal in b._utvonalak('B10'):
             for sor in b._szoveg('B10', utvonal=utvonal).split('\n'):
                 mezok = sor.split('\t')
@@ -175,7 +180,9 @@ def b10_lemmak(b):
                 m = _ALAP_STRONG_RX.match(mezok[0])
                 if m:
                     alap.setdefault(m.group(1), ertek)
-        return pontos, alap
+                if len(mezok) > _ROVID_OSZLOP and mezok[_ROVID_OSZLOP].strip():
+                    rovid.setdefault(mezok[0][:_ALAP_HOSSZ], mezok[_ROVID_OSZLOP].strip())
+        return pontos, alap, rovid
     return b.egyszer('B10', betolt)
 
 
@@ -262,7 +269,7 @@ class Kiejtes:
         """A szó szótári alakja (lemma) és kiejtése; None, ha a szótárban nincs ilyen szó. A kiejtés None, ha
         sem jóváhagyott, sem gépi kiejtés nincs (pontozatlan héber lemma): kimondott hiány. A `versek` a motívum
         versei: ha a szótár a szót több változatban adja, az áll, amelyik ezekben a versekben szerepel (GK-13)."""
-        pontos, alap = b10_lemmak(self._b)
+        pontos, alap, _rovid = b10_lemmak(self._b)
         nyers = (self._valtozat(strong, versek, pontos) if strong.kod.startswith(_HEBER_ELOTAG) else None) \
             or pontos.get(strong.kod) or alap.get(strong.kod)
         if not nyers:

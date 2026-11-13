@@ -77,6 +77,7 @@ class Festo:
         return jel
 
 
+_NAGY_INDEX = {}      # (bemenet, építő, a fájlok hash-ei) → index; állapotfüggetlen, mert a tartalomra kulcsolt
 _FELDOLGOZOTT = {}   # tartalom-hash → Tabla; a gyorsítótár a fájl hash-ére kulcsolt, ezért állapotfüggetlen
 
 
@@ -161,8 +162,9 @@ class Bemenet:
 
     # --- nyers olvasás -------------------------------------------------------
 
-    def _fajl(self, utvonal):
-        """Egy repó-relatív fájl sorvég-normalizált szövege és hash-e. BemenetHiba, ha nincs."""
+    def _fajl(self, utvonal, tarol=True):
+        """Egy repó-relatív fájl sorvég-normalizált szövege és hash-e. BemenetHiba, ha nincs. `tarol=False`: a
+        tartalom nem kerül a munkamenet tárába (a több tíz megabájtos szövegkiadásokhoz)."""
         if utvonal in self._tar:
             return self._tar[utvonal]
         teljes = os.path.join(self.gyoker, *utvonal.split('/'))
@@ -173,6 +175,8 @@ class Bemenet:
             raise BemenetHiba('hiányzó bemeneti fájl: %s' % utvonal) from None
         bajtok = bajtok.replace(b'\r\n', b'\n')
         sha = hashlib.sha256(bajtok).hexdigest()
+        if not tarol:
+            return bajtok.decode('utf-8'), sha
         self._tar[utvonal] = (bajtok.decode('utf-8'), sha)
         return self._tar[utvonal]
 
@@ -265,6 +269,34 @@ class Bemenet:
         if hianyzo:
             raise BemenetHiba('%s (%s): hiányzó oszlop: %s' % (b_id, utvonal, ', '.join(hianyzo)))
         return tabla
+
+    def _nagy_index(self, b_id, utvonalak, epito):
+        """Több tíz megabájtos szövegkiadásból épített index, a fájlok hash-ére kulcsolt gyorsítótárral: az `epito`
+        a fájlok (útvonal, fejléc, sorok) hármasait kapja (a sor mezőlista), és az indexet adja vissza. A fájlok
+        szövege és a feldolgozott sorok nem maradnak a memóriában; változatlan fájloknál az index újraépítés nélkül
+        jön (a hash ilyenkor is a mostani tartalomból számolódik, és a naplóba kerül)."""
+        hashek = []
+        for utvonal in utvonalak:
+            _tartalom, sha = self._fajl(utvonal, tarol=False)
+            self._naploz(b_id, utvonal, sha)
+            hashek.append((utvonal, sha))
+        kulcs = (b_id, epito.__qualname__, tuple(hashek))
+        if kulcs not in _NAGY_INDEX:
+            _NAGY_INDEX[kulcs] = epito(self._nagy_fajlok(b_id, [utvonal for utvonal, _sha in hashek]))
+        return _NAGY_INDEX[kulcs]
+
+    def _nagy_fajlok(self, b_id, utvonalak):
+        """A nagy fájlok egyenként: (útvonal, fejléc, a sorok iterátora mezőlistaként); minden olvasás naplózott."""
+        for utvonal in utvonalak:
+            tartalom, sha = self._fajl(utvonal, tarol=False)
+            self._naploz(b_id, utvonal, sha)
+            sorok = tartalom.split('\n')
+            i = 0
+            while i < len(sorok) and sorok[i].startswith('#'):
+                i += 1
+            if i >= len(sorok) or not sorok[i]:
+                raise BemenetHiba('%s: nincs fejlécsor' % utvonal)
+            yield utvonal, tuple(sorok[i].split('\t')), (sor.split('\t') for sor in sorok[i + 1:] if sor)
 
     # --- olvasási napló ------------------------------------------------------
 

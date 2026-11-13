@@ -22,7 +22,9 @@
 | F218.5 (S2), második fele | **kész: a szakasz-diff 0 az engedélyeken kívül** | „1. Döntési út” (1.1–1.5): 110 sorból 94 egyezik, 16 engedélysor két előre megszámolt osztályban (1 blokkfejléc, 15 funkció-magyarázat kezdőbetűje); festékpróba 0; 167 teszt (134 zöld, 33 váz). Az ISTENTISZT-lap szakasza generálódik, a kapuk zöldek |
 | 3. ellenőrzés (célzott, az S2-re és a 2. javítókörre) | **ELTÉRÉS: 2 tétel** | `fuggetlen-ellenor` (`claude-opus-5-5`); a többi pont rendben, a számok egyeznek. A két tétel: (1) a típusjelölő előtagú hordozó elem (`referencia:`, `idézet:`, `formula:`; a MENNY-001-en él) kézi névként, „szópár” címmel kerülne a lapra, kapu nélkül; (2) a festékpróba nem látja a horgonyba kerülő, kisbetűsített jelzőszót. A jelentés a `naplok/F218_jelentes.md`-ben |
 | Javítókör (a 3. ellenőrzésre) | **kész** (2026-11-13, a 3. session) | az orkesztrátor besorolása: mindkettő mechanikus. (1) Ismeretlen hordozó-előtagnál a bemenet megáll (a MENNY-001 generálása BUKÁS); (2) a festékpróba kis- és nagybetűtől függetlenül keres, a horgony külön tartományfajta. 172 teszt (139 zöld, 33 váz); festékpróba 0; regresszió rendben. Az újraellenőrzés az S3 végi ellenőrzéssel együtt fut |
-| F218.6 (S3) – F218.13 | nem indult | a következő: „4. Szótári háttér”, `high` |
+| F218.6 (S3), első rész | **kész: a kész alblokkok diffje 0 az engedélyen kívül** | a szakasz váza, az Áttekintés, a 4.1, 4.3, 4.4, 4.5, 4.10 pont mindkét nyelven, a nyelvfüggetlen rész feje és a 4.11 mutató: a regresszió 37 alblokkjából 17 kész (212 sor), 1 engedélysor (S3-FORRAS, a blokkfejléc); festékpróba 0; 184 teszt (152 zöld, 32 váz). A regresszió a 4. szakaszt alblokkonként méri (részleges mód) |
+| F218.6 (S3), a többi | **nem kész** | 4.2 (BDB/Thayer-kártya, 654 sor), 4.6–4.9, 4.12–4.14: a következő session; l. „Következő lépés” |
+| F218.7 (S4) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
 
@@ -47,10 +49,28 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 
 ## Következő lépés
 
-**Az S2 (F218.5) kész, a 3. ellenőrzés két tétele is javítva; a session megállt.** A 3. session a 2. és a 3. ellenőrzés javítókörét, a DT-F218l forrásjavítását és az S2 második felét végezte el; a kontextusa a végén kb. 66%. **Az S3-at új session kezdi.** **Az xhigh eddig tartott:** az S3-tól a brief szerint `high`.
+**Az S3 (F218.6) első része kész (az `F218.6 (1)` commit).** A 4. session az S3 vázát, az Áttekintést és az egyszerű pontokat írta meg, és a regressziót alblokkonkénti (részleges) mérésre tette képessé. Az S3 hátralévő része ugyanebben a sessionben folytatódik, amíg a kontextus a 70%-ot el nem éri; onnan új session viszi tovább (`fable`, `high`).
 
-1. **A 3. ellenőrzés két tétele javítva** (a jelentés „A 3. ellenőrzés javítóköre” szakasza); az újraellenőrzésük az S3 végi független ellenőrzés hatókörébe kerül (a tartomány eleje: `28be9127`).
-2. **F218.6 (S3): „4. Szótári háttér”** (Áttekintés, 4.1–4.10 BDB/Thayer-kártya, 4.12 Nave, 4.13/4.14), új Fable-sessionben, `high`. Előtte modell-ellenőrzés és `get_usage` (a küszöb 99% heti; 70% kontextus fölött zárás). A szelet nagy: két-három commitra bontva (4.1–4.5 · 4.6–4.10 · 4.11–4.14). Első lépés: a referencia-szakasz (991–2350. sor) szerkezetének kiírása rövidítve, és a régi kód szimbólumonkénti olvasása (a jelentés szimbólumtérképe, 2/b).
+A hátralévő rész sorrendje (a kész alblokkok listáját a regresszió adja; a scratch `reszdiff.py` alblokkonként mutatja a diffet):
+
+1. **4.2 Mélységi szócikk** (a legnagyobb rész: görög 154, héber 500 sor). A régi kód: `_gerinc_szocikk` 4674 → `gerinc_blokk` 4332–4540, `bdb_olvasoi_reteg` 4079, `gerinc_szakasz_lista` 4208, `bdb_gerinc_szocikkek` 4282, `thayer_gerinc_szakaszok` 4305, `kiemel` 3778 (a motívumhely `<mark>` jelölése), `bdb_rovidites_jelol` 4651 (`BR.*`: rövidítés-`<abbr>`, betűjavítás: GK-18), `karoli_szamozas` 4625 („héber számozás: …”), `ubs_domensor` 4661 (a görög kártya alatti UBS-doménsor), `UJ_GERINC_BEVEZETO` 3900. A bemeneti oldal fele megvan (`bemenet/gerinc.py`: B16–B19, B21, B22); kell még a B20 (`thayer_bemenet.szakaszok(strong)`, GK-N178) és a B58 (tiltott fordulatok). Itt jön a T5 öt elavult Thayer-sora (G1311, G2671, G5351, G5356): `munka` módban a régi magyar szöveg áll, „a fordítás felülvizsgálat alatt” jelöléssel (`s4.felulvizsgalat`), öt engedélysorral (az alapmérés száma: 5). A kártya szövege idézet (a fordítástáblából), benne a generátor jelölése (`<mark>`, `<abbr>`): ezt a szegmensekre bontott idézet oldja meg (a jelölés sablon, a szöveg idézet), szövegcsere nélkül.
+2. **4.7 Megfelelők a másik nyelven** (`_tartalom_sece` 1897, `sece_tabla` 1925, `sece_hid_olvasoi` 2469, `_sece_kiejtes` 1872): bemenet B28 (SECE). **HN-15:** a tábla alatti jegyzet hamis állapotmondata („magyar rövid glossza-tábla a görögre még nincs”) az új lapon nem állhat: új mondat (`eredet=uj`), 2 engedélysor (GK-28: a mondat a valós állapotból).
+3. **4.9 Versenkénti jelentés** (`_tartalom_ubs_oszlop` 4812, `_ubs_oszlop_szamlalo` 4783, `OK.versenkenti_csoport`): a számláló a 2. szakasz UBS-cellájának modelljéből jön (nem a kiírt cella szövegéből, ahogy a régi kód tette).
+4. **4.8 Nyelvi háttér** (héber: `_gerinc_bdb_fej_rovid` 4722 és a `rokon_tabla_48` 9206; görög: LSJ, `lsj_csonk` 1383), **4.12** (`SZN.blokk_12`, `SZN.olvasoi_12`), **4.13–4.14** (`SZK.blokk_13`, `SZK.blokk_14`, `olvasoi_13_szavankent` 2928, `olvasoi_14_szavankent` 2962; GK-19: a 95,06% nem itt áll).
+5. **4.6 LXX-híd:** a pont első fele az 5. szakasz számításából jön (`lxx_osszevetes`), ezért **az S4-gyel együtt** készül; a második fele (a társlista) a `szamitas/szocikkek.Tarsulas.tarsak` függvényéből (ugyanaz a mérce, mint az Áttekintésé), a proveniencia-sor megjegyzésbe.
+6. **GK-03 a B36-ra:** a `LXX_versszintu_parok.tsv` generált pillanatkép; a frissességi kapuja (a motívum héber szavaira újraszámolva a B35-ből és a B08-ból, vagy a generálás bemenet-hash-éből) még nincs meg: a jegyzékben a `frissesseg` mezője `-`.
+7. **Az S3 végi célzott független ellenőrzés** (nem Fable): az S3 teljes diffje (a tartomány eleje: `03636753`) és a 3. ellenőrzés javítókörének két tétele. Az S3 lezárásakor fut.
+
+### A régi generátorból visszafejtett szabályok (S3, első rész)
+
+- **A szavak rendje.** A motívum szavai az előfordulás-sorok `strong` mezőjének Strong-számai; a bevezetőben és az Áttekintésben a héber szavak állnak elöl, a nyelvrészek rendje görög, héber; mindenütt a Strong-szám rendjében.
+- **A pontok.** A pont sorszáma a szótári pontok táblájának `sorrend` értéke; nyelvfüggetlen az a pont, amelynek a két nyelven ugyanaz a neve, forrása és állapota (12, 13, 14). A pont neve a névtábla `szotari_pont` sora (a régi kód a tábla `szerep` mezőjéből a „(+ SZPA)” részt cserével vette le). A 4.11 nincs a táblában: egysoros mutató, a címe és a horgonya a szakaszrendből jön (`konfig.PONT_VISSZHANG`).
+- **Áttekintés, LXX-megfelelő.** Héber szónál a társlista első eleme: a szó verseiben álló görög szavak a társulás (Dice: 2 × közös vers / [a héber szó versei + a görög szó versei a teljes Septuagintában]) csökkenő rendjében, egyenlőnél a Strong-szám rendjében, a 0,05 küszöb fölött. Görög szónál a motívum héber szavai közül a legerősebben társuló (egyenlőnél az első), „héberül:” előtaggal; a küszöb alatt „—”. Az alapjelentés cellája magyar jelentés híján „—”, és ilyenkor a tábla alatti jegyzet egy mondattal hosszabb.
+- **4.1.** `**szó (kiejtés)** — rövid jelentés · Strong · [szónézet]`. A rövid jelentés az egy glossza-úton jön (`RovidJelentes.jelentes`): magyar; híján az angol eredeti „fordításra vár” jelöléssel; ha az sincs, „a szótár nem ad magyar rövid jelentést” (a régi kód héberül üres szöveget, görögül „—”-t írt).
+- **4.3.** A translationWords szócikkei a tábla rendjében (a szó a szócikk `strong` listájában áll); a magyar cím a fordítástáblából (`tW_szocikkek | <a kötés első Strongja> | <tw_id> | cim | glosszak_hu`). Héber szónál a sor végén a TWOT-számok (rendezve, ismétlés nélkül), híján „TWOT —”.
+- **4.4.** A domének a kód rendjében, a név a kód első sorából; magyarul a fordítástáblából (`SDBH`/`SDGNT | Strong | kód | domen | glosszak_hu`), `; `-vel. Az elemzetlen bejegyzés (a régi lapon nyers belső mezőkkel álló „Figyelem” sor; a két mintalapon nincs ilyen) az új lapon darabszámos sablonmondat, a nyers leírás megjegyzésben.
+- **4.5, 4.10.** Egy-egy mondat, illetve szavanként egy sor; a forrásnév a névtáblából (B32, B33).
+- **A licenc a mondatban** („TBESH, CC BY 4.0”) a licencleltárból jön (B01), nem a sablonmondat szövege.
 
 ### Az S3 előtt eldöntendő (a felhasználóhoz, az orkesztrátoron át)
 
@@ -85,6 +105,8 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 
 ## Hogyan futtatható
 
+- **A 4. szakasz részleges:** a `regresszio.py` `RESZLEGES_SZAKASZOK` listája szerint alblokkonként mér (alblokk: a `###` és a `####` címsor alatti rész és a blokk záró jelölője); a hiányzó alblokk „nincs kész”, a jelentés megszámolja. `--teljes` mellett a lista nem számít. A lista a 4. szakasz utolsó alblokkjának elkészültekor (S8: a „Miért fontos ez a lelet” rés) ürítendő.
+- **A tesztek futásideje** kb. 2 perc (a Septuaginta 140 MB-os szövegkiadását az első lapmodell olvassa be; az index a fájlok hash-ére kulcsolt gyorsítótárból jön a többi futásnál). Egy lap generálása kb. 8 s.
 - Tesztek: `python eszkozok/lapgen/tesztek/futtat.py` (minden), `… futtat.py szoveg szerkezet` (megnevezett fájlok).
 - Új lap: `PARDES_DATUM=2026-11-13 python eszkozok/general.py --cel lexikon2 --id HAMART-001 --kimenet <repón kívüli könyvtár>`; a fájlok a `<kimenet>/lexikon/` alá kerülnek.
 - Regresszió: `python eszkozok/lapgen/regresszio.py --id HAMART-001 --uj <kimenet>/lexikon --reszletes <fájl>`.
@@ -128,6 +150,9 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 
 ## Nyitott kérdések (a felhasználóhoz, illetve az orkesztrátorhoz)
 
+- **S3, a 218a végi listába (új sablonmondat, `dontes=var`):** `s4.felulvizsgalat` („… *(a fordítás felülvizsgálat alatt)*”, T5), `s4.p3.cim.var` és `s4.p3.cim.felulvizsgalat` (a translationWords-cím jelölése; a régi kód egymásba ágyazott csillagokkal írta), `s4.p4.elemzetlen` (az elemzetlen szótári bejegyzés darabszámos mondata a régi, nyers mezőket közlő sor helyett), `s4.nyelv.gorog.ures.megjegyzes` és `s4.nyelv.heber.ures.megjegyzes` (a szó nélküli nyelvrész mondata; a régi: „nincs görög Strong-tokenje; a görög szerepek nem alkalmazhatók”). Egyik sem áll a két mintalapon.
+- **S3, megfigyelés (a mai jóváhagyott szöveg áll, változtatás nélkül):** a 4. szakasz hatókör-sora forrásként „a lexikon szótári hivatkozástábláját” nevezi meg, amelyet az új generátor nem olvas (a HN-03 rokona); a 4.5 görög mondata a Louw–Nida-doménsort a 4.4 pontba utalja, holott a 4.2 kártyái alatt áll. Ha javítandó, új mondat kell, jóváhagyással.
+- **S3, a rövid jelentés hiánya egyféle lett (GK-16):** héber szónál a régi lap üres helyet, görögnél „—”-t írt; az új mindkettőnél az angol eredetit adja „fordításra vár” jelöléssel, ha az sincs, „a szótár nem ad magyar rövid jelentést” áll. A két mintalapon nincs ilyen sor.
 - **Önreferencia (DT-F218l):** lezárva, ✅ (a forrásban javítva). Nyitva maradt belőle: a szóválasztás megerősítése („vizsgálat” / „listán”, nem „szócikk”), a nyílt mag angol szövege („the entry” maradt), és az `ir`-en kívüli hat fájl (a jelentés „DT-F218l” szakasza).
 - **Az 1.4 pont kisbetűs listaelemei** (15 engedélysor): a funkció magyarázata a forrás szerint áll; ha nagybetű kell, a mondatkezdő alak adatba kerül.
 - **„mind a 575 verse” / „A 575 vers”:** betűre a régi lap; a helyes névelő 1-1 engedélysor volna.
@@ -162,6 +187,8 @@ Az S1 szakasz-diffje a heti keret 89%-ánál lett 0 (az engedélyeken kívül); 
 | 2. javítókör és DT-F218l kész | 2026-11-13 | 81% | 9% | 37% | a javítókör és a forrásjavítás: 2 százalékpont heti; a kontextus 46% |
 | S2 kész (a Döntési út diffje 0) | 2026-11-13 | 82% | 12% | 47% | az S2 második fele: 1 százalékpont heti; a kontextus 59% |
 | A 3. ellenőrzés és a javítóköre kész | 2026-11-13 | 83% | 14% | 56% | az ellenőrzés (opus) és a két javítás: 1 százalékpont heti; a kontextus 65% |
+| 4. session indul (S3) | 2026-11-13 14:05 | 84% | 15% | 60% | `get_usage`; a kontextus 12% (1M-es ablak) |
+| S3 első része kész | 2026-11-13 | 86% | 19% | 77% | a szakasz felmérése (a régi kód olvasása) és az első rész: 2 százalékpont heti; a kontextus 52% |
 
 Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 
@@ -173,11 +200,13 @@ Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 | F218.5 (S2a) | melléklet (431 sor): 0 (10 engedélysor) | az első futás 10 diff-sort adott, mind előre várt osztály |
 | F218.5 (DT-F218l) | melléklet: 0 (8 engedélysor) | a két önreferencia-sor megszűnt (a forrás javult) |
 | F218.5 (S2b) | 1. Döntési út (110 sor): 0 (16 engedélysor) | az első futás 17 diff-sort adott: 16 előre várt osztály és 1 hiba (a lemma-változat szabálya hiányzott: javítva) |
+| F218.6 (S3a) | 4. Szótári háttér, 17 kész alblokk (212 sor): 0 (1 engedélysor) | az első futás a kész alblokkokban 1 diff-sort adott: a blokkfejléc (előre várt osztály) |
 
-Festékpróba: HAMART-001 0 szivárgás (belső 191, idézet 420, kézi 394 látott jelzőszó, ebből 30 horgonyban; az S2a után 171, 326, 240); ISTENTISZT-001 0 (134, 208, 203; 18 horgonyban). Átszökési arány az S2-ben: a zöld kapuk után az ellenőr 2 hibát talált (1 hiányzó kapu, 1 a festékpróba vakfoltja). Mutációs próba: még nincs. Átszökési arány: még nincs mérés (az 1. ellenőrzés és a felhasználó átnézése után).
+Festékpróba: HAMART-001 0 szivárgás (az S3a után: belső 213, idézet 811, kézi 394 látott jelzőszó, 30 horgonyban; az S2 után 191, 420, 394; az S2a után 171, 326, 240); ISTENTISZT-001 0 (az S3a után 156, 312, 203, 18 horgonyban; az S2 után 134, 208, 203). Átszökési arány az S2-ben: a zöld kapuk után az ellenőr 2 hibát talált (1 hiányzó kapu, 1 a festékpróba vakfoltja). Mutációs próba: még nincs. Átszökési arány: még nincs mérés (az 1. ellenőrzés és a felhasználó átnézése után).
 
 ## Session-váltások, kompaktálások
 
 - 1. session (2026-11-13): az indulás `claude-opus-5-5` modellen modell-eltérés miatt megállt; a felhasználó a sessiont `claude-fable-5-2`-re állította. Egy megszakadás (hitelesítési hiba) az S1 közben, adatvesztés nélkül. Kompaktálás eddig: 0; a kontextus az S1 végén 76%.
 - 2. session (2026-11-13, `claude-fable-5-2`, az orkesztrátor indította): a javítókör. Kompaktálás: 0. A kontextus a javítókör végén 45%; az 5 órás keret 98%.
 - 3. session (2026-11-13, az orkesztrátor indította): az indulás `claude-opus-5-5` modellen modell-eltérés miatt megállt, munka nélkül; a felhasználó a sessiont `claude-fable-5-2`-re állította (xhigh). A 2. ellenőrzés javítóköre, a DT-F218l és az S2 második fele. Kompaktálás: 0; a kontextus az S2 végén kb. 60%.
+- 4. session (2026-11-13, `claude-fable-5-2`, `high`, az orkesztrátor indította; saját worktree, a push a `claude/f218-generator-uj-a` ágra megy): az S3 első része. Kompaktálás: 0. A kontextus az első rész commitjánál 52% (1M-es ablak): a szakasz felmérése (a referencia 1 360 sora rövidítve, a régi kód kb. 1 800 sora és az új modulok) vitte el a nagyját; a következő sessionnek a „Következő lépés” szimbólumlistája elég, a már megírt modulokat nem kell újraolvasnia egészben.

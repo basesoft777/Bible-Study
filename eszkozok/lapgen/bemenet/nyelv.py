@@ -33,6 +33,8 @@ class Nevtabla:
             kulcs = kulcs.ertek
         elif isinstance(kulcs, enum.Enum):
             kulcs = kulcs.value
+        elif isinstance(kulcs, int) and not isinstance(kulcs, bool):
+            kulcs = str(kulcs)   # sorszám-kulcs (pl. a szótári pont sorszáma)
         try:
             return self._nevek[(tipus, kulcs)]
         except KeyError:

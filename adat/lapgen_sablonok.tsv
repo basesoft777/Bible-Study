@@ -196,3 +196,63 @@ d15.hatareset	[{hely}](#{horgony}) ({megb})	hely:igehely, horgony:horgony, megb:
 d15.kerdes	- {kerdes}	kerdes:lathato	1	_modszertan_nyitott	-
 d15.kifejtes	A kérdések kifejtése {e_szam|a}. ({e_cim}) és {m_szam|a}. szakaszban ({m_cim}) áll.	e_szam:szam, e_cim:lathato, m_szam:szam, m_cim:lathato	1	blokk_dontesi_ut	-
 d15.nincs	A motívumnak nincs határesete és nyitott kérdése.	-	1	blokk_dontesi_ut	-
+cim.szocikkek	Szótári háttér	-	keret	UJ_SZAKASZOK	-
+cim.hatastortenet	Hatástörténet: ókori fordítások és értelmezők	-	keret	UJ_SZAKASZOK	-
+cim.hatastortenet.rovid	Hatástörténet	-	keret	visszhang_beszur (a szakasz rövid neve a hivatkozásban)	-
+s4.bevezeto	A motívumot {darabok| és } hordozza; {listak|; }. Szavanként számozott pontok követik egymást (a pontok rendje a Jelmagyarázatban áll); a {szakasz}.{pont} pont a fő szótár ({foszotarak|, }) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.	darabok:lista(lathato), listak:lista(lathato), szakasz:szam, pont:szam, foszotarak:lista(lathato)	4	blokk_szocikkek	-
+s4.bevezeto.darab.heber	{n} héber szó	n:szam	4	blokk_szocikkek	-
+s4.bevezeto.darab.gorog	{n} görög szó	n:szam	4	blokk_szocikkek	-
+s4.bevezeto.lista.heber	héberül: {szavak|, | és }	szavak:lista(lathato)	4	blokk_szocikkek	-
+s4.bevezeto.lista.gorog	görögül: {szavak|, | és }	szavak:lista(lathato)	4	blokk_szocikkek	-
+s4.bevezeto.fo.heber	héberül {szotar|a}	szotar:nev(szotar)	4	blokk_szocikkek	-
+s4.bevezeto.fo.gorog	görögül {szotar|a}	szotar:nev(szotar)	4	blokk_szocikkek	-
+s4.hatokor	*A szakasz a motívum {n} szavát tárgyalja, szavanként a szótári pontok rendjében (forrás: a lexikon szótári hivatkozástáblája).*	n:szam	4	blokk_szocikkek (az olvasói átírás utáni alak)	-
+s4.szam	{n}	n:szam	4	attekinto_tabla	-
+s4.forditasra_var	{szoveg} *(fordításra vár)*	szoveg:lathato	4	FORDITASRA_VAR	-
+s4.felulvizsgalat	{szoveg} *(a fordítás felülvizsgálat alatt)*	szoveg:lathato	4	uj	var
+s4.szonezet	{szo} ([szónézet](/szo/{strong}))	szo:lathato, strong:strong	4	_szonezet_lista	-
+cim.szocikkek.attekintes	Áttekintés: a motívum szavai	-	4 Áttekintés	ATTEKINTO_CIM	-
+s4.att.bevezeto	A motívum {n} szava egy táblában: a kiejtés, a rövid alapjelentés, a görög fordítás (Septuaginta) az a szava, amely a héber szó verseiben a legjellemzőbben áll vele együtt (a társulás mértéke szerint, nem a puszta gyakoriság szerint), és hogy hány helyen áll a szó a motívumban. A részletek szavanként a {szakasz}.{elso}–{szakasz}.{utolso} pontban.	n:szam, szakasz:szam, elso:szam, utolso:szam	4 Áttekintés	attekinto_beszur	-
+s4.att.fejlec.szo	Szó (kiejtés)	-	4 Áttekintés	attekinto_tabla	-
+s4.att.fejlec.jelentes	Alapjelentés	-	4 Áttekintés	attekinto_tabla	-
+s4.att.fejlec.lxx	LXX-megfelelő	-	4 Áttekintés	attekinto_tabla	-
+s4.att.fejlec.helyek	Helyek a motívumban	-	4 Áttekintés	attekinto_tabla	-
+s4.att.tars	{szo} · {n} vers	szo:lathato, n:szam	4 Áttekintés	_lxx_tars	-
+s4.att.tars.heberul	héberül: {szo} · {n} vers	szo:lathato, n:szam	4 Áttekintés	_lxx_tars	-
+s4.att.labjegyzet	*Az LXX-megfelelő versszintű együtt-előfordulás (a {szakasz}.{pont} pont párjai: hányszor áll a két szó ugyanabban a versben, a szavak gyakoriságához mérve), nem szavankénti megfeleltetés, és a szó minden ószövetségi versén mér, nem csak a motívum helyein; a motívum láncának verseiben álló görög megfelelőt {hat|a}. szakasz ({hat_nev}) ószövetségi táblázata adja, ezért a kettő eltérhet.*	szakasz:szam, pont:szam, hat:szam, hat_nev:lathato	4 Áttekintés	attekinto_beszur (az olvasói átírás utáni alak)	-
+s4.att.labjegyzet.hiany	*Az LXX-megfelelő versszintű együtt-előfordulás (a {szakasz}.{pont} pont párjai: hányszor áll a két szó ugyanabban a versben, a szavak gyakoriságához mérve), nem szavankénti megfeleltetés, és a szó minden ószövetségi versén mér, nem csak a motívum helyein; a motívum láncának verseiben álló görög megfelelőt {hat|a}. szakasz ({hat_nev}) ószövetségi táblázata adja, ezért a kettő eltérhet. A „—” alapjelentés: a rövid magyar jelentés még nincs lefordítva.*	szakasz:szam, pont:szam, hat:szam, hat_nev:lathato	4 Áttekintés	attekinto_beszur (az olvasói átírás utáni alak)	-
+cim.szocikkek.nyelv.gorog	Görög szavak: {strongok|, }	strongok:lista(strong)	4	szerep_vaz	-
+cim.szocikkek.nyelv.heber	Héber szavak: {strongok|, }	strongok:lista(strong)	4	szerep_vaz	-
+cim.szocikkek.nyelv.gorog.ures	Görög szavak	-	4	szerep_vaz	-
+cim.szocikkek.nyelv.heber.ures	Héber szavak	-	4	szerep_vaz	-
+s4.nyelv.gorog	A motívumot hordozó görög szavak: {szavak|, | és }. Szavanként a szótári adatok a {szakasz}.{elso}–{szakasz}.{utolso} pontban.	szavak:lista(lathato), szakasz:szam, elso:szam, utolso:szam	4	OLVASOI_SABLON[nyelv_uj]	-
+s4.nyelv.heber	A motívumot hordozó héber szavak: {szavak|, | és }. Szavanként a szótári adatok a {szakasz}.{elso}–{szakasz}.{utolso} pontban.	szavak:lista(lathato), szakasz:szam, elso:szam, utolso:szam	4	OLVASOI_SABLON[nyelv_uj]	-
+s4.nyelv.gorog.ures	A motívum görög szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért ez a rész üres; a szótári anyag a másik nyelv szavainál áll.	-	4	OLVASOI_SABLON[nyelv_ures]	-
+s4.nyelv.heber.ures	A motívum héber szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért ez a rész üres; a szótári anyag a másik nyelv szavainál áll.	-	4	OLVASOI_SABLON[nyelv_ures]	-
+s4.nyelv.gorog.ures.megjegyzes	*A motívumnak nincs görög szava; a görög szavak pontjai itt nem állnak.*	-	4	uj	var
+s4.nyelv.heber.ures.megjegyzes	*A motívumnak nincs héber szava; a héber szavak pontjai itt nem állnak.*	-	4	uj	var
+s4.p1.bevezeto.heber	A szó alapjelentése röviden, a STEPBible héber rövid szótára (TBESH, {licenc}) szerint, magyarul; a teljes szócikk a szónézetben.	licenc:lathato	4.1	UJ_OLVASOI_SZEREP	-
+s4.p1.bevezeto.gorog	A szó alapjelentése röviden, a STEPBible görög rövid szótára (TBESG, {licenc}) szerint, magyarul; a teljes szócikk a szónézetben.	licenc:lathato	4.1	UJ_OLVASOI_SZEREP	-
+s4.p1.sor	**{szo}** — {jelentes} · {strong} · [szónézet](/szo/{strong})	szo:lathato, jelentes:lathato, strong:strong	4.1	_gerinc_tbesh	-
+s4.jelentes.nincs	a szótár nem ad magyar rövid jelentést	-	4.1	_gerinc_tbesh	-
+s4.p3.bevezeto.heber	Szavanként a translationWords (unfoldingWord, {licenc}) magyar szócikkcímei és a szó TWOT-száma: a szócikk száma a Theological Wordbook of the Old Testamentben. A szócikkek a szónézetben olvashatók.	licenc:lathato	4.3	UJ_OLVASOI_SZEREP	-
+s4.p3.bevezeto.gorog	Szavanként a translationWords (unfoldingWord, {licenc}) magyar szócikkcímei; a szócikkek a szónézetben olvashatók.	licenc:lathato	4.3	UJ_OLVASOI_SZEREP	-
+s4.p3.sor	**{szo}** — {reszek| · } · [szónézet](/szo/{strong})	szo:lathato, reszek:lista(lathato), strong:strong	4.3	_gerinc_tw	-
+s4.p3.cim	*{cim}*	cim:lathato	4.3	_gerinc_tw	-
+s4.p3.cim.var	*{cim}* *(fordításra vár)*	cim:lathato	4.3	uj	var
+s4.p3.cim.felulvizsgalat	*{cim}* *(a fordítás felülvizsgálat alatt)*	cim:lathato	4.3	uj	var
+s4.p3.nincs	a translationWords nem tárgyalja	-	4.3	_gerinc_tw	-
+s4.p3.twot	TWOT {szamok|, }	szamok:lista(lathato)	4.3	_gerinc_tw	-
+s4.p3.twot.nincs	TWOT —	-	4.3	_gerinc_tw	-
+s4.p4.bevezeto	A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.	-	4.4	OLVASOI_SZEREP[4]	-
+s4.p4.sor	**{szo}** · **Szemantikai domén:** {domenek|; }	szo:lathato, domenek:lista(lathato)	4.4	_szotar_reszek	-
+s4.p4.sor.nincs	**{szo}** · **Szemantikai domén:** —	szo:lathato	4.4	_szotar_reszek	-
+s4.p4.elemzetlen	*Figyelem: a szótárban a szóhoz {n} elemzetlen bejegyzés is tartozik.*	n:szam	4.4	uj	var
+s4.p5.bevezeto	A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.	-	4.5	OLVASOI_SZEREP[5]	-
+s4.p5.gorog	A teljes UBS-szócikk és a Mounce-glossza szavanként a szónézetben áll: {szavak|, }; a Louw–Nida-doménsor a {szakasz}.{pont} pontban. Forrás: {forras}.	szavak:lista(lathato), szakasz:szam, pont:szam, forras:nev(forras)	4.5	_gerinc_ubs_mutato	-
+s4.p5.heber	Az UBS héber szótárának jelentései szavanként a szónézetben állnak: {szavak|, }. Forrás: {forras}.	szavak:lista(lathato), forras:nev(forras)	4.5	_gerinc_ubs_mutato	-
+s4.p10.bevezeto	A szó magyaros kiejtése.	-	4.10	OLVASOI_SZEREP[10]	-
+s4.p10.sor	**{szo}** · {strong}	szo:lathato, strong:strong	4.10	_szerep_tartalom	-
+cim.szocikkek.kozos	Nyelvfüggetlen szerepek	-	4	szerep_vaz	-
+s4.kozos.bevezeto	A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.	-	4	OLVASOI_SABLON[nyelvfuggetlen]	-
+s4.p11.cim	Visszhang: ókori fordítások (l. [{szam}. {nev}](#{horgony}))	szam:szam, nev:lathato, horgony:horgony	4.11	visszhang_beszur	-

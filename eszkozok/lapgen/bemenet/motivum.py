@@ -10,13 +10,14 @@ jön (a forrás nézete).
 """
 import re
 
+from lapgen.bemenet import szavak
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.ubs import b14_forditasok
 
 _MOTIVUM_OSZLOPOK = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom')
 _NEM_TARTOZIK = 'Nem tartozik ide'
 _MONDATVEG = '.'
-_GLOSSZA_OSZLOPOK = ('strong', 'fo', 'glossza_hu')
+_GLOSSZA_OSZLOPOK = ('strong', 'fo', 'glossza_hu', 'glossza_en')
 _FO = 'igen'
 _SZOTAR_TBESG, _ROVID, _GLOSSZA_MEZO = 'TBESG', 'rovid', 'glosszak_hu'
 _RES_OSZLOPOK = ('id', 'res', 'forras', 'tanulmany')
@@ -61,33 +62,54 @@ def b02_motivum(b, motivum):
         folerendelt=b.kezi('B02', 'folerendelt_fogalom', fol) if fol else None)
 
 
-class RovidJelentes:
-    """A szavak rövid magyar jelentése: héberül a héber glosszatábla fő sora, görögül a fordítástábla rövid
-    glosszája. Magyar jelentés híján None (kimondott hiány; angol szöveg innen nem kerül a lapra)."""
+class Rovid:
+    """Egy szó rövid jelentése: a magyar szöveg, vagy magyar híján az angol eredeti (fordításra vár). Mindkettő
+    hiánya: a szótárnak nincs rövid jelentése a szóra. Az `elavult` jelzi, hogy a magyar fordítás forrása azóta
+    megváltozott (T5)."""
+    __slots__ = ('magyar', 'angol', 'elavult')
 
-    def __init__(self, b, heber, forditasok):
-        self._b, self._heber, self._forditasok = b, heber, forditasok
+    def __init__(self, magyar, angol, elavult=False):
+        self.magyar, self.angol, self.elavult = magyar, angol, elavult
+
+
+class RovidJelentes:
+    """A szavak rövid jelentése egy úton (GK-16): héberül a héber glosszatábla fő sora, görögül a fordítástábla
+    rövid glosszája; magyar híján a forrás angol szava áll, kimondott hiányként."""
+
+    def __init__(self, b, heber, forditasok, angol):
+        self._b, self._heber, self._forditasok, self._angol = b, heber, forditasok, angol
+
+    def jelentes(self, strong):
+        """A szó rövid jelentése (`Rovid`): a magyar szöveg, vagy az angol eredeti, vagy egyik sem."""
+        if strong.heber:
+            magyar, angol = self._heber.get(strong.kod, ('', ''))
+            if magyar:
+                return Rovid(self._b.forrasszoveg('B15', 'glossza_hu', magyar, strong), None)
+            return Rovid(None, self._b.forrasszoveg('B15', 'glossza_en', angol, strong) if angol else None)
+        forditas = self._forditasok.forditas(_SZOTAR_TBESG, strong.kod, strong.kod, _ROVID, _GLOSSZA_MEZO, strong)
+        if forditas is not None:
+            return Rovid(forditas.szoveg, None, forditas.elavult)
+        angol = self._angol.get(strong.kod)
+        return Rovid(None, self._b.forrasszoveg('B10', 'rovid_angol', angol, strong) if angol else None)
 
     def magyar(self, strong):
-        if strong.heber:
-            szoveg = self._heber.get(strong.kod)
-            return self._b.forrasszoveg('B15', 'glossza_hu', szoveg, strong) if szoveg else None
-        forditas = self._forditasok.forditas(_SZOTAR_TBESG, strong.kod, strong.kod, _ROVID, _GLOSSZA_MEZO, strong)
-        return forditas.szoveg if forditas is not None else None
+        """A szó rövid magyar jelentése, vagy None (angol szöveg innen nem jön)."""
+        return self.jelentes(strong).magyar
 
 
 def b15_heber_glosszak(b):
-    """B15 — a héber szavak rövid magyar jelentése (a tábla fő sora: `fo` = igen): {Strong: jelentés}."""
+    """B15 — a héber szavak rövid jelentése (a tábla fő sora: `fo` = igen): {Strong: (magyar, angol)}."""
     def betolt():
         tabla = b._tabla('B15', oszlopok=_GLOSSZA_OSZLOPOK)
-        s, f, g = (tabla.oszlop(o) for o in _GLOSSZA_OSZLOPOK)
-        return {sor[s]: sor[g] for sor in tabla.sorok if sor[f] == _FO and sor[g]}
+        s, f, g, e = (tabla.oszlop(o) for o in _GLOSSZA_OSZLOPOK)
+        return {sor[s]: (sor[g], sor[e]) for sor in tabla.sorok if sor[f] == _FO}
     return b.egyszer('B15', betolt)
 
 
 def rovid_jelentes(b):
     """A rövid jelentés szolgáltatása a munkamenethez (egy út a héber és a görög szóra)."""
-    return b.egyszer('rovid_jelentes', lambda: RovidJelentes(b, b15_heber_glosszak(b), b14_forditasok(b)))
+    return b.egyszer('rovid_jelentes', lambda: RovidJelentes(b, b15_heber_glosszak(b), b14_forditasok(b),
+                                                             szavak.b10_lemmak(b)[2]))
 
 
 def b47_nyitott_kerdesek(b, motivum):

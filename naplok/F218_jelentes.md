@@ -624,3 +624,26 @@ Az ideiglenes fájlok (szkriptek, generált lapok) a repón kívül, a scratchpa
 
 **Az adat a hordozó-előtagokról.** Az `adat/elofordulasok.tsv` 250 sorából 241-nek nincs előtagja, 6 `tematikus:` (HAMART-001), és 1-1 `referencia:`, `idézet:`, `formula:` (mind MENNY-001).
 *Proveniencia: `scope=a gerinc_elem mező kezdő „szó:” előtagjának számlálása | forras=adat/elofordulasok.tsv | ts=2026-11-13`.*
+
+## F218.6 — S3, első rész: a „4. Szótári háttér” váza, az Áttekintés és az egyszerű pontok (`claude-fable-5-2`, 2026-11-13, a 4. session)
+
+*Modell-ellenőrzés: a session tényleges modellje `claude-fable-5-2`, a brief kért modellje `fable`: egyezik. Effort: `high`.*
+
+**Mi készült el.** A szakasz címe, a blokkfejléc, a bevezető és a hatókör-sor; az áttekintő tábla (15 szó: kiejtés, alapjelentés, LXX-megfelelő, helyek); nyelvenként a nyelvrész feje és a 4.1 (Alapjelentés), 4.3 (Teológiai szócikk), 4.4 (Szemantikai mező), 4.5 (Tömör jelentés), 4.10 (Kiejtés) pont; a nyelvfüggetlen rész feje és a 4.11 egysoros mutató. Új modulok: `bemenet/szotari.py` (B29, B30, B31, B35, B36, B52), `szamitas/szocikkek.py`, `megjelenites/md/szocikkek.py`, `tesztek/teszt_szocikkek.py`; bővült a `bemenet/motivum.py` (a rövid jelentés egy útja az angol eredetivel és az elavulás jelzésével) és a `bemenet/jegyzek.py` (nagy szövegkiadás indexe a fájlok hash-ére kulcsolt gyorsítótárral).
+
+**Mérés.** A 4. szakasz 37 alblokkjából (a 3. és a 4. szintű címsorok és a blokk záró jelölője szerint) 17 kész (212 sor a referencia 1 360 sorából), 20 nincs kész; a kész alblokkok diffje az első futáson 1 sor volt (a blokkfejléc forráslistája: előre várt osztály, `S3-FORRAS`), engedély nélküli diff-sor 0. A festékpróba mindkét lapon 0 szivárgás. Tesztek: 184 (152 zöld, 32 váz). Egy lap generálása kb. 8 s (a régi 46,5 s).
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; python eszkozok/lapgen/tesztek/futtat.py | forras=a munkafa az F218.6 (1) commit előtt | ts=2026-11-13`.*
+
+**A regresszió részleges módja.** A mérce eddig a 2. szintű címsor szerinti szakaszt ismerte egységként; a 4. szakasz több szeletben készül (a pontjai az S3-ban és az S4-ben, a „Miért fontos ez a lelet” rés az S8-ban), ezért a `regresszio.py` a `RESZLEGES_SZAKASZOK` listában álló szakaszt alblokkonként méri: a még meg nem írt alblokk „nincs kész” (megszámolva), a megírt soronként vetődik össze. Más szakaszra a mód nem áll (teszt), `--teljes` mellett a lista nem számít. A lista a szakasz elkészültekor ürítendő.
+
+**Egyeztetett eltérések a régi kódtól** (a kimenet bájtra egyezik; a mintalapokon egyik sem látszik):
+- A pont neve a névtáblából jön (`szotari_pont`), nem a szótári pontok táblájának `szerep` mezőjéből cserével.
+- A rövid jelentés hiánya egyféle (GK-16): az angol eredeti „fordításra vár” jelöléssel, vagy „a szótár nem ad magyar rövid jelentést”.
+- A licenc a mondatban a licencleltárból jön (GK-07).
+- Az elemzetlen szótári bejegyzés figyelmeztetése darabszámos sablonmondat; a nyers leírás megjegyzésbe kerül.
+- A Septuaginta-könyvtár két segédtáblája (fejezet- és versdöntések) a fejléce alapján kimarad a versszámlálásból (a régi kód a `strong` oszlop hiánya miatt hagyta ki, kimondatlanul); az olvasásuk a naplóban áll.
+
+**Új táblasorok.** Jegyzék: +6 (B29, B30, B31, B35, B36, B52). Névtábla: +14 (13 `szotari_pont`, 1 `forras`: B32). Sablontábla: +60, eredet szerint: a régi generátor szimbóluma 54, `uj` 6 (`dontes=var`: `s4.felulvizsgalat`, `s4.p3.cim.var`, `s4.p3.cim.felulvizsgalat`, `s4.p4.elemzetlen`, `s4.nyelv.gorog.ures.megjegyzes`, `s4.nyelv.heber.ures.megjegyzes`); szakasz szerint: keret 3, 4 (váz) 24, Áttekintés 10, 4.1 4, 4.3 9, 4.4 4, 4.5 3, 4.10 2, 4.11 1.
+*Proveniencia: `scope=git diff -U0 HEAD -- adat/lapgen_sablonok.tsv adat/olvasoi_nevtabla.tsv adat/lapgen_bemenetek.tsv (a hozzáadott sorok megszámolva) | forras=a munkafa az F218.6 (1) commit előtt | ts=2026-11-13`.*
+
+**Ami az S3-ból hátravan:** a 4.2 kártyák (654 sor), a 4.6–4.9 és a 4.12–4.14 pont, a B36 frissességi kapuja (GK-03), a GK-15 Thayer-része (az 5 elavult sor), GK-18, GK-19, GK-N178, HN-12, HN-15, és az S3 végi független ellenőrzés. A sorrend a folytatási fájl „Következő lépés” pontjában áll.

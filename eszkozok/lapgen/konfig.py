@@ -42,3 +42,40 @@ SZOTAR_UBS_DNTG = 'UBS_DNTG'
 SZOTAR_UBS_DBH = 'UBS_DBH'
 UBS_GLOSSZA_MEZO = 'glosszak_hu'
 NINCS_JELENTESSZAM = '—'            # a fordítástábla kulcsában a jelentésszám nélküli szócikk jele
+
+# --- A futás módja ------------------------------------------------------------------------------------------------
+MOD_MUNKA, MOD_KIADAS = 'munka', 'kiadas'
+
+# --- 4. Szótári háttér: a szótári pontok sorszáma (a szótári pontok táblájának `sorrend` értéke) -------------------
+PONT_ALAPJELENTES = 1
+PONT_MELYSEGI = 2
+PONT_TEOLOGIAI = 3
+PONT_DOMEN = 4
+PONT_TOMOR = 5
+PONT_LXX_HID = 6
+PONT_MASIK_NYELV = 7
+PONT_NYELVI_HATTER = 8
+PONT_VERSENKENT = 9
+PONT_KIEJTES = 10
+PONT_VISSZHANG = 11     # nincs a táblában: egysoros mutató a Hatástörténet szakaszára (a számozás nem mozdul)
+PONT_TEMATIKUS = 12
+PONT_KAROLI = 13
+PONT_PARHUZAM = 14
+
+FO_SZOTAR_HEBER, FO_SZOTAR_GOROG = 'BDB', 'Thayer'   # a fő szótár nyelvenként (a névtábla `szotar` kulcsa)
+
+# A Septuaginta-megfelelő: a versszintű társulás (Dice-mérték) küszöbe és a társlista hossza
+LXX_TARS_KUSZOB = 0.05
+LXX_PAROK_TOP = 10
+
+# A fordítástábla kulcsai a szótári pontokhoz
+SZOTAR_ROVID = 'rovid_szotar'          # a rövid jelentés (héber glosszatábla, illetve a görög rövid szótár)
+MEZO_ROVID_JELENTES = 'rovid_jelentes'
+SZOTAR_TW = 'tW_szocikkek'
+TW_CIM_KULCS = 'cim'
+SZOTAR_SDBH, SZOTAR_SDGNT = 'SDBH', 'SDGNT'
+DOMEN_KULCS = 'domen'
+
+# A lapon megnevezett forrás licence a licencleltár kulcsa szerint (a licenc szövege a leltárból jön)
+LICENC_ROVID_SZOTAR = {'gorog': 'TBESG', 'heber': 'TBESH'}
+LICENC_TW = 'tW_szocikkek'
