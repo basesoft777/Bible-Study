@@ -20,6 +20,18 @@ class KapuHiba(bemenet.BemenetHiba):
     """BUKÁS: a lapmodell számai nem egyeznek. A lap nem íródik ki."""
 
 
+_HTML_JELEK = ('<', '>', '&')
+
+
+def html_ben(burkolo):
+    """Kapu a HTML-jelölésű (lenyíló) blokkba kerülő kézi szövegre és idézetre: `<`, `>` vagy `&` jel nem állhat
+    benne. A generátor a szöveget nem írja át, így át sem kódolja: az ilyen szöveg a forrásban javítandó."""
+    if burkolo is not None and any(jel in burkolo.ertek for jel in _HTML_JELEK):
+        raise bemenet.BemenetHiba('a(z) `%s` mező szövege HTML-jelet tartalmaz (<, > vagy &), ezért lenyíló blokkba '
+                                  'nem kerülhet: %s' % (burkolo.mezo, burkolo.ertek[:80]))
+    return burkolo
+
+
 @dataclasses.dataclass(frozen=True)
 class Pelda:
     """Egy csoportosan kizárt vers példaként: az igehely és a Károli-szövege."""
@@ -75,6 +87,8 @@ def _tagok(jelolt, lista, kulon):
 
 
 def _okcsoport(ok, versszam, versek, peldak=()):
+    html_ben(ok.cimke)
+    html_ben(ok.megjegyzes)
     return OkCsoport(ok=proza(ok.cimke), leiras=proza(ok.megjegyzes if ok.megjegyzes is not None else ok.cimke),
                      versszam=versszam, versek=tuple(dontes_be.vers_igehely(v) for v in versek), peldak=tuple(peldak))
 
@@ -157,7 +171,7 @@ def szamit(korny):
         for hely in csoport_peldak[kulcs][:konfig.CSOPORT_PELDA_DB]:
             szoveg = karoli.szoveg(hely)
             if szoveg is not None:
-                ki.append(Pelda(hely, idezet(szoveg)))
+                ki.append(Pelda(hely, idezet(html_ben(szoveg))))
         return ki
 
     return Vizsgalat(

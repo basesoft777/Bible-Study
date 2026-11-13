@@ -127,3 +127,72 @@ kz.forras	*Forrás: a vizsgált helyek döntésnaplója és a teljesség-mérés
 kz.forras.datum_nelkul	*Forrás: a vizsgált helyek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája).*	-	melleklet	kizarasok_melleklet (a dátum nélküli alak)	-
 e2.jel.szocikkel	{jel} ({szocikk})	jel:lathato, szocikk:lathato	2	uj	var
 e2.jel.szocikk_sorszam	{szotar|a} {n}. szócikke	szotar:nev(szotar), n:szam	2	uj	var
+cim.dontesi_ut.targy	A keresés tárgya	-	1	blokk_dontesi_ut	-
+cim.dontesi_ut.forrasok	A keresés forrásai	-	1	blokk_dontesi_ut	-
+cim.dontesi_ut.kiesett	Mi esett ki és miért	-	1	blokk_dontesi_ut	-
+cim.dontesi_ut.maradt	Mi maradt és miért	-	1	blokk_dontesi_ut	-
+cim.dontesi_ut.hatar	Határesetek és nyitott kérdések	-	1	blokk_dontesi_ut	-
+cim.ertelmezes	Értelmezés	-	1	UJ_SZAKASZOK	-
+cim.modszertan	Módszertan és nyitott kérdések	-	1	UJ_SZAKASZOK	-
+d1.bevezeto	Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig: mit keresett, hol, mi esett ki és miért, és mi maradt. {osszes|A} megvizsgált versből {bent} tartozik a motívumhoz; minden vers egyszer számít, így a számok összeadódnak.	osszes:szam(ezres), bent:szam(ezres)	1	blokk_dontesi_ut	-
+d1.hatokor	*A Döntési út: a motívum keresésének és döntéseinek összegzése; a részletek {elso|a}. és {masodik|a}. szakaszban.*	elso:szam, masodik:szam	1	blokk_dontesi_ut	-
+d1.szam	{n}	n:szam(ezres)	1	blokk_dontesi_ut	-
+d1.szam.kiemelt	**{n}**	n:szam(ezres)	1	blokk_dontesi_ut	-
+d11.motivum	**A motívum:** {cim}.	cim:lathato	1	blokk_dontesi_ut	-
+d11.ide	**Ami ide tartozik:** {szoveg}	szoveg:lathato	1	blokk_dontesi_ut	-
+d11.nem	**Ami nem:** {szoveg}	szoveg:lathato	1	blokk_dontesi_ut	-
+d11.nem.tagabb	**Ami nem:** {szoveg} A motívumon kívül eső tágabb kör: {fol}.	szoveg:lathato, fol:lathato	1	blokk_dontesi_ut	-
+d11.csak_tagabb	**Ami nem:** {fol}.	fol:lathato	1	blokk_dontesi_ut (a régi kód a fölérendelt fogalmat itt nagy kezdőbetűvel írta; az új változatlanul adja)	-
+d12.szavak	**A motívum szavai:** {szavak|; }.	szavak:lista(lathato)	1	blokk_dontesi_ut	-
+d12.szo	{alak} ({kiejtes})	alak:lathato, kiejtes:lathato	1	lemma_cim	-
+d12.szo.kiejtes_nelkul	{alak}	alak:lathato	1	lemma_cim	-
+d12.szo.strong	{strong}	strong:strong	1	blokk_dontesi_ut (szótári alak híján a Strong-szám)	-
+d12.szo.jelentessel	{szo}, {jelentes}	szo:lathato, jelentes:lathato	1	blokk_dontesi_ut	-
+d12.fejlec.kereses	Keresés	-	1	blokk_dontesi_ut	-
+d12.fejlec.vers	Vers	-	1	blokk_dontesi_ut	-
+d12.fejlec.mit	Mit nézett	-	1	blokk_dontesi_ut	-
+d12.ajanlas.nev	Kereszthivatkozások ajánlásai	-	1	blokk_dontesi_ut	-
+d12.ajanlas.mit	A kereszthivatkozás-gyűjtemények (TSK, Károli) ajánlásai a motívum helyeihez	-	1	blokk_dontesi_ut; a táblacella elején álló alak (a lapon így áll)	-
+d12.osszesen.nev	**Összesen, minden vers egyszer számolva**	-	1	blokk_dontesi_ut	-
+d12.osszesen.mit	A keresések és az ajánlások együtt, a motívum helyeivel	-	1	blokk_dontesi_ut; a táblacella elején álló alak (a lapon így áll)	-
+d12.forrassorok	*A versszámok a motívum szavainak teljes bibliai kereséséből ([a mérés forrássorai]({motivum}_KIZARASOK.md#{horgony})).*	motivum:motivum, horgony:horgony	1	blokk_dontesi_ut	-
+d13.fejlec.lepes	Lépés	-	1	blokk_dontesi_ut	-
+d13.fejlec.vers	Vers	-	1	blokk_dontesi_ut	-
+d13.fejlec.miert	Miért	-	1	blokk_dontesi_ut	-
+d13.osszes.nev	**Megvizsgált versek összesen**	-	1	blokk_dontesi_ut	-
+d13.osszes.miert	{szakasz}.{alpont}. lépés minden találata	szakasz:szam, alpont:szam	1	blokk_dontesi_ut; a táblacella elején álló alak (a lapon így áll)	-
+d13.csoport.nev	**Csoportosan kizárva**	-	1	blokk_dontesi_ut	-
+d13.csoport.miert	A keresés találata, de egy közös ok miatt egyik sem tartozik ide ({okok} ok, lent lenyitható)	okok:szam	1	blokk_dontesi_ut; a táblacella elején álló alak (a lapon így áll)	-
+d13.egyen.nev	**Egyenként elbírálva és elutasítva**	-	1	blokk_dontesi_ut	-
+d13.egyen.miert	egyenként olvasott versek, mindegyik saját indokkal ({okok} ok, lent lenyitható)	okok:szam	1	blokk_dontesi_ut	-
+d13.bent.nev	**A motívumhoz tartozik**	-	1	blokk_dontesi_ut	-
+d13.bent.miert	{helyek} hely (a tartomány-soroknál több vers egy helyen)	helyek:szam	1	blokk_dontesi_ut	-
+d13.nyitva.nev	**Döntésre vár**	-	1	blokk_dontesi_ut	-
+d13.osszeadas	**Összeadás:** {bent} (a motívumhoz tartozik) + {csoport} (csoportosan kizárva) + {egyen} (egyenként elutasítva) = {osszes} megvizsgált vers. Döntés nélkül maradt vers: {nyitva}.	bent:szam(ezres), csoport:szam(ezres), egyen:szam(ezres), osszes:szam(ezres), nyitva:szam(ezres)	1	blokk_dontesi_ut	-
+d13.osszeadas.nyitva	**Összeadás:** {bent} (a motívumhoz tartozik) + {csoport} (csoportosan kizárva) + {egyen} (egyenként elutasítva) + {nyitva} (döntésre vár) = {osszes} megvizsgált vers. Döntés nélkül maradt vers: {nyitva}.	bent:szam(ezres), csoport:szam(ezres), egyen:szam(ezres), osszes:szam(ezres), nyitva:szam(ezres)	1	blokk_dontesi_ut	-
+d13.csoport.blokk	<details><summary><strong>{ok}</strong> — {n} vers</summary><p>{leiras}</p>{peldak}{melleklet}</details>	ok:lathato, n:szam(ezres), leiras:lathato, peldak:lathato, melleklet:lathato	1	_reszletek	-
+d13.csoport.blokk.pelda_nelkul	<details><summary><strong>{ok}</strong> — {n} vers</summary><p>{leiras}</p>{melleklet}</details>	ok:lathato, n:szam(ezres), leiras:lathato, melleklet:lathato	1	_reszletek	-
+d13.peldak	<p>Példák (a Károli-szöveggel):</p><ul>{peldak|}</ul>	peldak:lista(lathato)	1	blokk_dontesi_ut	-
+d13.pelda	<li>{hely}: <em>{szoveg}</em></li>	hely:igehely, szoveg:lathato	1	blokk_dontesi_ut	-
+d13.melleklet.mind	<p>A csoport mind a {n} verse a <a href="{motivum}_KIZARASOK.md#{horgony}">kizárt helyek mellékletében</a> áll.</p>	n:szam(ezres), motivum:motivum, horgony:horgony	1	blokk_dontesi_ut	-
+d13.melleklet.egy	<p>A csoport egyetlen verse a <a href="{motivum}_KIZARASOK.md#{horgony}">kizárt helyek mellékletében</a> áll.</p>	motivum:motivum, horgony:horgony	1	blokk_dontesi_ut	-
+d13.egyen.blokk	<details><summary><strong>{ok}</strong> — {n} vers</summary><p>{leiras}</p><p>Versek: {versek|, }.</p><p>A <a href="{motivum}_KIZARASOK.md#{horgony}">kizárt helyek mellékletében</a> is.</p></details>	ok:lathato, n:szam(ezres), leiras:lathato, versek:lista(igehely), motivum:motivum, horgony:horgony	1	_reszletek	-
+d14.blokk	<details open><summary><strong>{nev}</strong> — {n} hely</summary><p>{bontas}.</p><ul>{helyek|}</ul></details>	nev:lathato, n:szam, bontas:lathato, helyek:lista(lathato)	1	blokk_dontesi_ut	-
+d14.nev.szavak	{szavak| + }	szavak:lista(lathato)	1	_lanc_szo_nev	-
+d14.nev.jelentessel	{szo} — {jelentes}	szo:lathato, jelentes:lathato	1	_lanc_szo_nev	-
+d14.nev.szopar	szópár: {reszek| + }	reszek:lista(lathato)	1	_lanc_szo_nev	-
+d14.nev.tematikus	a lánc szavai nélkül (tematikus, nem lexikai kapcsolat)	-	1	_lanc_szo_nev	-
+d14.bontas	{n} hely: {reszek|, | és }	n:szam, reszek:lista(lathato)	1	_hely_bontas	-
+d14.resz.gen	{n} a Genezisben	n:szam	1	_hely_bontas	-
+d14.resz.osz	{n} az Ószövetség többi könyvében	n:szam	1	_hely_bontas	-
+d14.resz.usz	{n} az Újszövetségben	n:szam	1	_hely_bontas	-
+d14.egy.gen	Egy hely, a Genezisben	-	1	_hely_bontas	-
+d14.egy.osz	Egy hely, az Ószövetség többi könyvében	-	1	_hely_bontas	-
+d14.egy.usz	Egy hely, az Újszövetségben	-	1	_hely_bontas	-
+d14.hely	<li><a href="#{horgony}">{hely}</a>: {magyarazat}.</li>	horgony:horgony, hely:igehely, magyarazat:lathato	1	blokk_dontesi_ut (a régi kód a funkció magyarázatát nagy kezdőbetűvel írta; az új változatlanul adja)	-
+d14.hely.magyarazat_nelkul	<li><a href="#{horgony}">{hely}</a></li>	horgony:horgony, hely:igehely	1	uj	var
+d15.hataresetek	**Határesetek** (nem magas megbízhatóságú azonosítás): {helyek|, }.	helyek:lista(lathato)	1	blokk_dontesi_ut	-
+d15.hatareset	[{hely}](#{horgony}) ({megb})	hely:igehely, horgony:horgony, megb:nev(megbizhatosag)	1	blokk_dontesi_ut	-
+d15.kerdes	- {kerdes}	kerdes:lathato	1	_modszertan_nyitott	-
+d15.kifejtes	A kérdések kifejtése {e_szam|a}. ({e_cim}) és {m_szam|a}. szakaszban ({m_cim}) áll.	e_szam:szam, e_cim:lathato, m_szam:szam, m_cim:lathato	1	blokk_dontesi_ut	-
+d15.nincs	A motívumnak nincs határesete és nyitott kérdése.	-	1	blokk_dontesi_ut	-

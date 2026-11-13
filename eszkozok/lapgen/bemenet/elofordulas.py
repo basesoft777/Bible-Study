@@ -16,6 +16,7 @@ _OSZLOPOK = ('id', 'igehely', 'kapcsolodas', 'pardes_szint', 'funkcio', 'gerinc_
 _STRONG_RX = re.compile(r'^[HG]\d{4}[A-Za-z]?$')
 _IKON_RX = re.compile(r'^[^\w"„(]+')
 _TEMATIKUS_ELOTAG = 'tematikus:'
+_RESZ_ELVALASZTO = '+'
 # A proveniencia-hármas alakja (`scope=… | forras=… | ts=…`, a lekérdezés további mezőivel), ahogy a lekérdező írja.
 _ELV = r'\s\\?\|\s*'
 _HARMAS_RX = re.compile(r'scope=[^|`\n]*?' + _ELV + r'forras=[^|`\n]*?(?:' + _ELV + r'(?!ts=)[a-z_]+=[^|`\n]*?)*'
@@ -37,7 +38,7 @@ class ElofordulasBe:
     __slots__ = ('igehely', 'kapcsolodas', 'pardes_szintek', 'funkcio_cimke', 'funkcio_magyarazat', 'gerinc_elem',
                  'tematikus', 'strongok', 'szotar', 'entry', 'jelentes_szam', 'karoli_szo', 'azonositas_modja',
                  'megbizhatosag', 'megbizhatosag_kulcs', 'proveniencia', 'prov_reszek', 'igazolas', 'igazolas_kulcs',
-                 'sajat_szo')
+                 'sajat_szo', 'fajl_sorszam', 'gerinc_reszek')
 
 
 def _strong_vagy_semmi(nyers):
@@ -127,6 +128,11 @@ def b03_elofordulasok(b, motivum):
         e.funkcio_magyarazat = b.kezi('B03', 'funkcio', _IKON_RX.sub('', magyarazat))
         e.gerinc_elem = b.kulcs('B03', 'gerinc_elem', mezo('gerinc_elem'))
         e.tematikus = mezo('gerinc_elem').startswith(_TEMATIKUS_ELOTAG)
+        # a hordozó elem részei (`+`-szal tagolva): Strong-szám, vagy a szópár kézzel írt neve („málé”)
+        e.gerinc_reszek = () if e.tematikus else tuple(
+            Strong(resz) if _STRONG_RX.match(resz) else b.kezi('B03', 'gerinc_nev', resz)
+            for resz in (r.strip() for r in mezo('gerinc_elem').split(_RESZ_ELVALASZTO)) if resz)
+        e.fajl_sorszam = len(ki)   # a sor helye a motívum sorai között, a tábla rendjében
         e.strongok = tuple(Strong(t) for t in (r.strip() for r in mezo('strong').split('+'))
                            if t and _STRONG_RX.match(t))
         e.szotar = b.kulcs('B03', 'lexikon_szotar', mezo('lexikon_szotar'))

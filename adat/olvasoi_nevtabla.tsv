@@ -30,3 +30,6 @@ cimke_cella	BDB|H0127|BDB109|-/4/-	A föld látható felszíne, a föld színe	a
 halo	strong	A szavak minden előfordulása	TELJESSEG_HALO_NEV
 halo	karoli	A magyar szavak	TELJESSEG_HALO_NEV
 halo	szotar	A szótárak idézőhelyei	TELJESSEG_HALO_NEV
+halo_leiras	strong	A lánc héber és görög szavai a teljes Ó- és Újszövetségben	TELJESSEG_HALO_NEV (a leírás a táblacella elején álló alakban, ahogy a lapon áll)
+halo_leiras	karoli	A lánc szavainak magyar megfelelői a teljes Károli-fordításban	TELJESSEG_HALO_NEV (a leírás a táblacella elején álló alakban, ahogy a lapon áll)
+halo_leiras	szotar	ahol a héber és a görög szótár ezeknél a szavaknál egy verset idéz	TELJESSEG_HALO_NEV (a leírás a táblacella elején álló alakban, ahogy a lapon áll)

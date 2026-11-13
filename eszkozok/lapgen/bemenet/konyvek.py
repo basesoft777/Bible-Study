@@ -29,6 +29,10 @@ class Konyvek:
         self.sorszam(konyv)
         return konyv in self._ujszovetsegi
 
+    def elso(self, konyv):
+        """Igaz, ha a könyv a kánon első könyve (a tábla első sora)."""
+        return self.sorszam(konyv) == 0
+
     def nev(self, konyv):
         """A könyv teljes magyar neve névtábla-elemként."""
         self.sorszam(konyv)

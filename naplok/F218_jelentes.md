@@ -519,3 +519,40 @@ Ideiglenes fájlok csak a scratchpadben: `C:\Users\bases\AppData\Local\Temp\clau
 **Az `ir` mező.** A hat adatfájl és a generált `nyilt_mag/` kívül esik a brief `ir` mezőjén. A mezőt nem bővítettem: a bővítés a feladatkövetőben függési kört ad (`python eszkozok/feladatok.py ellenoriz`: „függési kör: #203 ↔ #212 ↔ #218”; a brief olvassa azok fájljait, és közös fájlt írna velük), amelynek feloldása a felhasználó döntése. Az `ir`-en kívüli írásra CI-szabály nincs; a módosítás itt és a DT-F218l sorában cellánként áll.
 
 **Amit a felhasználónak látnia kell.** (1) A fenti szóválasztás („vizsgálat”, „listán”; nem „szócikk”). (2) A nyílt mag angol szövege nem változott: ha az „entry” helyett „this study” kell, az két szöveg újrafordítása és egy kódkönyv-címke. (3) Az `ir`-en kívüli hat fájl.
+
+## F218.5 — S2, második fele: „1. Döntési út” (1.1–1.5) (`claude-fable-5-2`, 2026-11-13, a 3. session)
+
+**Eredmény (HAMART-001, `PARDES_DATUM=2026-11-13`, `munka` mód).** A „1. Döntési út” szakasz 110 sorából 94 bájtra egyezik a referenciával; **16 diff-sor, mind engedéllyel, két előre megszámolt osztályban; engedély nélküli diff-sor: 0.** A melléklet 8, a „2. Előfordulások” 1 engedélysorral áll (változatlan). Az S2 szelet ezzel kész: a szakasz-diff 0 az engedélyeken kívül mindkét nézetre.
+*Proveniencia: `scope=general.py --cel lexikon2 --id HAMART-001, majd python eszkozok/lapgen/regresszio.py --id HAMART-001 | forras=a munkafa az S2b commitja előtt | ts=2026-11-13`.*
+
+| Engedélysor | Osztály | Darab | Előre rögzítve | Mi tér el |
+|---|---|---|---|---|
+| S2-FORRAS | GK-07 | 1 | 1 (a brief 8.1 (b) osztálya) | a blokkfejléc forrás- és licenclistája a szakasz valódi olvasásaiból jön |
+| S2-FUNKCIO-1…15 | M-CSERE (DT-F218k) | 15 | 15 (a folytatási fájl „Az S2 második feléhez” pontja) | az 1.4 pont listaelemeiben a funkció kézi magyarázata a kettőspont után változatlanul, kisbetűvel áll („1Móz 3:14: az átok első kimondása, …”); a régi generátor nagy kezdőbetűvel írta át. Az engedély írásakor gépi ellenőrzés: a sor egyetlen eltérése a listaelemek kezdőbetűje |
+
+**Mi készült.**
+- **Bemenetek** (a jegyzék +4 sor: B02, B10, B15, B47): a motívum sora (`bemenet/motivum.py` `b02_motivum`: a negatív kritérium szerkezeti bontása a „Nem tartozik ide” szavaknál, szövegváltoztatás nélkül; a cím és a fölérendelt fogalom záró pontja kapu, nem levágás); a szótári alak és kiejtése (`bemenet/szavak.py` `b10_lemmak`, `Kiejtes.szotari`: görögül a szótár átírásának magyaros alakja, héberül a kivétel-sor, híján a gépi kiejtés; a lemma-változat a motívum versei szerint, GK-13: H2403 → חַטָּאת, mert az 1Móz 4:7 szótöve ez); a rövid magyar jelentés egy úton (`rovid_jelentes`: héberül a glosszatábla fő sora, görögül a fordítástábla rövid glosszája; magyar jelentés híján kimondott hiány, angol szöveg nem kerül a lapra); a kézi forrás vitatott pontjai és nyitott kérdései szó szerinti részletként (`b47_nyitott_kerdesek`).
+- **Számítás** (`szamitas/dontesi_ut.py`): a számok a vizsgálat közös modelljéből jönnek (ugyanabból, mint a melléklet); a motívum helyei a hordozó elemük szerint csoportosítva, a tábla rendjében; a helyek megoszlása (Genezis, az Ószövetség többi könyve, Újszövetség) a könyvtáblából (a Genezis a tábla első sora: könyvnév a kódban nincs).
+- **Kapuk a modellen:** a vizsgálat számegyezése; a csoportok helyeinek összege a motívum helyeinek száma; csoportonként a megoszlás a helyek száma; a lenyíló blokkba kerülő kézi szöveg és idézet nem tartalmazhat `<`, `>`, `&` jelet (a régi kód átkódolta ezeket; az új nem ír át, ezért az ilyen szöveg kapun akad meg; a két mintalap adatában 0 ilyen jel áll).
+- **Megjelenítés** (`megjelenites/md/dontesi_ut.py`): minden mondat a sablontáblából; a lenyíló blokkok jelölése a sablonmondat része. A mellékletre mutató horgony a melléklet címsorából képződik (teszt: minden link létező címsorra mutat).
+
+**A régi utófeldolgozó lánc itt nem változtatott mást.** A negatív kritériumon a régi `olvasoi_indok` tisztítása a HAMART-szövegen az önreferencián kívül semmit nem írt át (a két bekezdés bájtra egyezik a forráscellával). A cellakezdő alakok (pl. „1.2. lépés minden találata”, „A keresés találata, …”) sablonsorként, illetve a névtábla `halo_leiras` soraként állnak, ahogy a lapon.
+
+**Új táblasorok.** A jegyzék +4 (összesen 33); a névtábla +3 (`halo_leiras`; összesen 33); a sablontábla +69 (összesen 196): mind betűre a régi lap szövege, kivéve egyet. **Új sablonmondat** (`eredet=uj`, `dontes=var`): `d14.hely.magyarazat_nelkul` (listaelem magyarázat nélkül: csak az igehely linkje; a két mintalapon nem áll). Két sor eredete megjegyzi, hogy a régi kód a kézi szöveget nagy kezdőbetűvel írta (`d14.hely`, `d11.csak_tagabb`).
+
+**Tesztek:** 167 futott, 134 zöld, 33 kihagyva (a váz); az S2b tesztjei: `teszt_dontesi_ut.py` (15 teszt). **Festékpróba:** 0 szivárgás (HAMART: belső 191, idézet 420, kézi 364 látott jelzőszó; ISTENTISZT: 134, 208, 185). **Futásidő:** az új generátor a HAMART két nézetét 6 másodperc alatt adja (a régi 44–47 mp). **ISTENTISZT-001:** a szakasz generálódik (a tudományos nézet 271 sor), a kapuk zöldek, a linkek létező horgonyra mutatnak; bájt-mércéje nincs.
+*Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; time general.py --cel lexikon2 --id HAMART-001 | forras=a munkafa az S2b commitja előtt | ts=2026-11-13`.*
+
+**A HAMART-001 számai a modellen:** 1 840 megvizsgált vers = 56 (a motívumhoz tartozik, 49 hely) + 1 542 (csoportosan kizárva, 4 ok) + 242 (egyenként elutasítva, 26 ok) + 0 (döntésre vár); kereszthivatkozás-ajánlásból 99; 15 helycsoport, 13 lánc-szó, 7 határeset, 7 vitatott pont és nyitott kérdés. Az ISTENTISZT-001-en: 2 helycsoport, 3 lánc-szó, 0 határeset, 4 kérdés.
+*Proveniencia: `scope=szamitas.dontesi_ut.szamit a két mintalapra (a modell mezőinek száma) | forras=a munkafa az S2b commitja előtt | ts=2026-11-13`.*
+
+**Amit a felhasználónak látnia kell (S2b; a 218a végi átnézés listájába).**
+1. **Az 1.4 pont listaelemei kisbetűvel kezdődnek** a kettőspont után („1Móz 3:14: az átok első kimondása, a kígyóra; …”), mert a funkció magyarázata a forrás szerint áll. A régi lap nagybetűvel írta. Ha a nagybetűs alak kell, a magyarázat mondatkezdő alakja adatba kerül (új mező), és a 15 engedélysor megszűnik. Az ISTENTISZT-lapon ugyanez látszik.
+2. **„mind a 575 verse”.** A csoportos ok mondata betűre a régi lapé („A csoport mind a {n} verse …”); nyelvtanilag „mind az 575 verse” volna helyes. Nem javítottam, mert a szöveg jóváhagyott (ugyanaz az eset, mint a melléklet „A 575 vers” címe); ha javítandó, a sablonmondat `{n|a}` alakot kap, és ez 1 engedélysor.
+3. **A kizárási okok kézi megjegyzéseiben belső szó áll az ISTENTISZT-lapon** („a negatív kritérium a passzív / megnevező használatot zárja ki”, „(a fölérendelt fogalom felé)”): ez kézi adat (`adat/elutasitasi_okok.tsv`), a generátor változatlanul adja; a javítása a forrásban történik, a lap olvasásakor.
+4. **Az új sablonmondat** (fent) és a javítókör két új mondata (`e2.jel.szocikkel`, `e2.jel.szocikk_sorszam`).
+
+**Ismert korlátok (az ellenőrnek is).**
+- A B10 jegyzéksora két fájlt fed (a görög és a héber rövid szótár), egy licenckulccsal (`TBESH`); a két szótár licenccímkéje a leltárban külön sor. A blokkfejléc licenclistája így az egyik címkét adja.
+- A `d11.csak_tagabb` (nincs „Nem tartozik ide” rész, csak fölérendelt fogalom) és a „Döntésre vár” sor egyik mintalapon sem áll: teszt nem fedi a megjelenésüket.
+- A nyitott kérdés szó szerinti részlet: ha a forrásban a félkövér cím végén nincs pont, a lapon sem lesz (a régi kód pótolta).

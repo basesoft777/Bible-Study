@@ -74,3 +74,10 @@ class SzovetsegKod(enum.Enum):
     MINDKETTO = 'mindketto'
     CSAK_OSZ = 'csak_osz'
     CSAK_USZ = 'csak_usz'
+
+
+class MaradtFajta(enum.Enum):
+    """Min lóg a motívum egy helycsoportja a Döntési úton (a hordozó elem fajtája)."""
+    SZO = 'szo'                       # a lánc szava vagy szavai (Strong-számok)
+    NEVES_SZOPAR = 'neves_szopar'     # kézzel elnevezett szópár (a részei nem Strong-számok)
+    TEMATIKUS = 'tematikus'           # a lánc szavai nélkül: tematikus, nem lexikai kapcsolat
