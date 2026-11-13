@@ -492,3 +492,30 @@ Ideiglenes fájlok csak a scratchpadben: `C:\Users\bases\AppData\Local\Temp\clau
 *Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py; general.py --cel lexikon2 --id HAMART-001 + python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001 | forras=a munkafa a javítókör commitja előtt | ts=2026-11-13`.*
 
 **Új táblasorok:** a jegyzék +1 (B68; összesen 29), a sablontábla +2 (összesen 127).
+
+## DT-F218l: az önreferencia a forrásban (`claude-fable-5-2`, 2026-11-13, a 3. session)
+
+*Az orkesztrátor technikai döntése (2026-11-13): a három nyitott pár a forrásban javul, ebben a feladatban; egyszavas egységesítés, a tartalom nem változik; a cella az legyen, ami a jóváhagyott lapon látszott; az engedélysorok megszűnnek, a DT-F218l állapota ✅.*
+
+**Eltérés az utasítás betűjétől, kimondva.** Az utasítás szava „szócikk” volt („a »lap« helyett »szócikk« álljon, ahogy a jóváhagyott lapon látszott”). A jóváhagyott lapon a három nyitott párnál nem „szócikk” áll, hanem páronként más szó: „a vizsgálat”, „ez a vizsgálat”, „a listán” (a régi cserepár jobb oldala; a motívum kézi forrása is ezeket használja). A cellákba ezek a szavak kerültek, mert az utasítás két másik feltétele (a jóváhagyott lap szövege, és az engedélysorok megszűnése) csak így teljesül: „szócikk” szóval a lap szövege megváltozna, és a két engedélysor megmaradna. Ha az orkesztrátor mégis egységesen „szócikk”-et kér, az 8 cella újabb cseréje és a korábbi mérés szerint 2 + 16 engedélysor (a melléklet és a tudományos lap érintett sorai).
+
+| Fájl | Sor, mező | Előtte | Utána |
+|---|---|---|---|
+| `adat/motivumok.tsv` | HAMART-001, `negativ_kriterium` | „… ezeket a lap egyenként, tematikus helyként veszi fel.” | „… ezeket a vizsgálat egyenként, tematikus helyként veszi fel.” |
+| `adat/jeloltek.tsv` | HAMART-001, Ef 2:1 és Ef 2:3, `indoklas` (2 cella) | „… amelyet a lap nem dönt el (l. az Értelmezés szakasz vitatott pontjait)” | „… amelyet ez a vizsgálat nem dönt el (…)” |
+| `adat/elutasitasi_okok.tsv` | HAMART-001, 111. sorrendű sor, `cimke` és `megjegyzes` (2 cella) | „az öröklött bűnösség kérdése, amelyet a lap nem dönt el” | „az öröklött bűnösség kérdése, amelyet ez a vizsgálat nem dönt el” |
+| `adat/kapcsolatok.tsv` | HAMART-001, 3 sor (1Móz 3:17 → Ézs 24:5-6 és két társa), `indoklas` | „A tematikus hely, amely a lánc szavai nélkül áll a lapon, …” | „… áll a listán, …” |
+| `adat/nyilt_kodkonyv.tsv` | `kizaras_oka` értéke: `ertek`, `leiras_hu` (2 cella) | „… amelyet a lap nem dönt el” | „… amelyet ez a vizsgálat nem dönt el” (a kódkönyv kulcsa a kizárási ok szövege: követi a forrást) |
+| `adat/nyilt_angol.tsv` | 3 sor: `forras_hu`, `forras_hash` | a régi magyar szöveg és a hash-e | az új magyar szöveg és a hash-e; az `angol`, a `modell` és a `datum` mező változatlan |
+
+**Ellenőrzések.**
+- A cserét szkript végezte (`split('\t')` / `'\t'.join()`), írás előtt soronkénti összevetéssel: fájlonként csak a megnevezett cellák változtak (`git diff --numstat`: 1, 2, 1, 3, 1, 3 sor), a sorok száma nem.
+- **A régi generátor** mindkét HAMART-nézete a javított cellákkal is bájtra azonos a kiadott lapokkal (`cmp`, kilépési kód 0): a négy cserepár így üresen fut.
+- **A nyílt mag.** Az angol fordítás nem készült újra: a tár három sorának `forras_hash`-e az új magyar szövegé (a régi hash a régi szöveg SHA-256-jának első 16 jegye volt: a szkript ezt írás előtt ellenőrizte), az angol szöveg maradt („which the entry does not decide”: az „entry” a lap önmegnevezése). A `nyilt_mag_angol.py allapot` száma a javítás előtt és után azonos (1 262 cella: 1 037 fordított, 76 hiányzó, 149 elavult): a javítás új elavult fordítást nem hozott. A `nyilt_mag/` újraexportálva: 4 adatsor (`kizarasok.tsv` 2, `kodkonyv.tsv` 1, `motivumok.tsv` 1), a `KODKONYV.md` 1 sora és a kiadási hash (`KIADAS.txt`, `RELEASE.txt`, `ELLENORZO_OSSZEG.sha256`). A nyílt mag kapujának 150 bukása a javítás előtt is állt (149 elavult fordítás az ISTENTISZT-001 soraiban és 1 visszhang-sor): egyik sem az itt érintett sor.
+- **Az új generátor.** A melléklet engedélysorai 10-ről 8-ra csökkentek (az S2-ONREF-1 és -2 megszűnt); engedély nélküli diff-sor 0. A referencia-tábla négy bemenet-sorának hash-e frissült (B02, B04, B45, B56).
+
+*Proveniencia: `scope=git diff --numstat -- adat nyilt_mag; general.py --cel lexikon --id HAMART-001 + cmp a HEAD két lapjával; python eszkozok/nyilt_mag_angol.py allapot (előtte és utána); python eszkozok/nyilt_mag_export.py; python eszkozok/nyilt_mag_kapu.py; general.py --cel lexikon2 + python eszkozok/lapgen/regresszio.py --id HAMART-001 | forras=a munkafa a DT-F218l commitja előtt | ts=2026-11-13`.*
+
+**Az `ir` mező.** A hat adatfájl és a generált `nyilt_mag/` kívül esik a brief `ir` mezőjén. A mezőt nem bővítettem: a bővítés a feladatkövetőben függési kört ad (`python eszkozok/feladatok.py ellenoriz`: „függési kör: #203 ↔ #212 ↔ #218”; a brief olvassa azok fájljait, és közös fájlt írna velük), amelynek feloldása a felhasználó döntése. Az `ir`-en kívüli írásra CI-szabály nincs; a módosítás itt és a DT-F218l sorában cellánként áll.
+
+**Amit a felhasználónak látnia kell.** (1) A fenti szóválasztás („vizsgálat”, „listán”; nem „szócikk”). (2) A nyílt mag angol szövege nem változott: ha az „entry” helyett „this study” kell, az két szöveg újrafordítása és egy kódkönyv-címke. (3) Az `ir`-en kívüli hat fájl.
