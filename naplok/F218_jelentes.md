@@ -556,3 +556,56 @@ Ideiglenes fájlok csak a scratchpadben: `C:\Users\bases\AppData\Local\Temp\clau
 - A B10 jegyzéksora két fájlt fed (a görög és a héber rövid szótár), egy licenckulccsal (`TBESH`); a két szótár licenccímkéje a leltárban külön sor. A blokkfejléc licenclistája így az egyik címkét adja.
 - A `d11.csak_tagabb` (nincs „Nem tartozik ide” rész, csak fölérendelt fogalom) és a „Döntésre vár” sor egyik mintalapon sem áll: teszt nem fedi a megjelenésüket.
 - A nyitott kérdés szó szerinti részlet: ha a forrásban a félkövér cím végén nincs pont, a lapon sem lesz (a régi kód pótolta).
+
+## Független ellenőrzés — 3. ellenőrzés
+
+*A `fuggetlen-ellenor` subagent (`claude-opus-5-5`) jelentése változtatás nélkül; bemenete: a brief, a `656c508a..28be9127` tartomány (az S2 két fele, a 2. javítókör és a DT-F218l), célzott hatókörrel, `teljes` szint. A push az ellenőrzés indításakor még nem történt meg (azóta megtörtént: `dca8a9f3..28be9127`). Mentve: 2026-11-13.*
+
+ELTÉRÉS: 2 tétel
+
+Brief: `F218_GENERATOR_UJ_A_BRIEF.md` · tartomány: `656c508a..28be9127` (5 commit) · szint: `teljes`, célzott hatókörrel · 3. ellenőrzés
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0. modell | OK | – | A modellem `claude-opus-5-5`, a kért `opus`. Mind az 5 commit trailere `Claude Fable 5.2`, ez egyezik a jelentés fejléceivel. A `nyilt_angol.tsv` `modell` mezője változatlan. |
+| 3. CI | NEM ELLENŐRIZHETŐ | – | Push nem történt, ezért a HEAD-re nincs futás (a megbízás szerint csak jelzem). A gépi részt helyben futtattam (lent). |
+| 1a `.ertek` → igehely/szám | OK | `szamitas/szotari_gerinc.py:199-207,226-232`; `bemenet/gerinc.py:398,406-413` | A `kezdo_vers` a bemenetben `Igehely`, a `jelentesszam` a bemenetben `int`. `Grep \.ertek` a `szamitas/` alatt: csak kulcsként, rendezéshez vagy prov-ban, a `megjelenites/` alatt 0. `int(` és `Igehely(` a két rétegben: 0. |
+| 1b szakaszjel | OK | `bemenet/gerinc.py:214-253,435-440`; `megjelenites/md/elofordulas.py:84-95` | A `kulcs_jel` (BDB-id) csak prov-ba, rendezésbe és a `szakasz_glossza` kulcsába jut. A látható jel a `_szakaszjel` útján megy. A `_cimszavak` `m.group(0)`-t ad: összefüggő, változatlan forrásrészlet. Az új lapok látható szövegében `BDB\d`: 0/0/0/0, a mintalapokon az út nem él. |
+| 2. olvasási napló | OK | `bemenet/jegyzek.py:164-184` | `open`/`glob` csak a `_fajl`/`_utvonalak` magban van. A `zarojel_javitasok` a fájlt a naplózott `_szoveg` után újra beolvassa (csak elméleti TOCTOU). Saját szkript: a két lap 104-104 naplósorából 0 nincs a referencia-táblában (útvonal + hash). |
+| B numstat, cellák | OK | `adat/*.tsv` | `git diff 2b7a9b3b..4d4fc103 --numstat` és cellánkénti szkript: 8 adatcella (2+2+3+1), a kódkönyvben 2, a fordítástárban 3 sor. Az `angol`/`modell`/`datum` bájtra azonos, a `forras_hash` = SHA-256[:16] az új cellán (3/3 True). |
+| B nyílt mag | OK | `nyilt_mag/` | `nyilt_mag_export.py --kimenet <scratch>` (a repó helyett), majd fájlonként cmp a HEAD-del: 0 eltérés, 0 hiányzó, 0 új fájl. `git status` üres. |
+| B régi generátor | OK | – | `general.py --cel lexikon` → cmp a `git show HEAD:` két lapjával: mindkettő 0. |
+| B szóválasztás | OK | `naplok/F218_jelentes.md:500` | A jelentés egyértelműen kimondja a „szócikk” helyett választott szavakat. A HEAD-lapon „ez a vizsgálat nem dönt el” 6+2, „ezeket a vizsgálat egyenként” 5, „áll a listán, a láncnak” 2. „a lap …” és „a szócikk …” 0 találat, a lexikon a tartományban változatlan. |
+| C tesztek | OK | – | `tesztek/futtat.py`: 167 futott, 0 hiba, 33 kihagyva. |
+| C regresszió | OK | – | A HAMART-ra: Döntési út 16, melléklet 8, Előfordulások 1 engedélysor; engedély nélküli diff 0, RENDBEN. Az ISTENTISZT-re: „nincs referenciája” (EXIT 2), a brief 8.2 szerint ez várt. |
+| C festék | OK | – | 0/0 szivárgás. Látott jelzőszó: 191/420/364 és 134/208/185, egyezik a jelentéssel. |
+| C S2-FUNKCIO, S2-FORRAS | OK | – | Saját difflib-szkript a szakaszra: mind a 15 sor egyetlen eltérése a „: ” utáni kezdőbetű (15/15, nem csak 4 minta). Az S2-FORRAS sor a `GENERÁLT-KEZDET` blokkfejléc. |
+| C (i) `b02_motivum` | OK | `bemenet/motivum.py:40-62` | A `partition('Nem tartozik ide')` két összefüggő részletet ad, csere nincs. A záró pont kapu, nem levágás. |
+| C (i) `gerinc_reszek` | **ELTÉRÉS** | `bemenet/elofordulas.py:131-134`; `szamitas/dontesi_ut.py:124-134` | A `Kulcs`-ként is burkolt `gerinc_elem` minden nem-Strong része `Kezi` lesz. A MENNY-001-en (saját szkript, `b03`) ez `referencia:1Énokh 10:4-6/…`, `idézet:1Énokh 1:9` és `formula:οὐκ ἐφείσατο …` értéket ad, és ezek „szópár: …” néven a lapra kerülnének. Kapu nem állítja meg. |
+| C (ii) `b47` regexek | OK | `bemenet/motivum.py:25-28,104-117` | A `findall` csoportja összefüggő részlet. Kockázat: a `[^.!?]+` sortörésen átnyúlhat, és rövidítésnél („pl.”) mondat közepén vág. |
+| C (iii) `html_ben` lefedés | OK | `szamitas/vizsgalat.py:89-93,174`; `szamitas/dontesi_ut.py:101-103,134-136` | Lefedett mezők: az ok címkéje és leírása, a Károli-példa, a lemma, a kiejtés, a jelentés, a szópár-név és a funkció-magyarázat. HTML-jelölésű sablonsor (`grep '[<&>]'`) csak d13 és d14, a d11/d12/d15 sima Markdown. |
+| C festék ereje | **ELTÉRÉS** | `szoveg.py:574-584`; `festek.py:30` | A `cim_horgony` a kézi okcímkét kisbetűsíti, és horgonyként (href) a lapra írja. A jelzőszót kereső regex kisbetű-érzékeny: festett futásban 30 (HAMART) és 18 (ISTENTISZT) `zzq…zz` áll megjegyzésen kívül, a próba egyiket sem látja. |
+| C kapuk | OK | `bekotes.py`; `fo.py:81-83` | A `kapu=sz_dontesi_ut.kapu` be van kötve, és a megjelenítés előtt fut. Saját próba hamisított modellel: hiányzó hely, `osszes+1`, `csoport+1`, bent vers kizártként → mind a négy `KapuHiba`, a megjelenítő 0-szor hívódott. A `bent+…=osszes` ág valós adaton tautológia. |
+| C táblasorok | OK | `adat/lapgen_*.tsv` | Sorszám (komment- és fejléc nélkül): 33 / 33 / 196, az S2b-ben +4 / +3 / +69. Egy `dontes=var` sor van (`d14.hely.magyarazat_nelkul`). Az eredet-szimbólumok mind léteznek a `lexikon_general.py`-ban. Kilenc mintasor minden literálja megvan a HEAD-lap 108–218. sorában. |
+| C negatív kritérium | OK | – | A d11 sorok a szakasz-diffben 0 eltérésűek, és a sablon (`**Ami ide tartozik:** {szoveg}`) nem ír át. Az állítás így igaz. |
+| D proveniencia, `ir` | OK | `naplok/F218_jelentes.md:519` | Minden új számblokk alatt áll proveniencia-sor. Az `ir`-en kívül csak a 4d4fc103 írt (6 adatfájl és a `nyilt_mag/`); a jelentés ezt kimondja. |
+| Lista 1–2 | OK | – | Törölt adatsor nincs, csak cellacsere. A jegyzék a B68-cal és a B02/B10/B15/B47-tel bővült. |
+| Lista 3 nulla-diff | OK | – | Csak a HAMART „1. Döntési út” és „2. Előfordulások” szakaszára és a mellékletre érvényes, a többi szakasz „nincs kész”. Az ISTENTISZT-re nincs bájt-mérce. |
+| Lista 4 Δ (E17) | OK | – | A tartományban: bemenetek +9, sablonok +85, névtábla +6, a többi tábla 0. A bontás commitonként a jelentésben (+14 / +2 / +69: 68 régi + 1 új). |
+| Lista 5 ⛔ | OK | – | A DT-F218l a felhasználói döntéssel zárult, az engedélysorok megszűntek. |
+| A1–A6 | OK | – | Tartalmi réteg csak a 8 egyszavas cellacsere. |
+
+Az ELTÉRÉS-ek súlyossági sorrendben:
+1. **`gerinc_reszek` (C/i).** A típusjelölő előtagú `gerinc_elem` értékek (`referencia:`, `idézet:`, `formula:`) kézi prózaként, „szópár” címmel kerülnének a lapra. A két mintalapon nem él, a MENNY-001 migrációjakor igen, és kapu nem fogja meg. A `tematikus:` előtagot a kód kezeli, ezt a hármat nem.
+2. **A festékpróba vakfoltja.** A kézi okcímke átalakítva, kisbetűvel horgonyba kerül. Ez nem látható szöveg, de a brief 2.3 szerint jelzőszó megjegyzésen kívül sehol nem állhat. A kisbetű-érzékeny regex miatt a próba ezt az utat nem méri.
+
+Az ideiglenes fájlok (szkriptek, generált lapok) a repón kívül, a scratchpadben vannak: `C:\Users\bases\AppData\Local\Temp\claude\7726172d3b7d614a\ece49adf-e664-4f56-b65b-6d6d801699e3\scratchpad\`
+
+## A 3. ellenőrzés besorolási javaslata (egyeztetésre vár; javítás még nem történt)
+
+*Az építő session (`claude-fable-5-2`) javaslata; a besorolás az orkesztrátoré. A javítás a következő session első lépése lehet (a 3. session kontextusa a 70%-os határ közelében zárt).*
+
+| # | Tétel | Javasolt besorolás | Indok, teendő |
+|---|---|---|---|
+| 1 | a típusjelölő előtagú hordozó elem (`referencia:`, `idézet:`, `formula:`) kézi névként, „szópár” címmel kerülne a lapra | mechanikus (kapu), és egy későbbi tartalmi kérdés | most: a hordozó elem fajtája a bemeneti rétegben zárt készlet legyen (Strong-részek; `tematikus:`; kézzel elnevezett szópár előtag nélkül); ismeretlen előtag `BemenetHiba`, a lap nem találgat. Teszt a MENNY-001 soraira (a futás megáll, kimondott hibával). Később, a MENNY-001 új lapja előtt: hogyan nevezze meg a lap az ilyen csoportot (új sablonmondat, a felhasználó jóváhagyásával); ez nem a 218a két mintalapjának kérdése |
+| 2 | a festékpróba nem látja a horgonyba kerülő, kisbetűsített jelzőszót | mechanikus | a próba kis- és nagybetűtől függetlenül keressen; a horgony (a link célja és a címsor azonosítója) kapjon saját tartományfajtát, amelyben a kézi és az idézett szöveg jelzőszava megengedett (a horgony a címsorból képzett szerkezeti azonosító), a belső mező jelzőszava ott is szivárgás. A kivétel szövege a 6-os sablon alapszabály-szakaszába kerül (egy mondat), teszttel |
