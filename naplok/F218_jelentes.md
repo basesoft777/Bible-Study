@@ -432,3 +432,39 @@ Az ELTÉRÉS-ek súlyossági sorrendben:
 4. **10. tétel:** „tizenhárom” helyett 14 szimbólum; a számok egyeznek.
 
 Ideiglenes fájlok csak a scratchpadben: `C:\Users\bases\AppData\Local\Temp\claude\263328eaf8ead9ff\270d530d-7596-4408-9382-57d7c56473e8\scratchpad\`.
+
+## F218.5 — S2, első fele: a vizsgálat modellje és a kizárt versek melléklete (`claude-fable-5-2`, 2026-11-13)
+
+**Eredmény (HAMART-001, `PARDES_DATUM=2026-11-13`, `munka` mód).** A melléklet (`HAMART-001_KIZARASOK.md`) 431 sorából 421 bájtra egyezik a referenciával; **10 diff-sor, mind engedéllyel; engedély nélküli diff-sor: 0.** A tudományos lapon a „2. Előfordulások” változatlan (1 engedélysor). A „1. Döntési út” szakasz (az S2 második fele) még nincs kész.
+*Proveniencia: `scope=general.py --cel lexikon2 --id HAMART-001, majd python eszkozok/lapgen/regresszio.py --id HAMART-001 | forras=a munkafa az S2a commitja előtt | ts=2026-11-13`.*
+
+| Engedélysor | Osztály | Darab | Mi tér el |
+|---|---|---|---|
+| S2-KONYV-1…4 | GK-17 | 4 | a csoportosan kizárt versek között a Siralmak könyve az adat szerinti rövidítéssel (`Sir`, a Károli-fájl kulcsa) és a Károli-rend szerinti helyén áll, a versek fejezet- és versrendben (4:6, 4:13, 4:22). A régi generátor a csoporttagokat kódba írt aliasszal `JSir`-ré írta, ezért a könyv a lista végére, a versei betűrendbe kerültek (4:13, 4:22, 4:6); az egyenkénti vers a régi lapon is `Sir` |
+| S2-ONREF-1, -2 | M-CSERE | 2 | „az öröklött bűnösség kérdése, amelyet a lap nem dönt el”: a kézi címke és megjegyzés változatlanul áll; a forráscella javítása a felhasználó döntésére vár (DT-F218l) |
+| S2-FORRASSOR-1…4 | DT823 | 4 | a régi lap látható szövegben közölte a mérés fájlnevét és három nyers forrássorát, a keresést a belső kulcsával (`strong`, `karoli`, `szotar`); az új lapon a forrássor megjegyzésben áll, a keresés az olvasói nevével |
+
+**Mi készült.** A döntésnapló bemenetei (`bemenet/dontes.py`: B04, B05, B06, B56), a vizsgálat közös modellje (`szamitas/vizsgalat.py`: a motívum versei, a csoportosan kizárt, az egyenként elutasított és a döntésre váró versek; ebből ír a melléklet, és ebből fog írni a Döntési út), a melléklet modellje és megjelenítője (`szamitas/kizarasok.py`, `megjelenites/md/kizarasok.py`), a szakasz kapuja (a `SzakaszLeiro` `kapu` mezője; a `fo.lap_keszit` a megjelenítés előtt futtatja). A HAMART-001 számai a modellen: 56 vers (49 hely) + 1 542 csoportosan kizárt + 242 egyenként elutasított + 0 döntésre váró = 1 840; 4 csoportos és 26 egyenkénti ok.
+
+**Kapuk a modellen** (nem a kiírt szövegen): a számok összeadódnak; az okok versszámainak összege a két részösszeg; minden ok verslistája a versszáma; egy vers sem áll kétszer; a motívum verse nem áll a kizártak között (GK-09, GK-21, GK-04 melléklet-kapu). A teljesség-mérés pillanatképe frissességi kapuval lép be (GK-03, HN-11): ha a Strong-keresés forrássora nem nevezi meg a mért Strong-halmazt, vagy az nem a motívum mai halmaza, a lap nem készül el. Hiányzó mérés kimondott hiány (GK-06). Mindkét mintalap pillanatképe friss.
+
+**Tesztek:** 144 futott, 111 zöld, 33 kihagyva (a váz); az S2 tesztjei: `teszt_dontes.py` (14 teszt). **Festékpróba:** 0 szivárgás (HAMART: belső 171, idézet 326, kézi 240 látott jelzőszó; ISTENTISZT: 116, 183, 121). **ISTENTISZT-001:** a melléklet generálódik (307 sor), a látható szövegben nincs proveniencia-sor és fájlnév (teszt); bájt-mércéje nincs.
+*Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001 | forras=a munkafa az S2a commitja előtt | ts=2026-11-13`.*
+
+**Új táblasorok:** a jegyzék +4 (B04, B05, B06, B56; összesen 28), a névtábla +3 (`halo` típus; összesen 30), a sablontábla +14 (`kz.*` 13 és `cim.dontesi_ut`; összesen 125), közülük 2 új mondat (`dontes=var`): `kz.forrassorok.bevezeto` („A Döntési út 1.2 pontjának versszámai ebből a mérésből jönnek. Keresésenként a megvizsgált versek száma:”) és `kz.forrassorok.kereses` („- **A szavak minden előfordulása** (1 392 vers)”). A referencia-tábla 2 `uj_bemenet` sorral bővült (az ISTENTISZT-001 teljesség-mérése és csoportlistája; a HAMART-001 új bemenetei a régi generátor bemeneteiként már benne álltak), a sablontábla és a névtábla sorának hash-e frissült.
+
+**Amit a felhasználónak látnia kell (S2a).**
+1. **`Sir` vagy `JSir`.** A jelöltek és a csoportlista a Károli-fájl kulcsát használják (`Sir`), a normalizáló tábla rövidítése `JSir`. A melléklet most egységesen az adat szerinti `Sir` alakot adja, a Károli-rend szerinti helyen. A végleges alakról az alias-sorok döntése szól (GK-17, az S5 előtt).
+2. **A forrássorok két új mondata** (fent) jóváhagyásra vár; a mérés nyers forrássora megjegyzésben megmaradt.
+3. **„A 575 vers”.** A lenyíló lista címe betűre a régi lapé (`kz.lista_cim`: „A {n} vers”); nyelvtanilag „Az 575 vers” volna helyes. Nem javítottam, mert a szöveg jóváhagyott; ha javítandó, a sablonmondat `{n|A}` alakot kap, és ez 1 engedélysor.
+
+## A 2. ellenőrzés besorolási javaslata (kör: 2 / 2; egyeztetésre vár, javítás még nem történt)
+
+| # | Tétel | Javasolt besorolás | Indok, teendő |
+|---|---|---|---|
+| 1a | belső mezőből `.ertek`-en át látható igehely és szám | mechanikus | a verstartomány kezdő verse a bemeneti rétegben képzett `Igehely` legyen (ne `Belso`), a Thayer-példa jelentésszáma a bemeneti rétegben képzett szám (ne `Kulcs`); így a típus egyezik a használattal |
+| 1b | a szakaszjel a szótár belső szócikk-azonosítójával („BDB… 1”), idézetként burkolva | tartalmi | döntés kell: hogyan nevezze a lap a több szócikk egyikét (a régi lap a belső azonosítót írta ki); addig a több szócikkes esetben a generálás kimondott hibával álljon meg. A két mintalapon ez az út nem él |
+| 2 | az olvasási napló hézaga | mechanikus | a jegyzéktábla és a B54 minden fejsor-olvasott fájlja kerüljön a naplóba (hash-sel), a referencia-tábla ennek megfelelően bővül |
+| 3 | a DT-F218j és a DT-F218k állapota 🟢, ✅ helyett | mechanikus (formai) | a két sor állapotjele ✅ |
+| 4 | a bontási naplóban „tizenhárom” szimbólum, a helyes szám 14 | mechanikus (formai) | a szó javítása |
+

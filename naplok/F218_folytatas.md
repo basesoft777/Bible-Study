@@ -15,7 +15,9 @@
 | F218.3 | kész | tesztváz (`teszt_vaz.py`): 35 követelmény név + docstring + `skip` alakban, a szelet megnevezésével; a HN-03 a felhasználó döntésére vár; a mutációs próba (GK-26) az S9-ben. A tesztek állása: 121 teszt, 86 zöld, 35 kihagyva |
 | ⛔ az S1 után | **ELTÉRÉS (11 tétel)**; megállt | 1. független ellenőrzés (`fuggetlen-ellenor`, opus) és a felhasználó első átnézése: a lista a `naplok/F218_jelentes.md` „Amit a felhasználónak látnia kell az S1 után” pontja |
 | Javítókör (1. kör) | **kész** (2026-11-13, a 2. session) | az 1. ellenőrzés 11 tételéből 9 javítva, a 6. (halasztások) változatlan, az önreferencia három párja nyitva (DT-F218l); részletek: `naplok/F218_jelentes.md` „Javítókör az 1. ellenőrzés után”. Az S1 engedélysorai 5-ről 1-re csökkentek (S1-FORRAS). Az újraellenőrzés az S2 végi célzott ellenőrzéssel együtt fut |
-| F218.5 (S2) | nem indult | 1. Döntési út + KIZARASOK |
+| 2. ellenőrzés (célzott, a javítókörre) | **ELTÉRÉS: 4 tétel** | `naplok/F218_jelentes.md` „Független ellenőrzés — 2. ellenőrzés”; a besorolási javaslat ugyanott, egyeztetésre vár (kör: 2 / 2) |
+| F218.5 (S2), első fele | **kész** | a vizsgálat közös modellje kapukkal és a kizárt versek melléklete: 431 sorból 421 egyezik, 10 engedélysor, engedély nélküli diff-sor 0; festékpróba 0; 144 teszt |
+| F218.5 (S2), második fele | nem indult | „1. Döntési út” (1.1–1.5) |
 | F218.6–F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
@@ -41,11 +43,21 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 
 ## Következő lépés
 
-**Az S2-t a 2. session folytatja** (az orkesztrátor üzenete, 2026-11-13: a felhasználó nullázta a Fable-keretet; a keret az újraindításkor: heti 76%, Fable 0%, 5 órás 0%). A javítókör végén a keret elfogyott, a push előtti kapu futása megszakadt; az újraindítás után: push, célzott független újraellenőrzés (2. ellenőrzés), majd az S2. Ha a kontextus 70% fölé megy, az S2 hátralévő részét friss session veszi át ebből a fájlból. Az S2 előkészítő mérései és az előtte eldöntendő kérdések lent állnak.
+**Friss Fable-session folytatja ebből a fájlból** (a 2. session kontextusa az S2 első fele után a 70%-os határhoz ért). Sorrend:
 
 1. Modell-ellenőrzés (`fable`), `get_usage` (a küszöb: 96% heti; 70% kontextus fölött zárás).
-2. **F218.5 (S2): „1. Döntési út” (1.1–1.5) és a `_KIZARASOK.md` melléklet.** Követelmények: GK-04 (teljesség minden hálóra: strong, karoli, szotar; melléklet-kapu), GK-09 (számegyezés a modellen), GK-21 (a Döntési út számai összeadódnak; döntés nélküli vers 0), HN-11 (a teljesség-mérés pillanatképe frissességi kapuval), GK-03 (B05, B06), GK-06, GK-14 (az összevont versek kulcsa).
-3. Az S2 végén **egy célzott független ellenőrzés**: csak az S2 diffje és a javítókör tételei (a javítókör tartománya: `8c109585..` az első S2-commit szülőjéig), nem Fable modellel (`fuggetlen-ellenor`). Ez egyben a javítókör újraellenőrzése (2. ellenőrzés).
+2. **A 2. ellenőrzés javítóköre (`/elteres 218`, 2 / 2).** A besorolási javaslat a jelentés végén áll; az egyeztetés (a felhasználó vagy az orkesztrátor „mehet”-je) után: 1a, 2, 3, 4 mechanikus; 1b döntés (DT-sor, helyőrzővel).
+3. **F218.5 (S2), második fele: „1. Döntési út” (1.1–1.5).** A számok a kész modellből jönnek (`szamitas/vizsgalat.py` `szamit` és `kapu`); a szakasz bekötése: `bekotes.py`, kapuval. A referencia-szakasz: `lexikon/HAMART-001_TUDOMANYOS.md` 108–218. sor.
+4. Az S2 végén **egy célzott független ellenőrzés** (nem Fable): az S2 diffje (`656c508a..`) és a 2. javítókör tételei.
+
+### Az S2 második feléhez (a régi kód olvasásából)
+
+- **1.1 (B02, `adat/motivumok.tsv`).** A `negativ_kriterium` mező a „Nem tartozik ide” szavaknál válik ketté („Ami ide tartozik” / „Ami nem”); ez szerkezeti bontás a bemeneti rétegben, a két rész kézi próza. A régi kód a mezőn regexes tisztítást is futtatott (`szerep_kizart.olvasoi_indok`): mérendő, hogy a HAMART-szövegen változtat-e az önreferencián kívül. A fölérendelt fogalom és a cím a mondat végi pont nélkül áll az adatban (a sablonmondat teszi ki a pontot); ha az adat ponttal végződik, az kapu, nem levágás.
+- **1.2.** A szólista: lemma és kiejtés (B10: TBESG/TBESH; a régi `lemma_kiejtes_szabaly`: görögül magyaros átírás, héberül a kivételtábla, híján gépi kiejtés), rövid jelentés (héberül `adat/glosszak_heber_hu.tsv` `fo=igen` sora, görögül a fordítástábla `TBESG | rovid | glosszak_hu` sora). A hálótábla sorai: a keresés neve a névtáblából (`halo`), a „Mit nézett” leírás új sablonsor keresésenként; az ajánlás-sor csak akkor áll, ha a modell `ajanlas` száma nem 0. A cellák a referencia szerinti (cellakezdő) alakban kerülnek a sablontáblába („1.2. lépés minden találata”, „A keresések és az ajánlások együtt…”).
+- **1.3.** `<details>` blokkok egy sorban; a szükséges szerkezeti jelek (`<details>`, `<summary>` már van; `<strong>`, `<p>`, `<ul>`, `<li>`, `<em>`, `<a href>`) az író modul zárt készletébe kerülnek. A példák (a csoportos ok első öt jelöltsora a Károli-szöveggel) a modellben már benne vannak (`OkCsoport.peldak`). A melléklet okára mutató horgony a melléklet címsorából képződik (`szoveg.cim_horgony`). A régi kód HTML-escape-et futtatott a szövegen (`&`, `<`, `>`): az új nem ír át, ezért ilyen karakter a HTML-be kerülő kézi szövegben vagy idézetben kapu legyen.
+- **1.4.** Csoportosítás a `gerinc_elem` szerint. A csoport neve: Strong-elemnél lemma (kiejtés) és egyszavas elemnél a rövid jelentés; a nem Strong részekből álló elem („málé+chámász”) a régi lapon „szópár: málé + chámász” (a mező szövege áll a lapon: a bemeneti rétegben kézi névként kell kezelni); tematikus sornál rögzített mondat. A helyek bontása (Genezis / az Ószövetség többi könyve / Újszövetség) sablonból. **A funkció-magyarázatot a régi kód nagy kezdőbetűvel és ponttal írta ki** (`_funkcio_magyarazat`): ez csere (DT-F218k). A kettőspont után a kézi szöveg változatlanul, kisbetűvel is helyes; a pontot a sablonmondat adja. Ez a 15 `<details open>` sor mindegyikén eltérés: előre megszámolt engedélysor (15), a felhasználónak megmutatva; vagy a magyarázat mondatkezdő alakja adatba kerül.
+- **1.5.** A határesetek a megbízhatóság olvasói nevével (névtábla). A nyitott kérdések a motívum kézi forrásából (B47): a régi `_modszertan_nyitott` az `ertelmezes` rés „Vitatott pontok” félkövér címeit és a `modszertan` rés „Nyitott kérdések” számozott címeit veszi, mindegyikhez az első mondatot; ez a forrás nézete (szó szerinti részlet), a bemeneti rétegben.
+- **Könyvnév.** A jelöltek igehelyei a Károli-fájl kulcsai (`Sir`); a normalizáló táblán nem mennek át (l. a jelentés S2a-pontját).
 
 ### Az S2 előtt eldöntendő (a felhasználóhoz, az orkesztrátoron át)
 
@@ -153,6 +165,8 @@ Az S1 szakasz-diffje a heti keret 89%-ánál lett 0 (az engedélyeken kívül); 
 | S1 tesztek, push | 2026-11-13 11:00 | 90% | 28% | 71% | a tesztek és a tesztváz: 1 százalékpont; a kontextus 80% |
 | Javítókör indul (2. session) | 2026-11-13 11:27 | 91% | 30% | 82% | az orkesztrátor üzenete, a futó sessionök |
 | Javítókör kész | 2026-11-13 12:00 | 93% | 35% | 98% | a javítókör (9 tétel, 4 commit): 2 százalékpont heti; a kontextus 45% |
+| Újraindítás (a keret nullázva) | 2026-11-13 12:15 | 76% | 0% | 0% | az orkesztrátor üzenete |
+| S2 első fele kész | 2026-11-13 | 78% | 4% | 16% | az S2 első fele és a 2. ellenőrzés: 2 százalékpont heti; a kontextus 67% |
 
 Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 
@@ -161,6 +175,7 @@ Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 | F218.4 (1) | 76 | az összegző mondat, a hatókör-sor és a 2.1 pont egyezik |
 | F218.4 (2) | 0 (5 engedélysor) | a tábla, a 17 jegyzet, a közös forrásmegjelölés, az UBS-magyarázat |
 | Javítókör | 0 (1 engedélysor) | T4 a párosításból (−3), az önreferencia a forrásban (−1); marad a blokkfejléc |
+| F218.5 (S2a) | melléklet (431 sor): 0 (10 engedélysor) | az első futás 10 diff-sort adott, mind előre várt osztály |
 
 Festékpróba: HAMART-001 0 szivárgás (belső 168, idézet 326, kézi 180 látott jelzőszó; a javítókör előtt 137, 326, 180: a szótári ág most festett); ISTENTISZT-001 0 (113, 183, 85). Mutációs próba: még nincs. Átszökési arány: még nincs mérés (az 1. ellenőrzés és a felhasználó átnézése után).
 

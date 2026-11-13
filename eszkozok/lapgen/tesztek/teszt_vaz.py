@@ -73,27 +73,20 @@ class HibanaploMintak(unittest.TestCase):
 
 
 class Szerkezeti(unittest.TestCase):
-    @unittest.skip(S2)
+    @unittest.skip(S3)
     def test_gk03_pillanatkep_csak_kapuval(self):
-        """GK-03: elavított másolattal BUKÁS (B05, B06, B18, B19, B21, B36, B38); szeletenként bővül."""
+        """GK-03: elavított másolattal BUKÁS (B18, B19, B21, B36, B38); szeletenként bővül. A B05 kapuja kész
+        (`teszt_dontes.py`); a B06-ot a csoportos sor versszáma igazolja (a számítás megáll, ha nem egyezik)."""
 
-    @unittest.skip(S2)
+    @unittest.skip(S4)
     def test_gk04_kapu_minden_lapon(self):
-        """GK-04: az `lxx_egyezes`, a `hely_egyseg`, a `teljesseg` (strong, karoli, szotar háló) és a melléklet-kapu
-        a modellen fut, mindkét mintalapon."""
-
-    @unittest.skip(S2)
-    def test_gk06_opcionalis_bemenet_hianya_kimondott_hiany(self):
-        """GK-06: opcionális bemenet hiánya a lapmodellben kimondott hiány (felsorolás-érték), nem üres lista."""
+        """GK-04: az `lxx_egyezes` és a `hely_egyseg` kapuja a modellen fut, mindkét mintalapon. A melléklet-kapu és
+        a teljesség-mérés frissességi kapuja kész (`teszt_dontes.py`)."""
 
     @unittest.skip(S8)
     def test_gk07_forrasmegjeloles_a_valodi_olvasasbol(self):
         """GK-07: a Kolofon, az Irodalom és a blokkfejlécek forrás-halmaza = az olvasási napló; licencszöveg csak
         a licencleltárból."""
-
-    @unittest.skip(S2)
-    def test_gk09_szamegyezes_kapu_a_modellen(self):
-        """GK-09: a számegyezés-kapuk a lapmodell számait vetik össze, nem a kiírt szöveget."""
 
     @unittest.skip(S8)
     def test_gk10_szakaszszam_es_horgony_a_modellbol(self):
@@ -107,7 +100,7 @@ class Szerkezeti(unittest.TestCase):
     def test_gk13_lemma_kiejtes_es_valtozat(self):
         """GK-13: a szótári alak kiejtése ugyanabból a szolgáltatásból, a lemma-változattal: H2403a/b, H2398."""
 
-    @unittest.skip(S2)
+    @unittest.skip(S3)
     def test_gk14_osszevont_versek_kulcsa(self):
         """GK-14: az összevont 9 versnél a szavak sorrendje a versösszevonás szerint áll."""
 
@@ -129,9 +122,10 @@ class Szerkezeti(unittest.TestCase):
         """GK-19 (T6): minden pár számít; a látható szövegben 0 bizonyossági címke és 0 páronkénti jelölés; a mért
         pontosság egyszer, a Módszertanban áll, a konfigból."""
 
-    @unittest.skip(S2)
+    @unittest.skip(S3)
     def test_gk21_a_dontesi_ut_szamai_osszeadodnak(self):
-        """GK-21: a Döntési út számai összeadódnak; döntés nélküli vers 0; a Nave-blokk nem üres (S3)."""
+        """GK-21: a Nave-blokk nem üres. (A vizsgálat számainak összeadódása és a döntés nélküli versek száma a
+        modellen kész: `teszt_dontes.py`; a Döntési út szakasz ugyanebből a modellből ír.)"""
 
     @unittest.skip(S9)
     def test_gk24_alakosztaly_kapu_tipus_szerint(self):
@@ -226,10 +220,6 @@ class Hibanaplo(unittest.TestCase):
     @unittest.skip(S5)
     def test_hn10_karoli_kh_forrasdeklaracio(self):
         """HN-10: a Károli-kereszthivatkozás forrásdeklarációja a ténylegesen olvasott javított forrást nevezi."""
-
-    @unittest.skip(S2)
-    def test_hn11_teljesseg_meres_pillanatkepe(self):
-        """HN-11: a teljesség-mérés pillanatképe frissességi kapuval lép be."""
 
     @unittest.skip(S3)
     def test_hn12_angol_thayer_nyersen(self):

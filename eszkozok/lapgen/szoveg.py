@@ -348,7 +348,10 @@ def idezet(forrasszoveg):
 _HELYORZO_RX = re.compile(r'\{([a-z][a-z0-9_]*)(?:\|([^{}]*))?\}')
 _TIPUS_RX = re.compile(r'^(?P<nev>[a-z][a-z0-9_]*):(?P<tipus>[a-z]+)(?:\((?P<arg>[^()]*)\))?$')
 
-_SKALAR_TIPUSOK = ('szam', 'tizedes', 'nev', 'igehely', 'strong', 'motivum', 'horgony', 'datum', 'lathato')
+_SKALAR_TIPUSOK = ('szam', 'tizedes', 'nev', 'igehely', 'konyvrov', 'versresz', 'strong', 'motivum', 'horgony',
+                   'datum', 'lathato')
+_EZRES = 'ezres'            # `szam(ezres)`: ezres tagolás nem törő szóközzel (1 728)
+_EZRES_JEL = '\u00a0'
 _MAGANHANGZO = 'aáeéiíoóöőuúüűAÁEÉIÍOÓÖŐUÚÜŰ'
 
 
@@ -395,6 +398,8 @@ class SablonSor:
                     raise SablonHiba('%s: ismeretlen listaelem-típus: %r' % (kulcs, arg))
             elif tipus not in _SKALAR_TIPUSOK:
                 raise SablonHiba('%s: ismeretlen paramétertípus: %r' % (kulcs, tipus))
+            elif tipus == 'szam' and arg not in ('', _EZRES):
+                raise SablonHiba('%s: a szám formátuma csak `%s` lehet: %r' % (kulcs, _EZRES, arg))
             if m.group('nev') in self.parameterek:
                 raise SablonHiba('%s: kétszer leírt paraméter: %r' % (kulcs, m.group('nev')))
             self.parameterek[m.group('nev')] = (tipus, arg)
@@ -428,7 +433,7 @@ def _skalar_szegmensek(kulcs, nev, tipus, arg, ertek, modosito):
     if tipus == 'szam':
         if isinstance(ertek, bool) or not isinstance(ertek, int):
             raise SzovegHiba('%s: a(z) %s paraméter egész szám legyen' % (kulcs, nev))
-        szoveg = '%d' % ertek
+        szoveg = '{:,}'.format(ertek).replace(',', _EZRES_JEL) if arg == _EZRES else '%d' % ertek
     elif tipus == 'tizedes':
         if isinstance(ertek, bool) or not isinstance(ertek, (int, float)):
             raise SzovegHiba('%s: a(z) %s paraméter szám legyen' % (kulcs, nev))
@@ -441,6 +446,11 @@ def _skalar_szegmensek(kulcs, nev, tipus, arg, ertek, modosito):
         if not isinstance(ertek, Igehely):
             raise SzovegHiba('%s: a(z) %s paraméter Igehely legyen' % (kulcs, nev))
         szoveg = ertek._ertek
+    elif tipus in ('konyvrov', 'versresz'):
+        # az igehely két része külön: a könyv rövidítése, illetve a fejezet és a vers („1:52”)
+        if not isinstance(ertek, Igehely):
+            raise SzovegHiba('%s: a(z) %s paraméter Igehely legyen' % (kulcs, nev))
+        szoveg = ertek._konyv if tipus == 'konyvrov' else ertek._ertek[len(ertek._konyv) + 1:]
     elif tipus == 'strong':
         if not isinstance(ertek, Strong):
             raise SzovegHiba('%s: a(z) %s paraméter Strong legyen' % (kulcs, nev))
@@ -559,6 +569,19 @@ def kiiras(lathato):
         tartomanyok.append((hol, hol + len(szoveg), fajta))
         hol += len(szoveg)
     return Kiirt(''.join(darabok), tuple(tartomanyok))
+
+
+_CIM_HORGONY_TILTOTT_RX = re.compile(r'[^\w\- ]')
+
+
+def cim_horgony(cim):
+    """Egy címsor horgonya a címből, ahogy a megjelenítők képzik: kisbetű, az írásjelek nélkül, a szóköz helyén
+    kötőjel. A cím szövege nem változik: a horgony szerkezeti azonosító (ahogy az igehely horgonya is itt
+    képződik), látható szöveg nem lesz belőle."""
+    if not isinstance(cim, Lathato):
+        raise SzovegHiba('cim_horgony(): Lathato kell')
+    szoveg = ''.join(szegmens[1] for szegmens in cim._szegmensek)
+    return Horgony(_CIM_HORGONY_TILTOTT_RX.sub('', szoveg.lower()).strip().replace(' ', '-'))
 
 
 # ---------------------------------------------------------------------------

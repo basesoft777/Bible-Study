@@ -9,7 +9,7 @@ from lapgen import konfig
 
 
 class SzakaszLeiro:
-    __slots__ = ('azonosito', 'szamozott', 'nezet', 'szamit', 'megjelenit', 'sorszam')
+    __slots__ = ('azonosito', 'szamozott', 'nezet', 'szamit', 'megjelenit', 'kapu', 'sorszam')
 
     def __init__(self, azonosito, szamozott, szamit=None, megjelenit=None, nezet=konfig.NEZET_TUDOMANYOS):
         self.azonosito = azonosito
@@ -17,6 +17,7 @@ class SzakaszLeiro:
         self.nezet = nezet
         self.szamit = szamit
         self.megjelenit = megjelenit
+        self.kapu = None       # a szakasz kapuja a lapmodellen (pl. számegyezés); None, ha nincs
         self.sorszam = None
 
 
@@ -56,9 +57,9 @@ class Szakaszrend:
         self._rend = _rend()
         self._nev_szerint = {leiro.azonosito: leiro for leiro in self._rend}
 
-    def bekot(self, azonosito, szamit, megjelenit):
+    def bekot(self, azonosito, szamit, megjelenit, kapu=None):
         leiro = self._nev_szerint[azonosito]
-        leiro.szamit, leiro.megjelenit = szamit, megjelenit
+        leiro.szamit, leiro.megjelenit, leiro.kapu = szamit, megjelenit, kapu
 
     def sorszam(self, azonosito):
         """A számozott szakasz sorszáma; számozatlan szakaszra hiba."""

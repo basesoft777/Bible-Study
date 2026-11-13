@@ -162,6 +162,16 @@ class Karoli:
 
     def __init__(self, b, szovegek, konyvenkent):
         self._b, self._szovegek, self._konyvenkent = b, szovegek, konyvenkent
+        self._sorrend = None
+
+    def sorrend(self, igehely):
+        """A vers helye a Károli-fordítás rendjében (egy fejezeten belüli tartománynál az első versé); az ott nem
+        álló vers a rend végére kerül."""
+        if self._sorrend is None:
+            self._sorrend = {kod: n for n, kod in enumerate(self._szovegek)}
+        m = _SAV_RX.match(igehely.kod)
+        elso = '%s %s:%s' % (m.group(1).strip(), m.group(2), m.group(3)) if m else igehely.kod
+        return self._sorrend.get(elso, len(self._sorrend))
 
     def van(self, vers):
         return vers.kod in self._szovegek

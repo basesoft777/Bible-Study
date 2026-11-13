@@ -29,6 +29,10 @@ BIZONYTALAN_KUSZOB = 0.67   # a magas megbízhatóságú helyek aránya ez alatt
 
 KOZOS_PROVENIENCIA_KUSZOB = 2   # ennyi jegyzetben álló proveniencia-hármas kap közös jelet (‹E1› …)
 
+# --- Döntési út és a kizárások melléklete ----------------------------------------------------------------------
+CSOPORT_PELDA_DB = 5            # a csoportos ok alatt ennyi példavers áll a Károli-szöveggel
+KIZARASOK_NYITVA_HATAR = 10     # a melléklet verslistája ennyi versig nyitva áll, fölötte lenyíló
+
 # --- Döntések, amelyeknek a dátuma a lapon áll (a szám nem) -----------------------------------------------------
 DONTES_JELENTES_FUNKCIO = 'DT272'   # a „Jelentés (a szó)” és a „Funkció (a motívumban)” oszlop szétválasztása
 DONTES_UBS_SZONEZET = 'DT393'       # az UBS-jelentés cellája: rövid glossza, a teljes szócikk a szónézetben

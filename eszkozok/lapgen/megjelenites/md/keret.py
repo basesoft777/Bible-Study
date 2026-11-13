@@ -4,14 +4,23 @@ A jelölő proveniencia (megjegyzés): a forrás- és licenclista a szakasz val�
 """
 from lapgen import konfig
 from lapgen.megjelenites.md.iro import OLVASOI_JEL
-from lapgen.szoveg import prov
+from lapgen.szoveg import cim_horgony, prov
+
+
+def _szamozott_cim(keret, azonosito):
+    return keret.ny.s('cim.szamozott', sorszam=keret.rend.sorszam(azonosito),
+                      cim=keret.ny.s(keret.rend.cim_kulcs(azonosito)))
 
 
 def szakasz_cim(iro, keret, azonosito):
     """A számozott szakasz 2. szintű címsora a szakaszrendből, utána üres sor."""
-    iro.cimsor(2, keret.ny.s('cim.szamozott', sorszam=keret.rend.sorszam(azonosito),
-                             cim=keret.ny.s(keret.rend.cim_kulcs(azonosito))))
+    iro.cimsor(2, _szamozott_cim(keret, azonosito))
     iro.ures()
+
+
+def szakasz_horgony(keret, azonosito):
+    """A számozott szakasz címsorának horgonya: a szakaszrendből és a címből, nem kódba írt számból."""
+    return cim_horgony(_szamozott_cim(keret, azonosito))
 
 
 def blokk_nyit(iro, keret, azonosito, forrasok):

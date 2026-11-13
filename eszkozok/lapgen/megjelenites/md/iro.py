@@ -59,6 +59,8 @@ def horgony_jel(horgony):
 
 
 OLVASOI_JEL = _jel('<!-- olvasói -->')
+DETAILS_NYIT, DETAILS_ZAR = _jel('<details>'), _jel('</details>')
+SUMMARY_NYIT, SUMMARY_ZAR = _jel('<summary>'), _jel('</summary>')
 _CELLA_NYIT = _jel('| ')
 _CELLA_KOZ = _jel(' | ')
 _CELLA_ZAR = _jel(' |')

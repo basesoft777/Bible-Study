@@ -111,3 +111,17 @@ e2.jm.szerkesztoi	szerkesztői hozzárendelés a szótár tagolása szerint	-	2	
 e2.jm.szerkesztoi.thayer	szerkesztői hozzárendelés a szótár tagolása szerint; a Thayer a helyet {n|a}. jelentésnél idézi	n:szam	2	tablajegyzet._jelentes_tomor	-
 e2.jm.thayer_pelda	a Thayer a helyet {n|a}. jelentésnél idézi	n:szam	2	uj	var
 e2.jm.thayer_nem_idezi	a Thayer a helyet nem idézi	-	2	uj	var
+cim.dontesi_ut	Döntési út	-	keret	UJ_SZAKASZOK	-
+kz.cim	📎 {motivum} — Kizárt és vizsgált versek (melléklet)	motivum:motivum	melleklet	kizarasok_melleklet	-
+kz.bevezeto	A [{motivum} lap]({motivum}_TUDOMANYOS.md#{horgony}) Döntési útjának melléklete: a motívum {bent} versén túl megvizsgált, a motívumhoz nem tartozó mind {kizart|a} vers, okonként, a saját indokával. A csoportosan kizárt verseket gépi mérés sorolja egy közös okba, az egyenként elutasítottakat egyedi döntés. Egy vers egyszer áll: ha két keresés csoportjában is szerepel, az elsőnél.	motivum:motivum, horgony:horgony, bent:szam(ezres), kizart:szam(ezres)	melleklet	kizarasok_melleklet	-
+kz.osszeadas	**Összeadás:** {csoport} (csoportosan kizárva) + {egyen} (egyenként elutasítva) = {kizart} vers.	csoport:szam(ezres), egyen:szam(ezres), kizart:szam(ezres)	melleklet	kizarasok_melleklet	-
+kz.cim.csoport	Csoportosan kizárt versek, okonként	-	melleklet	kizarasok_melleklet	-
+kz.cim.egyen	Egyenként elutasított versek, okonként	-	melleklet	kizarasok_melleklet	-
+kz.ok_cim	{ok} — {n} vers	ok:lathato, n:szam(ezres)	melleklet	kizarasok_cim	-
+kz.lista_cim	A {n} vers	n:szam(ezres)	melleklet	kizarasok_melleklet	-
+kz.konyv_sor	- **{konyv}** ({db}): {versek|, }	konyv:konyvrov, db:szam, versek:lista(versresz)	melleklet	_konyvenkent	-
+kz.forrassorok.cim	A teljesség-mérés forrássorai	-	melleklet	TELJESSEG_CIM	-
+kz.forrassorok.bevezeto	A Döntési út {szakasz}.{alpont} pontjának versszámai ebből a mérésből jönnek. Keresésenként a megvizsgált versek száma:	szakasz:szam, alpont:szam	melleklet	uj	var
+kz.forrassorok.kereses	- **{kereses}** ({n} vers)	kereses:nev(halo), n:szam(ezres)	melleklet	uj	var
+kz.forras	*Forrás: a vizsgált helyek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: {datum}.*	datum:datum	melleklet	kizarasok_melleklet	-
+kz.forras.datum_nelkul	*Forrás: a vizsgált helyek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája).*	-	melleklet	kizarasok_melleklet (a dátum nélküli alak)	-

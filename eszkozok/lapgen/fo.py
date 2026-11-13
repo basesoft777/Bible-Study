@@ -34,10 +34,11 @@ class Kornyezet:
 
 class Keret:
     """A megjelenítés kerete: a szókészlet, a motívum, a szakaszrend és a `ts` proveniencia."""
-    __slots__ = ('ny', 'motivum', 'rend', 'ts', 'mod', 'b')
+    __slots__ = ('ny', 'motivum', 'rend', 'ts', 'mod', 'b', 'datum')
 
-    def __init__(self, ny, motivum, rend, ts, mod, b):
+    def __init__(self, ny, motivum, rend, ts, mod, b, datum=None):
         self.ny, self.motivum, self.rend, self.ts, self.mod, self.b = ny, motivum, rend, ts, mod, b
+        self.datum = datum   # a generálás megadott dátuma; None, ha a `ts` a bemenetek hash-éből képződik
 
 
 class Eredmeny:
@@ -77,8 +78,11 @@ def lap_keszit(gyoker, motivum, mod=Mod.MUNKA, datum=None, festek=False):
         if leiro.szamit is None:
             continue
         with b.figyel() as forrasok:
-            modellek[leiro.azonosito] = (leiro.szamit(korny), frozenset(forrasok))
-    keret = Keret(ny, motivum, rend, _ts(datum, b.olvasasi_naplo()), mod, b)
+            modell = leiro.szamit(korny)
+            if leiro.kapu is not None:
+                leiro.kapu(modell)   # a szakasz kapuja a modellen fut, a megjelenítés előtt
+            modellek[leiro.azonosito] = (modell, frozenset(forrasok))
+    keret = Keret(ny, motivum, rend, _ts(datum, b.olvasasi_naplo()), mod, b, datum)
     licencek = bemenet.b01_licencek(b) if modellek else None
     nezetek = {}
     for nezet in (konfig.NEZET_TUDOMANYOS, konfig.NEZET_KIZARASOK):
