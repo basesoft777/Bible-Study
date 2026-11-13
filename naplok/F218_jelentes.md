@@ -183,7 +183,7 @@ Az `adat/elofordulasok.tsv` 20 oszlopos; fejléc: `id, igehely, kapcsolodas, par
 
 ### F218.2 — típusok és szerződések
 
-Az `eszkozok/lapgen/` rétegei (`szoveg` ← `bemenet` ← `szamitas` ← `megjelenites`), a három tábla (SEMA 2.60–2.62), a `regresszio.py`, a `festek.py`, a `general.py --cel lexikon2`. A tervezési döntések listája: `naplok/F218_folytatas.md` „Tervezési döntések”. A régi generátor HAMART-kimenete a `general.py` additív módosítása után bájtra azonos maradt (`cmp` a `git show HEAD:lexikon/…` tartalmával, mindkét nézet).
+Az `eszkozok/lapgen/` rétegei (`szoveg` ← `bemenet` ← `szamitas` ← `megjelenites`), a három tábla (SEMA 2.60–2.62), a `regresszio.py`, a `festek.py`, a `general.py --cel lexikon2`. A tervezési döntések listája: `naplok/F218_folytatas.md` „Tervezési döntések”. A régi generátor HAMART-kimenete a `general.py` módosítása után bájtra azonos maradt (a módosítás két additív elem: a `lexikon2` cél és a `--mod` kapcsoló; és egy nem additív: az előjavító (E32) egy meglévő hibaüzenetből törölte a „; DT-F09h” döntésszámot, `general.py` `--helyi-lexicon` ága; pontosítva a javítókörben, az 1. ellenőrzés 8. tétele) (`cmp` a `git show HEAD:lexikon/…` tartalmával, mindkét nézet).
 
 ### F218.4 — S1: „2. Előfordulások” és „2.1 Az igehelyek szövege”
 
@@ -314,3 +314,73 @@ Az ELTÉRÉS-ek súlyossági sorrendben:
 11. **A1:** a T4-táblázat jelöletlen értelmező oszlopa.
 
 Munka közben a munkafában egy nem commitolt `naplok/F218_folytatas.md`-változás jelent meg; nem én írtam, és nem a `base..head` része. Ideiglenes fájlokat csak a scratchpadbe írtam: `C:\Users\bases\AppData\Local\Temp\claude\db97c378f8e1854f\6df2a091-98b7-4500-8d57-fb63ead9296f\scratchpad\`.
+
+## Javítókör az 1. ellenőrzés után (1. kör; `claude-fable-5-2`, 2026-11-13)
+
+*A besorolást és a döntéseket az orkesztrátor hozta a felhasználótól (2026-11-13); a javítás az ágon, a brief modelljén futott. Tartomány: `8c109585..` (a javítókör commitjai). Az újraellenőrzés az S2 végi célzott független ellenőrzéssel együtt fut (az orkesztrátor rendelkezése).*
+
+| # | Tétel | Mi történt | Commit |
+|---|---|---|---|
+| 1 | T3 tárolása külön táblában | a felhasználó megerősítette (szó szerint: „Külön tábla jó”), szócikk nélkül (DT837); a DT-F218i sorában rögzítve | `d3a8f570` |
+| 2 | az idézetbe mosás csatornája | a `jel_szoveg` és az `idezet_szoveg` megszűnt; a szakasz jele a kulcsból a bemeneti rétegben képződik (`Gerinc.jel`); a számítás típusos példahelyet kap (`Peldahely`, `ThayerPelda`, `Tartomany`), nyers táblasort nem; a nem BDB-jel a szótár nevével sablonból áll; statikus teszt: idézetet és prózát csak a bemeneti réteg burkol; a festékpróba a szótári ágat is festi | `713e63cb` |
+| 3 | a `cella` módosító | megszűnt (DT-F218k): a cella értéke az adatban a végleges alak; a cellakezdő sablonmondat külön sablonsor, a három érintett címke cellakezdő alakja kézi adat a névtáblában, egyezés-kapuval | `312e7b87` |
+| 4 | a hash-őr és az olvasási napló | az új generátor a lap mellé írja a naplóját; a regresszió megáll, ha olvasott fájl nincs a referencia-táblában, vagy más tartalommal áll benne; a tábla 4 `uj_bemenet` sorral bővült (B65, B66, B67, `dontesek/uj/`) | `713e63cb` |
+| 5 | ONREF-osztály; a T4 3 sora | T4: DT-F218j (a DT838 módosítása), a három T4-engedélysor megszűnt; önreferencia: DT-F218l, az 1Móz 8:21 cellája a forrásban javult, az S1-ONREF engedélysor megszűnt | `d3a8f570`, `312e7b87` |
+| 6 | az S1 hatóköréből halasztott tételek | nem változott: a HN-03 a felhasználó döntésére vár; a GK-13 (lemma) és a GK-03 (B18/B19/B21) az S3, a GK-14 (összevont versek) az S2 tétele; a 7.4 és az alias-sorok a folytatási fájl szerint | – |
+| 7 | tesztváz | GK-B9 a vázban; a HN-esetek szövegmintái tesztadatként (`HN_MINTAK`: minta + hibás lapszöveg-részlet), két élő teszttel: a minta megfogja a részletet, és a kész szakaszokon a már mért esetek száma 0 | ez a commit |
+| 8 | a `general.py` „additív” állítása | pontosítva az F218.2 pontban (két additív elem és egy E32-előjavítás) | ez a commit |
+| 9 | `-` a blokkfejléc forráslistájában | a nem fájl-bemenet (szabálymodul) nem áll a forráslistában | `713e63cb` |
+| 10 | bontási napló | l. alább | ez a commit |
+| 11 | a T4-táblázat értelmező oszlopa | értelmezésként jelölve, mellé a párosítás lekérdezése proveniencia-sorral („Amit a felhasználónak látnia kell” 1. pont) | `d3a8f570` |
+
+**A 7 új sablonmondat** (`eredet=uj`, `dontes=var`): a felhasználó jóváhagyta (az orkesztrátoron át, 2026-11-13, szó szerint: „Igen, mind jó”). A sablontábla `dontes` oszlopa a jóváhagyás DT-számát várja; a sorok addig `var` értékkel állnak, amíg a jóváhagyás döntésszámot nem kap.
+
+**Állás a javítókör után (HAMART-001, `PARDES_DATUM=2026-11-13`).** „2. Előfordulások”: 437 sorból 436 bájtra egyezik; **1 engedélysor** (S1-FORRAS, a blokkfejléc forráslistája, GK-07), engedély nélküli diff-sor 0. Festékpróba: 0 szivárgás (HAMART: belső 168, idézet 326, kézi 180 látott jelzőszó; ISTENTISZT: 113, 183, 85). Tesztek: 132 futott, 96 zöld, 36 kihagyva (a váz). A régi generátor mindkét HAMART-nézete a javított adatcellával is bájtra azonos a HEAD lapjaival.
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; python eszkozok/lapgen/tesztek/futtat.py; general.py --cel lexikon --id HAMART-001 + cmp | forras=a munkafa a javítókör utolsó commitja előtt | ts=2026-11-13`.*
+
+### Kézi adat, előtte → utána
+
+| Fájl | Sor, mező | Előtte | Utána |
+|---|---|---|---|
+| `adat/elofordulasok.tsv` | HAMART-001, 1Móz 8:21, `kapcsolodas` | „… azt a lap vitatott pontként tárgyalja.” | „… azt a szócikk vitatott pontként tárgyalja.” |
+| `adat/olvasoi_nevtabla.tsv` | új sor: `cimke_cella`, H0127 1. szakasz | (a címke: „a megművelt föld, amely táplál”) | „A megművelt föld, amely táplál” |
+| `adat/olvasoi_nevtabla.tsv` | új sor: `cimke_cella`, H0127 3. szakasz | (a címke: „a föld mint anyag, amelyből az ember lett”) | „A föld mint anyag, amelyből az ember lett” |
+| `adat/olvasoi_nevtabla.tsv` | új sor: `cimke_cella`, H0127 4. szakasz | (a címke: „a föld látható felszíne, a föld színe”) | „A föld látható felszíne, a föld színe” |
+
+### Az önreferencia mérése (a régi `ONREF_CSERE` négy adatcella-párja)
+
+| Pár („lap” → a lapon álló szó) | Cella | Kötődik hozzá |
+|---|---|---|
+| „azt a lap vitatott pontként tárgyalja” → „a szócikk” | `adat/elofordulasok.tsv` 1 cella | semmi: **javítva** |
+| „ezeket a lap egyenként, tematikus helyként veszi fel” → „a vizsgálat” | `adat/motivumok.tsv` 1 cella (HAMART-001 `negativ_kriterium`) | `adat/nyilt_angol.tsv` 1 sor (a magyar szöveg hash-e), `nyilt_mag/motivumok.tsv` |
+| „amelyet a lap nem dönt el” → „ez a vizsgálat” | `adat/jeloltek.tsv` 2 cella, `adat/elutasitasi_okok.tsv` 1 sor 2 cellája | `adat/nyilt_angol.tsv` 2 sor, `adat/nyilt_kodkonyv.tsv` 1 sor (a szöveg a kódkönyv kulcsa), `nyilt_mag/kizarasok.tsv`, `nyilt_mag/kodkonyv.tsv`, `nyilt_mag/KODKONYV.md` |
+| „amely a lánc szavai nélkül áll a lapon” → „a listán” | `adat/kapcsolatok.tsv` 3 cella | a mérés szerint semmi |
+
+*Proveniencia: `scope=a négy szövegpár bal oldalának keresése az adat/*.tsv, a motivumok/*.md és a nyilt_mag/ fájljaiban, cellánként | forras=a munkafa (8c109585 + a javítókör) | ts=2026-11-13`.* A három nyitott pár 8 cellája nincs átírva: a fájlok a brief `ir` mezőjén kívül esnek, és kettőnél a cella átírása a nyílt mag angol fordítását elavulttá teszi (a nyílt mag kapuja bukik: újrafordítás és újraexport kell). A kérdés a felhasználóé (DT-F218l, 🟡). Az S2 két párt érint (a negatív kritérium és a kizárási ok szövege): a döntésig ezek a diff-sorok előre megszámolt engedélysort kapnak.
+
+### Amit a felhasználónak látnia kell (a javítókör új tételei)
+
+1. **Az ISTENTISZT-001 2. táblájában hat cella kisbetűvel kezdődik**, mert a generátor a forrást szó szerint adja: öt Károli-idézet („az Úrnak nevét hívja segítségül …”) és egy funkciócímke („a népek ígérete”). A régi lapon ezeket az utófeldolgozó nagybetűsítette, illetve a névelőt levette („Népek ígérete”). Két út: a Károli-idézet marad szó szerint (kisbetűvel), a funkciócímke cellakezdő alakja adatba kerül; vagy mindkettő adatba kerül. Az ISTENTISZT-lapnak nincs bájt-mércéje, ezért ez nem engedélysor, hanem olvasói döntés.
+2. **A három nyitott önreferencia-pár** (fent): a javítás helye és ideje.
+3. **A T4 az ISTENTISZT-lapon** is a párosítás szerint áll (a fenti T4-kiegészítés táblája); az 1Kir, a Jóel, a Sof és a Jel párjai `alacsony` bizonyosságú modell-kimenetek.
+
+### Bontási napló a 10 sornál nagyobb új táblákhoz (10. tétel)
+
+| Tábla | Sor | Bontás |
+|---|---|---|
+| `adat/lapgen_sablonok.tsv` | 111 | **szakasz szerint:** 2. Előfordulások 100, 2.1 pont 6, keret 5. **Eredet szerint:** betűre átvett a régi generátorból 103 (`blokk_elofordulasok` 25, `olvasoi_kovetkeztetes.elofordulasok_uj` 13, `dbh_jelentes_cella` 9, `ubs_jelentes_cella` 7, `tablajegyzet._jelentes_tomor` 7, `tablajegyzet.olvasoi_jegyzet` 6, `jelentes_cella` 6, `_tagolatlan_olvasoi` 4, a többi tizenhárom szimbólum 26), új mondat 8 (`dontes=var`) |
+| `adat/olvasoi_nevtabla.tsv` | 27 | **típus szerint:** `forras` 7, `pardes_szint` 4, `hanyszor` 4, `azonositas_modja` 3, `megbizhatosag` 3, `szotar` 3, `cimke_cella` 3 |
+| `adat/lapgen_bemenetek.tsv` | 24 | **szelet szerint:** T (F218.2) 6: B01, B51, B59, B63, B65, B66; S1 (F218.4) 17: B03, B07, B08, B09, B12, B13, B14, B16, B17, B18, B19, B21, B22, B32, B33, B34, B67; javítókör 1: B54 |
+
+*Proveniencia: `scope=a három tábla adatsorainak száma a szakasz, az eredet, a típus oszlop szerint (cut, sort, uniq -c) | forras=adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/lapgen_bemenetek.tsv (a javítókör után) | ts=2026-11-13`.*
+
+### A `teszt_szintek.py` hibája
+
+Az 1. ellenőr `teszt_futtat.py --diff` futásában a `teszt_szintek.py` is hibát adott. A fájl az olvasó-szerver tesztje (`eszkozok/olvaso_szerver/teszt_szintek.py`): a feladat ágán 13 tesztből 2 bukik (`test_ebben_a_versben_es_az_interlinearis_csempek_koveti_a_blokkok_lathatosagat`, `test_heber_szavak_alacsony_es_magas_szinten`: a szó-lap magas szintű BDB-darabja és az „Ebben a versben” blokk láthatósága). A fő checkouton (`1352ac3c`, a main egy korábbi állapota) ugyanez a fájl ugyanígy 13 tesztből 2 bukással áll (ott a bukó tesztek nevét nem írattam ki). Az F218a diffje (`git diff --name-only 37f087cc..HEAD`) az `eszkozok/olvaso_szerver/` egyetlen fájlját sem érinti. A hiba tehát nem ebből a diffből jön: nyitott tétel lett (N-F218a, `nyitott/uj/f218-generator-uj-a.md`).
+*Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_szintek [--reszletes] | forras=a feladat ága (713e63cb) és a fő checkout (1352ac3c) | ts=2026-11-13`.*
+
+### Ismert korlátok a javítókör után
+
+- A jegyzéktábla (`adat/lapgen_bemenetek.tsv`) olvasása nincs az olvasási naplóban (nincs B-azonosítója), ezért a hash-őr nem méri.
+- A referencia-tábla `uj_bemenet` sorai (a sablontábla, a névtábla, `dontesek/uj/`) minden szelettel változnak: a hash-ük a szelet végén frissítendő (a szkript a megosztott jegyzetmappában áll: `F218_eszkozok/referencia_frissit.py`).
+- A szakasz jele (`Gerinc.jel`) a szakasz kulcsából képzett szöveg, idézet fajtával: a szótár saját tagolásának átírt alakja (`Qal/2/c` → „Qal 2.c”), ugyanúgy, mint a kiejtés a ragozott alakból.

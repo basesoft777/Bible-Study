@@ -14,12 +14,13 @@
 | F218.4 (S1) | **kész: a szakasz-diff 0 az engedélyeken kívül** | „2. Előfordulások” + „2.1”: 437 sorból 432 bájtra egyezik, 5 engedélysor; festékpróba 0 szivárgás. Az S1 tesztjei (`teszt_elofordulas.py`): GK-13, GK-14, GK-17, GK-25, HN-01, HN-16, a sablonmódosítók, a jegyzet-összevonás |
 | F218.3 | kész | tesztváz (`teszt_vaz.py`): 35 követelmény név + docstring + `skip` alakban, a szelet megnevezésével; a HN-03 a felhasználó döntésére vár; a mutációs próba (GK-26) az S9-ben. A tesztek állása: 121 teszt, 86 zöld, 35 kihagyva |
 | ⛔ az S1 után | **ELTÉRÉS (11 tétel)**; megállt | 1. független ellenőrzés (`fuggetlen-ellenor`, opus) és a felhasználó első átnézése: a lista a `naplok/F218_jelentes.md` „Amit a felhasználónak látnia kell az S1 után” pontja |
+| Javítókör (1. kör) | **kész** (2026-11-13, a 2. session) | az 1. ellenőrzés 11 tételéből 9 javítva, a 6. (halasztások) változatlan, az önreferencia három párja nyitva (DT-F218l); részletek: `naplok/F218_jelentes.md` „Javítókör az 1. ellenőrzés után”. Az S1 engedélysorai 5-ről 1-re csökkentek (S1-FORRAS). Az újraellenőrzés az S2 végi célzott ellenőrzéssel együtt fut |
 | F218.5 (S2) | nem indult | 1. Döntési út + KIZARASOK |
 | F218.6–F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
 
-A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független ellenőrzés — 1. ellenőrzés”. A javítókör külön sessionben fut (`/elteres 218`; a brief szerint egy javítókör jár). Az alábbi besorolás az építő session javaslata, nem döntés.
+A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független ellenőrzés — 1. ellenőrzés”. **A javítókör lezajlott** (2. session, 2026-11-13): az eredmény tételenként a jelentés „Javítókör az 1. ellenőrzés után” szakaszában áll. Az alábbi tábla az építő session eredeti javaslata (történeti); a döntéseket az orkesztrátor hozta a felhasználótól: T3 megerősítve („Külön tábla jó”), T4 módosítva (DT-F218j), a `cella` módosító megszűnt (DT-F218k), az önreferencia a forrásban javul (DT-F218l), a 7 új sablonmondat jóváhagyva („Igen, mind jó”).
 
 | # | Eltérés | Javasolt besorolás | Teendő |
 |---|---|---|---|
@@ -40,10 +41,19 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 
 ## Következő lépés
 
-**Az S2-t friss Fable-session kezdi ebből a fájlból** (az orkesztrátor döntése, 2026-11-13: szeletenként új session; az S2 effortja még xhigh, azt az orkesztrátor állítja be). Az első lépése a modell-ellenőrzés, a második a `get_usage`.
+**Az S2 még nem indult: a javítókör végén az 5 órás keret 98%-on állt (nullázás: 2026-11-13 12:30 UTC), a heti 93%-on (küszöb: 96%). Az S2-t ez a session folytatja a nullázás után, ha a heti keret engedi; különben friss Fable-session kezdi ebből a fájlból.**
 
-1. **A ⛔ lezárása az S1 után.** Az 1. független ellenőrzés (`fuggetlen-ellenor`, opus) jelentése a `naplok/F218_jelentes.md` „Független ellenőrzés — 1. ellenőrzés” szakaszában áll (ha ez a szakasz hiányzik, az ellenőrzés még nem zárult le: a bemenete a brief, a `37f087cc..dfb4525a` tartomány, a szint `teljes`). `ELTÉRÉS` esetén egy javítókör jár. A felhasználó első átnézése az orkesztrátoron át megy: a lista a jelentés „Amit a felhasználónak látnia kell az S1 után” pontja (T4, önreferencia, 8 új sablonmondat). Az S2 ezekre nem vár, de a T4 döntése a kiejtés-szolgáltatást (`bemenet/szavak.py`, `Kiejtes.ragozott`) és három engedélysort érint.
-2. **F218.5 (S2): „1. Döntési út” (1.1–1.5) és a `_KIZARASOK.md` melléklet.** Követelmények: GK-04 (teljesség minden hálóra: strong, karoli, szotar; melléklet-kapu), GK-09 (számegyezés a modellen), GK-21 (a Döntési út számai összeadódnak; döntés nélküli vers 0), HN-11 (a teljesség-mérés pillanatképe frissességi kapuval), GK-03 (B05, B06), GK-06.
+1. Modell-ellenőrzés (`fable`), `get_usage` (a küszöb: 96% heti; 70% kontextus fölött zárás).
+2. **F218.5 (S2): „1. Döntési út” (1.1–1.5) és a `_KIZARASOK.md` melléklet.** Követelmények: GK-04 (teljesség minden hálóra: strong, karoli, szotar; melléklet-kapu), GK-09 (számegyezés a modellen), GK-21 (a Döntési út számai összeadódnak; döntés nélküli vers 0), HN-11 (a teljesség-mérés pillanatképe frissességi kapuval), GK-03 (B05, B06), GK-06, GK-14 (az összevont versek kulcsa).
+3. Az S2 végén **egy célzott független ellenőrzés**: csak az S2 diffje és a javítókör tételei (a javítókör tartománya: `8c109585..` az első S2-commit szülőjéig), nem Fable modellel (`fuggetlen-ellenor`). Ez egyben a javítókör újraellenőrzése (2. ellenőrzés).
+
+### Amit az S2 a javítókörből örököl
+
+- **Önreferencia (DT-F218l, 🟡).** A negatív kritérium (`adat/motivumok.tsv`, B02) és a kizárási ok (`adat/jeloltek.tsv`, B04; `adat/elutasitasi_okok.tsv`, B56) szövegében „a lap” áll, a referencialapon „a vizsgálat” / „ez a vizsgálat”. A cellák nincsenek átírva (a nyílt mag fordítása hash-sel kötődik hozzájuk; a fájlok az `ir`-en kívül esnek): a felhasználó döntéséig ezek a diff-sorok **előre megszámolt** engedélysort kapnak (mechanizmus: `M-CSERE`, az `ok` mezőben a DT-F218l). Az S2 első lépése a darabszám mérése a referencián (hány sorban áll „vizsgálat” ezekből a cellákból az 1. szakaszban, a 3. szakaszban és a mellékletben).
+- **Cellakezdő alak (DT-F218k).** `cella` módosító nincs. Ha egy cella sablonmondattal kezdődik, a cellakezdő alak külön sablonsor (`….cella`); ha kézi címkével, a cellakezdő alak a névtábla `cimke_cella` sora. A régi `nevelo_le` (l. lent) eredményét a referencia mutatja: ami a cella elején nagybetűs, annak adatban vagy sablonsorban kell így állnia.
+- **Idézet csak a bemeneti rétegből.** A számítás nem kap nyers táblasort: típusos értéket (burkolókkal) ad a `bemenet/`. Statikus teszt őrzi (`forrasszoveg`, `kezi`, `belso` hívás csak a `bemenet/` alatt).
+- **Olvasási napló és referencia-tábla.** Új bemenet (jegyzéksor) vagy a lapgen tábláinak változása után a `regresszio.py` megáll, amíg a referencia-tábla nem frissül: `python <jegyzetmappa>/F218_eszkozok/referencia_frissit.py --naplo <kimenet>/lexikon/<ID>_olvasasi_naplo.tsv` (új sorok), illetve `--frissit <útvonal> …` (meglévő sor hash-e). Mindkét mintalap naplójára futtatandó.
+- **Engedélyfájl írása:** `python <jegyzetmappa>/F218_eszkozok/engedely_ir.py <részletes diff> naplok/F218_elteres_engedely.tsv <osztályfájl.py>` (az osztályfájl mintája ugyanott: `osztaly_s1.py`).
 
 ### Az S2 terve
 
@@ -76,7 +86,7 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 - **A `Lathato` nem `str`:** nincs rajta szövegművelet, `str()`/formázás kivételt dob; szöveggé csak a `kiiras()` alakítja, amelyet csak a `megjelenites/md/iro.py` hív (statikus teszt).
 - **Burkolók a bemeneti rétegből:** `Kezi` → `proza`; `Forrasszoveg` → `idezet`; `Belso`, `Kulcs`, `Utvonal` → csak `Proveniencia` vagy (kulcsnál) névtábla. A burkolót csak a `bemenet/` hozhatja létre.
 - **Nyilvános azonosító-típusok** (a brief felsorolásán túl): `Strong`, `MotivumId`, `Horgony` az `Igehely` mellett; szigorú alakjuk miatt megjeleníthetők.
-- **Sablonmondat:** `{nev}`; skalárnál `{nev|a}` / `{nev|A}` névelőt tesz elé (a/az; számnál a kiejtés szerint), `{nev|a:masik}` a névelőt a megnevezett másik paraméter szövege szerint választja (pl. a görög szó kiejtése), `{nev|cella}` a cellakezdő alak (l. lent); listánál `{elemek|; }`, illetve `{elemek|, | és }`. A mondatban Markdown-jelölés állhat. A megjelenítő saját literálja csak szerkezeti jelölés (`Jel`, zárt készlet az író modulban).
+- **Sablonmondat:** `{nev}`; skalárnál `{nev|a}` / `{nev|A}` névelőt tesz elé (a/az; számnál a kiejtés szerint), `{nev|a:masik}` a névelőt a megnevezett másik paraméter szövege szerint választja (pl. a görög szó kiejtése); a `cella` módosító megszűnt (DT-F218k); listánál `{elemek|; }`, illetve `{elemek|, | és }`. A mondatban Markdown-jelölés állhat. A megjelenítő saját literálja csak szerkezeti jelölés (`Jel`, zárt készlet az író modulban).
 - **Fajta-térkép:** az író minden kiírt sorhoz tartományokat ad (próza / sablon / idézet / megjegyzés / jelölés); ezt használja a festékpróba, és ezt fogja használni az alakosztály-kapu (GK-24).
 - **Festés:** a burkoló `szoveg` alakja festett futásban jelzőszót hordoz (`ZZQ<B-azonosító>_<mező>ZZ`); az `ertek` változatlan. Belső jelzőszó csak megjegyzésben állhat, kézi csak prózában, idézeté csak idézetben.
 - **Blokkjelölő:** a lapon `general.py --cel lexikon#…` áll (a termék célneve), nem `lexikon2`.
@@ -92,8 +102,8 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 ## A régi generátorból visszafejtett szabályok (S1)
 
 - **Lánc.** A régi lap nyers blokkokból épül, majd tíz utófeldolgozó lépés írja át (címcsere → olvasói átírás → névelő-levétel → kiejtés-pótlás → Strong/BDB/könyvnév/idézőjel → lábjegyzet a tábla alá → közös forrásmegjelölés → önreferencia-csere). A lánc táblája: `naplok/F218_jelentes.md` „F218.1 — szimbólumtérkép”. A közbenső állapotok mérésére a régi generátor függvényei burkolhatók (repón kívüli szkripttel), így látszik, melyik lépés mit változtat egy szakaszon.
-- **Cellakezdet (`nevelo_le`).** Minden tábla- és listaelem: ha kisbetűs „a ”/„az ” névelővel kezdődik, és utána hatnál kevesebb szó áll, a névelő elmarad, és az elem nagy kezdőbetűt kap („a szócikk egésze — fájdalom” → „Szócikk egésze — fájdalom”); hat vagy több szónál a névelő marad, nagy kezdőbetűvel („a megművelt föld, amely táplál · 1” → „A megművelt…”). A szószám a cella egészére értendő (a szakaszjel és a „·” is szó). Az új generátorban ez a `cella` sablonmódosító; minden táblacella a `tabla.cella` sablonon megy át.
-- **Kulcsszó-cella.** `Károli-szó — alak (kiejtés)`; több Strongnál az alakok „; ”-vel. Héberül a teljes szó (előtag + tő + toldalék a szöveg soraiból, `heber_kiejtes.teljes_szo`) és a gépi kiejtése; görögül a ragozott alak és a magyaros átírása. A záró írásjel (`,.;·`) lemarad az alakról. A régi az utolsó előfordulást vette (a szótárindex felülírása miatt), az új a T4 szerint az elsőt.
+- **Cellakezdet (`nevelo_le`).** Minden tábla- és listaelem: ha kisbetűs „a ”/„az ” névelővel kezdődik, és utána hatnál kevesebb szó áll, a névelő elmarad, és az elem nagy kezdőbetűt kap („a szócikk egésze — fájdalom” → „Szócikk egésze — fájdalom”); hat vagy több szónál a névelő marad, nagy kezdőbetűvel („a megművelt föld, amely táplál · 1” → „A megművelt…”). A szószám a cella egészére értendő (a szakaszjel és a „·” is szó). Az új generátorban **nincs** ilyen átírás (DT-F218k): a cella elején álló sablonmondat külön sablonsor, a kézi címke cellakezdő alakja a névtábla `cimke_cella` sora; más kézi szöveg és az idézet szó szerint áll.
+- **Kulcsszó-cella.** `Károli-szó — alak (kiejtés)`; több Strongnál az alakok „; ”-vel. Héberül a teljes szó (előtag + tő + toldalék a szöveg soraiból, `heber_kiejtes.teljes_szo`) és a gépi kiejtése; görögül a ragozott alak és a magyaros átírása. A záró írásjel (`,.;·`) lemarad az alakról. A régi az utolsó előfordulást vette (a szótárindex felülírása miatt); az új (DT-F218j) azt, amelyhez a sor Károli-szava a párosításban (B54) kötődik, párosítás híján az elsőt.
 - **Jelentés-cella.** Címkével: `címke · jel`; címke nélkül, BDB-jellel: `a szakasz olvasói glosszája · jel`; jel nélküli héber szónál, ha a szócikk tagolatlan: `a szócikk egésze — a fej glosszája`; különben `*(nincs címke: jel)*`, illetve `*(nincs hozzárendelés)*`. Több szónál `H…: …; H…: …`. A nem BDB-jel a szótár nevével áll („Thayer 1”, „Thayer fej”).
 - **A címke elsőbbsége.** Ha a BDB maga idézi a verset, és az útja a szerkesztői hozzárendelés alá esik, a finomabb út címkéje áll; ha a szerkesztői út esik a példa alá, a szerkesztői; ha egyik sem, a futás megáll. Ha a Strong többször áll a versben, a versszintű BDB-példa nem kerül a szóra. Több útvonalú példánál a szerkesztői hozzárendelés dönt, ha pontosan egy esik alá.
 - **Jegyzet (egyszavas sor).** `Igazolás; a jelentés: indok.` Az igazolás: „A héber szöveg (TAHOT) igazolja” / „Újszövetségi hely: a szó a görög szövegben áll” (hatókörön kívül, újszövetségi sor) / „A héber szöveg-igazolás itt nem alkalmazható” / „Szövegigazolás nélkül”. Az indok az első indok fajtája szerint: BDB-példa → „a BDB a(z) X szakaszban maga idézi a helyet” (a puszta szám ponttal: „az 1.”); más szakaszban is → „a BDB a helyet a(z) X is idézi”; szerkesztői hozzárendelés → „a BDB X szakasza” / „a Thayer szócikkfeje”; tagolatlan → „a szócikk egésze (a szótár nem tagolja számozott jelentésekre)”. A tematikus sor jegyzete egyetlen mondat, igazolás nélkül.
@@ -101,17 +111,18 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 - **Összevonás.** Az azonos látható mondatú jegyzet egyszer áll; a szám az első hivatkozás sorrendje; a sor jelentés- és megbízhatóság-cellája is hivatkozik rá (a tematikus sornál csak az utóbbi). Az összevont sor végén minden eredeti lábjegyzet `<!-- eredeti: [^n]: proveniencia: … | igazolas: … | jelentés-címke: … -->` megjegyzésként áll.
 - **Közös forrásmegjelölés.** A legalább két jegyzetben álló `scope=… | forras=… | ts=…` hármas jelet kap (‹E1›, ‹E2› …, gyakoriság, majd szöveg szerint); a tábla alatt egy megjegyzéspár áll: `<!-- közös forrásmegjelölés: … -->` (olvasói alak: „forrás: kézi szerkesztés, dátum”) és `<!-- eredeti: … -->`.
 - **UBS-cella.** Újszövetségi sor: a görög UBS-szótár versre hivatkozott jelentései, `glossza [ⓘ](/szo/Strong)`, több jelentésnél vagy tartománynál `*(lehetséges, nem egyértelmű)*`. Ószövetségi sor: a héber UBS-szótár a Károli-vers masszoréta megfelelőjén; eltérő versnél `*(MT: vers)*`. A glossza a fordítástáblából (`glosszak_hu`), híján az angol `*(fordításra vár)*` jelöléssel.
-- **Önreferencia-csere.** A régi kód nyolc rögzített szövegpárral cserélte a „lap” szót (`tablajegyzet.ONREF_CSERE`), adatcellákban is; az új generátor prózát nem ír át (l. „Nyitott kérdések”).
+- **Önreferencia-csere.** A régi kód nyolc rögzített szövegpárral cserélte a „lap” szót (`tablajegyzet.ONREF_CSERE`), adatcellákban is; az új generátor prózát nem ír át. A négy adatcella-párból egy a forrásban javult (1Móz 8:21), három nyitva (DT-F218l; a mérés a jelentésben). A négy közös generátormondat-pár (Tartalom, Jelmagyarázat, Kolofon, Idézés) az új sablontáblába már a javított szöveggel kerül.
 
 ## Nyitott kérdések (a felhasználóhoz, illetve az orkesztrátorhoz)
 
-- **T4:** az „első előfordulás” a mért sorok többségén nem a sor Károli-szavának megfelelő alakot adja (táblázat a jelentésben). Javaslat: a Károli–Strong párosítás szerinti előfordulás, és csak annak híján az első.
-- **Önreferencia a kézi prózában:** adatcella javítása vagy prózajavító tábla; addig az S1-ONREF engedélysor áll.
-- **Új sablonmondatok jóváhagyása:** 8 sor (`dontes=var` a sablontáblában).
-- **A T3 szócikke:** az orkesztrátor üzenete szerint a saját szó „a 4. szakaszban szócikket kap”, a brief 12. pontja (T3) és a DT837 szerint „szócikk nélkül”. A generátor a brief szerint készül (nem kap szócikket), megerősítésig.
+- **Önreferencia, három pár (DT-F218l, 🟡):** a 8 adatcella javítása ebben a feladatban (az `ir` bővítésével, a nyílt mag újrafordításával és újraexportjával) vagy külön feladatban történjen-e.
+- **ISTENTISZT-001, hat kisbetűs cellakezdet:** öt Károli-idézet és egy funkciócímke („a népek ígérete”) a forrás szerint, szó szerint áll; a régi lap nagybetűsítette. Olvasói döntés (a jelentés „Javítókör” szakaszának 1. pontja).
+- **A 7 új sablonmondat `dontes` mezője:** a felhasználó jóváhagyta („Igen, mind jó”); a mező a jóváhagyás döntésszámát várja, addig `var`.
+- **HN-03:** a hatókör-sor zárójeles forráslistája a mai jóváhagyott szöveg; ha javítandó, új mondat kell, jóváhagyással.
 - **Alias-sorok (GK-17, B63):** a normalizáló tábla 4. oszlopát több eszköz olvassa; döntés az S5 előtt kell.
 - **A CI nem futtatja a `lapgen/tesztek`-et:** a bekötés a 218c N-tételébe kerül.
 - **Függések:** a `feladatok.py fuggesek` a 194 és a 212 tétellel is `KIZAR` sort ad (l. a jelentés F218.0 szakaszát).
+- **`teszt_szintek.py`:** az olvasó-szerver tesztje 13-ból 2 bukással áll a fő checkouton is; nem ebből a diffből jön (N-F218a, `nyitott/uj/f218-generator-uj-a.md`).
 
 ## Megállási küszöb
 
@@ -126,6 +137,8 @@ Az S1 szakasz-diffje a heti keret 89%-ánál lett 0 (az engedélyeken kívül); 
 | S1 első fele után | 2026-11-13 09:55 | 87% | 22% | 48% | a régi kód olvasása és a 2.1 pont: 2 százalékpont |
 | S1 diff 0 | 2026-11-13 10:35 | 89% | 27% | 66% | a tábla, a jelentés-oszlop és a jegyzetek: 2 százalékpont |
 | S1 tesztek, push | 2026-11-13 11:00 | 90% | 28% | 71% | a tesztek és a tesztváz: 1 százalékpont; a kontextus 80% |
+| Javítókör indul (2. session) | 2026-11-13 11:27 | 91% | 30% | 82% | az orkesztrátor üzenete, a futó sessionök |
+| Javítókör kész | 2026-11-13 12:00 | 93% | 35% | 98% | a javítókör (9 tétel, 4 commit): 2 százalékpont heti; a kontextus 45% |
 
 Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 
@@ -133,9 +146,11 @@ Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 |---|---|---|
 | F218.4 (1) | 76 | az összegző mondat, a hatókör-sor és a 2.1 pont egyezik |
 | F218.4 (2) | 0 (5 engedélysor) | a tábla, a 17 jegyzet, a közös forrásmegjelölés, az UBS-magyarázat |
+| Javítókör | 0 (1 engedélysor) | T4 a párosításból (−3), az önreferencia a forrásban (−1); marad a blokkfejléc |
 
-Festékpróba: HAMART-001 0 szivárgás (belső 137, idézet 326, kézi 180 látott jelzőszó); ISTENTISZT-001 0 (86, 180, 85). Mutációs próba: még nincs. Átszökési arány: még nincs mérés (az 1. ellenőrzés és a felhasználó átnézése után).
+Festékpróba: HAMART-001 0 szivárgás (belső 168, idézet 326, kézi 180 látott jelzőszó; a javítókör előtt 137, 326, 180: a szótári ág most festett); ISTENTISZT-001 0 (113, 183, 85). Mutációs próba: még nincs. Átszökési arány: még nincs mérés (az 1. ellenőrzés és a felhasználó átnézése után).
 
 ## Session-váltások, kompaktálások
 
 - 1. session (2026-11-13): az indulás `claude-opus-5-5` modellen modell-eltérés miatt megállt; a felhasználó a sessiont `claude-fable-5-2`-re állította. Egy megszakadás (hitelesítési hiba) az S1 közben, adatvesztés nélkül. Kompaktálás eddig: 0; a kontextus az S1 végén 76%.
+- 2. session (2026-11-13, `claude-fable-5-2`, az orkesztrátor indította): a javítókör. Kompaktálás: 0. A kontextus a javítókör végén 45%; az 5 órás keret 98%.
