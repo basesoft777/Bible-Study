@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-push_elott.py -- F216: helyi kapu push előtt. Pontosan azt futtatja, amit a
-`.github/workflows/ellenorzes.yml` bukó lépései, így a HIBA a push előtt derül ki, nem a CI-ben
+push_elott.py -- F216: helyi kapu push előtt. Ugyanazt futtatja, amit a
+`.github/workflows/ellenorzes.yml` bukó lépései (az ág saját fején; a CI a PR és a main összefésült fáján fut, ezért
+lemaradt ágnál FIGYELEM jelzi a lemaradást), így a HIBA a push előtt derül ki, nem a CI-ben
 (egy piros CI-kör kb. 4 perc és egy session-kör).
 
 A szabály (egy hely): `.claude/commands/kovetkezo.md`, „PUSH ELŐTT” szakasz. A `/kiadas` 6. lépése és a `/lap-javit`
@@ -19,7 +20,9 @@ Kilépési kód: 0 = 0 HIBA (push mehet), 1 = van HIBA, 2 = futási hiba.
 
 A lépéslista (LEPESEK) az egyetlen forrás a helyi futáshoz; a `--ci-egyezes` (a CI-ben is fut) megbukik, ha a
 `.github/workflows/ellenorzes.yml` bukó lépései eltérnek tőle: egy Python-hívás hiányzik valamelyik oldalról, vagy egy
-állandó argumentumú hívás szövege (pl. `--szigoru`) más. A CI-ben csak jelentés-lépések (tanulmány-audit, PR-komment)
+állandó argumentumú hívás szövege (pl. `--szigoru`) más, a futási adattól függő hívásokból kötelező argumentum hiányzik,
+a `--ci-egyezes` lépés ki van kommentelve, vagy a bukó lépés némítva van (`continue-on-error: true`, `|| true`, nem
+szereplő `K<n>` kilépési kód). A CI-ben csak jelentés-lépések (tanulmány-audit, PR-komment)
 maradhatnak a lépéslistán kívül (EGYEZES_KIVETEL).
 """
 
@@ -72,6 +75,13 @@ DINAMIKUS_SZKRIPTEK = [
     'eszkozok/ellenoriz.py',
     'eszkozok/feladatok.py',
 ]
+# A futási adattól függő hívások kötelező argumentumai (a hívásaik egyikében szerepelniük kell).
+DINAMIKUS_ARGUMENTUMOK = {
+    'eszkozok/ellenorzes/futtat.py': ['--valtozott', '--diff-alap', '--diff-fej', '--pr-cim', '--esemeny',
+                                      '--commit-uzenet-fajl', '--minta'],
+    'eszkozok/ellenoriz.py': ['--md'],
+    'eszkozok/feladatok.py': ['ellenoriz', '--pr-alap'],
+}
 # Csak a CI-ben futó, nem bukó jelentés-lépések.
 EGYEZES_KIVETEL = [
     'eszkozok/ellenorzes/tanulmany_audit.py',
@@ -86,12 +96,35 @@ def git(*args):
     return r.returncode, r.stdout.strip(), r.stderr.strip()
 
 
+def lemaradas_szama(alap_ref='origin/main'):
+    """Hány commit van az `alap_ref`-ben, ami a HEAD-ben nincs (0: naprakész; nem állapítható meg: 0). Figyelmeztetés, nem HIBA."""
+    rc, ki, _ = git('rev-list', '--count', 'HEAD..' + alap_ref)
+    return int(ki) if rc == 0 and ki.isdigit() else 0
+
+
 def python_hivasok(szoveg):
     """A workflow szövegéből a `python <eszkozok/...py> <argok>` hívások (megjegyzéssorok nélkül), soronként
     összevonva (a sorvégi `\\` folytatást egy sorrá)."""
-    sorok = [s for s in szoveg.splitlines() if not s.lstrip().startswith('#')]
-    egy = re.sub(r'\\\s*\n\s*', ' ', '\n'.join(sorok))
+    egy = re.sub(r'\\\s*\n\s*', ' ', megjegyzes_nelkul(szoveg))
     return re.findall(r'python\s+(eszkozok/[\w./-]+\.py)([^\n]*)', egy)
+
+
+def megjegyzes_nelkul(szoveg):
+    """A workflow szövege a teljes soros megjegyzések nélkül (a kikommentelt lépés nem számít lépésnek)."""
+    ki = []
+    for s in szoveg.splitlines():
+        if s.lstrip().startswith('#'):
+            continue
+        m = re.search(r'\s#', s)   # sor végi megjegyzés (`run: # python ...`), ha az idézőjelek előtte párosak
+        if m and s[:m.start()].count('"') % 2 == 0 and s[:m.start()].count("'") % 2 == 0:
+            s = s[:m.start()]
+        ki.append(s)
+    return '\n'.join(ki)
+
+
+def lepesek_szerint(szoveg):
+    """A workflow lépései (`- name:` kezdetű blokkok), megjegyzéssorok nélkül; a fejléc nincs benne."""
+    return re.split(r'(?m)^\s*- name:', megjegyzes_nelkul(szoveg))[1:]
 
 
 def ci_egyezes(szoveg=None):
@@ -104,7 +137,7 @@ def ci_egyezes(szoveg=None):
             return ['a workflow nem olvasható: %s' % exc]
     hivasok = python_hivasok(szoveg)
     ci_szkriptek = {h[0] for h in hivasok}
-    egy_szoveg = re.sub(r'\s+', ' ', szoveg)
+    egy_szoveg = re.sub(r'\s+', ' ', megjegyzes_nelkul(szoveg))
     hibak = []
     var = set(DINAMIKUS_SZKRIPTEK) | {s.split()[0] for s in STATIKUS_HIVASOK} | set(EGYEZES_KIVETEL)
     var.add('eszkozok/push_elott.py')
@@ -115,8 +148,36 @@ def ci_egyezes(szoveg=None):
     for h in STATIKUS_HIVASOK:
         if 'python ' + h not in egy_szoveg:
             hibak.append('a workflow-ban a hívás szövege eltér: python %s' % h)
-    if EGYEZES_PARANCS not in egy_szoveg:
+    # a futási adattól függő hívások kötelező argumentumai (a hívásaik valamelyikében)
+    for sz, kotelezo in sorted(DINAMIKUS_ARGUMENTUMOK.items()):
+        argok = ' '.join(a for s_, a in hivasok if s_ == sz)
+        for k in kotelezo:
+            if not re.search(r'(?<![\w-])' + re.escape(k) + r'(?![\w-])', argok):
+                hibak.append('a workflow-ban a(z) %s hívásából hiányzik: %s' % (sz, k))
+    # az egyezés-lépés: megjegyzés nélküli szövegben szerepel (a kikommentelt nem számít)
+    if not any(sz == 'eszkozok/push_elott.py' and '--ci-egyezes' in a for sz, a in hivasok):
         hibak.append('a workflow-ban nincs egyezés-lépés: python %s' % EGYEZES_PARANCS)
+    # a bukó lépés tényleg bukhat
+    for lepes in lepesek_szerint(szoveg):
+        bukok = [sz for sz, _ in python_hivasok(lepes) if sz not in EGYEZES_KIVETEL]
+        if not bukok:
+            continue
+        nev = lepes.split('\n', 1)[0].strip()
+        if re.search(r'continue-on-error:\s*true', lepes):
+            hibak.append('a bukó lépés nem bukhat (continue-on-error: true): %s' % nev)
+        for sz, a in python_hivasok(lepes):
+            if sz not in EGYEZES_KIVETEL and re.search(r'\|\|\s*(true|:|exit\s+0)(?!\w)', a):
+                hibak.append('a hívás kilépési kódja elnémítva (|| true): python %s' % sz)
+        sorok = lepes.splitlines()
+        for kv in sorted(set(re.findall(r'(?m)^\s*(\w+)=\$\?\s*$', lepes))):
+            minta = r'\$\{?%s\}?(?!\w)' % re.escape(kv)
+            if not any(re.search(minta, s) for s in sorok if not re.match(r'\s*%s=' % re.escape(kv), s)):
+                hibak.append('a kilépési kód nem szerepel a feltételben (%s): %s' % (kv, nev))
+    # az összegző lépés feltételében mindhárom kilépési kód szerepel
+    felt = '\n'.join(s for s in megjegyzes_nelkul(szoveg).splitlines() if s.lstrip().startswith('if ['))
+    for kv in ('E2E16_KILEPES', 'E1_KILEPES', 'TESZT_KILEPES'):
+        if not re.search(r'\$%s' % kv, felt):
+            hibak.append('a bukás-lépés feltételében hiányzik: %s' % kv)
     return hibak
 
 
@@ -199,6 +260,11 @@ def main():
     if rc != 0:
         print('HIBA: a merge-base nem állapítható meg (%s): %s' % (alap_ref, hiba), file=sys.stderr)
         return 2
+    lemaradas = lemaradas_szama(alap_ref)
+    if lemaradas:
+        print('FIGYELEM: az ág %d committal le van maradva az %s-hez képest; a CI a PR és a main összefésült fáján fut '
+              '(refs/pull/N/merge), a kapu az ág saját fején. Fésüld be a main-t (merge vagy rebase), és futtasd újra.'
+              % (lemaradas, alap_ref))
     rc, nem_commitolt, _ = git('status', '--porcelain')
     if nem_commitolt:
         print('FIGYELEM: nem commitolt változás van; a CI csak a commitokat látja (alap..HEAD), a kapu is azokat.')

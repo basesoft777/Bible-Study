@@ -66,6 +66,29 @@ def main():
     folyt = P.python_hivasok('python eszkozok/z.py \\\n  --a 1 \\\n  --b 2\n')
     ellenoriz(folyt and '--a 1' in folyt[0][1] and '--b 2' in folyt[0][1], 'a sorvégi folytatás összevonva')
 
+    # 7a. F216 / 1. ellenőrzés 1.: az egyezés-kapu nem megkerülhető
+    ki = wf.replace('python eszkozok/push_elott.py --ci-egyezes', '# python eszkozok/push_elott.py --ci-egyezes')
+    ellenoriz(any('egyezés-lépés' in h for h in P.ci_egyezes(ki)), 'a kikommentelt egyezés-lépés: HIBA')
+    ellenoriz(any('--diff-alap' in h for h in P.ci_egyezes(wf.replace('--diff-alap', '--x-alap'))),
+              'a futtat.py hívásból kiesett kötelező argumentum: HIBA')
+    ellenoriz(any('--pr-alap' in h for h in P.ci_egyezes(wf.replace('--pr-alap', '--x-alap'))),
+              'a feladatok.py hívásból kiesett --pr-alap: HIBA')
+    ellenoriz(any('elnémítva' in h for h in P.ci_egyezes(wf.replace('python eszkozok/teszt_push_elott.py', 'python eszkozok/teszt_push_elott.py || true'))),
+              'a hívás után || true: HIBA')
+    ellenoriz(any('continue-on-error' in h for h in P.ci_egyezes(wf.replace('- name: Szabaly-tesztek', '- name: Szabaly-tesztek\n        continue-on-error: true'))),
+              'a bukó lépésen continue-on-error: HIBA')
+    ellenoriz(any('K12' in h for h in P.ci_egyezes(wf.replace(' || [ "$K12" != "0" ]', ''))),
+              'a K12 kilépési kód kiesik a feltételből: HIBA')
+    ellenoriz(any('TESZT_KILEPES' in h for h in P.ci_egyezes(wf.replace('"$TESZT_KILEPES" != "0"', '"0" != "0"'))),
+              'az összegző feltételből kiesik egy kilépési kód: HIBA')
+
+    # 7b. F216 / 1. ellenőrzés 2.: az elmaradt ág száma (nem HIBA, figyelmeztetés)
+    ellenoriz(P.lemaradas_szama('HEAD') == 0, 'a HEAD-hez képest nincs lemaradás')
+    ellenoriz(P.lemaradas_szama('nincs-ilyen-ref') == 0, 'nem létező alap: 0 (nem HIBA)')
+    rc, _, _ = P.git('rev-parse', 'HEAD~1')
+    if rc == 0:
+        ellenoriz(P.lemaradas_szama('HEAD') == 0, 'a lemaradás a HEAD..alap irányú')
+
     # 8. a lépés-futtató: bukó lépés HIBA-sorral és nyilvántartással, rendben lévő lépés nem
     fut = P.Futas()
     puf = io.StringIO()
