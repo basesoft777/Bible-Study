@@ -245,3 +245,33 @@ Minden más eltérés:
 - **O6 — a kiadott lap számkiosztás-kivétele** (3.4 (b)). Elfogadható-e a normalizált összevetés, vagy a számkiosztás után is új kiadás kell? Ajánlás: a kivétel. A DT-szám nem tartalmi változás, és az F201 pont ezért vezette be az újragenerálást.
 
 Tartalmi (felhasználói) kérdés ebben a részben nincs. A kiadott lap szabálya a brief 2. pont 5. megvalósítása.
+
+---
+
+## 5. Az átnézés eredménye (orkesztrátor, 2026-11-13)
+
+Az orkesztrátor (`local_c8cc3610…`, a felhasználó felhatalmazásával: „vidd végig ezeket … orkesztráld”) a tervet elfogadta. A megvalósítás ennek a szakasznak a döntései szerint megy; ahol ez eltér a fenti 1–4. ponttól, ez a szakasz az irányadó.
+
+**Döntések:**
+- **O1:** a `feladatok.yml` meglévő 2. lépése bővül (egy futás, egy commit). A `.github/workflows/feladatok.yml` bekerül az `ir`-be, a `generalt_nezetek.yml` kikerül.
+- **O2:** egy tábla, `tipus` mezővel; a térkép B-számai változatlanok.
+- **O3:** a dátumszabály elfogadva: a régi `ts`, változásnál a HEAD commit dátuma.
+- **O4:** elfogadva: FIGYELMEZTETÉS, az első sikeres Action-futás után HIBA.
+- **O5:** elfogadva; a bővített `ir` a megvalósítás első commitjában kerül be.
+- **O6:** elfogadva: a számkiosztás-kivétel normalizált összevetéssel.
+
+**Sorrend:** a `.claude/commands/kiadas.md`-t egy másik, előbb mergelődő PR is írja (új 3/b. lépés: minta-kapu, olvasói átolvasás, hibanapló; DT-F212f). Az F217.7 csak utána, a main behozásával szerkeszti.
+
+**1. kiegészítés — a 3.4 harmadik kivétele.** A kiadott lap változása akkor is átmehet, ha:
+- (c) a PR új `adat/lap_javitasok.tsv`-sort hoz ugyanarra az ID-ra;
+- és ez a sor tételesen leírja a változást (javítás kiadás nélkül, `/lap-javit`).
+
+Valós eset: a HAMART-001 a #709-ben a minta-kapu javításaival ilyen sort kap. A kapu tehát három kivételt ismer: (a) új `kiadasok.tsv` sor, (b) számkiosztás-diff, (c) új `lap_javitasok.tsv` sor.
+
+**2. kiegészítés — a #709 döntése** (a felhasználó: „Igen, az újjal”). Az ISTENTISZT-001 lapja befagyasztva marad az 1. kiadás állapotában; a 2. kiadás az újraírt generátorral jön.
+- A G01 aktív lapja most **csak a HAMART-001**.
+- A 3.5/3. pont ISTENTISZT-mérése elmarad.
+- A #709 minta-kapuja (címke-ismétlés, cellát ismétlő jegyzet, forrásnév a mondatban, belső név) a friss nézeten fut, az E29/E38/E39 mellett: bekerül a G01/G02 `kapuk` mezőjébe, és az F217.5 (Action, commit előtt) és az F217.6 (PR, ideiglenes generálás) kapusorába.
+
+**Indítás:** a #709 mergelése után, az orkesztrátor jelzésére. Addig a brief `megallt`.
+
