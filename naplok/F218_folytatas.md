@@ -11,18 +11,16 @@
 | F218.0 | kész | modell-ellenőrzés, függések, keretmérés |
 | F218.1 | kész, két halasztott résszel | referencia (bájtra azonos, 46,5 s), szimbólumtérkép, bemenet-hashek, alapmérés: `naplok/F218_jelentes.md`. **Halasztva:** a leltár `kovetelmeny` oszlopa (brief 7.4; a heti keret nullázása után, sonnet); az alias-sorok (GK-17) az S5 előttre |
 | F218.2 (T) | kész | típusok és szerződések; GK-01, 02, 05, 08a–c, 12, 23, 29, 30 zöld |
-| F218.4 (S1) | **a szakasz-diff 0 az engedélyeken kívül** | „2. Előfordulások” + „2.1”: 437 sorból 432 bájtra egyezik, 5 engedélysor; festékpróba 0 szivárgás; 69 teszt zöld. Hátra van: az S1 saját tesztjei (GK-13, 14, 17, 25, HN-01, HN-03, HN-16, a mutációs próba váza) |
-| F218.3 | következik | tesztváz (`skip`) a 7. pont még meg nem írt követelményeire |
+| F218.4 (S1) | **kész: a szakasz-diff 0 az engedélyeken kívül** | „2. Előfordulások” + „2.1”: 437 sorból 432 bájtra egyezik, 5 engedélysor; festékpróba 0 szivárgás. Az S1 tesztjei (`teszt_elofordulas.py`): GK-13, GK-14, GK-17, GK-25, HN-01, HN-16, a sablonmódosítók, a jegyzet-összevonás |
+| F218.3 | kész | tesztváz (`teszt_vaz.py`): 35 követelmény név + docstring + `skip` alakban, a szelet megnevezésével; a HN-03 a felhasználó döntésére vár; a mutációs próba (GK-26) az S9-ben. A tesztek állása: 121 teszt, 86 zöld, 35 kihagyva |
 | ⛔ az S1 után | következik | 1. független ellenőrzés (`fuggetlen-ellenor`, opus) és a felhasználó első átnézése: a lista a `naplok/F218_jelentes.md` „Amit a felhasználónak látnia kell az S1 után” pontja |
 | F218.5 (S2) | nem indult | 1. Döntési út + KIZARASOK |
 | F218.6–F218.13 | nem indult | |
 
 ## Következő lépés
 
-1. Az S1 tesztjei a `lapgen/tesztek/`-ben: GK-13 (egy kiejtési út: H2403a/b, H2398, H7121), GK-14 (T4: az első előfordulás, nevesített szabály), GK-17 (0 kódba írt könyvnév-alias), GK-25 (pozitív szerkezeti kapu: minden igehely alatt teljes mondat + „Funkció:”; a jegyzet a tábla alatt, rövid, egysoros, a cellát nem ismétli), HN-01, HN-03, HN-16 (szövegminták), a mutációs próba váza (GK-26), és a `cella` módosító, az összevont jegyzet, a közös forrásmegjelölés egységtesztjei.
-2. F218.3: `teszt_vaz.py` a hátralévő követelményekre (név + docstring + `skip`).
-3. ⛔: `fuggetlen-ellenor` (bemenet: a brief, `37f087cc..HEAD`, szint `teljes`, a CI-állapot a head-re); a jelentése változtatás nélkül a `naplok/F218_jelentes.md`-be, külön commitban. Egy javítókör. Ugyanekkor megy a felhasználónak az S1 listája (T4, önreferencia, új sablonmondatok).
-4. F218.5 (S2): „1. Döntési út” és a KIZARASOK-melléklet. A régi kód helye: a jelentés szimbólumtérképe, 2/a (ii). Új bemenetek: B02 (motívumok), B04 (jelöltek), B05/B06 (teljesség-mérés, frissességi kapuval), B56 (elutasítási okok), B47 (a kézi forrás rései).
+1. ⛔: `fuggetlen-ellenor` (bemenet: a brief, `37f087cc..HEAD`, szint `teljes`, a CI-állapot a head-re); a jelentése változtatás nélkül a `naplok/F218_jelentes.md`-be, külön commitban. Egy javítókör. Ugyanekkor megy a felhasználónak az S1 listája (T4, önreferencia, új sablonmondatok).
+2. F218.5 (S2): „1. Döntési út” és a KIZARASOK-melléklet. A régi kód helye: a jelentés szimbólumtérképe, 2/a (ii). Új bemenetek: B02 (motívumok), B04 (jelöltek), B05/B06 (teljesség-mérés, frissességi kapuval), B56 (elutasítási okok), B47 (a kézi forrás rései).
 
 ## Hogyan futtatható
 
