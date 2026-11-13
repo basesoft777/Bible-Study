@@ -1,0 +1,5 @@
+# A lapgenerátor (eszkozok/lapgen) bemeneti jegyzéke: egy sor egy bemenet. Séma: adat/SEMA.md 2.60
+id	utvonal	leiras	kotelezo	javitas	frissesseg	allapot	licenc_kulcs	olvasoi_nev_kulcs	forras
+B59	adat/lap_befagyasztas.tsv	a befagyasztott lapok listája: generálódik-e a lap	igen	-	-	aktiv	-	-	scope=manual | forras=F218a brief 4. pont; naplok/F218_GENERATOR_TERKEP_SPEC_2026-11-13.md 2. pont | ts=2026-11-13
+B65	adat/olvasoi_nevtabla.tsv	az olvasói névtábla: minden belső kulcs olvasói neve	igen	-	-	aktiv	-	-	scope=manual | forras=F218a brief 2. és 6. pont | ts=2026-11-13
+B66	adat/lapgen_sablonok.tsv	a sablontábla: a lap gépi mondatai	igen	-	-	aktiv	-	-	scope=manual | forras=F218a brief 2. és 6. pont | ts=2026-11-13

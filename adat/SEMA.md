@@ -2382,6 +2382,62 @@ adata benne marad. Egy hely, gépileg olvasható: a jegyzéket csak az `eszkozok
 **Kulcs:** `id`. A sor törlése (a lap új cikkének elkészültekor) a befagyasztást megszünteti: onnantól a lap
 generálódik, és az E28 újra méri.
 
+### 2.60 `lapgen_bemenetek.tsv` — az új lapgenerátor bemeneti jegyzéke (F218a, FELADATOK #218, 2026-11-13)
+
+Az új lapgenerátor (`eszkozok/lapgen/`) bemeneti rétege csak azt a fájlt nyitja meg, amelynek sora van ebben a
+táblában: az útvonal innen jön, a kódban adat-útvonal nem áll. Egy sor egy bemenet. A `B01`–`B64` azonosító a
+generátor-térkép számozása (`naplok/F218_GENERATOR_TERKEP_SPEC_2026-11-13.md` 2. pont), az új bemenet `B65`-től
+számozódik. A sor a bemeneti függvényével együtt, szeletenként kerül be: sor függvény nélkül és függvény sor
+nélkül hiba (a `lapgen/tesztek` statikus tesztje őrzi).
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a bemenet azonosítója (`B<nn>`); kulcs |
+| `utvonal` | repó-relatív útvonal, `/` elválasztóval; több fájl `;`-vel; a `*` glob, az `<ID>` a motívum azonosítója; nem fájl-forrásnál `-` |
+| `leiras` | mit ad a bemenet a lapnak |
+| `kotelezo` | `igen` / `nem`. Kötelező bemenet hiánya BUKÁS; opcionális hiánya kimondott hiány a lapmodellben, nem üres lista |
+| `javitas` | a kötelezően alkalmazott javítótábla B-azonosítója, vagy `-` |
+| `frissesseg` | `-`; `hash:<B…>` (pillanatkép: a megnevezett bemenet hash-éhez kötve); `strong_halmaz` (a mai Strong-halmazhoz kötve) |
+| `allapot` | `aktiv` / `kivezetve` / `nem_vizsgalt` / `reszleges`: a forrás állapota; a lap forrás-állapotot leíró mondatai ebből és a sablontáblából jönnek |
+| `licenc_kulcs` | a `licencek.tsv` kulcsa (`dataset`), vagy `-` |
+| `olvasoi_nev_kulcs` | a forrás olvasói neve: az `olvasoi_nevtabla.tsv` `forras` típusú kulcsa, vagy `-` |
+| `forras` | `PROVENIENCIA` (1.5): honnan jön a sor |
+
+**Kulcs:** `id`. A táblát kézzel írjuk (`forras=manual`), a szelettel együtt.
+
+### 2.61 `lapgen_sablonok.tsv` — a lap gépi mondatai (F218a, DT823, 2026-11-13)
+
+A lap látható szövege csak kézi prózából, strukturált értékű sablonmondatból vagy szó szerinti idézetből jöhet
+(DT823; a szabály szövege: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`). Ez a tábla a sablonmondatok egyetlen
+helye: a megjelenítő más forrásból gépi mondatot nem ír.
+
+| Oszlop | Tartalom |
+|---|---|
+| `kulcs` | a mondat azonosítója; kulcs |
+| `mondat` | a mondat helyőrzőkkel: `{nev}`; `{nev\|a}` / `{nev\|A}` határozott névelőt tesz az érték elé (a / az); listánál a `\|` utáni szöveg az elválasztó (`{elemek\|; }`), két elválasztóval az utolsó elem előtti külön adható (`{elemek\|, \| és }`). A mondatban Markdown-jelölés állhat |
+| `parameterek` | a helyőrzők kötött típusa, vesszővel elválasztva (`db:szam, hely:igehely`), vagy `-`. Típusok: `szam`, `tizedes(<jegy>)`, `nev(<névtábla-típus>)`, `igehely`, `strong`, `motivum`, `horgony`, `datum`, `lathato` (másik látható szöveg: próza, idézet vagy sablonmondat), `lista(<elemtípus>)`. Nyers szöveg paraméter nem lehet |
+| `szakasz` | melyik lapszakasz használja |
+| `eredet` | a régi generátor szimbóluma, ahonnan a mondat betűre átjött, vagy `uj` (új vagy javított mondat) |
+| `dontes` | az `uj` mondat jóváhagyása: a felhasználó szava dátummal, vagy `var` (jóváhagyásra vár) |
+
+**Kulcs:** `kulcs`. Az `eredet=uj` sorokat a felhasználó hagyja jóvá; a betűre átvett mondat nem igényel
+jóváhagyást.
+
+### 2.62 `olvasoi_nevtabla.tsv` — a belső kulcsok olvasói neve (F218a, DT823, 2026-11-13)
+
+Minden belső kulcsnak (forrás, mező, állapot, szerep, háló, igazolás, azonosság és a többi zárt értékkészlet)
+olvasói neve van ebben a táblában; a lapra a kulcs soha nem kerül, csak a neve. **Ismeretlen kulcs kemény
+hiba**: a generátor megáll, nem írja ki a kulcsot.
+
+| Oszlop | Tartalom |
+|---|---|
+| `tipus` | a kulcs értékkészlete (pl. `forras`, `mezo`, `allapot`, `szerep`, `halo`, `igazolas`, `azonossag`, `pardes_szint`, `megbizhatosag`, `azonositas_modja`, `konyv`) |
+| `kulcs` | a belső kulcs, ahogy az adatban vagy a kódban áll |
+| `olvasoi_nev` | a név, ahogy a lapon megjelenik |
+| `eredet` | a régi generátor szimbóluma, ahonnan a név betűre átjött, vagy `uj` |
+
+**Kulcs:** `tipus` + `kulcs`. Az `eredet=uj` sorokat a felhasználó hagyja jóvá.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
