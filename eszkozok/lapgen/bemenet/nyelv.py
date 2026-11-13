@@ -71,6 +71,10 @@ class Nyelv:
     def nev(self, tipus, kulcs):
         return self.nevtabla.nev(tipus, kulcs)
 
+    def kulcs(self, *reszek):
+        """Sablonkulcs a reszeibol (`e2.jegyzet`, `heber` -> `e2.jegyzet.heber`)."""
+        return '.'.join(reszek)
+
 
 def b65_nevtabla(b):
     """B65 — az olvasói névtábla."""

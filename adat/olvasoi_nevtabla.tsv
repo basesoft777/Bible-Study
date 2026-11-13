@@ -4,3 +4,23 @@ forras	B03	a motívum előfordulás-táblája	OLVASOI_FORRASNEV
 forras	B16	a szótári szakaszok címketáblája	OLVASOI_FORRASNEV
 forras	B19	a BDB-szótár	OLVASOI_FORRASNEV
 forras	B21	a Thayer-szótár	OLVASOI_FORRASNEV
+forras	B14	a lexikon fordítástáblája	OLVASOI_FORRASNEV
+forras	B33	az UBS Dictionary of Biblical Hebrew	OLVASOI_FORRASNEV
+forras	B34	a Károli-versmegfeleltetés	OLVASOI_FORRASNEV
+pardes_szint	Peshat	Peshat	elofordulasok.tsv pardes_szint
+pardes_szint	Remez	Remez	elofordulasok.tsv pardes_szint
+pardes_szint	Drash	Drash	elofordulasok.tsv pardes_szint
+pardes_szint	Sod	Sod	elofordulasok.tsv pardes_szint
+megbizhatosag	magas	magas	elofordulasok.tsv megbizhatosag
+megbizhatosag	közepes	közepes	elofordulasok.tsv megbizhatosag
+megbizhatosag	alacsony	alacsony	elofordulasok.tsv megbizhatosag
+azonositas_modja	tartalom-alapú	tartalom-alapú	elofordulasok.tsv azonositas_modja
+azonositas_modja	szó-szintű-gépi	szó-szintű-gépi	elofordulasok.tsv azonositas_modja
+azonositas_modja	kikövetkeztetett	kikövetkeztetett	elofordulasok.tsv azonositas_modja
+szotar	BDB	BDB	jelentes_cella
+szotar	Thayer	Thayer	jelentes_cella
+szotar	TBESG	TBESG	jelentes_cella
+hanyszor	2	kétszer	_HANYSZOR
+hanyszor	3	háromszor	_HANYSZOR
+hanyszor	4	négyszer	_HANYSZOR
+hanyszor	5	ötször	_HANYSZOR

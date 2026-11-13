@@ -178,3 +178,69 @@ Az `adat/elofordulasok.tsv` 20 oszlopos; fejléc: `id, igehely, kapcsolodas, par
 - **Nem követve:** a 115 fájl teljes átvizsgálása; az olvasói SQLite (`sqlite_epit.py`) oszlop-térképe.
 
 *Proveniencia: `scope=grep eszkozok/ .github/, olvasás a hivatkozott fájl:sor helyeken | forras=5e4344f6 | ts=2026-11-13`.*
+
+## F218.2–F218.4 — típusok és az első szelet (az építő session, `claude-fable-5-2`)
+
+### F218.2 — típusok és szerződések
+
+Az `eszkozok/lapgen/` rétegei (`szoveg` ← `bemenet` ← `szamitas` ← `megjelenites`), a három tábla (SEMA 2.60–2.62), a `regresszio.py`, a `festek.py`, a `general.py --cel lexikon2`. A tervezési döntések listája: `naplok/F218_folytatas.md` „Tervezési döntések”. A régi generátor HAMART-kimenete a `general.py` additív módosítása után bájtra azonos maradt (`cmp` a `git show HEAD:lexikon/…` tartalmával, mindkét nézet).
+
+### F218.4 — S1: „2. Előfordulások” és „2.1 Az igehelyek szövege”
+
+**Eredmény (HAMART-001, `PARDES_DATUM=2026-11-13`, `munka` mód):** a szakasz 437 sorából 432 bájtra egyezik a referenciával; **5 diff-sor, mind engedéllyel; engedély nélküli diff-sor: 0.** A bemenet-hash őr rendben. Futásidő a részleges lapra: 4,8 s.
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 | forras=a munkafa az F218.4 commitja előtt | ts=2026-11-13`.*
+
+| Engedélysor | Osztály | Darab | Mi tér el |
+|---|---|---|---|
+| S1-FORRAS | GK-07 (a brief 8.1 (b)) | 1 | a blokkfejléc forrás- és licenclistája a valódi olvasásokból jön, nem kódba írt listából |
+| S1-T4-1, -2, -3 | T4 (a brief 8.1 (d)) | 3 | az első előfordulás alakja és kiejtése: 1Móz 6:5 (H7451), 1Móz 6:12 (H7843), Jel 11:18 (G1311) |
+| S1-ONREF | M-CSERE | 1 | a régi generátor a kézi prózát utólag átírta („a lap” → „a szócikk”, 1Móz 8:21); az új a prózát változatlanul adja |
+
+**Festékpróba:** HAMART-001 0 szivárgás (látott jelzőszavak: belső 137, idézet 326, kézi 180); ISTENTISZT-001 0 szivárgás (belső 86, idézet 180, kézi 85). **Tesztek:** 69 zöld (`python eszkozok/lapgen/tesztek/futtat.py`).
+
+**ISTENTISZT-001 (8.2):** a 2. szakasz generálódik (20 sor, 8 összevont jegyzet); a látható szövegben nincs döntésszám, fájlnév, belső mezőnév. A számok független összevetése és a felhasználó olvasata a teljes lapnál (S9) esedékes.
+
+### Amit a felhasználónak látnia kell az S1 után (a két kör közül az első)
+
+**1. T4 („az első előfordulás”) a mért sorokon rosszabb egyezést ad a Károli-szóval, mint a régi szabály.** A sor Károli-szava és a mutatott eredeti alak:
+
+| Lap | Igehely | Károli-szó a sorban | Régi (utolsó előfordulás) | Új (első előfordulás, T4) | Melyik felel meg a Károli-szónak |
+|---|---|---|---|---|---|
+| HAMART-001 | 1Móz 6:5 | gonosz | רַ֖ע (ra) | רָעַ֥ת (ráat) | a régi |
+| HAMART-001 | 1Móz 6:12 | megrontotta | הִשְׁחִ֧ית (hischít) | נִשְׁחָ֑תָה (nischátá) | a régi |
+| HAMART-001 | Jel 11:18 | pusztítják | διαφθείροντας (diaftheirontasz) | διαφθεῖραι (diaftheirai) | a régi |
+| ISTENTISZT-001 | 1Móz 4:26 | segítségül hívni az Úrnak nevét | (a második „kárá”) | וַיִּקְרָ֥א (vajjikrá: „és nevezé”) | a régi |
+| ISTENTISZT-001 | 1Kir 18:24 | segítségül hívom az Úrnak nevét | (a második „kárá”) | וּקְרָאתֶ֞ם (úkerátem: „hívjátok”) | a régi |
+| ISTENTISZT-001 | Jóel 2:32 | Az Úrnak nevét hívja segítségül | (az utolsó) | יִקְרָ֛א (jikrá) | az új |
+
+Sem az „első”, sem az „utolsó” nem jó minden sorra: a helyes alak az, amelyik a sor Károli-szavának felel meg. Javaslat: a választás a Károli–Strong párosításból jöjjön (`adat/karoli_strong/parok_<könyv>.tsv`, B54), és csak párosítás híján az első előfordulás. A generátor most a T4 döntés szerint az elsőt adja; a három HAMART-sor az engedélyfájlban áll. Az alapmérés (F218.1) csak a héber szöveget mérte (2 sor), a görög Jel 11:18-cal az osztály 3 soros.
+
+**2. A kézi próza önreferenciája („a lap”).** A régi generátor nyolc kódba írt cserével (`tablajegyzet.ONREF_CSERE`) írta át a „lap” szót, köztük adatcellák szövegét is; a 2. szakaszban egy sort érint (1Móz 8:21: „azt a lap vitatott pontként tárgyalja” → „… a szócikk …”). Az új generátor a prózát változatlanul adja, ezért itt a jóváhagyott laphoz képest visszalépés áll, amíg a forrás nem javul. Két út: (a) az adatcella javítása (a régi kód megjegyzése szerint ehhez a nyílt mag angol fordításának hash-e kötődik, ezért maradt a csere a kódban); (b) prózajavító tábla a bemeneti rétegben (a `javitas` oszlop mintájára). Döntés kell; addig engedélysor (S1-ONREF).
+
+**3. Új sablonmondatok (`eredet=uj`, jóváhagyásra várnak).** Egyik sem áll a két mintalap 2. szakaszában; a régi generátor ezekben az esetekben belső szöveget vagy nyers adatértéket írt volna ki:
+
+| Kulcs | Új mondat | A régi alak |
+|---|---|---|
+| `e2.dbh.ok.nem_egy_vers` | az MT-megfelelő nem egyetlen vers | ugyanez, zárójelben a tábla nyers értékével |
+| `e2.dbh.ok.szamozas_elteres` | versszámozás-eltérés, az MT-vers a táblában nincs megadva | ugyanez, zárójelben a belső osztálykóddal |
+| `e2.jegyzet.tematikus_sajat.heber` (+ kiejtés nélküli) | Tematikus hely: a vers héber szava, … nem a lánc szava. | a régi csak a görög alakot ismerte |
+| `e2.jm.nincs_lekepezve` | a szerkesztői jelentésszám nincs leképezve a szótár tagolására | belső mondat a címketábla nevével |
+| `e2.jm.nem_azonosithato` | a BDB idézi a helyet, de nem azonosítható, melyik szócikkében | belső mondat fájlnévvel és sorszámmal |
+| `e2.jm.thayer_pelda` | a Thayer a helyet az N. jelentésnél idézi | belső mondat fájlnévvel |
+| `e2.jm.thayer_nem_idezi` | a Thayer a helyet nem idézi | belső mondat fájlnévvel |
+
+**4. Amit szándékosan nem változtattam** (a mai jóváhagyott szöveg maradt, betűre): a hatókör-sor zárójeles forráslistája („(a szótári szakaszok címketáblája, a BDB-szótár, a Thayer-szótár; …)”, az alapmérés HN-03 találata a 225. sorban) és a két rövid, névszerű HN-01 találat (2.2 és 2.17 jegyzet). Ha ezek javítandók, az új mondat külön jóváhagyást kér.
+
+**5. Többszavas sor jegyzete.** A nem szópáros motívum többszavas soránál (a két mintalapon nincs ilyen) a jegyzet a szópáros lap formáját követi (szavanként egy rövid mondat), mert a régi út ilyenkor belső szöveget adott.
+
+### Egyeztetett eltérések a brieftől
+
+- **T3 tárolása:** külön kézi tábla (`adat/tematikus_sajat_szo.tsv`, SEMA 2.63, B67), nem új oszlop az `elofordulasok.tsv`-ben: az orkesztrátor technikai döntése (2026-11-13), `dontesek/uj/f218-generator-uj-a.md` DT-F218i. A brief `ir` mezője ezzel a táblával és a döntésfájllal bővült.
+- **F218.1 halasztott részei:** a leltár `kovetelmeny` oszlopa (7.4) a heti keret nullázása utánra; az alias-sorok (GK-17) az S5 előttre (az alapmérés szerint a normalizáló tábla 4. oszlopát több eszköz olvassa, új alias viselkedést változtatna).
+- **Az S3-ra halasztva (kimondott hibával megáll, ha előbb kellene):** a pontozatlan héber alak szótári kiejtése (B10), az elavult fordítás jelölése az UBS-cellában (T5), a B18/B19/B21 frissességi kapuja (GK-03).
+
+### Ismert korlátok (a független ellenőrnek is)
+
+- A `bemenet/gerinc.py` a szótári táblák nyers sorait adja a `szamitas/szotari_gerinc.py`-nak (belső kulcsként); a látható szövegbe ezekből csak a bemeneti réteg burkolóin át juthat érték, de a `jel_szoveg` és az `idezet_szoveg` a számításból kapott szöveget burkolja. A festékpróba ezt a csatornát nem festi.
+- A régi segédmodulok újrahasznosítva, a bemeneti rétegen át: `heber_kiejtes`, `kiejtes`, `bdb_tagolas`, `bdb_rovidites`, `szotari_glossza` (tiszta függvények; az útvonalat a jegyzékből kapják).
+- A `lapgen/tesztek` tesztjeit a CI nem futtatja (az `ellenorzes.yml` és a `push_elott.py` névvel sorolja a tesztfájlokat; mindkettő kívül esik a brief `ir` mezőjén).

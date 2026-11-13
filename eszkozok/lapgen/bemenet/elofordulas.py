@@ -13,7 +13,6 @@ from lapgen.szoveg import Igehely, Strong
 _OSZLOPOK = ('id', 'igehely', 'kapcsolodas', 'pardes_szint', 'funkcio', 'gerinc_elem', 'strong', 'lexikon_szotar',
              'lexikon_entry_id', 'jelentes_szam', 'karoli_szo', 'azonositas_modja', 'megbizhatosag', 'proveniencia',
              'igazolas')
-SAJAT_SZO_OSZLOP = 'sajat_szo'
 _STRONG_RX = re.compile(r'^[HG]\d{4}[A-Za-z]?$')
 _IKON_RX = re.compile(r'^[^\w"„(]+')
 _TEMATIKUS_ELOTAG = 'tematikus:'
@@ -73,12 +72,38 @@ def _prov_reszek(b, nyers):
     return tuple(reszek)
 
 
+_SZOPAR_RX = re.compile(r'H\d{4}\+H\d{4}')
+_EGY_SZO_RX = re.compile(r'H\d{4}')
+
+
+def szopar_motivum(sorok):
+    """Tisztán szópáros (formulaikus) motívum-e: van `H…+H…` gerinc-eleme, és egyetlen héber gerinc-eleme sem
+    egyetlen Strong-szám (az egyes szavas lánc mellett álló szópárok nem teszik a motívumot szópárossá)."""
+    elemek = [s.gerinc_elem.ertek.strip() for s in sorok]
+    return any(_SZOPAR_RX.fullmatch(e) for e in elemek) and not any(_EGY_SZO_RX.fullmatch(e) for e in elemek)
+
+
+def b67_sajat_szavak(b, motivum):
+    """B67 — a motívum tematikus helyeinek saját (nem lánc-) szava: {igehely kódja: Strong}. A tábla kézi;
+    üres tábla vagy hiányzó sor nem hiba (a tematikus sor ilyenkor saját szó nélkül áll)."""
+    tabla = b._tabla('B67', oszlopok=('id', 'igehely', 'strong', 'forras'))
+    i, h, s = tabla.oszlop('id'), tabla.oszlop('igehely'), tabla.oszlop('strong')
+    ki = {}
+    for sor in tabla.sorok:
+        if sor[i] != motivum.kod:
+            continue
+        if sor[h] in ki or not _STRONG_RX.match(sor[s]):
+            raise BemenetHiba('B67: ismétlődő sor vagy érvénytelen Strong-szám: %s %s' % (sor[i], sor[h]))
+        ki[sor[h]] = Strong(sor[s])
+    return ki
+
+
 def b03_elofordulasok(b, motivum):
-    """B03 — a motívum előfordulás-sorai kánoni sorrendben. Az opcionális `sajat_szo` oszlop a vers saját,
-    nem lánc-szava (Strong-szám); ha az oszlop nincs a táblában, az érték hiányzik."""
+    """B03 — a motívum előfordulás-sorai kánoni sorrendben. A tematikus hely saját szava (`sajat_szo`) a B67
+    kézi táblából jön; a tábla csak létező, Strong-szám nélküli előfordulás-sorra mutathat."""
     tabla = b._tabla('B03', oszlopok=_OSZLOPOK)
     idx = {o: tabla.oszlop(o) for o in _OSZLOPOK}
-    sajat_i = tabla.oszlop(SAJAT_SZO_OSZLOP) if tabla.van(SAJAT_SZO_OSZLOP) else None
+    sajat = b67_sajat_szavak(b, motivum)
     konyvek = b63_konyvek(b)
     ki = []
     for sor in tabla.sorok:
@@ -115,8 +140,12 @@ def b03_elofordulasok(b, motivum):
         e.prov_reszek = _prov_reszek(b, mezo('proveniencia').strip())
         e.igazolas = _felsorolas(Igazolas, mezo('igazolas').strip(), 'igazolas', mezo('igehely'))
         e.igazolas_kulcs = b.kulcs('B03', 'igazolas', mezo('igazolas').strip())
-        e.sajat_szo = _strong_vagy_semmi(sor[sajat_i]) if sajat_i is not None else None
+        e.sajat_szo = sajat.pop(e.igehely.kod, None)
+        if e.sajat_szo is not None and e.strongok:
+            raise BemenetHiba('B67: a(z) %s sornak van Strong-száma, saját szó nem adható hozzá' % e.igehely.kod)
         ki.append(e)
+    if sajat:
+        raise BemenetHiba('B67: nincs ilyen előfordulás-sor: %s' % ', '.join(sorted(sajat)))
     ki.sort(key=lambda x: konyvek.rendezo_kulcs(x.igehely))
     return tuple(ki)
 

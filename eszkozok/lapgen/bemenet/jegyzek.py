@@ -19,6 +19,7 @@ JEGYZEK_OSZLOPOK = ('id', 'utvonal', 'leiras', 'kotelezo', 'javitas', 'frissesse
                     'licenc_kulcs', 'olvasoi_nev_kulcs', 'forras')
 ALLAPOTOK = ('aktiv', 'kivezetve', 'nem_vizsgalt', 'reszleges')
 ID_HELYORZO = '<ID>'
+NEM_FAJL = '-'
 
 
 class BemenetHiba(Exception):
@@ -113,6 +114,8 @@ class Bemenet:
         self._naplo = []
         self._naplozott = set()
         self._figyelok = []
+        self._naplo_sorrend = []
+        self._epitett = {}
         self._tar = {}
         self._jegyzek = self._jegyzek_betolt()
 
@@ -177,11 +180,39 @@ class Bemenet:
         return ki
 
     def _naploz(self, b_id, utvonal, sha):
+        self._naplo_sorrend.append(b_id)
         if (b_id, utvonal) not in self._naplozott:
             self._naplozott.add((b_id, utvonal))
             self._naplo.append(Olvasas(b_id, utvonal, sha))
         for figyelo in self._figyelok:
             figyelo.add(b_id)
+
+    def _teljes_utvonal(self, utvonal):
+        """A repó-relatív útvonal abszolút alakja (a közös javító modulok útvonal-paraméteréhez)."""
+        return os.path.join(self.gyoker, *utvonal.split('/'))
+
+    def jegyzek_utvonal(self, b_id, sorszam=0):
+        """A bemenet jegyzékbeli útvonala proveniencia-értékként (több útvonalnál a `sorszam`-adik)."""
+        return self.utvonal_ertek(b_id, [u.strip() for u in self.jegyzek_sor(b_id).utvonal.split(';')][sorszam])
+
+    def _naploz_modul(self, b_id):
+        """Nem fájl-bemenet (szabálymodul) olvasásának naplózása; a jegyzékben az útvonala `-`."""
+        if self.jegyzek_sor(b_id).utvonal.strip() != NEM_FAJL:
+            raise BemenetHiba('%s: a jegyzék szerint fájl-bemenet, nem modul' % b_id)
+        self._naploz(b_id, NEM_FAJL, '')
+
+    def egyszer(self, kulcs, epito):
+        """Munkameneten belüli gyorsítótár a beolvasott táblákból épített indexekhez: az `epito` egyszer fut.
+        (A napló a figyelőknek minden híváskor jelez: l. `ujra_jelez`.)"""
+        if kulcs not in self._epitett:
+            elotte = len(self._naplo_sorrend)
+            ertek = epito()
+            self._epitett[kulcs] = (ertek, tuple(self._naplo_sorrend[elotte:]))
+            return ertek
+        ertek, olvasott = self._epitett[kulcs]
+        for figyelo in self._figyelok:
+            figyelo.update(olvasott)
+        return ertek
 
     def _van(self, b_id, motivum=None):
         """Létezik-e a bemenet minden fájlja (opcionális bemenet hiányának megállapítására)."""

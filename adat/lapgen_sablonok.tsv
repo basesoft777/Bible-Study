@@ -23,3 +23,89 @@ e21.igehely	**{hely}**	hely:igehely	2.1	blokk_elofordulasok	-
 e21.vers	*{szoveg}*	szoveg:lathato	2.1	blokk_elofordulasok	-
 e21.nincs_vers	*({vers}: nincs Károli-szöveg)*	vers:igehely	2.1	blokk_elofordulasok	-
 e21.funkcio	Funkció: {magyarazat}	magyarazat:lathato	2.1	blokk_elofordulasok	-
+jel.nincs	—	-	keret	EM_DASH	-
+ertek.nev	{n}	n:nev	keret	blokk_elofordulasok	-
+e2.fejlec.igehely	Igehely	-	2	blokk_elofordulasok	-
+e2.fejlec.kulcsszo	Kulcsszó	-	2	blokk_elofordulasok	-
+e2.fejlec.jelentes	Jelentés (a szó)	-	2	blokk_elofordulasok	-
+e2.fejlec.funkcio	Funkció (a motívumban)	-	2	blokk_elofordulasok	-
+e2.fejlec.pardes	PaRDeS-szint	-	2	blokk_elofordulasok	-
+e2.fejlec.strong	Strong	-	2	blokk_elofordulasok	-
+e2.fejlec.ubs	UBS-jelentés	-	2	blokk_elofordulasok	-
+e2.fejlec.megbizhatosag	Megbízhatóság · azonosítás módja	-	2	blokk_elofordulasok	-
+e2.igehely_link	[{hely}](#{horgony})	hely:igehely, horgony:horgony	2	blokk_elofordulasok	-
+e2.kulcsszo	{karoli} — {alakok|; }	karoli:lathato, alakok:lista(lathato)	2	kulcsszo_cella	-
+e2.kulcsszo.nincs_alak	{karoli} — —	karoli:lathato	2	kulcsszo_cella	-
+e2.kulcsszo.csak_alak	{alakok|; }	alakok:lista(lathato)	2	kulcsszo_cella	-
+e2.alak.kiejtessel	{alak} ({kiejtes})	alak:lathato, kiejtes:lathato	2	ragozott_kiejtessel	-
+e2.alak	{alak}	alak:lathato	2	ragozott_kiejtessel	-
+e2.jelentes.tematikus	tematikus hely: a lánc szava nélkül	-	2	blokk_elofordulasok	-
+e2.pardes	{szintek|/}	szintek:lista(nev:pardes_szint)	2	blokk_elofordulasok	-
+e2.strong	{strongok|+}	strongok:lista(strong)	2	blokk_elofordulasok	-
+e2.strong.nincs_lanc	nincs lánc-szó	-	2	blokk_elofordulasok	-
+e2.megb_cella	{megb} · {mod}	megb:lathato, mod:lathato	2	blokk_elofordulasok	-
+e2.ubs.glossza	{glossza} [ⓘ](/szo/{strong})	glossza:lathato, strong:strong	2	ubs_glossza_cella	-
+e2.ubs.glossza.var	{glossza} *(fordításra vár)* [ⓘ](/szo/{strong})	glossza:lathato, strong:strong	2	ubs_glossza_cella	-
+e2.ubs.nem_egyertelmu	{elem} *(lehetséges, nem egyértelmű)*	elem:lathato	2	ubs_jelentes_cella	-
+e2.ubs.mt	{elem} *(MT: {vers})*	elem:lathato, vers:igehely	2	dbh_jelentes_cella	-
+e2.ubs.lista	{elemek|; }	elemek:lista(lathato)	2	ubs_jelentes_cella	-
+e2.ubs.tokenek	{tokenek| · }	tokenek:lista(lathato)	2	ubs_jelentes_cella	-
+e2.ubs.tokenenkent	{strong}: {tartalom}	strong:strong, tartalom:lathato	2	ubs_jelentes_cella	-
+e2.ubs.nincs_g_token	— *(nincs G-token)*	-	2	ubs_jelentes_cella	-
+e2.ubs.nincs_hozzarendeles	— *(nincs hozzárendelés)*	-	2	ubs_jelentes_cella	-
+e2.ubs.nincs_hozzarendeles.token	*(nincs hozzárendelés)*	-	2	ubs_jelentes_cella	-
+e2.ubs.tematikus	nem alkalmazható (tematikus hely)	-	2	blokk_elofordulasok	-
+e2.dbh.nincs_h_token	— *(ÓSZ; nincs H-token)*	-	2	dbh_jelentes_cella	-
+e2.dbh.nincs_a_tablaban	*(a jelentés nincs a DBH-táblában)*	-	2	dbh_jelentes_cella	-
+e2.dbh.nincs_hivatkozas	*(nincs DBH-hivatkozás)*	-	2	dbh_jelentes_cella	-
+e2.dbh.nincs_hivatkozas.okkal	*(nincs DBH-hivatkozás: {okok|; })*	okok:lista(lathato)	2	dbh_jelentes_cella	-
+e2.dbh.egyik_sem	— *(ÓSZ; {elemek| · })*	elemek:lista(lathato)	2	dbh_jelentes_cella	-
+e2.dbh.egyik_sem.okkal	nincs DBH-hivatkozás: {okok|; }	okok:lista(lathato)	2	dbh_jelentes_cella	-
+e2.dbh.egyik_sem.ok_nelkul	nincs DBH-hivatkozás	-	2	dbh_jelentes_cella	-
+e2.dbh.ok.nincs_megfeleltetes	a Károli-vers nincs a versmegfeleltető táblában	-	2	karoli_mt_vers	-
+e2.dbh.ok.nem_egy_vers	az MT-megfelelő nem egyetlen vers	-	2	uj	var
+e2.dbh.ok.szamozas_elteres	versszámozás-eltérés, az MT-vers a táblában nincs megadva	-	2	uj	var
+e2.dbh.ok.nincs_hivatkozas	keresett MT-vers: {vers}	vers:igehely	2	dbh_jelentes_cella	-
+e2.ubs_magyarazat	*Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése ({dbh}, a Károli-vers az MT-számozásra képezve, {megfeleltetes}); szavanként a hivatkozott jelentés(ek) kódja és rövid glosszája; az ⓘ a szónézetre mutat, ahol a teljes UBS-szócikk (definíció és glosszák) áll (szerkesztői döntés, {datum}). A glossza magyarul (forrás: {forditastabla}) jön, ahol van; ahol nincs, az angol eredeti áll (fordításra vár) jelöléssel. Ahol a DBH a versre nem hivatkozik, a mező ezt kimondja.*	dbh:nev(forras), megfeleltetes:nev(forras), datum:datum, forditastabla:nev(forras)	2	blokk_elofordulasok; olvasoi_atiras	-
+tabla.cella	{t|cella}	t:lathato	keret	nevelo_le	-
+lista.vesszo	{elemek|, }	elemek:lista(lathato)	keret	szakasz_szoveg	-
+e2.jelentes.cimke	{cimke} · {jel}	cimke:lathato, jel:lathato	2	jelentes_cella	-
+e2.jelentes.szocikk_egesze	a szócikk egésze — {glossza}	glossza:lathato	2	_tagolatlan_olvasoi	-
+e2.jelentes.szocikk_egesze.ures	a szócikk egésze	-	2	_tagolatlan_olvasoi	-
+e2.jelentes.nincs_cimke	*(nincs címke: {jel})*	jel:lathato	2	jelentes_cella	-
+e2.jelentes.nincs_hozzarendeles	*(nincs hozzárendelés)*	-	2	jelentes_cella	-
+e2.jelentes.tokenek	{tokenek|; }	tokenek:lista(lathato)	2	jelentes_cella	-
+e2.jelentes.tokenenkent	{strong}: {tartalom}	strong:strong, tartalom:lathato	2	jelentes_cella	-
+e2.igazolas.heber	A héber szöveg (TAHOT) igazolja	-	2	IGAZOLAS_OLVASOI	-
+e2.igazolas.gorog	A görög szöveg (TAGNT) igazolja	-	2	IGAZOLAS_OLVASOI	-
+e2.igazolas.nincs	Szövegigazolás nélkül	-	2	IGAZOLAS_OLVASOI	-
+e2.igazolas.ujszovetsegi	Újszövetségi hely: a szó a görög szövegben áll	-	2	tablajegyzet.olvasoi_jegyzet	-
+e2.igazolas.nem_alkalmazhato	A héber szöveg-igazolás itt nem alkalmazható	-	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet	{igazolas}; a jelentés: {jelentes}.	igazolas:lathato, jelentes:lathato	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet.csak_igazolas	{igazolas}.	igazolas:lathato	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet.csak_jelentes	A jelentés: {jelentes}.	jelentes:lathato	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet.ures	Forrás: a motívum adattáblái.	-	2	tablajegyzet.alkalmaz	-
+e2.jegyzet.mondatok	{mondatok|. }.	mondatok:lista(lathato)	2	tablajegyzet._szopar_jegyzet	-
+e2.jegyzet.szavankent	{strong}: {mondat}	strong:strong, mondat:lathato	2	tablajegyzet._szopar_jegyzet	-
+e2.jegyzet.a_jelentes	A jelentés: {mondat}	mondat:lathato	2	tablajegyzet._szopar_jegyzet	-
+e2.jegyzet.tematikus	Tematikus hely: a versben a lánc szava nem áll.	-	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet.tematikus_sajat.gorog	Tematikus hely: a vers görög szava, {szo|a:kiejtes} ({kiejtes}) nem a lánc szava.	szo:lathato, kiejtes:lathato	2	blokk_elofordulasok	-
+e2.jegyzet.tematikus_sajat.gorog.kiejtes_nelkul	Tematikus hely: a vers görög szava, {szo|a} nem a lánc szava.	szo:lathato	2	blokk_elofordulasok	-
+e2.jegyzet.tematikus_sajat.heber	Tematikus hely: a vers héber szava, {szo|a:kiejtes} ({kiejtes}) nem a lánc szava.	szo:lathato, kiejtes:lathato	2	uj	var
+e2.jegyzet.tematikus_sajat.heber.kiejtes_nelkul	Tematikus hely: a vers héber szava, {szo|a} nem a lánc szava.	szo:lathato	2	uj	var
+e2.jm.bdb_pelda	a BDB {szakasz|a} szakaszban maga idézi a helyet	szakasz:lathato	2	jelentes_cimke_token	-
+e2.jm.masutt_is	a BDB a helyet {szakaszok|a} is idézi	szakaszok:lathato	2	jelentes_cimke_token	-
+e2.jm.kutatoi	a {szotar} {jel} szakasza	szotar:nev(szotar), jel:lathato	2	tablajegyzet._jelentes_olvasoi	-
+e2.jm.kutatoi.fej	a {szotar} szócikkfeje	szotar:nev(szotar)	2	tablajegyzet._jelentes_olvasoi	-
+e2.jm.tagolatlan	a szócikk egésze (a szótár nem tagolja számozott jelentésekre)	-	2	tablajegyzet._jelentes_olvasoi	-
+e2.jm.nincs_lekepezve	a szerkesztői jelentésszám nincs leképezve a szótár tagolására	-	2	uj	var
+e2.jm.tobb_token	a BDB idézi a verset, de a szó {hanyszor} áll benne, ezért nem példahely	hanyszor:nev(hanyszor)	2	tablajegyzet._jelentes_tomor	-
+e2.jm.tartomanyban	a BDB a helyet csak {tartomany|a} tartományban idézi, ezért nem példahely	tartomany:lathato	2	tablajegyzet._jelentes_tomor	-
+e2.jm.tartomany	{kezdo}–{veg}	kezdo:igehely, veg:szam	2	tablajegyzet._jelentes_tomor	-
+e2.jm.nem_azonosithato	a BDB idézi a helyet, de nem azonosítható, melyik szócikkében	-	2	uj	var
+e2.jm.sajtohiba	a BDB maga idézi a helyet; a szótár szövegében sajtóhibával „{idezett}” áll	idezett:lathato	2	tablajegyzet._jelentes_tomor	-
+e2.jm.maga_idezi	a BDB maga idézi a helyet	-	2	tablajegyzet._jelentes_tomor	-
+e2.jm.szerkesztoi	szerkesztői hozzárendelés a szótár tagolása szerint	-	2	tablajegyzet._jelentes_tomor	-
+e2.jm.szerkesztoi.thayer	szerkesztői hozzárendelés a szótár tagolása szerint; a Thayer a helyet {n|a}. jelentésnél idézi	n:szam	2	tablajegyzet._jelentes_tomor	-
+e2.jm.thayer_pelda	a Thayer a helyet {n|a}. jelentésnél idézi	n:szam	2	uj	var
+e2.jm.thayer_nem_idezi	a Thayer a helyet nem idézi	-	2	uj	var

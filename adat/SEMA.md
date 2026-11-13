@@ -2438,6 +2438,26 @@ hiba**: a generátor megáll, nem írja ki a kulcsot.
 
 **Kulcs:** `tipus` + `kulcs`. Az `eredet=uj` sorokat a felhasználó hagyja jóvá.
 
+### 2.63 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
+
+A lánc szava nélküli tematikus hely (az `elofordulasok.tsv` sorának `gerinc_elem` mezője `tematikus:` kezdetű, a
+`strong` mezője üres) a 2. tábla sorában a vers saját, nem lánc-szavát mutatja (DT837: a szó adatból jön, nem
+lapra szabott kódból, és a 4. szakaszban nem kap szócikket). A szó itt áll, külön kézi táblában: az
+`elofordulasok.tsv` szerkezete nem változik, mert a fejlécét az `ellenoriz.py` 16. szabálya és a `betolt.py`
+rögzíti. A táblát csak az új lapgenerátor bemeneti rétege olvassa (`eszkozok/lapgen/bemenet/elofordulas.py`,
+B67); a régi generátor kódbeli kivétele (`TEMATIKUS_SAJAT_SZO`) az átállásig érintetlen marad.
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a motívum azonosítója (idegen kulcs a `motivumok.tsv`-re) |
+| `igehely` | `IGEHELY`: az `elofordulasok.tsv` azonos motívumú sorának igehelye |
+| `strong` | `STRONG`: a vers saját szava, amelyet a 2. tábla sora mutat |
+| `forras` | `PROVENIENCIA` (1.5): honnan jön a sor; kézi sornál `manual`, a döntés megnevezésével |
+
+**Kulcs:** `id` + `igehely`. A sor csak létező előfordulás-sorra mutathat; olyan sorra, amelynek van `strong`
+értéke, nem (a generátor betöltéskor megáll). Üres tábla és hiányzó sor nem hiba: a tematikus sor ilyenkor a
+Károli-szót mutatja, saját szó nélkül.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

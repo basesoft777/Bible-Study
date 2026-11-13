@@ -23,6 +23,14 @@ SULYPONT_KUSZOB = 0.40      # egy könyvben a helyek legalább ekkora hányada: 
 SZOVETSEG_KUSZOB = 0.20     # ennél kisebb arányú szövetség: „főként ószövetségi / újszövetségi”
 BIZONYTALAN_KUSZOB = 0.67   # a magas megbízhatóságú helyek aránya ez alatt: „sok a bizonytalan azonosítás”
 
+KOZOS_PROVENIENCIA_KUSZOB = 2   # ennyi jegyzetben álló proveniencia-hármas kap közös jelet (‹E1› …)
+
 # --- Döntések, amelyeknek a dátuma a lapon áll (a szám nem) -----------------------------------------------------
 DONTES_JELENTES_FUNKCIO = 'DT272'   # a „Jelentés (a szó)” és a „Funkció (a motívumban)” oszlop szétválasztása
 DONTES_UBS_SZONEZET = 'DT393'       # az UBS-jelentés cellája: rövid glossza, a teljes szócikk a szónézetben
+
+# --- UBS-jelentés: a fordítástábla kulcsai ---------------------------------------------------------------------
+SZOTAR_UBS_DNTG = 'UBS_DNTG'
+SZOTAR_UBS_DBH = 'UBS_DBH'
+UBS_GLOSSZA_MEZO = 'glosszak_hu'
+NINCS_JELENTESSZAM = '—'            # a fordítástábla kulcsában a jelentésszám nélküli szócikk jele

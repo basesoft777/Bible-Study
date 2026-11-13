@@ -462,15 +462,45 @@ def _skalar_szegmensek(kulcs, nev, tipus, arg, ertek, modosito):
     return [(Fajta.SABLON, szoveg)]
 
 
-def _nevelovel(kulcs, nev, szegmensek, modosito):
-    """A névelő-módosító („a” vagy „A”) alkalmazása: a névelő a kiírt érték elé kerül."""
+_CELLA_NEVELO_RX = re.compile(r'^((?:\*\*|\*|\[)?)(a|az)\s+(?=\S)')
+CELLA_MONDAT_SZO = 6   # ennyi szótól a cella mondat értékű: a névelő megmarad, nagy kezdőbetűvel
+
+
+def _cellakezdet(szegmensek):
+    """A `cella` módosító: tábla- és listaelem nem kezdődik kisbetűs névelővel. A rövid elem eleji „a”/„az”
+    elmarad, és az elem nagy kezdőbetűt kap; a mondat értékű elem (legalább `CELLA_MONDAT_SZO` szó a névelő
+    után) a névelőt megtartja, nagy kezdőbetűvel. Más elem változatlan."""
+    teljes = ''.join(s[1] for s in szegmensek)
+    m = _CELLA_NEVELO_RX.match(teljes)
+    if not m:
+        return szegmensek
+    maradek = teljes[m.end():]
+    if len(maradek.split()) >= CELLA_MONDAT_SZO:
+        uj_eleje = m.group(1) + m.group(2).capitalize() + ' ' + maradek[:1]
+    else:
+        uj_eleje = m.group(1) + (maradek[:1].upper() if maradek[:1].isalpha() else maradek[:1])
+    fogyo, ki = m.end() + 1, []
+    for fajta, szoveg in szegmensek:
+        if fogyo >= len(szoveg):
+            fogyo -= len(szoveg)
+            continue
+        ki.append((fajta, szoveg[fogyo:]))
+        fogyo = 0
+    return [(szegmensek[0][0], uj_eleje)] + ki
+
+
+def _nevelovel(kulcs, nev, szegmensek, modosito, masik_szoveg=None):
+    """A skalár helyőrző módosítója: „a” / „A” névelőt tesz a kiírt érték elé (az `a:<másik>` alak a névelőt a
+    megnevezett másik paraméter szövege szerint választja, pl. a kiejtés szerint); a `cella` a cellakezdő alak."""
     if modosito in (None, ''):
         return szegmensek
-    if modosito not in ('a', 'A'):
+    if modosito == 'cella':
+        return _cellakezdet(szegmensek)
+    alak = modosito.partition(':')[0]
+    if alak not in ('a', 'A'):
         raise SablonHiba('%s: ismeretlen módosító a(z) %s helyőrzőn: %r' % (kulcs, nev, modosito))
-    teljes = ''.join(s[1] for s in szegmensek)
-    nevelo = _nevelo(teljes)
-    if modosito == 'A':
+    nevelo = _nevelo(masik_szoveg if masik_szoveg is not None else ''.join(s[1] for s in szegmensek))
+    if alak == 'A':
         nevelo = nevelo.capitalize()
     return [(Fajta.SABLON, nevelo + ' ')] + szegmensek
 
@@ -512,7 +542,15 @@ def sablon(sor, **parameterek):
                 szegmensek.extend(_skalar_szegmensek(sor.kulcs, tartalom, elem_tipus, elem_arg, elem, None))
         else:
             reszek = _skalar_szegmensek(sor.kulcs, tartalom, tipus, arg, ertek, modosito)
-            szegmensek.extend(_nevelovel(sor.kulcs, tartalom, reszek, modosito))
+            masik_szoveg = None
+            if modosito and ':' in modosito:
+                masik = modosito.partition(':')[2]
+                if masik not in sor.parameterek or sor.parameterek[masik][0] == 'lista':
+                    raise SablonHiba('%s: a névelő alapja ismeretlen vagy lista: %r' % (sor.kulcs, masik))
+                m_tipus, m_arg = sor.parameterek[masik]
+                masik_szoveg = ''.join(s[1] for s in _skalar_szegmensek(sor.kulcs, masik, m_tipus, m_arg,
+                                                                         parameterek[masik], None))
+            szegmensek.extend(_nevelovel(sor.kulcs, tartalom, reszek, modosito, masik_szoveg))
     return Lathato(_osszevon(szegmensek), _ENGEDELY)
 
 
