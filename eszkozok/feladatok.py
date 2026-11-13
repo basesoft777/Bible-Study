@@ -57,7 +57,7 @@ REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 TIPUSOK = ('feladat', 'naplozas', 'dontes', 'archiv')
 FAZISOK = ('1', '2', 'folyamat')
 ALLAPOTOK = ('nem_indult', 'brief_kell', 'fut', 'dontesre_var', 'megallt', 'lezarva')
-MODELLEK = ('sonnet', 'opus', 'haiku')
+MODELLEK = ('sonnet', 'opus', 'haiku', 'fable')
 MUNKAK = ('adat', 'ertelmezo', 'folyamat')   # F32 (K2): a munka fajtaja
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
@@ -243,7 +243,7 @@ def briefek_beolvas(gyoker=REPO):
 # ---------------------------------------------------------------------------
 
 MODELL_SOR = re.compile(r'Modell:\*{0,2}\s*([^\n]*)', re.IGNORECASE)
-MODELL_SZO = re.compile(r'(sonnet|opus|haiku|külső:[\w./-]+)', re.IGNORECASE)
+MODELL_SZO = re.compile(r'(sonnet|opus|haiku|fable|külső:[\w./-]+)', re.IGNORECASE)
 
 
 KOZVETLEN_BLOKK = re.compile(
