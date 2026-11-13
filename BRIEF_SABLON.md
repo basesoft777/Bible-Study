@@ -32,7 +32,7 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `tipus` | igen | `feladat` · `naplozas` · `dontes` · `archiv` |
 | `fazis` | `feladat` típusnál | `1` · `2` · `folyamat` |
 | `munka` | `feladat` típusnál | `adat` · `ertelmezo` · `folyamat` |
-| `modell` | igen | `sonnet` · `opus` · `haiku` · `külső:<név>`; a régi `Modell:` sor megmarad, a kettő egyezik; a session modelljét nem állítja, a futtató ellenőrzi |
+| `modell` | igen | `sonnet` · `opus` · `haiku` · `fable` · `külső:<név>` (a `fable` brief Fable-sessionben, közvetlenül fut, végrehajtó subagent nincs hozzá; a felhasználó, 2026-11-13: a generátor-újraírás Fable-on); a régi `Modell:` sor megmarad, a kettő egyezik; a session modelljét nem állítja, a futtató ellenőrzi |
 | `allapot` | igen | `nem_indult` · `brief_kell` · `fut` · `dontesre_var` · `megallt` · `lezarva` |
 | `ad` | igen* | „Mit ad, ha kész” |
 | `kovetkezo` | igen* | „Következő lépés”; „Te:” = a felhasználóra vár; „Folytatás:” (`fut` állapotban) = félbemaradt, a `/kovetkezo` folytatási jelöltként ajánlja |
