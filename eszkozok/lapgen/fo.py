@@ -15,7 +15,7 @@ import sys
 from lapgen import bemenet, konfig
 from lapgen.megjelenites.md.iro import Lapiro, lap_szoveg
 from lapgen.szakaszok import Szakaszrend
-from lapgen.szoveg import MotivumId, SzovegHiba, prov
+from lapgen.szoveg import MotivumId, SzovegHiba, prov, prov_fuz
 
 
 class Mod(enum.Enum):
@@ -78,6 +78,7 @@ def lap_keszit(gyoker, motivum, mod=Mod.MUNKA, datum=None, festek=False):
         with b.figyel() as forrasok:
             modellek[leiro.azonosito] = (leiro.szamit(korny), frozenset(forrasok))
     keret = Keret(ny, motivum, rend, _ts(datum, b.olvasasi_naplo()), mod, b)
+    licencek = bemenet.b01_licencek(b) if modellek else None
     nezetek = {}
     for nezet in (konfig.NEZET_TUDOMANYOS, konfig.NEZET_KIZARASOK):
         keszek = rend.keszek(nezet)
@@ -86,9 +87,29 @@ def lap_keszit(gyoker, motivum, mod=Mod.MUNKA, datum=None, festek=False):
         iro = Lapiro()
         for leiro in keszek:
             modell, forrasok = modellek[leiro.azonosito]
-            leiro.megjelenit(iro, modell, keret, forrasok)
+            leiro.megjelenit(iro, modell, keret, _forrasok(b, licencek, forrasok))
         nezetek[nezet] = iro.kesz()
     return Eredmeny(nezetek, b.olvasasi_naplo(), b.festo)
+
+
+class Forrasok:
+    """Egy szakasz forrásai a valódi olvasásból (GK-07): az útvonalak és a licenccímkék, provenienciaként."""
+    __slots__ = ('azonositok', 'utvonalak', 'licencek')
+
+    def __init__(self, azonositok, utvonalak, licencek):
+        self.azonositok, self.utvonalak, self.licencek = azonositok, utvonalak, licencek
+
+
+def _forrasok(b, licencek, azonositok):
+    utvonalak, cimkek = [], {}
+    for b_id in sorted(azonositok):
+        sor = b.jegyzek_sor(b_id)
+        utvonalak.extend(b.utvonal_ertek(b_id, u.strip()) for u in sor.utvonal.split(';'))
+        if sor.licenc_kulcs != '-':
+            cimke = licencek.cimke(sor.licenc_kulcs)
+            cimkek[cimke.ertek] = cimke
+    return Forrasok(tuple(sorted(azonositok)), prov_fuz(', ', utvonalak),
+                    prov_fuz(', ', [cimkek[k] for k in sorted(cimkek)]))
 
 
 def _repon_kivul(gyoker, konyvtar):

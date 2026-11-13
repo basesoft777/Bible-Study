@@ -47,6 +47,7 @@ class SablonHiba(ValueError):
 _STRONG_RX = re.compile(r'^[HG]\d{4,5}[a-z]?$')
 _MOTIVUM_RX = re.compile(r'^[A-Z]+-\d{3}$')
 _HORGONY_RX = re.compile(r'^[0-9a-zà-ÿőű_-]+$')
+_HORGONY_TISZTIT_RX = re.compile(r'[^0-9A-Za-zÀ-ÿ]+')
 _IGEHELY_RX = re.compile(
     r'^(?P<konyv>[1-5]?[A-ZÁÉÍÓÖŐÚÜŰ][A-Za-záéíóöőúüűÁÉÍÓÖŐÚÜŰ]*) '
     r'(?P<fejezet>\d+):(?P<vers>\d+)(?P<tobbi>(?:[-,]\d+(?::\d+)?)*)$')
@@ -137,6 +138,10 @@ class Igehely(_Azonosito):
     @property
     def vers(self):
         return self._vers
+
+    def horgony(self):
+        """Az igehely lapon belüli horgonya (`ige-1móz-3-14`): a 2.1 pont célpontja."""
+        return Horgony('ige-' + _HORGONY_TISZTIT_RX.sub('-', self._ertek).strip('-').lower())
 
 
 # ---------------------------------------------------------------------------

@@ -1,2 +1,6 @@
 # Az olvasói névtábla: a lapgenerátor (eszkozok/lapgen) belső kulcsainak olvasói neve. Séma: adat/SEMA.md 2.62
 tipus	kulcs	olvasoi_nev	eredet
+forras	B03	a motívum előfordulás-táblája	OLVASOI_FORRASNEV
+forras	B16	a szótári szakaszok címketáblája	OLVASOI_FORRASNEV
+forras	B19	a BDB-szótár	OLVASOI_FORRASNEV
+forras	B21	a Thayer-szótár	OLVASOI_FORRASNEV

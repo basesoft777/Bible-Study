@@ -1,2 +1,25 @@
 # A lapgenerátor (eszkozok/lapgen) sablontáblája: a lap minden gépi mondata. Séma: adat/SEMA.md 2.61
 kulcs	mondat	parameterek	szakasz	eredet	dontes
+cim.szamozott	{sorszam}. {cim}	sorszam:szam, cim:lathato	keret	uj_cimek_alkalmaz	-
+cim.alpont	{szakasz}.{alpont}. {cim}	szakasz:szam, alpont:szam, cim:lathato	keret	uj_cimek_alkalmaz	-
+cim.elofordulasok	Előfordulások	-	2	UJ_SZAKASZOK	-
+cim.elofordulasok.szoveg	Az igehelyek szövege	-	2.1	blokk_elofordulasok	-
+e2.osszegzo	{lelet} {megb} **Következtetés:** {kov|; }.	lelet:lathato, megb:lathato, kov:lista(lathato)	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.lelet.ket_szovetseg	A motívum {n} igehelyen fordul elő, {konyvek} bibliai könyvben ({osz} ószövetségi, {usz} újszövetségi hely).	n:szam, konyvek:szam, osz:szam, usz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.lelet.csak_osz	A motívum {n} igehelyen fordul elő, {konyvek} bibliai könyvben ({osz} ószövetségi hely).	n:szam, konyvek:szam, osz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.lelet.csak_usz	A motívum {n} igehelyen fordul elő, {konyvek} bibliai könyvben ({usz} újszövetségi hely).	n:szam, konyvek:szam, usz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.megb.vegyes	{magas} hely azonosítása magas megbízhatóságú, {tobbi} alacsonyabb.	magas:szam, tobbi:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.megb.mind	{magas} hely azonosítása magas megbízhatóságú.	magas:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.sulypont	a motívum súlypontja {konyv} ({n} helyből {db})	konyv:nev(konyv), n:szam, db:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.fokent_osz	főként ószövetségi; az Újszövetségben {usz} hely	usz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.fokent_usz	főként újszövetségi; az Ószövetségben {osz} hely	osz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.mindketto	az Ószövetségben {osz}, az Újszövetségben {usz} hely	osz:szam, usz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.csak_osz	csak az Ószövetségben	-	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.csak_usz	csak az Újszövetségben	-	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.bizonytalan	sok a bizonytalan azonosítás	-	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.hatokor	*A táblázat a motívum {n} igehelyét sorolja fel (forrás: {tabla}), kanonikus sorrendben, a Károli-szöveggel ({szakasz}.{alpont}) és az UBS-jelentéssel. A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja ({cimketabla}, {bdb}, {thayer}; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (szerkesztői döntés, {datum}).*	n:szam, tabla:nev(forras), szakasz:szam, alpont:szam, cimketabla:nev(forras), bdb:nev(forras), thayer:nev(forras), datum:datum	2	blokk_elofordulasok; olvasoi_atiras	-
+e21.bevezeto	A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.	-	2.1	OLVASOI_SABLON[1a]	-
+e21.igehely	**{hely}**	hely:igehely	2.1	blokk_elofordulasok	-
+e21.vers	*{szoveg}*	szoveg:lathato	2.1	blokk_elofordulasok	-
+e21.nincs_vers	*({vers}: nincs Károli-szöveg)*	vers:igehely	2.1	blokk_elofordulasok	-
+e21.funkcio	Funkció: {magyarazat}	magyarazat:lathato	2.1	blokk_elofordulasok	-

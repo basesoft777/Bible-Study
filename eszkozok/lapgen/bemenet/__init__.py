@@ -10,9 +10,12 @@ Szerződés (F218a brief 4. pont):
 A nyers szöveg csak burkolóban hagyja el a réteget (`Kezi`, `Forrasszoveg`, `Belso`, `Kulcs`,
 `Utvonal`; l. `lapgen.szoveg`), a nyilvános azonosítók saját típusban (`Igehely`, `Strong`, `MotivumId`).
 """
-from lapgen.bemenet.alap import b59_befagyasztott
+from lapgen.bemenet.alap import b01_licencek, b51_dontesek, b59_befagyasztott
+from lapgen.bemenet.elofordulas import b03_elofordulasok, b07_karoli
 from lapgen.bemenet.jegyzek import Bemenet, BemenetHiba
+from lapgen.bemenet.konyvek import b63_konyvek
 from lapgen.bemenet.nyelv import NevHiba, Nyelv, b65_nevtabla, b66_sablonok, nyelv
 
 __all__ = ['Bemenet', 'BemenetHiba', 'NevHiba', 'Nyelv', 'nyelv',
-           'b59_befagyasztott', 'b65_nevtabla', 'b66_sablonok']
+           'b01_licencek', 'b03_elofordulasok', 'b07_karoli', 'b51_dontesek', 'b59_befagyasztott',
+           'b63_konyvek', 'b65_nevtabla', 'b66_sablonok']

@@ -17,3 +17,12 @@ NEZET_KIZARASOK = 'KIZARASOK'
 # A dátum környezeti változója (YYYY-MM-DD); nélküle a `ts=` a bemenetek hash-éből képződik (GK-29).
 DATUM_VALTOZO = 'PARDES_DATUM'
 TS_HASH_JEGY = 12
+
+# --- 2. Előfordulások: az összegző mondat küszöbei --------------------------------------------------------------
+SULYPONT_KUSZOB = 0.40      # egy könyvben a helyek legalább ekkora hányada: a motívum súlypontja
+SZOVETSEG_KUSZOB = 0.20     # ennél kisebb arányú szövetség: „főként ószövetségi / újszövetségi”
+BIZONYTALAN_KUSZOB = 0.67   # a magas megbízhatóságú helyek aránya ez alatt: „sok a bizonytalan azonosítás”
+
+# --- Döntések, amelyeknek a dátuma a lapon áll (a szám nem) -----------------------------------------------------
+DONTES_JELENTES_FUNKCIO = 'DT272'   # a „Jelentés (a szó)” és a „Funkció (a motívumban)” oszlop szétválasztása
+DONTES_UBS_SZONEZET = 'DT393'       # az UBS-jelentés cellája: rövid glossza, a teljes szócikk a szónézetben

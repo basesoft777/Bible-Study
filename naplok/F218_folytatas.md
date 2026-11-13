@@ -60,8 +60,15 @@ A brief megállási szabálya: az építő session indulásakor mért maradék h
 | Pont | Dátum (UTC) | Heti · minden modell | Heti · Fable | 5 órás | Megjegyzés |
 |---|---|---|---|---|---|
 | F218.0 (indulás) | 2026-11-13 09:05 | 83% | 15% | 19% | `get_usage`; nullázás: 2026-11-14 14:00 UTC |
+| F218.2 után | 2026-11-13 09:35 | 85% | 20% | 38% | az F218.1 (sonnet) és az F218.2 együtt 2 százalékpont |
 
-Diff-görbe (engedélyen kívüli diff-sorok szakaszonként, commitonként): még nincs mérés (az első az S1-nél).
+Diff-görbe (engedélyen kívüli diff-sorok szakaszonként, commitonként):
+
+| Commit | 2. Előfordulások (437 sor) | Megjegyzés |
+|---|---|---|
+| F218.4 (1) | 76 | az összegző mondat, a hatókör-sor és a 2.1 pont (kb. 355 sor) bájtra egyezik; hátra van a tábla (51 sor), a 17 jegyzet, a közös forrásmegjelölés, az UBS-magyarázat és a blokkfejléc forráslistája |
+
+Festékpróba (F218.4 (1)): HAMART-001 0 szivárgás (látott jelzőszavak: belső 5, idézet 58, kézi 98); ISTENTISZT-001 0 szivárgás (belső 5, idézet 22, kézi 40).
 
 Az F218.1 alapmérés számai (a várt eltérés-osztályokhoz): `naplok/F218_jelentes.md` „F218.1 — alapmérés”. Kiemelve: T4 a HAMART-on 2 sor (1Móz 6:5 H7451, 1Móz 6:12 H7843); HN-15: 2; HN-03: 10; HN-01: 6 a 23 jegyzetből; N178: 0 érintett Strong; elavult fordítás: 5 sor (Thayer).
 

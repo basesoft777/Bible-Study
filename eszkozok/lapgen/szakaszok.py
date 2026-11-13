@@ -67,6 +67,10 @@ class Szakaszrend:
             raise KeyError('a(z) %s szakasz nem számozott' % azonosito)
         return szam
 
+    def cim_kulcs(self, azonosito):
+        """A szakasz címének sablonkulcsa."""
+        return 'cim.' + self._nev_szerint[azonosito].azonosito
+
     def keszek(self, nezet):
         return tuple(leiro for leiro in self._rend if leiro.nezet == nezet and leiro.szamit is not None)
 

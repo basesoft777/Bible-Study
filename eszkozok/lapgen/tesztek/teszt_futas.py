@@ -61,9 +61,16 @@ class Befagyasztas(unittest.TestCase):
 
     def test_gk30_befagyasztott_repon_kivuli_kimenetbe_fut(self):
         """GK-30: repón kívüli próbakimenetbe a befagyasztott motívum is generálható."""
-        ki = io.StringIO()
-        self.assertEqual(fo.futtat(self.repo.gyoker, 'FAGYOTT-001', self.kint, datum='2026-11-13', ki=ki), 0)
-        self.assertNotIn('kihagyva', ki.getvalue())
+        from lapgen import bemenet
+        fagyott = bemenet.b59_befagyasztott(bemenet.Bemenet(kozos.GYOKER))
+        mintak = [a for a in MINTALAPOK if MotivumId(a) in fagyott]
+        self.assertTrue(mintak, 'a mintalapok között nincs befagyasztott: a kivétel így nem mérhető')
+        for azonosito in mintak:
+            ki = io.StringIO()
+            self.assertEqual(fo.futtat(kozos.GYOKER, azonosito, self.kint, datum='2026-11-13', ki=ki), 0,
+                             ki.getvalue())
+            self.assertNotIn('kihagyva', ki.getvalue())
+            self.assertTrue(os.path.isfile(os.path.join(self.kint, 'lexikon', '%s_TUDOMANYOS.md' % azonosito)))
 
     def test_hivasi_hibak(self):
         ki = io.StringIO()

@@ -250,7 +250,7 @@ class LathatoSzabaly(unittest.TestCase):
         """GK-08a: a `szamitas/` adatosztályainak mezői kötött típusúak: szám, logikai, felsorolás, a `szoveg`
         modul típusai és a réteg saját osztályai. Szabad `str` mező nincs."""
         sajat = set()
-        for rel in kodfajlok('szamitas'):
+        for rel in kodfajlok('szamitas') + ['ertekek.py']:
             sajat.update(c.name for c in ast.walk(fa(rel)) if isinstance(c, ast.ClassDef))
         hibak = []
         for rel in kodfajlok('szamitas'):
