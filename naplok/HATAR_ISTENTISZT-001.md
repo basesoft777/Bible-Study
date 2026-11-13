@@ -2,9 +2,9 @@
 
 *A „Gépi rész” generált (`python eszkozok/motivum_hatar.py --motivum ISTENTISZT-001`, determinisztikus; újrafuttatáskor felülíródik); a „Modelles rész” jelölői közötti tartalom megmarad. Minden pont **kérdés** a felhasználóhoz, nem javítás; adatot, motívumfájlt, lapot ez a fájl nem módosít.*
 
-*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=ISTENTISZT-001 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
+*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=ISTENTISZT-001 | ts=2026-11-12T07:09Z | bemenet=adat/elofordulasok.tsv@529710f00a,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
-**Motívum:** ISTENTISZT-001 — Segítségül hívni az Úr nevét · hordozó: `formulaikus` · fölérendelt fogalom: „istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül)” · beépített sor: 22 (22 vers)
+**Motívum:** ISTENTISZT-001 — Segítségül hívni az Úr nevét · hordozó: `formulaikus` · fölérendelt fogalom: „istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül)” · beépített sor: 20 (20 vers)
 
 ## Gépi rész
 
@@ -12,32 +12,33 @@
 
 Módszer: a beépített igehelyek (`elofordulasok.tsv`) versekre bontva (tartomány = minden vers), ISTENTISZT-001 összes beépített versét minden más motívuméval összevetve, mindkét irányban. Kérdés: A ⊆ B, vagy |A ∩ B| / |A| ≥ 80% (A = az ellenőrzött oldal, B = a másik oldal; a fordított irányt külön vizsgálja).
 
-**0 kérdés.** Egyik másik motívummal sem áll fenn részhalmaz-viszony vagy ≥80% átfedés (22 beépített vers vetve össze minden más motívum halmazával). Üres eredmény: nem negatív lelet a fogalmi átfedésre, csak az igehely-halmazra.
+**0 kérdés.** Egyik másik motívummal sem áll fenn részhalmaz-viszony vagy ≥80% átfedés (20 beépített vers vetve össze minden más motívum halmazával). Üres eredmény: nem negatív lelet a fogalmi átfedésre, csak az igehely-halmazra.
 
 Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is látszanak):
 
 | másik motívum | ISTENTISZT-001 versei | másik versei | közös | közös/ISTENTISZT-001 | közös/másik | meglévő kapcsolat (`motivum_kapcsolatok.tsv` sora) |
 |---|---|---|---|---|---|---|
-| ALVIL-001 | 22 | 75 | 0 | 0% | 0% | 3, 4 |
-| ANTROP-001 | 22 | 11 | 0 | 0% | 0% | nincs |
-| HAMART-001 | 22 | 56 | 0 | 0% | 0% | 5 |
-| HODIT-001 | 22 | 33 | 0 | 0% | 0% | nincs |
-| KIRALY-001 | 22 | 38 | 0 | 0% | 0% | nincs |
-| MENNY-001 | 22 | 11 | 0 | 0% | 0% | nincs |
-| TEREMT-001 | 22 | 45 | 0 | 0% | 0% | nincs |
-| TEREMT-002 | 22 | 3 | 0 | 0% | 0% | nincs |
+| ALVIL-001 | 20 | 75 | 0 | 0% | 0% | 3, 4 |
+| ANTROP-001 | 20 | 11 | 0 | 0% | 0% | nincs |
+| HAMART-001 | 20 | 54 | 0 | 0% | 0% | 5 |
+| HODIT-001 | 20 | 33 | 0 | 0% | 0% | nincs |
+| KIRALY-001 | 20 | 38 | 0 | 0% | 0% | nincs |
+| MENNY-001 | 20 | 11 | 0 | 0% | 0% | nincs |
+| TEREMT-001 | 20 | 45 | 0 | 0% | 0% | nincs |
+| TEREMT-002 | 20 | 3 | 0 | 0% | 0% | nincs |
 
 ### 2. Negatív kritérium a beépített sorokon
 
 Módszer: a #150 `jelolt_eloszures.vizsgal` próbája a **beépített** sorokra: a motívum gerinc-kombinációi (`elofordulasok.tsv` `strong`, nyelvtani Strongok nélkül) közül legalább egy teljesen megvan-e a sor versének Strong-halmazában (TAHOT+TAGNT). Hordozó: `formulaikus`.
 
-Összesítés: 22 beépített sor; gerinc-kombináció megvan: 22; **kérdés (hiányzik): 0**; nem ellenőrizhető (nincs szövegadat / nincs kombináció): 0.
+Összesítés: 20 beépített sor; gerinc-kombináció megvan: 20; **kérdés (hiányzik): 0**; nem ellenőrizhető (nincs szövegadat / nincs kombináció): 0.
 
-**0 kérdés.** Mind a 22 ellenőrizhető beépített sor versében megvan legalább egy gerinc-kombináció.
+**0 kérdés.** Mind a 20 ellenőrizhető beépített sor versében megvan legalább egy gerinc-kombináció.
 
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
+
 <!-- SORÁLLAPOT: n=22 ujj=c2824be30ed7 -->
 
 ### Első kör — 2026-11-01, a 33 soros adaton (K1–K5; a felhasználói besorolás a DT476/DT478-ban átvezetve)
@@ -112,4 +113,14 @@ Modell-ellenőrzés: kért `fable`, tényleges `claude-fable-5-1` — egyezik. B
 *Nem kérdés (megjegyzés):* (1) `adat/jeloltek.tsv:533–534` (1Pét 1:6, 1:7, elutasítva) indoklása azt mondja, hogy a Zak 13:9 célhelyei közül „a formulát … Jóel 2:32, ApCsel 2:21 és Róm 10:14 mellett egyedül a Róm 10:12 tartalmazza” — a Róm 10:12 és 10:14 a DT476 K2 óta éppen a formula (ὄνομα) hiánya miatt elutasított, tehát az indoklás előfeltevése elavult; a döntés (elutasítva) ettől nem változik. (2) A görög oldali `gerinc_elem` mind a hat soron G1941 egyedül, az ὄνομα (G3686) nem része; a Gépi rész 2. pontja ezért a görög kritérium név-feltételét nem méri (a név nélküli ApCsel 7:59 is átmenne rajta). (3) A D-minta (`:596–615`, `:672–678`), a jogi fellebbezés (`:606–611`), az esküformás tanúhívás (`:595`), a névadás (`:541–546`) és a név nélküli héber hívás (`:535–540`) kizárása egységes, beépített párja nincs. (4) Az 1Kir 18:24 (`:33`) mindkét felét hordozza (H0430 és H3068 a *sém* után), a sor Illés hívásán áll.
 
 (proveniencia: scope=adat/motivumok.tsv:4,6 + adat/jeloltek.tsv (id=ISTENTISZT-001, 138 sor) + adat/elofordulasok.tsv (id=ISTENTISZT-001, 22 sor) + adat/elutasitasi_okok.tsv + adat/motivum_kapcsolatok.tsv (3 sor) + motivumok/ISTENTISZT-001.md + naplok/HATAR_ISTENTISZT-001.md (Gépi rész) + naplok/F123_teljesseg_ISTENTISZT-001_blokkok.tsv (besem_JHVH_nelkul) + konkordancia/TAGNT_kivonat.tsv (ApCsel 2:21, 9:14, 9:21, 22:16; Róm 10:13; 1Kor 1:2) + konkordancia/TAHOT_kivonat.tsv (1Kir 18:24–26; Ézs 64:6, 65:1; Zsolt 79:6); split('\t') | forras=modell:claude-fable-5-1 | ts=2026-11-09T19:20Z)
+
+**Szerkesztői besorolás, második kör** *(nem a modell írta; 2026-11-11, a #194-ben átvezetve: F194.1)*
+
+- K6: „(A) Kikerül” — a görög oldalon is az Úr megnevezése kell a név után; az ApCsel 9:14 és 9:21 a fölérendelt fogalomhoz kerül (22 → 20). Az ApCsel 22:16 marad (a Károli alapszövege, a Textus Receptus: κυρίου). (DT-F194a)
+- K7: a „vagy az elóhím” maradvány, kikerül az összesítő sor indoklásából és az elutasítási ok magyarázatából; saját mérés (TAHOT): a 12 versben a *besém* után sehol nem áll אֱלֹהִים (elóhím). Az orkesztrátor döntése. (DT-F194d)
+- K8: az „invokáló” marad a kritériumban; a 2Móz 33:19 és 34:5 kivételjelölés nélkül tartozik ide: „a szavak ugyanazok az forditói döntés hogy ez kihirdetés”. (DT-F194b)
+- A tetragramma alakja mindenütt יְהוָה (Jahve): „Igen, mindenhol Jahve”. (DT-F194c)
+
+*(proveniencia: scope=adat/motivumok.tsv (ISTENTISZT-001) + adat/jeloltek.tsv (ISTENTISZT-001, elofordulas) + TAHOT_kivonat.tsv (a besem_JHVH_nelkul blokk 12 verse) | forras=manual: a felhasználó döntései (AskUserQuestion, az orkesztrátoron át) | ts=2026-11-11)*
+<!-- HATÁRDÖNTÉS: n=20 ujjd=4460c4ab6a6b | DT-F194a, DT-F194b, DT-F194c, DT-F194d -->
 <!-- MODELLES-VEGE -->

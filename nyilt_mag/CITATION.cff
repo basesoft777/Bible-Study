@@ -11,7 +11,7 @@ license:
   - CC-BY-4.0
   - CC-BY-SA-4.0
 abstract: >-
-  Bibliai motívumok nyílt adatkészlete: 9 motívum, 252 előfordulás és 548
+  Bibliai motívumok nyílt adatkészlete: 9 motívum, 250 előfordulás és 554
   kizárás-sor. Minden motívumhoz rögzített kizáró jegy és a tágabb fogalom
   tartozik, amely felé hígulna; minden előfordulás a héber vagy görög szöveg
   egy szaván áll, mellette a Károli-fordítás szavával; a megvizsgált, de
@@ -19,8 +19,8 @@ abstract: >-
   szemantikai domének külön rétege CC BY-SA 4.0, a csomag többi része CC BY
   4.0. A nyílt adatmag a lexikon adatrétege; maga a lexikon önálló mű, minden
   jog fenntartva.
-  (English) An open dataset of biblical motifs: 9 motifs, 252 occurrences and
-  548 exclusion rows. Every motif has a fixed exclusion criterion and the broader
+  (English) An open dataset of biblical motifs: 9 motifs, 250 occurrences and
+  554 exclusion rows. Every motif has a fixed exclusion criterion and the broader
   concept towards which it would dilute; every occurrence rests on a word of
   the Hebrew or Greek text, with the word of the Károli translation; passages
   examined but excluded are listed with a rationale; every row names its

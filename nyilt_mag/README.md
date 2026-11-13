@@ -13,17 +13,17 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 | file | content | rows |
 |---|---|---:|
 | `motivumok.tsv` | the motifs: title, definition, carrier of identity, exclusion criterion, superordinate concept, processing stage | 9 |
-| `elofordulasok.tsv` | the occurrences: passage, anchor word and its Strong's number, dictionary meaning, Károli word, provenance | 252 |
-| `beepitesi_dontesek.tsv` | the inclusion decisions, with rationale | 254 |
-| `kizarasok.tsv` | the passages examined but excluded, with reason and rationale; a summary row stands for a group | 548 |
-| `kizaras_csoportok.tsv` | every verse of the summary-row groups | 4,020 |
-| `kapcsolatok.tsv` | relations between passages within a motif | 88 |
+| `elofordulasok.tsv` | the occurrences: passage, anchor word and its Strong's number, dictionary meaning, Károli word, provenance | 250 |
+| `beepitesi_dontesek.tsv` | the inclusion decisions, with rationale | 252 |
+| `kizarasok.tsv` | the passages examined but excluded, with reason and rationale; a summary row stands for a group | 554 |
+| `kizaras_csoportok.tsv` | every verse of the summary-row groups | 4,034 |
+| `kapcsolatok.tsv` | relations between passages within a motif | 86 |
 | `motivum_kapcsolatok.tsv` | relations between two motifs | 3 |
 | `dontesnaplo.tsv` | the editorial decisions referred to (`NYD-nnn`) | 15 |
-| `visszhang_megfelelok.tsv` | the counterparts of the anchor words in the Targum, the Vulgate and the Septuagint | 101 |
-| `visszhang_tanuk.tsv` | patristic, rabbinic and Glossa Ordinaria witnesses, without quotation | 6 |
+| `visszhang_megfelelok.tsv` | the counterparts of the anchor words in the Targum, the Vulgate and the Septuagint | 144 |
+| `visszhang_tanuk.tsv` | patristic, rabbinic and Glossa Ordinaria witnesses, without quotation | 8 |
 | `vitatott_forrasok.tsv` | the peer-reviewed literature on the disputed points (bibliographic data) | 3 |
-| `sblgnt_apparatus.tsv` | the critical apparatus of the SBL Greek New Testament for the New Testament passages | 61 |
+| `sblgnt_apparatus.tsv` | the critical apparatus of the SBL Greek New Testament for the New Testament passages | 60 |
 | `forrasok_es_licencek.tsv` | the project's source inventory: licence and role in the package | 65 |
 | `kodkonyv.tsv` | description of the columns, values and codes (Hungarian and English) | 441 |
 | `KODKONYV.md` | the same in readable form |  |
@@ -40,10 +40,10 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 ## In numbers
 
 - 9 motifs. Closed releases: 1; earlier processing, being rewritten: 8, and their data stay in the package (`motivumok.tsv`, `feldolgozasi_allapot`).
-- 252 occurrences and 254 inclusion decisions.
-- 548 exclusion rows with 62 reasons: 449 passages decided one by one, and 99 summary rows standing for 4,020 verses.
-- 88 relations between passages, 3 relations between motifs, 15 public editorial decisions.
-- In the echo layer: 101 counterparts, 6 witnesses, 3 disputed points and 61 apparatus notes.
+- 250 occurrences and 252 inclusion decisions.
+- 554 exclusion rows with 62 reasons: 454 passages decided one by one, and 100 summary rows standing for 4,034 verses.
+- 86 relations between passages, 3 relations between motifs, 15 public editorial decisions.
+- In the echo layer: 144 counterparts, 8 witnesses, 3 disputed points and 60 apparatus notes.
 
 **Known issues:** `KNOWN_ISSUES.md`. **Methods:** `METHODS.md`.
 

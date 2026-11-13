@@ -106,6 +106,12 @@ KAPUK = (
                         'írás zárójeles kiejtés nélkül, más sorra hivatkozás („… sorának folytatása”) vagy munkajavaslat '
                         '(„érdemes lehet külön vizsgálatra”); csak az új szerkezetű lapon (F182 javítókör: A05, A06, B08, '
                         'K47, K48)'),
+    ('MINTA', BUKAS, 'olvasói minta-ellenőrzés a látható szövegen (az orkesztrátor 2026-11-13-i szkriptje, F194): '
+                     'címke-ismétlés a táblacellában („Címke: Címke …”), a cellát ismétlő jegyzet, forrásnév zárójelben a '
+                     'mondat közepén (a „Forrás:” sor és az Irodalom kivételével), belső név vagy tört írásjel („x_y”, '
+                     '„:,”, „,;”, DT/N/F-tétel; a link célja és a BDB saját „,;” jele nem), szakszó (fölérendelt fogalom, '
+                     'invokáló szerkezet, gerinc, token, kutatói hozzárendelés, Szövegigazolás nélkül, proveniencia, '
+                     'jelölt); csak az új szerkezetű lapon'),
     ('BDB_OLVASOI', BUKAS, 'a 4.2 BDB- és Thayer-kártyájának olvasói rétegében (a szótári apparátus előtt) feloldatlan '
                            'rövidítés, belső címke vagy nyers sorszám (a szócikk sorszáma is), a szócikk feje mint '
                            'jelentéspont, kétszer álló vers a motívum helyei között, a Thayer-kártyán nyers görög alak; csak '
@@ -564,6 +570,10 @@ NYERS_JELEK = [
     (re.compile(r'(?<![\w/])(?:kt|other|names)/[a-z]'), 'tW-azonosító'),
     (re.compile(r'(?<=[֐-׿יִ-ﭏ\]])\u200e?_\d+\b'), 'a címszó belső számlálója'),
     (re.compile(r'(?<![\w./-])(?:adat|konkordancia|naplok|eszkozok)/\w'), 'a repó belső útvonala'),
+    # F194 (az orkesztrátor 2026-11-13-i jelzése, 2·5 és 3.28): a jegyzetben maradt mezőnév és az üres mező utáni
+    # elválasztó („a javítás forrása:, kézi sor”, „Mérés:;”, „tematikus:.”)
+    (re.compile(r'\b(?:negativ_kriterium|folerendelt_fogalom|hivatkozas_kezi)\b'), 'nyers mezőnév'),
+    (re.compile(r'(?<=\w):[,;.](?=\s|$)'), 'tört írásjel (üres mező utáni elválasztó)'),
 ]
 
 
@@ -882,13 +892,25 @@ def heber_kulcs(szo):
     return ekezet_nelkul(szo.lower())
 
 
+def PONTOZATLAN_HEBER(szo):
+    """F194: héber írású, de magánhangzójel nélküli alak (pl. a BDB rokon nyelvi szava)."""
+    return bool(re.search('[א-ת]', szo)) and not re.search('[ְ-ׇ]', szo)
+
+
 def kiejtes_parok(sorok):
     """[(héber/görög kulcs, kiejtés, sor)] a lapon álló „szó (kiejtés)” párokból."""
     egy, tobb = [], []
+    rokon = False   # F194: a rokon nyelvi tábla szakasza („Háttér: rokon nyelvek”)
     for s in sorok:
+        if s.szoveg.startswith('#'):
+            rokon = 'rokon nyelvek' in s.szoveg
         if s.fajta in ('komment', 'kod', 'ures'):
             continue
         for m in PAR_RX.finditer(s.szoveg):
+            # F194 (az orkesztrátor döntése, 2026-11-12): a rokon nyelvi tábla pontozatlan alakja nem hordoz
+            # kiejtést, ezért a kiejtések összevetéséből kimarad; máshol a pontozatlan alak is összevetendő
+            if rokon and PONTOZATLAN_HEBER(m.group(1)):
+                continue
             szavak = [heber_kulcs(w) for w in re.split(r'[\s־]+', m.group(1)) if w]
             belso = re.sub(r'\b[HG]\d{3,5}[a-z]?\b', ' ', m.group(2))
             belso = re.sub(r'[*_;,]', ' ', belso.split(':')[0])
@@ -1613,6 +1635,62 @@ def arany_szoszam():
     return _ARANY_SZOSZAM
 
 
+# F194 (az orkesztrátor 2026-11-13-i minta-ellenőrzése, `lap_minta_ell.py`; a felhasználó: „nem nézem tovább”): a
+# látható szöveg olvasói mintái. A szkript heurisztikus; az álpozitívok szűrése: a link célja (`](#…)`), a „Forrás:”
+# sor és jegyzet, az Irodalom szakasz (forrásnév-felsorolás), a BDB saját szövegének héber szó utáni „,;” jele, a négy
+# szónál rövidebb cella (szótári glossza: „gonosz/kár: gonosz”).
+MINTA_SZAKSZO = ('fölérendelt fogalom', 'invokáló szerkezet', 'gerinc', 'token', 'kutatói hozzárendelés',
+                 'Szövegigazolás nélkül', 'proveniencia', 'jelölt')
+MINTA_SZAKSZO_RX = re.compile(r'(?<!\w)(?:%s)' % '|'.join(re.escape(x) for x in MINTA_SZAKSZO), re.I)
+MINTA_FORRASNEV_RX = re.compile(r'\((?:a BDB-szótár|a STEPBible[^)]*\)?|TAHOT|TAGNT|a Thayer[^)]*)\)\s*[,;]')
+MINTA_BELSO_RX = re.compile(r'\b[a-z]+_[a-z_]+\b|:,|\(,|,;|\bN-F\d|\bDT-?F?\d|\bF\d{2,3}\b|#\d{2,3}\b')
+_HEBER_BETU = re.compile(r'[֐-׿‎]')
+
+
+def ell_minta(szoveg):
+    """A látható szöveg (megjegyzés és kódblokk nélkül) minta-találatai: [talalat]."""
+    import szerep_kizart as SZKZ
+    lath = re.sub(r'<!--.*?-->', lambda m: '\n' * m.group(0).count('\n'), szoveg, flags=re.S)
+    ki, szakasz, kod, cellak, jegyzetek = [], '', False, [], []
+    for n, s in enumerate(lath.replace('\r', '').split('\n'), 1):
+        if s.strip().startswith('```'):
+            kod = not kod
+            continue
+        if kod:
+            continue
+        if s.startswith('## '):
+            szakasz = s[3:].strip()
+        t = re.sub(r'<[^>]+>', '', s)
+        t = re.sub(r'\]\([^)]*\)', ']', t)                     # a link célja nem olvasói szöveg
+        mj = re.match(r'- <span class="lj-szam" id="j-[\d-]+">[\d.]+</span>(.*)', s)
+        jegyzet = re.sub(r'<[^>]+>', '', mj.group(1)).strip() if mj else None
+        if jegyzet is not None:
+            jegyzetek.append((n, szakasz, jegyzet))
+        if s.startswith('|') and not set(s.strip()) <= set('|-: '):
+            for c in s.strip().strip('|').split('|'):
+                c2 = re.sub(r'<sup.*?</sup>', '', c).strip()
+                cellak.append((n, szakasz, c2))
+                m = re.match(r'\s*([^:|]{3,60}):\s*(.+)', c2)
+                if m and SZKZ.cimke_ismetles(m.group(1), m.group(2)):
+                    ki.append(talalat('MINTA', BUKAS, n, c2[:120], 'címke-ismétlés a cellában'))
+        forras_sor = re.match(r'^\W*(?:Forrás|forrás)\s*:', jegyzet if jegyzet is not None else t)
+        if not forras_sor and not szakasz.startswith('12. Irodalom'):
+            for m in MINTA_FORRASNEV_RX.finditer(t):
+                ki.append(talalat('MINTA', BUKAS, n, kornyezet(t, m), 'forrásnév zárójelben a mondat közepén'))
+        for m in MINTA_BELSO_RX.finditer(t):
+            if m.group(0) == ',;' and _HEBER_BETU.search(t[max(0, m.start() - 2):m.start()]):
+                continue                                         # a BDB saját szövegének jele
+            ki.append(talalat('MINTA', BUKAS, n, kornyezet(t, m), 'belső név vagy tört írásjel: ' + m.group(0)))
+        for m in MINTA_SZAKSZO_RX.finditer(t):
+            ki.append(talalat('MINTA', BUKAS, n, kornyezet(t, m), 'szakszó: ' + m.group(0)))
+    for n, sz, jt in jegyzetek:
+        mag = re.sub(r'^(?:Forrás|Szövegigazolás nélkül|A héber szöveg \(TAHOT\) igazolja)[:;.]?\s*', '', jt).strip(' .')
+        kulcs = re.findall(r'\d?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]*\.? ?\d+:\d+', mag)
+        if kulcs and len(mag) < 60 and any(csz == sz and all(k in c for k in kulcs) for _ci, csz, c in cellak):
+            ki.append(talalat('MINTA', BUKAS, n, jt[:120], 'a jegyzet a cellát ismétli'))
+    return ki
+
+
 def lap_meres(szoveg, kh=True, atvett=True, arany=True):
     """Egy lap szövegének mérése: (találatok, megjegyzések). Az új szerkezetű lapon kivétel nélkül (F178.4)."""
     global KIVETEL_NELKUL, KIZART_SZAKASZ
@@ -1630,6 +1708,7 @@ def lap_meres(szoveg, kh=True, atvett=True, arany=True):
         for n, _sz, reszlet in TJ.onref_talalatok(szoveg):
             ki.append(talalat('ONREF', FIGY, n, reszlet, 'önreferáló „lap”: a valódi alany kell (motívum, vizsgálat, '
                                                           'keresés, szócikk)'))
+        ki += ell_minta(szoveg)   # F194: az olvasói minta-ellenőrzés
     megj = []
     if atvett:
         a, megj = ell_atvett(szoveg)

@@ -206,9 +206,9 @@ def blokk_12(sorai, ts):
     n_jelolt = len(jeloltek(sorai, tiltott={t for t, (d, _i) in dontesek.items() if d == 'tiltott'}))
     n_tilt = sum(1 for d, _i in dontesek.values() if d == 'tiltott')
     nevek = magyar_nevek()
-    out = ['*Nave tematikus indexe (Nave\'s Topical Bible, 1897, közkincs). Jelölt az a téma, amely legalább %d motívumverset '
-           'érint, a motívumversek aránya a téma összes verséhez legalább %d%%, és nem a fölérendelt fogalom felé mutat (%d '
-           'tiltott téma); a %d jelöltből a motívumhoz kiválasztott %d téma áll itt — a döntés és a kimaradt jelöltek indoka: '
+    out = ['*Nave tematikus indexe (Nave\'s Topical Bible, 1897, közkincs). Szóba jöhet az a téma, amely legalább %d motívumverset '
+           'érint, a motívumversek aránya a téma összes verséhez legalább %d%%, és nem a tágabb kör felé mutat (%d '
+           'tiltott téma); a %d szóba jöhető témából a motívumhoz kiválasztott %d téma áll itt — a döntés és a kimaradt témák indoka: '
            '`adat/tematikus_temak.tsv`. Csak megjelenítés: ezekből a témákból jelölt csak döntéssel lesz, a jelölt- és '
            'döntéstáblán át (`adat/jeloltek.tsv`).*'
            % (MIN_VERS, round(MIN_ARANY * 100), n_tilt, n_jelolt, len(temak))]

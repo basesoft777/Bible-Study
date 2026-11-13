@@ -6,9 +6,9 @@ When does a verse belong to a biblical motif, and when does it not? The Logosz L
 research under an open licence. These data record not only where a motif occurs, but also which passages we examined
 and why we left them out.
 
-**What is in it.** 9 motifs, among them “The rippling out of the consequences of sin — curse, earth and corruption”, with 252 occurrences in all. Every occurrence rests on
+**What is in it.** 9 motifs, among them “The rippling out of the consequences of sin — curse, earth and corruption”, with 250 occurrences in all. Every occurrence rests on
 a word of the Hebrew or Greek text, with the corresponding word of the Károli translation beside it. The exclusions
-are just as detailed: 449 passages decided one by one and 4,020 verses rejected in groups, with
+are just as detailed: 454 passages decided one by one and 4,034 verses rejected in groups, with
 62 reasons and a rationale.
 
 **How.** Every motif starts with four questions, and the most important of them is this: what is the smallest

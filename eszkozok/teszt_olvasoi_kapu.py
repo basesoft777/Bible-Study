@@ -371,9 +371,11 @@ class UjSzerkezet(unittest.TestCase):
 class Arany(unittest.TestCase):
     """Az arany lap ismert hibái (G-sorok): a javítatlanok megjelennek a valódi lapon, a javítottak nem."""
 
+    MOTIVUM = K.ARANY
+
     @classmethod
     def setUpClass(cls):
-        tal, _ = K.motivum_meres(K.ARANY)
+        tal, _ = K.motivum_meres(cls.MOTIVUM)
         cls.tal = tal or []
 
     def van(self, azon, minta):
@@ -397,7 +399,8 @@ class Arany(unittest.TestCase):
         self.van('HIANYJEL', 'nincs hozzárendelés')
 
     def test_G7_dt_a_prozaban(self):
-        self.van('BELSO', 'DT476')
+        """F194 (az ISTENTISZT-001 2. kiadása) óta a próza nulláról készült, a DT476 nem áll benne."""
+        self.nincs('BELSO', 'DT476')
 
     def test_G8_idezojel(self):
         """OLVJ.2 óta a lap utófeldolgozása az egyenes idézőjelet „…”-ra cseréli."""
@@ -406,6 +409,15 @@ class Arany(unittest.TestCase):
     def test_G9_bdb_jel(self):
         """OLVJ.4 óta a ^ jel nem marad a lapon."""
         self.nincs('BDB_JEL', 'nyers ^')
+
+
+class AranyHamart(Arany):
+    """F194 (az orkesztrátor döntése): a javított G-sorok a HAMART-001 lapján, az új aranyon sem jelennek meg; a
+    G6 (a szótári hozzárendelés hiányjele) csak a szópáros ISTENTISZT-001 második szaván áll."""
+    MOTIVUM = 'HAMART-001'
+
+    def test_G6_hianyjel(self):
+        self.nincs('HIANYJEL', 'nincs hozzárendelés')
 
 
 class BdbOlvasoiReteg(unittest.TestCase):

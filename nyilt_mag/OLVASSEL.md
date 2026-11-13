@@ -13,17 +13,17 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 | fájl | tartalom | sor |
 |---|---|---:|
 | `motivumok.tsv` | a motívumok: cím, meghatározás, az azonosság hordozója, kizáró jegy, fölérendelt fogalom, feldolgozási állapot | 9 |
-| `elofordulasok.tsv` | az előfordulások: igehely, a horgonyszó és Strong-száma, szótári jelentés, Károli-szó, eredetjelölés | 252 |
-| `beepitesi_dontesek.tsv` | a felvett helyek döntése, indoklással | 254 |
-| `kizarasok.tsv` | a vizsgált, de kizárt helyek, okkal és indoklással; az összesítő sor egy csoportot képvisel | 548 |
-| `kizaras_csoportok.tsv` | az összesítő sorok csoportjainak minden verse | 4 020 |
-| `kapcsolatok.tsv` | igehely-kapcsolatok egy motívumon belül | 88 |
+| `elofordulasok.tsv` | az előfordulások: igehely, a horgonyszó és Strong-száma, szótári jelentés, Károli-szó, eredetjelölés | 250 |
+| `beepitesi_dontesek.tsv` | a felvett helyek döntése, indoklással | 252 |
+| `kizarasok.tsv` | a vizsgált, de kizárt helyek, okkal és indoklással; az összesítő sor egy csoportot képvisel | 554 |
+| `kizaras_csoportok.tsv` | az összesítő sorok csoportjainak minden verse | 4 034 |
+| `kapcsolatok.tsv` | igehely-kapcsolatok egy motívumon belül | 86 |
 | `motivum_kapcsolatok.tsv` | kapcsolatok két motívum között | 3 |
 | `dontesnaplo.tsv` | a hivatkozott szerkesztői döntések (`NYD-nnn`) | 15 |
-| `visszhang_megfelelok.tsv` | a horgonyszavak megfelelője a Targumban, a Vulgatában és a Septuagintában | 101 |
-| `visszhang_tanuk.tsv` | egyházatyai, rabbinikus és Glossa Ordinaria-tanúk, idézet nélkül | 6 |
+| `visszhang_megfelelok.tsv` | a horgonyszavak megfelelője a Targumban, a Vulgatában és a Septuagintában | 144 |
+| `visszhang_tanuk.tsv` | egyházatyai, rabbinikus és Glossa Ordinaria-tanúk, idézet nélkül | 8 |
 | `vitatott_forrasok.tsv` | a vitatott pontok lektorált szakirodalma (bibliográfiai adat) | 3 |
-| `sblgnt_apparatus.tsv` | az SBL Greek New Testament kritikai apparátusa az újszövetségi helyekhez | 61 |
+| `sblgnt_apparatus.tsv` | az SBL Greek New Testament kritikai apparátusa az újszövetségi helyekhez | 60 |
 | `forrasok_es_licencek.tsv` | a projekt forrásleltára: licenc és szerep a csomagban | 65 |
 | `kodkonyv.tsv` | az oszlopok, értékek és kódok leírása (magyarul és angolul) | 441 |
 | `KODKONYV.md` | ugyanez olvasható formában |  |
@@ -40,10 +40,10 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 ## Számokban
 
 - 9 motívum: 1 lezárt kiadás, 8 korábbi feldolgozás, újraírás alatt; az adatuk a csomagban marad (`motivumok.tsv`, `feldolgozasi_allapot`).
-- 252 előfordulás és 254 felvételi döntés.
-- 548 kizárás-sor 62 okkal: 449 egyenként eldöntött hely, és 99 összesítő sor, amely 4 020 verset képvisel.
-- 88 igehely-kapcsolat, 3 motívumközi kapcsolat, 15 nyilvános szerkesztői döntés.
-- A visszhang-rétegben 101 megfelelő, 6 tanú, 3 vitatott pont és 61 apparátus-jegyzet.
+- 250 előfordulás és 252 felvételi döntés.
+- 554 kizárás-sor 62 okkal: 454 egyenként eldöntött hely, és 100 összesítő sor, amely 4 034 verset képvisel.
+- 86 igehely-kapcsolat, 3 motívumközi kapcsolat, 15 nyilvános szerkesztői döntés.
+- A visszhang-rétegben 144 megfelelő, 8 tanú, 3 vitatott pont és 60 apparátus-jegyzet.
 
 **Ismert hibák:** `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`). **Módszer:** `MODSZER.md`.
 

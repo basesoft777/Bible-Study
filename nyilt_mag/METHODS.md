@@ -6,7 +6,7 @@
 
 This package is an open dataset of biblical motifs. By a motif we mean a recurring biblical theme whose presence in
 a verse can be checked on the Hebrew or Greek text: on a word, on a fixed phrase or on a co-occurrence of words. The
-package contains 9 motifs with 252 occurrences. The other side is recorded in the same detail: 548
+package contains 9 motifs with 250 occurrences. The other side is recorded in the same detail: 554
 exclusion rows record, with a rationale, the passages that we examined but did not assign to the motif.
 
 The open data core is the data layer of the lexicon; the lexicon itself (its interpretive text, the Hungarian translation of the dictionaries, and the printed volume) is a separate work, all rights reserved. The data core holds decisions and short rationales, not interpretive prose.
@@ -22,7 +22,7 @@ motif only through this broader concept is left out.
 `motivumok.tsv` gives this in three columns: the carrier of identity (`azonossag_tipusa`; in this release
 lexical: 6; formulaic: 2; structural: 1), the exclusion criterion (`negativ_kriterium`) and the superordinate concept (`folerendelt_fogalom`).
 The reader-facing definition (`meghatarozas`) says in one or two sentences what the motif is; in this release it is
-given for 1 of the motifs and empty for the rest. The boundary of a motif, however, is drawn by the exclusions,
+given for 2 of the motifs and empty for the rest. The boundary of a motif, however, is drawn by the exclusions,
 not by the definition.
 
 ## 3. Gathering candidates
@@ -53,11 +53,11 @@ correction are described in section 1 of `KNOWN_ISSUES.md`.
 ## 4. A decision on every candidate
 
 A search hit never becomes an occurrence directly: every candidate receives a decision with a rationale. An accepted
-candidate goes into `elofordulasok.tsv`, the rationale of the decision into `beepitesi_dontesek.tsv` (254 rows).
+candidate goes into `elofordulasok.tsv`, the rationale of the decision into `beepitesi_dontesek.tsv` (252 rows).
 A rejected candidate goes into `kizarasok.tsv`, with an exclusion reason (62 reasons) and a rationale.
 
-Of the exclusion rows, 449 concern a single passage each. 99 rows are summary rows: each stands for
-a group whose verses were all rejected for the same reason. The 4,020 verses of the groups are listed in
+Of the exclusion rows, 454 concern a single passage each. 100 rows are summary rows: each stands for
+a group whose verses were all rejected for the same reason. The 4,034 verses of the groups are listed in
 `kizaras_csoportok.tsv`, and the rationale of the summary row applies to every verse of the group.
 
 If a search is empty, the result stays empty: a gap is not filled with weak or associative material. Candidates not
@@ -66,21 +66,21 @@ of the decision (`NYD-nnn`) is resolved in `dontesnaplo.tsv` (15 decisions).
 
 ## 5. The occurrence row
 
-Every occurrence is a passage, and it names what its assignment rests on (`horgony_tipus`, `horgony`): lexical base: 197; shared lexical base: 33; collocation (word pair in one verse): 13; thematic link: 6; formula link: 1; reference link: 1; quotation link: 1.
+Every occurrence is a passage, and it names what its assignment rests on (`horgony_tipus`, `horgony`): lexical base: 195; shared lexical base: 33; collocation (word pair in one verse): 13; thematic link: 6; formula link: 1; reference link: 1; quotation link: 1.
 The `strong` column is the Strong's number of the anchor word, `jelentes_en` an excerpt of the dictionary meaning,
 `strong_glossza_en` the short English gloss of STEPBible.
 
 **The Károli word.** Every occurrence also gives also give the corresponding word of the Károli translation. The Károli word is not
 evidence: it shows what the Hungarian reader sees of the passage. The alignment (`azonositas_modja`) was made by the
-editor reading the Károli text in 225 cases, by machine word alignment in 25 cases (only a
+editor reading the Károli text in 223 cases, by machine word alignment in 25 cases (only a
 high-confidence pair may justify a row) and by inference in 2 cases. The confidence (`megbizhatosag`)
-is high in 234 cases and medium in 18. The alignment of the other words of the verse is not
+is high in 232 cases and medium in 18. The alignment of the other words of the verse is not
 part of this dataset; it is in the related Károli – Strong datasets.
 
 **Provenance.** Every row names where it comes from. If it comes from a query, it gives the type of the query, the
 source, its licence and the date; if not, it states that it is a decision made by hand, without a query. Of the
-occurrences, 248 are decisions made by hand and 4 the direct result of a query. "Made by hand" does not
-mean that the row was verified; it means that no single query produced it. For 181 rows the Strong's
+occurrences, 246 are decisions made by hand and 4 the direct result of a query. "Made by hand" does not
+mean that the row was verified; it means that no single query produced it. For 201 rows the Strong's
 assignment was traced back item by item on the Hebrew text of TAHOT (`igazolas`).
 
 ## 6. Processing stage
@@ -102,13 +102,13 @@ closed material can filter on this column.
 
 Four tables give the echo of the motifs in ancient translations and interpreters, with the licence of each source:
 
-- `visszhang_megfelelok.tsv` (101 rows): the counterparts of the anchor words in the Targum (32),
-  the Vulgate (38) and the Septuagint (31);
-- `visszhang_tanuk.tsv` (6 rows): patristic, rabbinic and Glossa Ordinaria witnesses: who, in which work,
+- `visszhang_megfelelok.tsv` (144 rows): the counterparts of the anchor words in the Targum (42),
+  the Vulgate (55) and the Septuagint (47);
+- `visszhang_tanuk.tsv` (8 rows): patristic, rabbinic and Glossa Ordinaria witnesses: who, in which work,
   sees what in the passage, in one sentence in our own words, without quotation;
 - `vitatott_forrasok.tsv` (3 rows): the peer-reviewed literature on the disputed points, bibliographic data only;
   an empty author means that no peer-reviewed source on the point was found in the databases searched;
-- `sblgnt_apparatus.tsv` (61 rows): the critical apparatus for the New Testament passages.
+- `sblgnt_apparatus.tsv` (60 rows): the critical apparatus for the New Testament passages.
 
 Only verified rows enter these tables. Of the Septuagint counterparts, those where a single lemma comes into question
 in the verse were checked by machine; every other row was reviewed by a second hand. Three things are not in the
@@ -125,7 +125,7 @@ Column names and values are Hungarian; English parallel columns stand next to th
 - **Closed values:** next to every closed-vocabulary column, `…_en`, with the edited English label of the codebook.
 - **Free text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, a
   **machine translation** (mainly `claude-sonnet-5-5`; in a few cells `claude-opus-5-5`). The `forditas_modja` column of the row names the model and states any gap
-  (the translation is missing wholly or in part in 38 rows).
+  (the translation is missing wholly or in part in 220 rows).
 
 ## 9. Licence filtering
 

@@ -5,7 +5,7 @@ eszkozok/teszt_ellenoriz_31.py -- DT-F174a: az eszkozok/ellenoriz.py 31.
 szabalya (adat nelkuli szerkezeti blokk nem allhat olvasoi lapon) es a
 generator opcionalis-res kezelese (lexikon_general.OPCIONALIS_RESEK).
 
-A repo elo adataval fut (lexikon/ISTENTISZT-001_TUDOMANYOS.md, adat/), a
+A repo elo adataval fut (lexikon/ALVIL-001_TUDOMANYOS.md, adat/), a
 lapot csak memoriaban modositja.
 
     python eszkozok/teszt_ellenoriz_31.py
@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ellenoriz as E  # noqa: E402
 import lexikon_general as LG  # noqa: E402
 
-MOTIVUM = 'ISTENTISZT-001'
+MOTIVUM = 'ALVIL-001'   # F194: az ISTENTISZT-001 új szerkezetű lett; a régi szerkezet mintája a befagyasztott ALVIL-001
 M = {'id': MOTIVUM}
 LAP = os.path.join(E.ROOT, 'lexikon', '%s_TUDOMANYOS.md' % MOTIVUM)
 

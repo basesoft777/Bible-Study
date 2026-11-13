@@ -6,8 +6,8 @@
 
 Ez a csomag bibliai motívumok nyílt adatkészlete. Motívumnak olyan visszatérő bibliai témát nevezünk, amelynek
 jelenléte egy versben a héber vagy a görög szövegen ellenőrizhető: egy szón, egy állandó szókapcsolaton vagy szavak
-együttállásán. A csomag 9 motívumot tartalmaz, 252 előfordulással. Ugyanilyen részletesen szerepel a másik
-oldal is: 548 kizárás-sor rögzíti indoklással azokat a helyeket, amelyeket megvizsgáltunk, de a motívumhoz nem
+együttállásán. A csomag 9 motívumot tartalmaz, 250 előfordulással. Ugyanilyen részletesen szerepel a másik
+oldal is: 554 kizárás-sor rögzíti indoklással azokat a helyeket, amelyeket megvizsgáltunk, de a motívumhoz nem
 soroltunk.
 
 A nyílt adatmag a lexikon adatrétege: motívumok, előfordulások, kizárások. Maga a lexikon (értelmező szövege, a szótárak magyar fordítása és a kötet) önálló mű, minden jog fenntartva. Az adatmagban döntések és rövid indoklások állnak, értelmező próza nem.
@@ -22,7 +22,7 @@ kapcsolódik a motívumhoz, kimarad.
 
 A `motivumok.tsv` ezt három oszlopban adja meg: az azonosság hordozója (`azonossag_tipusa`; ebben a kiadásban
 lexikai: 6; formulaikus: 2; strukturális: 1), a kizáró jegy (`negativ_kriterium`) és a fölérendelt fogalom (`folerendelt_fogalom`). Az olvasói
-meghatározás (`meghatarozas`) egy-két mondatban mondja meg, mi a motívum; ebben a kiadásban 1 motívumnál áll,
+meghatározás (`meghatarozas`) egy-két mondatban mondja meg, mi a motívum; ebben a kiadásban 2 motívumnál áll,
 a többinél üres. A motívum határát azonban nem a meghatározás rajzolja meg, hanem a kizárások.
 
 ## 3. A jelöltek gyűjtése
@@ -51,11 +51,11 @@ használja. A nyílt adatmag maga nem tartalmaz kereszthivatkozás-adatot; a hib
 ## 4. Döntés minden jelöltről
 
 Keresési találatból nem lesz közvetlenül előfordulás: minden jelöltről döntés születik, indoklással. A felvett
-jelölt az `elofordulasok.tsv`-be kerül, a döntés indoklása a `beepitesi_dontesek.tsv`-be (254 sor). Az
+jelölt az `elofordulasok.tsv`-be kerül, a döntés indoklása a `beepitesi_dontesek.tsv`-be (252 sor). Az
 elutasított jelölt a `kizarasok.tsv`-be kerül, egy kizárási okkal (62 ok) és indoklással.
 
-A kizárás-sorok közül 449 egy-egy helyről szól. 99 sor összesítő: egy csoportot képvisel,
-amelynek minden versét ugyanabból az okból utasítottuk el. A csoportok 4 020 versét a
+A kizárás-sorok közül 454 egy-egy helyről szól. 100 sor összesítő: egy csoportot képvisel,
+amelynek minden versét ugyanabból az okból utasítottuk el. A csoportok 4 034 versét a
 `kizaras_csoportok.tsv` sorolja fel, és az összesítő sor indoklása a csoport minden versére érvényes.
 
 Ha egy keresés üres, az eredmény üres marad: a hiányt nem töltjük ki gyenge vagy asszociatív anyaggal. A még el
@@ -64,22 +64,22 @@ nyilvános azonosítója (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel (15 d�
 
 ## 5. Az előfordulás sora
 
-Minden előfordulás egy igehely, és megnevezi, mire épül a besorolása (`horgony_tipus`, `horgony`): szóbázis: 197; közös szóbázis: 33; kollokáció (szópár egy versben): 13; tematikus kapcsolat: 6; formula-kapcsolat: 1; hivatkozás-kapcsolat: 1; idézet-kapcsolat: 1.
+Minden előfordulás egy igehely, és megnevezi, mire épül a besorolása (`horgony_tipus`, `horgony`): szóbázis: 195; közös szóbázis: 33; kollokáció (szópár egy versben): 13; tematikus kapcsolat: 6; formula-kapcsolat: 1; hivatkozás-kapcsolat: 1; idézet-kapcsolat: 1.
 A `strong` oszlop a horgonyszó Strong-száma, a `jelentes_en` a szótári jelentés kivonata, a `strong_glossza_en` a
 STEPBible rövid angol glosszája.
 
 **A Károli-szó.** Minden előfordulásnál ott áll a Károli-fordítás megfelelő szava is. A Károli-szó nem bizonyíték: azt
-mutatja meg, mit lát a helyből a magyar olvasó. A párosítást (`azonositas_modja`) 225 esetben a
+mutatja meg, mit lát a helyből a magyar olvasó. A párosítást (`azonositas_modja`) 223 esetben a
 szerkesztő végezte a Károli-szöveg olvasásával, 25 esetben gépi szópárosítás adta (sort csak magas
 bizonyosságú pár igazolhat), 2 esetben következtetés. A bizonyosság (`megbizhatosag`)
-234 esetben magas, 18 esetben közepes. A vers többi szavának párosítása nem része ennek az
+232 esetben magas, 18 esetben közepes. A vers többi szavának párosítása nem része ennek az
 adatkészletnek; az a kapcsolódó Károli – Strong adatkészletekben áll.
 
 **Eredetjelölés.** Minden sor megnevezi, honnan származik. Ha lekérdezésből, akkor megadja a lekérdezés típusát, a
 forrást, annak licencét és a dátumot; ha nem, akkor azt mondja ki, hogy kézi döntés, lekérdezés nélkül. Az
-előfordulások közül 248 kézi döntés, 4 egy lekérdezés közvetlen eredménye. A „kézi döntés” nem azt
+előfordulások közül 246 kézi döntés, 4 egy lekérdezés közvetlen eredménye. A „kézi döntés” nem azt
 jelenti, hogy a sor ellenőrzött, hanem azt, hogy nem egyetlen lekérdezés adta. A Strong-hozzárendelést
-181 sorban a TAHOT héber szövegén tételesen visszakerestük (`igazolas`).
+201 sorban a TAHOT héber szövegén tételesen visszakerestük (`igazolas`).
 
 ## 6. Feldolgozási állapot
 
@@ -98,13 +98,13 @@ oszlopon szűrhet.
 
 Négy tábla a motívumok ókori fordításbeli és értelmezői visszhangját adja, forrásonként a licenccel:
 
-- `visszhang_megfelelok.tsv` (101 sor): a horgonyszavak megfelelője a Targumban (32), a
-  Vulgatában (38) és a Septuagintában (31);
-- `visszhang_tanuk.tsv` (6 sor): egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit
+- `visszhang_megfelelok.tsv` (144 sor): a horgonyszavak megfelelője a Targumban (42), a
+  Vulgatában (55) és a Septuagintában (47);
+- `visszhang_tanuk.tsv` (8 sor): egyházatyai, rabbinikus és Glossa Ordinaria-tanúk: ki, melyik műben, mit
   lát a helyen, egyetlen saját szavas mondatban, idézet nélkül;
 - `vitatott_forrasok.tsv` (3 sor): a vitatott pontok lektorált szakirodalma, csak bibliográfiai adat; az üres
   szerző azt jelenti, hogy a vizsgált adatbázisokban a pontról lektorált forrás nem került elő;
-- `sblgnt_apparatus.tsv` (61 sor): az újszövetségi helyek kritikai apparátusa.
+- `sblgnt_apparatus.tsv` (60 sor): az újszövetségi helyek kritikai apparátusa.
 
 Ezekbe a táblákba csak ellenőrzött sor kerül be. A Septuaginta-megfelelők közül azokat, amelyeknél a versben egyetlen
 lemma jön szóba, gép ellenőrizte; minden más sort egy második kéz nézett át. Három dolog nincs a csomagban: a Chain
@@ -122,7 +122,7 @@ Az oszlopnevek és az értékek magyarok; mellettük angol párhuzamos oszlopok 
   címkéjével.
 - **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi
   fordítás** (főként `claude-sonnet-5-5`; kis részben `claude-opus-5-5`). A sor `forditas_modja` oszlopa megnevezi a modellt, és kimondja a hiányt
-  (38 sorban hiányzik a fordítás teljesen vagy részben).
+  (220 sorban hiányzik a fordítás teljesen vagy részben).
 
 ## 9. Licencszűrés
 
