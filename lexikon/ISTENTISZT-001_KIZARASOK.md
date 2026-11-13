@@ -304,4 +304,4 @@ A Döntési út 1.2 pontjának versszámai ebből a mérésből jönnek (`naplok
 - **karoli** (96 vers): `scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=segítségül; hív∧név; kiált∧név | n=96 | ts=2026-11-12T19:28Z`
 - **szotar** (395 vers): `scope=H7121+G1941 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=395 | ts=2026-11-12T19:28Z`
 
-*Forrás: a jelöltek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: 2026-11-12.*
+*Forrás: a jelöltek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: 2026-11-13.*

@@ -10092,7 +10092,7 @@ def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):
             uj_szoveg = OU.alkalmaz(cimjeloles_ki(uj_szoveg), strong_cim=strong_cim)
             # lap-javit HAMART-001 (a felhasználó átnézése, 2., 12.; „mehet így”): a jegyzetek és a forrássorok olvasói
             # alakja, a 2. és 3. tábla jegyzetei a tábla alatt
-            uj_szoveg = TJ.alkalmaz(uj_szoveg)
+            uj_szoveg = TJ.alkalmaz(uj_szoveg, szopar=szopar_motivum(sorai))   # F194: szópáros jegyzet-összeállítás
             lxx_egyezes_kapu(uj_szoveg, m['id'],   # F212 (Sz1): eltérő LXX-szám a blokkok közt = BUKÁS
                              szopar=szopar_motivum(sorai))   # F194, DT-F194h: csak a tisztán szópáros motívum
             hely_egyseg_kapu(uj_szoveg, m['id'])   # F212 (Sz4): az azonos egységű helyszám a blokkok közt = BUKÁS

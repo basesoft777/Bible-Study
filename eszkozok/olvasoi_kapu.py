@@ -564,6 +564,10 @@ NYERS_JELEK = [
     (re.compile(r'(?<![\w/])(?:kt|other|names)/[a-z]'), 'tW-azonosító'),
     (re.compile(r'(?<=[֐-׿יִ-ﭏ\]])\u200e?_\d+\b'), 'a címszó belső számlálója'),
     (re.compile(r'(?<![\w./-])(?:adat|konkordancia|naplok|eszkozok)/\w'), 'a repó belső útvonala'),
+    # F194 (az orkesztrátor 2026-11-13-i jelzése, 2·5 és 3.28): a jegyzetben maradt mezőnév és az üres mező utáni
+    # elválasztó („a javítás forrása:, kézi sor”, „Mérés:;”, „tematikus:.”)
+    (re.compile(r'\b(?:negativ_kriterium|folerendelt_fogalom|hivatkozas_kezi)\b'), 'nyers mezőnév'),
+    (re.compile(r'(?<=\w):[,;.](?=\s|$)'), 'tört írásjel (üres mező utáni elválasztó)'),
 ]
 
 

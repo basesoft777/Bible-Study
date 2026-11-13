@@ -147,5 +147,68 @@ class Szabaly42Cimke(unittest.TestCase):
         self.assertFalse(E._thayer_cimke_a_lapon(adat, 'G1941', 'nincs szakaszszám', ' elnevezni '))
 
 
+class SzoparJegyzet(unittest.TestCase):
+    """Az orkesztrátor 2026-11-13-i jelzése (2·5): a szópáros lap 2. táblájának jegyzete szavanként egy rövid mondat,
+    forrásnév és a cella ismétlése nélkül; a nem szópáros lap (HAMART-001) jegyzete változatlan."""
+
+    KETSZER = ('Forrás: ‹E1› · a héber szöveg (TAHOT) igazolja · a jelentés címkéje: H7121 — szerkesztői hozzárendelés a '
+               'BDB tagolása szerint (a motívum előfordulás-táblája jelentésszám „2.c” → Qal 2.c, a szótári szakaszok '
+               'címketáblája); a BDB a verset a Qal 2.c szakaszban idézi (a BDB-szótár), de a versben a szó kétszer áll '
+               '(a STEPBible héber szövege (TAHOT)), és a szótár nem jelöli, melyikre gondol; a BDB-példa ezért nem kerül '
+               'erre a szóra · H8034 — ehhez a szóhoz nincs szerkesztői hozzárendelés és szótári példahely')
+    SAJTOHIBA = ('Forrás: ‹E1› · a héber szöveg (TAHOT) igazolja · a jelentés címkéje: H7121 — szerkesztői hozzárendelés '
+                 'a BDB tagolása szerint (a motívum előfordulás-táblája jelentésszám „2.c” → Qal 2.c) · H8034 — a BDB '
+                 'forrásszövege itt a „26:35” helyet idézi (sajtóhiba); javítva: 1Móz 26:25 — a javítás forrása: a lap '
+                 'adattáblája, kézi sor (hivatkozas_kezi, kézi szerkesztés; indok: a TAHOT és a szövegkörnyezet; '
+                 'szerkesztői döntés); BDB-példa: a BDB a 3. szakaszban maga idézi a helyet (a BDB-szótár)')
+
+    def test_ket_szo_egy_egy_mondat(self):
+        import tablajegyzet as TJ
+        self.assertEqual(TJ.olvasoi_jegyzet(self.KETSZER, szopar=True),
+                         'A héber szöveg (TAHOT) igazolja. H7121: a BDB idézi a verset, de a szó kétszer áll benne, '
+                         'ezért nem példahely.')
+        self.assertEqual(TJ.olvasoi_jegyzet(self.SAJTOHIBA, szopar=True),
+                         'A héber szöveg (TAHOT) igazolja. H7121: szerkesztői hozzárendelés a szótár tagolása szerint. '
+                         'H8034: a BDB maga idézi a helyet; a szótár szövegében sajtóhibával „26:35” áll.')
+
+    def test_nem_szopar_valtozatlan(self):
+        import tablajegyzet as TJ
+        lath = ('Forrás: ‹E1› · a héber szöveg (TAHOT) igazolja · a jelentés címkéje: BDB-példa: a BDB a Qal szakaszban '
+                'maga idézi a helyet (a BDB-szótár); ez a szerkesztői hozzárendelés (Qal → Qal) alá esik')
+        self.assertEqual(TJ.olvasoi_jegyzet(lath),
+                         'A héber szöveg (TAHOT) igazolja; a jelentés: a BDB a Qal szakaszban maga idézi a helyet.')
+
+    def test_forras_elemek(self):
+        import tablajegyzet as TJ
+        self.assertEqual(TJ.olvasoi_jegyzet('forrás: kollokacio H7121 H8034 · Mérés:; a Károli-fordítás (1908); '
+                                            'Károli-proveniencia (a szókereső eszköz karoli): forrás: a Károli-fordítás '
+                                            '(1908); szerkesztő-chat; a motívumtábla negativ_kriterium'),
+                         'Forrás: a két szó együttes keresése egy versben; szerkesztői döntés; a Károli-fordítás (1908); '
+                         'a motívum meghatározása.')
+        self.assertEqual(TJ.olvasoi_jegyzet('forrás: TSK 1Krón 16:8 → Zsolt 105:15 (22)'),
+                         'Forrás: TSK 1Krón 16:8 → Zsolt 105:15.')
+
+    def test_a_lap_jegyzetei(self):
+        """A generált ISTENTISZT-001 lap 2. táblájának jegyzetei: igazolt szöveg, cella-ismétlés és forrásnév nélkül."""
+        import re
+        ut = os.path.join(os.path.dirname(ESZKOZOK), 'lexikon', 'ISTENTISZT-001_TUDOMANYOS.md')
+        lap = re.sub(r'<!--.*?-->', '', open(ut, encoding='utf-8').read(), flags=re.S)
+        jegyzetek = re.findall(r'id="j-2-\d+">[\d.]+</span>(.*)', lap)
+        self.assertTrue(jegyzetek)
+        for j in jegyzetek:
+            self.assertNotIn('nélkül', j.split('.')[0])            # minden sor igazolt (TAHOT vagy TAGNT)
+            for tilos in ('Qal', 'nincs hozzárendelés', 'szakasza', '(a ', 'forrása:', '_'):
+                self.assertNotIn(tilos, j, j)
+
+
+class NyersJelKapu(unittest.TestCase):
+    def test_tort_irasjel_es_mezonev(self):
+        import olvasoi_kapu as K
+        for szoveg in ('a javítás forrása:, kézi sor', 'Forrás: kollokáció; Mérés:; a Károli', 'a motívumtábla '
+                       'negativ_kriterium'):
+            self.assertTrue(any(rx.search(szoveg) for rx, _ in K.NYERS_JELEK), szoveg)
+        self.assertFalse(any(rx.search('1Kor 1:2. A hely') for rx, _ in K.NYERS_JELEK))
+
+
 if __name__ == '__main__':
     unittest.main()
