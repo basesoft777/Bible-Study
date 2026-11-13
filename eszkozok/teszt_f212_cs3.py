@@ -119,8 +119,9 @@ class Befagyasztas(unittest.TestCase):
                 LB.sorok(ut)
 
     def test_a_repo_hetet_fagyaszt(self):
+        # F194 (DT-F194j): az ISTENTISZT-001 a 2. kiadásig, az újraírt generátorig befagyasztva
         self.assertEqual(LB.befagyasztott_idk(), {'KIRALY-001', 'TEREMT-001', 'ALVIL-001', 'MENNY-001', 'ANTROP-001',
-                                                  'HODIT-001', 'TEREMT-002'})
+                                                  'HODIT-001', 'TEREMT-002', 'ISTENTISZT-001'})
 
 
 class Munkaszo(unittest.TestCase):

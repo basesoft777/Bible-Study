@@ -79,7 +79,7 @@ adatkészletnek; az a kapcsolódó Károli – Strong adatkészletekben áll.
 forrást, annak licencét és a dátumot; ha nem, akkor azt mondja ki, hogy kézi döntés, lekérdezés nélkül. Az
 előfordulások közül 246 kézi döntés, 4 egy lekérdezés közvetlen eredménye. A „kézi döntés” nem azt
 jelenti, hogy a sor ellenőrzött, hanem azt, hogy nem egyetlen lekérdezés adta. A Strong-hozzárendelést
-197 sorban a TAHOT héber szövegén tételesen visszakerestük (`igazolas`).
+201 sorban a TAHOT héber szövegén tételesen visszakerestük (`igazolas`).
 
 ## 6. Feldolgozási állapot
 

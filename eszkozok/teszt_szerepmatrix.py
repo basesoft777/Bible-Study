@@ -173,7 +173,7 @@ class TestVazIstentiszt(unittest.TestCase):
         self.assertIn('[3. LXX-fordítói döntések](#3-lxx-fordítói-döntések)', b6)
         b9 = self._blokk_szerep('gorog', 9)
         self.assertIn('a motívum 10 újszövetségi helyén a vers-szintű jelentést', b9)
-        self.assertIn('(9 helyen egy jelentés, 1 helyen több vagy jelölt, nem egyértelmű jelentés)', b9)
+        self.assertIn('(9 helyen egy jelentés, 1 helyen több lehetséges, nem egyértelmű jelentés)', b9)
         self.assertIn('[szónézet: /szo/G1941](/szo/G1941)', b9)
         for n in (6, 9):
             self.assertIn(LG.OLVASOI_CIMKE, self._blokk_szerep('gorog', n))

@@ -6,7 +6,8 @@ rájuk. Ószövetségi sor: a `strong` mező minden tagja (H7121+H8034) a Károl
 különben `nincs`. Újszövetségi sor: a SEMA 1.8 zárt értékkészletében nincs TAGNT-érték, ezért `TAHOT-hatokoron-kivul`
 (a HAMART-001 és a többi motívum gyakorlata); a görög szót (G1941) a TAGNT-ben ellenőrizzük, és eltérésnél megállunk.
 A proveniencia-sor a kimenet végén áll, a naplóba kerül. Írás előtt a nem érintett sorok összevetése (CLAUDE.md).
-Futtatás a repó gyökeréből: python naplok/F194_igazolas.py [--ir]"""
+F194.37: a HAMART-001 négy `nincs` sora (az orkesztrátor minta-ellenőrzése, „Szövegigazolás nélkül”) ugyanígy: `--id`.
+Futtatás a repó gyökeréből: python naplok/F194_igazolas.py [--id ID] [--ir]"""
 import datetime
 import os
 import sys
@@ -17,7 +18,7 @@ import lekerdez as L  # noqa: E402
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-ID = 'ISTENTISZT-001'
+ID = sys.argv[sys.argv.index('--id') + 1] if '--id' in sys.argv else 'ISTENTISZT-001'
 P = 'adat/elofordulasok.tsv'
 USZ = ('Mt ', 'Mk ', 'Luk ', 'Ján ', 'ApCsel ', 'Róm ', '1Kor ', '2Kor ', 'Gal ', 'Ef ', 'Fil ', 'Kol ', 'Zsid ',
        'Jak ', '1Pét ', '2Pét ', 'Jel ', '1Tim ', '2Tim ')
@@ -61,7 +62,7 @@ for a, b in zip(sorok, uj):
     if a != b and a.split('\t')[0] != ID:
         sys.exit('ELTÉRÉS a nem érintett sorokban — nem írok')
 print('változott: %d sor' % valtozott)
-print('proveniencia: scope=motivum:%s (20 sor, strong-tagonként) | forras=konkordancia/TAHOT_kivonat.tsv+'
+print('proveniencia: scope=motivum:%s (strong-tagonként) | forras=konkordancia/TAHOT_kivonat.tsv+'
       'konkordancia/TAGNT_kivonat.tsv (lekerdez.load_tahot/load_tagnt, parse_range/in_range) | ts=%s'
       % (ID, datetime.date.today().isoformat()))
 if '--ir' in sys.argv:

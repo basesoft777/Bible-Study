@@ -188,18 +188,6 @@ class SzoparJegyzet(unittest.TestCase):
         self.assertEqual(TJ.olvasoi_jegyzet('forrás: TSK 1Krón 16:8 → Zsolt 105:15 (22)'),
                          'Forrás: TSK 1Krón 16:8 → Zsolt 105:15.')
 
-    def test_a_lap_jegyzetei(self):
-        """A generált ISTENTISZT-001 lap 2. táblájának jegyzetei: igazolt szöveg, cella-ismétlés és forrásnév nélkül."""
-        import re
-        ut = os.path.join(os.path.dirname(ESZKOZOK), 'lexikon', 'ISTENTISZT-001_TUDOMANYOS.md')
-        lap = re.sub(r'<!--.*?-->', '', open(ut, encoding='utf-8').read(), flags=re.S)
-        jegyzetek = re.findall(r'id="j-2-\d+">[\d.]+</span>(.*)', lap)
-        self.assertTrue(jegyzetek)
-        for j in jegyzetek:
-            self.assertNotIn('nélkül', j.split('.')[0])            # minden sor igazolt (TAHOT vagy TAGNT)
-            for tilos in ('Qal', 'nincs hozzárendelés', 'szakasza', '(a ', 'forrása:', '_'):
-                self.assertNotIn(tilos, j, j)
-
 
 class NyersJelKapu(unittest.TestCase):
     def test_tort_irasjel_es_mezonev(self):
@@ -208,6 +196,50 @@ class NyersJelKapu(unittest.TestCase):
                        'negativ_kriterium'):
             self.assertTrue(any(rx.search(szoveg) for rx, _ in K.NYERS_JELEK), szoveg)
         self.assertFalse(any(rx.search('1Kor 1:2. A hely') for rx, _ in K.NYERS_JELEK))
+
+
+class MintaKapu(unittest.TestCase):
+    """Az orkesztrátor 2026-11-13-i minta-ellenőrzése az olvasói kapuban (MINTA): a hibapéldányok (a 39db7f88-as
+    ISTENTISZT-001 lapjáról és a HAMART-001-ről) BUKÁS-t adnak, az álpozitívok nem; a HAMART-001 élő lapja 0 találat."""
+
+    LAP = '\n'.join(['## 1. Döntési út', '', '## 3. Kizárt és vizsgált helyek', '',
+                      '| Igehely | Miért került a vizsgálatba | Indok |', '|---|---|---|', '%s', ''])
+
+    def talal(self, sor):
+        import olvasoi_kapu as K
+        return [t['uzenet'] for t in K.ell_minta(self.LAP % sor)]
+
+    def test_hibapeldanyok(self):
+        for sor in ('| Zsolt 99:6 | x | A formula nincs a versben: Nincs meg a formula a versben: a név nem az Úr neve áll |',
+                    '| 3Móz 26:20 | x | Szövetségi átok-szakasz, az átok-ige nélkül: Szövetségi átok-szakaszok, amelyek '
+                    'nem az árar igét használják |',
+                    '| Jer 51:25 | x | Fizikai pusztítás, nem erkölcsi megromlás: Fizikai pusztítás: a romlás igéje itt '
+                    'háborús pusztításra áll |',
+                    'A BDB a verset idézi (a BDB-szótár), de a versben a szó kétszer áll.',
+                    'A javítás forrása:, kézi sor (hivatkozas_kezi,; indok: a TAHOT).',
+                    'A motívum nem a fölérendelt fogalom: az imádság általában.',
+                    'Miért lett jelölt: a kereszthivatkozás.'):
+            self.assertTrue(self.talal(sor), sor)
+
+    def test_alpozitivok(self):
+        for sor in ('- [10. Értelmezés](#10-értelmezés)',
+                    '*Forrás: a STEPBible héber szövege (TAHOT); a STEPBible görög szövege (TAGNT).*',
+                    '| κακός | kakosz | G2556 | gonosz/kár: gonosz |',
+                    'a bűnbánatéként Neh 9:1 (vö. עָפָר אֵפֶר,; 1Kir 7:46)'):
+            self.assertEqual(self.talal(sor), [], sor)
+
+    def test_jegyzet_cella(self):
+        import olvasoi_kapu as K
+        lap = '\n'.join(['## 3. Kizárt', '', '| Igehely | Miért | Indok |', '|---|---|---|',
+                          '| Zsolt 116:13 | Károli-kereszthivatkozás a Zsolt 116:13 helyről<sup>3.7</sup> | x y z w |', '',
+                          '- <span class="lj-szam" id="j-3-7">3.7</span>Forrás: Károli-KH Zsolt 116:13.'])
+        self.assertTrue([t for t in K.ell_minta(lap) if 'ismétli' in t['uzenet']])
+
+    def test_hamart_lap_nulla(self):
+        import olvasoi_kapu as K
+        ut = os.path.join(os.path.dirname(ESZKOZOK), 'lexikon', 'HAMART-001_TUDOMANYOS.md')
+        with open(ut, encoding='utf-8') as f:
+            self.assertEqual([(t['sor'], t['uzenet']) for t in K.ell_minta(f.read())], [])
 
 
 if __name__ == '__main__':

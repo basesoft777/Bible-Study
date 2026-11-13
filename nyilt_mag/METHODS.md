@@ -80,7 +80,7 @@ part of this dataset; it is in the related Károli – Strong datasets.
 **Provenance.** Every row names where it comes from. If it comes from a query, it gives the type of the query, the
 source, its licence and the date; if not, it states that it is a decision made by hand, without a query. Of the
 occurrences, 246 are decisions made by hand and 4 the direct result of a query. "Made by hand" does not
-mean that the row was verified; it means that no single query produced it. For 197 rows the Strong's
+mean that the row was verified; it means that no single query produced it. For 201 rows the Strong's
 assignment was traced back item by item on the Hebrew text of TAHOT (`igazolas`).
 
 ## 6. Processing stage

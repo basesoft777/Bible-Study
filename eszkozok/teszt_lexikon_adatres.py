@@ -131,7 +131,7 @@ class Minosites(unittest.TestCase):
         self.assertIn('(2 sor; beépítve 1, elutasítva 1)', ki)
         self.assertIn('<details>', ki)   # DT-F152a (b): csukva
         # F123.INDOKLAS: az 1/b. olvasói formája; a nyers forrás és az indoklás ` | ` utáni része lábjegyzetben
-        self.assertIn('| Igehely | Miért lett jelölt | Döntés és indok |', ki)
+        self.assertIn('| Igehely | Miért került a vizsgálatba | Döntés és indok |', ki)
         self.assertIn('| Róm 10:11 | TSK-ajánlás a Jóel 2:32 helyről a Róm 10:11 helyre, szavazat: 19[^mj1] | '
                       '**elutasítva** — ', ki)
         self.assertIn('[^mj1]: forrás: `TSK Jóel 2:32 → Róm 10:11 (19)` · ige', ki)
@@ -146,7 +146,7 @@ class Minosites(unittest.TestCase):
                                                                             'forras=DONTESEK.md DT476 | ts=2026-11-01')
         sorok, labj = LG.minosites_jelolt_sorok('PROBA-001', [j])
         self.assertNotIn('DT476', sorok[0])
-        self.assertIn(': a név nélküli forma nem tartozik ide |', sorok[0])
+        self.assertIn('**elutasítva** — a név nélküli forma nem tartozik ide |', sorok[0])   # F194: a címke nem kettőződik
         self.assertIn('a döntés nyoma: `DT476 K2 · scope=manual | forras=DONTESEK.md DT476 | ts=2026-11-01`', labj[0])
 
     def test_ures(self):

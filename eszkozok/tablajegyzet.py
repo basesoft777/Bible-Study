@@ -152,7 +152,7 @@ def _szopar_jegyzet(t, ujszov):
     mondatok = []
     for x in igaz:
         if x == 'a héber szöveg (TAHOT) hatókörén kívül':
-            x = 'újszövetségi hely: a szó a görög szövegből (TAGNT)' if ujszov else \
+            x = 'újszövetségi hely: a szó a görög szövegben áll' if ujszov else \
                 'a héber szöveg-igazolás itt nem alkalmazható'
         mondatok.append(x[:1].upper() + x[1:])
     cimke = reszek[1].strip()
@@ -199,7 +199,7 @@ def olvasoi_jegyzet(lathato, ujszov=False, szopar=False):
         if seg.startswith('a jelentés címkéje:'):
             seg = 'a jelentés: ' + _jelentes_olvasoi(seg[len('a jelentés címkéje:'):])
         if seg == 'a héber szöveg (TAHOT) hatókörén kívül':
-            seg = 'újszövetségi hely: a szó a görög szövegből (TAGNT)' if ujszov else \
+            seg = 'újszövetségi hely: a szó a görög szövegben áll' if ujszov else \
                 'a héber szöveg-igazolás itt nem alkalmazható'
         # F194 (az ISTENTISZT-001 forrássorai): a „U1 teljesség-mérés …, blokk-kizárás (…): N vers” és az LXX-híd is
         seg = re.sub(r'\bZef\b', 'Sof', seg)
@@ -215,7 +215,7 @@ def olvasoi_jegyzet(lathato, ujszov=False, szopar=False):
         if seg.startswith('négy forrás összevetése'):
             seg = 'a motívum korábbi kereszthivatkozás-naplója'
         seg = re.sub(r'^Strong-keresés:', 'szókeresés:', seg)
-        seg = seg.replace('a jelöltek döntésnaplója', 'a jelöltek döntései')
+        seg = seg.replace('a vizsgált helyek döntésnaplója', 'a vizsgált helyek döntései')
         for nev in _MUNKA_NEVEK:
             seg = re.sub(r';?\s*' + re.escape(nev), '', seg)
         seg = re.sub(r'\s+', ' ', seg).strip(' ;,')
