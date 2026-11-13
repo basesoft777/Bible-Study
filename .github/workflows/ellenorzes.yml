@@ -23,6 +23,10 @@ jobs:
         with:
           python-version: '3.11'
 
+      # F216: a helyi kapu (eszkozok/push_elott.py) es ez a workflow ugyanazt futtatja; ha a ketto elter, a CI itt bukik.
+      - name: F216 -- a push_elott.py lepeslistaja egyezik a workflow-val
+        run: python eszkozok/push_elott.py --ci-egyezes
+
       - name: Alap es fej meghatarozasa, valtozott fajlok listaja
         id: diff
         env:
@@ -87,6 +91,7 @@ jobs:
               --pr-cim "$PR_CIM" \
               --esemeny "$EVENT_NEV" \
               --commit-uzenet-fajl commit_uzenetek.txt \
+              --minta 50 \
               > e2e16_jelentes.md
             KILEPES=$?
           else
@@ -94,6 +99,8 @@ jobs:
             KILEPES=0
           fi
           cat e2e16_jelentes.md >> "$GITHUB_STEP_SUMMARY"
+          # F216: a HIBA-sorok a logba is (nem csak a lepes-osszefoglaloba es a PR-kommentbe)
+          grep -F '`HIBA`' e2e16_jelentes.md || true
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
@@ -114,6 +121,8 @@ jobs:
             echo ""
             cat e1_jelentes.md
           } >> "$GITHUB_STEP_SUMMARY"
+          # F216: az E1 jelentese a logba is
+          cat e1_jelentes.md
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
@@ -150,6 +159,7 @@ jobs:
             echo ""
             head -c 400000 allitas_adat.md
           } >> "$GITHUB_STEP_SUMMARY"
+          if [ $K1 -ne 0 ] || [ $K2 -ne 0 ]; then head -c 20000 kovetelmeny_kapu.md; head -c 20000 allitas_adat.md; fi
           if [ $K1 -ne 0 ] || [ $K2 -ne 0 ]; then echo "E38/E39 HIBA (kovetelmeny: $K1, allitas-adat: $K2)"; exit 1; fi
 
       # F37 T3: a szabalyok pozitiv/negativ tesztjei (E2-E29, F37 tanulmany-szabalyok)
@@ -187,7 +197,10 @@ jobs:
           # F200: a proza-allitas ellenorzo probai (az eszkoz maga JELENTES szinten, kezi lepes: MUNKAMENET C-a)
           python eszkozok/teszt_proza_allitas.py
           K11=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ] || [ "$K10" != "0" ] || [ "$K11" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          # F216: a push_elott.py (helyi kapu) tesztje
+          python eszkozok/teszt_push_elott.py
+          K12=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ] || [ "$K10" != "0" ] || [ "$K11" != "0" ] || [ "$K12" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
