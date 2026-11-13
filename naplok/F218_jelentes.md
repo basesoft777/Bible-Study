@@ -109,3 +109,47 @@
 | Szakaszcímek, számozás | `uj_cimek_alkalmaz` 7157; a 4.N pontnevek: `szerepek_sorok` 7052 (`adat/szotar_szerepek.tsv`) |
 
 *Nem követve:* a 4.1–4.14 belső hívási fája (szócikk-kártyák, `bdb_*`, `thayer_*`, `szerep_*` segédfüggvények), a `blokk_visszhang` / `blokk_kereszthivatkozasok` / `blokk_idezes` / `blokk_kolofon` részletei; a 4.N ↔ építő-függvény megfelelés a `SZEREP_EPITO`/`GERINC_SZEREP_EPITO` kulcsai (nyelv, sorrend) alapján áll, a megjelenített számozást az `uj_cimek_alkalmaz` adja (nem ellenőrizve minden pontra). A `blokk_kizart` hívottai: `SZKZ.blokk_torzs` 448, `SZKZ.vizsgalt_versek` 176, `SZKZ.osszesito_sor` 534, `OK.kizart_uj` 129.
+
+## F218.1 — alapmérés (4. lépés)
+
+*Bemenet: `git show HEAD:lexikon/HAMART-001_TUDOMANYOS.md` (3 271 sor) és `…/ISTENTISZT-001_TUDOMANYOS.md` (2 025 sor), LF. „Látható” = a `<!-- … -->` megjegyzések (többsorosak is, a sorszámok megtartásával) eltávolítása után. A szakaszok a `## ` címsor első tokenjével jelöltek; **az ISTENTISZT-001 lapon a régi számozás áll** (pl. 1/b, 2 = Szótári háttér, 5/b), a HAMART-on az új (2 = Előfordulások, 4 = Szótári háttér). A mérés szkriptje a repón kívül (`%TEMP%\f218_1\count.py`, `t4.py`). A HN-08 számlálás a látható szövegből a HTML-címkék és a `](…)` linkcélok kivételével történt. Sorszámok a lapfájl sorai.*
+
+| osztály | HAMART db | ISTENTISZT db | hol | hogyan mértem |
+|---|---|---|---|---|
+| `ts=` sorok (nyers) | 34 sor | 40 sor | HAMART: Tartalomjegyzék 1, Jelmagyarázat 1, 1. 1, 2. 4, 3. 5, 4. 6, 5. 1, 6. 3, 7. 3, 8. 2, 10. 2, 11. 3, 12. 1, Kolofon 1 | a sorban `ts=` |
+| `ts=` sorok (látható) | **0** | **29** | ISTENTISZT: Jelmagyarázat 1, 1. 1, 1/b 7, 2. 4, 4. 3, 5. 4, 5/b 1, 6. 7, 7. 1; sorok: 79, 153, 509, 512, 528, 530–532, 548, 870, 989, 1011… | a sor a megjegyzések eltávolítása után is tartalmaz `ts=`-t |
+| HN-15 | 2 | 3 | HAMART 1283, 2072 (4.); ISTENTISZT 666, 941, 1095 (2.) | `magyar rövid glossza-tábla a görögre még nincs` (látható) |
+| T9 | 1 | 1 | Kolofon, HAMART 3171, ISTENTISZT 1921 | a Kolofon „Szerzőség.” sora: „Az értelmező szakaszokat (Kivonat, Miért fontos ez a lelet, Értelmezés, Módszertan és nyitott kérdések) mesterséges intelligencia (claude-opus-5-5) írta az adatok alapján; a szerző jóváhagyta.” (HAMART; az ISTENTISZT-on a szakaszlista hosszabb, a modellnév `…` kódjelöléssel) |
+| HN-03 | 10 | 1 | HAMART: 2. 1 (225), 4. 4 (1439, 2078, 2082, 2086), 9. 1 (2998), 12. 4 (3106, 3108, 3110, 3116); ISTENTISZT 1585 (6.) | `\((?:a\|az\|A\|Az) [^()\n]*(?:BDB\|Thayer\|TBESG\|TBESH\|STEPBible\|MCGED\|SDBH\|LSJ\|SECE)[^()\n]*szótár[^()\n]*\)`; alakok: „(a BDB-szótár szerint)”, „(a BDB-szótár, közkincs)”, „(a Thayer-szótár, közkincs)”, „(a BDB-ben: …; a BDB-szótár)”, 3× „(a STEPBible rövid szótára szerint)”, „(az MCGED görög szótár, © Mounce 1993)”, „(az SDBH szemantikai szótár, CC BY-SA 4.0)”, „(a szótári szakaszok címketáblája, a BDB-szótár, a Thayer-szótár; …)”; ISTENTISZT: „(a héber BDB, és két külön görög szótár, a TBESG és Thayer)” |
+| HN-10 megjegyzésben | 4 | 3 | HAMART: 6. 3, Kolofon 1; ISTENTISZT: 4. 3 | `Karoli_kereszthivatkozasok.tsv` a `<!-- … -->` belsejében |
+| HN-10 látható szövegben | **0** | **17** | ISTENTISZT: 1/b 8, 4. 1, 6. 5, 8. 1, Kolofon 2 (sorok: 509, 512, 528, 530–532, 1380, 1555, 1561, 1567, 1642, 1652…) | ugyanaz a fájlnév, a megjegyzések eltávolítása után |
+| HN-01 ismétlő jegyzet | 6 (a 23-ból) | 0 (nincs tábla alatti jegyzet; a régi szerkezet) | HAMART jegyzetsorok 280 (j-2-2, közös: „zócikk egésze ” 14 kar.), 295 (j-2-17, „ κατάθεμα (katathema)” 21), 957 (j-3-1, „: שָׁחַת (sáchat)” 17), 959 (j-3-3, „két lánc-szó egy versben vagy a szomszédos versben” 50), 961 (j-3-5, „otívum szavainak teljes bibliai keresése” 40), 983 (j-3-6, „otívum korábbi ” 15) | a `- <span class="lj-szam" id="j-…">` sor látható szövege és a rá hivatkozó (`href="#j-…"`) táblasor cellái (címke- és markup-mentesítve, a jegyzetjel nélkül); `difflib.SequenceMatcher.find_longest_match` ≥ 12 karakter. A 3 példa a 959, 961, 295. sor; a 280., 957., 983. sor találata rövid, névszerű részszöveg (valószínűleg nem valódi ismétlés) |
+| tábla alatti jegyzetek | 23 | 0 | 17 a 2. szakasz (2. tábla), 6 a 3. szakasz (3. tábla) alatt: **egyezik a brief 23 = 17 + 6 adatával** | `^- <span class="lj-szam"` sorok szakaszonként |
+| HN-08 `DT\d+` | 0 | 73 (59 sor) | ISTENTISZT 103, 134, 138, 155, 457, 500–502… (pl. DT272, DT381, DT382, DT393) | látható szöveg, `DT\d+` |
+| HN-08 `#\d{2,3}` | 0 | 1 | ISTENTISZT 603 (`#142`) | `(?<![\w&/])#\d{2,3}\b` |
+| HN-08 `N\d+` | 0 | 2 (1 sor) | ISTENTISZT 532 (`N59`) | `\bN\d+\b` |
+| HN-08 `(G\d+)` | 0 | 11 | ISTENTISZT 44, 103, 324, 531, 556, 573, 856, 858… (pl. (G10), (G3), (G7), (G1941)) | `\(G\d+\)` |
+| HN-08 `F\d{2,3}` | 0 | 29 | ISTENTISZT 103, 509–515… (pl. F131, F110) | `\bF\d{2,3}\b` |
+| T4 (TAHOT-ismétlés, eltérő alak) | 2 sor-Strong pár | 5 | l. alább | l. alább |
+| N178 (15 Strong) | 0 | 0 | — | l. alább |
+| elavult fordítás | 5 sor | 0 sor | l. alább | l. alább |
+
+**T4.** Mérés: az `adat/elofordulasok.tsv` HAMART-001 (49 sor) és ISTENTISZT-001 (20 sor) sorainak `strong` mezőjét `+`-nál szétvágva a `H…` tokenek; a `konkordancia/TAHOT_kivonat.tsv` `Igehely` kulcsa a sor `igehely` mezője (egy vers tokenjei); a (vers, Strong) párra a tokenek száma > 1 és a `Ragozott alak` különbözik. Az „első” és „utolsó” alak a fájlsorrend szerinti. A HAMART 4 `H` sor-Strong párja tartománybeli igehelyen áll, amelynek kulcsa nincs a TAHOT-ban (nem mérhető egyszerű kulcsolvasással; a régi kód `igehely_lista`-val bont).
+
+| motívum | igehely | Strong | első alak | utolsó alak | token |
+|---|---|---|---|---|---|
+| HAMART-001 | 1Móz 6:5 | H7451 | רָעַ֥ת | רַ֖ע | 2 |
+| HAMART-001 | 1Móz 6:12 | H7843 | נִשְׁחָ֑תָה | הִשְׁחִ֧ית | 2 |
+| ISTENTISZT-001 | 1Móz 4:26 | H7121 | יִּקְרָ֥א | קְרֹ֖א | 2 |
+| ISTENTISZT-001 | 1Móz 4:26 | H8034 | שְׁמ֖ | שֵׁ֥ם | 2 |
+| ISTENTISZT-001 | 1Kir 18:24 | H7121 | קְרָאתֶ֞ם | אֶקְרָ֣א | 2 |
+| ISTENTISZT-001 | 1Kir 18:24 | H8034 | שֵׁ֣ם | שֵׁם | 2 |
+| ISTENTISZT-001 | Jóel 2:32 | H7121 | יִקְרָ֛א | קֹרֵֽא | 2 |
+
+(A 1Kir 18:24 H8034 két alakja csak a kantillációban tér el: `שֵׁ֣ם` / `שֵׁם`; a szigorú „eltérő szóalak” mérce szerint ez is találat.)
+
+**N178.** A 15 Strong (G0260, G0575, G0846, G1100, G1909, G2675, G3536, G3563, G4151, G4404–G4407, G5132, G5567) közül **egyik sem** szerepel a HAMART-001 és az ISTENTISZT-001 `elofordulasok.tsv` sorainak `strong`, `lexikon_entry_id` vagy `gerinc_elem` mezőjében. A motívumok Strongjai: HAMART-001: G1311, G1944, G2671, G5351, G5356, H0056, H0127, H0423, H0779, H2403, H2555, H6093, H6975, H7451, H7843; ISTENTISZT-001: G1941, H7121, H8034. (A kapu-érintettség tehát 0; az N178 a két mai lapot nem érinti.)
+
+**Elavult fordítás.** Az `adat/forditasok.tsv` kulcsoszlopai: `szotar, strong, entry_id, jelentes_szam, mezo`; `allapot` értékei: sonnet 33 220, elavult 311 (Thayer 213, BDB 98), kezi 71, opus 21. Illesztés a `strong` oszlopon a motívum `strong` mezőinek halmazára (az `entry_id` szerinti illesztés nem ad többletet): **HAMART-001: 5 elavult sor, mind Thayer (G1311, G2671, G5351, G5356)**; ISTENTISZT-001: 0. A régi kód ezeket szűrés nélkül veszi be az UBS/tW/BDB/TBESH/Thayer cellákba (M5), tehát a HAMART-on legfeljebb ez az 5 sor érintett.
+
+*Proveniencia: `scope=lexikon/HAMART-001_TUDOMANYOS.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, adat/elofordulasok.tsv, konkordancia/TAHOT_kivonat.tsv, adat/forditasok.tsv | forras=5e4344f6 | ts=2026-11-13`.*
