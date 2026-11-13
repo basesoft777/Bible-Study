@@ -9,7 +9,7 @@ allapot: megallt
 ag: claude/push-elotti-kapu
 pr: 724
 ad: egy `eszkozok/push_elott.py` szkript, amely helyben ugyanazt futtatja, amit a CI bukó lépései, így a HIBA a push előtt kiderül, nem a CI-ben; a CI ugyanezt hívja, és a HIBA-sorokat a logba is kiírja
-kovetkezo: "Te: [elteres_kor 0/2] /elteres 216 — az 1. ellenőrzés ELTÉRÉS (3 tétel: egyezés-kapu szigorítása, elmaradt-ág figyelmeztetés, két parancsfájl-mondat)"
+kovetkezo: "Te: [elteres_kor 1/2] /elteres 216 — újraellenőrzés függ: 2. ellenőrzés"
 munka: folyamat
 olvas: [eszkozok/ellenorzes/futtat.py]
 ir: [eszkozok/push_elott.py, eszkozok/teszt_push_elott.py, .github/workflows/ellenorzes.yml, .claude/commands/kovetkezo.md, .claude/commands/kiadas.md, .claude/commands/lap-javit.md]
