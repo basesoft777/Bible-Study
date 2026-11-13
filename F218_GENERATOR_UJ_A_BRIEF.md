@@ -5,10 +5,11 @@ kod: GENERATOR_UJ_A
 tipus: feladat
 fazis: folyamat
 modell: fable
-allapot: fut
+allapot: megallt
 ag: claude/f218-generator-uj-a
+pr: 729
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "Folytatás: az S1 (F218.4) szakasz-diffje 0 az engedélyeken kívül; következik az S1 tesztjei és a tesztváz (F218.3), majd a ⛔ (1. független ellenőrzés és a felhasználó első átnézése); az állás: naplok/F218_folytatas.md"
+kovetkezo: "Te: /elteres 218"
 munka: folyamat
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
 ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]

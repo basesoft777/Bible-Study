@@ -13,14 +13,52 @@
 | F218.2 (T) | kész | típusok és szerződések; GK-01, 02, 05, 08a–c, 12, 23, 29, 30 zöld |
 | F218.4 (S1) | **kész: a szakasz-diff 0 az engedélyeken kívül** | „2. Előfordulások” + „2.1”: 437 sorból 432 bájtra egyezik, 5 engedélysor; festékpróba 0 szivárgás. Az S1 tesztjei (`teszt_elofordulas.py`): GK-13, GK-14, GK-17, GK-25, HN-01, HN-16, a sablonmódosítók, a jegyzet-összevonás |
 | F218.3 | kész | tesztváz (`teszt_vaz.py`): 35 követelmény név + docstring + `skip` alakban, a szelet megnevezésével; a HN-03 a felhasználó döntésére vár; a mutációs próba (GK-26) az S9-ben. A tesztek állása: 121 teszt, 86 zöld, 35 kihagyva |
-| ⛔ az S1 után | következik | 1. független ellenőrzés (`fuggetlen-ellenor`, opus) és a felhasználó első átnézése: a lista a `naplok/F218_jelentes.md` „Amit a felhasználónak látnia kell az S1 után” pontja |
+| ⛔ az S1 után | **ELTÉRÉS (11 tétel)**; megállt | 1. független ellenőrzés (`fuggetlen-ellenor`, opus) és a felhasználó első átnézése: a lista a `naplok/F218_jelentes.md` „Amit a felhasználónak látnia kell az S1 után” pontja |
 | F218.5 (S2) | nem indult | 1. Döntési út + KIZARASOK |
 | F218.6–F218.13 | nem indult | |
 
+## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
+
+A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független ellenőrzés — 1. ellenőrzés”. A javítókör külön sessionben fut (`/elteres 218`; a brief szerint egy javítókör jár). Az alábbi besorolás az építő session javaslata, nem döntés.
+
+| # | Eltérés | Javasolt besorolás | Teendő |
+|---|---|---|---|
+| 1 | T3 (DT837) tárolása külön táblában, felhasználói megerősítés nélkül | döntés (a felhasználóé) | az orkesztrátor viszi a felhasználóhoz: külön tábla (DT-F218i) vagy az `elofordulasok.tsv` oszlopa; a megerősítésig a DT-F218i állapota nem ✅ |
+| 2 | Az idézetbe mosás csatornája: a `gerinc.jel_szoveg` és az `idezet_szoveg` a számításból kapott szöveget burkolja; a B16–B22 nyers sorai festetlenül jutnak a számításba | mechanikus | a szakaszjel két alakja (cella, próza) és a példahely mezői a `bemenet/gerinc.py`-ban, betöltéskor kapjanak burkolót (a jel a kulcsból a bemeneti rétegen belül képződjön); a számítás típusos példahely-objektumot kapjon, nyers szótársort ne; a két általános burkoló metódus megszűnik; a festékpróba ezután a szótári ágat is fedi |
+| 3 | A `cella` módosító prózát és idézetet ír át, szemben a 6-os sablon új szabályával („változatlanul”) | döntés + tervezés | két út: (a) a szabály szövege kimondott kivételt kap a cellakezdő alakra (tipográfiai átalakítás a sablon-konstruktorban, teszttel), a felhasználó jóváhagyásával; (b) a címkék cellakezdő alakja adatba kerül (a címketábla javítása), és a módosító csak sablonszövegre hat. Ugyanide tartozik az önreferencia („a lap”) kezelése: a kettő legyen következetes |
+| 4 | A bemenet-hash őr nem veti össze az olvasási naplót a referencia-táblával; a B67 és a `dontesek/uj/*.md` nincs a táblában | mechanikus | a `regresszio.py` kapja meg az új generátor olvasási naplóját (a `fo.lap_keszit` eredményéből vagy a kimenet mellé írt naplófájlból), és bukjon, ha olvasott bemenet nincs a `F218_referencia.tsv`-ben; a tábla bővítése az új generátor bemeneteivel (külön commit, okkal) |
+| 5 | Az S1-ONREF osztály előzetes darabszám nélkül, látható visszalépéssel; a T4 osztály 3 a rögzített 2 helyett | döntés (a felhasználóé) | a jelentés „Amit a felhasználónak látnia kell az S1 után” 1. és 2. pontja; a döntés után az engedélysorok igazítása |
+| 6 | Az S1 hatóköréből halasztott tételek: HN-03, GK-13 (lemma), GK-14 (összevont versek), GK-03 (B18/B19/B21), 7.4, alias-sorok | részben döntés, részben mechanikus | a halasztást az orkesztrátor hagyja jóvá, vagy a javítókör pótolja; a GK-03 frissességi kapu a B18/B19/B21-re pótolható az S1-ben is |
+| 7 | Tesztváz: hiányzik a GK-B9, a HN-szövegminták és a leltárleírások | mechanikus | GK-B9 a vázba (a tartalmát a `test_gk29_…` már méri); a HN-esetekhez lapszöveg-részlet mint tesztadat; a cím nélküli tételek leírása a 7.4 után |
+| 8 | `general.py:1925`: az előjavító (E32) egy régi üzenetből törölte a „; DT-F09h” részt; a jelentés „additív”-nak mondja | mechanikus | a jelentés mondatának pontosítása (additív módosítás és egy E32-előjavítás); a régi generátor kimenete ettől bájtra azonos maradt |
+| 9 | GK-07: `-` elem a blokkfejléc forráslistájában (a B13 szabálymodul útvonala) | mechanikus | a `fo._forrasok` a nem fájl-bemenetet hagyja ki (vagy a modul nevét írja); utána az S1-FORRAS engedélysor hash-e frissül |
+| 10 | A 10 sornál nagyobb új táblákhoz nincs bontási napló | mechanikus | a három tábla sorainak bontása a jelentésbe (sablon: `eredet` szerint; névtábla: típus szerint; jegyzék: szeletenként) |
+| 11 | A T4-táblázat „melyik felel meg a Károli-szónak” oszlopa jelöletlen értelmezés | mechanikus | értelmezésként jelölni, vagy a Károli–Strong párosítás lekérdezésével alátámasztani, proveniencia-sorral |
+
+**A lassú tesztek.** Az ellenőr `teszt_futtat.py --diff` futása a `teszt_visszhang_kapu.py`-ban 2 bukást adott (a régi generátor 4.11 blokkja). A fő checkout (`1352ac3c`, a main egy korábbi állapota) ugyanezzel a 2 bukással áll (`python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu`: 22 teszt, 2 bukás), tehát a hiba nem ebből a diffből jön. A `teszt_szintek.py` hibáját nem vizsgáltam.
+*Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
+
 ## Következő lépés
 
-1. ⛔: `fuggetlen-ellenor` (bemenet: a brief, `37f087cc..HEAD`, szint `teljes`, a CI-állapot a head-re); a jelentése változtatás nélkül a `naplok/F218_jelentes.md`-be, külön commitban. Egy javítókör. Ugyanekkor megy a felhasználónak az S1 listája (T4, önreferencia, új sablonmondatok).
-2. F218.5 (S2): „1. Döntési út” és a KIZARASOK-melléklet. A régi kód helye: a jelentés szimbólumtérképe, 2/a (ii). Új bemenetek: B02 (motívumok), B04 (jelöltek), B05/B06 (teljesség-mérés, frissességi kapuval), B56 (elutasítási okok), B47 (a kézi forrás rései).
+**Az S2-t friss Fable-session kezdi ebből a fájlból** (az orkesztrátor döntése, 2026-11-13: szeletenként új session; az S2 effortja még xhigh, azt az orkesztrátor állítja be). Az első lépése a modell-ellenőrzés, a második a `get_usage`.
+
+1. **A ⛔ lezárása az S1 után.** Az 1. független ellenőrzés (`fuggetlen-ellenor`, opus) jelentése a `naplok/F218_jelentes.md` „Független ellenőrzés — 1. ellenőrzés” szakaszában áll (ha ez a szakasz hiányzik, az ellenőrzés még nem zárult le: a bemenete a brief, a `37f087cc..dfb4525a` tartomány, a szint `teljes`). `ELTÉRÉS` esetén egy javítókör jár. A felhasználó első átnézése az orkesztrátoron át megy: a lista a jelentés „Amit a felhasználónak látnia kell az S1 után” pontja (T4, önreferencia, 8 új sablonmondat). Az S2 ezekre nem vár, de a T4 döntése a kiejtés-szolgáltatást (`bemenet/szavak.py`, `Kiejtes.ragozott`) és három engedélysort érint.
+2. **F218.5 (S2): „1. Döntési út” (1.1–1.5) és a `_KIZARASOK.md` melléklet.** Követelmények: GK-04 (teljesség minden hálóra: strong, karoli, szotar; melléklet-kapu), GK-09 (számegyezés a modellen), GK-21 (a Döntési út számai összeadódnak; döntés nélküli vers 0), HN-11 (a teljesség-mérés pillanatképe frissességi kapuval), GK-03 (B05, B06), GK-06.
+
+### Az S2 terve
+
+- **A mérce:** a referencia `## 1. Döntési út` szakasza (108–218. sor, 110 sor) és a teljes `HAMART-001_KIZARASOK.md` (431 sor). A melléklet a régi generátorban **nem megy át** az olvasói átíráson (csak az önreferencia-csere fut rajta), ezért várhatóan könnyebb; érdemes vele kezdeni. A Döntési út blokkja viszont a teljes utófeldolgozó láncon átmegy (olvasói átírás, névelő-levétel, könyvnév, idézőjel), a `<details>`/`<p>` HTML kivételével.
+- **Első lépés: a lánc mérése.** A `lanc_meres.py` a régi generátor utófeldolgozó függvényeit burkolja, és minden lépés kimenetét fájlba menti; a `lanc_diff.py <könyvtár> dontesi_ut 330 6` megmutatja, melyik lépés mit változtat a blokkon. Így a mondatok szerkezetből írhatók meg, nem a cserék visszafejtéséből. A szkriptek a megosztott jegyzetmappában állnak: `side-session-notes/local_c8cc3610-84cb-4dc5-a316-803281316097/F218_eszkozok/` (a `lanc_meres.py`-ban a nyers blokk mentését a `blokk_dontesi_ut` függvényre kell átírni; a `nyers_blokk.py` ugyanezt adja befagyasztott motívumra is).
+- **A régi kód helye** (a jelentés szimbólumtérképe, 2/a (ii); szimbólum szerint keresni): `blokk_dontesi_ut` (7648), `dontesi_ut_adat` (7434), `teljesseg_halok` (7377), `teljesseg_kapu` (7558), `kizarasok_melleklet` (7577), `kizarasok_adat` (7492, `MellekletHiba`), `_modszertan_nyitott` (7625); a `szerep_kizart.py`-ból: `okok`, `ok_megjegyzesek`, `csoport_versszam`, `jeloles_oka`, `elutasitas_oka`, `olvasoi_ok`, `versek`; a `nyilt_mag_export.py`-ból a `csoport_tagjai` (újraírandó a `szamitas/`-ban, a régi modul érintetlen marad).
+- **Új bemenetek** (sor a jegyzékbe a függvénnyel együtt): B02 (`adat/motivumok.tsv`: negatív kritérium, fölérendelt fogalom, cím), B04 (`adat/jeloltek.tsv`; a csoportos kizárás versszáma **nem** a `forras_kereses` szövegéből, hanem a B06 mérésből, M13), B05 (`naplok/F123_teljesseg_<ID>.tsv`) és B06 (`…_blokkok.tsv`): pillanatképek, frissességi kapuval a mai Strong-halmazra; hiányuk kimondott hiány vagy BUKÁS a `kotelezo` szerint, B56 (`adat/elutasitasi_okok.tsv`), B47 (a motívum kézi forrása, `motivumok/<ID>.md`: az 1.5 nyitott kérdései rés-prózaként), B10 (TBESG/TBESH lemma és rövid glossza az 1.2-höz: ez a pontozatlan héber alak szótári kiejtését is megadja, amely az S1-ben kimondott hibával áll meg).
+- **Kapuk a modellen:** a régi `teljesseg_kapu` és a `MellekletHiba` a kiírt szövegen, illetve összeadáson fut; az újban a `szamitas/` adjon kapufüggvényt a szakasz modelljére (a számok összeadódnak; a `strong`, a `karoli` és a `szotar` háló is mérve van; a melléklet taglistája egyezik a csoportszámmal), és a `fo.lap_keszit` a megjelenítés előtt futtassa. A `SzakaszLeiro` ehhez kapu-mezőt kap.
+- **Két nézet:** a `KIZARASOK` nézet a szakaszrendben `kizarasok_melleklet` néven már szerepel; a `fo.lap_keszit` nézetenként ír. A regresszió a melléklet fájlját is méri (ott a szakasz a 2. szintű címsor; ha a mellékletben nincs ilyen, az egész fájl „(a lap eleje)”: ilyenkor a `regresszio.py` részleges módja ezt a szakaszt kihagyja, ezért a melléklethez `--teljes` vagy a szakaszolás finomítása kell).
+- **Sablonmondatok:** az `e2.*` mintájára `d1.*` (Döntési út) és `kz.*` (melléklet) kulcsok; a betűre átvett mondat `eredet` mezője a régi szimbólum, az új mondaté `uj`, `dontes=var`. Táblasort magyar szöveggel csak fájlba írt szkripttel lehet hozzáadni (`tabla_bovit.py <repó> <sorfájl.py>`).
+- **A szelet vége:** szakasz-diff 0 az engedélyeken kívül mindkét nézetre; az ISTENTISZT ugyanazon szakasza belső szöveg nélkül; festékpróba 0; tesztek zöldek; commit(ok) `F218.5: …`; `push_elott.py`; push; a folytatási fájl frissítve.
+
+### A felhasználó megállási küszöbe
+
+A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállási köszüb 96% legyen”. Minden commit előtt `get_usage`. Ha a heti keret („Weekly · all models”) eléri a 96%-ot: az épp futó lépés zöld állapotban lezárul (commit, folytatási fájl, push), megállás, a pontos százalék jelzése az orkesztrátornak. Új szelet 96% fölött nem indul. Ez a brief megállási szabálya mellett érvényes.
 
 ## Hogyan futtatható
 
@@ -87,6 +125,7 @@ Az S1 szakasz-diffje a heti keret 89%-ánál lett 0 (az engedélyeken kívül); 
 | F218.2 után | 2026-11-13 09:35 | 85% | 20% | 38% | az F218.1 (sonnet) és az F218.2 együtt 2 százalékpont |
 | S1 első fele után | 2026-11-13 09:55 | 87% | 22% | 48% | a régi kód olvasása és a 2.1 pont: 2 százalékpont |
 | S1 diff 0 | 2026-11-13 10:35 | 89% | 27% | 66% | a tábla, a jelentés-oszlop és a jegyzetek: 2 százalékpont |
+| S1 tesztek, push | 2026-11-13 11:00 | 90% | 28% | 71% | a tesztek és a tesztváz: 1 százalékpont; a kontextus 80% |
 
 Diff-görbe (engedélyen kívüli diff-sorok, commitonként):
 
