@@ -19,7 +19,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 | `kizaras_csoportok.tsv` | every verse of the summary-row groups | 4,034 |
 | `kapcsolatok.tsv` | relations between passages within a motif | 86 |
 | `motivum_kapcsolatok.tsv` | relations between two motifs | 3 |
-| `dontesnaplo.tsv` | the editorial decisions referred to (`NYD-nnn`) | 15 |
+| `dontesnaplo.tsv` | the editorial decisions referred to (`NYD-nnn`) | 17 |
 | `visszhang_megfelelok.tsv` | the counterparts of the anchor words in the Targum, the Vulgate and the Septuagint | 144 |
 | `visszhang_tanuk.tsv` | patristic, rabbinic and Glossa Ordinaria witnesses, without quotation | 8 |
 | `vitatott_forrasok.tsv` | the peer-reviewed literature on the disputed points (bibliographic data) | 3 |
@@ -42,7 +42,7 @@ An open dataset of biblical motifs: the defining and excluding features of the m
 - 9 motifs. Closed releases: 1; earlier processing, being rewritten: 8, and their data stay in the package (`motivumok.tsv`, `feldolgozasi_allapot`).
 - 250 occurrences and 252 inclusion decisions.
 - 554 exclusion rows with 62 reasons: 454 passages decided one by one, and 100 summary rows standing for 4,034 verses.
-- 86 relations between passages, 3 relations between motifs, 15 public editorial decisions.
+- 86 relations between passages, 3 relations between motifs, 17 public editorial decisions.
 - In the echo layer: 144 counterparts, 8 witnesses, 3 disputed points and 60 apparatus notes.
 
 **Known issues:** `KNOWN_ISSUES.md`. **Methods:** `METHODS.md`.

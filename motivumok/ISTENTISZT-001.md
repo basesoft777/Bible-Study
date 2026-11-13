@@ -1,6 +1,6 @@
 <!-- FORRÁSRÉTEG (F4 G2) — kézzel írt, szabadon szerkeszthető. NEM generált fájl. -->
 
-【NAPLO: F194 ISTENTISZT-001 2. kiadás, U3 (2026-11-12, claude-opus-5-5) — a forrás nulláról, egy kézből készült (`sablonok/10_PaRDeS_U3_proza_prompt_sablon.md`, `sablonok/9_PaRDeS_motivum_forras_sablon.md`), a mai adat és a meglévő döntések alapján: a határ DT476, DT478 és DT-F194a–d, a meghatározás DT-F194e, a 9. szakasz DT-F194h (`naplok/F194_naplo.md`). A korábbi forrás archívumban: `archivum/ISTENTISZT-001/ISTENTISZT-001_forrasreteg_1kiadas.md`; az 1. kiadás 1/a prózája: `archivum/ISTENTISZT-001/ISTENTISZT-001_1a_proza_1kiadas.tsv`; az alkalmazás- és a tanítói rész kivezetve (DT756, DT643), a szövegük az archivált forrásban áll. Mondat a régi szövegből nem költözött át. A teljesség-mérés: `naplok/F194_teljesseg_ISTENTISZT-001.md` (a mai adaton: F194.20).】
+【NAPLO: F194 ISTENTISZT-001 2. kiadás, U3 (2026-11-12, claude-opus-5-5) — a forrás nulláról, egy kézből készült (`sablonok/10_PaRDeS_U3_proza_prompt_sablon.md`, `sablonok/9_PaRDeS_motivum_forras_sablon.md`), a mai adat és a meglévő döntések alapján: a határ DT476, DT478 és DT826–d, a meghatározás DT830, a 9. szakasz DT833 (`naplok/F194_naplo.md`). A korábbi forrás archívumban: `archivum/ISTENTISZT-001/ISTENTISZT-001_forrasreteg_1kiadas.md`; az 1. kiadás 1/a prózája: `archivum/ISTENTISZT-001/ISTENTISZT-001_1a_proza_1kiadas.tsv`; az alkalmazás- és a tanítói rész kivezetve (DT756, DT643), a szövegük az archivált forrásban áll. Mondat a régi szövegből nem költözött át. A teljesség-mérés: `naplok/F194_teljesseg_ISTENTISZT-001.md` (a mai adaton: F194.20).】
 
 ## Kivonat
 
@@ -30,7 +30,7 @@ A motívum tehát nem az imádság vagy a segítségkérés általában, hanem a
 
 ### Friss, teljes körű keresés (P1–P7)
 
-【NAPLO: F194 ISTENTISZT-001 (2026-11-12) — a hét lépés determinisztikus része a mai adaton: a teljesség-mérés három hálóval (`naplok/F194_teljesseg_meres.py`, F194.2 és F194.20: Strong-háló 204, Károli-háló 96, szótár-háló 395 vers; a formulát hordozó, döntés nélküli vers 0); az LXX-híd a 16 ószövetségi versen (`naplok/F194_lxx_hid_ISTENTISZT-001.tsv`, F194.2); a jelöltek döntése: DT476, DT478, DT-F194a–d (`naplok/F194_naplo.md` F194.1).】
+【NAPLO: F194 ISTENTISZT-001 (2026-11-12) — a hét lépés determinisztikus része a mai adaton: a teljesség-mérés három hálóval (`naplok/F194_teljesseg_meres.py`, F194.2 és F194.20: Strong-háló 204, Károli-háló 96, szótár-háló 395 vers; a formulát hordozó, döntés nélküli vers 0); az LXX-híd a 16 ószövetségi versen (`naplok/F194_lxx_hid_ISTENTISZT-001.tsv`, F194.2); a jelöltek döntése: DT476, DT478, DT826–d (`naplok/F194_naplo.md` F194.1).】
 
 ## 2. Eredeti nyelvi összevetés
 
@@ -138,7 +138,7 @@ A motívum tehát nem az imádság vagy a segítségkérés általában, hanem a
 
 **A határ második ellenőrzése.** A listát kétszer nézte át egy második olvasó, aki nem vett részt az összeállításában, és a határ következetességét kérdezte; a kérdésekben a szerkesztő döntött. Az első kör a 33 helyes listán futott. Nyomán kikerültek azok a helyek, amelyekben a név után nem az Úr neve, hanem névmási rag áll (például a Zak 13:9), és az újszövetségi helyek közül azok, amelyekben a név nem hangzik el (Róm 10:12, 10:14, 2Tim 2:22, 1Pét 1:17); a Zsolt 99:6 kint maradt, mert benne a hívás és a név nem a formula szerkezetében áll. A 2Móz 33:19 és 34:5 bent maradt, mert a név után az Úr neve áll, és az 1Kir 18:25-26 ellenpontként maradt bent, kimondott kivételként. Így a 33 helyből 22 maradt. A második kör ugyanezt a mércét alkalmazta az Újszövetségre: az ApCsel 9:14 és 9:21 kikerült, mert bennük a név után nem az Úr megnevezése áll, hanem „nevedet”, illetve „ezt a nevet”. Így lett a 22 helyből 20.
 
-*Proveniencia: scope=naplok/HATAR_ISTENTISZT-001.md (Modelles rész: első kör K1–K5, 2026-11-01; második kör K6–K8, 2026-11-09) + adat/jeloltek.tsv (ISTENTISZT-001) | forras=adat/jeloltek.tsv (a szerkesztő döntései: DT476, DT478, DT-F194a–d) | ts=2026-11-12*
+*Proveniencia: scope=naplok/HATAR_ISTENTISZT-001.md (Modelles rész: első kör K1–K5, 2026-11-01; második kör K6–K8, 2026-11-09) + adat/jeloltek.tsv (ISTENTISZT-001) | forras=adat/jeloltek.tsv (a szerkesztő döntései: DT476, DT478, DT826–d) | ts=2026-11-12*
 
 **Melyik görög szöveg a mérce.** Az újszövetségi helyeknél a Károli alapszövege, a Textus Receptus a mérce. A négy újszövetségi hely közül egyben tér el a kritikai szövegkiadás, és ott sem a görög igében, hanem a név után álló szóban: az ApCsel 22:16-ban a Textus Receptus az Urat mondja (τοῦ κυρίου, tú küriú), a kritikai kiadás névmást, az ő nevét (αὐτοῦ, autú); a latin Vulgata itt a kritikai szöveget követi. A görög igét érintő szövegváltozat egyik helyen sincs (l. a 9. szakasz újszövetségi táblázatát); az ApCsel 2:21 és az 1Kor 1:2 szövegváltozatai a formulát nem érintik, a Róm 10:13-on nincs szövegváltozat.
 
@@ -151,7 +151,7 @@ A motívum tehát nem az imádság vagy a segítségkérés általában, hanem a
 
 *Proveniencia: scope=Zsolt 116:13, 116:17 | forras=konkordancia/LXX_OS/psalms-lxx.tsv (Psalms (LXX) 115:4, 115:8) | ts=2026-11-12 · scope=Zsolt 105:1, 1Krón 16:8 | forras=Karoli_1908.tsv + TAHOT_kivonat.tsv + adat/jeloltek.tsv (elutasítva: nem az Úr neve áll a név után) | ts=2026-11-12*
 
-【NAPLO: adatállapot, nem tartalmi kérdés — a 9. szakasz ószövetségi táblázatában a próféták Targum-sorai (a Jonatan-Targum) és a Zsolt 116 Vulgata-sorai gépi összevetés híján ellenőrizetlenek, ezért nem állnak a táblázatban: N-F194d.】
+【NAPLO: adatállapot, nem tartalmi kérdés — a 9. szakasz ószövetségi táblázatában a próféták Targum-sorai (a Jonatan-Targum) és a Zsolt 116 Vulgata-sorai gépi összevetés híján ellenőrizetlenek, ezért nem állnak a táblázatban: N181.】
 
 <!-- RÉS-VÉGE: modszertan -->
 

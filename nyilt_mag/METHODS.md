@@ -62,7 +62,7 @@ a group whose verses were all rejected for the same reason. The 4,034 verses of 
 
 If a search is empty, the result stays empty: a gap is not filled with weak or associative material. Candidates not
 yet decided (20) are not in the package. Where a row refers to an editorial decision, the public identifier
-of the decision (`NYD-nnn`) is resolved in `dontesnaplo.tsv` (15 decisions).
+of the decision (`NYD-nnn`) is resolved in `dontesnaplo.tsv` (17 decisions).
 
 ## 5. The occurrence row
 
@@ -125,7 +125,7 @@ Column names and values are Hungarian; English parallel columns stand next to th
 - **Closed values:** next to every closed-vocabulary column, `…_en`, with the edited English label of the codebook.
 - **Free text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, a
   **machine translation** (mainly `claude-sonnet-5-5`; in a few cells `claude-opus-5-5`). The `forditas_modja` column of the row names the model and states any gap
-  (the translation is missing wholly or in part in 220 rows).
+  (the translation is missing wholly or in part in 222 rows).
 
 ## 9. Licence filtering
 

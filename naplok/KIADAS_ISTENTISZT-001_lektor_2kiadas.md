@@ -45,7 +45,7 @@
 ## Összesítő
 
 - 22 tétel, ebből 3 súlyos (1., 2., 3.).
-- A DT-F194a–c kimondása: „Isten maga kiáltja ki, ezért kivétel” típusú indoklás nincs; a görög mérce és a Jahve-alak következetes.
+- A DT826–c kimondása: „Isten maga kiáltja ki, ezért kivétel” típusú indoklás nincs; a görög mérce és a Jahve-alak következetes.
 - Az ellenőrzött idézetek (2Móz 34:6, Róm 10:9, 10:12, Zsid 11:16, Zsolt 105:1, 1Kir 18:24) szó szerint egyeznek; a Módszertan számai (204, 96, 395, 599, 470, 109, 20) a lap 1. szakaszával egyeznek.
 - Nem ellenőrizve: a Vulgata 2Móz 34:5 latin idézete a forrásfájlon; a Zsolt 116:17 görög hiánya a `psalms-lxx.tsv`-n.
 

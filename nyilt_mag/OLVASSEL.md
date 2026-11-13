@@ -19,7 +19,7 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 | `kizaras_csoportok.tsv` | az összesítő sorok csoportjainak minden verse | 4 034 |
 | `kapcsolatok.tsv` | igehely-kapcsolatok egy motívumon belül | 86 |
 | `motivum_kapcsolatok.tsv` | kapcsolatok két motívum között | 3 |
-| `dontesnaplo.tsv` | a hivatkozott szerkesztői döntések (`NYD-nnn`) | 15 |
+| `dontesnaplo.tsv` | a hivatkozott szerkesztői döntések (`NYD-nnn`) | 17 |
 | `visszhang_megfelelok.tsv` | a horgonyszavak megfelelője a Targumban, a Vulgatában és a Septuagintában | 144 |
 | `visszhang_tanuk.tsv` | egyházatyai, rabbinikus és Glossa Ordinaria-tanúk, idézet nélkül | 8 |
 | `vitatott_forrasok.tsv` | a vitatott pontok lektorált szakirodalma (bibliográfiai adat) | 3 |
@@ -42,7 +42,7 @@ Bibliai motívumok nyílt adatkészlete: a motívumok meghatározó és kizáró
 - 9 motívum: 1 lezárt kiadás, 8 korábbi feldolgozás, újraírás alatt; az adatuk a csomagban marad (`motivumok.tsv`, `feldolgozasi_allapot`).
 - 250 előfordulás és 252 felvételi döntés.
 - 554 kizárás-sor 62 okkal: 454 egyenként eldöntött hely, és 100 összesítő sor, amely 4 034 verset képvisel.
-- 86 igehely-kapcsolat, 3 motívumközi kapcsolat, 15 nyilvános szerkesztői döntés.
+- 86 igehely-kapcsolat, 3 motívumközi kapcsolat, 17 nyilvános szerkesztői döntés.
 - A visszhang-rétegben 144 megfelelő, 8 tanú, 3 vitatott pont és 60 apparátus-jegyzet.
 
 **Ismert hibák:** `ISMERT_HIBAK.md` (angolul: `KNOWN_ISSUES.md`). **Módszer:** `MODSZER.md`.

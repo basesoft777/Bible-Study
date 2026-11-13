@@ -116,11 +116,11 @@ Modell-ellenőrzés: kért `fable`, tényleges `claude-fable-5-1` — egyezik. B
 
 **Szerkesztői besorolás, második kör** *(nem a modell írta; 2026-11-11, a #194-ben átvezetve: F194.1)*
 
-- K6: „(A) Kikerül” — a görög oldalon is az Úr megnevezése kell a név után; az ApCsel 9:14 és 9:21 a fölérendelt fogalomhoz kerül (22 → 20). Az ApCsel 22:16 marad (a Károli alapszövege, a Textus Receptus: κυρίου). (DT-F194a)
-- K7: a „vagy az elóhím” maradvány, kikerül az összesítő sor indoklásából és az elutasítási ok magyarázatából; saját mérés (TAHOT): a 12 versben a *besém* után sehol nem áll אֱלֹהִים (elóhím). Az orkesztrátor döntése. (DT-F194d)
-- K8: az „invokáló” marad a kritériumban; a 2Móz 33:19 és 34:5 kivételjelölés nélkül tartozik ide: „a szavak ugyanazok az forditói döntés hogy ez kihirdetés”. (DT-F194b)
-- A tetragramma alakja mindenütt יְהוָה (Jahve): „Igen, mindenhol Jahve”. (DT-F194c)
+- K6: „(A) Kikerül” — a görög oldalon is az Úr megnevezése kell a név után; az ApCsel 9:14 és 9:21 a fölérendelt fogalomhoz kerül (22 → 20). Az ApCsel 22:16 marad (a Károli alapszövege, a Textus Receptus: κυρίου). (DT826)
+- K7: a „vagy az elóhím” maradvány, kikerül az összesítő sor indoklásából és az elutasítási ok magyarázatából; saját mérés (TAHOT): a 12 versben a *besém* után sehol nem áll אֱלֹהִים (elóhím). Az orkesztrátor döntése. (DT829)
+- K8: az „invokáló” marad a kritériumban; a 2Móz 33:19 és 34:5 kivételjelölés nélkül tartozik ide: „a szavak ugyanazok az forditói döntés hogy ez kihirdetés”. (DT827)
+- A tetragramma alakja mindenütt יְהוָה (Jahve): „Igen, mindenhol Jahve”. (DT828)
 
 *(proveniencia: scope=adat/motivumok.tsv (ISTENTISZT-001) + adat/jeloltek.tsv (ISTENTISZT-001, elofordulas) + TAHOT_kivonat.tsv (a besem_JHVH_nelkul blokk 12 verse) | forras=manual: a felhasználó döntései (AskUserQuestion, az orkesztrátoron át) | ts=2026-11-11)*
-<!-- HATÁRDÖNTÉS: n=20 ujjd=4460c4ab6a6b | DT-F194a, DT-F194b, DT-F194c, DT-F194d -->
+<!-- HATÁRDÖNTÉS: n=20 ujjd=4460c4ab6a6b | DT826, DT827, DT828, DT829 -->
 <!-- MODELLES-VEGE -->

@@ -60,7 +60,7 @@ amelynek minden versét ugyanabból az okból utasítottuk el. A csoportok 4 034
 
 Ha egy keresés üres, az eredmény üres marad: a hiányt nem töltjük ki gyenge vagy asszociatív anyaggal. A még el
 nem döntött jelöltek (20) nincsenek a csomagban. Ahol egy sor szerkesztői döntésre hivatkozik, a döntés
-nyilvános azonosítója (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel (15 döntés).
+nyilvános azonosítója (`NYD-nnn`) a `dontesnaplo.tsv`-ben oldható fel (17 döntés).
 
 ## 5. Az előfordulás sora
 
@@ -122,7 +122,7 @@ Az oszlopnevek és az értékek magyarok; mellettük angol párhuzamos oszlopok 
   címkéjével.
 - **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi
   fordítás** (főként `claude-sonnet-5-5`; kis részben `claude-opus-5-5`). A sor `forditas_modja` oszlopa megnevezi a modellt, és kimondja a hiányt
-  (220 sorban hiányzik a fordítás teljesen vagy részben).
+  (222 sorban hiányzik a fordítás teljesen vagy részben).
 
 ## 9. Licencszűrés
 

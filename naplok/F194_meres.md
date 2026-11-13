@@ -29,16 +29,16 @@
 | 9 | Visszhang első kéz: 36 megfelelő, 2 tanú kinyerése; a második kéz indítása | 11-12 07:11–07:14 | 16 828 | 18 | 5 021 510 | 19 012 | 9 | 6 / 0 | 36 + 2 sor | — |
 | 10 | Leállás (a felhasználó: „állj”), a subagent leállítása | 11-12 07:14–07:15 | 1 288 | 14 | 2 862 781 | 5 768 | 5 | 1 / 0 | — | — |
 | 11 | Folytatás: beolvasók, gépi próba, a második kéz indítása | 11-12 08:10–08:23 | 6 778 | 14 | 770 185 | 69 076 | 7 | 6 / 1 (gépi összevetés szárazon) | — | — |
-| 12 | F194.6 meghatározás (DT-F194e), N-F194c/d (a második kéz futása alatt) | 11-12 08:23–08:24 | 5 598 | 16 | 1 060 696 | 11 555 | 8 | 7 / 1 | 1 döntés; 2 N-tétel | — |
+| 12 | F194.6 meghatározás (DT830), N-F194c/d (a második kéz futása alatt) | 11-12 08:23–08:24 | 5 598 | 16 | 1 060 696 | 11 555 | 8 | 7 / 1 | 1 döntés; 2 N-tétel | — |
 | 13 | Javítókör: 2 elvetett sor javítása, újranézés kérése | 11-12 08:24–08:27 | 3 255 | 12 | 712 560 | 7 102 | 5 | 4 / 1 (kiejtés) | 2 sor | — |
-| 14 | F194.7 beolvasás (megfelelők, tanúk, LXX), N-F194e, napló | 11-12 08:27–08:28 | 7 612 | 20 | 1 359 912 | 12 626 | 9 | 7 / 1 (`ellenoriz` ×2) | 56 + 2 táblasor | — |
+| 14 | F194.7 beolvasás (megfelelők, tanúk, LXX), N182, napló | 11-12 08:27–08:28 | 7 612 | 20 | 1 359 912 | 12 626 | 9 | 7 / 1 (`ellenoriz` ×2) | 56 + 2 táblasor | — |
 | 15 | Lezárás-előkészítés: mérés újraszámolása, helyi CI ×3, F194.8 (kódkönyv), F194.9 (generált nézetek) | 11-12 08:28–09:06 | 24 834 | 66 | 5 726 306 | 51 227 | 31 | 14 / 3 (helyi CI) | 2 kódkönyvsor; 4 generált nézet | — |
 | 16 | A független ellenőr futása alatt (a fő szál vár) | 11-12 09:06–09:24 | 1 722 | 6 | 632 371 | 3 212 | 3 | 1 / 0 | — | — |
 | 17 | F194.10–11: a jelentés mentése, javítókör (8 tétel), Glossa/SBLGNT, a mérés zárása | 11-12 09:24–09:31 | 27 403 | 54 | 6 230 794 | 50 004 | 26 | 15 / 3 (261 mérése, ujjlenyomat, Glossa) | 11 ellenőri tétel | — |
 | 18 | F194.15: a main behozása (5 generált ütközés), a kritérium és a meghatározás a `motivumok.tsv`-ben, a fordítás újramérése; a 2. adag felmérése és első keze (LXX, Glossa) | 11-12 13:38–13:46 | 29 703 | 78 | 5 350 110 | 124 568 | 39 | 12 / 3 (sorösszevetés, export, fordítási lista) | 1 merge; 2 mező; 14 LXX-sor; 15 Glossa-hely | — |
-| 19 | F194.16: a második kéz alatt N-F194f/g, javítókör (3 megjegyzés), beolvasás, generált nézetek, napló | 11-12 13:46–13:53 | 15 453 | 42 | 3 748 731 | 28 127 | 19 | 8 / 2 (`ellenoriz`, Glossa-kulcsok) | 14 LXX-sor; 1 elvetett tanújelölt | — |
+| 19 | F194.16: a második kéz alatt N183/g, javítókör (3 megjegyzés), beolvasás, generált nézetek, napló | 11-12 13:46–13:53 | 15 453 | 42 | 3 748 731 | 28 127 | 19 | 8 / 2 (`ellenoriz`, Glossa-kulcsok) | 14 LXX-sor; 1 elvetett tanújelölt | — |
 | 20 | F194.19–21: a main behozása, a teljesség-mérés a mai halmazzal, a lap az új szerkezetben (két szópár-kapu, teszt), a függési kör | 11-12 19:24–19:47 | 42 294 | 152 | 23 881 929 | 340 398 | 73 | — | 3 háló; 1 lap; 2 kapu | — |
-| 21 | F194.22: a 9. szakasz ószövetségi táblázata szópárra (DT-F194h), teszt | 11-12 19:47–19:55 | 21 434 | 50 | 10 058 786 | 38 612 | 24 | — | 1 generátor-ág; 16 vers | — |
+| 21 | F194.22: a 9. szakasz ószövetségi táblázata szópárra (DT833), teszt | 11-12 19:47–19:55 | 21 434 | 50 | 10 058 786 | 38 612 | 24 | — | 1 generátor-ág; 16 vers | — |
 | 22 | F194.23–25: a generátor HAMART-kapcsolói és olvasói leképezése, a BDB rokon nyelvi sorok (2. kéz), a próza nulláról és a 20 1/a-sor | 11-12 19:55–20:20 | 102 680 | 180 | 52 995 818 | 231 545 | 90 | — | 20 1/a-sor; 4 értelmező rés; 7 bdb-sor | — |
 | 23 | F194.26–28: Jahve, pontozatlan rokon alak, a HAMART 3 sora, az 1. kiadás-sor, a kézi állítás-tételek javítása | 11-12 20:20–20:33 | 33 665 | 88 | 29 815 610 | 52 500 | 43 | — | 54 kézi tétel (9 HIBA) | — |
 | 24 | F194.29–30: a szabály-tesztek, a lektor, a javítókör (22 tétel) | 11-12 20:33–20:50 | 39 990 | 78 | 26 927 274 | 70 814 | 36 | — | 22 lektori tétel | — |
