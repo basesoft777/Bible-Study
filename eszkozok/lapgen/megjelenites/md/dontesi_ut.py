@@ -6,10 +6,11 @@ címkéje és leírása, a funkció magyarázata és a nyitott kérdések kézi 
 """
 from lapgen.ertekek import MaradtFajta
 from lapgen.megjelenites.md import keret as K
+from lapgen.szakaszok import KRITERIUM_HORGONY
 from lapgen.szoveg import cim_horgony
 
 AZONOSITO = 'dontesi_ut'
-ELOFORDULASOK, KIZART, ERTELMEZES, MODSZERTAN = 'elofordulasok', 'kizart', 'ertelmezes', 'modszertan'
+ERTELMEZES, MODSZERTAN = 'ertelmezes', 'modszertan'
 ALPONT_TARGY, ALPONT_FORRASOK, ALPONT_KIESETT, ALPONT_MARADT, ALPONT_HATAR = 1, 2, 3, 4, 5
 FEJLEC_FORRASOK = ('d12.fejlec.kereses', 'd12.fejlec.vers', 'd12.fejlec.mit')
 FEJLEC_KIESETT = ('d13.fejlec.lepes', 'd13.fejlec.vers', 'd13.fejlec.miert')
@@ -36,15 +37,21 @@ def _szo(ny, szo):
 
 def _targy(iro, ny, szakasz, targy):
     _alpont(iro, ny, szakasz, ALPONT_TARGY, 'cim.dontesi_ut.targy')
-    _bekezdes(iro, ny.s('d11.motivum', cim=targy.cim))
-    if targy.ide_tartozik is not None:
-        _bekezdes(iro, ny.s('d11.ide', szoveg=targy.ide_tartozik))
-    if targy.nem_tartozik is not None and targy.folerendelt is not None:
-        _bekezdes(iro, ny.s('d11.nem.tagabb', szoveg=targy.nem_tartozik, fol=targy.folerendelt))
-    elif targy.nem_tartozik is not None:
-        _bekezdes(iro, ny.s('d11.nem', szoveg=targy.nem_tartozik))
-    elif targy.folerendelt is not None:
-        _bekezdes(iro, ny.s('d11.csak_tagabb', fol=targy.folerendelt))
+    # A kritérium szövege itt nem áll: egyetlen teljes helye a lap eleje (DT-F218n). Ide hivatkozás, a keresett
+    # elemek megszámolva és mutató kerül: a szavak, a kizárás okai és a megmaradt helyek alpontjára.
+    hatar = dict(cim=ny.s('fej.hatar.cim'), horgony=KRITERIUM_HORGONY, szakasz=szakasz, kiesett=ALPONT_KIESETT,
+                 maradt=ALPONT_MARADT)
+    if not (targy.heber or targy.gorog):
+        _bekezdes(iro, ny.s('d11.targy.szavak_nelkul', **hatar))
+        return
+    elemek = []
+    if targy.heber:
+        elemek.append(ny.s('d11.elem.heber', n=targy.heber))
+    if targy.gorog:
+        elemek.append(ny.s('d11.elem.gorog', n=targy.gorog))
+    if targy.szoparok:
+        elemek.append(ny.s('d11.elem.szopar', n=targy.szoparok))
+    _bekezdes(iro, ny.s('d11.targy', elemek=tuple(elemek), forrasok=ALPONT_FORRASOK, **hatar))
 
 
 def _forrasok(iro, ny, szakasz, modell, keret):
@@ -180,8 +187,8 @@ def megjelenit(iro, modell, keret, forrasok):
     szakasz = keret.rend.sorszam(AZONOSITO)
     K.szakasz_cim(iro, keret, AZONOSITO)
     K.blokk_nyit(iro, keret, AZONOSITO, forrasok)
+    # a szakasz elején egy magyarázó sor áll (a számoló bevezető); a korábbi második, hatókör-sor kimaradt (DT-F218n)
     K.olvasoi_bekezdes(iro, ny.s('d1.bevezeto', osszes=v.osszes, bent=v.bent))
-    _bekezdes(iro, ny.s('d1.hatokor', elso=keret.rend.sorszam(ELOFORDULASOK), masodik=keret.rend.sorszam(KIZART)))
     _targy(iro, ny, szakasz, modell.targy)
     _forrasok(iro, ny, szakasz, modell, keret)
     _kiesett(iro, ny, szakasz, modell, keret)

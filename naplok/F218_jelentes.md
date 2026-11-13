@@ -672,3 +672,56 @@ Az ideiglenes fájlok (szkriptek, generált lapok) a repón kívül, a scratchpa
 A felhasználó kérése az orkesztrátoron át, szó szerint: „ne daraboljuk?”. Az orkesztrátor rendelkezése: az S3 négy alszeletre bomlik, mert a „4. Szótári háttér” a lap legnagyobb része: **S3a** (Áttekintés és 4.1), **S3b** (4.2 BDB-kártya), **S3c** (Thayer és a többi szótár, 4.3–4.10), **S3d** (4.12 Nave, 4.13 és 4.14 Károli). Minden alszelet a saját diffjével (0 engedély nélküli sor) zárul, commit, push és a folytatási fájl frissítése után; a független ellenőrzés két alszeletenként, célzottan fut; 70%-os kontextusnál a következő alszeletet új session viszi.
 
 **A 4. session két commitja az alszeletek szerint:** az `F218.6 (1)` (`759a0699`) az S3a egésze (a szakasz vázával és a regresszió részleges módjával) és az S3c-ből a 4.3, 4.4, 4.5, 4.10; az `F218.6 (2)` (`76a92fdb`) az S3c-ből a 4.7 és a 4.9. **Az S3a kész.** Az S3c-ből hátravan a Thayer-kártya (a görög 4.2), a 4.8 és a 4.6 (az utóbbi első fele az S4 számításából jön). Az S3b és az S3d nem indult. Független ellenőrzés ebben a sessionben nem futott: lezárt alszelet egy van; az első ellenőrzés az S3a és az S3c lezárása után esedékes.
+
+## DT-F218n: az ismétlés megszüntetése a lap elején (`claude-fable-5-2`, 2026-11-13, az 5. session)
+
+**Az ok.** A HAMART-001 lapján a kritérium négyszer áll (a lap eleje, a Kivonat, az 1.1 pont, a 3. szakasz vége), a tágabb kör háromszor: négy egymásra rakódott javítás mindegyike újabb helyre írta ki ugyanazt a szabályt. A felhasználó a lektori bírálat 6. pontja szerinti módosított változatot hagyta jóvá (az orkesztrátoron át, szó szerint: „Igen, mehet”). A döntés: DT-F218n (`dontesek/uj/f218-generator-uj-a.md`).
+
+**Mi készült el.**
+- **1.1 A keresés tárgya:** a három régi bekezdés („A motívum:”, „Ami ide tartozik:”, „Ami nem:”) helyett egy mondat áll: hivatkozás a lap eleji meghatározásra, a keresett elemek megszámolva (héber szó, görög szó, szópár: a lapmodellből), és mutató az 1.2, az 1.3 és az 1.4 pontra. A HAMART-001 lapján: „A keresés tárgyát a lap eleje határozza meg ([Mi tartozik ide, és mi nem](#mi-tartozik-ide)). A keresés 8 héber szóra, 5 görög szóra és 3 szópárra terjedt ki: a szavakat az 1.2., a kizárás okait az 1.3., a megmaradt helyeket az 1.4. pont sorolja fel.” Az ISTENTISZT-001 lapján: 2 héber szó, 1 görög szó, 1 szópár.
+- **Az 1. szakasz eleje:** a két magyarázó sorból a számoló bevezető marad; a dőlt hatókör-sor kimarad.
+- **A horgony:** a lap eleji meghatározás horgonya a szakaszmodellben áll (`szakaszok.KRITERIUM_HORGONY`: `mi-tartozik-ide`), a címe a sablontáblában (`fej.hatar.cim`). Az 1.1 ezekre hivatkozik; a lap eleje (S8) ugyanezekből írja ki.
+- **Két kapu** (`eszkozok/lapgen/ismetles.py`), a kész lap fajta-térképén (a megjegyzés, a jelölés és a horgony nem látható szöveg):
+  1. *A kritérium egyszer áll* (BUKÁS): a kritérium bármely 12 szavas részlete a látható lapon legfeljebb egyszer állhat; a teljes lapon (ha a lap eleje elkészült) pontosan egyszer.
+  2. *Ismétlés-figyelő* (figyelmeztetés): 15 szónál hosszabb azonos szósor kétszer; az ablakban legfeljebb 4 idézett szó állhat (a kétszer idézett bibliai vagy szótári szöveg nem ismétlés). A futás a találatokat kiírja.
+- **A 9-es sablon:** az „Egy szabály, két hely, egy szöveg” szabály helyén „Egy szabály, egy teljes hely” áll (v2.3).
+
+**A szándékolt eltérés-osztály, előre megszámolva.** Az első regresszió előtt rögzített szám az 1. szakaszban: látható sor −4 (a hatókör-sor és az 1.1 három bekezdése) és +1 (az új mondat), üres sor −3. A mérés pontosan ezt adta: 8 diff-sor, hat engedélysorban (`ISM-HATOKOR`, `ISM-MOTIVUM`, `ISM-IDE`, `ISM-NEM`, `ISM-TARGY`: 1-1; `ISM-URES`: 3), mechanizmus: M-RÁRAKÓDÁS. A szakasz a motívumtáblát már nem olvassa, ezért a blokkfejléc forráslistája is változott: az `S2-FORRAS` engedélysor új hash-t kapott (a darabszáma 1 maradt). Az 1. szakasz diffje: 24 sor, engedély nélkül 0; a regresszió eredménye: RENDBEN.
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 | forras=a munkafa a DT-F218n commit előtt | ts=2026-11-13`.*
+
+**A figyelő kalibrálása.** A 16 szavas ablak és a 4 idézett szó küszöbe mellett a kész szakaszokon (1., 2., a 4. részben) a HAMART-001 lapján 7, az ISTENTISZT-001 lapján 4 találat áll. Mind valódi ismétlés, három fajtából: a funkció kézi magyarázata az 1.4 pontban és a 2. szakasz táblájában (HAMART: 3); azonos jegyzet vagy cella szomszédos sorokban (HAMART: 2, ISTENTISZT: 2); a 4. szakasz ugyanazon sablonmondata a héber és a görög részben (mindkét lapon 2: egy 41 és egy 24 szavas mondat). Túlnyomóan idézett szövegből álló találat nincs köztük (a kétszer idézett szöveget a figyelő nem jelzi: `test_idezet_nem_ismetles`). A küszöbök a további szeletekkel újramérendők; a teljes lapra az S9 adja a számot.
+*Proveniencia: `scope=python eszkozok/general.py --cel lexikon2 --id HAMART-001, --id ISTENTISZT-001 (a futás figyelmeztetései) | forras=a munkafa a DT-F218n commit előtt | ts=2026-11-13`.*
+
+**Tesztek.** Új fájl: `teszt_ismetles.py` (14 teszt: a kritérium kapuja 8, a figyelő 4, a két mintalapon 2). A `teszt_dontesi_ut.py` régi 1.1-állításai helyett új teszt áll (az 1.1 nem ismétli a kritériumot, hivatkozik és számol). Három új vázlat-teszt a későbbi szeletekre (`teszt_vaz.py`): a lap eleji meghatározás horgonya (S8), a Kolofon sora (S8), a 3. szakasz utalása. Összesen 207 teszt (173 zöld, 34 váz). Festékpróba: 0 szivárgás mindkét lapon.
+*Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001 | forras=a munkafa a DT-F218n commit előtt | ts=2026-11-13`.*
+
+**Sablontábla.** Ki 6 sor (`d1.hatokor`, `d11.motivum`, `d11.ide`, `d11.nem`, `d11.nem.tagabb`, `d11.csak_tagabb`); be 6 sor: `fej.hatar.cim` (a mai lap eleji cím, betűre) és öt új mondat (`d11.targy`, `d11.targy.szavak_nelkul`, `d11.elem.heber`, `d11.elem.gorog`, `d11.elem.szopar`; `eredet=uj`, `dontes=var`).
+
+**Ami a későbbi szeletekre marad** (a kapu és a vázlat-tesztek őrzik):
+- a lap eleje (S8) kiírja a horgonyt; ettől kezdve a kapu „pontosan egyszer” módja él;
+- a 3. szakasz végi „Negatív kritérium” bekezdés helyett utalás áll, a szakasz elején;
+- **a Kolofon táblájában is áll a teljes kritérium** („Negatív kritérium” sor): ez az ötödik példány, a lektori bírálat nem látta. A teljes lapon a kapu megfogja; a sor sorsa a felhasználó döntése (javaslat: hivatkozás a lap elejére);
+- **a Kivonat (S8):** amíg a kézi forrásban a szabályt újramondó két mondat áll, a kapu a HAMART-001 teljes lapján BUKÁS-t ad. A döntés az S8 előtt kell.
+
+### A 218a végi listába: a kézi szöveg változásai (nem kerültek a forrásba; a felhasználó jóváhagyásával)
+
+| # | Hely | Mai szöveg | Javaslat |
+|---|---|---|---|
+| 1 | Kivonat, 3. bekezdés | „Ide az a hely tartozik, amelyben a lánc egyik szava áll — … — … mondja ki, ismétli vagy fordítja meg.” | törlés (a lap eleji kritérium szűkített másolata) |
+| 2 | Kivonat, 3. bekezdés, a törlés utáni mondat | „A hallás igéje háromféleképpen állhat az erőszak mellett: …” | átvezetés a mondat elején, mert a feltételt a törölt mondat vezette be; javaslat: „Ahol az erőszak szava a hallás igéjével áll egy versben, a hallás igéje háromféleképpen állhat mellette: …” |
+| 3 | Kivonat, 4. bekezdés, első mondat | „A motívum tehát nem a bűn és következményei általában, hanem az a sajátos lánc, …” | törlés (a tágabb kör másolata). Egy elem vész el: „a családra”; ha kell, a lap eleji „A motívum.” bekezdésbe való |
+| 4 | Kivonat, 4. bekezdés | „… mert ugyanezt a szerkezetet más szavakkal mondja ki; ezeket a vizsgálat egyenként, tematikus helyként veszi fel.” | „ugyanezt a szerkezetet” → „a lánc szerkezetét”; a pontosvessző utáni tagmondat törölhető (a lap elején áll) |
+| 5 | Kivonat, utolsó mondat; a lap eleje | „Az újszövetségi helyeknél a Károli alapszövege, a Textus Receptus a mérce.” (Kivonat) / „… a Textus Receptus a mérce.” (lap eleje) | a „Károli alapszövege” a lap eleji mondatba kerül; a Kivonat mondata törlődik (így a Kivonat a Jel 22:3 idézetével zár) |
+| 6 | a kritérium (`negativ_kriterium`) | egyetlen, kb. 95 szavas, kétszeresen gondolatjeles mondat; a hat szó kétszer áll benne („szóláncából (átok, föld, fáradság, bűn, erőszak, romlás) egy szó áll — héberül az átok (árar), …”), ingadozó megnevezéssel („fáradság” / „a fájdalom és fáradság”) | a zárójeles magyar szólista törlése és a mondat tagolása két-három mondatra |
+| 7 | a kizárási lista: lap eleje / Kivonat | „katonai pusztítás” / „a katonai és fizikai pusztítás”; „bűnáldozat” / „a bűnáldozat törvényei” | a Kivonat listája a kritériuménál tágabb kizárást mond: vagy kikerül a Kivonatból (a példák maradnak), vagy a kritérium szava szerint áll |
+| 8 | Kivonat, 3. bekezdés | „… a lánc hat héber és három görög szavának, illetve szócsaládjának minden előfordulása átnézésre került …” | az 1.1 a szótári szavakat számolja (8 héber, 5 görög: a szópár két szava és a görög szócsalád három szava külön számít). A két szám nem mond ellent, de egymás mellett magyarázatra szorul; javaslat: a Kivonatban „a lánc szavainak és szópárjainak minden előfordulása” |
+
+A 9-es sablon bevezetője és 2. pontja (a fölérendelt fogalom mondata a Kivonatban) a 3. sor törlésével együtt igazítandó (N-F218f).
+
+### A 218a végi listába: döntések és új mondatok a DT-F218n-ből
+
+- **Öt új sablonmondat** (`dontes=var`): `d11.targy`, `d11.targy.szavak_nelkul` (ha a motívumnak nincs szava: a számolás kimarad), `d11.elem.heber` („{n} héber szóra”), `d11.elem.gorog`, `d11.elem.szopar`.
+- **A megmaradt magyarázó sor:** a számoló bevezető; a kimaradt sor mutatója („a részletek a 2. és a 3. szakaszban”) elveszett. Ha a másik sor kell, egy sor csere.
+- **A motívum-specifikus mondat nem került az 1.1-be.** A lektor mintamondatának vége („a döntő feltétel a visszautalás az 1Móz 3–9 láncára”) motívumonként más, sablonmondat nem mondhatja ki; ha kell, kézi mező lesz belőle.
+- **A Kolofon „Negatív kritérium” sora:** javaslat: hivatkozás a lap elejére (az S8 előtt).
+- **Az ismétlés-figyelő találatai** közül a 4. szakasz két hosszú sablonmondata a héber és a görög részben is áll (41 és 24 szó): szándékos szerkezet, de az olvasó kétszer látja. Ha zavaró, a mondat a nyelvfüggetlen részbe emelhető.

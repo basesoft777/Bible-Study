@@ -6,6 +6,11 @@ szakaszszám nem áll. A még el nem készült szakasz `szamit` és `megjelenit`
 ilyenkor részleges, és a regresszió a hiányzó szakaszt „nincs kész”-ként jelzi.
 """
 from lapgen import konfig
+from lapgen.szoveg import Horgony
+
+# A lap elején álló meghatározás („Mi tartozik ide, és mi nem”) horgonya: a kritérium egyetlen teljes helye a lap
+# eleje, a többi szakasz erre hivatkozik (DT-F218n). A `fej` szakasz ezt a horgonyt írja ki, a hivatkozók ezt célozzák.
+KRITERIUM_HORGONY = Horgony('mi-tartozik-ide')
 
 
 class SzakaszLeiro:
@@ -71,6 +76,10 @@ class Szakaszrend:
     def cim_kulcs(self, azonosito):
         """A szakasz címének sablonkulcsa."""
         return 'cim.' + self._nev_szerint[azonosito].azonosito
+
+    def kesz(self, azonosito):
+        """Elkészült-e (be van-e kötve) a szakasz."""
+        return self._nev_szerint[azonosito].szamit is not None
 
     def keszek(self, nezet):
         return tuple(leiro for leiro in self._rend if leiro.nezet == nezet and leiro.szamit is not None)

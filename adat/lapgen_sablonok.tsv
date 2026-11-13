@@ -135,14 +135,14 @@ cim.dontesi_ut.hatar	Határesetek és nyitott kérdések	-	1	blokk_dontesi_ut	-
 cim.ertelmezes	Értelmezés	-	1	UJ_SZAKASZOK	-
 cim.modszertan	Módszertan és nyitott kérdések	-	1	UJ_SZAKASZOK	-
 d1.bevezeto	Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig: mit keresett, hol, mi esett ki és miért, és mi maradt. {osszes|A} megvizsgált versből {bent} tartozik a motívumhoz; minden vers egyszer számít, így a számok összeadódnak.	osszes:szam(ezres), bent:szam(ezres)	1	blokk_dontesi_ut	-
-d1.hatokor	*A Döntési út: a motívum keresésének és döntéseinek összegzése; a részletek {elso|a}. és {masodik|a}. szakaszban.*	elso:szam, masodik:szam	1	blokk_dontesi_ut	-
 d1.szam	{n}	n:szam(ezres)	1	blokk_dontesi_ut	-
 d1.szam.kiemelt	**{n}**	n:szam(ezres)	1	blokk_dontesi_ut	-
-d11.motivum	**A motívum:** {cim}.	cim:lathato	1	blokk_dontesi_ut	-
-d11.ide	**Ami ide tartozik:** {szoveg}	szoveg:lathato	1	blokk_dontesi_ut	-
-d11.nem	**Ami nem:** {szoveg}	szoveg:lathato	1	blokk_dontesi_ut	-
-d11.nem.tagabb	**Ami nem:** {szoveg} A motívumon kívül eső tágabb kör: {fol}.	szoveg:lathato, fol:lathato	1	blokk_dontesi_ut	-
-d11.csak_tagabb	**Ami nem:** {fol}.	fol:lathato	1	blokk_dontesi_ut (a régi kód a fölérendelt fogalmat itt nagy kezdőbetűvel írta; az új változatlanul adja)	-
+fej.hatar.cim	Mi tartozik ide, és mi nem	-	fej	a mai lap eleji meghatározás címe; a `fej` szakasz (S8) és a rá mutató hivatkozások közös szövege (DT-F218n)	-
+d11.targy	A keresés tárgyát a lap eleje határozza meg ([{cim}](#{horgony})). A keresés {elemek|, | és } terjedt ki: a szavakat {szakasz|a}.{forrasok}., a kizárás okait {szakasz|a}.{kiesett}., a megmaradt helyeket {szakasz|a}.{maradt}. pont sorolja fel.	cim:lathato, horgony:horgony, elemek:lista(lathato), szakasz:szam, forrasok:szam, kiesett:szam, maradt:szam	1	uj (DT-F218n: a kritérium ismétlése helyett hivatkozás és számolás)	var
+d11.targy.szavak_nelkul	A keresés tárgyát a lap eleje határozza meg ([{cim}](#{horgony})). A kizárás okait {szakasz|a}.{kiesett}., a megmaradt helyeket {szakasz|a}.{maradt}. pont sorolja fel.	cim:lathato, horgony:horgony, szakasz:szam, kiesett:szam, maradt:szam	1	uj (DT-F218n)	var
+d11.elem.heber	{n} héber szóra	n:szam	1	uj (DT-F218n)	var
+d11.elem.gorog	{n} görög szóra	n:szam	1	uj (DT-F218n)	var
+d11.elem.szopar	{n} szópárra	n:szam	1	uj (DT-F218n)	var
 d12.szavak	**A motívum szavai:** {szavak|; }.	szavak:lista(lathato)	1	blokk_dontesi_ut	-
 d12.szo	{alak} ({kiejtes})	alak:lathato, kiejtes:lathato	1	lemma_cim	-
 d12.szo.kiejtes_nelkul	{alak}	alak:lathato	1	lemma_cim	-

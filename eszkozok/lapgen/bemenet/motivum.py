@@ -62,6 +62,14 @@ def b02_motivum(b, motivum):
         folerendelt=b.kezi('B02', 'folerendelt_fogalom', fol) if fol else None)
 
 
+def kriterium_szoveg(b, motivum):
+    """A motívum kritériumának teljes szövege (B02, `negativ_kriterium`), a két rész egyben; üres mezőnél None.
+    A kritérium kapuja kapja (lapgen.ismetles): látható szöveg ebből az értékből nem lesz."""
+    sor = b02_motivum(b, motivum)
+    reszek = [resz.ertek for resz in (sor.ide_tartozik, sor.nem_tartozik) if resz is not None]
+    return ' '.join(reszek) if reszek else None
+
+
 class Rovid:
     """Egy szó rövid jelentése: a magyar szöveg, vagy magyar híján az angol eredeti (fordításra vár). Mindkettő
     hiánya: a szótárnak nincs rövid jelentése a szóra. Az `elavult` jelzi, hogy a magyar fordítás forrása azóta

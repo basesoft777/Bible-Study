@@ -19,11 +19,11 @@ from lapgen.szoveg import Horgony, Igehely, Kulcs, Lathato, Strong, idezet, proz
 
 @dataclasses.dataclass(frozen=True)
 class Targy:
-    """A keresés tárgya: a motívum címe, a negatív kritérium két része és a fölérendelt fogalom (kézi próza)."""
-    cim: Lathato
-    ide_tartozik: Optional[Lathato]
-    nem_tartozik: Optional[Lathato]
-    folerendelt: Optional[Lathato]
+    """A keresés tárgya megszámolva: a lánc héber és görög szavainak, valamint a szópároknak a száma. A kritérium
+    szövege nem áll itt: annak egyetlen teljes helye a lap eleje, a szakasz oda hivatkozik (DT-F218n)."""
+    heber: int
+    gorog: int
+    szoparok: int
 
 
 @dataclasses.dataclass(frozen=True)
@@ -83,7 +83,6 @@ def szamit(korny):
     """A szakasz lapmodellje. A helyek a tábla rendjében állnak (a csoportok az első helyük rendjében)."""
     b, motivum = korny.b, korny.motivum
     v = vizsgalat.szamit(korny)
-    sor = motivum_be.b02_motivum(b, motivum)
     sorok = sorted(bemenet.b03_elofordulasok(b, motivum), key=lambda s: s.fajl_sorszam)
     konyvek = bemenet.b63_konyvek(b)
     kiejtes = szavak.kiejtes(b)
@@ -139,8 +138,9 @@ def szamit(korny):
 
     return DontesiUt(
         vizsgalat=v,
-        targy=Targy(cim=proza(sor.cim), ide_tartozik=_opcionalis(sor.ide_tartozik),
-                    nem_tartozik=_opcionalis(sor.nem_tartozik), folerendelt=_opcionalis(sor.folerendelt)),
+        targy=Targy(heber=sum(1 for strong in lanc if strong.heber),
+                    gorog=sum(1 for strong in lanc if not strong.heber),
+                    szoparok=sum(1 for c in maradt if c.fajta is MaradtFajta.NEVES_SZOPAR or len(c.szavak) > 1)),
         szavak=tuple(lancszo(strong) for strong in lanc),
         maradt=tuple(maradt),
         hataresetek=tuple(Hatareset(s.igehely, s.igehely.horgony(), s.megbizhatosag_kulcs) for s in sorok
@@ -149,9 +149,13 @@ def szamit(korny):
 
 
 def kapu(modell):
-    """A szakasz kapuja a modellen (GK-09, GK-21): a vizsgálat számegyezése; a csoportok helyeinek összege a
+    """A szakasz kapuja a modellen (GK-09, GK-21): a vizsgálat számegyezése; a keresés tárgyának két szószáma a
+    lánc szavainak száma; a csoportok helyeinek összege a
     motívum helyeinek száma; csoportonként a megoszlás három száma a helyek száma."""
     vizsgalat.kapu(modell.vizsgalat)
+    if modell.targy.heber + modell.targy.gorog != len(modell.szavak):
+        raise vizsgalat.KapuHiba('a Döntési út %d héber és %d görög szót számol, a lánc szavainak száma %d'
+                                 % (modell.targy.heber, modell.targy.gorog, len(modell.szavak)))
     if sum(len(c.helyek) for c in modell.maradt) != modell.vizsgalat.helyek:
         raise vizsgalat.KapuHiba('a Döntési út csoportjaiban %d hely áll, a motívumnak %d helye van'
                                  % (sum(len(c.helyek) for c in modell.maradt), modell.vizsgalat.helyek))

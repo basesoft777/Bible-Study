@@ -12,11 +12,16 @@ import hashlib
 import os
 import sys
 
-from lapgen import bemenet, konfig
+from lapgen import bemenet, ismetles, konfig
+from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet.jegyzek import NEM_FAJL
 from lapgen.megjelenites.md.iro import Lapiro, lap_szoveg
 from lapgen.szakaszok import Szakaszrend
 from lapgen.szoveg import MotivumId, SzovegHiba, prov, prov_fuz
+
+
+FEJ = 'fej'   # a lap eleje: a kritérium egyetlen teljes helye (a szakaszrend azonosítója)
+ISMETLES_KIIR = 20   # ennyi ismétlődő szósort ír ki a futás; a többit megszámolja
 
 
 class Mod(enum.Enum):
@@ -42,10 +47,12 @@ class Keret:
 
 
 class Eredmeny:
-    __slots__ = ('nezetek', 'naplo', 'festo')
+    """A generálás eredménye. A `figyelmeztetesek` az ismétlés-figyelő találatai a fő nézeten (nem BUKÁS)."""
+    __slots__ = ('nezetek', 'naplo', 'festo', 'figyelmeztetesek')
 
-    def __init__(self, nezetek, naplo, festo):
+    def __init__(self, nezetek, naplo, festo, figyelmeztetesek=()):
         self.nezetek, self.naplo, self.festo = nezetek, naplo, festo
+        self.figyelmeztetesek = figyelmeztetesek
 
 
 def szakaszrend():
@@ -82,6 +89,8 @@ def lap_keszit(gyoker, motivum, mod=Mod.MUNKA, datum=None, festek=False):
             if leiro.kapu is not None:
                 leiro.kapu(modell)   # a szakasz kapuja a modellen fut, a megjelenítés előtt
             modellek[leiro.azonosito] = (modell, frozenset(forrasok))
+    # a kritérium szövege a kapujához (a szakaszok forrásfigyelésén kívül: nem a szakasz olvasása)
+    kriterium = motivum_be.kriterium_szoveg(b, motivum) if modellek and not festek else None
     keret = Keret(ny, motivum, rend, _ts(datum, b.olvasasi_naplo()), mod, b, datum)
     licencek = bemenet.b01_licencek(b) if modellek else None
     nezetek = {}
@@ -94,7 +103,13 @@ def lap_keszit(gyoker, motivum, mod=Mod.MUNKA, datum=None, festek=False):
             modell, forrasok = modellek[leiro.azonosito]
             leiro.megjelenit(iro, modell, keret, _forrasok(b, licencek, forrasok))
         nezetek[nezet] = iro.kesz()
-    return Eredmeny(nezetek, b.olvasasi_naplo(), b.festo)
+    figyelmeztetesek = ()
+    if not festek and konfig.NEZET_TUDOMANYOS in nezetek:
+        # az ismétlés kapui a kész lap látható szövegén (festett futásban a szöveg helyén jelzőszó áll)
+        lap = nezetek[konfig.NEZET_TUDOMANYOS]
+        ismetles.kriterium_kapu(lap, kriterium, teljes=rend.kesz(FEJ))
+        figyelmeztetesek = tuple(ismetles.ismetlesek(lap))
+    return Eredmeny(nezetek, b.olvasasi_naplo(), b.festo, figyelmeztetesek)
 
 
 class Forrasok:
@@ -170,4 +185,10 @@ def futtat(gyoker, azonosito, kimenet, mod='munka', datum=None, ki=sys.stdout):
                 f.write('%s\t%s\t%s\n' % (olvasas.b_id, olvasas.utvonal, olvasas.sha256))
     if not eredmeny.nezetek:
         print('  %s: nincs kész szakasz, fájl nem készült' % azonosito, file=ki)
+    if eredmeny.figyelmeztetesek:
+        print('  FIGYELMEZTETÉS (%s): %d ismétlődő szósor a látható lapon (legalább %d szó, idézeten kívül)'
+              % (azonosito, len(eredmeny.figyelmeztetesek), konfig.ISMETLES_ABLAK), file=ki)
+        for talalat in eredmeny.figyelmeztetesek[:ISMETLES_KIIR]:
+            print('    sor %s (%d szó): %s …' % (', '.join(str(n) for n, _hol in talalat.helyek), len(talalat.szavak),
+                                               ' '.join(talalat.szavak[:10])), file=ki)
     return 0

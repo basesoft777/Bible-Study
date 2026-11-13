@@ -16,6 +16,7 @@ from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet import szavak
 from lapgen.ertekek import MaradtFajta
 from lapgen.megjelenites.md.iro import MEGJEGYZES
+from lapgen.szakaszok import KRITERIUM_HORGONY
 from lapgen.szamitas import dontesi_ut, kizarasok, vizsgalat
 from lapgen.szoveg import Igehely, Kezi, MotivumId, Strong
 
@@ -162,25 +163,45 @@ class Lap(unittest.TestCase):
                                      '%s: <%s> %s' % (azonosito, jel, blokk[:60]))
 
     def test_a_kezi_szoveg_valtozatlanul_all(self):
-        """A funkció kézi magyarázata, a negatív kritérium és a nyitott kérdés a forrás szerint, átírás nélkül áll
-        (nagybetűsítés sincs): a látható sor tartalmazza a kézi szöveget betűre."""
+        """A funkció kézi magyarázata és a nyitott kérdés a forrás szerint, átírás nélkül áll (nagybetűsítés
+        sincs): a látható sor tartalmazza a kézi szöveget betűre."""
         b = bemenet.Bemenet(kozos.GYOKER)
         for azonosito in MINTALAPOK:
             motivum = MotivumId(azonosito)
             szoveg = '\n'.join(lathato(s) for s in szakasz(azonosito))
             for sor in bemenet.b03_elofordulasok(b, motivum):
                 self.assertIn('>%s</a>: %s.</li>' % (sor.igehely.kod, sor.funkcio_magyarazat.ertek), szoveg)
-            targy = motivum_be.b02_motivum(b, motivum)
-            self.assertIn('**A motívum:** %s.' % targy.cim.ertek, szoveg)
-            self.assertIn('**Ami ide tartozik:** %s' % targy.ide_tartozik.ertek, szoveg)
-            self.assertIn('**Ami nem:** %s A motívumon kívül eső tágabb kör: %s.'
-                          % (targy.nem_tartozik.ertek, targy.folerendelt.ertek), szoveg)
             kerdesek = motivum_be.b47_nyitott_kerdesek(b, motivum)
             self.assertTrue(kerdesek, azonosito)
             for kerdes in kerdesek:
                 self.assertIn('- %s' % kerdes.ertek, szoveg)
         self.assertIn('>1Móz 3:14</a>: az átok első kimondása, a kígyóra;',
                       '\n'.join(lathato(s) for s in szakasz('HAMART-001')))
+
+    def test_a_kereses_targya_hivatkozik_es_szamol(self):
+        """Az 1.1 nem ismétli a kritériumot és a tágabb kört (egyetlen teljes helyük a lap eleje, DT-F218n): a lap
+        eleji meghatározásra hivatkozik, a keresett elemeket megszámolja, és a többi alpontra mutat. A motívum
+        címét sem írja ki újra, és a szakasz elején egy magyarázó sor áll (a hatókör-sor kimaradt)."""
+        b = bemenet.Bemenet(kozos.GYOKER)
+        varhato = {'HAMART-001': '8 héber szóra, 5 görög szóra és 3 szópárra',
+                   'ISTENTISZT-001': '2 héber szóra, 1 görög szóra és 1 szópárra'}
+        for azonosito in MINTALAPOK:
+            motivum = MotivumId(azonosito)
+            sorok = [lathato(s) for s in szakasz(azonosito)]
+            szoveg = '\n'.join(sorok)
+            targy = motivum_be.b02_motivum(b, motivum)
+            for kezi in (targy.ide_tartozik, targy.nem_tartozik, targy.folerendelt):
+                self.assertNotIn(kezi.ertek, szoveg, azonosito)
+            for regi in ('**A motívum:**', '**Ami ide tartozik:**', '**Ami nem:**', '*A Döntési út:'):
+                self.assertNotIn(regi, szoveg, azonosito)
+            hol = sorok.index('### 1.1. A keresés tárgya')
+            mondat = sorok[hol + 2]
+            self.assertEqual(sorok[hol + 4], '### 1.2. A keresés forrásai', azonosito)
+            self.assertIn('([Mi tartozik ide, és mi nem](#%s))' % KRITERIUM_HORGONY.kod, mondat)
+            self.assertIn('A keresés %s terjedt ki' % varhato[azonosito], mondat)
+            self.assertIn('a szavakat az 1.2., a kizárás okait az 1.3., a megmaradt helyeket az 1.4. pont', mondat)
+            modell = fo.lap_keszit(kozos.GYOKER, motivum)   # a számok a modellből: a lánc szavai és a csoportok
+            self.assertTrue(modell.nezetek)
 
     def test_a_szakasz_lathato_szovegeben_nincs_belso_jeloles(self):
         """A szakasz látható szövegében nincs proveniencia, fájlnév, döntésszám, Strong-szám és belső kulcs (a

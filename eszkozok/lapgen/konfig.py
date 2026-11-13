@@ -33,6 +33,11 @@ KOZOS_PROVENIENCIA_KUSZOB = 2   # ennyi jegyzetben álló proveniencia-hármas k
 CSOPORT_PELDA_DB = 5            # a csoportos ok alatt ennyi példavers áll a Károli-szöveggel
 KIZARASOK_NYITVA_HATAR = 10     # a melléklet verslistája ennyi versig nyitva áll, fölötte lenyíló
 
+# az ismétlés kapui (lapgen.ismetles): a szavak száma az ablakban
+KRITERIUM_ABLAK = 12            # a kritérium ekkora szósora a látható lapon legfeljebb egyszer állhat (BUKÁS)
+ISMETLES_ABLAK = 16             # ekkora azonos szósor kétszer: figyelmeztetés (15 szónál hosszabb ismétlés)
+ISMETLES_IDEZET_LEGFELJEBB = 4  # az ablakban legfeljebb ennyi idézett szó állhat (a bibliai idézet nem ismétlés)
+
 # --- Döntések, amelyeknek a dátuma a lapon áll (a szám nem) -----------------------------------------------------
 DONTES_JELENTES_FUNKCIO = 'DT272'   # a „Jelentés (a szó)” és a „Funkció (a motívumban)” oszlop szétválasztása
 DONTES_UBS_SZONEZET = 'DT393'       # az UBS-jelentés cellája: rövid glossza, a teljes szócikk a szónézetben

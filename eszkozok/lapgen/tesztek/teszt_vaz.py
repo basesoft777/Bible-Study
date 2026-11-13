@@ -15,6 +15,7 @@ from lapgen.szoveg import MotivumId
 
 S2, S3, S4, S5, S6, S7, S8, S9 = ('S2 (F218.5)', 'S3 (F218.6)', 'S4 (F218.7)', 'S5 (F218.8)', 'S6 (F218.9)',
                                   'S7 (F218.10)', 'S8 (F218.11)', 'S9 (F218.12)')
+ISM_3 = 'a „3. Kizárt és vizsgált helyek” szakasz szelete (a briefben nincs külön szelete; a szakasz megépítésekor)'
 
 
 # A hibanapló példányainak szövegmintái (brief 7.3): HN → [(minta, lapszöveg-részlet a hibás lapról)]. A részlet a
@@ -91,6 +92,23 @@ class Szerkezeti(unittest.TestCase):
     @unittest.skip(S8)
     def test_gk10_szakaszszam_es_horgony_a_modellbol(self):
         """GK-10: a szakaszrend cseréje után 0 hibás belső link."""
+
+    @unittest.skip(S8)
+    def test_ism_a_lap_eleji_meghatarozas_horgonyt_kap(self):
+        """DT-F218n: a lap eleji meghatározás („Mi tartozik ide, és mi nem”) a `szakaszok.KRITERIUM_HORGONY`
+        horgonyt kapja, a címe a `fej.hatar.cim` sablonsorból jön (ugyanaz, amelyre az 1.1 hivatkozik), és a
+        kritérium a teljes lapon pontosan egyszer áll (a kapu `teljes` módja ettől kezdve él)."""
+
+    @unittest.skip(S8)
+    def test_ism_a_kolofon_nem_ismetli_a_kriteriumot(self):
+        """DT-F218n: a Kolofon táblájának „Negatív kritérium” sora ma a teljes kritériumot ismétli (az ötödik
+        példány); a teljes lapon a kritérium kapuja megfogja. A sor helyén hivatkozás álljon a lap elejére (a
+        felhasználó döntése a 218a végi listából)."""
+
+    @unittest.skip(ISM_3)
+    def test_ism_a_3_szakasz_utal_nem_ismetel(self):
+        """DT-F218n: a „3. Kizárt és vizsgált helyek” szakasz végi „Negatív kritérium” bekezdése helyett utalás áll
+        a lap eleji meghatározásra, a szakasz elején."""
 
     @unittest.skip(S9)
     def test_gk11_nincs_globalis_allapot(self):
