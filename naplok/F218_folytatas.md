@@ -27,7 +27,7 @@
 | S3a: Áttekintés és 4.1 | **kész: diff 0 az engedélyen kívül** (`759a0699`) | a szakasz váza (cím, blokkfejléc, bevezető, hatókör-sor, a nyelvrészek és a nyelvfüggetlen rész feje, a 4.11 mutató), az Áttekintés táblája és a 4.1 (címszó, kiejtés, rövid jelentés) mindkét nyelven; a regresszió részleges módja |
 | S3b: 4.2 BDB-kártya | nem indult | a héber szavak kártyái (500 sor); a kártya közös kódja a Thayer-kártyáé is |
 | S3c: Thayer és a többi szótár (4.3–4.10) | **részben kész** (`759a0699`, `76a92fdb`): a kész pontok diffje 0 az engedélyen kívül | kész: 4.3, 4.4, 4.5, 4.7 (S3-HN15: 2), 4.9, 4.10 mindkét nyelven. **Hátravan:** a Thayer-kártya (a görög 4.2, 154 sor; T5: az 5 elavult sor), a 4.8 (Nyelvi háttér), a 4.6 (LXX-híd: az első fele az S4 számításából jön, ezért az S4-gyel zárul; a második fele itt készülhet el) |
-| S3d: 4.12 Nave, 4.13 és 4.14 Károli | nem indult | GK-19, GK-21 (a Nave-blokk nem üres) |
+| S3d: 4.12 Nave, 4.13 és 4.14 Károli | **kész: diff 0 az engedélyen kívül** (az 5. session) | mindhárom pont elsőre bájtra egyezik a referenciával; GK-19 két fele (minden pár számít; nincs bizonyossági címke) és GK-21 (a Nave-blokk nem üres: kapu és teszt) tesztelve. 37 alblokkból 24 kész; engedélysorok: S3-FORRAS 1 (új hash), S3-HN15 2; 223 teszt (190 zöld, 33 váz); festékpróba 0. Új bemenetek: B53, B55, B57, B69, B70, B71 |
 | F218.7 (S4) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
@@ -62,9 +62,11 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 - **A „3. Kizárt és vizsgált helyek” szakasz** (a briefben nincs külön szelete): a szakasz végi „Negatív kritérium” bekezdés helyett utalás áll, a szakasz elején; a referenciától való eltérés az `ISM-` osztályba kerül, előre megszámolva (a bekezdés 1 sor és az üres sora ki, az utalás 1 sor és az üres sora be).
 - Mindháromra vázlat-teszt áll (`teszt_vaz.py`, `test_ism_*`). Az ismétlés-figyelő találatai a futás végén íródnak ki (figyelmeztetés); a számuk szeletenként a jelentésbe kerül.
 
-**Az alszeletek rendje a következő sessionnek:** (1) **S3b** (4.2 BDB-kártya) és vele az S3c-ből a Thayer-kártya, mert a két kártya kódja közös (`gerinc_blokk`); (2) az **S3c** maradéka (4.8; a 4.6 társlistája); (3) **S3d** (4.12, 4.13, 4.14). Minden alszelet a saját diffjével (0 engedély nélküli sor) zárul, commit, push és e fájl frissítése után; 70%-os kontextusnál a következő alszeletet új session viszi.
+**Az S3d kész (az 5. session).** Az 5. session az alszeletek közül az S3d-t vitte, mert önálló (a nyelvfüggetlen rész három pontja), a 4.2 kártyáihoz pedig friss kontextus kell: a régi `gerinc_blokk` és hívottai kb. 900 sor, sok szövegművelettel (a kiemelés, a rövidítés-jelölés és a Károli-számozás a fordítás szövegén belül).
 
-**Független ellenőrzés két alszeletenként, célzottan** (nem Fable modellel). Az első az S3a és az S3c lezárása után esedékes: a hatóköre a két alszelet diffje (`03636753`-tól) és a 3. ellenőrzés javítókörének két tétele (`28be9127`-től). A 4. session nem futtatta: lezárt alszelet eddig egy van (S3a), az S3c nyitva áll. A második az S3b és az S3d után.
+**Az alszeletek rendje a következő sessionnek:** (1) **S3b** (4.2 BDB-kártya) és vele az S3c-ből a Thayer-kártya, mert a két kártya kódja közös (`gerinc_blokk`); (2) az **S3c** maradéka (4.8; a 4.6 társlistája). Minden alszelet a saját diffjével (0 engedély nélküli sor) zárul, commit, push és e fájl frissítése után; 70%-os kontextusnál a következő alszeletet új session viszi.
+
+**Független ellenőrzés két alszeletenként, célzottan** (nem Fable modellel). **Két lezárt alszelet van (S3a és S3d): az első ellenőrzés esedékes.** A hatóköre: az S3a diffje (`03636753`..`759a0699`, a 4. szakasz váza, az Áttekintés és a 4.1), az S3d diffje (az `F218.6: S3d` commit), a DT-F218n commitja (`b1c7b0eb`: az 1.1 új alakja és az ismétlés két kapuja) és a 3. ellenőrzés javítókörének két tétele (`28be9127`-től). A második az S3b és az S3c után.
 
 A pontok részletei (a kész alblokkok listáját a regresszió adja; a jegyzetmappa `F218_eszkozok/reszdiff.py` szkriptje alblokkonként mutatja a diffet):
 
@@ -168,6 +170,8 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 
 ## Nyitott kérdések (a felhasználóhoz, illetve az orkesztrátorhoz)
 
+- **S3d, megfigyelések a 218a végi listába (a mai szöveg áll):** a 4.12 bevezetője zárójelben megismétli a tágabb kört (a DT-F218n szerint hivatkozás kellene; a kritérium kapuja a tágabb kört nem őrzi: külön döntés); a 4.12 dőlt sora a licencet a mondatban közli („közkincs”); a 4.14 rögzített toldaléka („2-nak van”) és névelője („a {N} találat”); a hamis párhuzam listájában „Sir” áll „JSir” helyett (a Károli-fájl kulcsa); a megjegyzésben álló belső proveniencia a régi szkriptek nevét hordozza; a 4.14 látható forrássorából hiányzik a Károli–Strong párosítás. Részletek: a jelentés „S3d” szakasza.
+- **S3d, nem mért ágak:** a 10 versnél rövidebb hamis-párhuzam lista (az új lap könyvenként, igehellyel írja; a régi versszöveggel és a jelölt döntésének belső kulcsával); a nem jóváhagyott motívum (a 4.13–4.14 nem áll a lapon) és a témadöntés nélküli motívum (a 4.12 nem áll a lapon); a lefordítatlan témanév. A két mintalapon egyik sem fut.
 - **DT-F218n, a kézi szöveg változásai (a 218a végi listába; a forrásba csak a felhasználó jóváhagyásával kerülnek):** nyolc tétel a jelentés „A 218a végi listába: a kézi szöveg változásai” táblájában (a Kivonat két törlendő mondata és két átvezetése, a „Károli alapszövege” a lap elejére, a kritérium tagolása és a kettős szólista, a kizárási lista eltérése, a Kivonat szószáma). **Az 1., a 3. és az 5. tétel az S8 előfeltétele** (nélkülük a kritérium kapuja a HAMART-001 teljes lapján BUKÁS).
 - **DT-F218n, döntések (a 218a végi listába):** öt új sablonmondat (`d11.*`, `dontes=var`); melyik magyarázó sor maradjon az 1. szakasz elején (most a számoló bevezető); a Kolofon „Negatív kritérium” sora (javaslat: hivatkozás); a 9-es sablon bevezetője és 2. pontja (N-F218f).
 - **S3, HN-15 (új mondat a mai hibás helyett, `dontes=var`; a 218a végi listába):** a 4.7 táblái alatti jegyzet vége a régi lapon „görögül a TBESG angol glosszája (magyar rövid glossza-tábla a görögre még nincs)”; ez hamis (a görög rövid jelentés magyarul áll a fordítástáblában). Az új mondat (`s4.p7.labjegyzet`): „… a rövid jelentés: héberül a héber glosszák magyar táblája, görögül a lexikon fordítástáblája.” (a két forrásnév a névtáblából). 2 engedélysor-darab (S3-HN15).
@@ -210,6 +214,7 @@ Az S1 szakasz-diffje a heti keret 89%-ánál lett 0 (az engedélyeken kívül); 
 | A 3. ellenőrzés és a javítóköre kész | 2026-11-13 | 83% | 14% | 56% | az ellenőrzés (opus) és a két javítás: 1 százalékpont heti; a kontextus 65% |
 | 4. session indul (S3) | 2026-11-13 14:05 | 84% | 15% | 60% | `get_usage`; a kontextus 12% (1M-es ablak) |
 | S3 első része kész | 2026-11-13 | 86% | 19% | 77% | a szakasz felmérése (a régi kód olvasása) és az első rész: 2 százalékpont heti; a kontextus 52% |
+| S3d kész (4.12, 4.13, 4.14) | 2026-11-13 19:00 | 94% | 32% | 32% | a három pont (a régi Nave- és Károli-szerepmodul visszafejtése, 6 új bemenet, 42 sablonsor): kb. 3 százalékpont heti; a kontextus a 4.13–4.14 után 54% (a mérés a 4.12 előtt készült) |
 | DT-F218n kész (5. session) | 2026-11-13 17:25 | 91% | 26% | 9% | az ismétlés megszüntetése az 1. szakaszban, a két kapu és a tesztek; a session közben az 5 órás keret kimerült, a nullázás után folytatódott; a kontextus 31% (1M-es ablak) |
 | S3 második része kész (4.7, 4.9) | 2026-11-13 | 87% | 21% | 85% | a 4.9 és a 4.7 pont: 1 százalékpont heti; a kontextus 60% |
 

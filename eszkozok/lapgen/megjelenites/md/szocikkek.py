@@ -6,6 +6,7 @@ hiányzik a `_PONTOK` táblából: a lap ilyenkor részleges, a pont kimarad.
 """
 from lapgen import konfig
 from lapgen.megjelenites.md import keret as K
+from lapgen.megjelenites.md import szotari_karoli, szotari_nave
 from lapgen.szamitas.szocikkek import Nyelv
 
 AZONOSITO = 'szocikkek'
@@ -305,6 +306,17 @@ def _kozos(iro, ny, szakasz, modell, keret):
     _pont_cim(iro, ny, szakasz, konfig.PONT_VISSZHANG,
               ny.s('s4.p11.cim', szam=keret.rend.sorszam(HATASTORTENET), nev=ny.s('cim.hatastortenet.rovid'),
                    horgony=K.szakasz_horgony(keret, HATASTORTENET)))
+    # a tematikus index pontja csak akkor áll, ha a motívumnak van döntése a témákról (a lapmodell mondja meg)
+    if modell.tematikus is not None:
+        _pont_cim(iro, ny, szakasz, konfig.PONT_TEMATIKUS)
+        szotari_nave.tematikus(iro, ny, modell.tematikus, keret)
+    # a Károli-megfelelők két pontja csak azon a motívumon áll, amelyen jóváhagyták (a lapmodell mondja meg)
+    if modell.karoli.megfelelok is not None:
+        _pont_cim(iro, ny, szakasz, konfig.PONT_KAROLI)
+        szotari_karoli.megfelelok(iro, ny, modell.karoli.megfelelok, keret, szo_iras, szo_nevelovel)
+    if modell.karoli.parhuzam is not None:
+        _pont_cim(iro, ny, szakasz, konfig.PONT_PARHUZAM)
+        szotari_karoli.parhuzam(iro, ny, szakasz, modell.karoli.parhuzam, keret, szo_iras, szo_nevelovel)
 
 
 def megjelenit(iro, modell, keret, forrasok):

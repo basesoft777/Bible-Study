@@ -37,6 +37,7 @@ KIZARASOK_NYITVA_HATAR = 10     # a melléklet verslistája ennyi versig nyitva 
 KRITERIUM_ABLAK = 12            # a kritérium ekkora szósora a látható lapon legfeljebb egyszer állhat (BUKÁS)
 ISMETLES_ABLAK = 16             # ekkora azonos szósor kétszer: figyelmeztetés (15 szónál hosszabb ismétlés)
 ISMETLES_IDEZET_LEGFELJEBB = 4  # az ablakban legfeljebb ennyi idézett szó állhat (a bibliai idézet nem ismétlés)
+ISMETLES_SZAMOS_LEGFELJEBB = 8  # az ablakban legfeljebb ennyi számjegyes szó állhat (az igehely-felsorolás nem próza)
 
 # --- Döntések, amelyeknek a dátuma a lapon áll (a szám nem) -----------------------------------------------------
 DONTES_JELENTES_FUNKCIO = 'DT272'   # a „Jelentés (a szó)” és a „Funkció (a motívumban)” oszlop szétválasztása
@@ -88,6 +89,22 @@ LICENC_TW = 'tW_szocikkek'
 # Az arány fokozatai a következtetés mondatához: (alsó határ, fokozat), csökkenő rendben
 FOKOK = ((0.90, 'szinte'), (0.67, 'tobbseg'), (0.50, 'fele'), (0.0, 'keves'))
 VERSENKENTI_KIS = 2     # ha minden szó legfeljebb ennyi helyen áll, a versenkénti pont nem von le következtetést
+
+# 4.12 (tematikus index): a régi `szerep_nave.py` küszöbei
+NAVE_MIN_VERS = 2              # a téma legalább ennyi motívumverset érint
+NAVE_MIN_SZAZALEK = 1          # a motívumversek aránya a téma összes verséhez legalább ennyi százalék
+NAVE_MIN_ARANY = NAVE_MIN_SZAZALEK / 100
+
+# 4.13–4.14 (a Károli-fordítás magyar szavai): a régi `szerep_karoli.py` és `lexikon_general.py` küszöbei
+KAROLI_MIN_HELY = 3            # ennyi helytől von le következtetést a 4.13 egy szóról
+KAROLI_ALLANDO = 0.67          # a leggyakoribb magyar szó aránya ettől: a szó magyarul is követhető
+KAROLI_KULCS_MIN_SOR = 3       # kulcsszava a legalább ennyi helyen álló szónak lehet
+KAROLI_KULCS_ARANY = 0.5       # a kulcsszó a szó helyeinek legalább ekkora hányadában áll
+KAROLI_ELOTAG_MARADEK = 3      # a kulcsszóval kezdődő szóalak egyezik, ha utána legfeljebb ennyi betű áll
+KAROLI_OLVADAS_MIN = 3         # a ritkább szótári alak a legalább ennyi betűs gyakoribb alakba olvad
+KAROLI_CSALAD_MIN = 5          # a ragozott maradék a legalább ennyi betűs szótári alakba olvad (szócsalád)
+KAROLI_REJTETT_PELDA = 3       # a bevezető ennyi rejtett párhuzamot nevez meg példaként
+KAROLI_HAMIS_NYITVA = 10       # a hamis párhuzam listája ennyi versig nyitva áll, fölötte lenyíló
 
 # 4.7 (Megfelelők a másik nyelven): a híd mondatában ennyi igehely áll; a görög szócsalád előtagjai és a tő hossza
 HID_HELYEK = 4

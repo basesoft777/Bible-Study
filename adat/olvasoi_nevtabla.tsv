@@ -48,3 +48,10 @@ szotari_pont	13	Károli-megfelelők	szotar_szerepek.tsv szerep (a nem aktív kap
 szotari_pont	14	Rejtett / hamis párhuzam	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
 forras	B32	az UBS Dictionary of New Testament Greek	OLVASOI_FORRASNEV
 forras	B15	a héber glosszák magyar táblája	OLVASOI_FORRASNEV
+forras	B07	a Károli-fordítás (1908)	OLVASOI_FORRASNEV
+forras	B08	a STEPBible héber szövege (TAHOT)	OLVASOI_FORRASNEV
+forras	B09	a STEPBible görög szövege (TAGNT)	OLVASOI_FORRASNEV
+forras	B55	a Károli-szavak szótári alakjai	OLVASOI_FORRASNEV
+forras	B57	Nave tárgymutatója (1897)	OLVASOI_FORRASNEV
+forras	B70	a tematikus index döntései	OLVASOI_FORRASNEV
+forras	B71	a Nave-témák magyar nevei	OLVASOI_FORRASNEV

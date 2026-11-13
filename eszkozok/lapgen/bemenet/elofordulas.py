@@ -190,6 +190,11 @@ class Karoli:
     def van(self, vers):
         return vers.kod in self._szovegek
 
+    def mind(self):
+        """Minden vers a fordítás rendjében: (a vers kódja, a szövege összevetéshez). A szöveg innen nem idézhető:
+        csak keresésre szolgál (idézni a `szoveg` ad forrásszöveget)."""
+        return self._szovegek.items()
+
     def szoveg(self, vers):
         """A vers szövege idézhető forrásszövegként; None, ha a vers nincs a Károliban."""
         nyers = self._szovegek.get(vers.kod)

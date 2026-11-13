@@ -105,16 +105,27 @@ class Parositas:
     az első kérdéskor töltődik be; a nem párosított könyv (nincs fájlja) kimondott hiány: üres válasz."""
 
     def __init__(self, b, konyv_utvonal):
-        self._b, self._konyv_utvonal, self._konyvek = b, konyv_utvonal, {}
+        self._b, self._konyv_utvonal, self._konyvek, self._nyers = b, konyv_utvonal, {}, {}
+
+    def parok(self, vers_kod):
+        """A vers minden párja a tábla rendjében: [(a magyar szó, ahogy a táblában áll; a Strong-kód)]. Szűrő
+        nincs: minden pár számít (GK-19). Üres, ha a kód nem egyetlen vers, vagy a könyv nincs párosítva."""
+        m = _VERS_KONYV_RX.match(vers_kod)
+        if not m:
+            return ()
+        self._konyv(m.group(1))
+        return self._nyers[m.group(1)].get(vers_kod, ())
 
     def _konyv(self, konyv):
         if konyv not in self._konyvek:
             index = {}
+            nyers = self._nyers.setdefault(konyv, {})
             utvonal = self._konyv_utvonal.get(konyv)
             if utvonal is not None:
                 tabla = self._b._tabla('B54', utvonal=utvonal, oszlopok=_PAR_OSZLOPOK)
                 v, hn, hu, er, szo, st = (tabla.oszlop(o) for o in _PAR_OSZLOPOK)
                 for sor in tabla.sorok:
+                    nyers.setdefault(sor[v], []).append((sor[hu], sor[st]))
                     if sor[er].isdigit() and sor[hn].isdigit():
                         index.setdefault(sor[v], []).append(
                             (int(sor[hn]), ''.join(_SZO_RX.findall(sor[hu].casefold())), int(sor[er]), sor[szo],
@@ -143,6 +154,11 @@ class Parositas:
 
         szukitett = [j for j in jeloltek if osszefuggo(j[0], j[1])]
         return sorted({(n, alak) for _hn, _hu, n, alak in (szukitett or jeloltek)})
+
+
+def parositas_konyvtara(b):
+    """A párosítás könyvfájljainak könyvtára útvonal-értékként (a megjegyzésbe kerülő provenienciához)."""
+    return b.utvonal_ertek('B54', b.jegyzek_sor('B54').utvonal.strip().rsplit('/', 1)[0])
 
 
 def b54_karoli_parok(b):

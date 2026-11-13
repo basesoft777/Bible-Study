@@ -18,7 +18,9 @@ from lapgen.bemenet import szavak as szavak_be
 from lapgen.bemenet import szotari as szotari_be
 from lapgen.bemenet import ubs as ubs_be
 from lapgen.szamitas import elofordulas as elofordulas_sz
-from lapgen.szamitas import szotari_sece
+from lapgen.szamitas import szotari_karoli, szotari_nave, szotari_sece
+from lapgen.szamitas.szotari_karoli import KaroliPontok
+from lapgen.szamitas.szotari_nave import Tematikus
 from lapgen.szamitas.szotari_sece import Sece
 from lapgen.szamitas.szotari_tipusok import Jelentes, Szo, Szoveg
 from lapgen.szamitas.vizsgalat import KapuHiba
@@ -144,6 +146,8 @@ class Szocikkek:
     attekintes: Tuple[AttekintoSor, ...]
     nyelvek: Tuple[Nyelvresz, ...]          # görög, héber: mindkettő áll, szavak nélkül is (kimondott hiány)
     kozos_pontok: Tuple[int, ...]
+    tematikus: Optional[Tematikus]          # a 4.12 pont; None, ha a motívumnak nincs döntése a témákról
+    karoli: KaroliPontok                    # a 4.13 és a 4.14 pont; ha a motívumon nem épülnek, a két mező None
     forditas_allapot: Tuple[ForditasJelzes, ...]
 
 
@@ -374,6 +378,8 @@ def szamit(korny):
         attekintes=attekintes,
         nyelvek=nyelvek,
         kozos_pontok=szerepek.kozos(),
+        tematikus=szotari_nave.szamit(f, korny.motivum),
+        karoli=szotari_karoli.szamit(f, korny.motivum),
         forditas_allapot=f.allapot.tetelek())
 
 
@@ -388,4 +394,5 @@ def kapu(modell):
                        % (len(modell.attekintes), len(modell.szavak)))
     if sum(len(resz.szavak) for resz in modell.nyelvek) != len(modell.szavak):
         raise KapuHiba('a nyelvenkénti szavak száma nem adja ki a motívum szavainak számát (%d)' % len(modell.szavak))
+    szotari_nave.kapu(modell.tematikus)
     return modell

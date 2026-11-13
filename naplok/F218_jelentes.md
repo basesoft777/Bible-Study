@@ -725,3 +725,40 @@ A 9-es sablon bevezetője és 2. pontja (a fölérendelt fogalom mondata a Kivon
 - **A motívum-specifikus mondat nem került az 1.1-be.** A lektor mintamondatának vége („a döntő feltétel a visszautalás az 1Móz 3–9 láncára”) motívumonként más, sablonmondat nem mondhatja ki; ha kell, kézi mező lesz belőle.
 - **A Kolofon „Negatív kritérium” sora:** javaslat: hivatkozás a lap elejére (az S8 előtt).
 - **Az ismétlés-figyelő találatai** közül a 4. szakasz két hosszú sablonmondata a héber és a görög részben is áll (41 és 24 szó): szándékos szerkezet, de az olvasó kétszer látja. Ha zavaró, a mondat a nyelvfüggetlen részbe emelhető.
+
+## F218.6 — S3d: a 4.12 (tematikus index), a 4.13 (Károli-megfelelők) és a 4.14 (rejtett és hamis párhuzam) pont (`claude-fable-5-2`, 2026-11-13, az 5. session)
+
+**Mi készült el.** A nyelvfüggetlen rész három pontja; az S3d alszelet ezzel lezárult. Új modulok:
+- `bemenet/nave.py` (B57: a Nave-tárgymutató sorai Károli-versekre bontva; B70: a motívum döntései a témákról; B71: a témák magyar neve), `szamitas/szotari_nave.py`, `megjelenites/md/szotari_nave.py`. A KJV-számozású hivatkozások bontása a közös `eszkozok/nave_bontas.py` szabálya (tiszta függvény, fájlt nem olvas); a hozzá kellő KJV-megfeleltetés a Septuaginta-kiadás fájljaiból (B35, új index) és a Károli-versmegfeleltetésből (B34) jön.
+- `bemenet/karoli_szo.py` (B55: a Károli-szavak szótári alakja; B53: a funkciókapcsolók; B69: a nyelvtani szavak Strong-számai), `szamitas/szotari_karoli.py` (a régi `szerep_karoli.py` szabályai: szótári alak és szócsalád, kulcsszó, rejtett és hamis párhuzam, a kulcsszó mögött álló eredeti szó), `megjelenites/md/szotari_karoli.py`.
+- Bővült a `bemenet/szavak.py` (a párosítás minden párja versenként: `Parositas.parok`) és a `bemenet/elofordulas.py` (a Károli-fordítás minden verse a fordítás rendjében: `Karoli.mind`).
+
+**Mérés.** A HAMART-001 lapján mindhárom pont (a referencia 2178–2318. sora) az első futásra bájtra egyezett a referenciával. A 4. szakasz 37 alblokkjából 24 kész, 13 nincs kész; a kész alblokkokban 3 diff-sor áll, mind engedéllyel (`S3-FORRAS` 1: a blokkfejléc forráslistája új hash-sel, mert a szakasz új bemeneteket olvas; `S3-HN15` 2). A számok a jóváhagyott lapéi: 7 téma (31 szóba jöhetőből, 2 tiltott); 25 szócsalád; 15 szóból 2-nek van kulcsszava; 1 rejtett és 2 310 hamis párhuzam. Az ISTENTISZT-001 lapján a három pont generálódik (5 téma 11 szóba jöhetőből, 4 tiltott; 13 szócsalád; 2 rejtett és 17 hamis párhuzam).
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/general.py --cel lexikon2 --id ISTENTISZT-001 | forras=a munkafa az F218.6 (S3d) commit előtt | ts=2026-11-13`.*
+
+**GK-19 (T6).** A párosítás minden párja számít, szűrő nélkül (teszt: a vers párjainak száma a tábla sorainak száma); a 4.13–4.14 látható szövegében nincs bizonyossági címke, százalékos pontosság és páronkénti jelölés (teszt). A pontosság egyszeri kimondása a Módszertanban az S8-ra marad (a vázlat-teszt oda mutat).
+
+**GK-21.** A tematikus index pontja nem üres: kapu a modellen (ha a pont épül, van témája, és minden témának van motívumverse) és teszt a HAMART-lap 7 témájára.
+
+**Tesztek.** Új fájlok: `teszt_szotari_karoli.py` (10 teszt), `teszt_szotari_nave.py` (7 teszt); a GK-21 vázlat-tesztje valódi tesztté vált. Összesen 223 teszt (190 zöld, 33 váz). Festékpróba: 0 szivárgás mindkét lapon.
+*Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001 | forras=a munkafa az F218.6 (S3d) commit előtt | ts=2026-11-13`.*
+
+**Új táblasorok.** Jegyzék: +6 (B53, B55, B57, B69, B70, B71). A térkép B57 sora három fájlt fogott össze; licenc és forrásnév szerint három sor lett (B57, B70, B71). A B69 (nyelvtani szavak) a térkép bemenetlistájából hiányzott: a régi `szerep_karoli.py` olvasta. Névtábla: +7 forrásnév (B07, B08, B09, B55, B57, B70, B71; a mai lap szavai). Sablontábla: +42, mind a régi generátor mondata betűre (`eredet` szerint: `SZN.olvasoi_12` 2, `SZN.blokk_12` 3, `SZN._hu` 1, `olvasoi_13_szavankent` 10, `olvasoi_14_szavankent` 14, `SZK.blokk_13` 2, `SZK.blokk_14` 5, `_tomor_lista` 3, a forrássor és a névelős idézet 2); új mondat nincs.
+*Proveniencia: `scope=a két táblabővítő szkript beszúrásai (sorok megszámolva) | forras=a munkafa az F218.6 (S3d) commit előtt | ts=2026-11-13`.*
+
+**Az ismétlés-figyelő újrakalibrálása.** A 4.13 hosszú igehely-felsorolásai az ISTENTISZT-001 lapján 5 hamis találatot adtak (két szócsalád azonos helylistája). Új küszöb: az ablakban legfeljebb 8 számjegyes szó állhat (`ISMETLES_SZAMOS_LEGFELJEBB`); az igehely-felsorolás így nem találat. A találatok száma a kalibrálás után: HAMART-001 7, ISTENTISZT-001 4 (ugyanazok, mint a DT-F218n mérésénél).
+*Proveniencia: `scope=python eszkozok/general.py --cel lexikon2 (a futás figyelmeztetései), a küszöb előtt és után | forras=a munkafa az F218.6 (S3d) commit előtt | ts=2026-11-13`.*
+
+**Egyeztetett eltérések a régi kódtól** (a kimenet a HAMART-lapon bájtra egyezik):
+- A kulcsszó mögött álló eredeti szó megszámolása determinisztikus: holtversenyben a Strong-szám rendje dönt (a régi kód halmaz-bejárása a futástól függött). A két mintalapon nincs holtverseny az élen.
+- A 10 versnél rövidebb hamis-párhuzam lista is könyvenként, igehellyel áll (lenyíló nélkül). A régi kód a rövid listánál versszöveget és a jelölt döntésének belső kulcsát írta ki (`jelölt: <kulcs>`); ez belső mező, az új lapra nem kerülhet. A két mintalapon nincs rövid lista.
+- Ha a motívumon a 4.13–4.14 nincs jóváhagyva (B53) vagy a soroknak nincs Károli-szava, a két pont nem áll a lapon; ha a motívumnak nincs döntése a témákról (B70), a 4.12 nem áll a lapon. Ezek az ágak a két mintalapon nem futnak.
+- A 4.12 bevezetőjének példája (az első téma neve) csak akkor áll magyarul, ha a fordítás az angol név mai szövegéből készült; a régi kód itt a forrás-hash-t nem nézte, és fordítás híján a kisbetűsített angol nevet írta. Az új lap fordítás híján az angol nevet változtatás nélkül adja, „fordításra vár” jelöléssel. A két mintalapon minden név le van fordítva.
+
+**Megfigyelések a 218a végi listába** (a mai jóváhagyott szöveg áll, változtatás nélkül):
+- **A 4.12 olvasói bevezetője zárójelben megismétli a tágabb kört** („a tágabb, általános témák (a bűn és következményei általában, …) szándékosan kimaradtak”): ez a DT-F218n szerint a tágabb kör negyedik példánya a lapon. Javaslat: hivatkozás a lap elejére („a tágabb kör témái szándékosan kimaradtak”). A kritérium kapuja ezt nem fogja meg (a tágabb kör 11 szó, és nem része a kritérium mezőjének): ha a tágabb körre is kell kapu, külön döntés.
+- A 4.12 dőlt sora a licencet a mondatba írva közli („közkincs”); a GK-07 szerint licencszöveg csak a licencleltárból jöhet (S8-ban egységesítendő).
+- A 4.14 mondatában „{n}-nak van” áll rögzített toldalékkal („2-nak”); más számnál hibás volna. A „a {N} találat” névelője is rögzített.
+- A hamis párhuzam listájában a Siralmak könyve a Károli-fájl kulcsával áll („Sir”), nem a lap többi részének rövidítésével („JSir”).
+- A megjegyzésben álló belső proveniencia a régi szkriptek nevét hordozza (`eszkozok/szerep_karoli.py`, `eszkozok/szerep_nave.py`); a látható forrássor a névtáblából jön. A megjegyzés a 218b-ben igazítható az új generátorhoz.
+- A 4.14 forrássorából hiányzik a Károli–Strong párosítás (a belső proveniencia megnevezi, a látható sor nem): a mai lap szövege; a GK-07 szerint a látható forráslistának a valódi olvasást kell követnie (S8).

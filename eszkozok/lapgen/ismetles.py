@@ -7,7 +7,8 @@
    szakaszba is kiírták.
 2. **Ismétlés-figyelő** (figyelmeztetés). Ha egy `ISMETLES_ABLAK` szavas szósor a látható lapon kétszer áll, a
    figyelő jelzi. A bibliai és a szótári idézet nem ismétlés: az ablakban legfeljebb
-   `ISMETLES_IDEZET_LEGFELJEBB` idézett szó állhat.
+   `ISMETLES_IDEZET_LEGFELJEBB` idézett szó állhat. Az igehelyek felsorolása sem próza: az ablakban legfeljebb
+   `ISMETLES_SZAMOS_LEGFELJEBB` számjegyes szó állhat.
 
 Mindkettő a kész sorok fajta-térképén fut: a megjegyzés, a szerkezeti jelölés és a horgony nem látható szöveg.
 A szó: betűk és számjegyek sora, kisbetűsítve; az írásjel és a sablonmondatban álló jelölés (HTML-címke, a
@@ -137,8 +138,11 @@ def ismetlesek(sorok, ablak=konfig.ISMETLES_ABLAK, idezet_legfeljebb=konfig.ISME
             continue
         soronkent[sorszam] = szosor
         idezett = [1 if szo.idezett else 0 for szo in szosor]
+        # az igehelyek felsorolása (könyv, fejezet, vers) nem próza: a túlnyomóan számokból álló ablak nem számít
+        szamos = [1 if any(betu.isdigit() for betu in szo.alak) else 0 for szo in szosor]
         for i, reszlet in _ablakok(szosor, ablak):
-            if sum(idezett[i:i + ablak]) <= idezet_legfeljebb:
+            if sum(idezett[i:i + ablak]) <= idezet_legfeljebb \
+                    and sum(szamos[i:i + ablak]) <= konfig.ISMETLES_SZAMOS_LEGFELJEBB:
                 hol_all.setdefault(reszlet, []).append((sorszam, i))
     # Az ismétlődő ablak a helyein együtt nyúlik tovább, amíg minden helyén ugyanaz a szó következik: így egy
     # találat a leghosszabb közös szósor, és minden találatnak legalább két helye van. A már lefedett ablak

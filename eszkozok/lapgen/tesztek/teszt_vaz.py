@@ -131,15 +131,11 @@ class Szerkezeti(unittest.TestCase):
     def test_gk18_bdb_betujavitas_mindenutt(self):
         """GK-18: a kártya és az olvasói réteg ugyanazt a teljesen javított BDB-szöveget adja."""
 
-    @unittest.skip(S3)
+    @unittest.skip(S8)
     def test_gk19_karoli_parositas(self):
-        """GK-19 (T6): minden pár számít; a látható szövegben 0 bizonyossági címke és 0 páronkénti jelölés; a mért
-        pontosság egyszer, a Módszertanban áll, a konfigból."""
-
-    @unittest.skip(S3)
-    def test_gk21_a_dontesi_ut_szamai_osszeadodnak(self):
-        """GK-21: a Nave-blokk nem üres. (A vizsgálat számainak összeadódása és a döntés nélküli versek száma a
-        modellen kész: `teszt_dontes.py`; a Döntési út szakasz ugyanebből a modellből ír.)"""
+        """GK-19 (T6): a párosítás mért pontossága egyszer, a Módszertanban áll, a konfigból. (A másik két fele
+        kész: minden pár számít, és a 4.13–4.14 látható szövegében nincs bizonyossági címke és páronkénti jelölés:
+        `teszt_szotari_karoli.py`.)"""
 
     @unittest.skip(S9)
     def test_gk24_alakosztaly_kapu_tipus_szerint(self):
