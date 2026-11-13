@@ -1,0 +1,352 @@
+# A lapgenerátor (eszkozok/lapgen) sablontáblája: a lap minden gépi mondata. Séma: adat/SEMA.md 2.61
+kulcs	mondat	parameterek	szakasz	eredet	dontes
+cim.szamozott	{sorszam}. {cim}	sorszam:szam, cim:lathato	keret	uj_cimek_alkalmaz	-
+cim.alpont	{szakasz}.{alpont}. {cim}	szakasz:szam, alpont:szam, cim:lathato	keret	uj_cimek_alkalmaz	-
+cim.elofordulasok	Előfordulások	-	2	UJ_SZAKASZOK	-
+cim.elofordulasok.szoveg	Az igehelyek szövege	-	2.1	blokk_elofordulasok	-
+e2.osszegzo	{lelet} {megb} **Következtetés:** {kov|; }.	lelet:lathato, megb:lathato, kov:lista(lathato)	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.lelet.ket_szovetseg	A motívum {n} igehelyen fordul elő, {konyvek} bibliai könyvben ({osz} ószövetségi, {usz} újszövetségi hely).	n:szam, konyvek:szam, osz:szam, usz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.lelet.csak_osz	A motívum {n} igehelyen fordul elő, {konyvek} bibliai könyvben ({osz} ószövetségi hely).	n:szam, konyvek:szam, osz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.lelet.csak_usz	A motívum {n} igehelyen fordul elő, {konyvek} bibliai könyvben ({usz} újszövetségi hely).	n:szam, konyvek:szam, usz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.megb.vegyes	{magas} hely azonosítása magas megbízhatóságú, {tobbi} alacsonyabb.	magas:szam, tobbi:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.megb.mind	{magas} hely azonosítása magas megbízhatóságú.	magas:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.sulypont	a motívum súlypontja {konyv} ({n} helyből {db})	konyv:nev(konyv), n:szam, db:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.fokent_osz	főként ószövetségi; az Újszövetségben {usz} hely	usz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.fokent_usz	főként újszövetségi; az Ószövetségben {osz} hely	osz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.mindketto	az Ószövetségben {osz}, az Újszövetségben {usz} hely	osz:szam, usz:szam	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.csak_osz	csak az Ószövetségben	-	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.csak_usz	csak az Újszövetségben	-	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.kov.bizonytalan	sok a bizonytalan azonosítás	-	2	olvasoi_kovetkeztetes.elofordulasok_uj	-
+e2.hatokor	*A táblázat a motívum {n} igehelyét sorolja fel (forrás: {tabla}), kanonikus sorrendben, a Károli-szöveggel ({szakasz}.{alpont}) és az UBS-jelentéssel. A „Jelentés (a szó)” oszlop a szó jelentését a szótár tagolásában adja ({cimketabla}, {bdb}, {thayer}; a címke forrása a sor lábjegyzetében), a „Funkció (a motívumban)” a hely motívumbeli funkcióját (szerkesztői döntés, {datum}).*	n:szam, tabla:nev(forras), szakasz:szam, alpont:szam, cimketabla:nev(forras), bdb:nev(forras), thayer:nev(forras), datum:datum	2	blokk_elofordulasok; olvasoi_atiras	-
+e21.bevezeto	A fenti táblázat igehelyeinek teljes szövege a Károli-fordításban, a motívumot hordozó szavakkal.	-	2.1	OLVASOI_SABLON[1a]	-
+e21.igehely	**{hely}**	hely:igehely	2.1	blokk_elofordulasok	-
+e21.vers	*{szoveg}*	szoveg:lathato	2.1	blokk_elofordulasok	-
+e21.nincs_vers	*({vers}: nincs Károli-szöveg)*	vers:igehely	2.1	blokk_elofordulasok	-
+e21.funkcio	Funkció: {magyarazat}	magyarazat:lathato	2.1	blokk_elofordulasok	-
+jel.nincs	—	-	keret	EM_DASH	-
+ertek.nev	{n}	n:nev	keret	blokk_elofordulasok	-
+e2.fejlec.igehely	Igehely	-	2	blokk_elofordulasok	-
+e2.fejlec.kulcsszo	Kulcsszó	-	2	blokk_elofordulasok	-
+e2.fejlec.jelentes	Jelentés (a szó)	-	2	blokk_elofordulasok	-
+e2.fejlec.funkcio	Funkció (a motívumban)	-	2	blokk_elofordulasok	-
+e2.fejlec.pardes	PaRDeS-szint	-	2	blokk_elofordulasok	-
+e2.fejlec.strong	Strong	-	2	blokk_elofordulasok	-
+e2.fejlec.ubs	UBS-jelentés	-	2	blokk_elofordulasok	-
+e2.fejlec.megbizhatosag	Megbízhatóság · azonosítás módja	-	2	blokk_elofordulasok	-
+e2.igehely_link	[{hely}](#{horgony})	hely:igehely, horgony:horgony	2	blokk_elofordulasok	-
+e2.kulcsszo	{karoli} — {alakok|; }	karoli:lathato, alakok:lista(lathato)	2	kulcsszo_cella	-
+e2.kulcsszo.nincs_alak	{karoli} — —	karoli:lathato	2	kulcsszo_cella	-
+e2.kulcsszo.csak_alak	{alakok|; }	alakok:lista(lathato)	2	kulcsszo_cella	-
+e2.alak.kiejtessel	{alak} ({kiejtes})	alak:lathato, kiejtes:lathato	2	ragozott_kiejtessel	-
+e2.alak	{alak}	alak:lathato	2	ragozott_kiejtessel	-
+e2.jelentes.tematikus	tematikus hely: a lánc szava nélkül	-	2	blokk_elofordulasok	-
+e2.pardes	{szintek|/}	szintek:lista(nev:pardes_szint)	2	blokk_elofordulasok	-
+e2.strong	{strongok|+}	strongok:lista(strong)	2	blokk_elofordulasok	-
+e2.strong.nincs_lanc	nincs lánc-szó	-	2	blokk_elofordulasok	-
+e2.megb_cella	{megb} · {mod}	megb:lathato, mod:lathato	2	blokk_elofordulasok	-
+e2.ubs.glossza	{glossza} [ⓘ](/szo/{strong})	glossza:lathato, strong:strong	2	ubs_glossza_cella	-
+e2.ubs.glossza.var	{glossza} *(fordításra vár)* [ⓘ](/szo/{strong})	glossza:lathato, strong:strong	2	ubs_glossza_cella	-
+e2.ubs.nem_egyertelmu	{elem} *(lehetséges, nem egyértelmű)*	elem:lathato	2	ubs_jelentes_cella	-
+e2.ubs.mt	{elem} *(MT: {vers})*	elem:lathato, vers:igehely	2	dbh_jelentes_cella	-
+e2.ubs.lista	{elemek|; }	elemek:lista(lathato)	2	ubs_jelentes_cella	-
+e2.ubs.tokenek	{tokenek| · }	tokenek:lista(lathato)	2	ubs_jelentes_cella	-
+e2.ubs.tokenenkent	{strong}: {tartalom}	strong:strong, tartalom:lathato	2	ubs_jelentes_cella	-
+e2.ubs.nincs_g_token	— *(nincs G-token)*	-	2	ubs_jelentes_cella	-
+e2.ubs.nincs_hozzarendeles	— *(nincs hozzárendelés)*	-	2	ubs_jelentes_cella	-
+e2.ubs.nincs_hozzarendeles.token	*(nincs hozzárendelés)*	-	2	ubs_jelentes_cella	-
+e2.ubs.tematikus	nem alkalmazható (tematikus hely)	-	2	blokk_elofordulasok	-
+e2.dbh.nincs_h_token	— *(ÓSZ; nincs H-token)*	-	2	dbh_jelentes_cella	-
+e2.dbh.nincs_a_tablaban	*(a jelentés nincs a DBH-táblában)*	-	2	dbh_jelentes_cella	-
+e2.dbh.nincs_hivatkozas	*(nincs DBH-hivatkozás)*	-	2	dbh_jelentes_cella	-
+e2.dbh.nincs_hivatkozas.okkal	*(nincs DBH-hivatkozás: {okok|; })*	okok:lista(lathato)	2	dbh_jelentes_cella	-
+e2.dbh.egyik_sem	— *(ÓSZ; {elemek| · })*	elemek:lista(lathato)	2	dbh_jelentes_cella	-
+e2.dbh.egyik_sem.okkal	nincs DBH-hivatkozás: {okok|; }	okok:lista(lathato)	2	dbh_jelentes_cella	-
+e2.dbh.egyik_sem.ok_nelkul	nincs DBH-hivatkozás	-	2	dbh_jelentes_cella	-
+e2.dbh.ok.nincs_megfeleltetes	a Károli-vers nincs a versmegfeleltető táblában	-	2	karoli_mt_vers	-
+e2.dbh.ok.nem_egy_vers	az MT-megfelelő nem egyetlen vers	-	2	uj	var
+e2.dbh.ok.szamozas_elteres	versszámozás-eltérés, az MT-vers a táblában nincs megadva	-	2	uj	var
+e2.dbh.ok.nincs_hivatkozas	keresett MT-vers: {vers}	vers:igehely	2	dbh_jelentes_cella	-
+e2.ubs_magyarazat	*Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése ({dbh}, a Károli-vers az MT-számozásra képezve, {megfeleltetes}); szavanként a hivatkozott jelentés(ek) kódja és rövid glosszája; az ⓘ a szónézetre mutat, ahol a teljes UBS-szócikk (definíció és glosszák) áll (szerkesztői döntés, {datum}). A glossza magyarul (forrás: {forditastabla}) jön, ahol van; ahol nincs, az angol eredeti áll (fordításra vár) jelöléssel. Ahol a DBH a versre nem hivatkozik, a mező ezt kimondja.*	dbh:nev(forras), megfeleltetes:nev(forras), datum:datum, forditastabla:nev(forras)	2	blokk_elofordulasok; olvasoi_atiras	-
+lista.vesszo	{elemek|, }	elemek:lista(lathato)	keret	szakasz_szoveg	-
+e2.jel.szotarral	{szotar} {jel}	szotar:nev(szotar), jel:lathato	2	jelentes_cella (a nem BDB-jel a szótár nevével)	-
+e2.jelentes.cimke	{cimke} · {jel}	cimke:lathato, jel:lathato	2	jelentes_cella	-
+e2.jelentes.szocikk_egesze	a szócikk egésze — {glossza}	glossza:lathato	2	_tagolatlan_olvasoi	-
+e2.jelentes.szocikk_egesze.ures	a szócikk egésze	-	2	_tagolatlan_olvasoi	-
+e2.jelentes.szocikk_egesze.cella	Szócikk egésze — {glossza}	glossza:lathato	2	_tagolatlan_olvasoi; a cella elején álló alak (a lapon így áll)	-
+e2.jelentes.szocikk_egesze.cella.ures	Szócikk egésze	-	2	_tagolatlan_olvasoi; a cella elején álló alak	-
+e2.jelentes.nincs_cimke	*(nincs címke: {jel})*	jel:lathato	2	jelentes_cella	-
+e2.jelentes.nincs_hozzarendeles	*(nincs hozzárendelés)*	-	2	jelentes_cella	-
+e2.jelentes.tokenek	{tokenek|; }	tokenek:lista(lathato)	2	jelentes_cella	-
+e2.jelentes.tokenenkent	{strong}: {tartalom}	strong:strong, tartalom:lathato	2	jelentes_cella	-
+e2.igazolas.heber	A héber szöveg (TAHOT) igazolja	-	2	IGAZOLAS_OLVASOI	-
+e2.igazolas.gorog	A görög szöveg (TAGNT) igazolja	-	2	IGAZOLAS_OLVASOI	-
+e2.igazolas.nincs	Szövegigazolás nélkül	-	2	IGAZOLAS_OLVASOI	-
+e2.igazolas.ujszovetsegi	Újszövetségi hely: a szó a görög szövegben áll	-	2	tablajegyzet.olvasoi_jegyzet	-
+e2.igazolas.nem_alkalmazhato	A héber szöveg-igazolás itt nem alkalmazható	-	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet	{igazolas}; a jelentés: {jelentes}.	igazolas:lathato, jelentes:lathato	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet.csak_igazolas	{igazolas}.	igazolas:lathato	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet.csak_jelentes	A jelentés: {jelentes}.	jelentes:lathato	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet.ures	Forrás: a motívum adattáblái.	-	2	tablajegyzet.alkalmaz	-
+e2.jegyzet.mondatok	{mondatok|. }.	mondatok:lista(lathato)	2	tablajegyzet._szopar_jegyzet	-
+e2.jegyzet.szavankent	{strong}: {mondat}	strong:strong, mondat:lathato	2	tablajegyzet._szopar_jegyzet	-
+e2.jegyzet.a_jelentes	A jelentés: {mondat}	mondat:lathato	2	tablajegyzet._szopar_jegyzet	-
+e2.jegyzet.tematikus	Tematikus hely: a versben a lánc szava nem áll.	-	2	tablajegyzet.olvasoi_jegyzet	-
+e2.jegyzet.tematikus_sajat.gorog	Tematikus hely: a vers görög szava, {szo|a:kiejtes} ({kiejtes}) nem a lánc szava.	szo:lathato, kiejtes:lathato	2	blokk_elofordulasok	-
+e2.jegyzet.tematikus_sajat.gorog.kiejtes_nelkul	Tematikus hely: a vers görög szava, {szo|a} nem a lánc szava.	szo:lathato	2	blokk_elofordulasok	-
+e2.jegyzet.tematikus_sajat.heber	Tematikus hely: a vers héber szava, {szo|a:kiejtes} ({kiejtes}) nem a lánc szava.	szo:lathato, kiejtes:lathato	2	uj	var
+e2.jegyzet.tematikus_sajat.heber.kiejtes_nelkul	Tematikus hely: a vers héber szava, {szo|a} nem a lánc szava.	szo:lathato	2	uj	var
+e2.jm.bdb_pelda	a BDB {szakasz|a} szakaszban maga idézi a helyet	szakasz:lathato	2	jelentes_cimke_token	-
+e2.jm.masutt_is	a BDB a helyet {szakaszok|a} is idézi	szakaszok:lathato	2	jelentes_cimke_token	-
+e2.jm.kutatoi	a {szotar} {jel} szakasza	szotar:nev(szotar), jel:lathato	2	tablajegyzet._jelentes_olvasoi	-
+e2.jm.kutatoi.fej	a {szotar} szócikkfeje	szotar:nev(szotar)	2	tablajegyzet._jelentes_olvasoi	-
+e2.jm.tagolatlan	a szócikk egésze (a szótár nem tagolja számozott jelentésekre)	-	2	tablajegyzet._jelentes_olvasoi	-
+e2.jm.nincs_lekepezve	a szerkesztői jelentésszám nincs leképezve a szótár tagolására	-	2	uj	var
+e2.jm.tobb_token	a BDB idézi a verset, de a szó {hanyszor} áll benne, ezért nem példahely	hanyszor:nev(hanyszor)	2	tablajegyzet._jelentes_tomor	-
+e2.jm.tartomanyban	a BDB a helyet csak {tartomany|a} tartományban idézi, ezért nem példahely	tartomany:lathato	2	tablajegyzet._jelentes_tomor	-
+e2.jm.tartomany	{kezdo}–{veg}	kezdo:igehely, veg:szam	2	tablajegyzet._jelentes_tomor	-
+e2.jm.nem_azonosithato	a BDB idézi a helyet, de nem azonosítható, melyik szócikkében	-	2	uj	var
+e2.jm.sajtohiba	a BDB maga idézi a helyet; a szótár szövegében sajtóhibával „{idezett}” áll	idezett:lathato	2	tablajegyzet._jelentes_tomor	-
+e2.jm.maga_idezi	a BDB maga idézi a helyet	-	2	tablajegyzet._jelentes_tomor	-
+e2.jm.szerkesztoi	szerkesztői hozzárendelés a szótár tagolása szerint	-	2	tablajegyzet._jelentes_tomor	-
+e2.jm.szerkesztoi.thayer	szerkesztői hozzárendelés a szótár tagolása szerint; a Thayer a helyet {n|a}. jelentésnél idézi	n:szam	2	tablajegyzet._jelentes_tomor	-
+e2.jm.thayer_pelda	a Thayer a helyet {n|a}. jelentésnél idézi	n:szam	2	uj	var
+e2.jm.thayer_nem_idezi	a Thayer a helyet nem idézi	-	2	uj	var
+cim.dontesi_ut	Döntési út	-	keret	UJ_SZAKASZOK	-
+kz.cim	📎 {motivum} — Kizárt és vizsgált versek (melléklet)	motivum:motivum	melleklet	kizarasok_melleklet	-
+kz.bevezeto	A [{motivum} lap]({motivum}_TUDOMANYOS.md#{horgony}) Döntési útjának melléklete: a motívum {bent} versén túl megvizsgált, a motívumhoz nem tartozó mind {kizart|a} vers, okonként, a saját indokával. A csoportosan kizárt verseket gépi mérés sorolja egy közös okba, az egyenként elutasítottakat egyedi döntés. Egy vers egyszer áll: ha két keresés csoportjában is szerepel, az elsőnél.	motivum:motivum, horgony:horgony, bent:szam(ezres), kizart:szam(ezres)	melleklet	kizarasok_melleklet	-
+kz.osszeadas	**Összeadás:** {csoport} (csoportosan kizárva) + {egyen} (egyenként elutasítva) = {kizart} vers.	csoport:szam(ezres), egyen:szam(ezres), kizart:szam(ezres)	melleklet	kizarasok_melleklet	-
+kz.cim.csoport	Csoportosan kizárt versek, okonként	-	melleklet	kizarasok_melleklet	-
+kz.cim.egyen	Egyenként elutasított versek, okonként	-	melleklet	kizarasok_melleklet	-
+kz.ok_cim	{ok} — {n} vers	ok:lathato, n:szam(ezres)	melleklet	kizarasok_cim	-
+kz.lista_cim	A {n} vers	n:szam(ezres)	melleklet	kizarasok_melleklet	-
+kz.konyv_sor	- **{konyv}** ({db}): {versek|, }	konyv:konyvrov, db:szam, versek:lista(versresz)	melleklet	_konyvenkent	-
+kz.forrassorok.cim	A teljesség-mérés forrássorai	-	melleklet	TELJESSEG_CIM	-
+kz.forrassorok.bevezeto	A Döntési út {szakasz}.{alpont} pontjának versszámai ebből a mérésből jönnek. Keresésenként a megvizsgált versek száma:	szakasz:szam, alpont:szam	melleklet	uj	var
+kz.forrassorok.kereses	- **{kereses}** ({n} vers)	kereses:nev(halo), n:szam(ezres)	melleklet	uj	var
+kz.forras	*Forrás: a vizsgált helyek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája); generálva: {datum}.*	datum:datum	melleklet	kizarasok_melleklet	-
+kz.forras.datum_nelkul	*Forrás: a vizsgált helyek döntésnaplója és a teljesség-mérés csoportlistája (a nyílt adatkészletben is: a kizárások és a csoportos kizárások táblája).*	-	melleklet	kizarasok_melleklet (a dátum nélküli alak)	-
+e2.jel.szocikkel	{jel} ({szocikk})	jel:lathato, szocikk:lathato	2	uj	var
+e2.jel.szocikk_sorszam	{szotar|a} {n}. szócikke	szotar:nev(szotar), n:szam	2	uj	var
+cim.dontesi_ut.targy	A keresés tárgya	-	1	blokk_dontesi_ut	-
+cim.dontesi_ut.forrasok	A keresés forrásai	-	1	blokk_dontesi_ut	-
+cim.dontesi_ut.kiesett	Mi esett ki és miért	-	1	blokk_dontesi_ut	-
+cim.dontesi_ut.maradt	Mi maradt és miért	-	1	blokk_dontesi_ut	-
+cim.dontesi_ut.hatar	Határesetek és nyitott kérdések	-	1	blokk_dontesi_ut	-
+cim.ertelmezes	Értelmezés	-	1	UJ_SZAKASZOK	-
+cim.modszertan	Módszertan és nyitott kérdések	-	1	UJ_SZAKASZOK	-
+d1.bevezeto	Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig: mit keresett, hol, mi esett ki és miért, és mi maradt. {osszes|A} megvizsgált versből {bent} tartozik a motívumhoz; minden vers egyszer számít, így a számok összeadódnak.	osszes:szam(ezres), bent:szam(ezres)	1	blokk_dontesi_ut	-
+d1.szam	{n}	n:szam(ezres)	1	blokk_dontesi_ut	-
+d1.szam.kiemelt	**{n}**	n:szam(ezres)	1	blokk_dontesi_ut	-
+fej.hatar.cim	Mi tartozik ide, és mi nem	-	fej	a mai lap eleji meghatározás címe; a `fej` szakasz (S8) és a rá mutató hivatkozások közös szövege (DT-F218n)	-
+d11.targy	A keresés tárgyát a lap eleje határozza meg ([{cim}](#{horgony})). A keresés {elemek|, | és } terjedt ki: a szavakat {szakasz|a}.{forrasok}., a kizárás okait {szakasz|a}.{kiesett}., a megmaradt helyeket {szakasz|a}.{maradt}. pont sorolja fel.	cim:lathato, horgony:horgony, elemek:lista(lathato), szakasz:szam, forrasok:szam, kiesett:szam, maradt:szam	1	uj (DT-F218n: a kritérium ismétlése helyett hivatkozás és számolás)	var
+d11.targy.szavak_nelkul	A keresés tárgyát a lap eleje határozza meg ([{cim}](#{horgony})). A kizárás okait {szakasz|a}.{kiesett}., a megmaradt helyeket {szakasz|a}.{maradt}. pont sorolja fel.	cim:lathato, horgony:horgony, szakasz:szam, kiesett:szam, maradt:szam	1	uj (DT-F218n)	var
+d11.elem.heber	{n} héber szóra	n:szam	1	uj (DT-F218n)	var
+d11.elem.gorog	{n} görög szóra	n:szam	1	uj (DT-F218n)	var
+d11.elem.szopar	{n} szópárra	n:szam	1	uj (DT-F218n)	var
+d12.szavak	**A motívum szavai:** {szavak|; }.	szavak:lista(lathato)	1	blokk_dontesi_ut	-
+d12.szo	{alak} ({kiejtes})	alak:lathato, kiejtes:lathato	1	lemma_cim	-
+d12.szo.kiejtes_nelkul	{alak}	alak:lathato	1	lemma_cim	-
+d12.szo.strong	{strong}	strong:strong	1	blokk_dontesi_ut (szótári alak híján a Strong-szám)	-
+d12.szo.jelentessel	{szo}, {jelentes}	szo:lathato, jelentes:lathato	1	blokk_dontesi_ut	-
+d12.fejlec.kereses	Keresés	-	1	blokk_dontesi_ut	-
+d12.fejlec.vers	Vers	-	1	blokk_dontesi_ut	-
+d12.fejlec.mit	Mit nézett	-	1	blokk_dontesi_ut	-
+d12.ajanlas.nev	Kereszthivatkozások ajánlásai	-	1	blokk_dontesi_ut	-
+d12.ajanlas.mit	A kereszthivatkozás-gyűjtemények (TSK, Károli) ajánlásai a motívum helyeihez	-	1	blokk_dontesi_ut; a táblacella elején álló alak (a lapon így áll)	-
+d12.osszesen.nev	**Összesen, minden vers egyszer számolva**	-	1	blokk_dontesi_ut	-
+d12.osszesen.mit	A keresések és az ajánlások együtt, a motívum helyeivel	-	1	blokk_dontesi_ut; a táblacella elején álló alak (a lapon így áll)	-
+d12.forrassorok	*A versszámok a motívum szavainak teljes bibliai kereséséből ([a mérés forrássorai]({motivum}_KIZARASOK.md#{horgony})).*	motivum:motivum, horgony:horgony	1	blokk_dontesi_ut	-
+d13.fejlec.lepes	Lépés	-	1	blokk_dontesi_ut	-
+d13.fejlec.vers	Vers	-	1	blokk_dontesi_ut	-
+d13.fejlec.miert	Miért	-	1	blokk_dontesi_ut	-
+d13.osszes.nev	**Megvizsgált versek összesen**	-	1	blokk_dontesi_ut	-
+d13.osszes.miert	{szakasz}.{alpont}. lépés minden találata	szakasz:szam, alpont:szam	1	blokk_dontesi_ut; a táblacella elején álló alak (a lapon így áll)	-
+d13.csoport.nev	**Csoportosan kizárva**	-	1	blokk_dontesi_ut	-
+d13.csoport.miert	A keresés találata, de egy közös ok miatt egyik sem tartozik ide ({okok} ok, lent lenyitható)	okok:szam	1	blokk_dontesi_ut; a táblacella elején álló alak (a lapon így áll)	-
+d13.egyen.nev	**Egyenként elbírálva és elutasítva**	-	1	blokk_dontesi_ut	-
+d13.egyen.miert	egyenként olvasott versek, mindegyik saját indokkal ({okok} ok, lent lenyitható)	okok:szam	1	blokk_dontesi_ut	-
+d13.bent.nev	**A motívumhoz tartozik**	-	1	blokk_dontesi_ut	-
+d13.bent.miert	{helyek} hely (a tartomány-soroknál több vers egy helyen)	helyek:szam	1	blokk_dontesi_ut	-
+d13.nyitva.nev	**Döntésre vár**	-	1	blokk_dontesi_ut	-
+d13.osszeadas	**Összeadás:** {bent} (a motívumhoz tartozik) + {csoport} (csoportosan kizárva) + {egyen} (egyenként elutasítva) = {osszes} megvizsgált vers. Döntés nélkül maradt vers: {nyitva}.	bent:szam(ezres), csoport:szam(ezres), egyen:szam(ezres), osszes:szam(ezres), nyitva:szam(ezres)	1	blokk_dontesi_ut	-
+d13.osszeadas.nyitva	**Összeadás:** {bent} (a motívumhoz tartozik) + {csoport} (csoportosan kizárva) + {egyen} (egyenként elutasítva) + {nyitva} (döntésre vár) = {osszes} megvizsgált vers. Döntés nélkül maradt vers: {nyitva}.	bent:szam(ezres), csoport:szam(ezres), egyen:szam(ezres), osszes:szam(ezres), nyitva:szam(ezres)	1	blokk_dontesi_ut	-
+d13.csoport.blokk	<details><summary><strong>{ok}</strong> — {n} vers</summary><p>{leiras}</p>{peldak}{melleklet}</details>	ok:lathato, n:szam(ezres), leiras:lathato, peldak:lathato, melleklet:lathato	1	_reszletek	-
+d13.csoport.blokk.pelda_nelkul	<details><summary><strong>{ok}</strong> — {n} vers</summary><p>{leiras}</p>{melleklet}</details>	ok:lathato, n:szam(ezres), leiras:lathato, melleklet:lathato	1	_reszletek	-
+d13.peldak	<p>Példák (a Károli-szöveggel):</p><ul>{peldak|}</ul>	peldak:lista(lathato)	1	blokk_dontesi_ut	-
+d13.pelda	<li>{hely}: <em>{szoveg}</em></li>	hely:igehely, szoveg:lathato	1	blokk_dontesi_ut	-
+d13.melleklet.mind	<p>A csoport mind a {n} verse a <a href="{motivum}_KIZARASOK.md#{horgony}">kizárt helyek mellékletében</a> áll.</p>	n:szam(ezres), motivum:motivum, horgony:horgony	1	blokk_dontesi_ut	-
+d13.melleklet.egy	<p>A csoport egyetlen verse a <a href="{motivum}_KIZARASOK.md#{horgony}">kizárt helyek mellékletében</a> áll.</p>	motivum:motivum, horgony:horgony	1	blokk_dontesi_ut	-
+d13.egyen.blokk	<details><summary><strong>{ok}</strong> — {n} vers</summary><p>{leiras}</p><p>Versek: {versek|, }.</p><p>A <a href="{motivum}_KIZARASOK.md#{horgony}">kizárt helyek mellékletében</a> is.</p></details>	ok:lathato, n:szam(ezres), leiras:lathato, versek:lista(igehely), motivum:motivum, horgony:horgony	1	_reszletek	-
+d14.blokk	<details open><summary><strong>{nev}</strong> — {n} hely</summary><p>{bontas}.</p><ul>{helyek|}</ul></details>	nev:lathato, n:szam, bontas:lathato, helyek:lista(lathato)	1	blokk_dontesi_ut	-
+d14.nev.szavak	{szavak| + }	szavak:lista(lathato)	1	_lanc_szo_nev	-
+d14.nev.jelentessel	{szo} — {jelentes}	szo:lathato, jelentes:lathato	1	_lanc_szo_nev	-
+d14.nev.szopar	szópár: {reszek| + }	reszek:lista(lathato)	1	_lanc_szo_nev	-
+d14.nev.tematikus	a lánc szavai nélkül (tematikus, nem lexikai kapcsolat)	-	1	_lanc_szo_nev	-
+d14.bontas	{n} hely: {reszek|, | és }	n:szam, reszek:lista(lathato)	1	_hely_bontas	-
+d14.resz.gen	{n} a Genezisben	n:szam	1	_hely_bontas	-
+d14.resz.osz	{n} az Ószövetség többi könyvében	n:szam	1	_hely_bontas	-
+d14.resz.usz	{n} az Újszövetségben	n:szam	1	_hely_bontas	-
+d14.egy.gen	Egy hely, a Genezisben	-	1	_hely_bontas	-
+d14.egy.osz	Egy hely, az Ószövetség többi könyvében	-	1	_hely_bontas	-
+d14.egy.usz	Egy hely, az Újszövetségben	-	1	_hely_bontas	-
+d14.hely	<li><a href="#{horgony}">{hely}</a>: {magyarazat}.</li>	horgony:horgony, hely:igehely, magyarazat:lathato	1	blokk_dontesi_ut (a régi kód a funkció magyarázatát nagy kezdőbetűvel írta; az új változatlanul adja)	-
+d14.hely.magyarazat_nelkul	<li><a href="#{horgony}">{hely}</a></li>	horgony:horgony, hely:igehely	1	uj	var
+d15.hataresetek	**Határesetek** (nem magas megbízhatóságú azonosítás): {helyek|, }.	helyek:lista(lathato)	1	blokk_dontesi_ut	-
+d15.hatareset	[{hely}](#{horgony}) ({megb})	hely:igehely, horgony:horgony, megb:nev(megbizhatosag)	1	blokk_dontesi_ut	-
+d15.kerdes	- {kerdes}	kerdes:lathato	1	_modszertan_nyitott	-
+d15.kifejtes	A kérdések kifejtése {e_szam|a}. ({e_cim}) és {m_szam|a}. szakaszban ({m_cim}) áll.	e_szam:szam, e_cim:lathato, m_szam:szam, m_cim:lathato	1	blokk_dontesi_ut	-
+d15.nincs	A motívumnak nincs határesete és nyitott kérdése.	-	1	blokk_dontesi_ut	-
+cim.szocikkek	Szótári háttér	-	keret	UJ_SZAKASZOK	-
+cim.hatastortenet	Hatástörténet: ókori fordítások és értelmezők	-	keret	UJ_SZAKASZOK	-
+cim.hatastortenet.rovid	Hatástörténet	-	keret	visszhang_beszur (a szakasz rövid neve a hivatkozásban)	-
+s4.bevezeto	A motívumot {darabok| és } hordozza; {listak|; }. Szavanként számozott pontok követik egymást (a pontok rendje a Jelmagyarázatban áll); a {szakasz}.{pont} pont a fő szótár ({foszotarak|, }) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.	darabok:lista(lathato), listak:lista(lathato), szakasz:szam, pont:szam, foszotarak:lista(lathato)	4	blokk_szocikkek	-
+s4.bevezeto.darab.heber	{n} héber szó	n:szam	4	blokk_szocikkek	-
+s4.bevezeto.darab.gorog	{n} görög szó	n:szam	4	blokk_szocikkek	-
+s4.bevezeto.lista.heber	héberül: {szavak|, | és }	szavak:lista(lathato)	4	blokk_szocikkek	-
+s4.bevezeto.lista.gorog	görögül: {szavak|, | és }	szavak:lista(lathato)	4	blokk_szocikkek	-
+s4.bevezeto.fo.heber	héberül {szotar|a}	szotar:nev(szotar)	4	blokk_szocikkek	-
+s4.bevezeto.fo.gorog	görögül {szotar|a}	szotar:nev(szotar)	4	blokk_szocikkek	-
+s4.hatokor	*A szakasz a motívum {n} szavát tárgyalja, szavanként a szótári pontok rendjében (forrás: a lexikon szótári hivatkozástáblája).*	n:szam	4	blokk_szocikkek (az olvasói átírás utáni alak)	-
+s4.szam	{n}	n:szam	4	attekinto_tabla	-
+s4.forditasra_var	{szoveg} *(fordításra vár)*	szoveg:lathato	4	FORDITASRA_VAR	-
+s4.felulvizsgalat	{szoveg} *(a fordítás felülvizsgálat alatt)*	szoveg:lathato	4	uj	var
+s4.szonezet	{szo} ([szónézet](/szo/{strong}))	szo:lathato, strong:strong	4	_szonezet_lista	-
+cim.szocikkek.attekintes	Áttekintés: a motívum szavai	-	4 Áttekintés	ATTEKINTO_CIM	-
+s4.att.bevezeto	A motívum {n} szava egy táblában: a kiejtés, a rövid alapjelentés, a görög fordítás (Septuaginta) az a szava, amely a héber szó verseiben a legjellemzőbben áll vele együtt (a társulás mértéke szerint, nem a puszta gyakoriság szerint), és hogy hány helyen áll a szó a motívumban. A részletek szavanként a {szakasz}.{elso}–{szakasz}.{utolso} pontban.	n:szam, szakasz:szam, elso:szam, utolso:szam	4 Áttekintés	attekinto_beszur	-
+s4.att.fejlec.szo	Szó (kiejtés)	-	4 Áttekintés	attekinto_tabla	-
+s4.att.fejlec.jelentes	Alapjelentés	-	4 Áttekintés	attekinto_tabla	-
+s4.att.fejlec.lxx	LXX-megfelelő	-	4 Áttekintés	attekinto_tabla	-
+s4.att.fejlec.helyek	Helyek a motívumban	-	4 Áttekintés	attekinto_tabla	-
+s4.att.tars	{szo} · {n} vers	szo:lathato, n:szam	4 Áttekintés	_lxx_tars	-
+s4.att.tars.heberul	héberül: {szo} · {n} vers	szo:lathato, n:szam	4 Áttekintés	_lxx_tars	-
+s4.att.labjegyzet	*Az LXX-megfelelő versszintű együtt-előfordulás (a {szakasz}.{pont} pont párjai: hányszor áll a két szó ugyanabban a versben, a szavak gyakoriságához mérve), nem szavankénti megfeleltetés, és a szó minden ószövetségi versén mér, nem csak a motívum helyein; a motívum láncának verseiben álló görög megfelelőt {hat|a}. szakasz ({hat_nev}) ószövetségi táblázata adja, ezért a kettő eltérhet.*	szakasz:szam, pont:szam, hat:szam, hat_nev:lathato	4 Áttekintés	attekinto_beszur (az olvasói átírás utáni alak)	-
+s4.att.labjegyzet.hiany	*Az LXX-megfelelő versszintű együtt-előfordulás (a {szakasz}.{pont} pont párjai: hányszor áll a két szó ugyanabban a versben, a szavak gyakoriságához mérve), nem szavankénti megfeleltetés, és a szó minden ószövetségi versén mér, nem csak a motívum helyein; a motívum láncának verseiben álló görög megfelelőt {hat|a}. szakasz ({hat_nev}) ószövetségi táblázata adja, ezért a kettő eltérhet. A „—” alapjelentés: a rövid magyar jelentés még nincs lefordítva.*	szakasz:szam, pont:szam, hat:szam, hat_nev:lathato	4 Áttekintés	attekinto_beszur (az olvasói átírás utáni alak)	-
+cim.szocikkek.nyelv.gorog	Görög szavak: {strongok|, }	strongok:lista(strong)	4	szerep_vaz	-
+cim.szocikkek.nyelv.heber	Héber szavak: {strongok|, }	strongok:lista(strong)	4	szerep_vaz	-
+cim.szocikkek.nyelv.gorog.ures	Görög szavak	-	4	szerep_vaz	-
+cim.szocikkek.nyelv.heber.ures	Héber szavak	-	4	szerep_vaz	-
+s4.nyelv.gorog	A motívumot hordozó görög szavak: {szavak|, | és }. Szavanként a szótári adatok a {szakasz}.{elso}–{szakasz}.{utolso} pontban.	szavak:lista(lathato), szakasz:szam, elso:szam, utolso:szam	4	OLVASOI_SABLON[nyelv_uj]	-
+s4.nyelv.heber	A motívumot hordozó héber szavak: {szavak|, | és }. Szavanként a szótári adatok a {szakasz}.{elso}–{szakasz}.{utolso} pontban.	szavak:lista(lathato), szakasz:szam, elso:szam, utolso:szam	4	OLVASOI_SABLON[nyelv_uj]	-
+s4.nyelv.gorog.ures	A motívum görög szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért ez a rész üres; a szótári anyag a másik nyelv szavainál áll.	-	4	OLVASOI_SABLON[nyelv_ures]	-
+s4.nyelv.heber.ures	A motívum héber szavainak szótári anyaga. A motívumnak ezen a nyelven nincs saját szava, ezért ez a rész üres; a szótári anyag a másik nyelv szavainál áll.	-	4	OLVASOI_SABLON[nyelv_ures]	-
+s4.nyelv.gorog.ures.megjegyzes	*A motívumnak nincs görög szava; a görög szavak pontjai itt nem állnak.*	-	4	uj	var
+s4.nyelv.heber.ures.megjegyzes	*A motívumnak nincs héber szava; a héber szavak pontjai itt nem állnak.*	-	4	uj	var
+s4.p1.bevezeto.heber	A szó alapjelentése röviden, a STEPBible héber rövid szótára (TBESH, {licenc}) szerint, magyarul; a teljes szócikk a szónézetben.	licenc:lathato	4.1	UJ_OLVASOI_SZEREP	-
+s4.p1.bevezeto.gorog	A szó alapjelentése röviden, a STEPBible görög rövid szótára (TBESG, {licenc}) szerint, magyarul; a teljes szócikk a szónézetben.	licenc:lathato	4.1	UJ_OLVASOI_SZEREP	-
+s4.p1.sor	**{szo}** — {jelentes} · {strong} · [szónézet](/szo/{strong})	szo:lathato, jelentes:lathato, strong:strong	4.1	_gerinc_tbesh	-
+s4.jelentes.nincs	a szótár nem ad magyar rövid jelentést	-	4.1	_gerinc_tbesh	-
+s4.p3.bevezeto.heber	Szavanként a translationWords (unfoldingWord, {licenc}) magyar szócikkcímei és a szó TWOT-száma: a szócikk száma a Theological Wordbook of the Old Testamentben. A szócikkek a szónézetben olvashatók.	licenc:lathato	4.3	UJ_OLVASOI_SZEREP	-
+s4.p3.bevezeto.gorog	Szavanként a translationWords (unfoldingWord, {licenc}) magyar szócikkcímei; a szócikkek a szónézetben olvashatók.	licenc:lathato	4.3	UJ_OLVASOI_SZEREP	-
+s4.p3.sor	**{szo}** — {reszek| · } · [szónézet](/szo/{strong})	szo:lathato, reszek:lista(lathato), strong:strong	4.3	_gerinc_tw	-
+s4.p3.cim	*{cim}*	cim:lathato	4.3	_gerinc_tw	-
+s4.p3.cim.var	*{cim}* *(fordításra vár)*	cim:lathato	4.3	uj	var
+s4.p3.cim.felulvizsgalat	*{cim}* *(a fordítás felülvizsgálat alatt)*	cim:lathato	4.3	uj	var
+s4.p3.nincs	a translationWords nem tárgyalja	-	4.3	_gerinc_tw	-
+s4.p3.twot	TWOT {szamok|, }	szamok:lista(lathato)	4.3	_gerinc_tw	-
+s4.p3.twot.nincs	TWOT —	-	4.3	_gerinc_tw	-
+s4.p4.bevezeto	A szó helye a jelentéstani mezők rendszerében: milyen rokon jelentésű szavakkal tartozik egy csoportba.	-	4.4	OLVASOI_SZEREP[4]	-
+s4.p4.sor	**{szo}** · **Szemantikai domén:** {domenek|; }	szo:lathato, domenek:lista(lathato)	4.4	_szotar_reszek	-
+s4.p4.sor.nincs	**{szo}** · **Szemantikai domén:** —	szo:lathato	4.4	_szotar_reszek	-
+s4.p4.elemzetlen	*Figyelem: a szótárban a szóhoz {n} elemzetlen bejegyzés is tartozik.*	n:szam	4.4	uj	var
+s4.p5.bevezeto	A szó jelentései tömören, vagy a hivatkozás arra, ahol a jelentések teljes listája olvasható.	-	4.5	OLVASOI_SZEREP[5]	-
+s4.p5.gorog	A teljes UBS-szócikk és a Mounce-glossza szavanként a szónézetben áll: {szavak|, }; a Louw–Nida-doménsor a {szakasz}.{pont} pontban. Forrás: {forras}.	szavak:lista(lathato), szakasz:szam, pont:szam, forras:nev(forras)	4.5	_gerinc_ubs_mutato	-
+s4.p5.heber	Az UBS héber szótárának jelentései szavanként a szónézetben állnak: {szavak|, }. Forrás: {forras}.	szavak:lista(lathato), forras:nev(forras)	4.5	_gerinc_ubs_mutato	-
+s4.p10.bevezeto	A szó magyaros kiejtése.	-	4.10	OLVASOI_SZEREP[10]	-
+s4.p10.sor	**{szo}** · {strong}	szo:lathato, strong:strong	4.10	_szerep_tartalom	-
+cim.szocikkek.kozos	Nyelvfüggetlen szerepek	-	4	szerep_vaz	-
+s4.kozos.bevezeto	A szavakon túli, a motívum egészére vonatkozó pontok: tematikus mutató, a Károli-fordítás magyar szavai, és a rejtett vagy hamis párhuzamok.	-	4	OLVASOI_SABLON[nyelvfuggetlen]	-
+s4.p11.cim	Visszhang: ókori fordítások (l. [{szam}. {nev}](#{horgony}))	szam:szam, nev:lathato, horgony:horgony	4.11	visszhang_beszur	-
+s4.szo.nevelovel	{alak|a:kiejtes} ({kiejtes})	alak:lathato, kiejtes:lathato	4	_szo_irassal_nevelovel	-
+s4.szo.nevelovel.kiejtes_nelkul	{alak|a}	alak:lathato	4	_szo_irassal_nevelovel	-
+s4.p9.bevezeto.ures	Hogy az egyes versekben a szó melyik jelentésében áll.	-	4.9	OLVASOI_SZEREP[9]	-
+s4.p9.kivetel	{szo} ({helyek|, })	szo:lathato, helyek:lista(igehely)	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.mind.heber	A héber szavak jelentése a motívum minden ószövetségi helyén egyértelmű ({n} hely).	n:szam	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.mind.gorog	A görög szavak jelentése a motívum minden újszövetségi helyén egyértelmű ({n} hely).	n:szam	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.vegyes.heber	A héber szavak közül {egy|, | és } jelentése a helyén egyértelmű; {tobb|, | és } helyén a szótár több jelentést enged, ezeknél a vers dönt (ez {n} hely a motívum {ossz} ószövetségi helyéből).	egy:lista(lathato), tobb:lista(lathato), n:szam, ossz:szam	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.vegyes.gorog	A görög szavak közül {egy|, | és } jelentése a helyén egyértelmű; {tobb|, | és } helyén a szótár több jelentést enged, ezeknél a vers dönt (ez {n} hely a motívum {ossz} újszövetségi helyéből).	egy:lista(lathato), tobb:lista(lathato), n:szam, ossz:szam	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.egyik_sem.heber	A héber szavak egyikének jelentése sem egyértelmű a helyén: {tobb|, | és }; ezeknél a vers dönt.	tobb:lista(lathato)	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.lelet.egyik_sem.gorog	A görög szavak egyikének jelentése sem egyértelmű a helyén: {tobb|, | és }; ezeknél a vers dönt.	tobb:lista(lathato)	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kovetkeztetessel	{lelet} **Következtetés:** {kov}.	lelet:lathato, kov:lathato	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kov.szinte	a szavak jelentése a motívum helyein szinte mindenütt egyértelmű	-	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kov.tobbseg	a szavak jelentése a motívum helyeinek többségén egyértelmű	-	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kov.fele	a szavak jelentése a helyek felén-kétharmadán egyértelmű; a többinél a vers dönt	-	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.kov.keves	a szavak jelentését a motívum helyeinek többségén a vers dönti el	-	4.9	olvasoi_kovetkeztetes.versenkenti_csoport	-
+s4.p9.mutato	A vers-szintű jelentést a [{szam}. {cim}](#{horgony}) táblázatának „UBS-jelentés” oszlopa mutatja, a szó teljes versenkénti listáját a szónézet. Forrás: {forras}.	szam:szam, cim:lathato, horgony:horgony, forras:nev(forras)	4.9	_tartalom_ubs_oszlop	-
+s4.p9.sor.heber	**{szo}** · {strong} · {n} ószövetségi hely: {reszek|, } · [szónézet](/szo/{strong})	szo:lathato, strong:strong, n:szam, reszek:lista(lathato)	4.9	_tartalom_ubs_oszlop	-
+s4.p9.sor.gorog	**{szo}** · {strong} · {n} újszövetségi hely: {reszek|, } · [szónézet](/szo/{strong})	szo:lathato, strong:strong, n:szam, reszek:lista(lathato)	4.9	_tartalom_ubs_oszlop	-
+s4.p9.sor.nincs.heber	**{szo}** · {strong} · a motívumnak nincs ószövetségi helye ezzel a szóval.	szo:lathato, strong:strong	4.9	_tartalom_ubs_oszlop	-
+s4.p9.sor.nincs.gorog	**{szo}** · {strong} · a motívumnak nincs újszövetségi helye ezzel a szóval.	szo:lathato, strong:strong	4.9	_tartalom_ubs_oszlop	-
+s4.p9.egy	{n} helyen egy jelentés	n:szam	4.9	_tartalom_ubs_oszlop	-
+s4.p9.tobb	{n} helyen több lehetséges, nem egyértelmű jelentés	n:szam	4.9	_tartalom_ubs_oszlop	-
+s4.p9.nincs	{n} helyen nincs hozzárendelés	n:szam	4.9	_tartalom_ubs_oszlop	-
+s4.szo.nevelovel.nagy	{alak|A:kiejtes} ({kiejtes})	alak:lathato, kiejtes:lathato	4	_szo_irassal_nevelovel + _nagy_kezdo	-
+s4.szo.nevelovel.nagy.kiejtes_nelkul	{alak|A}	alak:lathato	4	_szo_irassal_nevelovel + _nagy_kezdo	-
+s4.szo.jelentessel	{szo} ’{jelentes}’	szo:lathato, jelentes:lathato	4	_jelentes_rovid	-
+s4.hely	{hely}	hely:igehely	4	sece_hid_olvasoi	-
+s4.tovabbiak	…	-	4	sece_hid_olvasoi	-
+s4.mondatok	{mondatok| }	mondatok:lista(lathato)	4	sece_hid_olvasoi	-
+s4.p7.bevezeto.heber	A görög Biblia a héber szavakat görög szavakkal adja vissza. Ha ez a görög szó ugyanaz, amely az Újszövetségben áll, a két rész szó szerint is összekapcsolódik.	-	4.7	sece_hid_olvasoi	-
+s4.p7.bevezeto.gorog	Az Újszövetség görög szavai a görög Bibliában héber szavakat fordítanak. Ha a héber szó a motívum saját szava, a két rész szó szerint is összekapcsolódik.	-	4.7	sece_hid_olvasoi	-
+s4.p7.csalad	{szo} a szótár szerint görögül {megfelelo}; ennek szócsaládjából {tagok|, | és } áll az Újszövetségben ({helyek|, }).	szo:lathato, megfelelo:lathato, tagok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.pontos.heber	{szavak|, | és } ilyen: a kétnyelvű szótár szerint görögül {megfelelok|, | és }, és az Újszövetség is ezekkel a szavakkal beszél ({helyek|, }).	szavak:lista(lathato), megfelelok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.pontos.heber.egy	{szavak|, | és } ilyen: a kétnyelvű szótár szerint görögül {megfelelok|, | és }, és az Újszövetség is ezzel a szóval beszél ({helyek|, }).	szavak:lista(lathato), megfelelok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.pontos.gorog	{szavak|, | és } ilyen: a kétnyelvű szótár szerint héberül {megfelelok|, | és } felel meg nekik, és a motívum ószövetségi helyein ez a szó áll ({helyek|, }).	szavak:lista(lathato), megfelelok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.pontos.gorog.egy	{szavak|, | és } ilyen: a kétnyelvű szótár szerint héberül {megfelelok|, | és } felel meg neki, és a motívum ószövetségi helyein ez a szó áll ({helyek|, }).	szavak:lista(lathato), megfelelok:lista(lathato), helyek:lista(lathato)	4.7	sece_hid_olvasoi	-
+s4.p7.zaro.tobbi	A többi szónál a szótár nem ad ilyen kapcsolatot.	-	4.7	sece_hid_olvasoi	-
+s4.p7.zaro.mind	A motívum szavainál a szótár nem ad ilyen kapcsolatot.	-	4.7	sece_hid_olvasoi	-
+s4.p7.tabla_cim.gorog	**{strong} — {szo}** · SECE — héber megfelelők ({n}):	strong:strong, szo:lathato, n:szam	4.7	_tartalom_sece	-
+s4.p7.tabla_cim.heber	**{strong} — {szo}** · SECE — görög megfelelők ({n}):	strong:strong, szo:lathato, n:szam	4.7	_tartalom_sece	-
+s4.p7.tabla_cim.gorog.csak_strong	**{strong}** · SECE — héber megfelelők ({n}):	strong:strong, n:szam	4.7	_tartalom_sece	-
+s4.p7.tabla_cim.heber.csak_strong	**{strong}** · SECE — görög megfelelők ({n}):	strong:strong, n:szam	4.7	_tartalom_sece	-
+s4.p7.nincs_lista.gorog	**{strong}** · *a forrás nem tárgyalja* *(SECE: nincs héber megfelelő-lista)*	strong:strong	4.7	_tartalom_sece	-
+s4.p7.nincs_lista.heber	**{strong}** · *a forrás nem tárgyalja* *(SECE: nincs görög megfelelő-lista)*	strong:strong	4.7	_tartalom_sece	-
+s4.p7.fejlec.szo	Szó	-	4.7	sece_tabla	-
+s4.p7.fejlec.kiejtes	Kiejtés	-	4.7	sece_tabla	-
+s4.p7.fejlec.strong	Strong	-	4.7	sece_tabla	-
+s4.p7.fejlec.jelentes	Rövid jelentés	-	4.7	sece_tabla	-
+s4.p7.szo.motivum	**{szo}** *(a motívum szava)*	szo:lathato	4.7	sece_tabla	-
+s4.p7.strongok	{strongok| vagy } *(a SECE csak a szóalakot adja)*	strongok:lista(strong)	4.7	sece_tabla	-
+s4.p7.jelentesek	{elemek| / }	elemek:lista(lathato)	4.7	sece_tabla	-
+s4.p7.labjegyzet	*A szólista és a sorrend a SECE-é (gyakoriságot nem ad; az ismétlődő szóalak egyszer áll); a Strong-szám a TBESG/TBESH lemmájából vagy a SECE címszavából párosul; a rövid jelentés: héberül {heber}, görögül {gorog}.*	heber:nev(forras), gorog:nev(forras)	4.7	uj	var
+s4.idezett	„{szo}”	szo:lathato	4	olvasoi_14_szavankent	-
+s4.idezett.nevelovel	{idezett|a}	idezett:lathato	4	_idezett_nevelovel	-
+s4.forrassor	*(forrás: {forrasok|; })*	forrasok:lista(lathato)	4	olvasoi_utofeldolg (a proveniencia-sor olvasói alakja)	-
+s4.p13.lelet	A motívum {n} igehelyén a Károli {m} különböző magyar szót használ (szócsaládonként). A motívumot több héber és görög szó hordozza, ezért a magyar szavakat szavanként érdemes nézni: a legalább {minimum} helyen álló szavaknál a leggyakoribb magyar szó {reszek|; }.	n:szam, m:szam, minimum:szam, reszek:lista(lathato)	4.13	olvasoi_13_szavankent	-
+s4.p13.lelet.nincs	A motívum {n} igehelyén a Károli {m} különböző magyar szót használ (szócsaládonként). A motívumot több héber és görög szó hordozza, ezért a magyar szavakat szavanként érdemes nézni; egyik szó sem áll {legfeljebb} helynél többen.	n:szam, m:szam, legfeljebb:szam	4.13	olvasoi_13_szavankent	-
+s4.p13.resz	{szo} {db} helyéből {k} helyen „{magyar}”	szo:lathato, db:szam, k:szam, magyar:lathato	4.13	olvasoi_13_szavankent	-
+s4.p13.tobbi	A többi {k} szó {minimum} helynél kevesebben áll, ezekről nincs következtetés.	k:szam, minimum:szam	4.13	olvasoi_13_szavankent	-
+s4.p13.kov.allando.egy	{szavak|, | és } helyein a Károli többnyire ugyanazzal a magyar szóval fordít, ezért ez a szó magyarul is követhető	szavak:lista(lathato)	4.13	olvasoi_13_szavankent	-
+s4.p13.kov.allando.tobb	{szavak|, | és } helyein a Károli többnyire ugyanazzal a magyar szóval fordít, ezért ezek a szavak magyarul is követhetők	szavak:lista(lathato)	4.13	olvasoi_13_szavankent	-
+s4.p13.kov.valtozo.egy	{szavak|, | és } helyein váltakozó szavakkal, ezért ez magyarul nehezen követhető	szavak:lista(lathato)	4.13	olvasoi_13_szavankent	-
+s4.p13.kov.valtozo.tobb	{szavak|, | és } helyein váltakozó szavakkal, ezért ezek magyarul nehezen követhetők	szavak:lista(lathato)	4.13	olvasoi_13_szavankent	-
+s4.p13.kovetkeztetes	**Következtetés:** {reszek|; }.	reszek:lista(lathato)	4.13	olvasoi_13_szavankent	-
+s4.p13.zaro	A sorokban a ragozott alakok és az igehelyek állnak.	-	4.13	olvasoi_13_szavankent	-
+s4.p13.hatokor	*A motívum igehelyeinek Károli-szóalakjai ({tabla}, a Károli-szó mezője), szócsaládonként: a szótári alak ({alakok}, mai helyesírás), a ragozott maradék a rövidebb szótári alakba olvasztva, névelő nélkül; a szóalakok, és hány igehelyen, melyiken.*	tabla:nev(forras), alakok:nev(forras)	4.13	SZK.blokk_13 (az olvasói átírás utáni alak)	-
+s4.p13.sor	- **{alak}** ({n}) — {szoalakok|, }: {helyek|, }	alak:lathato, n:szam, szoalakok:lista(lathato), helyek:lista(igehely)	4.13	SZK.blokk_13 (az olvasói átírás utáni alak)	-
+s4.p14.nincs_kulcsszo	A rejtett és a hamis párhuzam a Károli állandó magyar kulcsszavával mérhető (a szó helyeinek legalább felében ugyanaz a magyar szó). A motívum egyik szavának sincs ilyen kulcsszava, ezért egyik sem állapítható meg; a vizsgálat eredménye üres.	-	4.14	olvasoi_14_szavankent	-
+s4.p14.modszer	A rejtett és a hamis párhuzam a Károli állandó magyar kulcsszavával mérhető: azzal a magyar szóval, amely a szó motívumhelyeinek legalább felében ugyanabban a szótári alakban áll (legalább {minimum} helyen álló szónál). Ilyen kulcsszava a motívum {osszes} szava közül {n}-nak van: {nevek|, | és }. A többi szónál nincs ilyen szótári alak (vagy a szó {minimum} helynél kevesebben áll), ezért azoknál a rejtett és a hamis párhuzam ezzel a módszerrel nem mérhető; a magyar szavaik {szakasz|a}.{pont}-ban állnak.	minimum:szam, osszes:szam, n:szam, nevek:lista(lathato), szakasz:szam, pont:szam	4.14	olvasoi_14_szavankent	-
+s4.p14.kulcs	{szo}: {kulcsszavak|, }	szo:lathato, kulcsszavak:lista(lathato)	4.14	olvasoi_14_szavankent	-
+s4.p14.rejtett.lelet	**Rejtett párhuzam** (a motívum szava áll, de a Károli nem a kulcsszóval fordítja): {n} hely, {peldak|, }.	n:szam, peldak:lista(lathato)	4.14	olvasoi_14_szavankent	-
+s4.p14.rejtett.pelda	{hely} — „{szo}”	hely:igehely, szo:lathato	4.14	olvasoi_14_szavankent	-
+s4.p14.rejtett.nincs	**Rejtett párhuzam** nincs: ezeknek a szavaknak minden helyén a kulcsszó áll.	-	4.14	olvasoi_14_szavankent	-
+s4.p14.hamis.lelet	**Hamis párhuzam** (a magyar kulcsszó áll, de az eredetiben nem a motívum szava): {n} vers, {mogott|; }.	n:szam, mogott:lista(lathato)	4.14	olvasoi_14_szavankent	-
+s4.p14.hamis.lelet.par_nelkul	**Hamis párhuzam** (a magyar kulcsszó áll, de az eredetiben nem a motívum szava): {n} vers, a párosítás a versek mögötti szót nem adja meg.	n:szam	4.14	olvasoi_14_szavankent	-
+s4.p14.mogott	{idezett|a} mögött leggyakrabban {eredeti} ({db} versben)	idezett:lathato, eredeti:lathato, db:szam	4.14	olvasoi_14_szavankent	-
+s4.p14.hamis.nincs	**Hamis párhuzam** nincs.	-	4.14	olvasoi_14_szavankent	-
+s4.p14.kov.megbizhato	**Következtetés:** ezeknél a szavaknál a magyar kulcsszó megbízhatóan jelzi a motívumot.	-	4.14	olvasoi_14_szavankent	-
+s4.p14.kov	**Következtetés:** aki a Károliban {kulcsszavak| vagy } szóra keres, a {talalat} találat {szazalek}%-a nem a motívumhoz tartozik; a motívum ezért ezeknél a szavaknál is az eredeti szavak alapján kereshető, nem a magyar fordítás alapján.	kulcsszavak:lista(lathato), talalat:szam, szazalek:szam	4.14	olvasoi_14_szavankent	-
+s4.p14.kov.rejtettel	**Következtetés:** aki a Károliban {kulcsszavak| vagy } szóra keres, a {talalat} találat {szazalek}%-a nem a motívumhoz tartozik, és a motívum {rejtett} helyét nem találja meg; a motívum ezért ezeknél a szavaknál is az eredeti szavak alapján kereshető, nem a magyar fordítás alapján.	kulcsszavak:lista(lathato), talalat:szam, szazalek:szam, rejtett:szam	4.14	olvasoi_14_szavankent	-
+s4.p14.kulcsszavak	*Kulcsszó szavanként: {kulcsok|; } — a szó motívumhelyein a Károli-szóalakok legalább felében álló szótári alak (a Károli–Strong párosításban csak más szóra párosuló magyar szó nélkül).*	kulcsok:lista(lathato)	4.14	SZK.blokk_14 (az olvasói átírás utáni alak)	-
+s4.p14.rejtett.cim	**Rejtett párhuzam** (a motívum szava áll, de a Károli nem a kulcsszóval fordítja) — {n} hely.	n:szam	4.14	SZK.blokk_14 (az olvasói átírás utáni alak)	-
+s4.p14.rejtett.sor	- {hely} — „{szo}” (a szó: {eredeti}; a kulcsszó: {kulcsszavak|, })	hely:igehely, szo:lathato, eredeti:lathato, kulcsszavak:lista(lathato)	4.14	SZK.blokk_14 (az olvasói átírás utáni alak)	-
+s4.p14.hamis.cim	**Hamis párhuzam** (a magyar kulcsszó áll, de az eredetiben nem a motívum szava): a motívumon kívüli Károli-versek, amelyekben valamely kulcsszó áll, a hozzá tartozó motívumszó pedig nem — {n} vers, könyvenként. Ha a versben a motívum egy másik szava áll, a hely után zárójelben.	n:szam	4.14	SZK.blokk_14 (az olvasói átírás utáni alak)	-
+s4.p14.lista_cim	A {n} vers	n:szam	4.14	SZK.blokk_14 (az olvasói átírás utáni alak)	-
+s4.p14.konyv_sor	- {konyv} {versek|, } — {db} vers	konyv:konyvrov, versek:lista(lathato), db:szam	4.14	_tomor_lista	-
+s4.p14.vers	{vers}	vers:versresz	4.14	_tomor_lista	-
+s4.p14.vers.szoval	{vers} (a versben: {szavak|, })	vers:versresz, szavak:lista(lathato)	4.14	_tomor_lista	-
+s4.p12.bevezeto	Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős részét érintik: {n} téma (például: {pelda}). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek a témák a motívum környezetét mutatják, nem a meghatározását.	n:szam, pelda:lathato	4.12	SZN.olvasoi_12	-
+s4.p12.bevezeto.tagabb	Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, amelyek a motívum helyeinek jelentős részét érintik: {n} téma (például: {pelda}). Mindegyiknél látszik, a motívum melyik versei tartoznak hozzá. Ezek a témák a motívum környezetét mutatják, nem a meghatározását; a tágabb, általános témák ({tagabb}) szándékosan kimaradtak.	n:szam, pelda:lathato, tagabb:lathato	4.12	SZN.olvasoi_12	-
+s4.p12.hatokor	*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). Szóba jöhet az a téma, amely legalább {minimum} motívumverset érint, a motívumversek aránya a téma összes verséhez legalább {szazalek}%, és nem a tágabb kör felé mutat ({tiltott} tiltott téma); a {jelolt} szóba jöhető témából a motívumhoz kiválasztott {n} téma áll itt — a döntés és a kimaradt témák indoka: {dontesek}.*	minimum:szam, szazalek:szam, tiltott:szam, jelolt:szam, n:szam, dontesek:nev(forras)	4.12	SZN.blokk_12 (az olvasói átírás utáni alak)	-
+s4.p12.tema	- **{nev}** — {mv} motívumvers / {tv} témavers ({szazalek}%): {versek|, }	nev:lathato, mv:szam, tv:szam, szazalek:tizedes(1), versek:lista(igehely)	4.12	SZN.blokk_12 (az olvasói átírás utáni alak)	-
+s4.p12.altetel	  - {nev}: {versek|, }	nev:lathato, versek:lista(igehely)	4.12	SZN.blokk_12 (az olvasói átírás utáni alak)	-
+s4.p12.nev	<span title="{angol}">{magyar}</span>	angol:lathato, magyar:lathato	4.12	SZN._hu	-

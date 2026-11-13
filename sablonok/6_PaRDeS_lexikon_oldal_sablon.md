@@ -595,3 +595,22 @@ teszt: `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py`, arany minta: a HAMART-
 8. Hiány kimondva, nem kitöltve: kinyerés nélkül „a megfelelő kinyerése még nem történt meg”, ellenőrizetlen sorral „nincs ellenőrzött adat”, ellenőrzött, alak nélküli sorral „nincs megfelelő szó”; a „Mit mutat” a más szót és az adat nélküli verset nem keveri („3 versben nincs ellenőrzött adat”, nem „más szó”). A háttér-táblában lánc-szó `bdb` sor nélkül: „a rokon nyelvi adat kinyerése még nem történt meg”.
 
 **A HAMART-001 regressziós kapui (HIBA; `ellenoriz.py` 40. szabály, az új szerkezetű lapon SÉRTÉS, a régin a 2. kiadás tétele):** minden igehelyen kerek próza + „Funkció:” sor; olvasói kapu 0 BUKÁS **kivétel nélkül** (a Tartalomjegyzék, a Jelmagyarázat, a Kolofon, az Irodalom, a technikai dőlt sor és a lábjegyzet is: Károli-idézet, belső jel, „felhasználó” / „orkesztrátor”); a Döntési út számai összeadódnak; döntés nélküli vers 0; a Nave-blokk nem üres. Mellettük: határ-frissesség (39. szabály, Feed 5. kritérium), a beépített sor nem esik a csoportos kizárási okba (37.), nem „csak e szó miatt” (38.), Nave angol maradék nélkül (olvasói kapu NAVE_ANGOL).
+
+## A látható szöveg alapszabálya (DT823; az új lapgenerátor, F218a)
+
+*Ez a szabály egyetlen helye (F184); a brief, a kód és a séma csak hivatkozik rá.*
+
+**A lap látható szövege háromféle forrásból jöhet, másból nem:**
+
+1. **kézi próza**: a forrásfájl egy rése vagy egy adattábla prózamezője, változatlanul;
+2. **sablonmondat**: a sablontábla (`adat/lapgen_sablonok.tsv`, SEMA 2.61) egy mondata, amelybe csak strukturált érték kerül (szám, dátum, igehely, Strong-szám, a névtábla egy neve, másik látható szöveg); nyers szöveg nem;
+3. **szó szerinti idézet**: bibliavers vagy szótárszöveg a bemeneti rétegből, forrásmegjelöléssel.
+
+**Ami ebből következik:**
+
+- Belső szövegből (proveniencia-sor, indoklás, megjegyzés, keresési napló, mezőnév, fájlnév, döntésszám) cserével olvasói szöveg nem készül. A kész szöveget a generátor utólag nem írja át.
+- Minden belső kulcsnak olvasói neve van a névtáblában (`adat/olvasoi_nevtabla.tsv`, SEMA 2.62). Ismeretlen kulcs kemény hiba: a lap nem készül el, a kulcs nem kerül ki.
+- Proveniencia csak HTML-megjegyzésben és a Kolofonban áll.
+- Az `eredet=uj` sablonmondatot és nevet a felhasználó hagyja jóvá.
+
+**Gépi kikényszerítés** (`eszkozok/lapgen/`; a tesztek a `lapgen/tesztek/` alatt): a látható szöveg külön típus három konstruktorral (`szoveg.py`), statikus tesztek a kódon, és a festékpróba (`festek.py`): festett futásban minden belső mező jelzőszót kap, amely a kész lapon csak megjegyzésben állhat. **Egy kimondott kivétel:** a horgony (a link célja és a horgony azonosítója) a címsorból képzett szerkezeti azonosító, ezért a kézi és az idézett szöveg átalakított (kisbetűs, írásjelek nélküli) alakját hordozhatja; belső mező a horgonyba sem kerülhet. Horgonyon kívül az átalakított szöveg szivárgásnak számít.

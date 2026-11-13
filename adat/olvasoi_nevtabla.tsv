@@ -1,0 +1,57 @@
+# Az olvasói névtábla: a lapgenerátor (eszkozok/lapgen) belső kulcsainak olvasói neve. Séma: adat/SEMA.md 2.62
+tipus	kulcs	olvasoi_nev	eredet
+forras	B03	a motívum előfordulás-táblája	OLVASOI_FORRASNEV
+forras	B16	a szótári szakaszok címketáblája	OLVASOI_FORRASNEV
+forras	B19	a BDB-szótár	OLVASOI_FORRASNEV
+forras	B21	a Thayer-szótár	OLVASOI_FORRASNEV
+forras	B14	a lexikon fordítástáblája	OLVASOI_FORRASNEV
+forras	B33	az UBS Dictionary of Biblical Hebrew	OLVASOI_FORRASNEV
+forras	B34	a Károli-versmegfeleltetés	OLVASOI_FORRASNEV
+pardes_szint	Peshat	Peshat	elofordulasok.tsv pardes_szint
+pardes_szint	Remez	Remez	elofordulasok.tsv pardes_szint
+pardes_szint	Drash	Drash	elofordulasok.tsv pardes_szint
+pardes_szint	Sod	Sod	elofordulasok.tsv pardes_szint
+megbizhatosag	magas	magas	elofordulasok.tsv megbizhatosag
+megbizhatosag	közepes	közepes	elofordulasok.tsv megbizhatosag
+megbizhatosag	alacsony	alacsony	elofordulasok.tsv megbizhatosag
+azonositas_modja	tartalom-alapú	tartalom-alapú	elofordulasok.tsv azonositas_modja
+azonositas_modja	szó-szintű-gépi	szó-szintű-gépi	elofordulasok.tsv azonositas_modja
+azonositas_modja	kikövetkeztetett	kikövetkeztetett	elofordulasok.tsv azonositas_modja
+szotar	BDB	BDB	jelentes_cella
+szotar	Thayer	Thayer	jelentes_cella
+szotar	TBESG	TBESG	jelentes_cella
+hanyszor	2	kétszer	_HANYSZOR
+hanyszor	3	háromszor	_HANYSZOR
+hanyszor	4	négyszer	_HANYSZOR
+hanyszor	5	ötször	_HANYSZOR
+cimke_cella	BDB|H0127|BDB109|-/1/-	A megművelt föld, amely táplál	a szótári szakaszok címketáblájának címkéje (cimke_hu) cellakezdő alakban; a lapon így áll (a régi nevelo_le eredménye); a felhasználó döntése, 2026-11-13: a cella értéke az adatban a végleges alak
+cimke_cella	BDB|H0127|BDB109|-/3/-	A föld mint anyag, amelyből az ember lett	a szótári szakaszok címketáblájának címkéje (cimke_hu) cellakezdő alakban; a lapon így áll (a régi nevelo_le eredménye); a felhasználó döntése, 2026-11-13: a cella értéke az adatban a végleges alak
+cimke_cella	BDB|H0127|BDB109|-/4/-	A föld látható felszíne, a föld színe	a szótári szakaszok címketáblájának címkéje (cimke_hu) cellakezdő alakban; a lapon így áll (a régi nevelo_le eredménye); a felhasználó döntése, 2026-11-13: a cella értéke az adatban a végleges alak
+halo	strong	A szavak minden előfordulása	TELJESSEG_HALO_NEV
+halo	karoli	A magyar szavak	TELJESSEG_HALO_NEV
+halo	szotar	A szótárak idézőhelyei	TELJESSEG_HALO_NEV
+halo_leiras	strong	A lánc héber és görög szavai a teljes Ó- és Újszövetségben	TELJESSEG_HALO_NEV (a leírás a táblacella elején álló alakban, ahogy a lapon áll)
+halo_leiras	karoli	A lánc szavainak magyar megfelelői a teljes Károli-fordításban	TELJESSEG_HALO_NEV (a leírás a táblacella elején álló alakban, ahogy a lapon áll)
+halo_leiras	szotar	ahol a héber és a görög szótár ezeknél a szavaknál egy verset idéz	TELJESSEG_HALO_NEV (a leírás a táblacella elején álló alakban, ahogy a lapon áll)
+szotari_pont	1	Alapjelentés	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	2	Mélységi szócikk	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	3	Teológiai szócikk	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	4	Jelentésszerkezet, szemantikai mező	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	5	Tömör jelentés, előfordulás	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	6	LXX-híd	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	7	Megfelelők a másik nyelven	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	8	Nyelvi háttér	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	9	Versenkénti jelentés	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	10	Kiejtés (magyaros)	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	12	Tematikus index (témák és igehely-hivatkozások)	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	13	Károli-megfelelők	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+szotari_pont	14	Rejtett / hamis párhuzam	szotar_szerepek.tsv szerep (a nem aktív kapcsoló címrésze nélkül)
+forras	B32	az UBS Dictionary of New Testament Greek	OLVASOI_FORRASNEV
+forras	B15	a héber glosszák magyar táblája	OLVASOI_FORRASNEV
+forras	B07	a Károli-fordítás (1908)	OLVASOI_FORRASNEV
+forras	B08	a STEPBible héber szövege (TAHOT)	OLVASOI_FORRASNEV
+forras	B09	a STEPBible görög szövege (TAGNT)	OLVASOI_FORRASNEV
+forras	B55	a Károli-szavak szótári alakjai	OLVASOI_FORRASNEV
+forras	B57	Nave tárgymutatója (1897)	OLVASOI_FORRASNEV
+forras	B70	a tematikus index döntései	OLVASOI_FORRASNEV
+forras	B71	a Nave-témák magyar nevei	OLVASOI_FORRASNEV
