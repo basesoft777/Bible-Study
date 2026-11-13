@@ -163,6 +163,16 @@ class Bemenet:
         self._tar[utvonal] = (bajtok.decode('utf-8'), sha)
         return self._tar[utvonal]
 
+    def _fejsorok(self, utvonal, darab):
+        """Egy repó-relatív fájl első sorai a fájl beolvasása és naplózása nélkül (annak megállapítására, mit
+        tartalmaz a fájl: pl. melyik könyv párosítását). Tartalom innen nem kerül a lapra."""
+        teljes = os.path.join(self.gyoker, *utvonal.split('/'))
+        try:
+            with open(teljes, 'r', encoding='utf-8', newline='') as f:
+                return [f.readline().rstrip('\r\n') for _ in range(darab)]
+        except FileNotFoundError:
+            raise BemenetHiba('hiányzó bemeneti fájl: %s' % utvonal) from None
+
     def _utvonalak(self, b_id, motivum=None):
         """A bemenet útvonalai a jegyzékből: `;`-vel több útvonal adható, a `*` glob, az `<ID>` a motívum."""
         sor = self.jegyzek_sor(b_id)

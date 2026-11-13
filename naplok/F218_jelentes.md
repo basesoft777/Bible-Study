@@ -215,6 +215,22 @@ Az `eszkozok/lapgen/` rétegei (`szoveg` ← `bemenet` ← `szamitas` ← `megje
 
 Sem az „első”, sem az „utolsó” nem jó minden sorra: a helyes alak az, amelyik a sor Károli-szavának felel meg. Javaslat: a választás a Károli–Strong párosításból jöjjön (`adat/karoli_strong/parok_<könyv>.tsv`, B54), és csak párosítás híján az első előfordulás. A generátor most a T4 döntés szerint az elsőt adja; a három HAMART-sor az engedélyfájlban áll. Az alapmérés (F218.1) csak a héber szöveget mérte (2 sor), a görög Jel 11:18-cal az osztály 3 soros.
 
+**Kiegészítés a javítókörben (2026-11-13; az 1. ellenőrzés 5. és 11. tétele).** A fenti táblázat utolsó oszlopa („Melyik felel meg a Károli-szónak”) az építő session **értelmezése** volt, lekérdezés nélkül. A felhasználó döntése (DT-F218j, a DT838 módosítása): „ahol van párosítás: az az alak áll, amelyhez a Károli-szó kötődik; ahol nincs: az első előfordulás”. A generátor ezt a Károli–Strong párosításból (B54) veszi; az alábbi tábla már lekérdezés, nem értelmezés. Minden olyan sor áll benne, amelynek egy Strong-száma a sor versein többször áll:
+
+| Lap | Igehely | Károli-szó | Strong | Az első előfordulás | A Károli-szóhoz kötött alak (ez áll a lapon) | A pár (sorszám a versben) |
+|---|---|---|---|---|---|---|
+| HAMART-001 | 1Móz 6:5 | gonosz | H7451 | רָעַ֥ת (ráat) | רַ֖ע (ra) | 18 |
+| HAMART-001 | 1Móz 6:12 | megrontotta | H7843 | נִשְׁחָ֑תָה (nischátá) | הִשְׁחִ֧ית (hischít) | 11 |
+| HAMART-001 | Sof 1:2-3 | föld színéről | H0127 | הָאֲדָמָ֖ה (háadámá) | הָאֲדָמָ֖ה (háadámá) | Sof 1:2: 8 |
+| HAMART-001 | Jel 11:18 | pusztítják | G1311 | διαφθεῖραι (diaftheirai) | διαφθείροντας (diaftheirontasz) | 42 |
+| ISTENTISZT-001 | 1Móz 4:26 | segítségül hívni az Úrnak nevét | H7121 | וַיִּקְרָ֥א (vajjikrá) | לִקְרֹ֖א (likró) | 17 |
+| ISTENTISZT-001 | 1Móz 4:26 | segítségül hívni az Úrnak nevét | H8034 | שְׁמ֖וֹ (semó) | בְּשֵׁ֥ם (besém) | 19 |
+| ISTENTISZT-001 | 1Kir 18:24 | segítségül hívom az Úrnak nevét | H7121 | וּקְרָאתֶ֞ם (úkerátem) | אֶקְרָ֣א (ekrá) | 9 |
+| ISTENTISZT-001 | 1Kir 18:24 | segítségül hívom az Úrnak nevét | H8034 | בְּשֵׁ֣ם (besém) | בְשֵׁם (vesém) | 11 |
+| ISTENTISZT-001 | Jóel 2:32 | az Úrnak nevét hívja segítségül | H7121 | יִקְרָ֛א (jikrá) | יִקְרָ֛א (jikrá) | 5 |
+
+*Proveniencia: `scope=a két mintalap előfordulás-sorai, amelyekben egy Strong-szám a sor versein legalább kétszer áll; a kiejtés-szolgáltatás (lapgen.bemenet.szavak.Kiejtes.ragozott) kimenete Károli-szóval és anélkül | forras=adat/elofordulasok.tsv, adat/karoli_strong/parok_1Moz.tsv, parok_1Kir.tsv, parok_Joel.tsv, parok_Sof.tsv, parok_Jel.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv | ts=2026-11-13`.* A párosítás modell-kimenet (javaslat, nem ellenőrzött adat; az 1Kir, a Jóel, a Sof és a Jel párjai `alacsony` bizonyosságúak). Ha a Károli-szó egy szava a versben többször áll (1Móz 4:26 és 1Kir 18:24: „nevét”), az a pár dönt, amelynek a szomszédos szavai a Károli-szó többi szavával egyeznek. A HAMART-001 három eltérő sora így a régi lappal egyezik: a három T4-engedélysor megszűnt.
+
 **2. A kézi próza önreferenciája („a lap”).** A régi generátor nyolc kódba írt cserével (`tablajegyzet.ONREF_CSERE`) írta át a „lap” szót, köztük adatcellák szövegét is; a 2. szakaszban egy sort érint (1Móz 8:21: „azt a lap vitatott pontként tárgyalja” → „… a szócikk …”). Az új generátor a prózát változatlanul adja, ezért itt a jóváhagyott laphoz képest visszalépés áll, amíg a forrás nem javul. Két út: (a) az adatcella javítása (a régi kód megjegyzése szerint ehhez a nyílt mag angol fordításának hash-e kötődik, ezért maradt a csere a kódban); (b) prózajavító tábla a bemeneti rétegben (a `javitas` oszlop mintájára). Döntés kell; addig engedélysor (S1-ONREF).
 
 **3. Új sablonmondatok (`eredet=uj`, jóváhagyásra várnak).** Egyik sem áll a két mintalap 2. szakaszában; a régi generátor ezekben az esetekben belső szöveget vagy nyers adatértéket írt volna ki:

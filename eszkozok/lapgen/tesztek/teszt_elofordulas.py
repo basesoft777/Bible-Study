@@ -83,8 +83,9 @@ class Kiejtes(unittest.TestCase):
         cls.b = bemenet.Bemenet(kozos.GYOKER)
         cls.kiejtes = szavak.kiejtes(cls.b)
 
-    def _szo(self, vers, strong):
-        return self.kiejtes.ragozott((Igehely(vers),), Strong(strong))
+    def _szo(self, vers, strong, karoli_szo=None):
+        szo = Forrasszoveg(karoli_szo, 'karoli_szo', 'B03', Igehely(vers)) if karoli_szo else None
+        return self.kiejtes.ragozott((Igehely(vers),), Strong(strong), szo)
 
     def test_gk13_egy_kiejtesi_ut(self):
         """GK-13: a kiejtés egy szolgáltatásból jön: a kiejtés-modulokat csak a `bemenet/szavak.py` importálja."""
@@ -109,12 +110,37 @@ class Kiejtes(unittest.TestCase):
         gorog = self._szo('Gal 3:13', 'G1944')
         self.assertEqual((nfc(gorog.alak.ertek), gorog.kiejtes.ertek), (nfc('ἐπικατάρατος'), 'epikataratosz'))
 
-    def test_gk14_ismetlodesnel_az_elso_elofordulas(self):
-        """GK-14 (T4): ha a Strong-szám többször áll a versben, az első előfordulás alakja számít."""
+    def test_gk14_ismetlodesnel_a_karoli_szohoz_kotott_alak(self):
+        """GK-14 (T4, a módosított döntés): ha a Strong-szám többször áll a versben, az az alak számít, amelyhez
+        a sor Károli-szava a párosításban kötődik."""
         self.assertEqual(self.kiejtes.token_szam(Igehely('1Móz 6:5'), Strong('H7451')), 2)
+        self.assertEqual(nfc(self._szo('1Móz 6:5', 'H7451', 'gonosz').alak.ertek), nfc('רַ֖ע'))
+        self.assertEqual(nfc(self._szo('1Móz 6:5', 'H7451', 'gonoszsága').alak.ertek), nfc('רָעַ֥ת'))
+        self.assertEqual(nfc(self._szo('1Móz 6:12', 'H7843', 'megrontotta').alak.ertek), nfc('הִשְׁחִ֧ית'))
+        self.assertEqual(nfc(self._szo('Jel 11:18', 'G1311', 'pusztítják').alak.ertek), nfc('διαφθείροντας'))
+
+    def test_gk14_parositas_hijan_az_elso_elofordulas(self):
+        """GK-14 (T4): ha a Károli-szóhoz nincs pár (vagy a sornak nincs Károli-szava), az első előfordulás áll,
+        a vers szövegrendje szerint."""
         self.assertEqual(nfc(self._szo('1Móz 6:5', 'H7451').alak.ertek), nfc('רָעַ֥ת'))
+        self.assertEqual(nfc(self._szo('1Móz 6:5', 'H7451', 'nincs ilyen szó a versben').alak.ertek), nfc('רָעַ֥ת'))
         self.assertEqual(nfc(self._szo('1Móz 6:12', 'H7843').alak.ertek), nfc('נִשְׁחָ֑תָה'))
         self.assertEqual(nfc(self._szo('Jel 11:18', 'G1311').alak.ertek), nfc('διαφθεῖραι'))
+
+    def test_gk14_a_par_csak_egyezo_alakkal_ervenyes(self):
+        """A pár sorszáma csak akkor dönt, ha azon a helyen ez a Strong-szám és a pár eredeti alakja áll; a nem
+        párosított könyv (nincs fájlja) kimondott hiány: üres válasz, nem hiba. Ha a Károli-szó egy szava
+        többször áll a versben, az összefüggő szókapcsolat párja számít."""
+        parok = szavak.b54_karoli_parok(self.b)
+        self.assertEqual([n for n, _alak in parok.kotott('1Móz 6:5', 'H7451', 'gonosz')], [18])
+        self.assertEqual(parok.kotott('1Móz 6:5', 'H7451', 'föld'), [])
+        self.assertEqual([n for n, _alak in parok.kotott('1Móz 4:26', 'H8034', 'nevét')], [11, 19])
+        self.assertEqual([n for n, _alak in parok.kotott('1Móz 4:26', 'H8034', 'segítségül hívni az Úrnak nevét')],
+                         [19])
+        self.assertEqual(parok.kotott('Nincs 1:1', 'H7451', 'gonosz'), [])
+        sorok = (('H7451', 'más alak', ''),) * 18
+        self.assertIsNone(self.kiejtes._kotott_hely(
+            sorok, Igehely('1Móz 6:5'), Strong('H7451'), Forrasszoveg('gonosz', 'karoli_szo', 'B03', None)))
 
     def test_gk14_tartomanynal_az_elso_vers_amelyben_a_szo_all(self):
         szo = self.kiejtes.ragozott((Igehely('Gal 3:13'), Igehely('Gal 3:14')), Strong('G1944'))

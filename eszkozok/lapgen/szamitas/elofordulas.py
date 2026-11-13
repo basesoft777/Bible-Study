@@ -185,10 +185,10 @@ class _Forrasok:
         return self._b.kulcs('B03', 'lexikon_szotar', szotar)
 
 
-def _alakok(strongok, versek, f):
+def _alakok(strongok, versek, karoli_szo, f):
     ki = []
     for strong in strongok:
-        szo = f.kiejtes.ragozott(versek, strong)
+        szo = f.kiejtes.ragozott(versek, strong, karoli_szo if karoli_szo else None)
         if szo is not None:
             ki.append(SzoAlak(strong, idezet(szo.alak), idezet(szo.kiejtes) if szo.kiejtes is not None else None))
     return tuple(ki)
@@ -267,7 +267,7 @@ def _sor(sor, f):
     return ElofordulasSor(
         igehely=sor.igehely, horgony=sor.igehely.horgony(),
         karoli_szo=idezet(sor.karoli_szo) if sor.karoli_szo else None,
-        alakok=() if szo_nelkul else _alakok(mutatott, versek, f),
+        alakok=() if szo_nelkul else _alakok(mutatott, versek, sor.karoli_szo, f),
         tematikus_szo_nelkul=szo_nelkul,
         sajat_szo=sor.sajat_szo is not None,
         funkcio_cimke=proza(sor.funkcio_cimke) if sor.funkcio_cimke else None,
