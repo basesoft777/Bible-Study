@@ -45,7 +45,7 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 
 **Friss Fable-session folytatja ebből a fájlból** (a 2. session kontextusa az S2 első fele után a 70%-os határhoz ért). Sorrend:
 
-1. Modell-ellenőrzés (`fable`), `get_usage` (a küszöb: 96% heti; 70% kontextus fölött zárás).
+1. Modell-ellenőrzés (`fable`), `get_usage` (a küszöb: 99% heti, l. „A felhasználó megállási küszöbe”; 70% kontextus fölött zárás).
 2. **A 2. ellenőrzés javítóköre (`/elteres 218`, 2 / 2).** A besorolási javaslat a jelentés végén áll; az egyeztetés (a felhasználó vagy az orkesztrátor „mehet”-je) után: 1a, 2, 3, 4 mechanikus; 1b döntés (DT-sor, helyőrzővel).
 3. **F218.5 (S2), második fele: „1. Döntési út” (1.1–1.5).** A számok a kész modellből jönnek (`szamitas/vizsgalat.py` `szamit` és `kapu`); a szakasz bekötése: `bekotes.py`, kapuval. A referencia-szakasz: `lexikon/HAMART-001_TUDOMANYOS.md` 108–218. sor.
 4. Az S2 végén **egy célzott független ellenőrzés** (nem Fable): az S2 diffje (`656c508a..`) és a 2. javítókör tételei.
@@ -93,6 +93,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 - **A szelet vége:** szakasz-diff 0 az engedélyeken kívül mindkét nézetre; az ISTENTISZT ugyanazon szakasza belső szöveg nélkül; festékpróba 0; tesztek zöldek; commit(ok) `F218.5: …`; `push_elott.py`; push; a folytatási fájl frissítve.
 
 ### A felhasználó megállási küszöbe
+
+**Érvényes szabály (a felhasználó, az orkesztrátoron át, 2026-11-13, szó szerint): „99 % az új szabály”.** A megállási küszöb a heti keret („Weekly · all models”) 99%-a; elérésekor ugyanúgy zöld állapotban zárás (commit, folytatási fájl, push) és jelzés. A 70%-os kontextus-szabály változatlan. Az alábbi bekezdés a korábbi, 96%-os szabályt rögzíti (felülírva).
 
 A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállási köszüb 96% legyen”. Minden commit előtt `get_usage`. Ha a heti keret („Weekly · all models”) eléri a 96%-ot: az épp futó lépés zöld állapotban lezárul (commit, folytatási fájl, push), megállás, a pontos százalék jelzése az orkesztrátornak. Új szelet 96% fölött nem indul. Ez a brief megállási szabálya mellett érvényes.
 
