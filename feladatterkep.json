@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-13",
-   "commit": "58608017"
+   "commit": "31bfbcbc"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -6975,6 +6975,30 @@
     ],
     "sor": 804,
     "oszlopszam": 5,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT823",
+    "feladat": "#212 CS3_GENERATOR_KOR (a lap látható szövegének forrása; ismétlődő hiba gyökéroka; 2026-11-13)",
+    "kerdes": "Honnan jöhet a lexikonlap látható szövege? A visszatérő olvasói hibák (belső név, ismétlődő címke, a cellát ismétlő jegyzet, forrásnév a mondat közepén) mind abból jönnek, hogy a látható szöveg belső adatszövegből készül, utólagos regex-cserével (`lexikon_general.olvasoi_atiras`, kb. 50 csere; `naplok/HIBA_MECHANIZMUSOK.md` M-CSERE).",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 805,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT824",
+    "feladat": "#212 CS3_GENERATOR_KOR (olvasói átolvasás és hibanapló a kiadás előtt; 2026-11-13)",
+    "kerdes": "Ki olvassa olvasóként a generált blokkokat a kiadás előtt? 2026-11-11 óta a lektor csak a prózát nézi, a generált blokkokat a kapukra bíztuk, és a kapuk tiltólisták; az első valódi olvasó a felhasználó volt.",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 806,
+    "oszlopszam": 7,
     "fejlec_oszlopszam": 8
    }
   ],
