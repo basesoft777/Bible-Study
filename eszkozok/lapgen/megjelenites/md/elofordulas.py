@@ -81,19 +81,26 @@ def _kulcsszo(ny, sor):
     return ny.s('e2.kulcsszo', karoli=sor.karoli_szo, alakok=alakok)
 
 
+def _token_jel(ny, t):
+    """A szakasz jele a cellában: a BDB jele magában áll, más szótáré a szótár nevével („Thayer 1”)."""
+    if t.jel_szotar is None:
+        return t.jel
+    return ny.s('e2.jel.szotarral', szotar=ny.nev('szotar', t.jel_szotar), jel=t.jel)
+
+
 def _jelentes_token(ny, t, cellakezdo):
     """Egy szó jelentése; `cellakezdo`: a szöveg a cella elején áll (a címke és a sablonmondat cellakezdő
     alakja adat, illetve külön sablonsor; átírás nincs)."""
     if t.fajta in (JelentesFajta.CIMKE, JelentesFajta.GLOSSZA):
         cimke = t.cimke_cella if cellakezdo and t.cimke_cella is not None else t.cimke
-        return ny.s('e2.jelentes.cimke', cimke=cimke, jel=t.jel)
+        return ny.s('e2.jelentes.cimke', cimke=cimke, jel=_token_jel(ny, t))
     if t.fajta is JelentesFajta.SZOCIKK_EGESZE:
         kulcs = ny.kulcs('e2.jelentes.szocikk_egesze', 'cella') if cellakezdo else 'e2.jelentes.szocikk_egesze'
         if t.cimke is not None:
             return ny.s(kulcs, glossza=t.cimke)
         return ny.s(ny.kulcs(kulcs, 'ures'))
     if t.fajta is JelentesFajta.NINCS_CIMKE:
-        return ny.s('e2.jelentes.nincs_cimke', jel=t.jel)
+        return ny.s('e2.jelentes.nincs_cimke', jel=_token_jel(ny, t))
     return ny.s('e2.jelentes.nincs_hozzarendeles')
 
 

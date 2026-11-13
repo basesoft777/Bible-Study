@@ -68,6 +68,7 @@ e2.dbh.ok.szamozas_elteres	versszámozás-eltérés, az MT-vers a táblában nin
 e2.dbh.ok.nincs_hivatkozas	keresett MT-vers: {vers}	vers:igehely	2	dbh_jelentes_cella	-
 e2.ubs_magyarazat	*Az UBS-jelentés az újszövetségi soroknál az UBS Dictionary of New Testament Greek (DNTG), az ószövetségi soroknál az UBS Dictionary of Biblical Hebrew (DBH) igehelyszintű jelentése ({dbh}, a Károli-vers az MT-számozásra képezve, {megfeleltetes}); szavanként a hivatkozott jelentés(ek) kódja és rövid glosszája; az ⓘ a szónézetre mutat, ahol a teljes UBS-szócikk (definíció és glosszák) áll (szerkesztői döntés, {datum}). A glossza magyarul (forrás: {forditastabla}) jön, ahol van; ahol nincs, az angol eredeti áll (fordításra vár) jelöléssel. Ahol a DBH a versre nem hivatkozik, a mező ezt kimondja.*	dbh:nev(forras), megfeleltetes:nev(forras), datum:datum, forditastabla:nev(forras)	2	blokk_elofordulasok; olvasoi_atiras	-
 lista.vesszo	{elemek|, }	elemek:lista(lathato)	keret	szakasz_szoveg	-
+e2.jel.szotarral	{szotar} {jel}	szotar:nev(szotar), jel:lathato	2	jelentes_cella (a nem BDB-jel a szótár nevével)	-
 e2.jelentes.cimke	{cimke} · {jel}	cimke:lathato, jel:lathato	2	jelentes_cella	-
 e2.jelentes.szocikk_egesze	a szócikk egésze — {glossza}	glossza:lathato	2	_tagolatlan_olvasoi	-
 e2.jelentes.szocikk_egesze.ures	a szócikk egésze	-	2	_tagolatlan_olvasoi	-

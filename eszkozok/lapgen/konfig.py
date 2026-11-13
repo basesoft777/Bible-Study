@@ -14,6 +14,10 @@ GENERATOR_JELOLO = 'general.py --cel ' + CEL_NEV
 NEZET_TUDOMANYOS = 'TUDOMANYOS'
 NEZET_KIZARASOK = 'KIZARASOK'
 
+# Az olvasási napló fájlja a lap mellett (`<ID>_olvasasi_naplo.tsv`): a regresszió bemenet-hash őre olvassa.
+NAPLO_FAJLNEV = '%s_olvasasi_naplo.tsv'
+NAPLO_OSZLOPOK = ('b_id', 'utvonal', 'sha256')
+
 # A dátum környezeti változója (YYYY-MM-DD); nélküle a `ts=` a bemenetek hash-éből képződik (GK-29).
 DATUM_VALTOZO = 'PARDES_DATUM'
 TS_HASH_JEGY = 12

@@ -64,6 +64,17 @@ class Mintalapok(unittest.TestCase):
             szivargas, _latott, _eredmeny = festek.proba(azonosito, gyoker=kozos.GYOKER)
             self.assertEqual(szivargas, [], azonosito)
 
+    def test_gk08b_a_szotari_ag_mezoi_is_festettek(self):
+        """GK-08b: a szótári példahelyek mezői (B19) is jelzőszót kapnak: a belső mezők belső, a forrás
+        idézhető alakja idézet kategóriában; így a próba a szótári ágat is fedi."""
+        _szivargas, _latott, eredmeny = festek.proba('HAMART-001')
+        kategoriak = eredmeny.festo.kategoriak
+        self.assertEqual(kategoriak.get('ZZQB19_sorszamZZ'), 'belso')
+        self.assertEqual(kategoriak.get('ZZQB19_karoli_versZZ'), 'belso')
+        self.assertEqual(kategoriak.get('ZZQB19_nyersZZ'), 'idezet')
+        szoveg = '\n'.join(sor.szoveg for sor in eredmeny.nezetek['TUDOMANYOS'])
+        self.assertIn('ZZQB19_sorszamZZ', szoveg)
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)

@@ -46,10 +46,18 @@ class Regresszio(unittest.TestCase):
 
     def _meres(self, uj_szoveg, **kw):
         teljes = kw.pop('teljes', False)
+        naplo = kw.pop('naplo', (('B03', 'adat/be.tsv', _sha(kw.get('bemenet', 'x\ty\n'))),
+                                  ('B13', '-', '')))
         repo = _repo(**kw)
         self.repok.append(repo)
         with open(os.path.join(self.uj, 'PROBA-001_TUDOMANYOS.md'), 'w', encoding='utf-8', newline='\n') as f:
             f.write(uj_szoveg)
+        naplo_ut = os.path.join(self.uj, R.NAPLO_FAJLNEV % 'PROBA-001')
+        if naplo is not None:
+            with open(naplo_ut, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(tsv(R.NAPLO_OSZLOPOK, *naplo))
+        elif os.path.isfile(naplo_ut):
+            os.remove(naplo_ut)
         return R.meres('PROBA-001', self.uj, gyoker=repo.gyoker, teljes=teljes)
 
     def test_szakaszol(self):
@@ -122,6 +130,29 @@ class Regresszio(unittest.TestCase):
         with self.assertRaises(R.MerceHiba) as hiba:
             self._meres('## 2. Második\n\nA sor\nB sor\nC sor\n\n', rogzitett_bemenet='régi tartalom\n')
         self.assertIn('a mérce bemenete megváltozott: B03 adat/be.tsv', '%s' % hiba.exception)
+
+    def test_naplo_or_ismeretlen_bemenet(self):
+        """Ha az új generátor olyan fájlt olvasott, amely nincs a referencia-táblában, a mérés megáll; a nem
+        fájl-bemenet (szabálymodul) sora nem számít."""
+        jo = '## 2. Második\n\nA sor\nB sor\nC sor\n\n'
+        self.assertFalse(self._meres(jo)['bukas'])
+        with self.assertRaises(R.MerceHiba) as hiba:
+            self._meres(jo, naplo=(('B03', 'adat/be.tsv', _sha('x\ty\n')), ('B67', 'adat/uj.tsv', _sha('z\n'))))
+        self.assertIn('B67 adat/uj.tsv (nincs a referencia-táblában)', '%s' % hiba.exception)
+
+    def test_naplo_or_mas_tartalom_es_hianyzo_naplo(self):
+        """Más tartalommal olvasott bemenet és hiányzó olvasási napló is megállítja a mérést."""
+        jo = '## 2. Második\n\nA sor\nB sor\nC sor\n\n'
+        with self.assertRaises(R.MerceHiba) as hiba:
+            self._meres(jo, naplo=(('B03', 'adat/be.tsv', _sha('más\n')),))
+        self.assertIn('B03 adat/be.tsv (más tartalommal olvasva)', '%s' % hiba.exception)
+        with self.assertRaises(R.MerceHiba) as hiba:
+            self._meres(jo, naplo=None)
+        self.assertIn('hiányzik az új generátor olvasási naplója', '%s' % hiba.exception)
+
+    def test_a_naplo_fajlneve_egyezik_a_generatoreval(self):
+        from lapgen import konfig
+        self.assertEqual((R.NAPLO_FAJLNEV, R.NAPLO_OSZLOPOK), (konfig.NAPLO_FAJLNEV, konfig.NAPLO_OSZLOPOK))
 
     def test_hash_or_sorveg_fuggetlen(self):
         repo = _repo()

@@ -13,6 +13,7 @@ import os
 import sys
 
 from lapgen import bemenet, konfig
+from lapgen.bemenet.jegyzek import NEM_FAJL
 from lapgen.megjelenites.md.iro import Lapiro, lap_szoveg
 from lapgen.szakaszok import Szakaszrend
 from lapgen.szoveg import MotivumId, SzovegHiba, prov, prov_fuz
@@ -104,7 +105,9 @@ def _forrasok(b, licencek, azonositok):
     utvonalak, cimkek = [], {}
     for b_id in sorted(azonositok):
         sor = b.jegyzek_sor(b_id)
-        utvonalak.extend(b.utvonal_ertek(b_id, u.strip()) for u in sor.utvonal.split(';'))
+        # a nem fájl-bemenet (szabálymodul) nem adatforrás: a forráslistában nem áll
+        utvonalak.extend(b.utvonal_ertek(b_id, u.strip()) for u in sor.utvonal.split(';')
+                         if u.strip() != NEM_FAJL)
         if sor.licenc_kulcs != '-':
             cimke = licencek.cimke(sor.licenc_kulcs)
             cimkek[cimke.ertek] = cimke
@@ -155,6 +158,12 @@ def futtat(gyoker, azonosito, kimenet, mod='munka', datum=None, ki=sys.stdout):
         with open(ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(lap_szoveg(sorok))
         print('  megírva: %s (%d sor)' % (ut, len(sorok)), file=ki)
+    if eredmeny.nezetek:
+        # az olvasási napló a lap mellé: ebből veti össze a regresszió az olvasott bemeneteket a mércével
+        with open(os.path.join(cel, konfig.NAPLO_FAJLNEV % azonosito), 'w', encoding='utf-8', newline='\n') as f:
+            f.write('\t'.join(konfig.NAPLO_OSZLOPOK) + '\n')
+            for olvasas in sorted(eredmeny.naplo, key=lambda o: (o.b_id, o.utvonal)):
+                f.write('%s\t%s\t%s\n' % (olvasas.b_id, olvasas.utvonal, olvasas.sha256))
     if not eredmeny.nezetek:
         print('  %s: nincs kész szakasz, fájl nem készült' % azonosito, file=ki)
     return 0

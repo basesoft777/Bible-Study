@@ -8,6 +8,10 @@ azonosításához).
 A modul a forrás szerkezetét oldja fel: melyik szakasz melyik szócikké, melyik példahely melyik szakaszé.
 A döntés (melyik címke kerül a sorra) a számítás dolga; a megjelenő szöveget (címke, szakaszjel, glossza) ez a
 modul adja típusos értékként.
+
+A táblák nyers sorai a réteget nem hagyják el: a számítás típusos értéket kap (`Peldahely`, `ThayerPelda`,
+`Tartomany`), amelynek minden szövegmezője burkoló. Szabad szöveget idézetté burkoló általános függvény nincs:
+a szakasz jele a szakasz kulcsából itt képződik (`Gerinc.jel`), a példahely forrásbeli alakja a tábla mezője.
 """
 import re
 
@@ -128,12 +132,32 @@ def _cella_alak_egyezik(cimke, alak):
 
 
 class Tartomany:
-    """A BDB a verset csak egy verstartomány belsejében idézi: a szakasz, a tartomány és a forrás alakja."""
+    """A BDB a verset csak egy verstartomány belsejében idézi: a szakasz kulcsa, a tartomány kezdő verse és
+    utolsó versszáma, a forrás alakja. A szövegmezők burkolók (belső szöveg, illetve a forrás idézhető alakja)."""
     __slots__ = ('kulcs', 'kezdo_vers', 'veg', 'nyers', 'folytatas', 'sorszam')
 
     def __init__(self, kulcs, kezdo_vers, veg, nyers, folytatas, sorszam):
         self.kulcs, self.kezdo_vers, self.veg = kulcs, kezdo_vers, veg
         self.nyers, self.folytatas, self.sorszam = nyers, folytatas, sorszam
+
+
+class Peldahely:
+    """A BDB egy saját példahelye egy versre. `kulcs`: a példahely szakaszkulcsa, vagy None, ha nem
+    azonosítható, melyik szócikk idézi a helyet (az `ok` ilyenkor a belső magyarázat); `idezett`: a hely a
+    forrás saját alakjában (idézhető); `sorszam`, `karoli_vers`: belső mezők (csak megjegyzésbe kerülhetnek)."""
+    __slots__ = ('kulcs', 'sorszam', 'idezett', 'karoli_vers', 'forras_javitott', 'ok')
+
+    def __init__(self, kulcs, sorszam, idezett, karoli_vers, forras_javitott, ok):
+        self.kulcs, self.sorszam, self.idezett = kulcs, sorszam, idezett
+        self.karoli_vers, self.forras_javitott, self.ok = karoli_vers, forras_javitott, ok
+
+
+class ThayerPelda:
+    """A Thayer egy saját példahelye: a szakasz jele belső kulcsként és a tábla sorszáma."""
+    __slots__ = ('jel', 'sorszam')
+
+    def __init__(self, jel, sorszam):
+        self.jel, self.sorszam = jel, sorszam
 
 
 class Gerinc:
@@ -257,13 +281,19 @@ class Gerinc:
         return talalat[0] if talalat else None
 
     def bdb_peldak(self, strong, vers):
-        """A BDB saját példahelyei a versre, a fej és a cím nélkül: [(sor, bdb_id vagy None, ok)]."""
+        """A BDB saját példahelyei a versre, a fej és a cím nélkül: `Peldahely` értékek."""
         ki = []
         for r in self._bdb_vj.get((strong, vers), []):
             if r['utvonal'] in (_UT_FEJ, _UT_CIM):
                 continue
-            b, ok = self.pelda_szocikk(strong, r)
-            ki.append((r, b, ok))
+            bdb_id, ok = self.pelda_szocikk(strong, r)
+            ki.append(Peldahely(
+                kulcs=self.pelda_kulcs(strong, bdb_id, r) if bdb_id is not None else None,
+                sorszam=self._b.belso('B19', 'sorszam', r['sorszam']),
+                idezett=self._b.forrasszoveg('B19', 'nyers', r['nyers'], vers),
+                karoli_vers=self._b.belso('B19', 'karoli_vers', r['karoli_vers']),
+                forras_javitott=forras_javitott(r),
+                ok=self._b.belso('B19', 'szocikk_azonositas', ok)))
         return ki
 
     def _sor_utvonal(self, strong, bdb_id, vag_ut):
@@ -307,13 +337,18 @@ class Gerinc:
                 if t and int(_VERS_RX.match(r['karoli_vers']).group(3)) < v <= int(t.group(1)):
                     kezd, mt = _VERS_RX.match(r['karoli_vers']), _VERS_RX.match(r['mt_vers'] or r['karoli_vers'])
                     veg = int(t.group(1)) + int(kezd.group(3)) - int(mt.group(3))
-                    ki.append(Tartomany((b, r['utvonal']), r['karoli_vers'], veg, nyers, t.group(0).strip(),
-                                        r['sorszam']))
+                    ki.append(Tartomany(
+                        (b, r['utvonal']), self._b.belso('B19', 'karoli_vers', r['karoli_vers']), veg,
+                        self._b.forrasszoveg('B19', 'nyers', nyers, vers),
+                        self._b.belso('B17', 'tartomany_folytatas', t.group(0).strip()),
+                        self._b.belso('B19', 'sorszam', r['sorszam'])))
         return ki
 
     def thayer_peldak(self, strong, versek):
-        """A Thayer saját példahelyei a versekre: [(szakaszjel, sorszám)]."""
-        return [(szakasz_jel(r['utvonal']), r['sorszam']) for v in versek for r in self._th_vj.get((strong, v), [])]
+        """A Thayer saját példahelyei a versekre: `ThayerPelda` értékek."""
+        return [ThayerPelda(self._b.kulcs('B21', 'utvonal', szakasz_jel(r['utvonal'])),
+                            self._b.belso('B21', 'sorszam', r['sorszam']))
+                for v in versek for r in self._th_vj.get((strong, v), [])]
 
     def token_szam(self, vers, strong):
         return self._tahot.token_szam(vers, strong)
@@ -332,13 +367,13 @@ class Gerinc:
         alak = self._cella_alakok.get((szotar, strong) + kulcs)
         return alak if alak is not None else self.cimke(szotar, strong, kulcs)
 
-    def jel_szoveg(self, jel, strong):
-        """A szakasz jele idézhető forrásszövegként (a szótár saját tagolása)."""
-        return self._b.forrasszoveg('B17', 'szakasz_jel', jel, strong)
-
-    def idezet_szoveg(self, b_id, mezo, szoveg, hely):
-        """A szótár forrásszövegének egy darabja idézhető forrásszövegként (pl. a példahely forrásbeli alakja)."""
-        return self._b.forrasszoveg(b_id, mezo, szoveg, hely)
+    def jel(self, szotar, strong, kulcs, prozai=False):
+        """A szakasz jele idézhető forrásszövegként (a szótár saját tagolása): a cella alakjában („1.a”,
+        „Qal 2.c”), `prozai` alakban a puszta szám sorszámnév-ponttal („4.”). A jel a szakasz kulcsából itt, a
+        bemeneti rétegben képződik: a számítás kulcsot ad át, szöveget nem."""
+        jel = self.kulcs_jel(szotar, strong, kulcs)
+        return self._b.forrasszoveg('B17' if szotar == SZOTAR_BDB else 'B16', 'szakasz_jel',
+                                    pontos_jel(jel) if prozai else jel, strong)
 
     def _szocikk_fa(self, strong):
         if strong not in self._fa:

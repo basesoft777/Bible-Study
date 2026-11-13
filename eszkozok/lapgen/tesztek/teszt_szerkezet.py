@@ -193,6 +193,23 @@ class LathatoSzabaly(unittest.TestCase):
                         hibak.append('%s:%d %s()' % (rel, csomo.lineno, _hivasnev(csomo)))
         self.assertEqual(hibak, [])
 
+    def test_gk08a_idezetet_es_prozat_csak_a_bemeneti_reteg_burkol(self):
+        """GK-08a: idézhető forrásszöveget és kézi prózát csak a bemeneti réteg burkol (`forrasszoveg`, `kezi`);
+        a számítás és a megjelenítés szöveget nem tehet idézetté, és a szótári gerincnek nincs szabad szöveget
+        burkoló általános függvénye."""
+        hibak = []
+        for rel in kodfajlok():
+            if rel.startswith('bemenet/'):
+                continue
+            for csomo in ast.walk(fa(rel)):
+                if isinstance(csomo, ast.Call) and isinstance(csomo.func, ast.Attribute) \
+                        and csomo.func.attr in ('forrasszoveg', 'kezi', 'belso'):
+                    hibak.append('%s:%d %s' % (rel, csomo.lineno, csomo.func.attr))
+        self.assertEqual(hibak, [])
+        from lapgen.bemenet import gerinc
+        for nev in ('jel_szoveg', 'idezet_szoveg'):
+            self.assertFalse(hasattr(gerinc.Gerinc, nev), nev)
+
     def test_gk08a_kiiras_csak_az_iroban(self):
         """GK-08a: a `Lathato` és a `Proveniencia` szöveggé alakítása (`kiiras`, `prov_szoveg`) csak az író
         modulban áll."""

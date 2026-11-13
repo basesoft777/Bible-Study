@@ -5,7 +5,9 @@
 Mit ellenőriz:
 1. **Bemenet-hash őr.** A `naplok/F218_referencia.tsv` rögzíti a referencialap és a mérce minden
    bemenetének hash-ét (sorvég-normalizált tartalomból). Ha egy hash eltér, a mérés megáll:
-   „a mérce bemenete megváltozott”.
+   „a mérce bemenete megváltozott”. Az új generátor olvasási naplója (`<ID>_olvasasi_naplo.tsv` a lap
+   mellett) is összevetődik a táblával: ha az új generátor olyan fájlt olvasott, amely nincs a táblában,
+   vagy más tartalommal olvasta, a mérés megáll.
 2. **Szakasz-diff.** A lap a 2. szintű címsoroknál szakaszokra bomlik; az új lap minden szakasza
    soronként összevetődik a referencia azonos című szakaszával. `--teljes` nélkül a hiányzó szakasz
    „nincs kész” (részleges lap), `--teljes` mellett BUKÁS.
@@ -40,6 +42,9 @@ NEZETEK = ('TUDOMANYOS', 'KIZARASOK')
 ELOSZO = '(a lap eleje)'
 ENGEDELY_OSZLOPOK = ('id', 'fajl', 'szakasz', 'mechanizmus', 'kotes', 'regi', 'uj', 'elvart_db', 'ok')
 REFERENCIA_OSZLOPOK = ('tipus', 'b_id', 'utvonal', 'sha256', 'meret')
+NAPLO_FAJLNEV = '%s_olvasasi_naplo.tsv'   # egyezik a `konfig.NAPLO_FAJLNEV` értékével (teszt őrzi)
+NAPLO_OSZLOPOK = ('b_id', 'utvonal', 'sha256')
+NEM_FAJL = '-'
 
 
 class MerceHiba(Exception):
@@ -82,6 +87,29 @@ def hash_or(gyoker=GYOKER):
     if elteres:
         raise MerceHiba('a mérce bemenete megváltozott: ' + '; '.join(elteres))
     return len(sorok)
+
+
+def naplo_or(motivum, uj_konyvtar, gyoker=GYOKER):
+    """Az új generátor olvasási naplójának összevetése a referencia-táblával: minden olvasott fájlnak a
+    táblában kell állnia, ugyanazzal a hash-sel. Hiányzó napló vagy eltérés MerceHiba. Visszaadja az
+    összevetett fájlok számát."""
+    ut = os.path.join(uj_konyvtar, NAPLO_FAJLNEV % motivum)
+    if not os.path.isfile(ut):
+        raise MerceHiba('hiányzik az új generátor olvasási naplója: %s' % ut)
+    rogzitett = {sor['utvonal']: sor['sha256']
+                 for sor in _tsv(os.path.join(gyoker, *REFERENCIA_TSV.split('/')), REFERENCIA_OSZLOPOK)}
+    elteres, db = [], 0
+    for sor in _tsv(ut, NAPLO_OSZLOPOK):
+        if sor['utvonal'] == NEM_FAJL:
+            continue
+        db += 1
+        if sor['utvonal'] not in rogzitett:
+            elteres.append('%s %s (nincs a referencia-táblában)' % (sor['b_id'], sor['utvonal']))
+        elif rogzitett[sor['utvonal']] != sor['sha256']:
+            elteres.append('%s %s (más tartalommal olvasva)' % (sor['b_id'], sor['utvonal']))
+    if elteres:
+        raise MerceHiba('az új generátor olvasott bemenete nincs rögzítve a mércében: ' + '; '.join(elteres))
+    return db
 
 
 _CIMSOR_RX = re.compile(r'^## (?!#)')
@@ -178,6 +206,7 @@ def meres(motivum, uj_konyvtar, gyoker=GYOKER, teljes=False, hash_ellenorzes=Tru
     """A teljes mérés egy motívumra. Visszaad egy szótárt a jelentéshez; a `bukas` kulcs a végeredmény."""
     if hash_ellenorzes:
         hash_or(gyoker)
+        naplo_or(motivum, uj_konyvtar, gyoker)
     engedelyek = engedelyek_betolt(gyoker)
     hasznalat = {e['id']: 0 for e in engedelyek}
     jelentesek, engedely_nelkul = {}, []

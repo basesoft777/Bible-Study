@@ -42,11 +42,20 @@ class TokenJelentes:
     jel: Optional[Lathato]
     indokok: Tuple[Indok, ...]
     cimke_cella: Optional[Lathato] = None      # a címke cellakezdő alakja (adat), ha a cella vele kezdődik
+    jel_szotar: Optional[Kulcs] = None         # a jel szótára, ha a jel a szótár nevével áll (nem a BDB)
 
 
-def _proza_jelek(g, strong, jelek):
-    """Szakaszjelek prózai alakban: a puszta szám sorszámnév-pontot kap („4” → „4.”)."""
-    return tuple(idezet(g.jel_szoveg(G.pontos_jel(j), strong)) for j in jelek)
+def _proza_jelek(g, szotar, strong, kulcsok):
+    """A szakaszok jele prózai alakban (a puszta szám sorszámnév-ponttal: „4.”), a bemeneti réteg értékeként."""
+    return tuple(idezet(g.jel(szotar, strong.kod, k, prozai=True)) for k in kulcsok)
+
+
+def _jel_szerint(kjel, kulcsok):
+    """A szakaszkulcsok a jelük rendjében, azonos jelű kulcsból egy."""
+    szerint = {}
+    for k in kulcsok:
+        szerint.setdefault(kjel(k), k)
+    return [szerint[j] for j in sorted(szerint)]
 
 
 def _belso_jelek(jelek, nevelo=True):
@@ -72,23 +81,23 @@ def _cimke_token(g, f, szotar, strong, jelentes_szam, vers, kutatoi_token):
         return g.kulcs_jel(szotar, st, k)
 
     peldak, nem_azon = [], []
-    for r, bdb_id, ok in (g.bdb_peldak(st, vers.kod) if szotar == G.SZOTAR_BDB else []):
-        if bdb_id is None:
+    for pelda in (g.bdb_peldak(st, vers.kod) if szotar == G.SZOTAR_BDB else []):
+        if pelda.kulcs is None:
             nem_azon.append(Indok(IndokFajta.NEM_AZONOSITHATO, prov(
                 'a BDB a helyet idézi (`{}` sorszam {}), de nem azonosítható, melyik szócikkében ({}); a BDB-példa '
-                'ezért nem kerül erre a tokenre', peldatabla, r['sorszam'], ok)))
+                'ezért nem kerül erre a tokenre', peldatabla, pelda.sorszam, pelda.ok)))
         else:
-            peldak.append((g.pelda_kulcs(st, bdb_id, r), r))
+            peldak.append((pelda.kulcs, pelda))
     tobb_token = []
     n_token = g.token_szam(vers.kod, st)
     if peldak and n_token >= 2:
-        jelek = sorted({kjel(k) for k, _r in peldak})
+        kulcsok = _jel_szerint(kjel, [k for k, _r in peldak])
         tobb_token.append(Indok(IndokFajta.TOBB_TOKEN, prov(
             'a BDB a verset {} szakaszban idézi (`{}` sorszam {}), de a versben a szó {} áll (`{}`), és a szótár nem '
             'jelöli, melyikre gondol; a BDB-példa ezért nem kerül erre a tokenre',
-            _belso_jelek(jelek), peldatabla, prov_fuz(', ', [r['sorszam'] for _k, r in peldak]),
+            _belso_jelek([kjel(k) for k in kulcsok]), peldatabla, prov_fuz(', ', [r.sorszam for _k, r in peldak]),
             G.hanyszor(n_token), f.utvonal('B08')),
-            szakaszok=_proza_jelek(g, strong, jelek), darab=n_token))
+            szakaszok=_proza_jelek(g, szotar, strong, kulcsok), darab=n_token))
         peldak = []
     pelda_k = sorted({k for k, _r in peldak})
     indokok = []
@@ -98,24 +107,24 @@ def _cimke_token(g, f, szotar, strong, jelentes_szam, vers, kutatoi_token):
             raise G.GerincHiba('B19: %s %s: a BDB-példák több útvonalra mutatnak (%s): kézi kérdés'
                                % (st, vers.kod, pelda_k))
         mas = [(k, r) for k, r in peldak if k != ala[0]]
-        jelek = sorted({kjel(k) for k, _r in mas})
+        kulcsok = _jel_szerint(kjel, [k for k, _r in mas])
         indokok.append(Indok(IndokFajta.MASUTT_IS, prov(
             'a BDB a helyet {} is idézi (`{}` sorszam {}); a kutatói hozzárendelés ({} → {}, `{}`) dönt',
-            _belso_jelek(jelek), peldatabla, prov_fuz(', ', [r['sorszam'] for _k, r in mas]), kulcs, kjel(kut_k),
-            cimketabla), szakaszok=_proza_jelek(g, strong, jelek)))
+            _belso_jelek([kjel(k) for k in kulcsok]), peldatabla, prov_fuz(', ', [r.sorszam for _k, r in mas]), kulcs,
+            kjel(kut_k), cimketabla), szakaszok=_proza_jelek(g, szotar, strong, kulcsok)))
         peldak = [(k, r) for k, r in peldak if k == ala[0]]
         pelda_k = ala
     if peldak:
         p_k = pelda_k[0]
-        sorszamok = prov_fuz(', ', [r['sorszam'] for _k, r in peldak])
+        sorszamok = prov_fuz(', ', [r.sorszam for _k, r in peldak])
         for _k, r in peldak:
-            if G.forras_javitott(r):
+            if r.forras_javitott:
                 indokok.append(Indok(IndokFajta.FORRAS_JAVITAS, prov(
                     'a BDB forrásszövege itt a „{}” helyet idézi (sajtóhiba); javítva: {} — a javítás forrása: `{}`, '
                     'kézi sor (`hivatkozas_kezi`, `manual`; indok: a TAHOT és a szövegkörnyezet; DT381 (a))',
-                    r['nyers'], r['karoli_vers'], f.utvonal('B17', 1)),
-                    idezett=idezet(g.idezet_szoveg('B19', 'nyers', r['nyers'], vers))))
-        p_jel = _proza_jelek(g, strong, [kjel(p_k)])
+                    r.idezett, r.karoli_vers, f.utvonal('B17', 1)),
+                    idezett=idezet(r.idezett)))
+        p_jel = _proza_jelek(g, szotar, strong, [p_k])
         if kut_k is None:
             valasztott = p_k
             indokok.append(Indok(IndokFajta.BDB_PELDA, prov(
@@ -133,7 +142,7 @@ def _cimke_token(g, f, szotar, strong, jelentes_szam, vers, kutatoi_token):
                 'kutatói hozzárendelés a BDB tagolása szerint ({} → {}, `{}`); a BDB a helyet a tágabb {} szakaszban '
                 'idézi (`{}` sorszam {})', kulcs, kjel(kut_k), cimketabla, _belso_jelek([kjel(p_k)], nevelo=False),
                 peldatabla, sorszamok), szakaszok=p_jel, szotar=f.szotar_kulcs(szotar),
-                jel=idezet(g.jel_szoveg(kjel(kut_k), strong))))
+                jel=idezet(g.jel(szotar, st, kut_k))))
         else:
             raise G.GerincHiba('B19: %s %s: a BDB-példa (%s) és a szerkesztői hozzárendelés (%s → %s) egyike sem '
                                'esik a másik alá: kézi kérdés, választás nélkül' % (st, vers.kod, p_k, kulcs, kut_k))
@@ -144,7 +153,7 @@ def _cimke_token(g, f, szotar, strong, jelentes_szam, vers, kutatoi_token):
             'kutatói hozzárendelés a {} tagolása szerint (`elofordulasok.tsv` jelentes_szam „{}” → {}, `{}`)',
             szotar, kulcs, G.szotaras_jel(szotar, kjel(kut_k)), cimketabla),
             szotar=f.szotar_kulcs(szotar), fej=fej,
-            jel=None if fej else idezet(g.jel_szoveg(kjel(kut_k), strong))))
+            jel=None if fej else idezet(g.jel(szotar, st, kut_k))))
         indokok.extend(tobb_token)
         if szotar == G.SZOTAR_BDB and not tobb_token:
             indokok.extend(_tartomany_indokok(g, f, strong, vers))
@@ -163,12 +172,13 @@ def _tartomany_indokok(g, f, strong, vers):
     ki = []
     for t in g.tartomanyban(strong.kod, vers.kod):
         jel = g.kulcs_jel(G.SZOTAR_BDB, strong.kod, t.kulcs)
-        kezdo = f.konyvek.igehely(t.kezdo_vers)
+        kezdo = f.konyvek.igehely(t.kezdo_vers.ertek)
         ki.append(Indok(IndokFajta.TARTOMANYBAN, prov(
             'a BDB a helyet nem önállóan idézi, hanem {} szakaszban {} {}–{} verstartomány belsejében (a BDB-ben: '
             '„{}{}”; `{}` sorszam {}); a tartomány nincs kibontva (DT382 (A)), ezért a hely nem BDB-példa',
-            _belso_jelek([jel]), G.nevelo(t.kezdo_vers), t.kezdo_vers, t.veg, t.nyers, t.folytatas, f.utvonal('B19'),
-            t.sorszam), szakaszok=_proza_jelek(g, strong, [jel]), kezdo_vers=kezdo, veg=t.veg))
+            _belso_jelek([jel]), G.nevelo(t.kezdo_vers.ertek), t.kezdo_vers, t.veg, t.nyers, t.folytatas,
+            f.utvonal('B19'), t.sorszam),
+            szakaszok=_proza_jelek(g, G.SZOTAR_BDB, strong, [t.kulcs]), kezdo_vers=kezdo, veg=t.veg))
     return ki
 
 
@@ -187,21 +197,22 @@ def token_jelentes(g, f, sor, strong, versek):
     if not strong.heber and szotar != f.szotar_thayer:
         peldak = g.thayer_peldak(st, [v.kod for v in versek])
         if peldak:
-            jelek = sorted({j for j, _s in peldak})
+            jelek = sorted({p.jel.ertek for p in peldak})
             szamos = [j for j in jelek if j.isdigit()]
             indokok.append(Indok(IndokFajta.THAYER_PELDA, prov(
                 'a Thayer saját példahelye: {} (`{}` sorszam {})',
                 prov_fuz(', ', [G.szotaras_jel(f.szotar_thayer, j) for j in jelek]),
-                f.utvonal('B21'), prov_fuz(', ', [s for _j, s in peldak])),
+                f.utvonal('B21'), prov_fuz(', ', [p.sorszam for p in peldak])),
                 darab=int(szamos[0]) if szamos else 0))
         else:
             indokok.append(Indok(IndokFajta.THAYER_NEM_IDEZI,
                                  prov('a Thayer a helyet nem idézi (`{}`)', f.utvonal('B21'))))
     cimke = g.cimke(szotar, st, valasztott) if valasztott is not None else None
-    jel_lathato = idezet(g.jel_szoveg(jel, strong)) if jel else None
+    jel_lathato = idezet(g.jel(szotar, st, valasztott)) if valasztott is not None else None
+    jel_szotar = f.szotar_kulcs(szotar) if valasztott is not None and szotar != G.SZOTAR_BDB else None
     if cimke is not None:
         return TokenJelentes(strong, JelentesFajta.CIMKE, proza(cimke), jel_lathato, tuple(indokok),
-                             cimke_cella=proza(g.cimke_cella(szotar, st, valasztott)))
+                             cimke_cella=proza(g.cimke_cella(szotar, st, valasztott)), jel_szotar=jel_szotar)
     if jel and szotar == G.SZOTAR_BDB:
         glossza = g.szakasz_glossza(st, jel)
         if glossza is not None:
@@ -212,7 +223,8 @@ def token_jelentes(g, f, sor, strong, versek):
             return TokenJelentes(strong, JelentesFajta.SZOCIKK_EGESZE, idezet(glossza) if glossza else None, None,
                                  tuple(indokok))
     if jel:
-        return TokenJelentes(strong, JelentesFajta.NINCS_CIMKE, None, jel_lathato, tuple(indokok))
+        return TokenJelentes(strong, JelentesFajta.NINCS_CIMKE, None, jel_lathato, tuple(indokok),
+                             jel_szotar=jel_szotar)
     if not indokok:
         indokok.append(Indok(IndokFajta.NINCS_HOZZARENDELES,
                              prov('ehhez a tokenhez nincs kutatói hozzárendelés és szótári példahely')))
