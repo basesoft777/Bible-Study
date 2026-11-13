@@ -23,7 +23,7 @@ Te a PaRDeS kiadás-vezetője vagy (F125, 2.7). A parancs a felhasználó kéré
 6. **Minden függő nézet újragenerálása és helyi kapufutás, push előtt.** A kiadás sora és a változatszám-emelés (`adat/motivumok.tsv`) nemcsak a lapot érinti. Kötelezően újragenerálódik:
    - a motívumnapló és a nyitott-tábla generált blokkja: `python eszkozok/general.py --cel naplo --ir` és `--cel nyitott --ir`;
    - a nyílt mag: `python eszkozok/nyilt_mag_export.py` (a kiadáskor a nyílt mag frissítése a PR része).
-   Utána helyben fut a kapusor a változott fájlokon: `python eszkozok/ellenorzes/futtat.py --valtozott <a diff fájljai> --diff-alap origin/main --diff-fej HEAD`. **Push csak 0 HIBA után** (különösen E28: generált nézet egyezése, E35: a nyílt mag egyezése). A push utáni CI-olvasás a `/kovetkezo` 10. lépésének CI-szabálya szerint: az eredmény csak akkor érvényes, ha a futás `headSha`-ja a pusholt commit. *(Eset: a HAMART-001 1. kiadása, #696, 2026-11-12: a v1 → v2 emelés után a napló-, a nyitott- és a nyílt mag-nézet elavult maradt, 9 HIBA a CI-ban.)*
+   Utána helyben fut a teljes kapusor: `python eszkozok/push_elott.py` (a szabály: `/kovetkezo` 6. lépés, „PUSH ELŐTT”). **Push csak 0 HIBA után** (különösen E28: generált nézet egyezése, E35: a nyílt mag egyezése). A push utáni CI-olvasás a `/kovetkezo` 10. lépésének CI-szabálya szerint: az eredmény csak akkor érvényes, ha a futás `headSha`-ja a pusholt commit. *(Eset: a HAMART-001 1. kiadása, #696, 2026-11-12: a v1 → v2 emelés után a napló-, a nyitott- és a nyílt mag-nézet elavult maradt, 9 HIBA a CI-ban.)*
 
 ## Kimenet
 

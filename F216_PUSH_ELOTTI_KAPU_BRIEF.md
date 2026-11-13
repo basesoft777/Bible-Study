@@ -5,9 +5,11 @@ kod: PUSH_ELOTTI_KAPU
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: nem_indult
+allapot: megallt
+ag: claude/push-elotti-kapu
+pr: 724
 ad: egy `eszkozok/push_elott.py` szkript, amely helyben ugyanazt futtatja, amit a CI bukó lépései, így a HIBA a push előtt kiderül, nem a CI-ben; a CI ugyanezt hívja, és a HIBA-sorokat a logba is kiírja
-kovetkezo: "Indítás a #715 (F212) mergelése után, mert az F212 is írja az `.github/workflows/ellenorzes.yml`-t (E38–E39 lépés); Te: /kovetkezo"
+kovetkezo: "Te: [elteres_kor 1/2] /elteres 216 — újraellenőrzés függ: 2. ellenőrzés"
 munka: folyamat
 olvas: [eszkozok/ellenorzes/futtat.py]
 ir: [eszkozok/push_elott.py, eszkozok/teszt_push_elott.py, .github/workflows/ellenorzes.yml, .claude/commands/kovetkezo.md, .claude/commands/kiadas.md, .claude/commands/lap-javit.md]
