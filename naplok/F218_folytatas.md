@@ -41,11 +41,25 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 
 ## Következő lépés
 
-**Az S2 még nem indult: a javítókör végén az 5 órás keret 98%-on állt (nullázás: 2026-11-13 12:30 UTC), a heti 93%-on (küszöb: 96%). Az S2-t ez a session folytatja a nullázás után, ha a heti keret engedi; különben friss Fable-session kezdi ebből a fájlból.**
+**Az S2-t a 2. session folytatja** (az orkesztrátor üzenete, 2026-11-13: a felhasználó nullázta a Fable-keretet; a keret az újraindításkor: heti 76%, Fable 0%, 5 órás 0%). A javítókör végén a keret elfogyott, a push előtti kapu futása megszakadt; az újraindítás után: push, célzott független újraellenőrzés (2. ellenőrzés), majd az S2. Ha a kontextus 70% fölé megy, az S2 hátralévő részét friss session veszi át ebből a fájlból. Az S2 előkészítő mérései és az előtte eldöntendő kérdések lent állnak.
 
 1. Modell-ellenőrzés (`fable`), `get_usage` (a küszöb: 96% heti; 70% kontextus fölött zárás).
 2. **F218.5 (S2): „1. Döntési út” (1.1–1.5) és a `_KIZARASOK.md` melléklet.** Követelmények: GK-04 (teljesség minden hálóra: strong, karoli, szotar; melléklet-kapu), GK-09 (számegyezés a modellen), GK-21 (a Döntési út számai összeadódnak; döntés nélküli vers 0), HN-11 (a teljesség-mérés pillanatképe frissességi kapuval), GK-03 (B05, B06), GK-06, GK-14 (az összevont versek kulcsa).
 3. Az S2 végén **egy célzott független ellenőrzés**: csak az S2 diffje és a javítókör tételei (a javítókör tartománya: `8c109585..` az első S2-commit szülőjéig), nem Fable modellel (`fuggetlen-ellenor`). Ez egyben a javítókör újraellenőrzése (2. ellenőrzés).
+
+### Az S2 előtt eldöntendő (a felhasználóhoz, az orkesztrátoron át)
+
+1. **A melléklet látható forrássorai.** A referencia-melléklet „A teljesség-mérés forrássorai” szakasza látható szövegben közli a mérés fájlnevét (`naplok/F123_teljesseg_<ID>.tsv`) és három teljes proveniencia-sort (`scope=… | forras=… | ts=…`). Az alapszabály szerint proveniencia csak megjegyzésben és a Kolofonban állhat, fájlnév a látható szövegben nem. Két út: (a) a melléklet ezen szakasza kimondott kivétel (a melléklet technikai függelék), a sorok idézetként állnak; (b) a sorok megjegyzésbe kerülnek, a látható szöveg sablonmondat (hálónként a versszám), és ez előre megszámolt engedélysor (a mellékletben 5 sor, a Döntési út 1.2 pontjának hivatkozása marad).
+2. **Az egyenként elutasított versek „saját indoka”.** A régi kód a `jeloltek.tsv` `indoklas` mezőjét (belső szabad szöveg) regexekkel tisztítva írja ki (`szerep_kizart.olvasoi_indok`: `BELSO_KIFEJEZES`, `ANGOL_CSERE`, `AZON_ELEJEN`, `DONTES_MONDAT`). Az új generátor belső szövegből cserével olvasói szöveget nem készít. A referencia Döntési útján és mellékletében a kizárási ok címkéje és megjegyzése áll (`adat/elutasitasi_okok.tsv` `cimke`, `megjegyzes`: kézi adat, változatlanul átvehető); a 3. szakasz („Kizárt és vizsgált helyek”) viszont versenkénti indokot mutat. Az S2-ben ez még nem akadály (a Döntési út és a melléklet okonként csoportosít), de az S3 előtt döntés kell: az indoklás mező kézi prózának minősül-e (akkor változatlanul áll, és a forrásban javul), vagy külön olvasói mező kell.
+3. **Az önreferencia három párja (DT-F218l).** A referencián mért érintett sorok: a tudományos lapon 16 sor (Kivonat és a lap eleje 2, 1. Döntési út 2, 3. Kizárt 4, 4. Szótári háttér 1, 6. Kereszthivatkozások 2, 7. Kapcsolatok 2, 11. Módszertan 2, Kolofon 1), a mellékletben 2 sor. Ha a cellák a forrásban nem javulnak, ennyi engedélysor kell szeletenként (az S2-ben 2 + 2).
+*Proveniencia: `scope=grep „vizsgálat nem dönt el”, „ezeket a vizsgálat egyenként”, „áll a listán” a két referencialapon, szakaszonként (a harmadik minta más szövegre is illhet: felső becslés) | forras=lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md (HEAD) | ts=2026-11-13`.*
+
+### Az S2 mérete (előmérés)
+
+- A Döntési út referencia-szakasza 110 sor, de 31 KB: 4 csoportos és 26 egyenkénti ok `<details>` blokkban (Károli-példákkal, verslistával), 15 `<details open>` blokk az 1.4 pontban (gerinc-elemenként a helyek és a funkció-magyarázat), az 1.2 pont szólistája (lemma, kiejtés, rövid glossza: B10) és hálótáblája (B05), az 1.5 pont határesetei és a forrás nyitott kérdései (B47).
+- A melléklet 431 sor: okonként könyvenkénti verslista (`- **Ef** (2): 2:1, 2:3`), a csoportos okoknál `<details>` a teljes listával; a végén a forrássorok.
+- Az író modul (`megjelenites/md/iro.py`) zárt jelkészlete ma nem ismeri a `<details>`, `<summary>`, `<p>`, `<ul>`, `<li>`, `<em>`, `<strong>` szerkezetet: az S2 első lépése ezek felvétele szerkezeti jelölésként (a jel szöveget nem hordoz).
+- A régi kód: `lexikon_general.py` `blokk_dontesi_ut` (7648), `dontesi_ut_adat` (7434), `teljesseg_halok` (7377), `teljesseg_kapu` (7558), `kizarasok_melleklet` (7577), `kizarasok_adat` (7492); `szerep_kizart.py` (kb. 540 sor): `okok`, `olvasoi_ok`, `ok_megjegyzesek`, `csoport_versszam`, `vizsgalt_versek`, `versek`, `jeloles_oka`, `elutasitas_oka`.
 
 ### Amit az S2 a javítókörből örököl
 

@@ -335,7 +335,7 @@ Munka közben a munkafában egy nem commitolt `naplok/F218_folytatas.md`-változ
 
 **A 7 új sablonmondat** (`eredet=uj`, `dontes=var`): a felhasználó jóváhagyta (az orkesztrátoron át, 2026-11-13, szó szerint: „Igen, mind jó”). A sablontábla `dontes` oszlopa a jóváhagyás DT-számát várja; a sorok addig `var` értékkel állnak, amíg a jóváhagyás döntésszámot nem kap.
 
-**Állás a javítókör után (HAMART-001, `PARDES_DATUM=2026-11-13`).** „2. Előfordulások”: 437 sorból 436 bájtra egyezik; **1 engedélysor** (S1-FORRAS, a blokkfejléc forráslistája, GK-07), engedély nélküli diff-sor 0. Festékpróba: 0 szivárgás (HAMART: belső 168, idézet 326, kézi 180 látott jelzőszó; ISTENTISZT: 113, 183, 85). Tesztek: 132 futott, 96 zöld, 36 kihagyva (a váz). A régi generátor mindkét HAMART-nézete a javított adatcellával is bájtra azonos a HEAD lapjaival.
+**Állás a javítókör után (HAMART-001, `PARDES_DATUM=2026-11-13`).** „2. Előfordulások”: 437 sorból 436 bájtra egyezik; **1 engedélysor** (S1-FORRAS, a blokkfejléc forráslistája, GK-07), engedély nélküli diff-sor 0. Festékpróba: 0 szivárgás (HAMART: belső 168, idézet 326, kézi 180 látott jelzőszó; ISTENTISZT: 113, 183, 85). Tesztek: 133 futott, 97 zöld, 36 kihagyva (a váz). A régi generátor mindkét HAMART-nézete a javított adatcellával is bájtra azonos a HEAD lapjaival.
 *Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; python eszkozok/lapgen/tesztek/futtat.py; general.py --cel lexikon --id HAMART-001 + cmp | forras=a munkafa a javítókör utolsó commitja előtt | ts=2026-11-13`.*
 
 ### Kézi adat, előtte → utána
