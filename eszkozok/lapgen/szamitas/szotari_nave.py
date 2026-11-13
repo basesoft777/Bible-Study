@@ -91,7 +91,8 @@ def szamit(f, motivum):
              if (t[0] in kivalasztott if kivalasztott else index.dontesek.get(t[0]) != nave_be.DONTES_KIZART)]
     if not temak:
         return None
-    tagabb = motivum_be.b02_motivum(f.b, motivum).folerendelt if tiltott else None
+    # a bevezető a tágabb kör rövid alakját idézi (a zárójeles pontosítás nélkül: a régi szabály)
+    tagabb = motivum_be.tagabb_kor_rovid(f.b, motivum) if tiltott else None
     return Tematikus(
         temak=tuple(Tema(
             nev=_nev(index.nev(tema_id, '', nevek[tema_id])),

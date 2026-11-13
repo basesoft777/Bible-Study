@@ -16,6 +16,7 @@ from lapgen.bemenet.ubs import b14_forditasok
 
 _MOTIVUM_OSZLOPOK = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom')
 _NEM_TARTOZIK = 'Nem tartozik ide'
+_ZAROJEL_ELOTT = ' ('
 _MONDATVEG = '.'
 _GLOSSZA_OSZLOPOK = ('strong', 'fo', 'glossza_hu', 'glossza_en')
 _FO = 'igen'
@@ -68,6 +69,16 @@ def kriterium_szoveg(b, motivum):
     sor = b02_motivum(b, motivum)
     reszek = [resz.ertek for resz in (sor.ide_tartozik, sor.nem_tartozik) if resz is not None]
     return ' '.join(reszek) if reszek else None
+
+
+def tagabb_kor_rovid(b, motivum):
+    """A tágabb kör rövid alakja kézi prózaként: a mező szövege az első zárójeles kiegészítésig (a 4.12 bevezetője
+    ezt idézi; a zárójeles pontosítás csak a lap elején áll). None, ha a mező üres. A réteg a szöveget nem írja át:
+    szerkezetileg bont, ahogy a kritérium két részét is."""
+    sor = b02_motivum(b, motivum)
+    if sor.folerendelt is None:
+        return None
+    return b.kezi('B02', 'folerendelt_fogalom', sor.folerendelt.ertek.split(_ZAROJEL_ELOTT)[0])
 
 
 class Rovid:

@@ -59,9 +59,23 @@ class Bemenet(unittest.TestCase):
         self.assertEqual(tuple(parositas.parok('Nincs 1:1')), ())
 
     def test_a_ket_pont_csak_jovahagyott_motivumon_epul(self):
+        """A két pontot csak a motívum saját, aktív sora kapcsolja be; a minden motívumra szóló (`*`) sor és a nem
+        aktív sor nem (a régi szabály: a funkció motívumonként jóváhagyott)."""
         b = bemenet.Bemenet(kozos.GYOKER)
         self.assertTrue(karoli_be.b53_karoli_pontok(b, MotivumId('HAMART-001')))
         self.assertFalse(karoli_be.b53_karoli_pontok(b, MotivumId('NINCS-999')))
+        repo = kozos.alap_minirepo(
+            jegyzek_sorok=[('B53', 'adat/funkcio_kapcsolok.tsv', 'k', 'igen', '-', '-', 'aktiv', '-', '-', 'manual')],
+            tovabbi={'adat/funkcio_kapcsolok.tsv': kozos.tsv(
+                ('kapcsolo', 'id', 'allapot'), ('KAROLI_MEGFELELOK', '*', 'aktiv'),
+                ('KAROLI_MEGFELELOK', 'PROBA-001', 'aktiv'), ('KAROLI_MEGFELELOK', 'PROBA-002', 'felfuggesztve'))})
+        try:
+            mini = bemenet.Bemenet(repo.gyoker)
+            self.assertTrue(karoli_be.b53_karoli_pontok(mini, MotivumId('PROBA-001')))
+            self.assertFalse(karoli_be.b53_karoli_pontok(mini, MotivumId('PROBA-002')))
+            self.assertFalse(karoli_be.b53_karoli_pontok(mini, MotivumId('PROBA-003')))
+        finally:
+            repo.torol()
 
     def test_nyelvtani_szo(self):
         nyelvtani = karoli_be.b69_nyelvtani(bemenet.Bemenet(kozos.GYOKER))
@@ -133,13 +147,15 @@ class SzamitasSzabalyai(unittest.TestCase):
         self.assertEqual(csaladok['erőszak'], (['erőszak', 'erőszakossággal'], ['1Móz 6:13', 'Ez 8:17']))
         self.assertIn('úrnak', csaladok)   # az „úr” két betűs: abba nem olvad semmi
 
-    def test_az_igehely_felsorolas_nem_ismetles(self):
-        """Az ismétlés-figyelő az igehelyek hosszú, azonos felsorolását nem jelzi (a két pont listái ilyenek)."""
-        for azonosito in MINTALAPOK:
-            for talalat in lap(azonosito).figyelmeztetesek:
-                szamos = sum(1 for szo in talalat.szavak[:konfig.ISMETLES_ABLAK] if any(b.isdigit() for b in szo))
-                self.assertLessEqual(szamos, konfig.ISMETLES_SZAMOS_LEGFELJEBB, ' '.join(talalat.szavak[:12]))
-        self.assertTrue(ismetles.ismetlesek)
+    def test_az_azonos_helylista_nem_ismetles_a_lapon(self):
+        """A 4.13 két szócsaládja ugyanazt a hosszú igehely-listát hordozza („hív” és „segítségül” az
+        ISTENTISZT-lapon: 18-18 hely): a figyelő ezt nem jelzi, mert a felsorolás nem próza. (A szabály két
+        irányát a `teszt_ismetles.py` méri kis bemeneten.)"""
+        sorok = lap('ISTENTISZT-001').nezetek[konfig.NEZET_TUDOMANYOS]
+        listak = [n for n, s in enumerate(sorok, start=1) if s.szoveg.startswith('- **') and '** (18) — ' in s.szoveg]
+        self.assertGreaterEqual(len(listak), 2)
+        erintett = [t for t in ismetles.ismetlesek(sorok) if {n for n, _hol in t.helyek} <= set(listak)]
+        self.assertEqual(erintett, [])
 
 
 if __name__ == '__main__':

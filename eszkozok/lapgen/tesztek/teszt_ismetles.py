@@ -118,6 +118,17 @@ class IsmetlesFigyelo(unittest.TestCase):
         vegyes = lambda: (_kezi(self.HOSSZU + ' '), _idezet('idézett szó'))   # noqa: E731
         self.assertEqual(len(ismetles.ismetlesek(_lap(vegyes(), vegyes()))), 1)
 
+    def test_igehely_felsorolas_nem_ismetles_de_az_igehelyes_proza_az(self):
+        """Az igehelyek hosszú, azonos felsorolása nem találat (nem próza); a néhány igehelyet tartalmazó
+        prózamondat ismétlése viszont az (a 3. független ellenőrzés E3 tétele: a szűrő nem lehet kiskapu)."""
+        lista = ', '.join('1Kir 18:%d' % v for v in range(20, 30)) + ', Zsolt 116:4, Zsolt 116:13, Jóel 2:32'
+        self.assertEqual(ismetles.ismetlesek(_lap(_kezi('Első: ' + lista), _kezi('Második: ' + lista))), [])
+        proza = ('az átok a földre lép az 1Móz 3:17 szerint, a személyre az 1Móz 4:11 szerint, és a teherről az '
+                 '1Móz 5:29 beszél, mert a lánc szavai itt együtt állnak')
+        talalatok = ismetles.ismetlesek(_lap(_kezi(proza + '.'), _kezi('Közbeeső.'), _kezi(proza + ', és tovább.')))
+        self.assertEqual(len(talalatok), 1)
+        self.assertEqual([n for n, _hol in talalatok[0].helyek], [1, 3])
+
     def test_jeloles_nem_szo(self):
         """A HTML-címke és a link célja nem szó: a szósor a jelöléstől függetlenül azonos."""
         jelolt = self.HOSSZU.replace('figyelő', '<strong>figyelő</strong>').replace('szósort', '[szósort](#cel-pont)')
@@ -139,14 +150,18 @@ class AMintalapokon(unittest.TestCase):
             ketszer = lap + _lap(_kezi(kriterium), _kezi(kriterium))
             self.assertTrue(ismetles.kriterium_egyszer(ketszer, kriterium, teljes=False), azonosito)
 
-    def test_a_figyelo_talalatai_valodi_ismetlesek(self):
-        """A figyelő minden találata legalább két helyen áll, és legalább az ablak hosszú (a HAMART-on kalibrálva:
-        a kész szakaszokon hamis találat nincs)."""
+    def test_a_figyelo_talalatai_a_lapon_tenyleg_ketszer_allnak(self):
+        """A figyelő minden találata a két mintalapon valóban ismétlés: a találat szósora a megnevezett sorok
+        mindegyikének látható szavai között, a megnevezett helyen, betűre ott áll. (Azt, hogy a találat az olvasó
+        számára zavaró-e, a teszt nem méri: az a lap olvasójának ítélete.)"""
         for azonosito in MINTALAPOK:
             eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito))
+            sorok = eredmeny.nezetek[konfig.NEZET_TUDOMANYOS]
             for talalat in eredmeny.figyelmeztetesek:
                 self.assertGreaterEqual(len(talalat.helyek), 2, azonosito)
-                self.assertGreaterEqual(len(talalat.szavak), konfig.ISMETLES_ABLAK, azonosito)
+                for sorszam, hol in talalat.helyek:
+                    szavak = tuple(szo.alak for szo in ismetles.sor_szavai(sorok[sorszam - 1]))
+                    self.assertEqual(szavak[hol:hol + len(talalat.szavak)], talalat.szavak, azonosito)
 
 
 if __name__ == '__main__':

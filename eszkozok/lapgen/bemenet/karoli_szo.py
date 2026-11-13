@@ -3,8 +3,11 @@
 Bemenetek: B55 (a Károli-szavak szótári alakja), B53 (a funkciókapcsolók: melyik motívumon épül a két pont),
 B69 (a nyelvtani szavak Strong-számai). A motívumsor Károli-szava (B03) itt bomlik szavakra.
 
-A szótári alak összevetési kulcs (kisbetűs); a lapon idézhető forrásszövegként áll, a tábla értékeként. A szóalak
-a motívumsor mezőjének egy szava, változtatás nélkül.
+A szótári alak összevetési kulcs: a tábla értéke kisbetűsítve (a táblában nem álló szónál maga a szó,
+kisbetűsítve). A lapon ez a kisbetűs alak áll idézhető forrásszövegként, ahogy a jóváhagyott lapon is („úr”,
+„ábrám”): ez nem a tábla betűre vett értéke, és a festékpróba nem látja. Hogy a lapon a tábla eredeti alakja
+álljon-e, a felhasználó döntése (a 3. független ellenőrzés E2 tétele, a 218a végi listában). A szóalak a
+motívumsor mezőjének egy szava, változtatás nélkül.
 """
 import re
 
@@ -12,7 +15,6 @@ _ALAK_OSZLOPOK = ('alak', 'szotari_alak', 'szotari_alak_mai')
 _KAPCSOLO_OSZLOPOK = ('kapcsolo', 'id', 'allapot')
 _KAPCSOLO_KAROLI = 'KAROLI_MEGFELELOK'
 _AKTIV = 'aktiv'
-_MINDEN_MOTIVUM = '*'
 _SZO_RX = re.compile(r'[^\W\d_]+')
 _NYELVTANI_RX = re.compile(r'H9\d{3}')
 NEM_KULCSSZO = frozenset({'a', 'az', 'és'})   # a névelő és a mellérendelő kötőszó nem a motívum magyar szava
@@ -53,10 +55,11 @@ def b55_szotari_alakok(b):
 
 
 def b53_karoli_pontok(b, motivum):
-    """B53 — épül-e a motívumon a Károli-megfelelők két pontja (motívumonként jóváhagyott funkció)."""
+    """B53 — épül-e a motívumon a Károli-megfelelők két pontja. A funkció motívumonként jóváhagyott: csak a
+    motívum saját sora kapcsolja be, a minden motívumra szóló (`*`) sor nem (a régi szabály szerint)."""
     tabla = b._tabla('B53', oszlopok=_KAPCSOLO_OSZLOPOK)
-    return any(r['kapcsolo'] == _KAPCSOLO_KAROLI and r['allapot'] == _AKTIV
-               and r['id'] in (motivum.kod, _MINDEN_MOTIVUM) for r in tabla.szotarak())
+    return any(r['kapcsolo'] == _KAPCSOLO_KAROLI and r['allapot'] == _AKTIV and r['id'] == motivum.kod
+               for r in tabla.szotarak())
 
 
 class Nyelvtani:

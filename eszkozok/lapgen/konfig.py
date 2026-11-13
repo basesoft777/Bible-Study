@@ -37,7 +37,7 @@ KIZARASOK_NYITVA_HATAR = 10     # a melléklet verslistája ennyi versig nyitva 
 KRITERIUM_ABLAK = 12            # a kritérium ekkora szósora a látható lapon legfeljebb egyszer állhat (BUKÁS)
 ISMETLES_ABLAK = 16             # ekkora azonos szósor kétszer: figyelmeztetés (15 szónál hosszabb ismétlés)
 ISMETLES_IDEZET_LEGFELJEBB = 4  # az ablakban legfeljebb ennyi idézett szó állhat (a bibliai idézet nem ismétlés)
-ISMETLES_SZAMOS_LEGFELJEBB = 8  # az ablakban legfeljebb ennyi számjegyes szó állhat (az igehely-felsorolás nem próza)
+ISMETLES_SZAM_LEGFELJEBB = 9    # az ablakban legfeljebb ennyi tiszta szám állhat (az igehely-felsorolás nem próza)
 
 # --- Döntések, amelyeknek a dátuma a lapon áll (a szám nem) -----------------------------------------------------
 DONTES_JELENTES_FUNKCIO = 'DT272'   # a „Jelentés (a szó)” és a „Funkció (a motívumban)” oszlop szétválasztása

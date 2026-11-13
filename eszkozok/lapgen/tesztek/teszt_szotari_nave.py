@@ -82,6 +82,17 @@ class ALapon(unittest.TestCase):
             self.assertGreaterEqual(szam, konfig.NAVE_MIN_VERS)
             self.assertEqual(szam, len(sor.rsplit('): ', 1)[1].split(', ')), sor[:60])
 
+    def test_a_bevezeto_a_tagabb_kor_rovid_alakjat_idezi(self):
+        """A bevezető a tágabb kört a zárójeles pontosítása nélkül idézi (a régi szabály; a 3. független
+        ellenőrzés E1 tétele): az ISTENTISZT-lapon a mező zárójeles kiegészítése nem áll a mondatban, a jóváhagyott
+        lap szövege áll; a HAMART-lapon a mezőben nincs zárójel, a teljes szöveg áll."""
+        istentiszt = pont('ISTENTISZT-001')[2]
+        self.assertIn('a tágabb, általános témák (istentisztelet/imádság általában) szándékosan kimaradtak.',
+                      istentiszt)
+        self.assertNotIn('invokációs', istentiszt)
+        self.assertIn('a tágabb, általános témák (a bűn és következményei általában, a genezisi lánc szavai és '
+                      'szerkezete nélkül) szándékosan kimaradtak.', pont('HAMART-001')[2])
+
     def test_gk21_a_kapu_megfogja_az_ures_pontot(self):
         ures = szotari_nave.Tematikus(temak=(), szoba_johet=0, tiltott=0, tagabb_kor=None, eredeti=None)
         with self.assertRaises(KapuHiba):

@@ -750,7 +750,7 @@ A 9-es sablon bevezetője és 2. pontja (a fölérendelt fogalom mondata a Kivon
 *Proveniencia: `scope=python eszkozok/general.py --cel lexikon2 (a futás figyelmeztetései), a küszöb előtt és után | forras=a munkafa az F218.6 (S3d) commit előtt | ts=2026-11-13`.*
 
 **Egyeztetett eltérések a régi kódtól** (a kimenet a HAMART-lapon bájtra egyezik):
-- A kulcsszó mögött álló eredeti szó megszámolása determinisztikus: holtversenyben a Strong-szám rendje dönt (a régi kód halmaz-bejárása a futástól függött). A két mintalapon nincs holtverseny az élen.
+- A kulcsszó mögött álló eredeti szó megszámolása determinisztikus: holtversenyben az elsőként látott szó áll elöl (a versek rendjében, versen belül a Strong-szám rendjében; a régi kód halmaz-bejárása a futástól függött). A két mintalapon nincs holtverseny az élen.
 - A 10 versnél rövidebb hamis-párhuzam lista is könyvenként, igehellyel áll (lenyíló nélkül). A régi kód a rövid listánál versszöveget és a jelölt döntésének belső kulcsát írta ki (`jelölt: <kulcs>`); ez belső mező, az új lapra nem kerülhet. A két mintalapon nincs rövid lista.
 - Ha a motívumon a 4.13–4.14 nincs jóváhagyva (B53) vagy a soroknak nincs Károli-szava, a két pont nem áll a lapon; ha a motívumnak nincs döntése a témákról (B70), a 4.12 nem áll a lapon. Ezek az ágak a két mintalapon nem futnak.
 - A 4.12 bevezetőjének példája (az első téma neve) csak akkor áll magyarul, ha a fordítás az angol név mai szövegéből készült; a régi kód itt a forrás-hash-t nem nézte, és fordítás híján a kisbetűsített angol nevet írta. Az új lap fordítás híján az angol nevet változtatás nélkül adja, „fordításra vár” jelöléssel. A két mintalapon minden név le van fordítva.
@@ -762,3 +762,48 @@ A 9-es sablon bevezetője és 2. pontja (a fölérendelt fogalom mondata a Kivon
 - A hamis párhuzam listájában a Siralmak könyve a Károli-fájl kulcsával áll („Sir”), nem a lap többi részének rövidítésével („JSir”).
 - A megjegyzésben álló belső proveniencia a régi szkriptek nevét hordozza (`eszkozok/szerep_karoli.py`, `eszkozok/szerep_nave.py`); a látható forrássor a névtáblából jön. A megjegyzés a 218b-ben igazítható az új generátorhoz.
 - A 4.14 forrássorából hiányzik a Károli–Strong párosítás (a belső proveniencia megnevezi, a látható sor nem): a mai lap szövege; a GK-07 szerint a látható forráslistának a valódi olvasást kell követnie (S8).
+
+## Független ellenőrzés — 4. ellenőrzés (célzott: S3a, DT-F218n, S3d és a 3. ellenőrzés javítóköre)
+
+*A `fuggetlen-ellenor` subagent (`claude-opus-5-5`; kért: `opus`) jelentése, a hívó session mentésében, a tételek szó szerinti tartalmával, a rendben talált pontok tömörítve. Hatókör: `03636753..759a0699` (S3a: váz, Áttekintés, 4.1), `52de9c2d..b1c7b0eb` (DT-F218n), `b1c7b0eb..8fb27f64` (S3d: 4.12–4.14), `28be9127..03636753` (a 3. ellenőrzés javítókörének újraellenőrzése). Szint: célzott. 2026-11-13.*
+
+**Eredmény: ELTÉRÉS, 6 tétel** (2 közepes, 4 alacsony).
+
+| # | Tétel | Súly | Hely | Az ellenőr bizonyítéka |
+|---|---|---|---|---|
+| E1 | Az ISTENTISZT-001 4.12 bevezetője a tágabb kört egészében adja, a régi szabálytól eltérve, dokumentálatlanul | közepes–súlyos | `szamitas/szotari_nave.py`; `megjelenites/md/szotari_nave.py` | A régi kód a mező első zárójel előtti részét adta át (`lexikon_general.py:2587`). A referencián „(istentisztelet/imádság általában) szándékosan kimaradtak” áll, az új lapon a zárójeles pontosítás is, hármas zárójel-beágyazással. A jelentés szerint az eltérő ágak „a két mintalapon nem futnak”; ez az ág a mintalapon fut. Az ISTENTISZT-re regresszió nincs |
+| E2 | A kisbetűsített szótári alak idézetként jelenik meg | közepes | `bemenet/karoli_szo.py` | A B55 értéke a bemeneti rétegben `.lower()`-t kap, aztán idézetként kerül a lapra; a táblában „Úr”, „Baál”, „Ábrám”, „Isten” áll, az új lapon „úr”, „baál”, „ábrám”, „isten”. A festékpróba nem látja (a jelzőszó a kisbetűsítés után kerül a szövegbe). A referencia ugyanígy áll, tehát nem visszaesés, de az alapszabálynak ellentmond, és a megfigyelések között nem szerepelt. A modul docstringje („a tábla értékeként”) nem volt igaz |
+| E3 | Az ismétlés-figyelő számjegy-szűrője kiskapu, a tesztje üres | alacsony | `ismetles.py`; `teszt_szotari_karoli.py` | Egy 20 szavas, három igehelyet tartalmazó prózamondat kétszer áll: 0 találat (a három igehely 9 számjegyes szó). A teszt önmagát igazolta, a záró állítása függvényobjektumot vizsgált |
+| E4 | A mintalapos figyelő-teszt nem azt méri, amit a docstringje mond | alacsony | `teszt_ismetles.py` | A „hamis találat nincs” állítást a teszt nem méri: csak a találat alakját nézte, ami a függvény felépítéséből mindig teljesül |
+| E5 | B53: a `*` sor a régi szabálytól eltérően bekapcsol | alacsony | `bemenet/karoli_szo.py` | A régi `kapcsolo_motivumok` a `*` sort kizárja (`szerep_karoli.py:69-70`); az új elfogadta. A mintalapokon nem fut, de az egyeztetett eltérések között nem szerepelt |
+| E6 | A napló állítása nem egyezik a kóddal (holtverseny) | alacsony | `naplok/F218_jelentes.md`; `szamitas/szotari_karoli.py` | A jelentés szerint „holtversenyben a Strong-szám rendje dönt”; a kód az elsőként látott szót adja (a versek rendjében, versen belül a Strong-szám rendjében) |
+
+**Rendben talált pontok** (az ellenőr saját futásával vagy keresésével):
+- **CI:** a `8fb27f64`-re futó `ellenorzes` (43479787987) és a `b1c7b0eb`-re futó (43474835873) is `success`.
+- **A 3. ellenőrzés javítókörének két tétele:** az ismeretlen hordozó-előtagnál a bemenet megáll (teszt zöld); a festékpróba kis- és nagybetűtől függetlenül keres, a horgony külön tartományfajta (0 szivárgás; látott jelzőszavak: HAMART belső 236, horgony 30, idézet 1 359, kézi 391; ISTENTISZT belső 179, horgony 18, idézet 699, kézi 200). Mellékmegfigyelés: a `+` utáni részben álló előtag (`H0127+referencia:x`) nem áll meg, kézi névként megy tovább; a valós adatban nem fordul elő.
+- **DT-F218n, a kritérium kapuja:** a két sorra tördelt ismétlést megfogja; ha 11 szavanként egy szó beékelődik, nem fogja meg (a 12 szavas ablak határa). A kapu csak a fő nézeten fut. A `teljes` mód ma nem él (a `fej` szakasz nincs bekötve): a „pontosan egyszer” fele valós lapon még nem futott. A tágabb kört a kapu nem őrzi (a napló kimondja).
+- **DT-F218n, az 1.1 új alakja:** a számok egyeznek az 1.2 szólistájával (8 + 5) és az 1.4 három szópár-csoportjával. A `#mi-tartozik-ide` horgony a lapon ma nem létezik: a link az S8-ig célpont nélküli (kihagyott teszt jelzi).
+- **Engedélysorok:** az `ISM-` sorok hash-ei a referencia 114., 118., 120., 122. sorát és az új lap 9. sorát fedik; az `ISM-URES` darabszámhoz és szakaszhoz kötött; az `S3-FORRAS` és az `S3-HN15` a megnevezett sorokat fedi. Túl tág engedély nincs.
+- **Regresszió, tesztek, számok:** HAMART RENDBEN, 0 engedély nélküli sor, 24 kész és 13 nem kész alblokk; 223 teszt (0 hiba, 0 bukás, 33 kihagyva); figyelmeztetések: HAMART 7, ISTENTISZT 4. Mind egyezik a naplóval.
+- **S3d számítások:** soronként összevetve a régi `szerep_karoli.py` és `szerep_nave.py` szabályaival a küszöbök, az összeolvasztás, a kulcsszó, a rejtett és a hamis párhuzam, a találat- és százalékképlet, a Nave jelöltképzése és -választása egyezik; az eltérések: E1, E5, E6, és a két dokumentált ág.
+- **GK-19, GK-21:** a tesztek azt mérik, amit a nevük mond (a „bizonyossági címke nincs” teszt öt tiltott szövegrészre keres: gyenge, de valódi).
+- **Táblasorok:** a „betűre átvett” sablonsorok szövege megvan a referencián, illetve a régi kódban (11 sort az ellenőr kézzel vetett össze); a forrásnevek megvannak a régi névtáblában; a jegyzéksorok útvonala a régi kód olvasásaival egyezik.
+- **Alapszabály:** a megjelenítő modulokban látható magyar literál nincs (az E2 kivételével a hatókör tiszta).
+
+**Amit az ellenőr nem tudott ellenőrizni:** a végrehajtó tényleges modellje; a DT-F218n felhasználói jóváhagyása (csak a napló állítja); az ISTENTISZT-001 teljes regressziója (nincs referenciája); a 4.13–4.14 helyessége a mintalapokon kívüli bemeneten (csak kódösszevetés); a kritérium-kapu `teljes` módja valós lapon.
+
+## A 4. ellenőrzés javítóköre (`claude-fable-5-2`, 2026-11-13, az 5. session)
+
+Az orkesztrátor rendelkezése szerint a kicsi javítások ebben a sessionben készültek el; az E2 döntést kér.
+
+- **E1 — javítva.** A 4.12 bevezetője a tágabb kör rövid alakját idézi: a mező szövegét az első zárójeles kiegészítésig (`bemenet/motivum.tagabb_kor_rovid`; a régi szabály). Az ISTENTISZT-lapon újra a jóváhagyott szöveg áll („(istentisztelet/imádság általában)”); a HAMART-lapon a mezőben nincs zárójel, a szöveg nem változott. Teszt: `test_a_bevezeto_a_tagabb_kor_rovid_alakjat_idezi`. Tanulság: a régi kód hívási helyén álló átalakítást (`split(' (')[0]`) a szerepmodul olvasása nem mutatta meg; a hívó oldalt is olvasni kell.
+- **E2 — nem javítva, döntést kér** (a 218a végi listába). A lapon a szótári alak kisbetűsítve áll, idézetként („úr”, „baál”, „ábrám”), ahogy a jóváhagyott lapon is. A javítás a látható szöveget változtatná („Úr”, „Baál”, „Ábrám”), ezért nem mechanikus. Két út: (a) a lapon a tábla eredeti alakja áll (a kisbetűs alak csak összevetési kulcs marad): ez az alapszabály szerinti alak, a HAMART-on és az ISTENTISZT-en a tulajdonnevek és a mondatkezdő alakok sorai változnak, engedélysorral; (b) marad a kisbetűs alak, kimondott kivételként. A modul docstringje addig a tényleges állapotot írja le.
+- **E3 — javítva.** A szűrő most a tiszta számokat számolja (legfeljebb 9 a 16 szavas ablakban): az igehely-felsorolás ablakában legalább 10 tiszta szám áll, a néhány igehelyet tartalmazó prózamondatéban legfeljebb 8. Az ellenőr próbája (három igehelyes prózamondat kétszer) most találat. Két irányú teszt: `test_igehely_felsorolas_nem_ismetles_de_az_igehelyes_proza_az`; az üres teszt helyén valódi áll (`test_az_azonos_helylista_nem_ismetles_a_lapon`).
+- **E4 — javítva.** A mintalapos teszt azt méri, amit mond: minden találat szósora a megnevezett sorok megnevezett helyén betűre ott áll (`test_a_figyelo_talalatai_a_lapon_tenyleg_ketszer_allnak`).
+- **E5 — javítva.** A 4.13–4.14 pontot csak a motívum saját, aktív sora kapcsolja be, a `*` sor nem (a régi szabály). Teszt kis bemeneten.
+- **E6 — javítva.** A jelentés mondata a kód szerint áll: holtversenyben az elsőként látott szó áll elöl.
+
+**Mérés a javítókör után.** 225 teszt (192 zöld, 33 váz); festékpróba 0; a HAMART-regresszió rendben (engedély nélküli diff-sor 0); figyelmeztetések: HAMART-001 7, ISTENTISZT-001 4.
+*Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/general.py --cel lexikon2 (figyelmeztetések) | forras=a munkafa a javítókör commitja előtt | ts=2026-11-13`.*
+
+**Nem javított megjegyzések** (az ellenőr megfigyelései, nyitva): a `+` utáni hordozó-előtag nem áll meg (a valós adatban nincs ilyen; az N-F218e tételhez tartozik); a kritérium kapuja nem fogja meg az ismétlést, ha 11 szavanként egy szó beékelődik (a 12 szavas ablak tulajdonsága); az ISTENTISZT-001 lapjára nincs sorszintű regresszió (a brief 8.2 szerint szándékosan: a mércéje a számok, a kapuk és a felhasználó olvasata).
