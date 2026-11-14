@@ -5,6 +5,7 @@ kod: STRONG_NORMALIZAL
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ag: claude/strong-normalizal

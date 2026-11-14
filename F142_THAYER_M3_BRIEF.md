@@ -5,6 +5,7 @@ kod: THAYER_M3
 tipus: feladat
 fazis: 2
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ad: a motívumok aktuális görög gerincszavai (a futás pillanatában, DT332 (1)) szakaszonként magyarul a forditasok.tsv-ben (`szotar = Thayer`, `jelentes_szam = sz<n>`), a gátoló kapukon (köztük 14_szakasz, 15_tiltott, 16_sigla) átengedve; a régi `teljes` sorok a DT329 szerint jelölve; újrafuttatható

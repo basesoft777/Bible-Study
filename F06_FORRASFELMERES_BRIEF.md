@@ -5,6 +5,7 @@ kod: F06
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: döntési alap a Nave, a teljes KJV/ASV, a BSB és a Macula importjáról
 kovetkezo: lezárva

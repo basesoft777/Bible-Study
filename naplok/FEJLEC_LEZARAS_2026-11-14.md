@@ -59,3 +59,54 @@ Előtte 66 nem lezárt brief volt (23 nem_indult, 3 brief_kell, 11 fut, 23 megal
 ## Nem zárt — nem indult el (23)
 
 Csak befogadási/átszámozási PR-juk vagy főágra beolvasztott commitjuk van, a munka nem kezdődött el (az F217 és F218 külön PR-ban nyitott): #10, #48, #59, #69, #70, #74, #75, #81, #101, #106, #122, #129, #133, #135, #138, #139, #147, #154, #156, #164, #173, #217, #218.
+
+## `sav` besorolás (2. lépés)
+
+Értékkészlet: SYSTEMS · CONTENT · SERVER · USER (`BRIEF_SABLON.md`). A besorolás a cím és az `ir` mező alapján készült, kétes esetben a fő termék szerint. Kötelező a `feladat` és `naplozas` típusnál; az archív brieföknek nincs. Az F217 (SYSTEMS) és az F218 (CONTENT) briefje a saját PR-jában kapja meg; addig a `SAV_ATMENET_KIVETEL` mentesíti őket a kötelezőség alól (a PR-ok merge-e után a tuple üríthető).
+
+| Sáv | Darab |
+|---|---|
+| SYSTEMS | 38 |
+| CONTENT | 150 |
+| SERVER | 25 |
+| USER | 1 |
+
+**SYSTEMS:** #2, #4, #15, #20, #26, #30, #32, #37, #39, #40, #45, #47, #49, #50, #51, #52, #53, #82, #111, #112, #113, #116, #125, #156, #157, #165, #184, #188, #189, #192, #193, #196, #200, #201, #207, #209, #216, #217
+
+**SERVER:** #25, #60, #76, #79, #92, #97, #98, #100, #101, #104, #105, #122, #134, #135, #137, #139, #147, #149, #164, #187, #195, #204, #210, #213, #215
+
+**USER:** #86
+
+Minden más feladat- és naplózás-brief: CONTENT (150 db; a teljes lista a briefek `sav` mezőjében).
+
+### Kétes esetek (az orkesztrátor átnézésére)
+
+- #25: olvasói HTML → SERVER (a fő termék az olvasó)
+- #26: egyforrású lánc döntései (naplózás) → SYSTEMS (brief-/dokumentumrendszer)
+- #29: szótárfordítás döntései (naplózás) → CONTENT
+- #52: terv-szinkron → SYSTEMS (dokumentum-karbantartás)
+- #61: lekérdező naplózása → CONTENT (kutatási eszköz)
+- #62: Strong-normalizáló → CONTENT (adateszköz)
+- #79: SQLite-építő (pardes.db) → SERVER, az olvasó adatbázisa
+- #92: pardes.db olvasói kiegészítése → SERVER
+- #97: pardes.db újraépítése → SERVER
+- #104: BDB-blokk megjelenítése → SERVER
+- #105: BDB szórend a megjelenítésben → SERVER
+- #124: gerinc-scan kártya → CONTENT (kutatási eszköz)
+- #125: munkamenet és sablonok frissítése → SYSTEMS (a gerinc-kártya tartalma CONTENT)
+- #137: modernizált Károli a keresőben és a pardes.db-ben → SERVER
+- #138: szó-lap alapjelentés (adatjavítás) → CONTENT, bár a szó-lap olvasói felület
+- #148: új motívum védőkorlátjai → CONTENT (kapuk, de motívum-tartalmi)
+- #149: tanulmány-sáv az olvasóban (adat + olvasó) → SERVER
+- #156: műhely Feed/Stash → SYSTEMS (belső áttekintő), nyilvános kirakat része CONTENT
+- #157: lektor-felület (db capability artifact) → SYSTEMS (a munkafolyamat eszköze)
+- #163: tudományos megfelelőség (közlemények) → CONTENT
+- #165: /lap-javit lapnézet → SYSTEMS (parancs/eszköz)
+- #166: adatszintű Károli-idézet kapu → CONTENT
+- #187: Thayer olvasói kártya (adat + olvasó) → SERVER
+- #190: lezárt lapkövetelmény-lista → CONTENT (sablonok)
+- #200: próza-állítás ellenőrző (kapu) → SYSTEMS; tartalmat is érint
+- #212: CS3 generátor-kör → CONTENT (lapgenerátor)
+- #215: angol Thayer/BDB az olvasóban → SERVER
+- #217: (a saját PR-jában kapja: F217 → SYSTEMS)
+- #218: (a saját PR-jában kapja: F218 → CONTENT)

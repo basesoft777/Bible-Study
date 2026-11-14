@@ -5,6 +5,7 @@ kod: F15
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ad: a munkafolyamat orkesztrátor-parancsa (`/kovetkezo`)
 kovetkezo: lezárva

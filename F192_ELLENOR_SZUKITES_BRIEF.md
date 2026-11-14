@@ -5,6 +5,7 @@ kod: ELLENOR_SZUKITES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/ellenor-szukites-2766eb
 pr: 0

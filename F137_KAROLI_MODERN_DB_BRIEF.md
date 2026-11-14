@@ -5,6 +5,7 @@ kod: KAROLI_MODERN_DB
 tipus: feladat
 fazis: 1
 modell: opus
+sav: SERVER
 munka: adat
 allapot: brief_kell
 ad: a #96 modernizált Károli-rétege a pardes.db-ben (token-szintű tábla, hash meta-sorral), és az olvasói kereső a modern szövegben is keres, a szótári alakos kereséssel egyesítve; a vers-lap kapcsolója a modern és az 1908-as szöveg között (DT-F96b)

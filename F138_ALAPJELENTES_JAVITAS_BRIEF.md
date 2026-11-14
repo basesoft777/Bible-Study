@@ -5,6 +5,7 @@ kod: ALAPJELENTES_JAVITAS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: nem_indult
 ad: a szó-lap alapjelentése magyar vagy forrásjelölt Károli-alak minden olyan Strong-számnál, ahol ma az angol Strong-szótár (benne a hibás „LORD”) áll; a TAHOT_kivonat és a Strong_szotar istenneves sorai a glosszát hordozzák; a mai 638 jó alapjelentés változatlan
 kovetkezo: "A /kovetkezo a #134 zárása után indíthatja (M0 ⛔: terv)"

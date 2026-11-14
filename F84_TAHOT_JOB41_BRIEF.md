@@ -5,6 +5,7 @@ kod: TAHOT_JOB41
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 pr: 262
 lezarva_osszegzes: "Jób 41:1–34 pótolva a TAHOT_kivonatba (+332 sor Károli-kulccsal, a nyitott esetekből −332), DT86 (a) 1, (b) 1; CLAUDE.md TAHOT-mondat a mért állapotra; N55, N-F34b lezárva; nyitott a #22-nek: f22/versmegfeleltetes.tsv újragenerálása a Jób-menet előtt; PR #262 (10.09)"

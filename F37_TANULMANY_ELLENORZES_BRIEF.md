@@ -5,6 +5,7 @@ kod: TANULMANY_ELLENORZES
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/tanulmany-ellenorzes
 ad: a tanulmányokat CI (E20; az E21–E24 a T0 szerint az E13/E8/E9/E12 bővítéseként) és a fuggetlen-ellenor ügynök ellenőrzi; a régi tanulmányokról két auditjelentés készül

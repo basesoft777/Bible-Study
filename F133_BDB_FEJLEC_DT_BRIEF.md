@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: nem_indult
 ad: a bont.py és a forras_javit.py fejléc-literálja a végleges DT225 / DT228 számot írja, a három érintett BDB-tábla újragenerálva (csak a fejlécsorok változnak), a teszt_bont.py Determinizmus.test_ellenoriz és test_javitas_ellenoriz zöld
 kovetkezo: "Indítható a fugg szerint"

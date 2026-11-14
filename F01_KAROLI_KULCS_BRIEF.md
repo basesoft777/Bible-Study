@@ -5,6 +5,7 @@ kod: KK0–KK7.5
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: a Károli–LXX versmegfeleltetés javítása a görög Ószövetségben
 kovetkezo: lezárva

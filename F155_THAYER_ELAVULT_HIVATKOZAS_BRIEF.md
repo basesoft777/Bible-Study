@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: a `forditas.py` a végleges DT329-et írja (teszttel), a 7 `elavult` Thayer-sor megjegyzése a döntés szerint javítva, `grep -c "DT-F132c" adat/forditasok.tsv` a döntés szerinti érték, minden más sor bájtra azonos
 kovetkezo: "nincs; nyitott (hatókörön kívül): a forditas.py docstring- és 211/216. sori DT-F132c literálja (E32 JELENTÉS, F141 javaslat); N66"

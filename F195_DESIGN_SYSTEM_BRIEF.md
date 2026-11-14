@@ -5,6 +5,7 @@ kod: DESIGN_SYSTEM
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SERVER
 allapot: lezarva
 ag: claude/design-system-8e5bb3
 pr: 692

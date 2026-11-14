@@ -5,6 +5,7 @@ kod: IGESZAKASZ_ELOKESZITES
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: fut
 ad: a 2. sablonban igehelyenként hat jelölt blokk (funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás) üres-jelöléssel; a MUNKAMENET A-szakaszában a helyük a vak olvasás sorrendjében; egy kinyerő, amely a blokkokból csak jelölt-sort ír a jeloltek.tsv-be manual provenienciával; a jelentéspont saját olvasata külön mezőben, a BDB-kártya érintetlen; a szakasz Strong-szavainak hiányzó fordítása egy kötegben; a SEMA és a tesztek; igehely-sor szintű, folyamatos mérési terv
 kovetkezo: "M3 és M5: az F212 (CS3) merge-e után, behozott main-nel; előtte az ir visszabővítése (general.py, ellenoriz.py, 9. és 10. sablon, proza_allitas pár) és fuggesek"

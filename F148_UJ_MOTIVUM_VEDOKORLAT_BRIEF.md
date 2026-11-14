@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/f148-vedokorlat-4b117b
 pr: 535

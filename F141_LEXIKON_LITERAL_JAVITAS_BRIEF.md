@@ -5,6 +5,7 @@ kod: LEXIKON_LITERAL_JAVITAS
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: ccr-6c9c92aa-tnvazz

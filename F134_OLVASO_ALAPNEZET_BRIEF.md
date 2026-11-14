@@ -5,6 +5,7 @@ kod: OLVASO_ALAPNEZET
 tipus: feladat
 fazis: 1
 modell: opus
+sav: SERVER
 allapot: megallt
 ag: claude/olvaso-alapnezet
 ad: az olvasó-szerver a mockup 9. változata szerint működik — kis képernyőn csak a Károli-szöveg, a navigáció és a részletek felugró lapon; nagy képernyőn állandó oldalblokk, kijelölés nélkül rövid útmutatóval (DT464); világos alaptéma; mérve 375/768/1280 px-en és valódi telefonon

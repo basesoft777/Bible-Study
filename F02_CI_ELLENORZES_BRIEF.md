@@ -5,6 +5,7 @@ kod: CI
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ad: gépi ellenőrzés (E1–E16) GitHub Actionsben
 kovetkezo: lezárva

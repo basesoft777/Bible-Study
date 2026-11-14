@@ -5,6 +5,7 @@ kod: SZAMKIOSZTAS
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: fut
 ag: claude/f201-szamkiosztas-083885
 ad: a `szamkiosztas` workflow a csere után újragenerálja a számtól függő nézeteket; az F-szám atomi foglalása az originen; egy futás egy gépi commit

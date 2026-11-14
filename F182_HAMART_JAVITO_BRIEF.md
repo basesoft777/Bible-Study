@@ -5,6 +5,7 @@ kod: HAMART_JAVITO
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/hamart-javito
 ad: a HAMART-001 lapja az F1–F18 és az N-F178a/b leletek szerint javítva (generátor-szinten, adatjavítás szkripttel, HIBA-kapuk teszttel), friss határ-ellenőrzés, a HAMART kapcsolat-sorai, két folyamat-kapu (jelölő-kapu a /kiadas előtt, előfeltétel-térkép), saját renderelt átnézés és független ellenőrzés; a régi lapok bájtra változatlanok

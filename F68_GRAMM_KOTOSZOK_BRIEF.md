@@ -5,6 +5,7 @@ kod: GRAMM_KOTOSZOK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 pr: https://github.com/basesoft777/Bible-Study/pull/244

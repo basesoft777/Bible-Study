@@ -5,6 +5,7 @@ kod: MOTIVUMNAPLO_HAMART
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/motivumnaplo-hamart
 ad: a `motivumlog/PaRDeS_motivumok.md` kézi HAMART-001-szakaszai az `elofordulasok.tsv` mai soraihoz igazítva; a határkörben kikerült helyek mellett jelzés (nem törlés), a Gal 3:13-14 tárgyszerűen, kiemelés nélkül; a generált blokkok változatlanok, a CI (E28) zöld

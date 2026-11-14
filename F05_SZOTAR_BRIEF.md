@@ -5,6 +5,7 @@ kod: SZOTAR S1
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: fordítási gyorsítótár, terminológia- és kiejtés-táblák, konkordancia-importok
 kovetkezo: lezárva

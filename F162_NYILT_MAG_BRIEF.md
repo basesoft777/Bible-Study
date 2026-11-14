@@ -5,6 +5,7 @@ kod: NYILT_MAG
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: a nyílt tudományos mag (CC BY 4.0) olvasónak érthető, generált exportja kódkönyvvel (hu/en), saját kapuval, „ismert hibák” szakasszal és licencszűréssel, amely a Zenodo-rekord alapja lehet
 kovetkezo: lezárva (PR #629, 2026-11-04; F162.9: PR #635); a Zenodo-feltöltés és a DOI-kérés a felhasználóé

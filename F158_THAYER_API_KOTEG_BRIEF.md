@@ -5,6 +5,7 @@ kod: THAYER_API_KOTEG
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: fut
 ad: "eszkozok/thayer_api_koteg.py: a #132 szakaszos láncának (thayer_jelolt/forditas.py, prompt v5.1, adatblokk, 14–16. kapu) Batch-kötegelője a bdb_api_koteg.py mintájára (szaraz / bekuld / allapot / begyujt / kapuz / javit / rogzit / beir), a teljes Thayer futási listájával; hálózat nélküli tesztekkel; valódi beküldés nélkül (az első a #27 M1-e)"
 kovetkezo: "/kovetkezo; utána a #27 (FP3) M1-e ezzel fut"

@@ -5,6 +5,7 @@ kod: OLVASO_BIBLIAVALASZTO
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SERVER
 allapot: lezarva
 ag: claude/f210-bibliavalaszto-b8d821
 pr: 717

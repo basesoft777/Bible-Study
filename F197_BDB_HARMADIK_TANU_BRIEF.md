@@ -5,6 +5,7 @@ kod: BDB_HARMADIK_TANU
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: fut
 ad: a 2.29 jelentéspontjának harmadik, független tanúja (a Sefaria BDB-jelentésfája); egyezésnél `biztos`, eltérésnél `ketes`; kapcsolóval, alapból kikapcsolva
 kovetkezo: "Folytatás: a független ellenőrzés és a draft PR; a merge a felhasználóé"

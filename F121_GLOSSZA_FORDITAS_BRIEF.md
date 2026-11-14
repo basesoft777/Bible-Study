@@ -5,6 +5,7 @@ kod: GLOSSZA_FORDITAS
 tipus: feladat
 fazis: 2
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/f121-glossza-istentiszt-10e2a8

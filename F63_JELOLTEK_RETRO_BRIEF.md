@@ -5,6 +5,7 @@ kod: JELOLTEK_RETRO
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/jeloltek-retro

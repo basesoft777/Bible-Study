@@ -5,6 +5,7 @@ kod: HIVATKOZAS_ELLENORZES
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ad: a CI minden PR-nál jelzi, ha a FELADATOK.md vagy egy brief nem létező fájlra, ágra vagy commitra mutat, illetve ha egy PR áthelyez vagy töröl egy hivatkozott fájlt anélkül, hogy a mutatót frissítené
 ag: claude/hivatkozas-ellenorzes

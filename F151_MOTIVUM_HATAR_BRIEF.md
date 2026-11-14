@@ -5,6 +5,7 @@ kod: MOTIVUM_HATAR
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: megallt
 ad: motívumonként egy kérdéslista a `naplok/HATAR_<ID>.md`-ben (soronként egy állítás a két idézett sorral, ahogy a /konzisztencia idéz), a motívum tartalmi határáról a lezárás után: (1) gépileg, ingyen: részhalmaz-e a motívum egy másiknak, és teljesíti-e minden beépített sor a saját negatív kritériumának gépileg ellenőrizhető részét; (2) egy friss kontextusú, a motívumot készítőtől eltérő modellel futó ellenőrző: következetlen határ (hasonló indoklás, eltérő döntés) és hígulás (csak a fölérendelt fogalmon át tartozik ide); a havi keretből, API-kulcs nélkül. Minden találat kérdés a felhasználóhoz, nem javítás

@@ -5,6 +5,7 @@ kod: BDB_SZELETELO_JAVITAS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ag: claude/f102-bdb-szeleto-javitas

@@ -5,6 +5,7 @@ kod: SZABALYHELYEK
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SYSTEMS
 allapot: lezarva
 lezarva_osszegzes: a szabályhelyek (sablon 6/9/10, MUNKAMENET, DONTESEK) igazítása a HAMART-001 aranyához és a követelménylistához
 ag: claude/szabalyhelyek-97e545

@@ -5,6 +5,7 @@ kod: JELOLT_ELOSZURES
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 pr: 533

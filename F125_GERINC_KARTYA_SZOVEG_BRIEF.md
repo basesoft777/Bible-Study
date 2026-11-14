@@ -5,6 +5,7 @@ kod: GERINC_KARTYA_SZOVEG
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 munka: folyamat
 allapot: lezarva
 lezarva_osszegzes: a munkamenet és a sablonok frissítése (gerinc-kártya, kiejtés, olvasói elv, próza-lefedettség, egyenetlenség, a második kiadás menete); a PR #554 után a HAMART-001 lapjavítása (#686, #699) és 1. kiadása (#696) is a main-en

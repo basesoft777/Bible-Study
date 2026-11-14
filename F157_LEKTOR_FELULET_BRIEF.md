@@ -5,6 +5,7 @@ kod: LEKTOR_FELULET
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 munka: folyamat
 allapot: megallt
 ad: egy közös kérdés-séma minden kérdés-forrásra (a `/kiadas` lektora, a határ-ellenőrzés `naplok/HATAR_<ID>.md`, a próza-lefedettség, a kiejtés-kalibráció, az artifact-kommentek, a `proza_javaslat`: a lektor olvasás közben is kérdezhet, a `dontes`: a `DONTESEK.md` nyitott tartalmi tételei, a `motivum_jelolt`: talált, kidolgozatlan motívumok); motívumonként generált `naplok/LEKTOR_<ID>.tsv`; egy artifact a kalibráló sablon mintájára (kérdésenként: elfogadom / elvetem / visszakérdezek / saját szöveg; szűrés forrás és motívum szerint; ugrás a lapnézet helyére); a válaszok tárolója és kérésre történő beolvasása; a szabályos visszaút (`jeloltek.tsv` sor `manual` provenienciával és a válasz idézetével, `DONTESEK.md` DT-F helyőrző, prózai teendő a forrásfájl feladataként), közvetlen út az adatba nincs

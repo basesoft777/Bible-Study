@@ -5,6 +5,7 @@ kod: GLOSSZA_LANC
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ag: claude/glossza-lanc-1a9f9f

@@ -5,6 +5,7 @@ kod: ISTENTISZT001_PROZA
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 pr: 444
 lezarva_osszegzes: "az ertelmezes rés A0–A4, B0, B2–B7, a modszertan rés C1 bekezdéssel bővült (név-horgony, 6/8 + 2 „nincs új anyag”), a lexikon újragenerálva; N-F55d lezárva (22/18 megerősítve), új: N-F126a; ellenőrzés ELTÉRÉS 4 → 1 → TISZTA, két mechanikus javítókör; zárónapló naplok/ISTENTISZT001_PROZA_zaras.md"

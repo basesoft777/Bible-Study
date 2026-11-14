@@ -5,6 +5,7 @@ kod: LAPJAVIT_ARTIFACT
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SYSTEMS
 munka: folyamat
 allapot: lezarva
 ad: a lapnézet-artifact csak a generált lapot mutatja, minden blokk mellett látható jellel (pl. `1/a·12`); a felhasználó a chatben a jelre vagy idézetre mutat rá; a javítás a sessionben, a `/lap-javit` szerint folyik, a jóváhagyás után a session vezeti át, naplózza (`lap_javitasok.tsv`) és újrapublikálja a nézetet (DT637)

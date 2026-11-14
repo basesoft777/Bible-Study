@@ -5,6 +5,7 @@ kod: ELOFIZETES_FEED
 tipus: feladat
 fazis: 2
 modell: opus
+sav: USER
 allapot: dontesre_var
 ad: rögzített döntések az előfizetési szintek határáról, a prémium réteg szállításáról és lejáratáról, valamint az eseménycsatornáról; ezekre épül a csomag-generátor és a böngészős kliens
 kovetkezo: "Te: döntés a DT-F86a–g pontokról (5. szakasz), utána a 3.1 lépés"

@@ -5,6 +5,7 @@ kod: FOLYTATAS
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/f49-folytatas
 pr: https://github.com/basesoft777/Bible-Study/pull/162

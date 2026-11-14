@@ -5,6 +5,7 @@ kod: BSB_KIEGESZITES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/f214-bsb-kiegeszites-a36557
 ad: a BSB_Strongs.tsv az Újszövetséggel és a három küszöb alatti ószövetségi könyvvel bővül, ahol a 95%-os küszöböt (DT6) az egyenértékű Strong-számok normalizálása után elérik; a jelentés könyvenként az előtte–utána számot adja

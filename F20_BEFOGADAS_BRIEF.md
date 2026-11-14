@@ -5,6 +5,7 @@ kod: BEFOGADAS
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ad: a chatekben készült briefeket a /befogad parancs fogadja be; a FELADATOK.md táblái a brief-fejlécekből generálódnak; a függést gép számolja
 kovetkezo: lezárva

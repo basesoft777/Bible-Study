@@ -5,6 +5,7 @@ kod: FELADATTERKEP
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 munka: folyamat
 allapot: lezarva
 ad: "a FELADATTERKEP.html (gyökér, mindig ugyanazon a néven felülírva) és a feladatterkep.json minden main-merge után a forrásokból generálódik; a claude.ai-artifact megnyitáskor a files képességgel ugyanezt a JSON-t olvassa, így újrafeltöltés nélkül friss"

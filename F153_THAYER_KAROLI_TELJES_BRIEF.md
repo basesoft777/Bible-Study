@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: megallt
 ad: a kész Thayer-fordítások (forditasok.tsv, szotar = Thayer) soronként újraellenőrizve a teljes ÚSZ Károli–Strong párosításával (az evangéliumok és az ApCsel is); az eltérő sorok jóváhagyott döntés szerint újrafordítva (M3-lánc) vagy kézi ítéletre listázva; az adatblokk elavult könyvlistája javítva
 kovetkezo: "Te: [elteres_kor 2/2] ELLENOR_F153_3 1. javítva a felhasználó engedélyével (F153.19), újraellenőrzés nincs; zárás a felhasználó döntésére; kezi sor listán: G1941 teljes; N66 (Sigla-teszt) hatókörön kívül"

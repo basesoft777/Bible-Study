@@ -5,6 +5,7 @@ kod: TANUINDEX
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: metaadat-szintű, helyi tanúindex (egyházatyák: HCF; rabbinikus: Sefaria links), amelyből a #183 a 9. „Hatástörténet” szakasz tanúrétegét webes keresés nélkül építheti
 kovetkezo: "lezárva: a #684 mergelve (2026-11-11); a fejléc a 2026-11-14-i kötegelt lezárásban (naplok/FEJLEC_LEZARAS_2026-11-14.md) igazítva"
