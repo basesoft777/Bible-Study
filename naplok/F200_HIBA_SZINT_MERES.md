@@ -1,5 +1,7 @@
 # F200 HIBA-szint mérés — a próza-állítás ellenőrző ELTÉR-soraink minősítése (N-F200d)
 
+> **A munka félbeszakadt (2026-11-14, a felhasználó kérésére: „stop / commit”).** Kész: a mérés, a három gépi javítás, az E41 (`--kapu`), a tesztek (`teszt_proza_allitas.py`: 40 zöld), a CI-lépés, a SEMA 3.11 generálva, a DT-F200e helyőrző. Nincs kész: a `teszt_futtat.py --gyors` és a `feladatok.py ellenoriz` futtatása (megszakítva), a push, a draft PR, a CI-olvasás. Az N-F200d lezárását az orkesztrátor vezeti át.
+
 *2026-11-14, claude-sonnet-5-5. A feladat: a `proza_allitas.py` ELTÉR-sorainak minősítése a vers szövege alapján (valós hiba / téves riasztás) a két új formájú forráson, a HIBA-szintre emelés előtt (N-F200d feltétele; a felhasználó: „ez menjen most”).*
 
 ## Eredmény egy mondatban
