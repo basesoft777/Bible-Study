@@ -5,9 +5,9 @@ kod: TANUINDEX
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: metaadat-szintű, helyi tanúindex (egyházatyák: HCF; rabbinikus: Sefaria links), amelyből a #183 a 9. „Hatástörténet” szakasz tanúrétegét webes keresés nélkül építheti
-kovetkezo: "Folytatás: a független ellenőrzés és a draft PR; a merge a felhasználóé"
+kovetkezo: "lezárva: a #684 mergelve (2026-11-11); a fejléc a 2026-11-14-i kötegelt lezárásban (naplok/FEJLEC_LEZARAS_2026-11-14.md) igazítva"
 munka: adat
 olvas: [CLAUDE.md, Rendszerfejlesztesi_playbook.md, konkordancia/Konyv_normalizalo_tabla.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, adat/elofordulasok.tsv]
 ir: [nyilt_mag/, eszkozok/tanu_index.py, eszkozok/teszt_tanu_index.py, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_atyak_mu.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Tanu_index_README.md, adat/datasetek.tsv, adat/licencek.tsv, nyitott/uj/tanuindex-8ed546.md, dontesek/uj/tanuindex-8ed546.md, naplok/F191_jelentes.md]

@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 munka: folyamat
-allapot: fut
+allapot: lezarva
 ad: a lapnézet-artifact csak a generált lapot mutatja, minden blokk mellett látható jellel (pl. `1/a·12`); a felhasználó a chatben a jelre vagy idézetre mutat rá; a javítás a sessionben, a `/lap-javit` szerint folyik, a jóváhagyás után a session vezeti át, naplózza (`lap_javitasok.tsv`) és újrapublikálja a nézetet (DT637)
-kovetkezo: "Te: a próba kész (2026-11-08, „működik”); a draft PR #641 átnézése és merge"
+kovetkezo: "lezárva: a #641 mergelve (2026-11-08); a fejléc a 2026-11-14-i kötegelt lezárásban (naplok/FEJLEC_LEZARAS_2026-11-14.md) igazítva"
 olvas: [.claude/commands/lap-javit.md, eszkozok/lektor_felulet/, adat/lap_javitasok.tsv, adat/SEMA.md]
 ir: [.claude/commands/lap-javit.md, eszkozok/lektor_felulet/lapnezet.py, eszkozok/lektor_felulet/lapnezet_sablon.html, eszkozok/lektor_felulet/lap_javitas_naplo.py, eszkozok/lektor_felulet/lapnezetek.tsv, eszkozok/teszt_lektor_felulet.py, dontesek/uj/upbeat-pare-476379.md]
 fugg: [123]

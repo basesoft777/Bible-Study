@@ -5,11 +5,11 @@ kod: DESIGN_SYSTEM
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: lezarva
 ag: claude/design-system-8e5bb3
 pr: 692
 ad: a design system tokenjei, README-je és komponensei a mai olvasót írják le; a token-réteg gépi úton frissíthető
-kovetkezo: "Te: a draft PR áttekintése és merge-e; utána az N156 (a lexikonlap-nézet és a lektor-felület átállása) a HAMART-001 lezárása után"
+kovetkezo: "lezárva: a #692 mergelve (2026-11-11); a fejléc a 2026-11-14-i kötegelt lezárásban (naplok/FEJLEC_LEZARAS_2026-11-14.md) igazítva"
 munka: folyamat
 olvas: [eszkozok/olvaso_szerver/arculat_szinkron.py, eszkozok/olvaso_szerver/konfig/arculat.json, eszkozok/olvaso_szerver/statikus/olvaso.css, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/blokkok.py]
 ir: [eszkozok/olvaso_szerver/arculat_szinkron.py, eszkozok/olvaso_szerver/teszt_tervezo.py, dontesek/uj/design-system-8e5bb3.md, nyitott/uj/design-system-8e5bb3.md, naplok/ELLENOR_F195.md, F195_DESIGN_SYSTEM_BRIEF.md]

@@ -5,11 +5,11 @@ kod: ELLENOR_SZUKITES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: megallt
+allapot: lezarva
 ag: claude/ellenor-szukites-2766eb
 pr: 0
 ad: a `fuggetlen-ellenor` csak a kód-, adat- és szabályváltozást olvassa; a generált lapot a CI kapui és a lektor fedik le
-kovetkezo: "Te: a draft PR áttekintése és merge-e; a #183 menete már az új ellenőrrel fut"
+kovetkezo: "lezárva: a #685 mergelve (2026-11-11); a fejléc a 2026-11-14-i kötegelt lezárásban (naplok/FEJLEC_LEZARAS_2026-11-14.md) igazítva"
 munka: folyamat
 olvas: [.claude/agents/fuggetlen-ellenor.md, MUNKAMENET.md, .claude/commands/kovetkezo.md, .claude/commands/elteres.md]
 ir: [.claude/agents/fuggetlen-ellenor.md, .claude/commands/kovetkezo.md, .claude/commands/elteres.md, MUNKAMENET.md, dontesek/uj/ellenor-szukites-2766eb.md, F192_ELLENOR_SZUKITES_BRIEF.md]
