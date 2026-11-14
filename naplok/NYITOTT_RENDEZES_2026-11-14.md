@@ -6,9 +6,9 @@
 
 | Osztály | Darab |
 |---|---|
-| (a) lezárt — a fájlban lezárva jelölve | 12 |
+| (a) lezárt — a fájlban lezárva jelölve | 13 |
 | (b) beolvadt/túlhaladt — a fájlban jelölve | 1 |
-| (c) nyitott, azonosítóval | 316 |
+| (c) nyitott, azonosítóval | 315 |
 |   ebből ellenőrizendő (későbbi lezárás-szavú commit) | 22 |
 |   ebből F218 által lefedett | 2 |
 | (c) nyitott, azonosító nélküli (régi, számozatlan tételek) | 38 |
@@ -17,8 +17,9 @@ A korábbi, 265-ös szám a leltár-session gépi számlálása volt; ez a napl�
 
 Az F218 (lapgenerátor-újraírás) brief szerint még nincs megvalósítva (PR #729 nyitott, 218a: építés a regresszióig), ezért a generátort érintő N-tételeket **nem** lehetett túlhaladottnak zárni. A `HIBA_MECHANIZMUSOK.md` csak az N-F215a tételt nevesíti.
 
-## (a) Lezárt (12)
+## (a) Lezárt (13)
 
+- N-F156e (`65. sor`): felhasználói döntés 2026-11-14 („Igen, zárjuk le”), DT-F156t: a Nave a 4.12 Szótári háttér tematikus indexeként megvalósult; jelöltforrás nem épül
 - N-F131y (`79. sor`): a tétel saját jelölése: alkalmazva 2026.11.01 (DT445); a main 9f7ac0e7 (N-F131y.2)
 - N59 (`93. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
 - N60 (`95. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
@@ -104,12 +105,11 @@ Az F218 (lapgenerátor-újraírás) brief szerint még nincs megvalósítva (PR 
 - N-F216a (`972. sor`)
 - N-F152g (`1014. sor`)
 
-### CONTENT (217)
+### CONTENT (216)
 
 - N-F147b (`52. sor`)
 - N-F149b (`55. sor`)
 - N87 (`59. sor`)
-- N-F156e (`65. sor`)
 - N-F94j (`67. sor`)
 - N-F94k (`68. sor`)
 - N-F131c (`69. sor`)
