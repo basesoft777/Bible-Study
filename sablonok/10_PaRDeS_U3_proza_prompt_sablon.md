@@ -88,7 +88,7 @@ python eszkozok/proza_allitas.py [ID]
 
 A `naplok/ALLITAS_[ID].md` a próza versre hivatkozó állításait (a rések mondatai és a `kapcsolodas` sorai) veti össze a verssel és az adattal.
 
-- **ELTÉR-sor:** a gépi ítélet a vers héber/görög Strong-során, a Károli-szövegen vagy az adaton áll (a szó áll vagy nem áll a versben; a szópár mellett más szó áll; a fordulat két szava nem szomszédos; az idézet nem a Károli szövege; a szám nem egyezik). Minden ELTÉR-sort a forrásban javítasz, és újrafuttatod; a javított mondat a vers saját szövegét mondja (ki/mi az alany, melyik héber szó áll), nem a régit tompítja.
+- **ELTÉR-sor (a CI-ben E41, HIBA):** a gépi ítélet a vers héber/görög Strong-során, a Károli-szövegen vagy az adaton áll (a szó áll vagy nem áll a versben; a szópár mellett más szó áll; a fordulat két szava nem szomszédos; az idézet nem a Károli szövege; a szám nem egyezik). Minden ELTÉR-sort a forrásban javítasz, és újrafuttatod; a javított mondat a vers saját szövegét mondja (ki/mi az alany, melyik héber szó áll), nem a régit tompítja.
 - **⚑ tétel a kézi listán.** Mindet magad nézed át, és a fenti „Állítás a versről” szerint javítod. A jelzés fajtái:
   - a magyar szó más héber szót fordít, vagy a lánc szava nincs a versben (2.);
   - kizárólagos állítás lekérdezés nélkül (3.);
