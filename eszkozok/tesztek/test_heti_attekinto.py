@@ -59,6 +59,9 @@ class Alap(unittest.TestCase):
 
 
 class SavCsoportositasTest(Alap):
+    def test_savok_egyeznek_a_feladatok_py_savjaival(self):
+        self.assertEqual([s for s, _ in H.SAVOK], list(F.SAVOK))
+
     def test_negy_sav_ket_blokk(self):
         self.brief(1, allapot='fut', sav='SYSTEMS')
         self.brief(2, allapot='nem_indult', sav='CONTENT')

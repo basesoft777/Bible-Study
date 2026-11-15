@@ -4,7 +4,7 @@
 
 **Szabály (lezárás átvitellel).** Ha a brief fő eredménye (az `ad` mező) mergelt PR-ral a main-en áll, a brief `lezarva` lesz. A nyitott pontjai (⛔ pont, maradék lépés) új N-tételként a `nyitott/uj/affectionate-keller-a3f024.md` fájlba kerültek (`N-F220a`–`N-F220h` helyőrzők, a számot a `szamkiosztas` adja), a briefre hivatkozva és sávval. A már meglévő N-tétel nyitva marad, a brief csak hivatkozik rá. A brief-fejlécből csak az `allapot` és a `kovetkezo` változott.
 
-Előtte 61 nem lezárt brief volt, **most 39**; **lezárva: 21** (a 22. jelölt, a #201, közben a gépi lezárás (#731) lezárta, azt nem érintettem).
+Előtte 61 nem lezárt brief volt, **most 38**; **lezárva: 21** (a 22. jelölt, a #201, közben a gépi lezárás (#731) lezárta, azt nem érintettem; a #219-et a #736 merge-e után szintén gépi lezárás zárta).
 
 ## Lezárt (brief → bizonyíték → átvitel)
 
@@ -48,20 +48,23 @@ Előtte 61 nem lezárt brief volt, **most 39**; **lezárva: 21** (a 22. jelölt,
 | #156 MUHELY_FEED_STASH (nem_indult) | A fejléc `nem_indult`, de a Feed és a Stash mergelve (#555–#576, #601), és a ma számozott DT846 is erre a feladatra mutat: a brief elavult, de a munka ma is mozog. |
 | #221 (fut) | A fő eredmény mergelve (#733), de a `BRIEF_SABLON.md` szabályszövege a `sav`-PR után még hátra van (kész diff: `naplok/F221_jelentes.md`); a `BRIEF_SABLON.md`-hez ebben a körben nem nyúlhattam. |
 
-Nem zárható, mert a fő eredmény nincs a main-en vagy a munka ma is fut: #7 (a Thayer-adagok futnak), #123 (a hátralévő motívumok), #217 (#725 draft), #218 (#729 draft), #219 (B. rész: `local_627ca138`), #220 (e munka maga).
+Nem zárható, mert a fő eredmény nincs a main-en vagy a munka ma is fut: #7 (a Thayer-adagok futnak), #123 (a hátralévő motívumok), #217 (#725 draft), #218 (#729 draft), #220 (e munka maga).
 
-## Nem érintett — nem indult el (23) és brief kell (3)
+A #736-tal érkezett új gépi kapu (JELENTÉS, nem hiba) a #212-t (#715) és a #52-t (#265) jelenti: mergelt PR, de nem lezárt fejléc. Ez a két kétes eset, a jelentés ennyiben egyezik a fenti döntésemmel; a kapu ettől nem bukik.
+
+## Nem érintett — nem indult el vagy brief kell (23 brief)
 
 #10, #13, #25, #48, #59, #69, #70, #74, #75, #81, #101, #106, #122, #129, #133, #135, #137, #138, #139, #147, #154, #164, #173; egyikük fő eredménye sem áll a main-en (többnél csak a befogadás PR-ja mergelt). Megjegyzés: a #147 `kovetkezo`-ja („Te: befogadás a /befogad-dal”) elavult, a befogadás mergelve (#512); a #133, #154 hasonlóan csak a befogadás után áll, ezeket nem vizsgáltam tovább.
 
-## Nyitott brief sávonként (a lezárások után)
+## Nyitott brief sávonként (a lezárások után; a #736 ötödik sávjával)
 
 | Sáv | Folyamatban | Vár |
 |---|---|---|
-| SYSTEMS | 4 (#157, #219, #220, #221) | 3 (#52, #156, #217) |
+| SYSTEMS | 3 (#157, #220, #221) | 3 (#52, #156, #217) |
 | CONTENT | 6 (#7, #123, #153, #171, #205, #212) | 16 |
 | SERVER | 1 (#134) | 8 |
-| USER | 0 | 1 (#86) |
-| **Együtt** | **11** | **28** |
+| USER | 0 | 0 |
+| BUSINESS | 0 | 1 (#86) |
+| **Együtt** | **10** | **28** |
 
 A „te teendőid” sor: 10 brief (#52, #86, #123, #129, #134, #147, #153, #164, #220, #221).
