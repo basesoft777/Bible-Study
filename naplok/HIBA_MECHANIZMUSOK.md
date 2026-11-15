@@ -4,7 +4,7 @@
 
 **Szabály.** Ha egy új eset már szereplő mechanizmushoz tartozik, nem készül példányjavítás. Helyette gyökérok-elemzés és szerkezeti védelem jön (pozitív szabály, egyetlen hozzáférési pont, kapu), és a jelzés kimondja, hányadik esetről van szó. Lapkiadás előtt (`/kiadas` 3/b. lépés) a lapot érintő nyitott mechanizmusokat ellenőrizni kell.
 
-**Felhasználó által talált hiba (DT-F221a).** Minden hibához, amelyet a felhasználó talált, a javítókörben (`/lap-javit` 5. 3/b., `/kiadas` 4.) kötelező megnevezni a mechanizmust ebben a naplóban (meglévőt vagy újat). Ha a mechanizmus már szerepel, a tétel gyökérok-jelölést kap (hányadik eset), nem csak példányjavítást. Különösen igaz ez arra a hibára, amelyen minden kapu átengedett: az önmagában hibanapló-tétel.
+**Felhasználó által talált hiba (DT852).** Minden hibához, amelyet a felhasználó talált, a javítókörben (`/lap-javit` 5. 3/b., `/kiadas` 4.) kötelező megnevezni a mechanizmust ebben a naplóban (meglévőt vagy újat). Ha a mechanizmus már szerepel, a tétel gyökérok-jelölést kap (hányadik eset), nem csak példányjavítást. Különösen igaz ez arra a hibára, amelyen minden kapu átengedett: az önmagában hibanapló-tétel.
 
 Oszlopok: mechanizmus · esetek (dátum, hely) · állapot · szerkezeti védelem.
 
@@ -59,4 +59,4 @@ Oszlopok: mechanizmus · esetek (dátum, hely) · állapot · szerkezeti védele
   - 2026-11-10, DT742 (#685): a független ellenőr a generált lapot már nem olvassa; senki nem pótolta.
   - 2026-11-11: a lektor a prózára szűkül, a generált blokkokat a kapukra bízzák; a HAMART v6-on 14 hiba, mind generált blokkban.
   - 2026-11-13: ISTENTISZT-001 2. kiadás, ugyanazok a hibák a kiadott HAMART-001-en is.
-- **Állapot.** Védve: a hatókör-szűkítés szabálya (DT-F221a; `BRIEF_SABLON.md`, `/befogad` ellenőrző pont), a pozitív kapuk és a `/kiadas` 3/b. olvasói átolvasása. A nyílt rész: az új generátor olvasói kapuinak mérése a TEREMT-001-en.
+- **Állapot.** Védve: a hatókör-szűkítés szabálya (DT852; `BRIEF_SABLON.md`, `/befogad` ellenőrző pont), a pozitív kapuk és a `/kiadas` 3/b. olvasói átolvasása. A nyílt rész: az új generátor olvasói kapuinak mérése a TEREMT-001-en.
