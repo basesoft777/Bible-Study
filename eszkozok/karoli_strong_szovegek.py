@@ -135,6 +135,8 @@ TAHOT/TAGNT szövegéhez illeszthető.
 Minden pár gépi javaslat (`allapot` = `javaslat`), a fent megadott mért pontossággal; a pontosság rétegenként és
 kapcsolattípusonként a `data/meres.tsv`-ben áll.
 
+{egyutt}
+
 ## Kapcsolódó adatkészletek
 
 - Modernizált Károli – Strong (ugyanezek a párok a modernizált szövegen): https://doi.org/{doi_modern}
@@ -187,6 +189,8 @@ and the position matches the STEPBible TAHOT/TAGNT text.
 
 Every pair is a machine proposal (`allapot` = `javaslat`), with the measured accuracy given above; the accuracy per
 stratum and link type is in `data/meres.tsv`.
+
+{egyutt}
 
 ## Related datasets
 

@@ -45,6 +45,49 @@ and the position matches the STEPBible TAHOT/TAGNT text.
 Every pair is a machine proposal (`allapot` = `javaslat`), with the measured accuracy given above; the accuracy per
 stratum and link type is in `data/meres.tsv`.
 
+## Using the two datasets together
+
+This dataset and Modernised Károli – Strong (https://doi.org/10.5281/zenodo.24141949) describe the same words of the 1908 text and can be joined
+row by row.
+
+- **Common key.** `osis` + `token`: the position of a word in the 1908 text. A row of `data/konyvek/NN_Konyv.tsv` in the modernised dataset extends the rows of `data/parok/NN_Konyv.tsv` here: the same `token`, `eredeti_token`, `strong` and `kapcsolat`, and next to them `alak_modern`, `valtozott`, `kieso` and `gazda_token`. A word without a pair has one row there, with empty `strong` and `eredeti_token`.
+- **Reading the modernised text.** Take the rows of `data/konyvek/NN_Konyv.tsv` with an empty `kieso` column in `token`
+  order, once per word, and read `alak_modern`. A row with a `kieso` value is a word that drops out of the modern text;
+  its `gazda_token` is the position of the host word in the same verse, and its Strong's number belongs to that host
+  word in the modern text.
+- **The source side.** The complete list of the source words, including the Hebrew and Greek words that the Károli
+  does not translate with a separate Hungarian word, is only in the `data/szavak/NN_Konyv.tsv` table of this dataset (`oldal` = `er`); join it on `osis` + `eredeti_token`.
+
+**Example: Genesis 1:1 (`Gen.1.1`), the first three words.** Word alignment (`data/parok/01_Gen.tsv`):
+
+| `token` | `alak_1908` | `eredeti_token` | `strong` | `kapcsolat` |
+|---|---|---|---|---|
+| 1 | Kezdetben | 1 | H9003 | morfema |
+| 1 | Kezdetben | 2 | H7225 | szo |
+| 2 | teremté | 3 | H1254 | szo |
+| 3 | Isten | 4 | H0430 | szo |
+
+The modernised dataset (`data/konyvek/01_Gen.tsv`), the same words:
+
+| `token` | `alak_1908` | `alak_modern` | `valtozott` | `eredeti_token` | `strong` | `kapcsolat` |
+|---|---|---|---|---|---|---|
+| 1 | Kezdetben | Kezdetben |  | 1 | H9003 | morfema |
+| 1 | Kezdetben | Kezdetben |  | 2 | H7225 | szo |
+| 2 | teremté | teremtette | igen | 3 | H1254 | szo |
+| 3 | Isten | Isten |  | 4 | H0430 | szo |
+
+The source words, the first five (`data/szavak/01_Gen.tsv`, `oldal` = `er`):
+
+| `token` | `allapot` | `partner_token` | `strong` |
+|---|---|---|---|
+| 1 | parositva | 1 | H9003 |
+| 2 | parositva | 1 | H7225 |
+| 3 | parositva | 2 | H1254 |
+| 4 | parositva | 3 | H0430 |
+| 5 | forditatlan |  | H0853 |
+
+Source word 5 (`H0853`) has `allapot` = `forditatlan`: it has no row in `data/parok/`, and appears only in `data/szavak/`.
+
 ## Related datasets
 
 - Modernised Károli – Strong (the same pairs on the modernised text): https://doi.org/10.5281/zenodo.24141949

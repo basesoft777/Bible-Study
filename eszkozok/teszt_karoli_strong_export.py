@@ -292,6 +292,26 @@ class Szerkezet(unittest.TestCase):
         for rel in ('paper/kezirat_hu.md', 'paper/kezirat_en.md'):
             self.assertTrue(E.ENGEDETT.match(rel), rel)
 
+    def test_egyutt_szakasz(self):
+        # a két adatkészlet együtt: a másik adatkészlet concept DOI-ja, és a példasorok az adat sorai
+        for rel, cim in (('README.md', '## Using the two datasets together'),
+                         (CS.OLVASSEL, '## A két adatkészlet együtt')):
+            sz = self.fajlok[rel]
+            self.assertIn(cim, sz)
+            self.assertIn('https://doi.org/10.5281/zenodo.24141949', sz.split(cim)[1].split('\n## ')[0])
+            self.assertIn('data/szavak/NN_Konyv.tsv', sz.split(cim)[1])
+        readme = self.fajlok['README.md']
+        par = [s.split('\t') for s in self.fajlok['data/parok/01_Gen.tsv'].split('\n') if s.startswith('Gen.1.1\t')]
+        er = [s.split('\t') for s in self.fajlok['data/szavak/01_Gen.tsv'].split('\n') if s.startswith('Gen.1.1\ter\t')]
+        pelda_par = [s for s in par if int(s[1]) <= 3]
+        pelda_er = [s for s in er if int(s[2]) <= 5]
+        self.assertEqual(len(pelda_par), 4)
+        for s in pelda_par:
+            self.assertIn('| %s | %s | %s | %s | %s |' % (s[1], s[2], s[3], s[4], s[5]), readme)
+        for s in pelda_er:
+            self.assertIn('| %s | %s | %s | %s |' % (s[2], s[4], s[5], s[6]), readme)
+        self.assertEqual(readme.count('| forditatlan |'), len([s for s in pelda_er if s[4] == 'forditatlan']))
+
     def test_concept_doi(self):
         for rel, sz in self.fajlok.items():
             for regi in ('24141884', '24141950', '24141612'):                                # a verzió-DOI nem áll a fájlokban
@@ -328,6 +348,8 @@ class Szerkezet(unittest.TestCase):
         for rel in ('README.md', CS.OLVASSEL, CS.MODSZER, CS.METHODS, CS.ISMERT_HIBAK, CS.KNOWN_ISSUES):
             for m in rx.finditer(self.fajlok[rel]):
                 ut = re.sub(r'NN_(?:Konyv|Book)\.tsv$', '', m.group(1))
+                if ut.startswith('data/konyvek/'):   # a modernizált adatkészlet táblája (a „két adatkészlet együtt” szakasz)
+                    continue
                 db += 1
                 self.assertTrue(any(f == ut or (ut.endswith('/') and f.startswith(ut)) for f in self.fajlok),
                                 '%s: %s' % (rel, m.group(1)))

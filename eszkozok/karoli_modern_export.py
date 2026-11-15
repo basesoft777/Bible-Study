@@ -42,6 +42,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nyilt_mag_export as NM  # noqa: E402  (OSIS-kulcs, közös azonosítók)
 import karoli_strong_export as KS  # noqa: E402  (a párosítás mérése: a rétegek a szóillesztési csomag szerint)
 import karoli_csomag as CS  # noqa: E402  (a csomag szerkezete)
+import karoli_egyutt as EG  # noqa: E402  (a „két adatkészlet együtt” szakasz)
 from nevelo import nevelos, nevelo_javit  # noqa: E402  (közös névelő-szabály, N-F175b)
 
 GYOKER = NM.GYOKER
@@ -358,6 +359,7 @@ def fmt(N, nyelv):
     F['uj_konyvek_en'] = 'Matthew, Mark, Luke, John, Acts'
     F['doi_ks'] = DOI_KAROLI_STRONG
     F['doi_mag'] = DOI_MAG
+    F['egyutt'] = EG.szakasz('modern', nyelv)
     F['lex_hu'] = LEXIKON_HU
     F['lex_en'] = LEXIKON_EN
     F['szerzo'] = SZERZO
@@ -405,6 +407,8 @@ ahány eredeti szóhoz párosítva van; a pár nélküli szó egy sorban. A mode
 
 A párosítás gépi javaslat, mért pontossággal (`docs/hu/MODSZER.md`, 5. pont).
 
+{egyutt}
+
 ## Kapcsolódó adatkészletek
 
 - Károli 1908 – Strong szóillesztés: https://doi.org/{doi_ks}
@@ -450,6 +454,8 @@ modern text, take the rows with an empty `kieso` column in `token` order, once p
 `data/versek.tsv`.
 
 The alignment is a machine proposal with measured accuracy (`docs/en/METHODS.md`, section 5).
+
+{egyutt}
 
 ## Related datasets
 
