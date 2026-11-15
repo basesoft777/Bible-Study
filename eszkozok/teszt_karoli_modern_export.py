@@ -146,29 +146,38 @@ class Csomag(unittest.TestCase):
         self.assertTrue(bukasok(f, 'OSSZEG'))
 
     def test_kozlemeny_kiadasban(self):
+        # a csomag pontosan a nyilvános repó: egyetlen export-ignore sem lehet
         f = self.uj()
-        f['.gitattributes'] = '# semmi\n'
+        f['.gitattributes'] += 'note/ export-ignore\n'
         self.assertTrue(bukasok(f, 'KOZLEMENY'))
         f = self.uj()
-        del f['note/note_en.md']
+        f['.gitattributes'] += 'docs/ export-ignore\n'
         self.assertTrue(bukasok(f, 'KOZLEMENY'))
+        self.assertNotIn('export-ignore', self.fajlok['.gitattributes'])
+
+    def test_note_a_csomagon_kivul(self):
+        self.assertEqual(G.note(self.N, lemez=False)[0].suly, G.OK)
+        self.assertFalse(any(rel.startswith('note/') for rel in self.fajlok))
+        n = E.note(self.N)
+        self.assertEqual(sorted(n), ['kozlemeny/note/karoli_modern/note_en.md', 'kozlemeny/note/karoli_modern/note_hu.md'])
+        self.assertEqual(sorted(n), sorted(CS.note_utak('karoli_modern')))
+        self.assertTrue(all(sz.startswith('<!-- GENERÁLT:') for _, sz in n.values()))
+        self.assertTrue(all(not torzs.startswith('<!--') for torzs, _ in n.values()))
 
     def test_a_fa_alakja(self):
         gyokerek = {rel.split('/')[0] for rel in self.fajlok if '/' in rel}
-        self.assertEqual(gyokerek, {'data', 'docs', 'note'})                     # paper/ csak kézzel kerül ide
+        self.assertEqual(gyokerek, {'data', 'docs'})                             # paper/ csak kézzel kerül ide
         self.assertEqual(sorted(rel for rel in self.fajlok if '/' not in rel), sorted(CS.GYOKER_FAJLOK))
         self.assertEqual(sorted(rel for rel in self.fajlok if rel.startswith('docs/')),
                          ['docs/en/ATTRIBUTION.md', 'docs/en/CODEBOOK.md', 'docs/en/KNOWN_ISSUES.md',
                           'docs/en/METHODS.md', 'docs/hu/ATTRIBUCIO.md', 'docs/hu/ISMERT_HIBAK.md',
                           'docs/hu/KODKONYV.md', 'docs/hu/MODSZER.md', 'docs/hu/OLVASSEL.md'])
-        self.assertEqual(sorted(rel for rel in self.fajlok if rel.startswith('note/')),
-                         ['note/note_en.md', 'note/note_hu.md'])
         self.assertTrue(all(E.ENGEDETT.match(rel) for rel in self.fajlok))
 
     def test_nem_engedett_utak_bukast_adnak(self):
         for rel in ('KODKONYV.md', 'MODSZER.md', 'versek.tsv', 'konyvek/01_Gen.tsv', 'kozlemeny/kozlemeny_hu.md',
                     'docs/de/OLVASSEL.md', 'docs/hu/EXTRA.md', 'data/extra.tsv', 'data/konyvek/x.tsv',
-                    'data/parok/01_Gen.tsv', 'paper/masik.md', 'note/note_de.md', 'eszkozok/x.py', 'extra/x.md'):
+                    'data/parok/01_Gen.tsv', 'paper/masik.md', 'note/note_de.md', 'note/note_hu.md', 'note/note_en.md', 'eszkozok/x.py', 'extra/x.md'):
             f = self.uj()
             f[rel] = 'x\n'
             self.assertTrue(bukasok(f, 'HARMADIK'), rel)

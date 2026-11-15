@@ -1,3 +1,4 @@
+<!-- GENERÁLT: eszkozok/karoli_modern_export.py (a próza és a számok: ugyanott) — kézzel nem szerkesztendő; a #174 csomagjának közleménye, belső anyag, nem része a nyilt_karoli_modern/ csomagnak. -->
 # A Károli-biblia mai helyesírással, szavanként az eredeti nyelvekhez kötve
 
 *Közlemény-tervezet · Modernizált Károli – Strong · Logosz-lexikon · DOI: 10.5281/zenodo.24141949*
