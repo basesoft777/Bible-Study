@@ -6,7 +6,6 @@ tipus: feladat
 fazis: folyamat
 sav: SYSTEMS
 modell: sonnet
-sav: SYSTEMS
 allapot: fut
 ad: egy szkript (`eszkozok/heti_attekinto.py`), amely a brief-fejlécekből és a GitHub PR-okból önálló, olvasói nyelvű HTML-oldalt készít a felhasználónak: fent „A te teendőid”, utána négy sáv (fejlécben `sav`: SYSTEMS / CONTENT / SERVER / USER; a hiányzó vagy ismeretlen érték „besorolatlan”), mindegyikben folyamatban / vár / kész a héten; a kimenet a repón kívülre kerül, a repóba csak a szkript és a tesztje
 kovetkezo: "Te: a draft PR áttekintése; a merge a felhasználóé; a `sav` mező bevezetése (másik session) után a próba-oldal újragenerálása"

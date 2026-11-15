@@ -6,7 +6,6 @@ tipus: feladat
 fazis: folyamat
 sav: SYSTEMS
 modell: sonnet
-sav: SYSTEMS
 allapot: fut
 ad: a main-re futó `feladatok.yml` a mergelt PR briefjét `lezarva`-ra állítja (ha csak a merge volt hátra), és a `lezar:` N-tételeit lezárja; a kapu jelent, ha egy mergelt brief nincs lezárva, vagy egy lezárt brief N-tétele nyitva maradt
 kovetkezo: "Te: a draft PR áttekintése és merge-e"
