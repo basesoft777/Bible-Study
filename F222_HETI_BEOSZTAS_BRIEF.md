@@ -6,7 +6,7 @@ tipus: feladat
 fazis: folyamat
 sav: SYSTEMS
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ag: claude/vibrant-borg-bbaa4d
 ad: három adattábla (`adat/heti_terv.tsv`, `adat/otlettar.tsv`, a kézi keret-értékekkel: `adat/heti_keret.tsv`) és három mérési tábla (`adat/keret_sulyok.tsv`, `adat/keret_munkamappa.tsv`, `adat/heti_keret_meres.tsv`) a SEMA-ban; egy oldal-generátor (`eszkozok/heti_beosztas.py`), amely a heti tervet sávonként, a brief-fejlécekből és a PR-okból számolt valós állapottal, tervezett és elhasznált kerettel, a felhasználó teendőivel és visszanézéssel mutatja; a sávonkénti keretfogyás mérése a session-átiratokból (`eszkozok/keret_meres.py`); az ötlettár első feltöltése a szétszórt felvetésekből
 kovetkezo: "lezárva: a PR #740 mergelve (2026-11-15, az orkesztrátor lezárása; a gépi lezárás kihagyta, mert a `kovetkezo` nem nevezte meg a merge-et)"
