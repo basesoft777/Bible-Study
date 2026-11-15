@@ -821,7 +821,10 @@ from test_heti_attekinto import (SavCsoportositasTest, TeendoTest, KeszAblakTest
                                  PrTest, OldalTest)
 # heti beosztás (F222): keret-hét, táblák, valós állapot, lezárt tétel csak a visszanézésben, teendők, ugyanígy
 from test_heti_beosztas import (KeretHetTest, TablaTest, AllapotTest, ModellTest,  # noqa: E402,F401
-                                CliTest as BeosztasCliTest)
+                                MeresIntegracioTest, CliTest as BeosztasCliTest)
+# keretfogyás-mérés (F222): súlyozás, deduplikálás, sávhoz rendelés, kalibrálás, ugyanígy
+from test_keret_meres import (SulyozasTest, BeolvasasTest, SavTest as KeretSavTest,  # noqa: E402,F401
+                              OsszesitesTest)
 
 
 if __name__ == '__main__':

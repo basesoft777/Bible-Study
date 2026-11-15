@@ -8,11 +8,11 @@ sav: SYSTEMS
 modell: sonnet
 allapot: fut
 ag: claude/vibrant-borg-bbaa4d
-ad: két adattábla (`adat/heti_terv.tsv`, `adat/otlettar.tsv`, a kézi keret-értékekkel: `adat/heti_keret.tsv`) a SEMA-ban, és egy oldal-generátor (`eszkozok/heti_beosztas.py`), amely a heti tervet sávonként, a brief-fejlécekből és a PR-okból számolt valós állapottal, tervezett és elhasznált kerettel, a felhasználó teendőivel és visszanézéssel mutatja; az ötlettár első feltöltése a szétszórt felvetésekből
+ad: három adattábla (`adat/heti_terv.tsv`, `adat/otlettar.tsv`, a kézi keret-értékekkel: `adat/heti_keret.tsv`) és három mérési tábla (`adat/keret_sulyok.tsv`, `adat/keret_munkamappa.tsv`, `adat/heti_keret_meres.tsv`) a SEMA-ban; egy oldal-generátor (`eszkozok/heti_beosztas.py`), amely a heti tervet sávonként, a brief-fejlécekből és a PR-okból számolt valós állapottal, tervezett és elhasznált kerettel, a felhasználó teendőivel és visszanézéssel mutatja; a sávonkénti keretfogyás mérése a session-átiratokból (`eszkozok/keret_meres.py`); az ötlettár első feltöltése a szétszórt felvetésekből
 kovetkezo: "Te: a draft PR áttekintése; a heti terv jóváhagyása (`jovahagyva`: javaslat → igen); a B rész (`felmeres` tipus) a #736 mergelése után"
 munka: folyamat
 olvas: [CLAUDE.md, adat/SEMA.md, eszkozok/heti_attekinto.py, eszkozok/feladatok.py]
-ir: [adat/heti_terv.tsv, adat/heti_keret.tsv, adat/otlettar.tsv, adat/SEMA.md, eszkozok/heti_beosztas.py, eszkozok/tesztek/test_heti_beosztas.py, eszkozok/teszt_feladatok.py, F222_HETI_BEOSZTAS_BRIEF.md]
+ir: [adat/heti_terv.tsv, adat/heti_keret.tsv, adat/otlettar.tsv, adat/keret_sulyok.tsv, adat/keret_munkamappa.tsv, adat/heti_keret_meres.tsv, adat/SEMA.md, eszkozok/heti_beosztas.py, eszkozok/keret_meres.py, eszkozok/tesztek/test_heti_beosztas.py, eszkozok/tesztek/test_keret_meres.py, eszkozok/teszt_feladatok.py, F222_HETI_BEOSZTAS_BRIEF.md]
 fugg: []
 nem_fugg: [123, 188, 201]
 ---
@@ -30,12 +30,13 @@ A heti beosztás **terv**, nem leltár: sávonként a hét sorai (sorrend, cél 
 **Benne van**
 - `adat/heti_terv.tsv`, `adat/heti_keret.tsv`, `adat/otlettar.tsv` és a SEMA új szakaszai (2.60–2.62);
 - `eszkozok/heti_beosztas.py` (új szkript; a heti áttekintőt, `heti_attekinto.py`, importálja és nem módosítja) és tesztje;
+- a sávonkénti keretfogyás mérése (`eszkozok/keret_meres.py`, a megbízás bővítése, a felhasználó jóváhagyásával, 2026-11-15): a session-átiratokból, súlyozva, sávhoz rendelve, kalibrálva; tölti az oldal „elhasznált” oszlopát (`--meres`); SEMA 2.63–2.65;
 - a mostani hét (`2026-11-14`) terve `jovahagyva=javaslat` jelzéssel; az ötlettár első feltöltése forrással, döntés nélkül;
 - B rész: a `felmeres` `tipus` — **csak ha a #736 a main-en van**; különben diffként a jelentésben.
 
 **Nincs benne**
 - a brief-fejlécek és a `NYITOTT_FELADATOK.md` módosítása (másik session zárja a briefeket);
-- az elhasznált keret gépi lekérése (az orkesztrátor tölti a `heti_keret.tsv`-t);
+- az alkalmazásban látott százalék gépi lekérése (a kalibrációs pontokat az orkesztrátor tölti a `heti_keret_meres.tsv`-be);
 - az ötlettár tételeiből döntés vagy brief.
 
 ## 3. Lépések

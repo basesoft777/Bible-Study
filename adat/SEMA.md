@@ -2407,12 +2407,13 @@ kell bele”). A sor a táblából nem törlődik: a lezárt hét sorai adják a
 
 ### 2.61 `heti_keret.tsv` — az elhasznált heti keret (F222, 2026-11-15)
 
-Kézzel megadott érték: az elhasznált keret gépi forrását az orkesztrátor látja, ő tölti. Sávonként és hetente egy sor.
+Kézzel megadott érték, sávonként és hetente egy sor. A gépi mérés (`eszkozok/keret_meres.py`, 2.63–2.65) tölti az oldal
+„elhasznált” oszlopát, ha a generátort a `--meres` kapcsolóval futtatják; a kézzel megadott érték erősebb a mértnél.
 
 | Oszlop | Tartalom |
 |---|---|
 | `het` | mint a 2.60-ban |
-| `sav` | mint a 2.60-ban (a keretsorok is) |
+| `sav` | mint a 2.60-ban (a keretsorok is), és a mért `ORKESZTRACIO` (a gyökér-orkesztrátor) meg `ISMERETLEN` (nem rendelhető sávhoz) |
 | `elhasznalt_szazalek` | egész 0–100: a heti keret hány %-át használta el a sáv |
 | `ts` | a mérés ideje, `ÉÉÉÉ-HH-NNTÓÓ:PP` (UTC) |
 | `forras` | honnan jött az érték (pl. `get_usage`, `becsles`) |
@@ -2435,6 +2436,52 @@ a feladat briefbe kerül, és ide csak a hivatkozás. A „felmérés” munkat�
 | `megjegyzes` | szabad szöveg: mi a következő lépés, mi a feltétele |
 
 **Kulcs:** `id`. Az állapot a felhasználó szavából jön: felvetést nem rögzítünk döntésként (a felhasználó, 2026-11-01).
+
+### 2.63 `keret_sulyok.tsv` — a keretfogyás súlytáblája (F222, 2026-11-15)
+
+A `eszkozok/keret_meres.py` ebből súlyozza a session-átiratok üzeneteit: modellenként és tokenfajtánként a nyilvános
+listaár. Csak az **arány** számít (az érték „ár-egyenérték”: USD a listaáron); a százalékot a 2.65 kalibrációja adja.
+A sort a modellnév **leghosszabb egyező előtagja** választja (`claude-opus-5-5` a `claude-opus-5` előtt). Ismeretlen
+modellre a család (opus / sonnet / haiku / fable) első sora szolgál, és a mérés jelzi.
+
+| Oszlop | Tartalom |
+|---|---|
+| `modell` | a modellnév előtagja, kötőjelekkel (`claude-sonnet-5-5`) |
+| `csalad` | `opus` · `sonnet` · `haiku` · `fable` (a Fable a saját keretéből is fogy: külön összegként látszik) |
+| `input`, `cache_5m`, `cache_1h`, `cache_olvasas`, `output` | az ár USD / millió tokenre: a bemenet, a gyorsítótár-írás (5 perces, 1 órás), a gyorsítótár-olvasás, a kimenet |
+| `forras` | az árlista címe és a lekérés dátuma (kötelező) |
+
+**Kulcs:** `modell`. Az árlista változásakor a sor frissül, a forrásban az új dátummal; a régi mérések újraszámolhatók.
+
+### 2.64 `keret_munkamappa.tsv` — a munkamappa → sáv kézi leképezés (F222, 2026-11-15)
+
+A mérés a session sávját így találja meg: **(1) ez a tábla** → (2) a session címének előtagja (`SYSTEMS · …`,
+`CONTENT · …`, `Felmérés: …`) → (3) az ág briefjének `sav` mezője → `ISMERETLEN`. Ide azok a munkamappák kerülnek,
+amelyek sávja gépileg nem érhető el (pl. a gyökér-orkesztrátor).
+
+| Oszlop | Tartalom |
+|---|---|
+| `munkamappa` | a session munkamappájának (cwd) egy jellemző részlete, kis-nagybetűtől függetlenül (pl. `orkesztrator-uj-cikkek`) |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` · `FELMERES` · `ORKESZTRACIO` |
+| `megjegyzes` | ki és mikor adta a leképezést |
+
+**Kulcs:** `munkamappa` (az első egyező sor érvényes).
+
+### 2.65 `heti_keret_meres.tsv` — a keret kalibrációs pontjai (F222, 2026-11-15)
+
+A szolgáltató alkalmazásában látott százalék egy időpontban. Az orkesztrátor tölti az alkalmazás adataiból. A mérés ebből
+számol szorzót: a súlyozott egység hány százalék (a legkisebb négyzetek módszere az origón át, a hét pontjaiból; külön
+szorzó a heti és a Fable keretre). Pont nélkül a mérés csak arányokat ad, százalékot nem.
+
+| Oszlop | Tartalom |
+|---|---|
+| `ts` | az időpont, `ÉÉÉÉ-HH-NNTÓÓ:PP` (UTC); a keret-hét a szombat 14:00 UTC-től tart |
+| `heti_szazalek` | a heti keret (minden modell) elhasznált része, 0–100 |
+| `fable_szazalek` | a Fable-keret elhasznált része, 0–100 |
+| `forras` | honnan jött a két érték (kötelező) |
+
+**Kulcs:** `ts`. **Pontosság:** az arány megbízható, a százalék becslés (a keretet a szolgáltató nem a listaár szerint számolja;
+a pontok kevesek). A Fable szorzója 0%-os pontból nem számolható.
 
 ## 3. Integritási szabályok
 

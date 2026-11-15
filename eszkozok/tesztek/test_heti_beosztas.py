@@ -334,6 +334,58 @@ class ModellTest(Alap):
         self.assertIn('Nincs terv erre a hétre', oldal)
 
 
+class MeresIntegracioTest(Alap):
+    """A mért keretfogyás (keret_meres) beillesztése: a kézi érték erősebb, a mért sávok terv nélkül is látszanak."""
+
+    @staticmethod
+    def meres(szazalek=None):
+        def sav(egyseg, uzenet=1, sz=None, top=None):
+            return {'egyseg': egyseg, 'fable_egyseg': 0.0, 'uzenet': uzenet, 'arany': egyseg / 100.0, 'szazalek': sz,
+                    'fable_szazalek': None, 'top': top or [('SYSTEMS · A', egyseg, 'a session címe')], 'session': {}}
+        return {'savok': {'SYSTEMS': sav(60, sz=szazalek and 6.0), 'CONTENT': sav(30, sz=szazalek and 3.0),
+                          'ORKESZTRACIO': sav(10, sz=szazalek and 1.0), 'ISMERETLEN': sav(0, uzenet=0)},
+                'osszes': 100.0, 'osszes_szazalek': szazalek, 'fable_osszes': 0.0, 'fable_osszes_szazalek': None,
+                'kalibralas': {'heti': None if szazalek is None else 0.1, 'fable': None, 'pontok': 0 if szazalek is None else 1},
+                'uzenet_db': 3, 'session_db': 2, 'ismeretlen_modell': {}}
+
+    def test_merttel_kalibralas_nelkul_csak_arany(self):
+        m = B.epit([terv_sor(sav='SYSTEMS', keret=60), terv_sor(sav='CONTENT', keret=40)], [], [], [], {}, [], DT, meres=self.meres())
+        self.assertIsNone(m['keret']['SYSTEMS']['elhasznalt'])
+        self.assertAlmostEqual(m['keret']['SYSTEMS']['arany'], 0.6)
+        oldal = self.oldal(m)
+        self.assertIn('nincs kalibrálva', oldal)
+        self.assertIn('Mért arány', oldal)
+        self.assertIn('Legnagyobb fogyasztók a sávon belül', oldal)
+
+    def test_kalibralt_szazalek_kitolti_az_elhasznaltat(self):
+        m = B.epit([terv_sor(sav='SYSTEMS', keret=60), terv_sor(sav='CONTENT', keret=40)], [], [], [], {}, [], DT,
+                   meres=self.meres(szazalek=10.0))
+        self.assertEqual(m['keret']['SYSTEMS']['elhasznalt'], 6.0)
+        self.assertEqual(m['keret']['SYSTEMS']['forras'], 'mért')
+        self.assertIn('(mért)', self.oldal(m))
+
+    def test_kezi_ertek_erosebb_a_mertnel(self):
+        keret = [{'het': HET.isoformat(), 'sav': 'SYSTEMS', 'elhasznalt_szazalek': '9', 'ts': '2026-11-15T10:00',
+                  'forras': 'kézi', '_sor': 2}]
+        m = B.epit([terv_sor(sav='SYSTEMS', keret=100)], keret, [], [], {}, [], DT, meres=self.meres(szazalek=10.0))
+        self.assertEqual(m['keret']['SYSTEMS']['elhasznalt'], 9)
+        self.assertEqual(m['keret']['SYSTEMS']['forras'], 'kézi')
+
+    def test_mert_de_nem_tervezett_sav_terv_nelkul_latszik(self):
+        m = B.epit([terv_sor(sav='SYSTEMS', keret=100)], [], [], [], {}, [], DT, meres=self.meres(szazalek=10.0))
+        self.assertIn('ORKESZTRACIO', m['keret'])
+        self.assertIsNone(m['keret']['ORKESZTRACIO']['terv'])
+        self.assertNotIn('ISMERETLEN', m['keret'])      # üzenet nélküli, nem tervezett sáv nem kerül a táblába
+        oldal = self.oldal(m)
+        self.assertIn('Orkesztráció', oldal)
+        self.assertIn('nincs tervezve', oldal)
+
+    def test_meres_nelkul_a_regi_viselkedes(self):
+        m = self.modell([terv_sor(sav='SYSTEMS', keret=100)])
+        self.assertNotIn('arany', m['keret']['SYSTEMS'])
+        self.assertIn('nincs bekapcsolva', self.oldal(m))
+
+
 class CliTest(Alap):
     def test_repon_beluli_kimenet_elutasitva(self):
         self.assertTrue(B._repon_belul(os.path.join(F.REPO, 'x.html'), F.REPO))

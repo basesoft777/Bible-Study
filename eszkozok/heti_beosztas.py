@@ -20,7 +20,8 @@ elutasítja. Ha a táblák hibásak, a szkript hibát ír és nem készít oldal
 Használat:
     python eszkozok/heti_beosztas.py --kimenet <út.html>
         [--gyoker <repó>] [--ma ÉÉÉÉ-HH-NN] [--het ÉÉÉÉ-HH-NN] [--pr-json <fájl>]
-    python eszkozok/heti_beosztas.py --ellenoriz        (csak a három tábla ellenőrzése)
+    python eszkozok/heti_beosztas.py --ellenoriz        (csak a táblák ellenőrzése)
+    python eszkozok/heti_beosztas.py --kimenet <út.html> --meres   (az elhasznált keret mérése az átiratokból: keret_meres.py)
 
 `--ma`: a nap, amelynek végén az oldal készül (alapérték: most, UTC); a keret-hét szombat 14:00 UTC-től tart.
 `--het`: a megjelenített hét kezdete (szombat); alapértelmezés: a `--ma` szerinti hét.
@@ -65,7 +66,11 @@ SAV_CIMKE = {
     'BUSINESS': 'Üzleti oldal',
     'FELMERES': 'Felmérés / ötlet',
     'TARTALEK': 'Tartalék',
+    'ORKESZTRACIO': 'Orkesztráció',
+    'ISMERETLEN': 'Nem rendelhető sávhoz',
 }
+# a keret-táblában a tervezett sávok mellett a mért, de nem tervezett sorok is állhatnak
+KERET_SAVOK = SAV_SORREND + ('ORKESZTRACIO', 'ISMERETLEN')
 OTLET_SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS')
 KEZI_ALLAPOTOK = ('kesz', 'csuszik', 'blokkolt', 'elhagyva')
 KEZI_CIMKE = {'kesz': 'kész', 'csuszik': 'csúszik', 'blokkolt': 'blokkolt', 'elhagyva': 'elhagyva'}
@@ -199,7 +204,7 @@ def keret_ellenoriz(sorok):
         het = datum_olvas(s['het']) if HET_MINTA.match(s['het']) else None
         if het is None or het.weekday() != SZOMBAT:
             hibak.append('%s: a `het` szombati ÉÉÉÉ-HH-NN dátum kell (kapott: %r)' % (h, s['het']))
-        if s['sav'] not in SAV_SORREND:
+        if s['sav'] not in KERET_SAVOK:
             hibak.append('%s: ismeretlen `sav` (kapott: %r)' % (h, s['sav']))
         if (s['het'], s['sav']) in kulcsok:
             hibak.append('%s: ismétlődő kulcs (het, sav)' % h)
@@ -359,6 +364,30 @@ def keret_osszesites(terv_het, keret_het):
     return kimenet
 
 
+def keret_meressel(keret, meres):
+    """A mért keretfogyás (`keret_meres.osszesit` eredménye) beillesztése a keret-összesítésbe, helyben.
+
+    A kézzel megadott érték (`heti_keret.tsv`) erősebb a mértnél. Minden sávhoz bekerül az `arany` (a mért összeg
+    hányada), a `mert` (a kalibrált százalék, vagy None) és a `top` (a legnagyobb fogyasztók). A mért, de nem tervezett
+    sávok (ORKESZTRACIO, ISMERETLEN, a terv nélküli sáv) terv nélkül, `terv: None` értékkel állnak a táblában."""
+    if not meres:
+        return keret
+    for sav, a in keret.items():
+        a.update({'arany': None, 'mert': None, 'top': [], 'egyseg': 0.0, 'forras': 'kézi' if a['elhasznalt'] is not None else None})
+    for sav in KERET_SAVOK:
+        m = meres['savok'].get(sav)
+        if m is None or (not m['uzenet'] and sav not in keret):
+            continue
+        a = keret.setdefault(sav, {'terv': None, 'elhasznalt': None, 'forras': None})
+        a['arany'], a['mert'], a['top'], a['egyseg'] = m['arany'], m['szazalek'], m['top'], m['egyseg']
+        if a['elhasznalt'] is None and m['szazalek'] is not None:
+            a['elhasznalt'], a['forras'] = m['szazalek'], 'mért'
+    sorrend = OrderedDict((s, keret[s]) for s in KERET_SAVOK if s in keret)
+    keret.clear()
+    keret.update(sorrend)
+    return keret
+
+
 def teendok_keszit(nyitott, osszes_het, kontextus):
     """A felhasználó teendői: a terv jóváhagyása, a `Te:` kezdetű megjegyzések, a nyitott brief-ek `Te:` / ⛔ lépései."""
     teendok = []
@@ -383,7 +412,7 @@ def teendok_keszit(nyitott, osszes_het, kontextus):
     return teendok
 
 
-def epit(terv, keret, otlet, briefek, main_all, prok, dt, het_arg=None):
+def epit(terv, keret, otlet, briefek, main_all, prok, dt, het_arg=None, meres=None):
     """A teljes modell az oldalhoz (a tesztelhető mag): nincs benne fájlolvasás, git vagy gh."""
     het = het_arg or het_kezdete(dt)
     elozo = het - timedelta(days=7)
@@ -401,7 +430,7 @@ def epit(terv, keret, otlet, briefek, main_all, prok, dt, het_arg=None):
     keret_elozo = [k for k in keret if k['het'] == elozo.isoformat()]
     return {
         'het': het, 'elozo': elozo, 'terv_het': terv_het, 'nyitott': nyitott, 'kesz': kesz,
-        'visszanezes': visszanezes, 'keret': keret_osszesites(terv_het, keret_het),
+        'visszanezes': visszanezes, 'keret': keret_meressel(keret_osszesites(terv_het, keret_het), meres), 'meres': meres,
         'keret_elozo': keret_osszesites(terv_elozo, keret_elozo),
         'teendok': teendok_keszit(nyitott, terv_het, kontextus),
         'otlet': otlet, 'felmerendo': [o for o in otlet if otlet_allapot(o['allapot'])[0] == 'felmerendo'],
@@ -448,7 +477,13 @@ def e(szoveg):
 
 
 def _szazalek(db):
+    if isinstance(db, float):
+        return ('%.1f%%' % db).replace('.', ',')
     return '%d%%' % db
+
+
+def _arany(x):
+    return ('%.0f%%' % (x * 100)) if x >= 0.095 else ('%.1f%%' % (x * 100)).replace('.', ',')
 
 
 def _tetel_cimke(s):
@@ -492,8 +527,22 @@ def _sor_html(s, a, tobb_jovahagyas):
 def _keret_cimke(adat):
     if adat is None:
         return ''
-    el = 'nincs megadva' if adat['elhasznalt'] is None else _szazalek(adat['elhasznalt'])
+    if adat['elhasznalt'] is not None:
+        el = _szazalek(adat['elhasznalt']) + (' (mért)' if adat.get('forras') == 'mért' else '')
+    elif adat.get('arany') is not None:
+        el = 'nincs kalibrálva (mért arány: %s)' % _arany(adat['arany'])
+    else:
+        el = 'nincs megadva'
     return 'terv %s · elhasznált %s' % (_szazalek(adat['terv']), el)
+
+
+def _top_html(adat):
+    if not adat or not adat.get('top'):
+        return ''
+    reszek = []
+    for nev, eg, _ in adat['top']:
+        reszek.append('%s (%s)' % (e(nev), _arany(eg / adat['egyseg']) if adat.get('egyseg') else '–'))
+    return '<p class="megj">Legnagyobb fogyasztók a sávon belül: %s</p>' % '; '.join(reszek)
 
 
 def _otlet_html(o):
@@ -507,28 +556,59 @@ def _otlet_html(o):
     return '<li class="sor"><span class="sorrend"></span><div>%s</div></li>' % ''.join(belso)
 
 
-def _keret_tabla(keret, cim):
+def _keret_tabla(keret, cim, meres=None):
     if not keret:
         return ''
-    reszek = ['<table class="keret"><thead><tr><th>%s</th><th>Tervezett</th><th>Elhasznált</th><th></th></tr></thead><tbody>' % e(cim)]
+    van_meres = bool(meres)
+    fej = '<th>%s</th><th>Tervezett</th><th>Elhasznált</th>%s<th></th>' % (e(cim), '<th>Mért arány</th>' if van_meres else '')
+    reszek = ['<table class="keret"><thead><tr>%s</tr></thead><tbody>' % fej]
     osszes_terv, osszes_el, hianyzik = 0, 0, False
     for sav, a in keret.items():
-        osszes_terv += a['terv']
+        terv = a['terv']
+        osszes_terv += terv or 0
         if a['elhasznalt'] is None:
             hianyzik = True
-            el_szoveg, sav_html = 'nincs megadva', ''
+            el_szoveg, sav_html = ('nincs kalibrálva' if a.get('arany') is not None else 'nincs megadva'), ''
         else:
             osszes_el += a['elhasznalt']
-            el_szoveg = _szazalek(a['elhasznalt'])
-            szel = min(100, a['elhasznalt'] * 100 // a['terv']) if a['terv'] else (100 if a['elhasznalt'] else 0)
+            el_szoveg = _szazalek(a['elhasznalt']) + (' (mért)' if a.get('forras') == 'mért' else '')
+            szel = min(100, int(a['elhasznalt'] * 100 // terv)) if terv else (100 if a['elhasznalt'] else 0)
             sav_html = '<span class="sav-sav"><i class="%s" style="width:%d%%"></i></span>' % (
-                'tobb' if a['terv'] and a['elhasznalt'] > a['terv'] else '', szel)
-        reszek.append('<tr><td>%s</td><td class="szam">%s</td><td class="szam">%s</td><td>%s</td></tr>'
-                      % (e(SAV_CIMKE[sav]), _szazalek(a['terv']), e(el_szoveg), sav_html))
-    osszeg_el = 'nincs teljes adat (összesen eddig megadva: %s)' % _szazalek(osszes_el) if hianyzik else _szazalek(osszes_el)
-    reszek.append('<tr><th>Összesen</th><th class="szam">%s</th><th class="szam">%s</th><th></th></tr></tbody></table>'
-                  % (_szazalek(osszes_terv), e(osszeg_el)))
+                'tobb' if (terv is None or a['elhasznalt'] > terv) else '', szel)
+        terv_szoveg = _szazalek(terv) if terv is not None else 'nincs tervezve'
+        arany = '<td class="szam">%s</td>' % (_arany(a['arany']) if a.get('arany') is not None else '') if van_meres else ''
+        reszek.append('<tr><td>%s</td><td class="szam">%s</td><td class="szam">%s</td>%s<td>%s</td></tr>'
+                      % (e(SAV_CIMKE[sav]), terv_szoveg, e(el_szoveg), arany, sav_html))
+    osszeg_el = 'nincs teljes adat (összesen eddig: %s)' % _szazalek(osszes_el) if hianyzik else _szazalek(osszes_el)
+    reszek.append('<tr><th>Összesen</th><th class="szam">%s</th><th class="szam">%s</th>%s<th></th></tr>'
+                  % (_szazalek(osszes_terv), e(osszeg_el), '<th></th>' if van_meres else ''))
+    if van_meres:
+        fz = meres['fable_osszes_szazalek']
+        reszek.append('<tr><td>Ebből a Fable (külön keret)</td><td class="szam"></td><td class="szam">%s</td><td class="szam">%s</td><td></td></tr>'
+                      % (_szazalek(fz) if fz is not None else 'nincs kalibrálva',
+                         _arany(meres['fable_osszes'] / meres['osszes']) if meres['osszes'] else ''))
+    reszek.append('</tbody></table>')
     return ''.join(reszek)
+
+
+def modszer_html(m):
+    """A mérés módja és pontossága (lábjegyzet): a százalék becslés, az arány megbízható."""
+    me = m.get('meres')
+    if not me:
+        return ('<p class="megj">Az elhasznált keret kézzel megadott érték (adat/heti_keret.tsv); a gépi mérés nincs bekapcsolva '
+                '(a generátor --meres kapcsolója).</p>')
+    kal = me['kalibralas']
+    szorzo = ('%d kalibrációs pont a hétről' % kal['pontok']) if kal['heti'] is not None else 'nincs kalibrációs pont a hétről, ezért a százalék nem számolható'
+    szoveg = ('A keretfogyás mérése: a session-átiratok asszisztens-üzenetei a hét kezdete óta (%s), azonos üzenet egyszer; a súly '
+              'modellenként és tokenfajtánként a nyilvános listaár aránya (adat/keret_sulyok.tsv); a sávot a munkamappa-tábla, a '
+              'session címének előtagja, majd az ág briefje adja, ami nem rendelhető, a „%s” sorba kerül. %s. '
+              'Az arány megbízható (ugyanaz a súlyozás minden sávra); a százalék becslés: a keretet a szolgáltató nem a listaár '
+              'szerint számolja, és a kalibráció kevés pontra épül. A Fable a közös heti keretből is fogy; az összeg minden modellt '
+              'tartalmaz, a Fable külön sorban látszik. Mért üzenet: %d, session: %d.'
+              % (het_szoveg(m['het']), SAV_CIMKE['ISMERETLEN'], szorzo, me['uzenet_db'], me['session_db']))
+    if me['ismeretlen_modell']:
+        szoveg += ' A listaárban nem szereplő modell (a család ára szerint): %s.' % ', '.join(sorted(k for k in me['ismeretlen_modell'] if k))
+    return '<p class="megj">%s</p>' % e(szoveg)
 
 
 def jelzes_html(terv_het):
@@ -583,6 +663,7 @@ def html_keszit(m, forras_szoveg, ts):
             (', %d kész (lent, a visszanézésben)' % kesz_sav[sav]) if kesz_sav[sav] else '')
         torzs = ''.join(_sor_html(s, a, tobb_jovahagyas) for s, a in sorok)
         szoveg = '<ul class="sorok-lista">%s</ul>' % torzs if torzs else '<p class="ures">Nincs nyitott sor.</p>'
+        szoveg += _top_html(m['keret'].get(sav))
         if sav == 'FELMERES':
             szoveg += '<h3 class="al">Az ötlettárból felmérendő <span class="db">%d</span></h3>' % len(m['felmerendo'])
             if m['felmerendo']:
@@ -591,7 +672,8 @@ def html_keszit(m, forras_szoveg, ts):
                 szoveg += '<p class="ures">Nincs felmérendő tétel az ötlettárban.</p>'
         reszek.append('<section id="sav-%s">%s%s</section>' % (sav.lower(), fej, szoveg))
 
-    reszek.append('<section id="keret"><h2>Keret</h2>%s</section>' % (_keret_tabla(m['keret'], 'Sáv') or '<p class="ures">Nincs tervezett keret.</p>'))
+    reszek.append('<section id="keret"><h2>Keret</h2>%s%s</section>' % (
+        _keret_tabla(m['keret'], 'Sáv', m.get('meres')) or '<p class="ures">Nincs tervezett keret.</p>', modszer_html(m)))
 
     reszek.append('<section id="visszanezes"><h2>Visszanézés</h2>')
     reszek.append('<h3 class="al">Ezen a héten már kész <span class="db">%d</span></h3>' % len(m['kesz']))
@@ -642,7 +724,7 @@ def html_keszit(m, forras_szoveg, ts):
 # összeállítás és CLI
 # ---------------------------------------------------------------------------
 
-def osszeallit(gyoker, dt, het_arg=None, pr_json=None, ts=None):
+def osszeallit(gyoker, dt, het_arg=None, pr_json=None, ts=None, meres=False, atirat_gyokerek=None):
     """(html, modell, hibak, pr_hiba): a teljes folyamat; `hibak` nem üres, ha a táblák hibásak (akkor nincs oldal)."""
     ts = ts or datetime.now()
     terv, keret, otlet, hibak = tablak_olvas(gyoker)
@@ -657,7 +739,13 @@ def osszeallit(gyoker, dt, het_arg=None, pr_json=None, ts=None):
     else:
         prok, pr_hiba = H.pr_lista_gh(gyoker, dt.date(), 14)
         pr_forras = 'gh pr list --state open | --state merged (az elmúlt 14 nap)'
-    modell = epit(terv, keret, otlet, briefek, main_all, prok, dt, het_arg)
+    meres_eredmeny = None
+    if meres:
+        import keret_meres
+        meres_eredmeny, meres_hibak = keret_meres.meres(gyoker, het_arg or het_kezdete(dt), atirat_gyokerek)
+        if meres_hibak:
+            return None, None, meres_hibak, None
+    modell = epit(terv, keret, otlet, briefek, main_all, prok, dt, het_arg, meres_eredmeny)
     olvashato = ('a három kézi tábla (heti_terv.tsv, heti_keret.tsv, otlettar.tsv), a feladatleírások fejlécei%s és a GitHub-ról '
                  'lekért PR-ok' % (' (az egyesített ággal egyeztetve)' if main_ref else ''))
     if pr_hiba:
@@ -684,9 +772,13 @@ def main(argv=None):
     ap.add_argument('--het', help='a megjelenített hét kezdete (szombat, ÉÉÉÉ-HH-NN); alapértelmezés: a --ma szerinti hét')
     ap.add_argument('--pr-json', help='a gh helyett: PR-lista JSON-fájlból')
     ap.add_argument('--ellenoriz', action='store_true', help='csak a három tábla ellenőrzése')
+    ap.add_argument('--meres', action='store_true', help='az elhasznált keret mérése a session-átiratokból (keret_meres.py)')
+    ap.add_argument('--atirat-gyokerek', nargs='*', help='az átiratok gyökérmappái (alap: ~/.claude/projects)')
     a = ap.parse_args(argv)
     if a.ellenoriz:
         terv, keret, otlet, hibak = tablak_olvas(a.gyoker)
+        import keret_meres
+        hibak = hibak + keret_meres.tablak_olvas(a.gyoker)[3]
         for h in hibak:
             print('HIBA: %s' % h, file=sys.stderr)
         print('heti_terv: %d sor, heti_keret: %d sor, otlettar: %d sor; hiba: %d' % (len(terv), len(keret), len(otlet), len(hibak)))
@@ -710,7 +802,8 @@ def main(argv=None):
         if het_arg is None or het_arg.weekday() != SZOMBAT:
             print('HIBA: a --het szombati ÉÉÉÉ-HH-NN dátum kell', file=sys.stderr)
             return 2
-    oldal, m, hibak, pr_hiba = osszeallit(a.gyoker, dt, het_arg=het_arg, pr_json=a.pr_json)
+    oldal, m, hibak, pr_hiba = osszeallit(a.gyoker, dt, het_arg=het_arg, pr_json=a.pr_json, meres=a.meres,
+                                          atirat_gyokerek=a.atirat_gyokerek)
     if hibak:
         for h in hibak:
             print('HIBA: %s' % h, file=sys.stderr)

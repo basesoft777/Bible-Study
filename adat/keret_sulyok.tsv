@@ -1,0 +1,16 @@
+modell	csalad	input	cache_5m	cache_1h	cache_olvasas	output	forras
+claude-fable-5-2	fable	8	10	16	0.20	40	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-fable-5-1	fable	10	12.50	20	0.25	50	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-fable-5	fable	10	12.50	20	1	50	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-opus-5-5	opus	4	5	8	0.20	20	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-opus-5	opus	5	6.25	10	0.50	25	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-opus-4-8	opus	5	6.25	10	0.50	25	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-opus-4-7	opus	5	6.25	10	0.50	25	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-opus-4-6	opus	5	6.25	10	0.50	25	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-opus-4-5	opus	5	6.25	10	0.50	25	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-sonnet-5-5	sonnet	2	2.50	4	0.10	10	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-sonnet-5	sonnet	2	2.50	4	0.20	10	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-sonnet-4-6	sonnet	3	3.75	6	0.30	15	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-sonnet-4-5	sonnet	3	3.75	6	0.30	15	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
+claude-haiku-5-5	haiku	0.10	0.125	0.20	0.01	0.50	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token; a Haiku 5.5 a 100 000 tokenig terjedő prompt ára
+claude-haiku-4-5	haiku	1	1.25	2	0.10	5	az Anthropic nyilvános árlistája (https://platform.claude.com/docs/en/about-claude/pricing), lekérve 2026-11-15; USD / millió token
