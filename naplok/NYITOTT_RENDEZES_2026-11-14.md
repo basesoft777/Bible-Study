@@ -6,10 +6,10 @@
 
 | Osztály | Darab |
 |---|---|
-| (a) lezárt — a fájlban lezárva jelölve | 13 |
+| (a) lezárt — a fájlban lezárva jelölve | 12 |
 | (b) beolvadt/túlhaladt — a fájlban jelölve | 1 |
-| (c) nyitott, azonosítóval | 315 |
-|   ebből ellenőrizendő (későbbi lezárás-szavú commit) | 22 |
+| (c) nyitott, azonosítóval | 316 |
+|   ebből ellenőrizendő (későbbi lezárás-szavú commit) | 23 |
 |   ebből F218 által lefedett | 2 |
 | (c) nyitott, azonosító nélküli (régi, számozatlan tételek) | 38 |
 
@@ -17,11 +17,10 @@ A korábbi, 265-ös szám a leltár-session gépi számlálása volt; ez a napl�
 
 Az F218 (lapgenerátor-újraírás) brief szerint még nincs megvalósítva (PR #729 nyitott, 218a: építés a regresszióig), ezért a generátort érintő N-tételeket **nem** lehetett túlhaladottnak zárni. A `HIBA_MECHANIZMUSOK.md` csak az N-F215a tételt nevesíti.
 
-## (a) Lezárt (13)
+## (a) Lezárt (12)
 
 - N-F156e (`65. sor`): felhasználói döntés 2026-11-14 („Igen, zárjuk le”), DT-F156t: a Nave a 4.12 Szótári háttér tematikus indexeként megvalósult; jelöltforrás nem épül
 - N-F131y (`79. sor`): a tétel saját jelölése: alkalmazva 2026.11.01 (DT445); a main 9f7ac0e7 (N-F131y.2)
-- N59 (`93. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
 - N60 (`95. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
 - N-F127a (`99. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
 - N-F94b (`140. sor`): a main 5c6fe257 (F96.D): „DT-F96c, N-F94b lezárva”
@@ -105,7 +104,7 @@ Az F218 (lapgenerátor-újraírás) brief szerint még nincs megvalósítva (PR 
 - N-F216a (`972. sor`)
 - N-F152g (`1014. sor`)
 
-### CONTENT (216)
+### CONTENT (217)
 
 - N-F147b (`52. sor`)
 - N-F149b (`55. sor`)
@@ -122,6 +121,7 @@ Az F218 (lapgenerátor-újraírás) brief szerint még nincs megvalósítva (PR 
 - N-F55a (`85. sor`)
 - N-F55b (`87. sor`)
 - N-F55c (`89. sor`)
+- N59 (`93. sor`) — **lezárható, de nem zárva**: a main 7f160363 lezártnak mondja, az ISTENTISZT-001_TUDOMANYOS.md viszont még nyitott tételként hivatkozik rá (E1 21. szabály (iv)); a lap újragenerálása után zárható
 - N61 (`97. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
 - N-F148a (`100. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
 - N-F148b (`101. sor`)
