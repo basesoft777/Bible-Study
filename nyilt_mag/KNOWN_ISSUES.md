@@ -44,6 +44,6 @@ The separate layer (`cc_by_sa_reteg/`) contains the UBS SDBH/SDGNT semantic doma
 
 ## 3. Machine alignment of the Károli word
 
-The value `szó-szintű-gépi` of the `azonositas_modja` column of `elofordulasok.tsv` is model output: the alignment of the Károli word with the Strong's number was done by machine, and only a high-confidence pair may justify a row. The mode states how the word was identified, not that a human verified the alignment.
+The value `szó-szintű-gépi` of the `azonositas_modja` column of `elofordulasok.tsv` is model output: the alignment of the Károli word with the Strong's number was done by machine. The mode states how the word was identified, not that a human verified the alignment.
 
 Corrections go into the next release; a release can be cited by the identifier in `RELEASE.txt`.

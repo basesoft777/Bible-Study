@@ -7,9 +7,9 @@ fazis: 1
 modell: sonnet
 sav: CONTENT
 munka: adat
-allapot: fut
+allapot: lezarva
 ad: a #150 gépi előszűrőjének (`eszkozok/jelolt_eloszures.py`) lexikai hordozóra kiterjesztett szabálya (a jelölt versei ±1 vers együtt adják az ablakot; a kombináció tagja rokon alakkal is kielégül, a rokonság a `Strong_szotar.tsv` származtatásából; csak a jelölt nyelvű kombinációk számítanak), új M0 mérés motívumonként, a 7 ismert lexikai hamis kizárás negatív tesztként; a bevezetés motívumonként a mérés után a felhasználó/orkesztrátor döntése (a `LEXIKAI_BEKAPCSOLT` alapból üres)
-kovetkezo: "⛔ a MENNY-001 NT-helyeinek kezelése és a bevezetés (melyik lexikai motívumon kapcsol be a szabály) a mért számokkal; a modelles M3 lépés (DT-F150b) NEM része"
+kovetkezo: "lezárva: a #580 mergelve (2026-11-02); a maradék: N-F160a, N-F160b, N-F150a (nyitva); a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 olvas: [adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivumok.tsv, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, eszkozok/jelolt_eloszures.py, eszkozok/szerep_karoli.py, naplok/JELOLT_ELOSZURES_naplo.md, F150_JELOLT_ELOSZURES_BRIEF.md]
 ir: [eszkozok/jelolt_eloszures.py, eszkozok/teszt_jelolt_eloszures.py, naplok/JELOLT_ELOSZURES_LEXIKAI_meres.py, naplok/JELOLT_ELOSZURES_LEXIKAI_naplo.md, DONTESEK.md]
 fugg: [150]

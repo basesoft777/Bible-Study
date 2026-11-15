@@ -1,4 +1,4 @@
-# A lapgenerátor (eszkozok/lapgen) bemeneti jegyzéke: egy sor egy bemenet. Séma: adat/SEMA.md 2.60
+# A lapgenerátor (eszkozok/lapgen) bemeneti jegyzéke: egy sor egy bemenet. Séma: adat/SEMA.md 2.66
 id	utvonal	leiras	kotelezo	javitas	frissesseg	allapot	licenc_kulcs	olvasoi_nev_kulcs	forras
 B01	adat/licencek.tsv	a licencleltár: minden licencjelölés egyetlen forrása	igen	-	-	aktiv	projekt_adat	-	scope=manual | forras=F218a brief 4. pont; naplok/F218_GENERATOR_TERKEP_SPEC_2026-11-13.md 2. pont | ts=2026-11-13
 B03	adat/elofordulasok.tsv	a motívum előfordulás-sorai: a 2. szakasz és minden számítás alapja	igen	-	-	aktiv	projekt_adat	B03	scope=manual | forras=F218a brief 4. pont; naplok/F218_GENERATOR_TERKEP_SPEC_2026-11-13.md 2. pont | ts=2026-11-13

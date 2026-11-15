@@ -282,7 +282,7 @@ Hogyan azonosítottuk a Károli-szót a Strong-számmal.
 *How the Károli word was matched to the Strong number.*
 
 - `azonositas_modja` = `kikövetkeztetett` (en: `inferred`): a párosítás következtetésből származik, nem közvetlen megfeleltetésből / the match is inferred, not a direct correspondence
-- `azonositas_modja` = `szó-szintű-gépi` (en: `word-level, machine`): gépi (modell-kimenet) szópárosítás, csak magas bizonyosságú pár igazolhat sort; nem emberi ellenőrzés / machine (model output) word alignment; only high-confidence pairs can confirm a row; not human verification
+- `azonositas_modja` = `szó-szintű-gépi` (en: `word-level, machine`): gépi (modell-kimenet) szópárosítás; nem emberi ellenőrzés / machine (model output) word alignment; not human verification
 - `azonositas_modja` = `tartalom-alapú` (en: `content-based`): a szerkesztő a Károli-szöveget olvasva rendelte a szót a Strong-számhoz / the editor assigned the word to the Strong number by reading the Károli text
 
 ### `azonositas_modja_en`

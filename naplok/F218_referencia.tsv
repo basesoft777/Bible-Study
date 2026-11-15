@@ -1,6 +1,6 @@
 # F218.1: a régi lapgenerátor (general.py --cel lexikon --id HAMART-001) referencia-kimenete és ténylegesen olvasott bemenetei, a regressziós kapu alapjához. A sha256 és a meret sorvég-normalizált tartalomból számolt (minden CRLF → LF a bájtokban), hogy a Windows-os munkafa és a CI LF-es fájlja azonos hash-t adjon. scope=sys.addaudithook open-napló, HAMART-001, PARDES_DATUM=2026-11-13 | forras=5e4344f6 | ts=2026-11-13
 tipus	b_id	utvonal	sha256	meret
-bemenet	B51	DONTESEK.md	8998a9e58a8aa66863481a3679628dad5bc0abae43d574cdde959a8bf74be27c	1349648
+bemenet	B51	DONTESEK.md	45a50eec31ff534cf1409762aae4596a4e3c4192e78096d4b3d3a4ff3f887636	1353277
 bemenet	B17	adat/bdb_forras_javitas.tsv	8234fa67f03cfa69b35fa4e2cda0a30be7654aff511de9acf96b47be91618fca	14239182
 bemenet	B18	adat/bdb_szakasz_hu.tsv	17322b60e26b630156f13341bab6f0989bd42dad4ac9e50f282578e50ebe8a83	13997748
 bemenet	B17	adat/bdb_szakaszok.tsv	44362398134539235ac7929ba10b69d7067a528b2d48f44d27fe7c7a86216f07	12680601
@@ -191,10 +191,10 @@ bemenet	B06	naplok/F123_teljesseg_HAMART-001_blokkok.tsv	b59fc4f2aecf9480deffda9
 bemenet	B49	naplok/KIADAS_HAMART-001_lektor.md	99665c7b59e22793bbfda946723dfac2eefe0e327fa8e7f4db356525f06429f7	35634
 referencia	-	lexikon/HAMART-001_KIZARASOK.md	1cdaffd3e529d3ca4051d6be90515eaec75179038c92749a3fcd14e4cd9e9b3c	21763
 referencia	-	lexikon/HAMART-001_TUDOMANYOS.md	ff400b642edd6313bb33df4fd7aec364b2bb749599c4406c6ed754e224ab24a9	486835
-uj_bemenet	B51	dontesek/uj/f218-generator-uj-a.md	e77dc703fe7b07d5fec4c806dc88c89b9482c492062c9c689317009983fa1a4c	17176
-uj_bemenet	B65	adat/olvasoi_nevtabla.tsv	03613c4d8e7a082ccb817ff0e7f2334eb7b9c7c610bab852317ce900aaa4790b	5047
-uj_bemenet	B66	adat/lapgen_sablonok.tsv	cf218022e6be8d4971b819ba3a86611cfc50309957a81341c8d4e1532fa93763	64682
-uj_bemenet	B67	adat/tematikus_sajat_szo.tsv	c2b13c51f69c60f2c2e18b2e39a9655bd3245cbea27e42646c5867d636004e3a	407
+uj_bemenet	B51	dontesek/uj/f218-generator-uj-a.md	814b575df72275e16211bedd2e92b45d4ff47dddd84921f6168fa0a8b902be6b	17176
+uj_bemenet	B65	adat/olvasoi_nevtabla.tsv	810a7f4da76732783093ba8e4509c5e7bf57368fccc3b912ac64988b0f8fe9b8	5047
+uj_bemenet	B66	adat/lapgen_sablonok.tsv	52d9a2e0d690582e2da5bdf5dd8beb894dc5e6e3c97fe0afae4cf08a741874c1	64682
+uj_bemenet	B67	adat/tematikus_sajat_szo.tsv	a0f10bc4e626b35c108caf7db8eae0927755b18f5f34f7544d7ad51e7af1a83a	407
 uj_bemenet	B05	naplok/F123_teljesseg_ISTENTISZT-001.tsv	df7c848097187da58fdb9a289e1203a9c63ec8af494e2f0fd04af365bcd23d0e	153346
 uj_bemenet	B06	naplok/F123_teljesseg_ISTENTISZT-001_blokkok.tsv	11e7ce1df45b33ac9d065ad0728c6a801136be4ae288e680a15d833444a5722a	41504
 uj_bemenet	B54	adat/karoli_strong/parok_1Pet.tsv	b532c7a0608179b8ac7e021da51c0a50a8b0bfb2738d61914bf66426f44413de	93115
@@ -207,5 +207,5 @@ uj_bemenet	B54	adat/karoli_strong/parok_3Jan.tsv	391aeb188f26b94cab5e64a7d073c88
 uj_bemenet	B54	adat/karoli_strong/parok_Abd.tsv	71bb590651217b0f759a75bfd6b167e2d3b3b234f6dc8750b3c84f1efee7ddbb	23210
 uj_bemenet	B54	adat/karoli_strong/parok_Filem.tsv	645bc43a59af11d909c23b02efb02b0b62d5d17deb1ced9e8d322f050ed6e43a	18539
 uj_bemenet	B54	adat/karoli_strong/parok_Tit.tsv	ad5cb0fe7fbdd88c1488c20c95cb49a42764ae53f20e43b8c1b6a78dc67fc6d5	35975
-uj_bemenet	B68	adat/lapgen_bemenetek.tsv	436c63af41fdc97ebb14dd614acee6a098c42fbf87778a948833772ea7330e02	14721
+uj_bemenet	B68	adat/lapgen_bemenetek.tsv	082d00ad4cbc4298c9e6caf67f7dafa688f93541c0f143a465852a6072d53606	14721
 uj_bemenet	B47	motivumok/ISTENTISZT-001.md	01ca99fb5ae6aeef1de970715b5e49f60a34a0c82413bc84d417ac6ddd151e7b	29739

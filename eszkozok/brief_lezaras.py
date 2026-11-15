@@ -51,7 +51,7 @@ REPO = F.REPO
 NYITOTT = 'NYITOTT_FELADATOK.md'
 
 LEZARHATO_ALLAPOT = ('fut', 'megallt')
-LEZARHATO_TIPUS = ('feladat', 'naplozas')
+LEZARHATO_TIPUS = ('feladat', 'naplozas', 'felmeres')
 # „meg van mas teendo” jelek a `kovetkezo` szovegeben (kisbetus, ekezettel); a merge-en tuli munka
 BLOKKOLO = re.compile(
     r'utána|után|⛔|döntés|döntend|\bDT-?F?\d|hátra|maradék|nyitva|nyitott|elteres_kor|korlát|újragener|'

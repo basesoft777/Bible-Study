@@ -38,6 +38,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nyilt_mag_export as NM  # noqa: E402  (OSIS-kulcs, közös azonosítók)
+import karoli_strong_export as KS  # noqa: E402  (a párosítás mérése: a rétegek a szóillesztési csomag szerint)
+from nevelo import nevelos, nevelo_javit  # noqa: E402  (közös névelő-szabály, N-F175b)
 
 GYOKER = NM.GYOKER
 KIMENET = 'nyilt_karoli_modern'
@@ -69,11 +71,12 @@ NAPLO_ELLENOR = 'naplok/ELLENOR_F96.md'
 F172_MERES = 'f172/meres_eredmeny.tsv'
 F172_KULSO = 'f172/kulso/kulso_eredmeny.tsv'
 
+# a belső `bizonyossag` mező (két modell egyezése) nem minősítés, nem kerül a nyilvános táblákba (2026-11-14)
 FEJ = ['osis', 'token', 'alak_1908', 'alak_modern', 'valtozott', 'kieso', 'gazda_token', 'bizonytalan', 'allapot',
-       'strong', 'eredeti_token', 'kapcsolat', 'bizonyossag']
+       'strong', 'eredeti_token', 'kapcsolat']
 VERS_FEJ = ['osis', 'szoveg_modern', 'valtozott']
-FEJLEC_HU = ('# GENERÁLT: a(z) %s – %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel '
-             'nem szerkesztendő; a „#” kezdetű sor megjegyzés.' % (LEXIKON_HU, CIM_HU))
+FEJLEC_HU = ('# GENERÁLT: %s – %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel '
+             'nem szerkesztendő; a „#” kezdetű sor megjegyzés.' % (nevelos(LEXIKON_HU), CIM_HU))
 FEJLEC_EN = ('# GENERATED: export of the %s – %s open core (CC BY 4.0), generated from the project data — do not '
              'edit by hand; a line starting with "#" is a comment.' % (LEXIKON_EN, CIM_EN))
 STEP_ATTRIB = ('Data created by www.STEPBible.org based on work at Tyndale House Cambridge (CC BY 4.0)')
@@ -153,13 +156,13 @@ def vetit(modern, parok, allapot):
         if not ps:
             if sz['allapot'] == 'parositva':
                 raise SystemExit('vetítés: párosított token pár nélkül: %s %s' % kulcs)
-            sorok.append(alap + [ALLAPOT[sz['allapot']], '', '', '', ''])
+            sorok.append(alap + [ALLAPOT[sz['allapot']], '', '', ''])
             continue
         lefedett.add(kulcs)
         for p in sorted(ps, key=lambda p: (int(p['er_sorszam']), p['strong'])):
             if p['hu_szo'] != t['alak_1908']:
                 raise SystemExit('vetítés: a pár magyar szava eltér: %s %s' % kulcs)
-            sorok.append(alap + ['javaslat', p['strong'], p['er_sorszam'], kapcsolat(p['strong']), p['bizonyossag']])
+            sorok.append(alap + ['javaslat', p['strong'], p['er_sorszam'], kapcsolat(p['strong'])])
     hianyzo = set(parok) - lefedett
     if hianyzo:
         raise SystemExit('vetítés: %d pár kulcsa nincs a modern táblában (pl. %s)' % (len(hianyzo), sorted(hianyzo)[0]))
@@ -227,8 +230,6 @@ def szamok(modern, konyvek, par_db, allapot, versek):
     N['kieso_strongos'] = len({(s[0], s[1]) for s in parsor if s[5]})
     N['betoldas'] = sum(1 for a in allapot.values() if a['allapot'] == 'betoldas')
     N['fuggoben'] = sum(1 for a in allapot.values() if a['allapot'] == 'fuggoben')
-    N['magas'] = sum(1 for s in parsor if s[12] == 'magas')
-    N['alacsony'] = sum(1 for s in parsor if s[12] == 'alacsony')
     N['morfema'] = sum(1 for s in parsor if s[11] == 'morfema')
     N['heber_par'] = sum(1 for s in parsor if s[9].startswith('H'))
     N['gorog_par'] = sum(1 for s in parsor if s[9].startswith('G'))
@@ -289,6 +290,12 @@ def szamok(modern, konyvek, par_db, allapot, versek):
     o = _f172(F172_KULSO, 'csoport', 'OSSZES')
     N['k_n'], N['k_fs'], N['k_fs_a'], N['k_fs_f'] = o['n_fo'], o['forras_szerint'], o['fs_also95'], o['fs_felso95']
     N['k_h3'], N['k_h3_a'], N['k_h3_f'], N['k_mi'] = o['haromutas'], o['h3_also95'], o['h3_felso95'], o['elter_mi_hibank']
+    # rétegenként (könyvcsoportonként): a szóillesztési csomag mérési sorai (a két Mózes-réteg összevonva)
+    rp = sorted((float(s[4]), s[1]) for s in KS.meres_sorok() if s[0] == 'reteg')
+    if len(rp) != len(KS.RETEG):
+        raise SystemExit('szám: a rétegsorok száma nem a szóillesztési csomagé')
+    N['reteg_db'] = len(rp)
+    (N['r_min'], N['rmin_kod']), (N['r_max'], N['rmax_kod']) = rp[0], rp[-1]
     # adatállapot: a forrástáblák utolsó commitjának dátuma (az ÚSZ-könyvek párjainak nincs ts-dátuma), és a
     # fejlécek ts-dátuma közül a későbbi
     datumok = _ts_datumok([MODERN, MODERN_VERS] + relglob(PAROK) + relglob(SZAVAK))
@@ -329,6 +336,10 @@ def fmt(N, nyelv):
         F[k] = szazalek(N[k], nyelv)
     F['k_n'] = ezres(N['k_n'], nyelv)
     F['k_mi'] = N['k_mi']
+    F['r_min'], F['r_max'] = szazalek(N['r_min'], nyelv), szazalek(N['r_max'], nyelv)
+    nev = KS.RETEG_NEV_HU if nyelv == 'hu' else KS.RETEG_NEV_EN
+    F['r_min_nev'], F['r_max_nev'] = nev[N['rmin_kod']], nev[N['rmax_kod']]
+    F['cim_mag_hu'], F['cim_mag_en'] = KS.CIM_MAG_HU, KS.CIM_MAG_EN
     F['llm_sonnet_m'] = millio(N['llm_sonnet'], nyelv)
     F['llm_opus_m'] = millio(N['llm_opus'], nyelv)
     for k in ('lef_w', 'ell_hiba_w', 'minta2_hiba_w', 'hminta_hiba_w'):
@@ -387,8 +398,7 @@ A kulcs a vers OSIS-azonosítója (`Gen.1.1`) és a szó sorszáma a versen bel�
 ahány eredeti szóhoz párosítva van; a pár nélküli szó egy sorban. A modern szöveg olvasásához a `kieso` oszlop
 üres sorait kell a `token` sorrendjében venni, szavanként egyszer; a szöveg írásjelekkel a `versek.tsv`-ben áll.
 
-A párosítás gépi javaslat, mért pontossággal (`MODSZER.md`, 5. pont); a `bizonyossag` oszlop jelzi, hol egyezett két
-független modell.
+A párosítás gépi javaslat, mért pontossággal (`MODSZER.md`, 5. pont).
 
 ## Kapcsolódó adatkészletek
 
@@ -432,8 +442,7 @@ appears in as many rows as source words it is aligned to; a word without a pair 
 modern text, take the rows with an empty `kieso` column in `token` order, once per word; the punctuated text is in
 `versek.tsv`.
 
-The alignment is a machine proposal with measured accuracy (`METHODS.md`, section 5); the `bizonyossag` column marks
-where two independent models agreed.
+The alignment is a machine proposal with measured accuracy (`METHODS.md`, section 5).
 
 ## Related datasets
 
@@ -521,10 +530,6 @@ KODKONYV_SOROK = [
     ('konyvek', 'kapcsolat', 'szo', 'A pár egy eredeti szóhoz köti a magyar szót.', 'The pair links the Hungarian word to a source word.'),
     ('konyvek', 'kapcsolat', 'morfema', 'A pár egy héber előtag- vagy ragmorfémához köti (H9001–H9049: névelő, kötőszó, elöljáró).',
      'The pair links it to a Hebrew prefix or suffix morpheme (H9001–H9049: article, conjunction, preposition).'),
-    ('konyvek', 'bizonyossag', 'magas', 'Két független nyelvi modell ugyanazt a párt adta (Mózes 1–2. könyve).',
-     'Two independent language models gave the same pair (Genesis and Exodus).'),
-    ('konyvek', 'bizonyossag', 'alacsony', 'Egy nyelvi modell javaslata; a pontosságát a mérés adja meg (MODSZER.md 5.).',
-     'Proposal of one language model; its accuracy is given by the measurement (METHODS.md 5).'),
     ('versek', 'osis', '', 'A vers OSIS-azonosítója.', 'OSIS verse identifier.'),
     ('versek', 'szoveg_modern', '', 'A modernizált vers szövege, írásjelekkel.', 'Modernised verse text, with punctuation.'),
     ('versek', 'valtozott', 'igen', 'A vers szövege változott a modernizálásban.', 'The verse text changed in the modernisation.'),
@@ -630,14 +635,15 @@ A maradék ismert hibákat az `ISMERT_HIBAK.md` sorolja fel.
 
 ## 5. A Strong-párosítás és a pontossága
 
-A szópárosítás nyelvi modellek javaslata a STEPBible TAHOT (héber) és TAGNT (görög) szövegén: minden magyar szóhoz a
-modell kijelöli a héber vagy görög szavakat, a Strong-szám ezekből a forrásokból jön, a modell nem írja. Mózes első
-két könyvében két független modell párosított; ahol egyeztek, a pár `magas` bizonyosságú ({magas} pár), máshol egy
-modell javaslata (`alacsony`, {alacsony} pár). Minden pár „javaslat” állapotú.
+A szópárosítást nyelvi modell (Claude Sonnet) javasolta a STEPBible TAHOT (héber) és TAGNT (görög) szövegén: minden
+magyar szóhoz a modell kijelöli a héber vagy görög szavakat, a Strong-szám ezekből a forrásokból jön, a modell nem írja.
+Minden pár „javaslat” állapotú.
 
 A pontosságot rétegzett véletlen mintán mértük, vak ellenőrrel, és egy független, Strong-számos Károli-kiadással:
 
 - a teljes párkészlet (mellékszavakkal, morfémákkal) egyezése a vak ellenőrrel: {p_osszes}% (95%: {p_osszes_a}–{p_osszes_f}%);
+  könyvcsoportonként ({reteg_db} réteg) {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között; a rétegenkénti
+  tábla a szóillesztési adatkészletben áll (https://doi.org/{doi_ks});
 - a fő szavak párjai a független forrással összevetve, {k_n} páron: {k_fs}% (95%: {k_fs_a}–{k_fs_f}%); a
   háromutas ítélet után, amely az eltéréseket a vak ellenőr bevonásával döntötte el, {k_h3}%;
 - a héber előtag- és ragmorfémák párjai: {p_morfema}% (95%: {p_morfema_a}–{p_morfema_f}%); ezeket a független forrás
@@ -766,17 +772,16 @@ The remaining known issues are listed in `KNOWN_ISSUES.md`.
 
 ## 5. The Strong alignment and its accuracy
 
-The word alignment is a proposal of language models on the STEPBible TAHOT (Hebrew) and TAGNT (Greek) texts: for every
-Hungarian word the model marks the Hebrew or Greek words; the Strong's number comes from these sources, the model does
-not write it. In Genesis and Exodus two independent models aligned; where they agreed, the pair has `magas` (high)
-confidence ({magas} pairs), elsewhere it is one model's proposal (`alacsony`, low; {alacsony} pairs). Every pair has
-the status "proposal".
+The word alignment was proposed by a language model (Claude Sonnet) on the STEPBible TAHOT (Hebrew) and TAGNT (Greek)
+texts: for every Hungarian word the model marks the Hebrew or Greek words; the Strong's number comes from these
+sources, the model does not write it. Every pair has the status "proposal".
 
 Accuracy was measured on a stratified random sample with a blind reviewer, and against an independent Károli edition
 with Strong's numbers:
 
 - the full pair set (with function words and morphemes), agreement with the blind reviewer: {p_osszes}% (95%:
-  {p_osszes_a}–{p_osszes_f}%);
+  {p_osszes_a}–{p_osszes_f}%); by book group ({reteg_db} strata) between {r_min}% ({r_min_nev}) and {r_max}%
+  ({r_max_nev}); the per-stratum table is in the word alignment dataset (https://doi.org/{doi_ks});
 - pairs of main words against the independent source, on {k_n} pairs: {k_fs}% (95%: {k_fs_a}–{k_fs_f}%); after
   three-way adjudication, which settled the differences with the blind reviewer, {k_h3}%;
 - pairs of Hebrew prefix and suffix morphemes: {p_morfema}% (95%: {p_morfema_a}–{p_morfema_f}%); the independent
@@ -899,7 +904,7 @@ references:
         given-names: "Tamás"
     doi: "{doi_ks}"
   - type: dataset
-    title: "{lex_en} — open data core"
+    title: "{cim_mag_hu} / {cim_mag_en}"
     authors:
       - family-names: "Demeter"
         given-names: "Tamás"
@@ -1021,13 +1026,14 @@ def export():
     fajlok['kodkonyv.tsv'] = tsv_szoveg(['fajl', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en'],
                                         [list(s) for s in KODKONYV_SOROK])
     fajlok['KODKONYV.md'] = kodkonyv_md()
-    fajlok['OLVASSEL.md'] = OLVASSEL.format(**hu)
+    # a magyar szövegekben a szám előtti névelő a kiejtés szerinti (N-F175b; a kapu NEVELO pontja ellenőrzi)
+    fajlok['OLVASSEL.md'] = nevelo_javit(OLVASSEL.format(**hu))
     fajlok['README.md'] = README.format(**en)
-    fajlok['LICENSE'] = LICENSE.format(**hu)
-    fajlok['ATTRIBUCIO.md'] = ATTRIBUCIO.format(**hu)
-    fajlok['MODSZER.md'] = MODSZER.format(**hu)
+    fajlok['LICENSE'] = nevelo_javit(LICENSE.format(**hu))
+    fajlok['ATTRIBUCIO.md'] = nevelo_javit(ATTRIBUCIO.format(**hu))
+    fajlok['MODSZER.md'] = nevelo_javit(MODSZER.format(**hu))
     fajlok['METHODS.md'] = METHODS.format(**en)
-    fajlok['ISMERT_HIBAK.md'] = ISMERT_HIBAK.format(**hu)
+    fajlok['ISMERT_HIBAK.md'] = nevelo_javit(ISMERT_HIBAK.format(**hu))
     fajlok['KNOWN_ISSUES.md'] = KNOWN_ISSUES.format(**en)
     fajlok['CITATION.cff'] = CITATION.format(**hu)
     fajlok['.gitattributes'] = GITATTRIBUTES
@@ -1041,7 +1047,7 @@ def export():
     fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
                              'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     # a közlemény-tervezet (export-ignore; nincs az ellenőrző összegben)
-    fajlok[KOZLEMENY_DIR + 'kozlemeny_hu.md'] = KOZLEMENY_HU.format(**hu)
+    fajlok[KOZLEMENY_DIR + 'kozlemeny_hu.md'] = nevelo_javit(KOZLEMENY_HU.format(**hu))
     fajlok[KOZLEMENY_DIR + 'kozlemeny_en.md'] = KOZLEMENY_EN.format(**en)
     return fajlok, N
 

@@ -13,8 +13,6 @@
 | `strong` |  | Az eredeti szó Strong-száma (H… héber, G… görög) a STEPBible TAHOT/TAGNT szerint; „+” két számot köt össze, ha a forrás egy szóhoz kettőt ad. A modell nem ír Strong-számot: a szám a sorszámból jön. | Strong's number of the source word (H… Hebrew, G… Greek) from STEPBible TAHOT/TAGNT; "+" joins two numbers where the source gives two for one word. The model writes no Strong's number: it comes from the position. |
 | `kapcsolat` | `szo` | A pár egy eredeti szóhoz köti a magyar szót. | The pair links the Hungarian word to a source word. |
 | `kapcsolat` | `morfema` | A pár egy héber előtag- vagy ragmorfémához köti (H9001–H9049: névelő, kötőszó, elöljáró, személyrag). | The pair links it to a Hebrew prefix or suffix morpheme (H9001–H9049: article, conjunction, preposition, pronominal suffix). |
-| `bizonyossag` | `magas` | Két független nyelvi modell ugyanazt a párt adta (Mózes 1–2. könyve). | Two independent language models gave the same pair (Genesis and Exodus). |
-| `bizonyossag` | `alacsony` | Egy nyelvi modell javaslata, vagy a két modell eltért; a pontosságát a mérés adja meg (meres.tsv). | Proposal of one language model, or the two models differed; its accuracy is given by the measurement (meres.tsv). |
 | `allapot` | `javaslat` | Gépi párosítási javaslat, mért pontossággal; nem kézzel ellenőrzött pár. | Machine alignment proposal with measured accuracy; not a manually verified pair. |
 | `nem_tr` | `igen` | Az eredeti görög szó nem szerepel a Textus Receptusban, amelyet Károli fordított; a Strong-szám a kritikai szöveg alakjáé (l. ISMERT_HIBAK.md). | The Greek source word is not in the Textus Receptus, which Károli translated; the Strong number is that of the critical-text form (see KNOWN_ISSUES.md). |
 
@@ -33,8 +31,6 @@
 | `allapot` | `fuggoben` | A vers párosítása kézi döntésre vár (a versek megfeleltetése szavanként nem állt össze, vagy a válasz nem ment át a gépi kapun); pár nincs. | The verse awaits a manual alignment decision (the verse mapping did not hold word by word, or the answer did not pass the machine gate); no pair. |
 | `partner_token` |  | A pár(ok) sorszáma a másik oldalon, vesszővel elválasztva. | Position(s) of the pair(s) on the other side, comma-separated. |
 | `strong` |  | Eredeti szónál a saját Strong-száma; magyar szónál a partnerei Strong-számai „+”-szal fűzve. | For a source word its own Strong number; for a Hungarian word the Strong numbers of its partners joined by "+". |
-| `bizonyossag` | `magas` | A két modell ugyanazt a partnerhalmazt (vagy ugyanazt a betoldás/fordítatlan döntést) adta a szóra. | The two models gave the same partner set (or the same addition / untranslated decision) for the word. |
-| `bizonyossag` | `alacsony` | Egy modell döntése, vagy a két modell eltért. | Decision of one model, or the two models differed. |
 
 ## `versek.tsv`
 
@@ -47,17 +43,17 @@
 
 | oszlop / column | érték / value | leírás | description |
 |---|---|---|---|
-| `szakasz` | `reteg` | Rétegenkénti egyezés a vak ellenőrrel: rétegenként egyszerű véletlen minta. | Agreement with the blind reviewer per stratum: a simple random sample per stratum. |
+| `szakasz` | `reteg` | Rétegenkénti (könyvcsoportonkénti) egyezés a vak ellenőrrel: rétegenként egyszerű véletlen minta; Mózes öt könyvében két részminta, a pársúlyukkal összegezve. | Agreement with the blind reviewer per stratum (book group): a simple random sample per stratum; in the five books of Moses two subsamples, combined by their pair weight. |
 | `szakasz` | `sulyozott` | A rétegek pársúlyával súlyozott becslés (ÓSZ, ÚSZ, összes). | Estimate weighted by the pair share of the strata (OT, NT, all). |
 | `szakasz` | `bontas` | Kapcsolattípus szerinti bontás (tartalmi szó, morféma), leíró. | Breakdown by link type (content word, morpheme), descriptive. |
 | `szakasz` | `hibatipus` | A vak ellenőrtől eltérő párok típus szerint (`<réteg>:<típus>`; n = az eltérések száma a rétegben). | Pairs differing from the blind reviewer, by type (`<stratum>:<type>`; n = number of differences in the stratum). |
 | `szakasz` | `leiro` | Leíró szám, nem a pontosság része (hianyzo_par: ahol a vak ellenőr több eredeti szót jelölt). | Descriptive count, not part of the accuracy (hianyzo_par: where the blind reviewer marked more source words). |
 | `szakasz` | `kalibracio` | A vak ellenőr és a gépi pár egyezése egy korábbi, kézzel összeállított mintával. | Agreement of the blind reviewer and of the machine pair with an earlier manually compiled sample. |
 | `szakasz` | `kulso` | Összevetés egy független, Strong-számos Károli-kiadással, a fő szavak párjain (`_haromutas`: az eltérések háromutas ítélete után). | Comparison with an independent Károli edition carrying Strong numbers, on main-word pairs (`_haromutas`: after the three-way judgement of the differences). |
-| `cimke` |  | A sor tárgya: réteg (OSZ_mozes_magas, OSZ_mozes_alacsony, OSZ_tortenet, OSZ_koltoi, OSZ_profeta, USZ_evangelium, USZ_level, USZ_jelenesek), csoport vagy hibatípus (folos_par, szomszedos_token, rossz_szo_a_versben, azonos_lexema_mas_elofordulas). | Subject of the row: stratum (OSZ_mozes_magas, OSZ_mozes_alacsony, OSZ_tortenet, OSZ_koltoi, OSZ_profeta, USZ_evangelium, USZ_level, USZ_jelenesek), group or error type (folos_par = superfluous pair, szomszedos_token = neighbouring word, rossz_szo_a_versben = wrong word in the verse, azonos_lexema_mas_elofordulas = same lexeme, other occurrence). |
+| `cimke` |  | A sor tárgya: réteg (OSZ_mozes: Mózes öt könyve; OSZ_tortenet: történeti könyvek; OSZ_koltoi: költői könyvek; OSZ_profeta: próféták; USZ_evangelium: evangéliumok és Apostolok cselekedetei; USZ_level: levelek; USZ_jelenesek: Jelenések), csoport vagy hibatípus (folos_par, szomszedos_token, rossz_szo_a_versben, azonos_lexema_mas_elofordulas). | Subject of the row: stratum (OSZ_mozes: the five books of Moses; OSZ_tortenet: historical books; OSZ_koltoi: poetic books; OSZ_profeta: prophets; USZ_evangelium: Gospels and Acts; USZ_level: Epistles; USZ_jelenesek: Revelation), group or error type (folos_par = superfluous pair, szomszedos_token = neighbouring word, rossz_szo_a_versben = wrong word in the verse, azonos_lexema_mas_elofordulas = same lexeme, other occurrence). |
 | `n` |  | A mért párok száma. | Number of pairs measured. |
 | `x` |  | Az egyező (helyes) párok száma; hibatípusnál az adott típusú eltérések száma. | Number of agreeing (correct) pairs; for an error type, the number of differences of that type. |
-| `p` |  | Arány (x / n, súlyozott soroknál a súlyozott becslés). | Proportion (x / n; for weighted rows the weighted estimate). |
+| `p` |  | Arány (x / n; a súlyozott soroknál és a Mózes-rétegnél a súlyozott becslés). | Proportion (x / n; for weighted rows and the Moses stratum the weighted estimate). |
 | `also95` |  | A 95%-os konfidencia-intervallum alsó széle. | Lower bound of the 95% confidence interval. |
 | `felso95` |  | A 95%-os konfidencia-intervallum felső széle. | Upper bound of the 95% confidence interval. |
 | `modszer` | `wilson95` | Wilson-intervallum. | Wilson interval. |

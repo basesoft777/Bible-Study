@@ -58,7 +58,8 @@ class Egyseg(unittest.TestCase):
         self.assertEqual(sorok[0][:7], ['Gen.1.1', '1', 'a', '', 'igen', 'osszevonva', '2'])
         self.assertEqual(sorok[0][9], 'H0834')                       # a kieső szó párja megmarad
         self.assertEqual([s[10] for s in sorok[1:3]], ['2', '4'])    # eredeti sorszám szerint rendezve
-        self.assertEqual(sorok[3][8:], ['betoldas', '', '', '', ''])
+        self.assertEqual(sorok[3][8:], ['betoldas', '', '', ''])            # a bizonyosság nem kerül be
+        self.assertTrue(all(len(s) == len(E.FEJ) for s in sorok))
 
     def test_vetites_alakelteresnel_megall(self):
         modern = [self._modern('1', 'Kezdetben', 'Kezdetben')]
@@ -152,7 +153,7 @@ class Csomag(unittest.TestCase):
         self.assertTrue(bukasok(f, 'KOZLEMENY'))
 
     def test_szamok(self):
-        self.assertEqual(self.N['par'], self.N['magas'] + self.N['alacsony'])
+        self.assertNotIn('bizonyossag', E.FEJ)                                  # a modell-egyezés nem minősítés
         self.assertEqual(self.N['token'] - self.N['strongos_token'], self.N['betoldas'] + self.N['fuggoben'])
 
 

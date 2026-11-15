@@ -1041,9 +1041,8 @@ def ismert_hibak(sz, datum):
           'negatív lelet**, és a domén támasz, nem a motívum meghatározásának helyettesítője.', '',
           '## 3. A Károli-szó gépi párosítása', '',
           'Az `elofordulasok.tsv` `azonositas_modja` oszlopának `szó-szintű-gépi` értéke modell-kimenet: '
-          'a Károli-szó és a Strong-szám párosítását gép végezte, csak magas bizonyosságú pár igazolhat '
-          'sort. A mód azt mondja meg, hogyan azonosítottuk a szót, nem azt, hogy a párosítást ember '
-          'ellenőrizte.', '',
+          'a Károli-szó és a Strong-szám párosítását gép végezte. A mód azt mondja meg, hogyan '
+          'azonosítottuk a szót, nem azt, hogy a párosítást ember ellenőrizte.', '',
           'A javítások a következő kiadásba kerülnek; a kiadás a `KIADAS.txt` azonosítójával idézhető.', '']
     return '\n'.join(ki)
 
@@ -1065,9 +1064,8 @@ def known_issues_en(sz, datum):
           'for the definition of the motif.', '',
           '## 3. Machine alignment of the Károli word', '',
           "The value `szó-szintű-gépi` of the `azonositas_modja` column of `elofordulasok.tsv` is model output: "
-          "the alignment of the Károli word with the Strong's number was done by machine, and only a "
-          'high-confidence pair may justify a row. The mode states how the word was identified, not that a human '
-          'verified the alignment.', '',
+          "the alignment of the Károli word with the Strong's number was done by machine. The mode states how "
+          'the word was identified, not that a human verified the alignment.', '',
           'Corrections go into the next release; a release can be cited by the identifier in `RELEASE.txt`.', '']
     return '\n'.join(ki)
 
@@ -1469,6 +1467,122 @@ def csomag_szamok(fajlok, lezart, nyitva_db, kizartak, datum):
     }
 
 
+SZOVEG_RELEK = ('ISMERT_HIBAK.md', 'KNOWN_ISSUES.md', 'kodkonyv.tsv', 'KODKONYV.md', 'OLVASSEL.md', 'README.md',
+                'MODSZER.md', 'METHODS.md', 'ATTRIBUCIO.md', 'LICENSE', 'CITATION.cff', '.gitattributes',
+                SZ.KOZLEMENY_DIR + 'kozlemeny_hu.md', SZ.KOZLEMENY_DIR + 'kozlemeny_en.md')
+OSSZEG_RELEK = ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt')
+
+
+def szovegek_epit(fajlok, stat, lezart, nyitva_db, kizartak):
+    """A csomag szövegfájljai (F223 a): a már meglévő adattáblákból (`fajlok`), az `adat/nyilt_kodkonyv.tsv`-ből és a
+    `nyilt_mag_szovegek.py` sablonjaiból. Beírja őket a `fajlok`-ba (a `SZOVEG_RELEK` fájljai), a `stat`-ba a kódkönyv sorszámát;
+    visszaadja az adatállapot dátumát. A teljes export és a `--csak-szovegek` mód ugyanezt hívja, ezért a kettő eredménye
+    azonos (a teszt ezt méri)."""
+    datum = adatallapot_datuma(fajlok)
+    fajlok['ISMERT_HIBAK.md'] = ismert_hibak(stat, datum)
+    fajlok['KNOWN_ISSUES.md'] = known_issues_en(stat, datum)
+
+    # --- kódkönyv (az adat/nyilt_kodkonyv.tsv-ből: a TSV és az olvasható változat)
+    kk_fej, kk = tsv('adat/nyilt_kodkonyv.tsv')
+    kk.sort(key=lambda s: (s['tabla'], s['oszlop'], s['ertek']))
+    kf = ['tabla', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en', 'cimke_en']
+    fajlok['kodkonyv.tsv'] = oszlop_tsv(kf, kk)
+    stat['kodkonyv.tsv'] = len(kk)
+    md = ['# Kódkönyv / Codebook', '', SZ.md_fejlec(LEXIKON_CIM_HU), '',
+          'Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, '
+          'in Hungarian and English.', '',
+          '**Adatréteg / data layer.** %s / %s' % (ADATMAG_LEXIKON_HU, ADATMAG_LEXIKON_EN), '']
+    akt = None
+    for s in kk:
+        if (s['tabla']) != akt:
+            akt = s['tabla']
+            md += ['', '## ' + akt, '']
+        if s['ertek']:
+            md.append('- `%s` = `%s` (en: `%s`): %s / %s' % (s['oszlop'], s['ertek'], s.get('cimke_en', ''), s['leiras_hu'],
+                                                           s['leiras_en']))
+        else:
+            md += ['', '### `%s`' % s['oszlop'], '', s['leiras_hu'], '', '*' + s['leiras_en'] + '*', '']
+    fajlok['KODKONYV.md'] = '\n'.join(md) + '\n'
+
+    # --- a nyilvános szövegek (F208): a próza a `nyilt_mag_szovegek.py`-ban, minden szám az itt generált táblákból
+    sz = csomag_szamok(fajlok, lezart, nyitva_db, kizartak, datum)
+    peldak = olvasasi_peldak(fajlok)
+    fajlok['OLVASSEL.md'] = SZ.olvassel(sz, hogyan_olvasd_hu(peldak), stat, ADATMAG_LEXIKON_HU)
+    fajlok['README.md'] = SZ.readme(sz, hogyan_olvasd_en(peldak), stat, ADATMAG_LEXIKON_EN)
+    fajlok['MODSZER.md'] = SZ.modszer(sz, ADATMAG_LEXIKON_HU)
+    fajlok['METHODS.md'] = SZ.methods(sz, ADATMAG_LEXIKON_EN)
+    _, fl = tsv_szoveg(fajlok['forrasok_es_licencek.tsv'])
+    forrasok = [(d['dataset'], d['licenc'], d['licenc_en']) for d in fl
+                if d['szerepe_a_csomagban'].startswith('forrás')]
+    fajlok['ATTRIBUCIO.md'] = SZ.attribucio(sz, forrasok, kizartak)
+    fajlok['LICENSE'] = SZ.license_(sz)
+    fajlok['CITATION.cff'] = SZ.citation(sz)
+    fajlok['.gitattributes'] = SZ.GITATTRIBUTES
+    fajlok[SZ.KOZLEMENY_DIR + 'kozlemeny_hu.md'] = SZ.kozlemeny_hu(sz)
+    fajlok[SZ.KOZLEMENY_DIR + 'kozlemeny_en.md'] = SZ.kozlemeny_en(sz)
+    return datum
+
+
+def szovegek_lezaras(fajlok, relek):
+    """F178.6 és F208: a szerkesztői döntés olvasói neve a megadott fájlokban, majd a magyar prózában a névelő a kiejtés szerint."""
+    for rel in relek:
+        fajlok[rel] = szerkesztoi(fajlok[rel])
+    for rel in MAGYAR_PROZA:
+        if rel in relek:
+            fajlok[rel] = SZ.nevelo_javit(fajlok[rel])
+
+
+def osszeg_epit(fajlok, datum):
+    """Ellenőrző összeg, KIADAS.txt és RELEASE.txt a `fajlok` mai tartalmából (a `kozlemeny/` tervezet nincs az összegben)."""
+    # (F208) a `kozlemeny/` tervezet nincs az összegben: a megjelenésig nem része a kiadásnak (.gitattributes)
+    sor = []
+    for rel in sorted(fajlok):
+        if rel.startswith(SZ.KOZLEMENY_DIR):
+            continue
+        sor.append('%s  %s' % (hashlib.sha256(fajlok[rel].encode('utf-8')).hexdigest(), rel))
+    fajlok['ELLENORZO_OSSZEG.sha256'] = '\n'.join(sor) + '\n'
+    hash_ = hashlib.sha256(fajlok['ELLENORZO_OSSZEG.sha256'].encode('utf-8')).hexdigest()
+    fajlok['KIADAS.txt'] = ('kiadas_azonosito: %s-%s\nadatallapot_datuma: %s\ntartalmi_hash_sha256: %s\n'
+                            'kozzeteteli_hely: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
+    fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
+                             'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
+
+
+def export_csak_szovegek(kimenet):
+    """F223 a: csak a szövegfájlok (`SZOVEG_RELEK`) és az ellenőrzőösszeg-fájlok (`OSSZEG_RELEK`) újraépülnek; az adatfájlokat a
+    már commitolt csomagból olvassa (`kimenet`), nem generálja újra és nem írja. Visszaad: `{rel: szöveg}` az újraépült
+    fájlokra (a szöveg és az összeg-fájlok), és a teljes csomagot (adat + szöveg) a második elemben. A lezárt motívumok listája
+    a commitolt `motivumok.tsv`-ből jön, a nyitott jelöltek száma az `adat/jeloltek.tsv`-ből, a kizárt források a commitolt
+    `forrasok_es_licencek.tsv`-ből; ha az adat-tábla a commitolt csomagban nem egyezik a forrással, ezt az E35 (teljes összevetés)
+    mondja meg, nem ez a mód."""
+    abs_ki = os.path.join(GYOKER, kimenet) if not os.path.isabs(kimenet) else kimenet
+    szoveg_set = set(SZOVEG_RELEK) | set(OSSZEG_RELEK)
+    fajlok = {}
+    for gyoker, _, nevek in os.walk(abs_ki):
+        for n in nevek:
+            rel = os.path.relpath(os.path.join(gyoker, n), abs_ki).replace('\\', '/')
+            if rel in szoveg_set:
+                continue
+            with open(os.path.join(gyoker, n), encoding='utf-8', newline='') as f:
+                fajlok[rel] = f.read()
+    if 'motivumok.tsv' not in fajlok:
+        raise SystemExit('csak-szövegek: a commitolt csomag nincs meg (%s); előbb a teljes export kell' % abs_ki)
+    stat = {rel: len(tsv_szoveg(t)[1]) for rel, t in fajlok.items()
+            if rel.endswith('.tsv') and rel != 'kodkonyv.tsv' and not rel.startswith('cc_by_sa')}
+    stat['cc_by_sa_reteg/szemantikai_domenek.tsv'] = len(tsv_szoveg(fajlok['cc_by_sa_reteg/szemantikai_domenek.tsv'])[1])
+    _, mot = tsv_szoveg(fajlok['motivumok.tsv'])
+    lezart = {m['motivum_azonosito']: m['feldolgozasi_allapot'] for m in mot if m['feldolgozasi_allapot'] == ALLAPOT_LEZART}
+    _, jel = tsv('adat/jeloltek.tsv')
+    nyitva_db = sum(1 for j in jel if j.get('jelolt_tipus') != 'kapcsolat' and j['dontes'] == 'nyitva')
+    _, fl = tsv_szoveg(fajlok['forrasok_es_licencek.tsv'])
+    kizartak = sorted(d['dataset'] for d in fl if d['szerepe_a_csomagban'] == 'kizárva')
+    datum = szovegek_epit(fajlok, stat, lezart, nyitva_db, kizartak)
+    szovegek_lezaras(fajlok, SZOVEG_RELEK)
+    osszeg_epit(fajlok, datum)
+    ujak = {rel: fajlok[rel] for rel in SZOVEG_RELEK + OSSZEG_RELEK}
+    return ujak, fajlok
+
+
 def export(kimenet):
     global _ANGOL
     _ANGOL = None
@@ -1750,74 +1864,12 @@ def export(kimenet):
         'A csomag szóbázisaira (Strong-számaira) választott sorok szerepelnek; a domén az ószövetségi '
         'szókincs kb. 90%-át fedi, a hiányzó bejegyzés **nem negatív lelet** (l. `../ISMERT_HIBAK.md`).\n')
 
-    # --- ismert hibák (az adatállapot dátuma a már generált táblákból)
-    datum = adatallapot_datuma(fajlok)
-    fajlok['ISMERT_HIBAK.md'] = ismert_hibak(stat, datum)
-    fajlok['KNOWN_ISSUES.md'] = known_issues_en(stat, datum)
-
-    # --- kódkönyv (az adat/nyilt_kodkonyv.tsv-ből: a TSV és az olvasható változat)
-    kk_fej, kk = tsv('adat/nyilt_kodkonyv.tsv')
-    kk.sort(key=lambda s: (s['tabla'], s['oszlop'], s['ertek']))
-    kf = ['tabla', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en', 'cimke_en']
-    fajlok['kodkonyv.tsv'] = oszlop_tsv(kf, kk)
-    stat['kodkonyv.tsv'] = len(kk)
-    md = ['# Kódkönyv / Codebook', '', SZ.md_fejlec(LEXIKON_CIM_HU), '',
-          'Minden oszlop, érték és kód leírása magyarul és angolul. / Description of every column, value and code, '
-          'in Hungarian and English.', '',
-          '**Adatréteg / data layer.** %s / %s' % (ADATMAG_LEXIKON_HU, ADATMAG_LEXIKON_EN), '']
-    akt = None
-    for s in kk:
-        if (s['tabla']) != akt:
-            akt = s['tabla']
-            md += ['', '## ' + akt, '']
-        if s['ertek']:
-            md.append('- `%s` = `%s` (en: `%s`): %s / %s' % (s['oszlop'], s['ertek'], s.get('cimke_en', ''), s['leiras_hu'],
-                                                           s['leiras_en']))
-        else:
-            md += ['', '### `%s`' % s['oszlop'], '', s['leiras_hu'], '', '*' + s['leiras_en'] + '*', '']
-    fajlok['KODKONYV.md'] = '\n'.join(md) + '\n'
-
-    # --- a nyilvános szövegek (F208): a próza a `nyilt_mag_szovegek.py`-ban, minden szám az itt generált táblákból
-    sz = csomag_szamok(fajlok, lezart, nyitva_db, kizartak, datum)
-    peldak = olvasasi_peldak(fajlok)
-    fajlok['OLVASSEL.md'] = SZ.olvassel(sz, hogyan_olvasd_hu(peldak), stat, ADATMAG_LEXIKON_HU)
-    fajlok['README.md'] = SZ.readme(sz, hogyan_olvasd_en(peldak), stat, ADATMAG_LEXIKON_EN)
-    fajlok['MODSZER.md'] = SZ.modszer(sz, ADATMAG_LEXIKON_HU)
-    fajlok['METHODS.md'] = SZ.methods(sz, ADATMAG_LEXIKON_EN)
-    _, fl = tsv_szoveg(fajlok['forrasok_es_licencek.tsv'])
-    forrasok = [(d['dataset'], d['licenc'], d['licenc_en']) for d in fl
-                if d['szerepe_a_csomagban'].startswith('forrás')]
-    fajlok['ATTRIBUCIO.md'] = SZ.attribucio(sz, forrasok, kizartak)
-    fajlok['LICENSE'] = SZ.license_(sz)
-    fajlok['CITATION.cff'] = SZ.citation(sz)
-    fajlok['.gitattributes'] = SZ.GITATTRIBUTES
-    fajlok[SZ.KOZLEMENY_DIR + 'kozlemeny_hu.md'] = SZ.kozlemeny_hu(sz)
-    fajlok[SZ.KOZLEMENY_DIR + 'kozlemeny_en.md'] = SZ.kozlemeny_en(sz)
-
+    datum = szovegek_epit(fajlok, stat, lezart, nyitva_db, kizartak)
     if CIMKE_HIANY:
         raise SystemExit('a zárt érték angol címkéje (cimke_en) hiányzik a kódkönyvből: %s' % '; '.join(
             '%s/%s = %s' % x for x in sorted(set(CIMKE_HIANY))))
-
-    # --- F178.6: a szerkesztői döntés olvasói neve, minden fájlban (az ellenőrző összeg előtt)
-    for rel in list(fajlok):
-        fajlok[rel] = szerkesztoi(fajlok[rel])
-    # --- F208: a magyar prózában a szám előtti névelő a kiejtés szerint (a Károli 1908 – Strong csomag szabálya)
-    for rel in MAGYAR_PROZA:
-        fajlok[rel] = SZ.nevelo_javit(fajlok[rel])
-
-    # --- ellenőrző összeg
-    # (F208) a `kozlemeny/` tervezet nincs az összegben: a megjelenésig nem része a kiadásnak (.gitattributes)
-    sor = []
-    for rel in sorted(fajlok):
-        if rel.startswith(SZ.KOZLEMENY_DIR):
-            continue
-        sor.append('%s  %s' % (hashlib.sha256(fajlok[rel].encode('utf-8')).hexdigest(), rel))
-    fajlok['ELLENORZO_OSSZEG.sha256'] = '\n'.join(sor) + '\n'
-    hash_ = hashlib.sha256(fajlok['ELLENORZO_OSSZEG.sha256'].encode('utf-8')).hexdigest()
-    fajlok['KIADAS.txt'] = ('kiadas_azonosito: %s-%s\nadatallapot_datuma: %s\ntartalmi_hash_sha256: %s\n'
-                            'kozzeteteli_hely: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
-    fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
-                             'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
+    szovegek_lezaras(fajlok, list(fajlok))
+    osszeg_epit(fajlok, datum)
     return fajlok, {'stat': stat, 'kizartak': kizartak, 'kizart_forras_sorok': kizart_forrasok,
                     'feloldatlan_dt': feloldatlan_dt, 'nyitva': nyitva_db, 'dontes_db': len(dn.azon),
                     'sd_db': len(sd), 'strong_db': len(strongok),
@@ -1851,7 +1903,29 @@ def kiir(fajlok, kimenet):
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     ap.add_argument('--kimenet', default='nyilt_mag')
+    ap.add_argument('--csak-szovegek', action='store_true',
+                    help='F223 a: csak a szövegfájlok és az ellenőrzőösszeg-fájlok íródnak újra; az adatfájlokat a '
+                         'commitolt csomagból olvassa, és nem írja')
     a = ap.parse_args()
+    if a.csak_szovegek:
+        ujak, _ = export_csak_szovegek(a.kimenet)
+        abs_ki = os.path.join(GYOKER, a.kimenet) if not os.path.isabs(a.kimenet) else a.kimenet
+        valtozott = 0
+        for rel, tartalom in ujak.items():
+            ut = os.path.join(abs_ki, rel)
+            regi = None
+            if os.path.exists(ut):
+                with open(ut, encoding='utf-8', newline='') as f:
+                    regi = f.read()
+            if regi != tartalom:
+                os.makedirs(os.path.dirname(ut), exist_ok=True)
+                with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+                    f.write(tartalom)
+                valtozott += 1
+                print('  újraírva: %s' % rel)
+        print('nyílt mag, csak szövegek: %d fájl újraépült, %d változott (az adatfájlokhoz nem nyúlt): %s' % (
+            len(ujak), valtozott, abs_ki))
+        return 0
     fajlok, info = export(a.kimenet)
     ut = kiir(fajlok, a.kimenet)
     print('nyílt mag exportálva: %s' % ut)

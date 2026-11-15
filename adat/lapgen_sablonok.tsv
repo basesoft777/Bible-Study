@@ -1,4 +1,4 @@
-# A lapgenerátor (eszkozok/lapgen) sablontáblája: a lap minden gépi mondata. Séma: adat/SEMA.md 2.61
+# A lapgenerátor (eszkozok/lapgen) sablontáblája: a lap minden gépi mondata. Séma: adat/SEMA.md 2.67
 kulcs	mondat	parameterek	szakasz	eredet	dontes
 cim.szamozott	{sorszam}. {cim}	sorszam:szam, cim:lathato	keret	uj_cimek_alkalmaz	-
 cim.alpont	{szakasz}.{alpont}. {cim}	szakasz:szam, alpont:szam, cim:lathato	keret	uj_cimek_alkalmaz	-

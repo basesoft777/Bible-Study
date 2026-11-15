@@ -603,13 +603,13 @@ teszt: `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py`, arany minta: a HAMART-
 **A lap látható szövege háromféle forrásból jöhet, másból nem:**
 
 1. **kézi próza**: a forrásfájl egy rése vagy egy adattábla prózamezője, változatlanul;
-2. **sablonmondat**: a sablontábla (`adat/lapgen_sablonok.tsv`, SEMA 2.61) egy mondata, amelybe csak strukturált érték kerül (szám, dátum, igehely, Strong-szám, a névtábla egy neve, másik látható szöveg); nyers szöveg nem;
+2. **sablonmondat**: a sablontábla (`adat/lapgen_sablonok.tsv`, SEMA 2.67) egy mondata, amelybe csak strukturált érték kerül (szám, dátum, igehely, Strong-szám, a névtábla egy neve, másik látható szöveg); nyers szöveg nem;
 3. **szó szerinti idézet**: bibliavers vagy szótárszöveg a bemeneti rétegből, forrásmegjelöléssel.
 
 **Ami ebből következik:**
 
 - Belső szövegből (proveniencia-sor, indoklás, megjegyzés, keresési napló, mezőnév, fájlnév, döntésszám) cserével olvasói szöveg nem készül. A kész szöveget a generátor utólag nem írja át.
-- Minden belső kulcsnak olvasói neve van a névtáblában (`adat/olvasoi_nevtabla.tsv`, SEMA 2.62). Ismeretlen kulcs kemény hiba: a lap nem készül el, a kulcs nem kerül ki.
+- Minden belső kulcsnak olvasói neve van a névtáblában (`adat/olvasoi_nevtabla.tsv`, SEMA 2.68). Ismeretlen kulcs kemény hiba: a lap nem készül el, a kulcs nem kerül ki.
 - Proveniencia csak HTML-megjegyzésben és a Kolofonban áll.
 - Az `eredet=uj` sablonmondatot és nevet a felhasználó hagyja jóvá.
 

@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 sav: CONTENT
-allapot: megallt
+allapot: lezarva
 ag: ccr-636782ad-lysuoh
 ad: minden héber Strong-számhoz (8 718) rövid magyar jelentés egy új adattáblában (adat/glosszak_heber_hu.tsv, allapot=sonnet, modell = a ténylegesen futó modell; a pardes.db-be az sqlite_epit.py általános adat/*.tsv-betöltője hozza), a TBESH glosszájából fordítva, a lemma és a definíció eleje mint kontextus mellett; kapukkal ellenőrizve; a 300 leggyakoribb szóra kézi átnézési lista
-kovetkezo: "Te: PR #481 nyitva; a bírálat és a szamkiosztas Action (DT346–d végleges száma) után merge (csak a felhasználótól); a merge után a pardes.db újraépítése az N-F117a javításával"
+kovetkezo: "lezárva: a #481 mergelve (2026-10-26); a pardes.db újraépítése: N-F117a (nyitva); a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 munka: adat
 olvas: [konkordancia/TBESH.txt, konkordancia/TBESH_TBESG_README.md, konkordancia/Strong_szotar.tsv, konkordancia/TAHOT_kivonat.tsv, adat/terminologia.tsv, eszkozok/forditas_kapuk.py, eszkozok/emeles.py]
 ir: [adat/glosszak_heber_hu.tsv, adat/SEMA.md, eszkozok/glossza_forditas.py, eszkozok/teszt_glossza_forditas.py, naplok/GLOSSZA_FORDITAS_elakad.tsv, naplok/GLOSSZA_FORDITAS_atnezes.tsv, naplok/GLOSSZA_FORDITAS_zaras.md, naplok/GLOSSZA_FORDITAS_M0.md, naplok/GLOSSZA_FORDITAS_M1_naplo.md, naplok/GLOSSZA_FORDITAS_homonima_szuroproba.tsv, naplok/GLOSSZA_FORDITAS_javit_naplo.tsv, naplok/ELLENOR_F140*.md, DONTESEK.md, eszkozok/glossza_minta.py, naplok/GLOSSZA_FORDITAS_minta_DTF140c.tsv, naplok/GLOSSZA_FORDITAS_minta2_ige_DTF140c.tsv, naplok/GLOSSZA_FORDITAS_testver_DTF140d.tsv, naplok/GLOSSZA_FORDITAS_ige_kozos_DTF140c.tsv, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py]

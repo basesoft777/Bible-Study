@@ -183,7 +183,7 @@ Az `adat/elofordulasok.tsv` 20 oszlopos; fejléc: `id, igehely, kapcsolodas, par
 
 ### F218.2 — típusok és szerződések
 
-Az `eszkozok/lapgen/` rétegei (`szoveg` ← `bemenet` ← `szamitas` ← `megjelenites`), a három tábla (SEMA 2.60–2.62), a `regresszio.py`, a `festek.py`, a `general.py --cel lexikon2`. A tervezési döntések listája: `naplok/F218_folytatas.md` „Tervezési döntések”. A régi generátor HAMART-kimenete a `general.py` módosítása után bájtra azonos maradt (a módosítás két additív elem: a `lexikon2` cél és a `--mod` kapcsoló; és egy nem additív: az előjavító (E32) egy meglévő hibaüzenetből törölte a „; DT-F09h” döntésszámot, `general.py` `--helyi-lexicon` ága; pontosítva a javítókörben, az 1. ellenőrzés 8. tétele) (`cmp` a `git show HEAD:lexikon/…` tartalmával, mindkét nézet).
+Az `eszkozok/lapgen/` rétegei (`szoveg` ← `bemenet` ← `szamitas` ← `megjelenites`), a három tábla (SEMA 2.66–2.68), a `regresszio.py`, a `festek.py`, a `general.py --cel lexikon2`. A tervezési döntések listája: `naplok/F218_folytatas.md` „Tervezési döntések”. A régi generátor HAMART-kimenete a `general.py` módosítása után bájtra azonos maradt (a módosítás két additív elem: a `lexikon2` cél és a `--mod` kapcsoló; és egy nem additív: az előjavító (E32) egy meglévő hibaüzenetből törölte a „; DT-F09h” döntésszámot, `general.py` `--helyi-lexicon` ága; pontosítva a javítókörben, az 1. ellenőrzés 8. tétele) (`cmp` a `git show HEAD:lexikon/…` tartalmával, mindkét nézet).
 
 ### F218.4 — S1: „2. Előfordulások” és „2.1 Az igehelyek szövege”
 
@@ -251,7 +251,7 @@ Sem az „első”, sem az „utolsó” nem jó minden sorra: a helyes alak az,
 
 ### Egyeztetett eltérések a brieftől
 
-- **T3 tárolása:** külön kézi tábla (`adat/tematikus_sajat_szo.tsv`, SEMA 2.63, B67), nem új oszlop az `elofordulasok.tsv`-ben: az orkesztrátor technikai döntése (2026-11-13), `dontesek/uj/f218-generator-uj-a.md` DT-F218i. A brief `ir` mezője ezzel a táblával és a döntésfájllal bővült.
+- **T3 tárolása:** külön kézi tábla (`adat/tematikus_sajat_szo.tsv`, SEMA 2.69, B67), nem új oszlop az `elofordulasok.tsv`-ben: az orkesztrátor technikai döntése (2026-11-13), `dontesek/uj/f218-generator-uj-a.md` DT-F218i. A brief `ir` mezője ezzel a táblával és a döntésfájllal bővült.
 - **F218.1 halasztott részei:** a leltár `kovetelmeny` oszlopa (7.4) a heti keret nullázása utánra; az alias-sorok (GK-17) az S5 előttre (az alapmérés szerint a normalizáló tábla 4. oszlopát több eszköz olvassa, új alias viselkedést változtatna).
 - **Az S3-ra halasztva (kimondott hibával megáll, ha előbb kellene):** a pontozatlan héber alak szótári kiejtése (B10), az elavult fordítás jelölése az UBS-cellában (T5), a B18/B19/B21 frissességi kapuja (GK-03).
 

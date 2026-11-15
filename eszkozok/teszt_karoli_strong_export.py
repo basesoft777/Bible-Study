@@ -31,8 +31,8 @@ def bukasok(fajlok, azon=None):
 
 class Egyseg(unittest.TestCase):
     def test_szam_nevelo(self):
-        az = ('1', '5', '1 600', '598 715', '50', '500', '5 078', '1 000 000')
-        a = ('2', '10', '12', '100', '160', '200', '34', '31 158', '466 785', '95')
+        az = ('1', '5', '1 600', '598 715', '50', '500', '5 078', '1 000 000', '1908', '1234567')
+        a = ('2', '10', '12', '100', '160', '200', '34', '31 158', '466 785', '95', '15', '150', '12345', '12 345')
         for s in az:
             self.assertEqual(E.szam_nevelo(s), 'az', s)
         for s in a:
@@ -80,7 +80,9 @@ class Egyseg(unittest.TestCase):
         self.assertEqual(ps[0][5], 'morfema')
         self.assertEqual([(s[1], s[2]) for s in ss], [('hu', '1'), ('hu', '2'), ('er', '1'), ('er', '2')])
         self.assertEqual(ss[2][3], '')                                          # az eredeti alak nem kerül be
-        self.assertEqual(ss[1][7], '')                                          # kezi -> üres bizonyosság
+        self.assertEqual(len(ss[1]), len(E.SZO_FEJ))                            # a bizonyosság nem kerül be
+        self.assertEqual(len(ps[0]), len(E.PAR_FEJ))
+        self.assertNotIn('bizonyossag', E.PAR_FEJ + E.SZO_FEJ)
         self.assertEqual(vsorok, [['Gen.1.1', 'Kezdetben teremté Isten.']])
 
     def test_alakelteresnel_megall(self):
@@ -98,7 +100,7 @@ class Egyseg(unittest.TestCase):
     def test_nem_tr_jeloles(self):
         versek, parok, szavak = self._alap()
         konyvek, _ = E.atalakit(versek, parok, szavak, [{'vers': '1Móz 1:1', 'er_sorszam': '2'}])
-        self.assertEqual([p[8] for p in konyvek[0][1]], ['', 'igen'])
+        self.assertEqual([p[7] for p in konyvek[0][1]], ['', 'igen'])
 
 
 class Csomag(unittest.TestCase):
@@ -159,6 +161,24 @@ class Csomag(unittest.TestCase):
             f['MODSZER.md'] += '\n' + szo + '\n'
             self.assertTrue(bukasok(f, 'NYILVANOS'), szo)
 
+    def test_modell_egyezes(self):
+        # a két modell egyezése nem minősítés, a költségkeret-történet nem a közölt állapot leírása
+        for szo in ('`magas` bizonyosságú', 'alacsony bizonyosság', 'a költségkeret miatt', 'Gemini Flash',
+                    'két független modell párosította', 'For reasons of cost', 'two independent models aligned',
+                    'the confidence label', 'High confidence'):
+            f = self.uj()
+            f['METHODS.md' if szo[0].isupper() or szo.startswith(('two', 'the')) else 'MODSZER.md'] += '\n' + szo + '\n'
+            self.assertTrue(bukasok(f, 'NYILVANOS'), szo)
+        # a „bizonyosság” a mért pontosságot jelenti (DT-F175e): így megengedett
+        f = self.uj()
+        f['MODSZER.md'] += '\nA bizonyosság a mért pontosság: 95% (Mózes öt könyve).\n'
+        self.assertEqual(bukasok(f, 'NYILVANOS'), [])
+
+    def test_bizonyossag_oszlop(self):
+        f = self.uj()
+        f['parok/01_Gen.tsv'] = f['parok/01_Gen.tsv'].replace('\tallapot\t', '\tbizonyossag\tallapot\t', 1)
+        self.assertTrue(bukasok(f, 'TELJESSEG'))
+
     def test_kiadas_mondat(self):
         f = self.uj()
         f['README.md'] = f['README.md'].replace('Every file of the package is part of the release.', '')
@@ -217,7 +237,8 @@ class Csomag(unittest.TestCase):
 
     def test_szamok(self):
         N = self.N
-        self.assertEqual(N['par'], N['magas'] + N['alacsony'])
+        self.assertEqual(N['reteg_db'], 7)                                      # a két Mózes-réteg egy rétegben
+        self.assertEqual(N['rn_OSZ_mozes'], 400)
         self.assertEqual(N['par'], N['heber_par'] + N['gorog_par'])
         self.assertEqual(N['hu_token'], N['hu_parositva'] + N['hu_betoldas'] + N['hu_fuggoben'])
         self.assertEqual(N['er_token'], N['er_parositva'] + N['er_forditatlan'] + N['er_fuggoben'])

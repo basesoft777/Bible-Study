@@ -1111,7 +1111,7 @@ Olvasás/írás: `split('	')` / `'	'.join()` (a `csv` modul tilos, l. CLAUDE.md)
 | `hu_sorszam`, `hu_szo` | a Károli-token sorszáma (1-től) és szövege (`tokenek.tokenizal`, a `Karoli_1908.tsv` versszövegéből) |
 | `er_sorszam`, `er_szo` | az eredeti token sorszáma és ragozott alakja a `TAHOT_kivonat.tsv`-ből (soronkénti sorrend a versen belül) |
 | `strong` | a TAHOT `Strong-szám` mezője (pl. `H7225`; `H9001`–`H9049` a TAHOT morféma-kódjai) — a szkript veszi, modell nem írja |
-| `bizonyossag` | `magas` (mindkét modell ugyanazt a linket adta) \| `alacsony` (a két modell eltér, vagy csak az egyik ment át a kapun; a Sonnet változata kerül a táblába) \| `kezi` (mindkét modell kapuhibás; ilyen versnek nincs sora ebben a táblában, a vers az átnézési sorba kerül) |
+| `bizonyossag` | `magas` (mindkét modell ugyanazt a linket adta) \| `alacsony` (a két modell eltér, vagy csak az egyik ment át a kapun; a Sonnet változata kerül a táblába) \| `kezi` (mindkét modell kapuhibás; ilyen versnek nincs sora ebben a táblában, a vers az átnézési sorba kerül). **Belső szűrő, nem minősítés** (DT858, DT860): a két modell egyezése csak belső szabályként él (pl. a `szó-szintű-gépi` azonosítás csak `magas` párral, 2.2); nyilvános szövegbe (nyílt csomag, kódkönyv, közlemény, olvasó) a neve és a leírása nem kerül, és a nyilvános „bizonyosság” szó csak a mért pontosságot jelenti (a #172 mérése könyvcsoportonként, `f172/meres_eredmeny.tsv`, `f172/reteg_osszevont.tsv`) |
 | `forras` | `S+C` (egyezés) \| `S` (csak Sonnet) \| `C` (csak C) |
 
 **`szavak_<könyv>.tsv`** — tokenenként egy sor; minden Károli-token és minden eredeti token **pontosan egyszer**:
@@ -2382,7 +2382,108 @@ adata benne marad. Egy hely, gépileg olvasható: a jegyzéket csak az `eszkozok
 **Kulcs:** `id`. A sor törlése (a lap új cikkének elkészültekor) a befagyasztást megszünteti: onnantól a lap
 generálódik, és az E28 újra méri.
 
-### 2.60 `lapgen_bemenetek.tsv` — az új lapgenerátor bemeneti jegyzéke (F218a, FELADATOK #218, 2026-11-13)
+### 2.60 `heti_terv.tsv` — a heti terv sávonként (F222, FELADATOK #222, 2026-11-15)
+
+A heti beosztás kézi adata: **terv**, nem leltár. Az oldalt az `eszkozok/heti_beosztas.py` generálja; a sorokhoz a
+valós állapotot a brief fejlécéből és a PR-ból számolja, és ha van, az felülírja az `allapot_kezi` értékét. Az
+orkesztrátor tölti, a felhasználó jóváhagyja (`jovahagyva`). A kimenet nézet: a tervet itt kell szerkeszteni.
+
+| Oszlop | Tartalom |
+|---|---|
+| `het` | a keret-hét kezdete, `ÉÉÉÉ-HH-NN`: **szombat** (a keret szombaton 14:00 UTC-kor nullázódik); a hét a következő szombat 14:00 UTC-ig tart |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` (a brief `sav` mezőjének értékei) vagy két keretsor: `FELMERES` (a „felmérés” munkatípus saját kerete) · `TARTALEK` |
+| `sorrend` | egész: a sor helye a sávon belül (a hét sorrendje) |
+| `tetel` | a tétel: `F<nn>` vagy `#<nn>` (brief száma: ebből jön a valós állapot), `PR#<nn>` (PR; az állapota a PR-ból), `N-…` / szabad szöveg (csak kézi állapot), `-` (nincs konkrét tétel: a sor csak a célt és a keretet viszi) |
+| `cel_a_het_vegere` | olvasói nyelven: mi legyen kész a hét végére |
+| `modell` | a tervezett modell (és effort, ha eltér); `-`, ha még nincs kijelölve |
+| `becsult_keret_szazalek` | egész 0–100: a heti keret hány %-át viszi a sor. Egy hét sorainak összege 100 (a tartalék is sor) |
+| `allapot_kezi` | üres, vagy `kesz` · `csuszik` · `blokkolt` · `elhagyva`; az utolsó háromhoz indok kell: `csuszik: <indok>`. A valós állapot (brief, PR) felülírja |
+| `jovahagyva` | `igen` (a felhasználó jóváhagyta) · `javaslat` (az orkesztrátor javaslata) |
+| `megjegyzes` | szabad szöveg; a `Te:` kezdetű megjegyzés a felhasználó teendője, az oldal tetején is megjelenik |
+
+**Kulcs:** `het`, `sav`, `sorrend`. **Szabály:** lezárt tétel a mostani hét tervében nem áll: a `lezarva` brief vagy a
+`kesz` sor az oldalon csak a „Visszanézés” blokkba kerül (a felhasználó, 2026-11-15: „semmilyen lezárt tétel nem
+kell bele”). A sor a táblából nem törlődik: a lezárt hét sorai adják a visszanézést.
+
+### 2.61 `heti_keret.tsv` — az elhasznált heti keret (F222, 2026-11-15)
+
+Kézzel megadott érték, sávonként és hetente egy sor. A gépi mérés (`eszkozok/keret_meres.py`, 2.63–2.65) tölti az oldal
+„elhasznált” oszlopát, ha a generátort a `--meres` kapcsolóval futtatják; a kézzel megadott érték erősebb a mértnél.
+
+| Oszlop | Tartalom |
+|---|---|
+| `het` | mint a 2.60-ban |
+| `sav` | mint a 2.60-ban (a keretsorok is), és a mért `ORKESZTRACIO` (a gyökér-orkesztrátor) meg `ISMERETLEN` (nem rendelhető sávhoz) |
+| `elhasznalt_szazalek` | egész 0–100: a heti keret hány %-át használta el a sáv |
+| `ts` | a mérés ideje, `ÉÉÉÉ-HH-NNTÓÓ:PP` (UTC) |
+| `forras` | honnan jött az érték (pl. `get_usage`, `becsles`) |
+
+**Kulcs:** `het`, `sav`. Ha egy hétre nincs sor, az oldal „nincs megadva” jelzést ír, nulla értéket nem talál ki.
+
+### 2.62 `otlettar.tsv` — az ötlettár (F222, 2026-11-15)
+
+A szétszórt felvetések egy helye. **Csak nyilvántart:** a tétel itt nem döntés és nem feladat; a döntés a `DONTESEK.md`-be,
+a feladat briefbe kerül, és ide csak a hivatkozás. A „felmérés” munkatípus kimenete döntés vagy brief-javaslat; az
+állapot `felmerendo` tételei a heti beosztás „Felmérés / ötlet” sávjában jelennek meg.
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | `OT<nnn>`, egyedi, nem változik |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` |
+| `cim` | olvasói nyelven: mi a felvetés |
+| `forras` | ki, mikor, hol: a felhasználó vagy más, a dátum, és a hely (memóriafájl, jegyzet, brief, DT/N) |
+| `allapot` | `otlet` · `felmerendo` · `elvetve: <hivatkozás>` · `briefbe_ment: <hivatkozás>` (az utolsó kettő hivatkozása kötelező: DT, F vagy a felhasználó szava dátummal) |
+| `megjegyzes` | szabad szöveg: mi a következő lépés, mi a feltétele |
+
+**Kulcs:** `id`. Az állapot a felhasználó szavából jön: felvetést nem rögzítünk döntésként (a felhasználó, 2026-11-01).
+
+### 2.63 `keret_sulyok.tsv` — a keretfogyás súlytáblája (F222, 2026-11-15)
+
+A `eszkozok/keret_meres.py` ebből súlyozza a session-átiratok üzeneteit: modellenként és tokenfajtánként a nyilvános
+listaár. Csak az **arány** számít (az érték „ár-egyenérték”: USD a listaáron); a százalékot a 2.65 kalibrációja adja.
+A sort a modellnév **leghosszabb egyező előtagja** választja (`claude-opus-5-5` a `claude-opus-5` előtt). Ismeretlen
+modellre a család (opus / sonnet / haiku / fable) első sora szolgál, és a mérés jelzi.
+
+| Oszlop | Tartalom |
+|---|---|
+| `modell` | a modellnév előtagja, kötőjelekkel (`claude-sonnet-5-5`) |
+| `csalad` | `opus` · `sonnet` · `haiku` · `fable` (a Fable a saját keretéből is fogy: külön összegként látszik) |
+| `input`, `cache_5m`, `cache_1h`, `cache_olvasas`, `output` | az ár USD / millió tokenre: a bemenet, a gyorsítótár-írás (5 perces, 1 órás), a gyorsítótár-olvasás, a kimenet |
+| `forras` | az árlista címe és a lekérés dátuma (kötelező) |
+
+**Kulcs:** `modell`. Az árlista változásakor a sor frissül, a forrásban az új dátummal; a régi mérések újraszámolhatók.
+
+### 2.64 `keret_munkamappa.tsv` — a munkamappa → sáv kézi leképezés (F222, 2026-11-15)
+
+A mérés a session sávját így találja meg: **(1) ez a tábla** → (2) a session címének előtagja (`SYSTEMS · …`,
+`CONTENT · …`, `Felmérés: …`) → (3) az ág briefjének `sav` mezője → `ISMERETLEN`. Ide azok a munkamappák kerülnek,
+amelyek sávja gépileg nem érhető el (pl. a gyökér-orkesztrátor).
+
+| Oszlop | Tartalom |
+|---|---|
+| `munkamappa` | a session munkamappájának (cwd) egy jellemző részlete, kis-nagybetűtől függetlenül (pl. `orkesztrator-uj-cikkek`) |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` · `FELMERES` · `ORKESZTRACIO` |
+| `megjegyzes` | ki és mikor adta a leképezést |
+
+**Kulcs:** `munkamappa` (az első egyező sor érvényes).
+
+### 2.65 `heti_keret_meres.tsv` — a keret kalibrációs pontjai (F222, 2026-11-15)
+
+A szolgáltató alkalmazásában látott százalék egy időpontban. Az orkesztrátor tölti az alkalmazás adataiból. A mérés ebből
+számol szorzót: a súlyozott egység hány százalék (a legkisebb négyzetek módszere az origón át, a hét pontjaiból; külön
+szorzó a heti és a Fable keretre). Pont nélkül a mérés csak arányokat ad, százalékot nem.
+
+| Oszlop | Tartalom |
+|---|---|
+| `ts` | az időpont, `ÉÉÉÉ-HH-NNTÓÓ:PP` (UTC); a keret-hét a szombat 14:00 UTC-től tart |
+| `heti_szazalek` | a heti keret (minden modell) elhasznált része, 0–100 |
+| `fable_szazalek` | a Fable-keret elhasznált része, 0–100 |
+| `forras` | honnan jött a két érték (kötelező) |
+
+**Kulcs:** `ts`. **Pontosság:** az arány megbízható, a százalék becslés (a keretet a szolgáltató nem a listaár szerint számolja;
+a pontok kevesek). A Fable szorzója 0%-os pontból nem számolható.
+
+### 2.66 `lapgen_bemenetek.tsv` — az új lapgenerátor bemeneti jegyzéke (F218a, FELADATOK #218, 2026-11-13)
 
 Az új lapgenerátor (`eszkozok/lapgen/`) bemeneti rétege csak azt a fájlt nyitja meg, amelynek sora van ebben a
 táblában: az útvonal innen jön, a kódban adat-útvonal nem áll. Egy sor egy bemenet. A `B01`–`B64` azonosító a
@@ -2407,7 +2508,7 @@ nélkül hiba (a `lapgen/tesztek` statikus tesztje őrzi).
 mutat (`B68`): a jegyzék olvasása így kerül az olvasási naplóba (naplózás nélküli olvasás nincs); e sor nélkül a
 generátor nem indul el.
 
-### 2.61 `lapgen_sablonok.tsv` — a lap gépi mondatai (F218a, DT823, 2026-11-13)
+### 2.67 `lapgen_sablonok.tsv` — a lap gépi mondatai (F218a, DT823, 2026-11-13)
 
 A lap látható szövege csak kézi prózából, strukturált értékű sablonmondatból vagy szó szerinti idézetből jöhet
 (DT823; a szabály szövege: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`). Ez a tábla a sablonmondatok egyetlen
@@ -2425,7 +2526,7 @@ helye: a megjelenítő más forrásból gépi mondatot nem ír.
 **Kulcs:** `kulcs`. Az `eredet=uj` sorokat a felhasználó hagyja jóvá; a betűre átvett mondat nem igényel
 jóváhagyást.
 
-### 2.62 `olvasoi_nevtabla.tsv` — a belső kulcsok olvasói neve (F218a, DT823, 2026-11-13)
+### 2.68 `olvasoi_nevtabla.tsv` — a belső kulcsok olvasói neve (F218a, DT823, 2026-11-13)
 
 Minden belső kulcsnak (forrás, mező, állapot, szerep, háló, igazolás, azonosság és a többi zárt értékkészlet)
 olvasói neve van ebben a táblában; a lapra a kulcs soha nem kerül, csak a neve. **Ismeretlen kulcs kemény
@@ -2448,7 +2549,7 @@ Csak annak a címkének kell sor, amelynek a cellakezdő alakja eltér magától
 prózaként áll, nem sablonszövegként). **Kapu:** a cellakezdő alak a címkétől csak a kezdő névelőben és a
 kezdőbetűben térhet el, és a kulcsának létező címkére kell mutatnia; különben a generálás megáll.
 
-### 2.63 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
+### 2.69 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
 
 A lánc szava nélküli tematikus hely (az `elofordulasok.tsv` sorának `gerinc_elem` mezője `tematikus:` kezdetű, a
 `strong` mezője üres) a 2. tábla sorában a vers saját, nem lánc-szavát mutatja (DT837: a szó adatból jön, nem

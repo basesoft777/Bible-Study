@@ -33,8 +33,7 @@ A kulcs a vers OSIS-azonosítója (`Gen.1.1`) és a szó sorszáma a versen bel�
 ahány eredeti szóhoz párosítva van; a pár nélküli szó egy sorban. A modern szöveg olvasásához a `kieso` oszlop
 üres sorait kell a `token` sorrendjében venni, szavanként egyszer; a szöveg írásjelekkel a `versek.tsv`-ben áll.
 
-A párosítás gépi javaslat, mért pontossággal (`MODSZER.md`, 5. pont); a `bizonyossag` oszlop jelzi, hol egyezett két
-független modell.
+A párosítás gépi javaslat, mért pontossággal (`MODSZER.md`, 5. pont).
 
 ## Kapcsolódó adatkészletek
 

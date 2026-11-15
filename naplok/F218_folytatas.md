@@ -193,7 +193,7 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 - **A megjegyzések is bájtra egyeznek:** a régi lap `<!-- eredeti: … -->` megjegyzéseit az új generátor `Proveniencia`-ként, ugyanabból a szerkezetből állítja elő, mint a látható mondatot (két párhuzamos megjelenítés, nem egymásból képzett szöveg).
 - **A szótári gerinc megosztása:** a forrás szerkezetének feloldása (melyik példahely melyik szócikké, szakaszjel, címke, glossza) a `bemenet/gerinc.py`; a döntés (melyik címke áll a soron, és miért) a `szamitas/szotari_gerinc.py`, szerkezetként (`Indok` fajtával); a mondat a megjelenítőben, a sablontáblából.
 - **Újrahasznosított régi segédmodulok** (tiszta függvények, az útvonalat a jegyzékből kapják): `heber_kiejtes`, `kiejtes`, `bdb_tagolas`, `bdb_rovidites`, `szotari_glossza`. A `lexikon_general.py`-ból az új kód semmit nem importál.
-- **T3:** a tematikus hely saját szava külön kézi táblában (`adat/tematikus_sajat_szo.tsv`, B67, SEMA 2.63; DT-F218i), nem az `elofordulasok.tsv` új oszlopában.
+- **T3:** a tematikus hely saját szava külön kézi táblában (`adat/tematikus_sajat_szo.tsv`, B67, SEMA 2.69; DT-F218i), nem az `elofordulasok.tsv` új oszlopában.
 
 ## A régi generátorból visszafejtett szabályok (S1)
 
