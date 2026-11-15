@@ -41,4 +41,4 @@ Benne: a három parancsfájl, a hibanapló, a jelentés. Nincs benne: `NYITOTT_F
 
 ## 5. Döntésnapló
 
-DT-F221a (`dontesek/uj/youthful-pare-e6946f.md`).
+DT852 (`dontesek/uj/youthful-pare-e6946f.md`).

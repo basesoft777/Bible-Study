@@ -9,5 +9,5 @@
 Kész beszúrás, a „Közös koordinációs fájlok …” bekezdés **elé** (a `## Törzs` előtti részbe):
 
 ```
-**Hatókör-szűkítés (DT-F221a).** Ha egy brief vagy egy döntés egy ellenőrzés hatókörét szűkíti (lektor, független ellenőr, kapu, olvasói átnézés), a briefben vagy a döntéssorban kötelező kimondani: (a) mi marad ezzel ellenőrzés nélkül; (b) mi méri helyette. Ha a (b)-re nincs válasz, az ⛔: a felhasználó dönt. A `/befogad` a javaslatban jelzi, ha a brief hatókört szűkít (2. lépés). *(Eset: DT742, #685: a független ellenőr a generált lapot már nem olvassa, és ezt senki nem pótolta; hibanapló: M-VAKFOLT.)*
+**Hatókör-szűkítés (DT852).** Ha egy brief vagy egy döntés egy ellenőrzés hatókörét szűkíti (lektor, független ellenőr, kapu, olvasói átnézés), a briefben vagy a döntéssorban kötelező kimondani: (a) mi marad ezzel ellenőrzés nélkül; (b) mi méri helyette. Ha a (b)-re nincs válasz, az ⛔: a felhasználó dönt. A `/befogad` a javaslatban jelzi, ha a brief hatókört szűkít (2. lépés). *(Eset: DT742, #685: a független ellenőr a generált lapot már nem olvassa, és ezt senki nem pótolta; hibanapló: M-VAKFOLT.)*
 ```
