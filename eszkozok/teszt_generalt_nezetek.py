@@ -248,7 +248,16 @@ def teszt_nincs_regi_fogyaszto():
     ellenoriz(not talalt, 'a kivezetett E28-listát egy szkript sem olvassa' + ('' if not talalt else ': %s' % talalt))
 
 
+def teszt_dt_normalizalas():
+    """3.4 (b): a számkiosztás a lapon a DT-tokent és a feloldott döntésdátumot hozza (lexikon_general _DT_RX)."""
+    ellenoriz(G._dt_norm('(szerkesztői döntés) DT-F12a') == G._dt_norm('(szerkesztői döntés, 2026-10-19) DT812'),
+              '(b) a feloldott döntésdátum és a DT-szám egyaránt normalizált')
+    ellenoriz(G._dt_norm('2026-10-19 más szöveg') != G._dt_norm('2026-10-20 más szöveg'),
+              '(b) a döntésen kívüli dátum nem normalizált')
+
+
 def main():
+    teszt_dt_normalizalas()
     teszt_valos_jegyzek()
     teszt_negativ()
     teszt_ir_es_orzes()

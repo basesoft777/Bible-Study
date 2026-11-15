@@ -1686,9 +1686,12 @@ class E29Teszt(unittest.TestCase):
         t = self._fut('# tiszta lap\n', extra={'motivumok/ZZTESZT-001.md': '【NAPLO: forrasban szabad】\n'})
         self.assertEqual(t, [])
 
-    def test_befagyasztott_lap_nincs_a_listan(self):
+    def test_befagyasztott_lap_is_a_hatokorben(self):
+        # F217: az E29 a befagyasztott (kiadott) lapot is nézi; a törzscikkes, régi szerkezetű lap nincs benne
         t = self._fut('# Lap\n【NAPLO: x】\n', extra={'adat/lap_befagyasztas.tsv':
                                                      'id\tok\tdontes\tdatum\nZZTESZT-001\tteszt\tteszt\t2026-11-15\n'})
+        self.assertEqual(len(t), 1)
+        t = self._fut('# Lap\n【NAPLO: x】\n', extra={'lexikon/ZZTESZT-001_TORZSCIKK.md': '# régi törzscikk\n'})
         self.assertEqual(t, [])
 
     def test_ures_lista_nulla_talalat(self):

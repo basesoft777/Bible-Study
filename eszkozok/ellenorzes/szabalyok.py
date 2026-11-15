@@ -2051,6 +2051,18 @@ def _migralt_lista():
             for azon in G.aktiv_lapok(ROOT)]
 
 
+def _e29_lista():
+    """Az E29 hatóköre (F217): a forrásból generált lapok a befagyasztottakkal együtt (`generalt_nezetek.migralt_lapok`,
+    a korábbi lista öt lapja); a befagyasztott lap kimenete is kiadható kimenet."""
+    G = _generalt_nezetek_modul()
+    if not os.path.exists(os.path.join(ROOT, *G.JEGYZEK.split('/'))):
+        return []
+    sorszam = next((n for n, d in G.jegyzek(ROOT) if d.get('id') == G.LAP_SOR), 0)
+    minta = G.sor(G.LAP_SOR, ROOT)['utvonal']
+    return [(sorszam, {'id': azon, 'fajl': minta.replace('<ID>', azon), 'cel': 'lexikon', 'melyseg': 'apparatus'})
+            for azon in G.migralt_lapok(ROOT)]
+
+
 def _befagyasztott_idk():
     """F212 (a befagyasztási döntés): a befagyasztott lapok (`adat/lap_befagyasztas.tsv`, az `eszkozok/lap_befagyasztas.py`
     olvasójával; a tesztben átállított ROOT alól)."""
@@ -2376,7 +2388,7 @@ def e29_kiadhato_kimenet_tisztasaga(fajlok):
     mélység szerinti mintákra; bármely találat HIBA (fájlszintű, D6). A `fajlok`
     paramétert nem használja: minden PR-en és --teljes módban fut."""
     talalatok = []
-    for sorszam, d in _migralt_lista():
+    for sorszam, d in _e29_lista():
         relut = d['fajl'].strip()
         melyseg = d.get('melyseg', '').strip()
         if melyseg not in E28_MELYSEGEK:

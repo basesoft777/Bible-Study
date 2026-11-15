@@ -76,11 +76,12 @@ jobs:
 
       # F217: a generalt nezeteket (lap, marker-blokkok, nyilt mag) a main-en az Action irja; itt a runner munkapeldanyan
       # ideiglenesen generalodnak (nem commitol), es a lemezt olvaso kapuk (E29, E38, E39, E1) mar a friss nezeten futnak.
-      # A gepi commit futasaban (bot) nem general: ott a commitolt vegallapot a merce (E28/E35 szigoru, PARDES_GENERALT_SZIGOR).
-      # Kilepesi kod: 1 = generalasi hiba (bukas); 2 = orzott (kiadott) lap valtozna -- azt az E28 (4) jelzi HIBA-val.
+      # A main gepi commitjanak futasaban (push, bot) nem general: ott a commitolt vegallapot a merce (E28/E35 szigoru,
+      # PARDES_GENERALT_SZIGOR). Kilepesi kod: 1 = generalasi hiba (a lepes bukik); 2 = orzott (kiadott) lap valtozna uj
+      # kiadas nelkul -- a lepes tovabbmegy (a kapuk lefutnak), a vegso bukas-lepes a kodot (GENERALT_KILEPES) nezi.
       - name: F217 -- generalt nezetek ideiglenes ujragenerálasa a jegyzek szerint (nem commitol)
         id: generalt
-        if: ${{ !endsWith(github.actor, '[bot]') }}
+        if: ${{ !(github.event_name == 'push' && endsWith(github.actor, '[bot]')) }}
         env:
           DIFF_ALAP: ${{ steps.diff.outputs.base }}
           DIFF_FEJ: ${{ steps.diff.outputs.head }}
@@ -102,7 +103,9 @@ jobs:
             git diff --stat -- lexikon nyilt_mag motivumlog/PaRDeS_motivumok.md Lezart_tematikus_tanulmanyok_index.md NYITOTT_FELADATOK.md
           } >> "$GITHUB_STEP_SUMMARY"
           cat generalt_jelentes.md
+          echo "kilepes=$KG" >> "$GITHUB_OUTPUT"
           if [ "$KG" = "1" ]; then echo "F217: generalasi hiba"; exit 1; fi
+          if [ "$KG" = "2" ]; then echo "F217: orzott (kiadott) lap valtozna uj kiadas nelkul (l. a jelentest); a vegso lepes bukik"; fi
           exit 0
       # F217.8: a friss lapok es a main-hez mert diffjuk CI-artefaktkent letoltheto (atnezes a repon kivul; a repoba nem kerul)
       - name: F217.8 -- a friss lapok es a diffjuk artefaktkent
@@ -125,7 +128,7 @@ jobs:
           PR_CIM: ${{ github.event.pull_request.title }}
           EVENT_NEV: ${{ github.event_name }}
           # F217: a commitolt es az ujragenerált nezet elterese csak a gepi commit futasaban HIBA, mashol JELENTES
-          PARDES_GENERALT_SZIGOR: ${{ endsWith(github.actor, '[bot]') && '1' || '0' }}
+          PARDES_GENERALT_SZIGOR: ${{ (github.event_name == 'push' && endsWith(github.actor, '[bot]')) && '1' || '0' }}
         run: |
           set +e
           if [ -s valtozott_fajlok.txt ]; then
@@ -283,9 +286,10 @@ jobs:
           E2E16_KILEPES: ${{ steps.e2e16.outputs.kilepes }}
           E1_KILEPES: ${{ steps.e1.outputs.kilepes }}
           TESZT_KILEPES: ${{ steps.tesztek.outputs.kilepes }}
+          GENERALT_KILEPES: ${{ steps.generalt.outputs.kilepes || '0' }}
         run: |
-          if [ "$E2E16_KILEPES" != "0" ] || [ "$E1_KILEPES" != "0" ] || [ "$TESZT_KILEPES" != "0" ]; then
-            echo "Van HIBA-szintu talalat vagy bukott teszt (E2-E29 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES, tesztek: $TESZT_KILEPES)."
+          if [ "$E2E16_KILEPES" != "0" ] || [ "$E1_KILEPES" != "0" ] || [ "$TESZT_KILEPES" != "0" ] || [ "$GENERALT_KILEPES" != "0" ]; then
+            echo "Van HIBA-szintu talalat vagy bukott teszt (E2-E29 kilepes: $E2E16_KILEPES, E1 kilepes: $E1_KILEPES, tesztek: $TESZT_KILEPES, F217 generalas: $GENERALT_KILEPES)."
             exit 1
           fi
           echo "Minden ellenorzes RENDBEN."

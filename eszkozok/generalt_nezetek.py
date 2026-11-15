@@ -73,6 +73,13 @@ _B = re.compile(r'^!?B\d{2,3}$')
 _B_TARTOMANY = re.compile(r'^B(\d{2,3})\.\.B(\d{2,3})$')
 _TS = re.compile(r'GENERÁLT[^\n]*?\bts=(\d{4}-\d{2}-\d{2})')
 _DT = re.compile(r'\bDT-?F?\d+[a-z]?\b')
+# az olvasói szövegben a DT-szám helyén „szerkesztői döntés”, végleges számnál a feloldott dátummal
+# (lexikon_general: _DT_RX → dontes_datum); a számkiosztás ezt a dátumot is hozza (3.4 (b))
+_DT_DATUM = re.compile(r'szerkesztői döntés(?:, \d{4}-\d{2}-\d{2})?')
+
+
+def _dt_norm(szoveg):
+    return _DT_DATUM.sub('szerkesztői döntés#', _DT.sub('DT#', szoveg))
 
 
 # ---------------------------------------------------------------------------
@@ -260,8 +267,13 @@ def _lap_ut(minta, azon):
 def aktiv_lapok(gyoker=ROOT):
     """A G01 ID-halmaza: van `motivumok/<ID>.md` és commitolt lap, és a lap nincs befagyasztva.
     (Az új cikk lapját az ág egyszer, a születésekor commitolja; onnan a main-en az Action tartja karban.)"""
-    minta = sor(LAP_SOR, gyoker)['utvonal']
     fagy = befagyasztott_idk(gyoker)
+    return [a for a in _lapos_forrasok(gyoker) if a not in fagy]
+
+
+def _lapos_forrasok(gyoker):
+    """Az ID-k, amelyeknek van `motivumok/<ID>.md` forrása és commitolt lapja (G01-útvonal)."""
+    minta = sor(LAP_SOR, gyoker)['utvonal']
     ki = []
     mdir = os.path.join(gyoker, 'motivumok')
     if not os.path.isdir(mdir):
@@ -270,11 +282,16 @@ def aktiv_lapok(gyoker=ROOT):
         if not nev.endswith('.md'):
             continue
         azon = nev[:-3]
-        if azon in fagy:
-            continue
         if os.path.exists(os.path.join(gyoker, *_lap_ut(minta, azon).split('/'))):
             ki.append(azon)
     return ki
+
+
+def migralt_lapok(gyoker=ROOT):
+    """A forrásból generált (migrált vagy új) lapok a befagyasztottakkal együtt: van forrás és lap, és nincs
+    törzscikk (a migráció archiválta, D6). Az E29 hatóköre: a befagyasztott lap kimenete is kiadható kimenet."""
+    return [a for a in _lapos_forrasok(gyoker)
+            if not os.path.exists(os.path.join(gyoker, 'lexikon', a + '_TORZSCIKK.md'))]
 
 
 def lap_fajlok(azon, gyoker=ROOT):
@@ -346,7 +363,7 @@ def orzes_sertes(azon, relut, commitolt, generalt, gyoker=ROOT):
         return None
     if not kiadott(azon, gyoker):
         return None
-    if _DT.sub('DT#', commitolt) == _DT.sub('DT#', generalt):
+    if _dt_norm(commitolt) == _dt_norm(generalt):
         return None   # (b) számkiosztás: csak a DT-szám változott
     try:
         p = subprocess.run(['git', 'log', '-1', '--format=%H', '--', relut], cwd=gyoker,
@@ -592,7 +609,11 @@ def ir(gyoker=ROOT, csak_id=None):
 def gyoker_mod(cel, csak_id=None):
     """Átnézés: a lapok generálása a `cel` könyvtár alá (a repón kívül), a dátumszabállyal. (kód, jelentés)."""
     cel = os.path.abspath(cel)
-    if os.path.commonpath([cel, ROOT]) == ROOT:
+    try:
+        repon_belul = os.path.commonpath([cel, ROOT]) == ROOT
+    except ValueError:   # Windows: más meghajtó, tehát a repón kívül
+        repon_belul = False
+    if repon_belul:
         return 1, ['HIBA: a --gyoker a repón kívüli könyvtár kell legyen: %s' % cel]
     jel = ['## Ideiglenes generálás (átnézés, F217.8)', '']
     lapok = aktiv_lapok(ROOT)
