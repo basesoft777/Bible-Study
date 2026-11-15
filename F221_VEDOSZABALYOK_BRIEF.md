@@ -4,6 +4,7 @@ cim: Két védőszabály a szabályhelyekre (hatókör-szűkítés, felhasznál�
 kod: VEDOSZABALYOK
 tipus: feladat
 fazis: folyamat
+sav: SYSTEMS
 modell: sonnet
 allapot: fut
 ad: a hatókör-szűkítés szabálya (kimondni, mi marad ellenőrzés nélkül és mi méri helyette) és a „felhasználó által talált hiba = hibanapló-tétel” szabály a repó szabályhelyein; a hibanapló három új mechanizmussal (M-RÁRAKÓDÁS, M-GAZDÁTLAN, M-VAKFOLT)
@@ -40,4 +41,4 @@ Benne: a három parancsfájl, a hibanapló, a jelentés. Nincs benne: `NYITOTT_F
 
 ## 5. Döntésnapló
 
-DT-F221a (`dontesek/uj/youthful-pare-e6946f.md`).
+DT852 (`dontesek/uj/youthful-pare-e6946f.md`).
