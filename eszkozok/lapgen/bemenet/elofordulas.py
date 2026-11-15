@@ -169,6 +169,7 @@ def b03_elofordulasok(b, motivum):
 _KERESZT_RX = re.compile(r'^(.+?)\s+(\d+):(\d+)-(\d+):(\d+)$')
 _SAV_RX = re.compile(r'^(.+?)\s+(\d+):(\d+)-(\d+)$')
 _VERS_RX = re.compile(r'^(.+) (\d+):(\d+)$')
+_KAROLI_KULCS_RX = re.compile(r'^\S+ \d+:\d+$')
 
 
 class Karoli:
@@ -177,6 +178,13 @@ class Karoli:
     def __init__(self, b, szovegek, konyvenkent):
         self._b, self._szovegek, self._konyvenkent = b, szovegek, konyvenkent
         self._sorrend = None
+
+    def halmaz(self):
+        """(a versek kulcsai, a könyvek): a szótári hivatkozás Károli-ellenőrzéséhez (a régi `karoli_versek`)."""
+        if not hasattr(self, '_halmaz'):
+            versek = {k for k in self._szovegek if _KAROLI_KULCS_RX.match(k)}
+            self._halmaz = (versek, {k.rsplit(' ', 1)[0] for k in versek})
+        return self._halmaz
 
     def sorrend(self, igehely):
         """A vers helye a Károli-fordítás rendjében (egy fejezeten belüli tartománynál az első versé); az ott nem

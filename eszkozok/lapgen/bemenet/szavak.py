@@ -15,9 +15,11 @@ import unicodedata
 
 import heber_kiejtes
 import kiejtes as kiejtes_modul
+import kiejtes_szoveg
 
 from lapgen import konfig
 from lapgen.bemenet.jegyzek import BemenetHiba
+from lapgen.szoveg import Strong
 
 _ZARO_IRASJEL_RX = re.compile(r'[,.;·]+$')
 _TAHOT_OSZLOPOK = ('Igehely', 'Strong-szám', 'Ragozott alak', 'Kiejtés')
@@ -359,6 +361,74 @@ class Kiejtes:
         return szotari.kiejtes
 
 
+    # --- a szövegben álló szó kiejtése (a 4.2 kártya kiejtés-pótlása; a régi `kiejtes_szoveg.heber_kiejtes`) ---------
+    def _jovahagyott_szovegszo(self):
+        if not hasattr(self, '_jovahagyott'):
+            d = {kiejtes_szoveg.heber_kulcs(alak): k for alak, k in self._heber_kivetelek.items()
+                 if re.search(kiejtes_szoveg.HEBER, alak)}
+            step = {alak: k for alak, k in self._heber_kivetelek.items() if not re.search(kiejtes_szoveg.HEBER, alak)}
+            if step:
+                for strong_kod, (lemma, atiras) in b10_lemmak(self._b)[0].items():
+                    if strong_kod.startswith(_HEBER_ELOTAG) and atiras in step:
+                        d.setdefault(kiejtes_szoveg.heber_kulcs(lemma), step[atiras])
+            vaz = {}
+            for k, v in d.items():
+                vaz.setdefault(''.join(c for c in k if 'א' <= c <= 'ת'), set()).add(v)
+            self._jovahagyott = (d, vaz)
+        return self._jovahagyott
+
+    def szoveg_heber_kiejtes(self, szo):
+        """Egy szövegben álló héber szó vagy szókapcsolat kiejtése: a jóváhagyott alak (szavanként, egyjegyű
+        előtaggal is), híján a mássalhangzó-váz egyértelmű jóváhagyott alakja, híján a pontozott szó gépi kiejtése;
+        None, ha egyik sincs. Forrásszövegként (B12, illetve B13)."""
+        jo, vaz = self._jovahagyott_szovegszo()
+        ki, elo, gepi = [], '', False
+        szavak = kiejtes_szoveg.SZO_ELVALASZTO.split(szo)
+        for wi, w in enumerate(szavak):
+            k = kiejtes_szoveg.heber_kulcs(w)
+            m0 = kiejtes_szoveg.ELOTAG_RE.match(k)
+            if m0 and m0.end() == len(k) and wi < len(szavak) - 1:
+                elo = kiejtes_szoveg.ELOTAG_KIEJTES[m0.group(1)]
+                continue
+            if k in jo:
+                ki.append(elo + jo[k])
+                elo = ''
+                continue
+            m = kiejtes_szoveg.ELOTAG_RE.match(k)
+            if m and k[m.end():] in jo:
+                ki.append(kiejtes_szoveg.ELOTAG_KIEJTES[m.group(1)] + jo[k[m.end():]])
+                continue
+            massalhangzok = ''.join(c for c in k if 'א' <= c <= 'ת')
+            if massalhangzok == k and len(vaz.get(k, ())) == 1:
+                ki.append(next(iter(vaz[k])))
+                continue
+            g = self._heber_gepi(w, 0, False)
+            if g:
+                ki.append(elo + g)
+                elo, gepi = '', True
+                continue
+            return None
+        return self._b.forrasszoveg('B13' if gepi else 'B12', 'kiejtes', ' '.join(ki), szo)
+
+    def szoveg_gorog_kiejtes(self, szo):
+        """Egy szövegben álló görög szó vagy szókapcsolat kiejtése szavanként (a régi `kiejtes_szoveg.gorog_kiejtes`): ha
+        a szó a rövid szótár vagy a kétnyelvű szótár címszava (egyetlen Strong-számmal, és a kiírt alak maga a lemma),
+        a lemma kiejtése; különben a kiírt alak gépi átírásának magyaros alakja."""
+        from lapgen.bemenet.szotari import lemma_strong_index
+        index = lemma_strong_index(self._b, self.lemmak())
+        ki = []
+        for w in szo.split():
+            nfc = unicodedata.normalize('NFC', w)
+            strongok = [x for x in index.get(nfc, ()) if x.startswith('G')]
+            szotari = self.szotari(Strong(strongok[0])) if len(strongok) == 1 else None
+            if szotari is not None and unicodedata.normalize('NFC', szotari.alak.ertek) != nfc:
+                szotari = None
+            if szotari is not None and szotari.kiejtes is not None:
+                ki.append(szotari.kiejtes.ertek)
+            else:
+                ki.append(kiejtes_modul.atir(gorog_gepi_atiras(w), self._szabalyok, self._gorog_kivetelek))
+        return self._b.forrasszoveg('B12', 'kiejtes', ' '.join(ki), szo)
+
 _SPIRITUS_ASPER = '\u0314'
 _ELSO_BETU_RX = re.compile(r'[^\W\d_]([\u0300-\u036f]*)')
 
@@ -384,3 +454,39 @@ def _heber_alap(alak):
 def kiejtes(b):
     """A kiejtés-szolgáltatás a munkamenethez."""
     return b.egyszer('kiejtes', lambda: Kiejtes(b))
+
+
+# --- kiejtés-pótlás a kész lap sorában (a régi `kiejtes_szoveg.potol`; a 4.2 kártya használja) ---------------------
+def _szo_kulcs(szo):
+    return kiejtes_szoveg.heber_kulcs(szo) if re.match(kiejtes_szoveg.HEBER, szo) else kiejtes_szoveg.alap(szo)
+
+
+def latott_kulcsok(szoveg, latott):
+    """A szöveg héber és görög szavainak kulcsai a látott szavak közé."""
+    for m in kiejtes_szoveg.SZO.finditer(szoveg):
+        szo = m.group(0)
+        latott.add(_szo_kulcs(szo))
+        if re.match(kiejtes_szoveg.HEBER, szo):
+            latott.update(kiejtes_szoveg.heber_kulcs(w) for w in kiejtes_szoveg.SZO_ELVALASZTO.split(szo))
+
+
+def potlas_helyek(sor, kovetkezo, latott, kiejto):
+    """[(pozíció, kiejtés)]: a sorban a szakaszban először álló szók után, ha nincs mellettük kiejtés (a régi szabály:
+    a szó utáni zárójeles latin betű, sorvégen a következő sor eleje). A látott szavak halmaza frissül."""
+    ki = []
+    for m in kiejtes_szoveg.SZO.finditer(sor):
+        szo = m.group(0)
+        kulcs = _szo_kulcs(szo)
+        kell = kulcs not in latott
+        latott.add(kulcs)
+        if re.match(kiejtes_szoveg.HEBER, szo):
+            latott.update(kiejtes_szoveg.heber_kulcs(w) for w in kiejtes_szoveg.SZO_ELVALASZTO.split(szo))
+        utana = sor[m.end():]
+        if not utana.strip():
+            utana = kovetkezo or ''
+        if not kell or kiejtes_szoveg.KIEJTES_UTAN.match(utana):
+            continue
+        jav = kiejto(szo)
+        if jav is not None and jav.ertek:
+            ki.append((m.end() + len(kiejtes_szoveg.TOLDALEK.match(sor, m.end()).group(0)), jav))
+    return ki

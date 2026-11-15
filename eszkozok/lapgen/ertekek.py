@@ -81,3 +81,24 @@ class MaradtFajta(enum.Enum):
     SZO = 'szo'                       # a lánc szava vagy szavai (Strong-számok)
     NEVES_SZOPAR = 'neves_szopar'     # kézzel elnevezett szópár (a részei nem Strong-számok)
     TEMATIKUS = 'tematikus'           # a lánc szavai nélkül: tematikus, nem lexikai kapcsolat
+
+
+# --- a 4.2 kártya szegmentált idézetének jelölései (S3b) ---------------------------------------------------
+class JelFajta(enum.Enum):
+    MARK_NYIT = 'mark_nyit'          # adat: a motívum helye (Igehely)
+    MARK_ZAR = 'mark_zar'
+    ABBR_NYIT = 'abbr_nyit'          # adat: Feloldas
+    ABBR_ZAR = 'abbr_zar'
+    LRM = 'lrm'                      # a héber futam utáni irányjel
+    KAROLI = 'karoli'                # adat: (a Károli-alak, a forrás eredeti száma), mindkettő Forrasszoveg
+    NINCS_KAROLI = 'nincs_karoli'    # a szótár hivatkozása a Károliban nem létező versre
+    KIEJTES = 'kiejtes'              # adat: a kiejtés (Forrasszoveg)
+    CSONK = 'csonk'
+    IDEZET = 'idezet'                # a lapmodellben: az idézet-darab (a szegmentált idézet szövege)                  # a rövidített vázlatsor jele; adat: tapadt-e (szóköz nélkül)
+
+
+class FeloldasFajta(enum.Enum):
+    CIMSZO = 'cimszo'                # a címszó rövidítése: adat a címszó és a kiejtése
+    JAHVE = 'jahve'                  # a י׳ rövidítés
+    JAHVE_CIMSZO = 'jahve_cimszo'    # a י׳, ha a címszó is י-vel kezdődik: mindkettő
+    ALTALANOS = 'altalanos'          # a feloldás a szócikk szövegéből derül ki

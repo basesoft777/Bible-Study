@@ -12,7 +12,14 @@ import dataclasses
 import enum
 from typing import Optional, Tuple
 
+import bdb_rovidites
+
 from lapgen import bemenet, konfig
+from lapgen.bemenet import gerinc as gerinc_be
+from lapgen.bemenet import kartya as kartya_be
+from lapgen.bemenet import kartya_lap
+from lapgen.szamitas.kartya import Kartya
+from lapgen.szamitas import kartya as kartya_sz
 from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet import nyelvi_hatter as nyelvi_hatter_be
 from lapgen.bemenet import szavak as szavak_be
@@ -165,6 +172,7 @@ class Nyelvresz:
     versenkent: Versenkenti
     gorog_hatter: Optional[GorogHatter]
     heber_hatter: Optional[HeberHatter]
+    kartyak: Tuple[Kartya, ...] = ()        # a 4.2 kártyái (S3b: BDB a héber, Thayer a görög nyelvrészen)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -433,7 +441,41 @@ def _nyelvresz(f, nyelv, szavak, szerepek):
         versenkent=_versenkenti(f, nyelv, sajat),
         gorog_hatter=hatter,
         heber_hatter=(nyelvi_hatter_sz.szamit(f, f.motivum, sajat)
-                      if nyelv is Nyelv.HEBER and sajat and konfig.PONT_NYELVI_HATTER in pontok else None))
+                      if nyelv is Nyelv.HEBER and sajat and konfig.PONT_NYELVI_HATTER in pontok else None),
+        kartyak=(_kartyak(f, sajat, nyelv is Nyelv.HEBER) if sajat and konfig.PONT_MELYSEGI in pontok else ()))
+
+
+def _kartyak(f, sajat, heber):
+    """A 4.2 kártyái a nyelvrész szavaira (héberül BDB, görögül Thayer), a kész lap kiejtés-pótlásával (a nyelvrész
+    rendjében)."""
+    g = gerinc_be.gerinc(f.b)
+    karoli = bemenet.b07_karoli(f.b)
+    k = kartya_lap.Kornyezet(f.b, g, karoli, (v.kod for v in f.versek), f.konyvek, f.forditasok)
+    kartyak, latott = [], set()
+    for strong in sajat:
+        szotari = f.kiejtes.szotari(strong, f.versek)
+        if szotari is None:
+            raise bemenet.BemenetHiba('a(z) %s szónak nincs szótári alakja: a kártya nem készülhet el' % strong.kod)
+        lemma = szotari.alak.ertek
+        kiejtes = szotari.kiejtes.ertek if szotari.kiejtes is not None else ''
+        kartya_be.latott_kulcsok(lemma, latott)
+        szotar = kartya_lap.SZOTAR_BDB if heber else kartya_lap.SZOTAR_THAYER
+        versek, kut = [], []
+        for s in f.sorok:
+            if strong in s.strongok:
+                versek.extend(v.kod for v in karoli.versek(s.igehely))
+                if s.entry == strong and s.szotar.ertek == szotar:
+                    kut.append(gerinc_be.kutatoi_kulcs(s.jelentes_szam.ertek)[0])
+        if heber:
+            kartyak.append(kartya_lap.bdb_kartya(k, strong, dict.fromkeys(kut), versek, (
+                bdb_rovidites.cimszo_alak(lemma, kiejtes), bdb_rovidites.alapbetu(lemma))))
+        else:
+            kartyak.append(kartya_lap.thayer_kartya(k, strong, dict.fromkeys(kut), versek))
+    kartya_lap.kiejtes_menet(kartyak, latott, f.kiejtes.szoveg_heber_kiejtes if heber
+                             else f.kiejtes.szoveg_gorog_kiejtes)
+    forras = None if heber else kartya_sz.thayer_forras(f.forditasok)
+    return tuple(kartya_sz.modell(f.b, kk, None if heber else kartya_sz.ubs_sor(f, kk.strong), forras)
+                 for kk in kartyak)
 
 
 def szamit(korny):

@@ -59,6 +59,12 @@ def horgony_jel(horgony):
 
 
 OLVASOI_JEL = _jel('<!-- olvasói -->')
+IRANYJEL = _jel('\u200e')      # a héber futam utáni balról jobbra irányjel (a szótári idézetben, S3b)
+
+
+def behuzas(szint):
+    """A beágyazott lista behúzása (szintenként két szóköz)."""
+    return _jel('  ' * int(_szam(szint)))
 DETAILS_NYIT, DETAILS_ZAR = _jel('<details>'), _jel('</details>')
 SUMMARY_NYIT, SUMMARY_ZAR = _jel('<summary>'), _jel('</summary>')
 _CELLA_NYIT = _jel('| ')

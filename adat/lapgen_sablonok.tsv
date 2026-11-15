@@ -389,3 +389,99 @@ s4.p8.rokon.nem_talalhato	Nem azonosítható: a BDB-szócikk nem található	-	4
 s4.p8.rokon.nincs_adat	BDB-szócikkben nincs rokon nyelvi adat	-	4.8	blokk_visszhang_hatter + cellakezdet	-
 s4.p8.rokon.fonev_nincs	A főnév szócikkében nincs rokon nyelvi adat	-	4.8	blokk_visszhang_hatter (szövegcsere) + cellakezdet	-
 s4.p8.rokon.to_szerint	{elo}; a tő, a {to} ige szócikke szerint:	elo:lathato, to:lathato	4.8	blokk_visszhang_hatter	-
+s4.p2.bevezeto.heber	A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.	-	4.2	OLVASOI_SZEREP[2]	-
+s4.p2.bevezeto.dolt.heber	*Szavanként előbb a jelentések rendje áll a BDB szerint, rövid magyar meghatározással, és az, hogy a motívum helyein melyik jelentésben áll a szó (a jelentések rendjében félkövérrel); ahol a szótár a helyet nem idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes BDB-szócikk magyarul, a rövidítésekkel, az alakok jegyzékével és az igehelyekkel. A szócikkben kiemelve áll minden vers, amely a motívum helye, bármelyik szón áll a motívum sora; az egérmutató alatt a teljes igehellyel. A szótári rész a szóról szól; a hely funkcióját a motívumban a 2. szakasz táblázata adja.*	-	4.2	UJ_GERINC_BEVEZETO	-
+s4.p2.cim.heber	{strong} — {szo} · BDB	strong:strong, szo:lathato	4.2	gerinc_blokk	-
+s4.p2.rend.heber	**A jelentések rendje a BDB szerint**	-	4.2	bdb_olvasoi_reteg	-
+s4.p2.olv.szocikk	- *{nev}*	nev:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.szocikk.tovabbi	további szócikk	-	4.2	_szocikk_olvasoi_nev	-
+s4.p2.szocikk.arami	{nev} (arámi)	nev:lathato	4.2	_szocikk_olvasoi_nev	-
+s4.p2.olv.tagolatlan.felkover	- **A szócikk egésze** (nincs számozott jelentése) — {glossza}	glossza:lathato	4.2	bdb_olvasoi_reteg; nevelo_le	-
+s4.p2.olv.tagolatlan.felkover.ures	- **A szócikk egésze** (nincs számozott jelentése)	-	4.2	bdb_olvasoi_reteg; nevelo_le	-
+s4.p2.olv.tagolatlan.sima	- A szócikk egésze (nincs számozott jelentése) — {glossza}	glossza:lathato	4.2	bdb_olvasoi_reteg; nevelo_le	-
+s4.p2.olv.tagolatlan.sima.ures	- A szócikk egésze (nincs számozott jelentése)	-	4.2	bdb_olvasoi_reteg; nevelo_le	-
+s4.p2.olv.jel.felkover	**{jel}**	jel:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.olv.jel.szam	{jel}\.	jel:lathato	4.2	bdb_olvasoi_reteg (F182: a sor eleji számjel escape-elve)	-
+s4.p2.olv.sor.gondolatjel	- {jel} — {glossza}	jel:lathato, glossza:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.olv.sor.szokoz	- {jel} {glossza}	jel:lathato, glossza:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.olv.sor.csak_alak	- {jel} — a szótár csak alakot közöl ({n} hely)	jel:lathato, n:szam	4.2	bdb_olvasoi_reteg (DT-F104c, DT-F104d)	-
+s4.p2.olv.sor.csak_alak.ures	- {jel} — a szótár csak alakot közöl	jel:lathato	4.2	bdb_olvasoi_reteg (DT-F104c)	-
+s4.p2.olv.sor.kulon	- {jel} *(külön meghatározás nélkül)*	jel:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.helyein	**A motívum helyein:** {csoportok| · }.	csoportok:lista(lathato)	4.2	bdb_olvasoi_reteg	-
+s4.p2.helyein.ures	**A motívum helyein:** a szótár egyiket sem idézi.	-	4.2	bdb_olvasoi_reteg	-
+s4.p2.helyein.csoport	{versek} → {nevek|; }	versek:lathato, nevek:lista(lathato)	4.2	bdb_olvasoi_reteg	-
+s4.p2.helyein.nem_idezi	 A szótár ezt a helyet nem idézi: {versek}.	versek:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.helyein.tartomany	 Csak egy verstartomány részeként idézi, jelentésponthoz nem köthető: {versek}.	versek:lathato	4.2	bdb_olvasoi_reteg (DT382 (A))	-
+s4.p2.helyein.pont_nelkul	 A szótár idézi, de a jelentéspont nem azonosítható: {versek}.	versek:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.vers	{vers}	vers:igehely	4.2	_versek_rovid	-
+s4.p2.vers.resz	{vers}	vers:versresz	4.2	_versek_rovid (az ismételt könyvnév elmarad)	-
+s4.p2.pont.gondolatjel	{jel} — {glossza}	jel:lathato, glossza:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.pont.szokoz	{jel} {glossza}	jel:lathato, glossza:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.pont.jel	{jel}	jel:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.pont.szocikkel	{szocikk}, {pont}	szocikk:lathato, pont:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.pont.tagolatlan	a szócikk egésze — {glossza}	glossza:lathato	4.2	bdb_olvasoi_reteg	-
+s4.p2.pont.tagolatlan.ures	a szócikk egésze	-	4.2	bdb_olvasoi_reteg	-
+s4.p2.pont.csak_alakkent	a szótár csak alakként idézi	-	4.2	CSAK_ALAKKENT	-
+s4.p2.pont.bizonytalan	{pont} *(vonatkozhat; a hivatkozás bizonytalan: {okok|; })*	pont:lathato, okok:lista(lathato)	4.2	bdb_olvasoi_reteg (DT-F104e)	-
+s4.p2.app.cim	Szótári apparátus	-	4.2	APPARATUS_CIM	-
+s4.p2.app.fejcim.eleje	**BDB {szam}. szócikk · 	szam:szam	4.2	bdb_szocikk_fejcim; bdb_azonosito_olvashato	-
+s4.p2.app.fejcim.vege	** *(a {strong} {i}. BDB-szócikke a {n}-ből)*	strong:strong, i:szam, n:szam	4.2	gerinc_blokk	-
+s4.p2.app.fejcim.arami.eleje	**BDB {szam}. szócikk · 	szam:szam	4.2	bdb_szocikk_fejcim; bdb_azonosito_olvashato	-
+s4.p2.app.fejcim.arami.vege	 · arámi** *(a {strong} {i}. BDB-szócikke a {n}-ből)*	strong:strong, i:szam, n:szam	4.2	bdb_szocikk_fejcim	-
+s4.p2.app.fejcim.ures	**BDB {szam}. szócikk** *(a {strong} {i}. BDB-szócikke a {n}-ből)*	szam:szam, strong:strong, i:szam, n:szam	4.2	bdb_szocikk_fejcim	-
+s4.p2.app.fejcim.ures.arami	**BDB {szam}. szócikk · arámi** *(a {strong} {i}. BDB-szócikke a {n}-ből)*	szam:szam, strong:strong, i:szam, n:szam	4.2	bdb_szocikk_fejcim	-
+s4.p2.app.fej.eleje	**A szócikk feje (nyelvi háttér).** 	-	4.2	gerinc_blokk	-
+s4.p2.app.szakasz.cimke	- **{jel} — {cimke}**	jel:lathato, cimke:lathato	4.2	gerinc_szakasz_lista	-
+s4.p2.app.szakasz	- **{jel}**	jel:lathato	4.2	gerinc_szakasz_lista	-
+s4.p2.app.idezet.eleje	  > 	-	4.2	gerinc_szakasz_lista	-
+s4.p2.app.hiv	{n} hivatkozás	n:szam	4.2	_osszecsukva_uj (DT-F104d)	-
+s4.p2.app.hiv.nincs	hivatkozás nélkül	-	4.2	_osszecsukva_uj	-
+s4.p2.app.summary.egy	{jel} — {glossza} ({hiv})	jel:lathato, glossza:lathato, hiv:lathato	4.2	_osszecsukva_uj	-
+s4.p2.app.summary.egy.ures	{jel} ({hiv})	jel:lathato, hiv:lathato	4.2	_osszecsukva_uj	-
+s4.p2.app.summary.tobb	{elso} – {utolso} ({n} szakasz): {glosszak| · }	elso:lathato, utolso:lathato, n:szam, glosszak:lista(lathato)	4.2	_osszecsukva_uj	-
+s4.p2.app.summary.tobb.tovabb	{elso} – {utolso} ({n} szakasz): {glosszak| · } …	elso:lathato, utolso:lathato, n:szam, glosszak:lista(lathato)	4.2	_osszecsukva_uj	-
+s4.p2.app.summary.tobb.ures	{elso} – {utolso} ({n} szakasz)	elso:lathato, utolso:lathato, n:szam	4.2	_osszecsukva_uj	-
+s4.p2.app.vazlat.eleje	- {jel} — 	jel:lathato	4.2	gerinc_szakasz_lista	-
+s4.p2.app.megjegyzes	*ⓘ Megjegyzés: {reszek| · }.*	reszek:lista(lathato)	4.2	gerinc_blokk	-
+s4.p2.app.tartomany	{vers}: a BDB a helyet nem önállóan idézi, hanem {jel|a} szakaszban {kezdo|a}–{veg} verstartomány belsejében (a BDB-ben: „{nyers}{folytatas}”; a BDB-szótár); a tartomány nincs kibontva (szerkesztői döntés, 2026-10-28 (A)), ezért a hely nem BDB-példa	vers:igehely, jel:lathato, kezdo:igehely, veg:szam, nyers:lathato, folytatas:lathato	4.2	bdb_tartomanyban (DT382 (A))	-
+s4.p2.app.teljes.heber	*A teljes szócikk: [szónézet](/szo/{strong}) · forrás: a BDB-szótár*	strong:strong	4.2	_szonezet_mutato	-
+s4.p2.jel.mark	<mark class="motivumhely" title="a motívum helye: {vers}">	vers:igehely	4.2	kiemel	-
+s4.p2.jel.mark.zar	</mark>	-	4.2	kiemel	-
+s4.p2.jel.abbr.cimszo	<abbr class="rovidites" title="a címszó: {szo}">	szo:lathato	4.2	bdb_rovidites.jelol	-
+s4.p2.jel.abbr.jahve_cimszo	<abbr class="rovidites" title="יְהוָה (Jahve), az Úr; vagy a címszó: {szo}">	szo:lathato	4.2	bdb_rovidites.jelol (DT-F194c)	-
+s4.p2.jel.abbr.jahve	<abbr class="rovidites" title="יְהוָה (Jahve), az Úr">	-	4.2	bdb_rovidites.jelol (DT-F194c)	-
+s4.p2.jel.abbr.altalanos	<abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">	-	4.2	bdb_rovidites.jelol	-
+s4.p2.jel.abbr.zar	</abbr>	-	4.2	bdb_rovidites.jelol	-
+s4.p2.jel.karoli	{uj} (héber számozás: {eredeti})	uj:lathato, eredeti:lathato	4.2	karoli_szamozas (F182, F32)	-
+s4.p2.jel.nincs_karoli	 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*	-	4.2	karoli_szamozas (NINCS_KAROLI_JEL)	-
+s4.p2.jel.kiejtes	 ({kiejtes})	kiejtes:lathato	4.2	kiejtes_potol (a kiejtés-szabály)	-
+s4.p2.jel.csonk	 …	-	4.2	_elso_tagmondat (csonkit_jel)	-
+s4.p2.jel.csonk.tapadt	…	-	4.2	_elso_tagmondat	-
+s4.p2.szocikk.1	első szócikk	-	4.2	_szocikk_olvasoi_nev	-
+s4.p2.szocikk.2	második szócikk	-	4.2	_szocikk_olvasoi_nev	-
+s4.p2.szocikk.3	harmadik szócikk	-	4.2	_szocikk_olvasoi_nev	-
+s4.p2.szocikk.4	negyedik szócikk	-	4.2	_szocikk_olvasoi_nev	-
+s4.p2.szocikk.5	ötödik szócikk	-	4.2	_szocikk_olvasoi_nev	-
+s4.p2.szocikk.6	hatodik szócikk	-	4.2	_szocikk_olvasoi_nev	-
+s4.p2.bizonytalan.sigla_kozel	a hely mellett kommentár-jel áll	-	4.2	bdb_vj_szabaly.vj_bizonytalan	-
+s4.p2.bizonytalan.tobbertelmu	a könyvnév rövidítése többértelmű	-	4.2	bdb_vj_szabaly.vj_bizonytalan	-
+s4.p2.bizonytalan.ismeretlen_alak	a könyvnév alakja ismeretlen	-	4.2	bdb_vj_szabaly.vj_bizonytalan	-
+s4.p2.bizonytalan.nincs_elozmeny	a könyv nem állapítható meg	-	4.2	bdb_vj_szabaly.vj_bizonytalan	-
+s4.p2.bizonytalan.orokles_hibas	az örökölt könyvben nincs ilyen fejezet	-	4.2	bdb_vj_szabaly.vj_bizonytalan	-
+s4.p2.bizonytalan.forras_hiba	a BDB nyomtatott igehelye hibás	-	4.2	bdb_vj_szabaly.vj_bizonytalan	-
+s4.p2.bizonytalan.atkulcsolt_bizonytalan	a héber és a Károli-versszámozás megfeleltetése bizonytalan	-	4.2	bdb_vj_szabaly.vj_bizonytalan	-
+s4.p2.bizonytalan.ketes_pont	a jelentéspont gépi hozzárendelése kétes	-	4.2	bdb_vj_szabaly.vj_bizonytalan	-
+s4.p2.bevezeto.gorog	A szó jelentéseinek teljes rendje a fő szótárban (Thayer). Kibontva azok a jelentések állnak, amelyek a motívumot hordozzák; a többi összecsukva.	-	4.2	OLVASOI_SZEREP[2]	-
+s4.p2.bevezeto.dolt.gorog	*Szavanként előbb a jelentések rendje áll a Thayer szerint, rövid magyar meghatározással, és az, hogy a motívum helyein melyik jelentésben áll a szó (a jelentések rendjében félkövérrel); ahol a szótár a helyet nem idézi, ott jelentéspont sincs. Alatta, összecsukva, a szótári apparátus: a teljes Thayer-szócikk magyarul, a görög alakok jegyzékével, a klasszikus párhuzamokkal és az igehelyekkel. A szócikkben kiemelve áll minden vers, amely a motívum helye, bármelyik szón áll a motívum sora; az egérmutató alatt a teljes igehellyel. A szótári rész a szóról szól; a hely funkcióját a motívumban a 2. szakasz táblázata adja.*	-	4.2	UJ_GERINC_BEVEZETO	-
+s4.p2.cim.gorog	{strong} — {szo} · Thayer	strong:strong, szo:lathato	4.2	gerinc_blokk	-
+s4.p2.rend.gorog	**A jelentések rendje a Thayer szerint**	-	4.2	bdb_olvasoi_reteg (F187)	-
+s4.p2.olv.fej_eleje.felkover	- **A szócikk eleje** — {glossza}	glossza:lathato	4.2	bdb_olvasoi_reteg (F187); nevelo_le	-
+s4.p2.olv.fej_eleje.sima	- A szócikk eleje — {glossza}	glossza:lathato	4.2	bdb_olvasoi_reteg (F187); nevelo_le	-
+s4.p2.olv.sor.csak_parhuzam	- {jel} — a szótár csak párhuzamot közöl	jel:lathato	4.2	szotari_glossza.thayer_csak_alak (F187, T5)	-
+s4.p2.olv.sor.forditasra_var	- {jel} — *(fordításra vár)*	jel:lathato	4.2	bdb_olvasoi_reteg (FORDITASRA_VAR)	-
+s4.p2.pont.fej_eleje	a szócikk eleje — {glossza}	glossza:lathato	4.2	bdb_olvasoi_reteg (F187)	-
+s4.p2.app.thayer_forras	*A magyar szöveg a Thayer-szótár szakaszonkénti fordításából (a lexikon fordítástáblája; szerkesztői döntés).*	-	4.2	gerinc_blokk; olvasoi_atiras	-
+s4.p2.app.teljes.gorog	*A teljes szócikk: [szónézet](/szo/{strong}) · forrás: a Thayer-szótár*	strong:strong	4.2	_szonezet_mutato	-
+s4.p2.ubs	**UBS-domének (Louw–Nida):** {elemek| · }	elemek:lista(lathato)	4.2	ubs_domensor (DT272 (a), DT371)	-
+s4.p2.ubs.nincs	**UBS-domének (Louw–Nida):** *a forrás nem tárgyalja*	-	4.2	ubs_domensor (NEM_TARGYALJA)	-
+s4.p2.ubs.elem	{kod} {glossza}	kod:lathato, glossza:lathato	4.2	ubs_domensor	-

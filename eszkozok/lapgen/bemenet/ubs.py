@@ -25,6 +25,14 @@ class Forditasok:
     def __init__(self, b, sorok):
         self._b, self._sorok = b, sorok
 
+    def utvonal(self):
+        """A fordítástábla útvonala (csak proveniencia lehet belőle: a Thayer-kártya forrássora)."""
+        return self._b.utvonal_ertek('B14', self._b.egy_utvonal('B14'))
+
+    def nyers(self, szotar, strong_kod, entry_id, jelentes_szam, mezo):
+        """(szöveg, állapot) a bemeneti rétegen belüli feldolgozáshoz (a Thayer-kártya szakaszszövege), vagy None."""
+        return self._sorok.get((szotar, strong_kod, entry_id, jelentes_szam, mezo))
+
     def forditas(self, szotar, strong_kod, entry_id, jelentes_szam, mezo, hely):
         """A (szótár, Strong, szócikk, jelentés, mező) magyar fordítása, vagy None, ha nincs."""
         sor = self._sorok.get((szotar, strong_kod, entry_id, jelentes_szam, mezo))
@@ -52,6 +60,13 @@ class UbsDntg:
     def lexidek(self, versek, strong_kod):
         """A versekben a Strong-számra hivatkozott jelentések azonosítói, rendezve, ismétlés nélkül."""
         return sorted({lexid for vers in versek for lexid in self._hivatkozasok.get((vers, strong_kod), ())})
+
+    def szo_jelentesei_burkolva(self, strong):
+        """A Strong-szám jelentései a tábla rendjében: [(szócikk-kód, angol glosszák, lexid)], a kód és a glossza
+        idézetként (a 4.2 görög kártyája alatti doménsorhoz; a magyar glossza a fordítástáblából jön)."""
+        return [(self._b.forrasszoveg('B32', 'entry_kod', sor[0], strong),
+                 self._b.forrasszoveg('B32', 'glosszak', sor[1], strong), lexid)
+                for (st, lexid), sor in self._jelentesek.items() if st == strong.kod]
 
     def jelentes(self, strong_kod, lexid, hely):
         """(szócikk-kód, angol glosszák) vagy None, ha a jelentés nincs a táblában."""

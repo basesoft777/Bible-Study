@@ -36,6 +36,10 @@ _HEBER = '\u0591-\u05F4\uFB1D-\uFB4F'
 _CIMSZO_RX = re.compile(r'(?:^|(?<=\s))(?P<szam>(?:I{1,3}|IV|VI{0,3}|IX|X)\.\s)?(?P<szo>\[?[' + _HEBER + r']+\??\]?)'
                         r'(?=[\s,;:.]|$)')
 _CIMSZO_ABLAK = 80
+# A szócikk fejcíme (a régi `bdb_szocikk_fejcim`): a fej angol szövegének római száma és első héber szava; az arámi
+# szócikkek a BDB-ben ettől a számtól kezdődnek.
+_ROMAI_LEMMA_RX = re.compile(r'\s*(?:(IV|V|VI{0,3}|I{1,3})\.\s+)?\[?([^\s\[\]]*[֐-׿][^\s\[\],;]*)')
+_BDB_ARAMI_ELSO = 9264
 
 
 class GerincHiba(BemenetHiba):
@@ -190,11 +194,12 @@ class Tartomany:
     """A BDB a verset csak egy verstartomány belsejében idézi: a szakasz kulcsa, a tartomány kezdő verse
     (igehely; a könyvnév a normalizáló táblán ellenőrizve) és utolsó versszáma, a forrás alakja. A szövegmezők
     burkolók (belső szöveg, illetve a forrás idézhető alakja)."""
-    __slots__ = ('kulcs', 'kezdo_vers', 'veg', 'nyers', 'folytatas', 'sorszam')
+    __slots__ = ('kulcs', 'kezdo_vers', 'veg', 'nyers', 'folytatas', 'sorszam', 'folytatas_idezet')
 
-    def __init__(self, kulcs, kezdo_vers, veg, nyers, folytatas, sorszam):
+    def __init__(self, kulcs, kezdo_vers, veg, nyers, folytatas, sorszam, folytatas_idezet=None):
         self.kulcs, self.kezdo_vers, self.veg = kulcs, kezdo_vers, veg
         self.nyers, self.folytatas, self.sorszam = nyers, folytatas, sorszam
+        self.folytatas_idezet = folytatas_idezet     # a tartomány folytatása a szakasz szövegéből (a kártya idézi)
 
 
 class Peldahely:
@@ -448,7 +453,8 @@ class Gerinc:
                         (b, r['utvonal']), self._konyvek.igehely(r['karoli_vers']), veg,
                         self._b.forrasszoveg('B19', 'nyers', nyers, vers),
                         self._b.belso('B17', 'tartomany_folytatas', t.group(0).strip()),
-                        self._b.belso('B19', 'sorszam', r['sorszam'])))
+                        self._b.belso('B19', 'sorszam', r['sorszam']),
+                        self._b.forrasszoveg('B17', 'tartomany_folytatas_idezet', t.group(0).strip(), vers)))
         return ki
 
     def thayer_peldak(self, strong, versek):
@@ -567,6 +573,95 @@ class Gerinc:
                     return f.strong
         return None
 
+    # --- a 4.2 kártya bemenetei (S3b) --------------------------------------------------------------------------
+
+    def kartya_fa(self, strong_kod):
+        """A Strong BDB-szócikkei és az elnyelt szakaszok (a régi `bdb_gerinc_szocikkek`): ([{'bdb_id', 'fej',
+        'szakaszok'}], {kulcs: a szövegét hordozó kulcs}); a szakasz (kulcs, jel, magyar szöveg, angol szöveg,
+        kategória), a megjelenítés előtti zárójel-javítással. A szövegek a bemeneti rétegen belül maradnak: a kártya
+        szövegét a `bemenet.kartya` szegmentált idézetként adja tovább."""
+        hu = {r['sorszam']: self._bdb_hu[(strong_kod, r['sorszam'])] for r in self._bdb_sz.get(strong_kod, [])
+              if (strong_kod, r['sorszam']) in self._bdb_hu}
+        return bdb_tagolas.szocikkek(self._bdb_sz.get(strong_kod, []), hu, szakasz_jel,
+                                     lambda t: bdb_rovidites.zarojel_javit(t, strong_kod, self._zarojel))
+
+    def cimke_nyers(self, szotar, strong_kod, kulcs):
+        """A szakasz címkéje (B16) a bemeneti rétegen belüli összevetéshez; a lapra a `cimke` kézi értéke kerül."""
+        return (self._cimke.get((szotar, strong_kod) + kulcs) or {}).get('cimke_hu') or ''
+
+    def vers_sorok(self, strong_kod, vers_kod):
+        """A BDB példahely-sorai a versre (a bemeneti rétegen belül, a kártya pontjaihoz)."""
+        return self._bdb_vj.get((strong_kod, vers_kod), [])
+
+    def feloldott_sorok(self, strong_kod):
+        return self._bdb_vj.feloldott.get(strong_kod, [])
+
+    def karoli_terkep(self, strong_kod):
+        """{(könyv, fejezet, vers) az MT szerint: (fejezet, vers) a Károliban} a Strong átkulcsolt példahely-soraiból."""
+        ki = {}
+        for sorok in self._bdb_vj.values():
+            for r in sorok:
+                if r['strong'] != strong_kod or not (r.get('vers_feloldas') or '').startswith('atkulcsolt'):
+                    continue
+                m1 = _VERS_RX.match(r.get('mt_vers') or '')
+                m2 = _VERS_RX.match(r.get('karoli_vers') or '')
+                if m1 and m2 and m1.group(1) == m2.group(1) and m1.groups() != m2.groups():
+                    ki[(m1.group(1), m1.group(2), m1.group(3))] = (m2.group(2), m2.group(3))
+        return ki
+
+    def _thayer_szakaszok(self):
+        # a B20 csak a görög kártyához kell: az olvasása (és a forráslistába kerülése) ott történik
+        return b20_thayer_szakaszok(self._b)
+
+    def thayer_fa(self, strong_kod, forditasok):
+        """A Thayer-szócikk (a régi `thayer_gerinc_szakaszok`): ([{'bdb_id': '', 'fej', 'szakaszok'}], {}); a szakasz
+        (('', útvonal), jel, magyar szöveg vagy None, angol szöveg, 'sz<sorszám>'). A magyar szöveg a fordítástábla
+        szakaszsorából (B14); az elavult vagy hiányzó sor helyén nincs magyar szöveg (a régi szabály)."""
+        szakaszok = []
+        for r in sorted(self._thayer_szakaszok().get(strong_kod, []), key=lambda x: int(x['sorszam'])):
+            if r['utvonal'] == _UT_CIM:
+                continue
+            kulcs = 'sz%s' % r['sorszam']
+            f = (forditasok.nyers('Thayer', strong_kod, strong_kod, kulcs, 'forditas_hu')
+                 or forditasok.nyers('Thayer', strong_kod, strong_kod[0] + str(int(strong_kod[1:])), kulcs,
+                                     'forditas_hu'))
+            hu = f[0] if f and f[1] != 'elavult' and f[0] else None
+            angol = ('%s %s' % (r.get('jel') or '', r.get('szoveg') or '')).strip()
+            szakaszok.append((('', r['utvonal']), szakasz_jel(r['utvonal']), hu, angol, kulcs))
+        fej = next((s for s in szakaszok if s[0][1] == _UT_FEJ), None)
+        return [{'bdb_id': '', 'fej': fej, 'szakaszok': [s for s in szakaszok if s[0][1] != _UT_FEJ]}], {}
+
+    def thayer_vers_sorok(self, strong_kod, vers_kod):
+        return self._th_vj.get((strong_kod, vers_kod), [])
+
+    def thayer_hivatkozas_szam(self, strong_kod):
+        """A Thayer-kártya hivatkozásszámai (a régi `thayer_hivatkozas_szam`): {('', a szakasztábla útvonala): szám}."""
+        teljes = {}
+        for r in self._thayer_szakaszok().get(strong_kod, []):
+            teljes.setdefault(utvonal_vag(r['utvonal']), r['utvonal'])
+        db = {}
+        for (s, _v), sorok in self._th_vj.items():
+            if s == strong_kod:
+                for r in sorok:
+                    u = teljes.get(utvonal_vag(r['utvonal']))
+                    if u is not None:
+                        db[('', u)] = db.get(('', u), 0) + 1
+        return db
+
+    def szocikk_fejcim(self, strong_kod, bdb_id):
+        """A szócikk fejcímének adatai (a régi `bdb_szocikk_fejcim`): (a BDB-szám, a fej elején álló címszó a homográf-
+        számával idézetként vagy None, arámi-e)."""
+        fej = next((r for r in sorted(self._bdb_sz.get(strong_kod, []), key=lambda x: int(x['sorszam']))
+                    if r.get('bdb_id', '') == bdb_id and r['utvonal'] == _UT_FEJ), None)
+        m = _ROMAI_LEMMA_RX.match((fej or {}).get('szoveg') or '')
+        cimszo = None
+        if m:
+            cimszo = ('%s. %s' % (m.group(1), m.group(2))) if m.group(1) else m.group(2)
+        szam = re.match(r'BDB(\d+)$', bdb_id or '')
+        if not szam:
+            raise GerincHiba('B17: a(z) %s szócikk-azonosítója nem BDB-szám: %r' % (strong_kod, bdb_id))
+        return int(szam.group(1)), cimszo, int(szam.group(1)) >= _BDB_ARAMI_ELSO
+
     def tagolatlan(self, strong):
         """(tagolatlan-e a Strong egyetlen BDB-szócikke, a fej glosszája vagy None)."""
         fa = self._szocikk_fa(strong)
@@ -596,7 +691,10 @@ def b17_bdb_szakaszok(b):
     for r in _sorok(b, 'B17', ('strong', 'bdb_id', 'sorszam', 'utvonal', 'jel', 'szoveg'), szakasz_ut):
         szakaszok.setdefault(r['strong'], []).append(r)
     b._szoveg('B17', utvonal=javitas_ut)   # az olvasás naplózása; a javítótáblát a közös javító modul értelmezi
-    return szakaszok, bdb_rovidites.zarojel_javitasok(b._teljes_utvonal(javitas_ut))
+    teljes = b._teljes_utvonal(javitas_ut)
+    return szakaszok, bdb_rovidites.zarojel_javitasok(teljes), (
+        bdb_rovidites.atiras_javitasok(teljes), bdb_rovidites.sorrend_javitasok(teljes),
+        bdb_rovidites.betu_javitasok(teljes))
 
 
 def b18_bdb_szakasz_hu(b):
@@ -607,27 +705,44 @@ def b18_bdb_szakasz_hu(b):
 
 class VersJelentes(dict):
     """A BDB példahelyei versenként ({(Strong, Károli-vers): [sorok]}, a kiszűrt és a Károli-vers nélküli sorok
-    nélkül); a `torzsek` a versenkénti törzsek a kiszűrt sorokkal együtt (a régi `bdb_vers_torzs` mércéje)."""
+    nélkül); a `torzsek` a versenkénti törzsek a kiszűrt sorokkal együtt (a régi `bdb_vers_torzs` mércéje); a
+    `feloldott` Strongonként a nem szűrt, maszoréta versszámmal bíró sorok (a kártya hivatkozásszámának alapja, a
+    Károli-vers nem feltétel)."""
 
-    def __init__(self, sorok, torzsek):
+    def __init__(self, sorok, torzsek, feloldott):
         super().__init__(sorok)
         self.torzsek = torzsek
+        self.feloldott = feloldott
 
 
 def b19_bdb_vers_jelentes(b):
     """B19 — a BDB saját példahelyei versenként (a kiszűrt és a Károli-vers nélküli sorok nélkül), és a törzsek
     versenként (az útvonal első tagja, minden sorból)."""
-    ki, torzsek = {}, {}
+    ki, torzsek, feloldott = {}, {}, {}
     oszlopok = ('strong', 'sorszam', 'poz', 'nyers', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'utvonal', 'okkod',
-                'szurt')
+                'szurt', 'bizonyossag')
     for r in _sorok(b, 'B19', oszlopok):
         torzs = r['utvonal'].split('/')[0]
         if torzs:
             torzsek.setdefault((r['strong'], r['karoli_vers']), set()).add(torzs)
+        if r['szurt'] != '1' and r['mt_vers']:
+            feloldott.setdefault(r['strong'], []).append(r)
         if r['szurt'] == '1' or not r['karoli_vers']:
             continue
         ki.setdefault((r['strong'], r['karoli_vers']), []).append(r)
-    return VersJelentes(ki, torzsek)
+    return VersJelentes(ki, torzsek, feloldott)
+
+
+def b20_thayer_szakaszok(b):
+    """B20 — a Thayer-szócikkek szakaszai Strong-számonként (a szakasztábla rendjében; a magyar szöveg a
+    fordítástáblából jön, B14)."""
+    def betolt():
+        ki = {}
+        for r in _sorok(b, 'B20', ('strong', 'sorszam', 'utvonal', 'jel', 'szoveg')):
+            ki.setdefault(r['strong'], []).append(r)
+        return ki
+    b._tabla('B20', oszlopok=('strong',))      # az olvasás naplózása minden hívásnál (a forráslistához)
+    return b.egyszer('B20', betolt)
 
 
 def b21_thayer_vers_jelentes(b):
@@ -649,8 +764,10 @@ def b22_bdb_teljes(b):
 def gerinc(b):
     """A szótári gerinc a munkamenethez."""
     def epit():
-        szakaszok, zarojel = b17_bdb_szakaszok(b)
-        return Gerinc(b, b16_szakasz_cimkek(b), szakaszok, b18_bdb_szakasz_hu(b), b19_bdb_vers_jelentes(b),
-                      b21_thayer_vers_jelentes(b), b22_bdb_teljes(b), zarojel, b08_tahot(b),
-                      cimke_cellaalakok(b), b63_konyvek(b))
+        szakaszok, zarojel, javitasok = b17_bdb_szakaszok(b)
+        g = Gerinc(b, b16_szakasz_cimkek(b), szakaszok, b18_bdb_szakasz_hu(b), b19_bdb_vers_jelentes(b),
+                   b21_thayer_vers_jelentes(b), b22_bdb_teljes(b), zarojel, b08_tahot(b),
+                   cimke_cellaalakok(b), b63_konyvek(b))
+        g.javitasok = javitasok
+        return g
     return b.egyszer('gerinc', epit)

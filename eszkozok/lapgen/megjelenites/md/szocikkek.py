@@ -6,6 +6,7 @@ hiányzik a `_PONTOK` táblából: a lap ilyenkor részleges, a pont kimarad.
 """
 from lapgen import konfig
 from lapgen.megjelenites.md import keret as K
+from lapgen.megjelenites.md import kartya as kartya_md
 from lapgen.megjelenites.md import szotari_karoli, szotari_nave
 from lapgen.szamitas.nyelvi_hatter import Hiany, Megjegyzes
 from lapgen.szamitas.szocikkek import HatterFajta, Nyelv
@@ -369,8 +370,13 @@ def _nyelvi_hatter(iro, ny, szakasz, resz, keret):
         _bekezdes(iro, ny.s('s4.p8.gorog.csonkok', csonkok=csonkok, zaro=zaro))
 
 
+def _melysegi(iro, ny, szakasz, resz, keret):
+    kartya_md.melysegi(iro, ny, resz, szo_iras, szoveg_allapottal)
+
+
 _PONTOK = {
     konfig.PONT_ALAPJELENTES: _alapjelentes,
+    konfig.PONT_MELYSEGI: _melysegi,
     konfig.PONT_NYELVI_HATTER: _nyelvi_hatter,
     konfig.PONT_TEOLOGIAI: _teologiai,
     konfig.PONT_DOMEN: _domen,
@@ -394,7 +400,8 @@ def _nyelvresz(iro, ny, szakasz, resz, keret):
     K.olvasoi_bekezdes(iro, ny.s(ny.kulcs('s4.nyelv', nyelv), szavak=tuple(szo_iras(ny, szo) for szo in resz.szavak),
                                  szakasz=szakasz, elso=min(resz.pontok), utolso=max(resz.pontok)))
     for pont in resz.pontok:
-        if pont not in _PONTOK or (pont == konfig.PONT_NYELVI_HATTER and resz.gorog_hatter is None and resz.heber_hatter is None):
+        if pont not in _PONTOK or (pont == konfig.PONT_NYELVI_HATTER and resz.gorog_hatter is None and resz.heber_hatter is None) \
+                or (pont == konfig.PONT_MELYSEGI and not resz.kartyak):
             continue   # a pont megjelenítője még nem készült el (részleges lap)
         _pont_cim(iro, ny, szakasz, pont)
         _PONTOK[pont](iro, ny, szakasz, resz, keret)

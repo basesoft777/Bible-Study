@@ -885,3 +885,20 @@ Az orkesztrátor rendelkezése szerint a kicsi javítások ebben a sessionben k�
 **Új táblasorok.** Sablontábla + 32 (`s4.p8.heber.*`, `s4.p8.rokon.*`, `cim.s4.p8.rokon`): egy új mondat (`s4.p8.heber.nincs_fej`, `dontes=var`; a régi a Strong-kódot és a „2. szerep” belső szót írta), a többi a régi lap szövege betűre, a cellakezdő alakok a lapon látható alakban. Jegyzék + 2 (B24, B38; a mérce-táblában a hash-ük változatlan). **GK-03:** a B38 pillanatkép, a frissességi kapuja még nincs meg (mint a B36-é).
 
 **Az S3c állása.** Kész a 4.3–4.10 mindkét nyelven, a görög 4.2 (Thayer-kártya) kivételével: az a 4.2 BDB-kártyával közös kódon áll, ezért az S3b-vel együtt készül.
+
+## F218.6 — S3b: a 4.2 BDB-kártya és (az S3c-ből) a Thayer-kártya (`claude-opus-5-5`, xhigh, 2026-11-15, a 7. session)
+
+**Eredmény.** A 4.2 mindkét nyelven kész: a héber alblokk (500 sor) és a görög (154 sor) bájtra egyezik a referenciával; a 4. szakaszból csak a 4.6 (LXX-híd) hiányzik, az S4-gyel zárul. `regresszio.py --id HAMART-001`: RENDBEN, engedély nélküli diff-sor 0; engedélysor-változás: az S3-FORRAS `uj` hash-e (a blokkfejléc forráslistája a ténylegesen olvasott B20-cal és B32-vel bővült; a sor osztálya, darabszáma változatlan). Festékpróba: HAMART-001 0 szivárgás (belso 255, idézet 2 337, kézi 439, horgony 30), ISTENTISZT-001 0 (194, 1 200, 220, 18).
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001 | forras=a munkafa (F218.6 S3b) | ts=2026-11-15`.*
+
+**Diff-görbe.** Héber 4.2: az első futás 8 eltérő sor (a régi olvasói átírás a forrásszöveg kódjelét törölte: „Hiph`il” → „Hiphil”; a lépés hiányzott), a javítás után 0. Görög 4.2: elsőre 0.
+
+**A megoldás: szegmentált idézet szövegcsere nélkül.** A régi kártya a szótári szöveget 13 lépéses cserelánccal vitte át (a kártya építésekor kiemelés, forrásjavítás, irányjel, rövidítés-feloldás, Károli-számozás, BDB-azonosító; a kész lapon backtick- és írásjel-takarítás, a fej nyers előtagja és a belső számlálók törlése, kiejtés-pótlás, a digitalizálás jelei). Az új generátorban a szöveg `Jelolt`: idézet-darabok és típusos jelölés-darabok sora; a régi minták a régi bekezdés szövegén futnak (a jelölés-darab a mintáknak egyenértékű belső alakkal áll), de csak pozíciót adnak: a jelölés beszúródik, a forrásjavítás csak idézet-darabot ír, jelölésbe vagy keretbe egyik művelet sem nyúlhat (kimondott hiba). A lapon a jelölés sablonsor (`s4.p2.jel.*`), az idézet idézet; a kártya-teszt a fajta-térképen ellenőrzi, hogy `<mark>`, `<abbr>` és „(héber számozás:” idézet-darabban nem áll.
+
+**Új bemenet:** B20 (`adat/thayer_szakaszok.tsv`). A B17-ből a javítótábla mind a négy fajtája (átírás, betűsorrend, zárójel, betű), a B19-ből a feloldott sorok (a hivatkozásszámhoz) és a bizonyosság oszlop olvasódik. **Új sablonsorok:** 96 (`s4.p2.*`), mind a jóváhagyott lap szövege (`dontes=-`); új mondat nincs.
+
+**T5.** A 4.2-t nem érinti: az öt elavult Thayer-sor közül négy a `teljes` mezőé, egy a `sz2~3` összevont soré; a kártya a `sz<n>` sorokat olvassa. Az előre rögzített 5 engedélysor itt nem kellett; a T5 helye a későbbi szeletekben keresendő (a független ellenőrzés figyelje).
+
+**Nem portolt ágak (a két mintalapon nem futnak; kimondott hibával megállnak):** az elnyelt szakasz mondatai, a „fordításra vár” ág, a horgonnyal illesztett kibontott szakasz, a több szócikkes tartomány-megjegyzés, a címkét átalakító glossza. **Eltérés a régitől, kapu nélkül:** a tiltott fordulatok ⓘ-megjegyzése (B58) nincs bekötve; a betűjavítás minden motívumon fut (a régi csak a két mintalapon). Mindkettő N-tétel jelölt a 218a végi listába.
+
+**Átszökési arány:** a zöld regresszió után a szerkezeti tesztek 6 réteghibát fogtak (a szövegmunka a számításban, a megjelenítő a bemenetet importálta, a kiejtés második úton jött); a réteg-átrendezés után zöldek.

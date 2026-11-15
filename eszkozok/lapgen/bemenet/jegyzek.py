@@ -251,6 +251,9 @@ class Bemenet:
         self._naploz(b_id, utvonal, sha)
         return tartalom
 
+    def egy_utvonal(self, b_id, motivum=None):
+        return self._egy_utvonal(b_id, motivum)
+
     def _egy_utvonal(self, b_id, motivum=None):
         utvonalak = self._utvonalak(b_id, motivum)
         if len(utvonalak) != 1:
