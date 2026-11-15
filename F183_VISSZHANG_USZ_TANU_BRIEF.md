@@ -5,6 +5,7 @@ kod: VISSZHANG_USZ_TANU
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/visszhang-usz-tanu
 ad: a HAMART-001 visszhang-rétegének ÚSZ-ága (Vulgata, szövegváltozat, LXX-előkép) és tanúrétege (egyházatyai index, rabbinikus, Glossa Ordinaria) kinyerő táblából, két kézzel; akadémiai forrás a vitatott pontoknál; N-F176b/c; makett jóváhagyása után a generátor és a HAMART-lap újragenerálása

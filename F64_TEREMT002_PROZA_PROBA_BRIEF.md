@@ -5,6 +5,7 @@ kod: TEREMT002_PROZA_PROBA
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: ertelmezo
 allapot: lezarva
 ag: claude/f64-teremt002-proza-proba

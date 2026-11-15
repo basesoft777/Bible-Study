@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: ertelmezo
 modell: opus
+sav: CONTENT
 allapot: nem_indult
 ad: a 32 E8-találat (versformátum) 0 a régi tanulmányokban, a próza bájtra azonos az E8-sorokon kívül; a Tanulmány sablon nem hivatkozik az alap sablonra, az alap sablon archívumban
 kovetkezo: /kovetkezo (a #11 lezárása után; a PR #420 a main-en, bfd94bdb: a sablon 2_ v21 az alap)

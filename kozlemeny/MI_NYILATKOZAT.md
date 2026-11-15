@@ -53,7 +53,7 @@ Az adattáblákból generált részeket (előfordulás-táblák, szótári blokk
 
 ## Szerzőség és felelősség
 
-[HELYŐRZŐ: SZERZŐI FELELŐSSÉGVÁLLALÁS — a szerző saját mondata. Javaslat: „A [HELYŐRZŐ: A LEXIKON CÍME] szerzője és kiadója [HELYŐRZŐ: SZERZŐ NEVE]. A mesterséges intelligenciával készült szövegeket a fent leírt módon átnéztem és jóváhagytam; a tartalomért én felelek.”]
+A Logosz-lexikon szerzője és kiadója Demeter Tamás. A mesterséges intelligenciával készült szövegeket a fent leírt módon átnéztem és jóváhagytam; a tartalomért én felelek.
 
 A tudományos kiadók gyakorlata szerint az MI-eszköz nem lehet szerző, használatát meg kell nevezni és le kell írni, a felelősség az emberi szerzőé (Cambridge University Press, 2023; De Gruyter Brill: elsődlegesen MI által írt cikket vagy fejezetet nem fogad el). Ezért ez a munka mai formájában **MI-segítséggel készült adatbázis és lexikon**, nem lektorált tudományos közlemény. Folyóiratba szánt érvelő szöveget a szerző ír, és ott a fentieket külön nyilatkozatban megnevezi. A Society of Biblical Literature erre vonatkozó szabályát nem találtuk.
 

@@ -5,6 +5,7 @@ kod: SZOTARI_GERINC
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: ertelmezo
 allapot: lezarva
 ag: ccr-6dc5ac47-lksrko

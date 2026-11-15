@@ -5,6 +5,7 @@ kod: DOKU_EGY_FORRAS
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/doku-egy-forras
 ad: a többszörösen leírt folyamat-szabályok egy kanonikus helyen, a többi hivatkozik; a kapuk szabálylistája a kódból generált GENERÁLT blokk CI-őrrel; menet- és zárójelentés egy fájlban; hivatkozás-kapu teszttel

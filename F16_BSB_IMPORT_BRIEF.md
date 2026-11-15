@@ -5,6 +5,7 @@ kod: F16
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/bsb-import
 pr: 85

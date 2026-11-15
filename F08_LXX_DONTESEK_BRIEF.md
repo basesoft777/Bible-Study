@@ -5,6 +5,7 @@ kod: F08
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 pr: 96
 ag: claude/lxx-dontesek

@@ -5,6 +5,7 @@ kod: KAROLI_SZOILLESZTES_NYILT
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 pr: 712

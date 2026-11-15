@@ -12,6 +12,7 @@ kod: KOD
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: nem_indult
 ad: mit ad, ha kész (egy mondat)
 kovetkezo: következő lépés (egy sor; „Te:” kezdetű, ha felhasználói lépés; „Folytatás:” kezdetű, ha `fut` állapotban félbemaradt)
@@ -33,6 +34,7 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `fazis` | `feladat` típusnál | `1` · `2` · `folyamat` |
 | `munka` | `feladat` típusnál | `adat` · `ertelmezo` · `folyamat` |
 | `modell` | igen | `sonnet` · `opus` · `haiku` · `fable` · `külső:<név>` (a `fable` brief Fable-sessionben, közvetlenül fut, végrehajtó subagent nincs hozzá; a felhasználó, 2026-11-13: a generátor-újraírás Fable-on); a régi `Modell:` sor megmarad, a kettő egyezik; a session modelljét nem állítja, a futtató ellenőrzi |
+| `sav` | `feladat` és `naplozas` típusnál | `SYSTEMS` (fejlesztői infrastruktúra: CI, Actionök, kapuk, tesztek, feladatrendszer, parancsok) · `CONTENT` (tartalomkészítés: motívumok, lapok, lapgenerátor, adat, nyílt adatcsomagok, közlemények) · `SERVER` (olvasó-szerver) · `USER` (felhasználókezelés, előfizetés, jogok, #86). Kétes esetben a fő termék szerint; a `FELADATOK.md` generált táblái sávonként csoportosítanak, a session címe a sávval kezdődik |
 | `allapot` | igen | `nem_indult` · `brief_kell` · `fut` · `dontesre_var` · `megallt` · `lezarva` |
 | `ad` | igen* | „Mit ad, ha kész” |
 | `kovetkezo` | igen* | „Következő lépés”; „Te:” = a felhasználóra vár; „Folytatás:” (`fut` állapotban) = félbemaradt, a `/kovetkezo` folytatási jelöltként ajánlja |

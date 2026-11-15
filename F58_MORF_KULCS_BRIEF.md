@@ -5,6 +5,7 @@ kod: MORF_KULCS
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 pr: 208

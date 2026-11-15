@@ -5,6 +5,7 @@ kod: MOTIVUM_FORRAS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/f23-dt84-atvezetes
 pr: https://github.com/basesoft777/Bible-Study/pull/370

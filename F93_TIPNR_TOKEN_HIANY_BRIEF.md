@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/f93-tipnr-token-hiany
 pr: https://github.com/basesoft777/Bible-Study/pull/355

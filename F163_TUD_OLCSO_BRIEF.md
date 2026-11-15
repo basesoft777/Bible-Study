@@ -5,6 +5,7 @@ kod: TUD_OLCSO
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: dontesre_var
 ad: öt rövid, nyilvános szöveg és egy CITATION.cff, amelyek a #86 terv 1.7 hiánytáblájának olcsó pontjait zárják (MI-nyilatkozat és szerzőségi szabály, Hays hét kritériuma a módszertanra leképezve, a PaRDeS-szint recepciós keretezése, az ókori közel-keleti határ kimondása)
 kovetkezo: "Te: ⛔ DT605 (szerzői felelősségvállalás, szerző neve) és DT606 (terméknév) — a helyőrzők kitöltése; a négy kozlemeny/ szöveg és a CITATION.cff kész (F163.1–F163.5, 2026-11-04); DT607–d az orkesztrátor jóváhagyására"

@@ -5,6 +5,7 @@ kod: OLVASO_MOTIVUM_LAP
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SERVER
 munka: folyamat
 allapot: nem_indult
 ad: az olvasó `/motivum/<ID>` motívum-lapja a 12-es lelet-blokkkal (A, B, ★ = A−B, beépített / elutasított / gépi kizárás / nem vizsgált), a teljesség-mérés blokk-fájljából is olvasva, az apparátus-kapcsolóval (D36 olvasói / apparátus szint); a hiányzó útvonalú lekérdezések (8, 10, 12, 18, 21, 24, 25, 26) útvonalat kapnak, a nem igazolt öt (2, 3, 5, 15, 16) kézi ellenőrzése lezárul

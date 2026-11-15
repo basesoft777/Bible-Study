@@ -5,6 +5,7 @@ kod: THAYER_JELENTESPONT_97
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ag: claude/f186-thayer-jelentespont-97

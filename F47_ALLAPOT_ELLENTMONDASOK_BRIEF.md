@@ -5,6 +5,7 @@ kod: ALLAPOT_ELLENTMONDASOK
 tipus: naplozas
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/f47-allapot-ellentmondasok
 pr: "#136"

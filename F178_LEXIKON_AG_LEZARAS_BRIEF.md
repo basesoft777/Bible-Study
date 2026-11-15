@@ -5,6 +5,7 @@ kod: LEXIKON_AG_LEZARAS
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: megallt
 ag: claude/lexikon-ag-lezaras
 pr: https://github.com/basesoft777/Bible-Study/pull/655

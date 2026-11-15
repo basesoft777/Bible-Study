@@ -5,6 +5,7 @@ kod: SZOTAR_S26
 tipus: feladat
 fazis: 2
 modell: opus
+sav: CONTENT
 munka: ertelmezo
 allapot: nem_indult
 ad: az ISTENTISZT-001 2/b rése csak prózát tartalmaz; a jelentőség-bekezdések a `miert_fontos` rés `#### H7121`, `#### H8034`, `#### G0994` alszakaszaiban állnak; a G0994-megjegyzés javítva (F05 K12)

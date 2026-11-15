@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 pr: 472
 lezarva_osszegzes: "a Thayer szakasztábla (17 093 szakasz, 5 426 Strong) és igehely → jelentéspont tábla (63 953 sor), az M3 teljes lánca (betöltő, szólista, adatblokk, 15_tiltott/16_sigla kapu, prompt v5.1, sigla-javaslat); az M3 fordítása külön Sonnet-feladat (beerkezo/Fnn_THAYER_M3_BRIEF.md); G0813 → G0540 a KIRALY-001-ben; ellenőrzés ELTÉRÉS 7 → 2 → TISZTA, két mechanikus javítókör; zárónapló naplok/THAYER_SZAKASZ_zaras.md"

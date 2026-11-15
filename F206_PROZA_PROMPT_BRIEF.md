@@ -5,6 +5,7 @@ kod: PROZA_PROMPT
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 lezarva_osszegzes: a prózaíró prompt (10. sablon v1.2) és a forrássablon (9. sablon v2.2) a HAMART-001 lektori körének 12 hibaosztályával; a független ellenőrzés és a javítókör kész; nyitott: N-F206a (olvasói kapu, a #699 után)
 ag: claude/epic-hawking-d0313a

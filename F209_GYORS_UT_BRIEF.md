@@ -5,6 +5,7 @@ kod: GYORS_UT
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/lucid-meninsky-51e597
 ad: a `/lap-javit` 7. pontja (gyors út), a `MUNKAMENET.md` `gyors` szint-sora, a `lapnezet.py --valtozas` kapcsoló teszttel

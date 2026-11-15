@@ -5,6 +5,7 @@ kod: KAROLI_PONTOSSAG
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: dontesre_var
 ad: a ~599 000 gépi Károli–Strong pár mért pontossága rétegenként (könyvcsoport, héber/görög, bizonyosság), 95%-os konfidencia-intervallummal és hibatípusokkal, egy független második modell vak ellenőrzéséből és a felhasználó szúrópróbájából — a párosítás mint önálló adatkészlet (második adatközlemény) előfeltétele
 kovetkezo: "Te: a jelentés 6. pontjának kétes esetei (2 vitatható + 3 a mi hibánk megerősítése) és a draft PR átnézése; a nyitás (DT623) a jelentés szerint mehet"

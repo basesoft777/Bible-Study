@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: mért válasz arra, hogy a #38 hátraléka (kb. 3,7–4,2 millió forráskarakter) a heti keret helyett az API-keretből (Batch API, claude-sonnet-5-5) ugyanolyan minőségben fordítható-e, és mennyibe kerül szócikkenként; a válasz a DT56 „egy végrehajtó, egy kontextus” szabályának felülvizsgálatához kell
 kovetkezo: "okafogyott (a felhasználó döntése, 2026-11-01, DT451): a #38 a 13. adagtól próba nélkül, Batch API-n fut; az eszköz a #38-ban készül (eszkozok/bdb_api_koteg.py)"

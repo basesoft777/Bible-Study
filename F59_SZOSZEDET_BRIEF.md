@@ -5,6 +5,7 @@ kod: SZOSZEDET
 tipus: feladat
 fazis: 2
 modell: opus
+sav: CONTENT
 munka: ertelmezo
 allapot: nem_indult
 ad: egy repóban tárolt, tételenként jóváhagyott magyarázó tábla (adat/szoszedet.tsv) az olvasói nézet szakszavaihoz és blokkjaihoz; minden sor „szerkesztői szöveg” jelölésű, forrás- vagy hivatkozásmezővel, és csak a felhasználó jóváhagyása után jelenhet meg

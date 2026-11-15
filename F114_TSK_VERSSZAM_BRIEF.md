@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/tsk-versszam
 ad: a TSK forrás- és célkulcsa mind az öt fogyasztóban egy közös átváltón át Károli-versszámon áll (a dataset érintetlen); a felmérőszkript az ÓSZ-en 0 rossz és 0 elmaradó sort mér, az N-F09g lezárható

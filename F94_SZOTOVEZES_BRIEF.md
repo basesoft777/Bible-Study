@@ -5,6 +5,7 @@ kod: SZOTOVEZES
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/f94-szotovezes

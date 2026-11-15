@@ -5,6 +5,7 @@ kod: PARDES_DB_OLVASOI
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SERVER
 munka: adat
 allapot: lezarva
 ad: a pardes.db új táblái (token_macula, lxx_token, bdb_alias, nave_vers, lxx_versszam) táblaszintű licenccel és meta-sorral, az adatbázis újraépítve; a #60 pilot D1–D5 mérése mindkét szakaszon újrafuttatva (D1 39/39, D2 0 eltérés, D5 friss); mérethatár nélkül (DT127); index a magyar szavakra (v1.1)

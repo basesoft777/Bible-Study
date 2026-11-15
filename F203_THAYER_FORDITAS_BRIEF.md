@@ -5,6 +5,7 @@ kod: THAYER_FORDITAS
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: megallt
 ag: claude/f203-thayer-forditas

@@ -5,6 +5,7 @@ kod: ADATBAZIS_FRISSITES
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SERVER
 munka: folyamat
 allapot: nem_indult
 ad: az indító (indit.sh) észleli, ha a pardes.db régebbi a forrás-tábláinál (adat/, konkordancia/), és magától újraépíti (sqlite_epit.py, integritás-ellenőrzéssel), csak siker után cserél; a lábléc kiírja, ha az adatbázis régebbi az adatnál, és ha az újraépítés elbukott, miért; negyedik asztali parancsikon a kézi újraépítéshez

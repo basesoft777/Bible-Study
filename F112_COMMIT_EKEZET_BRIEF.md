@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 pr: 427
 lezarva_osszegzes: E30 FIGYELMEZTETÉS szinten bekötve (DT253, szűk kizárólista, mért 84%), 154 teszt zöld, ELLENOR_F112 ELTÉRÉS 7 mechanikus tétel javítva; zárójelentés naplok/COMMIT_EKEZET_zaras.md

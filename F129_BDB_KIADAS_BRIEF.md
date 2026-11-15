@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 2
 munka: adat
 modell: opus
+sav: CONTENT
 allapot: nem_indult
 ad: a magyar BDB kiadható alakban, generált nézetként az adatból (web, PDF, EPUB): gyök szerinti vagy Strong-rendben, Strong-mutatóval, magyar szómutatóval, rövidítésjegyzékkel és előszóval; a javítások az adatrétegben, a licenc a kiadás előtt rendezve; előtte egy próbakötet a kész szócikkekből
 kovetkezo: "Te: az M0 ⛔ döntései (DT-F129a–e); a próbakötet (M1–M4) a #128 után indulhat, a teljes kiadás (M6) csak a #38 lezárása után"

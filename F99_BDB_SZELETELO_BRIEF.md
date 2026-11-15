@@ -5,6 +5,7 @@ kod: BDB_SZELETELO
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ag: claude/bdb-szeletelo

@@ -5,6 +5,7 @@ kod: KAROLI_ELTERES_ITELET
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/f87-karoli-elteres-itelet

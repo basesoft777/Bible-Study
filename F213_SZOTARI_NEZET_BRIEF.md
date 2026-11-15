@@ -5,6 +5,7 @@ kod: SZOTARI_NEZET
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SERVER
 allapot: lezarva
 ag: claude/f213-szotari-nezet-a55839
 pr: 720

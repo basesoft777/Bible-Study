@@ -5,6 +5,7 @@ kod: CS3_GENERATOR_KOR
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: fut
 ag: claude/f212-cs3-generator-a18537
 pr: 715

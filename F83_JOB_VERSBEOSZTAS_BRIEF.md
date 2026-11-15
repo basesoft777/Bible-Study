@@ -5,6 +5,7 @@ kod: JOB_VERSBEOSZTAS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 pr: 260
 lezarva_osszegzes: "Jób 38–42 megfeleltetés jóváhagyva (146 × 1:1, 4 fejezethatár-eltolás), kézi tábla +19 sor, DT85 ✅; a Jób 41 a TAHOT-kulcsgenerátor javításáig blokkolt (N55 javaslat), PR #260 (10.08)"

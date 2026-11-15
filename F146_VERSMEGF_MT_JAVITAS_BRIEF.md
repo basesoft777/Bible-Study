@@ -5,6 +5,7 @@ kod: VERSMEGF_MT_JAVITAS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: adat
 allapot: megallt
 ad: a `Karoli_versmegfeleltetes.tsv` Jóel-sorai helyes MT-megfeleltetést hordoznak (Károli 2:28–32 = MT 3:1–5, Károli 3:1–21 = MT 4:1–21), a KJV-osztályú sorok többi MT≠KJV eltérése mérve és jelentve, a #131 DBH-mérés 12 versének tételes jelentése proveniencia mellett

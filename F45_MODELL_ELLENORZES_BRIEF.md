@@ -5,6 +5,7 @@ kod: MODELL_ELLENORZES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/f45-modell-ellenorzes
 pr: https://github.com/basesoft777/Bible-Study/pull/315

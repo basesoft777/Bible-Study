@@ -5,6 +5,7 @@ kod: NYILT_MAG_ANGOL
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ad: a nyílt adatmag minden sora OSIS-igehelykulccsal, a zárt értékkészletek angol címkével, a szabad szöveges indoklás és funkció-címke jelölt gépi angol párhuzamos mezővel, a motívumok angol meghatározásával; kódkönyv (hu/en) és kapu bővítve, E35 zöld — a data paper beküldésének előfeltétele
 kovetkezo: lezárva (PR #645, 2026-11-05; döntések: DT626–DT628)

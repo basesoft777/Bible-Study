@@ -5,6 +5,7 @@ kod: BDB_ARAM_BEEMELES
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/bdb-aram-beemeles

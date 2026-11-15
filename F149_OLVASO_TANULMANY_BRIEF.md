@@ -5,6 +5,7 @@ kod: OLVASO_TANULMANY
 tipus: feladat
 fazis: 2
 modell: sonnet
+sav: SERVER
 munka: adat
 allapot: dontesre_var
 ad: az olvasó-szerverben a kész tanulmányok a Károli-szövegre horgonyozva: generált tanulmány-regiszter a fájlnevekből (tartományok, sorozat-folytonosság ellenőrzéssel), generált vers → tanulmány-szakasz index, halvány, kikapcsolható margójel a fejezetlapon (mobilon csak a vers paneljén), új `vers.tanulmany` blokk, a `vers.motivum` blokk kereszthivatkozás-lánca (lexikonlap, előző/következő előfordulás, forrástanulmány), és a `/tanulmany/<id>` oldal visszahorgonyokkal; a tanulmányba semmi nem íródik vissza (DT28)

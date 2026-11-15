@@ -5,6 +5,7 @@ kod: NYILT_MAG_CIM
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/nyilt-mag-cim
 ad: a nyílt mag fejléceiben és szövegeiben a „[A LEXIKON CÍME]” és a „<KANONIKUS_FORRAS_URL>” helyőrző helyén a megállapított adat (magyar szövegben „Logosz-lexikon”, angolban „Logosz Lexikon”; Demeter Tamás, ORCID, DOI, logoszlexikon.hu); új kapu a nyers helyőrző ellen

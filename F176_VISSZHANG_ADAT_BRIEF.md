@@ -5,6 +5,7 @@ kod: VISSZHANG_ADAT
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/f176-visszhang-adat-c1579f
 ad: új licencelt adatkészletek (Sefaria PD Targum, Clementina, SBLGNT-apparátus, TAGNT-változatjelölés) a konkordancia/ alatt, datasetek.tsv és licencek.tsv soraival; BDB rokon írások gyorsítótára és lekérő szkript, első futás a HAMART-001 láncszavaira; forrásonkénti arány-kapu a nyílt mag kapujában (1% / 5%)

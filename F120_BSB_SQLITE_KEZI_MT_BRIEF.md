@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 helyi_gep: igen
 ad: a sqlite_epit a KEZI + kitöltött igehely_mt táblán újra épít (a DT-F117f őre kivezetve); kihagyó BSB-őr: csak tartalommal igazolt Károli-célra ír (248 BSB-vers kimarad, 0 kettős forrás); az Integracio és a FeliratHalmaz teszt újra fut; a BSB_Strongs.tsv változatlan (az MT-re újragenerálás: N-F120b)

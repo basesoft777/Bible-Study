@@ -5,6 +5,7 @@ kod: THAYER_KAPU_JAVITAS
 tipus: feladat
 fazis: 2
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: ccr-4d66ac1d-v5f9un
