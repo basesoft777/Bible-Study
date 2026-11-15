@@ -54,5 +54,8 @@ A C-bl és a C-sz a SEMA-szakaszra még szám nélkül hivatkozik (a #729 merge-
 `sablonok/10_PaRDeS_U3_proza_prompt_sablon.md` (v1.3), „⚑ tétel a kézi listán”: a „Mindet magad nézed át” kikerült; a ⚑ csak sorrend, minden K-tételt az állítás-ellenőr ítél (hivatkozás: `.claude/agents/allitas-ellenor.md`, `MUNKAMENET.md` C-a); az író a „hamis” ítéletet javítja. A „többi kézi tétel … olcsó modell (Sonnet) vagy ember” mondat is az F2-re mutat. A jelzés-fajták listája az F224.4 három új fajtájával bővült. `grep "magad\|olcsó modell"` a 10_ sablonban: 0 találat.
 **A hatókör-szűkítés 3. pontja** (a brief 3. pontja, `BRIEF_SABLON.md` DT-F221a): *a ⚑ tételeket nem az író nézi át, hanem az F2.* (a) Ellenőrzés nélkül marad: semmi új — az író átnézése önellenőrzés volt. (b) Méri helyette: az F2 minden K-tételt állításonként ítél; a „vitatott” és „nem eldönthető” a lektorhoz megy. A mondat a `.claude/commands/kiadas.md` 3. lépésében hivatkozással áll.
 
+### F224.10 — A funkció két mezője (döntés)
+`dontesek/uj/f224-cikkiras-uj-menet.md`: DT-F224a 🟢, a jóváhagyás idézetével. A megfogalmazás a terv 5. szakaszán belül marad: új sémamező, adatoszlop vagy lapgenerátort érintő változás nincs (ezért nem 🟡). A DT803 többi része változatlan. Az alkalmazás helye: a 2_ sablon 4/b. pontja (F224.7, kész) és a 9_ sablon érvnaplója (F224.6, a #729 után).
+
 ### F224.12 — A határ-ellenőr modellje
 `.claude/agents/hatar-ellenor.md`: `model: sonnet`, a 0. lépés modellneve `sonnet`; a bemenet a határesetek negatív próbáival bővült, a negatív kritérium szűkebb és tágabb változatával. `grep -i fable .claude/agents/hatar-ellenor.md`: 0 találat. A `MUNKAMENET.md` C-h sorának modellneve az F224.8-ban.
