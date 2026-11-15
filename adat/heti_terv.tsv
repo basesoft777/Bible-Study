@@ -1,18 +1,18 @@
 het	sav	sorrend	tetel	cel_a_het_vegere	modell	becsult_keret_szazalek	allapot_kezi	jovahagyva	megjegyzes
-2026-11-14	CONTENT	1	F218	Az F218a kész: a HAMART-lap egyezik az aranymintával, az ISTENTISZT-lap megvan, mindkettőn két ellenőrzés lefutott	opus (S3b, S5, ISTENTISZT: xhigh)	40		javaslat	A fő út. A brief fejlécében a modell `fable`, az orkesztrátor terve Opus: a kettő eltér, egyeztetendő.
-2026-11-14	CONTENT	2	nyílt Károli-csomagok	A nyílt Károli-csomagok pull requestje egyesítve	-	10		javaslat	A session fut (szövegjavítás); PR még nincs. A PR megnyitása után a PR száma kerül ide.
+2026-11-14	CONTENT	1	F218	Az F218a kész: a HAMART-lap egyezik az aranymintával, az ISTENTISZT-lap megvan, mindkettőn két ellenőrzés lefutott	opus (S3b, S5, ISTENTISZT: xhigh)	40		javaslat	A fő út. Az S1–S3 kész (a 4.6 kivételével), a 4. szakasz regressziója rendben; hátra az S4–S9. A modell Opus (DT-F218o).
+2026-11-14	CONTENT	2	nyílt Károli-csomagok	A nyílt Károli-csomagok pull requestje egyesítve	-	10	kesz	javaslat	A PR #737 mergelve (2026-11-15).
 2026-11-14	CONTENT	3	HAMART 8:21	A HAMART-lap 8:21-es vitás pontjának javítása az F218a végén	-	5		javaslat	Te: a javítás jóváhagyása a `/lap-javit` útján, ha a javítás elkészült.
 2026-11-14	SYSTEMS	1	F219	A gépi lezárás B része (a #736 PR) és az átvitellel lezárás egyesítve	sonnet	6		javaslat	Két session: a gépi lezárás B (feladatok.py, BRIEF_SABLON.md) és a brief-fejlécek átvitellel lezárása.
-2026-11-14	SYSTEMS	2	F217	Az F217 megvalósítása: a generált nézetek a main-en készülnek (a #725 terve kész)	opus	8		javaslat	
+2026-11-14	SYSTEMS	2	F217	Az F217 megvalósítása: a generált nézetek a main-en készülnek (a #725 terve kész)	opus	8		javaslat	A megvalósítás sessionje fut (2026-11-15), a generátort egyetlen belépési ponton át hívja (az F218a-val párhuzamosan).
 2026-11-14	SYSTEMS	3	régi bukó tesztek	A helyben bukó régi tesztek javítva (például `teszt_visszhang_kapu`), gyökérok szerint	sonnet vagy opus (medium)	3		javaslat	Kis feladat; az F207 mintájára.
-2026-11-14	SYSTEMS	4	F222	A heti beosztás oldala, táblái, az ötlettár és a sávonkénti keretfogyás mérése (ez a feladat)	sonnet	3		javaslat	
-2026-11-14	SYSTEMS	5	cikkírás új menete	A cikkírás új menetének (vitató kör, cikkellenőrzés) briefje megvan	-	5		javaslat	Te: a 32. tétel három döntése; ezek nélkül a brief nem készülhet.
-2026-11-14	SYSTEMS	6	részleges futás	A push előtti kapu részleges futtatása: csak az érintett lépések futnak	sonnet (high)	3		javaslat	A `reszleges-futas` session; a két sor együtt kb. 5% (a felhasználó jóváhagyta, 2026-11-15).
-2026-11-14	SYSTEMS	7	csak szövegek mód	A nyílt csomag-exportálók „csak szövegek” módja	sonnet (high)	2		javaslat	A `reszleges-futas` session; a két sor együtt kb. 5% (a felhasználó jóváhagyta, 2026-11-15).
+2026-11-14	SYSTEMS	4	F222	A heti beosztás oldala, táblái, az ötlettár és a sávonkénti keretfogyás mérése (ez a feladat)	sonnet	3	kesz	javaslat	A PR #740 mergelve (2026-11-15); az ötlettár 32 tétellel feltöltve.
+2026-11-14	SYSTEMS	5	cikkírás új menete	A cikkírás új menetének (vitató kör, cikkellenőrzés) briefje megvan	-	5		javaslat	A 3. változat, a küszöbök és a modellkiosztás jóváhagyva (2026-11-15); a brief-session fut, a /befogad egyeztetéséig.
+2026-11-14	SYSTEMS	6	részleges futás	A push előtti kapu részleges futtatása: csak az érintett lépések futnak	sonnet (high)	3	kesz	javaslat	A PR #739 mergelve (2026-11-15).
+2026-11-14	SYSTEMS	7	csak szövegek mód	A nyílt csomag-exportálók „csak szövegek” módja	sonnet (high)	2		javaslat	A nyílt magra kész (#739); a két Károli-csomagra hátra.
 2026-11-14	SERVER	1	olvasó: 32 eltérés	A 32 olvasói eltérés újramérésének szkriptje kész az F218b-re (célzott újramérés, nem teljes átnézés)	-	5		javaslat	
 2026-11-14	USER	1	-	Ezen a héten nincs tervezett munka; az olvasó felhasználókezelése az F218b után indul	-	0		javaslat	
 2026-11-14	BUSINESS	1	Zenodo 1. kiadás	A Zenodo 1. kiadásának feltöltése a három meglévő piszkozatba	-	0		javaslat	Te: a feltöltés; a token és a push a tiéd.
 2026-11-14	BUSINESS	2	BiblIndex-levél	A BiblIndex-megkeresés levelének elküldése	-	0		javaslat	Te: a levél elküldése; a tervezet kész (BIBLINDEX_LEVEL_TERVEZET_2026-11-12.md a jegyzetmappában).
 2026-11-14	BUSINESS	3	KJV-licenc kérdése	A KJV Strong-címkézés licencének kérdése a CrossWire-nek	-	0		javaslat	Te: a kérdés elküldése; a levéltervezetet kérésre elkészítem.
-2026-11-14	FELMERES	1	-	Az ötlettár első feltöltése a szétszórt felvetésekből (csak felsorolás forrással, döntés nélkül)	sonnet	5		javaslat	A heti oldal „Felmérés / ötlet” sávja az ötlettár felmérendő tételeit is mutatja.
+2026-11-14	FELMERES	1	-	Az ötlettár első feltöltése a szétszórt felvetésekből (csak felsorolás forrással, döntés nélkül)	sonnet	5	kesz	javaslat	Kész az F222-vel (#740): 32 tétel.
 2026-11-14	TARTALEK	1	-	Tartalék: váratlan javítás, ellenőrzési kör	-	5		javaslat	
