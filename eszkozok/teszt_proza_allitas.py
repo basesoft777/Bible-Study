@@ -25,7 +25,7 @@ Károli-párosítás). Így a HAMART-001 javítóköre nem töri el a tesztet.
     esettel; az új fajta soha nem gépi ELTÉR, a régi K-tételek számozása nem változik, a `--kapu` JELENTÉS-sort ad.
 13. F224.14 (N-F224c): az idézettel lefedett mondat többletállítása K-tétel (a puszta idézet nem); az igehely nélküli
     szabály-mondat K-tétel a gerinc-szavak helyenkénti sorrendjével; a K-számozás három szintje.
-14. F224.15: a mondaton kívüli adat (funkció-mező, angol tükörfordítás, a lap más mondata ugyanarról a forrásról,
+14. F224.15: a mondaton kívüli adat (funkció-mező — csak a hely saját tételénél, N-F224f —, angol tükörfordítás, a lap más mondata ugyanarról a forrásról,
     Targum, szótári besorolás az elutasított jelöltekkel; a szótári kód és az útvonal illesztése).
 
 Futtatás: python eszkozok/teszt_proza_allitas.py
@@ -563,11 +563,21 @@ class F224_15(unittest.TestCase):
     """F224.15: a mondaton kívüli adat a K-tétel alatt (funkció-mező, szótári besorolás, tükörfordítás, a lap más
     mondata ugyanarról a forrásról, Targum)."""
 
+    def test_funkcio_csak_a_sajat_tetelnel(self):
+        """N-F224f: a funkció-mező a hely saját adatsor-tételénél (kapcsolodas) a K része, a rés mondata alól kimarad."""
+        ell = ell_par(['x'])
+        sajat = P.Egyseg('adat:kapcsolodas', 'elofordulasok.tsv:2', 'A föld itt megtelik.', alap_ref='1Móz 6:11')
+        kont = ell.kontextus(sajat, ['1Móz 6:11'])
+        self.assertTrue(any(x.startswith('Funkció-mező') and 'diagnózis' in x for x in kont))
+        res = P.Egyseg('rés:ertelmezes', 'teszt:1', 'A föld itt megtelik erőszakkal (1Móz 6:11).')
+        self.assertFalse([x for x in ell.kontextus(res, ['1Móz 6:11']) if x.startswith('Funkció-mező')])
+        masik = P.Egyseg('adat:kapcsolodas', 'elofordulasok.tsv:3', 'Ez a hely az 1Móz 6:11-re utal.', alap_ref='Ez 8:17')
+        self.assertFalse([x for x in ell.kontextus(masik, ['Ez 8:17', '1Móz 6:11']) if 'diagnózis' in x])
+
     def test_funkcio_es_tukor(self):
         e = P.Egyseg('rés:ertelmezes', 'teszt:1', 'A föld itt megtelik erőszakkal (1Móz 6:11).')
         ell = ell_par([e.szoveg])
         kont = ell.kontextus(e, ['1Móz 6:11'])
-        self.assertTrue(any(x.startswith('Funkció-mező') and 'diagnózis' in x for x in kont))
         tukor = [x for x in kont if x.startswith('Angol tükörfordítás')]
         self.assertEqual(len(tukor), 1)
         self.assertIn('[', tukor[0])                       # a gerinc-szó jelölve

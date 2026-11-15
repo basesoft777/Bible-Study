@@ -55,7 +55,7 @@ F224.14 (N-F224c; az F224.13 próbájának két kinyerési hézaga) — két tov
   eltérő helyek név szerint.
 
 F224.15 (a C-futás ISTENTISZT-hibái: a hibát a mondaton kívüli adat hordozza) — a kézi lista minden K-tétele alatt
-„Mondaton kívüli adat”: a hely funkció-mezője; szótári hivatkozásnál a szótár (BDB/Thayer vers-jelentés tábla) versei a
+„Mondaton kívüli adat”: a hely funkció-mezője (csak a hely saját adatsor-tételénél, N-F224f); szótári hivatkozásnál a szótár (BDB/Thayer vers-jelentés tábla) versei a
 motívum helyeire, az elutasított és a nyitott jelöltekre és a többire bontva; a gerinc-szavak környezete az angol
 tükörfordításban (ki beszél, ki cselekszik, kinek a neve); a lap más mondatai ugyanarról a forrásról (Targum, LXX,
 Vulgata, BDB, Thayer, szövegkiadás); Targum-hivatkozásnál a Targum sora. Ítéletet nem ad; az F2 bemenete.
@@ -1092,7 +1092,8 @@ class Ellenor:
 
     # --- F224.15: a mondaton kívüli, az állítást hordozó adat (a jelentés K-tétele alá)
     def kontextus(self, e, versek_rendben):
-        """Az F2 bemenete a K-tétel mellé: (1) a hely funkció-mezője (a lapon a hely mellett álló állítás); (2) a szótári
+        """Az F2 bemenete a K-tétel mellé: (1) a hely funkció-mezője (a lapon a hely mellett álló állítás; csak a hely
+        saját adatsor-tételénél, N-F224f); (2) a szótári
         besorolás, ha a mondat szótárra hivatkozik: a szótár versei a motívum helyeire, az elutasított jelöltekre és a
         többire bontva; (3) a gerinc-szavak környezete az angol tükörfordításban (ki beszél, ki cselekszik, kinek a
         neve); (4) a lap más mondatai ugyanarról a forrásról (Targum, LXX, BDB …); (5) a Targum sora, ha a mondat
@@ -1106,15 +1107,12 @@ class Ellenor:
             for k in self.adat.versek(r):
                 if k not in kulcsok:
                     kulcsok.append(k)
-        # (1) funkció-mező
-        latott = set()
-        for k in kulcsok:
-            d = self.elof_vers.get(k)
-            if d and d['igehely'] not in latott and d.get('funkcio', '').strip():
-                latott.add(d['igehely'])
+        # (1) funkció-mező — csak a hely saját adatsor-tételénél (N-F224f): egy hibás funkció-mező így egy K-tételen
+        # jelenik meg, nem minden olyan tételen, amely a verset idézi
+        if e.alap_ref:
+            d = self.elof_vers.get((self.adat.versek(e.alap_ref) or [None])[0])
+            if d and d.get('funkcio', '').strip():
                 ki.append('Funkció-mező (a lapon a hely mellett), %s: %s' % (d['igehely'], d['funkcio'].strip()))
-        if len(ki) > KONTEXTUS_VERS_MAX:
-            ki = ki[:KONTEXTUS_VERS_MAX] + ['Funkció-mező: … (+%d hely)' % (len(ki) - KONTEXTUS_VERS_MAX)]
         szoveg = e.szoveg
         # (2) szótári besorolás
         if SZOTAR_RX.search(szoveg):

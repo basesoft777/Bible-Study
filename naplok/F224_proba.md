@@ -304,3 +304,20 @@ F2 ISTENTISZT, Opus, 75 K-tétel: 342 780 token, 59 eszközhívás, 926 s (a 7. 
 1. **A kinyerés a hiány nagyobb része volt:** ugyanaz a modell (Opus) ugyanazon a halmazon 30% helyett 70%-ot ér el, mert a hibát hordozó adat (funkció-mező, szabály-mondat, Remez-mondat, szótári besorolás, alany) most a K-tétel alatt áll. A korlát: a mérés nem független (l. fent).
 2. **A maradék két tétel a mérlegelésé:** az adat mindkettőnél a K-tétel alatt volt (a lap Targum-mondata; a tükörfordítás), az ügynök mégsem kötötte össze. Ez már nem kinyerési hézag.
 3. **A hamis riasztás** a lektori listán kívül most kicsi (0/2), de a sokaság is kicsi (3); az új mellékhatás (egy adatsor-hiba hat tételen) a lektor terhét növeli — a 8.2 javaslata.
+
+### 8.5 Kiegészítés: N-F224f és a küszöb (a felhasználó döntése, 2026-11-15: „igen”)
+
+**N-F224f (F224.18):** a funkció-mező csak a hely saját adatsor-tételénél (`adat:kapcsolodas`) áll a K-tétel alatt, a többi K-tétel alól kikerül (`eszkozok/proza_allitas.py` `kontextus()`, teszt: `F224_15.test_funkcio_csak_a_sajat_tetelnel`; a szerepfájl Funkció-mező pontja). Új teljes mérés nem futott (a döntés szerint); célzott ellenőrzés a 8.2 hat érintett tételén, az újragenerált listán (ugyanaz a bemenet, 75 K-tétel, a K-halmaz azonos; a funkció-sorok száma a listán 103 → 20):
+
+| K | 8. sz. ítélet | Az ítélet oka (az ügynök szerint) | Az 1Kir 18:25 funkció-mezője alatta | Ami marad |
+|---|---|---|---|---|
+| K2 | hamis | csak a funkció-mező | kikerül | nincs más ok (a mondat a versekkel egyezik) |
+| K10 | hamis | csak a funkció-mező | kikerül | nincs más ok |
+| K40 | hamis | csak a funkció-mező | kikerül | nincs más ok |
+| K13 | hamis | a BDB 2.c a kizárt helyeket is hozza + a funkció-mező | kikerül | a BDB-ok (a lektor 12. tétele) |
+| K17 | hamis | a BDB „1Kin 18:24-25, 26” három vers + a funkció-mező | kikerül | a háromvers-ok (a régi átnézés HIBÁ-ja) |
+| K50 | hamis | a funkció-mező (a hely saját tétele) | **marad** | a lektor 1. tétele itt és a K61-ben (Remez) |
+
+Következmény a 8. szakasz mérőire (számolás, nem új futás): az ISTENTISZT 10-es halmaza változatlanul 7/10 (az 1. tételt a K50 és a K61 hordozza); az egy adatsor-hiba miatti ismételt „hamis” ítélet 6 tételről 1-re csökken (a K13 és a K17 saját okkal marad); a hamis riasztás a lektori listán kívül 0/2, a 8.2-ben jelzett 3/5-ös számolás alapja (K2, K10, K40) megszűnik. *Hogy az ügynök a K2, K10, K40 tételt a funkció-mező nélkül valóban „igazolt”-nak ítélné, futás nélkül nem igazolt; az ügynök saját indoka szerint más oka nem volt.*
+
+**A küszöb és a független mérés (DT-F224d 🟢):** a küszöb marad 80%; a független mérés a következő új motívum cikkírásának F2-lépésén fut, ugyanazokkal a mérőkkel. A 8. szakasz 70%-a addig nem független eredmény.
