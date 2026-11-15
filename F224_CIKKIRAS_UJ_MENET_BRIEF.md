@@ -6,7 +6,8 @@ tipus: feladat
 fazis: folyamat
 sav: SYSTEMS
 modell: opus
-allapot: nem_indult
+allapot: fut
+ag: claude/f224-cikkiras-uj-menet
 ad: a jóváhagyott 3. változat (2026-11-15) tizenhárom tétele a saját szabályhelyén — új bíráló- és állítás-ellenőr szerepfájl (Sonnet), szűkített lektor (Fable marad), állításonkénti kinyerés, bizonyítéklap-eszköz, érvnapló, tanulmányblokk-szabály, mérőtábla, a határ-ellenőr Sonnetre —, és egy elfogadási próba a két ismert hibahalmazon, számszerű küszöbbel
 kovetkezo: "F224.1-gyel indul; ⛔ a próba (F224.13) előtt keret-ellenőrzés, ⛔ ha a próba a javítókör után is a küszöb alatt marad"
 munka: folyamat
