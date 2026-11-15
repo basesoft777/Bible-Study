@@ -5,22 +5,22 @@ azok Strong-számaival. A Logosz-lexikon nyílt adatmagjainak egyike.
 
 A csomag minden fájlja a kiadás része.
 
-- **Licenc:** CC BY 4.0 (`LICENSE`); a felhasznált külső adatok forrásmegjelölése: `ATTRIBUCIO.md`.
-- **DOI:** 10.5281/zenodo.24141884 — a kiadás azonosítója és a tartalmi hash: `KIADAS.txt`.
+- **Licenc:** CC BY 4.0 (`LICENSE`); a felhasznált külső adatok forrásmegjelölése: `docs/hu/ATTRIBUCIO.md`.
+- **DOI:** 10.5281/zenodo.24141883 — a kiadás azonosítója és a tartalmi hash: `KIADAS.txt`.
 - **Szerző:** Demeter Tamás (ORCID 0009-0005-9254-9731).
 
 ## Tartalom
 
 | fájl | tartalom |
 |---|---|
-| `parok/NN_Konyv.tsv` | könyvenként minden szópár: magyar szó – eredeti szó, Strong-számmal |
-| `szavak/NN_Konyv.tsv` | könyvenként minden magyar és minden eredeti szó, egyszer: párosított, betoldás, fordítatlan vagy függőben |
-| `versek.tsv` | a Károli 1908 szövege versenként |
-| `meres.tsv` | a párosítás mért pontossága rétegenként és kapcsolattípusonként, konfidencia-intervallummal |
-| `kodkonyv.tsv`, `KODKONYV.md` | az oszlopok és az értékek leírása (magyarul és angolul) |
-| `MODSZER.md`, `METHODS.md` | hogyan készült a párosítás, és hogyan mértük |
-| `ISMERT_HIBAK.md`, `KNOWN_ISSUES.md` | ismert hibák és korlátok |
-| `ATTRIBUCIO.md` | forrásmegjelölés és licencek |
+| `data/parok/NN_Konyv.tsv` | könyvenként minden szópár: magyar szó – eredeti szó, Strong-számmal |
+| `data/szavak/NN_Konyv.tsv` | könyvenként minden magyar és minden eredeti szó, egyszer: párosított, betoldás, fordítatlan vagy függőben |
+| `data/versek.tsv` | a Károli 1908 szövege versenként |
+| `data/meres.tsv` | a párosítás mért pontossága rétegenként és kapcsolattípusonként, konfidencia-intervallummal |
+| `data/kodkonyv.tsv`, `docs/hu/KODKONYV.md`, `docs/en/CODEBOOK.md` | az oszlopok és az értékek leírása (magyarul és angolul) |
+| `docs/hu/MODSZER.md`, `docs/en/METHODS.md` | hogyan készült a párosítás, és hogyan mértük |
+| `docs/hu/ISMERT_HIBAK.md`, `docs/en/KNOWN_ISSUES.md` | ismert hibák és korlátok |
+| `docs/hu/ATTRIBUCIO.md`, `docs/en/ATTRIBUTION.md` | forrásmegjelölés és licencek |
 | `CITATION.cff` | idézési adatok |
 | `ELLENORZO_OSSZEG.sha256` | minden fájl SHA-256 összege |
 
@@ -32,8 +32,8 @@ A csomag minden fájlja a kiadás része.
 - 109 914 magyar szó a fordító betoldása, 63 017 eredeti szót a Károli nem fordít külön szóval;
   794 magyar és 794 eredeti szó párosítása függőben van (45 versben).
 - Pontosság: a fő szavak párjain egy független forrás szerint 98,72% (95%: 98,22–99,08%); a teljes
-  párkészleten a vak ellenőrrel 95,06% (95%: 93,81–96,32%); részletesen: `meres.tsv`,
-  `MODSZER.md` 5.
+  párkészleten a vak ellenőrrel 95,06% (95%: 93,81–96,32%); részletesen: `data/meres.tsv`,
+  `docs/hu/MODSZER.md` 5.
 
 ## Rövid használati útmutató
 
@@ -44,9 +44,9 @@ szóalak nincs a csomagban; az eredeti szót a sorszáma és a Strong-száma azo
 TAHOT/TAGNT szövegéhez illeszthető.
 
 Minden pár gépi javaslat (`allapot` = `javaslat`), a fent megadott mért pontossággal; a pontosság rétegenként és
-kapcsolattípusonként a `meres.tsv`-ben áll.
+kapcsolattípusonként a `data/meres.tsv`-ben áll.
 
 ## Kapcsolódó adatkészletek
 
-- Modernizált Károli – Strong (ugyanezek a párok a modernizált szövegen): https://doi.org/10.5281/zenodo.24141950
-- A Logosz-lexikon nyílt adatmagja (motívumok): https://doi.org/10.5281/zenodo.24141612
+- Modernizált Károli – Strong (ugyanezek a párok a modernizált szövegen): https://doi.org/10.5281/zenodo.24141949
+- A Logosz-lexikon nyílt adatmagja (motívumok): https://doi.org/10.5281/zenodo.24141611
