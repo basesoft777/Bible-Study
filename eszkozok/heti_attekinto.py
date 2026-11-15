@@ -154,7 +154,8 @@ def tisztit(szoveg):
     """Egy fejlécszöveg olvasható alakja: jelölőnyelv nélkül, belső azonosító-töredékek nélkül."""
     s = szoveg.replace('`', '').replace('**', '')
     s = re.sub(r'^\[[^\]]*\]\s*', '', s.strip())                         # [elteres_kor 2/2] stb.
-    s = re.sub(r'\bELLENOR_[A-Za-z0-9_]+', 'az ellenőrzési jelentés', s)
+    s = re.sub(r'(?:naplok/)?\bELLENOR_[A-Za-z0-9_]+(?:\.md)?', 'az ellenőrzési jelentés', s)
+    s = s.replace('az az ellenőrzési jelentés', 'az ellenőrzési jelentés')
     return re.sub(r'\s+', ' ', s).strip()
 
 

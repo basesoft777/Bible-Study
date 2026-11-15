@@ -165,6 +165,10 @@ class TeendoTest(Alap):
                    kovetkezo='"Te: [elteres_kor 2/2] ELLENOR_F1_3 1. mechanikus"')
         self.assertEqual(self.teendok()[1], 'az ellenőrzési jelentés 1. mechanikus')
 
+    def test_ellenor_fajlnev_utvonallal_is(self):
+        self.assertEqual(H.tisztit('ellenőr: naplok/ELLENOR_TERV_SZINKRON_3.md; az ELLENOR_F1_3 1.'),
+                         'ellenőr: az ellenőrzési jelentés; az ellenőrzési jelentés 1.')
+
 
 def pr(szam, cim, ag='claude/x', allapot='OPEN', merge=None, piszkozat=False):
     return {'number': szam, 'title': cim, 'state': allapot, 'isDraft': piszkozat, 'mergedAt': merge,

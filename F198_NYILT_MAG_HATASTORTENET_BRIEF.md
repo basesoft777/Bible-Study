@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: CONTENT
-allapot: fut
+allapot: lezarva
 ag: claude/brave-allen-7b2eb6
 ad: négy új nyílt tábla (visszhang_megfelelok, visszhang_tanuk, vitatott_forrasok, sblgnt_apparatus) forrásonkénti licenccel, kódkönyvvel, angol párral, OLVASSEL/README-szakasszal és ellenőrző összeggel; a Chain Lineage-tanúk kiszűrve; a nyílt mag kapuja 0 BUKÁS, a lap érintetlen
-kovetkezo: "Te: a draft PR áttekintése; a két nyitott licenc-kérdés (DT778, DT779) eldöntése; merge a HAMART-001 /kiadas-a előtt"
+kovetkezo: "lezárva: a #693 mergelve (2026-11-11); a maradék: DT778, DT779 (🟡, nyitva); a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 munka: folyamat
 olvas: [eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/nyilt_mag_angol.py, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, adat/vitatott_forrasok.tsv, adat/licencek.tsv, adat/nyilt_kodkonyv.tsv, adat/nyilt_angol.tsv, konkordancia/SBLGNT_apparatus.tsv]
 ir: [eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py, adat/nyilt_kodkonyv.tsv, adat/nyilt_angol.tsv, nyilt_mag/, naplok/F198_jelentes.md, naplok/ELLENOR_F198.md, dontesek/uj/brave-allen-7b2eb6.md, nyitott/uj/brave-allen-7b2eb6.md, F198_NYILT_MAG_HATASTORTENET_BRIEF.md]

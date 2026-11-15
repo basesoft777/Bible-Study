@@ -6,10 +6,10 @@ tipus: feladat
 fazis: 1
 modell: sonnet
 sav: CONTENT
-allapot: megallt
+allapot: lezarva
 ag: claude/f22-evangeliumok-c2ac08
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"
-kovetkezo: "Te: a 22.9 D, E, F csomag (Mt, Mk, Luk, Ján, ApCsel; 4 785 vers, 26,5511 USD, futó összeg 130,0820 USD, plafon 141,53 USD) lefutott és egyesítve (végleges kapuhiba 2/4 785: Ján 2:8, 4:30; `kezi`: Ján 1:38–51, ApCsel 13:32–33, 24:2–3: N-F22e); a három csomagjelentés (`naplok/F22_USZ_{D,E,F}_jelentes.md`) és a független ellenőri jelentések (`naplok/ELLENOR_F22_USZ_{D,E,F}.md`) után a draft PR; a merge a felhasználóé. Utána: N-F22e (az általános tokenszintű vershatár-mechanizmus, a 20 `kezi` vers pótlása)."
+kovetkezo: "lezárva: a #537 mergelve (2026-11-01); a maradék: N-F22e (nyitva); a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 fugg: [21]
 nem_fugg: [48]
 olvas: [f21p/prompt_v3.md, f21p/prompt_v3.sha256, eszkozok/karoli_strong/tokenek.py, eszkozok/karoli_strong/kapu.py, eszkozok/karoli_strong/futtat.py, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/Karoli_Strong_kivonat.tsv, f21p/regi_arany_hibas.tsv, naplok/F21P_jelentes.md, konkordancia/TAGNT_kivonat.tsv, f22/versmegfeleltetes.tsv]

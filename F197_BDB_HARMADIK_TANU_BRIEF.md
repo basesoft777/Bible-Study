@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 sav: CONTENT
-allapot: fut
+allapot: lezarva
 ad: a 2.29 jelentéspontjának harmadik, független tanúja (a Sefaria BDB-jelentésfája); egyezésnél `biztos`, eltérésnél `ketes`; kapcsolóval, alapból kikapcsolva
-kovetkezo: "Folytatás: a független ellenőrzés és a draft PR; a merge a felhasználóé"
+kovetkezo: "lezárva: a #688 mergelve (2026-11-11); nincs maradék (ELLENOR_F197 kész); a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 munka: adat
 olvas: [CLAUDE.md, adat/SEMA.md, naplok/F185_jelentes.md, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, eszkozok/bdb_jelolt/belso_tanu.py, adat/licencek.tsv]
 ir: [eszkozok/olvaso_szerver/bdb_sefaria_tanu.py, eszkozok/olvaso_szerver/teszt_bdb_sefaria_tanu.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, adat/bdb_jp_sefaria.tsv, adat/SEMA.md, naplok/F197_jelentes.md, naplok/F197_seed103_reszlet.tsv, naplok/F197_proba40_reszlet.tsv, dontesek/uj/bdb-harmadik-tanu-618784.md, nyitott/uj/bdb-harmadik-tanu-618784.md]
