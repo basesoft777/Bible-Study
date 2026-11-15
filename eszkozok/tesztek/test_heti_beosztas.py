@@ -31,10 +31,10 @@ DT = datetime(2026, 11, 15, 12, 0)  # vasárnap: a 2026-11-14-i keret-hét
 
 
 def terv_sor(sav='CONTENT', sorrend=1, tetel='-', cel='Cél', modell='-', keret=0, kezi='', jov='javaslat',
-             megj='', het=HET):
+             megj='', het=HET, eredeti='', minta=''):
     return {'het': het.isoformat(), 'sav': sav, 'sorrend': str(sorrend), 'tetel': tetel, 'cel_a_het_vegere': cel,
             'modell': modell, 'becsult_keret_szazalek': str(keret), 'allapot_kezi': kezi, 'jovahagyva': jov,
-            'megjegyzes': megj, '_sor': 2}
+            'eredeti_keret_szazalek': eredeti, 'session_minta': minta, 'megjegyzes': megj, '_sor': 2}
 
 
 def tsv_szoveg(fejlec, sorok):
@@ -384,6 +384,88 @@ class MeresIntegracioTest(Alap):
         m = self.modell([terv_sor(sav='SYSTEMS', keret=100)])
         self.assertNotIn('arany', m['keret']['SYSTEMS'])
         self.assertIn('nincs bekapcsolva', self.oldal(m))
+
+
+class SorMeresTest(Alap):
+    """A tételenkénti mért fogyás: két új oszlop, a session-hozzárendelés három szabálya, a megjelenített szöveg."""
+
+    @staticmethod
+    def se(nev, egyseg, sav='SYSTEMS'):
+        return {'sid': nev, 'nev': nev, 'sav': sav, 'egyseg': float(egyseg)}
+
+    def hibak(self, sorok):
+        return B.terv_ellenoriz([dict(s, _sor=2) for s in sorok])
+
+    def test_uj_oszlopok_ervenyesitese(self):
+        self.assertEqual(self.hibak([terv_sor(keret=100, eredeti='40', minta='a; b')]), [])
+        self.assertEqual(self.hibak([terv_sor(keret=100, eredeti='', minta='')]), [])
+        h = self.hibak([terv_sor(keret=100, eredeti='101')])
+        self.assertTrue(any('eredeti_keret_szazalek' in x for x in h), h)
+        h = self.hibak([terv_sor(keret=100, eredeti='x')])
+        self.assertTrue(any('eredeti_keret_szazalek' in x for x in h), h)
+        h = self.hibak([terv_sor(keret=100, minta=' ; ')])
+        self.assertTrue(any('session_minta' in x for x in h), h)
+
+    def test_osszegszabaly_a_becsult_keretre_vonatkozik(self):
+        h = self.hibak([terv_sor(keret=60, eredeti='90'), terv_sor(sav='TARTALEK', keret=40, eredeti='50')])
+        self.assertEqual(h, [])
+
+    def test_a_szabaly_minta_nagybetutol_fuggetlen(self):
+        terv = [terv_sor(sorrend=1, minta='Károli-csomagok: szövegjavítás')]
+        h = B.sor_session_hozzarendeles(terv, [self.se('CONTENT · KÁROLI-CSOMAGOK: SZÖVEGJAVÍTÁS 2', 5)])
+        self.assertEqual(len(h[('CONTENT', '1')]), 1)
+
+    def test_b_szabaly_f_szam_szohataral(self):
+        terv = [terv_sor(sorrend=1, tetel='F218'), terv_sor(sorrend=2, tetel='#22')]
+        sessionok = [self.se('F218a kész', 1), self.se('tervez F218', 2), self.se('F2185 más', 4), self.se('xF218', 8),
+                     self.se('F22 és F224', 16)]
+        h = B.sor_session_hozzarendeles(terv, sessionok)
+        self.assertEqual([x['nev'] for x in h[('CONTENT', '1')]], ['F218a kész', 'tervez F218'])
+        self.assertEqual([x['nev'] for x in h[('CONTENT', '2')]], ['F22 és F224'])
+
+    def test_c_szabaly_orkesztracio(self):
+        terv = [terv_sor(sorrend=1, tetel='F5'), terv_sor(sav='ORKESZTRACIO', keret=0)]
+        h = B.sor_session_hozzarendeles(terv, [self.se('bármi', 3, sav='ORKESZTRACIO'), self.se('más', 4, sav='SYSTEMS')])
+        self.assertEqual([x['nev'] for x in h[('ORKESZTRACIO', '1')]], ['bármi'])
+        self.assertEqual(h[('CONTENT', '1')], [])
+
+    def test_egy_session_egy_sor_es_az_a_szabaly_az_elso(self):
+        terv = [terv_sor(sorrend=1, tetel='F5'), terv_sor(sorrend=2, minta='csomag'), terv_sor(sorrend=3, minta='csomag')]
+        h = B.sor_session_hozzarendeles(terv, [self.se('F5 csomag', 1)])
+        self.assertEqual(sum(len(v) for v in h.values()), 1)
+        self.assertEqual(len(h[('CONTENT', '2')]), 1)      # a minta (a) erősebb az F-számnál (b)
+
+    def test_sor_meres_a_kalibracios_szorzoval(self):
+        terv = [terv_sor(sorrend=1, tetel='F5', keret=100)]
+        meres = {'kalibralas': {'heti': 0.1}, 'sessionok': [self.se('F5 a', 30), self.se('F5 b', 20), self.se('más', 99)]}
+        self.assertAlmostEqual(B.sor_meres(terv, meres)[('CONTENT', '1')], 5.0)
+        meres['kalibralas']['heti'] = None
+        self.assertIsNone(B.sor_meres(terv, meres)[('CONTENT', '1')])
+        self.assertEqual(B.sor_meres(terv, None), {})
+
+    def test_szoveg_meressel_es_meres_nelkul(self):
+        terv = [terv_sor(sorrend=1, tetel='F5', keret=10, eredeti='40', cel='Átcsoportosított'),
+                terv_sor(sorrend=2, tetel='F6', keret=90, cel='Változatlan')]
+        meres = MeresIntegracioTest.meres(szazalek=10.0)
+        meres['kalibralas']['heti'] = 0.1
+        meres['sessionok'] = [self.se('F5 egy', 9), self.se('F6 két', 0)]
+        oldal = self.oldal(B.epit(terv, [], [], [], {}, [], DT, meres=meres))
+        self.assertIn('tervezett 10% (eredetileg 40%) → mért 0,9%', oldal)
+        self.assertIn('tervezett 90% → mért 0,0%', oldal)
+        self.assertNotIn('10% keret', oldal)
+        nelkul = self.oldal(self.modell(terv))
+        self.assertIn('10% keret', nelkul)
+        self.assertNotIn('→ mért', nelkul)
+
+    def test_kesz_sor_is_mert_a_visszanezesben(self):
+        self.brief(5, allapot='lezarva')
+        terv = [terv_sor(sorrend=1, tetel='F5', keret=10, cel='Lezárt cél')]
+        meres = MeresIntegracioTest.meres(szazalek=10.0)
+        meres['kalibralas']['heti'] = 0.1
+        meres['sessionok'] = [self.se('F5 munka', 9)]
+        oldal = self.oldal(B.epit(terv, [], [], F.briefek_beolvas(self.ut), {}, [], DT, meres=meres))
+        visszanezes = oldal[oldal.index('id="visszanezes"'):]
+        self.assertIn('tervezett 10% → mért 0,9%', visszanezes)
 
 
 class CliTest(Alap):

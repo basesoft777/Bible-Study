@@ -2,7 +2,7 @@
 name: fuggetlen-ellenor
 description: "Friss kontextusú, hibakereső ellenőrzés egy tétel base..head diffjén: A1–A6 és a brief G/D pontjai, saját lekérdezéssel igazolva; a jelentést válaszként adja, a hívó session menti a naplok/F<nn>_jelentes.md-be."
 tools: Read, Grep, Glob, Bash
-model: opus
+model: fable
 ---
 
 **Bemeneted csak ez:** a brief fájlneve, a `base..head` commit-tartomány, az
