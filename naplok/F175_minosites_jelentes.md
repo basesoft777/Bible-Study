@@ -83,8 +83,8 @@ belső adat változatlan). A Zenodo-piszkozatokba az új csomag kerül.
 ## 6. Kiegészítés (2026-11-15): a „bizonyosság” jelentése (DT-F175e)
 
 A felhasználó döntése: a nyilvános „bizonyosság” csak a mért pontosság (könyvcsoportonként, 93–98%, összesen 95,06%). A
-DT-F175d („Mózes öt könyve”) jóváhagyva. Ebben a PR-ban, újragenerálás nélkül (a csomagok szövegében a szó nem áll): a két
-Károli-kapu tilalma a „magas/alacsony bizonyosság” alakra és a belső mezőnévre szűkült (a mért pontosságra a szó
-megengedett, teszttel); a SEMA 2.20 rögzíti, hogy a `bizonyossag` mező belső szűrő, nem minősítés. Nyitva: N-F175d (az
+DT-F175d („Mózes öt könyve”) jóváhagyva. Ebben a PR-ban, újragenerálás nélkül (a csomagok szövegében a szó nem áll): a SEMA 2.20 rögzíti, hogy a `bizonyossag` mező belső szűrő, nem minősítés. Nyitva: N-F175d (az
 olvasó három helye, külön SERVER-javítás), N-F175e (a motívum-mag szövegei, a „csak szövegek” mód után; teljes export
-nélkül az E35 miatt nem igazolható).
+nélkül az E35 miatt nem igazolható; a „magas/alacsony bizonyosság” kaputilalom is ekkor, a mag szövegével együtt kerül
+be). Ellenőrzés ebben a körben a felhasználó kérésére szűkítve: a két csomagkapu és a `feladatok.py ellenoriz`; a teljes
+`push_elott.py` egyszeri kivételként nem futott, a teljes ellenőrzést a CI végzi.

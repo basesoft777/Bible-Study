@@ -17,7 +17,7 @@ A brief 1. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
     NYILVANOS   (e) nyilvános szövegben nincs belső jelölés (DT/N/F-szám, belső útvonal, proveniencia-kulcs,
                 `manual`), „orkesztrátor”, „felhasználó…”, „termék”, GitHub, helyőrző; a „PaRDeS” nem áll benne
                 (így nem is központi keretezés); a README és az OLVASSEL jóváhagyott kiadás-mondata áll; nincs
-                modell-egyezés mint minősítés (magas/alacsony bizonyosság, kétmodelles leírás, költségkeret) — BUKÁS
+                modell-egyezés mint minősítés (bizonyosság, kétmodelles leírás, költségkeret)        — BUKÁS
     NEVELO      a magyar szövegekben a szám előtti névelő a kiejtés szerinti (az 598 715, a 34, az 1. kiadás),
                 és nincs el nem döntött „a(z)” alak                                                      — BUKÁS
     KOZLEMENY   a `kozlemeny/` hu/en tervezete (rövid közlemény) megvan, nincs az ellenőrző összegben, a
@@ -83,12 +83,9 @@ TILTOTT = [
     (re.compile(r'régi arany|old gold', re.I), 'belső fogalom (régi arany)'),
 ]
 # a két modell egyezése nem minősítés, és a fejlődéstörténet (költségkeret, második párosító modell) nem a közölt
-# állapot leírása (2026-11-14): a nyilvános szövegben nem állhat (a TILTOTT része). A „bizonyosság” szó a nyilvános
-# szövegben csak a mért pontosságot jelenti (DT-F175e, 2026-11-15); a modell-egyezés címkéje (magas/alacsony
-# bizonyosság, high/low confidence) és a belső mező neve tilos.
+# állapot leírása (2026-11-14): a nyilvános szövegben nem állhat (a TILTOTT része)
 MODELL_EGYEZES = [
-    (re.compile(r'\b(?:magas|alacsony|high|low)\W{0,3}(?:bizonyoss|confidence)|\bbizonyossag\b', re.I),
-     'modell-egyezés mint minősítés (magas/alacsony bizonyosság)'),
+    (re.compile(r'bizonyoss', re.I), 'modell-egyezés mint minősítés (bizonyosság)'),
     (re.compile(r'költségkeret|reasons? of cost', re.I), 'költségkeret-történet'),
     (re.compile(r'Gemini', re.I), 'második párosító modell'),
     (re.compile(r'két (?:független )?(?:nyelvi )?modell|two (?:independent )?(?:language )?models', re.I),

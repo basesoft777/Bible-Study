@@ -163,16 +163,11 @@ class Csomag(unittest.TestCase):
 
     def test_modell_egyezes(self):
         # a két modell egyezése nem minősítés, a költségkeret-történet nem a közölt állapot leírása
-        for szo in ('`magas` bizonyosságú', 'alacsony bizonyosság', 'a költségkeret miatt', 'Gemini Flash',
-                    'két független modell párosította', 'For reasons of cost', 'two independent models aligned',
-                    'the confidence label', 'High confidence'):
+        for szo in ('`magas` bizonyosságú', 'a költségkeret miatt', 'Gemini Flash', 'két független modell párosította',
+                    'For reasons of cost', 'two independent models aligned', 'the confidence label'):
             f = self.uj()
             f['METHODS.md' if szo[0].isupper() or szo.startswith(('two', 'the')) else 'MODSZER.md'] += '\n' + szo + '\n'
             self.assertTrue(bukasok(f, 'NYILVANOS'), szo)
-        # a „bizonyosság” a mért pontosságot jelenti (DT-F175e): így megengedett
-        f = self.uj()
-        f['MODSZER.md'] += '\nA bizonyosság a mért pontosság: 95% (Mózes öt könyve).\n'
-        self.assertEqual(bukasok(f, 'NYILVANOS'), [])
 
     def test_bizonyossag_oszlop(self):
         f = self.uj()
