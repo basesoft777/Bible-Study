@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 sav: SYSTEMS
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: a main-re futó `feladatok.yml` a mergelt PR briefjét `lezarva`-ra állítja (ha csak a merge volt hátra), és a `lezar:` N-tételeit lezárja; a kapu jelent, ha egy mergelt brief nincs lezárva, vagy egy lezárt brief N-tétele nyitva maradt
-kovetkezo: "Te: a draft PR áttekintése és merge-e"
+kovetkezo: "lezárva: a PR #736 mergelve (2026-11-15, gépi lezárás: eszkozok/brief_lezaras.py)"
 munka: folyamat
 olvas: [CLAUDE.md, .github/workflows/feladatok.yml, eszkozok/gepi_commit_uzenet.py, F201_SZAMKIOSZTAS_BRIEF.md, F217_GENERALAS_MAINEN_BRIEF.md, NYITOTT_FELADATOK.md]
 ir: [eszkozok/brief_lezaras.py, eszkozok/teszt_brief_lezaras.py, eszkozok/gepi_commit_uzenet.py, eszkozok/feladatok.py, eszkozok/heti_attekinto.py, eszkozok/teszt_feladatok.py, BRIEF_SABLON.md, F86_ELOFIZETES_FEED_BRIEF.md, .github/workflows/feladatok.yml, .github/workflows/ellenorzes.yml, dontesek/uj/dreamy-hugle-c875f6.md, dontesek/uj/f219b-lezar-kapu.md, F219_BRIEF_LEZARAS_BRIEF.md, naplok/F219_jelentes.md]
@@ -40,4 +40,4 @@ Brief-fejlécet és a `NYITOTT_FELADATOK.md`-t ebben a menetben kézzel nem szer
 ## B. rész (kész)
 - `feladatok.py`: `lezar` a `KULCSOK`/`LISTA_KULCSOK`-ban, az azonosító alakja ellenőrzött (`N12`, `N-F219a`; HIBA); az `ellenoriz` `JELENTÉS` sorokat ad (nem HIBA) a mergelt, de nem lezárt briefekről és a nyitva maradt `lezar:` tételekről.
 - `BRIEF_SABLON.md`: a `lezar` mező és a kanonikus `Te: … merge` alak; a hatókör-szűkítés szabálya (DT-F221a, a #733 kész szövege, ugyanaz a fájl).
-- A `sav` mező hiányát az F219, F220, F221 briefben a #735 pótolta. Ugyanebben a PR-ban: a `sav` ötödik értéke `BUSINESS` (DT-F219d, a felhasználó döntése), F86 `USER` → `BUSINESS`.
+- A `sav` mező hiányát az F219, F220, F221 briefben a #735 pótolta. Ugyanebben a PR-ban: a `sav` ötödik értéke `BUSINESS` (DT856, a felhasználó döntése), F86 `USER` → `BUSINESS`.
