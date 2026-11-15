@@ -9,7 +9,7 @@ modell: sonnet
 allapot: fut
 ag: claude/vibrant-borg-bbaa4d
 ad: három adattábla (`adat/heti_terv.tsv`, `adat/otlettar.tsv`, a kézi keret-értékekkel: `adat/heti_keret.tsv`) és három mérési tábla (`adat/keret_sulyok.tsv`, `adat/keret_munkamappa.tsv`, `adat/heti_keret_meres.tsv`) a SEMA-ban; egy oldal-generátor (`eszkozok/heti_beosztas.py`), amely a heti tervet sávonként, a brief-fejlécekből és a PR-okból számolt valós állapottal, tervezett és elhasznált kerettel, a felhasználó teendőivel és visszanézéssel mutatja; a sávonkénti keretfogyás mérése a session-átiratokból (`eszkozok/keret_meres.py`); az ötlettár első feltöltése a szétszórt felvetésekből
-kovetkezo: "Te: a draft PR áttekintése; a heti terv jóváhagyása (`jovahagyva`: javaslat → igen); az első kalibrációs pont után további pontok a `heti_keret_meres.tsv`-be"
+kovetkezo: "lezárva: a PR #740 mergelve (2026-11-15, az orkesztrátor lezárása; a gépi lezárás kihagyta, mert a `kovetkezo` nem nevezte meg a merge-et)"
 munka: folyamat
 olvas: [CLAUDE.md, adat/SEMA.md, eszkozok/heti_attekinto.py, eszkozok/feladatok.py]
 ir: [adat/heti_terv.tsv, adat/heti_keret.tsv, adat/otlettar.tsv, adat/keret_sulyok.tsv, adat/keret_munkamappa.tsv, adat/heti_keret_meres.tsv, adat/SEMA.md, eszkozok/heti_beosztas.py, eszkozok/keret_meres.py, eszkozok/tesztek/test_heti_beosztas.py, eszkozok/tesztek/test_keret_meres.py, eszkozok/teszt_feladatok.py, eszkozok/feladatok.py, eszkozok/brief_lezaras.py, eszkozok/heti_attekinto.py, BRIEF_SABLON.md, F222_HETI_BEOSZTAS_BRIEF.md]
