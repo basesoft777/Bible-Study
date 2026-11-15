@@ -1,6 +1,6 @@
 # Módszer — a modernizált Károli és a Strong-összekapcsolás
 
-*Modernizált Károli – Strong · Logosz-lexikon · adatállapot: 2026-11-12 · DOI: 10.5281/zenodo.24141950*
+*Modernizált Károli – Strong · Logosz-lexikon · adatállapot: 2026-11-12 · DOI: 10.5281/zenodo.24141949*
 
 ## 1. Mi ez az adatkészlet
 
@@ -9,7 +9,7 @@ Károli Gáspár fordításának 1908-as szövege mai helyesírással és mai ig
 modernizálás 64 388 szót (a kieső szavakkal együtt, 4.3) és 21 636 verset érint; a többi szó és vers változatlan.
 
 A modernizált szöveg a projekt saját munkája. A szópárosítás a Károli 1908 szövegén készült, és önálló
-adatkészletként is megjelenik (https://doi.org/10.5281/zenodo.24141884). Ez az adatkészlet a kettő összekapcsolása.
+adatkészletként is megjelenik (https://doi.org/10.5281/zenodo.24141883). Ez az adatkészlet a kettő összekapcsolása.
 
 ## 2. A kiinduló szöveg és a kulcs
 
@@ -93,7 +93,7 @@ Wilson-féle 95%-os intervallumot a kiadás számolja a mért darabszámokból):
   becsülhető (95%-os Poisson-sáv kb. 500–3 600). A második minta magasabb lefedettsége torzított, mert a
   későbbi körök éppen a kihagyásait vették célba.
 
-A maradék ismert hibákat az `ISMERT_HIBAK.md` sorolja fel.
+A maradék ismert hibákat az `docs/hu/ISMERT_HIBAK.md` sorolja fel.
 
 ## 5. A Strong-párosítás és a pontossága
 
@@ -105,7 +105,7 @@ A pontosságot rétegzett véletlen mintán mértük, vak ellenőrrel, és egy f
 
 - a teljes párkészlet (mellékszavakkal, morfémákkal) egyezése a vak ellenőrrel: 95,06% (95%: 93,81–96,32%);
   könyvcsoportonként (7 réteg) 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között; a rétegenkénti
-  tábla a szóillesztési adatkészletben áll (https://doi.org/10.5281/zenodo.24141884);
+  tábla a szóillesztési adatkészletben áll (https://doi.org/10.5281/zenodo.24141883);
 - a fő szavak párjai a független forrással összevetve, 2 663 páron: 98,72% (95%: 98,22–99,08%); a
   háromutas ítélet után, amely az eltéréseket a vak ellenőr bevonásával döntötte el, 99,81%;
 - a héber előtag- és ragmorfémák párjai: 90,74% (95%: 87,18–94,29%); ezeket a független forrás
@@ -126,6 +126,6 @@ könyvön a régi számot (418 633) is igazolja.
 
 ## 7. Korlátok
 
-- A párosítás gépi javaslat; a pontossága fent, az ismert hibák az `ISMERT_HIBAK.md`-ben.
+- A párosítás gépi javaslat; a pontossága fent, az ismert hibák az `docs/hu/ISMERT_HIBAK.md`-ben.
 - A modernizálás nem fordítás és nem revízió: a szókincs és a szórend a Károlié.
 - A szövegkörnyezettől függő igealakok egy része bizonytalannak jelölt (2 358 szó).

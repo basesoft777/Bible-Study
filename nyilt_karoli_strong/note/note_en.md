@@ -1,6 +1,6 @@
 # The Károli Bible linked word by word to the original languages — with measured accuracy
 
-*Announcement draft · Károli 1908 – Strong word alignment · Logosz Lexikon · DOI: 10.5281/zenodo.24141884*
+*Announcement draft · Károli 1908 – Strong word alignment · Logosz Lexikon · DOI: 10.5281/zenodo.24141883*
 
 A reader of the Károli Bible, the classic Hungarian translation, who asks which Hebrew or Greek word stands behind a
 Hungarian word has so far found no free data that answers this word by word, with measured accuracy. The Logosz Lexikon now releases, under a free licence, a word-by-word
@@ -24,6 +24,6 @@ fixed in advance.
 
 **For whom.** For Bible readers looking for the original behind a word of the Károli; for researchers studying Hungarian
 biblical vocabulary together with the Hebrew and Greek text; for developers building on free, word-keyed Hungarian Bible
-data. The same pairs are also available on the modernised Károli text (https://doi.org/10.5281/zenodo.24141950).
+data. The same pairs are also available on the modernised Károli text (https://doi.org/10.5281/zenodo.24141949).
 
-The dataset is freely usable under CC BY 4.0: https://doi.org/10.5281/zenodo.24141884
+The dataset is freely usable under CC BY 4.0: https://doi.org/10.5281/zenodo.24141883

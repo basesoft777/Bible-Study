@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-15",
-   "commit": "61661a86"
+   "commit": "56f47cfc"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -6929,6 +6929,30 @@
      "🟢"
     ],
     "sor": 836,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT862",
+    "feladat": "#175 KAROLI_SZOILLESZTES_NYILT (a két Károli-csomag mappaszerkezete; 2026-11-15)",
+    "kerdes": "Milyen szerkezetű legyen a két nyílt Károli-csomag mappája az első feltöltés előtt, és hová kerül a rövid közlemény és a kézirat?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 837,
+    "oszlopszam": 7,
+    "fejlec_oszlopszam": 8
+   },
+   {
+    "id": "DT863",
+    "feladat": "#175 KAROLI_SZOILLESZTES_NYILT (a Károli-csomagok DOI-ja; 2026-11-15)",
+    "kerdes": "Melyik DOI áll a két Károli-csomag fájljaiban?",
+    "allapot": "ellenorizendo",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 838,
     "oszlopszam": 7,
     "fejlec_oszlopszam": 8
    }

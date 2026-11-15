@@ -1,6 +1,6 @@
 # A Károli-biblia szavanként az eredeti nyelvekhez kötve — mért pontossággal
 
-*Közlemény-tervezet · Károli 1908 – Strong szóillesztés · Logosz-lexikon · DOI: 10.5281/zenodo.24141884*
+*Közlemény-tervezet · Károli 1908 – Strong szóillesztés · Logosz-lexikon · DOI: 10.5281/zenodo.24141883*
 
 Aki a Károli-bibliát olvasva azt kérdezi, milyen héber vagy görög szó áll egy magyar szó mögött, eddig nem talált
 olyan szabad adatot, amely ezt szavanként, mért pontossággal megmondja. A Logosz-lexikon most szabad licenccel közreadja a Károli 1908-as szövegének szavankénti
@@ -25,6 +25,6 @@ célját előre rögzítettük.
 **Kinek.** Bibliaolvasóknak, akik a Károli egy szava mögött az eredetit keresik; kutatóknak, akik a magyar bibliai
 szóhasználatot a héber és görög szöveggel együtt vizsgálják; fejlesztőknek, akik szavanként kulcsolt, szabad magyar
 bibliai adatra építenének. Ugyanezek a párok a Károli modernizált szövegén is elérhetők
-(https://doi.org/10.5281/zenodo.24141950).
+(https://doi.org/10.5281/zenodo.24141949).
 
-Az adatkészlet CC BY 4.0 licenccel szabadon felhasználható: https://doi.org/10.5281/zenodo.24141884
+Az adatkészlet CC BY 4.0 licenccel szabadon felhasználható: https://doi.org/10.5281/zenodo.24141883

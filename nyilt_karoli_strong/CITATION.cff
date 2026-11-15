@@ -6,7 +6,7 @@ authors:
   - family-names: "Demeter"
     given-names: "Tamás"
     orcid: "https://orcid.org/0009-0005-9254-9731"
-doi: "10.5281/zenodo.24141884"
+doi: "10.5281/zenodo.24141883"
 license: CC-BY-4.0
 abstract: >-
   A Károli-biblia 1908-as szövege szavanként összekapcsolva a héber és görög
@@ -28,10 +28,10 @@ references:
     authors:
       - family-names: "Demeter"
         given-names: "Tamás"
-    doi: "10.5281/zenodo.24141950"
+    doi: "10.5281/zenodo.24141949"
   - type: dataset
     title: "Logosz-lexikon — nyílt adatmag: bibliai motívumok / Logosz Lexikon — open data core: biblical motifs"
     authors:
       - family-names: "Demeter"
         given-names: "Tamás"
-    doi: "10.5281/zenodo.24141612"
+    doi: "10.5281/zenodo.24141611"

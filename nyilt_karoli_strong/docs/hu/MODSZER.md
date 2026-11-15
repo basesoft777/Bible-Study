@@ -1,6 +1,6 @@
 # Módszer — a Károli 1908 és az eredeti szöveg szavankénti párosítása
 
-*Károli 1908 – Strong szóillesztés · Logosz-lexikon · 1. kiadás · adatállapot: 2026-11-01 · DOI: 10.5281/zenodo.24141884*
+*Károli 1908 – Strong szóillesztés · Logosz-lexikon · 1. kiadás · adatállapot: 2026-11-01 · DOI: 10.5281/zenodo.24141883*
 
 ## 1. Mi ez az adatkészlet
 
@@ -106,14 +106,14 @@ elöljáróban és névelőben álló mellékszót és a morfémát nem; ez a m�
 
 **Hibatípusok.** Az 1 600 mintapárból 72 tért el az ellenőrtől: szomszédos szó 37 (tartalmi
 20, morféma 17), rossz szó a versben 17, fölös pár
-16, azonos lexéma más előfordulása 2. A mérés minden száma a `meres.tsv`-ben
+16, azonos lexéma más előfordulása 2. A mérés minden száma a `data/meres.tsv`-ben
 áll.
 
 ## 6. Miért nyílt adat
 
 A párosítás nem hibátlan, és nem is ekként közöljük. Szerkesztői döntés alapján nyílt adatként jelenik meg, mert a
 pontossága **mérve és dokumentálva van**: rétegenként és kapcsolattípusonként, konfidencia-intervallummal, a hibák
-típusával és a megerősített hibák listájával (`ISMERT_HIBAK.md`). A „javaslat” állapot minden páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
+típusával és a megerősített hibák listájával (`docs/hu/ISMERT_HIBAK.md`). A „javaslat” állapot minden páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
 kritérium, és utólag felállított küszöb utólagos kritérium volna.
 
 ## 7. A következő kiadás
@@ -127,5 +127,5 @@ vak ellenőrrel mért súlyozott egyezés alsó széle legalább 93% (most 93,81
 
 ## 8. Kapcsolódó adatkészlet
 
-Ugyanezek a párok a Károli modernizált szövegén is megjelennek (https://doi.org/10.5281/zenodo.24141950). A modernizálás minden
+Ugyanezek a párok a Károli modernizált szövegén is megjelennek (https://doi.org/10.5281/zenodo.24141949). A modernizálás minden
 szót a helyén hagyott, ezért a két csomag a vers és a szósorszám kulcsán szóról szóra összekapcsolható.

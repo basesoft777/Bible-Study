@@ -5,15 +5,18 @@ karoli_strong_szovegek.py -- a Károli 1908 – Strong szóillesztés nyílt mag
 Csak sablonok: a `{…}` mezőket a `karoli_strong_export.py` `fmt()` függvénye tölti ki az adatból és a mérőtáblákból;
 szám kézzel nem kerül a szövegbe. A kész szövegeket a `karoli_strong_kapu.py` NYILVANOS pontja ellenőrzi (belső
 jelölés, tiltott szavak, harmadik fél neve).
+
+A fájlok útja az új szerkezet szerinti (`karoli_csomag.py`): gyökér, `data/`, `docs/hu|en/`, `note/`.
 """
+from karoli_csomag import attribucio_nyelvek
 
 # ----------------------------------------------------------------------------- kódkönyv
 
 KODKONYV_FAJLOK = [
-    ('parok', '`parok/NN_Konyv.tsv`'),
-    ('szavak', '`szavak/NN_Konyv.tsv`'),
-    ('versek', '`versek.tsv`'),
-    ('meres', '`meres.tsv`'),
+    ('parok', '`data/parok/NN_Konyv.tsv`'),
+    ('szavak', '`data/szavak/NN_Konyv.tsv`'),
+    ('versek', '`data/versek.tsv`'),
+    ('meres', '`data/meres.tsv`'),
 ]
 
 KODKONYV_SOROK = [
@@ -23,8 +26,8 @@ KODKONYV_SOROK = [
     ('parok', 'token', '', 'A magyar szó sorszáma a versben (1-től; az írásjel nem szó).',
      'Position of the Hungarian word in the verse (from 1; punctuation is not a word).'),
     ('parok', 'alak_1908', '', 'A magyar szó alakja a Károli 1908-as szövegében.', 'Word form in the 1908 Károli text.'),
-    ('parok', 'eredeti_token', '', 'Az eredeti szó sorszáma a TAHOT/TAGNT versében, a Károli-vers kulcsán (l. MODSZER.md 3.); a héber előtag és rag külön szónak számít.',
-     'Position of the source word in the TAHOT/TAGNT verse, keyed to the Károli verse (see METHODS.md 3); Hebrew prefixes and suffixes count as separate words.'),
+    ('parok', 'eredeti_token', '', 'Az eredeti szó sorszáma a TAHOT/TAGNT versében, a Károli-vers kulcsán (l. docs/hu/MODSZER.md 3.); a héber előtag és rag külön szónak számít.',
+     'Position of the source word in the TAHOT/TAGNT verse, keyed to the Károli verse (see docs/en/METHODS.md 3); Hebrew prefixes and suffixes count as separate words.'),
     ('parok', 'strong', '', 'Az eredeti szó Strong-száma (H… héber, G… görög) a STEPBible TAHOT/TAGNT szerint; „+” két számot köt össze, ha a forrás egy szóhoz kettőt ad. A modell nem ír Strong-számot: a szám a sorszámból jön.',
      "Strong's number of the source word (H… Hebrew, G… Greek) from STEPBible TAHOT/TAGNT; \"+\" joins two numbers where the source gives two for one word. The model writes no Strong's number: it comes from the position."),
     ('parok', 'kapcsolat', 'szo', 'A pár egy eredeti szóhoz köti a magyar szót.', 'The pair links the Hungarian word to a source word.'),
@@ -32,8 +35,8 @@ KODKONYV_SOROK = [
      'The pair links it to a Hebrew prefix or suffix morpheme (H9001–H9049: article, conjunction, preposition, pronominal suffix).'),
     ('parok', 'allapot', 'javaslat', 'Gépi párosítási javaslat, mért pontossággal; nem kézzel ellenőrzött pár.',
      'Machine alignment proposal with measured accuracy; not a manually verified pair.'),
-    ('parok', 'nem_tr', 'igen', 'Az eredeti görög szó nem szerepel a Textus Receptusban, amelyet Károli fordított; a Strong-szám a kritikai szöveg alakjáé (l. ISMERT_HIBAK.md).',
-     'The Greek source word is not in the Textus Receptus, which Károli translated; the Strong number is that of the critical-text form (see KNOWN_ISSUES.md).'),
+    ('parok', 'nem_tr', 'igen', 'Az eredeti görög szó nem szerepel a Textus Receptusban, amelyet Károli fordított; a Strong-szám a kritikai szöveg alakjáé (l. docs/hu/ISMERT_HIBAK.md).',
+     'The Greek source word is not in the Textus Receptus, which Károli translated; the Strong number is that of the critical-text form (see docs/en/KNOWN_ISSUES.md).'),
     ('szavak', 'osis', '', 'A vers OSIS-azonosítója, a Károli-versszámozás szerint.', 'OSIS verse identifier, in Károli versification.'),
     ('szavak', 'oldal', 'hu', 'Magyar szó (Károli 1908).', 'Hungarian word (Károli 1908).'),
     ('szavak', 'oldal', 'er', 'Eredeti szó (héber vagy görög, TAHOT/TAGNT); az alakja nincs a csomagban, a sorszáma és a Strong-száma azonosítja.',
@@ -91,7 +94,7 @@ azok Strong-számaival. A {lex_hu} nyílt adatmagjainak egyike.
 
 A csomag minden fájlja a kiadás része.
 
-- **Licenc:** CC BY 4.0 (`LICENSE`); a felhasznált külső adatok forrásmegjelölése: `ATTRIBUCIO.md`.
+- **Licenc:** CC BY 4.0 (`LICENSE`); a felhasznált külső adatok forrásmegjelölése: `docs/hu/ATTRIBUCIO.md`.
 - **DOI:** {doi} — a kiadás azonosítója és a tartalmi hash: `KIADAS.txt`.
 - **Szerző:** {szerzo} (ORCID {orcid}).
 
@@ -99,14 +102,14 @@ A csomag minden fájlja a kiadás része.
 
 | fájl | tartalom |
 |---|---|
-| `parok/NN_Konyv.tsv` | könyvenként minden szópár: magyar szó – eredeti szó, Strong-számmal |
-| `szavak/NN_Konyv.tsv` | könyvenként minden magyar és minden eredeti szó, egyszer: párosított, betoldás, fordítatlan vagy függőben |
-| `versek.tsv` | a Károli 1908 szövege versenként |
-| `meres.tsv` | a párosítás mért pontossága rétegenként és kapcsolattípusonként, konfidencia-intervallummal |
-| `kodkonyv.tsv`, `KODKONYV.md` | az oszlopok és az értékek leírása (magyarul és angolul) |
-| `MODSZER.md`, `METHODS.md` | hogyan készült a párosítás, és hogyan mértük |
-| `ISMERT_HIBAK.md`, `KNOWN_ISSUES.md` | ismert hibák és korlátok |
-| `ATTRIBUCIO.md` | forrásmegjelölés és licencek |
+| `data/parok/NN_Konyv.tsv` | könyvenként minden szópár: magyar szó – eredeti szó, Strong-számmal |
+| `data/szavak/NN_Konyv.tsv` | könyvenként minden magyar és minden eredeti szó, egyszer: párosított, betoldás, fordítatlan vagy függőben |
+| `data/versek.tsv` | a Károli 1908 szövege versenként |
+| `data/meres.tsv` | a párosítás mért pontossága rétegenként és kapcsolattípusonként, konfidencia-intervallummal |
+| `data/kodkonyv.tsv`, `docs/hu/KODKONYV.md`, `docs/en/CODEBOOK.md` | az oszlopok és az értékek leírása (magyarul és angolul) |
+| `docs/hu/MODSZER.md`, `docs/en/METHODS.md` | hogyan készült a párosítás, és hogyan mértük |
+| `docs/hu/ISMERT_HIBAK.md`, `docs/en/KNOWN_ISSUES.md` | ismert hibák és korlátok |
+| `docs/hu/ATTRIBUCIO.md`, `docs/en/ATTRIBUTION.md` | forrásmegjelölés és licencek |
 | `CITATION.cff` | idézési adatok |
 | `ELLENORZO_OSSZEG.sha256` | minden fájl SHA-256 összege |
 
@@ -118,8 +121,8 @@ A csomag minden fájlja a kiadás része.
 - {hu_betoldas} magyar szó a fordító betoldása, {er_forditatlan} eredeti szót a Károli nem fordít külön szóval;
   {hu_fuggoben} magyar és {er_fuggoben} eredeti szó párosítása függőben van ({fuggoben_vers} versben).
 - Pontosság: a fő szavak párjain egy független forrás szerint {k_fs}% (95%: {k_fs_a}–{k_fs_f}%); a teljes
-  párkészleten a vak ellenőrrel {p_osszes}% (95%: {p_osszes_a}–{p_osszes_f}%); részletesen: `meres.tsv`,
-  `MODSZER.md` 5.
+  párkészleten a vak ellenőrrel {p_osszes}% (95%: {p_osszes_a}–{p_osszes_f}%); részletesen: `data/meres.tsv`,
+  `docs/hu/MODSZER.md` 5.
 
 ## Rövid használati útmutató
 
@@ -130,7 +133,7 @@ szóalak nincs a csomagban; az eredeti szót a sorszáma és a Strong-száma azo
 TAHOT/TAGNT szövegéhez illeszthető.
 
 Minden pár gépi javaslat (`allapot` = `javaslat`), a fent megadott mért pontossággal; a pontosság rétegenként és
-kapcsolattípusonként a `meres.tsv`-ben áll.
+kapcsolattípusonként a `data/meres.tsv`-ben áll.
 
 ## Kapcsolódó adatkészletek
 
@@ -143,9 +146,9 @@ README = """# {cim_en} — open dataset
 The 1908 text of the Károli Bible (the classic Hungarian translation), linked word by word to the Hebrew and Greek
 source words and their Strong's numbers. One of the open data cores of the {lex_en}.
 
-Every file of the package is part of the release.
+Every file of the package is part of the release. Hungarian-language introduction: `docs/hu/OLVASSEL.md`.
 
-- **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `ATTRIBUCIO.md`.
+- **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `docs/en/ATTRIBUTION.md`.
 - **DOI:** {doi} — release identifier and content hash: `RELEASE.txt`.
 - **Author:** {szerzo} (ORCID {orcid}).
 
@@ -153,14 +156,14 @@ Every file of the package is part of the release.
 
 | file | content |
 |---|---|
-| `parok/NN_Book.tsv` | per book, every word pair: Hungarian word – source word, with Strong's number |
-| `szavak/NN_Book.tsv` | per book, every Hungarian and every source word once: aligned, addition, untranslated or pending |
-| `versek.tsv` | the 1908 Károli text, verse by verse |
-| `meres.tsv` | the measured accuracy of the alignment per stratum and link type, with confidence intervals |
-| `kodkonyv.tsv`, `KODKONYV.md` | description of the columns and values (Hungarian and English) |
-| `METHODS.md`, `MODSZER.md` | how the alignment was made and how it was measured |
-| `KNOWN_ISSUES.md`, `ISMERT_HIBAK.md` | known issues and limitations |
-| `ATTRIBUCIO.md` | attribution and licences |
+| `data/parok/NN_Book.tsv` | per book, every word pair: Hungarian word – source word, with Strong's number |
+| `data/szavak/NN_Book.tsv` | per book, every Hungarian and every source word once: aligned, addition, untranslated or pending |
+| `data/versek.tsv` | the 1908 Károli text, verse by verse |
+| `data/meres.tsv` | the measured accuracy of the alignment per stratum and link type, with confidence intervals |
+| `data/kodkonyv.tsv`, `docs/hu/KODKONYV.md`, `docs/en/CODEBOOK.md` | description of the columns and values (Hungarian and English) |
+| `docs/en/METHODS.md`, `docs/hu/MODSZER.md` | how the alignment was made and how it was measured |
+| `docs/en/KNOWN_ISSUES.md`, `docs/hu/ISMERT_HIBAK.md` | known issues and limitations |
+| `docs/hu/ATTRIBUCIO.md`, `docs/en/ATTRIBUTION.md` | attribution and licences |
 | `CITATION.cff` | citation metadata |
 | `ELLENORZO_OSSZEG.sha256` | SHA-256 checksum of every file |
 
@@ -172,7 +175,7 @@ Every file of the package is part of the release.
 - {hu_betoldas} Hungarian words are translator's additions, {er_forditatlan} source words are not rendered by a
   separate Hungarian word; {hu_fuggoben} Hungarian and {er_fuggoben} source words are pending ({fuggoben_vers} verses).
 - Accuracy: on main-word pairs {k_fs}% against an independent source (95%: {k_fs_a}–{k_fs_f}%); on the full pair set
-  {p_osszes}% agreement with a blind reviewer (95%: {p_osszes_a}–{p_osszes_f}%); details: `meres.tsv`, `METHODS.md` 5.
+  {p_osszes}% agreement with a blind reviewer (95%: {p_osszes_a}–{p_osszes_f}%); details: `data/meres.tsv`, `docs/en/METHODS.md` 5.
 
 ## Quick guide
 
@@ -183,7 +186,7 @@ Hebrew and Greek word forms are not in the package; a source word is identified 
 and the position matches the STEPBible TAHOT/TAGNT text.
 
 Every pair is a machine proposal (`allapot` = `javaslat`), with the measured accuracy given above; the accuracy per
-stratum and link type is in `meres.tsv`.
+stratum and link type is in `data/meres.tsv`.
 
 ## Related datasets
 
@@ -200,8 +203,8 @@ The project's own part (the word alignment, the token states and the measurement
 Creative Commons Attribution 4.0 International (CC BY 4.0)
 https://creativecommons.org/licenses/by/4.0/
 
-A Károli 1908 szövege közkincs; a STEPBible TAHOT és TAGNT adatai CC BY 4.0 alatt állnak (ATTRIBUCIO.md).
-The 1908 Károli text is in the public domain; the STEPBible TAHOT and TAGNT data are under CC BY 4.0 (ATTRIBUCIO.md).
+A Károli 1908 szövege közkincs; a STEPBible TAHOT és TAGNT adatai CC BY 4.0 alatt állnak (docs/hu/ATTRIBUCIO.md).
+The 1908 Károli text is in the public domain; the STEPBible TAHOT and TAGNT data are under CC BY 4.0 (docs/en/ATTRIBUTION.md).
 """
 
 ATTRIBUCIO = """# Forrásmegjelölés és licencek / Attribution and licences
@@ -240,6 +243,9 @@ The package contains none of the TAHOT or TAGNT text: no Hebrew or Greek word fo
 the position of the word in the verse. Of the independent comparison source used in the accuracy measurement, only the
 aggregate agreement rate is given. No other third-party data is included.
 """
+
+# a kétnyelvű sablon két önálló dokumentum: docs/hu/ATTRIBUCIO.md és docs/en/ATTRIBUTION.md
+ATTRIBUCIO_HU, ATTRIBUCIO_EN = attribucio_nyelvek(ATTRIBUCIO)
 
 CITATION = """cff-version: 1.2.0
 message: "Ha az adatokat használja, kérjük, ezt az adatkészletet idézze. / If you use the data, please cite this dataset."
@@ -283,7 +289,7 @@ references:
 GITATTRIBUTES = """# Sorvég: minden fájl LF-fel, minden checkouton (az ellenőrző összeg az LF-es bájtokra szól).
 * text eol=lf
 # A közlemény-tervezet a megjelenésig nem része a kiadásnak.
-kozlemeny/ export-ignore
+note/ export-ignore
 """
 
 # ----------------------------------------------------------------------------- ismert hibák
@@ -293,7 +299,7 @@ ISMERT_HIBAK = """# Ismert hibák és korlátok
 *{cim} · 1. kiadás · adatállapot: {adatallapot}*
 
 Ez a kiadás a párosítást a mérés pillanatában álló állapotban adja közre, változatlanul. A lent felsorolt hibák
-javítása a 2. kiadásba kerül, új méréssel (`MODSZER.md` 7.).
+javítása a 2. kiadásba kerül, új méréssel (`docs/hu/MODSZER.md` 7.).
 
 ## Megerősített hibák
 
@@ -334,7 +340,7 @@ KNOWN_ISSUES = """# Known issues and limitations
 *{cim_en} · release 1 · data state: {adatallapot}*
 
 This release publishes the alignment as it stood when it was measured, unchanged. Corrections of the issues below go
-into release 2, with a new measurement (`METHODS.md` 7).
+into release 2, with a new measurement (`docs/en/METHODS.md` 7).
 
 ## Confirmed errors
 
@@ -481,14 +487,14 @@ elöljáróban és névelőben álló mellékszót és a morfémát nem; ez a m�
 
 **Hibatípusok.** A {minta} mintapárból {elteres} tért el az ellenőrtől: szomszédos szó {h_szomszedos_token} (tartalmi
 {ht_szomszedos_token}, morféma {hm_szomszedos_token}), rossz szó a versben {h_rossz_szo_a_versben}, fölös pár
-{h_folos_par}, azonos lexéma más előfordulása {h_azonos_lexema_mas_elofordulas}. A mérés minden száma a `meres.tsv`-ben
+{h_folos_par}, azonos lexéma más előfordulása {h_azonos_lexema_mas_elofordulas}. A mérés minden száma a `data/meres.tsv`-ben
 áll.
 
 ## 6. Miért nyílt adat
 
 A párosítás nem hibátlan, és nem is ekként közöljük. Szerkesztői döntés alapján nyílt adatként jelenik meg, mert a
 pontossága **mérve és dokumentálva van**: rétegenként és kapcsolattípusonként, konfidencia-intervallummal, a hibák
-típusával és a megerősített hibák listájával (`ISMERT_HIBAK.md`). A „javaslat” állapot minden páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
+típusával és a megerősített hibák listájával (`docs/hu/ISMERT_HIBAK.md`). A „javaslat” állapot minden páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
 kritérium, és utólag felállított küszöb utólagos kritérium volna.
 
 ## 7. A következő kiadás
@@ -618,13 +624,13 @@ main-word pairs only.
 **Error types.** Of the {minta} sample pairs, {elteres} differed from the reviewer: neighbouring word
 {h_szomszedos_token} (content {ht_szomszedos_token}, morpheme {hm_szomszedos_token}), wrong word in the verse
 {h_rossz_szo_a_versben}, superfluous pair {h_folos_par}, same lexeme at another occurrence
-{h_azonos_lexema_mas_elofordulas}. Every figure of the measurement is in `meres.tsv`.
+{h_azonos_lexema_mas_elofordulas}. Every figure of the measurement is in `data/meres.tsv`.
 
 ## 6. Why open data
 
 The alignment is not error-free, and we do not publish it as such. By editorial decision it is released as open data
 because its accuracy is **measured and documented**: per stratum and link type, with confidence intervals, with the
-error types and the list of confirmed errors (`KNOWN_ISSUES.md`). The "proposal" state remains on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
+error types and the list of confirmed errors (`docs/en/KNOWN_ISSUES.md`). The "proposal" state remains on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
 measurement, and a threshold set afterwards would be a post-hoc criterion.
 
 ## 7. The next release
@@ -711,20 +717,21 @@ The dataset is freely usable under CC BY 4.0: https://doi.org/{doi}
 # ----------------------------------------------------------------------------- a kiadott szövegek listája
 
 SZOVEGEK = [
-    ('OLVASSEL.md', OLVASSEL, 'hu'),
+    ('docs/hu/OLVASSEL.md', OLVASSEL, 'hu'),
     ('README.md', README, 'en'),
     ('LICENSE', LICENSE, 'hu'),
-    ('ATTRIBUCIO.md', ATTRIBUCIO, 'hu'),
-    ('MODSZER.md', MODSZER, 'hu'),
-    ('METHODS.md', METHODS, 'en'),
-    ('ISMERT_HIBAK.md', ISMERT_HIBAK, 'hu'),
-    ('KNOWN_ISSUES.md', KNOWN_ISSUES, 'en'),
+    ('docs/hu/ATTRIBUCIO.md', ATTRIBUCIO_HU, 'hu'),
+    ('docs/en/ATTRIBUTION.md', ATTRIBUCIO_EN, 'en'),
+    ('docs/hu/MODSZER.md', MODSZER, 'hu'),
+    ('docs/en/METHODS.md', METHODS, 'en'),
+    ('docs/hu/ISMERT_HIBAK.md', ISMERT_HIBAK, 'hu'),
+    ('docs/en/KNOWN_ISSUES.md', KNOWN_ISSUES, 'en'),
     ('CITATION.cff', CITATION, 'hu'),
 ]
 
 KOZLEMENY = [
-    ('kozlemeny_hu.md', KOZLEMENY_HU, 'hu'),
-    ('kozlemeny_en.md', KOZLEMENY_EN, 'en'),
+    ('note_hu.md', KOZLEMENY_HU, 'hu'),
+    ('note_en.md', KOZLEMENY_EN, 'en'),
 ]
 
 # ----------------------------------------------------------------------------- a második data paper kézirata (tervezet; a csomagon kívül)
@@ -792,7 +799,7 @@ vak ellenőr) ítéltük meg. A külső forrás adata nem része az adatkészlet
 | fő szavak, a független forrás szerint | {k_fs}% | {k_fs_a}–{k_fs_f}% |
 | fő szavak, háromutas ítélet után | {k_h3}% | {k_h3_a}–{k_h3_f}% |
 
-A rétegek egyezése {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog; a rétegenkénti táblát az adatkészlet `meres.tsv` fájlja és módszertani leírása közli. A {minta} mintapárból
+A rétegek egyezése {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog; a rétegenkénti táblát az adatkészlet `data/meres.tsv` fájlja és módszertani leírása közli. A {minta} mintapárból
 {elteres} tért el az ellenőrtől; a leggyakoribb típus a szomszédos szó ({h_szomszedos_token}), jellemzően egy héber
 előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellenére. A független összevetés {k_elter} eltéréséből
 {k_mi} maradt a párosítás hibája; ezeket és a többi megerősített hibát az adatkészlet név szerint felsorolja.
@@ -802,10 +809,10 @@ előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellené
 **Hely és azonosító.** Zenodo, DOI: {doi}; licenc: CC BY 4.0; nyelv: magyar (adat), magyar és angol (dokumentáció);
 adatállapot: {adatallapot}.
 
-**Fájlok.** `parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
-sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `szavak/` (könyvenként minden
-magyar és eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `versek.tsv` (a Károli 1908
-szövege); `meres.tsv` (a mérés minden száma); kétnyelvű kódkönyv, módszertani leírás, ismert hibák, ellenőrző összeg. A
+**Fájlok.** `data/parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
+sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `data/szavak/` (könyvenként minden
+magyar és eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `data/versek.tsv` (a Károli 1908
+szövege); `data/meres.tsv` (a mérés minden száma); kétnyelvű kódkönyv, módszertani leírás, ismert hibák, ellenőrző összeg. A
 kulcs az OSIS-versazonosító és a szó sorszáma. A héber és görög szóalak nincs a csomagban: a sorszám a STEPBible
 TAHOT/TAGNT szövegéhez illeszthető.
 
@@ -926,7 +933,7 @@ part of the dataset, only the aggregate rate.
 | main words, by the independent source | {k_fs}% | {k_fs_a}–{k_fs_f}% |
 | main words, after three-way judgement | {k_h3}% | {k_h3_a}–{k_h3_f}% |
 
-Agreement per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}); the per-stratum table is in the dataset's `meres.tsv` and its methods description. Of the {minta}
+Agreement per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}); the per-stratum table is in the dataset's `data/meres.tsv` and its methods description. Of the {minta}
 sample pairs, {elteres} differed from the reviewer; the most frequent type is the neighbouring word
 ({h_szomszedos_token}), typically a Hebrew prefix, article or preposition attached to the word against the rules. Of the
 {k_elter} differences in the independent comparison, {k_mi} remained errors of the alignment; these and the other
@@ -937,10 +944,10 @@ confirmed errors are listed by name in the dataset.
 **Location and identifier.** Zenodo, DOI: {doi}; licence: CC BY 4.0; language: Hungarian (data), Hungarian and English
 (documentation); data state: {adatallapot}.
 
-**Files.** `parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the source
-word, Strong's number, link type, state, Textus Receptus flag); `szavak/` (per book, every Hungarian and
-source word once, with its state: aligned, addition, untranslated, pending); `versek.tsv` (the 1908 Károli text);
-`meres.tsv` (every figure of the measurement); bilingual codebook, methods description, known issues, checksum. The key
+**Files.** `data/parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the source
+word, Strong's number, link type, state, Textus Receptus flag); `data/szavak/` (per book, every Hungarian and
+source word once, with its state: aligned, addition, untranslated, pending); `data/versek.tsv` (the 1908 Károli text);
+`data/meres.tsv` (every figure of the measurement); bilingual codebook, methods description, known issues, checksum. The key
 is the OSIS verse identifier and the word position. Hebrew and Greek word forms are not in the package: the position
 matches the STEPBible TAHOT/TAGNT text.
 

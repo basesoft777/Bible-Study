@@ -15,6 +15,7 @@ import sys
 import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import karoli_csomag as CS  # noqa: E402
 import karoli_strong_export as E  # noqa: E402
 import karoli_strong_kapu as G  # noqa: E402
 
@@ -126,7 +127,7 @@ class Csomag(unittest.TestCase):
 
     def test_elveszett_par(self):
         f = self.uj()
-        self._sor_csere(f, 'parok/01_Gen.tsv', lambda s, i: s.pop(i))
+        self._sor_csere(f, 'data/parok/01_Gen.tsv', lambda s, i: s.pop(i))
         self.assertTrue(bukasok(f, 'TELJESSEG'))
 
     def test_kitalalt_par(self):
@@ -136,12 +137,12 @@ class Csomag(unittest.TestCase):
             m = s[i].split('\t')
             m[4] = 'H9999'
             s.insert(i, '\t'.join(m))
-        self._sor_csere(f, 'parok/01_Gen.tsv', fv)
+        self._sor_csere(f, 'data/parok/01_Gen.tsv', fv)
         self.assertTrue(bukasok(f, 'TELJESSEG'))
 
     def test_elveszett_szo(self):
         f = self.uj()
-        self._sor_csere(f, 'szavak/66_Rev.tsv', lambda s, i: s.pop(i))
+        self._sor_csere(f, 'data/szavak/66_Rev.tsv', lambda s, i: s.pop(i))
         self.assertTrue(bukasok(f, 'TELJESSEG'))
 
     def test_megvaltozott_allapot(self):
@@ -151,14 +152,14 @@ class Csomag(unittest.TestCase):
             m = s[i].split('\t')
             m[4] = 'betoldas' if m[4] != 'betoldas' else 'parositva'
             s[i] = '\t'.join(m)
-        self._sor_csere(f, 'szavak/01_Gen.tsv', fv)
+        self._sor_csere(f, 'data/szavak/01_Gen.tsv', fv)
         self.assertTrue(bukasok(f, 'TELJESSEG'))
 
     def test_belso_jel(self):
         for szo in ('a DT623 szerint', 'l. naplok/X.md', 'scope=manual', 'az orkesztrátor', 'felhasználói döntés',
                     'a termék', 'PaRDeS', 'https://github.com/x', 'régi arany', '{p_osszes}'):
             f = self.uj()
-            f['MODSZER.md'] += '\n' + szo + '\n'
+            f['docs/hu/MODSZER.md'] += '\n' + szo + '\n'
             self.assertTrue(bukasok(f, 'NYILVANOS'), szo)
 
     def test_modell_egyezes(self):
@@ -167,16 +168,16 @@ class Csomag(unittest.TestCase):
                     'két független modell párosította', 'For reasons of cost', 'two independent models aligned',
                     'the confidence label', 'High confidence'):
             f = self.uj()
-            f['METHODS.md' if szo[0].isupper() or szo.startswith(('two', 'the')) else 'MODSZER.md'] += '\n' + szo + '\n'
+            f['docs/en/METHODS.md' if szo[0].isupper() or szo.startswith(('two', 'the')) else 'docs/hu/MODSZER.md'] += '\n' + szo + '\n'
             self.assertTrue(bukasok(f, 'NYILVANOS'), szo)
         # a „bizonyosság” a mért pontosságot jelenti (DT-F175e): így megengedett
         f = self.uj()
-        f['MODSZER.md'] += '\nA bizonyosság a mért pontosság: 95% (Mózes öt könyve).\n'
+        f['docs/hu/MODSZER.md'] += '\nA bizonyosság a mért pontosság: 95% (Mózes öt könyve).\n'
         self.assertEqual(bukasok(f, 'NYILVANOS'), [])
 
     def test_bizonyossag_oszlop(self):
         f = self.uj()
-        f['parok/01_Gen.tsv'] = f['parok/01_Gen.tsv'].replace('\tallapot\t', '\tbizonyossag\tallapot\t', 1)
+        f['data/parok/01_Gen.tsv'] = f['data/parok/01_Gen.tsv'].replace('\tallapot\t', '\tbizonyossag\tallapot\t', 1)
         self.assertTrue(bukasok(f, 'TELJESSEG'))
 
     def test_kiadas_mondat(self):
@@ -187,18 +188,18 @@ class Csomag(unittest.TestCase):
     def test_nevelo_hiba(self):
         for rossz in ('A 598 715 pár', 'a 1 600 minta', 'az 34 eltérés', 'a(z) Logosz-lexikon', 'a 1. kiadás'):
             f = self.uj()
-            f['MODSZER.md'] += '\n' + rossz + '\n'
+            f['docs/hu/MODSZER.md'] += '\n' + rossz + '\n'
             self.assertTrue(bukasok(f, 'NEVELO'), rossz)
 
     def test_heber_gorog_es_zart_forras(self):
         f = self.uj()
-        f['versek.tsv'] = f['versek.tsv'].replace('Kezdetben', 'Kezdetben בּ', 1)
+        f['data/versek.tsv'] = f['data/versek.tsv'].replace('Kezdetben', 'Kezdetben בּ', 1)
         self.assertTrue(bukasok(f, 'HARMADIK'))
         f = self.uj()
-        f['ISMERT_HIBAK.md'] += '\nδέ\n'
+        f['docs/hu/ISMERT_HIBAK.md'] += '\nδέ\n'
         self.assertTrue(bukasok(f, 'HARMADIK'))
         f = self.uj()
-        f['METHODS.md'] += '\nBible-Discovery\n'
+        f['docs/en/METHODS.md'] += '\nBible-Discovery\n'
         self.assertTrue(bukasok(f, 'HARMADIK'))
 
     def test_export_kod(self):
@@ -208,7 +209,7 @@ class Csomag(unittest.TestCase):
 
     def test_attribucio(self):
         f = self.uj()
-        f['ATTRIBUCIO.md'] = f['ATTRIBUCIO.md'].replace(E.STEP_ATTRIB, 'STEPBible')
+        f['docs/hu/ATTRIBUCIO.md'] = f['docs/hu/ATTRIBUCIO.md'].replace(E.STEP_ATTRIB, 'STEPBible')
         self.assertTrue(bukasok(f, 'LICENC'))
         f = self.uj()
         f['README.md'] += '\nCC BY-NC 4.0\n'
@@ -216,7 +217,7 @@ class Csomag(unittest.TestCase):
 
     def test_valtozott_fajl(self):
         f = self.uj()
-        f['OLVASSEL.md'] += ' '
+        f['docs/hu/OLVASSEL.md'] += ' '
         self.assertTrue(bukasok(f, 'OSSZEG'))
 
     def test_kozlemeny_kiadasban(self):
@@ -224,7 +225,7 @@ class Csomag(unittest.TestCase):
         f['.gitattributes'] = '# semmi\n'
         self.assertTrue(bukasok(f, 'KOZLEMENY'))
         f = self.uj()
-        del f['kozlemeny/kozlemeny_en.md']
+        del f['note/note_en.md']
         self.assertTrue(bukasok(f, 'KOZLEMENY'))
 
     def test_kezirat_a_csomagon_kivul(self):
@@ -243,6 +244,126 @@ class Csomag(unittest.TestCase):
         self.assertEqual(N['hu_token'], N['hu_parositva'] + N['hu_betoldas'] + N['hu_fuggoben'])
         self.assertEqual(N['er_token'], N['er_parositva'] + N['er_forditatlan'] + N['er_fuggoben'])
         self.assertEqual(N['par'], N['keret'])
+
+
+class Szerkezet(unittest.TestCase):
+    """A csomagmappa szerkezete (`karoli_csomag.py`, F175.N): csak az engedett fájl és almappa állhat benne; az
+    exportáló csak a generált almappákat írja, a kézi forrású `paper/`-hez nem nyúl; a concept DOI áll a fájlokban."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.fajlok, cls.N = E.export()
+
+    def uj(self):
+        return copy.deepcopy(self.fajlok)
+
+    def test_a_fa_alakja(self):
+        gyokerek = {rel.split('/')[0] for rel in self.fajlok if '/' in rel}
+        self.assertEqual(gyokerek, {'data', 'docs', 'note'})                     # paper/ csak kézzel kerül ide
+        self.assertEqual(sorted(rel for rel in self.fajlok if '/' not in rel),
+                         sorted(CS.GYOKER_FAJLOK))
+        self.assertEqual(sorted(rel for rel in self.fajlok if rel.startswith('docs/')),
+                         ['docs/en/ATTRIBUTION.md', 'docs/en/CODEBOOK.md', 'docs/en/KNOWN_ISSUES.md',
+                          'docs/en/METHODS.md', 'docs/hu/ATTRIBUCIO.md', 'docs/hu/ISMERT_HIBAK.md',
+                          'docs/hu/KODKONYV.md', 'docs/hu/MODSZER.md', 'docs/hu/OLVASSEL.md'])
+        self.assertEqual(sorted(rel for rel in self.fajlok if rel.startswith('note/')),
+                         ['note/note_en.md', 'note/note_hu.md'])
+        self.assertTrue(all(E.ENGEDETT.match(rel) for rel in self.fajlok))
+
+    def test_nem_engedett_utak_bukast_adnak(self):
+        for rel in ('KODKONYV.md', 'MODSZER.md', 'versek.tsv', 'parok/01_Gen.tsv', 'szavak/01_Gen.tsv',
+                    'kozlemeny/kozlemeny_hu.md', 'docs/de/OLVASSEL.md', 'docs/hu/EXTRA.md', 'docs/hu/CODEBOOK.md',
+                    'data/extra.tsv', 'data/parok/x.tsv', 'data/szavak/01_Gen.csv', 'paper/masik.md',
+                    'paper/kezirat_de.md', 'note/note_de.md', 'eszkozok/x.py', 'extra/x.md', 'README_hu.md'):
+            f = self.uj()
+            f[rel] = 'x\n'
+            self.assertTrue(bukasok(f, 'HARMADIK'), rel)
+
+    def test_engedett_paper(self):
+        for rel in ('paper/kezirat_hu.md', 'paper/kezirat_en.md'):
+            self.assertTrue(E.ENGEDETT.match(rel), rel)
+
+    def test_concept_doi(self):
+        for rel, sz in self.fajlok.items():
+            for regi in ('24141884', '24141950', '24141612'):                                # a verzió-DOI nem áll a fájlokban
+                self.assertNotIn(regi, sz, rel)
+        self.assertEqual(E.DOI, '10.5281/zenodo.24141883')
+        self.assertEqual(E.DOI_MODERN, '10.5281/zenodo.24141949')
+        self.assertIn('doi: "10.5281/zenodo.24141883"', self.fajlok['CITATION.cff'])
+        self.assertIn('kozzeteteli_hely: https://doi.org/10.5281/zenodo.24141883', self.fajlok['KIADAS.txt'])
+        self.assertEqual(E.DOI_MAG, '10.5281/zenodo.24141611')                  # a motívum-adatmag concept DOI-ja
+        self.assertIn('10.5281/zenodo.24141611', self.fajlok['README.md'])
+        self.assertIn('10.5281/zenodo.24141949', self.fajlok['README.md'])      # a modernizált csomag concept DOI-ja
+
+    def test_attribucio_ket_dokumentum(self):
+        hu, en = self.fajlok[CS.ATTRIBUCIO], self.fajlok[CS.ATTRIBUTION]
+        self.assertTrue(hu.startswith('# Forrásmegjelölés és licencek\n'))
+        self.assertTrue(en.startswith('# Attribution and licences\n'))
+        self.assertNotIn('In English', hu)
+        self.assertNotIn('Magyarul', en)
+        self.assertIn(E.STEP_ATTRIB, hu)
+        self.assertIn(E.STEP_ATTRIB, en)
+
+    def test_kodkonyv_ket_dokumentum(self):
+        self.assertTrue(self.fajlok[CS.KODKONYV_HU].startswith('# Kódkönyv\n'))
+        self.assertTrue(self.fajlok[CS.KODKONYV_EN].startswith('# Codebook\n'))
+        self.assertIn('| oszlop | érték | leírás |', self.fajlok[CS.KODKONYV_HU])
+        self.assertIn('| column | value | description |', self.fajlok[CS.KODKONYV_EN])
+        self.assertIn('`data/parok/NN_Konyv.tsv`', self.fajlok[CS.KODKONYV_EN])
+
+    def test_hivatkozasok_letezo_fajlra_mutatnak(self):
+        # minden backtickes `data/…`, `docs/…` hivatkozás egy csomagbeli fájlra vagy mappára (NN_ mintával) mutat
+        import re
+        rx = re.compile(r'`((?:data|docs)/[^`\s]*)`')
+        db = 0
+        for rel in ('README.md', CS.OLVASSEL, CS.MODSZER, CS.METHODS, CS.ISMERT_HIBAK, CS.KNOWN_ISSUES):
+            for m in rx.finditer(self.fajlok[rel]):
+                ut = re.sub(r'NN_(?:Konyv|Book)\.tsv$', '', m.group(1))
+                db += 1
+                self.assertTrue(any(f == ut or (ut.endswith('/') and f.startswith(ut)) for f in self.fajlok),
+                                '%s: %s' % (rel, m.group(1)))
+        self.assertGreater(db, 20)
+
+    def test_kiir_a_kezi_forrashoz_nem_nyul(self):
+        import shutil
+        import tempfile
+        tmp = tempfile.mkdtemp(prefix='karoli_csomag_teszt_')
+        try:
+            CS.kiir({'README.md': 'a\n', 'data/x.tsv': 'x\n'}, tmp)
+            os.makedirs(os.path.join(tmp, 'paper'))
+            with open(os.path.join(tmp, 'paper', 'kezirat_hu.md'), 'w', encoding='utf-8', newline='\n') as f:
+                f.write('kézi\n')
+            for regi in ('KODKONYV.md', 'kozlemeny/kozlemeny_hu.md', 'parok/01_Gen.tsv'):   # lapos maradvány
+                os.makedirs(os.path.dirname(os.path.join(tmp, regi)), exist_ok=True)
+                with open(os.path.join(tmp, regi), 'w', encoding='utf-8', newline='\n') as f:
+                    f.write('régi\n')
+            CS.kiir({'README.md': 'b\n', 'data/x.tsv': 'x\n'}, tmp)
+            fa = sorted(os.path.relpath(os.path.join(gy, n), tmp).replace('\\', '/')
+                        for gy, _, nevek in os.walk(tmp) for n in nevek)
+            self.assertEqual(fa, ['README.md', 'data/x.tsv', 'paper/kezirat_hu.md'])
+            self.assertEqual(sorted(os.listdir(tmp)), ['README.md', 'data', 'paper'])    # az üres mappák is mennek
+            with open(os.path.join(tmp, 'paper', 'kezirat_hu.md'), encoding='utf-8') as f:
+                self.assertEqual(f.read(), 'kézi\n')
+        finally:
+            shutil.rmtree(tmp)
+
+    def test_kezi_forras_az_osszegben(self):
+        import hashlib
+        import shutil
+        import tempfile
+        tmp = tempfile.mkdtemp(prefix='karoli_csomag_teszt_')
+        try:
+            os.makedirs(os.path.join(tmp, 'paper'))
+            with open(os.path.join(tmp, 'paper', 'kezirat_en.md'), 'w', encoding='utf-8', newline='\n') as f:
+                f.write('manuscript\n')
+            fajlok, _ = E.export(tmp)
+            self.assertEqual(fajlok['paper/kezirat_en.md'], 'manuscript\n')
+            self.assertIn('%s  paper/kezirat_en.md' % hashlib.sha256(b'manuscript\n').hexdigest(),
+                          fajlok['ELLENORZO_OSSZEG.sha256'])
+            self.assertEqual(bukasok(fajlok, 'OSSZEG'), [])
+            self.assertEqual(bukasok(fajlok, 'HARMADIK'), [])
+        finally:
+            shutil.rmtree(tmp)
 
 
 if __name__ == '__main__':

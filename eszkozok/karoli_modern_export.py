@@ -9,9 +9,11 @@ A vetítés determinisztikus, modell nélküli kulcs-illesztés; új Strong-áll
 modern réteg Strongot nem tárol, a join éri el). A kieső token (összevont „a”, segédigei *vala*) saját sorában
 marad, a gazdaszó sorszámával; a Strongja nem vész el.
 
-Kimenet: `nyilt_karoli_modern/` — a mappa tartalma 1:1-ben a nyilvános adatrepó gyökere. Determinisztikus,
-újrafuttatva bájtazonos. A `kozlemeny/` almappa (a közlemény hu/en tervezete) generált, de nincs az ellenőrző
-összegben, és a `.gitattributes` a kiadási archívumból kihagyja (export-ignore) a megjelenésig.
+Kimenet: `nyilt_karoli_modern/` — a mappa tartalma 1:1-ben a nyilvános adatrepó gyökere; a szerkezet (gyökér,
+`data/`, `docs/hu|en/`, `note/`, `paper/`) a `karoli_csomag.py`-ban áll. Determinisztikus, újrafuttatva bájtazonos.
+A `note/` almappa (a közlemény hu/en tervezete) generált, de nincs az ellenőrző összegben, és a `.gitattributes` a
+kiadási archívumból kihagyja (export-ignore) a megjelenésig. A `paper/` kézi forrás: a generátor nem írja és nem
+törli (ha ott áll, az ellenőrző összegbe kerül).
 
 A nyilvános szövegek (MODSZER/METHODS, közlemény, kódkönyv, ismert hibák) prózája itt áll; minden szám az
 adatból vagy a forrásnaplóból számolódik (a `szamok()` függvény), kézzel nem kerül a szövegbe. Ha egy
@@ -39,13 +41,15 @@ if hasattr(sys.stderr, 'reconfigure'):
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nyilt_mag_export as NM  # noqa: E402  (OSIS-kulcs, közös azonosítók)
 import karoli_strong_export as KS  # noqa: E402  (a párosítás mérése: a rétegek a szóillesztési csomag szerint)
+import karoli_csomag as CS  # noqa: E402  (a csomag szerkezete)
 from nevelo import nevelos, nevelo_javit  # noqa: E402  (közös névelő-szabály, N-F175b)
 
 GYOKER = NM.GYOKER
 KIMENET = 'nyilt_karoli_modern'
-DOI = '10.5281/zenodo.24141950'
-DOI_KAROLI_STRONG = NM.DOI_KAROLI_STRONG
-DOI_MAG = NM.DOI_MAG
+# a concept DOI-k (2026-11-15): a verzió-DOI nem áll a fájlokban; a verziót a szám jelöli (1.0)
+DOI = '10.5281/zenodo.24141949'
+DOI_KAROLI_STRONG = KS.DOI
+DOI_MAG = KS.DOI_MAG
 KANONIKUS_HELY = 'https://doi.org/' + DOI
 SZERZO = NM.SZERZO
 ORCID = NM.ORCID
@@ -53,7 +57,8 @@ LEXIKON_HU = NM.LEXIKON_CIM_HU
 LEXIKON_EN = NM.LEXIKON_CIM_EN
 CIM_HU = 'Modernizált Károli – Strong'
 CIM_EN = 'Modernised Károli – Strong'
-KOZLEMENY_DIR = 'kozlemeny/'
+KOZLEMENY_DIR = CS.NOTE_DIR
+ENGEDETT = CS.engedett_regex(r'konyvek/\d{2}_[1-3]?[A-Z][A-Za-z]+\.tsv|versek\.tsv|kodkonyv\.tsv')
 
 MODERN = 'adat/karoli_modern/karoli_modern.tsv'
 MODERN_VERS = 'adat/karoli_modern/karoli_modern_versek.tsv'
@@ -368,7 +373,7 @@ OLVASSEL = """# {cim} — nyílt adatkészlet
 A Károli Gáspár-féle bibliafordítás 1908-as szövegének modernizált változata, szavanként összekapcsolva a héber
 és görög eredeti szavaival és azok Strong-számaival. A {lex_hu} nyílt adatmagjainak egyike.
 
-- **Licenc:** CC BY 4.0 (`LICENSE`); a felhasznált külső adatok forrásmegjelölése: `ATTRIBUCIO.md`.
+- **Licenc:** CC BY 4.0 (`LICENSE`); a felhasznált külső adatok forrásmegjelölése: `docs/hu/ATTRIBUCIO.md`.
 - **DOI:** {doi} — a kiadás azonosítója és a tartalmi hash: `KIADAS.txt`.
 - **Szerző:** {szerzo} (ORCID {orcid}).
 
@@ -376,12 +381,12 @@ A Károli Gáspár-féle bibliafordítás 1908-as szövegének modernizált vál
 
 | fájl | tartalom |
 |---|---|
-| `konyvek/NN_Konyv.tsv` | könyvenként: minden szó 1908-as és modern alakja, és a hozzá párosított Strong-számok |
-| `versek.tsv` | a modernizált szöveg versenként |
-| `kodkonyv.tsv`, `KODKONYV.md` | az oszlopok és az értékek leírása (magyarul és angolul) |
-| `MODSZER.md`, `METHODS.md` | hogyan készült a modernizálás és a Strong-összekapcsolás |
-| `ISMERT_HIBAK.md`, `KNOWN_ISSUES.md` | ismert hibák és korlátok |
-| `ATTRIBUCIO.md` | forrásmegjelölés és licencek |
+| `data/konyvek/NN_Konyv.tsv` | könyvenként: minden szó 1908-as és modern alakja, és a hozzá párosított Strong-számok |
+| `data/versek.tsv` | a modernizált szöveg versenként |
+| `data/kodkonyv.tsv`, `docs/hu/KODKONYV.md`, `docs/en/CODEBOOK.md` | az oszlopok és az értékek leírása (magyarul és angolul) |
+| `docs/hu/MODSZER.md`, `docs/en/METHODS.md` | hogyan készült a modernizálás és a Strong-összekapcsolás |
+| `docs/hu/ISMERT_HIBAK.md`, `docs/en/KNOWN_ISSUES.md` | ismert hibák és korlátok |
+| `docs/hu/ATTRIBUCIO.md`, `docs/en/ATTRIBUTION.md` | forrásmegjelölés és licencek |
 | `CITATION.cff` | idézési adatok |
 | `ELLENORZO_OSSZEG.sha256` | minden fájl SHA-256 összege |
 
@@ -396,9 +401,9 @@ A Károli Gáspár-féle bibliafordítás 1908-as szövegének modernizált vál
 
 A kulcs a vers OSIS-azonosítója (`Gen.1.1`) és a szó sorszáma a versen belül (`token`). Egy szó annyi sorban áll,
 ahány eredeti szóhoz párosítva van; a pár nélküli szó egy sorban. A modern szöveg olvasásához a `kieso` oszlop
-üres sorait kell a `token` sorrendjében venni, szavanként egyszer; a szöveg írásjelekkel a `versek.tsv`-ben áll.
+üres sorait kell a `token` sorrendjében venni, szavanként egyszer; a szöveg írásjelekkel a `data/versek.tsv`-ben áll.
 
-A párosítás gépi javaslat, mért pontossággal (`MODSZER.md`, 5. pont).
+A párosítás gépi javaslat, mért pontossággal (`docs/hu/MODSZER.md`, 5. pont).
 
 ## Kapcsolódó adatkészletek
 
@@ -411,7 +416,9 @@ README = """# {cim_en} — open dataset
 A modernised version of the 1908 text of the Károli Bible (the classic Hungarian translation), linked word by word
 to the Hebrew and Greek source words and their Strong's numbers. One of the open data cores of the {lex_en}.
 
-- **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `ATTRIBUCIO.md`.
+Hungarian-language introduction: `docs/hu/OLVASSEL.md`.
+
+- **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `docs/en/ATTRIBUTION.md`.
 - **DOI:** {doi} — release identifier and content hash: `RELEASE.txt`.
 - **Author:** {szerzo} (ORCID {orcid}).
 
@@ -419,12 +426,12 @@ to the Hebrew and Greek source words and their Strong's numbers. One of the open
 
 | file | content |
 |---|---|
-| `konyvek/NN_Book.tsv` | per book: every word in its 1908 and modern form, with the Strong's numbers aligned to it |
-| `versek.tsv` | the modernised text, verse by verse |
-| `kodkonyv.tsv`, `KODKONYV.md` | description of the columns and values (Hungarian and English) |
-| `METHODS.md`, `MODSZER.md` | how the modernisation and the Strong linkage were made |
-| `KNOWN_ISSUES.md`, `ISMERT_HIBAK.md` | known issues and limitations |
-| `ATTRIBUCIO.md` | attribution and licences |
+| `data/konyvek/NN_Book.tsv` | per book: every word in its 1908 and modern form, with the Strong's numbers aligned to it |
+| `data/versek.tsv` | the modernised text, verse by verse |
+| `data/kodkonyv.tsv`, `docs/hu/KODKONYV.md`, `docs/en/CODEBOOK.md` | description of the columns and values (Hungarian and English) |
+| `docs/en/METHODS.md`, `docs/hu/MODSZER.md` | how the modernisation and the Strong linkage were made |
+| `docs/en/KNOWN_ISSUES.md`, `docs/hu/ISMERT_HIBAK.md` | known issues and limitations |
+| `docs/hu/ATTRIBUCIO.md`, `docs/en/ATTRIBUTION.md` | attribution and licences |
 | `CITATION.cff` | citation metadata |
 | `ELLENORZO_OSSZEG.sha256` | SHA-256 checksum of every file |
 
@@ -440,9 +447,9 @@ to the Hebrew and Greek source words and their Strong's numbers. One of the open
 The key is the OSIS verse identifier (`Gen.1.1`) and the position of the word within the verse (`token`). A word
 appears in as many rows as source words it is aligned to; a word without a pair appears in one row. To read the
 modern text, take the rows with an empty `kieso` column in `token` order, once per word; the punctuated text is in
-`versek.tsv`.
+`data/versek.tsv`.
 
-The alignment is a machine proposal with measured accuracy (`METHODS.md`, section 5).
+The alignment is a machine proposal with measured accuracy (`docs/en/METHODS.md`, section 5).
 
 ## Related datasets
 
@@ -459,8 +466,8 @@ The project's own part (the modernised text, the word alignment and the linkage)
 Creative Commons Attribution 4.0 International (CC BY 4.0)
 https://creativecommons.org/licenses/by/4.0/
 
-A Károli 1908 szövege közkincs; a STEPBible TAHOT és TAGNT adatai CC BY 4.0 alatt állnak (ATTRIBUCIO.md).
-The 1908 Károli text is in the public domain; the STEPBible TAHOT and TAGNT data are under CC BY 4.0 (ATTRIBUCIO.md).
+A Károli 1908 szövege közkincs; a STEPBible TAHOT és TAGNT adatai CC BY 4.0 alatt állnak (docs/hu/ATTRIBUCIO.md).
+The 1908 Károli text is in the public domain; the STEPBible TAHOT and TAGNT data are under CC BY 4.0 (docs/en/ATTRIBUTION.md).
 """
 
 ATTRIBUCIO = """# Forrásmegjelölés és licencek / Attribution and licences
@@ -517,8 +524,8 @@ KODKONYV_SOROK = [
      'For a dropped word, the position of its host word in the same verse; its Strong pair belongs to that word in the modern text.'),
     ('konyvek', 'bizonytalan', 'igen', 'A modern alak szabályos, de a választás szövegkörnyezettől függ (pl. tárgyas vagy alanyi ragozás); a szöveg ezen a szón óvatosan kezelendő.',
      'The modern form is regular, but the choice depends on context (e.g. definite or indefinite conjugation); treat with care.'),
-    ('konyvek', 'allapot', 'javaslat', 'A sor egy szópár: gépi párosítási javaslat, mért pontossággal (MODSZER.md 5.).',
-     'The row is a word pair: a machine alignment proposal with measured accuracy (METHODS.md 5).'),
+    ('konyvek', 'allapot', 'javaslat', 'A sor egy szópár: gépi párosítási javaslat, mért pontossággal (docs/hu/MODSZER.md 5.).',
+     'The row is a word pair: a machine alignment proposal with measured accuracy (docs/en/METHODS.md 5).'),
     ('konyvek', 'allapot', 'betoldas', 'A fordító betoldása: a szónak nincs héber vagy görög megfelelője.',
      "Translator's addition: the word has no Hebrew or Greek counterpart."),
     ('konyvek', 'allapot', 'fuggoben', 'A szó párosítása függőben van (kézi döntésre vár); pár nincs.',
@@ -631,7 +638,7 @@ Wilson-féle 95%-os intervallumot a kiadás számolja a mért darabszámokból):
   becsülhető (95%-os Poisson-sáv kb. {korp_a}–{korp_f}). A második minta magasabb lefedettsége torzított, mert a
   későbbi körök éppen a kihagyásait vették célba.
 
-A maradék ismert hibákat az `ISMERT_HIBAK.md` sorolja fel.
+A maradék ismert hibákat az `docs/hu/ISMERT_HIBAK.md` sorolja fel.
 
 ## 5. A Strong-párosítás és a pontossága
 
@@ -664,7 +671,7 @@ könyvön a régi számot ({strongos_61}) is igazolja.
 
 ## 7. Korlátok
 
-- A párosítás gépi javaslat; a pontossága fent, az ismert hibák az `ISMERT_HIBAK.md`-ben.
+- A párosítás gépi javaslat; a pontossága fent, az ismert hibák az `docs/hu/ISMERT_HIBAK.md`-ben.
 - A modernizálás nem fordítás és nem revízió: a szókincs és a szórend a Károlié.
 - A szövegkörnyezettől függő igealakok egy része bizonytalannak jelölt ({bizonytalan} szó).
 """
@@ -768,7 +775,7 @@ Wilson 95% intervals are computed by the release from the measured counts):
   whole text (95% Poisson band about {korp_a}–{korp_f}). The higher coverage of the second sample is biased, because
   later rounds targeted exactly its misses.
 
-The remaining known issues are listed in `KNOWN_ISSUES.md`.
+The remaining known issues are listed in `docs/en/KNOWN_ISSUES.md`.
 
 ## 5. The Strong alignment and its accuracy
 
@@ -802,7 +809,7 @@ verifies the earlier figure ({strongos_61}) on the {konyv_61} books.
 
 ## 7. Limitations
 
-- The alignment is a machine proposal; its accuracy is given above, known issues in `KNOWN_ISSUES.md`.
+- The alignment is a machine proposal; its accuracy is given above, known issues in `docs/en/KNOWN_ISSUES.md`.
 - The modernisation is neither a new translation nor a revision: vocabulary and word order are Károli's.
 - Some context-dependent verb forms are marked uncertain ({bizonytalan} words).
 """
@@ -914,7 +921,7 @@ references:
 GITATTRIBUTES = """# Sorvég: minden fájl LF-fel, minden checkouton (az ellenőrző összeg az LF-es bájtokra szól).
 * text eol=lf
 # A közlemény-tervezet a megjelenésig nem része a kiadásnak.
-kozlemeny/ export-ignore
+note/ export-ignore
 """
 
 KOZLEMENY_HU = """# A Károli-biblia mai helyesírással, szavanként az eredeti nyelvekhez kötve
@@ -999,18 +1006,13 @@ def tsv_szoveg(fej, sorok, en=True):
     return '\n'.join(ki) + '\n'
 
 
-def kodkonyv_md():
-    ki = ['# Kódkönyv / Codebook', '', '*%s / %s*' % (CIM_HU, CIM_EN), '']
-    for fajl, cim in (('konyvek', '`konyvek/NN_Konyv.tsv`'), ('versek', '`versek.tsv`')):
-        ki += ['## %s' % cim, '', '| oszlop / column | érték / value | leírás | description |', '|---|---|---|---|']
-        for f, o, e, hu, en in KODKONYV_SOROK:
-            if f == fajl:
-                ki.append('| `%s` | %s | %s | %s |' % (o, ('`%s`' % e) if e else '', hu, en))
-        ki.append('')
-    return '\n'.join(ki)
+def kodkonyv_md(nyelv):
+    return CS.kodkonyv_md(nyelv, CIM_HU if nyelv == 'hu' else CIM_EN,
+                          (('konyvek', '`data/konyvek/NN_Konyv.tsv`'), ('versek', '`data/versek.tsv`')),
+                          KODKONYV_SOROK)
 
 
-def export():
+def export(kimenet=KIMENET):
     modern, parok, par_db, allapot, versek = beolvas()
     konyvek = vetit(modern, parok, allapot)
     N = szamok(modern, konyvek, par_db, allapot, versek)
@@ -1019,24 +1021,30 @@ def export():
         d.update({'cim': CIM_HU, 'cim_en': CIM_EN, 'step': STEP_ATTRIB})
     fajlok = {}
     for i, (kk, sorok) in enumerate(konyvek, 1):
-        fajlok['konyvek/%02d_%s.tsv' % (i, kk)] = tsv_szoveg(FEJ, sorok)
+        fajlok['data/konyvek/%02d_%s.tsv' % (i, kk)] = tsv_szoveg(FEJ, sorok)
     vsorok = [[NM.osis(v['igehely']), v['szoveg_modern'], 'igen' if v['valtozott'] == 'igen' else 'nem']
               for v in versek]
-    fajlok['versek.tsv'] = tsv_szoveg(VERS_FEJ, vsorok)
-    fajlok['kodkonyv.tsv'] = tsv_szoveg(['fajl', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en'],
-                                        [list(s) for s in KODKONYV_SOROK])
-    fajlok['KODKONYV.md'] = kodkonyv_md()
+    fajlok['data/versek.tsv'] = tsv_szoveg(VERS_FEJ, vsorok)
+    fajlok['data/kodkonyv.tsv'] = tsv_szoveg(['fajl', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en'],
+                                             [list(s) for s in KODKONYV_SOROK])
+    fajlok[CS.KODKONYV_HU] = kodkonyv_md('hu')
+    fajlok[CS.KODKONYV_EN] = kodkonyv_md('en')
     # a magyar szövegekben a szám előtti névelő a kiejtés szerinti (N-F175b; a kapu NEVELO pontja ellenőrzi)
-    fajlok['OLVASSEL.md'] = nevelo_javit(OLVASSEL.format(**hu))
+    fajlok[CS.OLVASSEL] = nevelo_javit(OLVASSEL.format(**hu))
     fajlok['README.md'] = README.format(**en)
     fajlok['LICENSE'] = nevelo_javit(LICENSE.format(**hu))
-    fajlok['ATTRIBUCIO.md'] = nevelo_javit(ATTRIBUCIO.format(**hu))
-    fajlok['MODSZER.md'] = nevelo_javit(MODSZER.format(**hu))
-    fajlok['METHODS.md'] = METHODS.format(**en)
-    fajlok['ISMERT_HIBAK.md'] = nevelo_javit(ISMERT_HIBAK.format(**hu))
-    fajlok['KNOWN_ISSUES.md'] = KNOWN_ISSUES.format(**en)
+    att_hu, att_en = CS.attribucio_nyelvek(ATTRIBUCIO)
+    fajlok[CS.ATTRIBUCIO] = nevelo_javit(att_hu.format(**hu))
+    fajlok[CS.ATTRIBUTION] = att_en.format(**en)
+    fajlok[CS.MODSZER] = nevelo_javit(MODSZER.format(**hu))
+    fajlok[CS.METHODS] = METHODS.format(**en)
+    fajlok[CS.ISMERT_HIBAK] = nevelo_javit(ISMERT_HIBAK.format(**hu))
+    fajlok[CS.KNOWN_ISSUES] = KNOWN_ISSUES.format(**en)
     fajlok['CITATION.cff'] = CITATION.format(**hu)
     fajlok['.gitattributes'] = GITATTRIBUTES
+    # a kézi forrás (paper/) a lemezről jön, és a kiadás része
+    abs_ki = kimenet if os.path.isabs(kimenet) else os.path.join(GYOKER, kimenet)
+    fajlok.update(CS.kezi_forras(abs_ki))
     # ellenőrző összeg: minden kiadott fájl, a közlemény-tervezet nélkül
     sor = ['%s  %s' % (hashlib.sha256(fajlok[rel].encode('utf-8')).hexdigest(), rel) for rel in sorted(fajlok)]
     fajlok['ELLENORZO_OSSZEG.sha256'] = '\n'.join(sor) + '\n'
@@ -1047,32 +1055,21 @@ def export():
     fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
                              'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     # a közlemény-tervezet (export-ignore; nincs az ellenőrző összegben)
-    fajlok[KOZLEMENY_DIR + 'kozlemeny_hu.md'] = nevelo_javit(KOZLEMENY_HU.format(**hu))
-    fajlok[KOZLEMENY_DIR + 'kozlemeny_en.md'] = KOZLEMENY_EN.format(**en)
+    fajlok[CS.NOTE_HU] = nevelo_javit(KOZLEMENY_HU.format(**hu))
+    fajlok[CS.NOTE_EN] = KOZLEMENY_EN.format(**en)
     return fajlok, N
 
 
 def kiir(fajlok, kimenet):
     abs_ki = os.path.join(GYOKER, kimenet) if not os.path.isabs(kimenet) else kimenet
-    if os.path.isdir(abs_ki):
-        for gy, _, nevek in os.walk(abs_ki):
-            for n in nevek:
-                rel = os.path.relpath(os.path.join(gy, n), abs_ki).replace('\\', '/')
-                if rel not in fajlok:
-                    os.remove(os.path.join(gy, n))
-    for rel, tartalom in fajlok.items():
-        ut = os.path.join(abs_ki, rel)
-        os.makedirs(os.path.dirname(ut), exist_ok=True)
-        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
-            f.write(tartalom)
-    return abs_ki
+    return CS.kiir(fajlok, abs_ki)           # a kézi forrású paper/-hez nem nyúl
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     ap.add_argument('--kimenet', default=KIMENET)
     a = ap.parse_args()
-    fajlok, N = export()
+    fajlok, N = export(a.kimenet)
     ut = kiir(fajlok, a.kimenet)
     print('modernizált Károli – Strong exportálva: %s (%d fájl)' % (ut, len(fajlok)))
     for k in ('konyv', 'vers', 'token', 'valtozo_token', 'par', 'strongos_token', 'kieso_strongos', 'sor'):
