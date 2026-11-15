@@ -1,6 +1,6 @@
 # 10. PaRDeS U3-prompt sablon — a motívum teljes prózája nulláról, egy kézből
 
-**Állapot: v1.2 (F206, 2026-11-11: „Állítás a versről — írás közben”, a HAMART-001 lektori körének hibaosztályai, gyökérok: `naplok/F206_jelentes.md`). v1.1: F193, 2026-11-11 (a lap új számozása — 9. Hatástörténet, 10. Értelmezés, 11. Módszertan és nyitott kérdések, DT766; J2–J4; hang és alcím, DT768). v1: F178.3, 2026-11-08.** A HAMART-001 mint arany (a felhasználó: „a hamart lesz az új arany / fontos hogy most már visszaesés ne legyen innen”) prózai menetének promptja. Minden új cikknél ez a prompt indítja az U3-at (`MUNKAMENET.md` C-w); 2. kiadásnál, ha a próza újraíródik, szintén. A forma szabályai a `sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pontjában állnak („Az 1/a igehelyenkénti prózája”, „Az új cikk öt szabálya”, „A HAMART-001 mint arany: a lezárás hét szabálya”); ez a fájl a session bemenete. A próza **mondatszintű** szabályai („Olvasói szöveg”, „Állítás a versről”) itt állnak, egy helyen (F184, DT793); a forma és a szerkezet kérdésében ellentmondásnál a 9-es sablon az irányadó.
+**Állapot: v1.3 (F224.9, 2026-11-15: a ⚑ és a többi K-tételt az állítás-ellenőr ítéli, nem az író; a sablon és a `MUNKAMENET.md` C-a sora így nem mond ellent egymásnak). v1.2 (F206, 2026-11-11: „Állítás a versről — írás közben”, a HAMART-001 lektori körének hibaosztályai, gyökérok: `naplok/F206_jelentes.md`). v1.1: F193, 2026-11-11 (a lap új számozása — 9. Hatástörténet, 10. Értelmezés, 11. Módszertan és nyitott kérdések, DT766; J2–J4; hang és alcím, DT768). v1: F178.3, 2026-11-08.** A HAMART-001 mint arany (a felhasználó: „a hamart lesz az új arany / fontos hogy most már visszaesés ne legyen innen”) prózai menetének promptja. Minden új cikknél ez a prompt indítja az U3-at (`MUNKAMENET.md` C-w); 2. kiadásnál, ha a próza újraíródik, szintén. A forma szabályai a `sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pontjában állnak („Az 1/a igehelyenkénti prózája”, „Az új cikk öt szabálya”, „A HAMART-001 mint arany: a lezárás hét szabálya”); ez a fájl a session bemenete. A próza **mondatszintű** szabályai („Olvasói szöveg”, „Állítás a versről”) itt állnak, egy helyen (F184, DT793); a forma és a szerkezet kérdésében ellentmondásnál a 9-es sablon az irányadó.
 
 *Használat: a `[…]` helyőrzőket a session indítója tölti ki; a prompt többi része szó szerint megy. A session modellje `opus` (értelmező próza, egy kéz: CLAUDE.md, KONTEXTUS K1).*
 
@@ -89,12 +89,13 @@ python eszkozok/proza_allitas.py [ID]
 A `naplok/ALLITAS_[ID].md` a próza versre hivatkozó állításait (a rések mondatai és a `kapcsolodas` sorai) veti össze a verssel és az adattal.
 
 - **ELTÉR-sor (a CI-ben E41, HIBA):** a gépi ítélet a vers héber/görög Strong-során, a Károli-szövegen vagy az adaton áll (a szó áll vagy nem áll a versben; a szópár mellett más szó áll; a fordulat két szava nem szomszédos; az idézet nem a Károli szövege; a szám nem egyezik). Minden ELTÉR-sort a forrásban javítasz, és újrafuttatod; a javított mondat a vers saját szövegét mondja (ki/mi az alany, melyik héber szó áll), nem a régit tompítja.
-- **⚑ tétel a kézi listán.** Mindet magad nézed át, és a fenti „Állítás a versről” szerint javítod. A jelzés fajtái:
+- **⚑ tétel a kézi listán.** Nem te nézed át: a ⚑ csak a sorrendet adja (a ⚑ tételek elöl). Minden K-tételt (⚑-eset és ⚑ nélkülit) az állítás-ellenőr (F2) ítél, állításonként (`.claude/agents/allitas-ellenor.md`; a menetbeli helye: `MUNKAMENET.md` C-a sor); a „hamis” ítéletet a forrásban javítod, a fenti „Állítás a versről” szerint, és újrafuttatod. A jelzés fajtái:
   - a magyar szó más héber szót fordít, vagy a lánc szava nincs a versben (2.);
   - kizárólagos állítás lekérdezés nélkül (3.);
   - hatókör: a csoportban tematikus hely is van (4.);
-  - kapcsolat-állítás közepes vagy hiányzó kapcsolat-sorral (5.).
-- **A többi kézi tétel** (az állítás, a Károli-vers és a héber/görög sor egymás mellett) az olcsó modell (Sonnet) vagy ember átnézésére megy, a lektor előtt; a kérdés tételenként: azt mondja-e a vers, amit az állítás neki tulajdonít (alany, tárgy, szó, kapcsolat).
+  - kapcsolat-állítás közepes vagy hiányzó kapcsolat-sorral (5.);
+  - szám + kapcsolat/erősség, belső utalás, „nem dönti el” típusú mondat (F224.4; ahol a gép dönt, ELTÉR-jellegű JELENTÉS).
+- **A többi kézi tétel** (az állítás, a Károli-vers és a héber/görög sor egymás mellett) ugyanígy az állítás-ellenőrhöz megy, a lektor előtt.
 
 A lépés kapu-szintje JELENTÉS: nem bukik, de a lektor csak az ELTÉR-sorok javítása után indul.
 

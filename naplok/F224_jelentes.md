@@ -25,7 +25,7 @@
 ### F224.4 — A kinyerés bővítése
 `eszkozok/proza_allitas.py`: három új K-fajta a rés mondatain (`UJ_FAJTAK`): **szám-kapcsolat** (a kapcsolat-tábla sorai bizonyosság szerint; „N helyből M”: a bekezdés felsorolt igehelyei), **belső utalás** (a célpont a forrás vagy a generált lap címsorai, félkövér bekezdés-címei között), **nem dönti el** (a pont igehelyei a bekezdésből, a pont címéből is; a lap más mondatai ugyanezekre a helyekre, legfeljebb 8). Gépi ELTÉR-ítélet az új fajtából soha nem lesz: ahol a gép dönt, a bizonyíték `JELENTÉS (ELTÉR-jellegű, F224.4)` kezdetű, ⚑-gel, és a `--kapu` motívumonként külön `JELENTÉS` sort ír. A régi K-tételek számozása nem változik (a régi fajták egységei kapják előbb a számot). A HIBA-szintre emelés javaslata: N-F224a (`nyitott/uj/f224-cikkiras-uj-menet.md`).
 
-**Mérés** (a K-tétel-szám a futtatás előtt és után; `scratchpad/f224/klista.py`, a forrás, az `elofordulasok.tsv`, a `kapcsolatok.tsv` és a lap a megnevezett commitról):
+**Mérés** (a K-tétel-szám a futtatás előtt és után; `naplok/F224_proba/klista.py`, a forrás, az `elofordulasok.tsv`, a `kapcsolatok.tsv` és a lap a megnevezett commitról):
 
 | Forrás | K előtte | K utána | Új K-tétel |
 |---|---|---|---|
@@ -40,6 +40,19 @@
 - A 113 helyett 114 K-tétel a `f6da955e`-n: a mérés (2026-11-15) óta az eszköz változott; a régi K-számok a mai eszközzel és a mai eszköz után egyeznek, a 113-as szám a mérés napjáé.
 - Teszt: `eszkozok/teszt_proza_allitas.py` 51 teszt OK (11 új, `F224_4` osztály: mindhárom fajtára pozitív és negatív eset, a stabil számozás és a kapu JELENTÉS-sora).
 *(proveniencia: scope=motivumok/ISTENTISZT-001.md @b2aea73f, motivumok/HAMART-001.md @f6da955e, a main két forrása | forras=eszkozok/proza_allitas.py (az ág feje) | ts=2026-11-15)*
+
+### F224.7 — A tanulmány blokkjai
+`sablonok/2_PaRDeS_bovitett_sablon.md` 4/b. pont (v24), a meglévő hat blokk újraírása nélkül: (1) **a szakaszhatár előbb**, független (motívumtól nem függő) indokkal, egy mondatban a blokkok előtt; (2) a vita-blokkban **név csak forrással**; (3) a **pótolt blokk** a fejlécben `pótolt: nem vak olvasás` jelölést kap (az F205 „meglévő tanulmány utólag nem kap blokkot” mondata kivétellel bővült: csak ha a motívum menete kimondja, pl. a TEREMT-001); (4) a funkció-blokk a **szakaszbeli szerepet** adja, a láncbeli a cikké (DT-F224a). A minta (HAMART 1Móz 8:21) funkció-sora az F224 előtti, láncbeli alakban maradt, ezt a minta címe kimondja: új funkciómondatot ide nem írtam (értelmező próza, a próza gazdájáé).
+**A kinyerő:** az `eszkozok/tanulmany_kinyer.py` a main-en **még nem létezik** (az F205 M3/M5 lépése, `fut`, a `kovetkezo` szerint az F212 merge-e után, main-behozással). A `pótolt` mező ezért most nem olvasható gépileg, és nem is kell: az F205 a kinyerőt ezen az állapoton építi (a brief `fugg`-indoka szerint az F224 utáni állapotra épül); a mező opcionális, a fejléc régi alakja érvényes marad. Az F205 ágainak nincs függő változása a két közös fájlon (`git diff origin/main...origin/claude/f205-*`: üres), nyitott PR-ja nincs.
+
+### F224.8 — A menet
+`MUNKAMENET.md` C) szakasz: a tábla előtt egy mondatban a lépéssor (A → … → 1. kiadás), mindegyik lépés a sor azonosítójával; négy új sor (C-ia, C-bl, C-ev, C-bi), mindegyik a szabályhelyre mutat, a szabály szövege nélkül; új C-sz sor a mérőtábla küszöbeivel (a brief F224.11: „a küszöbök a `MUNKAMENET.md` C) szakaszában”); a C-a sor átírva (F1 a próza gazdája, F2 az `allitas-ellenor`; a „kézi listát olcsó modell vagy ember nézi” kikerült; a „hamis” a gazdához, a „vitatott” és „nem eldönthető” a lektorhoz); a C-h sorban a `hatar-ellenor` modellje Sonnet.
+**Jelzés a felhasználónak:** a C-h sor indoka („kreditből fizetendő, a havi csomagba nem fér; DT546”) a Fable-hez tartozott; a Sonnettel ez nem áll. A ⛔ (a felhasználó indítja, minden futás előtt az ő jóváhagyásával) változatlan maradt, mert a megszüntetése a brief hatókörén kívüli döntés.
+A C-bl és a C-sz a SEMA-szakaszra még szám nélkül hivatkozik (a #729 merge-éig); a C-ev a 9_ sablon még meg nem írt érvnapló-szakaszára (F224.6).
+
+### F224.9 — A ⚑-szabály ellentmondása
+`sablonok/10_PaRDeS_U3_proza_prompt_sablon.md` (v1.3), „⚑ tétel a kézi listán”: a „Mindet magad nézed át” kikerült; a ⚑ csak sorrend, minden K-tételt az állítás-ellenőr ítél (hivatkozás: `.claude/agents/allitas-ellenor.md`, `MUNKAMENET.md` C-a); az író a „hamis” ítéletet javítja. A „többi kézi tétel … olcsó modell (Sonnet) vagy ember” mondat is az F2-re mutat. A jelzés-fajták listája az F224.4 három új fajtájával bővült. `grep "magad\|olcsó modell"` a 10_ sablonban: 0 találat.
+**A hatókör-szűkítés 3. pontja** (a brief 3. pontja, `BRIEF_SABLON.md` DT-F221a): *a ⚑ tételeket nem az író nézi át, hanem az F2.* (a) Ellenőrzés nélkül marad: semmi új — az író átnézése önellenőrzés volt. (b) Méri helyette: az F2 minden K-tételt állításonként ítél; a „vitatott” és „nem eldönthető” a lektorhoz megy. A mondat a `.claude/commands/kiadas.md` 3. lépésében hivatkozással áll.
 
 ### F224.12 — A határ-ellenőr modellje
 `.claude/agents/hatar-ellenor.md`: `model: sonnet`, a 0. lépés modellneve `sonnet`; a bemenet a határesetek negatív próbáival bővült, a negatív kritérium szűkebb és tágabb változatával. `grep -i fable .claude/agents/hatar-ellenor.md`: 0 találat. A `MUNKAMENET.md` C-h sorának modellneve az F224.8-ban.
