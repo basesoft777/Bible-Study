@@ -1,3 +1,4 @@
+<!-- GENERÁLT: eszkozok/karoli_strong_export.py (a próza: eszkozok/karoli_strong_szovegek.py, a számok: adat/karoli_strong/ és f172/) — kézzel nem szerkesztendő; a #175 csomagjának rövid közleménye, belső anyag, nem része a nyilt_karoli_strong/ csomagnak. -->
 # The Károli Bible linked word by word to the original languages — with measured accuracy
 
 *Announcement draft · Károli 1908 – Strong word alignment · Logosz Lexikon · DOI: 10.5281/zenodo.24141883*
