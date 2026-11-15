@@ -23,3 +23,12 @@ Ha bármelyik nem teljesül, a gép nem nyúl a briefhez. A lezárás: `allapot:
 
 ## Mi hiányzik (B. rész, a #sav PR mergelése után)
 A `feladatok.py ellenoriz` JELENTÉS-bekötése (a logika kész: `brief_lezaras.kapu_jelentesek`, `--kapu`), a `lezar` kulcs a `KULCSOK`/`LISTA_KULCSOK`-ban, a brief-sablon (`lezar:` és a kanonikus `Te: merge` alak), a `adat/SEMA.md`/sablon említés. A #sav PR a jelentés idején nincs a main-en. Amíg a `lezar` kulcsot a fejléc-elemző nem ismeri, a szkript nyersen olvassa, és az „ismeretlen kulcs” hibát nem tekinti akadálynak.
+
+## B. rész (2026-11-15, külön PR)
+Kész: a `lezar` kulcs a `feladatok.py` sémájában (azonosító-alak HIBA), az `ellenoriz` JELENTÉS-sorai (`brief_lezaras.kapu_jelentesek`; a mai main-en 22 jelentés, 0 hiba), a `BRIEF_SABLON.md` (`lezar` mező, kanonikus `Te: … merge` alak, hatókör-szűkítés DT-F221a). A `sav` mezőt az F219/F220/F221 briefben pótoltam (SYSTEMS): a #734-gyel párhuzamosan mergelődtek, és a main `ellenoriz`-e emiatt piros volt. A fenti „Mi hiányzik” szakasz ezzel teljesült.
+
+## A `sav` értékkészlete: öt elem (DT-F219d, a felhasználó döntése, 2026-11-15)
+`SYSTEMS / CONTENT / SERVER / USER / BUSINESS` (`feladatok.py`, `BRIEF_SABLON.md`, `heti_attekinto.py` sávlistája, tesztek; a FELADATOK.md táblái a `SAVOK` sorrendjében csoportosítanak). Átsorolás (briefenként egy sor):
+- `F86_ELOFIZETES_FEED_BRIEF.md`: `USER` → `BUSINESS` (előfizetési szintek, szállítás, lejárat: a #86 üzleti oldala).
+- Nincs más `USER` brief; `SERVER` → `USER` átsorolandó nincs (a 25 `SERVER` brief olvasói felület, adatbázis, tervező mód, kereső: az olvasó funkciói, nem felhasználókezelés).
+- Megtartva: `F156_MUHELY_FEED_STASH` (`SYSTEMS`: belső műhelyállapot, nem üzlet).

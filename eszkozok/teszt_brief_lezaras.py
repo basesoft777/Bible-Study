@@ -256,6 +256,38 @@ class Kapu(Alap):
         self.assertEqual(B.kapu_jelentesek(self.r), [])
 
 
+class LezarMezo(Alap):
+    """B resz: a `lezar` fejlecmezo a semaban, a kapu az `ellenoriz` kimenetben (JELENTES, nem HIBA)."""
+
+    def fejjel(self, **kw):
+        return brief(**kw).replace('munka: folyamat', 'munka: folyamat\nsav: SYSTEMS')
+
+    def test_a_mezo_lista_es_az_elemzo_ismeri(self):
+        fej, _, hibak = F.fejlec_elemez(self.fejjel(lezar=['N200', 'N-F200d']))
+        self.assertEqual(fej['lezar'], ['N200', 'N-F200d'])
+        self.assertEqual(hibak, [])
+
+    def test_ervenytelen_azonosito_hiba(self):
+        self.ir('F980_X_BRIEF.md', self.fejjel(szam=980, lezar=['N200', 'DT12']))
+        hibak = F.ellenoriz(F.briefek_beolvas(self.r), self.r)
+        self.assertEqual([h for h in hibak if 'lezar' in h[1]][0][0], 'F980_X_BRIEF.md')
+        self.assertTrue(any("'DT12'" in h[1] for h in hibak))
+
+    def test_ervenyes_azonosito_nem_hiba(self):
+        self.ir('F981_X_BRIEF.md', self.fejjel(szam=981, lezar=['N200', 'N-F200d']))
+        hibak = F.ellenoriz(F.briefek_beolvas(self.r), self.r)
+        self.assertEqual([h for h in hibak if 'lezar' in h[1]], [])
+
+    def test_cli_jelentes_nem_hiba(self):
+        self.pr_merge('claude/proba-x', 701, {'F900_PROBA_BRIEF.md': self.fejjel(lezar=['N200'])})
+        p = subprocess.run([sys.executable, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'feladatok.py'),
+                            '--gyoker', self.r, 'ellenoriz'], capture_output=True)
+        ki = p.stdout.decode('utf-8')
+        self.assertIn('JELENTÉS\tF900_PROBA_BRIEF.md\t', ki)
+        self.assertNotIn('HIBA\t', ki)
+        self.assertEqual(p.returncode, 0)
+
+
 class CommitUzenet(unittest.TestCase):
     def test_torzs_hozzafuzve_az_elso_sor_valtozatlan(self):
         u = U.uzenet(['FELADATOK.md', 'F900_P_BRIEF.md'], None, 'brief-lezárás: #900')

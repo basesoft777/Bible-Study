@@ -616,6 +616,18 @@ class SavTest(Alap):
             self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav=s, olvas=['a'], ir=['a']))
             self.assertEqual(self.hibak_szoveg(), [])
 
+    def test_sav_ot_elemu_es_business_ervenyes(self):
+        # a felhasznalo dontese (2026-11-15, DT-F219d): USER (olvaso felhasznalokezeles) es BUSINESS (a #86 uzleti oldala)
+        self.assertEqual(F.SAVOK, ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS'))
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='BUSINESS', olvas=['a'], ir=['a']))
+        self.assertEqual(self.hibak_szoveg(), [])
+
+    def test_business_sav_a_tablaban_utolso_csoport(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='BUSINESS', olvas=['a'], ir=['a']))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, sav='USER', olvas=['b'], ir=['b']))
+        szoveg = F.blokkok(self.g.briefek(), self.g.ut, MA, main_all={})['fazis1']
+        self.assertLess(szoveg.index('**USER**'), szoveg.index('**BUSINESS**'))
+
     def test_ismeretlen_sav_hiba(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='MASIK', olvas=['a'], ir=['a']))
         self.assertTrue(any('sav:' in h for h in self.hibak_szoveg()))
