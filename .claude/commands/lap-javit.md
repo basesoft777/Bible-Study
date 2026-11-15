@@ -80,13 +80,13 @@ Tab és sortörés a mezőben nem állhat (többsoros részt egy sorba vonsz). �
 
 Amikor a felhasználó jelzi, hogy nincs több hely:
 
-1. **Újragenerálás** minden érintett lapra: `python eszkozok/general.py --cel lexikon --id <ID> --ir` (adat- vagy forrásjavításnál a 3.b/3.c felmérésében megnevezett minden lap).
+1. **Friss lap helyben** minden érintett lapra: `python eszkozok/generalt_nezetek.py --ir --id <ID>` (adat- vagy forrásjavításnál a 3.b/3.c felmérésében megnevezett minden lap). A lapot nem commitolod: a merge után a main-en az Action generálja (F217); a kiadott lap csak a 4. pont `lap_javitasok.tsv`-soraival (vagy új kiadással) változhat, E28 (4).
 2. **Kapuk:** `python eszkozok/olvasoi_kapu.py <ID> [<ID2> …]` (0 BUKÁS, és nem több FIGYELMEZTETÉS, mint előtte) és `python eszkozok/ellenoriz.py` (0 SÉRTÉS). Bukásnál a hibát megnevezed, és a javítás körébe visszamész.
 3. **Lista a felhasználónak:** a javított helyek táblája (hely · típus · gond · régi · új), a külön útra terelt helyek (jelölt-sor, N-tétel), és a kolofon új „Emberi lektorálás” sora.
 3/b. **Felhasználó által talált tétel = hibanapló-tétel (kötelező).** Minden tételhez, amelyet a felhasználó talált (rámutatás, megjegyzés, átnézés), meg kell nevezni a mechanizmust a `naplok/HIBA_MECHANIZMUSOK.md`-ben: meglévőt vagy újat. Ha a mechanizmus már szerepel, a tétel gyökérok-jelölést kap (hányadik eset), és nem csak példányjavítás készül. A lista (3.) minden sorához a mechanizmus neve is kerül. A szabály szövege a hibanapló fejlécében áll.
 4. **Kiadott lapnál** ehhez jön:
    - a **kiadási sor** (`adat/kiadasok.tsv`, a mezők: SEMA 2.46); csak ha a felhasználó a kiadást kéri;
-   - az **átnézés** (`adat/lap_atnezesek.tsv`, SEMA 2.48): a felhasználó a javított helyeket a renderelt lapon átnézi, és a chatben jóváhagyja; az `idezet` az ő szavai szó szerint. A `lap_commit` a javított lap commitja, ezért a sor a lap commitja **után** kerül be (külön commitban). Hogy egy későbbi lapváltozás (például gépi szótári vagy Károli-KH forrásadat-javítás) érvényteleníti-e az átnézést: SEMA 2.48 „Érvényesség” (DT665).
+   - az **átnézés** (`adat/lap_atnezesek.tsv`, SEMA 2.48): a felhasználó a javított helyeket a renderelt lapon átnézi, és a chatben jóváhagyja; az `idezet` az ő szavai szó szerint. A `lap_commit` a javított lap commitja, ezért a sor a lap commitja **után** kerül be (külön commitban); F217 óta a lapot a main-en az Action commitolja, így a sor a merge és a gépi commit után, külön PR-ban kerül be. Hogy egy későbbi lapváltozás (például gépi szótári vagy Károli-KH forrásadat-javítás) érvényteleníti-e az átnézést: SEMA 2.48 „Érvényesség” (DT665).
 5. A parancs **nem commitol és nem pushol.** A commit a felhasználó kérésére történik, a CLAUDE.md szabályai szerint (tétel-azonosítóval, UTF-8 fájlból).
 
 ## 6. A lapnézet és a blokkjel (F165, DT637)
@@ -116,7 +116,7 @@ Ha bármelyik nem teljesül: a rendes út (1–6. pont, független ellenőrrel).
 0. **Kimondás az elején:** „gyors út: csak szöveg, N csere, adat és szerkezet nem változik.” Ha menet közben adat vagy szerkezet kell, megállsz és jelzed; a rendes útra kerül.
 1. **Beolvasás:** csak az érintett rések és a gyűjtött megjegyzéslista. A K1 teljes prózaolvasás (1. pont) pontcserénél itt nem kötelező.
 2. **Csere:** pontcsere a forrásban vagy a sablonmondatban (a 3.a szabályai: legkisebb javítás, a hang marad); a `régi → új` lista a jelentésbe és a PR leírásába kerül. A felhasználó jóváhagyása a gyűjtött listára vonatkozik (a „mehet” csak arra a listára szól).
-3. **Újragenerálás:** csak az érintett lap(ok): `python eszkozok/general.py --cel lexikon --id <ID> --ir`. Ha sablonmondat változott, a többi lap bájtazonossága (E28) ellenőrzendő.
+3. **Friss lap helyben:** csak az érintett lap(ok): `python eszkozok/generalt_nezetek.py --ir --id <ID>` (nem commitolod; a main-en az Action generálja, F217). Ha sablonmondat változott, a többi lap változása (E28) ellenőrzendő.
 4. **Helyi ellenőrzés (kb. 2–5 perc; a push előtti kapu, a 6. pont, ezen felül fut):** `olvasoi_kapu.py <ID>` (0 BUKÁS, nem több FIGYELMEZTETÉS); `proza_allitas.py <ID>`, ha a csere versre vonatkozó mondatot érint; a lap saját tesztje (`teszt_kesz_lap_<id>.py`), ha van; `ellenoriz.py` a diff fájljain.
 5. **Naplózás:** a javított helyek sorai a 4. pont szerint (`lap_javitasok.tsv`), ha a felhasználó jóváhagyta.
 6. **Push és draft PR**, a cím `[GYORS]` előtaggal; a push előtt `python eszkozok/push_elott.py --pr-cim "[GYORS] …"` 0 HIBA-val (a szabály: `/kovetkezo` 6. lépés, „PUSH ELŐTT”); a leírásban a `régi → új` lista. Az átnézéshez a felhasználónak a változás-nézetet add: `python eszkozok/lektor_felulet/lapnezet.py <ID> <scratch>/<ID>_valtozas.html --valtozas <alap-commit>` (csak a változott blokkok, előtte–utána párban, kiemelve; a 6. pont szerint publikálva).
