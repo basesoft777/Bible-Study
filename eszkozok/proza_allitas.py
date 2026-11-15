@@ -29,7 +29,14 @@ héber/görög szót fordít, mint a lánc szava; a szó nincs a versben). A lis
 az eszköz modellt nem hív.
 
 Kimenet: `naplok/ALLITAS_<ID>.md` (soronként: állítás | vers | gépi ítélet: egyezik / ELTÉR / kézi | bizonyíték).
-Kapu-szint: JELENTÉS (a kilépőkód 0; `--szigoru`: 1, ha van ELTÉR-sor).
+Kapu-szint: egy motívumra futtatva JELENTÉS (a kilépőkód 0; `--szigoru`: 1, ha van ELTÉR-sor).
+
+**`--kapu` (F200.7, E41, HIBA; N-F200d, DT-F200e):** minden `motivumok/<ID>.md` kézi forráson, amely új formájú, az ELTÉR-sor
+(gépi ítélet) HIBA: a kilépőkód 1. A kézi ellenőrzési lista (⚑) és a „kézi” sorok JELENTÉS maradnak. Új formájú a forrás,
+ha a próza a 10-es sablon szerint készült: a lánc szavait megnevezi (a `Szokeszlet` nem üres), vagy a forrás NAPLÓ-sora
+a `10_PaRDeS_U3_proza_prompt_sablon.md`-re hivatkozik. A régi formájú forrás (a lánc szava nincs megnevezve: N-F200c)
+kimarad, és a kimenet ezt soronként kimondja (az ELTÉR-sorainak száma tájékoztatásul áll, nem gátol). A mérés és az ok:
+`naplok/F200_HIBA_SZINT_MERES.md`.
 
 `--lektor <fájl>`: összevetés egy lektori kérdéslistával (`naplok/KIADAS_<ID>_lektor.md` szerkezet): a pontossági
 tételek (a „Mi a gond” sor az 1. vagy a 4. kérdést nevezi) közül hányat fog meg gépileg, hányat tesz kézi listára,
@@ -39,6 +46,7 @@ A TSV-k olvasása `split('\t')` (CLAUDE.md); a `karoli_strong/parok_<könyv>.tsv
 SEMA 2.20): csak bizonyítékként és jelzésként áll, ítélet nem épül rá.
 
 CLI:
+    python eszkozok/proza_allitas.py --kapu                       # E41 (a CI-ben): minden új formájú forrás, ELTÉR = 1
     python eszkozok/proza_allitas.py HAMART-001
     python eszkozok/proza_allitas.py HAMART-001 --lektor naplok/KIADAS_HAMART-001_lektor.md
     python eszkozok/proza_allitas.py HAMART-001 --kimenet <fájl> --szigoru
@@ -596,6 +604,10 @@ class Ellenor:
             'újszövetségi': [d for d in osszes if konyv(d) in UJSZ_KONYVEK],
             'tematikus': [d for d in osszes if d.get('gerinc_elem', '').startswith('tematikus')],
         }
+        # F200.7: a „lexikai” minősítés a tematikus (a lánc szava nélküli) helyek nélküli csoport („öt lexikai
+        # újszövetségi helyén” + „a hatodik tematikus”): a gépi ítélet a csoport lexikai részére szól
+        for k in ('összes', 'Genezis', 'Ószövetség többi', 'ószövetségi', 'újszövetségi'):
+            csop[k + ' lexikai'] = [d for d in csop[k] if not d.get('gerinc_elem', '').startswith('tematikus')]
         return {k: (len(v), versszam(v)) for k, v in csop.items()}
 
     def _szam_csoport(self, kornyezet):
@@ -603,14 +615,16 @@ class Ellenor:
         if 'tematikus' in k or 'szavai nélkül' in k:
             return 'tematikus'
         if 'genezis' in k:
-            return 'Genezis'
-        if 'többi' in k and 'ószövetség' in k:
-            return 'Ószövetség többi'
-        if 'újszövetség' in k:
-            return 'újszövetségi'
-        if 'ószövetség' in k:
-            return 'ószövetségi'
-        return None
+            csop = 'Genezis'
+        elif 'többi' in k and 'ószövetség' in k:
+            csop = 'Ószövetség többi'
+        elif 'újszövetség' in k:
+            csop = 'újszövetségi'
+        elif 'ószövetség' in k:
+            csop = 'ószövetségi'
+        else:
+            return None
+        return csop + ' lexikai' if re.search(r'(?<![%s])lexikai(?![%s])' % (BETU, BETU), k) else csop
 
     # --- egység feldolgozása
     def egyseg(self, e):
@@ -678,6 +692,20 @@ class Ellenor:
                     if not d or (neg and neg.group(1) == m.group(1)):
                         continue
                     van = bool(d['strongok'] & strongok)
+                    nev = self._megnevezett_szo(szoveg[m.end():m.end() + 40], versek)
+                    if not van and nev:
+                        # F200.7: a mondat a szót maga is megnevezi („az átok szava áll (álá)”): a megnevezett átírás
+                        # a vers szavai közt áll-e (a lánc szótára az adott szót nem feltétlenül hozza)
+                        van = bool(nev[1] & strongok)
+                        self.sorok.append(Sor(e, ref, szoveg, 'egyezik' if van else 'ELTÉR',
+                                              'a mondat szerint a %s szava a versben áll, és megnevezi: %s (%s); '
+                                              'TAHOT/TAGNT: %s' % (m.group(1), nev[0], '+'.join(sorted(nev[1])) or '–',
+                                                                   'áll' if van else 'NEM áll')
+                                              if van else
+                                              'a mondat szerint a %s szava (%s, %s; megnevezve: %s) a versben áll; '
+                                              'TAHOT/TAGNT: NEM áll' % (m.group(1), d['atiras'], sj(d), nev[0]),
+                                              'szójelenlét'))
+                        continue
                     self.sorok.append(Sor(e, ref, szoveg, 'egyezik' if van else 'ELTÉR',
                                           'a mondat szerint a %s szava (%s, %s) a versben áll; TAHOT/TAGNT: %s'
                                           % (m.group(1), d['atiras'], sj(d), 'áll' if van else 'NEM áll'),
@@ -719,6 +747,23 @@ class Ellenor:
                 self.sorok.append(Sor(e, ref, szoveg, 'kézi', '; '.join(jelzesek + [
                     'gépileg egyezik, de az állítás ennél több — ' + x for x in egyezo]), 'kézi',
                     jelzes='⚑' if jelzesek else ''))
+
+    def _megnevezett_szo(self, utana, versek):
+        """F200.7: a „… szava áll (átírás)” alak zárójeles átírása: (átírás, a vers azonos kiejtésű szavainak
+        Strong-számai). None, ha a szó után nincs közvetlen zárójeles, héber átírásnak látszó megnevezés."""
+        m = re.match(r"\s*(?:(?:áll|szerepel)\s*)?\(([%s']+)\)" % BETU, utana)
+        if not m:
+            return None
+        atir = ekezet_nelkul(m.group(1))
+        s = set()
+        for k in versek:
+            for s2, szoto, _ in self.adat.szavak.get(k, []):
+                if s2.startswith('H') and ekezet_nelkul(HK.kiejt(szoto)) == atir:
+                    s.add(s2)
+        for k in (self.szk.atiras.get(atir),):
+            if k and any(k in {x for x, _, _ in self.adat.szavak.get(v, [])} for v in versek):
+                s.add(k)
+        return m.group(1), s
 
     def _kapcsolat(self, ige, ref, versek, sajat):
         """F206: kapcsolat-állítás („utal vissza”, „visszatér”) a hely kapcsolat-sorai mellett. A `kapcsolodas`-sor
@@ -764,13 +809,16 @@ class Ellenor:
     def _csoport_sorai(self, csop):
         def konyv(d):
             return d['igehely'].rsplit(' ', 1)[0]
-        return {
+        lexikai = csop.endswith(' lexikai')
+        csop = csop[:-len(' lexikai')] if lexikai else csop
+        sorok = {
             'összes': self.elof,
             'Genezis': [d for d in self.elof if konyv(d) == '1Móz'],
             'Ószövetség többi': [d for d in self.elof if konyv(d) != '1Móz' and konyv(d) not in UJSZ_KONYVEK],
             'ószövetségi': [d for d in self.elof if konyv(d) not in UJSZ_KONYVEK],
             'újszövetségi': [d for d in self.elof if konyv(d) in UJSZ_KONYVEK],
         }[csop]
+        return [d for d in sorok if not d.get('gerinc_elem', '').startswith('tematikus')] if lexikai else sorok
 
     def _tartalmi(self, s):
         return bool(s) and s not in self.adat.gramm and not s.startswith('H90') and not s.startswith('H99')
@@ -835,11 +883,19 @@ class Ellenor:
         for m in OK.IDEZET_RX.finditer(szoveg):
             idez = m.group(2) or m.group(3)
             szavak = OK.normal_szoveg(idez or '').split()
+            if szavak and szavak[0] in ('a', 'az'):
+                continue   # F200.7: névelős idézet („a földről”) nem kétszavas fordulat: az előtag-egyeztetés a névelőre
+                # bármely „a…” szót találna (a fordulat-minta „a”+„föld…” = az átok szava + a föld)
             if len(szavak) != 2:
                 continue
             utana = [c for c in csoportok if 0 <= c[0] - m.end() <= FORDULAT_TAV]
             elotte = [c for c in csoportok if 0 <= m.start() - c[1] <= FORDULAT_TAV]
-            csop = utana[0] if utana else (elotte[-1] if elotte else None)
+            # F200.7: a legközelebbi igehely-csoport (az „1Kir 13:34-ben és az Ámós 9:8-ban a „föld színéről” fordulattal,
+            # az 1Kir 14:15-ben …” a fordulat előtti helyekre szól, nem a következő felsorolásra); döntetlennél a követő
+            if utana and elotte:
+                csop = utana[0] if utana[0][0] - m.end() <= m.start() - elotte[-1][1] else elotte[-1]
+            else:
+                csop = utana[0] if utana else (elotte[-1] if elotte else None)
             if not csop:
                 continue
             minta = self._fordulat_minta(szavak, motivum_versek)
@@ -1265,14 +1321,62 @@ def futtat(mid, md_ut=None, elof_ut=T_ELOF):
     return ell, adat, szk, len(egysegek)
 
 
+U3_JELOLES = '10_PaRDeS_U3_proza_prompt_sablon'   # az új formájú (10-es sablon szerinti) forrás NAPLÓ-sorában áll
+FORRAS_ID = re.compile(r'^([A-Z]+-\d{3})\.md$')
+
+
+def uj_formaju(forras, szk):
+    """F200.7: a forrás a 10-es sablon szerint készült-e: a lánc szavait megnevezi (a próbák szókészlete nem üres), vagy
+    a NAPLÓ-sora a 10-es sablonra hivatkozik. A régi formájúnál (N-F200c) a szókészlet üres: a gépi ítélet ott a
+    fordulat- és a számpróbára szűkül, az ELTÉR-sorai jórészt jelöletlen saját fordítások idézőjelben."""
+    return bool(szk.szavak) or U3_JELOLES in forras
+
+
+def kapu(mappa=None, elof_ut=T_ELOF, kimenet=sys.stdout):
+    """E41 (HIBA): az új formájú kézi forrásokon az ELTÉR-sor hiba. Visszatér: az ELTÉR-sorok száma az új formájúakon."""
+    mappa = mappa or os.path.join(ROOT, 'motivumok')
+    kimenet.write('## Próza-állítás kapu (E41, HIBA)\n\n*Az ELTÉR-sor (gépi ítélet) HIBA az új formájú kézi forrásokon; '
+                  'a kézi lista (⚑) és a „kézi” sorok jelentés. A régi formájú forrás kimarad (N-F200c).*\n\n')
+    hibak = 0
+    for nev in sorted(os.listdir(mappa)):
+        m = FORRAS_ID.match(nev)
+        if not m:
+            continue
+        mid, ut = m.group(1), os.path.join(mappa, nev)
+        with open(ut, 'r', encoding='utf-8') as f:
+            forras = f.read()
+        ell, _, szk, n_egyseg = futtat(mid, ut, elof_ut)
+        elterek = [s for s in ell.sorok if s.itelet == 'ELTÉR']
+        egyezik = sum(1 for s in ell.sorok if s.itelet == 'egyezik')
+        if not uj_formaju(forras, szk):
+            kimenet.write('- %s: régi formájú forrás (a lánc szava nincs megnevezve, nincs 10-es sablon szerinti '
+                          'NAPLÓ-sor): nem mérve; tájékoztatásul ELTÉR %d, egyezik %d\n' % (mid, len(elterek), egyezik))
+            continue
+        hibak += len(elterek)
+        kimenet.write('- %s: új formájú; ELTÉR %d, egyezik %d, kézi sor %d\n' % (
+            mid, len(elterek), egyezik, sum(1 for s in ell.sorok if s.itelet == 'kézi')))
+        for s in elterek:
+            kimenet.write('  - **HIBA** %s | %s | „%s” | %s | %s\n' % (
+                mid, s.egyseg.hely, rovid(s.allitas, 120).replace('\n', ' '), s.vers, rovid(s.bizonyitek, 200)))
+    kimenet.write('\n%s\n' % ('E41: nincs ELTÉR-sor az új formájú forrásokon.' if not hibak else
+                              'E41 HIBA: %d ELTÉR-sor; a hely, az állítás, a vers és a bizonyíték fent áll — a '
+                              'forrás javul (vagy az eszköz, teszttel), a gépi ítélet nem írható felül.' % hibak))
+    return hibak
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
-    ap.add_argument('id', help='motívum-azonosító, pl. HAMART-001')
+    ap.add_argument('id', nargs='?', help='motívum-azonosító, pl. HAMART-001 (`--kapu` nélkül kötelező)')
+    ap.add_argument('--kapu', action='store_true', help='E41: minden új formájú forrás; ELTÉR-sorra 1-es kilépőkód')
     ap.add_argument('--forras', help='a kézi forrás útja (alapértelmezés: motivumok/<ID>.md)')
     ap.add_argument('--lektor', help='lektori kérdéslista az összevetéshez (naplok/KIADAS_<ID>_lektor.md szerkezet)')
     ap.add_argument('--kimenet', help='a jelentés útja (alapértelmezés: naplok/ALLITAS_<ID>.md)')
     ap.add_argument('--szigoru', action='store_true', help='1-es kilépőkód, ha van ELTÉR-sor')
     a = ap.parse_args()
+    if a.kapu:
+        return 1 if kapu() else 0
+    if not a.id:
+        ap.error('motívum-azonosító kell (vagy --kapu)')
     ell, adat, szk, n_egyseg = futtat(a.id, a.forras)
     kimenet = a.kimenet or os.path.join(ROOT, 'naplok', 'ALLITAS_%s.md' % a.id)
     scope = 'motivumok/%s.md (rések) + adat/elofordulasok.tsv kapcsolodas (id=%s), %d egység' % (a.id, a.id, n_egyseg)

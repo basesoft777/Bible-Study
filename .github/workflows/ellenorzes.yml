@@ -162,6 +162,22 @@ jobs:
           if [ $K1 -ne 0 ] || [ $K2 -ne 0 ]; then head -c 20000 kovetelmeny_kapu.md; head -c 20000 allitas_adat.md; fi
           if [ $K1 -ne 0 ] || [ $K2 -ne 0 ]; then echo "E38/E39 HIBA (kovetelmeny: $K1, allitas-adat: $K2)"; exit 1; fi
 
+      # F200.7 (N-F200d, DT-F200e; a felhasznalo: "ez menjen most"): a proza-allitas kapu gatlo. Az ELTÉR-sor (gepi iteleet) HIBA
+      # az uj formaju kezi forrasokon (motivumok/<ID>.md); a regi formaju forras kimarad, a kimenet kimondja. A kezi lista
+      # (jelzes) es a "kezi" sorok jelentes marad. A merese es oka: naplok/F200_HIBA_SZINT_MERES.md.
+      - name: E41 Proza-allitas kapu (ELTER = HIBA, F200.7)
+        if: always()
+        run: |
+          set +e
+          python eszkozok/proza_allitas.py --kapu > proza_allitas_kapu.md
+          K1=$?
+          {
+            echo "## Proza-allitas kapu (E41: $K1)"
+            echo ""
+            head -c 400000 proza_allitas_kapu.md
+          } >> "$GITHUB_STEP_SUMMARY"
+          if [ $K1 -ne 0 ]; then head -c 20000 proza_allitas_kapu.md; echo "E41 HIBA"; exit 1; fi
+
       # F37 T3: a szabalyok pozitiv/negativ tesztjei (E2-E29, F37 tanulmany-szabalyok)
       - name: Szabaly-tesztek
         id: tesztek

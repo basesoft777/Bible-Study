@@ -64,6 +64,7 @@ STATIKUS_TESZTEK = [
 STATIKUS_HIVASOK = [
     'eszkozok/ellenorzes/kovetelmeny_kapu.py HAMART-001 --szigoru',
     'eszkozok/ellenorzes/allitas_adat.py --minden --szigoru',
+    'eszkozok/proza_allitas.py --kapu',
     'eszkozok/visszhang/tanu_kinyer.py ellenoriz',
     'eszkozok/szakirodalom_kinyer.py ellenoriz',
     'eszkozok/teszt_feladatok.py',
