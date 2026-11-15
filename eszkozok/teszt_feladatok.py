@@ -816,6 +816,9 @@ from test_feladatok_fugges import MaiAllapotTest, SzabalyTest  # noqa: E402,F401
 from test_feladatok_folytatas import FolytatasTest  # noqa: E402,F401
 # F32: a csomag-ellenőrzés, az OLVAS_HIANY és a `munka` mező tesztjei, ugyanígy
 from test_feladatok_kontextus import KontextusTest  # noqa: E402,F401
+# heti áttekintő: sáv szerinti csoportosítás, hiányzó `sav` mező, teendők, PR-ok, ugyanígy
+from test_heti_attekinto import (SavCsoportositasTest, TeendoTest, KeszAblakTest,  # noqa: E402,F401
+                                 PrTest, OldalTest)
 
 
 if __name__ == '__main__':
