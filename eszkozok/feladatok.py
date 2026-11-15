@@ -68,8 +68,11 @@ SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER')
 SAV_ATMENET_KIVETEL = (217, 218)
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
-           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav')
-LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg', 'motivum_kesz')
+           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav', 'lezar')
+LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg', 'motivum_kesz', 'lezar')
+# F219 (DT-F219a): a `lezar` azoknak az N-tetelnek a listaja, amelyeket a brief teljesit; a merge-kor a
+# `feladatok.yml` gepi lepese (eszkozok/brief_lezaras.py) zarja le oket a NYITOTT_FELADATOK.md-ben.
+LEZAR_AZON = re.compile(r'^N(?:\d+|-F\d+[a-z]*)$')
 KOTELEZO = {
     'feladat': ('feladat', 'cim', 'tipus', 'fazis', 'modell', 'allapot', 'ad', 'kovetkezo'),
     'naplozas': ('feladat', 'cim', 'tipus', 'modell', 'allapot', 'ad', 'kovetkezo'),
@@ -437,6 +440,9 @@ def ellenoriz(briefek, gyoker=REPO):
         elif ('sav' not in fej and tipus in ('feladat', 'naplozas')
                 and fej.get('feladat') not in SAV_ATMENET_KIVETEL):
             hibak.append((b.fajl, 'hiányzó kötelező mező: sav (%s)' % ' | '.join(SAVOK)))
+        for azon in fej.get('lezar', []):
+            if not LEZAR_AZON.match(azon):
+                hibak.append((b.fajl, 'lezar: N-tétel azonosítók (`N12` vagy `N-F219a`), kapott: %r' % azon))
         for uzenet in kontextus_hibak(b):
             hibak.append((b.fajl, uzenet))
         mh = munka_hiany_uzenet(b)
@@ -1577,6 +1583,10 @@ def main(argv=None):
                 print('HIBA\t%s\t%s' % (fajl, uzenet))
             for fajl, uzenet in fig:
                 print('FIGYELEM\t%s\t%s' % (fajl, uzenet))
+            # F219 (B resz): JELENTES, nem HIBA -- a mergelt, de nem lezart brief es a nyitva maradt `lezar:` tetel
+            import brief_lezaras
+            for fajl, uzenet in brief_lezaras.kapu_jelentesek(arg.gyoker):
+                print('JELENTÉS\t%s\t%s' % (fajl, uzenet))
             print('%d brief, %d hiba, %d figyelmeztetés' % (len(briefek), len(hibak), len(fig)))
             return 1 if hibak else 0
         if arg.parancs == 'fuggesek':

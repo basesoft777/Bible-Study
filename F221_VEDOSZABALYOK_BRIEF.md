@@ -5,6 +5,7 @@ kod: VEDOSZABALYOK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: fut
 ad: a hatókör-szűkítés szabálya (kimondni, mi marad ellenőrzés nélkül és mi méri helyette) és a „felhasználó által talált hiba = hibanapló-tétel” szabály a repó szabályhelyein; a hibanapló három új mechanizmussal (M-RÁRAKÓDÁS, M-GAZDÁTLAN, M-VAKFOLT)
 kovetkezo: "Te: a PR átnézése és merge; a BRIEF_SABLON.md szabályszövege a `sav` mezős PR (local_b39fa535) mergelése után kerül be (kész diff: naplok/F221_jelentes.md)"
