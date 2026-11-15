@@ -43,8 +43,8 @@ sorol fel, a két oldalon külön (`oldal` = `hu` vagy `er`): innen olvasható k
 szóalak nincs a csomagban; az eredeti szót a sorszáma és a Strong-száma azonosítja, és a sorszám a STEPBible
 TAHOT/TAGNT szövegéhez illeszthető.
 
-Minden pár gépi javaslat, mért pontossággal (`allapot` = `javaslat`); a `bizonyossag` oszlop jelzi, hol egyezett két
-független modell.
+Minden pár gépi javaslat (`allapot` = `javaslat`), a fent megadott mért pontossággal; a pontosság rétegenként és
+kapcsolattípusonként a `meres.tsv`-ben áll.
 
 ## Kapcsolódó adatkészletek
 

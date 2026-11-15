@@ -1,0 +1,7 @@
+# MANUAL: scope=F175 rétegösszevonás (a #172 két Mózes-rétege egy rétegben; új mérés nincs) | forras=f172/meres_eredmeny.tsv, f172/keret.tsv @ git:433f4588 | ts=git:433f4588 | manual (determinisztikus; előállítás: eszkozok/karoli_strong/reteg_osszevonas.py)
+szakasz	cimke	n	x	p	also95	felso95	megjegyzes
+reteg	OSZ_mozes_osszevont	400	382	0.9502	0.9280	0.9724	rétegzett becslés a két Mózes-réteg pársúlyával (OSZ_mozes_magas 52844 + OSZ_mozes 69690), normál 95%
+hibatipus	OSZ_mozes_osszevont · fölös pár	18	4				a nem helyes párok közül (a két Mózes-réteg összege)
+hibatipus	OSZ_mozes_osszevont · azonos lexéma, más előfordulás	18	0				a nem helyes párok közül (a két Mózes-réteg összege)
+hibatipus	OSZ_mozes_osszevont · szomszédos token	18	10				a nem helyes párok közül (a két Mózes-réteg összege)
+hibatipus	OSZ_mozes_osszevont · rossz szó a versben	18	4				a nem helyes párok közül (a két Mózes-réteg összege)

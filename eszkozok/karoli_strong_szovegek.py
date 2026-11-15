@@ -30,10 +30,6 @@ KODKONYV_SOROK = [
     ('parok', 'kapcsolat', 'szo', 'A pár egy eredeti szóhoz köti a magyar szót.', 'The pair links the Hungarian word to a source word.'),
     ('parok', 'kapcsolat', 'morfema', 'A pár egy héber előtag- vagy ragmorfémához köti (H9001–H9049: névelő, kötőszó, elöljáró, személyrag).',
      'The pair links it to a Hebrew prefix or suffix morpheme (H9001–H9049: article, conjunction, preposition, pronominal suffix).'),
-    ('parok', 'bizonyossag', 'magas', 'Két független nyelvi modell ugyanazt a párt adta (Mózes 1–2. könyve).',
-     'Two independent language models gave the same pair (Genesis and Exodus).'),
-    ('parok', 'bizonyossag', 'alacsony', 'Egy nyelvi modell javaslata, vagy a két modell eltért; a pontosságát a mérés adja meg (meres.tsv).',
-     'Proposal of one language model, or the two models differed; its accuracy is given by the measurement (meres.tsv).'),
     ('parok', 'allapot', 'javaslat', 'Gépi párosítási javaslat, mért pontossággal; nem kézzel ellenőrzött pár.',
      'Machine alignment proposal with measured accuracy; not a manually verified pair.'),
     ('parok', 'nem_tr', 'igen', 'Az eredeti görög szó nem szerepel a Textus Receptusban, amelyet Károli fordított; a Strong-szám a kritikai szöveg alakjáé (l. ISMERT_HIBAK.md).',
@@ -55,14 +51,11 @@ KODKONYV_SOROK = [
     ('szavak', 'partner_token', '', 'A pár(ok) sorszáma a másik oldalon, vesszővel elválasztva.', 'Position(s) of the pair(s) on the other side, comma-separated.'),
     ('szavak', 'strong', '', 'Eredeti szónál a saját Strong-száma; magyar szónál a partnerei Strong-számai „+”-szal fűzve.',
      "For a source word its own Strong number; for a Hungarian word the Strong numbers of its partners joined by \"+\"."),
-    ('szavak', 'bizonyossag', 'magas', 'A két modell ugyanazt a partnerhalmazt (vagy ugyanazt a betoldás/fordítatlan döntést) adta a szóra.',
-     'The two models gave the same partner set (or the same addition / untranslated decision) for the word.'),
-    ('szavak', 'bizonyossag', 'alacsony', 'Egy modell döntése, vagy a két modell eltért.', 'Decision of one model, or the two models differed.'),
     ('versek', 'osis', '', 'A vers OSIS-azonosítója, a Károli-versszámozás szerint.', 'OSIS verse identifier, in Károli versification.'),
     ('versek', 'szoveg_1908', '', 'A vers Károli 1908 szövege, írásjelekkel; a szavak sorszáma ebből számolódik.',
      'The 1908 Károli text of the verse, with punctuation; word positions are counted on it.'),
-    ('meres', 'szakasz', 'reteg', 'Rétegenkénti egyezés a vak ellenőrrel: rétegenként egyszerű véletlen minta.',
-     'Agreement with the blind reviewer per stratum: a simple random sample per stratum.'),
+    ('meres', 'szakasz', 'reteg', 'Rétegenkénti (könyvcsoportonkénti) egyezés a vak ellenőrrel: rétegenként egyszerű véletlen minta; Mózes öt könyvében két részminta, a pársúlyukkal összegezve.',
+     'Agreement with the blind reviewer per stratum (book group): a simple random sample per stratum; in the five books of Moses two subsamples, combined by their pair weight.'),
     ('meres', 'szakasz', 'sulyozott', 'A rétegek pársúlyával súlyozott becslés (ÓSZ, ÚSZ, összes).',
      'Estimate weighted by the pair share of the strata (OT, NT, all).'),
     ('meres', 'szakasz', 'bontas', 'Kapcsolattípus szerinti bontás (tartalmi szó, morféma), leíró.',
@@ -75,12 +68,12 @@ KODKONYV_SOROK = [
      'Agreement of the blind reviewer and of the machine pair with an earlier manually compiled sample.'),
     ('meres', 'szakasz', 'kulso', 'Összevetés egy független, Strong-számos Károli-kiadással, a fő szavak párjain (`_haromutas`: az eltérések háromutas ítélete után).',
      'Comparison with an independent Károli edition carrying Strong numbers, on main-word pairs (`_haromutas`: after the three-way judgement of the differences).'),
-    ('meres', 'cimke', '', 'A sor tárgya: réteg (OSZ_mozes_magas, OSZ_mozes_alacsony, OSZ_tortenet, OSZ_koltoi, OSZ_profeta, USZ_evangelium, USZ_level, USZ_jelenesek), csoport vagy hibatípus (folos_par, szomszedos_token, rossz_szo_a_versben, azonos_lexema_mas_elofordulas).',
-     'Subject of the row: stratum (OSZ_mozes_magas, OSZ_mozes_alacsony, OSZ_tortenet, OSZ_koltoi, OSZ_profeta, USZ_evangelium, USZ_level, USZ_jelenesek), group or error type (folos_par = superfluous pair, szomszedos_token = neighbouring word, rossz_szo_a_versben = wrong word in the verse, azonos_lexema_mas_elofordulas = same lexeme, other occurrence).'),
+    ('meres', 'cimke', '', 'A sor tárgya: réteg (OSZ_mozes: Mózes öt könyve; OSZ_tortenet: történeti könyvek; OSZ_koltoi: költői könyvek; OSZ_profeta: próféták; USZ_evangelium: evangéliumok és Apostolok cselekedetei; USZ_level: levelek; USZ_jelenesek: Jelenések), csoport vagy hibatípus (folos_par, szomszedos_token, rossz_szo_a_versben, azonos_lexema_mas_elofordulas).',
+     'Subject of the row: stratum (OSZ_mozes: the five books of Moses; OSZ_tortenet: historical books; OSZ_koltoi: poetic books; OSZ_profeta: prophets; USZ_evangelium: Gospels and Acts; USZ_level: Epistles; USZ_jelenesek: Revelation), group or error type (folos_par = superfluous pair, szomszedos_token = neighbouring word, rossz_szo_a_versben = wrong word in the verse, azonos_lexema_mas_elofordulas = same lexeme, other occurrence).'),
     ('meres', 'n', '', 'A mért párok száma.', 'Number of pairs measured.'),
     ('meres', 'x', '', 'Az egyező (helyes) párok száma; hibatípusnál az adott típusú eltérések száma.',
      'Number of agreeing (correct) pairs; for an error type, the number of differences of that type.'),
-    ('meres', 'p', '', 'Arány (x / n, súlyozott soroknál a súlyozott becslés).', 'Proportion (x / n; for weighted rows the weighted estimate).'),
+    ('meres', 'p', '', 'Arány (x / n; a súlyozott soroknál és a Mózes-rétegnél a súlyozott becslés).', 'Proportion (x / n; for weighted rows and the Moses stratum the weighted estimate).'),
     ('meres', 'also95', '', 'A 95%-os konfidencia-intervallum alsó széle.', 'Lower bound of the 95% confidence interval.'),
     ('meres', 'felso95', '', 'A 95%-os konfidencia-intervallum felső széle.', 'Upper bound of the 95% confidence interval.'),
     ('meres', 'modszer', 'wilson95', 'Wilson-intervallum.', 'Wilson interval.'),
@@ -136,8 +129,8 @@ sorol fel, a két oldalon külön (`oldal` = `hu` vagy `er`): innen olvasható k
 szóalak nincs a csomagban; az eredeti szót a sorszáma és a Strong-száma azonosítja, és a sorszám a STEPBible
 TAHOT/TAGNT szövegéhez illeszthető.
 
-Minden pár gépi javaslat, mért pontossággal (`allapot` = `javaslat`); a `bizonyossag` oszlop jelzi, hol egyezett két
-független modell.
+Minden pár gépi javaslat (`allapot` = `javaslat`), a fent megadott mért pontossággal; a pontosság rétegenként és
+kapcsolattípusonként a `meres.tsv`-ben áll.
 
 ## Kapcsolódó adatkészletek
 
@@ -189,8 +182,8 @@ table lists every word exactly once, the two sides separately (`oldal` = `hu` or
 Hebrew and Greek word forms are not in the package; a source word is identified by its position and Strong's number,
 and the position matches the STEPBible TAHOT/TAGNT text.
 
-Every pair is a machine proposal with measured accuracy (`allapot` = `javaslat`); the `bizonyossag` column marks where
-two independent models agreed.
+Every pair is a machine proposal (`allapot` = `javaslat`), with the measured accuracy given above; the accuracy per
+stratum and link type is in `meres.tsv`.
 
 ## Related datasets
 
@@ -280,7 +273,7 @@ references:
         given-names: "Tamás"
     doi: "{doi_modern}"
   - type: dataset
-    title: "{lex_en} — open data core"
+    title: "{cim_mag_hu} / {cim_mag_en}"
     authors:
       - family-names: "Demeter"
         given-names: "Tamás"
@@ -328,9 +321,7 @@ javítása a 2. kiadásba kerül, új méréssel (`MODSZER.md` 7.).
 6. **A görög szövegváltozat:** a Károli a Textus Receptust fordította, a párosítás alapja a TAGNT, amely több kiadás
    szövegét tartalmazza. {nem_tr_token} párosított görög szó ({nem_tr} pár) nem szerepel a Textus Receptusban: ott a
    Textus Receptus más alakot olvas, és a pár a kritikai szöveg alakjához kötött. A `nem_tr` oszlop jelöli őket.
-7. **Bizonyosság:** két modell csak Mózes első két könyvét párosította; a többi könyv minden párja egy modell
-   javaslata (`alacsony`). Az `alacsony` jelölés ezért nem hibagyanút, hanem egyetlen forrást jelent.
-8. **A mérés korlátai:** a vak ellenőr maga is nyelvi modell, és egy korábbi, kézzel összeállított mintán nem
+7. **A mérés korlátai:** a vak ellenőr maga is nyelvi modell, és egy korábbi, kézzel összeállított mintán nem
    pontosabb a párosításnál ({kal_ell}% és {kal_gep}%); az egyezés ezért csak akkor alsó becslés, ha a közös hiba
    elhanyagolható. A független összevetés {kulso_fejezet} teljes fejezeten, a fő szavak párjain készült; a fejezetek
    klaszterek, nem véletlen mintaelemek, így az intervallum alulbecsüli a bizonytalanságot.
@@ -372,9 +363,7 @@ into release 2, with a new measurement (`METHODS.md` 7).
 6. **Greek text form:** Károli translated the Textus Receptus, while the alignment uses TAGNT, which covers several
    editions. {nem_tr_token} aligned Greek words ({nem_tr} pairs) are not in the Textus Receptus: there the Textus
    Receptus reads another form, and the pair is linked to the critical-text form. The `nem_tr` column marks them.
-7. **Confidence:** two models aligned only Genesis and Exodus; every pair in the other books is the proposal of one
-   model (`alacsony`). The `alacsony` label therefore means a single source, not a suspected error.
-8. **Limits of the measurement:** the blind reviewer is itself a language model, and on an earlier manually compiled
+7. **Limits of the measurement:** the blind reviewer is itself a language model, and on an earlier manually compiled
    sample it is not more accurate than the alignment ({kal_ell}% and {kal_gep}%); the agreement is a lower bound only
    if shared errors are negligible. The independent comparison covers {kulso_fejezet} full chapters, on main-word
    pairs; the chapters are clusters, not random sample units, so the interval understates the uncertainty.
@@ -394,7 +383,7 @@ Károli Gáspár fordításának 1908-as szövege, szavanként összekapcsolva a
 kapcsolat hordozója a Strong-szám: egy magyar szó Strong-számait az a héber vagy görög szó adja, amelyet fordít. A
 csomag {konyv} könyvet, {vers} verset, {hu_token} magyar és {er_token} eredeti szót, valamint {par} szópárt tartalmaz.
 
-A párosítás nyelvi modellek javaslata, mért pontossággal. Nem kézzel ellenőrzött adat: minden pár „javaslat” állapotú,
+A párosítás nyelvi modell javaslata, mért pontossággal. Nem kézzel ellenőrzött adat: minden pár „javaslat” állapotú,
 és a csomag megadja, mennyire bízhat benne az, aki használja — rétegenként, kapcsolattípusonként, konfidencia-intervallummal
 (5.).
 
@@ -438,12 +427,9 @@ vers teljes. A kapun bukott választ a modell újra elkészítette. Ahol a verse
 válasz végleg nem ment át a kapun, a vers kézi átnézésre vár: minden szava `fuggoben`, pár nélkül ({fuggoben_vers}
 vers).
 
-**A modellek.** Mózes első két könyvét két független modell párosította ugyanazzal a feladatleírással: a Claude Sonnet
-és a Gemini Flash. A két válaszból program állította össze a táblát: ahol a két modell ugyanazt a párt adta, a pár
-`magas` bizonyosságú ({magas} pár); ahol eltértek, az első modell párja került be, `alacsony` bizonyossággal. A többi
-könyvet a költségkeret miatt egy modell, a Claude Sonnet párosította; ezek párjai mind `alacsony`
-({alacsony} pár). A feladatleírás a futás alatt változatlan volt; a táblák a modellek mentett válaszaiból, újabb
-modellhívás nélkül, bájtra azonosan újraépíthetők.
+**A modell.** A szópárosítást nyelvi modell (Claude Sonnet) javasolta, minden könyvben ugyanazzal a feladatleírással.
+A feladatleírás a futás alatt változatlan volt; a táblák a mentett modellválaszokból, újabb modellhívás nélkül, bájtra
+azonosan újraépíthetők.
 
 **Az eredmény.** {hu_parositva} magyar szónak van párja, {hu_betoldas} betoldás; {er_parositva} eredeti szó párosított,
 {er_forditatlan} fordítatlan. A {par} párból {heber_par} héber és {gorog_par} görög; {morfema} egy héber előtag- vagy
@@ -453,16 +439,16 @@ ragmorféma párja.
 
 A pontosságot két, egymást kiegészítő úton mértük.
 
-**Vak ellenőrzés, rétegzett mintán.** A {par} párt nyolc rétegre osztottuk (Mózes két modellel és egy modellel; a
+**Vak ellenőrzés, rétegzett mintán.** A {par} párt könyvcsoportonként {reteg_db} rétegre osztottuk (Mózes öt könyve; a
 történeti, a költői és a prófétai könyvek; az evangéliumok és az Apostolok cselekedetei; a levelek; a Jelenések), és
-rétegenként {reteg_n} párt húztunk véletlenszerűen. Egy harmadik nyelvi modell (Claude Opus) a minta minden céljára a
-vers szövegéből és az eredeti szavakból maga jelölte ki a megfelelő eredeti szavakat, ugyanazokkal a szabályokkal, a gépi
-pár ismerete nélkül. A pár helyes, ha az eredeti szava az ellenőr jelölései között van.
+rétegenként {reteg_n} párt húztunk véletlenszerűen; Mózes öt könyvéből {rn_OSZ_mozes} párt, két részmintában, amelyeket
+a becslés a pársúlyuk szerint összegez. Egy második nyelvi modell (Claude Opus) a minta minden céljára a vers szövegéből
+és az eredeti szavakból maga jelölte ki a megfelelő eredeti szavakat, ugyanazokkal a szabályokkal, a gépi pár ismerete
+nélkül. A pár helyes, ha az eredeti szava az ellenőr jelölései között van.
 
 | réteg | n | helyes | arány | 95% |
 |---|---|---|---|---|
-| Mózes, két modell egyezése | {rn_OSZ_mozes_magas} | {rx_OSZ_mozes_magas} | {r_OSZ_mozes_magas}% | {r_OSZ_mozes_magas_a}–{r_OSZ_mozes_magas_f}% |
-| Mózes, egy modell | {rn_OSZ_mozes_alacsony} | {rx_OSZ_mozes_alacsony} | {r_OSZ_mozes_alacsony}% | {r_OSZ_mozes_alacsony_a}–{r_OSZ_mozes_alacsony_f}% |
+| Mózes öt könyve | {rn_OSZ_mozes} | {rx_OSZ_mozes} | {r_OSZ_mozes}% | {r_OSZ_mozes_a}–{r_OSZ_mozes_f}% |
 | történeti könyvek | {rn_OSZ_tortenet} | {rx_OSZ_tortenet} | {r_OSZ_tortenet}% | {r_OSZ_tortenet_a}–{r_OSZ_tortenet_f}% |
 | költői könyvek | {rn_OSZ_koltoi} | {rx_OSZ_koltoi} | {r_OSZ_koltoi}% | {r_OSZ_koltoi_a}–{r_OSZ_koltoi_f}% |
 | próféták | {rn_OSZ_profeta} | {rx_OSZ_profeta} | {r_OSZ_profeta}% | {r_OSZ_profeta_a}–{r_OSZ_profeta_f}% |
@@ -473,10 +459,9 @@ pár ismerete nélkül. A pár helyes, ha az eredeti szava az ellenőr jelölés
 | **Újszövetség, súlyozott** | {n_usz} | | {p_usz}% | {p_usz_a}–{p_usz_f}% |
 | **összes, súlyozott** | {n_osszes} | | **{p_osszes}%** | {p_osszes_a}–{p_osszes_f}% |
 
-A súlyozott becslés a rétegek pársúlyával számol. Kapcsolattípus szerint: a tartalmi szavak párjai {p_tartalmi}%
-(95%: {p_tartalmi_a}–{p_tartalmi_f}%), a héber morfémák párjai {p_morf}% (95%: {p_morf_a}–{p_morf_f}%). A két modell
-egyezésének rétege {r_OSZ_mozes_magas}%-os, de ebből nem következik, hogy a második modell okozza a különbséget: a két Mózes-réteg
-könyvei nagyrészt eltérnek.
+A súlyozott becslés a rétegek pársúlyával számol; Mózes öt könyvének aránya is ilyen becslés (a két részmintáé), ezért
+nem a helyes párok és az n hányadosa. Kapcsolattípus szerint: a tartalmi szavak párjai {p_tartalmi}%
+(95%: {p_tartalmi_a}–{p_tartalmi_f}%), a héber morfémák párjai {p_morf}% (95%: {p_morf_a}–{p_morf_f}%).
 
 **Kalibráció.** Az ellenőr nem tévedhetetlen. Egy korábbi, kézzel összeállított mintán ({kal_ell_n} mérhető eset) az
 ellenőr {kal_ell}%-ban (95%: {kal_ell_a}–{kal_ell_f}%), a gépi párosítás {kal_gep}%-ban (95%: {kal_gep_a}–{kal_gep_f}%)
@@ -484,8 +469,8 @@ egyezett vele: az ellenőr nem pontosabb a párosításnál. Az eltérések egy 
 csak akkor alsó becslés, ha a közös (gépi és ellenőri) hiba elhanyagolható.
 
 **Független összevetés.** Ezt a közös hibát egy független forrás méri: egy Strong-számokkal jelölt Károli-kiadás,
-amelyet a csomag nem tartalmaz, és amelyből csak az összesített egyezés szerepel itt. Rétegenként egy teljes fejezetet
-vetettünk össze ({kulso_fejezet} fejezet, {k_n} fő szó párja). A forrás szavanként egy fő Strong-számot jelöl, a ragban,
+amelyet a csomag nem tartalmaz, és amelyből csak az összesített egyezés szerepel itt. Rétegenként egy, Mózes öt könyvében két teljes
+fejezetet vetettünk össze ({kulso_fejezet} fejezet, {k_n} fő szó párja). A forrás szavanként egy fő Strong-számot jelöl, a ragban,
 elöljáróban és névelőben álló mellékszót és a morfémát nem; ez a mérés tehát csak a fő szavak párjaira érvényes.
 
 - A forrás ítéletét elfogadva a fő szavak párjainak {k_fs}%-a egyezik (95%: {k_fs_a}–{k_fs_f}%; Ószövetség {ko_fs}%,
@@ -503,8 +488,7 @@ elöljáróban és névelőben álló mellékszót és a morfémát nem; ez a m�
 
 A párosítás nem hibátlan, és nem is ekként közöljük. Szerkesztői döntés alapján nyílt adatként jelenik meg, mert a
 pontossága **mérve és dokumentálva van**: rétegenként és kapcsolattípusonként, konfidencia-intervallummal, a hibák
-típusával és a megerősített hibák listájával (`ISMERT_HIBAK.md`). A „javaslat” állapot és a bizonyosság-jelölés minden
-páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
+típusával és a megerősített hibák listájával (`ISMERT_HIBAK.md`). A „javaslat” állapot minden páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
 kritérium, és utólag felállított küszöb utólagos kritérium volna.
 
 ## 7. A következő kiadás
@@ -514,7 +498,7 @@ szabályellenes eseteit (szabályalapú utófeldolgozással, nem páronkénti fo
 mér: rétegzett minta, vak ellenőr, független külső forrás. A 2. kiadás minőségi célját az 1. kiadás eredményeinek
 ismeretében, előre rögzítettük: a független összevetés fő-szó egyezésének alsó széle legalább 98% (most {k_fs_a}%); a
 vak ellenőrrel mért súlyozott egyezés alsó széle legalább 93% (most {p_osszes_a}%), és egyetlen réteg pontbecslése sem
-90% alatti (most a legkisebb {r_OSZ_mozes_alacsony}%). A cél az 1. kiadásra nem vonatkozik.
+90% alatti (most a legkisebb {r_min}%, {r_min_nev}). A cél az 1. kiadásra nem vonatkozik.
 
 ## 8. Kapcsolódó adatkészlet
 
@@ -533,7 +517,7 @@ link is carried by Strong's numbers: the Strong's numbers of a Hungarian word ar
 translates. The package holds {konyv} books, {vers} verses, {hu_token} Hungarian and {er_token} source words, and {par}
 word pairs.
 
-The alignment is a proposal of language models, with measured accuracy. It is not manually verified data: every pair is
+The alignment is a proposal of a language model, with measured accuracy. It is not manually verified data: every pair is
 in the "proposal" state, and the package states how far it can be trusted — per stratum, per link type, with
 confidence intervals (5).
 
@@ -578,12 +562,9 @@ is complete. An answer failing the gate was redone by the model. Where the verse
 finally failed the gate, the verse awaits manual review: all its words are `fuggoben`, without a pair
 ({fuggoben_vers} verses).
 
-**The models.** Genesis and Exodus were aligned by two independent models with the same task description: Claude
-Sonnet and Gemini Flash. A program built the table from the two answers: where both gave the same pair, the pair has
-`magas` (high) confidence ({magas} pairs); where they differed, the first model's pair was kept with `alacsony` (low)
-confidence. For reasons of cost, the other books were aligned by one model, Claude
-Sonnet; all their pairs are `alacsony` ({alacsony} pairs). The task description did not change during the run; the
-tables can be rebuilt byte-identically from the models' saved answers, without new model calls.
+**The model.** The word alignment was proposed by a language model (Claude Sonnet), with the same task description in
+every book. The task description did not change during the run; the tables can be rebuilt byte-identically from the
+saved model answers, without new model calls.
 
 **Result.** {hu_parositva} Hungarian words have a pair, {hu_betoldas} are additions; {er_parositva} source words are
 aligned, {er_forditatlan} untranslated. Of the {par} pairs, {heber_par} are Hebrew and {gorog_par} Greek; {morfema}
@@ -593,16 +574,16 @@ link a Hebrew prefix or suffix morpheme.
 
 Accuracy was measured in two complementary ways.
 
-**Blind review on a stratified sample.** The {par} pairs were divided into eight strata (Genesis–Deuteronomy with two
-models and with one; the historical, poetic and prophetic books; the Gospels and Acts; the Epistles; Revelation), and
-{reteg_n} pairs were drawn at random per stratum. A third language model (Claude Opus) marked, for each target in the
+**Blind review on a stratified sample.** The {par} pairs were divided by book group into {reteg_db} strata (the five
+books of Moses; the historical, poetic and prophetic books; the Gospels and Acts; the Epistles; Revelation), and
+{reteg_n} pairs were drawn at random per stratum; from the five books of Moses {rn_OSZ_mozes} pairs, in two subsamples
+that the estimate combines by their pair weight. A second language model (Claude Opus) marked, for each target in the
 sample, the matching source words from the verse text and the source words itself, with the same rules, without seeing
 the machine pair. A pair is correct if its source word is among the reviewer's marks.
 
 | stratum | n | correct | rate | 95% |
 |---|---|---|---|---|
-| Moses, two models agreeing | {rn_OSZ_mozes_magas} | {rx_OSZ_mozes_magas} | {r_OSZ_mozes_magas}% | {r_OSZ_mozes_magas_a}–{r_OSZ_mozes_magas_f}% |
-| Moses, one model | {rn_OSZ_mozes_alacsony} | {rx_OSZ_mozes_alacsony} | {r_OSZ_mozes_alacsony}% | {r_OSZ_mozes_alacsony_a}–{r_OSZ_mozes_alacsony_f}% |
+| five books of Moses | {rn_OSZ_mozes} | {rx_OSZ_mozes} | {r_OSZ_mozes}% | {r_OSZ_mozes_a}–{r_OSZ_mozes_f}% |
 | historical books | {rn_OSZ_tortenet} | {rx_OSZ_tortenet} | {r_OSZ_tortenet}% | {r_OSZ_tortenet_a}–{r_OSZ_tortenet_f}% |
 | poetic books | {rn_OSZ_koltoi} | {rx_OSZ_koltoi} | {r_OSZ_koltoi}% | {r_OSZ_koltoi_a}–{r_OSZ_koltoi_f}% |
 | prophets | {rn_OSZ_profeta} | {rx_OSZ_profeta} | {r_OSZ_profeta}% | {r_OSZ_profeta_a}–{r_OSZ_profeta_f}% |
@@ -613,10 +594,9 @@ the machine pair. A pair is correct if its source word is among the reviewer's m
 | **New Testament, weighted** | {n_usz} | | {p_usz}% | {p_usz_a}–{p_usz_f}% |
 | **all, weighted** | {n_osszes} | | **{p_osszes}%** | {p_osszes_a}–{p_osszes_f}% |
 
-The weighted estimate uses the pair share of the strata. By link type: content-word pairs {p_tartalmi}% (95%:
-{p_tartalmi_a}–{p_tartalmi_f}%), Hebrew morpheme pairs {p_morf}% (95%: {p_morf_a}–{p_morf_f}%). The stratum where the
-two models agreed reaches {r_OSZ_mozes_magas}%, but this does not show that the second model causes the difference: the books of the two
-Moses strata largely differ.
+The weighted estimate uses the pair share of the strata; the rate for the five books of Moses is such an estimate too
+(of its two subsamples), so it is not the ratio of correct pairs to n. By link type: content-word pairs {p_tartalmi}%
+(95%: {p_tartalmi_a}–{p_tartalmi_f}%), Hebrew morpheme pairs {p_morf}% (95%: {p_morf_a}–{p_morf_f}%).
 
 **Calibration.** The reviewer is not infallible. On an earlier manually compiled sample ({kal_ell_n} measurable cases)
 the reviewer agreed with it in {kal_ell}% (95%: {kal_ell_a}–{kal_ell_f}%), the machine alignment in {kal_gep}% (95%:
@@ -625,7 +605,7 @@ reviewer's errors, and the agreement is a lower bound only if shared (machine an
 
 **Independent comparison.** Shared errors are measured by an independent source: a Károli edition marked with Strong's
 numbers, which the package does not contain and of which only the aggregate agreement is given here. One full chapter
-per stratum was compared ({kulso_fejezet} chapters, {k_n} main-word pairs). The source marks one main Strong's number
+per stratum, two in the five books of Moses, was compared ({kulso_fejezet} chapters, {k_n} main-word pairs). The source marks one main Strong's number
 per word, not the secondary word in a suffix, preposition or article, nor the morpheme; this measurement applies to
 main-word pairs only.
 
@@ -644,8 +624,7 @@ main-word pairs only.
 
 The alignment is not error-free, and we do not publish it as such. By editorial decision it is released as open data
 because its accuracy is **measured and documented**: per stratum and link type, with confidence intervals, with the
-error types and the list of confirmed errors (`KNOWN_ISSUES.md`). The "proposal" state and the confidence label remain
-on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
+error types and the list of confirmed errors (`KNOWN_ISSUES.md`). The "proposal" state remains on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
 measurement, and a threshold set afterwards would be a post-hoc criterion.
 
 ## 7. The next release
@@ -655,7 +634,7 @@ neighbouring-word cases (by rule-based post-processing, not pair-by-pair patches
 protocol: stratified sample, blind reviewer, independent external source. The quality target for release 2 was fixed
 in advance, in knowledge of the release 1 results: the lower bound of main-word agreement in the independent comparison
 at least 98% (now {k_fs_a}%); the lower bound of the weighted agreement with the blind reviewer at least 93% (now
-{p_osszes_a}%), with no stratum point estimate below 90% (now the lowest is {r_OSZ_mozes_alacsony}%). The target does
+{p_osszes_a}%), with no stratum point estimate below 90% (now the lowest is {r_min}%, {r_min_nev}). The target does
 not apply to release 1.
 
 ## 8. Related dataset
@@ -675,14 +654,13 @@ olyan szabad adatot, amely ezt szavanként, mért pontossággal megmondja. A {le
 párosítását az eredeti szöveggel: a {par} szópár mindegyike megmondja, melyik héber vagy görög szót fordítja az adott
 magyar szó, és mi a Strong-száma.
 
-**Hogyan készült.** A párosítást nyelvi modellek végezték, versenként, egy írott szabálykészlet szerint: mikor betoldás a
+**Hogyan készült.** A párosítást nyelvi modell (Claude Sonnet) végezte, versenként, egy írott szabálykészlet szerint: mikor betoldás a
 magyar névelő, hová tartozik a héber birtokos rag, mit kezdjünk a kettéírt *a mely*-vel. A modell csak azt jelölte,
 melyik szó melyikhez tartozik; Strong-számot nem írt, azt a STEPBible nyílt héber és görög szövege adja. Minden választ
-program ellenőrzött, hogy egy szó se maradjon ki, és egy se álljon kétszer. Mózes első két könyvét két független modell
-párosította; ahol egyeztek, a pár „magas” bizonyosságot kapott.
+program ellenőrzött, hogy egy szó se maradjon ki, és egy se álljon kétszer.
 
 **Mennyire pontos.** A párosítás nem hibátlan, és ezt nem is állítjuk. Azt állítjuk, hogy megmértük, és a mérés minden
-számát közöljük. Nyolc rétegből húzott véletlen mintán egy harmadik, a párokat nem látó modell {p_osszes}%-ban értett
+számát közöljük. Könyvcsoportonként húzott véletlen mintán egy másik, a párokat nem látó modell {p_osszes}%-ban értett
 egyet a párosítással (95%: {p_osszes_a}–{p_osszes_f}%). A fő szavak párjait egy független, Strong-számos
 Károli-kiadással is összevetettük: {k_fs}% egyezett (95%: {k_fs_a}–{k_fs_f}%). A gyengébb pont a héber előtagok és ragok
 párosítása ({p_morf}%), és a megerősített hibákat név szerint felsoroljuk.
@@ -708,14 +686,13 @@ Hungarian word has so far found no free data that answers this word by word, wit
 alignment of the 1908 Károli text with the source text: each of the {par} word pairs states which Hebrew or Greek word
 the Hungarian word translates, and its Strong's number.
 
-**How it was made.** The alignment was done by language models, verse by verse, following a written rule set: when the
+**How it was made.** The alignment was done by a language model (Claude Sonnet), verse by verse, following a written rule set: when the
 Hungarian article is an addition, where a Hebrew possessive suffix belongs, what to do with a split relative pronoun.
 The model only marked which word goes with which; it wrote no Strong's numbers, which come from the open STEPBible
-Hebrew and Greek text. A program checked every answer, so that no word is left out and none appears twice. Genesis and
-Exodus were aligned by two independent models; where they agreed, the pair is marked high confidence.
+Hebrew and Greek text. A program checked every answer, so that no word is left out and none appears twice.
 
 **How accurate.** The alignment is not error-free, and we do not claim it is. We claim that it has been measured, and we
-publish every figure of the measurement. On a random sample drawn from eight strata, a third model that did not see the
+publish every figure of the measurement. On a random sample drawn per book group, another model that did not see the
 pairs agreed with the alignment in {p_osszes}% (95%: {p_osszes_a}–{p_osszes_f}%). Main-word pairs were also compared with
 an independent Károli edition marked with Strong's numbers: {k_fs}% agreed (95%: {k_fs_a}–{k_fs_f}%). The weaker point is
 the alignment of Hebrew prefixes and suffixes ({p_morf}%), and the confirmed errors are listed by name.
@@ -759,9 +736,9 @@ KEZIRAT_HU = """# A Károli-biblia 1908-as szövegének szavankénti párosítá
 ## Kivonat
 
 Az adatkészlet a Károli-biblia 1908-as szövegének {hu_token} szavát és a héber és görög eredeti szöveg {er_token} szavát
-kapcsolja össze {par} szópárral, minden párt az eredeti szó Strong-számával. A párosítást nyelvi modellek végezték egy
+kapcsolja össze {par} szópárral, minden párt az eredeti szó Strong-számával. A párosítást nyelvi modell végezte egy
 írott szabálykészlet szerint; a modell csak sorszámot jelölt, a Strong-szám a STEPBible nyílt TAHOT és TAGNT adataiból
-jön. A pontosságot kétféleképpen mértük: nyolc rétegből húzott véletlen mintán egy vak modell-ellenőrrel (a teljes
+jön. A pontosságot kétféleképpen mértük: {reteg_db} könyvcsoportból húzott véletlen mintán egy vak modell-ellenőrrel (a teljes
 párkészleten {p_osszes}%, 95%: {p_osszes_a}–{p_osszes_f}%), és egy független, Strong-számos Károli-kiadással a fő szavak
 párjain ({k_fs}%, 95%: {k_fs_a}–{k_fs_f}%). Az adatkészlet a mért állapotot adja közre, a megerősített hibák listájával
 és a következő kiadás előre rögzített minőségi céljával. Licenc: CC BY 4.0.
@@ -791,17 +768,17 @@ együtt. A vitás eseteket tizenkét írott szabály döntötte el: a névelőkr
 névmásról, a tárgyjelölőről, a birtokos ragról, a különírt igekötőről, a kitett alanyi névmásról és a segédigéről, a
 héber *ve-* kötőszóról, valamint a Textus Receptusban nem szereplő görög szóról. Minden választ program ellenőrzött
 (minden magyar szó pontosan egyszer, minden eredeti szó legalább egyszer, csak létező sorszám); a bukott választ a modell
-újra elkészítette. Mózes első két könyvét két független modell (Claude Sonnet és Gemini Flash) párosította: ahol
-egyeztek, a pár `magas` bizonyosságú ({magas} pár). A többi könyvet a költségkeret miatt egy modell (Claude Sonnet)
-párosította (`alacsony`, {alacsony} pár). A táblák a mentett modellválaszokból bájtra azonosan újraépíthetők.
+újra elkészítette. A párokat nyelvi modell (Claude Sonnet) javasolta; a táblák a mentett modellválaszokból bájtra
+azonosan újraépíthetők.
 
-**Pontosságmérés.** (1) *Vak ellenőrzés.* A párkészletet nyolc rétegre osztottuk (Mózes két modellel és egy modellel;
-történeti, költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként {reteg_n} véletlen
-párral. Egy harmadik modell (Claude Opus) a cél magyar szóhoz maga jelölte ki az eredeti szavakat, ugyanazokkal a
+**Pontosságmérés.** (1) *Vak ellenőrzés.* A párkészletet könyvcsoportonként {reteg_db} rétegre osztottuk (Mózes öt
+könyve; történeti, költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként {reteg_n}
+véletlen párral (Mózes öt könyvéből {rn_OSZ_mozes} párral, két részmintában, pársúllyal összegezve). Egy második modell
+(Claude Opus) a cél magyar szóhoz maga jelölte ki az eredeti szavakat, ugyanazokkal a
 szabályokkal, a gépi pár ismerete nélkül. (2) *Kalibráció.* Egy korábbi, kézzel összeállított mintán az ellenőr
 {kal_ell}%-ban, a gépi párosítás {kal_gep}%-ban egyezett a mintával: az ellenőr nem pontosabb a párosításnál, ezért az
 egyezés csak akkor alsó becslés, ha a közös hiba elhanyagolható. (3) *Független összevetés.* Ezt a közös hibát egy
-Strong-számokkal jelölt Károli-kiadás méri, rétegenként egy teljes fejezeten ({kulso_fejezet} fejezet, {k_n} fő szó
+Strong-számokkal jelölt Károli-kiadás méri, rétegenként egy, Mózes öt könyvében két teljes fejezeten ({kulso_fejezet} fejezet, {k_n} fő szó
 párja); a forrás csak a fő szót jelöli, a mellékszót és a morfémát nem. Az eltéréseket háromutasan (gépi pár, forrás,
 vak ellenőr) ítéltük meg. A külső forrás adata nem része az adatkészletnek, csak az összesített arány.
 
@@ -815,8 +792,7 @@ vak ellenőr) ítéltük meg. A külső forrás adata nem része az adatkészlet
 | fő szavak, a független forrás szerint | {k_fs}% | {k_fs_a}–{k_fs_f}% |
 | fő szavak, háromutas ítélet után | {k_h3}% | {k_h3_a}–{k_h3_f}% |
 
-A rétegek egyezése {r_OSZ_mozes_alacsony}% (Mózes, egy modell) és {r_OSZ_mozes_magas}% (Mózes, két modell egyezése)
-között mozog; a rétegenkénti táblát az adatkészlet `meres.tsv` fájlja és módszertani leírása közli. A {minta} mintapárból
+A rétegek egyezése {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog; a rétegenkénti táblát az adatkészlet `meres.tsv` fájlja és módszertani leírása közli. A {minta} mintapárból
 {elteres} tért el az ellenőrtől; a leggyakoribb típus a szomszédos szó ({h_szomszedos_token}), jellemzően egy héber
 előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellenére. A független összevetés {k_elter} eltéréséből
 {k_mi} maradt a párosítás hibája; ezeket és a többi megerősített hibát az adatkészlet név szerint felsorolja.
@@ -827,7 +803,7 @@ előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellené
 adatállapot: {adatallapot}.
 
 **Fájlok.** `parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
-sorszáma, Strong-szám, kapcsolattípus, bizonyosság, állapot, Textus Receptus-jelölés); `szavak/` (könyvenként minden
+sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `szavak/` (könyvenként minden
 magyar és eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `versek.tsv` (a Károli 1908
 szövege); `meres.tsv` (a mérés minden száma); kétnyelvű kódkönyv, módszertani leírás, ismert hibák, ellenőrző összeg. A
 kulcs az OSIS-versazonosító és a szó sorszáma. A héber és görög szóalak nincs a csomagban: a sorszám a STEPBible
@@ -849,8 +825,7 @@ szóillesztő programok értékeléséhez is használhatók. Ugyanezek a párok 
 ## 6. Korlátok és a következő kiadás
 
 A párosítás gépi javaslat. A vak ellenőr maga is modell; a független összevetés csak a fő szavakat méri, és kis
-klaszter-mintán; a héber morfémák párjainak ({morfema} pár) pontossága ({p_morf}%) csak a vak ellenőrrel mért. Mózes két
-könyvén kívül minden pár egy modell javaslata. A Károli a Textus Receptust fordította, a párosítás alapja a TAGNT:
+klaszter-mintán; a héber morfémák párjainak ({morfema} pár) pontossága ({p_morf}%) csak a vak ellenőrrel mért. A Károli a Textus Receptust fordította, a párosítás alapja a TAGNT:
 {nem_tr_token} párosított görög szó nem szerepel a Textus Receptusban, és jelölve van.
 
 A közlés szerkesztői döntés: a párosítás azért jelenik meg nyílt adatként, mert a pontossága mérve és dokumentálva
@@ -861,8 +836,8 @@ a vak ellenőrrel mért súlyozott egyezés alsó széle legalább 93%, és egye
 
 ## Nyilatkozat a mesterséges intelligencia használatáról
 
-A párosítást nyelvi modellek (Claude Sonnet, Gemini Flash), a vak ellenőrzést egy harmadik modell (Claude Opus) végezte,
-a fent leírt módon; a modellek Strong-számot nem írtak. A szavakra bontás, a gépi kapu, a táblák összeállítása és a
+A párosítást nyelvi modell (Claude Sonnet), a vak ellenőrzést egy második modell (Claude Opus) végezte, a fent leírt
+módon; a modellek Strong-számot nem írtak. A szavakra bontás, a gépi kapu, a táblák összeállítása és a
 statisztika determinisztikus program. A kézirat szövegét a claude-opus-5-5 modell fogalmazta az adatkészlet adataiból;
 a számok az adatokból generáltak. MI-eszköz nem szerző; az adatokért és a szövegért a szerző felel.
 
@@ -895,9 +870,9 @@ KEZIRAT_EN = """# Word-by-word alignment of the 1908 Károli Bible with the Hebr
 
 The dataset links the {hu_token} words of the 1908 text of the Károli Bible, the classic Hungarian translation, to the
 {er_token} words of the Hebrew and Greek source text through {par} word pairs, each carrying the Strong's number of the
-source word. The alignment was produced by language models following a written rule set; the model marked positions
+source word. The alignment was produced by a language model following a written rule set; the model marked positions
 only, and the Strong's number comes from the open STEPBible TAHOT and TAGNT data. Accuracy was measured in two ways: with
-a blind model reviewer on a random sample drawn from eight strata ({p_osszes}% on the full pair set, 95%:
+a blind model reviewer on a random sample drawn from {reteg_db} book groups ({p_osszes}% on the full pair set, 95%:
 {p_osszes_a}–{p_osszes_f}%), and against an independent Károli edition marked with Strong's numbers, on main-word pairs
 ({k_fs}%, 95%: {k_fs_a}–{k_fs_f}%). The dataset publishes the measured state, with a list of confirmed errors and a
 quality target for the next release fixed in advance. Licence: CC BY 4.0.
@@ -926,19 +901,18 @@ number and English gloss) and returned pairs of positions, together with additio
 cases were decided by twelve written rules: on articles, split conjunctions and relative pronouns, the object marker,
 possessive suffixes, separated verbal prefixes, explicit subject pronouns and auxiliaries, the Hebrew conjunction *ve-*,
 and Greek words absent from the Textus Receptus. A program checked every answer (each Hungarian word exactly once, each
-source word at least once, only existing positions); a failed answer was redone by the model. Genesis and Exodus were
-aligned by two independent models (Claude Sonnet and Gemini Flash): where they agreed, the pair has `magas` (high)
-confidence ({magas} pairs). For reasons of cost, the other books were aligned by one model, Claude Sonnet (`alacsony`,
-{alacsony} pairs). The tables can be rebuilt byte-identically from the saved model answers.
+source word at least once, only existing positions); a failed answer was redone by the model. The pairs were proposed by
+a language model (Claude Sonnet); the tables can be rebuilt byte-identically from the saved model answers.
 
-**Accuracy measurement.** (1) *Blind review.* The pair set was divided into eight strata (Genesis–Deuteronomy with two
-models and with one; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with {reteg_n}
-random pairs per stratum. A third model (Claude Opus) marked the source words for each target Hungarian word itself,
+**Accuracy measurement.** (1) *Blind review.* The pair set was divided by book group into {reteg_db} strata (the five
+books of Moses; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with {reteg_n} random
+pairs per stratum ({rn_OSZ_mozes} pairs from the five books of Moses, in two subsamples combined by pair weight). A
+second model (Claude Opus) marked the source words for each target Hungarian word itself,
 with the same rules, without seeing the machine pair. (2) *Calibration.* On an earlier manually compiled sample, the
 reviewer agreed with the sample in {kal_ell}% and the machine alignment in {kal_gep}%: the reviewer is not more accurate
 than the alignment, so the agreement is a lower bound only if shared errors are negligible. (3) *Independent
 comparison.* Shared errors are measured against a Károli edition marked with Strong's numbers, on one full chapter per
-stratum ({kulso_fejezet} chapters, {k_n} main-word pairs); the source marks the main word only, not secondary words or
+stratum, two in the five books of Moses ({kulso_fejezet} chapters, {k_n} main-word pairs); the source marks the main word only, not secondary words or
 morphemes. Differences were judged three ways (machine pair, source, blind reviewer). The external source's data are not
 part of the dataset, only the aggregate rate.
 
@@ -952,8 +926,7 @@ part of the dataset, only the aggregate rate.
 | main words, by the independent source | {k_fs}% | {k_fs_a}–{k_fs_f}% |
 | main words, after three-way judgement | {k_h3}% | {k_h3_a}–{k_h3_f}% |
 
-Agreement per stratum ranges from {r_OSZ_mozes_alacsony}% (Moses, one model) to {r_OSZ_mozes_magas}% (Moses, two
-models agreeing); the per-stratum table is in the dataset's `meres.tsv` and its methods description. Of the {minta}
+Agreement per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}); the per-stratum table is in the dataset's `meres.tsv` and its methods description. Of the {minta}
 sample pairs, {elteres} differed from the reviewer; the most frequent type is the neighbouring word
 ({h_szomszedos_token}), typically a Hebrew prefix, article or preposition attached to the word against the rules. Of the
 {k_elter} differences in the independent comparison, {k_mi} remained errors of the alignment; these and the other
@@ -965,7 +938,7 @@ confirmed errors are listed by name in the dataset.
 (documentation); data state: {adatallapot}.
 
 **Files.** `parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the source
-word, Strong's number, link type, confidence, state, Textus Receptus flag); `szavak/` (per book, every Hungarian and
+word, Strong's number, link type, state, Textus Receptus flag); `szavak/` (per book, every Hungarian and
 source word once, with its state: aligned, addition, untranslated, pending); `versek.tsv` (the 1908 Károli text);
 `meres.tsv` (every figure of the measurement); bilingual codebook, methods description, known issues, checksum. The key
 is the OSIS verse identifier and the word position. Hebrew and Greek word forms are not in the package: the position
@@ -988,7 +961,7 @@ and error types can also serve to evaluate word aligners. The same pairs also ap
 
 The alignment is a machine proposal. The blind reviewer is itself a model; the independent comparison covers main words
 only, on a small cluster sample; the accuracy of the Hebrew morpheme pairs ({morfema} pairs; {p_morf}%) is measured by
-the blind reviewer only. Outside Genesis and Exodus every pair is one model's proposal. Károli translated the Textus
+the blind reviewer only. Károli translated the Textus
 Receptus, while the alignment uses TAGNT: {nem_tr_token} aligned Greek words are not in the Textus Receptus, and are
 flagged.
 
@@ -1000,8 +973,8 @@ agreement at least 98%, lower bound of weighted agreement with the blind reviewe
 
 ## AI declaration
 
-The alignment was done by language models (Claude Sonnet, Gemini Flash) and the blind review by a third model (Claude
-Opus), as described above; the models wrote no Strong's numbers. Tokenisation, the machine gate, table assembly and the
+The alignment was done by a language model (Claude Sonnet) and the blind review by a second model (Claude Opus), as
+described above; the models wrote no Strong's numbers. Tokenisation, the machine gate, table assembly and the
 statistics are deterministic programs. The text of the manuscript was drafted by the claude-opus-5-5 model from the
 dataset's data; the figures are generated from the data. An AI tool is not an author; the author is responsible for the
 data and the text.

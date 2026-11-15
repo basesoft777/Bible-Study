@@ -739,9 +739,29 @@ def _f_karoli_alakok(K):
     return (ossz, magas, top) if ossz else None
 
 
+# A két modell egyezése (a `bizonyossag` mező) nem minősítés; a minősítés a mért pontosság (felhasználói döntés, 2026-11-14).
+# A szám egyetlen forrása a `konfig/karoli_pontossag.toml` (proveniencia-sorral; a #172 mérőtáblájából).
+def _karoli_pontossag_betolt(nev='karoli_pontossag.toml'):
+    import tomllib
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'konfig', nev), 'rb') as f:
+        m = tomllib.load(f)['parositas']
+    for k in ('p', 'ci_also', 'ci_felso', 'minta', 'datum', 'leiras', 'proveniencia'):
+        if k not in m:
+            raise ValueError('konfig/%s: hiányzó mező: %s' % (nev, k))
+    return m
+
+
+KAROLI_PONTOSSAG = _karoli_pontossag_betolt()
+KAROLI_MERT_PONTOSSAG = 'A párosítás mért pontossága %d%%.' % round(100 * KAROLI_PONTOSSAG['p'])
+
+
 def _r_karoli_alakok(d, K):
-    ossz, magas, top = d
-    ki = Markup('<p>%d Károli-előfordulás, ebből %d magas bizonyosságú.</p>') % (ossz, magas)
+    ossz, _, top = d
+    p = KAROLI_PONTOSSAG
+    ki = Markup('<p>%d Károli-előfordulás. <span title="%s: %s (95%%-os konfidencia-intervallum: '
+                '%s–%s%%); proveniencia: %s">%s</span></p>') % (
+        ossz, p['leiras'], ('%.2f%%' % (100 * p['p'])).replace('.', ','), ('%.2f' % (100 * p['ci_also'])).replace('.', ','),
+        ('%.2f' % (100 * p['ci_felso'])).replace('.', ','), p['proveniencia'], KAROLI_MERT_PONTOSSAG)
     ki += _tabla(['Károli-alak', 'Darab'], [[a, str(n)] for a, n in top])
     kv = K.kozos.karoli_strong_konyvek
     # DT-F149a: a „a többi könyv még hiányzik” tagmondat csak akkor igaz, ha van párosítás nélküli könyv (az F22 óta mind a 66 párosított)
@@ -2177,7 +2197,7 @@ REGISZTER = [
     B('szo.elofordulas', 'szo_h', 'Előfordulás, könyvek száma', 'gepi', ('token_strong',), _f_elofordulas, _r_elofordulas),
     B('szo.ebben', 'szo_h', 'Ebben a versben', ('forras', 'gepi', 'modell'), ('token_par', 'token_eredeti', 'token_macula', 'lxx_token', 'ubs_dbh_referenciak', 'ubs_dbh_jelentesek', 'morf_kulcs_heber', 'morf_nyelv_aramai', 'glosszak_heber_hu', 'strong_szotar', 'forditasok'), _f_ebben, _r_ebben, vers_kell=True,
       kovet=('vers.ubs', 'vers.heber_csempe', 'vers.par')),     # az UBS DBH-, a héber csempe- és a párosítás-adat blokkjainak láthatóságát követi
-    B('szo.karoli_alakok', 'szo_h', 'Károli-alakok és bizonyosság', 'modell', ('token_par',), _f_karoli_alakok, _r_karoli_alakok),
+    B('szo.karoli_alakok', 'szo_h', 'Károli-alakok és pontosság', 'modell', ('token_par',), _f_karoli_alakok, _r_karoli_alakok),
     # F104: a vers szerinti jelölés táblái is a forrássorban (a vers -> jelentés tábla; a TAHOT-jelenlét és a Macula-morfológia, DT-F104a)
     # F213: a szókártya; a tagolás a javított szakasztáblából, a forrás egyszer, a blokk alján (a regiszter forrássora)
     B('szo.bdb_apparatus', 'szo_h', 'Szótár: BDB-szócikk (Brown–Driver–Briggs)', ('forras', 'modell', 'gepi'),

@@ -6,9 +6,9 @@
 ## Kivonat
 
 Az adatkészlet a Károli-biblia 1908-as szövegének 599 367 szavát és a héber és görög eredeti szöveg 611 396 szavát
-kapcsolja össze 598 715 szópárral, minden párt az eredeti szó Strong-számával. A párosítást nyelvi modellek végezték egy
+kapcsolja össze 598 715 szópárral, minden párt az eredeti szó Strong-számával. A párosítást nyelvi modell végezte egy
 írott szabálykészlet szerint; a modell csak sorszámot jelölt, a Strong-szám a STEPBible nyílt TAHOT és TAGNT adataiból
-jön. A pontosságot kétféleképpen mértük: nyolc rétegből húzott véletlen mintán egy vak modell-ellenőrrel (a teljes
+jön. A pontosságot kétféleképpen mértük: 7 könyvcsoportból húzott véletlen mintán egy vak modell-ellenőrrel (a teljes
 párkészleten 95,06%, 95%: 93,81–96,32%), és egy független, Strong-számos Károli-kiadással a fő szavak
 párjain (98,72%, 95%: 98,22–99,08%). Az adatkészlet a mért állapotot adja közre, a megerősített hibák listájával
 és a következő kiadás előre rögzített minőségi céljával. Licenc: CC BY 4.0.
@@ -38,17 +38,17 @@ együtt. A vitás eseteket tizenkét írott szabály döntötte el: a névelőkr
 névmásról, a tárgyjelölőről, a birtokos ragról, a különírt igekötőről, a kitett alanyi névmásról és a segédigéről, a
 héber *ve-* kötőszóról, valamint a Textus Receptusban nem szereplő görög szóról. Minden választ program ellenőrzött
 (minden magyar szó pontosan egyszer, minden eredeti szó legalább egyszer, csak létező sorszám); a bukott választ a modell
-újra elkészítette. Mózes első két könyvét két független modell (Claude Sonnet és Gemini Flash) párosította: ahol
-egyeztek, a pár `magas` bizonyosságú (52 844 pár). A többi könyvet a költségkeret miatt egy modell (Claude Sonnet)
-párosította (`alacsony`, 545 871 pár). A táblák a mentett modellválaszokból bájtra azonosan újraépíthetők.
+újra elkészítette. A párokat nyelvi modell (Claude Sonnet) javasolta; a táblák a mentett modellválaszokból bájtra
+azonosan újraépíthetők.
 
-**Pontosságmérés.** (1) *Vak ellenőrzés.* A párkészletet nyolc rétegre osztottuk (Mózes két modellel és egy modellel;
-történeti, költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként 200 véletlen
-párral. Egy harmadik modell (Claude Opus) a cél magyar szóhoz maga jelölte ki az eredeti szavakat, ugyanazokkal a
+**Pontosságmérés.** (1) *Vak ellenőrzés.* A párkészletet könyvcsoportonként 7 rétegre osztottuk (Mózes öt
+könyve; történeti, költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként 200
+véletlen párral (Mózes öt könyvéből 400 párral, két részmintában, pársúllyal összegezve). Egy második modell
+(Claude Opus) a cél magyar szóhoz maga jelölte ki az eredeti szavakat, ugyanazokkal a
 szabályokkal, a gépi pár ismerete nélkül. (2) *Kalibráció.* Egy korábbi, kézzel összeállított mintán az ellenőr
 96,79%-ban, a gépi párosítás 97,06%-ban egyezett a mintával: az ellenőr nem pontosabb a párosításnál, ezért az
 egyezés csak akkor alsó becslés, ha a közös hiba elhanyagolható. (3) *Független összevetés.* Ezt a közös hibát egy
-Strong-számokkal jelölt Károli-kiadás méri, rétegenként egy teljes fejezeten (8 fejezet, 2 663 fő szó
+Strong-számokkal jelölt Károli-kiadás méri, rétegenként egy, Mózes öt könyvében két teljes fejezeten (8 fejezet, 2 663 fő szó
 párja); a forrás csak a fő szót jelöli, a mellékszót és a morfémát nem. Az eltéréseket háromutasan (gépi pár, forrás,
 vak ellenőr) ítéltük meg. A külső forrás adata nem része az adatkészletnek, csak az összesített arány.
 
@@ -62,8 +62,7 @@ vak ellenőr) ítéltük meg. A külső forrás adata nem része az adatkészlet
 | fő szavak, a független forrás szerint | 98,72% | 98,22–99,08% |
 | fő szavak, háromutas ítélet után | 99,81% | 99,56–99,92% |
 
-A rétegek egyezése 92,00% (Mózes, egy modell) és 99,00% (Mózes, két modell egyezése)
-között mozog; a rétegenkénti táblát az adatkészlet `meres.tsv` fájlja és módszertani leírása közli. Az 1 600 mintapárból
+A rétegek egyezése 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog; a rétegenkénti táblát az adatkészlet `meres.tsv` fájlja és módszertani leírása közli. Az 1 600 mintapárból
 72 tért el az ellenőrtől; a leggyakoribb típus a szomszédos szó (37), jellemzően egy héber
 előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellenére. A független összevetés 34 eltéréséből
 5 maradt a párosítás hibája; ezeket és a többi megerősített hibát az adatkészlet név szerint felsorolja.
@@ -74,7 +73,7 @@ előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellené
 adatállapot: 2026-11-01.
 
 **Fájlok.** `parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
-sorszáma, Strong-szám, kapcsolattípus, bizonyosság, állapot, Textus Receptus-jelölés); `szavak/` (könyvenként minden
+sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `szavak/` (könyvenként minden
 magyar és eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `versek.tsv` (a Károli 1908
 szövege); `meres.tsv` (a mérés minden száma); kétnyelvű kódkönyv, módszertani leírás, ismert hibák, ellenőrző összeg. A
 kulcs az OSIS-versazonosító és a szó sorszáma. A héber és görög szóalak nincs a csomagban: a sorszám a STEPBible
@@ -96,8 +95,7 @@ szóillesztő programok értékeléséhez is használhatók. Ugyanezek a párok 
 ## 6. Korlátok és a következő kiadás
 
 A párosítás gépi javaslat. A vak ellenőr maga is modell; a független összevetés csak a fő szavakat méri, és kis
-klaszter-mintán; a héber morfémák párjainak (157 163 pár) pontossága (90,74%) csak a vak ellenőrrel mért. Mózes két
-könyvén kívül minden pár egy modell javaslata. A Károli a Textus Receptust fordította, a párosítás alapja a TAGNT:
+klaszter-mintán; a héber morfémák párjainak (157 163 pár) pontossága (90,74%) csak a vak ellenőrrel mért. A Károli a Textus Receptust fordította, a párosítás alapja a TAGNT:
 369 párosított görög szó nem szerepel a Textus Receptusban, és jelölve van.
 
 A közlés szerkesztői döntés: a párosítás azért jelenik meg nyílt adatként, mert a pontossága mérve és dokumentálva
@@ -108,8 +106,8 @@ a vak ellenőrrel mért súlyozott egyezés alsó széle legalább 93%, és egye
 
 ## Nyilatkozat a mesterséges intelligencia használatáról
 
-A párosítást nyelvi modellek (Claude Sonnet, Gemini Flash), a vak ellenőrzést egy harmadik modell (Claude Opus) végezte,
-a fent leírt módon; a modellek Strong-számot nem írtak. A szavakra bontás, a gépi kapu, a táblák összeállítása és a
+A párosítást nyelvi modell (Claude Sonnet), a vak ellenőrzést egy második modell (Claude Opus) végezte, a fent leírt
+módon; a modellek Strong-számot nem írtak. A szavakra bontás, a gépi kapu, a táblák összeállítása és a
 statisztika determinisztikus program. A kézirat szövegét a claude-opus-5-5 modell fogalmazta az adatkészlet adataiból;
 a számok az adatokból generáltak. MI-eszköz nem szerző; az adatokért és a szövegért a szerző felel.
 

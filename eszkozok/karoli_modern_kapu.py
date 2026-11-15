@@ -15,7 +15,9 @@ A brief 2. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
     UJRA        (d) az export újrafuttatva bájtazonos a lemezen állóval                                    — BUKÁS
     NYILVANOS   (e) nyilvános szövegben nincs belső jelölés (DT/N/F-szám, belső útvonal, proveniencia-kulcs,
                 `manual`), „orkesztrátor”, „felhasználó…”, „termék”, GitHub, helyőrző; a „PaRDeS” nem áll benne
-                (így nem is központi keretezés)                                                           — BUKÁS
+                (így nem is központi keretezés); nincs modell-egyezés mint minősítés                     — BUKÁS
+    NEVELO      a magyar szövegekben a szám előtti névelő a kiejtés szerinti, és nincs „a(z)” alak (N-F175b)
+                                                                                                          — BUKÁS
     KOZLEMENY   a `kozlemeny/` hu/en tervezete megvan, nincs az ellenőrző összegben, a `.gitattributes`
                 kihagyja a kiadásból (export-ignore)                                                       — BUKÁS
     OSSZEG      az `ELLENORZO_OSSZEG.sha256` minden kiadott fájlt helyes összeggel listáz; a `KIADAS.txt`
@@ -45,6 +47,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import karoli_modern_export as E  # noqa: E402
+import karoli_strong_kapu as SK  # noqa: E402  (közös szövegszabály: a modell-egyezés tiltása)
+from nevelo import nevelo_hibak  # noqa: E402  (közös névelő-szabály, N-F175b)
 
 GYOKER = E.GYOKER
 BUKAS, FIGYELEM, OK = 'BUKÁS', 'FIGYELEM', 'OK'
@@ -78,6 +82,9 @@ TILTOTT = [
     (re.compile(r'HELYŐRZŐ|<[A-Z_]+_URL>|\[A LEXIKON CÍME\]'), 'helyőrző'),
     (re.compile(r'\bgerinc', re.I), 'belső fogalom (gerinc)'),
 ]
+TILTOTT += SK.MODELL_EGYEZES     # a modell-egyezés nem minősítés (2026-11-14)
+MAGYAR = ('OLVASSEL.md', 'MODSZER.md', 'ISMERT_HIBAK.md', 'ATTRIBUCIO.md', 'LICENSE', 'KODKONYV.md', 'kodkonyv.tsv',
+          'kozlemeny/kozlemeny_hu.md')
 KIHAGYOTT = ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt')
 
 
@@ -232,6 +239,17 @@ def nyilvanos(fajlok):
     return ki or [Talalat('NYILVANOS', OK, 'nincs belső jelölés a nyilvános szövegben')]
 
 
+def nevelo(fajlok):
+    """A magyar szövegekben (és minden TSV magyar megjegyzéssorában) a szám előtti névelő a kiejtés szerinti, és
+    nincs el nem döntött „a(z)” alak (N-F175b)."""
+    ki = []
+    for rel, sz in sorted(fajlok.items()):
+        if rel in MAGYAR or rel.endswith('.tsv'):
+            for h in nevelo_hibak(nyilvanos_szoveg(rel, sz)):
+                ki.append(Talalat('NEVELO', BUKAS, '%s: %r' % (rel, h)))
+    return ki or [Talalat('NEVELO', OK, 'a számok előtti névelő a kiejtés szerinti')]
+
+
 def kozlemeny(fajlok):
     ki = []
     for n in ('kozlemeny_hu.md', 'kozlemeny_en.md'):
@@ -286,7 +304,8 @@ def valtozatlan():
 
 
 def mer(fajlok, ujra_is=True, git_is=True):
-    t = teljesseg(fajlok) + licenc(fajlok) + harmadik(fajlok) + nyilvanos(fajlok) + kozlemeny(fajlok) + osszeg(fajlok)
+    t = (teljesseg(fajlok) + licenc(fajlok) + harmadik(fajlok) + nyilvanos(fajlok) + nevelo(fajlok) + kozlemeny(fajlok)
+         + osszeg(fajlok))
     if ujra_is:
         t += ujra(fajlok)
     if git_is:

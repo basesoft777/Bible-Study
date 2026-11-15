@@ -246,7 +246,7 @@ class TestPilotAranymintaval(unittest.TestCase):
                   ('Tulajdonnevek (TIPNR)', 'Tulajdonnevek (TIPNR)'), ('Motívumadat (adatréteg)', 'Motívumadat (adatréteg)'),
                   ('Igehely-kapcsolatok (adatréteg)', 'Igehely-kapcsolatok (adatréteg)'), ('LXX-fordítói döntések (adatréteg)', 'LXX-fordítói döntések (adatréteg)'),
                   ('LXX versszintű együttelőfordulás', 'LXX versszintű együttelőfordulás'))
-    HEBER_SZO_CIMEK = (('Ebben a versben', 'Ebben a versben'), ('Így fordítja Károli', 'Károli-alakok és bizonyosság'), ('Görög megfelelő a Septuagintában', 'Görög megfelelő'),
+    HEBER_SZO_CIMEK = (('Ebben a versben', 'Ebben a versben'), ('Így fordítja Károli', 'Károli-alakok és pontosság'), ('Görög megfelelő a Septuagintában', 'Görög megfelelő'),
                        ('Szemantikai domén (SDBH)', 'Szemantikai domén (SDBH)'), ('SECE-szócikk (héber)', 'SECE-szócikk (héber)'),
                        ('TWOT- és BDB-azonosító (OSHL)', 'OSHL: TWOT- és BDB-azonosító'), ('Bővített Strong-szócikk (TBESH)', 'Bővített Strong-szócikk (TBESH)'),
                        ('translationWords (tW)', 'translationWords'))
@@ -292,7 +292,8 @@ class TestPilotAranymintaval(unittest.TestCase):
                 pilot = re.sub(r'_(\d+)', r' \1 ', blokkok._sor_kulcs_nelkul(l['bdb_hu']))
                 self.assertIn(latin(szoveg(pilot))[:30], latin(t), strong)
                 self.assertIn('%d előfordulás, %d könyvben' % (l['elofordulas'], l['konyvek_szama']), t, strong)
-                self.assertIn('%d Károli-előfordulás, ebből %d magas' % (l['karoli_osszes'], l['karoli_magas']), t, strong)
+                # a modell-egyezés nem minősítés (2026-11-14): a pilot darabszáma marad, a modell-egyezés helyén a mért pontosság
+                self.assertIn('%d Károli-előfordulás. %s' % (l['karoli_osszes'], blokkok.KAROLI_MERT_PONTOSSAG), t, strong)
 
     def test_karoli_strong_konyvek_jelzese_a_szo_lapon(self):
         t = szoveg(self.szo_panel('H6440'))

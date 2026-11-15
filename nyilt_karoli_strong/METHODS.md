@@ -9,7 +9,7 @@ link is carried by Strong's numbers: the Strong's numbers of a Hungarian word ar
 translates. The package holds 66 books, 31,158 verses, 599,367 Hungarian and 611,396 source words, and 598,715
 word pairs.
 
-The alignment is a proposal of language models, with measured accuracy. It is not manually verified data: every pair is
+The alignment is a proposal of a language model, with measured accuracy. It is not manually verified data: every pair is
 in the "proposal" state, and the package states how far it can be trusted — per stratum, per link type, with
 confidence intervals (5).
 
@@ -54,12 +54,9 @@ is complete. An answer failing the gate was redone by the model. Where the verse
 finally failed the gate, the verse awaits manual review: all its words are `fuggoben`, without a pair
 (45 verses).
 
-**The models.** Genesis and Exodus were aligned by two independent models with the same task description: Claude
-Sonnet and Gemini Flash. A program built the table from the two answers: where both gave the same pair, the pair has
-`magas` (high) confidence (52,844 pairs); where they differed, the first model's pair was kept with `alacsony` (low)
-confidence. For reasons of cost, the other books were aligned by one model, Claude
-Sonnet; all their pairs are `alacsony` (545,871 pairs). The task description did not change during the run; the
-tables can be rebuilt byte-identically from the models' saved answers, without new model calls.
+**The model.** The word alignment was proposed by a language model (Claude Sonnet), with the same task description in
+every book. The task description did not change during the run; the tables can be rebuilt byte-identically from the
+saved model answers, without new model calls.
 
 **Result.** 488,659 Hungarian words have a pair, 109,914 are additions; 547,585 source words are
 aligned, 63,017 untranslated. Of the 598,715 pairs, 466,785 are Hebrew and 131,930 Greek; 157,163
@@ -69,16 +66,16 @@ link a Hebrew prefix or suffix morpheme.
 
 Accuracy was measured in two complementary ways.
 
-**Blind review on a stratified sample.** The 598,715 pairs were divided into eight strata (Genesis–Deuteronomy with two
-models and with one; the historical, poetic and prophetic books; the Gospels and Acts; the Epistles; Revelation), and
-200 pairs were drawn at random per stratum. A third language model (Claude Opus) marked, for each target in the
+**Blind review on a stratified sample.** The 598,715 pairs were divided by book group into 7 strata (the five
+books of Moses; the historical, poetic and prophetic books; the Gospels and Acts; the Epistles; Revelation), and
+200 pairs were drawn at random per stratum; from the five books of Moses 400 pairs, in two subsamples
+that the estimate combines by their pair weight. A second language model (Claude Opus) marked, for each target in the
 sample, the matching source words from the verse text and the source words itself, with the same rules, without seeing
 the machine pair. A pair is correct if its source word is among the reviewer's marks.
 
 | stratum | n | correct | rate | 95% |
 |---|---|---|---|---|
-| Moses, two models agreeing | 200 | 198 | 99.00% | 96.43–99.73% |
-| Moses, one model | 200 | 184 | 92.00% | 87.40–95.02% |
+| five books of Moses | 400 | 382 | 95.02% | 92.80–97.24% |
 | historical books | 200 | 190 | 95.00% | 91.04–97.26% |
 | poetic books | 200 | 190 | 95.00% | 91.04–97.26% |
 | prophets | 200 | 186 | 93.00% | 88.59–95.78% |
@@ -89,10 +86,9 @@ the machine pair. A pair is correct if its source word is among the reviewer's m
 | **New Testament, weighted** | 600 | | 97.07% | 95.55–98.59% |
 | **all, weighted** | 1,600 | | **95.06%** | 93.81–96.32% |
 
-The weighted estimate uses the pair share of the strata. By link type: content-word pairs 96.44% (95%:
-95.20–97.69%), Hebrew morpheme pairs 90.74% (95%: 87.18–94.29%). The stratum where the
-two models agreed reaches 99.00%, but this does not show that the second model causes the difference: the books of the two
-Moses strata largely differ.
+The weighted estimate uses the pair share of the strata; the rate for the five books of Moses is such an estimate too
+(of its two subsamples), so it is not the ratio of correct pairs to n. By link type: content-word pairs 96.44%
+(95%: 95.20–97.69%), Hebrew morpheme pairs 90.74% (95%: 87.18–94.29%).
 
 **Calibration.** The reviewer is not infallible. On an earlier manually compiled sample (374 measurable cases)
 the reviewer agreed with it in 96.79% (95%: 94.48–98.16%), the machine alignment in 97.06% (95%:
@@ -101,7 +97,7 @@ reviewer's errors, and the agreement is a lower bound only if shared (machine an
 
 **Independent comparison.** Shared errors are measured by an independent source: a Károli edition marked with Strong's
 numbers, which the package does not contain and of which only the aggregate agreement is given here. One full chapter
-per stratum was compared (8 chapters, 2,663 main-word pairs). The source marks one main Strong's number
+per stratum, two in the five books of Moses, was compared (8 chapters, 2,663 main-word pairs). The source marks one main Strong's number
 per word, not the secondary word in a suffix, preposition or article, nor the morpheme; this measurement applies to
 main-word pairs only.
 
@@ -120,8 +116,7 @@ main-word pairs only.
 
 The alignment is not error-free, and we do not publish it as such. By editorial decision it is released as open data
 because its accuracy is **measured and documented**: per stratum and link type, with confidence intervals, with the
-error types and the list of confirmed errors (`KNOWN_ISSUES.md`). The "proposal" state and the confidence label remain
-on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
+error types and the list of confirmed errors (`KNOWN_ISSUES.md`). The "proposal" state remains on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
 measurement, and a threshold set afterwards would be a post-hoc criterion.
 
 ## 7. The next release
@@ -131,7 +126,7 @@ neighbouring-word cases (by rule-based post-processing, not pair-by-pair patches
 protocol: stratified sample, blind reviewer, independent external source. The quality target for release 2 was fixed
 in advance, in knowledge of the release 1 results: the lower bound of main-word agreement in the independent comparison
 at least 98% (now 98.22%); the lower bound of the weighted agreement with the blind reviewer at least 93% (now
-93.81%), with no stratum point estimate below 90% (now the lowest is 92.00%). The target does
+93.81%), with no stratum point estimate below 90% (now the lowest is 93.00%, prophets). The target does
 not apply to release 1.
 
 ## 8. Related dataset

@@ -32,9 +32,7 @@ into release 2, with a new measurement (`METHODS.md` 7).
 6. **Greek text form:** Károli translated the Textus Receptus, while the alignment uses TAGNT, which covers several
    editions. 369 aligned Greek words (436 pairs) are not in the Textus Receptus: there the Textus
    Receptus reads another form, and the pair is linked to the critical-text form. The `nem_tr` column marks them.
-7. **Confidence:** two models aligned only Genesis and Exodus; every pair in the other books is the proposal of one
-   model (`alacsony`). The `alacsony` label therefore means a single source, not a suspected error.
-8. **Limits of the measurement:** the blind reviewer is itself a language model, and on an earlier manually compiled
+7. **Limits of the measurement:** the blind reviewer is itself a language model, and on an earlier manually compiled
    sample it is not more accurate than the alignment (96.79% and 97.06%); the agreement is a lower bound only
    if shared errors are negligible. The independent comparison covers 8 full chapters, on main-word
    pairs; the chapters are clusters, not random sample units, so the interval understates the uncertainty.
