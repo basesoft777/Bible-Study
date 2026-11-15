@@ -80,6 +80,30 @@ A részletek, a nyers kimenetek, a bemenetek és a költség: `naplok/F224_proba
 **⛔ A javítókör után is három küszöb alatt:** megállás, a felhasználó dönt (küszöb, szerep, modell). A javaslat (`naplok/F224_proba.md` 6. szakasz): (A) a lektor hatókör-szűkítésének 1. pontja most nem lép életbe; (B) a következő mérés előtt N-F224c, kisebb szeletek, két futás uniója; (C) egy Opus-futás a modell és a szerep szétválasztására. A TEREMT-001 a teljes menettel addig nem indul.
 **Eltérés a tervtől:** az új szerepfájlok a sessionben nem voltak regisztrált ügynöktípusok; az ügynök `general-purpose`, `model: sonnet`, a szerepfájl törzsével. A 2. körben az ügynökök a kimenetet maguk írták fájlba (a hívó kontextusa miatt).
 
+### F224.14 — N-F224c: a kinyerés két hézaga (`eszkozok/proza_allitas.py`)
+
+*A felhasználó döntése (2026-11-15, az orkesztrátoron át): „Igen, így menjen” — a 7.6 pontra tett javaslat 2. pontja.*
+
+Két új K-fajta, csak kézi tétel (gépi ELTÉR soha; az E41 nem változik):
+- **idézeten túl:** ha a mondat Károli-idézete gépileg egyezik, de a mondat az idézeten és az igehelyen kívül legalább három tartalmi szót mond, K-tétel lesz (eddig kézi tétel nélkül maradt). A puszta idézet („A vers így szól: „…””) továbbra sem tétel.
+- **szabály-mondat:** a rés igehely nélküli határszabálya („Ide az a hely tartozik, …”, „… nem tartozik ide”) K-tétel; a gépi sor a gerinc-szavak sorrendjét adja a motívum minden helyén (TAHOT/TAGNT), a többségtől eltérő helyek név szerint.
+- **A K-számozás három szintje:** a régi fajták, az F224.4 fajtái, az F224.14 fajtái — egyik korábbi K-szám sem mozdul (a próba ISTENTISZT-bemenetén K1–K58 hely, forrás és szöveg szerint azonos).
+
+**Mérés (az F224.13 ISTENTISZT-bemenetén, `b2aea73f`):** 58 → 75 K-tétel (17 idézeten túl: 5 rés-mondat, 12 adatsor-próza; 1 szabály-mondat). A Remez-mondat („ugyanaz a formula áll Illés és a Baál prófétáinak szájában …”) K61, a Kivonat szabály-mondata K60: a gépi sor szerint a gerinc-szavak sorrendje 13 helyen H7121 → H8034, a Zsolt 116:4, 13, 17-ben fordított. Az E41 (`--kapu`) kimenete a main forrásain bájtra azonos a változás előttivel. *Proveniencia: `scope=python naplok/F224_proba/klista2.py ISTENTISZT-001 (a b2aea73f-es forrás, elofordulasok, kapcsolatok, jeloltek, lap) és python eszkozok/proza_allitas.py --kapu | forras=eszkozok/proza_allitas.py | ts=2026-11-15`.*
+
+### F224.15 — a mondaton kívüli adat a K-tétel alatt (`eszkozok/proza_allitas.py`)
+
+*Ugyanaz a döntés, 3. pont: „a kinyerés az F2 elé a mondaton kívüli, az állítást hordozó adatot is adja … a 7. szakasz ISTENTISZT-hibáiból általánosítva, nem tételenként kézzel”.*
+
+A kézi lista minden K-tétele alatt „Mondaton kívüli adat” (ítélet nélkül): (1) a hely funkció-mezője (a lapon a hely mellett álló állítás); (2) szótári hivatkozásnál a szótár versei (`adat/bdb_vers_jelentes.tsv`, `adat/thayer_vers_jelentes.tsv`, az előfordulás-sor szótár + Strong + jelentéskód szerint) a motívum helyeire, az elutasított és a nyitott jelöltekre (`adat/jeloltek.tsv`) és a többire bontva; (3) a gerinc-szavak környezete az angol tükörfordításban (TAHOT/TAGNT, ±5 szó: ki beszél, ki cselekszik, kinek a neve); (4) a lap más mondatai ugyanarról a forrásról (Targum, LXX, Vulgata, BDB, Thayer, szövegkiadás; legfeljebb 3, a közös versűek elöl); (5) Targum-hivatkozásnál a Targum sora (a Tóra versein). Az általánosítás a 7.2 szakasz négy mechanizmusából: a hibás állítás a funkció-mezőben áll (IST 1), a szótár a kizárt helyet is ide sorolja (IST 12), a vers alanya (IST 8, 17), a lap más mondata ugyanarról a forrásról (IST 10). A lista mérete a próba ISTENTISZT-bemenetén 107 → 192 KB. Tesztek: `eszkozok/teszt_proza_allitas.py` `F224_14`, `F224_15` (10 új teszt, összesen 61, OK).
+
+### F224.16 — az F2 Opusra (DT-F224b, DT-F224c 🟡), N-F224d, N-F224e
+
+- `.claude/agents/allitas-ellenor.md`: `model: opus`, a 0. lépés `opus`; a bemenet új bekezdése: a „Mondaton kívüli adat” a K-tétel része (a funkció-mező a hét kérdéssel ítélendő; a tükörfordítás a *Ki?*, a szótári besorolás és a lap más mondata a 7. kérdés adata), és a két új K-fajta. A példák mechanizmust írnak le, nem a próbahalmaz tételeit (egy, a 10. tétel válaszát hordozó példát a végrehajtó a commit előtt kivett).
+- **DT-F224b 🟢:** az F2 modellje Opus (a felhasználó döntése).
+- **DT-F224c 🟡 (javaslat):** a szerepfájl eddigi 0. lépése szerint az F2 nem fut, ha a próza modellje azonos; a próza Opusszal készül, így a DT-F224b e záradékkal nem lépne életbe. Javaslat: a függetlenséget a friss kontextus és a vak bemenet adja, a modell-függetlenséget a lektor (Fable); a szerepfájl e szerint áll. A felhasználó megerősítésére vár.
+- **N-F224d:** a hamis riasztás csökkentése (a felhasználó döntése szerint nem e kör része). **N-F224e:** a `MUNKAMENET.md` C-a „(Sonnet)” szava a #725 merge-e után (a #725 a fájlt írja).
+
 ## Folytatási pont
 
 - **⛔ a felhasználónál:** az F224.13 döntése. A felhasználó 2026-11-15-én az (A) helyett a (C)-t választotta („nézzük meg erősebb modellel”); a C-futás (az F2 Opusszal, egy futás, javítókör nélkül) kész: HAMART 83% (✓), ISTENTISZT 30%, hamis riasztás 45–50% (`naplok/F224_proba.md` 7. szakasz). A következő lépés (a modell kiosztása, N-F224c, szeletméret, küszöb) a felhasználóé, a 7.6 pont szerint. A döntés után: ha (A), egy mondat a `kiadas.md` 3. lépésébe; ha új mérés, az a döntés szerinti felállással, a `naplok/F224_proba/` bemeneteivel.
