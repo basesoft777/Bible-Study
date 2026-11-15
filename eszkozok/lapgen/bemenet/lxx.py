@@ -65,7 +65,7 @@ def _vers_index(fajlok):
 
 
 class Septuaginta:
-    """A Septuaginta versei Károli-kulcson, a Károli-könyv elsődleges szövegváltozatából (F42, DT-F42f)."""
+    """A Septuaginta versei Károli-kulcson, a Károli-könyv elsődleges szövegváltozatából (F42)."""
 
     def __init__(self, b, index):
         self._b, self._index = b, index
