@@ -128,5 +128,38 @@ class ALapon(unittest.TestCase):
                 self.assertGreater(talalt, 0)
 
 
+class TiltottFordulat(unittest.TestCase):
+    """GK-06 (az 5. ellenőrzés E4 tétele): a tiltott fordulatot tartalmazó kártyaszöveg kimondott hibával megáll."""
+
+    class _B:
+        def egyszer(self, _kulcs, epito):
+            return epito()
+
+        def _tabla(self, _b_id, oszlopok=()):
+            class T:
+                def szotarak(self):
+                    return [{'magyar_alak': 'melléknéven nevezni', 'minta': r'\bmelléknéven\s+nevez\w*'}]
+            return T()
+
+    class _K:
+        pass
+
+    def _k(self):
+        k = self._K()
+        k.b = self._B()
+        return k
+
+    def test_a_tiltott_fordulat_megallitja_a_kartyat(self):
+        from lapgen.bemenet import kartya_lap as KL
+        sz = {'fej': ('fej', '', 'őt melléknéven nevezik', '', ''), 'szakaszok': []}
+        with self.assertRaises(JeloltHiba):
+            KL._tiltott_kapu(self._k(), type('S', (), {'kod': 'H0001'})(), [sz], KL.SZOTAR_BDB)
+
+    def test_tiltott_fordulat_nelkul_nincs_hiba(self):
+        from lapgen.bemenet import kartya_lap as KL
+        sz = {'fej': None, 'szakaszok': [(('1', '1'), '1', 'nevet adni neki', '', '')]}
+        KL._tiltott_kapu(self._k(), type('S', (), {'kod': 'H0001'})(), [sz], KL.SZOTAR_THAYER)
+
+
 if __name__ == '__main__':
     unittest.main()

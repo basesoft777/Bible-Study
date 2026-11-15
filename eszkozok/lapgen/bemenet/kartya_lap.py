@@ -23,7 +23,33 @@ from lapgen.bemenet.jelolt import Jelolt, JeloltHiba
 from lapgen.szoveg import Igehely, Strong
 
 SZOTAR_BDB, SZOTAR_THAYER = 'BDB', 'Thayer'
+_TILTOTT_OSZLOPOK = ('magyar_alak', 'minta')
 _FEJ, _TAGOLATLAN = 'fej', 'tagolatlan'
+
+
+def b58_tiltott_fordulatok(b):
+    """B58 — a tiltott fordulatok: [(magyar alak, lefordított minta)] (a régi `tiltott_talalatok` mintái, kis- és
+    nagybetűtől függetlenül)."""
+    def betolt():
+        return tuple((r['magyar_alak'], re.compile(r['minta'], re.I))
+                     for r in b._tabla('B58', oszlopok=_TILTOTT_OSZLOPOK).szotarak() if r['minta'])
+    return b.egyszer('B58', betolt)
+
+
+def _tiltott_kapu(k, strong, szocikkek, szotar):
+    """GK-06 (az 5. ellenőrzés E4 tétele): a régi kártya a tiltott fordulatot tartalmazó magyar szöveg alá
+    ⓘ-megjegyzést írt („ismert hiány: … tiltott fordulatot tartalmaz”); ez az ág nincs portolva, ezért a kártya
+    ilyenkor kimondott hibával megáll (nem némán marad el a megjegyzés). A szöveg a fej és a szakaszok magyar
+    szövege, ahogy a régi `gerinc_blokk` vizsgálta."""
+    tiltott = b58_tiltott_fordulatok(k.b)
+    talalat = []
+    for sz in szocikkek:
+        for elem in ([sz['fej']] if sz['fej'] else []) + list(sz['szakaszok']):
+            hu = elem[2] or ''
+            talalat.extend('%s (%s)' % (alak, elem[0]) for alak, minta in tiltott if minta.search(hu))
+    if talalat:
+        raise JeloltHiba('a(z) %s %s-szövege tiltott fordulatot tartalmaz (%s): a régi ⓘ-megjegyzés ága nincs '
+                         'portolva; a javítás a fordítás újrafuttatása' % (strong.kod, szotar, '; '.join(talalat)))
 
 
 # --- a modell ------------------------------------------------------------------------------------------------
@@ -244,10 +270,6 @@ def _glossza_ertek(k, szotar, strong, kk, jel, cimke, gl):
 
 
 # --- az apparátus (a régi `gerinc_blokk` második fele és `gerinc_szakasz_lista`) ------------------------------------
-def _hiv(n):
-    return n
-
-
 def _jelolt(k, strong, szoveg, szotar=SZOTAR_BDB):
     if '\n' in szoveg:
         raise JeloltHiba('a(z) %s szótári szövege sortörést tartalmaz' % strong.kod)
@@ -288,8 +310,8 @@ def _hely(n):
 
 
 def _szakasz_lista(k, strong, szakaszok, p, elnyelt, hiv_db, szotar=SZOTAR_BDB):
-    thayer = szotar == SZOTAR_THAYER
     """A szócikk szakaszai: a hordozó kibontva, a többi összecsukott futamokban."""
+    thayer = szotar == SZOTAR_THAYER
     g = k.g
     elnyelo = {}
     for kk, hova in elnyelt.items():
@@ -355,6 +377,7 @@ def bdb_kartya(k, strong, kut_kulcsok, versek, cimszo):
     g, st = k.g, strong.kod
     fa = g.kartya_fa(st)
     szocikkek, elnyelt = fa
+    _tiltott_kapu(k, strong, szocikkek, SZOTAR_BDB)
     p = K.bdb_pontok(g, st, versek, kut_kulcsok, fa)
     hiv_db = K.hivatkozas_szam(g, st, fa)
     tobb = len(szocikkek) > 1
@@ -411,6 +434,7 @@ def thayer_kartya(k, strong, kut_kulcsok, versek):
     g, st = k.g, strong.kod
     fa = g.thayer_fa(st, k.forditasok)
     szocikkek, _elnyelt = fa
+    _tiltott_kapu(k, strong, szocikkek, SZOTAR_THAYER)
     p = K.thayer_pontok(g, st, versek, kut_kulcsok, fa)
     hiv_db = g.thayer_hivatkozas_szam(st)
     sz = szocikkek[0]
