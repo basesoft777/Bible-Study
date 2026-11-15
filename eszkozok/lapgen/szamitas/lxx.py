@@ -23,11 +23,12 @@ from dataclasses import replace as _felulir
 import re
 from typing import Optional, Tuple
 
-from lapgen import bemenet
+from lapgen import bemenet, konfig
 from lapgen.bemenet import lxx as lxx_be
 from lapgen.bemenet import szavak as szavak_be
+from lapgen.szamitas.szotari_tipusok import Szo
 from lapgen.szamitas.vizsgalat import KapuHiba
-from lapgen.szoveg import Igehely, Lathato, Strong, idezet
+from lapgen.szoveg import Igehely, Lathato, Proveniencia, Strong, idezet
 
 _GOROG_SZO_RX = re.compile('[Ͱ-Ͽἀ-῿]+')
 
@@ -51,8 +52,8 @@ class GorogFajta(enum.Enum):
 
 
 @dataclasses.dataclass(frozen=True)
-class Szo:
-    """Egy szó írása és kiejtése (idézetek); a kiejtés None: kimondott hiány."""
+class Kulcsszo:
+    """A héber kulcsszó írása és kiejtése (idézetek); a kiejtés None: kimondott hiány."""
     alak: Lathato
     kiejtes: Optional[Lathato] = None
 
@@ -82,7 +83,7 @@ class LxxHely:
 class LxxSor:
     vers: Igehely
     lxx: Optional[LxxHely]
-    heber: Optional[Szo]
+    heber: Optional[Kulcsszo]
     gorog: Gorog
     itelet: Itelet
 
@@ -115,6 +116,7 @@ class Osszevetes:
     szavankent: Tuple[SzoSzamlalo, ...]
     par_szavak: Tuple[Strong, ...]
     gorog_szavak: Tuple[Strong, ...]
+    par_nevek: Tuple[Szo, ...] = ()    # a párral bíró szavak szótári alakja (a mondatokhoz)
 
 
 def _szamlalo(itelet_lista):
@@ -147,7 +149,7 @@ class _Szamito:
         sz = self.f.kiejtes.ragozott((vers,), strong, utolso=True)
         if sz is None:
             return None
-        return Szo(idezet(sz.alak), idezet(sz.kiejtes) if sz.kiejtes is not None else None)
+        return Kulcsszo(idezet(sz.alak), idezet(sz.kiejtes) if sz.kiejtes is not None else None)
 
     def _kulcsszo_tokenek(self, sor_tokenek, vers):
         if not self.par or any(h in self.par for h in sor_tokenek):
@@ -169,10 +171,7 @@ class _Szamito:
         return idezet(gepi) if gepi is not None else None
 
     def _glossza(self, strong):
-        if strong is None:
-            return None
-        magyar = self.f.rovid.jelentes(strong).magyar
-        return idezet(self.f.tablaban(magyar)) if magyar is not None else None
+        return _glossza_f(self.f, strong) if strong is not None else None
 
     def _potlas(self, strong, alak):
         """A szakaszban először álló Septuaginta-alak kiejtése (a régi kész lap kiejtés-pótlása)."""
@@ -286,7 +285,8 @@ def osszevetes(f):
     modell = Osszevetes(
         sorok=tuple(sorok), szamlalo=szamlalo,
         szavankent=tuple(SzoSzamlalo(h, _szamlalo(lista)) for h, lista in szavankent.items()),
-        par_szavak=szamito.par, gorog_szavak=szamito.gorog)
+        par_szavak=szamito.par, gorog_szavak=szamito.gorog,
+        par_nevek=tuple(f.szo(h) for h in szamito.par))
     _kapu_szavankent(modell, szamolt, f.motivum)
     _kapu_egyforras(szamito, modell, nyers_gorog, f.motivum)
     return modell
@@ -317,3 +317,77 @@ def _kapu_egyforras(szamito, modell, nyers_gorog, motivum):
                 elter.append((v, st))
     if elter:
         raise KapuHiba('%s: az 5. szakasz és a 4.11 LXX-megfelelője eltér: %r' % (motivum.kod, elter))
+
+
+def szamit(korny):
+    """Az 5. szakasz modellje: az összevetés a motívum ószövetségi sorain."""
+    from lapgen.szamitas import szocikkek
+    f = szocikkek.forrasok(korny.b, korny.motivum)
+    if not any(not f.konyvek.ujszovetsegi(s.igehely.konyv) for s in f.sorok):
+        raise bemenet.BemenetHiba('5.: a motívumnak nincs ószövetségi előfordulása; az üres blokk ága nincs portolva')
+    return osszevetes(f)
+
+
+# --- a 4.6 (LXX-híd): a két nyelvrész pontja ugyanabból az összevetésből -------------------------------------------
+@dataclasses.dataclass(frozen=True)
+class SzoMondat:
+    """A héber szó 4.6-os mondatának adatai: a szó, a számlálója, és hogy van-e a motívumban újszövetségi párja."""
+    szo: Szo
+    szamlalo: Szamlalo
+    van_par: bool
+
+
+@dataclasses.dataclass(frozen=True)
+class TarsElem:
+    szo: Szo
+    glossza: Optional[Lathato]
+    versek: int
+
+
+@dataclasses.dataclass(frozen=True)
+class Tarslista:
+    """A héber szó versszintű görög társai (ugyanaz a mérce, mint az Áttekintésé). `versek` None: a táblában a szónak
+    nincs sora (a forrás nem tárgyalja)."""
+    szo: Szo
+    versek: Optional[int]
+    parral: int
+    tarsak: Tuple[TarsElem, ...]
+
+
+@dataclasses.dataclass(frozen=True)
+class LxxHid:
+    """A 4.6 pont egy nyelvrészen. `szavak`: a nyelvrész szavai; `mondatok` és `tarslistak` csak héberül."""
+    osszevetes: Osszevetes
+    szavak: Tuple[Szo, ...]
+    mondatok: Tuple[SzoMondat, ...] = ()
+    tarslistak: Tuple[Tarslista, ...] = ()
+    proveniencia: Optional[Proveniencia] = None
+
+
+def hid(f, osszevetes_modell, sajat, heber, tarsulas):
+    """A 4.6 pont a nyelvrész szavaira (`sajat`). Héberül szavanként a mondat (az összevetés szavankénti
+    számlálójából) és a társlista (a `tarsulas` mércéjével)."""
+    szavak = tuple(f.szo(s) for s in sajat)
+    if not heber:
+        return LxxHid(osszevetes_modell, szavak)
+    szamlalok = {sz.strong: sz.szamlalo for sz in osszevetes_modell.szavankent}
+    mondatok, tarslistak, proveniencia = [], [], None
+    for s in sajat:
+        if s not in szamlalok or not szamlalok[s].osszes():
+            raise KapuHiba('4.6: a(z) %s szónak nincs sora az 5. szakaszban: az ág nincs portolva' % s.kod)
+        mondatok.append(SzoMondat(f.szo(s), szamlalok[s], s in osszevetes_modell.par_szavak))
+        versek = tarsulas.parok_versek(s)
+        if versek is None:
+            tarslistak.append(Tarslista(f.szo(s), None, 0, ()))
+            continue
+        if proveniencia is None:
+            proveniencia = tarsulas.proveniencia(s)
+        elemek = tuple(TarsElem(f.szo(g), _glossza_f(f, g), kozos)
+                       for g, kozos in tarsulas.tarsak(s)[:konfig.LXX_PAROK_TOP])
+        tarslistak.append(Tarslista(f.szo(s), len(versek), sum(1 for gs in versek.values() if gs), elemek))
+    return LxxHid(osszevetes_modell, szavak, tuple(mondatok), tuple(tarslistak), proveniencia)
+
+
+def _glossza_f(f, strong):
+    magyar = f.rovid.jelentes(strong).magyar
+    return idezet(f.tablaban(magyar)) if magyar is not None else None

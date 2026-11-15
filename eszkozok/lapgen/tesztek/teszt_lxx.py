@@ -71,3 +71,17 @@ class Osszevetes(unittest.TestCase):
         self.assertEqual(lxx_be.ekezet_nelkul('Ἐπικατάρατος'), 'επικαταρατος')
         self.assertEqual(lxx_be.lxx_vers('Psalms (LXX) 13:1'), (13, 1))
         self.assertIsNone(lxx_be.lxx_vers('Psalms'))
+
+
+class ALapon(unittest.TestCase):
+    """Az 5. szakasz és a 4.6 a kész lapon (a HAMART-001 sorait a regresszió méri bájtra; itt az ISTENTISZT-001)."""
+
+    def test_az_istentisztelet_lap_otodik_szakasza(self):
+        from lapgen import fo, konfig
+        sorok = [s.szoveg for s in fo.lap_keszit(kozos.GYOKER, MotivumId('ISTENTISZT-001')).nezetek[
+            konfig.NEZET_TUDOMANYOS]]
+        self.assertIn('| Zsolt 116:17 | Zsolt(LXX) 115:8 | אֶקְרָֽא (ekrá) | nincs megfelelő a görögben (LXX-minusz) '
+                      '| LXX-minusz |', sorok)
+        self.assertIn('*Összesítés: egyező=12, ugyanaz a szócsalád=3, eltérő=0, nincs újszövetségi pár=0, LXX-minusz=1, '
+                      'a megfelelő nincs megállapítva=0, versszámozás miatt nem párosítva=0.*', sorok)
+        self.assertEqual(sum(1 for s in sorok if s == '#### 4.6. LXX-híd'), 2)

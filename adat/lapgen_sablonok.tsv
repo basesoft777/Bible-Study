@@ -492,3 +492,78 @@ s4.p2.app.teljes.gorog	*A teljes szócikk: [szónézet](/szo/{strong}) · forrá
 s4.p2.ubs	**UBS-domének (Louw–Nida):** {elemek| · }	elemek:lista(lathato)	4.2	ubs_domensor (DT272 (a), DT371)	-
 s4.p2.ubs.nincs	**UBS-domének (Louw–Nida):** *a forrás nem tárgyalja*	-	4.2	ubs_domensor (NEM_TARGYALJA)	-
 s4.p2.ubs.elem	{kod} {glossza}	kod:lathato, glossza:lathato	4.2	ubs_domensor	-
+cim.lxx	LXX-fordítói döntések	-	keret	UJ_SZAKASZOK	-
+szamnev.1	egy	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.2	két	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.3	három	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.4	négy	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.5	öt	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.6	hat	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.7	hét	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.8	nyolc	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.9	kilenc	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+szamnev.10	tíz	-	keret	olvasoi_kovetkeztetes._SZAMNEV	-
+s5.hid	{mondatok| }	mondatok:lista(lathato)	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.n	A motívum ószövetségi helyei {n} versre terjednek.	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.par	A görög Ószövetség és az Újszövetség közti szóhíd {szamnev} szón át vezet, {nevek|, | és } szaván: ezek {n} megállapított versében a görög fordítás {reszek|, }.	szamnev:lathato, nevek:lista(lathato), n:szam, reszek:lista(lathato)	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.par.ures	A görög Ószövetség és az Újszövetség közti szóhíd {szamnev} szón át vezet, {nevek|, | és } szaván: ezek {n} megállapított versében a görög fordítás egyikben sem áll.	szamnev:lathato, nevek:lista(lathato), n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.egyezo	{n} versben ugyanazt a szót használja, mint az Újszövetség	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.szocsalad	{n} versben ugyanannak a szócsaládnak egy másik tagját	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.eltero	{n} versben mást	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.nincs_par.tobbi	A többi szónak a motívumban nincs újszövetségi párja ({n} vers), ott egyezés nem várható.	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.nincs_par.mind	A motívum héber szavainak a motívumban nincs újszövetségi párja ({n} vers), ezért egyezés nem várható.	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.tobbi	{elemek|, | és }.	elemek:lista(lathato)	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.fuggoben	{n} versben a megfelelő nincs megállapítva	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.szamozas	{n} versben a versszámozás eltérése miatt nincs párosítva	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.minusz	{n} versben a szó a görögből hiányzik	n:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.hid.kov	**Következtetés:** a nyelvi híd {szamnev} szón át vezet, és ott {jelzo}: szócsalád szerint {a}/{b} vers.	szamnev:lathato, jelzo:lathato, a:szam, b:szam	5	olvasoi_kovetkeztetes.lxx_hid	-
+s5.jelzo.eros	erős	-	5	olvasoi_kovetkeztetes.lxx_hid_jelzo (0,67)	-
+s5.jelzo.reszleges	részleges	-	5	olvasoi_kovetkeztetes.lxx_hid_jelzo (0,34)	-
+s5.jelzo.gyenge	gyenge	-	5	olvasoi_kovetkeztetes.lxx_hid_jelzo	-
+s5.bevezeto	*A táblázat a motívum ószövetségi helyeit veti össze a görög fordítással (Septuaginta), versenként.*	-	5	blokk_lxx (hatókör-sor, olvasói átírás)	-
+s5.fejlec.vers	Igehely (Károli)	-	5	lxx_osszevetes / blokk_lxx	-
+s5.fejlec.lxx	LXX-igehely	-	5	lxx_osszevetes / blokk_lxx	-
+s5.fejlec.heber	Héber kulcsszó	-	5	lxx_osszevetes / blokk_lxx	-
+s5.fejlec.gorog	Görög megfelelő	-	5	lxx_osszevetes / blokk_lxx	-
+s5.fejlec.itelet	Egyezés	-	5	lxx_osszevetes / blokk_lxx	-
+s5.lxx	{konyv} {fej}:{vers}	konyv:konyvrov, fej:szam, vers:szam	5	lxx_igehely_magyar	-
+s5.lxx.elter	{konyv}(LXX) {fej}:{vers}	konyv:konyvrov, fej:szam, vers:szam	5	lxx_igehely_magyar (V2.6a 4.)	-
+s5.strong	[{kiejtes}](/szo/{strong})<sup class="strong" title="{strong} · {glossza}">{strong}</sup>	kiejtes:lathato, strong:strong, glossza:lathato	5	gorog_megfelelo_szoveg + a Strong-hivatkozás (olvasói utófeldolgozás)	-
+s5.strong.glossza_nelkul	[{kiejtes}](/szo/{strong})<sup class="strong" title="{strong}">{strong}</sup>	kiejtes:lathato, strong:strong	5	gorog_megfelelo_szoveg + a Strong-hivatkozás (olvasói utófeldolgozás)	-
+s5.gorog.szoveg	{alak} ({lemma}, {hiv})	alak:lathato, lemma:lathato, hiv:lathato	5	gorog_megfelelo_szoveg	-
+s5.gorog.szoveg.potlas	{alak} ({potlas}) ({lemma}, {hiv})	alak:lathato, potlas:lathato, lemma:lathato, hiv:lathato	5	gorog_megfelelo_szoveg + kiejtés-pótlás	-
+s5.gorog.dontes	{lemma} ({hiv})	lemma:lathato, hiv:lathato	5	lxx_osszevetes / blokk_lxx (fordítói döntés)	-
+s5.gorog.tarsitas	{lemma} ({kiejtes}) *(társítás)*	lemma:lathato, kiejtes:lathato	5	lxx_tabla_forras_nelkul (F212 M10)	-
+s5.gorog.minusz	nincs megfelelő a görögben (LXX-minusz)	-	5	lxx_osszevetes / blokk_lxx	-
+s5.itelet.egyezo	egyező	-	5	lxx_osszevetes / blokk_lxx	-
+s5.itelet.szocsalad	ugyanaz a szócsalád	-	5	LXX_UJ_CIMKE	-
+s5.itelet.eltero	eltérő	-	5	lxx_osszevetes / blokk_lxx	-
+s5.itelet.nincs_par	nincs újszövetségi pár	-	5	LXX_UJ_CIMKE	-
+s5.itelet.minusz	LXX-minusz	-	5	lxx_osszevetes / blokk_lxx	-
+s5.itelet.fuggoben	Megfelelő nincs megállapítva	-	5	lxx_osszevetes / blokk_lxx (olvasói átírás, cellakezdet)	-
+s5.itelet.szamozas	versszámozás miatt nem párosítva	-	5	lxx_osszevetes / blokk_lxx (olvasói átírás)	-
+s5.magyarazat	*A görög megfelelő a Septuaginta szövegéből áll; ahol a versben nem a motívum görög szava áll, a megfelelőt a fordítói döntések táblája adja, a „(társítás)” jelű sorokban pedig a vers ellenőrzött szótársítása (a {szakasz}. szakasz ószövetségi táblázatával azonos).*	szakasz:szam	5	LXX_FORRAS_MAGYARAZAT	-
+s5.osszesites	*Összesítés: egyező={egyezo}, ugyanaz a szócsalád={szocsalad}, eltérő={eltero}, nincs újszövetségi pár={nincs_par}, LXX-minusz={minusz}, a megfelelő nincs megállapítva={fuggoben}, versszámozás miatt nem párosítva={szamozas}.*	egyezo:szam, szocsalad:szam, eltero:szam, nincs_par:szam, minusz:szam, fuggoben:szam, szamozas:szam	5	blokk_lxx (olvasói átírás)	-
+s5.vers	{vers}	vers:igehely	5	lxx_osszevetes	-
+szam	{n}	n:szam	keret	olvasoi_kovetkeztetes._SZAMNEV (tíz fölött)	-
+s4.p6.rovid	A görög Ószövetség és az Újszövetség közti szóhíd {szamnev} szón át vezet ({nevek|, | és } szaván), és ott {jelzo}: szócsalád szerint {a}/{b} vers; a versenkénti összevetés: [{cim}](#{horgony}).	szamnev:lathato, nevek:lista(lathato), jelzo:lathato, a:szam, b:szam, cim:lathato, horgony:horgony	4.6	olvasoi_kovetkeztetes.lxx_hid_rovid	-
+s4.p6.rovid.ures	Az ószövetségi helyek görög fordításának versenkénti összevetése: [{cim}](#{horgony}).	cim:lathato, horgony:horgony	4.6	olvasoi_kovetkeztetes.lxx_hid_rovid	-
+s4.p6.gorog	A motívum görög szavai ({szavak|, | és }) az ószövetségi helyek {n} verséből {e} versben állnak a Septuaginta szövegében is; további {c} versben ugyanannak a szócsaládnak egy másik tagja áll.	szavak:lista(lathato), n:szam, e:szam, c:szam	4.6	_tartalom_gorog_lxx	-
+s4.p6.gorog.csalad_nelkul	A motívum görög szavai ({szavak|, | és }) az ószövetségi helyek {n} verséből {e} versben állnak a Septuaginta szövegében is.	szavak:lista(lathato), n:szam, e:szam	4.6	_tartalom_gorog_lxx	-
+s4.p6.szo.nincs_par	{nev} a motívum {n} ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban {reszek|; }.	nev:lathato, n:szam, reszek:lista(lathato)	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.szo.nincs_par.ures	{nev} a motívum {n} ószövetségi versében áll; a szónak a motívumban nincs újszövetségi párja, ezért egyezés nem várható. A görög fordításban egyikről sincs adat.	nev:lathato, n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.szo	{nev} a motívum {n} ószövetségi versében áll; a görög fordításban {reszek|; }.	nev:lathato, n:szam, reszek:lista(lathato)	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.szo.ures	{nev} a motívum {n} ószövetségi versében áll; a görög fordításban egyikről sincs adat.	nev:lathato, n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.szo.kovetkeztetes	{lelet} **Következtetés:** ennél a szónál a görög Ószövetség az újszövetségi szót vagy annak szócsaládját használja ({a}/{n} vers).	lelet:lathato, a:szam, n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.resz.mas	{n} versben más görög szó áll	n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.resz.egyezo	{n} versben ugyanaz a görög szó áll, mint az Újszövetségben	n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.resz.szocsalad	{n} versben ugyanannak a szócsaládnak egy másik tagja áll	n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.resz.minusz	{n} versben a szó a görögből hiányzik	n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.resz.fuggoben	{n} versben a megfelelő nincs megállapítva	n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.resz.szamozas	{n} versben a versszámozás eltérése miatt nincs párosítva	n:szam	4.6	olvasoi_kovetkeztetes.lxx_szo_uj	-
+s4.p6.tars.bevezeto	*Mely görög szavak állnak a héber szóval ugyanabban a versben a legerősebb társulással, a szavak gyakoriságához mérve (ugyanaz a mérce, mint az Áttekintés LXX-megfelelőjéé; a szó minden ószövetségi versében, a nyelvtani szavak nélkül); ez nem a fordító szavankénti döntése:*	-	4.6	_tartalom_heber_lxx_parok	-
+s4.p6.tars	**{szo}** — {n} vers a Septuagintában (ebből {p} vers görög tartalmi szóval); a legerősebben társuló görög szavak: {tarsak|; } · {strong}	szo:lathato, n:szam, p:szam, tarsak:lista(lathato), strong:strong	4.6	_tartalom_heber_lxx_parok (F212 Sz2; olvasói átírás)	-
+s4.p6.tars.ures	**{szo}** — {n} vers a Septuagintában (ebből {p} vers görög tartalmi szóval); a legerősebben társuló görög szavak: — · {strong}	szo:lathato, n:szam, p:szam, strong:strong	4.6	_tartalom_heber_lxx_parok	-
+s4.p6.tars.nincs	**{szo}** — *a forrás nem tárgyalja* *(LXX versszintű párok)* · {strong}	szo:lathato, strong:strong	4.6	_tartalom_heber_lxx_parok (NEM_TARGYALJA; olvasói átírás)	-
+s4.p6.tars.elem	{lemma} ({hiv}): {n} vers	lemma:lathato, hiv:lathato, n:szam	4.6	_tartalom_heber_lxx_parok	-
+s4.p6.forras	*Forrás: a grammatikai szavak listája.*	-	4.6	_tartalom_heber_lxx_parok (a proveniencia-sor olvasói alakja)	-

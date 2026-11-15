@@ -12,6 +12,11 @@ def _szamozott_cim(keret, azonosito):
                       cim=keret.ny.s(keret.rend.cim_kulcs(azonosito)))
 
 
+def szamozott_cim(keret, azonosito):
+    """A számozott szakasz címe („5. LXX-fordítói döntések”): a lapon belüli hivatkozás szövege."""
+    return _szamozott_cim(keret, azonosito)
+
+
 def szakasz_cim(iro, keret, azonosito):
     """A számozott szakasz 2. szintű címsora a szakaszrendből, utána üres sor."""
     iro.cimsor(2, _szamozott_cim(keret, azonosito))

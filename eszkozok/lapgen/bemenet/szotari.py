@@ -11,7 +11,7 @@ import re
 import unicodedata
 
 from lapgen.bemenet.jegyzek import BemenetHiba
-from lapgen.szoveg import Strong
+from lapgen.szoveg import Strong, prov
 
 NYELV_GOROG, NYELV_HEBER = 'gorog', 'heber'
 _SZEREP_OSZLOPOK = ('nyelv', 'sorrend', 'szerep', 'forras', 'allapot')
@@ -169,6 +169,18 @@ class LxxParok:
         """A szó sorainak proveniencia-sora (az első soré), belső szövegként; None, ha nincs sora."""
         nyers = self._proveniencia.get(strong.kod)
         return self._b.belso('B36', 'proveniencia', nyers) if nyers is not None else None
+
+
+    def proveniencia_szo_nelkul(self, strong):
+        """A proveniencia-sor a `heber_strong=` tag nélkül (a régi 4.6 a szót kivágta), megjegyzésbe való
+        proveniencia-szövegként; None, ha nincs sor."""
+        nyers = self._proveniencia.get(strong.kod)
+        if nyers is None:
+            return None
+        return prov('{}', self._b.belso('B36', 'proveniencia', _HEBER_STRONG_TAG_RX.sub('', nyers)))
+
+
+_HEBER_STRONG_TAG_RX = re.compile(r' \| heber_strong=H\d{4}')
 
 
 def _parok_index(fajlok):

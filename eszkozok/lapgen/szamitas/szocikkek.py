@@ -26,6 +26,8 @@ from lapgen.bemenet import szavak as szavak_be
 from lapgen.bemenet import szotari as szotari_be
 from lapgen.bemenet import ubs as ubs_be
 from lapgen.szamitas import elofordulas as elofordulas_sz
+from lapgen.szamitas import lxx as lxx_sz
+from lapgen.szamitas.lxx import LxxHid
 from lapgen.szamitas import nyelvi_hatter as nyelvi_hatter_sz
 from lapgen.szamitas.nyelvi_hatter import HeberHatter
 from lapgen.szamitas import szotari_karoli, szotari_nave, szotari_sece
@@ -173,6 +175,7 @@ class Nyelvresz:
     gorog_hatter: Optional[GorogHatter]
     heber_hatter: Optional[HeberHatter]
     kartyak: Tuple[Kartya, ...] = ()        # a 4.2 kártyái (S3b: BDB a héber, Thayer a görög nyelvrészen)
+    lxx: Optional[LxxHid] = None            # a 4.6 (LXX-híd; S4)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -203,9 +206,19 @@ class _Forrasok:
         self.konyvek = bemenet.b63_konyvek(b)
         self._szavak = {}
         self._ubs_cellak = None
+        self._lxx = None
 
     def tablaban(self, burkolo):
         return tablaban(burkolo)
+
+    def lxx_osszevetes(self):
+        """Az 5. szakasz összevetése (a 4.6 ugyanebből számol), egyszer kiszámolva."""
+        if self._lxx is None:
+            self._lxx = lxx_sz.osszevetes(self)
+        return self._lxx
+
+    def tarsulas(self):
+        return tarsulas(self.b)
 
     def ubs_cellak(self):
         """A motívum sorainak UBS-cellái (a 2. tábla számításával), egyszer kiszámolva."""
@@ -290,6 +303,14 @@ class Tarsulas:
         if not kozos:
             return 0.0, 0
         return 2.0 * kozos / (len(versek) + self._nevezo(gorog_kod, kozos)), kozos
+
+    def parok_versek(self, heber):
+        """A héber szó versei a versszintű párok táblájában ({vers: görög Strong-kódok}); None: nincs sora."""
+        return self._parok.versek(heber)
+
+    def proveniencia(self, heber):
+        """A tábla sorainak proveniencia-sora a szó nélkül (a régi lap megjegyzése)."""
+        return self._parok.proveniencia_szo_nelkul(heber)
 
     def tarsak(self, heber):
         """A héber szó görög társai a társulás csökkenő rendjében, a küszöb fölött: [(görög Strong, közös versek)]."""
@@ -444,7 +465,14 @@ def _nyelvresz(f, nyelv, szavak, szerepek):
         gorog_hatter=hatter,
         heber_hatter=(nyelvi_hatter_sz.szamit(f, f.motivum, sajat)
                       if nyelv is Nyelv.HEBER and sajat and konfig.PONT_NYELVI_HATTER in pontok else None),
-        kartyak=(_kartyak(f, sajat, nyelv is Nyelv.HEBER) if sajat and konfig.PONT_MELYSEGI in pontok else ()))
+        kartyak=(_kartyak(f, sajat, nyelv is Nyelv.HEBER) if sajat and konfig.PONT_MELYSEGI in pontok else ()),
+        lxx=(lxx_sz.hid(f, f.lxx_osszevetes(), sajat, nyelv is Nyelv.HEBER, f.tarsulas())
+             if sajat and konfig.PONT_LXX_HID in pontok else None))
+
+
+def forrasok(b, motivum):
+    """A szakasz bemenetei egy helyen, más szakasznak is (az 5. szakasz és a 4.6 ugyanezekből számol, S4)."""
+    return _Forrasok(b, motivum)
 
 
 def elavult_jelez(allapot, strong, kartya):

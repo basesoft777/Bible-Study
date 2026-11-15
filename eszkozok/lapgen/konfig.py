@@ -73,6 +73,8 @@ FO_SZOTAR_HEBER, FO_SZOTAR_GOROG = 'BDB', 'Thayer'   # a fő szótár nyelvenké
 # A Septuaginta-megfelelő: a versszintű társulás (Dice-mérték) küszöbe és a társlista hossza
 LXX_TARS_KUSZOB = 0.05
 LXX_PAROK_TOP = 10
+LXX_SZO_MIN = 5          # a 4.6 szavankénti mondata: ennyi vers alatt nincs következtetés (F182 A13, K10)
+LXX_SZO_ARANY = 0.67     # a 4.6 szavankénti következtetés küszöbe (a szócsaládos egyezés aránya)
 
 # A fordítástábla kulcsai a szótári pontokhoz
 SZOTAR_ROVID = 'rovid_szotar'          # a rövid jelentés (héber glosszatábla, illetve a görög rövid szótár)

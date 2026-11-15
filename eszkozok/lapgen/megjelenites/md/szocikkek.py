@@ -378,8 +378,14 @@ def _melysegi(iro, ny, szakasz, resz, keret):
     kartya_md.melysegi(iro, ny, resz, szo_iras, szoveg_allapottal)
 
 
+def _lxx_hid(iro, ny, szakasz, resz, keret):
+    from lapgen.megjelenites.md import lxx as md_lxx   # a 4.6 az 5. szakasz megjelenítőjével közös (S4)
+    md_lxx.hid(iro, ny, keret, resz.lxx, szo_iras, _szo_nagy_nevelovel, _bekezdes)
+
+
 _PONTOK = {
     konfig.PONT_ALAPJELENTES: _alapjelentes,
+    konfig.PONT_LXX_HID: _lxx_hid,
     konfig.PONT_MELYSEGI: _melysegi,
     konfig.PONT_NYELVI_HATTER: _nyelvi_hatter,
     konfig.PONT_TEOLOGIAI: _teologiai,
@@ -405,7 +411,7 @@ def _nyelvresz(iro, ny, szakasz, resz, keret):
                                  szakasz=szakasz, elso=min(resz.pontok), utolso=max(resz.pontok)))
     for pont in resz.pontok:
         if pont not in _PONTOK or (pont == konfig.PONT_NYELVI_HATTER and resz.gorog_hatter is None and resz.heber_hatter is None) \
-                or (pont == konfig.PONT_MELYSEGI and not resz.kartyak):
+                or (pont == konfig.PONT_MELYSEGI and not resz.kartyak) or (pont == konfig.PONT_LXX_HID and resz.lxx is None):
             continue   # a pont megjelenítője még nem készült el (részleges lap)
         _pont_cim(iro, ny, szakasz, pont)
         _PONTOK[pont](iro, ny, szakasz, resz, keret)
