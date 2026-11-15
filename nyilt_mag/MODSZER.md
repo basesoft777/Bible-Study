@@ -122,7 +122,7 @@ Az oszlopnevek és az értékek magyarok; mellettük angol párhuzamos oszlopok 
   címkéjével.
 - **Szabad szöveg** (indoklás, funkció, a motívum meghatározása, a döntésnapló): `…_en` párhuzamos mező, **gépi
   fordítás** (főként `claude-sonnet-5-5`; kis részben `claude-opus-5-5`). A sor `forditas_modja` oszlopa megnevezi a modellt, és kimondja a hiányt
-  (222 sorban hiányzik a fordítás teljesen vagy részben).
+  (223 sorban hiányzik a fordítás teljesen vagy részben).
 
 ## 9. Licencszűrés
 

@@ -102,8 +102,9 @@ class Szerkezeti(unittest.TestCase):
     @unittest.skip(S8)
     def test_ism_a_kolofon_nem_ismetli_a_kriteriumot(self):
         """DT-F218n: a Kolofon táblájának „Negatív kritérium” sora ma a teljes kritériumot ismétli (az ötödik
-        példány); a teljes lapon a kritérium kapuja megfogja. A sor helyén hivatkozás álljon a lap elejére (a
-        felhasználó döntése a 218a végi listából)."""
+        példány); a teljes lapon a kritérium kapuja megfogja. A sor helyén hivatkozás áll a lap elejére
+        (DT-F218p, a 9. tétel: az orkesztrátor döntése a felhasználó felhatalmazásával). Előre megszámolt eltérés a
+        Kolofonban: 1 sor (`ISM-KOLOFON`: a régi sor ki, a hivatkozó sor be, egy engedélysorban)."""
 
     @unittest.skip(ISM_3)
     def test_ism_a_3_szakasz_utal_nem_ismetel(self):
