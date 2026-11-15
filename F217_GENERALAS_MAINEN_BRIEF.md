@@ -5,10 +5,10 @@ kod: GENERALAS_MAINEN
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/f217-generalas-mainen-f752cc
 ad: a generált nézeteket nem az ágak commitolják, hanem egy Action generálja újra a main-en egy jegyzék (`adat/generalt_nezetek.tsv`) szerint; a párhuzamos PR-ok nem várnak egymásra a generált fájlok miatt; a jegyzék a bemeneti jegyzék első lépése
-kovetkezo: "Te: F217.2–8 megvalósítás (az orkesztrátor 2026-11-15-i döntése: G-sorok, a B-sorok gazdája a #729 lapgen_bemenetek.tsv-je); az adat/SEMA.md bejegyzés ⛔ a #729 merge-e után, utolsó commitként"
+kovetkezo: "Te: ⛔ az adat/SEMA.md bejegyzése (N-F217c) a #729 merge-e után, a main behozásával, utolsó commitként; az F217.2–7a kész (a független ellenőrzés 7 eltérése javítva, naplok/F217_jelentes.md); merge az orkesztrátortól, a SEMA-commit után"
 munka: folyamat
 olvas: [adat/SEMA.md, adat/lap_befagyasztas.tsv, adat/kiadasok.tsv, adat/lap_javitasok.tsv, eszkozok/szamkiosztas.py, naplok/F217_terv.md]
 ir: [adat/generalt_nezetek.tsv, adat/SEMA.md, .github/workflows/feladatok.yml, .github/workflows/ellenorzes.yml, .claude/commands/kiadas.md, .claude/commands/lap-javit.md, MUNKAMENET.md, eszkozok/generalt_nezetek.py, eszkozok/teszt_generalt_nezetek.py, eszkozok/szamkiosztas_ujragen.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_ket_ut_meres.py, eszkozok/teszt_torzscikk_migralt.py, eszkozok/push_elott.py, eszkozok/teszt_push_elott.py, naplok/F217_terv.md, naplok/F217_jelentes.md]
