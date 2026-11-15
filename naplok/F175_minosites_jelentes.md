@@ -1,6 +1,6 @@
 # F175 — a két nyílt Károli-csomag minősítése: a mért pontosság, nem a modell-egyezés (2026-11-14)
 
-*Végrehajtó: claude-opus-5-5. Döntés: DT-F175c (a felhasználó), DT-F175d (a végrehajtó, megerősítésre vár). Nyitva: N-F175d.*
+*Végrehajtó: claude-opus-5-5. Döntés: DT858 (a felhasználó), DT859 (a végrehajtó, megerősítésre vár). Nyitva: N-F175d.*
 
 ## 1. Mi változott
 
@@ -80,10 +80,10 @@ belső adat változatlan). A Zenodo-piszkozatokba az új csomag kerül.
   `teszt_pilot_aranymintaval` 22 OK, `teszt_tervezo` 51 OK, a többi gyors fájl zöld. A `teszt_visszhang_kapu` 2 hibája a
   tiszta main-en is megvan (ismert, régi bukás, külön tétel), nem ez az ág okozza.
 
-## 6. Kiegészítés (2026-11-15): a „bizonyosság” jelentése (DT-F175e)
+## 6. Kiegészítés (2026-11-15): a „bizonyosság” jelentése (DT860)
 
 A felhasználó döntése: a nyilvános „bizonyosság” csak a mért pontosság (könyvcsoportonként, 93–98%, összesen 95,06%). A
-DT-F175d („Mózes öt könyve”) jóváhagyva. Ebben a PR-ban, újragenerálás nélkül (a csomagok szövegében a szó nem áll): a SEMA 2.20 rögzíti, hogy a `bizonyossag` mező belső szűrő, nem minősítés. Nyitva: N-F175d (az
+DT859 („Mózes öt könyve”) jóváhagyva. Ebben a PR-ban, újragenerálás nélkül (a csomagok szövegében a szó nem áll): a SEMA 2.20 rögzíti, hogy a `bizonyossag` mező belső szűrő, nem minősítés. Nyitva: N-F175d (az
 olvasó három helye, külön SERVER-javítás), N-F175e (a motívum-mag szövegei, a „csak szövegek” mód után; teljes export
 nélkül az E35 miatt nem igazolható; a „magas/alacsony bizonyosság” kaputilalom is ekkor, a mag szövegével együtt kerül
 be). Ellenőrzés ebben a körben a felhasználó kérésére szűkítve: a két csomagkapu és a `feladatok.py ellenoriz`; a teljes
