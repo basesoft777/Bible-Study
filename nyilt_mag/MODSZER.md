@@ -70,8 +70,8 @@ STEPBible rövid angol glosszája.
 
 **A Károli-szó.** Minden előfordulásnál ott áll a Károli-fordítás megfelelő szava is. A Károli-szó nem bizonyíték: azt
 mutatja meg, mit lát a helyből a magyar olvasó. A párosítást (`azonositas_modja`) 223 esetben a
-szerkesztő végezte a Károli-szöveg olvasásával, 25 esetben gépi szópárosítás adta (sort csak magas
-bizonyosságú pár igazolhat), 2 esetben következtetés. A bizonyosság (`megbizhatosag`)
+szerkesztő végezte a Károli-szöveg olvasásával, 25 esetben gépi szópárosítás adta, 2 esetben
+következtetés. A bizonyosság (`megbizhatosag`)
 232 esetben magas, 18 esetben közepes. A vers többi szavának párosítása nem része ennek az
 adatkészletnek; az a kapcsolódó Károli – Strong adatkészletekben áll.
 

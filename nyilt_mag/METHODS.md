@@ -72,8 +72,8 @@ The `strong` column is the Strong's number of the anchor word, `jelentes_en` an 
 
 **The Károli word.** Every occurrence also gives also give the corresponding word of the Károli translation. The Károli word is not
 evidence: it shows what the Hungarian reader sees of the passage. The alignment (`azonositas_modja`) was made by the
-editor reading the Károli text in 223 cases, by machine word alignment in 25 cases (only a
-high-confidence pair may justify a row) and by inference in 2 cases. The confidence (`megbizhatosag`)
+editor reading the Károli text in 223 cases, by machine word alignment in 25 cases and by
+inference in 2 cases. The confidence (`megbizhatosag`)
 is high in 232 cases and medium in 18. The alignment of the other words of the verse is not
 part of this dataset; it is in the related Károli – Strong datasets.
 

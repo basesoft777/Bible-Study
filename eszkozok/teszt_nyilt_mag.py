@@ -585,10 +585,19 @@ class EgysegesKeszlet(Alap):
         for rel, szo in (('MODSZER.md', 'a termékréteg része'), ('METHODS.md', 'a PaRDeS method'),
                          ('kozlemeny/kozlemeny_hu.md', 'l. DT612'), ('CITATION.cff', 'url: https://github.com/x/y'),
                          ('LICENSE', 'felhasználói döntés'), ('ATTRIBUCIO.md', 'naplok/valami'),
-                         ('README.md', 'the orchestrator decided'), ('OLVASSEL.md', 'a gerinc szerint')):
+                         ('README.md', 'the orchestrator decided'), ('OLVASSEL.md', 'a gerinc szerint'),
+                         ('MODSZER.md', 'csak magas bizonyosságú pár igazolhat'), ('ISMERT_HIBAK.md', 'alacsony bizonyosság'),
+                         ('METHODS.md', 'only a high-confidence pair'), ('KNOWN_ISSUES.md', 'a low confidence label')):
             f = self.uj()
             f[rel] += szo + '\n'
             self.assertTrue(bukasok(f, 'NYILVANOS'), (rel, szo))
+
+    def test_bizonyossag_a_mert_pontossag_megengedett(self):
+        # DT-F175e: a „bizonyosság” a nyilvános szövegben a mért pontosság; csak a modell-egyezés címkéje tilos
+        f = self.uj()
+        f['MODSZER.md'] += 'A bizonyosság a mért pontosság: 95% (Mózes öt könyve).\n'
+        f['METHODS.md'] += 'The certainty is the measured accuracy: 95%.\n'
+        self.assertEqual([], bukasok(f, 'NYILVANOS'))
 
     def test_pardes_szint_oszlopnev_megengedett(self):
         f = self.uj()
@@ -670,6 +679,48 @@ class EgysegesKeszlet(Alap):
         for kell in ('family-names: "Demeter"', 'given-names: "Tamás"', 'orcid: "https://orcid.org/0009-0005-9254-9731"',
                      'doi: "10.5281/zenodo.24141612"', '10.5281/zenodo.24141884', '10.5281/zenodo.24141950'):
             self.assertIn(kell, c)
+
+
+class CsakSzovegek(Alap):
+    """F223 (a): a `--csak-szovegek` mód a kiírt teljes export fölött ugyanazt a szövegfájl-készletet adja, mint a teljes export,
+    és az adatfájlokat nem írja."""
+
+    def test_csak_szovegek_azonos_a_teljes_exporttal(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            E.kiir(self.fajlok, td)
+            ujak, mind = E.export_csak_szovegek(td)
+            self.assertEqual(sorted(ujak), sorted(E.SZOVEG_RELEK + E.OSSZEG_RELEK))
+            for rel, szoveg in ujak.items():
+                self.assertEqual(self.fajlok[rel], szoveg, rel)
+            self.assertEqual(self.fajlok, mind)
+
+    def test_modositott_szoveg_csak_a_szoveget_es_az_osszeget_valtoztatja(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            E.kiir(self.fajlok, td)
+            regi_tsv = {rel: sz for rel, sz in self.fajlok.items() if rel.endswith('.tsv') and rel != 'kodkonyv.tsv'}
+            eredeti = E.ismert_hibak
+            E.ismert_hibak = lambda *a, **k: eredeti(*a, **k) + '\nTeszt-mondat.\n'
+            try:
+                ujak, _ = E.export_csak_szovegek(td)
+            finally:
+                E.ismert_hibak = eredeti
+            self.assertIn('Teszt-mondat.', ujak['ISMERT_HIBAK.md'])
+            self.assertNotEqual(ujak['ELLENORZO_OSSZEG.sha256'], self.fajlok['ELLENORZO_OSSZEG.sha256'])
+            self.assertNotEqual(ujak['KIADAS.txt'], self.fajlok['KIADAS.txt'])
+            # az adatfajlok sorai az osszegben valtozatlanok
+            adat_sorok = [s for s in self.fajlok['ELLENORZO_OSSZEG.sha256'].splitlines() if s.split('  ', 1)[1] in regi_tsv]
+            for s in adat_sorok:
+                self.assertIn(s, ujak['ELLENORZO_OSSZEG.sha256'].splitlines())
+            masik = [rel for rel in ujak if rel != 'ISMERT_HIBAK.md' and ujak[rel] != self.fajlok[rel]]
+            self.assertEqual(sorted(masik), ['ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt'])
+
+    def test_hianyzo_csomag_megall(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            with self.assertRaises(SystemExit):
+                E.export_csak_szovegek(td)
 
 
 if __name__ == '__main__':
