@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-test_heti_attekinto.py -- az `eszkozok/heti_attekinto.py` tesztjei: a sáv szerinti csoportosítás
-(csak nyitott tétel: folyamatban / vár), a hiányzó `sav` mező mint hiba, a „te teendőid”, a nyitott
-PR-hozzárendelés. Ideiglenes könyvtárban felépített fixture-briefekkel; git és gh nem fut.
+test_heti_attekinto.py -- az `eszkozok/heti_attekinto.py` tesztjei: a sáv szerinti csoportosítás,
+a hiányzó `sav` mező (besorolatlan), a „te teendőid” és a „kész a héten” ablak, a PR-hozzárendelés.
+Ideiglenes könyvtárban felépített fixture-briefekkel; git és gh nem fut.
 
 Futtatás: python eszkozok/tesztek/test_heti_attekinto.py
 """
@@ -28,7 +28,7 @@ import heti_attekinto as H  # noqa: E402
 MA = date(2026, 11, 15)
 
 
-def brief_szoveg(szam, cim='Teszt', allapot='nem_indult', kovetkezo='/kovetkezo', sav='SYSTEMS', extra=None):
+def brief_szoveg(szam, cim='Teszt', allapot='nem_indult', kovetkezo='/kovetkezo', sav=None, extra=None):
     sorok = ['---', 'feladat: %d' % szam, 'cim: %s' % cim, 'tipus: feladat', 'fazis: folyamat',
              'modell: sonnet', 'allapot: %s' % allapot, 'ad: mit ad', 'kovetkezo: %s' % kovetkezo]
     if sav is not None:
@@ -49,9 +49,10 @@ class Alap(unittest.TestCase):
         with open(os.path.join(self.ut, 'F%02d_T%d_BRIEF.md' % (szam, szam)), 'w', encoding='utf-8', newline='') as f:
             f.write(brief_szoveg(szam, **kw))
 
-    def csoport(self, prok=None):
+    def csoport(self, prok=None, lezarasok=None, nap=7):
         briefek = F.briefek_beolvas(self.ut)
-        return H.csoportosit(briefek, prok or [], {}, H.sav_olvas)
+        return H.csoportosit(briefek, prok or [], {}, MA, nap, lezarasok or {},
+                             lambda b: H.sav_olvas(self.ut, b))
 
     @staticmethod
     def szamok(blokk):
@@ -59,83 +60,44 @@ class Alap(unittest.TestCase):
 
 
 class SavCsoportositasTest(Alap):
-    def test_savok_egyeznek_a_feladatok_py_savjaival(self):
-        self.assertEqual([s for s, _ in H.SAVOK], list(F.SAVOK))
-
-    def test_negy_sav_ket_blokk(self):
+    def test_negy_sav_es_besorolatlan(self):
         self.brief(1, allapot='fut', sav='SYSTEMS')
         self.brief(2, allapot='nem_indult', sav='CONTENT')
-        self.brief(3, allapot='megallt', sav='SERVER')
-        self.brief(4, allapot='dontesre_var', sav='USER')
-        sorok, _, hibak, _ = self.csoport()
-        self.assertEqual(hibak, [])
+        self.brief(3, allapot='lezarva', sav='SERVER')
+        self.brief(4, allapot='megallt', sav='USER')
+        self.brief(5, allapot='fut')
+        sorok, _ = self.csoport(lezarasok={'F03_T3_BRIEF.md': date(2026, 11, 13)})
         self.assertEqual(self.szamok(sorok['SYSTEMS'][H.FUT]), [1])
         self.assertEqual(self.szamok(sorok['CONTENT'][H.VAR]), [2])
-        self.assertEqual(self.szamok(sorok['SERVER'][H.FUT]), [3])       # a `megallt` a folyamatban blokkba kerül
-        self.assertEqual(self.szamok(sorok['USER'][H.VAR]), [4])         # a `dontesre_var` a vár blokkba kerül
+        self.assertEqual(self.szamok(sorok['SERVER'][H.KESZ]), [3])
+        self.assertEqual(self.szamok(sorok['USER'][H.FUT]), [4])
+        self.assertEqual(self.szamok(sorok[H.BESOROLATLAN][H.FUT]), [5])
 
-    def test_lezart_brief_nem_kerul_ki(self):
-        self.brief(1, allapot='lezarva', sav='CONTENT')
-        self.brief(2, allapot='fut', sav='CONTENT')
-        sorok, teendok, _, _ = self.csoport()
-        self.assertEqual(self.szamok(sorok['CONTENT'][H.FUT]), [2])
-        self.assertEqual(self.szamok(sorok['CONTENT'][H.VAR]), [])
-        self.assertEqual(teendok, [])
+    def test_hianyzo_sav_besorolatlan(self):
+        self.brief(1, allapot='fut')
+        self.brief(2, allapot='nem_indult')
+        sorok, _ = self.csoport()
+        self.assertEqual(self.szamok(sorok[H.BESOROLATLAN][H.FUT]), [1])
+        self.assertEqual(self.szamok(sorok[H.BESOROLATLAN][H.VAR]), [2])
+        for sav, _ in H.SAVOK:
+            self.assertEqual(sum(len(v) for v in sorok[sav].values()), 0)
 
-    def test_hianyzo_sav_hiba_nem_csoport(self):
-        self.brief(1, allapot='fut', sav=None)
-        self.brief(2, allapot='nem_indult', sav='CONTENT')
-        sorok, _, hibak, _ = self.csoport()
-        self.assertEqual(len(hibak), 1)
-        self.assertIn('#1', hibak[0])
-        self.assertNotIn(1, self.szamok(sorok['CONTENT'][H.FUT]) + self.szamok(sorok['CONTENT'][H.VAR]))
-        self.assertEqual(set(sorok), {s for s, _ in H.SAVOK})            # besorolatlan csoport nincs
-
-    def test_ismeretlen_sav_hiba(self):
+    def test_ismeretlen_sav_besorolatlan(self):
         self.brief(1, allapot='fut', sav='VALAMI')
-        _, _, hibak, _ = self.csoport()
-        self.assertEqual(len(hibak), 1)
-
-    def test_lezart_brief_hianyzo_sava_nem_hiba(self):
-        self.brief(1, allapot='lezarva', sav=None)
-        _, _, hibak, _ = self.csoport()
-        self.assertEqual(hibak, [])
-
-    def test_atmeneti_kivetel_savja(self):
-        self.brief(217, allapot='nem_indult', sav=None)
-        self.brief(218, allapot='nem_indult', sav=None)
-        sorok, _, hibak, _ = self.csoport()
-        self.assertEqual(hibak, [])
-        self.assertEqual(self.szamok(sorok['SYSTEMS'][H.VAR]), [217])
-        self.assertEqual(self.szamok(sorok['CONTENT'][H.VAR]), [218])
-
-    def test_atmeneti_kivetel_csak_amig_a_tuple_tartalmazza(self):
-        self.brief(217, allapot='nem_indult', sav=None)
-        eredeti = F.SAV_ATMENET_KIVETEL
-        F.SAV_ATMENET_KIVETEL = ()
-        try:
-            _, _, hibak, _ = self.csoport()
-        finally:
-            F.SAV_ATMENET_KIVETEL = eredeti
-        self.assertEqual(len(hibak), 1)
+        sorok, _ = self.csoport()
+        self.assertEqual(self.szamok(sorok[H.BESOROLATLAN][H.FUT]), [1])
 
     def test_sav_kisbetuvel_is_jo(self):
         self.brief(1, allapot='fut', sav='server')
-        sorok, _, _, _ = self.csoport()
+        sorok, _ = self.csoport()
         self.assertEqual(self.szamok(sorok['SERVER'][H.FUT]), [1])
 
     def test_varakozas_fuggessel(self):
         self.brief(1, allapot='fut', sav='SYSTEMS')
         self.brief(2, allapot='nem_indult', sav='SYSTEMS', extra={'fugg': '[1]'})
-        sorok, _, _, _ = self.csoport()
+        sorok, _ = self.csoport()
         var = sorok['SYSTEMS'][H.VAR]
         self.assertEqual([n for n, _ in var[0]['varakozas']], [1])
-
-    def test_lezart_fuggoseg_nem_varakozas(self):
-        self.brief(1, allapot='lezarva', sav='SYSTEMS')
-        self.brief(2, allapot='nem_indult', sav='SYSTEMS', extra={'fugg': '[1]'})
-        sorok, _, _, _ = self.csoport()
-        self.assertEqual(sorok['SYSTEMS'][H.VAR][0]['varakozas'], [])
 
 
 class TeendoTest(Alap):
@@ -143,7 +105,7 @@ class TeendoTest(Alap):
         return {t['szam']: t['teendo'] for t in self.csoport()[1]}
 
     def test_te_elotag_es_dontesre_var(self):
-        self.brief(1, allapot='megallt', kovetkezo='"Te: a draft PR áttekintése"', sav='SYSTEMS')
+        self.brief(1, allapot='megallt', kovetkezo='"Te: a draft PR áttekintése"')
         self.brief(2, allapot='dontesre_var', kovetkezo='a döntés kell')
         self.brief(3, allapot='fut', kovetkezo='/kovetkezo')
         t = self.teendok()
@@ -168,9 +130,33 @@ class TeendoTest(Alap):
                    kovetkezo='"Te: [elteres_kor 2/2] ELLENOR_F1_3 1. mechanikus"')
         self.assertEqual(self.teendok()[1], 'az ellenőrzési jelentés 1. mechanikus')
 
-    def test_ellenor_fajlnev_utvonallal_is(self):
-        self.assertEqual(H.tisztit('ellenőr: naplok/ELLENOR_TERV_SZINKRON_3.md; az ELLENOR_F1_3 1.'),
-                         'ellenőr: az ellenőrzési jelentés; az ellenőrzési jelentés 1.')
+
+class KeszAblakTest(Alap):
+    def test_het_napon_belul(self):
+        self.brief(1, allapot='lezarva', sav='CONTENT')
+        self.brief(2, allapot='lezarva', sav='CONTENT')
+        self.brief(3, allapot='lezarva', sav='CONTENT')
+        sorok, _ = self.csoport(lezarasok={'F01_T1_BRIEF.md': date(2026, 11, 8),     # pontosan 7 napja
+                                           'F02_T2_BRIEF.md': date(2026, 11, 7)})    # 8 napja
+        self.assertEqual(self.szamok(sorok['CONTENT'][H.KESZ]), [1])
+        self.assertEqual(self.szamok(sorok['CONTENT'][H.FUT]), [])
+
+    def test_datum_hianyaban_nem_kerul_be(self):
+        self.brief(1, allapot='lezarva', sav='CONTENT')
+        sorok, _ = self.csoport()
+        self.assertEqual(sorok['CONTENT'][H.KESZ], [])
+
+    def test_lezarva_osszegzes_datuma_tartalek(self):
+        self.brief(1, allapot='lezarva', sav='CONTENT', extra={'lezarva_osszegzes': '"kész (11.12)"'})
+        sorok, _ = self.csoport()
+        self.assertEqual(self.szamok(sorok['CONTENT'][H.KESZ]), [1])
+
+    def test_rendezes_legujabb_elol(self):
+        for n in (1, 2):
+            self.brief(n, allapot='lezarva')
+        sorok, _ = self.csoport(lezarasok={'F01_T1_BRIEF.md': date(2026, 11, 10),
+                                           'F02_T2_BRIEF.md': date(2026, 11, 14)})
+        self.assertEqual(self.szamok(sorok[H.BESOROLATLAN][H.KESZ]), [2, 1])
 
 
 def pr(szam, cim, ag='claude/x', allapot='OPEN', merge=None, piszkozat=False):
@@ -181,7 +167,7 @@ def pr(szam, cim, ag='claude/x', allapot='OPEN', merge=None, piszkozat=False):
 class PrTest(Alap):
     def test_nyitott_pr_a_brief_soran(self):
         self.brief(5, allapot='fut', sav='SERVER')
-        sorok, _, _, _ = self.csoport(prok=[pr(10, '[ELLENŐRZŐ] F5: valami', piszkozat=True)])
+        sorok, _ = self.csoport(prok=[pr(10, '[ELLENŐRZŐ] F5: valami', piszkozat=True)])
         fut = sorok['SERVER'][H.FUT]
         self.assertEqual(len(fut), 1)
         self.assertEqual([p['szam'] for p in fut[0]['prok']], [10])
@@ -191,64 +177,54 @@ class PrTest(Alap):
     def test_pr_mezo_es_ag_szerinti_egyezes(self):
         self.brief(5, allapot='fut', sav='SERVER', extra={'pr': '"10"'})
         self.brief(6, allapot='fut', sav='USER', extra={'ag': 'claude/hat'})
-        sorok, _, _, _ = self.csoport(prok=[pr(10, 'Valami cím'), pr(11, 'Más cím', ag='claude/hat')])
+        sorok, _ = self.csoport(prok=[pr(10, 'Valami cím'), pr(11, 'Más cím', ag='claude/hat')])
         self.assertEqual([p['szam'] for p in sorok['SERVER'][H.FUT][0]['prok']], [10])
         self.assertEqual([p['szam'] for p in sorok['USER'][H.FUT][0]['prok']], [11])
 
-    def test_brief_nelkuli_pr_nem_kerul_az_oldalra(self):
-        sorok, _, hibak, nelkuli = self.csoport(prok=[pr(20, 'Cím számjelzés nélkül')])
-        self.assertEqual(hibak, [])
-        self.assertEqual(nelkuli, 1)
-        self.assertEqual(sum(len(v) for s in sorok.values() for v in s.values()), 0)
+    def test_brief_nelkuli_pr_besorolatlan(self):
+        sorok, _ = self.csoport(prok=[pr(20, 'Cím számjelzés nélkül'),
+                                      pr(21, 'Mergelt', allapot='MERGED', merge='2026-11-14T10:00:00Z'),
+                                      pr(22, 'Régen mergelt', allapot='MERGED', merge='2026-10-01T10:00:00Z')])
+        self.assertEqual([e['prok'][0]['szam'] for e in sorok[H.BESOROLATLAN][H.FUT]], [20])
+        self.assertEqual([e['prok'][0]['szam'] for e in sorok[H.BESOROLATLAN][H.KESZ]], [21])
 
-    def test_mergelt_pr_nem_jelenik_meg(self):
+    def test_mergelt_pr_nyitott_brief_savjaban(self):
         self.brief(5, allapot='fut', sav='SYSTEMS')
-        sorok, _, _, nelkuli = self.csoport(prok=[pr(30, 'F5: befogadás', allapot='MERGED', merge='2026-11-13T10:00:00Z')])
-        self.assertEqual(sorok['SYSTEMS'][H.FUT][0]['prok'], [])
-        self.assertEqual(nelkuli, 0)
+        sorok, _ = self.csoport(prok=[pr(30, 'F5: befogadás', allapot='MERGED', merge='2026-11-13T10:00:00Z')])
+        self.assertEqual([e['prok'][0]['szam'] for e in sorok['SYSTEMS'][H.KESZ]], [30])
+        self.assertEqual(len(sorok['SYSTEMS'][H.FUT]), 1)
 
-    def test_pr_lista_fajl_kiszuri_a_mergeltet(self):
-        ut = os.path.join(self.ut, 'prok.json')
-        with open(ut, 'w', encoding='utf-8') as f:
-            json.dump([pr(1, 'F1: nyitott'), pr(2, 'F2: mergelt', allapot='MERGED', merge='2026-11-13T10:00:00Z')], f)
-        prok, hiba = H.pr_lista_fajl(ut)
-        self.assertIsNone(hiba)
-        self.assertEqual([p['number'] for p in prok], [1])
+    def test_lezart_brief_mergelt_pr_a_brief_soran(self):
+        self.brief(5, allapot='lezarva', sav='SYSTEMS')
+        sorok, _ = self.csoport(prok=[pr(30, 'F5: lezárás', allapot='MERGED', merge='2026-11-13T10:00:00Z')],
+                                lezarasok={'F05_T5_BRIEF.md': date(2026, 11, 13)})
+        kesz = sorok['SYSTEMS'][H.KESZ]
+        self.assertEqual(len(kesz), 1)
+        self.assertEqual([p['szam'] for p in kesz[0]['prok']], [30])
 
 
 class OldalTest(Alap):
-    def keszit(self, prok=None):
+    def keszit(self, prok=None, lezarasok=None):
         pr_ut = os.path.join(self.ut, 'prok.json')
         with open(pr_ut, 'w', encoding='utf-8') as f:
             json.dump(prok or [], f)
-        return H.osszeallit(self.ut, MA, pr_json=pr_ut, ts=datetime(2026, 11, 15, 12, 0))
+        return H.osszeallit(self.ut, MA, 7, pr_json=pr_ut, ts=datetime(2026, 11, 15, 12, 0))
 
     def test_oldal_felepitese_es_darabszam(self):
         self.brief(1, allapot='fut', sav='SYSTEMS', kovetkezo='Te: átnézés')
         self.brief(2, allapot='nem_indult', sav='CONTENT')
-        self.brief(3, allapot='dontesre_var', sav='CONTENT')
-        self.brief(4, allapot='lezarva', sav='CONTENT')
-        oldal, szamok, hibak, pr_hiba = self.keszit()
-        self.assertIsNone(pr_hiba)
-        self.assertEqual(hibak, [])
-        self.assertEqual(szamok['teendok'], 2)
+        self.brief(3, allapot='dontesre_var')
+        oldal, szamok, teendok, hiba = self.keszit()
+        self.assertIsNone(hiba)
+        self.assertEqual(teendok, 2)
         self.assertEqual(szamok['SYSTEMS'][H.FUT], 1)
-        self.assertEqual(szamok['CONTENT'][H.VAR], 2)
+        self.assertEqual(szamok['CONTENT'][H.VAR], 1)
+        self.assertEqual(szamok[H.BESOROLATLAN][H.FUT], 1)
         self.assertLess(oldal.index('A te teendőid'), oldal.index('Fejlesztői infrastruktúra</h2>'))
         self.assertIn('prefers-color-scheme:dark', oldal)
         self.assertIn('<html lang="hu">', oldal)
-        self.assertIn('scope=4 brief-fejléc', oldal)       # proveniencia
+        self.assertIn('scope=3 brief-fejléc', oldal)       # proveniencia
         self.assertIn('ts=2026-11-15T12:00:00', oldal)
-
-    def test_nincs_lezart_vagy_kesz_a_heten_elem_az_oldalon(self):
-        self.brief(1, allapot='lezarva', sav='SYSTEMS', cim='LezartCim')
-        self.brief(2, allapot='fut', sav='SYSTEMS', cim='NyitottCim')
-        oldal, _, _, _ = self.keszit()
-        szoveg = re.sub(r'<[^>]+>', ' ', oldal[oldal.index('<main>'):])
-        self.assertNotIn('LezartCim', szoveg)
-        self.assertIn('NyitottCim', szoveg)
-        for tiltott in ('Kész a héten', 'lezárva', 'egyesítve', 'Besorolatlan'):
-            self.assertNotIn(tiltott, szoveg)
 
     def test_nyers_belso_kulcs_nincs_az_oldalon(self):
         self.brief(1, allapot='nem_indult', sav='SYSTEMS')
@@ -263,21 +239,11 @@ class OldalTest(Alap):
         self.assertIn('nem indult', szoveg)
         self.assertIn('döntésre vár', szoveg)
 
-    def test_hianyzo_sav_hibaval_all_meg(self):
-        self.brief(1, allapot='fut', sav=None)
-        oldal, szamok, hibak, _ = self.keszit()
-        self.assertIsNone(oldal)
-        self.assertEqual(len(hibak), 1)
-
-    def test_main_hibakod_es_nincs_kimenet(self):
-        self.brief(1, allapot='fut', sav=None)
-        pr_ut = os.path.join(self.ut, 'prok.json')
-        with open(pr_ut, 'w', encoding='utf-8') as f:
-            json.dump([], f)
-        kimenet = os.path.join(tempfile.gettempdir(), 'heti_attekinto_teszt_%d.html' % os.getpid())
-        self.addCleanup(lambda: os.path.exists(kimenet) and os.remove(kimenet))
-        self.assertEqual(H.main(['--gyoker', self.ut, '--kimenet', kimenet, '--pr-json', pr_ut]), 2)
-        self.assertFalse(os.path.exists(kimenet))
+    def test_hianyzo_sav_nem_buktatja_az_oldalt(self):
+        self.brief(1, allapot='fut')
+        oldal, szamok, _, _ = self.keszit()
+        self.assertIn('Besorolatlan', oldal)
+        self.assertEqual(szamok[H.BESOROLATLAN][H.FUT], 1)
 
     def test_kulso_erdforras_csak_a_google_fonts(self):
         self.brief(1, allapot='fut')

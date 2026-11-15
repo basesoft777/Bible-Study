@@ -1,6 +1,8 @@
 # A heti áttekintő tisztítása — 2026-11-15
 
-*F220.1–F220.2 (SYSTEMS). A felhasználó kérése: „semmilyen lezárt tétel nem kell bele”. (1) A generátor csak nyitott tételt mutat. (2) A ténylegesen lezárt, de nyitottnak látszó briefek lezárása átvitellel. Bizonyíték: `gh pr list --state merged` (731 PR), az `origin/main` commitjai (`F<nn>.` előtag), a brief fejléce és az érintett fájlok a main-en; olvasó: `eszkozok/feladatok.py` fejlécolvasója.*
+*F220.2 (SYSTEMS). A felhasználó kérése: „semmilyen lezárt tétel nem kell bele”. A ténylegesen lezárt, de nyitottnak látszó briefek lezárása átvitellel. Bizonyíték: `gh pr list --state merged` (731 PR), az `origin/main` commitjai (`F<nn>.` előtag), a brief fejléce és az érintett fájlok a main-en; olvasó: `eszkozok/feladatok.py` fejlécolvasója.*
+
+*Hatókör (az orkesztrátor kérése, 2026-11-15): a heti áttekintő oldal átírása és újragenerálása nem ennek a PR-nak a dolga; a `heti_attekinto.py` és tesztjei változatlanok (az F220.1 és F220.3 commit visszavonva az F220.4-ben).*
 
 **Szabály (lezárás átvitellel).** Ha a brief fő eredménye (az `ad` mező) mergelt PR-ral a main-en áll, a brief `lezarva` lesz. A nyitott pontjai (⛔ pont, maradék lépés) új N-tételként a `nyitott/uj/affectionate-keller-a3f024.md` fájlba kerültek (`N-F220a`–`N-F220h` helyőrzők, a számot a `szamkiosztas` adja), a briefre hivatkozva és sávval. A már meglévő N-tétel nyitva marad, a brief csak hivatkozik rá. A brief-fejlécből csak az `allapot` és a `kovetkezo` változott.
 
