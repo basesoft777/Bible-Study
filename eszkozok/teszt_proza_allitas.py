@@ -21,6 +21,8 @@ Károli-párosítás). Így a HAMART-001 javítóköre nem töri el a tesztet.
     kívüli hely és a kapcsolat-adat nélküli motívum nem jelez); hatókör: a helycsoport tematikus helye.
 11. F200.7 (HIBA-szint, E41): a téves riasztás három oka (a „lexikai” minősítésű szám, a fordulat-idézet legközelebbi
     igehelye és névelője, a mondat által megnevezett héber szó) és a `--kapu` (új/régi formájú forrás, bukó és átmenő eset).
+12. F224.4: a három új K-fajta (szám + kapcsolat/erősség, belső utalás, „nem dönti el”), mindegyik pozitív és negatív
+    esettel; az új fajta soha nem gépi ELTÉR, a régi K-tételek számozása nem változik, a `--kapu` JELENTÉS-sort ad.
 
 Futtatás: python eszkozok/teszt_proza_allitas.py
 """
@@ -367,6 +369,127 @@ class Kapu(unittest.TestCase):
         # a „kézi” gépi ítélet (a szám viszonyítási alapja nem állapítható meg) jelentés marad
         hibak, _ = self._futtat({'X-001': FORRAS}, 'A motívum helyei közül csak ebben a két versben áll más szó.')
         self.assertEqual(hibak, 0)
+
+
+def kapcs_sorok(n_magas, n_kozepes=0):
+    ki = [{'forras_igehely': '1Móz 4:14', 'cel_igehely': '1Móz 6:11', 'id': 'X-001', 'bizonyossag': 'magas'}
+          for _ in range(n_magas)]
+    ki += [{'forras_igehely': '1Móz 6:11', 'cel_igehely': 'Ez 8:17', 'id': 'X-001', 'bizonyossag': 'közepes'}
+           for _ in range(n_kozepes)]
+    return ki
+
+
+def futtat_uj(mondatok, kapcsolatok=(), cimek=(), hely=None):
+    """F224.4: több egység egy Ellenoron (a „nem dönti el” mondat párjaihoz), címsorokkal."""
+    k = kornyezet()
+    ell = P.Ellenor('X-001', k['adat'], k['szk'], ELOF, k['igeh'], list(kapcsolatok))
+    ell.cimek = list(cimek)
+    ell.egysegek = [P.Egyseg('rés:ertelmezes', (hely or {}).get(i, 'teszt:%d' % (i + 1)), m)
+                    for i, m in enumerate(mondatok)]
+    for e in ell.egysegek:
+        ell.egyseg(e)
+    return ell
+
+
+def uj_sorok(ell, tipus):
+    return [s for s in ell.sorok if s.tipus == tipus]
+
+
+class F224_4(unittest.TestCase):
+    """F224.4: a kinyerés három új K-fajtája (az ISTENTISZT-001 mérésének 4. és 9. tétele után)."""
+
+    def test_szam_kapcsolat_elter_jellegu(self):
+        ell = futtat_uj(['A motívum helyei között három kapcsolat erős.'], kapcs_sorok(13, 3))
+        s = uj_sorok(ell, 'szám-kapcsolat')
+        self.assertEqual(len(s), 1)
+        self.assertEqual(s[0].itelet, 'kézi')        # soha nem gépi ELTÉR (E41 változatlan)
+        self.assertIn(P.JELENTES_JEL, s[0].bizonyitek)
+        self.assertIn('13 „magas”', s[0].bizonyitek)
+        self.assertEqual(s[0].jelzes, '⚑')
+
+    def test_szam_kapcsolat_egyezik(self):
+        ell = futtat_uj(['A motívum helyei között három kapcsolat erős.'], kapcs_sorok(3, 2))
+        s = uj_sorok(ell, 'szám-kapcsolat')
+        self.assertEqual(len(s), 1)
+        self.assertNotIn(P.JELENTES_JEL, s[0].bizonyitek)
+
+    def test_szam_kapcsolat_nincs(self):
+        ell = futtat_uj(['A motívum helyei között a kapcsolat erős, és három hely a Genezisben áll.'],
+                        kapcs_sorok(13))
+        self.assertEqual(uj_sorok(ell, 'szám-kapcsolat'), [])
+
+    def test_helybol(self):
+        ell = futtat_uj(['Mózes könyveinek hét helyéből ötben így, az 1Móz 4:14-ben viszont nem.'])
+        s = uj_sorok(ell, 'szám-kapcsolat')
+        self.assertEqual(len(s), 1)
+        self.assertIn('7 helyből 5', s[0].bizonyitek)
+        self.assertIn('1Móz 4:14', s[0].bizonyitek)
+
+    def test_belso_utalas_nincs_cel(self):
+        ell = futtat_uj(['A kérdést részletesen l. a 12. szakasz.'], cimek=['## 10. Értelmezés', '## 11. Módszertan'])
+        s = uj_sorok(ell, 'belső utalás')
+        self.assertEqual(len(s), 1)
+        self.assertIn(P.JELENTES_JEL, s[0].bizonyitek)
+
+    def test_belso_utalas_van_cel(self):
+        ell = futtat_uj(['A kérdést részletesen l. a 11. szakasz, és a vitatott pontok tárgyalják.'],
+                        cimek=['## 10. Értelmezés', '## 11. Módszertan', '### ⚠️ Vitatott pontok'])
+        s = uj_sorok(ell, 'belső utalás')
+        self.assertEqual(len(s), 2)
+        self.assertTrue(all(P.JELENTES_JEL not in x.bizonyitek for x in s))
+        self.assertIn('## 11. Módszertan', s[0].bizonyitek)
+
+    def test_belso_utalas_nincs(self):
+        ell = futtat_uj(['A föld a 11. versben áll, és a motívum hat helyen fordul elő.'],
+                        cimek=['## 10. Értelmezés'])
+        self.assertEqual(uj_sorok(ell, 'belső utalás'), [])
+
+    def test_nem_donti_el(self):
+        ell = futtat_uj(['**Az 1Móz 6:11: kezdet vagy ítélet.** Két olvasat áll szemben.',
+                         'A lap a kérdést nem dönti el.',
+                         'A fordulópont az 1Móz 6:11: a föld megtelt erőszakkal.',
+                         'Az Ez 8:17 más helyről szól.'],
+                        hely={0: 'teszt:5', 1: 'teszt:5', 2: 'teszt:9', 3: 'teszt:12'})
+        s = uj_sorok(ell, 'nem dönti el')
+        self.assertEqual(len(s), 1)
+        self.assertEqual(s[0].egyseg.szoveg, 'A lap a kérdést nem dönti el.')
+        self.assertIn('1Móz 6:11', s[0].bizonyitek)             # a pont igehelye a bekezdés címéből
+        self.assertIn('teszt:9', s[0].bizonyitek)               # a lap másik mondata ugyanerre a helyre
+        self.assertNotIn('teszt:12', s[0].bizonyitek)
+
+    def test_nem_donti_el_nincs(self):
+        ell = futtat_uj(['A lap a kérdést a héber szöveg szerint eldönti (1Móz 6:11).'])
+        self.assertEqual(uj_sorok(ell, 'nem dönti el'), [])
+
+    def test_regi_k_szamozas_valtozatlan(self):
+        # az első mondat csak új fajtát ad, a második régi kézi tételt (szám, viszonyítási alap nélkül):
+        # a régi tétel kapja a K1-et, az új a K2-t
+        k = kornyezet()
+        ell = futtat_uj(['A lap a kérdést nem dönti el.', 'A motívum helyei közül csak ebben a két versben áll más szó.'])
+        ki = P.jelentes('X-001', ell, k['adat'], None, 'teszt', ell.egysegek)
+        self.assertIn('### K1 · teszt:2', ki)
+        self.assertIn('### K2 ⚑ · teszt:1', ki)
+
+    def test_kapu_jelentes_nem_hiba(self):
+        d = tempfile.mkdtemp()
+        try:
+            mot = os.path.join(d, 'motivumok')
+            os.makedirs(mot)
+            with open(os.path.join(mot, 'X-001.md'), 'w', encoding='utf-8') as f:
+                f.write(FORRAS + '<!-- RÉS-KEZDET: ertelmezes -->\nA kérdést l. a 12. szakasz.\n'
+                        '<!-- RÉS-VÉGE: ertelmezes -->\n')
+            elof = os.path.join(d, 'elof.tsv')
+            with open(elof, 'w', encoding='utf-8') as f:
+                f.write('id\tigehely\tgerinc_elem\tstrong\tkapcsolodas\n')
+                for x in ELOF:
+                    f.write('%s\t%s\t%s\t%s\t\n' % (x['id'], x['igehely'], x['gerinc_elem'], x['strong']))
+            buf = io.StringIO()
+            hibak = P.kapu(mot, elof, buf)
+            self.assertEqual(hibak, 0)
+            self.assertIn('JELENTÉS X-001', buf.getvalue())
+            self.assertNotIn('**HIBA**', buf.getvalue())
+        finally:
+            shutil.rmtree(d)
 
 
 class Lektor(unittest.TestCase):

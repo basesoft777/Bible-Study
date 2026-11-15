@@ -25,8 +25,25 @@ F206 (a HAMART-001 lektori körének két ismétlődő hibaosztálya, ⚑ jelzé
 
 Ahol az állítás nem gépies (ki az alany, mi telik meg mivel, mire utal vissza), az ellenőrzési listára kerül: az
 állítás, a Károli-vers és a héber/görög sor egymás mellett, a gépi jelzésekkel (⚑: a magyar szó a versben más
-héber/görög szót fordít, mint a lánc szava; a szó nincs a versben). A listát olcsó modell vagy ember nézi át;
-az eszköz modellt nem hív.
+héber/görög szót fordít, mint a lánc szava; a szó nincs a versben). A listát az állítás-ellenőr (F2,
+`.claude/agents/allitas-ellenor.md`) ítéli, állításonként; az eszköz modellt nem hív. Egy K-tétel = egy állítás (a
+mondat), a benne idézett igehelyekkel.
+
+F224.4 (a cikkírás új menete; az ISTENTISZT-001 mérése, 2026-11-15: a kinyerés hézaga) — három új K-fajta, csak a rés
+mondatain:
+
+- **szám + kapcsolat/erősség** („három kapcsolat erős”, „hét helyéből ötben”): a kapcsolat-tábla (`adat/kapcsolatok.tsv`)
+  sorai bizonyosság szerint, illetve a bekezdés felsorolt igehelyei; ha a mondat száma nem egyezik a tábla azonos
+  bizonyosságú sorainak számával, ELTÉR-jellegű JELENTÉS;
+- **belső utalás** („l. 10. szakasz”, „a Vitatott pontok tárgyalja”): a célpont (a forrás vagy a generált lap címsora)
+  létezik-e; ha nem, ELTÉR-jellegű JELENTÉS;
+- **„nem dönti el”** típusú mondat: a pont igehelyei (a bekezdésből) és a lap más mondatai, amelyek ugyanezekre a
+  helyekre támaszkodnak (a bíráló és az F2 7. kérdése: a lap két helyének ellentmondása).
+
+Az új fajták soha nem adnak gépi ELTÉR-ítéletet: az E41 HIBA-szintje és hatóköre nem változik; a `--kapu` a régi
+sorait változatlanul írja, és motívumonként külön JELENTÉS-sort ad az ELTÉR-jellegű új tételekre (a HIBA-szintre
+emelés javaslata: N-F224a). A régi K-tételek számozása nem változik: az új fajta, amely régi K-tétel nélküli mondaton
+áll, a régiek után kap számot.
 
 Kimenet: `naplok/ALLITAS_<ID>.md` (soronként: állítás | vers | gépi ítélet: egyezik / ELTÉR / kézi | bizonyíték).
 Kapu-szint: egy motívumra futtatva JELENTÉS (a kilépőkód 0; `--szigoru`: 1, ha van ELTÉR-sor).
@@ -559,6 +576,27 @@ JELENTES_GLOSSZA = re.compile(r'(?<![%s])(?:jelentés\w*|jelenti|értelemben|glo
                               % (BETU, BETU), re.I)
 RESZHALMAZ = re.compile(r'(?<![%s])(?:közül|csak|ebben|ezekben|amely\w*|ahol)(?![%s])' % (BETU, BETU), re.I)
 SZAM_ELIDALT = re.compile(r'(\d+)-[aoeö]t\s+(?:a|az)\s+(Genezisből|Ószövetség többi könyvéből|Újszövetségből)')
+# F224.4: az új K-fajták
+UJ_FAJTAK = ('szám-kapcsolat', 'belső utalás', 'nem dönti el')
+JELENTES_JEL = 'JELENTÉS (ELTÉR-jellegű, F224.4)'
+_SZAMSZO = r'(\d+|%s)' % '|'.join(sorted(SZAMSZAVAK, key=len, reverse=True))
+KAPCS_SZAM = re.compile(r'(?<![%s0-9])%s\s+((?:[%s-]+\s+){0,2}?)kapcsolat\w*' % (BETU, _SZAMSZO, BETU), re.I)
+EROSSEG = {'erős': 'magas', 'szoros': 'magas', 'magas': 'magas', 'közepes': 'közepes', 'gyenge': 'alacsony',
+           'laza': 'alacsony', 'alacsony': 'alacsony'}
+EROSSEG_RX = re.compile(r'(?<![%s])(erős|szoros|magas|közepes|gyenge|laza|alacsony)(?:\w*)' % BETU, re.I)
+HELYBOL = re.compile(r'(?<![%s0-9])%s\s+(?:[%s]+\s+)?hely\w*?ből\s+%s' % (BETU, _SZAMSZO, BETU, _SZAMSZO), re.I)
+LAPRESZ = ('Kivonat', 'Miért fontos', 'Peshat', 'Remez', 'Drash', 'Sod', 'Vitatott pont', 'Módszertan', 'Értelmezés',
+           'Nyitott kérdés', 'Előfordulás', 'Szótári háttér', 'Hatástörténet')
+BELSO_SZAM = re.compile(r'(?:(?<![%s])(?:l\.|lásd|vö\.)\s*(?:a\s+|az\s+)?(?:lap\s+)?(\d+(?:/[a-z])?)\.(?:\s*(?:szakasz|pont)\w*)?'
+                        r'|(?<![%s0-9])(\d+(?:/[a-z])?)\.\s+(?:szakasz|pont)\w*)' % (BETU, BETU), re.I)
+BELSO_NEV = re.compile(r'(?:(?<![%s])(?:l\.|lásd|vö\.)\s*(?:a\s+|az\s+)?(%s)\w*'
+                       r'|(?<![%s])(?:a|az)\s+(%s)\w*\s+(?:tárgyal|részletez|kifejt|bemutat|sorol)\w*)'
+                       % (BETU, '|'.join(LAPRESZ), BETU, '|'.join(LAPRESZ)), re.I)
+NEM_DONT = re.compile(r'(?<![%s])(?:nem\s+dönti\s+el|nem\s+dönt(?![%s])|nyitva\s+hagy\w*|nem\s+foglal\s+állást'
+                      r'|eldöntetlen\w*)' % (BETU, BETU), re.I)
+UGYANARRA_MAX = 8   # a „nem dönti el” mondat mellé legfeljebb ennyi más mondat kerül a lapról
+
+
 STRONG_SZAM = re.compile(r'\b(?:szó|ige)\b[^.;]*?\b(\d{1,3}(?:[  ]\d{3})*|\d+)\s+versben\s+áll')
 
 
@@ -588,6 +626,10 @@ class Ellenor:
                     self.kapcs.setdefault(k, []).append(d)
         self.szamok = self._szamok()
         self.motivum_versek = [k for d in elof_sorok for k in adat.versek(d['igehely'])]
+        # F224.4: a lap összes egysége (a „nem dönti el” mondat párjaihoz) és a belső utalás lehetséges célpontjai
+        self.egysegek = []
+        self.cimek = []
+        self.kapcs_sorok = list(kapcsolatok)
 
     def _szamok(self):
         def versszam(sorok):
@@ -653,6 +695,7 @@ class Ellenor:
         visszautal = VISSZAUTAL.search(IDEZET_KI.sub(' ', szoveg))
         if e.forras.startswith('rés:'):
             self._hatokor(e, szoveg)
+            self._uj_fajtak(e, szoveg)
         if not vizsgalt:
             if abszolut and e.forras.startswith('rés:'):
                 self.sorok.append(Sor(e, '–', szoveg, 'kézi', '⚑ kizárólagos vagy egyetemes állítás („%s”) '
@@ -785,6 +828,130 @@ class Ellenor:
                                                           d.get('tipus', ''), d.get('bizonyossag', ''))
                                       for d in sorok))]
         return []
+
+    # --- F224.4: az új K-fajták (kézi tétel; gépi ELTÉR soha, l. a modul docstringjét)
+    def _uj_fajtak(self, e, szoveg):
+        tiszta = IDEZET_KI.sub(' ', szoveg)
+        self._szam_kapcsolat(e, szoveg, tiszta)
+        self._belso_utalas(e, szoveg, tiszta)
+        if NEM_DONT.search(tiszta):
+            self._nem_donti_el(e, szoveg)
+
+    def _refek_lazan(self, szoveg):
+        """Igehelyek a pont címéből is („**Az 1Móz 4:26: kezdet …**”, „A 2Móz 33:19 és 34:5: …”): a cím utáni kettőspont
+        és az „és” felsorolás az igehely-felismerést megtöri; csak az új K-fajtákhoz (a régi próbák változatlanok)."""
+        t = re.sub(r'(\d+:\d+(?:-\d+)?):(?=\s)', r'\1', szoveg)
+        t = re.sub(r'(\d+:\d+(?:-\d+)?)\s+és\s+(?=\d+:\d+)', r'\1, ', t)
+        return [r for _, _, refek in self.igeh.csoportok(t) for r in refek]
+
+    def _bekezdes_refek(self, e):
+        """Az egység bekezdésének (azonos forrássor) igehelyei, sorrendben."""
+        ki = []
+        for x in (self.egysegek or [e]):
+            if x.hely == e.hely and x.forras == e.forras:
+                ki += [r for r in self._refek_lazan(x.szoveg) if r not in ki]
+        return ki
+
+    def _szam_kapcsolat(self, e, szoveg, tiszta):
+        for m in KAPCS_SZAM.finditer(tiszta):
+            ertek = szam_ertek(m.group(1))
+            if ertek is None:
+                continue
+            ero = EROSSEG_RX.search(tiszta[max(0, m.start() - 30):m.end() + 30])
+            if not self.kapcs_sorok:
+                biz = 'szám + kapcsolat: a motívumnak nincs kapcsolat-sora (adat/kapcsolatok.tsv): kézi'
+                jel = ''
+            else:
+                szamlalo = {}
+                for d in self.kapcs_sorok:
+                    b = d.get('bizonyossag', '').strip() or '–'
+                    szamlalo[b] = szamlalo.get(b, 0) + 1
+                tabla = ', '.join('%s %d' % (k, v) for k, v in sorted(szamlalo.items()))
+                if ero:
+                    kat = EROSSEG[ero.group(1).lower()]
+                    n = szamlalo.get(kat, 0)
+                    if n != ertek:
+                        biz = ('%s: a mondat %d „%s” kapcsolatot mond, az adat/kapcsolatok.tsv (id=%s) %d „%s” '
+                               'bizonyosságú sort ad (a tábla: %s, összesen %d); csoport vagy kapcsolat?'
+                               % (JELENTES_JEL, ertek, ero.group(1), self.mid, n, kat, tabla, len(self.kapcs_sorok)))
+                        jel = '⚑'
+                    else:
+                        biz = ('szám + kapcsolat: a mondat %d „%s” kapcsolatot mond, a tábla %d „%s” sort ad (%s); '
+                               'a tartalom kézi' % (ertek, ero.group(1), n, kat, tabla))
+                        jel = ''
+                else:
+                    if ertek != len(self.kapcs_sorok):
+                        biz = ('%s: a mondat %d kapcsolatot mond, az adat/kapcsolatok.tsv (id=%s) %d sort ad (%s)'
+                               % (JELENTES_JEL, ertek, self.mid, len(self.kapcs_sorok), tabla))
+                        jel = '⚑'
+                    else:
+                        biz = 'szám + kapcsolat: a tábla %d sort ad (%s); a tartalom kézi' % (len(self.kapcs_sorok),
+                                                                                              tabla)
+                        jel = ''
+            self.sorok.append(Sor(e, '–', szoveg, 'kézi', ('⚑ ' if jel else '') + biz, 'szám-kapcsolat', jelzes=jel))
+        for m in HELYBOL.finditer(tiszta):
+            osszes, resz = szam_ertek(m.group(1)), szam_ertek(m.group(2))
+            if osszes is None or resz is None:
+                continue
+            refek = self._bekezdes_refek(e)
+            self.sorok.append(Sor(e, '–', szoveg, 'kézi',
+                                  '⚑ szám + részhalmaz („%s”): a mondat %d helyből %d-t mond; a bekezdés felsorolt '
+                                  'igehelyei (%d): %s — a darabszám a felsorolással egyeztetendő'
+                                  % (m.group(0), osszes, resz, len(refek), ', '.join(refek) or '–'),
+                                  'szám-kapcsolat', jelzes='⚑'))
+
+    def _cel_letezik(self, cel):
+        c = cel.lower()
+        # a lap szakaszai („## 10. …”) előbb, a mélyebb címsorok és a félkövér bekezdés-címek utána
+        rendezett = sorted(self.cimek, key=lambda x: 0 if re.match(r'#{1,3}\s', x) else 1)
+        for cim in rendezett:
+            t = re.sub(r'^#+\s*', '', cim).strip().lower()
+            if re.match(r'\d', c):
+                if re.match(r'%s(?![0-9/])[.\s]' % re.escape(c), t + ' '):
+                    return cim
+            elif c in t:
+                return cim
+        return None
+
+    def _belso_utalas(self, e, szoveg, tiszta):
+        celok = []
+        for m in BELSO_SZAM.finditer(tiszta):
+            celok.append((m.group(0), m.group(1) or m.group(2)))
+        for m in BELSO_NEV.finditer(tiszta):
+            celok.append((m.group(0), m.group(1) or m.group(2)))
+        for kif, cel in celok:
+            if not self.cimek:
+                self.sorok.append(Sor(e, '–', szoveg, 'kézi', 'belső utalás („%s”): a forrásnak és a lapnak nincs '
+                                      'címsor-adata: kézi' % kif.strip(), 'belső utalás'))
+                continue
+            talalt = self._cel_letezik(cel)
+            if talalt:
+                self.sorok.append(Sor(e, '–', szoveg, 'kézi', 'belső utalás („%s”): a célpont létezik (%s); hogy '
+                                      'ott valóban az áll-e, kézi' % (kif.strip(), talalt.strip()), 'belső utalás'))
+            else:
+                self.sorok.append(Sor(e, '–', szoveg, 'kézi', '⚑ %s: belső utalás („%s”), de a célpont („%s”) '
+                                      'sem a forrás, sem a generált lap címsorai között nem áll'
+                                      % (JELENTES_JEL, kif.strip(), cel), 'belső utalás', jelzes='⚑'))
+
+    def _nem_donti_el(self, e, szoveg):
+        refek = self._bekezdes_refek(e)
+        versek = {k for r in refek for k in self.adat.versek(r)}
+        tarsak = []
+        for x in self.egysegek:
+            if x is e or not x.forras.startswith('rés:') or x.hely == e.hely:
+                continue
+            xv = {k for r in self._refek_lazan(x.szoveg) for k in self.adat.versek(r)}
+            if versek & xv:
+                tarsak.append(x)
+        sor = ('⚑ „nem dönti el” típusú mondat; a pont igehelyei (a bekezdésből): %s. A lap más mondatai ugyanezekre '
+               'a helyekre (%d): ' % (', '.join(refek) or '–', len(tarsak)))
+        sor += ' · '.join('%s (%s): „%s”' % (x.hely, x.forras, rovid(x.szoveg, 140)) for x in tarsak[:UGYANARRA_MAX])
+        if len(tarsak) > UGYANARRA_MAX:
+            sor += ' · … (+%d)' % (len(tarsak) - UGYANARRA_MAX)
+        if not tarsak:
+            sor += 'nincs'
+        self.sorok.append(Sor(e, '–', szoveg, 'kézi', sor + '. A kérdés: dönt-e a lap másutt, amit itt nyitva hagy?',
+                              'nem dönti el', jelzes='⚑'))
 
     def _hatokor(self, e, szoveg):
         """F206: helycsoport minden helyére szóló szó-állítás („a motívum hat újszövetségi helyén a motívum szava …”),
@@ -1181,11 +1348,14 @@ def jelentes(mid, ell, adat, lektor=None, scope_forras='', egysegek=()):
     kezi = [s for s in sorok if s.itelet == 'kézi']
     # kézi azonosító: egységenként és versenként egy
     kulcsok = {}
-    for s in kezi:
+    # F224.4: előbb a régi fajták egységei (a K-számozás a régi tételeken nem változik), utána az új fajta, amely régi
+    # tétel nélküli mondaton áll
+    for s in [x for x in kezi if x.tipus not in UJ_FAJTAK] + [x for x in kezi if x.tipus in UJ_FAJTAK]:
         k = id(s.egyseg)   # egységenként egy tétel: a mondat egyszer, alatta versenként a bizonyíték
         if k not in kulcsok:
             kulcsok[k] = 'K%d' % (len(kulcsok) + 1)
-        s.kezi_id = kulcsok[k]
+    for s in kezi:
+        s.kezi_id = kulcsok[id(s.egyseg)]
     elter = [s for s in sorok if s.itelet == 'ELTÉR']
     egyez = [s for s in sorok if s.itelet == 'egyezik']
     ts = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%MZ')
@@ -1243,7 +1413,9 @@ def jelentes(mid, ell, adat, lektor=None, scope_forras='', egysegek=()):
     ki.append('## Ellenőrzési lista (kézi)')
     ki.append('')
     ki.append('Minden tételnél a kérdés: azt mondja-e a vers (a Károli és a héber/görög sor szerint), amit az '
-              'állítás neki tulajdonít — az alany, a tárgy, a szó és a kapcsolat. A ⚑ tételek elöl.')
+              'állítás neki tulajdonít — az alany, a tárgy, a szó és a kapcsolat. A ⚑ tételek elöl. Egy K-tétel = '
+              'egy állítás (a mondat), a benne idézett igehelyekkel; az ítélet az állítmányra szól, állításonként '
+              '(az állítás-ellenőr, `.claude/agents/allitas-ellenor.md`).')
     ki.append('')
     rendezett = sorted(kulcsok.items(), key=lambda kv: (0 if any(s.jelzes for s in kezi if s.kezi_id == kv[1])
                                                         else 1, int(kv[1][1:])))
@@ -1277,7 +1449,23 @@ def jelentes(mid, ell, adat, lektor=None, scope_forras='', egysegek=()):
     return '\n'.join(ki) + '\n'
 
 
-def futtat(mid, md_ut=None, elof_ut=T_ELOF):
+def cimsorok(*szovegek):
+    """F224.4: a belső utalás lehetséges célpontjai: a forrás és a generált lap címsorai, valamint a félkövér
+    bekezdés-címek („**Peshat — …**”, „**Az 1Móz 4:26: …**”)."""
+    ki = []
+    for t in szovegek:
+        for sor in (t or '').split('\n'):
+            s = sor.strip()
+            if s.startswith('#'):
+                ki.append(s)
+            else:
+                m = re.match(r'\*\*([^*]{2,120})\*\*', s)
+                if m:
+                    ki.append(m.group(1))
+    return ki
+
+
+def futtat(mid, md_ut=None, elof_ut=T_ELOF, lap_ut=None):
     md_ut = md_ut or os.path.join(ROOT, 'motivumok', '%s.md' % mid)
     with open(md_ut, 'r', encoding='utf-8') as f:
         forras = f.read()
@@ -1315,9 +1503,15 @@ def futtat(mid, md_ut=None, elof_ut=T_ELOF):
     szk = Szokeszlet(forras, elof_sorok, adat)
     kapcsolatok = [d for d in tsv_dict(T_KAPCS) if d.get('id') == mid] if os.path.exists(T_KAPCS) else []
     ell = Ellenor(mid, adat, szk, elof_sorok, igeh, kapcsolatok)
+    ell.egysegek = egysegek
+    lap_ut = lap_ut or os.path.join(ROOT, 'lexikon', '%s_TUDOMANYOS.md' % mid)
+    lap = ''
+    if os.path.exists(lap_ut):
+        with open(lap_ut, 'r', encoding='utf-8') as f:
+            lap = f.read()
+    ell.cimek = cimsorok(forras, lap)
     for e in egysegek:
         ell.egyseg(e)
-    ell.egysegek = egysegek
     return ell, adat, szk, len(egysegek)
 
 
@@ -1354,10 +1548,14 @@ def kapu(mappa=None, elof_ut=T_ELOF, kimenet=sys.stdout):
             continue
         hibak += len(elterek)
         kimenet.write('- %s: új formájú; ELTÉR %d, egyezik %d, kézi sor %d\n' % (
-            mid, len(elterek), egyezik, sum(1 for s in ell.sorok if s.itelet == 'kézi')))
+            mid, len(elterek), egyezik, sum(1 for s in ell.sorok if s.itelet == 'kézi' and s.tipus not in UJ_FAJTAK)))
         for s in elterek:
             kimenet.write('  - **HIBA** %s | %s | „%s” | %s | %s\n' % (
                 mid, s.egyseg.hely, rovid(s.allitas, 120).replace('\n', ' '), s.vers, rovid(s.bizonyitek, 200)))
+        for s in ell.sorok:
+            if s.tipus in UJ_FAJTAK and JELENTES_JEL in s.bizonyitek:
+                kimenet.write('  - JELENTÉS %s | %s | „%s” | %s\n' % (
+                    mid, s.egyseg.hely, rovid(s.allitas, 120).replace('\n', ' '), rovid(s.bizonyitek, 240)))
     kimenet.write('\n%s\n' % ('E41: nincs ELTÉR-sor az új formájú forrásokon.' if not hibak else
                               'E41 HIBA: %d ELTÉR-sor; a hely, az állítás, a vers és a bizonyíték fent áll — a '
                               'forrás javul (vagy az eszköz, teszttel), a gépi ítélet nem írható felül.' % hibak))
