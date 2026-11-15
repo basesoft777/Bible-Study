@@ -2099,6 +2099,45 @@ class E35Teszt(unittest.TestCase):
     def test_pozitiv_teljes_modban_nem_fut(self):
         self.assertEqual(self._fut(['adat/kiadasok.tsv'], {'a.tsv': 'regi\n'}, {'a.tsv': 'uj\n'}, teljes=True), [])
 
+    # F223 (a): ha csak a szovegsablon valtozott, az osszevetes fajlonkenti (csak a szoveg-fajlok)
+    def _fut_szoveg(self, valtozott, lemez, uj_szoveg):
+        hivott = []
+
+        def teljes_export(k):
+            hivott.append('teljes')
+            return {}
+
+        def szoveg_export(k):
+            hivott.append('szoveg')
+            return uj_szoveg
+
+        with _IdeiglenesGyoker() as gy:
+            for rel, sz in lemez.items():
+                _ir(gy, 'nyilt_mag/' + rel, sz)
+            t = SZ.e35_nyilt_mag_naprakesz(valtozott, False, root=gy, export_fn=teljes_export, szoveg_export_fn=szoveg_export)
+        return t, hivott
+
+    def test_pozitiv_szovegsablon_csak_a_szoveg_exportot_hivja(self):
+        t, hivott = self._fut_szoveg(['eszkozok/nyilt_mag_szovegek.py'], {'MODSZER.md': 'x\n', 'adat.tsv': 'a\n'},
+                                     {'MODSZER.md': 'x\n'})
+        self.assertEqual((t, hivott), ([], ['szoveg']))
+
+    def test_negativ_szovegsablon_elavult_szovegfajl_hiba_csak_azon(self):
+        t, hivott = self._fut_szoveg(['eszkozok/nyilt_mag_szovegek.py'], {'MODSZER.md': 'regi\n', 'adat.tsv': 'a\n'},
+                                     {'MODSZER.md': 'uj\n'})
+        self.assertEqual([(x.fajl, 'csak-szovegek' in x.reszlet) for x in t], [('nyilt_mag/MODSZER.md', True)])
+        self.assertEqual(hivott, ['szoveg'])
+
+    def test_pozitiv_szovegsablon_az_adatfajlt_nem_vizsgalja(self):
+        # az adatfajl a lemezen tetszoleges: a szoveg-mod nem veti ossze
+        t, _ = self._fut_szoveg(['eszkozok/nyilt_mag_szovegek.py'], {'MODSZER.md': 'x\n', 'adat.tsv': 'regi\n'},
+                                {'MODSZER.md': 'x\n'})
+        self.assertEqual(t, [])
+
+    def test_negativ_sablon_es_adat_egyutt_a_teljes_export(self):
+        t, hivott = self._fut_szoveg(['eszkozok/nyilt_mag_szovegek.py', 'adat/kiadasok.tsv'], {'MODSZER.md': 'x\n'}, {})
+        self.assertEqual(hivott, ['teljes'])
+
 
 _VALODI_GYOKER = os.path.dirname(os.path.dirname(_ELLENORZES))
 
