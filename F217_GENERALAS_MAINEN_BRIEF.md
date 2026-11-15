@@ -8,7 +8,7 @@ modell: opus
 allapot: megallt
 ag: claude/f217-generalas-mainen-f752cc
 ad: a generált nézeteket nem az ágak commitolják, hanem egy Action generálja újra a main-en egy jegyzék (`adat/generalt_nezetek.tsv`) szerint; a párhuzamos PR-ok nem várnak egymásra a generált fájlok miatt; a jegyzék a bemeneti jegyzék első lépése
-kovetkezo: "Te: a #709 mergelve; indulás a heti reset után (2026-11-14 14:00 UTC), orkesztrátori döntés (keret); a terv átnézése kész (O1–O6 elfogadva, két kiegészítés; naplok/F217_terv.md 5.); a megvalósítás (F217.2–) az orkesztrátor jelzésére"
+kovetkezo: "Orkesztrátor: ütközés a #729-cel (F218a), írás előtt megállva — közös fájl az adat/SEMA.md, és a #729 adat/lapgen_bemenetek.tsv-je (B01–B64) a jegyzék B-sorait kettőzné (O2); javaslat: a jegyzékben csak G-sorok, B-hivatkozás a lapgen_bemenetek.tsv-re, a SEMA-bejegyzés a #729 merge-e után; a main bevonva (2026-11-15)"
 munka: folyamat
 olvas: [adat/SEMA.md, adat/lap_befagyasztas.tsv, eszkozok/szamkiosztas.py]
 ir: [adat/generalt_nezetek.tsv, adat/SEMA.md, .github/workflows/generalt_nezetek.yml, .github/workflows/ellenorzes.yml, .claude/commands/kiadas.md, eszkozok/generalt_nezetek.py, eszkozok/teszt_generalt_nezetek.py]
