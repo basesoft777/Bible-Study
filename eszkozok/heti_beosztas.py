@@ -52,7 +52,7 @@ REPO = F.REPO
 # ---------------------------------------------------------------------------
 
 TERV_FEJ = ['het', 'sav', 'sorrend', 'tetel', 'cel_a_het_vegere', 'modell', 'becsult_keret_szazalek',
-            'allapot_kezi', 'jovahagyva', 'megjegyzes']
+            'allapot_kezi', 'jovahagyva', 'eredeti_keret_szazalek', 'session_minta', 'megjegyzes']
 KERET_FEJ = ['het', 'sav', 'elhasznalt_szazalek', 'ts', 'forras']
 OTLET_FEJ = ['id', 'sav', 'cim', 'forras', 'allapot', 'megjegyzes']
 
@@ -157,6 +157,61 @@ def kezi_allapot(szoveg):
     return kod.strip(), indok.strip()
 
 
+def session_mintak(s):
+    """A sor `session_minta` mezőjének részszövegei (kisbetűsen, üres elemek nélkül)."""
+    return [x.strip().lower() for x in (s.get('session_minta') or '').split(';') if x.strip()]
+
+
+def eredeti_keret(s):
+    """A hét elején becsült keret (egész): az `eredeti_keret_szazalek`, üresen a `becsult_keret_szazalek`."""
+    x = (s.get('eredeti_keret_szazalek') or '').strip()
+    return int(x) if x.isdigit() else int(s['becsult_keret_szazalek'])
+
+
+def f_szam_a_cimben(cim, szam):
+    """Igaz, ha a címben az `F<szam>` szóhatárral áll (előtte nem betű/szám); utána betű megengedett (F218a)."""
+    return re.search(r'(?<![0-9A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű_])F%d(?![0-9])' % szam, cim or '', re.IGNORECASE) is not None
+
+
+def sor_session_hozzarendeles(terv_het, sessionok):
+    """{(sav, sorrend): [session, …]}: minden session legfeljebb egy sorhoz tartozik.
+
+    Sorrend: (a) a sor `session_minta` részszövege illeszkedik a címre (kis/nagybetűtől függetlenül); (b) a sor `tetel`
+    mezője brief-szám (`#NNN` / `F<NNN>`), és a címben szóhatárral szerepel az `F<NNN>`; (c) az ORKESZTRACIO sávú sor
+    megkapja az orkesztrációba sorolt sessionöket. Több sor illeszkedésekor a hét sorrendje szerinti első nyer."""
+    kimenet = {(s['sav'], s['sorrend']): [] for s in terv_het}
+    for se in sessionok:
+        cim = (se.get('nev') or '')
+        alacsony = cim.lower()
+        talalt = None
+        for s in terv_het:
+            if any(p in alacsony for p in session_mintak(s)):
+                talalt = s
+                break
+        if talalt is None:
+            for s in terv_het:
+                fajta, szam = tetel_hivatkozas(s['tetel'])
+                if fajta == 'brief' and f_szam_a_cimben(cim, szam):
+                    talalt = s
+                    break
+        if talalt is None and se.get('sav') == 'ORKESZTRACIO':
+            talalt = next((s for s in terv_het if s['sav'] == 'ORKESZTRACIO'), None)
+        if talalt is not None:
+            kimenet[(talalt['sav'], talalt['sorrend'])].append(se)
+    return kimenet
+
+
+def sor_meres(terv_het, meres):
+    """{(sav, sorrend): mért % (float) | None}: soronkénti mért fogyás; None, ha a mérés nincs kalibrálva. Üres, ha
+    nincs mérés."""
+    if not meres:
+        return {}
+    szorzo = (meres.get('kalibralas') or {}).get('heti')
+    hozzarendeles = sor_session_hozzarendeles(terv_het, meres.get('sessionok') or [])
+    return {k: (sum(x['egyseg'] for x in lista) * szorzo if szorzo is not None else None)
+            for k, lista in hozzarendeles.items()}
+
+
 def terv_ellenoriz(sorok):
     hibak = []
     kulcsok = set()
@@ -183,6 +238,11 @@ def terv_ellenoriz(sorok):
                          % (h, s['becsult_keret_szazalek']))
         else:
             osszeg[s['het']] = osszeg.get(s['het'], 0) + int(s['becsult_keret_szazalek'])
+        eredeti = s.get('eredeti_keret_szazalek', '').strip()
+        if eredeti and not (eredeti.isdigit() and 0 <= int(eredeti) <= 100):
+            hibak.append('%s: az `eredeti_keret_szazalek` üres vagy 0–100 közötti egész kell (kapott: %r)' % (h, eredeti))
+        if s.get('session_minta', '').strip() and not session_mintak(s):
+            hibak.append('%s: a `session_minta` nem tartalmaz részszöveget (`;`-vel elválasztva)' % h)
         kod, indok = kezi_allapot(s['allapot_kezi'])
         if kod and kod not in KEZI_ALLAPOTOK:
             hibak.append('%s: ismeretlen `allapot_kezi` (%s; kapott: %r)' % (h, ' | '.join(KEZI_ALLAPOTOK), kod))
@@ -430,7 +490,7 @@ def epit(terv, keret, otlet, briefek, main_all, prok, dt, het_arg=None, meres=No
     keret_elozo = [k for k in keret if k['het'] == elozo.isoformat()]
     return {
         'het': het, 'elozo': elozo, 'terv_het': terv_het, 'nyitott': nyitott, 'kesz': kesz,
-        'visszanezes': visszanezes, 'keret': keret_meressel(keret_osszesites(terv_het, keret_het), meres), 'meres': meres,
+        'sor_mert': sor_meres(terv_het, meres), 'visszanezes': visszanezes, 'keret': keret_meressel(keret_osszesites(terv_het, keret_het), meres), 'meres': meres,
         'keret_elozo': keret_osszesites(terv_elozo, keret_elozo),
         'teendok': teendok_keszit(nyitott, terv_het, kontextus),
         'otlet': otlet, 'felmerendo': [o for o in otlet if otlet_allapot(o['allapot'])[0] == 'felmerendo'],
@@ -501,12 +561,26 @@ def _allapot_html(a):
     return '<span class="allapot a-%s">%s</span>' % (e(a['kulcs']), e(a['cimke']))
 
 
-def _sor_html(s, a, tobb_jovahagyas):
+def _keret_chip(s, sor_mert):
+    """A sor keret-jelölése: mérés nélkül „X% keret”; méréssel „tervezett X% → mért Y%” (átcsoportosításnál az eredeti
+    tervvel: „tervezett X% (eredetileg Z%) → mért Y%”)."""
+    terv = int(s['becsult_keret_szazalek'])
+    if sor_mert is None:
+        return '<span class="chip keret">%s keret</span>' % e(_szazalek(terv))
+    kulcs = (s['sav'], s['sorrend'])
+    mert = sor_mert.get(kulcs)
+    eredeti = eredeti_keret(s)
+    terv_szoveg = 'tervezett %s' % _szazalek(terv) + (' (eredetileg %s)' % _szazalek(eredeti) if eredeti != terv else '')
+    mert_szoveg = _szazalek(float(mert)) if mert is not None else 'nincs kalibrálva'
+    return '<span class="chip keret">%s → mért %s</span>' % (e(terv_szoveg), e(mert_szoveg))
+
+
+def _sor_html(s, a, tobb_jovahagyas, sor_mert=None):
     fejresz = ' '.join(x for x in (_tetel_cimke(s), '<span class="cim">%s</span>' % e(s['cel_a_het_vegere'])) if x)
     meta = [_allapot_html(a)]
     if s['modell'] and s['modell'] != '-':
         meta.append('<span class="chip">modell: %s</span>' % e(s['modell']))
-    meta.append('<span class="chip keret">%s keret</span>' % e(_szazalek(int(s['becsult_keret_szazalek']))))
+    meta.append(_keret_chip(s, sor_mert))
     if tobb_jovahagyas:
         meta.append('<span class="chip">%s</span>' % ('jóváhagyva' if s['jovahagyva'] == 'igen' else 'javaslat'))
     pr = H._pr_html(a['prok'])
@@ -661,7 +735,7 @@ def html_keszit(m, forras_szoveg, ts):
         fej = '<div class="savfej"><h2>%s</h2><span class="savadat">%s · %d nyitott sor%s</span></div>' % (
             e(SAV_CIMKE[sav]), e(_keret_cimke(m['keret'].get(sav))), len(sorok),
             (', %d kész (lent, a visszanézésben)' % kesz_sav[sav]) if kesz_sav[sav] else '')
-        torzs = ''.join(_sor_html(s, a, tobb_jovahagyas) for s, a in sorok)
+        torzs = ''.join(_sor_html(s, a, tobb_jovahagyas, m['sor_mert'] or None) for s, a in sorok)
         szoveg = '<ul class="sorok-lista">%s</ul>' % torzs if torzs else '<p class="ures">Nincs nyitott sor.</p>'
         szoveg += _top_html(m['keret'].get(sav))
         if sav == 'FELMERES':
@@ -680,9 +754,9 @@ def html_keszit(m, forras_szoveg, ts):
     if m['kesz']:
         reszek.append('<ul class="sorok-lista">%s</ul>' % ''.join(
             '<li class="sor"><span class="sorrend">%s.</span><div><div>%s <span class="cim">%s</span></div>'
-            '<div class="meta">%s <span class="chip">%s</span> <span class="chip keret">%s keret</span> %s</div></div></li>'
+            '<div class="meta">%s <span class="chip">%s</span> %s %s</div></div></li>'
             % (e(s['sorrend']), _tetel_cimke(s), e(s['cel_a_het_vegere']), _allapot_html(a), e(SAV_CIMKE[s['sav']]),
-               e(_szazalek(int(s['becsult_keret_szazalek']))), H._pr_html(a['prok']))
+               _keret_chip(s, m['sor_mert'] or None), H._pr_html(a['prok']))
             for s, a in m['kesz']))
     else:
         reszek.append('<p class="ures">Ezen a héten még nem zárult le terv-sor.</p>')
