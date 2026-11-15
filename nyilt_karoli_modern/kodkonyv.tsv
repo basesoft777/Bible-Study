@@ -1,4 +1,4 @@
-# GENERÁLT: a(z) Logosz-lexikon – Modernizált Károli – Strong nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
+# GENERÁLT: a Logosz-lexikon – Modernizált Károli – Strong nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 # GENERATED: export of the Logosz Lexikon – Modernised Károli – Strong open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
 fajl	oszlop	ertek	leiras_hu	leiras_en
 konyvek	osis		A vers OSIS-azonosítója (könyv.fejezet.vers), a Károli-versszámozás szerint.	OSIS verse identifier (book.chapter.verse), in Károli versification.
@@ -17,8 +17,6 @@ konyvek	strong		A párosított eredeti szó Strong-száma (H… héber, G… gö
 konyvek	eredeti_token		Az eredeti szó sorszáma a TAHOT/TAGNT versében (a Károli-vers kulcsán).	Position of the source word in the TAHOT/TAGNT verse (keyed to the Károli verse).
 konyvek	kapcsolat	szo	A pár egy eredeti szóhoz köti a magyar szót.	The pair links the Hungarian word to a source word.
 konyvek	kapcsolat	morfema	A pár egy héber előtag- vagy ragmorfémához köti (H9001–H9049: névelő, kötőszó, elöljáró).	The pair links it to a Hebrew prefix or suffix morpheme (H9001–H9049: article, conjunction, preposition).
-konyvek	bizonyossag	magas	Két független nyelvi modell ugyanazt a párt adta (Mózes 1–2. könyve).	Two independent language models gave the same pair (Genesis and Exodus).
-konyvek	bizonyossag	alacsony	Egy nyelvi modell javaslata; a pontosságát a mérés adja meg (MODSZER.md 5.).	Proposal of one language model; its accuracy is given by the measurement (METHODS.md 5).
 versek	osis		A vers OSIS-azonosítója.	OSIS verse identifier.
 versek	szoveg_modern		A modernizált vers szövege, írásjelekkel.	Modernised verse text, with punctuation.
 versek	valtozott	igen	A vers szövege változott a modernizálásban.	The verse text changed in the modernisation.

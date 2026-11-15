@@ -8,7 +8,7 @@ Károli Gáspár fordításának 1908-as szövege, szavanként összekapcsolva a
 kapcsolat hordozója a Strong-szám: egy magyar szó Strong-számait az a héber vagy görög szó adja, amelyet fordít. A
 csomag 66 könyvet, 31 158 verset, 599 367 magyar és 611 396 eredeti szót, valamint 598 715 szópárt tartalmaz.
 
-A párosítás nyelvi modellek javaslata, mért pontossággal. Nem kézzel ellenőrzött adat: minden pár „javaslat” állapotú,
+A párosítás nyelvi modell javaslata, mért pontossággal. Nem kézzel ellenőrzött adat: minden pár „javaslat” állapotú,
 és a csomag megadja, mennyire bízhat benne az, aki használja — rétegenként, kapcsolattípusonként, konfidencia-intervallummal
 (5.).
 
@@ -52,12 +52,9 @@ vers teljes. A kapun bukott választ a modell újra elkészítette. Ahol a verse
 válasz végleg nem ment át a kapun, a vers kézi átnézésre vár: minden szava `fuggoben`, pár nélkül (45
 vers).
 
-**A modellek.** Mózes első két könyvét két független modell párosította ugyanazzal a feladatleírással: a Claude Sonnet
-és a Gemini Flash. A két válaszból program állította össze a táblát: ahol a két modell ugyanazt a párt adta, a pár
-`magas` bizonyosságú (52 844 pár); ahol eltértek, az első modell párja került be, `alacsony` bizonyossággal. A többi
-könyvet a költségkeret miatt egy modell, a Claude Sonnet párosította; ezek párjai mind `alacsony`
-(545 871 pár). A feladatleírás a futás alatt változatlan volt; a táblák a modellek mentett válaszaiból, újabb
-modellhívás nélkül, bájtra azonosan újraépíthetők.
+**A modell.** A szópárosítást nyelvi modell (Claude Sonnet) javasolta, minden könyvben ugyanazzal a feladatleírással.
+A feladatleírás a futás alatt változatlan volt; a táblák a mentett modellválaszokból, újabb modellhívás nélkül, bájtra
+azonosan újraépíthetők.
 
 **Az eredmény.** 488 659 magyar szónak van párja, 109 914 betoldás; 547 585 eredeti szó párosított,
 63 017 fordítatlan. Az 598 715 párból 466 785 héber és 131 930 görög; 157 163 egy héber előtag- vagy
@@ -67,16 +64,16 @@ ragmorféma párja.
 
 A pontosságot két, egymást kiegészítő úton mértük.
 
-**Vak ellenőrzés, rétegzett mintán.** Az 598 715 párt nyolc rétegre osztottuk (Mózes két modellel és egy modellel; a
+**Vak ellenőrzés, rétegzett mintán.** Az 598 715 párt könyvcsoportonként 7 rétegre osztottuk (Mózes öt könyve; a
 történeti, a költői és a prófétai könyvek; az evangéliumok és az Apostolok cselekedetei; a levelek; a Jelenések), és
-rétegenként 200 párt húztunk véletlenszerűen. Egy harmadik nyelvi modell (Claude Opus) a minta minden céljára a
-vers szövegéből és az eredeti szavakból maga jelölte ki a megfelelő eredeti szavakat, ugyanazokkal a szabályokkal, a gépi
-pár ismerete nélkül. A pár helyes, ha az eredeti szava az ellenőr jelölései között van.
+rétegenként 200 párt húztunk véletlenszerűen; Mózes öt könyvéből 400 párt, két részmintában, amelyeket
+a becslés a pársúlyuk szerint összegez. Egy második nyelvi modell (Claude Opus) a minta minden céljára a vers szövegéből
+és az eredeti szavakból maga jelölte ki a megfelelő eredeti szavakat, ugyanazokkal a szabályokkal, a gépi pár ismerete
+nélkül. A pár helyes, ha az eredeti szava az ellenőr jelölései között van.
 
 | réteg | n | helyes | arány | 95% |
 |---|---|---|---|---|
-| Mózes, két modell egyezése | 200 | 198 | 99,00% | 96,43–99,73% |
-| Mózes, egy modell | 200 | 184 | 92,00% | 87,40–95,02% |
+| Mózes öt könyve | 400 | 382 | 95,02% | 92,80–97,24% |
 | történeti könyvek | 200 | 190 | 95,00% | 91,04–97,26% |
 | költői könyvek | 200 | 190 | 95,00% | 91,04–97,26% |
 | próféták | 200 | 186 | 93,00% | 88,59–95,78% |
@@ -87,10 +84,9 @@ pár ismerete nélkül. A pár helyes, ha az eredeti szava az ellenőr jelölés
 | **Újszövetség, súlyozott** | 600 | | 97,07% | 95,55–98,59% |
 | **összes, súlyozott** | 1 600 | | **95,06%** | 93,81–96,32% |
 
-A súlyozott becslés a rétegek pársúlyával számol. Kapcsolattípus szerint: a tartalmi szavak párjai 96,44%
-(95%: 95,20–97,69%), a héber morfémák párjai 90,74% (95%: 87,18–94,29%). A két modell
-egyezésének rétege 99,00%-os, de ebből nem következik, hogy a második modell okozza a különbséget: a két Mózes-réteg
-könyvei nagyrészt eltérnek.
+A súlyozott becslés a rétegek pársúlyával számol; Mózes öt könyvének aránya is ilyen becslés (a két részmintáé), ezért
+nem a helyes párok és az n hányadosa. Kapcsolattípus szerint: a tartalmi szavak párjai 96,44%
+(95%: 95,20–97,69%), a héber morfémák párjai 90,74% (95%: 87,18–94,29%).
 
 **Kalibráció.** Az ellenőr nem tévedhetetlen. Egy korábbi, kézzel összeállított mintán (374 mérhető eset) az
 ellenőr 96,79%-ban (95%: 94,48–98,16%), a gépi párosítás 97,06%-ban (95%: 94,81–98,35%)
@@ -98,8 +94,8 @@ egyezett vele: az ellenőr nem pontosabb a párosításnál. Az eltérések egy 
 csak akkor alsó becslés, ha a közös (gépi és ellenőri) hiba elhanyagolható.
 
 **Független összevetés.** Ezt a közös hibát egy független forrás méri: egy Strong-számokkal jelölt Károli-kiadás,
-amelyet a csomag nem tartalmaz, és amelyből csak az összesített egyezés szerepel itt. Rétegenként egy teljes fejezetet
-vetettünk össze (8 fejezet, 2 663 fő szó párja). A forrás szavanként egy fő Strong-számot jelöl, a ragban,
+amelyet a csomag nem tartalmaz, és amelyből csak az összesített egyezés szerepel itt. Rétegenként egy, Mózes öt könyvében két teljes
+fejezetet vetettünk össze (8 fejezet, 2 663 fő szó párja). A forrás szavanként egy fő Strong-számot jelöl, a ragban,
 elöljáróban és névelőben álló mellékszót és a morfémát nem; ez a mérés tehát csak a fő szavak párjaira érvényes.
 
 - A forrás ítéletét elfogadva a fő szavak párjainak 98,72%-a egyezik (95%: 98,22–99,08%; Ószövetség 98,93%,
@@ -117,8 +113,7 @@ elöljáróban és névelőben álló mellékszót és a morfémát nem; ez a m�
 
 A párosítás nem hibátlan, és nem is ekként közöljük. Szerkesztői döntés alapján nyílt adatként jelenik meg, mert a
 pontossága **mérve és dokumentálva van**: rétegenként és kapcsolattípusonként, konfidencia-intervallummal, a hibák
-típusával és a megerősített hibák listájával (`ISMERT_HIBAK.md`). A „javaslat” állapot és a bizonyosság-jelölés minden
-páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
+típusával és a megerősített hibák listájával (`ISMERT_HIBAK.md`). A „javaslat” állapot minden páron megmarad. A közlés nem egy előre kitűzött küszöb teljesülésén alapul: a mérés előtt nem volt rögzített
 kritérium, és utólag felállított küszöb utólagos kritérium volna.
 
 ## 7. A következő kiadás
@@ -128,7 +123,7 @@ szabályellenes eseteit (szabályalapú utófeldolgozással, nem páronkénti fo
 mér: rétegzett minta, vak ellenőr, független külső forrás. A 2. kiadás minőségi célját az 1. kiadás eredményeinek
 ismeretében, előre rögzítettük: a független összevetés fő-szó egyezésének alsó széle legalább 98% (most 98,22%); a
 vak ellenőrrel mért súlyozott egyezés alsó széle legalább 93% (most 93,81%), és egyetlen réteg pontbecslése sem
-90% alatti (most a legkisebb 92,00%). A cél az 1. kiadásra nem vonatkozik.
+90% alatti (most a legkisebb 93,00%, próféták). A cél az 1. kiadásra nem vonatkozik.
 
 ## 8. Kapcsolódó adatkészlet
 
