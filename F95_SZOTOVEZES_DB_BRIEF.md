@@ -5,6 +5,7 @@ kod: SZOTOVEZES_DB
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/f95-szotovezes-db

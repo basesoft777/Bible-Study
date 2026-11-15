@@ -5,6 +5,7 @@ kod: DIFF_SZUKITES
 tipus: feladat
 fazis: 2
 modell: opus
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/diff-szukites
 ad: a render_diff_osztalyoz.py minden ismert fajtája a változás fajtája szerint dönt, nem a blokk szerint (öt szűkítés, mindegyikhez negatív teszt); a mai próbán az S2.8 0 ismeretlen + 44 felhasznalo_elfogadva; az N-F09i lezárva

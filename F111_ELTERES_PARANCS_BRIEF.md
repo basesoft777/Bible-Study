@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: megallt
 ag: claude/f111-elteres
 ad: `/elteres` parancs, amely egy `ELTÉRÉS: <n> tétel` jelentést egyeztetett besorolással, a brief modelljén futó javítással és korlátozott számú újraellenőrzéssel zár le

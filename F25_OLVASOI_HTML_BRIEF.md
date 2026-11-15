@@ -5,6 +5,7 @@ kod: OLVASOI_HTML
 tipus: feladat
 fazis: 2
 modell: sonnet
+sav: SERVER
 allapot: brief_kell
 olvas: [ADATVAGYON_TERV.md, MUNKATERV.md]
 nem_fugg: [52]

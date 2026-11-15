@@ -5,6 +5,7 @@ kod: BDB_LANC
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: megallt
 ad: a BDB-lánc (2.30 szakasztábla, 2.31 forrásjavítás, 2.32 magyar illesztés, 2.29 szeletelő-hivatkozások) ismétlődő hibái gyökérok-szinten javítva, minden javított osztályra gépi védelem (teszt vagy kapu), mért előtte–utána számokkal; a lexikonlapok nincsenek újragenerálva, a hatás mérve
 kovetkezo: "Te: a draft PR áttekintése; a merge az orkesztrátoré, a HAMART-001 /kiadas után; az ALVIL-001 újragenerálása előtt az N-F202e (generátor); döntés: DT801"

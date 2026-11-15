@@ -5,6 +5,7 @@ kod: BDB_ARAM_POTLAS
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 pr: 227

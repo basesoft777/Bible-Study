@@ -5,6 +5,7 @@ kod: GYOKEROK_KAPUK
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SYSTEMS
 allapot: lezarva
 lezarva_osszegzes: állítás–adat kapu és követelménylista-kapu JELENTÉS szinten; a HIBA-szintre emelés (DT771) külön döntés: N165
 ag: claude/gyokerok-kapuk-a1d120

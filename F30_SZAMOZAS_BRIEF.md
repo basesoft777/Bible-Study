@@ -5,6 +5,7 @@ kod: SZAMOZAS
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 pr: 206
 ag: claude/szamozas

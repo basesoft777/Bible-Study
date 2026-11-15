@@ -5,6 +5,7 @@ kod: BSB_UJRAMERES
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/f41-bsb-ujrameres
 pr: https://github.com/basesoft777/Bible-Study/pull/135

@@ -5,6 +5,7 @@ kod: MOTIVUM_UJRASCAN
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ad: a 9 motívum minden előfordulás- és jelöltsorának kulcs-ellenőrzése a mai TAHOT-on, a gerinc-Strongok újrascanje, az új találatok a jeloltek.tsv-ben (dontes=nyitva), és mért napló; az elofordulasok.tsv javítása csak jóváhagyott döntés után

@@ -5,6 +5,7 @@ kod: BDB_SZAKASZ_HU_JAVITAS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ad: az adat/bdb_szakasz_hu.tsv-ben nincs olyan `illeszkedik` sor, amelynek magyar szövege csak a jelölő, kivéve a soronként igazolt szerkezeti eseteket; a hu_illeszt.py a szövegközi szám- és törzsnév-említést nem köti jelölőhöz; az újragenerált tábla kategória-eloszlása mérve, a B-kör (≈70 szócikk) szúrópróbával átnézve
 kovetkezo: "nincs; nyitott (a #144-en kívül): a 23 Strong lexikonlapjának újragenerálása a #549 után, összehangolva; a teljes újragenerálás (N-F131f, a DT423 szerint az N-F131g után)"

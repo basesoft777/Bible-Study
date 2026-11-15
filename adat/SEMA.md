@@ -2804,6 +2804,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E38 | HIBA | állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott lapon (`--minden --szigoru`) | `eszkozok/ellenorzes/allitas_adat.py` |
 | E39 | HIBA | követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés jelentés (`--szigoru`, a kapuemelési döntés) | `eszkozok/ellenorzes/kovetelmeny_kapu.py` |
 | E40 | HIBA | a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a `karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés) | `eszkozok/ellenorzes/szabalyok.py` |
+| E41 | HIBA | próza-állítás kapu: a kézi forrás versre hivatkozó állításainak gépi ítélete (ELTÉR-sor) HIBA az új formájú forrásokon; a régi formájú forrás kimarad, és ezt a kimenet kimondja (`--kapu`) | `eszkozok/proza_allitas.py` |
 <!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->
 
 ---

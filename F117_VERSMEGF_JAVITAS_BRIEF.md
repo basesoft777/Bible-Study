@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/f117-versmegf-javitas
 pr: https://github.com/basesoft777/Bible-Study/pull/409

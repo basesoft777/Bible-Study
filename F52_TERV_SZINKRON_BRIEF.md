@@ -5,6 +5,7 @@ kod: TERV_SZINKRON
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 munka: folyamat
 allapot: dontesre_var
 ag: claude/f52-terv-szinkron-3

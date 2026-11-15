@@ -5,6 +5,7 @@ kod: KIRALY_LEXIKON_UJRAGEN
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ad: a lexikon/KIRALY-001_TUDOMANYOS.md és _TORZSCIKK.md a javított Strong-mezővel (G5010+G0540+G0282) újragenerálva, a G0813 (ἄτακτος) nélkül; a diff mérve és indokolva; az N-F132a lezárva

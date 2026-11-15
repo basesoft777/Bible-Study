@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/f32-kontextus
 pr: https://github.com/basesoft777/Bible-Study/pull/164

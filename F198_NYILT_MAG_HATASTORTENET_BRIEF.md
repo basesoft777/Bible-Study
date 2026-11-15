@@ -5,6 +5,7 @@ kod: NYILT_MAG_HATASTORTENET
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: fut
 ag: claude/brave-allen-7b2eb6
 ad: négy új nyílt tábla (visszhang_megfelelok, visszhang_tanuk, vitatott_forrasok, sblgnt_apparatus) forrásonkénti licenccel, kódkönyvvel, angol párral, OLVASSEL/README-szakasszal és ellenőrző összeggel; a Chain Lineage-tanúk kiszűrve; a nyílt mag kapuja 0 BUKÁS, a lap érintetlen

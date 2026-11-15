@@ -5,6 +5,7 @@ kod: USZ_KONYVLISTA
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: megallt
 ag: claude/usz-konyvlista
 pr: https://github.com/basesoft777/Bible-Study/pull/654

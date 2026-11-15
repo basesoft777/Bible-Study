@@ -5,6 +5,7 @@ kod: KAROLI_MODERN_STRONG
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 pr: 707

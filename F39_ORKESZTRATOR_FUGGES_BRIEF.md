@@ -5,6 +5,7 @@ kod: ORKESZTRATOR_FUGGES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ad: a közös írási útvonalból kizárás lesz, nem sorrend; nincs több levezetett kör; a halasztott, brief nélküli és 2. fázisú feladat nem tart vissza 1. fázisú feladatot; a /kovetkezo újra ad jelöltet (várhatóan #35, #38, #23)
 kovetkezo: "a #32 a #39 merge-e után indulhat; a #32 nyitott ága rebase-t kér; a #23 függése (a #37) a felhasználó döntése"

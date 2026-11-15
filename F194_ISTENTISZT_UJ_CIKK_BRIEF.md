@@ -5,6 +5,7 @@ kod: ISTENTISZT_UJ_CIKK
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: dontesre_var
 ag: claude/istentiszt-uj-cikk-992f57
 pr: 709

@@ -5,6 +5,7 @@ kod: KAROLI_IDEZET_SZABALY
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/jolly-sutherland-85d152

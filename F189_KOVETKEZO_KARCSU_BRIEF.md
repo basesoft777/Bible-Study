@@ -5,6 +5,7 @@ kod: KOVETKEZO_KARCSU
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/teher-kovetkezo-claude-4e1093
 pr: 682

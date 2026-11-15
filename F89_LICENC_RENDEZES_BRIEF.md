@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/f89-licenc-rendezes
 ad: jogfenntartó LICENSE a repó gyökerében (a saját adat és a próza minden jog fenntartva, a harmadik fél adata a licencek.tsv szerint); a licencek.tsv projekt_adat sora tisztazott, új sorok a karoli_strong/* és karoli_variancia számára, a projekt_adat-on múló sorok újraértékelve; a sqlite_epit.py SZARMAZTATOTT_LICENC cseréje és táblaszintű licenc (tabla_licenc), a méret újramérve (a #86 N-F86b bemenete)

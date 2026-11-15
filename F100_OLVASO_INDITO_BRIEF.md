@@ -5,6 +5,7 @@ kod: OLVASO_INDITO
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SERVER
 munka: folyamat
 allapot: lezarva
 ag: claude/olvaso-indito

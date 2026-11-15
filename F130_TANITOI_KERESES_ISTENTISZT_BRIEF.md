@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: ertelmezo
 modell: opus
+sav: CONTENT
 allapot: lezarva
 pr: 451
 lezarva_osszegzes: "a tanítói fájl a 7. sablon szerint újraírva, webes forrásokkal (tanito-kereso M3, M4 forrásmegnyitás), a manual változat archiválva, az ISTENTISZT-001.md 5. pontja a jóváhagyott szöveg szerint; DT273–e; ellenőrzés ELTÉRÉS 7 → TISZTA, egy javítókör; zárónapló naplok/TANITOI_KERESES_ISTENTISZT_zaras.md"

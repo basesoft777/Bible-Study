@@ -5,6 +5,7 @@ kod: THAYER_B_UT
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: "eszkozok/thayer_api_koteg.py B-úttal (15–25 kicsi/közepes Strong egy kérésben, Strongonkénti visszabontás és kapuk, egyenkénti javító kör), a kérés Strongjaira szűkített terminológia- és Károli-blokkal, az F27 M1 mérésére kalibrált becslővel és mért futó összeggel számoló plafonnal; egy kb. 60 Strongos mérő batch effort=high és effort=medium mellett (legfeljebb 4 USD, csak naplóba), és a teljes Thayer B-úti kivetítése"
 kovetkezo: "nincs; a #7 (THAYER_ELES) briefje erre a mérésre épül"

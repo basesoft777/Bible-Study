@@ -5,6 +5,7 @@ kod: FP3
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: "a Thayer teljes Sonnet-fordításának mért alapja a #7-hez: a szakaszos lánc (#132) teljes Thayerre vett hiányai, gyakorisági sorrend és adagterv, egy kb. 150 ezer karakteres mérő adag API-n (Batch) az adat/forditasok.tsv-ben (szakaszsorok, allapot=sonnet), aranyminta-összevetés, költségmérés (USD) és kivetítés a teljes Thayerre"
 kovetkezo: "nincs; a #7 (THAYER_ELES) briefje erre épül (DT494 elfogadva)"

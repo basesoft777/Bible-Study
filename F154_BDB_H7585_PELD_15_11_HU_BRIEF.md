@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: nem_indult
 ad: a BDB H7585 `teljes` magyar sorában a „Péld 25:11” helyén „Péld 15:11” áll (a többi sor bájtra azonos), a `bdb_szakasz_hu.tsv` újragenerálva, az ALVIL-001 lapon a Péld 15:11 kiemelve áll
 kovetkezo: "/kovetkezo (M0 ⛔: a csere módja — (a) a fordítás szövegében megjegyzéssel, vagy (b) a renderelőben)"

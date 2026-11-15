@@ -5,6 +5,7 @@ kod: BDB_JELOLT_SZOVEG
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ag: claude/f107-bdb-jelolt-szoveg

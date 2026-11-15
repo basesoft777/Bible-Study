@@ -5,6 +5,7 @@ kod: MUHELY_FEED_STASH
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 munka: folyamat
 allapot: nem_indult
 ad: egy összegző szkript (javasolt név: eszkozok/muhely_allapot.py), amely új mérő nélkül, a meglévő mérőket csak olvasva futtatva generált JSON-t ír a Feedhez és a Stash-hez (kimenet réteg); a Feed két rétegben (nyilvános: állapotlánc motívumonként, összesített mérők, heti történés valódi dátummal, elvetett jelöltek, a Stash leírása és statja; belső: ugyanez kibontva, találatokkal, hibaszövegekkel, nyitott DT-kérdésekkel, PR-okkal, lektori kérdésekkel); a „kész” a 8 pontos kritériumból számolva, nem a `motivumok.tsv` `statusz`-ából; a felület egyelőre Dashboard-artifact; a #86 később a nyilvános réteget használja

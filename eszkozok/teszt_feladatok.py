@@ -46,7 +46,7 @@ FELADATOK_VAZ = """# FELADATOK.md
 
 def brief_szoveg(szam=None, cim='Teszt', tipus='feladat', fazis='1', modell='sonnet',
                  allapot='nem_indult', olvas=None, ir=None, fugg=None, nem_fugg=None,
-                 kod=None, extra='', torzs='', **kozben):
+                 kod=None, extra='', torzs='', sav='SYSTEMS', **kozben):
     sorok = ['---']
     if szam is not None:
         sorok.append('feladat: %d' % szam)
@@ -58,6 +58,8 @@ def brief_szoveg(szam=None, cim='Teszt', tipus='feladat', fazis='1', modell='son
         sorok.append('fazis: %s' % fazis)
     sorok += ['modell: %s' % modell, 'allapot: %s' % allapot,
               'ad: mit ad', 'kovetkezo: következő lépés']
+    if sav is not None and tipus in ('feladat', 'naplozas'):
+        sorok.append('sav: %s' % sav)
     if fugg is not None:
         sorok.append('fugg: [%s]' % ', '.join(str(x) for x in fugg))
     if nem_fugg is not None:
@@ -605,6 +607,48 @@ class PrTerkepOrTest(unittest.TestCase):
         return F.pr_terkep_ellenorzes(self.ut, alap)
 
 
+class SavTest(Alap):
+    def hibak_szoveg(self):
+        return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]
+
+    def test_ervenyes_sav_nincs_hiba(self):
+        for s in F.SAVOK:
+            self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav=s, olvas=['a'], ir=['a']))
+            self.assertEqual(self.hibak_szoveg(), [])
+
+    def test_sav_ot_elemu_es_business_ervenyes(self):
+        # a felhasznalo dontese (2026-11-15, DT-F219d): USER (olvaso felhasznalokezeles) es BUSINESS (a #86 uzleti oldala)
+        self.assertEqual(F.SAVOK, ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS'))
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='BUSINESS', olvas=['a'], ir=['a']))
+        self.assertEqual(self.hibak_szoveg(), [])
+
+    def test_business_sav_a_tablaban_utolso_csoport(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='BUSINESS', olvas=['a'], ir=['a']))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, sav='USER', olvas=['b'], ir=['b']))
+        szoveg = F.blokkok(self.g.briefek(), self.g.ut, MA, main_all={})['fazis1']
+        self.assertLess(szoveg.index('**USER**'), szoveg.index('**BUSINESS**'))
+
+    def test_ismeretlen_sav_hiba(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='MASIK', olvas=['a'], ir=['a']))
+        self.assertTrue(any('sav:' in h for h in self.hibak_szoveg()))
+
+    def test_hianyzo_sav_hiba_feladatnal_es_naplozasnal(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav=None, olvas=['a'], ir=['a']))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, tipus='naplozas', sav=None, olvas=['b'], ir=['b']))
+        self.assertEqual(len([h for h in self.hibak_szoveg() if 'sav' in h]), 2)
+
+    def test_atmeneti_kivetel(self):
+        self.g.brief('F217_A_BRIEF.md', brief_szoveg(217, sav=None, olvas=['a'], ir=['a']))
+        self.assertEqual(self.hibak_szoveg(), [])
+
+    def test_tabla_savonkent_csoportosit(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='CONTENT', olvas=['a'], ir=['a']))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, sav='SYSTEMS', olvas=['b'], ir=['b']))
+        szoveg = F.blokkok(self.g.briefek(), self.g.ut, MA, main_all={})['fazis1']
+        self.assertLess(szoveg.index('**SYSTEMS**'), szoveg.index('**CONTENT**'))
+        self.assertEqual(set(F.tabla_sorok(szoveg).keys()), {1, 2})
+
+
 class AtvetelTest(Alap):
     def test_tabla_sorok_es_atvetel(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, allapot='nem_indult'))
@@ -784,6 +828,9 @@ from test_feladatok_fugges import MaiAllapotTest, SzabalyTest  # noqa: E402,F401
 from test_feladatok_folytatas import FolytatasTest  # noqa: E402,F401
 # F32: a csomag-ellenőrzés, az OLVAS_HIANY és a `munka` mező tesztjei, ugyanígy
 from test_feladatok_kontextus import KontextusTest  # noqa: E402,F401
+# heti áttekintő: sáv szerinti csoportosítás, hiányzó `sav` mező, teendők, PR-ok, ugyanígy
+from test_heti_attekinto import (SavCsoportositasTest, TeendoTest, KeszAblakTest,  # noqa: E402,F401
+                                 PrTest, OldalTest)
 
 
 if __name__ == '__main__':

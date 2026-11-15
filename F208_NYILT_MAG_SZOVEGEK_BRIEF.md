@@ -5,6 +5,7 @@ kod: NYILT_MAG_SZOVEGEK
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: megallt
 pr: 710
 munka: folyamat

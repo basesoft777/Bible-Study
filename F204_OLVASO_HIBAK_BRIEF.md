@@ -5,6 +5,7 @@ kod: OLVASO_HIBAK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SERVER
 allapot: lezarva
 ag: claude/unruffled-diffie-bcef47
 ad: a tW-blokk Markdownja renderelve, a BDB jelmagyarázat hiányzó jelei felvéve, a `/szo/<strong>?vers=` paraméter átvéve; mindegyikre teszt

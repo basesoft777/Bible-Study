@@ -5,6 +5,7 @@ kod: KAROLI_MODERN
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: ccr-a680d019-39s73e

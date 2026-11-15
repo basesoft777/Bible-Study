@@ -5,6 +5,7 @@ kod: THAYER_KARTYA
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SERVER
 munka: folyamat
 allapot: lezarva
 ag: claude/f187-thayer-kartya

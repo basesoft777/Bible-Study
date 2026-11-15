@@ -5,6 +5,7 @@ kod: OLVASOI_KONKORDANCIA
 tipus: feladat
 fazis: 1
 modell: opus
+sav: SERVER
 munka: adat
 allapot: lezarva
 pr: 461

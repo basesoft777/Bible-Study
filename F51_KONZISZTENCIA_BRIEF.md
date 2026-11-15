@@ -5,6 +5,7 @@ kod: KONZISZTENCIA
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/konzisztencia
 ad: egy új CI-szabály jelzi, ha egy döntés érintett fájlja még a döntés előtti állapotot írja, vagy a továbbvivő feladata régóta áll; egy naponta, helyi gépen futó ügynök a fogalmi ellentmondásokat jelentésbe gyűjti

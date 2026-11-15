@@ -4,6 +4,7 @@ cim: A szótárfordítás döntései, a #7 és az FP3 halasztása
 kod: SZOTAR_FORD_NAPLO
 tipus: naplozas
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/f29-szotar-ford-naplo
 ad: a D42–D50 a FELADATOK.md döntésnaplójában; a #7 és az FP3 (#27) fejléce halasztott állapotra igazítva

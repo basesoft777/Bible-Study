@@ -5,6 +5,7 @@ cim: "Károli–Strong párosítás könyvenként (1–2Móz: Sonnet + Gemini; a
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: megallt
 ag: claude/f22-evangeliumok-c2ac08
 ad: "Az 1Mózes minden Károli-szavához az eredeti szó és a Strong-szám, bizonyossági jelöléssel (magas = a két modell egyezik)"

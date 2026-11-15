@@ -5,6 +5,7 @@ kod: JELOLT_ELOSZURES_LEXIKAI
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: fut
 ad: a #150 gépi előszűrőjének (`eszkozok/jelolt_eloszures.py`) lexikai hordozóra kiterjesztett szabálya (a jelölt versei ±1 vers együtt adják az ablakot; a kombináció tagja rokon alakkal is kielégül, a rokonság a `Strong_szotar.tsv` származtatásából; csak a jelölt nyelvű kombinációk számítanak), új M0 mérés motívumonként, a 7 ismert lexikai hamis kizárás negatív tesztként; a bevezetés motívumonként a mérés után a felhasználó/orkesztrátor döntése (a `LEXIKAI_BEKAPCSOLT` alapból üres)

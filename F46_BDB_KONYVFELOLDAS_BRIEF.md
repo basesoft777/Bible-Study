@@ -5,6 +5,7 @@ kod: BDB_KONYVFELOLDAS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/bdb-konyvfeloldas
 pr: https://github.com/basesoft777/Bible-Study/pull/140

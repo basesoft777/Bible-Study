@@ -5,6 +5,7 @@ kod: LICENC
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/f24-licenc
 ad: adatkészletenként egy licencsor (licenc, verzió, kereskedelmi felhasználás, share-alike, kötelező megjelölés) egyetlen táblában, amelyre a render és a nyilvános kiadás épít

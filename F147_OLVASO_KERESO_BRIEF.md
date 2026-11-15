@@ -5,6 +5,7 @@ kod: OLVASO_KERESO
 tipus: feladat
 fazis: 2
 modell: sonnet
+sav: SERVER
 munka: adat
 allapot: nem_indult
 ad: "az olvasó-szerver keresője a ma néma nem-találatot adó bemenetekre is helyesen reagál: az igehelyet szóköz nélkül, vesszővel, STEPBible-/angol rövidítéssel, teljes magyar könyvnévvel és verstartománnyal is felismeri (a könyvnevek a `Konyv_normalizalo_tabla.tsv`-ből); az üres találat lapja megmondja, miért üres, és a másik keresési módra vagy típusra mutató linket ad; elgépelt vagy ékezet nélküli magyar szóra a létező Károli-alakokból determinisztikus javaslatot ad — csak linkként, a keresett szót soha nem cseréli ki. MI nincs a láncban (a 2. és 3. szint: N-F147a, N-F147b, későbbi döntés)"

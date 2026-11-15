@@ -31,7 +31,7 @@ def brief_szoveg(szam, olvas=(), ir=(), fugg=None, nem_fugg=None, fazis='1',
     sorok = ['---', 'feladat: %d' % szam, 'cim: Teszt %d' % szam]
     if kod:
         sorok.append('kod: %s' % kod)
-    sorok += ['tipus: feladat', 'fazis: %s' % fazis, 'modell: sonnet', 'allapot: %s' % allapot,
+    sorok += ['tipus: feladat', 'fazis: %s' % fazis, 'modell: sonnet', 'sav: SYSTEMS', 'allapot: %s' % allapot,
               'ad: mit ad', 'kovetkezo: %s' % kovetkezo,
               'olvas: %s' % _lista(olvas), 'ir: %s' % _lista(ir)]
     if fugg is not None:
