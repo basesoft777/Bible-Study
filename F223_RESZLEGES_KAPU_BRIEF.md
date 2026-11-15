@@ -8,7 +8,7 @@ sav: SYSTEMS
 modell: sonnet
 allapot: fut
 ad: a `push_elott.py` változott fájlok alapján csak az érintett lépéseket futtató módja (egy helyen definiált lépés → útvonalminta leképezéssel; bizonytalanságnál a teljes kapu); az (a) rész, a csomag-exportálók „csak szövegek” módja, a nyílt Károli-csomagok PR-ja után
-kovetkezo: "Folytatás: a (b) rész kész, ha a PR-on a jelentés áll; az (a) rész várja a nyílt Károli-csomagok exportálóinak mergelését (local_be6e01b0)"
+kovetkezo: "Folytatás: a (b) rész kész és mért; az (a) rész várja a nyílt Károli-csomagok exportálóinak mergelését (local_be6e01b0)"
 munka: folyamat
 olvas: [eszkozok/ellenorzes/futtat.py, .github/workflows/ellenorzes.yml]
 ir: [eszkozok/push_elott.py, eszkozok/teszt_push_elott.py, .claude/commands/kovetkezo.md, naplok/F223_jelentes.md]
