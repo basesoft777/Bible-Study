@@ -19,7 +19,7 @@ Az F218 (lapgenerátor-újraírás) brief szerint még nincs megvalósítva (PR 
 
 ## (a) Lezárt (12)
 
-- N-F156e (`65. sor`): felhasználói döntés 2026-11-14 („Igen, zárjuk le”), DT-F156t: a Nave a 4.12 Szótári háttér tematikus indexeként megvalósult; jelöltforrás nem épül
+- N-F156e (`65. sor`): felhasználói döntés 2026-11-14 („Igen, zárjuk le”), DT846: a Nave a 4.12 Szótári háttér tematikus indexeként megvalósult; jelöltforrás nem épül
 - N-F131y (`79. sor`): a tétel saját jelölése: alkalmazva 2026.11.01 (DT445); a main 9f7ac0e7 (N-F131y.2)
 - N60 (`95. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
 - N-F127a (`99. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
