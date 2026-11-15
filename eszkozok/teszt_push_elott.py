@@ -104,6 +104,74 @@ def main():
                        capture_output=True, encoding='utf-8', cwd=P.ROOT)
     ellenoriz(r.returncode == 0, '--ci-egyezes kilépési kódja 0')
 
+    # 10. F223: a részleges mód leképezése és a biztonsági szabály
+    mind = frozenset(P.LEPES_AZON)
+    ellenoriz(P.erintett_lepesek([('M', 'F223_RESZLEGES_KAPU_BRIEF.md')])[0] == {P.L_E18},
+              'brief-fejléc-változás: csak az E18 érintett (a csomag-, adat- és tesztlépések kimaradnak)')
+    ellenoriz(P.erintett_lepesek([('M', 'naplok/F223_jelentes.md'), ('A', 'dontesek/uj/x.md'), ('M', '.claude/commands/kovetkezo.md')])[0] == set(),
+              'csak .md napló/döntés/parancs: egyik kihagyható lépés sem érintett')
+    ellenoriz(P.erintett_lepesek([('M', 'eszkozok/x.py')])[0] == mind, 'kódváltozás: minden lépés érintett')
+    ellenoriz(P.erintett_lepesek([('M', '.github/workflows/ellenorzes.yml')])[0] == mind, 'workflow-változás: minden lépés érintett')
+    adat = P.erintett_lepesek([('M', 'adat/elofordulasok.tsv')])[0]
+    ellenoriz(adat and P.L_E1 in adat and P.L_GYOKEROK in adat and P.L_E18 not in adat and P.L_TESZT_SZABALY not in adat,
+              'adatváltozás: az adatkapuk érintettek, az E18 és a szabály-tesztek nem')
+    for ismeretlen in ('valami.xyz', 'naplok/szkript.py', 'naplok/adat.tsv', '.claude/settings.json', 'uj_konyvtar/x.md'):
+        ek, ok = P.erintett_lepesek([('M', 'F223_RESZLEGES_KAPU_BRIEF.md'), ('M', ismeretlen)])
+        ellenoriz(ek is None and ismeretlen in ok, 'ismeretlen fájl (%s): teljes kapu' % ismeretlen)
+    for st in ('D', 'R', 'T', 'C'):
+        ellenoriz(P.erintett_lepesek([(st, 'naplok/x.md')])[0] is None, 'a(z) %s státuszú változás: teljes kapu' % st)
+    ellenoriz(P.fajl_lepesei('naplok\\x.md') == frozenset(), 'a Windows-útvonal perjelre normalizálódik')
+
+    # 10a. a minta-leképezés nem üres, és minden lépés-azonosító szerepel legalább egy mintában
+    ellenoriz(set().union(*[l for _, _, l in P.RESZLEGES_LEKEPEZES]) == mind, 'minden lépés-azonosítót legalább egy minta érint')
+
+    # 10b. az E35 (csomagexport-összevetés) brieffejlécre, naplóra és .md-re nem indul; adat-táblára és az exportgenerátorra igen
+    sys.path.insert(0, os.path.join(P.ROOT, 'eszkozok', 'ellenorzes'))
+    import szabalyok as SZ
+    ellenoriz(SZ.e35_kivalto_fajlok(['F223_RESZLEGES_KAPU_BRIEF.md', 'naplok/F223_jelentes.md', 'CSAPDAK.md']) == [],
+              'E35: a brief, a napló és a .md nem váltja ki')
+    ellenoriz(SZ.e35_kivalto_fajlok(['adat/elofordulasok.tsv', 'eszkozok/nyilt_mag_export.py']) ==
+              ['adat/elofordulasok.tsv', 'eszkozok/nyilt_mag_export.py'], 'E35: az adat-tábla és az exportgenerátor kiváltja (a leképezés mindkettőt a teljes körbe vonja)')
+
+    # 10c. a futó lépések a zöld jegyzésből
+    def vf(sorok):
+        return lambda honnan, fej: sorok
+
+    f_, ok = P.lepesek_futtatasa({}, 'f' * 40, vf([]))
+    ellenoriz(f_ == mind and all('első futás' in v for v in ok.values()), 'zöld jegyzés nélkül (első futás): minden lépés fut')
+    f_, _ = P.lepesek_futtatasa({l: 'a' * 40 for l in P.LEPES_AZON}, 'a' * 40, vf(None))
+    ellenoriz(f_ == set(), 'a jegyzett fej a mostani: semmi sem fut (a diff nem is kell)')
+    f_, _ = P.lepesek_futtatasa({l: 'a' * 40 for l in P.LEPES_AZON}, 'b' * 40, vf([('M', 'F1_X_BRIEF.md')]))
+    ellenoriz(f_ == {P.L_E18}, 'jegyzett fej óta csak egy brief változott (pl. main-behozás): csak az E18 fut')
+    f_, ok = P.lepesek_futtatasa({l: 'a' * 40 for l in P.LEPES_AZON}, 'b' * 40, vf([('M', 'F1_X_BRIEF.md'), ('M', 'ismeretlen.dat')]))
+    ellenoriz(f_ == mind, 'jegyzett fej óta ismeretlen fájl: minden lépés fut')
+    f_, ok = P.lepesek_futtatasa({l: 'a' * 40 for l in P.LEPES_AZON}, 'b' * 40, vf(None))
+    ellenoriz(f_ == mind and all('nem olvasható' in v for v in ok.values()), 'a diff nem olvasható: minden lépés fut')
+    vegyes = {l: 'a' * 40 for l in P.LEPES_AZON}
+    del vegyes[P.L_E1]
+    f_, _ = P.lepesek_futtatasa(vegyes, 'b' * 40, vf([('M', 'naplok/x.md')]))
+    ellenoriz(f_ == {P.L_E1}, 'csak a jegyzés nélküli lépés fut, ha a változás egyiket sem érinti')
+
+    # 10d. a zöld jegyzés: kör-oda-vissza, hibás/más verziójú fájl érvénytelen
+    import tempfile
+    with tempfile.TemporaryDirectory() as td:
+        ut = os.path.join(td, P.ZOLD_FAJL)
+        ellenoriz(P.zold_beolvas(ut) == {}, 'nincs jegyzésfájl: üres')
+        P.zold_ment(ut, {P.L_E1: 'c' * 40})
+        ellenoriz(P.zold_beolvas(ut) == {P.L_E1: 'c' * 40}, 'a jegyzés kör-oda-vissza egyezik')
+        with open(ut, 'w', encoding='utf-8') as f:
+            f.write('{"verzio": %d, "lepesek": {"%s": "c"}}' % (P.ZOLD_VERZIO + 1, P.L_E1))
+        ellenoriz(P.zold_beolvas(ut) == {}, 'más verziójú jegyzés: érvénytelen (teljes kapu)')
+        with open(ut, 'w', encoding='utf-8') as f:
+            f.write('nem json')
+        ellenoriz(P.zold_beolvas(ut) == {}, 'olvashatatlan jegyzés: érvénytelen (teljes kapu)')
+        with open(ut, 'w', encoding='utf-8') as f:
+            f.write('{"verzio": %d, "lepesek": {"ismeretlen-lepes": "c"}}' % P.ZOLD_VERZIO)
+        ellenoriz(P.zold_beolvas(ut) == {}, 'ismeretlen lépés-azonosító a jegyzésben: eldobva')
+
+    # 10e. a leképezés lefedi a `--ci-egyezes` lépéslistát: a teljes kaput a --reszleges nem gyengíti
+    ellenoriz(P.ci_egyezes() == [], 'a részleges mód nem változtatja a CI-egyezést')
+
     print()
     if HIBAK:
         print('BUKOTT: %d teszt: %s' % (len(HIBAK), '; '.join(HIBAK)))
