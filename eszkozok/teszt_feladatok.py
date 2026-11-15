@@ -819,6 +819,9 @@ from test_feladatok_kontextus import KontextusTest  # noqa: E402,F401
 # heti áttekintő: sáv szerinti csoportosítás, hiányzó `sav` mező, teendők, PR-ok, ugyanígy
 from test_heti_attekinto import (SavCsoportositasTest, TeendoTest, KeszAblakTest,  # noqa: E402,F401
                                  PrTest, OldalTest)
+# heti beosztás (F222): keret-hét, táblák, valós állapot, lezárt tétel csak a visszanézésben, teendők, ugyanígy
+from test_heti_beosztas import (KeretHetTest, TablaTest, AllapotTest, ModellTest,  # noqa: E402,F401
+                                CliTest as BeosztasCliTest)
 
 
 if __name__ == '__main__':

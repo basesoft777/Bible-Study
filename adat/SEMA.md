@@ -2382,6 +2382,60 @@ adata benne marad. Egy hely, gépileg olvasható: a jegyzéket csak az `eszkozok
 **Kulcs:** `id`. A sor törlése (a lap új cikkének elkészültekor) a befagyasztást megszünteti: onnantól a lap
 generálódik, és az E28 újra méri.
 
+### 2.60 `heti_terv.tsv` — a heti terv sávonként (F222, FELADATOK #222, 2026-11-15)
+
+A heti beosztás kézi adata: **terv**, nem leltár. Az oldalt az `eszkozok/heti_beosztas.py` generálja; a sorokhoz a
+valós állapotot a brief fejlécéből és a PR-ból számolja, és ha van, az felülírja az `allapot_kezi` értékét. Az
+orkesztrátor tölti, a felhasználó jóváhagyja (`jovahagyva`). A kimenet nézet: a tervet itt kell szerkeszteni.
+
+| Oszlop | Tartalom |
+|---|---|
+| `het` | a keret-hét kezdete, `ÉÉÉÉ-HH-NN`: **szombat** (a keret szombaton 14:00 UTC-kor nullázódik); a hét a következő szombat 14:00 UTC-ig tart |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` (a brief `sav` mezőjének értékei) vagy két keretsor: `FELMERES` (a „felmérés” munkatípus saját kerete) · `TARTALEK` |
+| `sorrend` | egész: a sor helye a sávon belül (a hét sorrendje) |
+| `tetel` | a tétel: `F<nn>` vagy `#<nn>` (brief száma: ebből jön a valós állapot), `PR#<nn>` (PR; az állapota a PR-ból), `N-…` / szabad szöveg (csak kézi állapot), `-` (nincs konkrét tétel: a sor csak a célt és a keretet viszi) |
+| `cel_a_het_vegere` | olvasói nyelven: mi legyen kész a hét végére |
+| `modell` | a tervezett modell (és effort, ha eltér); `-`, ha még nincs kijelölve |
+| `becsult_keret_szazalek` | egész 0–100: a heti keret hány %-át viszi a sor. Egy hét sorainak összege 100 (a tartalék is sor) |
+| `allapot_kezi` | üres, vagy `kesz` · `csuszik` · `blokkolt` · `elhagyva`; az utolsó háromhoz indok kell: `csuszik: <indok>`. A valós állapot (brief, PR) felülírja |
+| `jovahagyva` | `igen` (a felhasználó jóváhagyta) · `javaslat` (az orkesztrátor javaslata) |
+| `megjegyzes` | szabad szöveg; a `Te:` kezdetű megjegyzés a felhasználó teendője, az oldal tetején is megjelenik |
+
+**Kulcs:** `het`, `sav`, `sorrend`. **Szabály:** lezárt tétel a mostani hét tervében nem áll: a `lezarva` brief vagy a
+`kesz` sor az oldalon csak a „Visszanézés” blokkba kerül (a felhasználó, 2026-11-15: „semmilyen lezárt tétel nem
+kell bele”). A sor a táblából nem törlődik: a lezárt hét sorai adják a visszanézést.
+
+### 2.61 `heti_keret.tsv` — az elhasznált heti keret (F222, 2026-11-15)
+
+Kézzel megadott érték: az elhasznált keret gépi forrását az orkesztrátor látja, ő tölti. Sávonként és hetente egy sor.
+
+| Oszlop | Tartalom |
+|---|---|
+| `het` | mint a 2.60-ban |
+| `sav` | mint a 2.60-ban (a keretsorok is) |
+| `elhasznalt_szazalek` | egész 0–100: a heti keret hány %-át használta el a sáv |
+| `ts` | a mérés ideje, `ÉÉÉÉ-HH-NNTÓÓ:PP` (UTC) |
+| `forras` | honnan jött az érték (pl. `get_usage`, `becsles`) |
+
+**Kulcs:** `het`, `sav`. Ha egy hétre nincs sor, az oldal „nincs megadva” jelzést ír, nulla értéket nem talál ki.
+
+### 2.62 `otlettar.tsv` — az ötlettár (F222, 2026-11-15)
+
+A szétszórt felvetések egy helye. **Csak nyilvántart:** a tétel itt nem döntés és nem feladat; a döntés a `DONTESEK.md`-be,
+a feladat briefbe kerül, és ide csak a hivatkozás. A „felmérés” munkatípus kimenete döntés vagy brief-javaslat; az
+állapot `felmerendo` tételei a heti beosztás „Felmérés / ötlet” sávjában jelennek meg.
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | `OT<nnn>`, egyedi, nem változik |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` |
+| `cim` | olvasói nyelven: mi a felvetés |
+| `forras` | ki, mikor, hol: a felhasználó vagy más, a dátum, és a hely (memóriafájl, jegyzet, brief, DT/N) |
+| `allapot` | `otlet` · `felmerendo` · `elvetve: <hivatkozás>` · `briefbe_ment: <hivatkozás>` (az utolsó kettő hivatkozása kötelező: DT, F vagy a felhasználó szava dátummal) |
+| `megjegyzes` | szabad szöveg: mi a következő lépés, mi a feltétele |
+
+**Kulcs:** `id`. Az állapot a felhasználó szavából jön: felvetést nem rögzítünk döntésként (a felhasználó, 2026-11-01).
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
