@@ -65,3 +65,24 @@ A C-bl és a C-sz a SEMA-szakaszra még szám nélkül hivatkozik (a #729 merge-
 
 ### F224.12 — A határ-ellenőr modellje
 `.claude/agents/hatar-ellenor.md`: `model: sonnet`, a 0. lépés modellneve `sonnet`; a bemenet a határesetek negatív próbáival bővült, a negatív kritérium szűkebb és tágabb változatával. `grep -i fable .claude/agents/hatar-ellenor.md`: 0 találat. A `MUNKAMENET.md` C-h sorának modellneve az F224.8-ban.
+
+### F224.13 — Elfogadási próba (⛔)
+A részletek, a nyers kimenetek, a bemenetek és a költség: `naplok/F224_proba.md`, `naplok/F224_proba/`. Keret-ellenőrzés a próba előtt (`get_usage`): 5 órás 37%, heti 20% → a becslés belefért; a 2. kör előtt 54% / 22%.
+
+| Halmaz | Küszöb | 1. kör | 2. kör (a javítókör után) |
+|---|---|---|---|
+| HAMART 18 (F2) | ≥ 80% | 56% | 61% |
+| ISTENTISZT 10 (F2) | ≥ 80% | 20% | 30% |
+| ISTENTISZT 6 (bíráló) | ≥ 4/6 | 5/6 | — (teljesült) |
+| HAMART 8:21 (bíráló) | 5/5 | 5/5 | — (teljesült) |
+| hamis riasztás (vak minta) | ≤ 30% | 50% | 50% |
+
+**⛔ A javítókör után is három küszöb alatt:** megállás, a felhasználó dönt (küszöb, szerep, modell). A javaslat (`naplok/F224_proba.md` 6. szakasz): (A) a lektor hatókör-szűkítésének 1. pontja most nem lép életbe; (B) a következő mérés előtt N-F224c, kisebb szeletek, két futás uniója; (C) egy Opus-futás a modell és a szerep szétválasztására. A TEREMT-001 a teljes menettel addig nem indul.
+**Eltérés a tervtől:** az új szerepfájlok a sessionben nem voltak regisztrált ügynöktípusok; az ügynök `general-purpose`, `model: sonnet`, a szerepfájl törzsével. A 2. körben az ügynökök a kimenetet maguk írták fájlba (a hívó kontextusa miatt).
+
+## Folytatási pont
+
+- **⛔ a felhasználónál:** az F224.13 döntése (A/B/C, küszöb). A döntés után: ha (A), egy mondat a `kiadas.md` 3. lépésébe; ha új mérés, az a döntés szerinti felállással, a `naplok/F224_proba/` bemeneteivel.
+- **A #729 (F218a) merge-e után** (a brief `fugg: [218]`): behozott main-nel (1) F224.6: az érvnapló szakasza a `sablonok/9_PaRDeS_motivum_forras_sablon.md`-ben (állítás · érvtípus · bizonyíték vagy „lekérdezendő” · döntés; a vitás pont egy helyen; a bíráló kérdéseire adott válasz helye), a 10_ sablon és a `MUNKAMENET.md` C-ev sora csak hivatkozik; (2) SEMA-szakasz a bizonyítéklap kimenetének formájára (F224.5) és a mérőtáblára (F224.11), a merge-kori következő szabad számokkal; a `MUNKAMENET.md` C-bl és C-sz sorában a hivatkozás számra cserélése; (3) a mérőtáblák (`naplok/SZIVARGAS_HAMART-001.tsv`, `naplok/SZIVARGAS_ISTENTISZT-001.tsv`) kitöltése a próba végleges eredményéből (a ⛔ döntése után).
+- **A zárás előtt:** a független ellenőrzés (`fuggetlen-ellenor`, a szint a `feladatok.py szint 224` szerint) és a jelentés „Zárás” szakasza.
+- N-F224b (a `teszt_bizonyiteklap.py` CI-be vétele) az F217 (#725) merge-e után.

@@ -125,3 +125,39 @@ A sokaság: az F2 nem „igazolt” ítéletei, amelyek a lektori listákon (HAM
 | **összesen** | | **1 069 828** | 148 | |
 
 Keret (`get_usage`): előtte (15:00 körül) 5 órás 37%, heti 20%, Fable 6%. A becslés (kb. 1 millió token, 1–2 százalékpont a heti keretből, ×1,7) a tokenre stimmelt.
+
+## 5. Javítókör (egy, a brief szerint) és ismétlés — 2. kör
+
+**A javítókör** (`3e0c4385`, `.claude/agents/allitas-ellenor.md`), a 3. szakasz mechanizmusai szerint: a mondat minden része állítás; az indokba írt eltérés „nem” válasz („igazolt, de …” nincs); *Ki?* minden igénél; *Mit?* a lap és az adatsor saját szóhasználatához mérve; *Hány?* a felsorolás teljessége és az egyes szám; a belső utalás célpontjának tartalma; a hamis riasztás ellen: olvasat, képes beszéd, saját vonatkoztatás, a forrás állapota. **A javítás példái nem a próbahalmaz tételei** (különben az ismétlés a választ kapná meg, nem a mechanizmust). *Mérési korlát:* a szerepfájl eredeti, a brief által előírt példái a 2026-11-15-i mérésből valók, így az ISTENTISZT 1., 2., 3., 10. és a HAMART 31., 35. tétele mindkét körben példaként szerepelt.
+
+**Ismétlés** ugyanazon a bemeneten, ugyanazzal a módszerrel (3 F2-ügynök, Sonnet; a kimenetet maguk írták fájlba: `naplok/F224_proba/*_2kor.md`).
+
+| Halmaz | Küszöb | 1. kör | **2. kör** | A két kör uniója (tájékoztató) |
+|---|---|---|---|---|
+| HAMART 18 | ≥ 80% | 10/18 = 56% | **11/18 = 61%** (részlegessel 13/18 = 72%; a bírálóval 12/18) | 12/18 = 67% |
+| ISTENTISZT 10 | ≥ 80% | 2/10 = 20% | **3/10 = 30%** (részlegessel 4/10) | 4/10 |
+| hamis riasztás, vak minta (12) | ≤ 30% | 5/10 = 50% | **6/12 = 50%** | — |
+| „nem eldönthető” | ≤ 15% | 4,5% | 10/176 = 5,7% | — |
+
+**Változás tételenként (2. kör):**
+- HAMART — új találat: 22 (K28, a felsorolás hiányos: „erőszaktétel”, „erőszakkal”, „erőszak”); megmaradt: 9, 10, 21, 28, 29, 31, 34, 35, 38, 42; **visszaesés:** 13 (K98 most igazolt); továbbra sem: 8 (K5 most igazolt), 12 (K105 igazolt), 33 (K41 igazolt); részben: 11, 14.
+- ISTENTISZT — új találat: 1 (K50: a funkció-mező szerint a formula „a Baál prófétáinak szájában”, a versben Illés mondja), 15 (K4: a gyülekezet nem azonos azok közösségével); megmaradt: 13 (K22); **visszaesés:** 10 (K25 most igazolt); továbbra sem: 2 (nem K-tétel), 5, 8, 12, 17 (mind igazolt); részben: 16.
+- A vak minta (2. kör, `random.Random(224)`, a 13 tételes többlet-sokaságból 12): valódi hiba K30, K90, K95 („Ezékiel láncot készíttet” — a versben ő készíti), K100, K113, IST K37 (a 395 csak a két igére áll, a mondat három szót nevez); hamis riasztás K32, K78, K88 (a BDB szerint a kol-basar itt „mankind”), K89, K94, K107.
+
+**Költség (2. kör):** F2 HAMART 1. szelet 284 092, 2. szelet 274 977, ISTENTISZT 297 390 token — együtt 856 459 (Sonnet). Keret a 2. kör előtt: 5 órás 54%, heti 22%. A két kör együtt 1 926 287 token.
+
+## 6. ⛔ Eredmény és javaslat (a felhasználó dönt)
+
+**A javítókör után is a küszöb alatt marad mindhárom F2-mérőszám** (HAMART 61%, ISTENTISZT 30%, hamis riasztás 50%). A bíráló mindkét küszöbe teljesül (5/6, 5/5). A TEREMT-001 a teljes menettel a brief szerint nem indul.
+
+**Mit mutat a két kör:**
+1. **A Sonnet-F2 ingadozik:** a két kör között tételek fordultak meg mindkét irányba (HAM 13, 22; IST 1, 10, 15), azonos bemeneten. Egyetlen futás nem megbízható szűrő; a két kör uniója is csak 67% / 40%.
+2. **A szabály megvan, a végrehajtás hiányos:** a „ha bármelyik kérdésre nem, nem lehet igazolt” szabály mellett az ügynök a 2. körben is adott „igazolt”-at olyan tételre, amelynek eltérését az 1. körben ugyanaz a szerep megnevezte (HAM K105, IST K7, K25). A hiba nem a kérdéslistában, hanem a figyelem elosztásában van: 59 tételt egy menetben, tételenként 7 kérdéssel.
+3. **Két tétel kinyerési hézag** (IST 1. a K-listán csak a helyes mondattal, 2. egyáltalán nem): N-F224c. Ezek nélkül az ISTENTISZT-halmazon a 80% csak hibátlan munkával érhető el.
+4. **A hamis riasztás fele értelmezésnek jelölt vagy az adattal alátámasztott mondatot kifogásol** — a javítókör szabálya ezen nem változtatott (50% → 50%).
+
+**Javaslat:**
+- **(A) most:** az F2 marad, de **a lektor hatókör-szűkítésének 1. pontja nem lép életbe** — a lektor az F2 „igazolt” tételeit is olvassa (vak minta helyett mind), amíg az F2 egy újabb próbán nem éri el a küszöböt. Ez a `kiadas.md` 3. lépésében egy mondat. Ára: a lektor terhe nem csökken; haszna: a menet többi része (bíráló, bizonyítéklap, kinyerés, érvnapló) használható, és az F2 jelzései többletet adnak (mindkét körben új, valódi hibákat talált a lektor listáján kívül).
+- **(B) a következő mérés előtt:** (1) N-F224c (a kinyerés két hézaga); (2) **kisebb szeletek** (20–25 K-tétel ügynökönként a 59 helyett), mert a figyelem a tételszámmal romlik; (3) **két független futás uniója** a „nem igazolt” jelzésre (a hamis riasztást a lektor szűri).
+- **(C) modell:** a szerepfájl `model` mezője cserélhető; egy Opus-futás ugyanezen a halmazon megmutatná, hogy a hiány a modellé vagy a szerepé. Ez a felhasználó döntése (a 2. pont kiosztása jóváhagyott, Sonnettel).
+- **A küszöb** változatlan javaslatként; a 80% a jelenlegi felállással nem elérhető.
