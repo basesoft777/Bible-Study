@@ -79,3 +79,12 @@ belső adat változatlan). A Zenodo-piszkozatokba az új csomag kerül.
 - Olvasó (`teszt_futtat.py`): `teszt_olvaso_szerver` 112 OK (új: `test_karoli_pontossag_egy_forrasbol`),
   `teszt_pilot_aranymintaval` 22 OK, `teszt_tervezo` 51 OK, a többi gyors fájl zöld. A `teszt_visszhang_kapu` 2 hibája a
   tiszta main-en is megvan (ismert, régi bukás, külön tétel), nem ez az ág okozza.
+
+## 6. Kiegészítés (2026-11-15): a „bizonyosság” jelentése (DT-F175e)
+
+A felhasználó döntése: a nyilvános „bizonyosság” csak a mért pontosság (könyvcsoportonként, 93–98%, összesen 95,06%). A
+DT-F175d („Mózes öt könyve”) jóváhagyva. Ebben a PR-ban, újragenerálás nélkül (a csomagok szövegében a szó nem áll): a két
+Károli-kapu tilalma a „magas/alacsony bizonyosság” alakra és a belső mezőnévre szűkült (a mért pontosságra a szó
+megengedett, teszttel); a SEMA 2.20 rögzíti, hogy a `bizonyossag` mező belső szűrő, nem minősítés. Nyitva: N-F175d (az
+olvasó három helye, külön SERVER-javítás), N-F175e (a motívum-mag szövegei, a „csak szövegek” mód után; teljes export
+nélkül az E35 miatt nem igazolható).
