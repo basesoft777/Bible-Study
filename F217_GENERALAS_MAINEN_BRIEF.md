@@ -13,6 +13,7 @@ munka: folyamat
 olvas: [adat/SEMA.md, adat/lap_befagyasztas.tsv, adat/kiadasok.tsv, adat/lap_javitasok.tsv, eszkozok/szamkiosztas.py, naplok/F217_terv.md]
 ir: [adat/generalt_nezetek.tsv, adat/SEMA.md, .github/workflows/feladatok.yml, .github/workflows/ellenorzes.yml, .claude/commands/kiadas.md, .claude/commands/lap-javit.md, MUNKAMENET.md, eszkozok/generalt_nezetek.py, eszkozok/teszt_generalt_nezetek.py, eszkozok/szamkiosztas_ujragen.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_ket_ut_meres.py, eszkozok/teszt_torzscikk_migralt.py, eszkozok/push_elott.py, eszkozok/teszt_push_elott.py, naplok/F217_terv.md, naplok/F217_jelentes.md]
 fugg: [216]
+nem_fugg: [123, 212]
 ---
 
 # F217_GENERALAS_MAINEN_BRIEF.md — Generált nézetek a main-en, Actionnel
