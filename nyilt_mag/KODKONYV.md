@@ -282,7 +282,7 @@ Hogyan azonosítottuk a Károli-szót a Strong-számmal.
 *How the Károli word was matched to the Strong number.*
 
 - `azonositas_modja` = `kikövetkeztetett` (en: `inferred`): a párosítás következtetésből származik, nem közvetlen megfeleltetésből / the match is inferred, not a direct correspondence
-- `azonositas_modja` = `szó-szintű-gépi` (en: `word-level, machine`): gépi (modell-kimenet) szópárosítás, csak magas bizonyosságú pár igazolhat sort; nem emberi ellenőrzés / machine (model output) word alignment; only high-confidence pairs can confirm a row; not human verification
+- `azonositas_modja` = `szó-szintű-gépi` (en: `word-level, machine`): gépi (modell-kimenet) szópárosítás; nem emberi ellenőrzés / machine (model output) word alignment; not human verification
 - `azonositas_modja` = `tartalom-alapú` (en: `content-based`): a szerkesztő a Károli-szöveget olvasva rendelte a szót a Strong-számhoz / the editor assigned the word to the Strong number by reading the Károli text
 
 ### `azonositas_modja_en`
@@ -982,8 +982,8 @@ A kizárás oka szöveges besorolásban.
 - `kizaras_oka` = `más szó a Károli-fordításban (összesítő sor)` (en: `another word in the Károli translation (summary row)`): Kizárási ok: más szó a Károli-fordításban (összesítő sor). / Reason for exclusion: another word in the Károli translation (summary row).
 - `kizaras_oka` = `más szó áll a versben, nem a motívum lexémája (összesítő sor)` (en: `another word in the verse, not the lexeme of the motif (summary row)`): Kizárási ok: más szó áll a versben, nem a motívum lexémája (összesítő sor). / Reason for exclusion: another word in the verse, not the lexeme of the motif (summary row).
 - `kizaras_oka` = `más szókapcsolat (Isten letekint, minden test), nem a romlás szerkezete` (en: `another word combination (God looks down, all flesh), not the structure of corruption`): Kizárási ok: más szókapcsolat (Isten letekint, minden test), nem a romlás szerkezete. / Reason for exclusion: another word combination (God looks down, all flesh), not the structure of corruption.
-- `kizaras_oka` = `nem JHVH áll a név után` (en: `the name is not followed by YHWH`): Kizárási ok: nem JHVH áll a név után. / Reason for exclusion: the name is not followed by YHWH.
-- `kizaras_oka` = `nem JHVH áll a név után (összesítő sor)` (en: `the name is not followed by YHWH (summary row)`): Kizárási ok: nem JHVH áll a név után (összesítő sor). / Reason for exclusion: the name is not followed by YHWH (summary row).
+- `kizaras_oka` = `nem az Úr neve áll a név után` (en: `the name is not followed by the name of the LORD`): Kizárási ok: nem az Úr neve áll a név után. / Reason for exclusion: the name is not followed by the name of the LORD.
+- `kizaras_oka` = `nem az Úr neve áll a név után (összesítő sor)` (en: `the name is not followed by the name of the LORD (summary row)`): Kizárási ok: nem az Úr neve áll a név után (összesítő sor). / Reason for exclusion: the name is not followed by the name of the LORD (summary row).
 - `kizaras_oka` = `nincs meg a hívás + név szerkezete` (en: `the structure calling + name is missing`): Kizárási ok: nincs meg a hívás + név szerkezete. / Reason for exclusion: the structure calling + name is missing.
 - `kizaras_oka` = `név nélküli forma` (en: `form without the name`): Kizárási ok: név nélküli forma. / Reason for exclusion: form without the name.
 - `kizaras_oka` = `névadás` (en: `name-giving`): Kizárási ok: névadás. / Reason for exclusion: name-giving.

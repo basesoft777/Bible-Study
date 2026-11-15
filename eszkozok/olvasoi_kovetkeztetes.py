@@ -180,7 +180,7 @@ def kizart(egyenkent, csoport_vers, csoport_sor, elutasitva, nyitott, okok, forr
         lelet += ' A leggyakoribb ok: „%s” (%d vers)' % okok[0]
         lelet += ', utána „%s” (%d vers).' % okok[1] if len(okok) > 1 else '.'
     if forrasok:
-        lelet += ' A jelöltek forrása (vers): %s.' % _szamlista(sorted(forrasok, key=lambda x: -x[1]))
+        lelet += ' A vizsgált helyek forrása (vers): %s.' % _szamlista(sorted(forrasok, key=lambda x: -x[1]))
     kov = []
     if n_motivum:
         x = n_vizsgalt / n_motivum

@@ -5,6 +5,7 @@ kod: TERVEZO_MOD
 tipus: feladat
 fazis: 1
 modell: opus
+sav: SERVER
 munka: folyamat
 allapot: lezarva
 ag: claude/tervezo-mod

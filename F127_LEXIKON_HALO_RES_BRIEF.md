@@ -5,6 +5,7 @@ kod: LEXIKON_HALO_RES
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 pr: 452
 lezarva_osszegzes: "két új rés (alkalmazas, tanitoi) a 8 lexikonoldalon 6/b.-ként, res_forras 56 → 72; motívumközi jelölt-út (jeloltek kulcsbővítés 627 → 634, új motivum_kapcsolatok.tsv 3 sorral, generált 5/b. blokk); DT276–f; ellenőrzés ELTÉRÉS 5 → 2 → 2 (alacsony súlyú, két javítókör, a zárás jóváhagyva); merge-feltétel: pardes.db helyi újraépítése és teszt_futtat.py; zárónapló naplok/F127_zaras.md"

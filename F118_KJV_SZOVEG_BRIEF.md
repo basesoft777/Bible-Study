@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/f118-kjv-szoveg
 ad: a teljes KJV-szöveg új konkordancia-táblája (KJV_teljes_szoveg, a menet hozza létre) versenként a teljes KJV-szöveggel (eBible, Public Domain), a `KJV_Strongs_teljes.tsv`-vel mért vershalmaz- és szóegyezéssel, dataset- és licencsorral; a Károli melletti megjelenítés helye eldöntve, a megjelenítési brief tervezete a `beerkezo/`-ben

@@ -107,7 +107,7 @@ class ValodiAdat(unittest.TestCase):
 
     def test_blokk_12(self):
         b = SN.blokk_12(self.ist, '2026-10-29')
-        self.assertIn('a 18 jelöltből a motívumhoz kiválasztott 8 téma', b[0])
+        self.assertIn('a 18 szóba jöhető témából a motívumhoz kiválasztott 8 téma', b[0])
         self.assertEqual(b[1].count('\n- '), 7)
         self.assertRegex(b[-1], r'scope=.* \| forras=.* \| n=8 \| ts=2026-10-29')
 

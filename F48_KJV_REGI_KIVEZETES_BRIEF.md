@@ -5,6 +5,7 @@ kod: KJV_REGI_KIVEZETES
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: nem_indult
 ad: a KJV_Strongs_{Genesis,Exodus,Proverbs}.tsv és az ASV_Strongs_{Genesis,Exodus,Proverbs}.tsv (studybible.info, tisztázatlan licenc) kikerül a repóból; a kód, a tesztek és a dokumentáció egyetlen KJV-forrást (konkordancia/KJV_Strongs_teljes.tsv, eBible) használ; a KJV_ASV_Strongs licenc- és dataset-sor kivezetve
 kovetkezo: "futtatható az F22 (#22) lezárása és mergelése után; a 2. lépés ⛔ pontján (a mérés eredménye) a felhasználó dönt"

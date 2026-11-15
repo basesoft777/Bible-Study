@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 2
 munka: ertelmezo
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ad: az első natív egyforrású motívum az új mércével: a jelentes_szam és a karoli_szo az adatban, a szakaszcímke gépileg, a szótári egységek a lap előtt lefordítva, a szótári gerinc kapcsoló nélkül, a motivumok/TEREMT-002.md a 9_ forrássablon szerint, a lexikon/TEREMT-002_TUDOMANYOS.md az ISTENTISZT-001 arany lapjának mércéjén zöld
 kovetkezo: "nincs: a TEREMT-002 hátralévő munkája (új cikk-próza, gépi kapuk, olvasói kapu, a felhasználó vizuális átnézése, 1. kiadás) a #123-é (DT546, F123.2)"

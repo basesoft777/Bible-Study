@@ -5,6 +5,7 @@ kod: BDB_SZOREND
 tipus: feladat
 fazis: 1
 modell: opus
+sav: SERVER
 munka: folyamat
 allapot: lezarva
 ag: claude/f105-bdb-szorend

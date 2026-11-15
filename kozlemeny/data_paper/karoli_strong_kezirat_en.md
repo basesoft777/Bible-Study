@@ -7,9 +7,9 @@
 
 The dataset links the 599,367 words of the 1908 text of the Károli Bible, the classic Hungarian translation, to the
 611,396 words of the Hebrew and Greek source text through 598,715 word pairs, each carrying the Strong's number of the
-source word. The alignment was produced by language models following a written rule set; the model marked positions
+source word. The alignment was produced by a language model following a written rule set; the model marked positions
 only, and the Strong's number comes from the open STEPBible TAHOT and TAGNT data. Accuracy was measured in two ways: with
-a blind model reviewer on a random sample drawn from eight strata (95.06% on the full pair set, 95%:
+a blind model reviewer on a random sample drawn from 7 book groups (95.06% on the full pair set, 95%:
 93.81–96.32%), and against an independent Károli edition marked with Strong's numbers, on main-word pairs
 (98.72%, 95%: 98.22–99.08%). The dataset publishes the measured state, with a list of confirmed errors and a
 quality target for the next release fixed in advance. Licence: CC BY 4.0.
@@ -38,19 +38,18 @@ number and English gloss) and returned pairs of positions, together with additio
 cases were decided by twelve written rules: on articles, split conjunctions and relative pronouns, the object marker,
 possessive suffixes, separated verbal prefixes, explicit subject pronouns and auxiliaries, the Hebrew conjunction *ve-*,
 and Greek words absent from the Textus Receptus. A program checked every answer (each Hungarian word exactly once, each
-source word at least once, only existing positions); a failed answer was redone by the model. Genesis and Exodus were
-aligned by two independent models (Claude Sonnet and Gemini Flash): where they agreed, the pair has `magas` (high)
-confidence (52,844 pairs). For reasons of cost, the other books were aligned by one model, Claude Sonnet (`alacsony`,
-545,871 pairs). The tables can be rebuilt byte-identically from the saved model answers.
+source word at least once, only existing positions); a failed answer was redone by the model. The pairs were proposed by
+a language model (Claude Sonnet); the tables can be rebuilt byte-identically from the saved model answers.
 
-**Accuracy measurement.** (1) *Blind review.* The pair set was divided into eight strata (Genesis–Deuteronomy with two
-models and with one; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with 200
-random pairs per stratum. A third model (Claude Opus) marked the source words for each target Hungarian word itself,
+**Accuracy measurement.** (1) *Blind review.* The pair set was divided by book group into 7 strata (the five
+books of Moses; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with 200 random
+pairs per stratum (400 pairs from the five books of Moses, in two subsamples combined by pair weight). A
+second model (Claude Opus) marked the source words for each target Hungarian word itself,
 with the same rules, without seeing the machine pair. (2) *Calibration.* On an earlier manually compiled sample, the
 reviewer agreed with the sample in 96.79% and the machine alignment in 97.06%: the reviewer is not more accurate
 than the alignment, so the agreement is a lower bound only if shared errors are negligible. (3) *Independent
 comparison.* Shared errors are measured against a Károli edition marked with Strong's numbers, on one full chapter per
-stratum (8 chapters, 2,663 main-word pairs); the source marks the main word only, not secondary words or
+stratum, two in the five books of Moses (8 chapters, 2,663 main-word pairs); the source marks the main word only, not secondary words or
 morphemes. Differences were judged three ways (machine pair, source, blind reviewer). The external source's data are not
 part of the dataset, only the aggregate rate.
 
@@ -64,8 +63,7 @@ part of the dataset, only the aggregate rate.
 | main words, by the independent source | 98.72% | 98.22–99.08% |
 | main words, after three-way judgement | 99.81% | 99.56–99.92% |
 
-Agreement per stratum ranges from 92.00% (Moses, one model) to 99.00% (Moses, two
-models agreeing); the per-stratum table is in the dataset's `meres.tsv` and its methods description. Of the 1,600
+Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts); the per-stratum table is in the dataset's `meres.tsv` and its methods description. Of the 1,600
 sample pairs, 72 differed from the reviewer; the most frequent type is the neighbouring word
 (37), typically a Hebrew prefix, article or preposition attached to the word against the rules. Of the
 34 differences in the independent comparison, 5 remained errors of the alignment; these and the other
@@ -77,7 +75,7 @@ confirmed errors are listed by name in the dataset.
 (documentation); data state: 2026-11-01.
 
 **Files.** `parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the source
-word, Strong's number, link type, confidence, state, Textus Receptus flag); `szavak/` (per book, every Hungarian and
+word, Strong's number, link type, state, Textus Receptus flag); `szavak/` (per book, every Hungarian and
 source word once, with its state: aligned, addition, untranslated, pending); `versek.tsv` (the 1908 Károli text);
 `meres.tsv` (every figure of the measurement); bilingual codebook, methods description, known issues, checksum. The key
 is the OSIS verse identifier and the word position. Hebrew and Greek word forms are not in the package: the position
@@ -100,7 +98,7 @@ and error types can also serve to evaluate word aligners. The same pairs also ap
 
 The alignment is a machine proposal. The blind reviewer is itself a model; the independent comparison covers main words
 only, on a small cluster sample; the accuracy of the Hebrew morpheme pairs (157,163 pairs; 90.74%) is measured by
-the blind reviewer only. Outside Genesis and Exodus every pair is one model's proposal. Károli translated the Textus
+the blind reviewer only. Károli translated the Textus
 Receptus, while the alignment uses TAGNT: 369 aligned Greek words are not in the Textus Receptus, and are
 flagged.
 
@@ -112,8 +110,8 @@ agreement at least 98%, lower bound of weighted agreement with the blind reviewe
 
 ## AI declaration
 
-The alignment was done by language models (Claude Sonnet, Gemini Flash) and the blind review by a third model (Claude
-Opus), as described above; the models wrote no Strong's numbers. Tokenisation, the machine gate, table assembly and the
+The alignment was done by a language model (Claude Sonnet) and the blind review by a second model (Claude Opus), as
+described above; the models wrote no Strong's numbers. Tokenisation, the machine gate, table assembly and the
 statistics are deterministic programs. The text of the manuscript was drafted by the claude-opus-5-5 model from the
 dataset's data; the figures are generated from the data. An AI tool is not an author; the author is responsible for the
 data and the text.

@@ -5,6 +5,7 @@ kod: PARDES_DB_UJRAEPIT
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SERVER
 munka: adat
 allapot: lezarva
 pr: https://github.com/basesoft777/Bible-Study/pull/342

@@ -3020,34 +3020,55 @@ SZABALYOK_FUGGVENYEI['E34'] = e34_karoli_idezet
 # az a felhasznalo lepese.
 E35_KIVALTO = re.compile(r'^(?:adat/[^/]+\.tsv|eszkozok/nyilt_mag_export\.py|lexikon/[^/]+_TUDOMANYOS\.md)$')
 E35_CSOMAG = 'nyilt_mag'
+# F223 (a): a nyilvanos szovegek sablonja onmagaban csak a szovegfajlokat (es az ellenorzo osszeget) erinti: ilyenkor az
+# osszevetes fajlonkenti, csak a szoveg-fajlokra (az adatfajlokat a commitolt csomagbol olvassa a `--csak-szovegek` mod).
+E35_SZOVEG_KIVALTO = re.compile(r'^eszkozok/nyilt_mag_szovegek\.py$')
 
 
 def e35_kivalto_fajlok(valtozott):
     return [f.replace('\\', '/') for f in valtozott if E35_KIVALTO.match(f.replace('\\', '/'))]
 
 
-def e35_nyilt_mag_naprakesz(valtozott, teljes=False, root=None, export_fn=None):
+def e35_szoveg_kivalto_fajlok(valtozott):
+    return [f.replace('\\', '/') for f in valtozott if E35_SZOVEG_KIVALTO.match(f.replace('\\', '/'))]
+
+
+def e35_nyilt_mag_naprakesz(valtozott, teljes=False, root=None, export_fn=None, szoveg_export_fn=None):
     """E35: ha a PR adat-tablat vagy az exportgeneratort modositja, a commitolt `nyilt_mag/` egyezik az
     ujragenerált exporttal (a lemezen levo fajlok halmaza es tartalma). `export_fn(kimenet) -> {rel: szoveg}`
-    csak a tesztben cserelheto."""
+    csak a tesztben cserelheto. F223 (a): ha csak a szovegsablon (`nyilt_mag_szovegek.py`) valtozott, az osszevetes fajlonkenti:
+    csak a szoveg-fajlok es az ellenorzo osszeg-fajlok (`szoveg_export_fn(kimenet) -> {rel: szoveg}`, alapbol a
+    `--csak-szovegek` mod), az adatfajlokat nem generalja ujra."""
     if teljes:
         return []
     kivalto = e35_kivalto_fajlok(valtozott)
-    if not kivalto:
+    szoveg_kivalto = e35_szoveg_kivalto_fajlok(valtozott)
+    if not kivalto and not szoveg_kivalto:
         return []
     root = root or ROOT
     ut = os.path.join(root, E35_CSOMAG)
     if not os.path.isdir(ut):
         return []
-    if export_fn is None:
-        sys.path.insert(0, os.path.join(root, 'eszkozok'))
-        import nyilt_mag_export as _E
-        export_fn = lambda k: _E.export(k)[0]
-    uj = export_fn(E35_CSOMAG)
+    csak_szoveg = not kivalto
+    if csak_szoveg:
+        if szoveg_export_fn is None:
+            sys.path.insert(0, os.path.join(root, 'eszkozok'))
+            import nyilt_mag_export as _E
+            szoveg_export_fn = lambda k: _E.export_csak_szovegek(k)[0]
+        uj = szoveg_export_fn(E35_CSOMAG)
+        kivalto = szoveg_kivalto
+    else:
+        if export_fn is None:
+            sys.path.insert(0, os.path.join(root, 'eszkozok'))
+            import nyilt_mag_export as _E
+            export_fn = lambda k: _E.export(k)[0]
+        uj = export_fn(E35_CSOMAG)
     lemez = {}
     for gyoker, _, nevek in os.walk(ut):
         for n in nevek:
             rel = os.path.relpath(os.path.join(gyoker, n), ut).replace('\\', '/')
+            if csak_szoveg and rel not in uj:
+                continue   # fajlonkenti osszevetes: csak az ujraepitett szoveg-fajlok
             with open(os.path.join(gyoker, n), encoding='utf-8', newline='') as f:
                 lemez[rel] = f.read()
     ok = 'a PR modositja: %s' % ', '.join(sorted(kivalto)[:3])
@@ -3061,8 +3082,9 @@ def e35_nyilt_mag_naprakesz(valtozott, teljes=False, root=None, export_fn=None):
             leir = 'a commitolt fajl nem egyezik az ujragenerálttal'
         else:
             continue
+        parancs = 'python eszkozok/nyilt_mag_export.py' + (' --csak-szovegek' if csak_szoveg else '')
         talalatok.append(Talalat('E35', SZINT['E35'], E35_CSOMAG + '/' + rel, 0,
-                                 '%s (%s); futtasd: python eszkozok/nyilt_mag_export.py, es commitold' % (leir, ok)))
+                                 '%s (%s); futtasd: %s, es commitold' % (leir, ok, parancs)))
     return talalatok
 
 
@@ -3129,6 +3151,10 @@ KULSO_SZABALYOK = (
      'lapon (`--minden --szigoru`)', '`eszkozok/ellenorzes/allitas_adat.py`'),
     ('E39', 'HIBA', 'követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés '
      'jelentés (`--szigoru`, a kapuemelési döntés)', '`eszkozok/ellenorzes/kovetelmeny_kapu.py`'),
+    # F200.7 (N-F200d, DT-F200e; a felhasznalo: „ez menjen most”): a proza-allitas ELTÉR-sora HIBA az uj formaju kezi forrasokon
+    ('E41', 'HIBA', 'próza-állítás kapu: a kézi forrás versre hivatkozó állításainak gépi ítélete (ELTÉR-sor) HIBA az új '
+     'formájú forrásokon; a régi formájú forrás kimarad, és ezt a kimenet kimondja (`--kapu`)',
+     '`eszkozok/proza_allitas.py`'),
 )
 
 

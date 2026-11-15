@@ -5,9 +5,10 @@ kod: KAROLI_PONTOSSAG
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: dontesre_var
+sav: CONTENT
+allapot: lezarva
 ad: a ~599 000 gépi Károli–Strong pár mért pontossága rétegenként (könyvcsoport, héber/görög, bizonyosság), 95%-os konfidencia-intervallummal és hibatípusokkal, egy független második modell vak ellenőrzéséből és a felhasználó szúrópróbájából — a párosítás mint önálló adatkészlet (második adatközlemény) előfeltétele
-kovetkezo: "Te: a jelentés 6. pontjának kétes esetei (2 vitatható + 3 a mi hibánk megerősítése) és a draft PR átnézése; a nyitás (DT623) a jelentés szerint mehet"
+kovetkezo: "lezárva: a #643 mergelve (2026-11-05); a maradék: N-F172a, N-F172b, N-F172c (nyitva); a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 munka: folyamat
 olvas: [adat/karoli_strong/, konkordancia/Karoli_1908.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, f22/versmegfeleltetes.tsv, f22/versosszevonas.tsv, f21p/regi_arany_hibas.tsv, "naplok/F22_*_jelentes.md", naplok/F21P_jelentes.md, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/szuroproba.py, eszkozok/karoli_strong/meres.py, eszkozok/karoli_strong/arany_ellenoriz.py, adat/SEMA.md]
 ir: [dontesek/uj/goofy-turing-b0eb00.md, nyitott/uj/goofy-turing-b0eb00.md, naplok/KAROLI_PONTOSSAG_jelentes.md, eszkozok/karoli_strong/pontossag_minta.py, eszkozok/karoli_strong/pontossag_meres.py, eszkozok/karoli_strong/teszt_pontossag.py, eszkozok/karoli_strong/zart_osszevet.py, eszkozok/karoli_strong/pontossag_ellenor.py, eszkozok/karoli_strong/pontossag_kulso.py, f172/]

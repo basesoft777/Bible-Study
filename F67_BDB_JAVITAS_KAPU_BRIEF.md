@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: ccr-f67-bdb-javitas-kapu
 pr: 492

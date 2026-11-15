@@ -16,7 +16,8 @@ A brief 1. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
     UJRA        (d) az export újrafuttatva bájtazonos a lemezen állóval                                 — BUKÁS
     NYILVANOS   (e) nyilvános szövegben nincs belső jelölés (DT/N/F-szám, belső útvonal, proveniencia-kulcs,
                 `manual`), „orkesztrátor”, „felhasználó…”, „termék”, GitHub, helyőrző; a „PaRDeS” nem áll benne
-                (így nem is központi keretezés); a README és az OLVASSEL jóváhagyott kiadás-mondata áll — BUKÁS
+                (így nem is központi keretezés); a README és az OLVASSEL jóváhagyott kiadás-mondata áll; nincs
+                modell-egyezés mint minősítés (magas/alacsony bizonyosság, kétmodelles leírás, költségkeret) — BUKÁS
     NEVELO      a magyar szövegekben a szám előtti névelő a kiejtés szerinti (az 598 715, a 34, az 1. kiadás),
                 és nincs el nem döntött „a(z)” alak                                                      — BUKÁS
     KOZLEMENY   a `kozlemeny/` hu/en tervezete (rövid közlemény) megvan, nincs az ellenőrző összegben, a
@@ -81,6 +82,20 @@ TILTOTT = [
     (re.compile(r'\bgerinc', re.I), 'belső fogalom (gerinc)'),
     (re.compile(r'régi arany|old gold', re.I), 'belső fogalom (régi arany)'),
 ]
+# a két modell egyezése nem minősítés, és a fejlődéstörténet (költségkeret, második párosító modell) nem a közölt
+# állapot leírása (2026-11-14): a nyilvános szövegben nem állhat (a TILTOTT része). A „bizonyosság” szó a nyilvános
+# szövegben csak a mért pontosságot jelenti (DT-F175e, 2026-11-15); a modell-egyezés címkéje (magas/alacsony
+# bizonyosság, high/low confidence) és a belső mező neve tilos.
+MODELL_EGYEZES = [
+    (re.compile(r'\b(?:magas|alacsony|high|low)\W{0,3}(?:bizonyoss|confidence)|\bbizonyossag\b', re.I),
+     'modell-egyezés mint minősítés (magas/alacsony bizonyosság)'),
+    (re.compile(r'költségkeret|reasons? of cost', re.I), 'költségkeret-történet'),
+    (re.compile(r'Gemini', re.I), 'második párosító modell'),
+    (re.compile(r'két (?:független )?(?:nyelvi )?modell|two (?:independent )?(?:language )?models', re.I),
+     'kétmodelles leírás'),
+    (re.compile(r'confidence label|`magas`|`alacsony`'), 'modell-egyezés jelölése'),
+]
+TILTOTT += MODELL_EGYEZES
 KIADAS_MONDAT = {'OLVASSEL.md': 'A csomag minden fájlja a kiadás része.',
                  'README.md': 'Every file of the package is part of the release.'}
 MAGYAR = ('OLVASSEL.md', 'MODSZER.md', 'ISMERT_HIBAK.md', 'ATTRIBUCIO.md', 'LICENSE', 'KODKONYV.md', 'kodkonyv.tsv',
@@ -133,8 +148,12 @@ def forras():
                     raise SystemExit('kapu: a forrás-szótábla kulcsa kétszer áll: %s' % (k,))
                 szavak[k] = (s['szo'] if s['oldal'] == 'hu' else '', s['allapot'], s['partner_sorszam'], s['strong'])
         versek = {E.osis(v['Igehely']): v['Károli-szöveg (teljes vers)'] for v in E.tsv(E.KAROLI)[1]}
+        # a mérőtábla sorai, a két Mózes-réteg sorai helyett az összevont réteg soraival
         _, meres = E.tsv(E.F172_MERES)
-        _FORRAS = (parok, szavak, versek, len(meres))
+        _, osszevont = E.tsv(E.F172_OSSZEVONT)
+        mozes = [m for m in meres if m['szakasz'] in ('reteg', 'hibatipus')
+                 and m['cimke'].split('·')[0].strip() in E.MOZES_RETEGEK]
+        _FORRAS = (parok, szavak, versek, len(meres) - len(mozes) + len(osszevont))
     return _FORRAS
 
 

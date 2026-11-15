@@ -5,7 +5,7 @@ eszkozok/teszt_ellenoriz_32.py -- F123.KIADVEG: az eszkozok/ellenoriz.py 32.
 szabályának (olvasói kapu a kiadott lapokon) tesztjei.
 
 Ideiglenes (a repón kívüli) adat/ és lexikon/ könyvtárban fut; a lap a repó
-élő ISTENTISZT-001 lapjának másolata (0 BUKÁS), a negatív esetekben egy belső
+élő ALVIL-001 lapjának másolata (0 BUKÁS), a negatív esetekben egy belső
 jelöléssel (döntés-azonosító) rontva. Kiadott lapon a szabálynak SÉRTÉS-t, ki
 nem adott lapon JELENTÉS-t kell adnia.
 
@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ellenoriz as E  # noqa: E402
 
 T, N = '\t', '\n'
-MOTIVUM = 'ISTENTISZT-001'
+MOTIVUM = 'ALVIL-001'   # F194: az ISTENTISZT-001 új szerkezetű lett; a régi szerkezet mintája a befagyasztott ALVIL-001
 LAP = os.path.join(E.ROOT, 'lexikon', '%s_TUDOMANYOS.md' % MOTIVUM)
 FEJLEC = ['id', 'kiadas', 'datum', 'valtozas', 'proza_modell', 'forras']
 # egy olvasói bekezdés a 1. blokk címe után: a döntés-azonosító a kapu BELSO-szabályán BUKÁS

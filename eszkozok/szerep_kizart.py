@@ -76,6 +76,24 @@ def ok_megjegyzesek(motivum_id, ut=None):
     return ki
 
 
+def cimke_ismetles(cimke, szoveg):
+    """F194 (az orkesztrátor 2026-11-13-i minta-ellenőrzése, „címke-ismétlés”): igaz, ha a szöveg eleje (az első nyolc
+    szó) a címke tartalmas szavait ismétli. A címkét a mintaszótár az indoklás elejéből veszi, ezért ahol ez igaz, a
+    tábla cellájában csak az indoklás áll. A rövid (négy szónál rövidebb) szöveg szótári glossza, nem indoklás."""
+    cim = (cimke or '').strip().lower()
+    if not cim or re.search(r'[\d\[\]→#(]', cim):
+        return False
+    tobbi = re.findall(r'\w+', (szoveg or '').lower())
+    if len(tobbi) < 4:
+        return False
+    cim_szavai = re.findall(r'\w+', cim)
+    if len(cim_szavai) >= 2 and tobbi[:2] == cim_szavai[:2]:
+        return True                     # a szöveg a címke elejével kezd („Fizikai pusztítás, …: Fizikai pusztítás: …”)
+    szavak = [w for w in cim_szavai if len(w) > 3]
+    eleje = ' '.join(tobbi[:8])
+    return bool(szavak) and sum(w in eleje for w in szavak) >= max(1, len(szavak) - 1)
+
+
 def elutasitas_oka(indoklas, minta):
     for m, cimke in minta:
         if m.search(indoklas or ''):
@@ -203,6 +221,12 @@ def jeloles_oka(forras_kereses):
         if 'alacsony szavazat' in fo:
             return CSOPORTOK[0], 'TSK-ajánlás, alacsony szavazattal'
         cel = (' ' + _ahol(helyek[1], 'helyre')) if ('→' in fo or '↔' in fo) and len(helyek) > 1 else ''
+        # F194 (az orkesztrátor 2026-11-13-i minta-ellenőrzése, „jegyzet = cella”): a több forrásversű ajánlás
+        # („TSK 1Móz 4:11, 4:12 (2-4)”) minden forrásverse a cellában áll, így a jegyzet nem hoz többletet
+        tobb = re.match(r'TSK (%s(?:,\s*\d+:\d+(?:-\d+)?)+)' % HELY.pattern, fo)
+        if tobb and not cel:
+            elemek = [x.strip() for x in tobb.group(1).split(',')]
+            hely = ', '.join(elemek[:-1]) + ' és ' + elemek[-1]
         szoveg = 'TSK-ajánlás %s%s%s' % (_ahol(hely, 'helyről'), cel, _tsk_reszlet(fo)) if hely else 'TSK-ajánlás'
         if 'Károli-KH is' in fo:
             szoveg += ' (a Károli is ajánlja)'
@@ -460,6 +484,10 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None, csoport_n=None
             lj += ' · indoklás (nyers): %s' % _cella(fo_ind)
         if olv is None:
             csop[c].append((r['igehely'], _cella(miert), dontes, lj))
+        elif r.get('dontes') != 'nyitva' and cimke_ismetles(ok, olv):
+            # F194: az indoklás maga mondja ki a címkét; a cellában egyszer áll
+            csop[c].append((r['igehely'], _cella(miert), '**elutasítva** — %s' % (
+                indok_strong(_cella(olv), strong_cim) or '—'), lj))
         else:
             csop[c].append((r['igehely'], _cella(miert), '%s: %s' % (dontes, indok_strong(_cella(olv), strong_cim) or '—'), lj))
     ki = []
@@ -475,7 +503,7 @@ def blokk_torzs(sorok, motivum_id, okok_ut=None, strong_cim=None, csoport_n=None
             ki.append('**%s** (%d sor, %d vers)' % (c, len(sorok_c), forras_szaml[c]))
         else:
             ki.append('**%s** (%d)' % (c, len(sorok_c)))
-        ki.append('| Igehely | Miért lett jelölt | Döntés és indok |\n|---|---|---|\n' + '\n'.join(sor_md))
+        ki.append('| Igehely | Miért került a vizsgálatba | Döntés és indok |\n|---|---|---|\n' + '\n'.join(sor_md))
     ossz = {'ok': ok_szaml, 'forras': forras_szaml, 'pelda': pelda,
             'megj': {k: megj.get(k, '') for k in ok_szaml}}
     return ki, labj, ossz

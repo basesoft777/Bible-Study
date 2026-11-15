@@ -5,6 +5,7 @@ kod: MIGRACIO2
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: megallt
 munka: ertelmezo
 ad: a hátralévő 8 motívum (ALVIL-001, TEREMT-002, ANTROP-001, HAMART-001, HODIT-001, KIRALY-001, MENNY-001, TEREMT-001) lapja új cikkként, nulláról, egy kézből írt prózával, a meglévő adat és döntések felhasználásával; motívumonként teljesség-mérés három hálóval, az 1/a minden igehelye kerek mondat + „Funkció:” sor, a 24. és 25. szabály RENDBEN, az olvasói kapu (Feed 9) 0 BUKÁS, a felhasználó vizuális átnézése rögzítve, utána 1. kiadás; egyetlen kézi forrásból (`motivumok/[ID].md` + adattáblák) renderel

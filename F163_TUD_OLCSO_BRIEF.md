@@ -5,9 +5,10 @@ kod: TUD_OLCSO
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: dontesre_var
+sav: CONTENT
+allapot: lezarva
 ad: öt rövid, nyilvános szöveg és egy CITATION.cff, amelyek a #86 terv 1.7 hiánytáblájának olcsó pontjait zárják (MI-nyilatkozat és szerzőségi szabály, Hays hét kritériuma a módszertanra leképezve, a PaRDeS-szint recepciós keretezése, az ókori közel-keleti határ kimondása)
-kovetkezo: "Te: ⛔ DT605 (szerzői felelősségvállalás, szerző neve) és DT606 (terméknév) — a helyőrzők kitöltése; a négy kozlemeny/ szöveg és a CITATION.cff kész (F163.1–F163.5, 2026-11-04); DT607–d az orkesztrátor jóváhagyására"
+kovetkezo: "lezárva: a #628 mergelve (2026-11-04); a maradék, a szerzői név helyőrzője a CITATION.cff-ben: N-F220d; a közlemények kötése: N-F163c (nyitva); a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 munka: ertelmezo
 olvas: [adat/SEMA.md, adat/kiadasok.tsv, MUNKAMENET.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, DONTESEK.md, LICENSE, "naplok/KIADAS_*_lektor.md"]
 ir: [kozlemeny/MI_NYILATKOZAT.md, kozlemeny/HAYS_LEKEPEZES.md, kozlemeny/PARDES_RECEPCIOS_KERET.md, kozlemeny/KOZEL_KELETI_HATAR.md, CITATION.cff]

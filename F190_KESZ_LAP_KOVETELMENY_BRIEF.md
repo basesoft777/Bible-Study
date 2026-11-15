@@ -5,6 +5,7 @@ kod: KESZ_LAP_KOVETELMENY
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 allapot: lezarva
 lezarva_osszegzes: a kész lap követelménylistája a HAMART-001 mércéjével; a K67a–K67f pontosítása a #183 után: N164
 ag: claude/kesz-lap-kovetelmeny-15a3b5

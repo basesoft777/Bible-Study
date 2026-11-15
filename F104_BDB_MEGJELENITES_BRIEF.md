@@ -5,6 +5,7 @@ kod: BDB_MEGJELENITES
 tipus: feladat
 fazis: 1
 modell: opus
+sav: SERVER
 munka: folyamat
 allapot: lezarva
 ag: claude/f104-bdb-megjelenites

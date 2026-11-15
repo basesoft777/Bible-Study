@@ -49,11 +49,11 @@ class Lap(unittest.TestCase):
         """A felhasználó (2026-11-11): a lap elején egyszerűsített kolofon — a motívum, a negatív elhatárolás, a
         fölérendelt fogalom, olvasói alakban; a teljes azonosító tábla a Kolofonban."""
         eleje = self.lap.split('\n## Kivonat\n', 1)[0]
-        for mezo in ('**A motívum.**', '**Mi tartozik ide, és mi nem.**', '**Fölérendelt fogalom**', '(#kolofon)'):
+        for mezo in ('**A motívum.**', '**Mi tartozik ide, és mi nem.**', '**A tágabb kör**', '(#kolofon)'):
             self.assertIn(mezo, eleje)
         self.assertNotIn('| ID |', eleje)
         kolofon = self.lap.split('\n## Kolofon\n', 1)[1]
-        for mezo in ('| ID | HAMART-001 |', '| Rövid cím |', '| Negatív kritérium |', '| Fölérendelt fogalom |'):
+        for mezo in ('| ID | HAMART-001 |', '| Rövid cím |', '| Negatív kritérium |', '| A tágabb kör |'):
             self.assertIn(mezo, kolofon)
         self.assertIn('| Státusz | %s |' % LG.kiadasi_statusz('HAMART-001'), kolofon)
         for belso in ('| Kézi forrás |', '| Kereszthivatkozás-napló |'):
@@ -257,7 +257,10 @@ class Melleklet(unittest.TestCase):
 class Generator(unittest.TestCase):
     def test_alkalmazas_kivezetes_csak_hamart(self):
         self.assertTrue(LG.res_kivezetett('HAMART-001', 'alkalmazas'))
-        self.assertFalse(LG.res_kivezetett('ISTENTISZT-001', 'alkalmazas'))
+        # F194 (2. fázis): az ISTENTISZT-001 is az új szerkezetben áll, az alkalmazas rése kivezetve; a régi
+        # (befagyasztott) lapok rése marad
+        self.assertTrue(LG.res_kivezetett('ISTENTISZT-001', 'alkalmazas'))
+        self.assertFalse(LG.res_kivezetett('KIRALY-001', 'alkalmazas'))
 
     def test_jelolt_labjegyzet(self):
         t = LG.jelolt_labjegyzet_olvasoi('forrás: TSK 1Móz 6:5 (25); Károli-KH is; napló: a motívum korábbi '
@@ -666,7 +669,7 @@ class TablaAlattiJegyzet(unittest.TestCase):
         # a Fable mérése: a 2. táblánál 47 helyett 18; a 3. szakasz táblái 270 helyett 46, a 6. 99 helyett 11;
         # F212 (I4): a cellát ismétlő jegyzet elmarad — a 3. szakaszban 7, a 6.-ban 2 marad
         # F212 (Jer 12:4, Jer 23:10): a 2. táblában a két új sor jelentés-jegyzete, a 3.-ban az egyenkénti döntés jegyzete
-        self.assertEqual(szam, {'2': 20, '3': 8, '6': 2})
+        self.assertEqual(szam, {'2': 17, '3': 6})   # F194: a cellát ismétlő TSK-jegyzetek elmaradnak
         celok = set(re.findall(r'id="(j-[\d-]+)"', lap))
         for h in set(re.findall(r'href="#(j-[\d-]+)"', lap)):
             self.assertIn(h, celok)
@@ -720,7 +723,8 @@ class GyorsKor(unittest.TestCase):
 
     def test_kolofon_datum(self):
         lap = _olvas(LAP)
-        self.assertRegex(lap, r'\| Szerkesztői átnézés és javítás \|[^\n|]*\(2026\.11\.11–12\) \|')
+        # F194.37: a minta-kapu javításainak `lap_javitasok.tsv`-sora (2026.11.13) a tartományt kiterjeszti
+        self.assertRegex(lap, r'\| Szerkesztői átnézés és javítás \|[^\n|]*\(2026\.11\.11–13\) \|')
         self.assertIn('| Modell-lektor (claude-fable-5-2) | 43 jelzett hely (2026.11.11) |', lap)
 
     def test_szo_a_strong_mellett(self):

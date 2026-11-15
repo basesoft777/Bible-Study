@@ -5,9 +5,10 @@ kod: THAYER_API_KOTEG
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: fut
+sav: CONTENT
+allapot: lezarva
 ad: "eszkozok/thayer_api_koteg.py: a #132 szakaszos láncának (thayer_jelolt/forditas.py, prompt v5.1, adatblokk, 14–16. kapu) Batch-kötegelője a bdb_api_koteg.py mintájára (szaraz / bekuld / allapot / begyujt / kapuz / javit / rogzit / beir), a teljes Thayer futási listájával; hálózat nélküli tesztekkel; valódi beküldés nélkül (az első a #27 M1-e)"
-kovetkezo: "/kovetkezo; utána a #27 (FP3) M1-e ezzel fut"
+kovetkezo: "lezárva: a #575 mergelve (2026-11-02); nincs maradék (az első beküldés a #27 M1-e); a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 olvas: [eszkozok/bdb_api_koteg.py, eszkozok/karoli_strong/api_koteg.py, eszkozok/thayer_jelolt/, eszkozok/emeles.py, eszkozok/forditas_kapuk.py, forditas/prompt_v5_1.md, adat/thayer_szakaszok.tsv, adat/forditasok.tsv, adat/SEMA.md, F132_THAYER_SZAKASZ_BRIEF.md, F142_THAYER_M3_BRIEF.md, F27_FP3_BRIEF.md, DONTESEK.md]
 ir: [eszkozok/thayer_api_koteg.py, eszkozok/teszt_thayer_api_koteg.py, naplok/THAYER_API_KOTEG_naplo.md]
 fugg: []

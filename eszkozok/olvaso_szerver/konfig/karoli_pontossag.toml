@@ -1,0 +1,15 @@
+# A Károli–Strong szópárosítás (adat/karoli_strong/) mért pontossága: a szó-lap „Károli-alakok” blokkjában ez áll a
+# modell-egyezés („magas bizonyosságú”) helyett — a két modell egyezése nem minősítés, a minősítés a saját mérésünk
+# (felhasználói döntés, 2026-11-14). EGYETLEN forrás a szerverben: a blokkok.py innen olvassa; a teszt
+# (teszt_olvaso_szerver.py, test_karoli_pontossag_egy_forrasbol) a #172 mérőtáblájának súlyozott összes sorával veti össze.
+# Csere új mérésnél (2. kiadás): a [parositas] mezői együtt cserélődnek.
+
+[parositas]
+p = 0.9506
+ci_also = 0.9381
+ci_felso = 0.9632
+minta = 1600
+modszer = "rétegzett becslés, normál 95%"
+datum = "2026-11-05"
+leiras = "a teljes párkészlet egyezése a vak ellenőrrel, rétegzett véletlen mintán"
+proveniencia = "scope=F172 pontosságmérés, OSSZES (súlyozott) | forras=f172/meres_eredmeny.tsv | ts=git:8ff550e5"

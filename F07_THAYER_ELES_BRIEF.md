@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: fut
 ad: "a teljes Thayer (a kész Strongok nélkül kb. 5 385 Strong) szakaszonkénti magyar fordítása az adat/forditasok.tsv-ben (allapot=sonnet, a tényleges modellnévvel), a #159 B-útján Message Batches API-n, kb. 500 000 karakteres adagokban, adagonként mért költséggel; a kétszer bukott Strongok a bukottak-táblában, kézi ítéletre"
 kovetkezo: "A4 (új session, az A3 PR mergelése után): adag704 = naplok/THAYER_ELES_sorrend.tsv adag=4 (265 Strong, 68 kicsi/közepes B-kérésre és nagyokra bontva a `bszaraz` szerint), --effort high, prompt v5.2; becslés 10,12 USD (első kör 7,61 + javító 2,51), adagplafon 13,16, --plafon 57,14 és --elozo-kiadas 43.9775 (kumulatív: az eddigi mért 43,9775 + 13,16); naplok/THAYER_ELES_naplo.md A3 8.; a `beir --megjegyzes` rögzítse: `prompt v5.2`, az adag- és batch-azonosítót."

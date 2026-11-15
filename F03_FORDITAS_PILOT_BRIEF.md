@@ -5,6 +5,7 @@ kod: FP0–FP-KOR2.9
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: fordító eszközök és a Thayer-fordítási próba eredményei
 kovetkezo: lezárva

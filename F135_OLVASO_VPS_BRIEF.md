@@ -5,6 +5,7 @@ kod: OLVASO_VPS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: SERVER
 munka: adat
 allapot: nem_indult
 helyi_gep: igen

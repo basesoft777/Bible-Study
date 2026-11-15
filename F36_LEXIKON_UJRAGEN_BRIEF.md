@@ -5,6 +5,7 @@ kod: LEXIKON_UJRAGEN
 tipus: feladat
 fazis: 2
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ad: a lexikon/[ID]_TUDOMANYOS.md és _TORZSCIKK.md fájlok a jelenlegi adatból újragenerálva; a nulla-diff / várt diff dokumentálva (az F28 fordításai, a javított ψ-igehelyek, a Szent Szellem-szöveg)

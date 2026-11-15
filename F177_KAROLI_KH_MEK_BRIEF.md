@@ -5,6 +5,7 @@ kod: KAROLI_KH_MEK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/karoli-kh-mek
 pr: https://github.com/basesoft777/Bible-Study/pull/656

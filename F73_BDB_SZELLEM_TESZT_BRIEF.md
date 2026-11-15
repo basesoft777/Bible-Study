@@ -5,6 +5,7 @@ kod: BDB_SZELLEM_TESZT
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/bdb-szellem-teszt
 ad: a `teszt_bdb_zaras.py` zöld (a main-en is), a `SZELLEM_KOVETELT` tábla a H6743 Bír 14:6 nagybetűs helyével bővítve; a #38 7. adagja (sorrend 649–) előfeltétele teljesül

@@ -101,17 +101,16 @@ The remaining known issues are listed in `KNOWN_ISSUES.md`.
 
 ## 5. The Strong alignment and its accuracy
 
-The word alignment is a proposal of language models on the STEPBible TAHOT (Hebrew) and TAGNT (Greek) texts: for every
-Hungarian word the model marks the Hebrew or Greek words; the Strong's number comes from these sources, the model does
-not write it. In Genesis and Exodus two independent models aligned; where they agreed, the pair has `magas` (high)
-confidence (52,844 pairs), elsewhere it is one model's proposal (`alacsony`, low; 545,871 pairs). Every pair has
-the status "proposal".
+The word alignment was proposed by a language model (Claude Sonnet) on the STEPBible TAHOT (Hebrew) and TAGNT (Greek)
+texts: for every Hungarian word the model marks the Hebrew or Greek words; the Strong's number comes from these
+sources, the model does not write it. Every pair has the status "proposal".
 
 Accuracy was measured on a stratified random sample with a blind reviewer, and against an independent Károli edition
 with Strong's numbers:
 
 - the full pair set (with function words and morphemes), agreement with the blind reviewer: 95.06% (95%:
-  93.81–96.32%);
+  93.81–96.32%); by book group (7 strata) between 93.00% (prophets) and 98.00%
+  (Gospels and Acts); the per-stratum table is in the word alignment dataset (https://doi.org/10.5281/zenodo.24141884);
 - pairs of main words against the independent source, on 2,663 pairs: 98.72% (95%: 98.22–99.08%); after
   three-way adjudication, which settled the differences with the blind reviewer, 99.81%;
 - pairs of Hebrew prefix and suffix morphemes: 90.74% (95%: 87.18–94.29%); the independent

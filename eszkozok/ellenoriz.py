@@ -2445,6 +2445,21 @@ def _ford_proba(t):
     return ' '.join(futam[:3]) or None
 
 
+def _thayer_cimke_a_lapon(adat_dir, strong, forditas, norm):
+    """F194: a fordítás elején álló szakaszszám („1.”) Thayer-címkéje (`szotar_szakasz_cimke.tsv`, szakasz `-/1/-`) a
+    lapon áll-e."""
+    m = re.match(r'\s*(\d+)\.', forditas or '')
+    ut = os.path.join(adat_dir, 'szotar_szakasz_cimke.tsv')
+    if not m or not os.path.exists(ut):
+        return False
+    _, cimkek = G.tsv_beolvas(ut)
+    for c in cimkek:
+        if c.get('szotar') == 'Thayer' and c.get('strong') == strong and c.get('szakasz') == '-/%s/-' % m.group(1):
+            cimke = _ford_norm(c.get('cimke_hu') or '').strip()
+            return bool(cimke) and (' %s ' % cimke) in norm
+    return False
+
+
 def lap_forditas_hianyok(adat_dir, mid, lap):
     """[(strong, forrás, egység)] — a motívum Strongjainak érvényes fordítása, amely a lapon nem áll."""
     _, elo = G.tsv_beolvas(os.path.join(adat_dir, 'elofordulasok.tsv'))
@@ -2468,6 +2483,10 @@ def lap_forditas_hianyok(adat_dir, mid, lap):
             continue
         p = _ford_proba(r['forditas_hu'])
         if p and (' %s ' % p) not in norm:
+            # F194: a Thayer-szakasz csukott vázlatsorában a jóváhagyott magyar címke áll (szotar_szakasz_cimke.tsv,
+            # pl. G1941 1. szakasz: „elnevezni”, DT379); ha az a lapon van, a szakasz fordítása képviselve van
+            if sz == 'Thayer' and _thayer_cimke_a_lapon(adat_dir, st, r['forditas_hu'], norm):
+                continue
             ki.append((st, sz, egyseg))
     hu_ut = os.path.join(adat_dir, 'bdb_szakasz_hu.tsv')
     if os.path.exists(hu_ut):

@@ -5,11 +5,12 @@ kod: PUSH_ELOTTI_KAPU
 tipus: feladat
 fazis: folyamat
 modell: sonnet
-allapot: megallt
+sav: SYSTEMS
+allapot: lezarva
 ag: claude/push-elotti-kapu
 pr: 724
 ad: egy `eszkozok/push_elott.py` szkript, amely helyben ugyanazt futtatja, amit a CI bukó lépései, így a HIBA a push előtt kiderül, nem a CI-ben; a CI ugyanezt hívja, és a HIBA-sorokat a logba is kiírja
-kovetkezo: "Te: [elteres_kor 1/2] /elteres 216 — újraellenőrzés függ: 2. ellenőrzés"
+kovetkezo: "lezárva: a #724 mergelve (2026-11-13); a maradék, a 2. független ellenőrzés: N-F220h; a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 munka: folyamat
 olvas: [eszkozok/ellenorzes/futtat.py]
 ir: [eszkozok/push_elott.py, eszkozok/teszt_push_elott.py, .github/workflows/ellenorzes.yml, .claude/commands/kovetkezo.md, .claude/commands/kiadas.md, .claude/commands/lap-javit.md]

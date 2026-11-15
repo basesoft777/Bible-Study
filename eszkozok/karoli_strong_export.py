@@ -34,6 +34,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nyilt_mag_export as NM  # noqa: E402  (OSIS-kulcs, közös azonosítók)
 import karoli_strong_szovegek as SZ  # noqa: E402  (a nyilvános szövegek prózája)
+from nevelo import (NEVELO_SZAM_RX, MAGANHANGZO, szam_nevelo, szo_nevelo,  # noqa: E402,F401  (közös névelő-szabály)
+                    nevelo_javit, nevelo_hibak)
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -48,6 +50,9 @@ DOI_MAG = NM.DOI_MAG
 KANONIKUS_HELY = 'https://doi.org/' + DOI
 CIM_HU = 'Károli 1908 – Strong szóillesztés'
 CIM_EN = 'Károli 1908 – Strong word alignment'
+# a motívum-adatmag címe a saját CITATION.cff-je szerint (F208; N-F175c)
+CIM_MAG_HU = NM.LEXIKON_CIM_HU + ' — nyílt adatmag: bibliai motívumok'
+CIM_MAG_EN = NM.LEXIKON_CIM_EN + ' — open data core: biblical motifs'
 KOZLEMENY_DIR = 'kozlemeny/'
 
 PAROK = 'adat/karoli_strong/parok_*.tsv'
@@ -57,9 +62,12 @@ KAROLI = 'konkordancia/Karoli_1908.tsv'
 F172_MERES = 'f172/meres_eredmeny.tsv'
 F172_KULSO = 'f172/kulso/kulso_eredmeny.tsv'
 F172_KERET = 'f172/keret.tsv'
+F172_OSSZEVONT = 'f172/reteg_osszevont.tsv'      # a két Mózes-réteg egy rétegben (karoli_strong/reteg_osszevonas.py)
 
-PAR_FEJ = ['osis', 'token', 'alak_1908', 'eredeti_token', 'strong', 'kapcsolat', 'bizonyossag', 'allapot', 'nem_tr']
-SZO_FEJ = ['osis', 'oldal', 'token', 'alak_1908', 'allapot', 'partner_token', 'strong', 'bizonyossag']
+# a belső `bizonyossag` mező (két modell egyezése) nem minősítés, nem kerül a nyilvános táblákba (2026-11-14); a
+# minősítés a mért pontosság (meres.tsv)
+PAR_FEJ = ['osis', 'token', 'alak_1908', 'eredeti_token', 'strong', 'kapcsolat', 'allapot', 'nem_tr']
+SZO_FEJ = ['osis', 'oldal', 'token', 'alak_1908', 'allapot', 'partner_token', 'strong']
 VERS_FEJ = ['osis', 'szoveg_1908']
 MERES_FEJ = ['szakasz', 'cimke', 'n', 'x', 'p', 'also95', 'felso95', 'modszer']
 FEJLEC_HU = ('# GENERÁLT: a %s – %s nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel '
@@ -70,12 +78,23 @@ STEP_ATTRIB = 'Data created by www.STEPBible.org based on work at Tyndale House 
 MORFEMA_RX = re.compile(r'^H90(0[1-9]|[1-4]\d)$')       # H9001–H9049: a TAHOT előtag-/rag-morfémái
 
 SZO_ALLAPOT = {'parositva': 'parositva', 'betoldas': 'betoldas', 'forditatlan': 'forditatlan', 'fuggoben': 'fuggoben'}
-BIZONYOSSAG = {'magas': 'magas', 'alacsony': 'alacsony', 'kezi': ''}
+BIZONYOSSAG = {'magas', 'alacsony', 'kezi'}       # a forrás ismert értékei (ellenőrzés; a kimenetben nem áll)
 
-# a #172 mérőtáblájának címkéi -> a csomag kódjai (a kódkönyv írja le őket); ismeretlen címke -> megáll
-RETEG = {'OSZ_mozes_magas': 'OSZ_mozes_magas', 'OSZ_mozes': 'OSZ_mozes_alacsony', 'OSZ_tortenet': 'OSZ_tortenet',
-         'OSZ_koltoi': 'OSZ_koltoi', 'OSZ_profeta': 'OSZ_profeta', 'USZ_evangelium': 'USZ_evangelium',
-         'USZ_level': 'USZ_level', 'USZ_jelenesek': 'USZ_jelenesek'}
+# a #172 mérőtáblájának címkéi -> a csomag kódjai (a kódkönyv írja le őket); ismeretlen címke -> megáll. A két
+# Mózes-réteg (OSZ_mozes_magas, OSZ_mozes) a nyilvános közlésben egy réteg: Mózes öt könyve, ugyanabból a mérésből
+# összevonva (F172_OSSZEVONT).
+MOZES_RETEGEK = ('OSZ_mozes_magas', 'OSZ_mozes')
+MOZES_OSSZEVONT = 'OSZ_mozes_osszevont'
+RETEG = {MOZES_OSSZEVONT: 'OSZ_mozes', 'OSZ_tortenet': 'OSZ_tortenet', 'OSZ_koltoi': 'OSZ_koltoi',
+         'OSZ_profeta': 'OSZ_profeta', 'USZ_evangelium': 'USZ_evangelium', 'USZ_level': 'USZ_level',
+         'USZ_jelenesek': 'USZ_jelenesek'}
+# a rétegek könyvcsoportként (a szövegek neve; a sorrend a RETEG-é)
+RETEG_NEV_HU = {'OSZ_mozes': 'Mózes öt könyve', 'OSZ_tortenet': 'történeti könyvek', 'OSZ_koltoi': 'költői könyvek',
+                'OSZ_profeta': 'próféták', 'USZ_evangelium': 'evangéliumok és Apostolok cselekedetei',
+                'USZ_level': 'levelek', 'USZ_jelenesek': 'Jelenések'}
+RETEG_NEV_EN = {'OSZ_mozes': 'the five books of Moses', 'OSZ_tortenet': 'historical books',
+                'OSZ_koltoi': 'poetic books', 'OSZ_profeta': 'prophets', 'USZ_evangelium': 'Gospels and Acts',
+                'USZ_level': 'Epistles', 'USZ_jelenesek': 'Revelation'}
 HIBATIPUS = {'fölös pár': 'folos_par', 'azonos lexéma, más előfordulás': 'azonos_lexema_mas_elofordulas',
              'szomszédos token': 'szomszedos_token', 'rossz szó a versben': 'rossz_szo_a_versben'}
 SULYOZOTT = {'OSZ (súlyozott)': 'OSZ', 'USZ (súlyozott)': 'USZ', 'OSSZES (súlyozott)': 'OSSZES'}
@@ -162,7 +181,7 @@ def atalakit(versek, parok, szavak, nt):
         o = osis(s['vers'])
         kulcs = (vsor[s['vers']], 0 if s['oldal'] == 'hu' else 1, int(s['sorszam']))
         sor = [o, s['oldal'], s['sorszam'], s['szo'] if s['oldal'] == 'hu' else '', SZO_ALLAPOT[s['allapot']],
-               s['partner_sorszam'], s['strong'], BIZONYOSSAG[s['bizonyossag']]]
+               s['partner_sorszam'], s['strong']]
         szo_ki.setdefault(o.split('.')[0], []).append((kulcs, sor))
     par_ki = {}
     for p in parok:
@@ -170,10 +189,12 @@ def atalakit(versek, parok, szavak, nt):
             raise SystemExit('átalakítás: a pártábla verse nincs a Károli-szövegben: %s' % p['vers'])
         if hu_alak.get((p['vers'], p['hu_sorszam'])) != p['hu_szo']:
             raise SystemExit('átalakítás: a pár magyar szava eltér a szótábláétól: %s %s' % (p['vers'], p['hu_sorszam']))
+        if p['bizonyossag'] not in BIZONYOSSAG:
+            raise SystemExit('átalakítás: ismeretlen bizonyosság: %s %s' % (p['vers'], p['bizonyossag']))
         o = osis(p['vers'])
         kulcs = (vsor[p['vers']], int(p['hu_sorszam']), int(p['er_sorszam']), p['strong'])
         sor = [o, p['hu_sorszam'], p['hu_szo'], p['er_sorszam'], p['strong'], kapcsolat(p['strong']),
-               BIZONYOSSAG[p['bizonyossag']], 'javaslat', 'igen' if (p['vers'], p['er_sorszam']) in nem_tr else '']
+               'javaslat', 'igen' if (p['vers'], p['er_sorszam']) in nem_tr else '']
         par_ki.setdefault(o.split('.')[0], []).append((kulcs, sor))
     konyvek = []
     for kk in konyvsor:
@@ -182,11 +203,33 @@ def atalakit(versek, parok, szavak, nt):
     return konyvek, vsorok
 
 
-def meres_sorok():
-    """A #172 mérőtáblájának sorai a csomag kódjaival, és a külső összevetés összesítése (csak arányok)."""
+def meres_forras():
+    """A #172 mérőtáblájának sorai, a két Mózes-réteg sorai helyén az összevont réteg soraival (az első Mózes-sor
+    helyén, szakaszonként). Megáll, ha az összevont tábla nem a két réteg összes szakaszát pótolja."""
     _, ss = tsv(F172_MERES)
-    ki = []
+    _, oo = tsv(F172_OSSZEVONT)
+    ki, kesz = [], set()
     for s in ss:
+        reteg = s['cimke'].split('·')[0].strip() if s['szakasz'] in ('reteg', 'hibatipus') else None
+        if reteg in MOZES_RETEGEK:
+            if s['szakasz'] not in kesz:
+                pot = [o for o in oo if o['szakasz'] == s['szakasz']]
+                if not pot:
+                    raise SystemExit('mérés: az összevont táblában nincs %s-sor' % s['szakasz'])
+                ki += pot
+                kesz.add(s['szakasz'])
+            continue
+        ki.append(s)
+    if kesz != {o['szakasz'] for o in oo}:
+        raise SystemExit('mérés: az összevont tábla szakaszai nem a Mózes-rétegekéi')
+    return ki
+
+
+def meres_sorok():
+    """A #172 mérőtáblájának sorai a csomag kódjaival (a két Mózes-réteg összevonva), és a külső összevetés
+    összesítése (csak arányok)."""
+    ki = []
+    for s in meres_forras():
         sz, c = s['szakasz'], s['cimke']
         if sz == 'reteg':
             kod = RETEG[c]
@@ -208,8 +251,10 @@ def meres_sorok():
             kod = LEIRO[c]
         else:
             raise SystemExit('mérés: ismeretlen szakasz: %r' % sz)
-        ki.append([sz, kod, s['n'], s['x'], s['p'], s['also95'], s['felso95'],
-                   MODSZER_KOD[sz] if s['p'] or sz in ('hibatipus', 'leiro') else 'darab'])
+        modszer = MODSZER_KOD[sz] if s['p'] or sz in ('hibatipus', 'leiro') else 'darab'
+        if sz == 'reteg' and c == MOZES_OSSZEVONT:
+            modszer = MODSZER_KOD['sulyozott']       # két részminta pársúlyos becslése
+        ki.append([sz, kod, s['n'], s['x'], s['p'], s['also95'], s['felso95'], modszer])
     for c in ('OSSZES', 'OSZ', 'USZ'):
         o = _f172(F172_KULSO, 'csoport', c)
         n = int(o['n_fo'])
@@ -256,13 +301,11 @@ def szamok(konyvek, vsorok, msorok):
     psor = [s for _, ps, _ in konyvek for s in ps]
     ssor = [s for _, _, ss in konyvek for s in ss]
     N['par'] = len(psor)
-    N['magas'] = sum(1 for s in psor if s[6] == 'magas')
-    N['alacsony'] = sum(1 for s in psor if s[6] == 'alacsony')
     N['morfema'] = sum(1 for s in psor if s[5] == 'morfema')
     N['heber_par'] = sum(1 for s in psor if s[4].startswith('H'))
     N['gorog_par'] = sum(1 for s in psor if s[4].startswith('G'))
-    N['nem_tr'] = sum(1 for s in psor if s[8] == 'igen')
-    N['nem_tr_token'] = len({(s[0], s[3]) for s in psor if s[8] == 'igen'})
+    N['nem_tr'] = sum(1 for s in psor if s[7] == 'igen')
+    N['nem_tr_token'] = len({(s[0], s[3]) for s in psor if s[7] == 'igen'})
     hu = [s for s in ssor if s[1] == 'hu']
     er = [s for s in ssor if s[1] == 'er']
     N['hu_token'] = len(hu)
@@ -285,7 +328,12 @@ def szamok(konyvek, vsorok, msorok):
         s = _meres(msorok, 'reteg', kod)
         N['r_' + kod], N['r_%s_a' % kod], N['r_%s_f' % kod] = s[4], s[5], s[6]
         N['rn_' + kod], N['rx_' + kod] = int(s[2]), int(s[3])
+    N['reteg_db'] = len(RETEG)
     N['reteg_n'] = int(_meres(msorok, 'reteg', 'OSZ_profeta')[2])
+    # a legkisebb és a legnagyobb rétegbecslés (a szövegek tartománya; könyvcsoport-névvel)
+    rp = sorted((float(_meres(msorok, 'reteg', kod)[4]), kod) for kod in RETEG.values())
+    (_, N['rmin_kod']), (_, N['rmax_kod']) = rp[0], rp[-1]
+    N['r_min'], N['r_max'] = N['r_' + N['rmin_kod']], N['r_' + N['rmax_kod']]
     N['minta'] = N['n_osszes']
     N['elteres'] = N['minta'] - int(_meres(msorok, 'sulyozott', 'OSSZES')[3])
     for t in HIBATIPUS.values():
@@ -324,42 +372,8 @@ def szamok(konyvek, vsorok, msorok):
     return N
 
 
-# ----------------------------------------------------------------------------- névelő (a/az)
-
-# névelő + szám (ezres tagolással vagy anélkül, sorszámnévvel is: „az 1. kiadás”); a szám után nem állhat betű
-NEVELO_SZAM_RX = re.compile(r'(?<![\w(])([Aa]z?) (\d{1,3}(?: \d{3})+|\d+)(?![\w(])')
-MAGANHANGZO = 'aáeéiíoóöőuúüűAÁEÉIÍOÓÖŐUÚÜŰ'
-
-
-def szam_nevelo(szam):
-    """A szám elé illő névelő a kiejtés szerint: „az”, ha a kiejtés magánhangzóval kezdődik (egy, öt, ezer, ötven,
-    ötszáz, egymillió…; sorszámnévként első, ötödik, ezredik…), egyébként „a”. A vezető számcsoport dönt: az 5-tel
-    kezdődő csoport mindig „öt…”; az egyjegyű 1-es csoport „egy/ezer/egymillió/első”; a 1x és 1xx „tíz/tizen/száz”."""
-    vezeto = szam.split(' ')[0]
-    return 'az' if vezeto[0] == '5' or vezeto == '1' else 'a'
-
-
-def szo_nevelo(szo):
-    """A szó (vagy szám) elé illő névelő."""
-    if szo[:1].isdigit():
-        return szam_nevelo(szo)
-    return 'az' if szo[:1] in MAGANHANGZO else 'a'
-
-
-def nevelo_javit(szoveg):
-    """Magyar szövegben a szám előtti névelőt a kiejtéshez igazítja (a nagybetűt megtartja)."""
-    def csere(m):
-        uj = szam_nevelo(m.group(2))
-        return (uj.capitalize() if m.group(1)[0] == 'A' else uj) + ' ' + m.group(2)
-    return NEVELO_SZAM_RX.sub(csere, szoveg)
-
-
-def nevelo_hibak(szoveg):
-    """A szám előtti hibás névelők listája (a kapu használja), és a kiejtés szerint el nem döntött „a(z)” alak."""
-    ki = ['%s %s' % (m.group(1), m.group(2)) for m in NEVELO_SZAM_RX.finditer(szoveg)
-          if m.group(1).lower() != szam_nevelo(m.group(2))]
-    ki += ['a(z)' for _ in re.finditer(r'\b[Aa]\(z\)', szoveg)]
-    return ki
+# ----------------------------------------------------------------------------- formázás
+# (a névelő-szabály a közös `nevelo.py`-ban áll, N-F175b; a nevek innen is elérhetők)
 
 
 def ezres(n, nyelv='hu'):
@@ -395,6 +409,10 @@ def fmt(N, nyelv):
     F['step'] = STEP_ATTRIB
     F['cim_modern_hu'] = 'Modernizált Károli – Strong'
     F['cim_modern_en'] = 'Modernised Károli – Strong'
+    F['cim_mag_hu'] = CIM_MAG_HU
+    F['cim_mag_en'] = CIM_MAG_EN
+    nev = RETEG_NEV_HU if nyelv == 'hu' else RETEG_NEV_EN
+    F['r_min_nev'], F['r_max_nev'] = nev[N['rmin_kod']], nev[N['rmax_kod']]
     return F
 
 

@@ -5,6 +5,7 @@ kod: EMELES
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ad: a lexikonba kerülő minden Strong-szám teljes Thayer- vagy BDB-szócikke magyarul (allapot opus, szúrópróbával kezi) az adat/forditasok.tsv-ben; közös javítóréteg és fordítási kapuk; CI-őr; az emelés mint munkafolyamat-lépés
 kovetkezo: lezárva; DT26 ✅ (feladatjelöltek: F34–F36, külön PR-ben befogadva); DT27 ✅, alkalmazva a PR #102-n (mergelve); a PR #100 mergelve 2026-10-01

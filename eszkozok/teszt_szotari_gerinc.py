@@ -917,7 +917,7 @@ class KetreteguBdbKartya(unittest.TestCase):
 
     def test_kapcsolo_csak_a_hamart(self):
         # F182 (2. fázis, F25): az F33 után a HAMART-001 bekapcsolva; a régi lapok a saját teljes folyamatukban
-        self.assertEqual(LG.KETRETEGU_BDB_KARTYA, frozenset({'HAMART-001'}))
+        self.assertEqual(LG.KETRETEGU_BDB_KARTYA, frozenset({'HAMART-001', 'ISTENTISZT-001'}))
         self.assertTrue(LG.bdb_kartya_aktiv('HAMART-001'))
         self.assertFalse(LG.bdb_kartya_aktiv('ANTROP-001'))
 
@@ -1037,7 +1037,7 @@ class F185BetuJavitas(unittest.TestCase):
 
     def test_kapcsolo_kikapcsolva_hatastalan(self):
         # DT731 (b): a régi lapokon kikapcsolva; a kimenet a régi (az E28 újragenerálás nélkül zöld)
-        self.assertEqual(LG.BDB_BETU_JAVIT, frozenset({'HAMART-001'}))
+        self.assertEqual(LG.BDB_BETU_JAVIT, frozenset({'HAMART-001', 'ISTENTISZT-001'}))
         self.assertFalse(LG.bdb_betu_javit_aktiv('ANTROP-001'))
         szov = self._blokk('ANTROP-001')
         self.assertIn('עָפָד', szov)

@@ -5,6 +5,7 @@ kod: SZURO_PILOT_ISTENTISZT
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/f110-szuro-pilot-2

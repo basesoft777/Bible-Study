@@ -97,14 +97,15 @@ A maradék ismert hibákat az `ISMERT_HIBAK.md` sorolja fel.
 
 ## 5. A Strong-párosítás és a pontossága
 
-A szópárosítás nyelvi modellek javaslata a STEPBible TAHOT (héber) és TAGNT (görög) szövegén: minden magyar szóhoz a
-modell kijelöli a héber vagy görög szavakat, a Strong-szám ezekből a forrásokból jön, a modell nem írja. Mózes első
-két könyvében két független modell párosított; ahol egyeztek, a pár `magas` bizonyosságú (52 844 pár), máshol egy
-modell javaslata (`alacsony`, 545 871 pár). Minden pár „javaslat” állapotú.
+A szópárosítást nyelvi modell (Claude Sonnet) javasolta a STEPBible TAHOT (héber) és TAGNT (görög) szövegén: minden
+magyar szóhoz a modell kijelöli a héber vagy görög szavakat, a Strong-szám ezekből a forrásokból jön, a modell nem írja.
+Minden pár „javaslat” állapotú.
 
 A pontosságot rétegzett véletlen mintán mértük, vak ellenőrrel, és egy független, Strong-számos Károli-kiadással:
 
 - a teljes párkészlet (mellékszavakkal, morfémákkal) egyezése a vak ellenőrrel: 95,06% (95%: 93,81–96,32%);
+  könyvcsoportonként (7 réteg) 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között; a rétegenkénti
+  tábla a szóillesztési adatkészletben áll (https://doi.org/10.5281/zenodo.24141884);
 - a fő szavak párjai a független forrással összevetve, 2 663 páron: 98,72% (95%: 98,22–99,08%); a
   háromutas ítélet után, amely az eltéréseket a vak ellenőr bevonásával döntötte el, 99,81%;
 - a héber előtag- és ragmorfémák párjai: 90,74% (95%: 87,18–94,29%); ezeket a független forrás
@@ -113,7 +114,7 @@ A pontosságot rétegzett véletlen mintán mértük, vak ellenőrrel, és egy f
 ## 6. Az összekapcsolás
 
 A modern szöveg és a párosítás összekapcsolása kulcs szerinti illesztés: a vers és a szó sorszáma. Új pár nem
-keletkezik, és egy sem vész el. Gépi kapu igazolja: mind a 598 715 pár átkerült, mind a 488 659 párosított
+keletkezik, és egy sem vész el. Gépi kapu igazolja: mind az 598 715 pár átkerült, mind a 488 659 párosított
 szó kulcsa megvan a modern táblában, azonos 1908-as alakkal; minden modern szó szerepel; a csomag újragenerálva
 bájtra azonos. A betoldott (109 914) és a függőben lévő (794) szónak nincs párja; a három szám összege a
 szöveg 599 367 szava.

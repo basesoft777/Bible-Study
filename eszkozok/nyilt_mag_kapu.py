@@ -840,6 +840,10 @@ NYILVANOS_TILTOTT = [
     (re.compile(r'PaRDeS', re.I), '„PaRDeS” (nem lehet központi keretezés)'),
     (re.compile(r'HELYŐRZŐ|<[A-Z_]+_URL>|\[A LEXIKON CÍME\]'), 'helyőrző'),
     (re.compile(r'\bgerinc', re.I), 'belső fogalom (gerinc)'),
+    # DT-F175e (2026-11-15): a „bizonyosság” a nyilvános szövegben a mért pontosság; a két modell egyezésén alapuló belső
+    # szűrő neve és leírása („magas/alacsony bizonyosság”, high/low confidence) nem áll nyilvános próza-fájlban
+    (re.compile(r'\b(?:magas|alacsony|high|low)\W{0,3}(?:bizonyoss|confidence)', re.I),
+     'modell-egyezés mint minősítés (magas/alacsony bizonyosság)'),
 ]
 PARDES_OSZLOP = re.compile(r'`?pardes_szint(?:_en)?`?')
 

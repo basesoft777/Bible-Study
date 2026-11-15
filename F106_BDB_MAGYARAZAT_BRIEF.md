@@ -5,6 +5,7 @@ kod: BDB_MAGYARAZAT
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: nem_indult
 ad: 20 szócikkre olvasóbarát, „modell-kimenet” jelölésű jelentésmagyarázat a BDB szövegéből és a hivatkozott versekből, költségméréssel; a DT169 (folytatódjon-e a teljes BDB-re) döntési alapja

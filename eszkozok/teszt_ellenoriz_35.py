@@ -6,7 +6,7 @@ szabályának (közlemény-hivatkozások a lapon) és a generátor közlemény-
 szövegének (lexikon_general.kolofon_kozlemenyek) tesztjei.
 
 Ideiglenes (a repón kívüli) lexikon/ és kozlemeny/ könyvtárban fut; a lap a
-repó élő ISTENTISZT-001 lapjának másolata (minden hivatkozással), a negatív
+repó élő ALVIL-001 lapjának másolata (minden hivatkozással), a negatív
 esetekben egy-egy hivatkozás kivéve vagy GitHub-URL betéve.
 
     python eszkozok/teszt_ellenoriz_35.py
@@ -28,7 +28,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import ellenoriz as E  # noqa: E402
 import lexikon_general as LG  # noqa: E402
 
-MOTIVUM = 'ISTENTISZT-001'
+MOTIVUM = 'ALVIL-001'   # F194: az ISTENTISZT-001 új szerkezetű lett; a régi szerkezet mintája a befagyasztott ALVIL-001
 LAP = os.path.join(E.ROOT, 'lexikon', '%s_TUDOMANYOS.md' % MOTIVUM)
 KOZLEMENYEK = ('MI_NYILATKOZAT.md', 'HAYS_LEKEPEZES.md', 'PARDES_RECEPCIOS_KERET.md', 'KOZEL_KELETI_HATAR.md')
 

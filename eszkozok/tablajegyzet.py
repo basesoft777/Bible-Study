@@ -52,11 +52,133 @@ def _jelentes_olvasoi(t):
     return re.sub(r'\s*\(a [^)]*versenkénti jelentései\)|\s*\(a (?:BDB|Thayer)-szótár\)', '', t)
 
 
-def olvasoi_jegyzet(lathato, ujszov=False):
-    """Egy lábjegyzet látható szövegéből az olvasói jegyzet: forrás és jelentés, műhelyszöveg nélkül."""
+_SZO_RESZ_RX = re.compile(r'(?:^|\s·\s)([HG]\d{4}[a-z]?) — ')
+
+
+def _nevelo_szam(n):
+    """A számjegyes szó névelője (1, 5, 10–19, 50–59 …: „az”)."""
+    return 'az' if n[:1] == '5' or (n[:1] == '1' and len(n) in (1, 2)) else 'a'
+
+
+def _felso_szintu_reszek(s):
+    """A „; ” mentén bont, a zárójelen belül nem."""
+    ki, mely, akt = [], 0, ''
+    i = 0
+    while i < len(s):
+        c = s[i]
+        mely += (c == '(') - (c == ')')
+        if mely == 0 and s.startswith('; ', i):
+            ki.append(akt)
+            akt, i = '', i + 2
+            continue
+        akt += c
+        i += 1
+    ki.append(akt)
+    return ki
+
+
+# F194 (az orkesztrátor 2026-11-13-i jelzése, a 3. szakasz jegyzetlistája): a jelölttábla forrás- és döntésnyomának
+# műhelyrészei (mérés-címke, chat, Károli-lekérdezés címkéje, kollokáció-parancs, tematikus fájl szakaszcíme) olvasói
+# alakban; a teljes sor a rejtett megjegyzésben marad
+_FORRAS_ELEM_CSERE = (
+    (re.compile(r'^(?:Mérés:?|szerkesztő-chat|orkesztrátor-chat)$'), 'szerkesztői döntés'),
+    (re.compile(r'^Károli-proveniencia \([^)]*\):\s*forrás:\s*'), ''),
+    (re.compile(r'^kollokacio [HG]\d{4}[a-z]? [HG]\d{4}[a-z]?$'), 'a két szó együttes keresése egy versben'),
+    (re.compile(r'^tematikus:\.?\s*Előfordulások összegyűjtése.*$'), 'a motívum korábbi tematikus tanulmánya'),
+    (re.compile(r'^(TSK\b.*?) \(\d+\)$'), r'\1'),
+    (re.compile(r'\s*\(a lefedettségi mérés szkriptje\)'), ''),
+    (re.compile(r'^a motívumtábla negativ_kriterium$'), 'a motívum meghatározása'),
+)
+_PLUSZ_ELEM = (
+    (re.compile(r'^TAGNT [HG]\d{4}[a-z]?$'), 'a STEPBible görög szövege (TAGNT)'),
+    (re.compile(r'^TAHOT [HG]\d{4}[a-z]?$'), 'a STEPBible héber szövege (TAHOT)'),
+    (re.compile(r'^Thayer [HG]\d{4}[a-z]? (\d+)\. jelentés$'), r'a Thayer-szótár \1. jelentése'),
+)
+
+
+def _forras_elemek(s):
+    """A „Forrás: …” jegyzet elemei olvasói alakban, ismétlés nélkül."""
+    ki = []
+    for elem in _felso_szintu_reszek(s):
+        for darab in elem.split(' + '):
+            darab = darab.strip()
+            for rx, uj in _FORRAS_ELEM_CSERE:
+                darab = rx.sub(uj, darab).strip()
+            for rx, uj in _PLUSZ_ELEM:
+                darab = rx.sub(uj, darab)
+            if darab and darab not in ki:
+                ki.append(darab)
+    return '; '.join(ki)
+
+
+def _jelentes_tomor(t):
+    """F194 (az orkesztrátor 2026-11-13-i jelzése, 2·5): a szópáros lap jegyzetében egy szó jelentés-részének rövid
+    olvasói mondata. A cella tartalmát (a szakasz címkéjét, a „nincs hozzárendelés” jelét) nem ismétli, forrásnevet nem
+    hoz (a forrás a közös forrásmegjelölésben áll). None: a jegyzet erről a szóról nem mond semmit."""
+    t = t.strip()
+    if re.search(r'nincs (?:szerkesztői|kutatói) hozzárendelés', t):
+        return None
+    m = re.search(r'(az?) (\S+ \d+:\d+[–-]\d+) verstartomány belsejében', t)
+    if m:
+        return 'a BDB a helyet csak %s %s tartományban idézi, ezért nem példahely' % (m.group(1), m.group(2))
+    if 'kétszer áll' in t:
+        return 'a BDB idézi a verset, de a szó kétszer áll benne, ezért nem példahely'
+    m = re.search(r'forrásszövege itt a („[^”]+”) helyet idézi \(sajtóhiba\)', t)
+    if m and 'maga idézi' in t:
+        return 'a BDB maga idézi a helyet; a szótár szövegében sajtóhibával %s áll' % m.group(1)
+    m = re.search(r'\ba (BDB|Thayer)\b[^;]*?maga idézi a helyet', t)
+    if m:
+        return 'a %s maga idézi a helyet' % m.group(1)
+    if 'nincs leképezve' in t and 'tagolatlan' in t:
+        return 'a szócikk egésze (a szótár nem tagolja számozott jelentésekre)'
+    if 'tagolása szerint' in t:
+        ki = 'szerkesztői hozzárendelés a szótár tagolása szerint'
+        m = re.search(r'a Thayer saját példahelye: Thayer (\d+)', t)
+        if m:
+            n = m.group(1)
+            ki += '; a Thayer a helyet %s %s. jelentésnél idézi' % (_nevelo_szam(n), n)
+        return ki
+    t = _jelentes_olvasoi(t)
+    return re.sub(r'\s*\((?:az? )[^()]*(?:\([^()]*\)[^()]*)*\)', '', t).strip() or None
+
+
+def _szopar_jegyzet(t, ujszov):
+    """F194: a szópáros lap 2. táblájának jegyzete: az igazolás, majd szavanként egy rövid mondat."""
+    reszek = t.split(' · a jelentés címkéje:', 1)
+    if len(reszek) < 2:
+        return None
+    elso = [x.strip() for x in re.sub(r'^(?:Forrás|forrás):\s*', '', reszek[0]).split(' · ')]
+    igaz = [x for x in elso if x and not _KOD_RX.fullmatch(x)]
+    mondatok = []
+    for x in igaz:
+        if x == 'a héber szöveg (TAHOT) hatókörén kívül':
+            x = 'újszövetségi hely: a szó a görög szövegben áll' if ujszov else \
+                'a héber szöveg-igazolás itt nem alkalmazható'
+        mondatok.append(x[:1].upper() + x[1:])
+    cimke = reszek[1].strip()
+    darabok = _SZO_RESZ_RX.split(' · ' + cimke if _SZO_RESZ_RX.match(cimke) else cimke)
+    if len(darabok) == 1:
+        j = _jelentes_tomor(darabok[0])
+        if j:
+            mondatok.append('A jelentés: ' + j)
+    else:
+        for strong, resz in zip(darabok[1::2], darabok[2::2]):
+            j = _jelentes_tomor(resz)
+            if j:
+                mondatok.append('%s: %s' % (strong, j))
+    return '. '.join(m.rstrip('.') for m in mondatok) + '.'
+
+
+def olvasoi_jegyzet(lathato, ujszov=False, szopar=False):
+    """Egy lábjegyzet látható szövegéből az olvasói jegyzet: forrás és jelentés, műhelyszöveg nélkül. A `szopar` a
+    szópáros motívum lapja (F194): a 2. tábla jegyzete szavanként egy mondat, a cella ismétlése nélkül."""
     t = _KOMMENT_RX.sub('', lathato).strip()
     if 'a sornak nincs Strong-száma' in t:
         return 'Tematikus hely: a versben a lánc szava nem áll.'
+    if szopar:
+        sz = _szopar_jegyzet(t, ujszov)
+        if sz:
+            return sz
     # a vers saját (nem lánc-) szava a tematikus sorban (Jel 22:3): a címke maga az olvasói jegyzet
     m = re.search(r'a jelentés címkéje:\s*(Tematikus hely:[^·]*)', t)
     if m:
@@ -67,7 +189,7 @@ def olvasoi_jegyzet(lathato, ujszov=False):
     ki = []
     for seg in [x.strip() for x in t.split(' · ')]:
         seg = re.sub(r'^(?:Forrás|forrás):\s*', '', seg).strip()
-        if not seg or _KOD_RX.fullmatch(seg) or seg.startswith(('döntés:', 'lap-javit')) \
+        if not seg or _KOD_RX.fullmatch(seg) or seg.startswith(('döntés:', 'lap-javit', 'a lap teljesség-mérése')) \
                 or 'versszám-felmérése' in seg or re.match(r'U\d:', seg):
             continue
         seg = _KOD_RX.sub('', seg)
@@ -77,16 +199,23 @@ def olvasoi_jegyzet(lathato, ujszov=False):
         if seg.startswith('a jelentés címkéje:'):
             seg = 'a jelentés: ' + _jelentes_olvasoi(seg[len('a jelentés címkéje:'):])
         if seg == 'a héber szöveg (TAHOT) hatókörén kívül':
-            seg = 'újszövetségi hely: a szó a görög szövegből (TAGNT)' if ujszov else \
+            seg = 'újszövetségi hely: a szó a görög szövegben áll' if ujszov else \
                 'a héber szöveg-igazolás itt nem alkalmazható'
-        if seg.startswith('teljesség-mérés'):
-            m = re.search(r'(?:csoportos sor|blokk-sor)[^:]*:\s*([\d\s]+) vers', seg)   # F212: a „blokk-sor: N vers” is
+        # F194 (az ISTENTISZT-001 forrássorai): a „U1 teljesség-mérés …, blokk-kizárás (…): N vers” és az LXX-híd is
+        seg = re.sub(r'\bZef\b', 'Sof', seg)
+        seg = re.sub(r'\s*Votes \d+', '', seg)
+        seg = re.sub(r'szerkesztői döntés K\d+', 'szerkesztői döntés', seg)
+        seg = seg.replace('a motívumtábla folerendelt_fogalom', 'a motívum meghatározása')
+        seg = seg.replace('pozíció-alapú frázis-keresés + BDB/TSK/LXX audit, retroaktív betöltés',
+                          'a kifejezés keresése, a szótárak, a kereszthivatkozások és a Septuaginta összevetésével')
+        if re.match(r'(?:U\d |LXX-híd )?teljesség-mérés', seg):
+            m = re.search(r'(?:csoportos sor|blokk-sor|blokk-kizárás)[^:]*:\s*([\d\s]+) vers', seg)   # F212: a „blokk-sor: N vers” is
             seg = 'csoportos kizárás, %s vers' % m.group(1).strip() if m else \
                 'a motívum szavainak teljes bibliai keresése, egyenkénti döntés'   # F212: blokk-sor nélkül nem csoportos
         if seg.startswith('négy forrás összevetése'):
             seg = 'a motívum korábbi kereszthivatkozás-naplója'
         seg = re.sub(r'^Strong-keresés:', 'szókeresés:', seg)
-        seg = seg.replace('a jelöltek döntésnaplója', 'a jelöltek döntései')
+        seg = seg.replace('a vizsgált helyek döntésnaplója', 'a vizsgált helyek döntései')
         for nev in _MUNKA_NEVEK:
             seg = re.sub(r';?\s*' + re.escape(nev), '', seg)
         seg = re.sub(r'\s+', ' ', seg).strip(' ;,')
@@ -95,7 +224,7 @@ def olvasoi_jegyzet(lathato, ujszov=False):
     if not ki:
         return ''
     s = '; '.join(ki)
-    s = ('Forrás: ' + s) if forras_elotag else (s[:1].upper() + s[1:])
+    s = ('Forrás: ' + _forras_elemek(s)) if forras_elotag else (s[:1].upper() + s[1:])
     return s + ('' if s.endswith('.') else '.')
 
 
@@ -118,8 +247,8 @@ _USZ_RX = re.compile(r'\]\(#ige-(?:mt|mk|luk|ján|apcsel|róm|1kor|2kor|gal|ef|f
                      r'filem|zsid|jak|1pét|2pét|1ján|2ján|3ján|júd|jel)-')
 
 
-def alkalmaz(szoveg):
-    """A lap olvasói jegyzet- és forrássorai (a modul leírása szerint)."""
+def alkalmaz(szoveg, szopar=False):
+    """A lap olvasói jegyzet- és forrássorai (a modul leírása szerint); `szopar`: l. `olvasoi_jegyzet`."""
     sorok = szoveg.split('\n')
     defs = {}                       # azonosító -> (látható szöveg, a rejtett megjegyzések)
     for s in sorok:
@@ -134,7 +263,7 @@ def alkalmaz(szoveg):
         md = _LABJ_DEF_RX.match(s)
         if md:
             azon = md.group(1)
-            olv = olvasoi_jegyzet(defs[azon][0], ujszov=azon in ujszov_ref)
+            olv = olvasoi_jegyzet(defs[azon][0], ujszov=azon in ujszov_ref, szopar=szopar)
             ki.append('[^%s]: %s%s' % (azon, olv or 'Forrás: a motívum adattáblái.', defs[azon][1]))
             i += 1
             continue

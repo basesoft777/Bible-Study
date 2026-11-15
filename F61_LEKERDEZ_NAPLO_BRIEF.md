@@ -5,6 +5,7 @@ kod: LEKERDEZ_NAPLO
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ag: claude/f61-lekerdez-naplo

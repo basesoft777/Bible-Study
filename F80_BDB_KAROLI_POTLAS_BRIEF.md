@@ -5,6 +5,7 @@ kod: BDB_KAROLI_POTLAS
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/f80-karoli-potlas

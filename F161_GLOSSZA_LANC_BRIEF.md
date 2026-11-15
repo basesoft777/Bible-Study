@@ -5,11 +5,12 @@ kod: GLOSSZA_LANC
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 munka: folyamat
-allapot: megallt
+allapot: lezarva
 ag: claude/glossza-lanc-1a9f9f
 ad: "eszkozok/glossza_api_koteg.py: rögzített prompt (forditas/prompt_glossza_v2.md; v1 + UBS-definíció), mankó, szaraz / prompt / bekuld / begyujt / bevesz / kapuz / javit / rogzit / beir; a #121 lista közös feloldója (TBESG); 21 teszt; a 9 lexikonlap hiányzó UBS- és TBESG-glosszái: 366 sor az adat/forditasok.tsv-ben (Sonnet subagent, 366/366 kapun át); TBESH-ellenőrzés (naplok/F161_GLOSSZA_LANC_naplo.md)"
-kovetkezo: "Te: draft PR; a merge a felhasználóé; utána az ANTROP-001 lapja a #608 ágán újragenerálódik (az ANTROP-001 sessionje), a többi hét lap a saját új-cikk sessionjében"
+kovetkezo: "lezárva: a #610 mergelve (2026-11-03); a fejléc a 2026-11-14-i kötegelt lezárásban (naplok/FEJLEC_LEZARAS_2026-11-14.md) igazítva"
 olvas: [F121_GLOSSZA_FORDITAS_BRIEF.md, eszkozok/glossza_lexikon_forditas.py, naplok/F121_GLOSSZA_FORDITAS_manko.tsv, eszkozok/thayer_api_koteg.py, eszkozok/thayer_jelolt/forditas.py, eszkozok/bdb_api_koteg.py, eszkozok/forditas_kapuk.py, eszkozok/olvasoi_kapu.py, eszkozok/emeles.py, forditas/prompt_v5_2.md, adat/terminologia.tsv, adat/tiltott_fordulatok.tsv, adat/forditasok.tsv, adat/SEMA.md]
 ir: [F161_GLOSSZA_LANC_BRIEF.md, eszkozok/glossza_api_koteg.py, eszkozok/teszt_glossza_api_koteg.py, forditas/prompt_glossza_v1.md, forditas/prompt_glossza_v2.md, adat/forditasok.tsv, eszkozok/glossza_lexikon_forditas.py, naplok/F161_GLOSSZA_LANC_naplo.md, dontesek/uj/glossza-lanc-1a9f9f.md, nyitott/uj/glossza-lanc-1a9f9f.md]
 fugg: []

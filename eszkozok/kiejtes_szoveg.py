@@ -205,8 +205,11 @@ def _bejar(sorok, potolni):
     reszek = _sor_reszek(sorok)
     latott = collections.defaultdict(set)
     hiany = []
+    rokon = False   # F194 (az orkesztrátor döntése, 2026-11-12): a rokon nyelvi tábla pontozatlan alakja átírás nélkül áll
     for i, sor in enumerate(sorok):
         gen, idezet, szakasz = reszek[i]
+        if sor.startswith('#'):
+            rokon = 'rokon nyelvek' in sor
         if idezet:
             continue
         cim = sor.startswith('#')
@@ -221,6 +224,8 @@ def _bejar(sorok, potolni):
                 # a szókapcsolat kiejtése a benne álló szavakét is jelenti (a szakaszban nem ismétlendő)
                 latott[szakasz].update(heber_kulcs(w) for w in SZO_ELVALASZTO.split(szo))
             if not kell or _van_kiejtes(sorok, i, m):
+                continue
+            if rokon and re.match(HEBER, szo) and not re.search('[ְ-ׇ]', szo):
                 continue
             jav = kiejtes(szo)
             if potolni and gen and jav:

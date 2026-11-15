@@ -5,6 +5,7 @@ kod: ANGOL_BDB_THAYER
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SERVER
 allapot: lezarva
 ag: claude/f215-angol-bdb-thayer-357f75
 ad: az olvasó angol Thayer-blokkja a thayer_forras_javitas mind a 15 beszúrását tartalmazza; az angol BDB hivatkozás-javításáról mérés igazolja, hogy a DB szövege már a javított; a fogyasztók listája a nyers táblák olvasóiról

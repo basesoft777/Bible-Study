@@ -5,6 +5,7 @@ kod: F19
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: Strong-címkés KJV és ASV, a hiányok besorolásával
 kovetkezo: DT19 döntése; az ASV-hez új forrás kell (N29 nyitva)

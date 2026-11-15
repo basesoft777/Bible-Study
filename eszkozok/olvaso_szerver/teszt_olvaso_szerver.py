@@ -565,7 +565,7 @@ class TestLapok(unittest.TestCase):
             latott += 1
             i = t.index('data-blokk="%s"' % b)
             blokk = t[i:t.index('</section>', i)]
-            self.assertIn('<abbr class="rovidites" title="יְהוָה (JHVH), az Úr" tabindex="0">י׳</abbr>', blokk, b)
+            self.assertIn('<abbr class="rovidites" title="יְהוָה (Jahve), az Úr" tabindex="0">י׳</abbr>', blokk, b)
             if b != 'szo.bdb_angol':
                 self.assertIn('<abbr class="rovidites" title="a címszó: קָרָא (kárá)" tabindex="0">ק׳</abbr>', blokk, b)
             szoveg = re.sub(r'<[^>]*>', ' ', blokk)
@@ -1693,6 +1693,25 @@ class TestF187ThayerKartya(unittest.TestCase):
         self.assertTrue(p['proveniencia'].startswith('scope=') and '| forras=' in p['proveniencia'] and '| ts=' in p['proveniencia'])
         forras = open(os.path.join(D, 'blokkok.py'), encoding='utf-8').read()
         for szam in ('98,0', '95,0', '99,2', '196/200'):
+            self.assertNotIn(szam, forras, 'a szám kézzel a kódban: %s' % szam)
+
+    def test_karoli_pontossag_egy_forrasbol(self):
+        # a modell-egyezés nem minősítés (2026-11-14): a szó-lapon a #172 mért pontossága áll, egyetlen forrásból
+        p = blokkok.KAROLI_PONTOSSAG
+        meres = os.path.join(D, '..', '..', 'f172', 'meres_eredmeny.tsv')
+        with open(meres, encoding='utf-8') as f:
+            sorok = [s.rstrip('\n').split('\t') for s in f if s.strip() and not s.startswith('#')]
+        fej = sorok[0]
+        osszes = [dict(zip(fej, s)) for s in sorok[1:] if s[1] == 'OSSZES (súlyozott)']
+        self.assertEqual(len(osszes), 1)
+        o = osszes[0]
+        self.assertEqual((p['p'], p['ci_also'], p['ci_felso'], p['minta']),
+                         (float(o['p']), float(o['also95']), float(o['felso95']), int(o['n'])))
+        self.assertEqual(blokkok.KAROLI_MERT_PONTOSSAG, 'A párosítás mért pontossága 95%.')
+        self.assertTrue(p['proveniencia'].startswith('scope=') and '| forras=' in p['proveniencia'] and '| ts=' in p['proveniencia'])
+        forras = open(os.path.join(D, 'blokkok.py'), encoding='utf-8').read()
+        self.assertNotIn('magas bizonyosságú', forras)
+        for szam in ('95,06', '0.9506', '93,81', '96,32'):
             self.assertNotIn(szam, forras, 'a szám kézzel a kódban: %s' % szam)
 
 

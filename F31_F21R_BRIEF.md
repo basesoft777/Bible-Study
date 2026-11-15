@@ -5,6 +5,7 @@ kod: F21R
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: "prompt_v3; arany v3 (csak ha az a–e érinti és jóváhagyva); F3V3 és Sonnet-futás 200 versen; mérés és teljes bibliai költségvetítés; döntési alap a #22 sorsához"
 kovetkezo: "#22 sorsa – felhasználói döntés a mérés számai alapján"

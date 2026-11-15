@@ -6,10 +6,11 @@ tipus: feladat
 fazis: folyamat
 munka: folyamat
 modell: sonnet
-allapot: megallt
+sav: SYSTEMS
+allapot: lezarva
 ag: claude/f111-elteres
 ad: `/elteres` parancs, amely egy `ELTÉRÉS: <n> tétel` jelentést egyeztetett besorolással, a brief modelljén futó javítással és korlátozott számú újraellenőrzéssel zár le
-kovetkezo: "Te: [elteres_kor 2/2] korlát betelt, új kör nem indul; maradék (ELLENOR_F111_3): 1. tartalmi→dontesre_var ágon nem nő a k, nincs függő jelölő (alacsony-közepes, tartalmi); 2. a [(]#<pr>[)] git-grep minta feladatszámra is illeszkedik (alacsony, mechanikus); 3. elteres.md:21 „mégis írhatók” a FELADATOK.md-t is írhatónak mondja (alacsony, mechanikus); 4. zárójelentés 40 sor a ≤20 helyett, F111.19 kimarad a tartományból, üres címsor (alacsony, mechanikus)"
+kovetkezo: "lezárva: a #410 mergelve (2026-10-18); a maradék 4 tétel (ELLENOR_F111_3): N-F220b; a fejléc a 2026-11-15-i áttekintő-tisztításban (naplok/ATTEKINTO_TISZTITAS_2026-11-15.md) igazítva"
 olvas: [.claude/commands/kovetkezo.md, .claude/commands/befogad.md, .claude/agents/, MUNKAMENET.md, BRIEF_SABLON.md]
 ir: [.claude/commands/elteres.md, .claude/commands/kovetkezo.md]
 fugg: []

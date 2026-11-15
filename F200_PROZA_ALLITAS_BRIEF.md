@@ -5,6 +5,7 @@ kod: PROZA_ALLITAS
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SYSTEMS
 allapot: lezarva
 lezarva_osszegzes: a próza versállítás-ellenőrzője (eszkozok/proza_allitas.py), a MUNKAMENET C-a lépése és a 10. sablon; a független ellenőrzés és a javítókör kész
 ag: claude/f200-versallitas-e49cf6

@@ -5,6 +5,7 @@ kod: BDB_SZAKASZ_ELOKESZITES
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 pr: 456
 lezarva_osszegzes: "a szakaszonkénti BDB-fordítás eszközlánca kész (bemenet-előállító, prompt v5, 14. szakasz-kapu, szakaszkulcs, közös összefűző, olvasók átállítása); DT285–g; ellenőrzés ELTÉRÉS: 2 → 1 javítókör → TISZTA; a teszt_bont 2 main-beli bukása külön tervezet (beerkezo/Fnn_BDB_FEJLEC_DT_BRIEF.md)"

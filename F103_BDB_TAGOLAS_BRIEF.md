@@ -5,6 +5,7 @@ kod: BDB_TAGOLAS
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: folyamat
 allapot: lezarva
 ag: claude/f103-bdb-tagolas

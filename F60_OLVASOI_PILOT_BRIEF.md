@@ -5,6 +5,7 @@ kod: OLVASOI_PILOT
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SERVER
 munka: adat
 allapot: lezarva
 ag: claude/olvasoi-pilot

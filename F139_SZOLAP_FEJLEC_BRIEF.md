@@ -5,6 +5,7 @@ kod: SZOLAP_FEJLEC
 tipus: feladat
 fazis: 1
 modell: opus
+sav: SERVER
 allapot: nem_indult
 ad: a héber szó-lap fejléce három sorban, egységes rendben: címsor = héber szótő + magyar átírás (a döntés szerinti forrásból, gépi esetben jelölve); kiemelt sor = az alapjelentés a szófaji előtag nélkül; alcím = Strong-szám · szófaj (magyarul); a STEP/Strong-szótár angol szótagolású kiejtése (pl. `cha.Rum`) a fejlécből kikerül
 kovetkezo: "A /kovetkezo a #134 zárása után indíthatja (M0 ⛔: mérés és terv; ⛔ DT-F139a: a héber átírás forrása)"

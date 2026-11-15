@@ -5,6 +5,7 @@ kod: F21
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: mért adat arról, megéri-e a teljes Bibliát külső modellekkel Strong-számmal párosítani (minőség, költség, KJV-támpont haszna)
 kovetkezo: a regressziós mérés (P3c) lefutott és lezárva (ellenőri kör, draft PR); a #22 sorsa a felhasználó döntése (a javaslat a jelentés külön szakaszában)

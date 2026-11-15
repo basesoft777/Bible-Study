@@ -5,6 +5,7 @@ kod: LEXIKON_LEZARAS
 tipus: feladat
 fazis: 2
 modell: opus
+sav: CONTENT
 munka: ertelmezo
 allapot: nem_indult
 ad: "mind a 8 éles lexikonlap lezárva az új modell szerint: motívumonként a Feed 9 kapuja zöld (eszkozok/muhely_allapot.py; a 9. az olvasói kapu, DT547), a felhasználó vizuális átnézése rögzítve, az adat/kiadasok.tsv-ben áll az 1. kiadás sora, a motivumok.tsv verziója emelve, és a lexikon/[ID]_TUDOMANYOS.md kolofonja a kiadást mutatja; az LD008 feloldva (DT245); zárómérés és zárónapló a 8 lap állapotával"

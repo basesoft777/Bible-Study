@@ -5,6 +5,7 @@ kod: TERV_FELADAT_OR
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SYSTEMS
 munka: folyamat
 allapot: lezarva
 ag: claude/f82-terv-feladat-or

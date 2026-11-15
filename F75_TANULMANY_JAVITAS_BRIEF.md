@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: ertelmezo
 modell: opus
+sav: CONTENT
 allapot: nem_indult
 ad: a #37 T5-auditjának leletei tanulmányonként javítva (Strong-eltérés, ⚠️ képviselő, Sod-levezetés, elavult jegyzet); a DT61 öt ⚠️-vita-esete tételenként eldöntve
 kovetkezo: /kovetkezo (a #74 lezárása után): T0 ⛔ (a DT61 öt esete); a DT254 eldöntve (1., tartalmi javítás megengedett, két korláttal)

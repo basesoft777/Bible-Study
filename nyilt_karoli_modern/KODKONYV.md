@@ -22,8 +22,6 @@
 | `eredeti_token` |  | Az eredeti szó sorszáma a TAHOT/TAGNT versében (a Károli-vers kulcsán). | Position of the source word in the TAHOT/TAGNT verse (keyed to the Károli verse). |
 | `kapcsolat` | `szo` | A pár egy eredeti szóhoz köti a magyar szót. | The pair links the Hungarian word to a source word. |
 | `kapcsolat` | `morfema` | A pár egy héber előtag- vagy ragmorfémához köti (H9001–H9049: névelő, kötőszó, elöljáró). | The pair links it to a Hebrew prefix or suffix morpheme (H9001–H9049: article, conjunction, preposition). |
-| `bizonyossag` | `magas` | Két független nyelvi modell ugyanazt a párt adta (Mózes 1–2. könyve). | Two independent language models gave the same pair (Genesis and Exodus). |
-| `bizonyossag` | `alacsony` | Egy nyelvi modell javaslata; a pontosságát a mérés adja meg (MODSZER.md 5.). | Proposal of one language model; its accuracy is given by the measurement (METHODS.md 5). |
 
 ## `versek.tsv`
 
