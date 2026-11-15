@@ -23,10 +23,25 @@
 
 Az utolsó jelentett sor mutatja a korlátot: ahol a main-behozás kódot hoz, a részleges mód nem gyorsít, és így is kell. A nyereség a brief-, napló-, döntés- és `.md`-változásoknál, illetve a csak adatot hozó main-behozásnál van (ott az E18/az adatlépések futnak, a kódtesztek nem).
 
-## 3. (a) „Csak szövegek” mód — nem készült, vár
+## 3. (a) „Csak szövegek” mód — a nyílt magra kész (a #737 mergelése után, 2026-11-15)
 
-Az ütközés-korlát szerint az exportálókhoz csak a `local_be6e01b0` (nyílt Károli-csomagok) PR-jának mergelése után nyúlok. Az állapot (2026-11-15, `gh pr list`): a PR sem a main-en nincs, sem nyitottként nem látszik (a nyitott PR-ek: #725, #729, #736). A tervet leírtam az orkesztrátor jegyzetmappájában (`F223_a_reszletes_terv_csak_szovegek_mod.md`): a szövegek egy függvénybe emelése, `--csak-szovegek` mód (az ellenőrzőösszeg-fájl csak a szövegsorai és a `KIADAS`/`RELEASE` hash cserélődik), az E35 két osztályra bontása (szöveg/adat); fontos nyitott kérdés, hogy az `nyilt_mag_szovegek.py` jelenleg nem váltója az E35-nek, és hogy a szövegek mért számai adatból jönnek-e. Az (a) külön, utólagos menet.
+- **A mérés korrekciója.** A feladatleírás szerint az exportáló „a teljes adatot (Károli–Strong kb. 600 000 sor) újragenerálja”. Mért futási idő: nyílt mag 15 mp, Károli – Strong 20 mp, modernizált Károli – Strong 21 mp; a három csomag a commitolt állapotával bájtra azonos. A nyereség ezért a nyílt magnál volt értelmes (15 → 0,6 mp), és ott az igazi hozadék az E35 fájlonkénti összevetése és a szöveg-/adatréteg tiszta szétválasztása.
+- **Nyílt mag (`eszkozok/nyilt_mag_export.py`).** A szöveg-rész külön függvényekbe került (`szovegek_epit`, `szovegek_lezaras`, `osszeg_epit`); a teljes export ezeket hívja, a `--csak-szovegek` mód (`export_csak_szovegek`) ugyanezeket, de az adatfájlokat a commitolt csomagból olvassa és nem írja. Újraépül: ISMERT_HIBAK, KNOWN_ISSUES, kodkonyv.tsv, KODKONYV, OLVASSEL, README, MODSZER, METHODS, ATTRIBUCIO, LICENSE, CITATION.cff, .gitattributes, a közlemény-tervezet és az ellenőrzőösszeg-fájlok (ELLENORZO_OSSZEG, KIADAS, RELEASE): 17 fájl. A számok (sor-darabszámok, lezárt motívumok, kizárt források) a commitolt táblákból jönnek; a nyitott jelöltek száma az `adat/jeloltek.tsv`-ből. **A teljes exporttal egyezés mérve:** a refaktorált teljes export a commitolt csomaggal bájtra azonos (a refaktor nem változtatott semmit), és a `--csak-szovegek` ugyanazt a 17 fájlt adja, mint a teljes export (`teszt_nyilt_mag.py` `CsakSzovegek`, 3 teszt: azonosság, az adat-sorok az összegben változatlanok, hiányzó csomagnál megáll).
+- **E35 fájlonként.** Az `eszkozok/nyilt_mag_szovegek.py` (a szövegsablon) eddig nem váltotta ki az E35-öt. Mostantól kiváltja, és ha csak ez változott (adat-tábla, exportgenerátor, lexikonlap nem), az összevetés fájlonkénti: csak a 17 szöveg-/összeg-fájlt hasonlítja (0,4 mp a 9 mp helyett), az adatfájlt nem; a hibaüzenet a `--csak-szovegek` parancsot javasolja. Adat-tábla vagy az exportgenerátor módosításánál a teljes összevetés marad (`test_szabalyok.py` `E35Teszt`, 4 új teszt).
+- **A két Károli-csomag: nem készült el (N-F223b).** A szövegeik számai a forrásokból és a mérésből jönnek, a visszaépítés külön és kockázatos munka ~20 mp-es export mellett.
 
-## 4. Nyitott megjegyzés
+## 4. N-F175e — a „bizonyosság” szövegeinek igazítása (DT-F175e: a bizonyosság a mért pontosság)
+
+- A modell-egyezésen alapuló belső szűrő neve és leírása („csak magas bizonyosságú pár igazolhat sort”) kikerült a nyílt mag nyilvános szövegéből (hu és en): `ISMERT_HIBAK.md`, `KNOWN_ISSUES.md` (`nyilt_mag_export.py`), `MODSZER.md`, `METHODS.md` (`nyilt_mag_szovegek.py`), a `szó-szintű-gépi` kódkönyv-sora (`adat/nyilt_kodkonyv.tsv`, `ts` 2026-11-15; `KODKONYV.md`, `kodkonyv.tsv`). A csomag újragenerálása a `--csak-szovegek` móddal történt (9 fájl változott: 6 szöveg + 3 összeg-fájl; az adatfájlokhoz nem nyúlt; a teljes exporttal kontrollálva azonos). A mag KIADAS-hash-e változott.
+- **Kapu.** `nyilt_mag_kapu.py` `NYILVANOS_TILTOTT`: a „magas/alacsony bizonyosság”, „high/low confidence” alak tiltott a próza-fájlokban (teszt: négy tiltott és egy megengedett eset a `teszt_nyilt_mag.py`-ban: a „bizonyosság a mért pontosság” megengedett). A két Károli-kapu (`karoli_strong_kapu.py` `MODELL_EGYEZES`, ezt a modern is használja) a teljes „bizonyoss” tilalom helyett ugyanerre az alakra szűkült (a `532d8c34` visszavétele; a mért pontosságra a szó használható).
+- **Nem érintett, a felhasználó dönt (N-F223a):** a `bizonyossag` oszlop a kapcsolat-táblákban és a `megbizhatosag` oszlop szövege.
+
+## 5. Mérés és nyitott kérdések
+
+- `teszt_nyilt_mag.py`: 97 teszt, 1 bukik (`test_teljes_mag_0_bukas`); a bukás **ennek a PR-nak előzménye**: a `nyilt_mag_kapu.py` a main-en (`1b4493e0`) is 150 BUKÁS-t ad (elavult fordítás), l. N-F223c. A két Károli-csomag tesztje zöld (24, 15).
+- A két Károli-kapu `VALTOZATLAN` pontja a `nyilt_mag/` szándékos változtatása miatt pirosat mutat (N-F223d); a CI nem futtatja.
+- Új N-tételek: `nyitott/uj/trusting-carson-7572be.md` (N-F223a–d).
+
+## 6. Nyitott megjegyzés
 
 - A `push_elott.py` lépéslistája nem futtatja a `proza_allitas.py --kapu`-t (E41), pedig a `STATIKUS_HIVASOK` és a workflow tartalmazza; a `--ci-egyezes` ezt nem jelzi (csak a szkript-útvonal egyezését nézi). Ez régebbi hézag; ezt a menet nem érintette, külön tétel.
