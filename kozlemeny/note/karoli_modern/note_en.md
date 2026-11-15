@@ -1,3 +1,4 @@
+<!-- GENERÁLT: eszkozok/karoli_modern_export.py (a próza és a számok: ugyanott) — kézzel nem szerkesztendő; a #174 csomagjának közleménye, belső anyag, nem része a nyilt_karoli_modern/ csomagnak. -->
 # The Károli Bible in present-day spelling, linked word by word to the original languages
 
 *Announcement draft · Modernised Károli – Strong · Logosz Lexikon · DOI: 10.5281/zenodo.24141949*

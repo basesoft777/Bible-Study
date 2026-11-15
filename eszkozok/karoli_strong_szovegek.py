@@ -6,7 +6,7 @@ Csak sablonok: a `{…}` mezőket a `karoli_strong_export.py` `fmt()` függvény
 szám kézzel nem kerül a szövegbe. A kész szövegeket a `karoli_strong_kapu.py` NYILVANOS pontja ellenőrzi (belső
 jelölés, tiltott szavak, harmadik fél neve).
 
-A fájlok útja az új szerkezet szerinti (`karoli_csomag.py`): gyökér, `data/`, `docs/hu|en/`, `note/`.
+A fájlok útja az új szerkezet szerinti (`karoli_csomag.py`): gyökér, `data/`, `docs/hu|en/`. A rövid közlemény a csomagon kívül áll (`kozlemeny/note/karoli_strong/`).
 """
 from karoli_csomag import attribucio_nyelvek
 
@@ -135,6 +135,8 @@ TAHOT/TAGNT szövegéhez illeszthető.
 Minden pár gépi javaslat (`allapot` = `javaslat`), a fent megadott mért pontossággal; a pontosság rétegenként és
 kapcsolattípusonként a `data/meres.tsv`-ben áll.
 
+{egyutt}
+
 ## Kapcsolódó adatkészletek
 
 - Modernizált Károli – Strong (ugyanezek a párok a modernizált szövegen): https://doi.org/{doi_modern}
@@ -187,6 +189,8 @@ and the position matches the STEPBible TAHOT/TAGNT text.
 
 Every pair is a machine proposal (`allapot` = `javaslat`), with the measured accuracy given above; the accuracy per
 stratum and link type is in `data/meres.tsv`.
+
+{egyutt}
 
 ## Related datasets
 
@@ -288,8 +292,6 @@ references:
 
 GITATTRIBUTES = """# Sorvég: minden fájl LF-fel, minden checkouton (az ellenőrző összeg az LF-es bájtokra szól).
 * text eol=lf
-# A közlemény-tervezet a megjelenésig nem része a kiadásnak.
-note/ export-ignore
 """
 
 # ----------------------------------------------------------------------------- ismert hibák
@@ -1012,6 +1014,9 @@ KEZIRAT = [
     ('kozlemeny/data_paper/karoli_strong_kezirat_hu.md', KEZIRAT_HU, 'hu'),
     ('kozlemeny/data_paper/karoli_strong_kezirat_en.md', KEZIRAT_EN, 'en'),
 ]
+NOTE_FEJ = ('<!-- GENERÁLT: eszkozok/karoli_strong_export.py (a próza: eszkozok/karoli_strong_szovegek.py, a számok: '
+            'adat/karoli_strong/ és f172/) — kézzel nem szerkesztendő; a #175 csomagjának rövid közleménye, belső '
+            'anyag, nem része a nyilt_karoli_strong/ csomagnak. -->\n')
 KEZIRAT_FEJ = ('<!-- GENERÁLT: eszkozok/karoli_strong_export.py (a próza: eszkozok/karoli_strong_szovegek.py, a számok: '
                'adat/karoli_strong/ és f172/) — kézzel nem szerkesztendő; a #175 második data paperének kézirata, '
                'nem része a nyilt_karoli_strong/ csomagnak. -->\n')

@@ -1,3 +1,4 @@
+<!-- GENERÁLT: eszkozok/karoli_strong_export.py (a próza: eszkozok/karoli_strong_szovegek.py, a számok: adat/karoli_strong/ és f172/) — kézzel nem szerkesztendő; a #175 csomagjának rövid közleménye, belső anyag, nem része a nyilt_karoli_strong/ csomagnak. -->
 # A Károli-biblia szavanként az eredeti nyelvekhez kötve — mért pontossággal
 
 *Közlemény-tervezet · Károli 1908 – Strong szóillesztés · Logosz-lexikon · DOI: 10.5281/zenodo.24141883*

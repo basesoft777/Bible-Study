@@ -7,12 +7,15 @@ karoli_csomag.py -- a két nyílt Károli-csomag (`nyilt_karoli_strong/`, `nyilt
     data/       a táblák (generált)
     docs/hu/    KODKONYV, MODSZER, ISMERT_HIBAK, ATTRIBUCIO, OLVASSEL (generált)
     docs/en/    CODEBOOK, METHODS, KNOWN_ISSUES, ATTRIBUTION (generált)
-    note/       a rövid közlemény hu/en (generált; a `.gitattributes` kihagyja a kiadási archívumból)
     paper/      a folyóiratcikk kézirata: kezirat_hu.md, kezirat_en.md (KÉZI FORRÁS: a generátor nem írja, nem
                 törli; ha ott áll, az ellenőrző összegbe kerül)
 
-Az exportálók csak a generált részeket írják (`GENERALT`); a `kiir()` a `paper/`-hez nem nyúl. A csomagmappában csak
-a `engedett()` által elfogadott fájl lehet (a kapuk HARMADIK pontja ezt hívja).
+Az exportálók csak a generált részeket írják (`GENERALT_MAPPAK`); a `kiir()` a `paper/`-hez nem nyúl. A csomagmappában
+csak az `engedett_regex()` által elfogadott fájl lehet (a kapuk HARMADIK pontja ezt hívja). Nincs `export-ignore`: a
+csomag mappája pontosan a nyilvános repó tartalma (`git archive HEAD:<csomag>` mindent kiad, ami a mappában áll).
+
+A rövid közlemény hu/en tervezete (belső anyag) a csomagon kívül, `kozlemeny/note/<csomag>/` alatt áll, a
+`kozlemeny/data_paper/` mellett: generált, gépi jelöléssel (`note_utak()`).
 
 TSV-olvasás `split('\\t')`, írás `'\\t'.join()` (nem `csv`).
 """
@@ -21,13 +24,18 @@ import re
 
 GYOKER_FAJLOK = ('README.md', 'LICENSE', 'CITATION.cff', '.gitattributes', 'KIADAS.txt', 'RELEASE.txt',
                  'ELLENORZO_OSSZEG.sha256')
-GENERALT_MAPPAK = ('data', 'docs', 'note')
+GENERALT_MAPPAK = ('data', 'docs')
 KEZI_MAPPAK = ('paper',)
 
-# a nyilvános repóból kihagyott rész (git archive): a rövid közlemény tervezete a megjelenésig
-NOTE_DIR = 'note/'
-NOTE_HU = NOTE_DIR + 'note_hu.md'
-NOTE_EN = NOTE_DIR + 'note_en.md'
+# a rövid közlemény tervezete: belső anyag, a csomagon kívül (a csomagmappa a nyilvános repó tartalma)
+NOTE_BELSO = 'kozlemeny/note/'
+
+
+def note_utak(csomag):
+    """A csomag közleményének (hu, en) útja a repó gyökeréhez viszonyítva; `csomag`: `karoli_strong`/`karoli_modern`."""
+    return NOTE_BELSO + csomag + '/note_hu.md', NOTE_BELSO + csomag + '/note_en.md'
+
+
 KIHAGYOTT_OSSZEGBOL = ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt')
 
 DOCS_HU = 'docs/hu/'
@@ -41,7 +49,7 @@ ISMERT_HIBAK = DOCS_HU + 'ISMERT_HIBAK.md'
 KNOWN_ISSUES = DOCS_EN + 'KNOWN_ISSUES.md'
 ATTRIBUCIO = DOCS_HU + 'ATTRIBUCIO.md'
 ATTRIBUTION = DOCS_EN + 'ATTRIBUTION.md'
-MAGYAR_FAJLOK = (OLVASSEL, KODKONYV_HU, MODSZER, ISMERT_HIBAK, ATTRIBUCIO, 'LICENSE', 'data/kodkonyv.tsv', NOTE_HU)
+MAGYAR_FAJLOK = (OLVASSEL, KODKONYV_HU, MODSZER, ISMERT_HIBAK, ATTRIBUCIO, 'LICENSE', 'data/kodkonyv.tsv')
 
 
 def engedett_regex(adat_minta):
@@ -52,7 +60,6 @@ def engedett_regex(adat_minta):
             r'data/(?:' + adat_minta + r')',
             r'docs/hu/(?:KODKONYV|MODSZER|ISMERT_HIBAK|ATTRIBUCIO|OLVASSEL)\.md',
             r'docs/en/(?:CODEBOOK|METHODS|KNOWN_ISSUES|ATTRIBUTION)\.md',
-            r'note/note_(?:hu|en)\.md',
             r'paper/kezirat_(?:hu|en)\.md',
         ]) + r')$')
 

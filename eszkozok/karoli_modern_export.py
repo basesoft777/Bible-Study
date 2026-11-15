@@ -10,10 +10,10 @@ modern réteg Strongot nem tárol, a join éri el). A kieső token (összevont �
 marad, a gazdaszó sorszámával; a Strongja nem vész el.
 
 Kimenet: `nyilt_karoli_modern/` — a mappa tartalma 1:1-ben a nyilvános adatrepó gyökere; a szerkezet (gyökér,
-`data/`, `docs/hu|en/`, `note/`, `paper/`) a `karoli_csomag.py`-ban áll. Determinisztikus, újrafuttatva bájtazonos.
-A `note/` almappa (a közlemény hu/en tervezete) generált, de nincs az ellenőrző összegben, és a `.gitattributes` a
-kiadási archívumból kihagyja (export-ignore) a megjelenésig. A `paper/` kézi forrás: a generátor nem írja és nem
-törli (ha ott áll, az ellenőrző összegbe kerül).
+`data/`, `docs/hu|en/`, `paper/`) a `karoli_csomag.py`-ban áll. Determinisztikus, újrafuttatva bájtazonos. Nincs
+`export-ignore`: a mappa mindent kiad, ami benne áll. A `paper/` kézi forrás: a generátor nem írja és nem törli (ha
+ott áll, az ellenőrző összegbe kerül). A közlemény hu/en tervezete (belső anyag) a csomagon kívül, a
+`kozlemeny/note/karoli_modern/` alatt generálódik, gépi jelöléssel.
 
 A nyilvános szövegek (MODSZER/METHODS, közlemény, kódkönyv, ismert hibák) prózája itt áll; minden szám az
 adatból vagy a forrásnaplóból számolódik (a `szamok()` függvény), kézzel nem kerül a szövegbe. Ha egy
@@ -42,6 +42,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nyilt_mag_export as NM  # noqa: E402  (OSIS-kulcs, közös azonosítók)
 import karoli_strong_export as KS  # noqa: E402  (a párosítás mérése: a rétegek a szóillesztési csomag szerint)
 import karoli_csomag as CS  # noqa: E402  (a csomag szerkezete)
+import karoli_egyutt as EG  # noqa: E402  (a „két adatkészlet együtt” szakasz)
 from nevelo import nevelos, nevelo_javit  # noqa: E402  (közös névelő-szabály, N-F175b)
 
 GYOKER = NM.GYOKER
@@ -57,7 +58,7 @@ LEXIKON_HU = NM.LEXIKON_CIM_HU
 LEXIKON_EN = NM.LEXIKON_CIM_EN
 CIM_HU = 'Modernizált Károli – Strong'
 CIM_EN = 'Modernised Károli – Strong'
-KOZLEMENY_DIR = CS.NOTE_DIR
+NOTE_UTAK = CS.note_utak('karoli_modern')
 ENGEDETT = CS.engedett_regex(r'konyvek/\d{2}_[1-3]?[A-Z][A-Za-z]+\.tsv|versek\.tsv|kodkonyv\.tsv')
 
 MODERN = 'adat/karoli_modern/karoli_modern.tsv'
@@ -358,6 +359,7 @@ def fmt(N, nyelv):
     F['uj_konyvek_en'] = 'Matthew, Mark, Luke, John, Acts'
     F['doi_ks'] = DOI_KAROLI_STRONG
     F['doi_mag'] = DOI_MAG
+    F['egyutt'] = EG.szakasz('modern', nyelv)
     F['lex_hu'] = LEXIKON_HU
     F['lex_en'] = LEXIKON_EN
     F['szerzo'] = SZERZO
@@ -405,6 +407,8 @@ ahány eredeti szóhoz párosítva van; a pár nélküli szó egy sorban. A mode
 
 A párosítás gépi javaslat, mért pontossággal (`docs/hu/MODSZER.md`, 5. pont).
 
+{egyutt}
+
 ## Kapcsolódó adatkészletek
 
 - Károli 1908 – Strong szóillesztés: https://doi.org/{doi_ks}
@@ -450,6 +454,8 @@ modern text, take the rows with an empty `kieso` column in `token` order, once p
 `data/versek.tsv`.
 
 The alignment is a machine proposal with measured accuracy (`docs/en/METHODS.md`, section 5).
+
+{egyutt}
 
 ## Related datasets
 
@@ -920,8 +926,6 @@ references:
 
 GITATTRIBUTES = """# Sorvég: minden fájl LF-fel, minden checkouton (az ellenőrző összeg az LF-es bájtokra szól).
 * text eol=lf
-# A közlemény-tervezet a megjelenésig nem része a kiadásnak.
-note/ export-ignore
 """
 
 KOZLEMENY_HU = """# A Károli-biblia mai helyesírással, szavanként az eredeti nyelvekhez kötve
@@ -1054,10 +1058,31 @@ def export(kimenet=KIMENET):
                             'kozzeteteli_hely: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
                              'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
-    # a közlemény-tervezet (export-ignore; nincs az ellenőrző összegben)
-    fajlok[CS.NOTE_HU] = nevelo_javit(KOZLEMENY_HU.format(**hu))
-    fajlok[CS.NOTE_EN] = KOZLEMENY_EN.format(**en)
     return fajlok, N
+
+
+NOTE_FEJ = ('<!-- GENERÁLT: eszkozok/karoli_modern_export.py (a próza és a számok: ugyanott) — kézzel nem '
+            'szerkesztendő; a #174 csomagjának közleménye, belső anyag, nem része a nyilt_karoli_modern/ '
+            'csomagnak. -->\n')
+
+
+def note(N):
+    """A csomag közleménye (hu/en), a csomagon kívül: a repó gyökeréhez viszonyított út -> (törzs, teljes szöveg). A
+    törzs a nyilvános szöveg (a kapu ezt ellenőrzi), a teljes szöveg a GENERÁLT-jelöléssel kezdődik."""
+    hu, en = fmt(N, 'hu'), fmt(N, 'en')
+    for d in (hu, en):
+        d.update({'cim': CIM_HU, 'cim_en': CIM_EN, 'step': STEP_ATTRIB})
+    hu_ut, en_ut = NOTE_UTAK
+    torzs_hu, torzs_en = nevelo_javit(KOZLEMENY_HU.format(**hu)), KOZLEMENY_EN.format(**en)
+    return {hu_ut: (torzs_hu, NOTE_FEJ + torzs_hu), en_ut: (torzs_en, NOTE_FEJ + torzs_en)}
+
+
+def note_kiir(N):
+    for rel, (_, szoveg) in note(N).items():
+        ut = os.path.join(GYOKER, rel)
+        os.makedirs(os.path.dirname(ut), exist_ok=True)
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(szoveg)
 
 
 def kiir(fajlok, kimenet):
@@ -1071,6 +1096,8 @@ def main():
     a = ap.parse_args()
     fajlok, N = export(a.kimenet)
     ut = kiir(fajlok, a.kimenet)
+    if a.kimenet == KIMENET:
+        note_kiir(N)             # a közlemény csak a kanonikus futáskor (a --kimenet próba a repón kívül marad)
     print('modernizált Károli – Strong exportálva: %s (%d fájl)' % (ut, len(fajlok)))
     for k in ('konyv', 'vers', 'token', 'valtozo_token', 'par', 'strongos_token', 'kieso_strongos', 'sor'):
         print('  %-16s %9d' % (k, N[k]))

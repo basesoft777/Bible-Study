@@ -12,10 +12,10 @@ szerkesztői döntés: harmadik fél adata nem megy be). A külső összevetés 
 egyezés.
 
 Kimenet: `nyilt_karoli_strong/` — a mappa tartalma 1:1-ben a nyilvános adatrepó gyökere; a szerkezet (gyökér,
-`data/`, `docs/hu|en/`, `note/`, `paper/`) a `karoli_csomag.py`-ban áll. Determinisztikus, újrafuttatva bájtazonos.
-A `note/` almappa (a rövid közlemény hu/en tervezete) generált, de nincs az ellenőrző összegben, és a `.gitattributes`
-a kiadási archívumból kihagyja (export-ignore) a megjelenésig. A `paper/` kézi forrás: a generátor nem írja és nem
-törli (ha ott áll, az ellenőrző összegbe kerül).
+`data/`, `docs/hu|en/`, `paper/`) a `karoli_csomag.py`-ban áll. Determinisztikus, újrafuttatva bájtazonos. Nincs
+`export-ignore`: a mappa mindent kiad, ami benne áll. A `paper/` kézi forrás: a generátor nem írja és nem törli (ha
+ott áll, az ellenőrző összegbe kerül). A rövid közlemény hu/en tervezete (belső anyag) a csomagon kívül, a
+`kozlemeny/note/karoli_strong/` alatt generálódik, gépi jelöléssel.
 
 A nyilvános szövegek prózája itt áll; minden szám az adatból vagy a #172 mérőtábláiból számolódik (`szamok()`),
 kézzel nem kerül a szövegbe. Ha egy szám nem olvasható ki, a szkript megáll.
@@ -37,6 +37,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nyilt_mag_export as NM  # noqa: E402  (OSIS-kulcs, közös azonosítók)
 import karoli_strong_szovegek as SZ  # noqa: E402  (a nyilvános szövegek prózája)
 import karoli_csomag as CS  # noqa: E402  (a csomag szerkezete)
+import karoli_egyutt as EG  # noqa: E402  (a „két adatkészlet együtt” szakasz)
 from nevelo import (NEVELO_SZAM_RX, MAGANHANGZO, szam_nevelo, szo_nevelo,  # noqa: E402,F401  (közös névelő-szabály)
                     nevelo_javit, nevelo_hibak)
 
@@ -57,7 +58,7 @@ CIM_EN = 'Károli 1908 – Strong word alignment'
 # a motívum-adatmag címe a saját CITATION.cff-je szerint (F208; N-F175c)
 CIM_MAG_HU = NM.LEXIKON_CIM_HU + ' — nyílt adatmag: bibliai motívumok'
 CIM_MAG_EN = NM.LEXIKON_CIM_EN + ' — open data core: biblical motifs'
-KOZLEMENY_DIR = CS.NOTE_DIR
+NOTE_UTAK = CS.note_utak('karoli_strong')
 ENGEDETT = CS.engedett_regex(r'(?:parok|szavak)/\d{2}_[1-3]?[A-Z][A-Za-z]+\.tsv|versek\.tsv|meres\.tsv|kodkonyv\.tsv')
 
 PAROK = 'adat/karoli_strong/parok_*.tsv'
@@ -404,6 +405,7 @@ def fmt(N, nyelv):
     F['doi'] = DOI
     F['doi_modern'] = DOI_MODERN
     F['doi_mag'] = DOI_MAG
+    F['egyutt'] = EG.szakasz('strong', nyelv)
     F['lex_hu'] = NM.LEXIKON_CIM_HU
     F['lex_en'] = NM.LEXIKON_CIM_EN
     F['szerzo'] = NM.SZERZO
@@ -464,9 +466,6 @@ def export(kimenet=KIMENET):
                             'kozzeteteli_hely: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
                              'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
-    # a közlemény-tervezet (export-ignore; nincs az ellenőrző összegben)
-    for nev, sablon, d in SZ.KOZLEMENY:
-        fajlok[KOZLEMENY_DIR + nev] = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
     return fajlok, N
 
 
@@ -481,9 +480,22 @@ def kezirat(N):
     return ki
 
 
+def note(N):
+    """A csomag rövid közleménye (hu/en), a csomagon kívül: a repó gyökeréhez viszonyított út -> (törzs, teljes szöveg).
+    A törzs a nyilvános szöveg (a kapu ezt ellenőrzi), a teljes szöveg a GENERÁLT-jelöléssel kezdődik."""
+    hu, en = fmt(N, 'hu'), fmt(N, 'en')
+    ki = {}
+    for (nev, sablon, d), rel in zip(SZ.KOZLEMENY, NOTE_UTAK):
+        torzs = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
+        ki[rel] = (torzs, SZ.NOTE_FEJ + torzs)
+    return ki
+
+
 def kezirat_kiir(N):
-    for rel, (_, szoveg) in kezirat(N).items():
-        with open(os.path.join(GYOKER, rel), 'w', encoding='utf-8', newline='\n') as f:
+    for rel, (_, szoveg) in list(kezirat(N).items()) + list(note(N).items()):
+        ut = os.path.join(GYOKER, rel)
+        os.makedirs(os.path.dirname(ut), exist_ok=True)
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(szoveg)
 
 
