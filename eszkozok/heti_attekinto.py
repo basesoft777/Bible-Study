@@ -5,10 +5,10 @@ heti_attekinto.py -- a heti áttekintő oldal generátora.
 
 A brief-fejlécekből (az `eszkozok/feladatok.py` beolvasó függvényeivel, csak olvasva) és a
 GitHub PR-állapotokból (`gh pr list`) sávonként csoportosított, önálló HTML-oldalt készít a
-felhasználónak: fent „A te teendőid”, utána négy sáv (fejlesztői infrastruktúra, tartalomkészítés,
-olvasó, felhasználók), mindegyikben három blokk: folyamatban / vár / kész a héten.
+felhasználónak: fent „A te teendőid”, utána öt sáv (fejlesztői infrastruktúra, tartalomkészítés,
+olvasó, felhasználók, üzleti oldal), mindegyikben három blokk: folyamatban / vár / kész a héten.
 
-A sávot a brief `sav` fejlécmezője adja (SYSTEMS / CONTENT / SERVER / USER). Ha a mező hiányzik
+A sávot a brief `sav` fejlécmezője adja (SYSTEMS / CONTENT / SERVER / USER / BUSINESS). Ha a mező hiányzik
 vagy ismeretlen értékű, a brief a „besorolatlan” csoportba kerül; a szkript ettől függetlenül működik.
 
 A kimenet generált nézet: a `--kimenet` a repón kívülre mutasson (CLAUDE.md: a kimeneti próbák a
@@ -51,6 +51,7 @@ SAVOK = (
     ('CONTENT', 'Tartalomkészítés'),
     ('SERVER', 'Olvasó'),
     ('USER', 'Felhasználók, előfizetés, jogok'),
+    ('BUSINESS', 'Üzleti oldal'),
 )
 BESOROLATLAN = 'BESOROLATLAN'
 BESOROLATLAN_CIMKE = 'Besorolatlan'
@@ -88,7 +89,7 @@ VAR_ELOTAG = re.compile(r'^\s*Te\s*(?:\(⛔\))?\s*:\s*')
 # ---------------------------------------------------------------------------
 
 def sav_olvas(gyoker, b):
-    """A brief sávja (SYSTEMS/CONTENT/SERVER/USER) vagy BESOROLATLAN.
+    """A brief sávja (SYSTEMS/CONTENT/SERVER/USER/BUSINESS) vagy BESOROLATLAN.
 
     Az elemző `sav` kulcsot ismer (az átmenet után a `feladatok.py` KULCSOK-jában), ezért a mező
     a `b.fej`-ben van; amíg a kulcs nincs a listában, az elemző `ismeretlen kulcs: sav` hibát
