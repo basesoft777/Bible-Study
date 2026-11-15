@@ -400,13 +400,15 @@ def _rokon_szavak(f, szavak, hiv):
 
 def _gorog_hatter(f, sajat, szavak):
     """A 4.8 pont görög része. Ha a motívum saját szavához LSJ-szócikk tartozik, a régi generátor a szócikk kártyáját
-    írta: az a 4.2 kártyáival (S3b) készül, addig ez az ág kimondott hibával megáll."""
+    írta (és a rokon szavak LSJ-kártyáit): ez a kártyafajta nincs portolva (a két mintalapon a saját szó ága nem
+    fut), ezért az ág kimondott hibával megáll."""
+    # a nyitott tétel: N-F218j (az LSJ-kártya portolása)
     hiv = nyelvi_hatter_be.b25_hivatkozasok(f.b)
     lsj = nyelvi_hatter_be.b26_lsj(f.b)
     sajat_lsj = [s.kod for s in sajat if konfig.SZOTAR_LSJ in hiv.szotarai(s)]
     if sajat_lsj:
-        raise bemenet.BemenetHiba('4.8: a motívum %d szavához (az első: %s) LSJ-szócikk tartozik; a szócikk kártyája '
-                                  'a 4.2 kártyáival készül (S3b), addig ez az ág nem generálható'
+        raise bemenet.BemenetHiba('4.8: a motívum %d szavához (az első: %s) LSJ-szócikk tartozik; az LSJ-szócikk '
+                                  'kártyája nincs portolva, ez az ág nem generálható'
                                   % (len(sajat_lsj), sajat_lsj[0]))
     csonkok = []
     for s in sajat:
@@ -445,6 +447,13 @@ def _nyelvresz(f, nyelv, szavak, szerepek):
         kartyak=(_kartyak(f, sajat, nyelv is Nyelv.HEBER) if sajat and konfig.PONT_MELYSEGI in pontok else ()))
 
 
+def elavult_jelez(allapot, strong, kartya):
+    """A Thayer-kártya elavult fordítású szakaszai a fordítás-állapotba (T5, GK-15; az 5. ellenőrzés E3 tétele): munka
+    módban a régi szöveg felülvizsgálat-jellel áll, kiadási módban a szakasz kapuja megáll."""
+    for kulcs in kartya.elavult:
+        allapot.jelez(ForditasFajta.ELAVULT, kartya_lap.SZOTAR_THAYER, strong, kulcs)
+
+
 def _kartyak(f, sajat, heber):
     """A 4.2 kártyái a nyelvrész szavaira (héberül BDB, görögül Thayer), a kész lap kiejtés-pótlásával (a nyelvrész
     rendjében)."""
@@ -471,6 +480,7 @@ def _kartyak(f, sajat, heber):
                 bdb_rovidites.cimszo_alak(lemma, kiejtes), bdb_rovidites.alapbetu(lemma))))
         else:
             kartyak.append(kartya_lap.thayer_kartya(k, strong, dict.fromkeys(kut), versek))
+            elavult_jelez(f.allapot, strong, kartyak[-1])
     kartya_lap.kiejtes_menet(kartyak, latott, f.kiejtes.szoveg_heber_kiejtes if heber
                              else f.kiejtes.szoveg_gorog_kiejtes)
     forras = None if heber else kartya_sz.thayer_forras(f.forditasok)

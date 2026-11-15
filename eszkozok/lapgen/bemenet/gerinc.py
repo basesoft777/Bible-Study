@@ -616,8 +616,11 @@ class Gerinc:
     def thayer_fa(self, strong_kod, forditasok):
         """A Thayer-szócikk (a régi `thayer_gerinc_szakaszok`): ([{'bdb_id': '', 'fej', 'szakaszok'}], {}); a szakasz
         (('', útvonal), jel, magyar szöveg vagy None, angol szöveg, 'sz<sorszám>'). A magyar szöveg a fordítástábla
-        szakaszsorából (B14); az elavult vagy hiányzó sor helyén nincs magyar szöveg (a régi szabály)."""
-        szakaszok = []
+        szakaszsorából (B14); a hiányzó sor helyén nincs magyar szöveg. Az elavult sor (T5, GK-15; az 5. ellenőrzés E3
+        tétele) régi magyar szövege áll, a szakasz kulcsa a szócikk `elavult` halmazában: a kártya felülvizsgálat-jellel
+        írja, a fordítás-állapot ELAVULT tételt kap (kiadási módban BUKÁS). A régi generátor az elavult sort üresnek
+        vette."""
+        szakaszok, elavult = [], set()
         for r in sorted(self._thayer_szakaszok().get(strong_kod, []), key=lambda x: int(x['sorszam'])):
             if r['utvonal'] == _UT_CIM:
                 continue
@@ -625,11 +628,14 @@ class Gerinc:
             f = (forditasok.nyers('Thayer', strong_kod, strong_kod, kulcs, 'forditas_hu')
                  or forditasok.nyers('Thayer', strong_kod, strong_kod[0] + str(int(strong_kod[1:])), kulcs,
                                      'forditas_hu'))
-            hu = f[0] if f and f[1] != 'elavult' and f[0] else None
+            hu = f[0] if f and f[0] else None
+            if hu and f[1] == 'elavult':
+                elavult.add(kulcs)
             angol = ('%s %s' % (r.get('jel') or '', r.get('szoveg') or '')).strip()
             szakaszok.append((('', r['utvonal']), szakasz_jel(r['utvonal']), hu, angol, kulcs))
         fej = next((s for s in szakaszok if s[0][1] == _UT_FEJ), None)
-        return [{'bdb_id': '', 'fej': fej, 'szakaszok': [s for s in szakaszok if s[0][1] != _UT_FEJ]}], {}
+        return [{'bdb_id': '', 'fej': fej, 'szakaszok': [s for s in szakaszok if s[0][1] != _UT_FEJ],
+                 'elavult': frozenset(elavult)}], {}
 
     def thayer_vers_sorok(self, strong_kod, vers_kod):
         return self._th_vj.get((strong_kod, vers_kod), [])

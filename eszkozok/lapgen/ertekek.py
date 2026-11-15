@@ -90,8 +90,9 @@ class JelFajta(enum.Enum):
     ABBR_NYIT = 'abbr_nyit'          # adat: Feloldas
     ABBR_ZAR = 'abbr_zar'
     LRM = 'lrm'                      # a héber futam utáni irányjel
-    KAROLI = 'karoli'                # adat: (a Károli-alak, a forrás eredeti száma), mindkettő Forrasszoveg
+    KAROLI = 'karoli'                # adat: KaroliSzam (a könyv a forrás részlete, a számok egészek)
     NINCS_KAROLI = 'nincs_karoli'    # a szótár hivatkozása a Károliban nem létező versre
+    FELULVIZSGALAT = 'felulvizsgalat'  # az elavult fordítás jele az idézet végén (T5, GK-15)
     KIEJTES = 'kiejtes'              # adat: a kiejtés (Forrasszoveg)
     CSONK = 'csonk'
     IDEZET = 'idezet'                # a lapmodellben: az idézet-darab (a szegmentált idézet szövege)                  # a rövidített vázlatsor jele; adat: tapadt-e (szóköz nélkül)

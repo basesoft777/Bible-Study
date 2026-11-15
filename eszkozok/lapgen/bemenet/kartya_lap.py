@@ -116,6 +116,7 @@ class Kartya:
     pont_nelkul: Tuple[Igehely, ...]
     apparatus: Tuple[AppElem, ...]
     megjegyzes: Tuple[object, ...]          # (vers, Tartomany, pontos jel Forrasszoveg)
+    elavult: Tuple[str, ...] = ()           # az elavult fordítású szakaszok kulcsai (`sz<n>`; T5)
 
 
 # --- segédek -------------------------------------------------------------------------------------------------
@@ -187,7 +188,7 @@ def _olvasoi(k, strong, fa, p, hiv_db, szotar=SZOTAR_BDB):
         if not sz['szakaszok']:
             fej_hu = sz['fej'][2] if sz['fej'] else ''
             gl = szotari_glossza.thayer_fej_glossza(fej_hu or '') if thayer else gerinc_be._fej_glossza(fej_hu or '')
-            gl = _forras_ertek(k, szotar, strong, gl) if gl else None
+            gl = _forras_ertek(k, szotar, strong, gl, fej_hu, _fv(sz, sz['fej'])) if gl else None
             kk = (sz['bdb_id'], _TAGOLATLAN)
             nevek[kk] = PontNev('tagolatlan', szocikk=szocikk, glossza=gl)
             if sz['fej'] and sz['fej'][2]:
@@ -196,11 +197,12 @@ def _olvasoi(k, strong, fa, p, hiv_db, szotar=SZOTAR_BDB):
             continue
         if fej_gl:
             kk = (sz['bdb_id'], _FEJ)
-            fej_ertek = _forras_ertek(k, szotar, strong, fej_gl)
+            fej_ertek = _forras_ertek(k, szotar, strong, fej_gl, fej0[2], _fv(szocikkek[0], fej0))
             nevek[kk] = PontNev('fej_eleje', glossza=fej_ertek)
             sorok.append(OlvasoiSor('fej_eleje', behuzas=behuz, felkover=any(kk in lista for lista in pontok.values()),
                                     glossza=fej_ertek))
-        for kk, jel, hu, _angol, _kat in sz['szakaszok']:
+        for elem in sz['szakaszok']:
+            kk, jel, hu, _angol, _kat = elem
             if kk in lat:
                 continue
             lat.add(kk)
@@ -219,7 +221,7 @@ def _olvasoi(k, strong, fa, p, hiv_db, szotar=SZOTAR_BDB):
                 tartalom = 'forditasra_var'
             elif not gl:
                 tartalom = 'kulon'
-            gl_ertek = _glossza_ertek(k, szotar, strong, kk, jel, cimke, gl) if gl else None
+            gl_ertek = _glossza_ertek(k, szotar, strong, kk, jel, cimke, gl, hu, _fv(sz, elem)) if gl else None
             gondolatjel = jel[:1].isalpha()
             nevek[kk] = PontNev('szakasz', szocikk=szocikk, jel=g.jel(szotar, strong.kod, kk, prozai=True),
                                 gondolatjel=gondolatjel, glossza=gl_ertek)
@@ -250,51 +252,133 @@ def _olvasoi(k, strong, fa, p, hiv_db, szotar=SZOTAR_BDB):
             tuple(k.igehely(v) for v, _t in p.tartomanyban), tuple(k.igehely(v) for v in pont_nelkul))
 
 
-def _forras_ertek(k, szotar, strong, szoveg):
+@dataclasses.dataclass(frozen=True)
+class Glossza:
+    """A szótár szövegéből vett meghatározás (az 5. ellenőrzés E2 tétele): `reszek` a forrás szó szerinti részletei
+    (idézetek, a forrás rendjében; több rész, ha a glossza-szabály a forrásból egy zárójeles részt kihagyott: a
+    kihagyás helye a lapon sablon), `csonk` igaz, ha a meghatározás a generátor csonkolásával áll (a „…” jel sablon,
+    nem idézet)."""
+    reszek: Tuple[object, ...]      # Forrasszoveg
+    csonk: bool = False
+    felulvizsgalat: bool = False    # elavult fordításból (T5, GK-15; az 5. ellenőrzés E3 tétele)
+
+
+def _norm(s):
+    return re.sub(r'\s+', ' ', s or '').strip()
+
+
+def reszletek(mag, forras, legfeljebb=3):
+    """A meghatározás felbontása a forrás szó szerinti részleteire (szóköz-normalizálva, a forrás rendjében, a
+    leghosszabb illeszkedő szósorokkal); None, ha nem bontható legfeljebb `legfeljebb` részre."""
+    szavak, f = _norm(mag).split(' '), _norm(forras)
+    ki, poz, i = [], 0, 0
+    while i < len(szavak):
+        for j in range(len(szavak), i, -1):
+            resz = ' '.join(szavak[i:j])
+            hol = f.find(resz, poz)
+            if hol >= 0:
+                break
+        else:
+            return None
+        ki.append(resz)
+        poz, i = hol + len(resz), j
+    return ki if len(ki) <= legfeljebb else None
+
+
+def _fv(sz, elem):
+    """Igaz, ha a szakasz (vagy a fej) magyar szövege elavult fordítás (T5): a szócikk `elavult` halmaza szerint."""
+    return bool(elem) and elem[4] in sz.get('elavult', ())
+
+
+def _forras_ertek(k, szotar, strong, szoveg, forras, felulvizsgalat=False):
     """A szótár magyar szövegének részlete idézetként: a BDB-nél a szakasztábla fordítása (B18), a Thayernél a
-    fordítástábla (B14)."""
-    if szotar == SZOTAR_THAYER:
-        return k.b.forrasszoveg('B14', 'forditas_hu', szoveg, strong)
-    return k.b.forrasszoveg('B18', 'szoveg_hu', szoveg, strong)
+    fordítástábla (B14). Részlet-kapu: a meghatározás (a generátor csonkoló „…” jele nélkül) szóköz-normalizálva a
+    forrás (`forras`: a szakasz vagy a fej teljes magyar szövege) részlete, vagy legfeljebb három részlete a forrás
+    rendjében (a glossza-szabály egy zárójeles részt kihagyott); különben `JeloltHiba` (a szabály átalakította,
+    ezért nem idézhető). A csonkoló jel a modellben `csonk` jelző, a lapon sablonsor."""
+    mag, csonk = szoveg, False
+    if mag.endswith(K.CSONK_TAPADT) and _norm(mag) not in _norm(forras):
+        mag, csonk = mag[:-len(K.CSONK_TAPADT)], True
+    reszek = reszletek(mag, forras) if mag else None
+    if not reszek:
+        raise JeloltHiba('a(z) %s %s-meghatározása nem a forrás szó szerinti részlete (%r): a glossza-szabály '
+                         'átalakította, idézetként nem állhat' % (strong.kod, szotar, szoveg))
+    b_id, mezo = ('B14', 'forditas_hu') if szotar == SZOTAR_THAYER else ('B18', 'szoveg_hu')
+    return Glossza(tuple(k.b.forrasszoveg(b_id, mezo, r, strong) for r in reszek), csonk, felulvizsgalat)
 
 
-def _glossza_ertek(k, szotar, strong, kk, jel, cimke, gl):
+def _glossza_ertek(k, szotar, strong, kk, jel, cimke, gl, forras, felulvizsgalat=False):
     """A meghatározás: a címke (kézi) változatlanul, ha a meghatározás maga a címke; különben a szótár szövegének
-    részlete (idézet)."""
+    részlete (idézet, részlet-kapuval)."""
     if cimke:
         if gl != cimke:
             raise JeloltHiba('a(z) %s %s címkéjét a régi lap átalakítva írta (%r → %r): a címke a forrásban javítandó'
                              % (strong.kod, jel, cimke, gl))
         return k.g.cimke(szotar, strong.kod, kk)
-    return _forras_ertek(k, szotar, strong, gl)
+    return _forras_ertek(k, szotar, strong, gl, forras, felulvizsgalat)
 
 
 # --- az apparátus (a régi `gerinc_blokk` második fele és `gerinc_szakasz_lista`) ------------------------------------
-def _jelolt(k, strong, szoveg, szotar=SZOTAR_BDB):
+def _jelolt(k, strong, szoveg, szotar=SZOTAR_BDB, felulvizsgalat=False):
     if '\n' in szoveg:
         raise JeloltHiba('a(z) %s szótári szövege sortörést tartalmaz' % strong.kod)
     if szotar == SZOTAR_THAYER:
-        return Jelolt(szoveg, 'B14', 'forditas_hu', strong)
-    return Jelolt(szoveg, 'B18', 'szoveg_hu', strong)
+        return Jelolt(szoveg, 'B14', 'forditas_hu', strong, felulvizsgalat)
+    return Jelolt(szoveg, 'B18', 'szoveg_hu', strong, felulvizsgalat)
+
+
+# --- árnyékmondatok (az 5. ellenőrzés E1 tétele) ---------------------------------------------------------------------
+# A régi lánc mintái a régi bekezdés teljes szövegén futnak, ezért a keret szövege a kész lap mondata is: a kód itt
+# a sablontábla mondatának árnyékát építi. Az egyezést a `teszt_kartya.Arnyekmondat` veti össze a sablontáblával
+# (a kulcs a függvény docstringjében); ha a sablon mondata változik, a teszt bukik, a minták pozíciója nem csúszik
+# el némán.
+def _hely(n):
+    """Árnyék: `s4.p2.app.hiv`, `s4.p2.app.hiv.nincs`."""
+    return '%d hivatkozás' % n if n else 'hivatkozás nélkül'
+
+
+def _summary_cim(jelek, glosszak, hely_db):
+    """Árnyék: `s4.p2.app.summary.egy` (`.ures`), `s4.p2.app.summary.tobb` (`.tovabb`, `.ures`). `jelek`: a futam
+    nyers jelei; `glosszak`: a meglévő meghatározások szövege."""
+    if len(jelek) == 1:
+        jel = gerinc_be.pontos_jel(jelek[0])
+        return ('%s — %s (%s)' % (jel, glosszak[0], _hely(hely_db))) if glosszak else '%s (%s)' % (jel, _hely(hely_db))
+    return '%s – %s (%d szakasz)%s' % (gerinc_be.pontos_jel(jelek[0]), gerinc_be.pontos_jel(jelek[-1]), len(jelek),
+                                       (': ' + ' · '.join(glosszak[:4]) + (' …' if len(glosszak) > 4 else ''))
+                                       if glosszak else '')
+
+
+def _vazlat_keret(jel):
+    """Árnyék: `s4.p2.app.vazlat.eleje` (a kész alak)."""
+    return K.Keret('- `%s` — ' % jel, '- %s — ' % jel)
+
+
+def _kibontott_keret(jel, cim):
+    """Árnyék: `s4.p2.app.szakasz.cimke`, `s4.p2.app.szakasz` (a kész alak) és `s4.p2.app.idezet.eleje`."""
+    fej_regi = ('- **`%s` — %s**' % (jel, cim)) if cim else '- **`%s`**' % jel
+    fej_kesz = ('- **%s — %s**' % (jel, cim)) if cim else '- **%s**' % jel
+    return K.Keret(fej_regi + '\n\n  > ', fej_kesz + '\n\n  > ')
+
+
+def _fejcim_keretek(szam, arami, strong_kod, i, n, van_cimszo):
+    """Árnyék: `s4.p2.app.fejcim.eleje` / `.vege`, `.arami.eleje` / `.arami.vege`, `.ures`, `.ures.arami` (a kész
+    alak). Címszóval két keret (a címszó előtt és után), anélkül egy."""
+    utana = ' · arámi' if arami else ''
+    vege = '** *(a %s %d. BDB-szócikke a %d-ből)*' % (strong_kod, i, n)
+    if van_cimszo:
+        return [K.Keret('**BDB%d · ' % szam, '**BDB %d. szócikk · ' % szam), K.Keret(utana + vege)]
+    return [K.Keret('**BDB%d%s%s' % (szam, utana, vege), '**BDB %d. szócikk%s%s' % (szam, utana, vege))]
 
 
 def _futam_elem(k, strong, futam, szotar=SZOTAR_BDB):
     """Az összecsukott futam: a summary és a vázlatsorok; a bekezdés a régi keret-alakkal."""
-    gls = [x[3] for x in futam if x[3]]
-    if len(futam) == 1:
-        jel, _kk, _v, gl, n, _ge, _m = futam[0]
-        cim = ('%s — %s (%s)' % (gerinc_be.pontos_jel(jel), gl, _hely(n))) if gl else \
-            '%s (%s)' % (gerinc_be.pontos_jel(jel), _hely(n))
-    else:
-        cim = '%s – %s (%d szakasz)%s' % (gerinc_be.pontos_jel(futam[0][0]), gerinc_be.pontos_jel(futam[-1][0]),
-                                          len(futam), (': ' + ' · '.join(gls[:4]) + (' …' if len(gls) > 4 else ''))
-                                          if gls else '')
+    cim = _summary_cim([x[0] for x in futam], [x[3] for x in futam if x[3]], futam[0][4] if len(futam) == 1 else 0)
     darabok = [K.Keret('<details>\n<summary>%s</summary>\n\n' % cim)]
     vazlatok = []
     for n, (jel, kk, vazlat, _gl, _db, _ge, megjelenito) in enumerate(futam):
         if n:
             darabok.append(K.Keret('\n'))
-        darabok.append(K.Keret('- `%s` — ' % jel, '- %s — ' % jel))
+        darabok.append(_vazlat_keret(jel))
         darabok.append(vazlat)
         vazlatok.append((k.g.jel(szotar, strong.kod, kk), megjelenito))
     darabok.append(K.Keret('\n\n</details>'))
@@ -305,12 +389,9 @@ def _futam_elem(k, strong, futam, szotar=SZOTAR_BDB):
                                                             tuple(vazlatok)))
 
 
-def _hely(n):
-    return '%d hivatkozás' % n if n else 'hivatkozás nélkül'
-
-
-def _szakasz_lista(k, strong, szakaszok, p, elnyelt, hiv_db, szotar=SZOTAR_BDB):
-    """A szócikk szakaszai: a hordozó kibontva, a többi összecsukott futamokban."""
+def _szakasz_lista(k, strong, szakaszok, p, elnyelt, hiv_db, szotar=SZOTAR_BDB, elavult=frozenset()):
+    """A szócikk szakaszai: a hordozó kibontva, a többi összecsukott futamokban. `elavult`: az elavult fordítású
+    szakaszok kulcsai (T5): a szövegük felülvizsgálat-jellel áll."""
     thayer = szotar == SZOTAR_THAYER
     g = k.g
     elnyelo = {}
@@ -324,6 +405,7 @@ def _szakasz_lista(k, strong, szakaszok, p, elnyelt, hiv_db, szotar=SZOTAR_BDB):
             del futam[:]
 
     for kk, jel, hu, angol, kat in szakaszok:
+        fv = kat in elavult
         cimke = g.cimke_nyers(szotar, strong.kod, kk)
         if kk in elnyelo or kk in elnyelt:
             raise JeloltHiba('a(z) %s szócikkhatáron átnyúló (elnyelt) szakasza: a mondata még nincs portolva' % strong.kod)
@@ -339,7 +421,7 @@ def _szakasz_lista(k, strong, szakaszok, p, elnyelt, hiv_db, szotar=SZOTAR_BDB):
                 if not hu:
                     raise JeloltHiba('a(z) %s %s szakaszának nincs magyar szövege: a vázlatsor angol ága nincs portolva'
                                      % (strong.kod, jel))
-                vazlat = _jelolt(k, strong, resz, szotar)
+                vazlat = _jelolt(k, strong, resz, szotar, fv)
                 if cs:
                     vazlat.beszur(len(resz), K.csonk(cs))
                 K.kiemel(vazlat, [], k.motivum_versek, k.igehely)
@@ -347,7 +429,7 @@ def _szakasz_lista(k, strong, szakaszok, p, elnyelt, hiv_db, szotar=SZOTAR_BDB):
             gl = (szotari_glossza.thayer_glossza if thayer else szotari_glossza.olvasoi_glossza)(jel, cimke, hu)
             if not gl and not thayer:
                 gl = K.gondolatjel_utani_glossza(hu)
-            gl_ertek = _glossza_ertek(k, szotar, strong, kk, jel, cimke, gl) if gl else None
+            gl_ertek = _glossza_ertek(k, szotar, strong, kk, jel, cimke, gl, hu, fv) if gl else None
             futam.append((jel, kk, kiemelt, gl, hiv_db.get(kk, 0), gl_ertek, vazlat))
             continue
         lezar()
@@ -357,15 +439,13 @@ def _szakasz_lista(k, strong, szakaszok, p, elnyelt, hiv_db, szotar=SZOTAR_BDB):
         if not hu:
             raise JeloltHiba('a(z) %s %s kibontott szakaszának nincs magyar szövege: a „fordításra vár” ág nincs '
                              'portolva' % (strong.kod, jel))
-        idezet = _jelolt(k, strong, szotari_glossza.jelolo_levag(hu, jel), szotar)
+        idezet = _jelolt(k, strong, szotari_glossza.jelolo_levag(hu, jel), szotar, fv)
         K.kiemel(idezet, p.celok.get(kk, []), k.motivum_versek, k.igehely)
         cim, cim_ertek = cimke, (g.cimke(szotar, strong.kod, kk) if cimke else None)
         if not cimke and thayer:
             cim = szotari_glossza.thayer_glossza(jel, '', hu)
-            cim_ertek = _forras_ertek(k, szotar, strong, cim) if cim else None
-        fej_regi = ('- **`%s` — %s**' % (jel, cim)) if cim else '- **`%s`**' % jel
-        fej_kesz = ('- **%s — %s**' % (jel, cim)) if cim else '- **%s**' % jel
-        bek = K.Bekezdes([K.Keret(fej_regi + '\n\n  > ', fej_kesz + '\n\n  > '), idezet])
+            cim_ertek = _forras_ertek(k, szotar, strong, cim, hu, fv) if cim else None
+        bek = K.Bekezdes([_kibontott_keret(jel, cim), idezet])
         ki.append(AppElem('szakasz', bek, (g.jel(szotar, strong.kod, kk), cim_ertek, idezet)))
     lezar()
     return ki
@@ -385,15 +465,13 @@ def bdb_kartya(k, strong, kut_kulcsok, versek, cimszo):
     for i, sz in enumerate(szocikkek, 1):
         if tobb:
             szam, cimszo_nyers, arami = g.szocikk_fejcim(st, sz['bdb_id'])
-            utana = ' · arámi' if arami else ''
-            vege = '** *(a %s %d. BDB-szócikke a %d-ből)*' % (st, i, len(szocikkek))
+            keretek = _fejcim_keretek(szam, arami, st, i, len(szocikkek), bool(cimszo_nyers))
             if cimszo_nyers:
                 cimszo_j = Jelolt(cimszo_nyers, 'B17', 'cimszo', strong)
-                darabok = [K.Keret('**BDB%d · ' % szam, '**BDB %d. szócikk · ' % szam), cimszo_j,
-                           K.Keret(utana + vege)]
+                darabok = [keretek[0], cimszo_j, keretek[1]]
             else:
                 cimszo_j = None
-                darabok = [K.Keret('**BDB%d%s%s' % (szam, utana, vege), '**BDB %d. szócikk%s%s' % (szam, utana, vege))]
+                darabok = keretek
             app.append(AppElem('fejcim', K.Bekezdes(darabok), (szam, cimszo_j, arami, i, len(szocikkek))))
         fej = sz['fej']
         if fej and fej[2]:
@@ -440,13 +518,14 @@ def thayer_kartya(k, strong, kut_kulcsok, versek):
     sz = szocikkek[0]
     app = []
     fej = sz['fej']
+    elavult = sz.get('elavult', frozenset())
     if fej and fej[2]:
-        j = _jelolt(k, strong, fej[2], SZOTAR_THAYER)
+        j = _jelolt(k, strong, fej[2], SZOTAR_THAYER, fej[4] in elavult)
         K.kiemel(j, p.fej_celok.get('', []), k.motivum_versek, k.igehely)
         app.append(AppElem('fej', K.Bekezdes([K.Keret(K.FEJ_KERET), j]), j))
     elif fej:
         raise JeloltHiba('a(z) %s Thayer-feje magyar szöveg nélkül áll: az ág nincs portolva' % st)
-    app.extend(_szakasz_lista(k, strong, sz['szakaszok'], p, {}, hiv_db, SZOTAR_THAYER))
+    app.extend(_szakasz_lista(k, strong, sz['szakaszok'], p, {}, hiv_db, SZOTAR_THAYER, elavult))
     for elem in app:
         K.azonosito_kapu(elem.bek)
     for elem in app:
@@ -454,7 +533,8 @@ def thayer_kartya(k, strong, kut_kulcsok, versek):
         K.takaritas(elem.bek)
         K.belso_jelek_torlese(elem.bek)
     olvasoi, helyein, nem_idezett, tartomanyban, pont_nelkul = _olvasoi(k, strong, fa, p, hiv_db, SZOTAR_THAYER)
-    return Kartya(strong, SZOTAR_THAYER, olvasoi, helyein, nem_idezett, tartomanyban, pont_nelkul, tuple(app), ())
+    return Kartya(strong, SZOTAR_THAYER, olvasoi, helyein, nem_idezett, tartomanyban, pont_nelkul, tuple(app), (),
+                  tuple(sorted(elavult, key=lambda x: int(x[2:]))))
 
 
 def kiejtes_menet(kartyak, latott, kiejto):

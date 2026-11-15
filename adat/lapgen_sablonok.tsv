@@ -381,6 +381,8 @@ s4.p8.rokon.megj.romlott	A BDB szövegében az alak romlottan áll	-	4.8	_hatter
 s4.p8.rokon.megj.biz	BDB szerint bizonytalan vagy ritka	-	4.8	_hatter_sorok + cellakezdet	-
 s4.p8.rokon.megj.iras_biz	A BDB az alakot írás nélkül adja; a BDB szerint bizonytalan vagy ritka	-	4.8	_hatter_sorok + cellakezdet	-
 s4.p8.rokon.megj.biz_romlott	A BDB szerint bizonytalan vagy ritka; a BDB szövegében az alak romlottan áll	-	4.8	_hatter_sorok + cellakezdet	-
+s4.p8.rokon.megj.iras_romlott	A BDB az alakot írás nélkül adja; a BDB szövegében az alak romlottan áll	-	4.8	_hatter_sorok + cellakezdet (a régi szabály, a mintalapokon nem fut; az 5. ellenőrzés E6 tétele)	var
+s4.p8.rokon.megj.iras_biz_romlott	A BDB az alakot írás nélkül adja; a BDB szerint bizonytalan vagy ritka; a BDB szövegében az alak romlottan áll	-	4.8	_hatter_sorok + cellakezdet (a régi szabály, a mintalapokon nem fut; az 5. ellenőrzés E6 tétele)	var
 s4.p8.rokon.nincs_sor	Nincs rokon nyelvi alak a BDB szócikkében	-	4.8	blokk_visszhang_hatter	-
 s4.p8.rokon.nincs_sor.to	Nincs rokon nyelvi alak a BDB szócikkében; az igei tő, a {to} szócikke ad rokon alakokat, ezek a táblában nem szerepelnek	to:lathato	4.8	blokk_visszhang_hatter	-
 s4.p8.rokon.nincs_kinyeres	A rokon nyelvi adat kinyerése még nem történt meg	-	4.8	blokk_visszhang_hatter + cellakezdet	-
@@ -452,11 +454,16 @@ s4.p2.jel.abbr.jahve_cimszo	<abbr class="rovidites" title="יְהוָה (Jahve),
 s4.p2.jel.abbr.jahve	<abbr class="rovidites" title="יְהוָה (Jahve), az Úr">	-	4.2	bdb_rovidites.jelol (DT-F194c)	-
 s4.p2.jel.abbr.altalanos	<abbr class="rovidites" title="a BDB rövidítése; a feloldás a szócikk szövegéből derül ki">	-	4.2	bdb_rovidites.jelol	-
 s4.p2.jel.abbr.zar	</abbr>	-	4.2	bdb_rovidites.jelol	-
-s4.p2.jel.karoli	{uj} (héber számozás: {eredeti})	uj:lathato, eredeti:lathato	4.2	karoli_szamozas (F182, F32)	-
+s4.p2.jel.karoli.konyv	{konyv} {fej}:{vers} (héber számozás: {efej}:{evers})	konyv:lathato, fej:szam, vers:szam, efej:szam, evers:szam	4.2	karoli_szamozas (F182, F32)	-
+s4.p2.jel.karoli.fejezet	{fej}:{vers} (héber számozás: {efej}:{evers})	fej:szam, vers:szam, efej:szam, evers:szam	4.2	karoli_szamozas (F182, F32)	-
+s4.p2.jel.karoli.vers	{vers} (héber számozás: {efej}:{evers})	vers:szam, efej:szam, evers:szam	4.2	karoli_szamozas (F182, F32)	-
 s4.p2.jel.nincs_karoli	 *(a Károliban nincs ilyen vers: a szótár hivatkozása)*	-	4.2	karoli_szamozas (NINCS_KAROLI_JEL)	-
 s4.p2.jel.kiejtes	 ({kiejtes})	kiejtes:lathato	4.2	kiejtes_potol (a kiejtés-szabály)	-
 s4.p2.jel.csonk	 …	-	4.2	_elso_tagmondat (csonkit_jel)	-
 s4.p2.jel.csonk.tapadt	…	-	4.2	_elso_tagmondat	-
+s4.p2.jel.felulvizsgalat	 *(a fordítás felülvizsgálat alatt)*	-	4.2	uj (T5, GK-15: az elavult Thayer-fordítás az idézet végén; az 5. ellenőrzés E3 tétele)	var
+s4.p2.glossza.kihagyas	{elotte} {utana}	elotte:lathato, utana:lathato	4.2	olvasoi_glossza (a héber kifejezés utáni zárójeles magyarázat kihagyása; az 5. ellenőrzés E2 tétele)	-
+s4.p2.glossza.csonk	{glossza}…	glossza:lathato	4.2	olvasoi_glossza (a 70 karakteres csonkolás; az 5. ellenőrzés E2 tétele)	-
 s4.p2.szocikk.1	első szócikk	-	4.2	_szocikk_olvasoi_nev	-
 s4.p2.szocikk.2	második szócikk	-	4.2	_szocikk_olvasoi_nev	-
 s4.p2.szocikk.3	harmadik szócikk	-	4.2	_szocikk_olvasoi_nev	-

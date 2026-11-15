@@ -60,14 +60,33 @@ class AppFajta(enum.Enum):
 
 
 @dataclasses.dataclass(frozen=True)
+class Karoli:
+    """A Károli-számozás jelölése: a könyv (a forrás részlete, idézet) vagy None, a számok egészek (E2)."""
+    konyv: Optional[Lathato]
+    fej: Optional[int]
+    vers: int
+    eredeti_fej: int
+    eredeti_vers: int
+
+
+@dataclasses.dataclass(frozen=True)
 class KartyaJel:
     """A szegmentált idézet egy darabja: idézet (`ertek`) vagy jelölés a típusos adatával."""
     fajta: JelFajta
-    ertek: Optional[Lathato] = None          # az idézet-darab; a Károli-számozásnál a Károli-alak; a kiejtés
-    eredeti: Optional[Lathato] = None        # a Károli-számozás eredeti (héber) száma
+    ertek: Optional[Lathato] = None          # az idézet-darab; a kiejtés
+    karoli: Optional[Karoli] = None          # a Károli-számozás
     vers: Optional[Igehely] = None           # a kiemelés címe
     feloldas: Optional[FeloldasFajta] = None
     tapadt: bool = False                     # a csonkítás jele szóköz nélkül
+
+
+@dataclasses.dataclass(frozen=True)
+class TagoltGlossza:
+    """A meghatározás (az 5. ellenőrzés E2 tétele): `reszek` a kézi címke vagy a forrás szó szerinti részletei
+    (idézetek; a kihagyás helye a megjelenítőben sablon), `csonk`: a csonkolás jele a megjelenítőben sablonsor."""
+    reszek: Tuple[Lathato, ...]
+    csonk: bool = False
+    felulvizsgalat: bool = False             # elavult fordításból (T5): a megjelenítőben felülvizsgálat-jel
 
 
 @dataclasses.dataclass(frozen=True)
@@ -82,7 +101,7 @@ class OlvasoiSor:
     jel_szam: bool = False
     gondolatjel: bool = False
     tartalom: Tartalom = Tartalom.GLOSSZA
-    glossza: Optional[Lathato] = None
+    glossza: Optional[TagoltGlossza] = None
     hely_db: int = 0
 
 
@@ -93,7 +112,7 @@ class PontNev:
     szocikk_arami: bool = False
     jel: Optional[Lathato] = None
     gondolatjel: bool = False
-    glossza: Optional[Lathato] = None
+    glossza: Optional[TagoltGlossza] = None
     bizonytalan: Tuple[Bizonytalansag, ...] = ()
 
 
@@ -113,7 +132,7 @@ class Vazlat:
 @dataclasses.dataclass(frozen=True)
 class Futam:
     jelek: Tuple[Lathato, ...]
-    glosszak: Tuple[Lathato, ...]
+    glosszak: Tuple[TagoltGlossza, ...]
     hely_db: int
     vazlatok: Tuple[Vazlat, ...]
 
@@ -128,7 +147,7 @@ class AppElem:
     osszes: int = 0
     van_cimszo: bool = False
     jel: Optional[Lathato] = None
-    cim: Optional[Lathato] = None
+    cim: Optional[TagoltGlossza] = None
     futam: Optional[Futam] = None
 
 
@@ -173,6 +192,15 @@ def _l(ertek):
     raise TypeError(type(ertek).__name__)
 
 
+def _g(ertek):
+    """A meghatározás `TagoltGlossza`-ként: a kézi címke (`_l`) egy részként, a forrás részletei idézetként."""
+    if ertek is None:
+        return None
+    if isinstance(ertek, KL.Glossza):
+        return TagoltGlossza(tuple(idezet(r) for r in ertek.reszek), ertek.csonk, ertek.felulvizsgalat)
+    return TagoltGlossza((_l(ertek),))
+
+
 def darabok(b, jelolt):
     ki = []
     for d in jelolt.darabok(b):
@@ -183,24 +211,28 @@ def darabok(b, jelolt):
         elif d.fajta is JelFajta.ABBR_NYIT:
             ki.append(KartyaJel(d.fajta, feloldas=d.adat.fajta))
         elif d.fajta is JelFajta.KAROLI:
-            ki.append(KartyaJel(d.fajta, ertek=idezet(d.adat[0]), eredeti=idezet(d.adat[1])))
+            a = d.adat
+            ki.append(KartyaJel(d.fajta, karoli=Karoli(idezet(a.konyv) if a.konyv is not None else None, a.fej,
+                                                       a.vers, a.eredeti_fej, a.eredeti_vers)))
         elif d.fajta is JelFajta.KIEJTES:
             ki.append(KartyaJel(d.fajta, ertek=idezet(d.adat)))
         elif d.fajta is JelFajta.CSONK:
             ki.append(KartyaJel(d.fajta, tapadt=d.adat))
         else:
             ki.append(KartyaJel(d.fajta))
+    if jelolt.felulvizsgalat:
+        ki.append(KartyaJel(JelFajta.FELULVIZSGALAT))
     return tuple(ki)
 
 
 def _olvasoi(s):
     return OlvasoiSor(OlvasoiFajta(s.fajta), s.behuzas, s.sorszam, s.arami, s.felkover, _l(s.jel), _l(s.jel_nyers),
-                      s.jel_szam, s.gondolatjel, Tartalom(s.tartalom), _l(s.glossza), s.hely_db)
+                      s.jel_szam, s.gondolatjel, Tartalom(s.tartalom), _g(s.glossza), s.hely_db)
 
 
 def _pont(n):
     sorszam, arami = n.szocikk if n.szocikk is not None else (0, False)
-    return PontNev(PontFajta(n.fajta), sorszam, arami, _l(n.jel), n.gondolatjel, _l(n.glossza),
+    return PontNev(PontFajta(n.fajta), sorszam, arami, _l(n.jel), n.gondolatjel, _g(n.glossza),
                    tuple(Bizonytalansag(o) for o in n.bizonytalan))
 
 
@@ -213,11 +245,11 @@ def _app(b, e):
         return AppElem(fajta, darabok(b, e.adat))
     if fajta is AppFajta.SZAKASZ:
         jel, cim, j = e.adat
-        return AppElem(fajta, darabok(b, j), jel=_l(jel), cim=_l(cim))
+        return AppElem(fajta, darabok(b, j), jel=_l(jel), cim=_g(cim))
     oc = e.adat
     vazlatok = tuple(Vazlat(_l(jel), darabok(b, t), None) if isinstance(t, KL.Jelolt) else Vazlat(_l(jel), (), _l(t))
                      for jel, t in oc.vazlatok)
-    return AppElem(fajta, futam=Futam(tuple(_l(j) for j in oc.jelek), tuple(_l(g) for g in oc.glosszak), oc.hely_db,
+    return AppElem(fajta, futam=Futam(tuple(_l(j) for j in oc.jelek), tuple(_g(g) for g in oc.glosszak), oc.hely_db,
                                       vazlatok))
 
 

@@ -14,7 +14,7 @@ _SZOCIKK_KULCS = {1: 's4.p2.szocikk.1', 2: 's4.p2.szocikk.2', 3: 's4.p2.szocikk.
                   5: 's4.p2.szocikk.5', 6: 's4.p2.szocikk.6'}
 _ABBR = {FeloldasFajta.JAHVE: 's4.p2.jel.abbr.jahve', FeloldasFajta.ALTALANOS: 's4.p2.jel.abbr.altalanos'}
 _EGYSZERU = {JelFajta.MARK_ZAR: 's4.p2.jel.mark.zar', JelFajta.ABBR_ZAR: 's4.p2.jel.abbr.zar',
-             JelFajta.NINCS_KAROLI: 's4.p2.jel.nincs_karoli'}
+             JelFajta.NINCS_KAROLI: 's4.p2.jel.nincs_karoli', JelFajta.FELULVIZSGALAT: 's4.p2.jel.felulvizsgalat'}
 _TARTALOM = {Tartalom.KULON: 's4.p2.olv.sor.kulon', Tartalom.CSAK_ALAK_THAYER: 's4.p2.olv.sor.csak_alak.ures',
              Tartalom.CSAK_PARHUZAM: 's4.p2.olv.sor.csak_parhuzam', Tartalom.FORDITASRA_VAR: 's4.p2.olv.sor.forditasra_var'}
 
@@ -39,7 +39,7 @@ def darabok(ny, jelek, szo_fn):
         elif d.fajta is JelFajta.LRM:
             ki.append(I.IRANYJEL)
         elif d.fajta is JelFajta.KAROLI:
-            ki.append(ny.s('s4.p2.jel.karoli', uj=d.ertek, eredeti=d.eredeti))
+            ki.append(_karoli(ny, d.karoli))
         elif d.fajta is JelFajta.KIEJTES:
             ki.append(ny.s('s4.p2.jel.kiejtes', kiejtes=d.ertek))
         elif d.fajta is JelFajta.CSONK:
@@ -47,6 +47,29 @@ def darabok(ny, jelek, szo_fn):
         else:
             raise ValueError(d.fajta)
     return ki
+
+
+def _karoli(ny, k):
+    """A Károli-számozás jelölése: a hivatkozás Károli-alakja (könyvvel, fejezettel vagy csak a vers) és az eredeti szám."""
+    if k.konyv is not None:
+        return ny.s('s4.p2.jel.karoli.konyv', konyv=k.konyv, fej=k.fej, vers=k.vers, efej=k.eredeti_fej,
+                    evers=k.eredeti_vers)
+    if k.fej is not None:
+        return ny.s('s4.p2.jel.karoli.fejezet', fej=k.fej, vers=k.vers, efej=k.eredeti_fej, evers=k.eredeti_vers)
+    return ny.s('s4.p2.jel.karoli.vers', vers=k.vers, efej=k.eredeti_fej, evers=k.eredeti_vers)
+
+
+def _gl(ny, glossza):
+    """A meghatározás a lapra (E2): a forrás részletei között a kihagyás helye, a csonkolt meghatározás után a
+    csonkolás jele sablonsor."""
+    if glossza is None:
+        return None
+    ki = glossza.reszek[0]
+    for resz in glossza.reszek[1:]:
+        ki = ny.s('s4.p2.glossza.kihagyas', elotte=ki, utana=resz)
+    if glossza.csonk:
+        ki = ny.s('s4.p2.glossza.csonk', glossza=ki)
+    return ny.s('s4.felulvizsgalat', szoveg=ki) if glossza.felulvizsgalat else ki
 
 
 def _versek(ny, versek):
@@ -66,15 +89,15 @@ def _pont_nev(ny, nev):
     if nev.fajta is PontFajta.CSAK_ALAKKENT:
         pont = ny.s('s4.p2.pont.csak_alakkent')
     elif nev.fajta is PontFajta.FEJ_ELEJE:
-        pont = ny.s('s4.p2.pont.fej_eleje', glossza=nev.glossza)
+        pont = ny.s('s4.p2.pont.fej_eleje', glossza=_gl(ny, nev.glossza))
     elif nev.fajta is PontFajta.TAGOLATLAN:
-        pont = (ny.s('s4.p2.pont.tagolatlan', glossza=nev.glossza) if nev.glossza is not None
+        pont = (ny.s('s4.p2.pont.tagolatlan', glossza=_gl(ny, nev.glossza)) if nev.glossza is not None
                 else ny.s('s4.p2.pont.tagolatlan.ures'))
     elif nev.glossza is None:
         pont = ny.s('s4.p2.pont.jel', jel=nev.jel)
     else:
         pont = ny.s('s4.p2.pont.gondolatjel' if nev.gondolatjel else 's4.p2.pont.szokoz', jel=nev.jel,
-                    glossza=nev.glossza)
+                    glossza=_gl(ny, nev.glossza))
     if nev.szocikk_sorszam and nev.fajta in (PontFajta.SZAKASZ, PontFajta.TAGOLATLAN):
         pont = ny.s('s4.p2.pont.szocikkel', szocikk=_szocikk_nev(ny, nev.szocikk_sorszam, nev.szocikk_arami),
                     pont=pont)
@@ -91,11 +114,11 @@ def _olvasoi_sor(iro, ny, sor):
         return
     if sor.fajta is OlvasoiFajta.FEJ_ELEJE:
         iro.sor(behuz, ny.s('s4.p2.olv.fej_eleje.felkover' if sor.felkover else 's4.p2.olv.fej_eleje.sima',
-                            glossza=sor.glossza))
+                            glossza=_gl(ny, sor.glossza)))
         return
     if sor.fajta is OlvasoiFajta.TAGOLATLAN:
         kulcs = 's4.p2.olv.tagolatlan.felkover' if sor.felkover else 's4.p2.olv.tagolatlan.sima'
-        iro.sor(behuz, ny.s(kulcs, glossza=sor.glossza) if sor.glossza is not None else ny.s(ny.kulcs(kulcs, 'ures')))
+        iro.sor(behuz, ny.s(kulcs, glossza=_gl(ny, sor.glossza)) if sor.glossza is not None else ny.s(ny.kulcs(kulcs, 'ures')))
         return
     if sor.felkover:
         jel = ny.s('s4.p2.olv.jel.felkover', jel=sor.jel)
@@ -110,7 +133,7 @@ def _olvasoi_sor(iro, ny, sor):
         mondat = ny.s(_TARTALOM[sor.tartalom], jel=jel)
     else:
         mondat = ny.s('s4.p2.olv.sor.gondolatjel' if sor.gondolatjel else 's4.p2.olv.sor.szokoz', jel=jel,
-                      glossza=sor.glossza)
+                      glossza=_gl(ny, sor.glossza))
     iro.sor(behuz, mondat)
 
 
@@ -133,13 +156,13 @@ def _futam(iro, ny, oc, szo_fn):
     iro.sor(I.DETAILS_NYIT)
     if len(oc.jelek) == 1:
         hiv = ny.s('s4.p2.app.hiv', n=oc.hely_db) if oc.hely_db else ny.s('s4.p2.app.hiv.nincs')
-        cim = (ny.s('s4.p2.app.summary.egy', jel=oc.jelek[0], glossza=oc.glosszak[0], hiv=hiv)
+        cim = (ny.s('s4.p2.app.summary.egy', jel=oc.jelek[0], glossza=_gl(ny, oc.glosszak[0]), hiv=hiv)
                if oc.glosszak else ny.s('s4.p2.app.summary.egy.ures', jel=oc.jelek[0], hiv=hiv))
     elif not oc.glosszak:
         cim = ny.s('s4.p2.app.summary.tobb.ures', elso=oc.jelek[0], utolso=oc.jelek[1], n=len(oc.vazlatok))
     else:
         cim = ny.s('s4.p2.app.summary.tobb.tovabb' if len(oc.glosszak) > 4 else 's4.p2.app.summary.tobb',
-                   elso=oc.jelek[0], utolso=oc.jelek[1], n=len(oc.vazlatok), glosszak=oc.glosszak[:4])
+                   elso=oc.jelek[0], utolso=oc.jelek[1], n=len(oc.vazlatok), glosszak=tuple(_gl(ny, g) for g in oc.glosszak[:4]))
     iro.sor(I.SUMMARY_NYIT, cim, I.SUMMARY_ZAR)
     iro.ures()
     for v in oc.vazlatok:
@@ -165,7 +188,7 @@ def _app_elem(iro, ny, elem, kartya, szo_fn):
     elif elem.fajta is AppFajta.FEJ:
         iro.sor(ny.s('s4.p2.app.fej.eleje'), *darabok(ny, elem.darabok, szo_fn))
     elif elem.fajta is AppFajta.SZAKASZ:
-        iro.sor(ny.s('s4.p2.app.szakasz.cimke', jel=elem.jel, cimke=elem.cim) if elem.cim is not None
+        iro.sor(ny.s('s4.p2.app.szakasz.cimke', jel=elem.jel, cimke=_gl(ny, elem.cim)) if elem.cim is not None
                 else ny.s('s4.p2.app.szakasz', jel=elem.jel))
         iro.ures()
         iro.sor(ny.s('s4.p2.app.idezet.eleje'), *darabok(ny, elem.darabok, szo_fn))

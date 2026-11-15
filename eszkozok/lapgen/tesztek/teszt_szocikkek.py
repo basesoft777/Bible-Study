@@ -366,6 +366,29 @@ class NyelviHatterHeber(unittest.TestCase):
         self.assertIn((sz.nyelvi_hatter_sz.Megjegyzes.ROMLOTT,), [s.megjegyzesek for s in sorok])
 
 
+class RokonMegjegyzes(unittest.TestCase):
+    def test_minden_megjegyzes_egyutteshez_van_sablonmondat(self):
+        """E6 (az 5. ellenőrzés): a rokon nyelvi sor mind a nyolc megjegyzés-együttese sablonmondatot kap (a régi
+        `_hatter_sorok` bármely együttest kiírt, betűrendben, „; ”-vel); a két, a mintalapokon nem futó együttes
+        szövege a régi szabály kimenete."""
+        import itertools
+        from lapgen.szamitas.nyelvi_hatter import Megjegyzes
+        b = bemenet.Bemenet(kozos.GYOKER)
+        ny = bemenet.nyelv(b)
+        for n in range(4):
+            for egyuttes in itertools.combinations(sorted(Megjegyzes, key=lambda m: m.value), n):
+                with self.subTest(egyuttes):
+                    self.assertIn(egyuttes, md_szocikkek._MEGJEGYZES)
+                    self.assertTrue(szoveg(ny.s(md_szocikkek._MEGJEGYZES[egyuttes])))
+        regi = {Megjegyzes.IRAS_NELKUL: 'a BDB az alakot írás nélkül adja',
+                Megjegyzes.BIZONYTALAN: 'a BDB szerint bizonytalan vagy ritka',
+                Megjegyzes.ROMLOTT: 'a BDB szövegében az alak romlottan áll'}
+        for egyuttes in ((Megjegyzes.IRAS_NELKUL, Megjegyzes.ROMLOTT),
+                         (Megjegyzes.IRAS_NELKUL, Megjegyzes.BIZONYTALAN, Megjegyzes.ROMLOTT)):
+            vart = '; '.join(sorted(regi[m] for m in egyuttes))
+            self.assertEqual(szoveg(ny.s(md_szocikkek._MEGJEGYZES[egyuttes])), vart[0].upper() + vart[1:])
+
+
 class ReszlegesRegresszio(unittest.TestCase):
     REGI = '## 4. Szótári háttér\n\nbevezető\n\n### A\n\n#### 4.1. x\n\nrégi egy\n\n#### 4.2. y\n\nrégi kettő\n\n' \
            '<!-- GENERÁLT-VÉGE: z -->\n\n### Rés\n\nkézi\n'

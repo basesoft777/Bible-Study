@@ -278,6 +278,10 @@ _MEGJEGYZES = {
     (Megjegyzes.BIZONYTALAN,): 's4.p8.rokon.megj.biz',
     (Megjegyzes.IRAS_NELKUL, Megjegyzes.BIZONYTALAN): 's4.p8.rokon.megj.iras_biz',
     (Megjegyzes.BIZONYTALAN, Megjegyzes.ROMLOTT): 's4.p8.rokon.megj.biz_romlott',
+    # az 5. ellenőrzés E6 tétele: a régi `_hatter_sorok` a nyelv sorainak megjegyzéseit betűrendben fűzte össze, így
+    # egy nyelv írás nélküli és romlott sora együtt is állhat (a két mintalapon nem fut)
+    (Megjegyzes.IRAS_NELKUL, Megjegyzes.ROMLOTT): 's4.p8.rokon.megj.iras_romlott',
+    (Megjegyzes.IRAS_NELKUL, Megjegyzes.BIZONYTALAN, Megjegyzes.ROMLOTT): 's4.p8.rokon.megj.iras_biz_romlott',
 }
 _HIANY = {
     Hiany.NINCS_KINYERES: 's4.p8.rokon.nincs_kinyeres',

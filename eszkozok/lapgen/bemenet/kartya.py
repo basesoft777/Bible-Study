@@ -20,7 +20,7 @@ import bdb_rovidites
 import bdb_vj_szabaly
 
 from lapgen.bemenet import szavak as szavak_be
-from lapgen.bemenet.jelolt import Feloldas, FeloldasFajta, JelFajta, Jeloles, Jelolt, JeloltHiba
+from lapgen.bemenet.jelolt import Feloldas, FeloldasFajta, JelFajta, Jeloles, Jelolt, JeloltHiba, KaroliSzam
 
 # --- hivatkozások a szövegben (a régi `hivatkozasok_a_szovegben`, a kiemelés mércéje) --------------------------------
 _KONYV_RE = re.compile(r'((?:[1-3])?[A-ZÁÉÍÓÖŐÚÜŰ][A-Za-záéíóöőúüűÁÉÍÓÖŐÚÜŰ]*)\s+$')
@@ -78,7 +78,7 @@ def szotari_hivatkozasok(szoveg):
 
 
 # --- a vázlatsor: az első tagmondat (a régi `_elso_tagmondat`) ------------------------------------------------------
-CSONK_SZOKOZZEL, CSONK_TAPADT = ' …', '…'
+CSONK_SZOKOZZEL, CSONK_TAPADT = ' …', '…'       # árnyék: s4.p2.jel.csonk, s4.p2.jel.csonk.tapadt, s4.p2.glossza.csonk
 
 
 def elso_tagmondat(szoveg, hatar=90, csonkit_jel=False):
@@ -263,8 +263,9 @@ def mark_nyit(vers):
 MARK_ZAR = Jeloles(JelFajta.MARK_ZAR, None, '</mark>')
 ABBR_ZAR = Jeloles(JelFajta.ABBR_ZAR, None, '</abbr>')
 LRM = Jeloles(JelFajta.LRM, None, bdb_rovidites.LRM)
-NINCS_KAROLI_BELSO = ' *(a Károliban nincs ilyen vers: a szótár hivatkozása)*'
-KAROLI_BELSO = ' (héber számozás: %s)'
+# árnyékmondatok (az 5. ellenőrzés E1 tétele; összevetés a sablontáblával: `teszt_kartya.Arnyekmondat`):
+NINCS_KAROLI_BELSO = ' *(a Károliban nincs ilyen vers: a szótár hivatkozása)*'     # s4.p2.jel.nincs_karoli
+KAROLI_BELSO = ' (héber számozás: %s)'                                             # s4.p2.jel.karoli.*
 
 
 def csonk(alak):
@@ -272,6 +273,7 @@ def csonk(alak):
 
 
 def kiejtes_jel(kiejtes):
+    """Árnyék: `s4.p2.jel.kiejtes` (a belső alak)."""
     return Jeloles(JelFajta.KIEJTES, kiejtes, ' (%s)' % kiejtes.ertek)
 
 
@@ -356,22 +358,33 @@ def karoli_szamozas(bek, terkep, karoli, b, strong):
         cel = (terkep or {}).get((konyv, fej, vers))
         if not cel:
             if versek and konyv in konyvek and '%s %s:%s' % (konyv, fej, vers) not in versek:
-                muveletek.append((m.end(), m.end(), None, None))
+                muveletek.append((m.end(), m.end(), None, None, None))
             continue
         eredeti = '%s:%s' % (fej, vers)
         if m.group('k'):
             uj = '%s %s:%s' % (konyv, cel[0], cel[1])
+            adat = (konyv, _egesz(cel[0]), _egesz(cel[1]))
         elif m.group('c2') or cel[0] != fej:
             uj = '%s:%s' % cel
+            adat = (None, _egesz(cel[0]), _egesz(cel[1]))
         else:
             uj = cel[1]
-        muveletek.append((m.start(), m.end(), uj, eredeti))
-    for kezd, veg, uj, eredeti in sorted(muveletek, key=lambda x: x[0], reverse=True):
+            adat = (None, None, _egesz(cel[1]))
+        muveletek.append((m.start(), m.end(), uj, eredeti, adat + (_egesz(fej), _egesz(vers))))
+    for kezd, veg, uj, eredeti, adat in sorted(muveletek, key=lambda x: x[0], reverse=True):
         if uj is None:
             bek.beszur(kezd, Jeloles(JelFajta.NINCS_KAROLI, None, NINCS_KAROLI_BELSO))
         else:
-            adat = (b.forrasszoveg('B19', 'karoli_alak', uj, strong), b.forrasszoveg('B18', 'szoveg_hu', eredeti, strong))
-            bek.cserel_jelolesre(kezd, veg, Jeloles(JelFajta.KAROLI, adat, uj + KAROLI_BELSO % eredeti))
+            konyv = b.forrasszoveg('B18', 'szoveg_hu', adat[0], strong) if adat[0] else None
+            bek.cserel_jelolesre(kezd, veg, Jeloles(JelFajta.KAROLI, KaroliSzam(konyv, *adat[1:]),
+                                                    uj + KAROLI_BELSO % eredeti))
+
+
+def _egesz(szam):
+    """A hivatkozás fejezet- vagy versszáma egészként (a jelölés adata szám, nem összerakott szöveg)."""
+    if not re.fullmatch(r'\d+', str(szam)):
+        raise JeloltHiba('a Károli-számozás nem egész számot kapott: %r' % (szam,))
+    return int(szam)
 
 
 _BDB_AZON_RX = re.compile(r'(?<![\w.])BDB(\d+)\b(?:\s+szócikk)?')
@@ -381,6 +394,19 @@ def azonosito_kapu(bek):
     """A régi lap a szövegben álló BDB-azonosítót („BDB9520”) olvasható alakra írta; az idézetben ilyen nem állhat."""
     if any(_BDB_AZON_RX.search(j.idezet_szoveg()) for j in bek.jeloltek()):
         raise JeloltHiba('a szótári szövegben BDB-azonosító áll; az olvasható alak sablonmondatot kér')
+
+
+# --- a kódba írt forrásjavítások (DT-F218q, N-F218i) ------------------------------------------------------------------
+# A felhasználó döntése (DT-F218q): a régi lánc forrásjavításai az átírás végéig kódban maradnak, és az S9 után
+# javítótáblába kerülnek. Ez a jegyzék sorolja fel őket; a `teszt_kartya.KodbeliForrasjavitas` szerkezeti teszt
+# bukik, ha a bemeneti rétegben (kartya.py, kartya_lap.py) jegyzéken kívüli függvény ír az idézet betűibe.
+KODBELI_FORRASJAVITASOK = {
+    'forrasjavitas': 'a B17 javítótábla sorai (átírás, sorrend, betű) és a rafe-maqqéf javítása (kódban)',
+    'rovidites': 'az egybetűs rövidítés „׳א” forrásalakja „א׳”-re (DT445)',
+    'takaritas': 'írásjel-takarítás: kódjel, üres zárójel, kettőzött elválasztó, szóköz az írásjel előtt',
+    'belso_jelek_torlese': 'a BDB-fej nyers előtagja és a címszó belső számlálója (az irányjellel)',
+    'digitalizalas_jelei': 'a rafe, a dupla vessző és a felső index jele',
+}
 
 
 # --- a kész lap lépései (a régi lánc 06., 07. és 12. lépése) ---------------------------------------------------------
@@ -407,7 +433,7 @@ def takaritas(bek):
             bek.sub(rx, uj, vedett=_OLV_VEDETT, soronkent=True)
 
 
-FEJ_KERET = '**A szócikk feje (nyelvi háttér).** '
+FEJ_KERET = '**A szócikk feje (nyelvi háttér).** '         # árnyék: s4.p2.app.fej.eleje
 _FEJ_NYERS_RX = re.compile(r'(\*\*A szócikk feje \(nyelvi háttér\)\.\*\* )[HG]\d{1,4}[a-z]?\. [^֐-׿יִ-ﭏ\[\n]*?'
                            r'(?=(?:[IV]+\. )?\[?[֐-׿יִ-ﭏ])')
 _SZAMLALO_RX = re.compile(r'(?:(?<=[֐-׿יִ-ﭏ\]‎])‎?|(?<=Qal)|(?<=[`\']al)|(?<=[`\']el)|(?<=[`\']il)|'

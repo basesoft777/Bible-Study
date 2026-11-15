@@ -26,6 +26,23 @@ class Feloldas:
         self.fajta, self.cimszo = fajta, cimszo
 
 
+class KaroliSzam:
+    """A Károli-számozás jelölésének adata (az 5. ellenőrzés E2 tétele): a hivatkozás Károli-alakja és az eredeti
+    (héber) szám; a könyv a forrás szó szerinti részlete (`Forrasszoveg`) vagy None, a többi egész szám. A hivatkozás
+    alakja: könyvvel (`konyv` és `fej`), fejezettel (`fej`), vagy csak a vers."""
+    __slots__ = ('konyv', 'fej', 'vers', 'eredeti_fej', 'eredeti_vers')
+
+    def __init__(self, konyv, fej, vers, eredeti_fej, eredeti_vers):
+        self.konyv, self.fej, self.vers = konyv, fej, vers
+        self.eredeti_fej, self.eredeti_vers = eredeti_fej, eredeti_vers
+
+    def __eq__(self, masik):
+        return isinstance(masik, KaroliSzam) and all(getattr(self, a) == getattr(masik, a) for a in self.__slots__)
+
+    def __repr__(self):
+        return 'KaroliSzam(%r, %r, %r, %r, %r)' % tuple(getattr(self, a) for a in self.__slots__)
+
+
 class Jeloles:
     """Egy jelölés-darab: fajta, típusos adat és a belső (mintaillesztési) alak."""
     __slots__ = ('fajta', 'adat', 'belso')
@@ -45,9 +62,10 @@ class Jelolt:
     """Szegmentált idézet: [(None, szöveg)] idézet-darab vagy [(Jeloles, belső alak)]. A `forras` a B-azonosító, a
     `mezo` és a `hely` az idézet helye: a darabok ebből kapják a burkolójukat (`darabok`)."""
 
-    def __init__(self, szoveg, forras, mezo, hely):
+    def __init__(self, szoveg, forras, mezo, hely, felulvizsgalat=False):
         self._d = [[None, szoveg]] if szoveg else []
         self.forras, self.mezo, self.hely = forras, mezo, hely
+        self.felulvizsgalat = felulvizsgalat      # elavult fordítás (T5): a lapmodellben a végén jelölés
 
     # --- olvasás ---------------------------------------------------------------------------------------------
     def szoveg(self):
