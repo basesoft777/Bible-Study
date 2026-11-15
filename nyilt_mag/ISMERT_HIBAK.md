@@ -44,6 +44,6 @@ A külön réteg (`cc_by_sa_reteg/`) az UBS SDBH/SDGNT szemantikai doménjeit ta
 
 ## 3. A Károli-szó gépi párosítása
 
-Az `elofordulasok.tsv` `azonositas_modja` oszlopának `szó-szintű-gépi` értéke modell-kimenet: a Károli-szó és a Strong-szám párosítását gép végezte, csak magas bizonyosságú pár igazolhat sort. A mód azt mondja meg, hogyan azonosítottuk a szót, nem azt, hogy a párosítást ember ellenőrizte.
+Az `elofordulasok.tsv` `azonositas_modja` oszlopának `szó-szintű-gépi` értéke modell-kimenet: a Károli-szó és a Strong-szám párosítását gép végezte. A mód azt mondja meg, hogyan azonosítottuk a szót, nem azt, hogy a párosítást ember ellenőrizte.
 
 A javítások a következő kiadásba kerülnek; a kiadás a `KIADAS.txt` azonosítójával idézhető.

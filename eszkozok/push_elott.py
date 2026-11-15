@@ -15,8 +15,18 @@ Használat (a repó gyökeréből, az ág commitjai után, push előtt):
     python eszkozok/push_elott.py --pr-cim "[ELLENŐRZŐ] ..."   # az E16-hoz (alapból a nyitott PR címe, ha a `gh` látja)
     python eszkozok/push_elott.py --lepes E18          # csak a nevében a szöveget tartalmazó lépések (javítás utáni gyors újrafutás;
                                                        # a push előtti kapu a teljes futás)
+    python eszkozok/push_elott.py --reszleges          # F223: csak az érintett lépések (l. lent); ismeretlen fájlnál a teljes kapu
     python eszkozok/push_elott.py --ci-egyezes         # csak annak ellenőrzése, hogy a lépéslista egyezik a workflow-val
 Kilépési kód: 0 = 0 HIBA (push mehet), 1 = van HIBA, 2 = futási hiba.
+
+Részleges mód (F223, `--reszleges`; csak helyi, a CI mindig a teljes futás): kis változásra ne fusson újra a teljes kapu.
+Minden lépéshez (LEPES_AZON) a `RESZLEGES_LEKEPEZES` mondja meg, mely változott útvonalak teszik érintetté (egy hely).
+Egy lépés akkor fut, ha (1) nincs róla zöld jegyzés (az ág első futása: minden lépés fut), vagy (2) az utolsó zöld futása óta
+(`git diff <akkori fej> HEAD`; ez a main-behozás utáni változást is tartalmazza) olyan fájl változott, amely a lépés
+mintájára illeszkedik. Az E2-E39 (futtat.py) minden változott fájlra fut: maga is diff-hatókörű. Biztonsági szabály: ha egy
+változott fájl egyik mintára sem illeszkedik, vagy a fájl törlődött/átneveződött/típust váltott, vagy a jegyzés/diff nem
+olvasható, a teljes kapu fut. A jegyzés a `git rev-parse --git-dir` alatti `push_elott_zold.json`; csak tiszta fán, teljes
+(nem `--lepes`) futás után frissül, a bukott lépésé törlődik.
 
 A lépéslista (LEPESEK) az egyetlen forrás a helyi futáshoz; a `--ci-egyezes` (a CI-ben is fut) megbukik, ha a
 `.github/workflows/ellenorzes.yml` bukó lépései eltérnek tőle: egy Python-hívás hiányzik valamelyik oldalról, vagy egy
@@ -91,6 +101,140 @@ EGYEZES_KIVETEL = [
 ]
 # A workflow-ban kötelező, a CI-egyezést őrző lépés.
 EGYEZES_PARANCS = 'eszkozok/push_elott.py --ci-egyezes'
+
+
+# ---------------------------------------------------------------------------
+# F223: részleges mód -- lépés -> érintő útvonalminták (egy hely)
+# ---------------------------------------------------------------------------
+# A részleges módban kihagyható lépések azonosítói. Az E2-E39 (futtat.py) és a CI-egyezés nincs köztük: mindig futnak.
+L_E1 = 'E1'                       # study-szűrés + ellenoriz.py
+L_GYOKEROK = 'E38-E39'            # követelménylista- és állítás-adat kapu
+L_TESZT_SZABALY = 'teszt-szabaly'  # test_szabalyok.py, test_tanulmany.py
+L_TESZT_KAPU = 'teszt-kapuk'      # teszt_ellenoriz_3x, gyokerok_kapuk, hatastortenet, proza_allitas, push_elott, brief_lezaras
+L_TESZT_KINYER = 'teszt-kinyer'   # tanu_kinyer.py / szakirodalom_kinyer.py ellenoriz
+L_E18 = 'E18'                     # feladatok.py ellenoriz + tesztjei
+LEPES_AZON = (L_E1, L_GYOKEROK, L_TESZT_SZABALY, L_TESZT_KAPU, L_TESZT_KINYER, L_E18)
+
+_MIND = frozenset(LEPES_AZON)
+_ADAT_KONYVTAR = (r'(?:adat|konkordancia|lexikon|motivumok|motivumlog|tematikus_lezart|genezis|ujszovetseg|melyelemzesek|'
+                  r'nyilt_mag|visszhang|generalt|generalt_proba|forditas|kozlemeny|bovitmenyek|f21p|f22|f172|fp2|nyilt_karoli_strong|'
+                  r'nyilt_karoli_modern)')
+# (név, minta, az érintett lépések). Egy fájl érintett lépései az illeszkedő sorok uniói; az üres halmaz: csak az E2-E39
+# fut (a fájl ismert, és egyetlen kihagyható lépés sem függ tőle). Egyik sorra sem illeszkedő fájl: teljes kapu.
+RESZLEGES_LEKEPEZES = [
+    # a kód és a CI minden lépést érint (a tesztek és a kapuk is itt élnek)
+    ('kód és CI', r'^(?:eszkozok|\.github)/', _MIND),
+    # a sablonokat a generátorok és a kapuk olvassák
+    ('sablonok', r'^sablonok/', _MIND),
+    # adat és generált/forrás réteg: az adatkapuk és a kinyerő-ellenőrzések; a szabály-tesztek fixture-rel futnak
+    ('adat- és forrásrétegek', r'^' + _ADAT_KONYVTAR + r'/', frozenset({L_E1, L_GYOKEROK, L_TESZT_KINYER, L_TESZT_KAPU})),
+    # döntés- és nyitott-tétel-nyilvántartás: az ellenoriz.py hivatkozás-szabályai olvassák
+    ('nyilvántartások', r'^(?:DONTESEK|NYITOTT_FELADATOK)\.md$', frozenset({L_E1})),
+    # brieffejlécek, a feladatkövető generált blokkja és térképe (E18: a PR a generált fájlt nem módosíthatja)
+    ('briefek', r'^(?:F\d+_[\w]+_BRIEF|FELADATOK)\.md$|^(?:FELADATTERKEP\.html|feladatterkep\.json)$',
+     frozenset({L_E18})),
+    # a feladatkövető a kontextus-olvasási fájlok méretét/szintjét is méri (feladatok.py KONTEXTUS_OLVAS, SZINT_KONNYITETT_FAJL)
+    ('szabályfájlok', r'^(?:CLAUDE|CSAPDAK|MUNKAMENET|BRIEF_SABLON)\.md$', frozenset({L_E18})),
+    # csak olvasott/emberi dokumentumok: egyetlen kihagyható lépés sem függ tőlük (csak .md; a naplok/ alatti .py/.tsv/.txt
+    # fájlt kód tölti be, az ismeretlen: teljes kapu)
+    ('naplók, PR-onkénti tételek, parancsok', r'^(?:naplok|dontesek|nyitott|beerkezo|archivum|\.claude/commands|\.claude/agents)/.*\.md$',
+     frozenset()),
+    ('gyökér-dokumentumok', r'^(?:MUNKATERV|README)\.md$', frozenset()),
+]
+ZOLD_FAJL = 'push_elott_zold.json'
+ZOLD_VERZIO = 1   # a RESZLEGES_LEKEPEZES vagy a lépés-azonosítók módosításakor nő: a régi jegyzés érvénytelen
+
+
+def fajl_lepesei(fajl, lekepezes=None):
+    """Egy változott fájl érintett lépései (frozenset), vagy None, ha ismeretlen (egyik mintára sem illeszkedik)."""
+    lekepezes = RESZLEGES_LEKEPEZES if lekepezes is None else lekepezes
+    fajl = fajl.replace('\\', '/')
+    talalt = False
+    erintett = set()
+    for _nev, minta, lepesek in lekepezes:
+        if re.match(minta, fajl):
+            talalt = True
+            erintett |= set(lepesek)
+    return frozenset(erintett) if talalt else None
+
+
+def erintett_lepesek(valtozasok, lekepezes=None):
+    """A változások `[(státusz, útvonal), ...]` alapján (git diff --name-status; az átnevezés/másolás státusza R/C, a törlésé D,
+    a típusváltásé T) az érintett lépések halmaza és az indoklás. A halmaz None: teljes kapu kell (ismeretlen fájl vagy nem
+    csak hozzáadás/módosítás)."""
+    erintett = set()
+    for st, fajl in valtozasok:
+        if st not in ('A', 'M'):
+            return None, 'a(z) %s fájl állapota %s (törlés/átnevezés/típusváltás): teljes kapu' % (fajl, st)
+        ln = fajl_lepesei(fajl, lekepezes)
+        if ln is None:
+            return None, 'ismeretlen útvonal (nincs rá minta): %s -- teljes kapu' % fajl
+        erintett |= ln
+    return erintett, ''
+
+
+def zold_utvonal():
+    rc, gitdir, _ = git('rev-parse', '--git-dir')
+    if rc != 0 or not gitdir:
+        return None
+    return os.path.join(gitdir if os.path.isabs(gitdir) else os.path.join(ROOT, gitdir), ZOLD_FAJL)
+
+
+def zold_beolvas(ut):
+    """A lépésenkénti zöld jegyzés: {lépés: fej-sha}; üres, ha nincs, olvashatatlan vagy más verziójú."""
+    import json
+    try:
+        with open(ut, encoding='utf-8') as f:
+            adat = json.load(f)
+    except (OSError, ValueError, TypeError):
+        return {}
+    if not isinstance(adat, dict) or adat.get('verzio') != ZOLD_VERZIO or not isinstance(adat.get('lepesek'), dict):
+        return {}
+    return {k: v for k, v in adat['lepesek'].items() if k in LEPES_AZON and isinstance(v, str)}
+
+
+def zold_ment(ut, jegyzes):
+    import json
+    with open(ut, 'w', encoding='utf-8') as f:
+        json.dump({'verzio': ZOLD_VERZIO, 'lepesek': jegyzes}, f, ensure_ascii=False, indent=1)
+
+
+def valtozasok_git(honnan, fej):
+    """`git diff --name-status` a két commit közt: [(státusz, útvonal)] vagy None, ha nem olvasható (pl. az akkori fej
+    már nincs meg). Az átnevezésnél mindkét útvonal sorként, R státusszal áll (teljes kaput kér)."""
+    rc, ki, _ = git('diff', '--name-status', '--no-renames', honnan, fej)
+    if rc != 0:
+        return None
+    sorok = []
+    for s in ki.splitlines():
+        r = s.split('\t', 1)
+        if len(r) == 2:
+            sorok.append((r[0][:1], r[1]))
+    return sorok
+
+
+def lepesek_futtatasa(zold, fej, valtozasok_fn=valtozasok_git, lekepezes=None):
+    """Mely lépések futnak. `zold`: {lépés: fej-sha}. Visszaad: (futó lépések halmaza, {lépés: indok}). A lépés fut, ha nincs zöld jegyzése, ha a jegyzett fej
+    és a mostani közti változás nem értékelhető (teljes kapu), vagy ha a változás érinti."""
+    futo = {}
+    cache = {}
+    for l in LEPES_AZON:
+        sha = zold.get(l)
+        if not sha:
+            futo[l] = 'nincs zöld jegyzés (első futás ezen az ágon)'
+            continue
+        if sha == fej:
+            continue
+        if sha not in cache:
+            vk = valtozasok_fn(sha, fej)
+            cache[sha] = (None, 'a jegyzett fej (%s) és a mostani közti diff nem olvasható: teljes kapu' % sha[:8]) \
+                if vk is None else erintett_lepesek(vk, lekepezes)
+        erintett, ok = cache[sha]
+        if erintett is None:
+            futo[l] = ok
+        elif l in erintett:
+            futo[l] = 'a(z) %s óta érintő fájl változott' % sha[:8]
+    return set(futo), futo
 
 
 def git(*args):
@@ -240,6 +384,8 @@ def main():
     ap.add_argument('--alap', default=None, help='a diff alapja (alap: git merge-base origin/main HEAD)')
     ap.add_argument('--pr-cim', default=None, help='a PR címe (E16); alap: a nyitott PR címe, ha a gh elérhető')
     ap.add_argument('--lepes', default=None, help='csak a nevében ezt a szöveget tartalmazó lépések futnak (a teljes futás a kapu)')
+    ap.add_argument('--reszleges', action='store_true',
+                    help='F223: csak az érintett lépések futnak (l. a modul leírását); ismeretlen fájlnál a teljes kapu')
     ap.add_argument('--ci-egyezes', action='store_true', help='csak a lépéslista és a workflow egyezését ellenőrzi')
     args = ap.parse_args()
 
@@ -289,13 +435,38 @@ def main():
     global TMP_KONYVTAR
     tmp = TMP_KONYVTAR = ideiglenes_konyvtar()
 
+    # F223: mely kihagyható lépések futnak (teljes mód: mind)
+    zold_ut = zold_utvonal()
+    zold = zold_beolvas(zold_ut) if zold_ut else {}
+    futo = set(LEPES_AZON)
+    if args.reszleges:
+        futo, indokok = lepesek_futtatasa(zold, fej)
+        if futo:
+            print('push_elott: részleges mód, futó lépések: %s' % ', '.join(l for l in LEPES_AZON if l in futo))
+            for l in LEPES_AZON:
+                if l in futo:
+                    print('  %s: %s' % (l, indokok[l]))
+        kihagyott = [l for l in LEPES_AZON if l not in futo]
+        if kihagyott:
+            print('push_elott: kihagyva (nem érinti a változás): %s' % ', '.join(kihagyott))
+    lepes_eredmeny = {}   # lépés-azonosító -> True, ha minden alépése futott és rendben volt
+
+    def kihagyhato(azon, nev, argv, **kw):
+        """A kihagyható lépés egy alépése: ha az azonosító nem futó, kihagyva; különben fut, és az eredmény a jegyzéshez gyűlik."""
+        if azon not in futo:
+            return 0, ''
+        rc, ki = fut.lepes(nev, argv, **kw)
+        if not (args.lepes and args.lepes not in nev):
+            lepes_eredmeny[azon] = lepes_eredmeny.get(azon, True) and rc == 0
+        return rc, ki
+
     # 0. a lépéslista egyezik a workflow-val
     for h in ci_egyezes():
         print('HIBA     CI-egyezés: %s' % h)
         fut.hibas.append(('CI-egyezés', 1))
         fut.hiba_sorok.append(h)
 
-    # 1. E2-E39
+    # 1. E2-E39 (mindig fut: diff-hatókörű szabályok; az E35/E28 maguk is csak az érintő fájlokra)
     uzenet_fajl = os.path.join(tmp, 'commit_uzenetek.txt')
     with open(uzenet_fajl, 'w', encoding='utf-8') as f:
         f.write(uzenetek + '\n')
@@ -310,30 +481,43 @@ def main():
         print('FIGYELEM: részleges futás (--lepes %s); a push előtti kapu a teljes futás.' % args.lepes)
 
     # 2. E1
-    rc, study = fut.lepes('E1 szűrés (study_fajlok_szurese.py)',
-                          [PY, 'eszkozok/ellenorzes/study_fajlok_szurese.py'], stdin_szoveg='\n'.join(fajlok) + '\n')
+    rc, study = kihagyhato(L_E1, 'E1 szűrés (study_fajlok_szurese.py)',
+                           [PY, 'eszkozok/ellenorzes/study_fajlok_szurese.py'], stdin_szoveg='\n'.join(fajlok) + '\n')
     study_args = []
     if rc == 0:
-        for s in study.splitlines():
-            if s.strip():
-                study_args += ['--study', s.strip()]
-    fut.lepes('E1 (ellenoriz.py)', [PY, 'eszkozok/ellenoriz.py'] + study_args + ['--md', os.path.join(tmp, 'e1_jelentes.md')])
+        for sor in study.splitlines():
+            if sor.strip():
+                study_args += ['--study', sor.strip()]
+    kihagyhato(L_E1, 'E1 (ellenoriz.py)', [PY, 'eszkozok/ellenoriz.py'] + study_args + ['--md', os.path.join(tmp, 'e1_jelentes.md')])
 
     # 3. E38-E39 gyökérok-kapuk
-    fut.lepes('E39 követelménylista-kapu', [PY, 'eszkozok/ellenorzes/kovetelmeny_kapu.py', 'HAMART-001', '--szigoru'])
-    fut.lepes('E38 állítás-adat kapu', [PY, 'eszkozok/ellenorzes/allitas_adat.py', '--minden', '--szigoru'])
+    kihagyhato(L_GYOKEROK, 'E39 követelménylista-kapu', [PY, 'eszkozok/ellenorzes/kovetelmeny_kapu.py', 'HAMART-001', '--szigoru'])
+    kihagyhato(L_GYOKEROK, 'E38 állítás-adat kapu', [PY, 'eszkozok/ellenorzes/allitas_adat.py', '--minden', '--szigoru'])
 
     # 4. szabály-tesztek
     for t in STATIKUS_TESZTEK[:2]:
-        fut.lepes('teszt: ' + t, [PY, t])
-    fut.lepes('teszt: eszkozok/visszhang/tanu_kinyer.py ellenoriz', [PY, 'eszkozok/visszhang/tanu_kinyer.py', 'ellenoriz'])
-    fut.lepes('teszt: eszkozok/szakirodalom_kinyer.py ellenoriz', [PY, 'eszkozok/szakirodalom_kinyer.py', 'ellenoriz'])
+        kihagyhato(L_TESZT_SZABALY, 'teszt: ' + t, [PY, t])
+    kihagyhato(L_TESZT_KINYER, 'teszt: eszkozok/visszhang/tanu_kinyer.py ellenoriz', [PY, 'eszkozok/visszhang/tanu_kinyer.py', 'ellenoriz'])
+    kihagyhato(L_TESZT_KINYER, 'teszt: eszkozok/szakirodalom_kinyer.py ellenoriz', [PY, 'eszkozok/szakirodalom_kinyer.py', 'ellenoriz'])
     for t in STATIKUS_TESZTEK[2:]:
-        fut.lepes('teszt: ' + t, [PY, t])
+        kihagyhato(L_TESZT_KAPU, 'teszt: ' + t, [PY, t])
 
     # 5. feladatkövetés (E18) és tesztjei
-    fut.lepes('E18 feladatok.py ellenoriz', [PY, 'eszkozok/feladatok.py', 'ellenoriz', '--pr-alap', alap])
-    fut.lepes('feladatok.py tesztek', [PY, 'eszkozok/teszt_feladatok.py'])
+    kihagyhato(L_E18, 'E18 feladatok.py ellenoriz', [PY, 'eszkozok/feladatok.py', 'ellenoriz', '--pr-alap', alap])
+    kihagyhato(L_E18, 'feladatok.py tesztek', [PY, 'eszkozok/teszt_feladatok.py'])
+
+    # F223: a zöld jegyzés frissítése (csak tiszta fán, nem `--lepes` futás után): a rendben lefutott lépés a mostani fejen
+    # zöld, a bukott lépés jegyzése törlődik, a kihagyotté marad
+    if zold_ut and not args.lepes and not nem_commitolt:
+        for l, ok in lepes_eredmeny.items():
+            if ok:
+                zold[l] = fej
+            else:
+                zold.pop(l, None)
+        try:
+            zold_ment(zold_ut, zold)
+        except OSError as exc:
+            print('FIGYELEM: a zöld jegyzés nem menthető (%s): %s' % (zold_ut, exc))
 
     shutil.rmtree(tmp, ignore_errors=True)
     print()
@@ -343,6 +527,9 @@ def main():
         return 1
     if args.lepes:
         print('0 HIBA a futtatott lépésekben (részleges futás: ez nem a push előtti kapu).')
+        return 0
+    if args.reszleges and len(futo) < len(LEPES_AZON):
+        print('0 HIBA: a push mehet (részleges mód: a kihagyott lépések zöldek az utolsó futásuk óta, a változás nem érinti őket).')
         return 0
     print('0 HIBA: a push mehet.')
     return 0

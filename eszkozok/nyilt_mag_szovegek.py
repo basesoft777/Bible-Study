@@ -327,8 +327,8 @@ STEPBible rövid angol glosszája.
 
 **A Károli-szó.** {karoli_hol} ott áll a Károli-fordítás megfelelő szava is. A Károli-szó nem bizonyíték: azt
 mutatja meg, mit lát a helyből a magyar olvasó. A párosítást (`azonositas_modja`) {karoli_tartalom} esetben a
-szerkesztő végezte a Károli-szöveg olvasásával, {karoli_gepi} esetben gépi szópárosítás adta (sort csak magas
-bizonyosságú pár igazolhat), {karoli_kovet} esetben következtetés. A bizonyosság (`megbizhatosag`)
+szerkesztő végezte a Károli-szöveg olvasásával, {karoli_gepi} esetben gépi szópárosítás adta, {karoli_kovet} esetben
+következtetés. A bizonyosság (`megbizhatosag`)
 {karoli_magas} esetben magas, {karoli_kozepes} esetben közepes. A vers többi szavának párosítása nem része ennek az
 adatkészletnek; az a kapcsolódó Károli – Strong adatkészletekben áll.
 
@@ -499,8 +499,8 @@ The `strong` column is the Strong's number of the anchor word, `jelentes_en` an 
 
 **The Károli word.** {karoli_hol} also give the corresponding word of the Károli translation. The Károli word is not
 evidence: it shows what the Hungarian reader sees of the passage. The alignment (`azonositas_modja`) was made by the
-editor reading the Károli text in {karoli_tartalom} cases, by machine word alignment in {karoli_gepi} cases (only a
-high-confidence pair may justify a row) and by inference in {karoli_kovet} cases. The confidence (`megbizhatosag`)
+editor reading the Károli text in {karoli_tartalom} cases, by machine word alignment in {karoli_gepi} cases and by
+inference in {karoli_kovet} cases. The confidence (`megbizhatosag`)
 is high in {karoli_magas} cases and medium in {karoli_kozepes}. The alignment of the other words of the verse is not
 part of this dataset; it is in the related Károli – Strong datasets.
 
