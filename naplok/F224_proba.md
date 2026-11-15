@@ -161,3 +161,100 @@ Keret (`get_usage`): előtte (15:00 körül) 5 órás 37%, heti 20%, Fable 6%. A
 - **(B) a következő mérés előtt:** (1) N-F224c (a kinyerés két hézaga); (2) **kisebb szeletek** (20–25 K-tétel ügynökönként a 59 helyett), mert a figyelem a tételszámmal romlik; (3) **két független futás uniója** a „nem igazolt” jelzésre (a hamis riasztást a lektor szűri).
 - **(C) modell:** a szerepfájl `model` mezője cserélhető; egy Opus-futás ugyanezen a halmazon megmutatná, hogy a hiány a modellé vagy a szerepé. Ez a felhasználó döntése (a 2. pont kiosztása jóváhagyott, Sonnettel).
 - **A küszöb** változatlan javaslatként; a 80% a jelenlegi felállással nem elérhető.
+
+## 7. C-futás: az állítás-ellenőr Opusszal (a felhasználó döntése, 2026-11-15)
+
+*A döntés szó szerint (az orkesztrátor továbbításában): „'a' nem kell úgysem lesz új cikkírás a generátorig / nézzük meg erősebb modellel”. A futás: 3 ügynök (`general-purpose`, `model: opus`, a tényleges modell `claude-opus-5-5`, a modell-ellenőrzésük: egyezik), a szerepfájl a `3e0c4385` állapotában (változatlan), ugyanazok a bemenetek és szeletek, mint a 2. körben, javítókör nélkül, egy futás. Az összevetés pontos párja a **Sonnet 2. köre** (azonos szerepfájl-szöveg); az 1. kör a javítókör előtti szerepfájllal futott, ezért vele csak tájékoztató az összevetés. A vak szabály egy ponton szigorúbb a 2. körnél: a Sonnet-futások kimeneteit (`proba/*.md`, `munka2_*`) is tiltotta. Nyers kimenetek: `naplok/F224_proba/*_opus.md`; összevetés: `naplok/F224_proba/opus_osszevet.py`; minta: `naplok/F224_proba/opus_minta.py`.*
+
+| Halmaz | Küszöb | Sonnet 1. kör | **Sonnet 2. kör (pár)** | **Opus** | |
+|---|---|---|---|---|---|
+| HAMART 18 | ≥ 80% | 10/18 = 56% | 11/18 = 61% (részlegessel 13/18) | **15/18 = 83%** (részlegessel 17/18) | ✓ |
+| ISTENTISZT 10 | ≥ 80% | 2/10 = 20% | 3/10 = 30% (részlegessel 4/10) | **3/10 = 30%** (részlegessel 4/10) | ✗ |
+| hamis riasztás, vak minta (12) | ≤ 30% | 5/10 = 50% | 6/12 = 50% | **5/11 = 45%** (a K57-tel együtt 6/12 = 50%) | ✗ |
+| „nem eldönthető” | ≤ 15% | 4,5% | 5,7% | **10/176 = 5,7%** | ✓ |
+
+**Az ítéletek eloszlása:** az Opus több tételt jelöl. Nem „igazolt”: HAMART 52/118 (Sonnet 2. kör 39, 1. kör 39), ISTENTISZT 21/58 (18, 19); „hamis”: HAMART 22 (6), ISTENTISZT 9 (4).
+
+### 7.1 HAMART — tételenként (Sonnet 2. kör → Opus)
+
+| Lektor | K | S2 | Opus | Eredmény | Megjegyzés |
+|---|---|---|---|---|---|
+| 8 | K5 | igazolt | hamis | ✓ új | az egyes számú „a görög szó” három szóval szemben; a φθείρω-család három tagja kimaradt a keresésből |
+| 9 | K104 | hamis | hamis | ✓ | |
+| 10 | K104, K106 | hamis, vitatott | hamis, hamis | ✓ | |
+| 11 | K106 | vitatott | hamis | részben | az indok a 10. tétel hibája (a szópár nincs a Genezisben); a hallás alanyát (Isten) pontosnak mondja |
+| 12 | K105 | igazolt | hamis | ✓ új | a Jer 51:46-ban erec |
+| 13 | K98 | igazolt | vitatott | ✓ (S1-ben is ✓) | Tírus királya (28:12), a „fejedelem” a 28:2-é |
+| 14 | K98, K102 | igazolt, vitatott | vitatott, vitatott | részben | a Sof 1:9 hiányzó kapcsolat-sorát nevezi; azt nem, hogy a föld nem szerepel |
+| 21 | K14 | vitatott | igazolt | ✗ visszaesés | *Csoport* — a 6:20-at a 6:9-22 helyének veszi; nem nézi, hogy a lap helye-e |
+| 22 | K28 | vitatott | hamis | ✓ | |
+| 28 | K31 | vitatott | hamis | ✓ | |
+| 29 | K33, K45 | vitatott | vitatott | ✓ | |
+| 31 | K39 | vitatott | vitatott | ✓ | |
+| 33 | K41 | igazolt | vitatott | ✓ új | a belső utalás célpontja mást tárgyal |
+| 34 | K44 | vitatott | hamis | ✓ | |
+| 35 | K47 | vitatott | vitatott | ✓ | |
+| 36 | K50 (+K116) | igazolt (D: ✓) | vitatott, vitatott | ✓ új (F2) | a Sod és a Kivonat ellentmondása; K116: a lap másutt a második olvasat felé dönt |
+| 38 | K55 | hamis | hamis | ✓ | |
+| 42 | K71 | vitatott | hamis | ✓ | |
+
+**Új az Opusnál:** 8, 12, 33, 36 (és a 13 vissza). **Visszaesés:** 21. A lektori listán túl az F1-gépi 43. tételt (K72, „de más kulcsszóval”) is megfogta.
+
+### 7.2 ISTENTISZT — tételenként (Sonnet 2. kör → Opus)
+
+| Lektor | K | S2 | Opus | Eredmény | Megjegyzés |
+|---|---|---|---|---|---|
+| 1 | K50 / funkció-mező | vitatott | igazolt | ✗ visszaesés | a K-mondat helyes; a hibás funkció-mezőt nem nézte meg (*Másik hely*), a Remez-mondat kinyerési hézag (N-F224c) |
+| 2 | — | — | — | ✗ | kinyerési hézag (N-F224c); az Opus a „lista-hézag” megjegyzést sem tette |
+| 5 | K27 | igazolt | hamis | ✓ új | „parafrazált, nincs szó szerinti egyezés” ↔ „ugyanaz a szókapcsolat” |
+| 8 | K52 | igazolt | igazolt | ✗ | *Ki?* — a LXX (παρέστη αὐτῷ) alapján az álla alanyát az Úrnak veszi, a vers ezt nem dönti el |
+| 10 | K25 | igazolt | igazolt | ✗ | *Mit?* — az 1Móz 4:26 Targumában a celá szava megvan, a mondat jelentése fordított; ezt ötödiknek számolja |
+| 12 | K13, K15 | igazolt | igazolt | ✗ | *Másik hely* — a BDB a kizárt Jer 10:25-öt is ide sorolja |
+| 13 | K22 | hamis | hamis | ✓ | 13/2/1, nem 12/3/1 |
+| 15 | K4 | vitatott | vitatott | ✓ | |
+| 16 | K5 | vitatott | hamis | részben | a régi átnézés hibáját nevezi (a 34:5 elbeszélés), a pátriárkákat nem |
+| 17 | K7 | igazolt | igazolt | ✗ | *Ki?* — az Ézs 43:1, 45:3-ban az Úr hív embert; nem vette észre |
+
+**A 10-es halmazon kívül** az Opus az ISTENTISZT-lektor bíráló-típusú tételei közül négyet F2-ítéletként fogott meg: 3. (K58, „Jézus Krisztus” egy versből), 4. (K55, 13 magas sor), 6. (K56, „nem dönti el”, a lap másutt dönt), 9. (K57); a Sonnet 2. köre ezekből kettőt (K55, K56). A régi átnézés 9 HIBÁ-jából az Opus nyolcat jelöl (a K23 igazolt). Mellékes adatlelete az `adat/kapcsolatok.tsv` 1Móz 13:4 „Beérseba” hibája — ez a 2. kiadás lektorának generált-adat megjegyzése.
+
+### 7.3 Ingadozás és „igazolt eltéréssel”
+
+- **Fordulat az „igazolt / nem igazolt” határon** (azonos bemenet): Sonnet 1. ↔ 2. kör 22/118 + 7/58; Sonnet 2. kör ↔ Opus 29/118 + 5/58. Az Opus egy futás, a saját ingadozása nem mért; az eltérés a Sonnettől nagyobb, mint a Sonnet két köre között, és túlnyomórészt egyirányú (HAMART: 16 tétel az Opusnál új jelzés, 8 tétel csak a Sonnet 2. körében jelzett).
+- **„Igazolt eltéréssel” (M-IGAZOLT-ESZREVETT):** az Opus-kimenetben ilyen eset nincs. A gépi keresés („azonban”, „viszont”, „de a …”, „pontatlan”, „eltér” egy „igazolt” sor indokában) egy sort ad (K68), ott az ellentét a szövegváltozatra vonatkozik, nem a mondatra. A Sonnet 2. körében ugyanez a keresés 5 sort ad (HAM K2, K67, K75; IST K3, K15). Az Opus meg nem fogott tételeinél az eltérést nem vette észre (IST 8, 10, 12, 17; HAM 21), de egyiknél sem írta le úgy, hogy közben „igazolt”-at adott.
+
+### 7.4 A többlet-jelzések — vak minta
+
+A sokaság: az Opus nem „igazolt” ítéletei, amelyeket a lektori listák (HAMART 1–46; ISTENTISZT 2. kiadás 1–22 és a régi átnézés 9 HIBÁ-ja) nem fednek: 25 tétel (a fedésnél a lektori tételnek ugyanarra a mondatra kell vonatkoznia; a K72-t a 43., a K115-öt a 36. tétel, az IST K39 és K41 mondatát a 22. tétel fedi). Minta: 12, `random.Random(224).sample` a rögzített sokaságból (`opus_minta.py`).
+
+| Tétel | Opus | Minősítés | Forrás |
+|---|---|---|---|
+| HAM K2 (6:11-13 „föld”, a Kivonat adámá-láncában) | vitatott | valódi | TAHOT 6:11-13: H0776; a lektor 28. tételének mércéje szerint (a váltás jelöletlen) |
+| HAM K30 („minden test” a következmény alatt) | hamis | valódi | ua. mint a 2.4 és az 5. szakaszban |
+| HAM K90 (6:17 „a föld elvesztése”) | hamis | valódi | ua. |
+| HAM K97 (Ez 12:19: a kiürülő föld adámá) | hamis | valódi | TAHOT Ez 12:19: a kiürülő föld `אַרְצָהּ` (H0776), az adámá a megszólítás („Izráel földje”); a „melóá” a ragos alak (מְלֹאָהּ), ez a részállítás nem hiba |
+| HAM K99 (Zsolt 74:20 „a megtelt föld”) | vitatott | valódi | TAHOT: a `מָלְאוּ` alanya a föld rejtekhelyei (H4285) |
+| IST K37 (395 vers, három szóra mondva) | vitatott | valódi | ua. mint az 5. szakaszban |
+| HAM K9 (Ézs 24, Hós 4: a föld erec) | vitatott | hamis riasztás | a mondat a négy helyet maga vezeti be „a lánc szavai nélkül” (ham_forras.md:21); az ügynök maga írja, hogy ez „enyhíti” |
+| HAM K21 (sáchat: „a két jelentés egymásba fordul”) | vitatott | hamis riasztás | a bekezdés a sáchat két jelentéséről szól, adámát nem állít; az erec-kifogás a mondaton kívülről jön |
+| HAM K46 (Drash: „a földet többé nem átkozza meg”, 8:21) | vitatott | hamis riasztás | a vers hű parafrázisa; az árart nem állítja |
+| HAM K48 („A láncban az átok kimondott szó, nem személytelen erő”) | vitatott | hamis riasztás | saját vonatkoztatás: „a láncban” = a lánc átok-szavai; az Ézs 24:6 (álá) tematikus hely |
+| HAM K94 (Zsolt 14: „mint ott, letekint”) | hamis | hamis riasztás | ua. mint a 2.4 szakaszban (a tárgy eltérése az állítást nem cáfolja) |
+| HAM K57 (1 074 vers) | nem eldönthető | nem hiba, szabályos „nem eldönthető” | a szerepfájl „a forrás állapota” szabálya szerint helyes ítélet; a lektorhoz kerül, de nem téves jelzés |
+
+### 7.5 Költség
+
+| Lépés | Modell | Token | Eszközhívás | Idő |
+|---|---|---|---|---|
+| F2 HAMART 1. szelet | opus | 303 426 | 38 | 1 068 s |
+| F2 HAMART 2. szelet | opus | 289 342 | 42 | 940 s |
+| F2 ISTENTISZT | opus | 258 054 | 29 | 677 s |
+| **összesen** | | **850 822** | 109 | |
+
+Ugyanannyi token, mint a Sonnet 2. körében (856 459), Opus-áron. Keret: előtte 5 órás 0% (a 18:50Z-i nullázás után), heti 26%; utána 5 órás 13%, heti 28%.
+
+### 7.6 Mit mutat (a következő lépésről a felhasználó dönt)
+
+1. **A HAMART-hiány nagyrészt a modellé volt:** ugyanazzal a szerepfájllal az Opus 61% helyett 83%-ot ér el, és megfogja azt a négy tételt, amelyet a Sonnet két körben sem (8, 12, 33, 36 F2-ként). Az „észrevett, de igazolt” hibamód eltűnt.
+2. **Az ISTENTISZT-hiány nem a modellé:** 30% mindkét modellel. A tíz tételből kettő kinyerési hézag (N-F224c: 1., 2.), egy a bizonyíték mérlegelésén múlik (8.: a LXX alanya), három pedig a „másik hely” és a „Ki?” kérdésé, ahol a hibát egy, a mondaton kívüli adat hordozza (12.: a BDB a kizárt helyet is ide sorolja; 17.: az Ézs 43:1-ben az Úr hív; 10.: a Targum mondatának iránya). Az N-F224c-vel a felső korlát 8/10, a küszöb pedig hibátlan munkát kívánna a maradék nyolcon.
+3. **A hamis riasztás nem csökkent** (45–50%): az Opus többet jelöl (HAMART 52 nem igazolt a 39 helyett), a valódi és a téves jelzés aránya hasonló. A többlet a lektor terhe, nem a kiadás kockázata.
+4. **Ingadozás:** egy Opus-futás; a saját stabilitása nem mért. A Sonnet két köre között 29 fordulat volt; az Opus és a Sonnet 2. köre között 34.
