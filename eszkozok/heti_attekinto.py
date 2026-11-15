@@ -221,7 +221,7 @@ def teendo_szoveg(b):
 
     Teendő: a `kovetkezo` „Te:” előtaggal kezdődik, vagy az állapot `dontesre_var`, vagy a
     `kovetkezo` ⛔ jelet tartalmaz és a feladat már megkezdődött. A „Halasztva:” kezdetű, még nem esedékes tétel nem teendő."""
-    if b.allapot == 'lezarva' or b.fej.get('tipus') not in ('feladat', 'naplozas'):
+    if b.allapot == 'lezarva' or b.fej.get('tipus') not in ('feladat', 'naplozas', 'felmeres'):
         return None
     kov = F._kov_szoveg(b)
     if kov.lower().startswith('halasztva'):
@@ -254,7 +254,7 @@ def csoportosit(briefek, prok, main_all, ma, nap, lezarasok, sav_fv):
     {fájlnév: dátum} git-adat (a lezárás napja), `prok` a PR-ek listája."""
     tol = ma - timedelta(days=nap)
     szamozott = [b for b in briefek if b.szam is not None and b.fej
-                 and b.fej.get('tipus') in ('feladat', 'naplozas')]
+                 and b.fej.get('tipus') in ('feladat', 'naplozas', 'felmeres')]
     by_szam = {b.szam: b for b in szamozott}
     fugg = F.fuggesek(briefek, main_all)[0]
 

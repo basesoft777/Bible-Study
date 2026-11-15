@@ -58,7 +58,7 @@ def brief_szoveg(szam=None, cim='Teszt', tipus='feladat', fazis='1', modell='son
         sorok.append('fazis: %s' % fazis)
     sorok += ['modell: %s' % modell, 'allapot: %s' % allapot,
               'ad: mit ad', 'kovetkezo: következő lépés']
-    if sav is not None and tipus in ('feladat', 'naplozas'):
+    if sav is not None and tipus in ('feladat', 'naplozas', 'felmeres'):
         sorok.append('sav: %s' % sav)
     if fugg is not None:
         sorok.append('fugg: [%s]' % ', '.join(str(x) for x in fugg))
@@ -636,6 +636,16 @@ class SavTest(Alap):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav=None, olvas=['a'], ir=['a']))
         self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, tipus='naplozas', sav=None, olvas=['b'], ir=['b']))
         self.assertEqual(len([h for h in self.hibak_szoveg() if 'sav' in h]), 2)
+
+    def test_felmeres_tipus_savval_rendben_savnelkul_hiba(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, tipus='felmeres', sav='SERVER', olvas=['a'], ir=['naplok/F01_felmeres.md']))
+        self.assertEqual(self.hibak_szoveg(), [])
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, tipus='felmeres', sav=None, olvas=['b'], ir=['naplok/F02_felmeres.md']))
+        self.assertEqual(len([h for h in self.hibak_szoveg() if 'sav' in h]), 1)
+
+    def test_felmeres_kodot_nem_ir(self):
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, tipus='felmeres', sav='SYSTEMS', olvas=['a'], ir=['eszkozok/uj.py']))
+        self.assertTrue(any('kódot nem ír' in h for h in self.hibak_szoveg()))
 
     def test_atmeneti_kivetel(self):
         self.g.brief('F217_A_BRIEF.md', brief_szoveg(217, sav=None, olvas=['a'], ir=['a']))

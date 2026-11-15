@@ -54,7 +54,8 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-TIPUSOK = ('feladat', 'naplozas', 'dontes', 'archiv')
+# `felmeres` (F222, 2026-11-15): kutatás, ötletelés, felmérés; a kimenete döntés vagy brief-javaslat, kód nem; a `sav` kötelező
+TIPUSOK = ('feladat', 'naplozas', 'felmeres', 'dontes', 'archiv')
 FAZISOK = ('1', '2', 'folyamat')
 ALLAPOTOK = ('nem_indult', 'brief_kell', 'fut', 'dontesre_var', 'megallt', 'lezarva')
 MODELLEK = ('sonnet', 'opus', 'haiku', 'fable')
@@ -79,6 +80,7 @@ LEZAR_AZON = re.compile(r'^N(?:\d+|-F\d+[a-z]*)$')
 KOTELEZO = {
     'feladat': ('feladat', 'cim', 'tipus', 'fazis', 'modell', 'allapot', 'ad', 'kovetkezo'),
     'naplozas': ('feladat', 'cim', 'tipus', 'modell', 'allapot', 'ad', 'kovetkezo'),
+    'felmeres': ('feladat', 'cim', 'tipus', 'modell', 'allapot', 'ad', 'kovetkezo'),
     'dontes': ('cim', 'tipus', 'modell', 'allapot'),
     'archiv': ('cim', 'tipus', 'modell', 'allapot'),
 }
@@ -440,9 +442,13 @@ def ellenoriz(briefek, gyoker=REPO):
             hibak.append((b.fajl, 'munka: adat | ertelmezo | folyamat'))
         if 'sav' in fej and fej['sav'] not in SAVOK:
             hibak.append((b.fajl, 'sav: %s (kapott: %r)' % (' | '.join(SAVOK), fej['sav'])))
-        elif ('sav' not in fej and tipus in ('feladat', 'naplozas')
+        elif ('sav' not in fej and tipus in ('feladat', 'naplozas', 'felmeres')
                 and fej.get('feladat') not in SAV_ATMENET_KIVETEL):
             hibak.append((b.fajl, 'hiányzó kötelező mező: sav (%s)' % ' | '.join(SAVOK)))
+        if tipus == 'felmeres':
+            for ut in fej.get('ir', []):
+                if ut.startswith(('eszkozok/', '.github/', '.claude/')) or ut.endswith('.py'):
+                    hibak.append((b.fajl, 'felmeres típusú brief kódot nem ír (ir: %s); a kimenete döntés vagy brief-javaslat' % ut))
         for azon in fej.get('lezar', []):
             if not LEZAR_AZON.match(azon):
                 hibak.append((b.fajl, 'lezar: N-tétel azonosítók (`N12` vagy `N-F219a`), kapott: %r' % azon))
@@ -1128,7 +1134,7 @@ def blokkok(briefek, gyoker=REPO, ma=None, main_all=None):
 
     keszek = []
     for b in szamozottak:
-        if b.fej.get('tipus') not in ('feladat', 'naplozas'):
+        if b.fej.get('tipus') not in ('feladat', 'naplozas', 'felmeres'):
             continue
         if statusz(b, main_all) != 'kesz':
             continue
@@ -1482,7 +1488,7 @@ def extra_hozzaad(briefek, utak):
             fej, torzs, hibak = fejlec_elemez(f.read())
         if not fej:
             raise ValueError('az --extra fájlnak fejléc kell: %s (%s)' % (ut, '; '.join(hibak)))
-        if 'feladat' not in fej and fej.get('tipus', 'feladat') in ('feladat', 'naplozas'):
+        if 'feladat' not in fej and fej.get('tipus', 'feladat') in ('feladat', 'naplozas', 'felmeres'):
             fej['feladat'] = kovetkezo_szam(briefek)
         if 'feladat' in fej:  # csonk kitoltese: ugyanazon a szamon felvaltja a meglevot
             briefek = [x for x in briefek if x.szam != fej['feladat']]
