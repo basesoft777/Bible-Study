@@ -130,8 +130,9 @@ RESZLEGES_LEKEPEZES = [
     ('adat- és forrásrétegek', r'^' + _ADAT_KONYVTAR + r'/', frozenset({L_E1, L_GYOKEROK, L_TESZT_KINYER, L_TESZT_KAPU})),
     # döntés- és nyitott-tétel-nyilvántartás: az ellenoriz.py hivatkozás-szabályai olvassák
     ('nyilvántartások', r'^(?:DONTESEK|NYITOTT_FELADATOK)\.md$', frozenset({L_E1})),
-    # brieffejlécek és a feladatkövető generált blokkja
-    ('briefek', r'^(?:F\d+_[\w]+_BRIEF|FELADATOK)\.md$', frozenset({L_E18})),
+    # brieffejlécek, a feladatkövető generált blokkja és térképe (E18: a PR a generált fájlt nem módosíthatja)
+    ('briefek', r'^(?:F\d+_[\w]+_BRIEF|FELADATOK)\.md$|^(?:FELADATTERKEP\.html|feladatterkep\.json)$',
+     frozenset({L_E18})),
     # a feladatkövető a kontextus-olvasási fájlok méretét/szintjét is méri (feladatok.py KONTEXTUS_OLVAS, SZINT_KONNYITETT_FAJL)
     ('szabályfájlok', r'^(?:CLAUDE|CSAPDAK|MUNKAMENET|BRIEF_SABLON)\.md$', frozenset({L_E18})),
     # csak olvasott/emberi dokumentumok: egyetlen kihagyható lépés sem függ tőlük (csak .md; a naplok/ alatti .py/.tsv/.txt

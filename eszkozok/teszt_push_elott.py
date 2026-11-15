@@ -108,6 +108,8 @@ def main():
     mind = frozenset(P.LEPES_AZON)
     ellenoriz(P.erintett_lepesek([('M', 'F223_RESZLEGES_KAPU_BRIEF.md')])[0] == {P.L_E18},
               'brief-fejléc-változás: csak az E18 érintett (a csomag-, adat- és tesztlépések kimaradnak)')
+    ellenoriz(P.erintett_lepesek([('M', 'FELADATOK.md'), ('M', 'FELADATTERKEP.html'), ('M', 'feladatterkep.json')])[0] == {P.L_E18},
+              'a feladatkövető generált fájljai: csak az E18 érintett')
     ellenoriz(P.erintett_lepesek([('M', 'naplok/F223_jelentes.md'), ('A', 'dontesek/uj/x.md'), ('M', '.claude/commands/kovetkezo.md')])[0] == set(),
               'csak .md napló/döntés/parancs: egyik kihagyható lépés sem érintett')
     ellenoriz(P.erintett_lepesek([('M', 'eszkozok/x.py')])[0] == mind, 'kódváltozás: minden lépés érintett')
