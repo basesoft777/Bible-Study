@@ -275,3 +275,13 @@ Valós eset: a HAMART-001 a #709-ben a minta-kapu javításaival ilyen sort kap.
 
 **Indítás:** a #709 mergelése után, az orkesztrátor jelzésére. Addig a brief `megallt`.
 
+**O2 módosítva (2026-11-15, orkesztrátor): a B-sorok gazdája a #729 lapgen_bemenetek.tsv-je, egy helyen.** A #729 (F218a) létrehozza az `adat/lapgen_bemenetek.tsv`-t, a lapgenerátor bemeneti jegyzékét. Ezért:
+- az `adat/generalt_nezetek.tsv`-ben csak G-sorok állnak (nincs `tipus`, `hozzaferesi_pont` és `kockazat` oszlop);
+- a `bemenetek` mező a `lapgen_bemenetek.tsv` B-azonosítóira hivatkozik (`B*` = minden aktív B-sor);
+- a kapu a hivatkozást csak akkor ellenőrzi, ha a bemeneti jegyzék már a repóban van;
+- új oszlop a `futtato` (`jegyzek` / `workflow` / `kezi`): a G08–G10-et a `feladatok.yml` saját lépései futtatják, nem a végrehajtó.
+
+**A SEMA sorrendje (2026-11-15, orkesztrátor):** az `adat/SEMA.md` közös fájl a #729-cel. A bejegyzés (a jegyzék sémája, a gépi kapu regisztrálása a `futtat.py`-ban, a 3.11 kapulista) a #729 merge-e után, a main behozásával, utolsó commitként kerül be (a brief ⛔ pontja). Addig a jegyzék kapuja a `generalt_nezetek.py --ellenoriz` és a teszt.
+
+**Egyetlen belépési pont (2026-11-15, az F218a-val párhuzamos feltétel):** a lapgenerátort minden fogyasztó a `generalt_nezetek.lexikon_general()` függvényen át hívja, amely a G01-sor `parancs` mezőjét futtatja. A generátor cseréjekor csak ez a mező változik. A `general.py`-hoz és a #729 fájljaihoz az F217 nem nyúl.
+

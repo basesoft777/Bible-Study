@@ -5,13 +5,13 @@ kod: GENERALAS_MAINEN
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/f217-generalas-mainen-f752cc
 ad: a generált nézeteket nem az ágak commitolják, hanem egy Action generálja újra a main-en egy jegyzék (`adat/generalt_nezetek.tsv`) szerint; a párhuzamos PR-ok nem várnak egymásra a generált fájlok miatt; a jegyzék a bemeneti jegyzék első lépése
-kovetkezo: "Orkesztrátor: ütközés a #729-cel (F218a), írás előtt megállva — közös fájl az adat/SEMA.md, és a #729 adat/lapgen_bemenetek.tsv-je (B01–B64) a jegyzék B-sorait kettőzné (O2); javaslat: a jegyzékben csak G-sorok, B-hivatkozás a lapgen_bemenetek.tsv-re, a SEMA-bejegyzés a #729 merge-e után; a main bevonva (2026-11-15)"
+kovetkezo: "Te: F217.2–8 megvalósítás (az orkesztrátor 2026-11-15-i döntése: G-sorok, a B-sorok gazdája a #729 lapgen_bemenetek.tsv-je); az adat/SEMA.md bejegyzés ⛔ a #729 merge-e után, utolsó commitként"
 munka: folyamat
-olvas: [adat/SEMA.md, adat/lap_befagyasztas.tsv, eszkozok/szamkiosztas.py]
-ir: [adat/generalt_nezetek.tsv, adat/SEMA.md, .github/workflows/generalt_nezetek.yml, .github/workflows/ellenorzes.yml, .claude/commands/kiadas.md, eszkozok/generalt_nezetek.py, eszkozok/teszt_generalt_nezetek.py]
+olvas: [adat/SEMA.md, adat/lap_befagyasztas.tsv, adat/kiadasok.tsv, adat/lap_javitasok.tsv, eszkozok/szamkiosztas.py, naplok/F217_terv.md]
+ir: [adat/generalt_nezetek.tsv, adat/SEMA.md, .github/workflows/feladatok.yml, .github/workflows/ellenorzes.yml, .claude/commands/kiadas.md, .claude/commands/lap-javit.md, MUNKAMENET.md, eszkozok/generalt_nezetek.py, eszkozok/teszt_generalt_nezetek.py, eszkozok/szamkiosztas_ujragen.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/futtat.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/ellenorzes/e28_migralt_nezetek.tsv, eszkozok/torzscikk_general.py, eszkozok/lexikon_ket_ut_meres.py, eszkozok/teszt_torzscikk_migralt.py, eszkozok/push_elott.py, eszkozok/teszt_push_elott.py, naplok/F217_terv.md, naplok/F217_jelentes.md]
 fugg: [216]
 ---
 
@@ -35,6 +35,8 @@ A párhuzamos PR-ok ne várjanak egymásra a generált fájlok miatt. Ma minden 
 ## 3. Megállás
 
 ⛔ A leltár (1.) és a terv után megállás: az orkesztrátor nézi át (nem a felhasználó). Utána megvalósítás.
+
+⛔ Az `adat/SEMA.md` bejegyzése (a jegyzék sémája, a gépi kapu és a 3.11 kapulista) a #729 (F218a) merge-e után, a main behozásával, utolsó commitként; a #729 is írja a fájlt (az orkesztrátor döntése, 2026-11-15). Addig a jegyzék kapuja a `generalt_nezetek.py --ellenoriz` és a teszt.
 
 ## 4. Megkötések
 
