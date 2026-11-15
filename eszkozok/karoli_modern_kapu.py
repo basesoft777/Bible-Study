@@ -10,15 +10,16 @@ A brief 2. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
                 ugyanazon a 61 könyvön ma is kijön                                                        — BUKÁS
     LICENC      (b) CC BY 4.0 a LICENSE-ben; a TAHOT/TAGNT-attribúció szó szerint; nincs nem kompatibilis licenc
                 (NC, SA, GPL, „minden jog fenntartva”)                                                    — BUKÁS
-    HARMADIK    (c) nincs export-kód és nem engedett fájltípus; nincs héber/görög írásjel (a TAHOT/TAGNT nyers
-                szövege); nincs zárt külső forrás neve                                                    — BUKÁS
+    HARMADIK    (c) a csomagmappában csak a szerkezet (`karoli_csomag.py`) engedte fájl és almappa áll: nincs
+                export-kód, nincs lapos maradvány, nincs idegen mappa; nincs héber/görög írásjel (a TAHOT/TAGNT
+                nyers szövege); nincs zárt külső forrás neve                                              — BUKÁS
     UJRA        (d) az export újrafuttatva bájtazonos a lemezen állóval                                    — BUKÁS
     NYILVANOS   (e) nyilvános szövegben nincs belső jelölés (DT/N/F-szám, belső útvonal, proveniencia-kulcs,
                 `manual`), „orkesztrátor”, „felhasználó…”, „termék”, GitHub, helyőrző; a „PaRDeS” nem áll benne
                 (így nem is központi keretezés); nincs modell-egyezés mint minősítés                     — BUKÁS
     NEVELO      a magyar szövegekben a szám előtti névelő a kiejtés szerinti, és nincs „a(z)” alak (N-F175b)
                                                                                                           — BUKÁS
-    KOZLEMENY   a `kozlemeny/` hu/en tervezete megvan, nincs az ellenőrző összegben, a `.gitattributes`
+    KOZLEMENY   a `note/` hu/en tervezete megvan, nincs az ellenőrző összegben, a `.gitattributes`
                 kihagyja a kiadásból (export-ignore)                                                       — BUKÁS
     OSSZEG      az `ELLENORZO_OSSZEG.sha256` minden kiadott fájlt helyes összeggel listáz; a `KIADAS.txt`
                 tartalmi hash-e egyezik                                                                    — BUKÁS
@@ -47,6 +48,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import karoli_modern_export as E  # noqa: E402
+import karoli_csomag as CS  # noqa: E402
 import karoli_strong_kapu as SK  # noqa: E402  (közös szövegszabály: a modell-egyezés tiltása)
 from nevelo import nevelo_hibak  # noqa: E402  (közös névelő-szabály, N-F175b)
 
@@ -57,9 +59,7 @@ K3B_96_NELKUL = set(E.K96_NELKUL)                 # a #96 zárásakor még nem p
 
 Talalat = collections.namedtuple('Talalat', 'azon suly uzenet')
 
-ENGEDETT_NEV = re.compile(r'^(?:konyvek/\d{2}_[1-3]?[A-Z][A-Za-z]+\.tsv|versek\.tsv|kodkonyv\.tsv|[A-Z_]+\.md|'
-                          r'LICENSE|CITATION\.cff|\.gitattributes|ELLENORZO_OSSZEG\.sha256|KIADAS\.txt|RELEASE\.txt|'
-                          r'kozlemeny/kozlemeny_(?:hu|en)\.md)$')
+ENGEDETT_NEV = E.ENGEDETT
 HEBER_GOROG = re.compile('[֐-׿Ͱ-Ͽἀ-῿יִ-ﭏ]')
 ZART_FORRAS = re.compile(r'Bible[- ]?Discovery|Biblia[- ]?Felfedez', re.I)
 NEM_KOMPATIBILIS = re.compile(r'\bNC\b|NonCommercial|nem kereskedelmi|BY-SA|ShareAlike|\bGPL|minden jog fenntartva|'
@@ -83,9 +83,8 @@ TILTOTT = [
     (re.compile(r'\bgerinc', re.I), 'belső fogalom (gerinc)'),
 ]
 TILTOTT += SK.MODELL_EGYEZES     # a modell-egyezés nem minősítés (2026-11-14)
-MAGYAR = ('OLVASSEL.md', 'MODSZER.md', 'ISMERT_HIBAK.md', 'ATTRIBUCIO.md', 'LICENSE', 'KODKONYV.md', 'kodkonyv.tsv',
-          'kozlemeny/kozlemeny_hu.md')
-KIHAGYOTT = ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt')
+MAGYAR = CS.MAGYAR_FAJLOK
+KIHAGYOTT = CS.KIHAGYOTT_OSSZEGBOL
 
 
 def olvas_csomag(konyvtar):
@@ -107,7 +106,7 @@ def adatsorok(szoveg):
 
 def nyilvanos_szoveg(rel, szoveg):
     """A nyilvános szövegnek számító részek: a próza teljesen, a TSV-ből a megjegyzéssorok és a kódkönyv."""
-    if rel.endswith('.tsv') and rel != 'kodkonyv.tsv':
+    if rel.endswith('.tsv') and rel != 'data/kodkonyv.tsv':
         return '\n'.join(s for s in szoveg.split('\n') if s.startswith('#'))
     return szoveg
 
@@ -156,7 +155,7 @@ def teljesseg(fajlok):
     parok, strongos, modern = forras()
     csomag_par = collections.Counter()
     token = {}
-    for rel in sorted(f for f in fajlok if f.startswith('konyvek/')):
+    for rel in sorted(f for f in fajlok if f.startswith('data/konyvek/')):
         fej, sorok = adatsorok(fajlok[rel])
         if fej != E.FEJ:
             ki.append(Talalat('TELJESSEG', BUKAS, '%s: eltérő oszlopfejléc' % rel))
@@ -205,9 +204,10 @@ def licenc(fajlok):
     lic = fajlok.get('LICENSE', '')
     if 'CC BY 4.0' not in lic or 'creativecommons.org/licenses/by/4.0' not in lic:
         ki.append(Talalat('LICENC', BUKAS, 'a LICENSE nem CC BY 4.0'))
-    att = fajlok.get('ATTRIBUCIO.md', '')
-    if E.STEP_ATTRIB not in att or 'TAHOT' not in att or 'TAGNT' not in att:
-        ki.append(Talalat('LICENC', BUKAS, 'a TAHOT/TAGNT-attribúció hiányzik vagy nem szó szerinti'))
+    for rel in (CS.ATTRIBUCIO, CS.ATTRIBUTION):
+        att = fajlok.get(rel, '')
+        if E.STEP_ATTRIB not in att or 'TAHOT' not in att or 'TAGNT' not in att:
+            ki.append(Talalat('LICENC', BUKAS, '%s: a TAHOT/TAGNT-attribúció hiányzik vagy nem szó szerinti' % rel))
     for rel, sz in sorted(fajlok.items()):
         m = NEM_KOMPATIBILIS.search(nyilvanos_szoveg(rel, sz))
         if m:
@@ -219,7 +219,8 @@ def harmadik(fajlok):
     ki = []
     for rel, sz in sorted(fajlok.items()):
         if not ENGEDETT_NEV.match(rel):
-            ki.append(Talalat('HARMADIK', BUKAS, 'nem engedett fájl (export-kód vagy idegen adat?): %s' % rel))
+            ki.append(Talalat('HARMADIK', BUKAS, 'nem engedett fájl vagy mappa (export-kód, idegen adat, lapos '
+                                                 'maradvány?): %s' % rel))
         m = HEBER_GOROG.search(sz)
         if m:
             ki.append(Talalat('HARMADIK', BUKAS, '%s: héber/görög írásjel (%r)' % (rel, m.group(0))))
@@ -252,15 +253,15 @@ def nevelo(fajlok):
 
 def kozlemeny(fajlok):
     ki = []
-    for n in ('kozlemeny_hu.md', 'kozlemeny_en.md'):
-        if E.KOZLEMENY_DIR + n not in fajlok:
-            ki.append(Talalat('KOZLEMENY', BUKAS, 'hiányzik: %s%s' % (E.KOZLEMENY_DIR, n)))
-    if 'kozlemeny/ export-ignore' not in fajlok.get('.gitattributes', ''):
-        ki.append(Talalat('KOZLEMENY', BUKAS, 'a .gitattributes nem hagyja ki a kozlemeny/ mappát'))
+    for n in (CS.NOTE_HU, CS.NOTE_EN):
+        if n not in fajlok:
+            ki.append(Talalat('KOZLEMENY', BUKAS, 'hiányzik: %s' % n))
+    if '%s export-ignore' % E.KOZLEMENY_DIR not in fajlok.get('.gitattributes', ''):
+        ki.append(Talalat('KOZLEMENY', BUKAS, 'a .gitattributes nem hagyja ki a %s mappát' % E.KOZLEMENY_DIR))
     if '* text eol=lf' not in fajlok.get('.gitattributes', ''):
         ki.append(Talalat('OSSZEG', BUKAS, 'a .gitattributes nem rögzíti az LF sorvéget (CRLF-checkouton az összeg elromlik)'))
     if E.KOZLEMENY_DIR in fajlok.get('ELLENORZO_OSSZEG.sha256', ''):
-        ki.append(Talalat('KOZLEMENY', BUKAS, 'a kozlemeny/ az ellenőrző összegben áll'))
+        ki.append(Talalat('KOZLEMENY', BUKAS, 'a %s az ellenőrző összegben áll' % E.KOZLEMENY_DIR))
     return ki or [Talalat('KOZLEMENY', OK, 'a tervezet megvan, a kiadásból kihagyva')]
 
 
