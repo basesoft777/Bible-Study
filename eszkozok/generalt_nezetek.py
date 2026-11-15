@@ -264,6 +264,8 @@ def aktiv_lapok(gyoker=ROOT):
     fagy = befagyasztott_idk(gyoker)
     ki = []
     mdir = os.path.join(gyoker, 'motivumok')
+    if not os.path.isdir(mdir):
+        return ki
     for nev in sorted(os.listdir(mdir)):
         if not nev.endswith('.md'):
             continue
@@ -497,7 +499,8 @@ def _konyvtar_szinkron(forras, cel):
         dst = os.path.join(cel, *rel.split('/'))
         a = open(src, 'rb').read()
         b = open(dst, 'rb').read() if os.path.exists(dst) else None
-        if a != b:
+        # a sorvég nem tartalmi eltérés (core.autocrlf=true munkapéldány): a git úgyis normalizál
+        if b is None or a.replace(b'\r\n', b'\n') != b.replace(b'\r\n', b'\n'):
             os.makedirs(os.path.dirname(dst), exist_ok=True)
             with open(dst, 'wb') as f:
                 f.write(a)
@@ -660,6 +663,41 @@ def e29_friss(gyoker=ROOT, lapok=None):
     return ki
 
 
+def pr_generalt_modositas(valtozott, gyoker=ROOT):
+    """O4 (F217.6a): a PR által MÓDOSÍTOTT (nem újonnan létrehozott) fájlok közül azok, amelyeket a main-en az Action
+    ír (`gazda=action`, egész fájlos kimenet: lap vagy könyvtár). Az új cikk lapját az ág egyszer, a születésekor
+    commitolja, ezért a hozzáadott fájl nem számít. A marker-blokkos fájl kézi részét a PR szabadon írja."""
+    mintak = []
+    for _, d in jegyzek(gyoker):
+        if d['gazda'] != 'action' or d['allapot'] != 'aktiv':
+            continue
+        for ut in d['utvonal'].split(' ; '):
+            ut = ut.strip()
+            if '#' in ut:
+                continue
+            if '<ID>' in ut:
+                mintak.append(re.compile('^' + re.escape(ut).replace(re.escape('<ID>'), r'[A-Z0-9]+-\d{3}') + '$'))
+            elif ut.endswith('/'):
+                mintak.append(re.compile('^' + re.escape(ut)))
+    return [f for f in valtozott if any(m.match(f.replace('\\', '/')) for m in mintak)]
+
+
+def celfajlok_mind(gyoker=ROOT):
+    """Minden fájl, amelyet az `--ir` írhat (a helyi push előtti kapu pillanatképéhez)."""
+    lapok = aktiv_lapok(gyoker)
+    return sorted({r for d in futtatando(gyoker) for r in _celfajlok(d, gyoker, lapok)})
+
+
+def pillanatkep(gyoker=ROOT):
+    """A `--ir` által írható fájlok tartalma; a `visszaallit` ezt állítja vissza (a helyi kapu a munkapéldányt nem
+    hagyja generált változással)."""
+    return _pillanatkep(celfajlok_mind(gyoker), gyoker)
+
+
+def visszaallit(kep, gyoker=ROOT):
+    _visszaallit(kep, gyoker, celfajlok_mind(gyoker))
+
+
 def main():
     ap = argparse.ArgumentParser(description='F217: a generált nézetek jegyzékének végrehajtója')
     ap.add_argument('--lista', action='store_true')
@@ -669,8 +707,18 @@ def main():
     ap.add_argument('--id', action='append', help='csak ezekre a lapokra (több is megadható)')
     ap.add_argument('--kapuk', action='store_true')
     ap.add_argument('--jelentes')
+    ap.add_argument('--pr-modositott', help='a PR által módosított fájlok listája (soronként); O4: FIGYELMEZTETÉS')
     a = ap.parse_args()
     kod, jel = 0, []
+    if a.pr_modositott:
+        with open(a.pr_modositott, encoding='utf-8') as f:
+            felesleges = pr_generalt_modositas([s.strip() for s in f if s.strip()])
+        for r in felesleges:
+            # O4: FIGYELMEZTETÉS; az első sikeres main-oldali újragenerálás után HIBA (N-F217a)
+            print('::warning file=%s::FIGYELMEZTETES (F217, O4): generált nézet a PR-ban; felesleges, a main-en az '
+                  'Action írja (a merge után ütközést okozhat)' % r)
+        if not (a.ir or a.lista or a.ellenoriz or a.gyoker or a.kapuk):
+            return 0
     if a.lista:
         for d in futtatando():
             jel.append('%s\t%s\t%s' % (d['id'], d['utvonal'], d['parancs']))

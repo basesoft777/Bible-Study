@@ -2,12 +2,12 @@
 # -*- coding: utf-8 -*-
 """
 teszt_torzscikk_migralt.py -- N-F11e (FELADATOK #11): a `torzscikk_general.py`
-(és így a `general.py --cel torzscikk`) a migrált motívumot -- az E28-lista
-(`eszkozok/ellenorzes/e28_migralt_nezetek.tsv`) `id` oszlopa szerint --
+(és így a `general.py --cel torzscikk`) a migrált motívumot -- F217 óta a forrás
+(`motivumok/<ID>.md`) megléte és a törzscikk hiánya szerint --
 kihagyja, hogy egy teljes `--ir` (pl. a #36) ne hozza vissza a megszűnt
 kimenetet (D6, F11 M5). A nem migrált motívum törzscikke változatlanul készül.
 
-A kitalált lista és a próba-kimenet ideiglenes, repón kívüli könyvtárban áll
+A kitalált motívumfájlok és a próba-kimenet ideiglenes, repón kívüli könyvtárban áll
 (tempfile); az éles listát a teszt csak olvassa.
 Futtatás: python eszkozok/teszt_torzscikk_migralt.py
 """
@@ -29,11 +29,6 @@ ESZKOZOK = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, ESZKOZOK)
 import torzscikk_general as T  # noqa: E402
 
-LISTA = ('id\tfajl\tcel\tmelyseg\tfeladat\tdatum\n'
-         'PROBA-001\tlexikon/PROBA-001_TUDOMANYOS.md\tlexikon\tapparatus\t11\t2026-10-19\n'
-         '\tlexikon/URES_TUDOMANYOS.md\tlexikon\tapparatus\t11\t2026-10-19\n')
-
-
 def _ir(ut, szoveg):
     os.makedirs(os.path.dirname(ut), exist_ok=True)
     with io.open(ut, 'w', encoding='utf-8', newline='\n') as f:
@@ -47,18 +42,21 @@ class MigraltLista(unittest.TestCase):
     def tearDown(self):
         shutil.rmtree(self.gy, ignore_errors=True)
 
-    def test_lista_id_oszlop(self):
-        _ir(os.path.join(self.gy, T.MIGRALT_LISTA), LISTA)
+    def test_forras_torzscikk_nelkul_migralt(self):
+        _ir(os.path.join(self.gy, 'motivumok', 'PROBA-001.md'), '# forrás\n')
+        _ir(os.path.join(self.gy, 'motivumok', 'REGI-001.md'), '# forrás\n')
+        _ir(os.path.join(self.gy, 'lexikon', 'REGI-001_TORZSCIKK.md'), '# törzscikk\n')
         self.assertEqual(T.migralt_idk(self.gy), {'PROBA-001'})
 
-    def test_hianyzo_lista_ures(self):
+    def test_hianyzo_motivumok_ures(self):
         self.assertEqual(T.migralt_idk(self.gy), set())
 
-    def test_eles_lista(self):
-        # Az éles lista: az ISTENTISZT-001 migrált, a HAMART-001 (N0-kontroll) nem.
+    def test_eles_repo(self):
+        # Az éles repó: az ISTENTISZT-001 és a HAMART-001 migrált (törzscikkük archiválva), a KIRALY-001 nem.
         eles = T.migralt_idk()
         self.assertIn('ISTENTISZT-001', eles)
-        self.assertNotIn('HAMART-001', eles)
+        self.assertIn('HAMART-001', eles)
+        self.assertNotIn('KIRALY-001', eles)
 
 
 class RunKihagyas(unittest.TestCase):

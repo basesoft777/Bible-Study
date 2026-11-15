@@ -464,27 +464,18 @@ def torzscikk_szoveg(m, lex_szoveg, model):
     return torzscikk_tartalom, stat
 
 
-MIGRALT_LISTA = os.path.join('eszkozok', 'ellenorzes', 'e28_migralt_nezetek.tsv')
-
-
 def migralt_idk(root=None):
-    """N-F11e (F11): a migrált motívumok azonosítói -- az E28-lista
-    (`eszkozok/ellenorzes/e28_migralt_nezetek.tsv`) `id` oszlopa, bármely
-    `cel`-lal. A migrált motívum törzscikke megszűnt kimenet (D6, F11 M5), ezért
-    a generálásból kimarad. A `motivumok/[ID].md` megléte nem jel: a forrásréteg
-    mind a 9 motívumnál megvan (F4 G2). Hiányzó lista: üres halmaz.
-    TSV-olvasás split('\\t'), a `csv` modul tilos (CLAUDE.md)."""
-    ut = os.path.join(root or G.ROOT, MIGRALT_LISTA)
-    if not os.path.exists(ut):
+    """N-F11e (F11): a migrált motívumok azonosítói. A migrált motívum törzscikke megszűnt kimenet (D6, F11 M5),
+    ezért a generálásból kimarad. F217: a korábbi külön E28-lista kivezetve; a jel a megszűnt kimenet maga:
+    van `motivumok/<ID>.md` forrás, és nincs `lexikon/<ID>_TORZSCIKK.md` (a migráció archiválta). A régi
+    szerkezetű motívum törzscikke megvan, így az továbbra is készül; új cikknek nincs törzscikke.
+    Hiányzó `motivumok/`: üres halmaz."""
+    root = root or G.ROOT
+    mdir = os.path.join(root, 'motivumok')
+    if not os.path.isdir(mdir):
         return set()
-    with io.open(ut, encoding='utf-8', newline='') as f:
-        sorok = [ln.rstrip('\r\n') for ln in f if ln.strip() and not ln.startswith('#')]
-    if not sorok:
-        return set()
-    fejlec = sorok[0].split('\t')
-    i = fejlec.index('id')
-    return {s.split('\t')[i].strip() for s in sorok[1:]
-            if len(s.split('\t')) > i and s.split('\t')[i].strip()}
+    return {n[:-3] for n in os.listdir(mdir)
+            if n.endswith('.md') and not os.path.exists(os.path.join(root, 'lexikon', n[:-3] + '_TORZSCIKK.md'))}
 
 
 def run(args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek):

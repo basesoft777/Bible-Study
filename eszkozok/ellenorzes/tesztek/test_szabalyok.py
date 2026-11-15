@@ -1283,16 +1283,15 @@ class E27Teszt(unittest.TestCase):
 # E28, E29 (F116 -- naplok/MOTIVUM_FORRAS_ci_terv.md 1. es 2. szakasz)
 # ---------------------------------------------------------------------------
 
-_LISTA_FEJ = 'id\tfajl\tcel\tmelyseg\tfeladat\tdatum\n'
 _LAP = 'lexikon/ZZTESZT-001_TUDOMANYOS.md'
+_VALOS_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
 
 
-def _lista(*sorok):
-    return _LISTA_FEJ + ''.join(sorok)
-
-
-def _lista_sor(fajl=_LAP, melyseg='apparatus', az='ZZTESZT-001', cel='lexikon'):
-    return '%s\t%s\t%s\t%s\tF116-teszt\t2026-10-18\n' % (az, fajl, cel, melyseg)
+def _jegyzek_ir(gy):
+    """F217: a lapok listája a generált nézetek jegyzékéből származik (G01: forrással és commitolt lappal bíró,
+    nem befagyasztott motívum); a teszt a valós jegyzéket másolja az ideiglenes gyökérbe."""
+    with open(os.path.join(_VALOS_ROOT, 'adat', 'generalt_nezetek.tsv'), encoding='utf-8') as f:
+        _ir(gy, 'adat/generalt_nezetek.tsv', f.read())
 
 
 def _ir_nyers(gyoker, relut, tartalom):
@@ -1305,8 +1304,25 @@ def _ir_nyers(gyoker, relut, tartalom):
     return relut.replace(os.sep, '/')
 
 
-def _lista_ir(gy, *sorok):
-    _ir(gy, 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv', _lista(*sorok))
+class _Szigor(object):
+    """F217: a commitolt és az újragenerált nézet eltérése csak a gépi commit futásában HIBA
+    (`PARDES_GENERALT_SZIGOR=1`); a régi tesztek a szigorú módot nézik."""
+
+    def __init__(self, ertek='1'):
+        self.ertek = ertek
+
+    def __enter__(self):
+        self.regi = os.environ.get(SZ.GENERALT_SZIGOR_VALTOZO)
+        if self.ertek is None:
+            os.environ.pop(SZ.GENERALT_SZIGOR_VALTOZO, None)
+        else:
+            os.environ[SZ.GENERALT_SZIGOR_VALTOZO] = self.ertek
+
+    def __exit__(self, *exc):
+        if self.regi is None:
+            os.environ.pop(SZ.GENERALT_SZIGOR_VALTOZO, None)
+        else:
+            os.environ[SZ.GENERALT_SZIGOR_VALTOZO] = self.regi
 
 
 _MARKER_BLOKK = (
@@ -1326,6 +1342,13 @@ class E28Teszt(unittest.TestCase):
     gyökérben áll, az éles repón nem fut generátor."""
 
     GEN_FEJ = '<!-- GENERÁLT: general.py --cel lexikon | ts=%s -->\n'
+
+    def setUp(self):
+        self._szigor = _Szigor('1')
+        self._szigor.__enter__()
+
+    def tearDown(self):
+        self._szigor.__exit__()
 
     def _render(self, gy, datum):
         """A "generator": a nezet az adat- es a forrasretegbol (fixture) all elo."""
@@ -1360,7 +1383,7 @@ class E28Teszt(unittest.TestCase):
     def _fixture(self, gy, elof='ZZTESZT-001\t1Móz 1:1\tkapcsolodas: x\n', forras='Olvasoi bekezdes.\n'):
         _ir(gy, 'adat/elofordulasok.tsv', elof)
         _ir(gy, 'motivumok/ZZTESZT-001.md', forras)
-        _lista_ir(gy, _lista_sor())
+        _jegyzek_ir(gy)
         # a commitolt nezet = a generator kimenete a nezet sajat datumara
         _ir_nyers(gy, _LAP, self._render(gy, '2026-10-01'))
 
@@ -1384,7 +1407,7 @@ class E28Teszt(unittest.TestCase):
             t = self._futtat(gy)
             self.assertEqual(len(t), 1)
             self.assertEqual((t[0].szabaly, t[0].szint, t[0].fajl), ('E28', 'HIBA', _LAP))
-            self.assertIn('Javítás: python eszkozok/general.py --cel lexikon --id ZZTESZT-001 --ir', t[0].reszlet)
+            self.assertIn('helyben: python eszkozok/generalt_nezetek.py --ir --id ZZTESZT-001', t[0].reszlet)
             self.assertGreater(t[0].sor, 0)
 
     def test_negativ_adat_valtozik_a_nezet_nem(self):
@@ -1431,9 +1454,36 @@ class E28Teszt(unittest.TestCase):
 
     def test_ures_lista_nulla_nezet(self):
         with _IdeiglenesGyoker() as gy:
-            _ir(gy, 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv', _lista())
+            _jegyzek_ir(gy)
             self.assertEqual(self._futtat(gy), [])
             self.assertEqual(SZ.E28_JEGYZETEK, ['E28: 0 migrált nézet'])
+
+    def test_f217_nem_szigoru_modban_az_elteres_jelentes(self):
+        with _IdeiglenesGyoker() as gy, _Szigor(None):
+            self._fixture(gy)
+            _ir(gy, 'adat/elofordulasok.tsv', 'ZZTESZT-001\t1Móz 1:1\tkapcsolodas: MODOSITOTT\n')
+            t = self._futtat(gy)
+            self.assertEqual([(x.szabaly, x.szint) for x in t], [('E28', 'JELENTES')])
+            self.assertTrue(any('JELENTES' in j for j in SZ.E28_JEGYZETEK))
+
+    def test_f217_kiadott_lap_valtozasa_mindig_hiba(self):
+        with _IdeiglenesGyoker() as gy, _Szigor(None):
+            self._fixture(gy)
+            _ir(gy, 'adat/kiadasok.tsv', 'id\tkiadas\tdatum\tvaltozas\tproza_modell\tforras\n'
+                                         'ZZTESZT-001\t1\t2026.10.01\tteszt\tmanual\tmanual\n')
+            _ir(gy, 'adat/elofordulasok.tsv', 'ZZTESZT-001\t1Móz 1:1\tkapcsolodas: MODOSITOTT\n')
+            t = self._futtat(gy)
+            self.assertEqual(sorted(x.szint for x in t), ['HIBA', 'JELENTES'])
+            self.assertTrue(any('kiadott lap' in x.reszlet and x.szint == 'HIBA' for x in t))
+
+    def test_f217_kiadott_lap_csak_dt_szam_valtozik_nem_hiba(self):
+        with _IdeiglenesGyoker() as gy, _Szigor(None):
+            self._fixture(gy, elof='ZZTESZT-001\t1Móz 1:1\tkapcsolodas: DT-F12a\n')
+            _ir(gy, 'adat/kiadasok.tsv', 'id\tkiadas\tdatum\tvaltozas\tproza_modell\tforras\n'
+                                         'ZZTESZT-001\t1\t2026.10.01\tteszt\tmanual\tmanual\n')
+            _ir(gy, 'adat/elofordulasok.tsv', 'ZZTESZT-001\t1Móz 1:1\tkapcsolodas: DT812\n')
+            t = self._futtat(gy)
+            self.assertEqual([x.szint for x in t], ['JELENTES'])
 
     def test_nem_indul_erintetlen_fajlokkal(self):
         with _IdeiglenesGyoker() as gy:
@@ -1595,9 +1645,10 @@ class E28Teszt(unittest.TestCase):
 class E29Teszt(unittest.TestCase):
     """E29: a kiadhato kimenetben nulla `belso` jeloles es nulla 【NAPLO."""
 
-    def _fut(self, tartalom, melyseg='apparatus', extra=None):
+    def _fut(self, tartalom, extra=None):
         with _IdeiglenesGyoker() as gy:
-            _lista_ir(gy, _lista_sor(melyseg=melyseg))
+            _jegyzek_ir(gy)
+            _ir(gy, 'motivumok/ZZTESZT-001.md', 'forras\n')
             _ir(gy, _LAP, tartalom)
             for relut, szoveg in (extra or {}).items():
                 _ir(gy, relut, szoveg)
@@ -1625,26 +1676,24 @@ class E29Teszt(unittest.TestCase):
         self.assertEqual(len(t), 1)
         self.assertIn('INAKTÍV:', t[0].reszlet)
 
-    def test_negativ_olvasoi_melysegben_proveniencia_piros_apparatusban_nem(self):
+    def test_apparatus_melysegben_a_proveniencia_nem_piros(self):
+        # F217: a jegyzékből származó lap mélysége `apparatus` (az `olvasoi` mélységű nézet nincs a listán)
         sor = '# Lap\nAllitas. proveniencia: scope=x | forras=y | ts=z\n<!-- RÉS-KEZDET: kivonat -->\n'
-        t = self._fut(sor, melyseg='olvasoi')
-        self.assertEqual(sorted(x.reszlet for x in t),
-                         ['minta: RÉS-KEZDET', 'minta: proveniencia:'])
-        self.assertEqual(self._fut(sor, melyseg='apparatus'), [])
+        self.assertEqual(self._fut(sor), [])
 
     def test_a_motivumok_forras_nem_hatokor(self):
         # a forrasban a 【NAPLO kotelezo hely; a lista csak a lexikon-lapot nevezi meg
         t = self._fut('# tiszta lap\n', extra={'motivumok/ZZTESZT-001.md': '【NAPLO: forrasban szabad】\n'})
         self.assertEqual(t, [])
 
-    def test_ismeretlen_melyseg_hiba(self):
-        t = self._fut('# tiszta lap\n', melyseg='belso')
-        self.assertEqual(len(t), 1)
-        self.assertIn('ismeretlen melyseg', t[0].reszlet)
+    def test_befagyasztott_lap_nincs_a_listan(self):
+        t = self._fut('# Lap\n【NAPLO: x】\n', extra={'adat/lap_befagyasztas.tsv':
+                                                     'id\tok\tdontes\tdatum\nZZTESZT-001\tteszt\tteszt\t2026-11-15\n'})
+        self.assertEqual(t, [])
 
     def test_ures_lista_nulla_talalat(self):
         with _IdeiglenesGyoker() as gy:
-            _ir(gy, 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv', _lista())
+            _jegyzek_ir(gy)
             self.assertEqual(SZ.e29_kiadhato_kimenet_tisztasaga(['__TELJES__']), [])
 
     def test_szint_fajlszintu_hiba(self):
@@ -2066,6 +2115,18 @@ class E34Teszt(unittest.TestCase):
 
 class E35Teszt(unittest.TestCase):
     """E35: adat-tabla vagy exportgenerator valtozasakor a commitolt nyilt_mag/ egyezik az ujragenerald exporttal."""
+
+    def setUp(self):
+        self._szigor = _Szigor('1')
+        self._szigor.__enter__()
+
+    def tearDown(self):
+        self._szigor.__exit__()
+
+    def test_f217_nem_szigoru_modban_jelentes(self):
+        with _Szigor(None):
+            t = self._fut(['adat/x.tsv'], {'a.tsv': 'regi'}, {'a.tsv': 'uj'})
+        self.assertEqual([x.szint for x in t], ['JELENTES'])
 
     def _fut(self, valtozott, lemez, uj, teljes=False):
         with _IdeiglenesGyoker() as gy:
