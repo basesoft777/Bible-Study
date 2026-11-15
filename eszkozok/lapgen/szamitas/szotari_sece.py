@@ -132,6 +132,12 @@ class _Szamolo:
         return SeceTabla(self.f.szo(strong), tuple(sorok))
 
 
+def szamolo(f, szavak):
+    """A kétnyelvű szótár számolója (megfelelők, szócsalád) más szakasznak (az 5. szakasz és a 4.6 újszövetségi
+    párja, S4: ugyanaz a szabály, mint a 4.7-é)."""
+    return _Szamolo(f, szavak)
+
+
 def szamit(f, nyelv_heber, sajat, szavak):
     """A pont modellje egy nyelv szavaira (`sajat`); `szavak`: a motívum minden szava."""
     sz = _Szamolo(f, szavak)

@@ -243,10 +243,11 @@ class Kiejtes:
                 return n - 1
         return None
 
-    def ragozott(self, versek, strong, karoli_szo=None):
+    def ragozott(self, versek, strong, karoli_szo=None, utolso=False):
         """A szó alakja és kiejtése a megadott verseken (T4): az az előfordulás, amelyhez a `karoli_szo` a
         párosításban kötődik (a versek rendjében az első ilyen); párosítás híján az első előfordulás az első
-        olyan versben, amelyben a szó áll. None, ha a szó egyik versben sem áll."""
+        olyan versben, amelyben a szó áll (`utolso`: a vers utolsó előfordulása, a régi `kiejtes_ehhez` szabálya
+        az 5. szakaszban). None, ha a szó egyik versben sem áll."""
         heber = strong.kod.startswith(_HEBER_ELOTAG)
         szoveg = self._tahot if heber else self._tagnt
         valasztott = None
@@ -258,7 +259,7 @@ class Kiejtes:
                 break
             helyek = [k for k, s in enumerate(sorok) if s[0] == strong.kod]
             if helyek and valasztott is None:
-                valasztott = (vers, helyek[0])
+                valasztott = (vers, helyek[-1] if utolso else helyek[0])
         for vers, i in ((valasztott,) if valasztott is not None else ()):
             sorok = szoveg.sorok(vers.kod)
             if not heber:
@@ -319,17 +320,13 @@ class Kiejtes:
         sor = nyers[0].get(strong.kod) or nyers[1].get(strong.kod)
         if not sor:
             return None
-        alap = ''.join(c for c in unicodedata.normalize('NFD', sor[0].lower()) if not unicodedata.combining(c))
-        tovek, varolista = set(), [alap]
-        while varolista:
-            x = varolista.pop()
-            gyerek = [x[len(e):] for e in konfig.GOROG_ELOTAGOK
-                      if x.startswith(e) and len(x) > len(e) + konfig.GOROG_ELOTAG_MARADEK]
-            if gyerek:
-                varolista.extend(gyerek)   # az előtagos alak eleje nem tő: csak az előtag nélküli alaké
-            else:
-                tovek.add(x[:konfig.GOROG_TO_HOSSZ])
-        return frozenset(tovek)
+        return gorog_alak_tovek(sor[0])
+
+    def gorog_gepi(self, alak):
+        """Egy görög alak (idézet) gépi átírásának magyaros alakja (a régi `gorog_magyaros(gepi_atiras(…))`), idézhető
+        forrásszövegként; None: nincs."""
+        gepi = kiejtes_modul.atir(gorog_gepi_atiras(alak.ertek), self._szabalyok, self._gorog_kivetelek)
+        return self._b.forrasszoveg('B12', 'kiejtes', gepi, alak.ertek) if gepi else None
 
     def lemmak(self):
         """A rövid szótárak szavai a szótár saját Strong-kulcsán: {Strong kódja: (lemma, átírás)}."""
@@ -431,6 +428,21 @@ class Kiejtes:
 
 _SPIRITUS_ASPER = '\u0314'
 _ELSO_BETU_RX = re.compile(r'[^\W\d_]([\u0300-\u036f]*)')
+
+
+def gorog_alak_tovek(alak):
+    """Egy görög szóalak tövei (összevetési kulcsok): ékezetek nélkül, az igekötők leválasztásával, a tő elejével."""
+    alap = ''.join(c for c in unicodedata.normalize('NFD', alak.lower()) if not unicodedata.combining(c))
+    tovek, varolista = set(), [alap]
+    while varolista:
+        x = varolista.pop()
+        gyerek = [x[len(e):] for e in konfig.GOROG_ELOTAGOK
+                  if x.startswith(e) and len(x) > len(e) + konfig.GOROG_ELOTAG_MARADEK]
+        if gyerek:
+            varolista.extend(gyerek)   # az előtagos alak eleje nem tő: csak az előtag nélküli alaké
+        else:
+            tovek.add(x[:konfig.GOROG_TO_HOSSZ])
+    return frozenset(tovek)
 
 
 def gorog_gepi_atiras(szo):
