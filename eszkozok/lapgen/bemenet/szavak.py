@@ -203,6 +203,12 @@ def b10_lemmak(b):
     return b.egyszer('B10', betolt)
 
 
+def heber_pontozott(alak):
+    """Pontozott-e a héber alak (van-e magánhangzó-, sevá- vagy dágespont): a pontozatlan alakra nincs gépi kiejtés.
+    A kiejtés egy útja (GK-13): a kiejtés-modult csak ez a modul hívja."""
+    return heber_kiejtes.pontozott(alak)
+
+
 def b13_heber_gepi(b):
     """B13 — a pontozott héber alak gépi kiejtése (szabálymodul, nem adatfájl). A visszaadott függvény:
     (teljes alak, előtag betűszáma, makkef) → kiejtés, pontozatlan alakra üres."""

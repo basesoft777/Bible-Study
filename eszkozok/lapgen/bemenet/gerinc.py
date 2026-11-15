@@ -130,6 +130,55 @@ def _fej_glossza(hu):
     return szotari_glossza.olvasoi_glossza('', '', s[kp[-1].end():]) if kp else None
 
 
+_FEJ_GYOK_RX = re.compile(r'√\s*([^;,()]+)')
+_FEJ_ALAP_VEGE_RX = re.compile(r'\s+—\s+')
+# A rövid nyelvi háttér alapjelentésében megengedett jelek: a régi generátor ezen a szövegen a BDB-kártya megjelenítő
+# lépéseit futtatta (átírás- és sorrend-javítás, LRM, rövidítés-jelölés); ezek csak héber betűn, számon és nem
+# magyar betűs átíráson változtatnak. Ha ilyen jel áll, a szöveg a 4.2 kártya szegmentált idézetével (S3b) állhat.
+_FEJ_ALAP_MEGENGEDETT_RX = re.compile(r"^[A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű\s,;:.!?()\-–'„”\"]*$")
+
+
+def fej_alap_gyok(hu):
+    """(alapjelentés, gyök) a BDB-szócikk magyar fejéből, a régi `bdb_fej_rovid` szabálya szerint: az alapjelentés
+    az első zárójel előtti utolsó „: ” utáni rész (a „; —” utáni alakjegyzék és az első gondolatjel utáni rész
+    nélkül), a gyök a „√” utáni rész az első pontosvesszőig, vesszőig vagy zárójelig. Mindkettő a fej szövegének
+    változatlan részlete (a kapu ellenőrzi); hiányuk üres szöveg."""
+    eleje = hu.split('(')[0]
+    alap = eleje.split(': ')[-1].strip(' ;,—') if ': ' in eleje else ''
+    alap = alap.split('; —')[0].strip(' ;,—')
+    alap = _FEJ_ALAP_VEGE_RX.split(alap)[0].strip(' ;,')
+    gy = _FEJ_GYOK_RX.search(hu)
+    gyok = gy.group(1).strip() if gy else ''
+    for resz in (alap, gyok):
+        if resz and resz not in hu:
+            raise GerincHiba('B18: a fej rövid alakja nem a fej szövegének részlete: %s' % resz)
+    return alap, gyok
+
+
+class FejRovid:
+    """A BDB-szócikk fejének rövid alakja (4.8): az alapjelentés és a gyök idézetként, vagy None."""
+    __slots__ = ('alap', 'gyok')
+
+    def __init__(self, alap, gyok):
+        self.alap, self.gyok = alap, gyok
+
+
+class BdbFej:
+    """A teljes angol BDB-szócikk feje a tő kereséséhez: a Strong, a címszó mássalhangzói és hogy ige-e."""
+    __slots__ = ('strong', 'massalhangzok', 'ige')
+
+    def __init__(self, strong, massalhangzok, ige):
+        self.strong, self.massalhangzok, self.ige = strong, massalhangzok, ige
+
+
+_BDB_FEJ_HOSSZ = 160
+_BDB_FEJ_HEBER_RX = re.compile(r'[א-ת][א-ת֑-ׇ]*')
+_BDB_FEJ_IGE_RX = re.compile(r'\]?\s*verb\b')
+_VEGSO_BETUK = str.maketrans('ךםןףץ', 'כמנפצ')
+_TO_VEGZODESEK = ('ונ', 'ת', 'ה', 'ות')
+_TO_ELOTAGOK = ('מ', 'ת')
+
+
 def _cella_alak_egyezik(cimke, alak):
     """Igaz, ha az `alak` a címke cellakezdő alakja: nagy kezdőbetűvel, a kezdő névelővel vagy anélkül."""
     kisbetus = alak[:1].lower() + alak[1:]
@@ -192,6 +241,7 @@ class Gerinc:
                                  'csak a kezdő névelőben és a kezdőbetűben térhet el' % (kulcs, alak.ertek, nyers))
         self._bdb_vj, self._th_vj, self._bdb_en, self._zarojel, self._tahot = bdb_vj, th_vj, bdb_en, zarojel, tahot
         self._kezdet, self._poz_ok, self._vj_strong, self._fa = {}, {}, None, {}
+        self._fejek = None
 
     # --- a szócikkek és a szakaszok ------------------------------------------------------------------------
 
@@ -457,6 +507,66 @@ class Gerinc:
                     return self._b.forrasszoveg('B18', 'szoveg_hu', glossza, strong) if glossza else None
         return None
 
+    def fej_rovid(self, strong):
+        """A 4.8 rövid nyelvi hátteréhez a BDB-szócikk fejének alapjelentése és gyöke (`FejRovid`); None, ha a
+        szónak nincs magyar szócikkfeje. A Strong első szócikkének feje; ha az első szócikk puszta utalás (szakasz
+        nélkül), az első szakaszokkal bíró, magyar fejű szócikké (a régi `_gerinc_bdb_fej_rovid` szabálya)."""
+        fa = self._szocikk_fa(strong.kod)
+        fej = fa[0]['fej'] if fa else None
+        if fa and not fa[0]['szakaszok']:
+            fo = next((sz for sz in fa[1:] if sz['szakaszok'] and sz['fej'] and sz['fej'][2]), None)
+            if fo:
+                fej = fo['fej']
+        if not fej or not fej[2]:
+            return None
+        alap, gyok = fej_alap_gyok(fej[2])
+        if alap and not _FEJ_ALAP_MEGENGEDETT_RX.match(alap):
+            raise GerincHiba('B18: a(z) %s fejének alapjelentésében héber betű, szám vagy átírási jel áll („%s”); a '
+                             'szöveg a 4.2 kártya szegmentált idézetével (S3b) állhat a lapon' % (strong.kod, alap))
+        return FejRovid(self._b.forrasszoveg('B18', 'szoveg_hu', alap, strong) if alap else None,
+                        self._b.forrasszoveg('B18', 'szoveg_hu', gyok, strong) if gyok else None)
+
+    def vers_torzs(self, strong_kod, vers_kod):
+        """A BDB törzse (Qal, Pi'el …) a versben a BDB saját példahelyei szerint, a kiszűrt sorokkal együtt (a régi
+        `bdb_vers_torzs`); None, ha nincs vagy több."""
+        torzsek = self._bdb_vj.torzsek.get((strong_kod, vers_kod)) or set()
+        return next(iter(torzsek)) if len(torzsek) == 1 else None
+
+    def _bdb_fejek(self):
+        if self._fejek is None:
+            self._fejek = []
+            for strong, szoveg in self._bdb_en.items():
+                fej = szoveg[:_BDB_FEJ_HOSSZ]
+                heb = _BDB_FEJ_HEBER_RX.search(fej)
+                if heb:
+                    msh = ''.join(c for c in heb.group(0) if 'א' <= c <= 'ת')
+                    self._fejek.append(BdbFej(strong, msh, bool(_BDB_FEJ_IGE_RX.search(fej))))
+        return self._fejek
+
+    def helyi_szocikk(self, strong_kod):
+        """Áll-e szócikk a Strongra a helyi angol BDB-szövegben."""
+        return strong_kod in self._bdb_en
+
+    def igei_to(self, strong_kod):
+        """A főnév igei töve a helyi BDB-ben (a régi `bdb_to_strong`): az az ige, amelynek mássalhangzói a főnévéi,
+        vagy a főnévéi a szokásos képzők (-ón, -t, -á, -ót, m-, t-) nélkül; None, ha nincs, vagy a szó maga ige."""
+        fejek = self._bdb_fejek()
+        sajat = next((f for f in fejek if f.strong == strong_kod), None)
+        if sajat is None or sajat.ige:
+            return None
+        msh = sajat.massalhangzok.translate(_VEGSO_BETUK)
+        jeloltek = [msh]
+        for veg in _TO_VEGZODESEK:
+            if msh.endswith(veg) and len(msh) - len(veg) >= 2:
+                jeloltek.append(msh[:-len(veg)])
+        for kezd in _TO_ELOTAGOK:
+            jeloltek += [j[1:] for j in list(jeloltek) if j.startswith(kezd) and len(j) > 3]
+        for j in jeloltek:
+            for f in fejek:
+                if f.ige and f.strong != strong_kod and f.massalhangzok.translate(_VEGSO_BETUK) == j:
+                    return f.strong
+        return None
+
     def tagolatlan(self, strong):
         """(tagolatlan-e a Strong egyetlen BDB-szócikke, a fej glosszája vagy None)."""
         fa = self._szocikk_fa(strong)
@@ -495,16 +605,29 @@ def b18_bdb_szakasz_hu(b):
             for r in _sorok(b, 'B18', ('strong', 'sorszam', 'kategoria', 'szoveg_hu'))}
 
 
+class VersJelentes(dict):
+    """A BDB példahelyei versenként ({(Strong, Károli-vers): [sorok]}, a kiszűrt és a Károli-vers nélküli sorok
+    nélkül); a `torzsek` a versenkénti törzsek a kiszűrt sorokkal együtt (a régi `bdb_vers_torzs` mércéje)."""
+
+    def __init__(self, sorok, torzsek):
+        super().__init__(sorok)
+        self.torzsek = torzsek
+
+
 def b19_bdb_vers_jelentes(b):
-    """B19 — a BDB saját példahelyei versenként (a kiszűrt és a Károli-vers nélküli sorok nélkül)."""
-    ki = {}
+    """B19 — a BDB saját példahelyei versenként (a kiszűrt és a Károli-vers nélküli sorok nélkül), és a törzsek
+    versenként (az útvonal első tagja, minden sorból)."""
+    ki, torzsek = {}, {}
     oszlopok = ('strong', 'sorszam', 'poz', 'nyers', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'utvonal', 'okkod',
                 'szurt')
     for r in _sorok(b, 'B19', oszlopok):
+        torzs = r['utvonal'].split('/')[0]
+        if torzs:
+            torzsek.setdefault((r['strong'], r['karoli_vers']), set()).add(torzs)
         if r['szurt'] == '1' or not r['karoli_vers']:
             continue
         ki.setdefault((r['strong'], r['karoli_vers']), []).append(r)
-    return ki
+    return VersJelentes(ki, torzsek)
 
 
 def b21_thayer_vers_jelentes(b):

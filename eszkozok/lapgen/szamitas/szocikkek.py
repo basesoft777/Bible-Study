@@ -19,6 +19,8 @@ from lapgen.bemenet import szavak as szavak_be
 from lapgen.bemenet import szotari as szotari_be
 from lapgen.bemenet import ubs as ubs_be
 from lapgen.szamitas import elofordulas as elofordulas_sz
+from lapgen.szamitas import nyelvi_hatter as nyelvi_hatter_sz
+from lapgen.szamitas.nyelvi_hatter import HeberHatter
 from lapgen.szamitas import szotari_karoli, szotari_nave, szotari_sece
 from lapgen.szamitas.szotari_karoli import KaroliPontok
 from lapgen.szamitas.szotari_nave import Tematikus
@@ -162,6 +164,7 @@ class Nyelvresz:
     sece: Sece
     versenkent: Versenkenti
     gorog_hatter: Optional[GorogHatter]
+    heber_hatter: Optional[HeberHatter]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -180,7 +183,7 @@ class _Forrasok:
     """A szakasz bemenetei egy helyen."""
 
     def __init__(self, b, motivum):
-        self.b = b
+        self.b, self.motivum = b, motivum
         self.sorok = bemenet.b03_elofordulasok(b, motivum)
         karoli = bemenet.b07_karoli(b)
         self.versek = tuple(vers for s in self.sorok for vers in karoli.versek(s.igehely))
@@ -428,7 +431,9 @@ def _nyelvresz(f, nyelv, szavak, szerepek):
         domen=tuple(_domen(f, s) for s in sajat),
         sece=szotari_sece.szamit(f, nyelv is Nyelv.HEBER, sajat, szavak),
         versenkent=_versenkenti(f, nyelv, sajat),
-        gorog_hatter=hatter)
+        gorog_hatter=hatter,
+        heber_hatter=(nyelvi_hatter_sz.szamit(f, f.motivum, sajat)
+                      if nyelv is Nyelv.HEBER and sajat and konfig.PONT_NYELVI_HATTER in pontok else None))
 
 
 def szamit(korny):

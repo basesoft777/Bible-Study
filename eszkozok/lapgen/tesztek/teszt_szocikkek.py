@@ -292,18 +292,78 @@ class NyelviHatterGorog(unittest.TestCase):
         self.assertIsNone(lsj.csonk(Strong('G0001')))
 
     def test_a_lapon(self):
-        """A két mintalap görög 4.8 pontja: a bevezető és az ág mondata; héber 4.8 még nincs (részleges lap), és a
-        görög pont a fájlnevet, a Strong-számot vagy a nyers csonkot nem írja ki."""
+        """A két mintalap görög 4.8 pontja: a bevezető és az ág mondata; a görög pont a fájlnevet, a Strong-számot
+        vagy a nyers csonkot nem írja ki."""
         for azonosito, mondat in (('HAMART-001', 'a motívum szavaihoz és rokon szavaikhoz nem ad adatot'),
                                   ('ISTENTISZT-001', 'LSJ-szócikke csak az alapigére utal')):
             eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito))
             sorok = [sor.szoveg for sor in eredmeny.nezetek[konfig.NEZET_TUDOMANYOS]]
+            gorog = next(i for i, s in enumerate(sorok) if s.startswith('### Görög szavak'))
             cimek = [i for i, s in enumerate(sorok) if s.startswith('#### 4.8.')]
-            self.assertEqual(len(cimek), 1, azonosito)
-            pont = sorok[cimek[0]:sorok.index('#### 4.9. Versenkénti jelentés', cimek[0])]
+            self.assertEqual(len(cimek), 2, azonosito)   # a görög és a héber nyelvrészben
+            eleje = next(i for i in cimek if i > gorog)
+            pont = sorok[eleje:sorok.index('#### 4.9. Versenkénti jelentés', eleje)]
             self.assertTrue(any(mondat in s for s in pont), azonosito)
             self.assertFalse([s for s in pont if 'LSJ_teljes' in s or 'Middle voice' in s or 'G2564' in s])
             self.assertTrue({'B25', 'B26', 'B37'} <= {o.b_id for o in eredmeny.naplo})
+
+
+class NyelviHatterHeber(unittest.TestCase):
+    """A 4.8 pont héber része: a BDB-fej rövid alakja és a lánc szavainak rokon nyelvi táblája."""
+
+    @staticmethod
+    def _heber(azonosito):
+        m, _b = modell(azonosito)
+        return next(r for r in m.nyelvek if r.nyelv is sz.Nyelv.HEBER).heber_hatter
+
+    def test_a_fej_reszletei(self):
+        """Az alapjelentés az első zárójel előtti utolsó „: ” utáni rész (az első gondolatjelig), a gyök a „√”
+        utáni rész; mindkettő a fej szövegének változatlan részlete."""
+        from lapgen.bemenet import gerinc
+        hu = 'H0127. adama אֲדָמָה főnév: föld, termőföld — a ׳א 1Móz 2:5 (√ דם vö. arab bekenni; ld. ott)'
+        self.assertEqual(gerinc.fej_alap_gyok(hu), ('föld, termőföld', 'דם vö. arab bekenni'))
+        self.assertEqual(gerinc.fej_alap_gyok('H0001. ab אָב főnév (atya)'), ('', ''))
+        self.assertIsNone(gerinc._FEJ_ALAP_MEGENGEDETT_RX.match('a ׳י szava 3'))
+
+    def test_a_jelentes_mezo_olvasoi_resze_a_mezo_eleje(self):
+        """A B38 jelentés-mezőjéből a BDB-utalás zárójele csak a mező végéről válhat le (szerkezeti bontás); ha a
+        maradék nem a mező eleje, a bemenet megáll (a forrásban javítandó)."""
+        from lapgen.bemenet import nyelvi_hatter
+        self.assertEqual(nyelvi_hatter._eleje('jelentes', 'átkozni (a BDB a kötésre utal)', 'átkozni'), 'átkozni')
+        with self.assertRaises(bemenet.BemenetHiba):
+            nyelvi_hatter._eleje('jelentes', 'kenni (cf. arab) és bekenni', 'kenni és bekenni')
+
+    def test_a_lanc_mag(self):
+        """A HAMART-001 lánca a kritérium „az 1Móz 3–9 láncára” fordulatából jön; az ISTENTISZT-001-nek nincs
+        Pesat-gerince (szópáros motívum)."""
+        from lapgen.bemenet import motivum as mb
+        b = bemenet.Bemenet(kozos.GYOKER)
+        for azonosito, vart in (('HAMART-001', ('1Móz', 3, 9)), ('ISTENTISZT-001', None)):
+            motivum = MotivumId(azonosito)
+            mag = mb.lanc_mag(b, motivum, bemenet.b03_elofordulasok(b, motivum), bemenet.b07_karoli(b))
+            self.assertEqual(None if mag is None else (mag.konyv, mag.elso, mag.utolso), vart, azonosito)
+
+    def test_hamart_szolista_es_tabla(self):
+        """A HAMART-001: tíz héber szó, mindegyiknek van magyar fejrésze; a táblában hat lánc-szó a régi rendben, a
+        hiány okaival és a tővel (iccávón → ácav, chattát → chátá, chámász → chámasz)."""
+        h = self._heber('HAMART-001')
+        self.assertEqual(len(h.szavak), 10)
+        self.assertTrue(all(s.van_fej for s in h.szavak))
+        self.assertEqual([r.szo.strong.kod for r in h.rokon], ['H0779', 'H6093', 'H0127', 'H2403', 'H7843', 'H2555'])
+        hiany = {r.szo.strong.kod: (r.hiany, r.to.strong.kod if r.to else None) for r in h.rokon}
+        self.assertEqual(hiany['H6093'], (sz.nyelvi_hatter_sz.Hiany.NEM_AZONOSITOTT, 'H6087'))
+        self.assertEqual(hiany['H2403'], (sz.nyelvi_hatter_sz.Hiany.NINCS_SOR, 'H2398'))
+        self.assertEqual(hiany['H2555'], (sz.nyelvi_hatter_sz.Hiany.NINCS_ADAT, 'H2554'))
+        self.assertEqual(len(next(r for r in h.rokon if r.szo.strong.kod == 'H7843').sorok), 6)
+
+    def test_istentiszt_szopar_ut(self):
+        """Az ISTENTISZT-001 rokon nyelvi táblája a formula igéjére (kárá) épül; a targumi és az újhéber sor nem áll
+        benne, a romlott alakú arámi sor a romlottság megjegyzésével áll."""
+        h = self._heber('ISTENTISZT-001')
+        self.assertEqual([r.szo.strong.kod for r in h.rokon], ['H7121'])
+        sorok = h.rokon[0].sorok
+        self.assertEqual(len(sorok), 3)
+        self.assertIn((sz.nyelvi_hatter_sz.Megjegyzes.ROMLOTT,), [s.megjegyzesek for s in sorok])
 
 
 class ReszlegesRegresszio(unittest.TestCase):

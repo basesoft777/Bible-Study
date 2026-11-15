@@ -94,6 +94,18 @@ KIEGESZITO_SZOTARAK = ('SECE_G', 'SECE_H', 'MCGED')
 LXX_DONTES_BIZONYOSSAG = ('', 'biztos')
 LXX_DONTES_TIPUS = ('eltero_forditas', 'lxx_minusz')
 
+# 4.8, héber rész: a rokon nyelvi tábla (a régi `blokk_visszhang_hatter`, `_hatter_sorok`, `lanc_szo_jelentes`)
+VISSZHANG_FORDITASOK = ('targum', 'vulgata', 'lxx')   # az ókori fordítások forrásai a visszhang-táblában
+VISSZHANG_ROKON = 'bdb'                               # a BDB rokon nyelvi sorainak forrása
+ROKON_NYELVEK = ('asszír', 'akkád', 'arab', 'etióp', 'szír', 'arámi', 'óarámi', 'ugariti', 'Tell el-Amarna',
+                 'sabeus')   # az arámi: a BDB „Aramaic” alakja; a targumi (ᵑ7) sor nem rokon nyelvi háttér
+ROKON_TARGUM_JELEK = ('Targum', 'ᵑ7')
+ROKON_AZONOS = 'azonos a bibliai héberrel'
+ROKON_ROMLOTT = 'romlott'
+# A láncbeli törzs: ha a lánc-szó minden láncversében ugyanaz a nem Qal törzs áll, a régi kód a jelentést a TAHOT
+# glosszájából vette; ez az ág még nincs kész (kimondott hiba), a többi esetben a rövid jelentés áll
+NEM_QAL_TORZSEK = ("Pi'el", "Niph'al", "Hiph'il", "Hithpa'el", "Pu'al", "Hoph'al")
+
 # Az arány fokozatai a következtetés mondatához: (alsó határ, fokozat), csökkenő rendben
 FOKOK = ((0.90, 'szinte'), (0.67, 'tobbseg'), (0.50, 'fele'), (0.0, 'keves'))
 VERSENKENTI_KIS = 2     # ha minden szó legfeljebb ennyi helyen áll, a versenkénti pont nem von le következtetést

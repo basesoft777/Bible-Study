@@ -357,3 +357,35 @@ s4.p8.gorog.csonk	{szo} LSJ-szócikke csak az alapigére utal: {alap}.	szo:latha
 s4.p8.gorog.csonk.rokon	Az alapige LSJ-szócikke a rokon szavaknál áll.	-	4.8	uj	var
 s4.p8.gorog.csonk.nincs	Az alapige LSJ-szócikke a lexikon adatai között nem áll.	-	4.8	uj	var
 s4.p8.gorog.csonkok	*{csonkok| } {zaro}*	csonkok:lista(lathato), zaro:lathato	4.8	uj	var
+s4.p8.heber.bevezeto	A szó eredete és nyelvi háttere.	-	4.8	SZEREP_BEVEZETO[heber, 8]	-
+s4.p8.heber.sor	**{szo}** · {reszek| · }	szo:lathato, reszek:lista(lathato)	4.8	_gerinc_bdb_fej_rovid	-
+s4.p8.heber.sor.ures	**{szo}** · —	szo:lathato	4.8	_gerinc_bdb_fej_rovid	-
+s4.p8.heber.alap	alapjelentés: {alap}	alap:lathato	4.8	_gerinc_bdb_fej_rovid	-
+s4.p8.heber.alap.rovid	alapjelentés: {jelentes} *(a STEPBible rövid szótára szerint)*	jelentes:lathato	4.8	_gerinc_bdb_fej_rovid	-
+s4.p8.heber.gyok	gyök (√): {gyok}	gyok:lathato	4.8	_gerinc_bdb_fej_rovid	-
+s4.p8.heber.nincs_fej	**{szo}** · a BDB-szócikk feje magyarul nem áll rendelkezésre; a szócikk a {szakasz}.{pont} pontban áll.	szo:lathato, szakasz:szam, pont:szam	4.8	uj	var
+s4.p8.heber.teljes_fej	A szavak teljes BDB-szócikkfeje (a nyelvtani alakokkal) a {szakasz}.{pont} pontban áll.	szakasz:szam, pont:szam	4.8	rokon_tabla_48	-
+cim.s4.p8.rokon	Háttér: rokon nyelvek (BDB)	-	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.bevezeto	A lánc héber szavainak rokon nyelvi alakjai a BDB-szótár szerint (akkád/asszír, arab, etióp, szír, arámi, óarámi, Tell el-Amarna, sabeus), kiejtéssel és magyar jelentéssel. A rokon nyelv a szó eredetéről szól, nem a motívum funkciójáról.	-	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.fejlec.szo	Szó	-	4.8	rokon_tabla_48 (a „Lánc-szó” fejléc cseréje)	-
+s4.p8.rokon.fejlec.nyelv	Rokon nyelv · szó (kiejtés)	-	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.fejlec.jelentes	Jelentés	-	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.fejlec.megj	Megjegyzés	-	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.cim	{szo} — {jelentes}	szo:lathato, jelentes:lathato	4.8	_lanc_szo_cim	-
+s4.p8.rokon.to.cim	↳ tő: {to}	to:lathato	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.nyelv	{nyelv} {alakok| · }	nyelv:lathato, alakok:lista(lathato)	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.alak	{alak} ({kiejtes})	alak:lathato, kiejtes:lathato	4.8	_hatter_sorok	-
+s4.p8.rokon.jelentesek	{jelentesek|; }	jelentesek:lista(lathato)	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.megj.iras	A BDB az alakot írás nélkül adja	-	4.8	_hatter_sorok + cellakezdet	-
+s4.p8.rokon.megj.romlott	A BDB szövegében az alak romlottan áll	-	4.8	_hatter_sorok + cellakezdet	-
+s4.p8.rokon.megj.biz	BDB szerint bizonytalan vagy ritka	-	4.8	_hatter_sorok + cellakezdet	-
+s4.p8.rokon.megj.iras_biz	A BDB az alakot írás nélkül adja; a BDB szerint bizonytalan vagy ritka	-	4.8	_hatter_sorok + cellakezdet	-
+s4.p8.rokon.megj.biz_romlott	A BDB szerint bizonytalan vagy ritka; a BDB szövegében az alak romlottan áll	-	4.8	_hatter_sorok + cellakezdet	-
+s4.p8.rokon.nincs_sor	Nincs rokon nyelvi alak a BDB szócikkében	-	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.nincs_sor.to	Nincs rokon nyelvi alak a BDB szócikkében; az igei tő, a {to} szócikke ad rokon alakokat, ezek a táblában nem szerepelnek	to:lathato	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.nincs_kinyeres	A rokon nyelvi adat kinyerése még nem történt meg	-	4.8	blokk_visszhang_hatter + cellakezdet	-
+s4.p8.rokon.nem_azonositott	A rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon nyelvi alak nem áll	-	4.8	blokk_visszhang_hatter + cellakezdet	-
+s4.p8.rokon.nem_talalhato	Nem azonosítható: a BDB-szócikk nem található	-	4.8	blokk_visszhang_hatter	-
+s4.p8.rokon.nincs_adat	BDB-szócikkben nincs rokon nyelvi adat	-	4.8	blokk_visszhang_hatter + cellakezdet	-
+s4.p8.rokon.fonev_nincs	A főnév szócikkében nincs rokon nyelvi adat	-	4.8	blokk_visszhang_hatter (szövegcsere) + cellakezdet	-
+s4.p8.rokon.to_szerint	{elo}; a tő, a {to} ige szócikke szerint:	elo:lathato, to:lathato	4.8	blokk_visszhang_hatter	-

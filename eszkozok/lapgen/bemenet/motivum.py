@@ -71,6 +71,38 @@ def kriterium_szoveg(b, motivum):
     return ' '.join(reszek) if reszek else None
 
 
+_LANC_MAG_RX = re.compile(r'\baz? (\S+) (\d+)[–-](\d+)\.? láncára\b')
+_PESAT = 'peshat'
+
+
+class LancMag:
+    """A motívum Pesat-gerince: a könyv és a fejezet-tartomány (a régi `lanc_mag`)."""
+    __slots__ = ('konyv', 'elso', 'utolso')
+
+    def __init__(self, konyv, elso, utolso):
+        self.konyv, self.elso, self.utolso = konyv, elso, utolso
+
+    def tartalmazza(self, igehely):
+        return igehely.konyv == self.konyv and self.elso <= igehely.fejezet <= self.utolso
+
+
+def lanc_mag(b, motivum, sorok, karoli):
+    """A motívum Pesat-gerince (a régi `lanc_mag` szabálya): (1) ha a kritérium megnevezi a láncot („az 1Móz 3–9
+    láncára”), az; (2) különben a Pesat-szintű sorok fejezet-tartománya az első Pesat-sor könyvében (a sorok a tábla
+    rendjében); (3) Pesat-sor nélkül None. A kritérium kézi szövegéből csak a hivatkozás szerkezete jön (könyv,
+    két fejezetszám), a szöveg nem kerül a lapra."""
+    m = _LANC_MAG_RX.search(kriterium_szoveg(b, motivum) or '')
+    if m:
+        return LancMag(m.group(1), int(m.group(2)), int(m.group(3)))
+    pesat = [v for s in sorok if any(_PESAT in szint.ertek.lower() for szint in s.pardes_szintek)
+             for v in karoli.versek(s.igehely)]
+    if not pesat:
+        return None
+    konyv = pesat[0].konyv
+    fejezetek = [v.fejezet for v in pesat if v.konyv == konyv]
+    return LancMag(konyv, min(fejezetek), max(fejezetek))
+
+
 def tagabb_kor_rovid(b, motivum):
     """A tágabb kör rövid alakja kézi prózaként: a mező szövege az első zárójeles kiegészítésig (a 4.12 bevezetője
     ezt idézi; a zárójeles pontosítás csak a lap elején áll). None, ha a mező üres. A réteg a szöveget nem írja át:

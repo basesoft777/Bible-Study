@@ -7,7 +7,9 @@ hiányzik a `_PONTOK` táblából: a lap ilyenkor részleges, a pont kimarad.
 from lapgen import konfig
 from lapgen.megjelenites.md import keret as K
 from lapgen.megjelenites.md import szotari_karoli, szotari_nave
+from lapgen.szamitas.nyelvi_hatter import Hiany, Megjegyzes
 from lapgen.szamitas.szocikkek import HatterFajta, Nyelv
+from lapgen.szamitas.vizsgalat import KapuHiba
 
 AZONOSITO = 'szocikkek'
 HATASTORTENET, ELOFORDULASOK = 'hatastortenet', 'elofordulasok'
@@ -268,8 +270,92 @@ def _versenkent(iro, ny, szakasz, resz, keret):
                             reszek=tuple(reszek)))
 
 
+_MEGJEGYZES = {
+    (): 'jel.nincs',
+    (Megjegyzes.IRAS_NELKUL,): 's4.p8.rokon.megj.iras',
+    (Megjegyzes.ROMLOTT,): 's4.p8.rokon.megj.romlott',
+    (Megjegyzes.BIZONYTALAN,): 's4.p8.rokon.megj.biz',
+    (Megjegyzes.IRAS_NELKUL, Megjegyzes.BIZONYTALAN): 's4.p8.rokon.megj.iras_biz',
+    (Megjegyzes.BIZONYTALAN, Megjegyzes.ROMLOTT): 's4.p8.rokon.megj.biz_romlott',
+}
+_HIANY = {
+    Hiany.NINCS_KINYERES: 's4.p8.rokon.nincs_kinyeres',
+    Hiany.NEM_AZONOSITOTT: 's4.p8.rokon.nem_azonositott',
+    Hiany.NEM_TALALHATO: 's4.p8.rokon.nem_talalhato',
+    Hiany.NINCS_ADAT: 's4.p8.rokon.nincs_adat',
+}
+
+
+def _rokon_cellak(ny, cim, sor):
+    """Egy rokon nyelv sorának négy cellája."""
+    alakok = tuple(ny.s('s4.p8.rokon.alak', alak=a.alak, kiejtes=a.kiejtes) if a.kiejtes is not None else a.alak
+                   for a in sor.alakok)
+    if sor.megjegyzesek not in _MEGJEGYZES:
+        raise KapuHiba('4.8: a rokon nyelvi sor megjegyzés-együttesére nincs sablonmondat')
+    return (cim, ny.s('s4.p8.rokon.nyelv', nyelv=sor.nyelv, alakok=alakok) if alakok else sor.nyelv,
+            ny.s('s4.p8.rokon.jelentesek', jelentesek=sor.jelentesek) if sor.jelentesek else ny.s('jel.nincs'),
+            ny.s(_MEGJEGYZES[sor.megjegyzesek]))
+
+
+def _rokon_tabla(iro, ny, rokon):
+    """A lánc héber szavainak rokon nyelvi táblája (a régi „Háttér: rokon nyelvek (BDB)” blokk)."""
+    iro.cimsor(5, ny.s('cim.s4.p8.rokon'))
+    iro.ures()
+    K.olvasoi_bekezdes(iro, ny.s('s4.p8.rokon.bevezeto'))
+    fejlec = ('s4.p8.rokon.fejlec.szo', 's4.p8.rokon.fejlec.nyelv', 's4.p8.rokon.fejlec.jelentes',
+              's4.p8.rokon.fejlec.megj')
+    iro.tabla_sor(tuple(ny.s(k) for k in fejlec))
+    iro.tabla_elvalaszto(len(fejlec))
+    nincs = ny.s('jel.nincs')
+    for r in rokon:
+        cim = ny.s('s4.p8.rokon.cim', szo=szo_iras(ny, r.szo), jelentes=r.jelentes) if r.jelentes is not None \
+            else szo_iras(ny, r.szo)
+        if r.hiany is Hiany.NINCS_SOR:
+            elo = ny.s('s4.p8.rokon.nincs_sor.to', to=szo_iras(ny, r.to)) if r.to is not None \
+                else ny.s('s4.p8.rokon.nincs_sor')
+            iro.tabla_sor((cim, elo, nincs, nincs))
+        elif r.hiany is not None and r.to_sorok:
+            elo = ny.s('s4.p8.rokon.fonev_nincs' if r.hiany is Hiany.NINCS_ADAT else _HIANY[r.hiany])
+            to = szo_iras(ny, r.to)
+            iro.tabla_sor((cim, ny.s('s4.p8.rokon.to_szerint', elo=elo, to=to), nincs, nincs))
+            for sor in r.to_sorok:
+                iro.tabla_sor(_rokon_cellak(ny, ny.s('s4.p8.rokon.to.cim', to=to), sor))
+        elif r.hiany is not None:
+            iro.tabla_sor((cim, ny.s(_HIANY[r.hiany]), nincs, nincs))
+        else:
+            for sor in r.sorok:
+                iro.tabla_sor(_rokon_cellak(ny, cim, sor))
+    iro.ures()
+
+
+def _heber_hatter(iro, ny, szakasz, h):
+    """A 4.8 pont héber része: szavanként a BDB-fej rövid alakja, a mutató a teljes fejre, és a rokon nyelvi tábla."""
+    K.olvasoi_bekezdes(iro, ny.s('s4.p8.heber.bevezeto'))
+    for s in h.szavak:
+        szo = szo_iras(ny, s.szo)
+        if not s.van_fej:
+            _bekezdes(iro, ny.s('s4.p8.heber.nincs_fej', szo=szo, szakasz=szakasz, pont=konfig.PONT_MELYSEGI))
+            continue
+        reszek = []
+        if s.alap is not None:
+            reszek.append(ny.s('s4.p8.heber.alap', alap=s.alap))
+        elif s.rovid is not None:
+            reszek.append(ny.s('s4.p8.heber.alap.rovid', jelentes=s.rovid))
+        if s.gyok is not None:
+            reszek.append(ny.s('s4.p8.heber.gyok', gyok=s.gyok))
+        _bekezdes(iro, ny.s('s4.p8.heber.sor', szo=szo, reszek=tuple(reszek)) if reszek
+                  else ny.s('s4.p8.heber.sor.ures', szo=szo))
+    _bekezdes(iro, ny.s('s4.p8.heber.teljes_fej', szakasz=szakasz, pont=konfig.PONT_MELYSEGI))
+    if h.rokon is not None:
+        _rokon_tabla(iro, ny, h.rokon)
+
+
 def _nyelvi_hatter(iro, ny, szakasz, resz, keret):
-    """A 4.8 pont görög része (LSJ): nincs adat; rokon szavak szócikkel; vagy az összetett ige utaló csonkja."""
+    """A 4.8 pont. Görögül (LSJ): nincs adat; rokon szavak szócikkel; vagy az összetett ige utaló csonkja.
+    Héberül: a BDB-fej rövid alakja és a rokon nyelvi tábla."""
+    if resz.heber_hatter is not None:
+        _heber_hatter(iro, ny, szakasz, resz.heber_hatter)
+        return
     h = resz.gorog_hatter
     K.olvasoi_bekezdes(iro, ny.s('s4.p8.gorog.bevezeto'))
     if h.fajta is HatterFajta.NINCS:
@@ -308,8 +394,8 @@ def _nyelvresz(iro, ny, szakasz, resz, keret):
     K.olvasoi_bekezdes(iro, ny.s(ny.kulcs('s4.nyelv', nyelv), szavak=tuple(szo_iras(ny, szo) for szo in resz.szavak),
                                  szakasz=szakasz, elso=min(resz.pontok), utolso=max(resz.pontok)))
     for pont in resz.pontok:
-        if pont not in _PONTOK or (pont == konfig.PONT_NYELVI_HATTER and resz.gorog_hatter is None):
-            continue   # a pont megjelenítője még nem készült el (részleges lap; a 4.8 héber része még hiányzik)
+        if pont not in _PONTOK or (pont == konfig.PONT_NYELVI_HATTER and resz.gorog_hatter is None and resz.heber_hatter is None):
+            continue   # a pont megjelenítője még nem készült el (részleges lap)
         _pont_cim(iro, ny, szakasz, pont)
         _PONTOK[pont](iro, ny, szakasz, resz, keret)
 
