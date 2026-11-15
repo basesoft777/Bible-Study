@@ -4,6 +4,7 @@ cim: Gépi lezárás a merge-kor — a mergelt PR briefje `lezarva`, a `lezar:` 
 kod: BRIEF_LEZARAS
 tipus: feladat
 fazis: folyamat
+sav: SYSTEMS
 modell: sonnet
 allapot: fut
 ad: a main-re futó `feladatok.yml` a mergelt PR briefjét `lezarva`-ra állítja (ha csak a merge volt hátra), és a `lezar:` N-tételeit lezárja; a kapu jelent, ha egy mergelt brief nincs lezárva, vagy egy lezárt brief N-tétele nyitva maradt
