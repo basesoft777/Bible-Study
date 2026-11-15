@@ -107,8 +107,8 @@ def pr_szam_fejbol(fej):
 
 
 def lezar_lista(szoveg):
-    """A `lezar:` fejlecmezo elemei a brief SZOVEGEBOL. Nyersen olvassa: amig a `feladatok.py` KULCSOK listaja
-    nem ismeri a mezot, a fejlec-elemzo ismeretlen kulcskent eldobja (a sema-bovites a #sav PR utan jon)."""
+    """A `lezar:` fejlecmezo elemei a brief SZOVEGEBOL (nyersen olvassa: a main-en egy regebbi `feladatok.py`
+    is fut, ha a Action egy elavult checkoutot kap; a mezo a KULCSOK-ban a B. resz (F219) ota szerepel)."""
     sorok = szoveg.replace('\r\n', '\n').split('\n')
     if not sorok or sorok[0].lstrip('﻿').strip() != '---':
         return []
@@ -124,8 +124,8 @@ def lezar_lista(szoveg):
     return []
 
 
-# a fejlec-elemzo ezeket meg nem ismeri; a jelenlegi (ismeretlen kulcs) hibajuk nem akadaly
-UJ_KULCSOK = ('lezar', 'sav')
+# olyan fejlecmezok, amelyeket egy regebbi fejlec-elemzo meg ismeretlen kulcskent hibaztat (nem akadaly)
+UJ_KULCSOK = ('lezar',)
 
 
 def hibak_akadaly(b):
