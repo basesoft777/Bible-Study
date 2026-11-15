@@ -184,6 +184,20 @@ class Csomag(unittest.TestCase):
         for rel in ('paper/kezirat_hu.md', 'paper/kezirat_en.md'):
             self.assertTrue(E.ENGEDETT.match(rel), rel)
 
+    def test_egyutt_szakasz(self):
+        # a két adatkészlet együtt: a másik adatkészlet concept DOI-ja, és a példasorok az adat sorai
+        for rel, cim in (('README.md', '## Using the two datasets together'),
+                         (CS.OLVASSEL, '## A két adatkészlet együtt')):
+            sz = self.fajlok[rel]
+            self.assertIn(cim, sz)
+            self.assertIn('https://doi.org/10.5281/zenodo.24141883', sz.split(cim)[1].split('\n## ')[0])
+        readme = self.fajlok['README.md']
+        mod = [s.split('\t') for s in self.fajlok['data/konyvek/01_Gen.tsv'].split('\n') if s.startswith('Gen.1.1\t')]
+        pelda = [s for s in mod if int(s[1]) <= 3]
+        self.assertGreaterEqual(len(pelda), 3)
+        for s in pelda:
+            self.assertIn('| %s | %s | %s | %s | %s | %s | %s |' % (s[1], s[2], s[3], s[4], s[10], s[9], s[11]), readme)
+
     def test_concept_doi(self):
         for rel, sz in self.fajlok.items():
             for regi in ('24141884', '24141950', '24141612'):                                # a verzió-DOI nem áll a fájlokban

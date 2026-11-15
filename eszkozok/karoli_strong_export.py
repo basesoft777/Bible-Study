@@ -37,6 +37,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nyilt_mag_export as NM  # noqa: E402  (OSIS-kulcs, közös azonosítók)
 import karoli_strong_szovegek as SZ  # noqa: E402  (a nyilvános szövegek prózája)
 import karoli_csomag as CS  # noqa: E402  (a csomag szerkezete)
+import karoli_egyutt as EG  # noqa: E402  (a „két adatkészlet együtt” szakasz)
 from nevelo import (NEVELO_SZAM_RX, MAGANHANGZO, szam_nevelo, szo_nevelo,  # noqa: E402,F401  (közös névelő-szabály)
                     nevelo_javit, nevelo_hibak)
 
@@ -404,6 +405,7 @@ def fmt(N, nyelv):
     F['doi'] = DOI
     F['doi_modern'] = DOI_MODERN
     F['doi_mag'] = DOI_MAG
+    F['egyutt'] = EG.szakasz('strong', nyelv)
     F['lex_hu'] = NM.LEXIKON_CIM_HU
     F['lex_en'] = NM.LEXIKON_CIM_EN
     F['szerzo'] = NM.SZERZO
