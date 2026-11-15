@@ -4,6 +4,7 @@ cim: Gépi lezárás a merge-kor — a mergelt PR briefje `lezarva`, a `lezar:` 
 kod: BRIEF_LEZARAS
 tipus: feladat
 fazis: folyamat
+sav: SYSTEMS
 modell: sonnet
 sav: SYSTEMS
 allapot: fut

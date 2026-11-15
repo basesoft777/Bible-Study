@@ -4,6 +4,7 @@ cim: A heti áttekintő oldal generátora — sávonként a brief-fejlécekből 
 kod: HETI_ATTEKINTO
 tipus: feladat
 fazis: folyamat
+sav: SYSTEMS
 modell: sonnet
 sav: SYSTEMS
 allapot: fut

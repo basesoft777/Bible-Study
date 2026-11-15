@@ -4,6 +4,7 @@ cim: Két védőszabály a szabályhelyekre (hatókör-szűkítés, felhasznál�
 kod: VEDOSZABALYOK
 tipus: feladat
 fazis: folyamat
+sav: SYSTEMS
 modell: sonnet
 sav: SYSTEMS
 allapot: fut
