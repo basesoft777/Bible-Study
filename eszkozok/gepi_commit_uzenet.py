@@ -41,7 +41,7 @@ def valtozott(gyoker):
     return [s for s in p.stdout.decode('utf-8', 'replace').split('\0') if s]
 
 
-def uzenet(fajlok, szam_uzenet=None):
+def uzenet(fajlok, szam_uzenet=None, torzs=None):
     cimek = []
     for cim, mintak in CSOPORTOK:
         if any(f == m or f.startswith(m) for f in fajlok for m in mintak):
@@ -64,19 +64,26 @@ def uzenet(fajlok, szam_uzenet=None):
     for cim in cimek:
         resz.append(cim.replace(' frissítés (gép)', ' frissítve'))
     sorok.append('Egy futás, egy commit (F201): ' + '; '.join(resz) + '.' if resz else 'Egy futás, egy commit (F201).')
+    if torzs and torzs.strip():
+        sorok += ['', torzs.strip()]
     return '\n'.join(sorok) + '\n'
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     ap.add_argument('--szam-uzenet', default=None, help='a szamkiosztas.py uzenetfajlja (ha volt kiosztas)')
+    ap.add_argument('--torzs-fajl', default=None, help='a torzshoz fuzendo szoveg (a brief_lezaras.py uzenete)')
     ap.add_argument('--gyoker', default='.')
     a = ap.parse_args()
     szam = None
     if a.szam_uzenet and os.path.exists(a.szam_uzenet):
         with open(a.szam_uzenet, 'rb') as f:
             szam = f.read().decode('utf-8')
-    sys.stdout.write(uzenet(valtozott(a.gyoker), szam))
+    torzs = None
+    if a.torzs_fajl and os.path.exists(a.torzs_fajl):
+        with open(a.torzs_fajl, 'rb') as f:
+            torzs = f.read().decode('utf-8')
+    sys.stdout.write(uzenet(valtozott(a.gyoker), szam, torzs))
     return 0
 
 

@@ -5,6 +5,7 @@ kod: MIGRACIO
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/f11-sema-t3
 munka: ertelmezo

@@ -3129,6 +3129,10 @@ KULSO_SZABALYOK = (
      'lapon (`--minden --szigoru`)', '`eszkozok/ellenorzes/allitas_adat.py`'),
     ('E39', 'HIBA', 'követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés '
      'jelentés (`--szigoru`, a kapuemelési döntés)', '`eszkozok/ellenorzes/kovetelmeny_kapu.py`'),
+    # F200.7 (N-F200d, DT-F200e; a felhasznalo: „ez menjen most”): a proza-allitas ELTÉR-sora HIBA az uj formaju kezi forrasokon
+    ('E41', 'HIBA', 'próza-állítás kapu: a kézi forrás versre hivatkozó állításainak gépi ítélete (ELTÉR-sor) HIBA az új '
+     'formájú forrásokon; a régi formájú forrás kimarad, és ezt a kimenet kimondja (`--kapu`)',
+     '`eszkozok/proza_allitas.py`'),
 )
 
 

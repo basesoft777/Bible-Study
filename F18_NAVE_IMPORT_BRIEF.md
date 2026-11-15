@@ -5,6 +5,7 @@ kod: F18
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: "Nave-témák és igehely-hivatkozások a basokant/nave nyers szövegéből (5 322 entry, DT5: a theonize nincs importálva); az eredet-ellenőrzés a 4980 témán nem futott"
 kovetkezo: "DT29 tételei a felhasználó döntésére várnak"

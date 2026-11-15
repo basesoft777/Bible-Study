@@ -5,6 +5,7 @@ kod: F17
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: Macula a Strong-számhoz és a KK-hoz kötve; a #8 fő forrása
 kovetkezo: `/kovetkezo` csomag: #16–#19 és #7

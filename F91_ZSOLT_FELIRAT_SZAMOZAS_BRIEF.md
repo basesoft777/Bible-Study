@@ -5,6 +5,7 @@ kod: ZSOLT_FELIRAT_SZAMOZAS
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 ag: claude/f91-zsolt-felirat-szamozas

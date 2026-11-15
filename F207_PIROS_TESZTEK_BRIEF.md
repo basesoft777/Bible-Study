@@ -5,6 +5,7 @@ kod: PIROS_TESZTEK
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/lucid-tesla-29681d
 ad: a `python eszkozok/teszt_futtat.py --gyors` újra zöld; minden bukás besorolva (a/b/c), a tiltott fájlokba nem nyúltunk

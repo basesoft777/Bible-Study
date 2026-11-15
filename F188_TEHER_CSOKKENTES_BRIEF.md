@@ -5,6 +5,7 @@ kod: TEHER_CSOKKENTES
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: SYSTEMS
 allapot: fut
 ag: claude/f188-teher-csokkentes
 pr: 677

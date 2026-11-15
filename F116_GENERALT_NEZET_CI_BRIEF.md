@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ag: claude/f116-generalt-nezet-ci
 ad: E28 (a generált nézet bájtra egyezik a commit adat- és forrásrétegéből újragenerálttal) és E29 (a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO`) a CI-ban, pozitív és negatív tesztekkel, a migrált nézetek engedélyezőlistájával (kezdetben üres); a mai main-en 0 HIBA, méréssel igazolva

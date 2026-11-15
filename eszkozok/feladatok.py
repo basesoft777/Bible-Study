@@ -59,9 +59,16 @@ FAZISOK = ('1', '2', 'folyamat')
 ALLAPOTOK = ('nem_indult', 'brief_kell', 'fut', 'dontesre_var', 'megallt', 'lezarva')
 MODELLEK = ('sonnet', 'opus', 'haiku', 'fable')
 MUNKAK = ('adat', 'ertelmezo', 'folyamat')   # F32 (K2): a munka fajtaja
+# Savok (a felhasznalo dontese, 2026-11-14): SYSTEMS = fejlesztoi infrastruktura (CI, Actionok, kapuk, tesztek,
+# feladatrendszer, parancsok); CONTENT = tartalomkeszites (motivumok, lapok, lapgenerator, adat, nyilt adatcsomagok,
+# kozlemenyek); SERVER = olvaso-szerver; USER = felhasznalokezeles, elofizetes, jogok (#86). Kethes esetben a fo termek.
+SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER')
+# Atmenet: a nyitott PR-ban levo briefek sav-ja a sajat PR-jukban erkezik; ott a mezo addig nem kotelezo.
+# A PR-ok merge-e utan ez a tuple urit (a sav onnantol minden feladat/naplozas briefnel kotelezo).
+SAV_ATMENET_KIVETEL = (217, 218)
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
-           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz')
+           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav')
 LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg', 'motivum_kesz')
 KOTELEZO = {
     'feladat': ('feladat', 'cim', 'tipus', 'fazis', 'modell', 'allapot', 'ad', 'kovetkezo'),
@@ -425,6 +432,11 @@ def ellenoriz(briefek, gyoker=REPO):
                           % (modell, rm)))
         if fej.get('munka') not in (None,) + MUNKAK:
             hibak.append((b.fajl, 'munka: adat | ertelmezo | folyamat'))
+        if 'sav' in fej and fej['sav'] not in SAVOK:
+            hibak.append((b.fajl, 'sav: %s (kapott: %r)' % (' | '.join(SAVOK), fej['sav'])))
+        elif ('sav' not in fej and tipus in ('feladat', 'naplozas')
+                and fej.get('feladat') not in SAV_ATMENET_KIVETEL):
+            hibak.append((b.fajl, 'hiányzó kötelező mező: sav (%s)' % ' | '.join(SAVOK)))
         for uzenet in kontextus_hibak(b):
             hibak.append((b.fajl, uzenet))
         mh = munka_hiany_uzenet(b)
@@ -1031,17 +1043,27 @@ def _allapot_cella(b, main_all):
 
 
 def _tabla(briefek, fugg, by_szam, main_all, fejlec):
+    """Savonkent csoportositott tablak (SAVOK sorrendje, majd a sav nelkuliek); egy tabla, ha csak egy sav van."""
     if not briefek:
         return '*(nincs nyitott feladat)*'
-    sorok = ['| # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | %s | Hol |' % fejlec,
-             '|---|---|---|---|---|---|---|']
-    for b in sorted(briefek, key=lambda x: x.szam):
-        cim = b.fej['cim'] + (' (%s)' % b.fej['kod'] if 'kod' in b.fej else '')
-        sorok.append('| %d | %s | %s | %s | %s | %s | %s |' % (
-            b.szam, _cella(cim), _cella(b.fej['ad']), _allapot_cella(b, main_all),
-            _cella(_fugg_cella(b, fugg, by_szam, main_all)),
-            _cella(b.fej['kovetkezo']), _hol(b)))
-    return '\n'.join(sorok)
+    csoportok = [(s, [b for b in briefek if b.fej.get('sav') == s]) for s in SAVOK]
+    csoportok.append(('(sáv nélkül)', [b for b in briefek if b.fej.get('sav') not in SAVOK]))
+    csoportok = [(s, bs) for s, bs in csoportok if bs]
+    blokkok_ = []
+    for sav, tagok in csoportok:
+        sorok = []
+        if len(csoportok) > 1:
+            sorok += ['**%s**' % sav, '']
+        sorok += ['| # | Feladat | Mit ad, ha kész | Állapot | Függ ettől | %s | Hol |' % fejlec,
+                  '|---|---|---|---|---|---|---|']
+        for b in sorted(tagok, key=lambda x: x.szam):
+            cim = b.fej['cim'] + (' (%s)' % b.fej['kod'] if 'kod' in b.fej else '')
+            sorok.append('| %d | %s | %s | %s | %s | %s | %s |' % (
+                b.szam, _cella(cim), _cella(b.fej['ad']), _allapot_cella(b, main_all),
+                _cella(_fugg_cella(b, fugg, by_szam, main_all)),
+                _cella(b.fej['kovetkezo']), _hol(b)))
+        blokkok_.append('\n'.join(sorok))
+    return '\n\n'.join(blokkok_)
 
 
 def _merge_info(gyoker, b):

@@ -5,6 +5,7 @@ kod: FORRASKIVEZETES
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: CONTENT
 munka: ertelmezo
 allapot: lezarva
 pr: 176

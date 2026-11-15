@@ -5,6 +5,7 @@ kod: ZSOLTAR_UJRAELLENORZES
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: ertelmezo
 allapot: lezarva
 pr: 424

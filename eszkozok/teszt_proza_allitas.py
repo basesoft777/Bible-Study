@@ -19,11 +19,16 @@ Károli-párosítás). Így a HAMART-001 javítóköre nem töri el a tesztet.
 9. A lektori lista pontossági tételei (1. vagy 4. kérdés).
 10. F206: kapcsolat-állítás a kapcsolat-sor mellett (nincs sor / csak közepes: ⚑; magas: nincs jelzés; a motívumon
     kívüli hely és a kapcsolat-adat nélküli motívum nem jelez); hatókör: a helycsoport tematikus helye.
+11. F200.7 (HIBA-szint, E41): a téves riasztás három oka (a „lexikai” minősítésű szám, a fordulat-idézet legközelebbi
+    igehelye és névelője, a mondat által megnevezett héber szó) és a `--kapu` (új/régi formájú forrás, bukó és átmenő eset).
 
 Futtatás: python eszkozok/teszt_proza_allitas.py
 """
+import io
 import os
+import shutil
 import sys
+import tempfile
 import unittest
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -46,7 +51,7 @@ ELOF = [
     {'id': 'X-001', 'igehely': 'Ez 8:17', 'gerinc_elem': 'málé+chámász', 'strong': 'H2555'},
 ]
 VERSEK_KELL = ['Ézs 24:5-6', 'Hós 4:1-3', '1Móz 4:14', '1Móz 6:11', '1Móz 8:21', 'Ez 7:23', 'Ez 8:17', 'Ez 12:19', '2Kir 17:23', '1Kir 14:15',
-               'Ámós 9:8', '5Móz 27:15']
+               'Ámós 9:8', '5Móz 27:15', '1Kir 13:34', 'Jer 23:10']
 
 _KORNYEZET = {}
 
@@ -249,6 +254,119 @@ class F206(unittest.TestCase):
         kimondva = mondat.replace('áll.', 'áll; a Jel 22:3 tematikus.')
         sorok = futtat_k(kimondva, [], forras='rés:modszertan', alap_ref=None, elof=elof)
         self.assertFalse([s for s in sorok if s.tipus == 'hatókör'])
+
+
+FORRAS_ATOK = FORRAS + """#### H0779 — אָרַר (árar) · BDB
+A lánc szava még az átok (árar).
+"""
+ELOF_NT = ELOF + [
+    {'id': 'X-001', 'igehely': 'Róm 8:21', 'gerinc_elem': 'G5356', 'strong': 'G5356'},
+    {'id': 'X-001', 'igehely': 'Gal 3:13', 'gerinc_elem': 'G1944', 'strong': 'G1944'},
+    {'id': 'X-001', 'igehely': 'Zsid 6:7', 'gerinc_elem': 'G2671', 'strong': 'G2671'},
+    {'id': 'X-001', 'igehely': 'Jel 11:18', 'gerinc_elem': 'G1311', 'strong': 'G1311'},
+    {'id': 'X-001', 'igehely': 'Jel 19:2', 'gerinc_elem': 'G5351', 'strong': 'G5351'},
+    {'id': 'X-001', 'igehely': 'Jel 22:3', 'gerinc_elem': 'tematikus:1Móz 3:17', 'strong': ''},
+]
+
+
+class F200_7(unittest.TestCase):
+    """F200.7: a HIBA-szintre emelés előtti mérés (naplok/F200_HIBA_SZINT_MERES.md) téves riasztásainak gépi javítása."""
+
+    def test_szam_lexikai_minosites(self):
+        # öt lexikai + egy tematikus újszövetségi hely: az „öt lexikai” egyezik, a minősítés nélküli „öt” ELTÉR
+        jo = futtat_k('A motívum öt lexikai újszövetségi helyén a lánc szava ugyanott áll.', [],
+                      forras='rés:modszertan', alap_ref=None, elof=ELOF_NT)
+        self.assertEqual([s.itelet for s in jo if s.tipus == 'szám'], ['egyezik'])
+        rossz = futtat_k('A motívum öt újszövetségi helyén a lánc szava ugyanott áll.', [],
+                         forras='rés:modszertan', alap_ref=None, elof=ELOF_NT)
+        self.assertEqual([s.itelet for s in rossz if s.tipus == 'szám'], ['ELTÉR'])
+        # a lexikai csoport számát is ellenőrzi: hat lexikai helyből csak öt van
+        rossz = futtat_k('A motívum hat lexikai újszövetségi helyén a lánc szava ugyanott áll.', [],
+                         forras='rés:modszertan', alap_ref=None, elof=ELOF_NT)
+        self.assertEqual([s.itelet for s in rossz if s.tipus == 'szám'], ['ELTÉR'])
+
+    def test_fordulat_a_fordulat_elotti_helyekre(self):
+        mondat = ('Az 1Kir 13:34-ben és az Ámós 9:8-ban a „föld színéről” fordulattal, az 1Kir 14:15-ben és a 2Kir 17:23-ban '
+                  '„a földről” áll a föld szava.')
+        sorok = futtat(mondat, forras='rés:ertelmezes')
+        it = iteletek(sorok, 'fordulat')
+        self.assertIn(('Ámós 9:8', 'egyezik'), it)
+        self.assertFalse([s for s in sorok if s.tipus == 'fordulat' and s.itelet == 'ELTÉR'])
+        # a névelős idézet („a földről”) nem kétszavas fordulat
+        self.assertFalse([s for s in sorok if s.tipus == 'fordulat' and 'a földről' in s.allitas])
+
+    def test_fordulat_valodi_hiba_marad(self):
+        # a fordulat a következő helyre szól és a versből hiányzik: továbbra is ELTÉR
+        sorok = futtat('A „föld színéről” fordulat áll a földvesztés helyén (1Kir 14:15).', forras='rés:ertelmezes')
+        self.assertIn(('1Kir 14:15', 'ELTÉR'), iteletek(sorok, 'fordulat'))
+
+    def _szk_atok(self):
+        k = kornyezet()
+        return P.Szokeszlet(FORRAS_ATOK, ELOF, k['adat'])
+
+    def _atok(self, mondat):
+        k = kornyezet()
+        ell = P.Ellenor('X-001', k['adat'], self._szk_atok(), ELOF, k['igeh'])
+        ell.egyseg(P.Egyseg('adat:kapcsolodas', 'teszt:1', mondat, alap_ref='Jer 23:10'))
+        return iteletek(ell.sorok, 'szójelenlét')
+
+    def test_megnevezett_szo_a_versben(self):
+        # a lánc „átok” szava az árar (H0779), a mondat az álá-t (H0423) nevezi meg: a Jer 23:10-ben az áll
+        self.assertIn(('Jer 23:10', 'egyezik'),
+                      self._atok('A héberben itt az átok szava áll (álá), ugyanaz, mint az Ézs 24:6-ban.'))
+
+    def test_megnevezett_szo_nincs_a_versben(self):
+        # az árar nincs a Jer 23:10-ben: a megnevezett szó sem, a lánc szava sem
+        self.assertIn(('Jer 23:10', 'ELTÉR'), self._atok('A héberben itt az átok szava áll (árar), mint az Ézs 24:6-ban.'))
+        # megnevezés nélkül a lánc szava dönt: ELTÉR
+        self.assertIn(('Jer 23:10', 'ELTÉR'), self._atok('A héberben itt az átok szava áll, mint az Ézs 24:6-ban.'))
+
+    def test_uj_formaju(self):
+        k = kornyezet()
+        self.assertTrue(P.uj_formaju('', k['szk']))   # a szókészlet nem üres
+        szk_ures = P.Szokeszlet('Nincs megnevezés.', ELOF, k['adat'])
+        self.assertFalse(P.uj_formaju('Nincs megnevezés.', szk_ures))
+        self.assertTrue(P.uj_formaju('【NAPLO: (`sablonok/10_PaRDeS_U3_proza_prompt_sablon.md`)', szk_ures))
+
+
+class Kapu(unittest.TestCase):
+    """F200.7: a `--kapu` (E41): ELTÉR = HIBA az új formájú forráson, a régi formájú kimarad, és kimondja."""
+
+    RES = '<!-- RÉS-KEZDET: kivonat -->\n%s\n<!-- RÉS-VÉGE: kivonat -->\n'
+
+    def _futtat(self, forrasok, mondat):
+        tmp = tempfile.mkdtemp()
+        try:
+            for nev, elo in forrasok.items():
+                with open(os.path.join(tmp, nev + '.md'), 'w', encoding='utf-8', newline='\n') as f:
+                    f.write(elo + self.RES % mondat)
+            elof = os.path.join(tmp, 'elof.tsv')
+            with open(elof, 'w', encoding='utf-8', newline='\n') as f:
+                f.write('id\tigehely\tgerinc_elem\tstrong\tkapcsolodas\n')
+                for nev in forrasok:
+                    for d in ELOF:
+                        f.write('\t'.join([nev, d['igehely'], d['gerinc_elem'], d['strong'], '']) + '\n')
+            ki = io.StringIO()
+            return P.kapu(tmp, elof, ki), ki.getvalue()
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_uj_forma_hiba_es_regi_forma_kimarad(self):
+        hibak, ki = self._futtat({'X-001': FORRAS, 'X-002': 'Nincs megnevezés.\n'}, 'A lap 5 helyet sorol fel.')
+        self.assertEqual(hibak, 1)
+        self.assertIn('**HIBA** X-001', ki)
+        self.assertIn('X-002: régi formájú forrás', ki)
+        self.assertNotIn('**HIBA** X-002', ki)
+
+    def test_atmeno_eset(self):
+        hibak, ki = self._futtat({'X-001': FORRAS}, 'A lap 3 helyet sorol fel.')
+        self.assertEqual(hibak, 0)
+        self.assertIn('nincs ELTÉR-sor', ki)
+
+    def test_kezi_sor_nem_hiba(self):
+        # a „kézi” gépi ítélet (a szám viszonyítási alapja nem állapítható meg) jelentés marad
+        hibak, _ = self._futtat({'X-001': FORRAS}, 'A motívum helyei közül csak ebben a két versben áll más szó.')
+        self.assertEqual(hibak, 0)
 
 
 class Lektor(unittest.TestCase):

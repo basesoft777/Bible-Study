@@ -6,6 +6,7 @@ tipus: feladat
 fazis: folyamat
 munka: adat
 modell: opus
+sav: SERVER
 allapot: nem_indult
 helyi_gep: igen
 ad: a pardes.db új kjv_szoveg táblája (Károli-kulcs, KJV-vers, Szöveg, Szöveg_jelolt, Elotte, Utoirat, leképezési mód) és a vers-lap új vers.kjv_szoveg blokkja, amely az Olvasópultban a Károli mellett párhuzamos hasábként mutatja a teljes KJV-szöveget; mérve a WSL-natív pardes.db-n és vizuálisan a #60 pilothoz

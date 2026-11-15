@@ -5,6 +5,7 @@ kod: FP2
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: a Thayer-fordító kiválasztása mért adat alapján
 kovetkezo: lezárva

@@ -1,0 +1,410 @@
+# NYITOTT_FELADATOK rendezése — 2026-11-14
+
+*SYSTEMS-karbantartás, 3. lépés. A fájl „Utolsó frissítés” sora 2026.11.03 volt. A bizonyíték: az `origin/main` commitjainak (8 059) tárgya és törzse az N-azonosítóra keresve, a tételek saját jelölései és az „Utolsó frissítés” napló. A besorolás szabálya: lezárni csak ott lehetett, ahol a main egy commitja vagy a tétel/napló saját szövege kifejezetten kimondja a lezárást; minden más tétel nyitott marad. A felhasználó szabálya szerint az elavult tételek nem kerülnek döntésre elé, csak listázva vannak.*
+
+## Összesítés
+
+| Osztály | Darab |
+|---|---|
+| (a) lezárt — a fájlban lezárva jelölve | 12 |
+| (b) beolvadt/túlhaladt — a fájlban jelölve | 1 |
+| (c) nyitott, azonosítóval | 316 |
+|   ebből ellenőrizendő (későbbi lezárás-szavú commit) | 23 |
+|   ebből F218 által lefedett | 2 |
+| (c) nyitott, azonosító nélküli (régi, számozatlan tételek) | 38 |
+
+A korábbi, 265-ös szám a leltár-session gépi számlálása volt; ez a napló a fájl 24. sora utáni felsorolási tételeket olvassa (az „Adattáblából generált” és a „Lezárva” szakasz nélkül).
+
+Az F218 (lapgenerátor-újraírás) brief szerint még nincs megvalósítva (PR #729 nyitott, 218a: építés a regresszióig), ezért a generátort érintő N-tételeket **nem** lehetett túlhaladottnak zárni. A `HIBA_MECHANIZMUSOK.md` csak az N-F215a tételt nevesíti.
+
+## (a) Lezárt (12)
+
+- N-F156e (`65. sor`): felhasználói döntés 2026-11-14 („Igen, zárjuk le”), DT846: a Nave a 4.12 Szótári háttér tematikus indexeként megvalósult; jelöltforrás nem épül
+- N-F131y (`79. sor`): a tétel saját jelölése: alkalmazva 2026.11.01 (DT445); a main 9f7ac0e7 (N-F131y.2)
+- N60 (`95. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
+- N-F127a (`99. sor`): a main 7f160363: „N59, N60, N-F127a: az ISTENTISZT-001-en lezárva”
+- N-F94b (`140. sor`): a main 5c6fe257 (F96.D): „DT-F96c, N-F94b lezárva”
+- N-F22d (`160. sor`): az „Utolsó frissítés” napló 2026.10.19: „N-F22c és N-F22d lezárva”; a main 3f8b9594 (F22.24)
+- N-F22c (`161. sor`): az „Utolsó frissítés” napló 2026.10.19: „N-F22c és N-F22d lezárva”; a main 79cde01f (F22.26)
+- N-F63e (`175. sor`): a Lezárva szakasz 2026.11.03-i bejegyzése (DT593, „kivesszük”); a main f4061848 (F123.HAMART2.2)
+- N-F85c (`183. sor`): a main c6e738fb (F87.5): „N-F85c elvégezve”
+- N-F78a (`187. sor`): a main d18c7dfc (S2.9): „N-F78a lezárva”
+- N13 (`321. sor`): a main b88e0c18 (F52.17): „N13 lezárva”
+- N27 (`522. sor`): a main f468ac77 (F18.5): „N27 lezár[va]”
+
+## (b) Beolvadt (1)
+
+- N-F89a (`132. sor`): az „Utolsó frissítés” napló 2026.11.02 (F36 zárás, DT496): „N-F89a átkerült”; a main 5108fdd8 (F36.2, DT-F36b: a #36 okafogyott)
+
+## (c) Valóban nyitott, sávonként (gépi kulcsszó-besorolás, tájékoztató; a sávot a tétel első 420 karaktere alapján adtam)
+
+### SYSTEMS (63)
+
+- N-F156b (`57. sor`)
+- N-F142a (`83. sor`)
+- N-F127b (`108. sor`)
+- N-F119a (`111. sor`)
+- N-F76q (`125. sor`)
+- N-F97a (`144. sor`)
+- N-F22f (`163. sor`)
+- N-F62c (`170. sor`)
+- N-F09b (`191. sor`)
+- N-F09c (`193. sor`)
+- N-F118a (`211. sor`)
+- N-F112a (`223. sor`)
+- N-F12d (`259. sor`)
+- N-F21 (`738. sor`)
+- N-F22a (`744. sor`)
+- N-F17a (`751. sor`)
+- N-F17b (`754. sor`)
+- N-F35a (`757. sor`)
+- N-F41a (`760. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F41b (`762. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F41g (`767. sor`)
+- N-F41h (`769. sor`)
+- N53 (`781. sor`)
+- N-F53d (`784. sor`)
+- N48 (`787. sor`)
+- N49 (`789. sor`)
+- N50 (`791. sor`)
+- N51 (`793. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N54 (`795. sor`)
+- N58 (`796. sor`)
+- N79 (`799. sor`)
+- N80 (`800. sor`)
+- N-F181a (`824. sor`)
+- N-F170b (`833. sor`)
+- N-F170f (`840. sor`)
+- N-F176c (`843. sor`)
+- N-F166b (`853. sor`)
+- N104 (`859. sor`)
+- N-F184b (`863. sor`)
+- N-F184c (`864. sor`)
+- N-F184d (`865. sor`)
+- N107 (`866. sor`)
+- N127 (`883. sor`)
+- N129 (`885. sor`)
+- N131 (`887. sor`)
+- N132 (`888. sor`)
+- N136 (`892. sor`)
+- N165 (`915. sor`)
+- N-F196b (`916. sor`)
+- N-F196c (`917. sor`)
+- N-F196d (`918. sor`)
+- N-F200d (`929. sor`)
+- N-F206b (`932. sor`)
+- N-F174b (`939. sor`)
+- N159 (`940. sor`)
+- N160 (`941. sor`)
+- N-F175a (`958. sor`)
+- N-F175b (`959. sor`)
+- N-F212a (`968. sor`) — **F218 által lefedett** (a lapgenerátor-újraírás megvalósulása után zárható; az F218 még nincs mergelve)
+- N-F212b (`969. sor`)
+- N-F212c (`970. sor`)
+- N-F216a (`972. sor`)
+- N-F152g (`1014. sor`)
+
+### CONTENT (217)
+
+- N-F147b (`52. sor`)
+- N-F149b (`55. sor`)
+- N87 (`59. sor`)
+- N-F94j (`67. sor`)
+- N-F94k (`68. sor`)
+- N-F131c (`69. sor`)
+- N-F131d (`70. sor`)
+- N-F131f (`72. sor`)
+- N-F131f (`74. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F131g (`75. sor`)
+- N-F131w (`78. sor`)
+- N-F146a (`81. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F55a (`85. sor`)
+- N-F55b (`87. sor`)
+- N-F55c (`89. sor`)
+- N59 (`93. sor`) — **lezárható, de nem zárva**: a main 7f160363 lezártnak mondja, az ISTENTISZT-001_TUDOMANYOS.md viszont még nyitott tételként hivatkozik rá (E1 21. szabály (iv)); a lap újragenerálása után zárható
+- N61 (`97. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F148a (`100. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F148b (`101. sor`)
+- N-F148c (`102. sor`)
+- N-F148d (`103. sor`)
+- N-F148e (`104. sor`)
+- N-F123c (`105. sor`)
+- N-F123d (`106. sor`)
+- N-F76d (`113. sor`)
+- N-F76f (`115. sor`)
+- N-F76g (`116. sor`)
+- N-F76h (`117. sor`)
+- N-F76i (`119. sor`)
+- N-F76l (`121. sor`)
+- N-F11d (`126. sor`)
+- N-F93a (`129. sor`)
+- N-F93c (`131. sor`)
+- N-F91b (`133. sor`)
+- N-F91a (`134. sor`)
+- N-F94h (`135. sor`)
+- N-F94g (`136. sor`)
+- N-F94f (`137. sor`)
+- N-F94a (`139. sor`)
+- N-F94c (`141. sor`)
+- N-F94d (`142. sor`)
+- N-F92a (`143. sor`)
+- N-F99c (`145. sor`)
+- N-F99b (`147. sor`)
+- N-F99d (`148. sor`)
+- N-F99e (`149. sor`)
+- N-F79b (`150. sor`)
+- N-F87a (`152. sor`)
+- N-F87b (`153. sor`)
+- N-F87c (`154. sor`)
+- N-F80a (`155. sor`)
+- N-F23a (`156. sor`)
+- N-F65b (`159. sor`)
+- N-F22e (`162. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F65a (`164. sor`)
+- N-F61a (`165. sor`)
+- N-F54a (`167. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F62a (`168. sor`)
+- N-F62b (`169. sor`)
+- N-F63a (`171. sor`)
+- N-F63b (`172. sor`)
+- N-F63c (`173. sor`)
+- N-F63d (`174. sor`)
+- N-F85b (`177. sor`)
+- N-F85e (`179. sor`)
+- N-F85f (`181. sor`)
+- N-F85a (`185. sor`)
+- N-F09a (`189. sor`)
+- N-F09e (`197. sor`)
+- N-F114a (`202. sor`)
+- N-F114b (`203. sor`)
+- N-F117b (`204. sor`)
+- N-F117c (`205. sor`)
+- N-F120a (`207. sor`)
+- N-F120b (`208. sor`)
+- N-F117d (`210. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F11d (`212. sor`)
+- N-F11f (`213. sor`)
+- N-F107a (`214. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F107b (`215. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F107c (`216. sor`)
+- N-F09h (`218. sor`)
+- N-F113a (`222. sor`)
+- N-F72a (`225. sor`)
+- N56 (`234. sor`)
+- N57 (`235. sor`)
+- N-F12a (`256. sor`)
+- N-F12b (`257. sor`)
+- N-F12c (`258. sor`)
+- N-F12f (`261. sor`)
+- N-F12g (`262. sor`)
+- N-F12h (`263. sor`)
+- N-F12i (`264. sor`)
+- N7 (`266. sor`)
+- N8 (`277. sor`)
+- N11 (`299. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N18 (`447. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N19 (`461. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N20 (`478. sor`)
+- N21 (`483. sor`)
+- N25 (`509. sor`)
+- N26 (`516. sor`)
+- N45 (`530. sor`)
+- N28 (`532. sor`)
+- N31 (`538. sor`)
+- N-F33b (`654. sor`)
+- N-F46a (`701. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F46b (`724. sor`)
+- N47 (`731. sor`)
+- N-F41d (`764. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N78 (`798. sor`)
+- N81 (`801. sor`)
+- N82 (`802. sor`)
+- N84 (`804. sor`)
+- N85 (`805. sor`)
+- N86 (`806. sor`)
+- N88 (`808. sor`)
+- N89 (`809. sor`)
+- N90 (`810. sor`)
+- N91 (`811. sor`)
+- N93 (`813. sor`)
+- N94 (`814. sor`)
+- N95 (`815. sor`)
+- N96 (`816. sor`)
+- N98 (`818. sor`)
+- N111 (`819. sor`)
+- N112 (`820. sor`)
+- N113 (`821. sor`)
+- N114 (`822. sor`)
+- N-F123ta (`826. sor`)
+- N-F123tb (`827. sor`)
+- N-F123tc (`828. sor`)
+- N-F163a (`829. sor`)
+- N-F163b (`830. sor`)
+- N-F163c (`831. sor`)
+- N-F170a (`832. sor`)
+- N-F172a (`834. sor`)
+- N-F172b (`835. sor`)
+- N-F172c (`836. sor`)
+- N-F170c (`837. sor`)
+- N-F170d (`838. sor`)
+- N-F170e (`839. sor`)
+- N-F176b (`842. sor`)
+- N-F179a (`844. sor`)
+- N-F123ha (`845. sor`)
+- N-F178a (`848. sor`)
+- N-F178b (`849. sor`)
+- N-F177a (`850. sor`)
+- N99 (`854. sor`)
+- N103 (`858. sor`)
+- N105 (`860. sor`)
+- N106 (`861. sor`)
+- N108 (`867. sor`)
+- N109 (`868. sor`)
+- N110 (`869. sor`)
+- N-F181d (`872. sor`)
+- N119 (`874. sor`)
+- N122 (`877. sor`)
+- N123 (`878. sor`)
+- N133 (`889. sor`)
+- N134 (`890. sor`)
+- N135 (`891. sor`)
+- N137 (`893. sor`)
+- N138 (`895. sor`)
+- N140 (`897. sor`)
+- N142 (`899. sor`)
+- N-F191a (`900. sor`)
+- N-F191b (`901. sor`)
+- N-F191d (`903. sor`)
+- N146 (`906. sor`)
+- N148 (`908. sor`)
+- N149 (`909. sor`)
+- N150 (`910. sor`)
+- N-F183c (`921. sor`)
+- N-F197a (`922. sor`)
+- N-F197b (`923. sor`)
+- N-F200a (`926. sor`)
+- N-F200b (`927. sor`)
+- N-F200c (`928. sor`)
+- N-F207a (`933. sor`)
+- N-F207b (`934. sor`)
+- N-F207c (`935. sor`)
+- N-F207d (`936. sor`)
+- N-F174a (`938. sor`)
+- N166 (`947. sor`)
+- N167 (`948. sor`)
+- N168 (`949. sor`)
+- N169 (`950. sor`)
+- N170 (`952. sor`)
+- N-F203a (`953. sor`)
+- N-F203b (`954. sor`)
+- N-F203d (`956. sor`)
+- N-F203e (`957. sor`)
+- N-F175c (`960. sor`)
+- N171 (`961. sor`)
+- N172 (`962. sor`)
+- N173 (`963. sor`)
+- N174 (`964. sor`)
+- N175 (`965. sor`)
+- N176 (`966. sor`)
+- N179 (`973. sor`)
+- N180 (`974. sor`)
+- N181 (`976. sor`)
+- N182 (`977. sor`)
+- N183 (`978. sor`)
+- N184 (`979. sor`)
+- N185 (`981. sor`)
+- N-F124a (`1002. sor`)
+- N-F124c (`1003. sor`)
+- N-F150a (`1004. sor`)
+- N-F160a (`1006. sor`)
+- N-F160b (`1007. sor`)
+- N-F152b (`1009. sor`)
+- N-F152c (`1010. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F152d (`1011. sor`)
+- N-F152e (`1012. sor`)
+- N-F152f (`1013. sor`)
+
+### SERVER (29)
+
+- N-F147a (`51. sor`)
+- N85 (`58. sor`)
+- N86 (`60. sor`)
+- N-F131e (`71. sor`)
+- N-F131g (`73. sor`)
+- N-F76j (`118. sor`)
+- N-F76k (`120. sor`)
+- N-F76m (`122. sor`)
+- N-F76n (`123. sor`)
+- N-F76a (`124. sor`)
+- N-F76b (`128. sor`)
+- N-F93b (`130. sor`)
+- N-F117a (`206. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F120c (`209. sor`)
+- N87 (`807. sor`)
+- N92 (`812. sor`)
+- N115 (`823. sor`)
+- N-F123jc (`825. sor`)
+- N-F123hb (`846. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N139 (`896. sor`)
+- N144 (`904. sor`)
+- N145 (`905. sor`)
+- N152 (`912. sor`)
+- N-F204a (`930. sor`)
+- N-F207e (`937. sor`)
+- N177 (`967. sor`)
+- N178 (`971. sor`) — **F218 által lefedett** (a lapgenerátor-újraírás megvalósulása után zárható; az F218 még nincs mergelve)
+- N186 (`982. sor`)
+- N-F152a (`1008. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+
+### USER (7)
+
+- N-F131v (`77. sor`)
+- N-F23b (`157. sor`) — **ellenőrizendő** (a main-en az azonosítóra későbbi, lezárás-szavú commit van)
+- N-F23c (`158. sor`)
+- N-F33a (`653. sor`)
+- N97 (`817. sor`)
+- N130 (`886. sor`)
+- N-F203c (`955. sor`)
+
+### Azonosító nélküli nyitott tételek (38)
+
+Sor és az első szavak (a régi tételek számozatlanok; osztályozásuk emberi átnézést kér):
+
+- `39. sor`: BSB interlineáris
+- `40. sor`: Macula Hebrew/Greek
+- `41. sor`: CenterBLC/MT-LXX
+- `42. sor`: Nave's Topical Bible
+- `44. sor`: Az FJ 1. menet eredménye (2026.09.25, `FORRASJELOLTEK_BRIEF.md` v1, `naplok/FORR
+- `228. sor`: A hiba forrásoldali.
+- `229. sor`: A csere teljes.
+- `230. sor`: Betűre igazolt csere:
+- `231. sor`: Részletek és fogyasztók:
+- `232. sor`: Javító brief:
+- `233. sor`: Javaslat, nem e tétel része:
+- `237. sor`: ÚJ (F42 utótétel, 2026.10.05) — a HODIT-001 élő lexikonoldala és mind a 8 törzsc
+- `239. sor`: ÚJ (F4.0e, 2026.09.15) — a `Lezart_tematikus_tanulmanyok_index.md` #2 sora (ALVI
+- `240. sor`: ÚJ (F4.0d, 2026.09.14) — `Karoli_Strong_kivonat.tsv` drift: a két utolsó oszlop 
+- `242. sor`: 5 további tematikus study v12-compliance
+- `246. sor`: ÚJ (2026.09.10) — más tematikus study-k TSK-auditjának újra-átnézése a Q2-szabál
+- `247. sor`: ÚJ (F4-0, 2026.09.14) — 10 `eszkozok/*.py`-nak nincs sem `argparse`-a, sem `if _
+- `248. sor`: ÚJ (F4-0, 2026.09.14) — négy `eszkozok/*.py` sorokra bontáskor nem strippeli a `
+- `250. sor`: ÚJ (F6, 2026.09.20) — jelentés-hivatkozások kitöltése öt adatszegény motívumra é
+- `251. sor`: ÚJ (F6, 2026.09.20) — a `jelentes_szam` három union-sértő értéke.
+- `252. sor`: ÚJ (F6, 2026.09.20) — Formula és Kapcsolódó motívum mező hiánya a `motivumok.tsv
+- `253. sor`: ÚJ (F6, 2026.09.20) — a tisztázatlan licencű források (LXX-kivonat, MCGED) kocká
+- `255. sor`: ÚJ (F6, 2026.09.20) — a KIRALY-001 `G0813` tokenje téves.
+- `992. sor`: Károli-kiadás hitelesítése.
+- `993. sor`: Károli-revízió sokféleség.
+- `994. sor`: Rokon gyökű jelöltek egyedi minősítése
+- `995. sor`: Példabeszédek és ApCsel teljes feldolgozása
+- `996. sor`: Felület-döntés:
+- `997. sor`: Figyelendő, még nem elérhető STEPBible-adatállományok:
+- `1001. sor`: ÚJ (F3.4) — a `Karoli_1908.tsv` két azonosított, de nem javított vers-eltolódása
+- `1015. sor`: ÚJ (F124, 2026.10.29) — a tág gerinc-Strongok szűrő-szabálya az ISTENTISZT-001-e
+- `1016. sor`: ÚJ (F124, 2026.10.29) — a `melyelemzesek/` többszakaszos fájlneve nem értelmezhe
+- `1017. sor`: ÚJ (F124, 2026.10.29) — a tág gerinc-Strongok szűrő-szabálya az ISTENTISZT-001-e
+- `1018. sor`: ÚJ (F124, 2026.10.29) — a `melyelemzesek/` többszakaszos fájlneve nem értelmezhe
+- `1019. sor`: ÚJ (F3.4) — a `Melkizedek_tematikus.md` Zsid 7:3-as Strong-hármasa téves.
+- `1020. sor`: ÚJ (F3.4) — az `elofordulasok.tsv` `G4151+G5590` gerinc-eleme két ANTROP-001 sor
+- `1021. sor`: ÚJ (F3.4) — 26 régi join-sor nem nullázott Strong-számot visel
+- `1022. sor`: Bibliai Motívumlexikon — koncepcionális tervezés.

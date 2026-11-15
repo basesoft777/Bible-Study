@@ -5,6 +5,7 @@ kod: BDB_FORDITAS
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: megallt
 ag: claude/f38-adag13-api-bc60bb
 pr: 556

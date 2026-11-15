@@ -5,6 +5,7 @@ kod: PUSH_ELOTTI_KAPU
 tipus: feladat
 fazis: folyamat
 modell: sonnet
+sav: SYSTEMS
 allapot: megallt
 ag: claude/push-elotti-kapu
 pr: 724

@@ -5,6 +5,7 @@ kod: KARBANTARTAS KB0–KB4
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: SYSTEMS
 allapot: lezarva
 ad: importbiztos szkriptek, CRLF-tűrés, a Károli-tábla nullázása
 kovetkezo: lezárva

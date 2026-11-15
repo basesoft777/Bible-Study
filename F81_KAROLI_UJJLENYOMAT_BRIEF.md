@@ -5,6 +5,7 @@ kod: KAROLI_UJJLENYOMAT
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: nem_indult
 ad: a 8 publikálható motívumhoz Károli-ujjlenyomat (gerinc-Strong-készlet, magyar szóalakok a #22 párjaiból bizonyosság-jelöléssel, frázis-minta a formulaikus motívumoknál) és a #22 kész könyveire alapjelentés, utána könyvenkénti jelentés (motívum → új előfordulás-jelölt → TSK-ban is / csak lexikai / csak magyar); adatot nem ír, a jelölt felvétele a jeloltek.tsv-n át, külön döntéssel

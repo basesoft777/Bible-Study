@@ -5,6 +5,7 @@ kod: ISTENTISZT_TERV_HATRALEK
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 munka: ertelmezo
 allapot: lezarva
 ad: a Megvalósulás-jelentés ISTENTISZT-001 (2026-11-01) nem kész pontjai lezárva vagy követett tételként rögzítve: (A) a két hibás indoklás javítva, a negatív kritérium és a fölérendelt fogalom a Kivonatban, a „gerinc” szó az olvasói helyekről kivezetve; (B) a generátorban az ismétlés csökkentve (a forrásmegjelölés csoportonként egyszer, az azonos indoklású szomszédos kizárt helyek összevonva, a Minősítés jelölt-táblája a felhasználó döntése szerint), minden lexikonra érvényes kóddal; (C) az olvasói irány (ki-be kapcsolható részek az olvasó-szerverben, a próza előrehozása, a hiányzó próza) nyitott tételként, a #149-hez kötve

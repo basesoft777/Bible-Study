@@ -5,6 +5,7 @@ kod: TEHOM_JOB41
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 munka: adat
 allapot: lezarva
 pr: 426

@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: adat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/f88-tipnr-normalizalas
 ad: a pardes.db tipnr.strong oszlopa az alapszámot hordozza (a nagy- és kisbetűs utótag levágva, a TIPNR-betöltő kifejezett szabályaként), új utotag oszlop, a strong_nyers marad; SEMA 1.2 bővítve; a G6202 a normalizálási jelentésben; teszt és újraépítés, a NULL-arány mérve

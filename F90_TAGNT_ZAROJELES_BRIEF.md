@@ -5,6 +5,7 @@ cim: "A TAGNT-kivonat KJV- ([..]) és egyéb ({..}) versszámozású sorainak p�
 tipus: feladat
 fazis: 1
 modell: opus
+sav: CONTENT
 allapot: lezarva
 ag: claude/f90-tagnt-zarojeles
 pr: https://github.com/basesoft777/Bible-Study/pull/314

@@ -5,6 +5,7 @@ kod: LICENC_UTOKOVETES
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 pr: 205
 ag: claude/licenc-utokovetes

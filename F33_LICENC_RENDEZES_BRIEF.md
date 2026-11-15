@@ -6,6 +6,7 @@ ag: claude/f33-licenc-rendezes
 tipus: feladat
 fazis: 1
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ad: a licenc-leltár egy mércével, szó szerinti licencidézetekkel; a régi LXX_kivonat kivezetve; a TBESH/STEPBible terjesztési feltételei rögzítve
 kovetkezo: "DT-F33c eldöntése; N-F33 felvétele /befogad-dal"

@@ -6,6 +6,7 @@ tipus: feladat
 fazis: 1
 munka: folyamat
 modell: sonnet
+sav: CONTENT
 allapot: lezarva
 ag: claude/wonderful-einstein-ezr2pw
 pr: 249

@@ -5,6 +5,7 @@ kod: KAROLI_PAROSITAS_JAVITAS
 tipus: feladat
 fazis: folyamat
 modell: opus
+sav: CONTENT
 munka: adat
 allapot: nem_indult
 ad: a Károli–Strong párosítás ismert hibáinak (N-F172a–c) javítása szabályalapú utófeldolgozással és Strong-konvenció átváltó táblával, új méréssel a #172 módszerével, a 2. kiadás előre rögzített minőségi céljához mérve
