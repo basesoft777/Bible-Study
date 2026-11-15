@@ -1,7 +1,7 @@
 <!-- GENERÁLT: eszkozok/karoli_strong_export.py (a próza: eszkozok/karoli_strong_szovegek.py, a számok: adat/karoli_strong/ és f172/) — kézzel nem szerkesztendő; a #175 második data paperének kézirata, nem része a nyilt_karoli_strong/ csomagnak. -->
 # Word-by-word alignment of the 1908 Károli Bible with the Hebrew and Greek source text: an open dataset with measured accuracy
 
-*Manuscript draft (data paper) · Károli 1908 – Strong word alignment · Logosz Lexikon · DOI: 10.5281/zenodo.24141884*
+*Manuscript draft (data paper) · Károli 1908 – Strong word alignment · Logosz Lexikon · DOI: 10.5281/zenodo.24141883*
 
 ## Abstract
 
@@ -63,7 +63,7 @@ part of the dataset, only the aggregate rate.
 | main words, by the independent source | 98.72% | 98.22–99.08% |
 | main words, after three-way judgement | 99.81% | 99.56–99.92% |
 
-Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts); the per-stratum table is in the dataset's `meres.tsv` and its methods description. Of the 1,600
+Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts); the per-stratum table is in the dataset's `data/meres.tsv` and its methods description. Of the 1,600
 sample pairs, 72 differed from the reviewer; the most frequent type is the neighbouring word
 (37), typically a Hebrew prefix, article or preposition attached to the word against the rules. Of the
 34 differences in the independent comparison, 5 remained errors of the alignment; these and the other
@@ -71,13 +71,13 @@ confirmed errors are listed by name in the dataset.
 
 ## 4. Dataset description
 
-**Location and identifier.** Zenodo, DOI: 10.5281/zenodo.24141884; licence: CC BY 4.0; language: Hungarian (data), Hungarian and English
+**Location and identifier.** Zenodo, DOI: 10.5281/zenodo.24141883; licence: CC BY 4.0; language: Hungarian (data), Hungarian and English
 (documentation); data state: 2026-11-01.
 
-**Files.** `parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the source
-word, Strong's number, link type, state, Textus Receptus flag); `szavak/` (per book, every Hungarian and
-source word once, with its state: aligned, addition, untranslated, pending); `versek.tsv` (the 1908 Károli text);
-`meres.tsv` (every figure of the measurement); bilingual codebook, methods description, known issues, checksum. The key
+**Files.** `data/parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the source
+word, Strong's number, link type, state, Textus Receptus flag); `data/szavak/` (per book, every Hungarian and
+source word once, with its state: aligned, addition, untranslated, pending); `data/versek.tsv` (the 1908 Károli text);
+`data/meres.tsv` (every figure of the measurement); bilingual codebook, methods description, known issues, checksum. The key
 is the OSIS verse identifier and the word position. Hebrew and Greek word forms are not in the package: the position
 matches the STEPBible TAHOT/TAGNT text.
 
@@ -92,7 +92,7 @@ rendering of a Hebrew or Greek word can be collected with one filter. In transla
 the distribution of additions and untranslated words can be studied. For language technology it is word-alignment data
 for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error measured per stratum; the sample pairs
 and error types can also serve to evaluate word aligners. The same pairs also appear on the modernised Károli text
-(https://doi.org/10.5281/zenodo.24141950); the two datasets join word by word on the verse and word position key.
+(https://doi.org/10.5281/zenodo.24141949); the two datasets join word by word on the verse and word position key.
 
 ## 6. Limitations and the next release
 
@@ -118,7 +118,7 @@ data and the text.
 
 ## References
 
-Demeter, T. (2026). *Modernised Károli – Strong* [dataset]. Zenodo. https://doi.org/10.5281/zenodo.24141950
+Demeter, T. (2026). *Modernised Károli – Strong* [dataset]. Zenodo. https://doi.org/10.5281/zenodo.24141949
 
 STEPBible. (n.d.). *Translators Amalgamated Hebrew OT (TAHOT) and Translators Amalgamated Greek NT (TAGNT)* [dataset].
 Tyndale House, Cambridge. https://www.STEPBible.org

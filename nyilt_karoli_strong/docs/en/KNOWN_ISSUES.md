@@ -3,7 +3,7 @@
 *Károli 1908 – Strong word alignment · release 1 · data state: 2026-11-01*
 
 This release publishes the alignment as it stood when it was measured, unchanged. Corrections of the issues below go
-into release 2, with a new measurement (`METHODS.md` 7).
+into release 2, with a new measurement (`docs/en/METHODS.md` 7).
 
 ## Confirmed errors
 

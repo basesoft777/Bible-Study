@@ -3,20 +3,22 @@
 A modernised version of the 1908 text of the Károli Bible (the classic Hungarian translation), linked word by word
 to the Hebrew and Greek source words and their Strong's numbers. One of the open data cores of the Logosz Lexikon.
 
-- **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `ATTRIBUCIO.md`.
-- **DOI:** 10.5281/zenodo.24141950 — release identifier and content hash: `RELEASE.txt`.
+Hungarian-language introduction: `docs/hu/OLVASSEL.md`.
+
+- **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `docs/en/ATTRIBUTION.md`.
+- **DOI:** 10.5281/zenodo.24141949 — release identifier and content hash: `RELEASE.txt`.
 - **Author:** Demeter Tamás (ORCID 0009-0005-9254-9731).
 
 ## Contents
 
 | file | content |
 |---|---|
-| `konyvek/NN_Book.tsv` | per book: every word in its 1908 and modern form, with the Strong's numbers aligned to it |
-| `versek.tsv` | the modernised text, verse by verse |
-| `kodkonyv.tsv`, `KODKONYV.md` | description of the columns and values (Hungarian and English) |
-| `METHODS.md`, `MODSZER.md` | how the modernisation and the Strong linkage were made |
-| `KNOWN_ISSUES.md`, `ISMERT_HIBAK.md` | known issues and limitations |
-| `ATTRIBUCIO.md` | attribution and licences |
+| `data/konyvek/NN_Book.tsv` | per book: every word in its 1908 and modern form, with the Strong's numbers aligned to it |
+| `data/versek.tsv` | the modernised text, verse by verse |
+| `data/kodkonyv.tsv`, `docs/hu/KODKONYV.md`, `docs/en/CODEBOOK.md` | description of the columns and values (Hungarian and English) |
+| `docs/en/METHODS.md`, `docs/hu/MODSZER.md` | how the modernisation and the Strong linkage were made |
+| `docs/en/KNOWN_ISSUES.md`, `docs/hu/ISMERT_HIBAK.md` | known issues and limitations |
+| `docs/hu/ATTRIBUCIO.md`, `docs/en/ATTRIBUTION.md` | attribution and licences |
 | `CITATION.cff` | citation metadata |
 | `ELLENORZO_OSSZEG.sha256` | SHA-256 checksum of every file |
 
@@ -32,11 +34,11 @@ to the Hebrew and Greek source words and their Strong's numbers. One of the open
 The key is the OSIS verse identifier (`Gen.1.1`) and the position of the word within the verse (`token`). A word
 appears in as many rows as source words it is aligned to; a word without a pair appears in one row. To read the
 modern text, take the rows with an empty `kieso` column in `token` order, once per word; the punctuated text is in
-`versek.tsv`.
+`data/versek.tsv`.
 
-The alignment is a machine proposal with measured accuracy (`METHODS.md`, section 5).
+The alignment is a machine proposal with measured accuracy (`docs/en/METHODS.md`, section 5).
 
 ## Related datasets
 
-- Károli 1908 – Strong word alignment: https://doi.org/10.5281/zenodo.24141884
-- The open data core of the Logosz Lexikon (motifs): https://doi.org/10.5281/zenodo.24141612
+- Károli 1908 – Strong word alignment: https://doi.org/10.5281/zenodo.24141883
+- The open data core of the Logosz Lexikon (motifs): https://doi.org/10.5281/zenodo.24141611
