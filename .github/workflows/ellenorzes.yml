@@ -275,3 +275,7 @@ jobs:
 
       - name: feladatok.py tesztek
         run: python eszkozok/teszt_feladatok.py
+
+      # DT-F219a: a gepi lezaras (merge-kor) tesztje
+      - name: brief_lezaras.py tesztek
+        run: python eszkozok/teszt_brief_lezaras.py
