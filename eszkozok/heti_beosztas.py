@@ -208,7 +208,8 @@ def sor_meres(terv_het, meres):
         return {}
     szorzo = (meres.get('kalibralas') or {}).get('heti')
     hozzarendeles = sor_session_hozzarendeles(terv_het, meres.get('sessionok') or [])
-    return {k: (sum(x['egyseg'] for x in lista) * szorzo if szorzo is not None else None)
+    # 'nincs': a sorhoz egyetlen munkamenet sem rendelődött (nem 0%)
+    return {k: ('nincs' if not lista else (sum(x['egyseg'] for x in lista) * szorzo if szorzo is not None else None))
             for k, lista in hozzarendeles.items()}
 
 
@@ -571,7 +572,10 @@ def _keret_chip(s, sor_mert):
     mert = sor_mert.get(kulcs)
     eredeti = eredeti_keret(s)
     terv_szoveg = 'tervezett %s' % _szazalek(terv) + (' (eredetileg %s)' % _szazalek(eredeti) if eredeti != terv else '')
-    mert_szoveg = _szazalek(float(mert)) if mert is not None else 'nincs kalibrálva'
+    if mert == 'nincs' or (mert is None and kulcs not in sor_mert):
+        mert_szoveg = 'nincs hozzárendelt munka'
+    else:
+        mert_szoveg = _szazalek(float(mert)) if mert is not None else 'nincs kalibrálva'
     return '<span class="chip keret">%s → mért %s</span>' % (e(terv_szoveg), e(mert_szoveg))
 
 
