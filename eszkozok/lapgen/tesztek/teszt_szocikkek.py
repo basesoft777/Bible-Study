@@ -257,6 +257,55 @@ class MasikNyelv(unittest.TestCase):
             self.assertIn('B15', {o.b_id for o in eredmeny.naplo})
 
 
+class NyelviHatterGorog(unittest.TestCase):
+    """A 4.8 pont görög része (LSJ): a régi `_hivatkozas_szoveg` három ága, a bemenetekből (B25, B26, B37)."""
+
+    @staticmethod
+    def _gorog(azonosito):
+        m, _b = modell(azonosito)
+        return next(r for r in m.nyelvek if r.nyelv is sz.Nyelv.GOROG)
+
+    def test_hamart_nincs_adat(self):
+        """A HAMART-001 öt görög szavához és a rokon szavakhoz sincs LSJ-szócikk: a „nem ad adatot” mondat."""
+        h = self._gorog('HAMART-001').gorog_hatter
+        self.assertIs(h.fajta, sz.HatterFajta.NINCS)
+        self.assertEqual((h.csonkok, h.rokon), ((), ()))
+
+    def test_istentiszt_utalo_csonk(self):
+        """Az ISTENTISZT-001 egyetlen görög szavának (G1941) LSJ-szócikke utaló csonk: az alapige (G2564) a csonk
+        utolsó Strong-száma, és rokon szóként szócikke is van."""
+        h = self._gorog('ISTENTISZT-001').gorog_hatter
+        self.assertIs(h.fajta, sz.HatterFajta.CSONK)
+        self.assertEqual([(c.szo.strong.kod, c.alap.strong.kod) for c in h.csonkok], [('G1941', 'G2564')])
+        self.assertEqual([s.strong.kod for s in h.rokon], ['G2564'])
+
+    def test_a_csonk_felismerese(self):
+        """Utaló csonk csak a képzést leíró szócikk; a tartalmas szócikk nem az."""
+        from lapgen.bemenet import nyelvi_hatter
+        lsj = nyelvi_hatter.Lsj(bemenet.Bemenet(kozos.GYOKER), {
+            'G1941': 'ἐπικαλεìομαι Middle voice from G1909 and G2564',
+            'G2564': 'καλέω, Ep. impf. κάλεον, call, summon, invite'})
+        csonk = lsj.csonk(Strong('G1941'))
+        self.assertEqual(csonk.alap.kod, 'G2564')
+        self.assertEqual(csonk.szoveg.forras, 'B26')
+        self.assertIsNone(lsj.csonk(Strong('G2564')))
+        self.assertIsNone(lsj.csonk(Strong('G0001')))
+
+    def test_a_lapon(self):
+        """A két mintalap görög 4.8 pontja: a bevezető és az ág mondata; héber 4.8 még nincs (részleges lap), és a
+        görög pont a fájlnevet, a Strong-számot vagy a nyers csonkot nem írja ki."""
+        for azonosito, mondat in (('HAMART-001', 'a motívum szavaihoz és rokon szavaikhoz nem ad adatot'),
+                                  ('ISTENTISZT-001', 'LSJ-szócikke csak az alapigére utal')):
+            eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito))
+            sorok = [sor.szoveg for sor in eredmeny.nezetek[konfig.NEZET_TUDOMANYOS]]
+            cimek = [i for i, s in enumerate(sorok) if s.startswith('#### 4.8.')]
+            self.assertEqual(len(cimek), 1, azonosito)
+            pont = sorok[cimek[0]:sorok.index('#### 4.9. Versenkénti jelentés', cimek[0])]
+            self.assertTrue(any(mondat in s for s in pont), azonosito)
+            self.assertFalse([s for s in pont if 'LSJ_teljes' in s or 'Middle voice' in s or 'G2564' in s])
+            self.assertTrue({'B25', 'B26', 'B37'} <= {o.b_id for o in eredmeny.naplo})
+
+
 class ReszlegesRegresszio(unittest.TestCase):
     REGI = '## 4. Szótári háttér\n\nbevezető\n\n### A\n\n#### 4.1. x\n\nrégi egy\n\n#### 4.2. y\n\nrégi kettő\n\n' \
            '<!-- GENERÁLT-VÉGE: z -->\n\n### Rés\n\nkézi\n'

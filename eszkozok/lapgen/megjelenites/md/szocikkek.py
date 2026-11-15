@@ -7,7 +7,7 @@ hiányzik a `_PONTOK` táblából: a lap ilyenkor részleges, a pont kimarad.
 from lapgen import konfig
 from lapgen.megjelenites.md import keret as K
 from lapgen.megjelenites.md import szotari_karoli, szotari_nave
-from lapgen.szamitas.szocikkek import Nyelv
+from lapgen.szamitas.szocikkek import HatterFajta, Nyelv
 
 AZONOSITO = 'szocikkek'
 HATASTORTENET, ELOFORDULASOK = 'hatastortenet', 'elofordulasok'
@@ -268,8 +268,24 @@ def _versenkent(iro, ny, szakasz, resz, keret):
                             reszek=tuple(reszek)))
 
 
+def _nyelvi_hatter(iro, ny, szakasz, resz, keret):
+    """A 4.8 pont görög része (LSJ): nincs adat; rokon szavak szócikkel; vagy az összetett ige utaló csonkja."""
+    h = resz.gorog_hatter
+    K.olvasoi_bekezdes(iro, ny.s('s4.p8.gorog.bevezeto'))
+    if h.fajta is HatterFajta.NINCS:
+        _bekezdes(iro, ny.s('s4.p8.gorog.nincs'))
+    elif h.fajta is HatterFajta.ROKON:
+        _bekezdes(iro, ny.s('s4.p8.gorog.rokon', rokon=tuple(szo_iras(ny, szo) for szo in h.rokon)))
+    else:
+        csonkok = tuple(ny.s('s4.p8.gorog.csonk', szo=_szo_nagy_nevelovel(ny, c.szo), alap=szo_iras(ny, c.alap))
+                        for c in h.csonkok)
+        zaro = ny.s('s4.p8.gorog.csonk.rokon' if h.rokon else 's4.p8.gorog.csonk.nincs')
+        _bekezdes(iro, ny.s('s4.p8.gorog.csonkok', csonkok=csonkok, zaro=zaro))
+
+
 _PONTOK = {
     konfig.PONT_ALAPJELENTES: _alapjelentes,
+    konfig.PONT_NYELVI_HATTER: _nyelvi_hatter,
     konfig.PONT_TEOLOGIAI: _teologiai,
     konfig.PONT_DOMEN: _domen,
     konfig.PONT_TOMOR: _tomor,
@@ -292,8 +308,8 @@ def _nyelvresz(iro, ny, szakasz, resz, keret):
     K.olvasoi_bekezdes(iro, ny.s(ny.kulcs('s4.nyelv', nyelv), szavak=tuple(szo_iras(ny, szo) for szo in resz.szavak),
                                  szakasz=szakasz, elso=min(resz.pontok), utolso=max(resz.pontok)))
     for pont in resz.pontok:
-        if pont not in _PONTOK:
-            continue   # a pont megjelenítője még nem készült el (részleges lap)
+        if pont not in _PONTOK or (pont == konfig.PONT_NYELVI_HATTER and resz.gorog_hatter is None):
+            continue   # a pont megjelenítője még nem készült el (részleges lap; a 4.8 héber része még hiányzik)
         _pont_cim(iro, ny, szakasz, pont)
         _PONTOK[pont](iro, ny, szakasz, resz, keret)
 

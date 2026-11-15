@@ -86,6 +86,14 @@ DOMEN_KULCS = 'domen'
 LICENC_ROVID_SZOTAR = {'gorog': 'TBESG', 'heber': 'TBESH'}
 LICENC_TW = 'tW_szocikkek'
 
+# 4.8 (Nyelvi háttér), görög rész (a régi `_hivatkozas_szoveg`, `rokon_szavak_strongok`, `lxx_dontesek_index`): a
+# klasszikus nagyszótár kulcsa a hivatkozástáblában; a kiegészítő szótárak (a rokon szó csak az ezeken kívüli
+# szócikkel számít); az LXX-döntések közül a megjelenő bizonyosság és típus
+SZOTAR_LSJ = 'LSJ'
+KIEGESZITO_SZOTARAK = ('SECE_G', 'SECE_H', 'MCGED')
+LXX_DONTES_BIZONYOSSAG = ('', 'biztos')
+LXX_DONTES_TIPUS = ('eltero_forditas', 'lxx_minusz')
+
 # Az arány fokozatai a következtetés mondatához: (alsó határ, fokozat), csökkenő rendben
 FOKOK = ((0.90, 'szinte'), (0.67, 'tobbseg'), (0.50, 'fele'), (0.0, 'keves'))
 VERSENKENTI_KIS = 2     # ha minden szó legfeljebb ennyi helyen áll, a versenkénti pont nem von le következtetést

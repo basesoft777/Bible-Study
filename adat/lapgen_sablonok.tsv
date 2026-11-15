@@ -350,3 +350,10 @@ s4.p12.hatokor	*Nave tematikus indexe (Nave's Topical Bible, 1897, közkincs). S
 s4.p12.tema	- **{nev}** — {mv} motívumvers / {tv} témavers ({szazalek}%): {versek|, }	nev:lathato, mv:szam, tv:szam, szazalek:tizedes(1), versek:lista(igehely)	4.12	SZN.blokk_12 (az olvasói átírás utáni alak)	-
 s4.p12.altetel	  - {nev}: {versek|, }	nev:lathato, versek:lista(igehely)	4.12	SZN.blokk_12 (az olvasói átírás utáni alak)	-
 s4.p12.nev	<span title="{angol}">{magyar}</span>	angol:lathato, magyar:lathato	4.12	SZN._hu	-
+s4.p8.gorog.bevezeto	A szó tágabb nyelvi háttere a klasszikus görög nagyszótárban (LSJ).	-	4.8	SZEREP_BEVEZETO[gorog, 8]	-
+s4.p8.gorog.nincs	*A klasszikus görög nagyszótár (LSJ) a motívum szavaihoz és rokon szavaikhoz nem ad adatot.*	-	4.8	OLVASOI_CSERE (F212) a _hivatkozas_szoveg mondatán	-
+s4.p8.gorog.rokon	*A klasszikus görög nagyszótár (LSJ) a motívum szavaihoz nem ad adatot; rokon szavaik közül ezekhez ad szócikket: {rokon|, }.*	rokon:lista(lathato)	4.8	uj	var
+s4.p8.gorog.csonk	{szo} LSJ-szócikke csak az alapigére utal: {alap}.	szo:lathato, alap:lathato	4.8	uj	var
+s4.p8.gorog.csonk.rokon	Az alapige LSJ-szócikke a rokon szavaknál áll.	-	4.8	uj	var
+s4.p8.gorog.csonk.nincs	Az alapige LSJ-szócikke a lexikon adatai között nem áll.	-	4.8	uj	var
+s4.p8.gorog.csonkok	*{csonkok| } {zaro}*	csonkok:lista(lathato), zaro:lathato	4.8	uj	var

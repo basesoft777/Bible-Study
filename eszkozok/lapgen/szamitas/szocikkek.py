@@ -14,6 +14,7 @@ from typing import Optional, Tuple
 
 from lapgen import bemenet, konfig
 from lapgen.bemenet import motivum as motivum_be
+from lapgen.bemenet import nyelvi_hatter as nyelvi_hatter_be
 from lapgen.bemenet import szavak as szavak_be
 from lapgen.bemenet import szotari as szotari_be
 from lapgen.bemenet import ubs as ubs_be
@@ -124,9 +125,32 @@ class Versenkenti:
     fok: Optional[Fok]
 
 
+class HatterFajta(enum.Enum):
+    """A 4.8 görög részének esetei (a régi `_hivatkozas_szoveg` három ága)."""
+    NINCS = 'nincs'      # sem a szavakhoz, sem a rokon szavakhoz nincs LSJ-szócikk
+    ROKON = 'rokon'      # a szavakhoz nincs, a rokon szavak közül egyeshez van
+    CSONK = 'csonk'      # minden szó LSJ-szócikke utaló csonk: az összetett ige az alapigére utal
+
+
+@dataclasses.dataclass(frozen=True)
+class LsjCsonk:
+    """Az utaló csonk: a szó és az alapige, amelyre a szócikke utal."""
+    szo: Szo
+    alap: Szo
+
+
+@dataclasses.dataclass(frozen=True)
+class GorogHatter:
+    """A 4.8 pont görög része: az eset, az utaló csonkok és a rokon szavak, amelyekhez LSJ-szócikk tartozik."""
+    fajta: HatterFajta
+    csonkok: Tuple[LsjCsonk, ...]
+    rokon: Tuple[Szo, ...]
+
+
 @dataclasses.dataclass(frozen=True)
 class Nyelvresz:
-    """Egy nyelv szavai és pontjai. A `pontok` a nyelv saját pontjainak sorszámai a tábla rendjében."""
+    """Egy nyelv szavai és pontjai. A `pontok` a nyelv saját pontjainak sorszámai a tábla rendjében. A
+    `gorog_hatter` a 4.8 pont görög része (héber nyelvrészen és szavak nélkül None)."""
     nyelv: Nyelv
     szavak: Tuple[Szo, ...]
     pontok: Tuple[int, ...]
@@ -137,6 +161,7 @@ class Nyelvresz:
     domen: Tuple[DomenSor, ...]
     sece: Sece
     versenkent: Versenkenti
+    gorog_hatter: Optional[GorogHatter]
 
 
 @dataclasses.dataclass(frozen=True)
@@ -350,19 +375,60 @@ def _versenkenti(f, nyelv, sajat):
     return Versenkenti(tuple(szavak), hely_szam, kovetkeztetes)
 
 
+def _rokon_szavak(f, szavak, hiv):
+    """A rokon szavak (a régi `rokon_szavak_strongok`): a motívum verseinek LXX-döntéseiben megnevezett, a motívumon
+    kívüli görög szavak, amelyeknek a kiegészítő szótárakon kívül szócikke van; a Strong-szám rendjében."""
+    lxx = nyelvi_hatter_be.b37_lxx_dontesek(f.b)
+    talalt = set()
+    for vers in f.versek:
+        for strong in lxx.gorog_szavak(vers.kod):
+            if strong not in szavak and any(sz not in konfig.KIEGESZITO_SZOTARAK for sz in hiv.szotarai(strong)):
+                talalt.add(strong)
+    return tuple(sorted(talalt, key=lambda st: st.kod))
+
+
+def _gorog_hatter(f, sajat, szavak):
+    """A 4.8 pont görög része. Ha a motívum saját szavához LSJ-szócikk tartozik, a régi generátor a szócikk kártyáját
+    írta: az a 4.2 kártyáival (S3b) készül, addig ez az ág kimondott hibával megáll."""
+    hiv = nyelvi_hatter_be.b25_hivatkozasok(f.b)
+    lsj = nyelvi_hatter_be.b26_lsj(f.b)
+    sajat_lsj = [s.kod for s in sajat if konfig.SZOTAR_LSJ in hiv.szotarai(s)]
+    if sajat_lsj:
+        raise bemenet.BemenetHiba('4.8: a motívum %d szavához (az első: %s) LSJ-szócikk tartozik; a szócikk kártyája '
+                                  'a 4.2 kártyáival készül (S3b), addig ez az ág nem generálható'
+                                  % (len(sajat_lsj), sajat_lsj[0]))
+    csonkok = []
+    for s in sajat:
+        csonk = lsj.csonk(s)
+        if csonk is not None:
+            csonkok.append(LsjCsonk(f.szo(s), f.szo(csonk.alap)))
+    rokon = tuple(f.szo(s) for s in _rokon_szavak(f, szavak, hiv) if konfig.SZOTAR_LSJ in hiv.szotarai(s))
+    if csonkok and len(csonkok) == len(sajat):
+        fajta = HatterFajta.CSONK
+    elif rokon:
+        fajta = HatterFajta.ROKON
+    else:
+        fajta = HatterFajta.NINCS
+    return GorogHatter(fajta=fajta, csonkok=tuple(csonkok) if fajta is HatterFajta.CSONK else (), rokon=rokon)
+
+
 def _nyelvresz(f, nyelv, szavak, szerepek):
     sajat = tuple(s for s in szavak if szotari_be.nyelv_kulcs(s) == nyelv.value)
+    pontok = szerepek.nyelvi(nyelv.value)
+    hatter = (_gorog_hatter(f, sajat, szavak)
+              if nyelv is Nyelv.GOROG and sajat and konfig.PONT_NYELVI_HATTER in pontok else None)
     return Nyelvresz(
         nyelv=nyelv,
         szavak=tuple(f.szo(s) for s in sajat),
-        pontok=szerepek.nyelvi(nyelv.value),
+        pontok=pontok,
         rovid_szotar_licenc=idezet(f.licencek.cimke(konfig.LICENC_ROVID_SZOTAR[nyelv.value])),
         alapjelentes=tuple(SzoJelentes(f.szo(s), f.jelentes(s)) for s in sajat),
         teologiai=tuple(_teologiai(f, s) for s in sajat),
         tw_licenc=idezet(f.licencek.cimke(konfig.LICENC_TW)),
         domen=tuple(_domen(f, s) for s in sajat),
         sece=szotari_sece.szamit(f, nyelv is Nyelv.HEBER, sajat, szavak),
-        versenkent=_versenkenti(f, nyelv, sajat))
+        versenkent=_versenkenti(f, nyelv, sajat),
+        gorog_hatter=hatter)
 
 
 def szamit(korny):
