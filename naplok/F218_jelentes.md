@@ -902,3 +902,76 @@ Az orkesztrátor rendelkezése szerint a kicsi javítások ebben a sessionben k�
 **Nem portolt ágak (a két mintalapon nem futnak; kimondott hibával megállnak):** az elnyelt szakasz mondatai, a „fordításra vár” ág, a horgonnyal illesztett kibontott szakasz, a több szócikkes tartomány-megjegyzés, a címkét átalakító glossza. **Eltérés a régitől, kapu nélkül:** a tiltott fordulatok ⓘ-megjegyzése (B58) nincs bekötve; a betűjavítás minden motívumon fut (a régi csak a két mintalapon). Mindkettő N-tétel jelölt a 218a végi listába.
 
 **Átszökési arány:** a zöld regresszió után a szerkezeti tesztek 6 réteghibát fogtak (a szövegmunka a számításban, a megjelenítő a bemenetet importálta, a kiejtés második úton jött); a réteg-átrendezés után zöldek.
+
+## Független ellenőrzés — 5. ellenőrzés (célzott: S3b, S3c, DT-F218p és a 4. ellenőrzés javítóköre)
+
+*A `fuggetlen-ellenor` subagent jelentése, a hívó session (`claude-opus-5-5`, a 8. session) mentésében, változtatás nélkül. Az első hívás a modell-ellenőrzésen megállt (a subagent-fájl `model: opus`, a hívás Fable); a hívó a DT-F218o sorára hivatkozva folytattatta (l. E7). Hatókör: `8fb27f64..4cee43be`, másodlagosan `4cee43be..484abac9` (main-beolvasztás).*
+
+**Eredmény: ELTÉRÉS, 8 tétel**
+
+**Brief:** `F218_GENERATOR_UJ_A_BRIEF.md` · **tartomány:** `8fb27f64..4cee43be` (másodlagos: `4cee43be..484abac9`) · **szint:** `teljes`, célzottan · 2026-11-15
+**Modell:** kért `fable` (DT-F218o, a hívás szerint), tényleges `claude-fable-5-2`. (A subagent-fájlban ma is `model: opus` áll; a folytatás a koordinátor üzenetén és a DT-F218o során alapul — a sort a vizsgált tartomány `6b935da5` commitja maga írta, l. 0. és E7.)
+
+**Futtatás:** minden a munkafán (`484abac9`), a kimenet a scratchpadbe; a repóba nem írtam. A hívó session futás közben a `naplok/F218_folytatas.md`-t módosította (`git status --short`: ` M`), kódot nem.
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0. modell | NEM ELLENŐRIZHETŐ | `dontesek/uj/f218-generator-uj-a.md:7`; `.claude/agents/fuggetlen-ellenor.md:5` | A DT-F218o sor létezik és azt mondja, amit a koordinátor idézett; a felhasználói idézet („Igen, Opusra”) a végrehajtóról szól, az ellenőr Fable-je a sor következtetése. Felhasználói eredetét nem tudom igazolni. |
+| 0. modell-mezők | OK | commitok | `git show --format=%b`: `6b935da5` Fable 5.2, a többi öt Opus 5.5 — egyezik a jelentés állításával; adattábla `modell` mezőt a tartomány nem írt. |
+| 3. CI | OK | – | `gh run view 43722618020 --json headSha,conclusion,jobs`: `headSha=484abac9…`, `success`, mindkét job zöld. A `4cee43be`-re nincs futás; a `8af316a4`-re 43708743801 `success`. `futtat.py` nem futtattam újra. |
+| tesztek | OK | `eszkozok/lapgen/tesztek/` | `python eszkozok/lapgen/tesztek/futtat.py` → futott 249, hiba 0, bukás 0, kihagyva 33 (782 s). |
+| S3b/S3c regresszió | OK | `naplok/F218_elteres_engedely.tsv` | `PARDES_DATUM=2026-11-13 python eszkozok/general.py --cel lexikon2 --id HAMART-001 --kimenet <scratch>` + `regresszio.py --id HAMART-001 --uj <scratch>/lexikon` → „RENDBEN (engedély nélküli diff-sor: 0)”; mind a 33 engedélysor tényleges = elvárt; a hash-őr nem állt meg. |
+| festékpróba | OK | – | `python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001` → 0 / 0 szivárgás; a jelzőszó-számok (255/30/2337/439; 194/18/1200/220) egyeznek a jelentéssel. |
+| rétegszabály, megjelenítő | OK | `eszkozok/lapgen/megjelenites/md/kartya.py`; `megjelenites/md/szocikkek.py` | Olvasással: látható magyar literál nincs, minden mondat `ny.s(kulcs)`; a megjelenítő által hívott `s4.p2.*` kulcsok megvannak a sablontáblában. |
+| rétegszabály, bemenet | ELTÉRÉS (E1) | `eszkozok/lapgen/bemenet/kartya_lap.py:30-92, 264-287, 344-373`; `bemenet/kartya.py:266-267, 389-439`; `tesztek/teszt_szerkezet.py:202, 235, 273` | l. E1 |
+| idézet szó szerint | ELTÉRÉS (E2) | `eszkozok/szotari_glossza.py:45-53, 76`; `bemenet/kartya_lap.py:227-243`; `bemenet/kartya.py:361-374` | l. E2 |
+| GK-15 / T5 a kártyán | ELTÉRÉS (E3) | `bemenet/gerinc.py` `thayer_fa`; `bemenet/kartya_lap.py:192-193, 317-337` | l. E3 |
+| GK-06 néma hiány | ELTÉRÉS (E4) | `bemenet/kartya_lap.py` (B58 nincs); `eszkozok/lexikon_general.py:4437-4441, 4489-4492` | l. E4 |
+| a régi lánc portja | OK (a mért körben) | `lexikon_general.py:4079-4275, 8926-9002, 9723-9759, 1306-1390` | Soronként összevetve a 4.2 olvasói rétege és szakaszlistája, a lánc-mag/lánc-szavak, a rokon nyelvi sorok, a görög 4.8 három ága: a döntési szabályok egyeznek; eltérés: E3, E4, E6 és a naplóban közölt megálló ágak. |
+| 4. ell. E1 | OK | `bemenet/motivum.py` `tagabb_kor_rovid`; `lexikon_general.py:2587` | A régi szabály (`split(' (')[0]`); teszt zöld. |
+| 4. ell. E3 | OK | `eszkozok/lapgen/ismetles.py`; `konfig.py` `ISMETLES_SZAM_LEGFELJEBB = 9` | Felsorolásnál a 16 szavas ablakban ≥ 10 tiszta szám, négy igehelyes prózánál ≤ 8; kétirányú teszt zöld. (Öt igehely 16 szón belül továbbra is kiszűrődik — a napló kimondja.) |
+| 4. ell. E4 | OK | `tesztek/teszt_ismetles.py` | A teszt a találat szósorát a megnevezett sor megnevezett helyén veti össze. |
+| 4. ell. E5 | OK | `bemenet/karoli_szo.py` `b53_karoli_pontok`; `eszkozok/szerep_karoli.py:67-70` | A `*` sor nem kapcsol be (régi: `r['id'] != '*'`); teszt kis bemeneten. |
+| 4. ell. E6 | OK | `naplok/F218_jelentes.md:753` | A holtverseny-mondat a kód szerint áll. |
+| 4. ell. E2 (nyitva) | OK (nem javítva, döntésre vár) | `bemenet/karoli_szo.py:6-10` | A docstring a tényleges állapotot írja. |
+| DT-F218p tartalma | OK | `motivumok/HAMART-001.md:23-25`; `adat/motivumok.tsv` HAMART-001 sor | `git diff 6b935da5..7302338c`: az (1)–(8) tétel mind megvan; a kritérium feltételei szövegre azonosak; a `_LANC_MAG_RX` az új mondaton is talál; `teszt_kriterium.py` zöld. |
+| DT-F218p hatóköre | ELTÉRÉS (E5) | `motivumok/HAMART-001.md`; `adat/motivumok.tsv`; `lexikon/HAMART-001_TUDOMANYOS.md` (7/7); `nyilt_mag/motivumok.tsv` | l. E5 |
+| DT-F218p jóváhagyása | NEM ELLENŐRIZHETŐ | `dontesek/uj/f218-generator-uj-a.md:8` | A sor szerint a felhasználó: „döntsd el és add át a sessionnak”; a tíz tétel az orkesztrátoré, tételenkénti felhasználói jóváhagyás nincs rögzítve. |
+| DT-F218o tartalma | ELTÉRÉS (E7) | `CLAUDE.md` „Modell-ellenőrzés”; `F218_GENERATOR_UJ_A_BRIEF.md:291` | l. E7 |
+| A1 | OK | `naplok/F218_jelentes.md` | A mért állítások mellett proveniencia-sor áll; a „T5 a 4.2-t nem érinti” csak a HAMART adatára igaz (E3). |
+| A2 | ELTÉRÉS (E4/E5 része) | `nyitott/uj/f218-generator-uj-a.md`; `naplok/F218_folytatas.md:65, 67, 218` | Négy nyitott tétel csak a folytatási fájlban: B58, betűjavítás minden motívumon, kritérium-újrafordítás, kiadás-sor; a `nyitott/uj/`-ban a tartományban csak az N-F218f módosult. |
+| A3–A5 | OK (n/a) | – | A diffben nincs párhuzam-címkézés, Remez/Sod réteg vagy nevesített tanító. |
+| A6 | OK | – | `gh run view 43722618020` annotációi: E12–E15 nincs. |
+| ell.lista 1: törölt sorok | OK | `adat/` | A tartomány saját commitjaiban adatsor nem törlődött; `adat/motivumok.tsv` 1 módosított sor. |
+| ell.lista 2: kulcslefedettség | ELTÉRÉS (E6) | `megjelenites/md/szocikkek.py` `_MEGJEGYZES` | 7 lehetséges megjegyzés-együttesből 5 kap sablont; a 8 bizonytalanság-kód és a szócikk-sorszámok lefedve. |
+| ell.lista 3: nulla-diff hatóköre | OK, pontosítással | `regresszio.py` kimenete | Vonatkozik: HAMART-001 TUDOMANYOS 1., 2., 4. szakasz (a 4.-ben „9 alblokk nincs kész”: 2× 4.6 és a „Miért fontos ez a lelet” rés 7 alblokkja — a jelentés „csak a 4.6 hiányzik” mondata ezt nem mondja ki) és a KIZARASOK egésze. Nem vonatkozik: Kivonat, Tartalomjegyzék, Jelmagyarázat, 3., 5–12., Kolofon, ISTENTISZT-001 egésze. |
+| ell.lista 4: tábla-Δ | OK | `adat/*.tsv` | `git diff --numstat cfc84cc7..484abac9`: `lapgen_sablonok` +487, `olvasoi_nevtabla` +57, `lapgen_bemenetek` +55, `tematikus_sajat_szo` +3; `kapcsolatok`, `nyilt_angol` 3/3; `jeloltek` 2/2; `elofordulasok`, `elutasitasi_okok`, `motivumok`, `nyilt_kodkonyv` 1/1; `konkordancia/` 0. A tartományban: sablon +135 (7+32+96, a jelentés bontja; 6 új `dontes=var`), bemenet +6. |
+| ell.lista 5: ⛔ pontok | ELTÉRÉS (E7) / OK | brief 6., 9. pont | A 9. pont „az ellenőr modellje nem Fable” ⛔-ját a DT-F218o megfordította (E7). A 6 új sablonmondat a 218a végi listára vár; új tényállítást bennük nem találtam. |
+| másodlagos: SEMA-számok | OK | `adat/SEMA.md:2486-2552` | A négy tábla 2.66–2.69; a hivatkozások (TSV-fejlécek, döntésfájl, 6-os sablon, két napló) követik; régi számú hivatkozás nem maradt. |
+| másodlagos: hash-frissítés | OK | `naplok/F218_referencia.tsv` | 6 sor (B51 ×2, B65–B68); a méretek azonosak, ahol csak a SEMA-szám cserélődött; a regresszió a hash-őrrel ezen a fán zöld. |
+
+**Eltérések (súly szerint)**
+
+- **E1 (közepes–magas) — a GK-08a kapuit a 4.2 kódja megkerüli.** A kártya számítása (pontok, félkövér, csoportosítás), egy szabad `str`/`object` mezős modell és a szövegátírás a `bemenet/` alá került, amelyet a három szerkezeti teszt nem néz; a jelentés maga írja, hogy hat réteghiba után „réteg-átrendezés” tette zölddé őket. A kész lap mondatai árnyékként kódban is állnak (`'%d hivatkozás'`, `' · arámi'`, `'(a %s %d. BDB-szócikke a %d-ből)'`, `' (héber számozás: %s)'`), és a minták ezen döntenek: ha a sablontábla mondata változik, a pozíciók némán elcsúszhatnak. Az idézeten kódba írt regex-cserék futnak (`takaritas` 8 minta + a kódjel törlése, `belso_jelek_torlese`, `digitalizalas_jelei`) javítótábla-sor nélkül, holott a `jelolt.py` docstringje „a javítótábla sora szerint” javítást ígér; a DT-F218k/l ugyanilyen ügyben a forrásban javítást írt elő, cseretábla nélkül. A felhasználó döntése kell: megengedett „forrásjavítás”-e a bemeneti rétegben, vagy adatba kell kerülnie.
+- **E2 (közepes) — idézetként áll nem szó szerinti szöveg.** A glosszát az `olvasoi_glossza` átalakítja (70 karakternél csonkol + „…”, zárójeles részt kihagy, szóközt von össze), a `_forras_ertek` mégis idézetté burkolja, részlet-kapu nélkül (a 4.8 `_eleje` és `fej_alap_gyok` kaput tartalmaz). Bizonyíték az új ISTENTISZT-001 lapon (H8034): „2.c különösen mint ami az embernek egyfajta halál utáni életet ad, főként…” — a forrás (`adat/bdb_szakasz_hu.tsv`) „főként a fiaiban, …” folytatódik; a „…” a generátoré, idézet-típusban (a vázlatsoron helyesen sablon-jel). A Károli-számozás két darabja (`uj`, `eredeti`) összerakott szöveg, B19-/B18-idézetként címkézve. A HAMART-lapon ilyet nem találtam; a festékpróba nem látja.
+- **E3 (közepes) — GK-15/T5 a kártyán nincs megvalósítva.** Elavult `sz<n>` Thayer-fordításnál a magyar szöveg eltűnik (a lap „fordításra vár”-t ír, vagy hibával megáll) a T5 szerinti jelölt régi szöveg helyett. A `forditasok.tsv`-ben 213 elavult Thayer-sor van, köztük `sz<n>` (pl. G2532 `sz9`, G0846 `sz4`); a HAMART öt sora valóban nem érintett.
+- **E4 (közepes) — néma hiány.** A tiltott fordulatok megjegyzését („ismert hiány: a magyar szöveg tiltott fordulatot tartalmaz…”) a régi kártya kiírta; az új a B58-at nem olvassa, se hiba, se hiány-jelölés nélkül. A jelentés közli, de a folytatási fájl a „kimondott hibával megállnak” cím alatt sorolja, és N-tétel nincs.
+- **E5 (közepes) — a DT-F218p a brief hatókörén kívül írt.** A brief 3. pontja kizárja az új prózát és a `lexikon/` írását; a commit a kiadott HAMART-001 Kivonatát/kritériumát módosította, a lapot újragenerálta (7 sor). Következmény: a nyílt magban a HAMART-001 angol kritériuma üres (`METHODS.md`: 222 → 223 hiányzó); a lap a 2. kiadás óta változott, új `kiadasok.tsv`-sor nélkül; ezek csak a folytatási fájlban állnak nyitottként.
+- **E6 (alacsony) — nem dokumentált megálló ágak a 4.8-ban.** Két megjegyzés-együttesre (írás nélkül + romlott; mindhárom) a megjelenítő `KapuHiba`-t dob; a régi bármely együttest kiírt. A saját szó LSJ-szócikkének ága az S3b után is megáll, az üzenete még az S3b-re vár.
+- **E7 (alacsony) — szabályütközés a DT-F218o körül.** A `CLAUDE.md` szerint az ellenőr kért modellje a subagent-fájl mezője (`opus`); a DT-F218o Fable-t ír elő; a fájl és a brief 291. sora változatlan. Amíg így marad, minden ellenőr-hívás a modell-ellenőrzésen megáll.
+- **E8 (alacsony) — napló és apróságok.** A figyelmeztetések száma ma HAMART 9, ISTENTISZT 8 (a napló utolsó száma 7/4). Az új ISTENTISZT-lap 386. sora a „rokon szavaknál” álló LSJ-szócikkre utal, ilyen blokk az új lapon még nincs. `kartya_lap.py`: holt `_hiv` függvény; a `_szakasz_lista` docstringje az első utasítás után áll.
+
+**Amit nem tudtam ellenőrizni:** a végrehajtó sessionök tényleges modellje; a DT-F218o és a DT-F218p felhasználói eredete; az ISTENTISZT-001 4.2 és 4.8 blokkjának sorszintű helyessége (nincs referenciája; csak szemle és kódösszevetés); a megálló ágak viselkedése a két mintalapon kívüli motívumon; a `takaritas` háromszori ciklusának egyezése a régi lánccal a HAMART 654 során túl.
+
+## Az 5. ellenőrzés besorolási javaslata (a 8. session; egyeztetésre vár, javítás még nem történt)
+
+| # | Javasolt besorolás | Teendő |
+|---|---|---|
+| E1 | **döntés (a felhasználóé)** | Megengedett-e a kártyán a bemeneti rétegben futó, kódba írt forrásjavítás (a régi lánc pozíciós portja, `takaritas`, `belso_jelek_torlese`, `digitalizalas_jelei`), vagy a javításoknak adatba (javítótábla) kell kerülniük, a DT-F218k/l mintájára. Mechanikus rész a döntéstől függetlenül: a kódbeli árnyékmondatok (`'%d hivatkozás'` …) helyett a minták a sablontábla mondatából képződjenek (vagy kapu vesse össze a kettőt), és a szerkezeti tesztek terjedjenek ki a `bemenet/kartya*.py` számítási részére (a pontozás és csoportosítás a `szamitas/`-ba). |
+| E2 | mechanikus | Az átalakított glossza nem idézet: a csonkoló „…” sablon-jel, az idézet-darab csak a forrás szó szerinti részlete, részlet-kapuval (a 4.8 `_eleje` mintájára); a Károli-számozás két darabja jelölésként (nem B18/B19-idézet). A HAMART-regresszió nem változhat. |
+| E3 | mechanikus | A T5 (GK-15) a Thayer-kártyán: `munka` módban a régi magyar szöveg + felülvizsgálat-jel (`s4.felulvizsgalat`), `kiadas` módban BUKÁS; teszt egy `sz<n>` elavult sorra (G2532 `sz9`). |
+| E4 | mechanikus | A B58 bekötése a kártyára (a régi ⓘ-megjegyzés), vagy kimondott BUKÁS, ha a kártya tiltott fordulatot tartalmaz; N-tétel a `nyitott/uj/`-ba; a folytatási fájl mondata javítva. |
+| E5 | **döntés (az orkesztrátoré)** | A DT-F218p az orkesztrátor rendelkezésére ment; a következmények (angol kritérium újrafordítása, a HAMART-001 új kiadás-sora) N-tételként a `nyitott/uj/`-ba — ez mechanikus, a döntés az, hogy a 218a-ban vagy külön tételben történjen. |
+| E6 | mechanikus | A két megálló 4.8-együttesre sablonmondat (vagy kimondott, dokumentált megállás a régi szöveggel); az LSJ-ág üzenete frissítve. |
+| E7 | **döntés (a felhasználóé)** | A `fuggetlen-ellenor.md` `model:` mezője `fable`-re (a DT-F218o idejére), vagy a CLAUDE.md szabálya kapjon kivételt a hívásban megadott modellre. Amíg nem dől el, minden ellenőr-hívás megáll, és csak a hívó hivatkozásával folytatható. |
+| E8 | mechanikus | A figyelmeztetés-számok frissítése a naplóban; az ISTENTISZT 386. sor utalása (a rokon szavak blokkja az S5–S8-ban jön: N-tétel vagy kapu); a holt `_hiv` törlése, a docstring helyre. |
