@@ -34,8 +34,7 @@ appears in as many rows as source words it is aligned to; a word without a pair 
 modern text, take the rows with an empty `kieso` column in `token` order, once per word; the punctuated text is in
 `versek.tsv`.
 
-The alignment is a machine proposal with measured accuracy (`METHODS.md`, section 5); the `bizonyossag` column marks
-where two independent models agreed.
+The alignment is a machine proposal with measured accuracy (`METHODS.md`, section 5).
 
 ## Related datasets
 

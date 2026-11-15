@@ -42,8 +42,8 @@ table lists every word exactly once, the two sides separately (`oldal` = `hu` or
 Hebrew and Greek word forms are not in the package; a source word is identified by its position and Strong's number,
 and the position matches the STEPBible TAHOT/TAGNT text.
 
-Every pair is a machine proposal with measured accuracy (`allapot` = `javaslat`); the `bizonyossag` column marks where
-two independent models agreed.
+Every pair is a machine proposal (`allapot` = `javaslat`), with the measured accuracy given above; the accuracy per
+stratum and link type is in `meres.tsv`.
 
 ## Related datasets
 

@@ -7,14 +7,13 @@ Hungarian word has so far found no free data that answers this word by word, wit
 alignment of the 1908 Károli text with the source text: each of the 598,715 word pairs states which Hebrew or Greek word
 the Hungarian word translates, and its Strong's number.
 
-**How it was made.** The alignment was done by language models, verse by verse, following a written rule set: when the
+**How it was made.** The alignment was done by a language model (Claude Sonnet), verse by verse, following a written rule set: when the
 Hungarian article is an addition, where a Hebrew possessive suffix belongs, what to do with a split relative pronoun.
 The model only marked which word goes with which; it wrote no Strong's numbers, which come from the open STEPBible
-Hebrew and Greek text. A program checked every answer, so that no word is left out and none appears twice. Genesis and
-Exodus were aligned by two independent models; where they agreed, the pair is marked high confidence.
+Hebrew and Greek text. A program checked every answer, so that no word is left out and none appears twice.
 
 **How accurate.** The alignment is not error-free, and we do not claim it is. We claim that it has been measured, and we
-publish every figure of the measurement. On a random sample drawn from eight strata, a third model that did not see the
+publish every figure of the measurement. On a random sample drawn per book group, another model that did not see the
 pairs agreed with the alignment in 95.06% (95%: 93.81–96.32%). Main-word pairs were also compared with
 an independent Károli edition marked with Strong's numbers: 98.72% agreed (95%: 98.22–99.08%). The weaker point is
 the alignment of Hebrew prefixes and suffixes (90.74%), and the confirmed errors are listed by name.

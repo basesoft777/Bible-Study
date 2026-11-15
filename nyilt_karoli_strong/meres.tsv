@@ -1,8 +1,7 @@
 # GENERÁLT: a Logosz-lexikon – Károli 1908 – Strong szóillesztés nyílt magjának exportja (CC BY 4.0), a projekt adataiból generálva — kézzel nem szerkesztendő; a „#” kezdetű sor megjegyzés.
 # GENERATED: export of the Logosz Lexikon – Károli 1908 – Strong word alignment open core (CC BY 4.0), generated from the project data — do not edit by hand; a line starting with "#" is a comment.
 szakasz	cimke	n	x	p	also95	felso95	modszer
-reteg	OSZ_mozes_magas	200	198	0.9900	0.9643	0.9973	wilson95
-reteg	OSZ_mozes_alacsony	200	184	0.9200	0.8740	0.9502	wilson95
+reteg	OSZ_mozes	400	382	0.9502	0.9280	0.9724	retegzett_normal95
 reteg	OSZ_tortenet	200	190	0.9500	0.9104	0.9726	wilson95
 reteg	OSZ_koltoi	200	190	0.9500	0.9104	0.9726	wilson95
 reteg	OSZ_profeta	200	186	0.9300	0.8859	0.9578	wilson95
@@ -16,14 +15,10 @@ bontas	OSZ_tartalmi_szo	661	637	0.9627	0.9473	0.9781	retegzett_leiro
 bontas	OSSZES_tartalmi_szo	1261	1217	0.9644	0.9520	0.9769	retegzett_leiro
 bontas	OSZ_morfema	339	311	0.9074	0.8718	0.9429	retegzett_leiro
 bontas	OSSZES_morfema	339	311	0.9074	0.8718	0.9429	retegzett_leiro
-hibatipus	OSZ_mozes_magas:folos_par	2	0				darab
-hibatipus	OSZ_mozes_magas:azonos_lexema_mas_elofordulas	2	0				darab
-hibatipus	OSZ_mozes_magas:szomszedos_token	2	2				darab
-hibatipus	OSZ_mozes_magas:rossz_szo_a_versben	2	0				darab
-hibatipus	OSZ_mozes_alacsony:folos_par	16	4				darab
-hibatipus	OSZ_mozes_alacsony:azonos_lexema_mas_elofordulas	16	0				darab
-hibatipus	OSZ_mozes_alacsony:szomszedos_token	16	8				darab
-hibatipus	OSZ_mozes_alacsony:rossz_szo_a_versben	16	4				darab
+hibatipus	OSZ_mozes:folos_par	18	4				darab
+hibatipus	OSZ_mozes:azonos_lexema_mas_elofordulas	18	0				darab
+hibatipus	OSZ_mozes:szomszedos_token	18	10				darab
+hibatipus	OSZ_mozes:rossz_szo_a_versben	18	4				darab
 hibatipus	OSZ_tortenet:folos_par	10	1				darab
 hibatipus	OSZ_tortenet:azonos_lexema_mas_elofordulas	10	0				darab
 hibatipus	OSZ_tortenet:szomszedos_token	10	5				darab
