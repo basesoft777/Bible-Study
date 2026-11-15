@@ -258,3 +258,49 @@ Ugyanannyi token, mint a Sonnet 2. körében (856 459), Opus-áron. Keret: előt
 2. **Az ISTENTISZT-hiány nem a modellé:** 30% mindkét modellel. A tíz tételből kettő kinyerési hézag (N-F224c: 1., 2.), egy a bizonyíték mérlegelésén múlik (8.: a LXX alanya), három pedig a „másik hely” és a „Ki?” kérdésé, ahol a hibát egy, a mondaton kívüli adat hordozza (12.: a BDB a kizárt helyet is ide sorolja; 17.: az Ézs 43:1-ben az Úr hív; 10.: a Targum mondatának iránya). Az N-F224c-vel a felső korlát 8/10, a küszöb pedig hibátlan munkát kívánna a maradék nyolcon.
 3. **A hamis riasztás nem csökkent** (45–50%): az Opus többet jelöl (HAMART 52 nem igazolt a 39 helyett), a valódi és a téves jelzés aránya hasonló. A többlet a lektor terhe, nem a kiadás kockázata.
 4. **Ingadozás:** egy Opus-futás; a saját stabilitása nem mért. A Sonnet két köre között 29 fordulat volt; az Opus és a Sonnet 2. köre között 34.
+
+## 8. Újramérés az ISTENTISZT-szeleten: Opus, a kinyerés javítása után (F224.14–.17)
+
+*A felhasználó döntése (2026-11-15, az orkesztrátoron át): „Igen, így menjen” — az F2 Opusra (DT-F224b), N-F224c (F224.14), a mondaton kívüli adat a kinyerésben (F224.15), utána egy újramérés csak az ISTENTISZT-szeleten Opusszal, ugyanazokkal a mérőkkel; a HAMART nem fut újra, a hamis riasztás csökkentése nem e kör része (N-F224d). A futás: 1 ügynök (`general-purpose`, `model: opus`, a tényleges modell `claude-opus-5-5`, a modell-ellenőrzése: egyezik; „a próza modellje is ez” — DT-F224c 🟡), a szerepfájl a `489c7ebd` állapotában, a bemenet a `b2aea73f`-es forrás és adatok, a lista az új kinyeréssel (`bemenet/ist/ist_lista_v2.md`, 75 K-tétel), javítókör nélkül. Nyers kimenet: `naplok/F224_proba/F2_ISTENTISZT_opus2.md`.*
+
+**Mérési korlát (kimondva):** a javítás (F224.14–.15 és a szerepfájl új bekezdése) ugyanannak a tíz tételnek a 7.2 szakaszbeli mechanizmusaiból készült, amelyen most mérünk. A végrehajtó a próbahalmaz tételeit nem írta példának (egy ilyen példát a commit előtt kivett), de a mechanizmus-választás e tíz tételből jön; az újramérés ezért **nem független**. A független mérés egy új motívumon vagy egy új mintán lehetséges.
+
+| Mérő | Küszöb | Sonnet 2. kör | Opus (7. sz.) | **Opus, új kinyerés (8. sz.)** | |
+|---|---|---|---|---|---|
+| ISTENTISZT 10 | ≥ 80% | 3/10 = 30% | 3/10 = 30% | **7/10 = 70%** (részlegessel 8/10) | ✗ |
+| „nem eldönthető” | ≤ 15% | 5,2% (3/58) | 8,6% (5/58) | **2,7%** (2/75) | ✓ |
+| hamis riasztás (vak minta) | ≤ 30% | 50% | 45% | **0/2** a lektori listán kívüli sokaságon (3 tétel, 12-es minta nem állítható elő); a funkció-mező miatti ismételt jelzéssel együtt 3/5 | — (l. lent) |
+
+### 8.1 Tételenként (Opus 7. sz. → Opus 8. sz.)
+
+| Lektor | K (új lista) | 7. sz. | 8. sz. | Eredmény | Megjegyzés |
+|---|---|---|---|---|---|
+| 1 | K50 (funkció-mező), K61 (Remez, új: idézeten túl) | igazolt, — | hamis, hamis | ✓ új | a funkció-mező és a Remez-mondat: a formulát Illés mondja, a próféták szájában „Baál! hallgass meg minket!” |
+| 2 | K60 (új: szabály-mondat) | — | hamis | ✓ új | a Zsolt 116:4, 13, 17-ben előbb a név, utána az ige |
+| 5 | K27 | hamis | vitatott | ✓ | az adatsor („nincs szó szerinti egyezés”) és a próza ellentéte |
+| 8 | K52 | igazolt | vitatott | ✓ új | a „megáll” alanyát a vers nem nevezi meg, a mondat eldönti |
+| 10 | K25 | igazolt | igazolt | ✗ | *Mit?* — az 1Móz 4:26 Targumában a celá szava áll, a mondat iránya fordított; a K-tétel alatt a lap más mondata ezt kimondta („a Targum a mondatot megfordítja”), az ügynök a szót számolta |
+| 12 | K13, K15 | igazolt | hamis, igazolt | ✓ új | a BDB 2.c a kizárt Jer 10:25-öt és Zsolt 79:6-ot is ide sorolja (a szótári besorolás sorából) |
+| 13 | K22 | hamis | hamis | ✓ | |
+| 15 | K4 | vitatott | vitatott | ✓ | |
+| 16 | K5 | hamis | vitatott | részben | más okból (a 34:5 alanya); a pátriárkák csoportját nem |
+| 17 | K7 | igazolt | igazolt | ✗ | *Ki?* — a tükörfordítás („I have called you by your name”) a K-tétel alatt állt; az ügynök a ragos alakot nézte, azt nem, kinek a neve |
+
+**Új az új kinyeréssel:** 1, 2, 8, 12. **Továbbra sem:** 10, 17 (mindkettőnél az adat a K-tétel alatt állt). A 80% egy tételen múlik.
+
+**A 10-es halmazon kívül:** a bíráló-típusú tételek közül a 3. (K58), 4. (K55), 6. (K56), 9. (K57) változatlanul F2-ítéletként megvan; a régi átnézés 9 HIBÁ-jából az F2 hatot jelöl (K5, K11, K17, K21, K22, K29); a K23-at, a K26-ot és a K54-et igazolja (a 7. szakaszban a K26 és a K54 vitatott volt).
+
+### 8.2 Többlet-jelzések és hamis riasztás
+
+- **A lektori listán kívüli sokaság** 3 tétel (K12, K14, K19), a 12-es minta nem állítható elő; mind a három minősítve: K12 valódi (a Károli mindkét helyen „kiált”, a „kihirdetés” nem a fordítás szava), K19 valódi (`adat/thayer_vers_jelentes.tsv`: a G1941 7. pontja alatt a kizárt Róm 10:12 és 2Tim 2:22 is áll, a mondat a kizártak közül csak az ApCsel 9:14-et és 9:21-et nevezi), K14 nem dönthető el (a BDB 3.b az Ézs 44:5-öt „compare … but read” jelöléssel hozza; hogy a felsorolás hiánya hiba-e, a szócikk jelölése nem dönti el). Hamis riasztás: 0/2.
+- **Új mellékhatás — egy hiba több tételen:** az 1Kir 18:25 funkció-mezője (a lektor 1. tétele) az F224.15 szerint minden olyan K-tétel alatt áll, amely a verset idézi, és a szerepfájl szerint a K-tétel része. Az ügynök ezért hat tételt (K2, K10, K40, K50, részben K13, K17) ítélt „hamis”-nak ugyanazon egy adatsor-hiba miatt; a K2, K10, K40 mondata maga helyes. Ezt a mintába nem soroltam (az ok a lektori 1. tétel), de a lektor terhét növeli: ha ezeket hamis riasztásnak számítjuk, 3/5. **Javaslat (a felhasználó dönt):** a funkció-mező csak a hely saját adatsor-tételénél (`adat:kapcsolodas`) legyen a K-tétel része, a többi tétel alatt tájékoztató; ez egy feltétel a `kontextus()`-ban és egy mondat a szerepfájlban.
+
+### 8.3 Költség és keret
+
+F2 ISTENTISZT, Opus, 75 K-tétel: 342 780 token, 59 eszközhívás, 926 s (a 7. szakaszé 58 K-tétellel 258 054 token). A lista mérete 107 → 192 KB. Keret: előtte heti 29%.
+
+### 8.4 Mit mutat (a következő lépésről a felhasználó dönt)
+
+1. **A kinyerés a hiány nagyobb része volt:** ugyanaz a modell (Opus) ugyanazon a halmazon 30% helyett 70%-ot ér el, mert a hibát hordozó adat (funkció-mező, szabály-mondat, Remez-mondat, szótári besorolás, alany) most a K-tétel alatt áll. A korlát: a mérés nem független (l. fent).
+2. **A maradék két tétel a mérlegelésé:** az adat mindkettőnél a K-tétel alatt volt (a lap Targum-mondata; a tükörfordítás), az ügynök mégsem kötötte össze. Ez már nem kinyerési hézag.
+3. **A hamis riasztás** a lektori listán kívül most kicsi (0/2), de a sokaság is kicsi (3); az új mellékhatás (egy adatsor-hiba hat tételen) a lektor terhét növeli — a 8.2 javaslata.
