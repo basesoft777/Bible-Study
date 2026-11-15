@@ -148,7 +148,7 @@ A pontok részletei (a kész alblokkok listáját a regresszió adja; a jegyzetm
 ### Az S3 előtt eldöntendő (a felhasználóhoz, az orkesztrátoron át)
 
 1. **Az egyenként elutasított versek „saját indoka” (a 3. szakaszhoz, S3 után is ráér, de a „3. Kizárt és vizsgált helyek” előtt kell).** A régi kód a `jeloltek.tsv` `indoklas` mezőjét (belső szabad szöveg) regexekkel tisztítva írta ki. Az új generátor belső szövegből cserével olvasói szöveget nem készít: az indoklás kézi prózának minősül-e (akkor változatlanul áll, és a forrásban javul), vagy külön olvasói mező kell.
-2. **Alias-sorok (GK-17, B63)** az S5 előtt (`Sir` / `JSir`).
+2. ~~**Alias-sorok (GK-17, B63)** az S5 előtt (`Sir` / `JSir`).~~ **Lezárva (2026-11-15, DT-F218r):** a felhasználó döntése szerint („Igen, maradjon kódban”) a könyvnév-aliasok kódban maradnak, a normalizáló tábla nem változik; a bővítés később, külön tételként (N-F218k).
 3. **HN-03** (a hatókör-sor zárójeles forráslistája): a mai jóváhagyott szöveg áll.
 
 ### Amit az S3 az S2-ből örököl
@@ -243,7 +243,7 @@ A felhasználó (az orkesztrátoron át, 2026-11-13, szó szerint): „megállá
 - **ISTENTISZT-001, hat kisbetűs cellakezdet:** öt Károli-idézet és egy funkciócímke („a népek ígérete”) a forrás szerint, szó szerint áll; a régi lap nagybetűsítette. Olvasói döntés (a jelentés „Javítókör” szakaszának 1. pontja).
 - **A 7 új sablonmondat `dontes` mezője:** a felhasználó jóváhagyta („Igen, mind jó”); a mező a jóváhagyás döntésszámát várja, addig `var`.
 - **HN-03:** a hatókör-sor zárójeles forráslistája a mai jóváhagyott szöveg; ha javítandó, új mondat kell, jóváhagyással.
-- **Alias-sorok (GK-17, B63):** a normalizáló tábla 4. oszlopát több eszköz olvassa; döntés az S5 előtt kell.
+- **Alias-sorok (GK-17, B63):** lezárva (2026-11-15, DT-F218r): az aliasok kódban maradnak, a `konkordancia/Konyv_normalizalo_tabla.tsv` nem változik; a tábla bővítése később, külön tételként, a fogyasztók átvizsgálásával és regressziós méréssel (N-F218k).
 - **A CI nem futtatja a `lapgen/tesztek`-et:** a bekötés a 218c N-tételébe kerül.
 - **Függések:** a `feladatok.py fuggesek` a 194 és a 212 tétellel is `KIZAR` sort ad (l. a jelentés F218.0 szakaszát).
 - **`teszt_szintek.py`:** az olvasó-szerver tesztje 13-ból 2 bukással áll a fő checkouton is; nem ebből a diffből jön (N-F218a, `nyitott/uj/f218-generator-uj-a.md`).
