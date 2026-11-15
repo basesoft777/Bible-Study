@@ -23,6 +23,10 @@ Károli-párosítás). Így a HAMART-001 javítóköre nem töri el a tesztet.
     igehelye és névelője, a mondat által megnevezett héber szó) és a `--kapu` (új/régi formájú forrás, bukó és átmenő eset).
 12. F224.4: a három új K-fajta (szám + kapcsolat/erősség, belső utalás, „nem dönti el”), mindegyik pozitív és negatív
     esettel; az új fajta soha nem gépi ELTÉR, a régi K-tételek számozása nem változik, a `--kapu` JELENTÉS-sort ad.
+13. F224.14 (N-F224c): az idézettel lefedett mondat többletállítása K-tétel (a puszta idézet nem); az igehely nélküli
+    szabály-mondat K-tétel a gerinc-szavak helyenkénti sorrendjével; a K-számozás három szintje.
+14. F224.15: a mondaton kívüli adat (funkció-mező, angol tükörfordítás, a lap más mondata ugyanarról a forrásról,
+    Targum, szótári besorolás az elutasított jelöltekkel; a szótári kód és az útvonal illesztése).
 
 Futtatás: python eszkozok/teszt_proza_allitas.py
 """
@@ -490,6 +494,116 @@ class F224_4(unittest.TestCase):
             self.assertNotIn('**HIBA**', buf.getvalue())
         finally:
             shutil.rmtree(d)
+
+
+def karoli_eleje(ref, n=7):
+    """A vers Károli-szövegének első n szava (idézethez a tesztmondatban)."""
+    k = kornyezet()
+    return ' '.join(k['adat'].karoli_szoveg(k['adat'].versek(ref)).split()[:n])
+
+
+ELOF_PAR = [
+    {'id': 'X-001', 'igehely': '1Móz 6:11', 'gerinc_elem': 'H4390+H2555', 'strong': 'H2555',
+     'funkcio': '🌊 diagnózis — a föld megtelik erőszakkal'},
+    {'id': 'X-001', 'igehely': 'Ez 8:17', 'gerinc_elem': 'H4390+H2555', 'strong': 'H2555', 'funkcio': ''},
+    {'id': 'X-001', 'igehely': '1Móz 4:14', 'gerinc_elem': 'H4390+H2555', 'strong': 'H0127', 'funkcio': ''},
+]
+
+
+def ell_par(mondatok, elof=None):
+    k = kornyezet()
+    ell = P.Ellenor('X-001', k['adat'], k['szk'], elof or ELOF_PAR, k['igeh'])
+    ell.egysegek = [P.Egyseg('rés:ertelmezes', 'teszt:%d' % (i + 1), m) for i, m in enumerate(mondatok)]
+    for e in ell.egysegek:
+        ell.egyseg(e)
+    return ell
+
+
+class F224_14(unittest.TestCase):
+    """F224.14 (N-F224c): az idézettel lefedett mondat többletállítása és az igehely nélküli szabály-mondat."""
+
+    def test_idezeten_tul(self):
+        m = ('Ez a hely a törvény átkát mondja ki az egész nép előtt: „%s” (5Móz 27:15).'
+             % karoli_eleje('5Móz 27:15'))
+        s = uj_sorok(futtat_uj([m]), 'idézeten túl')
+        self.assertEqual(len(s), 1)
+        self.assertEqual(s[0].itelet, 'kézi')
+        self.assertIn('törvény átkát', s[0].bizonyitek)
+
+    def test_csak_idezet(self):
+        m = 'A vers így szól: „%s” (5Móz 27:15).' % karoli_eleje('5Móz 27:15')
+        ell = futtat_uj([m])
+        self.assertEqual(uj_sorok(ell, 'idézeten túl'), [])
+        self.assertFalse([x for x in ell.sorok if x.itelet == 'kézi'])   # a régi viselkedés: nincs kézi tétel
+
+    def test_szabaly_mondat(self):
+        ell = ell_par(['Ide az a hely tartozik, amelyben a megtelés igéje és az erőszak szava együtt áll.'])
+        s = uj_sorok(ell, 'szabály-mondat')
+        self.assertEqual(len(s), 1)
+        self.assertIn('H4390 → H2555: 2 hely', s[0].bizonyitek)
+        self.assertIn('nem áll mind a versben (H4390+H2555): 1Móz 4:14', s[0].bizonyitek)
+        self.assertEqual(s[0].jelzes, '⚑')
+
+    def test_szabaly_igehellyel_vagy_nelkule(self):
+        self.assertEqual(uj_sorok(ell_par(['Ide az a hely tartozik, amely a föld megtelését mondja (1Móz 6:11).']),
+                                  'szabály-mondat'), [])
+        self.assertEqual(uj_sorok(ell_par(['A föld megtelése a lánc közepén áll.']), 'szabály-mondat'), [])
+
+    def test_k_szamozas_szintek(self):
+        """A régi fajta előbb kap számot, az F224.14 fajtája a végén, akkor is, ha előbb áll."""
+        ell = ell_par(['Ide az a hely tartozik, amelyben a megtelés igéje és az erőszak szava együtt áll.',
+                       'A föld szava mindig a lánc közepén áll (1Móz 6:11).'])
+        k = kornyezet()
+        szoveg = P.jelentes('X-001', ell, k['adat'], None, 'teszt', ell.egysegek)
+        self.assertRegex(szoveg, r'### K1[ ·][^\n]*teszt:2')
+        self.assertRegex(szoveg, r'### K2[ ·][^\n]*teszt:1')
+
+
+class F224_15(unittest.TestCase):
+    """F224.15: a mondaton kívüli adat a K-tétel alatt (funkció-mező, szótári besorolás, tükörfordítás, a lap más
+    mondata ugyanarról a forrásról, Targum)."""
+
+    def test_funkcio_es_tukor(self):
+        e = P.Egyseg('rés:ertelmezes', 'teszt:1', 'A föld itt megtelik erőszakkal (1Móz 6:11).')
+        ell = ell_par([e.szoveg])
+        kont = ell.kontextus(e, ['1Móz 6:11'])
+        self.assertTrue(any(x.startswith('Funkció-mező') and 'diagnózis' in x for x in kont))
+        tukor = [x for x in kont if x.startswith('Angol tükörfordítás')]
+        self.assertEqual(len(tukor), 1)
+        self.assertIn('[', tukor[0])                       # a gerinc-szó jelölve
+
+    def test_mas_mondat_es_targum(self):
+        mondatok = ['A Targum az 1Móz 6:11-et másként adja.', 'A Targum itt is körülír (Ez 8:17).',
+                    'A görög fordítás itt hű (1Móz 4:14).']
+        ell = ell_par(mondatok)
+        e = ell.egysegek[0]
+        kont = ell.kontextus(e, ['1Móz 6:11'])
+        mas = [x for x in kont if x.startswith('A lap más mondata')]
+        self.assertEqual(len(mas), 1)
+        self.assertIn('teszt:2', mas[0])
+        self.assertTrue(any(x.startswith('Targum (') and '1Móz 6:11' in x for x in kont))
+
+    def test_nincs_forrasnev(self):
+        ell = ell_par(['A föld itt megtelik (1Móz 6:11).', 'A Targum itt is körülír (Ez 8:17).'])
+        kont = ell.kontextus(ell.egysegek[0], ['1Móz 6:11'])
+        self.assertFalse([x for x in kont if x.startswith(('A lap más mondata', 'Targum ('))])
+
+    def test_szotari_besorolas(self):
+        elof = [{'id': 'X-001', 'igehely': '1Móz 4:26', 'gerinc_elem': 'H7121+H8034', 'strong': 'H7121',
+                 'lexikon_szotar': 'BDB', 'jelentes_szam': '2.c', 'funkcio': ''}]
+        ell = ell_par(['x'], elof)
+        ell.jeloltek = [{'id': 'X-001', 'igehely': 'Jer 10:25', 'dontes': 'elutasítva'}]
+        e = P.Egyseg('rés:miert_fontos', 'teszt:9', 'A BDB a 2.c jelentés alá sorolja az 1Móz 4:26-ot.')
+        kont = [x for x in ell.kontextus(e, ['1Móz 4:26']) if x.startswith('Szótári besorolás')]
+        self.assertEqual(len(kont), 1)
+        self.assertIn('BDB H7121, 2.c', kont[0])
+        self.assertIn('elutasított jelölt 1 (Jer 10:25)', kont[0])
+
+    def test_utvonal(self):
+        self.assertTrue(P.utvonal_illik('Qal/2/c', '2.c'))
+        self.assertFalse(P.utvonal_illik('Qal/2/c', '2'))
+        self.assertTrue(P.utvonal_illik('-/1/-', '1'))
+        self.assertFalse(P.utvonal_illik('tagolatlan', '2.c'))
 
 
 class Lektor(unittest.TestCase):
