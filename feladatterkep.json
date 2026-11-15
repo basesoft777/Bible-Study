@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-15",
-   "commit": "56f47cfc"
+   "commit": "30f23331"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5584,6 +5584,16 @@
      "🟢"
     ],
     "sor": 831
+   },
+   {
+    "id": "DT865",
+    "feladat": "#175 KAROLI_SZOILLESZTES_NYILT (a rövid közlemény helye a két Károli-csomagnál; 2026-11-15)",
+    "kerdes": "A csomagmappa pontosan a nyilvános repó tartalma legyen-e, vagy maradjon benne a note mappa (export-ignore-ral kihagyva)?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 839
    }
   ],
   "javasolt": [],
