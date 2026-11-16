@@ -11,9 +11,11 @@ a csomagba: az eredeti szót a vers, a sorszáma és a Strong-száma azonosítja
 szerkesztői döntés: harmadik fél adata nem megy be). A külső összevetés forrásának adata sem: csak az összesített
 egyezés.
 
-Kimenet: `nyilt_karoli_strong/` — a mappa tartalma 1:1-ben a nyilvános adatrepó gyökere. Determinisztikus,
-újrafuttatva bájtazonos. A `kozlemeny/` almappa (a rövid közlemény hu/en tervezete) generált, de nincs az ellenőrző
-összegben, és a `.gitattributes` a kiadási archívumból kihagyja (export-ignore) a megjelenésig.
+Kimenet: `nyilt_karoli_strong/` — a mappa tartalma 1:1-ben a nyilvános adatrepó gyökere; a szerkezet (gyökér,
+`data/`, `docs/hu|en/`, `paper/`) a `karoli_csomag.py`-ban áll. Determinisztikus, újrafuttatva bájtazonos. Nincs
+`export-ignore`: a mappa mindent kiad, ami benne áll. A `paper/` kézi forrás: a generátor nem írja és nem törli (ha
+ott áll, az ellenőrző összegbe kerül). A rövid közlemény hu/en tervezete (belső anyag) a csomagon kívül, a
+`kozlemeny/note/karoli_strong/` alatt generálódik, gépi jelöléssel.
 
 A nyilvános szövegek prózája itt áll; minden szám az adatból vagy a #172 mérőtábláiból számolódik (`szamok()`),
 kézzel nem kerül a szövegbe. Ha egy szám nem olvasható ki, a szkript megáll.
@@ -34,6 +36,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import nyilt_mag_export as NM  # noqa: E402  (OSIS-kulcs, közös azonosítók)
 import karoli_strong_szovegek as SZ  # noqa: E402  (a nyilvános szövegek prózája)
+import karoli_csomag as CS  # noqa: E402  (a csomag szerkezete)
+import karoli_egyutt as EG  # noqa: E402  (a „két adatkészlet együtt” szakasz)
 from nevelo import (NEVELO_SZAM_RX, MAGANHANGZO, szam_nevelo, szo_nevelo,  # noqa: E402,F401  (közös névelő-szabály)
                     nevelo_javit, nevelo_hibak)
 
@@ -44,16 +48,18 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 GYOKER = NM.GYOKER
 KIMENET = 'nyilt_karoli_strong'
-DOI = NM.DOI_KAROLI_STRONG                       # 10.5281/zenodo.24141884 (lefoglalt)
-DOI_MODERN = '10.5281/zenodo.24141950'
-DOI_MAG = NM.DOI_MAG
+# a concept DOI (2026-11-15): a verzió-DOI nem áll a fájlokban; a verziót a szám jelöli (1.0)
+DOI = '10.5281/zenodo.24141883'
+DOI_MODERN = '10.5281/zenodo.24141949'
+DOI_MAG = '10.5281/zenodo.24141611'                      # a motívum-adatmag concept DOI-ja (a nyilt_mag/ nem változik)
 KANONIKUS_HELY = 'https://doi.org/' + DOI
 CIM_HU = 'Károli 1908 – Strong szóillesztés'
 CIM_EN = 'Károli 1908 – Strong word alignment'
 # a motívum-adatmag címe a saját CITATION.cff-je szerint (F208; N-F175c)
 CIM_MAG_HU = NM.LEXIKON_CIM_HU + ' — nyílt adatmag: bibliai motívumok'
 CIM_MAG_EN = NM.LEXIKON_CIM_EN + ' — open data core: biblical motifs'
-KOZLEMENY_DIR = 'kozlemeny/'
+NOTE_UTAK = CS.note_utak('karoli_strong')
+ENGEDETT = CS.engedett_regex(r'(?:parok|szavak)/\d{2}_[1-3]?[A-Z][A-Za-z]+\.tsv|versek\.tsv|meres\.tsv|kodkonyv\.tsv')
 
 PAROK = 'adat/karoli_strong/parok_*.tsv'
 SZAVAK = 'adat/karoli_strong/szavak_*.tsv'
@@ -399,6 +405,7 @@ def fmt(N, nyelv):
     F['doi'] = DOI
     F['doi_modern'] = DOI_MODERN
     F['doi_mag'] = DOI_MAG
+    F['egyutt'] = EG.szakasz('strong', nyelv)
     F['lex_hu'] = NM.LEXIKON_CIM_HU
     F['lex_en'] = NM.LEXIKON_CIM_EN
     F['szerzo'] = NM.SZERZO
@@ -424,18 +431,11 @@ def tsv_szoveg(fej, sorok):
     return '\n'.join(ki) + '\n'
 
 
-def kodkonyv_md():
-    ki = ['# Kódkönyv / Codebook', '', '*%s / %s*' % (CIM_HU, CIM_EN), '']
-    for fajl, cim in SZ.KODKONYV_FAJLOK:
-        ki += ['## %s' % cim, '', '| oszlop / column | érték / value | leírás | description |', '|---|---|---|---|']
-        for f, o, e, hu, en in SZ.KODKONYV_SOROK:
-            if f == fajl:
-                ki.append('| `%s` | %s | %s | %s |' % (o, ('`%s`' % e) if e else '', hu, en))
-        ki.append('')
-    return '\n'.join(ki)
+def kodkonyv_md(nyelv):
+    return CS.kodkonyv_md(nyelv, CIM_HU if nyelv == 'hu' else CIM_EN, SZ.KODKONYV_FAJLOK, SZ.KODKONYV_SOROK)
 
 
-def export():
+def export(kimenet=KIMENET):
     versek, parok, szavak, nt = beolvas()
     konyvek, vsorok = atalakit(versek, parok, szavak, nt)
     msorok = meres_sorok()
@@ -443,16 +443,20 @@ def export():
     hu, en = fmt(N, 'hu'), fmt(N, 'en')
     fajlok = {}
     for i, (kk, ps, ss) in enumerate(konyvek, 1):
-        fajlok['parok/%02d_%s.tsv' % (i, kk)] = tsv_szoveg(PAR_FEJ, ps)
-        fajlok['szavak/%02d_%s.tsv' % (i, kk)] = tsv_szoveg(SZO_FEJ, ss)
-    fajlok['versek.tsv'] = tsv_szoveg(VERS_FEJ, vsorok)
-    fajlok['meres.tsv'] = tsv_szoveg(MERES_FEJ, msorok)
-    fajlok['kodkonyv.tsv'] = tsv_szoveg(['fajl', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en'],
-                                        [list(s) for s in SZ.KODKONYV_SOROK])
-    fajlok['KODKONYV.md'] = kodkonyv_md()
+        fajlok['data/parok/%02d_%s.tsv' % (i, kk)] = tsv_szoveg(PAR_FEJ, ps)
+        fajlok['data/szavak/%02d_%s.tsv' % (i, kk)] = tsv_szoveg(SZO_FEJ, ss)
+    fajlok['data/versek.tsv'] = tsv_szoveg(VERS_FEJ, vsorok)
+    fajlok['data/meres.tsv'] = tsv_szoveg(MERES_FEJ, msorok)
+    fajlok['data/kodkonyv.tsv'] = tsv_szoveg(['fajl', 'oszlop', 'ertek', 'leiras_hu', 'leiras_en'],
+                                             [list(s) for s in SZ.KODKONYV_SOROK])
+    fajlok[CS.KODKONYV_HU] = kodkonyv_md('hu')
+    fajlok[CS.KODKONYV_EN] = kodkonyv_md('en')
     for nev, sablon, d in SZ.SZOVEGEK:
         fajlok[nev] = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
     fajlok['.gitattributes'] = SZ.GITATTRIBUTES
+    # a kézi forrás (paper/) a lemezről jön, és a kiadás része
+    abs_ki = kimenet if os.path.isabs(kimenet) else os.path.join(GYOKER, kimenet)
+    fajlok.update(CS.kezi_forras(abs_ki))
     # ellenőrző összeg: minden kiadott fájl, a közlemény-tervezet nélkül
     sor = ['%s  %s' % (hashlib.sha256(fajlok[rel].encode('utf-8')).hexdigest(), rel) for rel in sorted(fajlok)]
     fajlok['ELLENORZO_OSSZEG.sha256'] = '\n'.join(sor) + '\n'
@@ -462,9 +466,6 @@ def export():
                             'kozzeteteli_hely: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
     fajlok['RELEASE.txt'] = ('release_id: %s-%s\ndata_state_date: %s\ncontent_hash_sha256: %s\n'
                              'publication_place: %s\n' % (datum, hash_[:16], datum, hash_, KANONIKUS_HELY))
-    # a közlemény-tervezet (export-ignore; nincs az ellenőrző összegben)
-    for nev, sablon, d in SZ.KOZLEMENY:
-        fajlok[KOZLEMENY_DIR + nev] = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
     return fajlok, N
 
 
@@ -479,33 +480,35 @@ def kezirat(N):
     return ki
 
 
+def note(N):
+    """A csomag rövid közleménye (hu/en), a csomagon kívül: a repó gyökeréhez viszonyított út -> (törzs, teljes szöveg).
+    A törzs a nyilvános szöveg (a kapu ezt ellenőrzi), a teljes szöveg a GENERÁLT-jelöléssel kezdődik."""
+    hu, en = fmt(N, 'hu'), fmt(N, 'en')
+    ki = {}
+    for (nev, sablon, d), rel in zip(SZ.KOZLEMENY, NOTE_UTAK):
+        torzs = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
+        ki[rel] = (torzs, SZ.NOTE_FEJ + torzs)
+    return ki
+
+
 def kezirat_kiir(N):
-    for rel, (_, szoveg) in kezirat(N).items():
-        with open(os.path.join(GYOKER, rel), 'w', encoding='utf-8', newline='\n') as f:
+    for rel, (_, szoveg) in list(kezirat(N).items()) + list(note(N).items()):
+        ut = os.path.join(GYOKER, rel)
+        os.makedirs(os.path.dirname(ut), exist_ok=True)
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
             f.write(szoveg)
 
 
 def kiir(fajlok, kimenet):
     abs_ki = os.path.join(GYOKER, kimenet) if not os.path.isabs(kimenet) else kimenet
-    if os.path.isdir(abs_ki):
-        for gy, _, nevek in os.walk(abs_ki):
-            for n in nevek:
-                rel = os.path.relpath(os.path.join(gy, n), abs_ki).replace('\\', '/')
-                if rel not in fajlok:
-                    os.remove(os.path.join(gy, n))
-    for rel, tartalom in fajlok.items():
-        ut = os.path.join(abs_ki, rel)
-        os.makedirs(os.path.dirname(ut), exist_ok=True)
-        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
-            f.write(tartalom)
-    return abs_ki
+    return CS.kiir(fajlok, abs_ki)           # a kézi forrású paper/-hez nem nyúl
 
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[1])
     ap.add_argument('--kimenet', default=KIMENET)
     a = ap.parse_args()
-    fajlok, N = export()
+    fajlok, N = export(a.kimenet)
     ut = kiir(fajlok, a.kimenet)
     if a.kimenet == KIMENET:
         kezirat_kiir(N)          # a kézirat csak a kanonikus futáskor (a --kimenet próba a repón kívül marad)

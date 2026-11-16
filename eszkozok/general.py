@@ -1821,8 +1821,11 @@ def build_parser():
         description='A motivumlexikon generatorai -- F4_GENERATOR_BRIEF.md.',
     )
     p.add_argument('--cel', required=True,
-                    choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon',
+                    choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon', 'lexikon2',
                              'torzscikk', 'forras', 'kinyeres', 'mind'])
+    p.add_argument('--mod', choices=['munka', 'kiadas'], default='munka',
+                    help='F218a, --cel lexikon2: munka (alapértelmezés) vagy kiadas; kiadas módban elavult '
+                         'fordítás vagy nem friss jóváhagyás BUKÁS')
     p.add_argument('--id', help='egyetlen motívum-ID-re szűkítés (opcionális)')
     p.add_argument('--kimenet', default=os.path.join(ROOT, 'generalt_proba'),
                     help='alapértelmezés: generalt_proba/')
@@ -1919,7 +1922,7 @@ def main():
     args = build_parser().parse_args()
     if args.helyi_lexicon:
         if args.ir or not helyi_kimenet_engedett(args.kimenet):
-            raise SystemExit('--helyi-lexicon: csak a repón KÍVÜLI --kimenet könyvtárba, --ir nélkül (a repó alatti utak, a gyökér is, tiltottak; DT-F09h)')
+            raise SystemExit('--helyi-lexicon: csak a repón KÍVÜLI --kimenet könyvtárba, --ir nélkül (a repó alatti utak, a gyökér is, tiltottak)')
         import lexikon_general as _lg
         _lg.TBESH_HELYI_LEXICON = True
 
@@ -1937,6 +1940,14 @@ def main():
         if cel in MEG_NEM_KESZ:
             print('%s: %s' % (cel, MEG_NEM_KESZ[cel]), file=sys.stderr)
             vegso_kod = max(vegso_kod, 2)
+            continue
+
+        if cel == 'lexikon2':
+            # F218a: az új lapgenerátor (eszkozok/lapgen/); a `lexikon` cél változatlanul a régi generátor.
+            # Csak repón kívüli --kimenet könyvtárba ír (az alapértelmezett generalt_proba/ nem az).
+            from lapgen import fo as lapgen_fo
+            print('--- cél: %s ---' % cel)
+            vegso_kod = max(vegso_kod, lapgen_fo.futtat(ROOT, args.id, args.kimenet, args.mod))
             continue
 
         _, motivumok = tsv_beolvas(MOTIVUMOK_TSV)

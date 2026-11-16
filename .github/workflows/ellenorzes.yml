@@ -226,6 +226,17 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
           if [ $K1 -ne 0 ]; then head -c 20000 proza_allitas_kapu.md; echo "E41 HIBA"; exit 1; fi
 
+      # F218a (6. ellenorzes E1): az uj lapgenerator regresszios mercejenek hash-ore. Csak akkor fut, ha a valtozas a
+      # lapgeneratort vagy a merceje fajljait erinti (eszkozok/lapgen/hash_or_kapu.py ERINTO_ELOTAGOK, ERINTO_FAJLOK).
+      # Csak PR-on: a main-re futo push-esemenyen a merce a szamkiosztas utan elavulhat (DONTESEK.md), ott nem bukhat.
+      - name: F218 merce hash-or (az uj lapgenerator regresszios mercejenek bemenetei)
+        if: always() && github.event_name == 'pull_request'
+        run: |
+          set +e
+          python eszkozok/lapgen/hash_or_kapu.py --valtozott-lista valtozott_fajlok.txt
+          K1=$?
+          if [ $K1 -ne 0 ]; then echo "F218 merce hash-or HIBA"; exit 1; fi
+
       # F37 T3: a szabalyok pozitiv/negativ tesztjei (E2-E29, F37 tanulmany-szabalyok)
       - name: Szabaly-tesztek
         id: tesztek

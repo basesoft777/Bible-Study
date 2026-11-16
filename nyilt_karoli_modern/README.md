@@ -3,20 +3,22 @@
 A modernised version of the 1908 text of the Károli Bible (the classic Hungarian translation), linked word by word
 to the Hebrew and Greek source words and their Strong's numbers. One of the open data cores of the Logosz Lexikon.
 
-- **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `ATTRIBUCIO.md`.
-- **DOI:** 10.5281/zenodo.24141950 — release identifier and content hash: `RELEASE.txt`.
+Hungarian-language introduction: `docs/hu/OLVASSEL.md`.
+
+- **Licence:** CC BY 4.0 (`LICENSE`); attribution of the third-party data used: `docs/en/ATTRIBUTION.md`.
+- **DOI:** 10.5281/zenodo.24141949 — release identifier and content hash: `RELEASE.txt`.
 - **Author:** Demeter Tamás (ORCID 0009-0005-9254-9731).
 
 ## Contents
 
 | file | content |
 |---|---|
-| `konyvek/NN_Book.tsv` | per book: every word in its 1908 and modern form, with the Strong's numbers aligned to it |
-| `versek.tsv` | the modernised text, verse by verse |
-| `kodkonyv.tsv`, `KODKONYV.md` | description of the columns and values (Hungarian and English) |
-| `METHODS.md`, `MODSZER.md` | how the modernisation and the Strong linkage were made |
-| `KNOWN_ISSUES.md`, `ISMERT_HIBAK.md` | known issues and limitations |
-| `ATTRIBUCIO.md` | attribution and licences |
+| `data/konyvek/NN_Book.tsv` | per book: every word in its 1908 and modern form, with the Strong's numbers aligned to it |
+| `data/versek.tsv` | the modernised text, verse by verse |
+| `data/kodkonyv.tsv`, `docs/hu/KODKONYV.md`, `docs/en/CODEBOOK.md` | description of the columns and values (Hungarian and English) |
+| `docs/en/METHODS.md`, `docs/hu/MODSZER.md` | how the modernisation and the Strong linkage were made |
+| `docs/en/KNOWN_ISSUES.md`, `docs/hu/ISMERT_HIBAK.md` | known issues and limitations |
+| `docs/hu/ATTRIBUCIO.md`, `docs/en/ATTRIBUTION.md` | attribution and licences |
 | `CITATION.cff` | citation metadata |
 | `ELLENORZO_OSSZEG.sha256` | SHA-256 checksum of every file |
 
@@ -32,11 +34,54 @@ to the Hebrew and Greek source words and their Strong's numbers. One of the open
 The key is the OSIS verse identifier (`Gen.1.1`) and the position of the word within the verse (`token`). A word
 appears in as many rows as source words it is aligned to; a word without a pair appears in one row. To read the
 modern text, take the rows with an empty `kieso` column in `token` order, once per word; the punctuated text is in
-`versek.tsv`.
+`data/versek.tsv`.
 
-The alignment is a machine proposal with measured accuracy (`METHODS.md`, section 5).
+The alignment is a machine proposal with measured accuracy (`docs/en/METHODS.md`, section 5).
+
+## Using the two datasets together
+
+This dataset and Károli 1908 – Strong word alignment (https://doi.org/10.5281/zenodo.24141883) describe the same words of the 1908 text and can be joined
+row by row.
+
+- **Common key.** `osis` + `token`: the position of a word in the 1908 text. A row of `data/konyvek/NN_Konyv.tsv` here extends the rows of `data/parok/NN_Konyv.tsv` of the word alignment dataset: the same `token`, `eredeti_token`, `strong` and `kapcsolat`, and next to them `alak_modern`, `valtozott`, `kieso` and `gazda_token`. A word without a pair has one row here, with empty `strong` and `eredeti_token`.
+- **Reading the modernised text.** Take the rows of `data/konyvek/NN_Konyv.tsv` with an empty `kieso` column in `token`
+  order, once per word, and read `alak_modern`. A row with a `kieso` value is a word that drops out of the modern text;
+  its `gazda_token` is the position of the host word in the same verse, and its Strong's number belongs to that host
+  word in the modern text.
+- **The source side.** The complete list of the source words, including the Hebrew and Greek words that the Károli
+  does not translate with a separate Hungarian word, is only in the `data/szavak/NN_Konyv.tsv` table of the word alignment dataset (`oldal` = `er`), not in this one; join it on `osis` + `eredeti_token`.
+
+**Example: Genesis 1:1 (`Gen.1.1`), the first three words.** Word alignment (`data/parok/01_Gen.tsv`):
+
+| `token` | `alak_1908` | `eredeti_token` | `strong` | `kapcsolat` |
+|---|---|---|---|---|
+| 1 | Kezdetben | 1 | H9003 | morfema |
+| 1 | Kezdetben | 2 | H7225 | szo |
+| 2 | teremté | 3 | H1254 | szo |
+| 3 | Isten | 4 | H0430 | szo |
+
+The modernised dataset (`data/konyvek/01_Gen.tsv`), the same words:
+
+| `token` | `alak_1908` | `alak_modern` | `valtozott` | `eredeti_token` | `strong` | `kapcsolat` |
+|---|---|---|---|---|---|---|
+| 1 | Kezdetben | Kezdetben |  | 1 | H9003 | morfema |
+| 1 | Kezdetben | Kezdetben |  | 2 | H7225 | szo |
+| 2 | teremté | teremtette | igen | 3 | H1254 | szo |
+| 3 | Isten | Isten |  | 4 | H0430 | szo |
+
+The source words, the first five (`data/szavak/01_Gen.tsv`, `oldal` = `er`):
+
+| `token` | `allapot` | `partner_token` | `strong` |
+|---|---|---|---|
+| 1 | parositva | 1 | H9003 |
+| 2 | parositva | 1 | H7225 |
+| 3 | parositva | 2 | H1254 |
+| 4 | parositva | 3 | H0430 |
+| 5 | forditatlan |  | H0853 |
+
+Source word 5 (`H0853`) has `allapot` = `forditatlan`: it has no row in `data/parok/`, and appears only in `data/szavak/`.
 
 ## Related datasets
 
-- Károli 1908 – Strong word alignment: https://doi.org/10.5281/zenodo.24141884
-- The open data core of the Logosz Lexikon (motifs): https://doi.org/10.5281/zenodo.24141612
+- Károli 1908 – Strong word alignment: https://doi.org/10.5281/zenodo.24141883
+- The open data core of the Logosz Lexikon (motifs): https://doi.org/10.5281/zenodo.24141611

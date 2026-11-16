@@ -1,7 +1,7 @@
 <!-- GENERÁLT: eszkozok/karoli_strong_export.py (a próza: eszkozok/karoli_strong_szovegek.py, a számok: adat/karoli_strong/ és f172/) — kézzel nem szerkesztendő; a #175 második data paperének kézirata, nem része a nyilt_karoli_strong/ csomagnak. -->
 # A Károli-biblia 1908-as szövegének szavankénti párosítása a héber és görög eredetivel: nyílt adatkészlet mért pontossággal
 
-*Kézirat-tervezet (data paper) · Károli 1908 – Strong szóillesztés · Logosz-lexikon · DOI: 10.5281/zenodo.24141884*
+*Kézirat-tervezet (data paper) · Károli 1908 – Strong szóillesztés · Logosz-lexikon · DOI: 10.5281/zenodo.24141883*
 
 ## Kivonat
 
@@ -62,20 +62,20 @@ vak ellenőr) ítéltük meg. A külső forrás adata nem része az adatkészlet
 | fő szavak, a független forrás szerint | 98,72% | 98,22–99,08% |
 | fő szavak, háromutas ítélet után | 99,81% | 99,56–99,92% |
 
-A rétegek egyezése 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog; a rétegenkénti táblát az adatkészlet `meres.tsv` fájlja és módszertani leírása közli. Az 1 600 mintapárból
+A rétegek egyezése 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog; a rétegenkénti táblát az adatkészlet `data/meres.tsv` fájlja és módszertani leírása közli. Az 1 600 mintapárból
 72 tért el az ellenőrtől; a leggyakoribb típus a szomszédos szó (37), jellemzően egy héber
 előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellenére. A független összevetés 34 eltéréséből
 5 maradt a párosítás hibája; ezeket és a többi megerősített hibát az adatkészlet név szerint felsorolja.
 
 ## 4. Az adatkészlet
 
-**Hely és azonosító.** Zenodo, DOI: 10.5281/zenodo.24141884; licenc: CC BY 4.0; nyelv: magyar (adat), magyar és angol (dokumentáció);
+**Hely és azonosító.** Zenodo, DOI: 10.5281/zenodo.24141883; licenc: CC BY 4.0; nyelv: magyar (adat), magyar és angol (dokumentáció);
 adatállapot: 2026-11-01.
 
-**Fájlok.** `parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
-sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `szavak/` (könyvenként minden
-magyar és eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `versek.tsv` (a Károli 1908
-szövege); `meres.tsv` (a mérés minden száma); kétnyelvű kódkönyv, módszertani leírás, ismert hibák, ellenőrző összeg. A
+**Fájlok.** `data/parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
+sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `data/szavak/` (könyvenként minden
+magyar és eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `data/versek.tsv` (a Károli 1908
+szövege); `data/meres.tsv` (a mérés minden száma); kétnyelvű kódkönyv, módszertani leírás, ismert hibák, ellenőrző összeg. A
 kulcs az OSIS-versazonosító és a szó sorszáma. A héber és görög szóalak nincs a csomagban: a sorszám a STEPBible
 TAHOT/TAGNT szövegéhez illeszthető.
 
@@ -90,7 +90,7 @@ görög szó minden Károli-megfelelője egy szűréssel összegyűjthető. Ford
 fordítói következetessége, a betoldások és a fordítatlan szavak eloszlása. Nyelvtechnológiai célra kis erőforrású
 nyelvpár (magyar–héber, magyar–görög) szóillesztési adata, rétegenként mért hibával; a mintapárok és a hibatípusok
 szóillesztő programok értékeléséhez is használhatók. Ugyanezek a párok a Károli modernizált szövegén is megjelennek
-(https://doi.org/10.5281/zenodo.24141950); a két adatkészlet a vers és a szósorszám kulcsán szóról szóra összekapcsolható.
+(https://doi.org/10.5281/zenodo.24141949); a két adatkészlet a vers és a szósorszám kulcsán szóról szóra összekapcsolható.
 
 ## 6. Korlátok és a következő kiadás
 
@@ -113,7 +113,7 @@ a számok az adatokból generáltak. MI-eszköz nem szerző; az adatokért és a
 
 ## Hivatkozások
 
-Demeter, T. (2026). *Modernizált Károli – Strong* [adatkészlet]. Zenodo. https://doi.org/10.5281/zenodo.24141950
+Demeter, T. (2026). *Modernizált Károli – Strong* [adatkészlet]. Zenodo. https://doi.org/10.5281/zenodo.24141949
 
 STEPBible. (é. n.). *Translators Amalgamated Hebrew OT (TAHOT) és Translators Amalgamated Greek NT (TAGNT)*
 [adatkészlet]. Tyndale House, Cambridge. https://www.STEPBible.org

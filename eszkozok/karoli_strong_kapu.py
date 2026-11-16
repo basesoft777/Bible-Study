@@ -11,8 +11,9 @@ A brief 1. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
                 minden mérési sort hordoz                                                             — BUKÁS
     LICENC      (b) CC BY 4.0 a LICENSE-ben; a TAHOT/TAGNT-attribúció szó szerint; nincs nem kompatibilis licenc
                 (NC, SA, GPL, „minden jog fenntartva”)                                                 — BUKÁS
-    HARMADIK    (c) nincs export-kód és nem engedett fájltípus; nincs héber/görög írásjel (a TAHOT/TAGNT nyers
-                szövege); nincs a zárt külső összevetési forrás neve                                   — BUKÁS
+    HARMADIK    (c) a csomagmappában csak a szerkezet (`karoli_csomag.py`) engedte fájl és almappa áll: nincs
+                export-kód, nincs lapos maradvány, nincs idegen mappa; nincs héber/görög írásjel (a TAHOT/TAGNT
+                nyers szövege); nincs a zárt külső összevetési forrás neve                             — BUKÁS
     UJRA        (d) az export újrafuttatva bájtazonos a lemezen állóval                                 — BUKÁS
     NYILVANOS   (e) nyilvános szövegben nincs belső jelölés (DT/N/F-szám, belső útvonal, proveniencia-kulcs,
                 `manual`), „orkesztrátor”, „felhasználó…”, „termék”, GitHub, helyőrző; a „PaRDeS” nem áll benne
@@ -20,8 +21,10 @@ A brief 1. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
                 modell-egyezés mint minősítés (magas/alacsony bizonyosság, kétmodelles leírás, költségkeret) — BUKÁS
     NEVELO      a magyar szövegekben a szám előtti névelő a kiejtés szerinti (az 598 715, a 34, az 1. kiadás),
                 és nincs el nem döntött „a(z)” alak                                                      — BUKÁS
-    KOZLEMENY   a `kozlemeny/` hu/en tervezete (rövid közlemény) megvan, nincs az ellenőrző összegben, a
-                `.gitattributes` kihagyja a kiadásból (export-ignore)                                    — BUKÁS
+    KOZLEMENY   a `.gitattributes` nem hagy ki semmit (nincs `export-ignore`: a mappa pontosan a nyilvános
+                repó); a rövid közlemény hu/en tervezete a csomagon kívül (`kozlemeny/note/karoli_strong/`) a
+                generálttal azonos, és a törzse a nyilvános szövegszabályok szerint tiszta (az UJRA ponttal
+                fut)                                                                                     — BUKÁS
     KEZIRAT     a második data paper kézirata (`kozlemeny/data_paper/karoli_strong_kezirat_hu/en.md`, a repó
                 gyökerében, a csomagon kívül; DT-F175b) a generálttal azonos, és a törzse a nyilvános
                 szövegszabályok szerint tiszta (az UJRA ponttal fut)                                     — BUKÁS
@@ -46,6 +49,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import karoli_strong_export as E  # noqa: E402
+import karoli_csomag as CS  # noqa: E402
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -57,9 +61,7 @@ BUKAS, FIGYELEM, OK = 'BUKÁS', 'FIGYELEM', 'OK'
 
 Talalat = collections.namedtuple('Talalat', 'azon suly uzenet')
 
-ENGEDETT_NEV = re.compile(r'^(?:(?:parok|szavak)/\d{2}_[1-3]?[A-Z][A-Za-z]+\.tsv|versek\.tsv|meres\.tsv|'
-                          r'kodkonyv\.tsv|[A-Z_]+\.md|LICENSE|CITATION\.cff|\.gitattributes|ELLENORZO_OSSZEG\.sha256|'
-                          r'KIADAS\.txt|RELEASE\.txt|kozlemeny/kozlemeny_(?:hu|en)\.md)$')
+ENGEDETT_NEV = E.ENGEDETT
 HEBER_GOROG = re.compile('[֐-׿Ͱ-Ͽἀ-῿יִ-ﭏ]')
 ZART_FORRAS = re.compile(r'Bible[- ]?Discovery|Biblia[- ]?Felfedez', re.I)
 NEM_KOMPATIBILIS = re.compile(r'\bNC\b|NonCommercial|nem kereskedelmi|BY-SA|ShareAlike|\bGPL|minden jog fenntartva|'
@@ -96,11 +98,10 @@ MODELL_EGYEZES = [
     (re.compile(r'confidence label|`magas`|`alacsony`'), 'modell-egyezés jelölése'),
 ]
 TILTOTT += MODELL_EGYEZES
-KIADAS_MONDAT = {'OLVASSEL.md': 'A csomag minden fájlja a kiadás része.',
+KIADAS_MONDAT = {CS.OLVASSEL: 'A csomag minden fájlja a kiadás része.',
                  'README.md': 'Every file of the package is part of the release.'}
-MAGYAR = ('OLVASSEL.md', 'MODSZER.md', 'ISMERT_HIBAK.md', 'ATTRIBUCIO.md', 'LICENSE', 'KODKONYV.md', 'kodkonyv.tsv',
-          'kozlemeny/kozlemeny_hu.md')
-KIHAGYOTT = ('ELLENORZO_OSSZEG.sha256', 'KIADAS.txt', 'RELEASE.txt')
+MAGYAR = CS.MAGYAR_FAJLOK
+KIHAGYOTT = CS.KIHAGYOTT_OSSZEGBOL
 
 
 def olvas_csomag(konyvtar):
@@ -122,7 +123,7 @@ def adatsorok(szoveg):
 
 def nyilvanos_szoveg(rel, szoveg):
     """A nyilvános szövegnek számító részek: a próza teljesen, a TSV-ből a megjegyzéssorok és a kódkönyv."""
-    if rel.endswith('.tsv') and rel != 'kodkonyv.tsv':
+    if rel.endswith('.tsv') and rel != 'data/kodkonyv.tsv':
         return '\n'.join(s for s in szoveg.split('\n') if s.startswith('#'))
     return szoveg
 
@@ -161,7 +162,7 @@ def teljesseg(fajlok):
     ki = []
     parok, szavak, versek, meres_db = forras()
     csomag_par = collections.Counter()
-    for rel in sorted(f for f in fajlok if f.startswith('parok/')):
+    for rel in sorted(f for f in fajlok if f.startswith('data/parok/')):
         fej, sorok = adatsorok(fajlok[rel])
         if fej != E.PAR_FEJ:
             ki.append(Talalat('TELJESSEG', BUKAS, '%s: eltérő oszlopfejléc' % rel))
@@ -177,7 +178,7 @@ def teljesseg(fajlok):
         ki.append(Talalat('TELJESSEG', BUKAS, 'a párok nem egyeznek: %d hiányzik, %d új (pl. %s)' % (
             sum(hiany.values()), sum(tobblet.values()), (sorted(hiany) or sorted(tobblet))[0])))
     csomag_szo = {}
-    for rel in sorted(f for f in fajlok if f.startswith('szavak/')):
+    for rel in sorted(f for f in fajlok if f.startswith('data/szavak/')):
         fej, sorok = adatsorok(fajlok[rel])
         if fej != E.SZO_FEJ:
             ki.append(Talalat('TELJESSEG', BUKAS, '%s: eltérő oszlopfejléc' % rel))
@@ -190,21 +191,21 @@ def teljesseg(fajlok):
     if csomag_szo != szavak:
         elter = [k for k in set(szavak) | set(csomag_szo) if szavak.get(k) != csomag_szo.get(k)]
         ki.append(Talalat('TELJESSEG', BUKAS, 'a szavak nem egyeznek: %d eltérés (pl. %s)' % (len(elter), sorted(elter)[0])))
-    if 'versek.tsv' in fajlok:
-        _, vs = adatsorok(fajlok['versek.tsv'])
+    if 'data/versek.tsv' in fajlok:
+        _, vs = adatsorok(fajlok['data/versek.tsv'])
         if {v['osis']: v['szoveg_1908'] for v in vs} != versek or len(vs) != len(versek):
             ki.append(Talalat('TELJESSEG', BUKAS, 'a versek szövege vagy száma eltér a forrásétól'))
     else:
-        ki.append(Talalat('TELJESSEG', BUKAS, 'hiányzik: versek.tsv'))
+        ki.append(Talalat('TELJESSEG', BUKAS, 'hiányzik: data/versek.tsv'))
     keret = int(E._f172(E.F172_KERET, 'reteg', 'OSSZES')['parsor'])
     if sum(parok.values()) != keret:
         ki.append(Talalat('TELJESSEG', BUKAS, 'a forrás párszáma (%d) nem a mért kereté (%d)' % (sum(parok.values()), keret)))
-    if 'meres.tsv' in fajlok:
-        _, ms = adatsorok(fajlok['meres.tsv'])
+    if 'data/meres.tsv' in fajlok:
+        _, ms = adatsorok(fajlok['data/meres.tsv'])
         if len([m for m in ms if m['szakasz'] != 'kulso']) != meres_db or len([m for m in ms if m['szakasz'] == 'kulso']) != 6:
             ki.append(Talalat('TELJESSEG', BUKAS, 'a meres.tsv sorszáma nem a mérőtábláé'))
     else:
-        ki.append(Talalat('TELJESSEG', BUKAS, 'hiányzik: meres.tsv'))
+        ki.append(Talalat('TELJESSEG', BUKAS, 'hiányzik: data/meres.tsv'))
     if not ki:
         ki.append(Talalat('TELJESSEG', OK, '%d pár, %d szó, %d vers, %d mérési sor' % (
             sum(parok.values()), len(szavak), len(versek), meres_db + 6)))
@@ -218,9 +219,10 @@ def licenc(fajlok):
     lic = fajlok.get('LICENSE', '')
     if 'CC BY 4.0' not in lic or 'creativecommons.org/licenses/by/4.0' not in lic:
         ki.append(Talalat('LICENC', BUKAS, 'a LICENSE nem CC BY 4.0'))
-    att = fajlok.get('ATTRIBUCIO.md', '')
-    if E.STEP_ATTRIB not in att or 'TAHOT' not in att or 'TAGNT' not in att:
-        ki.append(Talalat('LICENC', BUKAS, 'a TAHOT/TAGNT-attribúció hiányzik vagy nem szó szerinti'))
+    for rel in (CS.ATTRIBUCIO, CS.ATTRIBUTION):
+        att = fajlok.get(rel, '')
+        if E.STEP_ATTRIB not in att or 'TAHOT' not in att or 'TAGNT' not in att:
+            ki.append(Talalat('LICENC', BUKAS, '%s: a TAHOT/TAGNT-attribúció hiányzik vagy nem szó szerinti' % rel))
     for rel, sz in sorted(fajlok.items()):
         m = NEM_KOMPATIBILIS.search(nyilvanos_szoveg(rel, sz))
         if m:
@@ -232,7 +234,8 @@ def harmadik(fajlok):
     ki = []
     for rel, sz in sorted(fajlok.items()):
         if not ENGEDETT_NEV.match(rel):
-            ki.append(Talalat('HARMADIK', BUKAS, 'nem engedett fájl (export-kód vagy idegen adat?): %s' % rel))
+            ki.append(Talalat('HARMADIK', BUKAS, 'nem engedett fájl vagy mappa (export-kód, idegen adat, lapos '
+                                                 'maradvány?): %s' % rel))
         m = HEBER_GOROG.search(sz)
         if m:
             ki.append(Talalat('HARMADIK', BUKAS, '%s: héber/görög írásjel (%r)' % (rel, m.group(0))))
@@ -267,16 +270,12 @@ def nevelo(fajlok):
 
 def kozlemeny(fajlok):
     ki = []
-    for n in ('kozlemeny_hu.md', 'kozlemeny_en.md'):
-        if E.KOZLEMENY_DIR + n not in fajlok:
-            ki.append(Talalat('KOZLEMENY', BUKAS, 'hiányzik: %s%s' % (E.KOZLEMENY_DIR, n)))
-    if 'kozlemeny/ export-ignore' not in fajlok.get('.gitattributes', ''):
-        ki.append(Talalat('KOZLEMENY', BUKAS, 'a .gitattributes nem hagyja ki a kozlemeny/ mappát'))
+    if 'export-ignore' in fajlok.get('.gitattributes', ''):
+        ki.append(Talalat('KOZLEMENY', BUKAS, 'a .gitattributes kihagy valamit a kiadásból (export-ignore): a mappa '
+                                              'pontosan a nyilvános repó tartalma'))
     if '* text eol=lf' not in fajlok.get('.gitattributes', ''):
         ki.append(Talalat('OSSZEG', BUKAS, 'a .gitattributes nem rögzíti az LF sorvéget'))
-    if E.KOZLEMENY_DIR in fajlok.get('ELLENORZO_OSSZEG.sha256', ''):
-        ki.append(Talalat('KOZLEMENY', BUKAS, 'a kozlemeny/ az ellenőrző összegben áll'))
-    return ki or [Talalat('KOZLEMENY', OK, 'a tervezet megvan, a kiadásból kihagyva')]
+    return ki or [Talalat('KOZLEMENY', OK, 'nincs export-ignore: a mappa a nyilvános repó')]
 
 
 def osszeg(fajlok):
@@ -286,7 +285,7 @@ def osszeg(fajlok):
         if s:
             h, rel = s.split('  ', 1)
             lista[rel] = h
-    vart = {rel for rel in fajlok if rel not in KIHAGYOTT and not rel.startswith(E.KOZLEMENY_DIR)}
+    vart = {rel for rel in fajlok if rel not in KIHAGYOTT}
     if set(lista) != vart:
         ki.append(Talalat('OSSZEG', BUKAS, 'a lista eltér a fájloktól: %s' % sorted(set(lista) ^ vart)[:5]))
     for rel in sorted(vart & set(lista)):
@@ -348,12 +347,41 @@ def kezirat(N, lemez=True):
     return ki or [Talalat('KEZIRAT', OK, 'a kézirat (hu/en) generált, a szövegszabályok szerint tiszta')]
 
 
+def note(N, lemez=True):
+    """A csomagon kívüli rövid közlemény (hu/en): a törzse a nyilvános szövegszabályok szerint tiszta; a lemezen álló
+    fájl a generált szöveggel azonos (ha `lemez`)."""
+    ki = []
+    for rel, (torzs, szoveg) in E.note(N).items():
+        for rx, nev in TILTOTT:
+            for m in rx.finditer(torzs):
+                ki.append(Talalat('KOZLEMENY', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
+        if rel.endswith('_hu.md'):
+            for h in E.nevelo_hibak(torzs):
+                ki.append(Talalat('KOZLEMENY', BUKAS, '%s: hibás névelő: %r' % (rel, h)))
+        for rx, nev in ((HEBER_GOROG, 'héber/görög írásjel'), (ZART_FORRAS, 'zárt külső forrás neve'),
+                        (NEM_KOMPATIBILIS, 'nem kompatibilis licenc')):
+            m = rx.search(torzs)
+            if m:
+                ki.append(Talalat('KOZLEMENY', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
+        if lemez:
+            ut = os.path.join(GYOKER, rel)
+            if not os.path.exists(ut):
+                ki.append(Talalat('KOZLEMENY', BUKAS, 'hiányzik: %s' % rel))
+            else:
+                with open(ut, encoding='utf-8', newline='') as f:
+                    if f.read().replace('\r\n', '\n') != szoveg:
+                        ki.append(Talalat('KOZLEMENY', BUKAS, 'a lemezen álló közlemény eltér a generálttól: %s' % rel))
+    return ki or [Talalat('KOZLEMENY', OK, 'a közlemény (hu/en) a csomagon kívül áll, generált, tiszta')]
+
+
 def mer(fajlok, ujra_is=True, git_is=True):
     t = (teljesseg(fajlok) + licenc(fajlok) + harmadik(fajlok) + nyilvanos(fajlok) + nevelo(fajlok) + kozlemeny(fajlok)
          + osszeg(fajlok))
     if ujra_is:
         t += ujra(fajlok)
-        t += kezirat(E.export()[1])
+        N = E.export()[1]
+        t += kezirat(N)
+        t += note(N)
     if git_is:
         t += valtozatlan()
     return t
