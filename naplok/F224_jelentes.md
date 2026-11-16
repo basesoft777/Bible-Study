@@ -220,4 +220,16 @@ A hibák a visszhang-blokk szövegét és a szókártya alakját érintik, ami a
 - **A zárás előtt:** a független ellenőrzés (`fuggetlen-ellenor`, a szint a `feladatok.py szint 224` szerint) és a jelentés „Zárás” szakasza.
 - N-F224b (a `teszt_bizonyiteklap.py` CI-be vétele): a #725 a main-en, de a `.github/workflows/ellenorzes.yml` és a `eszkozok/push_elott.py` az F224 `ir` mezőjén kívül esik — külön kérésre (az orkesztrátor: nyitva maradhat).
 - **Utókövetés (az F224-en kívül):** a main-en (`6932be23`) piros a `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py` (2/22) és a `teszt_szintek.py` (2/13) — a CI nem futtatja őket (a visszhang-blokk szövege és a szókártya alakja; #729/F213 körüli változás valószínű, nem igazolt); a `.claude/agents/fuggetlen-ellenor.md` törzsének 0. pontja `opus`-t ír, a fejléce `fable`-t (F218.z1, DT-F218o).
-- **⛔ a felhasználónál:** DT-F224e 🟡 (az érvnapló helye); N-F224g (a határ időzítése) javaslat.
+- **Döntve (2026-11-16):** DT-F224e 🟢 („Igen, (b)”: `naplok/ERVNAPLO_<ID>.md`). Nyitva: N-F224g (a határ időzítése, javaslat).
+
+## Zárás
+
+*2026-11-16, claude-opus-5-5; ág `claude/f224-cikkiras-uj-menet`, draft PR #749 (a merge az orkesztrátoré).*
+
+- **Mi készült:** a cikkírás új menete tizenhárom tétele a saját szabályhelyén (F224.1–.13) és a döntések szerinti folytatás (F224.14–.19): az állítás-ellenőr (Opus, DT-F224b, a függetlenség módja DT-F224c), a bíráló (Sonnet), a szűkített lektor (Fable), a kinyerés négy új K-fajtája és a mondaton kívüli adat (`eszkozok/proza_allitas.py`), a bizonyítéklap (`eszkozok/bizonyiteklap.py`, SEMA 2.71), az érvnapló (9_ sablon v2.5, `naplok/ERVNAPLO_<ID>.md`, DT-F224e), a tanulmányblokk-szabály (2_ sablon v25), a mérőtábla (SEMA 2.72; HAMART 34, ISTENTISZT 18 sor), a `MUNKAMENET.md` C) menete, a határ-ellenőr Sonnetre.
+- **Döntések:** DT-F224a–e 🟢 (a b–e a felhasználó 2026-11-15/16-i döntései, az orkesztrátoron át).
+- **Elfogadási próba** (`naplok/F224_proba.md`): bíráló 5/6 és 5/5 ✓; F2 HAMART 15/18 = 83% (Opus; a 40. tétellel 78,9%), ISTENTISZT 7/10 = 70% (Opus, új kinyerés; nem független mérés), hamis riasztás 45–50% (N-F224d); a küszöb 80% marad, a független mérés a következő új motívum cikkírásakor (DT-F224d). Költség: kb. 2,9 millió token (Sonnet 1,93 M; Opus 1,19 M).
+- **Tesztek:** `teszt_proza_allitas.py` 62 OK, `teszt_bizonyiteklap.py` 11 OK; a `--kapu` (E41) kimenete a main forrásain bájtra azonos; `feladatok.py ellenoriz` 0 hiba; a teljes push előtti kapu 0 HIBA; a CI zöld.
+- **Független ellenőrzés:** 1 kör (Fable), 7 ELTÉRÉS, 1 javítókör (F224.19), minden tételre válasz a „Javítókör” táblában.
+- **Nyitva (külön tételként):** N-F224a (az F1 összevetések HIBA-szintje), N-F224b (a bizonyítéklap-teszt a CI-be; az `ir` mezőn kívül), N-F224d (hamis riasztás), N-F224g (a határ időzítése); utókövetés: a `fuggetlen-ellenor.md` törzse/fejléce, a main két piros olvasó-szerver tesztje.
+
