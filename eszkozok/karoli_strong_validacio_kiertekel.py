@@ -20,7 +20,9 @@ Kimenet (`--kimenet`, alapértelmezés: kozlemeny/data_paper/validacio/eredmeny/
   * kiertekeles.md     — emberi pontosság Wilson 95%-kal (párok; pár nélküli szavak: kimaradási
                           arány), ellenőrönként és a döntött mintán; Cohen-kappa a két ember között;
                           a modell és az ember egyezése;
-  * eltero_tetelek.tsv — a két ember eltérő tételei a harmadik döntéshez (`dontes` oszlop üres).
+  * eltero_tetelek.tsv — a két ember eltérő tételei a harmadik döntéshez (`dontes` oszlop üres);
+  * karoli_szabad_forditas.tsv — a „Károli itt szabadon vagy pontatlanul fordít” jelölővel ellátott tételek
+                          (fordítói észrevétel, nem a párosítás hibája; a pontosságba nem számít).
 
 Az ítélet jelentése mindkét típusnál: helyes-e a gép döntése (pár: a pár helyes; pár nélküli szó:
 valóban nincs eredetije). A `bizonytalan` a pontosság nevezőjéből kimarad, külön számoljuk, és a
@@ -92,7 +94,7 @@ def valaszok_olvas(ut, minta, hash_):
     if d.get('minta_hash') != hash_:
         raise SystemExit('%s: a minta_hash (%s) nem ezé a mintáé (%s)' % (ut, d.get('minta_hash'), hash_))
     ids = {r['tetel_id'] for r in minta}
-    ki = {}
+    ki, karoli = {}, {}
     for k, v in (d.get('valaszok') or {}).items():
         if k not in ids:
             raise SystemExit('%s: ismeretlen tétel: %s' % (ut, k))
@@ -101,7 +103,35 @@ def valaszok_olvas(ut, minta, hash_):
             raise SystemExit('%s: ismeretlen ítélet %r (%s)' % (ut, it, k))
         if it:
             ki[k] = v
-    return d.get('ellenor') or os.path.basename(ut), ki
+        if v.get('karoli'):
+            karoli[k] = v
+    return d.get('ellenor') or os.path.basename(ut), ki, karoli
+
+
+KAROLI_FEJ = ['tetel_id', 'tipus', 'vers', 'hu_szo', 'er_szo', 'strong', 'A_jelolte', 'A_itelet', 'A_megjegyzes',
+              'B_jelolte', 'B_itelet', 'B_megjegyzes']
+
+
+def karoli_szabad(minta, nev_a, a, ka, nev_b, b, kb):
+    """A „Károli itt szabadon vagy pontatlanul fordít” jelölő: nem a párosítás hibája, külön lista és számolás."""
+    tip = {r['tetel_id']: r['tipus'] for r in minta}
+    sor = ['## 6. Fordítói észrevétel: „Károli itt szabadon vagy pontatlanul fordít”\n',
+           'Ez a jelölő nem a párosítás ítélete, a pontosságba nem számít; a tételek a `karoli_szabad_forditas.tsv`-ben.\n',
+           '| | jelölt tétel | ebből pár | ebből pár nélküli | ugyanott az ítélet „helyes” |', '|---|---|---|---|---|']
+    for nev, k, v in ((nev_a, ka, a), (nev_b, kb, b)):
+        sor.append('| %s | %d | %d | %d | %d |' % (nev, len(k), sum(tip[t] == 'par' for t in k),
+                                                  sum(tip[t] == 'parnelkuli' for t in k),
+                                                  sum(1 for t in k if v.get(t, {}).get('itelet') == 'helyes')))
+    mindketto = set(ka) & set(kb)
+    sor.append('\nMindkét ellenőr jelölte: %d tétel; csak az egyik: %d.\n' % (len(mindketto), len(set(ka) ^ set(kb))))
+    by = {r['tetel_id']: r for r in minta}
+    sorok = []
+    for t in sorted(set(ka) | set(kb)):
+        r = by[t]
+        sorok.append([t, r['tipus'], r['vers'], r['hu_szo'], r['er_szo'], r['strong'],
+                      '1' if t in ka else '0', a.get(t, {}).get('itelet', ''), _egysor((ka.get(t) or {}).get('karoli_megj', '')),
+                      '1' if t in kb else '0', b.get(t, {}).get('itelet', ''), _egysor((kb.get(t) or {}).get('karoli_megj', ''))])
+    return '\n'.join(sor), sorok
 
 
 # ---------------------------------------------------------------- statisztika
@@ -403,8 +433,8 @@ def main():
     if len(a.valaszok) != 2:
         raise SystemExit('pontosan két válaszfájl kell')
     h = minta_hash(minta)
-    nev_a, va = valaszok_olvas(a.valaszok[0], minta, h)
-    nev_b, vb = valaszok_olvas(a.valaszok[1], minta, h)
+    nev_a, va, ka = valaszok_olvas(a.valaszok[0], minta, h)
+    nev_b, vb, kb = valaszok_olvas(a.valaszok[1], minta, h)
     if nev_a == nev_b:
         raise SystemExit('a két válaszfájl ugyanattól az ellenőrtől való: %s' % nev_a)
     dontes = dontes_olvas(a.dontes) if a.dontes else {}
@@ -417,6 +447,8 @@ def main():
         modell.update(modell_tsv(a.modell))
 
     szoveg, eltero = kiertekel(minta, 'A (%s)' % nev_a, va, 'B (%s)' % nev_b, vb, dontes, modell)
+    k_szoveg, k_sorok = karoli_szabad(minta, 'A (%s)' % nev_a, va, ka, 'B (%s)' % nev_b, vb, kb)
+    szoveg = szoveg + '\n' + k_szoveg
     head = git_head()
     forras = [os.path.relpath(x, GYOKER).replace(os.sep, '/') if os.path.abspath(x).startswith(GYOKER) else os.path.basename(x)
               for x in [a.minta] + a.valaszok + ([a.dontes] if a.dontes else [])]
@@ -430,6 +462,11 @@ def main():
         f.write(prov + '\n')
         f.write('\t'.join(ELTERO_FEJ) + '\n')
         for s in eltero:
+            f.write('\t'.join(s) + '\n')
+    with open(os.path.join(a.kimenet, 'karoli_szabad_forditas.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write(prov + '\n')
+        f.write('\t'.join(KAROLI_FEJ) + '\n')
+        for s in k_sorok:
             f.write('\t'.join(s) + '\n')
     print(szoveg)
     print('\n-> %s' % os.path.join(a.kimenet, 'kiertekeles.md'))

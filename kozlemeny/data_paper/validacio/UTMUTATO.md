@@ -8,16 +8,25 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 
 **Kérjük, a másik ellenőrrel ne egyeztess, és ne nézd meg az ő válaszait.** Csak így mérhető, mennyire egyezik két független ítélet. Kérdésnél a szervezőt kérdezd, ne a másik ellenőrt.
 
+## Az első szabály: a párosítást ítéld meg, ne a fordítást
+
+A kérdés minden tételnél ugyanaz: **Károli szövegében ez a magyar szó ennek az eredeti szónak a fordítása?** Nem az a kérdés, hogy Károli jól fordított-e. A pár akkor is helyes, ha a fordítás szabad, körülíró vagy más szófajú; és akkor is hibás, ha a fordítás kitűnő, de a magyar szó a vers egy másik szavának felel meg.
+
+- **Szabad fordítás, helyes pár.** 1Móz 41:40 *és minden népem a te szavadra **hallgasson*** ↔ עַל־פִּיךָ יִשַּׁק, szó szerint „a szádra csókoljon”. Károli a „csókol” igét „hallgat (valakire)” értelemben adja vissza, de a *hallgasson* ennek a szónak a fordítása: a *hallgasson* ↔ יִשַּׁק (H5401, „kiss”) pár **helyes**. Ugyanitt a *főgondviselő* ↔ עַל (H5921, „over”) is helyes: Károli az elöljárót főnévvel adja vissza.
+- **Rossz pár.** Péld 3:18 ***Életnek** fája ez* ↔ עֵץ (H6086, „tree”): az *Életnek* a חַיִּים (H2416, „life”) fordítása, a *fája* pedig a עֵץ-é. A pár **hibás** (rossz forrásszó), bármilyen jó maga a fordítás.
+
+Ha a fordításról van észrevételed (szabad, körülíró vagy pontatlan), azt a tétel alján jelöld: **„Károli itt szabadon vagy pontatlanul fordít”**, saját megjegyzéssel. Ez nem számít a párosítás hibájának; a kiértékelés külön gyűjti.
+
 ## Mikor helyes, hibás, bizonytalan?
 
-- **Helyes** – a magyar szó (legalább részben) ennek az eredeti szónak a fordítása, az alábbi szabályok szerint. Pár nélküli szónál („Igaz”): valóban nincs megfelelője az eredetiben.
+- **Helyes** – a magyar szó (legalább részben) ennek az eredeti szónak a fordítása, az alábbi szabályok szerint. Pár nélküli szónál („Igen”): Károli valóban olyan szót tett a szövegbe, amelynek nincs megfelelője az eredetiben.
 - **Hibás** – válaszd ki a hiba típusát is:
   - *rossz forrásszó*: a magyar szónak a vers egy másik eredeti szava felel meg (ha tudod, koppints rá);
   - *hiányzó pár*: ez a pár jó, de a magyar szóhoz még egy eredeti szó is tartozik, és az a párjai között nem szerepel;
   - *hiányos kifejezés*: a pár egy többszavas kifejezés része, de a kifejezés egy másik tagja nincs bekötve (lásd „Több szó – egy jelentés”);
   - *fölösleges pár*: a magyar szónak nincs eredeti megfelelője, mégis kapott párt;
   - *egyéb*: írd le a megjegyzésben.
-  - Pár nélküli szónál a „Van megfelelője (hibás)” azt jelenti, hogy a szónak van eredetije, a párosítás tehát kihagyta. Ha tudod, koppints az eredeti szóra.
+  - Pár nélküli szónál a „Nem, van megfelelője (hibás)” azt jelenti, hogy a szónak van eredetije, a párosítás tehát kihagyta. Ha tudod, koppints az eredeti szóra.
 - **Bizonytalan** – ha a szabályok szerint sem dönthető el, vagy szövegváltozat, illetve Károli szabad fordítása miatt nem látszik a megfelelés. Írj egy mondatot az okáról. Ne ezt válaszd, ha csak lassabb volna eldönteni.
 
 ## Konvenciók: mit nem párosítunk, és miért
@@ -63,7 +72,7 @@ Ezek szerint készült a párosítás. A tetszés szerinti fordítói ítélet h
 | Mt 4:10 *Eredj **el** Sátán* | el | ὕπαγε (G5217) | **helyes**: a különírt igekötő az igéhez tartozik (2.) |
 | Mt 4:10 *mert **meg van írva*** | meg, van, írva | mindhárom: γέγραπται (G1125) | **helyes**: többszavas magyar szerkezet egy eredeti igealakra (3.) |
 | 1Móz 1:2 *és setétség **vala** a mélység színén* | vala | nincs | **helyes**: konvenció, névmondat, nincs eredeti ige (3.). Ugyanebben a versben a *puszta vala* ← הָיְתָה (H1961) szintén helyes pár, mert ott van eredeti ige |
-| 2Sám 14:10 *hozd **ide** előmbe* | ide | nincs | **igaz (helyes)**: Károli hozzátétele, az eredetiben nincs megfelelője |
+| 2Sám 14:10 *hozd **ide** előmbe* | ide | nincs | **igen (helyes)**: Károli hozzátétele, az eredetiben nincs megfelelője |
 | 1Móz 4:4 *az **ő** juhainak* | ő | וֹ (H9023, „his”) | **helyes**: a külön kitett névmás és a *juhainak* is a ragot kapja (4.) |
 | Péld 3:18 ***Életnek** fája ez* | Életnek | עֵץ (H6086, „tree”) | **hibás, rossz forrásszó**: az *Életnek* a חַיִּים (H2416, „life”) fordítása, a *fája* pedig a עֵץ-é; a gép felcserélte őket |
 
@@ -72,7 +81,7 @@ Ezek szerint készült a párosítás. A tetszés szerinti fordítói ítélet h
 - **Indítás.** Nyisd meg az `ellenorzo.html`-t egy böngészőben, és add meg a neved, mindig ugyanazt. A tételek sorrendje ellenőrönként más.
 - **Mentés, több részletben.** A munka bármikor abbahagyható és folytatható: minden kattintás után automatikusan ment. A mentés azonban ehhez a böngészőhöz és ehhez az eszközhöz kötött. Ne dolgozz privát vagy inkognitóablakban, mert annak bezárásakor a mentés elvész. 50 kész tételenként az oldal felajánl egy biztonsági exportot; nem kötelező, de érdemes elfogadni.
 - **Eszközváltás.** A régi eszközön „Mentés / export” → **Exportálás**. Az újon nyisd meg ugyanezt az oldalt, add meg ugyanazt a nevet, majd „Mentés / export” → **Betöltés**, és válaszd ki a fájlt. Ha mindkét helyen vannak válaszaid, tételenként a később módosított marad meg. Más mintához tartozó fájlt az oldal nem tölt be.
-- **A tétel képe.** Mindkét vers szókártyákon áll. A magyar kártyán a szó alatt az eredeti szó áll, amelyhez a gép párosította, Strong-számmal, vagy „—”, ha nincs pár. Az eredeti kártyáján: a szó, az átírás, a Strong-szám, az angol glossza (a TAHOT/TAGNT tükörfordítása; a gép is csak ezt látta), az alaktan és alul a magyar pár. Héberben jobbról balra olvass; egy szó előtagjai és ragjai egy szürke keretben külön kártyát kapnak. A vizsgált szó kártyája sárga. Ha egy kártyára mutatsz vagy koppintasz, a párja kigyullad a másik sorban. A betűméretet a fejléc „A−/A+” gombja állítja. Az ítélet gombjai mindig a képernyő alján vannak.
+- **A tétel képe.** Mindkét vers szókártyákon áll. A magyar kártyán a szó alatt az eredeti szó áll, amelyhez a gép párosította, Strong-számmal, vagy „—”, ha nincs pár. Az eredeti kártyáján: a szó, az átírás, a Strong-szám, az angol glossza (a TAHOT/TAGNT tükörfordítása; a gép is csak ezt látta), az alaktan és alul a magyar pár. Héberben jobbról balra olvass; egy szó előtagjai és ragjai egy szürke keretben külön kártyát kapnak. A vizsgált szó kártyája sárga. Ha egy kártyára mutatsz vagy koppintasz, a párja kigyullad a másik sorban. A betűméretet a fejléc „A−/A+” gombja állítja. A kérdés és az ítélet gombjai mindig a képernyő alján vannak.
 - **Alaktan.** A kártyán rövid magyar alakban áll (a Macula alaktani kódjából; pl. „ige, qal perfectum, E/3 hn.”, „főnév, gen. e.sz. nn.”). A nyers kód rámutatáskor látszik. A minta verseiben a szavak kb. 2%-ánál nincs alaktani adat, ilyenkor ez a sor hiányzik.
 - **Leadás.** Ha végeztél, a „Mentés / export” gombbal letöltöd a `<neved>_valaszok.json` fájlt; ezt küldd el a szervezőnek. Ha a letöltés nem indul el, ugyanott kimásolhatod a szöveget.
 - **Becsült idő.** Szópárnál átlagosan kb. fél perc, pár nélküli szónál 15–20 másodperc: összesen **kb. 3–4 óra**. A névelők és a kötőszók gyorsan mennek, a ragos és többszavas esetek lassabban. Érdemes több, legfeljebb egyórás részletben dolgozni.
