@@ -10,7 +10,7 @@ Bemenet:
 - a kulcsversek: `--versek "1Móz 3:17; 1Móz 8:21"`, vagy `--motivum <ID>` esetén a motívum `adat/elofordulasok.tsv`-sorai;
 - a lánc szavai (Strong): `--lanc H0779,H0127,…`; ha hiányzik és van `--motivum`, a motívum sorainak `strong` mezője.
 
-Kimenet (Markdown; a forma szabálya a SEMA-szakaszé, F224.5):
+Kimenet (Markdown; a forma szabálya: `adat/SEMA.md` 2.71, F224.5):
 - **Gyakorisági alapvonal:** minden lánc-szó versszáma a korpuszban (ÓSZ: `konkordancia/TAHOT_kivonat.tsv`, ÚSZ:
   `konkordancia/TAGNT_kivonat.tsv`, a Károli-vers a kulcs), és az aránya a korpusz verseihez;
 - **versenként:** a vers állapota a motívum adatában (eldöntött: `adat/elofordulasok.tsv`; jelölt: `adat/jeloltek.tsv`
