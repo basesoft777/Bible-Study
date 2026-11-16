@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218a-s5-1402d5` (az S5; alap: main `68d9ee90`) · PR: #755 (a 218a első fele, T és S1–S4: #729, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
+Ág: `claude/f218a-s6-3896f7` (az S6; alap: main `ff3fd41c`) · PR: lásd a brief `pr` mezőjét (a 218a első fele, T és S1–S4: #729; az S5: #755, mind a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
@@ -38,7 +38,9 @@
 | N200 (a mérce hash-sorai a #729 merge-e után) | **kész** (`2e21e0b1`, a 10. session) | a B51 `DONTESEK.md` és a B66 hash-e frissült, a törölt döntésfájl sora kikerült; regresszió RENDBEN, hash-őr 208 sor. **A merge után újra esedékes** (az S5 döntésfájlja is a B51 sora): az S6 első lépése |
 | F218.8 (S5): „6. Kereszthivatkozások” és a Minősítés | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 10. session, `claude-opus-5-5`, high) | 307 sorból 4 eltér, mind engedéllyel: `S5-FORRAS`, `S5-RES-FORRAS`, `S5-PROV` (HN-10, az alapmérés 3 sora), `S5-KIEJTES` (új osztály, 1). Új bemenetek: B43, B44, B72; 57 sablonsor (2 `var`), 15 `ok_cella` névtábla-sor; a `jeloltek.tsv` 34 cellája az adatban javult (DT884 🟡, az `ir`-en kívül); festékpróba 0; tesztek: `teszt_kereszthiv.py` (15). A jelentés „F218.8 — S5” szakasza |
 | 8. ellenőrzés (Fable, célzott, `68d9ee90..4f6974e8`) | **ELTÉRÉS: 9 tétel**; a javítókör kész (E4, E5, E6, E9; az E1, E2 és az `ir` a DT-F218s-ben, amely a felhasználó döntésével 🟢: „Igen, (a)”) | `naplok/F218_jelentes.md` „Független ellenőrzés — 8. ellenőrzés” és „A 8. ellenőrzés javítóköre”; a besorolás az orkesztrátoré |
-| F218.9 (S6) – F218.13 | nem indult | |
+| N200 (a mérce hash-sorai a #755 merge-e után) | **kész** (`101da4dc`, a 11. session) | a B51 `DONTESEK.md` hash-e frissült, a törölt S5-döntésfájl sora kikerült; regresszió RENDBEN, hash-őr 208 sor. **A merge után újra esedékes** (az S6 döntésfájlja is a B51 sora): az S7 első lépése |
+| F218.9 (S6): „7. Kapcsolatok”, Alátámasztás, „8. Kapcsolódó motívumok” | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 11. session, `claude-opus-5-5`, high) | 253 sorból 6 eltér, mind engedéllyel (4 forráslista és proveniencia: a brief 8.1 (b) osztálya; `S6-KIEJTES`: az S5-KIEJTES mechanizmusa); új bemenetek: B45, B46; 63 sablonsor (`dontes=-`), 12 névtábla-sor (1 `uj`); a `funkcio` cellakezdő alakja az adatban (DT869 elve: 43 + 1 cella, az `ir`-en kívül, N188); DT-F218t 🟡 (a záró döntés-hivatkozás szerkezetként leválik); festékpróba 0; `teszt_kapcsolatok.py` (15). A jelentés „F218.9 — S6” szakasza |
+| F218.10 (S7) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
 
@@ -62,6 +64,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 *Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
 
 ## Következő lépés
+
+**Az S6 kész (a 11. session, 2026-11-16):** a 7. szakasz, az Alátámasztás és a 8. szakasz a referenciával egyezik, hat engedélysorral (a jelentés „F218.9 — S6” szakasza). **Következik:** a célzott független ellenőrzés (`fuggetlen-ellenor`, `model: fable`) az S6 tartományán, legfeljebb egy javítókör; a merge az orkesztrátoré. **Az S7 első lépése a merge után:** a mérce hash-sorai (N200 ismét: a `szamkiosztas` a `DONTESEK.md`-t megváltoztatja, a `dontesek/uj/f218a-s6-3896f7.md`-t törli). A 218a végi listába ebből a szeletből: a DT-F218t, az `S6-KIEJTES` osztály, a „közös igehely” névtábla-név, a `funkcio` adatjavítás, az ISTENTISZT-001 kisbetűs funkció-cellái, az üres funkció- és PaRDeS-cella „—” jele, az ISTENTISZT-001 Alátámasztásának Strong-száma és Markdown-kiemelése, a rögzített módszermondat (`s7.alat.modszer`).
 
 **Az S5 kész (a 10. session, 2026-11-16):** a 6. szakasz és a Minősítés a referenciával egyezik, négy engedélysorral (a jelentés „F218.8 — S5” szakasza). **Következik:** a célzott független ellenőrzés (`fuggetlen-ellenor`, a main-en `model: fable`) az S5 tartományán, legfeljebb egy javítókör; a PR merge-e az orkesztrátoré. **Az S6 első lépése a merge után:** a mérce hash-sorai (N200 ismét: a `szamkiosztas` a `DONTESEK.md`-t és a B51 új fájlját, `dontesek/uj/f218a-s5-1402d5.md`, megváltoztatja/törli). A DT884 eldőlt (🟢, a felhasználó, 2026-11-16: „Igen, (a)”; a kézi indoklás az adatban a végleges alak). A 218a végi listába ebből a szeletből: a két `var` sablonsor (`s6.ures`, `s6.min.parok.nincs`), az `S5-KIEJTES` osztály, a 15 `ok_cella` sor, a „a {p}%-a” rögzített névelője, a `s6.min.olvasoi.nincs` „független” szava.
 

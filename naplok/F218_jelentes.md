@@ -1260,3 +1260,44 @@ A besorolás az orkesztrátoré; a session a gépies tételeket javította, a d�
 **Mérés a javítókör után** (`scope=HAMART-001 és ISTENTISZT-001, munka mód | forras=regresszio.py; festek.py; tesztek/futtat.py | ts=2026-11-16`): HAMART-regresszió RENDBEN (engedély nélküli diff-sor 0; S5: 4 engedélysor), a HAMART-lap bájtra azonos a javítókör előttivel; festékpróba 0 mindkét lapon.
 
 **DT884 eldőlt (2026-11-16):** a felhasználó döntése az orkesztrátoron át, szó szerint: „Igen, (a)”. Az adat a végleges alak (DT869 elve); a döntés magában foglalja a 8. ellenőrzés E1 és E2 tételét (az `indoklas` átminősítése a kereszthivatkozásos sorokon, a nyílt mag hat fájljának változása a merge után) és az `ir`-en kívüli írást (N188). A DT884 állapota 🟢; a független ellenőrzésnek nincs hátralévő lépése (a jelentés és az egy javítókör kész).
+
+## F218.9 — S6: „7. Kapcsolatok”, Alátámasztás és „8. Kapcsolódó motívumok” (`claude-opus-5-5`, high, 2026-11-16, a 11. session)
+
+*Új ág a main-ről (`claude/f218a-s6-3896f7`, alap `ff3fd41c`), saját PR-ban. A modell-ellenőrzés: a kért `opus`, a session `claude-opus-5-5`.*
+
+**Első lépés: N200** (`101da4dc`). A `szamkiosztas` (`ff3fd41c`) a B51 `DONTESEK.md`-t megváltoztatta, a `dontesek/uj/f218a-s5-1402d5.md`-t törölte. A hash-sor frissült, a törölt fájl sora kikerült; HAMART-regresszió RENDBEN, a hash-őr 208 sorral RENDBEN. **A merge után ugyanez újra esedékes** (az ág döntésfájlja, `dontesek/uj/f218a-s6-3896f7.md`, a B51 sora): az S7 első lépése.
+
+**Eredmény:** a HAMART-001 7. szakasza (az Alátámasztással, 236 sor) és 8. szakasza (17 sor) a referenciától hat soron tér el, mind engedéllyel; a regresszió RENDBEN (engedély nélküli diff-sor 0); az első futás is pontosan ezt a hat sort adta. Festékpróba 0 (HAMART: belső 342, horgony 30, idézet 2756, kézi 754; ISTENTISZT: 281, 18, 1377, 325).
+*Proveniencia: `scope=general.py --cel lexikon2 --id HAMART-001/ISTENTISZT-001 (PARDES_DATUM=2026-11-13); regresszio.py --id HAMART-001; festek.py | forras=munkafa (101da4dc + az S6) | ts=2026-11-16`.*
+
+| Engedélysor | Osztály | Sor | Előre számolt? |
+|---|---|---|---|
+| `S6-FORRAS` | GK-07: a 7. szakasz blokkfejlécének forráslistája a valódi olvasásból (a kapcsolat-tábla mellett a döntések táblája és a könyvnév-normalizáló tábla) | 1 | a brief 8.1 (b) osztálya (mint az S1–S5 `…-FORRAS` sora) |
+| `S6-RES-FORRAS` | GK-07: az Alátámasztás rés-jelölőjének forráslistája | 1 | (b) |
+| `S6-PROV` | GK-07: az Alátámasztás proveniencia-sorának eredeti alakja (megjegyzés); a látható „Forrás:” mondat változatlan | 1 | (b) |
+| `S6-KAPCSOLODO-FORRAS` | GK-07: a 8. szakasz blokkfejlécének forráslistája | 1 | (b) |
+| `S6-KAPCSOLODO-PROV` | GK-07: a 8. szakasz proveniencia-sorának eredeti alakja | 1 | (b) |
+| `S6-KIEJTES` | M-CSERE: a régi lap az 1Móz 6:11 → 6:13 indoklásába utólag kiejtést szúrt („מָלֵא (málé) + חָמָס, málé + chámász”: a kiejtés kétszer); az új lap a forrás szövegét adja | 1 | **nem**: az S5-KIEJTES osztálya (ugyanaz a `kiejtes_szoveg.potol` lépés), a 218a végi listán |
+
+**Felépítés.**
+- `bemenet/kapcsolat.py`: B45 (`adat/kapcsolatok.tsv`) és B46 (`adat/motivum_kapcsolatok.tsv`), új jegyzéksorok a térkép számával; a döntésre váró motívumközi jelöltek a B04-ből. A zárt értékek felsorolásra (`KapcsolatTipus`, `MotivumKapcsolatTipus`, `Megbizhatosag`), a PaRDeS-szint névtábla-kulcsra; a `funkcio` és az indoklás kézi része kézi próza, a S5 kapujával (`kereszthiv.nem_olvasoi`, most nyilvános); a B45 indoklásának ` | ` utáni része belső proveniencia (megjegyzésbe kerül, a hivatkozott döntések dátumával a B51-ből).
+- `szamitas/kapcsolatok.py`: a 7. szakasz modellje (a kapcsolatok a tábla sorrendjében, a gráf csomópontjai kánoni sorrendben, az élek sorszámmal, a típus- és a bizonyosság-megoszlás, a következtetés két kódja: `KapcsolatSzerkezet`, `KapcsolatBiztossag`, a küszöbök a `konfig.py`-ban), az Alátámasztás (az azonos indoklású sorok egy sorban, az első előfordulás helyén; az indoklás nélküliek külön), a 8. szakasz modellje (a másik motívum szemszögéből, a motívumközi döntés dátuma a `konfig.DONTES_MOTIVUMKOZI`-ból). Két kapu: a 7.-en a típusok, a bizonyosság összege, a gráf élei és csomópontjai, az Alátámasztás teljessége; a 8.-on a darabszámok.
+- `megjelenites/md/kapcsolatok.py`: 63 új sablonsor (`s7.*`, `s8.*`, `cim.kapcsolatok`, `cim.kapcsolodo`, `cim.alatamasztas`), mind a régi lap végleges szövege vagy a régi kód ágának mondata (`dontes=-`); az író zárt jelölés-készlete a Mermaid-blokkal (`MERMAID_*`, `mermaid_csucs_nyit`, `mermaid_el_*`) és a másik motívum lapjára mutató link végével (`lap_link_zar`) bővült. Névtábla: 12 új sor (`kapcsolat_tipus` 5, `kapcsolat_tipus_mondat` 5, `motivumkozi_tipus` 2; ebből 1 `eredet=uj`: „közös_igehely” → „közös igehely”).
+
+**Adatjavítás (DT869 elve, az `ir`-en kívül, N188).** A régi lap a `funkcio` cellát utólag cellakezdő alakra írta (`nevelo_le`: nagy kezdőbetű, rövid cellánál a névelő elhagyásával). Az új generátor nem ír át, ezért a cella az adatban kapta meg a jóváhagyott lap alakját: `adat/kapcsolatok.tsv` a HAMART-001 43 sora (41 nagybetű, 2 névelő-elhagyás: „„megtelt erőszakkal” szópár …”), `adat/motivum_kapcsolatok.tsv` a HAMART-001 ↔ ISTENTISZT-001 sor („A megfordított lánc …”, mindkét lapon áll). A szkript csak a kezdő névelőt és a kezdőbetűt engedte eltérni, a többi cellát bájtra összevetette. **A régi generátor HAMART-kimenete (mindkét nézet) a javítás után is bájtra azonos a referenciával.** A `funkcio` mező a nyílt magba nem kerül, ezért a nyílt mag nem változik. Az ISTENTISZT-001 saját soraiban a funkció kisbetűvel áll (a forrás szerint; mint a DT869 hat cellájánál): a 218a végi listán.
+
+**DT-F218t (🟡, technikai döntés, a felhasználó megerősítésére vár).** A B46 mindhárom sorának indoklása „Döntés: DT280 (felhasználó, 2026-10-20).” mondattal, az ISTENTISZT-001 két B45-sora „(DT479, a felhasználó, …)” zárójellel végződik; a régi lap ezt tisztítással vágta le. A bemeneti réteg a mező végén álló döntés-hivatkozást (két rögzített alak) szerkezetként leválasztja; a döntést a sor proveniencia-része, illetve `dontes_ref` mezője hordozza; a szöveg közepén álló döntésszámon a kapu megáll. A HAMART-001 8. szakasza így betűre a jóváhagyott lapé. A döntésfájl: `dontesek/uj/f218a-s6-3896f7.md`.
+
+**ISTENTISZT-001** (nincs bájt-mérce): 16 kapcsolat 20 helyet köt össze (13 párhuzam, 2 beteljesedés, 1 variáns; 13 magas, 3 közepes; következtetés: túlnyomórészt párhuzam, a többség biztos); az Alátámasztás 12 sora és 1 indoklás nélküli kapcsolat (2Móz 33:19 → 34:5); a 8. szakasz 3 kapcsolata (ALVIL-001 2, HAMART-001 1) és 3 döntésre váró jelölt. A látható szövegben döntésszám nincs (teszt).
+
+**Nem portolt, kimondott hibával megálló vagy a két mintalapon nem futó ágak:** kapcsolat nélküli motívum (a 7. és az Alátámasztás hiánymondata), indoklás nélküli kapcsolatok mind (a régi hiánymondat), motívumközi kapcsolat nélküli motívum; ismeretlen típus- vagy bizonyosság-érték; nem olvasói kézi szöveg. A régi kód a `res_forras.tsv` rögzített mondatát („A motívumhoz nincs rögzített kapcsolat.”) adat mellett figyelmen kívül hagyta; az új generátor a rés-forrást itt nem olvassa (mint az S5 a Minősítésnél).
+
+**Az ismétlés-figyelő** (figyelmeztetés) a HAMART-on 79 (eddig 46), az ISTENTISZT-en 34 (eddig 31) találatot ad: a többlet az Alátámasztás azonos szerkezetű indoklásai („A közepes bizonyosság ezen a mért egyezésen áll. A hagyományos kereszthivatkozások közül a TSK …”); a régi lapon is így áll.
+
+**Tesztek:** `teszt_kapcsolatok.py` (15): a két lap számai, a csomópontok sorrendje, a 8. szakasz számai és a döntés dátuma, a három kapu, a záró döntés-hivatkozás, a következtetés ágai, az üres ágak, a gráf, a link, a döntésszám hiánya a látható szövegben. Az egész tesztsor: 308 teszt, 0 hiba, 0 bukás, 30 váz (két korábbi teszt a saját szakasza helyett a lap végéig vágott: a 2. és a 6. szakasz kivágása a következő szakaszcímig szűkült).
+
+**A 218a végi listába:** a DT-F218t; az `S6-KIEJTES` osztály; az 1 új névtábla-név (`motivumkozi_tipus` „közös igehely”); a `funkcio` adatjavítás (43 + 1 cella); az ISTENTISZT-001 kisbetűs funkció-cellái (a 7. szakasz 16 sorából 15, és a 8. szakasz két ALVIL-001-sora); az üres funkció és PaRDeS-szint cellája a 7. szakaszban „—” (a régi üres cellát írt; a két mintalapon nem fut); az ISTENTISZT-001 Alátámasztásában a kézi szöveg Strong-számot („H7121+H8034”) és Markdown-kiemelést hordoz; az `s7.alat.modszer` rögzített módszermondata (a leltár szerint az adatból kellene levezetni: új tartalom, nem e szelet dolga).
+
+| Pont | Dátum (UTC) | Heti · minden modell | Heti · Fable | 5 órás | Megjegyzés |
+|---|---|---|---|---|---|
+| S6 kész (a regresszió RENDBEN) | 2026-11-16 13:55 | 45% | 16% | 30% | a kontextus 44% (1M) |
