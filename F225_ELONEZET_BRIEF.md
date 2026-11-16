@@ -11,7 +11,7 @@ ad: a helyi tükör (8765) lemaradása látszik a láblécben, és induláskor a
 kovetkezo: "Te: a draft PR áttekintése és merge-e"
 munka: folyamat
 olvas: [CLAUDE.md]
-ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/statikus/elonezet.js, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, .gitignore, .claude/launch.json, naplok/F225_jelentes.md]
+ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/tervezo_statikus/elonezet.js, eszkozok/olvaso_szerver/regiszter_or.py, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, .gitignore, .claude/launch.json, naplok/F225_jelentes.md]
 fugg: []
 ---
 
@@ -78,4 +78,6 @@ Mind a hét ütköző brief `nem_indult` (a #134 `megallt`), tehát futó munká
 - **A frissítés a Windows-oldali `git.exe`-vel megy (WSL-interop), ha a checkout `/mnt/<meghajtó>` alatt áll.** Mérés (2026-11-16, a fő checkouton, csak olvasás): a WSL `git status` 85 s alatt fut le, és hamisan módosítottnak mutat fájlokat (sorvég/jogosultság az `drvfs`-en); a `git.exe status` 0,3 s, és tiszta. A tiszta-munkafa vizsgálat a WSL-gittel tehát soha nem engedné a frissítést.
 - **A lemaradás számolása `git rev-list --count`-tal, nem tisztán fájlolvasással.** Ok: a commit-objektumok csomagfájlokban vannak; a gráf bejárása tiszta Pythonban a csomagformátum megvalósítását kívánná. A ref-ek olvasása marad fájlolvasás (a `git` a worktree `.git` fájlját nem oldja fel, ezért a `--git-dir` a fájlból feloldott könyvtárra mutat), a számolás csak akkor fut, ha a HEAD vagy az `origin/main` hash-e változott, háttérszálon (mért: 0,19 s a fő checkouton, 201 commit).
 - **A `fetch` a munkafa állapotától függetlenül lefut, a `pull` csak tiszta munkafánál.** Ok: a `fetch` a munkafát nem érinti, és a lábléc lemaradás-jelzése csak friss `origin/main` mellett igaz.
+- **A kliens a `tervezo_statikus/`-ban áll, és a `/elonezet/elonezet.js` útvonalon szolgálódik ki (csak `belso`).** Ok: a `statikus/` könyvtárat minden kiadás kiszolgálja, a „csak `belso`” szabályt ott a 404 nem tartaná be (független ellenőr, E1); a `regiszter_or.py` a fájlt is olvassa.
+- **A `git.exe` ág:** a `WSLENV`-en át `GIT_TERMINAL_PROMPT=0` és `GCM_INTERACTIVE=never` megy hozzá; a `git status` hibája kihagyás, nem tiszta munkafa; a `PARDES_ELONEZET` csak `0` vagy `1` lehet (más érték kilépési kód 2). A teszt a valódi `git.exe`-t a Windows-meghajtón lévő ideiglenes repón járja be (`TesztInditGitExe`).
 - **Előnézeti mód:** az `indit.sh` automatikusan előnézetnek veszi, ha a szkript helye linkelt worktree (a `.git` egy fájl); felülírható `PARDES_ELONEZET=0|1`-gyel. Előnézetben nincs adatbázis-szinkron (a közös `~/pardes/pardes.db`-be soha nem ír, csak olvassa), nincs fő-checkout frissítés, és csak az olyan példányt állítja le a porton, amelynek munkakönyvtára ugyanez a checkout.

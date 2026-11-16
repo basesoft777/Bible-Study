@@ -17,7 +17,7 @@
 {% endif %}
 {# F225: az önfrissítő előnézet kliense, csak a belso kiadásban; a kiinduló azonosító a lapból jön (data-azonosito), a szkript a /elonezet/kulcs-ot kérdezi #}
 {% if elonezet %}
-<script src="/statikus/elonezet.js?v={{ elonezet_azonosito }}" data-azonosito="{{ elonezet_azonosito }}" defer></script>
+<script src="/elonezet/elonezet.js?v={{ elonezet_azonosito }}" data-azonosito="{{ elonezet_azonosito }}" defer></script>
 {% endif %}
 </head>
 <body class="{{ 'reteg-il' if il else 'reteg-nincs' }}{{ ' lap-nyitva' if lap_nyitva else '' }}">

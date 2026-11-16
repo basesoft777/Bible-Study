@@ -1,5 +1,6 @@
-// Az önfrissítő előnézet kliense (F225). Csak a belso kiadásban linkelődik (alap.html, `elonezet`), és a szerver a /elonezet/kulcs
-// útvonalat is csak ott jegyzi be. CSP: saját fájl (script-src 'self'); inline szkript és inline stílus nincs, új CSS-osztály nincs.
+// Az önfrissítő előnézet kliense (F225). Csak a belso kiadásban linkelődik (alap.html, `elonezet`), és a szerver a /elonezet/elonezet.js
+// (ez a fájl) és a /elonezet/kulcs útvonalat is csak ott jegyzi be: más kiadásban 404. A fájl ezért nem a statikus/-ban áll (azt minden kiadás
+// kiszolgálja), hanem a tervezo_statikus/-ban, a tervező mód kliensének mintájára. CSP: saját fájl (script-src 'self'); inline szkript és inline stílus nincs, új CSS-osztály nincs.
 //
 // Működés: a lap a renderelés pillanatában kapott azonosítót a szkript-címke `data-azonosito` attribútumában hordozza; a szkript 2
 // másodpercenként lekérdezi a /elonezet/kulcs-ot (a szerver már számolt kulcsai: kód, arculat, lábléc, adatbázis; adatbázis-olvasás nélkül),

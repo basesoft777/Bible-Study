@@ -32,7 +32,7 @@ A közös `~/pardes/pardes.db`-be előnézetben soha nem ír; idegen checkout p�
 
 ### F225.4 — önfrissítés
 
-`/elonezet/kulcs` (csak `belso`), `statikus/elonezet.js`, `tervezo_statikus/` a figyelt fájlok közt, a lap tetején is a lábléc figyelmeztetése (`labjegyzet`, regisztrált osztály; új osztály nincs, a regiszter-őr zöld). A lap a renderelés pillanatának azonosítóját a szkript-címkében hordozza, így az első lekérdezés előtti változás sem vész el.
+`/elonezet/kulcs` és `/elonezet/elonezet.js` (csak `belso`; a kliens a `tervezo_statikus/elonezet.js`, l. a 2. ellenőrzés E1 javítását), `tervezo_statikus/` a figyelt fájlok közt, a lap tetején is a lábléc figyelmeztetése (`labjegyzet`, regisztrált osztály; új osztály nincs, a regiszter-őr zöld). A lap a renderelés pillanatának azonosítóját a szkript-címkében hordozza, így az első lekérdezés előtti változás sem vész el.
 
 ### F225.5 — `launch.json`, `.gitignore`, README
 

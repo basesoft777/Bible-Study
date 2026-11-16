@@ -76,6 +76,14 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
         #    számolt értékeket adja (nincs adatbázis-olvasás, nincs lap-előállítás), ezért másodpercenként lekérdezhető.
         gyar.elonezet = True
 
+        @app.get('/elonezet/elonezet.js')
+        def elonezet_kliens():
+            # a kliens a tervezo_statikus/-ban áll (nem a mindenkinek kiszolgált statikus/-ban): más kiadásban nincs útvonal, 404
+            from flask import send_from_directory
+            r = send_from_directory(tervezo_modul.STATIKUS_DIR, 'elonezet.js', mimetype='text/javascript', max_age=0)
+            r.headers['Cache-Control'] = 'no-store'
+            return r
+
         @app.get('/elonezet/kulcs')
         def elonezet_kulcs():
             r = Response(json.dumps(gyar.elonezet_kulcs(), ensure_ascii=False), mimetype='application/json')

@@ -45,7 +45,9 @@ naplo() { echo "[indit] $(date +%H:%M:%S) $*"; }
 [ -x "$PY" ] || { naplo "HIBA: nincs Python a venv-ben: $PY"; exit 1; }
 
 # -- előnézeti mód (F225): linkelt worktree (a `.git` fájl) vagy PARDES_ELONEZET=1
-if [ -n "${PARDES_ELONEZET:-}" ]; then ELONEZET="$PARDES_ELONEZET"
+if [ -n "${PARDES_ELONEZET:-}" ]; then
+  # csak 0 vagy 1: egy elgépelt érték (true, yes) némán kikapcsolná a védelmet (a közös másolat felülírása, idegen példány leállítása)
+  case "$PARDES_ELONEZET" in 0|1) ELONEZET="$PARDES_ELONEZET" ;; *) naplo "HIBA: PARDES_ELONEZET értéke 0 vagy 1 lehet, nem '$PARDES_ELONEZET'"; exit 2 ;; esac
 elif [ -f "$GYOKER/.git" ]; then ELONEZET=1
 else ELONEZET=0; fi
 if [ "$ELONEZET" = "1" ]; then
@@ -79,14 +81,22 @@ frissit_fo() {
     G="${G:-git}"
   fi
   command -v "$G" >/dev/null 2>&1 || { naplo "frissítés: kihagyva — nincs git ($G)"; return 0; }
-  export GIT_TERMINAL_PROMPT=0
+  # a Windows-oldali git.exe a WSLENV-en át kapja meg: lejárt hitelesítésnél se nyisson párbeszédablakot (a fetch a timeoutig se várjon emberre)
+  export GIT_TERMINAL_PROMPT=0 GCM_INTERACTIVE=never
+  export WSLENV="${WSLENV:+$WSLENV:}GIT_TERMINAL_PROMPT:GCM_INTERACTIVE"
   local ki
   if ! ki="$(cd "$GYOKER" && timeout 90 "$G" fetch --quiet origin main 2>&1)"; then
     naplo "frissítés: kihagyva — a git fetch sikertelen (${ki:-nincs kimenet}); a main nem frissült"
     return 0
   fi
-  local piszkos
-  piszkos="$(cd "$GYOKER" && timeout 90 "$G" --no-optional-locks status --porcelain --untracked-files=no 2>&1 | tr -d '\r')"
+  local piszkos rc
+  piszkos="$(cd "$GYOKER" && timeout 90 "$G" --no-optional-locks status --porcelain --untracked-files=no 2>&1)"; rc=$?
+  piszkos="$(printf '%s' "$piszkos" | tr -d '\r')"
+  if [ "$rc" -ne 0 ]; then
+    # időtúllépés vagy hiba: a kimenet üres lehet, de ez NEM tiszta munkafa — nem léptetünk előre
+    naplo "frissítés: KIHAGYVA — a git status sikertelen (kilépési kód: $rc${piszkos:+; $(printf '%s' "$piszkos" | head -n 1)}); a git fetch lefutott, a main nem lépett előre"
+    return 0
+  fi
   if [ -n "$piszkos" ]; then
     naplo "frissítés: KIHAGYVA — a munkafa nem tiszta ($(printf '%s\n' "$piszkos" | wc -l) módosított követett fájl, pl.: $(printf '%s\n' "$piszkos" | head -n 2 | tr '\n' ';')); a git fetch lefutott, a main nem lépett előre"
     return 0

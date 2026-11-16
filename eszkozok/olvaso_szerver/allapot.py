@@ -294,7 +294,7 @@ def figyelmeztetesek(ag, epites_ts, forras_ts='', lemaradas=None):
     if lemaradas:
         if ag == FO_AG:
             ki.append('A futó checkout %d committal az origin/main mögött áll (az utolsó fetch szerint): a main legújabb változásai még nem látszanak; '
-                      'a parancsikon újraindításakor az indító frissíti.' % lemaradas)
+                      'a belso parancsikon újraindításakor az indító frissíti a főcheckoutot (tiszta munkafánál).' % lemaradas)
         else:
             ki.append('Az ág %d committal az origin/main mögött áll (az utolsó fetch szerint).' % lemaradas)
     return ki
