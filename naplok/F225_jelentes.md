@@ -106,6 +106,25 @@ ELTÉRÉS: 5 tétel
 
 A háttérben futó `bj22fqfxv` feladat (`--diff efb492ff`) a jelentés után is fut, és a zárat 20–30 percre lefoglalja. A hívó szükség szerint leállíthatja, vagy megvárhatja, és az eredményét a lassú tesztek sorához csatolhatja.
 
+### Válasz az 1. ellenőrzéshez
+
+Mind az 5 tétel javítva az `F225.7` commitban (egy javítókör); célzott újraellenőrzés (hibahely-tábla), nem teljes újraolvasás:
+
+| tétel | javítás | igazolás |
+|---|---|---|
+| E1 | a kliens `tervezo_statikus/elonezet.js`, útvonala `/elonezet/elonezet.js` (csak `belso`); a `regiszter_or.py` `JS_FAJLOK` listája is tartalmazza | `test_csak_a_belso_kiadasban`: `/elonezet/elonezet.js`, `/statikus/elonezet.js`, `/tervezo/elonezet.js` mind 404 a `nyilvanos` és a `kereskedelmi` kiadásban; `test_a_kliens_kiszolgalva_es_tartalma`: `belso`-ban 200, `/statikus/…` 404; `teszt_tervezo` zöld |
+| E2 | `indit.sh:50`: a `PARDES_ELONEZET` csak `0` vagy `1`, más érték kilépési kód 2 | `test_ervenytelen_elonezet_ertek_hiba_nem_nem_elonezet` (`true` → 2, nincs másolás) |
+| E3 | `indit.sh:85–86`: `GIT_TERMINAL_PROMPT=0`, `GCM_INTERACTIVE=never` a `WSLENV`-en át; a `git.exe`-s utat valódi `git.exe`-vel, Windows-meghajtón lévő ideiglenes repón járja be a teszt | `TesztInditGitExe` (nem kihagyott: a futás `skipped=1` csak a `node --check`) |
+| E4 | a `git status` kilépési kódja külön ellenőrzött: hiba → `KIHAGYVA`, nincs `merge` | `test_sikertelen_status_nem_tiszta_munkafa` |
+| E5 | `allapot.py:297`: „a belso parancsikon újraindításakor az indító frissíti a főcheckoutot (tiszta munkafánál)” | `test_a_figyelmeztetes_szovege_main_es_ag` |
+
+Megjegyzések az ellenőrtől: a `regiszter_or.py` `JS_FAJLOK` bővítve (E1-gyel együtt); a „plusz újratöltés” indulás után a README-ben leírva. A „panel a worktree-ből indít” állítást az ellenőr nem tudta igazolni; a menet során élőben igazolva (l. F225.5). Hibát a javítás során külön is találtam: a `Lablec.keszit`-et hívó három meglévő teszt a valódi checkout lemaradásától függött (a main előreléptével a `figyelmeztetesek == []` elromlott); `PARDES_LEMARADAS=0` rögzíti őket (`F225.9`).
+
 ## 3. Zárás
 
-*(a független ellenőrzés után töltődik)*
+- **Elkészült:** A. lemaradás-jelzés a láblécben (201 a fő checkouton) és főcheckout-frissítés az `indit.sh`-ban (`git.exe`-vel a `/mnt/…` alatt); B. előnézeti mód két védelemmel, `/elonezet/kulcs` és kliens (csak `belso`), `tervezo_statikus/` figyelt, a lap tetején is a figyelmeztetés, `.claude/launch.json`. A C rész, a generált lapok újragenerálása és a `MUNKAMENET.md` nem.
+- **Tesztek (WSL):** `teszt_indito` 83 (kihagyva 1: `node` hiányzik WSL-ben; Windowson `node --check` rendben), `teszt_tervezo` 51, `teszt_olvaso_szerver`, `teszt_pilot_aranymintaval`, `teszt_kereses`, `teszt_arculat` és a többi olvasó-teszt zöld. `push_elott.py`: 0 HIBA (a javítások után is). CI: zöld.
+- **Régi, nem általam okozott hibák:** `teszt_szintek.py` (2 teszt) és `teszt_visszhang_kapu.py` (2 teszt) az `efb492ff`-en (main) **ugyanúgy, ugyanazokkal a tesztnevekkel** buknak, ideiglenes worktree-ben mérve; a WSL adatbázisa (`2026-11-12T18:53:35Z`) régebbi, mint a main kódja. Nem része ennek a tételnek; az adatbázis újraépítése után ellenőrizendő.
+- **Nyitott:** N-F225a (a session-szabály a `MUNKAMENET.md`-be a #725 után). A `mcp__Claude_Browser__preview_stop` ebben a menetben nem kapott jóváhagyást: az `olvaso-ag` előnézet (8775, ez a worktree) fut tovább; a panelből vagy `fuser -k 8775/tcp`-vel leállítható.
+- **A felhasználó indítása:** a panelben az `olvaso-ag`, vagy kézzel: `wsl -d pardes -e bash -lc "cd /mnt/<meghajtó>/<worktree útja> && ./eszkozok/olvaso_szerver/indit.sh belso 8775"`; cím `http://localhost:8775/`.
+- **PR:** [#753](https://github.com/basesoft777/Bible-Study/pull/753) (draft).

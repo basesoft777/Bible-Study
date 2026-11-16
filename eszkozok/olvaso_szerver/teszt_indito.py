@@ -174,19 +174,19 @@ class TesztLablec(unittest.TestCase):
         self.addCleanup(shutil.rmtree, t, True)
         f = os.path.join(t, 'forras.db')
         kis_db(f, '2026-10-15T08:00:00Z')
-        L = allapot.Lablec.keszit('belso', '2026-10-14T09:35:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234', 'PARDES_FORRAS_DB': f})
+        L = allapot.Lablec.keszit('belso', '2026-10-14T09:35:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234', 'PARDES_FORRAS_DB': f, 'PARDES_LEMARADAS': '0'})
         self.assertEqual((L.kiadas, L.ag, L.commit, L.epites_ts, L.forras_ts), ('belso', 'main', 'abcd1234', '2026-10-14T09:35:00Z', '2026-10-15T08:00:00Z'))
         self.assertEqual(len(L.figyelmeztetesek), 1)
         self.assertIn('régebbi', L.figyelmeztetesek[0])
 
     def test_keszit_forras_nelkul_nincs_adatbazis_figyelmeztetes(self):
-        L = allapot.Lablec.keszit('belso', '2026-10-14T09:35:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234'})
+        L = allapot.Lablec.keszit('belso', '2026-10-14T09:35:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234', 'PARDES_LEMARADAS': '0'})
         self.assertEqual(L.figyelmeztetesek, [])
 
 
 class TesztLablecFigyelo(unittest.TestCase):
     def test_ttl_alatt_a_regi_allapot_marad_utana_az_uj(self):
-        env = {'PARDES_AG': 'main', 'PARDES_COMMIT': 'aaaaaaaa'}
+        env = {'PARDES_AG': 'main', 'PARDES_COMMIT': 'aaaaaaaa', 'PARDES_LEMARADAS': '0'}
         f = allapot.LablecFigyelo('belso', 'ts', kornyezet=env, ttl=3600)
         self.assertEqual(f.kap().ag, 'main')
         env['PARDES_AG'] = 'claude/masik'
