@@ -3,17 +3,17 @@
     python eszkozok/lapgen/hash_or_kapu.py --valtozott-lista <fájl>
 
 A `<fájl>` a változott fájlok listája, soronként egy útvonal (a CI `valtozott_fajlok.txt`-je, illetve a
-`push_elott.py` saját listája). Ha a lista az új lapgenerátort vagy a mércéjét érinti (`ERINTO_MINTA`), a
-`naplok/F218_referencia.tsv` minden sorának hash-e összevetődik a fájl mai tartalmával (`regresszio.hash_or`); eltérésnél
-HIBA (kilépési kód 1), a megváltozott bemenetek listájával. Így a mérce bemenetének változása nem maradhat rejtve
-addig, amíg valaki a regressziót le nem futtatja. Ha a lista nem érinti a generátort, a kapu nem fut (0).
+`push_elott.py` saját listája). Ha a lista az új lapgenerátort vagy a mércéjét érinti (`ERINTO_ELOTAGOK`,
+`ERINTO_FAJLOK`), a `naplok/F218_referencia.tsv` minden sorának hash-e összevetődik a fájl mai tartalmával
+(`regresszio.hash_or`); eltérésnél HIBA (kilépési kód 1), a megváltozott bemenetek listájával. Így a mérce bemenetének
+változása nem maradhat rejtve addig, amíg valaki a regressziót le nem futtatja. Ha a lista nem érinti a generátort,
+a kapu nem fut (0).
 
 A javítás: a regresszió futtatása (`eszkozok/lapgen/regresszio.py`), és ha a lap bájtra egyezik, a hash-sorok
 frissítése külön commitban, okkal (a brief 8.1 pontja).
 """
 import argparse
 import os
-import re
 import sys
 
 import regresszio
@@ -23,12 +23,15 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
-ERINTO_MINTA = re.compile(r'^(?:eszkozok/lapgen/|adat/lapgen_|naplok/F218_(?:referencia|elteres_engedely)\.tsv$)')
+# a generátor kódja, a saját táblái (a jegyzék és a sablontábla előtagja) és a mérce két naplófájlja
+ERINTO_ELOTAGOK = ('eszkozok/lapgen/', 'adat/lapgen_')
+ERINTO_FAJLOK = (regresszio.REFERENCIA_TSV, regresszio.ENGEDELY_TSV)
 
 
 def erintett(utvonalak):
     """A lista azon útvonalai, amelyek az új lapgenerátort vagy a mércéjét érintik."""
-    return [u for u in utvonalak if ERINTO_MINTA.match(u.strip().replace('\\', '/'))]
+    normalt = (u.strip().replace('\\', '/') for u in utvonalak)
+    return [u for u in normalt if u.startswith(ERINTO_ELOTAGOK) or u in ERINTO_FAJLOK]
 
 
 def main(argv=None):

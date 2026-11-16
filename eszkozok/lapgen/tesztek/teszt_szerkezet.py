@@ -15,10 +15,12 @@ _UTVONAL_RX = re.compile(r'(?:^|[^A-Za-z_])(adat|konkordancia|naplok|motivumok|l
 UTVONAL_KIVETEL = {
     'bemenet/jegyzek.py': {'adat/lapgen_bemenetek.tsv'},
     'regresszio.py': {'naplok/F218_referencia.tsv', 'naplok/F218_elteres_engedely.tsv'},
+    # a mérce hash-őre (a regresszió része, a push előtti kapuban és a CI-ben): a generátor saját tábláinak előtagja
+    'hash_or_kapu.py': {'adat/lapgen_'},
 }
 # Fájlt nyitó hívások: olvasás csak a bemeneti rétegben és a regresszióban, írás a belépési pontban.
 FAJLNYITO = {'open', 'glob', 'iglob', 'listdir', 'walk', 'scandir', 'read_text', 'read_bytes', 'isfile', 'exists'}
-FAJLNYITAS_ENGEDETT = {'bemenet/jegyzek.py', 'regresszio.py', 'fo.py'}
+FAJLNYITAS_ENGEDETT = {'bemenet/jegyzek.py', 'regresszio.py', 'hash_or_kapu.py', 'fo.py'}
 
 RETEGEK = ('szoveg', 'bemenet', 'szamitas', 'megjelenites')
 # melyik réteg mit importálhat a lapgenből (a konfig mindenkié)

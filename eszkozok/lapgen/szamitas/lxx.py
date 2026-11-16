@@ -441,8 +441,8 @@ def egyezes_kapu(mondatok, szamlalo, szopar, motivum):
         return
     if szopar:
         if any(x != n for x in szamok):
-            raise KapuHiba('%s: a héber 4.6 szavankénti száma (szópár) %s eltér az 5. szakasz összesítésétől (%d)'
-                           % (motivum.kod, '/'.join(map(str, szamok)), n))
+            raise KapuHiba('%s: a héber 4.6 szavankénti száma (szópár) %r eltér az 5. szakasz összesítésétől (%d)'
+                           % (motivum.kod, tuple(szamok), n))
     elif sum(szamok) != n:
         raise KapuHiba('%s: a héber 4.6 szavankénti összege (%d) eltér az 5. szakasz összesítésétől (%d)'
                        % (motivum.kod, sum(szamok), n))
