@@ -125,7 +125,7 @@ Column names and values are Hungarian; English parallel columns stand next to th
 - **Closed values:** next to every closed-vocabulary column, `…_en`, with the edited English label of the codebook.
 - **Free text** (rationale, function, the definition of the motif, the decision log): an `…_en` parallel field, a
   **machine translation** (mainly `claude-sonnet-5-5`; in a few cells `claude-opus-5-5`). The `forditas_modja` column of the row names the model and states any gap
-  (the translation is missing wholly or in part in 223 rows).
+  (the translation is missing wholly or in part in 257 rows).
 
 ## 9. Licence filtering
 
