@@ -20,7 +20,7 @@ nem_fugg: [121, 123, 146, 178, 179]
 
 # F218_GENERATOR_UJ_A_BRIEF.md — A lapgenerátor újraírása, 1. rész: építés a regresszióig
 
-*FELADATOK #218 · Modell: opus (a DT-F218o óta, 2026-11-13; az S3d-ig és a 4. ellenőrzés javítóköréig fable) · v2 (tervezet, átdolgozva) · 2026.11.13 · forrás: a felhasználó („vegyük korábbra a generátor írást”; „Igen, dolgoztasd át”, 2026-11-13); DT-F212e, DT-F212f; a generátor-térkép és a súlyossági leltár; a `FABLE_VALASZ_UJ_JAVASLATOK_2026-11-13.md` (mind a megosztott jegyzetmappában). Alap: main `b5d93ea8`.*
+*FELADATOK #218 · Modell: opus (a DT873 óta, 2026-11-13; az S3d-ig és a 4. ellenőrzés javítóköréig fable) · v2 (tervezet, átdolgozva) · 2026.11.13 · forrás: a felhasználó („vegyük korábbra a generátor írást”; „Igen, dolgoztasd át”, 2026-11-13); DT-F212e, DT-F212f; a generátor-térkép és a súlyossági leltár; a `FABLE_VALASZ_UJ_JAVASLATOK_2026-11-13.md` (mind a megosztott jegyzetmappában). Alap: main `b5d93ea8`.*
 
 **A 218a két ágon (a felhasználó döntése, 2026-11-16, az orkesztrátoron át, szó szerint: „Igen, mindkettőt”).** A 218a első fele (T, S1–S4: a típusok, a 2., az 1., a 4. szakasz és a KIZARASOK-melléklet, valamint az 5. szakasz) a PR #729-cel kerül a main-re, a független ellenőrzés és a javítókörei után. **A 218a ezzel nem zárul le:** az S5-től (F218.8) a munka új ágon, új PR-ban folytatódik, a main-ről. Az ok: más tételek (#725, #749, az F205 M5) a #729 SEMA-szakaszaira várnak, az új generátort pedig még semmi nem használja (218b, 218c).
 

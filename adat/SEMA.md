@@ -2545,7 +2545,7 @@ hiba**: a generátor megáll, nem írja ki a kulcsot.
 
 **Kulcs:** `tipus` + `kulcs`. Az `eredet=uj` sorokat a felhasználó hagyja jóvá.
 
-**A `cimke_cella` típus (DT-F218k).** A szótári szakaszcímke (`szotar_szakasz_cimke.tsv` `cimke_hu`) cellakezdő
+**A `cimke_cella` típus (DT869).** A szótári szakaszcímke (`szotar_szakasz_cimke.tsv` `cimke_hu`) cellakezdő
 alakja: a `kulcs` a címke kulcsa `szotar|strong|bdb_id|szakasz` alakban, az `olvasoi_nev` a címke úgy, ahogy a
 táblacella elején áll (nagy kezdőbetűvel, a kezdő névelővel vagy anélkül). Erre azért van szükség, mert a címke a
 lap más helyein mondat közben áll, a generátor pedig szöveget nem ír át: a cella értéke az adatban a végleges alak.
