@@ -85,9 +85,9 @@ class Minta(unittest.TestCase):
                 tok = json.loads(r['er_tokenek_json'])
                 self.assertEqual(tok[int(r['er_sorszam']) - 1]['a'], r['er_szo'], r['tetel_id'])
 
-    def test_hash_egyezik_az_oldaleval(self):
-        # az ellenorzo.html a böngészőben ezt számolta a mostani mintára (F175.V kipróbálás)
-        self.assertEqual(ki.minta_hash(self.minta), '70a9f72b')
+    def test_hash_fnv(self):
+        # a JS-oldali FNV-1a (UTF-16 kódegységeken) Python-mása; az oldal értékével az Oldal-teszt veti össze
+        self.assertEqual(len(ki.minta_hash(self.minta)), 8)
 
 
 class Kiertekeles(unittest.TestCase):
@@ -222,6 +222,9 @@ class Oldal(unittest.TestCase):
         r = subprocess.run(['node', proba, oldal], capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertIn('RENDBEN', r.stdout)
+        # az oldal minta-azonosítója = a kiértékelőé (különben a kiértékelő elutasítaná az exportot)
+        _, minta = ki.tabla(ki.MINTA)
+        self.assertIn('minta_hash: ' + ki.minta_hash(minta), r.stdout)
 
 
 if __name__ == '__main__':

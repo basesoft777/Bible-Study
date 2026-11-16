@@ -261,6 +261,8 @@ def kiertekel(minta, nev_a, a, nev_b, b, dontes, modell):
     fej_k = ('| | n | nincs eredetije (helyes) | van eredetije (kimaradt) | bizonytalan | kimaradási arány | Wilson 95% |\n'
              '|---|---|---|---|---|---|---|')
     sor.append('## 3. Pár nélküli szavak: kimaradási arány\n')
+    sor.append('A keret: a párosítatlan magyar szavak a szabály által eldöntött esetek nélkül (önálló névelő, segédige, '
+               'alanyi és tárgyi névmás, korrelatív „azért … hogy”; DT-F175vb); az arány erre a keretre szól.\n')
     sor.append(fej_k)
     for nev, v in ((nev_a, a), (nev_b, b)):
         sor.append(kimaradas_sor(nev, [v[t]['itelet'] for t in v if tip[t] == 'parnelkuli']))

@@ -4,28 +4,40 @@
 
 A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, illetve görög eredeti megfelelő szavával, Strong-számokkal együtt. Az adat nyíltan elérhető a Zenodón (doi:10.5281/zenodo.24141883), és a *Journal of Open Humanities Data*-ba cikk készül róla. A párosítást nyelvi modell végezte. A modell csak rámutatott a forrásszóra, a Strong-szám a STEPBible héber és görög adatából jön. A pontosságot eddig szintén gép mérte, ezért kell most emberi szem. Ti ketten egymástól függetlenül, szúrópróbaszerűen nézitek át a mintát. Az eredményetek számként kerül a cikkbe, ti pedig, ha hozzájárultok, név szerint szerepeltek a köszönetnyilvánításban. A munka kb. 3–4 óra, több részletben. Egymással ne egyeztessetek; ha valamiben nem vagytok biztosak, a „bizonytalan” gomb a jó válasz. Mivel részt vesztek a munkában, a folyóiratnál nem lehettek a cikk bírálói.
 
-**A feladat.** Az `ellenorzo.html` 380 tételt mutat, gépen és telefonon is (internet nem kell). **300 szópár**: egy Károli-szóhoz a gép egy héber vagy görög szót rendelt (TAHOT/TAGNT, Strong-számmal). **80 pár nélküli magyar szó**: a gép szerint ennek a szónak nincs eredetije. Mindkettőt a teljes vers ismeretében ítéld meg. Egy magyar szónak több eredetije is lehet, ilyenkor minden kapcsolat külön tétel. A vers többi párját a tétel alján látod.
+**A feladat.** Az `ellenorzo.html` 380 tételt mutat, gépen és telefonon is (internet nem kell). **300 szópár**: egy Károli-szóhoz a gép egy héber vagy görög szót rendelt (TAHOT/TAGNT, Strong-számmal). **80 pár nélküli magyar szó**: a párosítás szerint ennek a szónak nincs megfelelője az eredetiben, és azt kérdezzük, igaz-e ez. A szabály által eldöntött esetek (önálló névelő, segédige, külön kitett alanyi vagy tárgyi névmás, korrelatív „azért … hogy”) nincsenek a mintában, lásd a Konvenciókat. Mindkét fajta tételt a teljes vers ismeretében ítéld meg. Egy magyar szónak több eredetije is lehet, ilyenkor minden kapcsolat külön tétel. A vers többi párját a kártyákon látod.
 
 **Kérjük, a másik ellenőrrel ne egyeztess, és ne nézd meg az ő válaszait.** Csak így mérhető, mennyire egyezik két független ítélet. Kérdésnél a szervezőt kérdezd, ne a másik ellenőrt.
 
 ## Mikor helyes, hibás, bizonytalan?
 
-- **Helyes** – a magyar szó (legalább részben) ennek az eredeti szónak a fordítása, az alábbi szabályok szerint. Pár nélküli szónál: valóban nincs eredetije.
+- **Helyes** – a magyar szó (legalább részben) ennek az eredeti szónak a fordítása, az alábbi szabályok szerint. Pár nélküli szónál („Igaz”): valóban nincs megfelelője az eredetiben.
 - **Hibás** – válaszd ki a hiba típusát is:
   - *rossz forrásszó*: a magyar szónak a vers egy másik eredeti szava felel meg (ha tudod, koppints rá);
   - *hiányzó pár*: ez a pár jó, de a magyar szóhoz még egy eredeti szó is tartozik, és az a párjai között nem szerepel;
-  - *fölösleges pár*: a magyar szónak nincs eredetije (betoldás), mégis kapott párt;
+  - *fölösleges pár*: a magyar szónak nincs eredeti megfelelője, mégis kapott párt;
   - *egyéb*: írd le a megjegyzésben.
-  - Pár nélküli szónál a „Van (hibás)” azt jelenti, hogy a szónak van eredetije, a gép tehát kihagyta.
+  - Pár nélküli szónál a „Van megfelelője (hibás)” azt jelenti, hogy a szónak van eredetije, a párosítás tehát kihagyta. Ha tudod, koppints az eredeti szóra.
 - **Bizonytalan** – ha a szabályok szerint sem dönthető el, vagy szövegváltozat, illetve Károli szabad fordítása miatt nem látszik a megfelelés. Írj egy mondatot az okáról. Ne ezt válaszd, ha csak lassabb volna eldönteni.
+
+## Konvenciók: mit nem párosítunk, és miért
+
+A névelő és néhány nyelvtani elem a magyarban és az eredetiben nem felel meg egy az egyben egymásnak. Például ὁ Ἰησοῦς → *Jézus* (névelő nélkül), בֵּית יְהוָה → *az Úr háza* (az eredetiben nincs névelő), בְּנוֹ → *az ő fia* (az *ő* és a *fia* a ragot kapja, az *az* semmit). Ezért a párosítás szabály szerint nem köt be:
+
+- a magyar önálló névelőt (*a, az*), és a héber (H9009) és görög névelőt; kivétel a névmásként álló névelő (*a ki*, ὁ δέ), amely párosítva van;
+- a tárgyjelölő *ʾet*-et (H0853), a nyomatékos -āh-t és a paragogikus nunt, valamint a [nem TR] szót;
+- a segédigét (*vala, volt, fog, van, volna, lészen*), ha az eredetiben nincs külön ige;
+- a külön kitett alanyi névmást, ha a személyt csak az igealak hordozza, és a tárgyi névmást, ha nincs eredetije;
+- a korrelatív *azért*-ot a *hogy* előtt, ha nincs eredetije.
+
+Az eredeti oldalon ezek a kártyák alján „szabály szerint nincs párosítva” áll. **A konvenció alkalmazását ítéld meg, ne magát a konvenciót.** Ha egy pár csak azért tűnhet hibásnak vagy hiányosnak, mert egy névelő nincs bekötve, az nem hiba: ilyenkor a pár helyes.
 
 ## A párosítás szabályai (röviden)
 
 Ezek szerint készült a párosítás. A tetszés szerinti fordítói ítélet helyett ezeket kérjük alkalmazni.
 
-1. **Névelő.** A magyar önálló névelő (*a, az*) mindig betoldás. A héber névelő (H9009) és a görög névelő nem kap magyar párt, kivéve, ha névmásként áll (*aki, amely*).
+1. **Névelő.** A magyar önálló névelő (*a, az*) nem kap párt. A héber névelő (H9009) és a görög névelő nem kap magyar párt, kivéve, ha névmásként áll (*aki, amely*).
 2. **Igekötő.** A különírt igekötő (*meg, el, ki, le, fel, által…*) az ige eredetijéhez tartozik.
-3. **Segédige és alanyi névmás.** A *vala, volt, fog, van, volna, lészen* betoldás, ha az eredetiben nincs külön ige. Kivétel: ha a magyar egy eredeti igealakot többtagú szerkezettel ad vissza, a szerkezet minden igei tagja az egy igéhez tartozik. A külön kitett *én, te, ő…* betoldás, ha a személyt csak az igealak hordozza.
+3. **Segédige és alanyi névmás.** A *vala, volt, fog, van, volna, lészen* nem kap párt, ha az eredetiben nincs külön ige. Kivétel: ha a magyar egy eredeti igealakot többtagú szerkezettel ad vissza, a szerkezet minden igei tagja az egy igéhez tartozik. A külön kitett *én, te, ő…* nem kap párt, ha a személyt csak az igealak hordozza.
 4. **Ragok.** A héber birtokos és névmási rag (H9020–H9040) ahhoz a magyar szóhoz tartozik, amelynek a személyragja ugyanarra a személyre utal. Ha a magyar a névmást külön is kiteszi (*az ő háza*), a névmás is ugyanahhoz a raghoz tartozik. Az *'et* (H0853) nem kap párt; a mellette álló tárgyi névmás (*azt, őt*) a ragjához tartozik.
 5. **Kötőszó.** A héber *ve-* és a görög *καί* csak akkor kap párt, ha a magyarban a helyén kötőszó áll (*és, s, pedig, is, de, hogy*).
 6. **[nem TR].** Az ÚSZ-ben a szürkén szedett, *[nem TR]* jelű szó nincs benne a Károli alapszövegében, ezért nem kaphat párt.
@@ -34,11 +46,11 @@ Ezek szerint készült a párosítás. A tetszés szerinti fordítói ítélet h
 
 | Vers | Magyar szó | Pár | Ítélet és ok |
 |---|---|---|---|
-| 1Móz 1:1 *teremté Isten **az** eget* | az | nincs | **helyes**: a magyar névelő betoldás; a héber הַ sem kap párt (1.) |
+| 1Móz 1:1 *teremté Isten **az** eget* | az | nincs | **helyes**: konvenció, a magyar névelő nem kap párt, a héber הַ sem (1.); ilyen tétel a mintában nincs |
 | Mt 4:10 *Eredj **el** Sátán* | el | ὕπαγε (G5217) | **helyes**: a különírt igekötő az igéhez tartozik (2.) |
 | Mt 4:10 *mert **meg van írva*** | meg, van, írva | mindhárom: γέγραπται (G1125) | **helyes**: többszavas magyar szerkezet egy eredeti igealakra (3.) |
-| 1Móz 1:2 *és setétség **vala** a mélység színén* | vala | nincs | **helyes**: Károli betoldása (névmondat, nincs ige). Ugyanebben a versben *puszta vala* ← הָיְתָה (H1961) szintén helyes pár, mert ott van eredeti ige |
-| 2Sám 14:10 *hozd **ide** előmbe* | ide | nincs | **helyes**: Károli magyarázó betoldása |
+| 1Móz 1:2 *és setétség **vala** a mélység színén* | vala | nincs | **helyes**: konvenció, névmondat, nincs eredeti ige (3.). Ugyanebben a versben a *puszta vala* ← הָיְתָה (H1961) szintén helyes pár, mert ott van eredeti ige |
+| 2Sám 14:10 *hozd **ide** előmbe* | ide | nincs | **igaz (helyes)**: Károli hozzátétele, az eredetiben nincs megfelelője |
 | 1Móz 4:4 *az **ő** juhainak* | ő | וֹ (H9023, „his”) | **helyes**: a külön kitett névmás és a *juhainak* is a ragot kapja (4.) |
 | Péld 3:18 ***Életnek** fája ez* | Életnek | עֵץ (H6086, „tree”) | **hibás, rossz forrásszó**: az *Életnek* a חַיִּים (H2416, „life”) fordítása, a *fája* pedig a עֵץ-é; a gép felcserélte őket |
 

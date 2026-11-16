@@ -17,7 +17,9 @@ Mintavétel (rögzített mag; újrafuttatva ugyanazon a commiton bájtra azonos,
     párra már megvan. A #172 nyolc rétegéből a két Mózes-réteg a közleményben
     egy könyvcsoport (`f172/reteg_osszevont.tsv`): hét könyvcsoport.
   * Pár nélküli magyar szavak: a `adat/karoli_strong/szavak_*.tsv` `hu` oldalának
-    `betoldas` állapotú szavai (a `fuggoben` nem: az kézi, nem gépi döntés),
+    `betoldas` állapotú szavai (a `fuggoben` nem: az kézi, nem gépi döntés), a párosítási szabály
+    által eldöntött esetek nélkül (KIZART_SZABALY, `kizarasi_ok`: névelő, segédige, alanyi és tárgyi
+    névmás, korrelatív „azért … hogy”; DT-F175vb),
     könyvcsoportonként a betoldás-szám arányában, 80 darab.
 Előtte ellenőrzi, hogy minden mintapár a mai `parok_*.tsv`-ben és a mai
 bemenetben (Károli-token, TAHOT/TAGNT-token) is ugyanaz.
@@ -233,13 +235,57 @@ def par_minta(mag):
     return ki, db
 
 
-def nelkul_minta(mag):
+# A pár nélküli szavak keretéből kizárt, a párosítási szabály (f21p/prompt_v3.md) által eldöntött esetek
+# (DT-F175vb): ezeknél a „nincs megfelelője” a konvenció következménye, nem a modell ítélete, így az ember
+# a konvenciót bírálná, nem az alkalmazását. Felszíni alak szerint (kis-nagybetű nélkül):
+#   A  önálló névelő: a, az (az így kiszűrt, párosítatlan mutató „az” is kiesik; ismert korlát);
+#   G  segédige, ha nincs külön eredeti ige (párosítatlanul): vala, volt, fog, van, volna, lészen és ragozott alakjaik
+#      (a többértelmű „vagy” nem: kötőszó is);
+#   F  külön kitett alanyi névmás: én, te, ő, mi, ti, ők;
+#   C  tárgyi névmás eredeti megfelelő nélkül: azt, ezt, őt, őket;
+#   L  korrelatív mutató névmás a „hogy” előtt: azért (ha a versben utána „hogy” áll; az „azt” a C-ben).
+# A vonatkozó névmás (B) nem esik ki: ott a szabály az eredeti szerkezetétől függ, és a kimaradás valódi hiba lehet.
+KIZART_SZABALY = {
+    'A': {'a', 'az'},
+    'G': {'vala', 'valának', 'valék', 'valál', 'valánk', 'valátok', 'volt', 'voltak', 'volna', 'volnának', 'volnék',
+          'volnál', 'volnánk', 'volnátok', 'fog', 'fogok', 'fogsz', 'fogunk', 'fogtok', 'fognak', 'van', 'vannak', 'vagyok', 'vagyunk', 'vagytok',
+          'lészen', 'lésznek'},
+    'F': {'én', 'te', 'ő', 'mi', 'ti', 'ők'},
+    'C': {'azt', 'ezt', 'őt', 'őket'},
+}
+
+
+def kizarasi_ok(szo, utana):
+    """A pár nélküli szó kizárási oka (A/G/F/C/L), vagy None. utana: a versben utána álló tokenek (kisbetűsen)."""
+    x = szo.casefold()
+    for ok, alakok in KIZART_SZABALY.items():
+        if x in alakok:
+            return ok
+    if x == 'azért' and 'hogy' in utana:
+        return 'L'
+    return None
+
+
+def nelkul_minta(mag, szur=True):
+    """A pár nélküli szavak mintája. Visszaad: (minta, darab csoportonként, keret csoportonként,
+    kizárt csoportonként és okonként)."""
     jeloltek = {cs: [] for cs in CSOPORTOK}
+    kizart = {cs: {} for cs in CSOPORTOK}
     for k in pm.konyvek():
         cs = pm.CSOPORT[k]
         _, sorok = _tabla(os.path.join(ADAT, 'szavak_%s.tsv' % k))
+        versenkent = {}
         for r in sorok:
-            if r['oldal'] == 'hu' and r['allapot'] == 'betoldas':
+            if r['oldal'] == 'hu':
+                versenkent.setdefault(r['vers'], []).append(r)
+        for v, hu in versenkent.items():
+            for i, r in enumerate(hu):
+                if r['allapot'] != 'betoldas':
+                    continue
+                ok = kizarasi_ok(r['szo'], [y['szo'].casefold() for y in hu[i + 1:]]) if szur else None
+                if ok:
+                    kizart[cs][ok] = kizart[cs].get(ok, 0) + 1
+                    continue
                 jeloltek[cs].append({'konyv': k, 'vers': r['vers'], 'hu_sorszam': r['sorszam'],
                                      'hu_szo': r['szo'], 'csoport': cs})
     db = legnagyobb_maradek({cs: len(jeloltek[cs]) for cs in CSOPORTOK}, N_NELKUL)
@@ -248,12 +294,21 @@ def nelkul_minta(mag):
         rnd = random.Random('%d:nelkul:%s' % (mag, cs))
         for x in sorted(rnd.sample(range(len(jeloltek[cs])), db[cs])):
             ki.append(jeloltek[cs][x])
-    return ki, db, {cs: len(v) for cs, v in jeloltek.items()}
+    return ki, db, {cs: len(v) for cs, v in jeloltek.items()}, kizart
 
 
 def epit(mag):
     parok, db_par = par_minta(mag)
-    nelkul, db_nelkul, keret_nelkul = nelkul_minta(mag)
+    nelkul, db_nelkul, keret_nelkul, kizart = nelkul_minta(mag)
+    # a szabály nélküli (F175.V1–V4) minta: hány tétele esett volna a kizárt esetek közé
+    regi, _, _, _ = nelkul_minta(mag, szur=False)
+    regi_kizart = {}
+    for r in regi:
+        sorok_v = [r2 for r2 in _hu_versszavak(r['konyv'], r['vers'])]
+        idx = [i for i, r2 in enumerate(sorok_v) if r2['sorszam'] == r['hu_sorszam']][0]
+        ok = kizarasi_ok(r['hu_szo'], [y['szo'].casefold() for y in sorok_v[idx + 1:]])
+        if ok:
+            regi_kizart[ok] = regi_kizart.get(ok, 0) + 1
     karoli, ered = bemenet._adatok()
     versek = {r['vers'] for r in parok} | {r['vers'] for r in nelkul}
     pv = parok_versenkent(versek)
@@ -365,7 +420,21 @@ def epit(mag):
             if '\t' in s[k] or '\n' in s[k]:
                 raise SystemExit('tabulátor vagy sortörés a mezőben: %s %s' % (s['tetel_id'], k))
     sorok.sort(key=lambda s: s['tetel_id'])
-    return sorok, db_par, db_nelkul, keret_nelkul, illesztett
+    return sorok, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart
+
+
+_HU_CACHE = {}
+
+
+def _hu_versszavak(konyv, vers):
+    if konyv not in _HU_CACHE:
+        d = {}
+        _, sorok = _tabla(os.path.join(ADAT, 'szavak_%s.tsv' % konyv))
+        for r in sorok:
+            if r['oldal'] == 'hu':
+                d.setdefault(r['vers'], []).append(r)
+        _HU_CACHE[konyv] = d
+    return _HU_CACHE[konyv][vers]
 
 
 _USZ_KONYVEK = None
@@ -389,7 +458,7 @@ def minta_ir(sorok, db_par, db_nelkul, keret_nelkul, mag, head):
     for rt, n in db_par.items():
         par_cs[csoport_of_reteg(rt)] = par_cs.get(csoport_of_reteg(rt), 0) + n
     prov = ('# MANUAL: scope=F175.V emberi validációs minta (%d szópár a #172 rétegzett mintájának arányos '
-            'részmintájaként + %d pár nélküli magyar szó, könyvcsoportonként arányosan; mag=%d) | '
+            'részmintájaként + %d pár nélküli magyar szó a szabály által eldöntött esetek nélkül, könyvcsoportonként arányosan; mag=%d) | '
             'forras=f172/minta.tsv, f172/keret.tsv, adat/karoli_strong/parok_*.tsv, szavak_*.tsv, '
             'konkordancia/Karoli_1908.tsv, TAHOT_kivonat.tsv, TAGNT_kivonat.tsv, Macula_*.tsv @ %s | ts=git:%s | '
             'manual (determinisztikus mintavétel: eszkozok/karoli_strong_validacio_minta.py; a párok '
@@ -442,16 +511,24 @@ def main():
     os.makedirs(KIMENET, exist_ok=True)
     if not a.csak_html:
         _USZ_KONYVEK = _usz_konyvek()
-        sorok, db_par, db_nelkul, keret_nelkul, illesztett = epit(a.mag)
+        sorok, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart = epit(a.mag)
         par_cs = minta_ir(sorok, db_par, db_nelkul, keret_nelkul, a.mag, git_head())
         print('minta: %d tétel -> kozlemeny/data_paper/validacio/minta.tsv' % len(sorok))
         print('  párok (%d):' % N_PAR)
         for cs in CSOPORTOK:
             print('    %-15s %3d' % (cs, par_cs[cs]))
         print('    (#172-rétegenként: %s)' % ', '.join('%s %d' % (k, v) for k, v in db_par.items()))
-        print('  pár nélküli szavak (%d, a betoldás-keretből):' % N_NELKUL)
+        print('  pár nélküli szavak (%d, a szabály által eldöntött esetek nélküli betoldás-keretből):' % N_NELKUL)
         for cs in CSOPORTOK:
             print('    %-15s %3d / %d' % (cs, db_nelkul[cs], keret_nelkul[cs]))
+        osszes = {}
+        for cs in CSOPORTOK:
+            for ok, n in kizart[cs].items():
+                osszes[ok] = osszes.get(ok, 0) + n
+        print('  a betoldás-keretből szabály szerint kizárva: %d (%s)' % (
+            sum(osszes.values()), ', '.join('%s %d' % (k, osszes[k]) for k in sorted(osszes))))
+        print('  a szabály nélküli 80-as mintából ennyi esett volna ki: %d (%s)' % (
+            sum(regi_kizart.values()), ', '.join('%s %d' % (k, regi_kizart[k]) for k in sorted(regi_kizart))))
         print('  alaktani adat (Macula-illesztés) a párok forrásszavánál: %d / %d' % (illesztett, N_PAR))
         tk = [x for s in sorok for x in json.loads(s['er_tokenek_json'])]
         print('  a minta verseinek forrásszavai: %d; alaktan nélkül %d, átírás nélkül %d'

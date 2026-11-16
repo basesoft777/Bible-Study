@@ -88,5 +88,6 @@ const uz2 = A.betolt_adat(masik);
 ell(confirmHivas === 1 && /Mégsem/.test(uz2) && JSON.stringify(A.allapot) === elotte, 'más ellenőr: rákérdezés, Mégsem');
 console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (6 forgatókönyv)');
 if (hiba.length) process.exitCode = 1;
+console.log('minta_hash: ' + A.MINTA_HASH);
 console.log('betöltési üzenet: ' + info1);
 console.log('ütközés: ' + uz);
