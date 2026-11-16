@@ -5,7 +5,7 @@ kod: GENERATOR_UJ_A
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
+allapot: megallt
 ag: claude/f218a-s6-3896f7
 pr: 756
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
