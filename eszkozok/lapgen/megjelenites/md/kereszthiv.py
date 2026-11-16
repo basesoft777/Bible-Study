@@ -4,24 +4,20 @@ Minden látható mondat a sablontáblából jön (`s6.*`); a vizsgált helyek in
 az ok cellakezdő alakja kézi adat (a névtábla `ok_cella` sora). A forrás- és a proveniencia-jelölés megjegyzésbe kerül.
 """
 from lapgen import konfig
-from lapgen.ertekek import AjanlasFajta, Dontes, Gyujtemeny
+from lapgen.ertekek import AjanlasFajta, Dontes, Gyujtemeny, MegerositesFok
 from lapgen.megjelenites.md import keret as K
 from lapgen.megjelenites.md.iro import DETAILS_NYIT, DETAILS_ZAR, SUMMARY_NYIT, SUMMARY_ZAR
 from lapgen.szoveg import prov, prov_fuz
 
 AZONOSITO = 'kereszthivatkozasok'
 _FEJLEC = ('s6.min.fejlec.igehely', 's6.min.fejlec.miert', 's6.min.fejlec.indok')
-_FELE_ALSO, _FELE_FELSO = 45, 55
-_EROS, _KOZEPES = 0.67, 0.34
+_FOK = {MegerositesFok.EROS: 's6.min.fok.eros', MegerositesFok.KOZEPES: 's6.min.fok.kozepes',
+        MegerositesFok.GYENGE: 's6.min.fok.gyenge'}
 _KAROLI_MIERT = {AjanlasFajta.TSK_KAROLI: ('s6.miert.tsk_karoli', 's6.miert.tsk_karoli.hely_nelkul'),
                  AjanlasFajta.KAROLI: ('s6.miert.karoli', 's6.miert.karoli.hely_nelkul')}
 _DONTES_JEL = {Dontes.BEEPITVE: 's6.min.dontes.beepitve', Dontes.NYITVA: 's6.min.dontes.nyitva'}
 _DONTES_SZAM = {Dontes.BEEPITVE: 's6.min.osszegzes.beepitve', Dontes.ELUTASITVA: 's6.min.osszegzes.elutasitva',
                 Dontes.NYITVA: 's6.min.osszegzes.nyitva'}
-
-
-def _szazalek(a, b):
-    return round(100 * a / b) if b else 0
 
 
 def _bol(n):
@@ -41,8 +37,7 @@ def olvasoi(ny, m):
     """A szakasz olvasói bekezdése (a régi `olvasoi_kovetkeztetes.kereszthivatkozasok`)."""
     if not m.helyek:
         return ny.s('s6.olvasoi.nincs', n=m.n)
-    return ny.s('s6.olvasoi', n=m.n, talalt=len(m.helyek), osszes=m.osszes,
-                szazalek=_szazalek(len(m.helyek), m.n))
+    return ny.s('s6.olvasoi', n=m.n, talalt=len(m.helyek), osszes=m.osszes, szazalek=m.szazalek)
 
 
 def _hatokor(ny, m):
@@ -69,11 +64,8 @@ def min_olvasoi(ny, mi):
         return ny.s('s6.min.olvasoi.nincs')
     lelet = ny.s(ny.kulcs('s6.min.lelet', _bol(mi.n)), osszes=mi.osszes, parok=len(mi.parok), erintett=mi.erintett,
                  n=mi.n)
-    p = _szazalek(mi.erintett, mi.n)
-    resz = ny.s('s6.min.resz.fele', p=p) if _FELE_ALSO <= p <= _FELE_FELSO else ny.s('s6.min.resz', p=p)
-    arany = mi.erintett / mi.n
-    fok = 'eros' if arany >= _EROS else 'kozepes' if arany >= _KOZEPES else 'gyenge'
-    return ny.s('s6.min.olvasoi', lelet=lelet, resz=resz, fok=ny.s(ny.kulcs('s6.min.fok', fok)))
+    resz = ny.s('s6.min.resz.fele' if mi.fele else 's6.min.resz', p=mi.szazalek)
+    return ny.s('s6.min.olvasoi', lelet=lelet, resz=resz, fok=ny.s(_FOK[mi.fok]))
 
 
 def _par(ny, p):

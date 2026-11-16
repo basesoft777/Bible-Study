@@ -15,7 +15,7 @@ from lapgen import bemenet, konfig
 from lapgen.bemenet import kereszthiv as kh_be
 from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet.nyelv import ok_cellaalakok
-from lapgen.ertekek import AjanlasFajta, Dontes, Gyujtemeny  # noqa: F401 (a megjelenítő innen veszi)
+from lapgen.ertekek import AjanlasFajta, Dontes, Gyujtemeny, MegerositesFok  # noqa: F401 (a megjelenítő innen veszi)
 from lapgen.szamitas.vizsgalat import KapuHiba
 from lapgen.szoveg import Igehely, Lathato, MotivumId, Proveniencia, Strong, idezet, prov, prov_fuz, proza
 
@@ -94,6 +94,9 @@ class Minosites:
     dontesek: Tuple[Tuple[Dontes, int], ...]
     kozos_olvasoi: Optional[Proveniencia]
     kozos_eredeti: Optional[Proveniencia]
+    szazalek: int                  # az érintett helyek aránya a motívum helyeihez, egészre kerekítve
+    fele: bool                     # a százalék a „fele” sávban (konfig.MINOSITES_FELE)
+    fok: MegerositesFok
 
 
 @dataclasses.dataclass(frozen=True)
@@ -104,6 +107,7 @@ class KhSzakasz:
     kihagyott: Tuple[Tuple[Igehely, int], ...]
     osszes: int
     kuszob: int
+    szazalek: int                  # az utalást adó helyek aránya a motívum helyeihez, egészre kerekítve
     minosites: Minosites
 
 
@@ -172,9 +176,18 @@ def _minosites(b, motivum, sorok, utalasok, osszes):
     dontesek = tuple((d, sum(1 for j in jeloltek if j.dontes is d))
                      for d in (Dontes.BEEPITVE, Dontes.ELUTASITVA, Dontes.NYITVA))
     kozos_olvasoi, kozos_eredeti = _kozos(jeloltek_be)
+    arany = len(erintett) / len(sorok)
+    szazalek = _szazalek(len(erintett), len(sorok))
+    fok = (MegerositesFok.EROS if arany >= konfig.MINOSITES_EROS
+           else MegerositesFok.KOZEPES if arany >= konfig.MINOSITES_KOZEPES else MegerositesFok.GYENGE)
     return Minosites(parok=tuple(parok), erintett=len(erintett), n=len(sorok), osszes=osszes,
                      jeloltek=tuple(jeloltek), dontesek=tuple(x for x in dontesek if x[1]),
-                     kozos_olvasoi=kozos_olvasoi, kozos_eredeti=kozos_eredeti)
+                     kozos_olvasoi=kozos_olvasoi, kozos_eredeti=kozos_eredeti, szazalek=szazalek,
+                     fele=konfig.MINOSITES_FELE[0] <= szazalek <= konfig.MINOSITES_FELE[1], fok=fok)
+
+
+def _szazalek(a, b):
+    return round(100 * a / b) if b else 0
 
 
 def szamit(korny):
@@ -201,7 +214,7 @@ def szamit(korny):
     osszes = sum(len(h.utalasok) for h in helyek)
     return KhSzakasz(n=len(sorok), helyek=tuple(helyek), nem_vizsgalhato=tuple(nem_vizsgalhato),
                      kihagyott=tuple(kihagyott), osszes=osszes, kuszob=kuszob,
-                     minosites=_minosites(b, motivum, sorok, utalasok, osszes))
+                     szazalek=_szazalek(len(helyek), len(sorok)), minosites=_minosites(b, motivum, sorok, utalasok, osszes))
 
 
 def kapu(m):

@@ -4,9 +4,11 @@ Bemenetek: B04 (a jelöltek döntésnaplója), B05 (a teljesség-mérés pillana
 forrássora), B06 (a teljesség-mérés csoportlistája: a csoportosan kizárt versek), B56 (az elutasítási okok
 mintaszótára).
 
-A döntésnapló `forras_kereses` és `indoklas` mezője belső szabad szöveg: a lapra nem kerül. A réteg ezekből csak
+A döntésnapló `forras_kereses` és `indoklas` mezője itt belső szabad szöveg: a lapra nem kerül. A réteg ezekből csak
 szerkezetet olvas ki (a csoportos sor versszáma, a csoportlista kulcsa, az ajánlás ténye), az indoklást pedig a
-mintaszótár okba sorolja; a lapon az ok kézi címkéje és kézi megjegyzése áll.
+mintaszótár okba sorolja; a lapon az ok kézi címkéje és kézi megjegyzése áll. Kivétel (S5, DT-F218s, megerősítésre
+vár): a kereszthivatkozásból vizsgált helyek indoklása a Minősítés táblájában kézi prózaként áll, ahogy a régi lapon
+(`bemenet/kereszthiv.py`, kapuval: ami nem olvasói szöveg, azon a réteg megáll).
 
 A jelöltek és a csoportlista igehelyei a Károli-fájl kulcsai: a könyv rövidítése úgy áll, ahogy az adatban
 (a normalizáló táblán nem megy át; könyvnév-alias a kódban nincs).

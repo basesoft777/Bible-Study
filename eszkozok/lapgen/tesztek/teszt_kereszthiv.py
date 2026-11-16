@@ -57,6 +57,13 @@ class Szamok(unittest.TestCase):
         self.assertEqual(mi.dontesek, ((KH.Dontes.ELUTASITVA, 99),))
         KH.kapu(m)
 
+    def test_az_istentiszt_szamai(self):
+        m = modell('ISTENTISZT-001')
+        self.assertEqual((m.n, len(m.helyek), m.osszes), (20, 8, 19))
+        mi = m.minosites
+        self.assertEqual((len(mi.parok), mi.erintett, len(mi.jeloltek), mi.fok), (9, 7, 61, KH.MegerositesFok.KOZEPES))
+        KH.kapu(m)
+
     def test_a_tsk_utalasok_csokkeno_szavazatszam_szerint_allnak(self):
         for h in modell('HAMART-001').helyek:
             tsk = [u.szavazat for u in h.utalasok if u.gyujtemeny is KH.Gyujtemeny.TSK]
@@ -70,8 +77,28 @@ class Szamok(unittest.TestCase):
             KH.kapu(dataclasses.replace(m, osszes=m.osszes + 1))
 
 
+class KarolKhSzuro(unittest.TestCase):
+    def test_a_b43_a_regi_hozzaferesi_ponttal_egyezik(self):
+        """A B43/B72 szűrése (a megerősített Károli-KH utalások sorrendje és a nem megerősített sorok száma) a régi
+        `karoli_kh_szuro.szures` eredményével egyezik a két mintalap minden versén (a 8. ellenőrzés E9 tétele)."""
+        import karoli_kh_szuro as KHS
+        b = bemenet.Bemenet(kozos.GYOKER)
+        konyvek = bemenet.b63_konyvek(b)
+        for azonosito in kozos.MINTALAPOK:
+            for sor in bemenet.b03_elofordulasok(b, MotivumId(azonosito)):
+                step = konyvek.step_vers(sor.igehely)
+                if step is None:
+                    continue
+                uj, elvetett = KB.b43_karoli_kh(b, sor.igehely)
+                jo, rossz = KHS.szures(step)
+                regi = [r_.replace(',', ':', 1) if ':' not in r_ else r_ for r_ in
+                        (KHS.hu_megjelenites(r) for r in jo)]
+                self.assertEqual([u.cel.kod for u in uj], regi, (azonosito, step))
+                self.assertEqual(elvetett, rossz, (azonosito, step))
+
+
 class GkA1(unittest.TestCase):
-    def test_a_versenkent_nem_vizsgalhato_hely_egyszer_all(self):
+    def test_gk_a1_a_versenkent_nem_vizsgalhato_hely_egyszer_all(self):
         """GK-A1: minden igehely legfeljebb egyszer szerepel a 6. szakaszban és a hatókör-jegyzetben együtt; a lista az
         adatból jön (a modell `nem_vizsgalhato` mezője), nem szövegmásolatból."""
         for azonosito in kozos.MINTALAPOK:
@@ -85,7 +112,7 @@ class GkA1(unittest.TestCase):
 
 
 class Hn10(unittest.TestCase):
-    def test_a_forrasmegjeloles_a_valoban_olvasott_javitott_tablat_nevezi(self):
+    def test_hn10_a_forrasmegjeloles_a_valoban_olvasott_javitott_tablat_nevezi(self):
         """HN-10: a 6. szakasz blokkfejléce és a Minősítés rés-jelölője a javított Károli-KH táblát is nevezi (a valódi
         olvasásból); a látható szövegben fájlnév nem áll."""
         sorok = szakasz_sorai('HAMART-001')
@@ -165,19 +192,27 @@ class CimkeIsmetles(unittest.TestCase):
 
 
 class OkCella(unittest.TestCase):
+    @staticmethod
+    def _repo(nevek):
+        return alap_minirepo(nevek=nevek, jegyzek_sorok=[
+            ('B56', 'adat/elutasitasi_okok.tsv', 'okok', 'igen', '-', '-', 'aktiv', '-', '-', 'manual')], tovabbi={
+            'adat/elutasitasi_okok.tsv': kozos.tsv(('sorrend', 'id', 'minta', 'cimke', 'megjegyzes'),
+                                                   ('1', '*', 'x', 'egy másik motívum tárgya (összesítő sor)', ''))})
+
     def test_a_cellakezdo_alak_csak_a_kezdobetuben_terhet_el(self):
-        repo = alap_minirepo(nevek=[('ok_cella', 'egy másik motívum tárgya', 'Egy másik motívum tárgya', 'x')])
-        try:
-            self.assertEqual(ok_cellaalakok(bemenet.Bemenet(repo.gyoker))['egy másik motívum tárgya'].ertek,
-                             'Egy másik motívum tárgya')
-        finally:
-            repo.torol()
-        repo = alap_minirepo(nevek=[('ok_cella', 'egy másik motívum tárgya', 'Más motívum tárgya', 'x')])
-        try:
-            with self.assertRaises(bemenet.BemenetHiba):
-                ok_cellaalakok(bemenet.Bemenet(repo.gyoker))
-        finally:
-            repo.torol()
+        for nevek, jo in (([('ok_cella', 'egy másik motívum tárgya', 'Egy másik motívum tárgya', 'x')], True),
+                          ([('ok_cella', 'egy másik motívum tárgya', 'Más motívum tárgya', 'x')], False),
+                          ([('ok_cella', 'nem létező címke', 'Nem létező címke', 'x')], False)):   # árva sor
+            repo = self._repo(nevek)
+            try:
+                if jo:
+                    self.assertEqual(ok_cellaalakok(bemenet.Bemenet(repo.gyoker))['egy másik motívum tárgya'].ertek,
+                                     'Egy másik motívum tárgya')
+                else:
+                    with self.assertRaises(bemenet.BemenetHiba, msg=nevek):
+                        ok_cellaalakok(bemenet.Bemenet(repo.gyoker))
+            finally:
+                repo.torol()
 
 
 if __name__ == '__main__':

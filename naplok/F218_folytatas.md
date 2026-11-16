@@ -37,6 +37,7 @@
 | 7. ellenőrzés (célzott, Fable) | **ELTÉRÉS: 3 tétel; U1 és U3 javítva, U2 indokkal marad** | `naplok/F218_jelentes.md` „Független ellenőrzés — 7. ellenőrzés” |
 | N200 (a mérce hash-sorai a #729 merge-e után) | **kész** (`2e21e0b1`, a 10. session) | a B51 `DONTESEK.md` és a B66 hash-e frissült, a törölt döntésfájl sora kikerült; regresszió RENDBEN, hash-őr 208 sor. **A merge után újra esedékes** (az S5 döntésfájlja is a B51 sora): az S6 első lépése |
 | F218.8 (S5): „6. Kereszthivatkozások” és a Minősítés | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 10. session, `claude-opus-5-5`, high) | 307 sorból 4 eltér, mind engedéllyel: `S5-FORRAS`, `S5-RES-FORRAS`, `S5-PROV` (HN-10, az alapmérés 3 sora), `S5-KIEJTES` (új osztály, 1). Új bemenetek: B43, B44, B72; 57 sablonsor (2 `var`), 15 `ok_cella` névtábla-sor; a `jeloltek.tsv` 34 cellája az adatban javult (DT-F218s 🟡, az `ir`-en kívül); festékpróba 0; tesztek: `teszt_kereszthiv.py` (15). A jelentés „F218.8 — S5” szakasza |
+| 8. ellenőrzés (Fable, célzott, `68d9ee90..4f6974e8`) | **ELTÉRÉS: 9 tétel**; a javítókör kész (E4, E5, E6, E9; az E1, E2 és az `ir` a DT-F218s-ben, 🟡) | `naplok/F218_jelentes.md` „Független ellenőrzés — 8. ellenőrzés” és „A 8. ellenőrzés javítóköre”; a besorolás az orkesztrátoré |
 | F218.9 (S6) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel

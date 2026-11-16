@@ -224,10 +224,6 @@ class Hibanaplo(unittest.TestCase):
         """HN-07, HN-08, HN-09: töredék („sz<n> sorok,;”), döntésszám és tételszám, nyers BDB-fej, héber
         számláló: 0 találat mindkét új lapon."""
 
-    @unittest.skip(S5)
-    def test_hn10_karoli_kh_forrasdeklaracio(self):
-        """HN-10: a Károli-kereszthivatkozás forrásdeklarációja a ténylegesen olvasott javított forrást nevezi."""
-
     @unittest.skip(S3_MARADEK)
     def test_hn12_angol_thayer_nyersen(self):
         """HN-12: nyers angol Thayer-szöveg nem kerül a lapra."""

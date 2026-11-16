@@ -1229,3 +1229,32 @@ Az orkesztrátor besorolása (2026-11-16): E1, E3, E5, E6, E7, E8, E9 mechanikus
 |---|---|---|---|---|---|
 | 10. session indul (opus, high) | 2026-11-16 10:48 | 41% | 15% | 82% | `get_usage`; a kontextus 29% (1M) |
 | S5 kész (a regresszió RENDBEN) | 2026-11-16 11:35 | 42% | 15% | 9% | 1 százalékpont heti (az 5 órás közben nullázódott); a kontextus 52% |
+
+## Független ellenőrzés — 8. ellenőrzés (célzott: S5 és az N200)
+
+*A `fuggetlen-ellenor` subagent (`claude-fable-5-2`) jelentése, a hívó session (`claude-opus-5-5`, a 10. session) mentésében, rövidítve; az ELTÉRÉS-tételek lényege szó szerint. Hatókör: `68d9ee90..4f6974e8`; szint: `teljes`.*
+
+**Eredmény: ELTÉRÉS, 9 tétel.** OK: modell; CI a head-en (43863082548, `success`, a hash-őr lépése zöld); a régi generátor HAMART-kimenete változatlan (CI F217: „HAMART-001: nem változott”, E28 zöld); a modell számai; GK-A1, HN-10, HN-02; GK-08a/c, GK-01, GK-05; festékpróba; a tesztek (a `teszt_visszhang_kapu.py` két bukása az N198, a `teszt_szintek.py` az N187); A1–A6; a táblák sorszáma. NEM ELLENŐRIZHETŐ: a valódi szakasz-diff (`regresszio.py` nincs a megengedett parancsai között), az ISTENTISZT számai (teszt nem rögzítette). Tartományon kívüli megfigyelés: a base-re futó main-oldali `ellenorzes` (43850277818) piros az E2–E37 lépésen („HAMART-001: 8 hivatkozás nem létező Károli-versre”).
+
+1. **E2:** a `jeloltek.tsv` javítása merge után a közzétett nyílt magot is átírja (6 fájl: `kizarasok.tsv`, `METHODS.md`, `MODSZER.md`, `KIADAS.txt`, `RELEASE.txt`, `ELLENORZO_OSSZEG.sha256`), és ezt sem a DT-F218s, sem a jelentés nem mondja ki.
+2. **E1:** a brief által belsőnek nevezett `indoklas` mező új mezőnéven (`indoklas_kh`), kézi szövegként kerül a látható lapra; a festékpróba ezt nem láthatja, a `dontes.py:7` docstringje ellentmond neki. Felhasználói megerősítés kell.
+3. **`ir`:** a `jeloltek.tsv` 34 cellája a mezőn kívül íródott, rögzített rendelkezés nélkül (DT-F218s 🟡).
+4. **E4:** a SEMA 2.68 az `ok_cella` típusra olyan kaput ígér (a kulcs létező címkére mutat), amelyet a kód nem tartalmaz.
+5. **E5:** a Minősítés küszöbei (`45, 55`; `0.67, 0.34`) és az erős/közepes/gyenge besorolás a megjelenítőben áll, nem a `konfig.py`-ban és a `szamitas/`-ban. **E6:** `@unittest.skip(S5) test_hn10_karoli_kh_forrasdeklaracio` megmaradt; az új tesztek nevében nincs azonosító. **E9:** a B43 szűrése a `karoli_kh_szuro` saját másolata, egyezés-teszt nélkül. **E8:** a B04 (és B65, B66, B68, az új B51) hash-sora nem külön commitban frissült. **E7:** a forrás-mező könyvneve ellenőrizetlenül jut a lapra (`Zef 3:9`; bevallott, N195, N-F218q).
+
+## A 8. ellenőrzés javítóköre (`claude-opus-5-5`, 2026-11-16, a 10. session)
+
+A besorolás az orkesztrátoré; a session a gépies tételeket javította, a döntést kívánókat a DT-F218s-be írta.
+
+| # | Hely | Javítás | Ellenőrzés |
+|---|---|---|---|
+| E1, E2, `ir` | `dontesek/uj/f218a-s5-1402d5.md` (DT-F218s); `bemenet/dontes.py` docstring | a DT-F218s kimondja mindkét következményt: az `indoklas` átminősítését a kereszthivatkozásos sorokon és a nyílt mag hat fájljának változását; a docstring a kivételt nevezi. **Döntés nem született: 🟡, a felhasználóé** | – |
+| E4 | `bemenet/nyelv.py` `ok_cellaalakok` | a kulcsnak a B56 létező címkéjére kell mutatnia (az „(összesítő sor)” jelölő nélkül), különben BemenetHiba | `teszt_kereszthiv.py` `OkCella` (három eset, köztük az árva sor) |
+| E5 | `konfig.py` (`MINOSITES_EROS`, `MINOSITES_KOZEPES`, `MINOSITES_FELE`); `ertekek.py` `MegerositesFok`; `szamitas/kereszthiv.py` (`Minosites.szazalek`, `.fele`, `.fok`; `KhSzakasz.szazalek`); `megjelenites/md/kereszthiv.py` | a küszöbök a konfigban, a százalék és a fokozat a modellben; a megjelenítő csak kulcsot választ | HAMART-lap bájtra azonos a javítás előttivel; `test_az_istentiszt_szamai` (fokozat: közepes) |
+| E6 | `teszt_vaz.py`; `teszt_kereszthiv.py` | a HN-10 váza törölve; a tesztnevek: `test_gk_a1_…`, `test_hn10_…` | `teszt_vaz.py` zöld |
+| E9 | `teszt_kereszthiv.py` `KarolKhSzuro` | egyezés-teszt a régi `karoli_kh_szuro.szures`-sel a két mintalap minden versén (a megerősített utalások sorrendje és a nem megerősítettek száma) | zöld |
+| E8 | – | utólag nem bontható; tényként rögzítve. A javítókör hash-frissítése (B51, a döntésfájl bővülése) a javítókör commitjában áll | – |
+| E7 | – | bevallott, halasztva (N195, N-F218q) | – |
+| (az ellenőr megjegyzése) | `teszt_kereszthiv.py` | az ISTENTISZT számai rögzítve (20/8/19; 9/7/61) | zöld |
+
+**Mérés a javítókör után** (`scope=HAMART-001 és ISTENTISZT-001, munka mód | forras=regresszio.py; festek.py; tesztek/futtat.py | ts=2026-11-16`): HAMART-regresszió RENDBEN (engedély nélküli diff-sor 0; S5: 4 engedélysor), a HAMART-lap bájtra azonos a javítókör előttivel; festékpróba 0 mindkét lapon.

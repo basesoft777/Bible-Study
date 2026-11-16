@@ -124,3 +124,10 @@ class AjanlasFajta(enum.Enum):
     TSK_ALACSONY = 'tsk_alacsony'
     TSK_KAROLI = 'tsk_karoli'
     KAROLI = 'karoli'
+
+
+class MegerositesFok(enum.Enum):
+    """A Minősítés fokozata: a motívum helyeinek mekkora részét köti össze a két gyűjtemény (S5)."""
+    EROS = 'eros'
+    KOZEPES = 'kozepes'
+    GYENGE = 'gyenge'

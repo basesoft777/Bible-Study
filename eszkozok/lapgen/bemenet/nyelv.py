@@ -6,6 +6,7 @@ A sablontábla a lap minden gépi mondatát adja; a megjelenítő más forrásb�
 import enum
 import re
 
+from lapgen.bemenet.dontes import _OSSZESITO_JELOLO_RX
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.szoveg import Kulcs, Nev, SablonSor, sablon
 
@@ -118,10 +119,18 @@ def cimke_cellaalakok(b):
 
 def ok_cellaalakok(b):
     """Az elutasítási okok címkéjének cellakezdő alakja (B65, `ok_cella` típus) kézi szövegként: {címke: Kezi}. Az
-    alak adat (DT869: a cella értéke az adatban a végleges alak); a címkétől csak a kezdő névelőben és a
-    kezdőbetűben térhet el, különben BemenetHiba."""
+    alak adat (DT869: a cella értéke az adatban a végleges alak); a kulcsnak az elutasítási okok táblájának (B56)
+    létező címkéjére kell mutatnia, és az alak a címkétől csak a kezdő névelőben és a kezdőbetűben térhet el;
+    különben BemenetHiba."""
     ki = {}
-    for cimke, alak in b65_nevtabla(b).nyers_nevek(OK_CELLA_TIPUS).items():
+    sorok = b65_nevtabla(b).nyers_nevek(OK_CELLA_TIPUS)
+    if not sorok:
+        return ki
+    letezo = {_OSSZESITO_JELOLO_RX.sub('', r['cimke']) for r in b._tabla('B56', oszlopok=('cimke',)).szotarak()}
+    for cimke, alak in sorok.items():
+        if cimke not in letezo:
+            raise BemenetHiba('B65: a(z) %r `%s` sor kulcsa nem az elutasítási okok táblájának címkéje (B56)'
+                              % (cimke, OK_CELLA_TIPUS))
         kisbetus = alak[:1].lower() + alak[1:]
         if not alak[:1].isupper() or kisbetus not in (cimke, re.sub(r'^(?:a|az)\s+', '', cimke)):
             raise BemenetHiba('B65: a(z) %r ok cellakezdő alakja (%r) a címkétől csak a kezdő névelőben és a '
