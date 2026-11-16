@@ -2573,6 +2573,37 @@ B67); a régi generátor kódbeli kivétele (`TEMATIKUS_SAJAT_SZO`) az átállá
 értéke, nem (a generátor betöltéskor megáll). Üres tábla és hiányzó sor nem hiba: a tematikus sor ilyenkor a
 Károli-szót mutatja, saját szó nélkül.
 
+### 2.70 `generalt_nezetek.tsv` — a generált nézetek jegyzéke (F217, FELADATOK #217, 2026-11-15)
+
+A generált nézeteket (a lexikonlap és melléklete, a napló-, index- és nyitott-blokk, a nyílt mag) az ágak nem
+commitolják: a main-re érkező minden push után a `feladatok.yml` e jegyzék szerint generálja újra őket
+(`eszkozok/generalt_nezetek.py --ir`), egy gépi commitban; a PR-ban a CI ugyanígy, ideiglenesen generál a munkapéldányán,
+és a lemezt olvasó kapuk a friss nézeten futnak. Egy sor egy nézet (G-sor). A bemenetek a lapgenerátor bemeneti jegyzékének
+(2.66) B-azonosítói: a B-sorok gazdája az, a jegyzék csak hivatkozik rájuk. A lapgenerátort minden fogyasztó a
+`generalt_nezetek.lexikon_general()`-en át hívja, amely a G01-sor `parancs` mezőjét futtatja: a generátor cseréjekor csak
+ez a mező változik. A terv és a döntések: `naplok/F217_terv.md` (3. és 5. pont).
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a nézet azonosítója (`G<nn>`); kulcs, nem újrahasznosítható |
+| `utvonal` | repó-relatív út; az `<ID>` a motívum azonosítója; marker-blokk: `fájl#blokk`; könyvtár: `/` a végén; több fájl ` ; `-vel |
+| `leiras` | milyen nézet, és ha kimarad, miért |
+| `parancs` | a teljes parancssor; helyőrzők: `{id}` (a lap motívum-ID-je), `{gyoker}` (a kimeneti gyökér: a main-en ideiglenes könyvtár, utána másolás). `=G<nn>`: a megnevezett sor hívása állítja elő |
+| `bemenetek` | B-azonosítók (2.66) és G-azonosítók `;`-vel; `B*` = minden aktív B-sor; `B<nn>..B<nn>` tartomány; `!B<nn>` kizárás; nincs: `-` |
+| `utana` | G-azonosítók, amelyek előtte futnak (`;`), vagy `-` |
+| `orzes` | `szabad` / `befagyasztas` (a `lap_befagyasztas.tsv` lapja kimarad) / `kiadas` (a kiadott lap tartalma csak új `kiadasok.tsv`- vagy `lap_javitasok.tsv`-sorral, vagy csak DT-szám és döntésdátum változásával módosulhat); több `;`-vel |
+| `determinizmus` | `det` / `det:PARDES_DATUM` (a dátum a lap `ts=`-éből; tartalomváltozáskor a HEAD commit dátuma) / `nemdet` |
+| `kapuk` | a nézetet olvasó kapuk `;`-vel (`E18`, `E28`, `E29`, `E35`, `E38`, `E39`, `olvasoi_kapu`), vagy `-` |
+| `gazda` | `action` (a main-en az Action írja, az ág nem commitolja; a lap a születésekor kivétel) / `ag` (az ág commitolja) |
+| `futtato` | `jegyzek` (a `generalt_nezetek.py` futtatja) / `workflow` (a `feladatok.yml` saját lépése) / `kezi` |
+| `allapot` | `aktiv` / `kimarad` (az ok a `leiras`-ban) |
+| `forras` | `PROVENIENCIA` (1.5): honnan jön a sor |
+
+**Kulcs:** `id`. A fejléc előtt `#` kezdetű megjegyzéssor állhat; üres mező helyett `-`. A G01 ID-halmaza: van
+`motivumok/<ID>.md` és commitolt lap, és a lap nincs befagyasztva (az új cikk lapját az ág egyszer, a születésekor
+commitolja). Gépi kapu: E42 (3.11); a korábbi E28-lista (`eszkozok/ellenorzes/e28_migralt_nezetek.tsv`) kivezetve, adatsor
+nem állhat benne.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
@@ -2896,20 +2927,21 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E25 | FIGYELMEZTETES; HIBA a hibás `adat/dontes_hatas.tsv`-soron (nem létező `dontes_forras`-fájl vagy -azonosító, `erintett_fajl`, hibás regex vagy dátum: E25 (c)) | döntés átvezetése (`adat/dontes_hatas.tsv`) | `eszkozok/ellenorzes/szabalyok.py` |
 | E26 | HIBA | végleges DT/N szám az ágon | `eszkozok/ellenorzes/szabalyok.py` |
 | E27 | HIBA | a PR által törölt vagy átnevezett fájl hivatkozásként megmaradt-e | `eszkozok/ellenorzes/szabalyok.py` |
-| E28 | HIBA | a generált nézet bájtra egyezik az adat- és forrásrétegből újragenerálttal | `eszkozok/ellenorzes/szabalyok.py` |
+| E28 | HIBA | a generált nézet egyezik az adat- és forrásrétegből újragenerálttal (F217: a PR-ban és a main nem gépi commitjában az eltérés JELENTES, a gépi commit futásában HIBA; a generálás hibája, a helyben-út eltérése és a kiadott lap új kiadás nélküli változása mindig HIBA) | `eszkozok/ellenorzes/szabalyok.py` |
 | E29 | HIBA | a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO` | `eszkozok/ellenorzes/szabalyok.py` |
 | E30 | FIGYELMEZTETES | ékezet nélkül írt magyar szó a PR commit-üzeneteiben | `eszkozok/ellenorzes/szabalyok.py` |
 | E31 | HIBA | a `forras_tanulmany` létező, repóbeli fájlra mutat | `eszkozok/ellenorzes/szabalyok.py` |
 | E32 | HIBA | kiosztott helyőrző egy kimeneti string-literálban | `eszkozok/ellenorzes/szabalyok.py` |
 | E33 | FIGYELMEZTETES | az új vagy módosított tanulmányfájl bekerül a tanulmány-regiszterbe | `eszkozok/ellenorzes/szabalyok.py` |
 | E34 | FIGYELMEZTETES; HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van) | a `kapcsolodas` idézőjeles részlete a Károli-vers szövege, vagy „saját fordítás” jelölésű | `eszkozok/ellenorzes/szabalyok.py` |
-| E35 | HIBA | a commitolt `nyilt_mag/` naprakész | `eszkozok/ellenorzes/szabalyok.py` |
+| E35 | HIBA | a commitolt `nyilt_mag/` naprakész (F217: a PR-ban JELENTES, a gépi commit futásában HIBA) | `eszkozok/ellenorzes/szabalyok.py` |
 | E36 | HIBA | hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, a SEMA szakaszszámai egyediek | `eszkozok/ellenorzes/szabalyok.py` |
 | E37 | HIBA | az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal | `eszkozok/ellenorzes/szabalyok.py` |
 | E38 | HIBA | állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott lapon (`--minden --szigoru`) | `eszkozok/ellenorzes/allitas_adat.py` |
 | E39 | HIBA | követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés jelentés (`--szigoru`, a kapuemelési döntés) | `eszkozok/ellenorzes/kovetelmeny_kapu.py` |
 | E40 | HIBA | a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a `karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés) | `eszkozok/ellenorzes/szabalyok.py` |
 | E41 | HIBA | próza-állítás kapu: a kézi forrás versre hivatkozó állításainak gépi ítélete (ELTÉR-sor) HIBA az új formájú forrásokon; a régi formájú forrás kimarad, és ezt a kimenet kimondja (`--kapu`) | `eszkozok/proza_allitas.py` |
+| E42 | HIBA | a generált nézetek jegyzéke (`adat/generalt_nezetek.tsv`): oszlopok és értékek, a G- és B-hivatkozások épsége, az `utana` körmentessége, futtatható parancs; a kivezetett E28-listában nincs adatsor | `eszkozok/ellenorzes/szabalyok.py` |
 <!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->
 
 ---

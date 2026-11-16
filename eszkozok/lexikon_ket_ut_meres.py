@@ -13,7 +13,7 @@ jelölőjének ts= dátuma (mint az E28-ban). A repóba nem ír; minden kimenet
 ideiglenes könyvtárba megy.
 
 A CI-kapu az E28 (eszkozok/ellenorzes/szabalyok.py, `_e28_helyben_ag`): az csak
-az e28_migralt_nezetek.tsv lapjain fut; ez a szkript mind a 9 lapot méri.
+a generált nézetek jegyzékének lapjain fut (adat/generalt_nezetek.tsv G01, F217); ez a szkript mind a 9 lapot méri.
 
 Futtatás: python eszkozok/lexikon_ket_ut_meres.py [ID ...]   (ID nélkül: mind)
 Lapként négy generálás, kb. 6 perc.
