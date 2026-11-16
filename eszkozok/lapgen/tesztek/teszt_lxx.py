@@ -142,6 +142,11 @@ class Kuszobok(unittest.TestCase):
         self.assertFalse(LX.szo_kovetkeztetes(_sz(egyezo=n - 1), True))                          # kevés vers
         self.assertFalse(LX.szo_kovetkeztetes(_sz(egyezo=int(a) - 1, eltero=n - int(a) + 1), True))
 
+    def test_a_fokozatok_kulonboznek(self):
+        """A célzott újraellenőrzés U1 tétele: az enum tagjai nem egyenlők egymással (nincs dataclass-dekorátor)."""
+        self.assertNotEqual(LX.HidFok.EROS, LX.HidFok.GYENGE)
+        self.assertEqual(len({LX.HidFok.EROS, LX.HidFok.RESZLEGES, LX.HidFok.GYENGE}), 3)
+
     def test_a_hamart_lap_foka(self):
         self.assertIs(modell('HAMART-001').fok, LX.HidFok.EROS)   # 13/14 a párral bíró versekben
 

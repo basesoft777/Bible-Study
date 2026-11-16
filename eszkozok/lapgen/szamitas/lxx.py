@@ -109,7 +109,6 @@ class SzoSzamlalo:
     szamlalo: Szamlalo
 
 
-@dataclasses.dataclass(frozen=True)
 class HidFok(enum.Enum):
     """A híd erőssége: a szócsaládos egyezés aránya a párral bíró versekben (`konfig.LXX_HID_*`)."""
     EROS = 'eros'

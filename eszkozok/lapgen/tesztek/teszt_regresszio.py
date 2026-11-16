@@ -165,3 +165,26 @@ class Regresszio(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
+
+
+class HashOrKapu(unittest.TestCase):
+    """A mérce hash-őre a push előtti kapuban és a CI-ben (a 6. ellenőrzés E1 tétele; az újraellenőrzés U3 tétele):
+    csak a lapgenerátort vagy a mércéjét érintő változásra fut."""
+
+    def test_erintett_utvonalak(self):
+        from lapgen import hash_or_kapu as H
+        self.assertEqual(H.erintett(['adat/motivumok.tsv', 'DONTESEK.md', 'eszkozok/lexikon_general.py']), [])
+        self.assertEqual(H.erintett(['eszkozok\\lapgen\\fo.py','adat/lapgen_sablonok.tsv',
+                                     'naplok/F218_referencia.tsv', 'naplok/F218_jelentes.md']),
+                         ['eszkozok/lapgen/fo.py', 'adat/lapgen_sablonok.tsv', 'naplok/F218_referencia.tsv'])
+
+    def test_nem_erinto_lista_nem_fut(self):
+        from lapgen import hash_or_kapu as H
+        d = tempfile.mkdtemp()
+        try:
+            lista = os.path.join(d, 'lista.txt')
+            with open(lista, 'w', encoding='utf-8') as f:
+                f.write('adat/motivumok.tsv\n')
+            self.assertEqual(H.main(['--valtozott-lista', lista]), 0)
+        finally:
+            shutil.rmtree(d)
