@@ -8,17 +8,17 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 
 **Kérjük, a másik ellenőrrel ne egyeztess, és ne nézd meg az ő válaszait.** Csak így mérhető, mennyire egyezik két független ítélet. Kérdésnél a szervezőt kérdezd, ne a másik ellenőrt.
 
-## 1. A legfontosabb: nem a fordítást ítéled meg, hanem a párosítást
+## 1. A legfontosabb: a gép párját ítéled meg, nem Károli szövegét
 
-**Mi a feladatod?** Minden tételben egy magyar szót látsz Károli szövegéből, és egy héber vagy görög szót, amelyhez a gép hozzárendelte. Egyetlen kérdésre kell felelned: **Károli szövegében ez a magyar szó tényleg ezt az eredeti szót fordítja?**
+**Mi a feladatod?** Minden tételben egy magyar szót látsz Károli szövegéből, és egy héber vagy görög szót, amelyhez a gép hozzárendelte; mindkettő kiemelt. Képzeld el, hogy Károli mondatában rá kell mutatnod a kiemelt eredeti szó párjára. Egyetlen kérdésre kell felelned: **Ha meg kellene mutatnod Károli mondatában a kiemelt héber/görög szó párját, erre a kiemelt magyar szóra mutatnál?** Ha igen, a gép párja jó; ha nem, rossz. Te tehát nem keresel és nem jelölsz ki semmit, csak megmondod, jó-e a gép párja: **Igen**, **Nem** vagy **Bizonytalan**.
 
 **Mi NEM a feladatod?** Nem kell eldöntened, jól fordított-e Károli. Nem kell azt nézned, te hogyan fordítanád, és azt sem, hogy van-e pontosabb magyar szó. Ezek fontos kérdések, de itt nem ezt mérjük. Bibliaolvasóként és teológusként természetes, hogy az ember ezt is figyeli; erre van egy külön jelölő (lásd lent).
 
 **Hogyan gondolkodj? Három lépés:**
 
 1. Nézd meg a kiemelt eredeti szót a kártyán: mit jelent (angol glossza, Strong-szám, alaktan)?
-2. Keresd meg a magyar versben, melyik szó vagy szavak mondják ki ezt a jelentést, akkor is, ha Károli szabadon vagy más szóval fordít.
-3. Hasonlítsd össze azzal a magyar szóval, amelyet a gép hozzárendelt. Ha ugyanaz, a pár **helyes**. Ha a jelentést valójában egy másik magyar szó hordozza, a pár **hibás**.
+2. Gondold végig, melyik magyar szóra vagy szavakra mutatnál, ha rá kellene mutatnod a párjára, akkor is, ha Károli szabadon vagy más szóval adja vissza.
+3. Nézd meg, a gép által kiemelt magyar szó köztük van-e. Ha igen: **Igen** (a pár helyes). Ha a jelentést valójában egy másik magyar szó hordozza: **Nem** (a pár hibás), és add meg a hiba típusát.
 
 **Mikor helyes a pár, akkor is, ha a fordítás nem szó szerinti?**
 
@@ -27,16 +27,16 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 - *Több szóval fordít egy szót.* Józs 8:31 „a mint **meg van írva**”: az eredetiben כָּתוּב (kātûb, H3789, „megírt”). Mindhárom magyar szó párja helyes.
 - *Más szófajjal fordít.* 1Móz 41:40 „Te légy az én házamon **főgondviselő**”: az eredetiben עַל (ʿal, H5921, „fölött”), elöljárószó. Károli főnévvel adja vissza, a jelentés ugyanaz: a *főgondviselő* ↔ עַל pár helyes. Ugyanebben a versben a „szavadra **hallgasson**” ↔ יִשַּׁק (H5401, szó szerint „csókol”) is helyes pár.
 
-**Mikor hibás a pár, akármilyen jó a fordítás?**
+**Mikor „Nem” a válasz, akármilyen jó a fordítás?**
 
 - A magyar szó valójában a vers egy másik eredeti szavát fordítja. Példa (a gépi ellenőrzés is hibásnak ítélte): Péld 3:18 „**Életnek** fája ez”. Az *Életnek* ↔ עֵץ (ʿēṣ, H6086, „fa”) pár hibás, mert az *Életnek* a חַיִּים (ḥayyîm, H2416, „élet”), a *fája* pedig a עֵץ fordítása; a gép felcserélte őket.
 - Egy többszavas kifejezésnek csak az egyik tagja van bekötve, és a magyar szó olyan taghoz került, amelyhez nem tartozik.
 - A pár olyan eredeti szóra mutat, amelynek semmi köze a magyar szóhoz.
 
-**Pár nélküli szavak.** Itt azt kérdezzük: Károli olyan szót tett-e a szövegbe, amelynek nincs megfelelője az eredetiben?
+**Pár nélküli szavak.** Itt a kiemelt magyar szónak a gép nem talált párt. A kérdés: **Van-e a héber/görög mondatban olyan szó, amelyre ennél a magyar szónál rá tudnál mutatni?**
 
-- **Igen**, ha Károli magyarázó vagy a magyar mondathoz szükséges szót tett hozzá. Példa: 2Sám 14:10 „hozd **ide** előmbe” ↔ וַהֲבֵאתוֹ אֵלַי („hozd őt hozzám”). Az *ide* Károli hozzátétele, nincs eredetije.
-- **Nem, van megfelelője**, ha a szónak mégis van eredetije, csak a párosítás kihagyta. Példa: 2Krón 30:19 „ha **nem** a szentségnek tisztasága szerint is”. A *nem* pár nélkül maradt, pedig az eredetiben ott áll a לֹא (lōʾ, H3808, „nem”). Ilyenkor a válasz „Nem, van megfelelője (hibás)”; ha tudod, koppints a לֹא kártyájára.
+- **Nincs ilyen szó** (a gép helyesen hagyta pár nélkül), ha Károli magyarázó vagy a magyar mondathoz szükséges szót tett hozzá. Példa: 2Sám 14:10 „hozd **ide** előmbe” ↔ וַהֲבֵאתוֹ אֵלַי („hozd őt hozzám”). Az *ide* Károli hozzátétele, nincs eredetije.
+- **Van ilyen szó** (a gép kihagyta), ha a szónak mégis van eredetije. Példa: 2Krón 30:19 „ha **nem** a szentségnek tisztasága szerint is”. A *nem* pár nélkül maradt, pedig az eredetiben ott áll a לֹא (lōʾ, H3808, „nem”); erre rá tudnál mutatni. Ha tudod, koppints a לֹא kártyájára.
 
 **Mikor jelöld bizonytalannak?** Ha a fenti három lépés után sem tudod eldönteni. Például ha a vers szerkezete annyira eltér, hogy nem látszik, melyik magyar szó melyik eredetinek felel meg. A „bizonytalan” teljesen rendben van, ne találgass.
 
@@ -44,14 +44,14 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 
 ## Mikor helyes, hibás, bizonytalan?
 
-- **Helyes** – a magyar szó (legalább részben) ennek az eredeti szónak a fordítása, az alábbi szabályok szerint. Pár nélküli szónál („Igen”): Károli valóban olyan szót tett a szövegbe, amelynek nincs megfelelője az eredetiben.
-- **Hibás** – válaszd ki a hiba típusát is:
+- **Igen (helyes)** – a párjára mutatva (legalább részben) erre a magyar szóra mutatnál, az alábbi szabályok szerint. Pár nélküli szónál ennek a „Nincs ilyen szó” felel meg: a héber/görög mondatban nincs olyan szó, amelyre rá tudnál mutatni.
+- **Nem (hibás)** – válaszd ki a hiba típusát is:
   - *rossz forrásszó*: a magyar szónak a vers egy másik eredeti szava felel meg (ha tudod, koppints rá);
   - *hiányzó pár*: ez a pár jó, de a magyar szóhoz még egy eredeti szó is tartozik, és az a párjai között nem szerepel;
   - *hiányos kifejezés*: a pár egy többszavas kifejezés része, de a kifejezés egy másik tagja nincs bekötve (lásd „Több szó – egy jelentés”);
   - *fölösleges pár*: a magyar szónak nincs eredeti megfelelője, mégis kapott párt;
   - *egyéb*: írd le a megjegyzésben.
-  - Pár nélküli szónál a „Nem, van megfelelője (hibás)” azt jelenti, hogy a szónak van eredetije, a párosítás tehát kihagyta. Ha tudod, koppints az eredeti szóra.
+  - Pár nélküli szónál ennek a „Van ilyen szó” felel meg: van eredetije, a párosítás tehát kihagyta. Ha tudod, koppints az eredeti szóra.
 - **Bizonytalan** – ha a szabályok szerint sem dönthető el, vagy szövegváltozat, illetve Károli szabad fordítása miatt nem látszik a megfelelés. Írj egy mondatot az okáról. Ne ezt válaszd, ha csak lassabb volna eldönteni.
 
 ## Konvenciók: mit nem párosítunk, és miért
@@ -97,7 +97,7 @@ Ezek szerint készült a párosítás. A tetszés szerinti fordítói ítélet h
 | Mt 4:10 *Eredj **el** Sátán* | el | ὕπαγε (G5217) | **helyes**: a különírt igekötő az igéhez tartozik (2.) |
 | Mt 4:10 *mert **meg van írva*** | meg, van, írva | mindhárom: γέγραπται (G1125) | **helyes**: többszavas magyar szerkezet egy eredeti igealakra (3.) |
 | 1Móz 1:2 *és setétség **vala** a mélység színén* | vala | nincs | **helyes**: konvenció, névmondat, nincs eredeti ige (3.). Ugyanebben a versben a *puszta vala* ← הָיְתָה (H1961) szintén helyes pár, mert ott van eredeti ige |
-| 2Sám 14:10 *hozd **ide** előmbe* | ide | nincs | **igen (helyes)**: Károli hozzátétele, az eredetiben nincs megfelelője |
+| 2Sám 14:10 *hozd **ide** előmbe* | ide | nincs | **nincs ilyen szó (helyes)**: Károli hozzátétele, az eredetiben nincs megfelelője |
 | 1Móz 4:4 *az **ő** juhainak* | ő | וֹ (H9023, „his”) | **helyes**: a külön kitett névmás és a *juhainak* is a ragot kapja (4.) |
 | Péld 3:18 ***Életnek** fája ez* | Életnek | עֵץ (H6086, „tree”) | **hibás, rossz forrásszó**: az *Életnek* a חַיִּים (H2416, „life”) fordítása, a *fája* pedig a עֵץ-é; a gép felcserélte őket |
 
