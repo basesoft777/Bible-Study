@@ -132,6 +132,16 @@ def _lanc_szavak(f, motivum):
     return tuple(ki)
 
 
+def lanc_szavak(f, motivum):
+    """A lánc szavai a láncversekkel ([(Strong, láncversek)]); a 9. szakasz ókori fordítás-táblája is ebből számol."""
+    return _lanc_szavak(f, motivum)
+
+
+def lanc_szo(f, strong, versek):
+    """A lánc-szó címe: a szó a láncversek szerinti változatban és a láncbeli jelentése ((Szo, jelentés))."""
+    return _szo(f, strong, versek), _lanc_jelentes(f, gerinc_be.gerinc(f.b), strong, versek)
+
+
 def _lanc_jelentes(f, gerinc, strong, versek):
     """A lánc-szó jelentése a láncban (a régi `lanc_szo_jelentes`): a rövid magyar jelentés; ha a láncversekben a
     BDB egyetlen, nem Qal törzset ad, a régi kód a TAHOT glosszájából vett igét: ez az ág még nincs kész."""

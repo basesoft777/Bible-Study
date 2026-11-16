@@ -122,6 +122,22 @@ ROKON_ROMLOTT = 'romlott'
 # glosszájából vette; ez az ág még nincs kész (kimondott hiba), a többi esetben a rövid jelentés áll
 NEM_QAL_TORZSEK = ("Pi'el", "Niph'al", "Hiph'il", "Hithpa'el", "Pu'al", "Hoph'al")
 
+# 9. Hatástörténet (S7; a régi `blokk_visszhang`, `blokk_hatas_usz`, `blokk_hatas_tanuk`): a forrás-kulcsok a
+# visszhang-táblában; a LXX-alapvonal sávjai (DT-F178d: a láncon kívüli versek legalább 80%-ában ugyanaz a szócsalád:
+# szokásos fordítás; 40% alatt a láncban választott szó, kiemelt); a láncbeli jelentés szűrője (a TAHOT angol
+# tükörfordításának szótövei: négy betű, a töltelékszavak nélkül); a latin szócsalád (a lemma első öt betűje); a görög
+# alak augmentum előtti igekötői; a tanúk hagyományai a lap rendjében és a tanúk helyének PaRDeS-szintje.
+FORRAS_TARGUM, FORRAS_VULGATA, FORRAS_LXX = VISSZHANG_FORDITASOK
+ALAPVONAL_SZOKASOS = 0.80
+ALAPVONAL_RITKA = 0.40
+GLOSSZA_TO_HOSSZ = 4
+GLOSSZA_STOP = frozenset(('they', 'were', 'will', 'shall', 'have', 'that', 'with', 'from', 'your', 'them', 'their',
+                          'this', 'there', 'which', 'been', 'what', 'when', 'also', 'into', 'upon', 'unto'))
+LATIN_CSALAD_HOSSZ = 5
+GOROG_AUGMENTUM_ELOTAGOK = ('', 'δι', 'κατ', 'επ', 'απ', 'εξ', 'συν', 'προ')
+TANU_HAGYOMANYOK = ('gorog', 'latin', 'szir', 'rabbinikus')
+TANU_SZINTEK = ('Remez', 'Sod')
+
 # Az arány fokozatai a következtetés mondatához: (alsó határ, fokozat), csökkenő rendben
 FOKOK = ((0.90, 'szinte'), (0.67, 'tobbseg'), (0.50, 'fele'), (0.0, 'keves'))
 VERSENKENTI_KIS = 2     # ha minden szó legfeljebb ennyi helyen áll, a versenkénti pont nem von le következtetést

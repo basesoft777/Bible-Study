@@ -163,3 +163,20 @@ class MotivumKapcsolatTipus(enum.Enum):
     """A motívumközi kapcsolat típusa (B46 `tipus`, SEMA 2.33; S6)."""
     SZOMSZEDOS = 'szomszédos'
     KOZOS_IGEHELY = 'közös_igehely'
+
+
+class ForrasAllapot(enum.Enum):
+    """Egy forrás állapota a bemeneti jegyzékben (B68 `allapot`; T7, GK-28): ebből és az adat tényleges állapotából jön
+    a forrás-állapot mondata."""
+    AKTIV = 'aktiv'
+    KIVEZETVE = 'kivezetve'
+    NEM_VIZSGALT = 'nem_vizsgalt'
+    RESZLEGES = 'reszleges'
+
+
+class TanuForras(enum.Enum):
+    """A tanú forrása (B39 `forras`, SEMA 2.57; S7)."""
+    HCF = 'hcf'                        # HistoricalChristianFaith kommentár-adatbázis
+    SEFARIA = 'sefaria'                # Sefaria (rabbinikus források)
+    GLOSSA = 'glossa'                  # Glossa Ordinaria (a Vulgata Clementina csomagjában)
+    CHAIN_LINEAGE = 'chain_lineage'    # Chain Lineage Browser (verslánc, tényadat)
