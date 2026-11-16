@@ -3642,6 +3642,8 @@ SZABALY_LEIRAS['E40'] = ('a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-m
 
 def e42_generalt_jegyzek(fajlok=None):
     G = _generalt_nezetek_modul()
+    if not os.path.exists(os.path.join(ROOT, 'eszkozok', 'generalt_nezetek.py')):
+        return []   # nem ennek a repónak a szerkezete (pl. a szabály-tesztek ideiglenes gyökere); végrehajtóval jegyzék nélkül HIBA
     return [Talalat('E42', SZINT['E42'], G.JEGYZEK, 0, h) for h in G.jegyzek_ellenoriz(ROOT)]
 
 
