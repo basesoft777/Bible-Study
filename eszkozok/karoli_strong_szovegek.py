@@ -776,9 +776,9 @@ protestáns bibliaolvasás alapszövege. A Strong-számok (Strong, 1890) egy for
 kötik. Strong-számos Károli-kiadás létezik; az itt közölt párosítás nyílt licencű, szavanként dokumentált, és a
 pontossága mért.
 
-Az adatkészlet versenként három kérdésre felel: melyik magyar szó melyik eredeti szót fordítja; mely magyar szó a
-fordító betoldása; mely eredeti szónak nincs külön magyar megfelelője. A `szavak` táblák minden szót egyszer sorolnak
-fel, így a fordítás „hiányai” is kiolvashatók.
+Az adatkészlet versenként rögzíti, melyik magyar szó melyik eredeti szót adja vissza, mely magyar szó betoldás, és mely
+eredeti szó marad fordítatlan. A kapcsolat lehet egy–több és több–egy: az *Azután* a *ʾaḥărê kēn* kettőst fedi
+(Józs 8:34), a *meg van írva* egyetlen *kātûb* alakot ad vissza (1Kir 2:3).
 
 ## 2. Módszer
 
@@ -820,8 +820,9 @@ szavakat, ugyanazokkal a szabályokkal, a gépi pár ismerete nélkül. Egy kor�
 {kal_ell}%-ban, a gépi párosítás {kal_gep}%-ban egyezett a mintával: az ellenőr nem pontosabb a párosításnál, ezért az
 egyezés csak akkor alsó becslés, ha a közös hiba elhanyagolható.
 
-**Független összevetés.** A közös hibát egy Strong-számokkal jelölt Károli-kiadás méri; a forrás csak a fő szót
-jelöli, a mellékszót és a morfémát nem. Az eltéréseket háromutasan (gépi pár, forrás, vak ellenőr) ítéltük meg. Csak az
+**Független összevetés.** A közös hibát egy Strong-számokkal jelölt Károli-kiadás méri; a forrás magyar szavanként
+egy fő Strong-számot jelöl, ezért csak az a pár számít, ugyanannak a szónak a további párjai (morféma, többszavas
+kapcsolat) nem hiba. Az eltéréseket háromutasan (gépi pár, forrás, vak ellenőr) ítéltük meg. Csak az
 összesített arány nyilvános, a külső forrás adata nem.
 
 **Emberi validáció.** Két független emberi ellenőr, végzett teológus, bibliai héber és görög ismerettel, egymástól
@@ -982,9 +983,9 @@ translation has been the base text of Hungarian Protestant Bible reading. Strong
 translation's words to the Hebrew and Greek vocabulary. Strong-tagged Károli editions exist; the alignment published
 here is openly licensed, documented word by word, and its accuracy is measured.
 
-For each verse the dataset answers three questions: which Hungarian word translates which source word; which Hungarian
-word is a translator's addition; which source word has no separate Hungarian rendering. The `szavak` tables list every
-word once, so the "gaps" of the translation can be read off too.
+For each verse it records which Hungarian word renders which source word, which Hungarian words are additions and
+which source words remain untranslated. Links may be one-to-many or many-to-one: *Azután* covers *ʾaḥărê kēn*
+(Joshua 8:34), and *meg van írva* renders *kātûb* (1 Kings 2:3).
 
 ## 2. Method
 
@@ -1025,8 +1026,9 @@ word itself, with the same rules, blind to the machine pair. On an earlier manua
 agreed with the sample in {kal_ell}% and the machine alignment in {kal_gep}%: the reviewer is not more accurate than
 the alignment, so its agreement is a lower bound only if shared errors are negligible.
 
-**Independent comparison.** Shared errors are measured against a Károli edition marked with Strong's numbers; the
-source marks the main word only, not secondary words or morphemes. Differences were judged three ways (machine pair,
+**Independent comparison.** Shared errors are measured against a Károli edition marked with Strong's numbers; it
+marks one main Strong's number per Hungarian word, so only that pair is scored, and further pairs of the same word
+(morphemes, multi-word links) are not counted as errors. Differences were judged three ways (machine pair,
 source, blind reviewer). Only the aggregate rate is published, not the external source's data.
 
 **Human validation.** Two independent human validators, theology graduates with knowledge of biblical Hebrew and Greek,
@@ -1067,8 +1069,8 @@ are listed in the dataset.
 **Contents.** `data/parok/` (per book, one row per link: positions, Hungarian form, Strong's number, link type, state,
 Textus Receptus flag); `data/szavak/` (per book, every word once, with its state: aligned, addition, untranslated,
 pending); `data/versek.tsv` (the 1908 Károli text);
-`data/meres.tsv` (every figure of the measurement). The key is the OSIS verse identifier and the word position. Hebrew
-and Greek word forms are not in the package: the position matches the STEPBible TAHOT/TAGNT text.
+`data/meres.tsv` (every figure of the measurement). The key is the OSIS verse identifier and the word position. Source
+word forms are not included; positions match the STEPBible text.
 
 **Size.** {konyv} books, {vers} verses, {par} pairs ({heber_par} Hebrew, {gorog_par} Greek; of these {morfema}
 morphemes), {hu_betoldas} additions, {er_forditatlan} untranslated source words, {hu_fuggoben} pending Hungarian words
@@ -1077,8 +1079,7 @@ morphemes), {hu_betoldas} additions, {er_forditatlan} untranslated source words,
 ## 4. Reuse Potential
 
 Bible software can offer Strong-based search on the Hungarian text: every Károli rendering of a source word is one
-filter away. In translation history, Károli's consistency and
-the distribution of additions and untranslated words can be studied. For language technology it is word-alignment data
+filter away. Translation historians can study Károli's consistency, additions and untranslated words. For language technology it is word-alignment data
 for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error measured per stratum; the sample pairs
 and error types can also serve to evaluate word aligners. The {lex_en}, a motif-indexed, cross-referenced biblical
 lexicon, is built on this alignment.

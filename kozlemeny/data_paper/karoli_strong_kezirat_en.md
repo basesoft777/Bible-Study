@@ -33,9 +33,9 @@ translation has been the base text of Hungarian Protestant Bible reading. Strong
 translation's words to the Hebrew and Greek vocabulary. Strong-tagged Károli editions exist; the alignment published
 here is openly licensed, documented word by word, and its accuracy is measured.
 
-For each verse the dataset answers three questions: which Hungarian word translates which source word; which Hungarian
-word is a translator's addition; which source word has no separate Hungarian rendering. The `szavak` tables list every
-word once, so the "gaps" of the translation can be read off too.
+For each verse it records which Hungarian word renders which source word, which Hungarian words are additions and
+which source words remain untranslated. Links may be one-to-many or many-to-one: *Azután* covers *ʾaḥărê kēn*
+(Joshua 8:34), and *meg van írva* renders *kātûb* (1 Kings 2:3).
 
 ## 2. Method
 
@@ -76,8 +76,9 @@ word itself, with the same rules, blind to the machine pair. On an earlier manua
 agreed with the sample in 96.79% and the machine alignment in 97.06%: the reviewer is not more accurate than
 the alignment, so its agreement is a lower bound only if shared errors are negligible.
 
-**Independent comparison.** Shared errors are measured against a Károli edition marked with Strong's numbers; the
-source marks the main word only, not secondary words or morphemes. Differences were judged three ways (machine pair,
+**Independent comparison.** Shared errors are measured against a Károli edition marked with Strong's numbers; it
+marks one main Strong's number per Hungarian word, so only that pair is scored, and further pairs of the same word
+(morphemes, multi-word links) are not counted as errors. Differences were judged three ways (machine pair,
 source, blind reviewer). Only the aggregate rate is published, not the external source's data.
 
 **Human validation.** Two independent human validators, theology graduates with knowledge of biblical Hebrew and Greek,
@@ -118,8 +119,8 @@ are listed in the dataset.
 **Contents.** `data/parok/` (per book, one row per link: positions, Hungarian form, Strong's number, link type, state,
 Textus Receptus flag); `data/szavak/` (per book, every word once, with its state: aligned, addition, untranslated,
 pending); `data/versek.tsv` (the 1908 Károli text);
-`data/meres.tsv` (every figure of the measurement). The key is the OSIS verse identifier and the word position. Hebrew
-and Greek word forms are not in the package: the position matches the STEPBible TAHOT/TAGNT text.
+`data/meres.tsv` (every figure of the measurement). The key is the OSIS verse identifier and the word position. Source
+word forms are not included; positions match the STEPBible text.
 
 **Size.** 66 books, 31,158 verses, 598,715 pairs (466,785 Hebrew, 131,930 Greek; of these 157,163
 morphemes), 109,914 additions, 63,017 untranslated source words, 794 pending Hungarian words
@@ -128,8 +129,7 @@ morphemes), 109,914 additions, 63,017 untranslated source words, 794 pending Hun
 ## 4. Reuse Potential
 
 Bible software can offer Strong-based search on the Hungarian text: every Károli rendering of a source word is one
-filter away. In translation history, Károli's consistency and
-the distribution of additions and untranslated words can be studied. For language technology it is word-alignment data
+filter away. Translation historians can study Károli's consistency, additions and untranslated words. For language technology it is word-alignment data
 for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error measured per stratum; the sample pairs
 and error types can also serve to evaluate word aligners. The Logosz Lexikon, a motif-indexed, cross-referenced biblical
 lexicon, is built on this alignment.
@@ -194,8 +194,8 @@ statement against the data, and takes full responsibility for the content; an AI
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-1,225; with the unnumbered statements 1,421; with the references as well 1,495 (the submission page says
-the limit includes references; it does not say whether the abstract counts); with the abstract too 1,600. The JOHD
+1,227; with the unnumbered statements 1,423; with the references as well 1,497 (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too 1,602. The JOHD
 data paper length is 1,000–1,500 words; the editorial office can confirm which count applies.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model

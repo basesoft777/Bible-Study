@@ -32,9 +32,9 @@ protestáns bibliaolvasás alapszövege. A Strong-számok (Strong, 1890) egy for
 kötik. Strong-számos Károli-kiadás létezik; az itt közölt párosítás nyílt licencű, szavanként dokumentált, és a
 pontossága mért.
 
-Az adatkészlet versenként három kérdésre felel: melyik magyar szó melyik eredeti szót fordítja; mely magyar szó a
-fordító betoldása; mely eredeti szónak nincs külön magyar megfelelője. A `szavak` táblák minden szót egyszer sorolnak
-fel, így a fordítás „hiányai” is kiolvashatók.
+Az adatkészlet versenként rögzíti, melyik magyar szó melyik eredeti szót adja vissza, mely magyar szó betoldás, és mely
+eredeti szó marad fordítatlan. A kapcsolat lehet egy–több és több–egy: az *Azután* a *ʾaḥărê kēn* kettőst fedi
+(Józs 8:34), a *meg van írva* egyetlen *kātûb* alakot ad vissza (1Kir 2:3).
 
 ## 2. Módszer
 
@@ -76,8 +76,9 @@ szavakat, ugyanazokkal a szabályokkal, a gépi pár ismerete nélkül. Egy kor�
 96,79%-ban, a gépi párosítás 97,06%-ban egyezett a mintával: az ellenőr nem pontosabb a párosításnál, ezért az
 egyezés csak akkor alsó becslés, ha a közös hiba elhanyagolható.
 
-**Független összevetés.** A közös hibát egy Strong-számokkal jelölt Károli-kiadás méri; a forrás csak a fő szót
-jelöli, a mellékszót és a morfémát nem. Az eltéréseket háromutasan (gépi pár, forrás, vak ellenőr) ítéltük meg. Csak az
+**Független összevetés.** A közös hibát egy Strong-számokkal jelölt Károli-kiadás méri; a forrás magyar szavanként
+egy fő Strong-számot jelöl, ezért csak az a pár számít, ugyanannak a szónak a további párjai (morféma, többszavas
+kapcsolat) nem hiba. Az eltéréseket háromutasan (gépi pár, forrás, vak ellenőr) ítéltük meg. Csak az
 összesített arány nyilvános, a külső forrás adata nem.
 
 **Emberi validáció.** Két független emberi ellenőr, végzett teológus, bibliai héber és görög ismerettel, egymástól
@@ -194,9 +195,9 @@ adatokon ellenőrzött, és a tartalomért teljes felelősséget vállal; MI-esz
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 225; a számozatlan nyilatkozatokkal 1 421; a
-hivatkozásokkal is 1 495 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
-szól); a kivonattal együtt 1 600. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+hivatkozások nélkül (a JOHD-sablon számítása) 1 227; a számozatlan nyilatkozatokkal 1 423; a
+hivatkozásokkal is 1 497 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 602. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
