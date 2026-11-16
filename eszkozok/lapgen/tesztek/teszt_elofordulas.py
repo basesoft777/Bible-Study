@@ -195,7 +195,8 @@ class Szerkezet(unittest.TestCase):
     def _szakasz(self, azonosito):
         sorok = lap(azonosito)
         kezd = next(i for i, s in enumerate(sorok) if s.szoveg.startswith('## 2. '))
-        return sorok[kezd:]
+        vege = next((i for i in range(kezd + 1, len(sorok)) if sorok[i].szoveg.startswith('## ')), len(sorok))
+        return sorok[kezd:vege]
 
     def test_gk25_minden_igehely_alatt_proza_es_funkcio(self):
         """GK-25: a 2.1 pontban minden igehely alatt áll a vers szövege, teljes mondatú próza és „Funkció:” sor."""

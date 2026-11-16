@@ -36,7 +36,8 @@ def szakasz_sorai(azonosito):
     if azonosito not in _LAP:
         lap = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=_DATUM).nezetek['TUDOMANYOS']
         eleje = next(i for i, s in enumerate(lap) if s.szoveg.startswith('## ') and 'Kereszthivatkozások' in s.szoveg)
-        _LAP[azonosito] = lap[eleje:]
+        vege = next((i for i in range(eleje + 1, len(lap)) if lap[i].szoveg.startswith('## ')), len(lap))
+        _LAP[azonosito] = lap[eleje:vege]
     return _LAP[azonosito]
 
 

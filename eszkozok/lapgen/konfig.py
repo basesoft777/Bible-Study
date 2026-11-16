@@ -46,6 +46,14 @@ ISMETLES_SZAM_LEGFELJEBB = 9    # az ablakban legfeljebb ennyi tiszta szám áll
 # --- Döntések, amelyeknek a dátuma a lapon áll (a szám nem) -----------------------------------------------------
 DONTES_JELENTES_FUNKCIO = 'DT272'   # a „Jelentés (a szó)” és a „Funkció (a motívumban)” oszlop szétválasztása
 DONTES_UBS_SZONEZET = 'DT393'       # az UBS-jelentés cellája: rövid glossza, a teljes szócikk a szónézetben
+DONTES_MOTIVUMKOZI = 'DT277'        # a motívumközi kapcsolatok: minden sor mögött beépített motívumközi döntés (8. szakasz)
+
+# --- 7. Kapcsolatok (a régi `olvasoi_kovetkeztetes.kapcsolatok` és `fok`) ---------------------------------------
+KAPCSOLAT_LANC = 0.5          # a beteljesedés legalább ekkora aránya: ígéret–beteljesedés lánc
+KAPCSOLAT_TULNYOMO = 0.67     # a leggyakoribb típus legalább ekkora aránya: „túlnyomórészt”
+KAPCSOLAT_SZINTE_MIND = 0.90  # a magas bizonyosságú kapcsolatok aránya: „szinte mind biztosak”
+KAPCSOLAT_TOBBSEG = 0.67      # „többsége biztos”
+KAPCSOLAT_FELE = 0.50         # „fele-kétharmada biztos”; alatta a közepesek száma dönt
 
 # --- UBS-jelentés: a fordítástábla kulcsai ---------------------------------------------------------------------
 SZOTAR_UBS_DNTG = 'UBS_DNTG'

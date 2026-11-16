@@ -10,7 +10,8 @@ Ez az egyetlen modul, amely a `Lathato` értéket szöveggé alakítja (`kiiras`
 Nyers `str` darab nem adható át. Minden kiírt sorhoz fajta-térkép készül (melyik karakter próza,
 sablon, idézet, megjegyzés vagy jelölés); ezt használja a festékpróba és az alakosztály-kapu.
 """
-from lapgen.szoveg import Horgony, Lathato, Proveniencia, SzovegHiba, kiiras, prov_szoveg
+from lapgen.konfig import NEZET_KIZARASOK, NEZET_TUDOMANYOS
+from lapgen.szoveg import Horgony, Lathato, MotivumId, Proveniencia, SzovegHiba, kiiras, prov_szoveg
 
 MEGJEGYZES = 'megjegyzes'
 JELOLES = 'jeloles'
@@ -67,6 +68,34 @@ def behuzas(szint):
     return _jel('  ' * int(_szam(szint)))
 DETAILS_NYIT, DETAILS_ZAR = _jel('<details>'), _jel('</details>')
 SUMMARY_NYIT, SUMMARY_ZAR = _jel('<summary>'), _jel('</summary>')
+
+# a Mermaid-gráf kódblokkja (S6): a csomópont és az él szerkezete jelölés, a felirata látható szöveg
+MERMAID_NYIT, MERMAID_GRAF, KOD_ZAR = _jel('```mermaid'), _jel('graph LR'), _jel('```')
+MERMAID_CSUCS_ZAR = _jel('"]')
+
+
+def mermaid_csucs_nyit(sorszam):
+    """A gráf csomópontjának eleje (`    n<sorszám>["`); utána a felirat, majd `MERMAID_CSUCS_ZAR`."""
+    return _jel('    n' + _szam(sorszam) + '["')
+
+
+def mermaid_el_nyit(forras):
+    """A gráf élének eleje (`    n<forrás> -->|`); utána a felirat, majd `mermaid_el_zar(cél)`."""
+    return _jel('    n' + _szam(forras) + ' -->|')
+
+
+def mermaid_el_zar(cel):
+    return _jel('| n' + _szam(cel))
+
+
+LINK_NYIT = _jel('[')
+
+
+def lap_link_zar(motivum, nezet):
+    """A másik motívum lapjára mutató link vége (`](<ID>_<nézet>.md)`); a link szövege előtte, `LINK_NYIT` után."""
+    if not isinstance(motivum, MotivumId) or nezet not in (NEZET_TUDOMANYOS, NEZET_KIZARASOK):
+        raise SzovegHiba('lap_link_zar(): MotivumId és ismert nézet kell')
+    return _jel('](' + motivum.kod + '_' + nezet + '.md)')
 _CELLA_NYIT = _jel('| ')
 _CELLA_KOZ = _jel(' | ')
 _CELLA_ZAR = _jel(' |')

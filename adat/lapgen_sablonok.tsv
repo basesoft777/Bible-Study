@@ -624,3 +624,66 @@ s6.miert.karoli	Károli-kereszthivatkozás {hely|a} helyről	hely:igehely	6 Min�
 s6.miert.karoli.hely_nelkul	Károli-kereszthivatkozás	-	6 Minősítés	szerep_kizart.jeloles_oka	-
 s6.strong	[{szo}](/szo/{strong})<sup class="strong" title="{strong} · {glossza}">{strong}</sup>	szo:lathato, strong:strong, glossza:lathato	6 Minősítés	olvasoi_utofeldolg.strong_ki (STRONG_ELOL: a Strong-szám és utána a szó; DT-F181b)	-
 s6.strong.glossza_nelkul	[{szo}](/szo/{strong})<sup class="strong" title="{strong}">{strong}</sup>	szo:lathato, strong:strong	6 Minősítés	olvasoi_utofeldolg.strong_ki (magyar rövid jelentés nélkül)	-
+cim.kapcsolatok	Kapcsolatok	-	keret	UJ_SZAKASZOK	-
+cim.kapcsolodo	Kapcsolódó motívumok	-	keret	UJ_SZAKASZOK	-
+cim.alatamasztas	Alátámasztás	-	7 Alátámasztás	res_forras.tsv (a rés fejléce)	-
+s7.olvasoi	{lelet} **Következtetés:** {szerk}, és {biz}.	lelet:lathato, szerk:lathato, biz:lathato	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.olvasoi.ures	Itt állnának a motívum igehelyei közötti kapcsolatok; ennél a motívumnál még nincs ilyen.	-	7	lexikon_general.OLVASOI (kapcsolatok_ures)	-
+s7.lelet	{n} kapcsolat {cs} helyet köt össze: {tipusok|, }; {magas} magas, {kozepes} közepes bizonyosságú.	n:szam, cs:szam, tipusok:lista(lathato), magas:szam, kozepes:szam	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.lelet.alacsony	{n} kapcsolat {cs} helyet köt össze: {tipusok|, }; {magas} magas, {kozepes} közepes, {alacsony} alacsony bizonyosságú.	n:szam, cs:szam, tipusok:lista(lathato), magas:szam, kozepes:szam, alacsony:szam	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.lelet.mind_magas	{n} kapcsolat {cs} helyet köt össze: {tipusok|, }; {magas} magas bizonyosságú.	n:szam, cs:szam, tipusok:lista(lathato), magas:szam	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.tipus_db	{n} {tipus}	n:szam, tipus:nev(kapcsolat_tipus_mondat)	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.szerk.lanc	a motívum helyei ószövetségi ígéretből újszövetségi beteljesedésbe tartó láncot alkotnak	-	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.szerk.tulnyomo_parhuzam	a motívum helyeit túlnyomórészt párhuzam köti össze: a későbbi hely ugyanazt a szót vagy szerkezetet hozza vissza, nem egy korábbi ígéretet teljesít be	-	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.szerk.tulnyomo	a motívum helyei túlnyomórészt {tipus} jellegűek	tipus:nev(kapcsolat_tipus_mondat)	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.szerk.tobbfele	a motívum helyei között többféle kapcsolat van, egyik sem uralkodó	-	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.biz.szinte_mind	a kapcsolatok szinte mind biztosak	-	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.biz.tobbseg	a kapcsolatok többsége biztos	-	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.biz.fele	a kapcsolatok fele-kétharmada biztos	-	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.biz.kozepes_tobbseg	a kapcsolatok többsége közepes bizonyosságú	-	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.biz.keves	a kapcsolatok kevesebb mint fele magas bizonyosságú	-	7	olvasoi_kovetkeztetes.kapcsolatok	-
+s7.hatokor	*A táblázat a motívum {n} kapcsolatát sorolja fel (forrás: a kapcsolat-tábla); a kapcsolatok {cs} igehelyet kötnek össze. A PaRDeS-szint oszlop a kapcsolat jellegét írja le (Remez: a két hely egymásra mutat), nem a célhely saját szintjét; a helyek szintje {szakasz|a}. szakaszban áll.*	n:szam, cs:szam, szakasz:szam	7	blokk_kapcsolatok (új szerkezet, olvasói átírás)	-
+s7.ures	Ehhez a motívumhoz nincs rögzített kapcsolat.	-	7	blokk_kapcsolatok	-
+s7.fejlec.forras	Forrás	-	7	blokk_kapcsolatok	-
+s7.fejlec.cel	Cél	-	7	blokk_kapcsolatok	-
+s7.fejlec.tipus	Típus	-	7	blokk_kapcsolatok	-
+s7.fejlec.funkcio	Funkció	-	7	blokk_kapcsolatok	-
+s7.fejlec.bizonyossag	Bizonyosság	-	7	blokk_kapcsolatok	-
+s7.fejlec.pardes	PaRDeS-szint	-	7	blokk_kapcsolatok	-
+s7.hely	{hely}	hely:igehely	7	blokk_kapcsolatok	-
+s7.graf.cim	Mermaid-ábra	-	7	blokk_kapcsolatok	-
+s7.alat.olvasoi	Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági szintjét.	-	7 Alátámasztás	lexikon_general.OLVASOI_RES (alatamasztas)	-
+s7.alat.bevezeto	*Generált a kapcsolat-tábla indoklás mezőjéből: soronként miért ez a funkció-címke, miért ez a bizonyossági szint.*	-	7 Alátámasztás	adatres_alatamasztas (olvasói átírás)	-
+s7.alat.fejlec.kapcsolat	Kapcsolat	-	7 Alátámasztás	adatres_alatamasztas	-
+s7.alat.fejlec.alatamasztas	Alátámasztás	-	7 Alátámasztás	adatres_alatamasztas	-
+s7.alat.parok	{parok|; }	parok:lista(lathato)	7 Alátámasztás	adatres_alatamasztas	-
+s7.par	{a} → {b}	a:igehely, b:igehely	7 Alátámasztás	_kapcsolat_par	-
+s7.alat.modszer	*Az egyezéseket a héber és a görög szöveg, a Septuaginta és a két kereszthivatkozás-gyűjtemény (TSK, Károli) méri; az indoklás a szerkesztőé.*	-	7 Alátámasztás	adatres_alatamasztas	-
+s7.alat.indoklas_nelkul	*Rögzített indoklás nélküli kapcsolat-sor ({n}): {parok|; }.*	n:szam, parok:lista(lathato)	7 Alátámasztás	adatres_alatamasztas	-
+s7.alat.nincs_indoklas	A motívum {n} kapcsolat-sorának egyikéhez sincs rögzített indoklás.	n:szam	7 Alátámasztás	adatres_alatamasztas	-
+s7.alat.nincs	A motívumhoz nincs rögzített kapcsolat.	-	7 Alátámasztás	ALATAMASZTAS_NINCS_KAPCSOLAT	-
+s7.alat.forras	*Forrás: a kapcsolat-tábla.*	-	7 Alátámasztás	adatres_keret (a proveniencia-sor olvasói alakja, F212 M5)	-
+s8.olvasoi	{lelet} **Következtetés:** {kov}.	lelet:lathato, kov:lathato	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.olvasoi.nincs	A motívumnak még nincs rögzített kapcsolata más motívummal.	-	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.olvasoi.nincs.nyitott	A motívumnak még nincs rögzített kapcsolata más motívummal; {nyitott} döntésre vár.	nyitott:szam	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.lelet	{n} kapcsolat {m} másik motívummal ({motivumok|, }), {tipus}.	n:szam, m:szam, motivumok:lista(lathato), tipus:lathato	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.lelet.nyitott	{n} kapcsolat {m} másik motívummal ({motivumok|, }), {tipus}; további {nyitott} döntésre vár.	n:szam, m:szam, motivumok:lista(lathato), tipus:lathato, nyitott:szam	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.motivum_db	{motivum} {n}	motivum:motivum, n:szam	8	olvasoi_kovetkeztetes._szamlista	-
+s8.tipus.mind	mind „{tipus}”	tipus:nev(motivumkozi_tipus)	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.tipus.tobb	típus szerint: {tipusok|, }	tipusok:lista(nev:motivumkozi_tipus)	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.kov.szomszedos	a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva	-	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.kov.tartalmi	a motívum más motívumokhoz tartalmi kapcsolattal is kötődik	-	8	olvasoi_kovetkeztetes.kapcsolodo	-
+s8.hatokor	*A táblázat a motívum más motívumokkal való kapcsolatait adja (forrás: a motívumközi kapcsolatok táblája) (minden sor mögött beépített motívumközi döntés áll, szerkesztői döntés, {datum}); a sor mindkét érintett motívum lapján megjelenik.*	datum:datum	8	blokk_kapcsolodo (olvasói átírás)	-
+s8.fejlec.motivum	Kapcsolódó motívum	-	8	kapcsolodo_torzs	-
+s8.fejlec.itt	Itt	-	8	kapcsolodo_torzs	-
+s8.fejlec.ott	Ott	-	8	kapcsolodo_torzs	-
+s8.fejlec.tipus	Típus	-	8	kapcsolodo_torzs	-
+s8.fejlec.funkcio	Funkció	-	8	kapcsolodo_torzs	-
+s8.fejlec.bizonyossag	Bizonyosság	-	8	kapcsolodo_torzs	-
+s8.fejlec.pardes	PaRDeS-szint	-	8	kapcsolodo_torzs	-
+s8.fejlec.indoklas	Indoklás	-	8	kapcsolodo_torzs	-
+s8.motivum	{motivum}	motivum:motivum	8	kapcsolodo_torzs	-
+s8.nincs	A motívumhoz nincs rögzített motívumközi kapcsolat.	-	8	kapcsolodo_torzs	-
+s8.nyitott	*Még nem eldöntött motívumközi kapcsolat: {n} ({elemek|, }).*	n:szam, elemek:lista(lathato)	8	kapcsolodo_torzs (olvasói átírás)	-
+s8.nyitott.elem	{motivum}: {n}	motivum:motivum, n:szam	8	kapcsolodo_torzs	-
+s8.forras	*Forrás: a motívumközi kapcsolatok táblája; a vizsgált helyek döntésnaplója.*	-	8	adatres_keret (a proveniencia-sor olvasói alakja)	-

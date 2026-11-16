@@ -70,3 +70,15 @@ ok_cella	a „vég” formulája, más kulcsszóval	A „vég” formulája, má
 ok_cella	tartalmilag nem kapcsolódik	Tartalmilag nem kapcsolódik	az elutasítási ok címkéje (adat/elutasitasi_okok.tsv) cellakezdő alakban, a Minősítés és a 3. szakasz táblájának „Indok” cellájában; a lapon így áll (a régi lap nagybetűsítése); DT869: a cella értéke az adatban a végleges alak
 ok_cella	erkölcsi intelem, nem a formula	Erkölcsi intelem, nem a formula	az elutasítási ok címkéje (adat/elutasitasi_okok.tsv) cellakezdő alakban, a Minősítés és a 3. szakasz táblájának „Indok” cellájában; a lapon így áll (a régi lap nagybetűsítése); DT869: a cella értéke az adatban a végleges alak
 ok_cella	a formula nincs a versben	A formula nincs a versben	az elutasítási ok címkéje (adat/elutasitasi_okok.tsv) cellakezdő alakban, a Minősítés és a 3. szakasz táblájának „Indok” cellájában; a lapon így áll (a régi lap nagybetűsítése); DT869: a cella értéke az adatban a végleges alak
+kapcsolat_tipus	Előkép	Előkép	kapcsolatok.tsv tipus
+kapcsolat_tipus	Párhuzam	Párhuzam	kapcsolatok.tsv tipus
+kapcsolat_tipus	Beteljesedés	Beteljesedés	kapcsolatok.tsv tipus
+kapcsolat_tipus	Kontraszt	Kontraszt	kapcsolatok.tsv tipus
+kapcsolat_tipus	Variáns	Variáns	kapcsolatok.tsv tipus
+kapcsolat_tipus_mondat	Előkép	előkép	olvasoi_kovetkeztetes.kapcsolatok (t.lower())
+kapcsolat_tipus_mondat	Párhuzam	párhuzam	olvasoi_kovetkeztetes.kapcsolatok (t.lower())
+kapcsolat_tipus_mondat	Beteljesedés	beteljesedés	olvasoi_kovetkeztetes.kapcsolatok (t.lower())
+kapcsolat_tipus_mondat	Kontraszt	kontraszt	olvasoi_kovetkeztetes.kapcsolatok (t.lower())
+kapcsolat_tipus_mondat	Variáns	variáns	olvasoi_kovetkeztetes.kapcsolatok (t.lower())
+motivumkozi_tipus	szomszédos	szomszédos	motivum_kapcsolatok.tsv tipus
+motivumkozi_tipus	közös_igehely	közös igehely	uj
