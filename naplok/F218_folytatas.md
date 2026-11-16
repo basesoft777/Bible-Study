@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218-generator-uj-a` · PR: #729 (vázlat) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md` · Alap: main `37f087cc`.
+Ág: `claude/f218-generator-uj-a` · PR: #729 (a 218a első fele: T, S1–S4; az S5-től új ág, új PR) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md` · Alap: main `37f087cc`.
 
 ## Állás
 
@@ -58,6 +58,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 *Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
 
 ## Következő lépés
+
+**A 218a első fele a main-re kerül (a 9. session, 2026-11-16).** A felhasználó döntése (az orkesztrátoron át, szó szerint: „Igen, mindkettőt”): a PR #729 a mostani állapotában (T, S1–S4) mergelődik, a független ellenőrzés után; az S5-től a munka **új ágon, új PR-ban** folytatódik, a main-ről. **A 218a nem zárul le** (a brief `allapot` mezője `megallt`, `lezar:` mező nincs). Az állás a merge előtt: a 6. ellenőrzés (Fable) javítóköre kész (E1, E3, E5–E9; E2, E4, E10: N-F218l, N-F218m, N-F218n; a GK-04 helyszám-kapuja: N-F218o), a main behozva, HAMART-regresszió RENDBEN, festékpróba 0. **A merge után, az új ágon az első teendők:** (1) a mérce hash-sorainak ellenőrzése (`eszkozok/lapgen/hash_or_kapu.py`; a `szamkiosztas` a `dontesek/uj/f218-generator-uj-a.md`-t és a `DONTESEK.md`-t megváltoztatja, ezért a B51 sorai frissítendők, külön commitban, a regresszióval); (2) a brief `ag` és `pr` mezője az új ágra és PR-ra; (3) az S5. A célzott újraellenőrzés a 6. ellenőrzés javítókörére a jelentésben áll.
 
 **A 9. session (opus, 2026-11-15):** a CI a `52f978f2`-n zöld volt (43730278104). **Az 5. ellenőrzés javítókörének második fele kész:** E2 (részlet-kapu a glosszán, a „…” sablonjel, a Károli-számozás szerkezetes jelölése), E3 (T5 a Thayer-kártyán: régi szöveg + felülvizsgálat-jel, ELAVULT tétel a fordítás-állapotban, kiadási módban BUKÁS), E6 (a 4.8 két megjegyzés-együttesének sablonmondata, az LSJ-ág üzenete, N-F218j), az E1 mechanikus része (árnyékmondat-teszt, a kódbeli forrásjavítások jegyzéke és szerkezeti tesztje, N-F218i kiegészítve). A mérések és a korlátok: `naplok/F218_jelentes.md` „Az 5. ellenőrzés javítóköre, második fele”. **A 218a végi listába:** 4 új `dontes=var` sablonsor (`s4.p2.jel.felulvizsgalat`, `s4.p8.rokon.megj.iras_romlott`, `.iras_biz_romlott`; a `s4.felulvizsgalat` már a listán), a H7451 glosszájának látható kihagyásjele (tartalmi döntés), a kártya pontozásának `szamitas/`-ba költöztetése (az E1 javaslatának nem besorolt része). **Következik:** az S4 (5. LXX-fordítói döntések és a 4.6), utána a célzott független ellenőrzés (Fable) az S4-re és erre a javítókörre.
 
