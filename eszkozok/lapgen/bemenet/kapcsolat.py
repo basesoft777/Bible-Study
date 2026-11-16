@@ -6,12 +6,12 @@ SEMA 2.33) és B04 (a jelöltek döntésnaplója: a döntésre váró motívumk�
 A két tábla `funkcio` mezője kézi próza: a lapon a táblacellában áll, változatlanul; a cellakezdő alak az adatban
 a végleges alak (DT869). Az `indoklas` mező a B45-ben két részből áll: az első ` | ` előtti rész az Alátámasztás
 kézi prózája (SEMA 2.3: „a lexikonoldal Alátámasztás-résének soronkénti adata”), a többi belső proveniencia (a
-döntés hivatkozása és a lekérdezés sora), amely csak megjegyzésbe kerül. A B46 `indoklas` mezője a 8. szakasz
-„Indoklás” cellájának kézi prózája. Mindkét táblában a kézi rész végén álló döntés-hivatkozás („Döntés: DT<n> (…).”,
-illetve „(DT<n>, a felhasználó, …)”) szerkezet, amelyet a réteg leválaszt (DT-F218t; a döntést a B45 sor
-proveniencia-része, illetve a B46 sor `dontes_ref` mezője hordozza); a próza többi része változatlan. A kézi
-prózán a réteg kapuval ellenőrzi, hogy olvasói szöveg-e (ugyanaz a kapu, mint a kereszthivatkozásos indoklásé): ha
-nem, megáll, nem tisztít.
+döntés hivatkozása és a lekérdezés sora), amely csak megjegyzésbe kerül; a kézi részben döntés-hivatkozás nem áll
+(DT-F218t, a felhasználó döntése: az adat a végleges alak). A B46 `indoklas` mezője a 8. szakasz „Indoklás”
+cellájának kézi prózája. **Átmenet (N-F218r):** a B46 mezőjének végén ma még döntés-hivatkozás áll („Döntés: DT280
+(felhasználó, 2026-10-20).”), mert a nyílt mag exportja a döntésszámot ebből a mezőből olvassa; amíg az adat át nem
+költözik, a réteg ezt az egy rögzített alakot a B46-on leválasztja. A kézi prózán a réteg kapuval ellenőrzi, hogy
+olvasói szöveg-e (ugyanaz a kapu, mint a kereszthivatkozásos indoklásé): ha nem, megáll, nem tisztít.
 
 A zárt értékkészletek (típus, bizonyosság) felsorolásra, a PaRDeS-szint névtábla-kulcsra alakul; ismeretlen érték
 kemény hiba.
@@ -34,18 +34,15 @@ _MOTIVUMKOZI = 'motivumkozi'
 _MEZO_ELVALASZTO = ' | '
 _PARDES_ELVALASZTO = '/'
 _DONTES_RX = re.compile(r'\bDT\d+\b')
-# a mező végén álló döntés-hivatkozás két alakja: „Döntés: DT280 (…).” és „(DT479, a felhasználó, …: „…, (b)”)”
-# (csak ez a két rögzített alak: a döntés száma, a döntéshozó és a dátum, legfeljebb a válasz idézete; más tartalmú
-# zárójel nem válik le, és a benne álló döntésszámon a kapu megáll)
-_ZARO_DONTES_RX = re.compile(r'\s*(?:Döntés: DT\d+ \((?:a )?felhasználó, \d{4}-\d\d-\d\d\)\.'
-                             r'|\(DT\d+, (?:a )?felhasználó, \d{4}-\d\d-\d\d(?:: „[^”]*”)?\))$')
+# Átmenet (N-F218r, csak a B46-on): a mező végén álló „Döntés: DT280 (felhasználó, 2026-10-20).” alak; más alak
+# nem válik le, és a benne álló döntésszámon a kapu megáll. Az adat átköltözése után a leválasztás törlendő.
+_MK_ZARO_DONTES_RX = re.compile(r'\s*Döntés: DT\d+ \((?:a )?felhasználó, \d{4}-\d\d-\d\d\)\.$')
 
 
-def _zaro_dontes_nelkul(szoveg):
-    """A kézi szöveg a végén álló döntés-hivatkozás nélkül (DT-F218t): a hivatkozás szerkezet, a döntést a sor
-    proveniencia-része (B45) vagy `dontes_ref` mezője (B46) hordozza; a többi szöveg változatlan. Ha a hivatkozás
-    máshol áll a szövegben, a kapu megáll."""
-    return _ZARO_DONTES_RX.sub('', szoveg)
+def _mk_zaro_dontes_nelkul(szoveg):
+    """A B46 kézi szövege a végén álló döntés-hivatkozás nélkül (átmenet, N-F218r; DT-F218t szerint az adatnak kell
+    a végleges alaknak lennie). A B45-ön nincs ilyen leválasztás."""
+    return _MK_ZARO_DONTES_RX.sub('', szoveg)
 
 
 def _felsorolas(osztaly, nyers, b_id, mezo, hol):
@@ -99,7 +96,7 @@ def b45_kapcsolatok(b, motivum):
         k.bizonyossag = _felsorolas(Megbizhatosag, sor[idx['bizonyossag']], 'B45', 'bizonyossag', hol)
         k.pardes = _pardes(b, 'B45', sor[idx['pardes_szint']])
         fo, sep, farok = sor[idx['indoklas']].partition(_MEZO_ELVALASZTO)
-        k.indok = _kezi(b, 'B45', 'indoklas', _zaro_dontes_nelkul(fo), hol)
+        k.indok = _kezi(b, 'B45', 'indoklas', fo, hol)
         k.farok = b.belso('B45', 'indoklas_proveniencia', farok) if sep and farok.strip() else None
         k.dontesek = tuple(_DONTES_RX.findall(farok)) if sep else ()
         ki.append(k)
@@ -142,9 +139,8 @@ def b46_motivum_kapcsolatok(b, motivum):
         mk.funkcio = _kezi(b, 'B46', 'funkcio', sor[idx['funkcio']], hol)
         mk.bizonyossag = _felsorolas(Megbizhatosag, sor[idx['bizonyossag']], 'B46', 'bizonyossag', hol)
         mk.pardes = _pardes(b, 'B46', sor[idx['pardes_szint']])
-        # a záró döntés-hivatkozás („Döntés: DT280 (…).”) szerkezet: a döntést a `dontes_ref` és a jelölt sora
-        # hordozza, a lapon nem áll (a régi lap is levágta); a kézi próza az előtte álló rész, változatlanul
-        mk.indok = _kezi(b, 'B46', 'indoklas', _zaro_dontes_nelkul(sor[idx['indoklas']]), hol)
+        # átmenet (N-F218r): a záró „Döntés: DT280 (…).” az adatból költözik ki; addig itt válik le
+        mk.indok = _kezi(b, 'B46', 'indoklas', _mk_zaro_dontes_nelkul(sor[idx['indoklas']]), hol)
         ki.append(mk)
     ki.sort(key=lambda m: (m.masik.kod, m.itt.kod, m.ott.kod))
     return tuple(ki)

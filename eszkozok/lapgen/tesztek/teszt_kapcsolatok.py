@@ -118,27 +118,27 @@ class Kapu(unittest.TestCase):
 
 
 class ZaroDontes(unittest.TestCase):
-    def test_a_zaro_dontes_hivatkozas_szerkezet(self):
-        """DT-F218t: a kézi rész végén álló döntés-hivatkozás két alakja leválik; a szöveg többi része változatlan."""
+    def test_a_b46_atmeneti_levalasztasa_csak_a_rogzitett_alak(self):
+        """N-F218r (átmenet): a B46-on csak a záró „Döntés: DT<n> (felhasználó, dátum).” válik le; más alak marad, és
+        a benne álló döntésszámon a kapu megáll."""
         self.assertEqual(
-            KB._zaro_dontes_nelkul('A közös fejezet nem bizonyít. Döntés: DT280 (felhasználó, 2026-10-20).'),
+            KB._mk_zaro_dontes_nelkul('A közös fejezet nem bizonyít. Döntés: DT280 (felhasználó, 2026-10-20).'),
             'A közös fejezet nem bizonyít.')
-        self.assertEqual(KB._zaro_dontes_nelkul('innen a közepes bizonyosság. Áthorgonyozva a Róm 10:14-ről '
-                                                '(DT479, a felhasználó, 2026-11-01: „Igen, (b)”)'),
-                         'innen a közepes bizonyosság. Áthorgonyozva a Róm 10:14-ről')
-        self.assertEqual(KB._zaro_dontes_nelkul('Mért: azonos fejezet (1Móz 12).'), 'Mért: azonos fejezet (1Móz 12).')
-
-    def test_tartalmas_zaro_zarojel_nem_valik_le(self):
-        """A záró zárójel csak a rögzített alakban (döntésszám, döntéshozó, dátum, válasz) válik le; tartalmas
-        zárójel marad, és a benne álló döntésszámon a kapu megáll (a 9. ellenőrzés E1 tétele)."""
-        for szoveg in ('A hely a lánc része (DT479 szerint a 10:14 helyett a 10:13 a horgony)',
+        for szoveg in ('A hely a lánc része (DT479, a felhasználó, 2026-11-01: „Igen, (b)”)',
                        'A hely a lánc része. Döntés: DT280 (a lánc szava miatt).'):
-            self.assertEqual(KB._zaro_dontes_nelkul(szoveg), szoveg)
+            self.assertEqual(KB._mk_zaro_dontes_nelkul(szoveg), szoveg)
             self.assertIsNotNone(KB.nem_olvasoi(szoveg))
 
-    def test_a_szoveg_kozepen_allo_dontes_szam_megallit(self):
-        kozepen = KB._zaro_dontes_nelkul('A DT280 szerint (felhasználó) a hely marad, mert közös a szó.')
-        self.assertIsNotNone(KB.nem_olvasoi(kozepen))
+    def test_a_b45_kezi_szovegeben_nincs_dontes_hivatkozas(self):
+        """DT-F218t (a felhasználó döntése): a B45 indoklásának kézi részében döntés-hivatkozás nem áll (az adat a
+        végleges alak; a döntés a sor proveniencia-részében). A kapu a hivatkozáson megállna: a két mintalap sorai
+        ezért a bemeneten át sem jutnának, ha maradt volna."""
+        b = bemenet.Bemenet(kozos.GYOKER)
+        for azonosito in kozos.MINTALAPOK:
+            for k in KB.b45_kapcsolatok(b, MotivumId(azonosito)):
+                if k.indok is not None:
+                    self.assertIsNone(KB.nem_olvasoi(k.indok.ertek), (azonosito, k.forras.kod))
+        self.assertFalse(hasattr(KB, '_zaro_dontes_nelkul'))
 
 
 class Megjelenites(unittest.TestCase):

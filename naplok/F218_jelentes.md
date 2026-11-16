@@ -1335,3 +1335,15 @@ A besorolás: E1 (döntési rész), E2, E3 a felhasználóé — helyőrző-dön
 | megfigyelés | `tesztek/teszt_kapcsolatok.py` | a kivágás a 8. szakasz végéig tart | – |
 
 **Mérés a javítókör után:** `scope=HAMART-001 és ISTENTISZT-001, munka mód (PARDES_DATUM=2026-11-13) | forras=futtat.py; general.py --cel lexikon2; regresszio.py; festek.py; hash_or_kapu.py | ts=2026-11-16`: tesztek 311, 0 hiba, 0 bukás, 30 váz; mindkét lap bájtra azonos a javítókör előttivel; HAMART-regresszió RENDBEN (engedély nélküli diff-sor 0); festékpróba 0 mindkét lapon; a hash-őr 209 sorral RENDBEN (a döntésfájl hash-sora frissült). **A DT-F218t, a DT-F218u és a DT-F218v 🟡: a felhasználó döntésére vár (megállás).**
+
+## A DT-F218t, -u, -v döntése és a DT-F218t adatjavítása (`claude-opus-5-5`, 2026-11-16, a 11. session)
+
+**A döntés:** a felhasználó (2026-11-16, az orkesztrátoron át) az orkesztrátori javaslatot hagyta jóvá, szó szerint: „mehet”. Mindhárom helyőrző 🟢 (`dontesek/uj/f218a-s6-3896f7.md`).
+
+| Döntés | Tartalom | Megvalósítás ebben a PR-ban |
+|---|---|---|
+| DT-F218t (b) | javuljon az adat: a döntés-hivatkozás külön, a lapon meg nem jelenő mezőbe; a generátor szövegcserés leválasztása kivezetendő | a `kapcsolatok.tsv` két ISTENTISZT-001-cellájából a „(DT479, a felhasználó, 2026-11-01: „Igen, (b)”)” kikerült (a döntés a sor proveniencia-részében már állt: `forras=DONTESEK.md DT479`), a mondat pontot kapott; **a B45 leválasztása törölve**, teszt: a két mintalap B45-indoklásában nincs döntés-hivatkozás. **Nem fért a szeletbe** a `motivum_kapcsolatok.tsv` három sora („Döntés: DT280 (…).”): a nyílt mag exportja (`dontesek` oszlop, NYD-003) ebből a mezőből olvassa a döntésszámot, így az adat, az export, a SEMA 2.33 és a nyílt mag együtt változik: **N-F218r**. Addig a B46-on egyetlen rögzített alak átmenetileg leválik (`_mk_zaro_dontes_nelkul`), az N-F218r lezárásakor törlendő |
+| DT-F218u (a) | jóváhagyva: a HAMART-001 44 cellájának adatbeli javítása marad; a többi motívum kisbetűs cellái egy menetben az S9-ben; gépi kapu a kisbetűs cellára | **N-F218s** (az S9-ben: a cellák és a kapu) |
+| DT-F218v (a) | a régi lap utólagos kiejtés-beszúrása előre ismert osztály: (j) a brief 8.1 pontjában; soronkénti engedély nem kell | a brief 8.1 (j) beírva; az `S5-KIEJTES` és az `S6-KIEJTES` gépi kötése a regresszió miatt marad, `8.1 (j)` mechanizmussal |
+
+**Mérés:** `scope=HAMART-001 és ISTENTISZT-001, munka mód (PARDES_DATUM=2026-11-13) | forras=general.py --cel lexikon2; regresszio.py; festek.py; futtat.py | ts=2026-11-16`: a HAMART-001 lapja bájtra azonos a döntés előttivel; az ISTENTISZT-001 lapján csak a két javított Alátámasztás-sor változott (a hivatkozás nélkül, ponttal); HAMART-regresszió RENDBEN; festékpróba 0 mindkét lapon; tesztek 310, 0 hiba, 0 bukás, 30 váz; a mérce két hash-sora (B45, a döntésfájl) frissült.
