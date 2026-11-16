@@ -4,20 +4,25 @@ cim: A lapgenerátor újraírása, 1. rész — építés a regresszióig (új f
 kod: GENERATOR_UJ_A
 tipus: feladat
 fazis: folyamat
-modell: fable
-allapot: nem_indult
+modell: opus
+allapot: megallt
+ag: claude/f218-generator-uj-a
+pr: 729
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "F218.0–F218.1 olcsó modellel, majd az építő session (fable); push csak a felhasználó engedélyével (9. pont)"
+kovetkezo: "Te: S5 új ágon a main-ről"
 munka: folyamat
+sav: CONTENT
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
-ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
+ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
 fugg: []
 nem_fugg: [121, 123, 146, 178, 179]
 ---
 
 # F218_GENERATOR_UJ_A_BRIEF.md — A lapgenerátor újraírása, 1. rész: építés a regresszióig
 
-*FELADATOK #218 · Modell: fable · v2 (tervezet, átdolgozva) · 2026.11.13 · forrás: a felhasználó („vegyük korábbra a generátor írást”; „Igen, dolgoztasd át”, 2026-11-13); DT-F212e, DT-F212f; a generátor-térkép és a súlyossági leltár; a `FABLE_VALASZ_UJ_JAVASLATOK_2026-11-13.md` (mind a megosztott jegyzetmappában). Alap: main `b5d93ea8`.*
+*FELADATOK #218 · Modell: opus (a DT-F218o óta, 2026-11-13; az S3d-ig és a 4. ellenőrzés javítóköréig fable) · v2 (tervezet, átdolgozva) · 2026.11.13 · forrás: a felhasználó („vegyük korábbra a generátor írást”; „Igen, dolgoztasd át”, 2026-11-13); DT-F212e, DT-F212f; a generátor-térkép és a súlyossági leltár; a `FABLE_VALASZ_UJ_JAVASLATOK_2026-11-13.md` (mind a megosztott jegyzetmappában). Alap: main `b5d93ea8`.*
+
+**A 218a két ágon (a felhasználó döntése, 2026-11-16, az orkesztrátoron át, szó szerint: „Igen, mindkettőt”).** A 218a első fele (T, S1–S4: a típusok, a 2., az 1., a 4. szakasz és a KIZARASOK-melléklet, valamint az 5. szakasz) a PR #729-cel kerül a main-re, a független ellenőrzés és a javítókörei után. **A 218a ezzel nem zárul le:** az S5-től (F218.8) a munka új ágon, új PR-ban folytatódik, a main-ről. Az ok: más tételek (#725, #749, az F205 M5) a #729 SEMA-szakaszaira várnak, az új generátort pedig még semmi nem használja (218b, 218c).
 
 **Három rész.** Ez a brief a **218a**: építés a regresszióig. A szerver-átkötés (218b) és az átállás (218c) külön befogadásra váró N-tétel a 13. pontban.
 

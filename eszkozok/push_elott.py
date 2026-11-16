@@ -86,6 +86,7 @@ DINAMIKUS_SZKRIPTEK = [
     'eszkozok/ellenorzes/study_fajlok_szurese.py',
     'eszkozok/ellenoriz.py',
     'eszkozok/feladatok.py',
+    'eszkozok/lapgen/hash_or_kapu.py',
 ]
 # A futási adattól függő hívások kötelező argumentumai (a hívásaik egyikében szerepelniük kell).
 DINAMIKUS_ARGUMENTUMOK = {
@@ -93,6 +94,7 @@ DINAMIKUS_ARGUMENTUMOK = {
                                       '--commit-uzenet-fajl', '--minta'],
     'eszkozok/ellenoriz.py': ['--md'],
     'eszkozok/feladatok.py': ['ellenoriz', '--pr-alap'],
+    'eszkozok/lapgen/hash_or_kapu.py': ['--valtozott-lista'],
 }
 # Csak a CI-ben futó, nem bukó jelentés-lépések.
 EGYEZES_KIVETEL = [
@@ -479,6 +481,12 @@ def main():
         print('RENDBEN  E2-E39 (nincs változott fájl)')
     if args.lepes:
         print('FIGYELEM: részleges futás (--lepes %s); a push előtti kapu a teljes futás.' % args.lepes)
+
+    # 1/b. az új lapgenerátor regressziós mércéjének hash-őre (F218a; mindig fut, maga dönti el, érinti-e a változás)
+    lista_fajl = os.path.join(tmp, 'valtozott_fajlok.txt')
+    with open(lista_fajl, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(fajlok) + '\n')
+    fut.lepes('F218 mérce hash-őr (hash_or_kapu.py)', [PY, 'eszkozok/lapgen/hash_or_kapu.py', '--valtozott-lista', lista_fajl])
 
     # 2. E1
     rc, study = kihagyhato(L_E1, 'E1 szűrés (study_fajlok_szurese.py)',
