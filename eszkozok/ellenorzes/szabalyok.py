@@ -3154,14 +3154,16 @@ SZABALY_LEIRAS = {
     'E25': 'döntés átvezetése (`adat/dontes_hatas.tsv`)',
     'E26': 'végleges DT/N szám az ágon',
     'E27': 'a PR által törölt vagy átnevezett fájl hivatkozásként megmaradt-e',
-    'E28': 'a generált nézet bájtra egyezik az adat- és forrásrétegből újragenerálttal',
+    'E28': 'a generált nézet egyezik az adat- és forrásrétegből újragenerálttal (F217: a PR-ban és a main nem gépi '
+           'commitjában az eltérés JELENTES, a gépi commit futásában HIBA; a generálás hibája, a helyben-út eltérése és a '
+           'kiadott lap új kiadás nélküli változása mindig HIBA)',
     'E29': 'a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO`',
     'E30': 'ékezet nélkül írt magyar szó a PR commit-üzeneteiben',
     'E31': 'a `forras_tanulmany` létező, repóbeli fájlra mutat',
     'E32': 'kiosztott helyőrző egy kimeneti string-literálban',
     'E33': 'az új vagy módosított tanulmányfájl bekerül a tanulmány-regiszterbe',
     'E34': 'a `kapcsolodas` idézőjeles részlete a Károli-vers szövege, vagy „saját fordítás” jelölésű',
-    'E35': 'a commitolt `nyilt_mag/` naprakész',
+    'E35': 'a commitolt `nyilt_mag/` naprakész (F217: a PR-ban JELENTES, a gépi commit futásában HIBA)',
     'E36': 'hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, '
            'a SEMA szakaszszámai egyediek',
     'E37': 'az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal',
@@ -3629,6 +3631,25 @@ FAJLSZINTU_SZABALYOK.add('E40')
 SZABALYOK_FUGGVENYEI['E40'] = e40_karoli_kh_hozzaferes
 SZABALY_LEIRAS['E40'] = ('a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a '
                          '`karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés)')
+
+
+# ---------------------------------------------------------------------------
+# E42 -- a generált nézetek jegyzéke (F217, adat/SEMA.md 2.70)
+# ---------------------------------------------------------------------------
+# A jegyzék (`adat/generalt_nezetek.tsv`) kapuja: oszlopok, értékkészletek, az id-formátum, a hivatkozási épség (a G- és a
+# bemeneti jegyzék B-azonosítói), az `utana` körmentessége, a `gazda=action` sor futtatható parancsa, és a kivezetett E28-lista
+# üressége. A kapu egyetlen helye a `generalt_nezetek.jegyzek_ellenoriz()`; minden futásban fut, HIBA, fájlszintű.
+
+def e42_generalt_jegyzek(fajlok=None):
+    G = _generalt_nezetek_modul()
+    return [Talalat('E42', SZINT['E42'], G.JEGYZEK, 0, h) for h in G.jegyzek_ellenoriz(ROOT)]
+
+
+SZINT['E42'] = 'HIBA'
+FAJLSZINTU_SZABALYOK.add('E42')
+SZABALYOK_FUGGVENYEI['E42'] = e42_generalt_jegyzek
+SZABALY_LEIRAS['E42'] = ('a generált nézetek jegyzéke (`adat/generalt_nezetek.tsv`): oszlopok és értékek, a G- és B-hivatkozások '
+                         'épsége, az `utana` körmentessége, futtatható parancs; a kivezetett E28-listában nincs adatsor')
 
 
 

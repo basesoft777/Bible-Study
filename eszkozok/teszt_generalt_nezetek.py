@@ -126,6 +126,11 @@ def teszt_valos_jegyzek():
     ellenoriz(ids.index('G07') > ids.index('G01'), 'sorrend: a nyílt mag (G07) a lap (G01) után')
     ellenoriz('G08' not in ids and 'G11' not in ids, 'a workflow- és a kézi sort a végrehajtó nem futtatja')
     ellenoriz(not G.regi_lista_ellenoriz(), 'a kivezetett E28-listában nincs adatsor')
+    ellenoriz(G.b_azonositok() is not None, 'a bemeneti jegyzék (2.66) a repóban van: a B-hivatkozás ellenőrzött')
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'ellenorzes'))
+    import szabalyok as SZ
+    ellenoriz(SZ.SZABALYOK_FUGGVENYEI['E42']() == [] and SZ.SZINT['E42'] == 'HIBA',
+              'E42: a valós jegyzéken 0 találat, a szint HIBA')
 
 
 def teszt_negativ():
