@@ -771,8 +771,7 @@ https://doi.org/{doi} (concept DOI: mindig a legfrissebb változatra mutat; jele
 
 ### Háttér
 
-Az adatkészlet a {lex_hu} nevű független kutatási projektben készült, amely a Biblia motívum-indexelt,
-kereszthivatkozott lexikonját építi. A Károli-fordítás négy évszázada a magyar
+Az adatkészlet a {lex_hu} nevű, a szerző által vezetett független kutatási projektben készült. A Károli-fordítás négy évszázada a magyar
 protestáns bibliaolvasás alapszövege. A Strong-számok (Strong, 1890) egy fordítás szavait a héber és görög szókincshez
 kötik. Strong-számos Károli-kiadás létezik; az itt közölt párosítás nyílt licencű, szavanként dokumentált, és a
 pontossága mért.
@@ -793,7 +792,8 @@ eredetiének; két vers minden egybeolvadását kézzel hagytuk jóvá.
 
 **Párosítás.** Egy nyelvi modell (Claude Sonnet) versenként két számozott szólistát kapott: a Károli szavait, és az
 eredeti szavakat alakkal, Strong-számmal és a TAHOT/TAGNT rövid angol glosszájával; a Strong-szám csak tájékoztatásul
-állt ott, a válaszban tilos volt. A modell csak sorszámpárokat adott vissza, a betoldásokkal és a fordítatlan szavakkal.
+állt ott, a válaszban tilos volt. A rögzített utasítás egy kidolgozott példában egy választható, Strong-címkés
+KJV-sort is mutatott; versbemenet ilyet nem tartalmazott. A modell csak sorszámpárokat adott vissza, a betoldásokkal és a fordítatlan szavakkal.
 Az 1Móz 1:1-ben például a *teremté* (2) szót a 3. eredeti szóval (*bārāʾ*), a *Kezdetben* (1) szót az 1–2. szóval
 (*bə-*, *rēʾšît*) párosította, a tárgyjelölő *ʾēt* (5) szót fordítatlannak jelölte; a H1254, H9003 és H7225 számot
 ezután program tette hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el. A funkciószavakra
@@ -850,7 +850,7 @@ felsorol.
 - **Tárhely neve:** Zenodo
 - **Objektum neve:** `{objektum}` (Logosz Lexikon – Károli Bible (1908): Word Alignment with Hebrew and Greek Strong's
   Numbers, változat: {verzio})
-- **Formátumok és változatok:** TSV (UTF-8, tabulátorral tagolt, LF sorvég) az adathoz; Markdown a kétnyelvű
+- **Formátumok és változatok:** TSV (UTF-8, tabulátorral tagolt, LF sorvég) az adathoz és a gépi kódkönyvhöz; Markdown a kétnyelvű
   dokumentációhoz (kódkönyv, módszertani leírás, ismert hibák); CFF hivatkozási fájl; SHA-256 ellenőrző összeg
 - **Létrehozás dátumai:** {kezdet} – {adatallapot}
 - **Az adatkészlet készítője:** Demeter Tamás (független kutató; ORCID: {orcid}): szabályok, feldolgozási lánc, mérés,
@@ -925,8 +925,7 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 Generatív MI három helyen dolgozott. (1) Párosítás: egy nyelvi modell (Claude Sonnet, Anthropic; a kötegelt futások
 naplója szerint claude-sonnet-5-5) csak sorszámpárokat adott vissza (l. Módszer); Strong-számot nem írhatott, azt a
 sorszám alapján a TAHOT/TAGNT adja, és minden pár egy eredeti szóra mutat. Az 1Móz és a 2Móz párosításánál egy másik
-nyelvi modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2) Minőség-ellenőrzés: egy második modell (Claude Opus) a mintán vak
-ellenőr volt; az emberi validáció ítéleteit emberek hozták, MI nélkül. (3) Kísérő adatkészlet: nyelvi modellek csak a
+nyelvi modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2) Minőség-ellenőrzés: a Claude Opus a mintán vak ellenőr volt; az emberi validáció ítéleteit emberek hozták, MI nélkül. (3) Kísérő adatkészlet: nyelvi modellek csak a
 ritka igealakokra tettek javaslatot (l. Újrahasznosítás). Minden más feldolgozás determinisztikus. A
 kézirat szövegének megfogalmazásában és szerkesztésében a claude-opus-5-5 modell segített, az adatkészlet adataiból; a
 számok az adatokból generáltak. A kutatást a szerző tervezte, minden szerkesztői döntést ő hozott, minden állítást az
@@ -939,8 +938,10 @@ adatokon ellenőrzött, és a tartalomért teljes felelősséget vállal; MI-esz
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) {szo_fo_en}; a számozatlan nyilatkozatokkal {szo_nyil_en}; a
-hivatkozásokkal is (a JOHD beküldési oldalának számítása) {szo_hiv_en}. A JOHD data paper terjedelme 1000–1500 szó.
+hivatkozások nélkül (a JOHD-sablon számítása) {szo_fo}; a számozatlan nyilatkozatokkal {szo_nyil}; a
+hivatkozásokkal is {szo_hiv} (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt {szo_kiv}. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+számítás érvényes.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
 levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos Word- vagy LaTeX-sablonjába kerül; a
@@ -976,8 +977,7 @@ https://doi.org/{doi} (concept DOI, resolving to the latest version; currently v
 
 ### Context
 
-The dataset was produced in the {lex_en}, an independent research project of the author that builds a motif-indexed,
-cross-referenced lexicon of the Bible. For four centuries the Károli
+The dataset was produced in the {lex_en}, the author's independent research project. For four centuries the Károli
 translation has been the base text of Hungarian Protestant Bible reading. Strong's numbers (Strong, 1890) link a
 translation's words to the Hebrew and Greek vocabulary. Strong-tagged Károli editions exist; the alignment published
 here is openly licensed, documented word by word, and its accuracy is measured.
@@ -997,7 +997,8 @@ alignment of verse lengths; each merge of two verses was approved by hand.
 
 **Alignment.** For each verse a language model (Claude Sonnet) received two numbered word lists: the Károli words, and
 the source words with form, Strong's number and a short English gloss from TAHOT/TAGNT; the Strong's number was given
-for information only and was forbidden in the answer. The model returned position pairs only, with the additions and
+for information only and was forbidden in the answer. The fixed instructions also showed an optional Strong-tagged KJV
+line in a worked example; no verse input contained one. The model returned position pairs only, with the additions and
 untranslated words. In Genesis 1:1, for example, it paired *teremté* (2) with source word 3 (*bārāʾ*) and *Kezdetben*
 (1) with words 1–2 (*bə-*, *rēʾšît*), and marked the object marker *ʾēt* (5) as untranslated; a program then attached
 H1254, H9003 and H7225 by position. Twelve written rules decided disputed cases. Function words follow fixed
@@ -1007,7 +1008,7 @@ functioning as a pronoun is linked. A program checked every answer (each Hungari
 word at least once, only existing positions); a failed answer was redone. The model therefore could not invent a
 Strong's number or a lexicon entry: its possible error is a wrong pairing. Every pair points to one source word and can
 be checked, as the human validation does; meaning and Strong's number come from the open scholarly source data, not
-from the model. Deterministic programs (Python) rebuild the tables byte-identically from the saved model answers.
+from the model. Python programs rebuild the tables byte-identically from the saved answers.
 
 ### Sampling strategy
 
@@ -1054,7 +1055,7 @@ are listed in the dataset.
 - **Repository name:** Zenodo
 - **Object name:** `{objektum}` (Logosz Lexikon – Károli Bible (1908): Word Alignment with Hebrew and Greek Strong's
   Numbers, version {verzio})
-- **Format names and versions:** TSV (UTF-8, tab-separated, LF line endings) for the data; Markdown for the bilingual
+- **Format names and versions:** TSV (UTF-8, tab-separated, LF line endings) for the data and the machine-readable codebook; Markdown for the bilingual
   documentation (codebook, methods description, known issues); CFF citation file; SHA-256 checksum list
 - **Creation dates:** {kezdet} – {adatallapot}
 - **Dataset creators:** Tamás Demeter (independent researcher; ORCID: {orcid}): rules, processing pipeline, measurement,
@@ -1082,10 +1083,10 @@ for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with er
 and error types can also serve to evaluate word aligners. The {lex_en}, a motif-indexed, cross-referenced biblical
 lexicon, is built on this alignment.
 
-A companion dataset carries the same pairs on a modernised Károli text (Demeter, 2026b). The modernisation is the
-author's own work: it changes only spelling and verb forms, by rules; for rare verb forms language models made
-proposals, and a form changed only where independent proposals agreed and a stem check let it through; the result was
-independently reviewed. Every word kept its position, so the two datasets join on the verse and word-position key.
+A companion dataset carries the same pairs on a modernised Károli text (Demeter, 2026b). The modernisation, the
+author's own work, changes only spelling and verb forms, by rules; for rare verb forms, language models proposed
+changes, applied only where independent proposals agreed and passed a stem check; the result was independently
+reviewed. Every word kept its position, so the two datasets join on the verse and word-position key.
 
 Limitations. The alignment is a machine proposal. The blind reviewer is itself a model; the independent comparison
 covers main words only, on a small cluster sample; the Hebrew morpheme pairs ({morfema} pairs) are not covered by the
@@ -1128,8 +1129,8 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 Generative AI was used in three places. (1) Alignment: a language model (Claude Sonnet, Anthropic; the batch runs are
 logged as claude-sonnet-5-5) returned position pairs only (see Method); it could not write Strong's numbers, which come
 from TAHOT/TAGNT by position, and every pair points to one source word. For Genesis and Exodus, another language model
-was also run as a cross-check; no published pair derives from it alone. (2) Quality control: a second model (Claude
-Opus) served as blind reviewer on the sample; the human validation used no AI. (3)
+was also run as a cross-check; no published pair derives from it alone. (2) Quality control: Claude Opus served as
+blind reviewer on the sample; human validation used no AI. (3)
 Companion dataset: language models proposed rare verb forms only (see Reuse Potential). All other processing is
 deterministic. The claude-opus-5-5 model assisted in drafting and editing the manuscript text from the dataset's data;
 figures come from the data. The author designed the study, made all editorial decisions, verified every
@@ -1142,8 +1143,9 @@ statement against the data, and takes full responsibility for the content; an AI
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-{szo_fo_en}; with the unnumbered statements {szo_nyil_en}; with the references as well (as the JOHD submission page
-counts) {szo_hiv_en}. The JOHD data paper length is 1,000–1,500 words.
+{szo_fo}; with the unnumbered statements {szo_nyil}; with the references as well {szo_hiv} (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too {szo_kiv}. The JOHD
+data paper length is 1,000–1,500 words; the editorial office can confirm which count applies.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model
 reviewer), the corresponding author's e-mail address, the two validators' names. The text goes into the official JOHD

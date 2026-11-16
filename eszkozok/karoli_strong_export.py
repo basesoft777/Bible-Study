@@ -434,7 +434,7 @@ def fmt(N, nyelv):
     F['verzio_modern'] = VERZIO_MODERN
     F['kozzetetel'] = KOZZETETEL
     F['kezdet'] = LETREHOZAS_KEZDET
-    nev =RETEG_NEV_HU if nyelv == 'hu' else RETEG_NEV_EN
+    nev = RETEG_NEV_HU if nyelv == 'hu' else RETEG_NEV_EN
     F['r_min_nev'], F['r_max_nev'] = nev[N['rmin_kod']], nev[N['rmax_kod']]
     return F
 
@@ -491,10 +491,11 @@ def kezirat(N):
     hu, en = fmt(N, 'hu'), fmt(N, 'en')
     # a szószám az angol beküldési szövegből (a jegyzetbe kerül; a jel előtti részt nem befolyásolja)
     sablon_en = [s for _, s, d in SZ.KEZIRAT if d == 'en'][0]
-    ures = dict(en, szo_fo_en='', szo_nyil_en='', szo_hiv_en='')
+    ures = dict(en, szo_fo='', szo_nyil='', szo_hiv='', szo_kiv='')
     sz = szoszam(sablon_en.format(**ures))
-    for F in (hu, en):
-        F['szo_fo_en'], F['szo_nyil_en'], F['szo_hiv_en'] = (ezres(sz[k], 'en') for k in ('fo', 'nyil', 'hiv'))
+    for F, nyelv in ((hu, 'hu'), (en, 'en')):
+        for k in ('fo', 'nyil', 'hiv', 'kiv'):
+            F['szo_' + k] = ezres(sz[k], nyelv)
     ki = {}
     for rel, sablon, d in SZ.KEZIRAT:
         torzs = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
@@ -510,21 +511,26 @@ NYILATKOZAT = ('Data Accessibility Statement', 'Acknowledgements', 'Funding Stat
 def szoszam(szoveg):
     """A JOHD-terjedelem szószáma az angol kéziratból (a VEGE_JEL előtti rész): 'fo' az 1–4. szakasz a címsorok és a
     táblázat nélkül (a sablon számítása: cím, szerzői sor, kivonat, táblázat, hivatkozások nélkül); 'nyil' ehhez a
-    számozatlan nyilatkozatok; 'hiv' ehhez a hivatkozások is (a beküldési oldal számítása)."""
+    számozatlan nyilatkozatok; 'hiv' ehhez a hivatkozások is (a beküldési oldal szerint a korlát a hivatkozásokat is
+    tartalmazza); 'kiv' ehhez a kivonat is (a legszigorúbb olvasat)."""
     torzs = szoveg.split(VEGE_JEL)[0]
-    db = {'fo': 0, 'nyilatkozat': 0, 'hivatkozas': 0}
+    db = {'fo': 0, 'nyilatkozat': 0, 'hivatkozas': 0, 'kivonat': 0}
     resz = None
     for sor in torzs.split('\n'):
         if sor.startswith('## '):
             cim = sor[3:].strip()
             resz = ('fo' if re.match(r'^[1-4]\. ', cim) else 'nyilatkozat' if cim in NYILATKOZAT
-                    else 'hivatkozas' if cim == 'References' else None)
+                    else 'hivatkozas' if cim == 'References' else 'kivonat' if cim == 'Abstract' else None)
             continue
         if resz is None or sor.startswith('#') or sor.startswith('|'):
             continue
+        if resz == 'kivonat' and sor.startswith('**'):      # a kulcsszavak és a szerzői szerepek nem a kivonat
+            resz = None
+            continue
         db[resz] += len([t for t in sor.split() if re.search(r'\w', t)])
     return {'fo': db['fo'], 'nyil': db['fo'] + db['nyilatkozat'],
-            'hiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas']}
+            'hiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas'],
+            'kiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas'] + db['kivonat']}
 
 
 def note(N):

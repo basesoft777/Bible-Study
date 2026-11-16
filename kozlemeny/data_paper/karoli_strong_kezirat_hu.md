@@ -27,8 +27,7 @@ https://doi.org/10.5281/zenodo.24141883 (concept DOI: mindig a legfrissebb vált
 
 ### Háttér
 
-Az adatkészlet a Logosz-lexikon nevű független kutatási projektben készült, amely a Biblia motívum-indexelt,
-kereszthivatkozott lexikonját építi. A Károli-fordítás négy évszázada a magyar
+Az adatkészlet a Logosz-lexikon nevű, a szerző által vezetett független kutatási projektben készült. A Károli-fordítás négy évszázada a magyar
 protestáns bibliaolvasás alapszövege. A Strong-számok (Strong, 1890) egy fordítás szavait a héber és görög szókincshez
 kötik. Strong-számos Károli-kiadás létezik; az itt közölt párosítás nyílt licencű, szavanként dokumentált, és a
 pontossága mért.
@@ -49,7 +48,8 @@ eredetiének; két vers minden egybeolvadását kézzel hagytuk jóvá.
 
 **Párosítás.** Egy nyelvi modell (Claude Sonnet) versenként két számozott szólistát kapott: a Károli szavait, és az
 eredeti szavakat alakkal, Strong-számmal és a TAHOT/TAGNT rövid angol glosszájával; a Strong-szám csak tájékoztatásul
-állt ott, a válaszban tilos volt. A modell csak sorszámpárokat adott vissza, a betoldásokkal és a fordítatlan szavakkal.
+állt ott, a válaszban tilos volt. A rögzített utasítás egy kidolgozott példában egy választható, Strong-címkés
+KJV-sort is mutatott; versbemenet ilyet nem tartalmazott. A modell csak sorszámpárokat adott vissza, a betoldásokkal és a fordítatlan szavakkal.
 Az 1Móz 1:1-ben például a *teremté* (2) szót a 3. eredeti szóval (*bārāʾ*), a *Kezdetben* (1) szót az 1–2. szóval
 (*bə-*, *rēʾšît*) párosította, a tárgyjelölő *ʾēt* (5) szót fordítatlannak jelölte; a H1254, H9003 és H7225 számot
 ezután program tette hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el. A funkciószavakra
@@ -106,7 +106,7 @@ felsorol.
 - **Tárhely neve:** Zenodo
 - **Objektum neve:** `karoli-1908-strongs-1.0.zip` (Logosz Lexikon – Károli Bible (1908): Word Alignment with Hebrew and Greek Strong's
   Numbers, változat: 1.0)
-- **Formátumok és változatok:** TSV (UTF-8, tabulátorral tagolt, LF sorvég) az adathoz; Markdown a kétnyelvű
+- **Formátumok és változatok:** TSV (UTF-8, tabulátorral tagolt, LF sorvég) az adathoz és a gépi kódkönyvhöz; Markdown a kétnyelvű
   dokumentációhoz (kódkönyv, módszertani leírás, ismert hibák); CFF hivatkozási fájl; SHA-256 ellenőrző összeg
 - **Létrehozás dátumai:** 2026-10-01 – 2026-11-01
 - **Az adatkészlet készítője:** Demeter Tamás (független kutató; ORCID: 0009-0005-9254-9731): szabályok, feldolgozási lánc, mérés,
@@ -181,8 +181,7 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 Generatív MI három helyen dolgozott. (1) Párosítás: egy nyelvi modell (Claude Sonnet, Anthropic; a kötegelt futások
 naplója szerint claude-sonnet-5-5) csak sorszámpárokat adott vissza (l. Módszer); Strong-számot nem írhatott, azt a
 sorszám alapján a TAHOT/TAGNT adja, és minden pár egy eredeti szóra mutat. Az 1Móz és a 2Móz párosításánál egy másik
-nyelvi modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2) Minőség-ellenőrzés: egy második modell (Claude Opus) a mintán vak
-ellenőr volt; az emberi validáció ítéleteit emberek hozták, MI nélkül. (3) Kísérő adatkészlet: nyelvi modellek csak a
+nyelvi modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2) Minőség-ellenőrzés: a Claude Opus a mintán vak ellenőr volt; az emberi validáció ítéleteit emberek hozták, MI nélkül. (3) Kísérő adatkészlet: nyelvi modellek csak a
 ritka igealakokra tettek javaslatot (l. Újrahasznosítás). Minden más feldolgozás determinisztikus. A
 kézirat szövegének megfogalmazásában és szerkesztésében a claude-opus-5-5 modell segített, az adatkészlet adataiból; a
 számok az adatokból generáltak. A kutatást a szerző tervezte, minden szerkesztői döntést ő hozott, minden állítást az
@@ -195,8 +194,10 @@ adatokon ellenőrzött, és a tartalomért teljes felelősséget vállal; MI-esz
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1,222; a számozatlan nyilatkozatokkal 1,422; a
-hivatkozásokkal is (a JOHD beküldési oldalának számítása) 1,496. A JOHD data paper terjedelme 1000–1500 szó.
+hivatkozások nélkül (a JOHD-sablon számítása) 1 225; a számozatlan nyilatkozatokkal 1 421; a
+hivatkozásokkal is 1 495 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 600. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+számítás érvényes.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
 levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos Word- vagy LaTeX-sablonjába kerül; a
