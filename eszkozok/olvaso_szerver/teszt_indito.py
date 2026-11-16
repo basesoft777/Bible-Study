@@ -309,6 +309,129 @@ class TesztLablecSablon(unittest.TestCase):
         self.assertEqual(set(re.findall(r'class="([^"]*)"', s)), {'labjegyzet'})
 
 
+GIT = shutil.which('git')
+
+
+def git(konyvtar, *args):
+    """Egy valódi `git`-hívás ideiglenes repón; a kimenet levágva."""
+    p = subprocess.run([GIT, '-C', konyvtar, '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', '-c', 'core.autocrlf=false', *args],
+                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding='utf-8')
+    assert p.returncode == 0, (args, p.stdout)
+    return p.stdout.strip()
+
+
+def ideiglenes_repo(t, nev='r', commitok=4):
+    """Ideiglenes repó `main` ággal és `commitok` üres committal; `origin/main` a csúcson. Visszaadja a könyvtárat és a commit-hash-eket (régi → új)."""
+    r = os.path.join(t, nev)
+    os.makedirs(r)
+    git(r, 'init', '-q', '-b', 'main')
+    hash_ek = []
+    for i in range(commitok):
+        git(r, 'commit', '-q', '--allow-empty', '-m', 'c%d' % i)
+        hash_ek.append(git(r, 'rev-parse', 'HEAD'))
+    git(r, 'update-ref', allapot.FO_REF, hash_ek[-1])
+    return r, hash_ek
+
+
+@unittest.skipUnless(GIT, 'a lemaradás tesztjéhez git kell')
+class TesztLemaradas(unittest.TestCase):
+    """F225: hány committal áll a HEAD az origin/main mögött; ideiglenes repón, valódi git-tel."""
+
+    def setUp(self):
+        self.t = tempfile.mkdtemp(prefix='indito_lem_')
+        self.addCleanup(shutil.rmtree, self.t, True)
+        self.r, self.h = ideiglenes_repo(self.t)
+
+    def test_azonos_hash_nulla_git_nelkul(self):
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 0)
+
+    def test_a_haromcommitos_lemaradas(self):
+        git(self.r, 'reset', '-q', '--hard', self.h[0])                       # a HEAD a legrégebbi committon, az origin/main a csúcson
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 3)
+
+    def test_csomagolt_objektumokkal_is(self):
+        git(self.r, 'reset', '-q', '--hard', self.h[1])
+        git(self.r, 'gc', '-q', '--prune=now')
+        git(self.r, 'pack-refs', '--all')                                      # a ref-ek is packed-refs-ben
+        self.assertFalse(os.path.exists(os.path.join(self.r, '.git', 'refs', 'remotes', 'origin', 'main')))
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 2)
+
+    def test_worktree_a_gitdir_fajlon_at(self):
+        # a linkelt worktree `.git` FÁJL: a számolás a feloldott --git-dir-rel megy; a worktree saját HEAD-je számít
+        git(self.r, 'branch', 'regi', self.h[1])
+        wt = os.path.join(self.t, 'wt')
+        git(self.r, 'worktree', 'add', '-q', wt, 'regi')
+        self.assertTrue(os.path.isfile(os.path.join(wt, '.git')))
+        self.assertEqual(allapot.lemaradas(wt, szinkron=True), 2)
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 0, 'a főcheckout HEAD-je a csúcson áll')
+
+    def test_nincs_origin_main_ismeretlen(self):
+        git(self.r, 'update-ref', '-d', allapot.FO_REF)
+        self.assertIsNone(allapot.lemaradas(self.r, szinkron=True))
+
+    def test_nincs_git_konyvtar_ismeretlen(self):
+        ures = os.path.join(self.t, 'ures')
+        os.makedirs(ures)
+        if allapot._git_konyvtar(ures) is not None:
+            self.skipTest('az ideiglenes könyvtár fölött git-repó van')
+        self.assertIsNone(allapot.lemaradas(ures, szinkron=True))
+
+    def test_hatterszal_nem_blokkol_es_a_vegen_ad_erteket(self):
+        git(self.r, 'reset', '-q', '--hard', self.h[0])
+        elso = allapot.lemaradas(self.r)
+        self.assertIn(elso, (None, 3), 'az első hívás nem várja meg a git-et (None), legfeljebb ha már kész')
+        ertek = elso
+        for _ in range(100):
+            if ertek == 3:
+                break
+            time.sleep(0.05)
+            ertek = allapot.lemaradas(self.r)
+        self.assertEqual(ertek, 3)
+
+    def test_a_szam_csak_ref_valtozaskor_szamolodik_ujra(self):
+        git(self.r, 'reset', '-q', '--hard', self.h[0])
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 3)
+        hivasok = []
+        eredeti = allapot._commit_szam
+        allapot._commit_szam = lambda *a: hivasok.append(a) or 99
+        self.addCleanup(setattr, allapot, '_commit_szam', eredeti)
+        self.assertEqual(allapot.lemaradas(self.r), 3, 'ugyanazokkal a ref-ekkel a tárból jön')
+        self.assertEqual(hivasok, [])
+        git(self.r, 'update-ref', allapot.FO_REF, self.h[2])                  # a ref változott: újra kell számolni
+        allapot.lemaradas(self.r, szinkron=True)
+        self.assertEqual(len(hivasok), 1)
+
+    def test_checkout_szerep_fo_es_worktree(self):
+        git(self.r, 'branch', 'ag', self.h[1])
+        wt = os.path.join(self.t, 'wt')
+        git(self.r, 'worktree', 'add', '-q', wt, 'ag')
+        szerep, fo, mf = allapot.checkout_szerep(self.r)
+        self.assertEqual((szerep, os.path.normpath(fo), os.path.normpath(mf)), ('fo', os.path.normpath(self.r), os.path.normpath(self.r)))
+        szerep, fo, mf = allapot.checkout_szerep(wt)
+        self.assertEqual((szerep, os.path.normpath(fo), os.path.normpath(mf)), ('elonezet', os.path.normpath(self.r), os.path.normpath(wt)))
+
+    def test_a_figyelmeztetes_szovege_main_es_ag(self):
+        f = allapot.figyelmeztetesek('main', 'ts', '', 201)
+        self.assertEqual(len(f), 1)
+        self.assertIn('201 committal az origin/main mögött', f[0])
+        self.assertIn('fetch', f[0])
+        g = allapot.figyelmeztetesek('claude/x', 'ts', '', 5)
+        self.assertEqual(len(g), 2)
+        self.assertIn('Az ág 5 committal az origin/main mögött', g[1])
+        for lem in (0, None):
+            self.assertEqual(allapot.figyelmeztetesek('main', 'ts', '', lem), [])
+
+    def test_a_lablec_kulcsa_es_kornyezeti_felulirasa(self):
+        a = allapot.Lablec('belso', 'main', 'aaaaaaaa', 'ts', lemaradas=0)
+        b = allapot.Lablec('belso', 'main', 'aaaaaaaa', 'ts', lemaradas=7, figyelmeztetesek=['f'])
+        self.assertNotEqual(a.kulcs(), b.kulcs())
+        L = allapot.Lablec.keszit('belso', 'ts', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234', 'PARDES_LEMARADAS': '201'})
+        self.assertEqual(L.lemaradas, 201)
+        self.assertEqual(len(L.figyelmeztetesek), 1)
+        self.assertIn('201 committal', L.figyelmeztetesek[0])
+        self.assertIsNone(allapot.Lablec.keszit('belso', 'ts', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'x', 'PARDES_LEMARADAS': 'nem'}).lemaradas)
+
+
 @unittest.skipUnless(POSIX, 'az indit.sh tesztjéhez POSIX, bash, fuser és flock kell (WSL)')
 class TesztInditSh(unittest.TestCase):
     """Az `indit.sh` előkészítő módban: leállítás + szinkron, szerver nélkül."""
