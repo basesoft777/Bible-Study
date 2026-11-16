@@ -15,6 +15,10 @@ from lapgen.szoveg import MotivumId
 
 S2, S3, S4, S5, S6, S7, S8, S9 = ('S2 (F218.5)', 'S3 (F218.6)', 'S4 (F218.7)', 'S5 (F218.8)', 'S6 (F218.9)',
                                   'S7 (F218.10)', 'S8 (F218.11)', 'S9 (F218.12)')
+S3_MARADEK = ('az S3 kész, de ezt a követelményt nem teljesítette (a 6. ellenőrzés E9 tétele); a 218a végi '
+              'átnézésén szeletet kap')
+HELY_EGYSEG = ('a névvel megadott szópár (1.4, `málé+chámász`) tagjait a modell nem köti Strong-számhoz; a kapu '
+               'ehhez a bemeneti rétegben kér feloldást (N-tétel)')
 ISM_3 = 'a „3. Kizárt és vizsgált helyek” szakasz szelete (a briefben nincs külön szelete; a szakasz megépítésekor)'
 
 
@@ -74,15 +78,16 @@ class HibanaploMintak(unittest.TestCase):
 
 
 class Szerkezeti(unittest.TestCase):
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_gk03_pillanatkep_csak_kapuval(self):
         """GK-03: elavított másolattal BUKÁS (B18, B19, B21, B36, B38); szeletenként bővül. A B05 kapuja kész
         (`teszt_dontes.py`); a B06-ot a csoportos sor versszáma igazolja (a számítás megáll, ha nem egyezik)."""
 
-    @unittest.skip(S4)
-    def test_gk04_kapu_minden_lapon(self):
-        """GK-04: az `lxx_egyezes` és a `hely_egyseg` kapuja a modellen fut, mindkét mintalapon. A melléklet-kapu és
-        a teljesség-mérés frissességi kapuja kész (`teszt_dontes.py`)."""
+    @unittest.skip(HELY_EGYSEG)
+    def test_gk04_hely_egyseg_kapu(self):
+        """GK-04, a `hely_egyseg` része (a régi `hely_egyseg_kapu`, F212 Sz4): a szavanként az 1.4 csoportjainak
+        helyszáma (szópárban is) és az Áttekintés „Helyek a motívumban” oszlopa egyezik, a modellen, mindkét mintalapon.
+        Az `lxx_egyezes` része kész (`teszt_lxx.py` `Gk04`)."""
 
     @unittest.skip(S8)
     def test_gk07_forrasmegjeloles_a_valodi_olvasasbol(self):
@@ -115,20 +120,15 @@ class Szerkezeti(unittest.TestCase):
     def test_gk11_nincs_globalis_allapot(self):
         """GK-11: a két mintalap fordított sorrendben generálva bájtra azonos."""
 
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_gk13_lemma_kiejtes_es_valtozat(self):
         """GK-13: a szótári alak kiejtése ugyanabból a szolgáltatásból, a lemma-változattal: H2403a/b, H2398."""
 
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_gk14_osszevont_versek_kulcsa(self):
         """GK-14: az összevont 9 versnél a szavak sorrendje a versösszevonás szerint áll."""
 
-    @unittest.skip(S3)
-    def test_gk15_forditas_allapot(self):
-        """GK-15 (T5): `munka` módban az elavult fordítás a régi magyar szöveggel áll, jelölve; `kiadas` módban
-        elavult vagy hiányzó fordítás BUKÁS; a modell listázza az érintett sorokat."""
-
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_gk18_bdb_betujavitas_mindenutt(self):
         """GK-18: a kártya és az olvasói réteg ugyanazt a teljesen javított BDB-szöveget adja."""
 
@@ -153,7 +153,7 @@ class Szerkezeti(unittest.TestCase):
         """GK-27 (T9): `munka` módban „a szerző a lap korábbi változatát hagyta jóvá (dátum)”; `kiadas` módban a
         `lap_commit` egyezése kötelező."""
 
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_gk28_allapotmondat_adatbol(self):
         """GK-28 (T7): a SECE-, Peshitta-, Targum-, közel-keleti és Chain Lineage-mondat a jegyzék `allapot`
         mezőjéből és az adat tényleges állapotából jön; a hamis „még nincs” mondat nem áll."""
@@ -175,11 +175,11 @@ class AtvettTetelek(unittest.TestCase):
         """GK-A6: „a kinyerés még nem történt meg” pontosan azoknál a lánc-szavaknál áll, amelyeknek nincs
         BDB-soruk a visszhang-táblában."""
 
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_gk_a10_csupasz_strong_szam(self):
         """GK-A10: a lapon 0 csupasz, zárójeles Strong-szám."""
 
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_gk_a12_nem_letezo_karoli_vers(self):
         """GK-A12: BDB-hivatkozásból képzett igehely csak akkor link, ha a vers a Károliban létezik."""
 
@@ -198,7 +198,7 @@ class AtvettTetelek(unittest.TestCase):
         """GK-A11, A14, A15, B5, B8, C3, C9, D3: a hibaleltár leírása szerint újramérve, 0 eltérés (a leírásokat
         az F218.1 halasztott része veszi át)."""
 
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_gk_n178_thayer_a_javitott_forrasbol(self):
         """GK-N178: a Thayer-kártya szakaszai a javított forrásból jönnek; a 15 érintett Strong tesztje."""
 
@@ -232,7 +232,7 @@ class Hibanaplo(unittest.TestCase):
     def test_hn10_karoli_kh_forrasdeklaracio(self):
         """HN-10: a Károli-kereszthivatkozás forrásdeklarációja a ténylegesen olvasott javított forrást nevezi."""
 
-    @unittest.skip(S3)
+    @unittest.skip(S3_MARADEK)
     def test_hn12_angol_thayer_nyersen(self):
         """HN-12: nyers angol Thayer-szöveg nem kerül a lapra."""
 

@@ -3,7 +3,6 @@
 Minden látható mondat a sablontáblából jön (`s5.*`); a szöveg a lapmodell idézeteiből. Az olvasói bekezdés a szóhíd
 összegzése (a régi `olvasoi_kovetkeztetes.lxx_hid`); a 4.6 mondatai ugyanezt a számlálót olvassák.
 """
-from lapgen import konfig
 from lapgen.megjelenites.md import keret as K
 from lapgen.megjelenites.md.szocikkek import szo_nevelovel
 from lapgen.szamitas.lxx import GorogFajta, Itelet
@@ -11,7 +10,6 @@ from lapgen.szoveg import prov
 
 AZONOSITO = 'lxx'
 _SZAMNEV_MAX = 10
-_JELZO = ((0.67, 's5.jelzo.eros'), (0.34, 's5.jelzo.reszleges'))
 _FEJLEC = ('s5.fejlec.vers', 's5.fejlec.lxx', 's5.fejlec.heber', 's5.fejlec.gorog', 's5.fejlec.itelet')
 _HATASTORTENET = 'hatastortenet'
 
@@ -21,10 +19,9 @@ def szamnev(ny, n):
     return ny.s(ny.kulcs('szamnev', str(n))) if 1 <= n <= _SZAMNEV_MAX else ny.s('szam', n=n)
 
 
-def jelzo(ny, egyezik, osszes):
-    """A híd erőssége a szócsaládos egyezés aránya szerint (a régi `lxx_hid_jelzo`)."""
-    arany = egyezik / osszes
-    return ny.s(next((k for hatar, k in _JELZO if arany >= hatar), 's5.jelzo.gyenge'))
+def jelzo(ny, fok):
+    """A híd erőssége (a modell fokozata; a régi `lxx_hid_jelzo`)."""
+    return ny.s(ny.kulcs('s5.jelzo', fok.value))
 
 
 def hid_bekezdes(ny, m):
@@ -48,7 +45,7 @@ def hid_bekezdes(ny, m):
         mondatok.append(ny.s('s5.hid.tobbi', elemek=tobbi))
     if par_n:
         mondatok.append(ny.s('s5.hid.kov', szamnev=szamnev(ny, len(nevek)),
-                             jelzo=jelzo(ny, sz.egyezo + sz.szocsalad, par_n), a=sz.egyezo + sz.szocsalad, b=par_n))
+                             jelzo=jelzo(ny, m.fok), a=sz.egyezo + sz.szocsalad, b=par_n))
     return ny.s('s5.hid', mondatok=tuple(mondatok))
 
 
@@ -128,7 +125,7 @@ def rovid_mondat(ny, m, keret):
         return ny.s('s4.p6.rovid.ures', cim=cim, horgony=horgony)
     return ny.s('s4.p6.rovid', szamnev=szamnev(ny, len(m.par_nevek)),
                 nevek=tuple(szo_nevelovel(ny, szo) for szo in m.par_nevek),
-                jelzo=jelzo(ny, sz.egyezo + sz.szocsalad, par_n), a=sz.egyezo + sz.szocsalad, b=par_n, cim=cim,
+                jelzo=jelzo(ny, m.fok), a=sz.egyezo + sz.szocsalad, b=par_n, cim=cim,
                 horgony=horgony)
 
 
@@ -142,9 +139,8 @@ def _szo_mondat(ny, mondat, szo_nagy):
                 else ny.s('s4.p6.szo.nincs_par.ures', nev=nev, n=n))
     reszek = tuple(ny.s(k, n=getattr(sz, m)) for k, m in _RESZ_PAR if getattr(sz, m))
     lelet = ny.s('s4.p6.szo', nev=nev, n=n, reszek=reszek) if reszek else ny.s('s4.p6.szo.ures', nev=nev, n=n)
-    a = sz.egyezo + sz.szocsalad
-    if n >= konfig.LXX_SZO_MIN and a / n >= konfig.LXX_SZO_ARANY:
-        return ny.s('s4.p6.szo.kovetkeztetes', lelet=lelet, a=a, n=n)
+    if mondat.kovetkeztetes:
+        return ny.s('s4.p6.szo.kovetkeztetes', lelet=lelet, a=sz.egyezo + sz.szocsalad, n=n)
     return lelet
 
 

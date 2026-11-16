@@ -2,8 +2,8 @@
 
 - B35: a Septuaginta szövege versenként, a Károli-könyv elsődleges szövegváltozatának fájljából (a régi
   `karoli_to_primary_slug`, `lxx_os_karoli_index`);
-- B37: az LXX-fordítói döntések teljes sorai (a megjelenő bizonyosság és típus szűrőjével, és a szűretlen tábla
-  saját döntés-párjai: a régi `lxx_dontesek_index`, `sajat_dontes`);
+- B37: az LXX-fordítói döntések teljes sorai (a megjelenő bizonyosság és típus szűrőjével: a régi
+  `lxx_dontesek_index`; minden sor Strong- és igehely-mezőjének alakja kapuzva);
 - B38: a 4.11 visszhang-blokk ellenőrzött LXX-társításai (a régi `vh_lxx_index`).
 
 A szövegek idézhető forrásszövegként jönnek; az igehely-számok egészek.
@@ -24,6 +24,7 @@ _VH_OSZLOPOK = ('motivum', 'strong', 'igehely', 'forras', 'lemma', 'kiejtes', 'e
 _GOROG_STRONG_RX = re.compile(r'^G\d{4}$')
 _HEBER_STRONG_RX = re.compile(r'^H\d{4}[a-z]?$')
 TIPUS_MINUSZ = 'lxx_minusz'
+_SEGEDTABLAK = ('karoli_fejezet_dontes', 'karoli_vers_felulbiralas')   # a könyvtár nem szöveges táblái
 
 
 def ekezet_nelkul(szoveg):
@@ -51,7 +52,9 @@ def _vers_index(fajlok):
     ki = {}
     for utvonal, fejlec, sorok in fajlok:
         if 'igehely_lxx' not in fejlec:
-            continue   # a könyvtár segédtáblája
+            if os.path.splitext(os.path.basename(utvonal))[0] in _SEGEDTABLAK:
+                continue   # a könyvtár segédtáblája
+            raise BemenetHiba('B35 (%s): nincs igehely_lxx oszlop, és nem ismert segédtábla' % utvonal)
         try:
             lxx, karoli, alak, lemma, strong = (fejlec.index(o) for o in
                                                 ('igehely_lxx', 'igehely_karoli', 'szoalak', 'lemma', 'strong'))
@@ -109,27 +112,31 @@ class Dontes:
 
 
 class LxxDontesSorok:
-    def __init__(self, megjeleno, sajat):
-        self._megjeleno, self._sajat = megjeleno, sajat
+    def __init__(self, megjeleno):
+        self._megjeleno = megjeleno
 
     def vershez(self, vers):
         """A vers megjelenő döntései a tábla rendjében."""
         return self._megjeleno.get(vers.kod, ())
 
-    def sajat(self, vers, heber):
-        """Van-e a (vers, héber szó) párnak sora a szűretlen táblában (a régi `sajat_dontes`)."""
-        return (vers.kod, heber.kod) in self._sajat
+
+def _alak_kapu(r, ertek, minta, oszlop):
+    """A nem üres Strong-mező alakja (üres: a forrás nem adja; más alak: kimondott hiba, nem néma kihagyás)."""
+    if ertek and not minta.match(ertek):
+        raise BemenetHiba('B37 (%s): a(z) %s mező nem Strong-szám alakú: %r' % (r['igehely'], oszlop, ertek))
 
 
 def dontes_sorok(b):
-    """B37 — az LXX-fordítói döntések teljes sorai (a megjelenő szűrővel), és a szűretlen tábla (vers, héber szó)
-    párjai."""
+    """B37 — az LXX-fordítói döntések teljes sorai (a megjelenő szűrővel)."""
     def betolt():
         tabla = b._tabla('B37', oszlopok=_DONTES_OSZLOPOK)
-        megjeleno, sajat = {}, set()
+        megjeleno = {}
         for r in tabla.szotarak():
             heber = r['heber_strong'].strip()
-            sajat.add((r['igehely'], heber))
+            _alak_kapu(r, heber, _HEBER_STRONG_RX, 'heber_strong')
+            _alak_kapu(r, r['gorog_strong'].strip(), _GOROG_STRONG_RX, 'gorog_strong')
+            if r['lxx_igehely'].strip() and lxx_vers(r['lxx_igehely']) is None:
+                raise BemenetHiba('B37 (%s): az lxx_igehely nem fejezet:vers alakú: %r' % (r['igehely'], r['lxx_igehely']))
             if r['bizonyossag'].strip() not in konfig.LXX_DONTES_BIZONYOSSAG \
                     or r['tipus'].strip() not in konfig.LXX_DONTES_TIPUS:
                 continue
@@ -141,7 +148,7 @@ def dontes_sorok(b):
                 Strong(gorog) if _GOROG_STRONG_RX.match(gorog) else None,
                 lxx_vers(r['lxx_igehely']) if r['lxx_igehely'].strip() else None,
                 r['tipus'].strip() == TIPUS_MINUSZ))
-        return LxxDontesSorok({k: tuple(v) for k, v in megjeleno.items()}, frozenset(sajat))
+        return LxxDontesSorok({k: tuple(v) for k, v in megjeleno.items()})
     return b.egyszer('B37:sorok', betolt)
 
 

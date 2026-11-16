@@ -24,6 +24,7 @@ import re
 from typing import Optional, Tuple
 
 from lapgen import bemenet, konfig
+from lapgen.bemenet import elofordulas as elofordulas_be
 from lapgen.bemenet import lxx as lxx_be
 from lapgen.bemenet import szavak as szavak_be
 from lapgen.szamitas.szotari_tipusok import Szo
@@ -109,14 +110,35 @@ class SzoSzamlalo:
 
 
 @dataclasses.dataclass(frozen=True)
+class HidFok(enum.Enum):
+    """A híd erőssége: a szócsaládos egyezés aránya a párral bíró versekben (`konfig.LXX_HID_*`)."""
+    EROS = 'eros'
+    RESZLEGES = 'reszleges'
+    GYENGE = 'gyenge'
+
+
+def hid_fok(szamlalo):
+    """A híd erőssége a számlálóból (a régi `lxx_hid_jelzo`); None, ha a motívumnak nincs párral bíró verse."""
+    par_n = szamlalo.egyezo + szamlalo.szocsalad + szamlalo.eltero
+    if not par_n:
+        return None
+    arany = (szamlalo.egyezo + szamlalo.szocsalad) / par_n
+    if arany >= konfig.LXX_HID_EROS:
+        return HidFok.EROS
+    return HidFok.RESZLEGES if arany >= konfig.LXX_HID_RESZLEGES else HidFok.GYENGE
+
+
+@dataclasses.dataclass(frozen=True)
 class Osszevetes:
-    """Az 5. szakasz modellje és a 4.6 számai. `par_szavak`: a motívum újszövetségi párral bíró héber szavai."""
+    """Az 5. szakasz modellje és a 4.6 számai. `par_szavak`: a motívum újszövetségi párral bíró héber szavai;
+    `fok`: a híd erőssége (None: nincs párral bíró vers)."""
     sorok: Tuple[LxxSor, ...]
     szamlalo: Szamlalo
     szavankent: Tuple[SzoSzamlalo, ...]
     par_szavak: Tuple[Strong, ...]
     gorog_szavak: Tuple[Strong, ...]
     par_nevek: Tuple[Szo, ...] = ()    # a párral bíró szavak szótári alakja (a mondatokhoz)
+    fok: Optional[HidFok] = None
 
 
 def _szamlalo(itelet_lista):
@@ -194,8 +216,9 @@ class _Szamito:
         heber = next((h for h in (self.heber_szo(vers, t) for t in tokenek) if h is not None), None)
         szavak = self.szeptuaginta.szavak(vers)
         if szavak is None:
-            raise KapuHiba('5.: a(z) %s könyvének nincs Septuaginta-fájlja: a „nincs Septuaginta-könyv” ág nincs '
-                           'portolva' % vers.kod)
+            raise KapuHiba('5.: a(z) %s könyvének nincs Septuaginta-fájlja az `lxx_os_import` könyvtérképe szerint '
+                           '(lehetséges ok a könyvnév eltérő alakja: a térkép a Siralmak könyvét `Sir` alakban ismeri, a '
+                           'normalizáló tábla `JSir` alakban); a „nincs Septuaginta-könyv” ág nincs portolva' % vers.kod)
         if not szavak:
             return tokenek, LxxSor(vers, None, heber, Gorog(GorogFajta.NINCS), Itelet.SZAMOZAS), ()
         lxx = self._lxx_hely(vers, szavak[0].lxx_hely)
@@ -266,6 +289,9 @@ def _ujraminosit(szamito, sor, tokenek, nyers):
 def osszevetes(f):
     """Az összevetés a motívum ószövetségi sorain (a tábla rendjében), versenként."""
     szamito = _Szamito(f)
+    if not szamito.gorog:
+        raise bemenet.BemenetHiba('5.: a motívumnak nincs görög szava; a régi lánc erre más mondatot írt (`lxx_olvasoi`, '
+                                  'görög szó nélkül): az ág nincs portolva')
     sorok, szamolt, nyers_gorog = [], [], []
     for s in sorted(f.sorok, key=lambda x: x.fajl_sorszam):
         if f.konyvek.ujszovetsegi(s.igehely.konyv):
@@ -286,7 +312,7 @@ def osszevetes(f):
         sorok=tuple(sorok), szamlalo=szamlalo,
         szavankent=tuple(SzoSzamlalo(h, _szamlalo(lista)) for h, lista in szavankent.items()),
         par_szavak=szamito.par, gorog_szavak=szamito.gorog,
-        par_nevek=tuple(f.szo(h) for h in szamito.par))
+        par_nevek=tuple(f.szo(h) for h in szamito.par), fok=hid_fok(szamlalo))
     _kapu_szavankent(modell, szamolt, f.motivum)
     _kapu_egyforras(szamito, modell, nyers_gorog, f.motivum)
     return modell
@@ -320,7 +346,9 @@ def _kapu_egyforras(szamito, modell, nyers_gorog, motivum):
 
 
 def szamit(korny):
-    """Az 5. szakasz modellje: az összevetés a motívum ószövetségi sorain."""
+    """Az 5. szakasz modellje: az összevetés a motívum ószövetségi sorain. A számítás itt újra fut (a 4.6 a 4. szakasz
+    forrásaiból számol): a szakasz forrásfigyelése (GK-07) így a saját olvasásait látja; a bemenetek beolvasása
+    gyorsítótárazott, csak az összevetés fut kétszer."""
     from lapgen.szamitas import szocikkek
     f = szocikkek.forrasok(korny.b, korny.motivum)
     if not any(not f.konyvek.ujszovetsegi(s.igehely.konyv) for s in f.sorok):
@@ -331,10 +359,19 @@ def szamit(korny):
 # --- a 4.6 (LXX-híd): a két nyelvrész pontja ugyanabból az összevetésből -------------------------------------------
 @dataclasses.dataclass(frozen=True)
 class SzoMondat:
-    """A héber szó 4.6-os mondatának adatai: a szó, a számlálója, és hogy van-e a motívumban újszövetségi párja."""
+    """A héber szó 4.6-os mondatának adatai: a szó, a számlálója, van-e a motívumban újszövetségi párja, és jár-e
+    a mondathoz következtetés (párral bíró szónál legalább `konfig.LXX_SZO_MIN` vers, és a szócsaládos egyezés aránya
+    legalább `konfig.LXX_SZO_ARANY`)."""
     szo: Szo
     szamlalo: Szamlalo
     van_par: bool
+    kovetkeztetes: bool = False
+
+
+def szo_kovetkeztetes(szamlalo, van_par):
+    """A 4.6 szavankénti mondatának következtetése (a régi `lxx_szo_uj` küszöbe)."""
+    n = szamlalo.osszes()
+    return van_par and n >= konfig.LXX_SZO_MIN and (szamlalo.egyezo + szamlalo.szocsalad) / n >= konfig.LXX_SZO_ARANY
 
 
 @dataclasses.dataclass(frozen=True)
@@ -375,7 +412,8 @@ def hid(f, osszevetes_modell, sajat, heber, tarsulas):
     for s in sajat:
         if s not in szamlalok or not szamlalok[s].osszes():
             raise KapuHiba('4.6: a(z) %s szónak nincs sora az 5. szakaszban: az ág nincs portolva' % s.kod)
-        mondatok.append(SzoMondat(f.szo(s), szamlalok[s], s in osszevetes_modell.par_szavak))
+        van_par = s in osszevetes_modell.par_szavak
+        mondatok.append(SzoMondat(f.szo(s), szamlalok[s], van_par, szo_kovetkeztetes(szamlalok[s], van_par)))
         versek = tarsulas.parok_versek(s)
         if versek is None:
             tarslistak.append(Tarslista(f.szo(s), None, 0, ()))
@@ -385,7 +423,29 @@ def hid(f, osszevetes_modell, sajat, heber, tarsulas):
         elemek = tuple(TarsElem(f.szo(g), _glossza_f(f, g), kozos)
                        for g, kozos in tarsulas.tarsak(s)[:konfig.LXX_PAROK_TOP])
         tarslistak.append(Tarslista(f.szo(s), len(versek), sum(1 for gs in versek.values() if gs), elemek))
+    if tarslistak and proveniencia is None:
+        raise KapuHiba('4.6: a motívum egyik héber szavának sincs sora a versszintű párok táblájában; a régi lánc a '
+                       'forrás-sort ekkor is kiírta: az ág nincs portolva')
+    egyezes_kapu(mondatok, osszevetes_modell.szamlalo, elofordulas_be.szopar_motivum(f.sorok), f.motivum)
     return LxxHid(osszevetes_modell, szavak, tuple(mondatok), tuple(tarslistak), proveniencia)
+
+
+def egyezes_kapu(mondatok, szamlalo, szopar, motivum):
+    """GK-04 (a régi `lxx_egyezes_kapu`, F212 Sz1, F194): a héber 4.6 szavankénti mondatainak versszáma az 5. szakasz
+    összesítésével egyezik. Egyes szavas motívumnál a szavankénti számok összege a versek száma; szópáros (formulaikus)
+    motívumnál a pár minden tagja minden versben áll, ezért mindegyik mondat a teljes versszámot mondja. A rövid mondatok,
+    az összegző és a görög 4.6 számai ugyanabból a számlálóból jönnek, köztük eltérés nem keletkezhet."""
+    n = szamlalo.osszes()
+    szamok = [m.szamlalo.osszes() for m in mondatok]
+    if not szamok:
+        return
+    if szopar:
+        if any(x != n for x in szamok):
+            raise KapuHiba('%s: a héber 4.6 szavankénti száma (szópár) %s eltér az 5. szakasz összesítésétől (%d)'
+                           % (motivum.kod, '/'.join(map(str, szamok)), n))
+    elif sum(szamok) != n:
+        raise KapuHiba('%s: a héber 4.6 szavankénti összege (%d) eltér az 5. szakasz összesítésétől (%d)'
+                       % (motivum.kod, sum(szamok), n))
 
 
 def _glossza_f(f, strong):
