@@ -1,6 +1,7 @@
+<!-- GENERÁLT: eszkozok/karoli_modern_export.py (a próza és a számok: ugyanott) — kézzel nem szerkesztendő; a #174 csomagjának közleménye, belső anyag, nem része a nyilt_karoli_modern/ csomagnak. -->
 # The Károli Bible in present-day spelling, linked word by word to the original languages
 
-*Announcement draft · Modernised Károli – Strong · Logosz Lexikon · DOI: 10.5281/zenodo.24141950*
+*Announcement draft · Modernised Károli – Strong · Logosz Lexikon · DOI: 10.5281/zenodo.24141949*
 
 Gáspár Károli's Bible translation is one of the foundational texts of the Hungarian language, but the spelling and verb
 forms of its 1908 edition — *teremté, monda, vala, lőn, a kik* — stop the present-day reader. The Logosz Lexikon now releases a
@@ -32,4 +33,4 @@ both were kept. The accuracy of the alignment was measured against an independen
 researchers studying Hungarian biblical usage together with the Hebrew and Greek text; developers building on an open,
 word-keyed Hungarian Bible text.
 
-The dataset is freely usable under CC BY 4.0: https://doi.org/10.5281/zenodo.24141950
+The dataset is freely usable under CC BY 4.0: https://doi.org/10.5281/zenodo.24141949

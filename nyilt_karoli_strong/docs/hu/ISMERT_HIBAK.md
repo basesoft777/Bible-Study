@@ -3,7 +3,7 @@
 *Károli 1908 – Strong szóillesztés · 1. kiadás · adatállapot: 2026-11-01*
 
 Ez a kiadás a párosítást a mérés pillanatában álló állapotban adja közre, változatlanul. A lent felsorolt hibák
-javítása a 2. kiadásba kerül, új méréssel (`MODSZER.md` 7.).
+javítása a 2. kiadásba kerül, új méréssel (`docs/hu/MODSZER.md` 7.).
 
 ## Megerősített hibák
 

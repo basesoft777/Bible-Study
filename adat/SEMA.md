@@ -2391,7 +2391,7 @@ orkesztrátor tölti, a felhasználó jóváhagyja (`jovahagyva`). A kimenet né
 | Oszlop | Tartalom |
 |---|---|
 | `het` | a keret-hét kezdete, `ÉÉÉÉ-HH-NN`: **szombat** (a keret szombaton 14:00 UTC-kor nullázódik); a hét a következő szombat 14:00 UTC-ig tart |
-| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` (a brief `sav` mezőjének értékei) vagy két keretsor: `FELMERES` (a „felmérés” munkatípus saját kerete) · `TARTALEK` |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` (a brief `sav` mezőjének értékei) vagy két keretsor: `FELMERES` (a „felmérés” munkatípus saját kerete) · `ORKESZTRACIO` (az orkesztrátor saját kerete; a felhasználó, 2026-11-15) · `TARTALEK` |
 | `sorrend` | egész: a sor helye a sávon belül (a hét sorrendje) |
 | `tetel` | a tétel: `F<nn>` vagy `#<nn>` (brief száma: ebből jön a valós állapot), `PR#<nn>` (PR; az állapota a PR-ból), `N-…` / szabad szöveg (csak kézi állapot), `-` (nincs konkrét tétel: a sor csak a célt és a keretet viszi) |
 | `cel_a_het_vegere` | olvasói nyelven: mi legyen kész a hét végére |
@@ -2399,7 +2399,11 @@ orkesztrátor tölti, a felhasználó jóváhagyja (`jovahagyva`). A kimenet né
 | `becsult_keret_szazalek` | egész 0–100: a heti keret hány %-át viszi a sor. Egy hét sorainak összege 100 (a tartalék is sor) |
 | `allapot_kezi` | üres, vagy `kesz` · `csuszik` · `blokkolt` · `elhagyva`; az utolsó háromhoz indok kell: `csuszik: <indok>`. A valós állapot (brief, PR) felülírja |
 | `jovahagyva` | `igen` (a felhasználó jóváhagyta) · `javaslat` (az orkesztrátor javaslata) |
+| `eredeti_keret_szazalek` | üres (= a `becsult_keret_szazalek`), vagy 0–100 közötti egész: a hét elején becsült keret, átcsoportosítás után is megmarad. Az oldal a mért fogyás mellett mutatja: „tervezett X% (eredetileg Z%) → mért Y%”. A 100%-os összeg-szabály a `becsult_keret_szazalek`-ra vonatkozik |
+| `session_minta` | üres, vagy `;`-vel elválasztott részszövegek; kis- és nagybetűtől függetlenül illesztődnek a session címére, és az illeszkedő session mért fogyása erre a sorra számít (a hozzárendelés: lent) |
 | `megjegyzes` | szabad szöveg; a `Te:` kezdetű megjegyzés a felhasználó teendője, az oldal tetején is megjelenik |
+
+**A mért fogyás soronként** (`--meres`): egy session legfeljebb egy sorhoz számít, ebben a sorrendben: (a) a sor `session_minta` részszövege illeszkedik a session címére; (b) a sor `tetel` mezője brief-szám (`F<nn>` / `#<nn>`), és a címben az `F<nn>` szóhatárral áll (utána betű megengedett: `F218a`); (c) az `ORKESZTRACIO` sor megkapja az orkesztrációba sorolt összes sessiont. Több illeszkedő sor közül a hét sorrendje szerinti első nyer. A sor mért fogyása a hozzá rendelt sessionök egységeinek összege, a sávösszeggel azonos kalibrációs szorzóval %-ra váltva; ami nem rendelhető sorhoz, az csak a sáv összegében látszik. Mérés nélkül az oldal a „X% keret” jelölést mutatja.
 
 **Kulcs:** `het`, `sav`, `sorrend`. **Szabály:** lezárt tétel a mostani hét tervében nem áll: a `lezarva` brief vagy a
 `kesz` sor az oldalon csak a „Visszanézés” blokkba kerül (a felhasználó, 2026-11-15: „semmilyen lezárt tétel nem

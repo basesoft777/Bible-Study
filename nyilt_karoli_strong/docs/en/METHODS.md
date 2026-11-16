@@ -1,6 +1,6 @@
 # Methods — word alignment of the 1908 Károli text with the source texts
 
-*Károli 1908 – Strong word alignment · Logosz Lexikon · release 1 · data state: 2026-11-01 · DOI: 10.5281/zenodo.24141884*
+*Károli 1908 – Strong word alignment · Logosz Lexikon · release 1 · data state: 2026-11-01 · DOI: 10.5281/zenodo.24141883*
 
 ## 1. What this dataset is
 
@@ -110,13 +110,13 @@ main-word pairs only.
 **Error types.** Of the 1,600 sample pairs, 72 differed from the reviewer: neighbouring word
 37 (content 20, morpheme 17), wrong word in the verse
 17, superfluous pair 16, same lexeme at another occurrence
-2. Every figure of the measurement is in `meres.tsv`.
+2. Every figure of the measurement is in `data/meres.tsv`.
 
 ## 6. Why open data
 
 The alignment is not error-free, and we do not publish it as such. By editorial decision it is released as open data
 because its accuracy is **measured and documented**: per stratum and link type, with confidence intervals, with the
-error types and the list of confirmed errors (`KNOWN_ISSUES.md`). The "proposal" state remains on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
+error types and the list of confirmed errors (`docs/en/KNOWN_ISSUES.md`). The "proposal" state remains on every pair. Publication does not rest on meeting a threshold set in advance: there was no fixed criterion before the
 measurement, and a threshold set afterwards would be a post-hoc criterion.
 
 ## 7. The next release
@@ -131,5 +131,5 @@ not apply to release 1.
 
 ## 8. Related dataset
 
-The same pairs also appear on the modernised Károli text (https://doi.org/10.5281/zenodo.24141950). The modernisation left every
+The same pairs also appear on the modernised Károli text (https://doi.org/10.5281/zenodo.24141949). The modernisation left every
 word in its place, so the two packages can be joined word by word on the verse and word position key.

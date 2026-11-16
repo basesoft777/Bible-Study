@@ -1,6 +1,6 @@
 # Methods — the modernised Károli and the Strong linkage
 
-*Modernised Károli – Strong · Logosz Lexikon · data state: 2026-11-12 · DOI: 10.5281/zenodo.24141950*
+*Modernised Károli – Strong · Logosz Lexikon · data state: 2026-11-12 · DOI: 10.5281/zenodo.24141949*
 
 ## 1. What this dataset is
 
@@ -10,7 +10,7 @@ word by word to the Strong's numbers of the Hebrew and Greek source words. The t
 unchanged.
 
 The modernised text is the project's own work. The word alignment was made on the 1908 Károli text and is also
-published as a separate dataset (https://doi.org/10.5281/zenodo.24141884). This dataset links the two.
+published as a separate dataset (https://doi.org/10.5281/zenodo.24141883). This dataset links the two.
 
 ## 2. Source text and key
 
@@ -97,7 +97,7 @@ Wilson 95% intervals are computed by the release from the measured counts):
   whole text (95% Poisson band about 500–3,600). The higher coverage of the second sample is biased, because
   later rounds targeted exactly its misses.
 
-The remaining known issues are listed in `KNOWN_ISSUES.md`.
+The remaining known issues are listed in `docs/en/KNOWN_ISSUES.md`.
 
 ## 5. The Strong alignment and its accuracy
 
@@ -110,7 +110,7 @@ with Strong's numbers:
 
 - the full pair set (with function words and morphemes), agreement with the blind reviewer: 95.06% (95%:
   93.81–96.32%); by book group (7 strata) between 93.00% (prophets) and 98.00%
-  (Gospels and Acts); the per-stratum table is in the word alignment dataset (https://doi.org/10.5281/zenodo.24141884);
+  (Gospels and Acts); the per-stratum table is in the word alignment dataset (https://doi.org/10.5281/zenodo.24141883);
 - pairs of main words against the independent source, on 2,663 pairs: 98.72% (95%: 98.22–99.08%); after
   three-way adjudication, which settled the differences with the blind reviewer, 99.81%;
 - pairs of Hebrew prefix and suffix morphemes: 90.74% (95%: 87.18–94.29%); the independent
@@ -131,6 +131,6 @@ verifies the earlier figure (418,633) on the 61 books.
 
 ## 7. Limitations
 
-- The alignment is a machine proposal; its accuracy is given above, known issues in `KNOWN_ISSUES.md`.
+- The alignment is a machine proposal; its accuracy is given above, known issues in `docs/en/KNOWN_ISSUES.md`.
 - The modernisation is neither a new translation nor a revision: vocabulary and word order are Károli's.
 - Some context-dependent verb forms are marked uncertain (2,358 words).

@@ -362,6 +362,7 @@ def osszesit(uzenetek, meta, suly, munkamappak, pontok, het, ag_terkep=None, top
     for sid, m in meta.items():
         sav_session[sid] = hozzarendel(m, munkamappak, ag_terkep)
     savok = OrderedDict((s, {'egyseg': 0.0, 'fable_egyseg': 0.0, 'uzenet': 0, 'session': {}}) for s in SAVOK + (ISMERETLEN,))
+    session_egyseg = {}
     for k, (e, fable) in egys.items():
         sid = uzenetek[k]['session']
         sav = sav_session.get(sid, (ISMERETLEN, ''))[0]
@@ -371,6 +372,7 @@ def osszesit(uzenetek, meta, suly, munkamappak, pontok, het, ag_terkep=None, top
         if fable:
             a['fable_egyseg'] += e
         a['session'][sid] = a['session'].get(sid, 0.0) + e
+        session_egyseg[sid] = session_egyseg.get(sid, 0.0) + e
     osszes = sum(a['egyseg'] for a in savok.values())
     fable_osszes = sum(a['fable_egyseg'] for a in savok.values())
     kal = kalibral(pontok, uzenetek, egys, het)
@@ -380,7 +382,9 @@ def osszesit(uzenetek, meta, suly, munkamappak, pontok, het, ag_terkep=None, top
         a['fable_szazalek'] = a['fable_egyseg'] * kal['fable'] if kal['fable'] is not None else None
         a['top'] = [(session_nev(sid, meta), e, sav_session[sid][1] if sid in sav_session else '')
                     for sid, e in sorted(a['session'].items(), key=lambda x: -x[1])[:top]]
-    return {'het': het, 'savok': savok, 'osszes': osszes, 'fable_osszes': fable_osszes,
+    sessionok = [{'sid': sid, 'nev': session_nev(sid, meta), 'sav': sav_session.get(sid, (ISMERETLEN, ''))[0], 'egyseg': e}
+                 for sid, e in sorted(session_egyseg.items(), key=lambda x: (-x[1], x[0]))]
+    return {'het': het, 'sessionok': sessionok, 'savok': savok, 'osszes': osszes, 'fable_osszes': fable_osszes,
             'osszes_szazalek': osszes * kal['heti'] if kal['heti'] is not None else None,
             'fable_osszes_szazalek': fable_osszes * kal['fable'] if kal['fable'] is not None else None,
             'kalibralas': kal, 'uzenet_db': len(egys), 'session_db': len({uzenetek[k]['session'] for k in egys}),

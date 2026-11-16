@@ -1,6 +1,7 @@
+<!-- GENERÁLT: eszkozok/karoli_modern_export.py (a próza és a számok: ugyanott) — kézzel nem szerkesztendő; a #174 csomagjának közleménye, belső anyag, nem része a nyilt_karoli_modern/ csomagnak. -->
 # A Károli-biblia mai helyesírással, szavanként az eredeti nyelvekhez kötve
 
-*Közlemény-tervezet · Modernizált Károli – Strong · Logosz-lexikon · DOI: 10.5281/zenodo.24141950*
+*Közlemény-tervezet · Modernizált Károli – Strong · Logosz-lexikon · DOI: 10.5281/zenodo.24141949*
 
 A Károli Gáspár-féle bibliafordítás a magyar nyelv egyik alapszövege, de 1908-as kiadásának helyesírása és igealakjai
 — *teremté, monda, vala, lőn, a kik* — a mai olvasót megállítják. A Logosz-lexikon most közreadja a szöveg modernizált
@@ -31,4 +32,4 @@ ellenőrrel 95,06%.
 kutatóknak, akik a magyar bibliai szóhasználatot a héber és görög szöveggel együtt vizsgálják; fejlesztőknek, akik
 szabad, szavanként kulcsolt magyar bibliaszövegre építenének.
 
-Az adatkészlet CC BY 4.0 licenccel szabadon felhasználható: https://doi.org/10.5281/zenodo.24141950
+Az adatkészlet CC BY 4.0 licenccel szabadon felhasználható: https://doi.org/10.5281/zenodo.24141949
