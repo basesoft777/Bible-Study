@@ -6,8 +6,8 @@ mintaszótára).
 
 A döntésnapló `forras_kereses` és `indoklas` mezője itt belső szabad szöveg: a lapra nem kerül. A réteg ezekből csak
 szerkezetet olvas ki (a csoportos sor versszáma, a csoportlista kulcsa, az ajánlás ténye), az indoklást pedig a
-mintaszótár okba sorolja; a lapon az ok kézi címkéje és kézi megjegyzése áll. Kivétel (S5, DT-F218s, megerősítésre
-vár): a kereszthivatkozásból vizsgált helyek indoklása a Minősítés táblájában kézi prózaként áll, ahogy a régi lapon
+mintaszótár okba sorolja; a lapon az ok kézi címkéje és kézi megjegyzése áll. Kivétel (S5, DT-F218s, a felhasználó
+döntése): a kereszthivatkozásból vizsgált helyek indoklása a Minősítés táblájában kézi prózaként áll, ahogy a régi lapon
 (`bemenet/kereszthiv.py`, kapuval: ami nem olvasói szöveg, azon a réteg megáll).
 
 A jelöltek és a csoportlista igehelyei a Károli-fájl kulcsai: a könyv rövidítése úgy áll, ahogy az adatban
