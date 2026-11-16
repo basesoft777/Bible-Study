@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-15",
-   "commit": "5980bd0b"
+   "commit": "87e29d8d"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -708,7 +708,7 @@
    "fazis": "folyamat",
    "allapot": "run",
    "brief_allapot": "fut",
-   "most": "M3 és M5: az F212 (CS3) merge-e után, behozott main-nel; előtte az ir visszabővítése (general.py, ellenoriz.py, 9. és 10. sablon, proza_allitas pár) és fuggesek",
+   "most": "M5 és az M3 proza_allitas --tanulmany módja: a nyitott PR-ok után (#729 és #725: adat/SEMA.md; #729: general.py; #749: 10. sablon és proza_allitas pár), az orkesztrátor sorrendjével; előtte az ir visszabővítése és a függési kör (#74 #123 #156 #205 #218 #224) rendezése — a felhasználó dönt",
    "fugg": "#123*, #125 (kész), #212*, #218*, #224*",
    "tervezett": false,
    "reszletes": "",
