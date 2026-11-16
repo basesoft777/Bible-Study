@@ -14,6 +14,7 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 - **Hibás** – válaszd ki a hiba típusát is:
   - *rossz forrásszó*: a magyar szónak a vers egy másik eredeti szava felel meg (ha tudod, koppints rá);
   - *hiányzó pár*: ez a pár jó, de a magyar szóhoz még egy eredeti szó is tartozik, és az a párjai között nem szerepel;
+  - *hiányos kifejezés*: a pár egy többszavas kifejezés része, de a kifejezés egy másik tagja nincs bekötve (lásd „Több szó – egy jelentés”);
   - *fölösleges pár*: a magyar szónak nincs eredeti megfelelője, mégis kapott párt;
   - *egyéb*: írd le a megjegyzésben.
   - Pár nélküli szónál a „Van megfelelője (hibás)” azt jelenti, hogy a szónak van eredetije, a párosítás tehát kihagyta. Ha tudod, koppints az eredeti szóra.
@@ -30,6 +31,18 @@ A névelő és néhány nyelvtani elem a magyarban és az eredetiben nem felel m
 - a korrelatív *azért*-ot a *hogy* előtt, ha nincs eredetije.
 
 Az eredeti oldalon ezek a kártyák alján „szabály szerint nincs párosítva” áll. **A konvenció alkalmazását ítéld meg, ne magát a konvenciót.** Ha egy pár csak azért tűnhet hibásnak vagy hiányosnak, mert egy névelő nincs bekötve, az nem hiba: ilyenkor a pár helyes.
+
+## Több szó – egy jelentés
+
+Gyakran nem egy szó felel meg egy szónak. Ilyenkor a kifejezés **minden tagjával** alkotott pár helyes. Az oldal a tétel fölött jelzi, ha a vizsgált szó többszavas kifejezés része, és a kártyákon a kifejezés minden tagja együtt villan fel. (A példák a mintán kívülről valók.)
+
+- **Egy magyar szó ↔ több eredeti szó (1:n).** Józs 10:26 *Azután* ↔ אַחֲרֵי כֵן (ʾaḥărê + kēn, H0310 + H3651): az *után* az ʾaḥărê-t, az *az* a kēn-t fedi, tehát az *Azután* mindkettővel helyes pár. Más Strong-számos kiadások az ilyen kifejezésnél gyakran csak a fő szót jelölik; ez felbontási különbség, nem hiba. *Hiba*, ha a pár a kifejezésen kívüli szóra mutat (pl. az *Azután* a mondatkezdő וַ-ra).
+- **Több magyar szó ↔ egy eredeti szó (n:1).** Józs 8:31 *meg van írva* ↔ כָּתוּב (H3789): mindhárom magyar szó párja helyes. *Hiba*, ha a szerkezeten kívüli szó (pl. a mellette álló *mint*) is ide kerül, és nem a saját eredetijéhez.
+- **Több ↔ több (n:m).** Józs 1:5 *a miképen* ↔ כַּאֲשֶׁר (kə- + ʾăšer, H9004 + H0834): mindkét magyar szó mindkét héber taggal párosítva van (B szabály), és ez mind a négy kapcsolatnál helyes. *Hiba*, ha a kifejezés egyik tagja kimarad: ezt a „hiányos kifejezés” hibatípussal jelöld.
+- **Igekötő.** Józs 1:5 *Meg nem áll* ↔ יִתְיַצֵּב (H3320): a különírt *Meg* is az ige párja, akkor is, ha a tagadószó elválasztja (E szabály). Ugyanitt *el nem hagylak*: az *el* is a אַרְפְּ párja. *Hiba*, ha az igekötő egy másik szóhoz (pl. a tagadószó eredetijéhez) került.
+- **Elöljárós vagy toldalékos héber szó.** Józs 8:31 *könyvében* ↔ בְּ + סֵפֶר (H9003 + H5612): a héber elöljáró a ragot viselő magyar szóhoz kötődik, mert a *-ben* rag fordítja. Ugyanígy *Úrnak* ↔ לַ + יְהוָה. *Hiba*, ha az elöljáró egy szomszédos, rag nélküli szóhoz került.
+
+**Hibatípusok többszavas kifejezésnél.** *Rossz forrásszó*: a pár a kifejezésen kívülre mutat. *Hiányos kifejezés*: a pár jó, de a kifejezés egy másik tagja (magyar vagy eredeti) nincs bekötve. *Hiányzó pár*: a magyar szónak van még egy eredetije, amely nem egy kifejezés része.
 
 ## A párosítás szabályai (röviden)
 

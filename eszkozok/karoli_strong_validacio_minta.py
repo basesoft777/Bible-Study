@@ -82,7 +82,7 @@ def csoport_of_reteg(rt):
 MINTA_FEJ = ['tetel_id', 'tipus', 'csoport', 'f172_reteg', 'f172_id', 'konyv', 'vers',
              'hu_vers', 'hu_sorszam', 'hu_szo', 'hu_kezdet', 'hu_veg',
              'er_nyelv', 'er_vers', 'er_sorszam', 'er_szo', 'strong', 'szoto', 'jelentes',
-             'tukor', 'kiejtes', 'morf', 'szofaj', 'morf_hu', 'nem_tr', 'tobbi_par', 'er_tokenek_json', 'parok_json']
+             'tukor', 'kiejtes', 'morf', 'szofaj', 'morf_hu', 'nem_tr', 'tobbszavas', 'tobbi_par', 'er_tokenek_json', 'parok_json']
 
 
 # ---------------------------------------------------------------- segédek
@@ -403,6 +403,13 @@ def epit(mag):
         else:
             er = ['', '', '', '', '', '', '', '', '', '', '']
         er_vers = ' '.join(x['a'] for x in t['tok'])
+        # többszavas megfelelés (csak párnál): 1:n = a magyar szónak több eredetije van; n:1 = a forrásszónak több
+        # magyar párja; n:m = mindkettő
+        tobbsz = ''
+        if t['w'] is not None:
+            n_er = sum(1 for p in vp if p[0] == h)
+            n_hu = sum(1 for p in vp if p[2] == t['e'])
+            tobbsz = {(True, True): 'n:m', (True, False): '1:n', (False, True): 'n:1'}.get((n_er > 1, n_hu > 1), '')
         sorok.append({
             'tetel_id': t['tetel_id'], 'tipus': t['tipus'], 'csoport': t['csoport'],
             'f172_reteg': t['f172_reteg'], 'f172_id': t['f172_id'], 'konyv': t['konyv'], 'vers': v,
@@ -411,6 +418,7 @@ def epit(mag):
             'er_nyelv': 'gorog' if t['nt'] else 'heber', 'er_vers': er_vers,
             'er_sorszam': er[0], 'er_szo': er[1], 'strong': er[2], 'szoto': er[3], 'jelentes': er[4],
             'tukor': er[5], 'morf': er[6], 'szofaj': er[7], 'nem_tr': er[8], 'kiejtes': er[9], 'morf_hu': er[10],
+            'tobbszavas': tobbsz,
             'tobbi_par': tobbi_szoveg,
             'er_tokenek_json': json.dumps(t['tok'], ensure_ascii=False, separators=(',', ':')),
             'parok_json': json.dumps([list(p) for p in vp], ensure_ascii=False, separators=(',', ':')),
@@ -488,7 +496,7 @@ def html_ir(sorok):
             'hn': int(s['hu_sorszam']), 'hk': int(s['hu_kezdet']), 'hv': int(s['hu_veg']), 'hs': s['hu_szo'],
             'nyelv': s['er_nyelv'], 'en': int(s['er_sorszam']) if s['er_sorszam'] else 0,
             'strong': s['strong'], 'szoto': s['szoto'], 'jel': s['jelentes'], 'tukor': s['tukor'],
-            'morf': s['morf'], 'mh': s['morf_hu'], 'kiej': s['kiejtes'], 'ntr': s['nem_tr'] == '1',
+            'morf': s['morf'], 'mh': s['morf_hu'], 'kiej': s['kiejtes'], 'ntr': s['nem_tr'] == '1', 'tsz': s['tobbszavas'],
             'tok': json.loads(s['er_tokenek_json']), 'parok': json.loads(s['parok_json']),
         })
     js = json.dumps(adat, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')

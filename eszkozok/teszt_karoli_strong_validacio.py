@@ -148,6 +148,9 @@ class Kiertekeles(unittest.TestCase):
         self.assertIn('| **döntött minta** | 292 | 288 | 4 | 0 |', md)
         self.assertIn('| A (Teszt A) | 80 | 77 | 3 | 0 | 3.75%', md)
         self.assertIn('döntésre vár: 8', md)
+        # többszavas bontás: a döntött 292 pár egy- és többszavasra oszlik
+        n1 = sum(1 for r in self.minta if r['tipus'] == 'par' and not r['tobbszavas'] and r['tetel_id'] not in (self.b_hibas | self.b_bizonytalan) - self.a_hibas)
+        self.assertIn('| egyszavas (1:1) | %d |' % n1, md)
 
     def test_harmadik_dontes_es_modell(self):
         _, elt, ki_dir = self._fut()

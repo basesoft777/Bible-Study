@@ -77,6 +77,9 @@ label.opt { display: flex; gap: 8px; align-items: center; padding: 6px 0; cursor
 .kerdes .er-heber { font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif; font-size: 1.4rem; direction: rtl; unicode-bidi: isolate; }
 .kerdes .er-gorog { font-family: "Gentium Plus", "Gentium", "SBL Greek", "Times New Roman", "Noto Serif", serif; font-size: 1.2rem; }
 .betu button { min-height: 36px; padding: 4px 10px; }
+.kifejezes { margin: 8px 0 0; padding: 6px 10px; border-left: 4px solid var(--accent); background: var(--chip); border-radius: 4px; font-size: .95rem; }
+.kifejezes .er-heber { font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", "Arial Hebrew", serif; font-size: 1.25rem; direction: rtl; unicode-bidi: isolate; }
+.kifejezes .er-gorog { font-family: "Gentium Plus", "Times New Roman", serif; font-size: 1.1rem; }
 table.parok { border-collapse: collapse; width: 100%; font-size: .95rem; }
 table.parok td { border-top: 1px solid var(--line); padding: 4px 6px; vertical-align: top; }
 table.parok tr.same td { background: color-mix(in srgb, var(--hl) 35%, transparent); }
@@ -145,6 +148,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
       <div class="row"><span class="badge" id="t-tipus"></span><span class="spacer"></span><span class="small" id="t-itelet-jel"></span></div>
       <p class="kerdes" id="t-kerdes-szoveg"></p>
       <p class="small muted" id="t-forras-sor" style="margin:0"></p>
+      <p class="kifejezes rejtett" id="t-kifejezes"></p>
     </div>
     <div class="card">
       <h2>Károli 1908</h2>
@@ -161,6 +165,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
         <div class="small muted">A hiba típusa:</div>
         <label class="opt"><input type="radio" name="hibatipus" value="rossz_forrasszo"> rossz forrásszó (a magyar szónak másik eredeti szó felel meg)</label>
         <label class="opt"><input type="radio" name="hibatipus" value="hianyzo_par"> hiányzó pár (a pár jó, de a magyar szóhoz még másik eredeti szó is tartozik)</label>
+        <label class="opt"><input type="radio" name="hibatipus" value="hianyos_kifejezes"> hiányos kifejezés (a pár egy többszavas kifejezés része, de a kifejezés egy másik tagja nincs bekötve)</label>
         <label class="opt"><input type="radio" name="hibatipus" value="folosleges_par"> fölösleges pár (a magyar szónak nincs eredeti megfelelője)</label>
         <label class="opt"><input type="radio" name="hibatipus" value="egyeb"> egyéb (írd le a megjegyzésben)</label>
       </div>
@@ -230,7 +235,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 <script>
 "use strict";
 var MINTA = /*MINTA_ADAT*/null;
-var VERZIO = "F175.V5";
+var VERZIO = "F175.V6";
 
 /* ---------- segédek ---------- */
 function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
@@ -287,6 +292,7 @@ function valasz(t) { return allapot.valaszok[t.id] || (allapot.valaszok[t.id] = 
 var fokusz = null;   // {o: "hu"|"er", n}: kattintással rögzített kapcsolat-kiemelés
 var L = { h2e: {}, e2h: {} };
 
+function hu_szo(t, h) { var re = /[\p{L}\p{N}]+/gu, m, i = 0; while ((m = re.exec(t.hu)) !== null) { if (++i === h) return m[0]; } return "?"; }
 function linkek(t) {
   var h2e = {}, e2h = {};
   t.parok.forEach(function (p) { (h2e[p[0]] = h2e[p[0]] || []).push(p); (e2h[p[2]] = e2h[p[2]] || []).push(p); });
@@ -296,15 +302,24 @@ function linkek(t) {
 function kapcs_jelol(o, n) {
   document.querySelectorAll(".kapcs").forEach(function (x) { x.classList.remove("kapcs"); });
   if (!o) return;
-  var hu = [], er = [];
-  if (o === "hu") { hu = [n]; (L.h2e[n] || []).forEach(function (p) { er.push(p[2]); }); }
-  else { er = [n]; (L.e2h[n] || []).forEach(function (p) { hu.push(p[0]); }); }
+  var k = kifejezes(o, n), hu = k.hu, er = k.er;
   hu.forEach(function (k) { var e = $("hk-" + k); if (e) e.classList.add("kapcs"); });
   er.forEach(function (k) { var e = $("ek-" + k); if (e) e.classList.add("kapcs"); });
 }
+/* a kifejezés: a kártya párjai, és azok további párjai (két lépés a pár-gráfban), hogy egy többszavas
+   megfelelés (pl. „a miképen” ↔ כַּאֲשֶׁר) minden tagja együtt villanjon fel */
+function kifejezes(o, n) {
+  var hu = {}, er = {};
+  if (o === "hu") hu[n] = 1; else er[n] = 1;
+  for (var lepes = 0; lepes < 2; lepes++) {
+    Object.keys(hu).forEach(function (h) { (L.h2e[h] || []).forEach(function (p) { er[p[2]] = 1; }); });
+    Object.keys(er).forEach(function (e) { (L.e2h[e] || []).forEach(function (p) { hu[p[0]] = 1; }); });
+  }
+  return { hu: Object.keys(hu).map(Number), er: Object.keys(er).map(Number) };
+}
 function esemeny(c, o, n) {
   c.addEventListener("mouseenter", function () { kapcs_jelol(o, n); });
-  c.addEventListener("mouseleave", function () { kapcs_jelol(fokusz && fokusz.o, fokusz && fokusz.n); });
+  c.addEventListener("mouseleave", function () { if (fokusz) kapcs_jelol(fokusz.o, fokusz.n); else { var t = tetel(); if (t.tipus === "par" && t.tsz) kapcs_jelol("hu", t.hn); else kapcs_jelol(null); } });
   c.addEventListener("click", function () { kartya_kattint(o, n); });
 }
 
@@ -330,6 +345,15 @@ function rajzol() {
     $("t-forras-sor").textContent = "";
     $("b-helyes").textContent = "Igaz (helyes)"; $("b-hibas").textContent = "Van megfelelője (hibás)";
   }
+  var kj = $("t-kifejezes"); kj.textContent = "";
+  if (t.tipus === "par" && t.tsz) {
+    var kf = kifejezes("hu", t.hn);
+    kj.append("Ez a szó több szóval együtt alkot egy kifejezést: ",
+      el("b", null, kf.hu.sort(function (a, b) { return a - b; }).map(function (h) { return hu_szo(t, h); }).join(" ")), " ↔ ",
+      el("b", { "class": nyelv_cls }, kf.er.sort(function (a, b) { return a - b; }).map(function (e) { return t.tok[e - 1].a; }).join(" ")),
+      ". A kifejezés minden tagjával alkotott pár helyes; hiba, ha a pár a kifejezésen kívüli szóra mutat, vagy egy tagja olyan szóhoz került, amelyhez nem tartozik.");
+  }
+  kj.classList.toggle("rejtett", !(t.tipus === "par" && t.tsz));
   ["helyes", "hibas", "bizonytalan"].forEach(function (x) { $("b-" + x).classList.toggle("on", v.itelet === x); });
   $("t-itelet-jel").textContent = v.itelet ? "Ítélet: " + { helyes: $("b-helyes").textContent, hibas: $("b-hibas").textContent, bizonytalan: "Bizonytalan" }[v.itelet] : "";
 
@@ -386,6 +410,7 @@ function rajzol() {
   $("t-er-tipp").textContent = "Rámutatás vagy koppintás: a szó párja kigyullad a másik sorban (újabb koppintás: elenged). Sárga: a vizsgált szó. A kártya alján a magyar pár, vagy „—”, ha nincs; „szabály szerint nincs párosítva”: a konvenció szerint párosítatlan szó (névelő, ʾet stb.), ez nem hiba. Az angol glossza a TAHOT/TAGNT tükörfordítása." +
     (t.nyelv === "gorog" ? " Halvány kártya: a Textus Receptusban nem szereplő szó [nem TR]." : "");
   if (fokusz) kapcs_jelol(fokusz.o, fokusz.n);
+  else if (t.tipus === "par" && t.tsz) kapcs_jelol("hu", t.hn);
 
   /* részletek */
   $("t-hibatipus").classList.toggle("rejtett", !(t.tipus === "par" && v.itelet === "hibas"));
@@ -420,7 +445,7 @@ var SZABALY_SZERINT = {
 };
 
 function valaszto_aktiv(t, v) {
-  if (t.tipus === "par") return v.itelet === "hibas" && (v.hibatipus === "rossz_forrasszo" || v.hibatipus === "hianyzo_par");
+  if (t.tipus === "par") return v.itelet === "hibas" && (v.hibatipus === "rossz_forrasszo" || v.hibatipus === "hianyzo_par" || v.hibatipus === "hianyos_kifejezes");
   return v.itelet === "hibas";
 }
 

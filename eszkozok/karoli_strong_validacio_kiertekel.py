@@ -253,6 +253,14 @@ def kiertekel(minta, nev_a, a, nev_b, b, dontes, modell):
     for cs in sorted({csop[t] for t in dont}, key=_csoport_sorrend):
         sor.append(pontossag_sor(cs, [dont[t] for t in dont if tip[t] == 'par' and csop[t] == cs]))
     sor.append('')
+    tsz = {r['tetel_id']: (r.get('tobbszavas') or '') for r in minta}
+    sor.append('Többszavas megfelelés szerint (döntött minta; 1:n = a magyar szónak több eredetije van, n:1 = a '
+               'forrásszónak több magyar párja, n:m = mindkettő):\n')
+    sor.append(fej_p)
+    for cimke, felt in (('egyszavas (1:1)', lambda x: x == ''), ('többszavas, összesen', lambda x: x != ''),
+                        ('· 1:n', lambda x: x == '1:n'), ('· n:1', lambda x: x == 'n:1'), ('· n:m', lambda x: x == 'n:m')):
+        sor.append(pontossag_sor(cimke, [dont[t] for t in dont if tip[t] == 'par' and felt(tsz.get(t, ''))]))
+    sor.append('')
     sor.append('Hibatípusok (a hibás páron, ellenőrönként): ' + '; '.join(
         '%s: %s' % (nev, ', '.join('%s %d' % (k, n) for k, n in sorted(_szamlal(
             v[t].get('hibatipus') or '(nincs megadva)' for t in v if tip[t] == 'par' and v[t]['itelet'] == 'hibas').items())) or '–')
