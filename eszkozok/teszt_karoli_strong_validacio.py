@@ -180,6 +180,37 @@ class Kiertekeles(unittest.TestCase):
         self.assertNotEqual(r.returncode, 0)
 
 
+class Alaktan(unittest.TestCase):
+    """A Macula-kódok olvasható alakja (eszkozok/karoli_strong_morf.py)."""
+
+    def test_heber(self):
+        import karoli_strong_morf as km
+        self.assertEqual(km.heber('Vqp3ms'), 'ige, qal perfectum, E/3 hn.')
+        self.assertEqual(km.heber('Ncfsc'), 'főnév, nn. e.sz. status constr.')
+        self.assertEqual(km.heber('Sp2ms'), 'névmási rag, E/2 hn.')
+        self.assertEqual(km.heber('Pdxms'), 'mutató névmás, hn. e.sz.')
+        # a törzsbetű arámiban mást jelent; vegyes versben nem nevezzük meg
+        self.assertEqual(km.heber('VPp3ms', km.arami_vers('Dán 5:23')), 'ige, itpaal perfectum, E/3 hn.')
+        self.assertEqual(km.heber('VPp3ms', km.arami_vers('1Móz 1:1')), 'ige, pual perfectum, E/3 hn.')
+        self.assertEqual(km.heber('VPp3ms', km.arami_vers('Dán 2:4')), 'ige, törzs: P perfectum, E/3 hn.')
+        self.assertIsNone(km.heber('Xyz'))
+
+    def test_gorog(self):
+        import karoli_strong_morf as km
+        self.assertEqual(km.gorog('V-PAP-NSM'), 'ige, praesens act. part., nom. e.sz. hn.')
+        self.assertEqual(km.gorog('V-2AAI-3S'), 'ige, aoristus (2.) act. ind., E/3')
+        self.assertEqual(km.gorog('T-GSF'), 'névelő, gen. e.sz. nn.')
+        self.assertEqual(km.gorog('V-RAN-ATT'), 'ige, perfectum act. inf.')
+        self.assertIsNone(km.gorog('Z-QQ'))
+
+    def test_minta_tokenjei(self):
+        _, minta = ki.tabla(ki.MINTA)
+        tk = [x for r in minta for x in json.loads(r['er_tokenek_json'])]
+        self.assertTrue(all(x['k'] for x in tk))                      # átírás mindenütt
+        self.assertTrue(all(x['mh'] for x in tk if x['m']))           # minden meglévő kód megfejtve
+        self.assertLess(sum(1 for x in tk if not x['m']) / len(tk), 0.05)
+
+
 class Oldal(unittest.TestCase):
     """Az ellenorzo.html szkriptje Node-on: kitöltés, emlékeztető, export, betöltés tiszta állapotba,
     tételenkénti időbélyeges összefésülés, idegen minta és más ellenőr fájlja."""

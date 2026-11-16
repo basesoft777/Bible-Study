@@ -2,12 +2,15 @@
 <html lang="hu">
 <head>
 <!-- GENERÁLT sablonból: eszkozok/karoli_strong_validacio_sablon.html + kozlemeny/data_paper/validacio/minta.tsv;
-     előállítás: python eszkozok/karoli_strong_validacio_minta.py — a kész oldalt kézzel szerkeszteni tilos -->
+     előállítás: python eszkozok/karoli_strong_validacio_minta.py — a kész oldalt kézzel szerkeszteni tilos;
+     a sablon önmagában (adat nélkül) nem működőképes oldal -->
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Károli–Strong ellenőrzés</title>
 <style>
 :root {
+  --betu: 1;
   --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --card: #ffffff; --line: #dedbd3;
   --accent: #2f5d8a; --hl: #ffe08a; --hl-er: #ffd27a; --sel: #b9e3c6;
   --ok: #2e7d4f; --bad: #b3361f; --unsure: #9a6b00; --chip: #f1efe9;
@@ -20,7 +23,7 @@
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--fg);
   font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
-main { max-width: 860px; margin: 0 auto; padding: 12px 16px 96px; }
+main { max-width: 1100px; margin: 0 auto; padding: 12px 16px 170px; }
 h1 { font-size: 1.25rem; margin: 8px 0 4px; }
 h2 { font-size: 1rem; margin: 0 0 6px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .03em; }
 .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; margin: 10px 0; }
@@ -41,31 +44,38 @@ input[type=text], textarea { font: inherit; width: 100%; padding: 10px; border-r
 textarea { min-height: 64px; resize: vertical; }
 label.opt { display: flex; gap: 8px; align-items: center; padding: 6px 0; cursor: pointer; }
 .fejlec { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
-.fejlec .belso { max-width: 860px; margin: 0 auto; padding: 8px 16px; }
+.fejlec .belso { max-width: 1100px; margin: 0 auto; padding: 8px 16px; }
 .halad { height: 6px; background: var(--chip); border-radius: 3px; overflow: hidden; margin-top: 6px; }
 .halad > div { height: 100%; background: var(--accent); width: 0; }
-.vers-hu { font-size: 1.15rem; line-height: 1.7; }
-.vers-hu .tok { border-radius: 4px; padding: 0 1px; cursor: pointer; }
-.vers-hu .tok.cel { background: var(--hl); font-weight: 700; outline: 2px solid var(--hl); }
-.vers-hu .tok.nezett { text-decoration: underline; text-decoration-style: dotted; }
-.vers-er { font-size: 1.35rem; line-height: 2.1; }
-.vers-er.heber { direction: rtl; text-align: right;
-  font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif; font-size: 1.6rem; }
-.vers-er.gorog { font-family: "Gentium Plus", "Gentium", "SBL Greek", "Times New Roman", "Noto Serif", serif; }
-.er-szo { display: inline-block; margin: 0 .18em; white-space: nowrap; }
-.er-tok { border-radius: 4px; cursor: pointer; position: relative; }
-.er-tok.cel { background: var(--hl-er); outline: 2px solid var(--hl-er); }
-.er-tok.parnelkul { text-decoration: underline dotted var(--muted); text-underline-offset: 6px; }
-.er-tok.ntr { color: var(--muted); }
-.er-tok.kijelolt { background: var(--sel); outline: 2px solid var(--ok); }
-.er-tok.parja { box-shadow: inset 0 -3px 0 var(--accent); }
-.kivalaszto .er-tok { outline: 1px dashed var(--muted); }
-.adat { display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; }
-.adat dt { color: var(--muted); }
-.adat dd { margin: 0; }
-.adat .er { font-size: 1.3rem; }
-.adat .er.heber { font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", "Arial Hebrew", serif; direction: rtl; unicode-bidi: isolate; text-align: left; }
-.adat .er.gorog { font-family: "Gentium Plus", "Times New Roman", serif; }
+/* szókártyák; a --betu szorzót az A−/A+ állítja (a gombok és feliratok normál méretűek maradnak) */
+.kartyak { display: flex; flex-wrap: wrap; gap: 6px; align-items: stretch; }
+.kartyak.er.heber { direction: rtl; }
+.hk, .ek { border: 1px solid var(--line); border-radius: 8px; padding: 4px 7px; background: var(--bg); cursor: pointer;
+  text-align: center; display: flex; flex-direction: column; gap: 1px; min-width: 2.6em; }
+.hk .szo { font-size: calc(1.6rem * var(--betu)); line-height: 1.25; }
+.hk .szo .irj { color: var(--muted); }
+.hk .p { font-size: calc(.8rem * var(--betu)); color: var(--muted); white-space: nowrap; }
+.hk .p .er-heber { font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif; font-size: calc(1.2rem * var(--betu)); direction: rtl; unicode-bidi: isolate; color: var(--fg); }
+.hk .p .er-gorog { font-family: "Gentium Plus", "Gentium", "SBL Greek", "Times New Roman", "Noto Serif", serif; font-size: calc(1rem * var(--betu)); color: var(--fg); }
+.ek .alak { line-height: 1.35; }
+.ek .alak.heber { font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif; font-size: calc(2.3rem * var(--betu)); direction: rtl; }
+.ek .alak.gorog { font-family: "Gentium Plus", "Gentium", "SBL Greek", "Times New Roman", "Noto Serif", serif; font-size: calc(1.9rem * var(--betu)); }
+.ek .kiej, .ek .str, .ek .gl, .ek .mf, .ek .hu { direction: ltr; unicode-bidi: isolate; }
+.ek .kiej { font-size: calc(.8rem * var(--betu)); font-style: italic; color: var(--muted); }
+.ek .str { font-size: calc(.75rem * var(--betu)); color: var(--accent); }
+.ek .gl { font-size: calc(.8rem * var(--betu)); max-width: 9em; margin: 0 auto; }
+.ek .mf { font-size: calc(.7rem * var(--betu)); color: var(--muted); max-width: 10em; margin: 0 auto; }
+.ek .hu { font-size: calc(.95rem * var(--betu)); font-weight: 600; border-top: 1px dashed var(--line); margin-top: 3px; padding-top: 2px; }
+.eszo { display: flex; gap: 2px; padding: 2px; border-radius: 10px; background: var(--chip); }
+.hk.cel, .ek.cel { background: var(--hl); border-color: #c99700; box-shadow: 0 0 0 2px #c99700; }
+.hk.kapcs, .ek.kapcs { box-shadow: 0 0 0 3px var(--accent); border-color: var(--accent); }
+.ek.kijelolt { background: var(--sel); box-shadow: 0 0 0 3px var(--ok); }
+.ek.ntr { opacity: .55; }
+.kivalaszto .ek { border-style: dashed; border-color: var(--ok); }
+.kerdes { font-size: 1.05rem; margin: 6px 0 2px; }
+.kerdes .er-heber { font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif; font-size: 1.4rem; direction: rtl; unicode-bidi: isolate; }
+.kerdes .er-gorog { font-family: "Gentium Plus", "Gentium", "SBL Greek", "Times New Roman", "Noto Serif", serif; font-size: 1.2rem; }
+.betu button { min-height: 36px; padding: 4px 10px; }
 table.parok { border-collapse: collapse; width: 100%; font-size: .95rem; }
 table.parok td { border-top: 1px solid var(--line); padding: 4px 6px; vertical-align: top; }
 table.parok tr.same td { background: color-mix(in srgb, var(--hl) 35%, transparent); }
@@ -74,7 +84,8 @@ table.parok td.er.heber { direction: rtl; text-align: right; font-family: "SBL H
 table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif; }
 .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: .8rem; background: var(--chip); border: 1px solid var(--line); }
 .lab { position: fixed; bottom: 0; left: 0; right: 0; background: var(--card); border-top: 1px solid var(--line); z-index: 6; }
-.lab .belso { max-width: 860px; margin: 0 auto; padding: 8px 16px; display: flex; gap: 8px; }
+.lab .belso { max-width: 1100px; margin: 0 auto; padding: 6px 16px 8px; display: flex; flex-direction: column; gap: 6px; }
+.lab .sor { display: flex; gap: 8px; }
 .lab button { flex: 1; }
 .racs { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 4px; }
 .racs button { padding: 4px; min-height: 36px; font-size: .8rem; }
@@ -85,7 +96,6 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 .rejtett { display: none !important; }
 .tipp { font-size: .85rem; color: var(--muted); }
 .mentve { font-size: .8rem; color: var(--muted); }
-#tokinfo { min-height: 1.5em; }
 .emlek { margin-top: 8px; padding: 8px 10px; border: 1px solid var(--accent); border-radius: 8px; background: var(--card);
   display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; font-size: .9rem; }
 .emlek button { min-height: 36px; padding: 6px 10px; }
@@ -99,6 +109,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
       <span class="muted small" id="f-vers"></span>
       <span class="spacer"></span>
       <span class="small" id="f-kesz"></span>
+      <span class="row betu" title="A versek betűmérete"><button id="b-kisebb" type="button" class="small">A−</button><button id="b-nagyobb" type="button" class="small">A+</button></span>
       <button id="b-attekint" class="small" type="button">Áttekintés</button>
       <button id="b-menu" class="small" type="button">Mentés / export</button>
     </div>
@@ -129,31 +140,23 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 
   <!-- tétel -->
   <section id="s-tetel" class="rejtett">
+    <div class="card" id="t-kerdes">
+      <div class="row"><span class="badge" id="t-tipus"></span><span class="spacer"></span><span class="small" id="t-itelet-jel"></span></div>
+      <p class="kerdes" id="t-kerdes-szoveg"></p>
+      <p class="small muted" id="t-forras-sor" style="margin:0"></p>
+    </div>
     <div class="card">
-      <div class="row"><h2 style="margin:0">Károli 1908</h2><span class="spacer"></span><span class="badge" id="t-tipus"></span></div>
-      <div class="vers-hu" id="t-hu"></div>
-      <div class="tipp">Koppints egy magyar szóra: alul látod a párjait.</div>
+      <h2>Károli 1908</h2>
+      <div class="kartyak hu" id="t-hu"></div>
     </div>
     <div class="card">
       <h2 id="t-er-cim">Eredeti</h2>
-      <div class="vers-er" id="t-er"></div>
-      <div class="tipp" id="t-er-tipp"></div>
-      <div class="small" id="tokinfo"></div>
+      <div class="kartyak er" id="t-er"></div>
+      <div class="tipp" id="t-er-tipp" style="margin-top:6px"></div>
     </div>
-    <div class="card" id="t-adat-kartya">
-      <h2>A hozzárendelt forrásszó</h2>
-      <dl class="adat" id="t-adat"></dl>
-    </div>
-
-    <div class="card" id="t-kerdes">
-      <h2 id="t-kerdes-cim">Ítélet</h2>
-      <p id="t-kerdes-szoveg" style="margin-top:0"></p>
-      <div class="row">
-        <button class="valaszt helyes" data-itelet="helyes" type="button" id="b-helyes">Helyes</button>
-        <button class="valaszt hibas" data-itelet="hibas" type="button" id="b-hibas">Hibás</button>
-        <button class="valaszt bizonytalan" data-itelet="bizonytalan" type="button" id="b-bizonytalan">Bizonytalan</button>
-      </div>
-      <div id="t-hibatipus" class="rejtett" style="margin-top:8px">
+    <div class="card" id="t-reszlet">
+      <h2>Megjegyzés, hibatípus</h2>
+      <div id="t-hibatipus" class="rejtett">
         <div class="small muted">A hiba típusa:</div>
         <label class="opt"><input type="radio" name="hibatipus" value="rossz_forrasszo"> rossz forrásszó (a magyar szónak másik eredeti szó felel meg)</label>
         <label class="opt"><input type="radio" name="hibatipus" value="hianyzo_par"> hiányzó pár (a pár jó, de a magyar szóhoz még másik eredeti szó is tartozik)</label>
@@ -161,7 +164,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
         <label class="opt"><input type="radio" name="hibatipus" value="egyeb"> egyéb (írd le a megjegyzésben)</label>
       </div>
       <div id="t-valaszto" class="rejtett small" style="margin-top:6px">
-        <b>Melyik eredeti szó(k)?</b> Koppints rájuk fent, az eredeti versben (nem kötelező, de segít). Kijelölve: <span id="t-kijelolt">–</span>
+        <b>Melyik eredeti szó(k)?</b> Koppints rájuk fent, a zöld szaggatott keretes kártyák közül (nem kötelező, de segít). Kijelölve: <span id="t-kijelolt">–</span>
       </div>
       <div style="margin-top:8px">
         <label for="t-megj" class="small muted">Megjegyzés (nem kötelező; „egyéb” és „bizonytalan” esetén kérjük):</label>
@@ -172,7 +175,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 
     <div class="card">
       <details id="t-parok-det">
-        <summary><b>A vers többi párja</b> <span class="muted small" id="t-parok-db"></span></summary>
+        <summary><b>A vers párjai listában</b> <span class="muted small" id="t-parok-db"></span></summary>
         <table class="parok" id="t-parok"></table>
       </details>
     </div>
@@ -210,16 +213,23 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 
 <div class="lab rejtett" id="lab">
   <div class="belso">
-    <button id="b-elozo" type="button">← Előző</button>
-    <button id="b-kovkitolt" type="button">Következő kitöltetlen</button>
-    <button id="b-kov" type="button" class="primary">Következő →</button>
+    <div class="sor">
+      <button class="valaszt helyes" data-itelet="helyes" type="button" id="b-helyes">Helyes</button>
+      <button class="valaszt hibas" data-itelet="hibas" type="button" id="b-hibas">Hibás</button>
+      <button class="valaszt bizonytalan" data-itelet="bizonytalan" type="button" id="b-bizonytalan">Bizonytalan</button>
+    </div>
+    <div class="sor">
+      <button id="b-elozo" type="button">← Előző</button>
+      <button id="b-kovkitolt" type="button">Következő kitöltetlen</button>
+      <button id="b-kov" type="button" class="primary">Következő →</button>
+    </div>
   </div>
 </div>
 
 <script>
 "use strict";
 var MINTA = /*MINTA_ADAT*/null;
-var VERZIO = "F175.V1";
+var VERZIO = "F175.V4";
 
 /* ---------- segédek ---------- */
 function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
@@ -236,7 +246,7 @@ var IDX = {}; MINTA.forEach(function (t, i) { IDX[t.id] = i; });
 
 var allapot = null;   // {ellenor, sorrend:[id], valaszok:{id:{...}}, poz}
 var nezet = "indul";
-var kijelolt_hu = null;
+var fokusz = null;
 
 function kulcs(nev) { return "ksval:" + MINTA_HASH + ":" + nev; }
 function ment() {
@@ -273,82 +283,108 @@ function fejlec_frissit() {
 function tetel() { return MINTA[IDX[allapot.sorrend[allapot.poz]]]; }
 function valasz(t) { return allapot.valaszok[t.id] || (allapot.valaszok[t.id] = { itelet: "", hibatipus: "", helyes_forras: [], megjegyzes: "" }); }
 
-function hu_par_tobbi(t, hn) { return t.parok.filter(function (p) { return p[0] === hn; }); }
+var fokusz = null;   // {o: "hu"|"er", n}: kattintással rögzített kapcsolat-kiemelés
+var L = { h2e: {}, e2h: {} };
+
+function linkek(t) {
+  var h2e = {}, e2h = {};
+  t.parok.forEach(function (p) { (h2e[p[0]] = h2e[p[0]] || []).push(p); (e2h[p[2]] = e2h[p[2]] || []).push(p); });
+  return { h2e: h2e, e2h: e2h };
+}
+/* a kártya párjai kigyulladnak a másik sorban (egy-a-többhöz is) */
+function kapcs_jelol(o, n) {
+  document.querySelectorAll(".kapcs").forEach(function (x) { x.classList.remove("kapcs"); });
+  if (!o) return;
+  var hu = [], er = [];
+  if (o === "hu") { hu = [n]; (L.h2e[n] || []).forEach(function (p) { er.push(p[2]); }); }
+  else { er = [n]; (L.e2h[n] || []).forEach(function (p) { hu.push(p[0]); }); }
+  hu.forEach(function (k) { var e = $("hk-" + k); if (e) e.classList.add("kapcs"); });
+  er.forEach(function (k) { var e = $("ek-" + k); if (e) e.classList.add("kapcs"); });
+}
+function esemeny(c, o, n) {
+  c.addEventListener("mouseenter", function () { kapcs_jelol(o, n); });
+  c.addEventListener("mouseleave", function () { kapcs_jelol(fokusz && fokusz.o, fokusz && fokusz.n); });
+  c.addEventListener("click", function () { kartya_kattint(o, n); });
+}
 
 function rajzol() {
   var t = tetel(), v = valasz(t);
+  L = linkek(t);
   fejlec_frissit();
   $("f-cim").textContent = "Tétel " + (allapot.poz + 1) + " / " + MINTA.length;
   $("f-vers").textContent = t.vers + " · " + t.id;
   $("t-tipus").textContent = t.tipus === "par" ? "szópár" : "pár nélküli magyar szó";
-
-  /* magyar vers: a tokenhatárok a [\p{L}\p{N}]+ szerint (a Python-oldali karakterhatár a kiemelt szóé) */
-  var hu = $("t-hu"); hu.textContent = "";
-  var re = /[\p{L}\p{N}]+/gu, m, utolso = 0, n = 0;
-  while ((m = re.exec(t.hu)) !== null) {
-    n++;
-    if (m.index > utolso) hu.appendChild(document.createTextNode(t.hu.slice(utolso, m.index)));
-    var s = el("span", { "class": "tok", "data-n": n }, m[0]);
-    if (m.index === t.hk && m.index + m[0].length === t.hv) s.classList.add("cel");
-    if (kijelolt_hu === n) s.classList.add("nezett");
-    s.addEventListener("click", hu_kattint);
-    hu.appendChild(s);
-    utolso = m.index + m[0].length;
-  }
-  if (utolso < t.hu.length) hu.appendChild(document.createTextNode(t.hu.slice(utolso)));
-
-  /* eredeti vers: a Macula szóazonosítója szerint egybeírt morfémák */
-  var er = $("t-er"); er.textContent = ""; er.className = "vers-er " + t.nyelv;
-  $("t-er-cim").textContent = t.nyelv === "heber" ? "Eredeti (héber, TAHOT)" : "Eredeti (görög, TAGNT)";
-  var parositott = {}; t.parok.forEach(function (p) { parositott[p[2]] = true; });
-  var nezett_er = {}; if (kijelolt_hu) hu_par_tobbi(t, kijelolt_hu).forEach(function (p) { nezett_er[p[2]] = true; });
-  var szo = null, elozo_w = null;
-  var valaszto = valaszto_aktiv(t, v);
-  er.classList.toggle("kivalaszto", valaszto);
-  t.tok.forEach(function (k) {
-    if (!szo || !k.w || k.w !== elozo_w) { szo = el("span", { "class": "er-szo" }); er.appendChild(szo); er.appendChild(document.createTextNode(" ")); }
-    elozo_w = k.w;
-    var s = el("span", { "class": "er-tok", "data-n": k.n, title: k.n + " · " + k.s + " · " + k.t + (k.x ? " · [nem TR]" : "") }, k.a);
-    if (t.tipus === "par" && k.n === t.en) s.classList.add("cel");
-    if (!parositott[k.n]) s.classList.add("parnelkul");
-    if (k.x) s.classList.add("ntr");
-    if (nezett_er[k.n]) s.classList.add("parja");
-    if (v.helyes_forras.indexOf(k.n) >= 0) s.classList.add("kijelolt");
-    s.addEventListener("click", er_kattint);
-    szo.appendChild(s);
-  });
-  $("t-er-tipp").textContent = "Koppints egy eredeti szóra a Strong-számáért és a jelentéséért. Pontozott aláhúzás: a versben pár nélküli eredeti szó" +
-    (t.nyelv === "gorog" ? "; szürke: a Textus Receptusban nem szereplő szó [nem TR]." : ".");
-  $("tokinfo").textContent = "";
-
-  /* forrásszó adatai */
-  var adat = $("t-adat"); adat.textContent = "";
-  if (t.tipus === "par") {
-    $("t-adat-kartya").classList.remove("rejtett");
-    function sor(cimke, ertek, cls) { adat.appendChild(el("dt", null, cimke)); var d = el("dd", cls ? { "class": cls } : null, ertek || "–"); adat.appendChild(d); }
-    sor("Magyar szó", t.hs + "  (" + t.hn + ". szó)");
-    sor("Forrásszó", t.tok[t.en - 1].a, "er " + t.nyelv);
-    sor("Strong-szám", t.strong);
-    sor("Szótő", t.szoto, "er " + t.nyelv);
-    sor("Jelentés", t.jel + (t.tukor ? "  · tükörfordítás: " + t.tukor : ""));
-    sor("Alaktan", t.morf ? t.morf + (t.szofaj ? " (" + t.szofaj + ")" : "") : "nincs adat");
-    if (t.ntr) sor("Megjegyzés", "[nem TR]: a Textus Receptusban nem szerepel");
-    sor("Pozíció", t.en + ". eredeti szó a versben");
-  } else {
-    $("t-adat-kartya").classList.add("rejtett");
-  }
+  var nyelv_cls = "er-" + t.nyelv;
 
   /* kérdés */
+  var q = $("t-kerdes-szoveg"); q.textContent = "";
   if (t.tipus === "par") {
-    $("t-kerdes-szoveg").innerHTML = "";
-    $("t-kerdes-szoveg").append("Helyes-e, hogy a(z) ", el("b", null, "„" + t.hs + "”"), " magyar szó a(z) ", el("b", { "class": "er " + t.nyelv }, t.tok[t.en - 1].a), " (" + t.strong + ") eredeti szóhoz tartozik?");
+    var ct = t.tok[t.en - 1];
+    q.append("Helyes-e, hogy a(z) ", el("b", null, "„" + t.hs + "”"), " magyar szó a(z) ", el("b", { "class": nyelv_cls }, ct.a), " (" + t.strong + ") eredeti szóhoz tartozik?");
+    $("t-forras-sor").textContent = "Forrásszó: " + t.en + ". szó · " + (t.kiej ? t.kiej + " · " : "") + t.strong + (t.szoto ? " · szótő: " + t.szoto : "") +
+      (t.jel ? " · " + t.jel : "") + (t.mh ? " · " + t.mh : "") + (t.ntr ? " · [nem TR]: a Textus Receptusban nem szerepel" : "");
     $("b-helyes").textContent = "Helyes"; $("b-hibas").textContent = "Hibás";
   } else {
-    $("t-kerdes-szoveg").innerHTML = "";
-    $("t-kerdes-szoveg").append("A gép szerint a(z) ", el("b", null, "„" + t.hs + "”"), " szónak nincs megfelelője az eredetiben (betoldás). Van-e megfelelője az eredetiben?");
+    q.append("A gép szerint a(z) ", el("b", null, "„" + t.hs + "”"), " szónak nincs megfelelője az eredetiben (betoldás). Van-e megfelelője az eredetiben?");
+    $("t-forras-sor").textContent = "";
     $("b-helyes").textContent = "Nincs (helyes)"; $("b-hibas").textContent = "Van (hibás)";
   }
   ["helyes", "hibas", "bizonytalan"].forEach(function (x) { $("b-" + x).classList.toggle("on", v.itelet === x); });
+  $("t-itelet-jel").textContent = v.itelet ? "Ítélet: " + { helyes: $("b-helyes").textContent, hibas: $("b-hibas").textContent, bizonytalan: "Bizonytalan" }[v.itelet] : "";
+
+  /* magyar vers kártyákon: a tokenhatárok a [\p{L}\p{N}]+ szerint (mint a Python-oldalon); a szó utáni írásjel a kártyán marad */
+  var hu = $("t-hu"); hu.textContent = "";
+  var re = /[\p{L}\p{N}]+/gu, m, toks = [];
+  while ((m = re.exec(t.hu)) !== null) toks.push({ n: toks.length + 1, s: m[0], i: m.index, e: m.index + m[0].length });
+  toks.forEach(function (tk, j) {
+    var utana = t.hu.slice(tk.e, j + 1 < toks.length ? toks[j + 1].i : t.hu.length).trim();
+    var c = el("div", { "class": "hk", id: "hk-" + tk.n, title: tk.n + ". szó" });
+    var sz = el("div", { "class": "szo" }, tk.s);
+    if (utana) sz.appendChild(el("span", { "class": "irj" }, utana));
+    c.appendChild(sz);
+    var pk = L.h2e[tk.n] || [];
+    if (!pk.length) c.appendChild(el("div", { "class": "p" }, "—"));
+    pk.forEach(function (x) {
+      var d = el("div", { "class": "p" });
+      d.appendChild(el("span", { "class": nyelv_cls }, x[3]));
+      d.appendChild(document.createTextNode(" " + x[4]));
+      c.appendChild(d);
+    });
+    if (tk.i === t.hk && tk.e === t.hv) c.classList.add("cel");
+    esemeny(c, "hu", tk.n);
+    hu.appendChild(c);
+  });
+
+  /* eredeti vers kártyákon; héberben a Macula szóazonosítója szerint csoportosítva, jobbról balra */
+  var er = $("t-er"); er.textContent = ""; er.className = "kartyak er " + t.nyelv;
+  $("t-er-cim").textContent = t.nyelv === "heber" ? "Eredeti (héber, TAHOT)" : "Eredeti (görög, TAGNT)";
+  var valaszto = valaszto_aktiv(t, v);
+  er.classList.toggle("kivalaszto", valaszto);
+  var csop = null, elozo_w = null;
+  t.tok.forEach(function (k) {
+    if (t.nyelv === "heber") {
+      if (!csop || !k.w || k.w !== elozo_w) { csop = el("div", { "class": "eszo" }); er.appendChild(csop); }
+      elozo_w = k.w;
+    } else csop = er;
+    var c = el("div", { "class": "ek", id: "ek-" + k.n, title: k.n + ". szó" + (k.m ? " · " + k.m : "") });
+    c.appendChild(el("div", { "class": "alak " + t.nyelv }, k.a));
+    if (k.k) c.appendChild(el("div", { "class": "kiej" }, k.k));
+    c.appendChild(el("div", { "class": "str" }, k.s + (k.x ? " · nem TR" : "")));
+    if (k.t) c.appendChild(el("div", { "class": "gl" }, k.t));
+    if (k.mh) c.appendChild(el("div", { "class": "mf" }, k.mh));
+    var pk = L.e2h[k.n] || [];
+    c.appendChild(el("div", { "class": "hu" }, pk.length ? pk.map(function (x) { return x[1]; }).join(", ") : "—"));
+    if (t.tipus === "par" && k.n === t.en) c.classList.add("cel");
+    if (k.x) c.classList.add("ntr");
+    if (v.helyes_forras.indexOf(k.n) >= 0) c.classList.add("kijelolt");
+    esemeny(c, "er", k.n);
+    csop.appendChild(c);
+  });
+  $("t-er-tipp").textContent = "Rámutatás vagy koppintás: a szó párja kigyullad a másik sorban (újabb koppintás: elenged). Sárga: a vizsgált szó. A kártya alján a magyar pár, vagy „—”, ha nincs. Az angol glossza a TAHOT/TAGNT tükörfordítása." +
+    (t.nyelv === "gorog" ? " Halvány kártya: a Textus Receptusban nem szereplő szó [nem TR]." : "");
+  if (fokusz) kapcs_jelol(fokusz.o, fokusz.n);
+
+  /* részletek */
   $("t-hibatipus").classList.toggle("rejtett", !(t.tipus === "par" && v.itelet === "hibas"));
   document.querySelectorAll("input[name=hibatipus]").forEach(function (r) { r.checked = (r.value === v.hibatipus); });
   $("t-valaszto").classList.toggle("rejtett", !valaszto);
@@ -356,11 +392,10 @@ function rajzol() {
   $("t-megj").value = v.megjegyzes || "";
   $("t-mentve").textContent = v.ido ? "utoljára módosítva: " + new Date(v.ido).toLocaleString("hu-HU") : "";
 
-  /* a vers többi párja */
+  /* a vers párjai listában (a kártyák mellett tartalék nézet) */
   var tb = $("t-parok"); tb.textContent = "";
-  var tobbi = t.parok.filter(function (p) { return !(t.tipus === "par" && p[0] === t.hn && p[2] === t.en); });
-  tobbi.sort(function (a, b) { var sa = a[0] === t.hn ? 0 : 1, sb = b[0] === t.hn ? 0 : 1; return sa - sb || a[0] - b[0] || a[2] - b[2]; });
-  tobbi.forEach(function (p) {
+  var lista = t.parok.slice().sort(function (a, b) { var sa = a[0] === t.hn ? 0 : 1, sb = b[0] === t.hn ? 0 : 1; return sa - sb || a[0] - b[0] || a[2] - b[2]; });
+  lista.forEach(function (p) {
     var tr = el("tr", p[0] === t.hn ? { "class": "same" } : null);
     tr.appendChild(el("td", { "class": "small muted" }, String(p[0])));
     tr.appendChild(el("td", null, p[1]));
@@ -369,9 +404,7 @@ function rajzol() {
     tr.appendChild(el("td", { "class": "small muted" }, p[4] + " · " + p[2] + "."));
     tb.appendChild(tr);
   });
-  var azonos = tobbi.filter(function (p) { return p[0] === t.hn; }).length;
-  $("t-parok-db").textContent = "(" + tobbi.length + " pár" + (azonos ? "; ebből " + azonos + " ugyanehhez a magyar szóhoz, kiemelve" : "") + ")";
-  $("t-parok-det").open = azonos > 0 || tobbi.length <= 12;
+  $("t-parok-db").textContent = "(" + lista.length + " pár)";
 }
 
 function valaszto_aktiv(t, v) {
@@ -379,25 +412,16 @@ function valaszto_aktiv(t, v) {
   return v.itelet === "hibas";
 }
 
-function hu_kattint(e) {
-  var n = parseInt(e.currentTarget.getAttribute("data-n"), 10);
-  kijelolt_hu = (kijelolt_hu === n) ? null : n;
-  var t = tetel(), p = hu_par_tobbi(t, n);
-  rajzol();
-  var szoveg = e.currentTarget.textContent;
-  $("tokinfo").textContent = kijelolt_hu === null ? "" : (p.length ? "„" + szoveg + "” párjai: " + p.map(function (x) { return x[3] + " (" + x[4] + ", " + x[2] + ".)"; }).join(", ") + " (kék aláhúzás fent)" : "„" + szoveg + "”: a gép szerint nincs eredeti megfelelője.");
-}
-
-function er_kattint(e) {
-  var n = parseInt(e.currentTarget.getAttribute("data-n"), 10);
-  var t = tetel(), v = valasz(t), k = t.tok[n - 1];
-  if (valaszto_aktiv(t, v)) {
+function kartya_kattint(o, n) {
+  var t = tetel(), v = valasz(t);
+  if (o === "er" && valaszto_aktiv(t, v)) {
     var i = v.helyes_forras.indexOf(n);
     if (i >= 0) v.helyes_forras.splice(i, 1); else { v.helyes_forras.push(n); v.helyes_forras.sort(function (a, b) { return a - b; }); }
-    v.ido = new Date().toISOString(); ment(); rajzol();
+    v.ido = new Date().toISOString(); ment();
+    fokusz = { o: o, n: n }; rajzol(); return;
   }
-  var parjai = t.parok.filter(function (p) { return p[2] === n; }).map(function (p) { return "„" + p[1] + "”"; });
-  $("tokinfo").textContent = n + ". " + k.a + " · " + k.s + " · " + k.t + (k.x ? " · [nem TR]" : "") + " · magyar párja: " + (parjai.length ? parjai.join(", ") : "nincs");
+  fokusz = (fokusz && fokusz.o === o && fokusz.n === n) ? null : { o: o, n: n };
+  kapcs_jelol(fokusz && fokusz.o, fokusz && fokusz.n);
 }
 
 function itelet_valt(x) {
@@ -407,13 +431,14 @@ function itelet_valt(x) {
   else if (v.itelet !== "hibas") v.hibatipus = "";
   if (!valaszto_aktiv(t, v)) v.helyes_forras = [];
   v.ido = new Date().toISOString(); ment(); rajzol(); emlekezteto();
+  if (v.itelet === "hibas" || v.itelet === "bizonytalan") { var r = $("t-reszlet"); if (r && r.scrollIntoView) r.scrollIntoView({ behavior: "smooth", block: "center" }); }
 }
 
-function lep(d) { var p = allapot.poz + d; if (p < 0 || p >= MINTA.length) return; allapot.poz = p; kijelolt_hu = null; ment(); rajzol(); window.scrollTo(0, 0); }
+function lep(d) { var p = allapot.poz + d; if (p < 0 || p >= MINTA.length) return; allapot.poz = p; fokusz = null; ment(); rajzol(); window.scrollTo(0, 0); }
 function kov_kitoltetlen() {
   for (var i = 1; i <= MINTA.length; i++) {
     var p = (allapot.poz + i) % MINTA.length, id = allapot.sorrend[p];
-    if (!(allapot.valaszok[id] && allapot.valaszok[id].itelet)) { allapot.poz = p; kijelolt_hu = null; ment(); rajzol(); window.scrollTo(0, 0); return; }
+    if (!(allapot.valaszok[id] && allapot.valaszok[id].itelet)) { allapot.poz = p; fokusz = null; ment(); rajzol(); window.scrollTo(0, 0); return; }
   }
   alert("Minden tétel kitöltve. Köszönjük! Most exportáld a válaszokat (Mentés / export).");
 }
@@ -425,7 +450,7 @@ function racs() {
     var v = allapot.valaszok[id], b = el("button", { type: "button", title: id }, String(p + 1));
     if (v && v.itelet) b.classList.add(v.itelet);
     if (p === allapot.poz) b.classList.add("akt");
-    b.addEventListener("click", function () { allapot.poz = p; kijelolt_hu = null; ment(); mutat("tetel"); });
+    b.addEventListener("click", function () { allapot.poz = p; fokusz = null; ment(); mutat("tetel"); });
     r.appendChild(b);
   });
 }
@@ -510,6 +535,16 @@ function emlekezteto() {
   }
 }
 
+/* ---------- betűméret (a versek és a kártyák; mentve) ---------- */
+var BETU = [0.8, 0.9, 1, 1.15, 1.3, 1.5];
+var betu_i = (function () { var x = tarol_olvas("ksval:betu"); return (typeof x === "number" && x >= 0 && x < BETU.length) ? x : 2; })();
+function betu_beallit(i) {
+  betu_i = Math.max(0, Math.min(BETU.length - 1, i));
+  tarol_ir("ksval:betu", betu_i);
+  if (document.documentElement && document.documentElement.style) document.documentElement.style.setProperty("--betu", String(BETU[betu_i]));
+}
+betu_beallit(betu_i);
+
 /* ---------- indulás ---------- */
 function indul() {
   var nev = $("i-nev").value.trim();
@@ -524,6 +559,8 @@ document.querySelectorAll("input[name=hibatipus]").forEach(function (r) {
   r.addEventListener("change", function () { var t = tetel(), v = valasz(t); v.hibatipus = r.value; if (!valaszto_aktiv(t, v)) v.helyes_forras = []; v.ido = new Date().toISOString(); ment(); rajzol(); });
 });
 $("t-megj").addEventListener("input", function () { var v = valasz(tetel()); v.megjegyzes = $("t-megj").value; v.ido = new Date().toISOString(); ment(); });
+$("b-kisebb").addEventListener("click", function () { betu_beallit(betu_i - 1); });
+$("b-nagyobb").addEventListener("click", function () { betu_beallit(betu_i + 1); });
 $("b-elozo").addEventListener("click", function () { lep(-1); });
 $("b-kov").addEventListener("click", function () { lep(1); });
 $("b-kovkitolt").addEventListener("click", kov_kitoltetlen);

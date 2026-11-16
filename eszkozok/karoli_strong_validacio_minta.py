@@ -51,6 +51,9 @@ import bemenet  # noqa: E402
 import pontossag_minta as pm  # noqa: E402
 import tokenek  # noqa: E402
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import karoli_strong_morf as morf  # noqa: E402
+
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 if hasattr(sys.stderr, 'reconfigure'):
@@ -77,7 +80,7 @@ def csoport_of_reteg(rt):
 MINTA_FEJ = ['tetel_id', 'tipus', 'csoport', 'f172_reteg', 'f172_id', 'konyv', 'vers',
              'hu_vers', 'hu_sorszam', 'hu_szo', 'hu_kezdet', 'hu_veg',
              'er_nyelv', 'er_vers', 'er_sorszam', 'er_szo', 'strong', 'szoto', 'jelentes',
-             'tukor', 'morf', 'szofaj', 'nem_tr', 'tobbi_par', 'er_tokenek_json', 'parok_json']
+             'tukor', 'kiejtes', 'morf', 'szofaj', 'morf_hu', 'nem_tr', 'tobbi_par', 'er_tokenek_json', 'parok_json']
 
 
 # ---------------------------------------------------------------- segédek
@@ -119,13 +122,13 @@ def vaz(s):
 # ---------------------------------------------------------------- források
 
 def lex_tabla():
-    """(strong, ragozott alak) -> (szótő, rövid jelentés), és strong -> ugyanez (tartalék)."""
+    """(strong, ragozott alak) -> (szótő, rövid jelentés, kiejtés), és strong -> ugyanez (tartalék)."""
     pontos, strongra = {}, {}
     for ut in (tokenek.TAHOT, tokenek.TAGNT):
         for r in tokenek._sorok(ut):
             if len(r) < 7:
                 continue
-            ertek = (r[4], r[5])
+            ertek = (r[4], r[5], r[3])
             pontos.setdefault((r[1], r[2]), ertek)
             strongra.setdefault(r[1], ertek)
     return pontos, strongra
@@ -274,10 +277,14 @@ def epit(mag):
         else:
             illesztes = illeszt(el, mac.get((vers, 'heb'), []))
         tok = []
+        ar = None if nt else morf.arami_vers(vers)
         for w in el:
             il = illesztes.get(w['sorsz'])
-            tok.append({'n': w['sorsz'], 'a': w['alak'], 's': w['strong'], 't': w['tukor'],
-                        'w': il[2] if il else '', 'x': 1 if w['nem_tr'] else 0})
+            lx = lex_pontos.get((w['strong'], w['alak'])) or lex_strong.get(w['strong'], ('', '', ''))
+            kod = il[0] if il else ''
+            mh = (morf.gorog(kod) if nt else morf.heber(kod, ar)) if kod else None
+            tok.append({'n': w['sorsz'], 'a': w['alak'], 's': w['strong'], 't': w['tukor'], 'k': lx[2],
+                        'm': kod, 'mh': mh or '', 'w': il[2] if il else '', 'x': 1 if w['nem_tr'] else 0})
         return szoveg, m, el, illesztes, tok, nt
 
     tetelek = []
@@ -330,14 +337,16 @@ def epit(mag):
         tobbi_szoveg = '; '.join('%d %s → %d %s %s' % p for p in tobbi)
         if t['w'] is not None:
             w = t['w']
-            sz, jel = lex_pontos.get((w['strong'], w['alak'])) or lex_strong.get(w['strong'], ('', ''))
+            sz, jel, _ = lex_pontos.get((w['strong'], w['alak'])) or lex_strong.get(w['strong'], ('', '', ''))
             il = t['illesztes'].get(w['sorsz'])
             if il:
                 illesztett += 1
-            morf, szofaj = (il[0], il[1]) if il else ('', '')
-            er = [str(t['e']), w['alak'], w['strong'], sz, jel, w['tukor'], morf, szofaj, '1' if w['nem_tr'] else '0']
+            ct = t['tok'][t['e'] - 1]
+            mkod, szofaj = (il[0], il[1]) if il else ('', '')
+            er = [str(t['e']), w['alak'], w['strong'], sz, jel, w['tukor'], mkod, szofaj, '1' if w['nem_tr'] else '0',
+                  ct['k'], ct['mh']]
         else:
-            er = ['', '', '', '', '', '', '', '', '']
+            er = ['', '', '', '', '', '', '', '', '', '', '']
         er_vers = ' '.join(x['a'] for x in t['tok'])
         sorok.append({
             'tetel_id': t['tetel_id'], 'tipus': t['tipus'], 'csoport': t['csoport'],
@@ -346,7 +355,7 @@ def epit(mag):
             'hu_kezdet': str(t['m'].start()), 'hu_veg': str(t['m'].end()),
             'er_nyelv': 'gorog' if t['nt'] else 'heber', 'er_vers': er_vers,
             'er_sorszam': er[0], 'er_szo': er[1], 'strong': er[2], 'szoto': er[3], 'jelentes': er[4],
-            'tukor': er[5], 'morf': er[6], 'szofaj': er[7], 'nem_tr': er[8],
+            'tukor': er[5], 'morf': er[6], 'szofaj': er[7], 'nem_tr': er[8], 'kiejtes': er[9], 'morf_hu': er[10],
             'tobbi_par': tobbi_szoveg,
             'er_tokenek_json': json.dumps(t['tok'], ensure_ascii=False, separators=(',', ':')),
             'parok_json': json.dumps([list(p) for p in vp], ensure_ascii=False, separators=(',', ':')),
@@ -410,7 +419,7 @@ def html_ir(sorok):
             'hn': int(s['hu_sorszam']), 'hk': int(s['hu_kezdet']), 'hv': int(s['hu_veg']), 'hs': s['hu_szo'],
             'nyelv': s['er_nyelv'], 'en': int(s['er_sorszam']) if s['er_sorszam'] else 0,
             'strong': s['strong'], 'szoto': s['szoto'], 'jel': s['jelentes'], 'tukor': s['tukor'],
-            'morf': s['morf'], 'szofaj': s['szofaj'], 'ntr': s['nem_tr'] == '1',
+            'morf': s['morf'], 'mh': s['morf_hu'], 'kiej': s['kiejtes'], 'ntr': s['nem_tr'] == '1',
             'tok': json.loads(s['er_tokenek_json']), 'parok': json.loads(s['parok_json']),
         })
     js = json.dumps(adat, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
@@ -444,6 +453,9 @@ def main():
         for cs in CSOPORTOK:
             print('    %-15s %3d / %d' % (cs, db_nelkul[cs], keret_nelkul[cs]))
         print('  alaktani adat (Macula-illesztés) a párok forrásszavánál: %d / %d' % (illesztett, N_PAR))
+        tk = [x for s in sorok for x in json.loads(s['er_tokenek_json'])]
+        print('  a minta verseinek forrásszavai: %d; alaktan nélkül %d, átírás nélkül %d'
+              % (len(tk), sum(1 for x in tk if not x['mh']), sum(1 for x in tk if not x['k'])))
     meret = html_ir(minta_olvas())
     print('ellenőrző oldal: %d bájt -> kozlemeny/data_paper/validacio/ellenorzo.html' % meret)
 
