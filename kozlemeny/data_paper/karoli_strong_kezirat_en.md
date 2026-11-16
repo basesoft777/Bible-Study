@@ -10,8 +10,8 @@
 The dataset aligns the 599,367 words of the 1908 Károli Bible, the classic Hungarian translation, with the Hebrew
 and Greek source text (STEPBible TAHOT/TAGNT) in 598,715 word pairs carrying the source word's Strong's number. A
 language model marked word positions only; the Strong's numbers come from the source data. Accuracy is 95.06% (95%
-CI 93.81–96.32%) against a blind model reviewer on a stratified sample, 98.72% on main words against an
-independent Strong-tagged Károli edition, and [accuracy] by two human validators. The CC BY 4.0 TSV tables support
+CI 93.81–96.32%) on a stratified random sample checked by a blind model reviewer, and [accuracy] by two
+human validators; main-word agreement with an independent, closed Strong-tagged edition is 98.72%. The CC BY 4.0 TSV tables support
 Strong-based search, translation history and alignment research.
 
 **Keywords:** Károli Bible; Strong's numbers; word alignment; Hungarian; biblical Hebrew; Koine Greek
@@ -27,8 +27,8 @@ https://doi.org/10.5281/zenodo.24141883 (concept DOI; current version 1.0).
 
 ### Context
 
-The dataset was produced in the Logosz Lexikon, the author's independent research project. The Károli translation has been
-the base text of Hungarian Protestant Bible reading for four centuries. Strong's numbers (Strong, 1890) link a
+The dataset was produced in the author's independent research project, the Logosz Lexikon. For four centuries the Károli
+translation has been the Hungarian Protestant base text. Strong's numbers (Strong, 1890) link a
 translation's words to the Hebrew and Greek vocabulary. Strong-tagged Károli editions exist; this alignment is openly
 licensed, documented word by word, and its accuracy is measured.
 
@@ -62,10 +62,10 @@ the tables byte-identically from the saved answers.
 
 ### Sampling strategy
 
-The blind review used a stratified random sample: the pair set was divided by book group into seven strata
+For the blind review, the pair set was divided by book group into seven strata
 (the five books of Moses; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with
-200 pairs per stratum (400 from the five books of Moses, in two subsamples combined by pair weight).
-The independent comparison is a cluster sample: one full chapter per stratum, two in the five books of Moses
+200 random pairs per stratum (400 from the five books of Moses, in two subsamples combined by pair weight).
+The closed-edition cross-check used a cluster sample: one full chapter per stratum, two in the five books of Moses
 (eight chapters, 2,663 main-word pairs).
 
 ### Quality control
@@ -75,10 +75,11 @@ Hungarian word itself, with the same rules, blind to the machine pair. On an ear
 in 96.79% and the machine alignment in 97.06%; as the reviewer is no more accurate than the alignment, its
 agreement is a lower bound only if shared errors are negligible.
 
-**Independent comparison.** Shared errors are measured against a Strong-tagged Károli edition, which marks one main
-Strong's number per Hungarian word; only that pair is scored, so further pairs (morphemes, multi-word links) do not
-count as errors. Differences were judged three ways (machine pair, source, blind reviewer). Only the aggregate rate is
-published, not the external source's data.
+**Cross-check with a closed edition.** As a supplementary check for shared errors, main-word pairs were compared
+locally with an independent Strong-tagged Károli edition under a closed licence; the source cannot be redistributed or
+verified by readers, so only the aggregate agreement is published. It marks one main Strong's number per Hungarian
+word, and only that pair is compared. A difference is not automatically an alignment error, since segmentation may
+differ (*ʾaḥărê kēn*); differences were judged three ways (machine pair, closed source, blind reviewer).
 
 **Human validation.** Two independent human validators, theology graduates with knowledge of biblical Hebrew and Greek,
 judged a stratified random sample of [N] pairs and of unpaired words, each without seeing the other's judgements;
@@ -91,13 +92,13 @@ reviewer is [agreement with model reviewer].
 | full pair set, blind reviewer, weighted | 95.06% | 93.81–96.32% |
 | of which Old / New Testament | 94.50% / 97.07% | 92.95–96.05% / 95.55–98.59% |
 | content word / Hebrew morpheme | 96.44% / 90.74% | 95.20–97.69% / 87.18–94.29% |
-| main words, by the independent source | 98.72% | 98.22–99.08% |
-| main words, after three-way judgement | 99.81% | 99.56–99.92% |
 | human validation | [accuracy] | [CI] |
+| main-word agreement with the closed edition | 98.72% | 98.22–99.08% |
+| the same, after three-way judgement | 99.81% | 99.56–99.92% |
 
 Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts). Of the 1,600 sample pairs, 72 differed from the reviewer, most often by a neighbouring word
 (37): typically a Hebrew prefix, article or preposition attached against the rules. Of the
-34 differences in the independent comparison, five remained alignment errors; all confirmed errors are
+34 differences from the closed edition, five were judged alignment errors; all confirmed errors are
 listed in the dataset.
 
 ## 3. Dataset Description
@@ -125,8 +126,7 @@ morphemes), 109,914 additions, 63,017 untranslated source words, 794 pending Hun
 
 ## 4. Reuse Potential
 
-Bible software can offer Strong-based search on the Hungarian text: every Károli rendering of a source word is one
-filter away. Translation historians can study Károli's consistency, additions and untranslated words. For language
+Bible software can offer Strong-based search of the Hungarian text. Translation historians can study Károli's consistency, additions and untranslated words. For language
 technology it is word-alignment data for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error
 measured per stratum; the sample pairs can also serve to evaluate word aligners. The Logosz Lexikon, a
 motif-indexed, cross-referenced biblical lexicon, is built on this alignment.
@@ -137,8 +137,8 @@ changes, applied only where independent proposals agreed and passed a stem check
 merged words (*a kik* → *akik*) keep both pairs, so the pair set is identical and the accuracy figures above apply to
 it; the modernisation itself was reviewed and measured separately.
 
-Limitations. The alignment is a machine proposal, and the blind reviewer is itself a model. The independent comparison
-covers main words only, on a small cluster sample; the Hebrew morpheme pairs (157,163) are outside it. Károli
+Limitations. The alignment is a machine proposal, and the blind reviewer is itself a model. The closed-edition
+cross-check is a small cluster sample without the 157,163 Hebrew morpheme pairs. Károli
 translated the Textus Receptus and the alignment uses TAGNT; the 369 aligned Greek words absent from the
 Textus Receptus are flagged. Release 2 will correct the confirmed errors and remeasure against quality targets fixed in
 advance.
@@ -175,7 +175,7 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 
 ## AI Declaration
 
-Generative AI was used in three places. (1) Alignment: Claude Sonnet (Anthropic; the batch runs are logged as
+(1) Alignment: Claude Sonnet (Anthropic; the batch runs are logged as
 claude-sonnet-5-5) returned position pairs only (see Method). For Genesis and Exodus, another language model was also
 run as a cross-check; no published pair derives from it alone. (2) Quality control: Claude Opus served as blind
 reviewer on the sample; human validation used no AI. (3) Companion dataset: language models proposed rare verb forms
@@ -191,8 +191,8 @@ AI tool is not an author.
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-1,156; with the unnumbered statements 1,329; with the references as well 1,403 (the submission page says
-the limit includes references; it does not say whether the abstract counts); with the abstract too 1,497. The JOHD
+1,160; with the unnumbered statements 1,326; with the references as well 1,400 (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too 1,496. The JOHD
 data paper length is 1,000–1,500 words; the editorial office can confirm which count applies.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model

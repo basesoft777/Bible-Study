@@ -14,8 +14,8 @@ earlier reply confirming that the topic fits the journal.
 
 **The dataset.** The paper describes an open word alignment of the 1908 Károli Bible, the classic Hungarian
 translation, with the Hebrew and Greek source text: 598,715 word pairs, each carrying the Strong's number of the source
-word, with accuracy measured on a stratified sample, against an independent Strong-tagged edition and by human
-validation. It is deposited on Zenodo under CC BY 4.0:
+word. Accuracy is measured on a stratified random sample and by human validation; agreement with an independent,
+closed Strong-tagged edition is reported as a supplementary cross-check. It is deposited on Zenodo under CC BY 4.0:
 
 - Károli 1908 – Strong word alignment: https://doi.org/10.5281/zenodo.24141883
 - companion dataset, Modernised Károli – Strong (the same pairs on a modernised text, mentioned briefly in the paper):

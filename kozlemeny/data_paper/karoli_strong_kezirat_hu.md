@@ -9,9 +9,9 @@
 
 Az adatkészlet a Károli-biblia, a klasszikus magyar fordítás 1908-as szövegének 599 367 szavát kapcsolja a héber és
 görög eredetihez (STEPBible TAHOT/TAGNT) 598 715 szópárral, mindegyik az eredeti szó Strong-számával. Egy nyelvi modell
-csak szósorszámokat jelölt; a Strong-szám az eredeti szöveg adatából jön. A pontosság egy vak modell-ellenőrrel
-rétegzett mintán 95,06% (95%-os KI: 93,81–96,32%), egy független, Strong-számos Károli-kiadással a
-fő szavakon 98,72%, két emberi ellenőr szerint [pontosság]. A CC BY 4.0 licencű TSV-táblák Strong-alapú keresést,
+csak szósorszámokat jelölt; a Strong-szám az eredeti szöveg adatából jön. A pontosság rétegzett véletlen mintán,
+vak modell-ellenőrrel 95,06% (95%-os KI: 93,81–96,32%), két emberi ellenőr szerint [pontosság]; a fő
+szavak egyezése egy független, zárt Strong-számos kiadással 98,72%. A CC BY 4.0 licencű TSV-táblák Strong-alapú keresést,
 fordítástörténeti és szóillesztési kutatást szolgálnak.
 
 **Kulcsszavak:** Károli-biblia; Strong-számok; szóillesztés; magyar; bibliai héber; koiné görög
@@ -64,8 +64,8 @@ válaszokból Python-programokkal bájtra azonosan újraépíthetők.
 
 A vak ellenőrzés mintája rétegzett véletlen minta: a párkészletet könyvcsoportonként hét rétegre osztottuk
 (Mózes öt könyve; történeti, költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként
-200 párral (Mózes öt könyvéből 400 párral, két részmintában, pársúllyal összegezve). A független
-összevetés klaszter-minta: rétegenként egy, Mózes öt könyvében két teljes fejezet (nyolc fejezet, 2 663
+200 párral (Mózes öt könyvéből 400 párral, két részmintában, pársúllyal összegezve). A zárt
+kiadással való keresztellenőrzés klaszter-mintán futott: rétegenként egy, Mózes öt könyvében két teljes fejezet (nyolc fejezet, 2 663
 fő szó párja).
 
 ### Minőség-ellenőrzés
@@ -75,10 +75,11 @@ ki az eredeti szavakat, ugyanazokkal a szabályokkal, a gépi pár ismerete nél
 96,79%-ban, a gépi párosítás 97,06%-ban egyezett; mivel az ellenőr nem pontosabb a párosításnál, az egyezés
 csak akkor alsó becslés, ha a közös hiba elhanyagolható.
 
-**Független összevetés.** A közös hibát egy Strong-számos Károli-kiadás méri, amely magyar szavanként egy fő
-Strong-számot jelöl; csak az a pár számít, ezért a további párok (morféma, többszavas kapcsolat) nem hibák. Az
-eltéréseket háromutasan (gépi pár, forrás, vak ellenőr) ítéltük meg. Csak az összesített arány nyilvános, a külső
-forrás adata nem.
+**Keresztellenőrzés zárt kiadással.** A közös hiba kiegészítő ellenőrzésére a fő szavak párjait helyben összevetettük
+egy független, zárt licencű, Strong-számos Károli-kiadással; a forrás nem terjeszthető és az olvasó számára nem
+ellenőrizhető, ezért csak az összesített egyezés nyilvános. A kiadás magyar szavanként egy fő Strong-számot jelöl, és
+csak ez a pár kerül összevetésre. Az eltérés nem feltétlenül párosítási hiba, mert a felbontás eltérhet (*ʾaḥărê
+kēn*); az eltéréseket háromutasan (gépi pár, zárt forrás, vak ellenőr) ítéltük meg.
 
 **Emberi validáció.** Két független emberi ellenőr, végzett teológus, bibliai héber és görög ismerettel, egymástól
 függetlenül ítélt meg egy rétegzett véletlen mintát ([N] pár, valamint párosítatlan szavak); a párosítatlan szavak
@@ -91,14 +92,14 @@ modell-ellenőrrel].
 | teljes párkészlet, vak ellenőr, súlyozott | 95,06% | 93,81–96,32% |
 | ebből Ószövetség / Újszövetség | 94,50% / 97,07% | 92,95–96,05% / 95,55–98,59% |
 | tartalmi szó / héber morféma | 96,44% / 90,74% | 95,20–97,69% / 87,18–94,29% |
-| fő szavak, a független forrás szerint | 98,72% | 98,22–99,08% |
-| fő szavak, háromutas ítélet után | 99,81% | 99,56–99,92% |
 | emberi validáció | [pontosság] | [KI] |
+| a fő szavak egyezése a zárt kiadással | 98,72% | 98,22–99,08% |
+| ugyanez háromutas ítélet után | 99,81% | 99,56–99,92% |
 
 A rétegek egyezése 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog.
 Az 1 600 mintapárból 72 tért el az ellenőrtől, leggyakrabban szomszédos szóval (37): jellemzően
-egy héber előtag, névelő vagy elöljáró szabályellenes hozzákötésével. A független összevetés 34 eltéréséből
-öt maradt párosítási hiba; minden megerősített hibát az adatkészlet felsorol.
+egy héber előtag, névelő vagy elöljáró szabályellenes hozzákötésével. A zárt kiadástól való 34 eltérésből
+öt bizonyult párosítási hibának; minden megerősített hibát az adatkészlet felsorol.
 
 ## 3. Az adatkészlet leírása
 
@@ -126,8 +127,7 @@ STEPBible szövegéhez illeszthető.
 
 ## 4. Újrahasznosítási lehetőségek
 
-Bibliaprogramok Strong-alapú keresést kínálhatnak a magyar szövegen: egy eredeti szó minden Károli-megfelelője egy
-szűréssel előáll. A fordítástörténet vizsgálhatja a Károli következetességét, betoldásait és fordítatlan szavait.
+Bibliaprogramok Strong-alapú keresést kínálhatnak a magyar szövegen. A fordítástörténet vizsgálhatja a Károli következetességét, betoldásait és fordítatlan szavait.
 Nyelvtechnológiai célra kis erőforrású nyelvpár (magyar–héber, magyar–görög) szóillesztési adata, rétegenként mért
 hibával; a mintapárok szóillesztő programok értékeléséhez is használhatók. A párosításra a Logosz-lexikon,
 egy motívum-indexelt, kereszthivatkozott bibliai lexikon épül.
@@ -138,8 +138,8 @@ javasoltak változást, amely csak egyező független javaslatok és tőellenőr
 maradt, az összeolvadt szavak (*a kik* → *akik*) mindkét párja megmaradt, így a párkészlet azonos, és a fenti
 pontossági számok rá is érvényesek; a modernizálást külön ellenőrzés és mérés vizsgálta.
 
-Korlátok. A párosítás gépi javaslat, és a vak ellenőr maga is modell. A független összevetés csak a fő szavakat méri,
-kis klaszter-mintán; a héber morfémák párjai (157 163) kívül esnek rajta. A Károli a Textus Receptust fordította, a
+Korlátok. A párosítás gépi javaslat, és a vak ellenőr maga is modell. A zárt kiadással való keresztellenőrzés kis
+klaszter-minta, a 157 163 héber morféma-pár nélkül. A Károli a Textus Receptust fordította, a
 párosítás alapja a TAGNT; a Textus Receptusban nem szereplő 369 párosított görög szó jelölve van. A 2. kiadás
 javítja a megerősített hibákat, és előre rögzített minőségi célokhoz mérten újra mér.
 
@@ -175,7 +175,7 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 
 ## Nyilatkozat a mesterséges intelligencia használatáról
 
-Generatív MI három helyen dolgozott. (1) Párosítás: a Claude Sonnet (Anthropic; a kötegelt futások naplója szerint
+(1) Párosítás: a Claude Sonnet (Anthropic; a kötegelt futások naplója szerint
 claude-sonnet-5-5) csak sorszámpárokat adott vissza (l. Módszer). Az 1Móz és a 2Móz párosításánál egy másik nyelvi
 modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2) Minőség-ellenőrzés: a Claude
 Opus a mintán vak ellenőr volt; az emberi validáció MI nélkül készült. (3) Kísérő adatkészlet: nyelvi modellek csak a
@@ -191,9 +191,9 @@ ellenőrzött, és a tartalomért teljes felelősséget vállal; MI-eszköz nem 
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 156; a számozatlan nyilatkozatokkal 1 329; a
-hivatkozásokkal is 1 403 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
-szól); a kivonattal együtt 1 497. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+hivatkozások nélkül (a JOHD-sablon számítása) 1 160; a számozatlan nyilatkozatokkal 1 326; a
+hivatkozásokkal is 1 400 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 496. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a

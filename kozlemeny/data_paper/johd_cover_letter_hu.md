@@ -13,9 +13,9 @@ with the Hebrew and Greek source text: an open dataset with measured accuracy”
 válaszát, amelyben megerősítette, hogy a téma illik a folyóirathoz.
 
 **Az adatkészlet.** A cikk a Károli-biblia, a klasszikus magyar fordítás 1908-as szövegének nyílt, szavankénti
-párosítását írja le a héber és görög eredetivel: 598 715 szópár, mindegyik az eredeti szó Strong-számával, a
-pontosság rétegzett mintán, független Strong-számos kiadással és emberi validációval mérve. A Zenodón áll, CC BY 4.0
-licenccel:
+párosítását írja le a héber és görög eredetivel: 598 715 szópár, mindegyik az eredeti szó Strong-számával. A
+pontosságot rétegzett véletlen minta és emberi validáció méri; egy független, zárt Strong-számos kiadással való
+egyezés kiegészítő keresztellenőrzésként szerepel. A Zenodón áll, CC BY 4.0 licenccel:
 
 - Károli 1908 – Strong szóillesztés: https://doi.org/10.5281/zenodo.24141883
 - kísérő adatkészlet, Modernizált Károli – Strong (ugyanezek a párok a modernizált szövegen, a cikk röviden említi):
