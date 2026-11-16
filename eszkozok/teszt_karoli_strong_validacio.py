@@ -10,6 +10,7 @@ Futtatás: python eszkozok/teszt_karoli_strong_validacio.py
 
 import json
 import os
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -177,6 +178,19 @@ class Kiertekeles(unittest.TestCase):
         r = subprocess.run([sys.executable, SZKRIPT, rossz, self.fb, '--kimenet', os.path.join(self.tmp, 'x')],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertNotEqual(r.returncode, 0)
+
+
+class Oldal(unittest.TestCase):
+    """Az ellenorzo.html szkriptje Node-on: kitöltés, emlékeztető, export, betöltés tiszta állapotba,
+    tételenkénti időbélyeges összefésülés, idegen minta és más ellenőr fájlja."""
+
+    @unittest.skipUnless(shutil.which('node'), 'nincs node')
+    def test_betoltes_es_osszefesules(self):
+        proba = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'karoli_strong_validacio_oldal_proba.js')
+        oldal = os.path.join(ki.VALIDACIO, 'ellenorzo.html')
+        r = subprocess.run(['node', proba, oldal], capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn('RENDBEN', r.stdout)
 
 
 if __name__ == '__main__':

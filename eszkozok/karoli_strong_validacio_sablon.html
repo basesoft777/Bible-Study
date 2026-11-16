@@ -86,6 +86,9 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 .tipp { font-size: .85rem; color: var(--muted); }
 .mentve { font-size: .8rem; color: var(--muted); }
 #tokinfo { min-height: 1.5em; }
+.emlek { margin-top: 8px; padding: 8px 10px; border: 1px solid var(--accent); border-radius: 8px; background: var(--card);
+  display: flex; gap: 8px; flex-wrap: wrap; align-items: center; justify-content: space-between; font-size: .9rem; }
+.emlek button { min-height: 36px; padding: 6px 10px; }
 </style>
 </head>
 <body>
@@ -100,6 +103,11 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
       <button id="b-menu" class="small" type="button">Mentés / export</button>
     </div>
     <div class="halad"><div id="f-halad"></div></div>
+    <div class="emlek rejtett" id="emlek">
+      <span id="emlek-szoveg"></span>
+      <span class="row"><button id="b-emlek-export" type="button" class="primary small">Exportálás most</button>
+        <button id="b-emlek-zar" type="button" class="small">Most nem</button></span>
+    </div>
   </div>
 </div>
 
@@ -185,17 +193,17 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
     <div class="card">
       <div class="row"><h2 style="margin:0">Mentés / export</h2><span class="spacer"></span><button id="b-vissza2" type="button">Vissza a tételhez</button></div>
       <p>Ellenőr: <b id="m-nev"></b> · kész: <b id="m-kesz"></b></p>
-      <p><button class="primary" id="b-export" type="button">Exportálás (JSON letöltése)</button></p>
-      <p class="small muted">A letöltött <code id="m-fajl"></code> fájlt küldd el a szervezőnek. Részleges állapot is exportálható; a végén a teljeset küldd.</p>
+      <p class="row"><button class="primary" id="b-export" type="button">Exportálás (JSON letöltése)</button>
+        <button id="b-betolt" type="button">Betöltés (korábbi export)</button>
+        <input type="file" id="i-betolt" accept="application/json,.json" hidden></p>
+      <p class="small" id="m-betolt-info"></p>
+      <p class="small muted">A letöltött <code id="m-fajl"></code> fájlt küldd el a szervezőnek. Félkész állapot is exportálható, és vissza is tölthető; a végén a teljeset küldd.</p>
+      <p class="small muted"><b>Eszközváltás</b>: a régi eszközön Exportálás, az újon ugyanezzel az oldallal Betöltés. Ha az új eszközön is vannak már válaszaid, tételenként a később módosított válasz marad meg.</p>
       <details><summary class="small">Ha a letöltés nem indul el (pl. telefonon)</summary>
         <p class="small">Másold ki az alábbi szöveget, és küldd el e-mailben.</p>
         <p><button id="b-masol" type="button">Másolás a vágólapra</button> <span class="small muted" id="m-masolva"></span></p>
         <textarea id="m-json" readonly style="min-height:120px"></textarea>
       </details>
-      <hr style="border:none;border-top:1px solid var(--line)">
-      <p><b>Betöltés</b>: egy korábban exportált saját fájl visszatöltése (pl. másik eszközről). A jelenlegi állapotot felülírja.</p>
-      <input type="file" id="i-betolt" accept="application/json,.json">
-      <p class="small" id="m-betolt-info"></p>
     </div>
   </section>
 </main>
@@ -398,7 +406,7 @@ function itelet_valt(x) {
   if (t.tipus === "parnelkuli") v.hibatipus = v.itelet === "hibas" ? "kimaradt_par" : "";
   else if (v.itelet !== "hibas") v.hibatipus = "";
   if (!valaszto_aktiv(t, v)) v.helyes_forras = [];
-  v.ido = new Date().toISOString(); ment(); rajzol();
+  v.ido = new Date().toISOString(); ment(); rajzol(); emlekezteto();
 }
 
 function lep(d) { var p = allapot.poz + d; if (p < 0 || p >= MINTA.length) return; allapot.poz = p; kijelolt_hu = null; ment(); rajzol(); window.scrollTo(0, 0); }
@@ -444,18 +452,62 @@ function exportal() {
   setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
   $("m-json").value = s;
 }
+/* Egy exportfájl ellenőrzése: ugyanahhoz a mintához tartozik-e, és ép-e. Hibánál kivételt dob, nem tölt be. */
+function fajl_ellenoriz(d) {
+  if (!d || typeof d !== "object") throw new Error("nem érvényes exportfájl");
+  if (d.minta_hash !== MINTA_HASH) throw new Error("ez a fájl másik mintához tartozik (minta-azonosító: " + d.minta_hash + ", az oldalé: " + MINTA_HASH + ")");
+  if (!d.ellenor || typeof d.ellenor !== "string") throw new Error("hiányzik az ellenőr neve");
+  if (!Array.isArray(d.sorrend) || d.sorrend.length !== MINTA.length || d.sorrend.some(function (id) { return !(id in IDX); })) throw new Error("hiányos vagy idegen tételsorrend");
+  var v = d.valaszok || {};
+  for (var id in v) {
+    if (!(id in IDX)) throw new Error("ismeretlen tétel: " + id);
+    if (v[id].itelet && ["helyes", "hibas", "bizonytalan"].indexOf(v[id].itelet) < 0) throw new Error("ismeretlen ítélet a(z) " + id + " tételnél");
+  }
+}
+/* Összefésülés tételenként: a később módosított válasz marad (az `ido` ISO-időbélyeg szerint). */
+function osszefesul(helyi, d) {
+  var ki = helyi ? JSON.parse(JSON.stringify(helyi)) : { ellenor: d.ellenor, sorrend: d.sorrend.slice(), valaszok: {}, poz: 0, kezdes: d.kezdes };
+  var atvett = 0, megtartott = 0, v = d.valaszok || {};
+  for (var id in v) {
+    var f = v[id], h = ki.valaszok[id];
+    var h_van = h && (h.itelet || h.megjegyzes);
+    if (!h_van || (f.ido || "") > (h.ido || "")) { ki.valaszok[id] = JSON.parse(JSON.stringify(f)); if (!f.helyes_forras) ki.valaszok[id].helyes_forras = []; atvett++; }
+    else if (JSON.stringify(f) !== JSON.stringify(h)) megtartott++;
+  }
+  return { allapot: ki, atvett: atvett, megtartott: megtartott };
+}
+function betolt_adat(d) {
+  fajl_ellenoriz(d);
+  if (allapot && allapot.ellenor !== d.ellenor &&
+      !confirm("A fájl „" + d.ellenor + "” ellenőré, most „" + allapot.ellenor + "” néven dolgozol. Átváltasz „" + d.ellenor + "” állapotára? (A mostani állapot ebben a böngészőben megmarad.)")) {
+    return "Mégsem töltöttem be.";
+  }
+  var helyi = tarol_olvas(kulcs(d.ellenor));
+  if (!helyi && allapot && allapot.ellenor === d.ellenor) helyi = allapot;
+  var e = osszefesul(helyi, d);
+  allapot = e.allapot; ment();
+  return "Betöltve: " + d.ellenor + ". A fájlból átvett válasz: " + e.atvett +
+    (e.megtartott ? "; " + e.megtartott + " tételnél az itteni, később módosított válasz maradt meg" : "") +
+    ". Kész tétel összesen: " + kesz_db() + " / " + MINTA.length + ".";
+}
 function betolt(fajl) {
   var r = new FileReader();
   r.onload = function () {
-    try {
-      var d = JSON.parse(r.result);
-      if (d.minta_hash !== MINTA_HASH) throw new Error("ez a fájl másik mintához tartozik");
-      if (!d.sorrend || d.sorrend.length !== MINTA.length) throw new Error("hiányos sorrend");
-      allapot = { ellenor: d.ellenor, sorrend: d.sorrend, valaszok: d.valaszok || {}, poz: 0, kezdes: d.kezdes };
-      ment(); menu(); $("m-betolt-info").textContent = "Betöltve: " + d.ellenor + ", " + kesz_db() + " kész tétel.";
-    } catch (ex) { $("m-betolt-info").textContent = "Nem tölthető be: " + ex.message; }
+    var uzenet;
+    try { uzenet = betolt_adat(JSON.parse(r.result)); }
+    catch (ex) { uzenet = "Nem tölthető be: " + ex.message; }
+    menu(); $("m-betolt-info").textContent = uzenet;
   };
   r.readAsText(fajl, "utf-8");
+}
+/* Emlékeztető: 50 megválaszolt tételenként biztonsági export (nem kötelező, bezárható). */
+function emlekezteto() {
+  var k = kesz_db(), kuszob = Math.floor(k / 50) * 50;
+  if (kuszob >= 50 && kuszob > (allapot.emlek || 0)) {
+    allapot.emlek = kuszob; ment();
+    $("emlek-szoveg").textContent = "Már " + k + " tétel kész. Érdemes biztonsági exportot készíteni (nem kötelező).";
+    $("emlek").classList.remove("rejtett");
+  }
 }
 
 /* ---------- indulás ---------- */
@@ -486,7 +538,10 @@ $("b-masol").addEventListener("click", function () {
   if (navigator.clipboard) navigator.clipboard.writeText(ta.value).then(kesz, function () { document.execCommand("copy"); kesz(); });
   else { document.execCommand("copy"); kesz(); }
 });
+$("b-betolt").addEventListener("click", function () { $("i-betolt").value = ""; $("i-betolt").click(); });
 $("i-betolt").addEventListener("change", function (e) { if (e.target.files[0]) betolt(e.target.files[0]); });
+$("b-emlek-export").addEventListener("click", function () { exportal(); $("emlek").classList.add("rejtett"); });
+$("b-emlek-zar").addEventListener("click", function () { $("emlek").classList.add("rejtett"); });
 document.addEventListener("keydown", function (e) {
   if (nezet !== "tetel" || e.ctrlKey || e.metaKey || e.altKey) return;
   var tag = (e.target.tagName || "").toLowerCase(); if (tag === "textarea" || tag === "input") return;

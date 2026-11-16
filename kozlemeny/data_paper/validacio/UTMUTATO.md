@@ -45,8 +45,9 @@ Ezek szerint készült a párosítás. A tetszés szerinti fordítói ítélet h
 ## Gyakorlati tudnivalók
 
 - **Indítás.** Nyisd meg az `ellenorzo.html`-t egy böngészőben, és add meg a neved, mindig ugyanazt. A tételek sorrendje ellenőrönként más.
-- **Mentés.** Minden kattintás után automatikusan ment, ugyanabban a böngészőben folytathatod. Privát ablakban ne dolgozz, mert ott a mentés elveszhet.
+- **Mentés, több részletben.** A munka bármikor abbahagyható és folytatható: minden kattintás után automatikusan ment. A mentés azonban ehhez a böngészőhöz és ehhez az eszközhöz kötött. Ne dolgozz privát vagy inkognitóablakban, mert annak bezárásakor a mentés elvész. 50 kész tételenként az oldal felajánl egy biztonsági exportot; nem kötelező, de érdemes elfogadni.
+- **Eszközváltás.** A régi eszközön „Mentés / export” → **Exportálás**. Az újon nyisd meg ugyanezt az oldalt, add meg ugyanazt a nevet, majd „Mentés / export” → **Betöltés**, és válaszd ki a fájlt. Ha mindkét helyen vannak válaszaid, tételenként a később módosított marad meg. Más mintához tartozó fájlt az oldal nem tölt be.
 - **Tippek.** Ha egy magyar szóra koppintasz, látod a párjait. Ha egy eredeti szóra koppintasz, látod a Strong-számát és a jelentését. A pontozott aláhúzás pár nélküli eredeti szót jelöl.
 - **Alaktan.** A héber kód a Macula/OSHB jelölése: pl. *Ncmsa* = köznév, hímnem, egyes szám, abszolút állapot; *Vqp3ms* = ige, qal, perfectum, E/3 hímnem; *Sp3ms* = névmási rag, E/3 hímnem; *R* = elöljáró; *C* = kötőszó; *Td* = névelő. A görög kód Robinson-féle: pl. *V-PAP-NSM* = ige, praesens activum participium, alanyeset, egyes szám, hímnem.
-- **Leadás.** Ha végeztél, a „Mentés / export” gombbal letöltöd a `<neved>_valaszok.json` fájlt; ezt küldd el a szervezőnek. Ha a letöltés nem indul el, ugyanott kimásolhatod a szöveget. Ugyanezzel a fájllal a munka másik eszközön is folytatható („Betöltés”).
+- **Leadás.** Ha végeztél, a „Mentés / export” gombbal letöltöd a `<neved>_valaszok.json` fájlt; ezt küldd el a szervezőnek. Ha a letöltés nem indul el, ugyanott kimásolhatod a szöveget.
 - **Becsült idő.** Szópárnál átlagosan kb. fél perc, pár nélküli szónál 15–20 másodperc: összesen **kb. 3–4 óra**. A névelők és a kötőszók gyorsan mennek, a ragos és többszavas esetek lassabban. Érdemes több, legfeljebb egyórás részletben dolgozni.
