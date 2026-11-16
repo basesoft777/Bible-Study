@@ -1188,3 +1188,44 @@ Az orkesztrátor besorolása (2026-11-16): E1, E3, E5, E6, E7, E8, E9 mechanikus
 - **U1 javítva:** a dekorátor törölve; teszt: `teszt_lxx.py` `Kuszobok.test_a_fokozatok_kulonboznek` (`assertNotEqual` és háromelemű halmaz).
 - **U3 javítva:** a CI-lépés csak PR-on fut (`if: always() && github.event_name == 'pull_request'`): a main-re futó push-esemény nem bukhat el a `szamkiosztas` utáni elavult mércén. A PR-okon a viselkedés szándékos: a lapgenerátort érintő ág a regresszió előtt hozza be a main-t és frissítse a hash-sort. Új N-tétel: N200. A kapu saját tesztje: `teszt_regresszio.py` `HashOrKapu` (2 teszt). A `hash_or_kapu.py` csomagként is importálható (`from lapgen import regresszio`).
 - **U2 marad:** a `kovetkezo` szövegét az orkesztrátor adta meg szó szerint („Te: S5 új ágon a main-ről”), és a merge szó a gépi lezárást kiváltaná (`brief_lezaras.py` `MERGE_SZO`). A merge a PR címéből és leírásából látszik.
+
+## F218.8 — S5: „6. Kereszthivatkozások” és a Minősítés (`claude-opus-5-5`, high, 2026-11-16, a 10. session)
+
+*Új ág a main-ről (`claude/f218a-s5-1402d5`, alap `68d9ee90`), saját PR-ban. A modell-ellenőrzés: a kért `opus`, a session `claude-opus-5-5`.*
+
+**Első lépés: N200** (`2e21e0b1`). A `szamkiosztas` a #729 merge-e után a B51 `DONTESEK.md`-t és a B66 sablontábla döntésszámait megváltoztatta, a `dontesek/uj/f218-generator-uj-a.md`-t törölte. A két hash-sor frissült, a törölt fájl sora kikerült; HAMART-regresszió RENDBEN, festékpróba 0, a hash-őr 208 sorral RENDBEN. Az N200 a hosszabb távú része miatt nyitva marad (a lezárt-sor a `NYITOTT_FELADATOK.md`-ben). **Ugyanez a merge után újra esedékes** (az ág új döntésfájlja, `dontesek/uj/f218a-s5-1402d5.md`, a B51 sora): az S6 első lépése.
+
+**Eredmény:** a HAMART-001 6. szakasza (a Minősítéssel együtt, 307 sor) a referenciától négy soron tér el, mind engedéllyel; a regresszió RENDBEN (engedély nélküli diff-sor 0). Festékpróba 0 (HAMART: belső 319, horgony 30, idézet 2754, kézi 652; ISTENTISZT: 258, 18, 1375, 291).
+*Proveniencia: `scope=general.py --cel lexikon2 --id HAMART-001/ISTENTISZT-001 (PARDES_DATUM=2026-11-13); regresszio.py --id HAMART-001; festek.py | forras=munkafa (2e21e0b1 + az S5) | ts=2026-11-16`.*
+
+| Engedélysor | Osztály | Sor | Előre számolt? |
+|---|---|---|---|
+| `S5-FORRAS` | GK-07, HN-10: a blokkfejléc forráslistája a valódi olvasásból, a javított Károli-KH táblával | 1 | igen: az alapmérés „HN-10 megjegyzésben” sora a 6. szakaszban 3 sort számolt, ez a három egyike |
+| `S5-RES-FORRAS` | HN-10: a Minősítés rés-jelölőjének forráslistája | 1 | igen (a 3 közül) |
+| `S5-PROV` | HN-10: a Minősítés proveniencia-sorának eredeti alakja (megjegyzés); a látható „Forrás:” mondat változatlan | 1 | igen (a 3 közül) |
+| `S5-KIEJTES` | M-CSERE: a régi lap a Jer 4:23 sor kézi indoklásába utólag kiejtést szúrt („תהו (tóhú)/בהו (tóhú/bóhú)”: a kiejtés kétszer); az új lap a forrás szövegét adja, ahogy a régi lap is a következő (Jer 4:28) sorban | 1 | **nem**: új osztály, a 218a végi listán |
+
+**Felépítés.**
+- `bemenet/kereszthiv.py`: B44 (TSK) a B34 megfeleltetésével Károli-kulcsra váltva (a régi `tsk_kulcs` szabálya: ószövetségi könyvben a tábla párja, MT-tartalék a számlálással kapott MT-sorokra, az Újszövetségben azonosság); B43 (Károli-KH, nyers) és B72 (a javított, MEK-kel összevetett tábla; a térkép B43-a licenc szerint két sorra bontva, a B57 mintájára): a nyers és a csak a MEK-ben álló megerősített sorok, azonos kulcs egyszer, csak a `megerositett` szint; a többi sor száma forrásversenként. A célhely igehelyként: a könyv a cél STEPBible-alakjából (B63), a szám a megjelenítésből (vesszős és kettőspontos alak egyaránt). A B04 kereszthivatkozásos jelöltjei (`kereszthiv_jeloltek`): a forrás-mező szerkezete (gyűjtemény, forrásversek, irány, szavazatszámok, TSK-találat, „a Károli is ajánlja”), az ok (B56), a címke-ismétlés szabálya (a régi `cimke_ismetles`; HN-02), a proveniencia-sor két alakja; az indoklás darabjai: kézi szöveg, motívum-hivatkozás (`[ID: …]`), Strong-hivatkozás (a Strong-szám és utána a héber/görög szó, a régi `STRONG_ELOL`).
+- `szamitas/kereszthiv.py`: a szakasz (49 hely, 25 ad utalást, 120 utalás, 6 nem vizsgálható, 5 hely 8 nem megerősített Károli-utalása) és a Minősítés (5 pár, 6 érintett hely, 99 vizsgált hely) modellje; a kapu: a felsorolt és a nem vizsgálható helyek ismétlés nélkül (GK-A1), az utalások összege, a párok a felsorolt utalások közül, a döntések összege.
+- `megjelenites/md/kereszthiv.py`: 57 új sablonsor (`s6.*`, `cim.kereszthivatkozasok`, `cim.minosites`), ebből 55 a régi lap végleges szövege (`dontes=-`, a régi utólagos cserék — F212 M2, M3, M4, I5 — eredménye), 2 új (`dontes=var`, a két mintalapon nem fut): `s6.ures`, `s6.min.parok.nincs` (a régi „TSK/Károli-KH”, „Votes ≥ 15” szöveg helyett).
+- `ertekek.py`: `Dontes` (a `bemenet/dontes.py` innen veszi), `Gyujtemeny`, `AjanlasFajta`; `bemenet/konyvek.py`: a STEPBible-rövidítés két iránya; `fo.Forrasok.lista` (a proveniencia `+` elválasztós felsorolásához); `konfig.TSK_SZAVAZAT_KUSZOB = 15`.
+- Jegyzék: B43, B44, B72; névtábla: 15 `ok_cella` sor (DT869; 12 HAMART-, 3 ISTENTISZT-címke).
+
+**DT-F218s (🟡, megerősítésre vár): a kézi indoklás az adatban a végleges alak.** A régi lap a Minősítés (és a 3. szakasz) indoklás-celláit utólagos cserékkel tette olvashatóvá. Az új generátor nem írhat át látható szöveget, ezért a DT869 elvét alkalmaztam: az egyenes idézőjel (24 sor) és a „Strong-keresés szerint” munkaszó (10 sor) a `jeloltek.tsv`-ben javult (csak a HAMART-001 kereszthivatkozásos előfordulás-jelöltjein), az ok cellakezdő alakja a névtábla `ok_cella` sora, a jelölt szerkezet (`[ID: …]`, Strong + szó) a bemeneti rétegben bomlik darabokra; ha az indoklás nem olvasói szöveg, a réteg megáll. **A régi generátor HAMART-kimenete mindkét adatjavítás után bájtra azonos a referenciával.** A `jeloltek.tsv` az `ir`-en kívül esik: a felvétele kölcsönös függést adna (#212 ↔ #218, és új függést a #157-tel), mint a DT870-nél (N188). A többi motívum egyenes idézőjeles indoklása: N-F218q.
+*Proveniencia: `scope=general.py --cel lexikon --id HAMART-001 (PARDES_DATUM=2026-11-13), cmp a HEAD lapjával | forras=munkafa | ts=2026-11-16`.*
+
+**ISTENTISZT-001** (nincs bájt-mérce): 20 hely, 8 ad utalást (19); a Minősítés 9 pár, 7 érintett hely, 61 vizsgált hely (mind elutasítva); a címke-ismétlés (HN-02) 0. A forrás-mező egyik helye `Zef 3:9` (a normalizáló táblában `Sof`): a régi lap is így közölte; az új generátor a forrás-mező igehelyét csak alakra ellenőrzi, és az adat szerint írja ki (N-F218q, N195).
+
+**Nem portolt, kimondott hibával megálló ágak** (a két mintalapon nem futnak): ismeretlen forrás-forma a kereszthivatkozásos jelöltnél; szokatlan szavazatszám-alak (a lap alakja a szerkezetből készül, csak ha a forrással azonos); nem olvasói indoklás (egyenes idézőjel, belső jelölés, munkaszó, cellahatár); értelmezhetetlen Károli-KH célhely.
+
+**Az ismétlés-figyelő** (figyelmeztetés, nem BUKÁS) a HAMART-on 46, az ISTENTISZT-en 31 találatot ad (eddig 9 és 8): a többlet a Minősítés táblájának azonos indoklású sorai (pl. a Jób 14:1-től a Zsolt 90:9-ig tizenhat sor ugyanazzal az indoklással). A régi lapon is így áll.
+
+**Tesztek:** `teszt_kereszthiv.py` (15): a HAMART számai és a TSK-sorrend, a kapu, GK-A1 (a nem vizsgálható hely egyszer áll, mindkét lapon), HN-10 (a jelölők a javított táblát nevezik, a látható szövegben fájlnév nincs), a forrás-mező szerkezete (öt eset és két megálló), az indoklás darabjai és kapuja, HN-02 a lapon, az `ok_cella` kapuja. A `teszt_vaz.py` GK-A1 váza törölve.
+
+**A 218a végi listába:** a két új `var` sablonsor; az `S5-KIEJTES` osztály; a DT-F218s; a 15 `ok_cella` sor (a három ISTENTISZT-címke nagy kezdőbetűje a régi lap szabálya szerint); a Minősítés „a {p}%-a” mondatrésze a régi szöveg szerint rögzített névelővel áll (1%-nál és 5%-nál „a 5%-a” lenne); a `s6.min.olvasoi.nincs` a régi „független külső megerősítése” szót tartja, holott az F212 M2 a „független”-t a párokra „külső”-re cserélte (a két mintalapon nem fut).
+
+| Pont | Dátum (UTC) | Heti · minden modell | Heti · Fable | 5 órás | Megjegyzés |
+|---|---|---|---|---|---|
+| 10. session indul (opus, high) | 2026-11-16 10:48 | 41% | 15% | 82% | `get_usage`; a kontextus 29% (1M) |
+| S5 kész (a regresszió RENDBEN) | 2026-11-16 11:35 | 42% | 15% | 9% | 1 százalékpont heti (az 5 órás közben nullázódott); a kontextus 52% |

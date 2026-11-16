@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218-generator-uj-a` · PR: #729 (a 218a első fele: T, S1–S4; az S5-től új ág, új PR) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md` · Alap: main `37f087cc`.
+Ág: `claude/f218a-s5-1402d5` (az S5; alap: main `68d9ee90`) · PR: az S5 saját PR-ja (a 218a első fele, T és S1–S4: #729, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
@@ -35,7 +35,9 @@
 | 6. ellenőrzés (Fable, `52f978f2..3a5ce4fb`) | **ELTÉRÉS: 10 tétel** | `naplok/F218_jelentes.md` „Független ellenőrzés — 6. ellenőrzés”; az orkesztrátor besorolása (2026-11-16): E1, E3, E5–E9 mechanikus, a merge előtt; E2, E4 a felhasználóé (N196, N197); E10 N-tétel (N198) |
 | Javítókör (a 6. ellenőrzésre) | **kész** (a 9. session) | `naplok/F218_jelentes.md` „A 6. ellenőrzés javítóköre” |
 | 7. ellenőrzés (célzott, Fable) | **ELTÉRÉS: 3 tétel; U1 és U3 javítva, U2 indokkal marad** | `naplok/F218_jelentes.md` „Független ellenőrzés — 7. ellenőrzés” |
-| F218.8 (S5) – F218.13 | nem indult | |
+| N200 (a mérce hash-sorai a #729 merge-e után) | **kész** (`2e21e0b1`, a 10. session) | a B51 `DONTESEK.md` és a B66 hash-e frissült, a törölt döntésfájl sora kikerült; regresszió RENDBEN, hash-őr 208 sor. **A merge után újra esedékes** (az S5 döntésfájlja is a B51 sora): az S6 első lépése |
+| F218.8 (S5): „6. Kereszthivatkozások” és a Minősítés | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 10. session, `claude-opus-5-5`, high) | 307 sorból 4 eltér, mind engedéllyel: `S5-FORRAS`, `S5-RES-FORRAS`, `S5-PROV` (HN-10, az alapmérés 3 sora), `S5-KIEJTES` (új osztály, 1). Új bemenetek: B43, B44, B72; 57 sablonsor (2 `var`), 15 `ok_cella` névtábla-sor; a `jeloltek.tsv` 34 cellája az adatban javult (DT-F218s 🟡, az `ir`-en kívül); festékpróba 0; tesztek: `teszt_kereszthiv.py` (15). A jelentés „F218.8 — S5” szakasza |
+| F218.9 (S6) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
 
@@ -59,6 +61,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 *Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
 
 ## Következő lépés
+
+**Az S5 kész (a 10. session, 2026-11-16):** a 6. szakasz és a Minősítés a referenciával egyezik, négy engedélysorral (a jelentés „F218.8 — S5” szakasza). **Következik:** a célzott független ellenőrzés (`fuggetlen-ellenor`, a main-en `model: fable`) az S5 tartományán, legfeljebb egy javítókör; a PR merge-e az orkesztrátoré. **Az S6 első lépése a merge után:** a mérce hash-sorai (N200 ismét: a `szamkiosztas` a `DONTESEK.md`-t és a B51 új fájlját, `dontesek/uj/f218a-s5-1402d5.md`, megváltoztatja/törli). Döntésre vár: DT-F218s (🟡, a kézi indoklás az adatban a végleges alak). A 218a végi listába ebből a szeletből: a két `var` sablonsor (`s6.ures`, `s6.min.parok.nincs`), az `S5-KIEJTES` osztály, a 15 `ok_cella` sor, a „a {p}%-a” rögzített névelője, a `s6.min.olvasoi.nincs` „független” szava.
 
 **A 218a első fele a main-re kerül (a 9. session, 2026-11-16).** A felhasználó döntése (az orkesztrátoron át, szó szerint: „Igen, mindkettőt”): a PR #729 a mostani állapotában (T, S1–S4) mergelődik, a független ellenőrzés után; az S5-től a munka **új ágon, új PR-ban** folytatódik, a main-ről. **A 218a nem zárul le** (a brief `allapot` mezője `megallt`, `lezar:` mező nincs). Az állás a merge előtt: a 6. ellenőrzés (Fable) javítóköre kész (E1, E3, E5–E9; E2, E4, E10: N196, N197, N198; a GK-04 helyszám-kapuja: N199), a main behozva, HAMART-regresszió RENDBEN, festékpróba 0. **A merge után, az új ágon az első teendők:** (1) a mérce hash-sorainak ellenőrzése (N200) (`eszkozok/lapgen/hash_or_kapu.py`; a `szamkiosztas` a `dontesek/uj/f218-generator-uj-a.md`-t és a `DONTESEK.md`-t megváltoztatja, ezért a B51 sorai frissítendők, külön commitban, a regresszióval); (2) a brief `ag` és `pr` mezője az új ágra és PR-ra; (3) az S5. A célzott újraellenőrzés a 6. ellenőrzés javítókörére a jelentésben áll.
 
