@@ -128,3 +128,7 @@ Megjegyzések az ellenőrtől: a `regiszter_or.py` `JS_FAJLOK` bővítve (E1-gye
 - **Nyitott:** N-F225a (a session-szabály a `MUNKAMENET.md`-be a #725 után). A `mcp__Claude_Browser__preview_stop` ebben a menetben nem kapott jóváhagyást: az `olvaso-ag` előnézet (8775, ez a worktree) fut tovább; a panelből vagy `fuser -k 8775/tcp`-vel leállítható.
 - **A felhasználó indítása:** a panelben az `olvaso-ag`, vagy kézzel: `wsl -d pardes -e bash -lc "cd /mnt/<meghajtó>/<worktree útja> && ./eszkozok/olvaso_szerver/indit.sh belso 8775"`; cím `http://localhost:8775/`.
 - **PR:** [#753](https://github.com/basesoft777/Bible-Study/pull/753) (draft).
+
+### Kiegészítés az 1. ellenőrzéshez (az ellenőr zárójelentése)
+
+Az ellenőr zárójelentése ugyanazt az öt tételt (E1–E5) hozza, mint a fent szó szerint mentett közbenső jelentés; az egyetlen új tartalma a lassú tesztek eredménye: `teszt_szintek` (2 teszt) és `teszt_visszhang_kapu` (2 teszt) bukik, és az ellenőr nem tudta eldönteni, hogy a base-en is. **Válasz:** a base-en (`efb492ff`, ideiglenes worktree, WSL, ugyanaz az adatbázis) mindkét fájl ugyanazokkal a tesztnevekkel ugyanígy bukik, tehát nem az F225 okozza (l. a Zárást). Az E1–E5 az `F225.7`-ben javítva.
