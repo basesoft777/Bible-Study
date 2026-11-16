@@ -1265,10 +1265,10 @@ A besorolás az orkesztrátoré; a session a gépies tételeket javította, a d�
 
 *Új ág a main-ről (`claude/f218a-s6-3896f7`, alap `ff3fd41c`), saját PR-ban. A modell-ellenőrzés: a kért `opus`, a session `claude-opus-5-5`.*
 
-**Első lépés: N200** (`101da4dc`). A `szamkiosztas` (`ff3fd41c`) a B51 `DONTESEK.md`-t megváltoztatta, a `dontesek/uj/f218a-s5-1402d5.md`-t törölte. A hash-sor frissült, a törölt fájl sora kikerült; HAMART-regresszió RENDBEN, a hash-őr 208 sorral RENDBEN. **A merge után ugyanez újra esedékes** (az ág döntésfájlja, `dontesek/uj/f218a-s6-3896f7.md`, a B51 sora): az S7 első lépése.
+**Első lépés: N200** (`648ddbcb`). A `szamkiosztas` (`ff3fd41c`) a B51 `DONTESEK.md`-t megváltoztatta, a `dontesek/uj/f218a-s5-1402d5.md`-t törölte. A hash-sor frissült, a törölt fájl sora kikerült; HAMART-regresszió RENDBEN, a hash-őr 208 sorral RENDBEN. **A merge után ugyanez újra esedékes** (az ág döntésfájlja, `dontesek/uj/f218a-s6-3896f7.md`, a B51 sora): az S7 első lépése.
 
 **Eredmény:** a HAMART-001 7. szakasza (az Alátámasztással, 236 sor) és 8. szakasza (17 sor) a referenciától hat soron tér el, mind engedéllyel; a regresszió RENDBEN (engedély nélküli diff-sor 0); az első futás is pontosan ezt a hat sort adta. Festékpróba 0 (HAMART: belső 342, horgony 30, idézet 2756, kézi 754; ISTENTISZT: 281, 18, 1377, 325).
-*Proveniencia: `scope=general.py --cel lexikon2 --id HAMART-001/ISTENTISZT-001 (PARDES_DATUM=2026-11-13); regresszio.py --id HAMART-001; festek.py | forras=munkafa (101da4dc + az S6) | ts=2026-11-16`.*
+*Proveniencia: `scope=general.py --cel lexikon2 --id HAMART-001/ISTENTISZT-001 (PARDES_DATUM=2026-11-13); regresszio.py --id HAMART-001; festek.py | forras=munkafa (648ddbcb + az S6) | ts=2026-11-16`.*
 
 | Engedélysor | Osztály | Sor | Előre számolt? |
 |---|---|---|---|
@@ -1301,3 +1301,37 @@ A besorolás az orkesztrátoré; a session a gépies tételeket javította, a d�
 | Pont | Dátum (UTC) | Heti · minden modell | Heti · Fable | 5 órás | Megjegyzés |
 |---|---|---|---|---|---|
 | S6 kész (a regresszió RENDBEN) | 2026-11-16 13:55 | 45% | 16% | 30% | a kontextus 44% (1M) |
+
+## Független ellenőrzés — 9. ellenőrzés (célzott: S6 és az N200)
+
+*A `fuggetlen-ellenor` subagent (`claude-fable-5-2`) jelentése, a hívó session (`claude-opus-5-5`, a 11. session) mentésében, rövidítve; az ELTÉRÉS-tételek lényege szó szerint. Hatókör: `ff3fd41c..dc9bd031`; szint: `teljes`.*
+
+**Eredmény: ELTÉRÉS, 7 tétel.** OK: modell; CI a head-en (43886409725, `success`, a hash-őr és az F217 zöld: „HAMART-001: nem változott”, „G07 (nyilt_mag/): 0 fájl változott”); az adatjavítás tartalma (csak a `funkcio` oszlop, 43 + 1 cella, 41 nagybetű, 2 névelő-elhagyás); a B45 `indoklas` kézi prózaként (SEMA 2.3); az öt GK-07 engedélysor indoka; GK-01/05/08a/c, festékpróba, tesztek (308/0/0, 30 váz); a sablon- és névtáblasorok (`dontes=-`, új tartalmi állítás nincs; 1 `eredet=uj`); az ISTENTISZT-001 számai saját számlálással; a két szűkített régi teszt; A1, A3–A5; a táblák sorszáma. NEM ELLENŐRIZHETŐ: a régi generátor bájt-egyezése és a szakasz-diff közvetlenül (a `general.py`, a `regresszio.py`, a `cmp` nincs a megengedett parancsai között; közvetett CI-bizonyíték van); A6; a commitonkénti zöld állapot (a `b482668b` valószínűleg bukó teszttel állt, a javítás a `5a8e76a9`-ben).
+
+1. **DT-F218t:** a záró döntés-hivatkozás levágása törlés a kézi prózán, a kapuk által nem látott rétegben; a minta tágabb volt a leírt két alaknál (bármely DT-számmal kezdődő záró zárójelet törölt); az alapszabály alóli kivételt a menet maga döntötte el. Felhasználói döntés kell: (a) marad, a minta a két alakra szűkül, teszttel; vagy (b) a hivatkozás az adatból kerül ki (DT869/DT884). A B46 `indoklas` kézi prózaként kezelése ugyanitt erősítendő meg.
+2. **Az `ir`-en kívüli adatírás** (43 + 1 `funkcio` cella) döntéssor és N-tétel nélkül; az S5-ben ugyanez DT884-et és N188-kiegészítést kapott. A B45/B46 hash-sora az S6 commitjában frissült, nem külön (a 8. ellenőrzés E8 tételének ismétlődése).
+3. **`S6-KIEJTES`:** a 8.1 osztályain kívüli eltérés második példánya; osztályszintű rendelkezés hiányzik.
+4. **GK-01:** a B04-nek három közvetlen olvasója van (`dontes.py`, `kereszthiv.py`, `kapcsolat.py`); a teszt a névminta miatt nem látja.
+5. **A kapuk** bizonyosság- és nyitott-összege a valódi számításon nem bukhat (az `alacsony` = `n − magas − kozepes`; a `nyitott_ossz` = az összeg).
+6. **Napló:** hibás commit-hash (`101da4dc` ↔ `648ddbcb`) és „4” ↔ 5 GK-07 engedélysor.
+7. **Az olvasó-szerver tesztsora** a menet jelentésében nem szerepel, bár a diff az `adat/`-ot érinti; az ellenőr futása (`teszt_futtat.py --diff ff3fd41c`): `teszt_szintek.py` 13-ból 2, `teszt_visszhang_kapu.py` 22-ből 2 bukás (az N187 és az N198 nyilvántartott hibái), a többi 14 fájl zöld.
+
+Megfigyelés: a `teszt_kapcsolatok.szakasz_sorai` is a lap végéig vágott (az S7-ben ugyanez ismétlődött volna).
+
+## A 9. ellenőrzés javítóköre (`claude-opus-5-5`, 2026-11-16, a 11. session)
+
+A besorolás: E1 (döntési rész), E2, E3 a felhasználóé — helyőrző-döntéssor, megállás; a többi gépies, egy javítókörben.
+
+| # | Hely | Javítás | Ellenőrzés |
+|---|---|---|---|
+| E1 (gépies rész) | `bemenet/kapcsolat.py` `_ZARO_DONTES_RX` | a minta csak a két tényleges alakra illeszt (döntésszám, döntéshozó, dátum, legfeljebb a válasz idézete); tartalmas zárójel nem válik le, a benne álló döntésszámon a kapu megáll | `teszt_kapcsolatok.ZaroDontes.test_tartalmas_zaro_zarojel_nem_valik_le`; a két lap bájtra azonos |
+| E1 (döntés) | `dontesek/uj/f218a-s6-3896f7.md` DT-F218t | a kérdés a felhasználóé: (a) a leválasztás marad, vagy (b) a hivatkozás az adatból kerül ki; a B46 `indoklas` lapadat-volta ugyanitt. **🟡** | – |
+| E2 | DT-F218u (új, 🟡); `NYITOTT_FELADATOK.md` N188 | döntéssor a `funkcio` adatjavításról (a felhasználó megerősítésére vár; a többi motívum kisbetűs cellái a saját menetükben); az N188 kiegészítve | – |
+| E3 | DT-F218v (új, 🟡) | a kiejtés-beszúrás mint előre ismert osztály (a brief 8.1 (j)) a felhasználó döntésére; addig a soronkénti engedély | – |
+| E4 | `bemenet/dontes.py` `jeloltnaplo_tabla`; `kereszthiv.py`, `kapcsolat.py` | a B04 egyetlen hozzáférési pontja (a hívó a többletoszlopot kéri) | `teszt_kapcsolatok.Hozzaferes.test_gk01_a_b04_egyetlen_hozzaferesi_pontja` |
+| E5 | `szamitas/kapcsolatok.py` | az alacsony bizonyosságú kapcsolatok külön számolva (a kapu a három számot a kapcsolatok számával veti össze); a 8. kapuja az ismétlődő motívumközi párt is megfogja; a docstring kimondja, mi belső egyezés | `test_a_kapcsolodo_kapu_megfogja_az_ismetlodo_part` |
+| E6 | `naplok/F218_jelentes.md`, `naplok/F218_folytatas.md` | a commit-hash `648ddbcb`; „5 forráslista és proveniencia” | – |
+| E7 | ez a szakasz | az olvasó-szerver tesztjei: a 2 + 2 bukás a nyilvántartott N187 és N198 (az ellenőr futása); a lapgen 308 tesztje mellett ezt is rögzítem | – |
+| megfigyelés | `tesztek/teszt_kapcsolatok.py` | a kivágás a 8. szakasz végéig tart | – |
+
+**Mérés a javítókör után:** `scope=HAMART-001 és ISTENTISZT-001, munka mód (PARDES_DATUM=2026-11-13) | forras=futtat.py; general.py --cel lexikon2; regresszio.py; festek.py; hash_or_kapu.py | ts=2026-11-16`: tesztek 311, 0 hiba, 0 bukás, 30 váz; mindkét lap bájtra azonos a javítókör előttivel; HAMART-regresszió RENDBEN (engedély nélküli diff-sor 0); festékpróba 0 mindkét lapon; a hash-őr 209 sorral RENDBEN (a döntésfájl hash-sora frissült). **A DT-F218t, a DT-F218u és a DT-F218v 🟡: a felhasználó döntésére vár (megállás).**

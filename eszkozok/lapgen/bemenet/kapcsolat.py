@@ -18,6 +18,7 @@ kemény hiba.
 """
 import re
 
+from lapgen.bemenet import dontes as dontes_be
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.kereszthiv import nem_olvasoi
 from lapgen.bemenet.konyvek import b63_konyvek
@@ -34,8 +35,10 @@ _MEZO_ELVALASZTO = ' | '
 _PARDES_ELVALASZTO = '/'
 _DONTES_RX = re.compile(r'\bDT\d+\b')
 # a mező végén álló döntés-hivatkozás két alakja: „Döntés: DT280 (…).” és „(DT479, a felhasználó, …: „…, (b)”)”
-_ZARO_DONTES_RX = re.compile(r'\s*(?:Döntés:\s*DT-?F?\d+[a-z]?\s*(?:\([^()]*\))?\.?'
-                             r'|\(DT-?F?\d+[a-z]?\b(?:[^()]|\([^()]*\))*\)\.?)\s*$')
+# (csak ez a két rögzített alak: a döntés száma, a döntéshozó és a dátum, legfeljebb a válasz idézete; más tartalmú
+# zárójel nem válik le, és a benne álló döntésszámon a kapu megáll)
+_ZARO_DONTES_RX = re.compile(r'\s*(?:Döntés: DT\d+ \((?:a )?felhasználó, \d{4}-\d\d-\d\d\)\.'
+                             r'|\(DT\d+, (?:a )?felhasználó, \d{4}-\d\d-\d\d(?:: „[^”]*”)?\))$')
 
 
 def _zaro_dontes_nelkul(szoveg):
@@ -150,7 +153,7 @@ def b46_motivum_kapcsolatok(b, motivum):
 def motivumkozi_nyitott(b, motivum):
     """A B04 döntésre váró motívumközi jelöltjei, amelyek a motívumot érintik: ((másik motívum, darab), …) a másik
     motívum azonosítója szerint."""
-    tabla = b._tabla('B04', oszlopok=_JELOLT_OSZLOPOK)
+    tabla = dontes_be.jeloltnaplo_tabla(b, tovabbi=('cel_id',))
     idx = {o: tabla.oszlop(o) for o in _JELOLT_OSZLOPOK}
     szam = {}
     for sor in tabla.sorok:

@@ -156,12 +156,13 @@ def szamit(korny):
     tipusok = tuple(sorted(db.items(), key=lambda x: (-x[1], x[0].value)))
     magas = sum(1 for k in kapcsolatok if k.bizonyossag is Megbizhatosag.MAGAS)
     kozepes = sum(1 for k in kapcsolatok if k.bizonyossag is Megbizhatosag.KOZEPES)
+    alacsony = sum(1 for k in kapcsolatok if k.bizonyossag is Megbizhatosag.ALACSONY)
     return KapcsolatSzakasz(
         n=n, csomopontok=csomopontok,
         sorok=tuple(KapcsolatSor(k.forras, k.cel, k.tipus, _proza(k.funkcio), k.bizonyossag, k.pardes)
                     for k in kapcsolatok),
         elek=tuple(GrafEl(sorszam[k.forras], sorszam[k.cel], k.tipus) for k in kapcsolatok),
-        tipusok=tipusok, magas=magas, kozepes=kozepes, alacsony=n - magas - kozepes,
+        tipusok=tipusok, magas=magas, kozepes=kozepes, alacsony=alacsony,
         szerkezet=_szerkezet(n, tipusok) if n else None, fo_tipus=tipusok[0][0] if n else None,
         biztossag=_biztossag(n, magas, kozepes) if n else None,
         alatamasztas=_alatamasztas(b, kapcsolatok))
@@ -171,7 +172,7 @@ def kapu(m):
     """A 7. szakasz számegyezése a modellen: a típusok és a bizonyossági szintek összege a kapcsolatok száma; minden
     él két csomópontja létező, és minden csomópont legalább egy élen áll; az Alátámasztás minden kapcsolatot pontosan
     egyszer sorol fel (soraiban vagy az indoklás nélküliek között). Eltérésnél KapuHiba."""
-    if sum(db for _t, db in m.tipusok) != m.n or m.magas + m.kozepes + m.alacsony != m.n or m.alacsony < 0:
+    if sum(db for _t, db in m.tipusok) != m.n or m.magas + m.kozepes + m.alacsony != m.n:
         raise KapuHiba('7.: a típusok vagy a bizonyossági szintek összege nem a kapcsolatok száma (%d)' % m.n)
     if len(m.elek) != m.n or any(not (1 <= e.forras <= len(m.csomopontok) and 1 <= e.cel <= len(m.csomopontok))
                                  for e in m.elek):
@@ -205,8 +206,12 @@ def szamit_kapcsolodo(korny):
 
 
 def kapu_kapcsolodo(m):
-    """A 8. szakasz számegyezése: a motívumonkénti darabszámok összege a sorok száma, illetve a döntésre váró
-    jelöltek összege a kimondott szám. Eltérésnél KapuHiba."""
+    """A 8. szakasz kapuja: egy motívumközi pár (másik motívum, itteni és ottani hely) legfeljebb egyszer áll; a
+    motívumonkénti darabszámok összege a sorok száma, a döntésre váró jelölteké a kimondott szám (a két összeg a
+    modell belső egyezése: a rontott modellt fogja meg, a számítást nem ellenőrzi függetlenül). Eltérésnél KapuHiba."""
+    parok = [(r.masik, r.itt, r.ott) for r in m.sorok]
+    if len(set(parok)) != len(parok):
+        raise KapuHiba('8.: egy motívumközi pár többször áll')
     if sum(x for _m, x in m.motivumok) != len(m.sorok) or sum(x for _m, x in m.nyitott) != m.nyitott_ossz:
         raise KapuHiba('8.: a motívumonkénti darabszámok összege nem egyezik')
     return m

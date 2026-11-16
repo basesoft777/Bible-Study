@@ -47,7 +47,9 @@ def szakasz_sorai(azonosito):
     if azonosito not in _LAP:
         lap = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=_DATUM).nezetek['TUDOMANYOS']
         eleje = next(i for i, s in enumerate(lap) if s.szoveg.startswith('## ') and 'Kapcsolatok' in s.szoveg)
-        _LAP[azonosito] = lap[eleje:]
+        kapcsolodo = next(i for i in range(eleje + 1, len(lap)) if lap[i].szoveg.startswith('## '))
+        vege = next((i for i in range(kapcsolodo + 1, len(lap)) if lap[i].szoveg.startswith('## ')), len(lap))
+        _LAP[azonosito] = lap[eleje:vege]
     return _LAP[azonosito]
 
 
@@ -126,6 +128,14 @@ class ZaroDontes(unittest.TestCase):
                          'innen a közepes bizonyosság. Áthorgonyozva a Róm 10:14-ről')
         self.assertEqual(KB._zaro_dontes_nelkul('Mért: azonos fejezet (1Móz 12).'), 'Mért: azonos fejezet (1Móz 12).')
 
+    def test_tartalmas_zaro_zarojel_nem_valik_le(self):
+        """A záró zárójel csak a rögzített alakban (döntésszám, döntéshozó, dátum, válasz) válik le; tartalmas
+        zárójel marad, és a benne álló döntésszámon a kapu megáll (a 9. ellenőrzés E1 tétele)."""
+        for szoveg in ('A hely a lánc része (DT479 szerint a 10:14 helyett a 10:13 a horgony)',
+                       'A hely a lánc része. Döntés: DT280 (a lánc szava miatt).'):
+            self.assertEqual(KB._zaro_dontes_nelkul(szoveg), szoveg)
+            self.assertIsNotNone(KB.nem_olvasoi(szoveg))
+
     def test_a_szoveg_kozepen_allo_dontes_szam_megallit(self):
         kozepen = KB._zaro_dontes_nelkul('A DT280 szerint (felhasználó) a hely marad, mert közös a szó.')
         self.assertIsNotNone(KB.nem_olvasoi(kozepen))
@@ -174,9 +184,21 @@ class Megjelenites(unittest.TestCase):
     def test_a_lathato_szovegben_nincs_dontesszam(self):
         for azonosito in kozos.MINTALAPOK:
             for s in szakasz_sorai(azonosito):
-                if s.szoveg.startswith('## 9.'):
-                    break
                 self.assertNotRegex(lathato(s), r'\bDT\d+', (azonosito, s.szoveg[:80]))
+
+
+class Hozzaferes(unittest.TestCase):
+    def test_gk01_a_b04_egyetlen_hozzaferesi_pontja(self):
+        """GK-01: a döntésnaplót (B04) csak a `bemenet/dontes.py` nyitja (`jeloltnaplo_tabla`); a többi olvasó ezt
+        hívja (a 9. ellenőrzés E4 tétele)."""
+        nyitok = [rel for rel in kozos.kodfajlok('bemenet') if "_tabla('B04'" in kozos.forras(rel)]
+        self.assertEqual([r.replace('\\', '/') for r in nyitok], ['bemenet/dontes.py'])
+
+    def test_a_kapcsolodo_kapu_megfogja_az_ismetlodo_part(self):
+        h = modell('HAMART-001', kapcsolodo=True)
+        with self.assertRaises(KS.KapuHiba):
+            KS.kapu_kapcsolodo(dataclasses.replace(h, sorok=h.sorok + h.sorok,
+                                                   motivumok=((h.sorok[0].masik, 2),)))
 
 
 class Iro(unittest.TestCase):

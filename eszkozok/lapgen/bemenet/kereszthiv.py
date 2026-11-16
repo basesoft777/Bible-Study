@@ -399,7 +399,7 @@ def kereszthiv_jeloltek(b, motivum):
     """A B04 kereszthivatkozásos sorai: a motívum kereszthivatkozásból vizsgált előfordulás-jelöltjei a döntésnapló sorrendjében."""
     konyvek = b63_konyvek(b)
     okok = dontes_be.b56_okok(b, motivum)
-    tabla = b._tabla('B04', oszlopok=_JELOLT_OSZLOPOK)
+    tabla = dontes_be.jeloltnaplo_tabla(b)
     idx = {o: tabla.oszlop(o) for o in _JELOLT_OSZLOPOK}
     ki = []
     for sor in tabla.sorok:
