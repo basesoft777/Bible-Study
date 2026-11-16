@@ -1005,3 +1005,147 @@ Az orkesztrátor rendelkezése szerint a kicsi javítások ebben a sessionben k�
 **ISTENTISZT-001** (nincs bájt-mérce; a mai lap az 1. kiadás régi szerkezete): az új 5. tábla cellái a mai lap celláival két soron térnek el. Az 1Kir 18:24 a mai lapon „egyező”, az új lapon „ugyanaz a szócsalád”, a 4.11 társításával („βοάω · ἐπικαλέω”). A régi generátor új szerkezetű ága ugyanezt adja (`lxx_osszevetes` a HAMART-on kívül futtatva: egyező 12, szócsalád 3, LXX-minusz 1), tehát a port a régi szabályt követi. A Zsolt 116:13 kiejtés-pótlása ennek következménye: az alak ott áll először. **Megfigyelés a 218a végi listába:** a régi szabály a több lemmás 4.11-sort („βοάω · ἐπικαλέω”) a saját-pár szűrésben egészében hasonlítja (ezért az 1Kir 18:24 egyező görög szava kiesik), az egy forrás kapuja viszont részenként; a kettő közül az egyik szabályhiba lehet (tartalmi döntés, a felhasználóé).
 
 **Tesztek:** `teszt_lxx.py` (6): az összesítés és a 48 vers a HAMART-on, a szavankénti összeg, jellemző sorok (társítás-szócsalád, hídszó, versszámozás, az LXX-számozás jelölése, a kiejtés-pótlás), az LXX-minusz és az ISTENTISZT 5. szakasza a kész lapon.
+
+## Független ellenőrzés — 6. ellenőrzés (célzott: az 5. ellenőrzés javítókörének második fele, S4, DT-F218r)
+
+*A `fuggetlen-ellenor` subagent jelentése, a hívó session (`claude-opus-5-5`, a 9. session) mentésében, változtatás nélkül. A hívás Fable modellel ment (a main-en a subagent-fájl `model: fable`, #743; az ág munkafáján még `opus`, ezt a subagent a main-ről ellenőrizte). Hatókör: `52f978f2..3a5ce4fb`. A jelentés után a subagent egy kiegészítést küldött; az a jelentés végén áll.*
+
+ELTÉRÉS: 9 tétel
+
+**Brief:** `F218_GENERATOR_UJ_A_BRIEF.md` · **tartomány:** `52f978f2..3a5ce4fb` (5 commit) · **szint:** `teljes`, célzottan (6. ellenőrzés) · 2026-11-16
+**Modell:** kért `fable`, tényleges `claude-fable-5-2`. A munkakönyvtár szerepfájlja még `model: opus`; a main-en `fable` (`git diff HEAD origin/main -- .claude/agents/fuggetlen-ellenor.md`: `-model: opus` / `+model: fable`, commit `68472a49`).
+
+**Futtatás:** minden a munkafán (`3a5ce4fb`, tiszta); a repóba nem írtam. A `general.py --cel lexikon2` és a `regresszio.py` nincs a megengedett parancsaim között, ezért a HAMART-regressziót nem futtattam.
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0. modell | OK | `.claude/agents/fuggetlen-ellenor.md:5` (main) | l. fent; `dontesek/uj/f218-generator-uj-a.md:7` (DT-F218o) ugyanezt írja. |
+| 0. modell-mezők | OK | commitok | `git log --format='%h … %(trailers:key=Co-Authored-By…)' 52f978f2..3a5ce4fb`: mind az öt `Claude Opus 5.5`, egyezik a brief `modell: opus` mezőjével. Adattábla `modell` mezőt a tartomány nem írt. |
+| 3. CI | OK | – | `gh run view 43750049419 --json headSha,conclusion,status,jobs`: `headSha=3a5ce4fb…`, `success`, mindkét job zöld. `futtat.py`-t nem futtattam újra. A CI a `lapgen/tesztek`-et és a regressziót nem futtatja. |
+| tesztek (lapgen) | OK | `eszkozok/lapgen/tesztek/` | `python eszkozok/lapgen/tesztek/futtat.py` → `futott: 269, hiba: 0, bukás: 0, kihagyva: 33` (676 s). Benne a festékpróba (`teszt_festek`) és `teszt_lxx` (6). A kihagyott tesztek száma változatlanul 33. |
+| tesztek (olvasó-szerver) | NEM ELLENŐRIZHETŐ | `eszkozok/teszt_futtat.py:55-58` | `python eszkozok/teszt_futtat.py --diff 52f978f2` elindult, de a jelentés írásáig nem adott kimenetet. A diff az `adat/` előtag miatt formálisan érinti a `teszt_szintek.py`-t; olvasó-szerver kódot nem érint. |
+| HAMART-regresszió a head-en | ELTÉRÉS (E1) | `naplok/F218_referencia.tsv:194`; `eszkozok/lapgen/regresszio.py:80-93` | l. E1 |
+| HAMART 5. szakasz, számok | OK | `lexikon/HAMART-001_TUDOMANYOS.md:2412`; `teszt_lxx.py:31-36` | Célzott grep a referencia Összesítés-sorára: 7/6/1/20/0/13/1; a teszt ugyanezt és 48 verset állít a modellről, zöld. A bájt-egyezést magam nem mértem. |
+| S4: a régi lánc portja | OK (a mért körben) | `szamitas/lxx.py`; `lexikon_general.py:5149-5401`; `olvasoi_kovetkeztetes.py:326-407` | Soronként összevetve: ítéletsorrend, hídszó, saját-pár szűrés, újraminősítés, egyforrás-kapu, a mondatok szövege és sorrendje, a 0,67 / 5 küszöb. Eltérések: E2, E4, E7. A `Lathato.__eq__` érték szerinti (`szoveg.py:313`), az egyforrás-kapu tehát nem üres. |
+| S4: rétegszabály | ELTÉRÉS (E5) | `megjelenites/md/lxx.py:14, 24-27, 146` | l. E5. Egyébként: a modell mezői típusosak, motívumazonosító nincs (`[A-Z]{3,}-\d{3}` a három rétegen: 0), a megjelenítő mondatai mind `ny.s(kulcs)`. |
+| GK-04 / „`lxx_egyezes` a modellen” | ELTÉRÉS (E3) | `tesztek/teszt_vaz.py:82-85`; `szamitas/lxx.py:295-302` | l. E3 |
+| GK-14 / T4 | ELTÉRÉS (E4) | `bemenet/szavak.py:246-262`; `szamitas/lxx.py:149` | l. E4 |
+| GK-03 | ELTÉRÉS (E6) | `adat/lapgen_bemenetek.tsv:41, 54`; `teszt_vaz.py:77` | l. E6 |
+| GK-06 néma hiány | ELTÉRÉS (E7) | `bemenet/lxx.py:53-54, 141-142`; `megjelenites/md/lxx.py:30-52, 183` | l. E7 |
+| GK-17 / DT-F218r | OK, megjegyzéssel (E8) | `dontesek/uj/f218-generator-uj-a.md:10`; `nyitott/uj/f218-generator-uj-a.md:9` | `git diff --numstat 52f978f2..3a5ce4fb -- konkordancia`: üres, a normalizáló tábla nem változott. A `lapgen/` kódjában nincs `Eféz`/`Siral`/`JSir` alias (grep: csak egy teszt). A sor és az N-F218k megvan, a folytatási fájl két alias-sora lezárva. |
+| DT-F218r felhasználói eredete | NEM ELLENŐRIZHETŐ | `dontesek/uj/f218-generator-uj-a.md:10` | Az idézet („Igen, maradjon kódban”) az orkesztrátoron át érkezett. |
+| 5. ell. E2 javítása | OK, korláttal | `bemenet/kartya_lap.py:255-308`; `megjelenites/md/kartya.py:63-73` | A részlet-kapu megvan, a „…” sablonsor, a Károli-számozás szerkezetes; `Reszletkapu` (4) és az ISTENTISZT H8034-teszt zöld. Korlát: az illesztés részsztring-szintű, legfeljebb három részre, ezért egy 2–3 szavas, a forrás távoli helyeiről összeszedett glossza is átmegy. A H7451 összefűzött idézete látható kihagyásjel nélkül áll (a jelentés közli, a végi listán van). |
+| 5. ell. E3 javítása | OK, korláttal | `bemenet/gerinc.py:623-638`; `szamitas/szocikkek.py:478-482, 511` | `ElavultThayer` (3) zöld; kiadási módban a kapu megáll (`teszt_szocikkek.py:101-113`). Korlát (a jelentés közli): a G2532 teljes kártyája más ágon megáll, a teszt darabokat mér; a „csak alakot közöl” sor nem kap jelet. |
+| 5. ell. E6 javítása | OK | `megjelenites/md/szocikkek.py:281-284` | Mind a 8 együttes kap sablont (`RokonMegjegyzes` zöld). A tuple rendje a modellben érték szerinti (`nyelvi_hatter.py:169`), egyezik a kulcsokkal. Két új sor `dontes=var`. |
+| 5. ell. E1 mechanikus része | OK, korláttal | `bemenet/kartya.py:399-409`; `teszt_kartya.py` `Arnyekmondat`, `KodbeliForrasjavitas` | Mindkét teszt zöld. Korlát: a szerkezeti teszt csak a `Bekezdes` négy író metódusát figyeli a két fájl modulszintű függvényeiben; a `Jelolt` előtt nyers szövegen futó csere nem látszik neki. A DT-F218q „jelzést” kért, annak megfelel. |
+| 5. ell. E8 maradéka | OK | `nyitott/uj/f218-generator-uj-a.md:8` | N-F218j megvan (LSJ-kártya, az ISTENTISZT 386. sor utalása). |
+| A1 | OK, megjegyzéssel | `naplok/F218_jelentes.md:981-982, 997, 1005` | A mért állítások mellett proveniencia-sor áll. Az 1005. sor régi generátoros futásának (12 / 3 / 1) nincs saját proveniencia-sora. |
+| A2 | OK | `nyitott/uj/f218-generator-uj-a.md:8-9` | N-F218j és N-F218k valóban nyitott. A „218a végi lista” tételei a folytatási fájlban állnak (a brief 6. pontja megengedi); közülük az 1Kir 18:24 ügye nem megfogalmazási kérdés (E2). |
+| A3–A5 | OK (n/a) | – | A diffben nincs párhuzam-címkézés, Remez/Sod réteg vagy nevesített tanító. |
+| A6 | OK | – | `gh run view 43750049419`: E12–E15 annotáció nincs; a hat E27-ből négy a szabály saját tesztadata, kettő más brief (`F46`, `F224`) meglévő hivatkozása. |
+| ell.lista 1: törölt sorok | OK | `adat/lapgen_sablonok.tsv` | `git diff 52f978f2..3a5ce4fb -- adat/lapgen_sablonok.tsv`: 1 törölt sor (`s4.p2.jel.karoli`, három sor váltja). `lapgen_bemenetek.tsv`: 3 sor leírása módosult (B35, B37, B38), törlés nincs. |
+| ell.lista 2: kulcslefedettség | OK | `adat/lapgen_sablonok.tsv` | `Itelet` 7 értéke ↔ 7 `s5.itelet.*` sor; `szamnev.1`–`10` és `szam`; `GorogFajta` 5 értéke lefedve; `Megjegyzes` 8 együttese lefedve. |
+| ell.lista 3: nulla-diff hatóköre | pontosítással | `naplok/F218_jelentes.md:996` | Az állítás a HAMART-001 5. szakaszára, a két 4.6-ra, az 1., 2., 4. szakaszra (7 alblokk nélkül) és a KIZARASOK-ra szól, a `b40a8bf9` munkafáján. Nem vonatkozik a head-re (E1), az ISTENTISZT-001-re (nincs bájt-mérce) és a lap többi szakaszára. |
+| ell.lista 4: tábla-Δ | OK, megjegyzéssel (E9) | `adat/*.tsv` | Tartomány (`git diff --numstat 52f978f2..3a5ce4fb -- adat konkordancia`): `lapgen_sablonok` +83/−1, `lapgen_bemenetek` 3/3, `konkordancia/` 0. Main-hez (`git diff --numstat origin/main...3a5ce4fb`): `lapgen_sablonok` +569, `olvasoi_nevtabla` +57, `lapgen_bemenetek` +56, `tematikus_sajat_szo` +3; `kapcsolatok`, `nyilt_angol` 3/3; `jeloltek` 2/2; `elofordulasok`, `elutasitasi_okok`, `motivumok`, `nyilt_kodkonyv` 1/1. Bontási napló van (`F218_jelentes.md:992, 1002`): 75 + 8 új, 1 törölt. |
+| ell.lista 5: ⛔ pontok | OK / ELTÉRÉS (E1) | brief 6., 8.1, 9. pont | A három új `dontes=var` sor a végi listára vár; új tényállítást nem tesznek. A 9. pont „az ellenőr modellje nem Fable” mondata a briefben (291. sor) változatlan, a DT-F218o fordítja meg. A 8.1 „a referencia újrafelvétele külön commit, okkal” szabálya az utolsó commitnál nem teljesült (E1). |
+
+**Eltérések (súly szerint)**
+
+- **E1 (közepes–magas) — a head-en a mérce hash-őre elavult, a regresszió nem futtatható.**
+  - A `3a5ce4fb` egy sort adott a `dontesek/uj/f218-generator-uj-a.md`-hez (DT-F218r); ez a mérce B51 bemenete.
+  - A `naplok/F218_referencia.tsv:194` hash-sora (`6f4cb3c8…`, 18161 bájt) nem frissült: a fájlt utoljára a `b40a8bf9` írta.
+  - Az `e65fb60a` ugyanilyen egysoros bővítésnél frissítette a sort (17176 → 18161).
+  - A `hash_or` minden sort összevet, ezért a head-en „a mérce bemenete megváltozott: B51 …” üzenettel kell megállnia (kilépési kód 2). Ezt gitből vezettem le, nem futtatásból.
+  - A „Regresszió RENDBEN” így legfeljebb a `b40a8bf9`-re igaz.
+- **E2 (közepes) — az ISTENTISZT-001 új lapján az 1Kir 18:24 ítélete téves, és teszt rögzíti.**
+  - A vers LXX-szövegében a motívum saját görög szava áll: `python eszkozok/lekerdez.py lxx-hid "1Kir 18:24"` → `G1941 ἐπικαλέσομαι` (`forras=LXX_OS/1-kings.tsv+TAGNT_kivonat.tsv`).
+  - A kiadott lap „egyező”-t ír (`lexikon/ISTENTISZT-001_TUDOMANYOS.md:1163`); az új „ugyanaz a szócsalád”-ot, társítás jellel.
+  - Ok: a saját-pár szűrés a több lemmás 4.11-sort („βοάω · ἐπικαλέω”) egészben hasonlítja (`szamitas/lxx.py:204-207`), az egyforrás-kapu részenként (`:316`).
+  - A `teszt_lxx.py:85` a 12 / 3 összesítést rögzíti.
+  - A jelentés megfigyelésként közli (1005. sor), de csak a végi listán áll. A 8.2 mérce 1. pontja szerint a számnak független számlálással kell egyeznie. Ez a felhasználó döntése.
+- **E3 (közepes) — a GK-04 az S4-ben nem teljesült.**
+  - A brief 186. és 296. sora szerint az `lxx_egyezes` a modellen fut, mindkét lapon.
+  - A `test_gk04_kapu_minden_lapon` ma is `skip(S4)`; a kihagyott tesztek száma változatlanul 33.
+  - A modell egyetlen számegyezés-kapuja (`_kapu_szavankent`) csak akkor fut, ha minden sor egyszavas.
+  - Az ISTENTISZT-001-en nem fut: 16 sor `H7121+H8034`. A HAMART-001-en a `teszt_lxx.py:42-43` megjegyzése szerint a szó nélküli tematikus sorok miatt szintén nem.
+  - A régi kapu szópáros ága (`lexikon_general.py:2004-2006`) nincs portolva.
+  - A jelentés S4-szakasza a GK-04-et nem említi.
+- **E4 (közepes) — az 5. szakasz héber kulcsszava a vers utolsó előfordulása; a T4 és a GK-14 az elsőt írja elő.**
+  - Az `utolso=True` új paraméter a régi `kiejtes_ehhez` szabályát viszi át a bájt-egyezésért.
+  - Sem döntés-helyőrző, sem engedélysor nincs róla, és a jelentés nem említi.
+  - Példa: 1Kir 18:24, H7121 kétszer (`python eszkozok/lekerdez.py scan H7121 --szakasz "1Kir 18:24"` → 2 szó-előfordulás; `TAHOT_kivonat.tsv:202412, 202419`); az 5. tábla a másodikat adja.
+  - A két mintalapon a 2. és az 5. szakasz között látható ellentmondást nem találtam. Az 1Móz 6:12-nél mindkettő „hischít”.
+  - A két szabály párosítás nélküli versnél eltérő alakot adhat.
+- **E5 (közepes–alacsony) — számítás a megjelenítőben, küszöb a `konfig.py`-n kívül.**
+  - A híd erősségének fokozatai (`_JELZO`: 0,67 / 0,34) a megjelenítőben állnak, nem nevesített konstansként.
+  - A szavankénti következtetés feltétele (`megjelenites/md/lxx.py:146`) is ott dől el, nem a modell következtetés-kódjában (brief 5. pont).
+  - Az `LXX_SZO_MIN` és az `LXX_SZO_ARANY` a konfigban van, de teszt nem hivatkozik rájuk (grep a `tesztek/` alatt: 0).
+- **E6 (közepes–alacsony) — GK-03: a szelet két pillanatkép-bemenetet olvas frissességi kapu nélkül.**
+  - A B36 és a B38 `frissesseg` mezője `-`; a brief mindkettőt a kapuzandók közé sorolja.
+  - A B36 hiányát a folytatási fájl közli, a B38-ét nem.
+  - A `test_gk03` ma is `skip`.
+- **E7 (alacsony) — néma eltérések a régi lánctól, amelyek nincsenek a megálló ágak listáján.**
+  - Görög szó nélküli motívumnál a régi más mondatot írt (`lexikon_general.py:5119-5131`); az új mindig a szóhíd-mondatot adja.
+  - A döntés hibás alakú `lxx_igehely` mezője némán a vers saját LXX-helyére esik vissza; a nem `G\d{4}` alakú `gorog_strong` némán elmarad. A mai adatban ilyen sort nem találtam (két grep az `adat/lxx_dontesek.tsv`-n: 0).
+  - Ha egyik héber szónak sincs sora a párok táblájában, a forrás-sor elmarad; a régi kiírta.
+  - A `_vers_index` az `igehely_lxx` oszlop nélküli könyvfájlt némán kihagyja.
+- **E8 (alacsony) — a Károli-könyv → LXX-fájl térkép kódból jön, benne a `Sir` alakkal.**
+  - A `bemenet/lxx.py:15, 76` az `lxx_os_import` kódbeli térképét importálja (`"lamentations": "Sir"`, `lxx_os_import.py:284-292`); az LXX_OS fájl kulcsa is `Sir 1:1`.
+  - A normalizáló tábla alakja `JSir` (`Konyv_normalizalo_tabla.tsv:26`).
+  - Egy `JSir` vers ezért félrevezető „nincs Septuaginta-fájlja” üzenettel állna meg.
+  - Ma nincs érintett sor (`\t(JSir|Sir) \d` az `elofordulasok.tsv`-ben: 0). A DT-F218r és az N-F218k ezt az aliast nem sorolja fel.
+- **E9 (alacsony) — napló és apróságok.**
+  - A jelentés 992. sora „7 új sablonsort” ír, de 8-at sorol fel (8 új, 1 törölt).
+  - A `LxxDontesSorok.sajat` holt kód (`bemenet/lxx.py:119-121, 129, 132`; hívója nincs).
+  - Az összevetés kétszer számolódik: az 5. szakasz új `_Forrasok`-ot épít (`szamitas/lxx.py:322-328`), a 4.6 a gyorsítótárazottat használja.
+  - Három commit 400 sor fölött van (444, 546, 599).
+  - A `s4.p6.forras` látható mondata („Forrás: a grammatikai szavak listája.”) a régi lap szövege (`dontes=-`), de a tényleges forrást (LXX_OS, versszintű párok) nem nevezi meg.
+  - Tíz `skip(S3)` váz-teszt maradt (`teszt_vaz.py:77-236`), miközben az S3 késznek jelölt; a GK-15-é közülük duplikátum.
+
+**Amit nem tudtam ellenőrizni:**
+- a HAMART-regressziót és a két lap bájt-azonosságát a javítókör előttivel (nem futtatható parancsok; a head-en az E1 szerint amúgy sem futna);
+- az ISTENTISZT-001 5. szakaszának és 4.6-jának sorszintű helyességét az 1Kir 18:24-en túl;
+- a megálló ágak viselkedését a két mintalapon kívül;
+- a DT-F218r és a besorolás felhasználói eredetét;
+- a végrehajtó sessionök tényleges modelljét;
+- az olvasó-szerver tesztjeinek eredményét.
+
+**Kiegészítés (a subagent második üzenete):** a táblázat és az ELTÉRÉS-tételek változatlanok (ELTÉRÉS: 9 tétel).
+
+- **Festékpróba és futástesztek külön is zöldek:** `python eszkozok/lapgen/tesztek/futtat.py festek futas` → `futott: 17, hiba: 0, bukás: 0, kihagyva: 0` (203 s). Ez megerősíti a „tesztek (lapgen)” sor OK eredményét; a teljes futás (269 teszt) ezeket már tartalmazta.
+- **Olvasó-szerver tesztek:** a `python eszkozok/teszt_futtat.py --diff 52f978f2` továbbra sem adott kimenetet, a háttérben fut. A sor eredménye marad NEM ELLENŐRIZHETŐ.
+
+**Második kiegészítés (a subagent harmadik üzenete, változtatás nélkül):**
+
+Az olvasó-szerver tesztjei lefutottak: 16 fájlból 14 zöld, 2 bukik. A fenti jelentés „tesztek (olvasó-szerver)” sora ezzel NEM ELLENŐRIZHETŐ-ről ELTÉRÉS-re változik, új tételként (E10); az első sor így: **ELTÉRÉS: 10 tétel**.
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| tesztek (olvasó-szerver) | ELTÉRÉS (E10) | `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py:85, 202`; `teszt_szintek.py` | `python eszkozok/teszt_futtat.py --diff 52f978f2` → `teszt_visszhang_kapu.py`: 22 tesztből 2 bukás; `teszt_szintek.py`: HIBA; a többi 14 fájl zöld. |
+
+- **E10 (közepes) — két olvasó-szerver tesztfájl bukik a head-en; egyiket sem ez a tartomány okozza, de az egyik az ágról jöhet, és nincs róla nyitott tétel.**
+  - **`teszt_visszhang_kapu.py`, 2 bukás:**
+    - `test_bevezeto_a_peshat_magot_es_a_kulcsszavak_szamat_mondja` a „Peshat-magjának (1Móz 3–9) azon verse” szöveget várja; a blokk ma „a Genezis láncának (1Móz 3–9) azok a versei” szöveget adja.
+    - `test_v3_nincs_a_nem_azonositott_helyen`: a rontott és az eredeti bemenet ugyanazt a blokkot adja.
+  - A tartomány a tesztek bemeneteit nem érinti: `git diff --name-only 52f978f2..3a5ce4fb` csak `eszkozok/lapgen/`, `adat/lapgen_*`, naplók, a brief és a `dontesek/uj` / `nyitott/uj` fájlokat ad.
+  - Az ág a merge-base óta viszont írta az `adat/motivumok.tsv`-t és a `motivumok/HAMART-001.md`-t (DT-F218p, DT-F218l): `git diff --name-only cfc84cc7..3a5ce4fb -- … adat/motivumok.tsv motivumok/HAMART-001.md`. A bukás ebből is jöhet, vagy a main-en is áll; ezt nem tudtam eldönteni, mert a main-en nem futtathatok.
+  - A `nyitott/uj/f218-generator-uj-a.md` ezt a két bukást nem említi.
+  - **`teszt_szintek.py`:** HIBA. Az N-F218a 13-ból 2 bukást rögzít rá, a main-en is. A részletes kimenetét a futtató csonkolt vége miatt nem láttam, ezért azt, hogy ma is pontosan ugyanaz a 2 teszt bukik-e, nem igazoltam.
+  - A CI ezeket a teszteket nem futtatja, ezért a zöld CI-futás erről nem mond semmit.
+
+## A 6. ellenőrzés besorolási javaslata (a 9. session; egyeztetésre vár, javítás még nem történt)
+
+A hívó saját ellenőrzése az E1-re: a `dontesek/uj/f218-generator-uj-a.md` mai mérete 19 849 bájt, a hash-e `32590240…`; a `naplok/F218_referencia.tsv` 194. sora `6f4cb3c8…` és 18 161 bájt. Az E1 tehát áll. Oka: a DT-F218r commitja után a regresszió nem futott (`scope=a B51 hash-sora és a fájl mai hash-e | forras=naplok/F218_referencia.tsv:194; sha256sum | ts=2026-11-16`).
+
+| # | Javasolt besorolás | Teendő | A merge előtt? |
+|---|---|---|---|
+| E1 | mechanikus | Külön commitban, okkal (8.1): a B51 hash-sorának frissítése (`referencia_frissit.py`), regresszió a head-en. Gépi védelem javaslatként: a `push_elott.py` futtassa a regresszió hash-őrét (gyors, a lap generálása nélkül), hogy a mérce bemenetének változása ne maradhasson rejtve. | igen |
+| E2 | **döntés (a felhasználóé)** | A több lemmás 4.11-sor („βοάω · ἐπικαλέω”) a saját-pár szűrésben egészben vagy részenként hasonlítandó-e. Ha részenként, az ISTENTISZT-001 1Kir 18:24 sora „egyező”, és a `teszt_lxx.py` összesítése 13/2. Az új generátor ma egyik lapot sem adja ki, ezért ez nem gátolja a merge-et; N-tétel a végi listával. | nem (N-tétel) |
+| E3 | mechanikus | A régi `lxx_egyezes` kapu szópáros ágának portja a modellre, és a `test_gk04` élesítése; vagy kimondott N-tétel az S5 ágára. Az orkesztrátor dönti el, hogy most vagy az S5-tel. | javaslat: most (kicsi) |
+| E4 | **döntés (a felhasználóé)** | Az 5. tábla héber kulcsszava: a régi szabály (a vers utolsó előfordulása, ma bájtra egyezik) vagy a T4/DT-F218j (Károli-pár, híján az első). Mechanikus rész a döntéstől függetlenül: DT-F helyőrző vagy N-tétel, hogy az eltérés ne legyen néma. | nem (N-tétel) |
+| E5 | mechanikus | A `_JELZO` fokozatai és a szavankénti következtetés feltétele a `szamitas/lxx.py`-ba (a fokozat és a „következtetés-e” a modell mezője), a küszöbök a `konfig.py`-ba; teszt a konstansokra. A lap nem változhat. | igen |
+| E6 | mechanikus | A B38 frissességi hiánya a folytatási fájlba, a B36 mellé; a GK-03 egésze a halasztott tételek között marad. | igen (napló) |
+| E7 | mechanikus | A négy néma ág kimondott megállássá (`BemenetHiba` vagy `ValueError`, a megálló ágak listáján), vagy portolva, ha kicsi (a görög szó nélküli motívum mondata). | igen |
+| E8 | mechanikus | Az N-F218k kiegészítése az `lxx_os_import` `Sir` ↔ `JSir` alakjával; a „nincs Septuaginta-fájlja” üzenet nevezze meg a lehetséges okot (a könyvnév-alakot). A DT-F218r szerint kódban marad. | igen |
+| E9 | mechanikus, egy tartalmi résszel | A napló 7 → 8; a holt `LxxDontesSorok.sajat` törlése; az összevetés egyszeri számítása (gyorsítótár); a `skip(S3)` váz-tesztek rendezése. **Tartalmi rész:** az `s4.p6.forras` mondata a régi lap szövege, a valódi forrást nem nevezi meg; javítása engedélysor és új mondat, ezért a végi listára (a felhasználóé). | igen, a tartalmi rész nélkül |
+| E10 | mechanikus (N-tétel), az ágtól részben független | A hívó ellenőrzése: a „Genezis láncának (…) azok a versei” szöveget a `cee76546` (F125.LJ1) vezette be a `lexikon_general.py`-ba, és ez a commit a merge-base (`cfc84cc7`) őse; a merge-base óta az ág sem a `lexikon_general.py`-t, sem az `eszkozok/olvaso_szerver/` alatti fájlt nem írta (`git diff --stat cfc84cc7 HEAD -- eszkozok/olvaso_szerver eszkozok/lexikon_general.py eszkozok/olvasoi_kovetkeztetes.py`: üres). Az első bukás tehát a main-en is áll (elavult teszt-elvárás). A második (`test_v3_…`) eredetét nem igazoltam; a main behozása után újrafuttatandó. Teendő: N-tétel a két bukásra (a `teszt_szintek.py` az N-F218a alatt marad), a javítás nem a 218a hatóköre. | nem (N-tétel; a main behozása után újramérés) |
