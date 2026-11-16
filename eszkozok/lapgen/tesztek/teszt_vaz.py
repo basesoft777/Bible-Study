@@ -166,10 +166,6 @@ class Szerkezeti(unittest.TestCase):
 class AtvettTetelek(unittest.TestCase):
     """Az N-F212a tételei (a spec 6.1 táblája), az N178 és a szópár-követelmény."""
 
-    @unittest.skip(S5)
-    def test_gk_a1_masolt_karoli_kh_lista(self):
-        """GK-A1: minden igehely legfeljebb egyszer szerepel a 6. szakaszban és a hatókör-jegyzetben együtt."""
-
     @unittest.skip(S7)
     def test_gk_a6_rokon_nyelvi_tabla(self):
         """GK-A6: „a kinyerés még nem történt meg” pontosan azoknál a lánc-szavaknál áll, amelyeknek nincs
@@ -227,10 +223,6 @@ class Hibanaplo(unittest.TestCase):
     def test_hn07_hn08_hn09_belso_szam_es_nyers_szotarfej(self):
         """HN-07, HN-08, HN-09: töredék („sz<n> sorok,;”), döntésszám és tételszám, nyers BDB-fej, héber
         számláló: 0 találat mindkét új lapon."""
-
-    @unittest.skip(S5)
-    def test_hn10_karoli_kh_forrasdeklaracio(self):
-        """HN-10: a Károli-kereszthivatkozás forrásdeklarációja a ténylegesen olvasott javított forrást nevezi."""
 
     @unittest.skip(S3_MARADEK)
     def test_hn12_angol_thayer_nyersen(self):
