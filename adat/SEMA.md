@@ -2604,6 +2604,68 @@ ez a mező változik. A terv és a döntések: `naplok/F217_terv.md` (3. és 5. 
 commitolja). Gépi kapu: E42 (3.11); a korábbi E28-lista (`eszkozok/ellenorzes/e28_migralt_nezetek.tsv`) kivezetve, adatsor
 nem állhat benne.
 
+### 2.71 `naplok/BIZONYITEK_<ID>.md` — a bizonyítéklap (F224.5, FELADATOK #224, 2026-11-16)
+
+A cikkírás B lépése (`MUNKAMENET.md` C-bl): a motívum kulcsverseinek lánc-szavai, együttállásai és gépi jelöltjei,
+gyakorisági (véletlen-) alapvonallal, **ítélet nélkül**. Generált Markdown (`eszkozok/bizonyiteklap.py`, fejléce
+`<!-- GENERÁLT: … -->`), kézzel nem szerkesztendő; a bíráló (C-bi) és az író (érvvázlat, érvnapló: C-ev) bemenete.
+Nem tábla: a forma szabálya itt áll, mert a fájlt az eszköz és a bíráló is olvassa.
+
+**Szerkezet, sorrendben:**
+
+1. Cím (`# Bizonyítéklap — <ID>`), a GENERÁLT-fejléc, egy dőlt sor a lépés helyéről és arról, hogy a lap ítéletet nem ad,
+   és a lap proveniencia-sora (a versek száma, a lánc Strong-számai).
+2. Ha a tanulmány adott: egy hivatkozó sor a tanulmányra — a tanulmány adata nem ismétlődik.
+3. `## Gyakorisági alapvonal` — tábla, lánc-szavanként egy sor:
+
+| Oszlop | Tartalom |
+|---|---|
+| `Strong` | a lánc szava (`H`/`G` + négy számjegy) |
+| `szótő` | a TAHOT/TAGNT szótöve |
+| `versek a korpuszban` | hány versben áll a szó (ÓSZ: `konkordancia/TAHOT_kivonat.tsv`, ÚSZ: `konkordancia/TAGNT_kivonat.tsv`; a kulcs a Károli-vers) |
+| `a korpusz versei` | az adott testamentum verseinek száma ugyanazon a táblán |
+| `arány` | a kettő hányadosa, négy tizedesre |
+
+4. `## Versek` — kulcsversenként egy `### <vers> · <állapot>` blokk. Az **állapot** a motívum adatából: `eldöntött`
+   (`adat/elofordulasok.tsv:<sor>`), `jelölt, döntés: <döntés> (nem vehető át)` (`adat/jeloltek.tsv:<sor>`), `nem áll
+   a motívum adatában (nem vehető át)`, vagy motívum nélküli futásnál `motívum nélkül (csak tájékoztatás)`. A blokkban: a
+   Károli-szöveg; a lánc szavai a versben sorrendben (`poz.` · `Strong` · `alak` · `szótő` · `glossza`); az
+   **együttállás** a vers lánc-szavainak minden párjára (a korpuszban megfigyelt együttes versszám és a véletlen-alapvonal
+   szerint várt szám, `n_A · n_B / N`; két testamentum közötti párnál `–`); a **fordított sorrendű ismétlés** (A … B … B …
+   A) gépi jelöltje **csak versen belül**, a vers lánc-szavainak összes sorrendje szerinti alapvonallal (kilenc szó
+   fölött rögzített magú mintavétellel). A blokk proveniencia-sorral zárul.
+
+**Tiltott mezők és jelöltek:** ítélet-, erősség- vagy „szignifikáns” mező; láncon átívelő „keret”, „khiazmus” jelölt (ez
+mindig értelmezés: `.claude/agents/biralo.md`). A cikk és az érvnapló csak `eldöntött` állapotú verset vesz át (CLAUDE.md
+2. szabály). Minden adatblokk mellett proveniencia-sor (1.5). Teszt: `eszkozok/teszt_bizonyiteklap.py`.
+
+### 2.72 `naplok/SZIVARGAS_<ID>.tsv` — a mérőtábla: melyik lépés fogta meg a hibát (F224.11, FELADATOK #224, 2026-11-16)
+
+Motívumonként egyetlen mérőtábla (`MUNKAMENET.md` C-sz): a cikkírás új menetének minden pontossági hibája egy sor, azzal,
+hogy a menet melyik lépése fogta meg. A cél a szivárgási arány (mennyi jut el a felhasználóig), nem a lektor
+darabszáma. Kézi tábla; a sorokat a lépés gazdája írja, amikor a hiba előkerül (a javítókörben is).
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a sor azonosítója a motívumon belül (`S<nnn>`); kulcs, nem újrahasznosítható |
+| `hely` | a hiba helye: `<forrás-fájl>:<sor>`, `K<n>` (a kézi lista tétele, a lista dátumával a `forras`-ban), vagy a lap szakasza |
+| `allitas` | a hibás állítás rövid idézete (legfeljebb 200 karakter) |
+| `mechanizmus` | a `naplok/HIBA_MECHANIZMUSOK.md` kódja (`M-…`); versállítás-hibánál az állítás-ellenőr kérdése: `K-KI`, `K-MIT`, `K-SORREND`, `K-HANY`, `K-KVANTOR`, `K-CSOPORT`, `K-MASIK`; a kinyerés hézaga: `KINYERES`; érvelési hiba (a bíráló kérdései): `ERVELES` |
+| `hol` | melyik lépés fogta meg: `F1` / `F2` / `D` / `hatar` / `F3` / `3b` / `felhasznalo` / `kiadas_utan` |
+| `sulyos` | `igen` / `nem` / `jeloletlen` (a megtaláló nem minősítette) |
+| `generalt` | `igen` (a hiba generált blokkban áll) / `nem` |
+| `meres` | `menet` (a cikkírás rendes menete) / `visszajatszas` (elfogadási próba, a megnevezett futás) |
+| `forras` | `PROVENIENCIA` (1.5): honnan jön a sor (a lektori lista tétele, a futás naplója) |
+
+**Kulcs:** `id`. A fejléc előtt `#` kezdetű megjegyzéssor állhat; üres mező helyett `-`. A generált blokk hibája külön
+számlálandó (`generalt=igen`).
+
+**Küszöbök** (a felhasználó jóváhagyása, 2026-11-15; a szöveg helye: `MUNKAMENET.md` C-sz): a `hol=felhasznalo` és
+`hol=kiadas_utan` sorok legfeljebb az összes 10%-a, közülük `sulyos=igen` 0; az F2 „nem eldönthető” aránya és a vak minta
+a futás naplójában (`naplok/ALLITAS_<ID>_itelet.md`), nem ebben a táblában. Visszajátszásnál (`meres=visszajatszas`) a
+`hol` azt a lépést nevezi, amely a próbán megfogta; amit a próba nem mért (a 3/b, a lektor), az a próba naplójában
+„nem mérve”, és a tételt a lektor fogta meg (`F3`).
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

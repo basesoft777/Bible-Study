@@ -6,9 +6,11 @@ tipus: feladat
 fazis: folyamat
 sav: SYSTEMS
 modell: opus
-allapot: nem_indult
-ad: a jóváhagyott 3. változat (2026-11-15) tizenhárom tétele a saját szabályhelyén — új bíráló- és állítás-ellenőr szerepfájl (Sonnet), szűkített lektor (Fable marad), állításonkénti kinyerés, bizonyítéklap-eszköz, érvnapló, tanulmányblokk-szabály, mérőtábla, a határ-ellenőr Sonnetre —, és egy elfogadási próba a két ismert hibahalmazon, számszerű küszöbbel
-kovetkezo: "F224.1-gyel indul; ⛔ a próba (F224.13) előtt keret-ellenőrzés, ⛔ ha a próba a javítókör után is a küszöb alatt marad"
+allapot: lezarva
+ag: claude/f224-cikkiras-uj-menet
+ad: a jóváhagyott 3. változat (2026-11-15) tizenhárom tétele a saját szabályhelyén — új bíráló- (Sonnet) és állítás-ellenőr szerepfájl (Opus, DT-F224b), szűkített lektor (Fable marad), állításonkénti kinyerés, bizonyítéklap-eszköz, érvnapló, tanulmányblokk-szabály, mérőtábla, a határ-ellenőr Sonnetre —, és egy elfogadási próba a két ismert hibahalmazon, számszerű küszöbbel
+kovetkezo: "nincs; a #749 merge-e az orkesztrátoré. Nyitva (külön tételként): N-F224a, N-F224b, N-F224d, N-F224g; a független F2-mérés a következő új motívum cikkírásakor (DT-F224d)"
+lezarva_osszegzes: "A cikkírás új menete a szabályhelyein: állítás-ellenőr (Opus, DT-F224b–c), bíráló, szűkített lektor, kinyerés (F224.4, .14–.15, .18), bizonyítéklap (SEMA 2.71), érvnapló (9_ sablon, DT-F224e), mérőtábla (SEMA 2.72, két tábla kitöltve), MUNKAMENET C; elfogadási próba: bíráló ✓, F2 HAMART 83% (18-as halmaz), ISTENTISZT 70% (nem független), hamis riasztás 45–50% — a küszöb 80% marad, független mérés a következő új motívumon (DT-F224d); független ellenőrzés: 1 kör, 7 ELTÉRÉS, 1 javítókör"
 munka: folyamat
 olvas: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md, .claude/agents/lektor.md, .claude/agents/hatar-ellenor.md, .claude/agents/fuggetlen-ellenor.md, .claude/commands/kiadas.md, eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, eszkozok/lekerdez.py, eszkozok/tanulmany_kinyer.py, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, adat/SEMA.md, adat/jeloltek.tsv, adat/kapcsolatok.tsv, konkordancia/, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, naplok/ALLITAS_HAMART-001.md, naplok/ALLITAS_ISTENTISZT-001.md, naplok/KIADAS_HAMART-001_lektor.md, naplok/HIBA_MECHANIZMUSOK.md, DONTESEK.md]
 ir: [.claude/agents/allitas-ellenor.md, .claude/agents/biralo.md, .claude/agents/lektor.md, .claude/agents/hatar-ellenor.md, .claude/commands/kiadas.md, eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, eszkozok/bizonyiteklap.py, eszkozok/teszt_bizonyiteklap.py, adat/SEMA.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, naplok/F224_jelentes.md, naplok/F224_proba.md, naplok/F224_proba/, naplok/SZIVARGAS_HAMART-001.tsv, naplok/SZIVARGAS_ISTENTISZT-001.tsv]
@@ -45,7 +47,7 @@ A mérés szerint (2026-11-15) a bíráló a HAMART 1Móz 8:21-es pontján 5/5-�
 |---|---|---|
 | író (A, C, E) és e brief végrehajtója | Opus | — |
 | D · bíráló | Sonnet | új `.claude/agents/biralo.md`, `model: sonnet` |
-| F2 · állítás-ellenőr | Sonnet | új `.claude/agents/allitas-ellenor.md`, `model: sonnet` |
+| F2 · állítás-ellenőr | Sonnet → **Opus** (DT-F224b, 2026-11-15) | új `.claude/agents/allitas-ellenor.md`, `model: opus` (eredetileg `sonnet`) |
 | határ-ellenőr | Sonnet | `.claude/agents/hatar-ellenor.md`: `fable` → `sonnet` |
 | F3 · lektor | **Fable marad** | `.claude/agents/lektor.md`, a `model` mező változatlan; a Pro-váltáskor újra dönteni |
 | független ellenőr | Opus | változatlan |
