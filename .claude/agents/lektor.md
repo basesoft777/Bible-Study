@@ -17,7 +17,7 @@ model: fable
 2. Érthető-e a magyar olvasónak?
 3. Van-e benne belső szakszó (gerinc, szerep) az olvasói szövegben?
 4. Állít-e olyat, amit az adat nem támaszt alá (CLAUDE.md 3. szabály: hiányt nem töltesz ki, üres eredmény elfogadott, explicit jelölve)?
-5. **A próza az érvnapló szerint íródott-e?** A vitatott ponton a próza azt a döntést és azokat az érveket mondja-e, amelyeket a motívumforrás érvnaplója rögzít (`sablonok/9_PaRDeS_motivum_forras_sablon.md`, érvnapló), és nem dönt-e ott, ahol az érvnapló nyitva hagyja? Az érvnapló a forrásban áll; ha nincs, ezt a kérdés helyén jelzed.
+5. **A próza az érvnapló szerint íródott-e?** A vitatott ponton a próza azt a döntést és azokat az érveket mondja-e, amelyeket az érvnapló rögzít (`naplok/ERVNAPLO_<ID>.md`; a szabály: `sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pont, „Az érvnapló”), és nem dönt-e ott, ahol az érvnapló nyitva hagyja? Az érvnaplót a hívó adja a bemenetben; ha nem kaptad meg, ezt a kérdés helyén jelzed.
 
 **Nem a te kérdésed** (F224): az érvek egyensúlya, az érv valódi ereje, a hiányzó érv és a szintkeverés a bírálóé, a próza előtt (`.claude/agents/biralo.md`); az állítások állításonkénti eldöntése az állítás-ellenőré (`.claude/agents/allitas-ellenor.md`). A te listádra ezekből csak az kerül, ami a hívó tétellistáján áll.
 

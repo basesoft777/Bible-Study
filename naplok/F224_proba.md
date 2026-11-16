@@ -321,3 +321,7 @@ F2 ISTENTISZT, Opus, 75 K-tétel: 342 780 token, 59 eszközhívás, 926 s (a 7. 
 Következmény a 8. szakasz mérőire (számolás, nem új futás): az ISTENTISZT 10-es halmaza változatlanul 7/10 (az 1. tételt a K50 és a K61 hordozza); az egy adatsor-hiba miatti ismételt „hamis” ítélet 6 tételről 1-re csökken (a K13 és a K17 saját okkal marad); a hamis riasztás a lektori listán kívül 0/2, a 8.2-ben jelzett 3/5-ös számolás alapja (K2, K10, K40) megszűnik. *Hogy az ügynök a K2, K10, K40 tételt a funkció-mező nélkül valóban „igazolt”-nak ítélné, futás nélkül nem igazolt; az ügynök saját indoka szerint más oka nem volt.*
 
 **A küszöb és a független mérés (DT-F224d 🟢):** a küszöb marad 80%; a független mérés a következő új motívum cikkírásának F2-lépésén fut, ugyanazokkal a mérőkkel. A 8. szakasz 70%-a addig nem független eredmény.
+
+### 7.7 Kiegészítés: a HAMART-halmaz nevezője (a független ellenőrzés, 2026-11-16)
+
+A 15/18 = 83% a brief 18 tételes halmazán áll (`F224_CIKKIRAS_UJ_MENET_BRIEF.md` F224.13: „a lektor 18 kézi listás tétele”). A lektor 40. tétele (K66, a Jel 22:3 a hat újszövetségi hely között) a 2026-11-15-i mérésben K-tétel nélküli volt, ezért a 18-ba nem került; az új kinyeréssel K-tétel, az Opus „igazolt”-nak ítélte (✗, a mérőtábla S031 sora: F3). **A 40. tétellel együtt 15/19 = 78,9%, a küszöb alatt.** A 7.6 pont 1. állítása („a HAMART-hiány nagyrészt a modellé volt”) ettől nem változik, a „✓” a brief halmazára szól.

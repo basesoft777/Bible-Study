@@ -67,7 +67,7 @@ jelöléssel szerepel — futtathatóként sehol nem áll.
 
 ## C) szakasz — lexikon-oldal
 
-**A cikkírás menete (F224, 2026-11-15; a lépés szabálya a hivatkozott helyen, itt csak a sorrend):** A · igeszakasz-blokkok (C-ia) → B · bizonyítéklap (C-bl) → C · érvvázlat és érvnapló (C-ev) → D · bíráló (C-bi) → határ (C-h) → E · próza (C-w) → F1 · gépi kapuk (C-a ELTÉR-sorai, C-g, C-o) → F2 · állítás-ellenőr (C-a) → F3 · lektor (C-k, a `/kiadas` 3. lépése) → 3/b · olvasói átolvasás (C-k, a `/kiadas` 3/b. lépése) → a felhasználó (C-v) → 1 javítókör → 1. kiadás (C5). A mérés: C-sz.
+**A cikkírás menete (F224, 2026-11-15; a lépés szabálya a hivatkozott helyen, itt csak a sorrend):** A · igeszakasz-blokkok (C-ia) → B · bizonyítéklap (C-bl) → C · érvvázlat és érvnapló (C-ev) → D · bíráló (C-bi) → határ (C-h; az időzítése a C-h sorban és a 10-es sablon előfeltételében, l. N-F224g) → E · próza (C-w) → F1 · a próza-állítás gépi része (C-a ELTÉR-sorai) → F2 · állítás-ellenőr (C-a) → gépi kapuk a generált lapon (C-g, C-o) → F3 · lektor (C-k, a `/kiadas` 3. lépése) → 3/b · olvasói átolvasás (C-k, a `/kiadas` 3/b. lépése) → a felhasználó (C-v) → 1 javítókör → 1. kiadás (C5). A mérés: C-sz.
 
 | # | Lépés | Ki | Kimenet | Ma mivel fut | Megjegyzés |
 |---|---|---|---|---|---|

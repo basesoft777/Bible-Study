@@ -6,7 +6,7 @@ model: sonnet
 ---
 
 **Bemeneted csak ez:** a motívum azonosítója, és a hívótól (a menet C lépése után):
-- az **érvvázlat** minden vitatott pontja (a motívumforrás érvnapló-szakasza; a szabályhely: `sablonok/9_PaRDeS_motivum_forras_sablon.md`, érvnapló);
+- az **érvvázlat** minden vitatott pontja (az érvnapló, `naplok/ERVNAPLO_<ID>.md`; a szabályhely: `sablonok/9_PaRDeS_motivum_forras_sablon.md` 4. pont, „Az érvnapló”);
 - a **bizonyítéklap** a pont kulcsverseire (`eszkozok/bizonyiteklap.py` kimenete; a forma: `adat/SEMA.md`);
 - az igeszakasz-tanulmány **blokkjai** (`sablonok/2_PaRDeS_bovitett_sablon.md` 4/b. pont) — **vizsgálandó állításként**, nem tényként;
 - a lap **Kivonat-, Remez-, Sod- és Módszertan-mondatai**, amelyek ugyanarra a pontra támaszkodnak.

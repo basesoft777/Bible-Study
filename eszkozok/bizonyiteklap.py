@@ -166,15 +166,19 @@ def forditott_alapvonal(sorozat):
     return talalt / MINTA_N, 'mintavétel (%d keverés, mag=%d)' % (MINTA_N, MAG)
 
 
-def vers_allapot(mid, vers, elof, jelolt):
-    """A vers állapota a motívum adatában: (állapot, hivatkozás)."""
+def vers_allapot(mid, vers, elof, jelolt, adat=None):
+    """A vers állapota a motívum adatában: (állapot, hivatkozás). Az adatsor igehelye tartomány is lehet
+    (`1Móz 4:10-11`): `adat` megadásakor a tartomány versei is illeszkednek (a független ellenőrzés, 2026-11-16)."""
     if not mid:
         return 'motívum nélkül (csak tájékoztatás)', '–'
+
+    def illik(igehely):
+        return igehely == vers or bool(adat and vers in adat.versek(igehely))
     for i, d in elof:
-        if d.get('id') == mid and d.get('igehely') == vers:
+        if d.get('id') == mid and illik(d.get('igehely', '')):
             return 'eldöntött', 'adat/elofordulasok.tsv:%d' % i
     for i, d in jelolt:
-        if d.get('id') == mid and d.get('igehely') == vers and d.get('jelolt_tipus', '') in ('', 'elofordulas'):
+        if d.get('id') == mid and illik(d.get('igehely', '')) and d.get('jelolt_tipus', '') in ('', 'elofordulas'):
             return 'jelölt, döntés: %s (nem vehető át)' % (d.get('dontes') or '?'), 'adat/jeloltek.tsv:%d' % i
     return 'nem áll a motívum adatában (nem vehető át)', '–'
 
@@ -209,7 +213,7 @@ def keszit(mid, versek, lanc, tanulmany=None, elof_ut=P.T_ELOF, jelolt_ut=T_JELO
     ki += ['', '*(proveniencia: scope=a lánc szavai a teljes ÓSZ (H) / ÚSZ (G) táblán, versszám | forras=%s | ts=%s)*'
            % (forras, ts), '', '## Versek', '']
     for k in kulcs:
-        allapot, hiv = vers_allapot(mid, k, elof, jelolt)
+        allapot, hiv = vers_allapot(mid, k, elof, jelolt, adat)
         ki += ['### %s · %s%s' % (k, allapot, '' if hiv == '–' else ' (%s)' % hiv), '']
         ki += ['Károli: %s' % (adat.karoli.get(k) or '– (a vers nincs a Károli-táblán)'), '']
         sz = korp.szavak.get(k, [])

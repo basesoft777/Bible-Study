@@ -55,6 +55,7 @@ class Alap(unittest.TestCase):
         with open(cls.elof, 'w', encoding='utf-8', newline='\n') as f:
             f.write('id\tigehely\tstrong\n')
             f.write('T-001\t1Móz 1:1\tH0001\n')
+            f.write('T-001\t1Móz 1:4-5\tH0002\n')   # tartomány-sor (a független ellenőrzés, 2026-11-16)
         cls.jelolt = os.path.join(cls.d, 'jelolt.tsv')
         with open(cls.jelolt, 'w', encoding='utf-8', newline='\n') as f:
             f.write('id\tigehely\tforras_kereses\tdontes\tindoklas\tjelolt_tipus\n')
@@ -119,6 +120,8 @@ class Alap(unittest.TestCase):
         self.assertIn('### 1Móz 1:1 · eldöntött (adat/elofordulasok.tsv:2)', self.ki)
         self.assertIn('### 1Móz 1:2 · jelölt, döntés: nyitva (nem vehető át)', self.ki)
         self.assertIn('### 1Móz 1:3 · nem áll a motívum adatában (nem vehető át)', self.ki)
+        self.assertIn('### 1Móz 1:4 · eldöntött (adat/elofordulasok.tsv:3)', self.ki)   # a tartomány verse
+        self.assertIn('### 1Móz 1:5 · eldöntött (adat/elofordulasok.tsv:3)', self.ki)
 
     # 5. proveniencia
     def test_proveniencia_versenkent(self):

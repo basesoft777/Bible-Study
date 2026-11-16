@@ -1,5 +1,7 @@
 # 2. Tanulmány sablon (PaRDeS) — teljes, részletes verzió
 
+*v25 — 2026.11.16 (F224, a független ellenőrzés javítóköre): a pótolt blokk jelölése a fejléc helyett külön sorban, a kezdőjelölő előtt (a kinyerő a fejlécben pontosan három mezőt fogad el); a funkció-pont az érvnaplóra hivatkozik (`naplok/ERVNAPLO_<ID>.md`).*
+
 *v24 — 2026.11.15 (F224.7: a 4/b. pontban a szakaszhatár a blokkok előtt, független indokkal; a vita-blokkban név csak forrással; a pótolt blokk jelölése; a funkció-blokk a szakaszbeli szerepet adja, a láncbeli szerep a cikké, DT-F224a.)*
 
 *v23 — 2026.11.12 (F205, DT803: új 4/b. pont — igehelyenkénti jelölt blokkok a motívumcikknek: funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás; gépileg olvasható jelölők, `üres` + ok, a vak olvasás sorrendje (a motívumtól független pontok az A1–A2-ben, a funkció és a negatív próba az A4 ⛔ után), minta a HAMART-001 1Móz 8:21-es sorával; l. `MUNKAMENET.md` A-szakasz.)*
@@ -207,12 +209,13 @@ kapcsolódásokhoz, anélkül hogy a fő szöveget túlterhelné.
 
 **A szakaszhatár előbb (F224).** A blokkok előtt a tanulmány kijelöli a feldolgozott szakasz határát, és megnevezi a **független indokát**: olyan szövegbeli jelet, amely a motívumtól nem függ (elbeszélés-egység, beszélőváltás, helyszín- vagy időváltás, formula, a toledót-szerkezet, a hagyományos perikópahatár forrással). A határ nem igazodhat ahhoz, hogy a motívum versei beleférjenek; ha a motívum egy verse kívül esik, az a vers ebben a tanulmányban nem kap blokkot. A határ és az indoka egy mondatban a 4/b. pont elején áll, a blokkok előtt.
 
-**Melyik vershez.** A feldolgozott szakasz versei közül ahhoz, amelyhez a hat pont valamelyikére anyag van; a 4. pont kapcsolódó igehelyei nem kapnak blokkot. Egy blokk = egy vers és egy motívum: ha a vers két motívumhoz tartozik, két blokk áll, és a motívumtól független pontot (jelentéspont, vita, visszhang, versszámozás) mindkettőben ki kell írni, mert a jelölt motívumonként kerül át. Meglévő tanulmány utólag csak akkor kap blokkot, ha a motívum menete ezt kimondja (pl. a TEREMT-001 a meglévő Genezis-tanulmányokba); az ilyen **pótolt blokk** a fejlécében `pótolt: nem vak olvasás` jelölést kap, mert a verset nem a tanulmány alapos olvasása közben, hanem a motívum ismeretében töltötték ki, így a K2-sorrend (lent) nem teljesül. A jelölés kinyerése (a jelölt-sorba) az F205 kinyerőjével együtt készül; az adatszabály helye `adat/SEMA.md` 3.10.5.
+**Melyik vershez.** A feldolgozott szakasz versei közül ahhoz, amelyhez a hat pont valamelyikére anyag van; a 4. pont kapcsolódó igehelyei nem kapnak blokkot. Egy blokk = egy vers és egy motívum: ha a vers két motívumhoz tartozik, két blokk áll, és a motívumtól független pontot (jelentéspont, vita, visszhang, versszámozás) mindkettőben ki kell írni, mert a jelölt motívumonként kerül át. Meglévő tanulmány utólag csak akkor kap blokkot, ha a motívum menete ezt kimondja (pl. a TEREMT-001 a meglévő Genezis-tanulmányokba); az ilyen **pótolt blokk** előtt, közvetlenül a kezdőjelölő fölötti sorban `<!-- IGEHELY-PÓTOLT: nem vak olvasás -->` jelölés áll, mert a verset nem a tanulmány alapos olvasása közben, hanem a motívum ismeretében töltötték ki, így a K2-sorrend (lent) nem teljesül. A jelölés az olvasónak és a bírálónak szól (a blokk nem vak olvasás); a kinyerő (`eszkozok/tanulmany_kinyer.py`) a blokkon kívüli sort nem olvassa, és a jelölt-sor `nyitva` döntéssel egyébként is ellenőrzésre megy, ezért a jelölés kinyerése nem kell (v25).
 
 **Alak.** Saját sorban álló kezdő- és zárójelölő; köztük a hat pont, mindegyik pontosan egyszer (a jelentéspont, a vita és a visszhang tárgyanként ismételhető), ebben a sorrendben:
 
 ```
-<!-- IGEHELY-BLOKK: [igehely] | motivum: [ID | új | —] | gerinc: [gerinc_elem | —][ | pótolt: nem vak olvasás] -->
+[<!-- IGEHELY-PÓTOLT: nem vak olvasás -->]
+<!-- IGEHELY-BLOKK: [igehely] | motivum: [ID | új | —] | gerinc: [gerinc_elem | —] -->
 - **funkció:** [egy kerek mondat a vers szakaszbeli szerepéről] | üres — [ok]
 - **negatív próba:** [igen | nem] — [indoklás egy mondatban] | üres — [ok]
 - **jelentéspont:** [Strong] · szótár: [szótár és pont | nincs] [proveniencia] · olvasat: [a mi olvasatunk] · eltér: [igen — mert … | nem | nem mérhető — ok] | üres — [ok]
@@ -224,13 +227,13 @@ kapcsolódásokhoz, anélkül hogy a fő szöveget túlterhelné.
 
 - Az igehely a projekt alakja (`1Móz 8:21`, CLAUDE.md „Igehely-formátum”), Károli-versszámmal.
 - A mezőelválasztó a ` · `; a lekérdezésből jövő érték mellé szögletes zárójelben a lekérdezés saját proveniencia-sora kerül (`[scope=… | forras=… | ts=…]`, CLAUDE.md 1. szabály). Proveniencia nélküli kitöltött pont `scope=manual`.
-- A `pótolt` mező opcionális, csak a pótolt blokkon áll (l. „Melyik vershez”).
+- Az `IGEHELY-PÓTOLT` sor opcionális, csak a pótolt blokk előtt áll (l. „Melyik vershez”); a fejléc mezői nem változnak (a kinyerő pontosan hármat fogad el).
 - A `motivum` és a `gerinc` a fejlécben az A4 ⛔ előtt `—`; a kinyerés csak az A4 után fut. `új` motívumú blokkból a kinyerő nem ír sort, csak jelenti; az ID kiosztása után az újrafuttatás veszi fel.
 
 **Mikor tölthető (a vak olvasás sorrendje, K2).** A **jelentéspont, a vita, a visszhang és a versszámozás** a motívumot nem feltételezi: az A1–A2-ben, a szöveg olvasása közben tölthető. A **funkció és a negatív próba** a motívumot feltételezi: csak az A4 ⛔ után, a motívum döntése alapján. Az A1–A2-ben készülő pontok szövege nem támaszkodhat motívum-jelöltlistára.
 
 **A hat pont.**
-1. **funkció** — mit tesz ez a vers **a feldolgozott szakaszban** (szakaszbeli szerep), egy kerek, önálló mondatban (az 1/a mércéje: teljes mondat, nem címke vagy töredék). A láncbeli szerep (mit tesz a vers a motívum ívében) nem a blokké: a cikkben, a motívumforrás érvnaplójának döntése szerint áll (a funkció két mezője: DT-F224a, a DT803 módosítása). A cikk a szakaszbeli szerepet szó szerint átveheti, ezért olvasói nyelven áll.
+1. **funkció** — mit tesz ez a vers **a feldolgozott szakaszban** (szakaszbeli szerep), egy kerek, önálló mondatban (az 1/a mércéje: teljes mondat, nem címke vagy töredék). A láncbeli szerep (mit tesz a vers a motívum ívében) nem a blokké: a cikkben, az érvnapló (`naplok/ERVNAPLO_<ID>.md`, DT-F224e) döntése szerint áll (a funkció két mezője: DT-F224a, a DT803 módosítása). A cikk a szakaszbeli szerepet szó szerint átveheti, ezért olvasói nyelven áll.
 2. **negatív próba** — *csak a fölérendelt fogalmon át tartozik ide?* A fölérendelt fogalom a `motivumok.tsv` `folerendelt_fogalom` mezője (új motívumnál az A6b-ben javasolt). `igen` = a vers csak a tágabb kategórián át kapcsolódik, tehát kizárandó; `nem` = a motívum minimális jegye a versben áll. Az indoklás azt nevezi meg, ami a versben a jegyet hordozza (vagy hiányzik).
 3. **jelentéspont** — a vers kulcsszavának jelentése a szótárban (BDB / Thayer pontja, a `bdb_vers_jelentes.tsv`, `thayer_vers_jelentes.tsv` lekérdezésével), és mellette **a mi olvasatunk**. Ha eltér, az okkal (`eltér: igen — mert …`). Az olvasat a mienk, `manual`; a szótár adatát nem írja felül, a `JELENTESPONT_KEZI` továbbra is csak a szótár félreolvasását javítja. Ha a szótár-sor pontot nem ad, `eltér: nem mérhető`.
 4. **vita** — a versre vonatkozó érdemi értelmezési vita, nevesített képviselővel. Homályos „egyesek szerint” nem elég: ha a vitának nincs nevesíthető képviselője, a pont `üres`, okkal. **Név csak forrással (F224):** minden képviselő neve mellett a forrás áll (mű és hely, vagy a dataset sora a proveniencia-sorával); emlékezetből vett név nem állhat itt (CLAUDE.md 3. szabály). A blokk a motívumcikknek vizsgálandó állítás, nem tény: a bíráló így kapja (`.claude/agents/biralo.md`).
