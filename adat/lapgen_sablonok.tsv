@@ -567,3 +567,60 @@ s4.p6.tars.ures	**{szo}** — {n} vers a Septuagintában (ebből {p} vers görö
 s4.p6.tars.nincs	**{szo}** — *a forrás nem tárgyalja* *(LXX versszintű párok)* · {strong}	szo:lathato, strong:strong	4.6	_tartalom_heber_lxx_parok (NEM_TARGYALJA; olvasói átírás)	-
 s4.p6.tars.elem	{lemma} ({hiv}): {n} vers	lemma:lathato, hiv:lathato, n:szam	4.6	_tartalom_heber_lxx_parok	-
 s4.p6.forras	*Forrás: a grammatikai szavak listája.*	-	4.6	_tartalom_heber_lxx_parok (a proveniencia-sor olvasói alakja)	-
+cim.kereszthivatkozasok	Kereszthivatkozások	-	keret	UJ_SZAKASZOK	-
+cim.minosites	Minősítés	-	6	res_forras.tsv (a rés fejléce)	-
+s6.olvasoi	A motívum {n} helyéből {talalt} helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen {osszes}. **Következtetés:** a helyek {szazalek}%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.	n:szam, talalt:szam, osszes:szam, szazalek:szam	6	olvasoi_kovetkeztetes.kereszthivatkozasok	-
+s6.olvasoi.nincs	A motívum {n} helyéről a hagyományos gyűjtemények (TSK, Károli) nem mutatnak más bibliai helyre. **Következtetés:** a motívumot a régi kereszthivatkozások nem kötik más helyekhez.	n:szam	6	olvasoi_kovetkeztetes.kereszthivatkozasok	-
+s6.hatokor.keret	*{mondatok| }*	mondatok:lista(lathato)	6	_lexikon_blokk (a hatókör-sor)	-
+s6.hatokor	A szakasz a motívum {n} helyét veti össze két hagyományos kereszthivatkozás-gyűjteménnyel: a Treasury of Scripture Knowledge (TSK) erős, legalább {kuszob} olvasói szavazatot kapott utalásaival és a Károli-fordítás utalásaival; {talalt} hely ad legalább egy utalást (összesen {osszes}).	n:szam, kuszob:szam, talalt:szam, osszes:szam	6	blokk_kereszthivatkozasok (új szerkezet, olvasói átírás)	-
+s6.hatokor.tobb_vers	{n} hely több versre terjed ({helyek|, }): a gyűjtemények versenként adnak utalást, ezért ezekre a vizsgálat nem keres.	n:szam, helyek:lista(igehely)	6	blokk_kereszthivatkozasok	-
+s6.hatokor.kihagyott	{n} hely {db} Károli-utalása nem áll itt, mert a Károli-fordítás nyomtatott kiadása (MEK 00161) nem erősíti meg: {helyek|, }.	n:szam, db:szam, helyek:lista(igehely)	6	blokk_kereszthivatkozasok (F212, a Károli-KH döntés)	-
+s6.ures	A két gyűjtemény a motívum egyik helyéről sem ad utalást.	-	6	uj (a régi „Nincs TSK/Károli-KH találat ehhez a motívumhoz.” helyett; a két mintalapon nem fut)	var
+s6.hely	{hely}	hely:igehely	6	blokk_kereszthivatkozasok	-
+s6.utalas.tsk	- TSK: {cel} ({n} szavazat)	cel:igehely, n:szam	6	blokk_kereszthivatkozasok (F212 M3: „Votes” → „szavazat”)	-
+s6.utalas.karoli	- Károli-KH: {cel}	cel:igehely	6	blokk_kereszthivatkozasok	-
+s6.min.olvasoi	{lelet} **Következtetés:** a motívum helyeinek {resz} a régi kereszthivatkozás-gyűjteményekben (TSK, Károli) is összetartozik, ez {fok} külső megerősítés.	lelet:lathato, resz:lathato, fok:lathato	6 Minősítés	olvasoi_kovetkeztetes.minosites (F212 M2)	-
+s6.min.lelet.bol	{osszes|A} utalásból {parok} a motívum két saját helyét köti össze, ez {erintett} helyet érint {n|a}-ból.	osszes:szam, parok:szam, erintett:szam, n:szam	6 Minősítés	olvasoi_kovetkeztetes.minosites	-
+s6.min.lelet.bol2	{osszes|A} utalásból {parok} a motívum két saját helyét köti össze, ez {erintett} helyet érint {n|a}-ből.	osszes:szam, parok:szam, erintett:szam, n:szam	6 Minősítés	olvasoi_kovetkeztetes.minosites	-
+s6.min.resz	a {p}%-a	p:szam	6 Minősítés	olvasoi_kovetkeztetes.minosites	-
+s6.min.resz.fele	a fele ({p}%)	p:szam	6 Minősítés	olvasoi_kovetkeztetes.minosites	-
+s6.min.fok.eros	erős	-	6 Minősítés	olvasoi_kovetkeztetes.minosites	-
+s6.min.fok.kozepes	közepes	-	6 Minősítés	olvasoi_kovetkeztetes.minosites	-
+s6.min.fok.gyenge	gyenge	-	6 Minősítés	olvasoi_kovetkeztetes.minosites	-
+s6.min.olvasoi.nincs	A hagyományos gyűjtemények utalásai közül egy sem köti össze a motívum két saját helyét. **Következtetés:** a motívumnak nincs független külső megerősítése.	-	6 Minősítés	olvasoi_kovetkeztetes.minosites	-
+s6.min.bevezeto	*A külső megerősítés azokat az utalásokat sorolja fel, amelyek a motívum két saját helyét kötik össze a TSK (legalább {kuszob} olvasói szavazattal) vagy a Károli-fordítás kereszthivatkozásai között; alatta a kereszthivatkozásból vizsgált helyek és a döntésük (forrás: a vizsgált helyek döntésnaplója).*	kuszob:szam	6 Minősítés	adatres_minosites (F212 M2)	-
+s6.min.parok	**Külső megerősítés** ({n} pár):	n:szam	6 Minősítés	adatres_minosites (F212 M2)	-
+s6.min.parok.nincs	**Külső megerősítés:** nincs olyan TSK-utalás (legalább {kuszob} szavazattal) vagy Károli-utalás, amely a motívum két saját helyét kötné össze.	kuszob:szam	6 Minősítés	uj (a régi „**Független megerősítés:** nincs olyan TSK- (Votes ≥ 15) vagy Károli-KH-találat …” helyett; a két mintalapon nem fut)	var
+s6.min.par.tsk	- {a} → {b} — TSK ({n} szavazat)	a:igehely, b:igehely, n:szam	6 Minősítés	adatres_minosites (F212 M3)	-
+s6.min.par.karoli	- {a} → {b} — Károli-KH	a:igehely, b:igehely	6 Minősítés	adatres_minosites	-
+s6.min.osszegzes	Kereszthivatkozásból vizsgált helyek ({n} sor; {dontesek|, })	n:szam, dontesek:lista(lathato)	6 Minősítés	adatres_minosites	-
+s6.min.osszegzes.beepitve	beépítve {n}	n:szam	6 Minősítés	adatres_minosites	-
+s6.min.osszegzes.elutasitva	elutasítva {n}	n:szam	6 Minősítés	adatres_minosites	-
+s6.min.osszegzes.nyitva	nyitva {n}	n:szam	6 Minősítés	adatres_minosites	-
+s6.min.fejlec.igehely	Igehely	-	6 Minősítés	adatres_minosites	-
+s6.min.fejlec.miert	Miért került a vizsgálatba	-	6 Minősítés	adatres_minosites (F212 M4)	-
+s6.min.fejlec.indok	Indok	-	6 Minősítés	adatres_minosites (F212 I5)	-
+s6.min.cella	{eleje}: {indok}	eleje:lathato, indok:lathato	6 Minősítés	minosites_jelolt_sorok	-
+s6.min.dontes.beepitve	**beépítve**	-	6 Minősítés	minosites_jelolt_sorok	-
+s6.min.dontes.nyitva	**nyitott döntés**	-	6 Minősítés	minosites_jelolt_sorok	-
+s6.min.jeloltek.nincs	**Kereszthivatkozásból minősített jelölt:** ehhez a motívumhoz nincs.	-	6 Minősítés	adatres_minosites	-
+s6.min.forras	*Forrás: a vizsgált helyek döntésnaplója; a motívum előfordulás-táblája; a Treasury of Scripture Knowledge; a Károli-kereszthivatkozások.*	-	6 Minősítés	adatres_keret (a proveniencia-sor olvasói alakja, F212 M5)	-
+s6.indok	{darabok|}	darabok:lista(lathato)	6 Minősítés	minosites_jelolt_sorok (az indoklás darabjai)	-
+s6.motivum	{motivum}	motivum:motivum	6 Minősítés	minosites_jelolt_sorok (a „[ID: …]” motívum-hivatkozás)	-
+s6.miert.tsk	TSK-ajánlás {forras} helyről{tobbi|}	forras:lathato, tobbi:lista(lathato)	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.miert.tsk.cel	TSK-ajánlás {forras} helyről {cel|a} helyre{tobbi|}	forras:lathato, cel:igehely, tobbi:lista(lathato)	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.miert.tsk.hely_nelkul	TSK-ajánlás{tobbi|}	tobbi:lista(lathato)	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.miert.tsk.alacsony	TSK-ajánlás, alacsony szavazattal	-	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.miert.forras	{hely|a}	hely:igehely	6 Minősítés	szerep_kizart.jeloles_oka (_ahol)	-
+s6.miert.versresz	{hely}	hely:versresz	6 Minősítés	szerep_kizart.jeloles_oka (több forrásvers)	-
+s6.miert.forrasok	{elemek|, | és }	elemek:lista(lathato)	6 Minősítés	szerep_kizart.jeloles_oka (több forrásvers)	-
+s6.miert.szavazat	, {ertekek|, } szavazat	ertekek:lista(lathato)	6 Minősítés	szerep_kizart.jeloles_oka (_tsk_reszlet; F212 M4)	-
+s6.miert.tartomany	{tol}-{ig}	tol:szam, ig:szam	6 Minősítés	szerep_kizart.jeloles_oka (_tsk_reszlet)	-
+s6.miert.talalat	, a forráshelyen {n} TSK-találat	n:szam	6 Minősítés	szerep_kizart.jeloles_oka (_tsk_reszlet)	-
+s6.miert.karoli_is	 (a Károli is ajánlja)	-	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.miert.tsk_karoli	TSK- és Károli-kereszthivatkozás {hely|a} helyről	hely:igehely	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.miert.tsk_karoli.hely_nelkul	TSK- és Károli-kereszthivatkozás	-	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.miert.karoli	Károli-kereszthivatkozás {hely|a} helyről	hely:igehely	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.miert.karoli.hely_nelkul	Károli-kereszthivatkozás	-	6 Minősítés	szerep_kizart.jeloles_oka	-
+s6.strong	[{szo}](/szo/{strong})<sup class="strong" title="{strong} · {glossza}">{strong}</sup>	szo:lathato, strong:strong, glossza:lathato	6 Minősítés	olvasoi_utofeldolg.strong_ki (STRONG_ELOL: a Strong-szám és utána a szó; DT-F181b)	-
+s6.strong.glossza_nelkul	[{szo}](/szo/{strong})<sup class="strong" title="{strong}">{strong}</sup>	szo:lathato, strong:strong	6 Minősítés	olvasoi_utofeldolg.strong_ki (magyar rövid jelentés nélkül)	-

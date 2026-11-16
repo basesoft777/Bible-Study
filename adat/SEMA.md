@@ -2553,6 +2553,11 @@ Csak annak a címkének kell sor, amelynek a cellakezdő alakja eltér magától
 prózaként áll, nem sablonszövegként). **Kapu:** a cellakezdő alak a címkétől csak a kezdő névelőben és a
 kezdőbetűben térhet el, és a kulcsának létező címkére kell mutatnia; különben a generálás megáll.
 
+**Az `ok_cella` típus (DT869, S5; DT-F218s).** Az elutasítási ok címkéjének (`elutasitasi_okok.tsv` `cimke`)
+cellakezdő alakja a Minősítés (és a 3. szakasz) „Indok” cellájában: a `kulcs` maga a címke, az `olvasoi_nev` a
+címke úgy, ahogy a cella elején áll. Ugyanaz a szabály és ugyanaz a kapu, mint a `cimke_cella` típusnál: csak a kezdő
+névelőben és a kezdőbetűben térhet el; különben a generálás megáll. Sor híján a címke változatlanul áll.
+
 ### 2.69 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
 
 A lánc szava nélküli tematikus hely (az `elofordulasok.tsv` sorának `gerinc_elem` mezője `tematikus:` kezdetű, a

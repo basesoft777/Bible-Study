@@ -114,10 +114,11 @@ def lap_keszit(gyoker, motivum, mod=Mod.MUNKA, datum=None, festek=False):
 
 class Forrasok:
     """Egy szakasz forrásai a valódi olvasásból (GK-07): az útvonalak és a licenccímkék, provenienciaként."""
-    __slots__ = ('azonositok', 'utvonalak', 'licencek')
+    __slots__ = ('azonositok', 'utvonalak', 'licencek', 'lista')
 
-    def __init__(self, azonositok, utvonalak, licencek):
+    def __init__(self, azonositok, utvonalak, licencek, lista=()):
         self.azonositok, self.utvonalak, self.licencek = azonositok, utvonalak, licencek
+        self.lista = tuple(lista)   # az útvonalak egyenként (Utvonal), más elválasztós felsoroláshoz
 
 
 def _forrasok(b, licencek, azonositok):
@@ -131,7 +132,7 @@ def _forrasok(b, licencek, azonositok):
             cimke = licencek.cimke(sor.licenc_kulcs)
             cimkek[cimke.ertek] = cimke
     return Forrasok(tuple(sorted(azonositok)), prov_fuz(', ', utvonalak),
-                    prov_fuz(', ', [cimkek[k] for k in sorted(cimkek)]))
+                    prov_fuz(', ', [cimkek[k] for k in sorted(cimkek)]), utvonalak)
 
 
 def _repon_kivul(gyoker, konyvtar):

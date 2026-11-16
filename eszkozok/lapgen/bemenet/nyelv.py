@@ -4,6 +4,7 @@ A névtábla minden belső kulcs olvasói nevét adja; ismeretlen kulcs kemény 
 A sablontábla a lap minden gépi mondatát adja; a megjelenítő más forrásból látható szöveget nem ír.
 """
 import enum
+import re
 
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.szoveg import Kulcs, Nev, SablonSor, sablon
@@ -11,6 +12,7 @@ from lapgen.szoveg import Kulcs, Nev, SablonSor, sablon
 NEVTABLA_OSZLOPOK = ('tipus', 'kulcs', 'olvasoi_nev', 'eredet')
 SABLON_OSZLOPOK = ('kulcs', 'mondat', 'parameterek', 'szakasz', 'eredet', 'dontes')
 CIMKE_CELLA_TIPUS = 'cimke_cella'   # a szótári szakaszcímke cellakezdő alakja; kulcs: szótár|Strong|szócikk|szakasz
+OK_CELLA_TIPUS = 'ok_cella'   # az elutasítási ok címkéjének cellakezdő alakja (DT869); kulcs: a címke (B56)
 _KULCS_ELVALASZTO = '|'
 
 
@@ -111,6 +113,20 @@ def cimke_cellaalakok(b):
             raise BemenetHiba('B65: a `%s` kulcsa szótár|Strong|szócikk|szakasz alakú legyen: %r'
                               % (CIMKE_CELLA_TIPUS, kulcs))
         ki[reszek] = b.kezi('B65', CIMKE_CELLA_TIPUS, nev)
+    return ki
+
+
+def ok_cellaalakok(b):
+    """Az elutasítási okok címkéjének cellakezdő alakja (B65, `ok_cella` típus) kézi szövegként: {címke: Kezi}. Az
+    alak adat (DT869: a cella értéke az adatban a végleges alak); a címkétől csak a kezdő névelőben és a
+    kezdőbetűben térhet el, különben BemenetHiba."""
+    ki = {}
+    for cimke, alak in b65_nevtabla(b).nyers_nevek(OK_CELLA_TIPUS).items():
+        kisbetus = alak[:1].lower() + alak[1:]
+        if not alak[:1].isupper() or kisbetus not in (cimke, re.sub(r'^(?:a|az)\s+', '', cimke)):
+            raise BemenetHiba('B65: a(z) %r ok cellakezdő alakja (%r) a címkétől csak a kezdő névelőben és a '
+                              'kezdőbetűben térhet el' % (cimke, alak))
+        ki[cimke] = b.kezi('B65', OK_CELLA_TIPUS, alak)
     return ki
 
 

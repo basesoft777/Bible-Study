@@ -386,7 +386,8 @@ class JegyzetOsszevonas(unittest.TestCase):
         self.assertEqual(eredetik, len(tablasorok))
 
     def test_kozos_forrasmegjeloles_megjegyzesben(self):
-        sorok = [s for s in lap('HAMART-001') if s.szoveg.startswith('<!-- közös forrásmegjelölés: ')]
+        # a 2. szakasz sora (‹E› jel); a Minősítésé (S5) ‹M› jelű
+        sorok = [s for s in lap('HAMART-001') if s.szoveg.startswith('<!-- közös forrásmegjelölés: ') and '‹E' in s.szoveg]
         self.assertEqual(len(sorok), 1)
         self.assertEqual(lathato(sorok[0]), '')
         self.assertIn('‹E1› = forrás: kézi szerkesztés, ', sorok[0].szoveg)

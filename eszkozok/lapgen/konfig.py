@@ -28,6 +28,7 @@ SZOVETSEG_KUSZOB = 0.20     # ennél kisebb arányú szövetség: „főként ó
 BIZONYTALAN_KUSZOB = 0.67   # a magas megbízhatóságú helyek aránya ez alatt: „sok a bizonytalan azonosítás”
 
 KOZOS_PROVENIENCIA_KUSZOB = 2   # ennyi jegyzetben álló proveniencia-hármas kap közös jelet (‹E1› …)
+TSK_SZAVAZAT_KUSZOB = 15   # a 6. szakasz és a Minősítés a TSK legalább ennyi olvasói szavazatot kapott utalásait veszi (régi: Votes ≥ 15)
 
 # --- Döntési út és a kizárások melléklete ----------------------------------------------------------------------
 CSOPORT_PELDA_DB = 5            # a csoportos ok alatt ennyi példavers áll a Károli-szöveggel

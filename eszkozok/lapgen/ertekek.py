@@ -103,3 +103,24 @@ class FeloldasFajta(enum.Enum):
     JAHVE = 'jahve'                  # a י׳ rövidítés
     JAHVE_CIMSZO = 'jahve_cimszo'    # a י׳, ha a címszó is י-vel kezdődik: mindkettő
     ALTALANOS = 'altalanos'          # a feloldás a szócikk szövegéből derül ki
+
+
+class Dontes(enum.Enum):
+    """A döntésnapló döntése egy jelöltről (B04 `dontes`)."""
+    BEEPITVE = 'beépítve'
+    ELUTASITVA = 'elutasítva'
+    NYITVA = 'nyitva'
+
+
+class Gyujtemeny(enum.Enum):
+    """A kereszthivatkozás-gyűjtemény (S5): a Treasury of Scripture Knowledge vagy a Károli-fordítás."""
+    TSK = 'tsk'
+    KAROLI = 'karoli'
+
+
+class AjanlasFajta(enum.Enum):
+    """A kereszthivatkozásból vizsgált hely jelölésének forrása (B04 `forras_kereses`, S5)."""
+    TSK = 'tsk'
+    TSK_ALACSONY = 'tsk_alacsony'
+    TSK_KAROLI = 'tsk_karoli'
+    KAROLI = 'karoli'

@@ -166,10 +166,6 @@ class Szerkezeti(unittest.TestCase):
 class AtvettTetelek(unittest.TestCase):
     """Az N-F212a tételei (a spec 6.1 táblája), az N178 és a szópár-követelmény."""
 
-    @unittest.skip(S5)
-    def test_gk_a1_masolt_karoli_kh_lista(self):
-        """GK-A1: minden igehely legfeljebb egyszer szerepel a 6. szakaszban és a hatókör-jegyzetben együtt."""
-
     @unittest.skip(S7)
     def test_gk_a6_rokon_nyelvi_tabla(self):
         """GK-A6: „a kinyerés még nem történt meg” pontosan azoknál a lánc-szavaknál áll, amelyeknek nincs

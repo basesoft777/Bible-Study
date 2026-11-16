@@ -12,8 +12,10 @@ NEV_TIPUS = 'konyv'
 
 
 class Konyvek:
-    def __init__(self, sorrend, ujszovetsegi, nevek):
+    def __init__(self, sorrend, ujszovetsegi, nevek, step_rov=None):
         self._sorrend, self._ujszovetsegi, self._nevek = sorrend, ujszovetsegi, nevek
+        self._step_rov = dict(step_rov or {})
+        self._rov_step = {rov: step for step, rov in self._step_rov.items()}
 
     def ismert(self, konyv):
         return konyv in self._sorrend
@@ -42,6 +44,25 @@ class Konyvek:
         """Kánoni rendezőkulcs: (könyv sorszáma, fejezet, vers); tartománynál a kezdőpont."""
         return (self.sorszam(igehely.konyv), igehely.fejezet, igehely.vers)
 
+    def step_ismert(self, step):
+        """Igaz, ha a STEPBible-rövidítés a táblában áll."""
+        return step in self._step_rov
+
+    def step_rov(self, step):
+        """A STEPBible-rövidítés (`Gen`) magyar rövidítése (`1Móz`); ismeretlennél BemenetHiba."""
+        try:
+            return self._step_rov[step]
+        except KeyError:
+            raise BemenetHiba('B63: ismeretlen STEPBible-rövidítés: %s' % step) from None
+
+    def step_vers(self, igehely):
+        """Az egyetlen vers STEPBible-alakja (`1Móz 3:16` → `Gen.3.16`); tartománynál None (versenként nem
+        kereshető)."""
+        if igehely.kod != '%s %d:%d' % (igehely.konyv, igehely.fejezet, igehely.vers):
+            return None
+        self.sorszam(igehely.konyv)
+        return '%s.%d.%d' % (self._rov_step[igehely.konyv], igehely.fejezet, igehely.vers)
+
     def igehely(self, nyers):
         """Igehely a nyers alakból; ismeretlen könyv vagy hibás alak BemenetHiba."""
         try:
@@ -66,4 +87,4 @@ def b63_konyvek(b):
     if _USZ_ELSO not in stepek or stepek[-1] != _USZ_UTOLSO or len(stepek) - stepek.index(_USZ_ELSO) != _USZ_DB:
         raise BemenetHiba('B63: az Újszövetség nem a tábla záró %d sora' % _USZ_DB)
     ujszov = frozenset(sor[rov] for sor in tabla.sorok[stepek.index(_USZ_ELSO):])
-    return Konyvek(sorrend, ujszov, nevek)
+    return Konyvek(sorrend, ujszov, nevek, {sor[step]: sor[rov] for sor in tabla.sorok})
