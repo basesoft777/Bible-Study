@@ -1,5 +1,9 @@
 # Útmutató az ellenőrzéshez — Károli 1908 – Strong szópárosítás
 
+## Miről szól?
+
+A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, illetve görög eredeti megfelelő szavával, Strong-számokkal együtt. Az adat nyíltan elérhető a Zenodón (doi:10.5281/zenodo.24141883), és a *Journal of Open Humanities Data*-ba cikk készül róla. A párosítást nyelvi modell végezte. A modell csak rámutatott a forrásszóra, a Strong-szám a STEPBible héber és görög adatából jön. A pontosságot eddig szintén gép mérte, ezért kell most emberi szem. Ti ketten egymástól függetlenül, szúrópróbaszerűen nézitek át a mintát. Az eredményetek számként kerül a cikkbe, ti pedig, ha hozzájárultok, név szerint szerepeltek a köszönetnyilvánításban. A munka kb. 3–4 óra, több részletben. Egymással ne egyeztessetek; ha valamiben nem vagytok biztosak, a „bizonytalan” gomb a jó válasz. Mivel részt vesztek a munkában, a folyóiratnál nem lehettek a cikk bírálói.
+
 **A feladat.** Az `ellenorzo.html` 380 tételt mutat, gépen és telefonon is (internet nem kell). **300 szópár**: egy Károli-szóhoz a gép egy héber vagy görög szót rendelt (TAHOT/TAGNT, Strong-számmal). **80 pár nélküli magyar szó**: a gép szerint ennek a szónak nincs eredetije. Mindkettőt a teljes vers ismeretében ítéld meg. Egy magyar szónak több eredetije is lehet, ilyenkor minden kapcsolat külön tétel. A vers többi párját a tétel alján látod.
 
 **Kérjük, a másik ellenőrrel ne egyeztess, és ne nézd meg az ő válaszait.** Csak így mérhető, mennyire egyezik két független ítélet. Kérdésnél a szervezőt kérdezd, ne a másik ellenőrt.
@@ -45,4 +49,4 @@ Ezek szerint készült a párosítás. A tetszés szerinti fordítói ítélet h
 - **Tippek.** Ha egy magyar szóra koppintasz, látod a párjait. Ha egy eredeti szóra koppintasz, látod a Strong-számát és a jelentését. A pontozott aláhúzás pár nélküli eredeti szót jelöl.
 - **Alaktan.** A héber kód a Macula/OSHB jelölése: pl. *Ncmsa* = köznév, hímnem, egyes szám, abszolút állapot; *Vqp3ms* = ige, qal, perfectum, E/3 hímnem; *Sp3ms* = névmási rag, E/3 hímnem; *R* = elöljáró; *C* = kötőszó; *Td* = névelő. A görög kód Robinson-féle: pl. *V-PAP-NSM* = ige, praesens activum participium, alanyeset, egyes szám, hímnem.
 - **Leadás.** Ha végeztél, a „Mentés / export” gombbal letöltöd a `<neved>_valaszok.json` fájlt; ezt küldd el a szervezőnek. Ha a letöltés nem indul el, ugyanott kimásolhatod a szöveget. Ugyanezzel a fájllal a munka másik eszközön is folytatható („Betöltés”).
-- **Becsült idő.** Szópárnál átlagosan kb. 40–60 másodperc, pár nélküli szónál 20–40 másodperc: összesen **kb. 4–6 óra**. Érdemes több, legfeljebb egyórás részletben dolgozni.
+- **Becsült idő.** Szópárnál átlagosan kb. fél perc, pár nélküli szónál 15–20 másodperc: összesen **kb. 3–4 óra**. A névelők és a kötőszók gyorsan mennek, a ragos és többszavas esetek lassabban. Érdemes több, legfeljebb egyórás részletben dolgozni.
