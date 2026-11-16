@@ -224,9 +224,10 @@ class TesztLablecAlkalmazas(unittest.TestCase):
         return app, app.test_client()
 
     def test_mindharom_kiadasban_ag_commit_epites_ts_es_az_uj_allapot_azonnal_latszik(self):
-        reg = {k: os.environ.get(k) for k in ('PARDES_AG', 'PARDES_COMMIT', 'PARDES_FORRAS_DB')}
+        reg = {k: os.environ.get(k) for k in ('PARDES_AG', 'PARDES_COMMIT', 'PARDES_FORRAS_DB', 'PARDES_LEMARADAS')}
         self.addCleanup(lambda: [os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v) for k, v in reg.items()])
         os.environ['PARDES_AG'], os.environ['PARDES_COMMIT'] = 'main', 'abcd1234'
+        os.environ['PARDES_LEMARADAS'] = '0'                                     # a valódi checkout lemaradásától független (F225)
         os.environ.pop('PARDES_FORRAS_DB', None)
         for kiadas in ('belso', 'nyilvanos', 'kereskedelmi'):
             with self.subTest(kiadas=kiadas):
@@ -809,6 +810,141 @@ class TesztInditElonezet(_InditAlap):
         kod, ki = self._fut(port=port)
         self.assertEqual(kod, 0, ki)
         self.assertIsNotNone(regi.wait(timeout=10))
+
+
+class TesztElonezetAlkalmazas(unittest.TestCase):
+    """F225: az önfrissítő előnézet a valódi alkalmazáson (Flask és pardes.db kell; enélkül kimarad, kifejezetten jelölve): kulcs-végpont, kliensszkript,
+    csak a `belso` kiadásban, a CSP változatlan, a lap tetejének figyelmeztetése."""
+
+    KORNYEZET = ('PARDES_AG', 'PARDES_COMMIT', 'PARDES_FORRAS_DB', 'PARDES_LEMARADAS')
+
+    @classmethod
+    def setUpClass(cls):
+        try:
+            import flask  # noqa: F401
+        except ImportError:
+            raise unittest.SkipTest('nincs Flask: az előnézet alkalmazás-tesztje kimarad (nem zöld)')
+        cls.db = os.environ.get('PARDES_DB') or os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(D))), 'pardes.db')
+        if not os.path.isfile(cls.db):
+            raise unittest.SkipTest('nincs pardes.db (%s): az előnézet alkalmazás-tesztje kimarad (nem zöld)' % cls.db)
+        import alkalmazas
+        cls.alk = alkalmazas
+
+    def setUp(self):
+        reg = {k: os.environ.get(k) for k in self.KORNYEZET}
+        self.addCleanup(lambda: [os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v) for k, v in reg.items()])
+        os.environ.update(PARDES_AG='main', PARDES_COMMIT='abcd1234', PARDES_LEMARADAS='0')
+        os.environ.pop('PARDES_FORRAS_DB', None)
+
+    def _kliens(self, kiadas='belso'):
+        app = self.alk.letrehoz(self.db, kiadas)
+        app.extensions['pardes']['gyar'].lablec.ttl = 0                         # minden kérésnél újraolvas
+        return app, app.test_client()
+
+    def test_a_kulcs_vegpont_belsoben_json_adatbazis_nelkul(self):
+        app, c = self._kliens('belso')
+        gyar = app.extensions['pardes']['gyar']
+
+        def tilos(*a, **k):
+            raise AssertionError('a kulcs-végpont nem olvashat adatbázist')
+        gyar.db.kapcsolat = tilos                                              # a /statusz ezen át olvas; a kulcs-végpontnak nem kell
+        r = c.get('/elonezet/kulcs')
+        self.assertEqual(r.status_code, 200)
+        self.assertTrue(r.headers['Content-Type'].startswith('application/json'))
+        self.assertEqual(r.headers['Cache-Control'], 'no-store')
+        j = r.get_json()
+        for kulcs in ('azonosito', 'kod_verzio', 'arculat_hash', 'lablec', 'adatbazis_kulcs', 'ag', 'commit', 'lemaradas'):
+            self.assertIn(kulcs, j)
+        self.assertEqual((j['kod_verzio'], j['arculat_hash'], j['adatbazis_kulcs']), (gyar.kod_verzio, gyar.arculat.hash, gyar.kozos.adatbazis_kulcs))
+        self.assertEqual((j['ag'], j['commit'], j['lemaradas']), ('main', 'abcd1234', 0))
+        self.assertEqual(c.get('/elonezet/kulcs').get_json()['azonosito'], j['azonosito'], 'változatlan állapotnál stabil')
+
+    def test_az_azonosito_valtozik_az_allapottal(self):
+        app, c = self._kliens('belso')
+        a = c.get('/elonezet/kulcs').get_json()['azonosito']
+        os.environ['PARDES_AG'] = 'claude/valami'                              # ágváltás
+        b = c.get('/elonezet/kulcs').get_json()['azonosito']
+        os.environ['PARDES_AG'] = 'main'
+        os.environ['PARDES_LEMARADAS'] = '5'                                   # lemaradás
+        d = c.get('/elonezet/kulcs').get_json()['azonosito']
+        self.assertEqual(len({a, b, d}), 3)
+        gyar = app.extensions['pardes']['gyar']
+        gyar.kod_verzio = 'masik'                                              # kódváltozás (az újratöltő újraindítása után)
+        self.assertNotEqual(c.get('/elonezet/kulcs').get_json()['azonosito'], d)
+
+    def test_a_lap_a_kiindulo_azonositot_hordozza(self):
+        app, c = self._kliens('belso')
+        azon = c.get('/elonezet/kulcs').get_json()['azonosito']
+        h = c.get('/1Moz/1/1').get_data(as_text=True)
+        self.assertIn('<script src="/statikus/elonezet.js?v=%s" data-azonosito="%s" defer></script>' % (azon, azon), h)
+
+    def test_csak_a_belso_kiadasban(self):
+        for kiadas in ('nyilvanos', 'kereskedelmi'):
+            with self.subTest(kiadas=kiadas):
+                app, c = self._kliens(kiadas)
+                self.assertEqual(c.get('/elonezet/kulcs').status_code, 404)
+                h = c.get('/1Moz/1/1').get_data(as_text=True)
+                self.assertNotIn('elonezet.js', h)
+                self.assertNotIn('data-azonosito', h)
+                self.assertFalse(app.extensions['pardes']['gyar'].elonezet)
+        app, c = self._kliens('belso')
+        self.assertEqual(c.get('/elonezet/kulcs').status_code, 200)
+
+    def test_a_csp_nem_lazul(self):
+        app, c = self._kliens('belso')
+        for ut in ('/1Moz/1/1', '/elonezet/kulcs', '/statikus/elonezet.js'):
+            r = c.get(ut)
+            self.assertEqual(r.headers['Content-Security-Policy'], self.alk.CSP, ut)
+        self.assertIn("script-src 'self'", self.alk.CSP)
+        self.assertNotIn('unsafe', self.alk.CSP)
+        h = c.get('/1Moz/1/1').get_data(as_text=True)
+        import re
+        for tag in re.findall(r'<script\b[^>]*>', h):
+            self.assertIn('src=', tag, 'inline szkript nem lehet: ' + tag)
+
+    def test_a_kliens_kiszolgalva_es_tartalma(self):
+        app, c = self._kliens('belso')
+        r = c.get('/statikus/elonezet.js')
+        self.assertEqual(r.status_code, 200)
+        js = r.get_data(as_text=True)
+        for resz in ('/elonezet/kulcs', 'data-tervezo', 'location.reload', 'visibilitychange', 'data-azonosito', 'document.hidden'):
+            self.assertIn(resz, js)
+        self.assertNotIn('classList', js, 'a kliens nem vezet be CSS-osztályt (regiszter-őr)')
+        self.assertNotIn('className', js)
+        self.assertNotIn('innerHTML', js)
+
+    @unittest.skipUnless(shutil.which('node'), 'nincs node: a szintaxis-ellenőrzés kimarad')
+    def test_a_kliens_szintaxisa(self):
+        p = subprocess.run(['node', '--check', os.path.join(D, 'statikus', 'elonezet.js')], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        self.assertEqual(p.returncode, 0, p.stdout)
+
+    def test_a_figyelt_fajlok_kozt_a_tervezo_statikus_es_a_kliens(self):
+        fajlok = [f.replace(os.sep, '/') for f in self.alk.figyelt_fajlok()]
+        self.assertTrue(any(f.endswith('tervezo_statikus/tervezo.js') for f in fajlok))
+        self.assertTrue(any(f.endswith('tervezo_statikus/tervezo.css') for f in fajlok))
+        self.assertTrue(any(f.endswith('statikus/elonezet.js') for f in fajlok))
+        self.assertFalse(any(os.path.basename(f).startswith('arculat.json') for f in fajlok), 'az arculat.json továbbra sem figyelt')
+
+    def test_a_lap_tetejen_is_megjelenik_a_figyelmeztetes_regisztralt_osztallyal(self):
+        import re
+        app, c = self._kliens('belso')
+        os.environ['PARDES_AG'] = 'claude/valami'
+        os.environ['PARDES_LEMARADAS'] = '12'
+        h = c.get('/1Moz/1/1').get_data(as_text=True)
+        fej = h.index('<header')
+        felso = h[h.index('>', h.index('<body')) + 1:fej]                      # a <body> címke után, a fejlécig
+        self.assertIn('role="status"', felso)
+        self.assertIn('Figyelem:', felso)
+        self.assertIn('claude/valami', felso)
+        self.assertIn('12 committal az origin/main mögött', felso)
+        self.assertEqual(set(re.findall(r'class="([^"]*)"', felso)), {'labjegyzet'}, 'csak a regisztrált osztály')
+        self.assertIn('Figyelem:', h[h.index('<footer'):], 'a lábléc figyelmeztetése megmarad')
+
+    def test_main_ag_naprakeszen_nincs_felso_sav(self):
+        app, c = self._kliens('belso')
+        h = c.get('/1Moz/1/1').get_data(as_text=True)
+        self.assertNotIn('role="status"', h)
+        self.assertNotIn('Figyelem:', h)
 
 
 if __name__ == '__main__':
