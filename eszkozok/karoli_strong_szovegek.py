@@ -755,7 +755,7 @@ Az adatkészlet a Károli-biblia, a klasszikus magyar fordítás 1908-as szöveg
 görög eredetihez (STEPBible TAHOT/TAGNT) {par} szópárral, mindegyik az eredeti szó Strong-számával. Egy nyelvi modell
 csak szósorszámokat jelölt; a Strong-szám az eredeti szöveg adatából jön. A pontosság egy vak modell-ellenőrrel
 rétegzett mintán {p_osszes}% (95%-os KI: {p_osszes_a}–{p_osszes_f}%), egy független, Strong-számos Károli-kiadással a
-fő szavakon {k_fs}%, két emberi ellenőr szerint [pontosság]. A TSV-táblák (CC BY 4.0) Strong-alapú keresést,
+fő szavakon {k_fs}%, két emberi ellenőr szerint [pontosság]. A CC BY 4.0 licencű TSV-táblák Strong-alapú keresést,
 fordítástörténeti és szóillesztési kutatást szolgálnak.
 
 **Kulcsszavak:** Károli-biblia; Strong-számok; szóillesztés; magyar; bibliai héber; koiné görög
@@ -839,7 +839,7 @@ modell-ellenőrrel].
 | fő szavak, háromutas ítélet után | {k_h3}% | {k_h3_a}–{k_h3_f}% |
 | emberi validáció | [pontosság] | [KI] |
 
-A rétegek egyezése {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog (rétegenként: `data/meres.tsv`).
+A rétegek egyezése {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog.
 A {minta} mintapárból {elteres} tért el az ellenőrtől, leggyakrabban szomszédos szóval ({h_szomszedos_token}): jellemzően
 egy héber előtag, névelő vagy elöljáró szabályellenes hozzákötésével. A független összevetés {k_elter} eltéréséből
 {k_mi_szo} maradt párosítási hiba; minden megerősített hibát az adatkészlet felsorol.
@@ -873,13 +873,14 @@ STEPBible szövegéhez illeszthető.
 Bibliaprogramok Strong-alapú keresést kínálhatnak a magyar szövegen: egy eredeti szó minden Károli-megfelelője egy
 szűréssel előáll. A fordítástörténet vizsgálhatja a Károli következetességét, betoldásait és fordítatlan szavait.
 Nyelvtechnológiai célra kis erőforrású nyelvpár (magyar–héber, magyar–görög) szóillesztési adata, rétegenként mért
-hibával; a mintapárok és a hibatípusok szóillesztő programok értékeléséhez is használhatók. A párosításra a {lex_hu},
+hibával; a mintapárok szóillesztő programok értékeléséhez is használhatók. A párosításra a {lex_hu},
 egy motívum-indexelt, kereszthivatkozott bibliai lexikon épül.
 
 Kísérő adatkészlet: ugyanezek a párok a Károli modernizált szövegén (Demeter, 2026b). A modernizálás, a szerző saját
 munkája, csak a helyesírást és az igealakokat változtatja, szabályok szerint; a ritka igealakoknál nyelvi modellek
-javasoltak változást, amely csak egyező független javaslatok és tőellenőrzés után lépett életbe; az eredményt független
-ellenőrzés vizsgálta. Minden szó a helyén maradt, így a két adatkészlet a vers és a szósorszám kulcsán összekapcsolható.
+javasoltak változást, amely csak egyező független javaslatok és tőellenőrzés után lépett életbe. Minden szó a helyén
+maradt, az összeolvadt szavak (*a kik* → *akik*) mindkét párja megmaradt, így a párkészlet azonos, és a fenti
+pontossági számok rá is érvényesek; a modernizálást külön ellenőrzés és mérés vizsgálta.
 
 Korlátok. A párosítás gépi javaslat, és a vak ellenőr maga is modell. A független összevetés csak a fő szavakat méri,
 kis klaszter-mintán; a héber morfémák párjai ({morfema}) kívül esnek rajta. A Károli a Textus Receptust fordította, a
@@ -956,8 +957,8 @@ The dataset aligns the {hu_token} words of the 1908 Károli Bible, the classic H
 and Greek source text (STEPBible TAHOT/TAGNT) in {par} word pairs carrying the source word's Strong's number. A
 language model marked word positions only; the Strong's numbers come from the source data. Accuracy is {p_osszes}% (95%
 CI {p_osszes_a}–{p_osszes_f}%) against a blind model reviewer on a stratified sample, {k_fs}% on main words against an
-independent Strong-tagged Károli edition, and [accuracy] by two human validators. The TSV tables (CC BY 4.0) support
-Strong-based search, translation history and word-alignment research.
+independent Strong-tagged Károli edition, and [accuracy] by two human validators. The CC BY 4.0 TSV tables support
+Strong-based search, translation history and alignment research.
 
 **Keywords:** Károli Bible; Strong's numbers; word alignment; Hungarian; biblical Hebrew; Koine Greek
 
@@ -1040,8 +1041,7 @@ reviewer is [agreement with model reviewer].
 | main words, after three-way judgement | {k_h3}% | {k_h3_a}–{k_h3_f}% |
 | human validation | [accuracy] | [CI] |
 
-Agreement per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}); per stratum: `data/meres.tsv`. Of
-the {minta} sample pairs, {elteres} differed from the reviewer, most often by a neighbouring word
+Agreement per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}). Of the {minta} sample pairs, {elteres} differed from the reviewer, most often by a neighbouring word
 ({h_szomszedos_token}): typically a Hebrew prefix, article or preposition attached against the rules. Of the
 {k_elter} differences in the independent comparison, {k_mi_szo} remained alignment errors; all confirmed errors are
 listed in the dataset.
@@ -1074,13 +1074,14 @@ morphemes), {hu_betoldas} additions, {er_forditatlan} untranslated source words,
 Bible software can offer Strong-based search on the Hungarian text: every Károli rendering of a source word is one
 filter away. Translation historians can study Károli's consistency, additions and untranslated words. For language
 technology it is word-alignment data for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error
-measured per stratum; the sample pairs and error types can also serve to evaluate word aligners. The {lex_en}, a
+measured per stratum; the sample pairs can also serve to evaluate word aligners. The {lex_en}, a
 motif-indexed, cross-referenced biblical lexicon, is built on this alignment.
 
 A companion dataset carries the same pairs on a modernised Károli text (Demeter, 2026b). The modernisation, the
 author's own work, changes only spelling and verb forms, by rules; for rare verb forms, language models proposed
-changes, applied only where independent proposals agreed and passed a stem check; the result was independently
-reviewed. Every word kept its position, so the two datasets join on the verse and word-position key.
+changes, applied only where independent proposals agreed and passed a stem check. Every word kept its position and
+merged words (*a kik* → *akik*) keep both pairs, so the pair set is identical and the accuracy figures above apply to
+it; the modernisation itself was reviewed and measured separately.
 
 Limitations. The alignment is a machine proposal, and the blind reviewer is itself a model. The independent comparison
 covers main words only, on a small cluster sample; the Hebrew morpheme pairs ({morfema}) are outside it. Károli

@@ -11,8 +11,8 @@ The dataset aligns the 599,367 words of the 1908 Károli Bible, the classic Hung
 and Greek source text (STEPBible TAHOT/TAGNT) in 598,715 word pairs carrying the source word's Strong's number. A
 language model marked word positions only; the Strong's numbers come from the source data. Accuracy is 95.06% (95%
 CI 93.81–96.32%) against a blind model reviewer on a stratified sample, 98.72% on main words against an
-independent Strong-tagged Károli edition, and [accuracy] by two human validators. The TSV tables (CC BY 4.0) support
-Strong-based search, translation history and word-alignment research.
+independent Strong-tagged Károli edition, and [accuracy] by two human validators. The CC BY 4.0 TSV tables support
+Strong-based search, translation history and alignment research.
 
 **Keywords:** Károli Bible; Strong's numbers; word alignment; Hungarian; biblical Hebrew; Koine Greek
 
@@ -95,8 +95,7 @@ reviewer is [agreement with model reviewer].
 | main words, after three-way judgement | 99.81% | 99.56–99.92% |
 | human validation | [accuracy] | [CI] |
 
-Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts); per stratum: `data/meres.tsv`. Of
-the 1,600 sample pairs, 72 differed from the reviewer, most often by a neighbouring word
+Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts). Of the 1,600 sample pairs, 72 differed from the reviewer, most often by a neighbouring word
 (37): typically a Hebrew prefix, article or preposition attached against the rules. Of the
 34 differences in the independent comparison, five remained alignment errors; all confirmed errors are
 listed in the dataset.
@@ -129,13 +128,14 @@ morphemes), 109,914 additions, 63,017 untranslated source words, 794 pending Hun
 Bible software can offer Strong-based search on the Hungarian text: every Károli rendering of a source word is one
 filter away. Translation historians can study Károli's consistency, additions and untranslated words. For language
 technology it is word-alignment data for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error
-measured per stratum; the sample pairs and error types can also serve to evaluate word aligners. The Logosz Lexikon, a
+measured per stratum; the sample pairs can also serve to evaluate word aligners. The Logosz Lexikon, a
 motif-indexed, cross-referenced biblical lexicon, is built on this alignment.
 
 A companion dataset carries the same pairs on a modernised Károli text (Demeter, 2026b). The modernisation, the
 author's own work, changes only spelling and verb forms, by rules; for rare verb forms, language models proposed
-changes, applied only where independent proposals agreed and passed a stem check; the result was independently
-reviewed. Every word kept its position, so the two datasets join on the verse and word-position key.
+changes, applied only where independent proposals agreed and passed a stem check. Every word kept its position and
+merged words (*a kik* → *akik*) keep both pairs, so the pair set is identical and the accuracy figures above apply to
+it; the modernisation itself was reviewed and measured separately.
 
 Limitations. The alignment is a machine proposal, and the blind reviewer is itself a model. The independent comparison
 covers main words only, on a small cluster sample; the Hebrew morpheme pairs (157,163) are outside it. Károli
@@ -191,8 +191,8 @@ AI tool is not an author.
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-1,147; with the unnumbered statements 1,320; with the references as well 1,394 (the submission page says
-the limit includes references; it does not say whether the abstract counts); with the abstract too 1,488. The JOHD
+1,156; with the unnumbered statements 1,329; with the references as well 1,403 (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too 1,497. The JOHD
 data paper length is 1,000–1,500 words; the editorial office can confirm which count applies.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model

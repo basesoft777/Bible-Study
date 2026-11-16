@@ -11,7 +11,7 @@ Az adatkészlet a Károli-biblia, a klasszikus magyar fordítás 1908-as szöveg
 görög eredetihez (STEPBible TAHOT/TAGNT) 598 715 szópárral, mindegyik az eredeti szó Strong-számával. Egy nyelvi modell
 csak szósorszámokat jelölt; a Strong-szám az eredeti szöveg adatából jön. A pontosság egy vak modell-ellenőrrel
 rétegzett mintán 95,06% (95%-os KI: 93,81–96,32%), egy független, Strong-számos Károli-kiadással a
-fő szavakon 98,72%, két emberi ellenőr szerint [pontosság]. A TSV-táblák (CC BY 4.0) Strong-alapú keresést,
+fő szavakon 98,72%, két emberi ellenőr szerint [pontosság]. A CC BY 4.0 licencű TSV-táblák Strong-alapú keresést,
 fordítástörténeti és szóillesztési kutatást szolgálnak.
 
 **Kulcsszavak:** Károli-biblia; Strong-számok; szóillesztés; magyar; bibliai héber; koiné görög
@@ -95,7 +95,7 @@ modell-ellenőrrel].
 | fő szavak, háromutas ítélet után | 99,81% | 99,56–99,92% |
 | emberi validáció | [pontosság] | [KI] |
 
-A rétegek egyezése 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog (rétegenként: `data/meres.tsv`).
+A rétegek egyezése 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog.
 Az 1 600 mintapárból 72 tért el az ellenőrtől, leggyakrabban szomszédos szóval (37): jellemzően
 egy héber előtag, névelő vagy elöljáró szabályellenes hozzákötésével. A független összevetés 34 eltéréséből
 öt maradt párosítási hiba; minden megerősített hibát az adatkészlet felsorol.
@@ -129,13 +129,14 @@ STEPBible szövegéhez illeszthető.
 Bibliaprogramok Strong-alapú keresést kínálhatnak a magyar szövegen: egy eredeti szó minden Károli-megfelelője egy
 szűréssel előáll. A fordítástörténet vizsgálhatja a Károli következetességét, betoldásait és fordítatlan szavait.
 Nyelvtechnológiai célra kis erőforrású nyelvpár (magyar–héber, magyar–görög) szóillesztési adata, rétegenként mért
-hibával; a mintapárok és a hibatípusok szóillesztő programok értékeléséhez is használhatók. A párosításra a Logosz-lexikon,
+hibával; a mintapárok szóillesztő programok értékeléséhez is használhatók. A párosításra a Logosz-lexikon,
 egy motívum-indexelt, kereszthivatkozott bibliai lexikon épül.
 
 Kísérő adatkészlet: ugyanezek a párok a Károli modernizált szövegén (Demeter, 2026b). A modernizálás, a szerző saját
 munkája, csak a helyesírást és az igealakokat változtatja, szabályok szerint; a ritka igealakoknál nyelvi modellek
-javasoltak változást, amely csak egyező független javaslatok és tőellenőrzés után lépett életbe; az eredményt független
-ellenőrzés vizsgálta. Minden szó a helyén maradt, így a két adatkészlet a vers és a szósorszám kulcsán összekapcsolható.
+javasoltak változást, amely csak egyező független javaslatok és tőellenőrzés után lépett életbe. Minden szó a helyén
+maradt, az összeolvadt szavak (*a kik* → *akik*) mindkét párja megmaradt, így a párkészlet azonos, és a fenti
+pontossági számok rá is érvényesek; a modernizálást külön ellenőrzés és mérés vizsgálta.
 
 Korlátok. A párosítás gépi javaslat, és a vak ellenőr maga is modell. A független összevetés csak a fő szavakat méri,
 kis klaszter-mintán; a héber morfémák párjai (157 163) kívül esnek rajta. A Károli a Textus Receptust fordította, a
@@ -190,9 +191,9 @@ ellenőrzött, és a tartalomért teljes felelősséget vállal; MI-eszköz nem 
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 147; a számozatlan nyilatkozatokkal 1 320; a
-hivatkozásokkal is 1 394 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
-szól); a kivonattal együtt 1 488. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+hivatkozások nélkül (a JOHD-sablon számítása) 1 156; a számozatlan nyilatkozatokkal 1 329; a
+hivatkozásokkal is 1 403 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 497. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
