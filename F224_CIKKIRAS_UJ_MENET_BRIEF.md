@@ -8,9 +8,9 @@ sav: SYSTEMS
 modell: opus
 allapot: lezarva
 ag: claude/f224-cikkiras-uj-menet
-ad: a jóváhagyott 3. változat (2026-11-15) tizenhárom tétele a saját szabályhelyén — új bíráló- (Sonnet) és állítás-ellenőr szerepfájl (Opus, DT-F224b), szűkített lektor (Fable marad), állításonkénti kinyerés, bizonyítéklap-eszköz, érvnapló, tanulmányblokk-szabály, mérőtábla, a határ-ellenőr Sonnetre —, és egy elfogadási próba a két ismert hibahalmazon, számszerű küszöbbel
-kovetkezo: "nincs; a #749 merge-e az orkesztrátoré. Nyitva (külön tételként): N-F224a, N-F224b, N-F224d, N-F224g; a független F2-mérés a következő új motívum cikkírásakor (DT-F224d)"
-lezarva_osszegzes: "A cikkírás új menete a szabályhelyein: állítás-ellenőr (Opus, DT-F224b–c), bíráló, szűkített lektor, kinyerés (F224.4, .14–.15, .18), bizonyítéklap (SEMA 2.71), érvnapló (9_ sablon, DT-F224e), mérőtábla (SEMA 2.72, két tábla kitöltve), MUNKAMENET C; elfogadási próba: bíráló ✓, F2 HAMART 83% (18-as halmaz), ISTENTISZT 70% (nem független), hamis riasztás 45–50% — a küszöb 80% marad, független mérés a következő új motívumon (DT-F224d); független ellenőrzés: 1 kör, 7 ELTÉRÉS, 1 javítókör"
+ad: a jóváhagyott 3. változat (2026-11-15) tizenhárom tétele a saját szabályhelyén — új bíráló- (Sonnet) és állítás-ellenőr szerepfájl (Opus, DT879), szűkített lektor (Fable marad), állításonkénti kinyerés, bizonyítéklap-eszköz, érvnapló, tanulmányblokk-szabály, mérőtábla, a határ-ellenőr Sonnetre —, és egy elfogadási próba a két ismert hibahalmazon, számszerű küszöbbel
+kovetkezo: "nincs; a #749 merge-e az orkesztrátoré. Nyitva (külön tételként): N201, N202, N203, N204; a független F2-mérés a következő új motívum cikkírásakor (DT881)"
+lezarva_osszegzes: "A cikkírás új menete a szabályhelyein: állítás-ellenőr (Opus, DT879–c), bíráló, szűkített lektor, kinyerés (F224.4, .14–.15, .18), bizonyítéklap (SEMA 2.71), érvnapló (9_ sablon, DT882), mérőtábla (SEMA 2.72, két tábla kitöltve), MUNKAMENET C; elfogadási próba: bíráló ✓, F2 HAMART 83% (18-as halmaz), ISTENTISZT 70% (nem független), hamis riasztás 45–50% — a küszöb 80% marad, független mérés a következő új motívumon (DT881); független ellenőrzés: 1 kör, 7 ELTÉRÉS, 1 javítókör"
 munka: folyamat
 olvas: [CLAUDE.md, MUNKAMENET.md, BRIEF_SABLON.md, .claude/agents/lektor.md, .claude/agents/hatar-ellenor.md, .claude/agents/fuggetlen-ellenor.md, .claude/commands/kiadas.md, eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, eszkozok/lekerdez.py, eszkozok/tanulmany_kinyer.py, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, adat/SEMA.md, adat/jeloltek.tsv, adat/kapcsolatok.tsv, konkordancia/, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, naplok/ALLITAS_HAMART-001.md, naplok/ALLITAS_ISTENTISZT-001.md, naplok/KIADAS_HAMART-001_lektor.md, naplok/HIBA_MECHANIZMUSOK.md, DONTESEK.md]
 ir: [.claude/agents/allitas-ellenor.md, .claude/agents/biralo.md, .claude/agents/lektor.md, .claude/agents/hatar-ellenor.md, .claude/commands/kiadas.md, eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, eszkozok/bizonyiteklap.py, eszkozok/teszt_bizonyiteklap.py, adat/SEMA.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, MUNKAMENET.md, naplok/F224_jelentes.md, naplok/F224_proba.md, naplok/F224_proba/, naplok/SZIVARGAS_HAMART-001.tsv, naplok/SZIVARGAS_ISTENTISZT-001.tsv]
@@ -47,7 +47,7 @@ A mérés szerint (2026-11-15) a bíráló a HAMART 1Móz 8:21-es pontján 5/5-�
 |---|---|---|
 | író (A, C, E) és e brief végrehajtója | Opus | — |
 | D · bíráló | Sonnet | új `.claude/agents/biralo.md`, `model: sonnet` |
-| F2 · állítás-ellenőr | Sonnet → **Opus** (DT-F224b, 2026-11-15) | új `.claude/agents/allitas-ellenor.md`, `model: opus` (eredetileg `sonnet`) |
+| F2 · állítás-ellenőr | Sonnet → **Opus** (DT879, 2026-11-15) | új `.claude/agents/allitas-ellenor.md`, `model: opus` (eredetileg `sonnet`) |
 | határ-ellenőr | Sonnet | `.claude/agents/hatar-ellenor.md`: `fable` → `sonnet` |
 | F3 · lektor | **Fable marad** | `.claude/agents/lektor.md`, a `model` mező változatlan; a Pro-váltáskor újra dönteni |
 | független ellenőr | Opus | változatlan |
@@ -60,7 +60,7 @@ A mérés szerint (2026-11-15) a bíráló a HAMART 1Móz 8:21-es pontján 5/5-�
 - a HAMART-lap javítása (a 8:21 és a keretezés a lapon): a próza gazdájától jön, külön tételben;
 - az ISTENTISZT 2. kiadás és a TEREMT-001 a teljes menettel (a bevezetés 2–3. lépése; a TEREMT csak a sikeres próba után indul);
 - a két állandó lektor-szerepfájl és a véleménynaplók (jóváhagyva, külön kis SYSTEMS-PR);
-- a gépi kapuk tartalma (E1–E41) és súlyossága: az F1 új összevetései ebben a briefben K-tételek és JELENTÉS-sorok; HIBA-szintre emelésük külön döntés (N-F224a, l. F224.4);
+- a gépi kapuk tartalma (E1–E41) és súlyossága: az F1 új összevetései ebben a briefben K-tételek és JELENTÉS-sorok; HIBA-szintre emelésük külön döntés (N201, l. F224.4);
 - a lapgenerátor (`eszkozok/lexikon_general.py`, `eszkozok/lapgen/`) és a `sablonok/6_PaRDeS_lexikon_oldal_sablon.md` (F218 írja).
 
 **Hatókör-szűkítés (`BRIEF_SABLON.md`, DT-F221a).** Az F224.3 két ponton szűkíti a lektor hatókörét, a 10_ sablon (F224.9) egy ponton az íróét:
@@ -106,7 +106,7 @@ Minden tétel saját commit (`F224.<n>: …`), a jelentés `naplok/F224_jelentes
 **Mi kerül bele:**
 - új K-tétel-fajták: (a) **szám + kapcsolat/erősség** állítás („három kapcsolat erős”, „hét helyből öt”), a kapcsolattábla soraival; (b) **belső utalás** („a vitatott pontok tárgyalja”, „l. 10. szakasz”) a célpont létezésének gépi jelzésével; (c) **„nem dönti el”** típusú mondat, a lap ugyanarra a pontra támaszkodó más mondataival együtt;
 - a kimenet állításonként: egy K-tétel = egy állítás, a benne idézett igehelyekkel (az F224.1 bemenete);
-- ahol a gép eldönti (a belső utalás célja nem létezik; a szám nem egyezik a táblával), ELTÉR-jellegű JELENTÉS-sor a motívumra; a CI E41 HIBA-szintje és hatóköre **nem változik**. A HIBA-szintre emelés javaslata új nyitott tétel: N-F224a (`nyitott/uj/<ágnév>.md`).
+- ahol a gép eldönti (a belső utalás célja nem létezik; a szám nem egyezik a táblával), ELTÉR-jellegű JELENTÉS-sor a motívumra; a CI E41 HIBA-szintje és hatóköre **nem változik**. A HIBA-szintre emelés javaslata új nyitott tétel: N201 (`nyitott/uj/<ágnév>.md`).
 **Kész:** a teszt mindhárom új fajtára pozitív és negatív esettel zöld; az ISTENTISZT-en (`b2aea73f` forrás) a mérés három „nincs a kézi listán” tétele (4, 9, 11) közül legalább a 4. és a 9. K-tétellé válik (a 11. „jelentés a névből” értelmezés, nem elvárt); a meglévő tesztek és a `--kapu` kimenete a main-hez képest változatlan a régi K-tételeken; a futtatás előtti és utáni K-tétel-szám a jelentésben.
 
 ### F224.5 — A bizonyítéklap
@@ -139,7 +139,7 @@ Minden tétel saját commit (`F224.<n>: …`), a jelentés `naplok/F224_jelentes
 **Kész:** a 10_ sablonban nincs önátnézési szabály; a hatókör-szűkítés 3. pontja a jelentésben.
 
 ### F224.10 — A funkció két mezője (döntés)
-**Szabályhely:** `dontesek/uj/<ágnév>.md` (DT-F224a, helyőrzővel).
+**Szabályhely:** `dontesek/uj/<ágnév>.md` (DT878, helyőrzővel).
 **Mi kerül bele:** a DT803 módosítása: a funkció két mezőre bomlik — **szakaszbeli szerep** (a tanulmány funkció-blokkjából) és **láncbeli szerep** (a cikkben, az érvnapló döntése szerint); a szakaszon belüli szerkezet gazdája az igeszakasz-tanulmány rétegrendje, a motívumlapon nincs saját helye (legfeljebb a 10. Értelmezés rendes mondataként, címke nélkül). Forrás: a jóváhagyott terv 5. szakasza (a 3. döntés módosítva).
 **Kész:** a DT-F sor 🟢 állapotban, a jóváhagyás idézetével. ⛔ **Ha a megfogalmazás a terv 5. szakaszán túlmegy** (pl. új mező a sémában, a lapgenerátort érintő változás), a sor 🟡, és a felhasználó dönt.
 
@@ -187,6 +187,6 @@ Minden tétel saját commit (`F224.<n>: …`), a jelentés `naplok/F224_jelentes
 
 ## 6. Döntésnapló
 
-- DT-F224a — a funkció két mezője (a DT803 módosítása), F224.10.
-- N-F224a — az F1 új összevetéseinek HIBA-szintre emelése (javaslat, F224.4).
+- DT878 — a funkció két mezője (a DT803 módosítása), F224.10.
+- N201 — az F1 új összevetéseinek HIBA-szintre emelése (javaslat, F224.4).
 - A jóváhagyások (2026-11-15): a konszenzusos terv a hat döntéssel; a 3. változat modellkiosztása; a küszöbök (F2 legalább 80% a vers- és adatállításokon, bíráló legalább 4/6, hamis riasztás legfeljebb 30%).

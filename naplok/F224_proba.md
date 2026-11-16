@@ -153,12 +153,12 @@ Keret (`get_usage`): előtte (15:00 körül) 5 órás 37%, heti 20%, Fable 6%. A
 **Mit mutat a két kör:**
 1. **A Sonnet-F2 ingadozik:** a két kör között tételek fordultak meg mindkét irányba (HAM 13, 22; IST 1, 10, 15), azonos bemeneten. Egyetlen futás nem megbízható szűrő; a két kör uniója is csak 67% / 40%.
 2. **A szabály megvan, a végrehajtás hiányos:** a „ha bármelyik kérdésre nem, nem lehet igazolt” szabály mellett az ügynök a 2. körben is adott „igazolt”-at olyan tételre, amelynek eltérését az 1. körben ugyanaz a szerep megnevezte (HAM K105, IST K7, K25). A hiba nem a kérdéslistában, hanem a figyelem elosztásában van: 59 tételt egy menetben, tételenként 7 kérdéssel.
-3. **Két tétel kinyerési hézag** (IST 1. a K-listán csak a helyes mondattal, 2. egyáltalán nem): N-F224c. Ezek nélkül az ISTENTISZT-halmazon a 80% csak hibátlan munkával érhető el.
+3. **Két tétel kinyerési hézag** (IST 1. a K-listán csak a helyes mondattal, 2. egyáltalán nem): N205. Ezek nélkül az ISTENTISZT-halmazon a 80% csak hibátlan munkával érhető el.
 4. **A hamis riasztás fele értelmezésnek jelölt vagy az adattal alátámasztott mondatot kifogásol** — a javítókör szabálya ezen nem változtatott (50% → 50%).
 
 **Javaslat:**
 - **(A) most:** az F2 marad, de **a lektor hatókör-szűkítésének 1. pontja nem lép életbe** — a lektor az F2 „igazolt” tételeit is olvassa (vak minta helyett mind), amíg az F2 egy újabb próbán nem éri el a küszöböt. Ez a `kiadas.md` 3. lépésében egy mondat. Ára: a lektor terhe nem csökken; haszna: a menet többi része (bíráló, bizonyítéklap, kinyerés, érvnapló) használható, és az F2 jelzései többletet adnak (mindkét körben új, valódi hibákat talált a lektor listáján kívül).
-- **(B) a következő mérés előtt:** (1) N-F224c (a kinyerés két hézaga); (2) **kisebb szeletek** (20–25 K-tétel ügynökönként a 59 helyett), mert a figyelem a tételszámmal romlik; (3) **két független futás uniója** a „nem igazolt” jelzésre (a hamis riasztást a lektor szűri).
+- **(B) a következő mérés előtt:** (1) N205 (a kinyerés két hézaga); (2) **kisebb szeletek** (20–25 K-tétel ügynökönként a 59 helyett), mert a figyelem a tételszámmal romlik; (3) **két független futás uniója** a „nem igazolt” jelzésre (a hamis riasztást a lektor szűri).
 - **(C) modell:** a szerepfájl `model` mezője cserélhető; egy Opus-futás ugyanezen a halmazon megmutatná, hogy a hiány a modellé vagy a szerepé. Ez a felhasználó döntése (a 2. pont kiosztása jóváhagyott, Sonnettel).
 - **A küszöb** változatlan javaslatként; a 80% a jelenlegi felállással nem elérhető.
 
@@ -204,8 +204,8 @@ Keret (`get_usage`): előtte (15:00 körül) 5 órás 37%, heti 20%, Fable 6%. A
 
 | Lektor | K | S2 | Opus | Eredmény | Megjegyzés |
 |---|---|---|---|---|---|
-| 1 | K50 / funkció-mező | vitatott | igazolt | ✗ visszaesés | a K-mondat helyes; a hibás funkció-mezőt nem nézte meg (*Másik hely*), a Remez-mondat kinyerési hézag (N-F224c) |
-| 2 | — | — | — | ✗ | kinyerési hézag (N-F224c); az Opus a „lista-hézag” megjegyzést sem tette |
+| 1 | K50 / funkció-mező | vitatott | igazolt | ✗ visszaesés | a K-mondat helyes; a hibás funkció-mezőt nem nézte meg (*Másik hely*), a Remez-mondat kinyerési hézag (N205) |
+| 2 | — | — | — | ✗ | kinyerési hézag (N205); az Opus a „lista-hézag” megjegyzést sem tette |
 | 5 | K27 | igazolt | hamis | ✓ új | „parafrazált, nincs szó szerinti egyezés” ↔ „ugyanaz a szókapcsolat” |
 | 8 | K52 | igazolt | igazolt | ✗ | *Ki?* — a LXX (παρέστη αὐτῷ) alapján az álla alanyát az Úrnak veszi, a vers ezt nem dönti el |
 | 10 | K25 | igazolt | igazolt | ✗ | *Mit?* — az 1Móz 4:26 Targumában a celá szava megvan, a mondat jelentése fordított; ezt ötödiknek számolja |
@@ -255,13 +255,13 @@ Ugyanannyi token, mint a Sonnet 2. körében (856 459), Opus-áron. Keret: előt
 ### 7.6 Mit mutat (a következő lépésről a felhasználó dönt)
 
 1. **A HAMART-hiány nagyrészt a modellé volt:** ugyanazzal a szerepfájllal az Opus 61% helyett 83%-ot ér el, és megfogja azt a négy tételt, amelyet a Sonnet két körben sem (8, 12, 33, 36 F2-ként). Az „észrevett, de igazolt” hibamód eltűnt.
-2. **Az ISTENTISZT-hiány nem a modellé:** 30% mindkét modellel. A tíz tételből kettő kinyerési hézag (N-F224c: 1., 2.), egy a bizonyíték mérlegelésén múlik (8.: a LXX alanya), három pedig a „másik hely” és a „Ki?” kérdésé, ahol a hibát egy, a mondaton kívüli adat hordozza (12.: a BDB a kizárt helyet is ide sorolja; 17.: az Ézs 43:1-ben az Úr hív; 10.: a Targum mondatának iránya). Az N-F224c-vel a felső korlát 8/10, a küszöb pedig hibátlan munkát kívánna a maradék nyolcon.
+2. **Az ISTENTISZT-hiány nem a modellé:** 30% mindkét modellel. A tíz tételből kettő kinyerési hézag (N205: 1., 2.), egy a bizonyíték mérlegelésén múlik (8.: a LXX alanya), három pedig a „másik hely” és a „Ki?” kérdésé, ahol a hibát egy, a mondaton kívüli adat hordozza (12.: a BDB a kizárt helyet is ide sorolja; 17.: az Ézs 43:1-ben az Úr hív; 10.: a Targum mondatának iránya). Az N-F224c-vel a felső korlát 8/10, a küszöb pedig hibátlan munkát kívánna a maradék nyolcon.
 3. **A hamis riasztás nem csökkent** (45–50%): az Opus többet jelöl (HAMART 52 nem igazolt a 39 helyett), a valódi és a téves jelzés aránya hasonló. A többlet a lektor terhe, nem a kiadás kockázata.
 4. **Ingadozás:** egy Opus-futás; a saját stabilitása nem mért. A Sonnet két köre között 29 fordulat volt; az Opus és a Sonnet 2. köre között 34.
 
 ## 8. Újramérés az ISTENTISZT-szeleten: Opus, a kinyerés javítása után (F224.14–.17)
 
-*A felhasználó döntése (2026-11-15, az orkesztrátoron át): „Igen, így menjen” — az F2 Opusra (DT-F224b), N-F224c (F224.14), a mondaton kívüli adat a kinyerésben (F224.15), utána egy újramérés csak az ISTENTISZT-szeleten Opusszal, ugyanazokkal a mérőkkel; a HAMART nem fut újra, a hamis riasztás csökkentése nem e kör része (N-F224d). A futás: 1 ügynök (`general-purpose`, `model: opus`, a tényleges modell `claude-opus-5-5`, a modell-ellenőrzése: egyezik; „a próza modellje is ez” — DT-F224c 🟡), a szerepfájl a `489c7ebd` állapotában, a bemenet a `b2aea73f`-es forrás és adatok, a lista az új kinyeréssel (`bemenet/ist/ist_lista_v2.md`, 75 K-tétel), javítókör nélkül. Nyers kimenet: `naplok/F224_proba/F2_ISTENTISZT_opus2.md`.*
+*A felhasználó döntése (2026-11-15, az orkesztrátoron át): „Igen, így menjen” — az F2 Opusra (DT879), N205 (F224.14), a mondaton kívüli adat a kinyerésben (F224.15), utána egy újramérés csak az ISTENTISZT-szeleten Opusszal, ugyanazokkal a mérőkkel; a HAMART nem fut újra, a hamis riasztás csökkentése nem e kör része (N203). A futás: 1 ügynök (`general-purpose`, `model: opus`, a tényleges modell `claude-opus-5-5`, a modell-ellenőrzése: egyezik; „a próza modellje is ez” — DT880 🟡), a szerepfájl a `489c7ebd` állapotában, a bemenet a `b2aea73f`-es forrás és adatok, a lista az új kinyeréssel (`bemenet/ist/ist_lista_v2.md`, 75 K-tétel), javítókör nélkül. Nyers kimenet: `naplok/F224_proba/F2_ISTENTISZT_opus2.md`.*
 
 **Mérési korlát (kimondva):** a javítás (F224.14–.15 és a szerepfájl új bekezdése) ugyanannak a tíz tételnek a 7.2 szakaszbeli mechanizmusaiból készült, amelyen most mérünk. A végrehajtó a próbahalmaz tételeit nem írta példának (egy ilyen példát a commit előtt kivett), de a mechanizmus-választás e tíz tételből jön; az újramérés ezért **nem független**. A független mérés egy új motívumon vagy egy új mintán lehetséges.
 
@@ -305,9 +305,9 @@ F2 ISTENTISZT, Opus, 75 K-tétel: 342 780 token, 59 eszközhívás, 926 s (a 7. 
 2. **A maradék két tétel a mérlegelésé:** az adat mindkettőnél a K-tétel alatt volt (a lap Targum-mondata; a tükörfordítás), az ügynök mégsem kötötte össze. Ez már nem kinyerési hézag.
 3. **A hamis riasztás** a lektori listán kívül most kicsi (0/2), de a sokaság is kicsi (3); az új mellékhatás (egy adatsor-hiba hat tételen) a lektor terhét növeli — a 8.2 javaslata.
 
-### 8.5 Kiegészítés: N-F224f és a küszöb (a felhasználó döntése, 2026-11-15: „igen”)
+### 8.5 Kiegészítés: N207 és a küszöb (a felhasználó döntése, 2026-11-15: „igen”)
 
-**N-F224f (F224.18):** a funkció-mező csak a hely saját adatsor-tételénél (`adat:kapcsolodas`) áll a K-tétel alatt, a többi K-tétel alól kikerül (`eszkozok/proza_allitas.py` `kontextus()`, teszt: `F224_15.test_funkcio_csak_a_sajat_tetelnel`; a szerepfájl Funkció-mező pontja). Új teljes mérés nem futott (a döntés szerint); célzott ellenőrzés a 8.2 hat érintett tételén, az újragenerált listán (ugyanaz a bemenet, 75 K-tétel, a K-halmaz azonos; a funkció-sorok száma a listán 103 → 20):
+**N207 (F224.18):** a funkció-mező csak a hely saját adatsor-tételénél (`adat:kapcsolodas`) áll a K-tétel alatt, a többi K-tétel alól kikerül (`eszkozok/proza_allitas.py` `kontextus()`, teszt: `F224_15.test_funkcio_csak_a_sajat_tetelnel`; a szerepfájl Funkció-mező pontja). Új teljes mérés nem futott (a döntés szerint); célzott ellenőrzés a 8.2 hat érintett tételén, az újragenerált listán (ugyanaz a bemenet, 75 K-tétel, a K-halmaz azonos; a funkció-sorok száma a listán 103 → 20):
 
 | K | 8. sz. ítélet | Az ítélet oka (az ügynök szerint) | Az 1Kir 18:25 funkció-mezője alatta | Ami marad |
 |---|---|---|---|---|
@@ -320,7 +320,7 @@ F2 ISTENTISZT, Opus, 75 K-tétel: 342 780 token, 59 eszközhívás, 926 s (a 7. 
 
 Következmény a 8. szakasz mérőire (számolás, nem új futás): az ISTENTISZT 10-es halmaza változatlanul 7/10 (az 1. tételt a K50 és a K61 hordozza); az egy adatsor-hiba miatti ismételt „hamis” ítélet 6 tételről 1-re csökken (a K13 és a K17 saját okkal marad); a hamis riasztás a lektori listán kívül 0/2, a 8.2-ben jelzett 3/5-ös számolás alapja (K2, K10, K40) megszűnik. *Hogy az ügynök a K2, K10, K40 tételt a funkció-mező nélkül valóban „igazolt”-nak ítélné, futás nélkül nem igazolt; az ügynök saját indoka szerint más oka nem volt.*
 
-**A küszöb és a független mérés (DT-F224d 🟢):** a küszöb marad 80%; a független mérés a következő új motívum cikkírásának F2-lépésén fut, ugyanazokkal a mérőkkel. A 8. szakasz 70%-a addig nem független eredmény.
+**A küszöb és a független mérés (DT881 🟢):** a küszöb marad 80%; a független mérés a következő új motívum cikkírásának F2-lépésén fut, ugyanazokkal a mérőkkel. A 8. szakasz 70%-a addig nem független eredmény.
 
 ### 7.7 Kiegészítés: a HAMART-halmaz nevezője (a független ellenőrzés, 2026-11-16)
 
