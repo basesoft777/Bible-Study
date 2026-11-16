@@ -178,6 +178,27 @@ Az ELTÉRÉS-ek súlyossági sorrendben:
 6. **A2:** három megoldott tétel nyitottként áll a `nyitott/uj/` fájlban.
 7. **0. pont, mellékes:** a `fuggetlen-ellenor.md` törzse `opus`-t ír, a frontmatter `fable`-t.
 
+**Kiegészítés (az ellenőr utólagos jelentése, változtatás nélkül):**
+
+A korábbi jelentés „Tesztek” sora módosul: a `python eszkozok/teszt_futtat.py --diff 6932be23…` futás befejeződött, és két tesztfájl piros. A többi sor és az első sor (`ELTÉRÉS: 7 tétel`) változatlan, mert a két bukás okát nem tudtam az F224 diffjéhez kötni.
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| Tesztek (Diéta 3.) | NEM ELLENŐRIZHETŐ | `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py`, `eszkozok/olvaso_szerver/teszt_szintek.py` | 16 fájlból 14 zöld, kettő piros (részletek lent). A diff a két teszt lefedett kódját nem érinti: `git diff --numstat base..head -- eszkozok/olvaso_szerver eszkozok/visszhang eszkozok/olvasoi_kapu.py adat/visszhang_megfelelok.tsv adat/visszhang_tanuk.tsv` → 0 sor. Hogy a base-en is pirosak-e, nem tudtam megnézni (checkout nincs a megengedett parancsaim között). A CI egyiket sem futtatja. |
+
+A két piros fájl hibái:
+
+- **`teszt_visszhang_kapu.py`** (22 tesztből 2 bukik): `python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu --reszletes`
+  - `LancAMotivumadatbol.test_bevezeto_a_peshat_magot_es_a_kulcsszavak_szamat_mondja`: a teszt a „Peshat-magjának (1Móz 3–9) azon verse” szöveget várja, a generált blokk mást mond („A versek a Genezis láncának (1Móz 3–9) azok a versei…”).
+  - `Rontott.test_v3_nincs_a_nem_azonositott_helyen`: a rontott és az eredeti blokk azonos.
+- **`teszt_szintek.py`** (13 tesztből 2 bukik): `python eszkozok/teszt_futtat.py --fajl teszt_szintek --reszletes`
+  - `test_ebben_a_versben_es_az_interlinearis_csempek_koveti_a_blokkok_lathatosagat`: az „Ebben a versben” szöveg ott is megjelenik, ahol nem kellene.
+  - `test_heber_szavak_alacsony_es_magas_szinten`: a várt „H120. adam …” alak helyett a lapon „H0120 אָדָם …” áll.
+
+Ez a teszt csak azért került a válogatásba, mert a `LASSU_LEFEDETT` az `adat/` előtagot figyeli, és a diff az `adat/SEMA.md`-t módosítja.
+
+A hibák a visszhang-blokk szövegét és a szókártya alakját érintik, ami a main-en nemrég változott kódra utal (#729, F213), nem az F224-re; ez következtetés, nem igazolt. Ha a main-en is pirosak, az külön tétel a main gazdájának, nem ennek az ágnak.
+
 ## Javítókör (az 1. független ellenőrzés után, egy kör, 2026-11-16)
 
 | ELTÉRÉS | Javítás | Fájl |
@@ -189,6 +210,7 @@ Az ELTÉRÉS-ek súlyossági sorrendben:
 | 5. F224.8: a sorrend-mondat ↔ C-a, C-g, C-h | A mondat a C-a szerint: F1 (a próza-állítás gépi része) → F2 → a gépi kapuk a lapon (C-g, C-o). A határ (C-h) időzítésének eltérése (terv és 10_ sablon: a próza előtt; C-h, C-g: utána) régebbi, a DT546-hoz kötött: **N-F224g**, a felhasználó döntése; a mondat csak hivatkozik. | `MUNKAMENET.md` |
 | 6. A2: megoldott N-tételek nyitottként | Az N-F224c, e, f a fájl végén `### 2026-11-16 (lezárt, F224 — az ágon megoldva)` blokkban. | `nyitott/uj/f224-cikkiras-uj-menet.md` |
 | 7. mellékes: a `fuggetlen-ellenor.md` törzse `opus`, a fejléc `fable` | Az F224 `ir` mezőjén kívül (a fájl az F218.z1-é, DT-F218o): nem javítva, utókövetés (l. a Folytatási pontot). | — |
+| Kiegészítés: a `teszt_visszhang_kapu.py` és a `teszt_szintek.py` piros | A végrehajtó ellenőrizte a main-en: az `origin/main` (`6932be23`) ideiglenes worktree-jében mindkét fájl ugyanígy HIBA (`python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu`, `--fajl teszt_szintek`). Nem az F224 okozza; a main gazdájának tétele (l. a Folytatási pontot). | — |
 | F224.1: a brief 2. pontja és `ad` mezője Sonnetet ír | A brief 2. pontjában az F2 sora „Sonnet → Opus (DT-F224b)”, az `ad` mező ugyanígy. | `F224_CIKKIRAS_UJ_MENET_BRIEF.md` |
 
 ## Folytatási pont
@@ -197,5 +219,5 @@ Az ELTÉRÉS-ek súlyossági sorrendben:
 - **A #729 és a #725 merge-e után (2026-11-16) elkészült:** F224.6 (érvnapló), SEMA 2.71 (bizonyítéklap), SEMA 2.72 és a két mérőtábla (F224.11), N-F224e; l. fent.
 - **A zárás előtt:** a független ellenőrzés (`fuggetlen-ellenor`, a szint a `feladatok.py szint 224` szerint) és a jelentés „Zárás” szakasza.
 - N-F224b (a `teszt_bizonyiteklap.py` CI-be vétele): a #725 a main-en, de a `.github/workflows/ellenorzes.yml` és a `eszkozok/push_elott.py` az F224 `ir` mezőjén kívül esik — külön kérésre (az orkesztrátor: nyitva maradhat).
-- **Utókövetés (az F224-en kívül):** a `.claude/agents/fuggetlen-ellenor.md` törzsének 0. pontja `opus`-t ír, a fejléce `fable`-t (F218.z1, DT-F218o).
+- **Utókövetés (az F224-en kívül):** a main-en (`6932be23`) piros a `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py` (2/22) és a `teszt_szintek.py` (2/13) — a CI nem futtatja őket (a visszhang-blokk szövege és a szókártya alakja; #729/F213 körüli változás valószínű, nem igazolt); a `.claude/agents/fuggetlen-ellenor.md` törzsének 0. pontja `opus`-t ír, a fejléce `fable`-t (F218.z1, DT-F218o).
 - **⛔ a felhasználónál:** DT-F224e 🟡 (az érvnapló helye); N-F224g (a határ időzítése) javaslat.
