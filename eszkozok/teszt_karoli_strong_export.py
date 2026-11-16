@@ -247,6 +247,25 @@ class Csomag(unittest.TestCase):
                                      'kozlemeny/data_paper/karoli_strong_kezirat_hu.md'])
         self.assertTrue(all(sz.startswith('<!-- GENERÁLT:') for _, sz in k.values()))
 
+    def test_masodik_modell_csak_a_kezirat_mi_nyilatkozataban(self):
+        # DT-F175m: a második párosító modellről egy semleges mondat csak a JOHD-kézirat MI-nyilatkozatában áll;
+        # a nyílt csomag, a közlemény és a kézirat többi része nem említi, és a MODELL_EGYEZES-tiltás érvényes marad
+        jel = {'en': 'another language model was also run as a cross-check',
+               'hu': 'egy másik nyelvi modell is futott keresztellenőrzésként'}
+        for rel, (torzs, _) in E.kezirat(self.N).items():
+            d = 'hu' if rel.endswith('_hu.md') else 'en'
+            torzs = torzs.replace('\n', ' ')         # a sortörés helye a sablonban szabad
+            nyil = torzs.split('## AI Declaration' if d == 'en' else '## Nyilatkozat a mesterséges intelligencia')
+            self.assertEqual(len(nyil), 2, rel)
+            self.assertNotIn(jel[d], nyil[0], rel)
+            self.assertEqual(nyil[1].count(jel[d]), 1, rel)
+        for rel, (torzs, _) in E.note(self.N).items():
+            self.assertNotIn('cross-check', torzs)
+            self.assertNotIn('keresztellenőrzés', torzs)
+        self.assertFalse(any('cross-check' in sz or 'keresztellenőrzés' in sz for sz in self.fajlok.values()))
+        for tilos in ('a Gemini model', 'two language models agreed', 'két nyelvi modell', 'high confidence'):
+            self.assertTrue(any(rx.search(tilos) for rx, _ in G.TILTOTT), tilos)
+
     def test_szamok(self):
         N = self.N
         self.assertEqual(N['reteg_db'], 7)                                      # a két Mózes-réteg egy rétegben

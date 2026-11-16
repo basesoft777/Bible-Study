@@ -1,137 +1,201 @@
 <!-- GENERÁLT: eszkozok/karoli_strong_export.py (a próza: eszkozok/karoli_strong_szovegek.py, a számok: adat/karoli_strong/ és f172/) — kézzel nem szerkesztendő; a #175 második data paperének kézirata, nem része a nyilt_karoli_strong/ csomagnak. -->
 # Word-by-word alignment of the 1908 Károli Bible with the Hebrew and Greek source text: an open dataset with measured accuracy
 
-*Manuscript draft (data paper) · Károli 1908 – Strong word alignment · Logosz Lexikon · DOI: 10.5281/zenodo.24141883*
+*Data paper · submission draft for the Journal of Open Humanities Data · dataset DOI: 10.5281/zenodo.24141883*
+
+**Tamás Demeter**, independent researcher · ORCID: https://orcid.org/0009-0005-9254-9731 · corresponding author: [e-mail address]
 
 ## Abstract
 
-The dataset links the 599,367 words of the 1908 text of the Károli Bible, the classic Hungarian translation, to the
-611,396 words of the Hebrew and Greek source text through 598,715 word pairs, each carrying the Strong's number of the
-source word. The alignment was produced by a language model following a written rule set; the model marked positions
-only, and the Strong's number comes from the open STEPBible TAHOT and TAGNT data. Accuracy was measured in two ways: with
-a blind model reviewer on a random sample drawn from 7 book groups (95.06% on the full pair set, 95%:
-93.81–96.32%), and against an independent Károli edition marked with Strong's numbers, on main-word pairs
-(98.72%, 95%: 98.22–99.08%). The dataset publishes the measured state, with a list of confirmed errors and a
-quality target for the next release fixed in advance. Licence: CC BY 4.0.
+The dataset aligns the 599,367 words of the 1908 text of the Károli Bible, the classic Hungarian translation, with
+the Hebrew and Greek source text (STEPBible TAHOT/TAGNT) through 598,715 word pairs, each carrying the Strong's number of
+the source word. Following written rules, a language model marked word positions only; the Strong's numbers come from
+the source data. Accuracy was measured on a stratified random sample by a blind model reviewer (95.06%, 95% CI
+93.81–96.32%), against an independent Strong-tagged Károli edition on main words (98.72%), and by two
+human validators ([accuracy]). The TSV tables (CC BY 4.0) support Strong-based search, translation history and
+word-alignment research.
+
+**Keywords:** Károli Bible; Strong's numbers; word alignment; Hungarian; biblical Hebrew; Koine Greek
+
+**Author roles (CRediT):** Tamás Demeter: Conceptualization, Methodology, Software, Data curation, Validation,
+Writing – original draft, Writing – review & editing.
 
 ## 1. Overview
 
-**Context.** For four centuries the Károli translation has been the base text of Hungarian Protestant Bible reading, yet
-a free, word-by-word assignment of the Hebrew and Greek words behind it has been missing. In English, the King James
-text with Strong's numbers has long been a basic tool for readers and researchers; no comparable open data existed for
-Hungarian. This dataset fills that gap, as one of the open data cores of the Logosz Lexikon.
+### Repository location
 
-**The question it answers.** Which Hungarian word translates which source word; which Hungarian word is a translator's
-addition; which source word is not rendered by a separate Hungarian word. The third question matters as much as the
-first: the `szavak` table lists every word once, so the "gaps" of the translation can be read off too.
+https://doi.org/10.5281/zenodo.24141883 (concept DOI, resolving to the latest version; currently version 1.0).
+
+### Context
+
+The dataset was produced in the Logosz Lexikon, an independent research project of the author that builds a motif-indexed,
+cross-referenced lexicon of the Bible. For four centuries the Károli
+translation has been the base text of Hungarian Protestant Bible reading. Strong's numbers (Strong, 1890) link a
+translation's words to the Hebrew and Greek vocabulary. Strong-tagged Károli editions exist; the alignment published
+here is openly licensed, documented word by word, and its accuracy is measured.
+
+For each verse the dataset answers three questions: which Hungarian word translates which source word; which Hungarian
+word is a translator's addition; which source word has no separate Hungarian rendering. The `szavak` tables list every
+word once, so the "gaps" of the translation can be read off too.
 
 ## 2. Method
 
+### Steps
+
 **Texts and tokenisation.** The Hungarian side is the public-domain 1908 Károli text; the source side is the STEPBible
-TAHOT (Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) datasets. TAHOT treats Hebrew prefixes and
-suffixes as separate words (H9001–H9049), so one Hungarian word is often linked to several source "words". Before
-alignment, Károli's verse division was mapped to that of the source by deterministic alignment of verse lengths; each
-merge of two verses was approved by hand.
+TAHOT (Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) data (Tyndale House, Cambridge; CC BY 4.0, used
+with attribution). TAHOT treats Hebrew prefixes and suffixes as separate words (H9001–H9049), so one Hungarian word is
+often linked to several source "words". Károli's verse division was mapped to that of the source by deterministic
+alignment of verse lengths; each merge of two verses was approved by hand.
 
-**Alignment.** For each verse the model received numbered Hungarian and source words (the source with form, Strong's
-number and English gloss) and returned pairs of positions, together with additions and untranslated words. Disputed
-cases were decided by twelve written rules: on articles, split conjunctions and relative pronouns, the object marker,
-possessive suffixes, separated verbal prefixes, explicit subject pronouns and auxiliaries, the Hebrew conjunction *ve-*,
-and Greek words absent from the Textus Receptus. A program checked every answer (each Hungarian word exactly once, each
-source word at least once, only existing positions); a failed answer was redone by the model. The pairs were proposed by
-a language model (Claude Sonnet); the tables can be rebuilt byte-identically from the saved model answers.
+**Alignment.** For each verse a language model (Claude Sonnet) received two numbered word lists: the Károli words, and
+the source words with form, Strong's number and a short English gloss from TAHOT/TAGNT; the Strong's number was given
+for information only and was forbidden in the answer. The model returned position pairs only, with the additions and
+untranslated words. In Genesis 1:1, for example, it paired *teremté* (2) with source word 3 (*bārāʾ*) and *Kezdetben*
+(1) with words 1–2 (*bə-*, *rēʾšît*), and marked the object marker *ʾēt* (5) as untranslated; a program then attached
+H1254, H9003 and H7225 by position. Twelve written rules decided disputed cases (e.g. articles, the object marker,
+verbal prefixes). A program checked every answer (each Hungarian word exactly once, each source
+word at least once, only existing positions); a failed answer was redone. The model therefore could not invent a
+Strong's number or a lexicon entry: its possible error is a wrong pairing. Every pair points to one source word and can
+be checked, as the human validation does; meaning and Strong's number come from the open scholarly source data, not
+from the model. Deterministic programs (Python) rebuild the tables byte-identically from the saved model answers.
 
-**Accuracy measurement.** (1) *Blind review.* The pair set was divided by book group into 7 strata (the five
-books of Moses; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with 200 random
-pairs per stratum (400 pairs from the five books of Moses, in two subsamples combined by pair weight). A
-second model (Claude Opus) marked the source words for each target Hungarian word itself,
-with the same rules, without seeing the machine pair. (2) *Calibration.* On an earlier manually compiled sample, the
-reviewer agreed with the sample in 96.79% and the machine alignment in 97.06%: the reviewer is not more accurate
-than the alignment, so the agreement is a lower bound only if shared errors are negligible. (3) *Independent
-comparison.* Shared errors are measured against a Károli edition marked with Strong's numbers, on one full chapter per
-stratum, two in the five books of Moses (8 chapters, 2,663 main-word pairs); the source marks the main word only, not secondary words or
-morphemes. Differences were judged three ways (machine pair, source, blind reviewer). The external source's data are not
-part of the dataset, only the aggregate rate.
+### Sampling strategy
 
-## 3. Results
+The blind review used a stratified random sample: the pair set was divided by book group into seven strata
+(the five books of Moses; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with
+200 pairs per stratum (400 from the five books of Moses, in two subsamples combined by pair weight).
+The independent comparison is a cluster sample: one full chapter per stratum, two in the five books of Moses
+(eight chapters, 2,663 main-word pairs). The human validation sample of [N] pairs is drawn from the same
+seven strata.
 
-| measurement | estimate | 95% |
+### Quality control
+
+**Blind model review and calibration.** A second model (Claude Opus) marked the source words for each target Hungarian
+word itself, with the same rules, blind to the machine pair. On an earlier manually compiled sample, the reviewer
+agreed with the sample in 96.79% and the machine alignment in 97.06%: the reviewer is not more accurate than
+the alignment, so its agreement is a lower bound only if shared errors are negligible.
+
+**Independent comparison.** Shared errors are measured against a Károli edition marked with Strong's numbers; the
+source marks the main word only, not secondary words or morphemes. Differences were judged three ways (machine pair,
+source, blind reviewer). Only the aggregate rate is published, not the external source's data.
+
+**Human validation.** Two independent human validators, theology graduates with knowledge of biblical Hebrew and Greek,
+judged a stratified random sample of [N] pairs, each without seeing the other's judgements. Accuracy by their judgement
+is [accuracy] (95% CI [CI]); inter-rater agreement is Cohen's kappa = [kappa]; their agreement with the blind model
+reviewer is [agreement with model reviewer].
+
+| measurement | estimate | 95% CI |
 |---|---|---|
 | full pair set, blind reviewer, weighted | 95.06% | 93.81–96.32% |
 | of which Old / New Testament | 94.50% / 97.07% | 92.95–96.05% / 95.55–98.59% |
 | content word / Hebrew morpheme | 96.44% / 90.74% | 95.20–97.69% / 87.18–94.29% |
 | main words, by the independent source | 98.72% | 98.22–99.08% |
 | main words, after three-way judgement | 99.81% | 99.56–99.92% |
+| human validation | [accuracy] | [CI] |
 
-Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts); the per-stratum table is in the dataset's `data/meres.tsv` and its methods description. Of the 1,600
-sample pairs, 72 differed from the reviewer; the most frequent type is the neighbouring word
+Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts); per stratum: `data/meres.tsv`. Of
+the 1,600 sample pairs, 72 differed from the reviewer; the most frequent type is the neighbouring word
 (37), typically a Hebrew prefix, article or preposition attached to the word against the rules. Of the
-34 differences in the independent comparison, 5 remained errors of the alignment; these and the other
+34 differences in the independent comparison, five remained errors of the alignment; these and the other
 confirmed errors are listed by name in the dataset.
 
-## 4. Dataset description
+## 3. Dataset Description
 
-**Location and identifier.** Zenodo, DOI: 10.5281/zenodo.24141883; licence: CC BY 4.0; language: Hungarian (data), Hungarian and English
-(documentation); data state: 2026-11-01.
+- **Repository name:** Zenodo
+- **Object name:** `karoli-1908-strongs-1.0.zip` (Logosz Lexikon – Károli Bible (1908): Word Alignment with Hebrew and Greek Strong's
+  Numbers, version 1.0)
+- **Format names and versions:** TSV (UTF-8, tab-separated, LF line endings) for the data; Markdown for the bilingual
+  documentation (codebook, methods description, known issues); CFF citation file; SHA-256 checksum list
+- **Creation dates:** 2026-10-01 – 2026-11-01
+- **Dataset creators:** Tamás Demeter (independent researcher; ORCID: 0009-0005-9254-9731): rules, processing pipeline, measurement,
+  curation. The source-side words and Strong's numbers derive from the STEPBible data (Tyndale House, Cambridge).
+- **Language:** Hungarian (word forms, column names and codes); Hungarian and English (documentation, bilingual codebook)
+- **License:** CC BY 4.0
+- **Publication date:** 2026-11-15
 
-**Files.** `data/parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the source
-word, Strong's number, link type, state, Textus Receptus flag); `data/szavak/` (per book, every Hungarian and
+**Contents.** `data/parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the
+source word, Strong's number, link type, state, Textus Receptus flag); `data/szavak/` (per book, every Hungarian and
 source word once, with its state: aligned, addition, untranslated, pending); `data/versek.tsv` (the 1908 Károli text);
-`data/meres.tsv` (every figure of the measurement); bilingual codebook, methods description, known issues, checksum. The key
-is the OSIS verse identifier and the word position. Hebrew and Greek word forms are not in the package: the position
-matches the STEPBible TAHOT/TAGNT text.
+`data/meres.tsv` (every figure of the measurement). The key is the OSIS verse identifier and the word position. Hebrew
+and Greek word forms are not in the package: the position matches the STEPBible TAHOT/TAGNT text.
 
 **Size.** 66 books, 31,158 verses, 598,715 pairs (466,785 Hebrew, 131,930 Greek; of these 157,163
 morphemes), 109,914 additions, 63,017 untranslated source words, 794 pending Hungarian words
 (45 verses).
 
-## 5. Reuse potential
+## 4. Reuse Potential
 
 For Bible reading and study applications the dataset provides Strong-based search on the Hungarian text: every Károli
 rendering of a Hebrew or Greek word can be collected with one filter. In translation history, Károli's consistency and
 the distribution of additions and untranslated words can be studied. For language technology it is word-alignment data
 for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error measured per stratum; the sample pairs
-and error types can also serve to evaluate word aligners. The same pairs also appear on the modernised Károli text
-(https://doi.org/10.5281/zenodo.24141949); the two datasets join word by word on the verse and word position key.
+and error types can also serve to evaluate word aligners. The Logosz Lexikon, a motif-indexed, cross-referenced biblical
+lexicon, is built on this alignment.
 
-## 6. Limitations and the next release
+A companion dataset carries the same pairs on a modernised Károli text (Demeter, 2026b). The modernisation is the
+author's own work: it changes only spelling and verb forms, by rules; for rare verb forms language models made
+proposals, and a form changed only where independent proposals agreed and a stem check let it through; the result was
+independently reviewed. Every word kept its position, so the two datasets join on the verse and word-position key.
 
-The alignment is a machine proposal. The blind reviewer is itself a model; the independent comparison covers main words
-only, on a small cluster sample; the accuracy of the Hebrew morpheme pairs (157,163 pairs; 90.74%) is measured by
-the blind reviewer only. Károli translated the Textus
-Receptus, while the alignment uses TAGNT: 369 aligned Greek words are not in the Textus Receptus, and are
-flagged.
+Limitations. The alignment is a machine proposal. The blind reviewer is itself a model; the independent comparison
+covers main words only, on a small cluster sample; the Hebrew morpheme pairs (157,163 pairs) are not covered by the
+external source. Károli translated the Textus Receptus, while the alignment uses TAGNT: 369 aligned Greek
+words are not in the Textus Receptus, and are flagged. Release 2 will correct the confirmed errors and measure again
+with the same protocol, against quality targets fixed in advance in the methods description.
 
-Publication rests on an editorial decision: the alignment is released as open data because its accuracy is measured and
-documented — per stratum and link type, with confidence intervals and error types. It does not rest on meeting a
-threshold set in advance. Release 2 will correct the confirmed errors and the rule-violating neighbouring-word cases,
-then measure again with the same protocol. Its quality target was fixed in advance: lower bound of independent main-word
-agreement at least 98%, lower bound of weighted agreement with the blind reviewer at least 93%, and no stratum below 90%.
+## Data Accessibility Statement
 
-## AI declaration
+Both datasets are openly available on Zenodo under CC BY 4.0: https://doi.org/10.5281/zenodo.24141883 and
+https://doi.org/10.5281/zenodo.24141949.
 
-The alignment was done by a language model (Claude Sonnet) and the blind review by a second model (Claude Opus), as
-described above; the models wrote no Strong's numbers. Tokenisation, the machine gate, table assembly and the
-statistics are deterministic programs. The text of the manuscript was drafted by the claude-opus-5-5 model from the
-dataset's data; the figures are generated from the data. An AI tool is not an author; the author is responsible for the
-data and the text.
+## Acknowledgements
+
+The author thanks [name of validator 1] and [name of validator 2] for the human validation.
+
+## Funding Statement
+
+This work received no external funding.
+
+## Competing Interests
+
+The author has no competing interests to declare.
 
 ## References
 
-Demeter, T. (2026). *Modernised Károli – Strong* [dataset]. Zenodo. https://doi.org/10.5281/zenodo.24141949
+Demeter, T. (2026a). *Logosz Lexikon – Károli Bible (1908): Word alignment with Hebrew and Greek Strong's numbers*
+(Version 1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.24141883
 
-STEPBible. (n.d.). *Translators Amalgamated Hebrew OT (TAHOT) and Translators Amalgamated Greek NT (TAGNT)* [dataset].
+Demeter, T. (2026b). *Logosz Lexikon – Modernized Károli Bible: Word alignment with Hebrew and Greek Strong's numbers*
+(Version 1.0) [Data set]. Zenodo. https://doi.org/10.5281/zenodo.24141949
+
+STEPBible. (n.d.). *Translators Amalgamated Hebrew OT (TAHOT) and Translators Amalgamated Greek NT (TAGNT)* [Data set].
 Tyndale House, Cambridge. https://www.STEPBible.org
+
+Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
+
+## AI Declaration
+
+Generative AI was used in three places. (1) Alignment: a language model (Claude Sonnet, Anthropic; the batch runs are
+logged as claude-sonnet-5-5) returned position pairs only (see Method); it could not write Strong's numbers, which come
+from TAHOT/TAGNT by position, and every pair points to one source word. For Genesis and Exodus, another language model
+was also run as a cross-check; no published pair derives from it alone. (2) Quality control: a second model (Claude
+Opus) served as blind reviewer on the sample; the human validation used no AI. (3)
+Companion dataset: language models proposed rare verb forms only (see Reuse Potential). All other processing is
+deterministic. The claude-opus-5-5 model assisted in drafting and editing the manuscript text from the dataset's data;
+figures come from the data. The author designed the study, made all editorial decisions, verified every
+statement against the data, and takes full responsibility for the content; an AI tool is not an author.
 
 <!-- END OF SUBMISSION TEXT — the part below can be removed from the submitted version. -->
 
 ---
 
-## Venue suggestion
+## Submission notes
 
-The manuscript is written as a data paper (overview, method, dataset, reuse). Two kinds of venue fit it. One is a
-humanities data journal (for example the Journal of Open Humanities Data), with an explicit data paper type and a place
-for the AI declaration, but a length of 1000–1500 words, so sections 2 and 3 would need shortening. The other is a venue
-for language resources, where the alignment reaches readers as a low-resource language pair with measured error. A
-fee-free alternative is a data mining and digital humanities journal that accepts short articles on open datasets. A
-Zenodo deposit is a precondition for all three; the same manuscript may be submitted to only one venue at a time.
+Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
+1,222; with the unnumbered statements 1,422; with the references as well (as the JOHD submission page
+counts) 1,496. The JOHD data paper length is 1,000–1,500 words.
+
+To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model
+reviewer), the corresponding author's e-mail address, the two validators' names. The text goes into the official JOHD
+Word or LaTeX template; cover letter: `kozlemeny/data_paper/johd_cover_letter_en.md`.

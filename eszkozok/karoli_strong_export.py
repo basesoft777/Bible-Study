@@ -53,6 +53,15 @@ DOI = '10.5281/zenodo.24141883'
 DOI_MODERN = '10.5281/zenodo.24141949'
 DOI_MAG = '10.5281/zenodo.24141611'                      # a motívum-adatmag concept DOI-ja (a nyilt_mag/ nem változik)
 KANONIKUS_HELY = 'https://doi.org/' + DOI
+# a kézirat (JOHD data paper) Dataset Description-mezői: a Zenodo-rekord adatai (lekérve 2026-11-16) és az első
+# párosító futás napja (a f22/valaszok első commitja, 2026-10-01); a záró dátum az adatállapot (szamok())
+OBJEKTUM = 'karoli-1908-strongs-1.0.zip'
+VERZIO = '1.0'
+VERZIO_MODERN = '1.0'
+KOZZETETEL = '2026-11-15'
+LETREHOZAS_KEZDET = '2026-10-01'
+SZAM_SZO = {'en': ('zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'),
+            'hu': ('nulla', 'egy', 'kettő', 'három', 'négy', 'öt', 'hat', 'hét', 'nyolc', 'kilenc')}
 CIM_HU = 'Károli 1908 – Strong szóillesztés'
 CIM_EN = 'Károli 1908 – Strong word alignment'
 # a motívum-adatmag címe a saját CITATION.cff-je szerint (F208; N-F175c)
@@ -398,6 +407,8 @@ def fmt(N, nyelv):
     for k, v in N.items():
         if isinstance(v, int):
             F[k] = ezres(v, nyelv)
+            if 0 <= v <= 9:                      # JOHD: a nulla–kilenc betűvel (a kézirat `_szo` kulcsai)
+                F[k + '_szo'] = SZAM_SZO[nyelv][v]
         elif isinstance(v, str) and re.match(r'^0\.\d+$|^1\.0+$', v):
             F[k] = szazalek(v, nyelv)
     F['heber_morfema_arany'] = szazalek(N['heber_morfema_arany'], nyelv, 1)
@@ -418,7 +429,12 @@ def fmt(N, nyelv):
     F['cim_modern_en'] = 'Modernised Károli – Strong'
     F['cim_mag_hu'] = CIM_MAG_HU
     F['cim_mag_en'] = CIM_MAG_EN
-    nev = RETEG_NEV_HU if nyelv == 'hu' else RETEG_NEV_EN
+    F['objektum'] = OBJEKTUM
+    F['verzio'] = VERZIO
+    F['verzio_modern'] = VERZIO_MODERN
+    F['kozzetetel'] = KOZZETETEL
+    F['kezdet'] = LETREHOZAS_KEZDET
+    nev =RETEG_NEV_HU if nyelv == 'hu' else RETEG_NEV_EN
     F['r_min_nev'], F['r_max_nev'] = nev[N['rmin_kod']], nev[N['rmax_kod']]
     return F
 
@@ -473,11 +489,42 @@ def kezirat(N):
     """A második data paper kézirata (hu/en): a repó gyökeréhez viszonyított út -> (törzs, teljes szöveg). A törzs
     a nyilvános szöveg (a kapu ezt ellenőrzi), a teljes szöveg a GENERÁLT-jelöléssel kezdődik."""
     hu, en = fmt(N, 'hu'), fmt(N, 'en')
+    # a szószám az angol beküldési szövegből (a jegyzetbe kerül; a jel előtti részt nem befolyásolja)
+    sablon_en = [s for _, s, d in SZ.KEZIRAT if d == 'en'][0]
+    ures = dict(en, szo_fo_en='', szo_nyil_en='', szo_hiv_en='')
+    sz = szoszam(sablon_en.format(**ures))
+    for F in (hu, en):
+        F['szo_fo_en'], F['szo_nyil_en'], F['szo_hiv_en'] = (ezres(sz[k], 'en') for k in ('fo', 'nyil', 'hiv'))
     ki = {}
     for rel, sablon, d in SZ.KEZIRAT:
         torzs = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
         ki[rel] = (torzs, SZ.KEZIRAT_FEJ + torzs)
     return ki
+
+
+VEGE_JEL = '<!-- END OF SUBMISSION TEXT'
+NYILATKOZAT = ('Data Accessibility Statement', 'Acknowledgements', 'Funding Statement', 'Competing Interests',
+               'AI Declaration')
+
+
+def szoszam(szoveg):
+    """A JOHD-terjedelem szószáma az angol kéziratból (a VEGE_JEL előtti rész): 'fo' az 1–4. szakasz a címsorok és a
+    táblázat nélkül (a sablon számítása: cím, szerzői sor, kivonat, táblázat, hivatkozások nélkül); 'nyil' ehhez a
+    számozatlan nyilatkozatok; 'hiv' ehhez a hivatkozások is (a beküldési oldal számítása)."""
+    torzs = szoveg.split(VEGE_JEL)[0]
+    db = {'fo': 0, 'nyilatkozat': 0, 'hivatkozas': 0}
+    resz = None
+    for sor in torzs.split('\n'):
+        if sor.startswith('## '):
+            cim = sor[3:].strip()
+            resz = ('fo' if re.match(r'^[1-4]\. ', cim) else 'nyilatkozat' if cim in NYILATKOZAT
+                    else 'hivatkozas' if cim == 'References' else None)
+            continue
+        if resz is None or sor.startswith('#') or sor.startswith('|'):
+            continue
+        db[resz] += len([t for t in sor.split() if re.search(r'\w', t)])
+    return {'fo': db['fo'], 'nyil': db['fo'] + db['nyilatkozat'],
+            'hiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas']}
 
 
 def note(N):

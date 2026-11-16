@@ -40,3 +40,17 @@ Források: [Submissions](https://tidsskrift.dk/hiphilnovum/about/submissions) ·
 | Lektorálás | Szerkesztői szűrés, majd **kettős vak** lektorálás 1–2 szakértővel (cikk); a short paper lektorálása a szerkesztő mérlegelése. Beküldés anonimizált, szerzői adatok külön. |
 | Egyéb | Chicago szerző–év hivatkozás; SBL-rövidítések; korábban nem publikált és máshol nem elbírálás alatt álló mű; szerkeszthető fájl + pontos PDF. |
 | Nem ellenőrzött | Hogy a szerkesztőség fogad-e data paper jellegű beküldést; összeférhetetlenségi és finanszírozási nyilatkozat előírása. |
+
+## 3. JOHD — újraellenőrzés a Károli 1908 – Strong kézirathoz (2026-11-16)
+
+Források: [Submissions](https://openhumanitiesdata.metajnl.com/about/submissions/) · [Data paper sablon (Overleaf)](https://www.overleaf.com/latex/templates/johd-short-data-paper-template/tpvhzvpdgssp) — lekérve 2026-11-16, csak olvasva.
+
+| Szempont | Mit mond a forrás (2026-11-16) |
+|---|---|
+| Terjedelem | 1000–1500 szó. **A két forrás eltér:** a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a sablon szerint a cím, a szerzői adatok, a kivonat, a táblázatok/ábrák és a hivatkozások nélkül számít (a feliratok és lábjegyzetek beleszámítanak). A kézirat generátora mindkét számot kiírja a „Submission notes” szakaszba; a biztos út a szigorúbb (hivatkozásokkal) korlát betartása. |
+| Elöljáró rész | Kivonat kb. 100 szó; legfeljebb 6 kulcsszó, kisbetűvel (nevek kivételével), brit írásmóddal; szerzői szerepek CRediT szerint. A szöveg ne legyen a repozitórium leírásának átvétele. |
+| Szakaszok | 1. Overview (Repository location — DOI kötelező; Context) · 2. Method (Steps; Sampling strategy, ha releváns; Quality control, ha alkalmazható) · 3. Dataset Description (Repository name, Object name, Format names and versions, Creation dates ÉÉÉÉ-HH-NN, Dataset creators, Language, License, Publication date) · 4. Reuse Potential (a korlátokkal) · számozatlanul: Acknowledgements, Funding Statement, Competing Interests, References, AI Declaration, Supplementary Files (opcionális). |
+| Formai | Számok nullától kilencig betűvel, 10-től számjeggyel; amerikai vagy brit angol következetesen; APA; lábjegyzet, nem végjegyzet. Harmadik fél tartalmának és eszközeinek licence a Method-ban. |
+| Kísérőlevél | A levelező szerző kötődése és elérhetősége; miért illik a JOHD-hoz; opcionálisan három javasolt bíráló; az APC-kedvezmény vagy -mentesség kérése a beküldéskor (kísérőlevélben vagy a „Comments to the Editor” mezőben). Kizárt bíráló megnevezéséről a beküldési oldal nem szól. |
+| Preprint | Megengedett és bátorított, a beküldés előtt és alatt is. |
+| MI | Megengedett; minden MI által generált vagy segített tartalmat nyilatkozni kell és gondosan átnézni. |
