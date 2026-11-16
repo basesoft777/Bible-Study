@@ -2487,6 +2487,123 @@ szorzó a heti és a Fable keretre). Pont nélkül a mérés csak arányokat ad,
 **Kulcs:** `ts`. **Pontosság:** az arány megbízható, a százalék becslés (a keretet a szolgáltató nem a listaár szerint számolja;
 a pontok kevesek). A Fable szorzója 0%-os pontból nem számolható.
 
+### 2.66 `lapgen_bemenetek.tsv` — az új lapgenerátor bemeneti jegyzéke (F218a, FELADATOK #218, 2026-11-13)
+
+Az új lapgenerátor (`eszkozok/lapgen/`) bemeneti rétege csak azt a fájlt nyitja meg, amelynek sora van ebben a
+táblában: az útvonal innen jön, a kódban adat-útvonal nem áll. Egy sor egy bemenet. A `B01`–`B64` azonosító a
+generátor-térkép számozása (`naplok/F218_GENERATOR_TERKEP_SPEC_2026-11-13.md` 2. pont), az új bemenet `B65`-től
+számozódik. A sor a bemeneti függvényével együtt, szeletenként kerül be: sor függvény nélkül és függvény sor
+nélkül hiba (a `lapgen/tesztek` statikus tesztje őrzi).
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a bemenet azonosítója (`B<nn>`); kulcs |
+| `utvonal` | repó-relatív útvonal, `/` elválasztóval; több fájl `;`-vel; a `*` glob, az `<ID>` a motívum azonosítója; nem fájl-forrásnál `-` |
+| `leiras` | mit ad a bemenet a lapnak |
+| `kotelezo` | `igen` / `nem`. Kötelező bemenet hiánya BUKÁS; opcionális hiánya kimondott hiány a lapmodellben, nem üres lista |
+| `javitas` | a kötelezően alkalmazott javítótábla B-azonosítója, vagy `-` |
+| `frissesseg` | `-`; `hash:<B…>` (pillanatkép: a megnevezett bemenet hash-éhez kötve); `strong_halmaz` (a mai Strong-halmazhoz kötve) |
+| `allapot` | `aktiv` / `kivezetve` / `nem_vizsgalt` / `reszleges`: a forrás állapota; a lap forrás-állapotot leíró mondatai ebből és a sablontáblából jönnek |
+| `licenc_kulcs` | a `licencek.tsv` kulcsa (`dataset`), vagy `-` |
+| `olvasoi_nev_kulcs` | a forrás olvasói neve: az `olvasoi_nevtabla.tsv` `forras` típusú kulcsa, vagy `-` |
+| `forras` | `PROVENIENCIA` (1.5): honnan jön a sor |
+
+**Kulcs:** `id`. A táblát kézzel írjuk (`forras=manual`), a szelettel együtt. Pontosan egy sor magára a táblára
+mutat (`B68`): a jegyzék olvasása így kerül az olvasási naplóba (naplózás nélküli olvasás nincs); e sor nélkül a
+generátor nem indul el.
+
+### 2.67 `lapgen_sablonok.tsv` — a lap gépi mondatai (F218a, DT823, 2026-11-13)
+
+A lap látható szövege csak kézi prózából, strukturált értékű sablonmondatból vagy szó szerinti idézetből jöhet
+(DT823; a szabály szövege: `sablonok/6_PaRDeS_lexikon_oldal_sablon.md`). Ez a tábla a sablonmondatok egyetlen
+helye: a megjelenítő más forrásból gépi mondatot nem ír.
+
+| Oszlop | Tartalom |
+|---|---|
+| `kulcs` | a mondat azonosítója; kulcs |
+| `mondat` | a mondat helyőrzőkkel: `{nev}`; `{nev\|a}` / `{nev\|A}` határozott névelőt tesz az érték elé (a / az); listánál a `\|` utáni szöveg az elválasztó (`{elemek\|; }`), két elválasztóval az utolsó elem előtti külön adható (`{elemek\|, \| és }`). A mondatban Markdown-jelölés állhat |
+| `parameterek` | a helyőrzők kötött típusa, vesszővel elválasztva (`db:szam, hely:igehely`), vagy `-`. Típusok: `szam`, `tizedes(<jegy>)`, `nev(<névtábla-típus>)`, `igehely`, `strong`, `motivum`, `horgony`, `datum`, `lathato` (másik látható szöveg: próza, idézet vagy sablonmondat), `lista(<elemtípus>)`. Nyers szöveg paraméter nem lehet |
+| `szakasz` | melyik lapszakasz használja |
+| `eredet` | a régi generátor szimbóluma, ahonnan a mondat betűre átjött, vagy `uj` (új vagy javított mondat) |
+| `dontes` | az `uj` mondat jóváhagyása: a felhasználó szava dátummal, vagy `var` (jóváhagyásra vár) |
+
+**Kulcs:** `kulcs`. Az `eredet=uj` sorokat a felhasználó hagyja jóvá; a betűre átvett mondat nem igényel
+jóváhagyást.
+
+### 2.68 `olvasoi_nevtabla.tsv` — a belső kulcsok olvasói neve (F218a, DT823, 2026-11-13)
+
+Minden belső kulcsnak (forrás, mező, állapot, szerep, háló, igazolás, azonosság és a többi zárt értékkészlet)
+olvasói neve van ebben a táblában; a lapra a kulcs soha nem kerül, csak a neve. **Ismeretlen kulcs kemény
+hiba**: a generátor megáll, nem írja ki a kulcsot.
+
+| Oszlop | Tartalom |
+|---|---|
+| `tipus` | a kulcs értékkészlete (pl. `forras`, `mezo`, `allapot`, `szerep`, `halo`, `igazolas`, `azonossag`, `pardes_szint`, `megbizhatosag`, `azonositas_modja`, `konyv`) |
+| `kulcs` | a belső kulcs, ahogy az adatban vagy a kódban áll |
+| `olvasoi_nev` | a név, ahogy a lapon megjelenik |
+| `eredet` | a régi generátor szimbóluma, ahonnan a név betűre átjött, vagy `uj` |
+
+**Kulcs:** `tipus` + `kulcs`. Az `eredet=uj` sorokat a felhasználó hagyja jóvá.
+
+**A `cimke_cella` típus (DT869).** A szótári szakaszcímke (`szotar_szakasz_cimke.tsv` `cimke_hu`) cellakezdő
+alakja: a `kulcs` a címke kulcsa `szotar|strong|bdb_id|szakasz` alakban, az `olvasoi_nev` a címke úgy, ahogy a
+táblacella elején áll (nagy kezdőbetűvel, a kezdő névelővel vagy anélkül). Erre azért van szükség, mert a címke a
+lap más helyein mondat közben áll, a generátor pedig szöveget nem ír át: a cella értéke az adatban a végleges alak.
+Csak annak a címkének kell sor, amelynek a cellakezdő alakja eltér magától a címkétől. A sor kézi adat (a lapon
+prózaként áll, nem sablonszövegként). **Kapu:** a cellakezdő alak a címkétől csak a kezdő névelőben és a
+kezdőbetűben térhet el, és a kulcsának létező címkére kell mutatnia; különben a generálás megáll.
+
+### 2.69 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
+
+A lánc szava nélküli tematikus hely (az `elofordulasok.tsv` sorának `gerinc_elem` mezője `tematikus:` kezdetű, a
+`strong` mezője üres) a 2. tábla sorában a vers saját, nem lánc-szavát mutatja (DT837: a szó adatból jön, nem
+lapra szabott kódból, és a 4. szakaszban nem kap szócikket). A szó itt áll, külön kézi táblában: az
+`elofordulasok.tsv` szerkezete nem változik, mert a fejlécét az `ellenoriz.py` 16. szabálya és a `betolt.py`
+rögzíti. A táblát csak az új lapgenerátor bemeneti rétege olvassa (`eszkozok/lapgen/bemenet/elofordulas.py`,
+B67); a régi generátor kódbeli kivétele (`TEMATIKUS_SAJAT_SZO`) az átállásig érintetlen marad.
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a motívum azonosítója (idegen kulcs a `motivumok.tsv`-re) |
+| `igehely` | `IGEHELY`: az `elofordulasok.tsv` azonos motívumú sorának igehelye |
+| `strong` | `STRONG`: a vers saját szava, amelyet a 2. tábla sora mutat |
+| `forras` | `PROVENIENCIA` (1.5): honnan jön a sor; kézi sornál `manual`, a döntés megnevezésével |
+
+**Kulcs:** `id` + `igehely`. A sor csak létező előfordulás-sorra mutathat; olyan sorra, amelynek van `strong`
+értéke, nem (a generátor betöltéskor megáll). Üres tábla és hiányzó sor nem hiba: a tematikus sor ilyenkor a
+Károli-szót mutatja, saját szó nélkül.
+
+### 2.70 `generalt_nezetek.tsv` — a generált nézetek jegyzéke (F217, FELADATOK #217, 2026-11-15)
+
+A generált nézeteket (a lexikonlap és melléklete, a napló-, index- és nyitott-blokk, a nyílt mag) az ágak nem
+commitolják: a main-re érkező minden push után a `feladatok.yml` e jegyzék szerint generálja újra őket
+(`eszkozok/generalt_nezetek.py --ir`), egy gépi commitban; a PR-ban a CI ugyanígy, ideiglenesen generál a munkapéldányán,
+és a lemezt olvasó kapuk a friss nézeten futnak. Egy sor egy nézet (G-sor). A bemenetek a lapgenerátor bemeneti jegyzékének
+(2.66) B-azonosítói: a B-sorok gazdája az, a jegyzék csak hivatkozik rájuk. A lapgenerátort minden fogyasztó a
+`generalt_nezetek.lexikon_general()`-en át hívja, amely a G01-sor `parancs` mezőjét futtatja: a generátor cseréjekor csak
+ez a mező változik. A terv és a döntések: `naplok/F217_terv.md` (3. és 5. pont).
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a nézet azonosítója (`G<nn>`); kulcs, nem újrahasznosítható |
+| `utvonal` | repó-relatív út; az `<ID>` a motívum azonosítója; marker-blokk: `fájl#blokk`; könyvtár: `/` a végén; több fájl ` ; `-vel |
+| `leiras` | milyen nézet, és ha kimarad, miért |
+| `parancs` | a teljes parancssor; helyőrzők: `{id}` (a lap motívum-ID-je), `{gyoker}` (a kimeneti gyökér: a main-en ideiglenes könyvtár, utána másolás). `=G<nn>`: a megnevezett sor hívása állítja elő |
+| `bemenetek` | B-azonosítók (2.66) és G-azonosítók `;`-vel; `B*` = minden aktív B-sor; `B<nn>..B<nn>` tartomány; `!B<nn>` kizárás; nincs: `-` |
+| `utana` | G-azonosítók, amelyek előtte futnak (`;`), vagy `-` |
+| `orzes` | `szabad` / `befagyasztas` (a `lap_befagyasztas.tsv` lapja kimarad) / `kiadas` (a kiadott lap tartalma csak új `kiadasok.tsv`- vagy `lap_javitasok.tsv`-sorral, vagy csak DT-szám és döntésdátum változásával módosulhat); több `;`-vel |
+| `determinizmus` | `det` / `det:PARDES_DATUM` (a dátum a lap `ts=`-éből; tartalomváltozáskor a HEAD commit dátuma) / `nemdet` |
+| `kapuk` | a nézetet olvasó kapuk `;`-vel (`E18`, `E28`, `E29`, `E35`, `E38`, `E39`, `olvasoi_kapu`), vagy `-` |
+| `gazda` | `action` (a main-en az Action írja, az ág nem commitolja; a lap a születésekor kivétel) / `ag` (az ág commitolja) |
+| `futtato` | `jegyzek` (a `generalt_nezetek.py` futtatja) / `workflow` (a `feladatok.yml` saját lépése) / `kezi` |
+| `allapot` | `aktiv` / `kimarad` (az ok a `leiras`-ban) |
+| `forras` | `PROVENIENCIA` (1.5): honnan jön a sor |
+
+**Kulcs:** `id`. A fejléc előtt `#` kezdetű megjegyzéssor állhat; üres mező helyett `-`. A G01 ID-halmaza: van
+`motivumok/<ID>.md` és commitolt lap, és a lap nincs befagyasztva (az új cikk lapját az ág egyszer, a születésekor
+commitolja). Gépi kapu: E42 (3.11); a korábbi E28-lista (`eszkozok/ellenorzes/e28_migralt_nezetek.tsv`) kivezetve, adatsor
+nem állhat benne.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi
@@ -2810,20 +2927,21 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E25 | FIGYELMEZTETES; HIBA a hibás `adat/dontes_hatas.tsv`-soron (nem létező `dontes_forras`-fájl vagy -azonosító, `erintett_fajl`, hibás regex vagy dátum: E25 (c)) | döntés átvezetése (`adat/dontes_hatas.tsv`) | `eszkozok/ellenorzes/szabalyok.py` |
 | E26 | HIBA | végleges DT/N szám az ágon | `eszkozok/ellenorzes/szabalyok.py` |
 | E27 | HIBA | a PR által törölt vagy átnevezett fájl hivatkozásként megmaradt-e | `eszkozok/ellenorzes/szabalyok.py` |
-| E28 | HIBA | a generált nézet bájtra egyezik az adat- és forrásrétegből újragenerálttal | `eszkozok/ellenorzes/szabalyok.py` |
+| E28 | HIBA | a generált nézet egyezik az adat- és forrásrétegből újragenerálttal (F217: a PR-ban és a main nem gépi commitjában az eltérés JELENTES, a gépi commit futásában HIBA; a generálás hibája, a helyben-út eltérése és a kiadott lap új kiadás nélküli változása mindig HIBA) | `eszkozok/ellenorzes/szabalyok.py` |
 | E29 | HIBA | a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO` | `eszkozok/ellenorzes/szabalyok.py` |
 | E30 | FIGYELMEZTETES | ékezet nélkül írt magyar szó a PR commit-üzeneteiben | `eszkozok/ellenorzes/szabalyok.py` |
 | E31 | HIBA | a `forras_tanulmany` létező, repóbeli fájlra mutat | `eszkozok/ellenorzes/szabalyok.py` |
 | E32 | HIBA | kiosztott helyőrző egy kimeneti string-literálban | `eszkozok/ellenorzes/szabalyok.py` |
 | E33 | FIGYELMEZTETES | az új vagy módosított tanulmányfájl bekerül a tanulmány-regiszterbe | `eszkozok/ellenorzes/szabalyok.py` |
 | E34 | FIGYELMEZTETES; HIBA a kiadott motívumon (az `adat/kiadasok.tsv`-ben sora van) | a `kapcsolodas` idézőjeles részlete a Károli-vers szövege, vagy „saját fordítás” jelölésű | `eszkozok/ellenorzes/szabalyok.py` |
-| E35 | HIBA | a commitolt `nyilt_mag/` naprakész | `eszkozok/ellenorzes/szabalyok.py` |
+| E35 | HIBA | a commitolt `nyilt_mag/` naprakész (F217: a PR-ban JELENTES, a gépi commit futásában HIBA) | `eszkozok/ellenorzes/szabalyok.py` |
 | E36 | HIBA | hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, a SEMA szakaszszámai egyediek | `eszkozok/ellenorzes/szabalyok.py` |
 | E37 | HIBA | az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal | `eszkozok/ellenorzes/szabalyok.py` |
 | E38 | HIBA | állítás–adat kapu: a lap számai és „nincs” mondatai a saját adatukhoz mérve, minden nem befagyasztott lapon (`--minden --szigoru`) | `eszkozok/ellenorzes/allitas_adat.py` |
 | E39 | HIBA | követelménylista-kapu: a kész lap gépi követelményei; a gátló szintű hiány HIBA, a figyelmeztetés jelentés (`--szigoru`, a kapuemelési döntés) | `eszkozok/ellenorzes/kovetelmeny_kapu.py` |
 | E40 | HIBA | a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a `karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés) | `eszkozok/ellenorzes/szabalyok.py` |
 | E41 | HIBA | próza-állítás kapu: a kézi forrás versre hivatkozó állításainak gépi ítélete (ELTÉR-sor) HIBA az új formájú forrásokon; a régi formájú forrás kimarad, és ezt a kimenet kimondja (`--kapu`) | `eszkozok/proza_allitas.py` |
+| E42 | HIBA | a generált nézetek jegyzéke (`adat/generalt_nezetek.tsv`): oszlopok és értékek, a G- és B-hivatkozások épsége, az `utana` körmentessége, futtatható parancs; a kivezetett E28-listában nincs adatsor | `eszkozok/ellenorzes/szabalyok.py` |
 <!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->
 
 ---

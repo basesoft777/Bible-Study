@@ -2012,26 +2012,55 @@ def e27_hivatkozas(base_ref=None, head_ref=None, esemeny=''):
 
 
 # ---------------------------------------------------------------------------
-# A migrált nézetek engedélyezőlistája (E28, E29) -- F116 (FELADATOK #116),
-# naplok/MOTIVUM_FORRAS_ci_terv.md 1. és 2. szakasz
+# A generált lapok listája (E28, E29) -- F116, F217
 # ---------------------------------------------------------------------------
-# A lista kezdetben üres (D2): a #11 veszi fel a sort ugyanabban a commitban,
-# amelyben a migrált lap először a forrásból generálódik. Oszlopok: id, fajl
-# (a generált nézet repó-relatív útja), cel (a general.py célja), melyseg
-# (apparatus | olvasoi), feladat, datum. Olvasás: kozos.dict_sorok_sorszammal
-# (split('\t')), a `csv` modul tilos (CLAUDE.md "TSV-olvasás").
+# F217: a lista a generált nézetek jegyzékéből származik (`adat/generalt_nezetek.tsv`, G01: az ID-halmaz a
+# `generalt_nezetek.aktiv_lapok()`); a korábbi külön engedélyezőlista kivezetve, a jegyzék kapuja tiltja.
+# A lapot a `generalt_nezetek.lexikon_general()` generálja: az egyetlen belépési pont a lapgenerátorhoz.
 
-E28_LISTA = 'eszkozok/ellenorzes/e28_migralt_nezetek.tsv'
+E28_LISTA = 'adat/generalt_nezetek.tsv'
 E28_MELYSEGEK = ('apparatus', 'olvasoi')
+# F217: a PR-ban és a main nem gépi commitjában a generált nézet a main-en frissül (az Action írja), ezért a
+# commitolt és az újragenerált nézet eltérése JELENTES; a gépi commit futásában (a végállapot) HIBA. A kiadott
+# lap őrzése (E28 (4)) mindig HIBA.
+GENERALT_SZIGOR_VALTOZO = 'PARDES_GENERALT_SZIGOR'
+
+
+def generalt_szint():
+    return 'HIBA' if os.environ.get(GENERALT_SZIGOR_VALTOZO, '').strip() == '1' else 'JELENTES'
+
+
+def _generalt_nezetek_modul():
+    """A generalt_nezetek modul (a kód mellől, nem a -- tesztben átállított -- ROOT-ból)."""
+    eszkozok = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    if eszkozok not in sys.path:
+        sys.path.insert(0, eszkozok)
+    import generalt_nezetek
+    return generalt_nezetek
 
 
 def _migralt_lista():
-    """[(fajl_sorszam, {oszlop: ertek}), ...] -- a lista sorai (a fejlécen
-    kívül); hiányzó lista-fájl esetén üres."""
-    ut = os.path.join(ROOT, *E28_LISTA.split('/'))
-    if not os.path.exists(ut):
+    """[(fajl_sorszam, {id, fajl, cel, melyseg}), ...] -- a jegyzék G01-sorának lapjai (a nem befagyasztott,
+    forrással és commitolt lappal bíró motívumok); jegyzék nélkül üres."""
+    G = _generalt_nezetek_modul()
+    if not os.path.exists(os.path.join(ROOT, *G.JEGYZEK.split('/'))):
         return []
-    return [(n, d) for n, d in dict_sorok_sorszammal(ut) if d.get('fajl', '').strip()]
+    sorszam = next((n for n, d in G.jegyzek(ROOT) if d.get('id') == G.LAP_SOR), 0)
+    minta = G.sor(G.LAP_SOR, ROOT)['utvonal']
+    return [(sorszam, {'id': azon, 'fajl': minta.replace('<ID>', azon), 'cel': 'lexikon', 'melyseg': 'apparatus'})
+            for azon in G.aktiv_lapok(ROOT)]
+
+
+def _e29_lista():
+    """Az E29 hatóköre (F217): a forrásból generált lapok a befagyasztottakkal együtt (`generalt_nezetek.migralt_lapok`,
+    a korábbi lista öt lapja); a befagyasztott lap kimenete is kiadható kimenet."""
+    G = _generalt_nezetek_modul()
+    if not os.path.exists(os.path.join(ROOT, *G.JEGYZEK.split('/'))):
+        return []
+    sorszam = next((n for n, d in G.jegyzek(ROOT) if d.get('id') == G.LAP_SOR), 0)
+    minta = G.sor(G.LAP_SOR, ROOT)['utvonal']
+    return [(sorszam, {'id': azon, 'fajl': minta.replace('<ID>', azon), 'cel': 'lexikon', 'melyseg': 'apparatus'})
+            for azon in G.migralt_lapok(ROOT)]
 
 
 def _befagyasztott_idk():
@@ -2133,14 +2162,9 @@ def _general_modul():
 
 
 def _e28_general_futtat(cel, azonosito, datum, kimenet):
-    """A general.py alfolyamatként, a repón kívüli `kimenet` könyvtárba;
-    (kilépési kód, stderr). A generátor logikája nem duplikálódik."""
-    env = dict(os.environ, PARDES_DATUM=datum, PYTHONIOENCODING='utf-8')
-    p = subprocess.run(
-        [sys.executable, os.path.join(ROOT, 'eszkozok', 'general.py'),
-         '--cel', cel, '--id', azonosito, '--kimenet', kimenet],
-        cwd=ROOT, env=env, capture_output=True)
-    return p.returncode, p.stderr.decode('utf-8', errors='replace')
+    """A lap generálása a repón kívüli `kimenet` könyvtárba, az egyetlen belépési ponton át
+    (`generalt_nezetek.lexikon_general`, F217); (kilépési kód, kimenet-részlet). A `cel` ma mindig `lexikon`."""
+    return _generalt_nezetek_modul().lexikon_general(azonosito, kimenet, datum, ROOT)
 
 
 def _e28_generalt_blokkok(cel):
@@ -2197,8 +2221,16 @@ def e28_generalt_nezet_egyezes(fajlok):
         E28_JEGYZETEK.append('E28: nem futott (nincs érintett fájl a változások között)')
         return talalatok
 
-    def hiba(relut, sor, reszlet):
-        talalatok.append(Talalat('E28', SZINT['E28'], relut, sor, reszlet))
+    szint = generalt_szint()
+    if szint != 'HIBA':
+        E28_JEGYZETEK.append('E28: a commitolt és az újragenerált nézet eltérése JELENTES (a main-en az Action '
+                             'generálja, F217); a generálás hibája, a helyben-út eltérése és a kiadott lap őrzése HIBA')
+
+    def hiba(relut, sor, reszlet, mindig=False):
+        talalatok.append(Talalat('E28', SZINT['E28'] if mindig else szint, relut, sor, reszlet))
+
+    def mindig_hiba(relut, sor, reszlet):
+        hiba(relut, sor, reszlet, mindig=True)
 
     # (1) marker-blokkok
     for cel, relut in E28_MARKER_CELOK:
@@ -2209,8 +2241,8 @@ def e28_generalt_nezet_egyezes(fajlok):
         try:
             blokkok = _e28_generalt_blokkok(cel)
         except Exception as e:   # a generátor hibája a CI-ban nem lehet csendes
-            hiba(relut, 0, 'a general.py --cel %s nem futott le: %s: %s'
-                 % (cel, type(e).__name__, e))
+            mindig_hiba(relut, 0, 'a general.py --cel %s nem futott le: %s: %s'
+                        % (cel, type(e).__name__, e))
             continue
         javit = 'python eszkozok/general.py --cel %s --ir' % cel
         for cel_kulcs, blk in blokkok:
@@ -2268,14 +2300,14 @@ def e28_generalt_nezet_egyezes(fajlok):
                  '(a nézetet a generátor állítja elő, kézi fájl nem kerülhet a listára)')
             continue
         datum = m.group(1)
-        javit = 'python eszkozok/general.py --cel %s --id %s --ir' % (cel, azonosito)
+        javit = 'a main-en az Action generálja; helyben: python eszkozok/generalt_nezetek.py --ir --id %s' % azonosito
         tmp = tempfile.mkdtemp(prefix='e28_')
         try:
             kod, hibakimenet = _e28_general_futtat(cel, azonosito, datum, tmp)
             ut = os.path.join(tmp, *relut.split('/'))
             if kod != 0 or not os.path.exists(ut):
-                hiba(relut, 0, 'a generátor nem állította elő a nézetet (kilépési kód %s): %s'
-                     % (kod, hibakimenet.strip()[-200:]))
+                mindig_hiba(relut, 0, 'a generátor nem állította elő a nézetet (kilépési kód %s): %s'
+                            % (kod, hibakimenet.strip()[-200:]))
                 continue
             with open(ut, 'rb') as f:
                 generalt = f.read().decode('utf-8')
@@ -2288,7 +2320,11 @@ def e28_generalt_nezet_egyezes(fajlok):
                  'a commitolt nézet eltér az újragenerálttól (PARDES_DATUM=%s). '
                  'commitolt: %s | generált: %s. Javítás: %s'
                  % (datum, _e28_sor_szoveg(sa), _e28_sor_szoveg(sb), javit))
-        _e28_helyben_ag(relut, cel, azonosito, datum, commitolt, generalt, hiba)
+            # (4) F217, 3.4: a kiadott lap tartalma új kiadás (vagy lapjavítás-sor, vagy csak DT-szám) nélkül nem változhat
+            ok = _generalt_nezetek_modul().orzes_sertes(azonosito, relut, commitolt, generalt, ROOT)
+            if ok:
+                mindig_hiba(relut, i + 1, ok)
+        _e28_helyben_ag(relut, cel, azonosito, datum, commitolt, generalt, mindig_hiba)
     return talalatok
 
 
@@ -2352,7 +2388,7 @@ def e29_kiadhato_kimenet_tisztasaga(fajlok):
     mélység szerinti mintákra; bármely találat HIBA (fájlszintű, D6). A `fajlok`
     paramétert nem használja: minden PR-en és --teljes módban fut."""
     talalatok = []
-    for sorszam, d in _migralt_lista():
+    for sorszam, d in _e29_lista():
         relut = d['fajl'].strip()
         melyseg = d.get('melyseg', '').strip()
         if melyseg not in E28_MELYSEGEK:
@@ -3083,8 +3119,8 @@ def e35_nyilt_mag_naprakesz(valtozott, teljes=False, root=None, export_fn=None, 
         else:
             continue
         parancs = 'python eszkozok/nyilt_mag_export.py' + (' --csak-szovegek' if csak_szoveg else '')
-        talalatok.append(Talalat('E35', SZINT['E35'], E35_CSOMAG + '/' + rel, 0,
-                                 '%s (%s); futtasd: %s, es commitold' % (leir, ok, parancs)))
+        talalatok.append(Talalat('E35', generalt_szint(), E35_CSOMAG + '/' + rel, 0,
+                                 '%s (%s); a main-en az Action generalja (F217), helyben: %s' % (leir, ok, parancs)))
     return talalatok
 
 
@@ -3118,14 +3154,16 @@ SZABALY_LEIRAS = {
     'E25': 'döntés átvezetése (`adat/dontes_hatas.tsv`)',
     'E26': 'végleges DT/N szám az ágon',
     'E27': 'a PR által törölt vagy átnevezett fájl hivatkozásként megmaradt-e',
-    'E28': 'a generált nézet bájtra egyezik az adat- és forrásrétegből újragenerálttal',
+    'E28': 'a generált nézet egyezik az adat- és forrásrétegből újragenerálttal (F217: a PR-ban és a main nem gépi '
+           'commitjában az eltérés JELENTES, a gépi commit futásában HIBA; a generálás hibája, a helyben-út eltérése és a '
+           'kiadott lap új kiadás nélküli változása mindig HIBA)',
     'E29': 'a kiadható kimenetben nulla `belso` jelölés és nulla `【NAPLO`',
     'E30': 'ékezet nélkül írt magyar szó a PR commit-üzeneteiben',
     'E31': 'a `forras_tanulmany` létező, repóbeli fájlra mutat',
     'E32': 'kiosztott helyőrző egy kimeneti string-literálban',
     'E33': 'az új vagy módosított tanulmányfájl bekerül a tanulmány-regiszterbe',
     'E34': 'a `kapcsolodas` idézőjeles részlete a Károli-vers szövege, vagy „saját fordítás” jelölésű',
-    'E35': 'a commitolt `nyilt_mag/` naprakész',
+    'E35': 'a commitolt `nyilt_mag/` naprakész (F217: a PR-ban JELENTES, a gépi commit futásában HIBA)',
     'E36': 'hivatkozás-kapu: a folyamat-dokumentumok szakasz- és szabályhivatkozása létező célra mutat, '
            'a SEMA szakaszszámai egyediek',
     'E37': 'az `adat/SEMA.md` 3.11 kapulista-blokkja egyezik a kódból generálttal',
@@ -3593,6 +3631,27 @@ FAJLSZINTU_SZABALYOK.add('E40')
 SZABALYOK_FUGGVENYEI['E40'] = e40_karoli_kh_hozzaferes
 SZABALY_LEIRAS['E40'] = ('a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a '
                          '`karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés)')
+
+
+# ---------------------------------------------------------------------------
+# E42 -- a generált nézetek jegyzéke (F217, adat/SEMA.md 2.70)
+# ---------------------------------------------------------------------------
+# A jegyzék (`adat/generalt_nezetek.tsv`) kapuja: oszlopok, értékkészletek, az id-formátum, a hivatkozási épség (a G- és a
+# bemeneti jegyzék B-azonosítói), az `utana` körmentessége, a `gazda=action` sor futtatható parancsa, és a kivezetett E28-lista
+# üressége. A kapu egyetlen helye a `generalt_nezetek.jegyzek_ellenoriz()`; minden futásban fut, HIBA, fájlszintű.
+
+def e42_generalt_jegyzek(fajlok=None):
+    G = _generalt_nezetek_modul()
+    if not os.path.exists(os.path.join(ROOT, 'eszkozok', 'generalt_nezetek.py')):
+        return []   # nem ennek a repónak a szerkezete (pl. a szabály-tesztek ideiglenes gyökere); végrehajtóval jegyzék nélkül HIBA
+    return [Talalat('E42', SZINT['E42'], G.JEGYZEK, 0, h) for h in G.jegyzek_ellenoriz(ROOT)]
+
+
+SZINT['E42'] = 'HIBA'
+FAJLSZINTU_SZABALYOK.add('E42')
+SZABALYOK_FUGGVENYEI['E42'] = e42_generalt_jegyzek
+SZABALY_LEIRAS['E42'] = ('a generált nézetek jegyzéke (`adat/generalt_nezetek.tsv`): oszlopok és értékek, a G- és B-hivatkozások '
+                         'épsége, az `utana` körmentessége, futtatható parancs; a kivezetett E28-listában nincs adatsor')
 
 
 

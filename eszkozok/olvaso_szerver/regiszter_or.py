@@ -40,7 +40,8 @@ D = os.path.dirname(os.path.abspath(__file__))
 SABLON_DIR = os.path.join(D, 'sablonok')
 PY_FAJLOK = (os.path.join(D, 'blokkok.py'), os.path.join(D, 'oldalak.py'))
 JS_FAJLOK = ((os.path.join(D, 'statikus', 'olvaso.js'), 'statikus/olvaso.js'),
-             (os.path.join(D, 'tervezo_statikus', 'tervezo.js'), 'tervezo_statikus/tervezo.js'))
+             (os.path.join(D, 'tervezo_statikus', 'tervezo.js'), 'tervezo_statikus/tervezo.js'),
+             (os.path.join(D, 'tervezo_statikus', 'elonezet.js'), 'tervezo_statikus/elonezet.js'))
 ELEMEK_UT = os.path.join(D, 'konfig', 'elemek.toml')
 OSZTALY = re.compile(r'^[A-Za-z_][A-Za-z0-9_-]*$')
 BIZONYOSSAG_TARTALEK = ('magas', 'alacsony')                  # csak adatbázis nélkül; a kimenet ezt jelzi

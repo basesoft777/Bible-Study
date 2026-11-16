@@ -8,6 +8,7 @@ A lap a kért blokkokat a `hozzaferes.py` szintje és a kiadás szerint szűrve 
 meg sem hívódik, és nem kerül a HTML-be (nem CSS-sel van elrejtve).
 """
 import hashlib
+import json
 import os
 import re
 
@@ -169,6 +170,8 @@ class OldalGyar:
         # a tervező mód (#98 M2): a kapcsoló, a szkript és a stíluslap a lapon; csak a szerver kapcsolja be, a belso kiadásban
         # (alkalmazas.letrehoz); a statikus export és más kiadás lapján nincs nyoma
         self.tervezo = False
+        # az önfrissítő előnézet (F225): a kulcs-végpont és a kliensszkript a lapon; csak a szerver kapcsolja be, a belso kiadásban
+        self.elonezet = False
         # a lábléc élő állapota (#100, `allapot.LablecFigyelo`): az `alkalmazas.letrehoz` állítja be; a statikus export lapján None (a lábléc ott változatlan)
         self.lablec = None
         con = db.kapcsolat()
@@ -221,6 +224,9 @@ class OldalGyar:
         ctx['tervezo'] = bool(self.tervezo) and self.kiadas == 'belso'
         if ctx['tervezo']:
             ctx['tervezo_v'] = self.kod_verzio
+        ctx['elonezet'] = bool(self.elonezet) and self.kiadas == 'belso'
+        if ctx['elonezet']:
+            ctx['elonezet_azonosito'] = self.elonezet_kulcs()['azonosito']
         sz = ctx.pop('szint', None)
         # a szintváltó vezérlő CSAK a belső kiadásban (próbaüzem): máshol a szint nem választható
         ctx['szint_vezerlo'] = self.kiadas == 'belso'
@@ -622,6 +628,18 @@ class OldalGyar:
 
     def hiba_lap(self, kod, uzenet, reteg, ut, szint=None):
         return self._render('hiba.html', kod=kod, uzenet=uzenet, reteg=reteg, ut=ut, szint=szint, cim='Hiba')
+
+    # -- az önfrissítő előnézet kulcsa (F225, `/elonezet/kulcs`) ---------------------------------------------------------
+    def elonezet_kulcs(self):
+        """A már számolt kulcsok (adatbázis- és fájlolvasás nélkül, a `/statusz`-szal ellentétben): a kód (`kod_verzio`: a szerver .py/.html/.css/.js/.toml/.json
+        fájljainak hash-e, induláskor), az arculat hash-e, a lábléc kulcsa (ág, commit, építési idő, lemaradás, figyelmeztetések; 3 mp-es olvasás) és az
+        adatbázis-kulcs. Az `azonosito` ezek hash-e: a kliens (`statikus/elonezet.js`) ennek változásakor tölti újra a lapot. A lap a renderelés
+        pillanatában ugyanezt az azonosítót kapja a szkript-címkébe, így az első lekérdezés előtti változás sem vész el."""
+        L = self.lablec.kap() if self.lablec else None
+        resz = {'kod_verzio': self.kod_verzio, 'arculat_hash': self.arculat.hash, 'lablec': repr(L.kulcs()) if L else '',
+                'adatbazis_kulcs': self.kozos.adatbazis_kulcs}
+        h = hashlib.sha256(json.dumps(resz, sort_keys=True, ensure_ascii=False).encode('utf-8')).hexdigest()[:16]
+        return {'azonosito': h, **resz, 'ag': L.ag if L else '', 'commit': L.commit if L else '', 'lemaradas': L.lemaradas if L else None}
 
     # -- az állapot (`/statusz`) ---------------------------------------------------------------------------------------
     def statusz(self):

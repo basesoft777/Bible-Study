@@ -71,6 +71,7 @@ STATIKUS_TESZTEK = [
     'eszkozok/teszt_proza_allitas.py',
     'eszkozok/teszt_push_elott.py',
     'eszkozok/teszt_brief_lezaras.py',
+    'eszkozok/teszt_generalt_nezetek.py',
 ]
 STATIKUS_HIVASOK = [
     'eszkozok/ellenorzes/kovetelmeny_kapu.py HAMART-001 --szigoru',
@@ -86,6 +87,8 @@ DINAMIKUS_SZKRIPTEK = [
     'eszkozok/ellenorzes/study_fajlok_szurese.py',
     'eszkozok/ellenoriz.py',
     'eszkozok/feladatok.py',
+    'eszkozok/generalt_nezetek.py',
+    'eszkozok/lapgen/hash_or_kapu.py',
 ]
 # A futási adattól függő hívások kötelező argumentumai (a hívásaik egyikében szerepelniük kell).
 DINAMIKUS_ARGUMENTUMOK = {
@@ -93,6 +96,8 @@ DINAMIKUS_ARGUMENTUMOK = {
                                       '--commit-uzenet-fajl', '--minta'],
     'eszkozok/ellenoriz.py': ['--md'],
     'eszkozok/feladatok.py': ['ellenoriz', '--pr-alap'],
+    'eszkozok/generalt_nezetek.py': ['--ir', '--pr-modositott'],
+    'eszkozok/lapgen/hash_or_kapu.py': ['--valtozott-lista'],
 }
 # Csak a CI-ben futó, nem bukó jelentés-lépések.
 EGYEZES_KIVETEL = [
@@ -466,6 +471,19 @@ def main():
         fut.hibas.append(('CI-egyezés', 1))
         fut.hiba_sorok.append(h)
 
+    # 0b. F217: a generált nézetek ideiglenes újragenerálása (mint a CI-ben): a lemezt olvasó kapuk a friss nézeten
+    # futnak. A munkapéldány generált fájljai a futás végén visszaállnak (a PR nem commitol generált nézetet).
+    sys.path.insert(0, os.path.join(ROOT, 'eszkozok'))
+    import generalt_nezetek
+    generalt_kep = generalt_nezetek.pillanatkep(ROOT)
+    _, modositott, _ = git('diff', '--name-only', '--diff-filter=M', alap, fej)
+    modositott_fajl = os.path.join(tmp, 'pr_modositott.txt')
+    with open(modositott_fajl, 'w', encoding='utf-8') as f:
+        f.write(modositott + '\n')
+    rc_gen, ki_gen = fut.lepes('F217 generált nézetek (generalt_nezetek.py --ir)', [
+        PY, 'eszkozok/generalt_nezetek.py', '--ir', '--jelentes', os.path.join(tmp, 'generalt_jelentes.md'),
+        '--pr-modositott', modositott_fajl])
+
     # 1. E2-E39 (mindig fut: diff-hatókörű szabályok; az E35/E28 maguk is csak az érintő fájlokra)
     uzenet_fajl = os.path.join(tmp, 'commit_uzenetek.txt')
     with open(uzenet_fajl, 'w', encoding='utf-8') as f:
@@ -479,6 +497,12 @@ def main():
         print('RENDBEN  E2-E39 (nincs változott fájl)')
     if args.lepes:
         print('FIGYELEM: részleges futás (--lepes %s); a push előtti kapu a teljes futás.' % args.lepes)
+
+    # 1/b. az új lapgenerátor regressziós mércéjének hash-őre (F218a; mindig fut, maga dönti el, érinti-e a változás)
+    lista_fajl = os.path.join(tmp, 'valtozott_fajlok.txt')
+    with open(lista_fajl, 'w', encoding='utf-8') as f:
+        f.write('\n'.join(fajlok) + '\n')
+    fut.lepes('F218 mérce hash-őr (hash_or_kapu.py)', [PY, 'eszkozok/lapgen/hash_or_kapu.py', '--valtozott-lista', lista_fajl])
 
     # 2. E1
     rc, study = kihagyhato(L_E1, 'E1 szűrés (study_fajlok_szurese.py)',
@@ -519,6 +543,7 @@ def main():
         except OSError as exc:
             print('FIGYELEM: a zöld jegyzés nem menthető (%s): %s' % (zold_ut, exc))
 
+    generalt_nezetek.visszaallit(generalt_kep, ROOT)   # F217: a munkapéldány generált fájljai az eredeti állapotra
     shutil.rmtree(tmp, ignore_errors=True)
     print()
     if fut.hibas:
