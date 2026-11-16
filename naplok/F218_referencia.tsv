@@ -1,6 +1,6 @@
 # F218.1: a régi lapgenerátor (general.py --cel lexikon --id HAMART-001) referencia-kimenete és ténylegesen olvasott bemenetei, a regressziós kapu alapjához. A sha256 és a meret sorvég-normalizált tartalomból számolt (minden CRLF → LF a bájtokban), hogy a Windows-os munkafa és a CI LF-es fájlja azonos hash-t adjon. scope=sys.addaudithook open-napló, HAMART-001, PARDES_DATUM=2026-11-13 | forras=5e4344f6 | ts=2026-11-13
 tipus	b_id	utvonal	sha256	meret
-bemenet	B51	DONTESEK.md	d19fde1b6535e77fcdaaaa9c2986bcf19182dbd659df7d896dda5d559ecf7bfd	1357044
+bemenet	B51	DONTESEK.md	4f9edda2892a0b63a35054af8b9f14cd8ce4a15dfc3d1024be66d2d84760bc62	1383630
 bemenet	B17	adat/bdb_forras_javitas.tsv	8234fa67f03cfa69b35fa4e2cda0a30be7654aff511de9acf96b47be91618fca	14239182
 bemenet	B18	adat/bdb_szakasz_hu.tsv	17322b60e26b630156f13341bab6f0989bd42dad4ac9e50f282578e50ebe8a83	13997748
 bemenet	B17	adat/bdb_szakaszok.tsv	44362398134539235ac7929ba10b69d7067a528b2d48f44d27fe7c7a86216f07	12680601
@@ -191,9 +191,8 @@ bemenet	B06	naplok/F123_teljesseg_HAMART-001_blokkok.tsv	b59fc4f2aecf9480deffda9
 bemenet	B49	naplok/KIADAS_HAMART-001_lektor.md	99665c7b59e22793bbfda946723dfac2eefe0e327fa8e7f4db356525f06429f7	35634
 referencia	-	lexikon/HAMART-001_KIZARASOK.md	1cdaffd3e529d3ca4051d6be90515eaec75179038c92749a3fcd14e4cd9e9b3c	21763
 referencia	-	lexikon/HAMART-001_TUDOMANYOS.md	ff400b642edd6313bb33df4fd7aec364b2bb749599c4406c6ed754e224ab24a9	486835
-uj_bemenet	B51	dontesek/uj/f218-generator-uj-a.md	32590240eb5517361c801b947c70554c292969f0f88e9b15e2f399c6e8f359bc	19849
 uj_bemenet	B65	adat/olvasoi_nevtabla.tsv	810a7f4da76732783093ba8e4509c5e7bf57368fccc3b912ac64988b0f8fe9b8	5047
-uj_bemenet	B66	adat/lapgen_sablonok.tsv	dad98ec5457eea28d7caaf9fb6549115ce41ee5c8811913e1542c14aab6f9d78	76223
+uj_bemenet	B66	adat/lapgen_sablonok.tsv	27d926025f140cebce80475ff1b3b19ec2a9a8f158fc67289ce621f8d492ff73	76205
 uj_bemenet	B67	adat/tematikus_sajat_szo.tsv	a0f10bc4e626b35c108caf7db8eae0927755b18f5f34f7544d7ad51e7af1a83a	407
 uj_bemenet	B05	naplok/F123_teljesseg_ISTENTISZT-001.tsv	df7c848097187da58fdb9a289e1203a9c63ec8af494e2f0fd04af365bcd23d0e	153346
 uj_bemenet	B06	naplok/F123_teljesseg_ISTENTISZT-001_blokkok.tsv	11e7ce1df45b33ac9d065ad0728c6a801136be4ae288e680a15d833444a5722a	41504
