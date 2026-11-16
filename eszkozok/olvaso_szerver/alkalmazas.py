@@ -72,6 +72,23 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     if kiadas == 'belso':
         gyar.tervezo = True
         tervezo_modul.utvonalak(app, gyar, cache, regiszter)
+        # -- az önfrissítő előnézet (F225): CSAK a belso kiadásban; más kiadásban sem az útvonal, sem a szkript nincs (404). A kulcs-végpont a már
+        #    számolt értékeket adja (nincs adatbázis-olvasás, nincs lap-előállítás), ezért másodpercenként lekérdezhető.
+        gyar.elonezet = True
+
+        @app.get('/elonezet/elonezet.js')
+        def elonezet_kliens():
+            # a kliens a tervezo_statikus/-ban áll (nem a mindenkinek kiszolgált statikus/-ban): más kiadásban nincs útvonal, 404
+            from flask import send_from_directory
+            r = send_from_directory(tervezo_modul.STATIKUS_DIR, 'elonezet.js', mimetype='text/javascript', max_age=0)
+            r.headers['Cache-Control'] = 'no-store'
+            return r
+
+        @app.get('/elonezet/kulcs')
+        def elonezet_kulcs():
+            r = Response(json.dumps(gyar.elonezet_kulcs(), ensure_ascii=False), mimetype='application/json')
+            r.headers['Cache-Control'] = 'no-store'
+            return r
 
     # -- réteg és szint ---------------------------------------------------------------------------------------------------
     def reteg_kerese():
@@ -330,12 +347,12 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
 
 def figyelt_fajlok(szerver_dir=None):
     """Az újratöltő által figyelt, nem Python-modul fájlok (#100): a Werkzeug alapból csak a betöltött modulokat nézi, a sablonokat,
-    a konfigurációt és a statikus fájlokat nem. A BDB-szeletelő (`bdb_szelet.py`) a DT-F99c óta a szerver könyvtárában él, a Werkzeug
+    a konfigurációt és a statikus fájlokat nem (F225: a tervező mód kliensének `tervezo_statikus/` könyvtárát sem, pedig a `kod_verzio` tartalmazza). A BDB-szeletelő (`bdb_szelet.py`) a DT-F99c óta a szerver könyvtárában él, a Werkzeug
     modulként figyeli. A tervező mód által futás közben írt `arculat.json` és `.elozo`-ja KIMARAD: a mentés újraindítás nélkül hat (a szerver
     az `arculat.hash`-ből követi), a figyelése minden mentésnél újraindítaná a szervert."""
     d = szerver_dir or os.path.dirname(os.path.abspath(__file__))
     ki = []
-    for alk in ('sablonok', 'konfig', 'statikus'):
+    for alk in ('sablonok', 'konfig', 'statikus', 'tervezo_statikus'):
         for gyoker, _, nevek in os.walk(os.path.join(d, alk)):
             for n in sorted(nevek):
                 if n.startswith('arculat.json') or n.endswith('.pyc'):

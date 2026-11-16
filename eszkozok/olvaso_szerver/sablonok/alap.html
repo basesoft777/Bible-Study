@@ -15,11 +15,23 @@
 <link rel="stylesheet" href="/tervezo/tervezo.css?v={{ tervezo_v }}">
 <script src="/tervezo/tervezo.js?v={{ tervezo_v }}" defer></script>
 {% endif %}
+{# F225: az önfrissítő előnézet kliense, csak a belso kiadásban; a kiinduló azonosító a lapból jön (data-azonosito), a szkript a /elonezet/kulcs-ot kérdezi #}
+{% if elonezet %}
+<script src="/elonezet/elonezet.js?v={{ elonezet_azonosito }}" data-azonosito="{{ elonezet_azonosito }}" defer></script>
+{% endif %}
 </head>
 <body class="{{ 'reteg-il' if il else 'reteg-nincs' }}{{ ' lap-nyitva' if lap_nyitva else '' }}">
 {# #134 M2: a fejezet-lapon (nav) a fejléc 900 px alatt navigációs lap: alulról felugrik a fejezetcímre (vagy a tájoló pirulára)
    koppintva; JS nélkül a `#navigacio` cél (:target) nyitja. A többi lapon a fejléc a régi. A ⚙ menü (réteg, szint, Tervező, téma)
    és az Aa `details`-elem: JS nélkül is nyitható. #}
+{# F225: a lábléc figyelmeztetései (nem main ág, régi adatbázis-másolat, lemaradás az origin/main mögött) a lap tetején is; a már regisztrált `labjegyzet` osztállyal #}
+{% if lablec and lablec.figyelmeztetesek %}
+<div class="labjegyzet" role="status">
+  {% for f in lablec.figyelmeztetesek %}
+  <div><mark>Figyelem:</mark> {{ f }}</div>
+  {% endfor %}
+</div>
+{% endif %}
 <header class="fejlec{{ ' navlap' if nav else '' }}" id="navigacio">
   {% if nav %}
   <div class="navlap-fej"><b class="navlap-cim">Navigáció</b><a class="lap-gomb navlap-zar" href="#" aria-label="A navigáció bezárása" title="Bezárás">✕</a></div>

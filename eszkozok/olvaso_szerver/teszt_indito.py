@@ -174,19 +174,19 @@ class TesztLablec(unittest.TestCase):
         self.addCleanup(shutil.rmtree, t, True)
         f = os.path.join(t, 'forras.db')
         kis_db(f, '2026-10-15T08:00:00Z')
-        L = allapot.Lablec.keszit('belso', '2026-10-14T09:35:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234', 'PARDES_FORRAS_DB': f})
+        L = allapot.Lablec.keszit('belso', '2026-10-14T09:35:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234', 'PARDES_FORRAS_DB': f, 'PARDES_LEMARADAS': '0'})
         self.assertEqual((L.kiadas, L.ag, L.commit, L.epites_ts, L.forras_ts), ('belso', 'main', 'abcd1234', '2026-10-14T09:35:00Z', '2026-10-15T08:00:00Z'))
         self.assertEqual(len(L.figyelmeztetesek), 1)
         self.assertIn('régebbi', L.figyelmeztetesek[0])
 
     def test_keszit_forras_nelkul_nincs_adatbazis_figyelmeztetes(self):
-        L = allapot.Lablec.keszit('belso', '2026-10-14T09:35:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234'})
+        L = allapot.Lablec.keszit('belso', '2026-10-14T09:35:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234', 'PARDES_LEMARADAS': '0'})
         self.assertEqual(L.figyelmeztetesek, [])
 
 
 class TesztLablecFigyelo(unittest.TestCase):
     def test_ttl_alatt_a_regi_allapot_marad_utana_az_uj(self):
-        env = {'PARDES_AG': 'main', 'PARDES_COMMIT': 'aaaaaaaa'}
+        env = {'PARDES_AG': 'main', 'PARDES_COMMIT': 'aaaaaaaa', 'PARDES_LEMARADAS': '0'}
         f = allapot.LablecFigyelo('belso', 'ts', kornyezet=env, ttl=3600)
         self.assertEqual(f.kap().ag, 'main')
         env['PARDES_AG'] = 'claude/masik'
@@ -224,9 +224,10 @@ class TesztLablecAlkalmazas(unittest.TestCase):
         return app, app.test_client()
 
     def test_mindharom_kiadasban_ag_commit_epites_ts_es_az_uj_allapot_azonnal_latszik(self):
-        reg = {k: os.environ.get(k) for k in ('PARDES_AG', 'PARDES_COMMIT', 'PARDES_FORRAS_DB')}
+        reg = {k: os.environ.get(k) for k in ('PARDES_AG', 'PARDES_COMMIT', 'PARDES_FORRAS_DB', 'PARDES_LEMARADAS')}
         self.addCleanup(lambda: [os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v) for k, v in reg.items()])
         os.environ['PARDES_AG'], os.environ['PARDES_COMMIT'] = 'main', 'abcd1234'
+        os.environ['PARDES_LEMARADAS'] = '0'                                     # a valódi checkout lemaradásától független (F225)
         os.environ.pop('PARDES_FORRAS_DB', None)
         for kiadas in ('belso', 'nyilvanos', 'kereskedelmi'):
             with self.subTest(kiadas=kiadas):
@@ -309,9 +310,131 @@ class TesztLablecSablon(unittest.TestCase):
         self.assertEqual(set(re.findall(r'class="([^"]*)"', s)), {'labjegyzet'})
 
 
-@unittest.skipUnless(POSIX, 'az indit.sh tesztjéhez POSIX, bash, fuser és flock kell (WSL)')
-class TesztInditSh(unittest.TestCase):
-    """Az `indit.sh` előkészítő módban: leállítás + szinkron, szerver nélkül."""
+GIT = shutil.which('git')
+
+
+def git(konyvtar, *args):
+    """Egy valódi `git`-hívás ideiglenes repón; a kimenet levágva."""
+    p = subprocess.run([GIT, '-C', konyvtar, '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false', '-c', 'core.autocrlf=false', *args],
+                       stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding='utf-8')
+    assert p.returncode == 0, (args, p.stdout)
+    return p.stdout.strip()
+
+
+def ideiglenes_repo(t, nev='r', commitok=4):
+    """Ideiglenes repó `main` ággal és `commitok` üres committal; `origin/main` a csúcson. Visszaadja a könyvtárat és a commit-hash-eket (régi → új)."""
+    r = os.path.join(t, nev)
+    os.makedirs(r)
+    git(r, 'init', '-q', '-b', 'main')
+    hash_ek = []
+    for i in range(commitok):
+        git(r, 'commit', '-q', '--allow-empty', '-m', 'c%d' % i)
+        hash_ek.append(git(r, 'rev-parse', 'HEAD'))
+    git(r, 'update-ref', allapot.FO_REF, hash_ek[-1])
+    return r, hash_ek
+
+
+@unittest.skipUnless(GIT, 'a lemaradás tesztjéhez git kell')
+class TesztLemaradas(unittest.TestCase):
+    """F225: hány committal áll a HEAD az origin/main mögött; ideiglenes repón, valódi git-tel."""
+
+    def setUp(self):
+        self.t = tempfile.mkdtemp(prefix='indito_lem_')
+        self.addCleanup(shutil.rmtree, self.t, True)
+        self.r, self.h = ideiglenes_repo(self.t)
+
+    def test_azonos_hash_nulla_git_nelkul(self):
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 0)
+
+    def test_a_haromcommitos_lemaradas(self):
+        git(self.r, 'reset', '-q', '--hard', self.h[0])                       # a HEAD a legrégebbi committon, az origin/main a csúcson
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 3)
+
+    def test_csomagolt_objektumokkal_is(self):
+        git(self.r, 'reset', '-q', '--hard', self.h[1])
+        git(self.r, 'gc', '-q', '--prune=now')
+        git(self.r, 'pack-refs', '--all')                                      # a ref-ek is packed-refs-ben
+        self.assertFalse(os.path.exists(os.path.join(self.r, '.git', 'refs', 'remotes', 'origin', 'main')))
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 2)
+
+    def test_worktree_a_gitdir_fajlon_at(self):
+        # a linkelt worktree `.git` FÁJL: a számolás a feloldott --git-dir-rel megy; a worktree saját HEAD-je számít
+        git(self.r, 'branch', 'regi', self.h[1])
+        wt = os.path.join(self.t, 'wt')
+        git(self.r, 'worktree', 'add', '-q', wt, 'regi')
+        self.assertTrue(os.path.isfile(os.path.join(wt, '.git')))
+        self.assertEqual(allapot.lemaradas(wt, szinkron=True), 2)
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 0, 'a főcheckout HEAD-je a csúcson áll')
+
+    def test_nincs_origin_main_ismeretlen(self):
+        git(self.r, 'update-ref', '-d', allapot.FO_REF)
+        self.assertIsNone(allapot.lemaradas(self.r, szinkron=True))
+
+    def test_nincs_git_konyvtar_ismeretlen(self):
+        ures = os.path.join(self.t, 'ures')
+        os.makedirs(ures)
+        if allapot._git_konyvtar(ures) is not None:
+            self.skipTest('az ideiglenes könyvtár fölött git-repó van')
+        self.assertIsNone(allapot.lemaradas(ures, szinkron=True))
+
+    def test_hatterszal_nem_blokkol_es_a_vegen_ad_erteket(self):
+        git(self.r, 'reset', '-q', '--hard', self.h[0])
+        elso = allapot.lemaradas(self.r)
+        self.assertIn(elso, (None, 3), 'az első hívás nem várja meg a git-et (None), legfeljebb ha már kész')
+        ertek = elso
+        for _ in range(100):
+            if ertek == 3:
+                break
+            time.sleep(0.05)
+            ertek = allapot.lemaradas(self.r)
+        self.assertEqual(ertek, 3)
+
+    def test_a_szam_csak_ref_valtozaskor_szamolodik_ujra(self):
+        git(self.r, 'reset', '-q', '--hard', self.h[0])
+        self.assertEqual(allapot.lemaradas(self.r, szinkron=True), 3)
+        hivasok = []
+        eredeti = allapot._commit_szam
+        allapot._commit_szam = lambda *a: hivasok.append(a) or 99
+        self.addCleanup(setattr, allapot, '_commit_szam', eredeti)
+        self.assertEqual(allapot.lemaradas(self.r), 3, 'ugyanazokkal a ref-ekkel a tárból jön')
+        self.assertEqual(hivasok, [])
+        git(self.r, 'update-ref', allapot.FO_REF, self.h[2])                  # a ref változott: újra kell számolni
+        allapot.lemaradas(self.r, szinkron=True)
+        self.assertEqual(len(hivasok), 1)
+
+    def test_checkout_szerep_fo_es_worktree(self):
+        git(self.r, 'branch', 'ag', self.h[1])
+        wt = os.path.join(self.t, 'wt')
+        git(self.r, 'worktree', 'add', '-q', wt, 'ag')
+        szerep, fo, mf = allapot.checkout_szerep(self.r)
+        self.assertEqual((szerep, os.path.normpath(fo), os.path.normpath(mf)), ('fo', os.path.normpath(self.r), os.path.normpath(self.r)))
+        szerep, fo, mf = allapot.checkout_szerep(wt)
+        self.assertEqual((szerep, os.path.normpath(fo), os.path.normpath(mf)), ('elonezet', os.path.normpath(self.r), os.path.normpath(wt)))
+
+    def test_a_figyelmeztetes_szovege_main_es_ag(self):
+        f = allapot.figyelmeztetesek('main', 'ts', '', 201)
+        self.assertEqual(len(f), 1)
+        self.assertIn('201 committal az origin/main mögött', f[0])
+        self.assertIn('fetch', f[0])
+        g = allapot.figyelmeztetesek('claude/x', 'ts', '', 5)
+        self.assertEqual(len(g), 2)
+        self.assertIn('Az ág 5 committal az origin/main mögött', g[1])
+        for lem in (0, None):
+            self.assertEqual(allapot.figyelmeztetesek('main', 'ts', '', lem), [])
+
+    def test_a_lablec_kulcsa_es_kornyezeti_felulirasa(self):
+        a = allapot.Lablec('belso', 'main', 'aaaaaaaa', 'ts', lemaradas=0)
+        b = allapot.Lablec('belso', 'main', 'aaaaaaaa', 'ts', lemaradas=7, figyelmeztetesek=['f'])
+        self.assertNotEqual(a.kulcs(), b.kulcs())
+        L = allapot.Lablec.keszit('belso', 'ts', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abcd1234', 'PARDES_LEMARADAS': '201'})
+        self.assertEqual(L.lemaradas, 201)
+        self.assertEqual(len(L.figyelmeztetesek), 1)
+        self.assertIn('201 committal', L.figyelmeztetesek[0])
+        self.assertIsNone(allapot.Lablec.keszit('belso', 'ts', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'x', 'PARDES_LEMARADAS': 'nem'}).lemaradas)
+
+
+class _InditAlap(unittest.TestCase):
+    """Az `indit.sh` tesztjeinek közös váza: ideiglenes adatbázisok, előkészítő mód (szerver nélkül), a valódi checkout védelme."""
 
     def setUp(self):
         self.t = tempfile.mkdtemp(prefix='indito_sh_')
@@ -321,12 +444,17 @@ class TesztInditSh(unittest.TestCase):
         os.makedirs(os.path.dirname(self.f))
         os.makedirs(os.path.dirname(self.c))
 
-    def _fut(self, port=0, **env):
+    def _fut(self, port=0, kiadas='belso', cel=D, **env):
+        """Az `indit.sh` futtatása előkészítő módban. Alapból NEM előnézet és nincs főcheckout-frissítés (PARDES_ELONEZET=0, PARDES_FRISSIT=0): a
+        szkript a tesztet futtató checkoutban áll, amelyet a teszt nem frissíthet és nem kezelhet előnézetként; az F225 tesztjei ezt felülírják."""
         kornyezet = dict(os.environ, PARDES_FORRAS_DB=self.f, PARDES_DB=self.c, PARDES_PY=sys.executable, PARDES_ZAR=os.path.join(self.t, 'zar'),
-                         PARDES_INDIT_CSAK_ELOKESZIT='1', PYTHONIOENCODING='utf-8')
+                         PARDES_INDIT_CSAK_ELOKESZIT='1', PYTHONIOENCODING='utf-8', PARDES_ELONEZET='0', PARDES_FRISSIT='0')
+        kornyezet.pop('PARDES_FRISSITVE', None)
         kornyezet.update(env)
-        p = subprocess.run(['bash', os.path.join(D, 'indit.sh'), 'belso', str(port or self._szabad_port())], env=kornyezet, stdout=subprocess.PIPE,
-                           stderr=subprocess.STDOUT, text=True, encoding='utf-8', timeout=60)
+        for k in [k for k, v in kornyezet.items() if v is None]:
+            del kornyezet[k]
+        p = subprocess.run(['bash', os.path.join(cel, 'indit.sh'), kiadas, str(port or self._szabad_port())], env=kornyezet, stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT, text=True, encoding='utf-8', timeout=120)
         return p.returncode, p.stdout
 
     @staticmethod
@@ -334,6 +462,11 @@ class TesztInditSh(unittest.TestCase):
         with socket.socket() as s:
             s.bind(('127.0.0.1', 0))
             return s.getsockname()[1]
+
+
+@unittest.skipUnless(POSIX, 'az indit.sh tesztjéhez POSIX, bash, fuser és flock kell (WSL)')
+class TesztInditSh(_InditAlap):
+    """Az `indit.sh` előkészítő módban: leállítás + szinkron, szerver nélkül."""
 
     def test_eltero_ts_masol_atomi_atnevezessel(self):
         kis_db(self.f, '2026-10-15T08:00:00Z', extra='uj')
@@ -412,6 +545,481 @@ class TesztInditSh(unittest.TestCase):
     def test_az_indit_sh_lf_sorvegu(self):
         with open(os.path.join(D, 'indit.sh'), 'rb') as f:
             self.assertNotIn(b'\r', f.read(), 'a CRLF-es shell-szkript WSL-ben nem fut (a .gitattributes *.sh eol=lf gondoskodik róla)')
+
+
+def szkript_repo(t):
+    """Ideiglenes főcheckout (F225): `origin.git` (bare), `fo` (a main ágon, az indító három szkriptje commitolva és pusholva), `masik` (második klón,
+    amellyel az origin-re új commit megy). Visszaadja (fo, masik, fo_cel) útját; `fo_cel` az `indit.sh` könyvtára a főcheckoutban."""
+    origin = os.path.join(t, 'origin.git')
+    os.makedirs(origin)
+    git(origin, 'init', '-q', '--bare', '-b', 'main')
+    git(t, 'clone', '-q', origin, 'fo')
+    fo = os.path.join(t, 'fo')
+    git(fo, 'checkout', '-q', '-B', 'main')
+    fo_cel = os.path.join(fo, 'eszkozok', 'olvaso_szerver')
+    os.makedirs(fo_cel)
+    for n in ('indit.sh', 'allapot.py', 'lekerdezesek.py'):
+        shutil.copy(os.path.join(D, n), os.path.join(fo_cel, n))
+    git(fo, 'add', '-A')
+    git(fo, 'commit', '-q', '-m', 'szkriptek')
+    git(fo, 'push', '-q', '-u', 'origin', 'main')
+    git(t, 'clone', '-q', origin, 'masik')
+    return fo, os.path.join(t, 'masik'), fo_cel
+
+
+def origin_commit(masik, fajl='uj.txt', tartalom='x\n'):
+    """Új commit az origin main ágán a második klónból; visszaadja az új hash-t."""
+    git(masik, 'pull', '-q', '--ff-only', 'origin', 'main')
+    with open(os.path.join(masik, fajl), 'a', encoding='utf-8', newline='') as f:
+        f.write(tartalom)
+    git(masik, 'add', '-A')
+    git(masik, 'commit', '-q', '-m', 'origin: ' + fajl)
+    git(masik, 'push', '-q', 'origin', 'main')
+    return git(masik, 'rev-parse', 'HEAD')
+
+
+@unittest.skipUnless(POSIX and GIT, 'az indit.sh tesztjéhez POSIX, bash, fuser, flock és git kell (WSL)')
+class TesztInditFrissites(_InditAlap):
+    """F225: a főcheckout frissítése induláskor (`git fetch` + `merge --ff-only`), ideiglenes repón; a valódi checkoutot a teszt nem érinti."""
+
+    def setUp(self):
+        super().setUp()
+        kis_db(self.f, '2026-10-14T09:35:00Z')
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        self.fo, self.masik, self.cel = szkript_repo(self.t)
+
+    def _fo_fut(self, **env):
+        env.setdefault('PARDES_FRISSIT', '1')
+        return self._fut(cel=self.cel, **env)
+
+    def _hash(self, ref='HEAD'):
+        return git(self.fo, 'rev-parse', ref)
+
+    def test_tiszta_munkafan_elorelep_es_az_uj_szkripttel_indul_ujra(self):
+        elotte = self._hash()
+        # az origin commitja az indit.sh-t is módosítja: az újraindított futásnak már az új szkriptet kell látnia
+        with open(os.path.join(self.cel, 'indit.sh'), encoding='utf-8') as fh:
+            szoveg = fh.read()
+        masik_sh = os.path.join(self.masik, 'eszkozok', 'olvaso_szerver', 'indit.sh')
+        git(self.masik, 'pull', '-q', '--ff-only', 'origin', 'main')
+        with open(masik_sh, 'w', encoding='utf-8', newline='') as fh:
+            fh.write(szoveg.replace('if [ "${PARDES_INDIT_CSAK_ELOKESZIT:-}" = "1" ]; then', 'naplo "FRISSÍTETT_SZKRIPT_FUT"\nif [ "${PARDES_INDIT_CSAK_ELOKESZIT:-}" = "1" ]; then', 1))
+        git(self.masik, 'add', '-A')
+        git(self.masik, 'commit', '-q', '-m', 'indit.sh változik')
+        git(self.masik, 'push', '-q', 'origin', 'main')
+        uj = git(self.masik, 'rev-parse', 'HEAD')
+        kod, ki = self._fo_fut()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('a főcheckout előrelépett: %s -> %s' % (elotte[:8], uj[:8]), ki)
+        self.assertIn('újraindítás a frissített indit.sh-val', ki)
+        self.assertEqual(ki.count('FRISSÍTETT_SZKRIPT_FUT'), 1, ki)
+        self.assertEqual(self._hash(), uj)
+
+    def test_naprakesz_nem_lep_es_nem_indul_ujra(self):
+        kod, ki = self._fo_fut()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('a főcheckout naprakész', ki)
+        self.assertNotIn('újraindítás', ki)
+
+    def test_piszkos_munkafan_kihagyja_de_a_fetch_lefut(self):
+        elotte = self._hash()
+        with open(os.path.join(self.cel, 'allapot.py'), 'a', encoding='utf-8', newline='') as f:
+            f.write('# kézi módosítás\n')
+        uj = origin_commit(self.masik)
+        kod, ki = self._fo_fut()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('a munkafa nem tiszta', ki)
+        self.assertIn('allapot.py', ki, 'a napló megnevezi a módosított fájlt')
+        self.assertEqual(self._hash(), elotte, 'piszkos munkafán nincs előreléptetés')
+        self.assertEqual(self._hash('refs/remotes/origin/main'), uj, 'a fetch lefutott: a lábléc lemaradás-jelzése friss origin/main-nel igaz')
+        with open(os.path.join(self.cel, 'allapot.py'), encoding='utf-8') as f:
+            self.assertTrue(f.read().endswith('# kézi módosítás\n'), 'a kézi módosítás érintetlen')
+
+    def test_koveteten_fajl_nem_akadaly(self):
+        with open(os.path.join(self.fo, 'jegyzet.txt'), 'w', encoding='utf-8') as f:
+            f.write('követetlen\n')
+        uj = origin_commit(self.masik)
+        kod, ki = self._fo_fut()
+        self.assertEqual(kod, 0, ki)
+        self.assertEqual(self._hash(), uj, ki)
+
+    def test_nem_main_agon_kihagyja_fetch_nelkul(self):
+        git(self.fo, 'checkout', '-q', '-b', 'masik-ag')
+        regi = self._hash('refs/remotes/origin/main')
+        uj = origin_commit(self.masik)
+        kod, ki = self._fo_fut()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('nem a main ágon áll (ág: masik-ag)', ki)
+        self.assertEqual(self._hash('refs/remotes/origin/main'), regi, 'a nem main ágon a fetch sem fut')
+        self.assertNotEqual(regi, uj)
+
+    def test_nem_belso_kiadasnal_kihagyja(self):
+        origin_commit(self.masik)
+        elotte = self._hash()
+        kod, ki = self._fut(cel=self.cel, kiadas='nyilvanos', PARDES_FRISSIT='1')
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('csak a belso kiadásnál', ki)
+        self.assertEqual(self._hash(), elotte)
+
+    def test_eltavolodott_main_nem_lep_elore(self):
+        with open(os.path.join(self.fo, 'helyi.txt'), 'w', encoding='utf-8') as f:
+            f.write('helyi\n')
+        git(self.fo, 'add', '-A')
+        git(self.fo, 'commit', '-q', '-m', 'helyi, nem pusholt')
+        helyi = self._hash()
+        origin_commit(self.masik)
+        kod, ki = self._fo_fut()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('nem léptethető előre', ki)
+        self.assertEqual(self._hash(), helyi, 'a helyi commit megmarad, nincs összefésülés')
+
+    def test_sikertelen_fetch_nem_allitja_meg_az_inditast(self):
+        git(self.fo, 'remote', 'set-url', 'origin', os.path.join(self.t, 'nincs_ilyen.git'))
+        kod, ki = self._fo_fut()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('a git fetch sikertelen', ki)
+
+    def test_frissit_0_kikapcsol_fetch_nelkul(self):
+        regi = self._hash('refs/remotes/origin/main')
+        origin_commit(self.masik)
+        kod, ki = self._fo_fut(PARDES_FRISSIT='0')
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('PARDES_FRISSIT=0', ki)
+        self.assertEqual(self._hash('refs/remotes/origin/main'), regi)
+
+    def test_az_elonezet_nem_huzza_a_focheckoutot(self):
+        git(self.fo, 'branch', 'elo')
+        wt = os.path.join(self.t, 'wt')
+        git(self.fo, 'worktree', 'add', '-q', wt, 'elo')
+        origin_commit(self.masik)
+        elotte = self._hash()
+        kod, ki = self._fut(cel=os.path.join(wt, 'eszkozok', 'olvaso_szerver'), PARDES_ELONEZET=None, PARDES_FRISSIT='1')
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('frissítés: kihagyva — előnézeti mód', ki)
+        self.assertEqual(self._hash(), elotte)
+
+    def test_sikertelen_status_nem_tiszta_munkafa(self):
+        # a git status hibája (időtúllépés, hiba) nem jelenthet „tiszta” munkafát: a merge nem futhat
+        hibas = os.path.join(self.t, 'git_hibas_status.sh')
+        with open(hibas, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('#!/bin/bash\nfor a in "$@"; do [ "$a" = status ] && { echo "fatal: proba" >&2; exit 128; }; done\nexec git "$@"\n')
+        os.chmod(hibas, 0o755)
+        elotte = self._hash()
+        origin_commit(self.masik)
+        kod, ki = self._fo_fut(PARDES_GIT=hibas)
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('a git status sikertelen', ki)
+        self.assertEqual(self._hash(), elotte, 'hibás status mellett nincs előreléptetés')
+
+    def test_a_valodi_checkout_ellen_alapbol_vedett(self):
+        # a _fut alapja PARDES_FRISSIT=0: a tesztet futtató checkout soha nem húzódik le
+        kod, ki = self._fut()
+        self.assertIn('PARDES_FRISSIT=0', ki)
+
+
+@unittest.skipUnless(POSIX and GIT, 'az indit.sh tesztjéhez POSIX, bash, fuser, flock és git kell (WSL)')
+class TesztInditElonezet(_InditAlap):
+    """F225: az előnézeti mód két védelme és a forrás-adatbázis alapja, linkelt worktree-ben (ideiglenes repón)."""
+
+    def setUp(self):
+        super().setUp()
+        self.fo, self.masik, fo_cel = szkript_repo(self.t)
+        self.wt = os.path.join(self.t, 'wt')
+        git(self.fo, 'worktree', 'add', '-q', self.wt, '-b', 'ag')
+        self.cel = os.path.join(self.wt, 'eszkozok', 'olvaso_szerver')
+
+    def _elo(self, port=0, **env):
+        env.setdefault('PARDES_ELONEZET', None)                                   # automatikus felismerés a `.git` fájlból
+        return self._fut(port=port, cel=self.cel, **env)
+
+    def _figyel(self, cwd, port):
+        regi = subprocess.Popen([sys.executable, '-c', 'import socket,time\ns=socket.socket();s.setsockopt(socket.SOL_SOCKET,socket.SO_REUSEADDR,1);'
+                                 's.bind(("127.0.0.1",%d));s.listen();time.sleep(60)' % port], cwd=cwd)
+        self.addCleanup(lambda: (regi.poll() is None) and regi.kill())
+        for _ in range(50):
+            with socket.socket() as sk:
+                if sk.connect_ex(('127.0.0.1', port)) == 0:
+                    break
+            time.sleep(0.1)
+        return regi
+
+    def test_ervenytelen_elonezet_ertek_hiba_nem_nem_elonezet(self):
+        # egy elgépelt érték nem kapcsolhatja ki némán a védelmet (a közös másolat felülírása, idegen példány leállítása)
+        kis_db(self.f, '2026-10-15T08:00:00Z')
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        elotte = os.stat(self.c)
+        kod, ki = self._elo(PARDES_ELONEZET='true')
+        self.assertEqual(kod, 2, ki)
+        self.assertIn('PARDES_ELONEZET', ki)
+        self.assertNotIn('MÁSOLÁS', ki)
+        self.assertEqual(elotte.st_mtime_ns, os.stat(self.c).st_mtime_ns)
+
+    def test_worktreebol_automatikusan_elonezet(self):
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        kod, ki = self._elo()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('mód: ELŐNÉZET', ki)
+
+    def test_a_fo_checkout_nem_elonezet(self):
+        kis_db(self.f, '2026-10-14T09:35:00Z')
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        kod, ki = self._fut(cel=os.path.join(self.fo, 'eszkozok', 'olvaso_szerver'), PARDES_ELONEZET=None)
+        self.assertEqual(kod, 0, ki)
+        self.assertNotIn('ELŐNÉZET', ki)
+
+    def test_a_kozos_masolatba_nem_ir(self):
+        kis_db(self.f, '2026-10-15T08:00:00Z', extra='ujabb')                      # a forrás újabb: főcheckoutban ez másolást jelentene
+        kis_db(self.c, '2026-10-14T09:35:00Z', extra='kozos')
+        elotte = os.stat(self.c)
+        with open(self.c, 'rb') as fh:
+            tartalom = fh.read()
+        kod, ki = self._elo()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('NINCS másolás', ki)
+        self.assertNotIn('MÁSOLÁS', ki)
+        utana = os.stat(self.c)
+        self.assertEqual((elotte.st_ino, elotte.st_mtime_ns, elotte.st_size), (utana.st_ino, utana.st_mtime_ns, utana.st_size))
+        with open(self.c, 'rb') as fh:
+            self.assertEqual(fh.read(), tartalom)
+        self.assertEqual(sorted(os.listdir(os.path.dirname(self.c))), ['pardes.db'], 'ideiglenes másolat sem maradhat')
+
+    def test_a_kozos_masolat_hianyaban_hiba_masolas_nelkul(self):
+        kis_db(self.f, '2026-10-15T08:00:00Z')
+        kod, ki = self._elo()
+        self.assertNotEqual(kod, 0)
+        self.assertIn('HIBA: nincs adatbázis-másolat', ki)
+        self.assertFalse(os.path.exists(self.c), 'előnézet nem hozza létre a közös másolatot')
+
+    def test_a_forras_alapja_a_fo_checkout_pardes_db_je(self):
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        fo_db = os.path.join(self.fo, 'pardes.db')
+        kis_db(fo_db, '2026-10-15T08:00:00Z')
+        kod, ki = self._elo(PARDES_FORRAS_DB=None)
+        self.assertEqual(kod, 0, ki)
+        self.assertIn(fo_db, ki)
+
+    def test_idegen_peldanyt_nem_allit_le(self):
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        port = self._szabad_port()
+        idegen = self._figyel(self.t, port)                                       # a munkakönyvtára nem ez a checkout
+        kod, ki = self._elo(port=port)
+        self.assertEqual(kod, 3, ki)
+        self.assertIn('idegen példány', ki)
+        self.assertIn('szabad port', ki)
+        self.assertIsNone(idegen.poll(), 'az idegen példánynak életben kell maradnia')
+
+    def test_a_fo_checkout_peldanyat_sem_allitja_le_elonezetbol(self):
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        port = self._szabad_port()
+        fo_peldany = self._figyel(os.path.join(self.fo, 'eszkozok', 'olvaso_szerver'), port)
+        kod, ki = self._elo(port=port)
+        self.assertEqual(kod, 3, ki)
+        self.assertIsNone(fo_peldany.poll())
+
+    def test_a_sajat_checkout_regi_peldanyat_leallitja(self):
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        port = self._szabad_port()
+        sajat = self._figyel(self.cel, port)
+        kod, ki = self._elo(port=port)
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('leállt', ki)
+        self.assertIsNotNone(sajat.wait(timeout=10))
+
+    def test_a_fo_checkout_inditasa_nem_valtozott_idegen_peldanyt_is_leallit(self):
+        # a parancsikon (főcheckout, nem előnézet) továbbra is bármit leállít a portján (a tükör újraindítása)
+        kis_db(self.f, '2026-10-14T09:35:00Z')
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        port = self._szabad_port()
+        regi = self._figyel(self.t, port)
+        kod, ki = self._fut(port=port)
+        self.assertEqual(kod, 0, ki)
+        self.assertIsNotNone(regi.wait(timeout=10))
+
+
+class TesztElonezetAlkalmazas(unittest.TestCase):
+    """F225: az önfrissítő előnézet a valódi alkalmazáson (Flask és pardes.db kell; enélkül kimarad, kifejezetten jelölve): kulcs-végpont, kliensszkript,
+    csak a `belso` kiadásban, a CSP változatlan, a lap tetejének figyelmeztetése."""
+
+    KORNYEZET = ('PARDES_AG', 'PARDES_COMMIT', 'PARDES_FORRAS_DB', 'PARDES_LEMARADAS')
+
+    @classmethod
+    def setUpClass(cls):
+        try:
+            import flask  # noqa: F401
+        except ImportError:
+            raise unittest.SkipTest('nincs Flask: az előnézet alkalmazás-tesztje kimarad (nem zöld)')
+        cls.db = os.environ.get('PARDES_DB') or os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(D))), 'pardes.db')
+        if not os.path.isfile(cls.db):
+            raise unittest.SkipTest('nincs pardes.db (%s): az előnézet alkalmazás-tesztje kimarad (nem zöld)' % cls.db)
+        import alkalmazas
+        cls.alk = alkalmazas
+
+    def setUp(self):
+        reg = {k: os.environ.get(k) for k in self.KORNYEZET}
+        self.addCleanup(lambda: [os.environ.pop(k, None) if v is None else os.environ.__setitem__(k, v) for k, v in reg.items()])
+        os.environ.update(PARDES_AG='main', PARDES_COMMIT='abcd1234', PARDES_LEMARADAS='0')
+        os.environ.pop('PARDES_FORRAS_DB', None)
+
+    def _kliens(self, kiadas='belso'):
+        app = self.alk.letrehoz(self.db, kiadas)
+        app.extensions['pardes']['gyar'].lablec.ttl = 0                         # minden kérésnél újraolvas
+        return app, app.test_client()
+
+    def test_a_kulcs_vegpont_belsoben_json_adatbazis_nelkul(self):
+        app, c = self._kliens('belso')
+        gyar = app.extensions['pardes']['gyar']
+
+        def tilos(*a, **k):
+            raise AssertionError('a kulcs-végpont nem olvashat adatbázist')
+        gyar.db.kapcsolat = tilos                                              # a /statusz ezen át olvas; a kulcs-végpontnak nem kell
+        r = c.get('/elonezet/kulcs')
+        self.assertEqual(r.status_code, 200)
+        self.assertTrue(r.headers['Content-Type'].startswith('application/json'))
+        self.assertEqual(r.headers['Cache-Control'], 'no-store')
+        j = r.get_json()
+        for kulcs in ('azonosito', 'kod_verzio', 'arculat_hash', 'lablec', 'adatbazis_kulcs', 'ag', 'commit', 'lemaradas'):
+            self.assertIn(kulcs, j)
+        self.assertEqual((j['kod_verzio'], j['arculat_hash'], j['adatbazis_kulcs']), (gyar.kod_verzio, gyar.arculat.hash, gyar.kozos.adatbazis_kulcs))
+        self.assertEqual((j['ag'], j['commit'], j['lemaradas']), ('main', 'abcd1234', 0))
+        self.assertEqual(c.get('/elonezet/kulcs').get_json()['azonosito'], j['azonosito'], 'változatlan állapotnál stabil')
+
+    def test_az_azonosito_valtozik_az_allapottal(self):
+        app, c = self._kliens('belso')
+        a = c.get('/elonezet/kulcs').get_json()['azonosito']
+        os.environ['PARDES_AG'] = 'claude/valami'                              # ágváltás
+        b = c.get('/elonezet/kulcs').get_json()['azonosito']
+        os.environ['PARDES_AG'] = 'main'
+        os.environ['PARDES_LEMARADAS'] = '5'                                   # lemaradás
+        d = c.get('/elonezet/kulcs').get_json()['azonosito']
+        self.assertEqual(len({a, b, d}), 3)
+        gyar = app.extensions['pardes']['gyar']
+        gyar.kod_verzio = 'masik'                                              # kódváltozás (az újratöltő újraindítása után)
+        self.assertNotEqual(c.get('/elonezet/kulcs').get_json()['azonosito'], d)
+
+    def test_a_lap_a_kiindulo_azonositot_hordozza(self):
+        app, c = self._kliens('belso')
+        azon = c.get('/elonezet/kulcs').get_json()['azonosito']
+        h = c.get('/1Moz/1/1').get_data(as_text=True)
+        self.assertIn('<script src="/elonezet/elonezet.js?v=%s" data-azonosito="%s" defer></script>' % (azon, azon), h)
+
+    def test_csak_a_belso_kiadasban(self):
+        for kiadas in ('nyilvanos', 'kereskedelmi'):
+            with self.subTest(kiadas=kiadas):
+                app, c = self._kliens(kiadas)
+                self.assertEqual(c.get('/elonezet/kulcs').status_code, 404)
+                self.assertEqual(c.get('/elonezet/elonezet.js').status_code, 404, 'a kliens nem szolgálható ki más kiadásban')
+                self.assertEqual(c.get('/statikus/elonezet.js').status_code, 404, 'nem is a mindenkinek kiszolgált statikus/-ban áll')
+                self.assertEqual(c.get('/tervezo/elonezet.js').status_code, 404)
+                h = c.get('/1Moz/1/1').get_data(as_text=True)
+                self.assertNotIn('elonezet.js', h)
+                self.assertNotIn('data-azonosito', h)
+                self.assertFalse(app.extensions['pardes']['gyar'].elonezet)
+        app, c = self._kliens('belso')
+        self.assertEqual(c.get('/elonezet/kulcs').status_code, 200)
+
+    def test_a_csp_nem_lazul(self):
+        app, c = self._kliens('belso')
+        for ut in ('/1Moz/1/1', '/elonezet/kulcs', '/elonezet/elonezet.js'):
+            r = c.get(ut)
+            self.assertEqual(r.headers['Content-Security-Policy'], self.alk.CSP, ut)
+        self.assertIn("script-src 'self'", self.alk.CSP)
+        self.assertNotIn('unsafe', self.alk.CSP)
+        h = c.get('/1Moz/1/1').get_data(as_text=True)
+        import re
+        for tag in re.findall(r'<script\b[^>]*>', h):
+            self.assertIn('src=', tag, 'inline szkript nem lehet: ' + tag)
+
+    def test_a_kliens_kiszolgalva_es_tartalma(self):
+        app, c = self._kliens('belso')
+        r = c.get('/elonezet/elonezet.js')
+        self.assertEqual(r.status_code, 200)
+        self.assertTrue(r.headers['Content-Type'].startswith('text/javascript'))
+        self.assertEqual(c.get('/statikus/elonezet.js').status_code, 404)
+        js = r.get_data(as_text=True)
+        for resz in ('/elonezet/kulcs', 'data-tervezo', 'location.reload', 'visibilitychange', 'data-azonosito', 'document.hidden'):
+            self.assertIn(resz, js)
+        self.assertNotIn('classList', js, 'a kliens nem vezet be CSS-osztályt (regiszter-őr)')
+        self.assertNotIn('className', js)
+        self.assertNotIn('innerHTML', js)
+
+    @unittest.skipUnless(shutil.which('node'), 'nincs node: a szintaxis-ellenőrzés kimarad')
+    def test_a_kliens_szintaxisa(self):
+        p = subprocess.run(['node', '--check', os.path.join(D, 'tervezo_statikus', 'elonezet.js')], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+        self.assertEqual(p.returncode, 0, p.stdout)
+
+    def test_a_figyelt_fajlok_kozt_a_tervezo_statikus_es_a_kliens(self):
+        fajlok = [f.replace(os.sep, '/') for f in self.alk.figyelt_fajlok()]
+        self.assertTrue(any(f.endswith('tervezo_statikus/tervezo.js') for f in fajlok))
+        self.assertTrue(any(f.endswith('tervezo_statikus/tervezo.css') for f in fajlok))
+        self.assertTrue(any(f.endswith('tervezo_statikus/elonezet.js') for f in fajlok))
+        self.assertFalse(any(os.path.basename(f).startswith('arculat.json') for f in fajlok), 'az arculat.json továbbra sem figyelt')
+
+    def test_a_lap_tetejen_is_megjelenik_a_figyelmeztetes_regisztralt_osztallyal(self):
+        import re
+        app, c = self._kliens('belso')
+        os.environ['PARDES_AG'] = 'claude/valami'
+        os.environ['PARDES_LEMARADAS'] = '12'
+        h = c.get('/1Moz/1/1').get_data(as_text=True)
+        fej = h.index('<header')
+        felso = h[h.index('>', h.index('<body')) + 1:fej]                      # a <body> címke után, a fejlécig
+        self.assertIn('role="status"', felso)
+        self.assertIn('Figyelem:', felso)
+        self.assertIn('claude/valami', felso)
+        self.assertIn('12 committal az origin/main mögött', felso)
+        self.assertEqual(set(re.findall(r'class="([^"]*)"', felso)), {'labjegyzet'}, 'csak a regisztrált osztály')
+        self.assertIn('Figyelem:', h[h.index('<footer'):], 'a lábléc figyelmeztetése megmarad')
+
+    def test_main_ag_naprakeszen_nincs_felso_sav(self):
+        app, c = self._kliens('belso')
+        h = c.get('/1Moz/1/1').get_data(as_text=True)
+        self.assertNotIn('role="status"', h)
+        self.assertNotIn('Figyelem:', h)
+
+
+def windows_temp_wsl():
+    """A Windows ideiglenes könyvtára WSL-útként; None, ha nem WSL vagy nincs `cmd.exe`/`wslpath`."""
+    if not (shutil.which('cmd.exe') and shutil.which('wslpath') and shutil.which('git.exe') and os.path.isdir('/mnt/c')):
+        return None
+    try:
+        win = subprocess.run(['cmd.exe', '/c', 'echo %TEMP%'], stdout=subprocess.PIPE, stderr=subprocess.DEVNULL, text=True, timeout=20, cwd='/mnt/c').stdout.strip()
+        ut = subprocess.run(['wslpath', '-u', win], stdout=subprocess.PIPE, text=True, timeout=20).stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return ut if ut and os.path.isdir(ut) else None
+
+
+@unittest.skipUnless(POSIX and GIT and windows_temp_wsl(), 'a git.exe-s úthoz WSL, Windows-git és a Windows ideiglenes könyvtára kell')
+class TesztInditGitExe(_InditAlap):
+    """F225: a /mnt/<meghajtó> alatti főcheckoutnál az indító a Windows-oldali `git.exe`-t hívja (a WSL-git ott ~85 s és hamisan piszkos); a PARDES_GIT
+    nélküli, automatikus választás végig, valódi git.exe-vel, a Windows-meghajtón lévő ideiglenes repón."""
+
+    def setUp(self):
+        super().setUp()
+        self.w = tempfile.mkdtemp(prefix='indito_exe_', dir=windows_temp_wsl())
+        self.addCleanup(shutil.rmtree, self.w, True)
+        kis_db(self.f, '2026-10-14T09:35:00Z')
+        kis_db(self.c, '2026-10-14T09:35:00Z')
+        self.fo, self.masik, self.cel = szkript_repo(self.w)
+        # a git.exe a Linux-útvonalú távolit nem érti: a főcheckout origin-je Windows-útvonal (a második klón a Linux-úton ír ugyanabba a bare repóba)
+        win = subprocess.run(['wslpath', '-m', os.path.join(self.w, 'origin.git')], stdout=subprocess.PIPE, text=True).stdout.strip()
+        git(self.fo, 'remote', 'set-url', 'origin', win)
+
+    def test_automatikus_git_exe_elorelep_es_piszkosnal_kihagy(self):
+        elotte = git(self.fo, 'rev-parse', 'HEAD')
+        uj = origin_commit(self.masik)
+        kod, ki = self._fut(cel=self.cel, PARDES_FRISSIT='1')
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('a főcheckout előrelépett: %s -> %s' % (elotte[:8], uj[:8]), ki)
+        self.assertEqual(git(self.fo, 'rev-parse', 'HEAD'), uj)
+        # piszkos munkafa: a git.exe is észleli, és nincs előreléptetés
+        with open(os.path.join(self.cel, 'allapot.py'), 'a', encoding='utf-8', newline='') as f:
+            f.write('# kézi módosítás\n')
+        uj2 = origin_commit(self.masik, fajl='masodik.txt')
+        kod, ki = self._fut(cel=self.cel, PARDES_FRISSIT='1')
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('a munkafa nem tiszta', ki)
+        self.assertEqual(git(self.fo, 'rev-parse', 'HEAD'), uj)
+        self.assertNotEqual(uj, uj2)
 
 
 if __name__ == '__main__':
