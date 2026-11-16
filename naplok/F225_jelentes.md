@@ -42,6 +42,70 @@ A böngészőpanel **kipróbálva**: a `.claude/launch.json` `olvaso-ag` bejegyz
 
 `python eszkozok/teszt_futtat.py --fajl teszt_indito` (WSL): 80 teszt, zöld (1 kihagyva: a `node --check` WSL-ben nincs node; Windowson lefutott: `JS_SZINTAXIS_OK`). `--fajl teszt_tervezo`: 51, zöld (a regiszter-őr a sablonon). Új tesztosztályok: `TesztLemaradas` (11), `TesztInditFrissites` (11), `TesztInditElonezet` (9), `TesztElonezetAlkalmazas` (10).
 
+## Független ellenőrzés — 1. ellenőrzés
+
+ELTÉRÉS: 5 tétel
+
+**Brief:** `F225_ELONEZET_BRIEF.md` · **tartomány:** `efb492ff..e56110f4` · **szint:** `teljes` (`python eszkozok/feladatok.py szint 225` → `SZINT #225 teljes 2 kör olvasói kimenetet állít elő: eszkozok/olvaso_szerver/indit.sh`)
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0. modell | OK | — | A session modellje `claude-opus-5-5`, a kért `opus`; egyezik. A menet `modell` mezői: a jelentés `claude-sonnet-5-5`-öt ír, és mind a 6 commit trailere `Claude Sonnet 5.5` (`git log efb492ff..HEAD --format='%h %s%n%(trailers:key=Co-Authored-By)'`); ez a brief `modell: sonnet` mezőjével egybevág. Adattábla-sor nincs a diffben. |
+| 3. CI | OK | — | `gh run view 43826738845 --json headSha,status,conclusion,jobs` → headSha `e56110f43dab…` = HEAD, `completed/success`, a `feladatkovetes` és az `ellenorzes` job is success. Az E1–E37 eredményét innen veszem, a `futtat.py`-t nem futtattam újra. |
+| Tesztek: teszt_indito | OK | `eszkozok/olvaso_szerver/teszt_indito.py` | `python eszkozok/teszt_futtat.py --fajl teszt_indito` → `Ran 80 tests in 47.830s OK (skipped=1)` (WSL). |
+| Tesztek: `--diff efb492ff` és a lassú tesztek | NEM ELLENŐRIZHETŐ | `eszkozok/teszt_futtat.py:55` | A diff az `eszkozok/olvaso_szerver/`-t érinti, ezért a `LASSU_LEFEDETT` szerint a `teszt_szintek` és a `teszt_arculat` kötelező; ezeket a CI nem futtatja. Elindítottam (`python eszkozok/teszt_futtat.py --diff efb492ff`, háttérfeladat `bj22fqfxv`), de a jelentés zárásakor még a közös zárra várt: a zárat egy másik worktree tartja, `elegant-elion-896f84`, `futtat.py --valtozott (110 fájl)`, 09:01:26 óta. A lassú tesztek kb. 20–30 percig futnak. A meglévő oldaltesztek (`teszt_olvaso_szerver`, `teszt_tervezo`) a lap tetején megjelenő új sávval ezért nincsenek általam lefuttatva. |
+| G A(1): lemaradás a láblécben | OK | `allapot.py:170-224, 294-299` | Kódolvasás és a `TesztLemaradas` (11 teszt, zöld). Csomagolt objektumok, `packed-refs`, worktree `--git-dir`: tesztelve. |
+| G A(2): a főcheckout frissítése | OK, megjegyzéssel | `indit.sh:69-118` | A `pull --ff-only` helyett `fetch` + `merge --ff-only origin/main`; ez egyenértékű, és a fejléc dokumentálja. Minden feltétel le van fedve (`PARDES_FRISSIT`, belso, nem előnézet, `.git` könyvtár, `main` ág). Az újraindulás egyszeri: a `PARDES_FRISSITVE=1` miatt a második futás nem frissít újra; a `"$@"` a legfelső szinten megmarad; `set -u` mellett minden változó definiált. A `TesztInditFrissites` (11 teszt) ideiglenes repón fut. A hibakezelési hiányokat l. az E3 és E4 tételt. |
+| G B: előnézeti védelmek | OK, megjegyzéssel | `indit.sh:47-57, 116-139, 155-158` | Előnézetben a `cp`/`mv`/`TMP` ág nem érhető el (`if [ "$ELONEZET" = "1" ]` előbb ágazik el). A szerver `mode=ro`-val nyit (`adatbazis.py:52`), és az `allapot.db_epites_ts` is (`allapot.py:45`). A testvérkönyvtár-előtag (`olvaso_szerver2`) a `"$CEL_REAL"/*` minta miatt kizárt. Ha a `readlink` hibázik vagy a `cwd` üres, a példány idegennek számít, és a szkript 3-as kóddal kilép (biztonságos irány). A felismerés kerülőútját l. az E2 tételt. |
+| G B: kulcs-végpont, kliens, figyelt fájlok, felső sáv | ELTÉRÉS, l. E1 | `alkalmazas.py:66, 75-83`; `statikus/elonezet.js:1-2` | A végpont csak `belso`-ban él, és nem olvas adatbázist (a teszt a `db.kapcsolat`-ot lecseréli). A szkript viszont minden kiadásban kiszolgálható (E1). |
+| G B: `.gitignore`, `launch.json`, README | OK | `.gitignore:10-14`, `.claude/launch.json` | A `!.claude/launch.json` kivétel a `.claude/*` után áll, tehát hat. Azt, hogy a panel valóban a worktree-ből indít, nem tudom igazolni: NEM ELLENŐRIZHETŐ, csak a jelentés állítja. |
+| G: hatókör, „Nincs benne” | OK | brief 2. szakasz; `nyitott/uj/elonezet-ab-14ecb0.md` | Generált lap, `MUNKAMENET.md` és adat nincs a diffben (`git diff --numstat efb492ff..HEAD`: 13 fájl, mind a felsoroltak közül). |
+| Elfogadás: PR zöld | OK | — | CI success (fent). |
+| Elfogadás: a jelentés leírja az indítást | OK | `naplok/F225_jelentes.md:39`; `README.md` „Fejlesztői előnézet” | — |
+| Elfogadás: a fő checkoutban semmi nem írt és nem húzott le | OK (a HEAD-re) | — | `git -C …/Desktop/Bible-Study log -g -8 HEAD`: az utolsó HEAD-mozgás `1352ac3c`, 2026-11-12 20:23. Az `origin/main` reflogjában 11-16 07:32 és 07:45 között két fetch áll; a 07:45-ös `--porcelain --no-write-fetch-head` alakja worktree-létrehozásra vall. A ref közös, ezért nem tudom a menethez kötni, és nem is HEAD-mozgás. |
+| Elfogadás: a CSP nem lazul, nincs új CSS-osztály | OK | `teszt_indito.py` `test_a_csp_nem_lazul`, `test_a_lap_tetejen…` | A tesztek zöldek. A `regiszter_or.py:42` `JS_FAJLOK` listájában az `elonezet.js` nem szerepel: a védelem csak a szövegteszten (`assertNotIn('classList')`) múlik. Ez megjegyzés, nem eltérés. |
+| D1 (`.bat` változatlan) | OK | — | A `.bat` a repón kívül áll, a diff nem érinti. |
+| D2 (`git.exe` a `/mnt` alatt) | OK, de a mérés NEM ELLENŐRIZHETŐ | `indit.sh:76-80` | A 85 s és a 0,33 s mérést csak a fő checkouton lehetne megismételni, ott nem futtatok. A `git.exe` útvonalat egyetlen teszt sem járja be: a tesztrepó `/tmp`-ben van, ott a WSL-git fut. L. az E3 tételt. |
+| D3 (`rev-list`, háttérszál) | OK | `allapot.py:176-224` | A versenyhelyzet zárva: a `_SZAMOL` jelzőt zár alatt állítja be, a szálat egyszer indítja. A `_tarol` metszése az utolsó 8 kész kulcsot tartja meg. A `safe.directory` `-c` kapcsolóval megy; parancssori beállításként ezt a git elfogadja. |
+| D4 (a `fetch` a munkafa állapotától függetlenül fut) | OK | `indit.sh:84-88` | `test_piszkos_munkafan_kihagyja_de_a_fetch_lefut`. |
+| D5 (előnézeti mód, felülírás) | ELTÉRÉS, l. E2 | `indit.sh:47-49` | — |
+| A1 (memória vs. lekérdezés) | NEM ELLENŐRIZHETŐ | `naplok/F225_jelentes.md:15, 19-25` | A mérések proveniencia-sorral állnak, de a fő checkouton mért értékeket (201 commit, 0,19 s, 85 s) nem ismételhetem meg. |
+| A2 (nyitott tételek) | OK, részben NEM ELLENŐRIZHETŐ | `nyitott/uj/elonezet-ab-14ecb0.md:1` | Az N-F225a új és nyitott. Azt, hogy „a #725 nyitott”, a megengedett parancsokkal (`gh run` csak) nem tudom ellenőrizni. |
+| A3–A6 | OK, nem alkalmazható | — | A diffben nincs tartalmi réteg (adat, motívum, lexikon, tanulmány, tanító). Olvasói kimenetet csak a szerver-UI szövegei adnak (figyelmeztetések); ezekről az E5 szól. Az E12–E15 nem jelzett: a CI zöld. |
+| Ellenőrzőlista 1: kiszűrt/törölt sorok | OK | — | `git diff --numstat efb492ff..HEAD`: törölt sorok csak kódban és README-ben (README 7, alkalmazas 2, allapot 17, indit.sh 7, teszt_indito 8). Mind átírás, adatsor nincs köztük. |
+| Ellenőrzőlista 2: kulcstartomány | OK, nem alkalmazható | — | A diffben nincs kulcstartományos adat. |
+| Ellenőrzőlista 3: nulla-diff | OK, nem alkalmazható | — | Nulla-diff állítás nincs; generált kimenet nincs a diffben. |
+| Ellenőrzőlista 4: TSV-sorszám Δ | OK | — | `git diff --numstat efb492ff..HEAD -- adat/ konkordancia/ \| wc -l` → `0`. Minden tábla Δ = 0. |
+| Ellenőrzőlista 5: ⛔ pontok | OK | — | A briefben nincs ⛔. A „fő checkoutot nem írja” vállalás teljesül (fent). |
+| DT-F221a (hatókör-szűkítés) | OK | brief 2. szakasz | Az előnézet új eszköz, nem szűkít meglévő ellenőrzést. A korlátját (az adatváltozás nem látszik) a brief és a README is kimondja. |
+| Újratöltési hurok (4. kérdés) | OK, megjegyzéssel | `oldalak.py:229, 632-642`; `alkalmazas.py:114-115` | A gyorsítótár-kulcs az azonosító mind a négy összetevőjét tartalmazza, tehát végtelen hurok nincs. Egy plusz újratöltés viszont várható: indulás után a lemaradás az első rendereléskor `None`, és amikor a háttérszál végez, az azonosító megváltozik, a lap egyszer újratölt. |
+
+**ELTÉRÉS-ek, súlyosság szerint:**
+
+- **E1 (közepes): a belső kliens minden kiadásban kiszolgálható.**
+  - Hol: `statikus/elonezet.js:1-2` és `alkalmazas.py:75-76`.
+  - Mi a hiba: a megjegyzés szerint „más kiadásban sem az útvonal, sem a szkript nincs (404)”. A fájl viszont a `statikus/` könyvtárban van, amelyet a Flask static útvonala minden kiadásban kiszolgál (`alkalmazas.py:66`; `before_request` szűrő nincs). A `/statikus/elonezet.js` tehát `nyilvanos` és `kereskedelmi` kiadásban is elérhető.
+  - Mi sérül: a #98 M2 mintája, amely a belső klienst a `tervezo_statikus/`-ba teszi; a `teszt_tervezo.py:499` erre 404-et vár. A `test_csak_a_belso_kiadasban` csak a lap HTML-jét és a `/elonezet/kulcs`-ot nézi, ezért nem veszi észre.
+  - Javítás: a kliens kerüljön csak `belso`-ban bejegyzett útvonalra, plusz egy 404-teszt.
+- **E2 (alacsony–közepes): érvénytelen `PARDES_ELONEZET` csendben kikapcsolja a védelmet.**
+  - Hol: `indit.sh:47-50`.
+  - Mi a hiba: bármely `1`-től eltérő érték (`true`, `yes`) nem-előnézetnek számít. Worktree-ben ilyenkor a szinkron a worktree saját `pardes.db`-jéből a közös `~/pardes/pardes.db`-be másol, ha van ilyen fájl és az építési ideje eltér, és a porton futó idegen példányt is leállítja. Mindezt figyelmeztetés nélkül.
+  - Javítás: `case "$PARDES_ELONEZET" in 0|1) ;; *) exit 2 ;; esac`.
+- **E3 (alacsony): a `git.exe` ág nincs védve a hitelesítési kérdés ellen, és nincs tesztelve.**
+  - Hol: `indit.sh:84-86`.
+  - Mi a hiba: az `export GIT_TERMINAL_PROMPT=0` a WSL-interopon nem jut át a `git.exe`-hez, mert a `WSLENV` nem tartalmazza. Lejárt hitelesítésnél a Windows-oldali credential manager párbeszédablakot nyithat. A `timeout 90` a WSL-oldali folyamatot állítja le; azt nem igazoltam, hogy a Windows-oldali `git.exe` is leáll.
+  - A jelentés nem mondja ki, hogy ezt a „mért” utat (`git.exe`, CRLF-kezelés) egyetlen teszt sem járja be.
+  - Javítás: `WSLENV=GIT_TERMINAL_PROMPT/u` vagy `-c credential.interactive=never`, és ezt kimondani a jelentésben.
+- **E4 (alacsony): a `status` kilépési kódját senki nem nézi.**
+  - Hol: `indit.sh:89-90`.
+  - Mi a hiba: ha a `status` időtúllépéssel vagy hibával, kimenet nélkül ér véget, a munkafa tisztának számít, és a `merge --ff-only` lefut. Ha nincs `git.exe`, a WSL-git kb. 85 s alatt fut a 90 s-os határ előtt, tehát ez a határeset reális.
+  - Javítás: a `status` kilépési kódját külön ellenőrizni.
+- **E5 (alacsony): az olvasói szöveg pontatlan.**
+  - Hol: `allapot.py:296-297`.
+  - Mi a hiba: a `main`-figyelmeztetés szerint „a parancsikon újraindításakor az indító frissíti”. Ez csak a `belso` parancsikonra és tiszta munkafára igaz. A szöveg a 8766-os (`nyilvanos`) és a 8768-as (`kereskedelmi`) lábléceiben is megjelenik, és most már a lap tetején is.
+
+A háttérben futó `bj22fqfxv` feladat (`--diff efb492ff`) a jelentés után is fut, és a zárat 20–30 percre lefoglalja. A hívó szükség szerint leállíthatja, vagy megvárhatja, és az eredményét a lassú tesztek sorához csatolhatja.
+
 ## 3. Zárás
 
 *(a független ellenőrzés után töltődik)*
