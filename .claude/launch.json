@@ -1,0 +1,16 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "olvaso-fo",
+      "url": "http://localhost:8765",
+      "port": 8765
+    },
+    {
+      "name": "olvaso-ag",
+      "runtimeExecutable": "wsl",
+      "runtimeArgs": ["-d", "pardes", "-e", "bash", "-lc", "./eszkozok/olvaso_szerver/indit.sh belso 8775"],
+      "port": 8775
+    }
+  ]
+}
