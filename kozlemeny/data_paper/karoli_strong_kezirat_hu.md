@@ -52,8 +52,10 @@ eredeti szavakat alakkal, Strong-számmal és a TAHOT/TAGNT rövid angol glossz�
 állt ott, a válaszban tilos volt. A modell csak sorszámpárokat adott vissza, a betoldásokkal és a fordítatlan szavakkal.
 Az 1Móz 1:1-ben például a *teremté* (2) szót a 3. eredeti szóval (*bārāʾ*), a *Kezdetben* (1) szót az 1–2. szóval
 (*bə-*, *rēʾšît*) párosította, a tárgyjelölő *ʾēt* (5) szót fordítatlannak jelölte; a H1254, H9003 és H7225 számot
-ezután program tette hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el (pl. névelő,
-tárgyjelölő, igekötő). Minden választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább
+ezután program tette hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el. A funkciószavakra
+rögzített konvenció érvényes: a magyar névelő és az eredeti szó nélküli segédige betoldás, a héber és görög névelő
+fordítatlan, mert a névelőhasználat a nyelvek között nem felel meg egy az egyben; a névmásként álló névelő párosított.
+Minden választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább
 egyszer, csak létező sorszám); a bukott választ a modell újra elkészítette. A modell így nem tudott Strong-számot vagy
 szótári tételt kitalálni: legfeljebb rossz szót párosíthatott. Minden pár egy konkrét eredeti szóra mutat, ezért
 ellenőrizhető, és az emberi validáció ezt nézi; a jelentés és a Strong-szám forrása a nyílt, szakmai forrásadat, nem a
@@ -65,7 +67,7 @@ A vak ellenőrzés mintája rétegzett véletlen minta: a párkészletet könyvc
 (Mózes öt könyve; történeti, költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként
 200 párral (Mózes öt könyvéből 400 párral, két részmintában, pársúllyal összegezve). A független
 összevetés klaszter-minta: rétegenként egy, Mózes öt könyvében két teljes fejezet (nyolc fejezet, 2 663
-fő szó párja). Az emberi validáció ugyanebből a hét rétegből húzott [N] pár.
+fő szó párja).
 
 ### Minőség-ellenőrzés
 
@@ -79,7 +81,8 @@ jelöli, a mellékszót és a morfémát nem. Az eltéréseket háromutasan (gé
 összesített arány nyilvános, a külső forrás adata nem.
 
 **Emberi validáció.** Két független emberi ellenőr, végzett teológus, bibliai héber és görög ismerettel, egymástól
-függetlenül ítélt meg egy rétegzett véletlen mintát ([N] pár). Az ítéletük szerinti pontosság [pontosság] (95%-os KI:
+függetlenül ítélt meg egy rétegzett véletlen mintát ([N] pár, valamint párosítatlan szavak); a párosítatlan szavak
+mintájából a szabály által meghatározott funkciószavak kimaradtak. Az ítéletük szerinti pontosság [pontosság] (95%-os KI:
 [KI]); a két ellenőr egyezése Cohen-féle kappa = [kappa]; az egyezésük a vak modell-ellenőrrel [egyezés a
 modell-ellenőrrel].
 
@@ -95,8 +98,8 @@ modell-ellenőrrel].
 A rétegek egyezése 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog (rétegenként: `data/meres.tsv`).
 Az 1 600 mintapárból 72 tért el az ellenőrtől; a leggyakoribb típus a szomszédos szó (37),
 jellemzően egy héber előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellenére. A független összevetés
-34 eltéréséből öt maradt a párosítás hibája; ezeket és a többi megerősített hibát az adatkészlet név
-szerint felsorolja.
+34 eltéréséből öt maradt a párosítás hibája; minden megerősített hibát az adatkészlet
+felsorol.
 
 ## 3. Az adatkészlet leírása
 
@@ -112,9 +115,9 @@ szerint felsorolja.
 - **Licenc:** CC BY 4.0
 - **Közzététel dátuma:** 2026-11-15
 
-**Tartalom.** `data/parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
-sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `data/szavak/` (könyvenként minden magyar és
-eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `data/versek.tsv` (a Károli 1908
+**Tartalom.** `data/parok/` (könyvenként, kapcsolatonként egy sor: sorszámok, magyar alak, Strong-szám,
+kapcsolattípus, állapot, Textus Receptus-jelölés); `data/szavak/` (könyvenként minden szó egyszer, állapottal:
+párosított, betoldás, fordítatlan, függőben); `data/versek.tsv` (a Károli 1908
 szövege); `data/meres.tsv` (a mérés minden száma). A kulcs az OSIS-versazonosító és a szó sorszáma. A héber és görög
 szóalak nincs a csomagban: a sorszám a STEPBible TAHOT/TAGNT szövegéhez illeszthető.
 
@@ -124,8 +127,8 @@ szóalak nincs a csomagban: a sorszám a STEPBible TAHOT/TAGNT szövegéhez ille
 
 ## 4. Újrahasznosítási lehetőségek
 
-Az adatkészlet bibliaolvasó és -tanulmányozó alkalmazásoknak Strong-alapú keresést ad a magyar szövegen: egy héber vagy
-görög szó minden Károli-megfelelője egy szűréssel összegyűjthető. Fordítástörténeti kutatásban vizsgálható a Károli
+Bibliaprogramok Strong-alapú keresést kínálhatnak a magyar szövegen: egy eredeti szó minden Károli-megfelelője egy
+szűréssel előáll. Fordítástörténeti kutatásban vizsgálható a Károli
 fordítói következetessége, a betoldások és a fordítatlan szavak eloszlása. Nyelvtechnológiai célra kis erőforrású
 nyelvpár (magyar–héber, magyar–görög) szóillesztési adata, rétegenként mért hibával; a mintapárok és a hibatípusok
 szóillesztő programok értékeléséhez is használhatók. A párosításra a Logosz-lexikon, egy motívum-indexelt, kereszthivatkozott

@@ -43,8 +43,7 @@ word once, so the "gaps" of the translation can be read off too.
 ### Steps
 
 **Texts and tokenisation.** The Hungarian side is the public-domain 1908 Károli text; the source side is the STEPBible
-TAHOT (Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) data (Tyndale House, Cambridge; CC BY 4.0, used
-with attribution). TAHOT treats Hebrew prefixes and suffixes as separate words (H9001–H9049), so one Hungarian word is
+TAHOT (Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) data (Tyndale House, Cambridge; CC BY 4.0). TAHOT treats Hebrew prefixes and suffixes as separate words (H9001–H9049), so one Hungarian word is
 often linked to several source "words". Károli's verse division was mapped to that of the source by deterministic
 alignment of verse lengths; each merge of two verses was approved by hand.
 
@@ -53,8 +52,10 @@ the source words with form, Strong's number and a short English gloss from TAHOT
 for information only and was forbidden in the answer. The model returned position pairs only, with the additions and
 untranslated words. In Genesis 1:1, for example, it paired *teremté* (2) with source word 3 (*bārāʾ*) and *Kezdetben*
 (1) with words 1–2 (*bə-*, *rēʾšît*), and marked the object marker *ʾēt* (5) as untranslated; a program then attached
-H1254, H9003 and H7225 by position. Twelve written rules decided disputed cases (e.g. articles, the object marker,
-verbal prefixes). A program checked every answer (each Hungarian word exactly once, each source
+H1254, H9003 and H7225 by position. Twelve written rules decided disputed cases. Function words follow fixed
+conventions: Hungarian articles, and auxiliaries without a source word, count as additions, and Hebrew and Greek
+articles as untranslated, since article use does not correspond one to one between the languages; an article
+functioning as a pronoun is linked. A program checked every answer (each Hungarian word exactly once, each source
 word at least once, only existing positions); a failed answer was redone. The model therefore could not invent a
 Strong's number or a lexicon entry: its possible error is a wrong pairing. Every pair points to one source word and can
 be checked, as the human validation does; meaning and Strong's number come from the open scholarly source data, not
@@ -66,8 +67,7 @@ The blind review used a stratified random sample: the pair set was divided by bo
 (the five books of Moses; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with
 200 pairs per stratum (400 from the five books of Moses, in two subsamples combined by pair weight).
 The independent comparison is a cluster sample: one full chapter per stratum, two in the five books of Moses
-(eight chapters, 2,663 main-word pairs). The human validation sample of [N] pairs is drawn from the same
-seven strata.
+(eight chapters, 2,663 main-word pairs).
 
 ### Quality control
 
@@ -81,7 +81,8 @@ source marks the main word only, not secondary words or morphemes. Differences w
 source, blind reviewer). Only the aggregate rate is published, not the external source's data.
 
 **Human validation.** Two independent human validators, theology graduates with knowledge of biblical Hebrew and Greek,
-judged a stratified random sample of [N] pairs, each without seeing the other's judgements. Accuracy by their judgement
+judged a stratified random sample of [N] pairs and of unpaired words, each without seeing the other's judgements;
+rule-determined function words were excluded from the unpaired sample. Accuracy by their judgement
 is [accuracy] (95% CI [CI]); inter-rater agreement is Cohen's kappa = [kappa]; their agreement with the blind model
 reviewer is [agreement with model reviewer].
 
@@ -97,8 +98,8 @@ reviewer is [agreement with model reviewer].
 Agreement per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts); per stratum: `data/meres.tsv`. Of
 the 1,600 sample pairs, 72 differed from the reviewer; the most frequent type is the neighbouring word
 (37), typically a Hebrew prefix, article or preposition attached to the word against the rules. Of the
-34 differences in the independent comparison, five remained errors of the alignment; these and the other
-confirmed errors are listed by name in the dataset.
+34 differences in the independent comparison, five remained errors of the alignment; all confirmed errors
+are listed in the dataset.
 
 ## 3. Dataset Description
 
@@ -109,14 +110,14 @@ confirmed errors are listed by name in the dataset.
   documentation (codebook, methods description, known issues); CFF citation file; SHA-256 checksum list
 - **Creation dates:** 2026-10-01 – 2026-11-01
 - **Dataset creators:** Tamás Demeter (independent researcher; ORCID: 0009-0005-9254-9731): rules, processing pipeline, measurement,
-  curation. The source-side words and Strong's numbers derive from the STEPBible data (Tyndale House, Cambridge).
+  curation. Source-side words and Strong's numbers: STEPBible (Tyndale House, Cambridge).
 - **Language:** Hungarian (word forms, column names and codes); Hungarian and English (documentation, bilingual codebook)
 - **License:** CC BY 4.0
 - **Publication date:** 2026-11-15
 
-**Contents.** `data/parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the
-source word, Strong's number, link type, state, Textus Receptus flag); `data/szavak/` (per book, every Hungarian and
-source word once, with its state: aligned, addition, untranslated, pending); `data/versek.tsv` (the 1908 Károli text);
+**Contents.** `data/parok/` (per book, one row per link: positions, Hungarian form, Strong's number, link type, state,
+Textus Receptus flag); `data/szavak/` (per book, every word once, with its state: aligned, addition, untranslated,
+pending); `data/versek.tsv` (the 1908 Károli text);
 `data/meres.tsv` (every figure of the measurement). The key is the OSIS verse identifier and the word position. Hebrew
 and Greek word forms are not in the package: the position matches the STEPBible TAHOT/TAGNT text.
 
@@ -126,8 +127,8 @@ morphemes), 109,914 additions, 63,017 untranslated source words, 794 pending Hun
 
 ## 4. Reuse Potential
 
-For Bible reading and study applications the dataset provides Strong-based search on the Hungarian text: every Károli
-rendering of a Hebrew or Greek word can be collected with one filter. In translation history, Károli's consistency and
+Bible software can offer Strong-based search on the Hungarian text: every Károli rendering of a source word is one
+filter away. In translation history, Károli's consistency and
 the distribution of additions and untranslated words can be studied. For language technology it is word-alignment data
 for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error measured per stratum; the sample pairs
 and error types can also serve to evaluate word aligners. The Logosz Lexikon, a motif-indexed, cross-referenced biblical

@@ -796,8 +796,10 @@ eredeti szavakat alakkal, Strong-számmal és a TAHOT/TAGNT rövid angol glossz�
 állt ott, a válaszban tilos volt. A modell csak sorszámpárokat adott vissza, a betoldásokkal és a fordítatlan szavakkal.
 Az 1Móz 1:1-ben például a *teremté* (2) szót a 3. eredeti szóval (*bārāʾ*), a *Kezdetben* (1) szót az 1–2. szóval
 (*bə-*, *rēʾšît*) párosította, a tárgyjelölő *ʾēt* (5) szót fordítatlannak jelölte; a H1254, H9003 és H7225 számot
-ezután program tette hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el (pl. névelő,
-tárgyjelölő, igekötő). Minden választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább
+ezután program tette hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el. A funkciószavakra
+rögzített konvenció érvényes: a magyar névelő és az eredeti szó nélküli segédige betoldás, a héber és görög névelő
+fordítatlan, mert a névelőhasználat a nyelvek között nem felel meg egy az egyben; a névmásként álló névelő párosított.
+Minden választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább
 egyszer, csak létező sorszám); a bukott választ a modell újra elkészítette. A modell így nem tudott Strong-számot vagy
 szótári tételt kitalálni: legfeljebb rossz szót párosíthatott. Minden pár egy konkrét eredeti szóra mutat, ezért
 ellenőrizhető, és az emberi validáció ezt nézi; a jelentés és a Strong-szám forrása a nyílt, szakmai forrásadat, nem a
@@ -809,7 +811,7 @@ A vak ellenőrzés mintája rétegzett véletlen minta: a párkészletet könyvc
 (Mózes öt könyve; történeti, költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként
 {reteg_n} párral (Mózes öt könyvéből {rn_OSZ_mozes} párral, két részmintában, pársúllyal összegezve). A független
 összevetés klaszter-minta: rétegenként egy, Mózes öt könyvében két teljes fejezet ({kulso_fejezet_szo} fejezet, {k_n}
-fő szó párja). Az emberi validáció ugyanebből a {reteg_db_szo} rétegből húzott [N] pár.
+fő szó párja).
 
 ### Minőség-ellenőrzés
 
@@ -823,7 +825,8 @@ jelöli, a mellékszót és a morfémát nem. Az eltéréseket háromutasan (gé
 összesített arány nyilvános, a külső forrás adata nem.
 
 **Emberi validáció.** Két független emberi ellenőr, végzett teológus, bibliai héber és görög ismerettel, egymástól
-függetlenül ítélt meg egy rétegzett véletlen mintát ([N] pár). Az ítéletük szerinti pontosság [pontosság] (95%-os KI:
+függetlenül ítélt meg egy rétegzett véletlen mintát ([N] pár, valamint párosítatlan szavak); a párosítatlan szavak
+mintájából a szabály által meghatározott funkciószavak kimaradtak. Az ítéletük szerinti pontosság [pontosság] (95%-os KI:
 [KI]); a két ellenőr egyezése Cohen-féle kappa = [kappa]; az egyezésük a vak modell-ellenőrrel [egyezés a
 modell-ellenőrrel].
 
@@ -839,8 +842,8 @@ modell-ellenőrrel].
 A rétegek egyezése {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog (rétegenként: `data/meres.tsv`).
 A {minta} mintapárból {elteres} tért el az ellenőrtől; a leggyakoribb típus a szomszédos szó ({h_szomszedos_token}),
 jellemzően egy héber előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellenére. A független összevetés
-{k_elter} eltéréséből {k_mi_szo} maradt a párosítás hibája; ezeket és a többi megerősített hibát az adatkészlet név
-szerint felsorolja.
+{k_elter} eltéréséből {k_mi_szo} maradt a párosítás hibája; minden megerősített hibát az adatkészlet
+felsorol.
 
 ## 3. Az adatkészlet leírása
 
@@ -856,9 +859,9 @@ szerint felsorolja.
 - **Licenc:** CC BY 4.0
 - **Közzététel dátuma:** {kozzetetel}
 
-**Tartalom.** `data/parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
-sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `data/szavak/` (könyvenként minden magyar és
-eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `data/versek.tsv` (a Károli 1908
+**Tartalom.** `data/parok/` (könyvenként, kapcsolatonként egy sor: sorszámok, magyar alak, Strong-szám,
+kapcsolattípus, állapot, Textus Receptus-jelölés); `data/szavak/` (könyvenként minden szó egyszer, állapottal:
+párosított, betoldás, fordítatlan, függőben); `data/versek.tsv` (a Károli 1908
 szövege); `data/meres.tsv` (a mérés minden száma). A kulcs az OSIS-versazonosító és a szó sorszáma. A héber és görög
 szóalak nincs a csomagban: a sorszám a STEPBible TAHOT/TAGNT szövegéhez illeszthető.
 
@@ -868,8 +871,8 @@ szóalak nincs a csomagban: a sorszám a STEPBible TAHOT/TAGNT szövegéhez ille
 
 ## 4. Újrahasznosítási lehetőségek
 
-Az adatkészlet bibliaolvasó és -tanulmányozó alkalmazásoknak Strong-alapú keresést ad a magyar szövegen: egy héber vagy
-görög szó minden Károli-megfelelője egy szűréssel összegyűjthető. Fordítástörténeti kutatásban vizsgálható a Károli
+Bibliaprogramok Strong-alapú keresést kínálhatnak a magyar szövegen: egy eredeti szó minden Károli-megfelelője egy
+szűréssel előáll. Fordítástörténeti kutatásban vizsgálható a Károli
 fordítói következetessége, a betoldások és a fordítatlan szavak eloszlása. Nyelvtechnológiai célra kis erőforrású
 nyelvpár (magyar–héber, magyar–görög) szóillesztési adata, rétegenként mért hibával; a mintapárok és a hibatípusok
 szóillesztő programok értékeléséhez is használhatók. A párosításra a {lex_hu}, egy motívum-indexelt, kereszthivatkozott
@@ -988,8 +991,7 @@ word once, so the "gaps" of the translation can be read off too.
 ### Steps
 
 **Texts and tokenisation.** The Hungarian side is the public-domain 1908 Károli text; the source side is the STEPBible
-TAHOT (Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) data (Tyndale House, Cambridge; CC BY 4.0, used
-with attribution). TAHOT treats Hebrew prefixes and suffixes as separate words (H9001–H9049), so one Hungarian word is
+TAHOT (Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) data (Tyndale House, Cambridge; CC BY 4.0). TAHOT treats Hebrew prefixes and suffixes as separate words (H9001–H9049), so one Hungarian word is
 often linked to several source "words". Károli's verse division was mapped to that of the source by deterministic
 alignment of verse lengths; each merge of two verses was approved by hand.
 
@@ -998,8 +1000,10 @@ the source words with form, Strong's number and a short English gloss from TAHOT
 for information only and was forbidden in the answer. The model returned position pairs only, with the additions and
 untranslated words. In Genesis 1:1, for example, it paired *teremté* (2) with source word 3 (*bārāʾ*) and *Kezdetben*
 (1) with words 1–2 (*bə-*, *rēʾšît*), and marked the object marker *ʾēt* (5) as untranslated; a program then attached
-H1254, H9003 and H7225 by position. Twelve written rules decided disputed cases (e.g. articles, the object marker,
-verbal prefixes). A program checked every answer (each Hungarian word exactly once, each source
+H1254, H9003 and H7225 by position. Twelve written rules decided disputed cases. Function words follow fixed
+conventions: Hungarian articles, and auxiliaries without a source word, count as additions, and Hebrew and Greek
+articles as untranslated, since article use does not correspond one to one between the languages; an article
+functioning as a pronoun is linked. A program checked every answer (each Hungarian word exactly once, each source
 word at least once, only existing positions); a failed answer was redone. The model therefore could not invent a
 Strong's number or a lexicon entry: its possible error is a wrong pairing. Every pair points to one source word and can
 be checked, as the human validation does; meaning and Strong's number come from the open scholarly source data, not
@@ -1011,8 +1015,7 @@ The blind review used a stratified random sample: the pair set was divided by bo
 (the five books of Moses; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with
 {reteg_n} pairs per stratum ({rn_OSZ_mozes} from the five books of Moses, in two subsamples combined by pair weight).
 The independent comparison is a cluster sample: one full chapter per stratum, two in the five books of Moses
-({kulso_fejezet_szo} chapters, {k_n} main-word pairs). The human validation sample of [N] pairs is drawn from the same
-{reteg_db_szo} strata.
+({kulso_fejezet_szo} chapters, {k_n} main-word pairs).
 
 ### Quality control
 
@@ -1026,7 +1029,8 @@ source marks the main word only, not secondary words or morphemes. Differences w
 source, blind reviewer). Only the aggregate rate is published, not the external source's data.
 
 **Human validation.** Two independent human validators, theology graduates with knowledge of biblical Hebrew and Greek,
-judged a stratified random sample of [N] pairs, each without seeing the other's judgements. Accuracy by their judgement
+judged a stratified random sample of [N] pairs and of unpaired words, each without seeing the other's judgements;
+rule-determined function words were excluded from the unpaired sample. Accuracy by their judgement
 is [accuracy] (95% CI [CI]); inter-rater agreement is Cohen's kappa = [kappa]; their agreement with the blind model
 reviewer is [agreement with model reviewer].
 
@@ -1042,8 +1046,8 @@ reviewer is [agreement with model reviewer].
 Agreement per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}); per stratum: `data/meres.tsv`. Of
 the {minta} sample pairs, {elteres} differed from the reviewer; the most frequent type is the neighbouring word
 ({h_szomszedos_token}), typically a Hebrew prefix, article or preposition attached to the word against the rules. Of the
-{k_elter} differences in the independent comparison, {k_mi_szo} remained errors of the alignment; these and the other
-confirmed errors are listed by name in the dataset.
+{k_elter} differences in the independent comparison, {k_mi_szo} remained errors of the alignment; all confirmed errors
+are listed in the dataset.
 
 ## 3. Dataset Description
 
@@ -1054,14 +1058,14 @@ confirmed errors are listed by name in the dataset.
   documentation (codebook, methods description, known issues); CFF citation file; SHA-256 checksum list
 - **Creation dates:** {kezdet} – {adatallapot}
 - **Dataset creators:** Tamás Demeter (independent researcher; ORCID: {orcid}): rules, processing pipeline, measurement,
-  curation. The source-side words and Strong's numbers derive from the STEPBible data (Tyndale House, Cambridge).
+  curation. Source-side words and Strong's numbers: STEPBible (Tyndale House, Cambridge).
 - **Language:** Hungarian (word forms, column names and codes); Hungarian and English (documentation, bilingual codebook)
 - **License:** CC BY 4.0
 - **Publication date:** {kozzetetel}
 
-**Contents.** `data/parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the
-source word, Strong's number, link type, state, Textus Receptus flag); `data/szavak/` (per book, every Hungarian and
-source word once, with its state: aligned, addition, untranslated, pending); `data/versek.tsv` (the 1908 Károli text);
+**Contents.** `data/parok/` (per book, one row per link: positions, Hungarian form, Strong's number, link type, state,
+Textus Receptus flag); `data/szavak/` (per book, every word once, with its state: aligned, addition, untranslated,
+pending); `data/versek.tsv` (the 1908 Károli text);
 `data/meres.tsv` (every figure of the measurement). The key is the OSIS verse identifier and the word position. Hebrew
 and Greek word forms are not in the package: the position matches the STEPBible TAHOT/TAGNT text.
 
@@ -1071,8 +1075,8 @@ morphemes), {hu_betoldas} additions, {er_forditatlan} untranslated source words,
 
 ## 4. Reuse Potential
 
-For Bible reading and study applications the dataset provides Strong-based search on the Hungarian text: every Károli
-rendering of a Hebrew or Greek word can be collected with one filter. In translation history, Károli's consistency and
+Bible software can offer Strong-based search on the Hungarian text: every Károli rendering of a source word is one
+filter away. In translation history, Károli's consistency and
 the distribution of additions and untranslated words can be studied. For language technology it is word-alignment data
 for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error measured per stratum; the sample pairs
 and error types can also serve to evaluate word aligners. The {lex_en}, a motif-indexed, cross-referenced biblical
