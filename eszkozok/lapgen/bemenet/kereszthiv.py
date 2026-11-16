@@ -354,6 +354,14 @@ def _ajanlas(fo, konyvek):
     raise BemenetHiba('B04: a kereszthivatkozásos jelölés forrása nem értelmezhető: %s' % fo[:120])
 
 
+def nem_olvasoi(szoveg):
+    """Az első olyan részlet, amely miatt a kézi szöveg nem kerülhet a lapra (belső jelölés, munkaszó, kódjel,
+    egyenes idézőjel, cellahatár), vagy None. A motívum-hivatkozás (`[ID: …]`) itt hibának számít: ahol szerkezet
+    lehet, a hívó előbb darabolja."""
+    m = _NEM_OLVASOI_RX.search(szoveg)
+    return m.group(0) if m else None
+
+
 def _indok(b, szoveg, igehely):
     """Az indoklás darabjai; ami nem olvasói szöveg, azon a réteg megáll (nem tisztít)."""
     darabok, veg = [], 0

@@ -2558,6 +2558,12 @@ cellakezdő alakja a Minősítés (és a 3. szakasz) „Indok” cellájában: a
 címke úgy, ahogy a cella elején áll. Ugyanaz a szabály és ugyanaz a kapu, mint a `cimke_cella` típusnál: csak a kezdő
 névelőben és a kezdőbetűben térhet el; különben a generálás megáll. Sor híján a címke változatlanul áll.
 
+**A kapcsolatok típusai (S6).** A `kapcsolat_tipus` a `kapcsolatok.tsv` (2.3) `tipus` értékének neve a táblacellában
+és a gráf élén; a `kapcsolat_tipus_mondat` ugyanez mondat közben (kisbetűvel: „43 párhuzam”, „túlnyomórészt kontraszt
+jellegűek”); a `motivumkozi_tipus` a `motivum_kapcsolatok.tsv` (2.33) `tipus` értékének neve. A bizonyosság a
+`megbizhatosag`, a PaRDeS-szint a `pardes_szint` típus sorait használja (ugyanaz az értékkészlet). A `funkcio` mező
+nem névtábla-elem: kézi próza, a cellakezdő alakja az adatban a végleges alak (DT869).
+
 ### 2.69 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
 
 A lánc szava nélküli tematikus hely (az `elofordulasok.tsv` sorának `gerinc_elem` mezője `tematikus:` kezdetű, a

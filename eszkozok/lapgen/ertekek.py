@@ -131,3 +131,35 @@ class MegerositesFok(enum.Enum):
     EROS = 'eros'
     KOZEPES = 'kozepes'
     GYENGE = 'gyenge'
+
+
+class KapcsolatTipus(enum.Enum):
+    """A motívumon belüli igehely-pár kapcsolatának típusa (B45 `tipus`, SEMA 2.3; S6)."""
+    ELOKEP = 'Előkép'
+    PARHUZAM = 'Párhuzam'
+    BETELJESEDES = 'Beteljesedés'
+    KONTRASZT = 'Kontraszt'
+    VARIANS = 'Variáns'
+
+
+class KapcsolatSzerkezet(enum.Enum):
+    """A 7. szakasz következtetése a kapcsolatok típus-megoszlásáról (a régi `olvasoi_kovetkeztetes.kapcsolatok`)."""
+    LANC = 'lanc'                    # a beteljesedés a kapcsolatok legalább fele: ígéret–beteljesedés lánc
+    TULNYOMO_PARHUZAM = 'tulnyomo_parhuzam'
+    TULNYOMO = 'tulnyomo'            # egy típus túlnyomó (nem a párhuzam)
+    TOBBFELE = 'tobbfele'
+
+
+class KapcsolatBiztossag(enum.Enum):
+    """A 7. szakasz következtetése a magas bizonyosságú kapcsolatok arányáról."""
+    SZINTE_MIND = 'szinte_mind'
+    TOBBSEG = 'tobbseg'
+    FELE = 'fele'
+    KOZEPES_TOBBSEG = 'kozepes_tobbseg'   # a magas aránya fél alatt, a közepeseké fél fölött
+    KEVES = 'keves'                       # a magas aránya fél alatt, a közepesek sincsenek többségben
+
+
+class MotivumKapcsolatTipus(enum.Enum):
+    """A motívumközi kapcsolat típusa (B46 `tipus`, SEMA 2.33; S6)."""
+    SZOMSZEDOS = 'szomszédos'
+    KOZOS_IGEHELY = 'közös_igehely'
