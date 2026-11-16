@@ -78,6 +78,8 @@ label.opt { display: flex; gap: 8px; align-items: center; padding: 6px 0; cursor
 .kerdes .er-heber { font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif; font-size: 1.4rem; direction: rtl; unicode-bidi: isolate; }
 .kerdes .er-gorog { font-family: "Gentium Plus", "Gentium", "SBL Greek", "Times New Roman", "Noto Serif", serif; font-size: 1.2rem; }
 .betu button { min-height: 36px; padding: 4px 10px; }
+.kivonat { border-left: 4px solid var(--accent); background: var(--chip); border-radius: 4px; padding: 6px 12px; margin: 10px 0; }
+.kivonat p { margin: 4px 0; }
 .kifejezes { margin: 8px 0 0; padding: 6px 10px; border-left: 4px solid var(--accent); background: var(--chip); border-radius: 4px; font-size: .95rem; }
 .kifejezes .er-heber { font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", "Arial Hebrew", serif; font-size: 1.25rem; direction: rtl; unicode-bidi: isolate; }
 .kifejezes .er-gorog { font-family: "Gentium Plus", "Times New Roman", serif; font-size: 1.1rem; }
@@ -133,7 +135,12 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
     <h1>Károli 1908 – Strong szópárosítás: emberi ellenőrzés</h1>
     <div class="card">
       <p>A Károli-biblia 1908-as szövegének szavait egy nyelvi modell párosította a héber és görög eredetivel (Strong-számokkal; nyílt adat, doi:10.5281/zenodo.24141883). A pontosságot eddig gép mérte; most két független teológus szúrópróbája jön, és az eredmény a <i>Journal of Open Humanities Data</i>-ba készülő cikkbe kerül. A részleteket az <i>UTMUTATO.md</i> írja le. A munka kb. 3–4 óra, több részletben is végezhető.</p>
-      <p>Minden tételben egy magyar szó és a géppel hozzárendelt héber vagy görög szó áll. Arról döntesz, hogy a <b>párosítás helyes-e</b>; a pár nélküli szavaknál arról, hogy <b>van-e a szónak megfelelője az eredetiben</b>. A szabályokat az <i>UTMUTATO.md</i> írja le; kérlek, előbb azt olvasd el.</p>
+      <div class="kivonat">
+        <p><b>Egyetlen kérdés:</b> Károli szövegében ez a magyar szó tényleg ezt az eredeti szót fordítja?</p>
+        <p><b>Nem a fordítást ítéled meg:</b> hogy Károli jól fordított-e, az itt nem kérdés; a fordítói észrevételnek külön jelölő van.</p>
+        <p><b>Ha nem tudod eldönteni:</b> „bizonytalan”, ne találgass.</p>
+      </div>
+      <p>Kérlek, előbb olvasd el az <i>UTMUTATO.md</i> első szakaszát; a példák ott vannak.</p>
       <p><b>Kérjük, a másik ellenőrrel ne egyeztess</b>: a két ítéletet függetlenül mérjük.</p>
       <p class="small muted">A haladás ebben a böngészőben automatikusan mentődik. Másik eszközre a „Mentés / export” fájljával viheted át („Betöltés”).</p>
       <label for="i-nev"><b>A neved</b> (a fájlnévbe kerül; ugyanazt a nevet használd mindig):</label>

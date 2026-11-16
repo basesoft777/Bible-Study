@@ -8,14 +8,39 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 
 **Kérjük, a másik ellenőrrel ne egyeztess, és ne nézd meg az ő válaszait.** Csak így mérhető, mennyire egyezik két független ítélet. Kérdésnél a szervezőt kérdezd, ne a másik ellenőrt.
 
-## Az első szabály: a párosítást ítéld meg, ne a fordítást
+## 1. A legfontosabb: nem a fordítást ítéled meg, hanem a párosítást
 
-A kérdés minden tételnél ugyanaz: **Károli szövegében ez a magyar szó ennek az eredeti szónak a fordítása?** Nem az a kérdés, hogy Károli jól fordított-e. A pár akkor is helyes, ha a fordítás szabad, körülíró vagy más szófajú; és akkor is hibás, ha a fordítás kitűnő, de a magyar szó a vers egy másik szavának felel meg.
+**Mi a feladatod?** Minden tételben egy magyar szót látsz Károli szövegéből, és egy héber vagy görög szót, amelyhez a gép hozzárendelte. Egyetlen kérdésre kell felelned: **Károli szövegében ez a magyar szó tényleg ezt az eredeti szót fordítja?**
 
-- **Szabad fordítás, helyes pár.** 1Móz 41:40 *és minden népem a te szavadra **hallgasson*** ↔ עַל־פִּיךָ יִשַּׁק, szó szerint „a szádra csókoljon”. Károli a „csókol” igét „hallgat (valakire)” értelemben adja vissza, de a *hallgasson* ennek a szónak a fordítása: a *hallgasson* ↔ יִשַּׁק (H5401, „kiss”) pár **helyes**. Ugyanitt a *főgondviselő* ↔ עַל (H5921, „over”) is helyes: Károli az elöljárót főnévvel adja vissza.
-- **Rossz pár.** Péld 3:18 ***Életnek** fája ez* ↔ עֵץ (H6086, „tree”): az *Életnek* a חַיִּים (H2416, „life”) fordítása, a *fája* pedig a עֵץ-é. A pár **hibás** (rossz forrásszó), bármilyen jó maga a fordítás.
+**Mi NEM a feladatod?** Nem kell eldöntened, jól fordított-e Károli. Nem kell azt nézned, te hogyan fordítanád, és azt sem, hogy van-e pontosabb magyar szó. Ezek fontos kérdések, de itt nem ezt mérjük. Bibliaolvasóként és teológusként természetes, hogy az ember ezt is figyeli; erre van egy külön jelölő (lásd lent).
 
-Ha a fordításról van észrevételed (szabad, körülíró vagy pontatlan), azt a tétel alján jelöld: **„Károli itt szabadon vagy pontatlanul fordít”**, saját megjegyzéssel. Ez nem számít a párosítás hibájának; a kiértékelés külön gyűjti.
+**Hogyan gondolkodj? Három lépés:**
+
+1. Nézd meg a kiemelt eredeti szót a kártyán: mit jelent (angol glossza, Strong-szám, alaktan)?
+2. Keresd meg a magyar versben, melyik szó vagy szavak mondják ki ezt a jelentést, akkor is, ha Károli szabadon vagy más szóval fordít.
+3. Hasonlítsd össze azzal a magyar szóval, amelyet a gép hozzárendelt. Ha ugyanaz, a pár **helyes**. Ha a jelentést valójában egy másik magyar szó hordozza, a pár **hibás**.
+
+**Mikor helyes a pár, akkor is, ha a fordítás nem szó szerinti?**
+
+- *Más szóval fordít.* 2Móz 4:14 „És felgerjede az Úr **haragja**”: az eredetiben אַף (ʾap, H0639), szó szerint „orr”. Károli „harag”-nak fordítja, mert a héberben ez a harag kifejezése. A *haragja* ↔ אַף pár helyes.
+- *Egy szóval fordít több szót.* 1Móz 1:1 „**Kezdetben** teremté Isten”: az eredetiben בְּ + רֵאשִׁית (bə + rēʾšît, „-ban” + „kezdet”). A *Kezdetben* mindkét héber elemhez kötődik, és mindkét pár helyes.
+- *Több szóval fordít egy szót.* Józs 8:31 „a mint **meg van írva**”: az eredetiben כָּתוּב (kātûb, H3789, „megírt”). Mindhárom magyar szó párja helyes.
+- *Más szófajjal fordít.* 1Móz 41:40 „Te légy az én házamon **főgondviselő**”: az eredetiben עַל (ʿal, H5921, „fölött”), elöljárószó. Károli főnévvel adja vissza, a jelentés ugyanaz: a *főgondviselő* ↔ עַל pár helyes. Ugyanebben a versben a „szavadra **hallgasson**” ↔ יִשַּׁק (H5401, szó szerint „csókol”) is helyes pár.
+
+**Mikor hibás a pár, akármilyen jó a fordítás?**
+
+- A magyar szó valójában a vers egy másik eredeti szavát fordítja. Példa (a gépi ellenőrzés is hibásnak ítélte): Péld 3:18 „**Életnek** fája ez”. Az *Életnek* ↔ עֵץ (ʿēṣ, H6086, „fa”) pár hibás, mert az *Életnek* a חַיִּים (ḥayyîm, H2416, „élet”), a *fája* pedig a עֵץ fordítása; a gép felcserélte őket.
+- Egy többszavas kifejezésnek csak az egyik tagja van bekötve, és a magyar szó olyan taghoz került, amelyhez nem tartozik.
+- A pár olyan eredeti szóra mutat, amelynek semmi köze a magyar szóhoz.
+
+**Pár nélküli szavak.** Itt azt kérdezzük: Károli olyan szót tett-e a szövegbe, amelynek nincs megfelelője az eredetiben?
+
+- **Igen**, ha Károli magyarázó vagy a magyar mondathoz szükséges szót tett hozzá. Példa: 2Sám 14:10 „hozd **ide** előmbe” ↔ וַהֲבֵאתוֹ אֵלַי („hozd őt hozzám”). Az *ide* Károli hozzátétele, nincs eredetije.
+- **Nem, van megfelelője**, ha a szónak mégis van eredetije, csak a párosítás kihagyta. Példa: 2Krón 30:19 „ha **nem** a szentségnek tisztasága szerint is”. A *nem* pár nélkül maradt, pedig az eredetiben ott áll a לֹא (lōʾ, H3808, „nem”). Ilyenkor a válasz „Nem, van megfelelője (hibás)”; ha tudod, koppints a לֹא kártyájára.
+
+**Mikor jelöld bizonytalannak?** Ha a fenti három lépés után sem tudod eldönteni. Például ha a vers szerkezete annyira eltér, hogy nem látszik, melyik magyar szó melyik eredetinek felel meg. A „bizonytalan” teljesen rendben van, ne találgass.
+
+**És ha a fordításról van mondanivalód?** Minden tétel alján van egy jelölő: **„Károli itt szabadon vagy pontatlanul fordít”**, mellette egy megjegyzésmező. Ide írhatsz bármit a fordításról. Ez nem számít a párosítás hibájának, de az észrevételeidet külön összegyűjtjük, mert ezek is értékesek.
 
 ## Mikor helyes, hibás, bizonytalan?
 
