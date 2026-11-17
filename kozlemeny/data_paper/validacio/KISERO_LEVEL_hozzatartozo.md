@@ -10,7 +10,7 @@ Kedves [Név]!
 
 Egy segítséget kérnék, amihez a bibliai héber- és görögtudásodra van szükség.
 
-A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, illetve görög eredeti megfelelő szavával, Strong-számokkal együtt. Az adat nyíltan elérhető a Zenodón, és decemberben cikket küldünk be róla a *Journal of Open Humanities Data*-hoz. A párosítást nyelvi modell végezte, és a pontosságát eddig szintén gép mérte. A cikkhez emberi ellenőrzés kell; a te ítéleted a második, amellyel a két ember egyezését mérjük.
+A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, illetve görög eredeti megfelelő szavával. Az adat nyíltan elérhető a Zenodón, és decemberben cikket küldünk be róla a *Journal of Open Humanities Data*-hoz. A párosítást nyelvi modell végezte, rögzített szabályok szerint; a Strong-számokat ezután program kapcsolta a párokhoz. A párosítás pontosságát eddig szintén gép mérte. A cikkhez emberi ellenőrzés kell; a te ítéleted a második, amellyel a két ember egyezését mérjük.
 
 A melléklet két fájlja:
 
