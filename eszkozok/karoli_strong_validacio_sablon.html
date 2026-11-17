@@ -256,7 +256,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 <script>
 "use strict";
 var MINTA = /*MINTA_ADAT*/null;
-var VERZIO = "F175.V12";
+var VERZIO = "F175.V13";
 
 /* ---------- segédek ---------- */
 function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
@@ -282,11 +282,14 @@ function ment() {
   tarol_ir(KULCS_AKTIV, allapot.ellenor);
   var m = $("t-mentve"); if (m) m.textContent = ok ? "mentve " + new Date().toLocaleTimeString("hu-HU") : "A böngésző nem enged menteni: exportálj gyakran!";
 }
+/* ellenőrönként véletlen sorrend; a közös blokk (kb = 1) minden ellenőrnél elöl áll */
+function keverd(ids, rnd) { for (var i = ids.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)); var x = ids[i]; ids[i] = ids[j]; ids[j] = x; } return ids; }
+var KOZOS_DB = MINTA.filter(function (t) { return t.kb; }).length;
 function uj_allapot(nev) {
-  var ids = MINTA.map(function (t) { return t.id; });
   var rnd = mulberry32(fnv(nev.trim().toLowerCase() + "|" + MINTA_HASH));
-  for (var i = ids.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)); var x = ids[i]; ids[i] = ids[j]; ids[j] = x; }
-  return { ellenor: nev.trim(), sorrend: ids, valaszok: {}, poz: 0, kezdes: new Date().toISOString() };
+  var kozos = keverd(MINTA.filter(function (t) { return t.kb; }).map(function (t) { return t.id; }), rnd);
+  var tobbi = keverd(MINTA.filter(function (t) { return !t.kb; }).map(function (t) { return t.id; }), rnd);
+  return { ellenor: nev.trim(), sorrend: kozos.concat(tobbi), valaszok: {}, poz: 0, kezdes: new Date().toISOString() };
 }
 function kesz_db() { var n = 0; for (var k in allapot.valaszok) if (allapot.valaszok[k].itelet) n++; return n; }
 
@@ -354,7 +357,7 @@ function rajzol() {
   var t = tetel(), v = valasz(t);
   L = linkek(t);
   fejlec_frissit();
-  $("f-cim").textContent = "Tétel " + (allapot.poz + 1) + " / " + MINTA.length;
+  $("f-cim").textContent = "Tétel " + (allapot.poz + 1) + " / " + MINTA.length + (allapot.poz < KOZOS_DB ? " · közös blokk (1–" + KOZOS_DB + ")" : "");
   $("f-vers").textContent = t.vers + " · " + t.id;
   $("t-tipus").textContent = t.tipus === "par" ? "szópár" : (t.tipus === "kimaradt" ? "pár nélküli forrásszó" : "pár nélküli magyar szó");
   var nyelv_cls = "er-" + t.nyelv;

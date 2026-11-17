@@ -5,7 +5,11 @@
 Bemenet:
   * egy vagy két ellenőr exportja (`<ellenor>_valaszok.json`, az `ellenorzo.html` írja). Két külső ellenőrnél
     az eltérő tételeket harmadik döntés zárja le; ha a második ítélő a szerző (`--szerzo 1|2`: a hányadik fájl
-    az övé), döntnök nincs, a két ítélet külön áll, a külső és a szerzői jelöléssel. Kappa csak két ítélőnél;
+    az övé), vagy általában ha a második ítélő nem független (`--kulso 1|2`: a hányadik fájl a külső ellenőré,
+    `--masodik`: a második jelölése, alapértelmezés „hozzátartozó”), döntnök nincs: a fő szám a külső ellenőré,
+    a második külön sorban áll. Kappa csak két ítélőnél, a közös tételeken és a közös blokkon (`kozos` oszlop).
+    A minta lehet a minimumváltozat is (kevesebb alapminta-pár, csali réteg: `reszminta` = csali, felismerési
+    arány; a csali a becslésekbe nem számít);
   * a minta: kozlemeny/data_paper/validacio/minta.tsv (a JSON `minta_hash`-ének egyeznie kell);
   * opcionálisan a harmadik döntés (`--dontes`): az előző futás `eltero_tetelek.tsv`-je
     kitöltött `dontes` oszloppal (helyes | hibas | bizonytalan);
@@ -375,12 +379,16 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     elter = {r['tetel_id'] for r in minta if r['elteres'] == '1'}
     tul = {r['tetel_id'] for r in minta if r['reszminta'] == 'tulminta'}
     nehez = {r['tetel_id'] for r in minta if r['reszminta'] == 'nehez'}
+    kozos_blokk = {r['tetel_id'] for r in minta if r.get('kozos') == '1'}
+    csali = {r['tetel_id'] for r in minta if r['reszminta'] == 'csali'}
     ket = len(ellenorok) == 2
     sor = ['## 1. Kitöltöttség és felállás\n']
     if not ket:
         sor.append('Egy ellenőr: kappa és harmadik döntés nincs.\n')
     elif szerzoi:
-        sor.append('Egy külső ellenőr és a szerző: döntnök nincs, a két ítélet külön áll; a kappa a kettejük egyezése.\n')
+        sor.append('Egy külső ellenőr és egy nem független második ítélő (%s): a fő szám a külső ellenőré; a második '
+                   'ítélő külön sorban áll; döntnök nincs, a vitás tételeknél a két ítélet külön szerepel; a kappa a '
+                   'kettejük közös tételein (a közös blokkon is külön).\n' % ellenorok[1][0])
     else:
         sor.append('Két külső ellenőr; az eltérő tételeket harmadik döntés zárja le (a döntött minta).\n')
     for nev, v in ellenorok:
@@ -418,12 +426,28 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     sor.append('')
     sor.append('### 2c. Nehéz réteg: az 1–2Móz párjai, ahol a két párosító modell nem egyezett (%d pár)\n' % len(nehez))
     sor.append('Egyszerű véletlen minta ebből a keretből (bizonyosság ≠ magas); külön becslés, az összesítőbe nem számít.\n')
-    sor.append(FEJ_P)
-    for nev, it in itelok:
-        lista = [it[t] for t in it if t in nehez]
-        sor.append(pontossag_sor(nev, lista))
-        sor.append(pontossag_sor(nev + ' · konzervatív', lista, konzervativ=True))
+    if nehez:
+        sor.append(FEJ_P)
+        for nev, it in itelok:
+            lista = [it[t] for t in it if t in nehez]
+            sor.append(pontossag_sor(nev, lista))
+            sor.append(pontossag_sor(nev + ' · konzervatív', lista, konzervativ=True))
+    else:
+        sor.append('Ebben a mintában nincs nehéz réteg.\n')
     sor.append('')
+    if csali:
+        sor.append('### 2d. Csalik (elültetett hibás párok): felismerési arány (%d tétel)\n' % len(csali))
+        sor.append('A csali a becslésekbe nem számít; a „hibás” ítélet a felismerés. A „konzervatív” sor a bizonytalant '
+                   'nem felismertnek veszi.\n')
+        sor.append('| | n | felismerte (hibás) | nem ismerte fel (helyes) | bizonytalan | felismerési arány | Wilson 95% |\n'
+                   '|---|---|---|---|---|---|---|')
+        for nev, it in itelok:
+            lista = [it[t] for t in it if t in csali]
+            hb, hl, bz = lista.count('hibas'), lista.count('helyes'), lista.count('bizonytalan')
+            for cimke, n in ((nev, hb + hl), (nev + ' · konzervatív', hb + hl + bz)):
+                p_, lo, hi = wilson(hb, n)
+                sor.append('| %s | %d | %d | %d | %d | %s | %s–%s |' % (cimke, hb + hl + bz, hb, hl, bz, szazalek(p_), szazalek(lo), szazalek(hi)))
+        sor.append('')
     sor.append('Könyvcsoportonként (%s, alapminta; a csoportbecslések kis n-en állnak, rétegszintű szám nem közölhető):\n' % fo_nev)
     sor.append(FEJ_P)
     for cs in sorted({csop[t] for t in fo if tip[t] == 'par'}, key=_csoport_sorrend):
@@ -460,10 +484,13 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
                'aránya ezen a kereten. A „konzervatív” sor a bizonytalant kihagyásnak számolja.\n')
     sor.append('| | n | nincs párja (helyes) | van párja (kimaradt) | bizonytalan | kimaradási arány | Wilson 95% |\n'
                '|---|---|---|---|---|---|---|')
-    for nev, it in itelok:
-        lista = [it[t] for t in it if tip[t] == 'kimaradt']
-        sor.append(kimaradas_sor(nev, lista))
-        sor.append(kimaradas_sor(nev + ' · konzervatív', lista, konzervativ=True))
+    if any(tip[t] == 'kimaradt' for t in tip):
+        for nev, it in itelok:
+            lista = [it[t] for t in it if tip[t] == 'kimaradt']
+            sor.append(kimaradas_sor(nev, lista))
+            sor.append(kimaradas_sor(nev + ' · konzervatív', lista, konzervativ=True))
+    else:
+        sor.append('| (ebben a mintában nincs ilyen tétel) | | | | | | |')
     sor.append('')
 
     eltero = []
@@ -473,7 +500,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append('## 4. A két ítélő egyezése (Cohen-kappa)\n')
         sor.append('| tételek | n | megfigyelt egyezés | kappa (3 kategória) | kappa (helyes/hibás; bizonytalan nélkül) | PABAK (helyes/hibás) |')
         sor.append('|---|---|---|---|---|---|')
-        for cimke, szuro in (('összes', lambda t: True), ('párok, alapminta', lambda t: tip[t] == 'par' and t in alap),
+        for cimke, szuro in (('összes közös tétel', lambda t: True), ('a közös blokk', lambda t: t in kozos_blokk),
+                             ('párok, alapminta', lambda t: tip[t] == 'par' and t in alap),
                              ('párok, a #172 eltérései', lambda t: tip[t] == 'par' and t in elter),
                              ('párok, nehéz réteg', lambda t: t in nehez),
                              ('pár nélküli szavak', lambda t: tip[t] == 'parnelkuli'),
@@ -488,7 +516,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append('')
         elt = [t for t in kozos if a[t]['itelet'] != b[t]['itelet']]
         if szerzoi:
-            sor.append('Eltérő tétel: %d (`eltero_tetelek.tsv`); szerzői ellenőrnél döntnök nincs, mindkét ítélet külön közlendő.\n' % len(elt))
+            sor.append('Eltérő tétel: %d (`eltero_tetelek.tsv`); döntnök nincs (nem független második ítélő), '
+                       'mindkét ítélet külön közlendő, a konzervatív becsléssel.\n' % len(elt))
         else:
             sor.append('Eltérő tétel: %d; harmadik döntéssel lezárva: %d; döntésre vár: %d (`eltero_tetelek.tsv`).\n' % (
                 len(elt), sum(1 for t in elt if dontes.get(t)), len(hianyzo)))
@@ -593,8 +622,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('valaszok', nargs='*', help='egy vagy két ellenőr JSON-exportja')
     ap.add_argument('--minta', default=MINTA)
+    ap.add_argument('--kulso', type=int, choices=(1, 2),
+                    help='a hányadik válaszfájl a külső (független) ellenőré; a fő szám ebből jön, a másik ítélő '
+                         'külön sorban áll, döntnök nincs')
+    ap.add_argument('--masodik', default='hozzátartozó',
+                    help='a nem független második ítélő jelölése --kulso mellett (alapértelmezés: hozzátartozó)')
     ap.add_argument('--szerzo', type=int, choices=(1, 2),
-                    help='a hányadik válaszfájl a szerzőé (akkor nincs döntnök, a két ítélet külön áll)')
+                    help='a hányadik válaszfájl a szerzőé (= --kulso a másik, --masodik szerző)')
     ap.add_argument('--dontes')
     ap.add_argument('--modell-f172', action='store_true')
     ap.add_argument('--modell-valasz')
@@ -611,19 +645,25 @@ def main():
             return
     if len(a.valaszok) not in (1, 2):
         raise SystemExit('egy vagy két válaszfájl kell')
-    if a.szerzo and a.szerzo > len(a.valaszok):
-        raise SystemExit('--szerzo %d, de csak %d válaszfájl van' % (a.szerzo, len(a.valaszok)))
-    szerzoi = bool(a.szerzo) and len(a.valaszok) == 2
+    if a.szerzo:
+        if a.kulso:
+            raise SystemExit('a --szerzo és a --kulso közül csak az egyik adható meg')
+        a.kulso, a.masodik = 3 - a.szerzo, 'szerző'
+    if a.kulso and a.kulso > len(a.valaszok):
+        raise SystemExit('--kulso %d, de csak %d válaszfájl van' % (a.kulso, len(a.valaszok)))
+    szerzoi = bool(a.kulso) and len(a.valaszok) == 2   # nem független második ítélő: döntnök nincs
     if a.dontes and (szerzoi or len(a.valaszok) == 1):
-        raise SystemExit('harmadik döntés csak két külső ellenőrnél van (szerzői ellenőrnél nincs döntnök)')
+        raise SystemExit('harmadik döntés csak két külső ellenőrnél van (nem független második ítélőnél nincs döntnök)')
     h = minta_hash(minta)
     beolv = [valaszok_olvas(u, minta, h) for u in a.valaszok]
     if len(beolv) == 2 and beolv[0][0] == beolv[1][0]:
         raise SystemExit('a két válaszfájl ugyanattól az ellenőrtől való: %s' % beolv[0][0])
     cimkek = []
     for i, (nev, _, _) in enumerate(beolv, 1):
-        szerep = '' if not a.szerzo else (', szerző' if i == a.szerzo else ', külső')
+        szerep = '' if not a.kulso else (', külső' if i == a.kulso else ', ' + a.masodik)
         cimkek.append('%s (%s%s)' % ('AB'[i - 1], nev, szerep))
+    if a.kulso == 2 and len(beolv) == 2:   # a külső ellenőr áll elöl: a fő szám az övé
+        beolv, cimkek = beolv[::-1], cimkek[::-1]
     dontes = dontes_olvas(a.dontes) if a.dontes else {}
     modell = {}
     if a.modell_f172:

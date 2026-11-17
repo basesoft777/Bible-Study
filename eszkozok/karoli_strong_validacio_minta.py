@@ -79,7 +79,7 @@ def csoport_of_reteg(rt):
     return 'OSZ_mozes' if rt.startswith('OSZ_mozes') else rt
 
 
-MINTA_FEJ = ['tetel_id', 'tipus', 'reszminta', 'elteres', 'csoport', 'f172_reteg', 'f172_id', 'konyv', 'vers',
+MINTA_FEJ = ['tetel_id', 'tipus', 'reszminta', 'elteres', 'kozos', 'csoport', 'f172_reteg', 'f172_id', 'konyv', 'vers',
              'hu_vers', 'hu_sorszam', 'hu_szo', 'hu_kezdet', 'hu_veg',
              'er_nyelv', 'er_vers', 'er_sorszam', 'er_szo', 'strong', 'szoto', 'jelentes',
              'tukor', 'kiejtes', 'morf', 'szofaj', 'morf_hu', 'nem_tr', 'tobbszavas', 'tobbi_par', 'er_tokenek_json', 'parok_json']
@@ -312,6 +312,7 @@ def nelkul_minta(mag, szur=True):
 
 
 N_NEHEZ = 45
+N_KOZOS = 300   # a két ellenőr közös blokkja: minden ellenőrnél ez áll elöl (DT-F175ve)
 N_KIMARADT = 55
 
 # A kimaradt-pár réteg keretéből kizárt, a párosítási szabály szerint fordítatlan forrásszavak (f21p/prompt_v3.md):
@@ -459,6 +460,19 @@ def epit(mag):
             print('  ' + x)
         raise SystemExit(1)
 
+    # közös blokk: N_KOZOS tétel a rétegek arányában (legnagyobb maradék, rögzített mag); az oldal minden
+    # ellenőrnél ezeket teszi előre, így a kappa akkor is mérhető, ha a második ítélő csak ennyit néz át.
+    # A rétegjelölést az oldal nem kapja meg, és a közös blokk minden rétegből vegyesen áll.
+    retegek = {}
+    for i, t in enumerate(tetelek):
+        retegek.setdefault((t['tipus'], t['reszminta']), []).append(i)
+    db_kozos = legnagyobb_maradek({k: len(v) for k, v in sorted(retegek.items())}, min(N_KOZOS, len(tetelek)))
+    for k, idx in sorted(retegek.items()):
+        rnd_k = random.Random('%d:kozos:%s:%s' % (mag, k[0], k[1]))
+        valasztott = set(rnd_k.sample(idx, db_kozos[k]))
+        for i in idx:
+            tetelek[i]['kozos'] = '1' if i in valasztott else '0'
+
     # tétel-azonosító: a csoportot és a típust nem árulja el (véletlen sorrend, rögzített mag)
     rnd = random.Random('%d:azonosito' % mag)
     sorrend = list(range(len(tetelek)))
@@ -497,6 +511,7 @@ def epit(mag):
             tobbsz = {(True, True): 'n:m', (True, False): '1:n', (False, True): 'n:1'}.get((n_er > 1, n_hu > 1), '')
         sorok.append({
             'tetel_id': t['tetel_id'], 'tipus': t['tipus'], 'reszminta': t['reszminta'], 'elteres': t['elteres'],
+            'kozos': t['kozos'],
             'csoport': t['csoport'],
             'f172_reteg': t['f172_reteg'], 'f172_id': t['f172_id'], 'konyv': t['konyv'], 'vers': v,
             'hu_vers': t['szoveg'], 'hu_sorszam': str(h), 'hu_szo': t['m'].group(0) if t['m'] else '',
@@ -584,7 +599,7 @@ def html_ir(sorok):
     adat = []
     for s in sorok:
         adat.append({
-            'id': s['tetel_id'], 'tipus': s['tipus'], 'vers': s['vers'], 'hu': s['hu_vers'],
+            'id': s['tetel_id'], 'tipus': s['tipus'], 'kb': 1 if s['kozos'] == '1' else 0, 'vers': s['vers'], 'hu': s['hu_vers'],
             'hn': int(s['hu_sorszam']), 'hk': int(s['hu_kezdet']), 'hv': int(s['hu_veg']), 'hs': s['hu_szo'],
             'nyelv': s['er_nyelv'], 'en': int(s['er_sorszam']) if s['er_sorszam'] else 0,
             'strong': s['strong'], 'szoto': s['szoto'], 'jel': s['jelentes'], 'tukor': s['tukor'],

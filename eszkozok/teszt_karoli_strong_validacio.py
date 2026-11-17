@@ -213,6 +213,43 @@ class Kiertekeles(unittest.TestCase):
         it2[alap_egyezo[0]] = 'bizonytalan'
         self.assertLess(ki.ketfazisu(self.minta, it2, konzervativ=True)[0][0], ki.ketfazisu(self.minta, it2)[0][0])
 
+    def test_kulso_es_hozzatartozo(self):
+        md, elt, _ = self._fut('--kulso', '2')
+        self.assertIn('B (Teszt B, külső)', md)
+        self.assertIn('A (Teszt A, hozzátartozó)', md)
+        self.assertNotIn('döntött minta', md)
+        # a fő szám a külső ellenőré: a 2a táblában az ő sora áll elöl
+        i_b = md.index('| B (Teszt B, külső) | 300 |')
+        i_a = md.index('| A (Teszt A, hozzátartozó) | 300 |')
+        self.assertLess(i_b, i_a)
+        self.assertIn('| a közös blokk | 300 |', md)   # kappa a közös blokkon
+        self.assertEqual(len(elt), 8)
+
+    def test_minimumvaltozat_csalival(self):
+        # 200 alapminta-pár + a 72 eltérés + 10 kitalált csali (a minta egy szűkített másolata)
+        fej, sorok = ki.tabla(ki.MINTA)
+        alap = [r for r in sorok if r['tipus'] == 'par' and r['reszminta'] == 'alap' and r['elteres'] == '0'][:188]
+        elter = [r for r in sorok if r['elteres'] == '1']
+        csali = []
+        for i, r in enumerate(alap[:10], 1):
+            csali.append(dict(r, tetel_id='C%03d' % i, reszminta='csali', elteres='', kozos='0'))
+        uj = alap + elter + csali
+        ut = os.path.join(self.tmp, 'minimum_minta.tsv')
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# kitalált minimumváltozat (teszt)\n' + '\t'.join(fej) + '\n')
+            for r in uj:
+                f.write('\t'.join(r[k] for k in fej) + '\n')
+        h = ki.minta_hash(uj)
+        fa = os.path.join(self.tmp, 'min_A.json')
+        with open(fa, 'w', encoding='utf-8') as f:
+            json.dump(_export('Min A', uj, h, lambda r: ('hibas', 'egyeb') if r['reszminta'] == 'csali' and r['tetel_id'] != 'C010'
+                              else ('helyes', '')), f, ensure_ascii=False)
+        md, _, _ = self._fut('--minta', ut, fajlok=[fa])
+        self.assertIn('2d. Csalik', md)
+        self.assertIn('| A (Min A) | 10 | 9 | 1 | 0 | 90.00%', md)
+        self.assertIn('| A (Min A) | 200 | 200 | 0 | 0 | 100.00%', md)   # a csali nem számít az alapmintába
+        self.assertIn('Ebben a mintában nincs nehéz réteg.', md)
+
     def test_szerzoi_es_egy_ellenor(self):
         md, _, _ = self._fut('--szerzo', '2')
         self.assertIn('B (Teszt B, szerző)', md)

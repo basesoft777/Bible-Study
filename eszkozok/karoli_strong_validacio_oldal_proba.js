@@ -35,7 +35,7 @@ global.setTimeout = (f) => 0;
 global.document = { getElementById: i => elemek[i], createElement: t => Elem(t), createTextNode: s => ({ textContent: s }),
   querySelectorAll: s => s.startsWith('input[name=hibatipus]') ? radiok : [], addEventListener() {}, body: Elem(), execCommand() {} };
 // a szkript globális függvényei a teszthez
-const futtat = new Function(kod + '\nreturn {get allapot(){return allapot}, set allapot(v){allapot=v}, itelet_valt, lep, export_obj, betolt, betolt_adat, kesz_db, MINTA, MINTA_HASH, kulcs, tetel, valasz, ment};');
+const futtat = new Function(kod + '\nreturn {get allapot(){return allapot}, set allapot(v){allapot=v}, uj_allapot, itelet_valt, lep, export_obj, betolt, betolt_adat, kesz_db, MINTA, MINTA_HASH, kulcs, tetel, valasz, ment};');
 let A = futtat();
 const hiba = []; const ell = (f, uz) => { if (!f) hiba.push(uz); };
 
@@ -55,6 +55,13 @@ for (let i = 0; i < 120; i++) {
   A.lep(1);
 }
 ell(A.kesz_db() === 120, 'kész 120: ' + A.kesz_db());
+// közös blokk: minden ellenőrnél elöl, ugyanaz a halmaz, más sorrend
+{ const kb = A.MINTA.filter(t => t.kb).length;
+  const s1 = A.allapot.sorrend, s2 = A.uj_allapot('Másik Ellenőr').sorrend;
+  const m1 = new Set(s1.slice(0, kb)), m2 = new Set(s2.slice(0, kb));
+  ell(kb === 300, 'közös blokk mérete: ' + kb);
+  ell(s1.slice(0, kb).every(id => A.MINTA.find(t => t.id === id).kb === 1), 'a közös blokk áll elöl');
+  ell([...m1].every(id => m2.has(id)) && s1.slice(0, kb).join() !== s2.slice(0, kb).join(), 'ugyanaz a blokk, más sorrend'); }
 // a kimaradt-pár tétel: „Van párja” -> hibás, automatikus hibatípussal
 { const p0 = A.allapot.poz; const ki = A.allapot.sorrend.findIndex(id => A.MINTA.find(t => t.id === id).tipus === 'kimaradt' && !A.allapot.valaszok[id]);
   ell(ki >= 0, 'van kimaradt-pár tétel');
@@ -105,7 +112,7 @@ confirmValasz = false;
 const masik = Object.assign({}, exp, { ellenor: 'Másik Ember' });
 const uz2 = A.betolt_adat(masik);
 ell(confirmHivas === 1 && /Mégsem/.test(uz2) && JSON.stringify(A.allapot) === elotte, 'más ellenőr: rákérdezés, Mégsem');
-console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (8 forgatókönyv)');
+console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (9 forgatókönyv)');
 if (hiba.length) process.exitCode = 1;
 console.log('minta_hash: ' + A.MINTA_HASH);
 console.log('betöltési üzenet: ' + info1);
