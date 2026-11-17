@@ -98,7 +98,8 @@ def main():
     tobb = [sum(H[r][k] for r in rovok) >= 2 for k in range(len(ids))]
     egyh = [all(H[r][k] for r in rovok) for k in range(len(ids))]
     for cimke, v, megj in [('többségi ítélet (2/3)', tobb, 'a pár helyes, ha legalább két bíráló szerint az'),
-                           ('egyhangú ítélet (3/3)', egyh, 'alsó korlát: a pár helyes, ha mindhárom szerint az')]:
+                           ('mindhárom helyesnek ítélte (egyhangú gépi ítélet)', egyh,
+                            'a pár helyes, ha mindhárom bíráló helyesnek ítélte')]:
         adat = {rt: (sum(x for x, g in zip(v, reteg) if g == rt), sum(g == rt for g in reteg)) for rt in pm.RETEGEK}
         for nev, ret in [('OSZ', pmr.OSZ), ('USZ', pmr.USZ), ('OSSZES', pm.RETEGEK)]:
             p, lo, hi, n = pmr.retegzett({rt: adat[rt] for rt in ret}, sulyok)
@@ -110,20 +111,34 @@ def main():
         e = sum(x == y for x, y in zip(H[a], H[b]))
         lo, hi = pmr.wilson(e, n)
         sor('egyezes_itelet', '%s–%s' % (nevek[a], nevek[b]), n, e, '%.4f' % (e / n), '%.4f' % lo, '%.4f' % hi,
-            'pár-ítélet (helyes/nem); Cohen-kappa=%.3f; súlyozatlan, Wilson 95%%' % kappa(H[a], H[b]))
+            'pár-ítélet (helyes/nem); Cohen-kappa=%.3f; a mintán, súlyozatlan, Wilson 95%%' % kappa(H[a], H[b]))
     e3 = sum(H['opus'][k] == H['gemini'][k] == H['gpt'][k] for k in range(n))
     lo, hi = pmr.wilson(e3, n)
     sor('egyezes_itelet', 'háromutas', n, e3, '%.4f' % (e3 / n), '%.4f' % lo, '%.4f' % hi,
-        'mindhárom bíráló ítélete azonos; súlyozatlan, Wilson 95%')
+        'mindhárom bíráló ítélete azonos (a három „hibás” is); a mintán, súlyozatlan, Wilson 95%')
+    # --- a hibás osztály: hány bíráló mondta hibásnak; átfedés; jelölések száma (a lektor kérése)
+    hib = {r: {k for k in range(n) if not H[r][k]} for r in rovok}
+    for db in range(4):
+        sor('hibas_osztaly', '%d bíráló mondta hibásnak' % db, n, sum(sum(not H[r][k] for r in rovok) == db
+                                                                    for k in range(n)), '', '', '',
+            'a mintán, súlyozatlan')
+    sor('hibas_osztaly', 'legalább egy bíráló mondta hibásnak', n, len(set.union(*hib.values())), '', '', '',
+        'a mintán, súlyozatlan')
+    for r in rovok:
+        sor('hibas_osztaly', '%s hibajelölései' % nevek[r], n, len(hib[r]), '', '', '', 'a mintán, súlyozatlan')
+    for a, b in [('opus', 'gemini'), ('opus', 'gpt'), ('gemini', 'gpt')]:
+        i_, u_ = len(hib[a] & hib[b]), len(hib[a] | hib[b])
+        sor('hibas_osztaly', 'átfedés %s–%s' % (nevek[a], nevek[b]), u_, i_, '%.4f' % (i_ / u_), '', '',
+            'a két bíráló hibás-halmazának metszete / uniója (Jaccard); a mintán, súlyozatlan')
     for a, b in [('opus', 'gemini'), ('opus', 'gpt'), ('gemini', 'gpt')]:
         e = sum(x == y for x, y in zip(S[a], S[b]))
         lo, hi = pmr.wilson(e, n)
         sor('egyezes_halmaz', '%s–%s' % (nevek[a], nevek[b]), n, e, '%.4f' % (e / n), '%.4f' % lo, '%.4f' % hi,
-            'a cél Károli-szóhoz jelölt eredeti halmaz pontosan azonos; súlyozatlan')
+            'a cél Károli-szóhoz jelölt eredeti halmaz pontosan azonos; a mintán, súlyozatlan')
     e3 = sum(S['opus'][k] == S['gemini'][k] == S['gpt'][k] for k in range(n))
     lo, hi = pmr.wilson(e3, n)
     sor('egyezes_halmaz', 'háromutas', n, e3, '%.4f' % (e3 / n), '%.4f' % lo, '%.4f' % hi,
-        'mindhárom halmaz azonos; súlyozatlan')
+        'mindhárom halmaz azonos; a mintán, súlyozatlan')
     # --- eltérések
     elt = []
     for k, i in enumerate(ids):
@@ -176,26 +191,45 @@ def main():
     for rov, _, ut, _ in BIRALOK:
         with open(ut, encoding='utf-8') as f:
             modellek[rov] = f.readline().split('(', 2)[-1].split(')')[0]  # a fejléc: koteg_*.json (<modell>)
-    with open(FAGY, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# MANUAL: scope=F175.B a három vak gépi bíráló páronkénti ítélete, FAGYASZTVA az emberi validáció '
-                'előtt (Opus: %s; Gemini: %s; GPT: %s; ugyanaz az utasítás és bemenet: f172/ellenor/) | forras=%s | '
-                'ts=git:%s | manual (determinisztikus; a halmaz az eredeti tokenek sorszáma, „-” = betoldás; '
-                'helyes = a gépi pár tokenje a halmazban)\n' % (
-                    modellek['opus'], modellek['gemini'], modellek['gpt'],
-                    ', '.join(os.path.relpath(b[2], pm.GYOKER).replace(os.sep, '/') for b in BIRALOK), head))
-        f.write('\t'.join(ffej) + '\n')
-        for k, i in enumerate(ids):
-            r0 = tab['opus'][i]
-            f.write('\t'.join([i, r0['reteg'], r0['vers'], r0['hu_sorszam'], r0['hu_szo'], r0['er_sorszam'],
-                               r0['er_szo'], r0['strong'], r0['morfema'],
-                               S['opus'][k], tab['opus'][i]['helyes'], S['gemini'][k], tab['gemini'][i]['helyes'],
-                               S['gpt'][k], tab['gpt'][i]['helyes'], '1' if tobb[k] else '0',
-                               '1' if H['opus'][k] == H['gemini'][k] == H['gpt'][k] else '0']) + '\n')
-    with open(FAGY, 'rb') as f:
-        h = hashlib.sha256(f.read()).hexdigest()
-    with open(FAGY + '.sha256', 'w', encoding='utf-8', newline='\n') as f:
-        f.write('%s  harom_biralo_itelet.tsv\n' % h)
-    print('fagyasztott tábla: %s, SHA-256 %s' % (os.path.relpath(FAGY, pm.GYOKER), h))
+    # Az `egyhangu` oszlop: 1, ha a három bíráló pár-ítélete azonos (mindhárom helyes VAGY mindhárom hibás);
+    # NEM a „mindhárom helyesnek ítélte” (az a `*_helyes` oszlopokból: mindhárom 1). Kódkönyv: KODKONYV.md.
+    adat_sorok = ['\t'.join(ffej)]
+    for k, i in enumerate(ids):
+        r0 = tab['opus'][i]
+        adat_sorok.append('\t'.join([i, r0['reteg'], r0['vers'], r0['hu_sorszam'], r0['hu_szo'], r0['er_sorszam'],
+                                     r0['er_szo'], r0['strong'], r0['morfema'],
+                                     S['opus'][k], tab['opus'][i]['helyes'], S['gemini'][k],
+                                     tab['gemini'][i]['helyes'], S['gpt'][k], tab['gpt'][i]['helyes'],
+                                     '1' if tobb[k] else '0',
+                                     '1' if H['opus'][k] == H['gemini'][k] == H['gpt'][k] else '0']))
+    if os.path.exists(FAGY):
+        # FAGYASZTVA (F175.B7, az emberi válaszok előtt): nem írjuk felül; csak ellenőrizzük, hogy az adatsorok
+        # bájtra egyeznek, és a hash a fájlé.
+        with open(FAGY, 'rb') as f:
+            nyers = f.read()
+        meglevo = nyers.decode('utf-8').split('\n')
+        if [x for x in meglevo if x and not x.startswith('#')] != adat_sorok:
+            raise SystemExit('HIBA: a fagyasztott tábla adatsorai eltérnek az újraszámolttól; a tábla nem írható át')
+        h = hashlib.sha256(nyers).hexdigest()
+        with open(FAGY + '.sha256', encoding='utf-8') as f:
+            if f.read().split()[0] != h:
+                raise SystemExit('HIBA: a fagyasztott tábla SHA-256-ja nem egyezik a .sha256 fájllal')
+        print('fagyasztott tábla változatlan, egyezik az újraszámolttal; SHA-256 %s' % h)
+    else:
+        with open(FAGY, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# MANUAL: scope=F175.B a három vak gépi bíráló páronkénti ítélete, FAGYASZTVA az emberi '
+                    'validáció előtt (Opus: %s; Gemini: %s; GPT: %s; ugyanaz az utasítás és bemenet: f172/ellenor/) | '
+                    'forras=%s | ts=git:%s | manual (determinisztikus; a halmaz az eredeti tokenek sorszáma, „-” = '
+                    'betoldás; helyes = a gépi pár tokenje a halmazban)\n' % (
+                        modellek['opus'], modellek['gemini'], modellek['gpt'],
+                        ', '.join(os.path.relpath(b[2], pm.GYOKER).replace(os.sep, '/') for b in BIRALOK), head))
+            for x in adat_sorok:
+                f.write(x + '\n')
+        with open(FAGY, 'rb') as f:
+            h = hashlib.sha256(f.read()).hexdigest()
+        with open(FAGY + '.sha256', 'w', encoding='utf-8', newline='\n') as f:
+            f.write('%s  harom_biralo_itelet.tsv\n' % h)
+        print('fagyasztott tábla: %s, SHA-256 %s' % (os.path.relpath(FAGY, pm.GYOKER), h))
     for s in sorok:
         print('%-15s %-48s n=%-5s x=%-5s p=%s [%s, %s] %s' % tuple(s))
 

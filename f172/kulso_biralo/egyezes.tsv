@@ -1,4 +1,4 @@
-# MANUAL: scope=F175.B három vak bíráló összevetése (Opus, Gemini, GPT) | forras=f172/itelet_par.tsv, f172/kulso_biralo/gemini_azonnali/itelet_par.tsv, f172/kulso_biralo/gpt_azonnali/itelet_par.tsv | ts=git:2b385a95 | manual (determinisztikus; a bírálók modell-kimenetek, nem arany)
+# MANUAL: scope=F175.B három vak bíráló összevetése (Opus, Gemini, GPT) | forras=f172/itelet_par.tsv, f172/kulso_biralo/gemini_azonnali/itelet_par.tsv, f172/kulso_biralo/gpt_azonnali/itelet_par.tsv | ts=git:c21836b1 | manual (determinisztikus; a bírálók modell-kimenetek, nem arany)
 szakasz	cimke	n	x	p	also95	felso95	megjegyzes
 pontossag	Opus · OSZ (súlyozott)	1000	948	0.9450	0.9295	0.9605	rétegzett becslés, normál 95%
 pontossag	Opus · USZ (súlyozott)	600	580	0.9707	0.9555	0.9859	rétegzett becslés, normál 95%
@@ -18,17 +18,28 @@ pontossag	GPT · OSSZES · morféma (H9001–H9049)	339	315	0.9110	0.8754	0.9466
 pontossag	többségi ítélet (2/3) · OSZ	1000	955	0.9505	0.9355	0.9655	rétegzett becslés, normál 95%; a pár helyes, ha legalább két bíráló szerint az
 pontossag	többségi ítélet (2/3) · USZ	600	580	0.9707	0.9555	0.9859	rétegzett becslés, normál 95%; a pár helyes, ha legalább két bíráló szerint az
 pontossag	többségi ítélet (2/3) · OSSZES	1600	1535	0.9549	0.9428	0.9671	rétegzett becslés, normál 95%; a pár helyes, ha legalább két bíráló szerint az
-pontossag	egyhangú ítélet (3/3) · OSZ	1000	939	0.9323	0.9149	0.9497	rétegzett becslés, normál 95%; alsó korlát: a pár helyes, ha mindhárom szerint az
-pontossag	egyhangú ítélet (3/3) · USZ	600	574	0.9633	0.9465	0.9802	rétegzett becslés, normál 95%; alsó korlát: a pár helyes, ha mindhárom szerint az
-pontossag	egyhangú ítélet (3/3) · OSSZES	1600	1513	0.9391	0.9251	0.9532	rétegzett becslés, normál 95%; alsó korlát: a pár helyes, ha mindhárom szerint az
-egyezes_itelet	Opus–Gemini	1600	1561	0.9756	0.9669	0.9821	pár-ítélet (helyes/nem); Cohen-kappa=0.690; súlyozatlan, Wilson 95%
-egyezes_itelet	Opus–GPT	1600	1571	0.9819	0.9741	0.9874	pár-ítélet (helyes/nem); Cohen-kappa=0.776; súlyozatlan, Wilson 95%
-egyezes_itelet	Gemini–GPT	1600	1578	0.9862	0.9793	0.9909	pár-ítélet (helyes/nem); Cohen-kappa=0.813; súlyozatlan, Wilson 95%
-egyezes_itelet	háromutas	1600	1555	0.9719	0.9626	0.9789	mindhárom bíráló ítélete azonos; súlyozatlan, Wilson 95%
-egyezes_halmaz	Opus–Gemini	1600	1490	0.9313	0.9178	0.9426	a cél Károli-szóhoz jelölt eredeti halmaz pontosan azonos; súlyozatlan
-egyezes_halmaz	Opus–GPT	1600	1530	0.9563	0.9451	0.9652	a cél Károli-szóhoz jelölt eredeti halmaz pontosan azonos; súlyozatlan
-egyezes_halmaz	Gemini–GPT	1600	1526	0.9537	0.9423	0.9630	a cél Károli-szóhoz jelölt eredeti halmaz pontosan azonos; súlyozatlan
-egyezes_halmaz	háromutas	1600	1477	0.9231	0.9090	0.9352	mindhárom halmaz azonos; súlyozatlan
+pontossag	mindhárom helyesnek ítélte (egyhangú gépi ítélet) · OSZ	1000	939	0.9323	0.9149	0.9497	rétegzett becslés, normál 95%; a pár helyes, ha mindhárom bíráló helyesnek ítélte
+pontossag	mindhárom helyesnek ítélte (egyhangú gépi ítélet) · USZ	600	574	0.9633	0.9465	0.9802	rétegzett becslés, normál 95%; a pár helyes, ha mindhárom bíráló helyesnek ítélte
+pontossag	mindhárom helyesnek ítélte (egyhangú gépi ítélet) · OSSZES	1600	1513	0.9391	0.9251	0.9532	rétegzett becslés, normál 95%; a pár helyes, ha mindhárom bíráló helyesnek ítélte
+egyezes_itelet	Opus–Gemini	1600	1561	0.9756	0.9669	0.9821	pár-ítélet (helyes/nem); Cohen-kappa=0.690; a mintán, súlyozatlan, Wilson 95%
+egyezes_itelet	Opus–GPT	1600	1571	0.9819	0.9741	0.9874	pár-ítélet (helyes/nem); Cohen-kappa=0.776; a mintán, súlyozatlan, Wilson 95%
+egyezes_itelet	Gemini–GPT	1600	1578	0.9862	0.9793	0.9909	pár-ítélet (helyes/nem); Cohen-kappa=0.813; a mintán, súlyozatlan, Wilson 95%
+egyezes_itelet	háromutas	1600	1555	0.9719	0.9626	0.9789	mindhárom bíráló ítélete azonos (a három „hibás” is); a mintán, súlyozatlan, Wilson 95%
+hibas_osztaly	0 bíráló mondta hibásnak	1600	1513				a mintán, súlyozatlan
+hibas_osztaly	1 bíráló mondta hibásnak	1600	22				a mintán, súlyozatlan
+hibas_osztaly	2 bíráló mondta hibásnak	1600	23				a mintán, súlyozatlan
+hibas_osztaly	3 bíráló mondta hibásnak	1600	42				a mintán, súlyozatlan
+hibas_osztaly	legalább egy bíráló mondta hibásnak	1600	87				a mintán, súlyozatlan
+hibas_osztaly	Opus hibajelölései	1600	72				a mintán, súlyozatlan
+hibas_osztaly	Gemini hibajelölései	1600	59				a mintán, súlyozatlan
+hibas_osztaly	GPT hibajelölései	1600	63				a mintán, súlyozatlan
+hibas_osztaly	átfedés Opus–Gemini	85	46	0.5412			a két bíráló hibás-halmazának metszete / uniója (Jaccard); a mintán, súlyozatlan
+hibas_osztaly	átfedés Opus–GPT	82	53	0.6463			a két bíráló hibás-halmazának metszete / uniója (Jaccard); a mintán, súlyozatlan
+hibas_osztaly	átfedés Gemini–GPT	72	50	0.6944			a két bíráló hibás-halmazának metszete / uniója (Jaccard); a mintán, súlyozatlan
+egyezes_halmaz	Opus–Gemini	1600	1490	0.9313	0.9178	0.9426	a cél Károli-szóhoz jelölt eredeti halmaz pontosan azonos; a mintán, súlyozatlan
+egyezes_halmaz	Opus–GPT	1600	1530	0.9563	0.9451	0.9652	a cél Károli-szóhoz jelölt eredeti halmaz pontosan azonos; a mintán, súlyozatlan
+egyezes_halmaz	Gemini–GPT	1600	1526	0.9537	0.9423	0.9630	a cél Károli-szóhoz jelölt eredeti halmaz pontosan azonos; a mintán, súlyozatlan
+egyezes_halmaz	háromutas	1600	1477	0.9231	0.9090	0.9352	mindhárom halmaz azonos; a mintán, súlyozatlan
 elteres	nem egyhangú pár-ítélet	1600	45				f172/kulso_biralo/elteresek.tsv
 elteres	Opus kisebbségben	45	23				
 elteres	egy külső kisebbségben	45	22				

@@ -1,7 +1,7 @@
 # F175.B vezérlő (l. .github/workflows/f175_kulso_biralo.yml; csak a claude/johd-kulso-biralo-4908a2 ágon fut)
-# diagnosztika: a Gemini gondolkodási tokenje (a lektor kérdése, 2026-11-17); utána: muvelet=nincs
-muvelet=diagnosztika
-modellek=gemini
-kotegek=1
+# merge-kori állapot: no-op
+muvelet=nincs
+modellek=gemini,gpt
+kotegek=hianyzo
 plafon_usd=12
 var_perc=0
