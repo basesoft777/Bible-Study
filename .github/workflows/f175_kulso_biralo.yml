@@ -1,10 +1,13 @@
 # F175.B -- kulso (nem Anthropic) vak biralok a #172 mintajan (OpenRouter Batch API).
 #
-# INDITAS. Kizarolag push-ra, claude/* agon, ha az f172/kulso_biralo/futtatas.txt valtozik. Nincs
-# workflow_dispatch. A workflow sajat commitja nem nyul a futtatas.txt-hez, es a GITHUB_TOKEN-nel vegzett
-# push nem indit uj futast.
+# INDITAS. Kizarolag push-ra, CSAK a claude/johd-kulso-biralo-4908a2 agon (F175.B), ha az
+# f172/kulso_biralo/futtatas.txt valtozik. Mas ag (a main-t befesulo agak sem) nem inditja: a merge utan a
+# workflow nem fut idegen agon, es nem commitol oda (a lektor kifogasa, 2026-11-17). Nincs workflow_dispatch.
+# A workflow sajat commitja nem nyul a futtatas.txt-hez, es a GITHUB_TOKEN-nel vegzett push nem indit uj futast.
+# A futtatas.txt merge-kori allapota: muvelet=nincs (no-op).
 #
-# VEZERLES (f172/kulso_biralo/futtatas.txt, minden kulcs kotelezo): muvelet=bekuld|begyujt|bekuld+begyujt,
+# VEZERLES (f172/kulso_biralo/futtatas.txt, minden kulcs kotelezo): muvelet=bekuld|begyujt|azonnali|diagnosztika|nincs
+# (+-szal kombinalhato),
 # modellek=gemini,gpt, kotegek=<n,n|mind|hianyzo>, plafon_usd=<a teljes naplo felso korlatja>,
 # var_perc=<a nyitott batchek varasa ebben a futasban>. A futtato: eszkozok/karoli_strong/kulso_biralo.py.
 # A beerkezett valaszok a pontossag_ellenor.py kapujan mennek at (a hibas az elvetett/ ala kerul).
@@ -17,7 +20,7 @@ name: f175_kulso_biralo
 
 on:
   push:
-    branches: ['claude/**']
+    branches: ['claude/johd-kulso-biralo-4908a2']
     paths:
       - 'f172/kulso_biralo/futtatas.txt'
 
@@ -73,11 +76,11 @@ jobs:
           echo "kulcs-grep tiszta"
 
       - name: Kimenet commitolasa es pusholasa (csak f172/kulso_biralo/)
-        if: always() && steps.kulcs_grep.conclusion == 'success'
+        if: always() && steps.kulcs_grep.conclusion == 'success' && github.ref == 'refs/heads/claude/johd-kulso-biralo-4908a2'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          case "$GITHUB_REF" in refs/heads/claude/*) ;; *) echo "nem claude/* ag: $GITHUB_REF"; exit 1;; esac
+          case "$GITHUB_REF" in refs/heads/claude/johd-kulso-biralo-4908a2) ;; *) echo "idegen ag: $GITHUB_REF"; exit 1;; esac
           git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

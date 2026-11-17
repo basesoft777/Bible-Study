@@ -1,8 +1,7 @@
-# F175.B vezérlő (l. .github/workflows/f175_kulso_biralo.yml)
-# teljes futás azonnali módban, mindkét modell, 72 köteg (a felhasználó döntése: „mehet mindhárom”, 2026-11-17);
-# plafon: 12 USD a teljes naplóra; a függő GPT-batch csak lekérdezve (a 20 tételes összevetéshez)
-muvelet=azonnali+begyujt
-modellek=gemini,gpt
-kotegek=hianyzo
+# F175.B vezérlő (l. .github/workflows/f175_kulso_biralo.yml; csak a claude/johd-kulso-biralo-4908a2 ágon fut)
+# diagnosztika: a Gemini gondolkodási tokenje (a lektor kérdése, 2026-11-17); utána: muvelet=nincs
+muvelet=diagnosztika
+modellek=gemini
+kotegek=1
 plafon_usd=12
 var_perc=0

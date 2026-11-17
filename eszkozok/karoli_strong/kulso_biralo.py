@@ -172,6 +172,8 @@ def eredmeny_feldolgoz(rov, batch, celtabla=None, mappa=None):
                'provider': batch.get('provider') or '', 'ts': ts}
         resp = r.get('response') or {}
         body = resp.get('body') or {}
+        if body.get('provider'):
+            sor['provider'] = body['provider']  # kérésenként (az azonnali módban a válasz hordozza)
         u = body.get('usage') or {}
         sor.update(prompt_tokens=u.get('prompt_tokens', ''), completion_tokens=u.get('completion_tokens', ''),
                    reasoning_tokens=(u.get('completion_tokens_details') or {}).get('reasoning_tokens', ''),
@@ -412,6 +414,40 @@ def azonnali(rov, kotegek_arg, plafon, http=_http, szalak=6):
         raise SystemExit('PLAFON elérve')
 
 
+DIAG = os.path.join(KI, 'diagnosztika_gemini.json')
+
+
+def diagnosztika(plafon, http=_http):
+    """A Gemini gondolkodási tokenjeinek tisztázása (a lektor kérdése, 2026-11-17): az 1. köteg
+    két azonnali hívással: (1) a futás törzsével, változatlanul; (2) ugyanaz + reasoning
+    {effort: high}. Mindkettőnél a teljes `usage` és a gondolkodás jelenléte (a szöveg hossza)
+    kerül a fájlba; a válasz tartalma nem (a mérés adatait nem érinti)."""
+    if osszkoltseg() + 0.2 > plafon:
+        raise SystemExit('PLAFON')
+    test = batch_keres('gemini', [1])['requests'][0]['body']
+    ki = {'modell_kert': MODELLEK['gemini'][0], 'ts': time.strftime('%Y-%m-%dT%H:%M:%S'), 'hivasok': []}
+    for nev, extra in [('a futás törzse (alapbeállítás)', {}),
+                       ('ugyanaz + reasoning effort=high', {'reasoning': {'effort': 'high'}})]:
+        v = http('POST', '/chat/completions', dict(model=MODELLEK['gemini'][0], **dict(test, **extra))) or {}
+        msg = ((v.get('choices') or [{}])[0].get('message') or {})
+        ki['hivasok'].append({'nev': nev, 'modell_valasz': v.get('model'), 'provider': v.get('provider'),
+                              'usage': v.get('usage'), 'reasoning_szoveg_hossz': len(msg.get('reasoning') or ''),
+                              'reasoning_details_db': len(msg.get('reasoning_details') or []),
+                              'tartalom_hossz': len(msg.get('content') or '')})
+        print('diagnosztika: %s -> %s' % (nev, json.dumps(ki['hivasok'][-1], ensure_ascii=False)))
+    with open(DIAG, 'w', encoding='utf-8', newline='\n') as f:
+        json.dump(ki, f, ensure_ascii=False, indent=1)
+        f.write('\n')
+    sorok = _olvas(BATCHEK, BATCH_FEJ)
+    sorok.append({'rov': 'gemini', 'modell_kert': MODELLEK['gemini'][0], 'batch_id': 'diagnosztika-' + ki['ts'],
+                  'kotegek': '1', 'bekuldve': ki['ts'], 'allapot': 'completed',
+                  'provider': ','.join(sorted({str(h['provider']) for h in ki['hivasok']})),
+                  'prompt_tokens': sum((h['usage'] or {}).get('prompt_tokens') or 0 for h in ki['hivasok']),
+                  'completion_tokens': sum((h['usage'] or {}).get('completion_tokens') or 0 for h in ki['hivasok']),
+                  'cost_usd': '%.6f' % sum((h['usage'] or {}).get('cost') or 0 for h in ki['hivasok'])})
+    _ir(BATCHEK, BATCH_FEJ, sorok, 'F175.B beküldött batchek')
+
+
 def vezerlo(ut):
     k = {}
     with open(ut, encoding='utf-8') as f:
@@ -424,6 +460,14 @@ def vezerlo(ut):
         if kell not in k:
             raise SystemExit('a vezérlőből hiányzik: %s' % kell)
     muv = k['muvelet'].split('+')
+    ismeretlen = set(muv) - {'bekuld', 'begyujt', 'azonnali', 'diagnosztika', 'nincs'}
+    if ismeretlen:
+        raise SystemExit('ismeretlen művelet: %s' % ', '.join(sorted(ismeretlen)))
+    if muv == ['nincs']:
+        print('muvelet=nincs: nincs teendő')
+        return
+    if 'diagnosztika' in muv:
+        diagnosztika(float(k['plafon_usd']))
     if 'bekuld' in muv:
         for rov in k['modellek'].split(','):
             bekuld(rov.strip(), k['kotegek'], float(k['plafon_usd']))

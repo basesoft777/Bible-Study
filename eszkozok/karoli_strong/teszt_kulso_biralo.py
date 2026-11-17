@@ -202,6 +202,31 @@ class Menet(Alap):
                             'response']['body'], szalak=1)
         self.assertLessEqual(len(hiv), 3 + 1)  # a futó hívás (legfeljebb a szálak száma) még lefut
 
+    def test_diagnosztika_es_nincs(self):
+        kb.DIAG = os.path.join(self.tmp, 'diag.json')
+        hiv = []
+
+        def http(m, ut, adat=None):
+            hiv.append(adat.get('reasoning'))
+            return {'model': 'google/gemini-4-argon', 'provider': 'Google',
+                    'choices': [{'message': {'content': '{}', 'reasoning': 'x' * 5}}],
+                    'usage': {'prompt_tokens': 10, 'completion_tokens': 5, 'cost': 0.01,
+                              'completion_tokens_details': {'reasoning_tokens': 3}}}
+        kb.diagnosztika(5.0, http=http)
+        self.assertEqual(hiv, [None, {'effort': 'high'}])
+        with open(kb.DIAG, encoding='utf-8') as f:
+            d = json.load(f)
+        self.assertEqual(d['hivasok'][1]['reasoning_szoveg_hossz'], 5)
+        self.assertAlmostEqual(kb.osszkoltseg(), 0.02)
+        ut = os.path.join(self.tmp, 'v.txt')
+        with open(ut, 'w', encoding='utf-8') as f:
+            f.write('muvelet=nincs\nmodellek=gpt\nkotegek=1\nplafon_usd=1\nvar_perc=0\n')
+        kb.vezerlo(ut)  # nem hív semmit
+        with open(ut, 'w', encoding='utf-8') as f:
+            f.write('muvelet=valami\nmodellek=gpt\nkotegek=1\nplafon_usd=1\nvar_perc=0\n')
+        with self.assertRaises(SystemExit):
+            kb.vezerlo(ut)
+
     def test_plafon(self):
         with self.assertRaises(SystemExit):
             kb.bekuld('gpt', 'mind', 0.01, http=lambda *x: self.fail('nem hívhat'))
