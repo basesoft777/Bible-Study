@@ -11,8 +11,8 @@ Az adatkészlet a Károli-biblia, a klasszikus magyar fordítás 1908-as szöveg
 görög eredetihez (STEPBible TAHOT/TAGNT) 598 715 szópárral, mindegyik az eredeti szó Strong-számával. Egy nyelvi modell
 csak szósorszámokat jelölt; a Strong-szám az eredeti szöveg adatából jön. A pontosság rétegzett véletlen mintán,
 vak modell-ellenőrrel 95,06% (95%-os KI: 93,81–96,32%), két emberi ellenőr szerint [pontosság]; a fő
-szavak egyezése egy független, zárt Strong-számos kiadással 98,72%. A CC BY 4.0 licencű TSV-táblák Strong-alapú keresést,
-fordítástörténeti és szóillesztési kutatást szolgálnak.
+szavak egyezése egy független, zárt Strong-számos kiadással 98,72%. A CC BY 4.0 licencű táblák Strong-alapú keresést
+és szóillesztési kutatást szolgálnak.
 
 **Kulcsszavak:** Károli-biblia; Strong-számok; szóillesztés; magyar; bibliai héber; koiné görög
 
@@ -57,8 +57,10 @@ görög névelő fordítatlan, mert a névelőhasználat a nyelvek között nem 
 névelő párosított. Minden választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább
 egyszer, csak létező sorszám); a bukott választ a modell újra elkészítette. A modell így nem tudott Strong-számot vagy
 szótári tételt kitalálni; legfeljebb rossz szót párosíthatott, és minden pár egy eredeti szóra mutat, amelyet az
-emberi validáció ellenőriz. A jelentés és a Strong-szám forrása a nyílt, szakmai forrásadat. A táblák a mentett
-válaszokból Python-programokkal bájtra azonosan újraépíthetők.
+emberi validáció ellenőriz. A jelentés és a Strong-szám forrása a nyílt, szakmai forrásadat. A modellválaszok egyszer
+készültek, és archiválva vannak; a párok építése, a Strong-szám hozzárendelése és az érvényességi kapu determinisztikus,
+ezért a táblák az archivált válaszokból bájtra azonosan újraépíthetők, a modell újrafuttatása viszont kis eltéréseket
+adhat.
 
 ### Mintavétel
 
@@ -106,7 +108,7 @@ egy héber előtag, névelő vagy elöljáró szabályellenes hozzákötésével
 - **Tárhely neve:** Zenodo
 - **Objektum neve:** `karoli-1908-strongs-1.0.zip`
 - **Formátumok és változatok:** TSV (UTF-8, tabulátorral tagolt, LF sorvég) az adathoz és a gépi kódkönyvhöz;
-  Markdown a kétnyelvű dokumentációhoz (kódkönyv, módszertani leírás, ismert hibák); CFF hivatkozási fájl; SHA-256
+  Markdown a kétnyelvű dokumentációhoz; CFF hivatkozási fájl; SHA-256
   ellenőrző összeg
 - **Létrehozás dátumai:** 2026-10-01 – 2026-11-01
 - **Az adatkészlet készítője:** Demeter Tamás (független kutató; ORCID: 0009-0005-9254-9731): szabályok, feldolgozási lánc, mérés,
@@ -179,7 +181,7 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 claude-sonnet-5-5) csak sorszámpárokat adott vissza (l. Módszer). Az 1Móz és a 2Móz párosításánál egy másik nyelvi
 modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2) Minőség-ellenőrzés: a Claude
 Opus a mintán vak ellenőr volt; az emberi validáció MI nélkül készült. (3) Kísérő adatkészlet: nyelvi modellek csak a
-ritka igealakokra tettek javaslatot (l. Újrahasznosítás). Minden más feldolgozás determinisztikus. A kézirat
+ritka igealakokra tettek javaslatot (l. Újrahasznosítás). A kézirat
 szövegének megfogalmazásában és szerkesztésében a claude-opus-5-5 modell segített, az adatkészlet adataiból; a számok
 az adatokból generáltak. A kutatást a szerző tervezte, minden szerkesztői döntést ő hozott, minden állítást az adatokon
 ellenőrzött, és a tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
@@ -191,9 +193,9 @@ ellenőrzött, és a tartalomért teljes felelősséget vállal; MI-eszköz nem 
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 160; a számozatlan nyilatkozatokkal 1 326; a
-hivatkozásokkal is 1 400 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
-szól); a kivonattal együtt 1 496. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+hivatkozások nélkül (a JOHD-sablon számítása) 1 173; a számozatlan nyilatkozatokkal 1 332; a
+hivatkozásokkal is 1 406 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 499. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
