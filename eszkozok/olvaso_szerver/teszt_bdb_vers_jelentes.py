@@ -678,7 +678,7 @@ class Ujrageneralas(unittest.TestCase):
             regi = f.read()
         ts = regi.split('--ts ', 1)[1].split(' ', 1)[0]
         sorok, mh = V.general(ts)
-        self.assertEqual(V.kiir(sorok, mh, ts), regi)
+        self.assertEqual(V.kiir(sorok, mh, ts, V.SEFARIA_TANU), regi)
 
 
 if __name__ == '__main__':
