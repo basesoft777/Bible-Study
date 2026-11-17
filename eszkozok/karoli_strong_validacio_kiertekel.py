@@ -49,6 +49,7 @@ import argparse
 import json
 import math
 import os
+import re
 import subprocess
 import sys
 
@@ -505,7 +506,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
                              ('párok, a #172 eltérései', lambda t: tip[t] == 'par' and t in elter),
                              ('párok, nehéz réteg', lambda t: t in nehez),
                              ('pár nélküli szavak', lambda t: tip[t] == 'parnelkuli'),
-                             ('kimaradt párok', lambda t: tip[t] == 'kimaradt')):
+                             ('kimaradt párok', lambda t: tip[t] == 'kimaradt'),
+                             ('csalik', lambda t: t in csali)):
             ts = [t for t in kozos if szuro(t)]
             p3 = [(a[t]['itelet'], b[t]['itelet']) for t in ts]
             k3, po3, n3 = kappa(p3, ITELETEK)
@@ -573,6 +575,28 @@ def _csoport_sorrend(cs):
     return _SORREND.index(cs) if cs in _SORREND else len(_SORREND)
 
 
+LETET_ALAP = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'F175V_csalik.tsv')
+
+
+def csali_hozzaad(minta_ut, minta, letet_ut):
+    """A minta kiegészítése a csalikkal a letétfájlból, ha a minta.tsv fejléce csalit jelez (csali_sha256=…).
+    A letétfájl SHA-256-jának egyeznie kell a fejlécben lekötöttel. letet_ut=None: csalik nélkül."""
+    with open(minta_ut, encoding='utf-8') as f:
+        fej = f.readline()
+    m = re.search(r'csali_sha256=([0-9a-f]{64})', fej)
+    if not m or letet_ut is None:
+        return minta
+    if not os.path.exists(letet_ut):
+        raise SystemExit('a minta csalit tartalmaz, de nincs meg a letétfájl: %s (--csali; próbához --csali-nelkul)' % letet_ut)
+    import hashlib
+    with open(letet_ut, 'rb') as f:
+        h = hashlib.sha256(f.read()).hexdigest()
+    if h != m.group(1):
+        raise SystemExit('a letétfájl SHA-256-ja (%s) nem egyezik a minta.tsv fejlécében lekötöttel (%s)' % (h, m.group(1)))
+    _, csalik = tabla(letet_ut)
+    return sorted(minta + csalik, key=lambda r: r['tetel_id'])
+
+
 def dontes_olvas(ut):
     _, sorok = tabla(ut)
     ki = {}
@@ -622,6 +646,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('valaszok', nargs='*', help='egy vagy két ellenőr JSON-exportja')
     ap.add_argument('--minta', default=MINTA)
+    ap.add_argument('--csali', default=LETET_ALAP,
+                    help='a csalik letétfájlja (a repón kívül); kell, ha a minta.tsv fejléce csalit jelez')
+    ap.add_argument('--csali-nelkul', action='store_true',
+                    help='a csalik nélkül (próbához: ilyenkor az oldal exportja nem illeszkedik a mintához)')
     ap.add_argument('--kulso', type=int, choices=(1, 2),
                     help='a hányadik válaszfájl a külső (független) ellenőré; a fő szám ebből jön, a másik ítélő '
                          'külön sorban áll, döntnök nincs')
@@ -638,6 +666,7 @@ def main():
     a = ap.parse_args()
 
     _, minta = tabla(a.minta)
+    minta = csali_hozzaad(a.minta, minta, None if a.csali_nelkul else a.csali)
     if a.modell_bemenet:
         nv, nk = modell_bemenet(minta, a.modell_bemenet)
         print('modell-bemenet: %d vers, %d köteg -> %s' % (nv, nk, a.modell_bemenet))

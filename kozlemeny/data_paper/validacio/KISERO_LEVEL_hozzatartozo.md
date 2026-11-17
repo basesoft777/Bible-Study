@@ -4,7 +4,7 @@
 
 ---
 
-**Tárgy:** Kérés: szúrópróba a Károli–Strong szópárosításhoz (kb. 2,5 óra)
+**Tárgy:** Kérés: szúrópróba a Károli–Strong szópárosításhoz (kb. 2 óra 35 perc)
 
 Kedves [Név]!
 
@@ -17,7 +17,7 @@ A melléklet két fájlja:
 - **`ellenorzo.html`**: böngészőben nyílik meg, gépen és telefonon is, internet nélkül. Minden tételnél azt kell eldönteni, helyes-e a gép párja, illetve a pár nélküli szavaknál, hogy tényleg nincs-e párja a másik nyelvű mondatban. A kérdés mindig a párosítás, nem az, hogy Károli jól fordított-e; a fordításról szóló észrevételnek külön jelölő van. A program menet közben ment, így több részletben is dolgozhatsz. A mentés az adott böngészőhöz kötött; eszközváltáskor az Exportálás és a Betöltés gomb viszi át (részletek az útmutatóban).
 - **`UTMUTATO.md`**: egy oldal arról, mikor helyes, hibás vagy bizonytalan egy pár, néhány példával. Kérlek, előbb ezt olvasd el.
 
-Legalább az első 300 tételt kérném (a fejlécben „közös blokk”, kb. 2,5 óra, több részletben); ha van kedved és időd, a teljes 540 kb. 4 óra. Szótárt használhatsz; Strong-számos Bibliát, interlineáris Bibliát és mesterséges intelligenciát kérlek, ne. Ha végeztél, az oldal „Mentés / export” gombjával letöltöd a `<neved>_valaszok.json` fájlt; ezt kérném vissza, **[határidő, pl. 2026. november 30.]**-ig.
+Legalább az első 311 tételt kérném (a fejlécben „közös blokk”, kb. 2 óra 35 perc, több részletben); ha van kedved és időd, a teljes 560 kb. 4 óra 10 perc. A készlet ellenőrző tételeket is tartalmaz, de nem jelöljük, melyek. Szótárt használhatsz; Strong-számos Bibliát, interlineáris Bibliát és mesterséges intelligenciát kérlek, ne. Ha végeztél, az oldal „Mentés / export” gombjával letöltöd a `<neved>_valaszok.json` fájlt; ezt kérném vissza, **[határidő, pl. 2026. november 30.]**-ig.
 
 Két kérés még:
 

@@ -4,7 +4,9 @@
 
 Két kimenet a `kozlemeny/data_paper/validacio/` alatt:
   * minta.tsv      — 300 szópár + 80 pár nélküli magyar szó, rétegzett véletlen minta;
-  * ellenorzo.html — önálló, offline ellenőrző oldal, a mintával beágyazva
+  * ellenorzo.html — önálló, offline ellenőrző oldal, a mintával (és a csalikkal) beágyazva; a letét mappájában,
+                     a repón kívül (a repóba a validáció lezárásáig nem kerül: a minta.tsv-vel összevetve
+                     a csalik azonosíthatók volnának)
                      (a sablon: eszkozok/karoli_strong_validacio_sablon.html).
 
 Mintavétel (rögzített mag; újrafuttatva ugyanazon a commiton bájtra azonos, a minta.tsv fejlécének git-hashe a commitot követi):
@@ -367,7 +369,120 @@ def kimaradt_minta(mag, ered):
     return ki, db, {cs: len(v) for cs, v in jeloltek.items()}, kizart
 
 
-def epit(mag):
+N_CSALI = 20
+IGEKOTOK = {'meg', 'el', 'ki', 'be', 'le', 'fel', 'föl', 'át', 'által', 'oda', 'ide', 'alá', 'elő', 'vissza', 'össze',
+            'rá', 'reá', 'hozzá', 'utána', 'végig', 'fenn', 'benn', 'ki'}
+CSALI_TARTALMI = ('főnév', 'ige', 'melléknév')   # a Strong_szotar Szófaj mezőjének eleje (a tulajdonnév nem)
+LETET_ALAP = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'F175V_csalik.tsv')
+LETET_FEJ = MINTA_FEJ + ['csali_ok', 'eredeti_er_sorszam', 'eredeti_er_szo', 'eredeti_strong']
+_SZOFAJ = {}
+
+
+def tartalmi(strong):
+    """Tartalmas szó-e a Strong-szám (főnév, ige, melléknév a Strong_szotar szerint; a tulajdonnév nem)."""
+    if not _SZOFAJ:
+        for r in tokenek._sorok(os.path.join(KONK, 'Strong_szotar.tsv')):
+            if len(r) > 3:
+                _SZOFAJ[r[0]] = r[3]
+    return _SZOFAJ.get(strong, '').startswith(CSALI_TARTALMI)
+
+
+def csali_jelolt(vp, el, rnd, tartalmi_e=None):
+    """Egy vers lehetséges csalija: (h, e_eredeti, e_csali) vagy None.
+
+    vp: a vers párjai [(hu_sorszam, hu_szo, er_sorszam, er_szo, strong)], el: az eredeti tokenek.
+    Feltételek: a magyar szónak pontosan egy párja van, és az tartalmas szó; a csali egy szomszédos (±1, ±2)
+    tartalmas forrásszó, más Strong-számmal, amelynek pontosan egy, másik magyar szó a párja, és az a magyar szó
+    is csak ezt az egy párt kapta, és nem áll közvetlenül a vizsgált szó mellett (így a kettő nem olvasható egy
+    szerkezetnek, pl. „nagy irgalmasságú”); nem rokon tő (a Strong-szám legalább 4-gyel eltér) és nincs közös
+    szókezdet a két magyar szóban; a vizsgált magyar szó legalább hárombetűs, és nem igekötő. A csali
+    így hihető (szomszédos tartalmas szó), de egyértelműen rossz (a mondatban egy másik magyar szó fordítja)."""
+    tartalmi_e = tartalmi_e or tartalmi
+    h2e, e2h = {}, {}
+    for p in vp:
+        h2e.setdefault(p[0], []).append(p)
+        e2h.setdefault(p[2], []).append(p)
+    jeloltek = []
+    for h, ps in sorted(h2e.items()):
+        if len(ps) != 1:
+            continue
+        e = ps[0][2]
+        if not tartalmi_e(ps[0][4]) or len(ps[0][1]) < 3 or ps[0][1].casefold() in IGEKOTOK:
+            continue
+        for d in (-1, 1, -2, 2):
+            e2 = e + d
+            if e2 < 1 or e2 > len(el) or len(e2h.get(e2, [])) != 1:
+                continue
+            p2 = e2h[e2][0]
+            if p2[0] == h or abs(p2[0] - h) <= 1 or len(h2e.get(p2[0], [])) != 1 or p2[1].casefold() == ps[0][1].casefold():
+                continue
+            s1, s2 = ps[0][4], el[e2 - 1]['strong']
+            if s1 == s2 or not tartalmi_e(s2):
+                continue
+            # rokon tő (közeli Strong-szám, pl. H5358 ~ H5359) vagy közös szókezdet („minden” ~ „mindenkinek”):
+            # a csali ilyenkor egy szerkezet tagjának látszhat, nem egyértelműen rossz
+            if s1[0] == s2[0] and abs(int(s1[1:]) - int(s2[1:])) <= 3:
+                continue
+            if p2[1].casefold()[:4] == ps[0][1].casefold()[:4]:
+                continue
+            jeloltek.append((h, e, e2))
+            break
+    return rnd.choice(jeloltek) if jeloltek else None
+
+
+def csali_minta(csali_mag, kizart_versek, ered):
+    """N_CSALI csali könyvcsoportonként a keret pársúlya szerint (legnagyobb maradék); a titkos maggal
+    determinisztikus. Visszaad: [(konyv, csoport, vers, h, e_eredeti, e_csali, vp)]."""
+    _, keret = _tabla(os.path.join(GYOKER, 'f172', 'keret.tsv'))
+    suly = {}
+    for r in keret:
+        if r['reteg'] in pm.RETEGEK:
+            cs = csoport_of_reteg(r['reteg'])
+            suly[cs] = suly.get(cs, 0) + int(r['parsor'])
+    db = legnagyobb_maradek({cs: suly[cs] for cs in CSOPORTOK}, N_CSALI)
+    ki = []
+    for cs in CSOPORTOK:
+        versek = []
+        for k in pm.konyvek():
+            if pm.CSOPORT[k] != cs:
+                continue
+            _, sorok = _tabla(os.path.join(ADAT, 'parok_%s.tsv' % k))
+            vv = {}
+            for r in sorok:
+                vv.setdefault(r['vers'], []).append(
+                    (int(r['hu_sorszam']), r['hu_szo'], int(r['er_sorszam']), r['er_szo'], r['strong']))
+            versek.extend((k, v, sorted(p)) for v, p in vv.items() if v not in kizart_versek and v in ered)
+        rnd = random.Random('%s:csali:%s' % (csali_mag, cs))
+        rnd.shuffle(versek)
+        n = 0
+        for k, v, vp in versek:
+            if n >= db[cs]:
+                break
+            j = csali_jelolt(vp, ered[v], rnd)
+            if j:
+                ki.append((k, cs, v, j[0], j[1], j[2], vp))
+                n += 1
+    return ki
+
+
+def letet_olvas(ut):
+    """(mag, sorok) a letétfájlból; a `# csali_mag=` sor adja a titkos magot."""
+    mag = None
+    with open(ut, encoding='utf-8') as f:
+        for sor in f:
+            if sor.startswith('# csali_mag='):
+                mag = sor.strip().split('=', 1)[1]
+    _, sorok = _tabla(ut)
+    return mag, sorok
+
+
+def fajl_sha256(ut):
+    import hashlib
+    with open(ut, 'rb') as f:
+        return hashlib.sha256(f.read()).hexdigest()
+
+
+def epit(mag, csali_mag=None):
     parok, db_par = par_minta(mag)
     nehez, keret_nehez = nehez_minta(mag, {(r['vers'], r['hu_sorszam'], r['er_sorszam']) for r in parok})
     parok = parok + nehez
@@ -384,6 +499,8 @@ def epit(mag):
     karoli, ered = bemenet._adatok()
     kimaradt, db_kim, keret_kim, kizart_kim = kimaradt_minta(mag, ered)
     versek = {r['vers'] for r in parok} | {r['vers'] for r in nelkul} | {r['vers'] for r in kimaradt}
+    csalik = csali_minta(csali_mag, versek, ered) if csali_mag else []
+    versek |= {c[2] for c in csalik}
     pv = parok_versenkent(versek)
     lex_pontos, lex_strong = lex_tabla()
     mac = macula_versek(versek)
@@ -454,6 +571,17 @@ def epit(mag):
         tetelek.append(dict(tipus='kimaradt', reszminta='kimaradt', elteres='', csoport=r['csoport'], f172_reteg='',
                             f172_id='', konyv=r['konyv'], vers=v, h=-1, e=e, szoveg=szoveg, m=None, w=w,
                             illesztes=illesztes, tok=tok, nt=nt))
+    for k, cs, v, h, e0, e1, vp in csalik:
+        szoveg, m, el, illesztes, tok, nt = alap(v, h)
+        p0 = [p for p in vp if p[0] == h and p[2] == e0][0]
+        w = el[e1 - 1]
+        uj_vp = sorted([p for p in vp if p != p0] + [(h, p0[1], e1, w['alak'], w['strong'])])
+        masik = [p for p in vp if p[2] == e1][0]
+        ok = ('a „%s” valójában a(z) %s (%s, %d. szó) párja; a csali a szomszédos %s (%s, %d. szó), amelyet a „%s” fordít'
+              % (p0[1], p0[3], p0[4], e0, w['alak'], w['strong'], e1, masik[1]))
+        tetelek.append(dict(tipus='par', reszminta='csali', elteres='', csoport=cs, f172_reteg='', f172_id='',
+                            konyv=k, vers=v, h=h, e=e1, szoveg=szoveg, m=m, w=w, illesztes=illesztes, tok=tok,
+                            nt=nt, vp=uj_vp, csali_ok=ok, eredeti=(str(e0), p0[3], p0[4])))
     if hibak:
         print('HIBA: a minta nem vezethető le a mai adatból (%d):' % len(hibak))
         for x in hibak[:30]:
@@ -465,12 +593,21 @@ def epit(mag):
     # A rétegjelölést az oldal nem kapja meg, és a közös blokk minden rétegből vegyesen áll.
     retegek = {}
     for i, t in enumerate(tetelek):
-        retegek.setdefault((t['tipus'], t['reszminta']), []).append(i)
-    db_kozos = legnagyobb_maradek({k: len(v) for k, v in sorted(retegek.items())}, min(N_KOZOS, len(tetelek)))
+        if t['reszminta'] != 'csali':
+            retegek.setdefault((t['tipus'], t['reszminta']), []).append(i)
+    n_valodi = sum(len(v) for v in retegek.values())
+    db_kozos = legnagyobb_maradek({k: len(v) for k, v in sorted(retegek.items())}, min(N_KOZOS, n_valodi))
     for k, idx in sorted(retegek.items()):
         rnd_k = random.Random('%d:kozos:%s:%s' % (mag, k[0], k[1]))
         valasztott = set(rnd_k.sample(idx, db_kozos[k]))
         for i in idx:
+            tetelek[i]['kozos'] = '1' if i in valasztott else '0'
+    # a csalik a közös blokkban is arányosan (a titkos maggal): mindkét ellenőr ugyanazokat kapja
+    cs_idx = [i for i, t in enumerate(tetelek) if t['reszminta'] == 'csali']
+    if cs_idx:
+        n_kb = round(len(cs_idx) * min(N_KOZOS, n_valodi) / n_valodi)
+        valasztott = set(random.Random('%s:csali:kozos' % csali_mag).sample(cs_idx, n_kb))
+        for i in cs_idx:
             tetelek[i]['kozos'] = '1' if i in valasztott else '0'
 
     # tétel-azonosító: a csoportot és a típust nem árulja el (véletlen sorrend, rögzített mag)
@@ -484,7 +621,7 @@ def epit(mag):
     illesztett = 0
     for t in tetelek:
         v, h = t['vers'], t['h']
-        vp = sorted(pv.get(v, []))
+        vp = t.get('vp') or sorted(pv.get(v, []))
         tobbi = [p for p in vp if not (p[0] == h and p[2] == t['e'])]
         # ugyanahhoz a magyar szóhoz tartozó párok előre
         tobbi.sort(key=lambda p: (0 if p[0] == h else 1, p[0], p[2]))
@@ -523,6 +660,8 @@ def epit(mag):
             'tobbi_par': tobbi_szoveg,
             'er_tokenek_json': json.dumps(t['tok'], ensure_ascii=False, separators=(',', ':')),
             'parok_json': json.dumps([list(p) for p in vp], ensure_ascii=False, separators=(',', ':')),
+            'csali_ok': t.get('csali_ok', ''), 'eredeti_er_sorszam': (t.get('eredeti') or ('', '', ''))[0],
+            'eredeti_er_szo': (t.get('eredeti') or ('', '', ''))[1], 'eredeti_strong': (t.get('eredeti') or ('', '', ''))[2],
         })
     for s in sorok:
         for k in MINTA_FEJ:
@@ -562,7 +701,20 @@ def _usz_konyvek():
 
 # ---------------------------------------------------------------- írás
 
-def minta_ir(sorok, db_par, db_nelkul, keret_nelkul, mag, head):
+def letet_ir(ut, csalis, csali_mag):
+    """A csalik letétfájlja (a repón kívül; a validáció lezárásáig az ellenőröknek nem adható ki). Determinisztikus
+    tartalom (időbélyeg nélkül), hogy az SHA-256-ja, amely a minta.tsv fejlécébe kerül, újrafuttatáskor ne változzon."""
+    os.makedirs(os.path.dirname(ut), exist_ok=True)
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# LETÉT — F175.V emberi validáció: a csalik (elültetett hibás párok) listája. A validáció lezárásáig '
+                'az ellenőröknek NEM adható ki; utána a letétbe kerül | előállítás: eszkozok/karoli_strong_validacio_minta.py\n')
+        f.write('# csali_mag=%s\n' % csali_mag)
+        f.write('\t'.join(LETET_FEJ) + '\n')
+        for r in sorted(csalis, key=lambda x: x['tetel_id']):
+            f.write('\t'.join(r[k] for k in LETET_FEJ) + '\n')
+
+
+def minta_ir(sorok, db_par, db_nelkul, keret_nelkul, mag, head, csali_info=None):
     ut = os.path.join(KIMENET, 'minta.tsv')
     par_cs = {}
     for rt, n in db_par.items():
@@ -581,6 +733,9 @@ def minta_ir(sorok, db_par, db_nelkul, keret_nelkul, mag, head):
                sum(1 for r in sorok if r['tipus'] == 'kimaradt'), N_NELKUL, mag, head, head,
                ', '.join('%s %d' % (cs, par_cs[cs]) for cs in CSOPORTOK),
                ', '.join('%s %d/%d' % (cs, db_nelkul[cs], keret_nelkul[cs]) for cs in CSOPORTOK)))
+    if csali_info:
+        prov += (' | csali: %d tétel a repón kívüli letétben (csali_sha256=%s); az ellenőrző oldal jelölés nélkül '
+                 'tartalmazza, ez a tábla nem' % csali_info)
     with open(ut, 'w', encoding='utf-8', newline='\n') as f:
         f.write(prov + '\n')
         f.write('\t'.join(MINTA_FEJ) + '\n')
@@ -594,7 +749,7 @@ def minta_olvas():
     return sorok
 
 
-def html_ir(sorok):
+def html_ir(sorok, cel):
     """Az ellenőrző oldal: a sablon `/*MINTA_ADAT*/null` helyére a minta JSON-ja."""
     adat = []
     for s in sorok:
@@ -612,7 +767,8 @@ def html_ir(sorok):
     if sablon.count('/*MINTA_ADAT*/null') != 1:
         raise SystemExit('a sablonban pontosan egy /*MINTA_ADAT*/null helyőrző kell')
     ki = sablon.replace('/*MINTA_ADAT*/null', js)
-    with open(os.path.join(KIMENET, 'ellenorzo.html'), 'w', encoding='utf-8', newline='\n') as f:
+    os.makedirs(os.path.dirname(cel), exist_ok=True)
+    with open(cel, 'w', encoding='utf-8', newline='\n') as f:
         f.write(ki)
     return len(ki)
 
@@ -622,13 +778,29 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--mag', type=int, default=MAG)
     ap.add_argument('--csak-html', action='store_true')
+    ap.add_argument('--letet', default=LETET_ALAP, help='a csalik letétfájlja (a repón kívül)')
+    ap.add_argument('--uj-csali', action='store_true', help='új titkos csali-mag (csak ha még nincs letétfájl)')
     a = ap.parse_args()
     os.makedirs(KIMENET, exist_ok=True)
     if not a.csak_html:
+        if os.path.exists(a.letet):
+            if a.uj_csali:
+                raise SystemExit('a letétfájl már létezik (%s); új csalikhoz előbb kézzel kell félretenni' % a.letet)
+            csali_mag, _ = letet_olvas(a.letet)
+        elif a.uj_csali:
+            import secrets
+            csali_mag = secrets.token_hex(16)
+        else:
+            raise SystemExit('nincs letétfájl (%s): a csalik titkos magja ebben áll. Első előállításhoz: --uj-csali'
+                             % a.letet)
         _USZ_KONYVEK = _usz_konyvek()
-        sorok, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart, reteg_info = epit(a.mag)
-        par_cs = minta_ir(sorok, db_par, db_nelkul, keret_nelkul, a.mag, git_head())
-        print('minta: %d tétel -> kozlemeny/data_paper/validacio/minta.tsv' % len(sorok))
+        osszes, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart, reteg_info = epit(a.mag, csali_mag)
+        sorok = [r for r in osszes if r['reszminta'] != 'csali']
+        csalis = [r for r in osszes if r['reszminta'] == 'csali']
+        letet_ir(a.letet, csalis, csali_mag)
+        par_cs = minta_ir(sorok, db_par, db_nelkul, keret_nelkul, a.mag, git_head(), (len(csalis), fajl_sha256(a.letet)))
+        print('minta: %d tétel -> kozlemeny/data_paper/validacio/minta.tsv; csali: %d -> %s (letét, a repón kívül)'
+              % (len(sorok), len(csalis), a.letet))
         print('  párok: alapminta %d + túlminta %d (a #172 eltérései közül az alapmintán kívüliek; eltérés összesen %d)' % (
             N_PAR, sum(1 for r in sorok if r['reszminta'] == 'tulminta'), sum(1 for r in sorok if r['elteres'] == '1')))
         print('  az alapminta könyvcsoportonként:')
@@ -657,8 +829,19 @@ def main():
         tk = [x for s in sorok for x in json.loads(s['er_tokenek_json'])]
         print('  a minta verseinek forrásszavai: %d; alaktan nélkül %d, átírás nélkül %d'
               % (len(tk), sum(1 for x in tk if not x['mh']), sum(1 for x in tk if not x['k'])))
-    meret = html_ir(minta_olvas())
-    print('ellenőrző oldal: %d bájt -> kozlemeny/data_paper/validacio/ellenorzo.html' % meret)
+    valodi = minta_olvas()
+    with open(os.path.join(KIMENET, 'minta.tsv'), encoding='utf-8') as f:
+        fej = f.readline()
+    csalis = []
+    if 'csali_sha256=' in fej:
+        if not os.path.exists(a.letet):
+            raise SystemExit('a minta csalit vár, de nincs letétfájl: %s' % a.letet)
+        if 'csali_sha256=%s' % fajl_sha256(a.letet) not in fej:
+            raise SystemExit('a letétfájl SHA-256-ja nem egyezik a minta.tsv fejlécével: %s' % a.letet)
+        _, csalis = letet_olvas(a.letet)
+    cel = os.path.join(os.path.dirname(a.letet), 'ellenorzo.html')
+    meret = html_ir(sorted(valodi + csalis, key=lambda r: r['tetel_id']), cel)
+    print('ellenőrző oldal: %d bájt -> %s (a repón kívül; ezt kapják az ellenőrök)' % (meret, cel))
 
 
 if __name__ == '__main__':

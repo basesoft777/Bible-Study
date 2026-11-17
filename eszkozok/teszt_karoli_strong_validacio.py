@@ -141,7 +141,7 @@ class Kiertekeles(unittest.TestCase):
 
     def _fut(self, *extra, fajlok=None):
         ki_dir = os.path.join(self.tmp, 'ki_%d_%d' % (len(extra), len(fajlok or [1, 2])))
-        r = subprocess.run([sys.executable, SZKRIPT] + (fajlok or [self.fa, self.fb]) + ['--kimenet', ki_dir] + list(extra),
+        r = subprocess.run([sys.executable, SZKRIPT] + (fajlok or [self.fa, self.fb]) + ['--kimenet', ki_dir, '--csali-nelkul'] + list(extra),
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stderr)
         with open(os.path.join(ki_dir, 'kiertekeles.md'), encoding='utf-8') as f:
@@ -250,6 +250,44 @@ class Kiertekeles(unittest.TestCase):
         self.assertIn('| A (Min A) | 200 | 200 | 0 | 0 | 100.00%', md)   # a csali nem számít az alapmintába
         self.assertIn('Ebben a mintában nincs nehéz réteg.', md)
 
+    def test_csali_letetbol(self):
+        # kitalált letét: 3 mintapár csaliként, a minta fejlécében a letét SHA-256-jával
+        import hashlib
+        fej, sorok = ki.tabla(ki.MINTA)
+        csalik = [dict(r, tetel_id='Z%03d' % i, reszminta='csali', kozos='0')
+                  for i, r in enumerate([x for x in sorok if x['tipus'] == 'par'][:3], 1)]
+        letet = os.path.join(self.tmp, 'letet.tsv')
+        with open(letet, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# kitalált letét (teszt)\n' + '\t'.join(fej) + '\n')
+            for r in csalik:
+                f.write('\t'.join(r[k] for k in fej) + '\n')
+        with open(letet, 'rb') as f:
+            sha = hashlib.sha256(f.read()).hexdigest()
+        ut = os.path.join(self.tmp, 'minta_csalival.tsv')
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# kitalált minta | csali: 3 tétel (csali_sha256=%s)\n' % sha + '\t'.join(fej) + '\n')
+            for r in sorok:
+                f.write('\t'.join(r[k] for k in fej) + '\n')
+        egyutt = sorted(sorok + csalik, key=lambda r: r['tetel_id'])
+        fa = os.path.join(self.tmp, 'csali_A.json')
+        with open(fa, 'w', encoding='utf-8') as f:
+            json.dump(_export('Csali A', egyutt, ki.minta_hash(egyutt),
+                              lambda r: ('hibas', 'rossz_forrasszo') if r['reszminta'] == 'csali' else ('helyes', '')), f,
+                      ensure_ascii=False)
+        ki_dir = os.path.join(self.tmp, 'ki_csali')
+        r = subprocess.run([sys.executable, SZKRIPT, fa, '--minta', ut, '--csali', letet, '--kimenet', ki_dir],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertEqual(r.returncode, 0, r.stderr)
+        with open(os.path.join(ki_dir, 'kiertekeles.md'), encoding='utf-8') as f:
+            md = f.read()
+        self.assertIn('| A (Csali A) | 3 | 3 | 0 | 0 | 100.00%', md)
+        # rossz letét (más SHA): elutasítás
+        with open(letet, 'a', encoding='utf-8') as f:
+            f.write('\n')
+        r = subprocess.run([sys.executable, SZKRIPT, fa, '--minta', ut, '--csali', letet, '--kimenet', ki_dir],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertNotEqual(r.returncode, 0)
+
     def test_szerzoi_es_egy_ellenor(self):
         md, _, _ = self._fut('--szerzo', '2')
         self.assertIn('B (Teszt B, szerző)', md)
@@ -257,7 +295,7 @@ class Kiertekeles(unittest.TestCase):
         self.assertNotIn('döntött minta', md)
         self.assertIn('## 4. A két ítélő egyezése', md)
         self.assertIn('döntnök nincs', md)
-        r = subprocess.run([sys.executable, SZKRIPT, self.fa, self.fb, '--szerzo', '2', '--dontes', self.fa,
+        r = subprocess.run([sys.executable, SZKRIPT, self.fa, self.fb, '--csali-nelkul', '--szerzo', '2', '--dontes', self.fa,
                             '--kimenet', os.path.join(self.tmp, 'x2')], capture_output=True, text=True, encoding='utf-8')
         self.assertNotEqual(r.returncode, 0)   # szerzői ellenőrnél nincs harmadik döntés
         md, elt, _ = self._fut(fajlok=[self.fa])
@@ -272,7 +310,7 @@ class Kiertekeles(unittest.TestCase):
         d['minta_hash'] = '0'
         with open(rossz, 'w', encoding='utf-8') as f:
             json.dump(d, f)
-        r = subprocess.run([sys.executable, SZKRIPT, rossz, self.fb, '--kimenet', os.path.join(self.tmp, 'x')],
+        r = subprocess.run([sys.executable, SZKRIPT, rossz, self.fb, '--csali-nelkul', '--kimenet', os.path.join(self.tmp, 'x')],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertNotEqual(r.returncode, 0)
 
@@ -315,12 +353,19 @@ class Oldal(unittest.TestCase):
     @unittest.skipUnless(shutil.which('node'), 'nincs node')
     def test_betoltes_es_osszefesules(self):
         proba = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'karoli_strong_validacio_oldal_proba.js')
-        oldal = os.path.join(ki.VALIDACIO, 'ellenorzo.html')
+        # az oldal a letét mappájában készül, a repón kívül (a csalik miatt); nélküle (pl. a CI-ben) a próba kimarad
+        oldal = os.path.join(os.path.dirname(ki.LETET_ALAP), 'ellenorzo.html')
+        if not os.path.exists(oldal):
+            self.skipTest('nincs ellenőrző oldal a letétben')
         r = subprocess.run(['node', proba, oldal], capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertIn('RENDBEN', r.stdout)
         # az oldal minta-azonosítója = a kiértékelőé (különben a kiértékelő elutasítaná az exportot)
+        # (a csalik a repón kívüli letétben vannak: letét nélkül, pl. a CI-ben, ez az összevetés kimarad)
         _, minta = ki.tabla(ki.MINTA)
+        if not os.path.exists(ki.LETET_ALAP):
+            self.skipTest('nincs letétfájl')
+        minta = ki.csali_hozzaad(ki.MINTA, minta, ki.LETET_ALAP)
         self.assertIn('minta_hash: ' + ki.minta_hash(minta), r.stdout)
 
 

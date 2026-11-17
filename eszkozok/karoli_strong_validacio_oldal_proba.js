@@ -59,7 +59,7 @@ ell(A.kesz_db() === 120, 'kész 120: ' + A.kesz_db());
 { const kb = A.MINTA.filter(t => t.kb).length;
   const s1 = A.allapot.sorrend, s2 = A.uj_allapot('Másik Ellenőr').sorrend;
   const m1 = new Set(s1.slice(0, kb)), m2 = new Set(s2.slice(0, kb));
-  ell(kb === 300, 'közös blokk mérete: ' + kb);
+  ell(kb >= 300, 'közös blokk mérete: ' + kb);   // 300 valódi tétel + a csalik arányos része
   ell(s1.slice(0, kb).every(id => A.MINTA.find(t => t.id === id).kb === 1), 'a közös blokk áll elöl');
   ell([...m1].every(id => m2.has(id)) && s1.slice(0, kb).join() !== s2.slice(0, kb).join(), 'ugyanaz a blokk, más sorrend'); }
 // a kimaradt-pár tétel: „Van párja” -> hibás, automatikus hibatípussal
