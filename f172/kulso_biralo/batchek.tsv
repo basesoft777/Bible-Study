@@ -1,0 +1,4 @@
+# MANUAL: scope=F175.B beküldött batchek | forras=OpenRouter Batch API (/api/v1/batches) | ts=2026-11-17 | manual (a modell-kimenet bírálat, nem arany)
+rov	modell_kert	batch_id	kotegek	bekuldve	allapot	provider	prompt_tokens	completion_tokens	cost_usd
+gemini	google/gemini-4-argon	batch-1794904558-pX0UE9EJQU9IShwARE9B	1	2026-11-17T08:35:59	validating	Google			
+gpt	openai/gpt-6.1-sol	batch-1794904559-jGjrH3pGUgfeni3jqRbC	1	2026-11-17T08:36:01	validating	OpenAI			
