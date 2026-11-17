@@ -37,6 +37,8 @@ Módok (az `--alap DIR` a bemenő 1.0 táblák helye, alapértelmezés: adat/kar
   --torolt-ki DIR           a törlőlista (`torolt_kapcsolatok.tsv`) DIR-be (a letétbe; felülírás nélkül)
   --kimaradas-ki DIR        az ismert kimaradások (a törléssel pár nélkül maradó magyar szavak) DIR-be, a pár nélküli
                             validációs keret kizárási szabályával (`keret_kizarasi_ok`), és rétegenkénti összesítéssel
+  --tos-bovitett DIR        a bővített tövekkel futtatott tábla (`6_tos_bovitett.tsv`, a `korabban` oszloppal az
+                            `5_tos_teljesseg.tsv`-hez képest), és az általános névmások ismert kimaradása
   --tos-tabla DIR           a lista teljességének tőszerinti táblája (`5_tos_teljesseg.tsv`) DIR-be (a letétbe)
   --ellenoriz DIR           egy előállított 1.1 ellenőrzése az --alap 1.0-hoz képest: a párok részhalmaz, minden
                             megmaradó sor bájtra azonos, a törölt sorok pontosan a törlőlista, minden megmaradó
@@ -92,10 +94,14 @@ _SZEMELYES = ('én engem nékem te téged néked ő őt néki őnéki ők őket 
               'övé övéi vele velök velem veled velünk veletek tőle tőlök tőlem hozzá hozzájok érette érettök róla '
               'rajta benne bennök belőle')
 _HATAROZATLAN = 'némelyek némelyeket mások'
+# a tőszerinti tábla átnézése után felvett alakok (a testvéralakjuk már listás; a felhasználó döntése, 2026-11-17)
+_TOS_BOVITES = ('abba annál azéi amazoké enyéim enyéimet enyémből tiédet mieink ilyeneket ilyeneké ilyenfélékkel '
+                'ilyesmiket melyik ugyanazokat másik másiknak másiknál másikra mást másé másokét')
 
 VONATKOZO = frozenset((_KI + ' ' + _MELY + ' ' + _MI).split())
 NEVMAS = frozenset(' '.join((_KI, _MELY, _MI, _A_ELOTAGU, _VALA, _EZ, _AZ, _AMA, _UGYAN, _ILYEN, _SZEMELYES,
-                             _HATAROZATLAN)).split())
+                             _HATAROZATLAN, _TOS_BOVITES)).split())
+# általános névmás (mind-, minden-): nincs a listán; ha a törléssel pár nélkül marad, ismert kimaradás
 
 TORLO_FEJ = ['vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'er_szo', 'strong']
 
@@ -455,12 +461,21 @@ LISTAS_TOVEK = ('ez', 'az', 'eb', 'ab', 'an', 'en', 'er', 'ar', 'et', 'at', 'eh'
                 'nék', 'tég', 'ti', 'vel', 'től', 'hozz', 'érett', 'ról', 'rajt', 'benn', 'belő', 'ném', 'más')
 
 
-def tos_tabla(letet, alap=ALAP):
+BOVITETT_TOVEK = LISTAS_TOVEK + ('ily', 'oly', 'ugyan', 'más', 'ném', 'vala', 'akár', 'bár', 'sem', 'sen', 'maga',
+                                  'egymás', 'ön', 'én', 'te', 'ő', 'ti', 'kicsoda', 'micsoda')
+
+
+def tos_tabla(letet, alap=ALAP, fajl='5_tos_teljesseg.tsv', tovek=None, elozo=None):
     """A lista teljességének táblája (a felhasználó átnézéséhez, a letétbe): a törölt magyar szótípusok, amelyek
-    listás tővel kezdődnek, darabszámmal, a törlés okával és egy példaverssel."""
+    listás tővel kezdődnek, darabszámmal, a törlés okával és egy példaverssel. elozo: egy korábbi tőtábla útvonala; a
+    `korabban` oszlop jelöli, ha a típus már ott is szerepelt."""
     os.makedirs(letet, exist_ok=True)
     torol, _ = torlolista(alap)
-    tovek = sorted(LISTAS_TOVEK, key=len, reverse=True)
+    tovek = sorted(tovek or LISTAS_TOVEK, key=len, reverse=True)
+    regi = set()
+    if elozo:
+        with open(elozo, encoding='utf-8') as f:
+            regi = {x.split('\t')[1] for x in f.read().split('\n')[1:] if x}
     db = collections.defaultdict(collections.Counter)
     pelda = {}
     for s in torol:
@@ -474,12 +489,25 @@ def tos_tabla(letet, alap=ALAP):
     sorok = []
     for (to, w) in sorted(db, key=lambda k: (k[0], -sum(db[k].values()), k[1])):
         v, st = pelda[(to, w)]
-        sorok.append([to, w, sum(db[(to, w)].values()), ', '.join('%s %d' % x for x in sorted(db[(to, w)].items())),
-                      v, st, versek.get(v, '?')])
-    letet_ir(os.path.join(letet, '5_tos_teljesseg.tsv'),
-             _tsv(['to', 'hu_szo', 'db', 'torles_oka', 'pelda_vers', 'pelda_strong', 'pelda_karoli_vers'], sorok))
-    print('tőszerinti tábla: %s · %d típus, %d pár · torlolista_sha256=%s' % (
-        os.path.join(letet, '5_tos_teljesseg.tsv'), len(sorok), sum(r[2] for r in sorok), torlolista_hash(torol)))
+        sor = [to, w, sum(db[(to, w)].values()), ', '.join('%s %d' % x for x in sorted(db[(to, w)].items())),
+               v, st, versek.get(v, '?')]
+        if elozo:
+            sor.insert(4, 'igen' if w in regi else '')
+        sorok.append(sor)
+    fej = ['to', 'hu_szo', 'db', 'torles_oka', 'pelda_vers', 'pelda_strong', 'pelda_karoli_vers']
+    if elozo:
+        fej.insert(4, 'korabban')
+    letet_ir(os.path.join(letet, fajl), _tsv(fej, sorok))
+    print('tőszerinti tábla: %s · %d típus, %d pár%s · torlolista_sha256=%s' % (
+        os.path.join(letet, fajl), len(sorok), sum(r[2] for r in sorok),
+        (' (új a korábbi táblához képest: %d típus)' % sum(1 for r in sorok if not r[4])) if elozo else '',
+        torlolista_hash(torol)))
+
+
+def altalanos_kimaradas(alap=ALAP):
+    """Az általános névmások (mind-, minden-; nincsenek a listán), amelyek a törléssel pár nélkül maradnak."""
+    return collections.Counter(s[2].lower() for s in ismert_kimaradasok(alap)
+                               if s[2].lower().startswith('mind') and not nevmas_e(s[2].lower()))
 
 
 USZ_CSOPORTOK = ('USZ_evangelium', 'USZ_level', 'USZ_jelenesek')
@@ -650,6 +678,7 @@ def main():
     g.add_argument('--torolt-ki', metavar='DIR')
     g.add_argument('--kimaradas-ki', metavar='DIR')
     g.add_argument('--tos-tabla', metavar='DIR')
+    g.add_argument('--tos-bovitett', metavar='DIR')
     g.add_argument('--ellenoriz', metavar='DIR')
     g.add_argument('--hash', action='store_true')
     ap.add_argument('--letet', default=LETET)
@@ -665,6 +694,12 @@ def main():
         kimaradas_ki(a.kimaradas_ki, a.alap)
     elif a.tos_tabla:
         tos_tabla(a.tos_tabla, a.alap)
+    elif a.tos_bovitett:
+        tos_tabla(a.tos_bovitett, a.alap, '6_tos_bovitett.tsv', BOVITETT_TOVEK,
+                  os.path.join(a.tos_bovitett, '5_tos_teljesseg.tsv'))
+        c = altalanos_kimaradas(a.alap)
+        print('általános névmás (mind-, minden-), amely a törléssel pár nélkül marad (ismert kimaradás): %d (%s)'
+              % (sum(c.values()), ', '.join('%s %d' % x for x in c.most_common())))
     elif a.ellenoriz:
         sys.exit(1 if ellenoriz(a.ellenoriz, a.alap) else 0)
     else:

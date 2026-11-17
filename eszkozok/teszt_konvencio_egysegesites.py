@@ -59,6 +59,15 @@ class Szabaly(unittest.TestCase):
         self.assertEqual(K.dontes('H9009', 'krónika', None, 'x', ' ', ' ', 'krónika-könyvében'), (None, 'kotojeles'))
         self.assertEqual(K.dontes('G3588', 'mindazok', None, 'x', ' ', ' ', 'mindazok')[0], 'nevmas')
 
+    def test_tos_bovites_listas(self):
+        # a tőszerinti tábla átnézése után felvett alakok; az általános és mennyiségi névmás nincs a listán
+        for w in ('abba', 'annál', 'azéi', 'amazoké', 'enyéim', 'enyéimet', 'enyémből', 'tiédet', 'mieink',
+                  'ilyeneket', 'ilyeneké', 'ilyenfélékkel', 'ilyesmiket', 'melyik', 'ugyanazokat', 'másik',
+                  'másiknak', 'másiknál', 'másikra', 'mást', 'másé', 'másokét'):
+            self.assertEqual(self.d('G3588', w)[0], 'nevmas', w)
+        for w in ('mind', 'minden', 'mindenki', 'mindenik', 'mindent', 'ennyi', 'ugyanannyit', 'ezért', 'azért'):
+            self.assertEqual(self.d('G3588', w), (None, 'nem_nevmas'), w)
+
     def test_mind_listas_alak(self):
         for w in ('mindazok', 'mindazokat', 'mindezt', 'mindezeket', 'mindaz', 'mindama'):
             self.assertEqual(self.d('G3588', w)[0], 'nevmas', w)
