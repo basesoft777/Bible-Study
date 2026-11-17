@@ -165,10 +165,14 @@ def _celtabla():
     return d
 
 
-def kapu(n, celtabla=None):
-    """Hibalista (üres = rendben)."""
+def kapu(n, celtabla=None, valasz_dir=None, modell_ok=None):
+    """Hibalista (üres = rendben).
+
+    valasz_dir: a válaszmappa (alapból az Opusé, f172/ellenor/valasz); modell_ok: a
+    modellnév-ellenőrzés (függvény: név -> hibaüzenet vagy None; alapból: Opus kell).
+    A külső bírálók (#175, F175.B) saját mappával és modell-ellenőrzéssel hívják."""
     celtabla = celtabla or _celtabla()
-    ut = os.path.join(VALASZ_DIR, 'koteg_%03d.json' % n)
+    ut = os.path.join(valasz_dir or VALASZ_DIR, 'koteg_%03d.json' % n)
     if not os.path.exists(ut):
         return ['nincs válaszfájl']
     try:
@@ -178,7 +182,11 @@ def kapu(n, celtabla=None):
         return ['érvénytelen JSON: %s' % ex]
     hib = []
     m = str(d.get('modell', ''))
-    if not m or any(t in m.lower() for t in TILTOTT_MODELL) or 'opus' not in m.lower():
+    if modell_ok is not None:
+        mh = modell_ok(m)
+        if mh:
+            hib.append(mh)
+    elif not m or any(t in m.lower() for t in TILTOTT_MODELL) or 'opus' not in m.lower():
         hib.append('modell: %r (Opus kell, nem Sonnet/gemini)' % m)
     if d.get('koteg') != n:
         hib.append('koteg: %r != %d' % (d.get('koteg'), n))
@@ -186,6 +194,9 @@ def kapu(n, celtabla=None):
     var = celtabla.get(n, {})
     kapott = {}
     for x in d.get('versek', []):
+        if not isinstance(x, dict):
+            hib.append('a vers-elem nem objektum: %r' % (str(x)[:60],))
+            continue
         v = x.get('vers')
         if v in kapott:
             hib.append('%s kétszer' % v)

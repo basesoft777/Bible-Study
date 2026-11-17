@@ -1,0 +1,96 @@
+# F175.B -- kulso (nem Anthropic) vak biralok a #172 mintajan (OpenRouter Batch API).
+#
+# INDITAS. Kizarolag push-ra, CSAK a claude/johd-kulso-biralo-4908a2 agon (F175.B), ha az
+# f172/kulso_biralo/futtatas.txt valtozik. Mas ag (a main-t befesulo agak sem) nem inditja: a merge utan a
+# workflow nem fut idegen agon, es nem commitol oda (a lektor kifogasa, 2026-11-17). Nincs workflow_dispatch.
+# A workflow sajat commitja nem nyul a futtatas.txt-hez, es a GITHUB_TOKEN-nel vegzett push nem indit uj futast.
+# A futtatas.txt merge-kori allapota: muvelet=nincs (no-op).
+#
+# VEZERLES (f172/kulso_biralo/futtatas.txt, minden kulcs kotelezo): muvelet=bekuld|begyujt|azonnali|diagnosztika|nincs
+# (+-szal kombinalhato),
+# modellek=gemini,gpt, kotegek=<n,n|mind|hianyzo>, plafon_usd=<a teljes naplo felso korlatja>,
+# var_perc=<a nyitott batchek varasa ebben a futasban>. A futtato: eszkozok/karoli_strong/kulso_biralo.py.
+# A beerkezett valaszok a pontossag_ellenor.py kapujan mennek at (a hibas az elvetett/ ala kerul).
+#
+# JOGOSULTSAG ES IRAS. contents: write csak a kimenet visszacommitolasahoz: git add csak f172/kulso_biralo/
+# alatt; a push csak az aktualis agra (explicit refspec). Az OPENROUTER_API_KEY csak a futtato lepes env-jeben
+# szerepel; a checkout `persist-credentials: false`, a push-token csak az utolso lepesben kerul a remote-ra.
+
+name: f175_kulso_biralo
+
+on:
+  push:
+    branches: ['claude/johd-kulso-biralo-4908a2']
+    paths:
+      - 'f172/kulso_biralo/futtatas.txt'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: f175-kulso-biralo-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  PYTHONDONTWRITEBYTECODE: '1'
+
+jobs:
+  futtatas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fuggosegek
+        run: pip install requests
+
+      - name: Onteszt (halozat es kulcs nelkul)
+        env:
+          PYTHONIOENCODING: utf-8
+        run: python eszkozok/karoli_strong/teszt_kulso_biralo.py
+
+      - name: Futtatas a futtatas.txt szerint (OpenRouter Batch API)
+        env:
+          PYTHONIOENCODING: utf-8
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+        run: python eszkozok/karoli_strong/kulso_biralo.py --vezerlo f172/kulso_biralo/futtatas.txt
+
+      - name: Kulcs-ellenorzes
+        id: kulcs_grep
+        if: always()
+        run: |
+          if [ -e f172/kulso_biralo ] && grep -rIlE 'sk-or-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9]{32,}|Bearer [A-Za-z0-9_-]{20,}' f172/kulso_biralo; then
+            echo "kulcs-szeru minta a kimenetben"; exit 1
+          fi
+          echo "kulcs-grep tiszta"
+
+      - name: Kimenet commitolasa es pusholasa (csak f172/kulso_biralo/)
+        if: always() && steps.kulcs_grep.conclusion == 'success' && github.ref == 'refs/heads/claude/johd-kulso-biralo-4908a2'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          case "$GITHUB_REF" in refs/heads/claude/johd-kulso-biralo-4908a2) ;; *) echo "idegen ag: $GITHUB_REF"; exit 1;; esac
+          git remote set-url origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- f172/kulso_biralo
+          if git diff --cached --name-only | grep -v '^f172/kulso_biralo/'; then
+            echo "f172/kulso_biralo/ kivuli valtozas"; exit 1
+          fi
+          if git diff --cached --quiet; then echo "nincs valtozas"; exit 0; fi
+          printf 'F175.B: külső bírálók, a batch-futás kimenete (GitHub Actions, futás %s)\n' "$GITHUB_RUN_ID" > "$RUNNER_TEMP/commit_uzenet.txt"
+          git -c i18n.commitEncoding=UTF-8 commit -F "$RUNNER_TEMP/commit_uzenet.txt"
+          git fetch origin "$GITHUB_REF"
+          git rebase FETCH_HEAD
+          git push origin "HEAD:$GITHUB_REF"

@@ -1,0 +1,68 @@
+{
+ "modell_kert": "google/gemini-4-argon",
+ "ts": "2026-11-17T10:30:51",
+ "hivasok": [
+  {
+   "nev": "a futás törzse (alapbeállítás)",
+   "modell_valasz": "google/gemini-4-argon",
+   "provider": "Google",
+   "usage": {
+    "prompt_tokens": 16023,
+    "completion_tokens": 728,
+    "total_tokens": 16751,
+    "cost": 0.039326,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.039326,
+     "upstream_inference_prompt_cost": 0.032046,
+     "upstream_inference_completions_cost": 0.00728
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 0,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "reasoning_szoveg_hossz": 0,
+   "reasoning_details_db": 1,
+   "tartalom_hossz": 1337
+  },
+  {
+   "nev": "ugyanaz + reasoning effort=high",
+   "modell_valasz": "google/gemini-4-argon",
+   "provider": "Google",
+   "usage": {
+    "prompt_tokens": 16023,
+    "completion_tokens": 11766,
+    "total_tokens": 27789,
+    "cost": 0.149706,
+    "is_byok": false,
+    "prompt_tokens_details": {
+     "cached_tokens": 0,
+     "cache_write_tokens": 0,
+     "audio_tokens": 0,
+     "video_tokens": 0
+    },
+    "cost_details": {
+     "upstream_inference_cost": 0.149706,
+     "upstream_inference_prompt_cost": 0.032046,
+     "upstream_inference_completions_cost": 0.11766
+    },
+    "completion_tokens_details": {
+     "reasoning_tokens": 11048,
+     "image_tokens": 0,
+     "audio_tokens": 0
+    }
+   },
+   "reasoning_szoveg_hossz": 7935,
+   "reasoning_details_db": 2,
+   "tartalom_hossz": 1321
+  }
+ ]
+}

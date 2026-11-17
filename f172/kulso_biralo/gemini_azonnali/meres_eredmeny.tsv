@@ -1,0 +1,67 @@
+# MANUAL: scope=F172 pontosságmérés | forras=f172/kulso_biralo/gemini_azonnali/itelet_par.tsv, f172/keret.tsv, konkordancia/Karoli_Strong_kivonat.tsv, adat/karoli_strong/parok_*.tsv @ git:2b385a95 | ts=git:2b385a95 | manual (determinisztikus; az ellenőr: google/gemini-4-argon; kötegek: 72)
+szakasz	cimke	n	x	p	also95	felso95	megjegyzes
+reteg	OSZ_mozes_magas	200	199	0.9950	0.9722	0.9991	Wilson 95%
+reteg	OSZ_mozes	200	192	0.9600	0.9231	0.9796	Wilson 95%
+reteg	OSZ_tortenet	200	191	0.9550	0.9167	0.9761	Wilson 95%
+reteg	OSZ_koltoi	200	191	0.9550	0.9167	0.9761	Wilson 95%
+reteg	OSZ_profeta	200	188	0.9400	0.8981	0.9653	Wilson 95%
+reteg	USZ_evangelium	200	196	0.9800	0.9497	0.9922	Wilson 95%
+reteg	USZ_level	200	193	0.9650	0.9295	0.9829	Wilson 95%
+reteg	USZ_jelenesek	200	191	0.9550	0.9167	0.9761	Wilson 95%
+sulyozott	OSZ (súlyozott)	1000	961	0.9565	0.9423	0.9707	rétegzett becslés, normál 95%
+sulyozott	USZ (súlyozott)	600	580	0.9733	0.9588	0.9879	rétegzett becslés, normál 95%
+sulyozott	OSSZES (súlyozott)	1600	1541	0.9602	0.9487	0.9717	rétegzett becslés, normál 95%
+bontas	OSZ · tartalmi szó	661	644	0.9739	0.9609	0.9869	rétegzett (a réteg teljes súlyával), leíró
+bontas	OSSZES · tartalmi szó	1261	1224	0.9738	0.9632	0.9844	rétegzett (a réteg teljes súlyával), leíró
+bontas	OSZ · morféma (H9001–H9049)	339	317	0.9185	0.8839	0.9531	rétegzett (a réteg teljes súlyával), leíró
+bontas	OSSZES · morféma (H9001–H9049)	339	317	0.9185	0.8839	0.9531	rétegzett (a réteg teljes súlyával), leíró
+hibatipus	OSZ_mozes_magas · fölös pár	1	0				a nem helyes párok közül
+hibatipus	OSZ_mozes_magas · azonos lexéma, más előfordulás	1	0				a nem helyes párok közül
+hibatipus	OSZ_mozes_magas · szomszédos token	1	1				a nem helyes párok közül
+hibatipus	OSZ_mozes_magas · rossz szó a versben	1	0				a nem helyes párok közül
+hibatipus	OSZ_mozes · fölös pár	8	5				a nem helyes párok közül
+hibatipus	OSZ_mozes · azonos lexéma, más előfordulás	8	0				a nem helyes párok közül
+hibatipus	OSZ_mozes · szomszédos token	8	2				a nem helyes párok közül
+hibatipus	OSZ_mozes · rossz szó a versben	8	1				a nem helyes párok közül
+hibatipus	OSZ_tortenet · fölös pár	9	4				a nem helyes párok közül
+hibatipus	OSZ_tortenet · azonos lexéma, más előfordulás	9	0				a nem helyes párok közül
+hibatipus	OSZ_tortenet · szomszédos token	9	3				a nem helyes párok közül
+hibatipus	OSZ_tortenet · rossz szó a versben	9	2				a nem helyes párok közül
+hibatipus	OSZ_koltoi · fölös pár	9	2				a nem helyes párok közül
+hibatipus	OSZ_koltoi · azonos lexéma, más előfordulás	9	1				a nem helyes párok közül
+hibatipus	OSZ_koltoi · szomszédos token	9	5				a nem helyes párok közül
+hibatipus	OSZ_koltoi · rossz szó a versben	9	1				a nem helyes párok közül
+hibatipus	OSZ_profeta · fölös pár	12	4				a nem helyes párok közül
+hibatipus	OSZ_profeta · azonos lexéma, más előfordulás	12	1				a nem helyes párok közül
+hibatipus	OSZ_profeta · szomszédos token	12	5				a nem helyes párok közül
+hibatipus	OSZ_profeta · rossz szó a versben	12	2				a nem helyes párok közül
+hibatipus	USZ_evangelium · fölös pár	4	3				a nem helyes párok közül
+hibatipus	USZ_evangelium · azonos lexéma, más előfordulás	4	0				a nem helyes párok közül
+hibatipus	USZ_evangelium · szomszédos token	4	1				a nem helyes párok közül
+hibatipus	USZ_evangelium · rossz szó a versben	4	0				a nem helyes párok közül
+hibatipus	USZ_level · fölös pár	7	3				a nem helyes párok közül
+hibatipus	USZ_level · azonos lexéma, más előfordulás	7	0				a nem helyes párok közül
+hibatipus	USZ_level · szomszédos token	7	3				a nem helyes párok közül
+hibatipus	USZ_level · rossz szó a versben	7	1				a nem helyes párok közül
+hibatipus	USZ_jelenesek · fölös pár	9	5				a nem helyes párok közül
+hibatipus	USZ_jelenesek · azonos lexéma, más előfordulás	9	0				a nem helyes párok közül
+hibatipus	USZ_jelenesek · szomszédos token	9	2				a nem helyes párok közül
+hibatipus	USZ_jelenesek · rossz szó a versben	9	2				a nem helyes párok közül
+hibatipus	OSSZES · fölös pár	59	26				a nem helyes párok közül
+hibatipus	OSSZES · azonos lexéma, más előfordulás	59	2				a nem helyes párok közül
+hibatipus	OSSZES · szomszédos token	59	22				a nem helyes párok közül
+hibatipus	OSSZES · rossz szó a versben	59	9				a nem helyes párok közül
+hibatipus	OSSZES · tartalmi · fölös pár	37	20				a nem helyes párok közül
+hibatipus	OSSZES · tartalmi · azonos lexéma, más előfordulás	37	0				a nem helyes párok közül
+hibatipus	OSSZES · tartalmi · szomszédos token	37	11				a nem helyes párok közül
+hibatipus	OSSZES · tartalmi · rossz szó a versben	37	6				a nem helyes párok közül
+hibatipus	OSSZES · morféma · fölös pár	22	6				a nem helyes párok közül
+hibatipus	OSSZES · morféma · azonos lexéma, más előfordulás	22	2				a nem helyes párok közül
+hibatipus	OSSZES · morféma · szomszédos token	22	11				a nem helyes párok közül
+hibatipus	OSSZES · morféma · rossz szó a versben	22	3				a nem helyes párok közül
+leiro	cél Károli-szó, amelyhez az ellenőr a gépinél több eredeti tokent jelölt	1600	43				hiányzó pár (lefedettség), nem a pontosság része
+kalibracio	vak Gemini-bíráló = régi arany	374	363	0.9706	0.9481	0.9835	halmaz-definíció (F21), Wilson 95%
+kalibracio	gépi pár (#22) = régi arany	374	363	0.9706	0.9481	0.9835	ugyanazokon a hármasokon
+kalibracio	vak Gemini-bíráló = régi arany (a hibás hármasok nélkül)	371	363	0.9784	0.9580	0.9890	tájékoztató: f21p/regi_arany_hibas.tsv kizárva
+kalibracio	gépi pár (#22) = régi arany (a hibás hármasok nélkül)	371	363	0.9784	0.9580	0.9890	tájékoztató
+kalibracio	kimaradt arany-hármas (nincs vers / a kifejezés nincs a versben)		9				
