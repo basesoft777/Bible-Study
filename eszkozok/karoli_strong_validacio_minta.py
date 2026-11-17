@@ -118,7 +118,9 @@ def adat_head():
     változik, ha az adat is, és a nyilvános lekötés (SHA-256) nem avul el egy újabb committól."""
     try:
         return subprocess.check_output(
-            ['git', '-C', GYOKER, 'log', '-1', '--format=%h', '--', 'adat/karoli_strong', 'f172', 'konkordancia/Karoli_1908.tsv',
+            # a f172/kulso_biralo/ nem számít: a gépi táblát a letétbeli, SHA-256-tal ellenőrzött másolatból olvassuk
+            ['git', '-C', GYOKER, 'log', '-1', '--format=%h', '--', 'adat/karoli_strong', 'f172', ':!f172/kulso_biralo',
+             'konkordancia/Karoli_1908.tsv',
              'konkordancia/TAHOT_kivonat.tsv', 'konkordancia/TAGNT_kivonat.tsv', 'konkordancia/Strong_szotar.tsv',
              'konkordancia/Macula_gorog.tsv', 'f22'], text=True).strip()
     except Exception:  # noqa: BLE001
