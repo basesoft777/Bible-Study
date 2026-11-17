@@ -79,7 +79,7 @@ def csoport_of_reteg(rt):
     return 'OSZ_mozes' if rt.startswith('OSZ_mozes') else rt
 
 
-MINTA_FEJ = ['tetel_id', 'tipus', 'csoport', 'f172_reteg', 'f172_id', 'konyv', 'vers',
+MINTA_FEJ = ['tetel_id', 'tipus', 'reszminta', 'elteres', 'csoport', 'f172_reteg', 'f172_id', 'konyv', 'vers',
              'hu_vers', 'hu_sorszam', 'hu_szo', 'hu_kezdet', 'hu_veg',
              'er_nyelv', 'er_vers', 'er_sorszam', 'er_szo', 'strong', 'szoto', 'jelentes',
              'tukor', 'kiejtes', 'morf', 'szofaj', 'morf_hu', 'nem_tr', 'tobbszavas', 'tobbi_par', 'er_tokenek_json', 'parok_json']
@@ -221,17 +221,31 @@ def _fajlkonyv(vers):
     return _FAJLKONYV[tokenek.igehely_bont(vers)[0]]
 
 
+def f172_elteresek():
+    """A #172 vak modell-ellenőrének eltérései: azok a mintapárok, amelyeket nem talált helyesnek (helyes=0)."""
+    _, sorok = _tabla(os.path.join(GYOKER, 'f172', 'itelet_par.tsv'))
+    return {r['minta_id'] for r in sorok if r['helyes'] == '0'}
+
+
 def par_minta(mag):
+    """Az alapminta (N_PAR pár, a keret pársúlya szerint arányos részminta) és a túlminta: a #172 összes
+    eltérése, amely nincs az alapmintában (DT-F175vc). Minden sor `reszminta` (alap / tulminta) és `elteres`
+    (1, ha a #172 modell-ellenőre nem értett egyet a párral) mezőt kap."""
     _, keret = _tabla(os.path.join(GYOKER, 'f172', 'keret.tsv'))
     sulyok = {r['reteg']: int(r['parsor']) for r in keret if r['reteg'] in pm.RETEGEK}
     db = legnagyobb_maradek(sulyok, N_PAR)
     _, f172 = _tabla(os.path.join(GYOKER, 'f172', 'minta.tsv'))
+    elteres = f172_elteresek()
     ki = []
     for rt in pm.RETEGEK:
         sorok = [r for r in f172 if r['reteg'] == rt]
         rnd = random.Random('%d:par:%s' % (mag, rt))
         for x in sorted(rnd.sample(range(len(sorok)), db[rt])):
-            ki.append(sorok[x])
+            ki.append(dict(sorok[x], reszminta='alap', elteres='1' if sorok[x]['minta_id'] in elteres else '0'))
+    alap = {r['minta_id'] for r in ki}
+    for r in f172:
+        if r['minta_id'] in elteres and r['minta_id'] not in alap:
+            ki.append(dict(r, reszminta='tulminta', elteres='1'))
     return ki, db
 
 
@@ -354,7 +368,8 @@ def epit(mag):
             hibak.append('%s er %d: %s/%s != %s/%s' % (v, e, w['alak'], w['strong'], r['er_szo'], r['strong']))
         if (h, r['hu_szo'], e, r['er_szo'], r['strong']) not in pv.get(v, []):
             hibak.append('%s: a pár (%d→%d) nincs a mai parok-táblában' % (v, h, e))
-        tetelek.append(dict(tipus='par', csoport=csoport_of_reteg(r['reteg']), f172_reteg=r['reteg'],
+        tetelek.append(dict(tipus='par', reszminta=r['reszminta'], elteres=r['elteres'],
+                            csoport=csoport_of_reteg(r['reteg']), f172_reteg=r['reteg'],
                             f172_id=r['minta_id'], konyv=r['konyv'], vers=v, h=h, e=e, szoveg=szoveg,
                             m=m, w=w, illesztes=illesztes, tok=tok, nt=nt))
     for r in nelkul:
@@ -365,7 +380,7 @@ def epit(mag):
             hibak.append('%s hu %d: %s != %s' % (v, h, m.group(0), r['hu_szo']))
         if any(p[0] == h for p in pv.get(v, [])):
             hibak.append('%s hu %d: betoldasnak jelölt szónak mégis van pára' % (v, h))
-        tetelek.append(dict(tipus='parnelkuli', csoport=r['csoport'], f172_reteg='', f172_id='',
+        tetelek.append(dict(tipus='parnelkuli', reszminta='alap', elteres='', csoport=r['csoport'], f172_reteg='', f172_id='',
                             konyv=r['konyv'], vers=v, h=h, e=0, szoveg=szoveg, m=m, w=None,
                             illesztes=illesztes, tok=tok, nt=nt))
     if hibak:
@@ -411,7 +426,8 @@ def epit(mag):
             n_hu = sum(1 for p in vp if p[2] == t['e'])
             tobbsz = {(True, True): 'n:m', (True, False): '1:n', (False, True): 'n:1'}.get((n_er > 1, n_hu > 1), '')
         sorok.append({
-            'tetel_id': t['tetel_id'], 'tipus': t['tipus'], 'csoport': t['csoport'],
+            'tetel_id': t['tetel_id'], 'tipus': t['tipus'], 'reszminta': t['reszminta'], 'elteres': t['elteres'],
+            'csoport': t['csoport'],
             'f172_reteg': t['f172_reteg'], 'f172_id': t['f172_id'], 'konyv': t['konyv'], 'vers': v,
             'hu_vers': t['szoveg'], 'hu_sorszam': str(h), 'hu_szo': t['m'].group(0),
             'hu_kezdet': str(t['m'].start()), 'hu_veg': str(t['m'].end()),
@@ -465,13 +481,16 @@ def minta_ir(sorok, db_par, db_nelkul, keret_nelkul, mag, head):
     par_cs = {}
     for rt, n in db_par.items():
         par_cs[csoport_of_reteg(rt)] = par_cs.get(csoport_of_reteg(rt), 0) + n
+    n_tul = sum(1 for r in sorok if r['reszminta'] == 'tulminta')
+    n_elt = sum(1 for r in sorok if r['elteres'] == '1')
     prov = ('# MANUAL: scope=F175.V emberi validációs minta (%d szópár a #172 rétegzett mintájának arányos '
-            'részmintájaként + %d pár nélküli magyar szó a szabály által eldöntött esetek nélkül, könyvcsoportonként arányosan; mag=%d) | '
+            'részmintájaként + %d szópár túlmintaként: a #172 modell-ellenőrének az alapmintán kívüli eltérései, '
+            'összesen %d eltérés + %d pár nélküli magyar szó a szabály által eldöntött esetek nélkül, könyvcsoportonként arányosan; mag=%d) | '
             'forras=f172/minta.tsv, f172/keret.tsv, adat/karoli_strong/parok_*.tsv, szavak_*.tsv, '
             'konkordancia/Karoli_1908.tsv, TAHOT_kivonat.tsv, TAGNT_kivonat.tsv, Macula_*.tsv @ %s | ts=git:%s | '
             'manual (determinisztikus mintavétel: eszkozok/karoli_strong_validacio_minta.py; a párok '
             'modell-kimenet, javaslat) | párok: %s | pár nélkül: %s'
-            % (N_PAR, N_NELKUL, mag, head, head,
+            % (N_PAR, n_tul, n_elt, N_NELKUL, mag, head, head,
                ', '.join('%s %d' % (cs, par_cs[cs]) for cs in CSOPORTOK),
                ', '.join('%s %d/%d' % (cs, db_nelkul[cs], keret_nelkul[cs]) for cs in CSOPORTOK)))
     with open(ut, 'w', encoding='utf-8', newline='\n') as f:
@@ -522,7 +541,9 @@ def main():
         sorok, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart = epit(a.mag)
         par_cs = minta_ir(sorok, db_par, db_nelkul, keret_nelkul, a.mag, git_head())
         print('minta: %d tétel -> kozlemeny/data_paper/validacio/minta.tsv' % len(sorok))
-        print('  párok (%d):' % N_PAR)
+        print('  párok: alapminta %d + túlminta %d (a #172 eltérései közül az alapmintán kívüliek; eltérés összesen %d)' % (
+            N_PAR, sum(1 for r in sorok if r['reszminta'] == 'tulminta'), sum(1 for r in sorok if r['elteres'] == '1')))
+        print('  az alapminta könyvcsoportonként:')
         for cs in CSOPORTOK:
             print('    %-15s %3d' % (cs, par_cs[cs]))
         print('    (#172-rétegenként: %s)' % ', '.join('%s %d' % (k, v) for k, v in db_par.items()))

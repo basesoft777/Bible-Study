@@ -2,9 +2,9 @@
 
 ## Miről szól?
 
-A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, illetve görög eredeti megfelelő szavával, Strong-számokkal együtt. Az adat nyíltan elérhető a Zenodón (doi:10.5281/zenodo.24141883), és a *Journal of Open Humanities Data*-ba cikk készül róla. A párosítást nyelvi modell végezte. A modell csak rámutatott a forrásszóra, a Strong-szám a STEPBible héber és görög adatából jön. A pontosságot eddig szintén gép mérte, ezért kell most emberi szem. Ti ketten egymástól függetlenül, szúrópróbaszerűen nézitek át a mintát. Az eredményetek számként kerül a cikkbe, ti pedig, ha hozzájárultok, név szerint szerepeltek a köszönetnyilvánításban. A munka kb. 3–4 óra, több részletben. Egymással ne egyeztessetek; ha valamiben nem vagytok biztosak, a „bizonytalan” gomb a jó válasz. Mivel részt vesztek a munkában, a folyóiratnál nem lehettek a cikk bírálói.
+A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, illetve görög eredeti megfelelő szavával, Strong-számokkal együtt. Az adat nyíltan elérhető a Zenodón (doi:10.5281/zenodo.24141883), és a *Journal of Open Humanities Data*-ba cikk készül róla. A párosítást nyelvi modell végezte. A modell csak rámutatott a forrásszóra, a Strong-szám a STEPBible héber és görög adatából jön. A pontosságot eddig szintén gép mérte, ezért kell most emberi szem. Ti ketten egymástól függetlenül, szúrópróbaszerűen nézitek át a mintát. Az eredményetek számként kerül a cikkbe, ti pedig, ha hozzájárultok, név szerint szerepeltek a köszönetnyilvánításban. A munka kb. 3,5–4,5 óra, több részletben. Egymással ne egyeztessetek; ha valamiben nem vagytok biztosak, a „bizonytalan” gomb a jó válasz. Mivel részt vesztek a munkában, a folyóiratnál nem lehettek a cikk bírálói.
 
-**A feladat.** Az `ellenorzo.html` 380 tételt mutat, gépen és telefonon is (internet nem kell). **300 szópár**: egy Károli-szóhoz a gép egy héber vagy görög szót rendelt (TAHOT/TAGNT, Strong-számmal). **80 pár nélküli magyar szó**: a párosítás szerint ennek a szónak nincs megfelelője az eredetiben, és azt kérdezzük, igaz-e ez. A szabály által eldöntött esetek (önálló névelő, segédige, külön kitett alanyi vagy tárgyi névmás, korrelatív „azért … hogy”) nincsenek a mintában, lásd a Konvenciókat. Mindkét fajta tételt a teljes vers ismeretében ítéld meg. Egy magyar szónak több eredetije is lehet, ilyenkor minden kapcsolat külön tétel. A vers többi párját a kártyákon látod.
+**A feladat.** Az `ellenorzo.html` 440 tételt mutat, gépen és telefonon is (internet nem kell). **360 szópár**: egy Károli-szóhoz a gép egy héber vagy görög szót rendelt (TAHOT/TAGNT, Strong-számmal). **80 pár nélküli magyar szó**: a párosítás szerint ennek a szónak nincs megfelelője az eredetiben, és azt kérdezzük, igaz-e ez. A szabály által eldöntött esetek (önálló névelő, segédige, külön kitett alanyi vagy tárgyi névmás, korrelatív „azért … hogy”) nincsenek a mintában, lásd a Konvenciókat. Mindkét fajta tételt a teljes vers ismeretében ítéld meg. Egy magyar szónak több eredetije is lehet, ilyenkor minden kapcsolat külön tétel. A vers többi párját a kártyákon látod.
 
 **Kérjük, a másik ellenőrrel ne egyeztess, és ne nézd meg az ő válaszait.** Csak így mérhető, mennyire egyezik két független ítélet. Kérdésnél a szervezőt kérdezd, ne a másik ellenőrt.
 
@@ -29,7 +29,7 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 
 **Mikor „Nem” a válasz, akármilyen jó a fordítás?**
 
-- A magyar szó valójában a vers egy másik eredeti szavát fordítja. Példa (a gépi ellenőrzés is hibásnak ítélte): Péld 3:18 „**Életnek** fája ez”. Az *Életnek* ↔ עֵץ (ʿēṣ, H6086, „fa”) pár hibás, mert az *Életnek* a חַיִּים (ḥayyîm, H2416, „élet”), a *fája* pedig a עֵץ fordítása; a gép felcserélte őket.
+- A magyar szó valójában a vers egy másik eredeti szavát fordítja. Példa: Péld 3:18 „**Életnek** fája ez”. Az *Életnek* ↔ עֵץ (ʿēṣ, H6086, „fa”) pár hibás, mert az *Életnek* a חַיִּים (ḥayyîm, H2416, „élet”), a *fája* pedig a עֵץ fordítása; a gép felcserélte őket.
 - Egy többszavas kifejezésnek csak az egyik tagja van bekötve, és a magyar szó olyan taghoz került, amelyhez nem tartozik.
 - A pár olyan eredeti szóra mutat, amelynek semmi köze a magyar szóhoz.
 
@@ -44,7 +44,7 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 
 ## Mikor helyes, hibás, bizonytalan?
 
-- **Igen (helyes)** – a párjára mutatva (legalább részben) erre a magyar szóra mutatnál, az alábbi szabályok szerint. Pár nélküli szónál ennek a „Nincs ilyen szó” felel meg: a héber/görög mondatban nincs olyan szó, amelyre rá tudnál mutatni.
+- **Igen (helyes)** – a párjára mutatva erre a magyar szóra is mutatnál (egyedül vagy más szavakkal együtt), az alábbi szabályok szerint. Pár nélküli szónál ennek a „Nincs ilyen szó” felel meg: a héber/görög mondatban nincs olyan szó, amelyre rá tudnál mutatni.
 - **Nem (hibás)** – válaszd ki a hiba típusát is:
   - *rossz forrásszó*: a magyar szónak a vers egy másik eredeti szava felel meg (ha tudod, koppints rá);
   - *hiányzó pár*: ez a pár jó, de a magyar szóhoz még egy eredeti szó is tartozik, és az a párjai között nem szerepel;
@@ -109,4 +109,4 @@ Ezek szerint készült a párosítás. A tetszés szerinti fordítói ítélet h
 - **A tétel képe.** Mindkét vers szókártyákon áll. A magyar kártyán a szó alatt az eredeti szó áll, amelyhez a gép párosította, Strong-számmal, vagy „—”, ha nincs pár. Az eredeti kártyáján: a szó, az átírás, a Strong-szám, az angol glossza (a TAHOT/TAGNT tükörfordítása; a gép is csak ezt látta), az alaktan és alul a magyar pár. Héberben jobbról balra olvass; egy szó előtagjai és ragjai egy szürke keretben külön kártyát kapnak. A vizsgált szó kártyája sárga. Ha egy kártyára mutatsz vagy koppintasz, a párja kigyullad a másik sorban. A betűméretet a fejléc „A−/A+” gombja állítja. A kérdés és az ítélet gombjai mindig a képernyő alján vannak.
 - **Alaktan.** A kártyán rövid magyar alakban áll (a Macula alaktani kódjából; pl. „ige, qal perfectum, E/3 hn.”, „főnév, gen. e.sz. nn.”). A nyers kód rámutatáskor látszik. A minta verseiben a szavak kb. 2%-ánál nincs alaktani adat, ilyenkor ez a sor hiányzik.
 - **Leadás.** Ha végeztél, a „Mentés / export” gombbal letöltöd a `<neved>_valaszok.json` fájlt; ezt küldd el a szervezőnek. Ha a letöltés nem indul el, ugyanott kimásolhatod a szöveget.
-- **Becsült idő.** Szópárnál átlagosan kb. fél perc, pár nélküli szónál 15–20 másodperc: összesen **kb. 3–4 óra**. A névelők és a kötőszók gyorsan mennek, a ragos és többszavas esetek lassabban. Érdemes több, legfeljebb egyórás részletben dolgozni.
+- **Becsült idő.** Szópárnál átlagosan kb. fél perc, pár nélküli szónál 15–20 másodperc: összesen **kb. 3,5–4,5 óra**. A névelők és a kötőszók gyorsan mennek, a ragos és többszavas esetek lassabban. Érdemes több, legfeljebb egyórás részletben dolgozni.
