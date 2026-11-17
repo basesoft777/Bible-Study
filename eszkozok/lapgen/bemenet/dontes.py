@@ -62,9 +62,16 @@ class Jelolt:
                  'lista_blokk', 'lista_halo', 'kulon_sor', 'ajanlas')
 
 
+def jeloltnaplo_tabla(b, tovabbi=()):
+    """A B04 egyetlen hozzáférési pontja (GK-01): a döntésnapló táblája a közös oszlopokkal, és a hívó által kért
+    további oszlopokkal (pl. a motívumközi jelöltek `cel_id` mezője). A réteg minden B04-olvasója (az
+    előfordulás-jelöltek, a kereszthivatkozásos jelöltek, a motívumközi jelöltek) ezt hívja."""
+    return b._tabla('B04', oszlopok=_JELOLT_OSZLOPOK + tuple(o for o in tovabbi if o not in _JELOLT_OSZLOPOK))
+
+
 def b04_jeloltek(b, motivum):
     """B04 — a motívum előfordulás-jelöltjeinek döntésnaplója, a fájl sorrendjében."""
-    tabla = b._tabla('B04', oszlopok=_JELOLT_OSZLOPOK)
+    tabla = jeloltnaplo_tabla(b)
     idx = {o: tabla.oszlop(o) for o in _JELOLT_OSZLOPOK}
     ki = []
     for sor in tabla.sorok:

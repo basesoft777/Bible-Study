@@ -354,6 +354,14 @@ def _ajanlas(fo, konyvek):
     raise BemenetHiba('B04: a kereszthivatkozásos jelölés forrása nem értelmezhető: %s' % fo[:120])
 
 
+def nem_olvasoi(szoveg):
+    """Az első olyan részlet, amely miatt a kézi szöveg nem kerülhet a lapra (belső jelölés, munkaszó, kódjel,
+    egyenes idézőjel, cellahatár), vagy None. A motívum-hivatkozás (`[ID: …]`) itt hibának számít: ahol szerkezet
+    lehet, a hívó előbb darabolja."""
+    m = _NEM_OLVASOI_RX.search(szoveg)
+    return m.group(0) if m else None
+
+
 def _indok(b, szoveg, igehely):
     """Az indoklás darabjai; ami nem olvasói szöveg, azon a réteg megáll (nem tisztít)."""
     darabok, veg = [], 0
@@ -391,7 +399,7 @@ def kereszthiv_jeloltek(b, motivum):
     """A B04 kereszthivatkozásos sorai: a motívum kereszthivatkozásból vizsgált előfordulás-jelöltjei a döntésnapló sorrendjében."""
     konyvek = b63_konyvek(b)
     okok = dontes_be.b56_okok(b, motivum)
-    tabla = b._tabla('B04', oszlopok=_JELOLT_OSZLOPOK)
+    tabla = dontes_be.jeloltnaplo_tabla(b)
     idx = {o: tabla.oszlop(o) for o in _JELOLT_OSZLOPOK}
     ki = []
     for sor in tabla.sorok:

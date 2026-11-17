@@ -6,14 +6,14 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: megallt
-ag: claude/f218a-s5-1402d5
-pr: 755
+ag: claude/f218a-s6-3896f7
+pr: 756
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "Te: S6 új ágon a main-ről"
+kovetkezo: "Te: S7 új ágon a main-ről"
 munka: folyamat
 sav: CONTENT
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
-ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, dontesek/uj/f218a-s5-1402d5.md, nyitott/uj/f218a-s5-1402d5.md, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
+ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, dontesek/uj/f218a-s5-1402d5.md, nyitott/uj/f218a-s5-1402d5.md, dontesek/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s6-3896f7.md, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
 fugg: []
 nem_fugg: [121, 123, 146, 178, 179]
 ---
@@ -260,7 +260,7 @@ Az F218.1 a súlyossági leltár minden tételéhez `kovetelmeny` oszlopot ír: 
   - **A fel nem használt és a túlhasznált engedélysor is BUKÁS** (`tenyleges_db ≠ elvart_db`).
   - **Az `elvart_db` előre áll:** az F218.1 alapmérés osztályonként megszámolja a mai lapon a HN-esetek és a T-döntések által érintett sorokat, és ezt rögzíti a jelentésben. Az építő session az engedélysort ebből tölti; ha egy osztály tényleges száma 20%-nál jobban eltér az előre rögzítettől, megállás és ⛔ (a küszöb becslés).
   - A független ellenőr az engedélysorokból mintát vesz; a felhasználó az osztályonkénti összesítést látja.
-- **Előre ismert eltérés-osztályok:** (a) `ts=`; (b) a forrásnév a valóban olvasott javított forrást nevezi (GK-07, HN-10); (c) a Thayer-szöveg, ha érintett (GK-N178); (d) T4: a kiejtés az első előfordulásból; (e) az N-F212a javításai; (f) HN-01, HN-03 (jegyzet, forrásnév helye); (g) HN-15 (a hamis SECE-mondat, 2 db); (h) T9: a jóváhagyás-mondat `munka` módban (1 db); (i) T7: az állapotmondatok, ha a szövegük változik.
+- **Előre ismert eltérés-osztályok:** (a) `ts=`; (b) a forrásnév a valóban olvasott javított forrást nevezi (GK-07, HN-10); (c) a Thayer-szöveg, ha érintett (GK-N178); (d) T4: a kiejtés az első előfordulásból; (e) az N-F212a javításai; (f) HN-01, HN-03 (jegyzet, forrásnév helye); (g) HN-15 (a hamis SECE-mondat, 2 db); (h) T9: a jóváhagyás-mondat `munka` módban (1 db); (i) T7: az állapotmondatok, ha a szövegük változik; (j) a régi lap utólagos kiejtés-beszúrása a kézi szövegbe (`kiejtes_szoveg.potol`): az új lap a forrás szövegét adja (DT890, a felhasználó döntése, 2026-11-16).
 - **A „HAMART-on a várt diff kicsi” állítás nincs megmérve.** Az első szelet ennek a próbája (9. pont, megállási szabály).
 
 ### 8.2 ISTENTISZT-001 — bájt-diff nincs
