@@ -3,7 +3,8 @@
 """F175.V — az ellenőrök útmutatója PDF-ben (UTMUTATO.md -> UTMUTATO.pdf).
 
 A Markdown-részhalmaz, amelyet az útmutató használ (címsor, bekezdés, felsorolás egy beágyazási szinttel,
-számozott lista, táblázat, félkövér, dőlt, kód), egyszerű HTML-lé alakul (a héber és a görög a rendszerfontból),
+számozott lista, táblázat, félkövér, dőlt, kód), egyszerű HTML-lé alakul (a héber és a görög a rendszerfontból;
+a héber szakasz izolált jobbról balra futás, sortörés nélkül; a kötőjellel kezdődő toldalék nem törik el),
 majd a Microsoft Edge vagy a Chrome fejléc nélküli nyomtatása PDF-et készít belőle. Külső csomag nem kell.
 
 Használat (a repó gyökeréből):
@@ -36,7 +37,9 @@ p { margin: 5pt 0; } ul, ol { margin: 4pt 0 4pt 18pt; padding: 0; } li { margin:
 table { border-collapse: collapse; width: 100%; margin: 6pt 0; font-size: 9.5pt; }
 td, th { border: 1px solid #bbb; padding: 3pt 5pt; vertical-align: top; text-align: left; }
 code { font-family: Consolas, monospace; font-size: 9.5pt; background: #f2f0ea; padding: 0 2pt; }
-.heb { font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", "David", serif; font-size: 12pt; }
+.heb { font-family: "SBL Hebrew", "Ezra SIL", "Times New Roman", "David", serif; font-size: 12pt;
+       unicode-bidi: isolate; white-space: nowrap; }
+.nw { white-space: nowrap; }
 """
 
 
@@ -46,6 +49,8 @@ def inline(s):
     s = re.sub(r'\*\*\*([^*]+)\*\*\*', r'<b><i>\1</i></b>', s)
     s = re.sub(r'\*\*([^*]+)\*\*', r'<b>\1</b>', s)
     s = re.sub(r'(?<![\w*])\*([^*\n]+)\*(?![\w*])', r'<i>\1</i>', s)
+    # kötőjellel kezdődő toldalék („-ban”, -ben): a kötőjel után nem törhet a sor (F175.V26)
+    s = re.sub(r'(?<![\w-])(„?-\w+”?)', r'<span class="nw">\1</span>', s)
     s = re.sub(r'([\u0590-\u05FF][\u0590-\u05FF\u05BE\s]*[\u0590-\u05FF])', r'<span class="heb" dir="rtl">\1</span>', s)
     return s
 

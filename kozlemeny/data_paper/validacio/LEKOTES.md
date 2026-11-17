@@ -15,7 +15,7 @@ A minta (`minta.tsv`, a rétegjelöléssel), a csalik listája (`F175V_csalik.ts
 | `harom_biralo_itelet.tsv` | `e236146d9f13a08e31427f95ccdbb692bfb3f102964f53184517fc8f083f28b7` |
 | `proba.tsv` | `8c794b379f30e568289c70c43318a98eb988a41619ba338d0edb5939aaefe736` |
 | `UTMUTATO.md` (a repóban) | `76fd33418066ff766c5bdb9a8a8b33a4f2611b3cb395f1677ac92b6fbd9b1e41` |
-| `UTMUTATO.pdf` (a repóban) | `775e8eaab3423d28f217c553426da759b47a1f4b96b65c93a95fa3d0670945c5` |
+| `UTMUTATO.pdf` (a repóban) | `1c6315e562e13872c55978dbc439203bbc9d94b40e368ff0de943838bd14c43e` |
 
 **Az online felület (F175.V21).** A kiküldött felület a Cloudflare Worker: a tételeket a linkbeli tokenre a D1 adatbázisból adja, minden választ azonnal ment (append-only napló). A Worker kódja és a tétel nélküli oldal a repóban áll; a tételek a letétből töltődnek a D1-be (`eszkozok/karoli_strong_validacio_d1.py`), és a betöltő a tételek kanonikus JSON-ját az itt lekötött SHA-256-tal veti össze. A próbatételek (`proba.tsv`) a mintán kívüli párok, a próba ítéletei a kiértékelésbe nem kerülnek.
 
