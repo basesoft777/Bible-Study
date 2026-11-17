@@ -19,6 +19,12 @@ A bemásolás egysége a teljes fejezet (Károli: „rész”), rétegenként eg
               különbözők. -> f172/kulso/fejezetek.tsv (a párok száma: összes és
               tartalmi, azaz nem morféma)
 
+--sorsol [--mag N] [--db K] : a zárt kiadással való újraméréshez (F175.J10, a felhasználó: „vállalom”) a
+              könyvcsoportonként (7 csoport, pontossag_minta.CSOPORT) K VÉLETLEN fejezet, rögzített maggal, a
+              --fejezetek alkalmassági feltételeivel (azonos Károli- és KJV-számozás, 15–40 vers, nincs függő
+              szó); a „legtöbb célpár” kiválasztás helyett. Csoportonként az első kettő a kötelező, a többi
+              ajánlott. -> f172/kulso/sorsolt_fejezetek.tsv (csak a fejezetlista; a forrás szövege nem).
+
 --osszevet <fájl> --fejezet "3Móz 3" : egy bemásolt fejezet (a REPÓN KÍVÜLI
               fájl; soronként igehely-fejléc, alatta a vers szövege, a szó UTÁN
               a Strong-szám(ok) H/G előtag nélkül) összevetése a gépi párokkal.
@@ -215,6 +221,73 @@ KONVENCIO = {frozenset({a, b}) for csop in _KONV_CSOPORT.values() for c in csop 
 USZ_KONYVEK = ('Mt', 'Mk', 'Luk', 'Ján', 'ApCsel', 'Róm', '1Kor', '2Kor', 'Gal', 'Ef', 'Fil', 'Kol',
                '1Thessz', '2Thessz', '1Tim', '2Tim', 'Tit', 'Filem', 'Zsid', 'Jak', '1Pét', '2Pét',
                '1Ján', '2Ján', '3Ján', 'Júd', 'Jel')
+
+
+SORSOL_MAG = 20261117
+
+
+def sorsol(mag=SORSOL_MAG, db=3):
+    """Könyvcsoportonként `db` véletlen, alkalmas fejezet, rögzített maggal (l. a modul leírását)."""
+    import random
+    karoli, _ = bemenet._adatok()
+    kjv = kjv_szam()
+    fej_versek = {}
+    for v in karoli:
+        fej_versek.setdefault(fejezet_of(v), []).append(v)
+    kjv_be = {}
+    for v, k in kjv.items():
+        if k and ':' in k:
+            kjv_be.setdefault('%s %s' % (v.rsplit(' ', 1)[0], k.split(':')[0]), set()).add(v)
+    csoport, kezi, tart = {}, set(), {}
+    for k in pm.konyvek():
+        _, sorok = pm._tabla(os.path.join(pm.ADAT, 'parok_%s.tsv' % k))
+        for r in sorok:
+            f = fejezet_of(r['vers'])
+            csoport[f] = pm.CSOPORT[k]
+            if not (r['strong'].startswith('H90') and len(r['strong']) == 5):
+                tart[f] = tart.get(f, 0) + 1
+        _, sz = pm._tabla(os.path.join(pm.ADAT, 'szavak_%s.tsv' % k))
+        for r in sz:
+            if r['allapot'] == 'fuggoben':
+                kezi.add(fejezet_of(r['vers']))
+
+    def alkalmas(f):
+        usz = csoport[f].startswith('USZ')
+        vv = fej_versek.get(f, [])
+        if not (15 <= len(vv) <= 40) or f in kezi:
+            return False
+        if usz:
+            return True
+        if any(not azonos_szamozas(v, kjv) for v in vv):
+            return False
+        return kjv_be.get(f, set()) <= set(vv)
+
+    h2s = tokenek.konyv_hu_to_step()
+    rnd = random.Random(mag)
+    sorok = []
+    for cs in sorted(set(pm.CSOPORT.values()), key=lambda c: list(pm.CSOPORT.values()).index(c)):
+        jel = sorted((f for f in csoport if csoport[f] == cs and alkalmas(f)),
+                     key=lambda f: (f.rsplit(' ', 1)[0], int(f.rsplit(' ', 1)[1])))
+        if len(jel) < db:
+            raise SystemExit('kevés alkalmas fejezet: %s (%d)' % (cs, len(jel)))
+        for i, f in enumerate(rnd.sample(jel, db), 1):
+            konyv, fe = f.rsplit(' ', 1)
+            sorok.append([cs, str(i), 'kotelezo' if i <= 2 else 'ajanlott', f, '%s.%s' % (h2s[konyv], fe),
+                          str(len(fej_versek[f])), str(tart.get(f, 0)), str(len(jel))])
+    os.makedirs(KULSO, exist_ok=True)
+    head = pm.git_head()
+    with open(os.path.join(KULSO, 'sorsolt_fejezetek.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: scope=F175.J10 a zárt kiadással való újramérés sorsolt fejezetei (könyvcsoportonként %d, '
+                'mag=%d; random.Random.sample a rendezett alkalmas fejezetlistán) | forras=adat/karoli_strong/, '
+                'konkordancia/Karoli_versmegfeleltetes.tsv @ git:%s | ts=git:%s | manual (determinisztikus sorsolás); '
+                'a forrás szövege nem kerül ide\n' % (db, mag, head, head))
+        f.write('\t'.join(['csoport', 'sorszam', 'jelleg', 'fejezet', 'step', 'versek', 'tartalmi_par',
+                           'alkalmas_fejezet']) + '\n')
+        for r in sorok:
+            f.write('\t'.join(r) + '\n')
+    for r in sorok:
+        print('\t'.join(r))
+    return sorok
 
 
 def norm(szo):
@@ -570,6 +643,9 @@ def osszesit():
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--fejezetek', action='store_true')
+    ap.add_argument('--sorsol', action='store_true')
+    ap.add_argument('--mag', type=int, default=SORSOL_MAG)
+    ap.add_argument('--db', type=int, default=3)
     ap.add_argument('--osszevet')
     ap.add_argument('--fejezet')
     ap.add_argument('--itel', action='store_true')
@@ -578,6 +654,9 @@ def main():
     ap.add_argument('--valtozat', default='ismeretlen',
                     help='a forrás változata, ahogy a felhasználó megadta (pl. "régies (a program szerint)")')
     a = ap.parse_args()
+    if a.sorsol:
+        sorsol(a.mag, a.db)
+        return 0
     if a.fejezetek:
         fejezetek()
     elif a.osszesit:

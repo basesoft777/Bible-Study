@@ -38,7 +38,7 @@ many-to-one), the additions and the untranslated source words.
 
 **Texts.** The Hungarian side is the public-domain 1908 Károli text (HunKar); the source side is the STEPBible TAHOT
 (Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) data (Tyndale House, Cambridge; CC BY 4.0;
-downloaded 2026-08-24). TAHOT counts Hebrew prefixes and suffixes as separate words (H9001–H9049). Verse divisions
+commit efe428a, downloaded 2026-08-24). TAHOT counts Hebrew prefixes and suffixes as separate words (H9001–H9049). Verse divisions
 were mapped by deterministic length alignment, each verse merge approved by hand.
 
 **Alignment.** For each verse a language model received two numbered word lists: the Károli words, and the source
@@ -50,8 +50,8 @@ H0310, H3651 and H7121 by position. Twelve written rules decided disputed cases.
 additions, Hebrew and Greek articles untranslated (article use differs between the languages); an article used as a
 pronoun is linked.
 
-**Runs and reproducibility.** Most books ran through the Anthropic Batch API (claude-sonnet-5-5, effort=high);
-Genesis–Deuteronomy, Joshua and Psalms ran as agent sessions logged only as Claude Sonnet. A program checked every
+**Runs and reproducibility.** All books were aligned by claude-sonnet-5-5: most through the Anthropic Batch API
+(effort=high), Genesis–Deuteronomy, Joshua and Psalms in agent sessions. A program checked every
 answer (each Hungarian word exactly once, each source word at least once, only existing positions); a failed answer was
 redone. The model thus could not invent a Strong's number or lexicon entry; its possible error is a wrong pairing, and
 every pair points to one checkable source word. Model answers were generated once and archived; pair construction,
@@ -81,9 +81,10 @@ model reviewer is [agreement with model reviewer].
 
 **Cross-check with a closed edition.** As a supplementary check, pairs were compared locally with the Bible-Discovery
 Strong-tagged Károli (HUN module), a closed-licence edition that cannot be redistributed; only the aggregate is
-published, and readers cannot check it. Main-word pairs are content-word pairs whose Hungarian word has a Strong's number in the edition, excluding
+published, and readers cannot check it. It is not a gold standard: it marks one main word per Hungarian word;
+our segmentation is finer (one-to-many links, morphemes, e.g. *Azután* ↔ *ʾaḥărê* + *kēn*). Main-word pairs are content-word pairs whose Hungarian word has a Strong's number in the edition, excluding
 secondary pairs of already matched words: 2,663 of 3,388 (522 without a Strong's number there, 197
-secondary, 6 unalignable). Differences need not be alignment errors, since segmentation may differ.
+secondary, 6 unalignable); secondary pairs and segmentation differences are not errors.
 
 | measurement | estimate | 95% CI |
 |---|---|---|
@@ -95,18 +96,19 @@ secondary, 6 unalignable). Differences need not be alignment errors, since segme
 Precision per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts). Of the 1,600 sample pairs,
 72 differed from the reviewer, most often a neighbouring word (37), typically a Hebrew prefix,
 article or preposition. Of the 34 differences from the closed edition,
-five were judged alignment errors (three-way judgement); the dataset lists them.
+five were judged alignment errors (three-way judgement; the dataset lists them); secondary pairs are not
+differences.
 
 ## 3. Dataset Description
 
 - **Repository name:** Zenodo
 - **Object name:** `karoli-1908-strongs-1.0.zip`
-- **Format names and versions:** TSV (UTF-8, tab-separated, LF line endings) for the data and the machine-readable
+- **Format names and versions:** TSV (UTF-8) for the data and
   codebook; Markdown for the bilingual documentation; CFF citation file; SHA-256 checksum list
 - **Creation dates:** 2026-10-01 – 2026-11-01
 - **Dataset creators:** Tamás Demeter (independent researcher; ORCID: 0009-0005-9254-9731): rules, processing pipeline, measurement,
   curation. Source-side words and Strong's numbers: STEPBible (Tyndale House, Cambridge).
-- **Language:** Hungarian (word forms, column names and codes); Hungarian and English (documentation, bilingual codebook)
+- **Language:** Hungarian (data); Hungarian and English (documentation)
 - **License:** CC BY 4.0
 - **Publication date:** 2026-11-15
 
@@ -132,8 +134,7 @@ to it.
 
 The blind reviewer is itself a model, and human validation is not blind. Pair precision does not cover untranslated
 source words. The closed-edition chapters were selected purposively, cannot be verified by readers and exclude Hebrew
-morphemes. The STEPBible commit was not recorded; agent runs lack a versioned model identifier; the Genesis–Exodus
-tables were assembled with a second model's answers as input (see AI Declaration). The 369 aligned Greek words
+morphemes. The Genesis–Exodus tables were assembled with a second model's answers as input (see AI Declaration). The 369 aligned Greek words
 absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement
@@ -183,10 +184,10 @@ against the data, and takes full responsibility for the content; an AI tool is n
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-1,078; with the unnumbered statements 1,241; with the references as well 1,315 (the submission page says
-the limit includes references; it does not say whether the abstract counts); with the abstract too 1,396. The JOHD
+1,079; with the unnumbered statements 1,242; with the references as well 1,316 (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too 1,397. The JOHD
 data paper length is 1,000–1,500 words; the editorial office can confirm which count applies. Everything from the
-abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,489.
+abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,490.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model
 reviewer), the corresponding author's e-mail address, the two validators' names. The text goes into the official JOHD
