@@ -243,7 +243,8 @@ class Kiertekeles(unittest.TestCase):
         i_b = md.index('| B (Teszt B, külső) | 300 |')
         i_a = md.index('| A (Teszt A, hozzátartozó) | 300 |')
         self.assertLess(i_b, i_a)
-        self.assertIn('| a közös blokk (csalik nélkül) | 300 |', md)   # kappa a közös blokkon, csalik nélkül
+        self.assertIn('| párok, alapminta (csalik nélkül) | 300 |', md)   # kappa az alapmintán, csalik nélkül
+        self.assertIn('| · alapminta, OSZ_mozes |', md)                   # és könyvcsoportonként
         self.assertEqual(len(elt), 8)
 
     def test_minimumvaltozat_csalival(self):
@@ -356,13 +357,14 @@ class Kiertekeles(unittest.TestCase):
 
     def test_masodik_ito_oldala(self):
         # a második ítélő oldala (közös blokk + az összes alapminta-pár) exportját is elfogadja
-        resz = [r for r in self.minta if r['kozos'] == '1' or (r['tipus'] == 'par' and r['reszminta'] == 'alap')]
-        self.assertEqual(sum(1 for r in resz if r['tipus'] == 'par' and r['reszminta'] == 'alap'), 300)
+        resz = [r for r in self.minta if r['kozos'] == '1']   # a minta.tsv-ben csali nincs: a 300 alappár
+        self.assertEqual(len(resz), 300)
+        self.assertTrue(all(r['tipus'] == 'par' and r['reszminta'] == 'alap' for r in resz))
         fm = os.path.join(self.tmp, 'masodik.json')
         with open(fm, 'w', encoding='utf-8') as f:
             json.dump(_export('Második', resz, ki.minta_hash(resz), lambda r: ('helyes', '')), f, ensure_ascii=False)
         md, _, _ = self._fut('--kulso', '1', fajlok=[self.fa, fm])
-        self.assertIn('| párok, alapminta | 300 |', md)   # az egyezés mind a 300 alappáron
+        self.assertIn('| párok, alapminta (csalik nélkül) | 300 |', md)   # az egyezés mind a 300 alappáron
 
     def test_szerzoi_es_egy_ellenor(self):
         md, _, _ = self._fut('--szerzo', '2')

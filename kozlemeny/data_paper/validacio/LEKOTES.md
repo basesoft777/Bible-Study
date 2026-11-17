@@ -8,13 +8,13 @@ A minta (`minta.tsv`, a rétegjelöléssel), a csalik listája (`F175V_csalik.ts
 
 | fájl | SHA-256 |
 |---|---|
-| `minta.tsv` | `7a7ca9659ea3a8faee5320e30655864744afe535c1ad665fc859db008036414e` |
+| `minta.tsv` | `203fd845a15b3ce9e7f2795b3125c8f6417d656f388d2db7639ad659762c60f3` |
 | `F175V_csalik.tsv` | `c5840b48602220e8b6604e982ae3627ab87bddd3689e02f21fc2eadababd3eff` |
-| `ellenorzo.html` | `cdf71a07a7969a03836cf366fd349080adc8ba05512d2882e4e32df2a3c08d5e` |
-| `ellenorzo_masodik.html` | `92dd30e1402344dac12e003f275ee1a36a960eea7215a20e46bfd3765bc59de1` |
-| `UTMUTATO.md` (a repóban) | `1ccdf42911ff3b4fe25f7cd3309cb9bc22227f9df42823e85fa93cadfcd8d757` |
-| `UTMUTATO.pdf` (a repóban) | `81a9efc7d28425e9c2279262d9782934ad062936cf24a6cb6c2224e0e4430347` |
+| `ellenorzo.html` | `daac854c872660931b06b3f547df658eb57e0dc6f571c7781776ee411584e70b` |
+| `ellenorzo_masodik.html` | `e8fa636a1de4b0c69abfb4b8979727f2ecc834fcb37cc449d89e6ccd7253ddc0` |
+| `UTMUTATO.md` (a repóban) | `1e73d3a90822623997adf6ad3ccfaf18f704d63ea6c6113aa146c1959dbe9637` |
+| `UTMUTATO.pdf` (a repóban) | `00e12270e5e2fdedfc4fca21b0bd0c3bc0bd8a9edad5d949174fc8c8df4a0e4b` |
 
-Tételszám rétegenként: alapminta-pár 300, túlminta 56, nehéz réteg 45, pár nélküli magyar szó 80, kimaradt pár 55, csali 20, összesen 556, a második ítélő oldalán 443.
+Tételszám rétegenként: alapminta-pár 300, túlminta 56, nehéz réteg 45, pár nélküli magyar szó 80, kimaradt pár 55, csali 20, összesen 556, a második ítélő oldalán 311.
 
 A minta alapja: a minta 401 valódi párjából 401 megvan a nyílt mag 1.0-s exportjában (`nyilt_karoli_strong/data/parok/`, a Zenodo 1.0 tartalma; kiadás: 2026-11-01-23fa739286662953).

@@ -12,7 +12,7 @@ Kimenetek. A repó nyilvános, ezért a válaszkulcs a validáció lezárásáig
 A repóba csak a nyilvános lekötés kerül: `kozlemeny/data_paper/validacio/LEKOTES.md` (a három fájl SHA-256-ja és a
 rétegenkénti tételszám).
 
-Mintavétel: minden húzás (alapminta, rétegek, közös blokk, tétel-azonosítók, csalik) a letétben álló titkos
+Mintavétel: minden húzás (alapminta, rétegek, tétel-azonosítók, csalik, a második ítélő csalijai) a letétben álló titkos
 magból; a letétfájllal újrafuttatva bájtra azonos. Első előállítás: `--uj-csali` (új titkos mag).
   * Párok: a #172 gépi mérés rétegzett mintájából (`f172/minta.tsv`, rétegenként
     200 véletlen pársor a teljes keretből) vett véletlen részminta, a keret
@@ -330,7 +330,7 @@ def nelkul_minta(mag, szur=True):
 
 
 N_NEHEZ = 45
-N_KOZOS = 300   # a két ellenőr közös blokkja: minden ellenőrnél ez áll elöl (DT-F175ve)
+N_CSALI_MASODIK = 11   # a második ítélő csalijai (11/311 = 3,5%, a külső ellenőrnél 20/556 = 3,6%; DT-F175vm)
 N_KIMARADT = 55
 
 # A kimaradt-pár réteg keretéből kizárt, a párosítási szabály szerint fordítatlan forrásszavak (f21p/prompt_v3.md):
@@ -612,25 +612,15 @@ def epit(mag, csali_mag=None):
             print('  ' + x)
         raise SystemExit(1)
 
-    # közös blokk: N_KOZOS tétel a rétegek arányában (legnagyobb maradék, rögzített mag); az oldal minden
-    # ellenőrnél ezeket teszi előre, így a kappa akkor is mérhető, ha a második ítélő csak ennyit néz át.
-    # A rétegjelölést az oldal nem kapja meg, és a közös blokk minden rétegből vegyesen áll.
-    retegek = {}
-    for i, t in enumerate(tetelek):
-        if t['reszminta'] != 'csali':
-            retegek.setdefault((t['tipus'], t['reszminta']), []).append(i)
-    n_valodi = sum(len(v) for v in retegek.values())
-    db_kozos = legnagyobb_maradek({k: len(v) for k, v in sorted(retegek.items())}, min(N_KOZOS, n_valodi))
-    for k, idx in sorted(retegek.items()):
-        rnd_k = random.Random('%s:kozos:%s:%s' % (mag, k[0], k[1]))
-        valasztott = set(rnd_k.sample(idx, db_kozos[k]))
-        for i in idx:
-            tetelek[i]['kozos'] = '1' if i in valasztott else '0'
-    # a csalik a közös blokkban is arányosan (a titkos maggal): mindkét ellenőr ugyanazokat kapja
+    # a második ítélő tételei (`kozos` = 1; DT-F175vm): az összes alapminta-pár és N_CSALI_MASODIK csali (a titkos
+    # maggal, a külső ellenőr csalijai közül, így a két ember felismerése ugyanazokon a csalikon összevethető).
+    # Sorrendi blokk nincs: mindkét oldal teljesen véletlen sorrendű, így a külső ellenőr sorrendjéből nem derül ki,
+    # melyik tétel alappár.
+    for t in tetelek:
+        t['kozos'] = '1' if (t['tipus'] == 'par' and t['reszminta'] == 'alap') else '0'
     cs_idx = [i for i, t in enumerate(tetelek) if t['reszminta'] == 'csali']
     if cs_idx:
-        n_kb = round(len(cs_idx) * min(N_KOZOS, n_valodi) / n_valodi)
-        valasztott = set(random.Random('%s:csali:kozos' % csali_mag).sample(cs_idx, n_kb))
+        valasztott = set(random.Random('%s:csali:kozos' % csali_mag).sample(cs_idx, min(N_CSALI_MASODIK, len(cs_idx))))
         for i in cs_idx:
             tetelek[i]['kozos'] = '1' if i in valasztott else '0'
 
@@ -802,8 +792,8 @@ def zenodo_egyezes(sorok):
 
 
 def masodik_resz(sorok):
-    """A második ítélő tételei: a közös blokk és az összes alapminta-pár."""
-    return [r for r in sorok if r['kozos'] == '1' or (r['tipus'] == 'par' and r['reszminta'] == 'alap')]
+    """A második ítélő tételei (DT-F175vm): az összes alapminta-pár és a neki jutó csalik (`kozos` = 1)."""
+    return [r for r in sorok if r['kozos'] == '1']
 
 
 def lekotes_ir(letet_dir, retegszam, vegleges=False, zenodo=None):
@@ -858,7 +848,7 @@ def html_ir(sorok, cel):
     adat = []
     for s in sorok:
         adat.append({
-            'id': s['tetel_id'], 'tipus': s['tipus'], 'kb': 1 if s['kozos'] == '1' else 0, 'vers': s['vers'], 'hu': s['hu_vers'],
+            'id': s['tetel_id'], 'tipus': s['tipus'], 'vers': s['vers'], 'hu': s['hu_vers'],
             'hn': int(s['hu_sorszam']), 'hk': int(s['hu_kezdet']), 'hv': int(s['hu_veg']), 'hs': s['hu_szo'],
             'nyelv': s['er_nyelv'], 'en': int(s['er_sorszam']) if s['er_sorszam'] else 0,
             'strong': s['strong'], 'szoto': s['szoto'], 'jel': s['jelentes'], 'tukor': s['tukor'],
@@ -900,7 +890,7 @@ def main():
             raise SystemExit('nincs letétfájl (%s): a csalik titkos magja ebben áll. Első előállításhoz: --uj-csali'
                              % a.letet)
         _USZ_KONYVEK = _usz_konyvek()
-        # minden húzás (alapminta, rétegek, közös blokk, azonosítók, csalik) a titkos magból: a nyilvános
+        # minden húzás (alapminta, rétegek, azonosítók, csalik, a második ítélő csalijai) a titkos magból: a nyilvános
         # kódból és adatból nem vezethető le, melyik tétel melyik réteg (DT-F175vh)
         osszes, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart, reteg_info = epit(csali_mag, csali_mag)
         sorok = [r for r in osszes if r['reszminta'] != 'csali']
@@ -950,8 +940,7 @@ def main():
     cel = os.path.join(os.path.dirname(a.letet), 'ellenorzo.html')
     meret = html_ir(osszes, cel)
     print('ellenőrző oldal: %d bájt -> %s (a repón kívül; a külső ellenőré)' % (meret, cel))
-    # a második ítélő oldala: a közös blokk és az összes alapminta-pár (a kappa 300 alappáron); külön fájl, hogy a
-    # külső ellenőr sorrendjéből ne derüljön ki, melyik tétel alappár
+    # a második ítélő oldala: a 300 alapminta-pár és 11 csali (DT-F175vm); külön fájl, véletlen sorrendben
     cel2 = os.path.join(os.path.dirname(a.letet), 'ellenorzo_masodik.html')
     meret2 = html_ir(masodik_resz(osszes), cel2)
     print('a második ítélő oldala: %d bájt, %d tétel -> %s' % (meret2, len(masodik_resz(osszes)), cel2))

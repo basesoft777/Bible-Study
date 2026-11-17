@@ -7,7 +7,7 @@ Bemenet:
     az eltérő tételeket harmadik döntés zárja le; ha a második ítélő a szerző (`--szerzo 1|2`: a hányadik fájl
     az övé), vagy általában ha a második ítélő nem független (`--kulso 1|2`: a hányadik fájl a külső ellenőré,
     `--masodik`: a második jelölése, alapértelmezés „hozzátartozó”), döntnök nincs: a fő szám a külső ellenőré,
-    a második külön sorban áll. Kappa csak két ítélőnél, a közös tételeken és a közös blokkon (`kozos` oszlop).
+    a második külön sorban áll. Kappa csak két ítélőnél, a közös tételeken: az alappárokon és azok könyvcsoportjain (`kozos` oszlop).
     A minta lehet a minimumváltozat is (kevesebb alapminta-pár, csali réteg: `reszminta` = csali, felismerési
     arány; a csali a becslésekbe nem számít);
   * a minta: a letétbeli minta.tsv és csalilista (`~/Bible-Study-letet/`; a repóbeli LEKOTES.md SHA-256-jával
@@ -105,9 +105,8 @@ def minta_hash(sorok):
 def valaszok_olvas(ut, minta, hash_):
     with open(ut, encoding='utf-8') as f:
         d = json.load(f)
-    # a teljes oldal (külső ellenőr) vagy a második ítélő oldala (közös blokk + az összes alapminta-pár)
-    elfogadott = {hash_, minta_hash([r for r in minta if r.get('kozos') == '1' or
-                                     (r['tipus'] == 'par' and r.get('reszminta') == 'alap')])}
+    # a teljes oldal (külső ellenőr) vagy a második ítélő oldala (az alapminta-párok és a csalijai)
+    elfogadott = {hash_, minta_hash([r for r in minta if r.get('kozos') == '1'])}   # a második ítélő oldala: alappárok + csalijai
     if d.get('minta_hash') not in elfogadott:
         raise SystemExit('%s: a minta_hash (%s) nem ezé a mintáé (%s)' % (ut, d.get('minta_hash'), hash_))
     ids = {r['tetel_id'] for r in minta}
@@ -553,7 +552,7 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     elif szerzoi:
         sor.append('Egy külső ellenőr és egy nem független második ítélő (%s): a fő szám a külső ellenőré; a második '
                    'ítélő külön sorban áll; döntnök nincs, a vitás tételeknél a két ítélet külön szerepel; a kappa a '
-                   'kettejük közös tételein (a közös blokkon is külön).\n' % ellenorok[1][0])
+                   'kettejük közös tételein (az alappárokon, könyvcsoportonként is).\n' % ellenorok[1][0])
     else:
         sor.append('Két külső ellenőr; az eltérő tételeket harmadik döntés zárja le (a döntött minta).\n')
     for nev, v in ellenorok:
@@ -691,13 +690,12 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append('## 4. A két ítélő egyezése (Cohen-kappa)\n')
         sor.append('| tételek | n | megfigyelt egyezés | kappa (3 kategória) | kappa (helyes/hibás; bizonytalan nélkül) | PABAK (helyes/hibás) |')
         sor.append('|---|---|---|---|---|---|')
-        for cimke, szuro in (('összes közös tétel (csalik nélkül)', lambda t: t not in csali),
-                             ('a közös blokk (csalik nélkül)', lambda t: t in kozos_blokk and t not in csali),
-                             ('párok, alapminta', lambda t: tip[t] == 'par' and t in alap),
-                             ('párok, a #172 eltérései', lambda t: tip[t] == 'par' and t in elter),
-                             ('párok, nehéz réteg', lambda t: t in nehez),
-                             ('pár nélküli szavak', lambda t: tip[t] == 'parnelkuli'),
-                             ('kimaradt párok', lambda t: tip[t] == 'kimaradt')):
+        # a két ítélő közös tételei az alappárok (a második ítélő csomagja; DT-F175vm): kappa és PABAK az alapmintán
+        # és annak könyvcsoport-rétegein, csalik nélkül
+        szurok = [('párok, alapminta (csalik nélkül)', lambda t: tip[t] == 'par' and t in alap)]
+        for cs_ in sorted({csop[t] for t in alap if tip[t] == 'par'}, key=_csoport_sorrend):
+            szurok.append(('· alapminta, %s' % cs_, lambda t, cs_=cs_: tip[t] == 'par' and t in alap and csop[t] == cs_))
+        for cimke, szuro in szurok:
             ts = [t for t in kozos if szuro(t)]
             p3 = [(a[t]['itelet'], b[t]['itelet']) for t in ts]
             k3, po3, n3 = kappa(p3, ITELETEK)

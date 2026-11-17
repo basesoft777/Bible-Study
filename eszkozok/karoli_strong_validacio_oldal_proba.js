@@ -56,19 +56,19 @@ for (let i = 0; i < 120; i++) {
 }
 ell(A.kesz_db() === 120, 'kész 120: ' + A.kesz_db());
 // közös blokk: minden ellenőrnél elöl, ugyanaz a halmaz, más sorrend
-{ const kb = A.MINTA.filter(t => t.kb).length;
-  const s1 = A.allapot.sorrend, s2 = A.uj_allapot('Másik Ellenőr').sorrend;
-  const m1 = new Set(s1.slice(0, kb)), m2 = new Set(s2.slice(0, kb));
-  ell(kb >= 300, 'közös blokk mérete: ' + kb);   // 300 valódi tétel + a csalik arányos része
-  ell(s1.slice(0, kb).every(id => A.MINTA.find(t => t.id === id).kb === 1), 'a közös blokk áll elöl');
-  ell([...m1].every(id => m2.has(id)) && s1.slice(0, kb).join() !== s2.slice(0, kb).join(), 'ugyanaz a blokk, más sorrend'); }
+{ const s1 = A.allapot.sorrend, s2 = A.uj_allapot('Másik Ellenőr').sorrend;
+  ell(new Set(s1).size === A.MINTA.length && s1.slice().sort().join() === s2.slice().sort().join(), 'ugyanazok a tételek');
+  ell(s1.join() !== s2.join(), 'ellenőrönként más sorrend');
+  // az oldal adatai semmilyen rétegjelölést nem hordoznak (a réteg a sorrendből sem következik)
+  ell(A.MINTA.every(t => !('kb' in t) && !('reszminta' in t) && !('elteres' in t) && !('kozos' in t)), 'nincs rétegjelölés'); }
 // a kimaradt-pár tétel: „Van párja” -> hibás, automatikus hibatípussal
 { const p0 = A.allapot.poz; const ki = A.allapot.sorrend.findIndex(id => A.MINTA.find(t => t.id === id).tipus === 'kimaradt' && !A.allapot.valaszok[id]);
-  ell(ki >= 0, 'van kimaradt-pár tétel');
-  A.allapot.poz = ki; A.itelet_valt('hibas');
-  ell(A.valasz(A.tetel()).hibatipus === 'kimaradt_par', 'kimaradt: hibatípus');
-  A.itelet_valt('hibas');   // visszavonás (ugyanaz a gomb)
-  A.allapot.poz = p0; }
+  if (ki >= 0) {   // a második ítélő oldalán ilyen tétel nincs
+    A.allapot.poz = ki; A.itelet_valt('hibas');
+    ell(A.valasz(A.tetel()).hibatipus === 'kimaradt_par', 'kimaradt: hibatípus');
+    A.itelet_valt('hibas');   // visszavonás (ugyanaz a gomb)
+    A.allapot.poz = p0;
+  } }
 // ítélet nélküli tétel, csak a fordítói jelölővel: nem számít késznek, de exportálódik
 const csakKaroliId = A.tetel().id;
 elemek['i-karoli'].checked = true; elemek['i-karoli'].listeners.change[0]();
