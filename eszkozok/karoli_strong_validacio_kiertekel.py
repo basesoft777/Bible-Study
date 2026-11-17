@@ -165,7 +165,7 @@ def gepi_olvas(ut, sha_vart, minta):
     if h != sha_vart:
         raise SystemExit('a gépi tábla SHA-256-ja (%s) nem egyezik a fagyasztottal (%s)' % (h, sha_vart))
     fej, sorok = tabla(ut)
-    biralok = [k for k in fej if k.startswith('biralo')]
+    biralok = [k for k in fej if k.startswith('biralo')] or [k for k in fej if k.endswith('_helyes') and k != 'tobbseg_helyes']
     n_biralo = len(biralok) or 3
     kulcs = {(r['vers'], r['hu_sorszam'], r['er_sorszam']): r['tetel_id'] for r in minta if r['tipus'] == 'par'}
     ki = {}
@@ -191,7 +191,7 @@ def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
         sor.append('## 8. Ember–gép eltérések (tájékoztató; a fő számot nem módosítja)\n')
         sor.append('A külső ellenőr (%s) ítélete × a párt helyesnek ítélő gépi bírálók száma (0–%d; a fagyasztott gépi tábla). '
                    'A tételeket mindkét emberi ítélettel közöljük; a becslést nem igazítjuk.\n' % (kulso_nev, nb))
-        for cimke, rsz in (('alapminta', 'alap'), ('túlminta', 'tulminta')):
+        for cimke, rsz in (('alapminta', 'alap'), ('túlminta', 'tulminta'), ('külső eltérés (új réteg)', 'kulso_elteres')):
             ts = [t for t in g if resz.get(t) == rsz and t in kulso_it]
             sor.append('%s (%d pár):\n' % (cimke.capitalize(), len(ts)))
             sor.append('| emberi ítélet | ' + ' | '.join('gép %d/%d' % (k, nb) for k in range(nb + 1)) + ' | összesen |')
@@ -233,7 +233,7 @@ def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
     sor.append('## 10. A „hibás” ítéletek együttjárása (tájékoztató)\n')
     sor.append('A külső ellenőr (%s) pár-ítéletei (alapminta és túlminta): a „Károli itt szabadon vagy pontatlanul fordít” jelölő és a '
                'hibatípus szerint. A téves riasztásra ez nem mérőeszköz, csak jelző.\n' % kulso_nev)
-    ts = [t for t in kulso_it if tip[t] == 'par' and resz.get(t) in ('alap', 'tulminta')]
+    ts = [t for t in kulso_it if tip[t] == 'par' and resz.get(t) in ('alap', 'tulminta', 'kulso_elteres')]
     sor.append('| ítélet | n | ebből „Károli szabadon fordít” jelölővel |\n|---|---|---|')
     for it in ITELETEK:
         tt = [t for t in ts if kulso_it[t] == it]
@@ -424,13 +424,19 @@ def f172_fazis1():
 def ketfazisu(minta, itelet, konzervativ=False, fazis1=None):
     """Kétfázisú (rétegzésre szolgáló kettős mintavétel) becslés a párok pontosságára.
 
-    1. fázis: a #172 rétegzett mintája (rétegenként n'), a vak modell-ellenőr szerint egyező és eltérő párokra
-    bontva. 2. fázis: az egyező párokból az alapminta (véletlen részminta), az eltérő párokból mind (alapminta +
-    túlminta). Rétegenként p_h = (1 − d/n')·p_egyezo + (d/n')·p_eltero, összesen Σ W_h·p_h, ahol W_h a keret
+    1. fázis: a #172 rétegzett mintája (rétegenként n'), két csoportra bontva: „eltérő” az a pár, amelyet a vak
+    Opus-ellenőr nem talált helyesnek VAGY a három külső gépi bíráló nem egyhangúan ítélt meg (a két halmaz uniója;
+    ezek mind a mintában vannak: alapminta, túlminta, külső eltérés); „egyező” a többi. 2. fázis: az egyező párokból
+    az alapminta (véletlen részminta), az eltérő párokból mind. d_h (az eltérők száma rétegenként) a mintából
+    számolódik, mert az unió minden eleme pontosan egyszer szerepel benne. Rétegenként p_h = (1 − d/n')·p_egyezo + (d/n')·p_eltero, összesen Σ W_h·p_h, ahol W_h a keret
     pársúlya. Variancia (Cochran 12.: kettős mintavétel rétegzéshez), rétegenként:
     V_h = p_h(1−p_h)/n' + Σ_g w_g·S²_g·(1/ν_g − 1)/n', ν_g = n_g/(n'·w_g); az összes: Σ W_h²·V_h.
     Visszaad: (becslés, alsó95, felső95, megjegyzés) vagy None-t, ha egy réteg nem becsülhető."""
-    n1, d, w = fazis1 or f172_fazis1()
+    n1, _d172, w = fazis1 or f172_fazis1()
+    d = {}
+    for r in minta:
+        if r['tipus'] == 'par' and r['reszminta'] != 'csali' and (r['elteres'] == '1' or r.get('kulso_elteres') == '1'):
+            d[r['f172_reteg']] = d.get(r['f172_reteg'], 0) + 1
     ert = {}
     for r in minta:
         if r['tipus'] != 'par':
@@ -442,7 +448,10 @@ def ketfazisu(minta, itelet, konzervativ=False, fazis1=None):
             y = 0.0
         else:
             continue
-        csop = 'eltero' if r['elteres'] == '1' else ('egyezo' if r['reszminta'] == 'alap' else None)
+        if r['reszminta'] == 'csali' or r['reszminta'] == 'nehez':
+            continue
+        csop = ('eltero' if (r['elteres'] == '1' or r.get('kulso_elteres') == '1')
+                else ('egyezo' if r['reszminta'] == 'alap' else None))
         if csop:
             ert.setdefault(r['f172_reteg'], {}).setdefault(csop, []).append(y)
     osszeg, var, hiany = 0.0, 0.0, []
@@ -542,6 +551,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     alap = {r['tetel_id'] for r in minta if r['reszminta'] == 'alap'}
     elter = {r['tetel_id'] for r in minta if r['elteres'] == '1'}
     tul = {r['tetel_id'] for r in minta if r['reszminta'] == 'tulminta'}
+    kulso_uj = {r['tetel_id'] for r in minta if r['reszminta'] == 'kulso_elteres'}
+    kulso45 = {r['tetel_id'] for r in minta if r.get('kulso_elteres') == '1'}
     nehez = {r['tetel_id'] for r in minta if r['reszminta'] == 'nehez'}
     kozos_blokk = {r['tetel_id'] for r in minta if r.get('kozos') == '1'}
     csali = {r['tetel_id'] for r in minta if r['reszminta'] == 'csali'}
@@ -556,10 +567,10 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     else:
         sor.append('Két külső ellenőr; az eltérő tételeket harmadik döntés zárja le (a döntött minta).\n')
     for nev, v in ellenorok:
-        sor.append('- %s: %d / %d tétel (alapminta-pár %d, túlminta-pár %d, nehéz pár %d, pár nélküli %d, kimaradt-pár %d, '
-                   'csali %d)' % (
+        sor.append('- %s: %d / %d tétel (alapminta-pár %d, túlminta-pár %d, külső eltérés %d, nehéz pár %d, pár nélküli %d, '
+                   'kimaradt-pár %d, csali %d)' % (
             nev, len(v), len(minta), sum(tip[t] == 'par' and t in alap for t in v),
-            sum(t in tul for t in v), sum(t in nehez for t in v),
+            sum(t in tul for t in v), sum(t in kulso_uj for t in v), sum(t in nehez for t in v),
             sum(tip[t] == 'parnelkuli' for t in v), sum(tip[t] == 'kimaradt' for t in v), sum(t in csali for t in v)))
     sor.append('')
 
@@ -599,9 +610,10 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append(pontossag_sor('megerősített · konzervatív', meg, konzervativ=True))
         sor.append('')
     sor.append('### 2b. Kétfázisú, súlyozott becslés (alapminta + a #172 összes modell-eltérése)\n')
-    sor.append('Első fázis: a #172 rétegzett mintája; második fázis: az egyező párokból az alapminta, az eltérő '
-               'párokból mind. A túlminta így nem torzítja a becslést, csak pontosítja (Cochran, kettős mintavétel '
-               'rétegzéshez; normál 95%).\n')
+    sor.append('Első fázis: a #172 rétegzett mintája; „eltérő” az a pár, amelyet a vak Opus-ellenőr nem talált helyesnek, '
+               'vagy a három külső gépi bíráló nem egyhangúan ítélt meg; második fázis: az egyező párokból az alapminta, '
+               'az eltérő párokból mind. A túlminta és a külső eltérések így nem torzítják a becslést (Cochran, kettős '
+               'mintavétel rétegzéshez; normál 95%).\n')
     sor.append('| | becslés | 95% | megjegyzés |\n|---|---|---|---|')
     f1 = f172_fazis1()
     for nev, it in itelok:
@@ -619,6 +631,16 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     else:
         sor.append('Ebben a mintában nincs nehéz réteg.\n')
     sor.append('')
+    if kulso45:
+        sor.append('### 2e. A három külső gépi bíráló nem egyhangú párjai (%d pár; tájékoztató)\n' % len(kulso45))
+        sor.append('A #172 mintájának azon párjai, amelyekről a három vak gépi bíráló nem értett egyet (közülük egy rész az '
+                   'alapmintában vagy a túlmintában is szerepel). Külön becslés; a 2b-be az unióként, súlyozva kerül.\n')
+        sor.append(FEJ_P)
+        for nev, it in itelok:
+            lista = [it[t] for t in it if t in kulso45]
+            sor.append(pontossag_sor(nev, lista))
+            sor.append(pontossag_sor(nev + ' · konzervatív', lista, konzervativ=True))
+        sor.append('')
     if csali:
         sor.append('### 2d. Csalik (elültetett hibás párok): felismerési arány (%d tétel)\n' % len(csali))
         sor.append('A csali a becslésekbe nem számít; a „hibás” ítélet a felismerés. A „konzervatív” sor a bizonytalant '
@@ -650,10 +672,10 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
                         ('· 1:n', lambda x: x == '1:n'), ('· n:1', lambda x: x == 'n:1'), ('· n:m', lambda x: x == 'n:m')):
         sor.append(pontossag_sor(cimke, [fo[t] for t in fo if tip[t] == 'par' and t in alap and felt(tsz.get(t, ''))]))
     sor.append('')
-    sor.append('Hibatípusok (a hibás páron, alapminta és túlminta, ellenőrönként): ' + '; '.join(
+    sor.append('Hibatípusok (a hibás páron, alapminta, túlminta és külső eltérés, ellenőrönként): ' + '; '.join(
         '%s: %s' % (nev, ', '.join('%s %d' % (k, n) for k, n in sorted(_szamlal(
             v[t].get('hibatipus') or '(nincs megadva)' for t in v
-            if tip[t] == 'par' and (t in alap or t in tul) and v[t]['itelet'] == 'hibas').items())) or '–')
+            if tip[t] == 'par' and (t in alap or t in tul or t in kulso_uj) and v[t]['itelet'] == 'hibas').items())) or '–')
         for nev, v in ellenorok) + '\n')
 
     sor.append('## 3. Pár nélküli szavak: kimaradási arány\n')

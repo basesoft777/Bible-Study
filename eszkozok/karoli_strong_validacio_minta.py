@@ -85,7 +85,7 @@ def csoport_of_reteg(rt):
     return 'OSZ_mozes' if rt.startswith('OSZ_mozes') else rt
 
 
-MINTA_FEJ = ['tetel_id', 'tipus', 'reszminta', 'elteres', 'kozos', 'csoport', 'f172_reteg', 'f172_id', 'konyv', 'vers',
+MINTA_FEJ = ['tetel_id', 'tipus', 'reszminta', 'elteres', 'kulso_elteres', 'kozos', 'csoport', 'f172_reteg', 'f172_id', 'konyv', 'vers',
              'hu_vers', 'hu_sorszam', 'hu_szo', 'hu_kezdet', 'hu_veg',
              'er_nyelv', 'er_vers', 'er_sorszam', 'er_szo', 'strong', 'szoto', 'jelentes',
              'tukor', 'kiejtes', 'morf', 'szofaj', 'morf_hu', 'nem_tr', 'tobbszavas', 'tobbi_par', 'er_tokenek_json', 'parok_json']
@@ -245,6 +245,25 @@ def f172_elteresek():
     return {r['minta_id'] for r in sorok if r['helyes'] == '0'}
 
 
+GEPI_TABLA = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'harom_biralo_itelet.tsv')
+GEPI_SHA256 = 'e236146d9f13a08e31427f95ccdbb692bfb3f102964f53184517fc8f083f28b7'   # a #765 fagyasztott táblája
+
+
+def kulso_elteresek(ut=GEPI_TABLA):
+    """A három külső gépi bíráló (Opus, Gemini, GPT) fagyasztott táblájából a nem egyhangú párok #172-azonosítói
+    (DT-F175vn). A tábla SHA-256-jának egyeznie kell a lekötöttel; a tábla a #765 ágán:
+    f172/kulso_biralo/harom_biralo_itelet.tsv, másolata a letétben."""
+    if not os.path.exists(ut):
+        raise SystemExit('nincs meg a gépi bírálók fagyasztott táblája: %s' % ut)
+    if fajl_sha256(ut) != GEPI_SHA256:
+        raise SystemExit('a gépi tábla SHA-256-ja nem a fagyasztott: %s' % ut)
+    _, sorok = _tabla(ut)
+    ki = {r['f172_id'] for r in sorok if r['egyhangu'] == '0'}
+    if len(ki) != 45:
+        raise SystemExit('a gépi táblában %d nem egyhangú pár van, 45 a várt' % len(ki))
+    return ki
+
+
 def par_minta(mag):
     """Az alapminta (N_PAR pár, a keret pársúlya szerint arányos részminta) és a túlminta: a #172 összes
     eltérése, amely nincs az alapmintában (DT-F175vc). Minden sor `reszminta` (alap / tulminta) és `elteres`
@@ -264,6 +283,14 @@ def par_minta(mag):
     for r in f172:
         if r['minta_id'] in elteres and r['minta_id'] not in alap:
             ki.append(dict(r, reszminta='tulminta', elteres='1'))
+    # a külső gépi bírálók 45 nem egyhangú párja (DT-F175vn): ami még nincs a mintában, saját rétegként kerül be
+    kulso = kulso_elteresek()
+    benne = {r['minta_id'] for r in ki}
+    for r in f172:
+        if r['minta_id'] in kulso and r['minta_id'] not in benne:
+            ki.append(dict(r, reszminta='kulso_elteres', elteres='0'))
+    for r in ki:
+        r['kulso_elteres'] = '1' if r['minta_id'] in kulso else '0'
     return ki, db
 
 
@@ -568,7 +595,7 @@ def epit(mag, csali_mag=None):
             hibak.append('%s er %d: %s/%s != %s/%s' % (v, e, w['alak'], w['strong'], r['er_szo'], r['strong']))
         if (h, r['hu_szo'], e, r['er_szo'], r['strong']) not in pv.get(v, []):
             hibak.append('%s: a pár (%d→%d) nincs a mai parok-táblában' % (v, h, e))
-        tetelek.append(dict(tipus='par', reszminta=r['reszminta'], elteres=r['elteres'],
+        tetelek.append(dict(tipus='par', reszminta=r['reszminta'], elteres=r['elteres'], kulso_elteres=r.get('kulso_elteres', ''),
                             csoport=csoport_of_reteg(r['reteg']), f172_reteg=r['reteg'],
                             f172_id=r['minta_id'], konyv=r['konyv'], vers=v, h=h, e=e, szoveg=szoveg,
                             m=m, w=w, illesztes=illesztes, tok=tok, nt=nt))
@@ -662,6 +689,7 @@ def epit(mag, csali_mag=None):
             tobbsz = {(True, True): 'n:m', (True, False): '1:n', (False, True): 'n:1'}.get((n_er > 1, n_hu > 1), '')
         sorok.append({
             'tetel_id': t['tetel_id'], 'tipus': t['tipus'], 'reszminta': t['reszminta'], 'elteres': t['elteres'],
+            'kulso_elteres': t.get('kulso_elteres', ''),
             'kozos': t['kozos'],
             'csoport': t['csoport'],
             'f172_reteg': t['f172_reteg'], 'f172_id': t['f172_id'], 'konyv': t['konyv'], 'vers': v,
@@ -809,7 +837,7 @@ def lekotes_ir(letet_dir, retegszam, vegleges=False, zenodo=None):
              'nyilvános. Itt csak az SHA-256-juk szerepel, előzetes lekötésként; a lezárás után a fájlok a letétbe '
              'kerülnek, és ezzel ellenőrizhetők.', '',
              '| fájl | SHA-256 |', '|---|---|']
-    for fn in ('minta.tsv', 'F175V_csalik.tsv', 'ellenorzo.html', 'ellenorzo_masodik.html'):
+    for fn in ('minta.tsv', 'F175V_csalik.tsv', 'ellenorzo.html', 'ellenorzo_masodik.html', 'harom_biralo_itelet.tsv'):
         sorok.append('| `%s` | `%s` |' % (fn, fajl_sha256(os.path.join(letet_dir, fn))))
     for fn in ('UTMUTATO.md', 'UTMUTATO.pdf'):   # az útmutató a repóban (nyilvános), a kiküldött változat lekötése
         ut = os.path.join(KIMENET, fn)
@@ -947,9 +975,10 @@ def main():
     retegszam = {}
     for r in valodi + csalis:
         k = {'alap': 'alapminta-pár' if r['tipus'] == 'par' else 'pár nélküli magyar szó', 'tulminta': 'túlminta',
+             'kulso_elteres': 'külső eltérés (új)',
              'nehez': 'nehéz réteg', 'kimaradt': 'kimaradt pár', 'csali': 'csali'}[r['reszminta']]
         retegszam[k] = retegszam.get(k, 0) + 1
-    rend = ['alapminta-pár', 'túlminta', 'nehéz réteg', 'pár nélküli magyar szó', 'kimaradt pár', 'csali']
+    rend = ['alapminta-pár', 'túlminta', 'külső eltérés (új)', 'nehéz réteg', 'pár nélküli magyar szó', 'kimaradt pár', 'csali']
     lekotes_ir(os.path.dirname(a.letet), [(k, retegszam[k]) for k in rend if k in retegszam] +
                [('összesen', len(valodi) + len(csalis)), ('a második ítélő oldalán', len(masodik_resz(osszes)))],
                a.vegleges, zenodo_egyezes(valodi) + (kiadas_azonosito(),))

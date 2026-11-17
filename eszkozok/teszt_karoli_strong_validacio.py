@@ -355,6 +355,21 @@ class Kiertekeles(unittest.TestCase):
         # vitatott: B további 6 hibás és 2 bizonytalan párja
         self.assertEqual(len(vit), 8)
 
+    def test_kulso_biralok_elteresei(self):
+        # a 45 nem egyhangú pár mind a mintában, jelölve; ami nem volt benne, saját rétegként (külső eltérés)
+        par = [r for r in self.minta if r['tipus'] == 'par']
+        self.assertEqual(sum(1 for r in par if r['kulso_elteres'] == '1'), 45)
+        self.assertTrue(all(r['kulso_elteres'] == '1' for r in par if r['reszminta'] == 'kulso_elteres'))
+        self.assertNotIn('1', {r['kozos'] for r in par if r['reszminta'] == 'kulso_elteres'})   # a második ítélőnél nincs
+        # a valódi fagyasztott gépi tábla (a letétben, SHA-256-tal)
+        import karoli_strong_validacio_minta as vm2
+        if not os.path.exists(vm2.GEPI_TABLA):
+            self.skipTest('nincs gépi tábla a letétben')
+        md, _, _ = self._fut('--gepi', vm2.GEPI_TABLA, '--gepi-sha256', vm2.GEPI_SHA256, fajlok=[self.fa])
+        self.assertIn('Külső eltérés (új réteg)', md)
+        self.assertIn('modell-bíráló helyesnek ítélte. A fordított eset', md)
+        self.assertIn('### 2e. A három külső gépi bíráló nem egyhangú párjai (45 pár', md)
+
     def test_masodik_ito_oldala(self):
         # a második ítélő oldala (közös blokk + az összes alapminta-pár) exportját is elfogadja
         resz = [r for r in self.minta if r['kozos'] == '1']   # a minta.tsv-ben csali nincs: a 300 alappár
