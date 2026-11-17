@@ -30,8 +30,9 @@ forrás nélkül, ezért a publikációs díjat nem tudom megfizetni. Kérem az 
 részéről Patrick Higgins 2026. november 16-án megerősítette, hogy a mentességi alap a teljes APC-t fedezi, ha a
 kérelem a beküldéssel együtt érkezik.
 
-**Bírálók.** A cikkben megnevezett emberi ellenőr(ök), [név/nevek], részt vett(ek) az adatkészlet
-minőség-ellenőrzésében, ezért nem kérhető(k) fel bírálónak.
+**Bírálók.** A cikkben megnevezett két emberi ellenőr, [a külső ellenőr neve] és [a második ellenőr neve] (a szerző
+családtagja, ahogy a cikk is közli), részt vett az adatkészlet minőség-ellenőrzésében, ezért nem kérhetők fel
+bírálónak.
 
 **MI-használat.** Az adatkészlet előállításában és ellenőrzésében, valamint a kézirat megfogalmazásában nyelvi
 modellek dolgoztak; a cikk MI-nyilatkozata pontosan leírja, mit végeztek és mit nem. Az adatokért és a szövegért teljes

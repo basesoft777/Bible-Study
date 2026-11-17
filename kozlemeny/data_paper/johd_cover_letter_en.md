@@ -30,7 +30,8 @@ funding for this work, so I am not able to pay the article processing charge. I 
 APC. Patrick Higgins of Ubiquity Press confirmed on 16 November 2026 that the waiver fund covers the full APC when the
 request is made with the submission.
 
-**Reviewers.** The human validator(s) named in the paper, [name(s)], took part in the quality control of the dataset
+**Reviewers.** The two human validators named in the paper, [name of the external validator] and [name of the second
+validator] (a family member of the author, as disclosed in the paper), took part in the quality control of the dataset
 and should therefore not be invited as reviewers.
 
 **Use of AI.** Language models were used in producing and checking the dataset, and in drafting the manuscript; the AI

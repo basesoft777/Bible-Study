@@ -64,24 +64,25 @@ For the blind review, the pair set was divided by book group into seven strata (
 historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with 200 random pairs per
 stratum; in the five books of Moses 400 pairs from two subsamples, combined by pair weight. The human
 validation sample has [N] pairs and [M] unpaired words from the same strata, plus all 72 reviewer disagreements
-as a weighted oversample. The closed-edition cross-check used purposively selected chapters: per stratum the chapter
-with the most reviewer disagreements and sampled pairs, two in the five books of Moses (eight chapters).
+as a weighted oversample. The closed-edition cross-check used eight purposively selected chapters (per stratum the one
+with most reviewer disagreements).
 
 ### Quality control
 
-**Blind model review.** A second model (Claude Opus) marked the source words for each sampled Hungarian word itself,
-with the same rules, blind to the machine pair; a pair counts as correct if its source word is among the reviewer's
-marks. Pair precision is therefore agreement with a model, not ground truth.
+**Blind model review.** A second model (Claude Opus) independently marked the source words of each sampled Hungarian
+word with the same rules, blind to the machine pair; a pair is correct if its source word is among those marks. Pair precision is therefore agreement with a model, not ground truth.
 
-**Human validation.** [One external validator and the author / Two external validators], theology graduates with
-knowledge of biblical Hebrew and Greek, judged each item independently. Judging is not blind: validators see the
-machine pair. Rule-determined function words were excluded from the unpaired sample. Precision is [precision] (95% CI
-[CI]), or [conservative] counting uncertain items as errors; inter-rater kappa is [kappa]; agreement with the blind
-model reviewer is [agreement with model reviewer].
+**Human validation.** An external validator, a theology graduate with knowledge of biblical Hebrew and Greek, judged
+every item; a second validator, also a theology graduate, is a family member of the author; neither validator was
+involved in producing the dataset. Judging is not blind: validators see the machine pair. Rule-determined function
+words were excluded from the unpaired sample. The external validator gives the main figure: precision [precision] (95%
+CI [CI]), or [conservative] counting uncertain items as errors. The second validator ([precision 2]) and inter-rater
+kappa ([kappa]) are supplementary; there is no adjudicator. Agreement with the blind model reviewer is [agreement
+with model reviewer].
 
 **Cross-check with a closed edition.** As a supplementary check, pairs were compared locally with the Bible-Discovery
-Strong-tagged Károli (HUN module), a closed-licence edition that cannot be redistributed; only the aggregate is
-published, and readers cannot check it. It is not a gold standard: it marks one main word per Hungarian word;
+Strong-tagged Károli (HUN module), a closed-licence edition; only the aggregate can be published,
+and readers cannot check it. It is not a gold standard: it marks one main word per Hungarian word;
 our segmentation is finer (one-to-many links, morphemes, e.g. *Azután* ↔ *ʾaḥărê* + *kēn*). Main-word pairs are content-word pairs whose Hungarian word has a Strong's number in the edition, excluding
 secondary pairs of already matched words: 2,663 of 3,388 (522 without a Strong's number there, 197
 secondary, 6 unalignable); secondary pairs and segmentation differences are not errors.
@@ -90,7 +91,7 @@ secondary, 6 unalignable); secondary pairs and segmentation differences are not 
 |---|---|---|
 | pair precision, blind model reviewer, weighted | 95.06% | 93.81–96.32% |
 | content word / Hebrew morpheme | 96.44% / 90.74% | 95.20–97.69% / 87.18–94.29% |
-| human validation; uncertain as errors | [precision]; [conservative] | [CI] |
+| human validation (external); uncertain as errors | [precision]; [conservative] | [CI] |
 | main-word agreement, closed edition | 98.72% | – |
 
 Precision per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts). Of the 1,600 sample pairs,
@@ -107,7 +108,7 @@ differences.
   codebook; Markdown for the bilingual documentation; CFF citation file; SHA-256 checksum list
 - **Creation dates:** 2026-10-01 – 2026-11-01
 - **Dataset creators:** Tamás Demeter (independent researcher; ORCID: 0009-0005-9254-9731): rules, processing pipeline, measurement,
-  curation. Source-side words and Strong's numbers: STEPBible (Tyndale House, Cambridge).
+  curation.
 - **Language:** Hungarian (data); Hungarian and English (documentation)
 - **License:** CC BY 4.0
 - **Publication date:** 2026-11-15
@@ -126,9 +127,8 @@ Bible software can offer Strong-based search of the Hungarian text. Translation 
 consistency and additions. For language technology it is alignment data for a low-resource pair with
 error measured per stratum. The Logosz Lexikon, a motif-indexed, cross-referenced biblical
 lexicon, is built on this alignment. A companion dataset (Demeter, 2026b) carries the same pairs on the author's
-rule-based modernisation of the text (rare verb forms changed only where independent model proposals agreed; reviewed
-and measured separately): every word kept its position and merged words keep both pairs, so the figures above apply
-to it.
+rule-based modernisation of the text (rare verb forms changed only on agreeing independent model proposals; measured
+separately): every word kept its position and merged words keep both pairs, so the figures above apply.
 
 ### Limitations
 
@@ -139,13 +139,13 @@ absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement
 
-Both datasets are open on Zenodo under CC BY 4.0 (see References). The prompt,
+Both datasets: Zenodo, CC BY 4.0 (see References). The prompt,
 archived model answers, verse mapping and 1,600 judged sample pairs will be added in version 1.1, planned before
 publication.
 
 ## Acknowledgements
 
-The author thanks [validator name(s)] for the human validation.
+The author thanks [name of the external validator] and [name of the second validator] for the human validation.
 
 ## Funding Statement
 
@@ -172,9 +172,9 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 
 (1) Alignment: Claude Sonnet (Anthropic) returned position pairs only (see Method). For Genesis and Exodus, another
 language model was also run as a cross-check; no published pair derives from it alone. (2) Quality control: Claude Opus
-served as blind reviewer on the sample; human validation used no AI. (3) Companion dataset: language models proposed
-rare verb forms only. The claude-opus-5-5 model assisted in drafting and editing the manuscript text from the dataset's
-data; figures come from the data. The author designed the study, made all editorial decisions, verified every statement
+served as blind reviewer on the sample; human validation used no AI. (3) Companion dataset: see Reuse Potential. The
+claude-opus-5-5 model assisted in drafting and editing the text; figures are generated from the
+data. The author designed the study, made all editorial decisions, verified every statement
 against the data, and takes full responsibility for the content; an AI tool is not an author.
 
 <!-- END OF SUBMISSION TEXT — the part below can be removed from the submitted version. -->
@@ -184,10 +184,10 @@ against the data, and takes full responsibility for the content; an AI tool is n
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-1,079; with the unnumbered statements 1,242; with the references as well 1,316 (the submission page says
+1,082; with the unnumbered statements 1,242; with the references as well 1,316 (the submission page says
 the limit includes references; it does not say whether the abstract counts); with the abstract too 1,397. The JOHD
 data paper length is 1,000–1,500 words; the editorial office can confirm which count applies. Everything from the
-abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,490.
+abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,491.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model
 reviewer), the corresponding author's e-mail address, the two validators' names. The text goes into the official JOHD

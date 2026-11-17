@@ -817,11 +817,12 @@ ellenőr-eltérés és mintapár volt, Mózes öt könyvében kettő ({kulso_fej
 szavakat, ugyanazokkal a szabályokkal, a gépi pár ismerete nélkül; a pár helyes, ha az eredeti szava az ellenőr
 jelölései között van. A párprecizitás tehát egy modellel való egyezés, nem abszolút mérce.
 
-**Emberi validáció.** [Egy külső ellenőr és a szerző / Két külső ellenőr], végzett teológusok, bibliai héber és görög
-ismerettel, egymástól függetlenül ítélték meg a tételeket. Az ítélet nem vak: az ellenőrök látják a gépi párt. A pár
-nélküli szavak mintájából a szabály által meghatározott funkciószavak kimaradtak. A precizitás [precizitás] (95%-os KI:
-[KI]), a bizonytalan tételeket hibának számítva [konzervatív]; a két ellenőr egyezése kappa = [kappa]; az egyezésük a vak
-modell-ellenőrrel [egyezés a modell-ellenőrrel].
+**Emberi validáció.** Egy külső ellenőr, végzett teológus, bibliai héber és görög ismerettel, minden tételt megítélt;
+a második ellenőr, szintén végzett teológus, a szerző családtagja; egyikük sem dolgozott az adatkészlet
+előállításán. Az ítélet nem vak: az ellenőrök látják a gépi párt. A pár nélküli szavak mintájából a szabály által
+meghatározott funkciószavak kimaradtak. A fő szám a külső ellenőré: precizitás [precizitás] (95%-os KI: [KI]), a
+bizonytalan tételeket hibának számítva [konzervatív]. A második ellenőr száma ([precizitás 2]) és a kettejük egyezése
+(kappa = [kappa]) kiegészítő adat; döntnök nincs. Az egyezés a vak modell-ellenőrrel [egyezés a modell-ellenőrrel].
 
 **Keresztellenőrzés zárt kiadással.** Kiegészítő ellenőrzésként a párokat helyben összevetettük a Bible-Discovery
 Strong-számos Károlijával (HUN modul), egy zárt licencű kiadással, amely nem terjeszthető; csak az összesített
@@ -835,7 +836,7 @@ felbontási különbségek nem hibák.
 |---|---|---|
 | párprecizitás, vak modell-ellenőr, súlyozott | {p_osszes}% | {p_osszes_a}–{p_osszes_f}% |
 | tartalmi szó / héber morféma | {p_tartalmi}% / {p_morf}% | {p_tartalmi_a}–{p_tartalmi_f}% / {p_morf_a}–{p_morf_f}% |
-| emberi validáció; a bizonytalan hibaként | [precizitás]; [konzervatív] | [KI] |
+| emberi validáció (külső); a bizonytalan hibaként | [precizitás]; [konzervatív] | [KI] |
 | a fő szavak egyezése, zárt kiadás | {k_fs}% | – |
 
 A rétegek precizitása {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog.
@@ -852,7 +853,7 @@ eltérések.
   Markdown a kétnyelvű dokumentációhoz; CFF hivatkozási fájl; SHA-256 ellenőrző összeg
 - **Létrehozás dátumai:** {kezdet} – {adatallapot}
 - **Az adatkészlet készítője:** Demeter Tamás (független kutató; ORCID: {orcid}): szabályok, feldolgozási lánc, mérés,
-  gondozás. Az eredeti oldal szavai és Strong-számai: STEPBible (Tyndale House, Cambridge).
+  gondozás.
 - **Nyelv:** magyar (adat); magyar és angol (dokumentáció)
 - **Licenc:** CC BY 4.0
 - **Közzététel dátuma:** {kozzetetel}
@@ -889,7 +890,7 @@ modellválaszok, a versmegfeleltetés és a {minta} megítélt mintapár az 1.1-
 
 ## Köszönetnyilvánítás
 
-A szerző köszöni [az ellenőr(ök) neve] munkáját az emberi validációban.
+A szerző köszöni [a külső ellenőr neve] és [a második ellenőr neve] munkáját az emberi validációban.
 
 ## Finanszírozás
 
@@ -917,7 +918,7 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 (1) Párosítás: a Claude Sonnet (Anthropic) csak sorszámpárokat adott vissza (l. Módszer). Az 1Móz és a 2Móz
 párosításánál egy másik nyelvi modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2)
 Minőség-ellenőrzés: a Claude Opus a mintán vak ellenőr volt; az emberi validáció MI nélkül készült. (3) Kísérő
-adatkészlet: nyelvi modellek csak a ritka igealakokra tettek javaslatot. A kézirat szövegének megfogalmazásában és
+adatkészlet: l. Újrahasznosítás. A kézirat szövegének megfogalmazásában és
 szerkesztésében a claude-opus-5-5 modell segített, az adatkészlet adataiból; a számok az adatokból generáltak. A
 kutatást a szerző tervezte, minden szerkesztői döntést ő hozott, minden állítást az adatokon ellenőrzött, és a
 tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
@@ -940,6 +941,8 @@ levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos
 kísérőlevél: `kozlemeny/data_paper/johd_cover_letter_en.md`.
 """
 
+# Csalik (elültetett hibás párok) a validációs mintában: a felhasználó még nem döntött róla (2026-11-17). Ha bekerülnek,
+# a „Human validation” bekezdésbe egy mondat kell a csalik számáról és a felismerési arányról ([decoy detection]).
 KEZIRAT_EN = """# Word-by-word alignment of the 1908 Károli Bible with the Hebrew and Greek source text: an open dataset with measured pair precision
 
 *Data paper · submission draft for the Journal of Open Humanities Data · dataset DOI: {doi}*
@@ -1005,24 +1008,25 @@ For the blind review, the pair set was divided by book group into {reteg_db_szo}
 historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with {reteg_n} random pairs per
 stratum; in the five books of Moses {rn_OSZ_mozes} pairs from two subsamples, combined by pair weight. The human
 validation sample has [N] pairs and [M] unpaired words from the same strata, plus all {elteres} reviewer disagreements
-as a weighted oversample. The closed-edition cross-check used purposively selected chapters: per stratum the chapter
-with the most reviewer disagreements and sampled pairs, two in the five books of Moses ({kulso_fejezet_szo} chapters).
+as a weighted oversample. The closed-edition cross-check used {kulso_fejezet_szo} purposively selected chapters (per stratum the one
+with most reviewer disagreements).
 
 ### Quality control
 
-**Blind model review.** A second model (Claude Opus) marked the source words for each sampled Hungarian word itself,
-with the same rules, blind to the machine pair; a pair counts as correct if its source word is among the reviewer's
-marks. Pair precision is therefore agreement with a model, not ground truth.
+**Blind model review.** A second model (Claude Opus) independently marked the source words of each sampled Hungarian
+word with the same rules, blind to the machine pair; a pair is correct if its source word is among those marks. Pair precision is therefore agreement with a model, not ground truth.
 
-**Human validation.** [One external validator and the author / Two external validators], theology graduates with
-knowledge of biblical Hebrew and Greek, judged each item independently. Judging is not blind: validators see the
-machine pair. Rule-determined function words were excluded from the unpaired sample. Precision is [precision] (95% CI
-[CI]), or [conservative] counting uncertain items as errors; inter-rater kappa is [kappa]; agreement with the blind
-model reviewer is [agreement with model reviewer].
+**Human validation.** An external validator, a theology graduate with knowledge of biblical Hebrew and Greek, judged
+every item; a second validator, also a theology graduate, is a family member of the author; neither validator was
+involved in producing the dataset. Judging is not blind: validators see the machine pair. Rule-determined function
+words were excluded from the unpaired sample. The external validator gives the main figure: precision [precision] (95%
+CI [CI]), or [conservative] counting uncertain items as errors. The second validator ([precision 2]) and inter-rater
+kappa ([kappa]) are supplementary; there is no adjudicator. Agreement with the blind model reviewer is [agreement
+with model reviewer].
 
 **Cross-check with a closed edition.** As a supplementary check, pairs were compared locally with the Bible-Discovery
-Strong-tagged Károli (HUN module), a closed-licence edition that cannot be redistributed; only the aggregate is
-published, and readers cannot check it. It is not a gold standard: it marks one main word per Hungarian word;
+Strong-tagged Károli (HUN module), a closed-licence edition; only the aggregate can be published,
+and readers cannot check it. It is not a gold standard: it marks one main word per Hungarian word;
 our segmentation is finer (one-to-many links, morphemes, e.g. *Azután* ↔ *ʾaḥărê* + *kēn*). Main-word pairs are content-word pairs whose Hungarian word has a Strong's number in the edition, excluding
 secondary pairs of already matched words: {k_n} of {k_osszes} ({k_nincs} without a Strong's number there, {k_masod}
 secondary, {k_forma} unalignable); secondary pairs and segmentation differences are not errors.
@@ -1031,7 +1035,7 @@ secondary, {k_forma} unalignable); secondary pairs and segmentation differences 
 |---|---|---|
 | pair precision, blind model reviewer, weighted | {p_osszes}% | {p_osszes_a}–{p_osszes_f}% |
 | content word / Hebrew morpheme | {p_tartalmi}% / {p_morf}% | {p_tartalmi_a}–{p_tartalmi_f}% / {p_morf_a}–{p_morf_f}% |
-| human validation; uncertain as errors | [precision]; [conservative] | [CI] |
+| human validation (external); uncertain as errors | [precision]; [conservative] | [CI] |
 | main-word agreement, closed edition | {k_fs}% | – |
 
 Precision per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}). Of the {minta} sample pairs,
@@ -1048,7 +1052,7 @@ differences.
   codebook; Markdown for the bilingual documentation; CFF citation file; SHA-256 checksum list
 - **Creation dates:** {kezdet} – {adatallapot}
 - **Dataset creators:** Tamás Demeter (independent researcher; ORCID: {orcid}): rules, processing pipeline, measurement,
-  curation. Source-side words and Strong's numbers: STEPBible (Tyndale House, Cambridge).
+  curation.
 - **Language:** Hungarian (data); Hungarian and English (documentation)
 - **License:** CC BY 4.0
 - **Publication date:** {kozzetetel}
@@ -1067,9 +1071,8 @@ Bible software can offer Strong-based search of the Hungarian text. Translation 
 consistency and additions. For language technology it is alignment data for a low-resource pair with
 error measured per stratum. The {lex_en}, a motif-indexed, cross-referenced biblical
 lexicon, is built on this alignment. A companion dataset (Demeter, 2026b) carries the same pairs on the author's
-rule-based modernisation of the text (rare verb forms changed only where independent model proposals agreed; reviewed
-and measured separately): every word kept its position and merged words keep both pairs, so the figures above apply
-to it.
+rule-based modernisation of the text (rare verb forms changed only on agreeing independent model proposals; measured
+separately): every word kept its position and merged words keep both pairs, so the figures above apply.
 
 ### Limitations
 
@@ -1080,13 +1083,13 @@ absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement
 
-Both datasets are open on Zenodo under CC BY 4.0 (see References). The prompt,
+Both datasets: Zenodo, CC BY 4.0 (see References). The prompt,
 archived model answers, verse mapping and {minta} judged sample pairs will be added in version 1.1, planned before
 publication.
 
 ## Acknowledgements
 
-The author thanks [validator name(s)] for the human validation.
+The author thanks [name of the external validator] and [name of the second validator] for the human validation.
 
 ## Funding Statement
 
@@ -1113,9 +1116,9 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 
 (1) Alignment: Claude Sonnet (Anthropic) returned position pairs only (see Method). For Genesis and Exodus, another
 language model was also run as a cross-check; no published pair derives from it alone. (2) Quality control: Claude Opus
-served as blind reviewer on the sample; human validation used no AI. (3) Companion dataset: language models proposed
-rare verb forms only. The claude-opus-5-5 model assisted in drafting and editing the manuscript text from the dataset's
-data; figures come from the data. The author designed the study, made all editorial decisions, verified every statement
+served as blind reviewer on the sample; human validation used no AI. (3) Companion dataset: see Reuse Potential. The
+claude-opus-5-5 model assisted in drafting and editing the text; figures are generated from the
+data. The author designed the study, made all editorial decisions, verified every statement
 against the data, and takes full responsibility for the content; an AI tool is not an author.
 
 <!-- END OF SUBMISSION TEXT — the part below can be removed from the submitted version. -->

@@ -73,11 +73,12 @@ ellenőr-eltérés és mintapár volt, Mózes öt könyvében kettő (nyolc feje
 szavakat, ugyanazokkal a szabályokkal, a gépi pár ismerete nélkül; a pár helyes, ha az eredeti szava az ellenőr
 jelölései között van. A párprecizitás tehát egy modellel való egyezés, nem abszolút mérce.
 
-**Emberi validáció.** [Egy külső ellenőr és a szerző / Két külső ellenőr], végzett teológusok, bibliai héber és görög
-ismerettel, egymástól függetlenül ítélték meg a tételeket. Az ítélet nem vak: az ellenőrök látják a gépi párt. A pár
-nélküli szavak mintájából a szabály által meghatározott funkciószavak kimaradtak. A precizitás [precizitás] (95%-os KI:
-[KI]), a bizonytalan tételeket hibának számítva [konzervatív]; a két ellenőr egyezése kappa = [kappa]; az egyezésük a vak
-modell-ellenőrrel [egyezés a modell-ellenőrrel].
+**Emberi validáció.** Egy külső ellenőr, végzett teológus, bibliai héber és görög ismerettel, minden tételt megítélt;
+a második ellenőr, szintén végzett teológus, a szerző családtagja; egyikük sem dolgozott az adatkészlet
+előállításán. Az ítélet nem vak: az ellenőrök látják a gépi párt. A pár nélküli szavak mintájából a szabály által
+meghatározott funkciószavak kimaradtak. A fő szám a külső ellenőré: precizitás [precizitás] (95%-os KI: [KI]), a
+bizonytalan tételeket hibának számítva [konzervatív]. A második ellenőr száma ([precizitás 2]) és a kettejük egyezése
+(kappa = [kappa]) kiegészítő adat; döntnök nincs. Az egyezés a vak modell-ellenőrrel [egyezés a modell-ellenőrrel].
 
 **Keresztellenőrzés zárt kiadással.** Kiegészítő ellenőrzésként a párokat helyben összevetettük a Bible-Discovery
 Strong-számos Károlijával (HUN modul), egy zárt licencű kiadással, amely nem terjeszthető; csak az összesített
@@ -91,7 +92,7 @@ felbontási különbségek nem hibák.
 |---|---|---|
 | párprecizitás, vak modell-ellenőr, súlyozott | 95,06% | 93,81–96,32% |
 | tartalmi szó / héber morféma | 96,44% / 90,74% | 95,20–97,69% / 87,18–94,29% |
-| emberi validáció; a bizonytalan hibaként | [precizitás]; [konzervatív] | [KI] |
+| emberi validáció (külső); a bizonytalan hibaként | [precizitás]; [konzervatív] | [KI] |
 | a fő szavak egyezése, zárt kiadás | 98,72% | – |
 
 A rétegek precizitása 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog.
@@ -108,7 +109,7 @@ eltérések.
   Markdown a kétnyelvű dokumentációhoz; CFF hivatkozási fájl; SHA-256 ellenőrző összeg
 - **Létrehozás dátumai:** 2026-10-01 – 2026-11-01
 - **Az adatkészlet készítője:** Demeter Tamás (független kutató; ORCID: 0009-0005-9254-9731): szabályok, feldolgozási lánc, mérés,
-  gondozás. Az eredeti oldal szavai és Strong-számai: STEPBible (Tyndale House, Cambridge).
+  gondozás.
 - **Nyelv:** magyar (adat); magyar és angol (dokumentáció)
 - **Licenc:** CC BY 4.0
 - **Közzététel dátuma:** 2026-11-15
@@ -145,7 +146,7 @@ modellválaszok, a versmegfeleltetés és az 1 600 megítélt mintapár az 1.1-e
 
 ## Köszönetnyilvánítás
 
-A szerző köszöni [az ellenőr(ök) neve] munkáját az emberi validációban.
+A szerző köszöni [a külső ellenőr neve] és [a második ellenőr neve] munkáját az emberi validációban.
 
 ## Finanszírozás
 
@@ -173,7 +174,7 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 (1) Párosítás: a Claude Sonnet (Anthropic) csak sorszámpárokat adott vissza (l. Módszer). Az 1Móz és a 2Móz
 párosításánál egy másik nyelvi modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2)
 Minőség-ellenőrzés: a Claude Opus a mintán vak ellenőr volt; az emberi validáció MI nélkül készült. (3) Kísérő
-adatkészlet: nyelvi modellek csak a ritka igealakokra tettek javaslatot. A kézirat szövegének megfogalmazásában és
+adatkészlet: l. Újrahasznosítás. A kézirat szövegének megfogalmazásában és
 szerkesztésében a claude-opus-5-5 modell segített, az adatkészlet adataiból; a számok az adatokból generáltak. A
 kutatást a szerző tervezte, minden szerkesztői döntést ő hozott, minden állítást az adatokon ellenőrzött, és a
 tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
@@ -185,11 +186,11 @@ tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 079; a számozatlan nyilatkozatokkal 1 242; a
+hivatkozások nélkül (a JOHD-sablon számítása) 1 082; a számozatlan nyilatkozatokkal 1 242; a
 hivatkozásokkal is 1 316 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
 szól); a kivonattal együtt 1 397. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes. A kivonattól az MI-nyilatkozatig minden szó, a címsorokkal, a kulcsszavakkal, a szerzői
-szerepekkel és a táblázattal: 1 490.
+szerepekkel és a táblázattal: 1 491.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
 levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos Word- vagy LaTeX-sablonjába kerül; a
