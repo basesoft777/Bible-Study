@@ -1,0 +1,155 @@
+# MANUAL: scope=F175.B külső bírálók futásnaplója (kérésenként) | forras=OpenRouter Batch API (/api/v1/batches) | ts=2026-11-17 | manual (a modell-kimenet bírálat, nem arany)
+rov	batch_id	koteg	modell_kert	modell_valasz	modell_onbevallas	provider	prompt_tokens	completion_tokens	reasoning_tokens	cost_usd	koltseg_forras	eredmeny	megjegyzes	ts
+gemini	batch-1794904558-pX0UE9EJQU9IShwARE9B	1	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google	16062	835	0	0.020237	ar_config	rendben	a versek 25 eleme JSON-szövegként jött, dekódolva	2026-11-17T08:45:43
+gpt	azonnali-20261117T091248	1	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14750	890	363	0.045774	openrouter	rendben		2026-11-17T09:13:05
+gemini	azonnali-20261117T093858	5	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google	16636	671	0	0.039982	openrouter	rendben		2026-11-17T09:39:11
+gemini	azonnali-20261117T093858	6	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google	16586	686	0	0.040032	openrouter	rendben		2026-11-17T09:39:12
+gemini	azonnali-20261117T093858	3	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google	17313	760	0	0.042226	openrouter	rendben		2026-11-17T09:39:12
+gemini	azonnali-20261117T093858	2	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google	16426	776	0	0.040612	openrouter	rendben		2026-11-17T09:39:12
+gemini	azonnali-20261117T093858	4	google/gemini-4-argon	google/gemini-4-argon		Google	16374	741	0	0.040158	openrouter	rossz_json	Expecting value: line 1 column 1 (char 0); finish_reason=stop	2026-11-17T09:39:12
+gemini	azonnali-20261117T093858	1	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google	16023	720	0	0.039246	openrouter	rendben		2026-11-17T09:39:13
+gemini	azonnali-20261117T093858	11	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google	14557	709	0	0.036204	openrouter	rendben		2026-11-17T09:39:23
+gemini	azonnali-20261117T093858	7	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google	15841	749	0	0.039172	openrouter	rendben		2026-11-17T09:39:25
+gemini	azonnali-20261117T093858	9	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google	15130	790	0	0.038160	openrouter	rendben		2026-11-17T09:39:25
+gemini	azonnali-20261117T093858	12	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google	15639	750	0	0.038778	openrouter	rendben		2026-11-17T09:39:29
+gemini	azonnali-20261117T093858	10	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google	15274	706	0	0.037608	openrouter	rendben		2026-11-17T09:39:33
+gemini	azonnali-20261117T093858	13	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google	14103	704	0	0.035246	openrouter	rendben		2026-11-17T09:39:35
+gemini	azonnali-20261117T093858	14	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google	16222	735	0	0.039794	openrouter	rendben		2026-11-17T09:39:36
+gemini	azonnali-20261117T093858	15	google/gemini-4-argon	google/gemini-4-argon		Google	16247	707	0	0.039564	openrouter	rossz_json	Expecting value: line 1 column 1 (char 0); finish_reason=stop	2026-11-17T09:39:36
+gemini	azonnali-20261117T093858	8	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14543	722	0	0.036306	openrouter	rendben		2026-11-17T09:39:41
+gemini	azonnali-20261117T093858	16	google/gemini-4-argon	google/gemini-4-argon		Google,Google AI Studio	16363	757	0	0.040296	openrouter	rossz_json	Expecting value: line 1 column 1 (char 0); finish_reason=stop	2026-11-17T09:39:42
+gemini	azonnali-20261117T093858	18	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16407	696	0	0.039774	openrouter	rendben		2026-11-17T09:39:48
+gemini	azonnali-20261117T093858	17	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14708	682	0	0.036236	openrouter	rendben		2026-11-17T09:39:50
+gemini	azonnali-20261117T093858	20	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16852	750	0	0.041204	openrouter	rendben		2026-11-17T09:39:50
+gemini	azonnali-20261117T093858	19	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google,Google AI Studio	16541	762	0	0.040702	openrouter	rendben		2026-11-17T09:39:51
+gemini	azonnali-20261117T093858	22	google/gemini-4-argon	google/gemini-4-argon		Google,Google AI Studio	15558	700	0	0.038116	openrouter	rossz_json	Expecting value: line 1 column 1 (char 0); finish_reason=stop	2026-11-17T09:39:54
+gemini	azonnali-20261117T093858	21	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	18250	727	0	0.043770	openrouter	rendben		2026-11-17T09:39:54
+gemini	azonnali-20261117T093858	23	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	17928	734	0	0.043196	openrouter	rendben		2026-11-17T09:40:02
+gemini	azonnali-20261117T093858	24	google/gemini-4-argon	google/gemini-4-argon		Google,Google AI Studio	15273	742	0	0.037966	openrouter	rossz_json	Expecting value: line 1 column 1 (char 0); finish_reason=stop	2026-11-17T09:40:03
+gemini	azonnali-20261117T093858	26	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16515	698	0	0.040010	openrouter	rendben		2026-11-17T09:40:04
+gemini	azonnali-20261117T093858	25	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16226	729	0	0.039742	openrouter	rendben		2026-11-17T09:40:05
+gemini	azonnali-20261117T093858	27	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14357	706	0	0.035774	openrouter	rendben		2026-11-17T09:40:07
+gemini	azonnali-20261117T093858	28	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14913	807	0	0.037896	openrouter	rendben		2026-11-17T09:40:08
+gemini	azonnali-20261117T093858	29	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15292	714	0	0.037724	openrouter	rendben		2026-11-17T09:40:13
+gemini	azonnali-20261117T093858	30	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14683	686	0	0.036226	openrouter	rendben		2026-11-17T09:40:16
+gemini	azonnali-20261117T093858	33	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15141	724	0	0.037522	openrouter	rendben		2026-11-17T09:40:19
+gemini	azonnali-20261117T093858	31	google/gemini-4-argon	google/gemini-4-argon	gemini-2.5-pro	Google,Google AI Studio	13829	723	0	0.034888	openrouter	rendben		2026-11-17T09:40:20
+gemini	azonnali-20261117T093858	32	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16700	720	0	0.040600	openrouter	rendben		2026-11-17T09:40:20
+gemini	azonnali-20261117T093858	34	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15853	732	0	0.039026	openrouter	rendben		2026-11-17T09:40:22
+gemini	azonnali-20261117T093858	35	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	17182	741	0	0.041774	openrouter	rendben		2026-11-17T09:40:27
+gemini	azonnali-20261117T093858	36	google/gemini-4-argon	google/gemini-4-argon		Google,Google AI Studio	14905	772	0	0.037530	openrouter	rossz_json	Expecting value: line 1 column 1 (char 0); finish_reason=stop	2026-11-17T09:40:29
+gemini	azonnali-20261117T093858	37	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14079	709	0	0.035248	openrouter	rendben		2026-11-17T09:40:31
+gemini	azonnali-20261117T093858	39	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15889	714	0	0.038918	openrouter	rendben		2026-11-17T09:40:34
+gemini	azonnali-20261117T093858	38	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google,Google AI Studio	17915	717	0	0.043000	openrouter	rendben		2026-11-17T09:40:34
+gemini	azonnali-20261117T093858	40	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14816	687	0	0.036502	openrouter	rendben		2026-11-17T09:40:34
+gemini	azonnali-20261117T093858	41	google/gemini-4-argon	google/gemini-4-argon		Google,Google AI Studio	13604	722	0	0.034428	openrouter	rossz_json	Expecting value: line 1 column 1 (char 0); finish_reason=stop	2026-11-17T09:40:40
+gemini	azonnali-20261117T093858	42	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16230	773	0	0.040190	openrouter	rendben		2026-11-17T09:40:44
+gemini	azonnali-20261117T093858	43	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15385	769	0	0.038460	openrouter	rendben		2026-11-17T09:40:45
+gemini	azonnali-20261117T093858	44	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14839	742	0	0.037098	openrouter	rendben		2026-11-17T09:40:47
+gemini	azonnali-20261117T093858	46	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15038	762	0	0.037696	openrouter	rendben		2026-11-17T09:40:49
+gemini	azonnali-20261117T093858	47	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	17417	749	0	0.042324	openrouter	rendben		2026-11-17T09:40:53
+gemini	azonnali-20261117T093858	45	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16612	707	0	0.040294	openrouter	rendben		2026-11-17T09:40:54
+gemini	azonnali-20261117T093858	48	google/gemini-4-argon	google/gemini-4-argon	gemini-2.5-pro	Google,Google AI Studio	15736	729	0	0.038762	openrouter	rendben		2026-11-17T09:40:57
+gemini	azonnali-20261117T093858	49	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14720	743	0	0.036870	openrouter	rendben		2026-11-17T09:41:03
+gemini	azonnali-20261117T093858	50	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16355	715	0	0.039860	openrouter	rendben		2026-11-17T09:41:03
+gemini	azonnali-20261117T093858	51	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16449	761	0	0.040508	openrouter	rendben		2026-11-17T09:41:04
+gemini	azonnali-20261117T093858	52	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15559	765	0	0.038768	openrouter	rendben		2026-11-17T09:41:07
+gemini	azonnali-20261117T093858	53	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google,Google AI Studio	15680	722	0	0.038580	openrouter	rendben		2026-11-17T09:41:07
+gemini	azonnali-20261117T093858	54	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14473	811	0	0.037056	openrouter	rendben		2026-11-17T09:41:09
+gemini	azonnali-20261117T093858	56	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16702	719	0	0.040594	openrouter	rendben		2026-11-17T09:41:15
+gemini	azonnali-20261117T093858	55	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15509	793	0	0.038948	openrouter	rendben		2026-11-17T09:41:15
+gemini	azonnali-20261117T093858	57	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15878	733	0	0.039086	openrouter	rendben		2026-11-17T09:41:16
+gemini	azonnali-20261117T093858	59	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16780	700	0	0.040560	openrouter	rendben		2026-11-17T09:41:18
+gemini	azonnali-20261117T093858	58	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	17025	697	0	0.041020	openrouter	rendben		2026-11-17T09:41:20
+gemini	azonnali-20261117T093858	60	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15495	738	0	0.038370	openrouter	rendben		2026-11-17T09:41:21
+gemini	azonnali-20261117T093858	62	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15268	702	0	0.037556	openrouter	rendben		2026-11-17T09:41:27
+gemini	azonnali-20261117T093858	63	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15669	743	0	0.038768	openrouter	rendben		2026-11-17T09:41:30
+gemini	azonnali-20261117T093858	61	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google,Google AI Studio	19103	689	0	0.045096	openrouter	rendben		2026-11-17T09:41:30
+gemini	azonnali-20261117T093858	66	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15289	717	0	0.037748	openrouter	rendben		2026-11-17T09:41:34
+gemini	azonnali-20261117T093858	65	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14499	694	0	0.035938	openrouter	rendben		2026-11-17T09:41:34
+gemini	azonnali-20261117T093858	64	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16024	767	0	0.039718	openrouter	rendben		2026-11-17T09:41:35
+gemini	azonnali-20261117T093858	67	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15798	740	0	0.038996	openrouter	rendben		2026-11-17T09:41:40
+gemini	azonnali-20261117T093858	69	google/gemini-4-argon	google/gemini-4-argon		Google,Google AI Studio	15409	742	0	0.038238	openrouter	rossz_json	Expecting value: line 1 column 1 (char 0); finish_reason=stop	2026-11-17T09:41:42
+gemini	azonnali-20261117T093858	68	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14835	746	0	0.037130	openrouter	rendben		2026-11-17T09:41:43
+gemini	azonnali-20261117T093858	72	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	10248	513	0	0.025626	openrouter	rendben		2026-11-17T09:41:45
+gemini	azonnali-20261117T093858	70	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15079	677	0	0.036928	openrouter	rendben		2026-11-17T09:41:45
+gemini	azonnali-20261117T093858	71	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14729	712	0	0.036578	openrouter	rendben		2026-11-17T09:41:53
+gemini	azonnali-20261117T093858	16	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16363	755	0	0.013089	openrouter	rendben		2026-11-17T09:42:06
+gemini	azonnali-20261117T093858	36	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	14905	770	0	0.013093	openrouter	rendben		2026-11-17T09:42:06
+gemini	azonnali-20261117T093858	24	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15273	743	0	0.012860	openrouter	rendben		2026-11-17T09:42:06
+gemini	azonnali-20261117T093858	4	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	16374	746	0	0.013000	openrouter	rendben		2026-11-17T09:42:10
+gemini	azonnali-20261117T093858	22	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15558	701	0	0.012468	openrouter	rendben		2026-11-17T09:42:13
+gemini	azonnali-20261117T093858	41	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	13604	713	0	0.012393	openrouter	rendben		2026-11-17T09:42:18
+gemini	azonnali-20261117T093858	69	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro-preview	Google,Google AI Studio	15409	743	0	0.012873	openrouter	rendben		2026-11-17T09:42:18
+gemini	azonnali-20261117T093858	15	google/gemini-4-argon	google/gemini-4-argon	gemini-2.5-pro	Google,Google AI Studio	16247	709	0	0.039584	openrouter	rendben		2026-11-17T09:42:24
+gpt	azonnali-20261117T094224	3	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15870	688	114	0.046553	openrouter	rendben		2026-11-17T09:42:34
+gpt	azonnali-20261117T094224	7	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14651	777	214	0.044396	openrouter	rendben		2026-11-17T09:42:35
+gpt	azonnali-20261117T094224	4	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15093	771	205	0.045441	openrouter	rendben		2026-11-17T09:42:37
+gpt	azonnali-20261117T094224	6	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15305	772	252	0.045981	openrouter	rendben		2026-11-17T09:42:39
+gpt	azonnali-20261117T094224	2	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15194	877	288	0.046754	openrouter	rendben		2026-11-17T09:42:41
+gpt	azonnali-20261117T094224	5	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	15353	863	356	0.047011	openrouter	rendben		2026-11-17T09:42:42
+gpt	azonnali-20261117T094224	8	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13527	696	147	0.040776	openrouter	rendben		2026-11-17T09:42:45
+gpt	azonnali-20261117T094224	11	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	13568	695	156	0.040869	openrouter	rendben		2026-11-17T09:42:50
+gpt	azonnali-20261117T094224	13	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13106	730	191	0.040064	openrouter	rendben		2026-11-17T09:42:53
+gpt	azonnali-20261117T094224	9	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13968	1019	433	0.045109	openrouter	rendben		2026-11-17T09:42:54
+gpt	azonnali-20261117T094224	12	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14469	837	285	0.044541	openrouter	rendben		2026-11-17T09:42:56
+gpt	azonnali-20261117T094224	10	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14110	913	393	0.044403	openrouter	rendben		2026-11-17T09:42:56
+gpt	azonnali-20261117T094224	15	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15018	699	173	0.044533	openrouter	rendben		2026-11-17T09:43:03
+gpt	azonnali-20261117T094224	14	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14953	924	372	0.046621	openrouter	rendben		2026-11-17T09:43:03
+gpt	azonnali-20261117T094224	17	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13636	675	154	0.040838	openrouter	rendben		2026-11-17T09:43:04
+gpt	azonnali-20261117T094224	16	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15100	719	154	0.044938	openrouter	rendben		2026-11-17T09:43:05
+gpt	azonnali-20261117T094224	18	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15018	634	109	0.043883	openrouter	rendben		2026-11-17T09:43:05
+gpt	azonnali-20261117T094224	19	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15224	870	304	0.046759	openrouter	rendben		2026-11-17T09:43:12
+gpt	azonnali-20261117T094224	22	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14379	691	165	0.042856	openrouter	rendben		2026-11-17T09:43:13
+gpt	azonnali-20261117T094224	21	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	16701	716	179	0.048911	openrouter	rendben		2026-11-17T09:43:18
+gpt	azonnali-20261117T094224	24	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	14173	742	181	0.042851	openrouter	rendben		2026-11-17T09:43:18
+gpt	azonnali-20261117T094224	20	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	15484	882	332	0.047529	openrouter	rendben		2026-11-17T09:43:19
+gpt	azonnali-20261117T094224	23	openai/gpt-6.1-sol	openai/gpt-6.1-sol	ChatGPT	OpenAI	16396	928	374	0.050269	openrouter	rendben		2026-11-17T09:43:23
+gpt	azonnali-20261117T094224	26	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15185	666	145	0.044621	openrouter	rendben		2026-11-17T09:43:24
+gpt	azonnali-20261117T094224	25	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.5	OpenAI	14957	741	190	0.044801	openrouter	rendben		2026-11-17T09:43:26
+gpt	azonnali-20261117T094224	29	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14159	625	89	0.041646	openrouter	rendben		2026-11-17T09:43:27
+gpt	azonnali-20261117T094224	27	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	13325	773	235	0.041041	openrouter	rendben		2026-11-17T09:43:32
+gpt	azonnali-20261117T094224	31	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	12864	646	102	0.038619	openrouter	rendben		2026-11-17T09:43:34
+gpt	azonnali-20261117T094224	30	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13624	705	188	0.041108	openrouter	rendben		2026-11-17T09:43:34
+gpt	azonnali-20261117T094224	28	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	13833	984	380	0.044421	openrouter	rendben		2026-11-17T09:43:38
+gpt	azonnali-20261117T094224	33	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14043	788	238	0.042986	openrouter	rendben		2026-11-17T09:43:39
+gpt	azonnali-20261117T094224	32	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15285	754	218	0.045751	openrouter	rendben		2026-11-17T09:43:40
+gpt	azonnali-20261117T094224	34	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.5	OpenAI	14637	628	72	0.042871	openrouter	rendben		2026-11-17T09:43:40
+gpt	azonnali-20261117T094224	35	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15749	646	98	0.045831	openrouter	rendben		2026-11-17T09:43:43
+gpt	azonnali-20261117T094224	36	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13789	771	199	0.042181	openrouter	rendben		2026-11-17T09:43:47
+gpt	azonnali-20261117T094224	37	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13119	657	130	0.039366	openrouter	rendben		2026-11-17T09:43:47
+gpt	azonnali-20261117T094224	39	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	14775	731	180	0.044246	openrouter	rendben		2026-11-17T09:43:51
+gpt	azonnali-20261117T094224	40	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13720	741	209	0.041709	openrouter	rendben		2026-11-17T09:43:53
+gpt	azonnali-20261117T094224	42	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14975	721	152	0.044646	openrouter	rendben		2026-11-17T09:43:58
+gpt	azonnali-20261117T094224	41	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	12640	968	280	0.041279	openrouter	rendben		2026-11-17T09:44:01
+gpt	azonnali-20261117T094224	45	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15329	640	115	0.044721	openrouter	rendben		2026-11-17T09:44:02
+gpt	azonnali-20261117T094224	43	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14254	928	342	0.044914	openrouter	rendben		2026-11-17T09:44:05
+gpt	azonnali-20261117T094224	44	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13774	820	254	0.042633	openrouter	rendben		2026-11-17T09:44:06
+gpt	azonnali-20261117T094224	38	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	16437	1123	592	0.052321	openrouter	rendben		2026-11-17T09:44:06
+gpt	azonnali-20261117T094224	48	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14567	724	177	0.043656	openrouter	rendben		2026-11-17T09:44:13
+gpt	azonnali-20261117T094224	46	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14016	835	264	0.043389	openrouter	rendben		2026-11-17T09:44:14
+gpt	azonnali-20261117T094224	50	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.4	OpenAI	15090	617	75	0.043894	openrouter	rendben		2026-11-17T09:44:15
+gpt	azonnali-20261117T094224	51	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15163	713	153	0.045036	openrouter	rendben		2026-11-17T09:44:16
+gpt	azonnali-20261117T094224	47	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	15954	876	320	0.048643	openrouter	rendben		2026-11-17T09:44:20
+gpt	azonnali-20261117T094224	49	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13629	820	264	0.042271	openrouter	rendben		2026-11-17T09:44:21
+gpt	azonnali-20261117T094224	52	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14397	738	175	0.043371	openrouter	rendben		2026-11-17T09:44:24
+gpt	azonnali-20261117T094224	54	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13394	700	98	0.040483	openrouter	rendben		2026-11-17T09:44:25
+gpt	azonnali-20261117T094224	55	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.5	OpenAI	14346	802	208	0.043883	openrouter	rendben		2026-11-17T09:44:28
+gpt	azonnali-20261117T094224	57	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14779	684	139	0.043786	openrouter	rendben		2026-11-17T09:44:31
+gpt	azonnali-20261117T094224	56	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.4	OpenAI	15372	702	167	0.045449	openrouter	rendben		2026-11-17T09:44:31
+gpt	azonnali-20261117T094224	53	openai/gpt-6.1-sol	openai/gpt-6.1-sol	ChatGPT	OpenAI	14523	924	384	0.045546	openrouter	rendben		2026-11-17T09:44:32
+gpt	azonnali-20261117T094224	58	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	15564	670	142	0.045609	openrouter	rendben		2026-11-17T09:44:35
+gpt	azonnali-20261117T094224	60	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14349	675	109	0.042621	openrouter	rendben		2026-11-17T09:44:35
+gpt	azonnali-20261117T094224	59	openai/gpt-6.1-sol	openai/gpt-6.1-sol	ChatGPT	OpenAI	15475	724	201	0.045926	openrouter	rendben		2026-11-17T09:44:36
+gpt	azonnali-20261117T094224	62	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14081	710	181	0.042301	openrouter	rendben		2026-11-17T09:44:43
+gpt	azonnali-20261117T094224	61	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	17402	690	180	0.050403	openrouter	rendben		2026-11-17T09:44:43
+gpt	azonnali-20261117T094224	64	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14825	795	232	0.045011	openrouter	rendben		2026-11-17T09:44:48
+gpt	azonnali-20261117T094224	63	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14489	847	294	0.044691	openrouter	rendben		2026-11-17T09:44:48
+gpt	azonnali-20261117T094224	65	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13473	744	219	0.041121	openrouter	rendben		2026-11-17T09:44:51
+gpt	azonnali-20261117T094224	66	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.2	OpenAI	14122	920	379	0.044504	openrouter	rendben		2026-11-17T09:44:54
+gpt	azonnali-20261117T094224	69	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14293	665	118	0.042381	openrouter	rendben		2026-11-17T09:44:56
+gpt	azonnali-20261117T094224	67	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5.5	OpenAI	14556	705	157	0.043438	openrouter	rendben		2026-11-17T09:44:57
+gpt	azonnali-20261117T094224	70	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14028	686	163	0.041929	openrouter	rendben		2026-11-17T09:44:58
+gpt	azonnali-20261117T094224	68	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13726	812	251	0.042433	openrouter	rendben		2026-11-17T09:45:01
+gpt	azonnali-20261117T094224	71	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	13711	730	192	0.041576	openrouter	rendben		2026-11-17T09:45:03
+gpt	azonnali-20261117T094224	72	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	9508	579	199	0.029559	openrouter	rendben		2026-11-17T09:45:05

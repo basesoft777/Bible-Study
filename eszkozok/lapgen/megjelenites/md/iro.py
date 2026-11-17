@@ -89,6 +89,7 @@ def mermaid_el_zar(cel):
 
 
 LINK_NYIT = _jel('[')
+SORTORES = _jel('<br>')    # a táblacellán belüli sortörés (a 9. szakasz soraiban: a szó és a versei között)
 
 
 def lap_link_zar(motivum, nezet):

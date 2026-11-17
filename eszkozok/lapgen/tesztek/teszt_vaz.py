@@ -153,10 +153,13 @@ class Szerkezeti(unittest.TestCase):
         """GK-27 (T9): `munka` módban „a szerző a lap korábbi változatát hagyta jóvá (dátum)”; `kiadas` módban a
         `lap_commit` egyezése kötelező."""
 
-    @unittest.skip(S3_MARADEK)
+    @unittest.skip(S8)
     def test_gk28_allapotmondat_adatbol(self):
         """GK-28 (T7): a SECE-, Peshitta-, Targum-, közel-keleti és Chain Lineage-mondat a jegyzék `allapot`
-        mezőjéből és az adat tényleges állapotából jön; a hamis „még nincs” mondat nem áll."""
+        mezőjéből és az adat tényleges állapotából jön; a hamis „még nincs” mondat nem áll. A SECE-mondat a
+        `teszt_szocikkek.py` `test_hn15_hamis_allapotmondat`, a Targum- és a Peshitta-mondat a
+        `teszt_s9_hatastortenet.py` `ForrasAllapotMondat` tesztje; hátravan a közel-keleti és a Chain Lineage-mondat (a
+        Kolofon, S8)."""
 
     @unittest.skip(S9)
     def test_gk31_futasido(self):
@@ -165,11 +168,6 @@ class Szerkezeti(unittest.TestCase):
 
 class AtvettTetelek(unittest.TestCase):
     """Az N-F212a tételei (a spec 6.1 táblája), az N178 és a szópár-követelmény."""
-
-    @unittest.skip(S7)
-    def test_gk_a6_rokon_nyelvi_tabla(self):
-        """GK-A6: „a kinyerés még nem történt meg” pontosan azoknál a lánc-szavaknál áll, amelyeknek nincs
-        BDB-soruk a visszhang-táblában."""
 
     @unittest.skip(S3_MARADEK)
     def test_gk_a10_csupasz_strong_szam(self):
@@ -198,9 +196,6 @@ class AtvettTetelek(unittest.TestCase):
     def test_gk_n178_thayer_a_javitott_forrasbol(self):
         """GK-N178: a Thayer-kártya szakaszai a javított forrásból jönnek; a 15 érintett Strong tesztje."""
 
-    @unittest.skip(S7)
-    def test_gk_szopar(self):
-        """GK-SZOPAR (DT833): a szópáros motívum 9. szakaszának feltételei; a `teszt_f194_szopar.py` esetei."""
 
 
 class Hibanaplo(unittest.TestCase):

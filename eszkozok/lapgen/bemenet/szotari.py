@@ -234,6 +234,29 @@ def b35_lxx_szo_versszam(b):
     return b.egyszer('B35', betolt)
 
 
+def _lemma_index(fajlok):
+    lemmak = {}
+    for utvonal, fejlec, sorok in fajlok:
+        if 'igehely_lxx' not in fejlec:
+            continue   # a könyvtár segédtáblája (fejezet- és versdöntések), nem a szöveg egy könyve
+        try:
+            s, l = fejlec.index('strong'), fejlec.index('lemma')
+        except ValueError:
+            raise BemenetHiba('B35 (%s): hiányzó oszlop (strong, lemma)' % utvonal) from None
+        for sor in sorok:
+            if len(sor) > l and sor[s].isdigit():
+                lemmak.setdefault(Strong('G%04d' % int(sor[s])).kod, sor[l])
+    return lemmak
+
+
+def lxx_lemmak(b):
+    """B35 — a Septuaginta görög szavainak lemmája Strong-számonként ({görög Strong-kód: lemma}; a könyvenkénti
+    fájlok rendjében az első), a 9. szakasz LXX-alapvonalának szócsaládjához (a régi `_lxx_lemma`)."""
+    def betolt():
+        return b._nagy_index('B35', b._utvonalak('B35'), _lemma_index)
+    return b.egyszer('B35:lemma', betolt)
+
+
 _SECE_OSZLOPOK = ('Strong_padded', 'Teljes_szocikk')
 _SECE_MEZO_RX = {'G': re.compile(r'\sHebrew:\s(.*?)\sDerivation:'), 'H': re.compile(r'\sGreek:\s(.*?)\sDerivation:')}
 _SECE_CIMSZO_VEG = ' ('

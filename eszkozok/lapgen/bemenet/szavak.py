@@ -32,6 +32,7 @@ _ALAP_STRONG_RX = re.compile(r'^([HG]\d{4})[a-zA-Z]?$')
 _LEMMA_OSZLOP, _ATIRAS_OSZLOP = 3, 4
 _LEMMA_VALASZTO = ','
 _SZOTO_OSZLOP = 'Szótő'
+_GLOSSZA_OSZLOP = 'Angol tükörfordítás'
 _KANTILLACIO_ELSO, _KANTILLACIO_UTOLSO, _METEG = '\u0591', '\u05af', '\u05bd'
 
 
@@ -50,16 +51,30 @@ class Szo:
 
 
 class _Szoveg:
-    """Egy szövegkiadás szavai versenként, a fájl sorrendjében: {igehely: [(Strong, alak, átírás, szótő)]}."""
+    """Egy szövegkiadás szavai versenként, a fájl sorrendjében: {igehely: [(Strong, alak, átírás, szótő, angol
+    tükörfordítás)]}."""
 
     def __init__(self, versenkent):
         self._versenkent = versenkent
+        self._glosszak = {}
 
     def sorok(self, vers_kod):
         return self._versenkent.get(vers_kod, ())
 
     def token_szam(self, vers_kod, strong_kod):
         return sum(1 for s in self._versenkent.get(vers_kod, ()) if s[0] == strong_kod)
+
+    def glosszak(self, strong_kod):
+        """A szó angol tükörfordításai versenként ({vers kódja: (glossza, …)}); a láncbeli jelentés szűrőjéhez (a 9.
+        szakasz LXX-alapvonala). Üres, ha a kiadásnak nincs ilyen oszlopa."""
+        if strong_kod not in self._glosszak:
+            ki = {}
+            for vers, sorok in self._versenkent.items():
+                for s in sorok:
+                    if s[0] == strong_kod and s[4]:
+                        ki.setdefault(vers, []).append(s[4])
+            self._glosszak[strong_kod] = {v: tuple(g) for v, g in ki.items()}
+        return self._glosszak[strong_kod]
 
     def tovek(self, versek, strong_kod):
         """A szó szótövei a megadott versekben (összevetési kulcsként)."""
@@ -71,9 +86,11 @@ def _szoveg_betolt(b, b_id):
     tabla = b._tabla(b_id, oszlopok=_TAHOT_OSZLOPOK)
     i, s, a, k = (tabla.oszlop(o) for o in _TAHOT_OSZLOPOK)
     t = tabla.oszlop(_SZOTO_OSZLOP) if tabla.van(_SZOTO_OSZLOP) else None
+    g = tabla.oszlop(_GLOSSZA_OSZLOP) if tabla.van(_GLOSSZA_OSZLOP) else None
     versenkent = {}
     for sor in tabla.sorok:
-        versenkent.setdefault(sor[i], []).append((sor[s], sor[a], sor[k], sor[t] if t is not None else ''))
+        versenkent.setdefault(sor[i], []).append((sor[s], sor[a], sor[k], sor[t] if t is not None else '',
+                                                   sor[g] if g is not None else ''))
     return _Szoveg(versenkent)
 
 

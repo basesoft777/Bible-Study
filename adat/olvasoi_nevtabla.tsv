@@ -82,3 +82,12 @@ kapcsolat_tipus_mondat	Kontraszt	kontraszt	olvasoi_kovetkeztetes.kapcsolatok (t.
 kapcsolat_tipus_mondat	Variáns	variáns	olvasoi_kovetkeztetes.kapcsolatok (t.lower())
 motivumkozi_tipus	szomszédos	szomszédos	motivum_kapcsolatok.tsv tipus
 motivumkozi_tipus	közös_igehely	közös igehely	uj
+lanc_konyv	1Móz	Genezis	blokk_visszhang (a lánc magjának könyve)
+szamszo	2	két	SZAMSZO_VH
+szamszo	3	három	SZAMSZO_VH
+szamszo	4	négy	SZAMSZO_VH
+szamszo	5	öt	SZAMSZO_VH
+tanu_hagyomany	gorog	görög	TANU_HAGYOMANY
+tanu_hagyomany	latin	latin	TANU_HAGYOMANY
+tanu_hagyomany	szir	szír	TANU_HAGYOMANY
+tanu_hagyomany	rabbinikus	rabbinikus	TANU_HAGYOMANY

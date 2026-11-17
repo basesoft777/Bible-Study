@@ -631,7 +631,9 @@ class CsoportOszlop(unittest.TestCase):
     # F202 (naplok/F202_jelentes.md): a 2.30 szócikkhatára a zárójel-töredéknél (F202.2: 25 sor útvonala vagy szakasza) és a nem
     # létező fejezetre öröklődő hely TAHOT-igazolt feloldása (F202.3: 77 `orokles_hibas` → `orokles_tahot`), a H1004 négy
     # könyvnév-hibás helye (F202.4, a 2.31 kézi sorai): új érték
-    REGI_OSZLOPOK_SHA256 = 'd9b91eb479f370719437c7de7dcea3f897438f293d379b7b549ae74c8c172d67'
+    # N212 (naplok/F197_jelentes.md 9.): a 2.30 négy ismétlődő szerkezeti hibaosztályának javítása a pont meghatározásakor
+    # (633 sor szakasza/útvonala): új érték
+    REGI_OSZLOPOK_SHA256 = '25caf4244bb7bc197ca608843592bb26ac731057a0901253cf028e6a2511885a'
 
     @classmethod
     def setUpClass(cls):
@@ -671,6 +673,118 @@ class CsoportOszlop(unittest.TestCase):
         self.assertEqual(h.hexdigest(), self.REGI_OSZLOPOK_SHA256)
 
 
+def _t(jelolo, utvonal, szoveg, jel='', szakasz='', resz=''):
+    return {'alszocikk': '0', 'szakasz': szakasz, 'resz': resz, 'utvonal': utvonal, 'jelolo': jelolo, 'jel': jel, 'szoveg': szoveg,
+            'belso_fejek': ''}
+
+
+def _pont(sorok, nyers, konyv_mod='kiirt'):
+    tp = V.TablaPont(sorok)
+    poz, illeszt = tp.keres({'nyers': nyers, 'konyv_mod': konyv_mod})
+    assert illeszt, nyers
+    return tp.pont(poz)[2], tp
+
+
+class TablaJavitasok(unittest.TestCase):
+    """N212 (DT892 mérése, naplok/F197_jelentes.md 7.): a 2.30 táblaszövegének négy ismétlődő szerkezeti hibaosztálya."""
+
+    def test_osszefoglalo_fej(self):
+        # (3) „1 skin-bottle; 2 jar, pitcher; — forms 10:3 +; —” majd a test újraindul 1-ről: az alaklista hivatkozása a fejhez tartozik
+        sorok = [_t('cim', 'cim', 'H1. x'), _t('fej', 'fej', 'נֵבֶל noun masculine'),
+                 _t('point', '-/1/-', 'skin-bottle, skin;'),
+                 _t('point', '-/2/-', 'jar, pitcher; — absolute 1Sam 10:5 +; construct 10:3 + ; —'),
+                 _t('point', '-/1/-', 'skin of wine 1Sam 1:24; 11:3 x'),
+                 _t('point', '-/2/-', 'earthen jar Isa 22:24.')]
+        ut, tp = _pont(sorok, '10:3')
+        self.assertEqual(ut, 'fej')
+        self.assertEqual(_pont(sorok, '11:3')[0], '-/1')
+        self.assertEqual(tp.javitott['osszegzo'], 2)
+
+    def test_osszefoglalo_hivatkozassal_nem(self):
+        # a „1 … 2 …” sorozat tartalmas (igehely van benne), a számozás újraindulása nyelvtani kategóriaváltás: nem összefoglaló
+        sorok = [_t('cim', 'cim', 'H1. x'), _t('fej', 'fej', 'אַחַר'),
+                 _t('point', '-/1/-', 'adverb a. of place Gen 22:13 x'), _t('point', '-/2/-', 'preposition Exod 3:1 y'),
+                 _t('point', '-/1/-', 'substantive 2Sam 2:23 z')]
+        ut, tp = _pont(sorok, '2:23')
+        self.assertEqual(ut, '-/1')
+        self.assertEqual(_pont(sorok, '22:13')[0], '-/1')
+        self.assertEqual(tp.javitott['osszegzo'], 0)
+
+    def test_egyenlo_utan_torzs_nem_uj_torzs(self):
+        # (2) „kiss = </p><p><b>Qal</b>: with …”: az „=” utáni törzsnév hivatkozás, a hely a Pi`el-ben marad
+        sorok = [_t('cim', 'cim', 'H1. x'), _t('fej', 'fej', 'נשׁק verb kiss'),
+                 _t('point', 'Qal/-/-', 'Perfect Gen 1:1', jel='Qal'),
+                 _t('point', "Pi'el/-/-", 'Imperfect Gen 32:1; — kiss =', jel='Pi`el'),
+                 _t('point', 'Qal/-/-', ': with person Gen 29:13(J), 31:28', jel='Qal'),
+                 _t('point', "Hiph'il/-/-", 'Participle Ezek 3:13', jel='Hiph`il')]
+        self.assertEqual(_pont(sorok, 'Gen 29:13')[0], "Pi'el/-")
+        self.assertEqual(_pont(sorok, 'Ezek 3:13')[0], "Hiph'il/-")
+
+    def test_torzsfej_rovidites_bekezdes_elejen(self):
+        # (1) „Hithpa. Perfect”: a 2.30 nem ismeri fel (rövidítés), a hely az előző törzs (Po`al) pontján maradna
+        sorok = [_t('cim', 'cim', 'H1. x'), _t('fej', 'fej', 'עלל verb'),
+                 _t('point', "Po'al/-/-", 'Perfect Lam 1:12 me.', jel="Po`al"),
+                 _t('bekezdes', "Po'al/-/-", 'Hithpa. Perfect'),
+                 _t('point', "Po'al/1/-", 'busy: Exod 10:2 (J) x')]
+        ut, _ = _pont(sorok, 'Exod 10:2')
+        self.assertEqual(ut, "Hithpa'el/1")
+
+    def test_torzsfej_sorban_kozbeszuro_szoval(self):
+        # (1) „… 4:30 (compare … Qal 1 c). Haph`el put an end to: Imperfect … 2:44”: sorbelső törzsfej, köztes szóval és kettősponttal
+        sorok = [_t('cim', 'cim', 'H1. x'), _t('fej', 'fej', 'סוף verb'),
+                 _t('point', "Pe'al/-/-", 'Perfect Dan 4:30 (compare Biblical Hebrew I. Qal 1 c). Haph`el put an end to: Imperfect X 2:44 (acc.).',
+                    jel='Pe`al')]
+        self.assertEqual(_pont(sorok, '2:44')[0], "Haph'el/-")
+        self.assertEqual(_pont(sorok, 'Dan 4:30')[0], "Pe'al/-")
+
+    def test_torzsfej_ekezet_es_vesszo(self):
+        self.assertEqual(V.torzs_fejek('xyz. Pô`lel Perfect3masculine y'), [(5, "Po'lel")])
+        self.assertEqual(V.torzs_fejek('xyz; Tiph`el, Perfect1singular y'), [(5, "Tiph'el")])
+
+    def test_torzsfej_nem_fej(self):
+        # „i.e. Niph`al …”, „(c. Niph`al Imperfect)”, zárójeles mondat folytatása: nem törzsfej
+        self.assertEqual(V.torzs_fejek('is תישׁבנה, i.e. Niph`al תִּוָּשַׁבְנָה (compare 36:10)'), [])
+        self.assertEqual(V.torzs_fejek('Infinitive absolute כָּשׁוֺל Isa 40:30 (c. Niph`al Imperfect); Participle'), [])
+        self.assertTrue(V._zarojel_folytatas('x (compare Hithpa. y', 'Qal Imperfect above) 2Kin 24:15'))
+        self.assertFalse(V._zarojel_folytatas('Perfect Lam 1:12 my pain.', 'Hithpa. Perfect'))
+
+    def test_egyes_jelentes_a_fej_soraban(self):
+        # (4) „שׁוּנִי 1. proper name … Num 26:15 … 2. adjective” — az 1. jelentést a 2.30 nem bontotta ki
+        sorok = [_t('cim', 'cim', 'H1. x'), _t('fej', 'fej', 'שׁוּנִי 1. proper name, masculine in Gad, Gen 46:16; Num 26:15; Σαυν.'),
+                 _t('point', '-/2/-', 'adjective, of a people of 1, with article Num 26:16.')]
+        ut, tp = _pont(sorok, 'Num 26:15')
+        self.assertEqual(ut, '-/1')
+        self.assertEqual(tp.javitott['egyes'], 1)
+
+    def test_egyes_nelkul_marad(self):
+        # a 2. pont hiánya (nincs mit pótolni) esetén a fej sora marad fej
+        sorok = [_t('cim', 'cim', 'H1. x'), _t('fej', 'fej', 'אב noun 1. father Gen 1:1'), _t('point', '-/3/-', 'y Gen 2:2')]
+        ut, tp = _pont(sorok, 'Gen 1:1')
+        self.assertEqual(ut, 'fej')
+        self.assertEqual(tp.javitott['egyes'], 0)
+
+    def test_javitasok_szama_a_teljes_tablan(self):
+        # a gépi kapu: a javítások alkalmazásainak száma a teljes 2.30-on rögzített; ha a 2.30 újragenerálása megváltoztatja
+        # (új szerkezeti hibaosztály vagy a hibaosztály eltűnése), a teszt megáll, és a szabályokat át kell nézni
+        c = {}
+        for rows in V.tabla_betolt().values():
+            for k, v in V.TablaPont(rows).javitott.items():
+                c[k] = c.get(k, 0) + v
+        self.assertEqual(c, {'egyes': 130, 'osszegzo': 76, 'torzsfej': 44, 'egyenlo': 4})
+
+    def test_proba_sorok_a_sefaria_tanuval_egyeznek(self):
+        # a N-F197a 40 soros mintájából az a 16 sor, ahol a bíráló a Sefaria pontját találta helyesnek, és az ismétlődő hibaosztályok
+        # (a fej alaklistája, az „=” utáni törzs, a fel nem ismert törzsfej, az 1. jelentés a fej sorában) javítása után a tábla pontja egyezik
+        import bdb_sefaria_tanu as ST
+        tanu = ST.tanu_betolt(ST.KI)
+        kulcs = {r['azon']: r for r in ST.tsv_sorok(os.path.join(D, '..', '..', 'naplok', 'F197_proba_kulcs.tsv'))}
+        vj = {(r['strong'], r['sorszam']): r for r in ST.tsv_sorok(V.KI)}
+        for azon in ('P02', 'P03', 'P08', 'P14', 'P15', 'P18', 'P19', 'P20', 'P25', 'P26', 'P27', 'P30', 'P34', 'P35', 'P37', 'P38'):
+            k = kulcs[azon]
+            r = vj[(k['strong'], k['sorszam'])]
+            self.assertEqual(ST.itelet(tanu, r['strong'], r['sorszam'], r['mt_vers'], r['szakasz'], r['resz'], r['utvonal']), 'egyezik', azon)
+
+
 class Ujrageneralas(unittest.TestCase):
     """ELLENOR_F99 3.: platformtól függetlenül fut (a kód- és a forrás-hash LF-re normalizált tartalomból számolódik)."""
     def test_bajtra_azonos(self):
@@ -678,7 +792,7 @@ class Ujrageneralas(unittest.TestCase):
             regi = f.read()
         ts = regi.split('--ts ', 1)[1].split(' ', 1)[0]
         sorok, mh = V.general(ts)
-        self.assertEqual(V.kiir(sorok, mh, ts), regi)
+        self.assertEqual(V.kiir(sorok, mh, ts, V.SEFARIA_TANU), regi)
 
 
 if __name__ == '__main__':
