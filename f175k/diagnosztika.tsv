@@ -1,0 +1,29 @@
+# MANUAL: scope=F175K a Strong-réteg forrásoldali ellenőrzése a KJV-val (TAHOT/TAGNT vs KJV Strong-címkék, versenként, szóhalmaz-szinten; a párosítást nem méri) | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, nyilt_karoli_strong/data (Zenodo 1.0) @ git:2da9d452 | ts=git:2da9d452 | manual (determinisztikus szkript: eszkozok/karoli_strong/forras_kjv_ellenorzes.py; számlálók; nincs szöveges Károli-tartalom)
+mutato	ertek
+karoli_versek_a_csomagban	31158
+osszehasonlitott_egysegek	30998
+osszehasonlitott_karoli_versek	31000
+egyseg_tobb_karoli_versbol	2
+nem_illesztheto:kjv_vers_hianyzik	5
+nem_illesztheto:kjv_vers_karoli_parja_nelkul	125
+nem_illesztheto:nincs_kjv_megfeleles	144
+nem_illesztheto:nincs_versmegf_sor	9
+kjv_arva_versek_karoli_pár_nélkül	125
+kjv_arva_versek_egyseghez_kapcsolva	92
+egyseg_arva_kjv_verssel_kiegeszitve	39
+kiegeszitett_egyseg_forras_strongok_kjvben_aranya_K_alappal	0.6770
+kiegeszitett_egyseg_forras_strongok_kjvben_aranya_K_ext-tel	0.7927
+forras_sor_nem_leképezhető_kulcs	0
+csomag_er_oldal_egyezik_a_kivonattal_vers	31158
+csomag_er_oldal_elter_a_kivonattol_vers	0
+csomag_er_oldal_elter_versek	
+ures_kjv_halmaz_egyseg	0
+ures_forras_halmaz_egyseg	0
+kjv_csak_strong_elofordulas_OSSZES	4063
+kjv_csak_strong_elofordulas_OSZ	1583
+kjv_csak_strong_elofordulas_USZ	2480
+ebbol_a_gyanus_csak_kjv_jeloltek_strongjain	1301
+forras_vers_karoli_pár_nélkül_elozo_hez_kapcsolva	3
+forras_vers_karoli_pár_nélkül_kapcsolat_nélkül	0
+egyseg_alacsony_atfedessel	17
+fejezet_ahol_az_alacsony_atfedesu_egysegek_aranya_>=40%	0

@@ -1,0 +1,208 @@
+# MANUAL: scope=F175K a Strong-réteg forrásoldali ellenőrzése a KJV-val (TAHOT/TAGNT vs KJV Strong-címkék, versenként, szóhalmaz-szinten; a párosítást nem méri) | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, nyilt_karoli_strong/data (Zenodo 1.0) @ git:2da9d452 | ts=git:2da9d452 | manual (determinisztikus szkript: eszkozok/karoli_strong/forras_kjv_ellenorzes.py; a konvenció-normált T_all és K_ext különbségei; top 50 / tipus + minden gyanús jelölt (min_vers=5, min_arany=0.50); JELÖLT-lista, nem hibalista; nincs szöveges Károli-tartalom)
+tipus	strong_forras	strong_kjv	vers_db	oldal_osszes_vers_db	mindket_oldalon_vers_db	arany	ismert_konvencio	grammatikai	forras_szoto_jelentes	kjv_angol_szo	csere_partner	csere_partner_vers_db	peldak	gyanus	megjegyzes
+csak_forras	H0853		6710	6714	4	0.9994	nem	igen	אֵת | [Obj.]				1Móz 1:4; 1Móz 1:7; 1Móz 1:16	nem	
+csak_forras	G3588		6148	7066	918	0.8701	nem	igen	ὁ | the/this/who				Mt 1:2; Mt 1:3; Mt 1:4	nem	
+csak_forras	H5921		4410	4458	48	0.9892	nem	igen	עַל | upon				1Móz 1:11; 1Móz 1:15; 1Móz 1:17	nem	
+csak_forras	H0834		4312	4413	101	0.9771	nem	igen	אֲשֶׁר | which				1Móz 1:12; 1Móz 1:21; 1Móz 1:29	nem	
+csak_forras	H3605		4201	4223	22	0.9948	nem	nem	כֹּל | all		H2007	4	1Móz 1:21; 1Móz 1:25; 1Móz 1:26	nem	
+csak_forras	H0413		4144	4181	37	0.9912	nem	igen	אֶל | to(wards)				1Móz 2:19; 1Móz 2:22; 1Móz 3:1	nem	
+csak_forras	H3808		3867	3936	69	0.9825	nem	igen	לֹא | not				1Móz 2:17; 1Móz 2:18; 1Móz 2:20	nem	
+csak_forras	H3588		3849	3891	42	0.9892	nem	igen	כִּי | for				1Móz 1:10; 1Móz 1:12; 1Móz 1:18	nem	
+csak_forras	H1961		3043	3115	72	0.9769	nem	nem	הָיָה | to be		H2004	2	1Móz 1:5; 1Móz 1:6; 1Móz 1:7	nem	
+csak_forras	H1931		1649	1683	34	0.9798	nem	igen	הוּא | he;_she;_it				1Móz 2:13; 1Móz 2:14; 1Móz 3:15	nem	
+csak_forras	H4480		1031	1055	24	0.9773	nem	igen	מִן־ | from				1Móz 2:17; 1Móz 2:19; 1Móz 2:22	nem	
+csak_forras	H5704		1028	1124	96	0.9146	nem	igen	עַד | till				1Móz 7:23; 1Móz 8:7; 1Móz 10:19	nem	
+csak_forras	H2088		1014	1049	35	0.9666	nem	igen	זֶה | this				1Móz 5:29; 1Móz 6:15; 1Móz 7:13	nem	
+csak_forras	H0859		984	995	11	0.9889	nem	nem	אַתָּ֫ה | you(m.s.)		H2004	1	1Móz 3:11; 1Móz 3:15; 1Móz 4:7	nem	
+csak_forras	H5973		891	916	25	0.9727	nem	nem	עִם | with		H2007	1	1Móz 3:6; 1Móz 13:1; 1Móz 13:14	nem	
+csak_forras	H0518		885	925	40	0.9568	nem	nem	אִם | if		H0854	1	1Móz 13:9; 1Móz 13:16; 1Móz 15:4	nem	
+csak_forras	H0854		797	813	16	0.9803	nem	nem	אֵת | with		H0227	1	1Móz 5:24; 1Móz 6:9; 1Móz 6:18	nem	
+csak_forras	H0589		788	801	13	0.9838	nem	nem	אֲנִי, אָֽנֹכִ֫י | I		H5134	1	1Móz 9:9; 1Móz 14:23; 1Móz 15:7	nem	
+csak_forras	H2009		787	797	10	0.9875	nem	nem	הִנֵּה | behold				1Móz 1:31; 1Móz 6:12; 1Móz 8:11	nem	
+csak_forras	H8033		721	731	10	0.9863	nem	nem	שָׁם | there		H4708	1	1Móz 2:10; 1Móz 2:11; 1Móz 2:12	nem	
+csak_forras	H3651		697	735	38	0.9483	nem	nem	כֵּן | so		H1992	1	1Móz 1:9; 1Móz 1:11; 1Móz 1:15	nem	
+csak_forras	H0428		676	694	18	0.9741	nem	nem	אֵ֫לֶּה | these		H7148	1	1Móz 6:9; 1Móz 9:19; 1Móz 10:1	nem	
+csak_forras	H0369		655	684	29	0.9576	nem	nem	אַ֫יִן | nothing		H1323	1	1Móz 5:24; 1Móz 7:8; 1Móz 11:30	nem	
+csak_forras	H4100		629	655	26	0.9603	nem	nem	מָה | what?				1Móz 2:19; 1Móz 3:13; 1Móz 4:6	nem	
+csak_forras	H1571		625	656	31	0.9527	nem	nem	גַּם | also		H1992	1	1Móz 3:22; 1Móz 4:4; 1Móz 4:22	nem	
+csak_forras	H0408		558	569	11	0.9807	nem	nem	אַל | not				1Móz 15:1; 1Móz 18:3; 1Móz 18:30	nem	
+csak_forras	H2063		532	569	37	0.9350	nem	nem	זֹאת | this				1Móz 3:13; 1Móz 3:14; 1Móz 9:12	nem	
+csak_forras	H3541		516	537	21	0.9609	nem	nem	כֹּה | thus				1Móz 31:8; 1Móz 32:4; 1Móz 45:9	nem	
+csak_forras	H1992		479	511	32	0.9374	nem	nem	הֵ֫מָּה | they(masc.)		H2895	1	1Móz 14:13; 1Móz 25:16; 1Móz 34:21	nem	
+csak_forras	H5750		430	460	30	0.9348	nem	nem	עוֹד | still				1Móz 8:10; 1Móz 8:21; 1Móz 8:22	nem	
+csak_forras	H8478		426	449	23	0.9488	nem	nem	תַּחַת | underneath		H0854	1	1Móz 1:9; 1Móz 2:21; 1Móz 16:9	nem	
+csak_forras	H6258		412	421	9	0.9786	nem	nem	עַתָּ֫ה | now				1Móz 3:22; 1Móz 4:11; 1Móz 11:6	nem	
+csak_forras	H4994		365	374	9	0.9759	nem	nem	נָא | please				1Móz 13:8; 1Móz 13:9; 1Móz 13:14	nem	
+csak_forras	H0595		331	334	3	0.9910	nem	nem	אָֽנֹכִ֫י | I				1Móz 4:9; 1Móz 7:4; 1Móz 15:1	nem	
+csak_forras	H4310		323	335	12	0.9642	nem	nem	מִי | who?				1Móz 21:7; 1Móz 21:26; 1Móz 24:47	nem	
+csak_forras	H2005		303	310	7	0.9774	nem	nem	הֵן | look!		H2009	3	1Móz 4:14; 1Móz 6:13; 1Móz 9:9	nem	
+csak_forras	H6240		260	289	29	0.8997	nem	nem	עָשָׂר | ten		H1540	1	1Móz 7:11; 1Móz 25:16; 1Móz 31:41	nem	
+csak_forras	G1161		246	2608	2362	0.0943	nem	igen	δέ | but/and				Mt 3:1; Mt 3:16; Mt 5:31	nem	
+csak_forras	H4616		242	251	9	0.9641	nem	nem	מַ֫עַן | because				1Móz 18:19; 1Móz 27:25; 1Móz 37:22	nem	
+csak_forras	G3361		231	955	724	0.2419	nem	igen	μή | not				Mt 4:6; Mt 5:25; Mt 7:9	nem	
+csak_forras	H0996		224	246	22	0.9106	nem	nem	בַּ֫יִן | between				1Móz 1:6; 1Móz 1:7; 1Móz 1:14	nem	
+csak_forras	H0176		200	218	18	0.9174	nem	igen	אוֹ | or				1Móz 44:8; 1Móz 44:19; 2Móz 4:11	nem	
+csak_forras	G2532		186	5327	5141	0.0349	nem	igen	καί | and				Mt 5:23; Mt 6:10; Mt 10:11	nem	
+csak_forras	G3754		184	1215	1031	0.1514	nem	igen	ὅτι | that/since				Mt 2:23; Mt 4:6; Mt 5:31	nem	
+csak_forras	H1768		170	185	15	0.9189	nem	nem	דִּי | that		H4481	1	Ezsd 4:13; Ezsd 4:15; Ezsd 4:16	nem	
+csak_forras	G3778		159	1288	1129	0.1234	nem	igen	οὗτος | this/he/she/it				Mt 6:25; Mt 12:27; Mt 12:31	nem	
+csak_forras	G0302		138	167	29	0.8263	nem	nem	ἄν | if		G2504	3	Mt 2:13; Mt 5:18; Mt 5:19	nem	
+csak_forras	H0389		134	156	22	0.8590	nem	nem	אַךְ | surely				1Móz 20:12; 1Móz 23:13; 1Móz 27:13	nem	
+csak_forras	G3303		131	196	65	0.6684	nem	nem	μέν | on one hand		G1683	3	Mt 10:13; Mt 13:4; Mt 13:8	nem	
+csak_forras	G3739		131	1248	1117	0.1050	nem	igen	ὅς, ἥ | which				Mt 1:25; Mt 10:11; Mt 11:16	nem	
+csak_forras	G0757		84	86	2	0.9767	nem	nem	ἄρχω | be first		G0756	56	Mt 4:17; Mt 11:7; Mt 11:20	igen	
+csak_forras	H5117		76	140	64	0.5429	nem	nem	נוּחַ | to rest		H3240	23	1Móz 2:15; 1Móz 19:16; 1Móz 39:16	igen	
+csak_forras	G3441		65	112	47	0.5804	nem	nem	μόνος | alone		G3440	44	Mt 5:47; Mt 8:8; Mt 9:21	igen	
+csak_forras	G4483		46	46	0	1.0000	nem	nem	ἔπω, ἐρῶ, εἶπον | to say		G2046	29	Mt 7:4; Mt 7:22; Mt 13:30	igen	
+csak_forras	H2895		35	44	9	0.7955	nem	nem	טוֹב | be pleasing		H2896	12	1Móz 1:4; 1Móz 1:10; 1Móz 1:12	igen	
+csak_forras	G0681		34	37	3	0.9189	nem	nem	ἅπτω | to kindle		G0680	25	Mt 8:3; Mt 8:15; Mt 9:20	igen	
+csak_forras	G2396		29	29	0	1.0000	nem	nem	ἴδε | look!		G1492	17	Mt 25:20; Mt 25:22; Mt 25:25	igen	
+csak_forras	G2046		27	49	22	0.5510	nem	nem	ἔπω, ἐρῶ, εἶπον | to say		G4483	21	Mt 1:22; Mt 2:15; Mt 2:17	igen	
+csak_forras	G4218		27	53	26	0.5094	nem	nem	μήποτε+πότε | lest+when		G3379	19	Mt 4:6; Mt 5:25; Mt 7:6	igen	
+csak_forras	G3403		21	23	2	0.9130	nem	nem	μιμνήσκω | to remember		G3415	18	Mt 5:23; Mt 26:75; Mt 27:63	igen	
+csak_forras	G2908		15	18	3	0.8333	nem	nem	κρείσσων | greater		G2909	11	1Kor 11:17; Zsid 1:4; Zsid 6:9	igen	
+csak_forras	G4458		15	15	0	1.0000	nem	nem	πως | how		G3381	5	ApCsel 27:12; ApCsel 27:29; Róm 1:10	igen	
+csak_forras	G5306		12	13	1	0.9231	nem	nem	ὕστερος | later		G5305	9	Mt 4:2; Mt 21:29; Mt 21:32	igen	
+csak_forras	G1638		11	12	1	0.9167	nem	nem	ἐλαιών | Olivet		G1636	8	Mt 21:1; Mt 24:3; Mt 26:30	igen	
+csak_forras	G4007		9	9	0	1.0000	nem	nem	εἰ+περ | if+fully		G1512	4	Róm 3:30; Róm 8:9; Róm 8:17	igen	
+csak_forras	G4055		9	9	0	1.0000	nem	nem	περισσότερος | more-abundant		G4053	5	Mt 23:14; Mk 12:40; Luk 12:4	igen	
+csak_forras	G4116		9	10	1	0.9000	nem	nem	πλατύς | wide		G4113	3	Mt 6:5; Mt 12:19; Luk 10:10	igen	
+csak_forras	G1061		6	7	1	0.8571	nem	nem	γαμίσκω, γαμίζω | to give in marriage		G1548	2	Mt 22:30; Mt 24:38; Luk 17:27	igen	
+csak_forras	G4387		5	6	1	0.8333	nem	nem	πρότερος | before		G4386	3	Ján 6:62; Ján 7:50; Ján 9:8	igen	
+csak_forras	G5221		5	10	5	0.5000	nem	nem	ὑπαντάω | to go meet		G0528	3	Mt 28:9; Mk 5:2; Luk 14:31	igen	
+csak_forras	H4144		5	8	3	0.6250	nem	nem	מוֹסָד | foundation		H4146	2	Zsolt 18:8; Ézs 24:18; Ézs 58:12	igen	
+csak_kjv		G0756	84	84	0	1.0000	nem	nem		began	G0757	56	Mt 4:17; Mt 11:7; Mt 11:20	igen	
+csak_kjv		H3240	73	73	0	1.0000	nem	nem		him	H5117	23	1Móz 2:15; 1Móz 19:16; 1Móz 39:16	igen	
+csak_kjv		G2504	67	67	0	1.0000	nem	nem		I	G0302	3	Mt 2:8; Mt 10:32; Mt 10:33	igen	
+csak_kjv		G1699	63	63	0	1.0000	nem	nem		my	G0165	1	Mt 18:20; Mt 20:15; Mt 20:23	igen	
+csak_kjv		G3440	63	65	2	0.9692	nem	nem		only	G3441	44	Mt 5:47; Mt 8:8; Mt 9:21	igen	
+csak_kjv		G5126	63	63	0	1.0000	nem	nem		this	G0302	3	Mt 19:11; Mt 21:44; Mt 27:32	igen	
+csak_kjv		G4412	59	59	0	1.0000	nem	nem		first	G4413	37	Mt 5:24; Mt 6:33; Mt 7:5	igen	
+csak_kjv		G1161	50	2412	2362	0.0207	nem	igen		and			Mt 18:31; Mt 20:4; Mt 24:37	nem	
+csak_kjv		G2046	49	71	22	0.6901	nem	nem		wilt thou say	G4483	29	Mt 7:4; Mt 7:22; Mt 13:30	igen	
+csak_kjv		G4572	39	39	0	1.0000	nem	nem		thyself	G4571	16	Mt 4:6; Mt 8:4; Mt 19:19	igen	
+csak_kjv		H3169	38	42	4	0.9048	nem	nem		Hezekiah	H2396	15	2Kir 20:10; 1Krón 4:41; 2Krón 28:27	igen	
+csak_kjv		G1683	37	37	0	1.0000	nem	nem		me	G3303	3	Mt 8:9; Luk 7:7; Luk 7:8	igen	
+csak_kjv		G3765	35	35	0	1.0000	nem	nem		no more	G2089	27	Mt 19:6; Mt 22:46; Mk 7:12	igen	
+csak_kjv		G0680	33	33	0	1.0000	nem	nem		touched	G0681	25	Mt 8:3; Mt 8:15; Mt 9:20	igen	
+csak_kjv		H2896	32	516	484	0.0620	nem	nem		good	H2895	12	1Móz 1:4; 1Móz 1:10; 1Móz 1:12	nem	
+csak_kjv		G2036	31	901	870	0.0344	nem	nem		said	G3004	12	Mt 8:22; Mt 9:11; Mt 13:28	nem	
+csak_kjv		H4714	29	601	572	0.0483	nem	nem		Mizraim	H4713	4	1Móz 43:32; 1Móz 45:2; 1Móz 46:34	nem	
+csak_kjv		G1438	27	311	284	0.0868	nem	nem		yourselves	G0240	1	Mt 23:37; Mk 2:19; Mk 5:26	nem	
+csak_kjv		G0846	26	3746	3720	0.0069	nem	igen		his			Mt 6:4; Mt 15:6; Mt 25:1	nem	
+csak_kjv		G1492	26	646	620	0.0402	nem	nem		seen	G2396	17	Mt 25:20; Mt 25:22; Mt 25:25	nem	
+csak_kjv		G3187	26	26	0	1.0000	nem	nem		a greater than	G3173	17	Mt 11:11; Mt 12:6; Mt 18:1	igen	
+csak_kjv		G4483	26	26	0	1.0000	nem	nem		spoken	G2046	21	Mt 1:22; Mt 2:15; Mt 2:17	igen	
+csak_kjv		G3379	25	25	0	1.0000	nem	nem		time	G4218	19	Mt 4:6; Mt 5:25; Mt 7:6	igen	
+csak_kjv		G1473	24	1878	1854	0.0128	nem	igen		I			Luk 9:50; Ján 11:50; ApCsel 3:25	nem	
+csak_kjv		G2548	23	23	0	1.0000	nem	nem		and they	G3303	1	Mt 15:18; Mt 20:4; Mt 23:23	igen	
+csak_kjv		G4674	23	23	0	1.0000	nem	nem		thine own	G4571	5	Mt 7:3; Mt 7:22; Mt 13:27	igen	
+csak_kjv		H2895	23	32	9	0.7188	nem	nem		good	H3190	2	4Móz 10:29; 4Móz 10:32; 1Sám 16:16	igen	
+csak_kjv		G1722	21	2047	2026	0.0103	nem	igen		in			Mt 5:48; Mt 23:9; Mt 27:5	nem	
+csak_kjv		G3415	21	21	0	1.0000	nem	nem		rememberest	G3403	18	Mt 5:23; Mt 26:75; Mt 27:63	igen	
+csak_kjv		H2425	21	22	1	0.9545	nem	nem		live	H2421	6	1Móz 3:22; 1Móz 5:5; 1Móz 11:12	igen	
+csak_kjv		G0575	20	585	565	0.0342	nem	igen		from			Mt 7:4; Mt 17:9; Mk 1:10	nem	
+csak_kjv		H3415	20	22	2	0.9091	nem	nem		grievous	H7489	3	1Móz 21:11; 1Móz 21:12; 1Móz 38:10	igen	
+csak_kjv		H7433	20	21	1	0.9524	nem	nem		Ramoth	H7418	1	1Kir 22:3; 1Kir 22:4; 1Kir 22:6	igen	
+csak_kjv		G1519	19	1457	1438	0.0130	nem	igen		to			Mk 3:19; Mk 14:6; Luk 4:1	nem	
+csak_kjv		G3767	19	503	484	0.0378	nem	igen		So			Mk 3:31; Luk 6:9; Luk 10:37	nem	
+csak_kjv		G5125	18	18	0	1.0000	nem	nem		this			Luk 16:26; Luk 24:21; ApCsel 4:16	igen	
+csak_kjv		H2007	18	24	6	0.7500	nem	nem		they	H3605	4	1Móz 41:19; 3Móz 4:2; 3Móz 6:3	igen	
+csak_kjv		G0537	17	43	26	0.3953	nem	nem		all	G3956	11	Mk 5:40; Luk 2:39; Luk 3:16	nem	
+csak_kjv		G1909	16	759	743	0.0211	nem	igen		time			Mt 5:39; Mt 18:6; Mt 24:16	nem	
+csak_kjv		G2077	16	16	0	1.0000	nem	nem		let	G1488	10	Mt 5:37; Mt 18:17; Mt 20:26	igen	
+csak_kjv		G2909	16	16	0	1.0000	nem	nem		better	G2908	11	1Kor 11:17; 1Kor 12:31; Zsid 1:4	igen	
+csak_kjv		G3739	16	1133	1117	0.0141	nem	igen		whom			Mt 19:29; Mk 1:11; Mk 2:4	nem	
+csak_kjv		G3778	16	1145	1129	0.0140	nem	igen		this			Mk 4:20; Luk 13:4; Luk 13:14	nem	
+csak_kjv		H2004	16	16	0	1.0000	nem	nem		which	H1961	2	1Móz 19:29; 1Móz 30:26; 2Móz 25:29	igen	
+csak_kjv		H3001	16	67	51	0.2388	nem	nem		up	H0954	5	2Sám 19:5; Ézs 30:5; Jer 2:26	nem	
+csak_kjv		H7200	16	1208	1192	0.0132	nem	nem		saw			1Sám 9:9; 1Sám 9:11; 1Sám 9:18	nem	
+csak_kjv		G1063	15	1009	994	0.0149	nem	igen		as			Mt 23:4; Mt 23:10; Mk 8:3	nem	
+csak_kjv		G2316	15	1171	1156	0.0128	nem	nem		God	G2962	4	Luk 12:31; Ján 9:35; ApCsel 8:22	nem	
+csak_kjv		G5616	15	34	19	0.4412	nem	nem		like	G5613	10	Mt 28:3; Mt 28:4; Mk 1:10	nem	
+csak_kjv		H1004	15	1703	1688	0.0088	nem	nem		within	H1044	1	Bír 9:6; Bír 9:20; Bír 20:18	nem	
+csak_kjv		G2252	14	14	0	1.0000	nem	nem		I was	G1488	12	Mt 25:35; Mt 25:36; Mt 25:43	igen	
+csak_kjv		G5224	14	14	0	1.0000	nem	nem		that	G5225	10	Mt 19:21; Mt 24:47; Mt 25:14	igen	
+csak_kjv		G2579	13	13	0	1.0000	nem	nem		also if			Mt 21:21; Mt 26:35; Mk 5:28	igen	
+csak_kjv		G3397	13	13	0	1.0000	nem	nem		further	G3398	9	Mt 26:39; Mt 26:73; Mk 14:35	igen	
+csak_kjv		G4053	13	19	6	0.6842	nem	nem		whatsoever is more than	G4055	5	Mt 11:9; Mt 23:14; Mk 12:40	igen	
+csak_kjv		G5305	12	12	0	1.0000	nem	nem		afterward	G5306	9	Mt 4:2; Mt 21:29; Mt 21:32	igen	
+csak_kjv		G1498	11	11	0	1.0000	nem	nem		be	G1488	2	Luk 1:29; Luk 3:15; Luk 8:9	igen	
+csak_kjv		G1636	11	15	4	0.7333	nem	nem		Olives	G1638	8	Mt 21:1; Mt 24:3; Mt 26:30	igen	
+csak_kjv		G2546	11	11	0	1.0000	nem	nem		and there	G1563	5	Mt 5:23; Mt 10:11; Mt 28:10	igen	
+csak_kjv		G3381	11	11	0	1.0000	nem	nem		lest	G4458	5	ApCsel 27:29; Róm 11:21; 1Kor 8:9	igen	
+csak_kjv		H1123	10	10	0	1.0000	nem	nem		young	H1247	1	Ezsd 6:9; Ezsd 6:10; Ezsd 6:16	igen	
+csak_kjv		G2251	9	9	0	1.0000	nem	nem		our			ApCsel 2:11; ApCsel 24:6; ApCsel 26:5	igen	
+csak_kjv		G2547	9	9	0	1.0000	nem	nem		And	G1564	7	Mk 10:1; ApCsel 7:4; ApCsel 13:21	igen	
+csak_kjv		G4113	9	9	0	1.0000	nem	nem		of the streets	G4116	3	Mt 6:5; Mt 12:19; Luk 10:10	igen	
+csak_kjv		G5212	9	9	0	1.0000	nem	nem		yours	G4571	4	Luk 6:20; Luk 16:12; Ján 7:6	igen	
+csak_kjv		H1145	9	17	8	0.5294	nem	nem		Benjamite	H1121	1	Bír 20:35; Bír 20:36; Bír 20:40	igen	
+csak_kjv		G2117	8	16	8	0.5000	nem	nem		straight	G2112	5	Mt 3:16; Mt 13:20; Mt 13:21	igen	
+csak_kjv		H4708	8	13	5	0.6154	nem	nem		Mizpeh	H4709	1	1Sám 7:5; 1Sám 7:6; 1Sám 7:7	igen	
+csak_kjv		G0687	7	9	2	0.7778	nem	nem		then	G0686	5	Mt 19:25; Mt 19:27; Mt 24:45	igen	
+csak_kjv		G1275	7	7	0	1.0000	nem	nem		always	G3956	5	Mk 5:5; Luk 24:53; ApCsel 10:2	igen	
+csak_kjv		G0567	6	6	0	1.0000	nem	nem		abstain	G0568	6	ApCsel 15:20; ApCsel 15:29; 1Thessz 4:3	igen	
+csak_kjv		G1512	6	6	0	1.0000	nem	nem		that	G4007	4	Róm 8:9; Róm 8:17; 1Kor 8:5	igen	
+csak_kjv		G2444	6	6	0	1.0000	nem	nem		Wherefore			Mt 9:4; Mt 27:46; Luk 13:7	igen	
+csak_kjv		G0528	5	7	2	0.7143	nem	nem		met	G5221	3	Mt 28:9; Mk 5:2; Luk 14:31	igen	
+csak_kjv		G1081	5	9	4	0.5556	nem	nem		generation	G4621	1	Mt 26:29; Mk 14:25; Luk 12:18	igen	
+csak_kjv		G1489	5	5	0	1.0000	nem	nem		If	G1065	4	2Kor 5:3; Gal 3:4; Ef 3:2	igen	
+csak_kjv		G2499	5	5	0	1.0000	nem	nem		Joses	G2500	2	Mt 27:56; Mk 6:3; Mk 15:40	igen	
+csak_kjv		G4386	5	10	5	0.5000	nem	nem		before	G4387	3	Ján 6:62; Ján 7:51; Ján 9:8	igen	
+csak_kjv		H2454	5	5	0	1.0000	nem	nem		wisdom	H2451	4	Zsolt 49:4; Péld 1:20; Péld 9:1	igen	
+csak_kjv		H3159	5	5	0	1.0000	nem	nem		Jezreelitess	H3158	1	1Sám 27:3; 1Sám 30:5; 2Sám 2:2	igen	
+csak_kjv		H4142	5	5	0	1.0000	nem	nem		set	H5437	5	2Móz 28:11; 2Móz 39:6; 2Móz 39:13	igen	
+csak_kjv		H4146	5	10	5	0.5000	nem	nem		foundations	H4144	2	Zsolt 18:8; Ézs 24:18; Ézs 58:12	igen	
+csak_kjv		H4178	5	5	0	1.0000	nem	nem		bright	H4803	2	1Kir 7:45; Ézs 18:2; Ézs 18:7	igen	
+csak_kjv		H4808	5	7	2	0.7143	nem	nem		strife	H4809	1	5Móz 32:51; Zsolt 95:8; Zsolt 106:32	igen	
+csak_kjv		H6549	5	5	0	1.0000	nem	nem		Pharaoh-nechoh			2Kir 23:29; 2Kir 23:33; 2Kir 23:34	igen	
+csere	G0757	G0756	56				nem	nem	ἄρχω | be first	began			Mt 4:17; Mt 11:7; Mt 11:20	igen	
+csere	G3441	G3440	44				nem	nem	μόνος | alone	only			Mt 8:8; Mt 21:19; Mk 6:8	igen	
+csere	G4413	G4412	37				nem	nem	πρῶτος | first	first			Mt 5:24; Mt 6:33; Mt 7:5	igen	
+csere	G4483	G2046	29				nem	nem	ἔπω, ἐρῶ, εἶπον | to say	wilt thou say			Mt 7:4; Mt 21:3; Mt 25:34	igen	
+csere	G2089	G3765	27				nem	nem	ἔτι | still	no more			Mt 19:6; Mt 22:46; Mk 7:12	igen	
+csere	G0681	G0680	25				nem	nem	ἅπτω | to kindle	touched			Mt 8:3; Mt 8:15; Mt 9:20	igen	
+csere	H5117	H3240	23				nem	nem	נוּחַ | to rest	him			1Móz 2:15; 1Móz 19:16; 1Móz 39:16	igen	
+csere	G2046	G4483	21				nem	nem	ἔπω, ἐρῶ, εἶπον | to say	spoken			Mt 1:22; Mt 2:15; Mt 2:17	igen	
+csere	G4218	G3379	19				nem	nem	μήποτε+πότε | lest+when	time			Mt 7:6; Mt 13:15; Mt 13:29	igen	
+csere	G3403	G3415	18				nem	nem	μιμνήσκω | to remember	rememberest			Mt 26:75; Mt 27:63; Luk 1:54	igen	
+csere	G2396	G1492	17				nem	nem	ἴδε | look!	seen			Mt 25:20; Mt 25:22; Mt 26:65	igen	
+csere	G3173	G3187	17				nem	nem	μέγας | great	a greater than			Mt 11:11; Mt 12:6; Mt 18:4	igen	
+csere	G4571	G4572	16				nem	nem		thyself			Mt 8:4; Mt 27:40; Mk 15:30	igen	
+csere	H2396	H3169	15				nem	nem	חִזְקִיָּהוּ | Hezekiah	Hezekiah			2Kir 20:10; 2Krón 29:1; 2Krón 29:20	igen	
+csere	G1488	G2252	12				nem	nem		I was			Mt 25:35; Mt 25:36; Mt 25:43	igen	
+csere	G3004	G2036	12				nem	nem	λέγω | to speak	said			Mt 8:22; Mt 9:11; Mt 15:12	igen	
+csere	H2895	H2896	12				nem	nem	טוֹב | be pleasing	good			1Móz 1:4; 1Móz 1:10; 1Móz 1:12	igen	
+csere	G2908	G2909	11				nem	nem	κρείσσων | greater	better			1Kor 11:17; Zsid 1:4; Zsid 6:9	igen	
+csere	G3956	G0537	11				nem	nem	πᾶς | all	all			Mk 5:40; Luk 3:16; Luk 5:11	igen	
+csere	G1488	G2077	10				nem	nem		let			Mt 18:17; Luk 12:35; ApCsel 1:20	igen	
+csere	G5225	G5224	10				nem	nem	ὑπάρχω | to be	that			Mt 19:21; Mt 24:47; Mt 25:14	igen	
+csere	G5613	G5616	10				nem	nem	ὡς | which/how	like			Mt 28:4; Mk 1:10; Luk 1:56	igen	
+csere	G3398	G3397	9				nem	nem	μικρός | small	further			Mt 26:39; Mk 14:35; Mk 14:70	igen	
+csere	G5306	G5305	9				nem	nem	ὕστερος | later	afterward			Mt 4:2; Mt 21:29; Mt 21:37	igen	
+csere	G1638	G1636	8				nem	nem	ἐλαιών | Olivet	Olives			Mt 21:1; Mt 26:30; Mk 13:3	igen	
+csere	G1564	G2547	7				nem	nem	ἐκεῖθεν | from there	And			Mk 10:1; ApCsel 7:4; ApCsel 13:21	igen	
+csere	G3761	G3777	7				nem	nem	οὐδέ | and not	neither			Luk 12:26; Luk 20:36; Ján 1:25	igen	
+csere	G0568	G0567	6				nem	nem	ἀπέχω | to have in full	abstain			ApCsel 15:20; ApCsel 15:29; 1Thessz 4:3	igen	
+csere	H2421	H2425	6				nem	nem	חָיָה | to live	live			1Móz 11:12; 1Móz 11:14; 2Móz 33:20	igen	
+csere	G0686	G0687	5				nem	nem	ἄρα | therefore	then			Mt 19:25; Mt 19:27; Luk 1:66	igen	
+csere	G1563	G2546	5				nem	nem	ἐκεῖ | there	and there			Mt 10:11; Mt 28:10; Mk 1:35	igen	
+csere	G2112	G2117	5				nem	nem	εὐθέως | immediately	straight			Mt 3:16; Mt 13:20; Mt 13:21	igen	
+csere	G2316	G2962	5				nem	nem	θεός | God	Lord			Luk 2:38; ApCsel 16:10; ApCsel 21:20	igen	
+csere	G3956	G1275	5				nem	nem	πᾶς | all	always			Mk 5:5; Luk 24:53; ApCsel 24:16	igen	
+csere	G4055	G4053	5				nem	nem	περισσότερος | more-abundant	whatsoever is more than			Mk 12:40; Luk 12:4; Luk 12:48	igen	
+csere	G4183	G4119	5				nem	nem	πολύς | much	more			Mt 26:53; ApCsel 21:10; ApCsel 23:13	igen	
+csere	G4458	G3381	5				nem	nem	πως | how	lest			Róm 11:21; 1Kor 9:27; 2Kor 9:4	igen	
+csere	G4571	G4674	5				nem	nem		thine own			Mt 13:27; Mk 2:18; Luk 5:33	igen	
+csere	H0954	H3001	5				nem	nem	בּוֹשׁ | be ashamed	up			Jer 46:24; Jer 48:20; Hós 2:4	igen	
+csere	H5437	H4142	5				nem	nem	סָבַב | to turn	set			2Móz 28:11; 2Móz 39:6; 2Móz 39:13	igen	
+csere	G0537	G3956	4				nem	nem	ἅπας | all	all			Luk 4:40; Luk 20:6; Ján 4:25	nem	
+csere	G1065	G1489	4				nem	nem	γέ | indeed	If			Gal 3:4; Ef 3:2; Ef 4:21	nem	
+csere	G2396	G2400	4				nem	nem	ἴδε | look!	behold			Mk 13:21; Mk 15:35; Ján 19:26	nem	
+csere	G2491	G2495	4				nem	nem	Ἰωάννης | John	Jonas			Ján 1:42; Ján 21:15; Ján 21:16	nem	
+csere	G2962	G2316	4				nem	nem	κύριος | lord	God			ApCsel 8:22; ApCsel 13:44; ApCsel 15:40	nem	
+csere	G3708	G3700	4				nem	nem	ὁράω | to see	shall see			Mt 27:4; Ján 1:50; Ján 11:40	nem	
+csere	G4007	G1512	4				nem	nem	εἰ+περ | if+fully	that			Róm 8:9; 1Kor 8:5; 1Kor 15:15	nem	
+csere	G4571	G5212	4				nem	nem		yours			Luk 6:20; Ján 8:17; Róm 11:31	nem	
+csere	H2451	H2454	4				nem	nem	חׇכְמָה | wisdom	wisdom			Zsolt 49:4; Péld 1:20; Péld 9:1	nem	
+csere	H3605	H2007	4				nem	nem	כֹּל | all	they			3Móz 4:2; 3Móz 6:3; Zsolt 34:21	nem	
