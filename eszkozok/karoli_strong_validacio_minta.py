@@ -848,9 +848,16 @@ def lekotes_ir(letet_dir, retegszam, vegleges=False, zenodo=None):
     sorok += ['', 'Tételszám rétegenként: ' + ', '.join('%s %d' % kv for kv in retegszam) + '.', '']
     if zenodo:
         sorok += ['A minta alapja: a minta %d valódi párjából %d megvan a nyílt mag 1.0-s exportjában '
-                  '(`nyilt_karoli_strong/data/parok/`, a Zenodo 1.0 tartalma; kiadás: %s).' % (zenodo[1], zenodo[0], zenodo[2]), '']
+                  '(`nyilt_karoli_strong/data/parok/`, a Zenodo 1.0 tartalma; kiadás: %s; verzió-DOI: %s, concept DOI: '
+                  '%s).' % (zenodo[1], zenodo[0], zenodo[2], ZENODO_VERZIO_DOI, ZENODO_CONCEPT_DOI), '',
+                  '*Proveniencia (verzió-DOI): scope=Zenodo-rekord lekérdezése (version 1.0, publikálva 2026-11-15) | '
+                  'forras=zenodo.org/api/records/24141884 | ts=2026-11-17.*', '']
     with open(LEKOTES, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(sorok))
+
+
+ZENODO_VERZIO_DOI = '10.5281/zenodo.24141884'   # az 1.0 verzió (forras=zenodo.org/api/records/24141884, ts=2026-11-17)
+ZENODO_CONCEPT_DOI = '10.5281/zenodo.24141883'
 
 
 def kiadas_azonosito():
