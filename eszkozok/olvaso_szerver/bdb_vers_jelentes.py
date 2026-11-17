@@ -106,9 +106,10 @@ SZAKASZOK = os.path.join(REPO, 'adat', 'bdb_szakaszok.tsv')
 # F197 (DT-F197a): harmadik tanú, a Sefaria BDB-feldolgozása (adat/bdb_jp_sefaria.tsv, SEMA 2.29.1; az összevetés szabálya:
 # bdb_sefaria_tanu.osszevet). Bekapcsolva: ahol a Sefaria-pont a tábla pontjától eltér, a sor `ketes` (`jp_tanu_sefaria`, ha más
 # ok nem áll előtte); egyezésnél és ha a Sefaria a verset nem linkeli, a bizonyosság változatlan (a `biztos` marad); a `jp_kezi` sort
-# nem érinti. ALAPBÓL KIKAPCSOLVA (a felhasználó feladatleírása, 2026-11-11: a HAMART kiadása alatt a lap ne változzon); a
-# bekapcsolás külön lépés. A `--sefaria-tanu` kapcsoló egy futásra bekapcsolja (méréshez).
-SEFARIA_TANU = False
+# nem érinti. BEKAPCSOLVA (DT892, a felhasználó döntése, 2026-11-17: „legyen így”, a DT776 szerinti mintán kívüli szúrópróba
+# után: a tábla 28/40, a Sefaria 15/40 sort téved; naplok/F197_jelentes.md 7.). A kikapcsolt futás (méréshez, összevetéshez):
+# `SEFARIA_TANU = False`; a `--sefaria-tanu` kapcsoló kikapcsolt állapotban egy futásra bekapcsol.
+SEFARIA_TANU = True
 SEFARIA_TABLA = os.path.join(REPO, 'adat', 'bdb_jp_sefaria.tsv')
 # F185 (DT-F185g, orkesztrátori döntés, 2026-11-10): tételes jelentéspont-felülírás ott, ahol a forrással igazoltan a tábla téved
 # (a hibaosztály: N-F185d). Kulcs: (Strong, poz); érték: (szakasz, rész, útvonal, indok idézettel). A sor okkódja `jp_kezi`, a
@@ -148,6 +149,116 @@ def _ut3(ut):
     return '/'.join(r)
 
 
+# N212 (DT892 mérése, naplok/F197_jelentes.md 7.): a 2.30 táblaszövegének három ismétlődő szerkezeti hibaosztálya, amelyet a
+# 2.29 a táblából olvas, ezért itt, a pont meghatározásakor javít (a 2.30 és a vele kulcsolt fordítás-tábla nem változik).
+#  (1) törzsfej, amelyet a 2.30 nem ismer fel: rövidítés („Hithpa. Perfect”, „Po. Perfect”), köztes szó („Haph`el put an end to:
+#      Imperfect”), írásmód („Pô`lel”), vessző („Tiph`el, Perfect”); ilyenkor a hely az előző törzs pontjára esett.
+#  (2) „kiss = </p><p><b>Qal</b>: with …”: az „=” utáni félkövér törzsnév hivatkozás a másik törzsre, nem új törzs.
+#  (3) a szócikk fejének összefoglaló sora („1 brier, bramble. 2 hook, ring, fetter; — absolute Hosea 9:6 8t; —”): a számozott
+#      mini-glosszák a fejhez tartoznak, a testben a számozás újraindul; az alaklista hivatkozásai nem a 2. pont alatt állnak.
+_ATIR = str.maketrans({'ô': 'o', 'ō': 'o', 'Ô': 'O', 'ĕ': 'e', 'ē': 'e', '´': '`', '’': '`', "'": '`'})
+_TORZS_ROV = {'Pi': "Pi'el", 'Pu': "Pu'al", 'Hiph': "Hiph'il", 'Hoph': "Hoph'al", 'Niph': "Niph'al", 'Po': "Po'lel", 'Pol': "Po'lel",
+              'Pil': "Pilpel", 'Hithpo': "Hithpo'el", 'Hithp': "Hithpa'el", 'Hithpa': "Hithpa'el", 'Pe': "Pe'al", 'Pa': "Pa'el", 'Aph': "Aph'el",
+              'Haph': "Haph'el", 'Shaph': "Shaph'el", 'Ithpe': "Ithpe'el", 'Ithpa': "Ithpa'al", 'Tiph': "Tiph'el"}
+_ARAMI = {"Pe'al", "Pa'el", "Aph'el", "Haph'el", "Shaph'el", "Ithpe'el", "Ithpa'al", "Ithpa'el", "Ithpo'el", "Hithpe'el", "Hithpa'al",
+          "Pe'il", "Ishtaph'al"}
+_IGEALAK = r'(?:Perfect|Imperfect|Imperative|Infinitive|Participle|Passive|Active|[\u0590-\u05ff])'
+_TORZS_FEJ_MINTA = re.compile(
+    r'(?<![\w`])(?P<nev>' + B.TORZS + r'|Po`lel|Po`lal|Hithpa`lel|(?P<rov>' +
+    '|'.join(sorted(_TORZS_ROV, key=len, reverse=True)) + r')\.)'
+    r'(?:,?\s+(?=' + _IGEALAK + r')|\s+[a-z][a-z ]{0,40}:\s+(?=' + _IGEALAK + r'))')
+_NEM_MONDATHATAR = {'i.e', 'e.g', 'c', 'a', 'b', 'cf', 'so', 'also', 'vs', 'q'}
+
+
+def _fej_elott(t, o):
+    """A törzsfej mondat-, bekezdés- vagy tagmondat-határon áll („; ”, „— ”, „) ”, mondatvégi pont) — nem „i.e. Niph`al”, „(c. Niph`al”."""
+    pre = t[:o]
+    if not pre.strip():
+        return True
+    if re.search(r'[;—)]\s$', pre):
+        return True
+    m = re.search(r'(\S+)\.\s$', pre)
+    if not m:
+        return False
+    if m.group(1).endswith(')'):
+        return True                  # „(compare … Qal 1 c). Haph`el …”: a zárójeles mondat vége
+    return m.group(1).lower() not in _NEM_MONDATHATAR and (len(m.group(1)) > 2 or m.group(1).isdigit())
+
+
+def _torzs_nev(nev, aram):
+    """A felismert törzsnév (teljes vagy rövidített) a 2.30 útvonal-alakjára („Pi'el”); ismeretlen → None."""
+    n = nev.rstrip('.')
+    if nev.endswith('.'):
+        if n == 'Hithpa':
+            return "Hithpa'al" if aram else "Hithpa'el"
+        return _TORZS_ROV.get(n)
+    return B.TORZS_KANON.get(n, n).replace('`', "'")
+
+
+def torzs_fejek(szoveg, aram=False):
+    """[(eltolás, törzs)] — a szövegben álló, a 2.30 által fel nem ismert törzsfej-jelöltek (N212 (1))."""
+    t = szoveg.translate(_ATIR)
+    ki = []
+    for m in _TORZS_FEJ_MINTA.finditer(t):
+        n = _torzs_nev(m.group('nev'), aram)
+        if n and _fej_elott(t, m.start('nev')):
+            ki.append((m.start('nev'), n))
+    return ki
+
+
+def _zarojel_folytatas(elozo, szoveg):
+    """A bekezdés az előző sor zárójeles mondatának folytatása („… (compare Hithpa. … </p><p>Qal Imperfect above) 2Kin”)."""
+    return elozo.count('(') > elozo.count(')') or (')' in szoveg and ('(' not in szoveg or szoveg.index(')') < szoveg.index('(')))
+
+
+_HIVATKOZAS = re.compile(r'\d+:\d+|(?:Gen|Exod|Lev|Num|Deut|Josh|Judg|Ruth|[12]Sam|[12]Kin|[12]Chr|Ezra|Neh|Est|Job|Psa|Prov|Eccl|Song|Isa|Jer|Lam|Ezek|Dan|Hosea|Joel|Amos|Obad|Jonah|Mic|Nah|Hab|Zeph|Hag|Zech|Mal)\s+\d')
+
+
+_EGYES_JEL = re.compile(r'(?<=[\s,;א-ת])(1)\.?\s+(?=[a-z֐-׿])')
+
+
+def osszegzo_sorok(sorok):
+    """N212 (3): azok a sorindexek, amelyek a szócikk fejének számozott összefoglalójához tartoznak: egy törzsön/részen belül
+    a számozott pontok sora (csak egész szám, betű nélkül), amely után ugyanott a számozás 1-ről újraindul."""
+    ki = set()
+    sor = []                      # az aktuális sorozat: (index, szám) azonos (szakasz, rész, 1. szegmens) kulccsal
+
+    def glossza(i, utolso):
+        # az összefoglaló sora csak rövid glossza: igehely-hivatkozás nincs benne (az utolsó sor az első „—”-ig; a „—” utáni
+        # alaklista hivatkozásai a fejhez tartoznak)
+        t = sorok[i]['szoveg']
+        if utolso:
+            t = t.split('—', 1)[0]
+        return not _HIVATKOZAS.search(t)
+    kulcs = None
+    for i, x in enumerate(sorok):
+        if x['jelolo'] in ('fej', 'cim', 'section', 'remarks', 'alcimszo'):
+            sor, kulcs = [], None
+            continue
+        if x['jelolo'] != 'point':
+            continue
+        r = (x['utvonal'].split('/') + ['-', '-', '-'])[:3]
+        k = (x['szakasz'], x['resz'], r[0])
+        if r[1] == '-' or not r[1].isdigit():
+            sor, kulcs = [], k          # törzs- vagy más fej: új sorozat
+            continue
+        n = int(r[1])
+        if kulcs != k:
+            sor, kulcs = [], k
+        if n == 1 and len(sor) >= 2 and all(x_ == y_ + 1 for (_, x_), (_, y_) in zip(sor[1:], sor[:-1])) and sor[0][1] == 1:
+            # a számozás újraindul („1 … 2 …; — forms; — 1 …”): az eddigi puszta számozott sorok az összefoglaló
+            if all(glossza(j, j == sor[-1][0]) for j, _ in sor):
+                ki.update(j for j, _ in sor)
+            sor = []
+        if r[2] != '-':
+            continue                    # betűs alpont: nem része a puszta számsorozatnak
+        sor.append((i, n))
+    return ki
+
+
+TABLA_JAVITASOK = {'osszegzo', 'egyenlo', 'torzsfej', 'egyes'}      # mérési kapcsoló (N212); alapból mind
+
+
 class TablaPont:
     """Egy Strong táblaszövege és a hivatkozások leképezése rá."""
 
@@ -155,7 +266,12 @@ class TablaPont:
         self.darabok, self.fejek = [], []      # (kezdet, vég, sor, szakasz) ; (abszolút eltolás, útvonal, szakasz, rész)
         p, alcim, fo = 0, '', ''
         szoveg = []
-        for x in sorok:
+        self.javitott = collections.Counter()   # a javítások alkalmazásainak száma (a teszt rögzíti)
+        osszegzo = osszegzo_sorok(sorok) if 'osszegzo' in TABLA_JAVITASOK else set()
+        aram = any(x['utvonal'].split('/')[0].split('.')[0] in _ARAMI for x in sorok)
+        eff, ovr, elozo = 'fej', None, ''     # az előző sor tényleges útvonala; (régi törzs, új törzs); az előző sor szövege
+        egyes = None                           # (4) a fej sorában álló, külön sorra nem bontott 1. jelentés: (abszolút eltolás, szakasz, rész)
+        for i, x in enumerate(sorok):
             if x['alszocikk'] == '0' and x['szakasz']:
                 fo = x['szakasz']
             if x['jelolo'] == 'alcimszo':
@@ -168,12 +284,65 @@ class TablaPont:
             szak = x['szakasz'] or alcim
             t = ' '.join(y for y in (x['jel'], x['szoveg']) if y) + ' '
             kezd = p
-            self.fejek.append((kezd, x['utvonal'], szak, x['resz']))
             eltol = len(x['jel']) + 1 if x['jel'] else 0
+            ut = x['utvonal']
+            seg0 = ut.split('/')[0]
+            torzs_sor = x['jelolo'] == 'point' and seg0.split('.')[0] not in ('', '-', 'cim', 'fej') and not seg0[:1].isdigit() \
+                and (ut.split('/') + ['-'])[1] == '-'
+            if x['jelolo'] in ('fej', 'cim', 'section', 'alcimszo'):
+                ovr = None
+            elif torzs_sor and ovr and seg0.split('.')[0] != ovr[0]:
+                ovr = None
+            if 'egyenlo' in TABLA_JAVITASOK and torzs_sor and elozo.rstrip().endswith('=') and eff not in ('fej', ''):
+                # (2) „= Qal:”: nem új törzs, hanem hivatkozás; a hely az előző sor pontján marad
+                ovr = (seg0.split('.')[0], eff.split('/')[0].split('.')[0])
+                ut = eff
+                self.javitott['egyenlo'] += 1
+            elif ovr and seg0.split('.')[0] == ovr[0]:
+                ut = '/'.join([seg0.replace(ovr[0], ovr[1], 1)] + ut.split('/')[1:])
+            if i in osszegzo:
+                # (3) a fej összefoglaló sora: a számozott mini-glossza és az alaklista a fejhez (vagy a törzs fejéhez) tartozik
+                r0 = ut.split('/')[0]
+                ut = 'fej' if r0 in ('-', '') else r0 + '/-/-'
+                self.javitott['osszegzo'] += 1
+            if 'torzsfej' in TABLA_JAVITASOK and x['jelolo'] == 'bekezdes' and not _zarojel_folytatas(elozo, x['szoveg']):
+                # (1) a bekezdés elején álló, fel nem ismert törzsfej
+                for o, n in torzs_fejek(x['szoveg'], aram)[:1]:
+                    if o == 0 and n != eff.split('/')[0].split('.')[0]:
+                        ovr = (eff.split('/')[0].split('.')[0] or '-', n)
+                        ut = n + '/-/-'
+                        self.javitott['torzsfej'] += 1
+            if 'egyes' in TABLA_JAVITASOK:
+                if x['jelolo'] in ('fej', 'alcimszo'):
+                    m1 = _EGYES_JEL.search(x['szoveg'])
+                    egyes = (kezd + eltol + m1.start(1), szak, x['resz']) if m1 else None
+                elif x['jelolo'] == 'point' and egyes:
+                    r2 = (ut.split('/') + ['-', '-'])[:2]
+                    if r2 == ['-', '2'] and egyes[1:] == (szak, x['resz']):
+                        # (4) a fej sora az 1. jelentéssel nyit („1. proper name … 2. adjective”), a 2.30 az 1-et nem bontotta ki
+                        self.fejek.append((egyes[0], '-/1/-', szak, x['resz']))
+                        self.javitott['egyes'] += 1
+                    egyes = None
+                elif x['jelolo'] != 'bekezdes':
+                    egyes = None
+            self.fejek.append((kezd, ut, szak, x['resz']))
             for f in (x.get('belso_fejek') or '').split(';'):
                 if f:
                     o, _j, u = f.split('|', 2)
+                    if ovr and u.split('/')[0].split('.')[0] == ovr[0]:
+                        u = '/'.join([u.split('/')[0].replace(ovr[0], ovr[1], 1)] + u.split('/')[1:])
                     self.fejek.append((kezd + eltol + int(o), u, szak, x['resz']))
+            if 'torzsfej' in TABLA_JAVITASOK and x['jelolo'] in ('point', 'bekezdes'):
+                aktualis = eff.split('/')[0].split('.')[0]
+                for o, n in torzs_fejek(x['szoveg'], aram):
+                    if o > 0 and n != aktualis:
+                        self.fejek.append((kezd + eltol + o, n + '/-/-', szak, x['resz']))
+                        ovr = (aktualis or '-', n)
+                        aktualis = n
+                        ut = n + '/-/-'
+                        self.javitott['torzsfej'] += 1
+            eff = ut
+            elozo = x['szoveg']
             szoveg.append(t)
             p += len(t)
         self.t = ''.join(szoveg)

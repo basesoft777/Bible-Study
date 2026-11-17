@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-11-16",
-   "commit": "188ee2aa"
+   "datum": "2026-11-17",
+   "commit": "2560e4e7"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5695,6 +5695,16 @@
      "🟢"
     ],
     "sor": 859
+   },
+   {
+    "id": "DT892",
+    "feladat": "#197 BDB_HARMADIK_TANU (a Sefaria-tanú bekapcsolása; 2026-11-17)",
+    "kerdes": "Bekapcsolható-e a Sefaria-tanú (`SEFARIA_TANU = True`) a DT776 szerinti, mintán kívüli kézi szúrópróba alapján? A mérés (N-F197a, 40 sor, vak bírálat, seed 20261116): a tábla 28/40-et téved (70,0%, CI [53,5%; 83,4%]), a Sefaria 15/40-et (37,5%, CI [22,7%; 54,2%]), p = 0,041; a DT776 szabálya szerint a tanú nem marad kikapcsolva.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 860
    }
   ],
   "javasolt": [],

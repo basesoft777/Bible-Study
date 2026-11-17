@@ -67,9 +67,11 @@ class Osszevet(unittest.TestCase):
 
 
 class Kapcsolo(unittest.TestCase):
-    def test_alapbol_kikapcsolva(self):
-        # DT-F197a: a HAMART kiadása alatt a 2.29 nem változhat; a bekapcsolás külön lépés
-        self.assertFalse(V.SEFARIA_TANU)
+    def test_alapbol_bekapcsolva(self):
+        # DT892: a felhasználó döntése (2026-11-17, „legyen így”) a N-F197a mérése (DT776) alapján: a tanú bekapcsolva,
+        # és a 2.29 generátora a teljes tanú-táblát olvassa
+        self.assertTrue(V.SEFARIA_TANU)
+        self.assertEqual(V.SEFARIA_TABLA, S.KI)
 
     def test_itelet_mas_vers(self):
         tanu = {('H0001', '3'): ('1Móz 1:1', 'pontos', '1||-/1/-')}
