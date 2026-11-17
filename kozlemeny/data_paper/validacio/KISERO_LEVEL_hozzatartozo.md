@@ -17,7 +17,7 @@ A melléklet két fájlja:
 - **A személyes linked**: **[link]** — böngészőben nyílik meg, gépen és telefonon is. Csak a tiéd, kérlek, ne add tovább. Minden tételnél azt kell eldönteni, helyes-e a gép párja. A kérdés mindig a párosítás, nem az, hogy Károli jól fordított-e; a fordításról szóló észrevételnek külön jelölő van. Minden válaszod azonnal a szerverre mentődik, így több részletben és több eszközön is dolgozhatsz ugyanazzal a linkkel (részletek az útmutatóban).
 - **`UTMUTATO.pdf`** (ugyanez Markdownban: `UTMUTATO.md`): az útmutató arról, mikor helyes, hibás vagy bizonytalan egy pár, példákkal. Kérlek, előbb ezt olvasd el.
 
-Mind a 311 tételt kérném (csak szópárok); kb. 2,5–3 óra, több részletben. Nincs elvárt eredmény; a megtalált hiba ugyanolyan értékes. A készlet ellenőrző tételeket is tartalmaz, de nem jelöljük, melyek. Szótárt használhatsz; Strong-számos Bibliát, interlineáris Bibliát és mesterséges intelligenciát kérlek, ne. Ha végeztél, a „Mentés / Kész” menüben a „Kész, beküldöm” gombbal zárd le, **[határidő, pl. 2026. november 30.]**-ig; fájlt nem kell küldened.
+Mind a 311 tételt kérném (csak szópárok); kb. 2,5–3 óra, több részletben. Nincs elvárt eredmény; a megtalált hiba ugyanolyan értékes. A készlet ellenőrző tételeket is tartalmaz, de nem jelöljük, melyek. Szótárt használhatsz; Strong-számos Bibliát, interlineáris Bibliát vagy ilyen nézetet (pl. STEPBible, BibleHub) és mesterséges intelligenciát kérlek, ne. Ha végeztél, a „Mentés / Kész” menüben a „Kész, beküldöm” gombbal zárd le, **[határidő, pl. 2026. november 30.]**-ig; fájlt nem kell küldened.
 
 Két kérés még:
 

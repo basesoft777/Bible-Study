@@ -10,18 +10,18 @@ A minta (`minta.tsv`, a rétegjelöléssel), a csalik listája (`F175V_csalik.ts
 |---|---|
 | `minta.tsv` | `03178b5a57312d7f3dcdcb7d0f8038643600d214e4faa051ff0926e27c75868e` |
 | `F175V_csalik.tsv` | `0ac4c70c02d63986c6492756f6f895ecf8fb09aad81ce9e8a904a86167de3538` |
-| `ellenorzo.html` | `fa753cce6b8ccc30eb599ee04a9ffe298edf7b5fac1f298e9f8325097aef77c8` |
-| `ellenorzo_masodik.html` | `6a0b81e60787662cfa1e2f9ad27888231d3f0670141ed5b69d7ba9541cf72410` |
+| `ellenorzo.html` | `4fdc9863d9541f8ed176da426ec567c3fcf050ed54e0f38066791d5ceeba75f8` |
+| `ellenorzo_masodik.html` | `d32bc4db7adef54f3d2aa4c50e80283ba3e0a461eeb547668f978a375b04251c` |
 | `harom_biralo_itelet.tsv` | `e236146d9f13a08e31427f95ccdbb692bfb3f102964f53184517fc8f083f28b7` |
 | `proba.tsv` | `8c794b379f30e568289c70c43318a98eb988a41619ba338d0edb5939aaefe736` |
-| `UTMUTATO.md` (a repóban) | `b7727ca6e85b59c0ec00bb3d1aea2d172b0ecedc25dad8f92cef461b3e44b743` |
-| `UTMUTATO.pdf` (a repóban) | `12ab321dc4d4cc4c82509fcb84d9dcccfce564bc3b43e7e01963620bfd14fe35` |
+| `UTMUTATO.md` (a repóban) | `7eb1141b5e95ca9460626162a6401500e16fb427a22269bd196d407e020d9531` |
+| `UTMUTATO.pdf` (a repóban) | `24c19a38ea4f0c8b35a3fa67f0b8ac9909a9ed18ef4590f27cc6b35afddf1487` |
 
 **Az online felület (F175.V21).** A kiküldött felület a Cloudflare Worker: a tételeket a linkbeli tokenre a D1 adatbázisból adja, minden választ azonnal ment (append-only napló). A Worker kódja és a tétel nélküli oldal a repóban áll; a tételek a letétből töltődnek a D1-be (`eszkozok/karoli_strong_validacio_d1.py`), és a betöltő a tételek kanonikus JSON-ját az itt lekötött SHA-256-tal veti össze. A próbatételek (`proba.tsv`) a mintán kívüli párok, a próba ítéletei a kiértékelésbe nem kerülnek.
 
 | online felület | SHA-256 |
 |---|---|
-| `public/index.html` (a tétel nélküli oldal, a repóban) | `5a95b9b0024da12867cdac4383affecb0af41be779fca43a1b129f54f425cfa3` |
+| `public/index.html` (a tétel nélküli oldal, a repóban) | `1d5282de1d7451d84aea9a01ba7fbfe5e08cacf2064ec5db10a3d7f22ccc01ff` |
 | `src/logika.js` (a Worker, a repóban) | `098e8187f80a1a83e79f66418afba92cd816a4f23ec0d22ce4418393096d734d` |
 | `schema.sql` (a D1 sémája, a repóban) | `216b27a0020599993e82a5755c67fd62d6ef10ede10242d3ee8c35c6496ac7e1` |
 | a külső ellenőr tételei (568; az `oldal_adat` kanonikus JSON-ja) | `e9130179028440f255cc40d0f49c74d1c5475fdb3057e61e0fa80017d64fefd2` |

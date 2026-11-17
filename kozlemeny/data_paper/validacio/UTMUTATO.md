@@ -10,7 +10,7 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 
 **Kell-e hozzá szótár?** Általában nem. A kártyán minden szükséges adat ott van. Ha egy helynél mégis bizonytalan vagy, nyugodtan fellapozhatsz bármilyen szótárt vagy nyelvtant, amelyet szoktál használni. Ha akkor sem egyértelmű, jelöld „bizonytalannak”, ez is értékes válasz. Ha használtál segédeszközt, a tétel alján a „Használtam segédeszközt” mezőbe írd be, melyiket.
 
-**Amit ne használj:** Strong-számos magyar Bibliát (például a Bible-Discovery Károliját), szavanként párosító interlineáris Bibliát, mesterséges intelligenciát, és ne beszéld meg a tételeket a másik ellenőrrel.
+**Amit ne használj:** Strong-számos magyar Bibliát (például a Bible-Discovery Károliját), szavanként párosító interlineáris Bibliát vagy ilyen nézetet (például STEPBible, BibleHub), mesterséges intelligenciát, és ne beszéld meg a tételeket a másik ellenőrrel.
 
 ## 1. A legfontosabb: a gép párját ítéled meg, nem Károli szövegét
 
