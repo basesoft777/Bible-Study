@@ -138,7 +138,7 @@ A vak ellenőr maga is modell, és az emberi validáció nem vak. A párprecizit
 A zárt kiadással összevetett fejezetek célzottan kiválasztottak, és a héber morfémákat nem fedik. Az 1–2Mózesben
 3 256 pár (1 486 vers), amelyre a második modell (l. MI-nyilatkozat) más párt javasolt, gyengébb: a mintából
 12 közül három helyes, így nagyjából 1 500–3 000 lehet hibás; az 1.1-es változat ismert-hibák
-listája felsorolja őket, és a következő kiadás újrapárosítja.
+listája felsorolja őket, javítás nélkül; az 1.2-es változat újrapárosítja és újra méri őket.
 A Textus Receptusban, amelyet Károli fordított, nem szereplő 369 párosított görög szó jelölve van.
 
 ## Adat-elérhetőség
@@ -190,11 +190,11 @@ tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 074; a számozatlan nyilatkozatokkal 1 253; a
-hivatkozásokkal is 1 327 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
-szól); a kivonattal együtt 1 405. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+hivatkozások nélkül (a JOHD-sablon számítása) 1 073; a számozatlan nyilatkozatokkal 1 252; a
+hivatkozásokkal is 1 326 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 404. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes. A kivonattól az MI-nyilatkozatig minden szó, a címsorokkal, a kulcsszavakkal, a szerzői
-szerepekkel és a táblázattal: 1 499.
+szerepekkel és a táblázattal: 1 498.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
 levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos Word- vagy LaTeX-sablonjába kerül; a

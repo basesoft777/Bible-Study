@@ -882,7 +882,7 @@ A vak ellenőr maga is modell, és az emberi validáció nem vak. A párprecizit
 A zárt kiadással összevetett fejezetek célzottan kiválasztottak, és a héber morfémákat nem fedik. Az 1–2Mózesben
 {nehez_par} pár ({nehez_vers} vers), amelyre a második modell (l. MI-nyilatkozat) más párt javasolt, gyengébb: a mintából
 {nehez_minta} közül {nehez_helyes_szo} helyes, így nagyjából {nehez_hibas_a}–{nehez_hibas_f} lehet hibás; az 1.1-es változat ismert-hibák
-listája felsorolja őket, és a következő kiadás újrapárosítja.
+listája felsorolja őket, javítás nélkül; az 1.2-es változat újrapárosítja és újra méri őket.
 A Textus Receptusban, amelyet Károli fordított, nem szereplő {nem_tr_token} párosított görög szó jelölve van.
 
 ## Adat-elérhetőség
@@ -970,7 +970,7 @@ Writing – original draft, Writing – review & editing.
 
 ### Repository location
 
-https://doi.org/{doi} (concept DOI; current version {verzio}).
+https://doi.org/{doi} (concept DOI).
 
 ### Context
 
@@ -1081,8 +1081,8 @@ separately): every word kept its position and merged words keep both pairs, so t
 The blind reviewer is itself a model, and human validation is not blind. Pair precision does not cover untranslated
 source words. The closed-edition chapters were selected purposively and exclude Hebrew morphemes. In Genesis–Exodus,
 {nehez_par} pairs ({nehez_vers} verses) where the second model proposed a different pair are weaker:
-{nehez_helyes_szo} of {nehez_minta} sampled were correct, so roughly {nehez_hibas_a}–{nehez_hibas_f} may be wrong; listed in the known-issues file of
-version 1.1, they will be re-aligned in the next release. The {nem_tr_token} aligned Greek words
+{nehez_helyes_szo} of {nehez_minta} sampled were correct, so roughly {nehez_hibas_a}–{nehez_hibas_f} may be wrong; listed uncorrected in the known-issues file of
+version 1.1, they will be re-aligned and remeasured in version 1.2. The {nem_tr_token} aligned Greek words
 absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement

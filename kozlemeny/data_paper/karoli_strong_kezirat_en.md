@@ -22,7 +22,7 @@ Writing – original draft, Writing – review & editing.
 
 ### Repository location
 
-https://doi.org/10.5281/zenodo.24141883 (concept DOI; current version 1.0).
+https://doi.org/10.5281/zenodo.24141883 (concept DOI).
 
 ### Context
 
@@ -133,8 +133,8 @@ separately): every word kept its position and merged words keep both pairs, so t
 The blind reviewer is itself a model, and human validation is not blind. Pair precision does not cover untranslated
 source words. The closed-edition chapters were selected purposively and exclude Hebrew morphemes. In Genesis–Exodus,
 3,256 pairs (1,486 verses) where the second model proposed a different pair are weaker:
-three of 12 sampled were correct, so roughly 1,500–3,000 may be wrong; listed in the known-issues file of
-version 1.1, they will be re-aligned in the next release. The 369 aligned Greek words
+three of 12 sampled were correct, so roughly 1,500–3,000 may be wrong; listed uncorrected in the known-issues file of
+version 1.1, they will be re-aligned and remeasured in version 1.2. The 369 aligned Greek words
 absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement
@@ -185,10 +185,10 @@ against the data, and takes full responsibility for the content; an AI tool is n
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-1,074; with the unnumbered statements 1,253; with the references as well 1,327 (the submission page says
-the limit includes references; it does not say whether the abstract counts); with the abstract too 1,405. The JOHD
+1,073; with the unnumbered statements 1,252; with the references as well 1,326 (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too 1,404. The JOHD
 data paper length is 1,000–1,500 words; the editorial office can confirm which count applies. Everything from the
-abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,499.
+abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,498.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model
 reviewer), the corresponding author's e-mail address, the two validators' names. The text goes into the official JOHD
