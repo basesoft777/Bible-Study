@@ -631,7 +631,7 @@ class CsoportOszlop(unittest.TestCase):
     # F202 (naplok/F202_jelentes.md): a 2.30 szócikkhatára a zárójel-töredéknél (F202.2: 25 sor útvonala vagy szakasza) és a nem
     # létező fejezetre öröklődő hely TAHOT-igazolt feloldása (F202.3: 77 `orokles_hibas` → `orokles_tahot`), a H1004 négy
     # könyvnév-hibás helye (F202.4, a 2.31 kézi sorai): új érték
-    # N-F197c (naplok/F197_jelentes.md 9.): a 2.30 négy ismétlődő szerkezeti hibaosztályának javítása a pont meghatározásakor
+    # N212 (naplok/F197_jelentes.md 9.): a 2.30 négy ismétlődő szerkezeti hibaosztályának javítása a pont meghatározásakor
     # (633 sor szakasza/útvonala): új érték
     REGI_OSZLOPOK_SHA256 = '25caf4244bb7bc197ca608843592bb26ac731057a0901253cf028e6a2511885a'
 
@@ -686,7 +686,7 @@ def _pont(sorok, nyers, konyv_mod='kiirt'):
 
 
 class TablaJavitasok(unittest.TestCase):
-    """N-F197c (DT-F197b mérése, naplok/F197_jelentes.md 7.): a 2.30 táblaszövegének négy ismétlődő szerkezeti hibaosztálya."""
+    """N212 (DT892 mérése, naplok/F197_jelentes.md 7.): a 2.30 táblaszövegének négy ismétlődő szerkezeti hibaosztálya."""
 
     def test_osszefoglalo_fej(self):
         # (3) „1 skin-bottle; 2 jar, pitcher; — forms 10:3 +; —” majd a test újraindul 1-ről: az alaklista hivatkozása a fejhez tartozik

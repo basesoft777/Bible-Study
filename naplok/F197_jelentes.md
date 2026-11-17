@@ -142,16 +142,16 @@ Páros összevetés: a csak-Sefaria 24 : csak-tábla 11 (a 35 egyoldalú sorból
 - *A tábla téved (28):* 8 törzs (a tábla Poal / Qal / Pealal / Pael stb., a hely a Sefaria és a bíráló szerint Hithpael, Piel, Polel, Haphel, Hiphil, Tiphel, Hithpa.: H5953, H5401, H2229, H5487, H3423, H7270, H4223, H5493), 6 sor, ahol a tábla `fej`-et ad, de a hely számozott jelentés alatt áll (H2268, H2023, H5871, H5945, H7764, H6976), 4 sor, ahol a tábla számozott pontot ad, de a hivatkozás a szócikk **fejének alaklistájában** áll („absolute ׳ח Hosea 9:6 8t”, H5035, H2336, H3759, H7626), 4 betű-csúszás (a szomszédos betű: H6119, H0475, H3605, H2603), 2 szám-csúszás (H4672, H4676), 4 „egyik sem” (szócikk végi megjegyzés).
 - *A Sefaria téved (15):* 7 szám (a Sefaria számot ad, ahol a hely számozatlan, vagy fordítva: H3818, H1314, H6105, H4196, H6083, H2748, H5648), 3 betű-csúszás (H2388, H7068, H5003), 1 törzs+szám (H8327), a 4 „egyik sem”.
 - *Mindkettő helyes (1):* H0310, a Sefaria „Plur” törzsneve a táblabeli számozott ponttal azonos.
-- A hibák okát nem vizsgáltam. Annyi látszik, hogy a tábla hibái ismétlődő mintákat követnek (a fej-alaklista és a számozott szakasz határa, a törzsváltás), a Sefaria hibái számozási és betűsorrendi csúszások; az ok a N-F197c feladata.
+- A hibák okát nem vizsgáltam. Annyi látszik, hogy a tábla hibái ismétlődő mintákat követnek (a fej-alaklista és a számozott szakasz határa, a törzsváltás), a Sefaria hibái számozási és betűsorrendi csúszások; az ok a N212 feladata.
 
 **Mit mutat ez, és mit nem.**
 - A váltásokból a próba szerint ~70% [54%; 83%] valódi táblahiba. Ez nem mond ellent az F185 `biztos` sorokon mért 0,6%-os hibaarányának (1/181, CI kb. 0,0–3,0%): ha a 3040 váltás ~70%-a hiba, az a 145 951 `biztos` sor ~1,5%-a (≈ 2100 sor), ami az F185 CI-jén belül marad. Ugyanakkor a hiba nagyobb, mint az F185 pontbecslése. A tanú tehát a `biztos` halmaz egy valódi hibaosztályát fogja meg, nem csak zajt.
 - A bekapcsolás 3040 sor bizonyosságát mozdítaná (`biztos` → `ketes`), 540 szócikken, a lapok bizonyossági jelölését is (gyenge jelölés, `bdb_vj_szabaly.vj_bizonytalan`); a váltások ~30%-a téves riasztás.
-- **Korlátok:** 40 sor, egy bíráló, egy menet (nincs második vélemény); a „bármely” illesztésű 309 sor és a gyakran váltó szócikkek alulreprezentáltak; a bírálat részben vak (a lapon a Sefaria törzsnevei egységes alakra hozva, de „Plur”, „Tiph”, „Haph” jelleg a Sefaria forrásjegye lehetett); a P26 lapon a hivatkozás-jelölés néhány karakterrel arrébb áll (a bíráló a szócikk szövegéből is látta a helyet). A bíráló egy modell, nem szaktudós; a 28 „tábla téved” sor emberi (vagy második modelles) felülvizsgálata a bekapcsolás előtt ajánlott (N-F197c).
+- **Korlátok:** 40 sor, egy bíráló, egy menet (nincs második vélemény); a „bármely” illesztésű 309 sor és a gyakran váltó szócikkek alulreprezentáltak; a bírálat részben vak (a lapon a Sefaria törzsnevei egységes alakra hozva, de „Plur”, „Tiph”, „Haph” jelleg a Sefaria forrásjegye lehetett); a P26 lapon a hivatkozás-jelölés néhány karakterrel arrébb áll (a bíráló a szócikk szövegéből is látta a helyet). A bíráló egy modell, nem szaktudós; a 28 „tábla téved” sor emberi (vagy második modelles) felülvizsgálata a bekapcsolás előtt ajánlott (N212).
 
-**Javaslat (a DT776 szabálya szerint):** a Sefaria-tanú a próba alapján nem marad kikapcsolva (a Sefaria kevesebbet téved, mint a tábla: 15 : 28, p = 0,041), a bekapcsolás **indokolható**; a döntés a felhasználóé. A bekapcsolás előtt: (1) az `adat/bdb_jp_sefaria.tsv` cseréje a teljes táblára (161 244 sor; a fájl mérete és a repóba kerülés is döntés); (2) a lexikonlapok bizonyossági jelölésének változása a 3040 sorra; (3) N-F197c (a fejlistás és a törzs-hibaosztály a táblában).
+**Javaslat (a DT776 szabálya szerint):** a Sefaria-tanú a próba alapján nem marad kikapcsolva (a Sefaria kevesebbet téved, mint a tábla: 15 : 28, p = 0,041), a bekapcsolás **indokolható**; a döntés a felhasználóé. A bekapcsolás előtt: (1) az `adat/bdb_jp_sefaria.tsv` cseréje a teljes táblára (161 244 sor; a fájl mérete és a repóba kerülés is döntés); (2) a lexikonlapok bizonyossági jelölésének változása a 3040 sorra; (3) N212 (a fejlistás és a törzs-hibaosztály a táblában).
 
-## 8. A bekapcsolás (DT-F197b; 2026-11-17)
+## 8. A bekapcsolás (DT892; 2026-11-17)
 
 *Proveniencia: scope=a 2.29 (adat/bdb_vers_jelentes.tsv) és a teljes tanú-tábla (adat/bdb_jp_sefaria.tsv) | forras=a felhasználó döntése: „legyen így” (az orkesztrátor közvetítésével), a 7. szakasz mérése alapján | kód: eszkozok/olvaso_szerver/bdb_vers_jelentes.py (`SEFARIA_TANU = True`) | modell: claude-sonnet-5-5 | ts=2026-11-17.*
 
@@ -162,7 +162,7 @@ Páros összevetés: a csak-Sefaria 24 : csak-tábla 11 (a 35 egyoldalú sorból
 - **A mérce hash-őre.** A `naplok/F218_referencia.tsv` B19 sora (`adat/bdb_vers_jelentes.tsv`) az új tartalom hash-ére frissül külön commitban (a brief 8.1 pontja: a lap bájtra egyezik).
 - **Tesztek:** `teszt_bdb_sefaria_tanu.py` (a „alapból kikapcsolva” teszt „alapból bekapcsolva”-ra; a kapcsoló és a tábla útvonala), `teszt_bdb_vers_jelentes.py` (az újragenerálás-teszt a kapcsoló állapotával hívja a `kiir`-t).
 
-## 9. N-F197c: a tábla négy ismétlődő hibaosztályának javítása (2026-11-17)
+## 9. N212: a tábla négy ismétlődő hibaosztályának javítása (2026-11-17)
 
 *Proveniencia: scope=a 2.29 (adat/bdb_vers_jelentes.tsv) pont-meghatározása és a 2.30 (adat/bdb_szakaszok.tsv) táblaszövege | forras=a 7. szakasz 28 „tábla téved” sora és a teljes tábla (8027 Strong) mérése a Sefaria-tanúval mint orákulummal | kód: eszkozok/olvaso_szerver/bdb_vers_jelentes.py (`TablaPont`, `torzs_fejek`, `osszegzo_sorok`) | modell: claude-sonnet-5-5 | ts=2026-11-17.*
 

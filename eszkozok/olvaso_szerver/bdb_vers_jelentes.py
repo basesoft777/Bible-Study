@@ -106,7 +106,7 @@ SZAKASZOK = os.path.join(REPO, 'adat', 'bdb_szakaszok.tsv')
 # F197 (DT-F197a): harmadik tanú, a Sefaria BDB-feldolgozása (adat/bdb_jp_sefaria.tsv, SEMA 2.29.1; az összevetés szabálya:
 # bdb_sefaria_tanu.osszevet). Bekapcsolva: ahol a Sefaria-pont a tábla pontjától eltér, a sor `ketes` (`jp_tanu_sefaria`, ha más
 # ok nem áll előtte); egyezésnél és ha a Sefaria a verset nem linkeli, a bizonyosság változatlan (a `biztos` marad); a `jp_kezi` sort
-# nem érinti. BEKAPCSOLVA (DT-F197b, a felhasználó döntése, 2026-11-17: „legyen így”, a DT776 szerinti mintán kívüli szúrópróba
+# nem érinti. BEKAPCSOLVA (DT892, a felhasználó döntése, 2026-11-17: „legyen így”, a DT776 szerinti mintán kívüli szúrópróba
 # után: a tábla 28/40, a Sefaria 15/40 sort téved; naplok/F197_jelentes.md 7.). A kikapcsolt futás (méréshez, összevetéshez):
 # `SEFARIA_TANU = False`; a `--sefaria-tanu` kapcsoló kikapcsolt állapotban egy futásra bekapcsol.
 SEFARIA_TANU = True
@@ -149,7 +149,7 @@ def _ut3(ut):
     return '/'.join(r)
 
 
-# N-F197c (DT-F197b mérése, naplok/F197_jelentes.md 7.): a 2.30 táblaszövegének három ismétlődő szerkezeti hibaosztálya, amelyet a
+# N212 (DT892 mérése, naplok/F197_jelentes.md 7.): a 2.30 táblaszövegének három ismétlődő szerkezeti hibaosztálya, amelyet a
 # 2.29 a táblából olvas, ezért itt, a pont meghatározásakor javít (a 2.30 és a vele kulcsolt fordítás-tábla nem változik).
 #  (1) törzsfej, amelyet a 2.30 nem ismer fel: rövidítés („Hithpa. Perfect”, „Po. Perfect”), köztes szó („Haph`el put an end to:
 #      Imperfect”), írásmód („Pô`lel”), vessző („Tiph`el, Perfect”); ilyenkor a hely az előző törzs pontjára esett.
@@ -196,7 +196,7 @@ def _torzs_nev(nev, aram):
 
 
 def torzs_fejek(szoveg, aram=False):
-    """[(eltolás, törzs)] — a szövegben álló, a 2.30 által fel nem ismert törzsfej-jelöltek (N-F197c (1))."""
+    """[(eltolás, törzs)] — a szövegben álló, a 2.30 által fel nem ismert törzsfej-jelöltek (N212 (1))."""
     t = szoveg.translate(_ATIR)
     ki = []
     for m in _TORZS_FEJ_MINTA.finditer(t):
@@ -218,7 +218,7 @@ _EGYES_JEL = re.compile(r'(?<=[\s,;א-ת])(1)\.?\s+(?=[a-z֐-׿])')
 
 
 def osszegzo_sorok(sorok):
-    """N-F197c (3): azok a sorindexek, amelyek a szócikk fejének számozott összefoglalójához tartoznak: egy törzsön/részen belül
+    """N212 (3): azok a sorindexek, amelyek a szócikk fejének számozott összefoglalójához tartoznak: egy törzsön/részen belül
     a számozott pontok sora (csak egész szám, betű nélkül), amely után ugyanott a számozás 1-ről újraindul."""
     ki = set()
     sor = []                      # az aktuális sorozat: (index, szám) azonos (szakasz, rész, 1. szegmens) kulccsal
@@ -256,7 +256,7 @@ def osszegzo_sorok(sorok):
     return ki
 
 
-TABLA_JAVITASOK = {'osszegzo', 'egyenlo', 'torzsfej', 'egyes'}      # mérési kapcsoló (N-F197c); alapból mind
+TABLA_JAVITASOK = {'osszegzo', 'egyenlo', 'torzsfej', 'egyes'}      # mérési kapcsoló (N212); alapból mind
 
 
 class TablaPont:
