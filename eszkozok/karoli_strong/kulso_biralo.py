@@ -113,10 +113,11 @@ def batch_keres(rov, kotegek):
 
 
 def becsles(rov, kotegek):
-    """Felső becslés (USD): bemenet ~ karakter/2,5 token, kimenet kötegenként 20 000 token."""
+    """Óvatos becslés (USD, batch-ár): bemenet ~ karakter/1,7 token, kimenet kötegenként
+    3 000 token (a próba, 2026-11-17: 1,77 karakter/token, 835–890 kimeneti token)."""
     _, pb, pk = MODELLEK[rov]
-    be = sum(len(prompt(n)) / 2.5 for n in kotegek)
-    return be / 1e6 * pb + len(kotegek) * 20000 / 1e6 * pk
+    be = sum(len(prompt(n)) / 1.7 for n in kotegek)
+    return be / 1e6 * pb + len(kotegek) * 3000 / 1e6 * pk
 
 
 # --------------------------------------------------------------------- válasz
@@ -321,42 +322,94 @@ def begyujt(var_perc=0, http=_http):
         time.sleep(60)
 
 
-def azonnali(rov, kotegek_arg, plafon, http=_http):
-    """Azonnali (nem batch) összehasonlító futás: ugyanaz a kéréstörzs a szinkron
-    /chat/completions végponton; a kimenet a <rov>_azonnali/ mappába, a naplóba
-    `azonnali-<ts>` azonosítóval (F175.B, a felhasználó kérése, 2026-11-17)."""
-    kotegek = osszes_koteg() if kotegek_arg == 'mind' else [int(x) for x in kotegek_arg.split(',')]
+def azonnali(rov, kotegek_arg, plafon, http=_http, szalak=6):
+    """Azonnali (nem batch) futás: ugyanaz a kéréstörzs a szinkron /chat/completions
+    végponton, `szalak` párhuzamos hívással; a kimenet a <rov>_azonnali/ mappába, a
+    naplóba `azonnali-<ts>` azonosítóval (F175.B, a felhasználó döntése, 2026-11-17).
+    Minden válasz azonnal feldolgozva és kiírva (megszakadt futásnál sem vész el);
+    a plafon (a teljes napló költsége) a futás közben is figyelve; a kapun elbukott
+    vagy hibás kötegek egyszer újrahívva. kotegek_arg: n,n | mind | hianyzo."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
+    mappa = rov + '_azonnali'
+    if kotegek_arg in ('mind', 'hianyzo'):
+        kotegek = osszes_koteg()
+        if kotegek_arg == 'hianyzo':
+            kotegek = [n for n in kotegek if n not in set(kesz_kotegek(rov, mappa))]
+    else:
+        kotegek = [int(x) for x in kotegek_arg.split(',')]
+    if not kotegek:
+        print('%s azonnali: nincs hívandó köteg' % rov)
+        return
     b = becsles(rov, kotegek) * 2  # azonnali ár: a batch-ár kétszerese (a /models lista szerint)
     eddig = osszkoltseg()
     print('%s azonnali: %d köteg, becslés %.2f USD (eddig %.2f, plafon %.2f)' % (rov, len(kotegek), b, eddig, plafon))
     if eddig + b > plafon:
         raise SystemExit('PLAFON: %.2f + %.2f > %.2f USD' % (eddig, b, plafon))
     tor = batch_keres(rov, kotegek)
+    bodies = {int(r['custom_id'][6:]): r['body'] for r in tor['requests']}
     bid = 'azonnali-%s' % time.strftime('%Y%m%dT%H%M%S')
-    eredm, prov, be, ki, ar = [], set(), 0, 0, 0.0
-    for r in tor['requests']:
-        t0 = time.time()
-        v = http('POST', '/chat/completions', dict(model=tor['model'], **r['body']))
-        print('  %s: %.0f mp, %s' % (r['custom_id'], time.time() - t0, (v or {}).get('usage')))
-        u = (v or {}).get('usage') or {}
-        be += u.get('prompt_tokens') or 0
-        ki += u.get('completion_tokens') or 0
-        ar += u.get('cost') or 0.0
-        if v and v.get('provider'):
-            prov.add(v['provider'])
-        eredm.append({'custom_id': r['custom_id'], 'response': {'status_code': 200, 'body': v} if v else None,
-                      'error': None if v else {'message': 'nincs válasz'}})
-    naplo = _olvas(NAPLO, NAPLO_FEJ)
-    uj = eredmeny_feldolgoz(rov, {'id': bid, 'provider': ','.join(sorted(prov)), 'results': eredm},
-                            mappa=rov + '_azonnali')
-    naplo.extend(uj)
-    _ir(NAPLO, NAPLO_FEJ, naplo, 'F175.B külső bírálók futásnaplója (kérésenként)')
     sorok = _olvas(BATCHEK, BATCH_FEJ)
-    sorok.append({'rov': rov, 'modell_kert': tor['model'], 'batch_id': bid, 'kotegek': ','.join(map(str, kotegek)),
-                  'bekuldve': time.strftime('%Y-%m-%dT%H:%M:%S'), 'allapot': 'completed', 'provider': ','.join(sorted(prov)),
-                  'prompt_tokens': be, 'completion_tokens': ki, 'cost_usd': '%.6f' % ar})
+    sor = {'rov': rov, 'modell_kert': tor['model'], 'batch_id': bid, 'kotegek': ','.join(map(str, kotegek)),
+           'bekuldve': time.strftime('%Y-%m-%dT%H:%M:%S'), 'allapot': 'in_progress', 'provider': '',
+           'prompt_tokens': 0, 'completion_tokens': 0, 'cost_usd': '0'}
+    sorok.append(sor)
+    naplo = _olvas(NAPLO, NAPLO_FEJ)
+    celtabla = pe._celtabla()
+    prov = set()
+    allj = {'be': 0, 'ki': 0, 'ar': 0.0, 'stop': False}
+
+    def hivas(n):
+        t0 = time.time()
+        if allj['stop']:
+            return n, None, 'kihagyva', 0.0
+        try:
+            v = http('POST', '/chat/completions', dict(model=tor['model'], **bodies[n]))
+        except BaseException as ex:  # noqa: BLE001 -- SystemExit is (a _http HTTP-hibája)
+            return n, None, str(ex)[:200], time.time() - t0
+        return n, v, '', time.time() - t0
+
+    for kor in (1, 2):
+        futo = [n for n in kotegek if n not in set(kesz_kotegek(rov, mappa))]
+        if not futo or allj['stop']:
+            break
+        print('%s azonnali, %d. kör: %d köteg' % (rov, kor, len(futo)))
+        with ThreadPoolExecutor(szalak) as ex:
+            fut = [ex.submit(hivas, n) for n in futo]
+            for f in as_completed(fut):
+                if f.cancelled():
+                    continue
+                n, v, hiba, mp = f.result()
+                if hiba == 'kihagyva':
+                    continue
+                u = (v or {}).get('usage') or {}
+                allj['be'] += u.get('prompt_tokens') or 0
+                allj['ki'] += u.get('completion_tokens') or 0
+                allj['ar'] += u.get('cost') or 0.0
+                if v and v.get('provider'):
+                    prov.add(v['provider'])
+                e = {'custom_id': 'koteg_%03d' % n, 'response': {'status_code': 200, 'body': v} if v else None,
+                     'error': None if v else {'message': hiba or 'nincs válasz'}}
+                uj = eredmeny_feldolgoz(rov, {'id': bid, 'provider': ','.join(sorted(prov)), 'results': [e]},
+                                        celtabla, mappa=mappa)
+                naplo.extend(uj)
+                sor.update(provider=','.join(sorted(prov)), prompt_tokens=allj['be'], completion_tokens=allj['ki'],
+                           cost_usd='%.6f' % allj['ar'])
+                _ir(NAPLO, NAPLO_FEJ, naplo, 'F175.B külső bírálók futásnaplója (kérésenként)')
+                _ir(BATCHEK, BATCH_FEJ, sorok, 'F175.B beküldött batchek')
+                print('  %s köteg %d: %s, %.0f mp, %s USD (futás: %.4f USD) %s' % (
+                    rov, n, uj[0]['eredmeny'], mp, uj[0].get('cost_usd', ''), allj['ar'], uj[0].get('megjegyzes', '')))
+                if osszkoltseg(sorok) > plafon and not allj['stop']:
+                    allj['stop'] = True
+                    print('PLAFON: az összköltség %.4f > %.2f USD; a hátralévő hívások elmaradnak'
+                          % (osszkoltseg(sorok), plafon))
+                    for g in fut:
+                        g.cancel()
+    sor['allapot'] = 'stopped' if allj['stop'] else 'completed'
     _ir(BATCHEK, BATCH_FEJ, sorok, 'F175.B beküldött batchek')
-    print('%s azonnali: %s' % (rov, ', '.join('%s=%s' % (x['koteg'], x['eredmeny']) for x in uj)))
+    print('%s azonnali: kész %d/%d, %.4f USD' % (rov, len(set(kotegek) & set(kesz_kotegek(rov, mappa))),
+                                                len(kotegek), allj['ar']))
+    if allj['stop']:
+        raise SystemExit('PLAFON elérve')
 
 
 def vezerlo(ut):

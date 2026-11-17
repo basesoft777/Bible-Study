@@ -11,6 +11,7 @@ import os
 import shutil
 import sys
 import tempfile
+import time
 import unittest
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -178,6 +179,28 @@ class Menet(Alap):
         self.assertEqual(kb.kesz_kotegek('gpt', 'gpt_azonnali'), [1])
         self.assertEqual(kb.kesz_kotegek('gpt'), [])
         self.assertAlmostEqual(kb.osszkoltseg(), 0.03)
+
+    def test_azonnali_ujraprobal_es_plafon(self):
+        hiv = []
+
+        def http(m, ut, adat=None):
+            n = int(adat['messages'][0]['content'].split('KÖTEG: ')[1].split('\n')[0])
+            hiv.append(n)
+            if n == 2 and hiv.count(2) == 1:
+                return _eredmeny(2, 'nem json')['response']['body']  # első kör: rossz, második: jó
+            return _eredmeny(n, json.dumps(_jo_valasz(n)))['response']['body']
+        kb.azonnali('gpt', '1,2,3', 5.0, http=http, szalak=2)
+        self.assertEqual(kb.kesz_kotegek('gpt', 'gpt_azonnali'), [1, 2, 3])
+        self.assertEqual(sorted(hiv), [1, 2, 2, 3])
+        hiv.clear()
+        kb.azonnali('gpt', 'hianyzo', 50.0, http=lambda m, u, a=None: hiv.append(1) or None)
+        self.assertEqual(len(hiv), 2 * 69)  # 69 hiányzó, két kör, mind hibás
+        hiv.clear()
+        with self.assertRaises(SystemExit):  # menet közbeni plafon: 3 × 0,15 > 0,40 -> a többi elmarad
+            kb.azonnali('gemini', '4,5,6,7,8,9', 0.40 + kb.osszkoltseg(), http=lambda m, u, a=None: hiv.append(1) or time.sleep(0.3) or
+                        _eredmeny(4, '{}', usage={'prompt_tokens': 1, 'completion_tokens': 1, 'cost': 0.15})[
+                            'response']['body'], szalak=1)
+        self.assertLessEqual(len(hiv), 3 + 1)  # a futó hívás (legfeljebb a szálak száma) még lefut
 
     def test_plafon(self):
         with self.assertRaises(SystemExit):
