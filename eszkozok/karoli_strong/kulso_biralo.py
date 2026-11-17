@@ -157,11 +157,11 @@ def modell_ok_fn(rov):
     return ok
 
 
-def eredmeny_feldolgoz(rov, batch, celtabla=None):
+def eredmeny_feldolgoz(rov, batch, celtabla=None, mappa=None):
     """Egy lezárt batch eredményei -> valasz/ (kapuval) vagy elvetett/; naplósorok."""
     celtabla = celtabla or pe._celtabla()
-    vdir = os.path.join(KI, rov, 'valasz')
-    edir = os.path.join(KI, rov, 'elvetett')
+    vdir = os.path.join(KI, mappa or rov, 'valasz')
+    edir = os.path.join(KI, mappa or rov, 'elvetett')
     os.makedirs(vdir, exist_ok=True)
     naplo = []
     ts = time.strftime('%Y-%m-%dT%H:%M:%S')
@@ -222,8 +222,9 @@ def eredmeny_feldolgoz(rov, batch, celtabla=None):
     return naplo
 
 
-def kesz_kotegek(rov):
-    return sorted(int(os.path.basename(p)[6:9]) for p in glob.glob(os.path.join(KI, rov, 'valasz', 'koteg_*.json')))
+def kesz_kotegek(rov, mappa=None):
+    return sorted(int(os.path.basename(p)[6:9])
+                  for p in glob.glob(os.path.join(KI, mappa or rov, 'valasz', 'koteg_*.json')))
 
 
 def osszkoltseg(batchek=None):
@@ -242,7 +243,7 @@ def _http(modszer, ut, adat=None):
     h = {'Authorization': 'Bearer ' + kulcs, 'Content-Type': 'application/json'}
     for kiserlet in range(5):
         v = requests.request(modszer, API + ut, headers=h, data=json.dumps(adat) if adat is not None else None,
-                             timeout=300)
+                             timeout=900)
         if v.status_code == 429 or v.status_code >= 500:
             time.sleep(30 * (kiserlet + 1))
             continue
@@ -320,6 +321,44 @@ def begyujt(var_perc=0, http=_http):
         time.sleep(60)
 
 
+def azonnali(rov, kotegek_arg, plafon, http=_http):
+    """Azonnali (nem batch) összehasonlító futás: ugyanaz a kéréstörzs a szinkron
+    /chat/completions végponton; a kimenet a <rov>_azonnali/ mappába, a naplóba
+    `azonnali-<ts>` azonosítóval (F175.B, a felhasználó kérése, 2026-11-17)."""
+    kotegek = osszes_koteg() if kotegek_arg == 'mind' else [int(x) for x in kotegek_arg.split(',')]
+    b = becsles(rov, kotegek) * 2  # azonnali ár: a batch-ár kétszerese (a /models lista szerint)
+    eddig = osszkoltseg()
+    print('%s azonnali: %d köteg, becslés %.2f USD (eddig %.2f, plafon %.2f)' % (rov, len(kotegek), b, eddig, plafon))
+    if eddig + b > plafon:
+        raise SystemExit('PLAFON: %.2f + %.2f > %.2f USD' % (eddig, b, plafon))
+    tor = batch_keres(rov, kotegek)
+    bid = 'azonnali-%s' % time.strftime('%Y%m%dT%H%M%S')
+    eredm, prov, be, ki, ar = [], set(), 0, 0, 0.0
+    for r in tor['requests']:
+        t0 = time.time()
+        v = http('POST', '/chat/completions', dict(model=tor['model'], **r['body']))
+        print('  %s: %.0f mp, %s' % (r['custom_id'], time.time() - t0, (v or {}).get('usage')))
+        u = (v or {}).get('usage') or {}
+        be += u.get('prompt_tokens') or 0
+        ki += u.get('completion_tokens') or 0
+        ar += u.get('cost') or 0.0
+        if v and v.get('provider'):
+            prov.add(v['provider'])
+        eredm.append({'custom_id': r['custom_id'], 'response': {'status_code': 200, 'body': v} if v else None,
+                      'error': None if v else {'message': 'nincs válasz'}})
+    naplo = _olvas(NAPLO, NAPLO_FEJ)
+    uj = eredmeny_feldolgoz(rov, {'id': bid, 'provider': ','.join(sorted(prov)), 'results': eredm},
+                            mappa=rov + '_azonnali')
+    naplo.extend(uj)
+    _ir(NAPLO, NAPLO_FEJ, naplo, 'F175.B külső bírálók futásnaplója (kérésenként)')
+    sorok = _olvas(BATCHEK, BATCH_FEJ)
+    sorok.append({'rov': rov, 'modell_kert': tor['model'], 'batch_id': bid, 'kotegek': ','.join(map(str, kotegek)),
+                  'bekuldve': time.strftime('%Y-%m-%dT%H:%M:%S'), 'allapot': 'completed', 'provider': ','.join(sorted(prov)),
+                  'prompt_tokens': be, 'completion_tokens': ki, 'cost_usd': '%.6f' % ar})
+    _ir(BATCHEK, BATCH_FEJ, sorok, 'F175.B beküldött batchek')
+    print('%s azonnali: %s' % (rov, ', '.join('%s=%s' % (x['koteg'], x['eredmeny']) for x in uj)))
+
+
 def vezerlo(ut):
     k = {}
     with open(ut, encoding='utf-8') as f:
@@ -335,6 +374,9 @@ def vezerlo(ut):
     if 'bekuld' in muv:
         for rov in k['modellek'].split(','):
             bekuld(rov.strip(), k['kotegek'], float(k['plafon_usd']))
+    if 'azonnali' in muv:
+        for rov in k['modellek'].split(','):
+            azonnali(rov.strip(), k['kotegek'], float(k['plafon_usd']))
     if 'begyujt' in muv:
         begyujt(int(k['var_perc']))
     for rov in MODELLEK:

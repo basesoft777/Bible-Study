@@ -169,6 +169,16 @@ class Menet(Alap):
         self.assertEqual(kb.begyujt(0, http=lambda m, u, a=None: None), 1)
         self.assertEqual(kb._olvas(kb.BATCHEK, kb.BATCH_FEJ)[0]['allapot'], 'validating')
 
+    def test_azonnali(self):
+        def http(m, ut, adat=None):
+            self.assertEqual((m, ut, adat['model']), ('POST', '/chat/completions', 'openai/gpt-6.1-sol'))
+            self.assertEqual(adat['messages'][0]['content'], kb.prompt(1))
+            return _eredmeny(1, json.dumps(_jo_valasz(1)))['response']['body']
+        kb.azonnali('gpt', '1', 5.0, http=http)
+        self.assertEqual(kb.kesz_kotegek('gpt', 'gpt_azonnali'), [1])
+        self.assertEqual(kb.kesz_kotegek('gpt'), [])
+        self.assertAlmostEqual(kb.osszkoltseg(), 0.03)
+
     def test_plafon(self):
         with self.assertRaises(SystemExit):
             kb.bekuld('gpt', 'mind', 0.01, http=lambda *x: self.fail('nem hívhat'))
