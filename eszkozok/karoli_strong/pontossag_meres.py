@@ -28,6 +28,11 @@ Kimenet:
 
 Használat: python eszkozok/karoli_strong/pontossag_meres.py [--reszleges]
 (--reszleges: a még hiányzó kötegek céljait kihagyja, és jelzi)
+
+Külső bíráló (F175.B): --valasz <mappa> --kimenet <mappa> --biralo <rov>
+(rov: gemini | gpt; a válaszok f172/kulso_biralo/<rov>/valasz alatt). Ilyenkor a
+modell neve a rov-ot tartalmazza, Anthropic-modell nem lehet; az ítélet-oszlop neve
+`biralo` (az Opusé `opus`), a mérés ugyanaz.
 """
 
 import argparse
@@ -91,10 +96,10 @@ def hibatipus(er, er_strong, opus, strong_of):
     return HIBATIPUSOK[3]
 
 
-def valaszok():
+def valaszok(valasz_dir=None):
     """{(vers, hu_sorszam): set(er)} + {koteg: modell}."""
     j, modell = {}, {}
-    for ut in sorted(glob.glob(os.path.join(VALASZ, 'koteg_*.json'))):
+    for ut in sorted(glob.glob(os.path.join(valasz_dir or VALASZ, 'koteg_*.json'))):
         with open(ut, encoding='utf-8') as f:
             d = json.load(f)
         modell[d['koteg']] = d['modell']
@@ -128,7 +133,23 @@ def _strong_norm(s):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--reszleges', action='store_true')
+    ap.add_argument('--valasz', help='válaszmappa (alap: f172/ellenor/valasz)')
+    ap.add_argument('--kimenet', help='kimeneti mappa (alap: f172)')
+    ap.add_argument('--biralo', choices=['gemini', 'gpt'], help='külső bíráló (F175.B)')
     a = ap.parse_args()
+    if a.biralo and not (a.valasz and a.kimenet):
+        raise SystemExit('--biralo mellé --valasz és --kimenet kell')
+    valasz_dir = os.path.abspath(a.valasz) if a.valasz else VALASZ
+    kimenet = os.path.abspath(a.kimenet) if a.kimenet else F172
+    os.makedirs(kimenet, exist_ok=True)
+    oszlop = 'biralo' if a.biralo else 'opus'
+    biralo_nev = 'vak %s-bíráló' % {'gemini': 'Gemini', 'gpt': 'GPT'}[a.biralo] if a.biralo else 'vak Opus-ellenőr'
+
+    def rel(p):
+        try:
+            return os.path.relpath(p, GYOKER).replace(os.sep, '/')
+        except ValueError:  # más meghajtó (Windows)
+            return p
 
     import bemenet  # noqa: E402  (lassú betöltés: csak itt)
     import tokenek  # noqa: E402
@@ -138,10 +159,13 @@ def main():
     _, keret = pm._tabla(os.path.join(F172, 'keret.tsv'))
     sulyok = {r['reteg']: int(r['parsor']) for r in keret if r['reteg'] in pm.RETEGEK}
     _, celok = pm._tabla(os.path.join(F172, 'ellenor', 'celok.tsv'))
-    jel, modell = valaszok()
+    jel, modell = valaszok(valasz_dir)
     for k, m in modell.items():
         ml = m.lower()
-        if 'opus' not in ml or 'sonnet' in ml or 'gemini' in ml:
+        if a.biralo:
+            if a.biralo not in ml or any(t in ml for t in ('claude', 'opus', 'sonnet', 'haiku', 'anthropic')):
+                raise SystemExit('a %s. köteg modellje nem %s: %r' % (k, a.biralo, m))
+        elif 'opus' not in ml or 'sonnet' in ml or 'gemini' in ml:
             raise SystemExit('a %s. köteg modellje nem Opus: %r' % (k, m))
     hianyzo_koteg = sorted({int(c['koteg']) for c in celok if c['koteg'] != '-'} - set(modell))
     if hianyzo_koteg and not a.reszleges:
@@ -164,16 +188,17 @@ def main():
         ok = er in S
         ht = '' if ok else hibatipus(er, r['strong'], S, strong_of(r['vers']))
         hiany = sorted(S - gpart.get(kulcs, set()))
-        itelet.append(dict(r, opus=','.join(map(str, sorted(S))) or '-', helyes='1' if ok else '0',
-                           hibatipus=ht, hianyzo=','.join(map(str, hiany))))
+        itelet.append(dict(r, helyes='1' if ok else '0', hibatipus=ht, hianyzo=','.join(map(str, hiany)),
+                           **{oszlop: ','.join(map(str, sorted(S))) or '-'}))
 
     head = pm.git_head()
     fej = ['minta_id', 'reteg', 'vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'er_szo', 'strong',
-           'morfema', 'nem_tr', 'opus', 'helyes', 'hibatipus', 'hianyzo']
-    with open(os.path.join(F172, 'itelet_par.tsv'), 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# MANUAL: scope=F172 páronkénti ítélet (a gépi pár vs a vak Opus-ellenőr) | forras=f172/minta.tsv, '
-                'f172/ellenor/valasz/koteg_*.json (%s) | ts=git:%s | manual (determinisztikus összevetés; az '
-                'ellenőr modell-kimenet, nem arany)\n' % (', '.join(sorted(set(modell.values()))), head))
+           'morfema', 'nem_tr', oszlop, 'helyes', 'hibatipus', 'hianyzo']
+    with open(os.path.join(kimenet, 'itelet_par.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: scope=F172 páronkénti ítélet (a gépi pár vs a %s) | forras=f172/minta.tsv, '
+                '%s/koteg_*.json (%s) | ts=git:%s | manual (determinisztikus összevetés; az '
+                'ellenőr modell-kimenet, nem arany)\n' % (biralo_nev, rel(valasz_dir), ', '.join(sorted(set(modell.values()))),
+                                                         head))
         f.write('\t'.join(fej) + '\n')
         for r in itelet:
             f.write('\t'.join(r[k] for k in fej) + '\n')
@@ -262,19 +287,20 @@ def main():
             if (ig, szo, strong) not in hibas:
                 kal[nev + '_kiz'][1] += 1
                 kal[nev + '_kiz'][0] += int(e)
-    sor('kalibracio', 'vak Opus-ellenőr = régi arany', *kal['ellenor'], megj='halmaz-definíció (F21), Wilson 95%')
+    sor('kalibracio', '%s = régi arany' % biralo_nev, *kal['ellenor'], megj='halmaz-definíció (F21), Wilson 95%')
     sor('kalibracio', 'gépi pár (#22) = régi arany', *kal['gepi'], megj='ugyanazokon a hármasokon')
-    sor('kalibracio', 'vak Opus-ellenőr = régi arany (a hibás hármasok nélkül)', *kal['ellenor_kiz'],
+    sor('kalibracio', '%s = régi arany (a hibás hármasok nélkül)' % biralo_nev, *kal['ellenor_kiz'],
         megj='tájékoztató: f21p/regi_arany_hibas.tsv kizárva')
     sor('kalibracio', 'gépi pár (#22) = régi arany (a hibás hármasok nélkül)', *kal['gepi_kiz'], megj='tájékoztató')
     sorok.append(['kalibracio', 'kimaradt arany-hármas (nincs vers / a kifejezés nincs a versben)', '', str(kimaradt),
                   '', '', '', ''])
 
-    with open(os.path.join(F172, 'meres_eredmeny.tsv'), 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# MANUAL: scope=F172 pontosságmérés | forras=f172/itelet_par.tsv, f172/keret.tsv, '
+    with open(os.path.join(kimenet, 'meres_eredmeny.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: scope=F172 pontosságmérés | forras=%s, f172/keret.tsv, '
                 'konkordancia/Karoli_Strong_kivonat.tsv, adat/karoli_strong/parok_*.tsv @ git:%s | ts=git:%s | '
                 'manual (determinisztikus; az ellenőr: %s; kötegek: %d%s)\n'
-                % (head, head, ', '.join(sorted(set(modell.values()))), len(modell),
+                % (rel(os.path.join(kimenet, 'itelet_par.tsv')), head, head, ', '.join(sorted(set(modell.values()))),
+                   len(modell),
                    '; RÉSZLEGES, hiányzik: %s' % hianyzo_koteg if hianyzo_koteg else ''))
         f.write('\t'.join(['szakasz', 'cimke', 'n', 'x', 'p', 'also95', 'felso95', 'megjegyzes']) + '\n')
         for s in sorok:

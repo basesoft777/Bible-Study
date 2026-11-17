@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-17",
-   "commit": "3c756af6"
+   "commit": "b68d0077"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5705,6 +5705,16 @@
      "🟢"
     ],
     "sor": 860
+   },
+   {
+    "id": "DT-F175Ba",
+    "feladat": "#175 F175.B (külső vak bírálók a Károli–Strong mintán; 2026-11-17)",
+    "kerdes": "A lektor kifogása: a 95,06%-os pontosságot egy Anthropic-modell (Opus) mérte egy Anthropic-modell (Sonnet) párosításán. Hogyan legyen gyártófüggetlen a gépi bírálat?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 861
    }
   ],
   "javasolt": [],
