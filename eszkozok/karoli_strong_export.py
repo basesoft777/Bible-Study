@@ -51,6 +51,7 @@ KIMENET = 'nyilt_karoli_strong'
 # a concept DOI (2026-11-15): a verzió-DOI nem áll a fájlokban; a verziót a szám jelöli (1.0)
 DOI = '10.5281/zenodo.24141883'
 DOI_MODERN = '10.5281/zenodo.24141949'
+DOI_MERT = '10.5281/zenodo.24141884'                     # a mért 1.0 verzió DOI-ja (a kézirat hivatkozásában; a lektor 7. köre)
 DOI_MAG = '10.5281/zenodo.24141611'                      # a motívum-adatmag concept DOI-ja (a nyilt_mag/ nem változik)
 KANONIKUS_HELY = 'https://doi.org/' + DOI
 # a kézirat (JOHD data paper) Dataset Description-mezői: a Zenodo-rekord adatai (lekérve 2026-11-16) és az első
@@ -77,7 +78,8 @@ KAROLI = 'konkordancia/Karoli_1908.tsv'
 F172_MERES = 'f172/meres_eredmeny.tsv'
 F172_KULSO = 'f172/kulso/kulso_eredmeny.tsv'
 F172_KERET = 'f172/keret.tsv'
-F172_OSSZEVETES = 'f172/kulso/osszevetes.tsv'     # a zárt kiadással való összevetés párjai, osztállyal
+F172_OSSZEVETES = 'f172/kulso/osszevetes.tsv'
+F172_KULSO_BIRALO = 'f172/kulso_biralo/egyezes.tsv'    # a három vak gépi bíráló összevetése (#765)     # a zárt kiadással való összevetés párjai, osztállyal
 F172_OSSZEVONT = 'f172/reteg_osszevont.tsv'      # a két Mózes-réteg egy rétegben (karoli_strong/reteg_osszevonas.py)
 
 # a belső `bizonyossag` mező (két modell egyezése) nem minősítés, nem kerül a nyilvános táblákba (2026-11-14); a
@@ -398,6 +400,24 @@ def szamok(konyvek, vsorok, msorok):
     fel = z * ((x / n * (1 - x / n) / n + z * z / (4 * n * n)) ** 0.5) / (1 + z * z / n)
     N['nehez_hibas_a'] = int(round(N['nehez_par'] * (kozep - fel), -2))
     N['nehez_hibas_f'] = int(round(N['nehez_par'] * (kozep + fel), -2))
+    # a három vak gépi bíráló (Opus, Gemini, GPT) összevetése: f172/kulso_biralo/egyezes.tsv (#765)
+    kb = {(r['szakasz'], r['cimke']): r for r in tsv(F172_KULSO_BIRALO)[1]}
+
+    def _kb(szakasz, cimke):
+        if (szakasz, cimke) not in kb:
+            raise SystemExit('szám: hiányzó külső bírálói sor %s/%s' % (szakasz, cimke))
+        return kb[(szakasz, cimke)]
+    N['kb_gemini'] = _kb('pontossag', 'Gemini · OSSZES (súlyozott)')['p']
+    N['kb_gpt'] = _kb('pontossag', 'GPT · OSSZES (súlyozott)')['p']
+    N['kb_tobbseg'] = _kb('pontossag', 'többségi ítélet (2/3) · OSSZES')['p']
+    N['kb_egyhangu'] = _kb('pontossag', 'mindhárom helyesnek ítélte (egyhangú gépi ítélet) · OSSZES')['p']
+    N['kb_harom'] = _kb('egyezes_itelet', 'háromutas')['p']
+    N['kb_legalabb1'] = int(_kb('hibas_osztaly', 'legalább egy bíráló mondta hibásnak')['x'])
+    N['kb_mind3'] = int(_kb('hibas_osztaly', '3 bíráló mondta hibásnak')['x'])
+    N['kb_opus'] = int(_kb('hibas_osztaly', 'Opus hibajelölései')['x'])
+    N['kb_csak_kulso'] = N['kb_legalabb1'] - N['kb_opus']
+    if N['kb_opus'] != N['elteres']:
+        raise SystemExit('szám: az Opus hibajelölései (%d) nem a mért eltérések (%d)' % (N['kb_opus'], N['elteres']))
     # a keret: a mért párkészlet egyezik a csomagéval
     N['keret'] = int(_f172(F172_KERET, 'reteg', 'OSSZES')['parsor'])
     if N['keret'] != N['par']:
@@ -444,6 +464,7 @@ def fmt(N, nyelv):
     F['morfema_arany'] = szazalek(N['morfema'] / N['par'], nyelv, 1)
     F['doi'] = DOI
     F['doi_modern'] = DOI_MODERN
+    F['doi_mert'] = DOI_MERT
     F['doi_mag'] = DOI_MAG
     F['egyutt'] = EG.szakasz('strong', nyelv)
     F['lex_hu'] = NM.LEXIKON_CIM_HU

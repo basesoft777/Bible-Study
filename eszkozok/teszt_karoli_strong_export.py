@@ -266,16 +266,19 @@ class Csomag(unittest.TestCase):
         for tilos in ('a Gemini model', 'two language models agreed', 'két nyelvi modell', 'high confidence'):
             self.assertTrue(any(rx.search(tilos) for rx, _ in G.TILTOTT), tilos)
 
-    def test_gemini_csak_az_mi_nyilatkozatban_es_a_korlatokban(self):
-        # DT-F175r: a gyártói modellnév csak a JOHD-kézirat MI-nyilatkozatában és Korlátok szakaszában állhat; a kézirat
+    def test_gemini_csak_az_mi_nyilatkozatban(self):
+        # DT-F175r (a lektor 7. köre szerint szűkítve): a gyártói modellnév csak a JOHD-kézirat MI-nyilatkozatában állhat;
+        # a kézirat
         # többi részében, a csomagban és a közleményben a tiltás marad, és a többi MODELL_EGYEZES-minta mindenütt él
         for rel, (torzs, _) in E.kezirat(self.N).items():
             nyelv = 'hu' if rel.endswith('_hu.md') else 'en'
             self.assertIsNotNone(G.GEMINI.search(torzs), rel)
             self.assertIsNone(G.GEMINI.search(G.gemini_kivetel(torzs, nyelv)), rel)
-            cim = '## 1. Overview' if nyelv == 'en' else '## 1. Áttekintés'
-            becsempeszve = torzs.replace(cim, cim + '\n\nGemini', 1)
-            self.assertIsNotNone(G.GEMINI.search(G.gemini_kivetel(becsempeszve, nyelv)), rel)
+            for cim in (('## 1. Overview', '### Limitations', '## Data Accessibility Statement') if nyelv == 'en' else
+                        ('## 1. Áttekintés', '### Korlátok', '## Adat-elérhetőség')):
+                self.assertIn(cim, torzs, rel)
+                becsempeszve = torzs.replace(cim, cim + '\n\nGemini', 1)
+                self.assertIsNotNone(G.GEMINI.search(G.gemini_kivetel(becsempeszve, nyelv)), (rel, cim))
         for rel, (torzs, _) in E.note(self.N).items():
             self.assertIsNone(G.GEMINI.search(torzs), rel)
         self.assertFalse(any(G.GEMINI.search(sz) for sz in self.fajlok.values()))

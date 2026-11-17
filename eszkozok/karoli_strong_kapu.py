@@ -326,15 +326,16 @@ def valtozatlan():
     return [Talalat('VALTOZATLAN', FIGYELEM, 'a main nem érhető el, nem mérve')]
 
 
-# A gyártói modellnév (Gemini) csak a JOHD-kézirat MI-nyilatkozatában és Korlátok szakaszában állhat (DT-F175r: a
-# felhasználó, 2026-11-17: „a lektor szerint menjen”; a DT-F175m módosítása); máshol, és a csomagban, a tiltás marad.
+# A gyártói modellnév (Gemini) csak a JOHD-kézirat MI-nyilatkozatában állhat (DT-F175r: a felhasználó, 2026-11-17:
+# „a lektor szerint menjen”; a DT-F175m módosítása; a lektor 7. köre: a Korlátokban a név nem szerepel, a kivétel
+# ezért csak az MI-nyilatkozatra szól); máshol, és a csomagban, a tiltás marad.
 GEMINI = re.compile(r'Gemini', re.I)
-GEMINI_SZAKASZ = {'en': ('## AI Declaration', '### Limitations'),
-                  'hu': ('## Nyilatkozat a mesterséges intelligencia használatáról', '### Korlátok')}
+GEMINI_SZAKASZ = {'en': ('## AI Declaration',),
+                  'hu': ('## Nyilatkozat a mesterséges intelligencia használatáról',)}
 
 
 def gemini_kivetel(torzs, nyelv):
-    """A kézirat törzse a két engedett szakasz (MI-nyilatkozat, Korlátok) nélkül: a szakasz a címsorától a következő
+    """A kézirat törzse az engedett szakasz (MI-nyilatkozat) nélkül: a szakasz a címsorától a következő
     `## ` címsorig vagy a beküldési szöveg végéig tart. A maradékban a Gemini-tiltás tovább érvényes."""
     t = torzs
     for cim in GEMINI_SZAKASZ[nyelv]:
