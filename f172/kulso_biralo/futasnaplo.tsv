@@ -1,0 +1,2 @@
+# MANUAL: scope=F175.B külső bírálók futásnaplója (kérésenként) | forras=OpenRouter Batch API (/api/v1/batches) | ts=2026-11-17 | manual (a modell-kimenet bírálat, nem arany)
+rov	batch_id	koteg	modell_kert	modell_valasz	modell_onbevallas	provider	prompt_tokens	completion_tokens	reasoning_tokens	cost_usd	koltseg_forras	eredmeny	megjegyzes	ts
