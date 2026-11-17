@@ -105,7 +105,10 @@ def minta_hash(sorok):
 def valaszok_olvas(ut, minta, hash_):
     with open(ut, encoding='utf-8') as f:
         d = json.load(f)
-    if d.get('minta_hash') != hash_:
+    # a teljes oldal (külső ellenőr) vagy a második ítélő oldala (közös blokk + az összes alapminta-pár)
+    elfogadott = {hash_, minta_hash([r for r in minta if r.get('kozos') == '1' or
+                                     (r['tipus'] == 'par' and r.get('reszminta') == 'alap')])}
+    if d.get('minta_hash') not in elfogadott:
         raise SystemExit('%s: a minta_hash (%s) nem ezé a mintáé (%s)' % (ut, d.get('minta_hash'), hash_))
     ids = {r['tetel_id'] for r in minta}
     ki, karoli = {}, {}
@@ -151,6 +154,99 @@ def karoli_szabad(minta, ellenorok):
                       ('1' if t in kb else '0') if len(ellenorok) == 2 else '', b.get(t, {}).get('itelet', ''),
                       _egysor((kb.get(t) or {}).get('karoli_megj', ''))])
     return '\n'.join(sor), sorok
+
+
+def gepi_olvas(ut, sha_vart, minta):
+    """A külső gépi bírálók fagyasztott táblája (SHA-256-tal ellenőrizve) -> ({tetel_id: helyesnek ítélő bírálók
+    száma}, bírálók száma). A tábla a párt (vers, hu_sorszam, er_sorszam) azonosítja; a bírálók száma a `helyes_db`
+    oszlop, vagy a `biralo_*` oszlopok 1-eseinek összege."""
+    import hashlib
+    with open(ut, 'rb') as f:
+        h = hashlib.sha256(f.read()).hexdigest()
+    if h != sha_vart:
+        raise SystemExit('a gépi tábla SHA-256-ja (%s) nem egyezik a fagyasztottal (%s)' % (h, sha_vart))
+    fej, sorok = tabla(ut)
+    biralok = [k for k in fej if k.startswith('biralo')]
+    n_biralo = len(biralok) or 3
+    kulcs = {(r['vers'], r['hu_sorszam'], r['er_sorszam']): r['tetel_id'] for r in minta if r['tipus'] == 'par'}
+    ki = {}
+    for r in sorok:
+        t = kulcs.get((r['vers'], r['hu_sorszam'], r['er_sorszam']))
+        if t is None:
+            continue
+        if 'helyes_db' in r and r['helyes_db'] != '':
+            ki[t] = int(r['helyes_db'])
+        else:
+            ki[t] = sum(1 for b in biralok if r.get(b) == '1')
+    return ki, n_biralo
+
+
+def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
+    """A külső ellenőrre vonatkozó tájékoztató szakaszok: ember–gép eltérések, érzékenységi forgatókönyvek és a
+    „hibás” ítéletek együttjárása. A fő számot egyik sem módosítja."""
+    tip = {r['tetel_id']: r['tipus'] for r in minta}
+    resz = {r['tetel_id']: r['reszminta'] for r in minta}
+    sor = []
+    if gepi:
+        g, nb = gepi
+        sor.append('## 8. Ember–gép eltérések (tájékoztató; a fő számot nem módosítja)\n')
+        sor.append('A %s ítélete × a párt helyesnek ítélő gépi bírálók száma (0–%d; a fagyasztott gépi tábla). '
+                   'A tételeket mindkét emberi ítélettel közöljük; a becslést nem igazítjuk.\n' % (kulso_nev, nb))
+        for cimke, rsz in (('alapminta', 'alap'), ('túlminta', 'tulminta')):
+            ts = [t for t in g if resz.get(t) == rsz and t in kulso_it]
+            sor.append('%s (%d pár):\n' % (cimke.capitalize(), len(ts)))
+            sor.append('| emberi ítélet | ' + ' | '.join('gép %d/%d' % (k, nb) for k in range(nb + 1)) + ' | összesen |')
+            sor.append('|---|' + '---|' * (nb + 2))
+            for it in ITELETEK:
+                sz = [sum(1 for t in ts if kulso_it[t] == it and g[t] == k) for k in range(nb + 1)]
+                sor.append('| %s | %s | %d |' % (it, ' | '.join(map(str, sz)), sum(sz)))
+            sor.append('')
+        ts = [t for t in g if resz.get(t) == 'alap' and t in kulso_it]
+        k_ = sum(1 for t in ts if kulso_it[t] == 'hibas')
+        j_ = sum(1 for t in ts if kulso_it[t] == 'hibas' and g[t] == nb)
+        i_ = sum(1 for t in ts if kulso_it[t] == 'helyes' and g[t] == 0)
+        sor.append('A külső ellenőr %d párt ítélt hibásnak (alapminta); ezek közül %d-t mind a(z) %d modell-bíráló '
+                   'helyesnek ítélte. A fordított eset %d pár. A tételeket mindkét emberi ítélettel közöljük; a becslést '
+                   'nem igazítjuk.\n' % (k_, j_, nb, i_))
+
+    sor.append('## 9. Érzékenységi forgatókönyvek (tájékoztató; nem becslés)\n')
+    h = [kulso_it[t] for t in kulso_it if tip[t] == 'par' and resz.get(t) == 'alap']
+    hl, hb, bz = h.count('helyes'), h.count('hibas'), h.count('bizonytalan')
+    m_csali = None
+    cs = [kulso_it[t] for t in kulso_it if t in csali]
+    if cs and cs.count('hibas') + cs.count('helyes'):
+        m_csali = cs.count('helyes') / (cs.count('hibas') + cs.count('helyes'))
+    sor.append('Képlet (előre rögzítve): π = (p − m) / (1 − f − m), ahol p a %s 2a-pontossága, f a téves riasztás '
+               '(helyes párt hibásnak ítél), m az elnézés (hibás párt helyesnek ítél). m a csalikból%s és 20%%. A csali '
+               'csak durva hibán méri az elnézést, ezért a csaliból vett m alulbecsült.\n'
+               % (kulso_nev, ' (%.1f%%)' % (100 * m_csali) if m_csali is not None else ' (nincs csali-adat)'))
+    sor.append('| p | f | m | π |\n|---|---|---|---|')
+    for cimke, p_ in (('2a', hl / (hl + hb) if hl + hb else float('nan')),
+                      ('2a konzervatív', hl / (hl + hb + bz) if hl + hb + bz else float('nan'))):
+        for f_ in (0.0, 0.02, 0.05):
+            for m_ in ([m_csali] if m_csali is not None else []) + [0.20]:
+                pi = (p_ - m_) / (1 - f_ - m_) if (1 - f_ - m_) > 0 else float('nan')
+                pi = min(1.0, max(0.0, pi)) if pi == pi else pi
+                sor.append('| %s = %s | %s | %s | %s |' % (cimke, szazalek(p_), szazalek(f_), szazalek(m_), szazalek(pi)))
+    sor.append('')
+
+    sor.append('## 10. A „hibás” ítéletek együttjárása (tájékoztató)\n')
+    sor.append('A %s pár-ítéletei (alapminta és túlminta): a „Károli itt szabadon vagy pontatlanul fordít” jelölő és a '
+               'hibatípus szerint. A téves riasztásra ez nem mérőeszköz, csak jelző.\n' % kulso_nev)
+    ts = [t for t in kulso_it if tip[t] == 'par' and resz.get(t) in ('alap', 'tulminta')]
+    sor.append('| ítélet | n | ebből „Károli szabadon fordít” jelölővel |\n|---|---|---|')
+    for it in ITELETEK:
+        tt = [t for t in ts if kulso_it[t] == it]
+        sor.append('| %s | %d | %d |' % (it, len(tt), sum(1 for t in tt if (kulso_v.get(t) or {}).get('karoli'))))
+    sor.append('')
+    tipusok = _szamlal((kulso_v[t].get('hibatipus') or '(nincs megadva)') for t in ts if kulso_it[t] == 'hibas')
+    sor.append('| hibatípus | n | ebből jelölővel |\n|---|---|---|')
+    for ht, n in sorted(tipusok.items(), key=lambda x: -x[1]):
+        jel = sum(1 for t in ts if kulso_it[t] == 'hibas' and (kulso_v[t].get('hibatipus') or '(nincs megadva)') == ht
+                  and kulso_v[t].get('karoli'))
+        sor.append('| %s | %d | %d |' % (ht, n, jel))
+    sor.append('')
+    return '\n'.join(sor)
 
 
 SEGED_FEJ = ['tetel_id', 'tipus', 'vers', 'ellenor', 'segedeszkoz', 'itelet']
@@ -693,6 +789,9 @@ def main():
     ap.add_argument('--modell-valasz')
     ap.add_argument('--modell')
     ap.add_argument('--modell-bemenet')
+    ap.add_argument('--gepi', help='a külső gépi bírálók fagyasztott táblája (vers, hu_sorszam, er_sorszam, helyes_db '
+                                   'vagy biralo_* oszlopok); csak a --gepi-sha256-tal együtt')
+    ap.add_argument('--gepi-sha256', help='a fagyasztott gépi tábla lekötött SHA-256-ja')
     ap.add_argument('--kimenet', default=os.path.join(VALIDACIO, 'eredmeny'))
     a = ap.parse_args()
 
@@ -746,7 +845,13 @@ def main():
     szoveg, eltero = kiertekel(minta, [(c, v) for c, (_, v, _) in zip(cimkek, beolv)], dontes, modell, szerzoi)
     k_szoveg, k_sorok = karoli_szabad(minta, [(c, v, k) for c, (_, v, k) in zip(cimkek, beolv)])
     s_szoveg, s_sorok = segedeszkoz(minta, [(c, v, k) for c, (_, v, k) in zip(cimkek, beolv)])
-    szoveg = szoveg + '\n' + k_szoveg + '\n\n' + s_szoveg
+    if bool(a.gepi) != bool(a.gepi_sha256):
+        raise SystemExit('a --gepi és a --gepi-sha256 csak együtt adható meg')
+    gepi = gepi_olvas(a.gepi, a.gepi_sha256, minta) if a.gepi else None
+    kulso_v = beolv[0][1]   # a külső (vagy az egyetlen, vagy két külsőnél az első) ellenőr válaszai
+    t_szoveg = tajekoztato(minta, cimkek[0], {t: x['itelet'] for t, x in kulso_v.items()},
+                           {**beolv[0][2], **kulso_v}, gepi, {r['tetel_id'] for r in minta if r['reszminta'] == 'csali'})
+    szoveg = szoveg + '\n' + k_szoveg + '\n\n' + s_szoveg + '\n\n' + t_szoveg
     head = git_head()
     forras = [os.path.relpath(x, GYOKER).replace(os.sep, '/') if os.path.abspath(x).startswith(GYOKER) else os.path.basename(x)
               for x in [a.minta] + a.valaszok + ([a.dontes] if a.dontes else [])]

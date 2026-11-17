@@ -775,17 +775,25 @@ def minta_olvas(ut):
 LEKOTES = os.path.join(KIMENET, 'LEKOTES.md')
 
 
-def lekotes_ir(letet_dir, retegszam):
+def masodik_resz(sorok):
+    """A második ítélő tételei: a közös blokk és az összes alapminta-pár."""
+    return [r for r in sorok if r['kozos'] == '1' or (r['tipus'] == 'par' and r['reszminta'] == 'alap')]
+
+
+def lekotes_ir(letet_dir, retegszam, vegleges=False):
     """A nyilvános lekötés: a letétfájlok SHA-256-ja és a rétegenkénti tételszám (a tételek és a rétegjelölés
     nélkül). A validáció lezárása után a letétfájlok nyilvánosságra kerülnek, és ezzel ellenőrizhetők."""
     sorok = ['# Az emberi validáció letétjének lekötése', '',
              'GENERÁLT: eszkozok/karoli_strong_validacio_minta.py — kézzel szerkeszteni tilos.', '',
+             ('**Állapot: VÉGLEGES** — ez a kiküldött minta.' if vegleges else
+              '**Állapot: IDEIGLENES** — nem kiküldhető; a végleges húzás a gépi bírálók fagyasztott táblája után '
+              'készül (`--vegleges`).'), '',
              'A minta (`minta.tsv`, a rétegjelöléssel), a csalik listája (`F175V_csalik.tsv`, a titkos maggal) és az '
              'ellenőrző oldal (`ellenorzo.html`) a validáció lezárásáig a repón kívüli letétben áll, mert a repó '
              'nyilvános. Itt csak az SHA-256-juk szerepel, előzetes lekötésként; a lezárás után a fájlok a letétbe '
              'kerülnek, és ezzel ellenőrizhetők.', '',
              '| fájl | SHA-256 |', '|---|---|']
-    for fn in ('minta.tsv', 'F175V_csalik.tsv', 'ellenorzo.html'):
+    for fn in ('minta.tsv', 'F175V_csalik.tsv', 'ellenorzo.html', 'ellenorzo_masodik.html'):
         sorok.append('| `%s` | `%s` |' % (fn, fajl_sha256(os.path.join(letet_dir, fn))))
     sorok += ['', 'Tételszám rétegenként: ' + ', '.join('%s %d' % kv for kv in retegszam) + '.', '']
     with open(LEKOTES, 'w', encoding='utf-8', newline='\n') as f:
@@ -832,6 +840,8 @@ def main():
     global _USZ_KONYVEK
     ap = argparse.ArgumentParser()
     ap.add_argument('--csak-html', action='store_true')
+    ap.add_argument('--vegleges', action='store_true',
+                    help='a végleges húzás (a gépi bírálók fagyasztott táblája után); enélkül a lekötés IDEIGLENES')
     ap.add_argument('--letet', default=LETET_ALAP, help='a csalik letétfájlja (a repón kívül)')
     ap.add_argument('--uj-csali', action='store_true', help='új titkos csali-mag (csak ha még nincs letétfájl)')
     a = ap.parse_args()
@@ -895,9 +905,15 @@ def main():
         if 'csali_sha256=%s' % fajl_sha256(a.letet) not in fej:
             raise SystemExit('a letétfájl SHA-256-ja nem egyezik a minta.tsv fejlécével: %s' % a.letet)
         _, csalis = letet_olvas(a.letet)
+    osszes = sorted(valodi + csalis, key=lambda r: r['tetel_id'])
     cel = os.path.join(os.path.dirname(a.letet), 'ellenorzo.html')
-    meret = html_ir(sorted(valodi + csalis, key=lambda r: r['tetel_id']), cel)
-    print('ellenőrző oldal: %d bájt -> %s (a repón kívül; ezt kapják az ellenőrök)' % (meret, cel))
+    meret = html_ir(osszes, cel)
+    print('ellenőrző oldal: %d bájt -> %s (a repón kívül; a külső ellenőré)' % (meret, cel))
+    # a második ítélő oldala: a közös blokk és az összes alapminta-pár (a kappa 300 alappáron); külön fájl, hogy a
+    # külső ellenőr sorrendjéből ne derüljön ki, melyik tétel alappár
+    cel2 = os.path.join(os.path.dirname(a.letet), 'ellenorzo_masodik.html')
+    meret2 = html_ir(masodik_resz(osszes), cel2)
+    print('a második ítélő oldala: %d bájt, %d tétel -> %s' % (meret2, len(masodik_resz(osszes)), cel2))
     retegszam = {}
     for r in valodi + csalis:
         k = {'alap': 'alapminta-pár' if r['tipus'] == 'par' else 'pár nélküli magyar szó', 'tulminta': 'túlminta',
@@ -905,7 +921,8 @@ def main():
         retegszam[k] = retegszam.get(k, 0) + 1
     rend = ['alapminta-pár', 'túlminta', 'nehéz réteg', 'pár nélküli magyar szó', 'kimaradt pár', 'csali']
     lekotes_ir(os.path.dirname(a.letet), [(k, retegszam[k]) for k in rend if k in retegszam] +
-               [('összesen', len(valodi) + len(csalis))])
+               [('összesen', len(valodi) + len(csalis)), ('a második ítélő oldalán', len(masodik_resz(osszes)))],
+               a.vegleges)
     print('lekötés: %s' % LEKOTES)
 
 

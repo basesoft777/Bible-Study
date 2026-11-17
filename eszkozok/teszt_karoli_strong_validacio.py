@@ -311,6 +311,42 @@ class Kiertekeles(unittest.TestCase):
                            capture_output=True, text=True, encoding='utf-8')
         self.assertNotEqual(r.returncode, 0)
 
+    def test_ember_gep_es_erzekenyseg(self):
+        # kitalált fagyasztott gépi tábla az alapminta párjaira: 3 bíráló, mind „helyes”, kivéve az A által hibásnak
+        # ítélt 4 párt, ahol 0 bíráló
+        import hashlib
+        alap = [r for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap']
+        ut = os.path.join(self.tmp, 'gepi.tsv')
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# kitalált gépi tábla (teszt)\nvers\thu_sorszam\ter_sorszam\tbiralo_1\tbiralo_2\tbiralo_3\n')
+            for r in alap:
+                x = '0' if r['tetel_id'] in self.a_hibas else '1'
+                f.write('\t'.join([r['vers'], r['hu_sorszam'], r['er_sorszam'], x, x, x]) + '\n')
+        with open(ut, 'rb') as f:
+            sha = hashlib.sha256(f.read()).hexdigest()
+        md, _, _ = self._fut('--gepi', ut, '--gepi-sha256', sha, fajlok=[self.fa])
+        self.assertIn('## 8. Ember–gép eltérések (tájékoztató; a fő számot nem módosítja)', md)
+        self.assertIn('A külső ellenőr 4 párt ítélt hibásnak (alapminta); ezek közül 0-t mind a(z) 3 modell-bíráló '
+                      'helyesnek ítélte. A fordított eset 0 pár.', md)
+        self.assertNotIn('alsó becslés', md)
+        # érzékenység: p = 296/300, f = 0, m = 20% -> π = (p − m)/(1 − m) = 98.33%
+        self.assertIn('| 2a = 98.67% | 0.00% | 20.00% | 98.33% |', md)
+        self.assertIn('## 10. A „hibás” ítéletek együttjárása', md)
+        # rossz SHA: elutasítás
+        r = subprocess.run([sys.executable, SZKRIPT, self.fa, '--csali-nelkul', '--gepi', ut, '--gepi-sha256', '0' * 64,
+                            '--kimenet', os.path.join(self.tmp, 'x3')], capture_output=True, text=True, encoding='utf-8')
+        self.assertNotEqual(r.returncode, 0)
+
+    def test_masodik_ito_oldala(self):
+        # a második ítélő oldala (közös blokk + az összes alapminta-pár) exportját is elfogadja
+        resz = [r for r in self.minta if r['kozos'] == '1' or (r['tipus'] == 'par' and r['reszminta'] == 'alap')]
+        self.assertEqual(sum(1 for r in resz if r['tipus'] == 'par' and r['reszminta'] == 'alap'), 300)
+        fm = os.path.join(self.tmp, 'masodik.json')
+        with open(fm, 'w', encoding='utf-8') as f:
+            json.dump(_export('Második', resz, ki.minta_hash(resz), lambda r: ('helyes', '')), f, ensure_ascii=False)
+        md, _, _ = self._fut('--kulso', '1', fajlok=[self.fa, fm])
+        self.assertIn('| párok, alapminta | 300 |', md)   # az egyezés mind a 300 alappáron
+
     def test_szerzoi_es_egy_ellenor(self):
         md, _, _ = self._fut('--szerzo', '2')
         self.assertIn('B (Teszt B, szerző)', md)
