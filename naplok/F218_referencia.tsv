@@ -1,10 +1,10 @@
 # F218.1: a régi lapgenerátor (general.py --cel lexikon --id HAMART-001) referencia-kimenete és ténylegesen olvasott bemenetei, a regressziós kapu alapjához. A sha256 és a meret sorvég-normalizált tartalomból számolt (minden CRLF → LF a bájtokban), hogy a Windows-os munkafa és a CI LF-es fájlja azonos hash-t adjon. scope=sys.addaudithook open-napló, HAMART-001, PARDES_DATUM=2026-11-13 | forras=5e4344f6 | ts=2026-11-13
 tipus	b_id	utvonal	sha256	meret
-bemenet	B51	DONTESEK.md	8d212f1319d9b19c7df02ad115b851e1956338682b73113c27df42f9cbc2d49c	1393010
+bemenet	B51	DONTESEK.md	b38760db7ae7eade8aff9ed03979a44acc8cab814467f68f47e9956997ef8a56	1394376
 bemenet	B17	adat/bdb_forras_javitas.tsv	8234fa67f03cfa69b35fa4e2cda0a30be7654aff511de9acf96b47be91618fca	14239182
 bemenet	B18	adat/bdb_szakasz_hu.tsv	17322b60e26b630156f13341bab6f0989bd42dad4ac9e50f282578e50ebe8a83	13997748
 bemenet	B17	adat/bdb_szakaszok.tsv	44362398134539235ac7929ba10b69d7067a528b2d48f44d27fe7c7a86216f07	12680601
-bemenet	B19	adat/bdb_vers_jelentes.tsv	3312171fe7afa451f5f085ceffb5111d3dd386cbbe5e9e7c907a70e00623d121	25798021
+bemenet	B19	adat/bdb_vers_jelentes.tsv	9ea5b8985be31b3ffef6988cbbbb47d5528728bbfe49a8f8259cf624e83f07a5	25791244
 bemenet	B03	adat/elofordulasok.tsv	41a7ab79f03e954ba00ca68304528214d340c7ae948121394a8f552bd419c95b	121913
 bemenet	B56	adat/elutasitasi_okok.tsv	5bcf1b34209c2d252cdeb7fc38580c34ff2434f8fbc5911251f0224bae5ccb7f	23549
 bemenet	B14	adat/forditasok.tsv	5ef7da153b94ac3ec169c06d101c934b4e1e23ab53bdf5a9098df9413abed8aa	15883151
