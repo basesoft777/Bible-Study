@@ -1347,3 +1347,57 @@ A besorolás: E1 (döntési rész), E2, E3 a felhasználóé — helyőrző-dön
 | DT890 (a) | a régi lap utólagos kiejtés-beszúrása előre ismert osztály: (j) a brief 8.1 pontjában; soronkénti engedély nem kell | a brief 8.1 (j) beírva; az `S5-KIEJTES` és az `S6-KIEJTES` gépi kötése a regresszió miatt marad, `8.1 (j)` mechanizmussal |
 
 **Mérés:** `scope=HAMART-001 és ISTENTISZT-001, munka mód (PARDES_DATUM=2026-11-13) | forras=general.py --cel lexikon2; regresszio.py; festek.py; futtat.py | ts=2026-11-16`: a HAMART-001 lapja bájtra azonos a döntés előttivel; az ISTENTISZT-001 lapján csak a két javított Alátámasztás-sor változott (a hivatkozás nélkül, ponttal); HAMART-regresszió RENDBEN; festékpróba 0 mindkét lapon; tesztek 310, 0 hiba, 0 bukás, 30 váz; a mérce két hash-sora (B45, a döntésfájl) frissült.
+
+## F218.10 — S7: „9. Hatástörténet: ókori fordítások és értelmezők” (`claude-opus-5-5`, 2026-11-16, a 12. session)
+
+**Eredmény.** A 9. szakasz (ószövetségi és újszövetségi ókori fordítások, tanúk) a HAMART-001 referenciájával **bájtra egyezik, engedélysor nélkül** (56 sor; az első futáson 0 diff-sor). Regresszió: RENDBEN (engedély nélküli diff-sor 0 a lap minden kész szakaszán). Festékpróba: 0 szivárgás (HAMART belső 342, idézet 2 874, kézi 782; ISTENTISZT belső 281, idézet 1 407, kézi 331). Az első lépés a mérce hash-sorainak frissítése volt (N200: a #756 utáni `szamkiosztas` a `DONTESEK.md`-t módosította, az S6 döntésfájlját törölte).
+
+**Új kód.** `bemenet/hatastortenet.py` (a B38 ókori fordítás-sorai, B39 tanúk, B41/B74 szövegváltozatok, B64 Targum-lefedés, B73 Peshitta-állapot, LXX-alapvonal), `szamitas/hatastortenet.py` (a régi `blokk_visszhang`, `visszhang_cella`, `_visszhang_mondat_lxx`, `_egyesites_mondat`, `blokk_hatas_usz`, `tanuk_lapra`, `blokk_hatas_tanuk` szabályai), `megjelenites/md/hatastortenet.py`; a 4.8 modul két nyilvános függvénnyel (`lanc_szavak`, `lanc_szo`), a TAHOT-bemenet az angol tükörfordítással, a B35 egy lemmaindexszel (`lxx_lemmak`), az író egy cellán belüli sortörés-jellel (`SORTORES`). Jegyzék: 5 új sor (B39, B41, B64, B73, B74; a térkép számai, a B41 két fájlja licenc szerint két sorra bontva, a B73 új). Sablontábla: 129 sor (`s9.*`, `cim.s9.*`), ebből 8 `eredet=uj`, `dontes=var`; névtábla: 9 sor (`lanc_konyv`, `szamszo`, `tanu_hagyomany`). SEMA: két bekezdés (2.66: forrás-állapot és adat; 2.68: a 9. szakasz nevei).
+
+**Szerkezeti átírás, szövegcsere nélkül.** A régi lap három helyen utólag írta át a 9. szakaszt; az új generátor a szerkezetből adja ugyanazt: (1) a tanú korának zárójeles adatbázis-évszáma („4. sz. (HCF: 373)”) a mező belső része, a látható rész a mező eleje (bemeneti réteg); (2) a rabbinikus hivatkozás „25:2” alakja fejezet- és szakaszszámként jön, a sablon írja „25.2”-nek; (3) a latin szócsalád jele („*maled-*”) a lemma elejének idézete, és a névelője a sablonból jön (az ISTENTISZT-en így lett „az *invoc-*” a régi „a *invoc-*” helyett).
+
+**GK-28 (a szelet része: Targum, Peshitta).** A régi kód a Targum lefedettségét kódba írt Mózes-könyv listából vette; a forrás (B64) a Prófétákat is fedi, a Zsoltárokat nem. Az új Targum-oszlop a forrás tényleges könyveiből mondja ki a hiányt; a jegyzék állapota `reszleges`, és ha az adat ennek ellentmond, BUKÁS. Következmény az ISTENTISZT-en: a három Zsoltár-vers Targum-cellája a régi hamis „nincs megfelelő szó” helyett „nincs Targum-forrás (a szabad Targum-szöveg ezt a könyvet nem tartalmazza)”. A Peshitta-mondat a B73 `nem_vizsgalt` állapotából jön; ha a forrás megjelenne (glob-találat), vagy az állapot változna, BUKÁS. A közel-keleti és a Chain Lineage-mondat a Kolofoné (S8); a váz GK-28 tesztje erre szűkítve S8-ra áll.
+
+**GK-SZOPAR (DT833).** A spec 6.3 nyolc feltétele: a szópáros ISTENTISZT-001 ószövetségi táblája nem üres, a lánc-szó a formula igéje (H7121), a 16 vers a motívum saját ószövetségi helye (az első 1Móz 4:26), a bevezető kimondja, hogy a táblázat az igét követi, az ellenőrzött, alak nélküli LXX-sor „nincs megfelelő szó”, az LXX-kapu a szópár-feltételt használja, a HAMART szakasza változatlan; a `teszt_f194_szopar.py` eseteinek leképezése a `teszt_s9_hatastortenet.py` fejlécében (a régi lapszöveg-kapuk esetei a 218c-hez, O6). **GK-A6:** a „kinyerés még nem történt meg” pontosan a B38 rokon sora és B24-lekérdezés nélküli lánc-szónál áll (teszt mindkét lapon).
+
+**ISTENTISZT-001 (8.2): a szópáros lap 9. szakasza.** A régi kód szópáros ágának hibái, amelyek a mai mintán is látszottak (a régi függvények közvetlen hívásával mérve), az új lapon nem állnak: a Zsoltár-versek hamis Targum-hiánya (fent); az újszövetségi tábla „Genezis-lánc” szövege a szópáros lapon (helyette „formula”, öt új sablonsor); a LXX-oszlop vegyes rövid/teljes és ábécé szerinti versrendje (most kánoni rend, teljes igehely); „A 1 görög szócsaládból” (most „Az 1”).
+
+**Új sablonmondatok `dontes=var` (a 218a végi listába):** `s9.nincs_targum`; `s9.usz.bevezeto.szopar`, `s9.usz.fejlec.lxx.szopar`, `s9.usz.lxx.nincs.szopar`, `s9.usz.valt.nincs.szopar`, `s9.usz.mit.egyezo.szopar`, `s9.usz.mit.reszben.szopar`, `s9.usz.lab.szopar`. Egyik sem tesz új tartalmi állítást: a hamis állapotmondat javítása (HN-15 osztály) és a szópáros lap rossz megnevezésének javítása.
+
+**Megfigyelések, döntés nélkül.** (a) N-F218t: a szópáros bevezető (DT833 szövege) ISTENTISZT-specifikus tartalmat mond minden szópáros motívumra. (b) A 9. szakasz dőlt sorai a licencet betűre mondják („közkincs”, „CC BY 4.0”): a GK-07 (licencszöveg csak a B01-ből) az S8-ban. (c) A B64 ma csak a Targum-fájl; a térkép B64-ében a Vulgata és a Glossa Ordinaria is áll, ezek a Kolofon forrássorában kellenek (S8). (d) Az egyesítés-mondatok (két lánc-szó egy fordítói szóval) a két mintalapon nem állnak; az ágak modellből renderelve tesztelve.
+
+**Tesztek.** `teszt_s9_hatastortenet.py` (16 teszt): a modell számai, a szakasz bájtra, GK-SZOPAR, GK-A6, GK-28 (Targum, Peshitta, a két ellentmondás-BUKÁS), a mondat-ágak. A váz két tesztje (GK-A6, GK-SZOPAR) innen költözött.
+
+*Proveniencia: `scope=PARDES_DATUM=2026-11-13 python eszkozok/general.py --cel lexikon2 --id HAMART-001|ISTENTISZT-001; python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; python eszkozok/lapgen/tesztek/futtat.py | forras=50e02921 (az S7 commitja) | ts=2026-11-16`*
+
+## Független ellenőrzés — 10. ellenőrzés (S7, `fuggetlen-ellenor`, `claude-opus-5-5`, 2026-11-17)
+
+Tartomány: `8a3e7185..8969a8c1` (a base a main akkori feje; az első indítás a 2026-11-16-i leállításkor eredmény nélkül állt le). Szint: `teljes`. **Eredmény: ELTÉRÉS, 8 tétel** (a teljes táblázat az ellenőr válaszában; itt a tételek és az OK-ként igazolt fő pontok).
+
+**Rendben (saját méréssel):** az ÓSZ-tábla portolása (cellafajták, szócsalád-kulcs, betoldás, egyesítés, Targum+Vulgata összevonás) és az ÚSZ-, tanú- és alapvonal-szabályok; a HAMART 9. szakasza egyezik (engedélysor nélkül); a Peshitta-állapot és az adat egyezik; a rabbinikus hivatkozás bontása szerkezeti (nem csere); 56 sor, 129 sablonsor (8 `var`), 9 névtábla-sor, a festék számai, 16 teszt; GK-SZOPAR mind a nyolc feltétel; GK-A6 (a main kódja szerint, a B24-lekérdezéssel); A2–A6; a lista 1–5. pontja.
+
+**Eltérések (súlyosság szerint), az ellenőr besorolásával:**
+1. A CI piros a fejen (a mérce hash-őre): a beolvasztás a `2560e4e7 szamkiosztas` előtti main-t vette; újabb beolvasztás és N200 kell. *Mechanikus.*
+2. Az ISTENTISZT ÚSZ „Mit mutat” mondata (`s9.usz.mit.reszben.szopar`) 12 verset mond, a szomszéd oszlop 14-et sorol: a nevező csak az ellenőrzött Vulgata-sorral bíró versek (a Zsolt 116:4 és 116:13 kiesik); az 1Kir 18:24 (βοάω · ἐπικαλέω) az első lemma miatt kimarad az ÚSZ-oszlopból. A régi szabály szemantikája; a HAMART-on nem látszik (5 = 5). *Döntés (a 218a végi listába).*
+3. A Targum-lefedés kapuja gyenge: a mintára nem illeszkedő vagy ismeretlen könyvű sor és az üres lefedés `reszleges` állapotban némán átmegy; a nem fedett könyvben álló ellenőrzött, alakos Targum-sor rejtve marad. *Mechanikus.*
+4. A 8.2/1 független számlálói (a szópár-lánccal) hiányoznak a `regresszio.py`-ból. *Mechanikus, szeleteken átívelő.*
+5. A tanú `kor` mezőjének belső része kapu nélkül vágódik le, a festés előtt. *Döntés (adat-szétválasztás) vagy mechanikus kapu.*
+6. A szópáros ÚSZ-bevezető némán elhagyja a tematikus helyeket (ma nem látszik). *Mechanikus.*
+7. Az S7 jelentés-szakaszából hiányzik a proveniencia-sor. *Mechanikus.*
+8. A brief `kovetkezo` mezője elavult. *Mechanikus.*
+
+## A 10. ellenőrzés javítóköre (2026-11-17)
+
+| # | Javítás | Hol |
+|---|---|---|
+| 1 | a main beolvasztva (`#764`, a `szamkiosztas` 2560e4e7), a törölt döntésfájl B51-sora kikerült (N200); regresszió RENDBEN, hash-őr 209 sor | `7b7483de` |
+| 3 | a Targum-kulcs csak ismert ószövetségi „könyv fejezet:vers” lehet, különben BUKÁS; üres forrás BUKÁS; ha a forrás nem fedi a verset, de ellenőrzött, alakos Targum-sor áll rá, BUKÁS (az adat ellentmond) | `bemenet/hatastortenet.py` `b64_targum`, `szamitas/hatastortenet.py` `_osz`; teszt: `test_a_targum_kulcs_kapuja` |
+| 5 | mechanikus kapu: a `kor` mező csak „<kor>” vagy „<kor> (HCF: <év>)” alakú lehet, más alakban BUKÁS (a belső rész nem válhat le némán). Az adat-szétválasztás (külön évszám-oszlop) döntés, a 218a végi listába | `bemenet/hatastortenet.py` `_KOR_RX`; teszt: `test_a_tanu_koranak_belso_resze` |
+| 6 | a szópáros ÚSZ-bevezető tematikus helynél kimondott hibával megáll (a mondata nem tudja kimondani a kimaradást) | `megjelenites/md/hatastortenet.py` `_usz` |
+| 7 | proveniencia-sor az S7 szakaszban | e fájl |
+| 8 | a brief `kovetkezo` mezője | `F218_GENERATOR_UJ_A_BRIEF.md` |
+| 2 | nem javítva: döntés, a 218a végi listába (a nevező vagy a mondat; az 1Kir 18:24 több lemmája) | — |
+| 4 | nem javítva: az S9-ben (a teljes ISTENTISZT-mérce, minden szakasz számlálóival egy helyen); a folytatási fájl S9-teendői közé felvéve | — |
+
+Mérés a javítókör után: HAMART-regresszió RENDBEN (a 9. szakasz egyezik); az ISTENTISZT-001 9. szakasza változatlan; `teszt_s9_hatastortenet.py` + `teszt_szerkezet.py` 31 teszt, 0 hiba.
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/tesztek/futtat.py s9_hatastortenet szerkezet | forras=a javítókör commitja (7b7483de után) | ts=2026-11-17`*
