@@ -903,17 +903,143 @@ def lekotes_sha(fn):
     return None
 
 
+# A konvenció-egységesítés (1.1, DT-F175vr): a törölt névelő- és ʾet-kapcsolatok fagyasztott listája a letétben. A
+# kártyák a vers többi párját az 1.1 szerint mutatják; a vizsgált pár akkor is látszik, ha az 1.1 törölte (a tétel
+# jelöletlenül a felületen marad; a belső jelölés a letétben, külön fájlban). A minta.tsv nem változik.
+KONVENCIO_TORLOLISTA = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'konvencio_11_vegleges',
+                                    'torolt_kapcsolatok.tsv')
+KONVENCIO_SHA256 = '3f90a3bc60a746b96313865af3ed42f64d763a92e7f2da003bf804cf98163778'
+_OLDAL_KIEG = {}
+
+
+def konvencio_torolt(ut=None):
+    """A törölt kapcsolatok halmaza: {(vers, hu_sorszam, er_sorszam)}; a fájl SHA-256-ja a fagyasztott érték."""
+    ut = ut or KONVENCIO_TORLOLISTA
+    if ut not in _OLDAL_KIEG:
+        if not os.path.exists(ut):
+            raise SystemExit('hiányzik a konvenció-egységesítés törlőlistája: %s (előállítás: python '
+                             'eszkozok/karoli_strong/konvencio_egysegesites.py --torolt-ki <mappa>)' % ut)
+        if fajl_sha256(ut) != KONVENCIO_SHA256:
+            raise SystemExit('a törlőlista SHA-256-ja nem a fagyasztott érték: %s' % ut)
+        with open(ut, encoding='utf-8') as f:
+            sorok = [x.rstrip('\n').split('\t') for x in f][1:]
+        _OLDAL_KIEG[ut] = {(r[0], int(r[1]), int(r[3])) for r in sorok if r and r[0]}
+    return _OLDAL_KIEG[ut]
+
+
+def tahot_kiejtes():
+    """{vers: [kiejtés, …]} a TAHOT-kivonatból (Károli-kulcs, a sorrend a párosítás sorszámozása)."""
+    if 'tahot' not in _OLDAL_KIEG:
+        ki = {}
+        with open(os.path.join(GYOKER, 'konkordancia', 'TAHOT_kivonat.tsv'), encoding='utf-8') as f:
+            fej = f.readline().rstrip('\n').split('\t')
+            ia, ik = fej.index('Ragozott alak'), fej.index('Kiejtés')
+            for sor in f:
+                m = sor.rstrip('\n').split('\t')
+                ki.setdefault(m[0], []).append((m[ia], m[ik]))
+        _OLDAL_KIEG['tahot'] = ki
+    return _OLDAL_KIEG['tahot']
+
+
+def _h_szam(strong):
+    m = re.fullmatch(r'H(\d{4})[A-Za-z]?', strong or '')
+    return int(m.group(1)) if m else None
+
+
+def heber_tartalek_csoport(tok, kiejtes):
+    """A héber elemek csoportja (írott szavanként) Macula-azonosító nélkül: az előtag (H9001–H9009) a következő
+    elemhez, a rag (H9010–H9013, H9020–H9049) az előzőhöz, a H9014 mindkét oldalhoz tartozik; maqqef (a TAHOT-kiejtés
+    végén kötőjel) után új írott szó kezdődik, kivéve, ha rag következik. Visszaad: csoportsorszám elemenként."""
+    g = []
+    cur = 0
+    elo_elotag = elo_link = elo_maqqef = False
+    for i, k in enumerate(tok):
+        n = _h_szam(k['s'])
+        elotag = n is not None and 9001 <= n <= 9009
+        rag = n is not None and (9010 <= n <= 9013 or 9020 <= n <= 9049)
+        link = n == 9014
+        if i > 0 and not (rag or link or elo_link) and (elo_maqqef or not elo_elotag):
+            cur += 1
+        g.append(cur)
+        elo_elotag, elo_link, elo_maqqef = elotag, link, kiejtes[i].endswith('-')
+    return g
+
+
+def macula_csoport(tok):
+    """Csoportsorszám elemenként a Macula szóazonosítója szerint; None, ha nem minden elemnek van azonosítója."""
+    if not tok or not all(k.get('w') for k in tok):
+        return None
+    g, cur, elozo = [], -1, None
+    for k in tok:
+        if k['w'] != elozo:
+            cur += 1
+        g.append(cur)
+        elozo = k['w']
+    return g
+
+
+def heber_csoport(vers, tok):
+    """Az írott szó szerinti csoportok: a Macula szerint, ha minden elemnek van azonosítója, különben a tartalék
+    szabállyal (a TAHOT-kiejtésből)."""
+    m = macula_csoport(tok)
+    if m is not None:
+        return m
+    th = tahot_kiejtes().get(vers, [])
+    if len(th) != len(tok) or any(th[i][0] != tok[i]['a'] for i in range(len(tok))):
+        raise SystemExit('a TAHOT-kivonat nem illeszkedik a tétel eredeti szavaira: %s' % vers)
+    return heber_tartalek_csoport(tok, [x[1] for x in th])
+
+
+def szocsoport_ellenoriz(sorok):
+    """A tartalék csoportosítás a Macula-azonosítós tételeken pontosan a Macula csoportosítását adja; eltérésnél
+    megáll. Visszaad: az összevetett versek száma."""
+    db = 0
+    for s in sorok:
+        if s['er_nyelv'] != 'heber':
+            continue
+        tok = json.loads(s['er_tokenek_json'])
+        m = macula_csoport(tok)
+        if m is None:
+            continue
+        th = tahot_kiejtes().get(s['vers'], [])
+        if len(th) != len(tok) or any(th[i][0] != tok[i]['a'] for i in range(len(tok))):
+            raise SystemExit('a TAHOT-kivonat nem illeszkedik: %s' % s['vers'])
+        t = heber_tartalek_csoport(tok, [x[1] for x in th])
+        if any((t[i] == t[i + 1]) != (m[i] == m[i + 1]) for i in range(len(tok) - 1)):
+            raise SystemExit('a tartalék szócsoportosítás eltér a Maculától: %s (%s)' % (s['vers'], s['tetel_id']))
+        db += 1
+    return db
+
+
 def oldal_adat(sorok):
-    """A tételek az ellenőrző oldal formájában (az offline oldalba ágyazva, illetve a D1 `tetel` táblájába töltve)."""
+    """A tételek az ellenőrző oldal formájában (az offline oldalba ágyazva, illetve a D1 `tetel` táblájába töltve).
+
+    A vers párjai az 1.1 szerint (a törölt kapcsolatok nélkül; a vizsgált pár marad), a többszavasság jelzése ebből
+    számolva; a héber elemek `g` mezője az írott szó csoportja (a keret tetején az egész szó áll)."""
+    torolt = konvencio_torolt()
     adat = []
     for s in sorok:
+        hn = int(s['hu_sorszam'])
+        en = int(s['er_sorszam']) if s['er_sorszam'] else 0
+        sajat = s['tipus'] == 'par'
+        parok = [p for p in json.loads(s['parok_json'])
+                 if (s['vers'], p[0], p[2]) not in torolt or (sajat and p[0] == hn and p[2] == en)]
+        tsz = ''
+        if sajat and en:
+            n_er = sum(1 for p in parok if p[0] == hn)
+            n_hu = sum(1 for p in parok if p[2] == en)
+            tsz = {(True, True): 'n:m', (True, False): '1:n', (False, True): 'n:1'}.get((n_er > 1, n_hu > 1), '')
+        tok = json.loads(s['er_tokenek_json'])
+        if s['er_nyelv'] == 'heber':
+            for k, g in zip(tok, heber_csoport(s['vers'], tok)):
+                k['g'] = g
         adat.append({
             'id': s['tetel_id'], 'tipus': s['tipus'], 'vers': s['vers'], 'hu': s['hu_vers'],
-            'hn': int(s['hu_sorszam']), 'hk': int(s['hu_kezdet']), 'hv': int(s['hu_veg']), 'hs': s['hu_szo'],
-            'nyelv': s['er_nyelv'], 'en': int(s['er_sorszam']) if s['er_sorszam'] else 0,
+            'hn': hn, 'hk': int(s['hu_kezdet']), 'hv': int(s['hu_veg']), 'hs': s['hu_szo'],
+            'nyelv': s['er_nyelv'], 'en': en,
             'strong': s['strong'], 'szoto': s['szoto'], 'jel': s['jelentes'], 'tukor': s['tukor'],
-            'morf': s['morf'], 'mh': s['morf_hu'], 'kiej': s['kiejtes'], 'ntr': s['nem_tr'] == '1', 'tsz': s['tobbszavas'],
-            'tok': json.loads(s['er_tokenek_json']), 'parok': json.loads(s['parok_json']),
+            'morf': s['morf'], 'mh': s['morf_hu'], 'kiej': s['kiejtes'], 'ntr': s['nem_tr'] == '1', 'tsz': tsz,
+            'tok': tok, 'parok': parok,
         })
     return adat
 
@@ -1053,6 +1179,7 @@ def main():
             raise SystemExit('a letétfájl SHA-256-ja nem egyezik a minta.tsv fejlécével: %s' % a.letet)
         _, csalis = letet_olvas(a.letet)
     osszes = sorted(valodi + csalis, key=lambda r: r['tetel_id'])
+    print('héber szócsoport: a tartalék szabály %d Macula-azonosítós versen egyezik a Maculával' % szocsoport_ellenoriz(osszes))
     meret0 = szerver_oldal_ir()
     print('online ellenőrző oldal (a Worker statikus tartalma, tétel nélkül): %d bájt -> %s' % (meret0, SZERVER_OLDAL))
     cel = os.path.join(os.path.dirname(a.letet), 'ellenorzo.html')

@@ -70,6 +70,52 @@ LEKOTES = os.path.join(VALIDACIO, 'LEKOTES.md')
 MEGSZUNT_HIBATIPUSOK = ('hianyzo_par', 'hianyos_kifejezes')   # F175.V25 előtti „Nem”-altípusok: ma külön jelölő
 CSALI_KUSZOB = 0.8  # ha egy ítélő a csalik 80%-ánál (20-ból 16-nál) kevesebbet ismer fel, a számai csak fenntartással
 F172_ITELET = os.path.join(GYOKER, 'f172', 'itelet_par.tsv')
+# A konvenció-egységesítés (1.1, DT-F175vr): a törölt névelő- és ʾet-kapcsolatok fagyasztott listája a letétben. A fő
+# szám (2a) az 1.1-ben megmaradó párokon áll; a törölt párok ítélete tájékoztató (2a az 1.0-ra).
+KONVENCIO_TORLOLISTA = os.path.join(LETET_DIR, 'konvencio_11_vegleges', 'torolt_kapcsolatok.tsv')
+KONVENCIO_SHA256 = '3f90a3bc60a746b96313865af3ed42f64d763a92e7f2da003bf804cf98163778'
+# a törölt párok a #172-keret rétegeiben (az 1.0 parok_*.tsv-ből a törlőlistával, a pontossag_minta.reteg_of szerint;
+# fagyasztva, a teszt újraszámolja): az 1.1 rétegsúlyai a keret párszámából ezek levonásával
+KONVENCIO_TOROLT_RETEG = {'OSZ_mozes_magas': 46, 'OSZ_mozes': 823, 'OSZ_tortenet': 1213, 'OSZ_koltoi': 118,
+                          'OSZ_profeta': 495, 'USZ_evangelium': 1082, 'USZ_level': 710, 'USZ_jelenesek': 103}
+# a törléssel pár nélkül maradó, a pár nélküli validációs keretbe eső magyar szavak könyvcsoportonként (n = 484;
+# eszkozok/karoli_strong/konvencio_egysegesites.py --kimaradas-ki; fagyasztva, a teszt újraszámolja)
+KONVENCIO_UJ_PARNELKULI = {'OSZ_mozes': 14, 'OSZ_tortenet': 49, 'OSZ_koltoi': 9, 'OSZ_profeta': 11,
+                           'USZ_evangelium': 230, 'USZ_level': 164, 'USZ_jelenesek': 7}
+_KONVENCIO = {}
+
+
+def konvencio_torolt(ut=None):
+    """A törölt kapcsolatok: {(vers, hu_sorszam, er_sorszam)}; a fájl SHA-256-ja a fagyasztott érték (DT-F175vr)."""
+    ut = ut or KONVENCIO_TORLOLISTA
+    if ut not in _KONVENCIO:
+        if not os.path.exists(ut):
+            raise SystemExit('hiányzik a konvenció-egységesítés törlőlistája a letétből: %s' % ut)
+        import hashlib
+        with open(ut, 'rb') as f:
+            b = f.read()
+        if hashlib.sha256(b).hexdigest() != KONVENCIO_SHA256:
+            raise SystemExit('a törlőlista SHA-256-ja nem a fagyasztott érték: %s' % ut)
+        sorok = [x.split('\t') for x in b.decode('utf-8').split('\n')[1:] if x]
+        _KONVENCIO[ut] = {(r[0], int(r[1]), int(r[3])) for r in sorok}
+    return _KONVENCIO[ut]
+
+
+def torolt_tetelek(minta, torolt=None):
+    """A minta azon pár-tételei, amelyek vizsgált párját az 1.1 törölte (a felületen jelöletlenül maradnak)."""
+    torolt = konvencio_torolt() if torolt is None else torolt
+    return {r['tetel_id'] for r in minta if r['tipus'] == 'par' and r['reszminta'] != 'csali' and r['er_sorszam']
+            and (r['vers'], int(r['hu_sorszam']), int(r['er_sorszam'])) in torolt}
+
+
+def parnelkuli_keret(ut=None):
+    """A pár nélküli validációs keret könyvcsoportonként (az 1.0-n; a minta.tsv fejlécéből: „pár nélkül: cs k/K”)."""
+    with open(ut or MINTA, encoding='utf-8') as f:
+        fej = f.readline()
+    m = re.search(r'pár nélkül: ([^|]*)', fej)
+    if not m:
+        raise SystemExit('a minta fejlécében nincs a pár nélküli keret')
+    return {cs_: int(k) for cs_, _, k in re.findall(r'(\w+) (\d+)/(\d+)', m.group(1))}
 Z95 = 1.959963984540054
 ITELETEK = ('helyes', 'hibas', 'bizonytalan')
 ELTERO_FEJ = ['tetel_id', 'tipus', 'vers', 'hu_szo', 'er_szo', 'strong',
@@ -242,6 +288,8 @@ def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
     if gepi:
         g, nb = gepi
         sor.append('## 8. Ember–gép eltérések (tájékoztató; a fő számot nem módosítja)\n')
+        sor.append('A gépi bírálók számai az 1.1-ben megmaradó párokon állnak, új futás nélkül; nem javulásként '
+                   'közölhetők.\n')
         sor.append('A külső ellenőr (%s) ítélete × a párt helyesnek ítélő gépi bírálók száma (0–%d; a fagyasztott gépi tábla). '
                    'A tételeket mindkét emberi ítélettel közöljük; a becslést nem igazítjuk.\n' % (kulso_nev, nb))
         for cimke, rsz in (('alapminta', 'alap'), ('túlminta', 'tulminta')):
@@ -262,7 +310,7 @@ def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
                    'nem igazítjuk.\n' % (k_, j_, nb, i_))
 
     sor.append('## 9. Érzékenységi forgatókönyvek (tájékoztató; nem becslés)\n')
-    h = [kulso_it[t] for t in kulso_it if tip[t] == 'par' and resz.get(t) == 'alap']
+    h = [kulso_it[t] for t in kulso_it if tip.get(t) == 'par' and resz.get(t) == 'alap']
     hl, hb, bz = h.count('helyes'), h.count('hibas'), h.count('bizonytalan')
     m_csali = None
     cs = [kulso_it[t] for t in kulso_it if t in csali]
@@ -286,7 +334,7 @@ def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
     sor.append('## 10. A „hibás” ítéletek együttjárása (tájékoztató)\n')
     sor.append('A külső ellenőr (%s) pár-ítéletei (alapminta és túlminta): a „Károli itt szabadon vagy pontatlanul fordít” jelölő és a '
                'hibatípus szerint. A téves riasztásra ez nem mérőeszköz, csak jelző.\n' % kulso_nev)
-    ts = [t for t in kulso_it if tip[t] == 'par' and resz.get(t) in ('alap', 'tulminta')]
+    ts = [t for t in kulso_it if tip.get(t) == 'par' and resz.get(t) in ('alap', 'tulminta')]
     sor.append('| ítélet | n | ebből „Károli szabadon fordít” jelölővel |\n|---|---|---|')
     for it in ITELETEK:
         tt = [t for t in ts if kulso_it[t] == it]
@@ -461,6 +509,33 @@ FEJ_P = ('| | n | helyes | hibás | bizonytalan | pontosság | Wilson 95% |\n'
          '|---|---|---|---|---|---|---|')
 
 
+def parnelkuli_felso(itelok, tip, csop, keret=None, uj=None):
+    """A pár nélküli réteg kimaradási arányának felső becslése az 1.1 keretén (tájékoztató; DT-F175vr): a mért arány az
+    1.0 keretén áll; az 1.1 a törléssel n új pár nélküli szót ad a kerethez, és ezek mind kimaradásnak számítanak:
+    felső = (p·K + n) / (K + n), könyvcsoportonként és összesen."""
+    keret = keret or parnelkuli_keret()
+    uj = uj or KONVENCIO_UJ_PARNELKULI
+    K, n = sum(keret.values()), sum(uj.values())
+    sor = ['### 3/f. Felső becslés az 1.1 keretén (tájékoztató)\n',
+           'Az 1.1 a névelő- és ʾet-kapcsolatok törlésével %d új pár nélküli magyar szót ad a %d szavas kerethez (a keret '
+           'kizárási szabálya után); felső becslés: mind kimaradás, (p·K + n) / (K + n). A mért p az 1.0 keretén áll.\n'
+           % (n, K),
+           '| ítélő · könyvcsoport | K (1.0) | n (új) | mért kimaradási arány | felső becslés az 1.1-en |',
+           '|---|---|---|---|---|']
+    for nev, it in itelok:
+        lista = [it[t] for t in it if tip[t] == 'parnelkuli']
+        hb, hl = lista.count('hibas'), lista.count('helyes')
+        p = hb / (hb + hl) if hb + hl else float('nan')
+        sor.append('| %s · összesen | %d | %d | %s | %s |' % (nev, K, n, szazalek(p), szazalek((p * K + n) / (K + n))))
+        for cs_ in sorted(keret, key=_csoport_sorrend):
+            l_ = [it[t] for t in it if tip[t] == 'parnelkuli' and csop.get(t) == cs_]
+            hb, hl = l_.count('hibas'), l_.count('helyes')
+            p = hb / (hb + hl) if hb + hl else float('nan')
+            k_, n_ = keret[cs_], uj.get(cs_, 0)
+            sor.append('| %s · %s | %d | %d | %s | %s |' % (nev, cs_, k_, n_, szazalek(p), szazalek((p * k_ + n_) / (k_ + n_))))
+    return '\n'.join(sor) + '\n'
+
+
 def kimaradas_sor(cimke, itelet_lista, konzervativ=False):
     h = itelet_lista.count('helyes')
     b = itelet_lista.count('hibas')
@@ -489,17 +564,21 @@ def dontott(minta, a, b, dontes):
 
 # ---------------------------------------------------------------- kétfázisú, súlyozott becslés
 
-def f172_fazis1():
-    """A #172 mintája mint első fázis: rétegenként n' (a mintapárok száma), d (a modell-ellenőr eltérései)
-    és W (a keret pársúlya)."""
+def f172_fazis1(torolt=None):
+    """A #172 mintája mint első fázis, az 1.1 szerint: rétegenként n' (a mintapárok száma, az 1.1-ben törölt párok
+    nélkül), d (a modell-ellenőr eltérései) és W (a keret pársúlya az 1.1 párszámából; DT-F175vr)."""
+    torolt = konvencio_torolt() if torolt is None else torolt
     _, itel = tabla(F172_ITELET)
     n1, d = {}, {}
     for r in itel:
+        if (r['vers'], int(r['hu_sorszam']), int(r['er_sorszam'])) in torolt:
+            continue
         n1[r['reteg']] = n1.get(r['reteg'], 0) + 1
         if r['helyes'] == '0':
             d[r['reteg']] = d.get(r['reteg'], 0) + 1
     _, keret = tabla(os.path.join(GYOKER, 'f172', 'keret.tsv'))
-    db = {r['reteg']: int(r['parsor']) for r in keret if r['reteg'] in n1}
+    db = {r['reteg']: int(r['parsor']) - (KONVENCIO_TOROLT_RETEG.get(r['reteg'], 0) if torolt else 0)
+          for r in keret if r['reteg'] in n1}
     w = {h: x / sum(db.values()) for h, x in db.items()}   # a keret pársúlya (a kerekített `suly` helyett)
     return n1, d, w
 
@@ -516,6 +595,8 @@ def ketfazisu(minta, itelet, konzervativ=False, fazis1=None):
     V_h = p_h(1−p_h)/n' + Σ_g w_g·S²_g·(1/ν_g − 1)/n', ν_g = n_g/(n'·w_g); az összes: Σ W_h²·V_h.
     Visszaad: (becslés, alsó95, felső95, megjegyzés) vagy None-t, ha egy réteg nem becsülhető."""
     n1, _d172, w = fazis1 or f172_fazis1()
+    kiesett = torolt_tetelek(minta) if fazis1 is None else set()
+    minta = [r for r in minta if r['tetel_id'] not in kiesett]   # az 1.1-ben törölt párok nem számítanak
     d = {}
     for r in minta:
         if r['tipus'] == 'par' and r['reszminta'] in ('alap', 'tulminta') and r['elteres'] == '1':
@@ -630,6 +711,11 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     eltérésnél harmadik döntés) is ítélő; szerzői ellenőrnél (szerzoi=True) döntnök nincs, a két ítélet külön áll."""
     tip = {r['tetel_id']: r['tipus'] for r in minta}
     csop = {r['tetel_id']: r['csoport'] for r in minta}
+    # az 1.1-ben törölt vizsgált párok (DT-F175vr): a fő számba nem számítanak; a 2a az 1.0-ra tájékoztató sor
+    torolt_t = torolt_tetelek(minta)
+    alap10 = {r['tetel_id'] for r in minta if r['reszminta'] == 'alap'}
+    reszm = {r['tetel_id']: r['reszminta'] for r in minta}
+    minta = [r for r in minta if r['tetel_id'] not in torolt_t]
     alap = {r['tetel_id'] for r in minta if r['reszminta'] == 'alap'}
     elter = {r['tetel_id'] for r in minta if r['elteres'] == '1'}
     tul = {r['tetel_id'] for r in minta if r['reszminta'] == 'tulminta'}
@@ -663,8 +749,15 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     fo_nev, fo = itelok[-1] if (ket and not szerzoi) else itelok[0]
 
     sor.append('## 2. Párok: emberi pontosság\n')
-    sor.append('**Elsődleges szám:** a 2a alapminta-pontosság (%s), mellette mindig a konzervatív sor. A többi becslés '
-               'kiegészítő.\n' % fo_nev)
+    sor.append('**Elsődleges szám:** a 2a alapminta-pontosság (%s) az 1.1-ben megmaradó párokon, mellette mindig a '
+               'konzervatív sor. A többi becslés kiegészítő.\n' % fo_nev)
+    tdb = {k: sum(1 for t in torolt_t if reszm.get(t) == k) for k in ('alap', 'tulminta', 'nehez')}
+    sor.append('Az 1.1 konvenció-egységesítése (a névelő- és ʾet-kapcsolatok törlése a névmáslista kivételével; '
+               'DT-F175vr) %d mintapárt törölt (alapminta %d, túlminta %d, nehéz réteg %d; csali egy sem). Ezek a '
+               'felületen jelöletlenül maradtak; ítéletük a becslésekbe nem számít, csak a 2a 1.0-ra vonatkozó '
+               'tájékoztató sorába. A párbecslések (2a–2c, 5., 8.) az 1.1 párjain állnak; a kétfázisú becslés első '
+               'fázisa a #172 mintájának megmaradó párjai, a rétegsúly az 1.1 párszámából.\n'
+               % (len(torolt_t), tdb['alap'], tdb['tulminta'], tdb['nehez']))
     sor.append('### 2a. Alapminta (%d pár, a keret arányos rétegzett mintája)\n' % len([t for t in alap if tip[t] == 'par']))
     sor.append('A 2a kapcsolatszintű pontosság: helyes / (helyes + hibás); egy pár helyes, ha a forrásszava jó. A hiányzó '
                'kapcsolat (a magyar szóhoz még egy eredeti szó tartozik, amely nincs bekötve) nem hiba: az ellenőr az '
@@ -674,6 +767,9 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         lista = [it[t] for t in it if tip[t] == 'par' and t in alap]
         sor.append(pontossag_sor(nev, lista))
         sor.append(pontossag_sor(nev + ' · konzervatív', lista, konzervativ=True))
+    for nev, it in itelok:
+        lista = [it[t] for t in it if tip[t] == 'par' and t in alap10]
+        sor.append(pontossag_sor(nev + ' · az 1.0-ra (a törölt párokkal; tájékoztató)', lista))
     sor.append('')
     fo_lista = [fo[t] for t in fo if tip[t] == 'par' and t in alap]
     fo_p = fo_lista.count('helyes') / (fo_lista.count('helyes') + fo_lista.count('hibas')) if (
@@ -762,6 +858,7 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append(kimaradas_sor(nev, lista))
         sor.append(kimaradas_sor(nev + ' · konzervatív', lista, konzervativ=True))
     sor.append('')
+    sor.append(parnelkuli_felso(itelok, tip, csop))
 
     sor.append('### 3b. Kimaradt párok: a fordítatlannak jelölt forrásszavak (recall-becslés)\n')
     sor.append('A keret: a `forditatlan` héber és görög szavak a szabály szerinti esetek nélkül (névelő, ʾet, -āh, paragogikus '
@@ -819,7 +916,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     if not modell:
         sor.append('Nincs modell-ítélet megadva (`--modell-f172`, `--modell-valasz`, `--modell`).\n')
     else:
-        sor.append('A modell itt a #172 vak Opus-ellenőre. A bizonytalan emberi ítélet kimarad. Az alapmintán a modell–ember '
+        sor.append('A modell itt a #172 vak Opus-ellenőre; a számok az 1.1-ben megmaradó párokon állnak (új futás nélkül; '
+                   'nem javulásként közölhetők). A bizonytalan emberi ítélet kimarad. Az alapmintán a modell–ember '
                    'egyezés reprezentatív; a 72 Opus-eltérésen (mind „modell: hibás”) a tévesztési mátrix azt mutatja, hány '
                    'modell-eltérést erősít meg az ember; a túlminta-rétegen (bármelyik gépi bíráló hibásnak jelölte) mindkét '
                    'irány előfordul.\n')
@@ -1035,11 +1133,13 @@ def main():
         raise SystemExit('a --gepi és a --gepi-sha256 csak együtt adható meg')
     gepi = gepi_olvas(a.gepi, a.gepi_sha256, minta) if a.gepi else None
     kulso_v = beolv[0][1]   # a külső (vagy az egyetlen, vagy két külsőnél az első) ellenőr válaszai
-    t_szoveg = tajekoztato(minta, cimkek[0], {t: x['itelet'] for t, x in kulso_v.items()},
+    kiesett = torolt_tetelek(minta)
+    minta11 = [r for r in minta if r['tetel_id'] not in kiesett]   # az 1.1 párjai (DT-F175vr)
+    t_szoveg = tajekoztato(minta11, cimkek[0], {t: x['itelet'] for t, x in kulso_v.items()},
                            {**beolv[0][2], **kulso_v}, gepi, {r['tetel_id'] for r in minta if r['reszminta'] == 'csali'})
     kulso_teljes = {**beolv[0][2], **beolv[0][1]}
     masodik_teljes = {**beolv[1][2], **beolv[1][1]} if len(beolv) == 2 else {}
-    jav, vit = javitas_listak(minta, kulso_teljes, masodik_teljes)
+    jav, vit = javitas_listak(minta11, kulso_teljes, masodik_teljes)
     j_szoveg = ('## 11. Javítás (a protokoll 4.1–4.2 pontja)\n\nJavítható: %d tétel (`javithato.tsv`; eredet: a külső '
                 'ellenőr megjelölte a helyes forrásszót %d, mindkét ember hibásnak mondta %d). Vitatott: %d tétel '
                 '(`vitatott.tsv`), változtatás nélkül. A javított sor eredetjelzőt kap; a validált tételek a letétben '

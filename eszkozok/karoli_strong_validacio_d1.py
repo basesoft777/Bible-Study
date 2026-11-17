@@ -143,16 +143,42 @@ def sql_epit(osszes, masodik, proba, tokenek):
     return '\n'.join(ut) + '\n'
 
 
+def tetel_frissites_sql(osszes, proba):
+    """A már betöltött D1 tételeinek frissítése (UPDATE tetel SET adat = …): a tokeneket, az ellenőröket és a kiosztást
+    nem érinti (a konvenció-egységesítés után a kártyák a vers többi párját az 1.1 szerint mutatják; DT-F175vr)."""
+    ut = ['-- GENERÁLT: eszkozok/karoli_strong_validacio_d1.py --tetel-frissites — a letétben marad, a repóba nem kerül.',
+          '-- Csak a tetel tábla adat mezőjét írja; a tokent, az ellenőrt, a kiosztást és a válaszokat nem.', '']
+    for r in sorted(osszes + proba, key=lambda r: r['tetel_id']):
+        js = json.dumps(m.oldal_adat([r])[0], ensure_ascii=False, separators=(',', ':'))
+        ut.append('UPDATE tetel SET adat = %s WHERE id = %s;' % (sql_szoveg(js), sql_szoveg(r['tetel_id'])))
+    for u in ut:
+        if len(u.encode('utf-8')) > MAX_UTASITAS:
+            raise SystemExit('túl hosszú SQL-utasítás (%d bájt): %s' % (len(u.encode('utf-8')), u[:80]))
+    return '\n'.join(ut) + '\n'
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--uj-tokenek', action='store_true', help='új tokenek és admin-kulcs (csak ha még nincsenek)')
     ap.add_argument('--alap-url', help='a Worker címe (pl. https://karoli-strong-validacio.<fiók>.workers.dev); '
                                        'a linkek a tokenfájlba kerülnek')
     ap.add_argument('--letet', default=LETET)
+    ap.add_argument('--tetel-frissites', metavar='FAJLNEV',
+                    help='csak a betöltött D1 tételeinek frissítő SQL-je a letétbe (új fájl; a tokeneket nem érinti)')
     a = ap.parse_args()
     tok_ut = os.path.join(a.letet, 'tokenek.tsv')
     admin_ut = os.path.join(a.letet, 'admin_kulcs.txt')
     osszes, masodik, proba = tetelek(a.letet)
+    if a.tetel_frissites:
+        ut = os.path.join(a.letet, os.path.basename(a.tetel_frissites))
+        if os.path.exists(ut):
+            raise SystemExit('a fájl már létezik, nem írom felül: %s' % ut)
+        sql = tetel_frissites_sql(osszes, proba)
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(sql)
+        print('tétel-frissítő SQL: %s (%d tétel, SHA-256 %s)' % (ut, len(osszes) + len(proba),
+                                                                hashlib.sha256(sql.encode('utf-8')).hexdigest()))
+        return
     if os.path.exists(tok_ut):
         if a.uj_tokenek:
             raise SystemExit('a tokenfájl már létezik (%s); új tokenekhez előbb kézzel kell félretenni' % tok_ut)
@@ -170,7 +196,11 @@ def main():
             raise SystemExit('az --alap-url alakja: https://<host>')
         for r in tok:
             r['link'] = '%s/?t=%s' % (alap, r['token'])
-    tokenek_ir(tok_ut, tok)
+    # a tokenfájl a letét védett fájlja: csak új tokeneknél íródik; a meglévő nem íródik felül (DT-F175vl)
+    if not os.path.exists(tok_ut):
+        tokenek_ir(tok_ut, tok)
+    elif tokenek_olvas(tok_ut) != tok:
+        raise SystemExit('a tokenfájl tartalma változna (pl. --alap-url): a meglévő tokenfájl nem íródik felül')
     sql = sql_epit(osszes, masodik, proba, tok)
     sql_ut = os.path.join(a.letet, 'd1_betoltes.sql')
     with open(sql_ut, 'w', encoding='utf-8', newline='\n') as f:
