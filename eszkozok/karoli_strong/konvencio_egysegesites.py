@@ -14,9 +14,12 @@ magyar szó, a köztük álló írásjel):
      (NEVMAS: vonatkozó, mutató, személyes, kérdő és határozatlan névmások ragos alakjaikkal; csak főnévi és
      melléknévi névmás, névmási határozószó nem), vagy az „a”, ha utána vonatkozó névmás áll (VONATKOZO: a ki, a mely,
      a mi …; az „a” a kettéírt vonatkozó névmás része, prompt_v3 B);
-  2. szűrő: az önálló „az” marad, ha utána mássalhangzóval kezdődő szó, írásjel, versvég, vagy „a”/„az” áll; magánhangzóval
-     kezdődő szó előtt törlődik (névelőként kezelve). (A ragozatlan „ki” szűrője a szúrópróba után kikerült:
-     mind az 58 általa törölt eset vonatkozó névmás volt.)
+  2. szűrők: (a) a ragozatlan „ki” marad, ha közvetlenül „a” előzi meg, verskezdő, vagy közvetlenül írásjel után
+     áll; különben törlődik (igekötő lehet). (b) Kötőjeles szó a teljes alakjával illeszkedik: a kötőjel utáni (és
+     előtti) token önállóan nem illeszkedik a listára (pl. „megmentheted-e”: törlődik). (c) A „mind” + listás alak
+     (mindazok, mindezt …) általános szabályként a listán van. (d) Az önálló „az” marad, ha utána mássalhangzóval kezdődő szó, írásjel, versvég, vagy „a”/„az” áll; magánhangzóval
+     kezdődő szó előtt törlődik (névelőként kezelve). Az -ért ragos alakok (ezért, azért …) túlnyomóan határozószói
+     szerepük miatt nincsenek a listán.
   3. ʾet (H0853): minden kapcsolata törlődik;
   4. egyetlen-pár védelem nincs: ha a magyar szó pár nélkül marad, az ismert kimaradás.
 Csak törlő javítás: új pár nem keletkezik, a megmaradó `parok`-sorok bájtra változatlanok. A `szavak_*.tsv`-ben a
@@ -96,15 +99,29 @@ NEVMAS = frozenset(' '.join((_KI, _MELY, _MI, _A_ELOTAGU, _VALA, _EZ, _AZ, _AMA,
 TORLO_FEJ = ['vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'er_szo', 'strong']
 
 
-def dontes(strong, hu_szo, elozo, kovetkezo, koztes):
+def nevmas_e(s):
+    """A (kisbetűs) szó a névmáslistán van-e: a lista eleme, vagy „mind” + listás alak (mindazok, mindezt …)."""
+    return s in NEVMAS or (s.startswith('mind') and (s[4:] in NEVMAS or s[4:] == 'az'))
+
+
+def dontes(strong, hu_szo, elozo, kovetkezo, koztes, elotte=' ', teljes=None):
     """(megtartás oka | None, törlés oka | None) egy CEL_STRONG-párra.
 
-    elozo / kovetkezo: a versben előtte / utána álló magyar token (None: versvég/-kezdet); koztes: a magyar szó és a
-    következő token közti szöveg (írásjel-vizsgálathoz)."""
+    elozo / kovetkezo: a versben előtte / utána álló magyar token (None: verskezdet/-vég); koztes: a magyar szó és a
+    következő token közti szöveg, elotte: az előző token és a magyar szó közti szöveg (írásjel-vizsgálathoz); teljes: a
+    kötőjeles teljes alak (a kötőjellel kapcsolt tokenek a kötőjelekkel), ha a szó kötőjeles alak része."""
     if strong == ET:
         return None, 'et'
+    if teljes and teljes != hu_szo:
+        # kötőjeles alak: csak a teljes alak illeszkedhet a listára (pl. „megmentheted-e”: törlődik)
+        return ('nevmas', None) if nevmas_e(teljes.lower()) else (None, 'kotojeles')
     s = hu_szo.lower()
     k = (kovetkezo or '').lower()
+    if s == 'ki':
+        # a ragozatlan „ki” névmás, ha „a” előzi meg, verskezdő, vagy írásjel után áll; különben igekötő lehet
+        if (elozo or '').lower() == 'a' or elozo is None or elotte.strip():
+            return 'nevmas', None
+        return None, 'ki_igekoto'
     if s == 'az':
         if kovetkezo is None:
             return 'az_versveg', None
@@ -117,7 +134,7 @@ def dontes(strong, hu_szo, elozo, kovetkezo, koztes):
         return None, 'az_maganhangzo_elott'
     if s == 'a':
         return ('a_vonatkozo', None) if k in VONATKOZO else (None, 'nem_nevmas')
-    if s in NEVMAS:
+    if nevmas_e(s):
         return 'nevmas', None
     return None, 'nem_nevmas'
 
@@ -184,10 +201,19 @@ def konyv_dontes(alap, konyv):
         h = int(r[pi['hu_sorszam']])
         if h > len(t) or t[h - 1][0] != r[pi['hu_szo']]:
             raise SystemExit('a Károli-token eltér a pártáblától: %s %d %s' % (v, h, r[pi['hu_szo']]))
+        szoveg = karoli_versek()[v]
         elozo = t[h - 2][0] if h >= 2 else None
         kov = t[h][0] if h < len(t) else None
-        koztes = karoli_versek()[v][t[h - 1][2]:t[h][1]] if h < len(t) else ''
-        ki.append((r, ny, dontes(st, r[pi['hu_szo']], elozo, kov, koztes), (elozo or '', kov or '')))
+        koztes = szoveg[t[h - 1][2]:t[h][1]] if h < len(t) else ''
+        elotte = szoveg[t[h - 2][2]:t[h - 1][1]] if h >= 2 else ''
+        # a kötőjeles teljes alak: balra és jobbra, amíg a tokeneket pontosan egy kötőjel köti össze
+        a_, b_ = h - 1, h - 1
+        while a_ > 0 and szoveg[t[a_ - 1][2]:t[a_][1]] == '-':
+            a_ -= 1
+        while b_ + 1 < len(t) and szoveg[t[b_][2]:t[b_ + 1][1]] == '-':
+            b_ += 1
+        teljes = szoveg[t[a_][1]:t[b_][2]]
+        ki.append((r, ny, dontes(st, r[pi['hu_szo']], elozo, kov, koztes, elotte, teljes), (elozo or '', kov or '')))
     return pi, ki
 
 
