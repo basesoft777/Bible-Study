@@ -106,9 +106,10 @@ SZAKASZOK = os.path.join(REPO, 'adat', 'bdb_szakaszok.tsv')
 # F197 (DT-F197a): harmadik tanú, a Sefaria BDB-feldolgozása (adat/bdb_jp_sefaria.tsv, SEMA 2.29.1; az összevetés szabálya:
 # bdb_sefaria_tanu.osszevet). Bekapcsolva: ahol a Sefaria-pont a tábla pontjától eltér, a sor `ketes` (`jp_tanu_sefaria`, ha más
 # ok nem áll előtte); egyezésnél és ha a Sefaria a verset nem linkeli, a bizonyosság változatlan (a `biztos` marad); a `jp_kezi` sort
-# nem érinti. ALAPBÓL KIKAPCSOLVA (a felhasználó feladatleírása, 2026-11-11: a HAMART kiadása alatt a lap ne változzon); a
-# bekapcsolás külön lépés. A `--sefaria-tanu` kapcsoló egy futásra bekapcsolja (méréshez).
-SEFARIA_TANU = False
+# nem érinti. BEKAPCSOLVA (DT-F197b, a felhasználó döntése, 2026-11-17: „legyen így”, a DT776 szerinti mintán kívüli szúrópróba
+# után: a tábla 28/40, a Sefaria 15/40 sort téved; naplok/F197_jelentes.md 7.). A kikapcsolt futás (méréshez, összevetéshez):
+# `SEFARIA_TANU = False`; a `--sefaria-tanu` kapcsoló kikapcsolt állapotban egy futásra bekapcsol.
+SEFARIA_TANU = True
 SEFARIA_TABLA = os.path.join(REPO, 'adat', 'bdb_jp_sefaria.tsv')
 # F185 (DT-F185g, orkesztrátori döntés, 2026-11-10): tételes jelentéspont-felülírás ott, ahol a forrással igazoltan a tábla téved
 # (a hibaosztály: N-F185d). Kulcs: (Strong, poz); érték: (szakasz, rész, útvonal, indok idézettel). A sor okkódja `jp_kezi`, a
