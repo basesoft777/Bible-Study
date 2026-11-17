@@ -233,9 +233,35 @@ class ForrasAllapotMondat(unittest.TestCase):
         for sorok in ([('Psalms 1:1',)], [('Mt 1:1',)], []):
             b = bemenet.Bemenet(kozos.GYOKER)
             eredeti = b._tabla
-            b._tabla = lambda b_id, _s=sorok, _e=eredeti, **kw: Tabla(('igehely',), _s) if b_id == 'B64'                 else _e(b_id, **kw)
+
+            def tabla(b_id, _s=sorok, _e=eredeti, **kw):
+                return Tabla(('igehely',), _s) if b_id == 'B64' else _e(b_id, **kw)
+            b._tabla = tabla
             with self.assertRaises(BemenetHiba, msg=repr(sorok)):
                 HB.b64_targum(b)
+
+    def test_a_nem_fedett_versre_allo_targum_sor_bukas(self):
+        """Ha a Targum-forrás nem fedi a verset, de ellenőrzött, alakos Targum-sor áll rá, az adat ellentmond: BUKÁS
+        (a sor nem rejtőzhet el a „nincs Targum-forrás” mondat mögött). A lefedés itt a Mózes-könyveket nem
+        tartalmazza; a HAMART-001 láncversei mind az 1Mózesben állnak."""
+        eredeti = HS.ht_be.b64_targum
+        HS.ht_be.b64_targum = lambda b: HB.TargumLefedes(ForrasAllapot.RESZLEGES, frozenset({'Ézs'}))
+        try:
+            with self.assertRaises(BemenetHiba):
+                HS.szamit(_Korny(HAMART))
+        finally:
+            HS.ht_be.b64_targum = eredeti
+
+    def test_szopar_tematikus_hellyel_kapuhiba(self):
+        """A szópáros újszövetségi bevezető a tematikus helyek kimaradását nem tudja kimondani: kimondott hiba, nem
+        néma hiány (GK-06)."""
+        from lapgen.megjelenites.md.iro import Lapiro
+        from lapgen.szamitas.vizsgalat import KapuHiba
+        from lapgen.szoveg import Igehely
+        u = HS.UszTabla(szopar=True, mag_hely=None, tematikus=(Igehely('Jel 22:3'),), sorok=(), egyezo=0,
+                        peshitta=ForrasAllapot.NEM_VIZSGALT)
+        with self.assertRaises(KapuHiba):
+            MD._usz(Lapiro(), ny(), u)
 
     def test_a_tanu_koranak_belso_resze(self):
         """A tanú korának látható része a mező eleje; a belső rész csak „ (HCF: <év>)” alakú lehet."""
