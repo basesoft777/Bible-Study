@@ -47,11 +47,23 @@ class Szabaly(unittest.TestCase):
                   'istennek', 'föld', 'é', 'azért', 'ezért'):
             self.assertEqual(self.d('H9009', w), (None, 'nem_nevmas'), w)
 
-    def test_ki_mindig_marad(self):
-        # a ragozatlan „ki” szűrője kikerült (58/58 ellenőrzött eset névmás)
-        for e in ('a', 'A', 'Istennek', None):
+    def test_ki_szabaly_szerint_marad(self):
+        # a „ki” a listán van; a két igekötő-kivétel a pár helyéhez kötött (KI_IGEKOTO), nem a szóhoz
+        for e in ('a', 'A', 'Istennek', 'szedének', None):
             self.assertEqual(self.d('G3588', 'ki', elozo=e), ('nevmas', None), e)
         self.assertEqual(self.d('G3588', 'kik', elozo='mene')[0], 'nevmas')
+        self.assertEqual(K.KI_IGEKOTO, frozenset({('2Sám 5:2', 10), ('2Sám 13:17', 12)}))
+
+    def test_kotojeles_teljes_alak(self):
+        # más kötőjeles szó a teljes alakjával illeszkedik
+        self.assertEqual(K.dontes('H9009', 'krónika', None, 'x', ' ', ' ', 'krónika-könyvében'), (None, 'kotojeles'))
+        self.assertEqual(K.dontes('G3588', 'mindazok', None, 'x', ' ', ' ', 'mindazok')[0], 'nevmas')
+
+    def test_mind_listas_alak(self):
+        for w in ('mindazok', 'mindazokat', 'mindezt', 'mindezeket', 'mindaz', 'mindama'):
+            self.assertEqual(self.d('G3588', w)[0], 'nevmas', w)
+        for w in ('minden', 'mindenki', 'mindazáltal', 'mindnyájan'):
+            self.assertEqual(self.d('G3588', w), (None, 'nem_nevmas'), w)
 
     def test_a_vonatkozo(self):
         for k in ('ki', 'kik', 'mely', 'melyben', 'mi', 'mit'):
@@ -98,10 +110,24 @@ class TeljesAdat(unittest.TestCase):
         # minden megmaradó névelő-pár magyar szava a listán van, vagy a két minta („a” + vonatkozó, önálló „az”) egyike
         for s in megtart:
             w = s[2].lower()
-            self.assertTrue(w in K.NEVMAS or (w == 'a' and s[8].lower() in K.VONATKOZO) or w == 'az', s)
+            self.assertTrue(K.nevmas_e(w) or (w == 'a' and s[8].lower() in K.VONATKOZO) or w == 'az', s)
 
     def test_hash_ismetelve_azonos(self):
         self.assertEqual(K.torlolista_hash(), K.torlolista_hash())
+
+    def test_ki_56_marad_2_torlodik(self):
+        # az 58 nem „a” utáni névelő–„ki” kapcsolatból 56 marad (névmás), 2 törlődik (igekötő; tételes kivétel)
+        torol, megtart = K.torlolista()
+        ki = [s for s in torol + megtart if s[2].lower() == 'ki' and s[7].lower() != 'a' and s[5] != K.ET]
+        self.assertEqual(len(ki), 58)
+        self.assertEqual(sorted((s[0], int(s[1])) for s in ki if s in torol), sorted(K.KI_IGEKOTO))
+        self.assertEqual(sum(1 for s in ki if s in megtart), 56)
+
+    def test_kerdo_e_levalasztva(self):
+        # a kérdő „-e/-é”: 1Kor 7:16 „megmentheted-e” két párja törlődik, Zsid 3:17 „azokra-é” marad
+        torol, megtart = K.torlolista()
+        self.assertEqual(sorted(s[0] for s in torol if s[6] == 'kerdo_e'), ['1Kor 7:16', '1Kor 7:16'])
+        self.assertTrue(any(s[0] == 'Zsid 3:17' and s[2] == 'azokra' for s in megtart))
 
 
 if __name__ == '__main__':
