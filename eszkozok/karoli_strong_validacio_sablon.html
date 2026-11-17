@@ -1,9 +1,11 @@
 <!doctype html>
 <html lang="hu">
 <head>
-<!-- GENERÁLT sablonból: eszkozok/karoli_strong_validacio_sablon.html + a letétbeli minta.tsv és csalilista;
-     előállítás: python eszkozok/karoli_strong_validacio_minta.py — a kész oldalt kézzel szerkeszteni tilos;
-     a sablon önmagában (adat nélkül) nem működőképes oldal -->
+<!-- GENERÁLT sablonból: eszkozok/karoli_strong_validacio_sablon.html; előállítás: python eszkozok/karoli_strong_validacio_minta.py
+     — a kész oldalt kézzel szerkeszteni tilos. Két változat: (1) online (SZERVER = true, DT-F175vp): tétel nélkül, a
+     Cloudflare Worker adja a tételeket a linkbeli tokenre, és minden válasz azonnal a szerverre mentődik
+     (eszkozok/karoli_strong_validacio_worker/public/index.html); (2) offline tartalék: a letétbeli minta és csalik
+     beágyazva, böngészőbeli mentéssel és fájlexporttal. A sablon önmagában (adat és mód nélkül) nem működőképes oldal. -->
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,6 +36,7 @@ h2 { font-size: 1rem; margin: 0 0 6px; color: var(--muted); font-weight: 600; te
 button, .btn { font: inherit; border: 1px solid var(--line); background: var(--chip); color: var(--fg);
   border-radius: 8px; padding: 10px 14px; cursor: pointer; min-height: 44px; }
 button:hover { border-color: var(--accent); }
+button:disabled { opacity: .45; cursor: not-allowed; }
 button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
 button.valaszt { flex: 1 1 0; min-width: 96px; font-weight: 600; }
 button.valaszt.on.helyes { background: var(--ok); border-color: var(--ok); color: #fff; }
@@ -116,6 +119,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
       <span class="muted small" id="f-vers"></span>
       <span class="spacer"></span>
       <span class="small" id="f-kesz"></span>
+      <span class="small" id="f-szerver"></span>
       <span class="row betu" title="A versek betűmérete"><button id="b-kisebb" type="button" class="small">A−</button><button id="b-nagyobb" type="button" class="small">A+</button></span>
       <button id="b-attekint" class="small" type="button">Áttekintés</button>
       <button id="b-menu" class="small" type="button">Mentés / export</button>
@@ -143,9 +147,12 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
       </div>
       <p>Kérlek, előbb olvasd el az <i>UTMUTATO.md</i> első szakaszát; a példák ott vannak.</p>
       <p><b>Kérjük, a másik ellenőrrel ne egyeztess</b>: a két ítéletet függetlenül mérjük.</p>
+      <div id="indul-helyi">
       <p class="small muted">A haladás ebben a böngészőben automatikusan mentődik. Másik eszközre a „Mentés / export” fájljával viheted át („Betöltés”).</p>
       <label for="i-nev"><b>A neved</b> (a fájlnévbe kerül; ugyanazt a nevet használd mindig):</label>
       <input type="text" id="i-nev" autocomplete="name" placeholder="pl. Kovács Anna">
+      </div>
+      <p class="small muted rejtett" id="indul-szerver">A válaszaid minden kattintás után automatikusan a szerverre mentődnek: bármikor abbahagyhatod, és bármely eszközön (gépen, telefonon) folytathatod ugyanezzel a személyes linkkel. Ha közben megszakad az internetkapcsolat, dolgozz nyugodtan tovább: a böngésző megőrzi a válaszokat, és a kapcsolat visszatértével elküldi őket. Ilyenkor ne zárd be az oldalt, amíg fent „Minden válasz a szerveren” nem áll.</p>
       <p class="row"><button class="primary" id="b-indul" type="button">Kezdés</button>
         <span class="small muted" id="indul-info"></span></p>
     </div>
@@ -220,8 +227,16 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
   <!-- mentés / export -->
   <section id="s-menu" class="rejtett">
     <div class="card">
-      <div class="row"><h2 style="margin:0">Mentés / export</h2><span class="spacer"></span><button id="b-vissza2" type="button">Vissza a tételhez</button></div>
+      <div class="row"><h2 style="margin:0" id="m-cim">Mentés / export</h2><span class="spacer"></span><button id="b-vissza2" type="button">Vissza a tételhez</button></div>
       <p>Ellenőr: <b id="m-nev"></b> · kész: <b id="m-kesz"></b></p>
+      <div id="m-szerver" class="rejtett">
+        <p>A válaszaid minden módosítás után automatikusan a szerverre mentődnek; bármely eszközön folytathatod ugyanezzel a linkkel. Állapot: <b id="m-szerver-allapot"></b></p>
+        <p class="row"><button class="primary" id="b-kesz" type="button">Kész, beküldöm</button></p>
+        <p class="small" id="m-kesz-info"></p>
+        <p class="small muted">A „Kész, beküldöm” akkor nyomható meg, ha minden tételnél van ítélet, és minden válasz a szerveren van. Utána a válaszok már nem módosíthatók.</p>
+        <p class="small muted"><button id="b-export2" type="button" class="small">Biztonsági másolat letöltése (nem kötelező)</button></p>
+      </div>
+      <div id="m-helyi">
       <p class="row"><button class="primary" id="b-export" type="button">Exportálás (JSON letöltése)</button>
         <button id="b-betolt" type="button">Betöltés (korábbi export)</button>
         <input type="file" id="i-betolt" accept="application/json,.json" hidden></p>
@@ -233,6 +248,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
         <p><button id="b-masol" type="button">Másolás a vágólapra</button> <span class="small muted" id="m-masolva"></span></p>
         <textarea id="m-json" readonly style="min-height:120px"></textarea>
       </details>
+      </div>
     </div>
   </section>
 </main>
@@ -256,7 +272,8 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 <script>
 "use strict";
 var MINTA = /*MINTA_ADAT*/null;
-var VERZIO = "F175.V18";
+var SZERVER = /*SZERVER_MOD*/false;   // true: online változat (a tételek és a mentés a Workeren, DT-F175vp)
+var VERZIO = "F175.V21";
 
 /* ---------- segédek ---------- */
 function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
@@ -267,9 +284,14 @@ function tarol_ir(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); retu
 function tarol_olvas(k) { try { var s = localStorage.getItem(k); return s ? JSON.parse(s) : null; } catch (e) { return null; } }
 function fajlnev(nev) { var s = nev.normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[^A-Za-z0-9]+/g, "_").replace(/^_+|_+$/g, ""); return (s || "ellenor") + "_valaszok.json"; }
 
-var MINTA_HASH = fnv(MINTA.map(function (t) { return t.id + "|" + t.vers + "|" + t.hn + "|" + t.en; }).join(";")).toString(16);
-var KULCS_AKTIV = "ksval:" + MINTA_HASH + ":aktiv";
-var IDX = {}; MINTA.forEach(function (t, i) { IDX[t.id] = i; });
+var MINTA_HASH = "", KULCS_AKTIV = "", IDX = {};
+function minta_beallit(m) {
+  MINTA = m;
+  MINTA_HASH = fnv(MINTA.map(function (t) { return t.id + "|" + t.vers + "|" + t.hn + "|" + t.en; }).join(";")).toString(16);
+  KULCS_AKTIV = "ksval:" + MINTA_HASH + ":aktiv";
+  IDX = {}; MINTA.forEach(function (t, i) { IDX[t.id] = i; });
+}
+if (MINTA) minta_beallit(MINTA);
 
 var allapot = null;   // {ellenor, sorrend:[id], valaszok:{id:{...}}, poz}
 var nezet = "indul";
@@ -280,7 +302,12 @@ function ment() {
   if (!allapot) return;
   var ok = tarol_ir(kulcs(allapot.ellenor), allapot);
   tarol_ir(KULCS_AKTIV, allapot.ellenor);
-  var m = $("t-mentve"); if (m) m.textContent = ok ? "mentve " + new Date().toLocaleTimeString("hu-HU") : "A böngésző nem enged menteni: exportálj gyakran!";
+  var m = $("t-mentve"); if (m && !SZERVER) m.textContent = ok ? "mentve " + new Date().toLocaleTimeString("hu-HU") : "A böngésző nem enged menteni: exportálj gyakran!";
+}
+/* egy tétel válasza módosult: időbélyeg, helyi mentés, és online módban a küldési sorba (szöveg gépelésekor késleltetve) */
+function valtozott(t, v, azonnal) {
+  v.ido = new Date().toISOString(); ment();
+  if (SZERVER) sor_hozzaad(t.id, v, azonnal);
 }
 /* ellenőrönként véletlen sorrend, blokk nélkül (a sorrend semmilyen réteget nem árul el) */
 function keverd(ids, rnd) { for (var i = ids.length - 1; i > 0; i--) { var j = Math.floor(rnd() * (i + 1)); var x = ids[i]; ids[i] = ids[j]; ids[j] = x; } return ids; }
@@ -461,6 +488,11 @@ function rajzol() {
   $("t-karoli-megj").value = v.karoli_megj || "";
   $("t-karoli-megj-doboz").classList.toggle("rejtett", !v.karoli);
   $("t-mentve").textContent = v.ido ? "utoljára módosítva: " + new Date(v.ido).toLocaleString("hu-HU") : "";
+  if (SZERVER) allapot_jel();   /* online módban itt a mentés állapota áll */
+  /* beküldés („Kész”) után a válaszok nem módosíthatók */
+  ["b-helyes", "b-hibas", "b-bizonytalan", "i-karoli"].forEach(function (x) { $(x).disabled = SZ.lezarva; });
+  ["t-megj", "t-segedeszkoz", "t-karoli-megj"].forEach(function (x) { $(x).readOnly = SZ.lezarva; });
+  document.querySelectorAll("input[name=hibatipus]").forEach(function (r) { r.disabled = SZ.lezarva; });
 
   /* a vers párjai listában (a kártyák mellett tartalék nézet) */
   var tb = $("t-parok"); tb.textContent = "";
@@ -493,10 +525,10 @@ function valaszto_aktiv(t, v) {
 
 function kartya_kattint(o, n) {
   var t = tetel(), v = valasz(t);
-  if (o === "er" && valaszto_aktiv(t, v)) {
+  if (o === "er" && valaszto_aktiv(t, v) && !SZ.lezarva) {
     var i = v.helyes_forras.indexOf(n);
     if (i >= 0) v.helyes_forras.splice(i, 1); else { v.helyes_forras.push(n); v.helyes_forras.sort(function (a, b) { return a - b; }); }
-    v.ido = new Date().toISOString(); ment();
+    valtozott(t, v, true);
     fokusz = { o: o, n: n }; rajzol(); return;
   }
   fokusz = (fokusz && fokusz.o === o && fokusz.n === n) ? null : { o: o, n: n };
@@ -504,12 +536,13 @@ function kartya_kattint(o, n) {
 }
 
 function itelet_valt(x) {
+  if (SZ.lezarva) return;
   var t = tetel(), v = valasz(t);
   v.itelet = (v.itelet === x) ? "" : x;
   if (t.tipus === "parnelkuli" || t.tipus === "kimaradt") v.hibatipus = v.itelet === "hibas" ? "kimaradt_par" : "";
   else if (v.itelet !== "hibas") v.hibatipus = "";
   if (!valaszto_aktiv(t, v)) v.helyes_forras = [];
-  v.ido = new Date().toISOString(); ment(); rajzol(); emlekezteto();
+  valtozott(t, v, true); rajzol(); emlekezteto();
   if (v.itelet === "hibas" || v.itelet === "bizonytalan") { var r = $("t-reszlet"); if (r && r.scrollIntoView) r.scrollIntoView({ behavior: "smooth", block: "center" }); }
 }
 
@@ -519,7 +552,8 @@ function kov_kitoltetlen() {
     var p = (allapot.poz + i) % MINTA.length, id = allapot.sorrend[p];
     if (!(allapot.valaszok[id] && allapot.valaszok[id].itelet)) { allapot.poz = p; fokusz = null; ment(); rajzol(); window.scrollTo(0, 0); return; }
   }
-  alert("Minden tétel kitöltve. Köszönjük! Most exportáld a válaszokat (Mentés / export).");
+  alert(SZERVER ? "Minden tétel kitöltve. Köszönjük! Ha végeztél, a „Mentés / Kész” menüben a „Kész, beküldöm” gombbal zárd le."
+    : "Minden tétel kitöltve. Köszönjük! Most exportáld a válaszokat (Mentés / export).");
 }
 
 function racs() {
@@ -547,6 +581,9 @@ function menu() {
   $("m-fajl").textContent = fajlnev(allapot.ellenor);
   $("m-json").value = JSON.stringify(export_obj(), null, 1);
   $("m-masolva").textContent = ""; $("m-betolt-info").textContent = "";
+  $("m-szerver").classList.toggle("rejtett", !SZERVER);
+  $("m-helyi").classList.toggle("rejtett", SZERVER);
+  if (SZERVER) allapot_jel();
 }
 function exportal() {
   var s = JSON.stringify(export_obj(), null, 1);
@@ -606,6 +643,7 @@ function betolt(fajl) {
 }
 /* Emlékeztető: 50 megválaszolt tételenként biztonsági export (nem kötelező, bezárható). */
 function emlekezteto() {
+  if (SZERVER) return;   // online módban a szerver a mentés, exportra nincs szükség
   var k = kesz_db(), kuszob = Math.floor(k / 50) * 50;
   if (kuszob >= 50 && kuszob > (allapot.emlek || 0)) {
     allapot.emlek = kuszob; ment();
@@ -624,8 +662,140 @@ function betu_beallit(i) {
 }
 betu_beallit(betu_i);
 
+/* ---------- online mód: a Worker (DT-F175vp) ----------
+   A tételeket a linkbeli token (?t=…) alapján a Worker adja; minden módosítás tételenkénti pillanatképként a küldési
+   sorba kerül (localStorage), és onnan kötegben a szerverre. Hálózati hibánál a sor megmarad, és a kliens
+   növekvő várakozással újrapróbál; a szerver a kliens-azonosító szerint idempotens (ugyanaz a küldés kétszer sem
+   kerül be kétszer). Folytatás bármely eszközről: a szerver adja vissza az utolsó érvényes válaszokat. */
+var SZ = { token: "", sor_kulcs: "", sor: [], uton: {}, kuldes: false, varakozas: 0, hiba: "", lezarva: false,
+  kesz_ido: null, idozito: null, kesleltet: null, betoltve: false };
+function azon() { var a = new Uint8Array(12); crypto.getRandomValues(a); return Array.prototype.map.call(a, function (x) { return ("0" + x.toString(16)).slice(-2); }).join(""); }
+function masol(x) { return JSON.parse(JSON.stringify(x)); }
+function sor_ment() { tarol_ir(SZ.sor_kulcs, SZ.sor); }
+function sor_hozzaad(id, v, azonnal) {
+  /* ugyanannak a tételnek a még el nem indított pillanatképe fölösleges: a legújabb helyettesíti */
+  SZ.sor = SZ.sor.filter(function (x) { return x.tetel_id !== id || SZ.uton[x.kliens_azon]; });
+  SZ.sor.push({ tetel_id: id, kliens_azon: azon(), kliens_ido: v.ido, valasz: masol(v) });
+  sor_ment(); allapot_jel();
+  clearTimeout(SZ.kesleltet);
+  SZ.kesleltet = setTimeout(kuld, azonnal ? 0 : 1500);
+}
+function api(ut, modszer, adat) {
+  var o = { method: modszer, headers: { Authorization: "Bearer " + SZ.token } };
+  if (adat) { o.headers["Content-Type"] = "application/json"; o.body = JSON.stringify(adat); }
+  return fetch(ut, o).then(function (r) {
+    return r.json().then(function (d) { return { st: r.status, d: d }; }, function () { return { st: r.status, d: {} }; });
+  });
+}
+function ujraprobal() {
+  SZ.varakozas = Math.min(60000, (SZ.varakozas || 1000) * 2);
+  clearTimeout(SZ.idozito); SZ.idozito = setTimeout(kuld, SZ.varakozas);
+}
+function kuld() {
+  if (!SZERVER || !SZ.betoltve || SZ.kuldes || !SZ.sor.length || SZ.lezarva || SZ.hiba === "token" || SZ.hiba === "elutasitva") { allapot_jel(); return; }
+  var csomag = SZ.sor.slice(0, 50);
+  csomag.forEach(function (x) { SZ.uton[x.kliens_azon] = 1; });
+  SZ.kuldes = true; allapot_jel();
+  var vege = function () { SZ.kuldes = false; csomag.forEach(function (x) { delete SZ.uton[x.kliens_azon]; }); };
+  api("/api/valaszok", "POST", { valtozasok: csomag }).then(function (x) {
+    vege();
+    if (x.st === 200) {
+      var ok = {}; (x.d.elfogadva || []).forEach(function (a) { ok[a] = 1; });
+      SZ.sor = SZ.sor.filter(function (c) { return !ok[c.kliens_azon]; }); sor_ment();
+      SZ.hiba = ""; SZ.varakozas = 0;
+      if (SZ.sor.length) kuld(); else allapot_jel();
+      return;
+    }
+    if (x.st === 409) { SZ.lezarva = true; SZ.hiba = "lezarva"; }
+    else if (x.st === 401) SZ.hiba = "token";
+    else if (x.st === 400 || x.st === 403) SZ.hiba = "elutasitva";   /* nem próbálja újra; a válaszok a böngészőben megmaradnak */
+    else { SZ.hiba = "halozat"; ujraprobal(); }
+    allapot_jel();
+  }, function () { vege(); SZ.hiba = "halozat"; ujraprobal(); allapot_jel(); });
+}
+function allapot_szoveg() {
+  if (SZ.lezarva) return "✓ Beküldve" + (SZ.kesz_ido ? " (" + new Date(SZ.kesz_ido).toLocaleString("hu-HU") + ")" : "");
+  if (SZ.hiba === "token") return "⚠ A link érvénytelen: a válaszok nem mentődnek a szerverre. Szólj a szervezőnek.";
+  if (SZ.hiba === "elutasitva") return "⚠ A szerver elutasított egy mentést. A válaszok ebben a böngészőben megvannak; szólj a szervezőnek.";
+  if (!SZ.sor.length) return "✓ Minden válasz a szerveren";
+  if (SZ.hiba === "halozat") return "⚠ Nincs kapcsolat: " + SZ.sor.length + " változás vár. A böngésző megőrzi, és a kapcsolat visszatértével elküldi; addig ne zárd be az oldalt.";
+  return "Mentés a szerverre… (" + SZ.sor.length + ")";
+}
+function allapot_rovid() {   /* a fejlécbe: rövid jelzés (a teljes szöveg a tétel alján és a menüben) */
+  if (SZ.lezarva) return "✓ beküldve";
+  if (SZ.hiba === "token" || SZ.hiba === "elutasitva") return "⚠ mentési hiba";
+  if (!SZ.sor.length) return "✓ mentve";
+  if (SZ.hiba === "halozat") return "⚠ nincs kapcsolat (" + SZ.sor.length + " vár)";
+  return "mentés…";
+}
+function allapot_jel() {
+  if (!SZERVER) return;
+  var s = allapot_szoveg();
+  $("f-szerver").textContent = allapot_rovid();
+  $("f-szerver").title = s;
+  $("t-mentve").textContent = s;
+  $("m-szerver-allapot").textContent = s;
+  $("b-kesz").disabled = SZ.lezarva || !allapot || kesz_db() < MINTA.length || SZ.sor.length > 0;
+}
+function kesz_kuld() {
+  var info = $("m-kesz-info");
+  if (SZ.lezarva) { info.textContent = "A válaszaidat már beküldted. Köszönjük!"; return; }
+  if (kesz_db() < MINTA.length) { info.textContent = "Még " + (MINTA.length - kesz_db()) + " tétel ítélet nélkül áll (Áttekintés: a szürke számok)."; return; }
+  if (SZ.sor.length) { info.textContent = "Még " + SZ.sor.length + " változás nincs a szerveren; várd meg, amíg a mentés befejeződik (internetkapcsolat kell)."; kuld(); return; }
+  if (!confirm("Beküldöd a válaszaidat? Ezután már nem módosíthatók.")) return;
+  info.textContent = "Beküldés…";
+  api("/api/kesz", "POST", { kliens_azon: azon() }).then(function (x) {
+    if (x.st === 200) { SZ.lezarva = true; SZ.kesz_ido = x.d.kesz_ido; info.textContent = "Köszönjük! A válaszaid beérkeztek."; }
+    else if (x.st === 409 && x.d.hiba === "hianyos") info.textContent = "A szerveren még hiányzik valami: " + x.d.uzenet + ". Várj egy kicsit, és próbáld újra.";
+    else info.textContent = "A beküldés nem sikerült (" + (x.d.uzenet || x.st) + "); próbáld újra pár perc múlva.";
+    allapot_jel(); if (nezet === "tetel") rajzol();
+  }, function () { info.textContent = "Nincs kapcsolat a szerverrel; próbáld újra, ha lesz internet."; });
+}
+function indul_hiba(s) { $("indul-info").textContent = s; $("b-indul").classList.add("rejtett"); }
+function sz_betolt(d) {
+  minta_beallit(d.tetelek);
+  if (MINTA_HASH !== d.minta_hash) { indul_hiba("A letöltött tételek sérültek (minta-azonosító: " + MINTA_HASH + ", várt: " + d.minta_hash + "). Szólj a szervezőnek."); return; }
+  var helyi = tarol_olvas(kulcs(d.ellenor));
+  var a = { ellenor: d.ellenor, sorrend: keverd(MINTA.map(function (t) { return t.id; }), mulberry32(fnv(SZ.token + "|" + MINTA_HASH))),
+    valaszok: {}, poz: 0, kezdes: (helyi && helyi.kezdes) || new Date().toISOString() };
+  if (helyi && typeof helyi.poz === "number" && helyi.poz >= 0 && helyi.poz < MINTA.length) a.poz = helyi.poz;
+  var sz = d.valaszok || {};
+  for (var id in sz) if (id in IDX) { a.valaszok[id] = masol(sz[id]); if (!a.valaszok[id].helyes_forras) a.valaszok[id].helyes_forras = []; }
+  /* a szerverre még el nem jutott módosítások (a küldési sor) felülírják a régebbi szerverállapotot */
+  SZ.sor = SZ.sor.filter(function (x) { return x.tetel_id in IDX; });
+  SZ.sor.forEach(function (x) { var h = a.valaszok[x.tetel_id]; if (!h || (x.kliens_ido || "") >= (h.ido || "")) a.valaszok[x.tetel_id] = masol(x.valasz); });
+  allapot = a; SZ.lezarva = !!d.kesz_ido; SZ.kesz_ido = d.kesz_ido || null; SZ.betoltve = true;
+  ment();
+  if (kesz_db() > 0 || helyi) mutat("tetel");
+  else { $("indul-info").textContent = "Betöltve: " + MINTA.length + " tétel."; $("b-indul").classList.remove("rejtett"); }
+  allapot_jel(); kuld();
+}
+function sz_indul() {
+  $("indul-helyi").classList.add("rejtett"); $("indul-szerver").classList.remove("rejtett");
+  $("b-menu").textContent = "Mentés / Kész"; $("m-cim").textContent = "Mentés / Kész";
+  $("b-indul").classList.add("rejtett");
+  var m = /[?&]t=([0-9a-f]{32})(?:&|$)/.exec(location.search || "");
+  if (!m) { indul_hiba("Ez az oldal csak a személyes linkeddel nyílik meg (a levélben kaptad)."); return; }
+  SZ.token = m[1];
+  SZ.sor_kulcs = "ksval:sz:" + fnv(SZ.token).toString(16) + ":sor";
+  SZ.sor = tarol_olvas(SZ.sor_kulcs) || [];
+  $("indul-info").textContent = "Betöltés…";
+  api("/api/tetelek", "GET").then(function (x) {
+    if (x.st === 401) indul_hiba("A link érvénytelen. Kérjük, a levélben kapott linket használd, vagy szólj a szervezőnek.");
+    else if (x.st !== 200) indul_hiba("A szerver most nem válaszol (" + x.st + "). Próbáld újra pár perc múlva.");
+    else sz_betolt(x.d);
+  }, function () { indul_hiba("Nem érem el a szervert. Ellenőrizd az internetkapcsolatot, és töltsd újra az oldalt."); });
+  var idoszakos = function () { kuld(); setTimeout(idoszakos, 30000); };
+  setTimeout(idoszakos, 30000);
+  if (window.addEventListener) {
+    window.addEventListener("online", function () { SZ.varakozas = 0; if (SZ.hiba === "halozat") SZ.hiba = ""; kuld(); });
+    window.addEventListener("beforeunload", function (e) { if (SZ.sor.length) { e.preventDefault(); e.returnValue = ""; } });
+  }
+}
+
 /* ---------- indulás ---------- */
 function indul() {
+  if (SZERVER) { if (allapot) mutat("tetel"); return; }
   var nev = $("i-nev").value.trim();
   if (!nev) { $("indul-info").textContent = "Kérjük, add meg a neved."; return; }
   allapot = tarol_olvas(kulcs(nev)) || uj_allapot(nev);
@@ -635,12 +805,12 @@ $("b-indul").addEventListener("click", indul);
 $("i-nev").addEventListener("keydown", function (e) { if (e.key === "Enter") indul(); });
 ["helyes", "hibas", "bizonytalan"].forEach(function (x) { $("b-" + x).addEventListener("click", function () { itelet_valt(x); }); });
 document.querySelectorAll("input[name=hibatipus]").forEach(function (r) {
-  r.addEventListener("change", function () { var t = tetel(), v = valasz(t); v.hibatipus = r.value; if (!valaszto_aktiv(t, v)) v.helyes_forras = []; v.ido = new Date().toISOString(); ment(); rajzol(); });
+  r.addEventListener("change", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.hibatipus = r.value; if (!valaszto_aktiv(t, v)) v.helyes_forras = []; valtozott(t, v, true); rajzol(); });
 });
-$("t-megj").addEventListener("input", function () { var v = valasz(tetel()); v.megjegyzes = $("t-megj").value; v.ido = new Date().toISOString(); ment(); });
-$("i-karoli").addEventListener("change", function () { var v = valasz(tetel()); v.karoli = $("i-karoli").checked; v.ido = new Date().toISOString(); ment(); $("t-karoli-megj-doboz").classList.toggle("rejtett", !v.karoli); });
-$("t-segedeszkoz").addEventListener("input", function () { var v = valasz(tetel()); v.segedeszkoz = $("t-segedeszkoz").value; v.ido = new Date().toISOString(); ment(); });
-$("t-karoli-megj").addEventListener("input", function () { var v = valasz(tetel()); v.karoli_megj = $("t-karoli-megj").value; v.ido = new Date().toISOString(); ment(); });
+$("t-megj").addEventListener("input", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.megjegyzes = $("t-megj").value; valtozott(t, v, false); });
+$("i-karoli").addEventListener("change", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.karoli = $("i-karoli").checked; valtozott(t, v, true); $("t-karoli-megj-doboz").classList.toggle("rejtett", !v.karoli); });
+$("t-segedeszkoz").addEventListener("input", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.segedeszkoz = $("t-segedeszkoz").value; valtozott(t, v, false); });
+$("t-karoli-megj").addEventListener("input", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.karoli_megj = $("t-karoli-megj").value; valtozott(t, v, false); });
 $("b-kisebb").addEventListener("click", function () { betu_beallit(betu_i - 1); });
 $("b-nagyobb").addEventListener("click", function () { betu_beallit(betu_i + 1); });
 $("b-elozo").addEventListener("click", function () { lep(-1); });
@@ -668,7 +838,11 @@ document.addEventListener("keydown", function (e) {
   else if (e.key === "ArrowRight") lep(1); else if (e.key === "ArrowLeft") lep(-1); else if (e.key === "n" || e.key === "N") kov_kitoltetlen();
 });
 
-(function () {
+$("b-kesz").addEventListener("click", kesz_kuld);
+$("b-export2").addEventListener("click", exportal);
+
+if (SZERVER) { mutat("indul"); sz_indul(); }
+else (function () {
   var nev = tarol_olvas(KULCS_AKTIV);
   if (nev && tarol_olvas(kulcs(nev))) { allapot = tarol_olvas(kulcs(nev)); mutat("tetel"); }
   else { if (nev) $("i-nev").value = nev; mutat("indul"); }

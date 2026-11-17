@@ -72,6 +72,7 @@ KONK = os.path.join(GYOKER, 'konkordancia')
 ADAT = pm.ADAT
 KIMENET = os.path.join(GYOKER, 'kozlemeny', 'data_paper', 'validacio')
 SABLON = os.path.join(GYOKER, 'eszkozok', 'karoli_strong_validacio_sablon.html')
+SZERVER_OLDAL = os.path.join(GYOKER, 'eszkozok', 'karoli_strong_validacio_worker', 'public', 'index.html')
 MAG = 20261116   # a régi, nyilvános mag: az ezzel húzott (2026-11-16–17 között a repóban álló) minta érvénytelen (DT-F175vh); ma minden húzás a titkos magból jön
 N_PAR = 300
 N_NELKUL = 80
@@ -537,13 +538,20 @@ def fajl_sha256(ut):
         return hashlib.sha256(f.read()).hexdigest()
 
 
-def epit(mag, csali_mag=None):
-    parok, db_par = par_minta(mag)
-    nehez, keret_nehez = nehez_minta(mag, {(r['vers'], r['hu_sorszam'], r['er_sorszam']) for r in parok})
-    parok = parok + nehez
-    nelkul, db_nelkul, keret_nelkul, kizart = nelkul_minta(mag)
-    # a szabály nélküli (F175.V1–V4) minta: hány tétele esett volna a kizárt esetek közé
-    regi, _, _, _ = nelkul_minta(mag, szur=False)
+def epit(mag, csali_mag=None, proba_parok=None):
+    """A minta tételei. `proba_parok` (#172-mintasorok) esetén csak ezekből a párokból épít próbatételeket
+    (`P01`…; az online felület kétfős próbájához, DT-F175vp), réteg, pár nélküli tétel és csali nélkül."""
+    proba = proba_parok is not None
+    if proba:
+        parok, db_par, nehez, keret_nehez = [dict(r) for r in proba_parok], {}, [], 0
+        nelkul, db_nelkul, keret_nelkul, kizart, regi = [], {}, {}, {}, []
+    else:
+        parok, db_par = par_minta(mag)
+        nehez, keret_nehez = nehez_minta(mag, {(r['vers'], r['hu_sorszam'], r['er_sorszam']) for r in parok})
+        parok = parok + nehez
+        nelkul, db_nelkul, keret_nelkul, kizart = nelkul_minta(mag)
+        # a szabály nélküli (F175.V1–V4) minta: hány tétele esett volna a kizárt esetek közé
+        regi, _, _, _ = nelkul_minta(mag, szur=False)
     regi_kizart = {}
     for r in regi:
         sorok_v = [r2 for r2 in _hu_versszavak(r['konyv'], r['vers'])]
@@ -552,9 +560,12 @@ def epit(mag, csali_mag=None):
         if ok:
             regi_kizart[ok] = regi_kizart.get(ok, 0) + 1
     karoli, ered = bemenet._adatok()
-    kimaradt, db_kim, keret_kim, kizart_kim = kimaradt_minta(mag, ered)
+    if proba:
+        kimaradt, db_kim, keret_kim, kizart_kim = [], {}, {}, {}
+    else:
+        kimaradt, db_kim, keret_kim, kizart_kim = kimaradt_minta(mag, ered)
     versek = {r['vers'] for r in parok} | {r['vers'] for r in nelkul} | {r['vers'] for r in kimaradt}
-    csalik = csali_minta(csali_mag, versek, ered) if csali_mag else []
+    csalik = csali_minta(csali_mag, versek, ered) if (csali_mag and not proba) else []
     versek |= {c[2] for c in csalik}
     pv = parok_versenkent(versek)
     lex_pontos, lex_strong = lex_tabla()
@@ -660,7 +671,7 @@ def epit(mag, csali_mag=None):
     sorrend = list(range(len(tetelek)))
     rnd.shuffle(sorrend)
     for uj, i in enumerate(sorrend, 1):
-        tetelek[i]['tetel_id'] = 'V%03d' % uj
+        tetelek[i]['tetel_id'] = ('P%02d' if proba else 'V%03d') % uj
 
     sorok = []
     illesztett = 0
@@ -828,7 +839,7 @@ def masodik_resz(sorok):
     return [r for r in sorok if r['kozos'] == '1']
 
 
-def lekotes_ir(letet_dir, retegszam, vegleges=False, zenodo=None):
+def lekotes_ir(letet_dir, retegszam, vegleges=False, zenodo=None, online=None):
     """A nyilvános lekötés: a letétfájlok SHA-256-ja és a rétegenkénti tételszám (a tételek és a rétegjelölés
     nélkül). A validáció lezárása után a letétfájlok nyilvánosságra kerülnek, és ezzel ellenőrizhetők."""
     sorok = ['# Az emberi validáció letétjének lekötése', '',
@@ -841,12 +852,22 @@ def lekotes_ir(letet_dir, retegszam, vegleges=False, zenodo=None):
              'nyilvános. Itt csak az SHA-256-juk szerepel, előzetes lekötésként; a lezárás után a fájlok a letétbe '
              'kerülnek, és ezzel ellenőrizhetők.', '',
              '| fájl | SHA-256 |', '|---|---|']
-    for fn in ('minta.tsv', 'F175V_csalik.tsv', 'ellenorzo.html', 'ellenorzo_masodik.html', 'harom_biralo_itelet.tsv'):
+    for fn in ('minta.tsv', 'F175V_csalik.tsv', 'ellenorzo.html', 'ellenorzo_masodik.html', 'harom_biralo_itelet.tsv',
+               'proba.tsv'):
         sorok.append('| `%s` | `%s` |' % (fn, fajl_sha256(os.path.join(letet_dir, fn))))
     for fn in ('UTMUTATO.md', 'UTMUTATO.pdf'):   # az útmutató a repóban (nyilvános), a kiküldött változat lekötése
         ut = os.path.join(KIMENET, fn)
         if os.path.exists(ut):
             sorok.append('| `%s` (a repóban) | `%s` |' % (fn, fajl_sha256(ut)))
+    if online:
+        sorok += ['', '**Az online felület (F175.V21).** A kiküldött felület a Cloudflare Worker: a tételeket a linkbeli '
+                  'tokenre a D1 adatbázisból adja, minden választ azonnal ment (append-only napló). A Worker kódja és a '
+                  'tétel nélküli oldal a repóban áll; a tételek a letétből töltődnek a D1-be '
+                  '(`eszkozok/karoli_strong_validacio_d1.py`), és a betöltő a tételek kanonikus JSON-ját az itt lekötött '
+                  'SHA-256-tal veti össze. A próbatételek (`proba.tsv`) a mintán kívüli párok, a próba ítéletei a '
+                  'kiértékelésbe nem kerülnek.', '', '| online felület | SHA-256 |', '|---|---|']
+        for cimke, h in online:
+            sorok.append('| %s | `%s` |' % (cimke, h))
     sorok += ['', 'Tételszám rétegenként: ' + ', '.join('%s %d' % kv for kv in retegszam) + '.', '']
     if zenodo:
         sorok += ['A minta alapja: a minta %d valódi párjából %d megvan a nyílt mag 1.0-s exportjában '
@@ -882,8 +903,8 @@ def lekotes_sha(fn):
     return None
 
 
-def html_ir(sorok, cel):
-    """Az ellenőrző oldal: a sablon `/*MINTA_ADAT*/null` helyére a minta JSON-ja."""
+def oldal_adat(sorok):
+    """A tételek az ellenőrző oldal formájában (az offline oldalba ágyazva, illetve a D1 `tetel` táblájába töltve)."""
     adat = []
     for s in sorok:
         adat.append({
@@ -894,12 +915,68 @@ def html_ir(sorok, cel):
             'morf': s['morf'], 'mh': s['morf_hu'], 'kiej': s['kiejtes'], 'ntr': s['nem_tr'] == '1', 'tsz': s['tobbszavas'],
             'tok': json.loads(s['er_tokenek_json']), 'parok': json.loads(s['parok_json']),
         })
+    return adat
+
+
+def html_ir(sorok, cel):
+    """Az offline ellenőrző oldal: a sablon `/*MINTA_ADAT*/null` helyére a minta JSON-ja."""
+    adat = oldal_adat(sorok)
     js = json.dumps(adat, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     with open(SABLON, encoding='utf-8') as f:
         sablon = f.read()
     if sablon.count('/*MINTA_ADAT*/null') != 1:
         raise SystemExit('a sablonban pontosan egy /*MINTA_ADAT*/null helyőrző kell')
     ki = sablon.replace('/*MINTA_ADAT*/null', js)
+    os.makedirs(os.path.dirname(cel), exist_ok=True)
+    with open(cel, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(ki)
+    return len(ki)
+
+
+N_PROBA = 10
+
+
+def proba_parok(mag, sorok):
+    """Az online felület kétfős próbájának párjai (DT-F175vp): N_PROBA #172-mintapár, amely nincs a mintában, és
+    a verse sem szerepel a minta egyetlen tételében sem (a próba így semmit nem mutat meg a mintából). A húzás a
+    titkos magból."""
+    _, f172 = _tabla(os.path.join(GYOKER, 'f172', 'minta.tsv'))
+    versek = {r['vers'] for r in sorok}
+    jelolt = sorted((r for r in f172 if r['vers'] not in versek), key=lambda r: r['minta_id'])
+    ki = random.Random('%s:proba' % mag).sample(jelolt, N_PROBA)
+    for r in ki:
+        r.update(reszminta='proba', elteres='', opus_elteres='')
+    return sorted(ki, key=lambda r: r['minta_id'])
+
+
+def proba_ir(mag, sorok, ut):
+    """A próbatételek (P01…) a letétbe (`proba.tsv`, a minta.tsv oszlopaival)."""
+    p, *_ = epit(mag, None, proba_parok(mag, sorok))
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# GENERÁLT: eszkozok/karoli_strong_validacio_minta.py — az online felület kétfős próbája (F175.V21); '
+                'a mintán kívüli párok\n')
+        f.write('\t'.join(MINTA_FEJ) + '\n')
+        for r in p:
+            f.write('\t'.join(r[k] for k in MINTA_FEJ) + '\n')
+    return p
+
+
+def tetelek_sha256(sorok):
+    """Az online felület tételeinek lekötése: az `oldal_adat` kanonikus JSON-jának SHA-256-ja (a D1-betöltő ugyanezt
+    számolja, és eltérésnél nem tölt be)."""
+    import hashlib
+    js = json.dumps(oldal_adat(sorok), ensure_ascii=False, separators=(',', ':'), sort_keys=True)
+    return hashlib.sha256(js.encode('utf-8')).hexdigest()
+
+
+def szerver_oldal_ir(cel=SZERVER_OLDAL):
+    """Az online ellenőrző oldal (DT-F175vp): a sablon tétel nélkül, `SZERVER = true`-val; a tételeket a Worker adja
+    a linkbeli tokenre. Tételt és titkot nem tartalmaz, ezért a repóban áll (a Worker statikus tartalma)."""
+    with open(SABLON, encoding='utf-8') as f:
+        sablon = f.read()
+    if sablon.count('/*SZERVER_MOD*/false') != 1 or sablon.count('/*MINTA_ADAT*/null') != 1:
+        raise SystemExit('a sablonban pontosan egy /*SZERVER_MOD*/false és egy /*MINTA_ADAT*/null helyőrző kell')
+    ki = sablon.replace('/*SZERVER_MOD*/false', 'true')
     os.makedirs(os.path.dirname(cel), exist_ok=True)
     with open(cel, 'w', encoding='utf-8', newline='\n') as f:
         f.write(ki)
@@ -976,6 +1053,8 @@ def main():
             raise SystemExit('a letétfájl SHA-256-ja nem egyezik a minta.tsv fejlécével: %s' % a.letet)
         _, csalis = letet_olvas(a.letet)
     osszes = sorted(valodi + csalis, key=lambda r: r['tetel_id'])
+    meret0 = szerver_oldal_ir()
+    print('online ellenőrző oldal (a Worker statikus tartalma, tétel nélkül): %d bájt -> %s' % (meret0, SZERVER_OLDAL))
     cel = os.path.join(os.path.dirname(a.letet), 'ellenorzo.html')
     meret = html_ir(osszes, cel)
     print('ellenőrző oldal: %d bájt -> %s (a repón kívül; a külső ellenőré)' % (meret, cel))
@@ -989,9 +1068,22 @@ def main():
              'nehez': 'nehéz réteg', 'kimaradt': 'kimaradt pár', 'csali': 'csali'}[r['reszminta']]
         retegszam[k] = retegszam.get(k, 0) + 1
     rend = ['alapminta-pár', 'túlminta', 'nehéz réteg', 'pár nélküli magyar szó', 'kimaradt pár', 'csali']
+    # az online felület kétfős próbája: mintán kívüli párok a letétbe (DT-F175vp)
+    if _USZ_KONYVEK is None:
+        _USZ_KONYVEK = _usz_konyvek()
+    mag, _ = letet_olvas(a.letet)
+    proba = proba_ir(mag, osszes, os.path.join(os.path.dirname(a.letet), 'proba.tsv'))
+    print('próbatételek: %d (mintán kívüli párok) -> %s' % (len(proba), os.path.join(os.path.dirname(a.letet), 'proba.tsv')))
+    worker = os.path.join(GYOKER, 'eszkozok', 'karoli_strong_validacio_worker')
+    online = [('`public/index.html` (a tétel nélküli oldal, a repóban)', fajl_sha256(SZERVER_OLDAL)),
+              ('`src/logika.js` (a Worker, a repóban)', fajl_sha256(os.path.join(worker, 'src', 'logika.js'))),
+              ('`schema.sql` (a D1 sémája, a repóban)', fajl_sha256(os.path.join(worker, 'schema.sql'))),
+              ('a külső ellenőr tételei (%d; az `oldal_adat` kanonikus JSON-ja)' % len(osszes), tetelek_sha256(osszes)),
+              ('a második ítélő tételei (%d)' % len(masodik_resz(osszes)), tetelek_sha256(masodik_resz(osszes))),
+              ('a próbatételek (%d)' % len(proba), tetelek_sha256(proba))]
     lekotes_ir(os.path.dirname(a.letet), [(k, retegszam[k]) for k in rend if k in retegszam] +
                [('összesen', len(valodi) + len(csalis)), ('a második ítélő oldalán', len(masodik_resz(osszes)))],
-               a.vegleges, zenodo_egyezes(valodi) + (kiadas_azonosito(),))
+               a.vegleges, zenodo_egyezes(valodi) + (kiadas_azonosito(),), online)
     print('lekötés: %s' % LEKOTES)
 
 

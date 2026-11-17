@@ -34,3 +34,8 @@ pardes*.db.epit
 # #76 olvasói szerver: helyi környezet és a frissességi teszt eredménye
 eszkozok/olvaso_szerver/.venv/
 eszkozok/olvaso_szerver/frissesseg_eredmeny.txt
+
+# F175.V21 -- a validacios Worker helyi wrangler-allapota es helyi titkai (nem verziozzuk)
+eszkozok/karoli_strong_validacio_worker/.wrangler/
+eszkozok/karoli_strong_validacio_worker/.dev.vars
+eszkozok/karoli_strong_validacio_worker/node_modules/

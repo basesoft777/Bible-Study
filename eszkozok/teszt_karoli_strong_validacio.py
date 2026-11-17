@@ -389,6 +389,75 @@ class Kiertekeles(unittest.TestCase):
         md, _, _ = self._fut('--kulso', '1', fajlok=[self.fa, fm])
         self.assertIn('| párok, alapminta (csalik nélkül) | 300 |', md)   # az egyezés mind a 300 alappáron
 
+    def test_szerver_export(self):
+        # az online felület (Worker) exportja: ugyanaz az eredmény, mint a két oldalexporttal (--kulso 1); a próba-
+        # ellenőr kimarad; a naplóval nem egyező „utolsó érvényes” válasz és a hiányzó külső ellenőr elutasítva
+        resz = [r for r in self.minta if r['kozos'] == '1']
+        with open(self.fa, encoding='utf-8') as f:
+            ea = json.load(f)
+        eb = _export('Második', resz, ki.minta_hash(resz), lambda r: ('hibas', 'egyeb') if r['tetel_id'] in self.b_hibas else ('helyes', ''))
+        fb = os.path.join(self.tmp, 'masodik_szerver.json')
+        with open(fb, 'w', encoding='utf-8') as f:
+            json.dump(eb, f, ensure_ascii=False)
+        naplo, n = [], 0
+        ellenorok = []
+        for azon, szerep, e in (('E1', 'kulso', ea), ('E2', 'masodik', eb), ('P1', 'proba', None)):
+            v = {}
+            for t, x in sorted((e or {}).get('valaszok', {}).items()):
+                x = dict(x, ido='2026-11-20T10:00:00.000Z')
+                n += 1   # egy régebbi, felülírt pillanatkép is a naplóban (más ítélettel)
+                naplo.append({'n': n, 'ellenor': azon, 'tetel': t, 'esemeny': 'valasz', 'valasz': dict(x, itelet='bizonytalan', ido='2026-11-19T10:00:00.000Z'),
+                              'kliens_ido': '2026-11-19T10:00:00.000Z', 'szerver_ido': '2026-11-20T10:00:01.000Z', 'kliens_azon': 'r%06d' % n})
+                n += 1
+                naplo.append({'n': n, 'ellenor': azon, 'tetel': t, 'esemeny': 'valasz', 'valasz': x, 'kliens_ido': x['ido'],
+                              'szerver_ido': '2026-11-20T10:00:01.000Z', 'kliens_azon': 'u%06d' % n})
+                v[t] = x
+            ellenorok.append({'oldal': 'F175.V21-szerver', 'ellenor': azon, 'szerep': szerep,
+                              'minta_hash': e['minta_hash'] if e else 'dffb4c9', 'minta_meret': e['minta_meret'] if e else 10,
+                              'kesz_ido': None, 'valaszok': v})
+        exp = {'formatum': 'F175V-szerver-export/1', 'verzio': 'F175.V21', 'export_ido': '2026-11-21T00:00:00.000Z',
+               'ellenorok': ellenorok, 'naplo': naplo}
+        fx = os.path.join(self.tmp, 'szerver_export.json')
+        with open(fx, 'w', encoding='utf-8') as f:
+            json.dump(exp, f, ensure_ascii=False)
+
+        def fut(extra, kimenet):
+            return subprocess.run([sys.executable, SZKRIPT] + extra + ['--csali-nelkul', '--kimenet', kimenet],
+                                  capture_output=True, text=True, encoding='utf-8')
+        r1 = fut(['--szerver-export', fx], os.path.join(self.tmp, 'sz1'))
+        self.assertEqual(r1.returncode, 0, r1.stderr)
+        r2 = fut([self.fa, fb, '--kulso', '1'], os.path.join(self.tmp, 'sz2'))
+        self.assertEqual(r2.returncode, 0, r2.stderr)
+        md = []
+        for d in ('sz1', 'sz2'):
+            with open(os.path.join(self.tmp, d, 'kiertekeles.md'), encoding='utf-8') as f:
+                # a proveniencia-sor (forrásfájlok) és az ellenőrök neve eltér; a számok nem
+                md.append([x for x in f.read().replace('E1', 'Teszt A').replace('E2', 'Második').split('\n')
+                           if 'MANUAL: scope=' not in x])
+        self.assertEqual(md[0], md[1])
+        self.assertIn('A (Teszt A, külső)', '\n'.join(md[0]))
+        # a naplóval nem egyező „utolsó érvényes” válasz: elutasítva
+        rossz = json.loads(json.dumps(exp))
+        t0 = sorted(rossz['ellenorok'][0]['valaszok'])[0]
+        rossz['ellenorok'][0]['valaszok'][t0]['megjegyzes'] = 'utólag átírva'
+        fr = os.path.join(self.tmp, 'szerver_rossz.json')
+        with open(fr, 'w', encoding='utf-8') as f:
+            json.dump(rossz, f, ensure_ascii=False)
+        r3 = fut(['--szerver-export', fr], os.path.join(self.tmp, 'sz3'))
+        self.assertNotEqual(r3.returncode, 0)
+        self.assertIn('naplóból számolttal', r3.stderr)
+        # külső ellenőr nélkül, illetve a szerep mellé adott --kulso: elutasítva
+        csak2 = dict(exp, ellenorok=[e for e in exp['ellenorok'] if e['szerep'] != 'kulso'],
+                     naplo=[x for x in naplo if x['ellenor'] != 'E1'])
+        f2 = os.path.join(self.tmp, 'szerver_kulso_nelkul.json')
+        with open(f2, 'w', encoding='utf-8') as f:
+            json.dump(csak2, f, ensure_ascii=False)
+        r4 = fut(['--szerver-export', f2], os.path.join(self.tmp, 'sz4'))
+        self.assertNotEqual(r4.returncode, 0)
+        self.assertIn('pontosan egy külső ellenőr', r4.stderr)
+        r5 = fut(['--szerver-export', fx, '--kulso', '1'], os.path.join(self.tmp, 'sz5'))
+        self.assertNotEqual(r5.returncode, 0)
+
     def test_szerzoi_es_egy_ellenor(self):
         md, _, _ = self._fut('--szerzo', '2')
         self.assertIn('B (Teszt B, szerző)', md)
@@ -468,6 +537,54 @@ class Oldal(unittest.TestCase):
             self.skipTest('nincs letétfájl')
         minta = ki.csali_hozzaad(ki.MINTA, minta, ki.LETET_ALAP)
         self.assertIn('minta_hash: ' + ki.minta_hash(minta), r.stdout)
+
+
+class Online(unittest.TestCase):
+    """Az online felület (DT-F175vp): a Worker-logika és a kliens együtt, kitalált adattal (Node, node:sqlite);
+    a repóbeli online oldal a sablonból generált, tétel nélküli változat."""
+
+    WORKER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'karoli_strong_validacio_worker')
+
+    def _node(self, proba):
+        if not shutil.which('node'):
+            self.skipTest('nincs node')
+        r = subprocess.run(['node', os.path.join(self.WORKER, 'teszt', proba)], capture_output=True, text=True,
+                           encoding='utf-8')
+        if 'node:sqlite' in r.stderr and 'ERR_UNKNOWN_BUILTIN_MODULE' in r.stderr:
+            self.skipTest('a node-ban nincs node:sqlite')
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn('RENDBEN', r.stdout)
+
+    def test_worker_logika(self):
+        self._node('worker_proba.mjs')
+
+    def test_kliens_es_worker(self):
+        self._node('kliens_proba.mjs')
+
+    def test_online_oldal_a_sablonbol(self):
+        # a repóbeli online oldal = a sablon, SZERVER = true-val, tétel nélkül (generált; kézzel nem szerkeszthető)
+        with open(vm.SABLON, encoding='utf-8') as f:
+            sablon = f.read()
+        with open(vm.SZERVER_OLDAL, encoding='utf-8') as f:
+            oldal = f.read()
+        self.assertEqual(oldal, sablon.replace('/*SZERVER_MOD*/false', 'true'))
+        self.assertIn('var MINTA = /*MINTA_ADAT*/null;', oldal)
+
+    def test_d1_betolto(self):
+        # a betöltő SQL a kitalált letétből: séma, tételek, ellenőrök a token SHA-256-jával (a token maga nem)
+        import karoli_strong_validacio_d1 as d1
+        if not os.path.exists(os.path.join(os.path.dirname(ki.LETET_ALAP), 'proba.tsv')):
+            self.skipTest('nincs letét')
+        osszes, masodik, proba = d1.tetelek()
+        tok = [{'ellenor': e, 'szerep': sz, 'token': '%032x' % i, 'link': '', 'megjegyzes': ''}
+               for i, (e, sz) in enumerate(d1.ELLENOROK, 1)]
+        sql = d1.sql_epit(osszes, masodik, proba, tok)
+        self.assertEqual(sql.count('INSERT INTO tetel '), len(osszes) + len(proba))
+        self.assertEqual(sql.count('INSERT INTO kiosztas '), len(osszes) + len(masodik) + 2 * len(proba))
+        self.assertNotIn('%032x' % 1, sql)
+        self.assertIn(ki.minta_hash(osszes), sql)
+        self.assertTrue(all(r['tetel_id'].startswith('P') for r in proba))
+        self.assertFalse({r['vers'] for r in proba} & {r['vers'] for r in osszes})   # a próba a mintán kívül
 
 
 if __name__ == '__main__':

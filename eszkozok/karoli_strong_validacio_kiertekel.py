@@ -3,7 +3,10 @@
 """F175.V — az emberi validáció kiértékelése (Károli 1908 – Strong szópárosítás).
 
 Bemenet:
-  * egy vagy két ellenőr exportja (`<ellenor>_valaszok.json`, az `ellenorzo.html` írja). Két külső ellenőrnél
+  * az online felület (Cloudflare Worker, DT-F175vp) admin-exportja (`--szerver-export`): a külső ellenőr és a
+    második ítélő utolsó érvényes válaszai és a teljes append-only napló; a szerepeket az export adja, a
+    próba-ellenőrök kimaradnak, az utolsó érvényes válaszokat a kiértékelő a naplóból újraszámolja; vagy
+  * egy vagy két ellenőr exportja (`<ellenor>_valaszok.json`, az offline `ellenorzo.html` írja). Két külső ellenőrnél
     az eltérő tételeket harmadik döntés zárja le; ha a második ítélő a szerző (`--szerzo 1|2`: a hányadik fájl
     az övé), vagy általában ha a második ítélő nem független (`--kulso 1|2`: a hányadik fájl a külső ellenőré,
     `--masodik`: a második jelölése, alapértelmezés „hozzátartozó”), döntnök nincs: a fő szám a külső ellenőré,
@@ -105,6 +108,50 @@ def minta_hash(sorok):
 def valaszok_olvas(ut, minta, hash_):
     with open(ut, encoding='utf-8') as f:
         d = json.load(f)
+    return valaszok_ellenoriz(d, ut, minta, hash_)
+
+
+SZERVER_FORMATUM = 'F175V-szerver-export/1'
+
+
+def naplobol_utolso(naplo):
+    """Az append-only naplóból ellenőrönként és tételenként az utolsó érvényes válasz, a Worker `utolso`
+    nézetének szabálya szerint (a kliens ideje, majd a napló sorszáma szerint a legkésőbbi)."""
+    ki_ = {}
+    for r in naplo:
+        if r.get('esemeny') != 'valasz':
+            continue
+        k = (r['ellenor'], r['tetel'])
+        kulcs = (r.get('kliens_ido') or '', r['n'])
+        if k not in ki_ or kulcs > ki_[k][0]:
+            ki_[k] = (kulcs, r['valasz'])
+    return {k: v for k, (_, v) in ki_.items()}
+
+
+def szerver_export_olvas(ut, minta, hash_):
+    """Az online felület (Worker) admin-exportja (DT-F175vp) -> [(név, válaszok, jelöltek)], a külső ellenőr elöl,
+    utána (ha van) a második ítélő; a próba-ellenőrök (`szerep` = proba) kimaradnak. Az ellenőrönkénti
+    „utolsó érvényes” válaszokat a teljes naplóból újraszámolja, és eltérésnél megáll."""
+    with open(ut, encoding='utf-8') as f:
+        d = json.load(f)
+    if d.get('formatum') != SZERVER_FORMATUM:
+        raise SystemExit('%s: nem a Worker exportja (formatum: %r, várt: %s)' % (ut, d.get('formatum'), SZERVER_FORMATUM))
+    utolso = naplobol_utolso(d.get('naplo') or [])
+    ell = [e for e in d.get('ellenorok') or [] if e.get('szerep') != 'proba']
+    for e in ell:
+        sajat = {t: v for (en, t), v in utolso.items() if en == e['ellenor']}
+        if sajat != (e.get('valaszok') or {}):
+            raise SystemExit('%s: a(z) %s ellenőr válaszai nem egyeznek a naplóból számolttal' % (ut, e['ellenor']))
+    kulso = [e for e in ell if e.get('szerep') == 'kulso']
+    masodik = [e for e in ell if e.get('szerep') == 'masodik']
+    if len(kulso) != 1 or len(masodik) > 1 or len(ell) != len(kulso) + len(masodik):
+        raise SystemExit('%s: pontosan egy külső ellenőr és legfeljebb egy második ítélő kell (van: %s)'
+                         % (ut, ', '.join('%s=%s' % (e['ellenor'], e.get('szerep')) for e in ell)))
+    return [valaszok_ellenoriz(e, '%s#%s' % (ut, e['ellenor']), minta, hash_) for e in kulso + masodik]
+
+
+def valaszok_ellenoriz(d, ut, minta, hash_):
+    """Egy ellenőr válaszai (az oldal exportja, vagy a Worker-export egy ellenőre) -> (név, ítéletek, jelöltek)."""
     # a teljes oldal (külső ellenőr) vagy a második ítélő oldala (az alapminta-párok és a csalijai)
     elfogadott = {hash_, minta_hash([r for r in minta if r.get('kozos') == '1'])}   # a második ítélő oldala: alappárok + csalijai
     if d.get('minta_hash') not in elfogadott:
@@ -859,7 +906,9 @@ def modell_bemenet(minta, konyvtar, koteg=25):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('valaszok', nargs='*', help='egy vagy két ellenőr JSON-exportja')
+    ap.add_argument('valaszok', nargs='*', help='egy vagy két ellenőr JSON-exportja (az offline oldalé)')
+    ap.add_argument('--szerver-export', help='az online felület (Worker) admin-exportja (F175.V21); a külső ellenőr '
+                                             'és a második ítélő szerepét az export adja (= --kulso 1)')
     ap.add_argument('--minta', default=MINTA)
     ap.add_argument('--csali', default=LETET_ALAP,
                     help='a csalik letétfájlja (a repón kívül); kell, ha a minta.tsv fejléce csalit jelez')
@@ -897,8 +946,16 @@ def main():
     if a.modell_bemenet:
         nv, nk = modell_bemenet(minta, a.modell_bemenet)
         print('modell-bemenet: %d vers, %d köteg -> %s' % (nv, nk, a.modell_bemenet))
-        if not a.valaszok:
+        if not a.valaszok and not a.szerver_export:
             return
+    if a.szerver_export:
+        if a.valaszok or a.szerzo or a.ket_kulso or a.kulso:
+            raise SystemExit('a --szerver-export mellett nincs válaszfájl, --kulso, --szerzo vagy --ket-kulso: a '
+                             'szerepeket az export adja')
+        szerver = szerver_export_olvas(a.szerver_export, minta, minta_hash(minta))
+        a.valaszok = [a.szerver_export] * len(szerver)
+        if len(szerver) == 2:
+            a.kulso = 1
     if len(a.valaszok) not in (1, 2):
         raise SystemExit('egy vagy két válaszfájl kell')
     if a.szerzo:
@@ -914,7 +971,7 @@ def main():
     if a.dontes and (szerzoi or len(a.valaszok) == 1):
         raise SystemExit('harmadik döntés csak két külső ellenőrnél van (nem független második ítélőnél nincs döntnök)')
     h = minta_hash(minta)
-    beolv = [valaszok_olvas(u, minta, h) for u in a.valaszok]
+    beolv = szerver if a.szerver_export else [valaszok_olvas(u, minta, h) for u in a.valaszok]
     if len(beolv) == 2 and beolv[0][0] == beolv[1][0]:
         raise SystemExit('a két válaszfájl ugyanattól az ellenőrtől való: %s' % beolv[0][0])
     cimkek = []
@@ -952,7 +1009,7 @@ def main():
     szoveg = szoveg + '\n' + k_szoveg + '\n\n' + s_szoveg + '\n\n' + t_szoveg + '\n' + j_szoveg
     head = git_head()
     forras = [os.path.relpath(x, GYOKER).replace(os.sep, '/') if os.path.abspath(x).startswith(GYOKER) else os.path.basename(x)
-              for x in [a.minta] + a.valaszok + ([a.dontes] if a.dontes else [])]
+              for x in [a.minta] + sorted(set(a.valaszok)) + ([a.dontes] if a.dontes else [])]
     prov = ('# MANUAL: scope=F175.V emberi validáció kiértékelése | forras=%s%s @ %s | ts=git:%s | manual '
             '(determinisztikus számítás: eszkozok/karoli_strong_validacio_kiertekel.py; az ítéletek emberi ellenőröké)'
             % (', '.join(forras), ', f172/itelet_par.tsv' if a.modell_f172 else '', head, head))
