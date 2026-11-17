@@ -222,6 +222,8 @@ def _http(modszer, ut, adat=None):
         if v.status_code == 429 or v.status_code >= 500:
             time.sleep(30 * (kiserlet + 1))
             continue
+        if v.status_code == 404 and modszer == 'GET':
+            return None  # a frissen beküldött batch néha még nem látszik (megfigyelt: 2026-11-17)
         if v.status_code >= 400:
             raise SystemExit('HTTP %d: %s' % (v.status_code, v.text[:400]))
         return v.json()
@@ -265,6 +267,10 @@ def begyujt(var_perc=0, http=_http):
             if b['allapot'] in VEGALLAPOT:
                 continue
             v = http('GET', '/batches/%s' % b['batch_id'])
+            if v is None:
+                nyitott += 1
+                print('%s %s: még nem látszik (404)' % (b['rov'], b['batch_id']))
+                continue
             b['allapot'] = v.get('status', '')
             b['provider'] = v.get('provider') or b['provider']
             if b['allapot'] not in VEGALLAPOT:

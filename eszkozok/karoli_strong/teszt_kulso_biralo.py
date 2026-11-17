@@ -150,6 +150,11 @@ class Menet(Alap):
             hivasok.append(len(a['requests'])) or {'id': 'batch_teszt0002', 'status': 'validating'}))
         self.assertEqual(hivasok, [70])
 
+    def test_404_nyitva_marad(self):
+        kb.bekuld('gpt', '1', 5.0, http=lambda m, u, a=None: {'id': 'batch_x', 'status': 'validating'})
+        self.assertEqual(kb.begyujt(0, http=lambda m, u, a=None: None), 1)
+        self.assertEqual(kb._olvas(kb.BATCHEK, kb.BATCH_FEJ)[0]['allapot'], 'validating')
+
     def test_plafon(self):
         with self.assertRaises(SystemExit):
             kb.bekuld('gpt', 'mind', 0.01, http=lambda *x: self.fail('nem hívhat'))
