@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """A konvenció-egységesítés (1.1) tesztjei: eszkozok/karoli_strong/konvencio_egysegesites.py (DT-F175vr).
 
-A szabály egységtesztjei (névmáslista, a „ki” és az önálló „az” szűrője, ʾet) gyorsak; a teljes adaton futó teszt az
+A szabály egységtesztjei (névmáslista, a „ki”, az önálló „az” szűrője, ʾet) gyorsak; a teljes adaton futó teszt az
 1.1-et ideiglenes könyvtárba (a repón kívülre) állítja elő, és ellenőrzi: 1.1 ⊂ 1.0, a megmaradó sorok bájtra
 azonosak, minden megmaradó névelő-pár megfelel a szabálynak, 0 ʾet-pár, az 1.1-re futtatva a törlőlista üres
 (idempotens), és két futás törlőlista-hash-e azonos.
@@ -47,11 +47,10 @@ class Szabaly(unittest.TestCase):
                   'istennek', 'föld', 'é', 'azért', 'ezért'):
             self.assertEqual(self.d('H9009', w), (None, 'nem_nevmas'), w)
 
-    def test_ki_csak_a_utan(self):
-        self.assertEqual(self.d('G3588', 'ki', elozo='a'), ('nevmas', None))
-        self.assertEqual(self.d('G3588', 'ki', elozo='A'), ('nevmas', None))
-        self.assertEqual(self.d('G3588', 'ki', elozo='mene'), (None, 'ki_a_nelkul'))
-        self.assertEqual(self.d('G3588', 'ki', elozo=None), (None, 'ki_a_nelkul'))
+    def test_ki_mindig_marad(self):
+        # a ragozatlan „ki” szűrője kikerült (58/58 ellenőrzött eset névmás)
+        for e in ('a', 'A', 'Istennek', None):
+            self.assertEqual(self.d('G3588', 'ki', elozo=e), ('nevmas', None), e)
         self.assertEqual(self.d('G3588', 'kik', elozo='mene')[0], 'nevmas')
 
     def test_a_vonatkozo(self):

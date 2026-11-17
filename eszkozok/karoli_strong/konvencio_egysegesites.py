@@ -14,9 +14,9 @@ magyar szó, a köztük álló írásjel):
      (NEVMAS: vonatkozó, mutató, személyes, kérdő és határozatlan névmások ragos alakjaikkal; csak főnévi és
      melléknévi névmás, névmási határozószó nem), vagy az „a”, ha utána vonatkozó névmás áll (VONATKOZO: a ki, a mely,
      a mi …; az „a” a kettéírt vonatkozó névmás része, prompt_v3 B);
-  2. szűrők: (a) a ragozatlan „ki” csak akkor marad, ha közvetlenül „a” előzi meg (különben igekötő lehet);
-     (b) az önálló „az” marad, ha utána mássalhangzóval kezdődő szó, írásjel, versvég, vagy „a”/„az” áll; magánhangzóval
-     kezdődő szó előtt törlődik (névelőként kezelve);
+  2. szűrő: az önálló „az” marad, ha utána mássalhangzóval kezdődő szó, írásjel, versvég, vagy „a”/„az” áll; magánhangzóval
+     kezdődő szó előtt törlődik (névelőként kezelve). (A ragozatlan „ki” szűrője a szúrópróba után kikerült:
+     mind az 58 általa törölt eset vonatkozó névmás volt.)
   3. ʾet (H0853): minden kapcsolata törlődik;
   4. egyetlen-pár védelem nincs: ha a magyar szó pár nélkül marad, az ismert kimaradás.
 Csak törlő javítás: új pár nem keletkezik, a megmaradó `parok`-sorok bájtra változatlanok. A `szavak_*.tsv`-ben a
@@ -32,6 +32,8 @@ Módok (az `--alap DIR` a bemenő 1.0 táblák helye, alapértelmezés: adat/kar
                             könyvcsoportonként, a magánhangzó előtt törölt „az”-ok listája versszöveggel, összefoglaló
   --general DIR             az 1.1 `parok_*.tsv` és `szavak_*.tsv` táblái DIR-be (DIR ≠ --alap); utána --ellenoriz
   --torolt-ki DIR           a törlőlista (`torolt_kapcsolatok.tsv`) DIR-be (a letétbe; felülírás nélkül)
+  --kimaradas-ki DIR        az ismert kimaradások (a törléssel pár nélkül maradó magyar szavak) DIR-be, a pár nélküli
+                            validációs keret kizárási szabályával (`keret_kizarasi_ok`), és rétegenkénti összesítéssel
   --ellenoriz DIR           egy előállított 1.1 ellenőrzése az --alap 1.0-hoz képest: a párok részhalmaz, minden
                             megmaradó sor bájtra azonos, a törölt sorok pontosan a törlőlista, minden megmaradó
                             névelő-pár megfelel a szabálynak, 0 ʾet-pár, a szótábla konzisztens
@@ -102,7 +104,6 @@ def dontes(strong, hu_szo, elozo, kovetkezo, koztes):
     if strong == ET:
         return None, 'et'
     s = hu_szo.lower()
-    e = (elozo or '').lower()
     k = (kovetkezo or '').lower()
     if s == 'az':
         if kovetkezo is None:
@@ -116,8 +117,6 @@ def dontes(strong, hu_szo, elozo, kovetkezo, koztes):
         return None, 'az_maganhangzo_elott'
     if s == 'a':
         return ('a_vonatkozo', None) if k in VONATKOZO else (None, 'nem_nevmas')
-    if s == 'ki':
-        return ('nevmas', None) if e == 'a' else (None, 'ki_a_nelkul')
     if s in NEVMAS:
         return 'nevmas', None
     return None, 'nem_nevmas'
@@ -407,6 +406,60 @@ def torolt_ki(letet, alap=ALAP):
     print('törlőlista: %s · %d sor · sha256=%s' % (letet, len(torol), torlolista_hash(torol)))
 
 
+USZ_CSOPORTOK = ('USZ_evangelium', 'USZ_level', 'USZ_jelenesek')
+CSOPORTOK = ('OSZ_mozes', 'OSZ_tortenet', 'OSZ_koltoi', 'OSZ_profeta') + USZ_CSOPORTOK
+
+
+def ismert_kimaradasok(alap=ALAP):
+    """A törléssel pár nélkül maradó magyar szavak: [vers, hu_sorszam, hu_szo, könyv, könyvcsoport, kizárási ok].
+
+    A kizárási ok a pár nélküli validációs keret szabálya (karoli_strong_validacio_minta.kizarasi_ok, DT-F175vb):
+    ha van, a szó a keretbe nem esik (pl. „a”, „az”, „azt”)."""
+    sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from karoli_strong_validacio_minta import kizarasi_ok
+    torol, _ = torlolista(alap)
+    torolt_hu = collections.defaultdict(set)
+    for s in torol:
+        torolt_hu[(s[0], int(s[1]))].add(s[3])
+    ki = []
+    for kv in konyvek(alap):
+        _, sfej, ssorok, _ = tabla_olvas(os.path.join(alap, 'szavak_%s.tsv' % kv))
+        si = {k: i for i, k in enumerate(sfej)}
+        versenkent = collections.defaultdict(list)
+        for r in ssorok:
+            if r[si['oldal']] == 'hu':
+                versenkent[r[si['vers']]].append(r)
+        for v, hu in versenkent.items():
+            for i, r in enumerate(hu):
+                vesz = torolt_hu.get((v, int(r[si['sorszam']])))
+                if not vesz:
+                    continue
+                p = set(x for x in r[si['partner_sorszam']].split(',') if x)
+                if p and p <= vesz:
+                    ok = kizarasi_ok(r[si['szo']], [y[si['szo']].casefold() for y in hu[i + 1:]])
+                    ki.append([v, r[si['sorszam']], r[si['szo']], kv, CSOPORT[kv], ok or ''])
+    return ki
+
+
+def kimaradas_ki(letet, alap=ALAP):
+    os.makedirs(letet, exist_ok=True)
+    km = ismert_kimaradasok(alap)
+    letet_ir(os.path.join(letet, 'ismert_kimaradasok.tsv'),
+             _tsv(['vers', 'hu_sorszam', 'hu_szo', 'konyv', 'konyvcsoport', 'keret_kizarasi_ok'], km))
+    ossz = collections.Counter(s[4] for s in km)
+    keret = collections.Counter(s[4] for s in km if not s[5])
+    sorok = [[cs, 'ÚSZ' if cs in USZ_CSOPORTOK else 'ÓSZ', ossz[cs], keret[cs]] for cs in CSOPORTOK]
+    for t in ('ÓSZ', 'ÚSZ'):
+        sorok.append([t, t, sum(s[2] for s in sorok[:len(CSOPORTOK)] if s[1] == t),
+                      sum(s[3] for s in sorok[:len(CSOPORTOK)] if s[1] == t)])
+    sorok.append(['osszesen', '', len(km), sum(keret.values())])
+    letet_ir(os.path.join(letet, 'ismert_kimaradasok_retegenkent.tsv'),
+             _tsv(['konyvcsoport', 'testamentum', 'pár nélkül marad', 'a pár nélküli keretbe esik'], sorok))
+    for s in sorok:
+        print('\t'.join(str(x) for x in s))
+    return sorok
+
+
 def _tsv(fej, sorok):
     return '\t'.join(fej) + '\n' + ''.join('\t'.join(str(x) for x in s) + '\n' for s in sorok)
 
@@ -519,6 +572,7 @@ def main():
     g.add_argument('--felmeres', action='store_true')
     g.add_argument('--general', metavar='DIR')
     g.add_argument('--torolt-ki', metavar='DIR')
+    g.add_argument('--kimaradas-ki', metavar='DIR')
     g.add_argument('--ellenoriz', metavar='DIR')
     g.add_argument('--hash', action='store_true')
     ap.add_argument('--letet', default=LETET)
@@ -530,6 +584,8 @@ def main():
         sys.exit(1 if general(a.general, a.alap) else 0)
     elif a.torolt_ki:
         torolt_ki(a.torolt_ki, a.alap)
+    elif a.kimaradas_ki:
+        kimaradas_ki(a.kimaradas_ki, a.alap)
     elif a.ellenoriz:
         sys.exit(1 if ellenoriz(a.ellenoriz, a.alap) else 0)
     else:
