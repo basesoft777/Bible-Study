@@ -103,6 +103,7 @@ MODELL_EGYEZES = [
     (re.compile(r'confidence label|`magas`|`alacsony`'), 'modell-egyezés jelölése'),
 ]
 TILTOTT += MODELL_EGYEZES
+GEMINI_TILTOTT = next(rx for rx, _ in MODELL_EGYEZES if rx.pattern == 'Gemini')
 KIADAS_MONDAT = {CS.OLVASSEL: 'A csomag minden fájlja a kiadás része.',
                  'README.md': 'Every file of the package is part of the release.'}
 MAGYAR = CS.MAGYAR_FAJLOK
@@ -325,6 +326,30 @@ def valtozatlan():
     return [Talalat('VALTOZATLAN', FIGYELEM, 'a main nem érhető el, nem mérve')]
 
 
+# A gyártói modellnév (Gemini) csak a JOHD-kézirat MI-nyilatkozatában és Korlátok szakaszában állhat (DT-F175r: a
+# felhasználó, 2026-11-17: „a lektor szerint menjen”; a DT-F175m módosítása); máshol, és a csomagban, a tiltás marad.
+GEMINI = re.compile(r'Gemini', re.I)
+GEMINI_SZAKASZ = {'en': ('## AI Declaration', '### Limitations'),
+                  'hu': ('## Nyilatkozat a mesterséges intelligencia használatáról', '### Korlátok')}
+
+
+def gemini_kivetel(torzs, nyelv):
+    """A kézirat törzse a két engedett szakasz (MI-nyilatkozat, Korlátok) nélkül: a szakasz a címsorától a következő
+    `## ` címsorig vagy a beküldési szöveg végéig tart. A maradékban a Gemini-tiltás tovább érvényes."""
+    t = torzs
+    for cim in GEMINI_SZAKASZ[nyelv]:
+        i = t.find(cim + '\n')
+        if i < 0:
+            continue
+        j = len(t)
+        for veg in ('\n## ', '\n<!-- '):
+            k = t.find(veg, i + len(cim))
+            if k >= 0:
+                j = min(j, k)
+        t = t[:i] + t[j:]
+    return t
+
+
 def zart_nev_kivetel(torzs, nyelv):
     """A kézirat törzse a zárt kiadás engedett megnevezése nélkül (szóközre normalizálva): ha a megnevezés pontosan
     egyszer áll benne, kivágja; a maradékban a ZART_FORRAS tovább keres. Más alak vagy második előfordulás marad."""
@@ -338,8 +363,9 @@ def kezirat(N, lemez=True):
     fájl a generált szöveggel azonos (ha `lemez`)."""
     ki = []
     for rel, (torzs, szoveg) in E.kezirat(N).items():
+        nyelv_ = 'hu' if rel.endswith('_hu.md') else 'en'
         for rx, nev in TILTOTT:
-            for m in rx.finditer(torzs):
+            for m in rx.finditer(gemini_kivetel(torzs, nyelv_) if rx is GEMINI_TILTOTT else torzs):
                 ki.append(Talalat('KEZIRAT', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
         if rel.endswith('_hu.md'):
             for h in E.nevelo_hibak(torzs):

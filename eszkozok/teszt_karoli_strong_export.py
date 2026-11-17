@@ -250,8 +250,8 @@ class Csomag(unittest.TestCase):
     def test_masodik_modell_csak_a_kezirat_mi_nyilatkozataban(self):
         # DT-F175m: a második párosító modellről egy semleges mondat csak a JOHD-kézirat MI-nyilatkozatában áll;
         # a nyílt csomag, a közlemény és a kézirat többi része nem említi, és a MODELL_EGYEZES-tiltás érvényes marad
-        jel = {'en': 'another language model was also run as a cross-check',
-               'hu': 'egy másik nyelvi modell is futott keresztellenőrzésként'}
+        jel = {'en': 'another language model (Google Gemini) was also run as a cross-check',
+               'hu': 'egy másik nyelvi modell (Google Gemini) is futott keresztellenőrzésként'}
         for rel, (torzs, _) in E.kezirat(self.N).items():
             d = 'hu' if rel.endswith('_hu.md') else 'en'
             torzs = torzs.replace('\n', ' ')         # a sortörés helye a sablonban szabad
@@ -265,6 +265,22 @@ class Csomag(unittest.TestCase):
         self.assertFalse(any('cross-check' in sz or 'keresztellenőrzés' in sz for sz in self.fajlok.values()))
         for tilos in ('a Gemini model', 'two language models agreed', 'két nyelvi modell', 'high confidence'):
             self.assertTrue(any(rx.search(tilos) for rx, _ in G.TILTOTT), tilos)
+
+    def test_gemini_csak_az_mi_nyilatkozatban_es_a_korlatokban(self):
+        # DT-F175r: a gyártói modellnév csak a JOHD-kézirat MI-nyilatkozatában és Korlátok szakaszában állhat; a kézirat
+        # többi részében, a csomagban és a közleményben a tiltás marad, és a többi MODELL_EGYEZES-minta mindenütt él
+        for rel, (torzs, _) in E.kezirat(self.N).items():
+            nyelv = 'hu' if rel.endswith('_hu.md') else 'en'
+            self.assertIsNotNone(G.GEMINI.search(torzs), rel)
+            self.assertIsNone(G.GEMINI.search(G.gemini_kivetel(torzs, nyelv)), rel)
+            cim = '## 1. Overview' if nyelv == 'en' else '## 1. Áttekintés'
+            becsempeszve = torzs.replace(cim, cim + '\n\nGemini', 1)
+            self.assertIsNotNone(G.GEMINI.search(G.gemini_kivetel(becsempeszve, nyelv)), rel)
+        for rel, (torzs, _) in E.note(self.N).items():
+            self.assertIsNone(G.GEMINI.search(torzs), rel)
+        self.assertFalse(any(G.GEMINI.search(sz) for sz in self.fajlok.values()))
+        self.assertIs(G.GEMINI_TILTOTT.pattern, 'Gemini')
+        self.assertTrue(any(rx.search('two language models agreed') for rx, _ in G.TILTOTT))
 
     def test_zart_kiadas_neve_csak_a_keziratban_egyszer(self):
         # DT-F175p: a zárt kiadás neve csak a JOHD-kézirat törzsében, pontosan egyszer, a rögzített megnevezésben áll;

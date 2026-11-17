@@ -10,8 +10,7 @@
 Az adatkészlet a Károli-biblia, a klasszikus magyar fordítás 1908-as szövegének 599 367 szavát kapcsolja a héber és
 görög eredetihez (STEPBible TAHOT/TAGNT) 598 715 párral, mindegyik az eredeti szó Strong-számával; egy nyelvi modell csak
 szósorszámokat jelölt. A párprecizitás (egyezés egy vak modell-ellenőrrel) rétegzett mintán 95,06% (95%-os KI:
-93,81–96,32%); az emberi validáció szerint [precizitás]; a fő szavak egyezése egy zárt, Strong-számos
-kiadással, kiegészítő keresztellenőrzésként, 98,72%. A CC BY 4.0 licencű táblák Strong-alapú keresést szolgálnak.
+93,81–96,32%); az emberi validáció szerint [precizitás]. A CC BY 4.0 licencű táblák Strong-alapú keresést szolgálnak.
 
 **Kulcsszavak:** Károli-biblia; Strong-számok; szóillesztés; magyar; bibliai héber; koiné görög
 
@@ -44,14 +43,13 @@ vershossz-igazítás feleltette meg egymásnak; minden vers-egybeolvadást kézz
 **Párosítás.** Egy nyelvi modell versenként két számozott szólistát kapott: a Károli szavait, és az eredeti szavakat
 alakkal, Strong-számmal és rövid angol glosszával; a Strong-szám csak tájékoztatásul állt ott, a válaszban tilos volt. A
 rögzített utasítás egy kidolgozott példában egy választható, Strong-címkés KJV-sort is mutatott; versbemenet ilyet nem
-tartalmazott. A modell sorszámpárokat, betoldásokat és fordítatlan szavakat adott vissza. A Józs 8:34-ben az *Azután*
-(1) szót a 2–3. eredeti szóhoz (*ʾaḥărê kēn*), a *felolvasta* (3) szót a 4. szóhoz (*qārāʾ*) kötötte; a H0310, H3651 és
-H7121 számot ezután program tette hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el. A
+tartalmazott. A modell sorszámpárokat, betoldásokat és fordítatlan szavakat adott vissza. A Strong-számot ezután program tette
+hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el. A
 funkciószavakra rögzített konvenció érvényes: a magyar névelő és az eredeti szó nélküli segédige betoldás, a héber és
 görög névelő fordítatlan (a névelőhasználat a nyelvek között eltér); a névmásként álló névelő párosított.
 
-**Futtatás és megismételhetőség.** Minden könyvet a claude-sonnet-5-5 párosított: a többséget az Anthropic Batch
-API-n, az 1–5Mózest, a Józsuét és a Zsoltárokat ügynöki futásban. Minden
+**Futtatás és megismételhetőség.** Minden könyvet a claude-sonnet-5-5 párosított (a futtatás részletei a
+letétben). Minden
 választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább egyszer, csak létező
 sorszám); a bukott választ a modell újra elkészítette. A modell így nem tudott Strong-számot vagy szótári tételt
 kitalálni; legfeljebb rossz szót párosíthatott, és minden pár egy ellenőrizhető eredeti szóra mutat. A modellválaszok
@@ -63,9 +61,9 @@ a táblák a válaszokból bájtra azonosan újraépíthetők, a modell újrafut
 A vak ellenőrzéshez a párkészletet könyvcsoportonként hét rétegre osztottuk (Mózes öt könyve; történeti,
 költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként 200 véletlen párral; Mózes
 öt könyvében 400 pár két részmintából, pársúllyal összegezve. Az emberi validáció mintája [N] pár és [M] pár
-nélküli szó ugyanezekből a rétegekből, és mind a 72 ellenőr-eltérés súlyozott túlmintaként. A zárt kiadással való
-keresztellenőrzés célzottan kiválasztott fejezeteken futott: rétegenként az a fejezet, amelyben a legtöbb
-ellenőr-eltérés és mintapár volt, Mózes öt könyvében kettő (nyolc fejezet).
+nélküli szó ugyanezekből a rétegekből, és súlyozott túlmintaként az a [87] pár, amelyet bármelyik gépi
+ellenőr hibásnak jelölt. A zárt kiadással való keresztellenőrzés nyolc célzottan kiválasztott fejezeten
+futott (rétegenként az, amelyben a legtöbb ellenőr-eltérés volt).
 
 ### Minőség-ellenőrzés
 
@@ -80,13 +78,10 @@ meghatározott funkciószavak kimaradtak. A fő szám a külső ellenőré: prec
 bizonytalan tételeket hibának számítva [konzervatív]. A második ellenőr száma ([precizitás 2]) és a kettejük egyezése
 (kappa = [kappa]) kiegészítő adat; döntnök nincs. Az egyezés a vak modell-ellenőrrel [egyezés a modell-ellenőrrel].
 
-**Keresztellenőrzés zárt kiadással.** Kiegészítő ellenőrzésként a párokat helyben összevetettük a Bible-Discovery
-Strong-számos Károlijával (HUN modul), egy zárt licencű kiadással, amely nem terjeszthető; csak az összesített
-eredmény nyilvános, és az olvasó nem ellenőrizheti. Nem mérce: magyar szavanként egy fő szót jelöl, a mi felbontásunk
-részletesebb (egy–több kapcsolat, morféma, pl. *Azután* ↔ *ʾaḥărê* + *kēn*). Fő szó párja az a tartalmi pár, amelynek magyar szavához a kiadás
-Strong-számot ad, és amely nem egy már egyező szó másodlagos párja: 3 388 párból 2 663 (kimaradt 522 a
-kiadásban Strong-szám nélkül, 197 másodlagos, 6 nem illeszthető alak). A másodlagos párok és a
-felbontási különbségek nem hibák.
+**Keresztellenőrzés zárt kiadással.** Kiegészítő ellenőrzésként a fő szavak párjait helyben összevetettük a
+Bible-Discovery Strong-számos Károlijával (HUN modul), egy zárt licencű kiadással, amelyet az olvasó nem ellenőrizhet;
+csak az összesített egyezés nyilvános. A kiadás magyar szavanként egy fő Strong-számot jelöl, a mi felbontásunk
+részletesebb, ezért az eltérés nem feltétlenül hiba; a nevezők és az eltérések a letétben állnak.
 
 | mérés | becslés | 95%-os KI |
 |---|---|---|
@@ -97,9 +92,6 @@ felbontási különbségek nem hibák.
 
 A rétegek precizitása 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog.
 Az 1 600 mintapárból 72 tért el az ellenőrtől, leggyakrabban szomszédos szóval (37).
-A zárt kiadástól való 34 eltérésből öt
-bizonyult párosítási hibának (háromutas ítélet; az adatkészlet felsorolja őket); a másodlagos párok nem
-eltérések.
 
 ## 3. Az adatkészlet leírása
 
@@ -127,18 +119,16 @@ azaz még nem párosított), `data/versek.tsv`, `data/meres.tsv` (a mérés mind
 Bibliaprogramok Strong-alapú keresést kínálhatnak a magyar szövegen. A fordítástörténet vizsgálhatja a Károli
 következetességét és betoldásait. Nyelvtechnológiai célra kis erőforrású nyelvpár szóillesztési adata, rétegenként
 mért hibával. A párosításra a Logosz-lexikon, egy motívum-indexelt, kereszthivatkozott bibliai lexikon épül. Egy kísérő
-adatkészlet (Demeter, 2026b) ugyanezeket a párokat a szöveg szerző által készített, szabályalapú modernizálásán adja (a
-ritka igealak csak egyező független modelljavaslatok után változott; a modernizálást külön ellenőrzés és mérés
-vizsgálta): minden szó a helyén maradt, az összeolvadt szavak mindkét párja megmaradt, így a fenti számok rá is
-érvényesek.
+adatkészlet (Demeter, 2026b) ugyanezeket a párokat, szóról szóra, a szerző által modernizált szövegen adja.
 
 ### Korlátok
 
 A vak ellenőr maga is modell, és az emberi validáció nem vak. A párprecizitás a fordítatlan eredeti szavakat nem méri.
-A zárt kiadással összevetett fejezetek célzottan kiválasztottak, és a héber morfémákat nem fedik. Az 1–2Mózesben
+Az egyik külső ellenőr ugyanabból a modellcsaládból való, mint az 1–2Mózes keresztellenőrző modellje, ezért ott
+nem teljesen független. Az 1–2Mózesben
 3 256 pár (1 486 vers), amelyre a második modell (l. MI-nyilatkozat) más párt javasolt, gyengébb: a mintából
-12 közül három helyes, így nagyjából 1 500–3 000 lehet hibás; az 1.1-es változat ismert-hibák
-listája felsorolja őket, javítás nélkül; az 1.2-es változat újrapárosítja és újra méri őket.
+12 közül három helyes, így nagyjából 1 500–3 000 lehet hibás; az ismert-hibák lista javítás
+nélkül felsorolja őket; az 1.2-es változat újrapárosítja és újra méri őket.
 A Textus Receptusban, amelyet Károli fordított, nem szereplő 369 párosított görög szó jelölve van.
 
 ## Adat-elérhetőség
@@ -176,9 +166,11 @@ Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
 ## Nyilatkozat a mesterséges intelligencia használatáról
 
 (1) Párosítás: a Claude Sonnet (Anthropic) csak sorszámpárokat adott vissza (l. Módszer). Az 1Móz és a 2Móz
-párosításánál egy másik nyelvi modell is futott keresztellenőrzésként; egyetlen közölt pár sem csak tőle származik. (2)
-Minőség-ellenőrzés: a Claude Opus a mintán vak ellenőr volt; az emberi validáció MI nélkül készült. (3) Kísérő
-adatkészlet: l. Újrahasznosítás. A kézirat szövegének megfogalmazásában és
+párosításánál egy másik nyelvi modell (Google Gemini) is futott keresztellenőrzésként; egyetlen közölt pár sem csak
+tőle származik. (2) Minőség-ellenőrzés: a Claude Opus és két más gyártótól származó ellenőrmodell (Google Gemini,
+OpenAI GPT; azonosító, router és dátum a letétben) a mintán vak ellenőr volt; az emberi validáció MI nélkül készült.
+(3) Kísérő adatkészlet: nyelvi modellek a ritka igealakokra tettek javaslatot, amely csak egyező független javaslatok
+esetén lépett életbe. A kézirat szövegének megfogalmazásában és
 szerkesztésében a claude-opus-5-5 modell segített, az adatkészlet adataiból; a számok az adatokból generáltak. A
 kutatást a szerző tervezte, minden szerkesztői döntést ő hozott, minden állítást az adatokon ellenőrzött, és a
 tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
@@ -190,11 +182,11 @@ tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 073; a számozatlan nyilatkozatokkal 1 252; a
-hivatkozásokkal is 1 326 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
-szól); a kivonattal együtt 1 404. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+hivatkozások nélkül (a JOHD-sablon számítása) 966; a számozatlan nyilatkozatokkal 1 174; a
+hivatkozásokkal is 1 248 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 314. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes. A kivonattól az MI-nyilatkozatig minden szó, a címsorokkal, a kulcsszavakkal, a szerzői
-szerepekkel és a táblázattal: 1 498.
+szerepekkel és a táblázattal: 1 408.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
 levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos Word- vagy LaTeX-sablonjába kerül; a
