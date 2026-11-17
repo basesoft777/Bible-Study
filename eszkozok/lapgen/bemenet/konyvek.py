@@ -27,6 +27,10 @@ class Konyvek:
             raise BemenetHiba('B63: ismeretlen könyvnév: %s (a normalizáló táblában nincs ilyen rövidítés)'
                               % konyv) from None
 
+    def osszes(self):
+        """A normalizáló tábla minden könyve, kánoni rendben."""
+        return tuple(sorted(self._sorrend, key=self._sorrend.get))
+
     def ujszovetsegi(self, konyv):
         self.sorszam(konyv)
         return konyv in self._ujszovetsegi

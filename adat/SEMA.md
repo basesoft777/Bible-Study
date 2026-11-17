@@ -2512,6 +2512,8 @@ nélkül hiba (a `lapgen/tesztek` statikus tesztje őrzi).
 mutat (`B68`): a jegyzék olvasása így kerül az olvasási naplóba (naplózás nélküli olvasás nincs); e sor nélkül a
 generátor nem indul el.
 
+**A forrás-állapot és az adat (GK-28, S7).** Ahol a lap egy forrás állapotáról mond mondatot, az `allapot` és az adat tényleges állapota együtt dönt, és ellentmondásuk BUKÁS: a `reszleges` forrás (B64, a Targum szövege) nem fedheti az egész Ószövetséget, az `aktiv` igen, és a lap a nem fedett könyv versére „nincs Targum-forrás”-t mond; a `nem_vizsgalt` forrás (B73, a Peshitta; az útvonal glob, ma nincs találata) fájlja nem lehet meg, és ilyenkor áll a „nem vizsgált” mondat.
+
 ### 2.67 `lapgen_sablonok.tsv` — a lap gépi mondatai (F218a, DT823, 2026-11-13)
 
 A lap látható szövege csak kézi prózából, strukturált értékű sablonmondatból vagy szó szerinti idézetből jöhet
@@ -2563,6 +2565,8 @@ névelőben és a kezdőbetűben térhet el; különben a generálás megáll. S
 jellegűek”); a `motivumkozi_tipus` a `motivum_kapcsolatok.tsv` (2.33) `tipus` értékének neve. A bizonyosság a
 `megbizhatosag`, a PaRDeS-szint a `pardes_szint` típus sorait használja (ugyanaz az értékkészlet). A `funkcio` mező
 nem névtábla-elem: kézi próza, a cellakezdő alakja az adatban a végleges alak (DT869).
+
+**A 9. szakasz nevei (S7).** A `lanc_konyv` a lánc magjának könyve (kulcs: a könyv rövidítése, a lánc neve a lapon: „a Genezis láncának”, „Genezis-lánc”); ismeretlen könyv kemény hiba, így más könyvű lánc csak új sorral kap nevet. A `szamszo` a kis számok szóalakja a cellában („két különböző szó”, „négy versben”); sor híján a szám áll. A `tanu_hagyomany` a tanúk táblájának (`visszhang_tanuk.tsv`) `hagyomany` értékének neve, a bevezető felsorolásában is.
 
 ### 2.69 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
 

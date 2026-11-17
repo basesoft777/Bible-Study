@@ -687,3 +687,132 @@ s8.nincs	A motívumhoz nincs rögzített motívumközi kapcsolat.	-	8	kapcsolodo
 s8.nyitott	*Még nem eldöntött motívumközi kapcsolat: {n} ({elemek|, }).*	n:szam, elemek:lista(lathato)	8	kapcsolodo_torzs (olvasói átírás)	-
 s8.nyitott.elem	{motivum}: {n}	motivum:motivum, n:szam	8	kapcsolodo_torzs	-
 s8.forras	*Forrás: a motívumközi kapcsolatok táblája; a vizsgált helyek döntésnaplója.*	-	8	adatres_keret (a proveniencia-sor olvasói alakja)	-
+cim.s9.osz	Ókori fordítások: Ószövetség	-	9	HATAS_OSZ	-
+cim.s9.usz	Ókori fordítások: Újszövetség	-	9	HATAS_USZ	-
+cim.s9.tanu	Ókori értelmezők	-	9	HATAS_TANU	-
+s9.bevezeto	A szakasz azt mutatja, hogyan olvasták a motívum láncát a legkorábbi fordítók és értelmezők: az ószövetségi lánc ókori fordításai (Targum, Vulgata, Septuaginta), az újszövetségi helyek latin fordítása és szövegváltozatai, végül az egyházatyák és a rabbinikus hagyomány tanúi.	-	9	hatastortenet_athelyez	-
+s9.szam	{n}	n:szam	9	SZAMSZO_VH (a szám, ha nincs szóalakja)	-
+s9.szo.nev	{kiejtes|a}	kiejtes:lathato	9	_szo_nev	-
+s9.szo.nev.alak	{alak|a}	alak:lathato	9	_szo_nev	-
+s9.szo.nev.strong	{strong}	strong:strong	9	_szo_nev	-
+s9.versek	{versek|, }	versek:lista(igehely)	9	blokk_visszhang	-
+s9.versek.rovid	{versek|, }	versek:lista(versresz)	9	blokk_visszhang (_rovid_hely)	-
+s9.osz.bevezeto	A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító a {konyv} láncának minden versében ugyanazzal a szóval adja-e vissza a héber szót. A lánc {n} kulcsszava a motívum helyeit összekötő egyes héber szavak, soronként egy ({d|a}.{p} teljes szólistája ennél bővebb: szópárokat és görög szavakat is felsorol). A versek a {konyv} láncának ({mag} {elso}–{utolso}) azok a versei, amelyekben a kulcsszó a héber szövegben áll; a lánc későbbi bibliai visszhangjai {e|a}. szakaszban állnak. A több versben álló {m} lánc-szóból a Targum {t}, a Vulgata {v}, a LXX {l} szót ad vissza minden versben ugyanazzal a szóval vagy szócsaláddal. Hogy az egyezés lelet-e, azon múlik, szokásos fordítás-e: a LXX-nél ez mérhető (hogyan fordítja ugyanazt a héber szót a láncon kívül), a Targumnál és a Vulgatánál ebből a forrásból nem, ott a táblázat csak a láncot mutatja.	konyv:nev(lanc_konyv), n:szam, d:szam, p:szam, mag:konyvrov, elso:szam, utolso:szam, e:szam, m:szam, t:szam, v:szam, l:szam	9	blokk_visszhang	-
+s9.osz.bevezeto.egyverses	A táblázat lánc-szavanként azt mutatja, hogy az ókori fordító a {konyv} láncának minden versében ugyanazzal a szóval adja-e vissza a héber szót. A lánc {n} kulcsszava a motívum helyeit összekötő egyes héber szavak, soronként egy ({d|a}.{p} teljes szólistája ennél bővebb: szópárokat és görög szavakat is felsorol). A versek a {konyv} láncának ({mag} {elso}–{utolso}) azok a versei, amelyekben a kulcsszó a héber szövegben áll; a lánc későbbi bibliai visszhangjai {e|a}. szakaszban állnak. A több versben álló {m} lánc-szóból a Targum {t}, a Vulgata {v}, a LXX {l} szót ad vissza minden versben ugyanazzal a szóval vagy szócsaláddal; a csak egy versben álló szónál ({egyverses|, }) a következetesség nem mérhető. Hogy az egyezés lelet-e, azon múlik, szokásos fordítás-e: a LXX-nél ez mérhető (hogyan fordítja ugyanazt a héber szót a láncon kívül), a Targumnál és a Vulgatánál ebből a forrásból nem, ott a táblázat csak a láncot mutatja.	konyv:nev(lanc_konyv), n:szam, d:szam, p:szam, mag:konyvrov, elso:szam, utolso:szam, e:szam, m:szam, t:szam, v:szam, l:szam, egyverses:lista(lathato)	9	blokk_visszhang	-
+s9.osz.bevezeto.szopar	A táblázat azt mutatja, hogyan adja vissza az ókori fordító a formulát a motívum ószövetségi helyein. A formulát két szó hordozza együtt, a hívás igéje és a név ({ige} és {par}), és a név után az Úr neve áll; a táblázat a formula igéjét követi, mert a fordítás szavát a táblázat igénként rögzíti, a név pedig minden versben a formula része. A versek a motívum azon ószövetségi helyei, amelyekben az ige a héber szövegben áll ({n} vers). {kovet} Hogy az egyezés lelet-e, azon múlik, szokásos fordítás-e: a Septuagintánál ez mérhető (hogyan fordítja ugyanazt a héber szót a motívumon kívül), a Targumnál és a Vulgatánál ebből a forrásból nem, ott a táblázat csak a motívum verseit mutatja.	ige:lathato, par:lathato, n:szam, kovet:lathato	9	blokk_visszhang (DT833)	-
+s9.osz.szopar.kovet	Minden versben ugyanazzal a szóval vagy szócsaláddal adja vissza az igét {nevek|, | és }.	nevek:lista(lathato)	9	blokk_visszhang (DT833)	-
+s9.osz.szopar.kovet.nincs	Egyik fordítás sem adja vissza az igét minden versben ugyanazzal a szóval vagy szócsaláddal.	-	9	blokk_visszhang (DT833)	-
+s9.nev.targum	a Targum	-	9	VISSZHANG_NEV	-
+s9.nev.vulgata	a Vulgata	-	9	VISSZHANG_NEV	-
+s9.nev.lxx	a LXX	-	9	VISSZHANG_NEV	-
+s9.nev.septuaginta	a Septuaginta	-	9	blokk_visszhang (DT833)	-
+s9.nev.nagy.targum	A Targum	-	9	_egyesites_mondat	-
+s9.nev.nagy.vulgata	A Vulgata	-	9	_egyesites_mondat	-
+s9.nev.nagy.lxx	A LXX	-	9	_egyesites_mondat	-
+s9.nev.nagy.tv	A Targum és a Vulgata	-	9	blokk_visszhang (a két egyező mondat összevonva)	-
+s9.osz.fejlec.szo	Lánc-szó · versek	-	9	blokk_visszhang	-
+s9.osz.fejlec.targum	Targum	-	9	blokk_visszhang	-
+s9.osz.fejlec.vulgata	Vulgata	-	9	blokk_visszhang	-
+s9.osz.fejlec.lxx	LXX	-	9	blokk_visszhang	-
+s9.osz.fejlec.mit	Mit mutat	-	9	blokk_visszhang	-
+s9.szo	{lemma} ({kiejtes})	lemma:lathato, kiejtes:lathato	9	_vh_szo	-
+s9.szo.kiejtes_nelkul	{lemma}	lemma:lathato	9	_vh_szo	-
+s9.szo.latin	*{lemma}*	lemma:lathato	9	_vh_szo	-
+s9.cella.teljes	{szavak| · } · {n}/{nn}	szavak:lista(lathato), n:szam, nn:szam	9	visszhang_cella	-
+s9.cella.resz	{szavak| · } · {n}/{nn}; {cimke}: {versek|; }	szavak:lista(lathato), n:szam, nn:szam, cimke:lathato, versek:lista(lathato)	9	visszhang_cella	-
+s9.cella.kulonbozo	{db} különböző szó: {versek|; }	db:lathato, versek:lista(lathato)	9	visszhang_cella	-
+s9.cella.vers	{hely} {szo}	hely:igehely, szo:lathato	9	visszhang_cella	-
+s9.cella.vers.rovid	{hely} {szo}	hely:versresz, szo:lathato	9	visszhang_cella (_rovid_hely)	-
+s9.cimke.egy_mas	egy versben más szó	-	9	visszhang_cella	-
+s9.cimke.mas	más szó	-	9	visszhang_cella	-
+s9.cimke.egy	egy versben	-	9	visszhang_cella	-
+s9.cimke.tobb	{db} versben	db:lathato	9	visszhang_cella	-
+s9.hiany.nincs_szo	nincs megfelelő szó	-	9	visszhang_cella (DT833)	-
+s9.hiany.nincs_ellenorzott	nincs ellenőrzött adat	-	9	visszhang_cella	-
+s9.hiany.nincs_kinyeres	a megfelelő kinyerése még nem történt meg	-	9	visszhang_cella	-
+s9.nincs_targum	nincs Targum-forrás (a szabad Targum-szöveg ezt a könyvet nem tartalmazza)	-	9	uj	var
+s9.cella.targum_kivul	{cella}; {versek|, }: {nincs}	cella:lathato, versek:lista(lathato), nincs:lathato	9	blokk_visszhang (NINCS_TARGUM)	-
+s9.lxx.nincs	A LXX: {hiany}.	hiany:lathato	9	_visszhang_mondat_lxx	-
+s9.lxx.elteres	LXX: {reszek|; }.	reszek:lista(lathato)	9	_visszhang_mondat_lxx	-
+s9.lxx.mas.egy	egy versben más szó	-	9	_visszhang_mondat_lxx	-
+s9.lxx.mas	{n} versben más szó	n:szam	9	_visszhang_mondat_lxx	-
+s9.lxx.nincs_szo.egy	egy versben nincs megfelelő szó	-	9	_visszhang_mondat_lxx (DT833)	-
+s9.lxx.nincs_szo	{n} versben nincs megfelelő szó	n:szam	9	_visszhang_mondat_lxx (DT833)	-
+s9.lxx.hianyzo.egy	egy versben nincs ellenőrzött adat	-	9	_visszhang_mondat_lxx	-
+s9.lxx.hianyzo	{n} versben nincs ellenőrzött adat	n:szam	9	_visszhang_mondat_lxx	-
+s9.lxx.nem_merheto	LXX: a héber szó a láncon kívül nem fordul elő, így nem mérhető, szokásos fordítás-e.	-	9	_visszhang_mondat_lxx	-
+s9.lxx.szokasos	LXX: a láncon kívüli {nn} versből {x} versben ({p}%) is ez áll: a szó szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet.	nn:szam, x:szam, p:szam	9	_alapvonal_mondat	-
+s9.lxx.szokasos.szocsalad	LXX: a láncon kívüli {nn} versből {x} versben ({p}%) is ez áll: a szócsalád szokásos fordítása, a lánc egysége megmarad, de ez önmagában nem lelet.	nn:szam, x:szam, p:szam	9	_alapvonal_mondat	-
+s9.lxx.gyakori	LXX: a láncon kívüli {nn} versből {x} versben ({p}%) áll ez: a szó gyakori, de nem kizárólagos fordítása.	nn:szam, x:szam, p:szam	9	_alapvonal_mondat	-
+s9.lxx.gyakori.szocsalad	LXX: a láncon kívüli {nn} versből {x} versben ({p}%) áll ez: a szócsalád gyakori, de nem kizárólagos fordítása.	nn:szam, x:szam, p:szam	9	_alapvonal_mondat	-
+s9.lxx.ritka	**LXX: a láncon kívüli {nn} versből csak {x} versben ({p}%) áll ez: a láncban más szót választ, mint máshol.**	nn:szam, x:szam, p:szam	9	_alapvonal_mondat	-
+s9.utalas	L. {szo} sorát.	szo:lathato	9	blokk_visszhang	-
+s9.egy.szoval	szóval	-	9	_egyesites_mondat	-
+s9.egy.szocsaladdal	szócsaláddal	-	9	_egyesites_mondat	-
+s9.egy.szazalek	{szo} {p}%	szo:lathato, p:szam	9	_egyesites_mondat	-
+s9.egy.forras	{nev} a láncban mindkét héber szót ({a} és {b}) ugyanazzal a szóval adja vissza; hogy máshol is így fordítja-e, ebből a forrásból nem mérhető.	nev:lathato, a:lathato, b:lathato	9	_egyesites_mondat	-
+s9.egy.nem_merheto	{nev} mindkét héber szót ({a} és {b}) ugyanazzal a {mivel} adja vissza; a láncon kívül nem mérhető.	nev:lathato, a:lathato, b:lathato, mivel:lathato	9	_egyesites_mondat	-
+s9.egy.szokasos	{nev} mindkét héber szót ({a} és {b}) ugyanazzal a {mivel} adja vissza; ez a láncon kívül is így van ({szazalekok|, }).	nev:lathato, a:lathato, b:lathato, mivel:lathato, szazalekok:lista(lathato)	9	_egyesites_mondat	-
+s9.egy.ritka	**{nev} mindkét héber szót ({a} és {b}) ugyanazzal a {mivel} adja vissza, a láncon kívül viszont nem így ({szazalekok|, }): a láncban választott egység.**	nev:lathato, a:lathato, b:lathato, mivel:lathato, szazalekok:lista(lathato)	9	_egyesites_mondat	-
+s9.egy.gyakori	{nev} mindkét héber szót ({a} és {b}) ugyanazzal a {mivel} adja vissza; a láncon kívül gyakran, de nem kizárólag ({szazalekok|, }).	nev:lathato, a:lathato, b:lathato, mivel:lathato, szazalekok:lista(lathato)	9	_egyesites_mondat	-
+s9.mit	{mondatok| }	mondatok:lista(lathato)	9	blokk_visszhang	-
+s9.betoldas.cim	nincs héber szó	-	9	blokk_visszhang	-
+s9.betoldas.hely	{hely}: {szo} betoldás	hely:versresz, szo:lathato	9	blokk_visszhang (_rovid_hely)	-
+s9.betoldas.hely.teljes	{hely}: {szo} betoldás	hely:igehely, szo:lathato	9	blokk_visszhang	-
+s9.betoldas.cella	{alak} ({kiejtes}) — {jelentes} · betoldás	alak:lathato, kiejtes:lathato, jelentes:lathato	9	blokk_visszhang	-
+s9.betoldas.cella.kiejtes_nelkul	{alak} — {jelentes} · betoldás	alak:lathato, jelentes:lathato	9	blokk_visszhang	-
+s9.betoldas.nincs	nincs betoldás	-	9	blokk_visszhang	-
+s9.betoldas.mit	Betoldás: {forditasok| és } a lánc szavát ({szo}) a lánc olyan versébe teszi, ahol a héberben nincs.	forditasok:lista(lathato), szo:lathato	9	blokk_visszhang (a mai lap alakja)	-
+s9.osz.lab	*Egy-egy mező a fordítás szava (kiejtéssel) és az, a lánc hány versében áll ugyanaz (n/N). A „Mit mutat” azt mondja meg, szokásos-e ez a fordítás: a héber szó láncon kívüli ószövetségi verseiben (a láncbeli jelentéssel) a görög versben ugyanaz a szócsalád áll-e. A mérés versenként veti össze a két szöveget, nem szavanként; {sz}% felett szokásos fordítás, {r}–{sz}% gyakori, de nem kizárólagos, {r}% alatt a láncban választott szó (félkövér). Targum: Onkelos (közkincs); Vulgata: Clementina (közkincs); LXX: a Septuaginta szövege (CC BY 4.0). A görög megfelelő a Septuaginta szövegéből versenként társítva, az arámi és a latin megfelelő a fordítás szövegéből, a forrásszövegen ellenőrizve; ellenőrizetlen sor nem áll a táblázatban.*	sz:szam, r:szam	9	blokk_visszhang (a mai lap alakja)	-
+s9.osz.meres	Ez a tábla a láncon belüli fordítói következetességet méri: ugyanazzal a szóval adja-e vissza a fordító a héber szót a lánc minden versében. Hogy a görög szó azonos-e az újszövetségi helyek szavával, azt {link|a} mutatja.	link:lathato	9	blokk_visszhang	-
+s9.szakasz_link	[{sz}. szakasz](#{horgony})	sz:szam, horgony:horgony	9	blokk_visszhang	-
+s9.osz.rokon	A lánc szavainak rokon nyelvi hátterét (a BDB-szótár szerint) a héber szavak {sz}.{p} pontja adja.	sz:szam, p:szam	9	blokk_visszhang	-
+s9.usz.bevezeto	A motívum lexikai újszövetségi helyein a lánc görög szavai állnak. A táblázat szócsaládonként azt mutatja, hogy a latin Vulgata ugyanazzal a latin szóval adja-e vissza őket, van-e a lánc szavát érintő szövegváltozat, és a {konyv}-lánc mely Septuaginta-verseiben áll ugyanez a görög szócsalád. {n|A} görög szócsaládból {e} esetében a Vulgata a két szövetségben ugyanazt a latin szócsaládot használja.	konyv:nev(lanc_konyv), n:szam, e:szam	9	blokk_hatas_usz	-
+s9.usz.bevezeto.tematikus	A motívum lexikai újszövetségi helyein a lánc görög szavai állnak (a tematikus {helyek|, } a lánc szava nélkül áll, ezért nem szerepel). A táblázat szócsaládonként azt mutatja, hogy a latin Vulgata ugyanazzal a latin szóval adja-e vissza őket, van-e a lánc szavát érintő szövegváltozat, és a {konyv}-lánc mely Septuaginta-verseiben áll ugyanez a görög szócsalád. {n|A} görög szócsaládból {e} esetében a Vulgata a két szövetségben ugyanazt a latin szócsaládot használja.	helyek:lista(igehely), konyv:nev(lanc_konyv), n:szam, e:szam	9	blokk_hatas_usz	-
+s9.usz.bevezeto.szopar	A motívum lexikai újszövetségi helyein a formula görög szavai állnak. A táblázat szócsaládonként azt mutatja, hogy a latin Vulgata ugyanazzal a latin szóval adja-e vissza őket, van-e a formula szavát érintő szövegváltozat, és a formula mely ószövetségi Septuaginta-verseiben áll ugyanez a görög szócsalád. {n|A} görög szócsaládból {e} esetében a Vulgata a két szövetségben ugyanazt a latin szócsaládot használja.	n:szam, e:szam	9	uj	var
+s9.usz.fejlec.szo	Görög szó · helyek	-	9	blokk_hatas_usz	-
+s9.usz.fejlec.vulgata	Vulgata	-	9	blokk_hatas_usz	-
+s9.usz.fejlec.valtozat	Szövegváltozat	-	9	blokk_hatas_usz	-
+s9.usz.fejlec.lxx	Ugyanez a szó a {konyv}-lánc Septuagintájában	konyv:nev(lanc_konyv)	9	blokk_hatas_usz	-
+s9.usz.fejlec.lxx.szopar	Ugyanez a szó a formula Septuagintájában	-	9	uj	var
+s9.usz.fejlec.mit	Mit mutat	-	9	blokk_hatas_usz	-
+s9.usz.szavak	{szavak| · }	szavak:lista(lathato)	9	blokk_hatas_usz	-
+s9.usz.vulg.vers	{hely} *{alakok| · }*	hely:igehely, alakok:lista(lathato)	9	blokk_hatas_usz	-
+s9.usz.vulg	{versek|; } · {n}/{nn}	versek:lista(lathato), n:szam, nn:szam	9	blokk_hatas_usz	-
+s9.usz.valt.mas	{hely}: {alak} ({kiejtes}) — {kiadasok|, }; {mas} ({mas_kiejtes}) — {hianyzik|, }	hely:igehely, alak:lathato, kiejtes:lathato, kiadasok:lista(lathato), mas:lathato, mas_kiejtes:lathato, hianyzik:lista(lathato)	9	_usz_valtozatok	-
+s9.usz.valt	{hely}: {alak} ({kiejtes}) — {kiadasok|, }; eltér: {hianyzik|, }	hely:igehely, alak:lathato, kiejtes:lathato, kiadasok:lista(lathato), hianyzik:lista(lathato)	9	_usz_valtozatok	-
+s9.usz.valtozatok	{valtozatok|; }	valtozatok:lista(lathato)	9	blokk_hatas_usz	-
+s9.usz.valt.nincs	nincs a lánc szavát érintő változat	-	9	blokk_hatas_usz	-
+s9.usz.lxx	{versek|, } ({lemmak|, })	versek:lista(lathato), lemmak:lista(lathato)	9	blokk_hatas_usz	-
+s9.usz.lxx.nincs	nincs a láncversekben	-	9	blokk_hatas_usz	-
+s9.usz.lxx.nincs.szopar	nincs a formula ószövetségi verseiben	-	9	uj	var
+s9.usz.csalad	*{c}-*	c:lathato	9	blokk_hatas_usz	-
+s9.usz.mit.egyezo	A Vulgata az újszövetségi helyeken és a {konyv}-lánc {db} versében is ugyanazt a latin szócsaládot használja ({csal}): a latin olvasó a két szövetség helyeit egy szóval olvassa.	konyv:nev(lanc_konyv), db:szam, csal:lathato	9	blokk_hatas_usz	-
+s9.usz.mit.egyezo.szopar	A Vulgata az újszövetségi helyeken és a formula {db} ószövetségi versében is ugyanazt a latin szócsaládot használja ({csal}): a latin olvasó a két szövetség helyeit egy szóval olvassa.	db:szam, csal:lathato	9	uj	var
+s9.usz.mit.reszben	A Vulgata az újszövetségi helyeken {n}/{nn} versben {csal|a} szócsaládot használja; a {konyv}-lánc azon {db} versében, ahol a görög fordításban ugyanez a görög szócsalád áll, {on} versben: a latin szóválasztás a két szövetség között csak részben egyezik.	n:szam, nn:szam, csal:lathato, konyv:nev(lanc_konyv), db:szam, on:szam	9	blokk_hatas_usz	-
+s9.usz.mit.reszben.szopar	A Vulgata az újszövetségi helyeken {n}/{nn} versben {csal|a} szócsaládot használja; a formula azon {db} ószövetségi versében, ahol a görög fordításban ugyanez a görög szócsalád áll, {on} versben: a latin szóválasztás a két szövetség között csak részben egyezik.	n:szam, nn:szam, csal:lathato, db:szam, on:szam	9	uj	var
+s9.usz.mit.csak_usz	A Vulgata az újszövetségi helyeken {n}/{nn} versben {csal|a} szócsaládot használja.	n:szam, nn:szam, csal:lathato	9	blokk_hatas_usz	-
+s9.usz.mit.belul	{mit} A szövegváltozat ugyanabban a görög szócsaládban marad: a lánc szava minden kiadásban áll.	mit:lathato	9	blokk_hatas_usz	-
+s9.usz.lab	*A Vulgata oszlopa a versben álló latin szó és az, hány versben áll a fő latin szócsalád (n/N); a latin megfelelő a Vulgata szövegéből, a forrásszövegen ellenőrizve. Szövegváltozat: az SBL Greek New Testament apparátusa (CC BY 4.0) és a STEPBible TAGNT változatjegyzéke (CC BY 4.0), csak ahol a lánc szavát érinti. A {konyv}-lánc Septuagintája: ugyanaz a görög szócsalád a {konyv}-lánc ellenőrzött Septuaginta-soraiban (az ószövetségi táblázat LXX-oszlopa); ez szóegyezés, nem tipológiai állítás. Vulgata: Clementina (közkincs). {peshitta}*	konyv:nev(lanc_konyv), peshitta:lathato	9	blokk_hatas_usz (a mai lap alakja)	-
+s9.usz.lab.szopar	*A Vulgata oszlopa a versben álló latin szó és az, hány versben áll a fő latin szócsalád (n/N); a latin megfelelő a Vulgata szövegéből, a forrásszövegen ellenőrizve. Szövegváltozat: az SBL Greek New Testament apparátusa (CC BY 4.0) és a STEPBible TAGNT változatjegyzéke (CC BY 4.0), csak ahol a formula szavát érinti. A formula Septuagintája: ugyanaz a görög szócsalád a formula ellenőrzött ószövetségi Septuaginta-soraiban (az ószövetségi táblázat LXX-oszlopa); ez szóegyezés, nem tipológiai állítás. Vulgata: Clementina (közkincs). {peshitta}*	peshitta:lathato	9	uj	var
+s9.peshitta.nem_vizsgalt	A szír fordítás (Peshitta) nem vizsgált: szabad, digitális forrása nem áll rendelkezésre.	-	9	PESHITTA_MONDAT (a jegyzék állapota: nem_vizsgalt)	-
+s9.tanu.bevezeto	Ez a rész azt mutatja, hogyan olvasták a motívum helyeit az ókori értelmezők. Két fajta tanú áll itt. Az egyiknél egy mondatos összefoglaló mondja meg a forrás szövege alapján, mit lát a tanú a helyben; ahol a tanú a lánc egy másik helyére is utal, a mondat megnevezi. A másik fajta tanú egy versláncban idézi a helyet a lánc más verseivel együtt (a Chain Lineage Browser adata); a kapcsolat értelmezését a szócikk ezekről nem állítja. Hagyományonként ({hagyomanyok|, }) helyenként legfeljebb egy tanú áll, csak a Remez- és Sod-szintű helyeken; idézet nincs. {zaro}	hagyomanyok:lista(nev:tanu_hagyomany), zaro:lathato	9	blokk_hatas_tanuk	-
+s9.tanu.db	A motívum {h} helyén {n} tanú áll.	h:szam, n:szam	9	blokk_hatas_tanuk	-
+s9.tanu.nincs	A vizsgált helyeken nincs ilyen tanú.	-	9	blokk_hatas_tanuk	-
+s9.tanu.fejlec.hely	Hely	-	9	blokk_hatas_tanuk	-
+s9.tanu.fejlec.tanu	Tanú · hagyomány · kor	-	9	blokk_hatas_tanuk	-
+s9.tanu.fejlec.mit	Mit lát	-	9	blokk_hatas_tanuk	-
+s9.tanu.fejlec.forras	Forrás	-	9	blokk_hatas_tanuk	-
+s9.tanu.ki	{tanu}, *{mu}* · {hagyomany}	tanu:lathato, mu:lathato, hagyomany:nev(tanu_hagyomany)	9	blokk_hatas_tanuk	-
+s9.tanu.ki.kor	{tanu}, *{mu}* · {hagyomany} · {kor}	tanu:lathato, mu:lathato, hagyomany:nev(tanu_hagyomany), kor:lathato	9	blokk_hatas_tanuk	-
+s9.tanu.mu.hely	{mu} {fejezet}.{resz}	mu:lathato, fejezet:szam, resz:szam	9	blokk_hatas_tanuk (a rabbinikus hivatkozás „fejezet.szakasz” alakja)	-
+s9.tanu.mit.targyalt	{kapcsolat} (Tárgyalt hely: {helyek|; }.)	kapcsolat:lathato, helyek:lista(igehely)	9	blokk_hatas_tanuk	-
+s9.tanu.mit.egyutt	{kapcsolat} *(együtt-idézés)*	kapcsolat:lathato	9	blokk_hatas_tanuk	-
+s9.tanu.forras.chain_lineage	Chain Lineage Browser (Blidstein és mtsai), lekérdezve: {datum}	datum:datum	9	blokk_hatas_tanuk	-
+s9.tanu.forras.chain_lineage.biblindex	Chain Lineage Browser (Blidstein és mtsai), lekérdezve: {datum} · BiblIndex	datum:datum	9	blokk_hatas_tanuk	-
+s9.tanu.forras.hcf	HistoricalChristianFaith, lekérdezve: {datum}	datum:datum	9	blokk_hatas_tanuk	-
+s9.tanu.forras.glossa	Glossa Ordinaria (Migne, 1880) a Vulgata Clementina csomagjában (eBible, közkincs)	-	9	blokk_hatas_tanuk	-
+s9.tanu.forras.sefaria	Sefaria, lekérdezve: {datum}	datum:datum	9	blokk_hatas_tanuk	-
+s9.tanu.lab	*A tanúk forrásai: a HistoricalChristianFaith kommentár-adatbázis és a Sefaria (egyházatyák, rabbinikus források), a Glossa Ordinaria jegyzetei és a Chain Lineage Browser. Az összefoglaló mondat a forrásszövegen ellenőrizve áll a táblázatban; a versláncok adata (szerző, mű, század, nyelv, az együtt idézett versek) a lekérdezés megismétlésével ellenőrizve. Az egyházatyák és a rabbinikus források szövegét a szócikk nem idézi. A Chain Lineage Browser bibliai hivatkozásai a BiblIndexből valók (Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon).*	-	9	blokk_hatas_tanuk (a mai lap alakja)	-
+s9.tanu.glossa	A Glossa Ordinaria (a Vulgata középkori kommentárja; Migne, 1880, közkincs) a táblázatban ott áll tanúként, ahol jegyzete ugyanezt a kapcsolatot mondja ki.	-	9	GLOSSZA_MONDAT	-
+s9.usz.valt.nincs.szopar	nincs a formula szavát érintő változat	-	9	uj	var
