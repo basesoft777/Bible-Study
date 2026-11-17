@@ -840,8 +840,8 @@ felbontási különbségek nem hibák.
 | a fő szavak egyezése, zárt kiadás | {k_fs}% | – |
 
 A rétegek precizitása {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog.
-A {minta} mintapárból {elteres} tért el az ellenőrtől, leggyakrabban szomszédos szóval ({h_szomszedos_token}),
-jellemzően héber előtaggal, névelővel vagy elöljáróval. A zárt kiadástól való {k_elter} eltérésből {k_mi_szo}
+A {minta} mintapárból {elteres} tért el az ellenőrtől, leggyakrabban szomszédos szóval ({h_szomszedos_token}).
+A zárt kiadástól való {k_elter} eltérésből {k_mi_szo}
 bizonyult párosítási hibának (háromutas ítélet; az adatkészlet felsorolja őket); a másodlagos párok nem
 eltérések.
 
@@ -879,8 +879,10 @@ vizsgálta): minden szó a helyén maradt, az összeolvadt szavak mindkét párj
 ### Korlátok
 
 A vak ellenőr maga is modell, és az emberi validáció nem vak. A párprecizitás a fordítatlan eredeti szavakat nem méri.
-A zárt kiadással összevetett fejezetek célzottan kiválasztottak, az olvasó nem ellenőrizheti őket, és a héber
-morfémákat nem fedik. Az 1–2Mózes táblái egy második modell válaszaival együtt, bemenetként épültek (l. MI-nyilatkozat).
+A zárt kiadással összevetett fejezetek célzottan kiválasztottak, és a héber morfémákat nem fedik. Az 1–2Mózesben
+{nehez_par} pár ({nehez_vers} vers), amelyre a második modell (l. MI-nyilatkozat) más párt javasolt, gyengébb: a mintából
+{nehez_minta} közül {nehez_helyes_szo} helyes, így nagyjából {nehez_hibas_a}–{nehez_hibas_f} lehet hibás; az 1.1-es változat ismert-hibák
+listája felsorolja őket, és a következő kiadás újrapárosítja.
 A Textus Receptusban, amelyet Károli fordított, nem szereplő {nem_tr_token} párosított görög szó jelölve van.
 
 ## Adat-elérhetőség
@@ -951,7 +953,7 @@ KEZIRAT_EN = """# Word-by-word alignment of the 1908 Károli Bible with the Hebr
 
 ## Abstract
 
-The dataset aligns the {hu_token} words of the 1908 Károli Bible, the classic Hungarian translation, with the Hebrew
+The dataset aligns the {hu_token} words of the 1908 Hungarian Károli Bible with the Hebrew
 and Greek source text (STEPBible TAHOT/TAGNT) in {par} pairs carrying the source word's Strong's number; a language
 model marked word positions only. Pair precision (agreement with a blind model reviewer) is {p_osszes}% (95% CI
 {p_osszes_a}–{p_osszes_f}%) on a stratified sample; human validation gives [precision]; main-word agreement with a
@@ -980,8 +982,8 @@ many-to-one), the additions and the untranslated source words.
 
 ### Steps
 
-**Texts.** The Hungarian side is the public-domain 1908 Károli text (HunKar); the source side is the STEPBible TAHOT
-(Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) data (Tyndale House, Cambridge; CC BY 4.0;
+**Texts.** The Hungarian side is the public-domain 1908 Károli text (HunKar); the source side is STEPBible TAHOT
+(Hebrew/Aramaic) and TAGNT (Greek) (Tyndale House, Cambridge; CC BY 4.0;
 commit efe428a, downloaded 2026-08-24). TAHOT counts Hebrew prefixes and suffixes as separate words (H9001–H9049). Verse divisions
 were mapped by deterministic length alignment, each verse merge approved by hand.
 
@@ -1039,8 +1041,7 @@ secondary, {k_forma} unalignable); secondary pairs and segmentation differences 
 | main-word agreement, closed edition | {k_fs}% | – |
 
 Precision per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}). Of the {minta} sample pairs,
-{elteres} differed from the reviewer, most often a neighbouring word ({h_szomszedos_token}), typically a Hebrew prefix,
-article or preposition. Of the {k_elter} differences from the closed edition,
+{elteres} differed from the reviewer, most often a neighbouring word ({h_szomszedos_token}). Of the {k_elter} differences from the closed edition,
 {k_mi_szo} were judged alignment errors (three-way judgement; the dataset lists them); secondary pairs are not
 differences.
 
@@ -1059,7 +1060,7 @@ differences.
 
 **Contents.** `data/parok/` (one row per link: positions, Strong's number, link type, state, Textus Receptus flag),
 `data/szavak/` (every word once, with its state: aligned, addition, untranslated, or pending, i.e. not yet aligned),
-`data/versek.tsv`, `data/meres.tsv` (all measurement figures); keyed by OSIS verse and word position.
+`data/versek.tsv`, `data/meres.tsv`; keyed by OSIS verse and word position.
 
 **Size.** {konyv} books, {vers} verses, {par} pairs ({heber_par} Hebrew, {gorog_par} Greek; of these {morfema}
 morphemes), {hu_betoldas} additions, {er_forditatlan} untranslated source words, {hu_fuggoben} pending Hungarian words
@@ -1077,8 +1078,10 @@ separately): every word kept its position and merged words keep both pairs, so t
 ### Limitations
 
 The blind reviewer is itself a model, and human validation is not blind. Pair precision does not cover untranslated
-source words. The closed-edition chapters were selected purposively, cannot be verified by readers and exclude Hebrew
-morphemes. The Genesis–Exodus tables were assembled with a second model's answers as input (see AI Declaration). The {nem_tr_token} aligned Greek words
+source words. The closed-edition chapters were selected purposively and exclude Hebrew morphemes. In Genesis–Exodus,
+{nehez_par} pairs ({nehez_vers} verses) where the second model proposed a different pair are weaker:
+{nehez_helyes_szo} of {nehez_minta} sampled were correct, so roughly {nehez_hibas_a}–{nehez_hibas_f} may be wrong; listed in the known-issues file of
+version 1.1, they will be re-aligned in the next release. The {nem_tr_token} aligned Greek words
 absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement

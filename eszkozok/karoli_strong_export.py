@@ -379,6 +379,25 @@ def szamok(konyvek, vsorok, msorok):
     N['k_forma'] = osztaly.count('szovegforma')
     if N['k_osszes'] - N['k_nincs'] - N['k_masod'] - N['k_forma'] != N['k_n']:
         raise SystemExit('szám: a zárt összevetés osztályai nem adják ki a fő-szó párok számát')
+    # az 1–2Mózes gyengébb párjai (a fejlesztés közben futó második modell eltérő párt adott; a közölt pár a Sonneté):
+    # a forrástábla `forras` = S sorai; a #172 mintájának ezekre eső ítéletei (vak Opus-ellenőr); a becsült hibás párok
+    # a hibaarány Wilson-95%-ának szélei × a párszám, százasra kerekítve (ismert hibák, a felhasználó döntése 2026-11-17)
+    kulcs = {}
+    for k in ('1Moz', '2Moz'):
+        for r in tsv('adat/karoli_strong/parok_%s.tsv' % k)[1]:
+            if r.get('forras') == 'S':
+                kulcs[(r['vers'], r['hu_sorszam'], r['er_sorszam'])] = 1
+    N['nehez_par'] = len(kulcs)
+    N['nehez_vers'] = len({k[0] for k in kulcs})
+    itel = [r for r in tsv('f172/itelet_par.tsv')[1] if (r['vers'], r['hu_sorszam'], r['er_sorszam']) in kulcs]
+    N['nehez_minta'] = len(itel)
+    N['nehez_helyes'] = sum(1 for r in itel if r['helyes'] == '1')
+    n, x = N['nehez_minta'], N['nehez_minta'] - N['nehez_helyes']
+    z = 1.959963984540054
+    kozep = (x / n + z * z / (2 * n)) / (1 + z * z / n)
+    fel = z * ((x / n * (1 - x / n) / n + z * z / (4 * n * n)) ** 0.5) / (1 + z * z / n)
+    N['nehez_hibas_a'] = int(round(N['nehez_par'] * (kozep - fel), -2))
+    N['nehez_hibas_f'] = int(round(N['nehez_par'] * (kozep + fel), -2))
     # a keret: a mért párkészlet egyezik a csomagéval
     N['keret'] = int(_f172(F172_KERET, 'reteg', 'OSSZES')['parsor'])
     if N['keret'] != N['par']:

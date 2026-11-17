@@ -7,7 +7,7 @@
 
 ## Abstract
 
-The dataset aligns the 599,367 words of the 1908 Károli Bible, the classic Hungarian translation, with the Hebrew
+The dataset aligns the 599,367 words of the 1908 Hungarian Károli Bible with the Hebrew
 and Greek source text (STEPBible TAHOT/TAGNT) in 598,715 pairs carrying the source word's Strong's number; a language
 model marked word positions only. Pair precision (agreement with a blind model reviewer) is 95.06% (95% CI
 93.81–96.32%) on a stratified sample; human validation gives [precision]; main-word agreement with a
@@ -36,8 +36,8 @@ many-to-one), the additions and the untranslated source words.
 
 ### Steps
 
-**Texts.** The Hungarian side is the public-domain 1908 Károli text (HunKar); the source side is the STEPBible TAHOT
-(Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) data (Tyndale House, Cambridge; CC BY 4.0;
+**Texts.** The Hungarian side is the public-domain 1908 Károli text (HunKar); the source side is STEPBible TAHOT
+(Hebrew/Aramaic) and TAGNT (Greek) (Tyndale House, Cambridge; CC BY 4.0;
 commit efe428a, downloaded 2026-08-24). TAHOT counts Hebrew prefixes and suffixes as separate words (H9001–H9049). Verse divisions
 were mapped by deterministic length alignment, each verse merge approved by hand.
 
@@ -95,8 +95,7 @@ secondary, 6 unalignable); secondary pairs and segmentation differences are not 
 | main-word agreement, closed edition | 98.72% | – |
 
 Precision per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts). Of the 1,600 sample pairs,
-72 differed from the reviewer, most often a neighbouring word (37), typically a Hebrew prefix,
-article or preposition. Of the 34 differences from the closed edition,
+72 differed from the reviewer, most often a neighbouring word (37). Of the 34 differences from the closed edition,
 five were judged alignment errors (three-way judgement; the dataset lists them); secondary pairs are not
 differences.
 
@@ -115,7 +114,7 @@ differences.
 
 **Contents.** `data/parok/` (one row per link: positions, Strong's number, link type, state, Textus Receptus flag),
 `data/szavak/` (every word once, with its state: aligned, addition, untranslated, or pending, i.e. not yet aligned),
-`data/versek.tsv`, `data/meres.tsv` (all measurement figures); keyed by OSIS verse and word position.
+`data/versek.tsv`, `data/meres.tsv`; keyed by OSIS verse and word position.
 
 **Size.** 66 books, 31,158 verses, 598,715 pairs (466,785 Hebrew, 131,930 Greek; of these 157,163
 morphemes), 109,914 additions, 63,017 untranslated source words, 794 pending Hungarian words
@@ -133,8 +132,10 @@ separately): every word kept its position and merged words keep both pairs, so t
 ### Limitations
 
 The blind reviewer is itself a model, and human validation is not blind. Pair precision does not cover untranslated
-source words. The closed-edition chapters were selected purposively, cannot be verified by readers and exclude Hebrew
-morphemes. The Genesis–Exodus tables were assembled with a second model's answers as input (see AI Declaration). The 369 aligned Greek words
+source words. The closed-edition chapters were selected purposively and exclude Hebrew morphemes. In Genesis–Exodus,
+3,256 pairs (1,486 verses) where the second model proposed a different pair are weaker:
+three of 12 sampled were correct, so roughly 1,500–3,000 may be wrong; listed in the known-issues file of
+version 1.1, they will be re-aligned in the next release. The 369 aligned Greek words
 absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement
@@ -184,10 +185,10 @@ against the data, and takes full responsibility for the content; an AI tool is n
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-1,082; with the unnumbered statements 1,242; with the references as well 1,316 (the submission page says
-the limit includes references; it does not say whether the abstract counts); with the abstract too 1,397. The JOHD
+1,088; with the unnumbered statements 1,248; with the references as well 1,322 (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too 1,400. The JOHD
 data paper length is 1,000–1,500 words; the editorial office can confirm which count applies. Everything from the
-abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,491.
+abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,494.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model
 reviewer), the corresponding author's e-mail address, the two validators' names. The text goes into the official JOHD

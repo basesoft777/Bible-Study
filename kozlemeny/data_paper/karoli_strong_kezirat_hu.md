@@ -96,8 +96,8 @@ felbontási különbségek nem hibák.
 | a fő szavak egyezése, zárt kiadás | 98,72% | – |
 
 A rétegek precizitása 93,00% (próféták) és 98,00% (evangéliumok és Apostolok cselekedetei) között mozog.
-Az 1 600 mintapárból 72 tért el az ellenőrtől, leggyakrabban szomszédos szóval (37),
-jellemzően héber előtaggal, névelővel vagy elöljáróval. A zárt kiadástól való 34 eltérésből öt
+Az 1 600 mintapárból 72 tért el az ellenőrtől, leggyakrabban szomszédos szóval (37).
+A zárt kiadástól való 34 eltérésből öt
 bizonyult párosítási hibának (háromutas ítélet; az adatkészlet felsorolja őket); a másodlagos párok nem
 eltérések.
 
@@ -135,8 +135,10 @@ vizsgálta): minden szó a helyén maradt, az összeolvadt szavak mindkét párj
 ### Korlátok
 
 A vak ellenőr maga is modell, és az emberi validáció nem vak. A párprecizitás a fordítatlan eredeti szavakat nem méri.
-A zárt kiadással összevetett fejezetek célzottan kiválasztottak, az olvasó nem ellenőrizheti őket, és a héber
-morfémákat nem fedik. Az 1–2Mózes táblái egy második modell válaszaival együtt, bemenetként épültek (l. MI-nyilatkozat).
+A zárt kiadással összevetett fejezetek célzottan kiválasztottak, és a héber morfémákat nem fedik. Az 1–2Mózesben
+3 256 pár (1 486 vers), amelyre a második modell (l. MI-nyilatkozat) más párt javasolt, gyengébb: a mintából
+12 közül három helyes, így nagyjából 1 500–3 000 lehet hibás; az 1.1-es változat ismert-hibák
+listája felsorolja őket, és a következő kiadás újrapárosítja.
 A Textus Receptusban, amelyet Károli fordított, nem szereplő 369 párosított görög szó jelölve van.
 
 ## Adat-elérhetőség
@@ -186,11 +188,11 @@ tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 082; a számozatlan nyilatkozatokkal 1 242; a
-hivatkozásokkal is 1 316 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
-szól); a kivonattal együtt 1 397. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+hivatkozások nélkül (a JOHD-sablon számítása) 1 088; a számozatlan nyilatkozatokkal 1 248; a
+hivatkozásokkal is 1 322 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 400. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes. A kivonattól az MI-nyilatkozatig minden szó, a címsorokkal, a kulcsszavakkal, a szerzői
-szerepekkel és a táblázattal: 1 491.
+szerepekkel és a táblázattal: 1 494.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
 levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos Word- vagy LaTeX-sablonjába kerül; a
