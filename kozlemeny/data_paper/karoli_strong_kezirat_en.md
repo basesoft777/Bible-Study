@@ -47,11 +47,11 @@ in the answer. The fixed instructions also showed an optional Strong-tagged KJV 
 input contained one. The model returned position pairs, additions and untranslated words. In Joshua 8:34 it linked
 *Azután* (1) to source words 2–3 (*ʾaḥărê kēn*) and *felolvasta* (3) to word 4 (*qārāʾ*); a program then attached
 H0310, H3651 and H7121 by position. Twelve written rules decided disputed cases. Fixed conventions apply to function words: Hungarian articles and auxiliaries without a source word are
-additions, Hebrew and Greek articles untranslated (article use differs between the languages); an article used as a
+additions, Hebrew and Greek articles untranslated, as article use differs; an article used as a
 pronoun is linked.
 
-**Runs and reproducibility.** All books were aligned by claude-sonnet-5-5: most through the Anthropic Batch API
-(effort=high), Genesis–Deuteronomy, Joshua and Psalms in agent sessions. A program checked every
+**Runs and reproducibility.** All books were aligned by claude-sonnet-5-5: most through the Anthropic Batch API,
+Genesis–Deuteronomy, Joshua and Psalms in agent sessions. A program checked every
 answer (each Hungarian word exactly once, each source word at least once, only existing positions); a failed answer was
 redone. The model thus could not invent a Strong's number or lexicon entry; its possible error is a wrong pairing, and
 every pair points to one checkable source word. Model answers were generated once and archived; pair construction,
@@ -96,7 +96,7 @@ secondary, 6 unalignable); secondary pairs and segmentation differences are not 
 
 Precision per stratum ranges from 93.00% (prophets) to 98.00% (Gospels and Acts). Of the 1,600 sample pairs,
 72 differed from the reviewer, most often a neighbouring word (37). Of the 34 differences from the closed edition,
-five were judged alignment errors (three-way judgement; the dataset lists them); secondary pairs are not
+five were judged alignment errors (three-way judgement; listed in the dataset); secondary pairs are not
 differences.
 
 ## 3. Dataset Description
@@ -104,7 +104,7 @@ differences.
 - **Repository name:** Zenodo
 - **Object name:** `karoli-1908-strongs-1.0.zip`
 - **Format names and versions:** TSV (UTF-8) for the data and
-  codebook; Markdown for the bilingual documentation; CFF citation file; SHA-256 checksum list
+  codebook; Markdown for the bilingual documentation; CFF; SHA-256 checksums
 - **Creation dates:** 2026-10-01 – 2026-11-01
 - **Dataset creators:** Tamás Demeter (independent researcher; ORCID: 0009-0005-9254-9731): rules, processing pipeline, measurement,
   curation.
@@ -122,8 +122,7 @@ morphemes), 109,914 additions, 63,017 untranslated source words, 794 pending Hun
 
 ## 4. Reuse Potential
 
-Bible software can offer Strong-based search of the Hungarian text. Translation historians can study Károli's
-consistency and additions. For language technology it is alignment data for a low-resource pair with
+Bible software can offer Strong-based search of the Hungarian text. For language technology it is alignment data for a low-resource pair with
 error measured per stratum. The Logosz Lexikon, a motif-indexed, cross-referenced biblical
 lexicon, is built on this alignment. A companion dataset (Demeter, 2026b) carries the same pairs on the author's
 rule-based modernisation of the text (rare verb forms changed only on agreeing independent model proposals; measured
@@ -140,9 +139,10 @@ absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement
 
-Both datasets: Zenodo, CC BY 4.0 (see References). The prompt,
-archived model answers, verse mapping and 1,600 judged sample pairs will be added in version 1.1, planned before
-publication.
+Both datasets: Zenodo, CC BY 4.0. Version 1.1, deposited
+before submission, adds the prompt (logged hash 84f12ca7aafb), raw model answers (66 books), the verse mapping
+and merges, the 1,600 judged sample pairs, the known-issues list and the human judgements, with the STEPBible commit
+and model identifier; no code.
 
 ## Acknowledgements
 
@@ -185,10 +185,10 @@ against the data, and takes full responsibility for the content; an AI tool is n
 ## Submission notes
 
 Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
-1,088; with the unnumbered statements 1,248; with the references as well 1,322 (the submission page says
-the limit includes references; it does not say whether the abstract counts); with the abstract too 1,400. The JOHD
+1,074; with the unnumbered statements 1,253; with the references as well 1,327 (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too 1,405. The JOHD
 data paper length is 1,000–1,500 words; the editorial office can confirm which count applies. Everything from the
-abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,494.
+abstract to the AI Declaration, with headings, keywords, author roles and the table: 1,499.
 
 To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model
 reviewer), the corresponding author's e-mail address, the two validators' names. The text goes into the official JOHD

@@ -795,7 +795,7 @@ funkciószavakra rögzített konvenció érvényes: a magyar névelő és az ere
 görög névelő fordítatlan (a névelőhasználat a nyelvek között eltér); a névmásként álló névelő párosított.
 
 **Futtatás és megismételhetőség.** Minden könyvet a claude-sonnet-5-5 párosított: a többséget az Anthropic Batch
-API-n (effort=high), az 1–5Mózest, a Józsuét és a Zsoltárokat ügynöki futásban. Minden
+API-n, az 1–5Mózest, a Józsuét és a Zsoltárokat ügynöki futásban. Minden
 választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább egyszer, csak létező
 sorszám); a bukott választ a modell újra elkészítette. A modell így nem tudott Strong-számot vagy szótári tételt
 kitalálni; legfeljebb rossz szót párosíthatott, és minden pár egy ellenőrizhető eredeti szóra mutat. A modellválaszok
@@ -887,8 +887,10 @@ A Textus Receptusban, amelyet Károli fordított, nem szereplő {nem_tr_token} p
 
 ## Adat-elérhetőség
 
-Mindkét adatkészlet nyíltan elérhető a Zenodón, CC BY 4.0 licenccel (l. Hivatkozások). A prompt, az archivált
-modellválaszok, a versmegfeleltetés és a {minta} megítélt mintapár az 1.1-es változatba kerül, a megjelenés előtt.
+Mindkét adatkészlet nyíltan elérhető a Zenodón, CC BY 4.0 licenccel (l. Hivatkozások). Az 1.1-es változat,
+amely a beküldés előtt jelenik meg, hozzáadja a promptot (naplózott hash: 84f12ca7aafb), mind a {konyv} könyv nyers
+modellválaszát, a versmegfeleltetést és a vers-összevonásokat, az {minta} mintapárt az ellenőr ítéletével, az
+ismert-hibák listát és az emberi ítéleteket, a STEPBible-commit és a modellazonosító rögzítésével; kódot nem.
 
 ## Köszönetnyilvánítás
 
@@ -993,11 +995,11 @@ in the answer. The fixed instructions also showed an optional Strong-tagged KJV 
 input contained one. The model returned position pairs, additions and untranslated words. In Joshua 8:34 it linked
 *Azután* (1) to source words 2–3 (*ʾaḥărê kēn*) and *felolvasta* (3) to word 4 (*qārāʾ*); a program then attached
 H0310, H3651 and H7121 by position. Twelve written rules decided disputed cases. Fixed conventions apply to function words: Hungarian articles and auxiliaries without a source word are
-additions, Hebrew and Greek articles untranslated (article use differs between the languages); an article used as a
+additions, Hebrew and Greek articles untranslated, as article use differs; an article used as a
 pronoun is linked.
 
-**Runs and reproducibility.** All books were aligned by claude-sonnet-5-5: most through the Anthropic Batch API
-(effort=high), Genesis–Deuteronomy, Joshua and Psalms in agent sessions. A program checked every
+**Runs and reproducibility.** All books were aligned by claude-sonnet-5-5: most through the Anthropic Batch API,
+Genesis–Deuteronomy, Joshua and Psalms in agent sessions. A program checked every
 answer (each Hungarian word exactly once, each source word at least once, only existing positions); a failed answer was
 redone. The model thus could not invent a Strong's number or lexicon entry; its possible error is a wrong pairing, and
 every pair points to one checkable source word. Model answers were generated once and archived; pair construction,
@@ -1042,7 +1044,7 @@ secondary, {k_forma} unalignable); secondary pairs and segmentation differences 
 
 Precision per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}). Of the {minta} sample pairs,
 {elteres} differed from the reviewer, most often a neighbouring word ({h_szomszedos_token}). Of the {k_elter} differences from the closed edition,
-{k_mi_szo} were judged alignment errors (three-way judgement; the dataset lists them); secondary pairs are not
+{k_mi_szo} were judged alignment errors (three-way judgement; listed in the dataset); secondary pairs are not
 differences.
 
 ## 3. Dataset Description
@@ -1050,7 +1052,7 @@ differences.
 - **Repository name:** Zenodo
 - **Object name:** `{objektum}`
 - **Format names and versions:** TSV (UTF-8) for the data and
-  codebook; Markdown for the bilingual documentation; CFF citation file; SHA-256 checksum list
+  codebook; Markdown for the bilingual documentation; CFF; SHA-256 checksums
 - **Creation dates:** {kezdet} – {adatallapot}
 - **Dataset creators:** Tamás Demeter (independent researcher; ORCID: {orcid}): rules, processing pipeline, measurement,
   curation.
@@ -1068,8 +1070,7 @@ morphemes), {hu_betoldas} additions, {er_forditatlan} untranslated source words,
 
 ## 4. Reuse Potential
 
-Bible software can offer Strong-based search of the Hungarian text. Translation historians can study Károli's
-consistency and additions. For language technology it is alignment data for a low-resource pair with
+Bible software can offer Strong-based search of the Hungarian text. For language technology it is alignment data for a low-resource pair with
 error measured per stratum. The {lex_en}, a motif-indexed, cross-referenced biblical
 lexicon, is built on this alignment. A companion dataset (Demeter, 2026b) carries the same pairs on the author's
 rule-based modernisation of the text (rare verb forms changed only on agreeing independent model proposals; measured
@@ -1086,9 +1087,10 @@ absent from the Textus Receptus, which Károli translated, are flagged.
 
 ## Data Accessibility Statement
 
-Both datasets: Zenodo, CC BY 4.0 (see References). The prompt,
-archived model answers, verse mapping and {minta} judged sample pairs will be added in version 1.1, planned before
-publication.
+Both datasets: Zenodo, CC BY 4.0. Version 1.1, deposited
+before submission, adds the prompt (logged hash 84f12ca7aafb), raw model answers ({konyv} books), the verse mapping
+and merges, the {minta} judged sample pairs, the known-issues list and the human judgements, with the STEPBible commit
+and model identifier; no code.
 
 ## Acknowledgements
 

@@ -51,7 +51,7 @@ funkciószavakra rögzített konvenció érvényes: a magyar névelő és az ere
 görög névelő fordítatlan (a névelőhasználat a nyelvek között eltér); a névmásként álló névelő párosított.
 
 **Futtatás és megismételhetőség.** Minden könyvet a claude-sonnet-5-5 párosított: a többséget az Anthropic Batch
-API-n (effort=high), az 1–5Mózest, a Józsuét és a Zsoltárokat ügynöki futásban. Minden
+API-n, az 1–5Mózest, a Józsuét és a Zsoltárokat ügynöki futásban. Minden
 választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább egyszer, csak létező
 sorszám); a bukott választ a modell újra elkészítette. A modell így nem tudott Strong-számot vagy szótári tételt
 kitalálni; legfeljebb rossz szót párosíthatott, és minden pár egy ellenőrizhető eredeti szóra mutat. A modellválaszok
@@ -143,8 +143,10 @@ A Textus Receptusban, amelyet Károli fordított, nem szereplő 369 párosított
 
 ## Adat-elérhetőség
 
-Mindkét adatkészlet nyíltan elérhető a Zenodón, CC BY 4.0 licenccel (l. Hivatkozások). A prompt, az archivált
-modellválaszok, a versmegfeleltetés és az 1 600 megítélt mintapár az 1.1-es változatba kerül, a megjelenés előtt.
+Mindkét adatkészlet nyíltan elérhető a Zenodón, CC BY 4.0 licenccel (l. Hivatkozások). Az 1.1-es változat,
+amely a beküldés előtt jelenik meg, hozzáadja a promptot (naplózott hash: 84f12ca7aafb), mind a 66 könyv nyers
+modellválaszát, a versmegfeleltetést és a vers-összevonásokat, az 1 600 mintapárt az ellenőr ítéletével, az
+ismert-hibák listát és az emberi ítéleteket, a STEPBible-commit és a modellazonosító rögzítésével; kódot nem.
 
 ## Köszönetnyilvánítás
 
@@ -188,11 +190,11 @@ tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
 ## Beküldési jegyzet
 
 Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
-hivatkozások nélkül (a JOHD-sablon számítása) 1 088; a számozatlan nyilatkozatokkal 1 248; a
-hivatkozásokkal is 1 322 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
-szól); a kivonattal együtt 1 400. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+hivatkozások nélkül (a JOHD-sablon számítása) 1 074; a számozatlan nyilatkozatokkal 1 253; a
+hivatkozásokkal is 1 327 (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt 1 405. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
 számítás érvényes. A kivonattól az MI-nyilatkozatig minden szó, a címsorokkal, a kulcsszavakkal, a szerzői
-szerepekkel és a táblázattal: 1 494.
+szerepekkel és a táblázattal: 1 499.
 
 Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
 levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos Word- vagy LaTeX-sablonjába kerül; a
