@@ -3,7 +3,7 @@
 // Futtatás: node eszkozok/karoli_strong_validacio_worker/teszt/worker_proba.mjs
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
-import { kezel } from '../src/logika.js';
+import { kezel, valasz_normal } from '../src/logika.js';
 import { D1Utanzat, kitalalt_tetelek, betolt, minta_hash } from './d1_utanzat.mjs';
 
 const ITT = path.dirname(fileURLToPath(import.meta.url));
@@ -117,6 +117,19 @@ const k1 = [valtozas('T01', 'helyes', '2026-11-20T10:00:00.000Z', 'azon0001'), v
   ell(c.st === 200 && sorok[0].startsWith('n,ellenor,tetel,esemeny') && sorok.length === naplo_db() + 1, 'CSV: ' + sorok.length);
   ell(c.s.includes('"' + 'újabb' + '"') || c.s.includes(',újabb,'), 'CSV mezők');
   ell((await hiv('/api/admin/export?formatum=xml', { token: ADMIN })).st === 400, 'ismeretlen formátum'); }
+// 12. a hiányzó kapcsolat jelölője (F175.V25): csak „helyes” mellett marad meg; a megszűnt hibatípusok és a nem
+// logikai érték elutasítva; a CSV-ben külön oszlop
+{ ell(valasz_normal({ itelet: 'helyes', hianyzo_kapcsolat: true }, 't').hianyzo_kapcsolat === true, 'jelölő: helyes mellett megmarad');
+  ell(valasz_normal({ itelet: 'hibas', hibatipus: 'egyeb', hianyzo_kapcsolat: true }, 't').hianyzo_kapcsolat === false, 'jelölő: hibás mellett törlődik');
+  ell(valasz_normal({ itelet: 'bizonytalan', hianyzo_kapcsolat: true }, 't').hianyzo_kapcsolat === false, 'jelölő: bizonytalan mellett törlődik');
+  ell(valasz_normal({ itelet: 'helyes' }, 't').hianyzo_kapcsolat === false, 'jelölő: alapérték hamis');
+  for (const v of [{ itelet: 'hibas', hibatipus: 'hianyzo_par' }, { itelet: 'hibas', hibatipus: 'hianyos_kifejezes' },
+                   { itelet: 'helyes', hianyzo_kapcsolat: 'igen' }]) {
+    let dobott = false; try { valasz_normal(v, 't'); } catch (e) { dobott = true; }
+    ell(dobott, 'elutasítva: ' + JSON.stringify(v));
+  }
+  const c = await hiv('/api/admin/export?formatum=csv', { token: ADMIN });
+  ell(c.s.replace(/^\uFEFF/, '').split('\r\n')[0].includes(',helyes_forras,hianyzo_kapcsolat,karoli,'), 'CSV: hianyzo_kapcsolat oszlop'); }
 // 11. statikus tartalom és robots.txt: noindex, CSP a HTML-en; ismeretlen végpont 404
 { const r = await hiv('/');
   ell(r.st === 200 && r.h.get('X-Robots-Tag').includes('noindex') && r.h.get('Content-Security-Policy').includes("frame-ancestors 'none'") && r.h.get('Referrer-Policy') === 'no-referrer', 'statikus fejlécek');
@@ -124,5 +137,5 @@ const k1 = [valtozas('T01', 'helyes', '2026-11-20T10:00:00.000Z', 'azon0001'), v
   ell(rb.st === 200 && /Disallow: \//.test(rb.s), 'robots.txt');
   ell((await hiv('/api/semmi', { token: TA })).st === 404, '404'); }
 
-console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (11 forgatókönyv, Worker-logika)');
+console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (12 forgatókönyv, Worker-logika)');
 if (hiba.length) process.exitCode = 1;

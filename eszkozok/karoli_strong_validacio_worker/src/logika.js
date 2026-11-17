@@ -9,10 +9,10 @@
 // A logika futtatókörnyezet-független: a tesztek Node-on, a D1 helyett node:sqlite-tal hívják
 // (eszkozok/karoli_strong_validacio_worker/teszt/worker_proba.mjs).
 
-export const VERZIO = 'F175.V21';
+export const VERZIO = 'F175.V25';   // F175.V25: a hiányzó kapcsolat jelölője
 const ITELETEK = new Set(['', 'helyes', 'hibas', 'bizonytalan']);
-const HIBATIPUSOK = new Set(['', 'rossz_forrasszo', 'hianyzo_par', 'hianyos_kifejezes', 'folosleges_par', 'egyeb',
-  'kimaradt_par']);
+// A „Nem” altípusai (a hiányzó kapcsolat nem hiba: külön jelölő, `hianyzo_kapcsolat`, csak „helyes” ítélet mellett).
+const HIBATIPUSOK = new Set(['', 'rossz_forrasszo', 'folosleges_par', 'egyeb', 'kimaradt_par']);
 const ISO_IDO = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d{1,3})?Z$/;
 const AZON = /^[A-Za-z0-9_-]{8,64}$/;
 const TOKEN = /^[0-9a-f]{32}$/;
@@ -101,8 +101,13 @@ export function valasz_normal(v, kliens_ido) {
     throw new Error('hibás helyes_forras');
   }
   if (v.karoli != null && typeof v.karoli !== 'boolean') throw new Error('a karoli logikai érték');
+  if (v.hianyzo_kapcsolat != null && typeof v.hianyzo_kapcsolat !== 'boolean') {
+    throw new Error('a hianyzo_kapcsolat logikai érték');
+  }
   return {
-    itelet, hibatipus, helyes_forras: hf, megjegyzes: szoveg(v.megjegyzes), karoli: !!v.karoli,
+    itelet, hibatipus, helyes_forras: hf,
+    hianyzo_kapcsolat: itelet === 'helyes' && !!v.hianyzo_kapcsolat,   // a jelölő csak az „Igen” alpontja
+    megjegyzes: szoveg(v.megjegyzes), karoli: !!v.karoli,
     karoli_megj: szoveg(v.karoli_megj), segedeszkoz: szoveg(v.segedeszkoz), ido: kliens_ido,
   };
 }
@@ -196,11 +201,12 @@ async function export_(url, env) {
     const n = await env.DB.prepare(
       'SELECT n, ellenor, tetel, esemeny, kliens_ido, szerver_ido, kliens_azon, ' +
       "json_extract(valasz, '$.itelet') AS itelet, json_extract(valasz, '$.hibatipus') AS hibatipus, " +
-      "json_extract(valasz, '$.helyes_forras') AS helyes_forras, json_extract(valasz, '$.karoli') AS karoli, " +
+      "json_extract(valasz, '$.helyes_forras') AS helyes_forras, " +
+      "json_extract(valasz, '$.hianyzo_kapcsolat') AS hianyzo_kapcsolat, json_extract(valasz, '$.karoli') AS karoli, " +
       "json_extract(valasz, '$.segedeszkoz') AS segedeszkoz, json_extract(valasz, '$.megjegyzes') AS megjegyzes, " +
       "json_extract(valasz, '$.karoli_megj') AS karoli_megj FROM naplo ORDER BY n").all();
     const fej = ['n', 'ellenor', 'tetel', 'esemeny', 'kliens_ido', 'szerver_ido', 'kliens_azon', 'itelet', 'hibatipus',
-      'helyes_forras', 'karoli', 'segedeszkoz', 'megjegyzes', 'karoli_megj'];
+      'helyes_forras', 'hianyzo_kapcsolat', 'karoli', 'segedeszkoz', 'megjegyzes', 'karoli_megj'];
     const s = [fej.join(',')].concat(n.results.map(r => fej.map(k => csv_mezo(r[k])).join(','))).join('\r\n') + '\r\n';
     const resp = new Response('﻿' + s, { headers: { 'Content-Type': 'text/csv; charset=utf-8',
       'Content-Disposition': 'attachment; filename="validacio_naplo.csv"' } });

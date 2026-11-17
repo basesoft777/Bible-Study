@@ -67,7 +67,8 @@ VALIDACIO = os.path.join(GYOKER, 'kozlemeny', 'data_paper', 'validacio')
 LETET_DIR = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet')   # a repón kívüli letét (DT-F175vh)
 MINTA = os.path.join(LETET_DIR, 'minta.tsv')
 LEKOTES = os.path.join(VALIDACIO, 'LEKOTES.md')
-CSALI_KUSZOB = 0.8   # ha egy ítélő a csalik 80%-ánál (20-ból 16-nál) kevesebbet ismer fel, a számai csak fenntartással
+MEGSZUNT_HIBATIPUSOK = ('hianyzo_par', 'hianyos_kifejezes')   # F175.V25 előtti „Nem”-altípusok: ma külön jelölő
+CSALI_KUSZOB = 0.8  # ha egy ítélő a csalik 80%-ánál (20-ból 16-nál) kevesebbet ismer fel, a számai csak fenntartással
 F172_ITELET = os.path.join(GYOKER, 'f172', 'itelet_par.tsv')
 Z95 = 1.959963984540054
 ITELETEK = ('helyes', 'hibas', 'bizonytalan')
@@ -164,6 +165,11 @@ def valaszok_ellenoriz(d, ut, minta, hash_):
         it = v.get('itelet', '')
         if it and it not in ITELETEK:
             raise SystemExit('%s: ismeretlen ítélet %r (%s)' % (ut, it, k))
+        if v.get('hibatipus') in MEGSZUNT_HIBATIPUSOK:
+            # a hiányzó kapcsolat nem hiba (külön jelölő, `hianyzo_kapcsolat`); a régi altípussal adott „hibás” a 2a-t
+            # torzítaná, ezért az ilyen export nem értékelhető
+            raise SystemExit('%s: megszűnt hibatípus %r (%s); a hiányzó kapcsolat külön jelölő, nem hiba'
+                             % (ut, v.get('hibatipus'), k))
         if it:
             ki[k] = v
         if v.get('karoli') or (v.get('segedeszkoz') or '').strip():
@@ -411,6 +417,36 @@ def szam(x):
 
 # ---------------------------------------------------------------- kiértékelés
 
+def hianyzo_jelolt(v):
+    """A „hiányzó kapcsolat” jelölője egy válaszon: csak „helyes” ítélet mellett érvényes (az oldal és a Worker is így
+    tárolja; a régebbi oldal exportjában a mező hiányzik, akkor hamis)."""
+    return v.get('itelet') == 'helyes' and v.get('hianyzo_kapcsolat') is True
+
+
+def hianyzo_kapcsolat_szakasz(ellenorok, tip, alap, tul):
+    """2a/j: a hiányzó kapcsolat jelölője (előre rögzítve, a mérés előtt; DT-F175). A jelölt pár a 2a-ban helyes.
+    Közölhető: ellenőrönként a jelölt párok darabszáma (alapminta, túlminta), és tájékoztatásul a szigorú sor (a jelölt
+    pár hibásnak számít). Arány nem közölhető: a jelölt kapcsolatok nem mintavételes keretből jönnek (a hiányzó
+    kapcsolat nem a mintavétel egysége); a teljesség mércéje a kimaradt-pár réteg (3b). A döntési sávot a szigorú sor
+    nem befolyásolja."""
+    sor = ['### 2a/j. A hiányzó kapcsolat jelölője (tájékoztató; a döntési sávot nem befolyásolja)\n',
+           'A jelölt pár a 2a-ban helyes. A jelölőből csak darabszám közölhető, arány nem: a jelölt kapcsolatok nem '
+           'mintavételes keretből jönnek; a teljesség mércéje a kimaradt-pár réteg (3b). A „szigorú” sor a jelölt párt '
+           'hibásnak számolja, csak tájékoztatásul.\n',
+           '| | jelölt pár, alapminta | jelölt pár, túlminta |\n|---|---|---|']
+    for nev, v in ellenorok:
+        sor.append('| %s | %d | %d |' % (
+            nev, sum(1 for t in v if tip[t] == 'par' and t in alap and hianyzo_jelolt(v[t])),
+            sum(1 for t in v if tip[t] == 'par' and t in tul and hianyzo_jelolt(v[t]))))
+    sor.append('')
+    sor.append(FEJ_P)
+    for nev, v in ellenorok:
+        lista = ['hibas' if hianyzo_jelolt(v[t]) else v[t]['itelet'] for t in v if tip[t] == 'par' and t in alap]
+        sor.append(pontossag_sor(nev + ' · szigorú (a jelölt pár hibásnak számít)', lista))
+    sor.append('')
+    return '\n'.join(sor)
+
+
 def pontossag_sor(cimke, itelet_lista, konzervativ=False):
     """itelet_lista: ['helyes'|'hibas'|'bizonytalan', ...] -> táblasor. konzervativ: a bizonytalan hibásnak számít."""
     h = itelet_lista.count('helyes')
@@ -630,7 +666,9 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     sor.append('**Elsődleges szám:** a 2a alapminta-pontosság (%s), mellette mindig a konzervatív sor. A többi becslés '
                'kiegészítő.\n' % fo_nev)
     sor.append('### 2a. Alapminta (%d pár, a keret arányos rétegzett mintája)\n' % len([t for t in alap if tip[t] == 'par']))
-    sor.append('A „konzervatív” sor a bizonytalant hibásnak számolja.\n')
+    sor.append('A 2a kapcsolatszintű pontosság: helyes / (helyes + hibás); egy pár helyes, ha a forrásszava jó. A hiányzó '
+               'kapcsolat (a magyar szóhoz még egy eredeti szó tartozik, amely nincs bekötve) nem hiba: az ellenőr az '
+               '„Igen” mellett külön jelölővel jelzi (2a/j). A „konzervatív” sor a bizonytalant hibásnak számolja.\n')
     sor.append(FEJ_P)
     for nev, it in itelok:
         lista = [it[t] for t in it if tip[t] == 'par' and t in alap]
@@ -641,6 +679,7 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     fo_p = fo_lista.count('helyes') / (fo_lista.count('helyes') + fo_lista.count('hibas')) if (
         fo_lista.count('helyes') + fo_lista.count('hibas')) else float('nan')
     sor.append('**Döntési sáv** (a protokoll 3. pontja; %s, 2a = %s): %s\n' % (fo_nev, szazalek(fo_p), dontesi_sav(fo_p)))
+    sor.append(hianyzo_kapcsolat_szakasz(ellenorok, tip, alap, tul))
     if ket:
         (na_, va_), (nb_, vb_) = ellenorok
         szig, meg = ket_emberes({t: x['itelet'] for t, x in va_.items()}, {t: x['itelet'] for t, x in vb_.items()},

@@ -97,6 +97,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 .lab .belso { max-width: 1400px; margin: 0 auto; padding: 6px 16px 8px; display: flex; flex-direction: column; gap: 6px; }
 .lab .sor { display: flex; gap: 8px; }
 .lab button { flex: 1; }
+.lab .alpont { padding: 0 4px; font-size: .9rem; }
 .racs { display: grid; grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 4px; }
 .racs button { padding: 4px; min-height: 36px; font-size: .8rem; }
 .racs button.helyes { background: var(--ok); color: #fff; }
@@ -178,9 +179,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
       <h2>Megjegyzés, hibatípus</h2>
       <div id="t-hibatipus" class="rejtett">
         <div class="small muted">A hiba típusa:</div>
-        <label class="opt"><input type="radio" name="hibatipus" value="rossz_forrasszo"> rossz forrásszó (a magyar szónak másik eredeti szó felel meg)</label>
-        <label class="opt"><input type="radio" name="hibatipus" value="hianyzo_par"> hiányzó pár (a pár jó, de a magyar szóhoz még másik eredeti szó is tartozik)</label>
-        <label class="opt"><input type="radio" name="hibatipus" value="hianyos_kifejezes"> hiányos kifejezés (a pár egy többszavas kifejezés része, de a kifejezés egy másik tagja nincs bekötve)</label>
+        <label class="opt"><input type="radio" name="hibatipus" value="rossz_forrasszo"> rossz forrásszó (a magyar szónak másik eredeti szó felel meg; akkor is, ha a látott pár tagja rossz szóhoz került)</label>
         <label class="opt"><input type="radio" name="hibatipus" value="folosleges_par"> fölösleges pár (a magyar szónak nincs eredeti megfelelője)</label>
         <label class="opt"><input type="radio" name="hibatipus" value="egyeb"> egyéb (írd le a megjegyzésben)</label>
       </div>
@@ -261,6 +260,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
       <button class="valaszt hibas" data-itelet="hibas" type="button" id="b-hibas">Hibás</button>
       <button class="valaszt bizonytalan" data-itelet="bizonytalan" type="button" id="b-bizonytalan">Bizonytalan</button>
     </div>
+    <label class="opt alpont rejtett" id="t-hianyzo-doboz"><input type="checkbox" id="i-hianyzo"> <span>↳ Ez a pár jó, de a magyar szóhoz még egy eredeti szó tartozik, amely nincs bekötve.</span></label>
     <div class="sor">
       <button id="b-elozo" type="button">← Előző</button>
       <button id="b-kovkitolt" type="button">Következő kitöltetlen</button>
@@ -273,7 +273,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 "use strict";
 var MINTA = /*MINTA_ADAT*/null;
 var SZERVER = /*SZERVER_MOD*/false;   // true: online változat (a tételek és a mentés a Workeren, DT-F175vp)
-var VERZIO = "F175.V21";
+var VERZIO = "F175.V25";
 
 /* ---------- segédek ---------- */
 function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
@@ -341,6 +341,7 @@ function valasz(t) {
   if (v.karoli === undefined) v.karoli = false;
   if (v.karoli_megj === undefined) v.karoli_megj = "";
   if (v.segedeszkoz === undefined) v.segedeszkoz = "";
+  if (v.hianyzo_kapcsolat === undefined) v.hianyzo_kapcsolat = false;
   return v;
 }
 
@@ -479,6 +480,8 @@ function rajzol() {
 
   /* részletek */
   $("t-hibatipus").classList.toggle("rejtett", !(t.tipus === "par" && v.itelet === "hibas"));
+  $("t-hianyzo-doboz").classList.toggle("rejtett", !hianyzo_lathato(t, v));
+  $("i-hianyzo").checked = !!v.hianyzo_kapcsolat;
   document.querySelectorAll("input[name=hibatipus]").forEach(function (r) { r.checked = (r.value === v.hibatipus); });
   $("t-valaszto").classList.toggle("rejtett", !valaszto);
   $("t-kijelolt").textContent = v.helyes_forras.length ? v.helyes_forras.map(function (n) { return n + " " + t.tok[n - 1].a; }).join(", ") : "–";
@@ -490,7 +493,7 @@ function rajzol() {
   $("t-mentve").textContent = v.ido ? "utoljára módosítva: " + new Date(v.ido).toLocaleString("hu-HU") : "";
   if (SZERVER) allapot_jel();   /* online módban itt a mentés állapota áll */
   /* beküldés („Kész”) után a válaszok nem módosíthatók */
-  ["b-helyes", "b-hibas", "b-bizonytalan", "i-karoli"].forEach(function (x) { $(x).disabled = SZ.lezarva; });
+  ["b-helyes", "b-hibas", "b-bizonytalan", "i-karoli", "i-hianyzo"].forEach(function (x) { $(x).disabled = SZ.lezarva; });
   ["t-megj", "t-segedeszkoz", "t-karoli-megj"].forEach(function (x) { $(x).readOnly = SZ.lezarva; });
   document.querySelectorAll("input[name=hibatipus]").forEach(function (r) { r.disabled = SZ.lezarva; });
 
@@ -519,9 +522,12 @@ var SZABALY_SZERINT = {
 };
 
 function valaszto_aktiv(t, v) {
-  if (t.tipus === "par") return v.itelet === "hibas" && (v.hibatipus === "rossz_forrasszo" || v.hibatipus === "hianyzo_par" || v.hibatipus === "hianyos_kifejezes");
+  if (t.tipus === "par") return (v.itelet === "hibas" && v.hibatipus === "rossz_forrasszo") || (v.itelet === "helyes" && !!v.hianyzo_kapcsolat);
   return v.itelet === "hibas";
 }
+
+/* a hiányzó kapcsolat jelölője: csak pár-tételnél, az „Igen” alpontjaként; a látott pár ettől nem hibás */
+function hianyzo_lathato(t, v) { return t.tipus === "par" && v.itelet === "helyes"; }
 
 function kartya_kattint(o, n) {
   var t = tetel(), v = valasz(t);
@@ -541,6 +547,7 @@ function itelet_valt(x) {
   v.itelet = (v.itelet === x) ? "" : x;
   if (t.tipus === "parnelkuli" || t.tipus === "kimaradt") v.hibatipus = v.itelet === "hibas" ? "kimaradt_par" : "";
   else if (v.itelet !== "hibas") v.hibatipus = "";
+  if (!hianyzo_lathato(t, v)) v.hianyzo_kapcsolat = false;
   if (!valaszto_aktiv(t, v)) v.helyes_forras = [];
   valtozott(t, v, true); rajzol(); emlekezteto();
   if (v.itelet === "hibas" || v.itelet === "bizonytalan") { var r = $("t-reszlet"); if (r && r.scrollIntoView) r.scrollIntoView({ behavior: "smooth", block: "center" }); }
@@ -807,6 +814,7 @@ $("i-nev").addEventListener("keydown", function (e) { if (e.key === "Enter") ind
 document.querySelectorAll("input[name=hibatipus]").forEach(function (r) {
   r.addEventListener("change", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.hibatipus = r.value; if (!valaszto_aktiv(t, v)) v.helyes_forras = []; valtozott(t, v, true); rajzol(); });
 });
+$("i-hianyzo").addEventListener("change", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); if (!hianyzo_lathato(t, v)) { $("i-hianyzo").checked = false; return; } v.hianyzo_kapcsolat = $("i-hianyzo").checked; if (!valaszto_aktiv(t, v)) v.helyes_forras = []; valtozott(t, v, true); rajzol(); });
 $("t-megj").addEventListener("input", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.megjegyzes = $("t-megj").value; valtozott(t, v, false); });
 $("i-karoli").addEventListener("change", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.karoli = $("i-karoli").checked; valtozott(t, v, true); $("t-karoli-megj-doboz").classList.toggle("rejtett", !v.karoli); });
 $("t-segedeszkoz").addEventListener("input", function () { if (SZ.lezarva) return; var t = tetel(), v = valasz(t); v.segedeszkoz = $("t-segedeszkoz").value; valtozott(t, v, false); });

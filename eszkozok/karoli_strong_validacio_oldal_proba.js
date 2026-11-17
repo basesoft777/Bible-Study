@@ -20,7 +20,7 @@ function Elem(tag) {
   return e;
 }
 const elemek = {}; ids.forEach(i => elemek[i] = Elem());
-const radiok = ['rossz_forrasszo', 'hianyzo_par', 'folosleges_par', 'egyeb'].map(v => { const r = Elem('input'); r.value = v; return r; });
+const radiok = ['rossz_forrasszo', 'folosleges_par', 'egyeb'].map(v => { const r = Elem('input'); r.value = v; return r; });
 const tar = {};
 global.localStorage = { getItem: k => (k in tar ? tar[k] : null), setItem: (k, v) => { tar[k] = String(v); }, clear: () => { for (const k in tar) delete tar[k]; } };
 let confirmValasz = true, confirmHivas = 0;
@@ -45,7 +45,7 @@ ell(A.allapot && A.allapot.ellenor === 'Próba Ellenőr', 'indulás');
 const itelet = ['helyes', 'hibas', 'bizonytalan'];
 for (let i = 0; i < 120; i++) {
   A.itelet_valt(itelet[i % 3]);
-  if (i % 3 === 1 && A.tetel().tipus === 'par') { const r = radiok[i % 4]; r.listeners.change[0](); }
+  if (i % 3 === 1 && A.tetel().tipus === 'par') { const r = radiok[Math.floor(i / 3) % radiok.length]; r.listeners.change[0](); }
   if (i % 7 === 0) { elemek['t-megj'].value = 'megj ' + i; elemek['t-megj'].listeners.input[0](); }
   if (i % 13 === 0) { elemek['t-segedeszkoz'].value = 'BDB'; elemek['t-segedeszkoz'].listeners.input[0](); }
   if (i % 11 === 0) {   // fordítói észrevétel (nem ítélet)

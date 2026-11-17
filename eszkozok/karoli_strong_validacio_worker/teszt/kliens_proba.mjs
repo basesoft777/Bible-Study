@@ -60,7 +60,7 @@ globalThis.URL = Object.assign(URL, { createObjectURL: () => 'blob:x', revokeObj
 
 function eszkoz(token, tar) {   // egy „oldalbetöltés” egy eszközön (tar: az eszköz localStorage-a)
   const elemek = {}; ids.forEach(i => { elemek[i] = Elem(); });
-  const radiok = ['rossz_forrasszo', 'hianyzo_par', 'hianyos_kifejezes', 'folosleges_par', 'egyeb'].map(v => { const r = Elem('input'); r.value = v; return r; });
+  const radiok = ['rossz_forrasszo', 'folosleges_par', 'egyeb'].map(v => { const r = Elem('input'); r.value = v; return r; });
   const ablak = { scrollTo() {}, listeners: {}, addEventListener(t, f) { (this.listeners[t] = this.listeners[t] || []).push(f); } };
   const e = { elemek, radiok, ablak, tar, token };
   e.aktival = () => {
@@ -148,6 +148,28 @@ ell(g2.A.SZ.lezarva && JSON.stringify(szerveren('E1')) === elotte, 'a régi lap 
 // 6. biztonsági másolat online módban: az oldal exportja a minta-azonosítóval
 { const x = g1.A.export_obj(); ell(x.minta_hash === g1.A.MINTA_HASH && Object.keys(x.valaszok).length === 8 && x.ellenor === 'E1', 'biztonsági másolat'); }
 
+// 8. a hiányzó kapcsolat jelölője (F175.V25): csak az „Igen” után látszik, külön mezőben megy a szerverre, és más
+// ítéletre váltva törlődik; a „Nem” altípusai között nincs „hiányzó pár” és „hiányos kifejezés”
+{ ell(!/value="hianyzo_par"|value="hianyos_kifejezes"/.test(html), 'a megszűnt hibatípusok nincsenek az oldalon');
+  const g = eszkoz(TB, {}); await rendez();
+  g.elemek['b-indul'].click();
+  const t = g.A.tetel(), doboz = g.elemek['t-hianyzo-doboz'], cb = g.elemek['i-hianyzo'];
+  ell(t.tipus === 'par' && doboz.classList.contains('rejtett'), 'jelölő rejtve ítélet előtt');
+  g.A.itelet_valt('hibas');
+  ell(doboz.classList.contains('rejtett'), 'jelölő rejtve a „Nem” után');
+  g.A.itelet_valt('helyes');
+  ell(!doboz.classList.contains('rejtett'), 'jelölő látszik az „Igen” után');
+  cb.checked = true; cb.listeners.change[0]();
+  ell(g.A.valasz(t).hianyzo_kapcsolat === true && g.A.valasz(t).itelet === 'helyes', 'jelölő bekapcsolva, az ítélet helyes marad');
+  idozitok_futtat(0); await rendez();
+  let sz2 = szerveren('E2');
+  ell(sz2[t.id] && sz2[t.id].hianyzo_kapcsolat === true && sz2[t.id].itelet === 'helyes', 'a szerveren külön mező: ' + JSON.stringify(sz2[t.id]));
+  g.A.itelet_valt('hibas');
+  ell(g.A.valasz(t).hianyzo_kapcsolat === false && doboz.classList.contains('rejtett'), 'más ítéletre váltva a jelölő törlődik');
+  idozitok_futtat(0); await rendez();
+  sz2 = szerveren('E2');
+  ell(sz2[t.id].hianyzo_kapcsolat === false && sz2[t.id].itelet === 'hibas', 'a szerveren is törölve: ' + JSON.stringify(sz2[t.id])); }
+
 // 7. érvénytelen és hiányzó token, sérült minta-azonosító
 { const g = eszkoz('f'.repeat(32), {}); await rendez();
   ell(/érvénytelen/.test(g.elemek['indul-info'].textContent) && !g.A.allapot, 'érvénytelen token: ' + g.elemek['indul-info'].textContent);
@@ -157,6 +179,6 @@ ell(g2.A.SZ.lezarva && JSON.stringify(szerveren('E1')) === elotte, 'a régi lap 
   const k = eszkoz(TB, {}); await rendez();
   ell(/sérültek/.test(k.elemek['indul-info'].textContent) && !k.A.allapot, 'sérült minta-azonosító: ' + k.elemek['indul-info'].textContent); }
 
-console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (7 forgatókönyv, kliens + Worker)');
+console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (8 forgatókönyv, kliens + Worker)');
 console.log('fetch-hívások: ' + kerdes_db);
 if (hiba.length) process.exitCode = 1;

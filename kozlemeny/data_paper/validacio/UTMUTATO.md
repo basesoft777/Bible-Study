@@ -4,7 +4,7 @@
 
 A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, illetve görög eredeti megfelelő szavával. Az adat nyíltan elérhető a Zenodón (doi:10.5281/zenodo.24141883), és a *Journal of Open Humanities Data*-ba cikk készül róla. A párosítást nyelvi modell végezte, rögzített szabályok szerint: csak rámutatott a forrásszóra; a Strong-számokat ezután program kapcsolta a párokhoz, a STEPBible héber és görög adatából. A pontosságot eddig szintén gép mérte, ezért kell most emberi szem. Ti ketten egymástól függetlenül, szúrópróbaszerűen nézitek át a mintát. Az eredményetek számként kerül a cikkbe, ti pedig, ha hozzájárultok, név szerint szerepeltek a köszönetnyilvánításban. A külső ellenőr teljes készlete kb. 4,5–6,5 óra, a második ellenőré (csak szópárok) kb. 2,5–3 óra, több részletben. Egymással ne egyeztessetek; ha valamiben nem vagytok biztosak, a „bizonytalan” gomb a jó válasz. Mivel részt vesztek a munkában, a folyóiratnál nem lehettek a cikk bírálói.
 
-**A feladat.** Az ellenőrző oldalt a levélben kapott személyes link nyitja meg; gépen és telefonon is működik. Hogy hány tételt kérünk, a kísérő levél mondja meg. **Szópárok**: egy Károli-szóhoz a gép egy héber vagy görög szót rendelt (TAHOT/TAGNT, Strong-számmal). **Pár nélküli magyar szavak**: a párosítás szerint ennek a szónak nincs megfelelője az eredetiben, és azt kérdezzük, igaz-e ez. A szabály által eldöntött esetek (önálló névelő, segédige, külön kitett alanyi vagy tárgyi névmás, korrelatív „azért … hogy”) nincsenek a mintában, lásd a Konvenciókat. **Pár nélküli forrásszavak**: egy héber vagy görög szónak a gép nem talált párt Károli mondatában, és azt kérdezzük, van-e mégis. Mindhárom fajta tételt a teljes vers ismeretében ítéld meg. A második ellenőr csomagja kisebb: csak szópárokat tartalmaz. A készlet ellenőrző tételeket is tartalmaz, de nem jelöljük, melyek; ezeket is ugyanúgy ítéld meg. Egy magyar szónak több eredetije is lehet, ilyenkor minden kapcsolat külön tétel. A vers többi párját a kártyákon látod.
+**A feladat.** Az ellenőrző oldalt a levélben kapott személyes link nyitja meg; gépen és telefonon is működik. Hogy hány tételt kérünk, a kísérő levél mondja meg. **Szópárok**: egy Károli-szóhoz a gép egy héber vagy görög szót rendelt (TAHOT/TAGNT, Strong-számmal). **Pár nélküli magyar szavak**: a párosítás szerint ennek a szónak nincs megfelelője az eredetiben, és azt kérdezzük, igaz-e ez. A szabály által eldöntött esetek (önálló névelő, segédige, külön kitett alanyi vagy tárgyi névmás, korrelatív „azért … hogy”) nincsenek a mintában, lásd a Konvenciókat. **Pár nélküli forrásszavak**: egy héber vagy görög szónak a gép nem talált párt Károli mondatában, és azt kérdezzük, van-e mégis. Mindhárom fajta tételt a teljes vers ismeretében ítéld meg. A második ellenőr csomagja kisebb: csak szópárokat tartalmaz. A készlet ellenőrző tételeket is tartalmaz, de nem jelöljük, melyek; ezeket is ugyanúgy ítéld meg. Egy magyar szónak több eredetije is lehet; ilyenkor minden kapcsolat külön tétel, és mindegyiknél csak azt döntsd el, hogy ez az egy kapcsolat helyes-e. Ha egy kapcsolat hiányzik, azt a külön jelölővel jelezd; ettől a látott pár nem lesz hibás. A vers többi párját a kártyákon látod.
 
 **Kérjük, a másik ellenőrrel ne egyeztess, és ne nézd meg az ő válaszait.** Csak így mérhető, mennyire egyezik két független ítélet. Tartalmi kérdésben senkivel ne egyeztess; ha valami technikailag nem működik (nem nyílik meg az oldal, nem ment), szólj a szervezőnek.
 
@@ -22,7 +22,7 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 
 1. Nézd meg a kiemelt eredeti szót a kártyán: mit jelent (angol glossza, Strong-szám, alaktan)?
 2. Gondold végig, melyik magyar szóra vagy szavakra mutatnál, ha rá kellene mutatnod a párjára, akkor is, ha Károli szabadon vagy más szóval adja vissza.
-3. Nézd meg, a gép által kiemelt magyar szó köztük van-e. Ha igen: **Igen** (a pár helyes). Ha a jelentést valójában egy másik magyar szó hordozza: **Nem** (a pár hibás), és add meg a hiba típusát.
+3. Nézd meg, a gép által kiemelt magyar szó köztük van-e. Ha igen: **Igen** (a pár helyes). Ha a pár jó, de a magyar szóhoz még egy eredeti szó tartozik, amely nincs bekötve: szintén **Igen**, és az „Igen” alatt megjelenő jelölővel jelezd. Ha a jelentést valójában egy másik magyar szó hordozza: **Nem** (a pár hibás), és add meg a hiba típusát.
 
 **Mikor helyes a pár, akkor is, ha a fordítás nem szó szerinti?**
 
@@ -34,7 +34,7 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 **Mikor „Nem” a válasz, akármilyen jó a fordítás?**
 
 - A magyar szó valójában a vers egy másik eredeti szavát fordítja. Példa: Ez 43:13 „egy sing tesz egy **közsinget** és egy tenyért”. A *közsinget* ↔ טֹפַח (ṭōpaḥ, H2948, „tenyérnyi”) pár hibás, mert a טֹפַח a *tenyért* fordítása; a *közsinget* a אַמָּה (ʾammâ, H0520, „sing”) párja volna.
-- Egy többszavas kifejezésnek csak az egyik tagja van bekötve, és a magyar szó olyan taghoz került, amelyhez nem tartozik.
+- A látott pár tagja rossz szóhoz került: például egy többszavas kifejezésnek csak az egyik tagja van bekötve, és a magyar szó olyan taghoz került, amelyhez nem tartozik. Ez „rossz forrásszó”, nem a hiányzó kapcsolat jelölője.
 - A pár olyan eredeti szóra mutat, amelynek semmi köze a magyar szóhoz.
 
 **Pár nélküli szavak.** Itt a kiemelt magyar szónak a gép nem talált párt. A kérdés: **Van-e a héber/görög mondatban olyan szó, amelyre ennél a magyar szónál rá tudnál mutatni?**
@@ -55,10 +55,9 @@ A Károli-biblia 1908-as szövegének minden szavát párosítottuk a héber, il
 ## Mikor helyes, hibás, bizonytalan?
 
 - **Igen (helyes)** – a párjára mutatva erre a magyar szóra is mutatnál (egyedül vagy más szavakkal együtt), az alábbi szabályok szerint. Pár nélküli szónál ennek a „Nincs ilyen szó” felel meg: a héber/görög mondatban nincs olyan szó, amelyre rá tudnál mutatni.
+  - *Az „Igen” alatti jelölő* (csak szópárnál): „Ez a pár jó, de a magyar szóhoz még egy eredeti szó tartozik, amely nincs bekötve.” Ilyenkor a pár helyes; a hiányzó kapcsolatot a jelölő rögzíti (ha tudod, koppints a hiányzó eredeti szóra). Akkor is ezt használd, ha egy többszavas kifejezés egyik tagja maradt ki.
 - **Nem (hibás)** – válaszd ki a hiba típusát is:
-  - *rossz forrásszó*: a magyar szónak a vers egy másik eredeti szava felel meg (ha tudod, koppints rá);
-  - *hiányzó pár*: ez a pár jó, de a magyar szóhoz még egy eredeti szó is tartozik, és az a párjai között nem szerepel;
-  - *hiányos kifejezés*: a pár egy többszavas kifejezés része, de a kifejezés egy másik tagja nincs bekötve (lásd „Több szó – egy jelentés”);
+  - *rossz forrásszó*: a magyar szónak a vers egy másik eredeti szava felel meg (ha tudod, koppints rá); ide tartozik az is, ha a látott pár tagja rossz szóhoz került;
   - *fölösleges pár*: a magyar szónak nincs eredeti megfelelője, mégis kapott párt;
   - *egyéb*: írd le a megjegyzésben.
   - Pár nélküli szónál ennek a „Van ilyen szó” felel meg: van eredetije, a párosítás tehát kihagyta. Ha tudod, koppints az eredeti szóra.
@@ -74,7 +73,7 @@ A névelő és néhány nyelvtani elem a magyarban és az eredetiben nem felel m
 - a külön kitett alanyi névmást, ha a személyt csak az igealak hordozza, és a tárgyi névmást, ha nincs eredetije;
 - a korrelatív *azért*-ot a *hogy* előtt, ha nincs eredetije.
 
-Az eredeti oldalon ezek a kártyák alján „szabály szerint nincs párosítva” áll. **A konvenció alkalmazását ítéld meg, ne magát a konvenciót.** Ha egy pár csak azért tűnhet hibásnak vagy hiányosnak, mert egy névelő nincs bekötve, az nem hiba: ilyenkor a pár helyes.
+Az eredeti oldalon ezek a kártyák alján „szabály szerint nincs párosítva” áll. **A konvenció alkalmazását ítéld meg, ne magát a konvenciót.** Ha egy pár csak azért tűnhet hibásnak vagy hiányosnak, mert egy névelő nincs bekötve, az nem hiba: ilyenkor a pár helyes, és a hiányzó kapcsolat jelölője sem kell.
 
 ## Több szó – egy jelentés
 
@@ -82,11 +81,11 @@ Gyakran nem egy szó felel meg egy szónak. Ilyenkor a kifejezés **minden tagj�
 
 - **Egy magyar szó ↔ több eredeti szó (1:n).** Józs 10:26 *Azután* ↔ אַחֲרֵי כֵן (ʾaḥărê + kēn, H0310 + H3651): az *után* az ʾaḥărê-t, az *az* a kēn-t fedi, tehát az *Azután* mindkettővel helyes pár. Más Strong-számos kiadások az ilyen kifejezésnél gyakran csak a fő szót jelölik; ez felbontási különbség, nem hiba. *Hiba*, ha a pár a kifejezésen kívüli szóra mutat (pl. az *Azután* a mondatkezdő וַ-ra).
 - **Több magyar szó ↔ egy eredeti szó (n:1).** Józs 8:31 *meg van írva* ↔ כָּתוּב (H3789): mindhárom magyar szó párja helyes. *Hiba*, ha a szerkezeten kívüli szó (pl. a mellette álló *mint*) is ide kerül, és nem a saját eredetijéhez.
-- **Több ↔ több (n:m).** Józs 1:5 *a miképen* ↔ כַּאֲשֶׁר (kə- + ʾăšer, H9004 + H0834): mindkét magyar szó mindkét héber taggal párosítva van (B szabály), és ez mind a négy kapcsolatnál helyes. *Hiba*, ha a kifejezés egyik tagja kimarad: ezt a „hiányos kifejezés” hibatípussal jelöld.
+- **Több ↔ több (n:m).** Józs 1:5 *a miképen* ↔ כַּאֲשֶׁר (kə- + ʾăšer, H9004 + H0834): mindkét magyar szó mindkét héber taggal párosítva van (B szabály), és ez mind a négy kapcsolatnál helyes. Ha a kifejezés egyik tagja kimarad, a látott pár ettől még helyes: jelöld a külön jelölővel.
 - **Igekötő.** Józs 1:5 *Meg nem áll* ↔ יִתְיַצֵּב (H3320): a különírt *Meg* is az ige párja, akkor is, ha a tagadószó elválasztja (E szabály). Ugyanitt *el nem hagylak*: az *el* is a אַרְפְּ párja. *Hiba*, ha az igekötő egy másik szóhoz (pl. a tagadószó eredetijéhez) került.
 - **Elöljárós vagy toldalékos héber szó.** Józs 8:31 *könyvében* ↔ בְּ + סֵפֶר (H9003 + H5612): a héber elöljáró a ragot viselő magyar szóhoz kötődik, mert a *-ben* rag fordítja. Ugyanígy *Úrnak* ↔ לַ + יְהוָה. *Hiba*, ha az elöljáró egy szomszédos, rag nélküli szóhoz került.
 
-**Hibatípusok többszavas kifejezésnél.** *Rossz forrásszó*: a pár a kifejezésen kívülre mutat. *Hiányos kifejezés*: a pár jó, de a kifejezés egy másik tagja (magyar vagy eredeti) nincs bekötve. *Hiányzó pár*: a magyar szónak van még egy eredetije, amely nem egy kifejezés része.
+**Hibatípusok többszavas kifejezésnél.** *Rossz forrásszó* („Nem”): a pár a kifejezésen kívülre mutat, vagy a látott pár tagja rossz szóhoz került. *Hiányzó kapcsolat* (nem hiba: „Igen” és a külön jelölő): a látott pár jó, de a magyar szóhoz még egy eredeti szó tartozik, amely nincs bekötve, akár egy kifejezés másik tagja, akár egy további eredeti szó.
 
 ## A párosítás szabályai (röviden)
 

@@ -280,6 +280,61 @@ class Kiertekeles(unittest.TestCase):
         self.assertIn('| A (Min A) | %d | %d | 0 | 0 | 100.00%%' % (n_alap, n_alap), md)   # a csali nem számít az alapmintába
         self.assertIn('Ebben a mintában nincs nehéz réteg.', md)
 
+    def test_hianyzo_kapcsolat_nem_hiba(self):
+        # a 2a kapcsolatszintű: a jelölt („Igen” + hiányzó kapcsolat) pár helyes; a szigorú sor csak tájékoztató;
+        # a jelölőből darabszám; a hibás ítélet mellé tett jelölő érvénytelen; a megszűnt hibatípus elutasítva
+        par = [r['tetel_id'] for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap']
+        tul = [r['tetel_id'] for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'tulminta']
+        hibas, jelolt = set(par[:4]), set(par[30:35]) | {tul[0]}
+        d = _export('Jelölő', self.minta, self.h,
+                    lambda r: ('hibas', 'rossz_forrasszo') if r['tetel_id'] in hibas else ('helyes', ''))
+        for t in jelolt:
+            d['valaszok'][t]['hianyzo_kapcsolat'] = True
+        d['valaszok'][par[0]]['hianyzo_kapcsolat'] = True   # „Nem” mellett a jelölő nem érvényes
+        fj = os.path.join(self.tmp, 'jelolo.json')
+        with open(fj, 'w', encoding='utf-8') as f:
+            json.dump(d, f, ensure_ascii=False)
+        md, _, _ = self._fut(fajlok=[fj])
+        self.assertIn('| A (Jelölő) | 300 | 296 | 4 | 0 | 98.67%', md)          # a jelölt pár nem hiba
+        self.assertIn('2a = 98.67%', md)                                         # a döntési sáv a 2a-ból
+        self.assertIn('### 2a/j. A hiányzó kapcsolat jelölője', md)
+        self.assertIn('| A (Jelölő) | 5 | 1 |', md)                              # darabszám: alapminta, túlminta
+        self.assertIn('| A (Jelölő) · szigorú (a jelölt pár hibásnak számít) | 300 | 291 | 9 | 0 | 97.00%', md)
+        sav = [x for x in md.splitlines() if x.startswith('**Döntési sáv**')]
+        self.assertEqual(len(sav), 1)
+        self.assertNotIn('97.00%', sav[0])                                       # a szigorú sor nem fő szám
+        # a régi altípus („hiányzó pár”) nem értékelhető: a 2a-t torzítaná
+        d['valaszok'][par[1]]['hibatipus'] = 'hianyzo_par'
+        fr = os.path.join(self.tmp, 'regi_tipus.json')
+        with open(fr, 'w', encoding='utf-8') as f:
+            json.dump(d, f, ensure_ascii=False)
+        r = subprocess.run([sys.executable, SZKRIPT, fr, '--kimenet', os.path.join(self.tmp, 'ki_regi'), '--csali-nelkul'],
+                           capture_output=True, text=True, encoding='utf-8')
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn('megszűnt hibatípus', r.stderr)
+
+    def test_csali_jelolovel_nem_felismeres(self):
+        # a csalinál csak a „Nem” felismerés; az „Igen” + hiányzó-kapcsolat jelölő nem az
+        fej, sorok = ki.tabla(ki.MINTA)
+        alap = [r for r in sorok if r['tipus'] == 'par' and r['reszminta'] == 'alap' and r['elteres'] == '0'][:188]
+        csali = [dict(r, tetel_id='C%03d' % i, reszminta='csali', elteres='', kozos='0') for i, r in enumerate(alap[:10], 1)]
+        uj = alap + csali
+        ut = os.path.join(self.tmp, 'csali_jelolo_minta.tsv')
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# kitalált minta (teszt)\n' + '\t'.join(fej) + '\n')
+            for r in uj:
+                f.write('\t'.join(r[k] for k in fej) + '\n')
+        d = _export('Csali J', uj, ki.minta_hash(uj),
+                    lambda r: ('hibas', 'egyeb') if r['reszminta'] == 'csali' and r['tetel_id'] not in ('C009', 'C010')
+                    else ('helyes', ''))
+        d['valaszok']['C009']['hianyzo_kapcsolat'] = True
+        d['valaszok']['C010']['hianyzo_kapcsolat'] = True
+        fj = os.path.join(self.tmp, 'csali_jelolo.json')
+        with open(fj, 'w', encoding='utf-8') as f:
+            json.dump(d, f, ensure_ascii=False)
+        md, _, _ = self._fut('--minta', ut, fajlok=[fj])
+        self.assertIn('| A (Csali J) | 10 | 8 | 2 | 0 | 80.00%', md)   # felismerés: 8 / 10 (a jelölő nem számít)
+
     def test_csali_letetbol(self):
         # kitalált letét: 3 mintapár csaliként, a minta fejlécében a letét SHA-256-jával
         import hashlib
