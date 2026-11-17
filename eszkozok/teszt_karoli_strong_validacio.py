@@ -79,8 +79,8 @@ class Minta(unittest.TestCase):
         nelkul = [r for r in self.minta if r['tipus'] == 'parnelkuli']
         self.assertEqual(len([r for r in par if r['reszminta'] == 'alap']), 300)
         self.assertEqual(len([r for r in par if r['reszminta'] == 'tulminta']),
-                         72 - len([r for r in par if r['reszminta'] == 'alap' and r['elteres'] == '1']))
-        self.assertEqual(len([r for r in par if r['elteres'] == '1']), 72)   # a #172 összes modell-eltérése
+                         87 - len([r for r in par if r['reszminta'] == 'alap' and r['elteres'] == '1']))
+        self.assertEqual(len([r for r in par if r['elteres'] == '1']), 87)   # bármelyik gépi bíráló hibásnak jelölte
         self.assertEqual(len(nelkul), 80)
         self.assertEqual(len([r for r in par if r['reszminta'] == 'nehez']), 45)
         self.assertEqual(len([r for r in self.minta if r['tipus'] == 'kimaradt']), 55)
@@ -213,7 +213,8 @@ class Kiertekeles(unittest.TestCase):
         self.assertIn('| **döntött minta** | 300 | 296 | 4 | 0 | 98.67%', md)
         self.assertIn('döntésre vár: 0', md)
         self.assertIn('| **döntött minta** · párok, alapminta | 300 |', md)   # a #172 mind a 300 párra ad ítéletet
-        self.assertIn('| **döntött minta** · párok, a #172 72 eltérése | 72 |', md)
+        self.assertIn('| **döntött minta** · párok, a 72 Opus-eltérés | 72 |', md)
+        self.assertIn('| **döntött minta** · párok, a túlminta-réteg (87) | 87 |', md)
 
     def test_ketfazisu_becsles(self):
         n1, d, w = ki.f172_fazis1()
@@ -224,6 +225,11 @@ class Kiertekeles(unittest.TestCase):
         # a modell-eltérések mind hibásak, a többi helyes -> Σ W_h (1 − d_h/n'_h), vagyis a #172-es súlyozott arány
         it = {r['tetel_id']: ('hibas' if r['elteres'] == '1' else 'helyes') for r in self.minta if r['tipus'] == 'par'}
         e, _ = ki.ketfazisu(self.minta, it)
+        # d_h a túlminta-réteg (bármelyik gépi bíráló hibásnak jelölte) rétegenkénti száma a mintából
+        d = {}
+        for r in self.minta:
+            if r['tipus'] == 'par' and r['elteres'] == '1':
+                d[r['f172_reteg']] = d.get(r['f172_reteg'], 0) + 1
         vart = sum(w[h] * (1 - d.get(h, 0) / n1[h]) for h in n1)
         self.assertAlmostEqual(e[0], vart, places=9)
         self.assertLess(e[1], e[0])
@@ -355,20 +361,22 @@ class Kiertekeles(unittest.TestCase):
         # vitatott: B további 6 hibás és 2 bizonytalan párja
         self.assertEqual(len(vit), 8)
 
-    def test_kulso_biralok_elteresei(self):
-        # a 45 nem egyhangú pár mind a mintában, jelölve; ami nem volt benne, saját rétegként (külső eltérés)
+    def test_gepi_jelolt_reteg(self):
+        # a túlminta-réteg: bármelyik gépi bíráló hibásnak jelölte (87 pár), mind a mintában; a 72 Opus-eltérés része
         par = [r for r in self.minta if r['tipus'] == 'par']
-        self.assertEqual(sum(1 for r in par if r['kulso_elteres'] == '1'), 45)
-        self.assertTrue(all(r['kulso_elteres'] == '1' for r in par if r['reszminta'] == 'kulso_elteres'))
-        self.assertNotIn('1', {r['kozos'] for r in par if r['reszminta'] == 'kulso_elteres'})   # a második ítélőnél nincs
+        self.assertEqual(sum(1 for r in par if r['elteres'] == '1'), 87)
+        self.assertEqual(sum(1 for r in par if r['opus_elteres'] == '1'), 72)
+        self.assertTrue(all(r['elteres'] == '1' for r in par if r['opus_elteres'] == '1'))
+        self.assertTrue(all(r['elteres'] == '1' for r in par if r['reszminta'] == 'tulminta'))
+        self.assertNotIn('1', {r['kozos'] for r in par if r['reszminta'] == 'tulminta'})   # a második ítélőnél nincs
         # a valódi fagyasztott gépi tábla (a letétben, SHA-256-tal)
         import karoli_strong_validacio_minta as vm2
         if not os.path.exists(vm2.GEPI_TABLA):
             self.skipTest('nincs gépi tábla a letétben')
         md, _, _ = self._fut('--gepi', vm2.GEPI_TABLA, '--gepi-sha256', vm2.GEPI_SHA256, fajlok=[self.fa])
-        self.assertIn('Külső eltérés (új réteg)', md)
+        self.assertIn('Túlminta (%d pár)' % sum(1 for r in par if r['reszminta'] == 'tulminta'), md)
         self.assertIn('modell-bíráló helyesnek ítélte. A fordított eset', md)
-        self.assertIn('### 2e. A három külső gépi bíráló nem egyhangú párjai (45 pár', md)
+        self.assertNotIn('2e.', md)
 
     def test_masodik_ito_oldala(self):
         # a második ítélő oldala (közös blokk + az összes alapminta-pár) exportját is elfogadja
