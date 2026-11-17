@@ -775,12 +775,38 @@ def minta_olvas(ut):
 LEKOTES = os.path.join(KIMENET, 'LEKOTES.md')
 
 
+def zenodo_egyezes(sorok):
+    """A minta párjai megvannak-e a nyílt mag 1.0-s exportjában (nyilt_karoli_strong/data/parok/, a Zenodo 1.0 tartalma,
+    KIADAS.txt): (megtalált, összes pár). A kulcs: OSIS-igehely, magyar token, eredeti token, Strong-szám."""
+    import nyilt_mag_export as NM   # az OSIS-kulcs ugyanúgy, ahogy a nyílt mag exportja képzi (csak olvasva)
+    export = set()
+    d = os.path.join(GYOKER, 'nyilt_karoli_strong', 'data', 'parok')
+    for fn in sorted(os.listdir(d)):
+        fej = None
+        with open(os.path.join(d, fn), encoding='utf-8') as f:
+            for sor in f:
+                if sor.startswith('#'):
+                    continue
+                m = sor.rstrip('\n').split('\t')
+                if fej is None:
+                    fej = m
+                    continue
+                r = dict(zip(fej, m))
+                export.add((r['osis'], r['token'], r['eredeti_token'], r['strong']))
+    par = [r for r in sorok if r['tipus'] == 'par' and r['reszminta'] != 'csali']
+    talalt = 0
+    for r in par:
+        if (NM.osis(r['vers']), r['hu_sorszam'], r['er_sorszam'], r['strong']) in export:
+            talalt += 1
+    return talalt, len(par)
+
+
 def masodik_resz(sorok):
     """A második ítélő tételei: a közös blokk és az összes alapminta-pár."""
     return [r for r in sorok if r['kozos'] == '1' or (r['tipus'] == 'par' and r['reszminta'] == 'alap')]
 
 
-def lekotes_ir(letet_dir, retegszam, vegleges=False):
+def lekotes_ir(letet_dir, retegszam, vegleges=False, zenodo=None):
     """A nyilvános lekötés: a letétfájlok SHA-256-ja és a rétegenkénti tételszám (a tételek és a rétegjelölés
     nélkül). A validáció lezárása után a letétfájlok nyilvánosságra kerülnek, és ezzel ellenőrizhetők."""
     sorok = ['# Az emberi validáció letétjének lekötése', '',
@@ -795,9 +821,24 @@ def lekotes_ir(letet_dir, retegszam, vegleges=False):
              '| fájl | SHA-256 |', '|---|---|']
     for fn in ('minta.tsv', 'F175V_csalik.tsv', 'ellenorzo.html', 'ellenorzo_masodik.html'):
         sorok.append('| `%s` | `%s` |' % (fn, fajl_sha256(os.path.join(letet_dir, fn))))
+    for fn in ('UTMUTATO.md', 'UTMUTATO.pdf'):   # az útmutató a repóban (nyilvános), a kiküldött változat lekötése
+        ut = os.path.join(KIMENET, fn)
+        if os.path.exists(ut):
+            sorok.append('| `%s` (a repóban) | `%s` |' % (fn, fajl_sha256(ut)))
     sorok += ['', 'Tételszám rétegenként: ' + ', '.join('%s %d' % kv for kv in retegszam) + '.', '']
+    if zenodo:
+        sorok += ['A minta alapja: a minta %d valódi párjából %d megvan a nyílt mag 1.0-s exportjában '
+                  '(`nyilt_karoli_strong/data/parok/`, a Zenodo 1.0 tartalma; kiadás: %s).' % (zenodo[1], zenodo[0], zenodo[2]), '']
     with open(LEKOTES, 'w', encoding='utf-8', newline='\n') as f:
         f.write('\n'.join(sorok))
+
+
+def kiadas_azonosito():
+    with open(os.path.join(GYOKER, 'nyilt_karoli_strong', 'KIADAS.txt'), encoding='utf-8') as f:
+        for sor in f:
+            if sor.startswith('kiadas_azonosito:'):
+                return sor.split(':', 1)[1].strip()
+    return 'ismeretlen'
 
 
 def lekotes_sha(fn):
@@ -922,7 +963,7 @@ def main():
     rend = ['alapminta-pár', 'túlminta', 'nehéz réteg', 'pár nélküli magyar szó', 'kimaradt pár', 'csali']
     lekotes_ir(os.path.dirname(a.letet), [(k, retegszam[k]) for k in rend if k in retegszam] +
                [('összesen', len(valodi) + len(csalis)), ('a második ítélő oldalán', len(masodik_resz(osszes)))],
-               a.vegleges)
+               a.vegleges, zenodo_egyezes(valodi) + (kiadas_azonosito(),))
     print('lekötés: %s' % LEKOTES)
 
 

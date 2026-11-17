@@ -190,7 +190,7 @@ def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
     if gepi:
         g, nb = gepi
         sor.append('## 8. Ember–gép eltérések (tájékoztató; a fő számot nem módosítja)\n')
-        sor.append('A %s ítélete × a párt helyesnek ítélő gépi bírálók száma (0–%d; a fagyasztott gépi tábla). '
+        sor.append('A külső ellenőr (%s) ítélete × a párt helyesnek ítélő gépi bírálók száma (0–%d; a fagyasztott gépi tábla). '
                    'A tételeket mindkét emberi ítélettel közöljük; a becslést nem igazítjuk.\n' % (kulso_nev, nb))
         for cimke, rsz in (('alapminta', 'alap'), ('túlminta', 'tulminta')):
             ts = [t for t in g if resz.get(t) == rsz and t in kulso_it]
@@ -216,22 +216,23 @@ def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
     cs = [kulso_it[t] for t in kulso_it if t in csali]
     if cs and cs.count('hibas') + cs.count('helyes'):
         m_csali = cs.count('helyes') / (cs.count('hibas') + cs.count('helyes'))
-    sor.append('Képlet (előre rögzítve): π = (p − m) / (1 − f − m), ahol p a %s 2a-pontossága, f a téves riasztás '
-               '(helyes párt hibásnak ítél), m az elnézés (hibás párt helyesnek ítél). m a csalikból%s és 20%%. A csali '
-               'csak durva hibán méri az elnézést, ezért a csaliból vett m alulbecsült.\n'
-               % (kulso_nev, ' (%.1f%%)' % (100 * m_csali) if m_csali is not None else ' (nincs csali-adat)'))
+    sor.append('Képlet (előre rögzítve, a protokoll 1.3 pontja): π = (p − m) / (1 − f − m), ahol p a külső ellenőr (%s) 2a-pontossága, '
+               'f a téves riasztás (helyes párt hibásnak ítél), m az elnézés (hibás párt helyesnek ítél); f ∈ {0, 2, 5}%%, '
+               'm ∈ {0, 20}%%. A csalikból mért elnézés%s csak durva hibán mér, ezért nem helyettesíti az m-et.\n'
+               % (kulso_nev, ' (%.1f%%)' % (100 * m_csali) if m_csali is not None else ''))
     sor.append('| p | f | m | π |\n|---|---|---|---|')
     for cimke, p_ in (('2a', hl / (hl + hb) if hl + hb else float('nan')),
                       ('2a konzervatív', hl / (hl + hb + bz) if hl + hb + bz else float('nan'))):
         for f_ in (0.0, 0.02, 0.05):
-            for m_ in ([m_csali] if m_csali is not None else []) + [0.20]:
+            for m_ in (0.0, 0.20):
                 pi = (p_ - m_) / (1 - f_ - m_) if (1 - f_ - m_) > 0 else float('nan')
-                pi = min(1.0, max(0.0, pi)) if pi == pi else pi
-                sor.append('| %s = %s | %s | %s | %s |' % (cimke, szazalek(p_), szazalek(f_), szazalek(m_), szazalek(pi)))
+                ertek = ('nem értelmezhető (π > 100%: a forgatókönyv nem fér össze a mért p-vel)' if pi == pi and pi > 1
+                         else szazalek(max(0.0, pi) if pi == pi else pi))
+                sor.append('| %s = %s | %s | %s | %s |' % (cimke, szazalek(p_), szazalek(f_), szazalek(m_), ertek))
     sor.append('')
 
     sor.append('## 10. A „hibás” ítéletek együttjárása (tájékoztató)\n')
-    sor.append('A %s pár-ítéletei (alapminta és túlminta): a „Károli itt szabadon vagy pontatlanul fordít” jelölő és a '
+    sor.append('A külső ellenőr (%s) pár-ítéletei (alapminta és túlminta): a „Károli itt szabadon vagy pontatlanul fordít” jelölő és a '
                'hibatípus szerint. A téves riasztásra ez nem mérőeszköz, csak jelző.\n' % kulso_nev)
     ts = [t for t in kulso_it if tip[t] == 'par' and resz.get(t) in ('alap', 'tulminta')]
     sor.append('| ítélet | n | ebből „Károli szabadon fordít” jelölővel |\n|---|---|---|')
@@ -247,6 +248,69 @@ def tajekoztato(minta, kulso_nev, kulso_it, kulso_v, gepi, csali):
         sor.append('| %s | %d | %d |' % (ht, n, jel))
     sor.append('')
     return '\n'.join(sor)
+
+
+TILALMAK = ('Tilos (a kiértékelési protokoll 3.3 pontja): az elsődleges mutató cseréje; tétel utólagos kizárása; új '
+            'ellenőr ugyanarra a mintára; konvenció utólagos módosítása újrapontozással; „a 95% inkább alsó becslés”; '
+            'a megerősített érték fő számként. Az ember–gép tábla sem a fő számot, sem a sávot nem módosítja; az eltérő '
+            'tételekről nincs visszajelzés és második kör.')
+
+
+def ket_emberes(a_it, b_it, tetelek):
+    """Kétemberes sáv a közösen ítélt tételeken: (szigorú, megerősített) ítéletlisták.
+    Szigorú: hibás, ha bármelyik hibásnak mondta; helyes, ha mindkettő helyesnek; különben bizonytalan.
+    Megerősített: hibás, ha mindkettő hibásnak mondta; bizonytalan, ha mindkettő bizonytalan; különben helyes."""
+    szig, meg = [], []
+    for t in tetelek:
+        if t not in a_it or t not in b_it:
+            continue
+        x, y = a_it[t], b_it[t]
+        szig.append('hibas' if 'hibas' in (x, y) else ('helyes' if x == y == 'helyes' else 'bizonytalan'))
+        meg.append('hibas' if x == y == 'hibas' else ('bizonytalan' if x == y == 'bizonytalan' else 'helyes'))
+    return szig, meg
+
+
+def dontesi_sav(p):
+    """A protokoll 3. pontjának döntési sávja a 2a-pontosságra."""
+    if p != p:
+        return '–'
+    if p >= 0.93:
+        return '≥ 93%: közlés decemberben'
+    if p >= 0.90:
+        return ('90–93%: közlés decemberben; kötelező hibatípus-bontás; címben és kivonatban nincs „95%”; a gépi '
+                'mérés „felülbecsül”')
+    return ('< 90%: hibaelemzés; ha a hibák legalább harmada egy lekérdezhető osztály: javítás, új mérés, beküldés '
+            'januárban; különben beküldés a mért számmal, „validated” nélkül')
+
+
+JAVITAS_FEJ = ['tetel_id', 'tipus', 'reszminta', 'vers', 'hu_szo', 'er_szo', 'strong', 'kulso_itelet', 'kulso_hibatipus',
+               'kulso_helyes_forras', 'masodik_itelet', 'masodik_hibatipus', 'masodik_helyes_forras', 'eredet']
+
+
+def javitas_listak(minta, kulso, masodik):
+    """A protokoll 4.1–4.2 pontja: javítható, ahol a külső ellenőr megjelölte a helyes forrásszót, vagy mindkét ember
+    „hibás”; a többi eltérő vagy bizonytalan tétel vitatott (változtatás nélkül). Az eredetjelző a javítás okát mondja.
+    A csali nem kerül a listákba. Visszaad: (javítható sorok, vitatott sorok)."""
+    jav, vit = [], []
+    for r in minta:
+        t = r['tetel_id']
+        if r['reszminta'] == 'csali':
+            continue
+        a = kulso.get(t) or {}
+        b = masodik.get(t) or {}
+        ia, ib = a.get('itelet', ''), b.get('itelet', '')
+        if not (ia in ('hibas', 'bizonytalan') or ib in ('hibas', 'bizonytalan')):
+            continue
+        eredet = ''
+        if ia == 'hibas' and a.get('helyes_forras'):
+            eredet = 'kulso_jelolte'
+        elif ia == 'hibas' and ib == 'hibas':
+            eredet = 'ket_ember_hibas'
+        sor = [t, r['tipus'], r['reszminta'], r['vers'], r['hu_szo'], r['er_szo'], r['strong'],
+               ia, a.get('hibatipus', ''), ','.join(map(str, a.get('helyes_forras') or [])),
+               ib, b.get('hibatipus', ''), ','.join(map(str, b.get('helyes_forras') or [])), eredet or 'vitatott']
+        (jav if eredet else vit).append(sor)
+    return jav, vit
 
 
 SEGED_FEJ = ['tetel_id', 'tipus', 'vers', 'ellenor', 'segedeszkoz', 'itelet']
@@ -483,7 +547,7 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     kozos_blokk = {r['tetel_id'] for r in minta if r.get('kozos') == '1'}
     csali = {r['tetel_id'] for r in minta if r['reszminta'] == 'csali'}
     ket = len(ellenorok) == 2
-    sor = ['## 1. Kitöltöttség és felállás\n']
+    sor = ['> ' + TILALMAK + '\n', '## 1. Kitöltöttség és felállás\n']
     if not ket:
         sor.append('Egy ellenőr: kappa és harmadik döntés nincs.\n')
     elif szerzoi:
@@ -518,6 +582,23 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append(pontossag_sor(nev, lista))
         sor.append(pontossag_sor(nev + ' · konzervatív', lista, konzervativ=True))
     sor.append('')
+    fo_lista = [fo[t] for t in fo if tip[t] == 'par' and t in alap]
+    fo_p = fo_lista.count('helyes') / (fo_lista.count('helyes') + fo_lista.count('hibas')) if (
+        fo_lista.count('helyes') + fo_lista.count('hibas')) else float('nan')
+    sor.append('**Döntési sáv** (a protokoll 3. pontja; %s, 2a = %s): %s\n' % (fo_nev, szazalek(fo_p), dontesi_sav(fo_p)))
+    if ket:
+        (na_, va_), (nb_, vb_) = ellenorok
+        szig, meg = ket_emberes({t: x['itelet'] for t, x in va_.items()}, {t: x['itelet'] for t, x in vb_.items()},
+                                [t for t in alap if tip[t] == 'par'])
+        sor.append('### 2a+. Kétemberes sáv a közösen ítélt alappárokon (tájékoztató; a megerősített érték nem fő szám)\n')
+        sor.append('Szigorú: hibás, ha bármelyik ítélő hibásnak mondta; megerősített: hibás, ha mindkettő. A közös '
+                   'félreértést egyik sem szűri; a második ítélő nem független.\n')
+        sor.append(FEJ_P)
+        sor.append(pontossag_sor('szigorú', szig))
+        sor.append(pontossag_sor('szigorú · konzervatív', szig, konzervativ=True))
+        sor.append(pontossag_sor('megerősített', meg))
+        sor.append(pontossag_sor('megerősített · konzervatív', meg, konzervativ=True))
+        sor.append('')
     sor.append('### 2b. Kétfázisú, súlyozott becslés (alapminta + a #172 összes modell-eltérése)\n')
     sor.append('Első fázis: a #172 rétegzett mintája; második fázis: az egyező párokból az alapminta, az eltérő '
                'párokból mind. A túlminta így nem torzítja a becslést, csak pontosítja (Cochran, kettős mintavétel '
@@ -616,8 +697,7 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
                              ('párok, a #172 eltérései', lambda t: tip[t] == 'par' and t in elter),
                              ('párok, nehéz réteg', lambda t: t in nehez),
                              ('pár nélküli szavak', lambda t: tip[t] == 'parnelkuli'),
-                             ('kimaradt párok', lambda t: tip[t] == 'kimaradt'),
-                             ('csalik', lambda t: t in csali)):
+                             ('kimaradt párok', lambda t: tip[t] == 'kimaradt')):
             ts = [t for t in kozos if szuro(t)]
             p3 = [(a[t]['itelet'], b[t]['itelet']) for t in ts]
             k3, po3, n3 = kappa(p3, ITELETEK)
@@ -851,7 +931,15 @@ def main():
     kulso_v = beolv[0][1]   # a külső (vagy az egyetlen, vagy két külsőnél az első) ellenőr válaszai
     t_szoveg = tajekoztato(minta, cimkek[0], {t: x['itelet'] for t, x in kulso_v.items()},
                            {**beolv[0][2], **kulso_v}, gepi, {r['tetel_id'] for r in minta if r['reszminta'] == 'csali'})
-    szoveg = szoveg + '\n' + k_szoveg + '\n\n' + s_szoveg + '\n\n' + t_szoveg
+    kulso_teljes = {**beolv[0][2], **beolv[0][1]}
+    masodik_teljes = {**beolv[1][2], **beolv[1][1]} if len(beolv) == 2 else {}
+    jav, vit = javitas_listak(minta, kulso_teljes, masodik_teljes)
+    j_szoveg = ('## 11. Javítás (a protokoll 4.1–4.2 pontja)\n\nJavítható: %d tétel (`javithato.tsv`; eredet: a külső '
+                'ellenőr megjelölte a helyes forrásszót %d, mindkét ember hibásnak mondta %d). Vitatott: %d tétel '
+                '(`vitatott.tsv`), változtatás nélkül. A javított sor eredetjelzőt kap; a validált tételek a letétben '
+                'jelölve.\n' % (len(jav), sum(1 for x in jav if x[-1] == 'kulso_jelolte'),
+                                sum(1 for x in jav if x[-1] == 'ket_ember_hibas'), len(vit)))
+    szoveg = szoveg + '\n' + k_szoveg + '\n\n' + s_szoveg + '\n\n' + t_szoveg + '\n' + j_szoveg
     head = git_head()
     forras = [os.path.relpath(x, GYOKER).replace(os.sep, '/') if os.path.abspath(x).startswith(GYOKER) else os.path.basename(x)
               for x in [a.minta] + a.valaszok + ([a.dontes] if a.dontes else [])]
@@ -871,6 +959,12 @@ def main():
         f.write('\t'.join(KAROLI_FEJ) + '\n')
         for s in k_sorok:
             f.write('\t'.join(s) + '\n')
+    for fn, sorok_ in (('javithato.tsv', jav), ('vitatott.tsv', vit)):
+        with open(os.path.join(a.kimenet, fn), 'w', encoding='utf-8', newline='\n') as f:
+            f.write(prov + '\n')
+            f.write('\t'.join(JAVITAS_FEJ) + '\n')
+            for s_ in sorok_:
+                f.write('\t'.join(_egysor(x) for x in s_) + '\n')
     with open(os.path.join(a.kimenet, 'segedeszkoz.tsv'), 'w', encoding='utf-8', newline='\n') as f:
         f.write(prov + '\n')
         f.write('\t'.join(SEGED_FEJ) + '\n')

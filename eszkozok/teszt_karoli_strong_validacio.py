@@ -328,7 +328,8 @@ class Kiertekeles(unittest.TestCase):
         self.assertIn('## 8. Ember–gép eltérések (tájékoztató; a fő számot nem módosítja)', md)
         self.assertIn('A külső ellenőr 4 párt ítélt hibásnak (alapminta); ezek közül 0-t mind a(z) 3 modell-bíráló '
                       'helyesnek ítélte. A fordított eset 0 pár.', md)
-        self.assertNotIn('alsó becslés', md)
+        # a tiltott mondat csak a tilalmak fejlécében, idézetként állhat
+        self.assertNotIn('alsó becslés', '\n'.join(l for l in md.split('\n') if not l.startswith('> Tilos')))
         # érzékenység: p = 296/300, f = 0, m = 20% -> π = (p − m)/(1 − m) = 98.33%
         self.assertIn('| 2a = 98.67% | 0.00% | 20.00% | 98.33% |', md)
         self.assertIn('## 10. A „hibás” ítéletek együttjárása', md)
@@ -336,6 +337,22 @@ class Kiertekeles(unittest.TestCase):
         r = subprocess.run([sys.executable, SZKRIPT, self.fa, '--csali-nelkul', '--gepi', ut, '--gepi-sha256', '0' * 64,
                             '--kimenet', os.path.join(self.tmp, 'x3')], capture_output=True, text=True, encoding='utf-8')
         self.assertNotEqual(r.returncode, 0)
+
+    def test_ket_emberes_sav_es_javitas(self):
+        md, _, ki_dir = self._fut('--kulso', '1')
+        # szigorú: A 4 + B 10 hibás (a 4 közös) -> 10 hibás, 2 bizonytalan (B), 288 helyes
+        self.assertIn('| szigorú | 300 | 288 | 10 | 2 | 96.64%', md)
+        # megerősített: csak a mindkettő által hibás 4; B bizonytalanja A helyesével helyes
+        self.assertIn('| megerősített | 300 | 296 | 4 | 0 | 98.67%', md)
+        self.assertIn('a megerősített érték nem fő szám', md)
+        self.assertIn('**Döntési sáv**', md)
+        _, jav = ki.tabla(os.path.join(ki_dir, 'javithato.tsv'))
+        _, vit = ki.tabla(os.path.join(ki_dir, 'vitatott.tsv'))
+        # javítható: a 4 közös hibás pár és a 3 közösen kimaradtnak ítélt szó (mindkét ember hibásnak mondta)
+        self.assertEqual(len(jav), 7)
+        self.assertEqual({r['eredet'] for r in jav}, {'ket_ember_hibas'})
+        # vitatott: B további 6 hibás és 2 bizonytalan párja
+        self.assertEqual(len(vit), 8)
 
     def test_masodik_ito_oldala(self):
         # a második ítélő oldala (közös blokk + az összes alapminta-pár) exportját is elfogadja
