@@ -104,6 +104,20 @@ class Feldolgozas(Alap):
             _eredmeny(2, t, modell='google/gemini-4-argon')]}, CELT)
         self.assertEqual(n[0]['eredmeny'], 'rendben', n[0]['megjegyzes'])
 
+    def test_json_szovegkent_kodolt_versek(self):
+        d = _jo_valasz(8)
+        d['versek'] = [json.dumps(x, ensure_ascii=False) for x in d['versek']]
+        n = kb.eredmeny_feldolgoz('gemini', {'id': 'b8', 'results': [
+            _eredmeny(8, json.dumps(d), modell='google/gemini-4-argon')]}, CELT)
+        self.assertEqual(n[0]['eredmeny'], 'rendben', n[0]['megjegyzes'])
+        self.assertIn('dekódolva', n[0]['megjegyzes'])
+
+    def test_rossz_alaku_vers_nem_omlik(self):
+        d = _jo_valasz(9)
+        d['versek'][0] = 'nem json'
+        n = kb.eredmeny_feldolgoz('gpt', {'id': 'b9', 'results': [_eredmeny(9, json.dumps(d))]}, CELT)
+        self.assertEqual(n[0]['eredmeny'], 'kapu_hiba')
+
     def test_hianyzo_cel_elvetve(self):
         d = _jo_valasz(3)
         d['versek'][0]['jeloles'] = d['versek'][0]['jeloles'][1:] or []

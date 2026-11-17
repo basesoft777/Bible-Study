@@ -129,6 +129,25 @@ def _tartalom_json(tartalom):
     return json.loads(t)
 
 
+def normal_versek(versek):
+    """Gépi alak-normalizálás (tartalom nem változik): ha a modell a `versek` elemeit
+    JSON-szövegként adja (megfigyelt: gemini-4-argon, 2026-11-17), dekódoljuk.
+    -> (versek, dekódolt elemek száma)."""
+    ki, n = [], 0
+    for x in versek if isinstance(versek, list) else []:
+        if isinstance(x, str):
+            try:
+                y = json.loads(x)
+            except ValueError:
+                y = None
+            if isinstance(y, dict):
+                ki.append(y)
+                n += 1
+                continue
+        ki.append(x)
+    return ki, n
+
+
 def modell_ok_fn(rov):
     def ok(m):
         ml = m.lower()
@@ -181,14 +200,19 @@ def eredmeny_feldolgoz(rov, batch, celtabla=None):
             continue
         onb = str(d.get('modell', ''))
         meg = '' if d.get('koteg') == n else 'önbevallott köteg: %r' % d.get('koteg')
-        ki = {'modell': body.get('model', ''), 'modell_onbevallas': onb, 'koteg': n,
-              'versek': d.get('versek', [])}
+        versek, dekodolt = normal_versek(d.get('versek', []))
+        if dekodolt:
+            meg = ('%s; a versek %d eleme JSON-szövegként jött, dekódolva' % (meg, dekodolt)).strip('; ')
+        ki = {'modell': body.get('model', ''), 'modell_onbevallas': onb, 'koteg': n, 'versek': versek}
         sor['modell_onbevallas'] = onb
         ut = os.path.join(vdir, 'koteg_%03d.json' % n)
         with open(ut, 'w', encoding='utf-8', newline='\n') as f:
             json.dump(ki, f, ensure_ascii=False)
             f.write('\n')
-        hib = pe.kapu(n, celtabla, valasz_dir=vdir, modell_ok=modell_ok_fn(rov))
+        try:
+            hib = pe.kapu(n, celtabla, valasz_dir=vdir, modell_ok=modell_ok_fn(rov))
+        except Exception as ex:  # noqa: BLE001 -- a hibás alakú válasz nem állíthatja meg a begyűjtést
+            hib = ['a kapu kivétele: %s' % ex]
         if hib:
             os.makedirs(edir, exist_ok=True)
             os.replace(ut, os.path.join(edir, 'koteg_%03d_%s.json' % (n, batch['id'][-8:])))

@@ -194,6 +194,9 @@ def kapu(n, celtabla=None, valasz_dir=None, modell_ok=None):
     var = celtabla.get(n, {})
     kapott = {}
     for x in d.get('versek', []):
+        if not isinstance(x, dict):
+            hib.append('a vers-elem nem objektum: %r' % (str(x)[:60],))
+            continue
         v = x.get('vers')
         if v in kapott:
             hib.append('%s kétszer' % v)

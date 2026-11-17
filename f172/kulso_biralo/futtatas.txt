@@ -1,7 +1,7 @@
 # F175.B vezérlő (l. .github/workflows/f175_kulso_biralo.yml)
-# próbafutás: 1 köteg (25 vers, 22 mintapár) mindkét modellel; begyűjtés
+# próbafutás: 1 köteg (25 vers, 22 mintapár) mindkét modellel; begyűjtés (2.)
 muvelet=begyujt
 modellek=gemini,gpt
 kotegek=1
 plafon_usd=5
-var_perc=150
+var_perc=300
