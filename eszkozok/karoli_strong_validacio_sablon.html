@@ -134,11 +134,12 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
   <section id="s-indul" class="rejtett">
     <h1>Károli 1908 – Strong szópárosítás: emberi ellenőrzés</h1>
     <div class="card">
-      <p>A Károli-biblia 1908-as szövegének szavait egy nyelvi modell párosította a héber és görög eredetivel (Strong-számokkal; nyílt adat, doi:10.5281/zenodo.24141883). A pontosságot eddig gép mérte; most két független teológus szúrópróbája jön, és az eredmény a <i>Journal of Open Humanities Data</i>-ba készülő cikkbe kerül. A részleteket az <i>UTMUTATO.md</i> írja le. A munka kb. 3,5–4,5 óra, több részletben is végezhető.</p>
+      <p>A Károli-biblia 1908-as szövegének szavait egy nyelvi modell párosította a héber és görög eredetivel (Strong-számokkal; nyílt adat, doi:10.5281/zenodo.24141883). A pontosságot eddig gép mérte; most két független teológus szúrópróbája jön, és az eredmény a <i>Journal of Open Humanities Data</i>-ba készülő cikkbe kerül. A részleteket az <i>UTMUTATO.md</i> írja le. A munka kb. 4 óra, több részletben is végezhető.</p>
       <div class="kivonat">
         <p><b>Egyetlen kérdés:</b> ha Károli mondatában rá kellene mutatnod a kiemelt eredeti szó párjára, a gép által kiemelt magyar szóra mutatnál?</p>
         <p><b>A gép párját ítéled meg,</b> nem Károli szövegének minőségét; a Károli szövegéről szóló észrevételnek külön jelölő van.</p>
         <p><b>Ha nem tudod eldönteni:</b> „bizonytalan”, ne találgass.</p>
+        <p><b>Szótárt használhatsz;</b> Strong-számos Bibliát és MI-t nem.</p>
       </div>
       <p>Kérlek, előbb olvasd el az <i>UTMUTATO.md</i> első szakaszát; a példák ott vannak.</p>
       <p><b>Kérjük, a másik ellenőrrel ne egyeztess</b>: a két ítéletet függetlenül mérjük.</p>
@@ -188,6 +189,10 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 
     <div class="card" id="t-karoli">
       <label class="opt"><input type="checkbox" id="i-karoli"> <span><b>Károli itt szabadon vagy pontatlanul fordít</b> <span class="small muted">(nem számít a párosítás hibájának; a fordítói észrevétel ide tartozik)</span></span></label>
+      <div style="margin-top:6px">
+        <label for="t-segedeszkoz" class="small muted">Használtam segédeszközt (nem kötelező; pl. melyik szótárt):</label>
+        <input type="text" id="t-segedeszkoz">
+      </div>
       <div id="t-karoli-megj-doboz" class="rejtett">
         <label for="t-karoli-megj" class="small muted">Megjegyzés a fordításhoz:</label>
         <textarea id="t-karoli-megj"></textarea>
@@ -251,7 +256,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 <script>
 "use strict";
 var MINTA = /*MINTA_ADAT*/null;
-var VERZIO = "F175.V10";
+var VERZIO = "F175.V12";
 
 /* ---------- segédek ---------- */
 function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
@@ -307,6 +312,7 @@ function valasz(t) {
   var v = allapot.valaszok[t.id] || (allapot.valaszok[t.id] = { itelet: "", hibatipus: "", helyes_forras: [], megjegyzes: "" });
   if (v.karoli === undefined) v.karoli = false;
   if (v.karoli_megj === undefined) v.karoli_megj = "";
+  if (v.segedeszkoz === undefined) v.segedeszkoz = "";
   return v;
 }
 
@@ -350,7 +356,7 @@ function rajzol() {
   fejlec_frissit();
   $("f-cim").textContent = "Tétel " + (allapot.poz + 1) + " / " + MINTA.length;
   $("f-vers").textContent = t.vers + " · " + t.id;
-  $("t-tipus").textContent = t.tipus === "par" ? "szópár" : "pár nélküli magyar szó";
+  $("t-tipus").textContent = t.tipus === "par" ? "szópár" : (t.tipus === "kimaradt" ? "pár nélküli forrásszó" : "pár nélküli magyar szó");
   var nyelv_cls = "er-" + t.nyelv;
 
   /* kérdés */
@@ -363,6 +369,13 @@ function rajzol() {
     $("t-forras-sor").textContent = "Forrásszó: " + t.en + ". szó · " + (t.kiej ? t.kiej + " · " : "") + t.strong + (t.szoto ? " · szótő: " + t.szoto : "") +
       (t.jel ? " · " + t.jel : "") + (t.mh ? " · " + t.mh : "") + (t.ntr ? " · [nem TR]: a Textus Receptusban nem szerepel" : "");
     $("b-helyes").textContent = "Igen"; $("b-hibas").textContent = "Nem";
+  } else if (t.tipus === "kimaradt") {
+    var kt = t.tok[t.en - 1];
+    q.append("Van-e ennek a szónak (", el("b", { "class": nyelv_cls }, kt.a), ", " + t.strong + ") párja Károli mondatában?");
+    $("t-kerdes-al").textContent = "";
+    $("t-forras-sor").textContent = "A kiemelt szó: " + t.en + ". szó · " + (t.kiej ? t.kiej + " · " : "") + t.strong + (t.szoto ? " · szótő: " + t.szoto : "") +
+      (t.jel ? " · " + t.jel : "") + (t.mh ? " · " + t.mh : "");
+    $("b-helyes").textContent = "Nincs párja"; $("b-hibas").textContent = "Van párja";
   } else {
     q.append("Van-e a " + (t.nyelv === "heber" ? "héber" : "görög") + " mondatban olyan szó, amelyre ennél a magyar szónál (", el("b", null, "„" + t.hs + "”"), ") rá tudnál mutatni?");
     $("t-kerdes-al").textContent = "";
@@ -425,7 +438,7 @@ function rajzol() {
     if (pk.length) c.appendChild(el("div", { "class": "hu" }, pk.map(function (x) { return x[1]; }).join(", ")));
     else if (k.x || SZABALY_SZERINT[k.s]) c.appendChild(el("div", { "class": "hu szab", title: k.x ? "a Textus Receptusban nincs benne (K szabály)" : SZABALY_SZERINT[k.s] }, "szabály szerint nincs párosítva"));
     else c.appendChild(el("div", { "class": "hu" }, "—"));
-    if (t.tipus === "par" && k.n === t.en) c.classList.add("cel");
+    if ((t.tipus === "par" || t.tipus === "kimaradt") && k.n === t.en) c.classList.add("cel");
     if (k.x) c.classList.add("ntr");
     if (v.helyes_forras.indexOf(k.n) >= 0) c.classList.add("kijelolt");
     esemeny(c, "er", k.n);
@@ -443,6 +456,7 @@ function rajzol() {
   $("t-kijelolt").textContent = v.helyes_forras.length ? v.helyes_forras.map(function (n) { return n + " " + t.tok[n - 1].a; }).join(", ") : "–";
   $("t-megj").value = v.megjegyzes || "";
   $("i-karoli").checked = !!v.karoli;
+  $("t-segedeszkoz").value = v.segedeszkoz || "";
   $("t-karoli-megj").value = v.karoli_megj || "";
   $("t-karoli-megj-doboz").classList.toggle("rejtett", !v.karoli);
   $("t-mentve").textContent = v.ido ? "utoljára módosítva: " + new Date(v.ido).toLocaleString("hu-HU") : "";
@@ -491,7 +505,7 @@ function kartya_kattint(o, n) {
 function itelet_valt(x) {
   var t = tetel(), v = valasz(t);
   v.itelet = (v.itelet === x) ? "" : x;
-  if (t.tipus === "parnelkuli") v.hibatipus = v.itelet === "hibas" ? "kimaradt_par" : "";
+  if (t.tipus === "parnelkuli" || t.tipus === "kimaradt") v.hibatipus = v.itelet === "hibas" ? "kimaradt_par" : "";
   else if (v.itelet !== "hibas") v.hibatipus = "";
   if (!valaszto_aktiv(t, v)) v.helyes_forras = [];
   v.ido = new Date().toISOString(); ment(); rajzol(); emlekezteto();
@@ -521,7 +535,7 @@ function racs() {
 
 function export_obj() {
   var v = {};
-  allapot.sorrend.forEach(function (id) { var x = allapot.valaszok[id]; if (x && (x.itelet || x.megjegyzes || x.karoli || x.karoli_megj)) v[id] = x; });
+  allapot.sorrend.forEach(function (id) { var x = allapot.valaszok[id]; if (x && (x.itelet || x.megjegyzes || x.karoli || x.karoli_megj || x.segedeszkoz)) v[id] = x; });
   return { oldal: VERZIO, minta_hash: MINTA_HASH, minta_meret: MINTA.length, ellenor: allapot.ellenor,
     kezdes: allapot.kezdes, export_ido: new Date().toISOString(), kesz: kesz_db(), sorrend: allapot.sorrend, valaszok: v };
 }
@@ -559,7 +573,7 @@ function osszefesul(helyi, d) {
   var atvett = 0, megtartott = 0, v = d.valaszok || {};
   for (var id in v) {
     var f = v[id], h = ki.valaszok[id];
-    var h_van = h && (h.itelet || h.megjegyzes || h.karoli || h.karoli_megj);
+    var h_van = h && (h.itelet || h.megjegyzes || h.karoli || h.karoli_megj || h.segedeszkoz);
     if (!h_van || (f.ido || "") > (h.ido || "")) { ki.valaszok[id] = JSON.parse(JSON.stringify(f)); if (!f.helyes_forras) ki.valaszok[id].helyes_forras = []; atvett++; }
     else if (JSON.stringify(f) !== JSON.stringify(h)) megtartott++;
   }
@@ -624,6 +638,7 @@ document.querySelectorAll("input[name=hibatipus]").forEach(function (r) {
 });
 $("t-megj").addEventListener("input", function () { var v = valasz(tetel()); v.megjegyzes = $("t-megj").value; v.ido = new Date().toISOString(); ment(); });
 $("i-karoli").addEventListener("change", function () { var v = valasz(tetel()); v.karoli = $("i-karoli").checked; v.ido = new Date().toISOString(); ment(); $("t-karoli-megj-doboz").classList.toggle("rejtett", !v.karoli); });
+$("t-segedeszkoz").addEventListener("input", function () { var v = valasz(tetel()); v.segedeszkoz = $("t-segedeszkoz").value; v.ido = new Date().toISOString(); ment(); });
 $("t-karoli-megj").addEventListener("input", function () { var v = valasz(tetel()); v.karoli_megj = $("t-karoli-megj").value; v.ido = new Date().toISOString(); ment(); });
 $("b-kisebb").addEventListener("click", function () { betu_beallit(betu_i - 1); });
 $("b-nagyobb").addEventListener("click", function () { betu_beallit(betu_i + 1); });

@@ -34,7 +34,8 @@ def _export(nev, minta, hash_, itelet_of):
         it = itelet_of(r)
         if it:
             v[r['tetel_id']] = {'itelet': it[0], 'hibatipus': it[1], 'helyes_forras': [], 'megjegyzes': 'teszt',
-                                'karoli': len(it) > 2, 'karoli_megj': 'kitalált észrevétel' if len(it) > 2 else ''}
+                                'karoli': len(it) > 2, 'karoli_megj': 'kitalált észrevétel' if len(it) > 2 else '',
+                                'segedeszkoz': it[3] if len(it) > 3 else ''}
     return {'oldal': 'F175.V1', 'minta_hash': hash_, 'minta_meret': len(minta), 'ellenor': nev,
             'sorrend': [r['tetel_id'] for r in minta], 'valaszok': v}
 
@@ -76,10 +77,12 @@ class Minta(unittest.TestCase):
         self.assertEqual(len([r for r in par if r['reszminta'] == 'tulminta']), 60)
         self.assertEqual(len([r for r in par if r['elteres'] == '1']), 72)   # a #172 összes modell-eltérése
         self.assertEqual(len(nelkul), 80)
-        self.assertEqual(len({r['tetel_id'] for r in self.minta}), 440)
+        self.assertEqual(len([r for r in par if r['reszminta'] == 'nehez']), 45)
+        self.assertEqual(len([r for r in self.minta if r['tipus'] == 'kimaradt']), 55)
+        self.assertEqual(len({r['tetel_id'] for r in self.minta}), 540)
         self.assertEqual(len({r['csoport'] for r in par}), 7)
         self.assertEqual(len({r['csoport'] for r in nelkul}), 7)
-        self.assertTrue(all(r['f172_id'] for r in par))
+        self.assertTrue(all(r['f172_id'] for r in par if r['reszminta'] in ('alap', 'tulminta')))
 
     def test_kiemeles_a_szon_all(self):
         for r in self.minta:
@@ -113,7 +116,7 @@ class Kiertekeles(unittest.TestCase):
         def a_of(r):
             t = r['tetel_id']
             if t in cls.karoli_a:
-                return ('helyes', '', True)
+                return ('helyes', '', True, 'BDB')
             if t in cls.a_hibas:
                 return ('hibas', 'rossz_forrasszo')
             if t in cls.kimaradt:
@@ -160,6 +163,12 @@ class Kiertekeles(unittest.TestCase):
         self.assertIn('| A (Teszt A) | 3 | 3 | 0 | 3 |', md)
         _, ks = ki.tabla(os.path.join(ki_dir, 'karoli_szabad_forditas.tsv'))
         self.assertEqual(sorted(r['tetel_id'] for r in ks), sorted(self.karoli_a))
+        _, sg = ki.tabla(os.path.join(ki_dir, 'segedeszkoz.tsv'))
+        self.assertEqual(sorted(r['tetel_id'] for r in sg), sorted(self.karoli_a))
+        self.assertIn('| A (Teszt A) | 3 | BDB (3) |', md)
+        # az új rétegek külön becsléssel
+        self.assertIn('| A (Teszt A) | 45 | 45 | 0 | 0 | 100.00%', md)     # nehéz réteg
+        self.assertIn('| A (Teszt A) | 55 | 55 | 0 | 0 | 0.00%', md)       # kimaradt párok: kimaradási arány
         # többszavas bontás: a döntött 292 pár egy- és többszavasra oszlik
         n1 = sum(1 for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap' and not r['tobbszavas']
                  and r['tetel_id'] not in (self.b_hibas | self.b_bizonytalan) - self.a_hibas)

@@ -47,6 +47,7 @@ for (let i = 0; i < 120; i++) {
   A.itelet_valt(itelet[i % 3]);
   if (i % 3 === 1 && A.tetel().tipus === 'par') { const r = radiok[i % 4]; r.listeners.change[0](); }
   if (i % 7 === 0) { elemek['t-megj'].value = 'megj ' + i; elemek['t-megj'].listeners.input[0](); }
+  if (i % 13 === 0) { elemek['t-segedeszkoz'].value = 'BDB'; elemek['t-segedeszkoz'].listeners.input[0](); }
   if (i % 11 === 0) {   // fordítói észrevétel (nem ítélet)
     elemek['i-karoli'].checked = true; elemek['i-karoli'].listeners.change[0]();
     elemek['t-karoli-megj'].value = 'szabad fordítás ' + i; elemek['t-karoli-megj'].listeners.input[0]();
@@ -54,6 +55,13 @@ for (let i = 0; i < 120; i++) {
   A.lep(1);
 }
 ell(A.kesz_db() === 120, 'kész 120: ' + A.kesz_db());
+// a kimaradt-pár tétel: „Van párja” -> hibás, automatikus hibatípussal
+{ const p0 = A.allapot.poz; const ki = A.allapot.sorrend.findIndex(id => A.MINTA.find(t => t.id === id).tipus === 'kimaradt' && !A.allapot.valaszok[id]);
+  ell(ki >= 0, 'van kimaradt-pár tétel');
+  A.allapot.poz = ki; A.itelet_valt('hibas');
+  ell(A.valasz(A.tetel()).hibatipus === 'kimaradt_par', 'kimaradt: hibatípus');
+  A.itelet_valt('hibas');   // visszavonás (ugyanaz a gomb)
+  A.allapot.poz = p0; }
 // ítélet nélküli tétel, csak a fordítói jelölővel: nem számít késznek, de exportálódik
 const csakKaroliId = A.tetel().id;
 elemek['i-karoli'].checked = true; elemek['i-karoli'].listeners.change[0]();
@@ -65,6 +73,7 @@ elemek['b-export'].click();
 const exp = JSON.parse(elemek['m-json'].value);
 ell(exp.kesz === 120 && Object.keys(exp.valaszok).length === 121 && exp.minta_hash === A.MINTA_HASH, 'export: ' + Object.keys(exp.valaszok).length);
 ell(exp.valaszok[csakKaroliId] && exp.valaszok[csakKaroliId].karoli === true && !exp.valaszok[csakKaroliId].itelet, 'a csak jelölős tétel exportálva');
+ell(Object.values(exp.valaszok).filter(x => x.segedeszkoz === 'BDB').length === 10, 'segédeszköz: ' + Object.values(exp.valaszok).filter(x => x.segedeszkoz).length);
 ell(Object.values(exp.valaszok).filter(x => x.karoli && /szabad fordítás/.test(x.karoli_megj)).length === 11, 'jelölők megjegyzéssel: ' + Object.values(exp.valaszok).filter(x => x.karoli).length);
 // 3. tiszta állapot (localStorage törlése, új oldalbetöltés), azonos név, betöltés
 localStorage.clear();
@@ -96,7 +105,7 @@ confirmValasz = false;
 const masik = Object.assign({}, exp, { ellenor: 'Másik Ember' });
 const uz2 = A.betolt_adat(masik);
 ell(confirmHivas === 1 && /Mégsem/.test(uz2) && JSON.stringify(A.allapot) === elotte, 'más ellenőr: rákérdezés, Mégsem');
-console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (7 forgatókönyv)');
+console.log(hiba.length ? 'HIBA:\n  ' + hiba.join('\n  ') : 'RENDBEN (8 forgatókönyv)');
 if (hiba.length) process.exitCode = 1;
 console.log('minta_hash: ' + A.MINTA_HASH);
 console.log('betöltési üzenet: ' + info1);

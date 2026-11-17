@@ -311,8 +311,65 @@ def nelkul_minta(mag, szur=True):
     return ki, db, {cs: len(v) for cs, v in jeloltek.items()}, kizart
 
 
+N_NEHEZ = 45
+N_KIMARADT = 55
+
+# A kimaradt-pár réteg keretéből kizárt, a párosítási szabály szerint fordítatlan forrásszavak (f21p/prompt_v3.md):
+#   A  névelő: H9009, G3588;  C  tárgyjelölő ʾet: H0853;  H  nyomatékos -āh, paragogikus nun: H9012, H9013;
+#   I  ve-/καί (a szabály szerint fordítatlan, ha a magyarban nincs a helyén kötőszó): H9001, H9002, G2532;
+#   K  a [nem TR] szó (a Textus Receptusban nincs).
+KIMARADT_KIZART_STRONG = {'H9009': 'A', 'G3588': 'A', 'H0853': 'C', 'H9012': 'H', 'H9013': 'H',
+                          'H9001': 'I', 'H9002': 'I', 'G2532': 'I'}
+
+
+def nehez_minta(mag, mar_benne):
+    """Nehéz réteg: az 1–2Móz azon párjai, ahol a két párosító modell nem egyezett (`bizonyossag` ≠ magas);
+    egyszerű véletlen minta (N_NEHEZ), a mintában már szereplő párok nélkül."""
+    keret = []
+    for k in ('1Moz', '2Moz'):
+        _, sorok = _tabla(os.path.join(ADAT, 'parok_%s.tsv' % k))
+        for r in sorok:
+            if r['bizonyossag'] != 'magas' and (r['vers'], r['hu_sorszam'], r['er_sorszam']) not in mar_benne:
+                keret.append(dict(r, konyv=k, reteg='OSZ_mozes', minta_id='', reszminta='nehez', elteres=''))
+    rnd = random.Random('%d:nehez' % mag)
+    return [keret[x] for x in sorted(rnd.sample(range(len(keret)), N_NEHEZ))], len(keret)
+
+
+def kimaradt_minta(mag, ered):
+    """Kimaradt-pár réteg: a `forditatlan` forrásszavak a szabály szerinti esetek nélkül, könyvcsoportonként a
+    keret arányában (N_KIMARADT). Visszaad: (minta, darab csoportonként, keret csoportonként, kizárt okonként)."""
+    jeloltek = {cs: [] for cs in CSOPORTOK}
+    kizart = {}
+    for k in pm.konyvek():
+        cs = pm.CSOPORT[k]
+        _, sorok = _tabla(os.path.join(ADAT, 'szavak_%s.tsv' % k))
+        for r in sorok:
+            if r['oldal'] != 'er' or r['allapot'] != 'forditatlan':
+                continue
+            ok = KIMARADT_KIZART_STRONG.get(r['strong'])
+            if not ok:
+                lista = ered.get(r['vers']) or []
+                n = int(r['sorszam'])
+                if 1 <= n <= len(lista) and lista[n - 1]['nem_tr']:
+                    ok = 'K'
+            if ok:
+                kizart[ok] = kizart.get(ok, 0) + 1
+                continue
+            jeloltek[cs].append({'konyv': k, 'vers': r['vers'], 'er_sorszam': r['sorszam'], 'er_szo': r['szo'],
+                                 'strong': r['strong'], 'csoport': cs})
+    db = legnagyobb_maradek({cs: len(jeloltek[cs]) for cs in CSOPORTOK}, N_KIMARADT)
+    ki = []
+    for cs in CSOPORTOK:
+        rnd = random.Random('%d:kimaradt:%s' % (mag, cs))
+        for x in sorted(rnd.sample(range(len(jeloltek[cs])), db[cs])):
+            ki.append(jeloltek[cs][x])
+    return ki, db, {cs: len(v) for cs, v in jeloltek.items()}, kizart
+
+
 def epit(mag):
     parok, db_par = par_minta(mag)
+    nehez, keret_nehez = nehez_minta(mag, {(r['vers'], r['hu_sorszam'], r['er_sorszam']) for r in parok})
+    parok = parok + nehez
     nelkul, db_nelkul, keret_nelkul, kizart = nelkul_minta(mag)
     # a szabály nélküli (F175.V1–V4) minta: hány tétele esett volna a kizárt esetek közé
     regi, _, _, _ = nelkul_minta(mag, szur=False)
@@ -324,7 +381,8 @@ def epit(mag):
         if ok:
             regi_kizart[ok] = regi_kizart.get(ok, 0) + 1
     karoli, ered = bemenet._adatok()
-    versek = {r['vers'] for r in parok} | {r['vers'] for r in nelkul}
+    kimaradt, db_kim, keret_kim, kizart_kim = kimaradt_minta(mag, ered)
+    versek = {r['vers'] for r in parok} | {r['vers'] for r in nelkul} | {r['vers'] for r in kimaradt}
     pv = parok_versenkent(versek)
     lex_pontos, lex_strong = lex_tabla()
     mac = macula_versek(versek)
@@ -335,7 +393,7 @@ def epit(mag):
         tl = list(re.finditer(r'[^\W_]+', szoveg, re.UNICODE))
         if [m.group(0) for m in tl] != tokenek.tokenizal(szoveg):
             hibak.append('%s: a tokenizálás eltér' % vers)
-        m = tl[hu_s - 1]
+        m = tl[hu_s - 1] if hu_s else None
         el = ered[vers]
         nt = vers.split(' ')[0] in _USZ_KONYVEK
         if nt:
@@ -383,6 +441,18 @@ def epit(mag):
         tetelek.append(dict(tipus='parnelkuli', reszminta='alap', elteres='', csoport=r['csoport'], f172_reteg='', f172_id='',
                             konyv=r['konyv'], vers=v, h=h, e=0, szoveg=szoveg, m=m, w=None,
                             illesztes=illesztes, tok=tok, nt=nt))
+    for r in kimaradt:
+        v = r['vers']
+        e = int(r['er_sorszam'])
+        szoveg, m, el, illesztes, tok, nt = alap(v, None)
+        w = el[e - 1]
+        if w['alak'] != r['er_szo'] or w['strong'] != r['strong']:
+            hibak.append('%s er %d: %s/%s != %s/%s' % (v, e, w['alak'], w['strong'], r['er_szo'], r['strong']))
+        if any(p[2] == e for p in pv.get(v, [])):
+            hibak.append('%s er %d: fordítatlannak jelölt szónak mégis van pára' % (v, e))
+        tetelek.append(dict(tipus='kimaradt', reszminta='kimaradt', elteres='', csoport=r['csoport'], f172_reteg='',
+                            f172_id='', konyv=r['konyv'], vers=v, h=-1, e=e, szoveg=szoveg, m=None, w=w,
+                            illesztes=illesztes, tok=tok, nt=nt))
     if hibak:
         print('HIBA: a minta nem vezethető le a mai adatból (%d):' % len(hibak))
         for x in hibak[:30]:
@@ -409,7 +479,7 @@ def epit(mag):
             w = t['w']
             sz, jel, _ = lex_pontos.get((w['strong'], w['alak'])) or lex_strong.get(w['strong'], ('', '', ''))
             il = t['illesztes'].get(w['sorsz'])
-            if il:
+            if il and t['tipus'] == 'par' and t['reszminta'] == 'alap':
                 illesztett += 1
             ct = t['tok'][t['e'] - 1]
             mkod, szofaj = (il[0], il[1]) if il else ('', '')
@@ -421,7 +491,7 @@ def epit(mag):
         # többszavas megfelelés (csak párnál): 1:n = a magyar szónak több eredetije van; n:1 = a forrásszónak több
         # magyar párja; n:m = mindkettő
         tobbsz = ''
-        if t['w'] is not None:
+        if t['w'] is not None and t['tipus'] == 'par':
             n_er = sum(1 for p in vp if p[0] == h)
             n_hu = sum(1 for p in vp if p[2] == t['e'])
             tobbsz = {(True, True): 'n:m', (True, False): '1:n', (False, True): 'n:1'}.get((n_er > 1, n_hu > 1), '')
@@ -429,8 +499,8 @@ def epit(mag):
             'tetel_id': t['tetel_id'], 'tipus': t['tipus'], 'reszminta': t['reszminta'], 'elteres': t['elteres'],
             'csoport': t['csoport'],
             'f172_reteg': t['f172_reteg'], 'f172_id': t['f172_id'], 'konyv': t['konyv'], 'vers': v,
-            'hu_vers': t['szoveg'], 'hu_sorszam': str(h), 'hu_szo': t['m'].group(0),
-            'hu_kezdet': str(t['m'].start()), 'hu_veg': str(t['m'].end()),
+            'hu_vers': t['szoveg'], 'hu_sorszam': str(h), 'hu_szo': t['m'].group(0) if t['m'] else '',
+            'hu_kezdet': str(t['m'].start()) if t['m'] else '-1', 'hu_veg': str(t['m'].end()) if t['m'] else '-1',
             'er_nyelv': 'gorog' if t['nt'] else 'heber', 'er_vers': er_vers,
             'er_sorszam': er[0], 'er_szo': er[1], 'strong': er[2], 'szoto': er[3], 'jelentes': er[4],
             'tukor': er[5], 'morf': er[6], 'szofaj': er[7], 'nem_tr': er[8], 'kiejtes': er[9], 'morf_hu': er[10],
@@ -444,7 +514,8 @@ def epit(mag):
             if '\t' in s[k] or '\n' in s[k]:
                 raise SystemExit('tabulátor vagy sortörés a mezőben: %s %s' % (s['tetel_id'], k))
     sorok.sort(key=lambda s: s['tetel_id'])
-    return sorok, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart
+    reteg_info = {'nehez': (len(nehez), keret_nehez), 'kimaradt': (db_kim, keret_kim, kizart_kim)}
+    return sorok, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart, reteg_info
 
 
 _HU_CACHE = {}
@@ -485,12 +556,14 @@ def minta_ir(sorok, db_par, db_nelkul, keret_nelkul, mag, head):
     n_elt = sum(1 for r in sorok if r['elteres'] == '1')
     prov = ('# MANUAL: scope=F175.V emberi validációs minta (%d szópár a #172 rétegzett mintájának arányos '
             'részmintájaként + %d szópár túlmintaként: a #172 modell-ellenőrének az alapmintán kívüli eltérései, '
-            'összesen %d eltérés + %d pár nélküli magyar szó a szabály által eldöntött esetek nélkül, könyvcsoportonként arányosan; mag=%d) | '
+            'összesen %d eltérés + %d szópár a nehéz rétegből (1–2Móz, a két párosító modell nem egyezett) + '
+            '%d fordítatlannak jelölt forrásszó a szabály szerinti esetek nélkül (kimaradt-pár réteg) + %d pár nélküli magyar szó a szabály által eldöntött esetek nélkül, könyvcsoportonként arányosan; mag=%d) | '
             'forras=f172/minta.tsv, f172/keret.tsv, adat/karoli_strong/parok_*.tsv, szavak_*.tsv, '
             'konkordancia/Karoli_1908.tsv, TAHOT_kivonat.tsv, TAGNT_kivonat.tsv, Macula_*.tsv @ %s | ts=git:%s | '
             'manual (determinisztikus mintavétel: eszkozok/karoli_strong_validacio_minta.py; a párok '
             'modell-kimenet, javaslat) | párok: %s | pár nélkül: %s'
-            % (N_PAR, n_tul, n_elt, N_NELKUL, mag, head, head,
+            % (N_PAR, n_tul, n_elt, sum(1 for r in sorok if r['reszminta'] == 'nehez'),
+               sum(1 for r in sorok if r['tipus'] == 'kimaradt'), N_NELKUL, mag, head, head,
                ', '.join('%s %d' % (cs, par_cs[cs]) for cs in CSOPORTOK),
                ', '.join('%s %d/%d' % (cs, db_nelkul[cs], keret_nelkul[cs]) for cs in CSOPORTOK)))
     with open(ut, 'w', encoding='utf-8', newline='\n') as f:
@@ -538,7 +611,7 @@ def main():
     os.makedirs(KIMENET, exist_ok=True)
     if not a.csak_html:
         _USZ_KONYVEK = _usz_konyvek()
-        sorok, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart = epit(a.mag)
+        sorok, db_par, db_nelkul, keret_nelkul, illesztett, kizart, regi_kizart, reteg_info = epit(a.mag)
         par_cs = minta_ir(sorok, db_par, db_nelkul, keret_nelkul, a.mag, git_head())
         print('minta: %d tétel -> kozlemeny/data_paper/validacio/minta.tsv' % len(sorok))
         print('  párok: alapminta %d + túlminta %d (a #172 eltérései közül az alapmintán kívüliek; eltérés összesen %d)' % (
@@ -558,7 +631,14 @@ def main():
             sum(osszes.values()), ', '.join('%s %d' % (k, osszes[k]) for k in sorted(osszes))))
         print('  a szabály nélküli 80-as mintából ennyi esett volna ki: %d (%s)' % (
             sum(regi_kizart.values()), ', '.join('%s %d' % (k, regi_kizart[k]) for k in sorted(regi_kizart))))
-        print('  alaktani adat (Macula-illesztés) a párok forrásszavánál: %d / %d' % (illesztett, N_PAR))
+        n_neh, k_neh = reteg_info['nehez']
+        print('  nehéz réteg (1–2Móz, a két párosító modell nem egyezett): %d / %d pár' % (n_neh, k_neh))
+        db_k, keret_k, kiz_k = reteg_info['kimaradt']
+        print('  kimaradt-pár réteg (fordítatlannak jelölt forrásszavak, szabály szerinti esetek nélkül): %d / %d; '
+              'kizárva %d (%s)' % (sum(db_k.values()), sum(keret_k.values()), sum(kiz_k.values()),
+                                   ', '.join('%s %d' % (k, kiz_k[k]) for k in sorted(kiz_k))))
+        print('    könyvcsoportonként: %s' % ', '.join('%s %d/%d' % (cs, db_k[cs], keret_k[cs]) for cs in CSOPORTOK))
+        print('  alaktani adat (Macula-illesztés) az alapminta párjainak forrásszavánál: %d / %d' % (illesztett, N_PAR))
         tk = [x for s in sorok for x in json.loads(s['er_tokenek_json'])]
         print('  a minta verseinek forrásszavai: %d; alaktan nélkül %d, átírás nélkül %d'
               % (len(tk), sum(1 for x in tk if not x['mh']), sum(1 for x in tk if not x['k'])))

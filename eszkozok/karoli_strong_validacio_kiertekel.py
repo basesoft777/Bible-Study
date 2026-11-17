@@ -108,7 +108,7 @@ def valaszok_olvas(ut, minta, hash_):
             raise SystemExit('%s: ismeretlen ítélet %r (%s)' % (ut, it, k))
         if it:
             ki[k] = v
-        if v.get('karoli'):
+        if v.get('karoli') or (v.get('segedeszkoz') or '').strip():
             karoli[k] = v
     return d.get('ellenor') or os.path.basename(ut), ki, karoli
 
@@ -121,6 +121,7 @@ def karoli_szabad(minta, ellenorok):
     """A „Károli itt szabadon vagy pontatlanul fordít” jelölő: nem a párosítás hibája, külön lista és számolás.
     ellenorok: [(címke, válaszok, jelöltek), ...] (egy vagy két ellenőr; a TSV B-oszlopai egy ellenőrnél üresek)."""
     tip = {r['tetel_id']: r['tipus'] for r in minta}
+    ellenorok = [(nev, v, {t: x for t, x in k.items() if x.get('karoli')}) for nev, v, k in ellenorok]
     sor = ['## 6. Fordítói észrevétel: „Károli itt szabadon vagy pontatlanul fordít”\n',
            'Ez a jelölő nem a párosítás ítélete, a pontosságba nem számít; a tételek a `karoli_szabad_forditas.tsv`-ben.\n',
            '| | jelölt tétel | ebből pár | ebből pár nélküli | ugyanott az ítélet „helyes” |', '|---|---|---|---|---|']
@@ -140,6 +141,25 @@ def karoli_szabad(minta, ellenorok):
                       '1' if t in ka else '0', a.get(t, {}).get('itelet', ''), _egysor((ka.get(t) or {}).get('karoli_megj', '')),
                       ('1' if t in kb else '0') if len(ellenorok) == 2 else '', b.get(t, {}).get('itelet', ''),
                       _egysor((kb.get(t) or {}).get('karoli_megj', ''))])
+    return '\n'.join(sor), sorok
+
+
+SEGED_FEJ = ['tetel_id', 'tipus', 'vers', 'ellenor', 'segedeszkoz', 'itelet']
+
+
+def segedeszkoz(minta, ellenorok):
+    """A „Használtam segédeszközt” mező: ítélőnként a kitöltött tételek (lista és darabszám)."""
+    by = {r['tetel_id']: r for r in minta}
+    sor = ['## 7. Segédeszköz („Használtam segédeszközt”)\n',
+           '| | kitöltött tétel | leggyakoribb megnevezés |', '|---|---|---|']
+    sorok = []
+    for nev, v, k in ellenorok:
+        tk = {t: (x.get('segedeszkoz') or '').strip() for t, x in k.items() if (x.get('segedeszkoz') or '').strip()}
+        gyak = sorted(_szamlal(tk.values()).items(), key=lambda x: -x[1])[:3]
+        sor.append('| %s | %d | %s |' % (nev, len(tk), ', '.join('%s (%d)' % g for g in gyak) or '–'))
+        for t in sorted(tk):
+            r = by[t]
+            sorok.append([t, r['tipus'], r['vers'], nev, _egysor(tk[t]), v.get(t, {}).get('itelet', '')])
     return '\n'.join(sor), sorok
 
 
@@ -353,6 +373,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     csop = {r['tetel_id']: r['csoport'] for r in minta}
     alap = {r['tetel_id'] for r in minta if r['reszminta'] == 'alap'}
     elter = {r['tetel_id'] for r in minta if r['elteres'] == '1'}
+    tul = {r['tetel_id'] for r in minta if r['reszminta'] == 'tulminta'}
+    nehez = {r['tetel_id'] for r in minta if r['reszminta'] == 'nehez'}
     ket = len(ellenorok) == 2
     sor = ['## 1. Kitöltöttség és felállás\n']
     if not ket:
@@ -362,9 +384,10 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     else:
         sor.append('Két külső ellenőr; az eltérő tételeket harmadik döntés zárja le (a döntött minta).\n')
     for nev, v in ellenorok:
-        sor.append('- %s: %d / %d tétel (alapminta-pár %d, túlminta-pár %d, pár nélküli %d)' % (
+        sor.append('- %s: %d / %d tétel (alapminta-pár %d, túlminta-pár %d, nehéz pár %d, pár nélküli %d, kimaradt-pár %d)' % (
             nev, len(v), len(minta), sum(tip[t] == 'par' and t in alap for t in v),
-            sum(tip[t] == 'par' and t not in alap for t in v), sum(tip[t] == 'parnelkuli' for t in v)))
+            sum(t in tul for t in v), sum(t in nehez for t in v),
+            sum(tip[t] == 'parnelkuli' for t in v), sum(tip[t] == 'kimaradt' for t in v)))
     sor.append('')
 
     itelok = [(nev, {t: x['itelet'] for t, x in v.items()}) for nev, v in ellenorok]
@@ -392,6 +415,14 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     for nev, it in itelok:
         sor.append(ketfazisu_sor(nev, minta, it, False, f1))
         sor.append(ketfazisu_sor(nev + ' · konzervatív', minta, it, True, f1))
+    sor.append('')
+    sor.append('### 2c. Nehéz réteg: az 1–2Móz párjai, ahol a két párosító modell nem egyezett (%d pár)\n' % len(nehez))
+    sor.append('Egyszerű véletlen minta ebből a keretből (bizonyosság ≠ magas); külön becslés, az összesítőbe nem számít.\n')
+    sor.append(FEJ_P)
+    for nev, it in itelok:
+        lista = [it[t] for t in it if t in nehez]
+        sor.append(pontossag_sor(nev, lista))
+        sor.append(pontossag_sor(nev + ' · konzervatív', lista, konzervativ=True))
     sor.append('')
     sor.append('Könyvcsoportonként (%s, alapminta; a csoportbecslések kis n-en állnak, rétegszintű szám nem közölhető):\n' % fo_nev)
     sor.append(FEJ_P)
@@ -423,6 +454,18 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append(kimaradas_sor(nev + ' · konzervatív', lista, konzervativ=True))
     sor.append('')
 
+    sor.append('### 3b. Kimaradt párok: a fordítatlannak jelölt forrásszavak (recall-becslés)\n')
+    sor.append('A keret: a `forditatlan` héber és görög szavak a szabály szerinti esetek nélkül (névelő, ʾet, -āh, paragogikus '
+               'nun, kötőszó nélküli ve-/καί, [nem TR]). „Van párja”: a gép kihagyott egy párt; az arány a kihagyott párok '
+               'aránya ezen a kereten. A „konzervatív” sor a bizonytalant kihagyásnak számolja.\n')
+    sor.append('| | n | nincs párja (helyes) | van párja (kimaradt) | bizonytalan | kimaradási arány | Wilson 95% |\n'
+               '|---|---|---|---|---|---|---|')
+    for nev, it in itelok:
+        lista = [it[t] for t in it if tip[t] == 'kimaradt']
+        sor.append(kimaradas_sor(nev, lista))
+        sor.append(kimaradas_sor(nev + ' · konzervatív', lista, konzervativ=True))
+    sor.append('')
+
     eltero = []
     if ket:
         (na, a), (nb, b) = ellenorok
@@ -432,7 +475,9 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append('|---|---|---|---|---|---|')
         for cimke, szuro in (('összes', lambda t: True), ('párok, alapminta', lambda t: tip[t] == 'par' and t in alap),
                              ('párok, a #172 eltérései', lambda t: tip[t] == 'par' and t in elter),
-                             ('pár nélküli szavak', lambda t: tip[t] == 'parnelkuli')):
+                             ('párok, nehéz réteg', lambda t: t in nehez),
+                             ('pár nélküli szavak', lambda t: tip[t] == 'parnelkuli'),
+                             ('kimaradt párok', lambda t: tip[t] == 'kimaradt')):
             ts = [t for t in kozos if szuro(t)]
             p3 = [(a[t]['itelet'], b[t]['itelet']) for t in ts]
             k3, po3, n3 = kappa(p3, ITELETEK)
@@ -590,7 +635,8 @@ def main():
 
     szoveg, eltero = kiertekel(minta, [(c, v) for c, (_, v, _) in zip(cimkek, beolv)], dontes, modell, szerzoi)
     k_szoveg, k_sorok = karoli_szabad(minta, [(c, v, k) for c, (_, v, k) in zip(cimkek, beolv)])
-    szoveg = szoveg + '\n' + k_szoveg
+    s_szoveg, s_sorok = segedeszkoz(minta, [(c, v, k) for c, (_, v, k) in zip(cimkek, beolv)])
+    szoveg = szoveg + '\n' + k_szoveg + '\n\n' + s_szoveg
     head = git_head()
     forras = [os.path.relpath(x, GYOKER).replace(os.sep, '/') if os.path.abspath(x).startswith(GYOKER) else os.path.basename(x)
               for x in [a.minta] + a.valaszok + ([a.dontes] if a.dontes else [])]
@@ -609,6 +655,11 @@ def main():
         f.write(prov + '\n')
         f.write('\t'.join(KAROLI_FEJ) + '\n')
         for s in k_sorok:
+            f.write('\t'.join(s) + '\n')
+    with open(os.path.join(a.kimenet, 'segedeszkoz.tsv'), 'w', encoding='utf-8', newline='\n') as f:
+        f.write(prov + '\n')
+        f.write('\t'.join(SEGED_FEJ) + '\n')
+        for s in s_sorok:
             f.write('\t'.join(s) + '\n')
     print(szoveg)
     print('\n-> %s' % os.path.join(a.kimenet, 'kiertekeles.md'))

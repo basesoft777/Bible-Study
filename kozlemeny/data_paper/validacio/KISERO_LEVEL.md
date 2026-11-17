@@ -4,7 +4,7 @@
 
 ---
 
-**Tárgy:** Kérés: szúrópróba a Károli–Strong szópárosításhoz (kb. 3,5–4,5 óra)
+**Tárgy:** Kérés: szúrópróba a Károli–Strong szópárosításhoz (kb. 4 óra)
 
 Kedves [Név]!
 
@@ -14,10 +14,10 @@ Az elmúlt hónapokban a Károli-biblia 1908-as szövegének minden szavát pár
 
 A melléklet két fájlja:
 
-- **`ellenorzo.html`**: böngészőben nyílik meg, gépen és telefonon is, internet nélkül. 440 tételt tartalmaz: 360 szópárról kell eldönteni, hogy helyes-e, 80 szóról pedig, hogy tényleg nincs-e megfelelője az eredetiben. A kérdés mindig a párosítás, nem az, hogy Károli jól fordított-e; a fordításról szóló észrevételnek külön jelölő van. A program menet közben ment, így több részletben is dolgozhatsz. A mentés az adott böngészőhöz kötött; eszközváltáskor az Exportálás és a Betöltés gomb viszi át (részletek az útmutatóban).
+- **`ellenorzo.html`**: böngészőben nyílik meg, gépen és telefonon is, internet nélkül. 540 tételt tartalmaz: 405 szópárról kell eldönteni, hogy helyes-e, 80 magyar és 55 héber vagy görög szóról pedig, hogy tényleg nincs-e párja a másik nyelvű mondatban. A kérdés mindig a párosítás, nem az, hogy Károli jól fordított-e; a fordításról szóló észrevételnek külön jelölő van. A program menet közben ment, így több részletben is dolgozhatsz. A mentés az adott böngészőhöz kötött; eszközváltáskor az Exportálás és a Betöltés gomb viszi át (részletek az útmutatóban).
 - **`UTMUTATO.md`**: egy oldal arról, mikor helyes, hibás vagy bizonytalan egy pár, néhány példával. Kérlek, előbb ezt olvasd el.
 
-Összesen kb. 3,5–4,5 óra. Ha végeztél, az oldal „Mentés / export” gombjával letöltöd a `<neved>_valaszok.json` fájlt; ezt kérném vissza válaszlevélben, **[határidő, pl. 2026. november 30.]**-ig.
+Összesen kb. 4 óra, több részletben. Szótárt használhatsz; Strong-számos Bibliát, interlineáris Bibliát és mesterséges intelligenciát kérlek, ne. Ha végeztél, az oldal „Mentés / export” gombjával letöltöd a `<neved>_valaszok.json` fájlt; ezt kérném vissza válaszlevélben, **[határidő, pl. 2026. november 30.]**-ig.
 
 Két kérés még:
 
