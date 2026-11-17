@@ -12,12 +12,17 @@ Kimenet:
       azonos módon); a 2-ből-3 többségi ítélet rétegsúlyozott pontossága; páronkénti és
       háromutas egyezés a pár-ítéleten (Cohen-kappa) és a jelölt halmazon (pontos egyezés);
       a mintán, súlyozatlanul.
+  f172/kulso_biralo/harom_biralo_itelet.tsv (+ .sha256) — FAGYASZTOTT tábla: mind az 1600
+      pár, bírálónként a halmaz és az ítélet; kulcs: f172_id (= f172/minta.tsv minta_id,
+      a validációs minta `f172_id` oszlopa). Az emberi válaszok beérkezése előtt kerül a
+      repóba (a lektor előírása); a SHA-256 a fájl bájtjaira.
   f172/kulso_biralo/elteresek.tsv — a nem egyhangú párok, bírálónként a halmazzal (sorszám,
       alak, Strong) és gépi indoklással (melyik bíráló miért nem fogadja el a párt).
 
 Használat: python eszkozok/karoli_strong/kulso_biralo_ertekel.py
 """
 
+import hashlib
 import os
 import sys
 
@@ -32,12 +37,14 @@ import pontossag_minta as pm  # noqa: E402
 
 F172 = pmr.F172
 KB = os.path.join(F172, 'kulso_biralo')
+# a teljes futás azonnali módban ment (a felhasználó döntése, 2026-11-17): <rov>_azonnali/
 BIRALOK = [('opus', 'Opus', os.path.join(F172, 'itelet_par.tsv'), 'opus'),
-           ('gemini', 'Gemini', os.path.join(KB, 'gemini', 'itelet_par.tsv'), 'biralo'),
-           ('gpt', 'GPT', os.path.join(KB, 'gpt', 'itelet_par.tsv'), 'biralo')]
+           ('gemini', 'Gemini', os.path.join(KB, 'gemini_azonnali', 'itelet_par.tsv'), 'biralo'),
+           ('gpt', 'GPT', os.path.join(KB, 'gpt_azonnali', 'itelet_par.tsv'), 'biralo')]
 MERES = {'opus': os.path.join(F172, 'meres_eredmeny.tsv'),
-         'gemini': os.path.join(KB, 'gemini', 'meres_eredmeny.tsv'),
-         'gpt': os.path.join(KB, 'gpt', 'meres_eredmeny.tsv')}
+         'gemini': os.path.join(KB, 'gemini_azonnali', 'meres_eredmeny.tsv'),
+         'gpt': os.path.join(KB, 'gpt_azonnali', 'meres_eredmeny.tsv')}
+FAGY = os.path.join(KB, 'harom_biralo_itelet.tsv')
 OK = {'fölös pár': 'a Károli-szót betoldásnak tartja (üres halmaz)',
       'azonos lexéma, más előfordulás': 'ugyanennek a Strong-számnak egy másik előfordulását jelöli',
       'szomszédos token': 'a szomszédos eredeti szót jelöli',
@@ -161,6 +168,34 @@ def main():
                            'tobbseg_helyes', 'tipus', 'indoklas']) + '\n')
         for x in elt:
             f.write('\t'.join(x) + '\n')
+    # --- fagyasztott háromutas tábla (minden pár) + SHA-256
+    ffej = ['f172_id', 'reteg', 'vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'er_szo', 'strong', 'morfema',
+            'opus_halmaz', 'opus_helyes', 'gemini_halmaz', 'gemini_helyes', 'gpt_halmaz', 'gpt_helyes',
+            'tobbseg_helyes', 'egyhangu']
+    modellek = {}
+    for rov, _, ut, _ in BIRALOK:
+        with open(ut, encoding='utf-8') as f:
+            modellek[rov] = f.readline().split('(', 2)[-1].split(')')[0]  # a fejléc: koteg_*.json (<modell>)
+    with open(FAGY, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# MANUAL: scope=F175.B a három vak gépi bíráló páronkénti ítélete, FAGYASZTVA az emberi validáció '
+                'előtt (Opus: %s; Gemini: %s; GPT: %s; ugyanaz az utasítás és bemenet: f172/ellenor/) | forras=%s | '
+                'ts=git:%s | manual (determinisztikus; a halmaz az eredeti tokenek sorszáma, „-” = betoldás; '
+                'helyes = a gépi pár tokenje a halmazban)\n' % (
+                    modellek['opus'], modellek['gemini'], modellek['gpt'],
+                    ', '.join(os.path.relpath(b[2], pm.GYOKER).replace(os.sep, '/') for b in BIRALOK), head))
+        f.write('\t'.join(ffej) + '\n')
+        for k, i in enumerate(ids):
+            r0 = tab['opus'][i]
+            f.write('\t'.join([i, r0['reteg'], r0['vers'], r0['hu_sorszam'], r0['hu_szo'], r0['er_sorszam'],
+                               r0['er_szo'], r0['strong'], r0['morfema'],
+                               S['opus'][k], tab['opus'][i]['helyes'], S['gemini'][k], tab['gemini'][i]['helyes'],
+                               S['gpt'][k], tab['gpt'][i]['helyes'], '1' if tobb[k] else '0',
+                               '1' if H['opus'][k] == H['gemini'][k] == H['gpt'][k] else '0']) + '\n')
+    with open(FAGY, 'rb') as f:
+        h = hashlib.sha256(f.read()).hexdigest()
+    with open(FAGY + '.sha256', 'w', encoding='utf-8', newline='\n') as f:
+        f.write('%s  harom_biralo_itelet.tsv\n' % h)
+    print('fagyasztott tábla: %s, SHA-256 %s' % (os.path.relpath(FAGY, pm.GYOKER), h))
     for s in sorok:
         print('%-15s %-48s n=%-5s x=%-5s p=%s [%s, %s] %s' % tuple(s))
 
