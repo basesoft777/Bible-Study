@@ -226,6 +226,24 @@ class ForrasAllapotMondat(unittest.TestCase):
         with self.assertRaises(BemenetHiba):
             HB.b64_targum(b)
 
+    def test_a_targum_kulcs_kapuja(self):
+        """A lefedettség csak ismert ószövetségi „könyv fejezet:vers” kulcsokból állapítható meg; idegen kulcs és üres
+        forrás BUKÁS (különben minden Targum-cella hamisan „nincs Targum-forrás” lenne)."""
+        from lapgen.bemenet.jegyzek import Tabla
+        for sorok in ([('Psalms 1:1',)], [('Mt 1:1',)], []):
+            b = bemenet.Bemenet(kozos.GYOKER)
+            eredeti = b._tabla
+            b._tabla = lambda b_id, _s=sorok, _e=eredeti, **kw: Tabla(('igehely',), _s) if b_id == 'B64'                 else _e(b_id, **kw)
+            with self.assertRaises(BemenetHiba, msg=repr(sorok)):
+                HB.b64_targum(b)
+
+    def test_a_tanu_koranak_belso_resze(self):
+        """A tanú korának látható része a mező eleje; a belső rész csak „ (HCF: <év>)” alakú lehet."""
+        self.assertEqual(HB._KOR_RX.match('4. sz. (HCF: 373)').group('kor'), '4. sz.')
+        self.assertEqual(HB._KOR_RX.match('7. sz.').group('kor'), '7. sz.')
+        self.assertEqual(HB._KOR_RX.match('').group('kor'), '')
+        self.assertIsNone(HB._KOR_RX.match('4. sz. (HCF 373)'))
+
     def test_a_peshitta_mondat_az_allapotbol(self):
         b = bemenet.Bemenet(kozos.GYOKER)
         self.assertIs(HB.b73_peshitta(b), ForrasAllapot.NEM_VIZSGALT)

@@ -212,6 +212,8 @@ def _usz(iro, ny, u):
     konyv = ny.nev(_LANC_KONYV, u.mag_hely.konyv) if not szopar else None
     n, e = len(u.sorok), u.egyezo
     if szopar:
+        if u.tematikus:
+            raise KapuHiba('9.: a szópáros újszövetségi bevezető a tematikus helyek kimaradását nem tudja kimondani')
         bevezeto = ny.s('s9.usz.bevezeto.szopar', n=n, e=e)
     elif u.tematikus:
         bevezeto = ny.s('s9.usz.bevezeto.tematikus', helyek=u.tematikus, konyv=konyv, n=n, e=e)

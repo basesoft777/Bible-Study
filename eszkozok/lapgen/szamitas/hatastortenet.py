@@ -405,6 +405,10 @@ def _osz(f, motivum):
             fv = tuple(v for v in versek if fd is not Forditas.TARGUM or targum.fedi(v))
             kivul = tuple(v for v in versek if v not in fv)
             sf = [r for r in ss if r.forras == fd.value]
+            rejtett = [r for r in sf if r.igehely in kivul and r.ellenorzott and r.van_alak]
+            if rejtett:
+                raise bemenet.BemenetHiba('9.: a Targum-forrás a(z) %s versét nem fedi, mégis ellenőrzött, alakos '
+                                          'Targum-sor áll rá a visszhang-táblában' % rejtett[0].igehely.kod)
             if not fv:
                 cella = OkoriCella(CellaFajta.NINCS_FORRAS, (), 0, 0, None, (), False, kivul)
                 fo, lemmak, tobbi = None, (), ()

@@ -36,13 +36,15 @@ _TARGUM_OSZLOPOK = ('igehely',)
 _ELVALASZTO = ' · '
 _JELENTES_ZAROJEL = ' ('
 _TANU_HELY_ELVALASZTO = '; '
-_KOR_BELSO = ' (HCF: '                     # a kor mezőjének belső része: az adatbázis évszáma
+# a kor mezőjének olvasói része és a belső, zárójeles adatbázis-évszám: a mező csak ilyen alakú lehet (a belső rész
+# más alakban nem válhat le némán, és nem kerülhet a lapra)
+_KOR_RX = re.compile(r'^(?P<kor>[^()]*?)(?: \(HCF: \d+\))?$')
 _SEFARIA_HELY_RX = re.compile(r'^(?P<cim>.+) (?P<fejezet>\d+):(?P<resz>\d+)$')
 _ZARO_IRASJEL = '·,.;'
 _APPARATUS_MAS_RX = re.compile(r'\]\s*(\S+)')
 _KIADAS_ELVALASZTO = '+'
 _IGEN = 'igen'
-_KONYV_RX = re.compile(r'^(\S+) \d')
+_KONYV_RX = re.compile(r'^(\S+) \d+:\d+$')
 _AUGMENTUM = 'ε'
 _AUGMENTUM_MARADEK = 3
 
@@ -192,7 +194,11 @@ def b39_tanuk(b, motivum):
                 raise BemenetHiba('B39: a rabbinikus forrás hivatkozása nem „cím fejezet:szakasz” alakú: %r'
                                   % sor['mu'])
             mu, fejezet, resz = m.group('cim'), int(m.group('fejezet')), int(m.group('resz'))
-        kor = sor['kor'].split(_KOR_BELSO)[0]
+        m_kor = _KOR_RX.match(sor['kor'])
+        if not m_kor:
+            raise BemenetHiba('B39: a tanú korának mezője nem „<kor>” vagy „<kor> (HCF: <év>)” alakú: %r (%s)'
+                              % (sor['kor'], hely.kod))
+        kor = m_kor.group('kor')
         ki.append(TanuSor(
             igehely=hely, tanu_helyek=helyek, hagyomany=b.kulcs('B39', 'hagyomany', sor['hagyomany']),
             tanu=b.kezi('B39', 'tanu', sor['tanu']), mu=b.forrasszoveg('B39', 'mu', mu, hely),
@@ -304,11 +310,18 @@ def b64_targum(b):
         allapot = _allapot(b, 'B64')
         tabla = b._tabla('B64', oszlopok=_TARGUM_OSZLOPOK)
         konyvek = set()
+        normalizalo = b63_konyvek(b)
         for sor in tabla.szotarak():
+            # a kulcs a könyv rövidítése és a forrás fejezet:vers száma (SEMA 2.52): ha nem ilyen, vagy a könyv nem
+            # ismert, a lefedettség nem állapítható meg (a hiánymondat ilyenkor hamis volna), BUKÁS
             m = _KONYV_RX.match(sor['igehely'])
-            if m:
-                konyvek.add(m.group(1))
-        osz = {k for k in b63_konyvek(b).osszes() if not b63_konyvek(b).ujszovetsegi(k)}
+            if not m or not normalizalo.ismert(m.group(1)) or normalizalo.ujszovetsegi(m.group(1)):
+                raise BemenetHiba('B64: a Targum-forrás kulcsa nem ószövetségi „könyv fejezet:vers” alakú: %r'
+                                  % sor['igehely'])
+            konyvek.add(m.group(1))
+        if not konyvek:
+            raise BemenetHiba('B64: a Targum-forrás üres')
+        osz = {k for k in normalizalo.osszes() if not normalizalo.ujszovetsegi(k)}
         teljes = osz <= konyvek
         if allapot is ForrasAllapot.RESZLEGES and teljes:
             raise BemenetHiba('B64: a jegyzék szerint a Targum-forrás részleges, de minden ószövetségi könyvet fed: '
