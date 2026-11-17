@@ -1,3 +1,4 @@
 # MANUAL: scope=F175.B külső bírálók futásnaplója (kérésenként) | forras=OpenRouter Batch API (/api/v1/batches) | ts=2026-11-17 | manual (a modell-kimenet bírálat, nem arany)
 rov	batch_id	koteg	modell_kert	modell_valasz	modell_onbevallas	provider	prompt_tokens	completion_tokens	reasoning_tokens	cost_usd	koltseg_forras	eredmeny	megjegyzes	ts
 gemini	batch-1794904558-pX0UE9EJQU9IShwARE9B	1	google/gemini-4-argon	google/gemini-4-argon	gemini-3.1-pro	Google	16062	835	0	0.020237	ar_config	rendben	a versek 25 eleme JSON-szövegként jött, dekódolva	2026-11-17T08:45:43
+gpt	azonnali-20261117T091248	1	openai/gpt-6.1-sol	openai/gpt-6.1-sol	gpt-5	OpenAI	14750	890	363	0.045774	openrouter	rendben		2026-11-17T09:13:05
