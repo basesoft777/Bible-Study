@@ -41,17 +41,26 @@ npx wrangler dev --config eszkozok/karoli_strong_validacio_worker/wrangler.toml 
 
 ## Telepítés (a felhasználó fiókjával)
 
-1. A felhasználó létrehozza a Cloudflare-fiókot és egy API tokent (jogosultság: *Workers Scripts: Edit*,
-   *D1: Edit*), és környezeti változóba teszi: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`. A tokent chatbe,
-   fájlba vagy naplóba írni tilos.
+1. Bejelentkezés OAuth-tal: `npx wrangler login`, a felhasználó a böngészőben jóváhagyja („Allow”); API token
+   nincs, hitelesítő adatot senki nem másol, chatbe vagy fájlba nem kerül. A fiókazonosító felhasználói
+   környezeti változó (`CLOUDFLARE_ACCOUNT_ID`); PowerShellben a wrangler-parancs előtt:
+   `$env:CLOUDFLARE_ACCOUNT_ID=[Environment]::GetEnvironmentVariable('CLOUDFLARE_ACCOUNT_ID','User')`.
+   Ellenőrzés: `npx wrangler whoami`.
 2. Adatbázis EU-jurisdikcióval: `npx wrangler d1 create karoli-strong-validacio --jurisdiction eu`; a kiírt
-   `database_id` a `wrangler.toml`-ba kerül (nem titok; commit).
+   `database_id` a `wrangler.toml`-ba kerül (nem titok; commit). Megtörtént 2026-11-17-én
+   (`npx wrangler d1 info karoli-strong-validacio`: `jurisdiction: eu`).
+   A workers.dev aldomaint a fióknak egyszer regisztrálnia kell (a dashboardon); ez a link része
+   (a felhasználó választotta: `logoszlexikon`; az új aldomain tanúsítványa néhány perc alatt áll elő).
 3. Betöltés: `python eszkozok/karoli_strong_validacio_d1.py` (a letétbeli tokenekkel), majd
    `npx wrangler d1 execute karoli-strong-validacio --remote --config … --file %USERPROFILE%/Bible-Study-letet/d1_betoltes.sql`.
    A betöltő a tételeket a LEKOTES.md-vel veti össze; a sima INSERT miatt kétszeri betöltés hibával áll meg.
-4. Admin-kulcs secretként (PowerShell): `Get-Content $env:USERPROFILE\Bible-Study-letet\admin_kulcs.txt | npx wrangler secret put ADMIN_KULCS --config …`
-5. `npx wrangler deploy --config …` (első alkalommal a workers.dev aldomain regisztrálását kérheti), majd a linkek a
-   tokenfájlba: `python eszkozok/karoli_strong_validacio_d1.py --alap-url https://karoli-strong-validacio.<aldomain>.workers.dev`.
+4. Admin-kulcs secretként, záró sortörés nélkül (Git Bash): `printf '%s' "$(tr -d '\r\n' < "$USERPROFILE/Bible-Study-letet/admin_kulcs.txt")" | npx wrangler secret put ADMIN_KULCS --config …`.
+   A PowerShell-pipe sortörést fűz a kulcs végére, és a Worker a kulcsot nem vágja le: az admin-végpontok
+   ilyenkor 401-et adnak (2026-11-17-én így történt; javítva). A secret cseréje után néhány percig egyes
+   kérések még a régi értéket láthatják.
+5. `npx wrangler deploy --config …`, majd a linkek a tokenfájlba:
+   `python eszkozok/karoli_strong_validacio_d1.py --alap-url https://karoli-strong-validacio.logoszlexikon.workers.dev`.
+   Telepítve 2026-11-17-én: https://karoli-strong-validacio.logoszlexikon.workers.dev (a kód telepítésének Worker-verziója: dcc85b9c-b662-4887-89db-33ee7d79f321; a secret beállítása új verziót ad, a kód nem változik).
 
 ## Élesítés előtt: kétfős próba
 
