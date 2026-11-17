@@ -1,0 +1,42 @@
+# F197 N-F197a (DT776) mintán kívüli kézi szúrópróba: a 40 sor, a vak bírálat kulcsa és ítélete. scope=a teljes Sefaria-tanú-tábla (8028 Strong) 3040 `biztos` → `ketes:jp_tanu_sefaria` váltása | forras=eszkozok/olvaso_szerver/bdb_sefaria_proba.py minta (seed 20261116) + Fable-ügynök vak bírálata (A/B, forrásnév nélkül) | ts=2026-11-16
+azon	strong	sorszam	mt_vers	nyers	tabla_pont	sefaria_pont	hozzarendeles	szint	szocikk_valtasa	itelet	rovid_indoklas
+P01	H6119	22	Józs 8:13	Josh 8:13	torzs: (nincs); szám: (nincs); betű: b	torzs: (nincs); szám: (nincs); betű: c	A=sefaria,B=tabla	betu	1	sefaria_helyes	c., Gen 49:19 után
+P02	H5035	3	1Sám 10:3	10:3	torzs: (nincs); szám: 2; betű: (nincs)	a szócikk fejrésze: nincs számozott jelentéspont	A=tabla,B=sefaria	szam	1	sefaria_helyes	fejrész, alaklista
+P03	H2268	1	Bír 4:11	Judg 4:11	a szócikk fejrésze: nincs számozott jelentéspont	torzs: (nincs); szám: 1; betű: (nincs)	A=sefaria,B=tabla	szam	4	sefaria_helyes	1.
+P04	H5648	38	Ezsd 5:3	5:3	torzs: Hithpeel; szám: (nincs); betű: (nincs)	torzs: Hithpe; szám: 2; betű: (nincs)	A=sefaria,B=tabla	szam	2	tabla_helyes	Hithpeel, szám nélkül, alaklista
+P05	H2388	260	Bír 7:8	Judg 7:8	torzs: Hiphil; szám: 6; betű: c	torzs: Hiphil; szám: 6; betű: d	A=sefaria,B=tabla	betu	6	tabla_helyes	Hiphil 6. c.
+P06	H7068	39	Ez 35:11	Ezek 35:11	torzs: (nincs); szám: 3; betű: b	torzs: (nincs); szám: 3; betű: a	A=sefaria,B=tabla	betu	1	tabla_helyes	3. b.
+P07	H0475	15	Ezsd 10:36	10:36	torzs: (nincs); szám: (nincs); betű: e	torzs: (nincs); szám: (nincs); betű: f	A=sefaria,B=tabla	betu	1	sefaria_helyes	f.
+P08	H2336	2	Hós 9:6	Hosea 9:6	torzs: (nincs); szám: 2; betű: (nincs)	a szócikk fejrésze: nincs számozott jelentéspont	A=tabla,B=sefaria	szam	4	sefaria_helyes	fejrész, alaklista
+P09	H0310	147	2Sám 20:2	2Sam 20:2	torzs: (nincs); szám: 4; betű: a	torzs: Plur; szám: 4; betű: a	A=sefaria,B=tabla	torzs	117	mindketto	Plural 4. a.
+P10	H3818	1	Hós 1:9	Hosea 1:9	a szócikk fejrésze: nincs számozott jelentéspont	torzs: (nincs); szám: 2; betű: d	A=tabla,B=sefaria	szam	1	tabla_helyes	nincs számozott pont
+P11	H4672	296	1Krón 24:4	1Chr 24:4	torzs: Niphal; szám: 2; betű: (nincs)	torzs: Niphal; szám: (nincs); betű: (nincs)	A=sefaria,B=tabla	szam	16	sefaria_helyes	Niphal, szám nélkül
+P12	H1314	32	Én 5:1	5:1	torzs: (nincs); szám: 1; betű: (nincs)	torzs: (nincs); szám: 2; betű: (nincs)	A=tabla,B=sefaria	szam	7	tabla_helyes	1.
+P13	H5953	6	2Móz 10:2	Exod 10:2	torzs: Poal; szám: 1; betű: (nincs)	torzs: Hithpael; szám: (nincs); betű: (nincs)	A=sefaria,B=tabla	torzs+szam	8	sefaria_helyes	Hithpael
+P14	H5401	42	1Móz 31:28	31:28	torzs: Qal; szám: (nincs); betű: (nincs)	torzs: Piel; szám: (nincs); betű: (nincs)	A=sefaria,B=tabla	torzs	5	sefaria_helyes	Piel
+P15	H2229	2	Zsolt 77:18	Psa 77:18	torzs: Qal; szám: (nincs); betű: (nincs)	torzs: Polel; szám: (nincs); betű: (nincs)	A=sefaria,B=tabla	torzs	1	sefaria_helyes	Po. törzs
+P16	H5003	32	Ez 23:37	Ezek 23:37	torzs: Piel; szám: 1; betű: a	torzs: Piel; szám: 1; betű: b	A=sefaria,B=tabla	betu	1	tabla_helyes	Piel 1. a.
+P17	H6105	26	Zsolt 105:24	Psa 105:24	torzs: Hiphil; szám: (nincs); betű: (nincs)	torzs: (nincs); szám: 2; betű: (nincs)	A=sefaria,B=tabla	szam	1	tabla_helyes	Hiphil
+P18	H5487	2	Dán 2:44	2:44	torzs: Pealal; szám: (nincs); betű: (nincs)	torzs: Haph; szám: (nincs); betű: (nincs)	A=tabla,B=sefaria	torzs	1	sefaria_helyes	Haphel
+P19	H3759	2	Ézs 16:10	Isa 16:10	torzs: (nincs); szám: 2; betű: (nincs)	a szócikk fejrésze: nincs számozott jelentéspont	A=tabla,B=sefaria	szam	2	sefaria_helyes	fejrész
+P20	H7626	4	1Móz 49:10	Gen 49:10	torzs: (nincs); szám: 2; betű: (nincs)	a szócikk fejrésze: nincs számozott jelentéspont	A=tabla,B=sefaria	szam	7	sefaria_helyes	fejrész
+P21	H4196	41	5Móz 27:6	Deut 27:6	torzs: (nincs); szám: 1; betű: (nincs)	torzs: (nincs); szám: 8; betű: (nincs)	A=tabla,B=sefaria	szam	1	tabla_helyes	1.
+P22	H4676	46	Ézs 6:13	6:13	torzs: (nincs); szám: 1; betű: c	torzs: (nincs); szám: 2; betű: (nincs)	A=tabla,B=sefaria	szam	2	sefaria_helyes	2.
+P23	H6083	15	Mik 1:10	Micah 1:10	torzs: (nincs); szám: 1; betű: a	torzs: (nincs); szám: 2; betű: e	A=sefaria,B=tabla	szam+betu	1	tabla_helyes	1. a.
+P24	H2372	84	Jób 8:17	Job 8:17	torzs: Qal; szám: 3; betű: c	a szócikk fejrésze: nincs számozott jelentéspont	A=tabla,B=sefaria	szam	1	egyik_sem	Qal végi megjegyzés
+P25	H3423	228	4Móz 14:24	Num 14:24	torzs: Qal; szám: (nincs); betű: (nincs)	torzs: Hiphil; szám: 5; betű: (nincs)	A=sefaria,B=tabla	torzs+szam	1	sefaria_helyes	Hiphil 5.
+P26	H2023	7	4Móz 20:27	, 27	a szócikk fejrésze: nincs számozott jelentéspont	torzs: (nincs); szám: 1; betű: (nincs)	A=tabla,B=sefaria	szam	7	sefaria_helyes	1.
+P27	H7270	32	Hós 11:3	Hosea 11:3	torzs: Piel; szám: 2; betű: (nincs)	torzs: Tiph; szám: (nincs); betű: (nincs)	A=tabla,B=sefaria	torzs+szam	1	sefaria_helyes	Tiphel
+P28	H3605	211	Préd 5:15	Eccl 5:15	torzs: (nincs); szám: 1; betű: e	torzs: (nincs); szám: 1; betű: f	A=sefaria,B=tabla	betu	4	sefaria_helyes	1. f.
+P29	H2603	39	Zsolt 109:12	Psa 109:12	torzs: Qal; szám: 1; betű: c	torzs: Qal; szám: 1; betű: b	A=sefaria,B=tabla	betu	1	sefaria_helyes	Qal 1. b.
+P30	H5871	1	4Móz 34:11	Num 34:11	a szócikk fejrésze: nincs számozott jelentéspont	torzs: (nincs); szám: 1; betű: (nincs)	A=sefaria,B=tabla	szam	1	sefaria_helyes	1.
+P31	H0214	54	2Kir 18:15	18:15	torzs: (nincs); szám: 3; betű: b	torzs: (nincs); szám: 4; betű: a	A=tabla,B=sefaria	szam+betu	29	egyik_sem	3. második a.
+P32	H2748	2	Dán 2:2	Dan 2:2	a szócikk fejrésze: nincs számozott jelentéspont	torzs: (nincs); szám: 2; betű: (nincs)	A=sefaria,B=tabla	szam	1	tabla_helyes	fejrész
+P33	H4223	4	Ezsd 6:11	Ezra 6:11	torzs: Pael; szám: (nincs); betű: (nincs)	torzs: Hithpe; szám: (nincs); betű: (nincs)	A=sefaria,B=tabla	torzs	1	sefaria_helyes	Hithpa.
+P34	H5945	1	5Móz 26:19	Deut 26:19	a szócikk fejrésze: nincs számozott jelentéspont	torzs: (nincs); szám: 1; betű: (nincs)	A=sefaria,B=tabla	szam	5	sefaria_helyes	1.
+P35	H7764	2	4Móz 26:15	Num 26:15	a szócikk fejrésze: nincs számozott jelentéspont	torzs: (nincs); szám: 1; betű: (nincs)	A=sefaria,B=tabla	szam	2	sefaria_helyes	1.
+P36	H7200	344	Mik 6:9	Micah 6:9	torzs: Niphal; szám: (nincs); betű: (nincs)	torzs: Qal; szám: 8; betű: c	A=tabla,B=sefaria	torzs+szam	1	egyik_sem	Qal végi szövegkritikai megjegyzés
+P37	H5493	126	JSir 3:11	Lam 3:11	torzs: Qal; szám: 4; betű: (nincs)	torzs: Polel; szám: (nincs); betű: (nincs)	A=tabla,B=sefaria	torzs+szam	1	sefaria_helyes	Polel
+P38	H6976	1	1Krón 4:8	1Chr 4:8	a szócikk fejrésze: nincs számozott jelentéspont	torzs: (nincs); szám: 1; betű: (nincs)	A=sefaria,B=tabla	szam	1	sefaria_helyes	1.
+P39	H2029	57	1Móz 49:26	Gen 49:26	torzs: Qal; szám: (nincs); betű: (nincs)	torzs: Polel; szám: (nincs); betű: (nincs)	A=tabla,B=sefaria	torzs	2	egyik_sem	szócikk végi utalás
+P40	H8327	5	Jer 12:2	Jer 12:2	torzs: Poal; szám: (nincs); betű: (nincs)	torzs: Piel; szám: 2; betű: (nincs)	A=tabla,B=sefaria	torzs+szam	5	tabla_helyes	Po`al
