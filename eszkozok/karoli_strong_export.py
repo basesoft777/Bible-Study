@@ -77,6 +77,7 @@ KAROLI = 'konkordancia/Karoli_1908.tsv'
 F172_MERES = 'f172/meres_eredmeny.tsv'
 F172_KULSO = 'f172/kulso/kulso_eredmeny.tsv'
 F172_KERET = 'f172/keret.tsv'
+F172_OSSZEVETES = 'f172/kulso/osszevetes.tsv'     # a zárt kiadással való összevetés párjai, osztállyal
 F172_OSSZEVONT = 'f172/reteg_osszevont.tsv'      # a két Mózes-réteg egy rétegben (karoli_strong/reteg_osszevonas.py)
 
 # a belső `bizonyossag` mező (két modell egyezése) nem minősítés, nem kerül a nyilvános táblákba (2026-11-14); a
@@ -369,6 +370,15 @@ def szamok(konyvek, vsorok, msorok):
         N[kulcs + '_h3'], N[kulcs + '_h3_a'], N[kulcs + '_h3_f'] = s[4], s[5], s[6]
         N[kulcs + '_mi'] = int(s[2]) - int(s[3])
     N['kulso_fejezet'] = len([s for s in tsv(F172_KULSO)[1] if re.match(r'^\S+ \d+$', s.get('csoport', ''))])
+    # a zárt kiadással való összevetés kizárásai (a fejezetek tartalmi párjai, osztályonként; n_fo = egyezik +
+    # konvencio + elter, a többi osztály nem összevethető)
+    osztaly = [s.get('osztaly', '') for s in tsv(F172_OSSZEVETES)[1]]
+    N['k_osszes'] = len(osztaly)
+    N['k_nincs'] = osztaly.count('forrasban_nincs')
+    N['k_masod'] = osztaly.count('masodlagos')
+    N['k_forma'] = osztaly.count('szovegforma')
+    if N['k_osszes'] - N['k_nincs'] - N['k_masod'] - N['k_forma'] != N['k_n']:
+        raise SystemExit('szám: a zárt összevetés osztályai nem adják ki a fő-szó párok számát')
     # a keret: a mért párkészlet egyezik a csomagéval
     N['keret'] = int(_f172(F172_KERET, 'reteg', 'OSSZES')['parsor'])
     if N['keret'] != N['par']:
@@ -491,10 +501,10 @@ def kezirat(N):
     hu, en = fmt(N, 'hu'), fmt(N, 'en')
     # a szószám az angol beküldési szövegből (a jegyzetbe kerül; a jel előtti részt nem befolyásolja)
     sablon_en = [s for _, s, d in SZ.KEZIRAT if d == 'en'][0]
-    ures = dict(en, szo_fo='', szo_nyil='', szo_hiv='', szo_kiv='')
+    ures = dict(en, szo_fo='', szo_nyil='', szo_hiv='', szo_kiv='', szo_mind='')
     sz = szoszam(sablon_en.format(**ures))
     for F, nyelv in ((hu, 'hu'), (en, 'en')):
-        for k in ('fo', 'nyil', 'hiv', 'kiv'):
+        for k in ('fo', 'nyil', 'hiv', 'kiv', 'mind'):
             F['szo_' + k] = ezres(sz[k], nyelv)
     ki = {}
     for rel, sablon, d in SZ.KEZIRAT:
@@ -512,8 +522,15 @@ def szoszam(szoveg):
     """A JOHD-terjedelem szószáma az angol kéziratból (a VEGE_JEL előtti rész): 'fo' az 1–4. szakasz a címsorok és a
     táblázat nélkül (a sablon számítása: cím, szerzői sor, kivonat, táblázat, hivatkozások nélkül); 'nyil' ehhez a
     számozatlan nyilatkozatok; 'hiv' ehhez a hivatkozások is (a beküldési oldal szerint a korlát a hivatkozásokat is
-    tartalmazza); 'kiv' ehhez a kivonat is (a legszigorúbb olvasat)."""
+    tartalmazza); 'kiv' ehhez a kivonat is; 'mind' a „## Abstract” címtől a VEGE_JEL-ig minden szó, a címsorokkal,
+    a kulcsszavakkal, a szerzői szerepekkel és a táblázat celláival együtt (a JOHD: „All word limits include
+    referencing and citation”; a legszigorúbb olvasat)."""
     torzs = szoveg.split(VEGE_JEL)[0]
+    mind = 0
+    for sor in torzs[torzs.index('## Abstract'):].split('\n'):
+        if re.match(r'^\|[-| ]+\|$', sor):
+            continue
+        mind += len([t for t in sor.replace('|', ' ').split() if re.search(r'\w', t)])
     db = {'fo': 0, 'nyilatkozat': 0, 'hivatkozas': 0, 'kivonat': 0}
     resz = None
     for sor in torzs.split('\n'):
@@ -530,7 +547,7 @@ def szoszam(szoveg):
         db[resz] += len([t for t in sor.split() if re.search(r'\w', t)])
     return {'fo': db['fo'], 'nyil': db['fo'] + db['nyilatkozat'],
             'hiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas'],
-            'kiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas'] + db['kivonat']}
+            'kiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas'] + db['kivonat'], 'mind': mind}
 
 
 def note(N):

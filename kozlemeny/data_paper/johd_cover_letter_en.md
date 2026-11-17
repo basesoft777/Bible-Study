@@ -9,13 +9,14 @@ Editor-in-Chief, *Journal of Open Humanities Data*
 Dear Dr McGillivray,
 
 I am submitting the data paper "Word-by-word alignment of the 1908 Károli Bible with the Hebrew and Greek source text:
-an open dataset with measured accuracy" for consideration in the *Journal of Open Humanities Data*. Thank you for your
+an open dataset with measured pair precision" for consideration in the *Journal of Open Humanities Data*. Thank you for your
 earlier reply confirming that the topic fits the journal.
 
 **The dataset.** The paper describes an open word alignment of the 1908 Károli Bible, the classic Hungarian
 translation, with the Hebrew and Greek source text: 598,715 word pairs, each carrying the Strong's number of the source
-word. Accuracy is measured on a stratified random sample and by human validation; agreement with an independent,
-closed Strong-tagged edition is reported as a supplementary cross-check. It is deposited on Zenodo under CC BY 4.0:
+word. Pair precision is measured against a blind model reviewer on a stratified random sample[ and by human
+validation — keep only once the validation figures are filled in]; agreement with an independent, closed Strong-tagged
+edition is reported as a supplementary cross-check. It is deposited on Zenodo under CC BY 4.0:
 
 - Károli 1908 – Strong word alignment: https://doi.org/10.5281/zenodo.24141883
 - companion dataset, Modernised Károli – Strong (the same pairs on a modernised text, mentioned briefly in the paper):
@@ -29,8 +30,8 @@ funding for this work, so I am not able to pay the article processing charge. I 
 APC. Patrick Higgins of Ubiquity Press confirmed on 16 November 2026 that the waiver fund covers the full APC when the
 request is made with the submission.
 
-**Reviewers.** The two human validators named in the paper, [name of validator 1] and [name of validator 2], took part
-in the quality control of the dataset and should therefore not be invited as reviewers.
+**Reviewers.** The human validator(s) named in the paper, [name(s)], took part in the quality control of the dataset
+and should therefore not be invited as reviewers.
 
 **Use of AI.** Language models were used in producing and checking the dataset, and in drafting the manuscript; the AI
 Declaration of the paper states precisely what they did and what they did not do. I take full responsibility for the

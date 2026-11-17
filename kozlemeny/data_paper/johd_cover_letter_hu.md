@@ -9,13 +9,14 @@ főszerkesztő, *Journal of Open Humanities Data*
 Tisztelt Dr. McGillivray!
 
 Megfontolásra benyújtom a *Journal of Open Humanities Data* számára „Word-by-word alignment of the 1908 Károli Bible
-with the Hebrew and Greek source text: an open dataset with measured accuracy” című data paperemet. Köszönöm korábbi
+with the Hebrew and Greek source text: an open dataset with measured pair precision” című data paperemet. Köszönöm korábbi
 válaszát, amelyben megerősítette, hogy a téma illik a folyóirathoz.
 
 **Az adatkészlet.** A cikk a Károli-biblia, a klasszikus magyar fordítás 1908-as szövegének nyílt, szavankénti
 párosítását írja le a héber és görög eredetivel: 598 715 szópár, mindegyik az eredeti szó Strong-számával. A
-pontosságot rétegzett véletlen minta és emberi validáció méri; egy független, zárt Strong-számos kiadással való
-egyezés kiegészítő keresztellenőrzésként szerepel. A Zenodón áll, CC BY 4.0 licenccel:
+párprecizitást rétegzett véletlen mintán egy vak modell-ellenőr méri[, valamint emberi validáció — csak a validációs
+számok kitöltése után marad]; egy független, zárt Strong-számos kiadással való egyezés kiegészítő
+keresztellenőrzésként szerepel. A Zenodón áll, CC BY 4.0 licenccel:
 
 - Károli 1908 – Strong szóillesztés: https://doi.org/10.5281/zenodo.24141883
 - kísérő adatkészlet, Modernizált Károli – Strong (ugyanezek a párok a modernizált szövegen, a cikk röviden említi):
@@ -29,8 +30,8 @@ forrás nélkül, ezért a publikációs díjat nem tudom megfizetni. Kérem az 
 részéről Patrick Higgins 2026. november 16-án megerősítette, hogy a mentességi alap a teljes APC-t fedezi, ha a
 kérelem a beküldéssel együtt érkezik.
 
-**Bírálók.** A cikkben megnevezett két emberi ellenőr, [1. ellenőr neve] és [2. ellenőr neve], részt vett az
-adatkészlet minőség-ellenőrzésében, ezért nem kérhetők fel bírálónak.
+**Bírálók.** A cikkben megnevezett emberi ellenőr(ök), [név/nevek], részt vett(ek) az adatkészlet
+minőség-ellenőrzésében, ezért nem kérhető(k) fel bírálónak.
 
 **MI-használat.** Az adatkészlet előállításában és ellenőrzésében, valamint a kézirat megfogalmazásában nyelvi
 modellek dolgoztak; a cikk MI-nyilatkozata pontosan leírja, mit végeztek és mit nem. Az adatokért és a szövegért teljes
