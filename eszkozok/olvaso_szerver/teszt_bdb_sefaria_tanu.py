@@ -68,7 +68,7 @@ class Osszevet(unittest.TestCase):
 
 class Kapcsolo(unittest.TestCase):
     def test_alapbol_bekapcsolva(self):
-        # DT-F197b: a felhasználó döntése (2026-11-17, „legyen így”) a N-F197a mérése (DT776) alapján: a tanú bekapcsolva,
+        # DT892: a felhasználó döntése (2026-11-17, „legyen így”) a N-F197a mérése (DT776) alapján: a tanú bekapcsolva,
         # és a 2.29 generátora a teljes tanú-táblát olvassa
         self.assertTrue(V.SEFARIA_TANU)
         self.assertEqual(V.SEFARIA_TABLA, S.KI)
