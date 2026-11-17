@@ -10,7 +10,8 @@ Bemenet:
     a második külön sorban áll. Kappa csak két ítélőnél, a közös tételeken és a közös blokkon (`kozos` oszlop).
     A minta lehet a minimumváltozat is (kevesebb alapminta-pár, csali réteg: `reszminta` = csali, felismerési
     arány; a csali a becslésekbe nem számít);
-  * a minta: kozlemeny/data_paper/validacio/minta.tsv (a JSON `minta_hash`-ének egyeznie kell);
+  * a minta: a letétbeli minta.tsv és csalilista (`~/Bible-Study-letet/`; a repóbeli LEKOTES.md SHA-256-jával
+    ellenőrizve; a JSON `minta_hash`-ének egyeznie kell);
   * opcionálisan a harmadik döntés (`--dontes`): az előző futás `eltero_tetelek.tsv`-je
     kitöltött `dontes` oszloppal (helyes | hibas | bizonytalan);
   * opcionálisan a modell-ellenőr ítéletei:
@@ -60,7 +61,10 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 GYOKER = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 VALIDACIO = os.path.join(GYOKER, 'kozlemeny', 'data_paper', 'validacio')
-MINTA = os.path.join(VALIDACIO, 'minta.tsv')
+LETET_DIR = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet')   # a repón kívüli letét (DT-F175vh)
+MINTA = os.path.join(LETET_DIR, 'minta.tsv')
+LEKOTES = os.path.join(VALIDACIO, 'LEKOTES.md')
+CSALI_KUSZOB = 0.8   # ha egy ítélő a csalik 80%-ánál (20-ból 16-nál) kevesebbet ismer fel, a számai csak fenntartással
 F172_ITELET = os.path.join(GYOKER, 'f172', 'itelet_par.tsv')
 Z95 = 1.959963984540054
 ITELETEK = ('helyes', 'hibas', 'bizonytalan')
@@ -393,10 +397,11 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     else:
         sor.append('Két külső ellenőr; az eltérő tételeket harmadik döntés zárja le (a döntött minta).\n')
     for nev, v in ellenorok:
-        sor.append('- %s: %d / %d tétel (alapminta-pár %d, túlminta-pár %d, nehéz pár %d, pár nélküli %d, kimaradt-pár %d)' % (
+        sor.append('- %s: %d / %d tétel (alapminta-pár %d, túlminta-pár %d, nehéz pár %d, pár nélküli %d, kimaradt-pár %d, '
+                   'csali %d)' % (
             nev, len(v), len(minta), sum(tip[t] == 'par' and t in alap for t in v),
             sum(t in tul for t in v), sum(t in nehez for t in v),
-            sum(tip[t] == 'parnelkuli' for t in v), sum(tip[t] == 'kimaradt' for t in v)))
+            sum(tip[t] == 'parnelkuli' for t in v), sum(tip[t] == 'kimaradt' for t in v), sum(t in csali for t in v)))
     sor.append('')
 
     itelok = [(nev, {t: x['itelet'] for t, x in v.items()}) for nev, v in ellenorok]
@@ -407,6 +412,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     fo_nev, fo = itelok[-1] if (ket and not szerzoi) else itelok[0]
 
     sor.append('## 2. Párok: emberi pontosság\n')
+    sor.append('**Elsődleges szám:** a 2a alapminta-pontosság (%s), mellette mindig a konzervatív sor. A többi becslés '
+               'kiegészítő.\n' % fo_nev)
     sor.append('### 2a. Alapminta (%d pár, a keret arányos rétegzett mintája)\n' % len([t for t in alap if tip[t] == 'par']))
     sor.append('A „konzervatív” sor a bizonytalant hibásnak számolja.\n')
     sor.append(FEJ_P)
@@ -449,6 +456,11 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
                 p_, lo, hi = wilson(hb, n)
                 sor.append('| %s | %d | %d | %d | %d | %s | %s–%s |' % (cimke, hb + hl + bz, hb, hl, bz, szazalek(p_), szazalek(lo), szazalek(hi)))
         sor.append('')
+        for nev, it in itelok:
+            lista = [it[t] for t in it if t in csali]
+            if lista and lista.count('hibas') < CSALI_KUSZOB * len(csali):
+                sor.append('**Figyelem:** %s a csalik közül %d / %d-t ismert fel (a küszöb %d): a számai csak fenntartással '
+                           'közölhetők.\n' % (nev, lista.count('hibas'), len(csali), math.ceil(CSALI_KUSZOB * len(csali))))
     sor.append('Könyvcsoportonként (%s, alapminta; a csoportbecslések kis n-en állnak, rétegszintű szám nem közölhető):\n' % fo_nev)
     sor.append(FEJ_P)
     for cs in sorted({csop[t] for t in fo if tip[t] == 'par'}, key=_csoport_sorrend):
@@ -464,7 +476,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
     sor.append('')
     sor.append('Hibatípusok (a hibás páron, alapminta és túlminta, ellenőrönként): ' + '; '.join(
         '%s: %s' % (nev, ', '.join('%s %d' % (k, n) for k, n in sorted(_szamlal(
-            v[t].get('hibatipus') or '(nincs megadva)' for t in v if tip[t] == 'par' and v[t]['itelet'] == 'hibas').items())) or '–')
+            v[t].get('hibatipus') or '(nincs megadva)' for t in v
+            if tip[t] == 'par' and (t in alap or t in tul) and v[t]['itelet'] == 'hibas').items())) or '–')
         for nev, v in ellenorok) + '\n')
 
     sor.append('## 3. Pár nélküli szavak: kimaradási arány\n')
@@ -501,7 +514,8 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
         sor.append('## 4. A két ítélő egyezése (Cohen-kappa)\n')
         sor.append('| tételek | n | megfigyelt egyezés | kappa (3 kategória) | kappa (helyes/hibás; bizonytalan nélkül) | PABAK (helyes/hibás) |')
         sor.append('|---|---|---|---|---|---|')
-        for cimke, szuro in (('összes közös tétel', lambda t: True), ('a közös blokk', lambda t: t in kozos_blokk),
+        for cimke, szuro in (('összes közös tétel (csalik nélkül)', lambda t: t not in csali),
+                             ('a közös blokk (csalik nélkül)', lambda t: t in kozos_blokk and t not in csali),
                              ('párok, alapminta', lambda t: tip[t] == 'par' and t in alap),
                              ('párok, a #172 eltérései', lambda t: tip[t] == 'par' and t in elter),
                              ('párok, nehéz réteg', lambda t: t in nehez),
@@ -575,7 +589,22 @@ def _csoport_sorrend(cs):
     return _SORREND.index(cs) if cs in _SORREND else len(_SORREND)
 
 
-LETET_ALAP = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'F175V_csalik.tsv')
+LETET_ALAP = os.path.join(LETET_DIR, 'F175V_csalik.tsv')
+
+
+def lekotes_ellenoriz(ut, fn):
+    """A letétfájl SHA-256-ja egyezik-e a repóbeli nyilvános lekötéssel (LEKOTES.md); eltérésnél leáll."""
+    if not os.path.exists(LEKOTES) or not os.path.exists(ut):
+        return
+    import hashlib
+    with open(LEKOTES, encoding='utf-8') as f:
+        for sor in f:
+            m = re.match(r'^\| `([^`]+)` \| `([0-9a-f]{64})` \|', sor)
+            if m and m.group(1) == fn:
+                with open(ut, 'rb') as g:
+                    h = hashlib.sha256(g.read()).hexdigest()
+                if h != m.group(2):
+                    raise SystemExit('a letétbeli %s SHA-256-ja (%s) nem egyezik a nyilvános lekötéssel (%s)' % (fn, h, m.group(2)))
 
 
 def csali_hozzaad(minta_ut, minta, letet_ut):
@@ -653,6 +682,8 @@ def main():
     ap.add_argument('--kulso', type=int, choices=(1, 2),
                     help='a hányadik válaszfájl a külső (független) ellenőré; a fő szám ebből jön, a másik ítélő '
                          'külön sorban áll, döntnök nincs')
+    ap.add_argument('--ket-kulso', action='store_true',
+                    help='két független külső ellenőr: az eltéréseket harmadik döntés zárja le (--dontes)')
     ap.add_argument('--masodik', default='hozzátartozó',
                     help='a nem független második ítélő jelölése --kulso mellett (alapértelmezés: hozzátartozó)')
     ap.add_argument('--szerzo', type=int, choices=(1, 2),
@@ -665,6 +696,13 @@ def main():
     ap.add_argument('--kimenet', default=os.path.join(VALIDACIO, 'eredmeny'))
     a = ap.parse_args()
 
+    if not os.path.exists(a.minta):
+        raise SystemExit('nincs meg a minta: %s (a letétben; másik helyről: --minta)' % a.minta)
+    # a nyilvános lekötés a letétbeli fájlokra szól (más --minta, pl. próbaminta, nem ellenőrizhető vele)
+    if os.path.abspath(a.minta) == os.path.abspath(MINTA):
+        lekotes_ellenoriz(a.minta, 'minta.tsv')
+    if not a.csali_nelkul and os.path.abspath(a.csali) == os.path.abspath(LETET_ALAP):
+        lekotes_ellenoriz(a.csali, 'F175V_csalik.tsv')
     _, minta = tabla(a.minta)
     minta = csali_hozzaad(a.minta, minta, None if a.csali_nelkul else a.csali)
     if a.modell_bemenet:
@@ -680,6 +718,9 @@ def main():
         a.kulso, a.masodik = 3 - a.szerzo, 'szerző'
     if a.kulso and a.kulso > len(a.valaszok):
         raise SystemExit('--kulso %d, de csak %d válaszfájl van' % (a.kulso, len(a.valaszok)))
+    if len(a.valaszok) == 2 and not a.kulso and not a.ket_kulso:
+        raise SystemExit('két válaszfájlnál meg kell mondani a felállást: --kulso 1|2 (külső + nem független második '
+                         'ítélő, döntnök nélkül) vagy --ket-kulso (két független külső ellenőr, harmadik döntéssel)')
     szerzoi = bool(a.kulso) and len(a.valaszok) == 2   # nem független második ítélő: döntnök nincs
     if a.dontes and (szerzoi or len(a.valaszok) == 1):
         raise SystemExit('harmadik döntés csak két külső ellenőrnél van (nem független második ítélőnél nincs döntnök)')

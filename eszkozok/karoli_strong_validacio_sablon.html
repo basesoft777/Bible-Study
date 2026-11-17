@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="hu">
 <head>
-<!-- GENERÁLT sablonból: eszkozok/karoli_strong_validacio_sablon.html + kozlemeny/data_paper/validacio/minta.tsv;
+<!-- GENERÁLT sablonból: eszkozok/karoli_strong_validacio_sablon.html + a letétbeli minta.tsv és csalilista;
      előállítás: python eszkozok/karoli_strong_validacio_minta.py — a kész oldalt kézzel szerkeszteni tilos;
      a sablon önmagában (adat nélkül) nem működőképes oldal -->
 
@@ -134,7 +134,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
   <section id="s-indul" class="rejtett">
     <h1>Károli 1908 – Strong szópárosítás: emberi ellenőrzés</h1>
     <div class="card">
-      <p>A Károli-biblia 1908-as szövegének szavait egy nyelvi modell párosította a héber és görög eredetivel (Strong-számokkal; nyílt adat, doi:10.5281/zenodo.24141883). A pontosságot eddig gép mérte; most két független teológus szúrópróbája jön, és az eredmény a <i>Journal of Open Humanities Data</i>-ba készülő cikkbe kerül. A részleteket az <i>UTMUTATO.md</i> írja le. A munka kb. 4 óra 10 perc, több részletben is végezhető.</p>
+      <p>A Károli-biblia 1908-as szövegének szavait egy nyelvi modell párosította a héber és görög eredetivel (Strong-számokkal; nyílt adat, doi:10.5281/zenodo.24141883). A pontosságot eddig gép mérte; most két független teológus szúrópróbája jön, és az eredmény a <i>Journal of Open Humanities Data</i>-ba készülő cikkbe kerül. A részleteket az <i>UTMUTATO.md</i> írja le. A munka kb. 4–6 óra, több részletben is végezhető.</p>
       <div class="kivonat">
         <p><b>Egyetlen kérdés:</b> ha Károli mondatában rá kellene mutatnod a kiemelt eredeti szó párjára, a gép által kiemelt magyar szóra mutatnál?</p>
         <p><b>A gép párját ítéled meg,</b> nem Károli szövegének minőségét; a Károli szövegéről szóló észrevételnek külön jelölő van.</p>
@@ -256,7 +256,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 <script>
 "use strict";
 var MINTA = /*MINTA_ADAT*/null;
-var VERZIO = "F175.V13";
+var VERZIO = "F175.V15";
 
 /* ---------- segédek ---------- */
 function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
@@ -388,10 +388,10 @@ function rajzol() {
   var kj = $("t-kifejezes"); kj.textContent = "";
   if (t.tipus === "par" && t.tsz) {
     var kf = kifejezes("hu", t.hn);
-    kj.append("Ez a szó több szóval együtt alkot egy kifejezést: ",
+    kj.append("A gép szerint ehhez a forrásszóhoz több magyar szó is tartozik: ",
       el("b", null, kf.hu.sort(function (a, b) { return a - b; }).map(function (h) { return hu_szo(t, h); }).join(" ")), " ↔ ",
       el("b", { "class": nyelv_cls }, kf.er.sort(function (a, b) { return a - b; }).map(function (e) { return t.tok[e - 1].a; }).join(" ")),
-      ". A kifejezés minden tagjával alkotott pár helyes; hiba, ha a pár a kifejezésen kívüli szóra mutat, vagy egy tagja olyan szóhoz került, amelyhez nem tartozik.");
+      ". Ítéld meg, hogy a kiemelt szó valóban közéjük tartozik-e.");
   }
   kj.classList.toggle("rejtett", !(t.tipus === "par" && t.tsz));
   ["helyes", "hibas", "bizonytalan"].forEach(function (x) { $("b-" + x).classList.toggle("on", v.itelet === x); });

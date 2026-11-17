@@ -65,6 +65,10 @@ class Statisztika(unittest.TestCase):
         self.assertEqual(d, {'x': 4, 'y': 3, 'z': 3})
 
 
+VAN_LETET = os.path.exists(ki.MINTA)
+
+
+@unittest.skipUnless(VAN_LETET, 'a minta a repón kívüli letétben van (DT-F175vh)')
 class Minta(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -74,12 +78,14 @@ class Minta(unittest.TestCase):
         par = [r for r in self.minta if r['tipus'] == 'par']
         nelkul = [r for r in self.minta if r['tipus'] == 'parnelkuli']
         self.assertEqual(len([r for r in par if r['reszminta'] == 'alap']), 300)
-        self.assertEqual(len([r for r in par if r['reszminta'] == 'tulminta']), 60)
+        self.assertEqual(len([r for r in par if r['reszminta'] == 'tulminta']),
+                         72 - len([r for r in par if r['reszminta'] == 'alap' and r['elteres'] == '1']))
         self.assertEqual(len([r for r in par if r['elteres'] == '1']), 72)   # a #172 összes modell-eltérése
         self.assertEqual(len(nelkul), 80)
         self.assertEqual(len([r for r in par if r['reszminta'] == 'nehez']), 45)
         self.assertEqual(len([r for r in self.minta if r['tipus'] == 'kimaradt']), 55)
-        self.assertEqual(len({r['tetel_id'] for r in self.minta}), 540)
+        self.assertEqual(len({r['tetel_id'] for r in self.minta}), len(self.minta))
+        self.assertNotIn('csali', {r['reszminta'] for r in self.minta})   # a csalik külön, a letétben
         self.assertEqual(len({r['csoport'] for r in par}), 7)
         self.assertEqual(len({r['csoport'] for r in nelkul}), 7)
         self.assertTrue(all(r['f172_id'] for r in par if r['reszminta'] in ('alap', 'tulminta')))
@@ -91,11 +97,25 @@ class Minta(unittest.TestCase):
                 tok = json.loads(r['er_tokenek_json'])
                 self.assertEqual(tok[int(r['er_sorszam']) - 1]['a'], r['er_szo'], r['tetel_id'])
 
+    def test_utmutato_peldai_mintan_kivul(self):
+        # az útmutató egyetlen példaverse sem szerepelhet a mintában vagy a csalik között (K1)
+        import re
+        versek = {r['vers'] for r in self.minta}
+        if os.path.exists(ki.LETET_ALAP):
+            _, cs = ki.tabla(ki.LETET_ALAP)
+            versek |= {r['vers'] for r in cs}
+        with open(os.path.join(ki.VALIDACIO, 'UTMUTATO.md'), encoding='utf-8') as f:
+            szoveg = f.read()
+        hivatkozott = set(re.findall(r'(\d?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,6} \d+:\d+)', szoveg))
+        self.assertGreater(len(hivatkozott), 5)
+        self.assertEqual(sorted(hivatkozott & versek), [])
+
     def test_hash_fnv(self):
         # a JS-oldali FNV-1a (UTF-16 kódegységeken) Python-mása; az oldal értékével az Oldal-teszt veti össze
         self.assertEqual(len(ki.minta_hash(self.minta)), 8)
 
 
+@unittest.skipUnless(VAN_LETET, 'a minta a repón kívüli letétben van (DT-F175vh)')
 class Kiertekeles(unittest.TestCase):
     """Végponttól végpontig, kitalált ítéletekkel."""
 
@@ -141,7 +161,8 @@ class Kiertekeles(unittest.TestCase):
 
     def _fut(self, *extra, fajlok=None):
         ki_dir = os.path.join(self.tmp, 'ki_%d_%d' % (len(extra), len(fajlok or [1, 2])))
-        r = subprocess.run([sys.executable, SZKRIPT] + (fajlok or [self.fa, self.fb]) + ['--kimenet', ki_dir, '--csali-nelkul'] + list(extra),
+        felallas = [] if (fajlok and len(fajlok) == 1) or any(x in extra for x in ('--kulso', '--szerzo')) else ['--ket-kulso']
+        r = subprocess.run([sys.executable, SZKRIPT] + (fajlok or [self.fa, self.fb]) + ['--kimenet', ki_dir, '--csali-nelkul'] + felallas + list(extra),
                            capture_output=True, text=True, encoding='utf-8')
         self.assertEqual(r.returncode, 0, r.stderr)
         with open(os.path.join(ki_dir, 'kiertekeles.md'), encoding='utf-8') as f:
@@ -222,7 +243,7 @@ class Kiertekeles(unittest.TestCase):
         i_b = md.index('| B (Teszt B, külső) | 300 |')
         i_a = md.index('| A (Teszt A, hozzátartozó) | 300 |')
         self.assertLess(i_b, i_a)
-        self.assertIn('| a közös blokk | 300 |', md)   # kappa a közös blokkon
+        self.assertIn('| a közös blokk (csalik nélkül) | 300 |', md)   # kappa a közös blokkon, csalik nélkül
         self.assertEqual(len(elt), 8)
 
     def test_minimumvaltozat_csalival(self):
@@ -247,7 +268,9 @@ class Kiertekeles(unittest.TestCase):
         md, _, _ = self._fut('--minta', ut, fajlok=[fa])
         self.assertIn('2d. Csalik', md)
         self.assertIn('| A (Min A) | 10 | 9 | 1 | 0 | 90.00%', md)
-        self.assertIn('| A (Min A) | 200 | 200 | 0 | 0 | 100.00%', md)   # a csali nem számít az alapmintába
+        self.assertNotIn('a küszöb', md)   # 9/10 a 80%-os küszöb fölött van
+        n_alap = sum(1 for r in uj if r['reszminta'] == 'alap')
+        self.assertIn('| A (Min A) | %d | %d | 0 | 0 | 100.00%%' % (n_alap, n_alap), md)   # a csali nem számít az alapmintába
         self.assertIn('Ebben a mintában nincs nehéz réteg.', md)
 
     def test_csali_letetbol(self):
@@ -310,7 +333,7 @@ class Kiertekeles(unittest.TestCase):
         d['minta_hash'] = '0'
         with open(rossz, 'w', encoding='utf-8') as f:
             json.dump(d, f)
-        r = subprocess.run([sys.executable, SZKRIPT, rossz, self.fb, '--csali-nelkul', '--kimenet', os.path.join(self.tmp, 'x')],
+        r = subprocess.run([sys.executable, SZKRIPT, rossz, self.fb, '--csali-nelkul', '--ket-kulso', '--kimenet', os.path.join(self.tmp, 'x')],
                            capture_output=True, text=True, encoding='utf-8')
         self.assertNotEqual(r.returncode, 0)
 
