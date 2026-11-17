@@ -1,0 +1,19 @@
+# MANUAL: scope=F175K a Strong-réteg forrásoldali ellenőrzése a KJV-val (TAHOT/TAGNT vs KJV Strong-címkék, versenként, szóhalmaz-szinten; a párosítást nem méri) | forras=konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/KJV_Strongs_teljes.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, nyilt_karoli_strong/data (Zenodo 1.0) @ git:2da9d452 | ts=git:2da9d452 | manual (determinisztikus szkript: eszkozok/karoli_strong/forras_kjv_ellenorzes.py; egységek, ahol a KJV Strongjainak < 50%-a van meg a forrásban (KJV-Strongok >= 4; konvenció-normált): a versszámozási eltolás / versösszevonás jelölt-helyei; nincs szöveges Károli-tartalom)
+igehely_karoli	igehely_kjv	forras_db	kjv_db	kozos_db	kozos_per_kjv	kapcsolt_arva_kjv_vers	tobb_karoli_vers
+Józs 8:29	Józs 8:29	27	70	21	0.3000	6	0
+1Sám 17:11	1Sám 17:11	11	116	9	0.0776	20	0
+1Sám 17:54	1Sám 17:54	10	33	9	0.2727	4	0
+1Sám 18:9	1Sám 18:9	8	23	5	0.2174	2	0
+1Sám 18:16	1Sám 18:16	11	28	7	0.2500	3	0
+1Sám 18:29	1Sám 18:29	11	16	7	0.4375	1	0
+1Kir 6:10	1Kir 6:10	12	30	9	0.3000	4	0
+1Kir 6:17	1Kir 6:17	7	13	4	0.3077	1	0
+1Kir 6:36	1Kir 6:36	9	23	8	0.3478	2	0
+1Kir 18:33	1Kir 18:33	7	12	5	0.4167	0	0
+Jób 38:38	Jób 38:38	5	26	5	0.1923	3	0
+Péld 18:22	Péld 18:22	6	19	6	0.3158	2	0
+Préd 8:15	Préd 8:15	22	33	15	0.4545	2	0
+Préd 11:8	Préd 11:8	15	28	10	0.3571	2	0
+Jer 33:13	Jer 33:13	17	85	15	0.1765	13	0
+Jer 48:44	Jer 48:44	17	42	14	0.3333	3	0
+Mt 15:6	Mt 15:6	8	13	6	0.4615	0	0
