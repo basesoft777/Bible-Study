@@ -1,38 +1,40 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""F175.V27 — konvenció-egységesítés: a Károli 1908 – Strong párosítás 1.1-es állapotának törlőlistája.
+"""F175.V28 — konvenció-egységesítés: a Károli 1908 – Strong párosítás 1.1-es állapotának törlőlistája.
 
-A döntés: DT-F175vr (dontesek/uj/johd-validacio-70cc1f.md). A párosítási prompt (`f21p/prompt_v3.md`) A szabálya
-szerint a héber határozott névelő (H9009) és a görög névelő (G3588) `forditatlan`, kivéve a névmási szerepet; a C
-szabály szerint a tárgyjelölő ʾet (H0853) `forditatlan`. A 2. szabályt (a H9xxx előtag a ragos magyar szóhoz
-tartozik) a párosító modell a névelőre is alkalmazta. Az 1.1 a validáció előtt ezeket a kapcsolatokat törli.
+A döntés: DT-F175vr (dontesek/uj/johd-validacio-70cc1f.md; a végleges módszer). A párosítási prompt
+(`f21p/prompt_v3.md`) A szabálya szerint a héber határozott névelő (H9009) és a görög névelő (G3588) `forditatlan`,
+kivéve a névmási szerepet; a C szabály szerint a tárgyjelölő ʾet (H0853) `forditatlan`. A 2. szabályt (a H9xxx előtag a
+ragos magyar szóhoz tartozik) a párosító modell a névelőre is alkalmazta. Az 1.1 a validáció előtt ezeket a
+kapcsolatokat törli.
 
-A szabály (determinisztikus, a pár rögzített jegyeiből: a pár Strong-száma, a magyar szó, és az utána álló magyar
-szó ugyanabban a versben):
-  * törlődik minden `parok_*.tsv`-sor, amelynek `strong`-ja H9009, G3588 vagy H0853, és a magyar szava
-    (kisbetűsítve) nincs a megtartó listán;
-  * a megtartó lista négy csoportja (`megtartas_oka`):
-      - `nevmas`: névmás, mutató és vonatkozó szó (NEVMAS), a „ma”, „mai” időmutatóval;
-      - `a_vonatkozo`: az „a” szó, ha utána vonatkozó névmás áll (a ki, a mely, a mi …; az „a” a kettéírt
-        vonatkozó névmás része, prompt_v3 B);
-      - `onallo_az`: az önálló „az” (a prompt_v3 A szabálya szerint az „önálló az” jelentés névmási szerep;
-        a névelői „az”-tól a pár jegyeiből nem választható el, ezért marad, és az ismert-hiba listára kerül);
-      - `megszolito`: a megszólító névelő „óh” fordítása (pl. Bír 16:28).
+A szabály (egyetlen gépi kritérium, a pár rögzített jegyeiből: Strong-szám, magyar szó, a versben előtte és utána álló
+magyar szó, a köztük álló írásjel):
+  1. névelő (H9009, G3588): a kapcsolat csak akkor marad, ha a magyar szó (kisbetűsítve) névmás — zárt szólista
+     (NEVMAS: vonatkozó, mutató, személyes, kérdő és határozatlan névmások ragos alakjaikkal; csak főnévi és
+     melléknévi névmás, névmási határozószó nem), vagy az „a”, ha utána vonatkozó névmás áll (VONATKOZO: a ki, a mely,
+     a mi …; az „a” a kettéírt vonatkozó névmás része, prompt_v3 B);
+  2. szűrők: (a) a ragozatlan „ki” csak akkor marad, ha közvetlenül „a” előzi meg (különben igekötő lehet);
+     (b) az önálló „az” marad, ha utána mássalhangzóval kezdődő szó, írásjel, versvég, vagy „a”/„az” áll; magánhangzóval
+     kezdődő szó előtt törlődik (névelőként kezelve);
+  3. ʾet (H0853): minden kapcsolata törlődik;
+  4. egyetlen-pár védelem nincs: ha a magyar szó pár nélkül marad, az ismert kimaradás.
 Csak törlő javítás: új pár nem keletkezik, a megmaradó `parok`-sorok bájtra változatlanok. A `szavak_*.tsv`-ben a
 két érintett token partnerlistája szűkül; ha üres lesz, a magyar token `betoldas`, az eredeti `forditatlan` lesz; a
 magyar token `strong` mezője a megmaradó partnerekből vezetődik le (mint az `egyesit.py`-ban); a token
-`bizonyossag` és `forras` mezője változatlan (a két modell döntését írja le, nem a takarítást).
+`bizonyossag` és `forras` mezője változatlan (a két modell döntését írja le, nem a takarítást). A szabály idempotens:
+az 1.1-re futtatva a törlőlista üres.
 
-Módok:
-  --felmeres [--letet DIR]  gyakorisági tábla a törlendő kapcsolatok magyar szavairól (típusonként, Strong-számonként),
-                            a megtartott kapcsolatok táblája, a 95%-ot lefedő típusokon kívüli maradékból 50 véletlen
-                            tétel versszöveggel (rögzített mag), és egy összefoglaló; MIND a repón kívüli letétbe
-                            (alapértelmezés: ~/Bible-Study-letet/konvencio_11/), mert a validátorok nem láthatják
-  --general DIR             az 1.1 `parok_*.tsv` és `szavak_*.tsv` táblái DIR-be, a törlőlistával
-                            (`torolt_kapcsolatok.tsv`) és az ismert-hiba listával (`ismert_hiba_onallo_az.tsv`);
-                            utána lefut az --ellenoriz
-  --ellenoriz DIR           egy előállított 1.1 ellenőrzése az 1.0-hoz képest: a párok részhalmaz, minden megmaradó
-                            sor bájtra azonos, a törölt sorok pontosan a törlőlista, a szótábla konzisztens
+Módok (az `--alap DIR` a bemenő 1.0 táblák helye, alapértelmezés: adat/karoli_strong):
+  --felmeres [--letet DIR]  a felhasználó szúrópróbájához, MIND a repón kívüli letétbe (alapértelmezés:
+                            ~/Bible-Study-letet/konvencio_11_szuro/; meglévő, eltérő tartalmú fájlt nem ír felül):
+                            a megtartott és a törölt kapcsolatok magyar szótípusai darabszámmal, az ismert kimaradások
+                            könyvcsoportonként, a magánhangzó előtt törölt „az”-ok listája versszöveggel, összefoglaló
+  --general DIR             az 1.1 `parok_*.tsv` és `szavak_*.tsv` táblái DIR-be (DIR ≠ --alap); utána --ellenoriz
+  --torolt-ki DIR           a törlőlista (`torolt_kapcsolatok.tsv`) DIR-be (a letétbe; felülírás nélkül)
+  --ellenoriz DIR           egy előállított 1.1 ellenőrzése az --alap 1.0-hoz képest: a párok részhalmaz, minden
+                            megmaradó sor bájtra azonos, a törölt sorok pontosan a törlőlista, minden megmaradó
+                            névelő-pár megfelel a szabálynak, 0 ʾet-pár, a szótábla konzisztens
   --hash                    a törlőlista SHA-256-ja (a kanonikus `torolt_kapcsolatok.tsv` bájtjain)
 
 TSV-olvasás `split('\\t')`, írás `'\\t'.join()` (a `csv` modul tilos, CLAUDE.md).
@@ -42,8 +44,11 @@ import collections
 import glob
 import hashlib
 import os
-import random
 import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import tokenek  # noqa: E402  (a Károli-tokenizálás: ugyanaz a sorszám, mint a szótáblában)
+from pontossag_minta import CSOPORT  # noqa: E402  (fájlnév-könyv -> könyvcsoport)
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -51,16 +56,17 @@ if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
 GYOKER = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-FORRAS = os.path.join(GYOKER, 'adat', 'karoli_strong')
+ALAP = os.path.join(GYOKER, 'adat', 'karoli_strong')
 KAROLI = os.path.join(GYOKER, 'konkordancia', 'Karoli_1908.tsv')
-LETET = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'konvencio_11')
+LETET = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'konvencio_11_szuro')
 
-CEL_STRONG = ('H0853', 'G3588', 'H9009')
-MAG = 'F175.V27 konvencio-egysegesites'
-LEFEDES = 0.95
-MARADEK_DB = 50
+NEVELO = ('G3588', 'H9009')
+ET = 'H0853'
+CEL_STRONG = (ET,) + NEVELO
+MAGANHANGZO = frozenset('aáeéiíoóöőuúüű')
 
-# --- a megtartó lista (rögzített; a változtatás a törlőlista hash-ét is változtatja) ---------------------------
+# --- a névmáslista (rögzített; a változtatás a törlőlista hash-ét is változtatja) ---------------------------------
+# Csak főnévi és melléknévi névmás; névmási határozószó nem (DT-F175vr).
 _KI = ('ki kik kit kiket kinek kiknek kiben kikben kinél kiknél kitől kiktől kihez kikhez kivel kikkel kié kiké '
        'kiért kikért kiből kikből kire kikre kiről kikről kin kiken')
 _MELY = ('mely melyek melyet melyeket melynek melyeknek melyben melyekben melynél melyeknél melytől melyektől '
@@ -80,30 +86,41 @@ _SZEMELYES = ('én engem nékem te téged néked ő őt néki őnéki ők őket 
               'övé övéi vele velök velem veled velünk veletek tőle tőlök tőlem hozzá hozzájok érette érettök róla '
               'rajta benne bennök belőle')
 _HATAROZATLAN = 'némelyek némelyeket mások'
-_IDO = 'ma mai'
 
 VONATKOZO = frozenset((_KI + ' ' + _MELY + ' ' + _MI).split())
 NEVMAS = frozenset(' '.join((_KI, _MELY, _MI, _A_ELOTAGU, _VALA, _EZ, _AZ, _AMA, _UGYAN, _ILYEN, _SZEMELYES,
-                             _HATAROZATLAN, _IDO)).split())
-MEGSZOLITO = frozenset(('óh', 'oh', 'ó'))
-ONALLO_AZ = 'az'
+                             _HATAROZATLAN)).split())
 
 TORLO_FEJ = ['vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'er_szo', 'strong']
 
 
-def megtartas_oka(hu_szo, kovetkezo):
-    """A pár megtartásának oka, vagy None (= törlendő). Csak a CEL_STRONG párjaira hívandó."""
+def dontes(strong, hu_szo, elozo, kovetkezo, koztes):
+    """(megtartás oka | None, törlés oka | None) egy CEL_STRONG-párra.
+
+    elozo / kovetkezo: a versben előtte / utána álló magyar token (None: versvég/-kezdet); koztes: a magyar szó és a
+    következő token közti szöveg (írásjel-vizsgálathoz)."""
+    if strong == ET:
+        return None, 'et'
     s = hu_szo.lower()
+    e = (elozo or '').lower()
     k = (kovetkezo or '').lower()
-    if s in MEGSZOLITO:
-        return 'megszolito'
-    if s == ONALLO_AZ:
-        return 'onallo_az'
-    if s == 'a' and k in VONATKOZO:
-        return 'a_vonatkozo'
+    if s == 'az':
+        if kovetkezo is None:
+            return 'az_versveg', None
+        if koztes.strip():
+            return 'az_irasjel_elott', None
+        if k in ('a', 'az'):
+            return 'az_nevelo_elott', None
+        if k[:1] not in MAGANHANGZO:
+            return 'az_massalhangzo_elott', None
+        return None, 'az_maganhangzo_elott'
+    if s == 'a':
+        return ('a_vonatkozo', None) if k in VONATKOZO else (None, 'nem_nevmas')
+    if s == 'ki':
+        return ('nevmas', None) if e == 'a' else (None, 'ki_a_nelkul')
     if s in NEVMAS:
-        return 'nevmas'
-    return None
+        return 'nevmas', None
+    return None, 'nem_nevmas'
 
 
 def tabla_olvas(ut):
@@ -119,62 +136,86 @@ def tabla_olvas(ut):
     return nyers[0], fej, [s.split('\t') for s in adat], adat
 
 
-def konyvek():
+def konyvek(alap):
     """A könyvek nevei (a fájlnév `parok_` utáni része), rendezve."""
-    nevek = sorted(os.path.basename(p)[len('parok_'):-len('.tsv')] for p in glob.glob(os.path.join(FORRAS, 'parok_*.tsv')))
+    nevek = sorted(os.path.basename(p)[len('parok_'):-len('.tsv')] for p in glob.glob(os.path.join(alap, 'parok_*.tsv')))
     if not nevek:
-        raise SystemExit('nincs parok_*.tsv: %s' % FORRAS)
+        raise SystemExit('nincs parok_*.tsv: %s' % alap)
     for n in nevek:
-        if not os.path.exists(os.path.join(FORRAS, 'szavak_%s.tsv' % n)):
+        if not os.path.exists(os.path.join(alap, 'szavak_%s.tsv' % n)):
             raise SystemExit('hiányzó szavak_%s.tsv' % n)
     return nevek
 
 
-def konyv_dontes(konyv):
-    """Egy könyv párjai a döntéssel: [(sor, nyers, ok|None|'nem_cel')], a szótábla és a hu-tokenek."""
-    _, pfej, psorok, pnyers = tabla_olvas(os.path.join(FORRAS, 'parok_%s.tsv' % konyv))
-    _, sfej, ssorok, _ = tabla_olvas(os.path.join(FORRAS, 'szavak_%s.tsv' % konyv))
+_KAROLI = {}
+
+
+def karoli_versek():
+    if not _KAROLI:
+        with open(KAROLI, encoding='utf-8') as f:
+            for i, sor in enumerate(f):
+                if i == 0:
+                    continue
+                m = sor.rstrip('\n').split('\t')
+                if len(m) >= 2:
+                    _KAROLI[m[0]] = m[1]
+    return _KAROLI
+
+
+def vers_tokenek(vers):
+    """[(token, kezdet, vég)] a Károli-versből, a szótábla sorszámozásával (index + 1)."""
+    return [(m.group(0), m.start(), m.end()) for m in tokenek._TOKEN.finditer(karoli_versek()[vers])]
+
+
+def konyv_dontes(alap, konyv):
+    """Egy könyv párjai a döntéssel: [(sor, nyers, (megtart, torol) | None)] és a pár környezete (előző, következő)."""
+    _, pfej, psorok, pnyers = tabla_olvas(os.path.join(alap, 'parok_%s.tsv' % konyv))
     pi = {k: i for i, k in enumerate(pfej)}
-    si = {k: i for i, k in enumerate(sfej)}
-    hu = {}
-    for r in ssorok:
-        if r[si['oldal']] == 'hu':
-            hu[(r[si['vers']], int(r[si['sorszam']]))] = r[si['szo']]
+    tok = {}
     ki = []
     for r, ny in zip(psorok, pnyers):
-        if r[pi['strong']] not in CEL_STRONG:
-            ki.append((r, ny, 'nem_cel'))
+        st = r[pi['strong']]
+        if st not in CEL_STRONG:
+            ki.append((r, ny, None, None))
             continue
-        kov = hu.get((r[pi['vers']], int(r[pi['hu_sorszam']]) + 1))
-        ki.append((r, ny, megtartas_oka(r[pi['hu_szo']], kov)))
-    return pi, ki, hu
+        v = r[pi['vers']]
+        if v not in tok:
+            tok[v] = vers_tokenek(v)
+        t = tok[v]
+        h = int(r[pi['hu_sorszam']])
+        if h > len(t) or t[h - 1][0] != r[pi['hu_szo']]:
+            raise SystemExit('a Károli-token eltér a pártáblától: %s %d %s' % (v, h, r[pi['hu_szo']]))
+        elozo = t[h - 2][0] if h >= 2 else None
+        kov = t[h][0] if h < len(t) else None
+        koztes = karoli_versek()[v][t[h - 1][2]:t[h][1]] if h < len(t) else ''
+        ki.append((r, ny, dontes(st, r[pi['hu_szo']], elozo, kov, koztes), (elozo or '', kov or '')))
+    return pi, ki
 
 
-def torlolista():
-    """A törlőlista sorai (TORLO_FEJ szerint) könyv- és fájlsorrendben, a megtartott sorok az okkal."""
+def torlolista(alap=ALAP):
+    """(törlendő sorok, megtartott sorok): TORLO_FEJ + [ok, előző, következő, könyv], könyv- és fájlsorrendben."""
     torol, megtart = [], []
-    for kv in konyvek():
-        pi, dontesek, hu = konyv_dontes(kv)
-        for r, _, ok in dontesek:
-            if ok == 'nem_cel':
+    for kv in konyvek(alap):
+        pi, dontesek = konyv_dontes(alap, kv)
+        for r, _, d, kor in dontesek:
+            if d is None:
                 continue
             sor = [r[pi['vers']], r[pi['hu_sorszam']], r[pi['hu_szo']], r[pi['er_sorszam']], r[pi['er_szo']],
                    r[pi['strong']]]
-            if ok is None:
-                torol.append(sor)
+            if d[0] is None:
+                torol.append(sor + [d[1], kor[0], kor[1], kv])
             else:
-                kov = hu.get((r[pi['vers']], int(r[pi['hu_sorszam']]) + 1), '')
-                megtart.append(sor + [ok, kov, kv])
+                megtart.append(sor + [d[0], kor[0], kor[1], kv])
     return torol, megtart
 
 
 def torlolista_bajtok(torol):
-    return ('\t'.join(TORLO_FEJ) + '\n' + ''.join('\t'.join(s) + '\n' for s in torol)).encode('utf-8')
+    return ('\t'.join(TORLO_FEJ) + '\n' + ''.join('\t'.join(s[:6]) + '\n' for s in torol)).encode('utf-8')
 
 
-def torlolista_hash(torol=None):
+def torlolista_hash(torol=None, alap=ALAP):
     if torol is None:
-        torol, _ = torlolista()
+        torol, _ = torlolista(alap)
     return hashlib.sha256(torlolista_bajtok(torol)).hexdigest()
 
 
@@ -224,49 +265,44 @@ def szavak_szukit(sfej, ssorok, torolt):
     return uj
 
 
-def general(cel):
+def general(cel, alap=ALAP):
+    if os.path.abspath(cel) == os.path.abspath(alap):
+        raise SystemExit('a cél nem lehet a bemenet (előbb ideiglenes könyvtárba, ellenőrzés, utána másolás)')
     os.makedirs(cel, exist_ok=True)
-    torol_mind, megtart = torlolista()
+    torol_mind, _ = torlolista(alap)
     h = hashlib.sha256(torlolista_bajtok(torol_mind)).hexdigest()
-    for kv in konyvek():
-        pprov, pfej, psorok, pnyers = tabla_olvas(os.path.join(FORRAS, 'parok_%s.tsv' % kv))
-        sprov, sfej, ssorok, _ = tabla_olvas(os.path.join(FORRAS, 'szavak_%s.tsv' % kv))
-        pi, dontesek, _ = konyv_dontes(kv)
+    for kv in konyvek(alap):
+        pprov, pfej, _, _ = tabla_olvas(os.path.join(alap, 'parok_%s.tsv' % kv))
+        sprov, sfej, ssorok, _ = tabla_olvas(os.path.join(alap, 'szavak_%s.tsv' % kv))
+        pi, dontesek = konyv_dontes(alap, kv)
         torolt = set()
         marad = []
-        for r, ny, ok in dontesek:
-            if ok is None:
+        for r, ny, d, _ in dontesek:
+            if d is not None and d[0] is None:
                 torolt.add((r[pi['vers']], int(r[pi['hu_sorszam']]), int(r[pi['er_sorszam']])))
             else:
                 marad.append(ny)
         jel = ('# GENERÁLT: eszkozok/karoli_strong/konvencio_egysegesites.py — 1.1 (konvenció-egységesítés: a névelő- '
-               'és ʾet-kapcsolatok törlése a megtartó lista kivételével) | torlolista_sha256=%s | az 1.0 proveniencia-'
+               'és ʾet-kapcsolatok törlése a névmáslista kivételével) | torlolista_sha256=%s | az 1.0 proveniencia-'
                'sora: ' % h)
         with open(os.path.join(cel, 'parok_%s.tsv' % kv), 'w', encoding='utf-8', newline='') as f:
             f.write(jel + pprov.lstrip('# ') + '\n' + '\t'.join(pfej) + '\n' + ''.join(s + '\n' for s in marad))
         uj = szavak_szukit(sfej, ssorok, torolt)
         with open(os.path.join(cel, 'szavak_%s.tsv' % kv), 'w', encoding='utf-8', newline='') as f:
             f.write(jel + sprov.lstrip('# ') + '\n' + '\t'.join(sfej) + '\n' + ''.join('\t'.join(s) + '\n' for s in uj))
-    with open(os.path.join(cel, 'torolt_kapcsolatok.tsv'), 'wb') as f:
-        f.write(torlolista_bajtok(torol_mind))
-    with open(os.path.join(cel, 'ismert_hiba_onallo_az.tsv'), 'w', encoding='utf-8', newline='') as f:
-        f.write('\t'.join(TORLO_FEJ + ['kovetkezo_szo']) + '\n')
-        for s in megtart:
-            if s[6] == 'onallo_az':
-                f.write('\t'.join(s[:6] + [s[7]]) + '\n')
     print('1.1 előállítva: %s · törölt kapcsolat: %d · torlolista_sha256=%s' % (cel, len(torol_mind), h))
-    return ellenoriz(cel)
+    return ellenoriz(cel, alap)
 
 
-def ellenoriz(cel):
-    """Az 1.1 (cel) és az 1.0 (FORRAS) összevetése. Visszaad: hibák száma."""
+def ellenoriz(cel, alap=ALAP):
+    """Az 1.1 (cel) és az 1.0 (alap) összevetése, és a szabály újraellenőrzése az 1.1-en. Visszaad: hibák száma."""
     hibak = []
-    torol, _ = torlolista()
+    torol, _ = torlolista(alap)
     vart_torolt = set((s[0], int(s[1]), int(s[3])) for s in torol)
     talalt_torolt = set()
     osszes_10 = osszes_11 = 0
-    for kv in konyvek():
-        _, pfej, _, n10 = tabla_olvas(os.path.join(FORRAS, 'parok_%s.tsv' % kv))
+    for kv in konyvek(alap):
+        _, pfej, _, n10 = tabla_olvas(os.path.join(alap, 'parok_%s.tsv' % kv))
         _, pfej11, _, n11 = tabla_olvas(os.path.join(cel, 'parok_%s.tsv' % kv))
         if pfej11 != pfej:
             hibak.append('parok_%s: a fejléc eltér' % kv)
@@ -285,8 +321,14 @@ def ellenoriz(cel):
                 hibak.append('parok_%s: nem névelő/ʾet sor tűnt el: %s' % (kv, ny[:80]))
         if j != len(n11):
             hibak.append('parok_%s: az 1.1-ben az 1.0-ban nem szereplő vagy átrendezett sor áll (%d/%d)' % (kv, j, len(n11)))
+        # a szabály az 1.1-en: minden megmaradó névelő-pár megtartható, ʾet-pár nincs
+        _, d11 = konyv_dontes(cel, kv)
+        for r, _, d, _ in d11:
+            if d is not None and d[0] is None:
+                hibak.append('parok_%s: az 1.1-ben szabálysértő pár maradt (%s): %s %s %s' % (
+                    kv, d[1], r[pi['vers']], r[pi['hu_szo']], r[pi['strong']]))
         # szótábla: minden token egyszer, szimmetrikus partnerség a pártáblával, a hu strong levezethető
-        _, sfej, s10, _ = tabla_olvas(os.path.join(FORRAS, 'szavak_%s.tsv' % kv))
+        _, sfej, s10, _ = tabla_olvas(os.path.join(alap, 'szavak_%s.tsv' % kv))
         _, sfej11, s11, _ = tabla_olvas(os.path.join(cel, 'szavak_%s.tsv' % kv))
         si = {k: i for i, k in enumerate(sfej)}
         if sfej11 != sfej or len(s10) != len(s11):
@@ -310,12 +352,12 @@ def ellenoriz(cel):
                 if a[si[mezo]] != b[si[mezo]]:
                     hibak.append('szavak_%s: %s változott: %s' % (kv, mezo, kulcs_a))
             v, old, n = b[si['vers']], b[si['oldal']], int(b[si['sorszam']])
-            p = sorted(int(x) for x in b[si['partner_sorszam']].split(',') if x)
-            vart = sorted((par11 if old == 'hu' else er11).get((v, n), ()))
-            if a[si['allapot']] in ('fuggoben',):
+            if a[si['allapot']] == 'fuggoben':
                 if b != a:
                     hibak.append('szavak_%s: függőben lévő token változott: %s' % (kv, kulcs_a))
                 continue
+            p = sorted(int(x) for x in b[si['partner_sorszam']].split(',') if x)
+            vart = sorted((par11 if old == 'hu' else er11).get((v, n), ()))
             if p != vart:
                 hibak.append('szavak_%s: partnerlista ≠ pártábla: %s %s %s' % (kv, kulcs_a, p, vart))
             p10 = set(int(x) for x in a[si['partner_sorszam']].split(',') if x)
@@ -324,22 +366,19 @@ def ellenoriz(cel):
             if old == 'hu':
                 if b[si['strong']] != hu_strong(er_strong[(v, x)] for x in p):
                     hibak.append('szavak_%s: a hu strong nem a partnerekből vezethető le: %s' % (kv, kulcs_a))
-                vart_all = 'parositva' if p else ('betoldas' if a[si['allapot']] in ('parositva', 'betoldas') else a[si['allapot']])
+                vart_all = 'parositva' if p else 'betoldas'
             else:
                 if b[si['strong']] != a[si['strong']]:
                     hibak.append('szavak_%s: az er strong változott: %s' % (kv, kulcs_a))
                 vart_all = 'parositva' if p else 'forditatlan'
             if b[si['allapot']] != vart_all:
                 hibak.append('szavak_%s: állapot %s, várt %s: %s' % (kv, b[si['allapot']], vart_all, kulcs_a))
-            if not p10 - set(p) and b != a:
+            if p10 == set(p) and b != a:
                 hibak.append('szavak_%s: érintetlen token változott: %s' % (kv, kulcs_a))
     if talalt_torolt != vart_torolt:
         hibak.append('a törölt sorok halmaza ≠ törlőlista (%d vs %d)' % (len(talalt_torolt), len(vart_torolt)))
     if osszes_10 - osszes_11 != len(vart_torolt):
         hibak.append('párszám: %d − %d ≠ %d' % (osszes_10, osszes_11, len(vart_torolt)))
-    tl = os.path.join(cel, 'torolt_kapcsolatok.tsv')
-    if not os.path.exists(tl) or open(tl, 'rb').read() != torlolista_bajtok(torol):
-        hibak.append('a torolt_kapcsolatok.tsv nem a kanonikus törlőlista')
     for hb in hibak[:40]:
         print('HIBA:', hb)
     print('ellenőrzés: 1.0 pár %d → 1.1 pár %d (törölt %d) · %d hiba' % (osszes_10, osszes_11, osszes_10 - osszes_11,
@@ -347,110 +386,131 @@ def ellenoriz(cel):
     return len(hibak)
 
 
-# --- felmérés a letétbe -------------------------------------------------------------------------------------------
+# --- letét (felülírás nélkül) ------------------------------------------------------------------------------------
 
-def karoli_versek():
-    ki = {}
-    with open(KAROLI, encoding='utf-8') as f:
-        for i, sor in enumerate(f):
-            if i == 0:
-                continue
-            m = sor.rstrip('\n').split('\t')
-            if len(m) >= 2:
-                ki[m[0]] = m[1]
-    return ki
+def letet_ir(ut, adat):
+    """Új letétfájl írása; meglévő, eltérő tartalmú fájlt nem ír felül (a letét csak bővül, DT-F175vl)."""
+    if isinstance(adat, str):
+        adat = adat.encode('utf-8')
+    if os.path.exists(ut):
+        if open(ut, 'rb').read() == adat:
+            return
+        raise SystemExit('a letétfájl már létezik, eltérő tartalommal (nem írom felül): %s' % ut)
+    with open(ut, 'wb') as f:
+        f.write(adat)
 
 
-def felmeres(letet):
+def torolt_ki(letet, alap=ALAP):
     os.makedirs(letet, exist_ok=True)
-    torol, megtart = torlolista()
-    # er-tokenek száma és a hu-oldali partnerek (a törlés utáni maradék a mintához)
-    er_ossz = collections.Counter()
+    torol, _ = torlolista(alap)
+    letet_ir(os.path.join(letet, 'torolt_kapcsolatok.tsv'), torlolista_bajtok(torol))
+    print('törlőlista: %s · %d sor · sha256=%s' % (letet, len(torol), torlolista_hash(torol)))
+
+
+def _tsv(fej, sorok):
+    return '\t'.join(fej) + '\n' + ''.join('\t'.join(str(x) for x in s) + '\n' for s in sorok)
+
+
+def felmeres(letet, alap=ALAP):
+    os.makedirs(letet, exist_ok=True)
+    torol, megtart = torlolista(alap)
+    h = torlolista_hash(torol)
+    # a magyar tokenek partnerei (az új pár nélküli szavakhoz) és az eredeti tokenek száma
     hu_partner = {}
-    er_info = {}
-    for kv in konyvek():
-        _, sfej, ssorok, _ = tabla_olvas(os.path.join(FORRAS, 'szavak_%s.tsv' % kv))
+    er_ossz = collections.Counter()
+    for kv in konyvek(alap):
+        _, sfej, ssorok, _ = tabla_olvas(os.path.join(alap, 'szavak_%s.tsv' % kv))
         si = {k: i for i, k in enumerate(sfej)}
         for r in ssorok:
-            if r[si['oldal']] == 'er':
-                er_info[(r[si['vers']], r[si['sorszam']])] = (r[si['szo']], r[si['strong']])
-                if r[si['strong']] in CEL_STRONG:
-                    er_ossz[r[si['strong']]] += 1
-            else:
-                hu_partner[(r[si['vers']], r[si['sorszam']])] = r[si['partner_sorszam']]
-    torolt_kulcs = set((s[0], s[1], s[3]) for s in torol)
+            if r[si['oldal']] == 'hu':
+                hu_partner[(r[si['vers']], r[si['sorszam']])] = (
+                    set(x for x in r[si['partner_sorszam']].split(',') if x), r[si['szo']], kv)
+            elif r[si['strong']] in CEL_STRONG:
+                er_ossz[r[si['strong']]] += 1
 
-    tip = collections.defaultdict(collections.Counter)
-    for s in torol:
-        tip[s[2].lower()][s[5]] += 1
-    sorrend = sorted(tip, key=lambda w: (-sum(tip[w].values()), w))
-    ossz = len(torol)
-    kum = 0
-    lefedo = set()
-    with open(os.path.join(letet, 'torlendo_tipusok.tsv'), 'w', encoding='utf-8', newline='') as f:
-        f.write('\t'.join(['rang', 'hu_szo', 'db', 'H9009', 'G3588', 'H0853', 'kum_arany', 'a_95_szazalekban']) + '\n')
-        for i, w in enumerate(sorrend, 1):
-            n = sum(tip[w].values())
-            benne = kum < LEFEDES * ossz
-            kum += n
-            if benne:
-                lefedo.add(w)
-            f.write('\t'.join([str(i), w, str(n), str(tip[w]['H9009']), str(tip[w]['G3588']), str(tip[w]['H0853']),
-                               '%.4f' % (kum / ossz), 'igen' if benne else 'nem']) + '\n')
-
+    # (1) megtartott típusok; az „a” és „az” a környezettel részletezve
     mt = collections.defaultdict(collections.Counter)
+    reszl = collections.defaultdict(collections.Counter)
     for s in megtart:
-        mt[(s[6], s[2].lower())][s[5]] += 1
-    with open(os.path.join(letet, 'megtartott_tipusok.tsv'), 'w', encoding='utf-8', newline='') as f:
-        f.write('\t'.join(['megtartas_oka', 'hu_szo', 'db', 'H9009', 'G3588', 'H0853']) + '\n')
-        for (ok, w) in sorted(mt, key=lambda k: (k[0], -sum(mt[k].values()), k[1])):
-            c = mt[(ok, w)]
-            f.write('\t'.join([ok, w, str(sum(c.values())), str(c['H9009']), str(c['G3588']), str(c['H0853'])]) + '\n')
+        w = s[2].lower()
+        mt[(w, s[6])][s[5]] += 1
+        if w in ('a', 'az'):
+            reszl[(w, s[6])][s[8].lower() or '(versvég)'] += 1
+        elif w == 'ki':
+            reszl[(w, s[6])]['előtte: ' + s[7].lower()] += 1
+    sorok = []
+    for (w, ok) in sorted(mt, key=lambda k: (-sum(mt[k].values()), k)):
+        c = mt[(w, ok)]
+        r = reszl.get((w, ok))
+        sorok.append([w, sum(c.values()), c['H9009'], c['G3588'], ok,
+                      ', '.join('%s %d' % kv for kv in r.most_common(15)) if r else ''])
+    letet_ir(os.path.join(letet, '1_megtartott_tipusok.tsv'),
+             _tsv(['hu_szo', 'db', 'H9009', 'G3588', 'megtartas_oka', 'kornyezet (az utana allo szo; ki: az elotte allo)'],
+                  sorok))
 
+    # (2) törölt típusok; jelölve, ha a szó maga a névmáslistán van (a szűrő törölte)
+    tt = collections.defaultdict(collections.Counter)
+    tok = collections.defaultdict(collections.Counter)
+    for s in torol:
+        w = s[2].lower()
+        tt[w][s[5]] += 1
+        tok[w][s[6]] += 1
+    sorok = []
+    for w in sorted(tt, key=lambda w: (-sum(tt[w].values()), w)):
+        c = tt[w]
+        sorok.append([w, sum(c.values()), c['H9009'], c['G3588'], c['H0853'],
+                      ', '.join('%s %d' % kv for kv in sorted(tok[w].items())),
+                      'igen' if (w in NEVMAS or w in ('a', 'az', 'ki')) else ''])
+    letet_ir(os.path.join(letet, '2_torolt_tipusok.tsv'),
+             _tsv(['hu_szo', 'db', 'H9009', 'G3588', 'H0853', 'torles_oka', 'a_szo_a_nevmaslistan_vagy_szurt'], sorok))
+
+    # (3) ismert kimaradások: magyar szó, amely a törléssel pár nélkül marad, könyvcsoportonként
+    torolt_hu = collections.defaultdict(set)
+    for s in torol:
+        torolt_hu[(s[0], s[1])].add(s[3])
+    kim = collections.defaultdict(collections.Counter)
+    for k, vesz in torolt_hu.items():
+        p, szo, kv = hu_partner[k]
+        if p and p <= vesz:
+            kim[CSOPORT[kv]][szo.lower()] += 1
+    csoportok = ['OSZ_mozes', 'OSZ_tortenet', 'OSZ_koltoi', 'OSZ_profeta', 'USZ_evangelium', 'USZ_level', 'USZ_jelenesek']
+    sorok = []
+    for cs in csoportok:
+        for w, n in sorted(kim[cs].items(), key=lambda x: (-x[1], x[0])):
+            sorok.append([cs, w, n])
+    letet_ir(os.path.join(letet, '3_ismert_kimaradasok.tsv'), _tsv(['konyvcsoport', 'hu_szo', 'db'], sorok))
+
+    # (4) a magánhangzó előtt törölt „az”-ok versszöveggel
     versek = karoli_versek()
-    maradek = [s for s in torol if s[2].lower() not in lefedo]
-    rnd = random.Random(MAG)
-    valasztott = sorted(rnd.sample(range(len(maradek)), min(MARADEK_DB, len(maradek))))
+    sorok = [[s[0], s[1], s[2], s[8], s[4], s[5], versek.get(s[0], '?')] for s in torol if s[6] == 'az_maganhangzo_elott']
+    letet_ir(os.path.join(letet, '4_az_maganhangzo_elott_torolt.tsv'),
+             _tsv(['vers', 'hu_sorszam', 'hu_szo', 'utana_allo_szo', 'er_szo', 'strong', 'karoli_vers'], sorok))
+    n_az = len(sorok)
 
-    def masik(s):
-        p = [x for x in hu_partner.get((s[0], s[1]), '').split(',') if x and (s[0], s[1], x) not in torolt_kulcs]
-        return ', '.join('%s %s' % er_info.get((s[0], x), ('?', '?')) for x in p) or '(nincs: betoldás lesz)'
-
-    with open(os.path.join(letet, 'maradek_50.tsv'), 'w', encoding='utf-8', newline='') as f:
-        f.write('\t'.join(['n', 'vers', 'hu_sorszam', 'hu_szo', 'er_szo', 'strong', 'a_magyar_szo_tobbi_partnere_1_1',
-                           'karoli_vers', 'jogos_par (igen/nem)']) + '\n')
-        for n, i in enumerate(valasztott, 1):
-            s = maradek[i]
-            f.write('\t'.join([str(n), s[0], s[1], s[2], s[4], s[5], masik(s), versek.get(s[0], '?'), '']) + '\n')
-
-    # összefoglaló
-    st_torol = collections.Counter(s[5] for s in torol)
-    st_megt = collections.Counter(s[5] for s in megtart)
-    ok_megt = collections.Counter(s[6] for s in megtart)
-    az_mag = collections.Counter()
-    for s in megtart:
-        if s[6] == 'onallo_az':
-            az_mag['magánhangzó előtt' if s[7][:1].lower() in 'aáeéiíoóöőuúüű' else 'mássalhangzó előtt / versvég'] += 1
-    h = torlolista_hash(torol)
-    with open(os.path.join(letet, 'OSSZEFOGLALO.md'), 'w', encoding='utf-8', newline='') as f:
-        f.write('# Konvenció-egységesítés (1.1) — felmérés a felhasználói átnézéshez\n\n')
-        f.write('Letétanyag, a repóba nem kerül. Előállítva: `eszkozok/karoli_strong/konvencio_egysegesites.py '
-                '--felmeres`. A törlőlista SHA-256-ja (még nem fagyasztott): `%s`.\n\n' % h)
-        f.write('| Strong | eredeti token az 1.0-ban | pár az 1.0-ban | törlendő | megmarad |\n|---|---:|---:|---:|---:|\n')
-        for st in CEL_STRONG:
-            f.write('| %s | %d | %d | %d | %d |\n' % (st, er_ossz[st], st_torol[st] + st_megt[st], st_torol[st], st_megt[st]))
-        f.write('| összesen | %d | %d | %d | %d |\n\n' % (sum(er_ossz.values()), len(torol) + len(megtart), len(torol),
-                                                         len(megtart)))
-        f.write('Megtartás oka: %s.\n\n' % ', '.join('%s %d' % kv for kv in sorted(ok_megt.items())))
-        f.write('Az önálló „az” (megmarad, ismert-hiba lista): %s.\n\n' % ', '.join('%s %d' % kv for kv in sorted(az_mag.items())))
-        f.write('Szótípus a törlendők között: %d; a 95%%-ot lefedő típus: %d; a maradék %d pár (%d típus), ebből '
-                '%d véletlen tétel a `maradek_50.tsv`-ben (mag: `%s`).\n\n' % (len(tip), len(lefedo), len(maradek),
-                                                                           len(tip) - len(lefedo), len(valasztott), MAG))
-        f.write('Fájlok: `torlendo_tipusok.tsv` (minden törlendő típus, gyakoriság szerint; `a_95_szazalekban`), '
-                '`megtartott_tipusok.tsv` (a megtartott kapcsolatok okonként), `maradek_50.tsv` (az utolsó oszlopba '
-                'írható az ítélet).\n')
-    print('felmérés: %s · törlendő %d, megtartott %d · típus %d, 95%%-ot lefedő %d · torlolista_sha256=%s'
-          % (letet, len(torol), len(megtart), len(tip), len(lefedo), h))
+    st_t = collections.Counter(s[5] for s in torol)
+    st_m = collections.Counter(s[5] for s in megtart)
+    ok_m = collections.Counter(s[6] for s in megtart)
+    ok_t = collections.Counter(s[6] for s in torol)
+    nem_tipus = sum(1 for w in tt if w in NEVMAS or w in ('a', 'az', 'ki'))
+    t = ['# Konvenció-egységesítés (1.1, végleges módszer) — szúrópróba-táblák\n',
+         'Letétanyag, a repóba nem kerül. Előállítva: `eszkozok/karoli_strong/konvencio_egysegesites.py --felmeres`. '
+         'A törlőlista SHA-256-ja (még nem fagyasztott): `%s`.\n' % h,
+         '| Strong | eredeti token az 1.0-ban | pár az 1.0-ban | törlődik | megmarad |',
+         '|---|---:|---:|---:|---:|']
+    for st in CEL_STRONG:
+        t.append('| %s | %d | %d | %d | %d |' % (st, er_ossz[st], st_t[st] + st_m[st], st_t[st], st_m[st]))
+    t.append('| összesen | %d | %d | %d | %d |\n' % (sum(er_ossz.values()), len(torol) + len(megtart), len(torol),
+                                                     len(megtart)))
+    t.append('Megtartás oka: %s.\n' % ', '.join('%s %d' % kv for kv in sorted(ok_m.items())))
+    t.append('Törlés oka: %s.\n' % ', '.join('%s %d' % kv for kv in sorted(ok_t.items())))
+    t.append('Ismert kimaradás (a törléssel pár nélkül maradó magyar szó): %s; összesen %d.\n' % (
+        ', '.join('%s %d' % (cs, sum(kim[cs].values())) for cs in csoportok), sum(sum(c.values()) for c in kim.values())))
+    t.append('A szúrópróbához: `1_megtartott_tipusok.tsv` (%d típus — van-e köztük nem névmás; az „a”, „az”, „ki” '
+             'sorában a környezet), `2_torolt_tipusok.tsv` (%d típus — van-e köztük névmás; az utolsó oszlop jelöli a '
+             '%d típust, amely maga a listán van vagy szűrő törölte), `3_ismert_kimaradasok.tsv`, '
+             '`4_az_maganhangzo_elott_torolt.tsv` (%d sor).\n' % (len(mt), len(tt), nem_tipus, n_az))
+    letet_ir(os.path.join(letet, 'OSSZEFOGLALO.md'), '\n'.join(t))
+    print('felmérés: %s · törlendő %d, megtartott %d · torlolista_sha256=%s' % (letet, len(torol), len(megtart), h))
 
 
 def main():
@@ -458,18 +518,22 @@ def main():
     g = ap.add_mutually_exclusive_group(required=True)
     g.add_argument('--felmeres', action='store_true')
     g.add_argument('--general', metavar='DIR')
+    g.add_argument('--torolt-ki', metavar='DIR')
     g.add_argument('--ellenoriz', metavar='DIR')
     g.add_argument('--hash', action='store_true')
     ap.add_argument('--letet', default=LETET)
+    ap.add_argument('--alap', default=ALAP)
     a = ap.parse_args()
     if a.felmeres:
-        felmeres(a.letet)
+        felmeres(a.letet, a.alap)
     elif a.general:
-        sys.exit(1 if general(a.general) else 0)
+        sys.exit(1 if general(a.general, a.alap) else 0)
+    elif a.torolt_ki:
+        torolt_ki(a.torolt_ki, a.alap)
     elif a.ellenoriz:
-        sys.exit(1 if ellenoriz(a.ellenoriz) else 0)
+        sys.exit(1 if ellenoriz(a.ellenoriz, a.alap) else 0)
     else:
-        print(torlolista_hash())
+        print(torlolista_hash(alap=a.alap))
 
 
 if __name__ == '__main__':
