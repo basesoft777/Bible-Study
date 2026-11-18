@@ -14,7 +14,7 @@ olvas: [eszkozok/teszt_futtat.py, eszkozok/teszt_bdb_adatblokk.py, eszkozok/tesz
 ir: [eszkozok/teszt_bdb_adatblokk.py, eszkozok/teszt_visszhang_kapu.py]
 ag: claude/f226-helyi-piros-tesztek
 fugg: []
-pr: 0
+pr: 771
 lezarva_osszegzes: "Leltár: 4 bukó teszt (2 visszhang-kapu, 2 bdb_adatblokk) besorolva, mind elavult teszt vagy adat/DB-állapot; kódhiba nincs, kódváltozás nincs"
 ---
 
