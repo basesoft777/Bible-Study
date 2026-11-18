@@ -179,6 +179,10 @@ class TeljesAdat(unittest.TestCase):
         uj = collections.Counter(s[4] for s in K.ismert_kimaradasok(self.alap) if not s[5])
         self.assertEqual(dict(uj), ki.KONVENCIO_UJ_PARNELKULI)
 
+    def test_repobeli_11_naprakesz(self):
+        # az adat/karoli_strong_11/ (az 1.1, átmeneti külön könyvtár) a fagyasztott szabály kimenete
+        self.assertEqual(K.ellenoriz(os.path.join(K.GYOKER, 'adat', 'karoli_strong_11'), self.alap), 0)
+
     def test_ki_56_marad_2_torlodik(self):
         # az 58 nem „a” utáni névelő–„ki” kapcsolatból 56 marad (névmás), 2 törlődik (igekötő; tételes kivétel)
         torol, megtart = K.torlolista(self.alap)
