@@ -9,10 +9,10 @@ sav: SYSTEMS
 allapot: megallt
 ag: claude/f227-design-sav
 ad: a `DESIGN` sáv-érték a brief-fejlécben, az `ellenoriz` kapujában, a SEMA-ban és a heti beosztásban; a FELADATOK.md sávonként csoportosít
-kovetkezo: "Te: /elteres 227"
+kovetkezo: "Te: [elteres_kor 1/2] /elteres 227 — újraellenőrzés függ: 2. ellenőrzés"
 munka: folyamat
 olvas: [BRIEF_SABLON.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/heti_beosztas.py, eszkozok/teszt_feladatok.py]
-ir: [BRIEF_SABLON.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/heti_beosztas.py, eszkozok/teszt_feladatok.py]
+ir: [BRIEF_SABLON.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/heti_beosztas.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_heti_beosztas.py, eszkozok/keret_meres.py, eszkozok/tesztek/test_keret_meres.py]
 fugg: []
 nem_fugg: [123, 156, 220]
 ---
