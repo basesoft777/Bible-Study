@@ -105,12 +105,34 @@ class Szabaly(unittest.TestCase):
             self.assertNotIn(w, K.NEVMAS, w)
 
 
+# az 1.0 utolsó állapota a gitben: az 1.1 az adat/karoli_strong helyén generálódik, a teszt ebből állítja vissza az 1.0-t
+ALAP_10_REV = '9685a7bb'
+
+
+def alap10(tmp):
+    """Az 1.0 táblák helye: az adat/karoli_strong, amíg ott az 1.0 áll; az 1.1 generálása után a git
+    ALAP_10_REV állapota, ideiglenes könyvtárba kicsomagolva."""
+    with open(os.path.join(K.ALAP, 'parok_1Moz.tsv'), encoding='utf-8') as f:
+        elso = f.readline()
+    if not elso.startswith('# GENERÁLT: eszkozok/karoli_strong/konvencio_egysegesites.py'):
+        return K.ALAP
+    import subprocess
+    import tarfile
+    import io
+    ar = subprocess.run(['git', '-C', K.GYOKER, 'archive', ALAP_10_REV, 'adat/karoli_strong'], capture_output=True,
+                        check=True).stdout
+    with tarfile.open(fileobj=io.BytesIO(ar)) as t:
+        t.extractall(os.path.join(tmp, 'v10'))
+    return os.path.join(tmp, 'v10', 'adat', 'karoli_strong')
+
+
 @unittest.skipIf(GYORS, 'a teljes adaton futó teszt kihagyva (--gyors)')
 class TeljesAdat(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.tmp = tempfile.mkdtemp(prefix='konvencio11_')
-        cls.hibak = K.general(cls.tmp)
+        cls.alap = alap10(cls.tmp)
+        cls.hibak = K.general(os.path.join(cls.tmp, 'v11'), cls.alap)
 
     @classmethod
     def tearDownClass(cls):
@@ -121,11 +143,11 @@ class TeljesAdat(unittest.TestCase):
         self.assertEqual(self.hibak, 0)
 
     def test_idempotens(self):
-        torol, _ = K.torlolista(self.tmp)
+        torol, _ = K.torlolista(os.path.join(self.tmp, 'v11'))
         self.assertEqual(torol, [])
 
     def test_nincs_et_par(self):
-        _, megtart = K.torlolista(self.tmp)
+        _, megtart = K.torlolista(os.path.join(self.tmp, 'v11'))
         self.assertFalse([s for s in megtart if s[5] == K.ET])
         # minden megmaradó névelő-pár magyar szava a listán van, vagy a két minta („a” + vonatkozó, önálló „az”) egyike
         for s in megtart:
@@ -133,7 +155,7 @@ class TeljesAdat(unittest.TestCase):
             self.assertTrue(K.nevmas_e(w) or (w == 'a' and s[8].lower() in K.VONATKOZO) or w == 'az', s)
 
     def test_hash_ismetelve_azonos(self):
-        self.assertEqual(K.torlolista_hash(), K.torlolista_hash())
+        self.assertEqual(K.torlolista_hash(alap=self.alap), K.torlolista_hash(alap=self.alap))
 
     def test_fagyasztott_ertekek(self):
         # a kiértékelő és a mintaszkript fagyasztott értékei a szkriptből újraszámolva (DT-F175vr)
@@ -142,24 +164,24 @@ class TeljesAdat(unittest.TestCase):
         import karoli_strong_validacio_kiertekel as ki
         import karoli_strong_validacio_minta as vm
         import pontossag_minta as pm
-        torol, _ = K.torlolista()
+        torol, _ = K.torlolista(self.alap)
         self.assertEqual(K.torlolista_hash(torol), ki.KONVENCIO_SHA256)
         self.assertEqual(ki.KONVENCIO_SHA256, vm.KONVENCIO_SHA256)
         kulcs = set((s[0], s[1], s[3]) for s in torol)
         c = collections.Counter()
-        for kv in K.konyvek(K.ALAP):
-            _, fej, sorok, _ = K.tabla_olvas(os.path.join(K.ALAP, 'parok_%s.tsv' % kv))
+        for kv in K.konyvek(self.alap):
+            _, fej, sorok, _ = K.tabla_olvas(os.path.join(self.alap, 'parok_%s.tsv' % kv))
             ix = {k: i for i, k in enumerate(fej)}
             for r in sorok:
                 if (r[ix['vers']], r[ix['hu_sorszam']], r[ix['er_sorszam']]) in kulcs:
                     c[pm.reteg_of(kv, r[ix['bizonyossag']])] += 1
         self.assertEqual(dict(c), ki.KONVENCIO_TOROLT_RETEG)
-        uj = collections.Counter(s[4] for s in K.ismert_kimaradasok() if not s[5])
+        uj = collections.Counter(s[4] for s in K.ismert_kimaradasok(self.alap) if not s[5])
         self.assertEqual(dict(uj), ki.KONVENCIO_UJ_PARNELKULI)
 
     def test_ki_56_marad_2_torlodik(self):
         # az 58 nem „a” utáni névelő–„ki” kapcsolatból 56 marad (névmás), 2 törlődik (igekötő; tételes kivétel)
-        torol, megtart = K.torlolista()
+        torol, megtart = K.torlolista(self.alap)
         ki = [s for s in torol + megtart if s[2].lower() == 'ki' and s[7].lower() != 'a' and s[5] != K.ET]
         self.assertEqual(len(ki), 58)
         self.assertEqual(sorted((s[0], int(s[1])) for s in ki if s in torol), sorted(K.KI_IGEKOTO))
@@ -167,7 +189,7 @@ class TeljesAdat(unittest.TestCase):
 
     def test_kerdo_e_levalasztva(self):
         # a kérdő „-e/-é”: 1Kor 7:16 „megmentheted-e” két párja törlődik, Zsid 3:17 „azokra-é” marad
-        torol, megtart = K.torlolista()
+        torol, megtart = K.torlolista(self.alap)
         self.assertEqual(sorted(s[0] for s in torol if s[6] == 'kerdo_e'), ['1Kor 7:16', '1Kor 7:16'])
         self.assertTrue(any(s[0] == 'Zsid 3:17' and s[2] == 'azokra' for s in megtart))
 

@@ -124,7 +124,9 @@ class Kiertekeles(unittest.TestCase):
         _, cls.minta = ki.tabla(ki.MINTA)
         cls.h = ki.minta_hash(cls.minta)
         cls.tmp = tempfile.mkdtemp(prefix='ksval_teszt_')
-        par = [r['tetel_id'] for r in cls.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap']
+        cls.torolt = ki.torolt_tetelek(cls.minta)   # az 1.1-ben törölt vizsgált párok (DT-F175vr)
+        par = [r['tetel_id'] for r in cls.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap'
+               and r['tetel_id'] not in cls.torolt]
         nelkul = [r['tetel_id'] for r in cls.minta if r['tipus'] == 'parnelkuli']
         cls.b_hibas = set(par[:10])           # B: 10 pár hibás
         cls.b_bizonytalan = set(par[10:12])   # B: 2 pár bizonytalan
@@ -173,11 +175,11 @@ class Kiertekeles(unittest.TestCase):
     def test_eltero_es_pontossag(self):
         md, elt, ki_dir = self._fut()
         self.assertEqual(len(elt), 8)   # 6 hibás-vs-helyes + 2 bizonytalan
-        self.assertIn('| A (Teszt A) | 300 | 296 | 4 | 0 | 98.67%', md)
-        self.assertIn('| B (Teszt B) | 300 | 288 | 10 | 2 | 96.64%', md)
-        self.assertIn('| B (Teszt B) · konzervatív | 300 | 288 | 10 | 2 | 96.00%', md)   # a bizonytalan hibásnak számít
+        self.assertIn('| A (Teszt A) | 297 | 293 | 4 | 0 | 98.65%', md)
+        self.assertIn('| B (Teszt B) | 297 | 285 | 10 | 2 | 96.61%', md)
+        self.assertIn('| B (Teszt B) · konzervatív | 297 | 285 | 10 | 2 | 95.96%', md)   # a bizonytalan hibásnak számít
         # döntés nélkül a döntött minta csak az egyező tételeket tartalmazza
-        self.assertIn('| **döntött minta** | 292 | 288 | 4 | 0 |', md)
+        self.assertIn('| **döntött minta** | 289 | 285 | 4 | 0 |', md)
         self.assertIn('| A (Teszt A) | 80 | 77 | 3 | 0 | 3.75%', md)
         self.assertIn('döntésre vár: 8', md)
         # a fordítói jelölő külön: nem rontja a pontosságot, külön fájlban áll
@@ -188,7 +190,7 @@ class Kiertekeles(unittest.TestCase):
         self.assertEqual(sorted(r['tetel_id'] for r in sg), sorted(self.karoli_a))
         self.assertIn('| A (Teszt A) | 3 | BDB (3) |', md)
         # az új rétegek külön becsléssel
-        self.assertIn('| A (Teszt A) | 45 | 45 | 0 | 0 | 100.00%', md)     # nehéz réteg
+        self.assertIn('| A (Teszt A) | 34 | 34 | 0 | 0 | 100.00%', md)     # nehéz réteg (45-ből 11-et törölt az 1.1)
         self.assertIn('| A (Teszt A) | 55 | 55 | 0 | 0 | 0.00%', md)       # kimaradt párok: kimaradási arány
         # többszavas bontás: a döntött 292 pár egy- és többszavasra oszlik
         n1 = sum(1 for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap' and not r['tobbszavas']
@@ -210,11 +212,11 @@ class Kiertekeles(unittest.TestCase):
                     m[ki.ELTERO_FEJ.index('dontes')] = 'helyes'
                     f.write('\t'.join(m) + '\n')
         md, _, _ = self._fut('--dontes', ut, '--modell-f172')
-        self.assertIn('| **döntött minta** | 300 | 296 | 4 | 0 | 98.67%', md)
+        self.assertIn('| **döntött minta** | 297 | 293 | 4 | 0 | 98.65%', md)
         self.assertIn('döntésre vár: 0', md)
-        self.assertIn('| **döntött minta** · párok, alapminta | 300 |', md)   # a #172 mind a 300 párra ad ítéletet
-        self.assertIn('| **döntött minta** · párok, a 72 Opus-eltérés | 72 |', md)
-        self.assertIn('| **döntött minta** · párok, a túlminta-réteg (87) | 87 |', md)
+        self.assertIn('| **döntött minta** · párok, alapminta | 297 |', md)   # a #172 mind a 297 megmaradó párra ad ítéletet
+        self.assertIn('| **döntött minta** · párok, a 72 Opus-eltérés | 66 |', md)
+        self.assertIn('| **döntött minta** · párok, a túlminta-réteg (80) | 80 |', md)
 
     def test_ketfazisu_becsles(self):
         n1, d, w = ki.f172_fazis1()
@@ -228,7 +230,7 @@ class Kiertekeles(unittest.TestCase):
         # d_h a túlminta-réteg (bármelyik gépi bíráló hibásnak jelölte) rétegenkénti száma a mintából
         d = {}
         for r in self.minta:
-            if r['tipus'] == 'par' and r['elteres'] == '1':
+            if r['tipus'] == 'par' and r['elteres'] == '1' and r['tetel_id'] not in self.torolt:
                 d[r['f172_reteg']] = d.get(r['f172_reteg'], 0) + 1
         vart = sum(w[h] * (1 - d.get(h, 0) / n1[h]) for h in n1)
         self.assertAlmostEqual(e[0], vart, places=9)
@@ -236,7 +238,8 @@ class Kiertekeles(unittest.TestCase):
         self.assertGreater(e[2], e[0])
         # konzervatív: a bizonytalan hibás
         it2 = dict(it)
-        alap_egyezo = [r['tetel_id'] for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap' and r['elteres'] == '0']
+        alap_egyezo = [r['tetel_id'] for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap' and r['elteres'] == '0'
+                       and r['tetel_id'] not in self.torolt]
         it2[alap_egyezo[0]] = 'bizonytalan'
         self.assertLess(ki.ketfazisu(self.minta, it2, konzervativ=True)[0][0], ki.ketfazisu(self.minta, it2)[0][0])
 
@@ -246,10 +249,10 @@ class Kiertekeles(unittest.TestCase):
         self.assertIn('A (Teszt A, hozzátartozó)', md)
         self.assertNotIn('döntött minta', md)
         # a fő szám a külső ellenőré: a 2a táblában az ő sora áll elöl
-        i_b = md.index('| B (Teszt B, külső) | 300 |')
-        i_a = md.index('| A (Teszt A, hozzátartozó) | 300 |')
+        i_b = md.index('| B (Teszt B, külső) | 297 |')
+        i_a = md.index('| A (Teszt A, hozzátartozó) | 297 |')
         self.assertLess(i_b, i_a)
-        self.assertIn('| párok, alapminta (csalik nélkül) | 300 |', md)   # kappa az alapmintán, csalik nélkül
+        self.assertIn('| párok, alapminta (csalik nélkül) | 297 |', md)   # kappa az alapmintán, csalik nélkül
         self.assertIn('| · alapminta, OSZ_mozes |', md)                   # és könyvcsoportonként
         self.assertEqual(len(elt), 8)
 
@@ -276,15 +279,17 @@ class Kiertekeles(unittest.TestCase):
         self.assertIn('2d. Csalik', md)
         self.assertIn('| A (Min A) | 10 | 9 | 1 | 0 | 90.00%', md)
         self.assertNotIn('a küszöb', md)   # 9/10 a 80%-os küszöb fölött van
-        n_alap = sum(1 for r in uj if r['reszminta'] == 'alap')
+        n_alap = sum(1 for r in uj if r['reszminta'] == 'alap' and r['tetel_id'] not in self.torolt)
         self.assertIn('| A (Min A) | %d | %d | 0 | 0 | 100.00%%' % (n_alap, n_alap), md)   # a csali nem számít az alapmintába
         self.assertIn('Ebben a mintában nincs nehéz réteg.', md)
 
     def test_hianyzo_kapcsolat_nem_hiba(self):
         # a 2a kapcsolatszintű: a jelölt („Igen” + hiányzó kapcsolat) pár helyes; a szigorú sor csak tájékoztató;
         # a jelölőből darabszám; a hibás ítélet mellé tett jelölő érvénytelen; a megszűnt hibatípus elutasítva
-        par = [r['tetel_id'] for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap']
-        tul = [r['tetel_id'] for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'tulminta']
+        par = [r['tetel_id'] for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'alap'
+               and r['tetel_id'] not in self.torolt]
+        tul = [r['tetel_id'] for r in self.minta if r['tipus'] == 'par' and r['reszminta'] == 'tulminta'
+               and r['tetel_id'] not in self.torolt]
         hibas, jelolt = set(par[:4]), set(par[30:35]) | {tul[0]}
         d = _export('Jelölő', self.minta, self.h,
                     lambda r: ('hibas', 'rossz_forrasszo') if r['tetel_id'] in hibas else ('helyes', ''))
@@ -295,14 +300,14 @@ class Kiertekeles(unittest.TestCase):
         with open(fj, 'w', encoding='utf-8') as f:
             json.dump(d, f, ensure_ascii=False)
         md, _, _ = self._fut(fajlok=[fj])
-        self.assertIn('| A (Jelölő) | 300 | 296 | 4 | 0 | 98.67%', md)          # a jelölt pár nem hiba
-        self.assertIn('2a = 98.67%', md)                                         # a döntési sáv a 2a-ból
+        self.assertIn('| A (Jelölő) | 297 | 293 | 4 | 0 | 98.65%', md)          # a jelölt pár nem hiba
+        self.assertIn('2a = 98.65%', md)                                         # a döntési sáv a 2a-ból
         self.assertIn('### 2a/j. A hiányzó kapcsolat jelölője', md)
         self.assertIn('| A (Jelölő) | 5 | 1 |', md)                              # darabszám: alapminta, túlminta
-        self.assertIn('| A (Jelölő) · szigorú (a jelölt pár hibásnak számít) | 300 | 291 | 9 | 0 | 97.00%', md)
+        self.assertIn('| A (Jelölő) · szigorú (a jelölt pár hibásnak számít) | 297 | 288 | 9 | 0 | 96.97%', md)
         sav = [x for x in md.splitlines() if x.startswith('**Döntési sáv**')]
         self.assertEqual(len(sav), 1)
-        self.assertNotIn('97.00%', sav[0])                                       # a szigorú sor nem fő szám
+        self.assertNotIn('96.97%', sav[0])                                       # a szigorú sor nem fő szám
         # a régi altípus („hiányzó pár”) nem értékelhető: a 2a-t torzítaná
         d['valaszok'][par[1]]['hibatipus'] = 'hianyzo_par'
         fr = os.path.join(self.tmp, 'regi_tipus.json')
@@ -392,8 +397,8 @@ class Kiertekeles(unittest.TestCase):
                       'helyesnek ítélte. A fordított eset 0 pár.', md)
         # a tiltott mondat csak a tilalmak fejlécében, idézetként állhat
         self.assertNotIn('alsó becslés', '\n'.join(l for l in md.split('\n') if not l.startswith('> Tilos')))
-        # érzékenység: p = 296/300, f = 0, m = 20% -> π = (p − m)/(1 − m) = 98.33%
-        self.assertIn('| 2a = 98.67% | 0.00% | 20.00% | 98.33% |', md)
+        # érzékenység: p = 293/297, f = 0, m = 20% -> π = (p − m)/(1 − m) = 98.32%
+        self.assertIn('| 2a = 98.65% | 0.00% | 20.00% | 98.32% |', md)
         self.assertIn('## 10. A „hibás” ítéletek együttjárása', md)
         # rossz SHA: elutasítás
         r = subprocess.run([sys.executable, SZKRIPT, self.fa, '--csali-nelkul', '--gepi', ut, '--gepi-sha256', '0' * 64,
@@ -402,10 +407,10 @@ class Kiertekeles(unittest.TestCase):
 
     def test_ket_emberes_sav_es_javitas(self):
         md, _, ki_dir = self._fut('--kulso', '1')
-        # szigorú: A 4 + B 10 hibás (a 4 közös) -> 10 hibás, 2 bizonytalan (B), 288 helyes
-        self.assertIn('| szigorú | 300 | 288 | 10 | 2 | 96.64%', md)
+        # szigorú: A 4 + B 10 hibás (a 4 közös) -> 10 hibás, 2 bizonytalan (B), 285 helyes (297 megmaradó alappár)
+        self.assertIn('| szigorú | 297 | 285 | 10 | 2 | 96.61%', md)
         # megerősített: csak a mindkettő által hibás 4; B bizonytalanja A helyesével helyes
-        self.assertIn('| megerősített | 300 | 296 | 4 | 0 | 98.67%', md)
+        self.assertIn('| megerősített | 297 | 293 | 4 | 0 | 98.65%', md)
         self.assertIn('a megerősített érték nem fő szám', md)
         self.assertIn('**Döntési sáv**', md)
         _, jav = ki.tabla(os.path.join(ki_dir, 'javithato.tsv'))
@@ -429,7 +434,8 @@ class Kiertekeles(unittest.TestCase):
         if not os.path.exists(vm2.GEPI_TABLA):
             self.skipTest('nincs gépi tábla a letétben')
         md, _, _ = self._fut('--gepi', vm2.GEPI_TABLA, '--gepi-sha256', vm2.GEPI_SHA256, fajlok=[self.fa])
-        self.assertIn('Túlminta (%d pár)' % sum(1 for r in par if r['reszminta'] == 'tulminta'), md)
+        self.assertIn('Túlminta (%d pár)' % sum(1 for r in par if r['reszminta'] == 'tulminta'
+                                                and r['tetel_id'] not in self.torolt), md)
         self.assertIn('modell-bíráló helyesnek ítélte. A fordított eset', md)
         self.assertNotIn('2e.', md)
 
@@ -442,7 +448,7 @@ class Kiertekeles(unittest.TestCase):
         with open(fm, 'w', encoding='utf-8') as f:
             json.dump(_export('Második', resz, ki.minta_hash(resz), lambda r: ('helyes', '')), f, ensure_ascii=False)
         md, _, _ = self._fut('--kulso', '1', fajlok=[self.fa, fm])
-        self.assertIn('| párok, alapminta (csalik nélkül) | 300 |', md)   # az egyezés mind a 300 alappáron
+        self.assertIn('| párok, alapminta (csalik nélkül) | 297 |', md)   # az egyezés mind a 300 alappáron
 
     def test_szerver_export(self):
         # az online felület (Worker) exportja: ugyanaz az eredmény, mint a két oldalexporttal (--kulso 1); a próba-
@@ -526,7 +532,7 @@ class Kiertekeles(unittest.TestCase):
         md, elt, _ = self._fut(fajlok=[self.fa])
         self.assertNotIn('## 4.', md)          # egy ellenőrnél nincs kappa
         self.assertEqual(len(elt), 0)
-        self.assertIn('| A (Teszt A) | 300 | 296 | 4 | 0 | 98.67%', md)
+        self.assertIn('| A (Teszt A) | 297 | 293 | 4 | 0 | 98.65%', md)
 
     def test_rossz_hash_elutasitva(self):
         rossz = os.path.join(self.tmp, 'rossz.json')
