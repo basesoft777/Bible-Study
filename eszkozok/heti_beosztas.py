@@ -64,7 +64,7 @@ SAV_CIMKE = {
     'SERVER': 'Olvasó',
     'USER': 'Felhasználók, előfizetés, jogok',
     'BUSINESS': 'Üzleti oldal',
-    'DESIGN': 'Design (kinézet, arculat)',
+    'DESIGN': 'Design',
     'FELMERES': 'Felmérés / ötlet',
     'TARTALEK': 'Tartalék',
     'ORKESZTRACIO': 'Orkesztráció',
