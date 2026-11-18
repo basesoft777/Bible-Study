@@ -908,7 +908,7 @@ def lekotes_sha(fn):
 # jelöletlenül a felületen marad; a belső jelölés a letétben, külön fájlban). A minta.tsv nem változik.
 KONVENCIO_TORLOLISTA = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'konvencio_11_vegleges',
                                     'torolt_kapcsolatok.tsv')
-KONVENCIO_SHA256 = '3f90a3bc60a746b96313865af3ed42f64d763a92e7f2da003bf804cf98163778'
+KONVENCIO_SHA256 = '71a0752ed17ff089e7aef0db86a6b5543c8293cacef3b20ecdf1359146412655'
 _OLDAL_KIEG = {}
 
 

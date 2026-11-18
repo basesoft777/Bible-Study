@@ -124,6 +124,28 @@ class TeljesAdat(unittest.TestCase):
     def test_hash_ismetelve_azonos(self):
         self.assertEqual(K.torlolista_hash(), K.torlolista_hash())
 
+    def test_fagyasztott_ertekek(self):
+        # a kiértékelő és a mintaszkript fagyasztott értékei a szkriptből újraszámolva (DT-F175vr)
+        import collections
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import karoli_strong_validacio_kiertekel as ki
+        import karoli_strong_validacio_minta as vm
+        import pontossag_minta as pm
+        torol, _ = K.torlolista()
+        self.assertEqual(K.torlolista_hash(torol), ki.KONVENCIO_SHA256)
+        self.assertEqual(ki.KONVENCIO_SHA256, vm.KONVENCIO_SHA256)
+        kulcs = set((s[0], s[1], s[3]) for s in torol)
+        c = collections.Counter()
+        for kv in K.konyvek(K.ALAP):
+            _, fej, sorok, _ = K.tabla_olvas(os.path.join(K.ALAP, 'parok_%s.tsv' % kv))
+            ix = {k: i for i, k in enumerate(fej)}
+            for r in sorok:
+                if (r[ix['vers']], r[ix['hu_sorszam']], r[ix['er_sorszam']]) in kulcs:
+                    c[pm.reteg_of(kv, r[ix['bizonyossag']])] += 1
+        self.assertEqual(dict(c), ki.KONVENCIO_TOROLT_RETEG)
+        uj = collections.Counter(s[4] for s in K.ismert_kimaradasok() if not s[5])
+        self.assertEqual(dict(uj), ki.KONVENCIO_UJ_PARNELKULI)
+
     def test_ki_56_marad_2_torlodik(self):
         # az 58 nem „a” utáni névelő–„ki” kapcsolatból 56 marad (névmás), 2 törlődik (igekötő; tételes kivétel)
         torol, megtart = K.torlolista()

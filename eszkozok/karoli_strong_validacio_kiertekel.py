@@ -73,15 +73,15 @@ F172_ITELET = os.path.join(GYOKER, 'f172', 'itelet_par.tsv')
 # A konvenció-egységesítés (1.1, DT-F175vr): a törölt névelő- és ʾet-kapcsolatok fagyasztott listája a letétben. A fő
 # szám (2a) az 1.1-ben megmaradó párokon áll; a törölt párok ítélete tájékoztató (2a az 1.0-ra).
 KONVENCIO_TORLOLISTA = os.path.join(LETET_DIR, 'konvencio_11_vegleges', 'torolt_kapcsolatok.tsv')
-KONVENCIO_SHA256 = '3f90a3bc60a746b96313865af3ed42f64d763a92e7f2da003bf804cf98163778'
+KONVENCIO_SHA256 = '71a0752ed17ff089e7aef0db86a6b5543c8293cacef3b20ecdf1359146412655'
 # a törölt párok a #172-keret rétegeiben (az 1.0 parok_*.tsv-ből a törlőlistával, a pontossag_minta.reteg_of szerint;
 # fagyasztva, a teszt újraszámolja): az 1.1 rétegsúlyai a keret párszámából ezek levonásával
-KONVENCIO_TOROLT_RETEG = {'OSZ_mozes_magas': 46, 'OSZ_mozes': 823, 'OSZ_tortenet': 1213, 'OSZ_koltoi': 118,
-                          'OSZ_profeta': 495, 'USZ_evangelium': 1082, 'USZ_level': 710, 'USZ_jelenesek': 103}
-# a törléssel pár nélkül maradó, a pár nélküli validációs keretbe eső magyar szavak könyvcsoportonként (n = 484;
+KONVENCIO_TOROLT_RETEG = {'OSZ_mozes_magas': 45, 'OSZ_mozes': 813, 'OSZ_tortenet': 1207, 'OSZ_koltoi': 118,
+                          'OSZ_profeta': 493, 'USZ_evangelium': 1068, 'USZ_level': 699, 'USZ_jelenesek': 103}
+# a törléssel pár nélkül maradó, a pár nélküli validációs keretbe eső magyar szavak könyvcsoportonként (n = 481;
 # eszkozok/karoli_strong/konvencio_egysegesites.py --kimaradas-ki; fagyasztva, a teszt újraszámolja)
-KONVENCIO_UJ_PARNELKULI = {'OSZ_mozes': 14, 'OSZ_tortenet': 49, 'OSZ_koltoi': 9, 'OSZ_profeta': 11,
-                           'USZ_evangelium': 230, 'USZ_level': 164, 'USZ_jelenesek': 7}
+KONVENCIO_UJ_PARNELKULI = {'OSZ_mozes': 14, 'OSZ_tortenet': 48, 'OSZ_koltoi': 9, 'OSZ_profeta': 11,
+                           'USZ_evangelium': 227, 'USZ_level': 165, 'USZ_jelenesek': 7}
 _KONVENCIO = {}
 
 
