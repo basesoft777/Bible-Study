@@ -186,6 +186,11 @@ class OsszesitesTest(Alap):
         self.assertEqual(e['savok']['CONTENT']['top'][0][0], 'CONTENT · B')
         self.assertAlmostEqual(e['osszes'], 60)
 
+    def test_design_sav_osszesitese_nem_dob_hibat(self):
+        e = self.futtat([self.cim('sess-a', 'DESIGN · A'), asszisztens('m1', '2026-11-15T10:00:00.000Z')])
+        self.assertAlmostEqual(e['savok']['DESIGN']['egyseg'], 20)
+        self.assertEqual(K.munkamappa_ellenoriz([{'munkamappa': 'x', 'sav': 'DESIGN', 'megjegyzes': '', '_sor': 2}]), [])
+
     def test_ismeretlen_sav_osszege_megvan(self):
         e = self.futtat([asszisztens('m1', '2026-11-15T10:00:00.000Z', ag='claude/valami', cwd='E:\\x')])
         self.assertAlmostEqual(e['savok'][K.ISMERETLEN]['egyseg'], 20)
