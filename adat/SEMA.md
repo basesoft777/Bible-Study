@@ -1129,6 +1129,8 @@ Olvasás/írás: `split('	')` / `'	'.join()` (a `csv` modul tilos, l. CLAUDE.md)
 `naplok/F22_<könyv>_atnezes.tsv` (a `kezi` versek, linkek nélkül). A tábla `egyesit.py`-val újraépíthető, a két
 modell nyers válaszaiból (`f22/valaszok/sonnet/`, `f22/valaszok/c/`), API-hívás nélkül, bájtra azonosan.
 
+**1.1: konvenció-egységesítés (DT-F175vr).** A repóbeli tábla az 1.1 állapot: az `egyesit.py` kimenetéből (1.0) az `eszkozok/karoli_strong/konvencio_egysegesites.py` determinisztikusan törli a névelő (H9009, G3588) és az ʾet (H0853) kapcsolatait, a fagyasztott névmáslista kivételével (csak törlés: új pár nincs, a megmaradó `parok`-sorok bájtra azonosak; a `szavak`-ban a két érintett token partnerlistája szűkül, üres partnerlistával a magyar token `betoldas`, az eredeti `forditatlan`; a `bizonyossag`/`forras` változatlan). Az első sor ilyenkor `# GENERÁLT: eszkozok/karoli_strong/konvencio_egysegesites.py — 1.1 … | torlolista_sha256=… | az 1.0 proveniencia-sora: …`. Az újraépítés sorrendje: `egyesit.py` (1.0, ideiglenes könyvtárba), majd `konvencio_egysegesites.py --general <cél> --alap <1.0>` és `--ellenoriz`. Az 1.0 a gitben (`9685a7bb`) és a Zenodón (1.0) marad.
+
 ### 2.21 `dontes_hatas.tsv` — döntések átvezetésének nyilvántartása (F51, FELADATOK #51, DT-F51-5)
 
 Egy sor = egy döntés egy érintett fájlban: az a mintapár, amely a fájlban a **döntés előtti** állapotot
