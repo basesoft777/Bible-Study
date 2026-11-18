@@ -65,8 +65,8 @@ MUNKAK = ('adat', 'ertelmezo', 'folyamat')   # F32 (K2): a munka fajtaja
 # kozlemenyek); SERVER = olvaso-szerver; USER = az olvaso-szerver felhasznalokezelese minden tervezett elemevel
 # (regisztracio es belepes, szintek: nyilvanos / regisztralt / kutato, az elofizetes es a vasarlas hozzaferese az
 # olvasoban, jogosultsagok, fiok es adatkezeles); BUSINESS = a #86 uzleti oldala (bevetelmodell, arak, elado forma,
-# ado es jog, fizetesi szolgaltato, szamlazas) (a felhasznalo dontese, 2026-11-15, DT-F219d). Kethes esetben a fo termek.
-SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS')
+# ado es jog, fizetesi szolgaltato, szamlazas) (a felhasznalo dontese, 2026-11-15, DT-F219d); DESIGN = az olvaso-szerver kinezete es arculata (CSS, arculat-konfig, vaszon/mockup, design-system; a felhasznalo dontese, 2026-11-18). Kethes esetben a fo termek.
+SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'DESIGN')
 # Atmenet: a nyitott PR-ban levo briefek sav-ja a sajat PR-jukban erkezik; ott a mezo addig nem kotelezo.
 # A PR-ok merge-e utan ez a tuple urit (a sav onnantol minden feladat/naplozas briefnel kotelezo).
 SAV_ATMENET_KIVETEL = (217, 218)

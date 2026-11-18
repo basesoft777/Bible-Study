@@ -48,11 +48,11 @@ MUNKAMAPPA_FEJ = ['munkamappa', 'sav', 'megjegyzes']
 MERES_FEJ = ['ts', 'heti_szazalek', 'fable_szazalek', 'forras']
 TOKENFAJTAK = ('input', 'cache_5m', 'cache_1h', 'cache_olvasas', 'output')
 CSALADOK = ('opus', 'sonnet', 'haiku', 'fable')
-SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'FELMERES', 'ORKESZTRACIO')
+SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'DESIGN', 'FELMERES', 'ORKESZTRACIO')
 ISMERETLEN = 'ISMERETLEN'
 TS_MINTA = re.compile(r'^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}$')
 CIM_ELOTAG = re.compile(r'^\s*([A-Za-zÁÉÍÓÖŐÚÜŰáéíóöőúüű_]+)\s*[·:\-–—]')
-CIM_SAV = {'SYSTEMS': 'SYSTEMS', 'CONTENT': 'CONTENT', 'SERVER': 'SERVER', 'USER': 'USER', 'BUSINESS': 'BUSINESS',
+CIM_SAV = {'SYSTEMS': 'SYSTEMS', 'CONTENT': 'CONTENT', 'SERVER': 'SERVER', 'USER': 'USER', 'BUSINESS': 'BUSINESS', 'DESIGN': 'DESIGN',
            'FELMÉRÉS': 'FELMERES', 'FELMERES': 'FELMERES', 'ORKESZTRÁTOR': 'ORKESZTRACIO', 'ORKESZTRATOR': 'ORKESZTRACIO'}
 KERET_HATAR = time(14, 0)
 

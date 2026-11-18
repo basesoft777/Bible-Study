@@ -2391,7 +2391,7 @@ orkesztrátor tölti, a felhasználó jóváhagyja (`jovahagyva`). A kimenet né
 | Oszlop | Tartalom |
 |---|---|
 | `het` | a keret-hét kezdete, `ÉÉÉÉ-HH-NN`: **szombat** (a keret szombaton 14:00 UTC-kor nullázódik); a hét a következő szombat 14:00 UTC-ig tart |
-| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` (a brief `sav` mezőjének értékei) vagy két keretsor: `FELMERES` (a „felmérés” munkatípus saját kerete) · `ORKESZTRACIO` (az orkesztrátor saját kerete; a felhasználó, 2026-11-15) · `TARTALEK` |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` · `DESIGN` (a brief `sav` mezőjének értékei) vagy két keretsor: `FELMERES` (a „felmérés” munkatípus saját kerete) · `ORKESZTRACIO` (az orkesztrátor saját kerete; a felhasználó, 2026-11-15) · `TARTALEK` |
 | `sorrend` | egész: a sor helye a sávon belül (a hét sorrendje) |
 | `tetel` | a tétel: `F<nn>` vagy `#<nn>` (brief száma: ebből jön a valós állapot), `PR#<nn>` (PR; az állapota a PR-ból), `N-…` / szabad szöveg (csak kézi állapot), `-` (nincs konkrét tétel: a sor csak a célt és a keretet viszi) |
 | `cel_a_het_vegere` | olvasói nyelven: mi legyen kész a hét végére |
@@ -2433,7 +2433,7 @@ a feladat briefbe kerül, és ide csak a hivatkozás. A „felmérés” munkat�
 | Oszlop | Tartalom |
 |---|---|
 | `id` | `OT<nnn>`, egyedi, nem változik |
-| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` · `DESIGN` |
 | `cim` | olvasói nyelven: mi a felvetés |
 | `forras` | ki, mikor, hol: a felhasználó vagy más, a dátum, és a hely (memóriafájl, jegyzet, brief, DT/N) |
 | `allapot` | `otlet` · `felmerendo` · `elvetve: <hivatkozás>` · `briefbe_ment: <hivatkozás>` (az utolsó kettő hivatkozása kötelező: DT, F vagy a felhasználó szava dátummal) |
@@ -2466,7 +2466,7 @@ amelyek sávja gépileg nem érhető el (pl. a gyökér-orkesztrátor).
 | Oszlop | Tartalom |
 |---|---|
 | `munkamappa` | a session munkamappájának (cwd) egy jellemző részlete, kis-nagybetűtől függetlenül (pl. `orkesztrator-uj-cikkek`) |
-| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` · `FELMERES` · `ORKESZTRACIO` |
+| `sav` | `SYSTEMS` · `CONTENT` · `SERVER` · `USER` · `BUSINESS` · `DESIGN` · `FELMERES` · `ORKESZTRACIO` |
 | `megjegyzes` | ki és mikor adta a leképezést |
 
 **Kulcs:** `munkamappa` (az első egyező sor érvényes).

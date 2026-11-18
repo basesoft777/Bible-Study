@@ -57,13 +57,14 @@ KERET_FEJ = ['het', 'sav', 'elhasznalt_szazalek', 'ts', 'forras']
 OTLET_FEJ = ['id', 'sav', 'cim', 'forras', 'allapot', 'megjegyzes']
 
 # a terv sávjai az oldal sorrendjében: a brief `sav` értékei + a két keretsor
-SAV_SORREND = ('CONTENT', 'SYSTEMS', 'SERVER', 'USER', 'BUSINESS', 'FELMERES', 'ORKESZTRACIO', 'TARTALEK')
+SAV_SORREND = ('CONTENT', 'SYSTEMS', 'SERVER', 'USER', 'BUSINESS', 'DESIGN', 'FELMERES', 'ORKESZTRACIO', 'TARTALEK')
 SAV_CIMKE = {
     'CONTENT': 'Tartalomkészítés',
     'SYSTEMS': 'Fejlesztői infrastruktúra',
     'SERVER': 'Olvasó',
     'USER': 'Felhasználók, előfizetés, jogok',
     'BUSINESS': 'Üzleti oldal',
+    'DESIGN': 'Design',
     'FELMERES': 'Felmérés / ötlet',
     'TARTALEK': 'Tartalék',
     'ORKESZTRACIO': 'Orkesztráció',
@@ -71,7 +72,7 @@ SAV_CIMKE = {
 }
 # a keret-táblában a tervezett sávok mellett a mért, de nem tervezett sorok is állhatnak
 KERET_SAVOK = SAV_SORREND + ('ISMERETLEN',)
-OTLET_SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS')
+OTLET_SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'DESIGN')
 KEZI_ALLAPOTOK = ('kesz', 'csuszik', 'blokkolt', 'elhagyva')
 KEZI_CIMKE = {'kesz': 'kész', 'csuszik': 'csúszik', 'blokkolt': 'blokkolt', 'elhagyva': 'elhagyva'}
 JOVAHAGYVA = ('igen', 'javaslat')

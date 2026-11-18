@@ -616,9 +616,9 @@ class SavTest(Alap):
             self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav=s, olvas=['a'], ir=['a']))
             self.assertEqual(self.hibak_szoveg(), [])
 
-    def test_sav_ot_elemu_es_business_ervenyes(self):
+    def test_sav_hat_elemu_es_business_ervenyes(self):
         # a felhasznalo dontese (2026-11-15, DT-F219d): USER (olvaso felhasznalokezeles) es BUSINESS (a #86 uzleti oldala)
-        self.assertEqual(F.SAVOK, ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS'))
+        self.assertEqual(F.SAVOK, ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'DESIGN'))
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='BUSINESS', olvas=['a'], ir=['a']))
         self.assertEqual(self.hibak_szoveg(), [])
 
@@ -650,6 +650,16 @@ class SavTest(Alap):
     def test_atmeneti_kivetel(self):
         self.g.brief('F217_A_BRIEF.md', brief_szoveg(217, sav=None, olvas=['a'], ir=['a']))
         self.assertEqual(self.hibak_szoveg(), [])
+
+    def test_design_sav_elfogadott_ismeretlen_elutasitott_es_csoportosit(self):
+        # a felhasznalo dontese (2026-11-18, #227): DESIGN = az olvaso kinezete es arculata
+        self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='DESIGN', olvas=['a'], ir=['a']))
+        self.assertEqual(self.hibak_szoveg(), [])
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, sav='KINEZET', olvas=['b'], ir=['b']))
+        self.assertTrue(any('sav:' in h for h in self.hibak_szoveg()))
+        self.g.brief('F02_B_BRIEF.md', brief_szoveg(2, sav='SYSTEMS', olvas=['b'], ir=['b']))
+        szoveg = F.blokkok(self.g.briefek(), self.g.ut, MA, main_all={})['fazis1']
+        self.assertIn('**DESIGN**', szoveg)
 
     def test_tabla_savonkent_csoportosit(self):
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='CONTENT', olvas=['a'], ir=['a']))

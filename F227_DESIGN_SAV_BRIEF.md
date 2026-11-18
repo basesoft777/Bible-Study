@@ -6,12 +6,13 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SYSTEMS
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f227-design-sav
 ad: a `DESIGN` sáv-érték a brief-fejlécben, az `ellenoriz` kapujában, a SEMA-ban és a heti beosztásban; a FELADATOK.md sávonként csoportosít
-kovetkezo: "Te: `/kovetkezo`; ütközik a #123, #220 briefjével (`eszkozok/feladatok.py`, `eszkozok/teszt_feladatok.py`): a `/kovetkezo` sorrendjét kövesd, és ne fusson velük egyszerre"
+kovetkezo: "—"
 munka: folyamat
 olvas: [BRIEF_SABLON.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/heti_beosztas.py, eszkozok/teszt_feladatok.py]
-ir: [BRIEF_SABLON.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/heti_beosztas.py, eszkozok/teszt_feladatok.py]
+ir: [BRIEF_SABLON.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/heti_beosztas.py, eszkozok/teszt_feladatok.py, eszkozok/tesztek/test_heti_beosztas.py, eszkozok/keret_meres.py, eszkozok/tesztek/test_keret_meres.py]
 fugg: []
 nem_fugg: [123, 156, 220]
 ---
@@ -36,3 +37,6 @@ Hajtsd végre ezt a briefet a `/kovetkezo` szerint; a ⛔ pontokon állj meg.
 ⛔ **Megállás**, ha a `SEMA.md` sávszabálya egy generált nézettel vagy kapuval (`eszkozok/ellenorzes/`) ellentmond, vagy ha a `/kovetkezo` ütközést jelez a #220/#123-mal.
 
 **Kész, ha:** `python eszkozok/feladatok.py ellenoriz` 0 hiba; a `teszt_feladatok.py` és a `heti_beosztas` tesztjei zöldek; a FELADATOK.md generált blokkját nem kézzel írtad.
+
+## Zárás (orkesztrátor, 2026-11-18)
+Az 1. ellenőrzés három ELTÉRÉSE a javítókörben (F227.3–F227.6) rendezve; célzott újraellenőrzés a diffen: `keret_meres.SAVOK`/`CIM_SAV` DESIGN + teszt (`test_design_sav_osszesitese_nem_dob_hibat`), címke `Design`, az `ir` lista kiegészítve. Új teljes ellenőri kör nincs (1 ellenőrzés + 1 javítókör). A #123-mal szembeni KIZAR/SORREND átlépése a felhasználó döntése (2026-11-18); a #123 nem futott.
