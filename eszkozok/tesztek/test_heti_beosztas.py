@@ -123,6 +123,13 @@ class TablaTest(Alap):
         self.assertTrue(any('ismeretlen `sav`' in x for x in h), h)
         self.assertTrue(any('jovahagyva' in x for x in h), h)
 
+    def test_design_sav_elfogadott(self):
+        # #227: a DESIGN sav a tervben es az otletben is ervenyes
+        self.assertEqual(self.hibak([self.terv_nyers(sav='DESIGN', keret=100)]), [])
+        self.assertIn('DESIGN', B.SAV_SORREND)
+        self.assertIn('DESIGN', B.OTLET_SAVOK)
+        self.assertIn('DESIGN', B.SAV_CIMKE)
+
     def test_ismetlodo_kulcs(self):
         h = self.hibak([self.terv_nyers(keret=50), self.terv_nyers(keret=50)])
         self.assertTrue(any('ismétlődő' in x for x in h), h)

@@ -6,7 +6,7 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SYSTEMS
-allapot: nem_indult
+allapot: fut
 ad: a `DESIGN` sáv-érték a brief-fejlécben, az `ellenoriz` kapujában, a SEMA-ban és a heti beosztásban; a FELADATOK.md sávonként csoportosít
 kovetkezo: "Te: `/kovetkezo`; ütközik a #123, #220 briefjével (`eszkozok/feladatok.py`, `eszkozok/teszt_feladatok.py`): a `/kovetkezo` sorrendjét kövesd, és ne fusson velük egyszerre"
 munka: folyamat
