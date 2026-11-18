@@ -753,7 +753,7 @@ def kiertekel(minta, ellenorok, dontes, modell, szerzoi=False):
                'konzervatív sor. A többi becslés kiegészítő.\n' % fo_nev)
     tdb = {k: sum(1 for t in torolt_t if reszm.get(t) == k) for k in ('alap', 'tulminta', 'nehez')}
     sor.append('Az 1.1 konvenció-egységesítése (a névelő- és ʾet-kapcsolatok törlése a névmáslista kivételével; '
-               'DT-F175vr) %d mintapárt törölt (alapminta %d, túlminta %d, nehéz réteg %d; csali egy sem). Ezek a '
+               'a kiértékelés előtt rögzített döntés) %d mintapárt törölt (alapminta %d, túlminta %d, nehéz réteg %d; csali egy sem). Ezek a '
                'felületen jelöletlenül maradtak; ítéletük a becslésekbe nem számít, csak a 2a 1.0-ra vonatkozó '
                'tájékoztató sorába. A párbecslések (2a–2c, 5., 8.) az 1.1 párjain állnak; a kétfázisú becslés első '
                'fázisa a #172 mintájának megmaradó párjai, a rétegsúly az 1.1 párszámából.\n'
