@@ -8,11 +8,12 @@ modell: sonnet
 sav: SYSTEMS
 allapot: nem_indult
 ad: a `DESIGN` sáv-érték a brief-fejlécben, az `ellenoriz` kapujában, a SEMA-ban és a heti beosztásban; a FELADATOK.md sávonként csoportosít
-kovetkezo: "Te: `/kovetkezo`, a #220 és #123 lezárása után (ütköznek: `eszkozok/feladatok.py`, `eszkozok/teszt_feladatok.py`)"
+kovetkezo: "Te: `/kovetkezo`; ütközik a #123, #220 briefjével (`eszkozok/feladatok.py`, `eszkozok/teszt_feladatok.py`): a `/kovetkezo` sorrendjét kövesd, és ne fusson velük egyszerre"
 munka: folyamat
 olvas: [BRIEF_SABLON.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/heti_beosztas.py, eszkozok/teszt_feladatok.py]
 ir: [BRIEF_SABLON.md, adat/SEMA.md, eszkozok/feladatok.py, eszkozok/heti_beosztas.py, eszkozok/teszt_feladatok.py]
 fugg: []
+nem_fugg: [123, 156, 220]
 ---
 
 # F227_DESIGN_SAV_BRIEF.md — DESIGN sáv
