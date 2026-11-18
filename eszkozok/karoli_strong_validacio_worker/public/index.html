@@ -16,11 +16,15 @@
   --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --card: #ffffff; --line: #dedbd3;
   --accent: #2f5d8a; --hl: #ffe08a; --hl-er: #ffd27a; --sel: #b9e3c6;
   --ok: #2e7d4f; --bad: #b3361f; --unsure: #9a6b00; --chip: #f1efe9;
+  --cel-bg: #ffd23f; --cel-keret: #a86a00; --kapcs-bg: #d3e5f8;
+  --kapcs-eros-szoveg: #ffffff; --kapcs-alahuz: #163452; --szo-cel: #fff0b3; --szo-kapcs: #dce9f7;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #171716; --fg: #ecebe6; --muted: #a3a29c; --card: #222220; --line: #3a3935;
     --accent: #8ab4e0; --hl: #6b5512; --hl-er: #7a5a10; --sel: #1f5a36;
-    --ok: #6cc28f; --bad: #f08a75; --unsure: #e3b851; --chip: #2c2b28; }
+    --ok: #6cc28f; --bad: #f08a75; --unsure: #e3b851; --chip: #2c2b28;
+    --cel-bg: #8a6500; --cel-keret: #ffd24d; --kapcs-bg: #1d3f63;
+    --kapcs-eros-szoveg: #0f1d2b; --kapcs-alahuz: #e2efff; --szo-cel: #4a3a0a; --szo-kapcs: #1a3047; }
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--fg);
@@ -70,9 +74,44 @@ label.opt { display: flex; gap: 8px; align-items: center; padding: 6px 0; cursor
 .ek .mf { font-size: calc(.7rem * var(--betu)); color: var(--muted); max-width: 10em; margin: 0 auto; }
 .ek .hu { font-size: calc(.95rem * var(--betu)); font-weight: 600; border-top: 1px dashed var(--line); margin-top: 3px; padding-top: 2px; }
 .ek .hu.szab { font-size: calc(.65rem * var(--betu)); font-weight: 400; font-style: italic; color: var(--muted); max-width: 8em; margin-left: auto; margin-right: auto; }
-.eszo { display: flex; gap: 2px; padding: 2px; border-radius: 10px; background: var(--chip); }
-.hk.cel, .ek.cel { background: var(--hl); border-color: #c99700; box-shadow: 0 0 0 2px #c99700; }
-.hk.kapcs, .ek.kapcs { box-shadow: 0 0 0 3px var(--accent); border-color: var(--accent); }
+.eszo { display: flex; flex-direction: column; gap: 2px; padding: 2px; border-radius: 10px; background: var(--chip); }
+.eszo-egesz { text-align: center; direction: rtl; unicode-bidi: isolate; color: var(--fg); padding: 1px 4px 0;
+  font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif;
+  font-size: calc(1.7rem * var(--betu)); line-height: 1.3; }
+.eszo-elemek { display: flex; gap: 2px; direction: rtl; }
+/* a vizsgált szó és a párra mutatáskor kigyulladó szó: telt háttér, vastag keret, és a szó alatt vastag aláhúzó
+   sáv (a szó sorának alján, így a héber pontozást és az átírást nem takarja); világos és sötét témában is erős
+   kontraszt. Ha a vizsgált szó maga is kigyullad, a sárga marad, kívül kék gyűrűvel. */
+.hk.cel, .ek.cel { background: var(--cel-bg); border-color: var(--cel-keret); box-shadow: 0 0 0 3px var(--cel-keret); }
+.hk.kapcs, .ek.kapcs { background: var(--kapcs-bg); box-shadow: 0 0 0 3px var(--accent); border-color: var(--accent); }
+.hk.cel.kapcs, .ek.cel.kapcs { background: var(--cel-bg); border-color: var(--cel-keret);
+  box-shadow: 0 0 0 3px var(--cel-keret), 0 0 0 6px var(--accent); }
+/* folyó szöveg a kártyák fölött: a vers egy sorban (tördelve), a szavak rámutathatók; héberben jobbról balra, egész
+   írott szavakkal, a vizsgált elem (pl. előtag) a szón belül kiemelve */
+.folyo { margin: 2px 0 12px; font-size: calc(1.15rem * var(--betu)); line-height: 2; overflow-wrap: anywhere; }
+.folyo.er.heber { direction: rtl; unicode-bidi: isolate; text-align: right; line-height: 2.2;
+  font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif;
+  font-size: calc(1.7rem * var(--betu)); }
+.folyo.er.gorog { font-family: "Gentium Plus", "Gentium", "SBL Greek", "Times New Roman", "Noto Serif", serif;
+  font-size: calc(1.4rem * var(--betu)); }
+.folyo .fs { cursor: pointer; border-radius: 4px; padding: 0 1px .12em; }
+.folyo .fs.cel { background: var(--cel-bg); box-shadow: inset 0 -4px 0 var(--cel-keret); }
+.folyo .fs.kapcs { background: var(--kapcs-bg); box-shadow: inset 0 -4px 0 var(--accent); }
+.folyo .fs.cel.kapcs { background: var(--cel-bg); box-shadow: inset 0 -4px 0 var(--cel-keret), 0 0 0 2px var(--accent); }
+.folyo .fs.ntr { opacity: .55; }
+/* az eredeti sorban a kiemelt elem írott szava halvány hátteret kap (az 1–2 betűs elem is látsszon), maga az elem
+   erős színt: a vizsgált sárga, a kigyulladó pár telt kék */
+.folyo.er .fszo { border-radius: 5px; padding: 0 1px; }
+.folyo.er .fszo.cel-szo { background: var(--szo-cel); }
+.folyo.er .fszo.kapcs-szo { background: var(--szo-kapcs); }
+.folyo.er .fs.kapcs { background: var(--accent); color: var(--kapcs-eros-szoveg); box-shadow: inset 0 -4px 0 var(--kapcs-alahuz); }
+.folyo.er .fs.cel.kapcs { background: var(--cel-bg); color: inherit;
+  box-shadow: inset 0 -4px 0 var(--cel-keret), 0 0 0 2px var(--accent); }
+@media (max-width: 600px) { .folyo { font-size: calc(1.05rem * var(--betu)); } .folyo.er.heber { font-size: calc(1.45rem * var(--betu)); }
+  .folyo.er.gorog { font-size: calc(1.2rem * var(--betu)); } }
+.hk.cel .szo, .ek.cel .alak { border-bottom: 4px solid var(--cel-keret); padding-bottom: 1px; }
+.hk.kapcs .szo, .ek.kapcs .alak { border-bottom: 4px solid var(--accent); padding-bottom: 1px; }
+.hk.cel.kapcs .szo, .ek.cel.kapcs .alak { border-bottom-color: var(--cel-keret); }
 .ek.kijelolt { background: var(--sel); box-shadow: 0 0 0 3px var(--ok); }
 .ek.ntr { opacity: .55; }
 .kivalaszto .ek { border-style: dashed; border-color: var(--ok); }
@@ -168,10 +207,12 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
     </div>
     <div class="card">
       <h2>Károli 1908</h2>
+      <p class="folyo hu" id="t-hu-folyo"></p>
       <div class="kartyak hu" id="t-hu"></div>
     </div>
     <div class="card">
       <h2 id="t-er-cim">Eredeti</h2>
+      <p class="folyo er" id="t-er-folyo"></p>
       <div class="kartyak er" id="t-er"></div>
       <div class="tipp" id="t-er-tipp" style="margin-top:6px"></div>
     </div>
@@ -357,10 +398,12 @@ function linkek(t) {
 /* a kártya párjai kigyulladnak a másik sorban (egy-a-többhöz is) */
 function kapcs_jelol(o, n) {
   document.querySelectorAll(".kapcs").forEach(function (x) { x.classList.remove("kapcs"); });
+  document.querySelectorAll(".kapcs-szo").forEach(function (x) { x.classList.remove("kapcs-szo"); });
   if (!o) return;
   var k = kifejezes(o, n), hu = k.hu, er = k.er;
-  hu.forEach(function (k) { var e = $("hk-" + k); if (e) e.classList.add("kapcs"); });
-  er.forEach(function (k) { var e = $("ek-" + k); if (e) e.classList.add("kapcs"); });
+  hu.forEach(function (k) { ["hk-", "hf-"].forEach(function (p) { var e = $(p + k); if (e) e.classList.add("kapcs"); }); });
+  er.forEach(function (k) { ["ek-", "ef-"].forEach(function (p) { var e = $(p + k); if (e) e.classList.add("kapcs"); }); });
+  er.forEach(function (k) { var e = $("ef-" + k); if (e && e.parentNode.classList.contains("fszo")) e.parentNode.classList.add("kapcs-szo"); });
 }
 /* a kifejezés: a kártya párjai, és azok további párjai (két lépés a pár-gráfban), hogy egy többszavas
    megfelelés (pl. „a miképen” ↔ כַּאֲשֶׁר) minden tagja együtt villanjon fel */
@@ -445,17 +488,50 @@ function rajzol() {
     esemeny(c, "hu", tk.n);
     hu.appendChild(c);
   });
+  var hf = $("t-hu-folyo"); hf.textContent = "";
+  toks.forEach(function (tk, j) {
+    if (j === 0 && tk.i > 0) hf.appendChild(document.createTextNode(t.hu.slice(0, tk.i)));
+    var sp = el("span", { "class": "fs", id: "hf-" + tk.n }, tk.s);
+    if (tk.i === t.hk && tk.e === t.hv) sp.classList.add("cel");
+    esemeny(sp, "hu", tk.n);
+    hf.appendChild(sp);
+    hf.appendChild(document.createTextNode(t.hu.slice(tk.e, j + 1 < toks.length ? toks[j + 1].i : t.hu.length)));
+  });
 
-  /* eredeti vers kártyákon; héberben a Macula szóazonosítója szerint csoportosítva, jobbról balra */
+  /* eredeti vers kártyákon; héberben írott szavanként (a `g` mező: a Macula szóazonosítója, ennek hiányában a
+     tartalék szabály) szürke keretben: a keret tetején az egész írott szó (kiemelés nélkül), alatta az elemei külön
+     kártyán, jobbról balra */
+  var ef = $("t-er-folyo"); ef.textContent = ""; ef.className = "folyo er " + t.nyelv;
+  var ef_szo = null, ef_g = null;
+  t.tok.forEach(function (k, j) {
+    if (t.nyelv !== "heber" || ef_szo === null || k.g !== ef_g) {
+      if (j > 0) ef.appendChild(document.createTextNode(" "));
+      ef_szo = el("span", { "class": "fszo" }); ef.appendChild(ef_szo);
+    }
+    ef_g = k.g;
+    var sp = el("span", { "class": "fs", id: "ef-" + k.n, title: k.n + ". szó · " + k.s }, k.a);
+    if ((t.tipus === "par" || t.tipus === "kimaradt") && k.n === t.en) { sp.classList.add("cel"); ef_szo.classList.add("cel-szo"); }
+    if (k.x) sp.classList.add("ntr");
+    esemeny(sp, "er", k.n);
+    ef_szo.appendChild(sp);
+  });
   var er = $("t-er"); er.textContent = ""; er.className = "kartyak er " + t.nyelv;
   $("t-er-cim").textContent = t.nyelv === "heber" ? "Eredeti (héber, TAHOT)" : "Eredeti (görög, TAGNT)";
   var valaszto = valaszto_aktiv(t, v);
   er.classList.toggle("kivalaszto", valaszto);
-  var csop = null, elozo_w = null;
+  var csop = null, elozo_g = null;
   t.tok.forEach(function (k) {
     if (t.nyelv === "heber") {
-      if (!csop || !k.w || k.w !== elozo_w) { csop = el("div", { "class": "eszo" }); er.appendChild(csop); }
-      elozo_w = k.w;
+      if (!csop || k.g !== elozo_g) {
+        var keret = el("div", { "class": "eszo" });
+        var elemek = t.tok.filter(function (x) { return x.g === k.g; });
+        if (elemek.length > 1) keret.appendChild(el("div", { "class": "eszo-egesz", title: "az egész írott szó" },
+          elemek.map(function (x) { return x.a; }).join("")));
+        csop = el("div", { "class": "eszo-elemek" });
+        keret.appendChild(csop);
+        er.appendChild(keret);
+      }
+      elozo_g = k.g;
     } else csop = er;
     var c = el("div", { "class": "ek", id: "ek-" + k.n, title: k.n + ". szó" + (k.m ? " · " + k.m : "") });
     c.appendChild(el("div", { "class": "alak " + t.nyelv }, k.a));
@@ -465,7 +541,7 @@ function rajzol() {
     if (k.mh) c.appendChild(el("div", { "class": "mf" }, k.mh));
     var pk = L.e2h[k.n] || [];
     if (pk.length) c.appendChild(el("div", { "class": "hu" }, pk.map(function (x) { return x[1]; }).join(", ")));
-    else if (k.x || SZABALY_SZERINT[k.s]) c.appendChild(el("div", { "class": "hu szab", title: k.x ? "a Textus Receptusban nincs benne (K szabály)" : SZABALY_SZERINT[k.s] }, "szabály szerint nincs párosítva"));
+    else if (k.x || SZABALY_SZERINT[k.s]) c.appendChild(el("div", { "class": "hu szab", title: k.x ? "a Textus Receptusban nincs benne" : SZABALY_SZERINT[k.s] }, "szokás szerint nincs bekötve"));
     else c.appendChild(el("div", { "class": "hu" }, "—"));
     if ((t.tipus === "par" || t.tipus === "kimaradt") && k.n === t.en) c.classList.add("cel");
     if (k.x) c.classList.add("ntr");
@@ -473,7 +549,7 @@ function rajzol() {
     esemeny(c, "er", k.n);
     csop.appendChild(c);
   });
-  $("t-er-tipp").textContent = "Rámutatás vagy koppintás: a szó párja kigyullad a másik sorban (újabb koppintás: elenged). Sárga: a vizsgált szó. A kártya alján a magyar pár, vagy „—”, ha nincs; „szabály szerint nincs párosítva”: a konvenció szerint párosítatlan szó (névelő, ʾet stb.), ez nem hiba. Az angol glossza a TAHOT/TAGNT tükörfordítása." +
+  $("t-er-tipp").textContent = "Rámutatás vagy koppintás: a szó párja kigyullad a másik sorban (újabb koppintás: elenged). Sárga: a vizsgált szó. A kártya alján a magyar pár, vagy „—”, ha nincs; „szokás szerint nincs bekötve”: a párosítás az ilyen elemet (névelő, ʾet, [nem TR] stb.) szokás szerint nem köti be; ezt nem kell megítélned, és nem hiányzó kapcsolat. Héberben a szürke keret tetején az egész írott szó áll, alatta az elemei külön kártyán. A kártyák fölött a vers folyó szövegként áll; a szavaira mutatva ugyanúgy kigyullad a pár. Az angol glossza a TAHOT/TAGNT tükörfordítása." +
     (t.nyelv === "gorog" ? " Halvány kártya: a Textus Receptusban nem szereplő szó [nem TR]." : "");
   if (fokusz) kapcs_jelol(fokusz.o, fokusz.n);
   else if (t.tipus === "par" && t.tsz) kapcs_jelol("hu", t.hn);
@@ -512,13 +588,13 @@ function rajzol() {
   $("t-parok-db").textContent = "(" + lista.length + " pár)";
 }
 
-/* a párosítási szabály szerint mindig párosítatlan forrásszavak (f21p/prompt_v3.md A, C, H; a [nem TR] a K) */
+/* a párosítás által szokás szerint be nem kötött forrásszavak (f21p/prompt_v3.md A, C, H; a [nem TR] a K) */
 var SZABALY_SZERINT = {
-  H9009: "héber névelő (A szabály): nem kap magyar párt, kivéve, ha névmásként áll",
-  G3588: "görög névelő (A szabály): nem kap magyar párt, kivéve, ha névmásként áll",
-  H0853: "tárgyjelölő ʾet (C szabály): nem kap magyar párt",
-  H9012: "nyomatékos -āh (H szabály)",
-  H9013: "paragogikus nun (H szabály)"
+  H9009: "héber névelő: a párosítás szokás szerint nem köti be, kivéve, ha névmásként áll",
+  G3588: "görög névelő: a párosítás szokás szerint nem köti be, kivéve, ha névmásként áll",
+  H0853: "tárgyjelölő ʾet: a párosítás szokás szerint nem köti be",
+  H9012: "nyomatékos -āh: a párosítás szokás szerint nem köti be",
+  H9013: "paragogikus nun: a párosítás szokás szerint nem köti be"
 };
 
 function valaszto_aktiv(t, v) {
