@@ -616,7 +616,7 @@ class SavTest(Alap):
             self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav=s, olvas=['a'], ir=['a']))
             self.assertEqual(self.hibak_szoveg(), [])
 
-    def test_sav_ot_elemu_es_business_ervenyes(self):
+    def test_sav_hat_elemu_es_business_ervenyes(self):
         # a felhasznalo dontese (2026-11-15, DT-F219d): USER (olvaso felhasznalokezeles) es BUSINESS (a #86 uzleti oldala)
         self.assertEqual(F.SAVOK, ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'DESIGN'))
         self.g.brief('F01_A_BRIEF.md', brief_szoveg(1, sav='BUSINESS', olvas=['a'], ir=['a']))
