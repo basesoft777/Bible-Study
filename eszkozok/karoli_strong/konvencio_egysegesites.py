@@ -80,7 +80,7 @@ _KI = ('ki kik kit kiket kinek kiknek kiben kikben kinél kiknél kitől kiktől
 _MELY = ('mely melyek melyet melyeket melynek melyeknek melyben melyekben melynél melyeknél melytől melyektől '
          'melyhez melyekhez mellyel melylyel melyekkel melyért melyekért melyből melyekből melyre melyekre melyről '
          'melyekről melyen melyeken')
-_MI = 'mi mik mit miket minek miknek miben miből mire miről mitől mihez mié'
+_MI = 'mi mik mit miket minek miknek miben miből mire miről mitől mihez mié mivel mitek'
 _A_ELOTAGU = 'aki akik akit akiket akinek akiknek amely amelyek amelyet amelyeket amelynek ami amit amik'
 _VALA = 'valaki valakik valakit valakinek valami valamit'
 _EZ = ('e ez ezt ezek ezeket ennek ezeknek ebben ezekben ezen ezeken ezzel ezekkel erre ezekre ebből ezekből ettől '
@@ -94,13 +94,25 @@ _SZEMELYES = ('én engem nékem te téged néked ő őt néki őnéki ők őket 
               'övé övéi vele velök velem veled velünk veletek tőle tőlök tőlem hozzá hozzájok érette érettök róla '
               'rajta benne bennök belőle')
 _HATAROZATLAN = 'némelyek némelyeket mások'
+# a második célzott ellenőrzés után felvett alakok (a felhasználó döntése, 2026-11-18): a testvéralakjuk listás
+_TOS_BOVITES2 = 'övéit nekünk ugyanezeket valakinél'
+# a névutós személyes névmási sorok kiegészítése (a sor egy tagja már listás volt; Károli-alak és mai alak is)
+_NEVUTOS = ('előttem előtted előtte előttünk előttetek előttük előttök '
+            'tőled tőlünk tőletek tőlük '
+            'hozzám hozzád hozzánk hozzátok hozzájuk '
+            'érettem éretted érettünk érettetek érettük '
+            'rólam rólad rólunk rólatok róluk rólok '
+            'rajtam rajtad rajtunk rajtatok rajtuk rajtok '
+            'bennem benned bennünk bennetek bennük '
+            'belőlem belőled belőlünk belőletek belőlük belőlök '
+            'velük')
 # a tőszerinti tábla átnézése után felvett alakok (a testvéralakjuk már listás; a felhasználó döntése, 2026-11-17)
 _TOS_BOVITES = ('abba annál azéi amazoké enyéim enyéimet enyémből tiédet mieink ilyeneket ilyeneké ilyenfélékkel '
                 'ilyesmiket melyik ugyanazokat másik másiknak másiknál másikra mást másé másokét magaméval')
 
 VONATKOZO = frozenset((_KI + ' ' + _MELY + ' ' + _MI).split())
 NEVMAS = frozenset(' '.join((_KI, _MELY, _MI, _A_ELOTAGU, _VALA, _EZ, _AZ, _AMA, _UGYAN, _ILYEN, _SZEMELYES,
-                             _HATAROZATLAN, _TOS_BOVITES)).split())
+                             _HATAROZATLAN, _TOS_BOVITES, _TOS_BOVITES2, _NEVUTOS)).split())
 # általános névmás (mind-, minden-): nincs a listán; ha a törléssel pár nélkül marad, ismert kimaradás
 
 TORLO_FEJ = ['vers', 'hu_sorszam', 'hu_szo', 'er_sorszam', 'er_szo', 'strong']
@@ -112,9 +124,14 @@ KI_IGEKOTO = frozenset({('2Sám 5:2', 10), ('2Sám 13:17', 12)})
 KERDO_E = frozenset(('e', 'é'))
 
 
+HATAROZATLAN_TOVEK = ('egyik', 'egyéb', 'egyeb')   # egyik, egyiket, egyiknek, egyikünk …; egyéb, egyebeknek …
+
+
 def nevmas_e(s):
-    """A (kisbetűs) szó a névmáslistán van-e: a lista eleme, vagy „mind” + listás alak (mindazok, mindezt …)."""
-    return s in NEVMAS or (s.startswith('mind') and (s[4:] in NEVMAS or s[4:] == 'az'))
+    """A (kisbetűs) szó a névmáslistán van-e: a lista eleme, „mind” + listás alak (mindazok, mindezt …), vagy az egyik-,
+    egyéb- határozatlan névmás valamely alakja (a „más/másik” mintájára)."""
+    return (s in NEVMAS or (s.startswith('mind') and (s[4:] in NEVMAS or s[4:] == 'az'))
+            or s.startswith(HATAROZATLAN_TOVEK))
 
 
 def dontes(strong, hu_szo, elozo, kovetkezo, koztes, elotte=' ', teljes=None):

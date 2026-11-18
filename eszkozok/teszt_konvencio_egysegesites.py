@@ -68,6 +68,17 @@ class Szabaly(unittest.TestCase):
         for w in ('mind', 'minden', 'mindenki', 'mindenik', 'mindent', 'ennyi', 'ugyanannyit', 'ezért', 'azért', 'bárki'):
             self.assertEqual(self.d('G3588', w), (None, 'nem_nevmas'), w)
 
+    def test_masodik_ellenorzes_utan_felvett(self):
+        # a második célzott ellenőrzés után felvett alakok (2026-11-18): testvéralakjuk listás; az -ért ragos névmási
+        # alak a listán van, a névmási határozószó (azért, ezért) nincs
+        for w in ('övéit', 'nekünk', 'ugyanezeket', 'valakinél', 'mivel', 'mitek', 'előttük', 'előttem', 'előtte',
+                  'tőled', 'hozzám', 'rólunk', 'rajtok', 'bennünk', 'belőlök', 'egyik', 'egyiket', 'egyiknek',
+                  'egyikünk', 'egyéb', 'egyebeknek', 'kiért', 'melyért', 'azokért'):
+            self.assertEqual(self.d('G3588', w)[0], 'nevmas', w)
+        self.assertEqual(self.d('G3588', 'a', kov='mivel'), ('a_vonatkozo', None))
+        for w in ('azért', 'ezért', 'egy', 'együtt', 'egyszer'):
+            self.assertEqual(self.d('G3588', w), (None, 'nem_nevmas'), w)
+
     def test_mind_listas_alak(self):
         for w in ('mindazok', 'mindazokat', 'mindezt', 'mindezeket', 'mindaz', 'mindama'):
             self.assertEqual(self.d('G3588', w)[0], 'nevmas', w)
