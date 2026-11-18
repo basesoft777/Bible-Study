@@ -16,11 +16,13 @@
   --bg: #fbfaf7; --fg: #1d1d1b; --muted: #6b6a66; --card: #ffffff; --line: #dedbd3;
   --accent: #2f5d8a; --hl: #ffe08a; --hl-er: #ffd27a; --sel: #b9e3c6;
   --ok: #2e7d4f; --bad: #b3361f; --unsure: #9a6b00; --chip: #f1efe9;
+  --cel-bg: #ffd23f; --cel-keret: #a86a00; --kapcs-bg: #d3e5f8;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #171716; --fg: #ecebe6; --muted: #a3a29c; --card: #222220; --line: #3a3935;
     --accent: #8ab4e0; --hl: #6b5512; --hl-er: #7a5a10; --sel: #1f5a36;
-    --ok: #6cc28f; --bad: #f08a75; --unsure: #e3b851; --chip: #2c2b28; }
+    --ok: #6cc28f; --bad: #f08a75; --unsure: #e3b851; --chip: #2c2b28;
+    --cel-bg: #8a6500; --cel-keret: #ffd24d; --kapcs-bg: #1d3f63; }
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--fg);
@@ -75,8 +77,16 @@ label.opt { display: flex; gap: 8px; align-items: center; padding: 6px 0; cursor
   font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif;
   font-size: calc(1.7rem * var(--betu)); line-height: 1.3; }
 .eszo-elemek { display: flex; gap: 2px; direction: rtl; }
-.hk.cel, .ek.cel { background: var(--hl); border-color: #c99700; box-shadow: 0 0 0 2px #c99700; }
-.hk.kapcs, .ek.kapcs { box-shadow: 0 0 0 3px var(--accent); border-color: var(--accent); }
+/* a vizsgált szó és a párra mutatáskor kigyulladó szó: telt háttér, vastag keret, és a szó alatt vastag aláhúzó
+   sáv (a szó sorának alján, így a héber pontozást és az átírást nem takarja); világos és sötét témában is erős
+   kontraszt. Ha a vizsgált szó maga is kigyullad, a sárga marad, kívül kék gyűrűvel. */
+.hk.cel, .ek.cel { background: var(--cel-bg); border-color: var(--cel-keret); box-shadow: 0 0 0 3px var(--cel-keret); }
+.hk.kapcs, .ek.kapcs { background: var(--kapcs-bg); box-shadow: 0 0 0 3px var(--accent); border-color: var(--accent); }
+.hk.cel.kapcs, .ek.cel.kapcs { background: var(--cel-bg); border-color: var(--cel-keret);
+  box-shadow: 0 0 0 3px var(--cel-keret), 0 0 0 6px var(--accent); }
+.hk.cel .szo, .ek.cel .alak { border-bottom: 4px solid var(--cel-keret); padding-bottom: 1px; }
+.hk.kapcs .szo, .ek.kapcs .alak { border-bottom: 4px solid var(--accent); padding-bottom: 1px; }
+.hk.cel.kapcs .szo, .ek.cel.kapcs .alak { border-bottom-color: var(--cel-keret); }
 .ek.kijelolt { background: var(--sel); box-shadow: 0 0 0 3px var(--ok); }
 .ek.ntr { opacity: .55; }
 .kivalaszto .ek { border-style: dashed; border-color: var(--ok); }
