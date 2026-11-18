@@ -96,7 +96,7 @@ _SZEMELYES = ('én engem nékem te téged néked ő őt néki őnéki ők őket 
 _HATAROZATLAN = 'némelyek némelyeket mások'
 # a tőszerinti tábla átnézése után felvett alakok (a testvéralakjuk már listás; a felhasználó döntése, 2026-11-17)
 _TOS_BOVITES = ('abba annál azéi amazoké enyéim enyéimet enyémből tiédet mieink ilyeneket ilyeneké ilyenfélékkel '
-                'ilyesmiket melyik ugyanazokat másik másiknak másiknál másikra mást másé másokét')
+                'ilyesmiket melyik ugyanazokat másik másiknak másiknál másikra mást másé másokét magaméval')
 
 VONATKOZO = frozenset((_KI + ' ' + _MELY + ' ' + _MI).split())
 NEVMAS = frozenset(' '.join((_KI, _MELY, _MI, _A_ELOTAGU, _VALA, _EZ, _AZ, _AMA, _UGYAN, _ILYEN, _SZEMELYES,

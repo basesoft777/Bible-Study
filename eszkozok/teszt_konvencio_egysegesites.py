@@ -63,9 +63,9 @@ class Szabaly(unittest.TestCase):
         # a tőszerinti tábla átnézése után felvett alakok; az általános és mennyiségi névmás nincs a listán
         for w in ('abba', 'annál', 'azéi', 'amazoké', 'enyéim', 'enyéimet', 'enyémből', 'tiédet', 'mieink',
                   'ilyeneket', 'ilyeneké', 'ilyenfélékkel', 'ilyesmiket', 'melyik', 'ugyanazokat', 'másik',
-                  'másiknak', 'másiknál', 'másikra', 'mást', 'másé', 'másokét'):
+                  'másiknak', 'másiknál', 'másikra', 'mást', 'másé', 'másokét', 'magaméval'):
             self.assertEqual(self.d('G3588', w)[0], 'nevmas', w)
-        for w in ('mind', 'minden', 'mindenki', 'mindenik', 'mindent', 'ennyi', 'ugyanannyit', 'ezért', 'azért'):
+        for w in ('mind', 'minden', 'mindenki', 'mindenik', 'mindent', 'ennyi', 'ugyanannyit', 'ezért', 'azért', 'bárki'):
             self.assertEqual(self.d('G3588', w), (None, 'nem_nevmas'), w)
 
     def test_mind_listas_alak(self):
