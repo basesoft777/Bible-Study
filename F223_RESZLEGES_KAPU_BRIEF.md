@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 sav: SYSTEMS
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: a `push_elott.py` változott fájlok alapján csak az érintett lépéseket futtató módja (egy helyen definiált lépés → útvonalminta leképezéssel; bizonytalanságnál a teljes kapu); az (a) rész, a csomag-exportálók „csak szövegek” módja, a nyílt Károli-csomagok PR-ja után
-kovetkezo: "Te: a PR átnézése és merge; az (a) rész a nyílt magra kész, a két Károli-csomagra nem (N-F223b)"
+kovetkezo: "Lezárva: a PR #739 a main-en; a két Károli-csomag „csak szövegek” módja (N-F223b) a #229-ben folytatódik"
 munka: folyamat
 olvas: [eszkozok/ellenorzes/futtat.py, .github/workflows/ellenorzes.yml]
 ir: [eszkozok/push_elott.py, eszkozok/teszt_push_elott.py, .claude/commands/kovetkezo.md, naplok/F223_jelentes.md, eszkozok/nyilt_mag_export.py, eszkozok/nyilt_mag_szovegek.py, eszkozok/nyilt_mag_kapu.py, eszkozok/teszt_nyilt_mag.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/ellenorzes/tesztek/test_szabalyok.py, eszkozok/karoli_strong_kapu.py, eszkozok/teszt_karoli_strong_export.py, adat/nyilt_kodkonyv.tsv, nyilt_mag/, nyitott/uj/trusting-carson-7572be.md]

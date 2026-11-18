@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 sav: SYSTEMS
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: egy szkript (`eszkozok/heti_attekinto.py`), amely a brief-fejlécekből és a GitHub PR-okból önálló, olvasói nyelvű HTML-oldalt készít a felhasználónak: fent „A te teendőid”, utána négy sáv (fejlécben `sav`: SYSTEMS / CONTENT / SERVER / USER; a hiányzó vagy ismeretlen érték „besorolatlan”), mindegyikben folyamatban / vár / kész a héten; a kimenet a repón kívülre kerül, a repóba csak a szkript és a tesztje
-kovetkezo: "Te: a draft PR áttekintése; a merge a felhasználóé; a `sav` mező bevezetése (másik session) után a próba-oldal újragenerálása"
+kovetkezo: "Lezárva: a PR #732 a main-en; a `sav` mező él, a próba-oldal bármikor újragenerálható (`eszkozok/heti_attekinto.py`)"
 munka: folyamat
 olvas: [CLAUDE.md, eszkozok/feladatok.py]
 ir: [eszkozok/heti_attekinto.py, eszkozok/tesztek/test_heti_attekinto.py, eszkozok/teszt_feladatok.py, F220_HETI_ATTEKINTO_BRIEF.md]
