@@ -144,6 +144,20 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 .racs button.bizonytalan { background: var(--unsure); color: #fff; }
 .racs button.akt { outline: 3px solid var(--accent); }
 .rejtett { display: none !important; }
+/* a beküldés visszajelzése: teljes képernyős megerősítés vagy hibaüzenet, és a nyitóoldalon „Beküldve” sáv */
+.fedo { position: fixed; inset: 0; z-index: 50; background: rgba(0, 0, 0, .55); display: flex; align-items: center;
+  justify-content: center; padding: 16px; }
+.fedo-doboz { background: var(--card); color: var(--fg); border-radius: 14px; max-width: 540px; width: 100%;
+  padding: 26px 22px 22px; text-align: center; border-top: 10px solid var(--ok); box-shadow: 0 12px 40px rgba(0, 0, 0, .35); }
+.fedo-doboz.hiba { border-top-color: var(--bad); }
+.fedo-ikon { font-size: 3.2rem; line-height: 1; color: var(--ok); }
+.fedo-doboz.hiba .fedo-ikon { color: var(--bad); }
+.fedo-doboz h2 { font-size: 1.6rem; margin: 10px 0 8px; text-transform: none; letter-spacing: 0; color: var(--fg); }
+.fedo-doboz p { font-size: 1.12rem; line-height: 1.5; margin: 6px 0; }
+.fedo-doboz .teendo { font-weight: 600; }
+.fedo-doboz button { margin-top: 14px; min-width: 140px; }
+.bekuldve-sav { background: color-mix(in srgb, var(--ok) 16%, var(--card)); border: 2px solid var(--ok);
+  border-radius: 10px; padding: 12px 14px; font-weight: 700; font-size: 1.15rem; margin: 0 0 14px; }
 .tipp { font-size: .85rem; color: var(--muted); }
 .mentve { font-size: .8rem; color: var(--muted); }
 .emlek { margin-top: 8px; padding: 8px 10px; border: 1px solid var(--accent); border-radius: 8px; background: var(--card);
@@ -176,6 +190,7 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
 <main>
   <!-- induló képernyő -->
   <section id="s-indul" class="rejtett">
+    <p class="bekuldve-sav rejtett" id="nyito-bekuldve" role="status"></p>
     <h1>Károli 1908 – Strong szópárosítás: emberi ellenőrzés</h1>
     <div class="card">
       <p>A Károli-biblia 1908-as szövegének szavait egy nyelvi modell párosította a héber és görög eredetivel, rögzített szabályok szerint; a Strong-számokat ezután program kapcsolta a párokhoz (nyílt adat, doi:10.5281/zenodo.24141883). A pontosságot eddig gép mérte; most két ellenőr egymástól függetlenül nézi át a minta párjait, és az eredmény a <i>Journal of Open Humanities Data</i>-ba készülő cikkbe kerül. A részleteket az útmutató írja le. A munka hosszát a kísérő levél mondja meg; több részletben is végezhető.</p>
@@ -310,11 +325,20 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
   </div>
 </div>
 
+<div class="fedo rejtett" id="beku-fedo" role="dialog" aria-modal="true" aria-labelledby="beku-cim">
+  <div class="fedo-doboz" id="beku-doboz">
+    <div class="fedo-ikon" id="beku-ikon" aria-hidden="true">✓</div>
+    <h2 id="beku-cim"></h2>
+    <p id="beku-szoveg"></p>
+    <p class="teendo" id="beku-teendo"></p>
+    <button class="primary" id="beku-ok" type="button">Rendben</button>
+  </div>
+</div>
 <script>
 "use strict";
 var MINTA = /*MINTA_ADAT*/null;
 var SZERVER = /*SZERVER_MOD*/false;   // true: online változat (a tételek és a mentés a Workeren, DT-F175vp)
-var VERZIO = "F175.V25";
+var VERZIO = "F175.V42";
 
 /* ---------- segédek ---------- */
 function fnv(s) { var h = 0x811c9dc5; for (var i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193) >>> 0; } return h >>> 0; }
@@ -820,6 +844,28 @@ function allapot_jel() {
   $("m-szerver-allapot").textContent = s;
   $("b-kesz").disabled = SZ.lezarva || !allapot || kesz_db() < MINTA.length || SZ.sor.length > 0;
 }
+function ido_hu(iso) { return iso ? new Date(iso).toLocaleString("hu-HU") : ""; }
+/* a beküldés visszajelzése teljes képernyőn: siker (a szerveren lévő tételszámmal, a szerver válaszából) vagy hiba
+   teendővel */
+function fedo(siker, cim, szoveg, teendo) {
+  $("beku-doboz").classList.toggle("hiba", !siker);
+  $("beku-ikon").textContent = siker ? "✓" : "!";
+  $("beku-cim").textContent = cim;
+  $("beku-szoveg").textContent = szoveg;
+  $("beku-teendo").textContent = teendo || "";
+  $("beku-teendo").classList.toggle("rejtett", !teendo);
+  $("beku-fedo").classList.remove("rejtett");
+  if ($("beku-ok").focus) $("beku-ok").focus();
+}
+function bekuldve_szoveg(kesz_ido, n, osszes) {
+  return (n === osszes ? "Mind a " + n + " tétel megérkezett a szerverre." : n + " / " + osszes + " tétel van a szerveren.");
+}
+function nyito_sav(d) {
+  var e = $("nyito-bekuldve");
+  if (!d.kesz_ido) { e.classList.add("rejtett"); return; }
+  e.textContent = "✓ Beküldve: " + ido_hu(d.kesz_ido) + (typeof d.megerkezett === "number" ? ", " + d.megerkezett + "/" + d.tetelszam + " tétel." : ".");
+  e.classList.remove("rejtett");
+}
 function kesz_kuld() {
   var info = $("m-kesz-info");
   if (SZ.lezarva) { info.textContent = "A válaszaidat már beküldted. Köszönjük!"; return; }
@@ -828,11 +874,27 @@ function kesz_kuld() {
   if (!confirm("Beküldöd a válaszaidat? Ezután már nem módosíthatók.")) return;
   info.textContent = "Beküldés…";
   api("/api/kesz", "POST", { kliens_azon: azon() }).then(function (x) {
-    if (x.st === 200) { SZ.lezarva = true; SZ.kesz_ido = x.d.kesz_ido; info.textContent = "Köszönjük! A válaszaid beérkeztek."; }
-    else if (x.st === 409 && x.d.hiba === "hianyos") info.textContent = "A szerveren még hiányzik valami: " + x.d.uzenet + ". Várj egy kicsit, és próbáld újra.";
-    else info.textContent = "A beküldés nem sikerült (" + (x.d.uzenet || x.st) + "); próbáld újra pár perc múlva.";
+    var MEGVAN = " A válaszaid ebben a böngészőben megvannak.";
+    if (x.st === 200) {
+      SZ.lezarva = true; SZ.kesz_ido = x.d.kesz_ido;
+      info.textContent = "Köszönjük! A válaszaid beérkeztek.";
+      fedo(true, "Köszönjük!", "Beküldve: " + ido_hu(x.d.kesz_ido) + ". " + bekuldve_szoveg(x.d.kesz_ido, x.d.megerkezett, x.d.tetelszam), "");
+      nyito_sav(x.d);
+    } else if (x.st === 409 && x.d.hiba === "hianyos") {
+      info.textContent = "A szerveren még hiányzik valami: " + x.d.uzenet + ".";
+      fedo(false, "A beküldés nem sikerült", "A szerveren még " + x.d.uzenet + ".",
+        "Teendő: várd meg, amíg fent „✓ mentve” áll (internetkapcsolat kell), majd nyomd meg újra a „Kész, beküldöm” gombot." + MEGVAN);
+    } else {
+      info.textContent = "A beküldés nem sikerült (" + (x.d.uzenet || x.st) + ").";
+      fedo(false, "A beküldés nem sikerült", "A szerver hibát jelzett (" + (x.d.uzenet || x.st) + ").",
+        "Teendő: próbáld újra pár perc múlva; ha akkor sem megy, szólj a szervezőnek." + MEGVAN);
+    }
     allapot_jel(); if (nezet === "tetel") rajzol();
-  }, function () { info.textContent = "Nincs kapcsolat a szerverrel; próbáld újra, ha lesz internet."; });
+  }, function () {
+    info.textContent = "Nincs kapcsolat a szerverrel.";
+    fedo(false, "A beküldés nem sikerült", "Nincs kapcsolat a szerverrel.",
+      "Teendő: ellenőrizd az internetkapcsolatot, és nyomd meg újra a „Kész, beküldöm” gombot. A válaszaid ebben a böngészőben megvannak.");
+  });
 }
 function indul_hiba(s) { $("indul-info").textContent = s; $("b-indul").classList.add("rejtett"); }
 function sz_betolt(d) {
@@ -849,7 +911,10 @@ function sz_betolt(d) {
   SZ.sor.forEach(function (x) { var h = a.valaszok[x.tetel_id]; if (!h || (x.kliens_ido || "") >= (h.ido || "")) a.valaszok[x.tetel_id] = masol(x.valasz); });
   allapot = a; SZ.lezarva = !!d.kesz_ido; SZ.kesz_ido = d.kesz_ido || null; SZ.betoltve = true;
   ment();
-  if (kesz_db() > 0 || helyi) mutat("tetel");
+  nyito_sav(d);
+  /* a már beküldött munka újranyitásakor a nyitóoldal áll elöl, a „Beküldve” sávval */
+  if (d.kesz_ido) { $("indul-info").textContent = ""; $("b-indul").textContent = "A válaszaim megtekintése"; $("b-indul").classList.remove("rejtett"); mutat("indul"); }
+  else if (kesz_db() > 0 || helyi) mutat("tetel");
   else { $("indul-info").textContent = "Betöltve: " + MINTA.length + " tétel."; $("b-indul").classList.remove("rejtett"); }
   allapot_jel(); kuld();
 }
@@ -885,6 +950,7 @@ function indul() {
   ment(); mutat("tetel");
 }
 $("b-indul").addEventListener("click", indul);
+$("beku-ok").addEventListener("click", function () { $("beku-fedo").classList.add("rejtett"); });
 $("i-nev").addEventListener("keydown", function (e) { if (e.key === "Enter") indul(); });
 ["helyes", "hibas", "bizonytalan"].forEach(function (x) { $("b-" + x).addEventListener("click", function () { itelet_valt(x); }); });
 document.querySelectorAll("input[name=hibatipus]").forEach(function (r) {

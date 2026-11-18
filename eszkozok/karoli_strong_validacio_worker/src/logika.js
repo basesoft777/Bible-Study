@@ -9,7 +9,7 @@
 // A logika futtatókörnyezet-független: a tesztek Node-on, a D1 helyett node:sqlite-tal hívják
 // (eszkozok/karoli_strong_validacio_worker/teszt/worker_proba.mjs).
 
-export const VERZIO = 'F175.V25';   // F175.V25: a hiányzó kapcsolat jelölője
+export const VERZIO = 'F175.V42';   // F175.V25: a hiányzó kapcsolat jelölője; F175.V42: a beküldés visszajelzése
 const ITELETEK = new Set(['', 'helyes', 'hibas', 'bizonytalan']);
 // A „Nem” altípusai (a hiányzó kapcsolat nem hiba: külön jelölő, `hianyzo_kapcsolat`, csak „helyes” ítélet mellett).
 const HIBATIPUSOK = new Set(['', 'rossz_forrasszo', 'folosleges_par', 'egyeb', 'kimaradt_par']);
@@ -112,16 +112,26 @@ export function valasz_normal(v, kliens_ido) {
   };
 }
 
+// a szerveren ítélettel álló, ennek az ellenőrnek kiosztott tételek száma (a beküldés visszajelzéséhez)
+async function megerkezett(env, id) {
+  const r = await env.DB.prepare('SELECT COUNT(*) AS n FROM kiosztas k WHERE k.ellenor = ? AND EXISTS ' +
+    '(SELECT 1 FROM utolso u WHERE u.ellenor = k.ellenor AND u.tetel = k.tetel AND ' +
+    "json_extract(u.valasz, '$.itelet') <> '')").bind(id).first();
+  return r.n;
+}
+
 async function tetelek(req, env) {
   const e = await ellenor_token(req, env);
   if (!e) return hiba(401, 'token', 'érvénytelen hozzáférési link');
   const t = await env.DB.prepare('SELECT t.id, t.adat FROM kiosztas k JOIN tetel t ON t.id = k.tetel ' +
     'WHERE k.ellenor = ? ORDER BY t.id').bind(e.id).all();
   const v = await env.DB.prepare('SELECT tetel, valasz FROM utolso WHERE ellenor = ?').bind(e.id).all();
+  const n_szerveren = e.kesz_ido ? await megerkezett(env, e.id) : null;
   // a tételek JSON-ja a D1-ben kész szövegként áll; összefűzés, nem újraértelmezés (CPU-keret)
   const s = '{"verzio":' + JSON.stringify(VERZIO) + ',"ellenor":' + JSON.stringify(e.id) +
     ',"szerep":' + JSON.stringify(e.szerep) + ',"minta_hash":' + JSON.stringify(e.minta_hash) +
     ',"tetelszam":' + e.tetelszam + ',"kesz_ido":' + JSON.stringify(e.kesz_ido || null) +
+    ',"megerkezett":' + JSON.stringify(n_szerveren) +
     ',"tetelek":[' + t.results.map(r => r.adat).join(',') + ']' +
     ',"valaszok":{' + v.results.map(r => JSON.stringify(r.tetel) + ':' + r.valasz).join(',') + '}}';
   return json(s);
@@ -160,7 +170,8 @@ async function valaszok_ment(req, env) {
 async function kesz(req, env) {
   const e = await ellenor_token(req, env);
   if (!e) return hiba(401, 'token', 'érvénytelen hozzáférési link');
-  if (e.kesz_ido) return json({ ok: true, kesz_ido: e.kesz_ido, mar_kesz: true });
+  if (e.kesz_ido) return json({ ok: true, kesz_ido: e.kesz_ido, mar_kesz: true, megerkezett: await megerkezett(env, e.id),
+    tetelszam: e.tetelszam });
   let d;
   try { d = await torzs(req); } catch (x) { return hiba(400, 'torzs', x.message); }
   if (!AZON.test((d && d.kliens_azon) || '')) return hiba(400, 'kliens_azon', 'hibás kliens_azon');
@@ -174,7 +185,7 @@ async function kesz(req, env) {
     env.DB.prepare('INSERT OR IGNORE INTO naplo (ellenor, tetel, esemeny, valasz, kliens_ido, szerver_ido, kliens_azon) ' +
       "VALUES (?, NULL, 'kesz', NULL, NULL, ?, ?)").bind(e.id, most, d.kliens_azon),
   ]);
-  return json({ ok: true, kesz_ido: most });
+  return json({ ok: true, kesz_ido: most, megerkezett: await megerkezett(env, e.id), tetelszam: e.tetelszam });
 }
 
 // A szervező csak a haladást látja: hány tételnél van ítélet, mikor volt utoljára mentés, kész-e. Ítéletet nem.

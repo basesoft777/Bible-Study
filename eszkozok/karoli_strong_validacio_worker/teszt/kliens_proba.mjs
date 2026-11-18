@@ -137,6 +137,14 @@ ell(g1.A.kesz_db() === 8 && g1.elemek['b-kesz'].disabled === false, 'első eszk�
 g1.A.kesz_kuld(); await rendez();
 const kesz = d1.db.prepare("SELECT kesz_ido FROM ellenor WHERE id='E1'").get().kesz_ido;
 ell(kesz && g1.A.SZ.lezarva && /Köszönjük/.test(g1.elemek['m-kesz-info'].textContent), 'Kész: ' + g1.elemek['m-kesz-info'].textContent);
+// a beküldés teljes képernyős megerősítése: a szerveren lévő tételszámmal (a szerver válaszából)
+ell(!g1.elemek['beku-fedo'].classList.contains('rejtett') && !g1.elemek['beku-doboz'].classList.contains('hiba')
+    && /Beküldve: .*Mind a 8 tétel megérkezett a szerverre\./.test(g1.elemek['beku-szoveg'].textContent), 'megerősítő képernyő: ' + g1.elemek['beku-szoveg'].textContent);
+// újranyitás a beküldés után: a nyitóoldal áll elöl, a „Beküldve” sávval
+{ const g3 = eszkoz(TA, {}); await rendez();
+  ell(g3.A.nezet === 'indul' && !g3.elemek['nyito-bekuldve'].classList.contains('rejtett')
+      && /Beküldve: .*, 8\/8 tétel\./.test(g3.elemek['nyito-bekuldve'].textContent), 'újranyitott nyitóoldal: ' + g3.elemek['nyito-bekuldve'].textContent);
+  g1.aktival(); }
 const elotte = JSON.stringify(szerveren('E1')), n0 = d1.db.prepare('SELECT COUNT(*) AS n FROM naplo').get().n;
 g1.A.itelet_valt('hibas'); idozitok_futtat(0); await rendez();
 ell(JSON.stringify(szerveren('E1')) === elotte && d1.db.prepare('SELECT COUNT(*) AS n FROM naplo').get().n === n0 && g1.A.SZ.sor.length === 0, 'Kész után nincs módosítás');

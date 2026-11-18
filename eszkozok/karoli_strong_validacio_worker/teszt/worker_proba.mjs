@@ -89,12 +89,14 @@ const k1 = [valtozas('T01', 'helyes', '2026-11-20T10:00:00.000Z', 'azon0001'), v
   await hiv('/api/valaszok', { modszer: 'POST', token: TB, adat: { valtozasok: ['T01', 'T02', 'T03'].map((id, i) => valtozas(id, 'helyes', '2026-11-21T09:00:0' + i + '.000Z', 'azonB10' + i)) } });
   const r2 = await hiv('/api/kesz', { modszer: 'POST', token: TB, adat: { kliens_azon: 'keszB002' } });
   ell(r2.st === 200 && r2.d.kesz_ido, 'kész: ' + r2.st);
+  ell(r2.d.megerkezett === r2.d.tetelszam && r2.d.tetelszam > 0, 'a beküldés válaszában a szerveren lévő tételszám: ' + JSON.stringify(r2.d));
   const r3 = await hiv('/api/valaszok', { modszer: 'POST', token: TB, adat: { valtozasok: [valtozas('T01', 'hibas', '2026-11-22T00:00:00.000Z', 'azonB200', { hibatipus: 'egyeb' })] } });
   ell(r3.st === 409 && r3.d.hiba === 'lezarva', 'kész után nincs mentés: ' + r3.st);
   const r4 = await hiv('/api/kesz', { modszer: 'POST', token: TB, adat: { kliens_azon: 'keszB003' } });
   ell(r4.st === 200 && r4.d.mar_kesz === true && r4.d.kesz_ido === r2.d.kesz_ido, 'második kész');
   const t = await hiv('/api/tetelek', { token: TB });
-  ell(t.d.kesz_ido === r2.d.kesz_ido, 'a kész-idő a tételekkel jön'); }
+  ell(t.d.kesz_ido === r2.d.kesz_ido, 'a kész-idő a tételekkel jön');
+  ell(t.d.megerkezett === r2.d.megerkezett && r4.d.megerkezett === r2.d.megerkezett, 'a megérkezett tételszám a tételekkel és a második késszel is jön'); }
 // 9. admin: kulcs nélkül, rossz kulccsal, túl rövid szerveroldali kulccsal zárva; a haladás ítéletet nem mutat
 { ell((await hiv('/api/admin/haladas')).st === 401, 'admin kulcs nélkül');
   ell((await hiv('/api/admin/haladas', { token: 'x'.repeat(40) })).st === 401, 'admin rossz kulccsal');
