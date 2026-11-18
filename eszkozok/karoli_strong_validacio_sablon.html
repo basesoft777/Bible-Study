@@ -17,12 +17,14 @@
   --accent: #2f5d8a; --hl: #ffe08a; --hl-er: #ffd27a; --sel: #b9e3c6;
   --ok: #2e7d4f; --bad: #b3361f; --unsure: #9a6b00; --chip: #f1efe9;
   --cel-bg: #ffd23f; --cel-keret: #a86a00; --kapcs-bg: #d3e5f8;
+  --kapcs-eros-szoveg: #ffffff; --kapcs-alahuz: #163452; --szo-cel: #fff0b3; --szo-kapcs: #dce9f7;
 }
 @media (prefers-color-scheme: dark) {
   :root { --bg: #171716; --fg: #ecebe6; --muted: #a3a29c; --card: #222220; --line: #3a3935;
     --accent: #8ab4e0; --hl: #6b5512; --hl-er: #7a5a10; --sel: #1f5a36;
     --ok: #6cc28f; --bad: #f08a75; --unsure: #e3b851; --chip: #2c2b28;
-    --cel-bg: #8a6500; --cel-keret: #ffd24d; --kapcs-bg: #1d3f63; }
+    --cel-bg: #8a6500; --cel-keret: #ffd24d; --kapcs-bg: #1d3f63;
+    --kapcs-eros-szoveg: #0f1d2b; --kapcs-alahuz: #e2efff; --szo-cel: #4a3a0a; --szo-kapcs: #1a3047; }
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--fg);
@@ -97,6 +99,14 @@ label.opt { display: flex; gap: 8px; align-items: center; padding: 6px 0; cursor
 .folyo .fs.kapcs { background: var(--kapcs-bg); box-shadow: inset 0 -4px 0 var(--accent); }
 .folyo .fs.cel.kapcs { background: var(--cel-bg); box-shadow: inset 0 -4px 0 var(--cel-keret), 0 0 0 2px var(--accent); }
 .folyo .fs.ntr { opacity: .55; }
+/* az eredeti sorban a kiemelt elem írott szava halvány hátteret kap (az 1–2 betűs elem is látsszon), maga az elem
+   erős színt: a vizsgált sárga, a kigyulladó pár telt kék */
+.folyo.er .fszo { border-radius: 5px; padding: 0 1px; }
+.folyo.er .fszo.cel-szo { background: var(--szo-cel); }
+.folyo.er .fszo.kapcs-szo { background: var(--szo-kapcs); }
+.folyo.er .fs.kapcs { background: var(--accent); color: var(--kapcs-eros-szoveg); box-shadow: inset 0 -4px 0 var(--kapcs-alahuz); }
+.folyo.er .fs.cel.kapcs { background: var(--cel-bg); color: inherit;
+  box-shadow: inset 0 -4px 0 var(--cel-keret), 0 0 0 2px var(--accent); }
 @media (max-width: 600px) { .folyo { font-size: calc(1.05rem * var(--betu)); } .folyo.er.heber { font-size: calc(1.45rem * var(--betu)); }
   .folyo.er.gorog { font-size: calc(1.2rem * var(--betu)); } }
 .hk.cel .szo, .ek.cel .alak { border-bottom: 4px solid var(--cel-keret); padding-bottom: 1px; }
@@ -388,10 +398,12 @@ function linkek(t) {
 /* a kártya párjai kigyulladnak a másik sorban (egy-a-többhöz is) */
 function kapcs_jelol(o, n) {
   document.querySelectorAll(".kapcs").forEach(function (x) { x.classList.remove("kapcs"); });
+  document.querySelectorAll(".kapcs-szo").forEach(function (x) { x.classList.remove("kapcs-szo"); });
   if (!o) return;
   var k = kifejezes(o, n), hu = k.hu, er = k.er;
   hu.forEach(function (k) { ["hk-", "hf-"].forEach(function (p) { var e = $(p + k); if (e) e.classList.add("kapcs"); }); });
   er.forEach(function (k) { ["ek-", "ef-"].forEach(function (p) { var e = $(p + k); if (e) e.classList.add("kapcs"); }); });
+  er.forEach(function (k) { var e = $("ef-" + k); if (e && e.parentNode.classList.contains("fszo")) e.parentNode.classList.add("kapcs-szo"); });
 }
 /* a kifejezés: a kártya párjai, és azok további párjai (két lépés a pár-gráfban), hogy egy többszavas
    megfelelés (pl. „a miképen” ↔ כַּאֲשֶׁר) minden tagja együtt villanjon fel */
@@ -498,7 +510,7 @@ function rajzol() {
     }
     ef_g = k.g;
     var sp = el("span", { "class": "fs", id: "ef-" + k.n, title: k.n + ". szó · " + k.s }, k.a);
-    if ((t.tipus === "par" || t.tipus === "kimaradt") && k.n === t.en) sp.classList.add("cel");
+    if ((t.tipus === "par" || t.tipus === "kimaradt") && k.n === t.en) { sp.classList.add("cel"); ef_szo.classList.add("cel-szo"); }
     if (k.x) sp.classList.add("ntr");
     esemeny(sp, "er", k.n);
     ef_szo.appendChild(sp);
