@@ -11,15 +11,16 @@ kapcsolatokat törli.
 A szabály (egyetlen gépi kritérium, a pár rögzített jegyeiből: Strong-szám, magyar szó, a versben előtte és utána álló
 magyar szó, a köztük álló írásjel):
   1. névelő (H9009, G3588): a kapcsolat csak akkor marad, ha a magyar szó (kisbetűsítve) névmás — zárt szólista
-     (NEVMAS: vonatkozó, mutató, személyes, kérdő és határozatlan névmások ragos alakjaikkal; csak főnévi és
-     melléknévi névmás, névmási határozószó nem), vagy az „a”, ha utána vonatkozó névmás áll (VONATKOZO: a ki, a mely,
+     (NEVMAS: vonatkozó, mutató, személyes, birtokos, kérdő és határozatlan névmás — köztük valaki, némelyek, más,
+     másik, egyik, egyéb —, ragos és névutós alakjaikkal; csak főnévi és melléknévi névmás; általános és mennyiségi
+     névmás és névmási határozószó nem), vagy az „a”, ha utána vonatkozó névmás áll (VONATKOZO: a ki, a mely,
      a mi …; az „a” a kettéírt vonatkozó névmás része, prompt_v3 B);
   2. szűrők: (a) minden „ki” marad, két tételes kivétellel (KI_IGEKOTO: 2Sám 5:2, 2Sám 13:17), ahol igekötő.
      (b) A szóvégi kérdő „-e/-é” leválasztódik (maga soha nem illeszkedik, pl. „megmentheted-e”: törlődik); a maradék
      szó illeszkedik a listára (pl. „azokra-é”: marad). Más kötőjeles szó a teljes alakjával illeszkedik. (c) A „mind” + listás alak
      (mindazok, mindezt …) általános szabályként a listán van. (d) Az önálló „az” marad, ha utána mássalhangzóval kezdődő szó, írásjel, versvég, vagy „a”/„az” áll; magánhangzóval
-     kezdődő szó előtt törlődik (névelőként kezelve). Az -ért ragos alakok (ezért, azért …) túlnyomóan határozószói
-     szerepük miatt nincsenek a listán.
+     kezdődő szó előtt törlődik (névelőként kezelve). Az -ért ragos névmási alakok (kiért, melyért, azokért …) a
+     listán vannak; a névmási határozószók (azért, ezért) nincsenek.
   3. ʾet (H0853): minden kapcsolata törlődik;
   4. egyetlen-pár védelem nincs: ha a magyar szó pár nélkül marad, az ismert kimaradás.
 Csak törlő javítás: új pár nem keletkezik, a megmaradó `parok`-sorok bájtra változatlanok. A `szavak_*.tsv`-ben a
