@@ -84,6 +84,21 @@ label.opt { display: flex; gap: 8px; align-items: center; padding: 6px 0; cursor
 .hk.kapcs, .ek.kapcs { background: var(--kapcs-bg); box-shadow: 0 0 0 3px var(--accent); border-color: var(--accent); }
 .hk.cel.kapcs, .ek.cel.kapcs { background: var(--cel-bg); border-color: var(--cel-keret);
   box-shadow: 0 0 0 3px var(--cel-keret), 0 0 0 6px var(--accent); }
+/* folyó szöveg a kártyák fölött: a vers egy sorban (tördelve), a szavak rámutathatók; héberben jobbról balra, egész
+   írott szavakkal, a vizsgált elem (pl. előtag) a szón belül kiemelve */
+.folyo { margin: 2px 0 12px; font-size: calc(1.15rem * var(--betu)); line-height: 2; overflow-wrap: anywhere; }
+.folyo.er.heber { direction: rtl; unicode-bidi: isolate; text-align: right; line-height: 2.2;
+  font-family: "SBL Hebrew", "Ezra SIL", "Taamey Frank CLM", "Times New Roman", "Arial Hebrew", "David", "Noto Serif Hebrew", serif;
+  font-size: calc(1.7rem * var(--betu)); }
+.folyo.er.gorog { font-family: "Gentium Plus", "Gentium", "SBL Greek", "Times New Roman", "Noto Serif", serif;
+  font-size: calc(1.4rem * var(--betu)); }
+.folyo .fs { cursor: pointer; border-radius: 4px; padding: 0 1px .12em; }
+.folyo .fs.cel { background: var(--cel-bg); box-shadow: inset 0 -4px 0 var(--cel-keret); }
+.folyo .fs.kapcs { background: var(--kapcs-bg); box-shadow: inset 0 -4px 0 var(--accent); }
+.folyo .fs.cel.kapcs { background: var(--cel-bg); box-shadow: inset 0 -4px 0 var(--cel-keret), 0 0 0 2px var(--accent); }
+.folyo .fs.ntr { opacity: .55; }
+@media (max-width: 600px) { .folyo { font-size: calc(1.05rem * var(--betu)); } .folyo.er.heber { font-size: calc(1.45rem * var(--betu)); }
+  .folyo.er.gorog { font-size: calc(1.2rem * var(--betu)); } }
 .hk.cel .szo, .ek.cel .alak { border-bottom: 4px solid var(--cel-keret); padding-bottom: 1px; }
 .hk.kapcs .szo, .ek.kapcs .alak { border-bottom: 4px solid var(--accent); padding-bottom: 1px; }
 .hk.cel.kapcs .szo, .ek.cel.kapcs .alak { border-bottom-color: var(--cel-keret); }
@@ -182,10 +197,12 @@ table.parok td.er.gorog { font-family: "Gentium Plus", "Times New Roman", serif;
     </div>
     <div class="card">
       <h2>Károli 1908</h2>
+      <p class="folyo hu" id="t-hu-folyo"></p>
       <div class="kartyak hu" id="t-hu"></div>
     </div>
     <div class="card">
       <h2 id="t-er-cim">Eredeti</h2>
+      <p class="folyo er" id="t-er-folyo"></p>
       <div class="kartyak er" id="t-er"></div>
       <div class="tipp" id="t-er-tipp" style="margin-top:6px"></div>
     </div>
@@ -373,8 +390,8 @@ function kapcs_jelol(o, n) {
   document.querySelectorAll(".kapcs").forEach(function (x) { x.classList.remove("kapcs"); });
   if (!o) return;
   var k = kifejezes(o, n), hu = k.hu, er = k.er;
-  hu.forEach(function (k) { var e = $("hk-" + k); if (e) e.classList.add("kapcs"); });
-  er.forEach(function (k) { var e = $("ek-" + k); if (e) e.classList.add("kapcs"); });
+  hu.forEach(function (k) { ["hk-", "hf-"].forEach(function (p) { var e = $(p + k); if (e) e.classList.add("kapcs"); }); });
+  er.forEach(function (k) { ["ek-", "ef-"].forEach(function (p) { var e = $(p + k); if (e) e.classList.add("kapcs"); }); });
 }
 /* a kifejezés: a kártya párjai, és azok további párjai (két lépés a pár-gráfban), hogy egy többszavas
    megfelelés (pl. „a miképen” ↔ כַּאֲשֶׁר) minden tagja együtt villanjon fel */
@@ -459,10 +476,33 @@ function rajzol() {
     esemeny(c, "hu", tk.n);
     hu.appendChild(c);
   });
+  var hf = $("t-hu-folyo"); hf.textContent = "";
+  toks.forEach(function (tk, j) {
+    if (j === 0 && tk.i > 0) hf.appendChild(document.createTextNode(t.hu.slice(0, tk.i)));
+    var sp = el("span", { "class": "fs", id: "hf-" + tk.n }, tk.s);
+    if (tk.i === t.hk && tk.e === t.hv) sp.classList.add("cel");
+    esemeny(sp, "hu", tk.n);
+    hf.appendChild(sp);
+    hf.appendChild(document.createTextNode(t.hu.slice(tk.e, j + 1 < toks.length ? toks[j + 1].i : t.hu.length)));
+  });
 
   /* eredeti vers kártyákon; héberben írott szavanként (a `g` mező: a Macula szóazonosítója, ennek hiányában a
      tartalék szabály) szürke keretben: a keret tetején az egész írott szó (kiemelés nélkül), alatta az elemei külön
      kártyán, jobbról balra */
+  var ef = $("t-er-folyo"); ef.textContent = ""; ef.className = "folyo er " + t.nyelv;
+  var ef_szo = null, ef_g = null;
+  t.tok.forEach(function (k, j) {
+    if (t.nyelv !== "heber" || ef_szo === null || k.g !== ef_g) {
+      if (j > 0) ef.appendChild(document.createTextNode(" "));
+      ef_szo = el("span", { "class": "fszo" }); ef.appendChild(ef_szo);
+    }
+    ef_g = k.g;
+    var sp = el("span", { "class": "fs", id: "ef-" + k.n, title: k.n + ". szó · " + k.s }, k.a);
+    if ((t.tipus === "par" || t.tipus === "kimaradt") && k.n === t.en) sp.classList.add("cel");
+    if (k.x) sp.classList.add("ntr");
+    esemeny(sp, "er", k.n);
+    ef_szo.appendChild(sp);
+  });
   var er = $("t-er"); er.textContent = ""; er.className = "kartyak er " + t.nyelv;
   $("t-er-cim").textContent = t.nyelv === "heber" ? "Eredeti (héber, TAHOT)" : "Eredeti (görög, TAGNT)";
   var valaszto = valaszto_aktiv(t, v);
@@ -497,7 +537,7 @@ function rajzol() {
     esemeny(c, "er", k.n);
     csop.appendChild(c);
   });
-  $("t-er-tipp").textContent = "Rámutatás vagy koppintás: a szó párja kigyullad a másik sorban (újabb koppintás: elenged). Sárga: a vizsgált szó. A kártya alján a magyar pár, vagy „—”, ha nincs; „szokás szerint nincs bekötve”: a párosítás az ilyen elemet (névelő, ʾet, [nem TR] stb.) szokás szerint nem köti be; ezt nem kell megítélned, és nem hiányzó kapcsolat. Héberben a szürke keret tetején az egész írott szó áll, alatta az elemei külön kártyán. Az angol glossza a TAHOT/TAGNT tükörfordítása." +
+  $("t-er-tipp").textContent = "Rámutatás vagy koppintás: a szó párja kigyullad a másik sorban (újabb koppintás: elenged). Sárga: a vizsgált szó. A kártya alján a magyar pár, vagy „—”, ha nincs; „szokás szerint nincs bekötve”: a párosítás az ilyen elemet (névelő, ʾet, [nem TR] stb.) szokás szerint nem köti be; ezt nem kell megítélned, és nem hiányzó kapcsolat. Héberben a szürke keret tetején az egész írott szó áll, alatta az elemei külön kártyán. A kártyák fölött a vers folyó szövegként áll; a szavaira mutatva ugyanúgy kigyullad a pár. Az angol glossza a TAHOT/TAGNT tükörfordítása." +
     (t.nyelv === "gorog" ? " Halvány kártya: a Textus Receptusban nem szereplő szó [nem TR]." : "");
   if (fokusz) kapcs_jelol(fokusz.o, fokusz.n);
   else if (t.tipus === "par" && t.tsz) kapcs_jelol("hu", t.hn);
