@@ -906,9 +906,9 @@ def lekotes_sha(fn):
 # A konvenció-egységesítés (1.1, DT-F175vr): a törölt névelő- és ʾet-kapcsolatok fagyasztott listája a letétben. A
 # kártyák a vers többi párját az 1.1 szerint mutatják; a vizsgált pár akkor is látszik, ha az 1.1 törölte (a tétel
 # jelöletlenül a felületen marad; a belső jelölés a letétben, külön fájlban). A minta.tsv nem változik.
-KONVENCIO_TORLOLISTA = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'konvencio_11_vegleges',
+KONVENCIO_TORLOLISTA = os.path.join(os.path.expanduser('~'), 'Bible-Study-letet', 'konvencio_11_fagy2',
                                     'torolt_kapcsolatok.tsv')
-KONVENCIO_SHA256 = '71a0752ed17ff089e7aef0db86a6b5543c8293cacef3b20ecdf1359146412655'
+KONVENCIO_SHA256 = '4b9976b39f27d68218e06394ac3f89104dbfce88e4f576c12af20cbfd0fd8f4c'
 _OLDAL_KIEG = {}
 
 
