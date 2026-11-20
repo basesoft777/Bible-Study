@@ -247,6 +247,62 @@ class Csomag(unittest.TestCase):
                                      'kozlemeny/data_paper/karoli_strong_kezirat_hu.md'])
         self.assertTrue(all(sz.startswith('<!-- GENERÁLT:') for _, sz in k.values()))
 
+    def test_masodik_modell_csak_a_kezirat_mi_nyilatkozataban(self):
+        # DT-F175m: a második párosító modellről egy semleges mondat csak a JOHD-kézirat MI-nyilatkozatában áll;
+        # a nyílt csomag, a közlemény és a kézirat többi része nem említi, és a MODELL_EGYEZES-tiltás érvényes marad
+        jel = {'en': 'another language model (Google Gemini) was also run as a cross-check',
+               'hu': 'egy másik nyelvi modell (Google Gemini) is futott keresztellenőrzésként'}
+        for rel, (torzs, _) in E.kezirat(self.N).items():
+            d = 'hu' if rel.endswith('_hu.md') else 'en'
+            torzs = torzs.replace('\n', ' ')         # a sortörés helye a sablonban szabad
+            nyil = torzs.split('## AI Declaration' if d == 'en' else '## Nyilatkozat a mesterséges intelligencia')
+            self.assertEqual(len(nyil), 2, rel)
+            self.assertNotIn(jel[d], nyil[0], rel)
+            self.assertEqual(nyil[1].count(jel[d]), 1, rel)
+        for rel, (torzs, _) in E.note(self.N).items():
+            self.assertNotIn('cross-check', torzs)
+            self.assertNotIn('keresztellenőrzés', torzs)
+        self.assertFalse(any('cross-check' in sz or 'keresztellenőrzés' in sz for sz in self.fajlok.values()))
+        for tilos in ('a Gemini model', 'two language models agreed', 'két nyelvi modell', 'high confidence'):
+            self.assertTrue(any(rx.search(tilos) for rx, _ in G.TILTOTT), tilos)
+
+    def test_gemini_csak_az_mi_nyilatkozatban(self):
+        # DT-F175r (a lektor 7. köre szerint szűkítve): a gyártói modellnév csak a JOHD-kézirat MI-nyilatkozatában állhat;
+        # a kézirat
+        # többi részében, a csomagban és a közleményben a tiltás marad, és a többi MODELL_EGYEZES-minta mindenütt él
+        for rel, (torzs, _) in E.kezirat(self.N).items():
+            nyelv = 'hu' if rel.endswith('_hu.md') else 'en'
+            self.assertIsNotNone(G.GEMINI.search(torzs), rel)
+            self.assertIsNone(G.GEMINI.search(G.gemini_kivetel(torzs, nyelv)), rel)
+            for cim in (('## 1. Overview', '### Limitations', '## Data Accessibility Statement') if nyelv == 'en' else
+                        ('## 1. Áttekintés', '### Korlátok', '## Adat-elérhetőség')):
+                self.assertIn(cim, torzs, rel)
+                becsempeszve = torzs.replace(cim, cim + '\n\nGemini', 1)
+                self.assertIsNotNone(G.GEMINI.search(G.gemini_kivetel(becsempeszve, nyelv)), (rel, cim))
+        for rel, (torzs, _) in E.note(self.N).items():
+            self.assertIsNone(G.GEMINI.search(torzs), rel)
+        self.assertFalse(any(G.GEMINI.search(sz) for sz in self.fajlok.values()))
+        self.assertIs(G.GEMINI_TILTOTT.pattern, 'Gemini')
+        self.assertTrue(any(rx.search('two language models agreed') for rx, _ in G.TILTOTT))
+
+    def test_zart_kiadas_neve_csak_a_keziratban_egyszer(self):
+        # DT-F175p: a zárt kiadás neve csak a JOHD-kézirat törzsében, pontosan egyszer, a rögzített megnevezésben áll;
+        # a csomagban és a közleményben a ZART_FORRAS-tiltás változatlan, és a kivétel más alakot vagy második
+        # előfordulást nem enged
+        for rel, (torzs, _) in E.kezirat(self.N).items():
+            nyelv = 'hu' if rel.endswith('_hu.md') else 'en'
+            t = ' '.join(torzs.split())
+            self.assertEqual(len(G.ZART_FORRAS.findall(t)), 1, rel)
+            self.assertIn(G.ZART_NEV_KEZIRAT[nyelv], t, rel)
+            self.assertIsNone(G.ZART_FORRAS.search(G.zart_nev_kivetel(torzs, nyelv)), rel)
+            ketszer = torzs + ' ' + G.ZART_NEV_KEZIRAT[nyelv]
+            self.assertIsNotNone(G.ZART_FORRAS.search(G.zart_nev_kivetel(ketszer, nyelv)), rel)
+            mas_alak = torzs.replace('Bible-Discovery', 'Bible Discovery')
+            self.assertIsNotNone(G.ZART_FORRAS.search(G.zart_nev_kivetel(mas_alak, nyelv)), rel)
+        for rel, (torzs, _) in E.note(self.N).items():
+            self.assertIsNone(G.ZART_FORRAS.search(torzs), rel)
+        self.assertFalse(any(G.ZART_FORRAS.search(sz) for sz in self.fajlok.values()))
+
     def test_szamok(self):
         N = self.N
         self.assertEqual(N['reteg_db'], 7)                                      # a két Mózes-réteg egy rétegben

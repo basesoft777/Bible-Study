@@ -27,7 +27,8 @@ A brief 1. lépésének pontjai, a csomagon (a lemezen vagy egy `export()` kimen
                 fut)                                                                                     — BUKÁS
     KEZIRAT     a második data paper kézirata (`kozlemeny/data_paper/karoli_strong_kezirat_hu/en.md`, a repó
                 gyökerében, a csomagon kívül; DT-F175b) a generálttal azonos, és a törzse a nyilvános
-                szövegszabályok szerint tiszta (az UJRA ponttal fut)                                     — BUKÁS
+                szövegszabályok szerint tiszta (az UJRA ponttal fut); a zárt kiadás neve csak itt, egyszer, a
+                ZART_NEV_KEZIRAT megnevezésben állhat (DT-F175p)                                          — BUKÁS
     OSSZEG      az `ELLENORZO_OSSZEG.sha256` minden kiadott fájlt helyes összeggel listáz; a `KIADAS.txt`
                 tartalmi hash-e egyezik                                                                 — BUKÁS
     VALTOZATLAN a `nyilt_mag/` és a gyökérbeli `CITATION.cff` változatlan (a main-nel közös bázishoz képest)                                                         — BUKÁS
@@ -64,6 +65,10 @@ Talalat = collections.namedtuple('Talalat', 'azon suly uzenet')
 ENGEDETT_NEV = E.ENGEDETT
 HEBER_GOROG = re.compile('[֐-׿Ͱ-Ͽἀ-῿יִ-ﭏ]')
 ZART_FORRAS = re.compile(r'Bible[- ]?Discovery|Biblia[- ]?Felfedez', re.I)
+# A zárt kiadás neve csak a JOHD-kézirat törzsében, és ott is pontosan egyszer, ebben a megnevezésben állhat
+# (DT-F175p: a felhasználó, 2026-11-17: „mehet a név”); a csomagban és a rövid közleményben a tiltás változatlan.
+ZART_NEV_KEZIRAT = {'en': 'the Bible-Discovery Strong-tagged Károli (HUN module)',
+                    'hu': 'a Bible-Discovery Strong-számos Károlijával (HUN modul)'}
 NEM_KOMPATIBILIS = re.compile(r'\bNC\b|NonCommercial|nem kereskedelmi|BY-SA|ShareAlike|\bGPL|minden jog fenntartva|'
                               r'all rights reserved', re.I)
 TILTOTT = [
@@ -98,6 +103,7 @@ MODELL_EGYEZES = [
     (re.compile(r'confidence label|`magas`|`alacsony`'), 'modell-egyezés jelölése'),
 ]
 TILTOTT += MODELL_EGYEZES
+GEMINI_TILTOTT = next(rx for rx, _ in MODELL_EGYEZES if rx.pattern == 'Gemini')
 KIADAS_MONDAT = {CS.OLVASSEL: 'A csomag minden fájlja a kiadás része.',
                  'README.md': 'Every file of the package is part of the release.'}
 MAGYAR = CS.MAGYAR_FAJLOK
@@ -320,20 +326,56 @@ def valtozatlan():
     return [Talalat('VALTOZATLAN', FIGYELEM, 'a main nem érhető el, nem mérve')]
 
 
+# A gyártói modellnév (Gemini) csak a JOHD-kézirat MI-nyilatkozatában állhat (DT-F175r: a felhasználó, 2026-11-17:
+# „a lektor szerint menjen”; a DT-F175m módosítása; a lektor 7. köre: a Korlátokban a név nem szerepel, a kivétel
+# ezért csak az MI-nyilatkozatra szól); máshol, és a csomagban, a tiltás marad.
+GEMINI = re.compile(r'Gemini', re.I)
+GEMINI_SZAKASZ = {'en': ('## AI Declaration',),
+                  'hu': ('## Nyilatkozat a mesterséges intelligencia használatáról',)}
+
+
+def gemini_kivetel(torzs, nyelv):
+    """A kézirat törzse az engedett szakasz (MI-nyilatkozat) nélkül: a szakasz a címsorától a következő
+    `## ` címsorig vagy a beküldési szöveg végéig tart. A maradékban a Gemini-tiltás tovább érvényes."""
+    t = torzs
+    for cim in GEMINI_SZAKASZ[nyelv]:
+        i = t.find(cim + '\n')
+        if i < 0:
+            continue
+        j = len(t)
+        for veg in ('\n## ', '\n<!-- '):
+            k = t.find(veg, i + len(cim))
+            if k >= 0:
+                j = min(j, k)
+        t = t[:i] + t[j:]
+    return t
+
+
+def zart_nev_kivetel(torzs, nyelv):
+    """A kézirat törzse a zárt kiadás engedett megnevezése nélkül (szóközre normalizálva): ha a megnevezés pontosan
+    egyszer áll benne, kivágja; a maradékban a ZART_FORRAS tovább keres. Más alak vagy második előfordulás marad."""
+    t = ' '.join(torzs.split())
+    nev = ZART_NEV_KEZIRAT[nyelv]
+    return t.replace(nev, ' ', 1) if t.count(nev) == 1 else t
+
+
 def kezirat(N, lemez=True):
     """A csomagon kívüli kézirat (DT-F175b): a törzse a nyilvános szövegszabályok szerint tiszta; a lemezen álló
     fájl a generált szöveggel azonos (ha `lemez`)."""
     ki = []
     for rel, (torzs, szoveg) in E.kezirat(N).items():
+        nyelv_ = 'hu' if rel.endswith('_hu.md') else 'en'
         for rx, nev in TILTOTT:
-            for m in rx.finditer(torzs):
+            for m in rx.finditer(gemini_kivetel(torzs, nyelv_) if rx is GEMINI_TILTOTT else torzs):
                 ki.append(Talalat('KEZIRAT', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
         if rel.endswith('_hu.md'):
             for h in E.nevelo_hibak(torzs):
                 ki.append(Talalat('KEZIRAT', BUKAS, '%s: hibás névelő: %r' % (rel, h)))
-        for rx, nev in ((HEBER_GOROG, 'héber/görög írásjel'), (ZART_FORRAS, 'zárt külső forrás neve'),
-                        (NEM_KOMPATIBILIS, 'nem kompatibilis licenc')):
-            m = rx.search(torzs)
+        nyelv = 'hu' if rel.endswith('_hu.md') else 'en'
+        for rx, nev, szoveg_ in ((HEBER_GOROG, 'héber/görög írásjel', torzs),
+                                 (ZART_FORRAS, 'zárt külső forrás neve', zart_nev_kivetel(torzs, nyelv)),
+                                 (NEM_KOMPATIBILIS, 'nem kompatibilis licenc', torzs)):
+            m = rx.search(szoveg_)
             if m:
                 ki.append(Talalat('KEZIRAT', BUKAS, '%s: %s: %r' % (rel, nev, m.group(0))))
         if lemez:
