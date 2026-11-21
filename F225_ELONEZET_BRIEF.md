@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 sav: SERVER
 modell: sonnet
-allapot: fut
+allapot: lezarva
 ad: a helyi tükör (8765) lemaradása látszik a láblécben, és induláskor a fő checkout a main-en magától frissül; az `indit.sh` két előnézeti védelmet kap (nem ír a közös adatbázis-másolatba, idegen checkout futó példányát nem állítja le); a `belso` kiadás önfrissítő (könnyű kulcs-végpont + kliensszkript); a lábléc figyelmeztetése a lap tetején is; `.claude/launch.json`
-kovetkezo: "Te: a draft PR áttekintése és merge-e"
+kovetkezo: "Lezárva: a #753, #754 és #757 a main-en (2026-11-16); az ágas előnézet és a tükör-frissesség kész, nincs nyitott maradék."
 munka: folyamat
 olvas: [CLAUDE.md]
 ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/alap.html, eszkozok/olvaso_szerver/tervezo_statikus/elonezet.js, eszkozok/olvaso_szerver/regiszter_or.py, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, .gitignore, .claude/launch.json, naplok/F225_jelentes.md]
