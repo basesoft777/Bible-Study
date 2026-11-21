@@ -27,9 +27,7 @@ from lapgen.szamitas import szocikkek as sz_szocikkek
 
 def bekot(rend):
     """A kész szakaszok bekötése."""
-    # A lap eleje (md_eleje.FEJ: sz_eleje.szamit_fej, md_eleje.megjelenit_fej) kész, de nincs bekötve: a bekötéssel a
-    # kritérium kapujának „teljes” módja él, és az egyik mintalap kézi Kivonata ma kétszer újramondja a kritériumot
-    # (mint a másiké a DT874 előtt): a forrás javítása a felhasználó döntése (naplok/F218_folytatas.md, S8a).
+    rend.bekot(md_eleje.FEJ, sz_eleje.szamit_fej, md_eleje.megjelenit_fej)
     rend.bekot(md_eleje.KIVONAT, sz_eleje.szamit_kivonat, md_eleje.megjelenit_kivonat)
     rend.bekot(md_eleje.TARTALOM, sz_eleje.szamit_ures, md_eleje.megjelenit_tartalom)
     rend.bekot(md_eleje.JELMAGYARAZAT, sz_eleje.szamit_ures, md_eleje.megjelenit_jelmagyarazat)

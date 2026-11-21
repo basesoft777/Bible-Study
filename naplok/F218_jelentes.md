@@ -1444,3 +1444,14 @@ Kivonatának döntése; a „3. Kizárt és vizsgált helyek” szakasz szelet n
 tette, az S4 nem vitte; a tesztváz `ISM_3` csonkja őrzi).
 
 **Ismétlés-figyelő.** HAMART-001: 80 ismétlődő szósor, ISTENTISZT-001: 34 (figyelmeztetés, nem BUKÁS).
+
+**A lap eleje bekötve (DT-F218w, 2026-11-21).** A felhasználó döntése az orkesztrátoron át, szó szerint: „a, a HAMART
+mintájára”. Az ISTENTISZT-001 Kivonatában (`motivumok/ISTENTISZT-001.md`, az `ir`-en kívül, mint a DT870/DT874
+forrásjavításai) a 3. bekezdés 1–7. mondata (a kritérium feltételei) és a 4. bekezdés első mondata (a tágabb kör)
+törlődött; a 3. bekezdés 8. mondata (2Móz 33:19, 34:5) marad. A szkript a változás előtt és után összevetette a
+fájl sorait: 2 sor változott (13., 15.). A lap befagyasztott, a régi lap nem generálódik újra. A `fej` bekötve; az
+`ISM-HORGONY` engedélysor visszaírva (tényleges 1 = elvárt 1); a kritérium kapuja mindkét mintalap teljes lapján
+„pontosan egyszer” módban zöld; HAMART-regresszió RENDBEN (a lap eleje: engedéllyel, 1 sor). A mérce: a B47
+(ISTENTISZT kézi forrás) hash-e frissült, az ág döntésfájlja (B51, `dontesek/uj/f218a-s8.md`) új sorként felvéve. A
+tesztváz `S8_FEJ` csonkja megszűnt; a `teszt_eleje.py` horgony-tesztje mindkét teljes lapon méri a horgony egyetlen
+előfordulását. A nyílt mag a Kivonatot nem exportálja (E35 nem érintett).
