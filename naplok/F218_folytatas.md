@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218a-s8` (az S8; alap: main `00fa3e41`) · PR: lásd a brief `pr` mezőjét (a 218a első fele, T és S1–S4: #729; az S5: #755, mind a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
+Ág: `claude/f218a-s8` (az S8; alap: main `00fa3e41`) · PR: #779 (draft; a brief `pr` mezője) (a 218a első fele, T és S1–S4: #729; az S5: #755, mind a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
@@ -45,6 +45,7 @@
 | F218.10 (S7): „9. Hatástörténet” (ÓSZ, ÚSZ, tanúk), a szópár | **kész: a szakasz bájtra egyezik, engedélysor nélkül** (a 12. session, `claude-opus-5-5`) | 56 sor; új bemenetek: B39, B41, B64, B73, B74; 129 sablonsor (8 `var`), 9 névtábla-sor; GK-SZOPAR, GK-A6, GK-28 (Targum, Peshitta) zöld; festékpróba 0; `teszt_s9_hatastortenet.py` (16). A jelentés „F218.10 — S7” szakasza |
 | N200 (a mérce hash-sorai a #760 merge-e után) | **kész** (a 13. session) | a B51 `DONTESEK.md` hash-e frissült (`b38760db…` → `b5f5151f…`); regresszió RENDBEN, hash-őr 209 sor. **A merge után újra esedékes** (az S8 döntésfájlja, ha lesz, a B51 sora): az S9 első lépése |
 | F218.11 (S8a): a lap eleje, Kivonat, Tartalomjegyzék, Jelmagyarázat | **kész** (a 13. session, `claude-opus-5-5`) | a Kivonat, a Tartalomjegyzék és a Jelmagyarázat bájtra egyezik, engedélysor nélkül; 59 sablonsor, 19 névtábla-sor (mind `eredet=<szimbólum>`); `teszt_eleje.py` (9: GK-10, GK-A13); festékpróba 0. A `fej` bekötve a DT-F218w után (az ISTENTISZT-001 Kivonata a HAMART mintájára javítva); `ISM-HORGONY`: 1 engedélysor; a kritérium kapuja „pontosan egyszer” módban mindkét lapon |
+| 11. ellenőrzés (Fable, S8a) | **ELTÉRÉS: 5 tétel; a javítókör kész** (`15501bb4`) | a jelentés „Független ellenőrzés — 11. ellenőrzés” és „A 11. ellenőrzés javítóköre”; push előtti kapu: 0 HIBA |
 | F218.11 (S8b–S8d) | nem indult | S8b: a kézi próza-rések (Miért fontos, 10., 11.); S8c: 12. Irodalom; S8d: Kolofon (GK-07, GK-27, GK-28 maradéka, `ISM-KOLOFON`) |
 | F218.12 (S9) – F218.13 | nem indult | |
 
