@@ -1,5 +1,6 @@
 ---
 cim: Egységes szókártya az olvasóban — a BDB és a Thayer a lexikonlap kártyamodelljéből, a görög szó-lap a héberrel egyenértékű szerkezettel
+feladat: 231
 kod: SZOKARTYA_EGYSEGES
 tipus: feladat
 fazis: folyamat
