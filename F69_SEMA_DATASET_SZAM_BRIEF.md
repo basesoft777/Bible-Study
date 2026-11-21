@@ -7,7 +7,7 @@ fazis: folyamat
 munka: folyamat
 modell: haiku
 sav: CONTENT
-allapot: fut
+allapot: megallt
 ag: claude/f69-sema-dataset-szam
 ad: az adat/SEMA.md 2.6 bevezető mondata, a `dataset` mező sora és a `hianyzik`-mondat a datasetek.tsv futáskor mért értékeit mondja (2026-10-19-én: „30 dataset, 117 sor: 29 × 4 + az OSHL_lexikalis_index egy lexikon_oldal-sora”, 30 érték, 4 `openbible_crossrefs`-sor `hianyzik`), DT248 szerint; a SEMA más szakasza nem változik
 kovetkezo: "a /kovetkezo indítja (DT248 eldöntve, 🟢)"
