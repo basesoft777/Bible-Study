@@ -202,7 +202,7 @@ Minden sor egy teszt a `lapgen/tesztek/`-ben; az azonosító a tesztfüggvény n
 | GK-16 | egy glossza-út | egy függvény, egyféle hiány | S3 |
 | GK-17 | könyvnév egy táblából | 0 kódba írt alias | S1 |
 | GK-18 | BDB-betűjavítás mindenütt | a kártya és az olvasói réteg ugyanazt a teljesen javított szöveget adja | S3 |
-| GK-19 | Károli-párosítás (T6) | minden pár számít; a látható szövegben 0 bizonyossági címke és 0 páronkénti jelölés; a 95,06% egyszer, a Módszertanban, a konfigból | S3 |
+| GK-19 | Károli-párosítás (T6) | minden pár számít; a látható szövegben 0 bizonyossági címke és 0 páronkénti jelölés; a 95,06% egyszer, a Módszertanban, a konfigból (**nyitott, döntéssel elhalasztva**, 2026-11-21: „Később, a validáció után”; a mondat a JOHD-validáció után, a validált számmal; N-F218v) | S3 |
 | GK-21 | a HAMART regressziós kapui (sablon 597) | a Döntési út számai összeadódnak; döntés nélküli vers 0; Nave-blokk nem üres | S2, S3 |
 | GK-23 | névtábla | ismeretlen kulcs → kivétel | T |
 | GK-24 | alakosztály-kapu, típus szerint | 0 találat mindkét új lapon; 0 hamis találat a mai HAMART prózáján és idézetein | T, S9 |
