@@ -43,7 +43,7 @@ Nem futott (a menet megállt, nincs átírt diff).
 
 - Készült: brief fejléc (`F69.1`), mérés (szkript a scratchpadban, nem repó), döntés-tétel `DT-F69a` (🟢), a SEMA 2.6 E1–E3 átírása, ez a jelentés.
 - Mérési eltérés: a datasetek száma 30 → 43 és a sorok 117 → 136 a 2026-10-19 óta; az átírás a mért, 2026-11-21-i számokat írja be.
-- Ellenőrzés: `git diff --stat adat/SEMA.md` 1 fájl, 3 sor (2.6 E1–E3); `adat/datasetek.tsv` diffje üres; `python eszkozok/feladatok.py ellenoriz`: 245 brief, 0 hiba (a figyelmeztetések más briefekre vonatkoznak).
+- Ellenőrzés: `git diff --stat adat/SEMA.md`: 1 fájl, csak a 2.6 E1–E3 sorai változtak. A `git diff --stat -- adat/datasetek.tsv` kimenete üres. `python eszkozok/feladatok.py ellenoriz`: 245 brief, 0 hiba (a figyelmeztetések más briefekre vonatkoznak).
 - Tesztek: nem futottak (nincs kódváltozás).
 - Megjegyzés (nem javítva, a brief hatókörén kívül): a CLAUDE.md „Adat-tár” „17 dataset” mondata elavulhat; a mondat a `konkordancia/` fájlkészletéről szól, nem a `datasetek.tsv` mátrixáról. Elavultsága nincs külön megvizsgálva.
 - Nyitott pontok: nincs a F69-ben; a `datasetek.tsv` következő bővítésénél a SEMA 2.6 számai ismét elavulnak (gépi őrzés nem e feladat).
