@@ -76,7 +76,7 @@ class LapEleje(unittest.TestCase):
     def test_ism_a_lap_eleji_meghatarozas_horgonyt_kap(self):
         """DT872: a lap eleji meghatározás a `szakaszok.KRITERIUM_HORGONY` horgonyt kapja, a címe a `fej.hatar.cim`
         sablonsorból jön, a sorban a kritérium egészben áll; a lap eleje be van kötve, így a kritérium kapuja
-        mindkét mintalap teljes lapján a „pontosan egyszer” módban fut (DT-F218w)."""
+        mindkét mintalap teljes lapján a „pontosan egyszer” módban fut (DT895)."""
         self.assertTrue(fo.szakaszrend().kesz(fo.FEJ))
         for azonosito in kozos.MINTALAPOK:
             lap = '\n'.join(_lap(azonosito))
