@@ -7,7 +7,10 @@ fazis: folyamat
 munka: folyamat
 modell: haiku
 sav: CONTENT
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f69-sema-dataset-szam
+pr: https://github.com/basesoft777/Bible-Study/pull/778
+lezarva_osszegzes: "SEMA 2.6 E1–E3 a 2026-11-21-i mérésre (43 dataset, 136 sor: 31 × 4 + 12 × 1; E2 43 érték; E3 4 openbible_crossrefs-sor); DT-F69a 🟢; datasetek.tsv diff üres; ellenoriz 0 hiba"
 ad: az adat/SEMA.md 2.6 bevezető mondata, a `dataset` mező sora és a `hianyzik`-mondat a datasetek.tsv futáskor mért értékeit mondja (2026-10-19-én: „30 dataset, 117 sor: 29 × 4 + az OSHL_lexikalis_index egy lexikon_oldal-sora”, 30 érték, 4 `openbible_crossrefs`-sor `hianyzik`), DT248 szerint; a SEMA más szakasza nem változik
 kovetkezo: "a /kovetkezo indítja (DT248 eldöntve, 🟢)"
 olvas: [adat/datasetek.tsv, adat/SEMA.md]

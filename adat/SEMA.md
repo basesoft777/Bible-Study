@@ -406,12 +406,12 @@ stb.) változatlanul érvényes, csak a tárolás helye más.
 ### 2.6 `datasetek.tsv`
 
 Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kifejtve
-(`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), 21 dataset × 4 = 84 sor.
+(`bovitett`, `tematikus`, `melyelemzes`, `lexikon_oldal`), 43 dataset, 136 sor: 31 × 4 + 12 × 1 (a 12 lexikon_oldal-only dataset a táblából olvasandó).
 
 | Mező | Értékkészlet |
 |---|---|
 | `study_tipus` | `bovitett` \| `tematikus` \| `melyelemzes` \| `lexikon_oldal` |
-| `dataset` | a dataset rövid neve (21 érték) |
+| `dataset` | a dataset rövid neve (43 érték) |
 | `fajl` | a dataset útvonala; glob is lehet (`konkordancia/LXX_OS/*.tsv`), üres, ha `allapot=hianyzik` |
 | `kotelezoseg` | `mindig` \| `felteteles` \| `ajanlott` \| `oroklott` |
 | `feltetel` | mikor válik kötelezővé a `felteteles` sor; `—`, ha nem feltételes |
@@ -420,7 +420,7 @@ Kulcs: `study_tipus` + `dataset`. A terv 4.3 mátrixa, négy study-típusra kife
 
 **Két `allapot` érték követel figyelmet:**
 
-- `hianyzik` — jelenleg egyetlen sor sem viseli. Az SDBH és az SDGNT volt ilyen; importjuk
+- `hianyzik` — jelenleg 4 sor viseli: az `openbible_crossrefs` mind a négy study-típusban (jelölt, nem importált, DT33). Az SDBH és az SDGNT volt ilyen; importjuk
   2026.09-ben megtörtént (`konkordancia/SDBH_SDGNT_README.md`). Az érték az értékkészletben
   marad a még nem importált datasetek számára.
 - `korlatos` — a `KJV_ASV_Strongs` **csak Genezis, Exodus és Példabeszédek** könyvekre áll
