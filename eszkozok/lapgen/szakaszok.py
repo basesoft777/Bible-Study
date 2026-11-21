@@ -14,10 +14,14 @@ KRITERIUM_HORGONY = Horgony('mi-tartozik-ide')
 
 
 class SzakaszLeiro:
-    __slots__ = ('azonosito', 'szamozott', 'nezet', 'szamit', 'megjelenit', 'kapu', 'sorszam')
+    __slots__ = ('azonosito', 'szamozott', 'nezet', 'szamit', 'megjelenit', 'kapu', 'sorszam', 'alresz')
 
-    def __init__(self, azonosito, szamozott, szamit=None, megjelenit=None, nezet=konfig.NEZET_TUDOMANYOS):
+    def __init__(self, azonosito, szamozott, szamit=None, megjelenit=None, nezet=konfig.NEZET_TUDOMANYOS,
+                 alresz=False):
         self.azonosito = azonosito
+        # az előző számozott szakasz alrésze (saját számítással és forrásfigyeléssel, de nem önálló szakasz: a
+        # Tartalomjegyzékben nem áll)
+        self.alresz = alresz
         self.szamozott = szamozott
         self.nezet = nezet
         self.szamit = szamit
@@ -36,6 +40,7 @@ def _rend():
         SzakaszLeiro('elofordulasok', True),
         SzakaszLeiro('kizart', True),
         SzakaszLeiro('szocikkek', True),
+        SzakaszLeiro('miert_fontos', False, alresz=True),
         SzakaszLeiro('lxx', True),
         SzakaszLeiro('kereszthivatkozasok', True),
         SzakaszLeiro('kapcsolatok', True),

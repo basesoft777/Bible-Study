@@ -12,6 +12,7 @@ from lapgen.szoveg import Kulcs, Nev, SablonSor, sablon
 
 NEVTABLA_OSZLOPOK = ('tipus', 'kulcs', 'olvasoi_nev', 'eredet')
 SABLON_OSZLOPOK = ('kulcs', 'mondat', 'parameterek', 'szakasz', 'eredet', 'dontes')
+KEZI_FORRASFAJL_TIPUS = 'kezi_forrasfajl'   # a kézi forrássorban nevezett, a generátor által nem olvasott fájl neve
 FOLERENDELT_MONDATKEZDO_TIPUS = 'folerendelt_mondatkezdo'   # a tágabb kör mondatkezdő alakja; kulcs: a motívum
 CIMKE_CELLA_TIPUS = 'cimke_cella'   # a szótári szakaszcímke cellakezdő alakja; kulcs: szótár|Strong|szócikk|szakasz
 OK_CELLA_TIPUS = 'ok_cella'   # az elutasítási ok címkéjének cellakezdő alakja (DT869); kulcs: a címke (B56)

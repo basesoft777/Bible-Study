@@ -875,3 +875,10 @@ jm.t33	kezdőbetűje (pl. **ק׳** a קָרָא (kárá) szócikkében, **שׁ׳
 jm.t34	szócikk szövegéből derül ki.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t35	A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t36	(pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«).	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+cim.miert_fontos	Miért fontos ez a lelet	-	4 Miért fontos	res_forras.tsv (a rés fejléce)	-
+res.olvasoi.miert_fontos	Miért jelentős a fenti szótári anyag a motívum szempontjából.	-	4 Miért fontos	OLVASOI_RES	-
+res.olvasoi.ertelmezes	A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. Az állítások alatt a mért adat forrása áll.	-	10	OLVASOI_RES	-
+res.olvasoi.modszertan	Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.	-	11	OLVASOI_RES	-
+res.forras	*Forrás: {nevek|; }.*	nevek:lista(nev)	rések	olvasoi_atiras (_prov_olvasoi, a kész lapon a „Forrás:” sor)	-
+res.szakirodalom	*Szakirodalom:* {osszefoglalo} ({szerzo}, {ev}; a teljes hivatkozás a {szakasz}. szakaszban.)	osszefoglalo:lathato, szerzo:lathato, ev:szam, szakasz:szam	10	szakirodalom_beszur	-
+res.szakirodalom.hiany	*Szakirodalom:* {osszefoglalo} (Keresve: OpenAlex, Crossref, {datum}.)	osszefoglalo:lathato, datum:datum	10	szakirodalom_beszur	-

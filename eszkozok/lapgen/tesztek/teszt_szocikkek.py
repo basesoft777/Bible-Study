@@ -390,6 +390,16 @@ class RokonMegjegyzes(unittest.TestCase):
 
 
 class ReszlegesRegresszio(unittest.TestCase):
+    """A részleges mód gépezete egy próbaszakaszon (a „4. Szótári háttér” az S8b óta egészben mérődik: a tesztek
+    idejére a listába kerül)."""
+
+    def setUp(self):
+        self._eredeti = regresszio.RESZLEGES_SZAKASZOK
+        regresszio.RESZLEGES_SZAKASZOK = ('4. Szótári háttér',)
+
+    def tearDown(self):
+        regresszio.RESZLEGES_SZAKASZOK = self._eredeti
+
     REGI = '## 4. Szótári háttér\n\nbevezető\n\n### A\n\n#### 4.1. x\n\nrégi egy\n\n#### 4.2. y\n\nrégi kettő\n\n' \
            '<!-- GENERÁLT-VÉGE: z -->\n\n### Rés\n\nkézi\n'
 
@@ -422,7 +432,7 @@ class ReszlegesRegresszio(unittest.TestCase):
         uj = '## 2. Előfordulások\n\n### A\n\negy\n'
         _jelentes, kint, _h = regresszio.osszevet('TUDOMANYOS', regi, uj, [])
         self.assertGreater(len(kint), 0)
-        self.assertIn('4. Szótári háttér', regresszio.RESZLEGES_SZAKASZOK)
+        self.assertNotIn('4. Szótári háttér', self._eredeti)   # az S8b óta a 4. szakasz egészben mérődik
 
 
 if __name__ == '__main__':

@@ -133,7 +133,7 @@ class Kivonat(unittest.TestCase):
                 forras = f.read()
             torzs = re.search(r'(?ms)^<!-- RÉS-KEZDET: kivonat -->\s*\n(.*?)^<!-- RÉS-VÉGE: kivonat -->',
                               forras).group(1).strip('\n')
-            self.assertEqual('\n'.join(s.ertek if s is not None else '' for s in res.sorok), torzs)
+            self.assertEqual('\n'.join(s.kezi.ertek if s.kezi is not None else '' for s in res.sorok), torzs)
 
     def test_ismeretlen_res_nincs(self):
         """A jegyzékben nem álló rés: None (az opcionális rés hiányát a hívó mondja ki)."""
@@ -143,12 +143,12 @@ class Kivonat(unittest.TestCase):
 class Szakaszrend(unittest.TestCase):
 
     def test_tartalomjegyzek_a_szakaszrendbol(self):
-        """A Tartalomjegyzék a nézet minden szakaszát sorolja (a lap elején és önmagán kívül), a szakaszrend
+        """A Tartalomjegyzék a nézet minden szakaszát sorolja (a lap elején, önmagán és az alrészeken kívül), a szakaszrend
         számával és horgonyával."""
         keret = _keret()
         elemek = MD.tartalom_elemek(keret)
         leirok = [l for l in keret.rend.mind() if l.nezet == konfig.NEZET_TUDOMANYOS
-                  and l.azonosito not in MD.NEM_LISTAZOTT]
+                  and l.azonosito not in MD.NEM_LISTAZOTT and not l.alresz]
         self.assertEqual(len(elemek), len(leirok))
         self.assertEqual(len(elemek), 15)
 

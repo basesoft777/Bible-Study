@@ -117,7 +117,7 @@ def tartalom_elemek(keret):
     """A Tartalomjegyzék szakaszai a szakaszrendből: (cím, horgony) párok."""
     ki = []
     for leiro in keret.rend.mind():
-        if leiro.nezet != konfig.NEZET_TUDOMANYOS or leiro.azonosito in NEM_LISTAZOTT:
+        if leiro.nezet != konfig.NEZET_TUDOMANYOS or leiro.azonosito in NEM_LISTAZOTT or leiro.alresz:
             continue
         cim = _cim(keret, leiro)
         ki.append((cim, cim_horgony(cim)))

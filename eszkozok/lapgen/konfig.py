@@ -21,6 +21,9 @@ NAPLO_OSZLOPOK = ('b_id', 'utvonal', 'sha256')
 # A dátum környezeti változója (YYYY-MM-DD); nélküle a `ts=` a bemenetek hash-éből képződik (GK-29).
 DATUM_VALTOZO = 'PARDES_DATUM'
 TS_HASH_JEGY = 12
+# a kézi forrássorban nevezett kódfájl (a lekérdezés szkriptje) és archívumfájl nem adatforrás
+KEZI_FORRAS_KOD_KITERJESZTES = ('.py',)
+KEZI_FORRAS_ARCHIVUM = ('archivum/',)
 SAJAT_LICENC = 'projekt_adat'   # a licencleltár kulcsa: az adatot nem olvasó szakasz (a projekt saját szövege) licence
 
 # --- 2. Előfordulások: az összegző mondat küszöbei --------------------------------------------------------------

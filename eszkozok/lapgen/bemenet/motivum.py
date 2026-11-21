@@ -9,10 +9,12 @@ A negatív kritérium kézi próza: a réteg csak szerkezetileg bontja két rés
 nem írja át. A kézi forrásból a vitatott pontok és a nyitott kérdések címe és első mondata szó szerinti részletként
 jön (a forrás nézete).
 """
+import fnmatch
 import re
 
+from lapgen import konfig
 from lapgen.bemenet import szavak
-from lapgen.bemenet.nyelv import folerendelt_mondatkezdo
+from lapgen.bemenet.nyelv import KEZI_FORRASFAJL_TIPUS, b65_nevtabla, folerendelt_mondatkezdo
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.ubs import b14_forditasok
 
@@ -221,19 +223,111 @@ def nyitott_kerdesek(b, motivum):
     return tuple(ki)
 
 
+class ResSor:
+    """A kézi rés egy sora, szerkezetileg bontva (a szöveg nem változik):
+
+    - próza: `kezi` (Kezi), és ha a sor egy vitatott pont nyitó sora (a „### ⚠️ Vitatott pontok” alatt, félkövér
+      címmel), a pont címe `pont` kulcsként (a szakirodalom-sor ehhez a bekezdéshez kötődik);
+    - üres sor: minden mező None;
+    - kézi forrássor („*Proveniencia: … | forras=… | …*”): `eredeti` (Belso: a sor nyers alakja, csak megjegyzésbe) és
+      `bemenetek` (a `forras=` értékeiben nevezett adatfájlok, az első előfordulás rendjében: (jegyzékbeli-e, kulcs)
+      párok; a kulcs a jegyzék azonosítója, vagy a generátor által nem olvasott fájlnál a névtábla
+      `kezi_forrasfajl` sorának kulcsa, a fájl útvonala);
+    - belső sor (a kézi forrás kiadható nézetéből kimaradó, saját soros elem: `<!-- ADAT-NÉZET: … | SZINT: belso -->`,
+      `<!-- ADAT-HIV: … -->`, egysoros `【NAPLO …】` blokk; a régi `general.forras_nezet` szabálya): `belso` igaz; a
+      lapra nem kerül."""
+    __slots__ = ('kezi', 'pont', 'eredeti', 'bemenetek', 'belso')
+
+    def __init__(self, kezi=None, pont=None, eredeti=None, bemenetek=(), belso=False):
+        self.kezi, self.pont, self.eredeti, self.bemenetek, self.belso = kezi, pont, eredeti, tuple(bemenetek), belso
+
+
 class Res:
-    """Egy kézi rés: a fejléce (a forrásjegyzék `fejlec` mezője, belső: a lapon a sablontábla címe áll) és a törzse
-    soronként, kézi prózaként (üres sor: None). A törzs a jelölők közötti szöveg, változatlanul; a két szélső üres
-    sor nem tartozik hozzá."""
+    """Egy kézi rés törzse soronként (`ResSor`), a jelölők közötti szöveg; a két szélső üres sor nem tartozik
+    hozzá."""
     __slots__ = ('res', 'sorok')
 
     def __init__(self, res, sorok):
         self.res, self.sorok = res, tuple(sorok)
 
 
+_PROV_SOR_RX = re.compile(r'^\*Proveniencia: (.*)\*$')
+_PROV_FORRAS_RX = re.compile(r'forras=([^|]+)')
+_PROV_ELVALASZTO_RX = re.compile(r'[+,;]\s*')
+_PROV_ZAROJEL_RX = re.compile(r'\s*\(.*$')
+_FAJLNEV_RX = re.compile(r'^[\w./-]+\.\w+$')
+_BELSO_JELOLO_RX = re.compile(r'^(?:<!-- ADAT-NÉZET: .*\| SZINT: belso -->|<!-- ADAT-HIV: .* -->)$')
+_NAPLO_NYITO = ('【NAPLO', '【NAPLÓ')
+_VITATOTT_CIM = '### ⚠️ Vitatott pontok'
+_ALCIM_ELEJE = '### '
+_PONT_RX = re.compile(r'^\*\*(.+?)\.\*\*')
+
+
+def _jegyzek_utvonalak(b):
+    """A jegyzék adatfájljai: {útvonal vagy glob-minta: B-azonosító} (a több útvonalú sor minden útvonala; az `<ID>`
+    alakú útvonal nem, az a motívum saját fájlja)."""
+    ki = {}
+    for b_id in b.jegyzek_azonositok():
+        for ut in b.jegyzek_sor(b_id).utvonal.split(';'):
+            ut = ut.strip()
+            if ut and '<' not in ut:
+                ki[ut] = b_id
+    return ki
+
+
+def _naplo_sor(sor):
+    """Egysoros, kiegyensúlyozott `【NAPLO …】` blokk (a sor eleje és vége a blokk határa)."""
+    if not sor.startswith(_NAPLO_NYITO) or not sor.endswith('】'):
+        return False
+    melyseg = 0
+    for i, c in enumerate(sor):
+        melyseg += (c == '【') - (c == '】')
+        if melyseg == 0:
+            return i == len(sor) - 1
+    return False
+
+
+def _forrassor_bemenetei(b, sor, utvonalak):
+    """A kézi forrássor `forras=` értékeiben nevezett adatfájlok jegyzék-azonosítója, az első előfordulás rendjében. A
+    réteg szerkezetileg bont (a `+`, `,`, `;` elválasztó és a zárójeles megjegyzés mentén); a nem fájlnév érték
+    (kódrészlet, szabad szöveg) nem forrás. A fájlnév vagy a jegyzék útvonala, vagy annak fájlneve; a kódfájl (a
+    lekérdezés szkriptje) és az archívumfájl (`konfig.KEZI_FORRAS_KOD_KITERJESZTES`, `KEZI_FORRAS_ARCHIVUM`) nem
+    adatforrás. Más, a jegyzékben nem álló fájl BemenetHiba: a
+    forrássor nem hivatkozhat a lapon meg nem nevezhető adatra (GK-06, GK-07), kivéve, ha a fájlnak névtábla-sora van
+    (`kezi_forrasfajl`: a szerző lekérdezése olvasta, a generátor nem)."""
+    nev_szerint = {}
+    for ut, b_id in utvonalak.items():
+        if '*' not in ut:
+            nev_szerint.setdefault(ut.rsplit('/', 1)[-1], set()).add(b_id)
+    mintak = [(ut, b_id) for ut, b_id in utvonalak.items() if '*' in ut]
+    kezi_fajlok = set(b65_nevtabla(b).nyers_nevek(KEZI_FORRASFAJL_TIPUS))
+    ki = []
+    for ertek in _PROV_FORRAS_RX.findall(sor):
+        for token in _PROV_ELVALASZTO_RX.split(ertek.strip()):
+            token = _PROV_ZAROJEL_RX.sub('', token).strip()
+            if (not token or not _FAJLNEV_RX.match(token) or token.endswith(konfig.KEZI_FORRAS_KOD_KITERJESZTES)
+                    or token.startswith(konfig.KEZI_FORRAS_ARCHIVUM)):
+                continue
+            if token in utvonalak:
+                jeloltek = {utvonalak[token]}
+            else:
+                jeloltek = nev_szerint.get(token, set()) | {b_id for ut, b_id in mintak if fnmatch.fnmatchcase(token, ut)}
+            if not jeloltek and token in kezi_fajlok:
+                elem = (False, token)
+            elif len(jeloltek) == 1:
+                elem = (True, next(iter(jeloltek)))
+            else:
+                raise BemenetHiba('B47: a kézi forrássor %r fájlja nem egyértelmű jegyzékbeli bemenet (%d találat), és '
+                                  'nincs `%s` névtábla-sora' % (token, len(jeloltek), KEZI_FORRASFAJL_TIPUS))
+            if elem not in ki:
+                ki.append(elem)
+    return ki
+
+
 def kezi_res(b, motivum, res):
-    """A motívum egy kézi résének törzse soronként (`Res`, a `b47_resek`-ből), vagy None, ha a rés a jegyzékben nem a
-    kézi forrásból jön, vagy a forrásban nincs jelölője (opcionális rés: a hívó mondja ki a hiányt)."""
+    """A motívum egy kézi résének törzse soronként, szerkezetileg bontva (`Res`, a `b47_resek`-ből), vagy None, ha a
+    rés a jegyzékben nem a kézi forrásból jön, vagy a forrásban nincs jelölője (opcionális rés: a hívó mondja ki a
+    hiányt). Ismeretlen HTML-megjegyzés a rés sorában BemenetHiba (a lap nem kaphat meg nem nevezett jelölőt)."""
     torzs = b47_resek(b, motivum).get(res)
     if torzs is None:
         return None
@@ -242,4 +336,23 @@ def kezi_res(b, motivum, res):
         reszek.pop(0)
     while reszek and not reszek[-1].strip():
         reszek.pop()
-    return Res(res, [b.kezi('B47', res, r) if r.strip() else None for r in reszek])
+    utvonalak, sorok, vitatott = _jegyzek_utvonalak(b), [], False
+    for r in reszek:
+        if not r.strip():
+            sorok.append(ResSor())
+            continue
+        if r.startswith(_ALCIM_ELEJE):
+            vitatott = r.strip() == _VITATOTT_CIM
+        prov = _PROV_SOR_RX.match(r)
+        if prov:
+            sorok.append(ResSor(eredeti=b.belso('B47', 'kezi_forrassor', r),
+                                bemenetek=[(j, b.kulcs('B47', 'forras', k)) for j, k in _forrassor_bemenetei(b, r, utvonalak)]))
+        elif _BELSO_JELOLO_RX.match(r) or _naplo_sor(r):
+            sorok.append(ResSor(belso=True))
+        elif r.lstrip().startswith('<!--') or '【' in r:
+            raise BemenetHiba('B47: ismeretlen jelölő a(z) %s rés soraiban (%s): %s' % (res, motivum.kod, r[:80]))
+        else:
+            pont = _PONT_RX.match(r) if vitatott else None
+            sorok.append(ResSor(kezi=b.kezi('B47', res, r),
+                                pont=b.kulcs('B47', 'vitatott_pont', pont.group(1)) if pont else None))
+    return Res(res, sorok)

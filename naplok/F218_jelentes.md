@@ -1485,3 +1485,42 @@ egyeznek.
 5. **`_forrasok`:** a feltétel `if not azonositok` (a szakasz nem olvasott bemenetet), a megjegyzéssel egyezően.
 
 A javítás után: HAMART-regresszió RENDBEN (a lap bájtra azonos a javítás előttivel); a mérce B65 hash-e frissült.
+
+## F218.11 — S8b: a kézi rések (Miért fontos, 10. Értelmezés, 11. Módszertan) (`claude-opus-5-5`, 2026-11-21, a 14. session)
+
+**Eredmény.** A HAMART-001 regressziója: RENDBEN. A 4. szakasz minden alblokkja kész (a „Miért fontos ez a lelet” rés
+7 alblokkja is), a regresszió részleges módja kiürült (`RESZLEGES_SZAKASZOK = ()`); a 10. és a 11. szakasz bájtra egyezik,
+engedélysor nélkül. A lapon „nincs kész” már csak a 3. szakasz, a 12. szakasz és a Kolofon. Festékpróba: 0 szivárgás
+(HAMART belső 349, kézi 827; ISTENTISZT belső 293, kézi 362). Az ISTENTISZT-001 lapja is generálódik.
+
+**A régi lánc és az új szerkezet.** A régi generátor a rést a kézi forrás kiadható nézetéből (`general.forras_nezet`)
+vette, és a kész lapon regex-láncon írta át (`olvasoi_atiras`, `_prov_olvasoi`, a „Proveniencia (a tábla soraiból)”
+lépcső). Az új generátorban ez szerkezet, csere nélkül:
+- **a rés sorai** (`bemenet.motivum.kezi_res`, `ResSor`): próza; üres sor; kézi forrássor; belső sor. A belső sor nem
+  kerül a lapra: az `ADAT-NÉZET` (belső szint), az `ADAT-HIV` és az egysoros `【NAPLO】`. Az üres sorok sorozata
+  egyetlen üres sor lesz, mint a kiadható nézetben. Ismeretlen jelölő a rés sorában BemenetHiba.
+- **a kézi forrássor** („*Proveniencia: … | forras=… | …*”): a `forras=` értékei szerkezetileg bontva (`+ , ;`, zárójel).
+  Az adatfájl a jegyzék útvonalán vagy fájlnevén át B-azonosító lesz (glob is), a név a névtábla `forras` sora. A
+  generátor által nem olvasott fájl (a Vulgata) a névtábla `kezi_forrasfajl` sorából kap nevet. A kódfájl (`.py`) és az
+  archívum nem forrás. Más fájl BemenetHiba. A lapon `res.forras` („*Forrás: {nevek|; }.*”) áll, a nyers sor
+  `eredeti:` megjegyzésben.
+- **a szakirodalom-sor** (B75, `adat/vitatott_forrasok.tsv`, új jegyzéksor; a fájl a mércében már mért, a régi B40
+  sora): az ellenőrzött sor a vitatott pont bekezdése után áll (üres sor, a sor, üres sor). A pont nélküli sor
+  BemenetHiba. A szerzős alak a 12. szakaszra a szakaszrend számával hivatkozik (GK-10, teszt cserélt renden), a
+  hiány-sor a lekérdezés dátumát mondja. A szerző vezetékneve a mező szerkezetéből bontva (a régi szabály).
+- **a „Miért fontos” rés** a 4. szakasz alrésze: saját szakaszleíró (`alresz=True`), hogy a 4. szakasz blokkfejlécének
+  forráslistája ne változzon; a Tartalomjegyzékben nem áll (a szakaszok száma 15 marad).
+
+**⛔ A GK-19 maradéka (T6).** A Károli–Strong párosítás mért pontosságának (95,06%) egyszer, a Módszertanban kell
+állnia, a konfigból. A mai lapon (és a kézi forrásban) ez a mondat nincs: új tényállítás. A brief 6. pontja szerint
+ez megállás, ezért nem írtam meg. A tesztváz csonkja `S8_GK19` okkal vár; a mondat szövege és helye (sablonsor a
+Módszertan rése után, vagy a kézi forrásban) a felhasználó döntése.
+
+**Új sorok.** Sablontábla: 7 (`cim.miert_fontos`, `res.olvasoi.*` 3, `res.forras`, `res.szakirodalom`,
+`res.szakirodalom.hiany`). Mind a mai lap szövege, `eredet=<szimbólum>`, `dontes=-`. Névtábla: 6 (`forras` 5: B04,
+B25, B35, B38, B74 a régi `olvasoi_forrasnev` szerint; `kezi_forrasfajl` 1: a Vulgata). Jegyzék: B75. A mérce B65, B66
+hash-e frissült.
+
+**A 218a végi listába:** a `kezi_forrasfajl` típus (forrásnév a generátor által nem olvasott fájlnak); a kódfájl és az
+archívum kizárása a kézi forrássorból (`konfig.KEZI_FORRAS_*`); a régi „Proveniencia (a tábla soraiból)” lépcső
+kézi-szerkesztés-jelzője a rés forrássorában nem áll (a mai lap szerint); a GK-19 T6-mondata (⛔).

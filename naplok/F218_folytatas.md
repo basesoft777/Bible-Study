@@ -47,7 +47,8 @@
 | F218.11 (S8a): a lap eleje, Kivonat, Tartalomjegyzék, Jelmagyarázat | **kész** (a 13. session, `claude-opus-5-5`) | a Kivonat, a Tartalomjegyzék és a Jelmagyarázat bájtra egyezik, engedélysor nélkül; 59 sablonsor, 19 névtábla-sor (mind `eredet=<szimbólum>`); `teszt_eleje.py` (9: GK-10, GK-A13); festékpróba 0. A `fej` bekötve a DT895 után (az ISTENTISZT-001 Kivonata a HAMART mintájára javítva); `ISM-HORGONY`: 1 engedélysor; a kritérium kapuja „pontosan egyszer” módban mindkét lapon |
 | 11. ellenőrzés (Fable, S8a) | **ELTÉRÉS: 5 tétel; a javítókör kész** (`15501bb4`) | a jelentés „Független ellenőrzés — 11. ellenőrzés” és „A 11. ellenőrzés javítóköre”; push előtti kapu: 0 HIBA |
 | N200 (a mérce hash-sorai a #779 merge-e után) | **kész** (a 14. session) | a B51 `DONTESEK.md` hash-e frissült, a törölt `dontesek/uj/f218a-s8.md` sora kikerült; regresszió RENDBEN, hash-őr 209 sor |
-| F218.11 (S8b–S8d) | nem indult | S8b: a kézi próza-rések (Miért fontos, 10., 11.); S8c: 12. Irodalom; S8d: Kolofon (GK-07, GK-27, GK-28 maradéka, `ISM-KOLOFON`) |
+| F218.11 (S8b): a kézi rések (Miért fontos, 10., 11.) | **kész** (a 14. session, `claude-opus-5-5`) | a 4. szakasz egészben, a 10. és a 11. bájtra egyezik, engedélysor nélkül; 7 sablonsor, 6 névtábla-sor, B75; `teszt_resek.py`; festékpróba 0. **⛔ GK-19 (T6):** a pontosság-mondat új tényállítás, a felhasználóé (a jelentés „F218.11 — S8b”) |
+| F218.11 (S8c–S8d) | nem indult | S8c: 12. Irodalom (a „Szakirodalom (a vitatott pontokhoz)” blokk is); S8d: Kolofon (GK-07, GK-27, GK-28 maradéka, `ISM-KOLOFON`) | S8b: a kézi próza-rések (Miért fontos, 10., 11.); S8c: 12. Irodalom; S8d: Kolofon (GK-07, GK-27, GK-28 maradéka, `ISM-KOLOFON`) |
 | F218.12 (S9) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
@@ -72,6 +73,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 *Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
 
 ## Következő lépés
+
+**Az S8b kész (a 14. session, 2026-11-21).** A HAMART-001 regressziója RENDBEN, a jelentés „F218.11 — S8b” szakasza. **⛔ a felhasználóhoz:** a GK-19 T6-mondata (a Károli–Strong párosítás pontossága a Módszertanban). Az S8c csak kérésre indul (az orkesztrátor, 2026-11-21).
 
 **Az S8a kész (a 13. session, 2026-11-21).** A HAMART-001 regressziója RENDBEN; a jelentés „F218.11 — S8a” szakasza; a lap eleje a DT895 után bekötve. **A merge után az S8b első lépése:** a mérce hash-sorai (N200: a `szamkiosztas` a `DONTESEK.md`-t módosítja, a `dontesek/uj/f218a-s8.md`-t törli, mindkettő B51). **Következik:** (1) a 218a végi listába: a DT895 (a Kivonat törölt mondatai); (2) az S8b: a kézi rések a bemeneti rétegben szerkezetként bontva (a kézi „Proveniencia” sor → olvasói „Forrás:” sor a forrásnevekkel és megjegyzéssel; a „Szakirodalom:” sorok forrása; a Módszertan `ADAT-NÉZET` blokkjai), a 4. szakasz részleges módjának ürítése; (3) S8c, S8d. A „3. Kizárt és vizsgált helyek” szakasznak nincs szelete: az orkesztrátor döntse el, melyikbe kerül.
 
