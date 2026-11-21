@@ -251,7 +251,9 @@ class Bemenetek(unittest.TestCase):
         self.assertIsNone(jelentes.magyar(Strong('H9999')))
 
     def _repo(self, motivum_sor, forras='', res_sorok=()):
-        fejlec = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom')
+        fejlec = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom', 'meghatarozas', 'azonossag_tipusa',
+                  'forras_study')
+        motivum_sor = tuple(motivum_sor) + ('',) * (len(fejlec) - len(motivum_sor))
         return alap_minirepo(
             jegyzek_sorok=[('B02', 'adat/motivumok.tsv', 'motivum') + _J,
                            ('B47', 'adat/res_forras.tsv ; motivumok/<ID>.md', 'resek') + _J],

@@ -2568,6 +2568,8 @@ nem névtábla-elem: kézi próza, a cellakezdő alakja az adatban a végleges a
 
 **A 9. szakasz nevei (S7).** A `lanc_konyv` a lánc magjának könyve (kulcs: a könyv rövidítése, a lánc neve a lapon: „a Genezis láncának”, „Genezis-lánc”); ismeretlen könyv kemény hiba, így más könyvű lánc csak új sorral kap nevet. A `szamszo` a kis számok szóalakja a cellában („két különböző szó”, „négy versben”); sor híján a szám áll. A `tanu_hagyomany` a tanúk táblájának (`visszhang_tanuk.tsv`) `hagyomany` értékének neve, a bevezető felsorolásában is.
 
+**A lap elejének és a Jelmagyarázatnak a nevei (S8a).** Az `azonossag` a `motivumok.tsv` `azonossag_tipusa` értékének olvasói mondata a lap elején („**A motívum.**” bekezdés, a meghatározás után); a `szotari_pont_mondatkozi` a 4. szakasz pontjainak neve mondat közben (kisbetűvel, a mozaikszót és a tulajdonnevet kivéve: „4.6 LXX-híd”, „4.13 Károli-megfelelők”), a Jelmagyarázat pontfelsorolásában; a kulcs a pont sorszáma (1–14), a pont címe a `szotari_pont` típus.
+
 ### 2.69 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
 
 A lánc szava nélküli tematikus hely (az `elofordulasok.tsv` sorának `gerinc_elem` mezője `tematikus:` kezdetű, a

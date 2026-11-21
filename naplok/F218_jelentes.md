@@ -1401,3 +1401,46 @@ Tartomány: `8a3e7185..8969a8c1` (a base a main akkori feje; az első indítás 
 
 Mérés a javítókör után: HAMART-regresszió RENDBEN (a 9. szakasz egyezik); az ISTENTISZT-001 9. szakasza változatlan; `teszt_s9_hatastortenet.py` + `teszt_szerkezet.py` 31 teszt, 0 hiba.
 *Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001; python eszkozok/lapgen/tesztek/futtat.py s9_hatastortenet szerkezet | forras=a javítókör commitja (7b7483de után) | ts=2026-11-17`*
+
+## F218.11 — S8a: a lap eleje, a Kivonat, a Tartalomjegyzék és a Jelmagyarázat (`claude-opus-5-5`, 2026-11-21, a 13. session)
+
+**Bontás.** Az S8 az S3 mintájára alszeletekre bomlik, mindegyik a saját diffjével zárul: **S8a** a lap eleje, a
+Kivonat, a Tartalomjegyzék és a Jelmagyarázat (ez a commit); **S8b** a kézi próza-rések (a 4. szakasz „Miért fontos ez
+a lelet” rése, 10. Értelmezés, 11. Módszertan); **S8c** a „12. Irodalom és idézés”; **S8d** a Kolofon (GK-07, GK-27,
+a GK-28 maradéka, `ISM-KOLOFON`). Az S8b-hez: a régi lap a rések kézi „Proveniencia” sorát olvasói „Forrás:” sorra
+cseréli (`<!-- eredeti: … -->` megjegyzéssel), az Értelmezésbe „Szakirodalom:” sorokat szúr, a Módszertan rése
+`ADAT-NÉZET` blokkokat hordoz: ezek az új generátorban a bemeneti rétegben szerkezetként bontandók, nem cserével.
+
+**Eredmény (N200 után).** A HAMART-001 regressziója: RENDBEN; a Kivonat, a Tartalomjegyzék és a Jelmagyarázat bájtra
+egyezik a referenciával, engedélysor nélkül. Festékpróba: 0 szivárgás (HAMART belső 342, kézi 786; ISTENTISZT belső
+281, kézi 335). Tesztek: `teszt_eleje.py` (9): GK-10 (két számozott szakasz cseréje után nem keletkezik új hibás belső
+link, a Tartalomjegyzék és a hivatkozások az új számot viselik), GK-A13, a horgony sora, a mondatkezdő alak, GK-06 a
+lap elején, a Kivonat rése, a Jelmagyarázat két szakaszszáma és licence.
+
+**⛔ A lap eleje (`fej`) kész, de nincs bekötve.** A bekötéssel a kritérium kapujának „pontosan egyszer” módja él
+(DT872), és az **ISTENTISZT-001** lapját elbuktatja: a kézi Kivonat 3. bekezdése („Ide az a hely tartozik, amelyben a
+hívás igéje (kárá) és a név …”) a kritérium másolata, a 4. bekezdés első mondata („A motívum tehát nem az imádság vagy
+a segítségkérés általában, …”) a tágabb köré — ugyanaz, mint a HAMART-001-en a DT874 1. és 3. tétele. A kézi próza
+javítása a felhasználó döntése (az orkesztrátornak elküldve, 2026-11-21). A HAMART-001 lapján a bekötött `fej`
+kipróbálva: egyetlen eltérő sor, a horgony (`<a id="mi-tartozik-ide"></a>` a meghatározás előtt; az `ISM-HORGONY`
+engedélysor kész: régi `a3a17a817a90da74`, új `b1c3b164425dcfd5`, 1 sor), a kapu „teljes” módja zöld. A bekötés a
+döntés után: a `bekotes.py` egy sora, az engedélysor visszaírása, a tesztváz `S8_FEJ` csonkja.
+
+**Két megvalósítási megjegyzés.** (1) A tágabb kör a lap elején mondatkezdő alakban áll, az adat kisbetűs (a 4.12
+bevezetője a mondat belsejében idézi): a nagy kezdőbetű a bemeneti rétegben képződik (`bemenet.motivum.mondatkezdo`),
+a DT875 elve szerint (forrás-oldali alakképzés kódban, az átírás végéig). (2) Az adatot nem olvasó szakasz (Tartalom,
+Jelmagyarázat) blokkfejlécének licence a licencleltár `projekt_adat` címkéje (`konfig.SAJAT_LICENC`, GK-07), nem
+kódba írt szöveg.
+
+**Új sorok.** Sablontábla: 59 (`cim.*` 6, `fej.*` 8, `kivonat.olvasoi`, `tartalom.*` 3, `jm.*` 41); mind a mai lap
+szövege, `eredet=<szimbólum>`, `dontes=-`, új tartalmi állítás nincs. Névtábla: 19 (`azonossag` 5, a régi
+`AZONOSSAG_OLVASOI`; `szotari_pont_mondatkozi` 14, a szerepnevek mondatközi alakja, a régi `kisbetus_kezdes`). Új
+bemenet nincs: a B02 három új oszlopot olvas (`meghatarozas`, `azonossag_tipusa`, `forras_study`), a B47 a Kivonat
+rését. A mérce két hash-e frissült (B65, B66).
+
+**A 218a végi listába ebből a szeletből:** a mondatkezdő alak kódbeli képzése; a `projekt_adat` licenc az adat nélküli
+blokkon; a `szotari_pont_mondatkozi` névtábla-típus (a szerepnév második, kisbetűs alakja az adatban); az ISTENTISZT-001
+Kivonatának döntése; a „3. Kizárt és vizsgált helyek” szakasz szelet nélkül maradt (a jelentés DT874-szakasza az S4-re
+tette, az S4 nem vitte; a tesztváz `ISM_3` csonkja őrzi).
+
+**Ismétlés-figyelő.** HAMART-001: 80 ismétlődő szósor, ISTENTISZT-001: 34 (figyelmeztetés, nem BUKÁS).

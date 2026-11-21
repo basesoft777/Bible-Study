@@ -1,6 +1,7 @@
 """lapgen.bemenet.motivum — a motívum saját sora, a szavak rövid jelentése és a kézi forrás nyitott kérdései.
 
-Bemenetek: B02 (a motívumok táblája: cím, negatív kritérium, fölérendelt fogalom), B15 (a héber szavak rövid magyar
+Bemenetek: B02 (a motívumok táblája: cím, negatív kritérium, fölérendelt fogalom, meghatározás, az azonosság típusa,
+a kézi forrás útvonala), B15 (a héber szavak rövid magyar
 jelentése), B14 (a görög szavak rövid magyar jelentése a fordítástáblából), B47 (a rések forrásjegyzéke és a motívum
 kézi forrása).
 
@@ -14,7 +15,9 @@ from lapgen.bemenet import szavak
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.ubs import b14_forditasok
 
-_MOTIVUM_OSZLOPOK = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom')
+_MOTIVUM_OSZLOPOK = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom', 'meghatarozas', 'azonossag_tipusa',
+                     'forras_study')
+_FORRAS_ELVALASZTO = ';'
 _NEM_TARTOZIK = 'Nem tartozik ide'
 _ZAROJEL_ELOTT = ' ('
 _MONDATVEG = '.'
@@ -32,12 +35,26 @@ _NYITOTT_TETEL_RX = re.compile(r'(?m)^\d+\.\s+(\*\*[^*]+?\.?\*\*\s+[^.!?]+[.!?])
 
 
 class MotivumSor:
-    """A motívum sora: a cím, a negatív kritérium két része (ami ide tartozik; ami nem) és a fölérendelt fogalom,
-    kézi prózaként. A hiányzó rész None."""
-    __slots__ = ('cim', 'ide_tartozik', 'nem_tartozik', 'folerendelt')
+    """A motívum sora: a cím, a negatív kritérium két része (ami ide tartozik; ami nem) és egészben, a fölérendelt
+    fogalom (a mező alakjában és mondatkezdő alakban), a meghatározás, kézi prózaként; az azonosság típusa kulcsként
+    (a névtábla `azonossag` sora adja az olvasói mondatot); a kézi forrás útvonala(i) (csak proveniencia). A hiányzó
+    rész None."""
+    __slots__ = ('cim', 'ide_tartozik', 'nem_tartozik', 'kriterium', 'folerendelt', 'folerendelt_mondatkezdo',
+                 'meghatarozas', 'azonossag', 'forras_study')
 
-    def __init__(self, cim, ide_tartozik, nem_tartozik, folerendelt):
+    def __init__(self, cim, ide_tartozik, nem_tartozik, folerendelt, kriterium=None, folerendelt_mondatkezdo=None,
+                 meghatarozas=None, azonossag=None, forras_study=()):
         self.cim, self.ide_tartozik, self.nem_tartozik, self.folerendelt = cim, ide_tartozik, nem_tartozik, folerendelt
+        self.kriterium, self.folerendelt_mondatkezdo = kriterium, folerendelt_mondatkezdo
+        self.meghatarozas, self.azonossag, self.forras_study = meghatarozas, azonossag, tuple(forras_study)
+
+
+def mondatkezdo(szoveg):
+    """A mező mondatkezdő alakja (a lap elején a „A tágabb kör” mondata a mezővel kezdődik): az első betű nagybetűvel.
+    Tipográfiai alak, nem tartalmi átírás; a mező a 4.12 bevezetőjében a mondat belsejében áll, ezért az adat kisbetűs
+    (a régi `_nagy_kezdo`). A bemeneti réteg egyetlen kódba írt alakképzése a motívumsoron (DT875: a forrás-oldali
+    átalakítás az átírás végéig kódban, a bemeneti rétegben; a 218a végi listán)."""
+    return szoveg[:1].upper() + szoveg[1:]
 
 
 def b02_motivum(b, motivum):
@@ -56,11 +73,18 @@ def b02_motivum(b, motivum):
             raise BemenetHiba('B02: a `%s` mező ponttal végződik (%s): a pontot a lap mondata teszi ki, az adatban '
                               'ne álljon' % (nev, motivum.kod))
     eleje, elvalaszto, tobbi = kriterium.partition(_NEM_TARTOZIK)
+    megh, tipus = sor['meghatarozas'].strip(), sor['azonossag_tipusa'].strip()
+    forrasok = [u.strip() for u in sor['forras_study'].split(_FORRAS_ELVALASZTO) if u.strip()]
     return MotivumSor(
         cim=b.kezi('B02', 'cim', cim),
         ide_tartozik=b.kezi('B02', 'negativ_kriterium', eleje.strip()) if eleje.strip() else None,
         nem_tartozik=b.kezi('B02', 'negativ_kriterium', elvalaszto + tobbi) if elvalaszto else None,
-        folerendelt=b.kezi('B02', 'folerendelt_fogalom', fol) if fol else None)
+        folerendelt=b.kezi('B02', 'folerendelt_fogalom', fol) if fol else None,
+        kriterium=b.kezi('B02', 'negativ_kriterium', kriterium) if kriterium else None,
+        folerendelt_mondatkezdo=b.kezi('B02', 'folerendelt_fogalom', mondatkezdo(fol)) if fol else None,
+        meghatarozas=b.kezi('B02', 'meghatarozas', megh) if megh else None,
+        azonossag=b.kulcs('B02', 'azonossag_tipusa', tipus) if tipus else None,
+        forras_study=[b.utvonal_ertek('B02', u) for u in forrasok])
 
 
 def kriterium_szoveg(b, motivum):
@@ -188,3 +212,36 @@ def b47_nyitott_kerdesek(b, motivum):
         for reszlet in (tetel_rx.findall(blokk.group(1)) if blokk else ()):
             ki.append(b.kezi('B47', 'nyitott_kerdes', reszlet.strip()))
     return tuple(ki)
+
+
+class Res:
+    """Egy kézi rés: a fejléce (a forrásjegyzék `fejlec` mezője, belső: a lapon a sablontábla címe áll) és a törzse
+    soronként, kézi prózaként (üres sor: None). A törzs a jelölők közötti szöveg, változatlanul; a két szélső üres
+    sor nem tartozik hozzá."""
+    __slots__ = ('res', 'sorok')
+
+    def __init__(self, res, sorok):
+        self.res, self.sorok = res, tuple(sorok)
+
+
+def kezi_res(b, motivum, res):
+    """A B47-ből (a `b47_nyitott_kerdesek` bemenete; GK-01: bemenetenként egy `b<nn>_` függvény) a motívum egy kézi résének törzse (`Res`), vagy None, ha a rés a jegyzékben nem a kézi forrásból jön,
+    vagy a forrásban nincs jelölője (opcionális rés: a hívó mondja ki a hiányt). A jegyzékben álló útvonal a motívum
+    kézi forrása kell legyen (más útvonal BemenetHiba, mint a `b47_nyitott_kerdesek`-ben)."""
+    jegyzek_ut, forras_ut = b._utvonalak('B47', motivum)
+    tabla = b._tabla('B47', utvonal=jegyzek_ut, oszlopok=_RES_OSZLOPOK)
+    sorok = [r for r in tabla.szotarak() if r['id'] == motivum.kod and r['res'] == res]
+    if not sorok or sorok[0]['forras'] != _RES_KEZI:
+        return None
+    if sorok[0]['tanulmany'] != forras_ut:
+        raise BemenetHiba('B47: a(z) %s rés forrása (%s) nem a motívum kézi forrása (%s)'
+                          % (res, sorok[0]['tanulmany'], forras_ut))
+    torzs = re.search(_RES_RX % (re.escape(res), re.escape(res)), b._szoveg('B47', utvonal=forras_ut))
+    if torzs is None:
+        return None
+    reszek = torzs.group(1).split('\n')
+    while reszek and not reszek[0].strip():
+        reszek.pop(0)
+    while reszek and not reszek[-1].strip():
+        reszek.pop()
+    return Res(res, [b.kezi('B47', res, r) if r.strip() else None for r in reszek])

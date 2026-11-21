@@ -6,6 +6,7 @@ a `megjelenites/md/` alól jön.
 
 
 from lapgen.megjelenites.md import dontesi_ut as md_dontesi_ut
+from lapgen.megjelenites.md import eleje as md_eleje
 from lapgen.megjelenites.md import elofordulas as md_elofordulas
 from lapgen.megjelenites.md import hatastortenet as md_hatastortenet
 from lapgen.megjelenites.md import kapcsolatok as md_kapcsolatok
@@ -14,6 +15,7 @@ from lapgen.megjelenites.md import kizarasok as md_kizarasok
 from lapgen.megjelenites.md import lxx as md_lxx
 from lapgen.megjelenites.md import szocikkek as md_szocikkek
 from lapgen.szamitas import dontesi_ut as sz_dontesi_ut
+from lapgen.szamitas import eleje as sz_eleje
 from lapgen.szamitas import elofordulas as sz_elofordulas
 from lapgen.szamitas import hatastortenet as sz_hatastortenet
 from lapgen.szamitas import kapcsolatok as sz_kapcsolatok
@@ -25,6 +27,12 @@ from lapgen.szamitas import szocikkek as sz_szocikkek
 
 def bekot(rend):
     """A kész szakaszok bekötése."""
+    # A lap eleje (md_eleje.FEJ: sz_eleje.szamit_fej, md_eleje.megjelenit_fej) kész, de nincs bekötve: a bekötéssel a
+    # kritérium kapujának „teljes” módja él, és az egyik mintalap kézi Kivonata ma kétszer újramondja a kritériumot
+    # (mint a másiké a DT874 előtt): a forrás javítása a felhasználó döntése (naplok/F218_folytatas.md, S8a).
+    rend.bekot(md_eleje.KIVONAT, sz_eleje.szamit_kivonat, md_eleje.megjelenit_kivonat)
+    rend.bekot(md_eleje.TARTALOM, sz_eleje.szamit_ures, md_eleje.megjelenit_tartalom)
+    rend.bekot(md_eleje.JELMAGYARAZAT, sz_eleje.szamit_ures, md_eleje.megjelenit_jelmagyarazat)
     rend.bekot(md_dontesi_ut.AZONOSITO, sz_dontesi_ut.szamit, md_dontesi_ut.megjelenit, kapu=sz_dontesi_ut.kapu)
     rend.bekot(md_elofordulas.AZONOSITO, sz_elofordulas.szamit, md_elofordulas.megjelenit)
     rend.bekot(md_szocikkek.AZONOSITO, sz_szocikkek.szamit, md_szocikkek.megjelenit, kapu=sz_szocikkek.kapu)
