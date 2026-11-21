@@ -816,3 +816,62 @@ s9.tanu.forras.sefaria	Sefaria, lekérdezve: {datum}	datum:datum	9	blokk_hatas_t
 s9.tanu.lab	*A tanúk forrásai: a HistoricalChristianFaith kommentár-adatbázis és a Sefaria (egyházatyák, rabbinikus források), a Glossa Ordinaria jegyzetei és a Chain Lineage Browser. Az összefoglaló mondat a forrásszövegen ellenőrizve áll a táblázatban; a versláncok adata (szerző, mű, század, nyelv, az együtt idézett versek) a lekérdezés megismétlésével ellenőrizve. Az egyházatyák és a rabbinikus források szövegét a szócikk nem idézi. A Chain Lineage Browser bibliai hivatkozásai a BiblIndexből valók (Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon).*	-	9	blokk_hatas_tanuk (a mai lap alakja)	-
 s9.tanu.glossa	A Glossa Ordinaria (a Vulgata középkori kommentárja; Migne, 1880, közkincs) a táblázatban ott áll tanúként, ahol jegyzete ugyanezt a kapcsolatot mondja ki.	-	9	GLOSSZA_MONDAT	-
 s9.usz.valt.nincs.szopar	nincs a formula szavát érintő változat	-	9	uj	var
+cim.kivonat	Kivonat	-	keret	res_forras.tsv (a rés fejléce)	-
+cim.tartalom	Tartalomjegyzék	-	keret	VAZ_SABLON	-
+cim.jelmagyarazat	Jelmagyarázat és rövidítések	-	keret	VAZ_SABLON	-
+cim.kizart	Kizárt és vizsgált helyek	-	keret	UJ_SZAKASZOK	-
+cim.idezes	Irodalom és idézés	-	keret	UJ_SZAKASZOK	-
+cim.kolofon	Kolofon	-	keret	VAZ_SABLON	-
+fej.cim	📖 {motivum} — {cim}	motivum:motivum, cim:lathato	fej	VAZ_SABLON	-
+fej.motivum	**A motívum.** {megh} {azon}	megh:lathato, azon:nev(azonossag)	fej	egyszerusitett_kolofon	-
+fej.motivum.megh	**A motívum.** {megh}	megh:lathato	fej	egyszerusitett_kolofon	-
+fej.motivum.azon	**A motívum.** {azon}	azon:nev(azonossag)	fej	egyszerusitett_kolofon	-
+fej.motivum.cim	**A motívum.** {cim}.	cim:lathato	fej	egyszerusitett_kolofon	-
+fej.hatar	**{cim}.** {kriterium}	cim:lathato, kriterium:lathato	fej	egyszerusitett_kolofon	-
+fej.tagabb	**A tágabb kör** (ha egy hely csak ezen át tartozna ide, kimarad). {fol}.	fol:lathato	fej	egyszerusitett_kolofon	-
+fej.kolofon	*Az azonosító és technikai adatok (azonosító, téma, PaRDeS-szint, státusz, azonosság típusa) a [Kolofonban](#{horgony}) állnak.*	horgony:horgony	fej	egyszerusitett_kolofon	-
+kivonat.olvasoi	A motívum rövid összefoglalása: miről szól, és hol fordul elő a Bibliában.	-	Kivonat	OLVASOI_RES	-
+tartalom.olvasoi	A szócikk szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.	-	Tartalomjegyzék	OLVASOI_BLOKK (a kész lapon)	-
+tartalom.hatokor	*A szócikk {n} szakasza, a szakaszra mutató hivatkozással.*	n:szam	Tartalomjegyzék	blokk_tartalom (a kész lapon)	-
+tartalom.elem	- [{cim}](#{horgony})	cim:lathato, horgony:horgony	Tartalomjegyzék	blokk_tartalom	-
+jm.olvasoi	A szócikkben használt rövidítések, jelek és forrásnevek feloldása. Ha a szócikk egy jelét nem érted, itt keresd.	-	Jelmagyarázat	OLVASOI_BLOKK (a kész lapon)	-
+jm.hatokor	*Ez a rész minden szócikkben azonos.*	-	Jelmagyarázat	blokk_jelmagyarazat (a kész lapon)	-
+jm.szotari_pontok	**A szótári pontok** ({cim}): szavanként számozott pontok követik egymást, mindegyik egy kérdésre felel: {pontok|; }. A {szakasz}.{elso}–{szakasz}.{utolso_szo} nyelvenként, szavanként áll, a {szakasz}.{elso_kozos}–{szakasz}.{utolso} a motívum egészére vonatkozik.	cim:lathato, pontok:lista(lathato), szakasz:szam, elso:szam, utolso_szo:szam, elso_kozos:szam, utolso:szam	Jelmagyarázat	szotari_pontok_jelmagyarazat (a kész lapon)	-
+jm.szotari_pont	{szakasz}.{pont} {nev}	szakasz:szam, pont:szam, nev:nev(szotari_pont_mondatkozi)	Jelmagyarázat	szotari_pontok_jelmagyarazat	-
+jm.szotari_pont.visszhang	{szakasz}.{pont} {nev} (a {hatas}. szakaszban)	szakasz:szam, pont:szam, nev:nev(szotari_pont_mondatkozi), hatas:szam	Jelmagyarázat	szotari_pontok_jelmagyarazat	-
+jm.t01	**PaRDeS-szintek** (a PaRDeS-gyorsreferencia):	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t02	- **Peshat** — a szöveg szerinti, szó szerinti értelem.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t03	- **Remez** — csak felismerés/azonosítás, következtetés nélkül.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t04	- **Drash** — normatív, következtető, alkalmazó.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t05	- **Sod** — fegyelmezett, csak szövegből levezethető, gematria/allegorizálás nélkül.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t06	A szint olvasási módot jelöl, nem a szöveg jelentését: a zsidó írásmagyarázat négyes sémájának kategóriáival mondja	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t07	meg, hogyan kapcsolódik a hely a motívumhoz (szó szerint, utalásként, következtetésként vagy spirituális olvasatban). Nem	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t08	kritikai állítás arról, mit szándékolt a bibliai szerző, és nem a szöveg eredeti, történeti jelentésének szintje. A	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t09	besorolást e munka adja, saját szabályai szerint; nevesített magyarázók olvasatát a szócikk nem	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t10	gyűjti; az ókori fordítások és értelmezők olvasatát a {hatas}. szakasz mutatja. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem	hatas:szam	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t11	a szint (részletesen: [A PaRDeS-szint mint recepciós címke](../kozlemeny/PARDES_RECEPCIOS_KERET.md)).	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t12	**Funkció:** a vers szerepe a motívum ívében — az adatséma szerint	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t13	szabad szöveg (nincs zárt értékkészlet), az alábbi táblákban a motívum	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t14	szerkesztője által rögzített megnevezés áll.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t15	**Rövidítések:** BDB (Brown–Driver–Briggs), TBESH/TBESG (Tyndale Bible	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t16	Encyclopedia — Strong's Hebrew/Greek), Thayer (Thayer's Greek Lexicon),	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t17	UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t18	doménekkel), L–N (Louw–Nida doménkód), SDBH/SDGNT (Semantic Dictionary	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t19	of Biblical Hebrew/Greek), OSHL (Open Scriptures Hebrew Lexicon), TWOT	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t20	(Theological Wordbook of the Old Testament — csak számhivatkozás), TSK	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t21	(Treasury of Scripture Knowledge), KH (Károli-kereszthivatkozás), LXX	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t22	(Septuaginta), MT (Masoretic Text), KJV (King James Version).	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t23	**Kiejtés:** a héber és a görög szó mellett zárójelben a magyaros kiejtés, mindkét nyelven szabályos átírás. A	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t24	héber kiejtés a pontozott héber szövegből rögzített szabályokkal készül (pl. „וַיִּקְרָא (vajjikrá)”); ahol van kézzel	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t25	jóváhagyott alak, az áll. A ragozott szó mellett a saját kiejtése áll, nem a szótári alaké.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t26	**Olvasói bevezető** — minden blokk elején egy-két mondatos összefoglaló; az alatta álló dőlt, technikai	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t27	mondat a szócikk készítőinek szól.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t28	**Forrásmegjelölés** (dőlt sor vagy a tábla alatti jegyzet, „forrás: …” alakú): melyik adattáblából vagy lekérdezésből és mikor	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t29	származik a fölötte álló adat; a „kézi szerkesztés” azt jelöli, hogy az adatot a szerkesztő rögzítette. A teljes	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t30	forrássor a szócikk forrásszövegében, rejtett megjegyzésként áll. Az ellenőrzéshez való, olvasáskor átugorható.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t31	**Héber rövidítések a BDB-szövegben** (kiemelve; az egérmutató alatt a feloldás): a BDB a gyakori szavakat egy	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t32	betűvel és a rövidítő jellel (׳, geres) írja. **י׳** = יְהוָה (Jahve), a Károliban „az Úr”; a szócikk címszavának	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t33	kezdőbetűje (pl. **ק׳** a קָרָא (kárá) szócikkében, **שׁ׳** a שֵׁם (sém) szócikkében) maga a címszó. Más betűnél a feloldás a	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t34	szócikk szövegéből derül ki.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t35	A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχή	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t36	(pszükhé) *lélek*; a Károli-idézetek szövege változatlan (pl. »Lélek«).	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-

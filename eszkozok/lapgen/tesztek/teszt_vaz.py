@@ -11,7 +11,7 @@ import kozos
 from kozos import MINTALAPOK
 from lapgen import fo
 from lapgen.megjelenites.md.iro import MEGJEGYZES
-from lapgen.szoveg import MotivumId
+from lapgen.szoveg import Fajta, MotivumId
 
 S2, S3, S4, S5, S6, S7, S8, S9 = ('S2 (F218.5)', 'S3 (F218.6)', 'S4 (F218.7)', 'S5 (F218.8)', 'S6 (F218.9)',
                                   'S7 (F218.10)', 'S8 (F218.11)', 'S9 (F218.12)')
@@ -54,9 +54,11 @@ _DATUM = datetime.date(2026, 11, 13)
 
 
 def _lathato_szoveg(azonosito):
-    """A mintalap kész szakaszainak látható szövege (a megjegyzések nélkül), nézetenként összefűzve."""
+    """A mintalap kész szakaszainak látható szövege (a megjegyzések és a link-célpontok nélkül: a horgony a
+    Markdown-link célja, az olvasó nem látja; a Tartalomjegyzék „#10-értelmezés” horgonya nem tételszám), nézetenként
+    összefűzve."""
     eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=_DATUM)
-    return '\n'.join(''.join(sor.szoveg[k:v] for k, v, f in sor.tartomanyok if f != MEGJEGYZES)
+    return '\n'.join(''.join(sor.szoveg[k:v] for k, v, f in sor.tartomanyok if f not in (MEGJEGYZES, Fajta.HORGONY))
                      for sorok in eredmeny.nezetek.values() for sor in sorok)
 
 
@@ -93,16 +95,6 @@ class Szerkezeti(unittest.TestCase):
     def test_gk07_forrasmegjeloles_a_valodi_olvasasbol(self):
         """GK-07: a Kolofon, az Irodalom és a blokkfejlécek forrás-halmaza = az olvasási napló; licencszöveg csak
         a licencleltárból."""
-
-    @unittest.skip(S8)
-    def test_gk10_szakaszszam_es_horgony_a_modellbol(self):
-        """GK-10: a szakaszrend cseréje után 0 hibás belső link."""
-
-    @unittest.skip(S8)
-    def test_ism_a_lap_eleji_meghatarozas_horgonyt_kap(self):
-        """DT-F218n: a lap eleji meghatározás („Mi tartozik ide, és mi nem”) a `szakaszok.KRITERIUM_HORGONY`
-        horgonyt kapja, a címe a `fej.hatar.cim` sablonsorból jön (ugyanaz, amelyre az 1.1 hivatkozik), és a
-        kritérium a teljes lapon pontosan egyszer áll (a kapu `teljes` módja ettől kezdve él)."""
 
     @unittest.skip(S8)
     def test_ism_a_kolofon_nem_ismetli_a_kriteriumot(self):
@@ -176,10 +168,6 @@ class AtvettTetelek(unittest.TestCase):
     @unittest.skip(S3_MARADEK)
     def test_gk_a12_nem_letezo_karoli_vers(self):
         """GK-A12: BDB-hivatkozásból képzett igehely csak akkor link, ha a vers a Károliban létezik."""
-
-    @unittest.skip(S8)
-    def test_gk_a13_a_cim_a_motivumtablabol(self):
-        """GK-A13: a lap címe mindig a motívumtábla mai címe; a meglévő lap nem bemenet."""
 
     @unittest.skip(S9)
     def test_gk_b9(self):

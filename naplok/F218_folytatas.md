@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218a-s7-466f45` (az S7; alap: main `188ee2aa`) · PR: lásd a brief `pr` mezőjét (a 218a első fele, T és S1–S4: #729; az S5: #755, mind a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
+Ág: `claude/f218a-s8` (az S8; alap: main `00fa3e41`) · PR: #779 (draft; a brief `pr` mezője) (a 218a első fele, T és S1–S4: #729; az S5: #755, mind a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
@@ -43,7 +43,11 @@
 | 9. ellenőrzés (Fable, célzott, `ff3fd41c..dc9bd031`) | **ELTÉRÉS: 7 tétel**; a javítókör kész; a három döntés 🟢 (DT888, -u, -v), a DT888 adatjavítása a B45-ön kész, a B46-é N209 | `naplok/F218_jelentes.md` „Független ellenőrzés — 9. ellenőrzés” és „A 9. ellenőrzés javítóköre” |
 | N200 (a mérce hash-sorai a #756 merge-e után) | **kész** (`62b74c42`, a 12. session) | a B51 `DONTESEK.md` hash-e frissült, a törölt S6-döntésfájl sora kikerült; regresszió RENDBEN, hash-őr 208 sor. **A merge után újra esedékes** (az S8 első lépése; az S7-nek döntésfájlja nincs, a `nyitott/uj/f218a-s7-466f45.md` nem mérce-bemenet) |
 | F218.10 (S7): „9. Hatástörténet” (ÓSZ, ÚSZ, tanúk), a szópár | **kész: a szakasz bájtra egyezik, engedélysor nélkül** (a 12. session, `claude-opus-5-5`) | 56 sor; új bemenetek: B39, B41, B64, B73, B74; 129 sablonsor (8 `var`), 9 névtábla-sor; GK-SZOPAR, GK-A6, GK-28 (Targum, Peshitta) zöld; festékpróba 0; `teszt_s9_hatastortenet.py` (16). A jelentés „F218.10 — S7” szakasza |
-| F218.11 (S8) – F218.13 | nem indult | |
+| N200 (a mérce hash-sorai a #760 merge-e után) | **kész** (a 13. session) | a B51 `DONTESEK.md` hash-e frissült (`b38760db…` → `b5f5151f…`); regresszió RENDBEN, hash-őr 209 sor. **A merge után újra esedékes** (az S8 döntésfájlja, ha lesz, a B51 sora): az S9 első lépése |
+| F218.11 (S8a): a lap eleje, Kivonat, Tartalomjegyzék, Jelmagyarázat | **kész** (a 13. session, `claude-opus-5-5`) | a Kivonat, a Tartalomjegyzék és a Jelmagyarázat bájtra egyezik, engedélysor nélkül; 59 sablonsor, 19 névtábla-sor (mind `eredet=<szimbólum>`); `teszt_eleje.py` (9: GK-10, GK-A13); festékpróba 0. A `fej` bekötve a DT-F218w után (az ISTENTISZT-001 Kivonata a HAMART mintájára javítva); `ISM-HORGONY`: 1 engedélysor; a kritérium kapuja „pontosan egyszer” módban mindkét lapon |
+| 11. ellenőrzés (Fable, S8a) | **ELTÉRÉS: 5 tétel; a javítókör kész** (`15501bb4`) | a jelentés „Független ellenőrzés — 11. ellenőrzés” és „A 11. ellenőrzés javítóköre”; push előtti kapu: 0 HIBA |
+| F218.11 (S8b–S8d) | nem indult | S8b: a kézi próza-rések (Miért fontos, 10., 11.); S8c: 12. Irodalom; S8d: Kolofon (GK-07, GK-27, GK-28 maradéka, `ISM-KOLOFON`) |
+| F218.12 (S9) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
 
@@ -67,6 +71,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 *Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
 
 ## Következő lépés
+
+**Az S8a kész (a 13. session, 2026-11-21).** A HAMART-001 regressziója RENDBEN; a jelentés „F218.11 — S8a” szakasza; a lap eleje a DT-F218w után bekötve. **A merge után az S8b első lépése:** a mérce hash-sorai (N200: a `szamkiosztas` a `DONTESEK.md`-t módosítja, a `dontesek/uj/f218a-s8.md`-t törli, mindkettő B51). **Következik:** (1) a 218a végi listába: a DT-F218w (a Kivonat törölt mondatai); (2) az S8b: a kézi rések a bemeneti rétegben szerkezetként bontva (a kézi „Proveniencia” sor → olvasói „Forrás:” sor a forrásnevekkel és megjegyzéssel; a „Szakirodalom:” sorok forrása; a Módszertan `ADAT-NÉZET` blokkjai), a 4. szakasz részleges módjának ürítése; (3) S8c, S8d. A „3. Kizárt és vizsgált helyek” szakasznak nincs szelete: az orkesztrátor döntse el, melyikbe kerül.
 
 **Az S7 kész (a 12. session, 2026-11-16):** a 9. szakasz a referenciával bájtra egyezik, engedélysor nélkül (a jelentés „F218.10 — S7” szakasza). **A 10. ellenőrzés (2026-11-17): ELTÉRÉS, 8 tétel; a javítókör kész** (1, 3, 5, 6, 7, 8 javítva; a 2. döntés a 218a végi listába; a 4. az S9-be). A jelentés „Független ellenőrzés — 10. ellenőrzés” és „A 10. ellenőrzés javítóköre” szakasza. A merge az orkesztrátoré. **Az S8 első lépése a merge után:** a mérce hash-sorai (N200; a `szamkiosztas` a `DONTESEK.md`-t és a nyitott tételeket módosítja). **Az S8-nak innen:** a GK-28 maradéka (közel-keleti és Chain Lineage-mondat, a váz tesztje S8-ra áll); a 9. szakasz dőlt sorainak betűre írt licencszavai (GK-07); a B64 sora ma csak a Targum-fájl, a Vulgata és a Glossa Ordinaria a Kolofon forrássorához kell (a térkép B64-e); a `hatastortenet_forrasok` szabálya (a tanúk forrásai a tanúk tényleges forrásából). **Az S9-nek innen:** a brief 8.2/1 független számlálói a `regresszio.py`-ban (az ISTENTISZT-001 számai, köztük a szópár-lánc; a 10. ellenőrzés 4. tétele). A 218a végi listába ebből a szeletből: a 8 `var` sablonsor (a jelentés felsorolja), N214 (a szópáros bevezető ISTENTISZT-specifikus mondata), a tanú korának és a rabbinikus hivatkozásnak a szerkezeti bontása. Döntésre (a 10. ellenőrzés 2. és 5. tétele): a szópáros ÚSZ-mondat nevezője (12 a 14 felsorolt vers helyett: csak az ellenőrzött Vulgata-sorral bíró versek számítanak) és az 1Kir 18:24 több lemmája; a `kor` mező belső évszámának külön oszlopba költöztetése.
 

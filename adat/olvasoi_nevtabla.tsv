@@ -91,3 +91,24 @@ tanu_hagyomany	gorog	görög	TANU_HAGYOMANY
 tanu_hagyomany	latin	latin	TANU_HAGYOMANY
 tanu_hagyomany	szir	szír	TANU_HAGYOMANY
 tanu_hagyomany	rabbinikus	rabbinikus	TANU_HAGYOMANY
+azonossag	lexikai	Szavas motívum: azonosságát egy szó vagy szócsalád adja, amely minden helyén áll.	AZONOSSAG_OLVASOI
+azonossag	formulaikus	Fordulat-motívum: azonosságát egy állandó szókapcsolat vagy fordulat adja.	AZONOSSAG_OLVASOI
+azonossag	referenciális	Utalás-motívum: azonosságát az adja, hogy a helyek ugyanarra a személyre, helyre vagy eseményre utalnak.	AZONOSSAG_OLVASOI
+azonossag	fogalmi	Fogalmi motívum: azonosságát egy fogalom adja, amelyet a helyek különböző szavakkal mondanak ki.	AZONOSSAG_OLVASOI
+azonossag	strukturális	Szerkezeti motívum: azonosságát nem egyetlen szó adja, hanem egy szerkezet, amelyet több szó együtt hordoz.	AZONOSSAG_OLVASOI
+szotari_pont_mondatkozi	1	alapjelentés	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	2	mélységi szócikk	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	3	teológiai szócikk	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	4	jelentésszerkezet, szemantikai mező	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	5	tömör jelentés, előfordulás	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	6	LXX-híd	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	7	megfelelők a másik nyelven	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	8	nyelvi háttér	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	9	versenkénti jelentés	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	10	kiejtés (magyaros)	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	11	visszhang: ókori fordítások	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	12	tematikus index (témák és igehely-hivatkozások)	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	13	Károli-megfelelők	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+szotari_pont_mondatkozi	14	rejtett / hamis párhuzam	szotari_pontok_jelmagyarazat (a szerepnév mondatközi alakja: kisbetus_kezdes)
+folerendelt_mondatkezdo	HAMART-001	A bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül	egyszerusitett_kolofon (_nagy_kezdo; DT869 (b): a mondatkezdő alak az adatban)
+folerendelt_mondatkezdo	ISTENTISZT-001	Istentisztelet/imádság általában (bármely invokációs forma, a קָרָא בְשֵׁם (kárá besém) formulán kívül)	egyszerusitett_kolofon (_nagy_kezdo; DT869 (b): a mondatkezdő alak az adatban)

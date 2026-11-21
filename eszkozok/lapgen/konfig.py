@@ -21,6 +21,7 @@ NAPLO_OSZLOPOK = ('b_id', 'utvonal', 'sha256')
 # A dátum környezeti változója (YYYY-MM-DD); nélküle a `ts=` a bemenetek hash-éből képződik (GK-29).
 DATUM_VALTOZO = 'PARDES_DATUM'
 TS_HASH_JEGY = 12
+SAJAT_LICENC = 'projekt_adat'   # a licencleltár kulcsa: az adatot nem olvasó szakasz (a projekt saját szövege) licence
 
 # --- 2. Előfordulások: az összegző mondat küszöbei --------------------------------------------------------------
 SULYPONT_KUSZOB = 0.40      # egy könyvben a helyek legalább ekkora hányada: a motívum súlypontja

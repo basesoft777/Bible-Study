@@ -145,7 +145,7 @@ def szamit(korny):
         maradt=tuple(maradt),
         hataresetek=tuple(Hatareset(s.igehely, s.igehely.horgony(), s.megbizhatosag_kulcs) for s in sorok
                           if s.megbizhatosag is not None and s.megbizhatosag is not Megbizhatosag.MAGAS),
-        kerdesek=tuple(proza(k) for k in motivum_be.b47_nyitott_kerdesek(b, motivum)))
+        kerdesek=tuple(proza(k) for k in motivum_be.nyitott_kerdesek(b, motivum)))
 
 
 def kapu(modell):

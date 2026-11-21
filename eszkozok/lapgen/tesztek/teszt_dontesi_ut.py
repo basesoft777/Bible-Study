@@ -171,7 +171,7 @@ class Lap(unittest.TestCase):
             szoveg = '\n'.join(lathato(s) for s in szakasz(azonosito))
             for sor in bemenet.b03_elofordulasok(b, motivum):
                 self.assertIn('>%s</a>: %s.</li>' % (sor.igehely.kod, sor.funkcio_magyarazat.ertek), szoveg)
-            kerdesek = motivum_be.b47_nyitott_kerdesek(b, motivum)
+            kerdesek = motivum_be.nyitott_kerdesek(b, motivum)
             self.assertTrue(kerdesek, azonosito)
             for kerdes in kerdesek:
                 self.assertIn('- %s' % kerdes.ertek, szoveg)
@@ -251,7 +251,9 @@ class Bemenetek(unittest.TestCase):
         self.assertIsNone(jelentes.magyar(Strong('H9999')))
 
     def _repo(self, motivum_sor, forras='', res_sorok=()):
-        fejlec = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom')
+        fejlec = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom', 'meghatarozas', 'azonossag_tipusa',
+                  'forras_study')
+        motivum_sor = tuple(motivum_sor) + ('',) * (len(fejlec) - len(motivum_sor))
         return alap_minirepo(
             jegyzek_sorok=[('B02', 'adat/motivumok.tsv', 'motivum') + _J,
                            ('B47', 'adat/res_forras.tsv ; motivumok/<ID>.md', 'resek') + _J],
@@ -299,21 +301,21 @@ class Bemenetek(unittest.TestCase):
         sor = ('PROBA-001', 'A cím', 'x', 'y')
         repo = self._repo(sor, forras, resek)
         try:
-            kerdesek = motivum_be.b47_nyitott_kerdesek(bemenet.Bemenet(repo.gyoker), MotivumId('PROBA-001'))
+            kerdesek = motivum_be.nyitott_kerdesek(bemenet.Bemenet(repo.gyoker), MotivumId('PROBA-001'))
             self.assertEqual([k.ertek for k in kerdesek],
                              ['**Első pont.** Az első mondat áll itt.', '**Második pont.** Kérdés-e ez?'])
         finally:
             repo.torol()
         repo = self._repo(sor, forras, [resek[0][:3] + ('adat', ''), resek[1]])
         try:
-            kerdesek = motivum_be.b47_nyitott_kerdesek(bemenet.Bemenet(repo.gyoker), MotivumId('PROBA-001'))
+            kerdesek = motivum_be.nyitott_kerdesek(bemenet.Bemenet(repo.gyoker), MotivumId('PROBA-001'))
             self.assertEqual([k.ertek for k in kerdesek], ['**Második pont.** Kérdés-e ez?'])
         finally:
             repo.torol()
         repo = self._repo(sor, forras, [resek[0][:4] + ('tematikus_lezart/MAS.md',)])
         try:
             with self.assertRaises(bemenet.BemenetHiba):
-                motivum_be.b47_nyitott_kerdesek(bemenet.Bemenet(repo.gyoker), MotivumId('PROBA-001'))
+                motivum_be.nyitott_kerdesek(bemenet.Bemenet(repo.gyoker), MotivumId('PROBA-001'))
         finally:
             repo.torol()
 
