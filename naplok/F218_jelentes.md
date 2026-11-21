@@ -1542,7 +1542,7 @@ main-en is áll; most nem futtattam újra.
 2. **Nincs néma kihagyás:** a `forras=` érték zárójel-tudatosan bomlik (a beágyazott zárójel is kiesik), a záró csillag
    nem tapad az utolsó értékhez; a szóköz nélküli, nem fájlnév és nem ismert beolvasási mód érték (glob, könyvtár,
    csonka név) és a fájl nélküli szabad szöveg BemenetHiba. A beolvasás módja (`split`) a konfigban kimondva nem fájl
-   (`KEZI_FORRAS_OLVASASI_MOD`); a forrásban javítandó: N-F218u. A lapok bájtra azonosak a javítás előttivel.
+   (`KEZI_FORRAS_OLVASASI_MOD`); a forrásban javítandó: N218. A lapok bájtra azonosak a javítás előttivel.
 3. **Alrész a szülővel:** `alresz='szocikkek'`; a szakaszrend építéskor ellenőrzi, hogy közvetlenül a szülő után áll
    (ValueError); a GK-10 cseretesztben az alrész a szülőjével mozog; új teszt az elcsúszott alrészre.
 4. **Napló:** a folytatás S8c–S8d sora ép; a brief `pr` mezője `-` (a PR számát a megnyitás után kapja).

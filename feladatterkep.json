@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-21",
-   "commit": "8e9fa1b9"
+   "commit": "3ab2d989"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -717,7 +717,7 @@
    "fazis": "folyamat",
    "allapot": "run",
    "brief_allapot": "fut",
-   "most": "Te: a merge után az S8b új ágon a main-ről (első lépés: a mérce hash-sorai, N200), majd S8c, S8d",
+   "most": "Te: az S8b a fő munka (a kézi rések: Miért fontos, 10., 11.); utána megállás",
    "fugg": "#70*",
    "tervezett": false,
    "reszletes": "",
