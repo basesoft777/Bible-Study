@@ -13,6 +13,7 @@ import unittest
 import kozos
 from lapgen import bemenet, fo, konfig, szakaszok
 from lapgen.bemenet import motivum as motivum_be
+from lapgen.bemenet.nyelv import folerendelt_mondatkezdo
 from lapgen.megjelenites.md import eleje as MD
 from lapgen.megjelenites.md.iro import Lapiro
 from lapgen.szamitas import eleje as SZ
@@ -89,11 +90,21 @@ class LapEleje(unittest.TestCase):
         self.assertEqual(len(horgonyos), 1)
         self.assertIn('**Mi tartozik ide, és mi nem.** ' + kiiras(m.kriterium).szoveg, horgonyos[0])
 
-    def test_a_tagabb_kor_mondatkezdo_alakban(self):
-        """A tágabb kör a mondat elején nagybetűvel áll; a mező kisbetűs alakja (a 4.12 bevezetője) változatlan."""
-        sor = motivum_be.b02_motivum(bemenet.Bemenet(kozos.GYOKER), MotivumId(HAMART))
-        self.assertTrue(sor.folerendelt.ertek[0].islower())
-        self.assertEqual(sor.folerendelt_mondatkezdo.ertek, sor.folerendelt.ertek[0].upper() + sor.folerendelt.ertek[1:])
+    def test_a_tagabb_kor_mondatkezdo_alakja_adat(self):
+        """A tágabb kör a lap elején mondatkezdő alakban áll; az alak a névtábla `folerendelt_mondatkezdo` sora
+        (DT869 elve: a végleges alak az adatban), a mező kisbetűs alakja (a 4.12 bevezetője) változatlan. Kapu: az
+        alak a mezőtől csak a kezdőbetűben térhet el."""
+        b = bemenet.Bemenet(kozos.GYOKER)
+        for azonosito in kozos.MINTALAPOK:
+            sor = motivum_be.b02_motivum(b, MotivumId(azonosito))
+            self.assertTrue(sor.folerendelt.ertek[0].islower())
+            adat = folerendelt_mondatkezdo(b, MotivumId(azonosito), sor.folerendelt.ertek)
+            self.assertIsNotNone(adat, azonosito)
+            self.assertEqual(sor.folerendelt_mondatkezdo.ertek, adat.ertek)
+            self.assertEqual(adat.ertek[1:], sor.folerendelt.ertek[1:])
+        with self.assertRaises(bemenet.BemenetHiba):
+            folerendelt_mondatkezdo(b, MotivumId(HAMART), 'a bűn és következményei általában, más szöveg')
+        self.assertIsNone(folerendelt_mondatkezdo(b, MotivumId('NINCS-001'), 'x'))
 
     def test_hianyzo_kriterium_bukas(self):
         """GK-06: üres kritérium vagy tágabb kör a lap elején BUKÁS (kötelező elem)."""
@@ -142,48 +153,75 @@ class Szakaszrend(unittest.TestCase):
         self.assertEqual(len(elemek), 15)
 
     def test_gk10_szakaszszam_es_horgony_a_modellbol(self):
-        """GK-10: két számozott szakasz cseréje után a lapon nem keletkezik új hibás belső link, és a cserélt
-        szakaszokra mutató linkek az új számot viselik. (A még el nem készült szakaszokra mutató link mindkét
-        lapon hibás; ezek halmaza nem változhat, a számuk szerint.)"""
-        eredeti_rend = szakaszok._rend
+        """GK-10: három pár számozott szakasz cseréje után (a 3↔4., az 5↔6. és a 7↔9.: a Szótári háttér és a
+        Hatástörténet is mozog) a lapon nem keletkezik új hibás belső link, és a cserélt szakaszokra mutató linkek az
+        új számot viselik. (A még el nem készült szakaszokra mutató link mindkét lapon hibás; ezek halmaza a
+        szakaszszám nélkül nem változhat.)"""
         alap = _lap(HAMART)
-
-        def cserelt():
-            rend = list(eredeti_rend())
-            i = next(k for k, l in enumerate(rend) if l.azonosito == 'lxx')
-            j = next(k for k, l in enumerate(rend) if l.azonosito == 'kereszthivatkozasok')
-            rend[i], rend[j] = rend[j], rend[i]
-            szam = 0
-            for leiro in rend:
-                leiro.sorszam = None
-                if leiro.szamozott:
-                    szam += 1
-                    leiro.sorszam = szam
-            return tuple(rend)
-        szakaszok._rend = cserelt
+        eredeti_rend = szakaszok._rend
+        szakaszok._rend = _cserelt_rend
         try:
             uj = _lap(HAMART)
         finally:
             szakaszok._rend = eredeti_rend
-        self.assertIn('- [5. Kereszthivatkozások](#5-kereszthivatkozások)', uj)
-        self.assertIn('- [6. LXX-fordítói döntések](#6-lxx-fordítói-döntések)', uj)
-        # a két lap hibás linkjei: a szakaszszám nélküli alakjuk egyezik (a még nem kész szakaszok)
+        for elem in ('- [3. Szótári háttér](#3-szótári-háttér)', '- [5. Kereszthivatkozások](#5-kereszthivatkozások)',
+                     '- [6. LXX-fordítói döntések](#6-lxx-fordítói-döntések)',
+                     '- [7. Hatástörténet: ókori fordítások és értelmezők](#7-hatástörténet-ókori-fordítások-és-értelmezők)',
+                     '- [9. Kapcsolatok](#9-kapcsolatok)'):
+            self.assertIn(elem, uj)
+
         def szam_nelkul(linkek):
             return sorted(re.sub(r'^\d+-', '', h) for h in linkek)
         self.assertEqual(szam_nelkul(_hibas_linkek(uj)), szam_nelkul(_hibas_linkek(alap)))
         self.assertEqual(len(_hibas_linkek(uj)), len(_hibas_linkek(alap)))
 
     def test_jelmagyarazat_szakaszszamai_a_szakaszrendbol(self):
-        """A Jelmagyarázat két szakaszhivatkozása (a szótári pontok, a Hatástörténet) a szakaszrend számát viseli."""
-        keret = _keret()
-        iro = Lapiro()
-        MD.megjelenit_jelmagyarazat(iro, SZ.Ures(), keret, fo._forrasok(keret.b, bemenet.b01_licencek(keret.b), ()))
-        szoveg = '\n'.join(s.szoveg for s in iro.kesz())
-        s4, s9 = keret.rend.sorszam(MD.SZOCIKKEK), keret.rend.sorszam(MD.HATASTORTENET)
-        self.assertIn('**A szótári pontok** (%d. Szótári háttér)' % s4, szoveg)
-        self.assertIn('%d.11 visszhang: ókori fordítások (a %d. szakaszban)' % (s4, s9), szoveg)
-        self.assertIn('olvasatát a %d. szakasz mutatja' % s9, szoveg)
-        self.assertIn('licenc: minden jog fenntartva', szoveg)
+        """A Jelmagyarázat szakaszszámai (a szótári pontok, a 4.11 mutatója, a Hatástörténet) a szakaszrend számát
+        viselik, látható szövegként is: az alaprenden (4 és 9) és a cserélt renden (3 és 7)."""
+        for rend, s4, s9 in ((None, 4, 9), (_cserelt_szakaszrend(), 3, 7)):
+            keret = _keret(rend)
+            self.assertEqual((keret.rend.sorszam(MD.SZOCIKKEK), keret.rend.sorszam(MD.HATASTORTENET)), (s4, s9))
+            iro = Lapiro()
+            MD.megjelenit_jelmagyarazat(iro, SZ.Ures(), keret, fo._forrasok(keret.b, bemenet.b01_licencek(keret.b), ()))
+            szoveg = '\n'.join(s.szoveg for s in iro.kesz())
+            self.assertIn('**A szótári pontok** (%d. Szótári háttér)' % s4, szoveg)
+            self.assertIn('%d.10 kiejtés (magyaros); %d.11 visszhang: ókori fordítások (a %d. szakaszban)'
+                          % (s4, s4, s9), szoveg)
+            self.assertIn('A %d.1–%d.10 nyelvenként, szavanként áll, a %d.11–%d.14 a motívum egészére vonatkozik.'
+                          % (s4, s4, s4, s4), szoveg)
+            self.assertIn('olvasatát a %d. szakasz mutatja' % s9, szoveg)
+            self.assertIn('licenc: minden jog fenntartva', szoveg)
+
+
+_CSEREK = (('kizart', 'szocikkek'), ('lxx', 'kereszthivatkozasok'), ('kapcsolatok', 'hatastortenet'))
+
+
+def _cserelt_rend():
+    """A szakaszrend három cserével (`_CSEREK`), újraszámozva: a `szakaszok._rend` helyére."""
+    rend = list(_EREDETI_REND())
+    for a, b in _CSEREK:
+        i = next(k for k, l in enumerate(rend) if l.azonosito == a)
+        j = next(k for k, l in enumerate(rend) if l.azonosito == b)
+        rend[i], rend[j] = rend[j], rend[i]
+    szam = 0
+    for leiro in rend:
+        leiro.sorszam = None
+        if leiro.szamozott:
+            szam += 1
+            leiro.sorszam = szam
+    return tuple(rend)
+
+
+_EREDETI_REND = szakaszok._rend
+
+
+def _cserelt_szakaszrend():
+    eredeti = szakaszok._rend
+    szakaszok._rend = _cserelt_rend
+    try:
+        return fo.szakaszrend()
+    finally:
+        szakaszok._rend = eredeti
 
 
 if __name__ == '__main__':

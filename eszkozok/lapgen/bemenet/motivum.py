@@ -12,6 +12,7 @@ jön (a forrás nézete).
 import re
 
 from lapgen.bemenet import szavak
+from lapgen.bemenet.nyelv import folerendelt_mondatkezdo
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.ubs import b14_forditasok
 
@@ -49,14 +50,6 @@ class MotivumSor:
         self.meghatarozas, self.azonossag, self.forras_study = meghatarozas, azonossag, tuple(forras_study)
 
 
-def mondatkezdo(szoveg):
-    """A mező mondatkezdő alakja (a lap elején a „A tágabb kör” mondata a mezővel kezdődik): az első betű nagybetűvel.
-    Tipográfiai alak, nem tartalmi átírás; a mező a 4.12 bevezetőjében a mondat belsejében áll, ezért az adat kisbetűs
-    (a régi `_nagy_kezdo`). A bemeneti réteg egyetlen kódba írt alakképzése a motívumsoron (DT875: a forrás-oldali
-    átalakítás az átírás végéig kódban, a bemeneti rétegben; a 218a végi listán)."""
-    return szoveg[:1].upper() + szoveg[1:]
-
-
 def b02_motivum(b, motivum):
     """B02 — a motívum sora. A cím és a fölérendelt fogalom a mondatzáró pont nélkül áll az adatban (a pontot a
     sablonmondat teszi ki): ha ponttal végződik, BemenetHiba (a réteg nem vág le a szövegből)."""
@@ -81,7 +74,9 @@ def b02_motivum(b, motivum):
         nem_tartozik=b.kezi('B02', 'negativ_kriterium', elvalaszto + tobbi) if elvalaszto else None,
         folerendelt=b.kezi('B02', 'folerendelt_fogalom', fol) if fol else None,
         kriterium=b.kezi('B02', 'negativ_kriterium', kriterium) if kriterium else None,
-        folerendelt_mondatkezdo=b.kezi('B02', 'folerendelt_fogalom', mondatkezdo(fol)) if fol else None,
+        # a lap elején a mondat a mezővel kezdődik: a mondatkezdő alak adat (a névtábla sora, DT869), sor híján a mező
+        folerendelt_mondatkezdo=(folerendelt_mondatkezdo(b, motivum, fol)
+                                 or b.kezi('B02', 'folerendelt_fogalom', fol)) if fol else None,
         meghatarozas=b.kezi('B02', 'meghatarozas', megh) if megh else None,
         azonossag=b.kulcs('B02', 'azonossag_tipusa', tipus) if tipus else None,
         forras_study=[b.utvonal_ertek('B02', u) for u in forrasok])
@@ -187,28 +182,40 @@ def rovid_jelentes(b):
                                                              szavak.b10_lemmak(b)[2]))
 
 
-def b47_nyitott_kerdesek(b, motivum):
-    """B47 — a motívum kézi forrásának vitatott pontjai és nyitott kérdései: mindegyikből a félkövér cím és az első
-    mondat, szó szerinti részletként (kézi próza), a forrás rendjében: előbb az `ertelmezes` rés „Vitatott pontok”
-    pontjai, azután a `modszertan` rés „Nyitott kérdések” listája.
-
-    A rések forrását a forrásjegyzék mondja meg: csak a kézi forrásból jövő rés számít, és a jegyzékben álló útvonal
-    a motívum kézi forrása kell legyen (más útvonal BemenetHiba). Hiányzó rés vagy pont nem hiba: üres eredmény."""
+def b47_resek(b, motivum):
+    """B47 — a motívum kézi résének törzsei a kézi forrásból, a forrásjegyzék szerint: {rés: szöveg} (a jelölők közötti
+    szöveg, változatlanul). Csak a kézi forrásból jövő rés számít, és a jegyzékben álló útvonal a motívum kézi forrása
+    kell legyen (más útvonal BemenetHiba). A jegyzékben álló, de a forrásban jelölő nélküli rés nem kerül bele. Ez a B47
+    egyetlen olvasója; a nyitott kérdések és a kézi rések ebből dolgoznak (GK-01)."""
     jegyzek_ut, forras_ut = b._utvonalak('B47', motivum)
     tabla = b._tabla('B47', utvonal=jegyzek_ut, oszlopok=_RES_OSZLOPOK)
-    resek = {r['res']: r for r in tabla.szotarak() if r['id'] == motivum.kod}
-    ki = []
-    for res, blokk_rx, tetel_rx in ((_RES_ERTELMEZES, _VITATOTT_RX, _VITATOTT_TETEL_RX),
-                                    (_RES_MODSZERTAN, _NYITOTT_RX, _NYITOTT_TETEL_RX)):
-        sor = resek.get(res)
-        if sor is None or sor['forras'] != _RES_KEZI:
+    szoveg, ki = None, {}
+    for sor in tabla.szotarak():
+        if sor['id'] != motivum.kod or sor['forras'] != _RES_KEZI:
             continue
         if sor['tanulmany'] != forras_ut:
             raise BemenetHiba('B47: a(z) %s rés forrása (%s) nem a motívum kézi forrása (%s)'
-                              % (res, sor['tanulmany'], forras_ut))
-        szoveg = b._szoveg('B47', utvonal=forras_ut)
-        torzs = re.search(_RES_RX % (re.escape(res), re.escape(res)), szoveg)
-        blokk = blokk_rx.search(torzs.group(1)) if torzs else None
+                              % (sor['res'], sor['tanulmany'], forras_ut))
+        if szoveg is None:
+            szoveg = b._szoveg('B47', utvonal=forras_ut)
+        torzs = re.search(_RES_RX % (re.escape(sor['res']), re.escape(sor['res'])), szoveg)
+        if torzs is not None:
+            ki[sor['res']] = torzs.group(1)
+    return ki
+
+
+def nyitott_kerdesek(b, motivum):
+    """A motívum kézi forrásának vitatott pontjai és nyitott kérdései (a B47-ből): mindegyikből a félkövér cím és az első
+    mondat, szó szerinti részletként (kézi próza), a forrás rendjében: előbb az `ertelmezes` rés „Vitatott pontok”
+    pontjai, azután a `modszertan` rés „Nyitott kérdések” listája.
+
+    A rések forrását a forrásjegyzék mondja meg (`b47_resek`). Hiányzó rés vagy pont nem hiba: üres eredmény."""
+    resek = b47_resek(b, motivum)
+    ki = []
+    for res, blokk_rx, tetel_rx in ((_RES_ERTELMEZES, _VITATOTT_RX, _VITATOTT_TETEL_RX),
+                                    (_RES_MODSZERTAN, _NYITOTT_RX, _NYITOTT_TETEL_RX)):
+        torzs = resek.get(res)
+        blokk = blokk_rx.search(torzs) if torzs is not None else None
         for reszlet in (tetel_rx.findall(blokk.group(1)) if blokk else ()):
             ki.append(b.kezi('B47', 'nyitott_kerdes', reszlet.strip()))
     return tuple(ki)
@@ -225,21 +232,12 @@ class Res:
 
 
 def kezi_res(b, motivum, res):
-    """A B47-ből (a `b47_nyitott_kerdesek` bemenete; GK-01: bemenetenként egy `b<nn>_` függvény) a motívum egy kézi résének törzse (`Res`), vagy None, ha a rés a jegyzékben nem a kézi forrásból jön,
-    vagy a forrásban nincs jelölője (opcionális rés: a hívó mondja ki a hiányt). A jegyzékben álló útvonal a motívum
-    kézi forrása kell legyen (más útvonal BemenetHiba, mint a `b47_nyitott_kerdesek`-ben)."""
-    jegyzek_ut, forras_ut = b._utvonalak('B47', motivum)
-    tabla = b._tabla('B47', utvonal=jegyzek_ut, oszlopok=_RES_OSZLOPOK)
-    sorok = [r for r in tabla.szotarak() if r['id'] == motivum.kod and r['res'] == res]
-    if not sorok or sorok[0]['forras'] != _RES_KEZI:
-        return None
-    if sorok[0]['tanulmany'] != forras_ut:
-        raise BemenetHiba('B47: a(z) %s rés forrása (%s) nem a motívum kézi forrása (%s)'
-                          % (res, sorok[0]['tanulmany'], forras_ut))
-    torzs = re.search(_RES_RX % (re.escape(res), re.escape(res)), b._szoveg('B47', utvonal=forras_ut))
+    """A motívum egy kézi résének törzse soronként (`Res`, a `b47_resek`-ből), vagy None, ha a rés a jegyzékben nem a
+    kézi forrásból jön, vagy a forrásban nincs jelölője (opcionális rés: a hívó mondja ki a hiányt)."""
+    torzs = b47_resek(b, motivum).get(res)
     if torzs is None:
         return None
-    reszek = torzs.group(1).split('\n')
+    reszek = torzs.split('\n')
     while reszek and not reszek[0].strip():
         reszek.pop(0)
     while reszek and not reszek[-1].strip():

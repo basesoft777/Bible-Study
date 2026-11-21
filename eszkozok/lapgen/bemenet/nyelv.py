@@ -12,6 +12,7 @@ from lapgen.szoveg import Kulcs, Nev, SablonSor, sablon
 
 NEVTABLA_OSZLOPOK = ('tipus', 'kulcs', 'olvasoi_nev', 'eredet')
 SABLON_OSZLOPOK = ('kulcs', 'mondat', 'parameterek', 'szakasz', 'eredet', 'dontes')
+FOLERENDELT_MONDATKEZDO_TIPUS = 'folerendelt_mondatkezdo'   # a tágabb kör mondatkezdő alakja; kulcs: a motívum
 CIMKE_CELLA_TIPUS = 'cimke_cella'   # a szótári szakaszcímke cellakezdő alakja; kulcs: szótár|Strong|szócikk|szakasz
 OK_CELLA_TIPUS = 'ok_cella'   # az elutasítási ok címkéjének cellakezdő alakja (DT869); kulcs: a címke (B56)
 _KULCS_ELVALASZTO = '|'
@@ -115,6 +116,20 @@ def cimke_cellaalakok(b):
                               % (CIMKE_CELLA_TIPUS, kulcs))
         ki[reszek] = b.kezi('B65', CIMKE_CELLA_TIPUS, nev)
     return ki
+
+
+def folerendelt_mondatkezdo(b, motivum, mezo):
+    """A motívum tágabb körének mondatkezdő alakja (B65, `folerendelt_mondatkezdo` típus; a kulcs a motívum) kézi
+    szövegként, vagy None, ha a motívumnak nincs sora (ilyenkor a mező változatlanul áll). Az alak adat (DT869: a
+    végleges alak az adatban, a generátor nem írja át); a mezőtől (`mezo`, a motívumtábla `folerendelt_fogalom`
+    értéke) csak a kezdőbetűben térhet el, különben BemenetHiba."""
+    alak = b65_nevtabla(b).nyers_nevek(FOLERENDELT_MONDATKEZDO_TIPUS).get(motivum.kod)
+    if alak is None:
+        return None
+    if not alak[:1].isupper() or alak[:1].lower() + alak[1:] != mezo[:1].lower() + mezo[1:] or alak[1:] != mezo[1:]:
+        raise BemenetHiba('B65: a(z) %s tágabb körének mondatkezdő alakja (%r) a mezőtől (%r) csak a kezdőbetűben '
+                          'térhet el' % (motivum.kod, alak, mezo))
+    return b.kezi('B65', FOLERENDELT_MONDATKEZDO_TIPUS, alak)
 
 
 def ok_cellaalakok(b):

@@ -1420,7 +1420,7 @@ lap elején, a Kivonat rése, a Jelmagyarázat két szakaszszáma és licence.
 **⛔ A lap eleje (`fej`) kész, de nincs bekötve.** A bekötéssel a kritérium kapujának „pontosan egyszer” módja él
 (DT872), és az **ISTENTISZT-001** lapját elbuktatja: a kézi Kivonat 3. bekezdése („Ide az a hely tartozik, amelyben a
 hívás igéje (kárá) és a név …”) a kritérium másolata, a 4. bekezdés első mondata („A motívum tehát nem az imádság vagy
-a segítségkérés általában, …”) a tágabb köré — ugyanaz, mint a HAMART-001-en a DT874 1. és 3. tétele. A kézi próza
+a segítségkérés általában, …”) a tágabb köré (pontosítva a 11. ellenőrzés után: a kapu egyetlen 12 szavas ablakon bukik, a 3. bekezdés 1. mondatában; a többi mondat a feltételeket más szavakkal mondja, ezt a kapu nem méri) — ugyanaz, mint a HAMART-001-en a DT874 1. és 3. tétele. A kézi próza
 javítása a felhasználó döntése (az orkesztrátornak elküldve, 2026-11-21). A HAMART-001 lapján a bekötött `fej`
 kipróbálva: egyetlen eltérő sor, a horgony (`<a id="mi-tartozik-ide"></a>` a meghatározás előtt; az `ISM-HORGONY`
 engedélysor kész: régi `a3a17a817a90da74`, új `b1c3b164425dcfd5`, 1 sor), a kapu „teljes” módja zöld. A bekötés a
@@ -1455,3 +1455,33 @@ fájl sorait: 2 sor változott (13., 15.). A lap befagyasztott, a régi lap nem 
 (ISTENTISZT kézi forrás) hash-e frissült, az ág döntésfájlja (B51, `dontesek/uj/f218a-s8.md`) új sorként felvéve. A
 tesztváz `S8_FEJ` csonkja megszűnt; a `teszt_eleje.py` horgony-tesztje mindkét teljes lapon méri a horgony egyetlen
 előfordulását. A nyílt mag a Kivonatot nem exportálja (E35 nem érintett).
+
+### Független ellenőrzés — 11. ellenőrzés (S8a, `00fa3e41..08e869fb`, `claude-fable-5-2`)
+
+**ELTÉRÉS: 5 tétel** (az első hívás Opuson indult, és a modell-ellenőrzésen megállt: a `fuggetlen-ellenor.md` 0. pontja
+még `opus`-t ír, a fejléce `fable`; a második hívás kifejezetten Fable-lel futott). Az ellenőrzés közben a munkafa
+megváltozott (a DT-F218w végrehajtása), ezért a tesztek, a festékpróba és az ISTENTISZT-generálás vegyes fán futott; a
+HAMART-regresszió tiszta fán RENDBEN. A tételek: (1) a `mondatkezdo` kódbeli alakképzés a DT875-tel nem fedett, a
+DT869 (b) az alakot adatba teszi (közepes); (2) a GK-10 teszt csak az 5↔6 cserét méri, a Jelmagyarázat-teszt csak az
+alaprenden fut (közepes); (3) a `kezi_res` a GK-01 névkonvencióján kívül olvassa a B47-et, a commit-üzenet
+`b47_res`-t ír (alacsony–közepes); (4) a `fej`-indok pontatlan: a kapu egy ablakon bukik, a „másolat” tartalmi
+megállapítás (alacsony); (5) a `_forrasok` licenc-ágának feltétele tágabb a megjegyzésénél (alacsony). Rendben: a
+59 + 19 sor betűre a referencia, 0 `uj`; a horgony-kihagyás a HN-tesztben valódi HN-08-at nem fed el; a számok
+egyeznek.
+
+### A 11. ellenőrzés javítóköre
+
+1. **A mondatkezdő alak adat** (DT869 (b) elve, a `cimke_cella` és az `ok_cella` mintájára): új névtábla-típus,
+   `folerendelt_mondatkezdo` (kulcs: a motívum; 2 sor: a két mintalap), betöltő: `bemenet.nyelv.folerendelt_mondatkezdo`;
+   kapu: az alak a mezőtől csak a kezdőbetűben térhet el (BemenetHiba); sor híján a mező változatlanul áll. A kódbeli
+   `mondatkezdo` megszűnt. SEMA 2.68 kiegészítve.
+2. **GK-10:** a csere három pár (3↔4., 5↔6., 7↔9.: a Szótári háttér és a Hatástörténet is mozog); a Jelmagyarázat-teszt
+   az alaprenden és a cserélt renden is a látható számokat méri (a „(a 9. szakaszban)”, „A 4.1–4.10 …” mondat is). Mindkét
+   teszt zöld: a korábbi szeletek szakaszhivatkozásai is a szakaszrendből jönnek.
+3. **GK-01:** a B47 egyetlen olvasója a `b47_resek` (a motívum kézi réseinek törzse, {rés: szöveg}); a `nyitott_kerdesek`
+   (korábban `b47_nyitott_kerdesek`) és a `kezi_res` ebből dolgozik. A 11.1 commit üzenetének `bemenet.motivum.b47_res`
+   neve helyesen: `kezi_res` (most: `b47_resek` + `kezi_res`).
+4. **A `fej`-indok:** a pontos mérés a DT-F218w sorában; a héber tokenizálás külön tétel (N-F218t).
+5. **`_forrasok`:** a feltétel `if not azonositok` (a szakasz nem olvasott bemenetet), a megjegyzéssel egyezően.
+
+A javítás után: HAMART-regresszió RENDBEN (a lap bájtra azonos a javítás előttivel); a mérce B65 hash-e frissült.

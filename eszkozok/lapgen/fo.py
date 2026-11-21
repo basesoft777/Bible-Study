@@ -131,7 +131,7 @@ def _forrasok(b, licencek, azonositok):
         if sor.licenc_kulcs != '-':
             cimke = licencek.cimke(sor.licenc_kulcs)
             cimkek[cimke.ertek] = cimke
-    if not cimkek and licencek is not None:
+    if not azonositok and licencek is not None:
         # adatot nem olvasó szakasz (Tartalomjegyzék, Jelmagyarázat): a szöveg a projekt sajátja; a címke is a
         # licencleltárból jön (GK-07), nem kódba írt szövegből
         cimke = licencek.cimke(konfig.SAJAT_LICENC)
