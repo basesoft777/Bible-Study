@@ -7,8 +7,8 @@
    "eszkozok/feladatterkep_kartyak.tsv"
   ],
   "belyeg": {
-   "datum": "2026-11-18",
-   "commit": "124b7b35"
+   "datum": "2026-11-21",
+   "commit": "34ecc67f"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -452,7 +452,7 @@
    "fazis": "1",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Te: [elteres_kor 2/2] HAMART-001 (#639): az ELLENOR_F123_HAMART3_javitokor3 mindkét tétele rendezve (2. mechanikus: F123.HAMART3.43; 1. tartalmi: DT687 a felhasználó szavával); új kör nincs (korlát). Következik: a renderelt lap átnézése (orkesztrátor, majd a felhasználó), merge a felhasználótól.",
+   "most": "A HAMART-001 kész: PR #639 a main-en (2026-11-08), ez az új arany. Következik az ISTENTISZT-001, méréssel; a további motívumlapok az új lapgenerátorra (F218, S8–S9) épülnek, ezért annak lezárása után folytatódik.",
    "fugg": "#11 (kész), #12 (kész), #126 (kész), #127 (kész), #156*, #157*, #212*, #217*, #218*",
    "tervezett": false,
    "reszletes": "",
