@@ -37,7 +37,12 @@ Tétel: `dontesek/uj/claude_f69-sema-dataset-szam.md`, `DT-F69a` 🟢.
 
 ## Független ellenőrzés
 
-Nem futott (a menet megállt, nincs átírt diff).
+### 1. ellenőrzés (`fuggetlen-ellenor`, head `cac84de4`)
+
+- G1–G4 OK: a 136 sor / 43 dataset / 31 × 4 + 12 mérése saját lekérdezéssel egyezik; a SEMA diffje csak a 2.6 E1–E3 sora; a `datasetek.tsv` diffje üres; a `hianyzik` 4 sor (`openbible_crossrefs`).
+- ELTÉRÉS (1): ennek a szakasznak a korábbi szövege („Nem futott…”) a megálláskori állapotot írta; a head-en hamis volt. Javítva (ez a szöveg).
+- Nem ellenőrizhető az ellenőr számára: a CI befejezett eredménye (a futás akkor még tartott), a sha256, a DT-F69a felhasználói döntésének eredete (az orkesztrátor közlése).
+- Javítókör: 1/2.
 
 ## Zárás
 
