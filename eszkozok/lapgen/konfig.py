@@ -24,6 +24,9 @@ TS_HASH_JEGY = 12
 # a kézi forrássorban nevezett kódfájl (a lekérdezés szkriptje) és archívumfájl nem adatforrás
 KEZI_FORRAS_KOD_KITERJESZTES = ('.py',)
 KEZI_FORRAS_ARCHIVUM = ('archivum/',)
+# a kézi forrássor `forras=` értékében a beolvasás módja (a táblát a `scope=` nevezi): nem fájl, és a régi lap sem
+# nevezte meg a táblát; a forrásban javítandó (N-F218u)
+KEZI_FORRAS_OLVASASI_MOD = ('split',)
 SAJAT_LICENC = 'projekt_adat'   # a licencleltár kulcsa: az adatot nem olvasó szakasz (a projekt saját szövege) licence
 
 # --- 2. Előfordulások: az összegző mondat küszöbei --------------------------------------------------------------

@@ -88,7 +88,7 @@ def _szakirodalommal(elemek, pontok, sorok, motivum):
     szakirodalom-sor BemenetHiba (a lap nem hagyhat ki ellenőrzött sort némán, GK-06)."""
     for vf in sorok:
         if vf.pont not in pontok:
-            raise BemenetHiba('B75: a(z) %s egyik szakirodalom-sorának pontja nem áll a vitatott pontok között'
+            raise BemenetHiba('B40: a(z) %s egyik szakirodalom-sorának pontja nem áll a vitatott pontok között'
                               % motivum.kod)
         i = pontok[vf.pont]
         k = next((j for j in range(i + 1, len(elemek)) if elemek[j].fajta is ResElemFajta.URES), len(elemek))
@@ -107,7 +107,7 @@ def szamit_miert_fontos(korny):
 
 def szamit_ertelmezes(korny):
     elemek, pontok = _elemek(korny.b, korny.motivum, RES_ERTELMEZES)
-    sorok = szakirodalom_be.b75_vitatott_forrasok(korny.b, korny.motivum)
+    sorok = szakirodalom_be.b40_vitatott_forrasok(korny.b, korny.motivum)
     return Res(tuple(_szakirodalommal(elemek, pontok, sorok, korny.motivum)))
 
 

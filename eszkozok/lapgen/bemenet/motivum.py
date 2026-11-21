@@ -254,7 +254,7 @@ class Res:
 _PROV_SOR_RX = re.compile(r'^\*Proveniencia: (.*)\*$')
 _PROV_FORRAS_RX = re.compile(r'forras=([^|]+)')
 _PROV_ELVALASZTO_RX = re.compile(r'[+,;]\s*')
-_PROV_ZAROJEL_RX = re.compile(r'\s*\(.*$')
+_PROV_ZAROJEL_RX = re.compile(r'\s*\([^()]*\)')
 _FAJLNEV_RX = re.compile(r'^[\w./-]+\.\w+$')
 _BELSO_JELOLO_RX = re.compile(r'^(?:<!-- ADAT-NÉZET: .*\| SZINT: belso -->|<!-- ADAT-HIV: .* -->)$')
 _NAPLO_NYITO = ('【NAPLO', '【NAPLÓ')
@@ -290,7 +290,9 @@ def _naplo_sor(sor):
 def _forrassor_bemenetei(b, sor, utvonalak):
     """A kézi forrássor `forras=` értékeiben nevezett adatfájlok jegyzék-azonosítója, az első előfordulás rendjében. A
     réteg szerkezetileg bont (a `+`, `,`, `;` elválasztó és a zárójeles megjegyzés mentén); a nem fájlnév érték
-    (kódrészlet, szabad szöveg) nem forrás. A fájlnév vagy a jegyzék útvonala, vagy annak fájlneve; a kódfájl (a
+    (kódrészlet, szabad szöveg) nem forrás (a zárójeles megjegyzés kiesik, a beágyazott is). A szóközös szabad megjegyzés csak fájlt is nevező
+    értékben állhat; a beolvasás módja (`konfig.KEZI_FORRAS_OLVASASI_MOD`) kimondottan nem fájl; minden más nem
+    fájlnév érték BemenetHiba (nincs néma kihagyás). A fájlnév vagy a jegyzék útvonala, vagy annak fájlneve; a kódfájl (a
     lekérdezés szkriptje) és az archívumfájl (`konfig.KEZI_FORRAS_KOD_KITERJESZTES`, `KEZI_FORRAS_ARCHIVUM`) nem
     adatforrás. Más, a jegyzékben nem álló fájl BemenetHiba: a
     forrássor nem hivatkozhat a lapon meg nem nevezhető adatra (GK-06, GK-07), kivéve, ha a fájlnak névtábla-sora van
@@ -303,10 +305,20 @@ def _forrassor_bemenetei(b, sor, utvonalak):
     kezi_fajlok = set(b65_nevtabla(b).nyers_nevek(KEZI_FORRASFAJL_TIPUS))
     ki = []
     for ertek in _PROV_FORRAS_RX.findall(sor):
-        for token in _PROV_ELVALASZTO_RX.split(ertek.strip()):
-            token = _PROV_ZAROJEL_RX.sub('', token).strip()
-            if (not token or not _FAJLNEV_RX.match(token) or token.endswith(konfig.KEZI_FORRAS_KOD_KITERJESZTES)
-                    or token.startswith(konfig.KEZI_FORRAS_ARCHIVUM)):
+        ertek = ertek.strip()
+        while _PROV_ZAROJEL_RX.search(ertek):          # a zárójeles megjegyzés (a beágyazott is) nem forrás
+            ertek = _PROV_ZAROJEL_RX.sub('', ertek)
+        tokenek = [t.strip() for t in _PROV_ELVALASZTO_RX.split(ertek) if t.strip()]
+        fajlok = [t for t in tokenek if _FAJLNEV_RX.match(t)]
+        for token in tokenek:
+            if token in fajlok or token in konfig.KEZI_FORRAS_OLVASASI_MOD:
+                continue
+            if not (fajlok and any(c.isspace() for c in token)):
+                # szóköz nélküli, nem fájlnév érték (glob, könyvtár, csonka név) vagy fájl nélküli szabad szöveg
+                raise BemenetHiba('B47: a kézi forrássor `forras=` értéke nem fájl és nem ismert beolvasási mód: %r'
+                                  % token)
+        for token in fajlok:
+            if token.endswith(konfig.KEZI_FORRAS_KOD_KITERJESZTES) or token.startswith(konfig.KEZI_FORRAS_ARCHIVUM):
                 continue
             if token in utvonalak:
                 jeloltek = {utvonalak[token]}
@@ -345,8 +357,10 @@ def kezi_res(b, motivum, res):
             vitatott = r.strip() == _VITATOTT_CIM
         prov = _PROV_SOR_RX.match(r)
         if prov:
+            # a bontás a sor belsején fut (a záró csillag nem tapad az utolsó értékhez)
             sorok.append(ResSor(eredeti=b.belso('B47', 'kezi_forrassor', r),
-                                bemenetek=[(j, b.kulcs('B47', 'forras', k)) for j, k in _forrassor_bemenetei(b, r, utvonalak)]))
+                                bemenetek=[(j, b.kulcs('B47', 'forras', k))
+                                           for j, k in _forrassor_bemenetei(b, prov.group(1), utvonalak)]))
         elif _BELSO_JELOLO_RX.match(r) or _naplo_sor(r):
             sorok.append(ResSor(belso=True))
         elif r.lstrip().startswith('<!--') or '【' in r:

@@ -838,7 +838,7 @@ jm.olvasoi	A szócikkben használt rövidítések, jelek és forrásnevek felold
 jm.hatokor	*Ez a rész minden szócikkben azonos.*	-	Jelmagyarázat	blokk_jelmagyarazat (a kész lapon)	-
 jm.szotari_pontok	**A szótári pontok** ({cim}): szavanként számozott pontok követik egymást, mindegyik egy kérdésre felel: {pontok|; }. A {szakasz}.{elso}–{szakasz}.{utolso_szo} nyelvenként, szavanként áll, a {szakasz}.{elso_kozos}–{szakasz}.{utolso} a motívum egészére vonatkozik.	cim:lathato, pontok:lista(lathato), szakasz:szam, elso:szam, utolso_szo:szam, elso_kozos:szam, utolso:szam	Jelmagyarázat	szotari_pontok_jelmagyarazat (a kész lapon)	-
 jm.szotari_pont	{szakasz}.{pont} {nev}	szakasz:szam, pont:szam, nev:nev(szotari_pont_mondatkozi)	Jelmagyarázat	szotari_pontok_jelmagyarazat	-
-jm.szotari_pont.visszhang	{szakasz}.{pont} {nev} (a {hatas}. szakaszban)	szakasz:szam, pont:szam, nev:nev(szotari_pont_mondatkozi), hatas:szam	Jelmagyarázat	szotari_pontok_jelmagyarazat	-
+jm.szotari_pont.visszhang	{szakasz}.{pont} {nev} ({hatas|a}. szakaszban)	szakasz:szam, pont:szam, nev:nev(szotari_pont_mondatkozi), hatas:szam	Jelmagyarázat	szotari_pontok_jelmagyarazat	-
 jm.t01	**PaRDeS-szintek** (a PaRDeS-gyorsreferencia):	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t02	- **Peshat** — a szöveg szerinti, szó szerinti értelem.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t03	- **Remez** — csak felismerés/azonosítás, következtetés nélkül.	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
@@ -848,7 +848,7 @@ jm.t06	A szint olvasási módot jelöl, nem a szöveg jelentését: a zsidó ír
 jm.t07	meg, hogyan kapcsolódik a hely a motívumhoz (szó szerint, utalásként, következtetésként vagy spirituális olvasatban). Nem	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t08	kritikai állítás arról, mit szándékolt a bibliai szerző, és nem a szöveg eredeti, történeti jelentésének szintje. A	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t09	besorolást e munka adja, saját szabályai szerint; nevesített magyarázók olvasatát a szócikk nem	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
-jm.t10	gyűjti; az ókori fordítások és értelmezők olvasatát a {hatas}. szakasz mutatja. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem	hatas:szam	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
+jm.t10	gyűjti; az ókori fordítások és értelmezők olvasatát {hatas|a}. szakasz mutatja. Egy hely motívumhoz tartozásának bizonyítéka a héber és a görög szöveg, nem	hatas:szam	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t11	a szint (részletesen: [A PaRDeS-szint mint recepciós címke](../kozlemeny/PARDES_RECEPCIOS_KERET.md)).	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t12	**Funkció:** a vers szerepe a motívum ívében — az adatséma szerint	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
 jm.t13	szabad szöveg (nincs zárt értékkészlet), az alábbi táblákban a motívum	-	Jelmagyarázat	JELMAGYARAZAT_TORZS (a kész lapon, az olvasói utófeldolgozás után)	-
@@ -880,5 +880,5 @@ res.olvasoi.miert_fontos	Miért jelentős a fenti szótári anyag a motívum sze
 res.olvasoi.ertelmezes	A motívum értelmezése a PaRDeS négy szintjén: szó szerinti értelem, utalás, tanítás, mélyebb réteg. Az állítások alatt a mért adat forrása áll.	-	10	OLVASOI_RES	-
 res.olvasoi.modszertan	Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérdések.	-	11	OLVASOI_RES	-
 res.forras	*Forrás: {nevek|; }.*	nevek:lista(nev)	rések	olvasoi_atiras (_prov_olvasoi, a kész lapon a „Forrás:” sor)	-
-res.szakirodalom	*Szakirodalom:* {osszefoglalo} ({szerzo}, {ev}; a teljes hivatkozás a {szakasz}. szakaszban.)	osszefoglalo:lathato, szerzo:lathato, ev:szam, szakasz:szam	10	szakirodalom_beszur	-
+res.szakirodalom	*Szakirodalom:* {osszefoglalo} ({szerzo}, {ev}; a teljes hivatkozás {szakasz|a}. szakaszban.)	osszefoglalo:lathato, szerzo:lathato, ev:szam, szakasz:szam	10	szakirodalom_beszur	-
 res.szakirodalom.hiany	*Szakirodalom:* {osszefoglalo} (Keresve: OpenAlex, Crossref, {datum}.)	osszefoglalo:lathato, datum:datum	10	szakirodalom_beszur	-

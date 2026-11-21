@@ -1504,8 +1504,7 @@ lépcső). Az új generátorban ez szerkezet, csere nélkül:
   generátor által nem olvasott fájl (a Vulgata) a névtábla `kezi_forrasfajl` sorából kap nevet. A kódfájl (`.py`) és az
   archívum nem forrás. Más fájl BemenetHiba. A lapon `res.forras` („*Forrás: {nevek|; }.*”) áll, a nyers sor
   `eredeti:` megjegyzésben.
-- **a szakirodalom-sor** (B75, `adat/vitatott_forrasok.tsv`, új jegyzéksor; a fájl a mércében már mért, a régi B40
-  sora): az ellenőrzött sor a vitatott pont bekezdése után áll (üres sor, a sor, üres sor). A pont nélküli sor
+- **a szakirodalom-sor** (B40, `adat/vitatott_forrasok.tsv`, új jegyzéksor a térkép számával; a mérce is B40 alatt méri): az ellenőrzött sor a vitatott pont bekezdése után áll (üres sor, a sor, üres sor). A pont nélküli sor
   BemenetHiba. A szerzős alak a 12. szakaszra a szakaszrend számával hivatkozik (GK-10, teszt cserélt renden), a
   hiány-sor a lekérdezés dátumát mondja. A szerző vezetékneve a mező szerkezetéből bontva (a régi szabály).
 - **a „Miért fontos” rés** a 4. szakasz alrésze: saját szakaszleíró (`alresz=True`), hogy a 4. szakasz blokkfejlécének
@@ -1518,9 +1517,36 @@ Módszertan rése után, vagy a kézi forrásban) a felhasználó döntése.
 
 **Új sorok.** Sablontábla: 7 (`cim.miert_fontos`, `res.olvasoi.*` 3, `res.forras`, `res.szakirodalom`,
 `res.szakirodalom.hiany`). Mind a mai lap szövege, `eredet=<szimbólum>`, `dontes=-`. Névtábla: 6 (`forras` 5: B04,
-B25, B35, B38, B74 a régi `olvasoi_forrasnev` szerint; `kezi_forrasfajl` 1: a Vulgata). Jegyzék: B75. A mérce B65, B66
+B25, B35, B38, B74 a régi `olvasoi_forrasnev` szerint; `kezi_forrasfajl` 1: a Vulgata). Jegyzék: B40. A mérce B65, B66
 hash-e frissült.
 
 **A 218a végi listába:** a `kezi_forrasfajl` típus (forrásnév a generátor által nem olvasott fájlnak); a kódfájl és az
 archívum kizárása a kézi forrássorból (`konfig.KEZI_FORRAS_*`); a régi „Proveniencia (a tábla soraiból)” lépcső
 kézi-szerkesztés-jelzője a rés forrássorában nem áll (a mai lap szerint); a GK-19 T6-mondata (⛔).
+
+### Független ellenőrzés — 12. ellenőrzés (S8b, `63be37cc..d3ba71bb`, `claude-fable-5-2`)
+
+**ELTÉRÉS: 5 tétel.** (1) a `vitatott_forrasok.tsv` B75-öt kapott a térkép B40-e helyett (közepes); (2) néma kihagyás a
+kézi forrássorban: a csak beolvasási módot nevező szegmens, a glob, a könyvtár és a záró csillag hiba nélkül kiesik
+(közepes; ISTENTISZT-001: három tábla nem áll a látható forrássorban, a régi lap sem nevezte); (3) az `alresz` csak
+pozíció, a szülőt nem nevezi (alacsony); (4) a folytatási fájl S8c–S8d sora és a brief `pr` mezője (alacsony); (5) a
+szakasz­szám előtti névelő beégetett „a” (alacsony). Rendben: a regresszió, a festékpróba, az 5 új `forras` név (a régi
+`OLVASOI_FORRASNEV` táblával betűre), a B40 beszúrási helye, a GK-10 teszt, a ⛔ GK-19 megállása. Az ellenőr
+`teszt_futtat.py --diff` futása 2 olvasó-szerver tesztfájlon bukott (`teszt_visszhang_kapu`, `teszt_szintek`); a diff
+az `eszkozok/olvaso_szerver/`-t nem érinti, a `teszt_visszhang_kapu` 2 bukása a folytatási fájl szerint az S1 óta a
+main-en is áll; most nem futtattam újra.
+
+### A 12. ellenőrzés javítóköre
+
+1. **B40:** a jegyzéksor, a `b40_vitatott_forrasok` és a kulcscímkék a térkép számával.
+2. **Nincs néma kihagyás:** a `forras=` érték zárójel-tudatosan bomlik (a beágyazott zárójel is kiesik), a záró csillag
+   nem tapad az utolsó értékhez; a szóköz nélküli, nem fájlnév és nem ismert beolvasási mód érték (glob, könyvtár,
+   csonka név) és a fájl nélküli szabad szöveg BemenetHiba. A beolvasás módja (`split`) a konfigban kimondva nem fájl
+   (`KEZI_FORRAS_OLVASASI_MOD`); a forrásban javítandó: N-F218u. A lapok bájtra azonosak a javítás előttivel.
+3. **Alrész a szülővel:** `alresz='szocikkek'`; a szakaszrend építéskor ellenőrzi, hogy közvetlenül a szülő után áll
+   (ValueError); a GK-10 cseretesztben az alrész a szülőjével mozog; új teszt az elcsúszott alrészre.
+4. **Napló:** a folytatás S8c–S8d sora ép; a brief `pr` mezője `-` (a PR számát a megnyitás után kapja).
+5. **Névelő:** a szakaszszám előtt `{…|a}` (a 12. szakaszra mutató szakirodalom-sor, a Jelmagyarázat két sora); teszt
+   az 1-es, 5-ös, 11-es, 12-es számra.
+
+110 teszt (resek, eleje, szerkezet, vaz, szocikkek, regresszio) zöld; HAMART-regresszió RENDBEN.

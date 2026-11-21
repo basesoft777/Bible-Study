@@ -1,4 +1,4 @@
-"""lapgen.bemenet.szakirodalom — a vitatott pontok lektorált szakirodalma (B75, `adat/vitatott_forrasok.tsv`).
+"""lapgen.bemenet.szakirodalom — a vitatott pontok lektorált szakirodalma (B40, `adat/vitatott_forrasok.tsv`).
 
 Csak az ellenőrzött sor számít (üres `ellenorzes`: a lapon nem áll, a régi `vitatott_forrasok` szabálya). Az
 összefoglaló kézi próza (saját szavas összefoglalás, idézet nincs). A szerző a lap mondatában a vezetéknevével áll: a
@@ -22,9 +22,9 @@ class VitatottForras:
         self.pont, self.szerzo, self.ev, self.osszefoglalo, self.lekerdezve = pont, szerzo, ev, osszefoglalo, lekerdezve
 
 
-def b75_vitatott_forrasok(b, motivum):
-    """B75 — a motívum ellenőrzött szakirodalom-sorai, a tábla rendjében."""
-    tabla = b._tabla('B75', oszlopok=_OSZLOPOK)
+def b40_vitatott_forrasok(b, motivum):
+    """B40 — a motívum ellenőrzött szakirodalom-sorai, a tábla rendjében."""
+    tabla = b._tabla('B40', oszlopok=_OSZLOPOK)
     ki = []
     for r in tabla.szotarak():
         if r['motivum'] != motivum.kod or not r['ellenorzes'].strip():
@@ -33,13 +33,13 @@ def b75_vitatott_forrasok(b, motivum):
             lekerdezve = datetime.date.fromisoformat(r['lekerdezve'].strip())
             ev = int(r['ev']) if r['ev'].strip() else None
         except ValueError as hiba:
-            raise BemenetHiba('B75: hibás dátum vagy év (%s, %s): %s' % (motivum.kod, r['pont'], hiba))
+            raise BemenetHiba('B40: hibás dátum vagy év (%s, %s): %s' % (motivum.kod, r['pont'], hiba))
         szerzo = r['szerzo'].strip()
         if szerzo and ev is None:
-            raise BemenetHiba('B75: szerzővel álló sor év nélkül (%s, %s)' % (motivum.kod, r['pont']))
+            raise BemenetHiba('B40: szerzővel álló sor év nélkül (%s, %s)' % (motivum.kod, r['pont']))
         vezeteknev = szerzo.split(_SZERZO_ELVALASZTO)[0].split()[-1] if szerzo else None
         ki.append(VitatottForras(
-            pont=b.kulcs('B75', 'pont', r['pont'].strip()),
-            szerzo=b.kezi('B75', 'szerzo', vezeteknev) if vezeteknev else None,
-            ev=ev, osszefoglalo=b.kezi('B75', 'osszefoglalo', r['osszefoglalo'].strip()), lekerdezve=lekerdezve))
+            pont=b.kulcs('B40', 'pont', r['pont'].strip()),
+            szerzo=b.kezi('B40', 'szerzo', vezeteknev) if vezeteknev else None,
+            ev=ev, osszefoglalo=b.kezi('B40', 'osszefoglalo', r['osszefoglalo'].strip()), lekerdezve=lekerdezve))
     return tuple(ki)

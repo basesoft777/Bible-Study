@@ -83,10 +83,26 @@ class Bontas(unittest.TestCase):
         b = bemenet.Bemenet(kozos.GYOKER)
         ut = motivum_be._jegyzek_utvonalak(b)
         with self.assertRaises(bemenet.BemenetHiba):
-            motivum_be._forrassor_bemenetei(b, '*Proveniencia: scope=x | forras=adat/nincs_ilyen.tsv | ts=1*', ut)
+            motivum_be._forrassor_bemenetei(b, 'scope=x | forras=adat/nincs_ilyen.tsv | ts=1', ut)
         self.assertEqual(motivum_be._forrassor_bemenetei(
-            b, "*Proveniencia: scope=x | forras=split('\\t') | ts=1 · forras=naplok/a.py+archivum/b.md+TAHOT_kivonat.tsv | ts=2*",
+            b, "scope=x | forras=split('\\t') | ts=1 · forras=naplok/a.py+archivum/b.md+TAHOT_kivonat.tsv | ts=2",
             ut), [(True, 'B08')])
+
+    def test_nincs_nema_kihagyas(self):
+        """A nem fájl `forras=` érték (glob, könyvtár, fájl nélküli szabad szöveg) BemenetHiba; a zárójeles megjegyzés
+        (a beágyazott is) kiesik; a záró csillag nem tapad az utolsó fájlnévhez; a beolvasás módja nem fájl."""
+        b = bemenet.Bemenet(kozos.GYOKER)
+        ut = motivum_be._jegyzek_utvonalak(b)
+        for rossz in ('scope=x | forras=konkordancia/LXX_OS/*.tsv | ts=1', 'scope=x | forras=adat/karoli_strong | ts=1',
+                      'scope=x | forras=egy szabad mondat | ts=1'):
+            with self.assertRaises(bemenet.BemenetHiba, msg=rossz):
+                motivum_be._forrassor_bemenetei(b, rossz, ut)
+        self.assertEqual(motivum_be._forrassor_bemenetei(
+            b, "scope=x | forras=TAHOT_kivonat.tsv (egy (beágyazott) megjegyzés; és több), a 4.2 pont | ts=1", ut),
+            [(True, 'B08')])
+        self.assertEqual(motivum_be._forrassor_bemenetei(b, "scope=x | forras=split('\t') | ts=1", ut), [])
+        r = motivum_be.kezi_res(b, MotivumId(HAMART), SZ.RES_MIERT_FONTOS)
+        self.assertTrue(any(s.eredeti is not None for s in r.sorok))
 
     def test_naplo_sor(self):
         self.assertTrue(motivum_be._naplo_sor('【NAPLO: egy 【belső】 megjegyzés】'))
@@ -139,24 +155,32 @@ class Szakirodalom(unittest.TestCase):
         MD._torzs(iro, _keret(rend), SZ.szamit_ertelmezes(_Korny(HAMART)))
         self.assertTrue(any('a teljes hivatkozás a 11. szakaszban.)' in s.szoveg for s in iro.kesz()))
 
+    def test_nevelo_a_szakaszszam_elott(self):
+        """A szakaszszám előtti névelő a számhoz igazodik („az 5. szakaszban”, „a 12. szakaszban”)."""
+        ny = bemenet.nyelv(bemenet.Bemenet(kozos.GYOKER))
+        for szam, nevelo in ((5, 'az'), (1, 'az'), (12, 'a'), (11, 'a')):
+            szoveg = kiiras(ny.s('res.szakirodalom', osszefoglalo=ny.s('cim.kivonat'), szerzo=ny.s('cim.kivonat'),
+                                 ev=2020, szakasz=szam)).szoveg
+            self.assertIn('a teljes hivatkozás %s %d. szakaszban.)' % (nevelo, szam), szoveg)
+
     def test_pont_nelkuli_sor_bukas(self):
         """Ellenőrzött szakirodalom-sor, amelynek pontja nem áll a vitatott pontok között: BemenetHiba (GK-06)."""
         korny = _Korny(HAMART)
-        eredeti = szakirodalom_be.b75_vitatott_forrasok
+        eredeti = szakirodalom_be.b40_vitatott_forrasok
 
         def hamis(b, motivum):
             sor = eredeti(b, motivum)[0]
-            return (szakirodalom_be.VitatottForras(b.kulcs('B75', 'pont', 'Nincs ilyen pont'), sor.szerzo, sor.ev,
+            return (szakirodalom_be.VitatottForras(b.kulcs('B40', 'pont', 'Nincs ilyen pont'), sor.szerzo, sor.ev,
                                                    sor.osszefoglalo, sor.lekerdezve),)
-        szakirodalom_be.b75_vitatott_forrasok = hamis
+        szakirodalom_be.b40_vitatott_forrasok = hamis
         try:
             with self.assertRaises(bemenet.BemenetHiba):
                 SZ.szamit_ertelmezes(korny)
         finally:
-            szakirodalom_be.b75_vitatott_forrasok = eredeti
+            szakirodalom_be.b40_vitatott_forrasok = eredeti
 
     def test_istentiszt_nincs_szakirodalom(self):
-        self.assertEqual(szakirodalom_be.b75_vitatott_forrasok(bemenet.Bemenet(kozos.GYOKER), MotivumId(ISTENTISZT)), ())
+        self.assertEqual(szakirodalom_be.b40_vitatott_forrasok(bemenet.Bemenet(kozos.GYOKER), MotivumId(ISTENTISZT)), ())
 
 
 class Szakaszrend(unittest.TestCase):
@@ -168,10 +192,26 @@ class Szakaszrend(unittest.TestCase):
         nevek = [l.azonosito for l in rend.mind()]
         self.assertEqual(nevek[nevek.index('szocikkek') + 1], MD.AZONOSITO_MIERT_FONTOS)
         leiro = rend.mind()[nevek.index(MD.AZONOSITO_MIERT_FONTOS)]
-        self.assertTrue(leiro.alresz)
+        self.assertEqual(leiro.alresz, 'szocikkek')
         self.assertIsNone(leiro.sorszam)
         from lapgen.megjelenites.md import eleje
         self.assertEqual(len(eleje.tartalom_elemek(_keret())), 15)
+
+    def test_az_alresz_a_szulo_mellett(self):
+        """A szakaszrend ellenőrzi, hogy az alrész közvetlenül a szülője után áll; máshol ValueError."""
+        eredeti = szakaszok._rend
+
+        def elcsuszott():
+            rend = list(eredeti())
+            i = next(k for k, l in enumerate(rend) if l.azonosito == MD.AZONOSITO_MIERT_FONTOS)
+            rend.insert(i + 2, rend.pop(i))
+            return tuple(rend)
+        szakaszok._rend = elcsuszott
+        try:
+            with self.assertRaises(ValueError):
+                szakaszok.Szakaszrend()
+        finally:
+            szakaszok._rend = eredeti
 
     def test_a_negyedik_szakasz_egeszben_merodik(self):
         from lapgen import regresszio

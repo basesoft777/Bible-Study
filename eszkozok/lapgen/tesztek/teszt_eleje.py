@@ -197,12 +197,17 @@ _CSEREK = (('kizart', 'szocikkek'), ('lxx', 'kereszthivatkozasok'), ('kapcsolato
 
 
 def _cserelt_rend():
-    """A szakaszrend három cserével (`_CSEREK`), újraszámozva: a `szakaszok._rend` helyére."""
-    rend = list(_EREDETI_REND())
+    """A szakaszrend három cserével (`_CSEREK`), újraszámozva: a `szakaszok._rend` helyére. Az alrész a szülőjével
+    együtt mozog (a szakaszrend ellenőrzi a szomszédságot)."""
+    eredeti = list(_EREDETI_REND())
+    alreszek = {l.alresz: l for l in eredeti if l.alresz is not None}
+    rend = [l for l in eredeti if l.alresz is None]
     for a, b in _CSEREK:
         i = next(k for k, l in enumerate(rend) if l.azonosito == a)
         j = next(k for k, l in enumerate(rend) if l.azonosito == b)
         rend[i], rend[j] = rend[j], rend[i]
+    for szulo, alresz in alreszek.items():
+        rend.insert(next(k for k, l in enumerate(rend) if l.azonosito == szulo) + 1, alresz)
     szam = 0
     for leiro in rend:
         leiro.sorszam = None
