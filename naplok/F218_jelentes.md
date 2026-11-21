@@ -1445,7 +1445,7 @@ tette, az S4 nem vitte; a tesztváz `ISM_3` csonkja őrzi).
 
 **Ismétlés-figyelő.** HAMART-001: 80 ismétlődő szósor, ISTENTISZT-001: 34 (figyelmeztetés, nem BUKÁS).
 
-**A lap eleje bekötve (DT-F218w, 2026-11-21).** A felhasználó döntése az orkesztrátoron át, szó szerint: „a, a HAMART
+**A lap eleje bekötve (DT895, 2026-11-21).** A felhasználó döntése az orkesztrátoron át, szó szerint: „a, a HAMART
 mintájára”. Az ISTENTISZT-001 Kivonatában (`motivumok/ISTENTISZT-001.md`, az `ir`-en kívül, mint a DT870/DT874
 forrásjavításai) a 3. bekezdés 1–7. mondata (a kritérium feltételei) és a 4. bekezdés első mondata (a tágabb kör)
 törlődött; a 3. bekezdés 8. mondata (2Móz 33:19, 34:5) marad. A szkript a változás előtt és után összevetette a
@@ -1460,7 +1460,7 @@ előfordulását. A nyílt mag a Kivonatot nem exportálja (E35 nem érintett).
 
 **ELTÉRÉS: 5 tétel** (az első hívás Opuson indult, és a modell-ellenőrzésen megállt: a `fuggetlen-ellenor.md` 0. pontja
 még `opus`-t ír, a fejléce `fable`; a második hívás kifejezetten Fable-lel futott). Az ellenőrzés közben a munkafa
-megváltozott (a DT-F218w végrehajtása), ezért a tesztek, a festékpróba és az ISTENTISZT-generálás vegyes fán futott; a
+megváltozott (a DT895 végrehajtása), ezért a tesztek, a festékpróba és az ISTENTISZT-generálás vegyes fán futott; a
 HAMART-regresszió tiszta fán RENDBEN. A tételek: (1) a `mondatkezdo` kódbeli alakképzés a DT875-tel nem fedett, a
 DT869 (b) az alakot adatba teszi (közepes); (2) a GK-10 teszt csak az 5↔6 cserét méri, a Jelmagyarázat-teszt csak az
 alaprenden fut (közepes); (3) a `kezi_res` a GK-01 névkonvencióján kívül olvassa a B47-et, a commit-üzenet
@@ -1481,7 +1481,7 @@ egyeznek.
 3. **GK-01:** a B47 egyetlen olvasója a `b47_resek` (a motívum kézi réseinek törzse, {rés: szöveg}); a `nyitott_kerdesek`
    (korábban `b47_nyitott_kerdesek`) és a `kezi_res` ebből dolgozik. A 11.1 commit üzenetének `bemenet.motivum.b47_res`
    neve helyesen: `kezi_res` (most: `b47_resek` + `kezi_res`).
-4. **A `fej`-indok:** a pontos mérés a DT-F218w sorában; a héber tokenizálás külön tétel (N-F218t).
+4. **A `fej`-indok:** a pontos mérés a DT895 sorában; a héber tokenizálás külön tétel (N217).
 5. **`_forrasok`:** a feltétel `if not azonositok` (a szakasz nem olvasott bemenetet), a megjegyzéssel egyezően.
 
 A javítás után: HAMART-regresszió RENDBEN (a lap bájtra azonos a javítás előttivel); a mérce B65 hash-e frissült.

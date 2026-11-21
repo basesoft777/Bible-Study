@@ -28,12 +28,12 @@ A 12 csak `lexikon_oldal`-ban álló dataset: `OSHL_lexikalis_index`, `Targum_PD
 
 Hianyzik-sorok (változatlanul 4): `openbible_crossrefs` × 4 study-típus.
 
-**4. Átírás (a DT-F69a 1. alakja szerint, felhasználói döntés 2026-11-21, 🟢):** `adat/SEMA.md` 2.6 három sora változott, más sor nem:
+**4. Átírás (a DT894 1. alakja szerint, felhasználói döntés 2026-11-21, 🟢):** `adat/SEMA.md` 2.6 három sora változott, más sor nem:
 - E1 (409. sor): „43 dataset, 136 sor: 31 × 4 + 12 × 1 (a 12 lexikon_oldal-only dataset a táblából olvasandó)”
 - E2 (414. sor): „(43 érték)”
 - E3 (423. sor): „jelenleg 4 sor viseli: az `openbible_crossrefs` mind a négy study-típusban (jelölt, nem importált, DT33)”
 
-Tétel: `dontesek/uj/claude_f69-sema-dataset-szam.md`, `DT-F69a` 🟢.
+Tétel: `dontesek/uj/claude_f69-sema-dataset-szam.md`, `DT894` 🟢.
 
 ## Független ellenőrzés
 
@@ -41,12 +41,12 @@ Tétel: `dontesek/uj/claude_f69-sema-dataset-szam.md`, `DT-F69a` 🟢.
 
 - G1–G4 OK: a 136 sor / 43 dataset / 31 × 4 + 12 mérése saját lekérdezéssel egyezik; a SEMA diffje csak a 2.6 E1–E3 sora; a `datasetek.tsv` diffje üres; a `hianyzik` 4 sor (`openbible_crossrefs`).
 - ELTÉRÉS (1): ennek a szakasznak a korábbi szövege („Nem futott…”) a megálláskori állapotot írta; a head-en hamis volt. Javítva (ez a szöveg).
-- Nem ellenőrizhető az ellenőr számára: a CI befejezett eredménye (a futás akkor még tartott), a sha256, a DT-F69a felhasználói döntésének eredete (az orkesztrátor közlése).
+- Nem ellenőrizhető az ellenőr számára: a CI befejezett eredménye (a futás akkor még tartott), a sha256, a DT894 felhasználói döntésének eredete (az orkesztrátor közlése).
 - Javítókör: 1/2.
 
 ## Zárás
 
-- Készült: brief fejléc (`F69.1`), mérés (szkript a scratchpadban, nem repó), döntés-tétel `DT-F69a` (🟢), a SEMA 2.6 E1–E3 átírása, ez a jelentés.
+- Készült: brief fejléc (`F69.1`), mérés (szkript a scratchpadban, nem repó), döntés-tétel `DT894` (🟢), a SEMA 2.6 E1–E3 átírása, ez a jelentés.
 - Mérési eltérés: a datasetek száma 30 → 43 és a sorok 117 → 136 a 2026-10-19 óta; az átírás a mért, 2026-11-21-i számokat írja be.
 - Ellenőrzés: `git diff --stat adat/SEMA.md`: 1 fájl, csak a 2.6 E1–E3 sorai változtak. A `git diff --stat -- adat/datasetek.tsv` kimenete üres. `python eszkozok/feladatok.py ellenoriz`: 245 brief, 0 hiba (a figyelmeztetések más briefekre vonatkoznak).
 - Tesztek: nem futottak (nincs kódváltozás).
