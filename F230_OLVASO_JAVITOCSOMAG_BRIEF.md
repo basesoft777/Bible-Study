@@ -6,10 +6,12 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SERVER
-allapot: fut
+allapot: lezarva
 ag: claude/olvaso-javitocsomag-895ec6
+pr: 781
+lezarva_osszegzes: az olvasó-szerver javítócsomagja a 2026-11-21-i felmérés H-pontjaira: kiejtés a közös szolgáltatásból, egy tagolt BDB-kártya, Thayer-felirat, olvasói szöveg (belső azonosítók, proveniencia olvasói alakja), UBS-szűrés, KH-tartomány, Nave KJV-számozás, ugrás-link; élő bizonyítékkal, 34 új teszttel
 ad: az olvasó szó-lapja és versnézete a projekt kiejtés-szolgáltatásából mutat kiejtést; a BDB egyetlen tagolt kártya (magyar elöl, az angol eredeti csukva; fordítás nélkül az angol nyitva); a Thayer fordítás nélkül „Magyar fordítás nincs · az angol eredeti áll” jelzést ad; az olvasói felületről kikerülnek a belső azonosítók, a nyers jelölők és a hibás hivatkozások (a felmérés 1–4, 6, 7, 9–14, 24, 33. pontja); mindegyik javítás élő lekéréssel igazolva
-kovetkezo: "a független ellenőr és legfeljebb egy javítókör, majd a draft PR leírása az élő bizonyítékokkal"
+kovetkezo: "Te: a draft PR áttekintése és merge-e"
 munka: folyamat
 olvas: [eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/bdb_rovidites.py, adat/kiejtes_kivetelek.tsv]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/kiejtes_szolg.py, eszkozok/olvaso_szerver/konfig/hozzaferes.toml, eszkozok/olvaso_szerver/konfig/hozzaferes_proba.toml, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/teszt_szintek.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_olvaso_hibak.py, eszkozok/olvaso_szerver/teszt_olvaso_javitocsomag.py, "naplok/F230_*.md"]

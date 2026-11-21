@@ -341,16 +341,24 @@ def _f_nave(K):
     return vers, fej, hu
 
 
-def _nave_hely(K, hely):
-    """F230: a Nave-hely a KJV-számozás szerint áll (a Zsolt 22:1 a Károli 22:2); a hivatkozás a megfelelő Károli-versre mutat, és ahol a
-    két számozás eltér, ezt a szöveg jelzi. Az azonos számozású helynél változatlan."""
+def _nave_hely(K, hely, tart=False):
+    """F230: a Nave-hely a KJV-számozás szerint áll (a Zsolt 22:1 a Károli 22:2, a Jób 38:41 a Károli 39:3); a hivatkozás a megfelelő
+    Károli-versre mutat, és ahol a két számozás eltér, ezt a szöveg jelzi. Egy verses helynél a sor a lap versére van leképezve
+    (`nave_vers.igehely`, a KjvRacs a versmegfeleltetés mellett az LXX_OS-t is használja), tehát a megfelelő maga a lap verse; tartománynál a
+    kezdő vers a `vers_szamozas` szerint. Nem létező Károli-versre nem hivatkozunk (ott a hely szövegesen áll)."""
     m = re.match(r'^(.+?) (\d+):(\d+)', hely or '')
     if not (m and m.group(1) in K.kozos.slug):
         return ig_link(K, hely)
     konyv, f, v = m.groups()
-    ter = K.memo('kjv_karoli:' + konyv, lambda: q.kjv_karoli_terkep(K.con, konyv))
-    ig = ter.get('%s:%s' % (f, v))
-    if not ig:
+    sajat = '%s %s:%s' % (konyv, f, v)
+    if not tart and K.ig:
+        ig = K.ig
+    else:
+        ter = K.memo('kjv_karoli:' + konyv, lambda: q.kjv_karoli_terkep(K.con, konyv))
+        ig = ter.get('%s:%s' % (f, v)) or sajat
+    if not K.memo('vers_van:' + ig, lambda: q.vers_van(K.con, ig)):
+        return Markup('%s <span class="megj">(KJV-számozás)</span>') % hely
+    if ig == sajat:
         return ig_link(K, hely)
     kf, kv = ig[len(konyv) + 1:].split(':')
     return Markup('<a class="igehely" href="/%s/%s/%s">%s</a> <span class="megj">(KJV-számozás; Károli: %s)</span>') % (
@@ -367,7 +375,7 @@ def _r_nave(d, K):
         return _hu_en(hu.get((tid, cimke or '')), cimke) if cimke else ''
     ki = Markup('')
     if d:
-        sorok = [[tema_hu(tema, tid), cimke_hu(cimke, tid), _nave_hely(K, hely) if hely else '', 'tartomány (versekre bontva)' if t else 'vers'] for tema, cimke, hely, t, tid in d[:80]]
+        sorok = [[tema_hu(tema, tid), cimke_hu(cimke, tid), _nave_hely(K, hely, t) if hely else '', 'tartomány (versekre bontva)' if t else 'vers'] for tema, cimke, hely, t, tid in d[:80]]
         ki += _tabla(['Téma', 'Cím', 'Nave-hely', 'Jelleg'], sorok)
         if len(d) > 80:
             ki += Markup('<p class="megj">Összesen %d sor; az első 80 látszik.</p>') % len(d)
@@ -689,7 +697,7 @@ def _f_ebben(K):
             if hu is None:
                 # F213: a magyar UBS DBH-fordítás, mint a teljes UBS-blokkban (`q.ubs_dbh_szo`); a `szo.ubs_dbh` szintjét követi
                 hu = q.ubs_dbh_hu(K.con, K.strong) if getattr(K, 'ubs_hu_ok', True) else {}
-            ubs.append((dom, df, gl, hu.get((lex, 'definicio_hu'), ''), hu.get((lex, 'glosszak_hu'), '')))
+            ubs.append((dom, df, gl, q.ubs_tisztit(hu.get((lex, 'definicio_hu'), '')), q.ubs_tisztit(hu.get((lex, 'glosszak_hu'), ''))))
     par = q.hu_par_szavak(K.con, K.ig)
     szofaj = q.szofajok(K.con, {p[2] for _, (hu, ps) in par.items() for p in ps})
     karoli = None
@@ -1433,6 +1441,9 @@ def _f_bdb_apparatus(K):
     d['lem'] = K.kozos_szotar(g) if g else {}
     kozos = getattr(K, 'kozos', None)
     d['nyelvtani'] = getattr(kozos, 'nyelvtani', set()) or set()
+    # F230: a külön magyar nyers blokk megszűnt; a tagolt kártya néhány szócikknél nem ad vissza minden tagmondatot (N-F76d biztosítéka),
+    # ezért a teljes magyar szöveg csukva a kártyában marad
+    d['hu_nyers'] = _bdb_adat(K)['hu'] if b['hu'] else None
     return d
 
 
@@ -1679,7 +1690,7 @@ def _szk_csomopont(cx, n, nid, elotag, ti, jel, al, tn, cimke, en_kulcs=None):
     db = _helyek_pontos(vj.db(nid)) if vj.van else _helyek(n.get('ref'))
     meta = Markup('<span class="szk-meta">%s%s%s%s%s</span>') % (
         db, _szk_lxx(cx, nid),
-        Markup('<span class="szk-tag szk-tag-kezi" title="szerkesztői címke (adat/szotar_szakasz_cimke.tsv)">szerkesztői címke</span>') if kezi else '',
+        Markup('<span class="szk-tag szk-tag-kezi" title="a jóváhagyott szerkesztői címke">szerkesztői címke</span>') if kezi else '',
         mot, _jelzes(szint, _okok(vj, nid)) if szint else '')
     also = _szk_apparatus(cx, nid, forras, app) + _szk_angol(cx['en'].get(en_kulcs or (elotag, ti, jel, al)), talalt)
     egyben = Markup('<p class="szk-egyben jsz">%s</p>') % _jeles(n['szoveg'], talalt) if n['szoveg'] else Markup('')
@@ -1754,7 +1765,9 @@ def _r_bdb_apparatus(d, K):
     cx = {'vj': vj, 'talalt': talalt, 'cimkek': d.get('cimkek') or {}, 'lxx': d.get('lxx') or {}, 'lem': d.get('lem') or {},
           'nyelvtani': d.get('nyelvtani') or set(), 'motiv': motiv, 'en': _szk_en_terkep(d.get('en_fa')),
           'nezet': d.get('nezet') or 'szo'}
-    ki = Markup('<span class="allapot%s">%s</span>') % ('' if hu else ' folyamat', ('Lefordítva · %s' % d['meta']) if hu else 'Magyar fordítás nincs · az angol eredeti áll')
+    # F230: az állapotsorban nincs modellnév (belső azonosító): „gépi fordítás” és a dátum; a teljes meta (modell, dátum) a `data-modell` attribútumban
+    ki = Markup('<span class="allapot%s" data-modell="%s">%s</span>') % (
+        '' if hu else ' folyamat', d['meta'] or '' if hu else '', ('Lefordítva · gépi fordítás, %s' % (d['meta'] or '').rpartition(', ')[2]) if hu else 'Magyar fordítás nincs · az angol eredeti áll')
     if d['alias']:
         ki += _alias_megj(d['alias'])
     ki += Markup('<div class="szk-nezet" role="group" aria-label="A szócikk nézete" hidden>%s</div>') % Markup('').join(
@@ -1808,6 +1821,8 @@ def _r_bdb_apparatus(d, K):
                      'angol eredetiétől); ezek a pontok számában nem szerepelnek.</p>') % nem_az
     if talalt:
         ki += Markup('<details class="szk-jelmagyarazat"><summary>Jelmagyarázat</summary>%s</details>') % _jelmagyarazat_html(talalt)
+    if d.get('hu_nyers'):
+        ki += Markup('<details class="szk-teljes"><summary>A magyar szócikk teljes szövege (tagolás nélkül)</summary>%s</details>') % _szoveg(_sor_kulcs_nelkul(d['hu_nyers']))
     return _rovidites(K, Markup('<div class="szk" data-nezet="olvaso">%s</div>') % ki, magyar=bool(hu))
 
 
@@ -2059,8 +2074,8 @@ def _f_magyar_gorog(K):
 
 def _ures_magyar_gorog(K):
     """F230: fordítás nélkül nem „üres eredmény”, hanem a hiányzó fordítás jelzése (a BDB-kártya szövegével): az angol Thayer-szócikk a
-    `szo.thayer` blokkban áll. Ha az sincs, a szokásos üres jelzés."""
-    if q.thayer(K.con, K.strong):
+    `szo.thayer` blokkban áll (ha az a szinten/kiadásban látszik: `K.thayer_ok`). Ha az sincs, a szokásos üres jelzés."""
+    if getattr(K, 'thayer_ok', True) and q.thayer(K.con, K.strong):
         return Markup('<p class="ures">Magyar fordítás nincs · az angol eredeti áll.</p>')
     return _ures()
 

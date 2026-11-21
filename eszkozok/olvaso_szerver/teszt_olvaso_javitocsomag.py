@@ -47,12 +47,10 @@ class TestKiejtesSzolgaltatas(unittest.TestCase):
 
     def test_jovahagyott_kivetel_elobb_mint_a_gepi(self):
         t = kiejtes_szolg._betolt()['heber']
-        if not t:
-            self.skipTest('nincs héber kivétel-sor')
-        lemma, ki = next(iter(t.items()))
-        if not any('א' <= c <= 'ת' for c in lemma):
-            self.skipTest('a kivételtábla kulcsa nem héber lemma')
-        self.assertEqual(kiejtes_szolg.heber_szoto(lemma, ''), ki)
+        self.assertTrue(t, 'nincs héber kivétel-sor az adat/kiejtes_kivetelek.tsv-ben')
+        # a kivételtábla kulcsa a lemma NFC alakja vagy a STEP-átírás; az átírás-kulcsra a (nem szereplő) lemma mellett is a kivétel adódik
+        for kulcs, ki in list(t.items())[:5]:
+            self.assertEqual(kiejtes_szolg.heber_szoto('חטא-nincs-ilyen-lemma', kulcs), ki, kulcs)
 
     def test_tartalek_pontozatlan_alakra_ures(self):
         self.assertEqual(kiejtes_szolg.heber_szoto('חטא', ''), '')     # pontozatlan: nem generálunk
@@ -70,6 +68,8 @@ class TestKiejtesSzolgaltatas(unittest.TestCase):
         self.assertEqual((k[0], k[2]), ('', ''))           # az előtag- és a toldalék-sor
         self.assertTrue(k[1].startswith('l'))             # a tő sora az írott szó (le + ísá + h) kiejtése
         self.assertEqual(k[3], 'elóhím')
+        # az előtag a tő írott szavában: בְּ + רֵאשִׁ֖ית = berésít (a tő csempéjén), az előtag csempéjén nincs külön kiejtés
+        self.assertEqual(kiejtes_szolg.vers_szavak([('H', 'H9003', 'בְּ', 'be.'), ('H', 'H7225', 'רֵאשִׁ֖ית', 're.Shit')]), ['', 'berésít'])
 
     def test_vers_szavak_pontozatlan_alak_ures(self):
         self.assertEqual(kiejtes_szolg.vers_szavak([('H', 'H0430', 'אלהים', "'e.lo.Him")]), [''])
@@ -151,9 +151,9 @@ class TestLapok(unittest.TestCase):
             self.assertIn(jo, latszik(self.blokk(u, 'szo.szotar')), u)
         self.assertIn('hamartanó', latszik(self.lap('/szo/G0264')))
         # versnézet: a héber csempe átírása a szolgáltatásé, nem a TAHOT-é
-        h = latszik(self.blokk('/1Moz/1/1', 'vers.heber_csempe'))
-        self.assertIn('elóhím', h)
-        self.assertNotIn("'E.lo.Him", h)
+        b = self.blokk('/1Moz/1/1', 'vers.heber_csempe')
+        self.assertEqual(re.findall(r'<span class="at">(.*?)</span>', b)[:4], ['', 'berésít', 'bárá', 'elóhím'])       # az előtag csempéje üres
+        self.assertNotIn("'E.lo.Him", latszik(b))
 
     def test_2_bdb_egy_kartya(self):
         for u in ('/szo/H1242', '/szo/H2398'):
@@ -165,10 +165,24 @@ class TestLapok(unittest.TestCase):
         """Kilenc Strongnak van magyar BDB-fordítása, de nincs szakasztáblája (pl. H0747): kártya nincs, a nyers blokk a magyar szöveget adja,
         az angol eredeti csukva (a külön magyar blokk megszűnése után sem vész el)."""
         t = self.lap('/r/szo/H0747')
-        self.assertEqual(re.findall(r'data-blokk="(szo\.bdb_[a-z]+)"', t).count('szo.bdb_apparatus'), 1)
-        if 'data-blokk="szo.bdb_angol"' in t:
-            b = self.blokk('/r/szo/H0747', 'szo.bdb_angol')
-            self.assertIn('<details class="angol-eredeti"><summary>Angol eredeti</summary>', b)
+        self.assertIn('data-blokk="szo.bdb_angol"', t)
+        b = self.blokk('/r/szo/H0747', 'szo.bdb_angol')
+        self.assertIn('<details class="angol-eredeti"><summary>Angol eredeti</summary>', b)
+        self.assertIn('Hámán fia', latszik(b))                       # a magyar szöveg elöl áll
+        self.assertLess(latszik(b).index('Hámán fia'), latszik(b).index('Angol eredeti'))
+
+    def test_2_bdb_teljes_magyar_szoveg_csukva_a_kartyaban(self):
+        """A tagolt kártya néhány szócikknél nem ad vissza minden magyar tagmondatot (H2416, H4723): a teljes magyar szöveg csukva a kártyában marad
+        (a külön nyers blokk megszűnése után is: N-F76d)."""
+        b = self.blokk('/szo/H2416', 'szo.bdb_apparatus')
+        self.assertIn('<details class="szk-teljes"><summary>A magyar szócikk teljes szövege (tagolás nélkül)</summary>', b)
+        self.assertIn('Jeromos', latszik(b))                              # a kártya tagolt részéből hiányzó tagmondat a teljes szövegben megvan
+
+    def test_2_bdb_modellnev_nincs_az_allapotsorban(self):
+        b = self.blokk('/szo/H1242', 'szo.bdb_apparatus')
+        self.assertRegex(latszik(b), r'Lefordítva · gépi fordítás, \d{4}\.\d{2}\.\d{2}')
+        self.assertNotRegex(latszik(b), r'claude-\w+-\d')
+        self.assertRegex(b, r'data-modell="claude-')                     # a teljes meta a `data-modell` attribútumban
 
     def test_2_bdb_szint_nem_lazul(self):
         h = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'szo.bdb_apparatus': 'kutato'}, 'nyilvanos')
@@ -240,6 +254,19 @@ class TestLapok(unittest.TestCase):
         self.assertNotIn('{L:', b)
         self.assertNotIn('&lt;SDBH', b)
         self.assertIn('evening (עֶרֶב)', latszik(b))
+
+    def test_14_ubs_lexema_a_szo_lap_ebben_a_versben_dobozaban_is(self):
+        b = self.blokk('/1Kir/11/11?szo=H4467&ful=szo', 'szo.ebben')
+        self.assertNotIn('{L:', b)
+        self.assertNotIn('&lt;SDBH', b)
+        self.assertRegex(latszik(b), r'king\s*\([^)]*[֐-׿][^)]*\)\s*vagy queen\s*\([^)]*[֐-׿][^)]*\)')       # a lexéma a héber szóval (a kódpontsorrend a forrásé: nem hasonlítunk héber szöveget)
+
+    def test_24_nave_job_a_megfelelo_karoli_versre_mutat(self):
+        """A Nave a KJV-számozást használja; a Károli-versmegfeleltetés Jób 39:1–3-at nem tartalmazza (az LXX_OS-ből jön a pár): a hivatkozás a lap
+        versére mutat, nem nem létező Károli-versre (Jób 38:41)."""
+        b = self.blokk('/Job/39/3', 'vers.nave')
+        self.assertNotIn('href="/Job/38/41"', b)
+        self.assertIn('href="/Job/39/3">Jób 38:41</a> <span class="megj">(KJV-számozás; Károli: Jób 39:3)</span>', b)
 
     def test_24_nave_hivatkozas_a_megfelelo_karoli_versre_mutat(self):
         b = self.blokk('/Zsolt/22/2', 'vers.nave')

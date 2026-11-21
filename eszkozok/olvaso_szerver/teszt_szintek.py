@@ -185,17 +185,18 @@ class TestSzintekValodiLapokon(unittest.TestCase):
                         self.assertGreaterEqual(len(darabok), 2, '%s: nincs elég megkülönböztető magyar darab' % strong)
                     for d in darabok:
                         self.assertNotIn(d, lent_t, '%s: a magyar szöveg szivárog alacsony szinten: %r' % (strong, d))
-                    # F230: magas szinten a magyar BDB a tagolt kártyában áll (a külön nyers magyar blokk megszűnt), a szöveg átrendezve: a szócikk
-                    # tartalmas szavainak legalább 40%-a megvan a lapon (durva veszteség-őr; ismert korlát: a kártya néhány szócikknél nem ad vissza minden tagmondatot: a 111 szócikkes mintában 89% ≥ 95%-os, a mélypont H4723 42%, l. F230 jelentés 2.3)
+                    # F230: magas szinten a magyar BDB a tagolt kártyában áll, a teljes magyar szöveg a kártya csukott részében (a külön nyers magyar
+                    # blokk megszűnt): a szócikk tartalmas szavainak (az angolban nem szereplők) legalább 90%-a megvan a lapon. A korábbi,
+                    # 30 karakteres darabok a nyers sor kulcsát („H120. adam … _560”) is várták, amely az olvasói szövegben már nincs (a main-en is bukott)
                     szavak = set(re.findall(r'[a-záéíóöőúüű]{5,}', mag.lower())) - set(re.findall(r'[a-záéíóöőúüű]{5,}', ang.lower()))
                     if szavak:
                         lap_szavak = set(re.findall(r'[a-záéíóöőúüű]{5,}', fent_t.lower()))
-                        self.assertGreaterEqual(len(szavak & lap_szavak) / len(szavak), 0.4, '%s: a magyar BDB szava magas szinten hiányzik a lapról' % strong)
+                        self.assertGreaterEqual(len(szavak & lap_szavak) / len(szavak), 0.9, '%s: a magyar BDB szava magas szinten hiányzik a lapról' % strong)
                     kulon += bool(darabok)
                     for b in HEBER_ZART[:2]:
                         self.assertIn(b, idk_fent, strong)
                     if 'class="szk"' in fent:      # F230: a kilenc szakasztábla nélküli szócikknél (pl. H4725) kártya nincs, a nyers blokk áll
-                        self.assertIn('Lefordítva · %s' % l['bdb_hu_meta'], szoveg(fent), strong)
+                        self.assertIn('Lefordítva · gépi fordítás, %s' % l['bdb_hu_meta'].rpartition(', ')[2], szoveg(fent), strong)       # modellnév nélkül
                     # alapjelentés: lent az angol Strong-glossza, fent a magyar (DT-F213a: a magyar glossza elöl, ennek híján a BDB-fejsor)
                     g = q.glossza_heber_hu(self.con, strong)
                     a = g[0] if g else (l['alapjelentes']['szoveg'] if l['alapjelentes'] else None)
@@ -258,7 +259,7 @@ class TestSzintekValodiLapokon(unittest.TestCase):
         """F213 (a jóváhagyott mockup): a szónézetben minden jelentés alapállapotban nyitva; csukva csak a lenyílók (alakok, rokon nyelvek,
         apparátus, angol eredeti, jelmagyarázat), amelyek a „Minden apparátus nyitva” nézetben nyílnak."""
         n = 0
-        lenyilo = ('szk-alakok', 'szk-rokon', 'szk-app', 'szk-en', 'szk-jelmagyarazat')
+        lenyilo = ('szk-alakok', 'szk-rokon', 'szk-app', 'szk-en', 'szk-jelmagyarazat', 'szk-teljes')      # F230: a teljes magyar szöveg is csukott lenyíló
         for azon, adat in self.pilot.items():
             for strong, l in adat['lapok'].items():
                 if not l['appar']:
