@@ -14,10 +14,14 @@ KRITERIUM_HORGONY = Horgony('mi-tartozik-ide')
 
 
 class SzakaszLeiro:
-    __slots__ = ('azonosito', 'szamozott', 'nezet', 'szamit', 'megjelenit', 'kapu', 'sorszam')
+    __slots__ = ('azonosito', 'szamozott', 'nezet', 'szamit', 'megjelenit', 'kapu', 'sorszam', 'alresz')
 
-    def __init__(self, azonosito, szamozott, szamit=None, megjelenit=None, nezet=konfig.NEZET_TUDOMANYOS):
+    def __init__(self, azonosito, szamozott, szamit=None, megjelenit=None, nezet=konfig.NEZET_TUDOMANYOS,
+                 alresz=None):
         self.azonosito = azonosito
+        # a megnevezett szakasz alrésze (saját számítással és forrásfigyeléssel, de nem önálló szakasz: közvetlenül a
+        # szülője után áll, a Tartalomjegyzékben nem); None: önálló szakasz
+        self.alresz = alresz
         self.szamozott = szamozott
         self.nezet = nezet
         self.szamit = szamit
@@ -36,6 +40,7 @@ def _rend():
         SzakaszLeiro('elofordulasok', True),
         SzakaszLeiro('kizart', True),
         SzakaszLeiro('szocikkek', True),
+        SzakaszLeiro('miert_fontos', False, alresz='szocikkek'),
         SzakaszLeiro('lxx', True),
         SzakaszLeiro('kereszthivatkozasok', True),
         SzakaszLeiro('kapcsolatok', True),
@@ -61,6 +66,9 @@ class Szakaszrend:
     def __init__(self):
         self._rend = _rend()
         self._nev_szerint = {leiro.azonosito: leiro for leiro in self._rend}
+        for i, leiro in enumerate(self._rend):
+            if leiro.alresz is not None and (i == 0 or self._rend[i - 1].azonosito != leiro.alresz):
+                raise ValueError('a(z) %s alrész nem közvetlenül a szülője (%s) után áll' % (leiro.azonosito, leiro.alresz))
 
     def bekot(self, azonosito, szamit, megjelenit, kapu=None):
         leiro = self._nev_szerint[azonosito]

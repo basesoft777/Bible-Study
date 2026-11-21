@@ -180,3 +180,11 @@ class TanuForras(enum.Enum):
     SEFARIA = 'sefaria'                # Sefaria (rabbinikus források)
     GLOSSA = 'glossa'                  # Glossa Ordinaria (a Vulgata Clementina csomagjában)
     CHAIN_LINEAGE = 'chain_lineage'    # Chain Lineage Browser (verslánc, tényadat)
+
+
+class ResElemFajta(enum.Enum):
+    """A kézi rés elemének fajtája a lapmodellben (S8b)."""
+    PROZA = 'proza'
+    URES = 'ures'
+    FORRAS = 'forras'               # a kézi forrássor helyén az olvasói forrássor
+    SZAKIRODALOM = 'szakirodalom'   # a vitatott pont szakirodalom-sora

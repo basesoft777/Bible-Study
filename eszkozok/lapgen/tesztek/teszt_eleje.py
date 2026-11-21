@@ -76,7 +76,7 @@ class LapEleje(unittest.TestCase):
     def test_ism_a_lap_eleji_meghatarozas_horgonyt_kap(self):
         """DT872: a lap eleji meghatározás a `szakaszok.KRITERIUM_HORGONY` horgonyt kapja, a címe a `fej.hatar.cim`
         sablonsorból jön, a sorban a kritérium egészben áll; a lap eleje be van kötve, így a kritérium kapuja
-        mindkét mintalap teljes lapján a „pontosan egyszer” módban fut (DT-F218w)."""
+        mindkét mintalap teljes lapján a „pontosan egyszer” módban fut (DT895)."""
         self.assertTrue(fo.szakaszrend().kesz(fo.FEJ))
         for azonosito in kozos.MINTALAPOK:
             lap = '\n'.join(_lap(azonosito))
@@ -133,7 +133,7 @@ class Kivonat(unittest.TestCase):
                 forras = f.read()
             torzs = re.search(r'(?ms)^<!-- RÉS-KEZDET: kivonat -->\s*\n(.*?)^<!-- RÉS-VÉGE: kivonat -->',
                               forras).group(1).strip('\n')
-            self.assertEqual('\n'.join(s.ertek if s is not None else '' for s in res.sorok), torzs)
+            self.assertEqual('\n'.join(s.kezi.ertek if s.kezi is not None else '' for s in res.sorok), torzs)
 
     def test_ismeretlen_res_nincs(self):
         """A jegyzékben nem álló rés: None (az opcionális rés hiányát a hívó mondja ki)."""
@@ -143,12 +143,12 @@ class Kivonat(unittest.TestCase):
 class Szakaszrend(unittest.TestCase):
 
     def test_tartalomjegyzek_a_szakaszrendbol(self):
-        """A Tartalomjegyzék a nézet minden szakaszát sorolja (a lap elején és önmagán kívül), a szakaszrend
+        """A Tartalomjegyzék a nézet minden szakaszát sorolja (a lap elején, önmagán és az alrészeken kívül), a szakaszrend
         számával és horgonyával."""
         keret = _keret()
         elemek = MD.tartalom_elemek(keret)
         leirok = [l for l in keret.rend.mind() if l.nezet == konfig.NEZET_TUDOMANYOS
-                  and l.azonosito not in MD.NEM_LISTAZOTT]
+                  and l.azonosito not in MD.NEM_LISTAZOTT and not l.alresz]
         self.assertEqual(len(elemek), len(leirok))
         self.assertEqual(len(elemek), 15)
 
@@ -197,12 +197,17 @@ _CSEREK = (('kizart', 'szocikkek'), ('lxx', 'kereszthivatkozasok'), ('kapcsolato
 
 
 def _cserelt_rend():
-    """A szakaszrend három cserével (`_CSEREK`), újraszámozva: a `szakaszok._rend` helyére."""
-    rend = list(_EREDETI_REND())
+    """A szakaszrend három cserével (`_CSEREK`), újraszámozva: a `szakaszok._rend` helyére. Az alrész a szülőjével
+    együtt mozog (a szakaszrend ellenőrzi a szomszédságot)."""
+    eredeti = list(_EREDETI_REND())
+    alreszek = {l.alresz: l for l in eredeti if l.alresz is not None}
+    rend = [l for l in eredeti if l.alresz is None]
     for a, b in _CSEREK:
         i = next(k for k, l in enumerate(rend) if l.azonosito == a)
         j = next(k for k, l in enumerate(rend) if l.azonosito == b)
         rend[i], rend[j] = rend[j], rend[i]
+    for szulo, alresz in alreszek.items():
+        rend.insert(next(k for k, l in enumerate(rend) if l.azonosito == szulo) + 1, alresz)
     szam = 0
     for leiro in rend:
         leiro.sorszam = None

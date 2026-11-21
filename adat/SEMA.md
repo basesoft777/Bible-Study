@@ -2570,6 +2570,8 @@ nem névtábla-elem: kézi próza, a cellakezdő alakja az adatban a végleges a
 
 **A lap elejének és a Jelmagyarázatnak a nevei (S8a).** Az `azonossag` a `motivumok.tsv` `azonossag_tipusa` értékének olvasói mondata a lap elején („**A motívum.**” bekezdés, a meghatározás után); a `szotari_pont_mondatkozi` a 4. szakasz pontjainak neve mondat közben (kisbetűvel, a mozaikszót és a tulajdonnevet kivéve: „4.6 LXX-híd”, „4.13 Károli-megfelelők”), a Jelmagyarázat pontfelsorolásában; a kulcs a pont sorszáma (1–14), a pont címe a `szotari_pont` típus. A `folerendelt_mondatkezdo` a motívum tágabb körének (`motivumok.tsv` `folerendelt_fogalom`) mondatkezdő alakja a lap elején („**A tágabb kör** (…). <alak>.”); a kulcs a motívum azonosítója. A mező a 4.12 bevezetőjében mondat közben, kisbetűvel áll, ezért a mondatkezdő alak adat (DT869 elve, mint a `cimke_cella`). **Kapu:** az alak a mezőtől csak a kezdőbetűben térhet el; sor híján a mező változatlanul áll.
 
+**A kézi rések forrásnevei (S8b).** A rés kézi forrássorában („*Proveniencia: … | forras=… | …*”) nevezett adatfájl a jegyzéken (2.66) át a `forras` típus nevét kapja (kulcs: a B-azonosító). A `kezi_forrasfajl` a generátor által nem olvasott, de a szerző lekérdezésében nevezett fájl neve (kulcs: a fájl útvonala, ahogy a forrássorban áll). Sor híján a generálás megáll.
+
 ### 2.69 `tematikus_sajat_szo.tsv` — a tematikus hely saját szava (F218a, DT837, 2026-11-13)
 
 A lánc szava nélküli tematikus hely (az `elofordulasok.tsv` sorának `gerinc_elem` mezője `tematikus:` kezdetű, a

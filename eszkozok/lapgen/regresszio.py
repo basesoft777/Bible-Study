@@ -118,8 +118,9 @@ def naplo_or(motivum, uj_konyvtar, gyoker=GYOKER):
 
 _CIMSOR_RX = re.compile(r'^## (?!#)')
 # Alblokkonként készülő szakaszok: amíg a szakasz minden alblokkja el nem készül. A „4. Szótári háttér” a 218a S3
-# szeletétől az S8-ig részleges (a pontjai több szeletben készülnek; a „Miért fontos ez a lelet” rés a kereté).
-RESZLEGES_SZAKASZOK = ('4. Szótári háttér',)
+# szeletétől az S8b-ig volt részleges (a pontjai több szeletben készültek; az utolsó a „Miért fontos ez a lelet” rés);
+# az S8b óta egészben mérődik. A gépezet megmarad a későbbi, alblokkonként készülő szakaszokhoz.
+RESZLEGES_SZAKASZOK = ()
 _ALBLOKK_RX = re.compile(r'^(?:#{3,4} |<!-- GENERÁLT-VÉGE: )')
 
 

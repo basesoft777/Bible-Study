@@ -48,7 +48,11 @@ def szamit_kivonat(korny):
     res = motivum_be.kezi_res(korny.b, korny.motivum, RES_KIVONAT)
     if res is None or not res.sorok:
         raise BemenetHiba('B47: a(z) %s motívumnak nincs kézi Kivonata (a rés kötelező)' % korny.motivum.kod)
-    return Kivonat(tuple(proza(s) if s is not None else None for s in res.sorok))
+    for s in res.sorok:
+        if s.eredeti is not None or s.belso:
+            raise BemenetHiba('B47: a(z) %s Kivonatában kézi forrássor vagy belső jelölő áll (a Kivonat próza)'
+                              % korny.motivum.kod)
+    return Kivonat(tuple(proza(s.kezi) if s.kezi is not None else None for s in res.sorok))
 
 
 @dataclass(frozen=True)

@@ -15,6 +15,10 @@ from lapgen.szoveg import Fajta, MotivumId
 
 S2, S3, S4, S5, S6, S7, S8, S9 = ('S2 (F218.5)', 'S3 (F218.6)', 'S4 (F218.7)', 'S5 (F218.8)', 'S6 (F218.9)',
                                   'S7 (F218.10)', 'S8 (F218.11)', 'S9 (F218.12)')
+# a T6 mondata (a párosítás mért pontossága egyszer, a Módszertanban) nyitott, döntéssel elhalasztva: a
+# felhasználó 2026-11-21-én „Később, a validáció után”; a JOHD-validáció után, a validált számmal (N-F218v)
+S8_GK19 = ('GK-19 (T6): nyitott, döntéssel elhalasztva (2026-11-21, „Később, a validáció után”; N-F218v); '
+           'a mondat a JOHD-validáció után kerül a lapra')
 S3_MARADEK = ('az S3 kész, de ezt a követelményt nem teljesítette (a 6. ellenőrzés E9 tétele); a 218a végi '
               'átnézésén szeletet kap')
 HELY_EGYSEG = ('a névvel megadott szópár (1.4, `málé+chámász`) tagjait a modell nem köti Strong-számhoz; a kapu '
@@ -124,7 +128,7 @@ class Szerkezeti(unittest.TestCase):
     def test_gk18_bdb_betujavitas_mindenutt(self):
         """GK-18: a kártya és az olvasói réteg ugyanazt a teljesen javított BDB-szöveget adja."""
 
-    @unittest.skip(S8)
+    @unittest.skip(S8_GK19)
     def test_gk19_karoli_parositas(self):
         """GK-19 (T6): a párosítás mért pontossága egyszer, a Módszertanban áll, a konfigból. (A másik két fele
         kész: minden pár számít, és a 4.13–4.14 látható szövegében nincs bizonyossági címke és páronkénti jelölés:

@@ -6,14 +6,14 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: fut
-ag: claude/f218a-s8
-pr: 779
+ag: claude/f218a-s8b
+pr: 782
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "Te: a merge után az S8b új ágon a main-ről (első lépés: a mérce hash-sorai, N200), majd S8c, S8d"
+kovetkezo: "Te: az S8b a fő munka (a kézi rések: Miért fontos, 10., 11.); utána megállás"
 munka: folyamat
 sav: CONTENT
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
-ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, dontesek/uj/f218a-s5-1402d5.md, nyitott/uj/f218a-s5-1402d5.md, dontesek/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s7-466f45.md, dontesek/uj/f218a-s8.md, nyitott/uj/f218a-s8.md, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
+ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, dontesek/uj/f218a-s5-1402d5.md, nyitott/uj/f218a-s5-1402d5.md, dontesek/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s7-466f45.md, dontesek/uj/f218a-s8.md, nyitott/uj/f218a-s8.md, nyitott/uj/f218a-s8b.md, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
 fugg: []
 nem_fugg: [121, 123, 146, 178, 179]
 ---
@@ -202,7 +202,7 @@ Minden sor egy teszt a `lapgen/tesztek/`-ben; az azonosító a tesztfüggvény n
 | GK-16 | egy glossza-út | egy függvény, egyféle hiány | S3 |
 | GK-17 | könyvnév egy táblából | 0 kódba írt alias | S1 |
 | GK-18 | BDB-betűjavítás mindenütt | a kártya és az olvasói réteg ugyanazt a teljesen javított szöveget adja | S3 |
-| GK-19 | Károli-párosítás (T6) | minden pár számít; a látható szövegben 0 bizonyossági címke és 0 páronkénti jelölés; a 95,06% egyszer, a Módszertanban, a konfigból | S3 |
+| GK-19 | Károli-párosítás (T6) | minden pár számít; a látható szövegben 0 bizonyossági címke és 0 páronkénti jelölés; a 95,06% egyszer, a Módszertanban, a konfigból (**nyitott, döntéssel elhalasztva**, 2026-11-21: „Később, a validáció után”; a mondat a JOHD-validáció után, a validált számmal; N-F218v) | S3 |
 | GK-21 | a HAMART regressziós kapui (sablon 597) | a Döntési út számai összeadódnak; döntés nélküli vers 0; Nave-blokk nem üres | S2, S3 |
 | GK-23 | névtábla | ismeretlen kulcs → kivétel | T |
 | GK-24 | alakosztály-kapu, típus szerint | 0 találat mindkét új lapon; 0 hamis találat a mai HAMART prózáján és idézetein | T, S9 |
