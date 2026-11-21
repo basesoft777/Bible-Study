@@ -28,11 +28,12 @@ A 12 csak `lexikon_oldal`-ban álló dataset: `OSHL_lexikalis_index`, `Targum_PD
 
 Hianyzik-sorok (változatlanul 4): `openbible_crossrefs` × 4 study-típus.
 
-**4. Átírás: NEM készült.** ⛔ megállás: a brief 3. lépés szerint a mért eloszlás (12 dataset nem mind a négy típusban) nem fejezhető ki a DT248 (a) alakjával (ez a brief 3. pontjának ⛔ feltétele). A SEMA `adat/SEMA.md` nem változott.
+**4. Átírás (a DT-F69a 1. alakja szerint, felhasználói döntés 2026-11-21, 🟢):** `adat/SEMA.md` 2.6 három sora változott, más sor nem:
+- E1 (409. sor): „43 dataset, 136 sor: 31 × 4 + 12 × 1 (a 12 lexikon_oldal-only dataset a táblából olvasandó)”
+- E2 (414. sor): „(43 érték)”
+- E3 (423. sor): „jelenleg 4 sor viseli: az `openbible_crossrefs` mind a négy study-típusban (jelölt, nem importált, DT33)”
 
-Tétel: `dontesek/uj/claude_f69-sema-dataset-szam.md`, `DT-F69a` (nyitott). Javaslat: „43 dataset, 136 sor: 31 × 4 + 12 × 1 (a 12 lexikon_oldal-only dataset a táblából olvasandó)”.
-
-E2 („21 érték” → a mért darabszám, 43) és E3 (4 `openbible_crossrefs`-sor) a döntéstől függetlenül ugyanígy javítandó; E1 az alak döntésétől függ.
+Tétel: `dontesek/uj/claude_f69-sema-dataset-szam.md`, `DT-F69a` 🟢.
 
 ## Független ellenőrzés
 
@@ -40,13 +41,10 @@ Nem futott (a menet megállt, nincs átírt diff).
 
 ## Zárás
 
-- Készült: brief fejléc (`F69.1`), mérés (szkript a scratchpadban, nem repó), döntés-tétel `DT-F69a`, ez a jelentés.
-- Nem készült: SEMA 2.6 átírás (E1–E3), draft PR (a brief szerint a végén).
-- Mérési eltérés: a datasetek száma 30 → 43 és a sorok 117 → 136 a 2026-10-19 óta; a briefbeli számok elavultak, a mért szám az irányadó (brief 3. pont).
+- Készült: brief fejléc (`F69.1`), mérés (szkript a scratchpadban, nem repó), döntés-tétel `DT-F69a` (🟢), a SEMA 2.6 E1–E3 átírása, ez a jelentés.
+- Mérési eltérés: a datasetek száma 30 → 43 és a sorok 117 → 136 a 2026-10-19 óta; az átírás a mért, 2026-11-21-i számokat írja be.
+- Ellenőrzés: `git diff --stat adat/SEMA.md` 1 fájl, 3 sor (2.6 E1–E3); `adat/datasetek.tsv` diffje üres; `python eszkozok/feladatok.py ellenoriz`: 245 brief, 0 hiba (a figyelmeztetések más briefekre vonatkoznak).
 - Tesztek: nem futottak (nincs kódváltozás).
-- `ellenoriz`: nem futott (a 5. lépés csak az átírás után esedékes).
-- Nyitott pontok: DT-F69a felhasználói döntése; a CLAUDE.md „17 dataset” mondata (a brief nem érinti; jelzés).
-
-## Folytatási pont
-
-A brief fejléce `allapot: megallt`. A folytatás: a felhasználó DT-F69a-ra választ (1., 2. vagy 3. opció), utána a 4. lépés (E1–E3 átírás a mért számokkal), majd az 5. lépés (`git diff --stat`, `python eszkozok/feladatok.py ellenoriz`, zárás, draft PR). A mérési szám újramérendő, ha a main közben változik.
+- Megjegyzés (nem javítva, a brief hatókörén kívül): a CLAUDE.md „Adat-tár” „17 dataset” mondata elavulhat; a mondat a `konkordancia/` fájlkészletéről szól, nem a `datasetek.tsv` mátrixáról. Elavultsága nincs külön megvizsgálva.
+- Nyitott pontok: nincs a F69-ben; a `datasetek.tsv` következő bővítésénél a SEMA 2.6 számai ismét elavulnak (gépi őrzés nem e feladat).
+- PR: draft, a main-be (l. a brief fejlécét és a végi commitot).
