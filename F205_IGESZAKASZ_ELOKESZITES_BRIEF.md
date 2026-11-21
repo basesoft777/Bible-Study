@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 sav: CONTENT
-allapot: fut
+allapot: megallt
 ad: a 2. sablonban igehelyenként hat jelölt blokk (funkció, negatív próba, jelentéspont, vita, visszhang, versszámozás) üres-jelöléssel; a MUNKAMENET A-szakaszában a helyük a vak olvasás sorrendjében; egy kinyerő, amely a blokkokból csak jelölt-sort ír a jeloltek.tsv-be manual provenienciával; a jelentéspont saját olvasata külön mezőben, a BDB-kártya érintetlen; a szakasz Strong-szavainak hiányzó fordítása egy kötegben; a SEMA és a tesztek; igehely-sor szintű, folyamatos mérési terv
-kovetkezo: "M5 és az M3 proza_allitas --tanulmany módja: a nyitott PR-ok után (#729 és #725: adat/SEMA.md; #729: general.py; #749: 10. sablon és proza_allitas pár), az orkesztrátor sorrendjével; előtte az ir visszabővítése és a függési kör (#74 #123 #156 #205 #218 #224) rendezése — a felhasználó dönt"
+kovetkezo: "Áll. Kész: M0–M3 (a #752 a main-en, 2026-11-16; a tanulmany_kinyer.py és a blokkok). Hátra: M5 és az M3 proza_allitas --tanulmany módja; előtte az ir visszabővítése és a függési kör (#74 #123 #156 #205 #218 #224) rendezése — a felhasználó dönt; a #729, #725 és #749 már a main-en."
 munka: folyamat
 olvas: [MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_motivum_forras_sablon.md, sablonok/10_PaRDeS_U3_proza_prompt_sablon.md, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, sablonok/PaRDeS_gyorsreferencia.md, sablonok/KESZ_LAP_KOVETELMENY.md, adat/SEMA.md, adat/jeloltek.tsv, adat/visszhang_tanuk.tsv, adat/visszhang_megfelelok.tsv, adat/vitatott_forrasok.tsv, eszkozok/general.py, eszkozok/ellenoriz.py, eszkozok/gerinc_kartya.py, eszkozok/forditas_vedelem.py, naplok/F182_jelentes.md]
 ir: [MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md, adat/SEMA.md, adat/jelentespont_olvasat.tsv, eszkozok/tanulmany_kinyer.py, eszkozok/teszt_tanulmany_kinyer.py, eszkozok/szakasz_forditas.py, eszkozok/teszt_szakasz_forditas.py, F205_IGESZAKASZ_ELOKESZITES_BRIEF.md]

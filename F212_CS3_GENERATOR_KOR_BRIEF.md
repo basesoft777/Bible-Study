@@ -6,11 +6,11 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 sav: CONTENT
-allapot: fut
+allapot: lezarva
 ag: claude/f212-cs3-generator-a18537
 pr: 715
 ad: 1. lépés: a `naplok/F212_sablonmondat_lista.md` (a generátor minden olvasói sablonmondata és címkéje, HAMART-példával, előfordulásszámmal, blokkal, osztályozva); 2. lépés: a felhasználó döntései szerinti generátor-javítás kapuval, az LXX-statisztika egy forrásból, egyezés-kapu, a C6 sémabővítés és a 103 kapcsolat-jelölt átköltöztetése
-kovetkezo: "Folytatás: F212.2 — a 32 jóváhagyott tétel (naplok/F212_dontesek.tsv) a generátorban, kapuval; befagyasztás, Kolofon-forrássor, C6, HAMART 2. kiadás előkészítése"
+kovetkezo: "Lezárva: a #715 a main-en (2026-11-12); a #212-ben el nem készült CS3-tételek az N-F212a-ban (NYITOTT_FELADATOK.md), a további olvasói hibanapló-javítások az F212.H/H2 (DT-F212e, DT-F212f) alatt a main-en."
 munka: folyamat
 olvas: [eszkozok/lexikon_general.py, "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", motivumok/ISTENTISZT-001.md, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/szotari_glossza.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/szerep_karoli.py, eszkozok/szerep_nave.py, eszkozok/szerep_kizart.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenorzes/allitas_adat.py, eszkozok/ellenorzes/szabalyok.py, lexikon/HAMART-001_TUDOMANYOS.md, motivumok/HAMART-001.md, "tematikus_lezart/HAMART-001*", "tematikus_lezart/naplok/HAMART-001*", adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/SEMA.md, naplok/F182_kapcsolat_jeloltek.tsv]
 ir: [.github/workflows/ellenorzes.yml, naplok/F212_teljesseg_blokk.py, naplok/F123_teljesseg_HAMART-001.tsv, naplok/F123_teljesseg_HAMART-001_blokkok.tsv, nyilt_mag/, eszkozok/muhely_allapot.py, eszkozok/karoli_kh_szuro.py, lexikon/ISTENTISZT-001_TUDOMANYOS.md, eszkozok/ellenorzes/kovetelmeny_kapu.py, adat/kiadasok.tsv, adat/motivumok.tsv, motivumlog/PaRDeS_motivumok.md, naplok/F212_sablonmondat_kigyujt.py, naplok/F212_sablonmondat_lista.md, naplok/F212_kapcsolat_atkoltoztet.py, naplok/F182_kapcsolat_jeloltek.tsv, adat/lap_befagyasztas.tsv, eszkozok/lap_befagyasztas.py, eszkozok/general.py, eszkozok/ellenoriz.py, eszkozok/nyilt_mag_export.py, eszkozok/lexikon_general.py, eszkozok/olvasoi_kovetkeztetes.py, eszkozok/tablajegyzet.py, eszkozok/szerep_kizart.py, eszkozok/szerep_karoli.py, eszkozok/szerep_nave.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenorzes/allitas_adat.py, eszkozok/ellenorzes/szabalyok.py, eszkozok/teszt_kesz_lap_hamart.py, eszkozok/teszt_f212_cs3.py, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/SEMA.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md]
