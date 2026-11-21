@@ -1577,3 +1577,4 @@ glossza-sor = "az „Ebben a versben” glossza-sora (F213); a megjegyzés (megj
 torzs = "a BDB-szókártya törzs-tárolója (Qal, Nif'ál …; F213); JavaScript-horog a gyenge jelöléshez (odagörgetés); a cím a szk-torzsnev elem"
 angol-eredeti = "a szótári szócikk angol eredetije a magyar fordítás alatt (details; F213); a felirat a megjegyzés tokenjeit örökli"
 al = "a versszintű LXX-pár sorának alsora (a görög Strongok; a lxx_par blokk); a megjegyzés tokenjeit örökli, saját token nélkül"
+kihagy-link = "az „Ugrás a tartalomra” hivatkozás (F230; billentyűzet): a képernyőn kívül áll, fókuszra látszik; a megjelenés a panel, fg, rule tokeneké"

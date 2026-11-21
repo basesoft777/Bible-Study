@@ -73,10 +73,12 @@ class Blokk:
     render: Callable
     jelleg_megj: str = ''
     forras_szoveg: str = ''      # ha a blokk adata nincs a pardes.db-ben: a forrás- és licencsor szövege (tábla híján)
-    kovet: tuple = ()            # azok a blokkok, amelyek láthatóságát követi (a bontott BDB ugyanazt a magyar szócikket mutatja, mint a szo.bdb_magyar)
+    kovet: tuple = ()            # azok a blokkok, amelyek láthatóságát követi (pl. a szó-lap „Ebben a versben” blokkja a vers-adat blokkok szintjét)
     jelleg_fn: Callable = None   # az adatból függő jelleg (pl. a bontott BDB: modell-kimenet csak magyar bontásnál)
     vers_kell: bool = False      # csak vers-kontextussal jelenik meg (a szó-lap „Ebben a versben” blokkja)
+    ures_html: Callable = None   # F230: az üres eredmény saját jelzése (K -> Markup) a szokásos „Nincs adat” helyett
     opcionalis: bool = False     # a blokk táblái hiányozhatnak a régebbi `pardes.db`-ből (F149): hiányuknál a blokk kimarad, nem indulási hiba
+    ures_rejt: bool = False      # F230: ha az adatlekérő üres eredményt ad, a blokk nem jelenik meg (nem „Nincs adat”): a tartalma máshol áll (pl. a BDB-kártyában)
 
     def hianyzik(self, kozos):
         return self.opcionalis and any(t not in kozos.licenc for t in self.tablak)
@@ -339,6 +341,22 @@ def _f_nave(K):
     return vers, fej, hu
 
 
+def _nave_hely(K, hely):
+    """F230: a Nave-hely a KJV-számozás szerint áll (a Zsolt 22:1 a Károli 22:2); a hivatkozás a megfelelő Károli-versre mutat, és ahol a
+    két számozás eltér, ezt a szöveg jelzi. Az azonos számozású helynél változatlan."""
+    m = re.match(r'^(.+?) (\d+):(\d+)', hely or '')
+    if not (m and m.group(1) in K.kozos.slug):
+        return ig_link(K, hely)
+    konyv, f, v = m.groups()
+    ter = K.memo('kjv_karoli:' + konyv, lambda: q.kjv_karoli_terkep(K.con, konyv))
+    ig = ter.get('%s:%s' % (f, v))
+    if not ig:
+        return ig_link(K, hely)
+    kf, kv = ig[len(konyv) + 1:].split(':')
+    return Markup('<a class="igehely" href="/%s/%s/%s">%s</a> <span class="megj">(KJV-számozás; Károli: %s)</span>') % (
+        K.kozos.slug[konyv], kf, kv, hely, ig)
+
+
 def _r_nave(d, K):
     d, fej, hu = d if len(d) == 3 else (d[0], d[1], {})
 
@@ -349,7 +367,7 @@ def _r_nave(d, K):
         return _hu_en(hu.get((tid, cimke or '')), cimke) if cimke else ''
     ki = Markup('')
     if d:
-        sorok = [[tema_hu(tema, tid), cimke_hu(cimke, tid), ig_link(K, hely) if hely else '', 'tartomány (versekre bontva)' if t else 'vers'] for tema, cimke, hely, t, tid in d[:80]]
+        sorok = [[tema_hu(tema, tid), cimke_hu(cimke, tid), _nave_hely(K, hely) if hely else '', 'tartomány (versekre bontva)' if t else 'vers'] for tema, cimke, hely, t, tid in d[:80]]
         ki += _tabla(['Téma', 'Cím', 'Nave-hely', 'Jelleg'], sorok)
         if len(d) > 80:
             ki += Markup('<p class="megj">Összesen %d sor; az első 80 látszik.</p>') % len(d)
@@ -384,11 +402,26 @@ def _forras_tanulmany_id(ertek):
     return None
 
 
+_PROV_SCOPE = re.compile(r'scope=([^|]*)')
+_PROV_TS = re.compile(r'ts=([^\s|]+)')
+
+
+def _prov_olvaso(pr):
+    """F230: a sor szintű proveniencia olvasói alakja („kézi bevitel · 2026-11-05”). A teljes gépi sor (`scope=… | forras=… | ts=…`:
+    feladat- és döntésszám, modellnév) változatlanul megmarad a `data-proveniencia` attribútumban (a repó 1. szabálya), nem látható szöveg."""
+    if not pr:
+        return ''
+    sc, ts = _PROV_SCOPE.search(pr), _PROV_TS.search(pr)
+    mod = (sc.group(1).strip() if sc else '')
+    szoveg = 'kézi bevitel' if mod == 'manual' else 'rögzítve'      # a többi scope (pl. „F08 LXX-döntés, …”) belső címke: az olvasói alak semleges
+    return Markup('<span data-proveniencia="%s">%s</span>') % (pr, szoveg + (' · %s' % ts.group(1) if ts else ''))
+
+
 def _r_motivum(mot, K):
     """Táblázat + előző/következő előfordulás a kánoni sorrendben + a „hol merült fel” tanulmány (csak ha a mező ki van töltve és a
     tanulmány a regiszterben van: üres mezőnél nincs hivatkozás, nem találgat)."""
     ki = _tabla(['Azonosító', 'Motívum', 'PaRDeS-szint', 'Funkció', 'Strong', 'Károli-szó', 'Megbízhatóság', 'Proveniencia'],
-                [[a, cim or '', szint or '', fk or '', strong_link(K, st) if st else '', kszo or '', mb or '', pr or ''] for a, ig, fk, st, kszo, mb, pr, cim, szint, ft in mot])
+                [[a, cim or '', szint or '', fk or '', strong_link(K, st) if st else '', kszo or '', mb or '', _prov_olvaso(pr)] for a, ig, fk, st, kszo, mb, pr, cim, szint, ft in mot])
     for a, ig, fk, st, kszo, mb, pr, cim, szint, ft in mot:
         sor = []
         elozo, kov = q.motivum_szomszedok(K.con, a, ig)
@@ -421,8 +454,24 @@ def _f_tanulmany(K):
     return (tart, hiv) if (tart or hiv) else None
 
 
+_CIM_JELOLO = re.compile(r'\s*(?:[—–-]\s*)?\*[^*]+\*')
+_MUNKANAPLO = re.compile(r'módszertani napló|motívum-napló|lexikai audit', re.I)
+
+
+def szakasz_cim_olvaso(cim):
+    """F230: a tanulmány címsorának olvasói alakja: a szerkesztői jelölő (`*(tömör, fegyelmezett)*`, `— *részletesen kifejtve*`) és a nyers
+    Markdown-jelek nélkül."""
+    c = _CIM_JELOLO.sub('', cim or '').replace('*', '').replace('`', '')
+    return re.sub(r'\s+', ' ', c).strip(' —–-')
+
+
 def _szakasz_link(tid, hor, cim):
-    return Markup('<a href="/tanulmany/%s#%s">%s</a>') % (tid, hor, cim)
+    return Markup('<a href="/tanulmany/%s#%s">%s</a>') % (tid, hor, szakasz_cim_olvaso(cim))
+
+
+def _szakasz_linkek(tid, lista):
+    """A szakaszcímek hivatkozásai; a munkanapló-jellegű szakasz (módszertani napló, motívum-napló, lexikai audit) nem olvasói tartalom: kimarad."""
+    return Markup(', ').join(_szakasz_link(tid, h, c) for h, c, *_ in lista if not _MUNKANAPLO.search(c or ''))
 
 
 def _r_tanulmany(d, K):
@@ -435,21 +484,25 @@ def _r_tanulmany(d, K):
         tr = [(h, c, r) for h, c, f, r in sorok if f == 'tartomany']
         reszek = []
         if nev:
-            reszek.append(Markup('<li>A tanulmány erről a versről név szerint szól: %s</li>') % Markup(', ').join(_szakasz_link(tid, h, c) for h, c, _ in nev))
+            lk = _szakasz_linkek(tid, nev)
+            if lk:
+                reszek.append(Markup('<li>A tanulmány erről a versről név szerint szól: %s</li>') % lk)
         if tr:
-            reszek.append(Markup('<li>A tanulmány ezt a szakaszt egészében tárgyalja (%s): %s</li>') % (
-                ', '.join(sorted({r for _, _, r in tr})), Markup(', ').join(_szakasz_link(tid, h, c) for h, c, _ in tr)))
+            lk = _szakasz_linkek(tid, tr)
+            if lk:
+                reszek.append(Markup('<li>A tanulmány ezt a szakaszt egészében tárgyalja (%s): %s</li>') % (', '.join(sorted({r for _, _, r in tr})), lk))
         if not reszek:
             reszek.append(Markup('<li>A tanulmány ezt a szakaszt tárgyalja, de erre a versre külön nem hivatkozik.</li>'))
         ki += Markup('<div class="tan-blokk"><p><a href="/tanulmany/%s"><b>%s</b></a> <span class="megj">%s · %s</span></p><ul class="lista">%s</ul></div>') % (
             tid, tanulmany_nev(tt, cim), TANULMANY_TIPUS.get(tip, tip), tt, Markup('').join(reszek))
-    if hiv:
-        ki += Markup('<p class="megj">Más tanulmányok is hivatkoznak erre a versre:</p>')
-        elemek = []
-        for tid, tip, cim, tt, lista in hiv:
+    elemek = []
+    for tid, tip, cim, tt, lista in hiv:
+        lk = _szakasz_linkek(tid, lista)
+        if lk:
             elemek.append(Markup('<a href="/tanulmany/%s">%s</a> (%s): %s') % (
-                tid, tanulmany_nev(tt, cim), TANULMANY_TIPUS.get(tip, tip), Markup(', ').join(_szakasz_link(tid, h, c) for h, c, _ in lista)))
-        ki += _lista(elemek)
+                tid, tanulmany_nev(tt, cim), TANULMANY_TIPUS.get(tip, tip), lk))
+    if elemek:
+        ki += Markup('<p class="megj">Más tanulmányok is hivatkoznak erre a versre:</p>') + _lista(elemek)
     return ki
 
 
@@ -468,7 +521,7 @@ def _f_lxx_dontes(K):
 
 def _r_lxx_dontes(lx, K):
     return _tabla(['Azonosító', 'LXX-hely', 'Héber', 'Görög', 'Típus', 'Megjegyzés', 'Bizonyosság', 'Proveniencia'],
-                  [[a, c or '', strong_link(K, hs) if hs else '', Markup('%s %s') % (_gor(gl), strong_link(K, gs) if gs else ''), t or '', mj or '', bz or '', pv or ''] for a, ig, c, hs, gl, gs, t, mj, bz, pv in lx])
+                  [[a, c or '', strong_link(K, hs) if hs else '', Markup('%s %s') % (_gor(gl), strong_link(K, gs) if gs else ''), t or '', mj or '', bz or '', _prov_olvaso(pv)] for a, ig, c, hs, gl, gs, t, mj, bz, pv in lx])
 
 
 def _f_tsk(K):
@@ -486,8 +539,19 @@ def _f_kh(K):
     return q.kh(K.con, K.ig)
 
 
+def _kh_veg(a, b):
+    """A tartomány vége a kezdethez képest rövidítve: azonos fejezetben „5”, azonos könyvben „3:2”, különben a teljes hivatkozás."""
+    ma, mb = re.match(r'^(.+?) (\d+):(\d+)', a or ''), re.match(r'^(.+?) (\d+):(\d+)', b or '')
+    if not (ma and mb) or a == b:
+        return ''
+    if ma.group(1) != mb.group(1):
+        return ' – %s' % b
+    return '–%s' % (mb.group(3) if ma.group(2) == mb.group(2) else '%s:%s' % (mb.group(2), mb.group(3)))
+
+
 def _r_kh(d, K):
-    return _lista([ig_link(K, a) for a, b in d])
+    """F230: a tartomány vége is látszik („1Móz 2:4–5”); a hivatkozás a kezdő versre mutat."""
+    return _lista([ig_link(K, a) + escape(_kh_veg(a, b)) for a, b in d])
 
 
 def _f_lxx_par(K):
@@ -771,7 +835,7 @@ def _r_karoli_alakok(d, K):
 
 def _bdb_adat(K):
     """A BDB-szócikk angol és magyar szövege (és az alias). A magyar fordítást (`forditasok`) csak akkor olvassa, ha a lap `magyar_ok`
-    (a `szo.bdb_magyar` és `szo.bdb_apparatus` blokk szint és kiadás szerint látható): tiltott magyar BDB-t sem a szó-lap, sem a számláló nem olvas."""
+    (a `szo.bdb_apparatus` blokk, amely a magyar BDB-t is hordozza, szint és kiadás szerint látható): tiltott magyar BDB-t sem a szó-lap, sem a számláló nem olvas."""
     def f():
         mo = getattr(K, 'magyar_ok', True)
         en, hu = q.bdb_angol(K.con, K.strong), (q.bdb_magyar(K.con, K.strong) if mo else None)
@@ -1752,26 +1816,29 @@ def _f_lxx_tobblet(K):
 
 
 def _r_lxx_tobblet(d, K):
-    return Markup('<p class="ures">Az adat még nincs a DB-ben: a LXX_tobblet_szakaszok.tsv és a Verzifikacios_elteres_tabla.tsv a pardes.db következő újraépítésekor '
-                  'kerül be (N-F76j). Üres eredmény itt nem jelenti azt, hogy a versnek nincs LXX-többlete vagy számozási eltérése.</p>')
+    return Markup('<p class="ures">Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs '
+                  'Septuaginta-többlete vagy számozási eltérése.</p>')
 
 
 def _f_bdb_angol(K):
+    """A nyers angol BDB-szócikk. F230: ahol a tagolt BDB-kártya (`szo.bdb_apparatus`) látszik, az angol eredeti a kártyában áll
+    (fordítás nélkül nyitva, fordítással csukva), ezért a nyers blokk nem ismétli; ott marad, ahol a kártya nem látszik (hozzáférési
+    szint, kiadás) vagy nincs szakasztáblája."""
     d = _bdb_adat(K)
-    return d if d['en'] else None
+    if getattr(K, 'bdb_kartya_ok', False) and _bdb_bontas(K):
+        return None
+    return d if (d['en'] or d['hu']) else None
 
 
 def _r_bdb_angol(d, K):
-    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _rovidites(K, _szoveg(_sor_kulcs_nelkul(d['en'])))
-
-
-def _f_bdb_magyar(K):
-    d = _bdb_adat(K)
-    return d if d['hu'] else None
-
-
-def _r_bdb_magyar(d, K):
-    return (_alias_megj(d['alias']) if d['alias'] else Markup('')) + _rovidites(K, _szoveg(_sor_kulcs_nelkul(d['hu'])), magyar=True)
+    """A nyers BDB-szócikk. Kártya nélkül (szakasztábla híján) a magyar fordítás elöl áll, az angol eredeti csukva (F230: a külön magyar blokk
+    megszűnt); fordítás nélkül az angol szöveg áll."""
+    alias = _alias_megj(d['alias']) if d['alias'] else Markup('')
+    en = _rovidites(K, _szoveg(_sor_kulcs_nelkul(d['en']))) if d['en'] else Markup('')
+    if d['hu']:
+        return alias + _rovidites(K, _szoveg(_sor_kulcs_nelkul(d['hu'])), magyar=True) + (
+            Markup('<details class="angol-eredeti"><summary>Angol eredeti</summary>%s</details>') % en if en else Markup(''))
+    return alias + en
 
 
 def _f_lxx_bridge(K):
@@ -1857,9 +1924,17 @@ def _f_tbesh(K):
     return sorok, q.glosszak_heber_hu_angol(K.con, K.strong), q.forditas_bejegyzesek(K.con, 'TBESH', [K.strong])
 
 
+_BR_RE = re.compile(r'<br\s*/?>', re.I)
+
+
+def _br_szoveg(s):
+    """F230: a forrásszöveg `<br>` jelölője sortörés (nem nyers szöveg); minden más escape-elt."""
+    return Markup('<br>').join(escape(x.strip()) for x in _BR_RE.split(s or ''))
+
+
 def _r_tbesh(d, K):
     sorok, gl, ford = d if isinstance(d, tuple) else (d, {}, {})
-    ki = _tabla(['Szó', 'Átírás', 'Morf', 'Gloss', 'Jelentés'], [[_heb(a), b or '', c or '', _hu_en(gl.get(dd), dd), f or ''] for a, b, c, dd, f in sorok])
+    ki = _tabla(['Szó', 'Átírás', 'Morf', 'Gloss', 'Jelentés'], [[_heb(a), b or '', c or '', _hu_en(gl.get(dd), dd), _br_szoveg(f)] for a, b, c, dd, f in sorok])
     teljes = next((f for (e, j, m), f in ford.items() if m == 'forditas_hu'), '')
     if teljes:
         ki += Markup('<p class="megj">A szócikk magyarul:</p>') + _szoveg(teljes)
@@ -1935,12 +2010,11 @@ def _r_tw(d, K):
 
 
 def _f_nyelvtani(K):
-    return q.nyelvtani(K.con, K.strong) or ('', '', '')
+    """F230: csak a ténylegesen nyelvtani Strong-számnál; a tartalmas szónál a blokk nem jelenik meg (`ures_rejt`)."""
+    return q.nyelvtani(K.con, K.strong) or None
 
 
 def _r_nyelvtani(d, K):
-    if not d[0] and not d[1]:
-        return Markup('<p class="megj">Nem szerepel a nyelvtani Strong-számok szűrésében (tartalmas szó).</p>')
     return Markup('<p>Nyelvtani Strong-szám (%s): %s. %s</p>') % (d[0] or '', d[1] or '', d[2] or '')
 
 
@@ -1981,6 +2055,14 @@ def _f_thayer(K):
 
 def _f_magyar_gorog(K):
     return q.magyar_gorog(K.con, K.strong)
+
+
+def _ures_magyar_gorog(K):
+    """F230: fordítás nélkül nem „üres eredmény”, hanem a hiányzó fordítás jelzése (a BDB-kártya szövegével): az angol Thayer-szócikk a
+    `szo.thayer` blokkban áll. Ha az sincs, a szokásos üres jelzés."""
+    if q.thayer(K.con, K.strong):
+        return Markup('<p class="ures">Magyar fordítás nincs · az angol eredeti áll.</p>')
+    return _ures()
 
 
 def _r_magyar_gorog_regi(d):
@@ -2187,8 +2269,8 @@ REGISZTER = [
     B('vers.kapcsolat', 'vers', 'Igehely-kapcsolatok (adatréteg)', 'forras', ('kapcsolatok',), _f_kapcsolat, _r_kapcsolat),
     B('vers.lxx_dontes', 'vers', 'LXX-fordítói döntések (adatréteg)', 'forras', ('lxx_dontesek',), _f_lxx_dontes, _r_lxx_dontes, 'soronként saját proveniencia-mező'),
     B('vers.lxx_par', 'vers', 'LXX versszintű együttelőfordulás', 'forras', ('lxx_versszintu_parok',), _f_lxx_par, _r_lxx_par, 'együttelőfordulás a versben, nem szóillesztés'),
-    B('vers.lxx_tobblet', 'vers', 'LXX többlet és számozási eltérés', 'forras', (), _f_lxx_tobblet, _r_lxx_tobblet, 'az adat még nincs a DB-ben (N-F76j)',
-      forras_szoveg='LXX_tobblet_szakaszok.tsv, Verzifikacios_elteres_tabla.tsv (Versifikacios_tablak; licenc: adat/licencek.tsv; a pardes.db-ben még nincsenek)'),
+    B('vers.lxx_tobblet', 'vers', 'LXX többlet és számozási eltérés', 'forras', (), _f_lxx_tobblet, _r_lxx_tobblet, 'az adat ebben a kiadásban még nem érhető el',
+      forras_szoveg='a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)'),
     B('vers.tsk', 'vers', 'Kereszthivatkozások (TSK)', 'forras', ('tsk',), _f_tsk, _r_tsk),
     B('vers.kh', 'vers', 'Károli-kereszthivatkozások', 'forras', ('kh',), _f_kh, _r_kh),
     B('vers.ubs', 'vers', 'UBS-jelentés az előfordulásra', 'forras', ('ubs_dbh_referenciak', 'ubs_dbh_jelentesek'), _f_ubs, _r_ubs),
@@ -2204,12 +2286,13 @@ REGISZTER = [
       ('bdb', 'bdb_alias', 'forditasok', 'bdb_vers_jelentes', 'token_eredeti', 'token_macula', 'morf_kulcs_heber', 'morf_nyelv_aramai',
        'szotar_szakasz_cimke', 'elofordulasok'),
       _f_bdb_apparatus, _r_bdb_apparatus,
-      kovet=('szo.bdb_magyar',), jelleg_fn=lambda d: ('forras', 'modell', 'gepi') if d['hu'] else ('forras', 'gepi')),     # modell-kimenet csak a magyar fordításból készült bontásnál
-    B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (angol)', 'forras', ('bdb', 'bdb_alias'), _f_bdb_angol, _r_bdb_angol, 'az alias gépi feldolgozás'),
-    B('szo.bdb_magyar', 'szo_h', 'BDB-szócikk (magyar fordítás)', 'modell', ('forditasok',), _f_bdb_magyar, _r_bdb_magyar),
-    B('szo.lxx_bridge', 'szo_h', 'Görög megfelelő (lxx_bridge)', 'forras', ('lxx_bridge',), _f_lxx_bridge, _r_lxx_bridge),
+      jelleg_fn=lambda d: ('forras', 'modell', 'gepi') if d['hu'] else ('forras', 'gepi')),     # modell-kimenet csak a magyar fordításból készült bontásnál
+    B('szo.bdb_angol', 'szo_h', 'BDB-szócikk (nyers szöveg)', 'forras', ('bdb', 'bdb_alias'), _f_bdb_angol, _r_bdb_angol,
+      'ahol a Strong-számnak nincs saját szócikke, a rokon szám szócikke áll', ures_rejt=True,       # a magyar szöveg (kártya nélkül) csak ott áll, ahol a `forditasok` olvasható (K.magyar_ok)
+      jelleg_fn=lambda d: ('forras', 'modell') if d.get('hu') else ('forras',)),
+    B('szo.lxx_bridge', 'szo_h', 'Görög megfelelő (Septuaginta)', 'forras', ('lxx_bridge',), _f_lxx_bridge, _r_lxx_bridge),
     B('szo.ubs_dbh', 'szo_h', 'UBS DBH jelentések (a teljes szócikk, magyar fordítással)', ('forras', 'modell'), ('ubs_dbh_jelentesek', 'forditasok'), _f_ubs_dbh, _r_ubs_dbh,
-      'CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet (#121)'),
+      'CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet'),
     B('szo.sdbh', 'szo_h', 'Szemantikai domén (SDBH)', 'forras', ('sdbh_domenek', 'forditasok'), _f_sdbh, _r_sdbh, 'üres eredmény nem negatív lelet',
       jelleg_fn=_jelleg_hu(1)),
     B('szo.sece_h', 'szo_h', 'SECE-szócikk (héber)', 'forras', ('sece_h',), _f_sece_h, _r_szoveg),
@@ -2219,13 +2302,14 @@ REGISZTER = [
     B('szo.tbesh', 'szo_h', 'Bővített Strong-szócikk (TBESH)', ('forras', 'gepi'), ('tbesh', 'glosszak_heber_hu', 'forditasok'), _f_tbesh, _r_tbesh,
       jelleg_fn=lambda d: ('forras', 'gepi', 'modell') if isinstance(d, tuple) and (d[2] or any(r[3] in d[1] for r in d[0])) else ('forras', 'gepi')),
     B('szo.tw_h', 'szo_h', 'translationWords', 'forras', ('tw_szocikkek', 'forditasok'), _f_tw, _r_tw, jelleg_fn=_jelleg_hu(1)),
-    B('szo.nyelvtani', 'szo_h', 'Nyelvtani Strong-számok szűrése', 'gepi', ('grammatikai_strongok',), _f_nyelvtani, _r_nyelvtani),
+    B('szo.nyelvtani', 'szo_h', 'Nyelvtani Strong-számok szűrése', 'gepi', ('grammatikai_strongok',), _f_nyelvtani, _r_nyelvtani, ures_rejt=True),
     # görög szó-lap
     B('szo.tbesg', 'szo_g', 'TBESG', 'forras', ('tbesg', 'forditasok'), _f_tbesg, _r_tbesg, jelleg_fn=_jelleg_hu(1)),
     B('szo.thayer', 'szo_g', 'Thayer (angol)', 'forras', ('thayer',), _f_thayer, _r_szoveg),
-    B('szo.magyar_gorog', 'szo_g', 'Magyar jelentés (Thayer, UBS DNTG)', ('modell', 'gepi'), ('forditasok', 'thayer_szakaszok', 'thayer_vers_jelentes'), _f_magyar_gorog, _r_magyar_gorog),
+    B('szo.magyar_gorog', 'szo_g', 'Magyar jelentés (Thayer, UBS DNTG)', ('modell', 'gepi'), ('forditasok', 'thayer_szakaszok', 'thayer_vers_jelentes'), _f_magyar_gorog, _r_magyar_gorog,
+      ures_html=_ures_magyar_gorog),
     B('szo.usz', 'szo_g', 'ÚSZ-előfordulás és versek', 'forras', ('token_strong', 'vers'), _f_usz, _r_usz),
-    B('szo.heber_hatter', 'szo_g', 'Héber háttér (lxx_bridge)', 'forras', ('lxx_bridge',), _f_heber_hatter, _r_heber_hatter),
+    B('szo.heber_hatter', 'szo_g', 'Héber háttér (Septuaginta)', 'forras', ('lxx_bridge',), _f_heber_hatter, _r_heber_hatter),
     B('szo.sdgnt', 'szo_g', 'Szemantikai domén (SDGNT)', 'forras', ('sdgnt_domenek', 'forditasok'), _f_sdgnt, _r_sdbh, 'üres eredmény nem negatív lelet',
       jelleg_fn=_jelleg_hu(1)),
     B('szo.sece_g', 'szo_g', 'SECE-szócikk (görög)', 'forras', ('sece_g',), _f_sece_g, _r_szoveg),
@@ -2290,7 +2374,7 @@ def blokk_html(b, K):
     if adat:
         torzs = b.render(adat, K)
     if not torzs:
-        torzs = _ures()
+        torzs = b.ures_html(K) if b.ures_html else _ures()
     megj = Markup('<span class="megj">%s</span>') % b.jelleg_megj if b.jelleg_megj else Markup('')
     html = Markup(
         '<section class="blokk" id="b-%s" data-blokk="%s"><h3>%s %s %s</h3>%s<p class="forras">%s</p></section>') % (
@@ -2337,7 +2421,7 @@ KERESES = {
                 'a versek a TAHOT/TAGNT Strong-címkéiből; a magyar szavak kiemelése a Károli–Strong párosításból (modell-kimenet)'),
     'szo': B('kereses.szo', 'kereses', 'magyar szó', ('gepi', 'modell'),
              ('token_karoli', 'vers', 'szotari_kereso', 'szotari_alak', 'szotari_token_kotojeles', 'token_par'), None, None,
-             'a szótokenek gépi bontás; a szótári alak gépi szabály és részben modell-javaslat (DT130 (13)); a Strong-lista és a (c) mód a párosításból (modell-kimenet)'),
+             'a szótokenek gépi bontás; a szótári alak gépi szabály és részben modell-javaslat; a Strong-lista és a (c) mód a párosításból (modell-kimenet)'),
     'frazis': B('kereses.frazis', 'kereses', 'magyar frázis', 'gepi', ('token_karoli', 'vers'), None, None,
                 'egymást követő szótokenek egy Károli-versen belül'),
     'heber': B('kereses.heber', 'kereses', 'héber frázis', ('gepi', 'modell'), ('token_karoli', 'vers', 'token_par'), None, None,

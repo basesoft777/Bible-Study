@@ -156,10 +156,12 @@ class TestPilotAranymintaval(unittest.TestCase):
         for azon, adat, v in self.versek():
             th = blokkok._heber_csempek(self.K(ig=v['igehely']))
             self.assertEqual(len(th), len(v['heber']), v['igehely'])
+            self.assertEqual([w['atiras'] for w in th], [r[4] for r in q.eredeti_szavak(self.con, v['igehely']) if r[1] == 'H'], v['igehely'])
             for w, p in zip(th, v['heber']):
                 pm = p.get('macula') or {}
                 m = w.get('macula') or {}
-                self.assertEqual((w['heber'], w['atiras'], w['tukor'], w['strong'], w['nyelvtani']), (p['heber'], p['atiras'], p['tukor'], p['strong'], p['nyelvtani']), v['igehely'])
+                # F230: a kiejtés (atiras) a közös kiejtés-szolgáltatásé, nem a pilot TAHOT-átírása: tudatos eltérés, külön ellenőrzve (lent)
+                self.assertEqual((w['heber'], w['tukor'], w['strong'], w['nyelvtani']), (p['heber'], p['tukor'], p['strong'], p['nyelvtani']), v['igehely'])
                 self.assertEqual((m.get('lxx'), m.get('lxx_strong'), m.get('morf'), m.get('morf_hu')), (pm.get('lxx'), pm.get('lxx_strong'), pm.get('morf'), pm.get('morf_hu')),
                                  '%s %s' % (v['igehely'], p['heber']))
                 n += 1
@@ -226,7 +228,8 @@ class TestPilotAranymintaval(unittest.TestCase):
             t = szoveg(self.szo_panel(strong, ig))
             self.assertIn('Ebben a versben', t)
             self.assertIn('Károli itt: „%s”' % hu, t, ig)
-            self.assertIn('Alak: %s (%s) · %s (%s)' % (w['heber'], w['atiras'], m['morf_hu'], m['morf']), t, ig)
+            at = next(x for x in blokkok._heber_csempek(self.K(ig=ig)) if x['strong'] == strong)['atiras']      # F230: a kiejtés a közös szolgáltatásé, nem a pilot (TAHOT) átírása
+            self.assertIn('Alak: %s (%s) · %s (%s)' % (w['heber'], at, m['morf_hu'], m['morf']), t, ig)
             if m.get('lxx'):
                 self.assertIn('Görögül ebben a versben (LXX): %s' % m['lxx'], t, ig)
             if w['ubs']:
@@ -290,7 +293,12 @@ class TestPilotAranymintaval(unittest.TestCase):
                 # F104 (HAMART-001 F10 (5)): a BDB-sor kulcsa (Strong + STEP-átírás) nem jelenik meg, a gyakoriság-számláló
                 # („_560”) alsó index: a pilot szövegét ugyanígy normalizáljuk
                 pilot = re.sub(r'_(\d+)', r' \1 ', blokkok._sor_kulcs_nelkul(l['bdb_hu']))
-                self.assertIn(latin(szoveg(pilot))[:30], latin(t), strong)
+                # F230: a magyar BDB a tagolt kártyában áll (a külön nyers magyar blokk megszűnt), a szöveg átrendezve: a szócikk tartalmas szavainak
+                # legalább 70%-a megvan a lapon (a szerkezeti jelölők és a sorrend változhat). Ismert korlát: a tagolt kártya néhány szócikknél
+                # nem ad vissza minden magyar tagmondatot (H2416: 78%, pl. a Zsolt 68:11-hez fűzött szövegkritikai megjegyzés hiányzik a szakasztáblából)
+                szavak = set(re.findall(r'[a-záéíóöőúüű]{5,}', latin(szoveg(pilot)).lower()))
+                lap_szavak = set(re.findall(r'[a-záéíóöőúüű]{5,}', latin(t).lower()))
+                self.assertGreaterEqual(len(szavak & lap_szavak) / max(1, len(szavak)), 0.70, strong)
                 self.assertIn('%d előfordulás, %d könyvben' % (l['elofordulas'], l['konyvek_szama']), t, strong)
                 # a modell-egyezés nem minősítés (2026-11-14): a pilot darabszáma marad, a modell-egyezés helyén a mért pontosság
                 self.assertIn('%d Károli-előfordulás. %s' % (l['karoli_osszes'], blokkok.KAROLI_MERT_PONTOSSAG), t, strong)
@@ -388,17 +396,17 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertIn('&lt;script&gt;', h)
 
     def test_DT_F76h_lxx_tobblet_blokk_az_adat_meg_nincs_a_db_ben(self):
-        """DT-F76h (c): a blokk megjelenik, és kimondja, hogy az adat még nincs a DB-ben (üres eredmény nem negatív lelet); a forrássor a TSV-ket nevezi."""
+        """DT-F76h (c): a blokk megjelenik, és kimondja, hogy az adat ebben a kiadásban még nem érhető el (üres eredmény nem negatív lelet); F230: az olvasói felületen nincs fájlnév és N-szám."""
         h = self.vers_panel('1Móz 1:2')
         i = h.index('data-blokk="vers.lxx_tobblet"')
         blokk = h[i:h.index('</section>', i)]
         self.assertIn('LXX többlet és számozási eltérés', blokk)
         t = szoveg(blokk)
-        self.assertIn('Az adat még nincs a DB-ben', t)
-        self.assertIn('N-F76j', t)
-        self.assertIn('Verzifikacios_elteres_tabla.tsv', t)
+        self.assertIn('még nem érhető el', t)
+        self.assertNotIn('N-F76j', t)
+        self.assertNotIn('.tsv', t)
         self.assertIn('jelleg-forras', blokk)
-        self.assertIn('<p class="forras">Forrás és licenc: LXX_tobblet_szakaszok.tsv', blokk)
+        self.assertIn('<p class="forras">Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái', blokk)
 
     def test_DT_F76e_folyo_szoveg_az_interlinearis_reteg_versenkent(self):
         """DT-F76e (c): réteg nélkül folyó szöveg kis versszámokkal (a pilot elrendezése), az interlineáris réteggel versenként (#134)."""
@@ -452,7 +460,8 @@ class TestPilotAranymintaval(unittest.TestCase):
                 csempek = [tuple(html.unescape(x) for x in c) for c in csempek]
                 self.assertGreater(len(csempek), 0, v['igehely'])
                 # teljes egyezés: a csempék sorrendben a token_par párjai, mindegyik a pilot héber szavából (er_sorszam = a TAHOT-lista helye)
-                vart = [(v['heber'][ers - 1]['heber'], v['heber'][ers - 1]['atiras'], v['heber'][ers - 1]['tukor'], v['heber'][ers - 1]['strong'])
+                ek = [r[4] for r in q.eredeti_szavak(self.con, v['igehely']) if r[1] == 'H']      # F230: a kiejtés a közös szolgáltatásé, nem a pilot TAHOT-átírása
+                vart = [(v['heber'][ers - 1]['heber'], ek[ers - 1], v['heber'][ers - 1]['tukor'], v['heber'][ers - 1]['strong'])
                         for hs, hu, ers, erszo, st, bz in q.par_szavak(self.con, v['igehely']) if st]
                 self.assertEqual(csempek, vart, '%s: az Interlineáris csempék nem egyeznek a pilot héber szavaival' % v['igehely'])
                 n += len(csempek)

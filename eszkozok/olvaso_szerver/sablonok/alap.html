@@ -33,6 +33,8 @@
 </div>
 {% endif %}
 <header class="fejlec{{ ' navlap' if nav else '' }}" id="navigacio">
+  {# F230: az első Tab ezt a hivatkozást éri el; fókuszra látható, egyébként a képernyőn kívül áll (abszolút pozíció: nem rendezi át a fejlécet) #}
+  <a class="kihagy-link" href="#tartalom">Ugrás a tartalomra</a>
   {% if nav %}
   <div class="navlap-fej"><b class="navlap-cim">Navigáció</b><a class="lap-gomb navlap-zar" href="#" aria-label="A navigáció bezárása" title="Bezárás">✕</a></div>
   {% endif %}
@@ -136,6 +138,7 @@
   {% endif %}
 </header>
 {% if nav %}<div class="hatter" id="hatter"></div>{% endif %}
+<span id="tartalom" tabindex="-1"></span>
 <main class="tartalom">
 {% block tartalom %}{% endblock %}
 </main>

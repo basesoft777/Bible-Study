@@ -136,6 +136,7 @@ class Kontekst:
         self.con, self.kozos, self.ig, self.strong = con, kozos, ig, strong
         self._memo = {}
         self.magyar_ok = True        # a magyar BDB (`forditasok`) olvasható-e ezen a lapon (szint és kiadás szerint); a hívó állítja
+        self.bdb_kartya_ok = False   # F230: a tagolt BDB-kártya (`szo.bdb_apparatus`) látszik-e ezen a lapon; a hívó állítja (a nyers angol blokk ezért marad ki)
         self.glossza_ok = True       # F213: a magyar glossza (a TBESH/TBESG glosszájának fordítása) olvasható-e; a hívó állítja
         self.ubs_hu_ok = True        # F213: a magyar UBS DBH-fordítás (a `szo.ubs_dbh` blokk szintje) olvasható-e; a hívó állítja
         self.szotar_ok = True        # F213: az angol Strong-szótár (a `szo.szotar` blokk szintje) olvasható-e; a hívó állítja
@@ -206,6 +207,8 @@ class OldalGyar:
                 continue                                  # vers-kontextus nélkül nincs értelme (pl. „Ebben a versben”)
             if not self.hozz.lathato(b.id, szint) or not all(self._latszik(k, szint) for k in b.kovet):
                 continue
+            if b.ures_rejt and not b.fetch(K):
+                continue                                  # F230: a tartalma máshol áll (a BDB-kártyában): nincs „Nincs adat” blokk
             ki.append((b, blokkok.blokk_html(b, K)))
         return ki
 
@@ -249,7 +252,7 @@ class OldalGyar:
         if not q.strong_van(con, s):
             raise NemTalalhato('ismeretlen Strong-szám')
         K = Kontekst(con, self.kozos, ig=ig, strong=s)
-        K.magyar_ok = self._latszik('szo.bdb_magyar', szint) and self._latszik('szo.bdb_apparatus', szint)
+        K.magyar_ok = K.bdb_kartya_ok = self._latszik('szo.bdb_apparatus', szint)      # F230: a külön `szo.bdb_magyar` blokk megszűnt: a magyar BDB a kártyában áll
         oldal = 'szo_h' if s[0] == 'H' else 'szo_g'
         # F213 (DT-F213a): a magyar glossza a forrásblokkja (TBESH, ill. TBESG) láthatóságát követi
         K.glossza_ok = self._latszik('szo.tbesh' if s[0] == 'H' else 'szo.tbesg', szint)
@@ -259,7 +262,7 @@ class OldalGyar:
         if s[0] == 'G':
             tb = q.tbesg(con, s) if self._latszik('szo.tbesg', szint) else None
             if tb:
-                fej = (tb[0], tb[1], tb[2])
+                fej = (tb[0], q.szo_kiejtes(con, s), tb[2])      # F230: a magyaros kiejtés a közös szolgáltatásból, nem a TBESG SBL-átírása
             else:                                                      # tiltott TBESG: a Strong-szótár (szótő, kiejtés, rövid jelentés), ha az látszik
                 fej = (sz[0], sz[1], sz[3]) if (sz and self._latszik('szo.szotar', szint)) else ('', '', '')
             # F213: a görög fej is a DT-F213a sorrendjében: a magyar TBESG-glossza, ennek híján az angol (a TBESG-blokk szűrésén át)
@@ -572,7 +575,7 @@ class OldalGyar:
         (a hiányzót az alias pótolja, mint a lapon), a Károli–Strong párosítású könyvek száma."""
         con = self.con()
         szint = self.hozz.szint() if szint is None else szint
-        magyar_ok = self._latszik('szo.bdb_magyar', szint) and self._latszik('szo.bdb_apparatus', szint)
+        magyar_ok = self._latszik('szo.bdb_apparatus', szint)
         heber = [s for s in q.heber_strongok_versekre(con, igehelyek) if s not in self.kozos.nyelvtani]
         gorog = set(q.gorog_strongok_versekre(con, igehelyek))
         for ig in igehelyek:                                            # a Macula-párok: csak a TAHOT-szóhoz párosított sorok (a héber csempék szabálya)

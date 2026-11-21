@@ -6,12 +6,13 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SERVER
-allapot: nem_indult
+allapot: fut
+ag: claude/olvaso-javitocsomag-895ec6
 ad: az olvasó szó-lapja és versnézete a projekt kiejtés-szolgáltatásából mutat kiejtést; a BDB egyetlen tagolt kártya (magyar elöl, az angol eredeti csukva; fordítás nélkül az angol nyitva); a Thayer fordítás nélkül „Magyar fordítás nincs · az angol eredeti áll” jelzést ad; az olvasói felületről kikerülnek a belső azonosítók, a nyers jelölők és a hibás hivatkozások (a felmérés 1–4, 6, 7, 9–14, 24, 33. pontja); mindegyik javítás élő lekéréssel igazolva
-kovetkezo: "Te: /befogad egyeztetés, majd /kovetkezo a saját ágon"
+kovetkezo: "a független ellenőr és legfeljebb egy javítókör, majd a draft PR leírása az élő bizonyítékokkal"
 munka: folyamat
 olvas: [eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/bdb_rovidites.py, adat/kiejtes_kivetelek.tsv]
-ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/tanulmany_oldal.py, eszkozok/olvaso_szerver/regiszter_or.py, eszkozok/olvaso_szerver/konfig/hozzaferes.toml, eszkozok/olvaso_szerver/konfig/hozzaferes_proba.toml, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/README.md, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/teszt_szintek.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_olvaso_hibak.py, eszkozok/olvaso_szerver/teszt_olvaso_javitocsomag.py, "naplok/F230_*.md"]
+ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/kiejtes_szolg.py, eszkozok/olvaso_szerver/konfig/hozzaferes.toml, eszkozok/olvaso_szerver/konfig/hozzaferes_proba.toml, eszkozok/olvaso_szerver/konfig/elemek.toml, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/README.md, eszkozok/teszt_futtat.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/olvaso_szerver/teszt_szintek.py, eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_olvaso_hibak.py, eszkozok/olvaso_szerver/teszt_olvaso_javitocsomag.py, "naplok/F230_*.md"]
 fugg: []
 ---
 
