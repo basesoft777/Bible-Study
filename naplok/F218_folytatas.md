@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218a-s7-466f45` (az S7; alap: main `188ee2aa`) · PR: lásd a brief `pr` mezőjét (a 218a első fele, T és S1–S4: #729; az S5: #755, mind a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
+Ág: `claude/f218a-s8` (az S8; alap: main `00fa3e41`) · PR: lásd a brief `pr` mezőjét (a 218a első fele, T és S1–S4: #729; az S5: #755, mind a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
@@ -43,7 +43,9 @@
 | 9. ellenőrzés (Fable, célzott, `ff3fd41c..dc9bd031`) | **ELTÉRÉS: 7 tétel**; a javítókör kész; a három döntés 🟢 (DT888, -u, -v), a DT888 adatjavítása a B45-ön kész, a B46-é N209 | `naplok/F218_jelentes.md` „Független ellenőrzés — 9. ellenőrzés” és „A 9. ellenőrzés javítóköre” |
 | N200 (a mérce hash-sorai a #756 merge-e után) | **kész** (`62b74c42`, a 12. session) | a B51 `DONTESEK.md` hash-e frissült, a törölt S6-döntésfájl sora kikerült; regresszió RENDBEN, hash-őr 208 sor. **A merge után újra esedékes** (az S8 első lépése; az S7-nek döntésfájlja nincs, a `nyitott/uj/f218a-s7-466f45.md` nem mérce-bemenet) |
 | F218.10 (S7): „9. Hatástörténet” (ÓSZ, ÚSZ, tanúk), a szópár | **kész: a szakasz bájtra egyezik, engedélysor nélkül** (a 12. session, `claude-opus-5-5`) | 56 sor; új bemenetek: B39, B41, B64, B73, B74; 129 sablonsor (8 `var`), 9 névtábla-sor; GK-SZOPAR, GK-A6, GK-28 (Targum, Peshitta) zöld; festékpróba 0; `teszt_s9_hatastortenet.py` (16). A jelentés „F218.10 — S7” szakasza |
-| F218.11 (S8) – F218.13 | nem indult | |
+| N200 (a mérce hash-sorai a #760 merge-e után) | **kész** (a 13. session) | a B51 `DONTESEK.md` hash-e frissült (`b38760db…` → `b5f5151f…`); regresszió RENDBEN, hash-őr 209 sor. **A merge után újra esedékes** (az S8 döntésfájlja, ha lesz, a B51 sora): az S9 első lépése |
+| F218.11 (S8) | fut (a 13. session, `claude-opus-5-5`) | ág: `claude/f218a-s8` |
+| F218.12 (S9) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
 
