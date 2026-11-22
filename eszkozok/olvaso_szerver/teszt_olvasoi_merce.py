@@ -264,6 +264,68 @@ class TestNormalizalo(unittest.TestCase):
         self.assertTrue(any('-b' in s for s in sorok) and any('+c' in s for s in sorok))
 
 
+class _HamisFutas:
+    """A `push_elott.Futas` helyettese: a lépések előre megadott (kilépési kód, kimenet) párokat adnak."""
+
+    def __init__(self, valaszok):
+        self.valaszok = list(valaszok)
+        self.hibas = []
+        self.hiba_sorok = []
+        self.hivasok = []
+
+    def lepes(self, nev, argv, **kw):
+        self.hivasok.append((nev, list(argv)))
+        rc, ki = self.valaszok.pop(0)
+        if rc != 0:
+            self.hibas.append((nev, rc))
+            self.hiba_sorok.append('HIBA')
+        return rc, ki
+
+
+class TestKapuUjrafuttatas(unittest.TestCase):
+    """F232 (orkesztrátori döntés, 2026-11-22): egy elbukott olvasó-tesztfájl egyszer újrafut; ingadozás = jelzés, nem bukás."""
+
+    PIROS = '[teszt_futtat] teszt_arculat.py: HIBA (1), 1.0 mp\n[teszt_futtat] teszt_kereses.py: ZÖLD, 1.0 mp\n'
+    PIROS2 = PIROS + '[teszt_futtat] teszt_ubs_dbh.py: HIBA (1), 1.0 mp\n'
+
+    def setUp(self):
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(D)), 'eszkozok'))
+        import push_elott as P
+        self.P = P
+
+    def test_zold_egyszer_fut(self):
+        f = _HamisFutas([(0, 'ok')])
+        rc, _, ing = self.P.olvaso_tesztek_futtatasa(f, 'x', ['gyors'], py='py')
+        self.assertEqual((rc, ing, f.hibas, len(f.hivasok)), (0, [], [], 1))
+
+    def test_ingadozas_ismetlesre_zold_nem_bukik(self):
+        f = _HamisFutas([(1, self.PIROS), (0, '[teszt_futtat] teszt_arculat.py: ZÖLD, 1.0 mp\n')])
+        rc, _, ing = self.P.olvaso_tesztek_futtatasa(f, 'x', ['gyors'], py='py')
+        self.assertEqual((rc, ing, f.hibas), (0, ['teszt_arculat.py'], []))
+        self.assertEqual(f.hivasok[1][1], ['py', 'eszkozok/teszt_futtat.py', '--fajl', 'teszt_arculat'])
+
+    def test_masodszor_is_piros_bukik(self):
+        f = _HamisFutas([(1, self.PIROS), (1, '[teszt_futtat] teszt_arculat.py: HIBA (1), 1.0 mp\n')])
+        rc, _, ing = self.P.olvaso_tesztek_futtatasa(f, 'x', ['gyors'], py='py')
+        self.assertEqual((rc, ing, len(f.hibas)), (1, [], 1))
+
+    def test_ket_fajl_egyik_ingadozik_a_masik_piros(self):
+        f = _HamisFutas([(1, self.PIROS2), (1, '[teszt_futtat] teszt_ubs_dbh.py: HIBA (1), 1.0 mp\n[teszt_futtat] teszt_arculat.py: ZÖLD, 1.0 mp\n')])
+        rc, _, ing = self.P.olvaso_tesztek_futtatasa(f, 'x', ['gyors'], py='py')
+        self.assertEqual((rc, ing, len(f.hibas)), (1, ['teszt_arculat.py'], 1))
+        self.assertEqual(f.hivasok[1][1], ['py', 'eszkozok/teszt_futtat.py', '--fajl', 'teszt_arculat', '--fajl', 'teszt_ubs_dbh'])
+
+    def test_kornyezeti_hiba_nem_fut_ujra(self):
+        f = _HamisFutas([(2, 'nincs adatbázis')])
+        rc, _, ing = self.P.olvaso_tesztek_futtatasa(f, 'x', ['gyors'], py='py')
+        self.assertEqual((rc, ing, len(f.hibas), len(f.hivasok)), (2, [], 1, 1))
+
+    def test_nem_azonosithato_fajl_nem_fut_ujra(self):
+        f = _HamisFutas([(1, 'valami elromlott')])
+        rc, _, ing = self.P.olvaso_tesztek_futtatasa(f, 'x', ['gyors'], py='py')
+        self.assertEqual((rc, ing, len(f.hibas), len(f.hivasok)), (1, [], 1, 1))
+
+
 @unittest.skipUnless(VAN_DB and VAN_FLASK, 'nincs pardes.db vagy Flask')
 class TestMerce(unittest.TestCase):
     @classmethod

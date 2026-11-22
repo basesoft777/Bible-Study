@@ -28,8 +28,10 @@ változott fájl egyik mintára sem illeszkedik, vagy a fájl törlődött/átne
 olvasható, a teljes kapu fut. A jegyzés a `git rev-parse --git-dir` alatti `push_elott_zold.json`; csak tiszta fán, teljes
 (nem `--lepes`) futás után frissül, a bukott lépésé törlődik.
 
-Olvasó-tesztek (F232, DT-F232a (b)): ha az ág az olvasó kódját érinti (`teszt_futtat.py` `_OLVASO_KOD`), a kapu a `teszt_futtat.py --diff`
-fel is futtatja az olvasó tesztjeit és az olvasói mércét (`teszt_olvasoi_merce.py`) a helyi `pardes.db`-n; piros teszttel a kapu 1-et ad.
+Olvasó-tesztek (F232, DT-F232a (b)): ha az ág az olvasó kódját érinti (`teszt_futtat.py` `_OLVASO_KOD`), a kapu a `teszt_futtat.py --gyors`
+móddal fel is futtatja az olvasó gyors tesztjeit (a lassú `teszt_szintek.py` és `teszt_arculat.py` nélkül; a teljes sor a menet saját
+futása) és az olvasói mércét (`teszt_olvasoi_merce.py`) a helyi `pardes.db`-n; egy elbukott tesztfájl egyszer újrafut (ingadozás:
+jelzés, nem bukás); másodszor is piros: a kapu 1-et ad.
 A mérce eltérése figyelmeztetés (a diff a futás kimenetében). Ez a lépés CSAK helyi: a CI-ben nincs teszt-adatbázis (N-F232a).
 
 A lépéslista (LEPESEK) az egyetlen forrás a helyi futáshoz; a `--ci-egyezes` (a CI-ben is fut) megbukik, ha a
@@ -204,6 +206,31 @@ def fuggo_tesztek(fajlok):
     import teszt_futtat
     valtozott = {f.replace('\\', '/') for f in fajlok}
     return sorted(t for t, bemenetek in teszt_futtat.GYORS_FUGGO.items() if valtozott & set(bemenetek))
+
+
+def olvaso_tesztek_futtatasa(fut, nev, argv, py=None):
+    """F232 (orkesztrátori döntés, 2026-11-22): az olvasó-tesztek egy lépése ingadozás-védelemmel. Az első futás után minden elbukott
+    tesztfájlt (`[teszt_futtat] <fájl>: HIBA`) egyszer újrafuttat (`teszt_futtat.py --fajl`); ha az ismétlés zöld, a kimenet jelzi, hogy
+    ingadozott (N-F232c), és a lépés nem bukik; ha másodszor is piros, a lépés bukik. Az újrafuttatás nélküli hiba (pl. környezeti,
+    kilépési kód 2, vagy nem azonosítható fájl) azonnal bukik. Visszaad: (kilépési kód, a futások kimenete, ingadozott fájlok listája)."""
+    py = py or PY
+    n_hibas, n_sor = len(fut.hibas), len(fut.hiba_sorok)
+    rc, ki = fut.lepes(nev, argv)
+    if rc != 1:
+        return rc, ki, []
+    bukott = sorted(set(re.findall(r'\[teszt_futtat\] (teszt_\w+\.py): HIBA', ki)))
+    if not bukott:
+        return rc, ki, []
+    print('FIGYELEM: elbukott olvasó-teszt (%s); egyszeri újrafuttatás (ingadozás-védelem, N-F232c)' % ', '.join(bukott))
+    del fut.hibas[n_hibas:]
+    del fut.hiba_sorok[n_sor:]
+    rc2, ki2 = fut.lepes(nev + ' -- újrafuttatás', [py, 'eszkozok/teszt_futtat.py'] + [x for f in bukott for x in ('--fajl', f[:-3])])
+    ujra_bukott = set(re.findall(r'\[teszt_futtat\] (teszt_\w+\.py): HIBA', ki2)) if rc2 != 0 else set()
+    ingadozott = [f for f in bukott if f not in ujra_bukott] if rc2 != 2 else []
+    if ingadozott:
+        print('FIGYELEM: INGADOZÓ olvasó-teszt (elsőre piros, az ismétlésre zöld): %s -- a lépés nem áll meg; a teszt javítása az N-F232c.'
+              % ', '.join(ingadozott))
+    return rc2, ki + ki2, ingadozott
 
 
 def zold_utvonal():
@@ -560,13 +587,18 @@ def main():
 
     # 6. F232 (DT-F232a (b)): az olvasó tesztjei és mércéje helyben, a helyi `pardes.db`-n, ha az ág az olvasó kódját érinti.
     # A CI ezeket nem futtatja (nincs teszt-adatbázis; N-F232a: útvonal-szűrt CI a TSV-ből épített DB-n), ezért ez a kapu az
-    # egyetlen védelem: piros olvasó-teszttel az ág nem jut át. A lassú fájlokat a `teszt_futtat.py --diff` választja (F188 T4).
+    # egyetlen védelem: piros olvasó-teszttel az ág nem jut át. Orkesztrátori döntés (2026-11-22): a kapu `--gyors` módban fut (a lassú
+    # `teszt_szintek.py` és `teszt_arculat.py` nélkül: a 17–22 perces kapu minden olvasós pushnál akadály lenne); a teljes tesztsor a
+    # menet saját futása a draft PR előtt. Egy elbukott tesztfájl egyszer újrafut (ingadozás-védelem, N-F232c).
     # Nem része a részleges módnak (L_* lépés-azonosító): a saját feltétele a teljes alap..fej diff.
     olvaso_fajlok = olvaso_erintett(fajlok)
     if olvaso_fajlok:
-        print('push_elott: az olvasó kódja változott (%d fájl, pl. %s): az olvasó tesztjei futnak a helyi pardes.db-n'
+        print('push_elott: az olvasó kódja változott (%d fájl, pl. %s): az olvasó gyors tesztjei futnak a helyi pardes.db-n'
               % (len(olvaso_fajlok), olvaso_fajlok[0]))
-        _, olv_ki = fut.lepes('F232 olvasó-tesztek (teszt_futtat.py --diff)', [PY, 'eszkozok/teszt_futtat.py', '--diff', alap])
+        print('FIGYELEM: a lassú tesztek (teszt_szintek.py, teszt_arculat.py) a kapuban nem futnak; a teljes sor a menet saját futása '
+              '(`python eszkozok/teszt_futtat.py`) a draft PR előtt (F232 DT-F232a).')
+        _, olv_ki, _ = olvaso_tesztek_futtatasa(fut, 'F232 olvasó-tesztek (teszt_futtat.py --gyors)',
+                                                  [PY, 'eszkozok/teszt_futtat.py', '--gyors'])
         for s in olv_ki.splitlines():
             if s.startswith('MÉRCE-ELTÉRÉS'):
                 print('FIGYELEM ' + s)
@@ -578,8 +610,8 @@ def main():
         # a lexikon-generátorra/lapra támaszkodó gyors teszt (pl. teszt_visszhang_kapu): csak ez fut (F232, ELLENOR_F232 1.)
         fuggo = fuggo_tesztek(fajlok)
         print('push_elott: az olvasó-tesztek közvetlen bemenete változott: %s' % ', '.join(fuggo))
-        fut.lepes('F232 függő olvasó-tesztek (teszt_futtat.py --fajl)', [PY, 'eszkozok/teszt_futtat.py'] +
-                  [x for f in fuggo for x in ('--fajl', f[:-3])])
+        olvaso_tesztek_futtatasa(fut, 'F232 függő olvasó-tesztek (teszt_futtat.py --fajl)', [PY, 'eszkozok/teszt_futtat.py'] +
+                                 [x for f in fuggo for x in ('--fajl', f[:-3])])
     if any(f.replace('\\', '/').startswith('eszkozok/olvaso_szerver/merce/') for f in fajlok):
         print('FIGYELEM: az olvasói mérce fájljai változtak (eszkozok/olvaso_szerver/merce/): a PR leírása hivatkozzon a felhasználó '
               'jóváhagyására (F232 2.2).')
