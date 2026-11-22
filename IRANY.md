@@ -27,7 +27,8 @@
 ## Rád vár
 - Fordítás (pénz), igen vagy elvetve: #24 a görög rövid jelentések (N177); #23 a Thayer magyarja (354 / 5 426 kész; a következő adag kb. 10 USD).
 - JOHD (#762, #763, draft): az emberi validáció és a 21 fejezetes újramérés bemásolása; a deposit formátuma.
-- A Biblialex domain regisztrációja.
-- Archiválható-e: levelek-uj-cimzettek, betu-szin-elonezet.
+- A Biblialex domain regisztrációja; a BiblIndex-levél.
+- Az F134 telefonos próbája.
+- Archiválható-e: levelek-uj-cimzettek; betu-szin-elonezet (6 merge-eletlen commit: a betűválasztó előnézete).
 
 *Frissítés: amit a szerkesztő irányként kimond, azt az integrátor még ugyanabban a válaszában beírja ide, és megmutatja. Új irányt magától nem ír bele, csak az állapotot (lezárult szál, megválaszolt kérdés). Új sor csak egy másik törlésével; legfeljebb 40 sor.*
