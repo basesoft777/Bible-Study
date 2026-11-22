@@ -6,7 +6,8 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SERVER
-allapot: nem_indult
+allapot: fut
+ag: claude/f235-sebesseg-1-c6fd61
 ad: az olvasó új fejezete legfeljebb 300 ms, verse legfeljebb 400 ms, szó-lapja legfeljebb 250 ms alatt jelenik meg meleg szerveren (gyorsítótár nélkül); laponként legfeljebb 100 lekérdezés; a kéréskor futó lekérdezések egyike sem olvas végig index nélkül 1000 sornál nagyobb táblát; mindezt teszt őrzi, a tervellenőr a CI-ben is fut
 kovetkezo: "Te: DT-F235a (az orkesztrátor dönt); az 1. rész fut: M0 kész, összevont lekérdezések, lábléc, előmelegítés, tervellenőr; a 2. rész (indexek, elérhetőségi tábla, indit.sh) a #101 merge-e után"
 munka: folyamat
