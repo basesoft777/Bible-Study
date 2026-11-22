@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-22",
-   "commit": "1a9d8eb1"
+   "commit": "7ce1854b"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -812,8 +812,8 @@
    "cim": "Olvasó — sebességjavítás (indexek, összevont lekérdezések, egyszeri betöltés, előmelegítés) és sebességőr (tervellenőr és határértékek tesztként)",
    "fazis": "folyamat",
    "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "Indítható a #232 (PR #786) és a #101 (PR #780) merge-e után; első lépés: M0 (⛔ DT-F235a: a fordítási javítótábla betöltésének helye)",
+   "brief_allapot": "fut",
+   "most": "Folytatás: a 2. rész (a #101 merge-e megtörtént; az 1. rész a #799-ben, a merge a felhasználóé/orkesztrátoré, utána indítható): az sqlite_epit.py indexei és átírt lekérdezések (nyitott/uj/f235-sebesseg-1-c6fd61.md N230, N231: a teszt_tervor.py ELFOGADOTT listájának 23 tétele, utána --sema-ment), az előre számolt elérhetőségi tábla (bibliak.Tar), a token_macula fedő index, a natív futtatás és az indításkori háttér-beolvasás az indit.sh-ban (a /mnt/e-s 539 ms ettől tűnik el), a hideg DB újramérése (N232); N233: a teszt_sebesseg.py a CI-ben (#232)",
    "fugg": "—",
    "tervezett": false,
    "reszletes": "",
@@ -7285,6 +7285,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 262
+  "kesz_db": 263
  }
 }

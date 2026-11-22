@@ -9,8 +9,10 @@ Szabályok:
 Az adatok a #60 pilot (`eszkozok/olvaso_pilot/db_meres.py`: `db_vers`, `db_szo`, `db_gorog`) blokk-logikájából
 vannak átírva; a D2-egyezést a `teszt_olvaso_szerver.py` méri.
 """
+import contextlib
 import re
 import sqlite3
+import threading
 import unicodedata
 from collections import Counter, defaultdict
 
@@ -55,6 +57,94 @@ def _in(con, sql_elo, sql_uto, lista, elo_param=(), uto_param=(), csomag=400):
         resz = lista[i:i + csomag]
         ki.extend(con.execute(sql_elo + '(' + _helyorzok(len(resz)) + ')' + sql_uto, tuple(elo_param) + tuple(resz) + tuple(uto_param)).fetchall())
     return ki
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# lapszintű előtöltés (F235): a fejezet-lap strongonkénti és versenkénti lekérdezései helyett egy `IN (...)` lekérdezés
+# ---------------------------------------------------------------------------------------------------------------------
+# A kérés idejére nyitott, szálanként külön gyorsítótár (`with elotoltes():`): csak a hívó által kért kulcsokat tartalmazza, és a
+# kérés végén eldobódik, tehát nem állandó adat. Ugyanazokat a sorokat adja, ugyanabban a sorrendben, mint az egyedi lekérdezés
+# (`teszt_sebesseg.py` `test_az_elotoltes_ugyanazt_adja_mint_az_egyedi_lekerdezes`; a lap bájtazonosságát a `teszt_olvasoi_merce.py` mércéje őrzi). Nyitott gyorsítótár nélkül minden függvény a régi úton fut.
+_EL = threading.local()
+
+
+@contextlib.contextmanager
+def elotoltes():
+    """A lapszintű előtöltés hatóköre; a beágyazott hívás a külsőt használja, kilépéskor csak a nyitója zárja."""
+    if getattr(_EL, 'd', None) is not None:
+        yield
+        return
+    _EL.d = {'bdb_en': {}, 'bdb_hu': {}, 'lxx_h': {}, 'eredeti': {}, 'macula': {}, 'lxx_sorr': {}, 'aramai': {}, 'aramai_kerdezett': set(),
+             'macula_regi': None}
+    try:
+        yield
+    finally:
+        _EL.d = None
+
+
+def _el():
+    return getattr(_EL, 'd', None)
+
+
+def elotolt_strongok(con, strongok, bdb=True):
+    """A strongokhoz tartozó BDB-angol szöveg (`bdb`), a magyar BDB-sorok (`forditasok`, `szotar='BDB'`) és az LXX-híd sorai (`lxx_bridge`),
+    strongonként egy lekérdezés helyett csomagonként (400 strong) egy. `bdb=False`: csak az LXX-híd (a hívó lapján a BDB nem látszik: a tiltott
+    `forditasok` táblát olvasni sem szabad, l. `oldalak.szamlalok`)."""
+    d = _el()
+    if d is None:
+        return
+    st = sorted({s for s in strongok if s})
+    uj = [s for s in st if s not in d['bdb_en']] if bdb else []
+    if uj:
+        for s in uj:
+            d['bdb_en'][s] = None
+        for s, t in _in(con, 'SELECT strong, teljes_szocikk FROM bdb WHERE strong IN ', ' ORDER BY rowid', uj):
+            if d['bdb_en'][s] is None:               # az egyedi lekérdezés (`fetchone`) az első sort adja
+                d['bdb_en'][s] = (t,)
+    uj = [s for s in st if s not in d['bdb_hu']] if bdb else []
+    if uj:
+        for s in uj:
+            d['bdb_hu'][s] = []
+        for sor in _in(con, "SELECT strong, jelentes_szam, mezo, forditas_hu, allapot, modell, datum FROM forditasok WHERE szotar='BDB' AND strong IN ",
+                       ' ORDER BY rowid', uj):
+            d['bdb_hu'][sor[0]].append(sor[1:])
+    uj = [s for s in st if s not in d['lxx_h']]
+    if uj:
+        for s in uj:
+            d['lxx_h'][s] = []
+        for s, g, c in _in(con, 'SELECT strong, greek_strong, count FROM lxx_bridge WHERE strong IN ', ' ORDER BY rowid', uj):
+            d['lxx_h'][s].append((g, c))
+
+
+def elotolt_versek(con, igehelyek):
+    """A versek eredeti szavai (`token_eredeti`), Macula-sorai (`token_macula`) és LXX-szavai (`lxx_token`) versenként egy lekérdezés helyett
+    csomagonként (400 vers) egy; a Macula-sorok arámi/héber nyelvét (`morf_nyelv_aramai`) egy lekérdezésben."""
+    d = _el()
+    if d is None:
+        return
+    igek = sorted({i for i in igehelyek if i})
+    uj = [i for i in igek if i not in d['eredeti']]
+    if uj:
+        for i in uj:
+            d['eredeti'][i] = []
+        for sor in _in(con, 'SELECT igehely, sorszam, nyelv, strong_nyers, alak, kiejtes, szoto, rovid_jelentes, angol_tukorford FROM token_eredeti '
+                       'WHERE igehely IN ', ' ORDER BY igehely, sorszam', uj):
+            d['eredeti'][sor[0]].append(sor[1:])
+    uj = [i for i in igek if i not in d['macula']]
+    if uj:
+        for i in uj:
+            d['macula'][i] = []
+        for sor in _in(con, _MACULA_IN_ELO if _macula_uj(con) else _MACULA_IN_ELO_REGI, ' ORDER BY igehely, rowid', uj):
+            d['macula'][sor[0]].append(_macula_dict(sor[1:]))
+        xml = [m['xml_id'] for i in uj for m in d['macula'][i] if m.get('xml_id')]
+        aramai_xml(con, xml)                          # a nyitott gyorsítótárba tölt
+    uj = [i for i in igek if i not in d['lxx_sorr']]
+    if uj:
+        for i in uj:
+            d['lxx_sorr'][i] = []
+        for sor in _in(con, 'SELECT karoli_igehely, szoalak, lemma, strong, morf FROM lxx_token WHERE karoli_igehely IN ',
+                       ' ORDER BY karoli_igehely, CAST(pozicio AS INTEGER), rowid', uj):
+            d['lxx_sorr'][sor[0]].append({'szoalak': sor[1], 'lemma': sor[2], 'strong': sor[3] or '', 'morf': sor[4]})
 
 
 # ---------------------------------------------------------------------------------------------------------------------
@@ -236,7 +326,11 @@ def par_szavak(con, ig):
 
 def eredeti_szavak(con, ig):
     """[(sorszam, nyelv, strong_nyers, alak, kiejtes, szoto, rovid_jelentes, angol_tukorford)]"""
-    sorok = con.execute('SELECT sorszam, nyelv, strong_nyers, alak, kiejtes, szoto, rovid_jelentes, angol_tukorford FROM token_eredeti WHERE igehely=? ORDER BY sorszam', (ig,)).fetchall()
+    d = _el()
+    if d is not None and ig in d['eredeti']:                     # F235: előtöltve (elotolt_versek)
+        sorok = d['eredeti'][ig]
+    else:
+        sorok = con.execute('SELECT sorszam, nyelv, strong_nyers, alak, kiejtes, szoto, rovid_jelentes, angol_tukorford FROM token_eredeti WHERE igehely=? ORDER BY sorszam', (ig,)).fetchall()
     # F230: a kiejtés a közös kiejtés-szolgáltatásból (kiejtes_szolg), nem a TAHOT/TAGNT átírása
     kiej = _kj().vers_szavak([(r[1], r[2], r[3], r[4]) for r in sorok])
     return [(r[0], r[1], r[2], r[3], k, r[5], r[6], r[7]) for r, k in zip(sorok, kiej)]
@@ -247,21 +341,34 @@ def heber_d2(con, ig):
     return [(hnorm(sn) or sn, alak, k) for (_ny, sn, alak, _at), k in zip(sorok, _kj().vers_szavak(sorok))]
 
 
-_MACULA_SQL = ('SELECT xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, lxx_szo_forras, lxx_szo_rahlfs '
-               'FROM token_macula WHERE igehely=? ORDER BY rowid')
+_MACULA_OSZL = 'xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, lxx_szo_forras, lxx_szo_rahlfs'
 # F115.4 előtti építés: nincs `lxx_szo_forras` / `lxx_szo_rahlfs` oszlop; a két mező üres marad
-_MACULA_SQL_REGI = ("SELECT xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, '', '' "
-                    'FROM token_macula WHERE igehely=? ORDER BY rowid')
+_MACULA_OSZL_REGI = "xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, '', ''"
+_MACULA_SQL = 'SELECT ' + _MACULA_OSZL + ' FROM token_macula WHERE igehely=? ORDER BY rowid'
+_MACULA_SQL_REGI = 'SELECT ' + _MACULA_OSZL_REGI + ' FROM token_macula WHERE igehely=? ORDER BY rowid'
+_MACULA_IN_ELO = 'SELECT igehely, ' + _MACULA_OSZL + ' FROM token_macula WHERE igehely IN '                # F235: a lapszintű előtöltés (versenként egy helyett)
+_MACULA_IN_ELO_REGI = 'SELECT igehely, ' + _MACULA_OSZL_REGI + ' FROM token_macula WHERE igehely IN '
+
+
+def _macula_uj(con):
+    """Az F115.4 utáni építés-e (megvan a `lxx_szo_forras` és a `lxx_szo_rahlfs` oszlop)."""
+    oszl = {r[1] for r in con.execute('PRAGMA table_info(token_macula)')}
+    return {'lxx_szo_forras', 'lxx_szo_rahlfs'} <= oszl
+
+
+def _macula_dict(sor):
+    x, a, b, c, d, e, f, g, h, i, j = sor
+    return {'xml_id': x, 'szo': a, 'lemma': b, 'strong': hnorm(c) if c else None, 'morf': d, 'szofaj': e, 'gloss': f,
+            'lxx': g, 'lxx_strong': hnorm(h) if h else None, 'lxx_forras': i or '', 'lxx_rahlfs': j or ''}
 
 
 def macula(con, ig):
     """A Macula-sorok dict-ként (a pilot `macula` mezői + xml_id az arámi/héber nyelvhez).
     Az F115.4 előtt épült adatbázisban az `lxx_forras` és az `lxx_rahlfs` üres (az oszlopok hiányoznak; az `oshl_csalad` mintája)."""
-    oszl = {r[1] for r in con.execute('PRAGMA table_info(token_macula)')}
-    sql = _MACULA_SQL if {'lxx_szo_forras', 'lxx_szo_rahlfs'} <= oszl else _MACULA_SQL_REGI
-    return [{'xml_id': x, 'szo': a, 'lemma': b, 'strong': hnorm(c) if c else None, 'morf': d, 'szofaj': e, 'gloss': f,
-             'lxx': g, 'lxx_strong': hnorm(h) if h else None, 'lxx_forras': i or '', 'lxx_rahlfs': j or ''}
-            for x, a, b, c, d, e, f, g, h, i, j in con.execute(sql, (ig,))]
+    d = _el()
+    if d is not None and ig in d['macula']:                      # F235: előtöltve (elotolt_versek); a hívó módosíthatja, ezért másolat
+        return [dict(m) for m in d['macula'][ig]]
+    return [_macula_dict(sor) for sor in con.execute(_MACULA_SQL if _macula_uj(con) else _MACULA_SQL_REGI, (ig,))]
 
 
 def morf_kulcs(con):
@@ -274,7 +381,16 @@ def morf_kulcs(con):
 
 def aramai_xml(con, xml_idk):
     """{xml_id: nyelv} az `morf_nyelv_aramai`-ból (hiányzó sor = héber)."""
-    return {x: n for x, n in _in(con, 'SELECT xml_id, nyelv FROM morf_nyelv_aramai WHERE xml_id IN ', '', xml_idk)}
+    d = _el()
+    if d is None:
+        return {x: n for x, n in _in(con, 'SELECT xml_id, nyelv FROM morf_nyelv_aramai WHERE xml_id IN ', '', xml_idk)}
+    # F235: a nyitott gyorsítótárban az eddig lekérdezett azonosítók egyszer kérdeződnek; a hiányzó sor (= héber) is tudott válasz
+    xml_idk = list(xml_idk)
+    uj = [x for x in dict.fromkeys(xml_idk) if x not in d['aramai_kerdezett']]
+    if uj:
+        d['aramai_kerdezett'].update(uj)
+        d['aramai'].update({x: n for x, n in _in(con, 'SELECT xml_id, nyelv FROM morf_nyelv_aramai WHERE xml_id IN ', '', uj)})
+    return {x: d['aramai'][x] for x in xml_idk if x in d['aramai']}
 
 
 def lxx_szavak(con, ig):
@@ -284,6 +400,9 @@ def lxx_szavak(con, ig):
 
 def lxx_szavak_sorrendben(con, ig):
     """Az LXX-vers szavai a szövegbeli sorrendben (a pilot `lxx` listája; a csempe-blokk és a görög párosítás ezt használja)."""
+    d = _el()
+    if d is not None and ig in d['lxx_sorr']:                    # F235: előtöltve (elotolt_versek); a hívó módosíthatja (`_hasznalt`), ezért másolat
+        return [dict(x) for x in d['lxx_sorr'][ig]]
     return [{'szoalak': a, 'lemma': b, 'strong': c or '', 'morf': d} for a, b, c, d in con.execute(
         'SELECT szoalak, lemma, strong, morf FROM lxx_token WHERE karoli_igehely=? ORDER BY CAST(pozicio AS INTEGER), rowid', (ig,))]
 
@@ -596,7 +715,11 @@ def strong_van(con, s):
 
 
 def bdb_angol(con, s):
-    r = con.execute('SELECT teljes_szocikk FROM bdb WHERE strong=?', (s,)).fetchone()
+    d = _el()
+    if d is not None and s in d['bdb_en']:                       # F235: előtöltve (elotolt_strongok)
+        r = d['bdb_en'][s]
+    else:
+        r = con.execute('SELECT teljes_szocikk FROM bdb WHERE strong=?', (s,)).fetchone()
     return r[0] if r else None
 
 
@@ -686,9 +809,13 @@ def _bdb_magyar_sorok(con, s):
     A szakaszonként fordított Strong (`jelentes_szam = sz<sorszam>`) szövege a szakaszsorok összefűzése; a többié a `teljes`
     sor (a jóváhagyott `kezi` sor elsőbbségével, DT-F128f (3))."""
     nevek = ('jelentes_szam', 'mezo', 'forditas_hu', 'allapot', 'modell', 'datum')
-    sorok = [dict(zip(nevek, r)) for r in con.execute(
-        "SELECT jelentes_szam, mezo, forditas_hu, allapot, modell, datum FROM forditasok WHERE szotar='BDB' AND strong=? "
-        "ORDER BY rowid", (s,))]
+    d = _el()
+    if d is not None and s in d['bdb_hu']:                       # F235: előtöltve (elotolt_strongok)
+        forras = d['bdb_hu'][s]
+    else:
+        forras = con.execute("SELECT jelentes_szam, mezo, forditas_hu, allapot, modell, datum FROM forditasok WHERE szotar='BDB' AND strong=? "
+                             "ORDER BY rowid", (s,))
+    sorok = [dict(zip(nevek, r)) for r in forras]
     return _osszefuzo()(sorok)
 
 
@@ -736,7 +863,12 @@ def karoli_alakok(con, s):
 
 def lxx_bridge_h(con, s):
     """[(count, greek_strong)] csökkenő sorrendben."""
-    return sorted(((int(c), g) for g, c in con.execute('SELECT greek_strong, count FROM lxx_bridge WHERE strong=?', (s,))), reverse=True)
+    d = _el()
+    if d is not None and s in d['lxx_h']:                        # F235: előtöltve (elotolt_strongok)
+        forras = d['lxx_h'][s]
+    else:
+        forras = con.execute('SELECT greek_strong, count FROM lxx_bridge WHERE strong=?', (s,))
+    return sorted(((int(c), g) for g, c in forras), reverse=True)
 
 
 def lxx_bridge_g(con, g):
