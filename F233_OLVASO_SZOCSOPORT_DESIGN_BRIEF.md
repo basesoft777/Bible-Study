@@ -10,7 +10,7 @@ allapot: nem_indult
 ad: a versnézetben a héber szócsempék írott szó szerint csoportosítva (keret, a teljes szó a keret tetején, az elemek külön kártyán; az alapszó kártyáján nem áll nem létező alak); a felmérés 16–23. és 25. tervezési pontja vásznon eldöntve és megvalósítva; a 29–32. alacsony súlyú pont DESIGN-APRO-ként
 kovetkezo: "A vászon előkészíthető bármikor (nem ír a repóba); a megvalósítás a #231 merge-e után indul, ⛔ DT-F233a (a csoportosítási szabály átvétele), ⛔ vászon-döntés"
 munka: folyamat
-olvas: [eszkozok/karoli_strong_validacio_minta.py, eszkozok/karoli_strong_validacio_sablon.html, eszkozok/olvaso_szerver/lekerdezesek.py]
+olvas: [eszkozok/olvaso_szerver/lekerdezesek.py]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/szocsoport.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/teszt_szocsoport.py]
 fugg: [231]
 ---
