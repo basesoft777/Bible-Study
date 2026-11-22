@@ -254,5 +254,59 @@ class HeberSorrendF105Tabla(unittest.TestCase):
             self.assertEqual(nfc(BR.heber_sorrend_javit(alak, st)), nfc(vart))
 
 
+class EgyszeriBetoltes(unittest.TestCase):
+    """F235, DT-F235a (a): a javítótábla egyszer, egyetlen beolvasással töltődik be; a kimenet azonos a régi osztályonkénti beolvasással."""
+
+    @staticmethod
+    def _regi(hiba, ut):
+        """A régi (F235 előtti) osztályonkénti beolvasás szó szerint: a viszonyítás."""
+        tab = {}
+        with open(ut, encoding='utf-8') as f:
+            sorok = [s.rstrip('\n').split('\t') for s in f if not s.startswith('#')]
+        fej = sorok[0] if sorok else []
+        for s in sorok[1:]:
+            d = dict(zip(fej, s))
+            if d.get('hiba') == hiba and d.get('allapot') == 'javitva' and d.get('javitott_alak'):
+                tab.setdefault(d['strong'], {}).setdefault(d['forras_alak'], set()).add(d['javitott_alak'])
+        return {st: sorted(((a, next(iter(b))) for a, b in t.items() if len(b) == 1), key=lambda p: -len(p[0]))
+                for st, t in tab.items()}
+
+    def test_azonos_a_regi_beolvasassal(self):
+        for hiba in ('heber_sorrend', 'atiras', 'zarojel'):
+            self.assertEqual(BR._javitasok(hiba), self._regi(hiba, BR.JAVITAS_UT), hiba)
+        tobb = BR._javitasok_tobb(('heber_sorrend', 'atiras', 'zarojel'))
+        for hiba in tobb:
+            self.assertEqual(tobb[hiba], self._regi(hiba, BR.JAVITAS_UT), hiba)
+
+    def test_publikus_gyorsitotarak_egyeznek_a_regivel(self):
+        BR.betolt_javitasok()
+        self.assertEqual(BR.sorrend_javitasok(), self._regi('heber_sorrend', BR.JAVITAS_UT))
+        self.assertEqual(BR.atiras_javitasok(), self._regi('atiras', BR.JAVITAS_UT))
+        self.assertEqual(BR.zarojel_javitasok(), self._regi('zarojel', BR.JAVITAS_UT))
+
+    def test_egyszerre_kert_betoltes_egyszer_olvas(self):
+        import threading
+        regi = (BR._SORREND, BR._ATIRAS, BR._ZAROJEL, BR._javitasok_tobb)
+        db = []
+        orig = BR._javitasok_tobb
+
+        def szamol(hibak, ut=None):
+            db.append(tuple(hibak))
+            return orig(hibak, ut)
+        BR._SORREND = BR._ATIRAS = BR._ZAROJEL = None
+        BR._javitasok_tobb = szamol
+        try:
+            szalak = [threading.Thread(target=f) for f in (BR.sorrend_javitasok, BR.atiras_javitasok, BR.zarojel_javitasok, BR.betolt_javitasok) * 3]
+            for t in szalak:
+                t.start()
+            for t in szalak:
+                t.join()
+            self.assertEqual(len(db), 1, 'a táblát egyszer kell beolvasni: %r' % (db,))
+            BR.sorrend_javitasok(), BR.atiras_javitasok(), BR.zarojel_javitasok()
+            self.assertEqual(len(db), 1, 'a kész gyorsítótár nem olvas újra')
+        finally:
+            BR._SORREND, BR._ATIRAS, BR._ZAROJEL, BR._javitasok_tobb = regi
+
+
 if __name__ == '__main__':
     unittest.main()

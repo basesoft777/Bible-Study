@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SERVER
-allapot: dontesre_var
+allapot: fut
 ag: claude/f235-sebesseg-1-c6fd61
 ad: az olvasó új fejezete legfeljebb 300 ms, verse legfeljebb 400 ms, szó-lapja legfeljebb 250 ms alatt jelenik meg meleg szerveren (gyorsítótár nélkül); laponként legfeljebb 100 lekérdezés; a kéréskor futó lekérdezések egyike sem olvas végig index nélkül 1000 sornál nagyobb táblát; mindezt teszt őrzi, a tervellenőr a CI-ben is fut
-kovetkezo: "Te: DT-F235a (az orkesztrátor dönt; a kérdés elküldve, javaslat: (a)); utána a 3. pont (egyszeri betöltés a bdb_rovidites.py-ban, lapgen- és HAMART-regresszióval); az 1. rész többi pontja kész, a PR draft. 2. rész (a #101 merge-e után; az sqlite_epit.py és az indit.sh): az indexek és átírt lekérdezések (nyitott/uj/f235-sebesseg.md N-F235a, N-F235b), az elérhetőségi tábla, a natív futtatás és az indításkori háttér-beolvasás, a hideg DB újramérése (N-F235c)"
+kovetkezo: "Folytatás: az 1. rész lezárása (a DT-F235a (a) döntve: a bdb_rovidites.py egyszeri, szálbiztos betöltése kész; hátra: a push előtti kapu, a lapgen- és olvasó-tesztek újrafuttatása, draft PR, CI, független ellenőr). 2. rész (a #101 merge-e után; az sqlite_epit.py és az indit.sh): az indexek és átírt lekérdezések (nyitott/uj/f235-sebesseg.md N-F235a, N-F235b), az elérhetőségi tábla, a natív futtatás (a /mnt/e-s 539 ms ettől tűnik el) és az indításkori háttér-beolvasás, a hideg DB újramérése (N-F235c)"
 munka: folyamat
 olvas: [eszkozok/bdb_rovidites.py, adat/SEMA.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/teszt_sebesseg.py, eszkozok/olvaso_szerver/teszt_tervor.py]

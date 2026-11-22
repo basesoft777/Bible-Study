@@ -27,6 +27,7 @@ import adatbazis
 import allapot as allapot_modul
 import arculat as arculat_modul
 import bibliak
+import blokkok
 import hozzaferes as hozz_modul
 import kereses as kereses_modul
 import lekerdezesek
@@ -57,6 +58,7 @@ def elomelegit(app, utak=ELOMELEGITO_UTAK):
 
     def fut():
         try:
+            blokkok.bdb_rovidites.betolt_javitasok()      # DT-F235a (a): a BDB-javítótábla egyszeri betöltése (szálbiztos; az első kérés megvárja, nem olvassa be másodszor)
             c = app.test_client()
             for ut in utak:
                 c.get(ut)
