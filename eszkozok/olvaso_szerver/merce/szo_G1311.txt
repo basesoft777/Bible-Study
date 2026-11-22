@@ -1,115 +1,162 @@
 # F232 olvasói pillanatkép: /szo/G1311
 # A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
 # Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
-PaRDeS olvasó
+Biblialex olvasó
 ⌕
 ⚙
 ▸ Rétegek
 ▸ Interlineáris sor
-▸ Szint nyilvanos regisztralt kutato
+▸ Szint nyilvános regisztrált kutató
 ▸ Téma
 ▸ Rendszer Világos Sötét
 G1311 διαφθείρω
 diaftheiró · to destroy
 Alapjelentés elpusztítani
-szó-lap önálló címen · előfordulások versenként
-## [szo.tbesg]
-TBESG forrásadat modell-kimenet
-Szó | Átírás | Gloss
-διαφθείρω | diaphtheirō | elpusztítani to destroy
-δια-φθείρω [in LXX chiefly for שָׁחַת hi. ;] 1. to destroy utterly: Luk.12:33, Rev.11:18; pass., to be destroyed, disabled: Rev.8:9, 2Co.4:16. 2. In moral sense, to corrupt, deprave: τ. γῆν, Rev.11:18; pass., διεφθαρμένοι τ. νοῦν, 1Ti.6:5.† (AS)
-Forrás és licenc: TBESG (tbesg): CC BY 4.0 · projekt_adat (forditasok): minden jog fenntartva
-## [szo.thayer]
-Thayer (angol) forrásadat
-G1311 — διαφθείρω 1 aorist διεφθειρα; passive (present διαφθείρομαι); perfect participle διεφθαρμενος; 2 aorist διεφθαρην; the Sept. very often for שִׁחֵת, occasionally for חִבֵּל; in Greek writings from Homer down; 1. to change for the worse, to corrupt: minds, morals; τήν γῆν, i. e. the men that inhabit the earth, Rev 11:18; διεφθαρμένοι τόν νοῦν, 1Ti 6:5 (τήν διάνοιαν, Plato, legg. 10, p. 888 a.; τόν γνώμην, Dionysius Halicarnassus Antiquities 5, 21; τούς ὀφθαλμούς, Xenophon, an. 4, 5, 12). 2. to destroy, ruin, (Latinperdere); a. to consume, of bodily vigor and strength: ὁ ἔξω ἡμῶν ἄνθρωπος διαφθείρεται (is decaying), 2Co 4:16; of the worm or moth that eats provisions, clothing, etc. Luk 12:33. b. to destroy (Latindelere): Rev 8:9; to kill, διαφθείρειν τούς, etc. Rev 11:18.
-Forrás és licenc: Thayer (thayer): közkincs
+6 előfordulás
+4 könyvben
+6 Károli-előfordulás
+A szó saját lapja · Minden előfordulás versenként (keresés)
+## [szo.szotar]
+Strong-szótár
+Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás
+διαφθείρω | diaftheiró | ige | elpusztítani | δια, φθειρω (nem önálló Strong-számos szócikk)
+Forrás és licenc
+▸ forrásadat modell-kimenet
+▸ Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva
+## [szo.elofordulas]
+Előfordulás, könyvek száma
+6 előfordulás, 4 könyvben.
+Forrás és licenc
+▸ gépi feldolgozás
+▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
+## [szo.karoli_alakok]
+Károli-alakok és pontosság
+6 Károli-előfordulás. A párosítás mért pontossága 95%.
+Károli-alak | Darab
+megbomlott | 1
+megromol | 1
+elpusztítsd | 1
+pusztítják | 1
+nem | 1
+emészti | 1
+Mind a 66 könyv szó szintű párjai alapján.
+Forrás és licenc
+▸ modell-kimenet
+▸ Forrás és licenc: Karoli Strong parok: CC BY 4.0
 ## [szo.magyar_gorog]
-Magyar jelentés (Thayer, UBS DNTG) modell-kimenet gépi feldolgozás
+Szótár: Thayer-szócikk
+Lefordítva · gépi fordítás
 A jelentések rendje a Thayer szerint
-1 — megront, rosszabbá tesz
-2 — elpusztítani, tönkretenni
-2.a — felemészteni, a testi erőről és erőnlétről
-2.b — elpusztítani
-Gépi hozzárendelés (próba): a hivatkozás jelentéspontját a szócikk saját tagolása adja. Mért pontosság (jelentéspont, 200 véletlen újszövetségi hivatkozás valóban vak ellenőrzéssel, 2026-11-10): 98,0% (95%-os konfidencia-intervallum: 95,0–99,2%).
-Szótári apparátus: a teljes magyar Thayer-szöveg
-▸ a szócikk eleje
-▸ 1. aorisztosz διεφθειρα; szenvedő alakban (jelen idő διαφθείρομαι); befejezett melléknévi igenév διεφθαρμενος; 2. aorisztosz διεφθαρην; a Septuaginta nagyon gyakran a שִׁחֵת szóra, olykor a חִבֵּל szóra használja; a görög írásokban Homérosztól kezdve;
-▸ 1 — megront, rosszabbá tesz
-▸ 1. rosszabbra változtatni, megrontani: az elméket, az erkölcsöket; τήν γῆν, azaz a földet lakó embereket, Jel 11:18; διεφθαρμένοι τόν νοῦν, 1Tim 6:5 (τήν διάνοιαν, Platón, legg. 10, o. 888 a.; τόν γνώμην, Dionysius Halicarnassus Antiquities 5, 21; τούς ὀφθαλμούς, Xenophón, an. 4, 5, 12).
-▸ 2 — elpusztítani, tönkretenni
-▸ 2. elpusztítani, tönkretenni, (latin perdere);
-▸ 2.a — felemészteni, a testi erőről és erőnlétről
-▸ a. felemészteni, a testi erőről és erőnlétről: ὁ ἔξω ἡμῶν ἄνθρωπος διαφθείρεται (romlik), 2Kor 4:16; a féregről vagy moliról, amely az élelmet, ruhát stb. eszi, Luk 12:33.
-▸ 2.b — elpusztítani
-▸ b. elpusztítani (latin delere): Jel 8:9; megölni, διαφθείρειν τούς, stb. Jel 11:18.
-UBS_DNTG, 20.40. jelentés · definíció
-valakinek vagy valaminek a teljes pusztulását okozni
-UBS_DNTG, 20.40. jelentés · glossza
-teljesen elpusztítani
-UBS_DNTG, 88.266. jelentés · definíció
-valakit romlottá vagy züllötté tenni, az erkölcsi pusztulás egy fajtájaként
-UBS_DNTG, 23.146. jelentés · definíció
-fokozatosan cselekvőképtelenné válni
-UBS_DNTG, 88.266. jelentés · glossza
-megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni
-UBS_DNTG, 23.146. jelentés · glossza
-elveszíteni saját erejét; elsorvadni
-Forrás és licenc: projekt_adat (forditasok): minden jog fenntartva
+1megront, rosszabbá tesz2 hivatkozás
+2elpusztítani, tönkretenni
+2.afelemészteni, a testi erőről és erőnlétről2 hivatkozás
+2.belpusztítani2 hivatkozás
+1. aorisztosz διεφθειρα
+1. aorisztosz διεφθειρα; szenvedő alakban (jelen idő διαφθείρομαι); befejezett melléknévi igenév διεφθαρμενος; 2. aorisztosz διεφθαρην; a Septuaginta nagyon gyakran a שִׁחֵת szóra, olykor a חִבֵּל szóra használja; a görög írásokban Homérosztól kezdve;
+Angol eredeti
+▸ 1 aorist διεφθειρα; passive (present διαφθείρομαι); perfect participle διεφθαρμενος; 2 aorist διεφθαρην; the Sept. very often for שִׁחֵת, occasionally for חִבֵּל; in Greek writings from Homer down;
+1megront, rosszabbá tesz2 hivatkozás
+1. rosszabbra változtatni, megrontani: az elméket, az erkölcsöket; τήν γῆν, azaz a földet lakó embereket, Jel 11:18; διεφθαρμένοι τόν νοῦν, 1Tim 6:5 (τήν διάνοιαν, Platón, legg. 10, o. 888 a.; τόν γνώμην, Dionysius Halicarnassus Antiquities 5, 21; τούς ὀφθαλμούς, Xenophón, an. 4, 5, 12).
+Angol eredeti
+▸ to change for the worse, to corrupt: minds, morals; τήν γῆν, i. e. the men that inhabit the earth, Rev 11:18; διεφθαρμένοι τόν νοῦν, 1Ti 6:5 (τήν διάνοιαν, Plato, legg. 10, p. 888 a.; τόν γνώμην, Dionysius Halicarnassus Antiquities 5, 21; τούς ὀφθαλμούς, Xenophon, an. 4, 5, 12).
+2elpusztítani, tönkretenni
+2. elpusztítani, tönkretenni, (latin perdere);
+Angol eredeti
+▸ to destroy, ruin, (Latinperdere);
+2.afelemészteni, a testi erőről és erőnlétről2 hivatkozás
+a. felemészteni, a testi erőről és erőnlétről: ὁ ἔξω ἡμῶν ἄνθρωπος διαφθείρεται (romlik), 2Kor 4:16; a féregről vagy moliról, amely az élelmet, ruhát stb. eszi, Luk 12:33.
+Angol eredeti
+▸ to consume, of bodily vigor and strength: ὁ ἔξω ἡμῶν ἄνθρωπος διαφθείρεται (is decaying), 2Co 4:16; of the worm or moth that eats provisions, clothing, etc. Luk 12:33.
+2.belpusztítani2 hivatkozás
+b. elpusztítani (latin delere): Jel 8:9; megölni, διαφθείρειν τούς, stb. Jel 11:18.
+Angol eredeti
+▸ to destroy (Latindelere): Rev 8:9; to kill, διαφθείρειν τούς, etc. Rev 11:18.
+Forrás és licenc
+▸ modell-kimenet gépi feldolgozás
+▸ Forrás és licenc: a projekt saját adata: minden jog fenntartva
 ## [szo.usz]
-ÚSZ-előfordulás és versek forrásadat
+ÚSZ-előfordulás és versek
 6 előfordulás 5 versben.
-Igehely | Károli-szöveg
-Luk 12:33 | Adjátok el a mitek van, és adjatok alamizsnát; szerezzetek magatoknak oly erszényeket, melyek meg nem avúlnak, elfogyhatatlan kincset a mennyországban, a hol a tolvaj hozzá nem fér, sem a moly meg nem emészti.
-2Kor 4:16 | Azért nem csüggedünk; sőt ha a mi külső emberünk megromol is, a belső mindazáltal napról-napra újul.
-1Tim 6:5 | Megbomlott elméjű és az igazságtól megfosztott embereknek hiábavaló torzsalkodásai a kik az istenfélelmet nyerekedésnek tekintik. Azoktól, a kik ilyenek, eltávozzál.
-Jel 8:9 | És meghala a tengerben lévő teremtett állatoknak harmadrésze, a melyekben élet vala; és a hajóknak harmadrésze elvesze.
-Jel 11:18 | És megharagudtak a pogányok, és eljött a te haragod, és a halottak ideje, hogy megítéltessenek, és jutalmat adj a te szolgáidnak, a prófétáknak és a szenteknek, és a kik a te nevedet félik, kicsinyeknek és nagyoknak; és elpusztítsd azokat, a kik a földet pusztítják.
-Forrás és licenc: TAHOT+TAGNT (token_strong): CC BY 4.0 · Karoli_1908 (vers): közkincs
+Igehely | Károli-szöveg | Jelentés (UBS)
+Luk 12:33 | Adjátok el a mitek van, és adjatok alamizsnát; szerezzetek magatoknak oly erszényeket, melyek meg nem avúlnak, elfogyhatatlan kincset a mennyországban, a hol a tolvaj hozzá nem fér, sem a moly meg nem emészti. | to destroy utterly
+2Kor 4:16 | Azért nem csüggedünk; sőt ha a mi külső emberünk megromol is, a belső mindazáltal napról-napra újul. | to lose one’s strength; to waste away
+1Tim 6:5 | Megbomlott elméjű és az igazságtól megfosztott embereknek hiábavaló torzsalkodásai a kik az istenfélelmet nyerekedésnek tekintik. Azoktól, a kik ilyenek, eltávozzál. | to deprave; to pervert; to ruin; to cause the moral ruin of
+Jel 8:9 | És meghala a tengerben lévő teremtett állatoknak harmadrésze, a melyekben élet vala; és a hajóknak harmadrésze elvesze. | to destroy utterly
+Jel 11:18 | És megharagudtak a pogányok, és eljött a te haragod, és a halottak ideje, hogy megítéltessenek, és jutalmat adj a te szolgáidnak, a prófétáknak és a szenteknek, és a kik a te nevedet félik, kicsinyeknek és nagyoknak; és elpusztítsd azokat, a kik a földet pusztítják. | to destroy utterly; to deprave; to pervert; to ruin; to cause the moral ruin of
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0 · Karoli 1908: közkincs · UBS DNTG: CC BY-SA 4.0 [share-alike]
 ## [szo.heber_hatter]
-Héber háttér (Septuaginta) forrásadat
+Héber háttér (Septuaginta)
 Héber Strong | Szótő | Jelentés | Darab
 H7843 | שָׁחַת | to ruin | 44
 H4889 | מַשְׁחִית | destruction | 5
-Forrás és licenc: lxx_bridge (lxx_bridge): CC BY 4.0
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: lxx bridge: CC BY 4.0
 ## [szo.sdgnt]
-Szemantikai domén (SDGNT) forrásadat modell-kimenet üres eredmény nem negatív lelet
-Domén kód | Domén | Glossza | Hivatkozás
-020003 | Pusztítás Destroy | to destroy utterly | 4
-023009 | Betegség, kór, gyengeség Sickness, Disease, Weakness | to lose one’s strength; to waste away | 1
-088035 | Kicsapongás, romlottság Licentiousness, Perversion | to deprave; to pervert; to ruin; to cause the moral ruin of | 3
-Forrás és licenc: SDGNT (sdgnt_domenek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
-## [szo.sece_g]
-SECE-szócikk (görög) forrásadat
-διαφθείρω (diaphtheírō｜dee-af-thi'-ro｜verb｜to destroy) [Grk] διαφθείρω LN: 20.40, 23.146, 88.266 GK: G1425 Hebrew: חָבַל, חָרַב, סוּת, פָּלַל, רוּק, שָׁחַת, שָׁמֵם Derivation: from διαβάλλω and φθείρω; Strong's: to rot thoroughly, i.e. (by implication) to ruin (passively, decay utterly, figuratively, pervert) KJV: --corrupt, destroy, perish. See: διαβάλλω See: φθείρω
-Forrás és licenc: SECE_G (sece_g): közkincs
+Szemantikai domén (SDGNT)
+Domén | Glossza | Hivatkozás
+Pusztítás | to destroy utterly | 4
+Betegség, kór, gyengeség | to lose one’s strength; to waste away | 1
+Kicsapongás, romlottság | to deprave; to pervert; to ruin; to cause the moral ruin of | 3
+Forrás és licenc
+▸ forrásadat modell-kimenet üres eredmény nem negatív lelet
+▸ Forrás és licenc: SDGNT: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
+## [szo.ubs_dntg]
+UBS DNTG jelentés
+1. teljesen elpusztítani · Destroy
+valakinek vagy valaminek a teljes pusztulását okozni
+Előfordulások (3): Jel 11:18, Jel 8:9, Luk 12:33
+2. megrontani; elferdíteni; tönkretenni; valakinek erkölcsi romlását okozni · Licentiousness, Perversion
+valakit romlottá vagy züllötté tenni, az erkölcsi pusztulás egy fajtájaként
+Előfordulások (2): 1Tim 6:5, Jel 11:18
+3. elveszíteni saját erejét; elsorvadni · Sickness, Disease, Weakness
+fokozatosan cselekvőképtelenné válni
+Előfordulások (1): 2Kor 4:16
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: UBS DNTG: CC BY-SA 4.0 [share-alike]
+## [szo.tbesg]
+TBESG (forrásszöveg)
+Forrásszöveg (nyers, angol) megnyitása
+▸ Szó | Átírás | Gloss
+▸ διαφθείρω | diaphtheirō | elpusztítani
+▸ δια-φθείρω [in LXX chiefly for שָׁחַת hi. ;] 1. to destroy utterly: Luk.12:33, Rev.11:18; pass., to be destroyed, disabled: Rev.8:9, 2Co.4:16. 2. In moral sense, to corrupt, deprave: τ. γῆν, Rev.11:18; pass., διεφθαρμένοι τ. νοῦν, 1Ti.6:5.† (AS)
+Forrás és licenc
+▸ forrásadat modell-kimenet
+▸ Forrás és licenc: TBESG: CC BY 4.0 · a projekt saját adata: minden jog fenntartva
+## [szo.thayer]
+Thayer, angol (forrásszöveg)
+Forrásszöveg (nyers, angol) megnyitása
+▸ G1311 — διαφθείρω 1 aorist διεφθειρα; passive (present διαφθείρομαι); perfect participle διεφθαρμενος; 2 aorist διεφθαρην; the Sept. very often for שִׁחֵת, occasionally for חִבֵּל; in Greek writings from Homer down; 1. to change for the worse, to corrupt: minds, morals; τήν γῆν, i. e. the men that inhabit the earth, Rev 11:18; διεφθαρμένοι τόν νοῦν, 1Ti 6:5 (τήν διάνοιαν, Plato, legg. 10, p. 888 a.; τόν γνώμην, Dionysius Halicarnassus Antiquities 5, 21; τούς ὀφθαλμούς, Xenophon, an. 4, 5, 12). 2. to destroy, ruin, (Latinperdere); a. to consume, of bodily vigor and strength: ὁ ἔξω ἡμῶν ἄνθρωπος διαφθείρεται (is decaying), 2Co 4:16; of the worm or moth that eats provisions, clothing, etc. Luk 12:33. b. to destroy (Latindelere): Rev 8:9; to kill, διαφθείρειν τούς, etc. Rev 11:18.
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: Thayer: közkincs
 ## [szo.lsj]
-LSJ forrásadat
-διαφθείρω, fut. -φθερῶ S. OT 438, etc., -φθέρσω Il. 13.625: pf. διέφθαρκα E. Med. 226, Pl. Ap. 30d, etc.; also διέφθορα (v. infr. 111): - Pass., fut. διαφθᾰρήσομαι Th. 4.37; Ion. διαφθερέομαι Hdt. 8.108, 9.42: 3 pl. plpf. διεφθάρατο Id. 8.90: - I 1. destroy utterly, πόλιν Il. 13.625; ἔργα διαφθείρεσκε Hdt. 1.36; make away with, kill, τινά Id. 9.88, etc.; destroy, ruin, ἥδ’ ἡμέρα φύσει σε καὶ διαφθερεῖ S.l.c.; τὴν τύχην Id. Ph. 1069; δ. χεῖρα weaken, slacken one’s hand, E. Med. 1055; spoil, break, ὑγιῆ λίθον IG 7.3073.33 (Lebad., ii B.C.); τὰ θυρώματα διεφθάρθαι IG 22.1046.11; δ. τὴν συνουσίαν break up the party, Pl. Prt. 338d. 2. in moral sense, corrupt, ruin, γνώμην A. Ag. 932; δ. τοὺς νέους, τοὺς νεωτέρους, Pl. Ap. 30b, 25a; νεανίσκον συνὼν δ. Eup. 337; esp. corrupt by bribes, Hdt. 5.51; ἀργυρίῳ δ. τινά Lys. 28.9; διαφθειρομένων ἐπὶ χρήμασι D. 18.45; δ. γυναῖκα seduce a woman, Lys. 1.16, etc., cf. E. Ba. 318 (Pass.); δ. τοὺς νόμους falsify, counterfeit them, Isoc. 18.11; γραμματεῖον Id. 17.33 (Pass., ib.24); τὰ φεφ αδηκότα IG 9(1).334.37 (Locr., V. B.C.). 3. οὐδὲν διαφθείρας τοῦ χρώματος having changed nothing of his colour, Pl. Phd. 117b. 4. of a woman, to lose by miscarriage or premature birth, ἔμβρυα, βρέφος, Hp. Aph. 5.53, Plu. 2.242c: abs., miscarry, Hp. Epid. 7.73, Isa 8.36: - Pass., τῶν διαφθαρεισῶν τὰ ἔμβρυα Hp. Mul. 1.72. 5. lose, forget, E. Hipp. 389. 6. = διάγω, dub. in Id. Fr. 280. II Pass., to be destroyed, δ. ἐπὶ τοῖς ἱματίοις to be murdered for the clothes he wore, Antipho 2.2.5; of animals, freq. in Pap., POxy. 74.14 (ii A.D.), etc.; esp. to be crippled, disabled, Hdt. 1.34; of ships, ib. 166, And. 1.142; to be spoilt, γάλα BGU 1109.11 (i B.C.), cf. Th. 7.84; to be corrupted, αἷμα Gal. 15.297, al.; τὴν ἀκοὴν διεφθαρμένος deaf, Hdt. 1.38; τὰ σκέλεα διεφθάρησαν had their legs broken, Id. 8.28; διέφθαρμαι δέμας τὸ πᾶν S. Tr. 1056; τὰ ὄμματα δ. blinded, Pl. R. 517a; σὰς φρένας E. Hel. 1192; τὸ φρενῶν διαφθαρέν, = φρενοβλάβεια, Id. Or. 297, cf. X. Cyr. 4.1.8: abs., διεφθαρμένος decomposed, of a corpse, Pl. R. 614b. III pf. διέφθορα intr., 1. to have lost one’s wits, διέφθορας Il. 15.128; also in Hp., διεφθορὸς αἷμα corrupted blood, Mul. 2.134; freq. in later Prose, γάλα δ. ἤδη J. AJ 5.5.4; τὰ δ. σώματα Plu. 2.87c, cf. 128e, Luc. So 3, etc.; but, 2. in Trag. and Com. always trans. (cf. Ammon. 42, Moer. 127), τὰς.. ἐλπίδας διέφθορεν S. El. 306; τὰς φρένας διέφθορε.. μοναρχία E. Hipp. 1014; τὸν λόγον δ. Cratin. 292, cf. Eup. l.c., Pherecr. 145.15, Ar. Fr. 490, Men. 3. aor. διέφθειρα intr., became corrupt, LXX Jd. 2.19.
-Forrás és licenc: LSJ (lsj): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+LSJ
+Forrásszöveg (nyers, angol) megnyitása
+▸ διαφθείρω, fut. -φθερῶ S. OT 438, etc., -φθέρσω Il. 13.625: pf. διέφθαρκα E. Med. 226, Pl. Ap. 30d, etc.; also διέφθορα (v. infr. 111): - Pass., fut. διαφθᾰρήσομαι Th. 4.37; Ion. διαφθερέομαι Hdt. 8.108, 9.42: 3 pl. plpf. διεφθάρατο Id. 8.90: - I 1. destroy utterly, πόλιν Il. 13.625; ἔργα διαφθείρεσκε Hdt. 1.36; make away with, kill, τινά Id. 9.88, etc.; destroy, ruin, ἥδ’ ἡμέρα φύσει σε καὶ διαφθερεῖ S.l.c.; τὴν τύχην Id. Ph. 1069; δ. χεῖρα weaken, slacken one’s hand, E. Med. 1055; spoil, break, ὑγιῆ λίθον IG 7.3073.33 (Lebad., ii B.C.); τὰ θυρώματα διεφθάρθαι IG 22.1046.11; δ. τὴν συνουσίαν break up the party, Pl. Prt. 338d. 2. in moral sense, corrupt, ruin, γνώμην A. Ag. 932; δ. τοὺς νέους, τοὺς νεωτέρους, Pl. Ap. 30b, 25a; νεανίσκον συνὼν δ. Eup. 337; esp. corrupt by bribes, Hdt. 5.51; ἀργυρίῳ δ. τινά Lys. 28.9; διαφθειρομένων ἐπὶ χρήμασι D. 18.45; δ. γυναῖκα seduce a woman, Lys. 1.16, etc., cf. E. Ba. 318 (Pass.); δ. τοὺς νόμους falsify, counterfeit them, Isoc. 18.11; γραμματεῖον Id. 17.33 (Pass., ib.24); τὰ φεφ αδηκότα IG 9(1).334.37 (Locr., V. B.C.). 3. οὐδὲν διαφθείρας τοῦ χρώματος having changed nothing of his colour, Pl. Phd. 117b. 4. of a woman, to lose by miscarriage or premature birth, ἔμβρυα, βρέφος, Hp. Aph. 5.53, Plu. 2.242c: abs., miscarry, Hp. Epid. 7.73, Isa 8.36: - Pass., τῶν διαφθαρεισῶν τὰ ἔμβρυα Hp. Mul. 1.72. 5. lose, forget, E. Hipp. 389. 6. = διάγω, dub. in Id. Fr. 280. II Pass., to be destroyed, δ. ἐπὶ τοῖς ἱματίοις to be murdered for the clothes he wore, Antipho 2.2.5; of animals, freq. in Pap., POxy. 74.14 (ii A.D.), etc.; esp. to be crippled, disabled, Hdt. 1.34; of ships, ib. 166, And. 1.142; to be spoilt, γάλα BGU 1109.11 (i B.C.), cf. Th. 7.84; to be corrupted, αἷμα Gal. 15.297, al.; τὴν ἀκοὴν διεφθαρμένος deaf, Hdt. 1.38; τὰ σκέλεα διεφθάρησαν had their legs broken, Id. 8.28; διέφθαρμαι δέμας τὸ πᾶν S. Tr. 1056; τὰ ὄμματα δ. blinded, Pl. R. 517a; σὰς φρένας E. Hel. 1192; τὸ φρενῶν διαφθαρέν, = φρενοβλάβεια, Id. Or. 297, cf. X. Cyr. 4.1.8: abs., διεφθαρμένος decomposed, of a corpse, Pl. R. 614b. III pf. διέφθορα intr., 1. to have lost one’s wits, διέφθορας Il. 15.128; also in Hp., διεφθορὸς αἷμα corrupted blood, Mul. 2.134; freq. in later Prose, γάλα δ. ἤδη J. AJ 5.5.4; τὰ δ. σώματα Plu. 2.87c, cf. 128e, Luc. So 3, etc.; but, 2. in Trag. and Com. always trans. (cf. Ammon. 42, Moer. 127), τὰς.. ἐλπίδας διέφθορεν S. El. 306; τὰς φρένας διέφθορε.. μοναρχία E. Hipp. 1014; τὸν λόγον δ. Cratin. 292, cf. Eup. l.c., Pherecr. 145.15, Ar. Fr. 490, Men. 3. aor. διέφθειρα intr., became corrupt, LXX Jd. 2.19.
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: LSJ: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.mcged]
-MCGED (Mounce) forrásadat nem kereskedelmi: kereskedelmi kiadásból kimarad
+MCGED (Mounce)
 GK-szám | Lemma | Átírat | Gyakoriság | Glossza
 G51425 | διαφθειρω | diaphtheirō | 6 | to corrupt or destroy utterly; to waste, bring to decay, Luke 12:33 ; 2Cor 4:16 ; to destroy, Rev 8:9 ; Rev 11:18 (2x); met. to corrupt, pervert utterly, 1Tim 6:5 *
-Forrás és licenc: MCGED (mcged): © Mounce 1993 [nem kereskedelmi]
-## [szo.ubs_dntg]
-UBS DNTG jelentés forrásadat
-Azonosító | Domén | Rövid definíció | Glosszák
-001325001001000 | Destroy | to cause the complete destruction of someone or something | to destroy utterly
-001325001002000 | Licentiousness, Perversion | to cause someone to become perverse or depraved, as a type of moral destruction{N:001} | to deprave; to pervert; to ruin; to cause the moral ruin of
-001325001003000 | Sickness, Disease, Weakness | to become gradually incapacitated | to lose one’s strength; to waste away
-Előfordulások (az első 8)
-001325001001000: Jel 11:18
-001325001001000: Jel 11:18
-001325001001000: Jel 8:9
-001325001001000: Luk 12:33
-001325001002000: 1Tim 6:5
-001325001002000: Jel 11:18
-001325001002000: Jel 11:18
-001325001003000: 2Kor 4:16
-Forrás és licenc: UBS_DNTG (ubs_dntg_jelentesek): CC BY-SA 4.0 [share-alike]
+Forrás és licenc
+▸ forrásadat nem kereskedelmi: kereskedelmi kiadásból kimarad
+▸ Forrás és licenc: MCGED: © Mounce 1993 [nem kereskedelmi]
+## [szo.sece_g]
+SECE-szócikk (görög)
+Forrásszöveg (nyers, angol) megnyitása
+▸ διαφθείρω (diaphtheírō｜dee-af-thi'-ro｜verb｜to destroy) [Grk] διαφθείρω LN: 20.40, 23.146, 88.266 GK: G1425 Hebrew: חָבַל, חָרַב, סוּת, פָּלַל, רוּק, שָׁחַת, שָׁמֵם Derivation: from διαβάλλω and φθείρω; Strong's: to rot thoroughly, i.e. (by implication) to ruin (passively, decay utterly, figuratively, pervert) KJV: --corrupt, destroy, perish. See: διαβάλλω See: φθείρω
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: SECE G: közkincs
 ## [szo.tw_g]
-translationWords forrásadat modell-kimenet
-elpusztul perish (kt, kt/perish)
+translationWords
+elpusztul (kt, kt/perish)
 Definition:
 The term “perish” means to die or be destroyed, usually as the result of violence or disaster. In the New Testament, it often has the spiritual meaning of being lost or separated from the people of God.
 Spiritual Meaning of “Perish:”
@@ -131,7 +178,7 @@ Zechariah 9:5-7
 Zechariah 13:8
 Word Data:
 Strong’s: H0006, H0007, H0008, H1478, H1820, H1826, H5486, H5595, H6544, H8045, G05990, G06220, G06840, G08530, G13110, G27040, G48810, G53560
-romlott, megromlott, romlás, romolhatatlanság, elvetemült corrupt, corrupted, corruption, incorruptibility, depraved (other, other/corrupt)
+romlott, megromlott, romlás, romolhatatlanság, elvetemült (other, other/corrupt)
 Definition:
 The terms “corrupt” and “corruption” refer to a state of affairs in which people have become ruined, immoral, or dishonest.
 The term “corrupt” literally means to be “bent” or “broken” morally.
@@ -151,7 +198,7 @@ Matthew 12:33-35
 Psalm 14:1
 Word Data:
 Strong’s: H2610, H3891, H4889, H7843, H7844, G08610, G13110, G27040, G53510, G53560
-pusztít, pusztulás, megsemmisít destroy, destruction, annihilate (other, other/destroyer)
+pusztít, pusztulás, megsemmisít (other, other/destroyer)
 Definition:
 The term “destroy” means to completely make an end to something, so that it no longer exists.
 The term “destroyer” means “a person who destroys.”
@@ -166,4 +213,6 @@ Jeremiah 6:26
 Judges 16:24
 Word Data:
 Strong’s: H0006, H0007, H0622, H0398, H1104, H1197, H1820, H1826, H1942, H2000, H2015, H2026, H2040, H2254, H2255, H2717, H2718, H2763, H2764, H3238, H3341, H3381, H3423, H3582, H3615, H3617, H3772, H3807, H4191, H4229, H4591, H4658, H4889, H5218, H5221, H5307, H5362, H5420, H5422, H5428, H5595, H5642, H6365, H6789, H6979, H7665, H7667, H7703, H7722, H7760, H7843, H7921, H8045, H8074, H8077, H8316, H8552, G03550, G03960, G06220, G08530, G13110, G18420, G20490, G25060, G25070, G26470, G26730, G27040, G30890, G36450, G41990, G53510, G53560
-Forrás és licenc: tW_szocikkek (tw_szocikkek): CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · projekt_adat (forditasok): minden jog fenntartva
+Forrás és licenc
+▸ forrásadat modell-kimenet
+▸ Forrás és licenc: tW szocikkek: CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · a projekt saját adata: minden jog fenntartva

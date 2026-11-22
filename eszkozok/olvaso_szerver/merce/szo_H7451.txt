@@ -1,29 +1,36 @@
 # F232 olvasói pillanatkép: /szo/H7451
 # A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
 # Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
-PaRDeS olvasó
+Biblialex olvasó
 ⌕
 ⚙
 ▸ Rétegek
 ▸ Interlineáris sor
-▸ Szint nyilvanos regisztralt kutato
+▸ Szint nyilvános regisztrált kutató
 ▸ Téma
 ▸ Rendszer Világos Sötét
 H7451 רַע
 ra · melléknév / főnév, hímnemű / főnév, nőnemű
 Alapjelentés nyomorúság: kár
-szó-lap önálló címen · előfordulások versenként
+662 előfordulás
+36 könyvben
+667 Károli-előfordulás
+A szó saját lapja · Minden előfordulás versenként (keresés)
 ## [szo.szotar]
-Strong-szótár forrásadat modell-kimenet
+Strong-szótár
 Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás
-רַע | ra | melléknév / főnév, hímnemű / főnév, nőnemű | nyomorúság: kár evil | from H7489
-Forrás és licenc: Strong_szotar (strong_szotar): CC BY 4.0 · TBESH+TAHOT+projekt_adat (glosszak_heber_hu): CC BY 4.0; minden jog fenntartva
+רַע | ra | melléknév / főnév, hímnemű / főnév, nőnemű | nyomorúság: kár | from H7489
+Forrás és licenc
+▸ forrásadat modell-kimenet
+▸ Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva
 ## [szo.elofordulas]
-Előfordulás, könyvek száma gépi feldolgozás
+Előfordulás, könyvek száma
 662 előfordulás, 36 könyvben.
-Forrás és licenc: TAHOT+TAGNT (token_strong): CC BY 4.0
+Forrás és licenc
+▸ gépi feldolgozás
+▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
 ## [szo.karoli_alakok]
-Károli-alakok és pontosság modell-kimenet
+Károli-alakok és pontosság
 667 Károli-előfordulás. A párosítás mért pontossága 95%.
 Károli-alak | Darab
 gonosz | 122
@@ -34,10 +41,12 @@ veszedelem | 32
 rosszat | 20
 gonoszságot | 16
 rossz | 15
-A 66 feldolgozott könyv (1Jan, 1Kir, 1Kor, 1Kron, 1Moz, 1Pet, 1Sam, 1Thessz, 1Tim, 2Jan, 2Kir, 2Kor, 2Kron, 2Moz, 2Pet, 2Sam, 2Thessz, 2Tim, 3Jan, 3Moz, 4Moz, 5Moz, Abd, Amos, ApCsel, Bir, Dan, Ef, En, Eszt, Ez, Ezs, Ezsd, Fil, Filem, Gal, Hab, Hag, Hos, Jak, Jan, Jel, Jer, Job, Joel, Jon, Jozs, Jud, Kol, Luk, Mal, Mik, Mk, Mt, Nah, Neh, Peld, Pred, Rom, Ruth, Sir, Sof, Tit, Zak, Zsid, Zsolt) szó szintű párjai alapján.
-Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0
+Mind a 66 könyv szó szintű párjai alapján.
+Forrás és licenc
+▸ modell-kimenet
+▸ Forrás és licenc: Karoli Strong parok: CC BY 4.0
 ## [szo.bdb_apparatus]
-Szótár: BDB-szócikk (Brown–Driver–Briggs) forrásadat modell-kimenet gépi feldolgozás
+Szótár: BDB-szócikk (Brown–Driver–Briggs)
 Lefordítva · gépi fordítás, 2026.10.01
 רַעraI. címszó226 előfordulás (BDB)296 hivatkozás a címszónál
 melléknév: rossz, gonosz (a főnévtől és az ige perfectum 3. hímnemű egyes számú alakjától néha nem könnyű megkülönböztetni, és a vélemények eltérnek)
@@ -47,437 +56,112 @@ A jelentések rendje a BDB szerint
 1rossz, kellemetlen, ártalmas
 2rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó
 3rossz, nem tetsző
-4a maga nemében rossz12
-5rossz, azaz csekély értékű6
-6rosszabb2
-7szomorú, boldogtalan4
-8gonosz tervet kigondolni2
-9rossz, barátságtalan, rosszindulatú hajlamú vagy természetű4
-10erkölcsileg rossz, gonosz, istentelen77
+4a maga nemében rossz12 hivatkozás
+5rossz, azaz csekély értékű6 hivatkozás
+6rosszabb2 hivatkozás
+7szomorú, boldogtalan4 hivatkozás
+8gonosz tervet kigondolni2 hivatkozás
+9rossz, barátságtalan, rosszindulatú hajlamú vagy természetű4 hivatkozás
+10erkölcsileg rossz, gonosz, istentelen77 hivatkozás
 II. További homonima ugyanezen a lemmán · רַע‎
-1rossz, szorongattatás, balszerencse23
-2rossz, sérelem, jogtalanság29
-3erkölcsi rossz40
+1rossz, szorongattatás, balszerencse23 hivatkozás
+2rossz, sérelem, jogtalanság29 hivatkozás
+3erkölcsi rossz40 hivatkozás
 További homonima ugyanezen a lemmán · רָעָה‎
 1rossz, nyomorúság, szorongattatás
 2rossz, sérelem, jogtalanság
 3erkölcsi rossz
 1rossz, kellemetlen, ártalmas
-רָעָה בְּעֵינֵיasszonyról
-2Móz 21:8(E; talán, megváltozott hangsúllyal, az ige 3. nőnemű egyes száma רָ֫עָה): kellemetlen, nem tetsző valakinek a szemében, többes számban1Móz 28:8
-mérges növényről
-2Kir 4:41rosszindulatú fekélyekről5Móz 28:35 Jób 2:7betegségekről5Móz 7:15 28:59 2Krón 21:19 Préd 6:2halálos kardrólZsolt 144:10nyilakrólEz 5:16súlyos ítéletekről14:21csodákról5Móz 6:22még 1 hely
-מַלְאֲכֵי רָעִים
-Zsolt 78:49= kegyetlen követek , vadállatokról1Móz 37:20 37:33 3Móz 26:6 Ez 5:17 14:15 14:21 34:25
-tisztátalan dologról
-5Móz 23:9
-Apparátus és szövegkritika 2
-▸ forrásjel (P) (JE) (H)
-▸ megjegyzés (Istené; Ew^§ 287 a Ges^§ 130e)
+rossz, kellemetlen, ártalmas: asszonyról, רָעָה בְּעֵינֵי‎ 2Móz 21:8 (E; talán, megváltozott hangsúllyal, az ige 3. nőnemű egyes száma רָ֫עָה): kellemetlen, nem tetsző valakinek a szemében, többes számban 1Móz 28:8 (P); mérges növényről 2Kir 4:41, rosszindulatú fekélyekről 5Móz 28:35; Jób 2:7, betegségekről 5Móz 7:15; 28:59; 2Krón 21:19; Préd 6:2, halálos kardról Zsolt 144:10, nyilakról Ez 5:16, súlyos ítéletekről 14:21, csodákról 5Móz 6:22; מַלְאֲכֵי רָעִים Zsolt 78:49 = kegyetlen követek (Istené; Ew§ 287 a Ges§ 130e), vadállatokról 1Móz 37:20, 33 (JE) 3Móz 26:6 (H) Ez 5:17; 14:15, 21; 34:25; tisztátalan dologról 5Móz 23:10.
 Angol eredeti
-▸ bad, disagreeable, malignant: of a woman, רָעָה בְּעֵינֵי Exod 21:8 (E; perhaps, with changed accent, verb 3feminine singular רָ֫עָה) disagreeable, unpleasing in the eyes of, plural Gen 28:8 (P); of poisonous herb 2Kin 4:41, malignant boils Deut 28:35; Job 2:7, diseases Deut 7:15; 28:59; 2Chr 21:19; Eccl 6:2, deadly sword Psa 144:10, arrows Ezek 5:16, severe judgments 14:21, wonders Deut 6:22; מַלְאֲכֵי רָעִים Psa 78:49 = fierce messengers (of God; Ew^§ 287 a Ges^§ 130e), wild beasts Gen 37:20, 33 (JE) Lev 26:6 (H) Ezek 5:17; 14:15, 21; 34:25; unclean thing Deut 23:10.
-rossz, kellemetlen, ártalmas: asszonyról, רָעָה בְּעֵינֵי‎ 2Móz 21:8 (E; talán, megváltozott hangsúllyal, az ige 3. nőnemű egyes száma רָ֫עָה): kellemetlen, nem tetsző valakinek a szemében, többes számban 1Móz 28:8 (P); mérges növényről 2Kir 4:41, rosszindulatú fekélyekről 5Móz 28:35; Jób 2:7, betegségekről 5Móz 7:15; 28:59; 2Krón 21:19; Préd 6:2, halálos kardról Zsolt 144:10, nyilakról Ez 5:16, súlyos ítéletekről 14:21, csodákról 5Móz 6:22; מַלְאֲכֵי רָעִים Zsolt 78:49 = kegyetlen követek (Istené; Ew^§ 287 a Ges^§ 130e), vadállatokról 1Móz 37:20, 33 (JE) 3Móz 26:6 (H) Ez 5:17; 14:15, 21; 34:25; tisztátalan dologról 5Móz 23:10.
+▸ bad, disagreeable, malignant: of a woman, רָעָה בְּעֵינֵי Exod 21:8 (E; perhaps, with changed accent, verb 3feminine singular רָ֫עָה) disagreeable, unpleasing in the eyes of, plural Gen 28:8 (P); of poisonous herb 2Kin 4:41, malignant boils Deut 28:35; Job 2:7, diseases Deut 7:15; 28:59; 2Chr 21:19; Eccl 6:2, deadly sword Psa 144:10, arrows Ezek 5:16, severe judgments 14:21, wonders Deut 6:22; מַלְאֲכֵי רָעִים Psa 78:49 = fierce messengers (of God; Ew§ 287 a Ges§ 130e), wild beasts Gen 37:20, 33 (JE) Lev 26:6 (H) Ezek 5:17; 14:15, 21; 34:25; unclean thing Deut 23:10.
 2rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó
-רעים ימיםgonosz napok (a próbatétel és a nehézség napjai)
-1Móz 47:9 Péld 15:15
-עִנְיָן רע
-Préd 1:13 5:13
-עִנְיַן
-Préd 4:8vö.2:18 9:5
-הַמַּעֲשֶׂה הָרָע
-Préd 4:3
-הדבר הרעrossz hír
-2Móz 33:4így רָעָה דִּבָּה‎1Móz 37:2 4Móz 14:37שׁם רע‎5Móz 22:14 22:19 Neh 6:13שְׁמוּעָה רָעָהJer 49:23 Zsolt 112:7
-dolgokról: fájdalmas fenyítés
-Péld 15:10rossz esemény1Kir 5:4gonosz (bajt hozó) hálóPréd 9:14eszközökÉzs 32:7: כל הדבר הרעJózs 23:15: minden rossz (ártalmas) dolog
-רַעrossz, ártalmas
-Ézs 3:12 Jer 2:19
-טוב רעאו דבּרbeszédről
-1Móz 24:50közmondásban: rosszat vagy jót mondani = bármit is, מטוב עד רע‎31:24 31:29לְמֵרָע ועד טוב‎2Sám 13:22az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát idézi elő1Sám 16:14–15 16:16 16:23 18:10 19:9(l. רוּח‎ 9)
-Apparátus és szövegkritika 1
-▸ forrásjel (P) (J) (JE) (P) (D) (J) (E)
+rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó: רעים ימים gonosz napok (a próbatétel és a nehézség napjai) 1Móz 47:9 (P) Péld 15:15; עִנְיָן רע Préd 1:13; 5:13; עִנְיַן‎ 4:8, vö. 2:17; 9:3; הַמַּעֲשֶׂה הָרָע‎ 4:3; הדבר הרע rossz hír 2Móz 33:4 (J), így רָעָה דִּבָּה‎ 1Móz 37:2 (JE) 4Móz 14:37 (P), שׁם רע‎ 5Móz 22:14, 19; Neh 6:13, שְׁמוּעָה רָעָה Jer 49:23; Zsolt 112:7; dolgokról: fájdalmas fenyítés Péld 15:10, rossz esemény 1Kir 5:18, gonosz (bajt hozó) háló Préd 9:12, eszközök Ézs 32:7: כל הדבר הרע Józs 23:15 (D): minden rossz (ártalmas) dolog; רַע: rossz, ártalmas Ézs 3:11 1 Jer 2:19; beszédről, טוב רעאו דבּר‎, 1Móz 24:50 (J) közmondásban: rosszat vagy jót mondani = bármit is, מטוב עד רע‎ 31:24, 29 (E), לְמֵרָע ועד טוב‎ 2Sám 13:22, az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát idézi elő 1Sám 16:14-15, 16, 23; 18:10; 19:9 (l. רוּח‎ 9).
 Angol eredeti
 ▸ bad, unpleasant, giving pain, unhappiness, misery: רעים ימים evil days (of trial and hardship) Gen 47:9 (P) Prov 15:15; עִנְיָן רע Eccl 1:13; 5:13; עִנְיַן‎ 4:8, compare 2:17; 9:3; הַמַּעֲשֶׂה הָרָע‎ 4:3; הדבר הרע evil report Exod 33:4 (J), so רָעָה דִּבָּה Gen 37:2 (JE) Num 14:37 (P), שׁם רע Deut 22:14, 19; Neh 6:13, שְׁמוּעָה רָעָה Jer 49:23; Psa 112:7; of things: painful discipline Prov 15:10, evil occurrence 1Kin 5:18, evil (-bringing) net Eccl 9:12, instruments Isa 32:7: כל הדבר הרע Josh 23:15 (D) all evil (injurious) things; רַע it is bad, harmful Isa 3:11 Jer 2:19; of speech, טוב רעאו דבּר, Gen 24:50 (J) in proverb, speak bad or good = anything at all, מטוב עד רע‎ 31:24, 29 (E), לְמֵרָע ועד טוב‎ 2Sam 13:22, of the divine spirit as producing an ecstatic state of frenzy and violence 1Sam 16:14-15, 16, 23; 18:10; 19:9 (see רוּח‎ 9).
-rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó: רעים ימים gonosz napok (a próbatétel és a nehézség napjai) 1Móz 47:9 (P) Péld 15:15; עִנְיָן רע Préd 1:13; 5:13; עִנְיַן‎ 4:8, vö. 2:17; 9:3; הַמַּעֲשֶׂה הָרָע‎ 4:3; הדבר הרע rossz hír 2Móz 33:4 (J), így רָעָה דִּבָּה‎ 1Móz 37:2 (JE) 4Móz 14:37 (P), שׁם רע‎ 5Móz 22:14, 19; Neh 6:13, שְׁמוּעָה רָעָה Jer 49:23; Zsolt 112:7; dolgokról: fájdalmas fenyítés Péld 15:10, rossz esemény 1Kir 5:18, gonosz (bajt hozó) háló Préd 9:12, eszközök Ézs 32:7: כל הדבר הרע Józs 23:15 (D): minden rossz (ártalmas) dolog; רַע: rossz, ártalmas Ézs 3:11 Jer 2:19; beszédről, טוב רעאו דבּר‎, 1Móz 24:50 (J) közmondásban: rosszat vagy jót mondani = bármit is, מטוב עד רע‎ 31:24, 29 (E), לְמֵרָע ועד טוב‎ 2Sám 13:22, az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát idézi elő 1Sám 16:14-15, 16, 23; 18:10; 19:9 (l. רוּח‎ 9).
 3rossz, nem tetsző
-פְלשְׁתִּים סַרְנֵי בְּעֵינֵי רָ֔ע עָשָׂח‎
-1Sám 29:7
+rossz, nem tetsző פְלשְׁתִּים סַרְנֵי בְּעֵינֵי רָ֔ע עָשָׂח‎ 1Sám 29:7.
 Angol eredeti
 ▸ evil, displeasing פְלשְׁתִּים סַרְנֵי בְּעֵינֵי רָ֔ע עָשָׂח‎ 1Sam 29:7.
-rossz, nem tetsző פְלשְׁתִּים סַרְנֵי בְּעֵינֵי רָ֔ע עָשָׂח‎ 1Sám 29:7.
 4a maga nemében rossz12 hivatkozásLXX πονηρός 7 · αἰσχρός 2 · 3 megfelelő nélkül
-föld
-4Móz 13:20hely20:5vizek2Kir 2:19fügékJer 24:2–3(a versben kétszer)24:8tehenek1Móz 41:3–4 41:19 41:20 41:21 41:27מוּם רע‎5Móz 15:21vö.17:1még 2 hely
-Apparátus és szövegkritika 2
-▸ forrásjel (J) (JE) (E)
-▸ számozás a BDB a héber versszámozást követi; a Károliban: 4Móz 13:19 → 4Móz 13:20
+a maga nemében rossz: föld 4Móz 13:19 (J), hely 20:5 (JE), vizek 2Kir 2:19, fügék Jer 24:2-3,(a versben kétszer); 24:8, tehenek 1Móz 41:3-4, 19, 20, 21, 27 (E), מוּם רע‎ 5Móz 15:21, vö. 17:1.
+Versszámozás: a BDB a héber számozást követi; 4Móz 13:19 = Károli 4Móz 13:20
 Angol eredeti
 ▸ bad of its kind, land Num 13:19 (J), place 20:5 (JE), waters 2Kin 2:19, figs Jer 24:2-3,(twice in verse); 24:8, kine Gen 41:3-4, 19, 20, 21, 27 (E), מוּם רע Deut 15:21, compare 17:1.
-a maga nemében rossz: föld 4Móz 13:19 (J), hely 20:5 (JE), vizek 2Kir 2:19, fügék Jer 24:2-3,(a versben kétszer); 24:8, tehenek 1Móz 41:3-4, 19, 20, 21, 27 (E), מוּם רע‎ 5Móz 15:21, vö. 17:1.
 5rossz, azaz csekély értékű6 hivatkozásLXX πονηρός 5 · κακός 2 · 2 megfelelő nélkül
-3Móz 27:10(a versben kétszer)27:12 27:14 27:33vö.Mal 1:8(a versben kétszer)
-מַקּוֺנֶה יאֹמַר רַע רַע
-Péld 20:14(a versben kétszer)
-Apparátus és szövegkritika 1
-▸ forrásjel (H)
+rossz, azaz csekély értékű 3Móz 27:10 (a versben kétszer); 27:12, 14, 33 (H), vö. Mal 1:8 (a versben kétszer); מַקּוֺנֶה יאֹמַר רַע רַע Péld 20:14 (a versben kétszer).
 Angol eredeti
 ▸ bad, i.e. of low value Lev 27:10 (twice in verse); 27:12, 14, 33 (H), compare Mal 1:8 (twice in verse); מַקּוֺנֶה יאֹמַר רַע רַע Prov 20:14 (twice in verse).
-rossz, azaz csekély értékű 3Móz 27:10 (a versben kétszer); 27:12, 14, 33 (H), vö. Mal 1:8 (a versben kétszer); מַקּוֺנֶה יאֹמַר רַע רַע Péld 20:14 (a versben kétszer).
 6rosszabb2 hivatkozásLXX κακός 1 · 1 megfelelő nélkül
-מִן+ comparativus: rosszabb, mint
-2Sám 19:7
-רָעֵי גוֺיִםfelsőfokként
-Ez 7:24: a nemzetek legrosszabbja
-Apparátus és szövegkritika 2
-▸ megjegyzés (Co törli)
-▸ számozás a BDB a héber versszámozást követi; a Károliban: 2Sám 19:8 → 2Sám 19:7
++ מִן comparativus: rosszabb, mint, 2Sám 19:8; felsőfokként רָעֵי גוֺיִם Ez 7:24: a nemzetek legrosszabbja (Co törli).
+Versszámozás: a BDB a héber számozást követi; 2Sám 19:8 = Károli 2Sám 19:7
 Angol eredeti
 ▸ + מִן comparative, worse than, 2Sam 19:8; as superlative, רָעֵי גוֺיִם Ezek 7:24 worst of nations (strike out Co).
-+ מִן comparativus: rosszabb, mint, 2Sám 19:8; felsőfokként רָעֵי גוֺיִם Ez 7:24: a nemzetek legrosszabbja (Co törli).
 7szomorú, boldogtalan4 hivatkozásLXX ἕτερος 1 · πονηρός 1 · 2 megfelelő nélkül
-לֶב־רָע֑szomorú szív (vö. ellentéte יטב טוב,)
-Péld 25:20
-arcról
-1Móz 40:7 Neh 2:2
-רע לְפָנָיו
-Neh 2:1
-Apparátus és szövegkritika 1
-▸ forrásjel (E)
+szomorú, boldogtalan: לֶב־רָע֑ szomorú szív (vö. ellentéte יטב טוב,) Péld 25:20; arcról 1Móz 40:7 (E) Neh 2:2; רע לְפָנָיו‎ 2:1.
 Angol eredeti
 ▸ sad, unhappy: לֶב־רָע֑ sad heart (compare opposed to יטב טוב,) Prov 25:20; of face Gen 40:7 (E) Neh 2:2; רע לְפָנָיו‎ 2:1.
-szomorú, boldogtalan: לֶב־רָע֑ szomorú szív (vö. ellentéte יטב טוב,) Péld 25:20; arcról 1Móz 40:7 (E) Neh 2:2; רע לְפָנָיו‎ 2:1.
 8gonosz tervet kigondolni2 hivatkozásLXX πονηρός 1 · 1 megfelelő nélkül
-מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni
-Ez 38:10 Eszt 9:25
+מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni Ez 38:10; Eszt 9:25.
 Angol eredeti
 ▸ מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב devise evil (hurtful) device Ezek 38:10; Est 9:25.
-מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni Ez 38:10; Eszt 9:25.
 9rossz, barátságtalan, rosszindulatú hajlamú vagy természetű4 hivatkozásLXX ἀνήρ 1 · πονηρός 1 · 2 megfelelő nélkül
-וְלֵב־רָ֑עha az elme rosszindulatú, ártalmas
-Péld 26:23
-רַע עָ֑יִןa gonosz szemű
-Péld 23:6 28:22
-רוּחַ רָעָה
-Bír 9:23: rossz indulat
+rossz, barátságtalan, rosszindulatú hajlamú vagy természetű: וְלֵב־רָ֑ע: ha az elme rosszindulatú, ártalmas Péld 26:23; רַע עָ֑יִן a gonosz szemű 23:6; 28:22; רוּחַ רָעָה Bír 9:23: rossz indulat.
 Angol eredeti
 ▸ bad, unkind, vicious in disposition or temper: וְלֵב־רָ֑ע when the mind is vicious, harmful Prov 26:23; רַע עָ֑יִן one evil of eye 23:6; 28:22; רוּחַ רָעָה Judg 9:23 bad temper.
-rossz, barátságtalan, rosszindulatú hajlamú vagy természetű: וְלֵב־רָ֑ע: ha az elme rosszindulatú, ártalmas Péld 26:23; רַע עָ֑יִן a gonosz szemű 23:6; 28:22; רוּחַ רָעָה Bír 9:23: rossz indulat.
 10erkölcsileg rossz, gonosz, istentelen
+erkölcsileg rossz, gonosz, istentelen:
 a.általában1 hivatkozásLXX πονηρός 1
-אם טוב ואם רע
-Préd 12:16: akár jó, akár rossz
-Apparátus és szövegkritika 1
-▸ számozás a BDB a héber versszámozást követi; a Károliban: Préd 12:14 → Préd 12:16
+általában, אם טוב ואם רע Préd 12:14: akár jó, akár rossz.
+Versszámozás: a BDB a héber számozást követi; Préd 12:14 = Károli Préd 12:16
 Angol eredeti
 ▸ in General, אם טוב ואם רע Eccl 12:14 whether good or bad.
-általában, אם טוב ואם רע Préd 12:14: akár jó, akár rossz.
 b.személyekről40 hivatkozásLXX πονηρός 24 · κακός 2 · λοιμός 1 · ὕβρις 1 · 8 megfelelő nélkül
-רע אושׁ‎
-1Sám 30:22
-אדם רע
-Zsolt 140:2
-המן הרע הזה
-Eszt 7:6: ez a gonosz Hámán, így רָ֑ע = gonosz emberZsolt 10:15 Jób 21:30 Péld 11:21 12:12 24:20רָעִים = gonosz emberek1Móz 13:13 Jer 6:29 15:21 Ez 30:12 Jób 35:12Péld 4:1412:1114:1915:8még 5 hely
-רָעוֺתgonosz asszonyok
-Jer 2:33
-רעים שׁכנים
-Jer 12:14: gonosz szomszédok
-a הַדּוֺר-ról
-5Móz 1:35הָעָםJer 13:10
-הָעֵדָה‎
-4Móz 14:27 14:35המשׁפחהJer 8:3
-רַע בְּעֵינֵי י׳gonosz a י׳ szemében
-1Móz 38:7 1Krón 2:8
-עָשָׂה הָרָע בְּעֵינֵי י׳‎
-4Móz 32:13 5Móz 4:25 9:18 17:2 31:29 Bír 2:11összesen 48-szor, + (Isten suffixumával)2Kir 21:15 Ézs 65:12 66:4 Jer 7:30 32:30Zsolt 51:62Sám 12:9valószínűlegJer 18:10is (olv. הָרָע הָרָעָה helyett)még 4 hely
-Apparátus és szövegkritika 2
-▸ forrásjel (J) (P) (JE) (R)
-▸ számozás a BDB a héber versszámozást követi; a Károliban: Péld 12:13 → Péld 12:12; Péld 12:12 → Péld 12:11
+személyekről, רע אושׁ‎ 1Sám 30:22; אדם רע Zsolt 140:2; המן הרע הזה Eszt 7:6: ez a gonosz Hámán, így רָ֑ע = gonosz ember Zsolt 10:15; Jób 21:30; Péld 11:21; 12:13; 24:20, רָעִים = gonosz emberek 1Móz 13:13 (J) Jer 6:29; 15:21; Ez 30:12; Jób 35:12; Péld 4:14; 12:12; 14:19; 15:8; רָעוֺת gonosz asszonyok Jer 2:33; רעים שׁכנים‎ 12:14: gonosz szomszédok; a הַדּוֺר-ról 5Móz 1:35, הָעָם Jer 13:10; הָעֵדָה‎ 4Móz 14:27, 35 (P), המשׁפחה Jer 8:3; י בְּעֵינֵי רַע׳ gonosz a י׳ szemében 1Móz 38:7 (JE) = 1Krón 2:8; י בְּעֵינֵי הָרָע עָשָׂה׳‎ 4Móz 32:13 (R) 5Móz 4:25; 9:18; 17:2; 31:29; Bír 2:11, összesen 48-szor, + (Isten suffixumával) 2Kir 21:15; Ézs 65:12; 66:4; Jer 7:30; 32:30; Zsolt 51:6; 2Sám 12:9, valószínűleg Jer 18:10 is (olv. הָרָע הָרָעָה helyett).
+Versszámozás: a BDB a héber számozást követi; Péld 12:13 = Károli Péld 12:12; Péld 12:12 = Károli Péld 12:11
 Angol eredeti
-▸ of persons, רע אושׁ‎ 1Sam 30:22; אדם רע Psa 140:2; המן הרע הזה Est 7:6 this wicked Haman, so רָ֑ע = evil man Psa 10:15; Job 21:30; Prov 11:21; 12:13; 24:20, רָעִים = evil men Gen 13:13 (J) Jer 6:29; 15:21; Ezek 30:12; Job 35:12; Prov 4:14; 12:12; 14:19; 15:8; רָעוֺת evil women Jer 2:33; רעים שׁכנים‎ 12:14 evil neighbours; of הַדּוֺר Deut 1:35, הָעָם Jer 13:10; הָעֵדָה Num 14:27, 35 (P), המשׁפחה Jer 8:3; רַע בְּעֵינֵי י׳ wicked in the eyes of י׳ Gen 38:7 (JE) = 1Chr 2:8; עָשָׂה הָרָע בְּעֵינֵי י׳ Num 32:13 (R) Deut 4:25; 9:18; 17:2; 31:29; Judg 2:11 48t., + (with suffix of God) 2Kin 21:15; Isa 65:12; 66:4; Jer 7:30; 32:30; Psa 51:6; 2Sam 12:9, probably also Jer 18:10 (read הָרָע for הָרָעָה).
-személyekről, רע אושׁ‎ 1Sám 30:22; אדם רע Zsolt 140:2; המן הרע הזה Eszt 7:6: ez a gonosz Hámán, így רָ֑ע = gonosz ember Zsolt 10:15; Jób 21:30; Péld 11:21; 12:13; 24:20, רָעִים = gonosz emberek 1Móz 13:13 (J) Jer 6:29; 15:21; Ez 30:12; Jób 35:12; Péld 4:14; 12:12; 14:19; 15:8; רָעוֺת gonosz asszonyok Jer 2:33; רעים שׁכנים‎ 12:14: gonosz szomszédok; a הַדּוֺר-ról 5Móz 1:35, הָעָם Jer 13:10; הָעֵדָה‎ 4Móz 14:27, 35 (P), המשׁפחה Jer 8:3; רַע בְּעֵינֵי י׳ gonosz a י׳ szemében 1Móz 38:7 (JE) = 1Krón 2:8; עָשָׂה הָרָע בְּעֵינֵי י׳‎ 4Móz 32:13 (R) 5Móz 4:25; 9:18; 17:2; 31:29; Bír 2:11, összesen 48-szor, + (Isten suffixumával) 2Kir 21:15; Ézs 65:12; 66:4; Jer 7:30; 32:30; Zsolt 51:6; 2Sám 12:9, valószínűleg Jer 18:10 is (olv. הָרָע הָרָעָה helyett).
+▸ of persons, רע אושׁ‎ 1Sam 30:22; אדם רע Psa 140:2; המן הרע הזה Est 7:6 this wicked Haman, so רָ֑ע = evil man Psa 10:15; Job 21:30; Prov 11:21; 12:13; 24:20, רָעִים = evil men Gen 13:13 (J) Jer 6:29; 15:21; Ezek 30:12; Job 35:12; Prov 4:14; 12:12; 14:19; 15:8; רָעוֺת evil women Jer 2:33; רעים שׁכנים‎ 12:14 evil neighbours; of הַדּוֺר Deut 1:35, הָעָם Jer 13:10; הָעֵדָה Num 14:27, 35 (P), המשׁפחה Jer 8:3; י בְּעֵינֵי רַע׳ wicked in the eyes of י׳ Gen 38:7 (JE) = 1Chr 2:8; י בְּעֵינֵי הָרָע עָשָׂה׳ Num 32:13 (R) Deut 4:25; 9:18; 17:2; 31:29; Judg 2:11 48t., + (with suffix of God) 2Kin 21:15; Isa 65:12; 66:4; Jer 7:30; 32:30; Psa 51:6; 2Sam 12:9, probably also Jer 18:10 (read הָרָע for הָרָעָה).
 c.gonosz (a szív gondolatairól)8 hivatkozásLXX πονηρός 5 · κακός 2 · 2 megfelelő nélkülszerkesztői címkeHAMART-001 · 1 hely
-יֵצֶרgondolatokról
-1Móz 6:5 8:21הָרָע הַלֵּבJer 3:17 7:24 11:8 16:12 18:12
-רעותszavakról
-Péld 15:28
-Apparátus és szövegkritika 1
-▸ forrásjel (J)
+gondolatokról, יֵצֶר‎ 1Móz 6:5; 8:21 (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; szavakról, רעות Péld 15:28.
 Angol eredeti
 ▸ of thoughts, יֵצֶר Gen 6:5; 8:21 (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; words, רעות Prov 15:28.
-gondolatokról, יֵצֶר‎ 1Móz 6:5; 8:21 (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; szavakról, רעות Péld 15:28.
 d.tettekről, cselekedetekről28 hivatkozásLXX πονηρός 15 · κακός 3 · πονηρία 2 · κοινωνός 1 · 9 megfelelő nélkül
-הרע(כ)דבר עשׂה‎
-5Móz 13:11 17:5 19:20 Neh 13:17
-הרעות עשׂה
-Jer 3:5
-דבר רע
-Zsolt 64:6 141:4 Préd 8:3 8:5
-דברים‎
-1Sám 2:23 2Kir 17:11
-דֶּרֶךְ‎
-1Kir 13:33 Jer 18:11 23:22összesen 11-szer
-דרכים‎
-2Kir 17:13 2Krón 7:14 Ez 20:44 33:11 36:31 Zak 1:4
-מעשׂינוּ
-Ezsd 9:13
-מעללים
-Zak 1:4 Neh 9:35(vö. רֹעַ‎ 4)
-בֶּצַע רע
-Hab 2:9
-מרוצתם
-Jer 23:10
-רעות(ה) (ה)תועבות
-Ez 6:11 8:9
-כִּי רָעוֺת בִּמְגוּרָם Zsolt 55:16: mert gonosz tettek vannak a lakásukban. 4)
-בֶּצַע רע
-Hab 2:9
-מרוצתם
-Jer 23:10
-רעות(ה) (ה)תועבות
-Ezek 6:118:9
-כִּי רָעוֺת בִּמְגוּרָם
-Psa 55:16for evil deeds are in their dwelling
-Apparátus és szövegkritika 3
-▸ megjegyzés (Co törli)
-▸ megjegyzés (strike out Co)
-▸ számozás a BDB a héber versszámozást követi; a Károliban: 5Móz 13:12 → 5Móz 13:11
+tettekről, cselekedetekről, הרע (כ)דבר עשׂה‎ 5Móz 13:12; 17:5; 19:20; Neh 13:17; הרעות עשׂה Jer 3:5; דבר רע Zsolt 64:6; 141:4; Préd 8:3, 5; דברים‎ 1Sám 2:23; 2Kir 17:11; דֶּרֶךְ‎ 1Kir 13:33; Jer 18:11; 23:22, összesen 11-szer; דרכים‎ 2Kir 17:13; 2Krón 7:14; Ez 20:44; 33:11; 36:31; Zak 1:4; מעשׂינוּ Ezsd 9:13; מעללים Zak 1:4; Neh 9:35 (vö. רֹעַ‎ 4); בֶּצַע רע Hab 2:9; מרוצתם Jer 23:10; (ה)תועבות (ה)רעות Ez 6:11; 8:9 (Co törli); כִּי רָעוֺת בִּמְגוּרָם Zsolt 55:16: mert gonosz tettek vannak a lakásukban. 4); בֶּצַע רע Hab 2:9; מרוצתם Jer 23:10; (ה)תועבות (ה)רעות Ezek 6:11; 8:9 (strike out Co); כִּי רָעוֺת בִּמְגוּרָם Psa 55:16 for evil deeds are in their dwelling.
+Versszámozás: a BDB a héber számozást követi; 5Móz 13:12 = Károli 5Móz 13:11
 Angol eredeti
 ▸ deeds, actions, הרע (כ)דבר עשׂה Deut 13:12; 17:5; 19:20; Neh 13:17; הרעות עשׂה Jer 3:5; דבר רע Psa 64:6; 141:4; Eccl 8:3, 5; דברים‎ 1Sam 2:23; 2Kin 17:11; דֶּרֶךְ‎ 1Kin 13:33; Jer 18:11; 23:22 11t.; דרכים‎ 2Kin 17:13; 2Chr 7:14; Ezek 20:44; 33:11; 36:31; Zech 1:4; מעשׂינוּ Ezra 9:13; מעללים Zech 1:4; Neh 9:35 (compare רֹעַ‎ 4); בֶּצַע רע Hab 2:9; מרוצתם Jer 23:10; (ה)תועבות (ה)רעות Ezek 6:11; 8:9 (strike out Co); כִּי רָעוֺת בִּמְגוּרָם Psa 55:16 for evil deeds are in their dwelling.
-tettekről, cselekedetekről, הרע (כ)דבר עשׂה‎ 5Móz 13:12; 17:5; 19:20; Neh 13:17; הרעות עשׂה Jer 3:5; דבר רע Zsolt 64:6; 141:4; Préd 8:3, 5; דברים‎ 1Sám 2:23; 2Kir 17:11; דֶּרֶךְ‎ 1Kir 13:33; Jer 18:11; 23:22, összesen 11-szer; דרכים‎ 2Kir 17:13; 2Krón 7:14; Ez 20:44; 33:11; 36:31; Zak 1:4; מעשׂינוּ Ezsd 9:13; מעללים Zak 1:4; Neh 9:35 (vö. רֹעַ‎ 4); בֶּצַע רע Hab 2:9; מרוצתם Jer 23:10; (ה)תועבות (ה)רעות Ez 6:11; 8:9 (Co törli); כִּי רָעוֺת בִּמְגוּרָם Zsolt 55:16: mert gonosz tettek vannak a lakásukban. 4); בֶּצַע רע Hab 2:9; מרוצתם Jer 23:10; (ה)תועבות (ה)רעות Ezek 6:11; 8:9 (strike out Co); כִּי רָעוֺת בִּמְגוּרָם Psa 55:16 for evil deeds are in their dwelling.
 Angol eredeti
 ▸ ethically bad, evil, wicked:
-erkölcsileg rossz, gonosz, istentelen:
-II. További homonima ugyanezen a lemmán · רַע · hímnemű főnév^Jób 30:26: rossz, szorongattatás, nyomorúság, sérelem, csapás96 hivatkozás
+II. További homonima ugyanezen a lemmán · רַע · hímnemű főnév Jób 30:26: rossz, szorongattatás, nyomorúság, sérelem, csapás96 hivatkozás
 1rossz, szorongattatás, balszerencse23 hivatkozásLXX κακός 17 · πονηρός 3 · γνῶσις 1 · 1 megfelelő nélkül
-יָרֵא רַעrosszat félni
-Zsolt 23:4 Sof 3:15
-בּוֺרֵא רָ֑ע
-Ézs 45:7(Istenről), רע הביא‎31:2
-מתאננים רַע‎
-4Móz 11:1: zúgolódás a szorongattatás miatt
-אם טוב ואם רע
-Jer 42:6: akár jólét, akár balszerencse
-יוֺם רע
-Ámós 6:3: a csapás napja
-יְמֵי רע
-Zsolt 49:6 94:13
-כי טוב קויתי ויבא רע
-Jób 30:26
-בְּרָעbalszerencsében
-2Móz 5:19 Zsolt 10:6
-יִפֹּל בְּרָ֑ע
-Péld 13:17
-אֶרְאֶה בָרָ֑ע‎
-1Móz 44:34
-בכל־רע
-Péld 5:14מכל רע‎1Móz 48:16 Zsolt 121:7
-l. még
-Mik 1:12 Zsolt 140:12 Jób 5:19 31:29 Péld 12:20 19:23
-Apparátus és szövegkritika 3
-▸ forrásjel (J) (E) (J) (E)
-▸ megjegyzés (l. Di)
-▸ számozás a BDB a héber versszámozást követi; a Károliban: Péld 12:21 → Péld 12:20
+rossz, szorongattatás, balszerencse: יָרֵא רַע rosszat félni Zsolt 23:4; Sof 3:15; בּוֺרֵא רָ֑ע Ézs 45:7 (Istenről), רע הביא‎ 31:2; מתאננים רַע‎ 4Móz 11:1 (J): zúgolódás a szorongattatás miatt (l. Di); אם טוב ואם רע Jer 42:6: akár jólét, akár balszerencse; יוֺם רע Ámós 6:3: a csapás napja; יְמֵי רע Zsolt 49:6; 94:13; כי טוב קויתי ויבא רע Jób 30:26; בְּרָע balszerencsében 2Móz 5:19 (E) Zsolt 10:6; בְּרָ֑ע יִפֹּל Péld 13:17; אֶרְאֶה בָרָ֑ע‎ 1Móz 44:34 (J); בכל־רע Péld 5:14, מכל רע‎ 1Móz 48:16 (E) Zsolt 121:7; l. még Mik 1:12; Zsolt 140:12; Jób 5:19; 31:29 Péld 12:21; 19:23.
+Versszámozás: a BDB a héber számozást követi; Péld 12:21 = Károli Péld 12:20
 Angol eredeti
-▸ evil, distress, adversity: יָרֵא רַע fear evil Psa 23:4; Zeph 3:15; בּוֺרֵא רָ֑ע Isa 45:7 (of God), רע הביא‎ 31:2; מתאננים רַע Num 11:1 (J) murmuring respecting distress (see Di); אם טוב ואם רע Jer 42:6 whether prosperity or adversity; יוֺם רע Amos 6:3 day of calamity; יְמֵי רע Psa 49:6; 94:13; כי טוב קויתי ויבא רע Job 30:26; בְּרָע in adversity Exod 5:19 (E) Psa 10:6; יִפֹּל בְּרָ֑ע Prov 13:17; אֶרְאֶה בָרָ֑ע Gen 44:34 (J); בכל־רע Prov 5:14, מכל רע Gen 48:16 (E) Psa 121:7; see also Micah 1:12; Psa 140:12; Job 5:19; 31:29 Prov 12:21; 19:23.
-rossz, szorongattatás, balszerencse: יָרֵא רַע rosszat félni Zsolt 23:4; Sof 3:15; בּוֺרֵא רָ֑ע Ézs 45:7 (Istenről), רע הביא‎ 31:2; מתאננים רַע‎ 4Móz 11:1 (J): zúgolódás a szorongattatás miatt (l. Di); אם טוב ואם רע Jer 42:6: akár jólét, akár balszerencse; יוֺם רע Ámós 6:3: a csapás napja; יְמֵי רע Zsolt 49:6; 94:13; כי טוב קויתי ויבא רע Jób 30:26; בְּרָע balszerencsében 2Móz 5:19 (E) Zsolt 10:6; יִפֹּל בְּרָ֑ע Péld 13:17; אֶרְאֶה בָרָ֑ע‎ 1Móz 44:34 (J); בכל־רע Péld 5:14, מכל רע‎ 1Móz 48:16 (E) Zsolt 121:7; l. még Mik 1:12; Zsolt 140:12; Jób 5:19; 31:29 Péld 12:21; 19:23.
+▸ evil, distress, adversity: יָרֵא רַע fear evil Psa 23:4; Zeph 3:15; בּוֺרֵא רָ֑ע Isa 45:7 (of God), רע הביא‎ 31:2; מתאננים רַע Num 11:1 (J) murmuring respecting distress (see Di); אם טוב ואם רע Jer 42:6 whether prosperity or adversity; יוֺם רע Amos 6:3 day of calamity; יְמֵי רע Psa 49:6; 94:13; כי טוב קויתי ויבא רע Job 30:26; בְּרָע in adversity Exod 5:19 (E) Psa 10:6; בְּרָ֑ע יִפֹּל Prov 13:17; אֶרְאֶה בָרָ֑ע Gen 44:34 (J); בכל־רע Prov 5:14, מכל רע Gen 48:16 (E) Psa 121:7; see also Micah 1:12; Psa 140:12; Job 5:19; 31:29 Prov 12:21; 19:23.
 2rossz, sérelem, jogtalanság29 hivatkozásLXX κακός 16 · πονηρός 4 · κακόω 2 · πονηρία 2 · 5 megfelelő nélkül
-Hab 2:9 Jób 2:10 Péld 21:10
-עשׂה רע+ עִם + személy
-1Móz 31:29
-ל+ személy
-Jer 39:12
-חשּׁבmint a tárgya
-Hós 7:15חרשׁPéld 6:14 12:19 14:22השׁיבZsolt 54:7גמל‎7:5 Péld 31:12בקּשׁ‎17:11שׁלּם‎20:22אמרZsolt 41:6דבּר‎109:20még 1 hely
-דבּר בְּרָע
-Zsolt 73:8: sérelemről beszélni
-רָ֑ע אִם כִּי טוֺב יִתְנַבֵּא לֹא‎
-1Kir 22:8 22:182Krón2Krón 18:7לְרָעָמ‎18:17לְרָ֑ע
-לרעártalomra, sérelemre
-Ézs 59:7 Jer 7:6 25:7 Zsolt 56:6 Péld 1:16 21:12 Préd 8:9
-רַע יֵרוֺעַ
-Péld 11:15
-Apparátus és szövegkritika 3
-▸ forrásjel (E)
-▸ megjegyzés (de olv. רֹעַ Gr SS, l. Toy)
-▸ számozás a BDB a héber versszámozást követi; a Károliban: Péld 12:20 → Péld 12:19
+rossz, sérelem, jogtalanság: Hab 2:9; Jób 2:10; Péld 21:10; עשׂה רע, + עִם + személy 1Móz 31:29 (E); ל + személy Jer 39:12; mint a חשּׁב tárgya Hós 7:15, חרשׁ Péld 6:14; 12:20; 14:22, השׁיב Zsolt 54:7, גמל‎ 7:5; Péld 31:12, בקּשׁ‎ 17:11, שׁלּם‎ 20:22, אמר Zsolt 41:6, דבּר‎ 109:20; דבּר בְּרָע‎ 73:8: sérelemről beszélni; רָ֑ע אִם כִּי טוֺב יִתְנַבֵּא לֹא‎ 1Kir 22:8, 18 2Krón (2Krón 18:7 לְרָעָמ‎), 18:17 לְרָ֑ע; לרע ártalomra, sérelemre Ézs 59:7; Jer 7:6; 25:7; Zsolt 56:6; Péld 1:16; 21:12; Préd 8:9; רַע יֵרוֺעַ Péld 11:15 (de olv. רֹעַ Gr SS, l. Toy).
+Versszámozás: a BDB a héber számozást követi; Péld 12:20 = Károli Péld 12:19
 Angol eredeti
 ▸ evil, injury, wrong: Hab 2:9; Job 2:10; Prov 21:10; עשׂה רע, + עִם person Gen 31:29 (E); ל person Jer 39:12; as object of חשּׁב Hosea 7:15, חרשׁ Prov 6:14; 12:20; 14:22, השׁיב Psa 54:7, גמל‎ 7:5; Prov 31:12, בקּשׁ‎ 17:11, שׁלּם‎ 20:22, אמר Psa 41:6, דבּר‎ 109:20; דבּר בְּרָע‎ 73:8 speak about injury; רָ֑ע אִם כִּי טוֺב יִתְנַבֵּא לֹא‎ 1Kin 22:8, 18 2Chronicles (2Chr 18:7 לְרָעָמ‎), 18:17 לְרָ֑ע; לרע for harm, injury Isa 59:7; Jer 7:6; 25:7; Psa 56:6; Prov 1:16; 21:12; Eccl 8:9; רַע יֵרוֺעַ Prov 11:15 (but read רֹעַ Gr SS, see Toy).
-rossz, sérelem, jogtalanság: Hab 2:9; Jób 2:10; Péld 21:10; עשׂה רע, + עִם + személy 1Móz 31:29 (E); ל + személy Jer 39:12; mint a חשּׁב tárgya Hós 7:15, חרשׁ Péld 6:14; 12:20; 14:22, השׁיב Zsolt 54:7, גמל‎ 7:5; Péld 31:12, בקּשׁ‎ 17:11, שׁלּם‎ 20:22, אמר Zsolt 41:6, דבּר‎ 109:20; דבּר בְּרָע‎ 73:8: sérelemről beszélni; רָ֑ע אִם כִּי טוֺב יִתְנַבֵּא לֹא‎ 1Kir 22:8, 18 2Krón (2Krón 18:7 לְרָעָמ‎), 18:17 לְרָ֑ע; לרע ártalomra, sérelemre Ézs 59:7; Jer 7:6; 25:7; Zsolt 56:6; Péld 1:16; 21:12; Préd 8:9; רַע יֵרוֺעַ Péld 11:15 (de olv. רֹעַ Gr SS, l. Toy).
 3erkölcsi rossz40 hivatkozásLXX πονηρός 20 · κακός 10 · κακία 2 · ἀδικία 1 · 4 megfelelő nélkül
-5Móz 30:15 2Sám 14:17 Ézs 5:20 Ámós 5:14 Mik 7:3összesen 10-szer
-עשׁה רע‎
-2Kir 21:9 2Krón 12:14 33:9 Neh 9:28összesen 8-szor
-פֹּעֲלֵי רע
-Mik 2:1
-רע אהד
-Mik 3:2(Qr)Zsolt 52:5
-רע שׂנא
-Ámós 5:15 Zsolt 97:10 Péld 8:13
-רע מאס
-Zsolt 36:5
-מאס ברע
-Ézs 7:15–16מִן הרע בִּעֵר kiirtani a rosszat valahonnan5Móz 13:5Mózes ötödik könyvében összesen 8-szor
-רָ֑ע רְגֻרְךָ לֹא
-Zsolt 5:5
-ורע טוב ירע‎
-1Móz 2:9 2:17 3:5 3:2255Móz 1:39
-סר מֵרָע
-Ézs 59:15 Zsolt 34:15 37:27 Péld 3:7összesen 8-szor
-כי ברע הוא‎
-2Móz 32:22: a rosszra hajlik
-רע רשׁעים
-Zsolt 7:10רע מעללים‎1Sám 25:3vö.Mik 3:4(l. רֹעַ‎ 3)
-דִּבְרֵי רָעgonosz tettek
-Jer 5:28
-תַּהְפֻּכוֺתרָ֑ע
-Péld 2:14
-אֹרַחרע
-Zsolt 119:101
-עֲצַת רע‎
-2Móz 11:2
-מַחְשְׁבוֺת רע
-Péld 15:26
-אִישׁ רע
-Péld 29:6
-אַנְשֵׁי רע
-Péld 28:5
-אֵשֶׁת רע‎ 6:24 . 3)
-דִּבְרֵי רָעdeeds of evil
-Jer 5:28
-תַּהְפֻּכוֺתרָ֑ע
-Prov 2:14
-אֹרַחרע
-Psa 119:101
-עֲצַת רע
-Exod 11:2
-מַחְשְׁבוֺת רע
-Prov 15:26
-אִישׁ רע‎
-29:6
-אַנְשֵׁי רע‎
-28:5
-אֵשֶׁת רע‎
-6:24
-Apparátus és szövegkritika 5
-▸ forrásjel (mind J) (J)
-▸ megjegyzés (melléknév = gonosz ember Hup De és mások)
-▸ megjegyzés (de olv. רֵעַ Gr Bi Toy)
-▸ megjegyzés (but read רֵעַ Gr Bi Toy)
-▸ számozás a BDB a héber versszámozást követi; a Károliban: 5Móz 13:6 → 5Móz 13:5
+erkölcsi rossz, 5Móz 30:15; 2Sám 14:17; Ézs 5:20; Ámós 5:14; Mik 7:3, összesen 10-szer; עשׁה רע‎ 2Kir 21:9; 2Krón 12:14; 33:9; Neh 9:28, összesen 8-szor; רע פֹּעֲלֵי Mik 2:1; רע אהד‎ 3:2 (Qr), Zsolt 52:5; רע שׂנא Ámós 5:15; Zsolt 97:10; Péld 8:13; רע מאס Zsolt 36:5; מאס ברע Ézs 7:15-16, מִן הרע בִּעֵר kiirtani a rosszat valahonnan 5Móz 13:6, Mózes ötödik könyvében összesen 8-szor; רָ֑ע רְגֻרְךָ לֹא Zsolt 5:5 (melléknév = gonosz ember Hup De és mások); ורע טוב ירע‎ 1Móz 2:9, 17; 3:5, 22 (mind J), 5Móz 1:39; סר מֵרָע Ézs 59:15; Zsolt 34:15; 37:27; Péld 3:7, összesen 8-szor; כי ברע הוא‎ 2Móz 32:22 (J): a rosszra hajlik; רע רשׁעים Zsolt 7:10, רע מעללים‎ 1Sám 25:3, vö. Mik 3:4 (l. רֹעַ‎ 3); דִּבְרֵי רָע gonosz tettek Jer 5:28; תַּהְפֻּכוֺתרָ֑ע Péld 2:14; אֹרַחרע Zsolt 119:101; עֲצַת רע‎ 2Móz 11:2; מַחְשְׁבוֺת רע Péld 15:26; אִישׁ רע‎ 29:6; אַנְשֵׁי רע‎ 28:5; אֵשֶׁת רע‎ 6:24 (de olv. רֵעַ Gr Bi Toy). 3); דִּבְרֵי רָע deeds of evil Jer 5:28; תַּהְפֻּכוֺתרָ֑ע Prov 2:14; אֹרַחרע Psa 119:101; עֲצַת רע Exod 11:2; מַחְשְׁבוֺת רע Prov 15:26; אִישׁ רע‎ 29:6; אַנְשֵׁי רע‎ 28:5; אֵשֶׁת רע‎ 6:24 (but read רֵעַ Gr Bi Toy).
+Versszámozás: a BDB a héber számozást követi; 5Móz 13:6 = Károli 5Móz 13:5
 Angol eredeti
-▸ ethical evil, Deut 30:15; 2Sam 14:17; Isa 5:20; Amos 5:14; Micah 7:3 10t.; עשׁה רע‎ 2Kin 21:9; 2Chr 12:14; 33:9; Neh 9:28 8t.; פֹּעֲלֵי רע Micah 2:1; רע אהד‎ 3:2 (Qr), Psa 52:5; רע שׂנא Amos 5:15; Psa 97:10; Prov 8:13; רע מאס Psa 36:5; מאס ברע Isa 7:15-16, מִן הרע בִּעֵר consume evil from Deut 13:6 8t. Deuteronomy; רָ֑ע רְגֻרְךָ לֹא Psa 5:5 (adjective = evil man Hup De and others); ורע טוב ירע Gen 2:9, 17; 3:5, 22 (all J), Deut 1:39; סר מֵרָע Isa 59:15; Psa 34:15; 37:27; Prov 3:7-8t.; כי ברע הוא Exod 32:22 (J) he is set on evil; רע רשׁעים Psa 7:10, רע מעללים‎ 1Sam 25:3, compare Micah 3:4 (see רֹעַ‎ 3); דִּבְרֵי רָע deeds of evil Jer 5:28; תַּהְפֻּכוֺתרָ֑ע Prov 2:14; אֹרַחרע Psa 119:101; עֲצַת רע Exod 11:2; מַחְשְׁבוֺת רע Prov 15:26; אִישׁ רע‎ 29:6; אַנְשֵׁי רע‎ 28:5; אֵשֶׁת רע‎ 6:24 (but read רֵעַ Gr Bi Toy).
-erkölcsi rossz, 5Móz 30:15; 2Sám 14:17; Ézs 5:20; Ámós 5:14; Mik 7:3, összesen 10-szer; עשׁה רע‎ 2Kir 21:9; 2Krón 12:14; 33:9; Neh 9:28, összesen 8-szor; פֹּעֲלֵי רע Mik 2:1; רע אהד‎ 3:2 (Qr), Zsolt 52:5; רע שׂנא Ámós 5:15; Zsolt 97:10; Péld 8:13; רע מאס Zsolt 36:5; מאס ברע Ézs 7:15-16, מִן הרע בִּעֵר kiirtani a rosszat valahonnan 5Móz 13:6, Mózes ötödik könyvében összesen 8-szor; רָ֑ע רְגֻרְךָ לֹא Zsolt 5:5 (melléknév = gonosz ember Hup De és mások); ורע טוב ירע‎ 1Móz 2:9, 17; 3:5, 22 (mind J), 5Móz 1:39; סר מֵרָע Ézs 59:15; Zsolt 34:15; 37:27; Péld 3:7, összesen 8-szor; כי ברע הוא‎ 2Móz 32:22 (J): a rosszra hajlik; רע רשׁעים Zsolt 7:10, רע מעללים‎ 1Sám 25:3, vö. Mik 3:4 (l. רֹעַ‎ 3); דִּבְרֵי רָע gonosz tettek Jer 5:28; תַּהְפֻּכוֺתרָ֑ע Péld 2:14; אֹרַחרע Zsolt 119:101; עֲצַת רע‎ 2Móz 11:2; מַחְשְׁבוֺת רע Péld 15:26; אִישׁ רע‎ 29:6; אַנְשֵׁי רע‎ 28:5; אֵשֶׁת רע‎ 6:24 (de olv. רֵעַ Gr Bi Toy). 3); דִּבְרֵי רָע deeds of evil Jer 5:28; תַּהְפֻּכוֺתרָ֑ע Prov 2:14; אֹרַחרע Psa 119:101; עֲצַת רע Exod 11:2; מַחְשְׁבוֺת רע Prov 15:26; אִישׁ רע‎ 29:6; אַנְשֵׁי רע‎ 28:5; אֵשֶׁת רע‎ 6:24 (but read רֵעַ Gr Bi Toy).
+▸ ethical evil, Deut 30:15; 2Sam 14:17; Isa 5:20; Amos 5:14; Micah 7:3 10t.; עשׁה רע‎ 2Kin 21:9; 2Chr 12:14; 33:9; Neh 9:28 8t.; רע פֹּעֲלֵי Micah 2:1; רע אהד‎ 3:2 (Qr), Psa 52:5; רע שׂנא Amos 5:15; Psa 97:10; Prov 8:13; רע מאס Psa 36:5; מאס ברע Isa 7:15-16, מִן הרע בִּעֵר consume evil from Deut 13:6 8t. Deuteronomy; רָ֑ע רְגֻרְךָ לֹא Psa 5:5 (adjective = evil man Hup De and others); ורע טוב ירע Gen 2:9, 17; 3:5, 22 (all J), Deut 1:39; סר מֵרָע Isa 59:15; Psa 34:15; 37:27; Prov 3:7-8t.; כי ברע הוא Exod 32:22 (J) he is set on evil; רע רשׁעים Psa 7:10, רע מעללים‎ 1Sam 25:3, compare Micah 3:4 (see רֹעַ‎ 3); דִּבְרֵי רָע deeds of evil Jer 5:28; תַּהְפֻּכוֺתרָ֑ע Prov 2:14; אֹרַחרע Psa 119:101; עֲצַת רע Exod 11:2; מַחְשְׁבוֺת רע Prov 15:26; אִישׁ רע‎ 29:6; אַנְשֵׁי רע‎ 28:5; אֵשֶׁת רע‎ 6:24 (but read רֵעַ Gr Bi Toy).
 További homonima ugyanezen a lemmán · רָעָה · nőnemű főnév: rossz, nyomorúság, szorongattatás, sérelem296 hivatkozás
 1rossz, nyomorúság, szorongattatás
-מַּחַד רָעָה
-Péld 1:33(ה)רעה באהEz 7:5(a versben kétszer)
-עַל-val
-Ézs 47:11(olv. באה בא helyett)Jer 5:12összesen 5-ször
-אֶל-val
-Jer 2:3 51:60
-רעה הביא
-Jer 4:6 1Kir 21:29
-אֶל+
-2Sám 17:14a Királyok könyveiben és Jeremiásnál összesen 8-szor
-עַל+
-1Kir 9:9 2Krón 7:22 Jer 19:3Jeremiásnál összesen 6-szor + 8-szor
-אֶל+ és לְ
-Jer 19:15 36:31
-יוֺם רעה
-Jer 17:17–18összesen 5-ször
-העה יְמֵי
-Préd 12:3
-רָעוֺתbajok
-5Móz 31:17(a versben kétszer)31:21 32:23(költemény)Zsolt 34:20 40:13 88:4
-עֵת רָעָה
-Ámós 5:13 Jer 2:27–28összesen 5-ször
-ברעה ראה
-Jer 11:15Abd 13Eszt 8:6
-רעה ראה
-Jer 44:17 Zsolt 90:15 Péld 22:3 27:12
-יפול ברעה
-Péld 17:20 28:14
-בְּרָעָה‎
-1Móz 44:29 Péld 14:32 24:16 Neh 1:3 1Krón 7:23 Zsolt 107:26
-ברעותיכם
-Zsolt 141:5
-רָעָה עַל נִחַם‎
-2Móz 32:12 32:14 Jer 8:6összesen 6-szor
-אֶל-val
-2Sám 24:16 Jer 26:3 26:13 26:19 42:10
-Apparátus és szövegkritika 2
-▸ forrásjel (JE) (JE) (J) (J)
-▸ megjegyzés (azaz a tavaszi napok, amelyek az öregekre végzetesek, Wetzst, De^Koh. 447)
+rossz, nyomorúság, szorongattatás: מַּחַד רָעָה Péld 1:33, (ה)רעה באה Ez 7:5 (a versben kétszer); עַל-val Ézs 47:11 (olv. באה בא helyett), Jer 5:12, összesen 5-ször; אֶל-val 2:3; 51:60; רעה הביא‎ 4:6; 1Kir 21:29; + אֶל‎ 2Sám 17:14, a Királyok könyveiben és Jeremiásnál összesen 8-szor; + עַל‎ 1Kir 9:9 2Krón 7:22; Jer 19:3, Jeremiásnál összesen 6-szor + 8-szor; + אֶל és לְ‎ 19:15; 36:31; יוֺם רעה‎ 17:17-18, összesen 5-ször; העה יְמֵי Préd 12:1 (azaz a tavaszi napok, amelyek az öregekre végzetesek, Wetzst, DeKoh. 447); רָעוֺת bajok 5Móz 31:17 (a versben kétszer); 31:21 (JE), 32:23 (költemény), Zsolt 34:20; 40:13; 88:4; עֵת רָעָה Ámós 5:13; Jer 2:27-28, összesen 5-ször; ברעה ראה‎ 4Móz 11:15 (JE) Abd 13; Eszt 8:6; רעה ראה Jer 44:17; Zsolt 90:15; Péld 22:3 = 27:12; יפול ברעה‎ 17:20; 28:14; בְּרָעָה‎ 1Móz 44:29 (J) Péld 14:32; 24:16; Neh 1:3; 1Krón 7:23; Zsolt 107:26; ברעותיכם‎ 141:5; רָעָה עַל נִחַם‎ 2Móz 32:12, 14 (J) Jer 8:6, összesen 6-szor; אֶל-val 2Sám 24:16; Jer 26:3, 13, 19; 42:10.
 Angol eredeti
-▸ evil, misery, distress: מַּחַד רָעָה Prov 1:33, (ה)רעה באה Ezek 7:5 (twice in verse); with עַל Isa 47:11 (read באה for בא), Jer 5:12 5t.; with אֶל‎ 2:3; 51:60; רעה הביא‎ 4:6; 1Kin 21:29; + אֶל‎ 2Sam 17:14 8t. in Kings Jeremiah; + עַל‎ 1Kin 9:9 2Chr 7:22; Jer 19:3 6t. Jeremiah + 8 t.; + אֶל and לְ‎ 19:15; 36:31; יוֺם רעה‎ 17:17-18, 5t.; העה יְמֵי Eccl 12:1 (i.e., spring days, fatal to old people, Wetzst in De^Koh. 447); רָעוֺת evils Deut 31:17 (twice in verse); 31:21 (JE), 32:23 (poem), Psa 34:20; 40:13; 88:4; עֵת רָעָה Amos 5:13; Jer 2:27-28, 5t.; ברעה ראה Num 11:15 (JE) Obadiah 13; Est 8:6; רעה ראה Jer 44:17; Psa 90:15; Prov 22:3 = 27:12; יפול ברעה‎ 17:20; 28:14; בְּרָעָה Gen 44:29 (J) Prov 14:32; 24:16; Neh 1:3; 1Chr 7:23; Psa 107:26; ברעותיכם‎ 141:5; רָעָה עַל נִחַם Exod 32:12, 14 (J) Jer 8:6 6t.; with אֶל‎ 2Sam 24:16; Jer 26:3, 13, 19; 42:10.
-rossz, nyomorúság, szorongattatás: מַּחַד רָעָה Péld 1:33, (ה)רעה באה Ez 7:5 (a versben kétszer); עַל-val Ézs 47:11 (olv. באה בא helyett), Jer 5:12, összesen 5-ször; אֶל-val 2:3; 51:60; רעה הביא‎ 4:6; 1Kir 21:29; + אֶל‎ 2Sám 17:14, a Királyok könyveiben és Jeremiásnál összesen 8-szor; + עַל‎ 1Kir 9:9 2Krón 7:22; Jer 19:3, Jeremiásnál összesen 6-szor + 8-szor; + אֶל és לְ‎ 19:15; 36:31; יוֺם רעה‎ 17:17-18, összesen 5-ször; העה יְמֵי Préd 12:1 (azaz a tavaszi napok, amelyek az öregekre végzetesek, Wetzst, De^Koh. 447); רָעוֺת bajok 5Móz 31:17 (a versben kétszer); 31:21 (JE), 32:23 (költemény), Zsolt 34:20; 40:13; 88:4; עֵת רָעָה Ámós 5:13; Jer 2:27-28, összesen 5-ször; ברעה ראה‎ 4Móz 11:15 (JE) Abd 13; Eszt 8:6; רעה ראה Jer 44:17; Zsolt 90:15; Péld 22:3 = 27:12; יפול ברעה‎ 17:20; 28:14; בְּרָעָה‎ 1Móz 44:29 (J) Péld 14:32; 24:16; Neh 1:3; 1Krón 7:23; Zsolt 107:26; ברעותיכם‎ 141:5; רָעָה עַל נִחַם‎ 2Móz 32:12, 14 (J) Jer 8:6, összesen 6-szor; אֶל-val 2Sám 24:16; Jer 26:3, 13, 19; 42:10.
+▸ evil, misery, distress: מַּחַד רָעָה Prov 1:33, (ה)רעה באה Ezek 7:5 (twice in verse); with עַל Isa 47:11 (read באה for בא), Jer 5:12 5t.; with אֶל‎ 2:3; 51:60; רעה הביא‎ 4:6; 1Kin 21:29; + אֶל‎ 2Sam 17:14 8t. in Kings Jeremiah; + עַל‎ 1Kin 9:9 2Chr 7:22; Jer 19:3 6t. Jeremiah + 8 t.; + אֶל and לְ‎ 19:15; 36:31; יוֺם רעה‎ 17:17-18, 5t.; העה יְמֵי Eccl 12:1 (i.e., spring days, fatal to old people, Wetzst in DeKoh. 447); רָעוֺת evils Deut 31:17 (twice in verse); 31:21 (JE), 32:23 (poem), Psa 34:20; 40:13; 88:4; עֵת רָעָה Amos 5:13; Jer 2:27-28, 5t.; ברעה ראה Num 11:15 (JE) Obadiah 13; Est 8:6; רעה ראה Jer 44:17; Psa 90:15; Prov 22:3 = 27:12; יפול ברעה‎ 17:20; 28:14; בְּרָעָה Gen 44:29 (J) Prov 14:32; 24:16; Neh 1:3; 1Chr 7:23; Psa 107:26; ברעותיכם‎ 141:5; רָעָה עַל נִחַם Exod 32:12, 14 (J) Jer 8:6 6t.; with אֶל‎ 2Sam 24:16; Jer 26:3, 13, 19; 42:10.
 2rossz, sérelem, jogtalanság
-עשׂה רעה‎
-2Sám 12:18 Jer 26:19 41:11
-עִם-val
-1Móz 26:29 Bír 15:3 2Sám 13:16
-את-val
-Bír 11:27
-ל-val
-1Sám 6:9 1Kir 2:44összesen 4-szer
-אֶל-val
-Jer 44:7
-השׁבigék tárgyaként
-1Móz 50:20 Jer 36:3 48:2összesen 7-szer
-חרשׁ‎
-1Sám 23:9 Péld 3:29
-הֵשִׁיב‎
-1Móz 50:15 Bír 9:56–57összesen 4-szer
-גמל‎
-1Móz 50:17 1Sám 24:18–17 Ézs 3:10 Péld 3:30
-בקשׁ‎
-4Móz 35:23 1Sám 24:10–9 25:26összesen 4-szer
-שׁלּם‎
-1Móz 44:4 Jer 18:20 51:24 Zsolt 35:12 38:21
-לְרָעָהártalomra
-1Móz 31:52 2Móz 23:2 5Móz 29:21 Bír 2:15 2Sám 18:32 Jer 21:10Jeremiásnál összesen 8-szorÁmós 9:4 Zak 1:15 Péld 6:18Préd 5:12
-בְּרָעָתֶ֑ךָ‎
-2Sám 16:8: a te gonoszságodban
-בְּרָעָה‎
-2Móz 32:12: ártó szándékkal
-רָעָה רַבָּה
-Préd 2:22
-רָעָה חוֺלָה‎
-5:125:15
-Apparátus és szövegkritika 1
-▸ forrásjel (J) (E) (E) (E) (P) (J) (E) (J)
+rossz, sérelem, jogtalanság: עשׂה רעה‎ 2Sám 12:18; Jer 26:19; 41:11; עִם-val 1Móz 26:29 (J) Bír 15:3; 2Sám 13:16; את-val Bír 11:27; ל-val 1Sám 6:9; 1Kir 2:44, összesen 4-szer; אֶל-val Jer 44:7; igék tárgyaként השׁב‎ 1Móz 50:20 (E) Jer 36:3; 48:2, összesen 7-szer; חרשׁ‎ 1Sám 23:9; Péld 3:29; הֵשִׁיב‎ 1Móz 50:15 (E) Bír 9:56-57, összesen 4-szer; גמל‎ 1Móz 50:17 (E) 1Sám 24:18 -17 Ézs 3:9; Péld 3:30; בקשׁ‎ 4Móz 35:23 (P) 1Sám 24:10 -9 25:26, összesen 4-szer; שׁלּם‎ 1Móz 44:4 (J) Jer 18:20; 51:24; Zsolt 35:12; 38:21; לְרָעָה ártalomra 1Móz 31:52; 2Móz 23:2 (E) 5Móz 29:20; Bír 2:15; 2Sám 18:32; Jer 21:10, Jeremiásnál összesen 8-szor; Ámós 9:4; Zak 1:15; Péld 6:18; Préd 5:12; בְּרָעָתֶ֑ךָ‎ 2Sám 16:8: a te gonoszságodban; בְּרָעָה‎ 2Móz 32:12 (J): ártó szándékkal; רָעָה רַבָּה Préd 2:21; רָעָה חוֺלָה‎ 5:12; 5:15.
 Angol eredeti
 ▸ evil, injury, wrong: עשׂה רעה‎ 2Sam 12:18; Jer 26:19; 41:11; with עִם Gen 26:29 (J) Judg 15:3; 2Sam 13:16; with את Judg 11:27; with ל‎ 1Sam 6:9; 1Kin 2:44 4t.; with אֶל Jer 44:7; object of verbs השׁב Gen 50:20 (E) Jer 36:3; 48:2 7t.; חרשׁ‎ 1Sam 23:9; Prov 3:29; הֵשִׁיב Gen 50:15 (E) Judg 9:56-57, 4t.; גמל Gen 50:17 (E) 1Sam 24:18 -17 Isa 3:9; Prov 3:30; בקשׁ Num 35:23 (P) 1Sam 24:10 -9 25:26 4t.; שׁלּם Gen 44:4 (J) Jer 18:20; 51:24; Psa 35:12; 38:21; לְרָעָה for harm Gen 31:52; Exod 23:2 (E) Deut 29:20; Judg 2:15; 2Sam 18:32; Jer 21:10 8t. Jeremiah; Amos 9:4; Zech 1:15; Prov 6:18; Eccl 5:12; בְּרָעָתֶ֑ךָ‎ 2Sam 16:8 in thy mischief; בְּרָעָה Exod 32:12 (J) for mischief; רָעָה רַבָּה Eccl 2:21; רָעָה חוֺלָה‎ 5:12; 5:15.
-rossz, sérelem, jogtalanság: עשׂה רעה‎ 2Sám 12:18; Jer 26:19; 41:11; עִם-val 1Móz 26:29 (J) Bír 15:3; 2Sám 13:16; את-val Bír 11:27; ל-val 1Sám 6:9; 1Kir 2:44, összesen 4-szer; אֶל-val Jer 44:7; igék tárgyaként השׁב‎ 1Móz 50:20 (E) Jer 36:3; 48:2, összesen 7-szer; חרשׁ‎ 1Sám 23:9; Péld 3:29; הֵשִׁיב‎ 1Móz 50:15 (E) Bír 9:56-57, összesen 4-szer; גמל‎ 1Móz 50:17 (E) 1Sám 24:18 -17 Ézs 3:9; Péld 3:30; בקשׁ‎ 4Móz 35:23 (P) 1Sám 24:10 -9 25:26, összesen 4-szer; שׁלּם‎ 1Móz 44:4 (J) Jer 18:20; 51:24; Zsolt 35:12; 38:21; לְרָעָה ártalomra 1Móz 31:52; 2Móz 23:2 (E) 5Móz 29:20; Bír 2:15; 2Sám 18:32; Jer 21:10, Jeremiásnál összesen 8-szor; Ámós 9:4; Zak 1:15; Péld 6:18; Préd 5:12; בְּרָעָתֶ֑ךָ‎ 2Sám 16:8: a te gonoszságodban; בְּרָעָה‎ 2Móz 32:12 (J): ártó szándékkal; רָעָה רַבָּה Préd 2:21; רָעָה חוֺלָה‎ 5:12; 5:15.
 3erkölcsi rossz
-1Sám 12:17 12:19 24:12 26:18 Ézs 47:10 Jer 2:19Jeremiásnál összesen 13-szor, + 18-szor, + a következők: עָשָׂה (הָ)רָעָה‎1Móz 39:9 5Móz 31:18+ 5-ször +Jer 18:10(Kt, de Qr רע)
-רעה מַעֲשֵׂה
-Préd 8:11
-רעה אהב
-Mik 3:2(Kt)
-מרעה שׁוּב
-Jer 18:8 23:14 44:5
-מ רעה ׳בִּעֵר
-Bír 20:13(l. II. רַע‎ 3)
-רָעָה מִפְּנֵי
-Jer 7:12 44:3
-רָעַתרעתכם מפגי
-Hós 10:15
-בגלל ר׳
-Jer 11:17
-על כל ר׳
-Jer 1:16 32:32 33:5
-׳מֵר
-Zsolt 107:34 Jer 12:4
-אַנְשֵׁי רָעָה
-Péld 24:1
-Apparátus és szövegkritika 1
-▸ forrásjel (J)
+erkölcsi rossz, 1Sám 12:17, 19; 24:12; 26:18; Ézs 47:10; Jer 2:19, Jeremiásnál összesen 13-szor, + 18-szor, + a következők: עָשָׂה (הָ)רָעָה‎ 1Móz 39:9; 5Móz 31:18 (J) + 5-ször + Jer 18:10 (Kt, de Qr רע); רעה מַעֲשֵׂה Préd 8:11; רעה אהב Mik 3:2 (Kt); מרעה שׁוּב Jer 18:8; 23:14; 44:5; מ רעה בִּעֵר׳ Bír 20:13 (l. II. רַע‎ 3); רָעָה מִפְּנֵי Jer 7:12; 44:3; רָעַתרעתכם מפגי Hós 10:15; ר׳ בגלל Jer 11:17; ר כל׳ על‎ 1:16; 32:32; 33:5; מֵר׳ Zsolt 107:34; Jer 12:4; אַנְשֵׁי רָעָה Péld 24:1.
 Angol eredeti
-▸ ethical evil, 1Sam 12:17, 19; 24:12; 26:18; Isa 47:10; Jer 2:19 13t. Jeremiah, + 18 t., + following: עָשָׂה (הָ)רָעָה Gen 39:9; Deut 31:18 (J) + 5 t. + Jer 18:10 (Kt, but Qr רע); רעה מַעֲשֵׂה Eccl 8:11; רעה אהב Micah 3:2 (Kt); מרעה שׁוּב Jer 18:8; 23:14; 44:5; מ רעה ׳בִּעֵר Judg 20:13 (see II. רַע‎ 3); רָעָה מִפְּנֵי Jer 7:12; 44:3; רָעַתרעתכם מפגי Hosea 10:15; בגלל ר׳ Jer 11:17; על כל ר׳‎ 1:16; 32:32; 33:5; ׳מֵר Psa 107:34; Jer 12:4; אַנְשֵׁי רָעָה Prov 24:1.
-erkölcsi rossz, 1Sám 12:17, 19; 24:12; 26:18; Ézs 47:10; Jer 2:19, Jeremiásnál összesen 13-szor, + 18-szor, + a következők: עָשָׂה (הָ)רָעָה‎ 1Móz 39:9; 5Móz 31:18 (J) + 5-ször + Jer 18:10 (Kt, de Qr רע); רעה מַעֲשֵׂה Préd 8:11; רעה אהב Mik 3:2 (Kt); מרעה שׁוּב Jer 18:8; 23:14; 44:5; מ רעה ׳בִּעֵר Bír 20:13 (l. II. רַע‎ 3); רָעָה מִפְּנֵי Jer 7:12; 44:3; רָעַתרעתכם מפגי Hós 10:15; בגלל ר׳ Jer 11:17; על כל ר׳‎ 1:16; 32:32; 33:5; ׳מֵר Zsolt 107:34; Jer 12:4; אַנְשֵׁי רָעָה Péld 24:1.
-172 hivatkozás jelentéspontja a megjelenített bontásban nem azonosítható (a magyar fordítás tagolása itt eltér az angol eredetiétől); ezek a pontok számában nem szerepelnek.
+▸ ethical evil, 1Sam 12:17, 19; 24:12; 26:18; Isa 47:10; Jer 2:19 13t. Jeremiah, + 18 t., + following: עָשָׂה (הָ)רָעָה Gen 39:9; Deut 31:18 (J) + 5 t. + Jer 18:10 (Kt, but Qr רע); רעה מַעֲשֵׂה Eccl 8:11; רעה אהב Micah 3:2 (Kt); מרעה שׁוּב Jer 18:8; 23:14; 44:5; מ רעה בִּעֵר׳ Judg 20:13 (see II. רַע‎ 3); רָעָה מִפְּנֵי Jer 7:12; 44:3; רָעַתרעתכם מפגי Hosea 10:15; ר׳ בגלל Jer 11:17; ר כל׳ על‎ 1:16; 32:32; 33:5; מֵר׳ Psa 107:34; Jer 12:4; אַנְשֵׁי רָעָה Prov 24:1.
+172 hivatkozás a szövegben kattintható, de a jelentéspontja ebben a tagolásban nem azonosítható; a pontok számában nem szerepel.
 Jelmagyarázat
 ▸ D
 ▸ deuteronomista forrás (a BDB forrásbesorolása)
@@ -497,8 +181,6 @@ Jelmagyarázat
 ▸ ketív: a leírt mássalhangzós szöveg
 ▸ Qr
 ▸ qeré: a felolvasandó maszoréta olvasat
-▸ י׳
-▸ JHVH, Isten neve
 ▸ Bi
 ▸ G. Bickell
 ▸ Co
@@ -522,62 +204,74 @@ Jelmagyarázat
 ▸ status constructus
 ▸ status constructus: kapcsolati alak (a névszó a birtokos szerkezet első tagja)
 ▸ A feloldás nem a BDB része; csak a fenti jelentésekben előforduló jelek. A szövegben a pontozottan aláhúzott jelre mutatva is megjelenik.
-A magyar szócikk teljes szövege (tagolás nélkül)
-▸ I. רַע‎226 melléknév: rossz, gonosz (a főnévtől és az ige perfectum 3. hímnemű egyes számú alakjától néha nem könnyű megkülönböztetni, és a vélemények eltérnek); — hímnemű egyes szám רַע‎ 1Móz 6:5 és máshol; רָ֑ע‎ 31:24 és máshol; többes szám רָעַים‎ 13:13 és máshol; status constructus רָעֵי Ez 7:24 (Co törli); nőnemű egyes szám רָעָה‎ 1Móz 37:2, összesen 37-szer (ez az alak rendszerint főnév), többes szám רָעוֺת‎ 28:8, összesen 14-szer; רָעֹת‎ 41:27 (18-szor főnév); — 1 rossz, kellemetlen, ártalmas: asszonyról, רָעָה בְּעֵינֵי‎ 2Móz 21:8 (E; talán, megváltozott hangsúllyal, az ige 3. nőnemű egyes száma רָ֫עָה): kellemetlen, nem tetsző valakinek a szemében, többes számban 1Móz 28:8 (P); mérges növényről 2Kir 4:41, rosszindulatú fekélyekről 5Móz 28:35; Jób 2:7, betegségekről 5Móz 7:15; 28:59; 2Krón 21:19; Préd 6:2, halálos kardról Zsolt 144:10, nyilakról Ez 5:16, súlyos ítéletekről 14:21, csodákról 5Móz 6:22; מַלְאֲכֵי רָעִים Zsolt 78:49 = kegyetlen követek (Istené; Ew^§ 287 a Ges^§ 130e), vadállatokról 1Móz 37:20, 33 (JE) 3Móz 26:6 (H) Ez 5:17; 14:15, 21; 34:25; tisztátalan dologról 5Móz 23:10. 2 rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó: רעים ימים gonosz napok (a próbatétel és a nehézség napjai) 1Móz 47:9 (P) Péld 15:15; עִנְיָן רע Préd 1:13; 5:13; עִנְיַן‎ 4:8, vö. 2:17; 9:3; הַמַּעֲשֶׂה הָרָע‎ 4:3; הדבר הרע rossz hír 2Móz 33:4 (J), így רָעָה דִּבָּה‎ 1Móz 37:2 (JE) 4Móz 14:37 (P), שׁם רע‎ 5Móz 22:14, 19; Neh 6:13, שְׁמוּעָה רָעָה Jer 49:23; Zsolt 112:7; dolgokról: fájdalmas fenyítés Péld 15:10, rossz esemény 1Kir 5:18, gonosz (bajt hozó) háló Préd 9:12, eszközök Ézs 32:7: כל הדבר הרע Józs 23:15 (D): minden rossz (ártalmas) dolog; רַע: rossz, ártalmas Ézs 3:11 Jer 2:19; beszédről, טוב רעאו דבּר‎, 1Móz 24:50 (J) közmondásban: rosszat vagy jót mondani = bármit is, מטוב עד רע‎ 31:24, 29 (E), לְמֵרָע ועד טוב‎ 2Sám 13:22, az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát idézi elő 1Sám 16:14-15, 16, 23; 18:10; 19:9 (l. רוּח‎ 9). 3 rossz, nem tetsző פְלשְׁתִּים סַרְנֵי בְּעֵינֵי רָ֔ע עָשָׂח‎ 1Sám 29:7. 4 a maga nemében rossz: föld 4Móz 13:19 (J), hely 20:5 (JE), vizek 2Kir 2:19, fügék Jer 24:2-3,(a versben kétszer); 24:8, tehenek 1Móz 41:3-4, 19, 20, 21, 27 (E), מוּם רע‎ 5Móz 15:21, vö. 17:1. 5 rossz, azaz csekély értékű 3Móz 27:10 (a versben kétszer); 27:12, 14, 33 (H), vö. Mal 1:8 (a versben kétszer); מַקּוֺנֶה יאֹמַר רַע רַע Péld 20:14 (a versben kétszer). 6 + מִן comparativus: rosszabb, mint, 2Sám 19:8; felsőfokként רָעֵי גוֺיִם Ez 7:24: a nemzetek legrosszabbja (Co törli). 7 szomorú, boldogtalan: לֶב־רָע֑ szomorú szív (vö. ellentéte יטב טוב,) Péld 25:20; arcról 1Móz 40:7 (E) Neh 2:2; רע לְפָנָיו‎ 2:1. 8 מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni Ez 38:10; Eszt 9:25. 9 rossz, barátságtalan, rosszindulatú hajlamú vagy természetű: וְלֵב־רָ֑ע: ha az elme rosszindulatú, ártalmas Péld 26:23; רַע עָ֑יִן a gonosz szemű 23:6; 28:22; רוּחַ רָעָה Bír 9:23: rossz indulat. 10 erkölcsileg rossz, gonosz, istentelen: a. általában, אם טוב ואם רע Préd 12:14: akár jó, akár rossz. b. személyekről, רע אושׁ‎ 1Sám 30:22; אדם רע Zsolt 140:2; המן הרע הזה Eszt 7:6: ez a gonosz Hámán, így רָ֑ע = gonosz ember Zsolt 10:15; Jób 21:30; Péld 11:21; 12:13; 24:20, רָעִים = gonosz emberek 1Móz 13:13 (J) Jer 6:29; 15:21; Ez 30:12; Jób 35:12; Péld 4:14; 12:12; 14:19; 15:8; רָעוֺת gonosz asszonyok Jer 2:33; רעים שׁכנים‎ 12:14: gonosz szomszédok; a הַדּוֺר-ról 5Móz 1:35, הָעָם Jer 13:10; הָעֵדָה‎ 4Móz 14:27, 35 (P), המשׁפחה Jer 8:3; רַע בְּעֵינֵי י׳ gonosz a י׳ szemében 1Móz 38:7 (JE) = 1Krón 2:8; עָשָׂה הָרָע בְּעֵינֵי י׳‎ 4Móz 32:13 (R) 5Móz 4:25; 9:18; 17:2; 31:29; Bír 2:11, összesen 48-szor, + (Isten suffixumával) 2Kir 21:15; Ézs 65:12; 66:4; Jer 7:30; 32:30; Zsolt 51:6; 2Sám 12:9, valószínűleg Jer 18:10 is (olv. הָרָע הָרָעָה helyett). c. gondolatokról, יֵצֶר‎ 1Móz 6:5; 8:21 (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; szavakról, רעות Péld 15:28. d. tettekről, cselekedetekről, הרע (כ)דבר עשׂה‎ 5Móz 13:12; 17:5; 19:20; Neh 13:17; הרעות עשׂה Jer 3:5; דבר רע Zsolt 64:6; 141:4; Préd 8:3, 5; דברים‎ 1Sám 2:23; 2Kir 17:11; דֶּרֶךְ‎ 1Kir 13:33; Jer 18:11; 23:22, összesen 11-szer; דרכים‎ 2Kir 17:13; 2Krón 7:14; Ez 20:44; 33:11; 36:31; Zak 1:4; מעשׂינוּ Ezsd 9:13; מעללים Zak 1:4; Neh 9:35 (vö. רֹעַ‎ 4); בֶּצַע רע Hab 2:9; מרוצתם Jer 23:10; (ה)תועבות (ה)רעות Ez 6:11; 8:9 (Co törli); כִּי רָעוֺת בִּמְגוּרָם Zsolt 55:16: mert gonosz tettek vannak a lakásukban. II. רַע‎126 hímnemű főnév^Jób 30:26: rossz, szorongattatás, nyomorúság, sérelem, csapás; — status absolutus רַע‎ 4Móz 11:1 és máshol, בְּרָע‎ 2Móz 5:19 és máshol, רָ֑ע‎ 1Móz 48:16 és máshol; — 1 rossz, szorongattatás, balszerencse: יָרֵא רַע rosszat félni Zsolt 23:4; Sof 3:15; בּוֺרֵא רָ֑ע Ézs 45:7 (Istenről), רע הביא‎ 31:2; מתאננים רַע‎ 4Móz 11:1 (J): zúgolódás a szorongattatás miatt (l. Di); אם טוב ואם רע Jer 42:6: akár jólét, akár balszerencse; יוֺם רע Ámós 6:3: a csapás napja; יְמֵי רע Zsolt 49:6; 94:13; כי טוב קויתי ויבא רע Jób 30:26; בְּרָע balszerencsében 2Móz 5:19 (E) Zsolt 10:6; יִפֹּל בְּרָ֑ע Péld 13:17; אֶרְאֶה בָרָ֑ע‎ 1Móz 44:34 (J); בכל־רע Péld 5:14, מכל רע‎ 1Móz 48:16 (E) Zsolt 121:7; l. még Mik 1:12; Zsolt 140:12; Jób 5:19; 31:29 Péld 12:21; 19:23. 2 rossz, sérelem, jogtalanság: Hab 2:9; Jób 2:10; Péld 21:10; עשׂה רע, + עִם + személy 1Móz 31:29 (E); ל + személy Jer 39:12; mint a חשּׁב tárgya Hós 7:15, חרשׁ Péld 6:14; 12:20; 14:22, השׁיב Zsolt 54:7, גמל‎ 7:5; Péld 31:12, בקּשׁ‎ 17:11, שׁלּם‎ 20:22, אמר Zsolt 41:6, דבּר‎ 109:20; דבּר בְּרָע‎ 73:8: sérelemről beszélni; רָ֑ע אִם כִּי טוֺב יִתְנַבֵּא לֹא‎ 1Kir 22:8, 18 2Krón (2Krón 18:7 לְרָעָמ‎), 18:17 לְרָ֑ע; לרע ártalomra, sérelemre Ézs 59:7; Jer 7:6; 25:7; Zsolt 56:6; Péld 1:16; 21:12; Préd 8:9; רַע יֵרוֺעַ Péld 11:15 (de olv. רֹעַ Gr SS, l. Toy). 3 erkölcsi rossz, 5Móz 30:15; 2Sám 14:17; Ézs 5:20; Ámós 5:14; Mik 7:3, összesen 10-szer; עשׁה רע‎ 2Kir 21:9; 2Krón 12:14; 33:9; Neh 9:28, összesen 8-szor; פֹּעֲלֵי רע Mik 2:1; רע אהד‎ 3:2 (Qr), Zsolt 52:5; רע שׂנא Ámós 5:15; Zsolt 97:10; Péld 8:13; רע מאס Zsolt 36:5; מאס ברע Ézs 7:15-16, מִן הרע בִּעֵר kiirtani a rosszat valahonnan 5Móz 13:6, Mózes ötödik könyvében összesen 8-szor; רָ֑ע רְגֻרְךָ לֹא Zsolt 5:5 (melléknév = gonosz ember Hup De és mások); ורע טוב ירע‎ 1Móz 2:9, 17; 3:5, 22 (mind J), 5Móz 1:39; סר מֵרָע Ézs 59:15; Zsolt 34:15; 37:27; Péld 3:7, összesen 8-szor; כי ברע הוא‎ 2Móz 32:22 (J): a rosszra hajlik; רע רשׁעים Zsolt 7:10, רע מעללים‎ 1Sám 25:3, vö. Mik 3:4 (l. רֹעַ‎ 3); דִּבְרֵי רָע gonosz tettek Jer 5:28; תַּהְפֻּכוֺתרָ֑ע Péld 2:14; אֹרַחרע Zsolt 119:101; עֲצַת רע‎ 2Móz 11:2; מַחְשְׁבוֺת רע Péld 15:26; אִישׁ רע‎ 29:6; אַנְשֵׁי רע‎ 28:5; אֵשֶׁת רע‎ 6:24 (de olv. רֵעַ Gr Bi Toy). רָעָה‎310 nőnemű főnév: rossz, nyomorúság, szorongattatás, sérelem; — status absolutus ר׳‎ 1Móz 26:29 és máshol; status constructus רָעַת‎ 6:5 és máshol; suffixummal רָֽעָתִי Zsolt 35:4 és máshol; רָעָֽתְךָ‎ 1Kir 2:44 és máshol; רָֽעָתֵכִי Jer 11:15 (a szöveg kétséges); רָֽעַתְכֶם‎ 1Sám 12:17 stb.; többes szám רָעוֺת‎ 5Móz 31:17 és máshol; רָעֹת Jer 44:9; 2Móz 23:2; suffixummal רָעוֺתֵיכֶם‎ 1Sám 10:19 és máshol, stb.; — 1 rossz, nyomorúság, szorongattatás: מַּחַד רָעָה Péld 1:33, (ה)רעה באה Ez 7:5 (a versben kétszer); עַל-val Ézs 47:11 (olv. באה בא helyett), Jer 5:12, összesen 5-ször; אֶל-val 2:3; 51:60; רעה הביא‎ 4:6; 1Kir 21:29; + אֶל‎ 2Sám 17:14, a Királyok könyveiben és Jeremiásnál összesen 8-szor; + עַל‎ 1Kir 9:9 2Krón 7:22; Jer 19:3, Jeremiásnál összesen 6-szor + 8-szor; + אֶל és לְ‎ 19:15; 36:31; יוֺם רעה‎ 17:17-18, összesen 5-ször; העה יְמֵי Préd 12:1 (azaz a tavaszi napok, amelyek az öregekre végzetesek, Wetzst, De^Koh. 447); רָעוֺת bajok 5Móz 31:17 (a versben kétszer); 31:21 (JE), 32:23 (költemény), Zsolt 34:20; 40:13; 88:4; עֵת רָעָה Ámós 5:13; Jer 2:27-28, összesen 5-ször; ברעה ראה‎ 4Móz 11:15 (JE) Abd 13; Eszt 8:6; רעה ראה Jer 44:17; Zsolt 90:15; Péld 22:3 = 27:12; יפול ברעה‎ 17:20; 28:14; בְּרָעָה‎ 1Móz 44:29 (J) Péld 14:32; 24:16; Neh 1:3; 1Krón 7:23; Zsolt 107:26; ברעותיכם‎ 141:5; רָעָה עַל נִחַם‎ 2Móz 32:12, 14 (J) Jer 8:6, összesen 6-szor; אֶל-val 2Sám 24:16; Jer 26:3, 13, 19; 42:10. 2 rossz, sérelem, jogtalanság: עשׂה רעה‎ 2Sám 12:18; Jer 26:19; 41:11; עִם-val 1Móz 26:29 (J) Bír 15:3; 2Sám 13:16; את-val Bír 11:27; ל-val 1Sám 6:9; 1Kir 2:44, összesen 4-szer; אֶל-val Jer 44:7; igék tárgyaként השׁב‎ 1Móz 50:20 (E) Jer 36:3; 48:2, összesen 7-szer; חרשׁ‎ 1Sám 23:9; Péld 3:29; הֵשִׁיב‎ 1Móz 50:15 (E) Bír 9:56-57, összesen 4-szer; גמל‎ 1Móz 50:17 (E) 1Sám 24:18 -17 Ézs 3:9; Péld 3:30; בקשׁ‎ 4Móz 35:23 (P) 1Sám 24:10 -9 25:26, összesen 4-szer; שׁלּם‎ 1Móz 44:4 (J) Jer 18:20; 51:24; Zsolt 35:12; 38:21; לְרָעָה ártalomra 1Móz 31:52; 2Móz 23:2 (E) 5Móz 29:20; Bír 2:15; 2Sám 18:32; Jer 21:10, Jeremiásnál összesen 8-szor; Ámós 9:4; Zak 1:15; Péld 6:18; Préd 5:12; בְּרָעָתֶ֑ךָ‎ 2Sám 16:8: a te gonoszságodban; בְּרָעָה‎ 2Móz 32:12 (J): ártó szándékkal; רָעָה רַבָּה Préd 2:21; רָעָה חוֺלָה‎ 5:12; 5:15. 3 erkölcsi rossz, 1Sám 12:17, 19; 24:12; 26:18; Ézs 47:10; Jer 2:19, Jeremiásnál összesen 13-szor, + 18-szor, + a következők: עָשָׂה (הָ)רָעָה‎ 1Móz 39:9; 5Móz 31:18 (J) + 5-ször + Jer 18:10 (Kt, de Qr רע); רעה מַעֲשֵׂה Préd 8:11; רעה אהב Mik 3:2 (Kt); מרעה שׁוּב Jer 18:8; 23:14; 44:5; מ רעה ׳בִּעֵר Bír 20:13 (l. II. רַע‎ 3); רָעָה מִפְּנֵי Jer 7:12; 44:3; רָעַתרעתכם מפגי Hós 10:15; בגלל ר׳ Jer 11:17; על כל ר׳‎ 1:16; 32:32; 33:5; ׳מֵר Zsolt 107:34; Jer 12:4; אַנְשֵׁי רָעָה Péld 24:1.
-Forrás és licenc: BDB (bdb): közkincs · BDB+projekt_adat (bdb_alias): közkincs; minden jog fenntartva · projekt_adat (forditasok): minden jog fenntartva · BDB+Macula_heber+OSHL+TAHOT+projekt_adat (bdb_vers_jelentes): közkincs; CC BY 4.0; minden jog fenntartva · TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+A magyar szócikk teljes szövege, tagolás nélkül
+▸ I. רַע‎226 melléknév: rossz, gonosz (a főnévtől és az ige perfectum 3. hímnemű egyes számú alakjától néha nem könnyű megkülönböztetni, és a vélemények eltérnek); — hímnemű egyes szám רַע‎ 1Móz 6:5 és máshol; רָ֑ע‎ 31:24 és máshol; többes szám רָעַים‎ 13:13 és máshol; status constructus רָעֵי Ez 7:24 (Co törli); nőnemű egyes szám רָעָה‎ 1Móz 37:2, összesen 37-szer (ez az alak rendszerint főnév), többes szám רָעוֺת‎ 28:8, összesen 14-szer; רָעֹת‎ 41:27 (18-szor főnév); — 1 rossz, kellemetlen, ártalmas: asszonyról, רָעָה בְּעֵינֵי‎ 2Móz 21:8 (E; talán, megváltozott hangsúllyal, az ige 3. nőnemű egyes száma רָ֫עָה): kellemetlen, nem tetsző valakinek a szemében, többes számban 1Móz 28:8 (P); mérges növényről 2Kir 4:41, rosszindulatú fekélyekről 5Móz 28:35; Jób 2:7, betegségekről 5Móz 7:15; 28:59; 2Krón 21:19; Préd 6:2, halálos kardról Zsolt 144:10, nyilakról Ez 5:16, súlyos ítéletekről 14:21, csodákról 5Móz 6:22; מַלְאֲכֵי רָעִים Zsolt 78:49 = kegyetlen követek (Istené; Ew§ 287 a Ges§ 130e), vadállatokról 1Móz 37:20, 33 (JE) 3Móz 26:6 (H) Ez 5:17; 14:15, 21; 34:25; tisztátalan dologról 5Móz 23:10. 2 rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó: רעים ימים gonosz napok (a próbatétel és a nehézség napjai) 1Móz 47:9 (P) Péld 15:15; עִנְיָן רע Préd 1:13; 5:13; עִנְיַן‎ 4:8, vö. 2:17; 9:3; הַמַּעֲשֶׂה הָרָע‎ 4:3; הדבר הרע rossz hír 2Móz 33:4 (J), így רָעָה דִּבָּה‎ 1Móz 37:2 (JE) 4Móz 14:37 (P), שׁם רע‎ 5Móz 22:14, 19; Neh 6:13, שְׁמוּעָה רָעָה Jer 49:23; Zsolt 112:7; dolgokról: fájdalmas fenyítés Péld 15:10, rossz esemény 1Kir 5:18, gonosz (bajt hozó) háló Préd 9:12, eszközök Ézs 32:7: כל הדבר הרע Józs 23:15 (D): minden rossz (ártalmas) dolog; רַע: rossz, ártalmas Ézs 3:11 Jer 2:19; beszédről, טוב רעאו דבּר‎, 1Móz 24:50 (J) közmondásban: rosszat vagy jót mondani = bármit is, מטוב עד רע‎ 31:24, 29 (E), לְמֵרָע ועד טוב‎ 2Sám 13:22, az isteni szellemről, amely az őrjöngés és az erőszak eksztatikus állapotát idézi elő 1Sám 16:14-15, 16, 23; 18:10; 19:9 (l. רוּח‎ 9). 3 rossz, nem tetsző פְלשְׁתִּים סַרְנֵי בְּעֵינֵי רָ֔ע עָשָׂח‎ 1Sám 29:7. 4 a maga nemében rossz: föld 4Móz 13:19 (J), hely 20:5 (JE), vizek 2Kir 2:19, fügék Jer 24:2-3,(a versben kétszer); 24:8, tehenek 1Móz 41:3-4, 19, 20, 21, 27 (E), מוּם רע‎ 5Móz 15:21, vö. 17:1. 5 rossz, azaz csekély értékű 3Móz 27:10 (a versben kétszer); 27:12, 14, 33 (H), vö. Mal 1:8 (a versben kétszer); מַקּוֺנֶה יאֹמַר רַע רַע Péld 20:14 (a versben kétszer). 6 + מִן comparativus: rosszabb, mint, 2Sám 19:8; felsőfokként רָעֵי גוֺיִם Ez 7:24: a nemzetek legrosszabbja (Co törli). 7 szomorú, boldogtalan: לֶב־רָע֑ szomorú szív (vö. ellentéte יטב טוב,) Péld 25:20; arcról 1Móz 40:7 (E) Neh 2:2; רע לְפָנָיו‎ 2:1. 8 מַחֲשֶׁבֶת(ה)רָעָה חָשַׁב gonosz (ártalmas) tervet kigondolni Ez 38:10; Eszt 9:25. 9 rossz, barátságtalan, rosszindulatú hajlamú vagy természetű: וְלֵב־רָ֑ע: ha az elme rosszindulatú, ártalmas Péld 26:23; רַע עָ֑יִן a gonosz szemű 23:6; 28:22; רוּחַ רָעָה Bír 9:23: rossz indulat. 10 erkölcsileg rossz, gonosz, istentelen: a. általában, אם טוב ואם רע Préd 12:14: akár jó, akár rossz. b. személyekről, רע אושׁ‎ 1Sám 30:22; אדם רע Zsolt 140:2; המן הרע הזה Eszt 7:6: ez a gonosz Hámán, így רָ֑ע = gonosz ember Zsolt 10:15; Jób 21:30; Péld 11:21; 12:13; 24:20, רָעִים = gonosz emberek 1Móz 13:13 (J) Jer 6:29; 15:21; Ez 30:12; Jób 35:12; Péld 4:14; 12:12; 14:19; 15:8; רָעוֺת gonosz asszonyok Jer 2:33; רעים שׁכנים‎ 12:14: gonosz szomszédok; a הַדּוֺר-ról 5Móz 1:35, הָעָם Jer 13:10; הָעֵדָה‎ 4Móz 14:27, 35 (P), המשׁפחה Jer 8:3; י בְּעֵינֵי רַע׳ gonosz a י׳ szemében 1Móz 38:7 (JE) = 1Krón 2:8; י בְּעֵינֵי הָרָע עָשָׂה׳‎ 4Móz 32:13 (R) 5Móz 4:25; 9:18; 17:2; 31:29; Bír 2:11, összesen 48-szor, + (Isten suffixumával) 2Kir 21:15; Ézs 65:12; 66:4; Jer 7:30; 32:30; Zsolt 51:6; 2Sám 12:9, valószínűleg Jer 18:10 is (olv. הָרָע הָרָעָה helyett). c. gondolatokról, יֵצֶר‎ 1Móz 6:5; 8:21 (J), הָרָע הַלֵּב Jer 3:17; 7:24; 11:8; 16:12; 18:12; szavakról, רעות Péld 15:28. d. tettekről, cselekedetekről, הרע (כ)דבר עשׂה‎ 5Móz 13:12; 17:5; 19:20; Neh 13:17; הרעות עשׂה Jer 3:5; דבר רע Zsolt 64:6; 141:4; Préd 8:3, 5; דברים‎ 1Sám 2:23; 2Kir 17:11; דֶּרֶךְ‎ 1Kir 13:33; Jer 18:11; 23:22, összesen 11-szer; דרכים‎ 2Kir 17:13; 2Krón 7:14; Ez 20:44; 33:11; 36:31; Zak 1:4; מעשׂינוּ Ezsd 9:13; מעללים Zak 1:4; Neh 9:35 (vö. רֹעַ‎ 4); בֶּצַע רע Hab 2:9; מרוצתם Jer 23:10; (ה)תועבות (ה)רעות Ez 6:11; 8:9 (Co törli); כִּי רָעוֺת בִּמְגוּרָם Zsolt 55:16: mert gonosz tettek vannak a lakásukban. II. רַע‎126 hímnemű főnév Jób 30:26: rossz, szorongattatás, nyomorúság, sérelem, csapás; — status absolutus רַע‎ 4Móz 11:1 és máshol, בְּרָע‎ 2Móz 5:19 és máshol, רָ֑ע‎ 1Móz 48:16 és máshol; — 1 rossz, szorongattatás, balszerencse: יָרֵא רַע rosszat félni Zsolt 23:4; Sof 3:15; בּוֺרֵא רָ֑ע Ézs 45:7 (Istenről), רע הביא‎ 31:2; מתאננים רַע‎ 4Móz 11:1 (J): zúgolódás a szorongattatás miatt (l. Di); אם טוב ואם רע Jer 42:6: akár jólét, akár balszerencse; יוֺם רע Ámós 6:3: a csapás napja; יְמֵי רע Zsolt 49:6; 94:13; כי טוב קויתי ויבא רע Jób 30:26; בְּרָע balszerencsében 2Móz 5:19 (E) Zsolt 10:6; בְּרָ֑ע יִפֹּל Péld 13:17; אֶרְאֶה בָרָ֑ע‎ 1Móz 44:34 (J); בכל־רע Péld 5:14, מכל רע‎ 1Móz 48:16 (E) Zsolt 121:7; l. még Mik 1:12; Zsolt 140:12; Jób 5:19; 31:29 Péld 12:21; 19:23. 2 rossz, sérelem, jogtalanság: Hab 2:9; Jób 2:10; Péld 21:10; עשׂה רע, + עִם + személy 1Móz 31:29 (E); ל + személy Jer 39:12; mint a חשּׁב tárgya Hós 7:15, חרשׁ Péld 6:14; 12:20; 14:22, השׁיב Zsolt 54:7, גמל‎ 7:5; Péld 31:12, בקּשׁ‎ 17:11, שׁלּם‎ 20:22, אמר Zsolt 41:6, דבּר‎ 109:20; דבּר בְּרָע‎ 73:8: sérelemről beszélni; רָ֑ע אִם כִּי טוֺב יִתְנַבֵּא לֹא‎ 1Kir 22:8, 18 2Krón (2Krón 18:7 לְרָעָמ‎), 18:17 לְרָ֑ע; לרע ártalomra, sérelemre Ézs 59:7; Jer 7:6; 25:7; Zsolt 56:6; Péld 1:16; 21:12; Préd 8:9; רַע יֵרוֺעַ Péld 11:15 (de olv. רֹעַ Gr SS, l. Toy). 3 erkölcsi rossz, 5Móz 30:15; 2Sám 14:17; Ézs 5:20; Ámós 5:14; Mik 7:3, összesen 10-szer; עשׁה רע‎ 2Kir 21:9; 2Krón 12:14; 33:9; Neh 9:28, összesen 8-szor; רע פֹּעֲלֵי Mik 2:1; רע אהד‎ 3:2 (Qr), Zsolt 52:5; רע שׂנא Ámós 5:15; Zsolt 97:10; Péld 8:13; רע מאס Zsolt 36:5; מאס ברע Ézs 7:15-16, מִן הרע בִּעֵר kiirtani a rosszat valahonnan 5Móz 13:6, Mózes ötödik könyvében összesen 8-szor; רָ֑ע רְגֻרְךָ לֹא Zsolt 5:5 (melléknév = gonosz ember Hup De és mások); ורע טוב ירע‎ 1Móz 2:9, 17; 3:5, 22 (mind J), 5Móz 1:39; סר מֵרָע Ézs 59:15; Zsolt 34:15; 37:27; Péld 3:7, összesen 8-szor; כי ברע הוא‎ 2Móz 32:22 (J): a rosszra hajlik; רע רשׁעים Zsolt 7:10, רע מעללים‎ 1Sám 25:3, vö. Mik 3:4 (l. רֹעַ‎ 3); דִּבְרֵי רָע gonosz tettek Jer 5:28; תַּהְפֻּכוֺתרָ֑ע Péld 2:14; אֹרַחרע Zsolt 119:101; עֲצַת רע‎ 2Móz 11:2; מַחְשְׁבוֺת רע Péld 15:26; אִישׁ רע‎ 29:6; אַנְשֵׁי רע‎ 28:5; אֵשֶׁת רע‎ 6:24 (de olv. רֵעַ Gr Bi Toy). רָעָה‎310 nőnemű főnév: rossz, nyomorúság, szorongattatás, sérelem; — status absolutus ר׳‎ 1Móz 26:29 és máshol; status constructus רָעַת‎ 6:5 és máshol; suffixummal רָֽעָתִי Zsolt 35:4 és máshol; רָעָֽתְךָ‎ 1Kir 2:44 és máshol; רָֽעָתֵכִי Jer 11:15 (a szöveg kétséges); רָֽעַתְכֶם‎ 1Sám 12:17 stb.; többes szám רָעוֺת‎ 5Móz 31:17 és máshol; רָעֹת Jer 44:9; 2Móz 23:2; suffixummal רָעוֺתֵיכֶם‎ 1Sám 10:19 és máshol, stb.; — 1 rossz, nyomorúság, szorongattatás: מַּחַד רָעָה Péld 1:33, (ה)רעה באה Ez 7:5 (a versben kétszer); עַל-val Ézs 47:11 (olv. באה בא helyett), Jer 5:12, összesen 5-ször; אֶל-val 2:3; 51:60; רעה הביא‎ 4:6; 1Kir 21:29; + אֶל‎ 2Sám 17:14, a Királyok könyveiben és Jeremiásnál összesen 8-szor; + עַל‎ 1Kir 9:9 2Krón 7:22; Jer 19:3, Jeremiásnál összesen 6-szor + 8-szor; + אֶל és לְ‎ 19:15; 36:31; יוֺם רעה‎ 17:17-18, összesen 5-ször; העה יְמֵי Préd 12:1 (azaz a tavaszi napok, amelyek az öregekre végzetesek, Wetzst, DeKoh. 447); רָעוֺת bajok 5Móz 31:17 (a versben kétszer); 31:21 (JE), 32:23 (költemény), Zsolt 34:20; 40:13; 88:4; עֵת רָעָה Ámós 5:13; Jer 2:27-28, összesen 5-ször; ברעה ראה‎ 4Móz 11:15 (JE) Abd 13; Eszt 8:6; רעה ראה Jer 44:17; Zsolt 90:15; Péld 22:3 = 27:12; יפול ברעה‎ 17:20; 28:14; בְּרָעָה‎ 1Móz 44:29 (J) Péld 14:32; 24:16; Neh 1:3; 1Krón 7:23; Zsolt 107:26; ברעותיכם‎ 141:5; רָעָה עַל נִחַם‎ 2Móz 32:12, 14 (J) Jer 8:6, összesen 6-szor; אֶל-val 2Sám 24:16; Jer 26:3, 13, 19; 42:10. 2 rossz, sérelem, jogtalanság: עשׂה רעה‎ 2Sám 12:18; Jer 26:19; 41:11; עִם-val 1Móz 26:29 (J) Bír 15:3; 2Sám 13:16; את-val Bír 11:27; ל-val 1Sám 6:9; 1Kir 2:44, összesen 4-szer; אֶל-val Jer 44:7; igék tárgyaként השׁב‎ 1Móz 50:20 (E) Jer 36:3; 48:2, összesen 7-szer; חרשׁ‎ 1Sám 23:9; Péld 3:29; הֵשִׁיב‎ 1Móz 50:15 (E) Bír 9:56-57, összesen 4-szer; גמל‎ 1Móz 50:17 (E) 1Sám 24:18 -17 Ézs 3:9; Péld 3:30; בקשׁ‎ 4Móz 35:23 (P) 1Sám 24:10 -9 25:26, összesen 4-szer; שׁלּם‎ 1Móz 44:4 (J) Jer 18:20; 51:24; Zsolt 35:12; 38:21; לְרָעָה ártalomra 1Móz 31:52; 2Móz 23:2 (E) 5Móz 29:20; Bír 2:15; 2Sám 18:32; Jer 21:10, Jeremiásnál összesen 8-szor; Ámós 9:4; Zak 1:15; Péld 6:18; Préd 5:12; בְּרָעָתֶ֑ךָ‎ 2Sám 16:8: a te gonoszságodban; בְּרָעָה‎ 2Móz 32:12 (J): ártó szándékkal; רָעָה רַבָּה Préd 2:21; רָעָה חוֺלָה‎ 5:12; 5:15. 3 erkölcsi rossz, 1Sám 12:17, 19; 24:12; 26:18; Ézs 47:10; Jer 2:19, Jeremiásnál összesen 13-szor, + 18-szor, + a következők: עָשָׂה (הָ)רָעָה‎ 1Móz 39:9; 5Móz 31:18 (J) + 5-ször + Jer 18:10 (Kt, de Qr רע); רעה מַעֲשֵׂה Préd 8:11; רעה אהב Mik 3:2 (Kt); מרעה שׁוּב Jer 18:8; 23:14; 44:5; מ רעה בִּעֵר׳ Bír 20:13 (l. II. רַע‎ 3); רָעָה מִפְּנֵי Jer 7:12; 44:3; רָעַתרעתכם מפגי Hós 10:15; ר׳ בגלל Jer 11:17; ר כל׳ על‎ 1:16; 32:32; 33:5; מֵר׳ Zsolt 107:34; Jer 12:4; אַנְשֵׁי רָעָה Péld 24:1.
+Forrás és licenc
+▸ forrásadat modell-kimenet gépi feldolgozás
+▸ Forrás és licenc: BDB: közkincs · BDB+a projekt saját adata: közkincs; minden jog fenntartva · a projekt saját adata: minden jog fenntartva · BDB+Macula heber+OSHL+TAHOT+a projekt saját adata: közkincs; CC BY 4.0; minden jog fenntartva · TAHOT+TAGNT: CC BY 4.0 · Macula heber: CC BY 4.0 · morf kulcs heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
 ## [szo.lxx_bridge]
-Görög megfelelő (Septuaginta) forrásadat
+Görög megfelelő (Septuaginta)
 Görög Strong | Szótő | Jelentés | Darab
 G4190 | πονηρός | evil/bad | 223
 G2556 | κακός | evil/harm | 200
 G2549 | κακία | evil | 73
 G4189 | πονηρία | evil | 18
-Forrás és licenc: lxx_bridge (lxx_bridge): CC BY 4.0
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: lxx bridge: CC BY 4.0
 ## [szo.ubs_dbh]
-UBS DBH jelentések (a teljes szócikk, magyar fordítással) forrásadat modell-kimenet CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet
-Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)
-006852001001000 | Bad | gonosz | = olyan tárgy állapota, amelynek minősége annyira gyenge, hogy kívülről megfigyelhető vagy értékelhető | bad | = condition of an object that is of such poor quality that it can be observed or evaluated externally
-006852001002000 | Evil | gonoszság; gonosz | = olyan ember vagy szellem állapota, amely nem tekinthető erkölcsileg jónak, tisztának vagy helyesnek; vonatkozhat egyénre, csoportra vagy nemzetre | evil; wicked | = condition of a human or a spirit that is not considered morally good or pure or right; can refer to an individual, a group, or a nation
-006852001003000 | Ferocious | heves; vad; kegyetlen | = olyan állat állapota, amely szelídítetlen és veszélyes, vagy olyan tárgyé, amely nem hasznos és veszélyes | fierce; wild; cruel | = condition of an animal that is untamed and dangerous, or of an object that is not useful and dangerous
-006852001004000 | Grieve | szomorú; csüggedt | = állapot, amelyben az emberek szomorúság érzelmét élik át, ami gyakran az arckifejezésükön is látszik | sad; downcast | = state in which humans experience an emotion of sadness, often visible in their facial expression
-006852001005000 | Unsafe | baj; nyomorúság; gond; romlás; gonoszság | = olyan esemény vagy tárgy állapota, amely nagyon nehéz, fájdalmas vagy káros; az ilyen eseményre adott hozzáállás vagy érzelem leírására is használatos | harm; misery; trouble; disaster; evil | = state of an event or an object that is very difficult or painful or harmful; also used to describe the attitude or emotion in reaction to such an event
-006852001006000 | Wrong | gonoszság (cselekedetek) | = állapot, amelyben egy esemény erkölcsileg és/vagy etikailag helytelen | evil (actions) | = state in which an event is morally and/or ethically wrong
-006864001001000 | Wrong | gonoszság; gonosz terv; helytelenség | = állapot, amelyben egy esemény erkölcsileg és/vagy etikailag helytelen, ami a bűnösség állapotához, végül nehézséghez és szenvedéshez vezet | evil; wickedness; wrong | = state in which an event is morally and/or ethically wrong, resulting in a state of guilt and, eventually, hardship and suffering
-006864001002000 | Angry | nemtetszés | = állapot, amelyben valaki haragos vagy elkeseredett egy adott helyzet miatt | displeasure | = condition in which a person is angry or distressed about a particular situation
-006864001003000 | Unsafe | gond; romlás; baj; szerencsétlenség | = nehézség vagy szorult helyzet valamely körülményben, olykor gonosz viselkedés következményeként | trouble; disaster; harm; misfortune | = state of hardship or difficulty in a circumstance, sometimes as the consequence of wicked behavior
-Forrás és licenc: UBS_DBH (ubs_dbh_jelentesek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+UBS DBH jelentések (a teljes szócikk, magyar fordítással)
+Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)
+Bad | gonosz | = olyan tárgy állapota, amelynek minősége annyira gyenge, hogy kívülről megfigyelhető vagy értékelhető | bad | = condition of an object that is of such poor quality that it can be observed or evaluated externally
+Evil | gonoszság; gonosz | = olyan ember vagy szellem állapota, amely nem tekinthető erkölcsileg jónak, tisztának vagy helyesnek; vonatkozhat egyénre, csoportra vagy nemzetre | evil; wicked | = condition of a human or a spirit that is not considered morally good or pure or right; can refer to an individual, a group, or a nation
+Ferocious | heves; vad; kegyetlen | = olyan állat állapota, amely szelídítetlen és veszélyes, vagy olyan tárgyé, amely nem hasznos és veszélyes | fierce; wild; cruel | = condition of an animal that is untamed and dangerous, or of an object that is not useful and dangerous
+Grieve | szomorú; csüggedt | = állapot, amelyben az emberek szomorúság érzelmét élik át, ami gyakran az arckifejezésükön is látszik | sad; downcast | = state in which humans experience an emotion of sadness, often visible in their facial expression
+Unsafe | baj; nyomorúság; gond; romlás; gonoszság | = olyan esemény vagy tárgy állapota, amely nagyon nehéz, fájdalmas vagy káros; az ilyen eseményre adott hozzáállás vagy érzelem leírására is használatos | harm; misery; trouble; disaster; evil | = state of an event or an object that is very difficult or painful or harmful; also used to describe the attitude or emotion in reaction to such an event
+Wrong | gonoszság (cselekedetek) | = állapot, amelyben egy esemény erkölcsileg és/vagy etikailag helytelen | evil (actions) | = state in which an event is morally and/or ethically wrong
+Wrong | gonoszság; gonosz terv; helytelenség | = állapot, amelyben egy esemény erkölcsileg és/vagy etikailag helytelen, ami a bűnösség állapotához, végül nehézséghez és szenvedéshez vezet | evil; wickedness; wrong | = state in which an event is morally and/or ethically wrong, resulting in a state of guilt and, eventually, hardship and suffering
+Angry | nemtetszés | = állapot, amelyben valaki haragos vagy elkeseredett egy adott helyzet miatt | displeasure | = condition in which a person is angry or distressed about a particular situation
+Unsafe | gond; romlás; baj; szerencsétlenség | = nehézség vagy szorult helyzet valamely körülményben, olykor gonosz viselkedés következményeként | trouble; disaster; harm; misfortune | = state of hardship or difficulty in a circumstance, sometimes as the consequence of wicked behavior
+Forrás és licenc
+▸ forrásadat modell-kimenet CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet
+▸ Forrás és licenc: UBS DBH: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.sdbh]
-Szemantikai domén (SDBH) forrásadat modell-kimenet üres eredmény nem negatív lelet
-Domén kód | Domén | Glossza | Hivatkozás
-002001001007 | Rossz Bad | bad | 21
-002001001007 | Rossz Bad | bad | 21
-002001002002 | Harag Angry | displeasure | 2
-002001002007 | Gonosz Evil | evil; wicked | 41
-002001002007 | Gonosz Evil | evil; wicked | 41
-002001002009 | Vad, kegyetlen Ferocious | fierce; wild; cruel | 8
-002001002009 | Vad, kegyetlen Ferocious | fierce; wild; cruel | 8
-002001002013 | Gyász, bánkódás Grieve | sad; downcast | 4
-002001002013 | Gyász, bánkódás Grieve | sad; downcast | 4
-002001003020 | Helytelenség Wrong | evil (actions) | 210
-002001003020 | Helytelenség Wrong | evil (actions) | 210
-002001003020 | Helytelenség Wrong | evil; wickedness; wrong | 126
-002003003022 | Veszély Unsafe | harm; misery; trouble; disaster; evil | 65
-002003003022 | Veszély Unsafe | harm; misery; trouble; disaster; evil | 65
-002003003022 | Veszély Unsafe | trouble; disaster; harm; misfortune | 185
-Forrás és licenc: SDBH (sdbh_domenek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+Szemantikai domén (SDBH)
+Domén | Glossza | Hivatkozás
+Rossz | bad | 21
+Rossz | bad | 21
+Harag | displeasure | 2
+Gonosz | evil; wicked | 41
+Gonosz | evil; wicked | 41
+Vad, kegyetlen | fierce; wild; cruel | 8
+Vad, kegyetlen | fierce; wild; cruel | 8
+Gyász, bánkódás | sad; downcast | 4
+Gyász, bánkódás | sad; downcast | 4
+Helytelenség | evil (actions) | 210
+Helytelenség | evil (actions) | 210
+Helytelenség | evil; wickedness; wrong | 126
+Veszély | harm; misery; trouble; disaster; evil | 65
+Veszély | harm; misery; trouble; disaster; evil | 65
+Veszély | trouble; disaster; harm; misfortune | 185
+Forrás és licenc
+▸ forrásadat modell-kimenet üres eredmény nem negatív lelet
+▸ Forrás és licenc: SDBH: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.sece_h]
-SECE-szócikk (héber) forrásadat
+SECE-szócikk (héber)
 רַע (raʻ｜rah｜adjective｜bad｜evil) [Heb] רַע ETCBC: רַע (adjv｜evil), רָעָה (subs｜evil) OSHL: t.dq.ad, t.dq.ac, t.dq.ae TWOT: 2191a 2191c GK: H8273, H8274 Greek: ἀδίκημα, ἀδικία, ἄδικος, ἀδίκως, ἁμαρτωλός, ἀρκέω, εὐαρεστέω, ἐχθρός, κακός, λοιμός, πονηρία, πονηρός, πονηρότερος, σκυθρωπός Derivation: from רָעַע; Strong's: bad or (as noun) evil (natural or moral) KJV: adversity, affliction, bad, calamity, [phrase] displease(-ure), distress, evil((-favouredness), man, thing), [phrase] exceedingly, [idiom] great, grief(-vous), harm, heavy, hurt(-ful), ill (favoured), [phrase] mark, mischief(-vous), misery, naught(-ty), noisome, [phrase] not please, sad(-ly), sore, sorrow, trouble, vex, wicked(-ly, -ness, one), worse(-st), wretchedness, wrong. (Incl. feminine raaah; as adjective or noun.).
-Forrás és licenc: SECE_H (sece_h): közkincs
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: SECE H: közkincs
 ## [szo.oshl]
-OSHL: TWOT- és BDB-azonosító, BDB-helyek forrásadat
+OSHL: TWOT- és BDB-azonosító, BDB-helyek
 TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás
 2191a | t.dq.ac | heber | lzv | רַע | raʿ | A | bad
 2191a | t.dq.ad | heber | lzu | רַע | raʿ | N | evil
 2191c | t.dq.ae | heber | mag | רָעָה | rāʿâ | N | evil
-Forrás és licenc: OSHL (oshl_lexikalis_index): CC BY 4.0 · OSHL_BDB (oshl_bdb_igehelyek): CC BY 4.0
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: OSHL: CC BY 4.0 · OSHL BDB: CC BY 4.0
 ## [szo.oshl_csalad]
-Rokon szavak (OSHL-gyökcsalád) forrásadat az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet
+Rokon szavak (OSHL-gyökcsalád)
 Gyök: רעע (Strong-szám nélküli gyök-bejegyzés)
 Strong | Lemma | Átírás | Szófaj | Angol meghatározás
 H4827 | מֵרַע | mēraʿ | V | be evil
@@ -586,14 +280,12 @@ H7451 | רַע | raʿ | A | bad
 H7455 | רֹעַ | rōaʿ | N | badness
 H7451 | רָעָה | rāʿâ | N | evil
 H7489 | רָעַע | rāʿaʿ | V | be evil
-Forrás és licenc: OSHL (oshl_lexikalis_index): CC BY 4.0
-## [szo.tbesh]
-Bővített Strong-szócikk (TBESH) forrásadat gépi feldolgozás
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: TBESH (tbesh): CC BY 4.0 · TBESH+TAHOT+projekt_adat (glosszak_heber_hu): CC BY 4.0; minden jog fenntartva · projekt_adat (forditasok): minden jog fenntartva
+Forrás és licenc
+▸ forrásadat az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet
+▸ Forrás és licenc: OSHL: CC BY 4.0
 ## [szo.tw_h]
-translationWords forrásadat modell-kimenet
-démon, gonosz szellem, tisztátalan szellem demon, evil spirit, unclean spirit (kt, kt/demon)
+translationWords
+démon, gonosz szellem, tisztátalan szellem (kt, kt/demon)
 Definition:
 All these terms refer to demons, which are spirit beings that oppose God’s will.
 God created angels to serve him. When the devil rebelled against God, some of the angels also rebelled and were thrown out of heaven. It is believed that demons and evil spirits are these “fallen angels.”
@@ -619,7 +311,7 @@ Examples from the Bible stories:
 49:2 He (Jesus) walked on water, calmed storms, healed many sick people, drove out demons, raised the dead to life, and turned five loaves of bread and two small fish into enough food for over 5,000 people.
 Word Data:
 Strong’s: H2932, H7307, H7451, H7700, G01690, G11390, G11400, G11410, G11420, G41900, G41510, G41520, G41890
-gonosz, rossz, gonoszság, kellemetlen evil, wicked, wickedness, unpleasant (kt, kt/evil)
+gonosz, rossz, gonoszság, kellemetlen (kt, kt/evil)
 Definition:
 In the Bible, the term “evil” can refer either to the concept of moral wickedness or emotional unpleasantness. The context will usually make it clear which meaning is intended in the specific instance of the term.
 While “evil” may describe a person’s character, “wicked” may refer more to a person’s behavior. However, both terms are very similar in meaning.
@@ -657,7 +349,7 @@ Examples from the Bible stories:
 50:17 He (Jesus) will wipe away every tear and there will be no more suffering, sadness, crying, evil, pain, or death.
 Word Data:
 Strong’s: H0205, H0605, H1100, H1681, H1942, H2154, H2162, H2254, H2617, H3399, H3415, H4209, H4849, H5753, H5766, H5767, H5999, H6001, H6090, H7451, H7455, H7489, H7561, H7562, H7563, H7564, G00920, G01130, G04590, G09320, G09870, G09880, G14260, G25490, G25510, G25540, G25550, G25560, G25570, G25590, G25600, G26350, G26360, G41510, G41890, G41900, G41910, G53370
-sanyargat, nyomorúság, szorongatás afflict, affliction, distress (other, other/afflict)
+sanyargat, nyomorúság, szorongatás (other, other/afflict)
 Definition:
 The term “afflict” means to cause someone distress or suffering. An “affliction” is the disease, emotional grief, or other disaster that results from this.
 Sometimes God afflicted his people with sickness or other hardships with the intention for them to repent of their sins and turn back to him.
@@ -681,7 +373,7 @@ Genesis 15:12-13
 Genesis 29:32
 Word Data:
 Strong’s: H0205, H3013, H3905, H3906, H6031, H6039, H6040, H6041, H6862, H6869, H6887, H7451, H7489, G23460, G23470, G38040
-rom, romok, romba dőlt ruin, ruins, ruined (other, other/ruin)
+rom, romok, romba dőlt (other, other/ruin)
 Definition:
 To “ruin” something means to spoil, destroy, or cause to be useless. The term “ruin” or “ruins” refers to the rubble and spoiled remains of something that has been destroyed.
 The prophet Zephaniah spoke about the day of God’s wrath as a “day of ruin” when the world will be judged and punished.
@@ -696,7 +388,7 @@ Acts 15:16
 Isaiah 23:13-14
 Word Data:
 Strong’s: H0006, H1197, H1530, H1820, H1942, H2034, H2040, H2717, H2719, H2720, H2723, H2930, H3510, H3765, H3782, H3832, H4072, H4288, H4384, H4654, H4876, H4889, H5221, H5327, H5557, H5754, H5856, H7451, H7489, H7582, H7591, H7612, H7701, H7703, H7843, H8047, H8074, H8077, H8414, H8510, G26790, G26920, G36390, G44850
-zaklat, megzavar, felkavar, szorongatás, nehézség, csapás trouble, disturb, stir up, distress, hardship, calamity (other, other/trouble)
+zaklat, megzavar, felkavar, szorongatás, nehézség, csapás (other, other/trouble)
 Definition:
 A “trouble” is an experience in life that is very difficult and distressing. To “trouble” someone means to “bother” that person or to cause him distress. To be “troubled” means to feel upset or distressed about something.
 Troubles can be physical, emotional, or spiritual things that hurt a person.
@@ -717,7 +409,7 @@ Matthew 24:6
 Matthew 26:36-38
 Word Data:
 Strong’s: H0205, H0926, H0927, H1204, H1607, H1644, H1804, H2000, H4103, H5916, H5999, H6031, H6040, H6470, H6696, H6862, H6869, H6887, H7264, H7267, H7451, H7489, H8513, G03870, G16130, G17760, G23460, G23470, G23500, G23600, G28730, G36360, G39260, G39300, G39860, G44230, G46600, G50150, G51820
-helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó wrong, wronged, wrongdoer, mistreat, hurt, hurtful (other, other/wrong)
+helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó (other, other/wrong)
 Definition:
 To “wrong” someone means to treat that person unjustly and dishonestly.
 The term “mistreat” means to act badly or roughly toward someone, causing physical or emotional harm to that person.
@@ -732,4 +424,7 @@ Matthew 20:13-14
 Psalms 71:13
 Word Data:
 Strong’s: H0205, H0816, H2248, H2250, H2255, H2257, H2398, H2554, H2555, H3238, H3637, H4834, H5062, H5142, H5230, H5627, H5753, H5766, H5791, H5792, H5916, H6031, H6087, H6127, H6231, H6485, H6565, H6586, H7451, H7489, H7563, H7665, H7667, H7686, H8133, H8267, H8295, G00910, G00920, G00930, G00950, G02640, G08240, G09830, G09840, G15360, G16260, G16510, G17270, G19080, G25560, G25580, G25590, G26070, G30760, G30770, G37620, G41220, G51950, G51960
-Forrás és licenc: tW_szocikkek (tw_szocikkek): CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · projekt_adat (forditasok): minden jog fenntartva
+Forrás és licenc
+▸ forrásadat modell-kimenet
+▸ Forrás és licenc: tW szocikkek: CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · a projekt saját adata: minden jog fenntartva
+Ezekben a forrásokban erre nincs adat (üres eredmény, nem negatív lelet): Bővített Strong-szócikk (TBESH).
