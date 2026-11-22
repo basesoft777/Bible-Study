@@ -7,10 +7,11 @@ fazis: 1
 modell: sonnet
 sav: SERVER
 munka: folyamat
-allapot: fut
+allapot: megallt
 ag: claude/adatbazis-frissites
+pr: 780
 ad: az indító (indit.sh) észleli, ha a pardes.db régebbi a forrás-tábláinál (adat/, konkordancia/), és magától újraépíti (sqlite_epit.py, integritás-ellenőrzéssel), csak siker után cserél; a lábléc kiírja, ha az adatbázis régebbi az adatnál, és ha az újraépítés elbukott, miért; negyedik asztali parancsikon a kézi újraépítéshez
-kovetkezo: "Te: a független ellenőrzés jelentésének átvétele, majd zárás és PR"
+kovetkezo: "Te: ⛔ M2 — a felhasználó kipróbálja (valódi adatváltozás után az indítás újraépít, a lábléc jelzi); előtte a DT161 ütemezett feladat parancsába PARDES_EPIT=0 (repón kívül); a PR merge-e az orkesztrátoré"
 olvas: [eszkozok/olvaso_szerver/README.md, naplok/SQLITE_EPIT_meres.md, naplok/OLVASO_INDITO_zaras.md, eszkozok/olvaso_szerver/manifest_pardes_db.tsv]
 ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/epit_hatter.sh, eszkozok/olvaso_szerver/forras_azonosito.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/ADATBAZIS_FRISSITES_zaras.md]
 fugg: []

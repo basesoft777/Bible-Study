@@ -33,3 +33,12 @@ Tételek és a javításuk (javító kör 1, a hibahelyek táblája):
 | 8 | nincs teszt a `--kezi` belépési pontra | `test_epit_hatter_kezi_modja_a_zarat_veszi_es_kiirja_a_naplot` |
 
 Az ellenőr megjegyzése a `Negativ.test_11_res_forras_egyezes` bukásról: az `origin/main`-en is bukik (ellenőrizve ideiglenes worktree-ben, 2026-11-22), nem ebből a változásból ered. A lap-betöltés-az-építés-alatt tesztje nem készült: az építés a szerver fájljához nem nyúl (a 4. javítás óta a WSL-másolat érintetlen).
+
+## Zárás
+
+- **Állapot:** M0 és M1 kész, a brief `megallt`: az M2 ⛔ (a felhasználó kipróbálja) hátra van. PR: 780 (draft), nincs merge.
+- **Döntések:** DT-F101a–b (az orkesztrátor döntötte, 2026-11-22): mtime+méret előszűrő, `sha256` dönt; WSL-es építés friss forrásból, csak indító és parancsikon.
+- **Eltérés a briefhez:** a WSL-másolatot a háttérépítés nem cseréli (a futó szerver alatt), csak a Windows-oldali `pardes.db`-t; a következő indítás szinkronizálja (egy kattintás). Indok: ELLENOR 1. ellenőrzés 4. és 6. tétele.
+- **Tesztek:** `teszt_indito.py` zöld (a javító kör után), `teszt_olvaso_szerver.py` és a többi `--gyors` fájl zöld a javító kör előtt; `teszt_sqlite_epit.py`: 1 bukás (`Negativ.test_11_res_forras_egyezes`), amely az `origin/main`-en is bukik. A javító kör után a `--gyors` teljes újrafuttatása nem készült el.
+- **Nyitott:** (1) a DT161 ütemezett feladat parancsába `PARDES_EPIT=0` (a repón kívül, nem módosítottam); (2) a negyedik asztali parancsikon (`PaRDeS adatbazis ujraepitese.bat`) létrejött az asztalon, a fő checkoutban az `epit_hatter.sh` a merge után lesz meg; (3) a régi `~/pardes` checkout (`f6f6f50`) módosított fájljai: `eszkozok/olvaso_szerver/manifest_pardes_db.tsv` (5+/5−, a régi `epites_ts`); követetlen: `.indit.zar`, `f149_proba.db` (1,1 GB), `indit_8765.log`, `olvaso_teszt_javitas.db` (1,1 GB), `pardes.db.f115_elotti`, `pardes.db.regi` — semmihez nem nyúltam, a sorsukról az orkesztrátor dönt; (4) a független ellenőr 2. köre nem futott (a helyi zárat másik futás tartotta).
+- **Egyeztetett eltérés:** a DT-döntés az orkesztrátortól, nem a felhasználótól érkezett (a felhasználó felhatalmazásával).
