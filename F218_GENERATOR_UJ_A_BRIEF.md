@@ -7,7 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: fut
 ag: claude/f218a-s8c-5ffa99
-pr: 789
+pr: 791
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
 kovetkezo: "az S8d (Kolofon) folyamatban; utána megállás"
 munka: folyamat
