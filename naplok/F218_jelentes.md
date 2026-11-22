@@ -1591,8 +1591,8 @@ ezzel együtt fogadta el, és a Kolofonra (S8d) is áll.
 (`S8C-FORRAS`) és 21 listasor: 12 új (`S8C-UJ`: LSJ, a BDB forrásjavításai, elutasítási okok, funkciókapcsolók,
 grammatikai szavak, motívumközi kapcsolatok, tematikus saját szó, BDB rokon írásai, javított Károli-KH, SDBH/SDGNT
 elemzetlen bejegyzései, Strong-szótár, teljesség-mérés), 2 elmaradó (`S8C-ELMARAD`: Mounce, teljes Thayer), 3
-licencében változó (`S8C-LICENC`, 5 diff-sor: a BDB-szótár a projekt BDB-szakaszfordításával, a héber glosszák és a
-lexikon hivatkozástáblája a jegyzék `projekt_adat` kulcsával), 4 áthelyezett (`S8C-SORREND`, 8 diff-sor: Nave, SBL,
+licencében változó (`S8C-LICENC`, 5 diff-sor: a BDB-szótár és a héber glosszák a fordítástábla licencalakjával — a
+javítókör után —, a lexikon hivatkozástáblája a jegyzék `projekt_adat` kulcsával), 4 áthelyezett (`S8C-SORREND`, 8 diff-sor: Nave, SBL,
 TAGNT, Targum). A regresszió a nem párosított változást két sorként számolja, ezért a 21 listasor 28 diff-sor; a
 jóváhagyott 20 ± 5 a listasorokra vonatkozott. Az ISTENTISZT-001 12. szakasza is generálódik (a szakirodalom-blokk
 nélkül: a motívumnak nincs szerzős sora; külső forrás: HCF, Vulgata). Festékpróba: 0 szivárgás (HAMART belső 355, idézet 2933,
@@ -1610,7 +1610,34 @@ kereszthivatkozások javított táblája”. Jegyzék: az `irodalom` oszlop. A m
 **A 218a végi listába ebből a szeletből:** a 7 `uj` névtábla-sor (a felhasználó második körébe); a nyílt mag
 licencének „CC BY 4.0” szava és a Károli–Strong DOI a sablonsorban áll, nem a licencleltárban (a leltárnak nincs nyílt
 mag sora, és a `nyilt_mag_export` olvassa a leltárt, ezért az ág nem bővítette); a jegyzék bemenetenként egy
-licenckulcsot ad, a vegyes licencű fájlok (a B17 forrásjavítás-táblája a BDB címkéjével, a héber glosszák a
-projektével) licence ettől pontatlan lehet; a beolvasott, de a lapnak sort nem adó tábla is a listán áll (az
+licenckulcsot ad, a vegyes licencű fájl (a B17 forrásjavítás-táblája a BDB címkéjével) licence ettől pontatlan
+lehet; a lexikon hivatkozástáblája a régi lapon „közkincs”, az újon „minden jog fenntartva” (a jegyzék kulcsa; a
+tábla a projekt indexe); a beolvasott, de a lapnak sort nem adó tábla is a listán áll (az
 ISTENTISZT-001 lapján a vitatott pontok táblája); a „Targum (közkincs) (közkincs)” sor a régi név miatt kétszer mondja
 a licencet.
+
+### Független ellenőrzés — 13. ellenőrzés (S8c, `9730b829..f68fb347`, `fuggetlen-ellenor`)
+
+**ELTÉRÉS: 3 tétel.** OK: a regresszió (28 `S8C-*` sor, a hash-ek a saját 12. szakasz-diffjével összevetve), a
+GK-07 halmaz (a 61 listázott fájl mind a tényleges olvasási naplóban, mindkét lapon), a névtábla 75 nem `uj` sora a
+régi `_teljes_nev` / `olvasoi_forrasnev` kimenetével 0 eltéréssel, GK-08a/b/c (festékpróba 0), GK-10, GK-23, a sorrend
+determinizmusa, a Vulgata (a kérdés-fájl a tanúk külső forrásai közé sorolta), a jegyzék más fogyasztója
+(`generalt_nezetek.py` csak az `id`-t olvassa), a tesztek (358, 0 hiba). Nem ellenőrizhető: CI (nem volt push); a
+`teszt_futtat.py --diff` két olvasószerver-tesztje bukik, a diffhez nem köthetően (a WSL-adatbázis 2026-11-12-i).
+1. **Közepes:** a származékos fordítástáblák licence visszaesett: a héber glosszák „CC BY 4.0”-ból „minden jog
+   fenntartva” lett, a BDB-szótár sora „közkincs, minden jog fenntartva”; a B14 `forditas` alakja erre az esetre való.
+2. **Alacsony:** a GK-07 „licencszöveg csak B01-ből”: három sablonsor (`irod.licenc.nyilt_mag`, `.elofordulas`,
+   `.doi`) licencszöveget és DOI-t visz; a jelentés a 218a végi listára tette.
+3. **Alacsony:** a SEMA 2.66 a `-` értéket csak az infrastruktúrára mondja, a B73 (Peshitta) mégis `-`, és a teszt
+   infrastruktúra-listájában sincs.
+
+### A 13. ellenőrzés javítóköre (2026-11-22)
+
+| Tétel | Javítás |
+|---|---|
+| 1 | a B15 és a B18 `irodalom` értéke `forditas` (a B14 mintájára): a sor „magyar fordítás: minden jog fenntartva; a lefordított szótárszöveg licence a szótár saját soránál áll”; a BDB-szótár sora „közkincs, magyar fordítás: …”. A két `S8C-LICENC` engedélysor új hash-e frissült; a darabszám változatlan. A B25 (lexikon hivatkozástáblája) a projekt indexe, a `projekt_adat` marad (a végi listán) |
+| 2 | nem javítva: a nyílt mag licencsora a leltárban a `nyilt_mag_export`-tal együtt bővíthető (a leltárt az is olvassa, a G07 kapu a nyílt mag változatlanságát nézi); a 218a végi listán |
+| 3 | a SEMA 2.66 kimondja: a `-` a fájl nélküli, nem vizsgált forrásé (B73) is, és a szótárszöveg fordítását hordozó tábla (B14, B15, B18) `forditas`; a teszt a `-` értékű sorokat a két listához köti, és a három `forditas` sort ellenőrzi |
+
+A javítókör után a main behozva (`aad45b55`, a `szamkiosztas` a `DONTESEK.md`-t módosította): a mérce B51 és B68
+hash-e frissült. HAMART-regresszió: RENDBEN (engedély nélküli diff-sor 0).

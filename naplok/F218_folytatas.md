@@ -49,6 +49,7 @@
 | N200 (a mérce hash-sorai a #779 merge-e után) | **kész** (a 14. session) | a B51 `DONTESEK.md` hash-e frissült, a törölt `dontesek/uj/f218a-s8.md` sora kikerült; regresszió RENDBEN, hash-őr 209 sor |
 | F218.11 (S8b): a kézi rések (Miért fontos, 10., 11.) | **kész** (a 14. session, `claude-opus-5-5`) | a 4. szakasz egészben, a 10. és a 11. bájtra egyezik, engedélysor nélkül; 7 sablonsor, 6 névtábla-sor, B40; `teszt_resek.py`; festékpróba 0. **⛔ GK-19 (T6):** a pontosság-mondat új tényállítás, a felhasználóé (a jelentés „F218.11 — S8b”) |
 | F218.11 (S8c): „12. Irodalom és idézés” | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 15. session, `claude-opus-5-5`) | DT-F218x (🟢, a felhasználó: „(a) mehet”): a forráslista a számozott szakaszok olvasási naplójából, a jegyzék új `irodalom` oszlopával szűrve; a tanúk és a Vulgata a tábláik ellenőrzött soraiból. 21 listasor és a blokkfejléc tér el (28 diff-sor, mind `S8C-*` engedéllyel); 16 sablonsor, 82 névtábla-sor (7 `uj`); `teszt_idezes.py` (10). A jelentés „F218.11 — S8c” szakasza |
+| 13. ellenőrzés (S8c, `9730b829..f68fb347`) | **ELTÉRÉS: 3 tétel; a javítókör kész** | a jelentés „Független ellenőrzés — 13. ellenőrzés” és „A 13. ellenőrzés javítóköre”; a main behozva (`aad45b55`), a mérce B51, B68 hash-e frissült |
 | F218.11 (S8d) | nem indult | Kolofon (GK-07 maradéka: a forrástábla ugyanabból a halmazból, DT-F218x; GK-27, GK-28 maradéka, `ISM-KOLOFON`) |
 | F218.12 (S9) – F218.13 | nem indult | |
 
