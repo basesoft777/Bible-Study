@@ -8,7 +8,8 @@
 # példány leállítása; (2) adatbázis-szinkron: a Windows-oldali pardes.db (forrás) és a WSL-beli másolat (cél) `meta.epites_ts`-ének összevetése
 # — eltérésnél (vagy hiányzó célnál) másolás ideiglenes névre, majd atomi átnevezés (a szinkron-kulcs az epites_ts, NEM a fájl mtime-ja);
 # azonos építési időnél nincs másolás; (2b) az adat frissessége (#101): ha az adatbázis régebbi a forrásfájloknál (`adat/`, `konkordancia/`), háttérben
-# újraépül (`epit_hatter.sh`, a WSL natív lemezén, integritás-ellenőrzéssel, csak siker után cserél); a szerver közben a régi, ép adatbázissal indul;
+# újraépül (`epit_hatter.sh`, a WSL natív lemezén, integritás-ellenőrzéssel, csak siker után cserél: a Windows-oldali pardes.db-t; a WSL-másolat a következő
+# indításkor szinkronizálódik); a szerver közben a régi, ép adatbázissal fut; a bejelentkezéskori ütemezett indításnál (DT161) PARDES_EPIT=0 kell (DT-F101b);
 # (3) a szerver indítása újratöltővel (alkalmazas.py --ujratolt). A napló minden lépést kiír
 # ("[indit] …"), többek közt azt, hogy másolás, frissítés vagy újraépítés történt-e.
 #

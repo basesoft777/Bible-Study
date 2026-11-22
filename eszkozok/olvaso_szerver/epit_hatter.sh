@@ -3,8 +3,8 @@
 #
 # Lépések: (1) állapotfájl: fut; (1b) a forrás pillanatképe a WSL natív lemezére (tar; a /mnt-ről közvetlenül építve mérve 266 s, natívról 96 s: #101 M1 mérés);
 # (2) építés a pillanatképből ideiglenes névre (az `sqlite_epit.py` maga is csak ideiglenes névre ír, és az integritás-sértésnél nem ír fájlt); (3) az új fájl ellenőrzése (`allapot.py db_ellenoriz`: quick_check, epites_ts és forrás-azonosító van); (4) siker után
-# atomi átnevezés a WSL-másolat helyére (a futó szerver a régi állományt látja tovább; újraindításkor az új olvasódik), majd másolás a Windows-oldali
-# pardes.db helyére (ideiglenes név + átnevezés; az idejét méri és kiírja); (5) állapotfájl: kesz | elbukott. Hiba esetén a meglévő adatbázisok érintetlenek.
+# másolás a Windows-oldali pardes.db helyére (ideiglenes név + atomi átnevezés; az idejét méri és kiírja). A WSL-másolatot az indító következő
+# indításkor szinkronizálja (a futó szerver alatt nem cserélünk fájlt); (5) állapotfájl: kesz | elbukott. Hiba esetén a meglévő adatbázisok érintetlenek.
 #
 # Környezet (az indit.sh adja; a teszt ezekkel dolgozik):
 #   PARDES_GYOKER           a repó gyökere (a forrás: adat/, konkordancia/)
@@ -76,22 +76,27 @@ if [ "$ELL" != "ok" ]; then
   allapot_ir elbukott "az új adatbázis ellenőrzése bukott ($ELL); a meglévő adatbázisok érintetlenek"
   exit 1
 fi
-if ! mv -f "$TMP" "$MASOLAT"; then
-  allapot_ir elbukott "a WSL-másolat cseréje sikertelen; a meglévő adatbázisok érintetlenek"
-  exit 1
-fi
-echo "[epit] $(ido) a WSL-másolat kicserélve: $MASOLAT"
+# A WSL-másolatot NEM cseréljük itt: a futó szerver ugyanazt a fájlt olvassa, és a csere után régi gyorsítótár-kulccsal és régi meta-adattal keverné az új
+# adatot (ELLENOR_F101). A Windows-oldali pardes.db cseréje után az indító 2. lépése (szinkron) a következő indításkor másolja át (egy kattintás); addig a
+# lábléc jelzi, hogy az adatbázis régebbi a Windows-oldalinál. A régi Windows-oldali állomány a csere pillanatáig érintetlen.
 MASOLAS=""
 if [ -n "$FORRAS" ]; then
   T2="$(masodperc)"
-  if cp -f "$MASOLAT" "$FORRAS.uj.$$" && mv -f "$FORRAS.uj.$$" "$FORRAS"; then
+  if cp -f "$TMP" "$FORRAS.uj.$$" && mv -f "$FORRAS.uj.$$" "$FORRAS"; then
     MASOLAS="; másolás a Windows-oldalra: $(( $(masodperc) - T2 )) s"
-    echo "[epit] $(ido) a Windows-oldali másolat kicserélve: $FORRAS$MASOLAS"
+    echo "[epit] $(ido) a Windows-oldali pardes.db kicserélve: $FORRAS$MASOLAS"
   else
     rm -f "$FORRAS.uj.$$"
-    allapot_ir elbukott "a WSL-másolat új, de a Windows-oldali másolat cseréje sikertelen ($FORRAS); az indító a régi Windows-oldali állományt visszamásolhatja, ilyenkor az újraépítés újra elindul"
+    allapot_ir elbukott "a Windows-oldali pardes.db cseréje sikertelen ($FORRAS); a meglévő adatbázisok érintetlenek"
     exit 1
   fi
+else
+  # nincs Windows-oldali példány: a WSL-másolat cseréje az egyetlen út
+  if ! mv -f "$TMP" "$MASOLAT"; then
+    allapot_ir elbukott "a WSL-másolat cseréje sikertelen; a meglévő adatbázisok érintetlenek"
+    exit 1
+  fi
+  echo "[epit] $(ido) a WSL-másolat kicserélve: $MASOLAT"
 fi
 allapot_ir kesz "az újraépítés kész (pillanatkép: $((T0 - TS0)) s, építés: $((T1 - T0)) s$MASOLAS)"
 echo "[epit] $(ido) kész"

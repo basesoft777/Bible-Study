@@ -1,4 +1,4 @@
-"""Az adatbázis-építés forrás-azonosítója (#101, DT-F101a): az `adat/` és a `konkordancia/` fájljainak ujjlenyomata.
+"""Az adatbázis-építés forrás-azonosítója (#101, DT-F101a): az `adat/` és a `konkordancia/` adatfájljainak és a tanulmányszövegek (`motivumok/` stb.) ujjlenyomata.
 
 Az `sqlite_epit.py` építéskor a `meta` táblába írja (`forras:<útvonal>` = `méret|mtime|sha256`, és `forras_osszeg`); az olvasó
 (`allapot.py`) és az indító ebből dönti el, hogy a `pardes.db` régebbi-e az adatnál.
@@ -17,8 +17,12 @@ if hasattr(sys.stdout, 'reconfigure'):
 if hasattr(sys.stderr, 'reconfigure'):
     sys.stderr.reconfigure(encoding='utf-8')
 
+# Az építő által olvasott források: az `adat/` és a `konkordancia/` adatfájljai (a `.md` dokumentáció, a `.jsonl` LLM-hívásnapló és a `.html`
+# nem adat: a változásuk nem kérhet újraépítést), valamint a tanulmány-/motívumszövegek (`.md`), amelyeket az építő az FTS-be és a tanulmány-
+# regiszterbe tölt (sqlite_epit.py `_fts`, `tanulmany_regiszter`). Az építő kódjának változása nem része az azonosítónak (ismert korlát).
 RESZEK = ('adat', 'konkordancia')
-KIHAGYOTT_UTOTAG = ('.db', '.tmp', '.epit', '.pyc', '.zar')
+KIHAGYOTT_UTOTAG = ('.db', '.tmp', '.epit', '.pyc', '.zar', '.md', '.jsonl', '.html', '.log')
+TANULMANY_RESZEK = ('motivumok', 'tematikus_lezart', 'genezis', 'ujszovetseg', 'melyelemzesek')
 META_ELOTAG = 'forras:'
 META_OSSZEG = 'forras_osszeg'
 
@@ -26,12 +30,18 @@ META_OSSZEG = 'forras_osszeg'
 def forrasfajlok(gyoker):
     """A forrásfájlok gyökérhez viszonyított, `/` elválasztós útvonalai, rendezve."""
     ki = []
-    for resz in RESZEK:
+    for resz in RESZEK + TANULMANY_RESZEK:
+        tanulmany = resz in TANULMANY_RESZEK
         alap = os.path.join(gyoker, resz)
         for dp, dn, fn in os.walk(alap):
             dn[:] = [d for d in dn if d != '__pycache__' and not d.startswith('.')]
             for f in fn:
-                if f.startswith('.') or f.endswith(KIHAGYOTT_UTOTAG):
+                if f.startswith('.'):
+                    continue
+                if tanulmany:
+                    if not f.endswith('.md'):
+                        continue
+                elif f.endswith(KIHAGYOTT_UTOTAG):
                     continue
                 ki.append(os.path.relpath(os.path.join(dp, f), gyoker).replace('\\', '/'))
     return sorted(ki)

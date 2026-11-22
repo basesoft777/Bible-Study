@@ -352,7 +352,7 @@ class Lablec:
         commit = env.get('PARDES_COMMIT') or commit
         forras_ts = db_epites_ts(env.get('PARDES_FORRAS_DB', '')) if env.get('PARDES_FORRAS_DB') else ''
         gyoker = env.get('PARDES_FORRAS_GYOKER')         # #101: a forrásfájlok gyökere; üres: az adat frissességét nem ellenőrizzük (előnézet, teszt)
-        adat = adat_allapot(gyoker, env.get('PARDES_DB')) if gyoker and env.get('PARDES_DB') else None
+        adat = adat_allapot(gyoker, env.get('PARDES_DB'), ttl=0.0) if gyoker and env.get('PARDES_DB') else None
         epites = epites_allapot(env['PARDES_EPITES_ALLAPOT']) if env.get('PARDES_EPITES_ALLAPOT') else None
         lem = env.get('PARDES_LEMARADAS')
         lem = int(lem) if lem is not None and lem.isdigit() else (None if lem is not None else lemaradas(kezdo))
