@@ -78,6 +78,7 @@ STATIKUS_TESZTEK = [
     'eszkozok/teszt_push_elott.py',
     'eszkozok/teszt_brief_lezaras.py',
     'eszkozok/teszt_generalt_nezetek.py',
+    'eszkozok/olvaso_szerver/teszt_tervor.py',
 ]
 STATIKUS_HIVASOK = [
     'eszkozok/ellenorzes/kovetelmeny_kapu.py HAMART-001 --szigoru',
