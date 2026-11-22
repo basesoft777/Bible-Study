@@ -1380,3 +1380,8 @@ def bsb_fejezet(con, kk, fej):
                                    "WHERE v.konyv=? AND v.fejezet=? AND t.angol_szo<>'' ORDER BY v.vers, t.sorszam", (kk, fej)):
         ki[ig].append((szo, st or ''))
     return ki
+
+
+def f235_piros_proba(con, gloss):
+    """SZÁNDÉKOS PIROS PRÓBA, NEM MERGE-ELENDŐ (F235): index nélküli keresés a 475 911 soros token_macula táblán (a `gloss` oszlopon nincs index); a tervellenőrnek pirosat kell adnia."""
+    return con.execute('SELECT strong FROM token_macula WHERE gloss=?', (gloss,)).fetchall()
