@@ -1104,6 +1104,34 @@ def nave_tema_hu(con, tema_idk):
         return {}
 
 
+def thayer_szakasz_szovegek(con, g):
+    """F231: {sorszam: angol szöveg} a Thayer-szakasztáblából (a szókártya angol szövege fordítás nélkül); {}, ha a tábla hiányzik."""
+    try:
+        return {str(s): t or '' for s, t in con.execute(
+            "SELECT sorszam, szoveg FROM thayer_szakaszok WHERE strong=? AND utvonal <> 'cim'", (g,))}
+    except sqlite3.OperationalError:
+        return {}
+
+
+def thayer_vers_sorok(con, g):
+    """F231: a Thayer vers -> jelentéspont tábla sorai a szócikk hivatkozásainak sorrendjében: [(szakasz, fejezet, vers, karoli_vers)]
+    (a kártya szövegének hivatkozásai ezekre oldódnak fel, a BDB `VersJelolo` mintájára); [], ha a tábla hiányzik."""
+    try:
+        return [(str(sz), str(f or ''), str(v or ''), kv or '') for sz, f, v, kv in con.execute(
+            'SELECT szakasz, fejezet, vers, karoli_vers FROM thayer_vers_jelentes WHERE strong=? ORDER BY CAST(sorszam AS INTEGER)', (g,))]
+    except sqlite3.OperationalError:
+        return []
+
+
+def ubs_dntg_versek(con, g, igehelyek):
+    """F231 (#28): {igehely: [lexid, ...]} az UBS DNTG előfordulás-tábla szerint a megadott versekre."""
+    ki = {}
+    for lex, ig in _in(con, 'SELECT lexid, igehely FROM ubs_dntg_referenciak WHERE strong=? AND igehely IN ', ' ORDER BY rowid', igehelyek, (g,)):
+        if lex not in ki.setdefault(ig, []):
+            ki[ig].append(lex)
+    return ki
+
+
 def thayer_cimkek(con, g):
     """F187: {utvonal: cimke_hu} a jóváhagyott szakaszcímkékből (`adat/szotar_szakasz_cimke.tsv`, Thayer); {}, ha a tábla
     hiányzik."""

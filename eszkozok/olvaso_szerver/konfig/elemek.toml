@@ -1404,6 +1404,9 @@ tulajdonsag = [
 ]
 
 [kizart]
+sav = "a Károli-alakok arányos sávja (<meter>, F231 #57); a szín a böngésző alapja, a méret a .sav szabályé"
+ubs-jelentes = "az UBS DNTG egy jelentésének tárolója a görög szó-lapon (F231, #27); a megjelenés a gyermek-elemeken"
+forrasszoveg = "a nyers forrásszöveg csukott lenyílója a görög szó-lap alján (F231, #21; details)"
 szk-szoveg = "a szótári szöveg egy jelentésnél, egybefüggően (F231; a megjelenés a .jsz tokenjein)"
 szk-jel-inline = "a rosszul tagolt törzs egybefüggő szövegében a pont jele (F231, félkövér; saját token nélkül)"
 szk-torzs-egyben = "állapot-osztály: a rosszul tagolt törzs egyben (F231, a tagolási jelző); saját token nélkül"

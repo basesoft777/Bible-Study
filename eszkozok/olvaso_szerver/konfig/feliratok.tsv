@@ -50,3 +50,28 @@ szk.szakasz.masik_lemma	Másik szó (más lemma)
 szk.szakasz.tagolas	rész (a címszó fő tagolása)	
 szk.alakok_sor	Alakok:	
 szk.allapot_forditva_rovid	Lefordítva · gépi fordítás	
+blokk.forrasszoveg	Forrásszöveg (nyers, angol) megnyitása	
+blokk.szo.magyar_gorog	Szótár: Thayer-szócikk	
+blokk.szo.tbesg	TBESG (forrásszöveg)	
+blokk.szo.thayer	Thayer, angol (forrásszöveg)	
+szk.feloldva	feloldva: %(ig)s	
+szk.forditasra_var	(fordításra vár)	
+szk.th_besorolas_cim	A Thayer besorolása: %(ig)s	
+szk.th_besorolas_pont	A szótár ezt a helyet ebbe a jelentésbe sorolja:	
+szk.th_nem_idezi	A Thayer ezt a verset nem idézi; jelentéspontot idézet nélkül nem jelölünk.	
+szk.th_rendje	A jelentések rendje a Thayer szerint	
+szk.th_szocikk_eleje	a szócikk eleje	
+ubs.elofordulasok	Előfordulások (%(db)s):	
+ubs.elso40	Az előfordulások közül az első 40 áll.	
+usz.osszeg	%(n)s előfordulás %(v)s versben.	
+usz.lanc	A számlálás bontása: %(n)s előfordulás, ebből %(lanc)s láncelemként (a TAGNT „+” Strong-láncában, pl. krázis-alaknál); az egész mezős előfordulás %(egesz)s.	
+usz.elso	Az első %(db)s vers áll a %(v)s közül.	
+usz.oszlop_igehely	Igehely	
+usz.oszlop_karoli	Károli-szöveg	
+usz.oszlop_ubs	Jelentés (UBS)	
+usz.ubs_sugo	UBS DNTG jelentés-azonosító: %(lex)s	
+szk.angol_sugo	angol eredeti: %(en)s	
+karoli.alak	Károli-alak	
+karoli.darab	Darab	
+karoli.mind	Mind a %(n)s könyv szó szintű párjai alapján.	
+karoli.resz	A %(n)s feldolgozott könyv (%(konyvek)s) szó szintű párjai alapján; a többi könyv még hiányzik.	

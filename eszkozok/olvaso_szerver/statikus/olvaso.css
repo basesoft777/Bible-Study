@@ -254,6 +254,7 @@ abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0;
 .szk-jel-inline { font-family: var(--font-mono); }
 .szk-potcim, .szk-tj-gl.szk-potcim { font-style: italic; font-weight: 400; }
 .szk-szamozas { margin: 4px 0 0; }
+meter.sav { width: 8rem; height: .7rem; vertical-align: middle; }
 sup { line-height: 0; }
 .szk-egyben { display: none; }
 .szk[data-nezet="egyben"] .szk-egyben { display: block; }
