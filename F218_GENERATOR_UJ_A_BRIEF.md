@@ -9,7 +9,7 @@ allapot: fut
 ag: claude/f218a-s9c-d1312a
 pr: -
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "Folytatás: S9c (F218.12) új sessionben a naplok/F218_folytatas.md-ből: a vázban maradt S3_MARADEK tételek és a leltártételek; utána a felhasználó nézése (naplok/F218_S9_nezes.md, frissítve)"
+kovetkezo: "Folytatás az S9c ágán (claude/f218a-s9c-d1312a) a naplok/F218_folytatas.md „Következő lépés” pontjából: teljes tesztkör, nézési csomag, független ellenőr, push előtti kapu, TEREMT-próba, majd ⛔ a felhasználó nézése és F218.13"
 munka: folyamat
 sav: CONTENT
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]

@@ -1944,3 +1944,34 @@ Az ELTÉRÉS-ek súlyosság szerint:
 | 5e. Dupla regex (M-NYERS) | mechanikus | A csoportos versszám a döntésnapló réteg egyetlen mintájából; az indoklás összesítő eleje és a forrás-mező versszáma eltérésnél BemenetHiba; a `_suly` néma tartaléka helyett KapuHiba. |
 | 5f. A jelentés számai | mechanikus | Javítva itt: az S9b „`S3_MARADEK` (10)” helyesen 8 teszt; a „140 diff-sor” az N-F218x után 139; a DT924 kérdése „21 skip … GK-19” szerint; a nézési csomag GK-04-e a `lxx_egyezes` részre szűkítve. A „merge után a mérce a main-en is futtatható” állítás pontatlan volt: a B51 az ág döntésfájlját is méri, amelyet a `szamkiosztas` töröl, ezért a merge után a mérce első futása előtt az N200 lépés kell (a sor törlése, a `DONTESEK.md` hash-e) — ez az S9c első lépése. |
 | 5g. `ir` | mechanikus | A brief `ir` mezője kiegészítve: `dontesek/uj/f218a-s9-722be2.md`, `nyitott/uj/f218a-s9-722be2.md`, `adat/licencek.tsv`. A `NYITOTT_FELADATOK.md` meglévő sorának szerkesztése a CLAUDE.md szerint az `ir`-en kívül megengedett. |
+
+## F218.12 — S9c: a vázban maradt tételek, a HN-03 és a leltár (`claude-opus-5-5`, 2026-11-22, a 18. session)
+
+**Modell-ellenőrzés.** A session `claude-opus-5-5`, a brief `opus`-t kér: egyezik. Ág: `claude/f218a-s9c-d1312a`, a #797 merge-e (`79231c1f`) és a számkiosztás (`cfe883a4`) után a mainről.
+
+**Tételenként** (kész / elvetve indokkal / rád vár):
+
+| Tétel | Kimenet | Mi történt |
+|---|---|---|
+| N240 (volt N-F218g) | kész | A B51 (`DONTESEK.md`, `dontesek/uj/*.md`) kikerült a bemenet-hash őrből (`regresszio.HASH_OR_KIVETEL`); a lap a B51-ből csak a hivatkozott döntések dátumát és érvényességét olvassa, ezek változását a szakasz-diff méri. A referencia-tábla B51-sorai törölve, a táblában álló B51-sor kimondott hiba. Ezzel az N200-lépés (minden merge után) megszűnt. Technikai döntés (DT920). |
+| N200 | kész (okafogyott) | Az N240 után nincs B51-hash. |
+| A váz N234 (volt N-F218a) szövege | kész | `teszt_vaz.HELY_EGYSEG` a végleges számmal. |
+| HN-03 (DT925 (2) (a), DT-F218e (1)) | kész | 4 sablonsor új szöveggel (`e2.hatokor`, `s4.p2.app.tartomany`, `s4.p8.heber.alap.rovid`, `s9.osz.rokon`; `eredet=uj`, `dontes=var`). Az új lapokon 10 hely változik (HAMART-001 6, ISTENTISZT-001 4); a 12. szakasz forrásjegyzékének 6 sor végi „(forrásnév, licenc)” megjegyzése nem mondatközi, nem változik (DT-F218e (1): másik osztály). A HN-03 minta a „mondat közepén” feltételt viszi (a zárójel után a sorban szöveg áll); a teszt a vázból a `teszt_kapuk.py`-ba költözött, a HN-03 a `HN_MERT`-ben. A HAMART HN-03 osztálya 6 engedélysor (`S9C-HN03-1…6`, 8.1 (f)); az alapmérés 10-éhez képest −40%: ez nem túllépés, hanem a mérce szűkítése (DT-F218e). |
+| DT926 (volt DT-F218c) / N239 | kész | A „Hif'íl-alakok” megszorítás kulcs (`b.kulcs`), az olvasói név a névtábla új `kereses_megszoritas` típusából (1 sor); ismeretlen megszorításnál BemenetHiba. A lap betűre nem változott. |
+| GK-03 (DT-F218d (a)) | kész | Új modul `bemenet/frissesseg.py`: fejléc-hash kapu (B18: a `bdb_szakaszok`; B19: 8 forrásfájl; B21: 2), lefedettségi kapu (B36: a szó versei a mai héber szövegben; B38: a motívum (héber szó, vers) párjai a mai héber szövegben, a betoldásos csoport kivétel). A kapu hash-olvasása nem kerül az olvasási naplóba (nem tartalmi olvasás). Tesztek: `teszt_bemenet.Gk03Pillanatkep` (5, elavított másolattal BUKÁS). A teljes forma (az előállító szkriptek fejléce): N-F218h a 218c-re. |
+| GK-13 | kész | H2398 „chátá”, H7121 „kárá” egy szolgáltatásból (a lapon is). |
+| GK-14 | kész, a DT-F218d-től eltérő módon | A 9 ószövetségi versösszevonásnál a beolvasztott vers szavai a versösszevonás `er_tol`–`er_ig` helyén állnak a lapgen B08-sorrendjében (teszt). **Eltérés a DT-F218d javaslatától (technikai, DT920):** a `f22/versosszevonas.tsv` nem lett jegyzéksor, mert a generátor tartalmát nem használja; egy pusztán kapuként olvasott fájl forrásként a Kolofonba kerülne (GK-07). |
+| GK-18 | kész | A motívum héber szavainak betűjavítás szerinti forrás-alakja a teljes látható lapon 0, a javított alak áll. |
+| GK-A10, GK-A12 | kész | 0 zárójeles Strong-szám; igehely-link a lapon nincs, a HAMART N146-os 8 esete a „nincs ilyen vers” jellel áll (a könyvnév-hiba javítása az N146-é). |
+| GK-N178, HN-12 | kész | A B20 második útvonala a Thayer-javítótábla; a szöveg a közös `thayer_bemenet.javitott_szoveg`-gel. A 15 érintett Strong nem a mintalapok szava, a kártya nem változik; a javítótábla új forrásként a lapra kerül (8.1 (b), DT901/DT912): 12. szakasz +1 sor (`S9C-N178-IROD`), Kolofon forrástábla +1 sor (`S9C-N178-KOLOFON`), az `S3-FORRAS` hash-e frissítve; a beszúrás miatt az `S8D-VALTOZIK-6` két diff-sorra esett (`-6`, `-6U`). Új név: `irod_adat` „Thayer-szótár forrásjavításai”. HN-12: az angol szakasz nincs a lapon. |
+| Leltár (GK-B9, A11, A14, A15, B5, B8) | kész | `teszt_kapuk.Leltar`, 0 eltérés a mintalapokon. |
+| Leltár C3, C9 | rád vár: 218c | Kimondott skip: N98/N113 (BDB-gerinc átkulcsolás, a mintalapokon nem fordul elő), N-F114b (a TSK tartomány-igehelyre nem keres; a HAMART 6 tartomány-helye ma is utalás nélkül, a régi lappal egyezően). |
+| Leltár D3 | rád vár: 218b | Kimondott skip: N-F131i (CSS). |
+| N238 (LXX-összesítés) | kész | `--szamlalok`: az összesítés összege, az egyező versek (a Septuaginta-fájlokból) és az LXX-minusz saját számlálással; a szócsalád-felosztás nem (kimondott szűkítés: a generátor szótő-algoritmusa), csak a megállapított = egyező + szócsalád + eltérő azonosság. HAMART-001 mind egyezik; ISTENTISZT-001-en az egyező 12 a lapon, 13 számolva: az 1Kir 18:24 (N196, a felhasználó dönt a nézésen; `ISMERT_ELTERES`, csak erre az értékpárra). |
+| N235 (DT-F218e (2)) | rád vár: a következő session első lépése | Előkészítve, ellenőrzés nélkül, ezért nincs az ágon (a gép a session végéig foglalt volt más session kapujával; egyszerre egy lapgen-futás): a patch a közös jegyzetmappa `F218_S9c_N235.patch` fájlja. A két csoportos indoklás (`jeloltek.tsv`, a ával és az álá szaván) olvasói alakja: „csoportos kizárás (a רַע (ra) és a קָלַל (kálal) csoportjának mintájára)”; a GK-24 a kézi prózán is tiltja a zárójel nélküli Strong-számot. |
+| N237 | rád vár: a nézés | Az ISTENTISZT `ok_cella` rövid címkéinek névelője: a nézési csomagban. |
+| N196 | rád vár: a nézés | Az 1Kir 18:24 LXX-ítélete: a nézési csomagban. |
+
+**A tesztváz** (`teszt_vaz.py`) skipjei most: GK-04 `hely_egyseg` (218c, N234) és GK-19 (a JOHD-validáció után, N219). A `teszt_kapuk.Leltar` skipjei: C3, C9 (218c), D3 (218b).
+
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes; --szamlalok (mindkét lap); futtat.py bemenet, kizart, kartya, elofordulas, dontesi_ut, vaz, kapuk, regresszio (célzott) | forras=a munkafa az egyes commitok előtt | ts=2026-11-22`.*
