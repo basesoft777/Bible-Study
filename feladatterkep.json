@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-22",
-   "commit": "4cbefcae"
+   "commit": "1a9d8eb1"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5858,6 +5858,26 @@
      "🟢"
     ],
     "sor": 879
+   },
+   {
+    "id": "DT919",
+    "feladat": "folyamat (gyors sáv az olvasóra; 2026-11-22)",
+    "kerdes": "A látható olvasóhiba is a teljes kört kapta (brief, `/befogad`, független ellenőr, javítókör, 15 perces kapu), ezért a kis javítás nem érte meg, és a hibák felmérésből N-tételbe, onnan briefbe rakódtak javítás nélkül (2026-11-22-én 60 nyitott olvasóhiba). Korábbi szabályok csak lépést adtak hozzá.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 880
+   },
+   {
+    "id": "DT920",
+    "feladat": "folyamat (technikai kérdés a sessionben; 2026-11-22)",
+    "kerdes": "A sessionök a menet közbeni technikai kérdést is az orkesztrátornak küldték, javaslattal, és az orkesztrátor jellemzően csak jóváhagyta: egy fölösleges közvetítő forduló kérdésenként (a felhasználó: „a folyamat olyan mint a bridge dispatch - magadtól nem akarsz megoldani semmit”).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 881
    }
   ],
   "javasolt": [],
