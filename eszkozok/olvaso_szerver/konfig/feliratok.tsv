@@ -6,3 +6,47 @@ szk.parhuzamban	párhuzamban:	in parallel with:
 szk.ellentetben	ellentétben: %(szo)s	in contrast to: %(szo)s
 szk.es	és	and
 szk.es_mashol	és máshol	and elsewhere
+szk.allapot_forditva	Lefordítva · gépi fordítás, %(datum)s	
+szk.allapot_angol	Magyar fordítás nincs · az angol eredeti áll	
+szk.besorolas_cim	A BDB besorolása: %(ig)s	
+szk.besorolas_pont	A szótár ezt a helyet ebbe a jelentésbe sorolja:	
+szk.besorolas_heber_szamozas	(a BDB a héber versszámozással: %(mt)s)	
+szk.besorolas_ketes	A BDB idézi ezt a verset, de a jelentéspont gépi besorolása kétes, vagy a hely a szócikk fejében, illetve tagolatlan részén áll: jelentéspontot nem jelölünk.	
+szk.besorolas_nem_idezi	A BDB ezt a verset nem idézi; jelentéspontot idézet nélkül nem jelölünk.	
+szk.besorolas_torzs	A szó igetörzse ebben a versben:	
+szk.besorolas_nincs_tabla	A vers → jelentés tábla ebben az adatbázisban nem érhető el; a szócikk jelölés nélkül áll.	
+szk.besorolas_jelzes	a BDB besorolása ennél a versnél	
+szk.ez_a_vers	ez a vers	
+szk.hivatkozas_db	%(n)s hivatkozás	
+szk.hivatkozas_cimszo	%(n)s hivatkozás a címszónál	
+szk.hivatkozas_szocikk	%(n)s igehely-hivatkozás a szócikkben	
+szk.homonima	%(n)s. címszó	
+szk.elofordulas_bdb	%(n)s előfordulás (BDB)	
+szk.torzs_db	%(n)s előfordulás a BDB szerint	
+szk.alakok	Alakok	
+szk.rokon	Rokon nyelvek és eredet	
+szk.irodalom_sugo	BDB irodalmi hivatkozás (szerző és mű)	
+szk.krit_sugo	a BDB jele	
+szk.tagolatlan_megj	A szótár ezt a szócikket nem tagolja számozott jelentésekre; a teljes szöveg áll.	
+szk.egyben_megj	A szótár itt ragozott alakokat sorol; a gépi tagolás ennél a törzsnél nem ad jelentéspontokat, ezért a törzs szövege egyben áll.	
+szk.rendje	A jelentések rendje a BDB szerint	
+szk.nem_azonosithato	%(n)s hivatkozás a szövegben kattintható, de a jelentéspontja ebben a tagolásban nem azonosítható; a pontok számában nem szerepel.	
+szk.jelmagyarazat	Jelmagyarázat	
+szk.teljes_szoveg	A magyar szócikk teljes szövege, tagolás nélkül	
+szk.angol_eredeti	Angol eredeti	English original
+szk.lxx_elotag	LXX	LXX
+szk.lxx_nelkul	%(n)s megfelelő nélkül	
+szk.lxx_sugo	A görög megfelelő a Septuagintában ennél a jelentésnél: a BDB által itt idézett versekben a szó szószintű LXX-párja és a párok száma (egy versben több pár is lehet, ezért az összeg eltérhet a hivatkozások számától).	
+szk.motivum_sugo	a %(mot)s motívum helyei ennél a jelentésnél (a motívum sora ezen a szón)	
+szk.motivum_cimke	%(mot)s · %(n)s hely	
+szk.kezi_cimke	szerkesztői címke	
+szk.kezi_cimke_sugo	a jóváhagyott szerkesztői címke	
+szk.szamozas	Versszámozás: a BDB a héber számozást követi;	
+szk.szamozas_par	%(mt)s = Károli %(karoli)s	
+szk.szakasz.elo	Zárójeles előszócikk (más gyök)	
+szk.szakasz.aramit	Arámi (Pe'al) rész	
+szk.szakasz.azonos_lemma	További homonima ugyanezen a lemmán	
+szk.szakasz.masik_lemma	Másik szó (más lemma)	
+szk.szakasz.tagolas	rész (a címszó fő tagolása)	
+szk.alakok_sor	Alakok:	
+szk.allapot_forditva_rovid	Lefordítva · gépi fordítás	

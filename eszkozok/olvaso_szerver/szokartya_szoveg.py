@@ -130,16 +130,45 @@ _FELSO_RE = re.compile(r'\^\s?([^\s<^;,()\[\]]+)')
 
 
 def tudosjel_html(html):
-    """A címkén kívüli szövegrészekben „X^Y” → „X<sup class="bdb-felso">Y</sup>”. A szöveg már escape-elt: a csere nem visz be
+    """A címkén kívüli szövegrészekben „X^Y” → „X<sup>Y</sup>”. A szöveg már escape-elt: a csere nem visz be
     nyers adatot címkébe (a felső index tartalma a szövegrész maga)."""
     ki = []
     for i, r in enumerate(_CIMKE_RE.split(str(html))):
-        ki.append(r if i % 2 or '^' not in r else _FELSO_RE.sub(r'<sup class="bdb-felso">\1</sup>', r))
+        ki.append(r if i % 2 or '^' not in r else _FELSO_RE.sub(r'<sup>\1</sup>', r))
     return ''.join(ki)
+
+
+# --- 11. a tagolási jelző és a meghatározás nélküli pont címe ------------------------------------------------------------
+_HEBER_RE = re.compile('[%s%s%s%s]+' % (BETU, JEL, GERES, MAQQEF))
+_PARADIGMA_RE = re.compile(
+    r'^(?:perfectum|imperfectum|participium|infinitivus|imperativus|jussivus|cohortativus|consecutiv\w*|(?:\d\.?\s*)?(?:hímnemű\s+|nőnemű\s+|közös\s+)?(?:egyes|többes|kettes)\s+szám|'
+    r'\d\.?\s+(?:hímnemű|nőnemű|közös)|perfect|imperfect|participle|infinitive|imperative|jussive|cohortative|'
+    r'\d\s+(?:masculine|feminine|common|singular|plural))\b', re.I)
+
+
+def paradigma(s):
+    """A pont szövege alaktani felsorolással nyílik (a héber alakok nélkül: „perfectum כ׳ 1Kir 6:38”, „3. nőnemű egyes szám”):
+    ilyenkor a pont nem jelentés, hanem a ragozás egy sora (a tagolási jelző rossz tagolást mutat). A „status constructus” és a
+    „suffixummal” nem jelző: a BDB névszóknál jelentéspontot nyit vele (H0430 4.b „status constructus … személyekkel”)."""
+    t = _HEBER_RE.sub(' ', s or '')
+    t = re.sub(r'^[\s,;:.‎‏()\-—–]+', '', t)
+    return bool(_PARADIGMA_RE.match(t))
+
+
+def elso_tagmondat(s, hatar=70):
+    """A meghatározás nélküli pont címe: a szöveg első tagmondata (az első „;” vagy „:” előtt), szóhatáron rövidítve „…” jellel."""
+    t = _HEBER_RE.sub(' ', s or '')
+    t = re.sub(r'(?:[1-5]\s?)?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,6}\.?\s+\d+(?::\d+)?(?:[-–]\d+)?', ' ', t)    # igehely
+    t = re.sub(r'\s+', ' ', t).strip(' ,.=‎‏()')
+    t = re.split(r'[;:]|\s—\s', t, maxsplit=1)[0].strip(' ,.=()')
+    if len(t) > hatar:
+        t = t[:hatar].rsplit(' ', 1)[0].rstrip(' ,;') + '…'
+    return t
 
 
 def olvasoi(s, magyar=True):
     """A szakaszszöveg olvasói alakja (a linkelés és az escape előtt): rövidítőjel, párhuzam, ellentét, tanú-jel, takarítás."""
+    s = re.sub(r'^\s*_\d+\s*', '', s or '')    # a pont elején álló BDB-gyakoriság („_140”): a törzs fejében már áll
     s = geresh_javit(s)
     s = nemi_tanu(s)
     if magyar:

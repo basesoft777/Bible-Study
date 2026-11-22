@@ -243,6 +243,18 @@ abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0;
 .szk-alcim { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
 .szk-alpont .szk-glossza { font-size: var(--fs-sor); }
 .szk-alpont .szk-sorok, .szk-alpont .szk-also { padding-left: 0; }
+/* F231 (olvasó egyben): a szótári szöveg jelentésenként egybefüggően; a törzs alakjai; a meghatározás nélküli pont pótcíme */
+.szk-szoveg { margin: 8px 0 0; padding-left: 2.3rem; font: var(--fs-szocikk)/var(--lh-szocikk) var(--font-text); }
+.szk-alpont .szk-szoveg { padding-left: 0; }
+.szk-szoveg a.igehely { white-space: nowrap; }
+.szk-szoveg a.bdb-itt, .szk-szoveg a.bdb-vonatkozhat { background: var(--accent-soft); border-radius: var(--radius-kiemeles); font-weight: 600; padding: 0 2px; }
+.szk-szoveg a.szk-mot { background: var(--gold-soft); box-shadow: inset 0 -2px 0 var(--gold); }
+.szk-torzs-alakok { margin: 0 0 8px; font: var(--fs-szocikk)/var(--lh-szocikk) var(--font-text); color: var(--muted); }
+.szk-torzs-egyben .szk-szoveg { padding-left: 0; }
+.szk-jel-inline { font-family: var(--font-mono); }
+.szk-potcim, .szk-tj-gl.szk-potcim { font-style: italic; font-weight: 400; }
+.szk-szamozas { margin: 4px 0 0; }
+sup { line-height: 0; }
 .szk-egyben { display: none; }
 .szk[data-nezet="egyben"] .szk-egyben { display: block; }
 .szk[data-nezet="egyben"] .szk-sorok, .szk[data-nezet="egyben"] .szk-also, .szk[data-nezet="egyben"] .szk-lenyilok { display: none; }

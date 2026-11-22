@@ -1404,6 +1404,12 @@ tulajdonsag = [
 ]
 
 [kizart]
+szk-szoveg = "a szótári szöveg egy jelentésnél, egybefüggően (F231; a megjelenés a .jsz tokenjein)"
+szk-jel-inline = "a rosszul tagolt törzs egybefüggő szövegében a pont jele (F231, félkövér; saját token nélkül)"
+szk-torzs-egyben = "állapot-osztály: a rosszul tagolt törzs egyben (F231, a tagolási jelző); saját token nélkül"
+szk-torzs-alakok = "a törzs „Alakok” sora (a jel nélküli alaktani pont, F231; a .jsz tokenjein)"
+szk-potcim = "állapot-osztály: a meghatározás nélküli pont címe a szöveg első tagmondatából (F231, dőlt)"
+szk-szamozas = "a versszámozás eltérésének megjegyzés-sora a jelentésnél (F231; a .megj tokenjein)"
 # az olvasó elrendezése (#134 M1): a szöveg és a részletek lapja; elrendezés-szerkesztés nincs a hatókörben
 olvaso-elrendezes = "a fejezet-lap rács-tárolója (szöveg + részletek lapja, 900 px alatt egy oszlop); az oszlopköz (space-oszlopkoz) elrendezési érték, a tartalékon át állítható"
 # a részletek lapjának szerkezeti részei (#134 M1); a gombok megjelenése a lap-gomb elem, a háttér és a vonal a jobb oldali panel tokenjei
@@ -1561,16 +1567,9 @@ szk-torzs = "egy törzs (Qal, Nif'ál …) jelentéseinek tárolója; a cím a s
 szk-jelentesek = "a jelentések listája (rács, a köz a space-blokkkoz)"
 szk-al = "az alpontok listája (rács)"
 szk-jel-d = "a jelentés lenyílója (details; szónézetben nyitva, motívumlap-nézetben a motívum jelentései nyitva)"
-szk-sorok = "a használati sorok listája (rács, behúzás literál)"
-szk-sor = "egy használati sor (szaggatott alsó vonal: rule); a megjelenés a gyermek-elemeken"
-szk-egesz = "állapot-osztály: a nem bontható használati sor (a teljes szövegrész); saját token nélkül"
-szk-sor-fo = "a használati sor első sora (szerkezet + magyarázat): flex-tároló"
-szk-rejt = "a „még N hely” mögötti hely burkolója (display: contents; a JS-szel rejtve); saját token nélkül"
 szk-kinyitva = "állapot-osztály: a használati sor minden helye látszik (a JS adja a „még N hely” gombra)"
-szk-egyben = "a jelentés teljes magyar szövege a „Szócikk egyben” nézetben (a .jsz tokenjein); más nézetben rejtve"
 szk-alpont = "egy alpont (a., b. …) tárolója (behúzás literál)"
 szk-alcim = "az alpont címsora (jelölő, glossza, adatsor): flex-tároló"
-szk-app = "az Apparátus és szövegkritika lenyílója (details); a felirat a szk-lenyilo, a lista a szk-app-lista elem"
 szk-en = "az Angol eredeti lenyílója (details); a felirat a szk-lenyilo, a szöveg a szk-en-szoveg elem"
 szk-lxx = "a jelentés LXX-párja az adatsorban; a görög szó a .gr horog, a méret és a szín a szk-meta elemé"
 glossza-sor = "az „Ebben a versben” glossza-sora (F213); a megjegyzés (megj) tokenjeit örökli"
