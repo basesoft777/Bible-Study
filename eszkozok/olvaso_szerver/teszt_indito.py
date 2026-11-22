@@ -1325,6 +1325,56 @@ class TesztInditUjraepites(_InditAlap):
         self.assertIn('újraépítés: kihagyva — előnézeti mód', ki)
         self.assertFalse(os.path.exists(self.allapot_f))
 
+    def test_a_pillanatkep_csak_a_szukseges_konyvtarakat_viszi(self):
+        # F101.5: a teljes gyökér másolása (.claude/worktrees stb.) több GB-ot vitt át, és az építés el sem indult (az orkesztrátor élesben mérte)
+        for n in ('.claude/worktrees/x/nagy.txt', 'archivum/a.txt', 'generalt_proba/p.txt', 'naplok/n.md', 'kozlemeny/k.md', 'beerkezo/b.md',
+                  'eszkozok/m.py', 'eszkozok/__pycache__/m.pyc', 'lexikon/L.md', 'DONTESEK.md', 'genezis/g.md', 'motivumok/m.md', 'adat/x.db'):
+            adat_gyoker(self.g, {n: 'x'})
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        lista = os.path.join(self.t, 'snap_lista.txt')
+        parancs = ('S="${1/.epit./.forras.}"; (cd "$S" && find . -type f | sort) > "%s"; ' % lista) + self.EPIT_PARANCS
+        self._epit(parancs=parancs)
+        self.assertEqual(self._vegere_var(), 'kesz', open(os.path.join(self.t, 'epites.log'), encoding='utf-8').read())
+        sorok = open(lista, encoding='utf-8').read().split()
+        self.assertTrue(sorok, 'a pillanatkép nem üres')
+        self.assertEqual([x for x in sorok if x.startswith('./.claude') or x.startswith('./archivum') or x.startswith('./generalt_proba')], [])
+        self.assertEqual([x for x in sorok if x.split('/')[1] in ('naplok', 'kozlemeny', 'beerkezo')], [])
+        self.assertEqual([x for x in sorok if '__pycache__' in x or x.endswith('.db') or x.endswith('.pyc')], [])
+        for kell in ('./eszkozok/m.py', './lexikon/L.md', './DONTESEK.md', './genezis/g.md', './motivumok/m.md', './adat/a.tsv', './konkordancia/k.tsv'):
+            self.assertIn(kell, sorok)
+        # a pillanatkép a végén törlődik
+        self.assertEqual([n for n in os.listdir(os.path.dirname(self.c)) if '.forras.' in n], [])
+
+    def test_a_masolando_lista_lefedi_az_epito_forrasait(self):
+        # a forrás-azonosító könyvtárai mind a pillanatképben vannak (különben az építés nem látná, amit az azonosító figyel)
+        for d in FA.RESZEK + FA.TANULMANY_RESZEK:
+            self.assertIn(d, FA.MASOLANDO)
+        self.assertIn('eszkozok', FA.MASOLANDO)
+        ki = subprocess.run([sys.executable, os.path.join(D, 'forras_azonosito.py'), '--masolando', os.path.dirname(os.path.dirname(D))],
+                            stdout=subprocess.PIPE, text=True, encoding='utf-8').stdout.split()
+        self.assertEqual(ki, FA.masolando(os.path.dirname(os.path.dirname(D))))
+        self.assertNotIn('.claude', ki)
+
+    def test_kilott_epites_maradvanyai_torlodnek_az_elo_epites_nem(self):
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        halott = self.c + '.forras.4194999'
+        elo = self.c + '.epit.%d' % os.getpid()
+        os.makedirs(halott)
+        with open(os.path.join(halott, 'x'), 'w') as fh:
+            fh.write('x')
+        with open(elo, 'w') as fh:
+            fh.write('x')
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        self._epit()
+        self.assertEqual(self._vegere_var(), 'kesz')
+        self.assertFalse(os.path.exists(halott))
+        self.assertTrue(os.path.exists(elo))
+
     def test_epit_hatter_kezi_modja_a_zarat_veszi_es_kiirja_a_naplot(self):
         # a „PaRDeS adatbázis újraépítése” asztali parancsikon belépési pontja: `epit_hatter.sh --kezi`
         db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')

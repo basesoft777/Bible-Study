@@ -42,6 +42,16 @@ allapot_ir() {   # $1 állapot, $2 üzenet (egy sor, tab nélkül)
   printf '%s\t%s\t%s\t%s\t%s\n' "$1" "$(ido)" "$$" "$uz" "$NAPLO" > "$ALLAPOT.tmp.$$" && mv -f "$ALLAPOT.tmp.$$" "$ALLAPOT"
 }
 mkdir -p "$(dirname "$ALLAPOT")" "$(dirname "$NAPLO")" "$(dirname "$MASOLAT")"
+# Egy korábbi, kilőtt építés maradványai (a név végén az építés pid-je): csak a már nem élő pid-ű, saját mintájú ideiglenes fájlok és könyvtárak törlődnek;
+# az élő építés ideiglenes fájlja érintetlen.
+for MARADVANY in "$MASOLAT".epit.* "$MASOLAT".forras.*; do
+  [ -e "$MARADVANY" ] || continue
+  MPID="${MARADVANY##*.}"
+  case "$MPID" in ''|*[!0-9]*) continue ;; esac
+  [ "$MPID" = "$$" ] && continue
+  [ -d "/proc/$MPID" ] && continue
+  rm -rf -- "$MARADVANY"
+done
 : > "$NAPLO"
 if [ "$KEZI" = "1" ]; then exec > >(tee -a "$NAPLO") 2>&1; else exec >>"$NAPLO" 2>&1; fi
 trap 'rm -f "$TMP" "$TMP.epit" "$ALLAPOT.tmp.$$"; [ -n "${SNAP:-}" ] && [ -d "$SNAP" ] && rm -rf -- "$SNAP"' EXIT
@@ -50,13 +60,19 @@ allapot_ir fut "az építés fut"
 
 TS0="$(masodperc)"
 mkdir -p "$SNAP"
-(cd "$GYOKER" && tar -c --exclude=.git --exclude='*.db' --exclude='*.db.*' --exclude='*.zar' .) | tar -x -C "$SNAP"
+# Csak az építéshez kellő útvonalak (forras_azonosito.MASOLANDO), nem a teljes gyökér: a gyökér alatt a .claude/worktrees stb. több GB (F101.5)
+MASOLANDO="$("$PY" "$CEL/forras_azonosito.py" --masolando "$GYOKER")"
+if [ -z "$MASOLANDO" ]; then
+  allapot_ir elbukott "nincs másolandó forrás ($GYOKER); a meglévő adatbázisok érintetlenek"
+  exit 1
+fi
+(cd "$GYOKER" && tar -c --exclude='__pycache__' --exclude='*.pyc' --exclude='*.db' --exclude='*.db.*' --exclude='*.zar' $MASOLANDO) | tar -x -C "$SNAP"
 PS=("${PIPESTATUS[@]}")
 if [ "${PS[0]:-1}" -ne 0 ] || [ "${PS[1]:-1}" -ne 0 ]; then
   allapot_ir elbukott "a forrás pillanatképe nem készült el ($GYOKER -> $SNAP); a meglévő adatbázisok érintetlenek"
   exit 1
 fi
-echo "[epit] $(ido) pillanatkép kész: $SNAP ($(( $(masodperc) - TS0 )) s)"
+echo "[epit] $(ido) pillanatkép kész: $SNAP ($(( $(masodperc) - TS0 )) s, $(du -sm "$SNAP" | cut -f1) MB; útvonalak: $(echo $MASOLANDO))"
 T0="$(masodperc)"
 if [ -n "${PARDES_EPIT_PARANCS:-}" ]; then
   bash -c "$PARDES_EPIT_PARANCS" _ "$TMP"; RC=$?
