@@ -19,8 +19,6 @@ S2, S3, S4, S5, S6, S7, S8, S9 = ('S2 (F218.5)', 'S3 (F218.6)', 'S4 (F218.7)', '
 # felhasználó 2026-11-21-én „Később, a validáció után”; a JOHD-validáció után, a validált számmal (N-F218v)
 S8_GK19 = ('GK-19 (T6): nyitott, döntéssel elhalasztva (2026-11-21, „Később, a validáció után”; N-F218v); '
            'a mondat a JOHD-validáció után kerül a lapra')
-S3_MARADEK = ('az S3 kész, de ezt a követelményt nem teljesítette (a 6. ellenőrzés E9 tétele); a 218a végi '
-              'átnézésén szeletet kap')
 HELY_EGYSEG = ('218c (a leendő #238; N234, az orkesztrátor döntése (DT924), 2026-11-22): a névvel megadott szópár (1.4, '
                '`málé+chámász`) tagjait a modell nem köti Strong-számhoz; a kapu '
                'ehhez a bemeneti rétegben kér feloldást (N-tétel)')
@@ -117,19 +115,12 @@ class AtvettTetelek(unittest.TestCase):
         """GK-A11, A14, A15, B5, B8, C3, C9, D3: a hibaleltár leírása szerint újramérve, 0 eltérés (a leírásokat
         az F218.1 halasztott része veszi át)."""
 
-    @unittest.skip(S3_MARADEK)
-    def test_gk_n178_thayer_a_javitott_forrasbol(self):
-        """GK-N178: a Thayer-kártya szakaszai a javított forrásból jönnek; a 15 érintett Strong tesztje."""
-
 
 
 class Hibanaplo(unittest.TestCase):
     """A hibanapló példányai (HN): szövegminta a lapon; elvárt 0 találat az új lapon. A minták a `HN_MINTAK`
     táblában állnak; a kész szakaszokon a `HibanaploMintak` már ma méri őket, a teljes lapon az alábbi tesztek."""
 
-    @unittest.skip(S3_MARADEK)
-    def test_hn12_angol_thayer_nyersen(self):
-        """HN-12: nyers angol Thayer-szöveg nem kerül a lapra."""
 
 
 if __name__ == '__main__':

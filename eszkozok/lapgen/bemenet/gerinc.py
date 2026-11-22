@@ -18,6 +18,7 @@ import re
 import bdb_rovidites
 import bdb_tagolas
 import szotari_glossza
+from thayer_jelolt import thayer_bemenet
 
 from lapgen.bemenet import frissesseg
 from lapgen.bemenet.jegyzek import BemenetHiba
@@ -744,13 +745,27 @@ def b19_bdb_vers_jelentes(b):
 
 def b20_thayer_szakaszok(b):
     """B20 — a Thayer-szócikkek szakaszai Strong-számonként (a szakasztábla rendjében; a magyar szöveg a
-    fordítástáblából jön, B14)."""
+    fordítástáblából jön, B14). A szakasz angol szövege a javított forrásé (GK-N178, N178): a `javitassal` illesztésű
+    sorba a javítótábla (a B20 második útvonala) beszúrja a hiányzó szöveget, a közös `thayer_bemenet` útján (ugyanaz a
+    javítás, mint a fordításé). A `javitassal` szócikk javítás nélkül, illetve a nem illeszkedő javítás BemenetHiba."""
+    szakasz_ut, javitas_ut = b._utvonalak('B20')
+
     def betolt():
+        jav = thayer_bemenet.javitas_olvas(b._teljes_utvonal(javitas_ut))
         ki = {}
-        for r in _sorok(b, 'B20', ('strong', 'sorszam', 'utvonal', 'jel', 'szoveg')):
-            ki.setdefault(r['strong'], []).append(r)
+        sorok = _sorok(b, 'B20', ('strong', 'sorszam', 'utvonal', 'jel', 'szoveg', 'illesztes'), szakasz_ut)
+        javitott = {st for st, _sorszam in jav}
+        for st in {r['strong'] for r in sorok if r['illesztes'] == 'javitassal'} - javitott:
+            raise BemenetHiba('B20: %s: `javitassal` illesztés, de nincs `javitva` sora a javítótáblában' % st)
+        for r in sorok:
+            try:
+                szoveg = thayer_bemenet.javitott_szoveg(r, jav)
+            except ValueError as hiba:
+                raise BemenetHiba('B20: %s' % hiba) from None
+            ki.setdefault(r['strong'], []).append(dict(r, szoveg=szoveg))
         return ki
-    b._tabla('B20', oszlopok=('strong',))      # az olvasás naplózása minden hívásnál (a forráslistához)
+    b._tabla('B20', utvonal=szakasz_ut, oszlopok=('strong',))      # az olvasás naplózása minden hívásnál
+    b._szoveg('B20', utvonal=javitas_ut)                            # (a forráslistához), a javítótábláé is
     return b.egyszer('B20', betolt)
 
 

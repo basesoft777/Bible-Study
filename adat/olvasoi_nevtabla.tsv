@@ -161,6 +161,7 @@ irod_adat	konkordancia/Karoli_versmegfeleltetes.tsv	Károli-versmegfeleltetés	O
 irod_adat	adat/szotar_szakasz_cimke.tsv	Szótári szakaszok címketáblája	OLVASOI_FORRASNEV
 irod_adat	adat/bdb_szakaszok.tsv	BDB-szótár	OLVASOI_FORRASNEV
 irod_adat	adat/bdb_forras_javitas.tsv	BDB-szótár forrásjavításai	uj
+irod_adat	adat/thayer_forras_javitas.tsv	Thayer-szótár forrásjavításai	uj
 irod_adat	adat/bdb_szakasz_hu.tsv	BDB-szótár	OLVASOI_FORRASNEV
 irod_adat	adat/bdb_vers_jelentes.tsv	BDB-szótár	OLVASOI_FORRASNEV
 irod_adat	adat/thayer_vers_jelentes.tsv	Thayer-szótár	OLVASOI_FORRASNEV

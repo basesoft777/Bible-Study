@@ -419,5 +419,49 @@ class AtvettTetelek(unittest.TestCase):
         self.assertEqual(szoveg.count(jel), 8)
 
 
+class Thayer(unittest.TestCase):
+    """GK-N178 és HN-12 (S9c): a Thayer-kártya szakaszai a javított forrásból; nyers angol Thayer nem kerül a lapra."""
+
+    @classmethod
+    def setUpClass(cls):
+        from lapgen import bemenet
+        cls.b = bemenet.Bemenet(kozos.GYOKER)
+
+    def test_gk_n178_a_15_strong_a_javitott_forrasbol(self):
+        """GK-N178: a `javitassal` illesztésű 15 Strong (a Thayer-javítótábla) minden szakaszának szövege a lapgen
+        bemenetében a közös `thayer_bemenet.szakaszok` javított szövege; legalább egy sorban a javítás látszik."""
+        from thayer_jelolt import thayer_bemenet
+        from lapgen.bemenet import gerinc
+        szakaszok = gerinc.b20_thayer_szakaszok(self.b)
+        javitott = sorted({st for st, _sz in thayer_bemenet.javitas_olvas()})
+        self.assertEqual(len(javitott), 15)
+        elter = 0
+        for st in javitott:
+            vart = [x['szoveg'] for x in thayer_bemenet.szakaszok(st)]
+            kapott = [' '.join(x for x in (r['jel'], r['szoveg']) if x) for r in szakaszok[st]]
+            self.assertEqual(kapott, vart, st)
+            nyers = thayer_bemenet.tabla_olvas()[st]
+            elter += sum(1 for r, k in zip(nyers, szakaszok[st]) if r['szoveg'] != k['szoveg'])
+        self.assertGreater(elter, 0)
+
+    def test_hn12_nyers_angol_thayer_nincs_a_lapon(self):
+        """HN-12 (N178): a motívum görög szavainak angol Thayer-szakaszai (a forrás szövege) a látható lapon nem
+        állnak: a kártya a magyar fordítást adja (fordítás hiányában JeloltHiba, `kartya_lap`)."""
+        import teszt_vaz
+        from lapgen.bemenet import elofordulas, gerinc
+        szakaszok = gerinc.b20_thayer_szakaszok(self.b)
+        mert = 0
+        for azonosito in MINTALAPOK:
+            lap = teszt_vaz._lathato_szoveg(azonosito)
+            sorok = elofordulas.b03_elofordulasok(self.b, MotivumId(azonosito))
+            for kod in sorted({st.kod for s in sorok for st in s.strongok if not st.heber}):
+                for r in szakaszok.get(kod, ()):
+                    angol = r['szoveg'].strip()
+                    if len(angol) >= 40:
+                        mert += 1
+                        self.assertNotIn(angol[:40], lap, '%s %s#%s' % (azonosito, kod, r['sorszam']))
+        self.assertGreater(mert, 0)
+
+
 if __name__ == '__main__':
     unittest.main()
