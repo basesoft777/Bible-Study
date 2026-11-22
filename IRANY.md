@@ -27,7 +27,7 @@
 ## Rád vár
 - Fordítás (pénz), igen vagy elvetve: #24 a görög rövid jelentések (N177); #23 a Thayer magyarja (354 / 5 426 kész; a következő adag kb. 10 USD).
 - JOHD (#762, #763, draft): az emberi validáció és a 21 fejezetes újramérés bemásolása; a deposit formátuma.
-- Külső lépések: a Biblialex domain; a BiblIndex-levél; a nyílt csomagok átvitele az orgba (token, push); a KJV-licenc kérdése a CrossWire-nek (csak a fizetős megjelenítés előtt).
+- Külső lépések: a Biblialex domain; a BiblIndex-levél (patrisztikus igehely-index, a visszhang-réteghez: küldés vagy elvetve; a tervezetben még a régi „Logosz-lexikon” név áll); a KJV-licenc kérdése a CrossWire-nek (csak a fizetős megjelenítés előtt).
 - Az F134 telefonos próbája. A BDB harmadik tanúja (N212: a mintán 70%-ban a mi táblánk téved): a tábla javítása feladat legyen, vagy elvetve.
 - Archiválható-e: levelek-uj-cimzettek; betu-szin-elonezet (6 merge-eletlen commit: a betűválasztó előnézete).
 
