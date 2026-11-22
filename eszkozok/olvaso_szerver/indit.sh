@@ -7,8 +7,11 @@
 # `git merge --ff-only origin/main` (a `git pull --ff-only` két lépésben); különben kihagyja, és a napló kiírja, miért; (1) a porton futó régi
 # példány leállítása; (2) adatbázis-szinkron: a Windows-oldali pardes.db (forrás) és a WSL-beli másolat (cél) `meta.epites_ts`-ének összevetése
 # — eltérésnél (vagy hiányzó célnál) másolás ideiglenes névre, majd atomi átnevezés (a szinkron-kulcs az epites_ts, NEM a fájl mtime-ja);
-# azonos építési időnél nincs másolás; (3) a szerver indítása újratöltővel (alkalmazas.py --ujratolt). A napló minden lépést kiír
-# ("[indit] …"), többek közt azt, hogy másolás vagy frissítés történt-e.
+# azonos építési időnél nincs másolás; (2b) az adat frissessége (#101): ha az adatbázis régebbi a forrásfájloknál (`adat/`, `konkordancia/`), háttérben
+# újraépül (`epit_hatter.sh`, a WSL natív lemezén, integritás-ellenőrzéssel, csak siker után cserél: a Windows-oldali pardes.db-t; a WSL-másolat a következő
+# indításkor szinkronizálódik); a szerver közben a régi, ép adatbázissal fut; a bejelentkezéskori ütemezett indításnál (DT161) PARDES_EPIT=0 kell (DT-F101b);
+# (3) a szerver indítása újratöltővel (alkalmazas.py --ujratolt). A napló minden lépést kiír
+# ("[indit] …"), többek közt azt, hogy másolás, frissítés vagy újraépítés történt-e.
 #
 # ELŐNÉZETI MÓD (F225): ha a szkript linkelt worktree-ben áll (a repó gyökerében a `.git` egy fájl), vagy PARDES_ELONEZET=1, az indító
 #   - SOHA nem ír a közös adatbázis-másolatba (nincs szinkron: a `~/pardes/pardes.db` csak olvasható; a forrás alapja a főcheckout pardes.db-je,
@@ -26,6 +29,12 @@
 #   PARDES_INDIT_CSAK_ELOKESZIT=1   csak leállítás + szinkron, a szervert nem indítja (teszt_indito.py, gépi próba)
 #   PARDES_ELONEZET    1: előnézeti mód; 0: nem az (alap: linkelt worktree = 1, főcheckout = 0)
 #   PARDES_FRISSIT     0: a főcheckout frissítése ki (alap: be, a fenti feltételekkel); a tesztek a valódi checkoutot ezzel védik
+#   PARDES_EPIT        0: az automatikus újraépítés ki (alap: be, csak főcheckoutban; előnézetben soha); a tesztek ezzel védik a valódi forrást
+#   PARDES_EPIT_ZAR    az újraépítés zárfájlja (egyszerre egy építés; alap: $HOME/pardes/.epit.zar)
+#   PARDES_EPITES_ALLAPOT  az újraépítés állapotfájlja (a lábléc olvassa; alap: $HOME/pardes/epites_allapot.tsv)
+#   PARDES_EPITES_NAPLO    az újraépítés naplója (alap: $HOME/pardes/epites.log)
+#   PARDES_EPIT_PARANCS    (teszthez) az építés helyett futtatott parancs; az első argumentuma a kimeneti fájl
+#   PARDES_EPIT_KEZI   1: az adat frissességétől függetlenül újraépít (a „PaRDeS adatbázis újraépítése” parancsikon)
 #   PARDES_GIT         a frissítéshez használt git (alap: a /mnt/<meghajtó> alatti checkoutnál a Windows `git.exe`, különben `git`: a WSL-git
 #                      a /mnt/c-n ~85 s alatt fut, és hamisan „piszkos” munkafát mér — F225 mérés; a `git.exe` 0,3 s)
 set -u
@@ -191,6 +200,44 @@ else
 fi
 [ -f "$MASOLAT" ] || { naplo "HIBA: nincs adatbázis-másolat: $MASOLAT"; exit 1; }
 
+# -- (2b) az adat frissessége: háttér-újraépítés (#101) ---------------------------------------------------------------------------
+# Előnézetben soha (a közös adatbázishoz nem nyúl, és a munkafa nem a főcheckout adata). Az észlelés mtime+méret, eltéréskor sha256 (DT-F101a):
+# `allapot.py forras`. A zár külön fájl (egyszerre egy építés); a gyerek örökli a zárat, a szülő a saját másolatát bezárja, hogy a szerver ne tartsa.
+ADAT_GYOKER="${PARDES_ADAT_GYOKER:-$GYOKER}"   # a forrásfájlok gyökere (teszthez átírható)
+EPIT_ZAR="${PARDES_EPIT_ZAR:-$HOME/pardes/.epit.zar}"
+EPITES_ALLAPOT="${PARDES_EPITES_ALLAPOT:-$HOME/pardes/epites_allapot.tsv}"
+EPITES_NAPLO="${PARDES_EPITES_NAPLO:-$HOME/pardes/epites.log}"
+epit_inditas() {
+  [ "${PARDES_EPIT:-1}" = "0" ] && { naplo "újraépítés: kihagyva — PARDES_EPIT=0"; return 0; }
+  [ "$ELONEZET" = "1" ] && { naplo "újraépítés: kihagyva — előnézeti mód"; return 0; }
+  local d eall en evalt
+  if [ "${PARDES_EPIT_KEZI:-}" = "1" ]; then
+    eall="kezi"; naplo "adat: kézi újraépítés kérve (PARDES_EPIT_KEZI=1)"
+  else
+    d="$("$PY" "$CEL/allapot.py" forras "$ADAT_GYOKER" "$MASOLAT" 2>&1)"
+    IFS=$'\t' read -r eall en evalt <<< "$d"
+    case "$eall" in
+      friss) naplo "adat: az adatbázis friss — a forrásfájlok megegyeznek az építéskor rögzítettekkel"; return 0 ;;
+      regebbi) naplo "adat: az adatbázis régebbi az adatnál ($en változás, pl.: $evalt)" ;;
+      nincs_adat) naplo "adat: az adatbázis nem tárol forrás-azonosítót (régi építés) — újraépítés kell" ;;
+      *) naplo "adat: a frissesség nem állapítható meg ($d) — nem építek újra"; return 0 ;;
+    esac
+  fi
+  mkdir -p "$(dirname "$EPIT_ZAR")"
+  exec 8>"$EPIT_ZAR"
+  if ! flock -n 8; then
+    naplo "újraépítés: már fut egy másik építés ($EPIT_ZAR) — nem indítok újat"
+    exec 8>&-
+    return 0
+  fi
+  # a gyerek NEM örökli a start-zárat (9): különben a következő indítás az építés végéig várna rá; az építés-zárat (8) örökli
+  naplo "újraépítés: INDUL a háttérben (a szerver a régi adatbázissal indul; napló: $EPITES_NAPLO, állapot: $EPITES_ALLAPOT)"
+  PARDES_GYOKER="$ADAT_GYOKER" PARDES_PY="$PY" PARDES_DB="$MASOLAT" PARDES_FORRAS_DB="${FORRAS:-}" PARDES_EPITES_ALLAPOT="$EPITES_ALLAPOT" \
+    PARDES_EPITES_NAPLO="$EPITES_NAPLO" setsid nohup bash "$CEL/epit_hatter.sh" </dev/null >/dev/null 2>&1 9>&- &
+  exec 8>&-
+}
+epit_inditas
+
 if [ "${PARDES_INDIT_CSAK_ELOKESZIT:-}" = "1" ]; then
   naplo "csak előkészítés (PARDES_INDIT_CSAK_ELOKESZIT=1): a szervert nem indítom"
   exit 0
@@ -201,6 +248,8 @@ fi
 ( for _ in $(seq 1 300); do (echo > "/dev/tcp/127.0.0.1/$PORT") 2>/dev/null && break; sleep 0.2; done; flock -u 9 ) &
 export PARDES_DB="$MASOLAT"
 export PARDES_FORRAS_DB="$FORRAS"
+export PARDES_EPITES_ALLAPOT="$EPITES_ALLAPOT"
+[ "$ELONEZET" = "1" ] || export PARDES_FORRAS_GYOKER="$ADAT_GYOKER"      # a lábléc ebből jelzi, ha az adatbázis régebbi az adatnál (#101)
 MOD="főcheckout"; [ "$ELONEZET" = "1" ] && MOD="előnézet"
 naplo "szerver indítása: kiadás=$KIADAS port=$PORT mód=$MOD adatbázis=$MASOLAT (újratöltővel); cím: http://localhost:$PORT/"
 cd "$CEL" && exec "$PY" alkalmazas.py --port "$PORT" --kiadas "$KIADAS" --ujratolt
