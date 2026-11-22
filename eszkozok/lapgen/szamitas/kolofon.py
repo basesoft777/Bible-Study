@@ -26,6 +26,7 @@ from lapgen.bemenet import irodalom as irodalom_be
 from lapgen.bemenet import kolofon as kolofon_be
 from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet.jegyzek import BemenetHiba
+from lapgen.szakaszok import Szakaszrend
 from lapgen.szamitas.idezes import Licenc, licenc_lista
 from lapgen.szoveg import Kulcs, Lathato, idezet, proza
 
@@ -35,6 +36,38 @@ class Szerzoseg(enum.Enum):
     GENERALT = 'generalt'       # nincs kézi rés: a lap minden szakasza generált
     KIADATLAN = 'kiadatlan'     # van kézi rés, de a lap nincs kiadva: a szerző nem hagyta jóvá
     KIADOTT = 'kiadott'         # kiadott lap kézi résekkel: a szerző jóváhagyta (munka módban: a korábbi változatot)
+
+
+class ForrasNev(enum.Enum):
+    """A forrástábla sorának névtábla-típusa."""
+    KOLOFON_SZOTAR = 'kolofon_szotar'   # szótárfájl
+    IROD_ADAT = 'irod_adat'             # adatfájl
+    IROD_KULSO = 'irod_kulso'           # a generátor által nem olvasott külső forrás
+
+
+class MegjelolesMondat(enum.Enum):
+    """A lap saját mondata egy forrásról a kötelező megjelölések között (`kolofon.megjeloles.<érték>` sablonsor)."""
+    LSJ = 'lsj'
+    TW = 'tw'
+    TWOT = 'twot'
+
+
+class KeziRes(enum.Enum):
+    """A szerzőségi mondatban felsorolható kézi rés (a címe a `cim.<érték>` sablonsor)."""
+    KIVONAT = 'kivonat'
+    MIERT_FONTOS = 'miert_fontos'
+    MINOSITES = 'minosites'
+    ALATAMASZTAS = 'alatamasztas'
+    ERTELMEZES = 'ertelmezes'
+    MODSZERTAN = 'modszertan'
+
+
+class KolofonMezo(enum.Enum):
+    """A motívumtábla kézi mezője a Kolofon táblájában (a címkéje a `kolofon.mezo.<érték>` sablonsor)."""
+    UI_CIMKE = 'ui_cimke'
+    TEMA = 'tema'
+    PARDES_SZINT = 'pardes_szint'
+    SABLON_VERZIO = 'sablon_verzio'
 
 
 @dataclass(frozen=True)
@@ -53,12 +86,12 @@ class LektorSor:
 
 @dataclass(frozen=True)
 class ForrasSor:
-    """A forrástábla egy sora: a név (névtábla-típus és kulcs), a licencek, az olvasó szakaszok azonosítói (a szakaszrend
-    szerint; az alrész a szülő szakaszé)."""
-    nev_tipus: str
+    """A forrástábla egy sora: a név (névtábla-típus és kulcs), a licencek, az olvasó szakaszok sorszáma (a szakaszrend
+    szerint, növekvő; az alrész a szülő szakaszé)."""
+    nev_tipus: ForrasNev
     nev: Kulcs
     licencek: Tuple[Licenc, ...]
-    szakaszok: Tuple[str, ...]
+    szakaszok: Tuple[int, ...]
 
 
 @dataclass(frozen=True)
@@ -66,14 +99,14 @@ class Megjeloles:
     """Egy kötelező forrásmegjelölés: szó szerinti idézet a licencleltárból (`szoveg`), vagy a lap saját mondata a
     forrásról (`sablon`: a `kolofon.megjeloles.<sablon>` sor; a `cimke` a licencleltár címkéje, ha a mondat kéri)."""
     szoveg: Optional[Lathato]
-    sablon: Optional[str]
+    sablon: Optional[MegjelolesMondat]
     cimke: Optional[Lathato]
 
 
 @dataclass(frozen=True)
 class Kolofon:
     szerzoseg: Szerzoseg
-    resek: Tuple[str, ...]              # a kézi rések azonosítói (a címük a szakaszrend sablonsora)
+    resek: Tuple[KeziRes, ...]          # a kézi rések, a lapon álló sorrendben
     proza_modell: Optional[Lathato]     # a legutóbbi kiadás próza-modellje; None: a kiadás nem rögzíti
     jovahagyas: Optional[datetime.date]  # a szerző jóváhagyásának dátuma (kiadott lapnál)
     kiadas: bool                        # kiadás mód (a kapu ebben áll meg)
@@ -81,7 +114,7 @@ class Kolofon:
     meghatarozas: Optional[Lathato]
     azonossag: Optional[Kulcs]
     folerendelt: Lathato                # mondatkezdő alakban (a táblacella elején áll)
-    mezok: Tuple[Tuple[str, Lathato], ...]   # a motívumtábla kézi mezői (mező, érték)
+    mezok: Tuple[Tuple[KolofonMezo, Lathato], ...]   # a motívumtábla kézi mezői (mező, érték)
     kiadasok: Tuple[KiadasSor, ...]
     javitasok: Tuple[datetime.date, ...]
     lektor: Optional[LektorSor]
@@ -92,23 +125,22 @@ class Kolofon:
 
 
 def _forrastabla(korny, elozo):
-    sorok = {}   # csoport (a név nyers szövege) -> [típus, kulcs, licencforrások, szakaszok]
+    rend = Szakaszrend()
+    sorok = {}   # csoport (a név nyers szövege) -> [rendezési kulcs, típus, kulcs, licencforrások, szakaszok]
+
+    def hozzaad(csoport, rendkulcs, tipus, kulcs, forras, azonosito):
+        r = sorok.setdefault(csoport, [rendkulcs, tipus, kulcs, [], set()])
+        r[3].append(forras)
+        r[4].add(rend.sorszam(rend.szulo(azonosito)))
+
     for azonosito, olvasasok in elozo.items():
-        for f in irodalom_be.irodalom_fajlok(korny.b, olvasasok):
-            r = sorok.setdefault(f.kolofon_csoport, [f.kolofon_tipus, f.kulcs, [], set()])
-            r[2].append(f)
-            r[3].add(azonosito)
         szarm_fajlok, szarm_kulsok = irodalom_be.szarmaztatott_forrasok(korny.b, olvasasok)
-        for f in szarm_fajlok:
-            r = sorok.setdefault(f.kolofon_csoport, [f.kolofon_tipus, f.kulcs, [], set()])
-            r[2].append(f)
-            r[3].add(azonosito)
+        for f in irodalom_be.irodalom_fajlok(korny.b, olvasasok) + szarm_fajlok:
+            hozzaad(f.kolofon_csoport, f.kolofon_rend, ForrasNev(f.kolofon_tipus), f.kulcs, f, azonosito)
         for k in irodalom_be.kulso_forrasok(korny.b, korny.motivum, olvasasok) + szarm_kulsok:
-            r = sorok.setdefault(k.csoport, [irodalom_be.NEV_KULSO, k.kulcs, [], set()])
-            r[2].append(k)
-            r[3].add(azonosito)
+            hozzaad(k.csoport, k.rend, ForrasNev.IROD_KULSO, k.kulcs, k, azonosito)
     return tuple(ForrasSor(nev_tipus=t, nev=kulcs, licencek=licenc_lista(fs), szakaszok=tuple(sorted(sz)))
-                 for _csoport, (t, kulcs, fs, sz) in sorted(sorok.items(), key=lambda e: e[0].lower()))
+                 for _rend, t, kulcs, fs, sz in sorted(sorok.values(), key=lambda r: r[0]))
 
 
 def _megjelolesek(korny, azonositok):
@@ -119,7 +151,7 @@ def _megjelolesek(korny, azonositok):
         if kulcs not in kulcsok:
             continue
         if sablon is not None:
-            ki.append(Megjeloles(szoveg=None, sablon=sablon, cimke=idezet(licencek.cimke(kulcs))))
+            ki.append(Megjeloles(szoveg=None, sablon=MegjelolesMondat(sablon), cimke=idezet(licencek.cimke(kulcs))))
             continue
         for resz in licencek.megjeloles(kulcs):
             if resz.ertek not in latott:
@@ -136,7 +168,7 @@ def szamit(korny, elozo):
                           % korny.motivum.kod)
     adatok = kolofon_be.b48_kiadasi_adatok(korny.b, korny.motivum)
     kezi = motivum_be.b47_resek(korny.b, korny.motivum)
-    resek = tuple(r for r in konfig.SZERZOSEG_RESEK if r in kezi)
+    resek = tuple(KeziRes(r) for r in konfig.SZERZOSEG_RESEK if r in kezi)
     utolso = adatok.kiadasok[-1] if adatok.kiadasok else None
     if not resek:
         szerzoseg, jovahagyas = Szerzoseg.GENERALT, None
@@ -155,7 +187,7 @@ def szamit(korny, elozo):
         jovahagyas=jovahagyas, kiadas=korny.mod.value == konfig.MOD_KIADAS,
         cim=proza(sor.cim), meghatarozas=proza(sor.meghatarozas) if sor.meghatarozas is not None else None,
         azonossag=sor.azonossag, folerendelt=proza(sor.folerendelt_mondatkezdo),
-        mezok=tuple((m, proza(sor.kolofon[m])) for m in motivum_be.KOLOFON_MEZOK if m in sor.kolofon),
+        mezok=tuple((KolofonMezo(m), proza(sor.kolofon[m])) for m in motivum_be.KOLOFON_MEZOK if m in sor.kolofon),
         kiadasok=tuple(KiadasSor(k.szam, k.datum, proza(k.valtozas)) for k in adatok.kiadasok),
         javitasok=adatok.javitasok,
         lektor=LektorSor(proza(lektor.modell), lektor.db, lektor.datum) if lektor is not None else None,
@@ -170,5 +202,5 @@ def kapu(modell):
     igazolná, ezt az új generátor a 218c-ig nem olvassa (N-F218w): a kapu megáll."""
     if modell.kiadas and modell.szerzoseg is not Szerzoseg.GENERALT:
         raise BemenetHiba('Kolofon (kiadás mód): a jóváhagyás frissessége nem igazolható, amíg az új generátor nem a lap '
-                          'végleges helyére ír (a lap_commit egyezése a 218c-ben, N-F218w)')
+                          'végleges helyére ír (a lap_commit egyezése a 218c-ben)')
     return modell

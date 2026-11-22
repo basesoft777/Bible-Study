@@ -105,7 +105,7 @@ class Forrastabla(_Alap):
             if b_id in self.unio:
                 vart |= nevek(jegyzekbeli) | {kulso[k] for k in kulsok}
         kapott = {s.nev.ertek: s for s in self.modell.forrasok}
-        kapott_nevek = {(_nevek(s.nev_tipus)[k]) for k, s in kapott.items()}
+        kapott_nevek = {_nevek(s.nev_tipus.value)[k] for k, s in kapott.items()}
         self.assertTrue(vart <= kapott_nevek, vart - kapott_nevek)
         self.assertTrue(kapott_nevek - vart <= set(kulso.values()), kapott_nevek - vart)
         # a MACULA (a BDB verstáblájának bemenete) saját soron áll (F212)
@@ -115,8 +115,10 @@ class Forrastabla(_Alap):
         """A „Szakasz” oszlop pontosan azok a szakaszok, amelyek a sor bemenetét olvasták (alrésznél a szülő)."""
         motivumtabla = [s for s in self.modell.forrasok if s.nev.ertek == 'adat/motivumok.tsv']
         self.assertEqual(len(motivumtabla), 1)
-        vart = {a for a, olv in self.elozo.items() if 'B02' in olv}
+        rend = fo.szakaszrend()
+        vart = {rend.sorszam(rend.szulo(a)) for a, olv in self.elozo.items() if 'B02' in olv}
         self.assertEqual(set(motivumtabla[0].szakaszok), vart)
+        self.assertEqual(list(motivumtabla[0].szakaszok), sorted(vart))
         self.assertNotIn('3. Kizárt', self.lap)   # a 3. szakasznak nincs szelete: nem olvas
 
     def test_licenc_csak_a_licencleltarbol(self):
@@ -140,7 +142,7 @@ class Megjeloles(_Alap):
         olvasott = {jegyzek[b]['licenc_kulcs'] for b in self.unio}
         mezo = {s['dataset']: s['kotelezo_megjeloles'] for s in _tabla('adat/licencek.tsv')}
         vart_sablon = [s for k, s in konfig.KOLOFON_MEGJELOLES if k in olvasott and s is not None]
-        self.assertEqual([m.sablon for m in self.modell.megjelolesek if m.sablon], vart_sablon)
+        self.assertEqual([m.sablon.value for m in self.modell.megjelolesek if m.sablon], vart_sablon)
         for m in self.modell.megjelolesek:
             if m.sablon is None:
                 self.assertTrue(any(m.szoveg is not None and kiir(m.szoveg) in mezo[k]

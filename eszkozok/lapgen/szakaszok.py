@@ -88,6 +88,13 @@ class Szakaszrend:
         """Az alrész szülő szakasza (a Kolofon forrástáblája a szülő szakasz nevét írja); önálló szakasznál maga."""
         return self._nev_szerint[azonosito].alresz or azonosito
 
+    def szamozott_azonosito(self, sorszam):
+        """A `sorszam`-adik számozott szakasz azonosítója."""
+        for leiro in self._rend:
+            if leiro.sorszam == sorszam:
+                return leiro.azonosito
+        raise KeyError('nincs %r sorszámú szakasz' % (sorszam,))
+
     def cim_kulcs(self, azonosito):
         """A szakasz címének sablonkulcsa."""
         return 'cim.' + self._nev_szerint[azonosito].azonosito

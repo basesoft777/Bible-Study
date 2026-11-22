@@ -30,13 +30,14 @@ class IrodFajl:
     rendje), a lapra nem kerül. A `kolofon_tipus` a Kolofon-név névtábla-típusa (szótárfájlnál `kolofon_szotar`,
     adatfájlnál `irod_adat`)."""
     __slots__ = ('b_id', 'kulcs', 'szotar', 'licenc', 'cimke', 'rend', 'csoport', 'forras_csoport', 'kolofon_csoport',
-                 'kolofon_tipus')
+                 'kolofon_tipus', 'kolofon_rend')
 
     def __init__(self, b_id, kulcs, szotar, licenc, cimke, rend, csoport, forras_csoport=None, kolofon_csoport=None):
         self.b_id, self.kulcs, self.szotar, self.licenc, self.cimke = b_id, kulcs, szotar, licenc, cimke
         self.rend, self.csoport, self.forras_csoport = rend, csoport, forras_csoport
         self.kolofon_csoport = kolofon_csoport if kolofon_csoport is not None else csoport
         self.kolofon_tipus = NEV_KOLOFON_SZOTAR if szotar else NEV_ADAT
+        self.kolofon_rend = self.kolofon_csoport.lower()   # a Kolofon forrástáblájának rendje (kisbetűsítve, a régi szabály)
 
 
 def irodalom_fajlok(b, azonositok):
@@ -72,11 +73,12 @@ def irodalom_fajlok(b, azonositok):
 
 class KulsoForras:
     """A generátor által nem olvasott külső forrás: a kulcs (névtábla `irod_kulso`) és a licenc. A `csoport` belső
-    érték (a név nyers szövege: a Kolofon forrástáblájának rendje), a lapra nem kerül."""
-    __slots__ = ('kulcs', 'licenc', 'cimke', 'csoport')
+    érték (a név nyers szövege: a Kolofon forrástáblájának sora), a `rend` a sor rendezési kulcsa; a lapra nem kerül."""
+    __slots__ = ('kulcs', 'licenc', 'cimke', 'csoport', 'rend')
 
-    def __init__(self, kulcs, licenc, cimke, csoport=None):
+    def __init__(self, kulcs, licenc, cimke, csoport=''):
         self.kulcs, self.licenc, self.cimke, self.csoport = kulcs, licenc, cimke, csoport
+        self.rend = csoport.lower()
 
 
 def kulso_forrasok(b, motivum, azonositok):

@@ -10,13 +10,13 @@ from lapgen.megjelenites.md import idezes as md_idezes
 from lapgen.megjelenites.md import keret as K
 from lapgen.megjelenites.md.iro import VIZSZINTES_VONAL
 from lapgen.szakaszok import KRITERIUM_HORGONY
-from lapgen.szamitas.kolofon import Szerzoseg
+from lapgen.szamitas.kolofon import KolofonMezo, Szerzoseg
 
 AZONOSITO = 'kolofon'
 KIADASI_ADAT = 'kiadasi_adat'
-# a motívumtábla kézi mezőinek helye a táblában: a mező a cím előtt (ui_cimke) vagy a cím után áll
-_ELOTTE = ('ui_cimke',)
-_CIM_UTAN = ('tema', 'pardes_szint')
+# a motívumtábla kézi mezőinek helye a táblában: a mező a cím előtt (rövid cím) vagy a cím után áll
+_ELOTTE = (KolofonMezo.UI_CIMKE,)
+_CIM_UTAN = (KolofonMezo.TEMA, KolofonMezo.PARDES_SZINT)
 
 
 def _kiadasi(ny, kulcs):
@@ -37,7 +37,7 @@ def _szerzoseg(ny, m):
     if m.szerzoseg is Szerzoseg.GENERALT:
         torzs = ny.s('kolofon.szerzoseg.generalt')
     else:
-        resek = [ny.s('cim.' + r) for r in m.resek]
+        resek = [ny.s(ny.kulcs('cim', r.value)) for r in m.resek]
         if m.szerzoseg is Szerzoseg.KIADATLAN:
             torzs = ny.s('kolofon.szerzoseg.kiadatlan', resek=resek)
         else:
@@ -77,9 +77,9 @@ def _ertek(ny, ertek):
 def _tabla(iro, ny, m, keret):
     mezok = dict(m.mezok)
     sorok = [('kolofon.mezo.id', ny.s('kolofon.ertek.motivum', motivum=keret.motivum))]
-    sorok += [('kolofon.mezo.' + mezo, _ertek(ny, mezok.get(mezo))) for mezo in _ELOTTE]
+    sorok += [(ny.kulcs('kolofon.mezo', mezo.value), _ertek(ny, mezok.get(mezo))) for mezo in _ELOTTE]
     sorok.append(('kolofon.mezo.cim', m.cim))
-    sorok += [('kolofon.mezo.' + mezo, _ertek(ny, mezok.get(mezo))) for mezo in _CIM_UTAN]
+    sorok += [(ny.kulcs('kolofon.mezo', mezo.value), _ertek(ny, mezok.get(mezo))) for mezo in _CIM_UTAN]
     if m.kiadasok:
         statusz = ny.s('kolofon.statusz', kiadas=m.kiadasok[-1].szam, datum=m.kiadasok[-1].datum)
     else:
@@ -91,7 +91,7 @@ def _tabla(iro, ny, m, keret):
     sorok.append(('kolofon.mezo.kriterium', ny.s('kolofon.ertek.kriterium', cim=ny.s('fej.hatar.cim'),
                                                  horgony=KRITERIUM_HORGONY)))
     sorok.append(('kolofon.mezo.folerendelt', m.folerendelt))
-    sorok.append(('kolofon.mezo.sablon_verzio', mezok.get('sablon_verzio') or ny.s('kolofon.nincs_rogzitve')))
+    sorok.append(('kolofon.mezo.sablon_verzio', mezok.get(KolofonMezo.SABLON_VERZIO) or ny.s('kolofon.nincs_rogzitve')))
     if keret.datum is not None:
         sorok.append(('kolofon.mezo.generalva', ny.s('kolofon.ertek.datum', datum=keret.datum)))
     if m.kiadasok:
@@ -137,8 +137,8 @@ def _forrastabla(iro, ny, m, keret):
     iro.tabla_sor((ny.s('kolofon.forras.forras'), ny.s('kolofon.forras.licenc'), ny.s('kolofon.forras.szakasz')))
     iro.tabla_elvalaszto(3)
     for f in m.forrasok:
-        szakaszok = sorted({keret.rend.szulo(a) for a in f.szakaszok}, key=keret.rend.sorszam)
-        iro.tabla_sor((ny.s('kolofon.ertek.nev', nev=ny.nev(f.nev_tipus, f.nev)),
+        szakaszok = [keret.rend.szamozott_azonosito(n) for n in f.szakaszok]
+        iro.tabla_sor((ny.s('kolofon.ertek.nev', nev=ny.nev(f.nev_tipus.value, f.nev)),
                        ny.s('kolofon.lista', elemek=[md_idezes.licenc_szoveg(ny, lic) for lic in f.licencek]),
                        ny.s('kolofon.lista', elemek=[_szakasz_nev(ny, keret, a) for a in szakaszok])))
     iro.ures()
@@ -147,7 +147,7 @@ def _forrastabla(iro, ny, m, keret):
 def _szakasz_nev(ny, keret, azonosito):
     """A szakasz neve a forrástáblában: a szakaszrend sorszáma és a cím; ha a címnek van rövid alakja (`cim.<…>.rovid`,
     pl. „Hatástörténet”), az (a régi `KOLOFON_SZAKASZNEV`)."""
-    rovid = keret.rend.cim_kulcs(azonosito) + '.rovid'
+    rovid = ny.kulcs(keret.rend.cim_kulcs(azonosito), 'rovid')
     if ny.s.van(rovid):
         return ny.s('cim.szamozott', sorszam=keret.rend.sorszam(azonosito), cim=ny.s(rovid))
     return K.szamozott_cim(keret, azonosito)
@@ -158,7 +158,7 @@ def _megjelolesek(iro, ny, m):
         if mj.sablon is None:
             iro.sor(ny.s('kolofon.megjeloles', szoveg=mj.szoveg))
         else:
-            kulcs = ny.kulcs('kolofon.megjeloles', mj.sablon)
+            kulcs = ny.kulcs('kolofon.megjeloles', mj.sablon.value)
             parameterek = {'cimke': mj.cimke} if 'cimke' in ny.s.sor(kulcs).parameterek else {}
             iro.sor(ny.s(kulcs, **parameterek))
         iro.ures()
