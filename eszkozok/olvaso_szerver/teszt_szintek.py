@@ -31,6 +31,7 @@ D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
 
 import adatbazis
+import feliratok  # noqa: E402
 import blokkok
 import hozzaferes
 import lekerdezesek as q
@@ -94,7 +95,8 @@ class TestSzintvaltoSuti(unittest.TestCase):
         self.assertIn('SameSite=Lax', suti[0])
         self.assertIn('Path=/', suti[0])
         self.assertEqual(self.sutik(c.get('/1Moz/1')), [])                # a lap sem hoz létre sütit
-        self.assertIn('class="aktiv" aria-current="true">%s<' % FELSO, c.get('/1Moz/1').get_data(as_text=True).replace('\n', ''))
+        # F231 (#52): a szint olvasói (ékezetes) nevével áll
+        self.assertIn('class="aktiv" aria-current="true">%s<' % feliratok.Fv('szint.' + FELSO, FELSO), c.get('/1Moz/1').get_data(as_text=True).replace('\n', ''))
         self.assertEqual(c.get('/szint/nincs_ilyen').status_code, 404)    # ismeretlen szint: 404, nincs süti
         self.assertEqual(self.sutik(c.get('/szint/nincs_ilyen')), [])
         # érvénytelen süti-érték: az alapértelmezett szint, nem hiba
@@ -259,7 +261,8 @@ class TestSzintekValodiLapokon(unittest.TestCase):
         """F213 (a jóváhagyott mockup): a szónézetben minden jelentés alapállapotban nyitva; csukva csak a lenyílók (alakok, rokon nyelvek,
         apparátus, angol eredeti, jelmagyarázat), amelyek a „Minden apparátus nyitva” nézetben nyílnak."""
         n = 0
-        lenyilo = ('szk-alakok', 'szk-rokon', 'szk-app', 'szk-en', 'szk-jelmagyarazat', 'szk-teljes')      # F230: a teljes magyar szöveg is csukott lenyíló
+        lenyilo = ('szk-alakok', 'szk-rokon', 'szk-app', 'szk-en', 'szk-jelmagyarazat', 'szk-teljes',      # F230: a teljes magyar szöveg is csukott lenyíló
+                   'forras-reszlet')                                    # F231 (#45/#46): a blokk Forrás és licenc lenyílója
         for azon, adat in self.pilot.items():
             for strong, l in adat['lapok'].items():
                 if not l['appar']:

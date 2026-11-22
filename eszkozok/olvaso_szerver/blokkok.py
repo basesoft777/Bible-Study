@@ -1601,7 +1601,9 @@ def _f_bdb_apparatus(K):
     if not b:
         # F231 (#13, N225): szakasztábla nélkül is kártya, ha van szócikk: a szöveg egyben (magyar elöl, ha van), a nyers blokk nem kell
         a = _bdb_adat(K)
-        return {'egyszeru': True, 'hu_szoveg': a['hu'], 'en_szoveg': a['en'], 'alias': a['alias']} if (a['hu'] or a['en']) else None
+        st = a['alias']['tabla_strong'] if a['alias'] else K.strong
+        return {'egyszeru': True, 'hu_szoveg': a['hu'], 'en_szoveg': a['en'], 'alias': a['alias'],
+                'meta': q.bdb_magyar_meta(K.con, st) if a['hu'] else None} if (a['hu'] or a['en']) else None
     d = dict(b)
     tabla_strong = b['alias']['tabla_strong'] if b['alias'] else K.strong
     d['vj_sorok'] = q.bdb_vers_jelentes(K.con, tabla_strong)
@@ -1933,7 +1935,10 @@ def _r_bdb_egyszeru(d, K):
     magyar fordításnál csukva az angol eredeti."""
     talalt = set()
     hu, en = d['hu_szoveg'], d['en_szoveg']
-    ki = Markup('<span class="allapot%s">%s</span>') % ('' if hu else ' folyamat', F('szk.allapot_forditva_rovid') if hu else F('szk.allapot_angol'))
+    meta = d.get('meta') or ''
+    ki = Markup('<span class="allapot%s" data-modell="%s">%s</span>') % (
+        '' if hu else ' folyamat', meta if hu else '',
+        (F('szk.allapot_forditva', datum=meta.rpartition(', ')[2]) if meta else F('szk.allapot_forditva_rovid')) if hu else F('szk.allapot_angol'))
     if d['alias']:
         ki += _alias_megj(d['alias'])
     _st = d['alias']['tabla_strong'] if d.get('alias') else getattr(K, 'strong', '')

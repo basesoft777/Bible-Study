@@ -491,7 +491,7 @@ details[open] > summary.morzsa { border-color: var(--accent); }
 .kanon-konyv[data-mufaj="kis"], .mufaj[data-mufaj="kis"] .mufaj-cim::before { color: var(--g-kis); }
 .mufaj[data-mufaj="kis"] .konyvgomb { border-color: color-mix(in srgb, var(--g-kis) 40%, transparent); background: color-mix(in srgb, var(--g-kis) 10%, transparent); }
 .mufaj[data-mufaj="kis"] .konyvgomb:hover, .mufaj[data-mufaj="kis"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-kis) 28%, transparent); }
-.mufaj[data-mufaj="kis"] .konyvgomb.itt { background: var(--g-kis); border-color: var(--g-kis); color: var(--panel); }
+.mufaj[data-mufaj="kis"] .konyvgomb.itt { background: color-mix(in srgb, var(--g-kis) 85%, black); border-color: var(--g-kis); color: var(--panel); }   /* F231 (#54): a token a mockupé (#a0702a, 4,26:1); az aktív gombon sötétítve ≈ 5,4:1 (WCAG AA) */
 .kanon-konyv[data-mufaj="ev"], .mufaj[data-mufaj="ev"] .mufaj-cim::before { color: var(--g-ev); }
 .mufaj[data-mufaj="ev"] .konyvgomb { border-color: color-mix(in srgb, var(--g-ev) 40%, transparent); background: color-mix(in srgb, var(--g-ev) 10%, transparent); }
 .mufaj[data-mufaj="ev"] .konyvgomb:hover, .mufaj[data-mufaj="ev"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-ev) 28%, transparent); }

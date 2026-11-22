@@ -97,7 +97,7 @@ Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) 
 | 51 | J | / | „PaRDeS olvasó” | „Biblialex olvasó” (egy kulcs: `olvaso.nev`) |
 | 52 | J | / | „Szint nyilvanos regisztralt kutato” | „Szint nyilvános regisztrált kutató” |
 | 53 | J | / | a főoldalon nincs Biblia-választó | „Biblia és könyv kiválasztása” (a fejezet-lap navigációja a főoldalon is) |
-| 54 | J | /1Moz/1 | az aktív „kis próféták” gomb 4,26:1 | 4,80:1 (`g-kis` világos: #a0702a → #966826; WCAG AA) |
+| 54 | J | /1Moz/1 | az aktív „kis próféták” gomb 4,26:1 | ≈ 5,4:1: az aktív gomb háttere a műfajszín 85%-a feketével keverve (a `g-kis` token a mockupé marad, #a0702a; WCAG AA) |
 | 55 | J | / (mobil) | 24–32 px-es érintési célok; tanulmányjel 3,73:1 | érintőképernyőn (`pointer: coarse`) legalább 44 px; a tanulmányjel átlátszóság nélkül 6,65:1 |
 | 56 | J | /szo/H1242 | „214 előfordulás, 29 könyvben.” mondatként egy blokkban | a lapfej alatt három számkártya: „214 előfordulás · 29 könyvben · 221 Károli-előfordulás” |
 | 57 | J | /szo/H1242 | „A 66 feldolgozott könyv (1Jan, 1Kir, 1Kor, …)” | „Mind a 66 könyv szó szintű párjai alapján.”; arányos sáv (`<meter>`) az alakok mellett |
