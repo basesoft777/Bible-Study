@@ -124,12 +124,26 @@ ELTÉRÉS-ek súlyossági sorrendben:
 
 A mérce újragenerálása ugyanebben a PR-ban a normalizáló javításának következménye (a lapok tartalma nem változott, a pillanatkép formája igen); a PR leírása jelzi.
 
+## F232.8 — az orkesztrátori döntés (2026-11-22): `--gyors` kapu, egyszeri újrafuttatás
+
+Az orkesztrátor (a felhasználó felhatalmazásával, CLAUDE.md, PR #787): (1) a push előtti kapu az olvasó tesztjeit `teszt_futtat.py --gyors` móddal futtatja (a lassú `teszt_szintek.py` és `teszt_arculat.py` nélkül), a mércével együtt; a teljes tesztsor a menet saját futása a draft PR előtt; (2) egy elbukott tesztfájl egyszer újrafut: ha az ismétlés zöld, a kimenet ingadozást jelez, és a kapu nem áll meg; ha másodszor is piros, megáll; (3) a brief 4. feltétele részben teljesül, elfogadva; (4) a javítókör után nincs új független ellenőrzés.
+
+Megvalósítás (`152df27f`): `push_elott.py` `olvaso_tesztek_futtatasa` (az első futás után az elbukott `[teszt_futtat] <fájl>: HIBA` fájlokat egyszer `--fajl`-lal újrafuttatja; környezeti hiba, kilépési kód 2 és nem azonosítható fájl esetén nincs újrafuttatás); a kapu kiírja, hogy a lassú tesztek nem futottak, és hogy a teljes sor a menet saját futása. 6 egységteszt (`TestKapuUjrafuttatas`: zöld egyszer fut; ingadozás ismétlésre zöld nem bukik; másodszor is piros bukik; két fájl, egyik ingadozik, másik piros; környezeti hiba nem fut újra; nem azonosítható fájl nem fut újra).
+
+**A kapu-próba másodszor** (detached HEAD próbacommit `d1d20b23`, nem került az ágra: egy ingadozó teszt a `teszt_ubs_dbh.py`-ban — elsőre piros, ismétlésre zöld, jelzőfájllal — és egy tartósan piros a `teszt_tanulmany_oldal.py`-ban; `python eszkozok/push_elott.py --lepes F232`):
+- első futás (`--gyors`, a lassú fájlok nélkül): **662 mp**, kilépési kód 1, két bukott fájl;
+- `FIGYELEM: elbukott olvasó-teszt (teszt_tanulmany_oldal.py, teszt_ubs_dbh.py); egyszeri újrafuttatás`; az ismétlés **8 mp**;
+- `FIGYELEM: INGADOZÓ olvasó-teszt (elsőre piros, az ismétlésre zöld): teszt_ubs_dbh.py -- a lépés nem áll meg`, a tartósan piros `teszt_tanulmany_oldal.py` másodszor is bukott: `HIBA: 1 bukott lépés … A push ne menjen`, kilépési kód 1;
+- a teljes próba ideje 676 mp (a közös zárra várás nélkül, a gépen más teszt nem futott).
+
+**A teljes tesztsor a végleges kódon** (a menet saját futása a draft PR előtt, `python eszkozok/teszt_futtat.py`, `152df27f`): 19 fájl, **mind zöld**, kilépési kód 0, 768 mp a falióra szerint (a fájlok összege 817 mp: a gyors fájlok 627 mp, a lassú `teszt_szintek.py` + `teszt_arculat.py` 189 mp), `MÉRCE-ELTÉRÉS` nélkül; kimaradt: `teszt_indito.py` 1 (nincs `node`) és `teszt_olvaso_szerver.py` 1 (N-F232d). A korábbi 1 033 mp-es mérés a párhuzamos terhelés nélküli, de más időzítésű futás volt: a költség a géptől és a terheléstől függ (17–22 perc a lassú fájlokkal együtt, a mérések szórnak).
+
 ## Zárás
 
 - **Kész:** a két piros teszt javítása (`dc138f6b`, 3 teszt, teszt-oldali: a várt szöveg volt régi); a mérce (`teszt_olvasoi_merce.py`, `merce/`, 18 oldal); a bekötés a push előtti kapuba (`push_elott.py`, `teszt_futtat.py`); az 1. ellenőrzés (ELTÉRÉS, 6 tétel) javítókörrel (`0d9c3a79`).
 - **Döntések:** DT-F232a 🟢 (felhasználó, 2026-11-22: „(b) + (a2) mehet”); nyitott: N-F232a (CI a TSV-ből épített DB-n), N-F232b (kovetkezo.md PUSH ELŐTT), N-F232c (teszt_arculat ingadozik), N-F232d (üres kimaradás a teszt_olvaso_szerver.py-ban), N-F232e (merce/ licenc-áttekintés).
 - **Nem teljesült teljesen:** a brief 4. feltétele („kihagyott DB-s teszt nélkül zöld”): az N-F232d kimaradás DB-tartalomfüggő, a `teszt_arculat.py` egy tesztje terhelés alatt ingadozik (N-F232c); a feltétel emiatt a (b)-ben csak a terheletlen, teljes futásra igaz. A (b) kapu költsége mért 17–22 perc + a zárra várás; a CI-futás azonosító (4. feltétel 3.) a (b)-nél nincs, a bizonyíték helyi (`db565cf3` próba).
-- **A javítókör után nem ellenőrzött újra független ellenőr** (egy javítókör a brief szerint); a javítás ellenőrzése: a normalizáló és a leképezés egységtesztjei, a mérce 14 teszt zöld WSL-ben, a `teszt_visszhang_kapu` zöld, a `E2-E39` zöld helyben.
+- **A javítókör után nem futott új független ellenőr** (az orkesztrátor döntése: 1 ellenőrzés és legfeljebb 1 javítókör); a javítás ellenőrzése: a normalizáló és a leképezés egységtesztjei, a mérce 14 teszt zöld WSL-ben, a `teszt_visszhang_kapu` zöld, a `E2-E39` zöld helyben.
 - **Eltérés a briefhez (egyeztetett):** a `Jn 1:1` mintaoldal a szerverben `/Jan/1/1`.
-- **Orkesztrátor figyelmébe:** a DT-F232a sorában az „kb. 2 perc” alulbecslés volt (l. F232.6 #3); a döntés alapja ezért módosul, a (b) a mért költséggel is a javasolt marad-e, azt az orkesztrátor ítéli meg.
-
+- **Orkesztrátor figyelmébe:** a DT-F232a sorában az „kb. 2 perc” alulbecslés volt (l. F232.6 #3); az orkesztrátor döntött: a kapu `--gyors` módban fut (F232.8).
+- **Az orkesztrátor döntése (2026-11-22) beépítve:** a kapu `--gyors` + egyszeri újrafuttatás (F232.8); a 4. feltétel részleges teljesülése elfogadva; a DT-F232a sora kiegészítve a mért idővel.
