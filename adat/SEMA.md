@@ -2506,7 +2506,7 @@ nélkül hiba (a `lapgen/tesztek` statikus tesztje őrzi).
 | `allapot` | `aktiv` / `kivezetve` / `nem_vizsgalt` / `reszleges`: a forrás állapota; a lap forrás-állapotot leíró mondatai ebből és a sablontáblából jönnek |
 | `licenc_kulcs` | a `licencek.tsv` kulcsa (`dataset`), vagy `-` |
 | `olvasoi_nev_kulcs` | a forrás olvasói neve: az `olvasoi_nevtabla.tsv` `forras` típusú kulcsa, vagy `-` |
-| `irodalom` | a 12. szakasz (Irodalom és idézés) és a Kolofon forráslistája (DT-F218x, S8c): `-` a bemenet nem áll a listán (a generátor saját infrastruktúrája: licencleltár, kiejtési szabályok, szabálymodul, a rések forrásjegyzéke és a kézi forrás, döntések, befagyasztás, könyvnév-normalizáló, névtábla, sablontábla, jegyzék); `licenc` a licencleltár címkéjével áll; `nyilt_mag`, `elofordulas`, `forditas`, `doi` a licenc olvasói alakja (a sablontábla `irod.licenc.<érték>` sora) |
+| `irodalom` | a 12. szakasz (Irodalom és idézés) és a Kolofon forráslistája (DT-F218x, S8c): `-` a bemenet nem áll a listán (a generátor saját infrastruktúrája: licencleltár, kiejtési szabályok, szabálymodul, a rések forrásjegyzéke és a kézi forrás, döntések, befagyasztás, könyvnév-normalizáló, névtábla, sablontábla, jegyzék), és a fájl nélküli, nem vizsgált forrás (B73; ha fájlja lesz, licenckulccsal és `licenc` értékkel kerül a listára); `licenc` a licencleltár címkéjével áll; a szótárszöveg magyar fordítását hordozó tábla (B14, B15, B18) `forditas`; `nyilt_mag`, `elofordulas`, `forditas`, `doi` a licenc olvasói alakja (a sablontábla `irod.licenc.<érték>` sora) |
 | `forras` | `PROVENIENCIA` (1.5): honnan jön a sor |
 
 **Kulcs:** `id`. A táblát kézzel írjuk (`forras=manual`), a szelettel együtt. Pontosan egy sor magára a táblára

@@ -22,6 +22,7 @@ from lapgen.szoveg import MotivumId
 
 HAMART, ISTENTISZT = 'HAMART-001', 'ISTENTISZT-001'
 INFRASTRUKTURA = ('B01', 'B12', 'B13', 'B47', 'B51', 'B59', 'B63', 'B65', 'B66', 'B68')
+NEM_VIZSGALT = ('B73',)   # fájl nélküli, nem vizsgált forrás: a listán nem áll (SEMA 2.66)
 
 
 def _tabla(rel):
@@ -73,8 +74,13 @@ class Forrashalmaz(_Alap):
         self.assertEqual(len(kapott), len(set(kapott)))
         self.assertTrue(vart)
         self.assertFalse({jegyzek[b]['utvonal'] for b in INFRASTRUKTURA} & set(kapott))
-        for b in INFRASTRUKTURA:
+        for b in INFRASTRUKTURA + NEM_VIZSGALT:
             self.assertEqual(jegyzek[b]['irodalom'], '-', b)
+        for b, sor in jegyzek.items():
+            if sor['irodalom'] == '-':
+                self.assertIn(b, INFRASTRUKTURA + NEM_VIZSGALT, 'a `-` csak az infrastruktúráé és a B73-é')
+        for b in ('B14', 'B15', 'B18'):
+            self.assertEqual(jegyzek[b]['irodalom'], 'forditas', b)
 
     def test_gk07_a_licenc_a_leltarbol(self):
         """GK-07: a licencleltár alakú licenc a jegyzék licenckulcsának leltárbeli címkéje."""
