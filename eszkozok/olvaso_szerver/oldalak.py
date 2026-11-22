@@ -18,6 +18,7 @@ from markupsafe import Markup, escape
 import adatbazis
 import arculat as arculat_modul
 import bibliak
+from feliratok import F, Fv
 import blokkok
 import kereses as kereses_modul
 import lekerdezesek as q
@@ -180,6 +181,9 @@ class OldalGyar:
         self.kozos = Kozos(con)
         self.jinja = Environment(loader=FileSystemLoader(sablon_dir), autoescape=select_autoescape(['html']),
                                  trim_blocks=True, lstrip_blocks=True)
+        # F231 (#51, #52, DT897): a feliratok fordítótáblája a sablonokban is; a lap neve egyetlen kulcsból (olvaso.nev)
+        self.jinja.globals['F'] = F
+        self.jinja.globals['Fv'] = Fv
         # a regisztert egyszer ellenőrzi: minden tábla licencsora megvan (hiány indulási hiba)
         for b in blokkok.REGISZTER + [blokkok.SZOVEG_FORRAS, blokkok.SZOVEG_PAR] + list(blokkok.KERESES.values()):
             if b.hianyzik(self.kozos):
@@ -214,7 +218,7 @@ class OldalGyar:
         return ki
 
     def _blokkok(self, oldal, K, szint):
-        return Markup('').join(h for _, h in self._blokk_lista(oldal, K, szint))
+        return blokkok.osszefuz(self._blokk_lista(oldal, K, szint))
 
     def _render(self, sablon, **ctx):
         ctx.setdefault('kiadas', self.kiadas)
@@ -274,13 +278,23 @@ class OldalGyar:
             fej = (sz[0], sz[1], sz[2]) if (sz and self._latszik('szo.szotar', szint)) else ('', '', '')
             # az alapjelentés is átmegy a blokk-szűrésen (kiadás és hozzáférési szint): tiltott forrást nem olvas, nem szivárog
             alapjel = blokkok.alapjelentes(K, K.magyar_ok, self._latszik('szo.szotar', szint), K.glossza_ok)
-        return s, fej, self._blokkok(oldal, K, szint), alapjel
+        # F231 (#56): a lapfej alatti számkártyák (előfordulás, könyvek, Károli-előfordulás), a blokkjuk láthatóságát követve
+        szamok = []
+        if self._latszik('szo.elofordulas', szint):
+            db, kony = q.elofordulas(con, s)
+            if db:
+                szamok += [(db, F('szo.szam_elofordulas')), (kony, F('szo.szam_konyv'))]
+        if self._latszik('szo.karoli_alakok', szint):
+            ossz = q.karoli_alakok(con, s)[0]
+            if ossz:
+                szamok.append((ossz, F('szo.szam_karoli')))
+        return s, fej, self._blokkok(oldal, K, szint), alapjel, szamok
 
     def szo_resz(self, strong, szint, ig=None):
         """A szómód töredéke és a lap fejsora: (html, cím, alcím). A cím a Strong-szám és a héber/görög alak, az alcím az
         alapjelentés (héber szónál), különben a szótár rövid jelentése. Vers-kontextussal (`ig`) a töredék alján „A vers: … →”
         hivatkozás áll: a versmódra vált bezárás nélkül (DT293)."""
-        s, fej, torzs, alapjel = self.szo_torzs(strong, szint, ig)
+        s, fej, torzs, alapjel, szamok = self.szo_torzs(strong, szint, ig)
         vers_ut = vers_cim = None
         if ig:
             kk, hely = ig.rsplit(' ', 1)
@@ -289,7 +303,7 @@ class OldalGyar:
                 vers_ut, vers_cim = '/%s/%s/%s?ful=vers#v%s' % (self.kozos.slug[kk], f, v, v), ig
         cim = ('%s %s' % (s, fej[0])).strip()
         al = (alapjel or {}).get('szoveg') or fej[2] or ''
-        html = self.jinja.get_template('_szo_panel.html').render(strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs,
+        html = self.jinja.get_template('_szo_panel.html').render(strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, szamok=szamok,
                                                                gorog=s[0] == 'G', lapcim=cim, lapal=_vers_eleje(al, 90), vers_ut=vers_ut, vers_cim=vers_cim)
         return html, cim, _vers_eleje(al, 90)
 
@@ -307,9 +321,9 @@ class OldalGyar:
         lista = self._blokk_lista('vers', K, szint)
         fulek = []
         for kod, nev in VERS_FULEK:
-            bl = [h for b, h in lista if FULBLOKK.get(b.id, 'vers') == kod]
+            bl = [(b, h) for b, h in lista if FULBLOKK.get(b.id, 'vers') == kod]
             if bl:
-                fulek.append({'kod': kod, 'nev': nev, 'html': Markup('').join(bl)})
+                fulek.append({'kod': kod, 'nev': nev, 'html': blokkok.osszefuz(bl)})
         kodok = [f['kod'] for f in fulek]
         if ful not in kodok:
             ful = kodok[0] if kodok else 'vers'
@@ -325,7 +339,10 @@ class OldalGyar:
         konyvek = []
         for kk, sl, nev, sor in self.kozos.konyvek:
             konyvek.append({'kk': kk, 'slug': sl, 'nev': nev, 'ot': sor < 39, 'fejezetek': [f for f, _ in self.kozos.fejezet_szam[kk]]})
-        return self._render('kezdolap.html', konyvek=konyvek, reteg=reteg, ut=ut, szint=szint, cim='Károli-bibliaszöveg')
+        # F231 (#53): a főoldalon is a fejezet-lap navigációja (Biblia- és könyvválasztó), az első könyv első fejezetére állva
+        kk0 = self.kozos.konyvek[0][0] if self.kozos.konyvek else None
+        nav = self.navigacio(kk0, 1, None, None, True) if kk0 else None
+        return self._render('kezdolap.html', konyvek=konyvek, reteg=reteg, ut=ut, szint=szint, cim=F('kezdolap.cim'), nav=nav)
 
     def konyv_lap(self, slug, reteg, ut, szint=None):
         kk = self.kozos.slug_kk.get(slug)
@@ -604,8 +621,8 @@ class OldalGyar:
         return ki + [('Károli–Strong: %d könyv' % sz['konyv'], False)]
 
     def szo_lap(self, strong, reteg, szint, ut, ig=None):
-        s, fej, torzs, alapjel = self.szo_torzs(strong, szint, ig)
-        return self._render('szo.html', strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, gorog=s[0] == 'G', reteg=reteg, ut=ut, szint=szint,
+        s, fej, torzs, alapjel, szamok = self.szo_torzs(strong, szint, ig)
+        return self._render('szo.html', strong=s, lemma=fej[0], atiras=fej[1], jelentes=fej[2], alapjel=alapjel, blokkok=torzs, szamok=szamok, gorog=s[0] == 'G', reteg=reteg, ut=ut, szint=szint,
                             cim=s)
 
     # -- keresés (M3) ----------------------------------------------------------------------------------------------------

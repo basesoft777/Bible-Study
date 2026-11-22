@@ -89,3 +89,32 @@ blokk.tablazatos	Táblázatos nézet (a csempék adatai soronként)
 vers.szamozas_sor	Versszámozás: héber (MT) %(mt)s · angol (KJV) %(kjv)s	
 vers.szamozas_sugo	osztály: %(osztaly)s; a megfeleltetés forrása: %(forras)s	
 vers.lxx_sor	Septuaginta-versszám: %(lxx)s	
+blokk.forras	Forrás és licenc	
+forras.projekt_adat	a projekt saját adata	
+olvaso.nev	Biblialex olvasó	Biblialex reader
+szint.nyilvanos	nyilvános	public
+szint.regisztralt	regisztrált	registered
+szint.kutato	kutató	researcher
+szo.sajat_lap	A szó saját lapja	
+szo.minden_elofordulas	Minden előfordulás versenként (keresés)	
+mot.azonosito	Azonosító	
+mot.motivum	Motívum	
+mot.szint	Értelmezési szint	
+mot.funkcio	Funkció	
+mot.strong	Strong	
+mot.karoli_szo	Károli-szó	
+mot.megbizhatosag	Megbízhatóság	
+mot.proveniencia	Proveniencia	
+mot.elozo	Előző előfordulás	
+mot.kovetkezo	Következő előfordulás	
+mot.hol	Hol merült fel:	
+tsk.osszeg	%(n)s kereszthivatkozás; az első %(db)s áll, a szavazatszám szerint.	
+tsk.hivatkozas	Hivatkozás	
+tsk.szavazat	Szavazat	
+blokk.ures_osszesito	Ezekben a forrásokban erre nincs adat (üres eredmény, nem negatív lelet): %(nevek)s.	
+bsb.hianyzik	A BSB-forrás ehhez a vershez nem ad szavakat (a forrásból hiányzik).	
+kezdolap.cim	Károli-bibliaszöveg	
+szo.szam_elofordulas	előfordulás	
+szo.szam_konyv	könyvben	
+szo.szam_karoli	Károli-előfordulás	
+szk.teljes_nyitva	A tagolt kártya ennek a szócikknek egy részét nem adja vissza (a szakasztábla itt hiányos), ezért a teljes magyar szöveg nyitva áll.	

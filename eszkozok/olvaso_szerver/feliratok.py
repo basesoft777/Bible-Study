@@ -51,3 +51,9 @@ def F(kulcs, **param):
     sor = TABLA[kulcs]
     s = (sor.get(NYELV) or sor['hu'])
     return s % param if param else s
+
+
+def Fv(kulcs, alap):
+    """A kulcs felirata, vagy `alap`, ha a kulcs nincs a táblában (szabad nevű konfigurációs érték olvasói neve, pl. a hozzáférési
+    szint: a konfiguráció neve szabad, a tábla csak az ismert neveket fordítja)."""
+    return F(kulcs) if kulcs in TABLA else alap

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>{{ cim }} – PaRDeS olvasó</title>
+<title>{{ cim }} – {{ F('olvaso.nev') }}</title>
 {# #134 M3 (DT295, DT-F134i (a)): az alap a világos téma; a tárolt választást ez a nem halasztott külső szkript az első rajzolás előtt alkalmazza #}
 <script src="/statikus/tema.js"></script>
 <link rel="stylesheet" href="/statikus/fonts.css">
@@ -38,7 +38,7 @@
   {% if nav %}
   <div class="navlap-fej"><b class="navlap-cim">Navigáció</b><a class="lap-gomb navlap-zar" href="#" aria-label="A navigáció bezárása" title="Bezárás">✕</a></div>
   {% endif %}
-  <a class="logo" href="/">PaRDeS olvasó</a>
+  <a class="logo" href="/">{{ F('olvaso.nev') }}</a>
   {% if nav %}
   {# F210 (a mockup Mk_08_Konyvvalaszto, Mk_01_Fejlec): a választó legfelső szintje a Biblia, alatta a könyvrács, majd a fejezet;
      a morzsa a választott Bibliát is mutatja. A választás a címben él (`?biblia=`, a Károli 1908 az alap, paraméter nélkül). #}
@@ -110,7 +110,7 @@
       </nav>
       {% if szint_vezerlo %}
       <nav class="szintvalto" aria-label="Hozzáférési szint (próbaüzem)"><span class="szint-cim">Szint</span>
-        {% for n in szintek %}<a href="/szint/{{ n }}?vissza={{ ut|default('/')|urlencode }}"{% if n == szint_nev %} class="aktiv" aria-current="true"{% endif %}>{{ n }}</a>
+        {% for n in szintek %}<a href="/szint/{{ n }}?vissza={{ ut|default('/')|urlencode }}"{% if n == szint_nev %} class="aktiv" aria-current="true"{% endif %}>{{ Fv('szint.' ~ n, n) }}</a>
         {% endfor %}
       </nav>
       {% endif %}
