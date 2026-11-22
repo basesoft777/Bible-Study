@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-22",
-   "commit": "4cbefcae"
+   "commit": "e4eb745e"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -812,8 +812,8 @@
    "cim": "Olvasó — sebességjavítás (indexek, összevont lekérdezések, egyszeri betöltés, előmelegítés) és sebességőr (tervellenőr és határértékek tesztként)",
    "fazis": "folyamat",
    "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "Indítható a #232 (PR #786) és a #101 (PR #780) merge-e után; első lépés: M0 (⛔ DT-F235a: a fordítási javítótábla betöltésének helye)",
+   "brief_allapot": "fut",
+   "most": "Folytatás: a 2. rész (a #101 merge-e megtörtént; az 1. rész a #799-ben, a merge a felhasználóé/orkesztrátoré, utána indítható): az sqlite_epit.py indexei és átírt lekérdezések (nyitott/uj/f235-sebesseg-1-c6fd61.md N230, N231: a teszt_tervor.py ELFOGADOTT listájának 23 tétele, utána --sema-ment), az előre számolt elérhetőségi tábla (bibliak.Tar), a token_macula fedő index, a natív futtatás és az indításkori háttér-beolvasás az indit.sh-ban (a /mnt/e-s 539 ms ettől tűnik el), a hideg DB újramérése (N232); N233: a teszt_sebesseg.py a CI-ben (#232)",
    "fugg": "—",
    "tervezett": false,
    "reszletes": "",
@@ -5858,6 +5858,26 @@
      "🟢"
     ],
     "sor": 879
+   },
+   {
+    "id": "DT919",
+    "feladat": "folyamat (gyors sáv az olvasóra; 2026-11-22)",
+    "kerdes": "A látható olvasóhiba is a teljes kört kapta (brief, `/befogad`, független ellenőr, javítókör, 15 perces kapu), ezért a kis javítás nem érte meg, és a hibák felmérésből N-tételbe, onnan briefbe rakódtak javítás nélkül (2026-11-22-én 60 nyitott olvasóhiba). Korábbi szabályok csak lépést adtak hozzá.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 880
+   },
+   {
+    "id": "DT920",
+    "feladat": "folyamat (technikai kérdés a sessionben; 2026-11-22)",
+    "kerdes": "A sessionök a menet közbeni technikai kérdést is az orkesztrátornak küldték, javaslattal, és az orkesztrátor jellemzően csak jóváhagyta: egy fölösleges közvetítő forduló kérdésenként (a felhasználó: „a folyamat olyan mint a bridge dispatch - magadtól nem akarsz megoldani semmit”).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 881
    }
   ],
   "javasolt": [],
@@ -7265,6 +7285,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 262
+  "kesz_db": 263
  }
 }

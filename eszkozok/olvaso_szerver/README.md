@@ -122,6 +122,20 @@ python eszkozok/teszt_futtat.py            # mind (a lassú teszt_szintek.py-val
 
 Kiadás: `PARDES_KIADAS=belso|nyilvanos|kereskedelmi` (vagy `konfig/szerver.toml`). Nyilvános kiadásban a KJV-Strong blokk, kereskedelmiben az MCGED is kimarad; az adatbázis-kapcsolat ezeket a táblákat olvasni sem engedi.
 
+## Sebesség és a sebességőr (F235)
+
+- **Lapszintű előtöltés.** A fejezet-lap számlálói (`oldalak.szamlalok`) a versenkénti és strongonkénti lekérdezések helyett a `lekerdezesek.elotoltes()` hatókörében
+  egy-egy `IN (...)` lekérdezéssel töltik be a vers eredeti szavait, Macula- és LXX-sorait, az arámi/héber nyelvet, a BDB angol és magyar szövegét és az
+  LXX-hidat. A gyorsítótár kérésenkénti, szálanként külön, a hatókör végén eldobódik; hatókör nélkül minden függvény a régi egyedi lekérdezéssel fut.
+  Ugyanazokat a sorokat adja ugyanabban a sorrendben (a lap bájtra azonos). Cél: laponként legfeljebb 100 SQL-utasítás.
+- **Lábléc.** A git- és fájlolvasás (`allapot.LablecFigyelo`) háttérszálon fut `ttl` másodpercenként; a kérés csak a kész állapotot veszi át.
+- **Előmelegítés.** Az indulás után a háttérszál a Flask belső kliensével lefuttat három bemelegítő kérést (`alkalmazas.ELOMELEGITO_UTAK`); az `alkalmazas.py` (`main`) és
+  a `gunicorn_conf.py` kéri, a tesztek nem. `PARDES_ELOMELEGIT=0` kikapcsolja, `=1` bekapcsolja (hideg mérésnél, pl. `m4_meres.py`, `0` kell: különben a háttérszál versenyez a mért kéréssel).
+- **Sebességőr.** `teszt_tervor.py`: minden kéréskor futó lekérdezés `EXPLAIN QUERY PLAN`-ja egy üres, azonos sémájú adatbázison (`teszt_adat/pardes_sema.sql`,
+  `--sema-ment` a valódi adatbázisból frissíti); 1000 sornál nagyobb táblán `SCAN` tilos, a ma még index nélküli lekérdezések kimondott, megszámolt listán állnak
+  (`ELFOGADOTT`, célfeladattal). A CI-ben is fut. `teszt_sebesseg.py`: időkorlát (fejezet 300, vers 400, szó-lap 250, kereső 50 ms; gyorsítótár-találat 20 ms) és
+  laponként 100 SQL, meleg szerveren, gyorsítótár nélkül; helyben, a `pardes.db`-n (a `teszt_futtat.py --gyors` része).
+
 ## Hozzáférési szintek és a szintváltó (F76.34)
 
 A szintek és a blokk–szint hozzárendelés a `konfig/hozzaferes.toml`-ban vannak (éles: mindenki `kutato`). A fejléc **szintváltója** (`/szint/<nev>`, funkcionális süti `pardes_szint`, SameSite=Lax, HttpOnly, csak váltáskor jön létre) a próbaüzemhez van, a felhasználó kérésére (2026-10-14); **csak a `belso` kiadásban** jelenik meg és hat. `nyilvanos` és `kereskedelmi` kiadásban sem a vezérlő, sem a süti, sem a `?szint=` paraméter nem emelheti a szintet. A szint része a gyorsítótár-kulcsnak és az ETag-nek.

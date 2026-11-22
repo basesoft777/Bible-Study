@@ -6,9 +6,11 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SERVER
-allapot: nem_indult
+allapot: fut
+ag: claude/f235-sebesseg-1-c6fd61
+pr: 799
 ad: az olvasó új fejezete legfeljebb 300 ms, verse legfeljebb 400 ms, szó-lapja legfeljebb 250 ms alatt jelenik meg meleg szerveren (gyorsítótár nélkül); laponként legfeljebb 100 lekérdezés; a kéréskor futó lekérdezések egyike sem olvas végig index nélkül 1000 sornál nagyobb táblát; mindezt teszt őrzi, a tervellenőr a CI-ben is fut
-kovetkezo: "Indítható a #232 (PR #786) és a #101 (PR #780) merge-e után; első lépés: M0 (⛔ DT-F235a: a fordítási javítótábla betöltésének helye)"
+kovetkezo: "Folytatás: a 2. rész (a #101 merge-e megtörtént; az 1. rész a #799-ben, a merge a felhasználóé/orkesztrátoré, utána indítható): az sqlite_epit.py indexei és átírt lekérdezések (nyitott/uj/f235-sebesseg-1-c6fd61.md N230, N231: a teszt_tervor.py ELFOGADOTT listájának 23 tétele, utána --sema-ment), az előre számolt elérhetőségi tábla (bibliak.Tar), a token_macula fedő index, a natív futtatás és az indításkori háttér-beolvasás az indit.sh-ban (a /mnt/e-s 539 ms ettől tűnik el), a hideg DB újramérése (N232); N233: a teszt_sebesseg.py a CI-ben (#232)"
 munka: folyamat
 olvas: [eszkozok/bdb_rovidites.py, adat/SEMA.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/teszt_sebesseg.py, eszkozok/olvaso_szerver/teszt_tervor.py]
@@ -39,7 +41,7 @@ Ez a feladat ezeket javítja, és sebességőrt tesz melléjük, hogy a lassulá
 **Benne van:**
 1. **Indexek az építőben** (`sqlite_epit.py`): `forditasok(szotar, strong)`, `bdb_szakaszok(strong)`, `bdb_szakasz_hu(strong)`, `bdb_vers_jelentes(strong)`, `ubs_dbh_referenciak(igehely)`, fedő index a `token_macula(strong, igehely, sorszam, lxx_strong)`-ra. A `vers_szamozas`-lekérdezés `substr` helyett tartomány-feltétellel fut. Az adatbázist a #101 újraépítője építi újra; a `meta` rögzíti az építés idejét.
 2. **Összevont lekérdezések:** a fejezet- és a versnézet a Strong-számonkénti `forditasok`-hívások helyett lapszinten egy `IN (…)` lekérdezést futtat, legfeljebb 100 lekérdezés laponként.
-3. **Egyszeri betöltés:** a `bdb_forras_javitas.tsv` egyszer töltődik be, a betöltés helyéről az M0 dönt (⛔ DT-F235a):
+3. **Egyszeri betöltés:** a `bdb_forras_javitas.tsv` egyszer töltődik be, a betöltés helyéről az M0 dönt (⛔ DT922):
    - (a) indításkor a memóriába;
    - (b) adatbázis-táblába, Strong-számra indexelve.
 
@@ -69,7 +71,7 @@ Ez a feladat ezeket javítja, és sebességőrt tesz melléjük, hogy a lassulá
 
 ## 3. Lépések
 
-1. Modell-ellenőrzés; M0: a mérés megismétlése a mai main-en, a kiinduló számok rögzítése, és a 3. pont két változatának mérése. ⛔ DT-F235a.
+1. Modell-ellenőrzés; M0: a mérés megismétlése a mai main-en, a kiinduló számok rögzítése, és a 3. pont két változatának mérése. ⛔ DT922.
 2. Indexek és a tartomány-lekérdezés; az adatbázis újraépítése; a terv-őr.
 3. Összevont lekérdezések; az elérhetőségi tábla; az egyszeri betöltés.
 4. Előmelegítés, natív futtatás, lábléc.
@@ -90,4 +92,4 @@ Ez a feladat ezeket javítja, és sebességőrt tesz melléjük, hogy a lassulá
 
 ## 6. Döntésnapló
 
-- DT-F235a (⛔ M0): a fordítási javítótábla betöltése, (a) memóriába indításkor vagy (b) indexelt adatbázis-táblába.
+- DT922 (⛔ M0): a fordítási javítótábla betöltése, (a) memóriába indításkor vagy (b) indexelt adatbázis-táblába.

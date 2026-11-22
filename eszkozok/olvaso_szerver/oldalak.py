@@ -578,17 +578,20 @@ class OldalGyar:
         con = self.con()
         szint = self.hozz.szint() if szint is None else szint
         magyar_ok = self._latszik('szo.bdb_apparatus', szint)
-        heber = [s for s in q.heber_strongok_versekre(con, igehelyek) if s not in self.kozos.nyelvtani]
-        gorog = set(q.gorog_strongok_versekre(con, igehelyek))
-        for ig in igehelyek:                                            # a Macula-párok: csak a TAHOT-szóhoz párosított sorok (a héber csempék szabálya)
-            for w in blokkok._heber_csempek(Kontekst(con, self.kozos, ig=ig)):
-                if (w.get('macula') or {}).get('lxx_strong'):
-                    gorog.add(w['macula']['lxx_strong'])
-        hu_db = 0
-        for s in heber:
-            gorog.update(g for _, g in q.lxx_bridge_h(con, s)[:3])
-            if magyar_ok and blokkok._bdb_adat(Kontekst(con, self.kozos, strong=s))['hu']:
-                hu_db += 1
+        with q.elotoltes():                                             # F235: a versenkénti és strongonkénti lekérdezések lapszintű `IN (...)` lekérdezésekké vonva
+            heber = [s for s in q.heber_strongok_versekre(con, igehelyek) if s not in self.kozos.nyelvtani]
+            gorog = set(q.gorog_strongok_versekre(con, igehelyek))
+            q.elotolt_versek(con, igehelyek)
+            for ig in igehelyek:                                        # a Macula-párok: csak a TAHOT-szóhoz párosított sorok (a héber csempék szabálya)
+                for w in blokkok._heber_csempek(Kontekst(con, self.kozos, ig=ig)):
+                    if (w.get('macula') or {}).get('lxx_strong'):
+                        gorog.add(w['macula']['lxx_strong'])
+            q.elotolt_strongok(con, heber, bdb=bool(magyar_ok))
+            hu_db = 0
+            for s in heber:
+                gorog.update(g for _, g in q.lxx_bridge_h(con, s)[:3])
+                if magyar_ok and blokkok._bdb_adat(Kontekst(con, self.kozos, strong=s))['hu']:
+                    hu_db += 1
         # tiltott magyar BDB (szint vagy kiadás): a számláló nem jelenik meg (None), a tiltott táblát nem olvassuk
         return {'vers': len(igehelyek), 'heber': len(heber), 'gorog': len(gorog), 'bdb_hu': hu_db if magyar_ok else None, 'konyv': len(self.kozos.karoli_strong_konyvek)}
 
