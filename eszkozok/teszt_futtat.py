@@ -56,6 +56,14 @@ LASSU_LEFEDETT = {
     'teszt_szintek.py': _OLVASO_KOD + ('adat/', 'konkordancia/'),
     'teszt_arculat.py': _OLVASO_KOD,
 }
+# F232 (ELLENOR_F232 1.): a nem az olvasó kódjára, hanem a lexikon-generátorra és a lapra támaszkodó gyors tesztek közvetlen bemenetei.
+# Ezek változására a push előtti kapu (`push_elott.py`) a megnevezett fájlt futtatja, az olvasó egész készlete nélkül (a `teszt_visszhang_kapu.py`
+# a `cee76546`-on piros lett: a `lexikon_general.py` és az `olvasoi_kapu.py` nincs a `_OLVASO_KOD`-ban). Csak a közvetlen bemenetek állnak itt
+# (importált modul, beolvasott adat- és lapfájl); egy közvetett (a `lexikon_general.py` által importált) modul változása nem érinti.
+GYORS_FUGGO = {
+    'teszt_visszhang_kapu.py': ('eszkozok/lexikon_general.py', 'eszkozok/olvasoi_kapu.py', 'eszkozok/general.py',
+                                'adat/motivumok.tsv', 'adat/elofordulasok.tsv', 'lexikon/HAMART-001_TUDOMANYOS.md'),
+}
 WSL_DISZTRO = 'pardes'
 WSL_VENV_PY = '$HOME/pardes/eszkozok/olvaso_szerver/.venv/bin/python'
 

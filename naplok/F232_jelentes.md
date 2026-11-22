@@ -44,7 +44,7 @@ Mindkettő **régi szöveget várt a teszt, a kód nem hibás**. Mérve a mai f�
 
 Javítás (teszt, nem kód): az első kettő a mai szöveghez igazítva; a harmadik a `data-blokk="szo.ebben"` hiányát nézi, és azt, hogy minden „Ebben a versben” felirat a BDB-dobozé. Eredmény: `teszt_visszhang_kapu` 22/22 OK (natívan, 12 s), a `teszt_szintek` teszt OK (WSL, 59 s).
 
-*Ok-lánc (hibanapló, mechanizmus szerint):* az olvasó tesztjei sehol nem futottak automatikusan, így a generátor/blokk szövegváltozása a teszt frissítése nélkül ment át; ezt a (b) kapu zárja.
+*Ok-lánc (hibanapló, mechanizmus szerint):* az olvasó tesztjei sehol nem futottak automatikusan, így a generátor/blokk szövegváltozása a teszt frissítése nélkül ment át. **Javítva az 1. ellenőrzés után (F232.6):** a `teszt_visszhang_kapu` a `lexikon_general.py` és az `olvasoi_kapu.py` változásától lett piros, ami nincs az olvasó-kód listájában; a kapu ezt eredetileg nem fogta volna meg. A `teszt_futtat.py` `GYORS_FUGGO` és a `push_elott.py` `fuggo_tesztek` leképezése a fájl közvetlen bemeneteire futtatja (a `cee76546` fájljaival egységteszt).
 
 ## F232.2 — a mérce és a bekötés (`bb260600`)
 
@@ -56,7 +56,7 @@ Javítás (teszt, nem kód): az első kettő a mai szöveghez igazítva; a harma
 
 ### Mérések
 
-- **A teljes olvasó-tesztkészlet** (`python eszkozok/teszt_futtat.py`, WSL, natív `pardes.db`, a végleges `bb260600` kódon): **19 fájl, mind zöld**, 1 033 mp (a lassú `teszt_szintek.py` + `teszt_arculat.py` 286 mp, a többi 747 mp). Kimaradó teszt: `teszt_indito.py` 1 és `teszt_olvaso_szerver.py` 1 (nem azonosítottam külön, melyik; a `skipUnless` feltételek közt DB-s a `teszt_olvaso_szerver.py`-ban 10, de a futásban a DB és a Flask megvolt, ezért a kimaradó valószínűleg a `node`- vagy a Windows-ideiglenes-könyvtár-feltételes). *Nem ellenőrzött állítás.*
+- **A teljes olvasó-tesztkészlet** (`python eszkozok/teszt_futtat.py`, WSL, natív `pardes.db`, a `bb260600` kódon, a gépen más futás nélkül): 19 fájl zöld, 1 033 mp (a lassú `teszt_szintek.py` + `teszt_arculat.py` 286 mp, a többi 747 mp). **Az 1. ellenőrzés ezt terhelés alatt nem tudta megismételni:** a `teszt_arculat.py` egy tesztje ingadozik (N-F232c), tehát a „mind zöld” csak terheletlen futásra igaz. Kimaradó teszt 2: `teszt_indito.py` 1 (nincs `node`, nem DB-s) és `teszt_olvaso_szerver.py` 1 (`test_bdb_apparatus_jellege…`: „nincs angol-only BDB-szócikk a mintában”, DB-tartalomtól függő kimaradás, N-F232d); a brief 4. feltétele („kihagyott DB-s teszt nélkül”) emiatt a (b)-ben **nem teljesül** teljesen.
 - **A mérce eltérésének próbája** (detached HEAD, nem került az ágra): a `blokkok.py` `szo.szotar` blokkcíme „Strong-szótár (PRÓBA)”-ra írva; a `teszt_futtat.py --fajl teszt_olvasoi_merce` zöld, és mind a 10 szó-lapra kiírta a diffet (`-Strong-szótár forrásadat modell-kimenet` / `+Strong-szótár (PRÓBA) forrásadat modell-kimenet`, lap- és sorszámmal). *Első próbálkozásom a `szo.ebben` blokkcímmel semmit nem mutatott: az a blokk csak vers-kontextussal áll a lapon, a mintában nincs; a mérce ezt nem fedi, l. lent.*
 - **Piros teszt a kapun** (detached HEAD próbacommit `db565cf3`: egy szándékosan piros teszt a `teszt_ubs_dbh.py`-ban): `push_elott.py --lepes F232` → `HIBA F232 olvasó-tesztek (teszt_futtat.py --diff) [905 mp] (kilépési kód: 1)`, a sor `teszt_ubs_dbh.py: HIBA (1)`, a kapu „A push ne menjen” üzenettel 1-gyel lépett ki. A bizonyíték helyi futás (nincs CI-futás azonosító: a (b) a CI-ben nem fut; az (a2) lesz az, N-F232a).
 - **Zár-várakozás:** a `teszt_futtat.py` a közös helyi ellenőrzés-zárat veszi; a párhuzamos F218a S8c session futása alatt a mérce-próbám **1 145 mp-et** várt. Egy olvasót érintő push előtti kapu ezért 17 perc futás + a zárra várás; ez a (b) ára.
@@ -111,3 +111,15 @@ ELTÉRÉS-ek súlyossági sorrendben:
 5. A `merce/` alatt nincs licenc-megjegyzés, és a jelentés licenc-teendőjéhez nincs N-tétel.
 
 *Az ellenőr utójegyzete:* a `teszt_futtat.py --diff aad45b55` háttérfutásának kilépési kódja 1 (a `teszt_arculat.py` bukásából); az első sor és a táblázat változatlan.
+
+## F232.6 — az 1. ellenőrzés javítókörének (egyetlen kör) kezelése
+
+| # | Eltérés | Kezelés |
+|---|---|---|
+| 1 | a kapu nem fogja a `lexikon_general.py`/`olvasoi_kapu.py` miatti piros tesztet | javítva: `teszt_futtat.py` `GYORS_FUGGO` + `push_elott.py` `fuggo_tesztek`, a `teszt_visszhang_kapu` külön fut a közvetlen bemenetei változásakor; egységteszt a `cee76546` fájljaival; az ok-lánc mondat javítva |
+| 2 | `teszt_arculat` ingadozik; DB-tartalom miatti kimaradás | az `ir`-en kívüli fájlok: N-F232c, N-F232d; a jelentés „mind zöld” állítása pontosítva; a brief 4. feltétele nem teljesül teljesen (l. fent) |
+| 3 | a DT-F232a „kb. 2 perc” sora alulbecslés | a döntés sorában utólagos pontosítás (mért 17–22 perc + zár); az orkesztrátornak jelezve |
+| 4 | normalizáló: (a) rejtett elem előtti szöveg elvész, (b) szomszédos gombok/hivatkozások összetapadnak, (c) CSS-sel rejtett tartalom, (d) navigáció-zaj | (a) és (b) javítva + egységteszt, a mérce újragenerálva (13 fájl, csak az összetapadás/szóköz); (c) és (d) a modul „Ismert korlátok” szakaszába írva, nem javítva (a DOM-szöveg a mérce tárgya) |
+| 5 | nincs licenc-megjegyzés a `merce/` alatt, nincs N-tétel | `merce/README.md` + N-F232e |
+
+A mérce újragenerálása ugyanebben a PR-ban a normalizáló javításának következménye (a lapok tartalma nem változott, a pillanatkép formája igen); a PR leírása jelzi.

@@ -50,15 +50,15 @@ A jelentések rendje a BDB szerint
 —(időpontról, az időről, amikor, soha nem amely alatt, az angol morning = délelőtt)
 a.az éjszaka végéről17 hivatkozásLXX πρωΐ 8 · φωσφόρος 6 · 5 megfelelő nélkül
 (szemben לַיְלָה-val)
-2Móz 10:133Móz 6:9Bír 19:25Ruth 3:13(a versben kétszer)Ézs 21:12vö.1Sám 19:11(|| מחר, szemben לילה-val)
+2Móz 10:13 3Móz 6:9 Bír 19:25 Ruth 3:13(a versben kétszer)Ézs 21:12vö.1Sám 19:11(|| מחר, szemben לילה-val)
 szemben לֵילוֺת-val
 Zsolt 92:3
 továbbá (szemben לוּן-val)
-2Móz 23:1834:253Móz 19:135Móz 16:4
+2Móz 23:18 34:25 3Móz 19:13 5Móz 16:4
 szemben צלמות-val
 Ámós 5:8
 vö. továbbá
-1Móz 40:641:82Móz 12:2234:2(a versben kétszer)1Sám 3:15
+1Móz 40:6 41:8 2Móz 12:22 34:2(a versben kétszer)1Sám 3:15
 Apparátus és szövegkritika 2
 ▸ forrásjel (J) (P) (mindkettő J E) (H) (mindkettő E) (mindkettő J E)
 ▸ számozás a BDB a héber versszámozást követi; a Károliban: 3Móz 6:2 → 3Móz 6:9
@@ -66,7 +66,7 @@ Angol eredeti
 ▸ of end of night (opposed to לַיְלָה) Exod 10:13 (J) Lev 6:2 (P) Judg 19:25; Ruth 3:13 (twice in verse); Isa 21:12 compare 1Sam 19:11 (|| מחר, opposed to לילה); opposed to לֵילוֺת Psa 92:3; also (opposed to לוּן) Exod 23:18; 34:25 (both J E) Lev 19:13 (H) Deut 16:4; opposed to צלמות Amos 5:8; compare further Gen 40:6; 41:8 (both E) Exod 12:22; 34:2 (twice in verse) (both J E) 1Sam 3:15 +,
 az éjszaka végéről (szemben לַיְלָה-val) 2Móz 10:13 (J) 3Móz 6:2 (P) Bír 19:25; Ruth 3:13 (a versben kétszer); Ézs 21:12 vö. 1Sám 19:11 (|| מחר, szemben לילה-val); szemben לֵילוֺת-val Zsolt 92:3; továbbá (szemben לוּן-val) 2Móz 23:18; 34:25 (mindkettő J E) 3Móz 19:13 (H) 5Móz 16:4; szemben צלמות-val Ámós 5:8; vö. továbbá 1Móz 40:6; 41:8 (mindkettő E) 2Móz 12:22; 34:2 (a versben kétszer) (mindkettő J E) 1Sám 3:15 +,
 b.a hajnal, sőt a nappali fény eljövetelét sejtetve21 hivatkozásLXX πρωΐ 7 · φωσφόρος 5 · ἡμέρα 3 · ὄρθρος 1 · 5 megfelelő nélkül
-1Móz 29:2544:31Kir 3:21Jób 24:1738:12(|| שַׁחַר)
+1Móz 29:25 44:3 1Kir 3:21 Jób 24:17 38:12(|| שַׁחַר)
 לִפְנוֺת הַבּ׳‎
 2Móz 14:27a reggel fordulóján, ígyBír 19:26|| בַּעֲלוֺת הַשָּׁ֑חַר‎19:25עַד־הָאוֺר követi, mint valami későbbi19:26
 l.
@@ -78,7 +78,7 @@ Jób 38:7a reggel csillagai
 אורfőnévvel, באור הבקר
 Mik 2:1
 עד אור הבקר& különösen
-Bír 16:2(szemben לילה-val) így1Sám 14:36továbbá25:2225:3425:362Sám 17:222Kir 7:9
+Bír 16:2(szemben לילה-val) így1Sám 14:36továbbá25:22 25:34 25:36 2Sám 17:22 2Kir 7:9
 vö.
 1Sám 29:10(|| וְאוֺר לָכֶם)
 Apparátus és szövegkritika 2
@@ -88,19 +88,19 @@ Angol eredeti
 ▸ implying the coming of dawn, and even daylight Gen 29:25 (E) 44:3 (J) 1Kin 3:21 (but Klo here for 2nd בַּבֹּקֶר, reads לְבַקֵּר by looking at it see בָּקַר) Job 24:17; 38:12 (|| שַׁחַר); לִפְנוֺת הַבּ׳ Exod 14:27 (JE) at the turn of the morning, so Judg 19:26 (|| בַּעֲלוֺת הַשָּׁ֑חַר‎ 19:25; followed by עַד־הָאוֺר, as something later, 19:26); see Ruth 3:14 (|| רעהו את אישׁ יכיר בטרו֯ם before men could recognise each other); compare כּוֺכְבֵי בֹקֶר Job 38:7 stars of morning; but also with אוֺר verb Gen 44:3 (J) אור הבקר; with אור noun, באור הבקר Micah 2:1; & especially עד אור הבקר Judg 16:2 (opposed to לילה) so 1Sam 14:36; also 25:22, 34, 36; 2Sam 17:22; 2Kin 7:9; compare 1Sam 29:10 (|| וְאוֺר לָכֶם).
 a hajnal, sőt a nappali fény eljövetelét sejtetve 1Móz 29:25 (E) 44:3 (J) 1Kir 3:21 (de Klo itt a 2. בַּבֹּקֶר helyett olvassa לְבַקֵּר ránézéssel l. בָּקַר) Jób 24:17; 38:12 (|| שַׁחַר); לִפְנוֺת הַבּ׳‎ 2Móz 14:27 (JE) a reggel fordulóján, így Bír 19:26 (|| בַּעֲלוֺת הַשָּׁ֑חַר‎ 19:25; עַד־הָאוֺר követi, mint valami későbbi, 19:26); l. Ruth 3:14 (|| רעהו את אישׁ יכיר בטרו֯ם mielőtt az emberek felismerhették egymást); vö. כּוֺכְבֵי בֹקֶר Jób 38:7 a reggel csillagai; de אוֺר igével is 1Móz 44:3 (J) אור הבקר; אור főnévvel, באור הבקר Mik 2:1; & különösen עד אור הבקר Bír 16:2 (szemben לילה-val) így 1Sám 14:36; továbbá 25:22, 34, 36; 2Sám 17:22; 2Kir 7:9; vö. 1Sám 29:10 (|| וְאוֺר לָכֶם).
 c.a napkelte eljöveteléről4 hivatkozásLXX πρωΐ 1 · φωσφόρος 1 · 3 megfelelő nélkül
-Bír 9:332Sám 23:4(a versben kétszer)2Kir 3:22vö. מוֺצָּאֵי ב׳ וערבZsolt 65:9azaz napkelte és napnyugta helyei (|| קְצוֺת azaz a föld végei)
+Bír 9:33 2Sám 23:4(a versben kétszer)2Kir 3:22vö. מוֺצָּאֵי ב׳ וערבZsolt 65:9azaz napkelte és napnyugta helyei (|| קְצוֺת azaz a föld végei)
 Angol eredeti
 ▸ of coming of sunrise Judg 9:33; 2Sam 23:4 (twice in verse); 2Kin 3:22 compare מוֺצָּאֵי ב׳ וערב Psa 65:9 i.e. places of sunrise and sunset (|| קְצוֺת i.e. ends of earth).
 a napkelte eljöveteléről Bír 9:33; 2Sám 23:4 (a versben kétszer); 2Kir 3:22 vö. מוֺצָּאֵי ב׳ וערב Zsolt 65:9 azaz napkelte és napnyugta helyei (|| קְצוֺת azaz a föld végei).
 d.a nap kezdetéről12 hivatkozásLXX φωσφόρος 5 · 5 megfelelő nélkül
 מֵאָז הַבּ׳ וְעַד־עַתָּה
-Ruth 2:7vö.2:142Sám 24:15
+Ruth 2:7vö.2:14 2Sám 24:15
 az imádság és dicséret ideje
-Zsolt 5:4(a versben kétszer) (l. Hu)59:1788:1492:3
+Zsolt 5:4(a versben kétszer) (l. Hu)59:17 88:14 92:3
 צהרים|| dél
-1Kir 18:26Jer 20:16
+1Kir 18:26 Jer 20:16
 ערב ובקר וצהריםaz imádság három órájáról
-Zsolt 55:18vö.Dán 6:96:12
+Zsolt 55:18vö.Dán 6:9 6:12
 vö. még עֶרֶב-val alább
 Apparátus és szövegkritika 2
 ▸ megjegyzés (de húzd ki We Dr)
@@ -110,19 +110,19 @@ Angol eredeti
 a nap kezdetéről, מֵאָז הַבּ׳ וְעַד־עַתָּה Ruth 2:7 (vö. 2:14) l. 2Sám 24:15 (de húzd ki We Dr); az imádság és dicséret ideje Zsolt 5:4 (a versben kétszer) (l. Hu) 59:17; 88:14; 92:3; || צהרים dél 1Kir 18:26; Jer 20:16; az imádság három órájáról, ערב ובקר וצהרים Zsolt 55:18 (vö. Dán 6:10; 6:13); vö. még עֶרֶב-val alább
 e.szemben46 hivatkozásLXX φωσφόρος 21 · πρωΐ 10 · ἡμέρα 1 · 13 megfelelő nélkül
 עֶרֶב-val
-1Móz 49:27(költemény J-ben)2Móz 16:7–816:1216:133Móz 6:204Móz 9:215Móz 28:67(a versben kétszer)2Sám 11:141Kir 17:6Ézs 17:14Sof 3:3Ez 24:18(a versben kétszer)33:22Dán 8:26Zsolt 30:690:590:6Préd 11:61Krón 16:402Krón 2:413:1131:3Ezsd 3:3Eszt 2:14még 14 hely
+1Móz 49:27(költemény J-ben)2Móz 16:7–8 16:12 16:13 3Móz 6:20 4Móz 9:21 5Móz 28:67(a versben kétszer)2Sám 11:14 1Kir 17:6 Ézs 17:14 Sof 3:3Ez 24:18(a versben kétszer)33:22Dán 8:26Zsolt 30:690:590:6Préd 11:61Krón 16:402Krón 2:413:1131:3Ezsd 3:3Eszt 2:14még 14 hely
 szemben בֵּין הערבים-val
-2Móz 29:3929:414Móz 28:428:8
+2Móz 29:39 29:41 4Móz 28:4 28:8
 מן־הבקר עד־הערבkülönösen = egész nap
 2Móz 18:13& (névelő nélkül)18:14
 מבקר לָעֶרֶב
 Jób 4:20= reggel és este között
 מֵעֶרֶב עַד־בֹּקֶרtovábbá = egész éjszaka
-2Móz 27:213Móz 24:34Móz 9:21& עַדבּֿ ׳בָּעֶרֶב‎9:15
+2Móz 27:21 3Móz 24:3 4Móz 9:21& עַדבּֿ ׳בָּעֶרֶב‎9:15
 וַיְהִי ערב ויהי בקרjegyezd meg a formulát és lett este és lett reggel
-1Móz 1:51:81:131:191:231:31azaz a nap az estével ér véget, az éjszaka pedig a reggellel
+1Móz 1:5 1:8 1:13 1:19 1:23 1:31azaz a nap az estével ér véget, az éjszaka pedig a reggellel
 sajátos
-Dán 8:14a mindennapi áldozat elmaradásáról עַד עֶרֶב בֹּקֶר אַלְפַּיִם וּשְׁלשׁ מֵאוֺת, míg2300este-reggel, valószínűleg = 2300 fél nap Ew Hi Meinh Bev Dr^Intr. 464, vö.8:26& 3 2-Jan idők (évek)7:2512:11Dán 12:17
+Dán 8:14a mindennapi áldozat elmaradásáról עַד עֶרֶב בֹּקֶר אַלְפַּיִם וּשְׁלשׁ מֵאוֺת, míg2300este-reggel, valószínűleg = 2300 fél nap Ew Hi Meinh Bev Dr^Intr. 464, vö.8:26& 3 2-Jan idők (évek)7:25 12:11Dán 12:17
 Apparátus és szövegkritika 2
 ▸ forrásjel (mind P) (mind P) (mindkettő E) (P) (H) (mindkettő P) (mind P)
 ▸ számozás a BDB a héber versszámozást követi; a Károliban: 3Móz 6:13 → 3Móz 6:20; 2Krón 2:3 → 2Krón 2:4
@@ -139,11 +139,11 @@ Jób 7:18
 ׳לַבּreggelre (ellen vagy által)
 2Móz 34:2vö.Zsolt 130:6
 majdnem = -ig (עַדֿ‎)
-2Móz 34:255Móz 16:4Sof 3:3
+2Móz 34:25 5Móz 16:4 Sof 3:3
 ׳בַּבּ ׳בַּבּtovábbá reggelről reggelre, minden reggel
-2Móz 16:2130:736:23Móz 6:122Sám 13:41Krón 23:302Krón 13:11Ézs 28:1950:4Ez 46:13–1446:15Sof 3:5továbbá ׳לַבּ ׳לַבּ, ugyanebben az értelemben1Krón 9:27még 3 hely
+2Móz 16:21 30:7 36:2 3Móz 6:12 2Sám 13:4 1Krón 23:30 2Krón 13:11 Ézs 28:19 50:4 Ez 46:13–14 46:15Sof 3:5továbbá ׳לַבּ ׳לַבּ, ugyanebben az értelemben1Krón 9:27még 3 hely
 לַבְּקָרִיםtöbbes szám minden reggel újra
-Zsolt 73:14Ézs 33:2vö. JSir 3:23
+Zsolt 73:14 Ézs 33:2vö. JSir 3:23
 majdnem = szüntelen
 Zsolt 101:8vö.Jer 21:12
 לִבְקָרִיםl.
@@ -162,40 +162,40 @@ Angol eredeti
 reggel (időpontról, az időről, amikor, soha nem amely alatt, az angol morning = délelőtt): —
 2holnap, másnap23 hivatkozásLXX φωσφόρος 7 · πρωΐ 5 · ὄρθρος 1 · 8 megfelelő nélkül
 (vö. német Morgen, morgen) névelő nélkül
-2Móz 16:19–2033Móz 7:1522:30(szemben הַהוּא הַיּוֺם-val)4Móz 16:5|| מָחָר‎16:716:16vö.2Móz 12:10(a versben kétszer)4Móz 9:12
+2Móz 16:19–2033Móz 7:15 22:30(szemben הַהוּא הַיּוֺם-val)4Móz 16:5|| מָחָר‎16:7 16:16vö.2Móz 12:10(a versben kétszer)4Móz 9:12
 névelővel
-2Móz 16:23–2429:34
+2Móz 16:23–24 29:34
 ׳לַבּ‎
-2Móz 34:254Móz 22:41Sof 3:3
+2Móz 34:25 4Móz 22:41 Sof 3:3
 ׳בַּבּ‎
 1Sám 9:19(szemben הַיּוֺם ma) vö.20:35
 ׳הַבּholnap reggel
 Bír 6:31
 ׳בַּבּ‎
-2Móz 7:15Józs 7:14Eszt 5:14
+2Móz 7:15 Józs 7:14 Eszt 5:14
 ׳בַּבּ מִמָּֽחֳרָתhatározottan
 1Sám 5:4
 ׳מֵהַבּ‎
 2Sám 2:27
 határozószói használat ebben az értelemben (elöljáró vagy névelő nélkül)
-2Móz 16:74Móz 16:5
+2Móz 16:7 4Móz 16:5
 g.átvitten a vigasztalan éjszaka utáni fényes örömről7 hivatkozásLXX φωσφόρος 3 · πρωΐ 2 · 2 megfelelő nélkül
 (költészet)
 Jób 11:17
 vö.
-Zsolt 30:646:6(לִפְנוֺת בּ׳‎)49:1559:1790:14143:8
+Zsolt 30:6 46:6(לִפְנוֺת בּ׳‎)49:15 59:17 90:14 143:8
 Angol eredeti
 ▸ figurative of bright joy after night of distress (poetry) Job 11:17; compare Psa 30:6; 46:6 (לִפְנוֺת בּ׳‎) 49:15; 59:17; 90:14; 143:8.
 átvitten a vigasztalan éjszaka utáni fényes örömről (költészet) Jób 11:17; vö. Zsolt 30:6; 46:6 (לִפְנוֺת בּ׳‎) 49:15; 59:17; 90:14; 143:8.
 h.fordulatokban41 hivatkozásLXX φωσφόρος 25 · πρωΐ 11 · 7 megfelelő nélkül
 הִשְׁכִּים בַּבּ׳(וַיַּשְׁכֵּם stb.) korán reggel kelt
-1Móz 19:2720:821:1422:326:3128:1831:552Móz 8:209:1324:434:44Móz 14:40Józs 3:16:127:168:10Bír 6:2819:519:81Sám 1:195:4még 11 hely
+1Móz 19:27 20:8 21:14 22:3 26:31 28:18 31:55 2Móz 8:20 9:13 24:4 34:44Móz 14:40Józs 3:16:127:168:10Bír 6:2819:519:81Sám 1:195:4még 11 hely
 vö.
-1Sám 15:1217:2029:10(a versben kétszer) vö.29:1122Kir 3:2219:35Ézs 37:362Krón 20:20Jób 1:5Péld 27:14Ézs 5:11még 2 hely
+1Sám 15:12 17:20 29:10(a versben kétszer) vö.29:1122Kir 3:22 19:35 Ézs 37:36 2Krón 20:20 Jób 1:5 Péld 27:14Ézs 5:11még 2 hely
 ׳בַּבּ ויקם(ויקומו stb.)
-1Móz 24:544Móz 22:1322:21Bír 19:2720:192Sám 24:111Kir 3:21
+1Móz 24:54 4Móz 22:13 22:21 Bír 19:27 20:19 2Sám 24:11 1Kir 3:21
 הַבּ ׳אַשְׁמֹרֶתreggeli őrváltás
-2Móz 14:241Sám 11:11
+2Móz 14:24 1Sám 11:11
 Apparátus és szövegkritika 2
 ▸ forrásjel (mind J E) (mind J E)
 ▸ számozás a BDB a héber versszámozást követi; a Károliban: 1Móz 32:1 → 1Móz 31:55; 2Móz 8:16 → 2Móz 8:20

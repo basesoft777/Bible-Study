@@ -196,6 +196,16 @@ def olvaso_erintett(fajlok):
     return ki
 
 
+def fuggo_tesztek(fajlok):
+    """F232 (ELLENOR_F232 1.): azok a gyors tesztfájlok (`teszt_futtat.py` `GYORS_FUGGO`), amelyeknek egy közvetlen bemenete változott,
+    de az olvasó kódja nem (ott a `--diff` az egész készletet futtatja). Rendezett lista."""
+    if os.path.dirname(os.path.abspath(__file__)) not in sys.path:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import teszt_futtat
+    valtozott = {f.replace('\\', '/') for f in fajlok}
+    return sorted(t for t, bemenetek in teszt_futtat.GYORS_FUGGO.items() if valtozott & set(bemenetek))
+
+
 def zold_utvonal():
     rc, gitdir, _ = git('rev-parse', '--git-dir')
     if rc != 0 or not gitdir:
@@ -564,6 +574,12 @@ def main():
             print('FIGYELEM: az olvasói mérce eltér a mostani lapoktól: szándékos változásnál a mérce frissítése '
                   '(`teszt_olvasoi_merce.py --merce-frissit`) csak a felhasználó jóváhagyásával történhet, és a PR leírása hivatkozik rá '
                   '(jóváhagyás nélkül a mérce eltérése figyelmeztetés marad, a diffet a fenti MÉRCE-ELTÉRÉS sorok mutatják).')
+    elif fuggo_tesztek(fajlok):
+        # a lexikon-generátorra/lapra támaszkodó gyors teszt (pl. teszt_visszhang_kapu): csak ez fut (F232, ELLENOR_F232 1.)
+        fuggo = fuggo_tesztek(fajlok)
+        print('push_elott: az olvasó-tesztek közvetlen bemenete változott: %s' % ', '.join(fuggo))
+        fut.lepes('F232 függő olvasó-tesztek (teszt_futtat.py --fajl)', [PY, 'eszkozok/teszt_futtat.py'] +
+                  [x for f in fuggo for x in ('--fajl', f[:-3])])
     if any(f.replace('\\', '/').startswith('eszkozok/olvaso_szerver/merce/') for f in fajlok):
         print('FIGYELEM: az olvasói mérce fájljai változtak (eszkozok/olvaso_szerver/merce/): a PR leírása hivatkozzon a felhasználó '
               'jóváhagyására (F232 2.2).')

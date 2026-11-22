@@ -14,6 +14,11 @@ A pillanatkép (`pillanatkep`):
   * a blokk határa `## [<data-blokk>]` sor; a táblázat sora egy sor, a cellák ` | ` jellel;
   * a csukott `<details>` tartalma (a `<summary>` kivételével) minden sorában `▸ ` jelölővel áll: látszik, hogy alapból nem látható.
 
+Ismert korlátok (F232, ELLENOR_F232 4.2): a pillanatkép a DOM szövege, nem a CSS-sel feloldott nézet: a stíluslappal rejtett vagy csak
+egy módban látszó tartalom (pl. `.jelolo-rovid`, `.szk-rejt`, `.szk-egyben`) a DOM szerint „látható”, jelöletlenül áll benne; a teljes
+navigáció minden lapon szerepel, ezért egy navigációs változás mind a 18 lapon eltérést ad (az eltérés-lista első sora a lapok számát
+mutatja); a `szo.ebben` (vers-kontextusos) blokk, az interlineáris és a többbibliás nézet a mintában nincs.
+
 Futtatás (a DB-s rész Flask-et és `pardes.db`-t kér: `python eszkozok/teszt_futtat.py --fajl teszt_olvasoi_merce`; a normalizáló
 egységtesztjei DB nélkül is futnak):
     python teszt_olvasoi_merce.py                  # tesztek
@@ -60,6 +65,7 @@ _VOID = frozenset('area base br col embed hr img input link meta param source tr
 _BLOKK = frozenset('address article aside blockquote body dd details div dl dt fieldset figcaption figure footer form h1 h2 h3 h4 h5 h6 '
                    'header hr li main nav ol p pre section summary table tbody thead tfoot tr ul br'.split())
 _KIHAGY = frozenset('head script style template noscript svg'.split())
+_KEZELO = frozenset('a button label option'.split())   # a szomszédos kezelőelemek szövege közé szóköz kerül
 _IDO = re.compile(r'\b\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d+)?Z?')
 _COMMIT = re.compile(r'(commit:?\s*)[0-9a-f]{7,40}\b', re.I)
 
@@ -72,6 +78,7 @@ class _Kinyer(HTMLParser):
         self.verem = []        # (tag, kihagy, csukott_details, summary)
         self.sorok = []
         self.sor = ''
+        self.szomszed = False  # az előző esemény egy kezelőelem (a, button, ...) vége volt, szöveg nélkül
 
     def _kihagy(self):
         return any(e[1] for e in self.verem)
@@ -90,6 +97,7 @@ class _Kinyer(HTMLParser):
         self.sor = ''
         if s and not self._kihagy():
             self.sorok.append((CSUKOTT_JEL if self._csukott() else '') + s)
+        self.szomszed = False
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -102,9 +110,13 @@ class _Kinyer(HTMLParser):
         if tag in _BLOKK:
             self._flush()
         csukott = tag == 'details' and 'open' not in a
+        if kihagy and not self._kihagy():
+            self._flush()     # a rejtett elem előtti látható szöveg nem veszhet el (F232.6, ELLENOR_F232 4.2 a)
         self.verem.append((tag, kihagy, csukott, tag == 'summary'))
         if kihagy:
             return
+        if tag in _KEZELO and self.szomszed:
+            self.sor += ' '   # két szomszédos kezelőelem (gomb, hivatkozás) a lapon külön áll: a sima szövegben ne tapadjon össze
         if a.get('data-blokk'):
             self._flush()
             self.sorok.append('## [%s]' % a['data-blokk'])
@@ -119,11 +131,14 @@ class _Kinyer(HTMLParser):
                 if tag in _BLOKK:
                     self._flush()
                 del self.verem[i:]
+                self.szomszed = tag in _KEZELO and not self._kihagy()
                 return
 
     def handle_data(self, data):
         if not self._kihagy():
             self.sor += data
+            if data.strip():
+                self.szomszed = False
 
     def vege(self):
         self._flush()
@@ -203,6 +218,15 @@ class TestNormalizalo(unittest.TestCase):
              '<p>ts 2026-11-12T18:53:35Z, commit: ea0a4414f</p></body>')
         self.assertEqual(pillanatkep(h), 'látható\nts <időbélyeg>, commit: <hash>\n')
 
+    def test_a_rejtett_elem_elotti_szoveg_nem_vesz_el(self):
+        # ELLENOR_F232 4.2 (a): `<span hidden><div>` előtt a látható „elotte” megmarad (a blokk-elem két sorra bontja), a rejtett tartalom nem
+        self.assertEqual(pillanatkep('<p>elotte <span hidden><div>x</div></span> utana</p>'), 'elotte\nutana\n')
+
+    def test_szomszedos_kezeloelemek_nem_tapadnak_ossze(self):
+        # ELLENOR_F232 4.2 (b): „KJVStrong”, „1Móz2Móz3Móz…” helyett; a szövegbe ágyazott hivatkozás után a központozás marad
+        self.assertEqual(pillanatkep('<div><a>A</a><a>B</a><button>C</button></div>'), 'A B C\n')
+        self.assertEqual(pillanatkep('<p>a <a>szó</a>, majd <b>b</b><i>c</i></p>'), 'a szó, majd bc\n')
+
     def test_szoveg_nem_valtozik_az_ures_ter_miatt(self):
         self.assertEqual(pillanatkep('<p>a\n   b\t<b>c</b>d</p>'), pillanatkep('<p>a b <b>c</b>d</p>'))
 
@@ -219,6 +243,16 @@ class TestNormalizalo(unittest.TestCase):
                                             'eszkozok/teszt_futtat.py', 'eszkozok\\olvaso_pilot\\adat.py', 'eszkozok/lexikon_general.py']),
                          ['eszkozok/olvaso_szerver/blokkok.py', 'eszkozok/teszt_futtat.py', 'eszkozok/olvaso_pilot/adat.py'])
         self.assertEqual(P.olvaso_erintett([]), [])
+
+    def test_push_elott_a_lexikon_generator_valtozasara_a_visszhang_kaput_futtatja(self):
+        # ELLENOR_F232 1.: a cee76546 a lexikon_general.py-t és az olvasoi_kapu.py-t módosította, és a teszt_visszhang_kapu attól lett piros;
+        # egyik sincs az _OLVASO_KOD-ban, ezért a függő tesztek külön leképezése kell
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(D)), 'eszkozok'))
+        import push_elott as P
+        self.assertEqual(P.olvaso_erintett(['eszkozok/lexikon_general.py', 'eszkozok/olvasoi_kapu.py']), [])
+        self.assertEqual(P.fuggo_tesztek(['eszkozok/lexikon_general.py', 'eszkozok/olvasoi_kapu.py']), ['teszt_visszhang_kapu.py'])
+        self.assertEqual(P.fuggo_tesztek(['naplok/F232_jelentes.md', 'eszkozok\\olvasoi_kapu.py']), ['teszt_visszhang_kapu.py'])
+        self.assertEqual(P.fuggo_tesztek(['naplok/F232_jelentes.md']), [])
 
     def test_a_mintakeszlet_teljes(self):
         self.assertEqual(len(MINTA), 18)

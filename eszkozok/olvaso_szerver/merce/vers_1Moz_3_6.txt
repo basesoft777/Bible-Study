@@ -6,42 +6,42 @@ PaRDeS olvasó
 Károli 1908 · 1Móz 3 ▾
 ▸ Biblia és könyv kiválasztása
 ▸ Biblia
-▸ Magyar Károli 1908alapnézet · StrongModernizált KároliStrong
-▸ Eredeti nyelv Héber ÓszövetségTAHOT · StrongGörög ÚjszövetségTAGNT · StrongSeptuagintagörög Ószövetség · Strong
+▸ Magyar Károli 1908alapnézet · Strong Modernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · Strong Görög ÚjszövetségTAGNT · Strong Septuagintagörög Ószövetség · Strong
 ▸ Angol KJVStrong
 ▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
 ▸ Könyv
 ▸ Törvény
-▸ 1Móz2Móz3Móz4Móz5Móz
+▸ 1Móz 2Móz 3Móz 4Móz 5Móz
 ▸ Történeti könyvek
-▸ JózsBírRuth1Sám2Sám1Kir2Kir1Krón2KrónEzsdNehEszt
+▸ Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt
 ▸ Költői és bölcsességi könyvek
-▸ JóbZsoltPéldPrédÉn
+▸ Jób Zsolt Péld Préd Én
 ▸ Nagypróféták
-▸ ÉzsJerSirEzDán
+▸ Ézs Jer Sir Ez Dán
 ▸ Kispróféták
-▸ HósJóelÁmósAbdJónMikNáhHabSofHagZakMal
+▸ Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal
 ▸ Evangéliumok és Apostolok Cselekedetei
-▸ MtMkLukJánApCsel
+▸ Mt Mk Luk Ján ApCsel
 ▸ Pál levelei
-▸ Róm1Kor2KorGalEfFilKol1Thessz2Thessz1Tim2TimTitFilem
+▸ Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem
 ▸ Általános levelek
-▸ ZsidJak1Pét2Pét1Ján2Ján3JánJúd
+▸ Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd
 ▸ Jelenések
 ▸ Jel
 ▸ Mózes első könyve · fejezetek
-▸ 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950
+▸ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
 ⌕
-‹›
+‹ ›
 Aa
 ▸ Betűméret 100%
-▸ A−A+
+▸ A− A+
 ▸ Sorköz
-▸ szűkközepestág
+▸ szűk közepes tág
 ▸ Betűcsalád
-▸ Source SerifNoto SerifIBM Plex Sans
+▸ Source Serif Noto Serif IBM Plex Sans
 ▸ Sorszélesség
-▸ keskenyközepesszélesteljes
+▸ keskeny közepes széles teljes
 ▸ Versenként új sor Alapértékek
 Strong számokStrong
 Tanulmányok jelölése
@@ -54,7 +54,7 @@ Tanulmányok jelölése
 ⌕
 Mózes első könyve 3
 ← 2. fejezet Mózes első könyve 4. fejezet → Forrás és számlálók
-1A kígyó pedig ravaszabb vala minden mezei vadnál, melyet az Úr Isten teremtett vala, és monda az asszonynak: Csakugyan azt mondta az Isten, hogy a kertnek egy fájáról se egyetek? 2És monda az asszony a kígyónak: A kert fáinak gyümölcséből ehetünk; 3De annak a fának gyümölcséből, mely a kertnek közepette van, azt mondá Isten: abból ne egyetek, azt meg se illessétek, hogy meg ne haljatok. 4És monda a kígyó az asszonynak: Bizony nem haltok meg; 5Hanem tudja az Isten, hogy a mely napon ejéndetek abból, megnyilatkoznak a ti szemeitek, és olyanok lésztek mint az Isten: jónak és gonosznak tudói. 6És látá az asszony, hogy jó az a fa eledelre s hogy kedves a szemnek, és kivánatos az a fa a bölcseségért: szakaszta azért annak gyümölcséből, és evék, és ada vele levő férjének is, és az is evék. 7És megnyilatkozának mindkettőjöknek szemei s észrevevék, hogy mezítelenek; figefa levelet aggatának azért össze, és körülkötőket csinálának magoknak. 8És meghallák az Úr Isten szavát, a ki hűvös alkonyatkor a kertben jár vala; és elrejtőzék az ember és az ő felesége az Úr Isten elől a kert fái között. 9Szólítá ugyanis az Úr Isten az embert és monda néki: Hol vagy? 10És monda: Szavadat hallám a kertben, és megfélemlém, mivelhogy mezítelen vagyok, és elrejtezém. 11És monda Ő: Ki mondá néked, hogy mezítelen vagy? Avagy talán ettél a fáról, melytől tiltottalak, hogy arról ne egyél? 12És monda az ember: Az asszony, a kit mellém adtál vala, ő ada nékem arról a fáról, úgy evém. 13És monda az Úr Isten az asszonynak: Mit cselekedtél? Az asszony pedig monda: A kígyó ámított el engem, úgy evém. 14És monda az Úr Isten a kígyónak: Mivelhogy ezt cselekedted, átkozott légy minden barom és minden mezei vad között; hasadon járj, és port egyél életed minden napjaiban. 15És ellenségeskedést szerzek közötted és az asszony között, a te magod között, és az ő magva között: az neked fejedre tapos, te pedig annak sarkát mardosod. 16Az asszonynak monda: Felette igen megsokasítom viselősséged fájdalmait, fájdalommal szűlsz magzatokat; és epekedel a te férjed után, ő pedig uralkodik te rajtad. 17Az embernek pedig monda: Mivelhogy hallgattál a te feleséged szavára, és ettél arról a fáról, a melyről azt parancsoltam, hogy ne egyél arról: Átkozott legyen a föld te miattad, fáradságos munkával élj belőle életednek minden napjaiban. 18Töviset és bogácskórót teremjen tenéked; s egyed a mezőnek fűvét. 19Orczád verítékével egyed a te kenyeredet, míglen visszatérsz a földbe, mert abból vétettél: mert por vagy te s ismét porrá leszesz. 20Nevezte vala pedig Ádám az ő feleségét Évának, mivelhogy ő lett anyja minden élőnek. 21És csinála az Úr Isten Ádámnak és az ő feleségének bőr ruhákat, és felöltözteté őket. 22És monda az Úr Isten: Ímé az ember olyanná lett, mint mi közűlünk egy, jót és gonoszt tudván. Most tehát, hogy ki ne nyújtsa kezét, hogy szakaszszon az élet fájáról is, hogy egyék, s örökké éljen: 23Kiküldé őt az Úr Isten az Éden kertjéből, hogy mívelje a földet, a melyből vétetett vala. 24És kiűzé az embert, és oda helyezteté az Éden kertjének keleti oldala felől a Kerúbokat és a villogó pallos lángját, hogy őrizzék az élet fájának útját.
+1A kígyó pedig ravaszabb vala minden mezei vadnál, melyet az Úr Isten teremtett vala, és monda az asszonynak: Csakugyan azt mondta az Isten, hogy a kertnek egy fájáról se egyetek? 2És monda az asszony a kígyónak: A kert fáinak gyümölcséből ehetünk; 3De annak a fának gyümölcséből, mely a kertnek közepette van, azt mondá Isten: abból ne egyetek, azt meg se illessétek, hogy meg ne haljatok. 4És monda a kígyó az asszonynak: Bizony nem haltok meg; 5Hanem tudja az Isten, hogy a mely napon ejéndetek abból, megnyilatkoznak a ti szemeitek, és olyanok lésztek mint az Isten: jónak és gonosznak tudói. 6És látá az asszony, hogy jó az a fa eledelre s hogy kedves a szemnek, és kivánatos az a fa a bölcseségért: szakaszta azért annak gyümölcséből, és evék, és ada vele levő férjének is, és az is evék. 7És megnyilatkozának mindkettőjöknek szemei s észrevevék, hogy mezítelenek; figefa levelet aggatának azért össze, és körülkötőket csinálának magoknak. 8És meghallák az Úr Isten szavát, a ki hűvös alkonyatkor a kertben jár vala; és elrejtőzék az ember és az ő felesége az Úr Isten elől a kert fái között. 9 Szólítá ugyanis az Úr Isten az embert és monda néki: Hol vagy? 10És monda: Szavadat hallám a kertben, és megfélemlém, mivelhogy mezítelen vagyok, és elrejtezém. 11És monda Ő: Ki mondá néked, hogy mezítelen vagy? Avagy talán ettél a fáról, melytől tiltottalak, hogy arról ne egyél? 12És monda az ember: Az asszony, a kit mellém adtál vala, ő ada nékem arról a fáról, úgy evém. 13És monda az Úr Isten az asszonynak: Mit cselekedtél? Az asszony pedig monda: A kígyó ámított el engem, úgy evém. 14És monda az Úr Isten a kígyónak: Mivelhogy ezt cselekedted, átkozott légy minden barom és minden mezei vad között; hasadon járj, és port egyél életed minden napjaiban. 15És ellenségeskedést szerzek közötted és az asszony között, a te magod között, és az ő magva között: az neked fejedre tapos, te pedig annak sarkát mardosod. 16Az asszonynak monda: Felette igen megsokasítom viselősséged fájdalmait, fájdalommal szűlsz magzatokat; és epekedel a te férjed után, ő pedig uralkodik te rajtad. 17Az embernek pedig monda: Mivelhogy hallgattál a te feleséged szavára, és ettél arról a fáról, a melyről azt parancsoltam, hogy ne egyél arról: Átkozott legyen a föld te miattad, fáradságos munkával élj belőle életednek minden napjaiban. 18 Töviset és bogácskórót teremjen tenéked; s egyed a mezőnek fűvét. 19 Orczád verítékével egyed a te kenyeredet, míglen visszatérsz a földbe, mert abból vétettél: mert por vagy te s ismét porrá leszesz. 20 Nevezte vala pedig Ádám az ő feleségét Évának, mivelhogy ő lett anyja minden élőnek. 21És csinála az Úr Isten Ádámnak és az ő feleségének bőr ruhákat, és felöltözteté őket. 22És monda az Úr Isten: Ímé az ember olyanná lett, mint mi közűlünk egy, jót és gonoszt tudván. Most tehát, hogy ki ne nyújtsa kezét, hogy szakaszszon az élet fájáról is, hogy egyék, s örökké éljen: 23 Kiküldé őt az Úr Isten az Éden kertjéből, hogy mívelje a földet, a melyből vétetett vala. 24És kiűzé az embert, és oda helyezteté az Éden kertjének keleti oldala felől a Kerúbokat és a villogó pallos lángját, hogy őrizzék az élet fájának útját.
 1Móz 3:6 És látá az asszony, hogy jó az a fa eledelre s hogy kedves…
 ⤢ ✕
 1Móz 3:6
@@ -67,49 +67,49 @@ Forrás és licenc: Karoli_1908 (vers): közkincs
 Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
 Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.
 וַandH9001kötőszóκαὶ
-תֵּ֣רֶאvattéreshe sawH7200ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes számεἶδεν
+תֵּ֣רֶאvattéreshe sawH7200ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám εἶδεν
 הָֽtheH9009partikula, határozott névelőἡ
-אִשָּׁ֡הháissáwomanH0802főnév, köznév, nőnem, egyes szám, abszolútγυνὴ
+אִשָּׁ֡הháissáwomanH0802főnév, köznév, nőnem, egyes szám, abszolút γυνὴ
 כִּ֣יkíthatH3588kötőszóὅτι
-טוֹב֩tóv[was] goodH2896melléknév, melléknév, hímnem, egyes szám, abszolútκαλὸν
+טוֹב֩tóv[was] goodH2896melléknév, melléknév, hímnem, egyes szám, abszolút καλὸν
 הָtheH9009partikula, határozott névelőτὸ
-עֵ֨ץháéctreeH6086főnév, köznév, hímnem, egyes szám, abszolútξύλον
+עֵ֨ץháéctreeH6086főnév, köznév, hímnem, egyes szám, abszolút ξύλον
 לְforH9005elöljáróεἰς
-מַאֲכָ֜לlemaacholfoodH3978főnév, köznév, hímnem, egyes szám, abszolútβρῶσιν
+מַאֲכָ֜לlemaacholfoodH3978főnév, köznév, hímnem, egyes szám, abszolút βρῶσιν
 וְandH9002kötőszóκαὶ
 כִ֧יvekíthatH3588kötőszóὅτι
-תַֽאֲוָהtaavá[was] a delightH8378főnév, köznév, nőnem, egyes szám, abszolútἀρεστὸν
+תַֽאֲוָהtaavá[was] a delightH8378főnév, köznév, nőnem, egyes szám, abszolút ἀρεστὸν
 ה֣וּאhúitH1931névmás, személyes, harmadik személy, hímnem, egyes számLXX: —
 לָto theH9005elöljáró, határozott névelőLXX: —
-עֵינַ֗יִםláénajimeyesH5869főnév, köznév, mindkettő (főnév), kettes szám, abszolútὀφθαλμοῖς
+עֵינַ֗יִםláénajimeyesH5869főnév, köznév, mindkettő (főnév), kettes szám, abszolút ὀφθαλμοῖς
 וְandH9002partikula, határozott névelőLXX: —
 נֶחְמָ֤דvenechmád[it was] desirableH2530ige, nifal, participium, cselekvő, hímnem, egyes szám, abszolútLXX: —
 הָtheH9009kötőszóκαὶ
 עֵץ֙háéctreeH6086főnév, köznév, hímnem, egyes szám, abszolútLXX: —
 לְtoH9005partikula, határozott névelőLXX: —
-הַשְׂכִּ֔ילlehaszkílmake wiseH7919ige, hifil, infinitivus constructusκατανοῆσαι
+הַשְׂכִּ֔ילlehaszkílmake wiseH7919ige, hifil, infinitivus constructus κατανοῆσαι
 וַandH9001elöljáróτοῦ
-תִּקַּ֥חvattikkachshe tookH3947ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes számλαβοῦσα
+תִּקַּ֥חvattikkachshe tookH3947ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám λαβοῦσα
 מִsome ofH9006kötőszóκαὶ
-פִּרְי֖mippirjófruitH6529főnév, köznév, hímnem, egyes szám, constructusκαρποῦ
+פִּרְי֖mippirjófruitH6529főnév, köznév, hímnem, egyes szám, constructus καρποῦ
 וֹitsH9023toldalék, névmási, harmadik személy, hímnem, egyes számαὐτοῦ
 וַandH9001kötőszóLXX: —
-תֹּאכַ֑לvattóchalshe ateH0398ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes számἔφαγεν
+תֹּאכַ֑לvattóchalshe ateH0398ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám ἔφαγεν
 וַandH9001kötőszóκαὶ
-תִּתֵּ֧ןvattitténshe gave [it]H5414ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes számἔδωκεν
-גַּםgamalsoH1571partikula, megerősítőκαὶ
+תִּתֵּ֧ןvattitténshe gave [it]H5414ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám ἔδωκεν
+גַּםgamalsoH1571partikula, megerősítő καὶ
 לְtoH9005elöljáróτῷ
-אִישָׁ֛leísáhhusbandH0376főnév, köznév, hímnem, egyes szám, constructusἀνδρὶ
+אִישָׁ֛leísáhhusbandH0376főnév, köznév, hímnem, egyes szám, constructus ἀνδρὶ
 הּherH9024toldalék, névmási, harmadik személy, nőnem, egyes számαὐτῆς
-עִמָּ֖immáhwithH5973elöljáróμετ᾿
+עִמָּ֖immáhwithH5973elöljáró μετ᾿
 הּherH9034toldalék, névmási, harmadik személy, nőnem, egyes számαὐτῆς
 וַandH9001kötőszóκαὶ
-יֹּאכַֽלvajjóchalhe ateH0398ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes számἔφαγον
+יֹּאכַֽלvajjóchalhe ateH0398ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám ἔφαγον
 Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · LXX_OS (lxx_token): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
 ## [vers.lxx_csempe]
 Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
 A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.
-καὶG2532εἶδενG3708ἡG3588γυνὴG1135ὅτιG3754καλὸνG2570τὸG3588ξύλονG3586εἰςG1519βρῶσινG1035καὶG2532ὅτιG3754ἀρεστὸνG0701τοῖςG3588ὀφθαλμοῖςG3788ἰδεῖνG3708καὶG2532ὡραῖόνG5611ἐστινG1510τοῦG3588κατανοῆσαιG2657καὶG2532λαβοῦσαG2983τοῦG3588καρποῦG2591αὐτοῦG0846ἔφαγενG2068καὶG2532ἔδωκενG1325καὶG2532τῷG3588ἀνδρὶG0435αὐτῆςG0846μετ᾿G3326αὐτῆςG0846καὶG2532ἔφαγονG2068
+καὶG2532 εἶδενG3708 ἡG3588 γυνὴG1135 ὅτιG3754 καλὸνG2570 τὸG3588 ξύλονG3586 εἰςG1519 βρῶσινG1035 καὶG2532 ὅτιG3754 ἀρεστὸνG0701 τοῖςG3588 ὀφθαλμοῖςG3788 ἰδεῖνG3708 καὶG2532 ὡραῖόνG5611 ἐστινG1510 τοῦG3588 κατανοῆσαιG2657 καὶG2532 λαβοῦσαG2983 τοῦG3588 καρποῦG2591 αὐτοῦG0846 ἔφαγενG2068 καὶG2532 ἔδωκενG1325 καὶG2532 τῷG3588 ἀνδρὶG0435 αὐτῆςG0846 μετ᾿G3326 αὐτῆςG0846 καὶG2532 ἔφαγονG2068
 Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
 ## [vers.par]
 Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet

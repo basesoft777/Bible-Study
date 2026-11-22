@@ -6,42 +6,42 @@ PaRDeS olvasó
 Károli 1908 · 1Móz 4 ▾
 ▸ Biblia és könyv kiválasztása
 ▸ Biblia
-▸ Magyar Károli 1908alapnézet · StrongModernizált KároliStrong
-▸ Eredeti nyelv Héber ÓszövetségTAHOT · StrongGörög ÚjszövetségTAGNT · StrongSeptuagintagörög Ószövetség · Strong
+▸ Magyar Károli 1908alapnézet · Strong Modernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · Strong Görög ÚjszövetségTAGNT · Strong Septuagintagörög Ószövetség · Strong
 ▸ Angol KJVStrong
 ▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
 ▸ Könyv
 ▸ Törvény
-▸ 1Móz2Móz3Móz4Móz5Móz
+▸ 1Móz 2Móz 3Móz 4Móz 5Móz
 ▸ Történeti könyvek
-▸ JózsBírRuth1Sám2Sám1Kir2Kir1Krón2KrónEzsdNehEszt
+▸ Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt
 ▸ Költői és bölcsességi könyvek
-▸ JóbZsoltPéldPrédÉn
+▸ Jób Zsolt Péld Préd Én
 ▸ Nagypróféták
-▸ ÉzsJerSirEzDán
+▸ Ézs Jer Sir Ez Dán
 ▸ Kispróféták
-▸ HósJóelÁmósAbdJónMikNáhHabSofHagZakMal
+▸ Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal
 ▸ Evangéliumok és Apostolok Cselekedetei
-▸ MtMkLukJánApCsel
+▸ Mt Mk Luk Ján ApCsel
 ▸ Pál levelei
-▸ Róm1Kor2KorGalEfFilKol1Thessz2Thessz1Tim2TimTitFilem
+▸ Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem
 ▸ Általános levelek
-▸ ZsidJak1Pét2Pét1Ján2Ján3JánJúd
+▸ Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd
 ▸ Jelenések
 ▸ Jel
 ▸ Mózes első könyve · fejezetek
-▸ 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950
+▸ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
 ⌕
-‹›
+‹ ›
 Aa
 ▸ Betűméret 100%
-▸ A−A+
+▸ A− A+
 ▸ Sorköz
-▸ szűkközepestág
+▸ szűk közepes tág
 ▸ Betűcsalád
-▸ Source SerifNoto SerifIBM Plex Sans
+▸ Source Serif Noto Serif IBM Plex Sans
 ▸ Sorszélesség
-▸ keskenyközepesszélesteljes
+▸ keskeny közepes széles teljes
 ▸ Versenként új sor Alapértékek
 Strong számokStrong
 Tanulmányok jelölése
@@ -54,7 +54,7 @@ Tanulmányok jelölése
 ⌕
 Mózes első könyve 4
 ← 3. fejezet Mózes első könyve 5. fejezet → Forrás és számlálók
-1Azután ismeré Ádám az ő feleségét Évát, a ki fogad vala méhében és szűli vala Kaint, és monda: Nyertem férfiat az Úrtól. 2És ismét szűlé annak atyjafiát, Ábelt. És Ábel juhok pásztora lőn, Kain pedig földmívelő. 3Lőn pedig idő multával, hogy Kain ajándékot vive az Úrnak a föld gyümölcséből. 4És Ábel is vive az ő juhainak első fajzásából és azoknak kövérségéből. És tekinte az Úr Ábelre és az ő ajándékára. 5Kainra pedig és az ő ajándékára nem tekinte, miért is Kain haragra gerjede és fejét lecsüggeszté. 6És monda az Úr Kainnak: Miért gerjedtél haragra? és miért csüggesztéd le fejedet? 7Hiszen, ha jól cselekszel, emelt fővel járhatsz; ha pedig nem jól cselekszel, a bűn az ajtó előtt leselkedik, és reád van vágyódása; de te uralkodjál rajta. 8És szól s beszél vala Kain Ábellel, az ő atyjafiával. És lőn, mikor a mezőn valának, támada Kain Ábelre az ő atyjafiára, és megölé őt. 9És monda az Úr Kainnak: Hol van Ábel a te atyádfia? Ő pedig monda: Nem tudom, avagy őrizője vagyok-é én az én atyámfiának? 10Monda pedig az Úr: Mit cselekedtél? A te atyádfiának vére kiált én hozzám a földről. 11Mostan azért átkozott légy e földön, mely megnyitotta az ő száját, hogy befogadja a te atyádfiának vérét, a te kezedből. 12Mikor a földet míveled, ne adja az többé néked az ő termő erejét, bujdosó és vándorló légy a földön. 13Akkor monda Kain az Úrnak: Nagyobb az én büntetésem, hogysem elhordozhatnám. 14Ímé elűzöl engem ma e földnek színéről, és a te színed elől el kell rejtőznöm; bujdosó és vándorló leszek a földön, és akkor akárki talál reám, megöl engemet. 15És monda néki az Úr: Sőt inkább, aki megöléndi Kaint, hétszerte megbüntettetik. És megbélyegzé az Úr Kaint, hogy senki meg ne ölje, a ki rátalál. 16És elméne Kain az Úr színe elől, és letelepedék Nód földén, Édentől keletre. 17És ismeré Kain az ő feleségét, az pedig fogada méhében, és szűlé Hánókhot. És építe várost, és nevezé azt az ő fiának nevéről Hánókhnak. 18És lett Hánókhnak fia, Irád: És Irád nemzé Mekhujáelt: Mekhujáel pedig nemzé Methusáelt, és Methusáel nemzé Lámekhet. 19Lámekh pedig vett magának két feleséget: az egyiknek neve Háda, a másiknak neve Czilla. 20És szűlé Háda Jábált. Ez volt atyjok a sátorban-lakóknak, és a barompásztoroknak. 21Az ő atyjafiának pedig Jubál vala neve: ez volt atyja minden lantosnak és síposnak. 22Czilla pedig szűlé Tubálkaint, mindenféle réz- és vasszerszámok kovácsolóját: és Tubálkain hugát, Nahamát. 23Akkor monda Lámekh az ő feleségeinek: Oh Háda és Czilla, hallgassatok szómra, Lámekh feleségei, halljátok beszédem: embert öltem, mert megsebzett; ifjat öltem, mert megütött. 24Ha hétszeres a bosszú Kainért, hetvenhétszeres az Lámekhért. 25Ádám pedig ismét ismeré az ő feleségét, és az szűle néki fiat, és nevezé annak nevét Séthnek: mert adott úgymond, énnékem az Isten más magot Ábel helyett, kit megöle Kain. 26Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.
+1Azután ismeré Ádám az ő feleségét Évát, a ki fogad vala méhében és szűli vala Kaint, és monda: Nyertem férfiat az Úrtól. 2És ismét szűlé annak atyjafiát, Ábelt. És Ábel juhok pásztora lőn, Kain pedig földmívelő. 3 Lőn pedig idő multával, hogy Kain ajándékot vive az Úrnak a föld gyümölcséből. 4És Ábel is vive az ő juhainak első fajzásából és azoknak kövérségéből. És tekinte az Úr Ábelre és az ő ajándékára. 5 Kainra pedig és az ő ajándékára nem tekinte, miért is Kain haragra gerjede és fejét lecsüggeszté. 6És monda az Úr Kainnak: Miért gerjedtél haragra? és miért csüggesztéd le fejedet? 7Hiszen, ha jól cselekszel, emelt fővel járhatsz; ha pedig nem jól cselekszel, a bűn az ajtó előtt leselkedik, és reád van vágyódása; de te uralkodjál rajta. 8És szól s beszél vala Kain Ábellel, az ő atyjafiával. És lőn, mikor a mezőn valának, támada Kain Ábelre az ő atyjafiára, és megölé őt. 9És monda az Úr Kainnak: Hol van Ábel a te atyádfia? Ő pedig monda: Nem tudom, avagy őrizője vagyok-é én az én atyámfiának? 10 Monda pedig az Úr: Mit cselekedtél? A te atyádfiának vére kiált én hozzám a földről. 11 Mostan azért átkozott légy e földön, mely megnyitotta az ő száját, hogy befogadja a te atyádfiának vérét, a te kezedből. 12Mikor a földet míveled, ne adja az többé néked az ő termő erejét, bujdosó és vándorló légy a földön. 13Akkor monda Kain az Úrnak: Nagyobb az én büntetésem, hogysem elhordozhatnám. 14 Ímé elűzöl engem ma e földnek színéről, és a te színed elől el kell rejtőznöm; bujdosó és vándorló leszek a földön, és akkor akárki talál reám, megöl engemet. 15És monda néki az Úr: Sőt inkább, aki megöléndi Kaint, hétszerte megbüntettetik. És megbélyegzé az Úr Kaint, hogy senki meg ne ölje, a ki rátalál. 16És elméne Kain az Úr színe elől, és letelepedék Nód földén, Édentől keletre. 17És ismeré Kain az ő feleségét, az pedig fogada méhében, és szűlé Hánókhot. És építe várost, és nevezé azt az ő fiának nevéről Hánókhnak. 18És lett Hánókhnak fia, Irád: És Irád nemzé Mekhujáelt: Mekhujáel pedig nemzé Methusáelt, és Methusáel nemzé Lámekhet. 19 Lámekh pedig vett magának két feleséget: az egyiknek neve Háda, a másiknak neve Czilla. 20És szűlé Háda Jábált. Ez volt atyjok a sátorban- lakóknak, és a barompásztoroknak. 21Az ő atyjafiának pedig Jubál vala neve: ez volt atyja minden lantosnak és síposnak. 22 Czilla pedig szűlé Tubálkaint, mindenféle réz- és vasszerszámok kovácsolóját: és Tubálkain hugát, Nahamát. 23Akkor monda Lámekh az ő feleségeinek: Oh Háda és Czilla, hallgassatok szómra, Lámekh feleségei, halljátok beszédem: embert öltem, mert megsebzett; ifjat öltem, mert megütött. 24Ha hétszeres a bosszú Kainért, hetvenhétszeres az Lámekhért. 25 Ádám pedig ismét ismeré az ő feleségét, és az szűle néki fiat, és nevezé annak nevét Séthnek: mert adott úgymond, énnékem az Isten más magot Ábel helyett, kit megöle Kain. 26 Séthnek is született fia, és nevezé annak nevét Énósnak. Akkor kezdték segítségül hívni az Úrnak nevét.
 1Móz 4:7 Hiszen, ha jól cselekszel, emelt fővel járhatsz; ha pedig…
 ⤢ ✕
 1Móz 4:7
@@ -68,16 +68,16 @@ Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a tábláza
 Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.
 הֲ¿H9008partikula, kérdőοὐκ
 ל֤וֹאhalónotH3808partikula, tagadóLXX: —
-אִםimifH0518kötőszóἐὰν
-תֵּיטִיב֙tétívyou will do wellH3190ige, hifil, imperfectum (yiqtol), második személy, hímnem, egyes számὀρθῶς
+אִםimifH0518kötőszó ἐὰν
+תֵּיטִיב֙tétívyou will do wellH3190ige, hifil, imperfectum (yiqtol), második személy, hímnem, egyes szám ὀρθῶς
 שְׂאֵ֔תszeétlifting upH7613LXX: —
 וְandH9002kötőszóLXX: —
 אִם֙veimifH0518kötőszó"{..^δὲ}"
 לֹ֣אlónotH3808partikula, tagadóLXX: —
-תֵיטִ֔יבtétívyou will do wellH3190ige, hifil, imperfectum (yiqtol), második személy, hímnem, egyes számὀρθῶς
+תֵיטִ֔יבtétívyou will do wellH3190ige, hifil, imperfectum (yiqtol), második személy, hímnem, egyes szám ὀρθῶς
 לַto theH9005elöljáró, határozott névelőLXX: —
 פֶּ֖תַחlappetachdoorH6607főnév, köznév, hímnem, egyes szám, abszolútδιέλῃς
-חַטָּ֣אתchattátsinH2403főnév, köznév, nőnem, egyes szám, abszolútἥμαρτες
+חַטָּ֣אתchattátsinH2403főnév, köznév, nőnem, egyes szám, abszolút ἥμαρτες
 רֹבֵ֑ץróvéc[is] crouchingH7257ige, qal, participium, cselekvő, hímnem, egyes szám, abszolútἡσύχασον
 וְandH9002partikula, határozott névelőLXX: —
 אֵלֶ֙יveéléchá[is] toH0413elöljáróπρὸς
@@ -85,15 +85,15 @@ Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, i
 תְּשׁ֣וּקָת֔tesúkátódesireH8669főnév, köznév, nőnem, egyes szám, constructusLXX: —
 וֹitsH9023toldalék, névmási, második személy, hímnem, egyes számσὲ
 וְandH9002toldalék, névmási, harmadik személy, hímnem, egyes számαὐτοῦ
-אַתָּ֖הveattáyouH0859névmás, személyes, második személy, hímnem, egyes számσὺ
-תִּמְשָׁלtimsályou will ruleH4910ige, qal, imperfectum (yiqtol), második személy, hímnem, egyes számἄρξεις
+אַתָּ֖הveattáyouH0859névmás, személyes, második személy, hímnem, egyes szám σὺ
+תִּמְשָׁלtimsályou will ruleH4910ige, qal, imperfectum (yiqtol), második személy, hímnem, egyes szám ἄρξεις
 בּֽover <the>H9003kötőszóκαὶ
 וֹitH9033elöljáróLXX: —
 Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · LXX_OS (lxx_token): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
 ## [vers.lxx_csempe]
 Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
 A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.
-οὐκG3756ἐὰνG1437ὀρθῶςG3723προσενέγκῃςG4374ὀρθῶςG3723δὲG1161μὴG3361διέλῃςG1244ἥμαρτεςG0264ἡσύχασονG2270πρὸςG4314σὲG4771ἡG3588ἀποστροφὴnincs StrongαὐτοῦG0846καὶG2532σὺG4771ἄρξειςG0757αὐτοῦG0846
+οὐκG3756 ἐὰνG1437 ὀρθῶςG3723 προσενέγκῃςG4374 ὀρθῶςG3723 δὲG1161 μὴG3361 διέλῃςG1244 ἥμαρτεςG0264 ἡσύχασονG2270 πρὸςG4314 σὲG4771 ἡG3588ἀποστροφὴnincs StrongαὐτοῦG0846 καὶG2532 σὺG4771 ἄρξειςG0757 αὐτοῦG0846
 Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
 ## [vers.par]
 Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet

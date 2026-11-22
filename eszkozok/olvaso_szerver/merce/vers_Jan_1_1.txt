@@ -6,42 +6,42 @@ PaRDeS olvasó
 Károli 1908 · Ján 1 ▾
 ▸ Biblia és könyv kiválasztása
 ▸ Biblia
-▸ Magyar Károli 1908alapnézet · StrongModernizált KároliStrong
-▸ Eredeti nyelv Héber ÓszövetségTAHOT · StrongGörög ÚjszövetségTAGNT · StrongSeptuagintagörög Ószövetség · Strong
+▸ Magyar Károli 1908alapnézet · Strong Modernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · Strong Görög ÚjszövetségTAGNT · Strong Septuagintagörög Ószövetség · Strong
 ▸ Angol KJVStrong
 ▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
 ▸ Könyv
 ▸ Törvény
-▸ 1Móz2Móz3Móz4Móz5Móz
+▸ 1Móz 2Móz 3Móz 4Móz 5Móz
 ▸ Történeti könyvek
-▸ JózsBírRuth1Sám2Sám1Kir2Kir1Krón2KrónEzsdNehEszt
+▸ Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt
 ▸ Költői és bölcsességi könyvek
-▸ JóbZsoltPéldPrédÉn
+▸ Jób Zsolt Péld Préd Én
 ▸ Nagypróféták
-▸ ÉzsJerSirEzDán
+▸ Ézs Jer Sir Ez Dán
 ▸ Kispróféták
-▸ HósJóelÁmósAbdJónMikNáhHabSofHagZakMal
+▸ Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal
 ▸ Evangéliumok és Apostolok Cselekedetei
-▸ MtMkLukJánApCsel
+▸ Mt Mk Luk Ján ApCsel
 ▸ Pál levelei
-▸ Róm1Kor2KorGalEfFilKol1Thessz2Thessz1Tim2TimTitFilem
+▸ Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem
 ▸ Általános levelek
-▸ ZsidJak1Pét2Pét1Ján2Ján3JánJúd
+▸ Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd
 ▸ Jelenések
 ▸ Jel
 ▸ János evangéliuma · fejezetek
-▸ 123456789101112131415161718192021
+▸ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21
 ⌕
 ›
 Aa
 ▸ Betűméret 100%
-▸ A−A+
+▸ A− A+
 ▸ Sorköz
-▸ szűkközepestág
+▸ szűk közepes tág
 ▸ Betűcsalád
-▸ Source SerifNoto SerifIBM Plex Sans
+▸ Source Serif Noto Serif IBM Plex Sans
 ▸ Sorszélesség
-▸ keskenyközepesszélesteljes
+▸ keskeny közepes széles teljes
 ▸ Versenként új sor Alapértékek
 Strong számokStrong
 ⚙
@@ -53,7 +53,7 @@ Strong számokStrong
 ⌕
 János evangéliuma 1
 János evangéliuma 2. fejezet → Forrás és számlálók
-1Kezdetben vala az Íge, és az Íge vala az Istennél, és Isten vala az Íge. 2Ez kezdetben az Istennél vala. 3Minden ő általa lett és nála nélkül semmi sem lett, a mi lett. 4Ő benne vala az élet, és az élet vala az emberek világossága; 5És a világosság a sötétségben fénylik, de a sötétség nem fogadta be azt. 6Vala egy Istentől küldött ember, kinek neve János. 7Ez jött tanúbizonyságul, hogy bizonyságot tegyen a világosságról, hogy mindenki higyjen ő általa. 8Nem ő vala a világosság, hanem jött, hogy bizonyságot tegyen a világosságról. 9Az igazi világosság eljött volt már a világba, a mely megvilágosít minden embert. 10A világban volt és a világ általa lett, de a világ nem ismerte meg őt. 11Az övéi közé jöve, és az övéi nem fogadák be őt. 12Valakik pedig befogadák őt, hatalmat ada azoknak, hogy Isten fiaivá legyenek, azoknak, a kik az ő nevében hisznek; 13A kik nem vérből, sem a testnek akaratából, sem a férfiúnak indulatjából, hanem Istentől születtek. 14És az Íge testté lett és lakozék mi közöttünk (és láttuk az ő dicsőségét, mint az Atya egyszülöttjének dicsőségét), a ki teljes vala kegyelemmel és igazsággal. 15János bizonyságot tett ő róla, és kiáltott, mondván: Ez vala, a kiről mondám: A ki utánam jő, előttem lett, mert előbb volt nálamnál. 16És az ő teljességéből vettünk mindnyájan kegyelmet is kegyelemért. 17Mert a törvény Mózes által adatott, a kegyelem pedig és az igazság Jézus Krisztus által lett. 18Az Istent soha senki nem látta; az egyszülött Fiú, a ki az Atya kebelében van, az jelentette ki őt. 19És ez a János bizonyságtétele, a mikor a zsidók papokat és Lévitákat küldöttek Jeruzsálemből, hogy megkérdezzék őt: Kicsoda vagy te? 20És megvallá és nem tagadá; és megvallá, hogy: Nem én vagyok a Krisztus. 21És kérdezék őt: Kicsoda tehát? Illés vagy-é te? És monda: Nem vagyok. A próféta vagy-é te? És ő felele: Nem. 22Mondának azért néki: Kicsoda vagy? Hogy megfelelhessünk azoknak, a kik minket elküldöttek: Mit mondasz magad felől? 23Monda: Én kiáltó szó vagyok a pusztában. Egyengessétek az Úrnak útját, a mint megmondotta Ésaiás próféta. 24És a küldöttek a farizeusok közül valók voltak: 25És megkérdék őt és mondának néki: Miért keresztelsz tehát, ha te nem vagy a Krisztus, sem Illés, sem a próféta? 26Felele nékik János, mondván: Én vízzel keresztelek; de köztetek van, a kit ti nem ismertek. 27Ő az, a ki utánam jő, a ki előttem lett, a kinek én nem vagyok méltó, hogy saruja szíjját megoldjam. 28Ezek Béthabarában lettek, a Jordánon túl, a hol János keresztel vala. 29Másnap látá János Jézust ő hozzá menni, és monda: Ímé az Istennek ama báránya, a ki elveszi a világ bűneit! 30Ez az, a kiről én ezt mondám: Én utánam jő egy férfiú, a ki előttem lett, mert előbb volt nálamnál. 31És én nem ismertem őt; de hogy megjelentessék Izráelnek, azért jöttem én, a ki vízzel keresztelek. 32És bizonyságot tőn János, mondván: Láttam a Lelket leszállani az égből, mint egy galambot; és megnyugovék ő rajta. 33És én nem ismertem őt; de a ki elkülde engem, hogy vízzel kereszteljek, az mondá nékem: A kire látod a Lelket leszállani és rajta megnyugodni, az az, a ki keresztel Szent Lélekkel. 34És én láttam, és bizonyságot tettem, hogy ez az Isten Fia. 35Másnap ismét ott állt vala János és kettő az ő tanítványai közül; 36És ránézvén Jézusra, a mint ott jár vala, monda: Ímé az Isten Báránya! 37És hallá őt a két tanítvány, a mint szól vala, és követék Jézust. 38Jézus pedig hátrafordulván és látván, hogy követik azok, monda nékik: 39Mit kerestek? Azok pedig mondának néki: Rabbi, (a mi megmagyarázva azt teszi: Mester) hol lakol? 40Monda nékik: Jőjjetek és lássátok meg. Elmenének és megláták, hol lakik; és nála maradának azon a napon: vala pedig körülbelül tíz óra. 41A kettő közül, a kik Jánostól ezt hallották és őt követték vala, András volt az egyik, a Simon Péter testvére. 42Találkozék ez először a maga testvérével, Simonnal, és monda néki: Megtaláltuk a Messiást (a mi megmagyarázva azt teszi: Krisztus); 43És vezeté őt Jézushoz. Jézus pedig reá tekintvén, monda: Te Simon vagy, a Jóna fia; te Kéfásnak fogsz hivatni (a mi megmagyarázva: Kőszikla). 44A következő napon Galileába akart menni Jézus; és találkozék Fileppel, és monda néki: Kövess engem! 45Filep pedig Bethsaidából, az András és Péter városából való volt. 46Találkozék Filep Nátánaellel, és monda néki: A ki felől írt Mózes a törvényben, és a próféták, megtaláltuk a názáreti Jézust, Józsefnek fiát. 47És monda néki Nátánael: Názáretből támadhat-é valami jó? Monda néki Filep: Jer és lásd meg! 48Látá Jézus Nátánaelt ő hozzá menni, és monda ő felőle: Ímé egy igazán Izráelita, a kiben hamisság nincsen. 49Monda néki Nátánael: Honnan ismersz engem? Felele Jézus és monda néki: Mielőtt hítt téged Filep, láttalak téged, a mint a fügefa alatt voltál. 50Felele Nátánael és monda néki: Rabbi, te vagy az Isten Fia, te vagy az Izráel Királya! 51Felele Jézus és monda néki: Hogy azt mondám néked: láttalak a fügefa alatt, hiszel? Nagyobbakat látsz majd ezeknél. És monda néki: Bizony, bizony mondom néktek: Mostantól fogva meglátjátok a megnyilt eget, és az Isten angyalait, a mint felszállnak és leszállnak az ember Fiára.
+1 Kezdetben vala az Íge, és az Íge vala az Istennél, és Isten vala az Íge. 2Ez kezdetben az Istennél vala. 3 Minden ő általa lett és nála nélkül semmi sem lett, a mi lett. 4Ő benne vala az élet, és az élet vala az emberek világossága; 5És a világosság a sötétségben fénylik, de a sötétség nem fogadta be azt. 6 Vala egy Istentől küldött ember, kinek neve János. 7Ez jött tanúbizonyságul, hogy bizonyságot tegyen a világosságról, hogy mindenki higyjen ő általa. 8Nem ő vala a világosság, hanem jött, hogy bizonyságot tegyen a világosságról. 9Az igazi világosság eljött volt már a világba, a mely megvilágosít minden embert. 10A világban volt és a világ általa lett, de a világ nem ismerte meg őt. 11Az övéi közé jöve, és az övéi nem fogadák be őt. 12 Valakik pedig befogadák őt, hatalmat ada azoknak, hogy Isten fiaivá legyenek, azoknak, a kik az ő nevében hisznek; 13A kik nem vérből, sem a testnek akaratából, sem a férfiúnak indulatjából, hanem Istentől születtek. 14És az Íge testté lett és lakozék mi közöttünk (és láttuk az ő dicsőségét, mint az Atya egyszülöttjének dicsőségét), a ki teljes vala kegyelemmel és igazsággal. 15 János bizonyságot tett ő róla, és kiáltott, mondván: Ez vala, a kiről mondám: A ki utánam jő, előttem lett, mert előbb volt nálamnál. 16És az ő teljességéből vettünk mindnyájan kegyelmet is kegyelemért. 17Mert a törvény Mózes által adatott, a kegyelem pedig és az igazság Jézus Krisztus által lett. 18Az Istent soha senki nem látta; az egyszülött Fiú, a ki az Atya kebelében van, az jelentette ki őt. 19És ez a János bizonyságtétele, a mikor a zsidók papokat és Lévitákat küldöttek Jeruzsálemből, hogy megkérdezzék őt: Kicsoda vagy te? 20És megvallá és nem tagadá; és megvallá, hogy: Nem én vagyok a Krisztus. 21És kérdezék őt: Kicsoda tehát? Illés vagy-é te? És monda: Nem vagyok. A próféta vagy-é te? És ő felele: Nem. 22 Mondának azért néki: Kicsoda vagy? Hogy megfelelhessünk azoknak, a kik minket elküldöttek: Mit mondasz magad felől? 23 Monda: Én kiáltó szó vagyok a pusztában. Egyengessétek az Úrnak útját, a mint megmondotta Ésaiás próféta. 24És a küldöttek a farizeusok közül valók voltak: 25És megkérdék őt és mondának néki: Miért keresztelsz tehát, ha te nem vagy a Krisztus, sem Illés, sem a próféta? 26 Felele nékik János, mondván: Én vízzel keresztelek; de köztetek van, a kit ti nem ismertek. 27Ő az, a ki utánam jő, a ki előttem lett, a kinek én nem vagyok méltó, hogy saruja szíjját megoldjam. 28Ezek Béthabarában lettek, a Jordánon túl, a hol János keresztel vala. 29 Másnap látá János Jézust ő hozzá menni, és monda: Ímé az Istennek ama báránya, a ki elveszi a világ bűneit! 30Ez az, a kiről én ezt mondám: Én utánam jő egy férfiú, a ki előttem lett, mert előbb volt nálamnál. 31 És én nem ismertem őt; de hogy megjelentessék Izráelnek, azért jöttem én, a ki vízzel keresztelek. 32És bizonyságot tőn János, mondván: Láttam a Lelket leszállani az égből, mint egy galambot; és megnyugovék ő rajta. 33 És én nem ismertem őt; de a ki elkülde engem, hogy vízzel kereszteljek, az mondá nékem: A kire látod a Lelket leszállani és rajta megnyugodni, az az, a ki keresztel Szent Lélekkel. 34 És én láttam, és bizonyságot tettem, hogy ez az Isten Fia. 35 Másnap ismét ott állt vala János és kettő az ő tanítványai közül; 36És ránézvén Jézusra, a mint ott jár vala, monda: Ímé az Isten Báránya! 37És hallá őt a két tanítvány, a mint szól vala, és követék Jézust. 38Jézus pedig hátrafordulván és látván, hogy követik azok, monda nékik: 39Mit kerestek? Azok pedig mondának néki: Rabbi, (a mi megmagyarázva azt teszi: Mester) hol lakol? 40Monda nékik: Jőjjetek és lássátok meg. Elmenének és megláták, hol lakik; és nála maradának azon a napon: vala pedig körülbelül tíz óra. 41A kettő közül, a kik Jánostól ezt hallották és őt követték vala, András volt az egyik, a Simon Péter testvére. 42Találkozék ez először a maga testvérével, Simonnal, és monda néki: Megtaláltuk a Messiást (a mi megmagyarázva azt teszi: Krisztus); 43És vezeté őt Jézushoz. Jézus pedig reá tekintvén, monda: Te Simon vagy, a Jóna fia; te Kéfásnak fogsz hivatni (a mi megmagyarázva: Kőszikla). 44A következő napon Galileába akart menni Jézus; és találkozék Fileppel, és monda néki: Kövess engem! 45Filep pedig Bethsaidából, az András és Péter városából való volt. 46Találkozék Filep Nátánaellel, és monda néki: A ki felől írt Mózes a törvényben, és a próféták, megtaláltuk a názáreti Jézust, Józsefnek fiát. 47És monda néki Nátánael: Názáretből támadhat-é valami jó? Monda néki Filep: Jer és lásd meg! 48Látá Jézus Nátánaelt ő hozzá menni, és monda ő felőle: Ímé egy igazán Izráelita, a kiben hamisság nincsen. 49Monda néki Nátánael: Honnan ismersz engem? Felele Jézus és monda néki: Mielőtt hítt téged Filep, láttalak téged, a mint a fügefa alatt voltál. 50Felele Nátánael és monda néki: Rabbi, te vagy az Isten Fia, te vagy az Izráel Királya! 51Felele Jézus és monda néki: Hogy azt mondám néked: láttalak a fügefa alatt, hiszel? Nagyobbakat látsz majd ezeknél. És monda néki: Bizony, bizony mondom néktek: Mostantól fogva meglátjátok a megnyilt eget, és az Isten angyalait, a mint felszállnak és leszállnak az ember Fiára.
 Ján 1:1 Kezdetben vala az Íge, és az Íge vala az Istennél, és Isten…
 ⤢ ✕
 Ján 1:1

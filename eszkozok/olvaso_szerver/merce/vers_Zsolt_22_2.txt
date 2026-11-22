@@ -6,42 +6,42 @@ PaRDeS olvasó
 Károli 1908 · Zsolt 22 ▾
 ▸ Biblia és könyv kiválasztása
 ▸ Biblia
-▸ Magyar Károli 1908alapnézet · StrongModernizált KároliStrong
-▸ Eredeti nyelv Héber ÓszövetségTAHOT · StrongGörög ÚjszövetségTAGNT · StrongSeptuagintagörög Ószövetség · Strong
+▸ Magyar Károli 1908alapnézet · Strong Modernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · Strong Görög ÚjszövetségTAGNT · Strong Septuagintagörög Ószövetség · Strong
 ▸ Angol KJVStrong
 ▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
 ▸ Könyv
 ▸ Törvény
-▸ 1Móz2Móz3Móz4Móz5Móz
+▸ 1Móz 2Móz 3Móz 4Móz 5Móz
 ▸ Történeti könyvek
-▸ JózsBírRuth1Sám2Sám1Kir2Kir1Krón2KrónEzsdNehEszt
+▸ Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt
 ▸ Költői és bölcsességi könyvek
-▸ JóbZsoltPéldPrédÉn
+▸ Jób Zsolt Péld Préd Én
 ▸ Nagypróféták
-▸ ÉzsJerSirEzDán
+▸ Ézs Jer Sir Ez Dán
 ▸ Kispróféták
-▸ HósJóelÁmósAbdJónMikNáhHabSofHagZakMal
+▸ Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal
 ▸ Evangéliumok és Apostolok Cselekedetei
-▸ MtMkLukJánApCsel
+▸ Mt Mk Luk Ján ApCsel
 ▸ Pál levelei
-▸ Róm1Kor2KorGalEfFilKol1Thessz2Thessz1Tim2TimTitFilem
+▸ Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem
 ▸ Általános levelek
-▸ ZsidJak1Pét2Pét1Ján2Ján3JánJúd
+▸ Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd
 ▸ Jelenések
 ▸ Jel
 ▸ Zsoltárok könyve · fejezetek
-▸ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150
+▸ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76 77 78 79 80 81 82 83 84 85 86 87 88 89 90 91 92 93 94 95 96 97 98 99 100 101 102 103 104 105 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150
 ⌕
-‹›
+‹ ›
 Aa
 ▸ Betűméret 100%
-▸ A−A+
+▸ A− A+
 ▸ Sorköz
-▸ szűkközepestág
+▸ szűk közepes tág
 ▸ Betűcsalád
-▸ Source SerifNoto SerifIBM Plex Sans
+▸ Source Serif Noto Serif IBM Plex Sans
 ▸ Sorszélesség
-▸ keskenyközepesszélesteljes
+▸ keskeny közepes széles teljes
 ▸ Versenként új sor Alapértékek
 Strong számokStrong
 ⚙
@@ -53,7 +53,7 @@ Strong számokStrong
 ⌕
 Zsoltárok könyve 22
 ← 21. fejezet Zsoltárok könyve 23. fejezet → Forrás és számlálók
-1Az éneklőmesternek az ajjelethassakhar szerint; Dávid zsoltára. 2Én Istenem, én Istenem, miért hagytál el engemet? Távol van megtartásomtól jajgatásomnak szava. 3Én Istenem, kiáltok nappal, de nem hallgatsz meg; éjjel is és nincs nyugodalmam. 4Pedig te szent vagy, a ki Izráel dícséretei között lakozol. 5Benned bíztak atyáink; bíztak és te megszabadítottad őket. 6Hozzád kiáltottak és megmenekültek; benned bíztak és nem szégyenültek meg. 7De én féreg vagyok s nem férfiú; embereknek csúfja és a nép útálata. 8A kik engem látnak, mind csúfolkodnak rajtam, félrehúzzák ajkaikat és hajtogatják fejöket: 9Az Úrra bízta magát, mentse meg őt; szabadítsa meg őt, hiszen gyönyörködött benne! 10Mert te hoztál ki engem az anyám méhéből, és biztattál engem anyámnak emlőin. 11Születésem óta a te gondod voltam; anyám méhétől fogva te voltál Istenem. 12Ne légy messze tőlem, mert közel a nyomorúság, és nincs, a ki segítsen. 13Tulkok sokasága kerített be engem, körülfogtak engem Básán bikái. 14Feltátották rám szájokat, mint a ragadozó és ordító oroszlán. 15Mint a víz, úgy kiöntettem; csontjaim mind széthullottak; szívem olyan lett, mint a viasz, megolvadt belső részeim között. 16Erőm kiszáradt, mint cserép, nyelvem ínyemhez tapadt, és a halál porába fektetsz engemet. 17Mert ebek vettek körül engem, a gonoszok serege körülfogott; átlyukasztották kezeimet és lábaimat. 18Megszámlálhatnám minden csontomat, ők pedig csak néznek s bámulnak rám. 19Megosztoznak ruháimon, és köntösömre sorsot vetnek. 20De te, Uram, ne légy messze tőlem; én erősségem, siess segítségemre. 21Szabadítsd meg lelkemet a kardtól, s az én egyetlenemet a kutyák körmeiből. 22Ments meg engem az oroszlán torkából, és a bivalyok szarvai közül hallgass meg engem. 23Hadd hirdessem nevedet atyámfiainak, és dicsérjelek téged a gyülekezetben. 24Ti, a kik félitek az Urat, dicsérjétek őt! Jákób minden ivadékai dicsőítsétek őt, és féljétek őt Izráel minden magzata! 25Mert nem veti meg és nem útálja meg a szegény nyomorúságát; és nem rejti el az ő orczáját előle, és mikor kiált hozzá, meghallgatja. 26Felőled lesz dicséretem a nagy gyülekezetben. Az én fogadásaimat megadom azok előtt, a kik félik őt. 27Esznek a nyomorultak és megelégesznek, dicsérik az Urat, a kik őt keresik. Éljen szívetek örökké! 28Megemlékeznek és megtérnek az Úrhoz a föld minden határai, és leborul előtted a pogányok minden nemzetsége. 29Mert az Úré a királyi hatalom, uralkodik a pogányokon is. 30Esznek és leborulnak a föld gazdagai mind; ő előtte hajtanak térdet, a kik a porba hullanak, és a ki életben nem tarthatja lelkét. 31Őt szolgálják a fiak, az Úrról beszélnek az utódoknak. 32Eljőnek s hirdetik az ő igazságát az ő utánok való népnek, hogy ezt cselekedte!
+1Az éneklőmesternek az ajjelethassakhar szerint; Dávid zsoltára. 2Én Istenem, én Istenem, miért hagytál el engemet? Távol van megtartásomtól jajgatásomnak szava. 3Én Istenem, kiáltok nappal, de nem hallgatsz meg; éjjel is és nincs nyugodalmam. 4Pedig te szent vagy, a ki Izráel dícséretei között lakozol. 5Benned bíztak atyáink; bíztak és te megszabadítottad őket. 6Hozzád kiáltottak és megmenekültek; benned bíztak és nem szégyenültek meg. 7De én féreg vagyok s nem férfiú; embereknek csúfja és a nép útálata. 8A kik engem látnak, mind csúfolkodnak rajtam, félrehúzzák ajkaikat és hajtogatják fejöket: 9Az Úrra bízta magát, mentse meg őt; szabadítsa meg őt, hiszen gyönyörködött benne! 10Mert te hoztál ki engem az anyám méhéből, és biztattál engem anyámnak emlőin. 11 Születésem óta a te gondod voltam; anyám méhétől fogva te voltál Istenem. 12 Ne légy messze tőlem, mert közel a nyomorúság, és nincs, a ki segítsen. 13 Tulkok sokasága kerített be engem, körülfogtak engem Básán bikái. 14 Feltátották rám szájokat, mint a ragadozó és ordító oroszlán. 15Mint a víz, úgy kiöntettem; csontjaim mind széthullottak; szívem olyan lett, mint a viasz, megolvadt belső részeim között. 16 Erőm kiszáradt, mint cserép, nyelvem ínyemhez tapadt, és a halál porába fektetsz engemet. 17Mert ebek vettek körül engem, a gonoszok serege körülfogott; átlyukasztották kezeimet és lábaimat. 18 Megszámlálhatnám minden csontomat, ők pedig csak néznek s bámulnak rám. 19 Megosztoznak ruháimon, és köntösömre sorsot vetnek. 20De te, Uram, ne légy messze tőlem; én erősségem, siess segítségemre. 21 Szabadítsd meg lelkemet a kardtól, s az én egyetlenemet a kutyák körmeiből. 22 Ments meg engem az oroszlán torkából, és a bivalyok szarvai közül hallgass meg engem. 23 Hadd hirdessem nevedet atyámfiainak, és dicsérjelek téged a gyülekezetben. 24 Ti, a kik félitek az Urat, dicsérjétek őt! Jákób minden ivadékai dicsőítsétek őt, és féljétek őt Izráel minden magzata! 25Mert nem veti meg és nem útálja meg a szegény nyomorúságát; és nem rejti el az ő orczáját előle, és mikor kiált hozzá, meghallgatja. 26 Felőled lesz dicséretem a nagy gyülekezetben. Az én fogadásaimat megadom azok előtt, a kik félik őt. 27 Esznek a nyomorultak és megelégesznek, dicsérik az Urat, a kik őt keresik. Éljen szívetek örökké! 28 Megemlékeznek és megtérnek az Úrhoz a föld minden határai, és leborul előtted a pogányok minden nemzetsége. 29Mert az Úré a királyi hatalom, uralkodik a pogányokon is. 30 Esznek és leborulnak a föld gazdagai mind; ő előtte hajtanak térdet, a kik a porba hullanak, és a ki életben nem tarthatja lelkét. 31Őt szolgálják a fiak, az Úrról beszélnek az utódoknak. 32 Eljőnek s hirdetik az ő igazságát az ő utánok való népnek, hogy ezt cselekedte!
 Zsolt 22:2 Én Istenem, én Istenem, miért hagytál el engemet? Távol van…
 ⤢ ✕
 Zsolt 22:2
@@ -65,26 +65,26 @@ Forrás és licenc: Karoli_1908 (vers): közkincs
 ## [vers.heber_csempe]
 Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
 Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.
-אֵלִ֣élíO GodH0410főnév, köznév, hímnem, egyes szám, constructusὁ
+אֵלִ֣élíO GodH0410főnév, köznév, hímnem, egyes szám, constructus ὁ
 יmyH9020toldalék, névmási, első személy, közös (ige), egyes számθεὸς
-אֵ֭לִélíGodH0410főnév, köznév, hímnem, egyes szám, constructusθεός
+אֵ֭לִélíGodH0410főnév, köznév, hímnem, egyes szám, constructus θεός
 יmyH9020toldalék, névmási, első személy, közös (ige), egyes számμου
 לָ<to>H9005elöljáróἵνα
-מָ֣הlámáwhy?H4100partikula, kérdőτί
-עֲזַבְתָּ֑azavtáníhave you forsakenH5800ige, qal, perfectum (qatal), második személy, hímnem, egyes számἐγκατέλιπές
+מָ֣הlámáwhy?H4100partikula, kérdő τί
+עֲזַבְתָּ֑azavtáníhave you forsakenH5800ige, qal, perfectum (qatal), második személy, hímnem, egyes szám ἐγκατέλιπές
 נִיmeH9030toldalék, névmási, első személy, közös (ige), egyes számμε
-רָח֥וֹקráchók[are] farH7350melléknév, melléknév, hímnem, egyes szám, abszolútμακρὰν
+רָח֥וֹקráchók[are] farH7350melléknév, melléknév, hímnem, egyes szám, abszolút μακρὰν
 מִֽ֝fromH9006elöljáróἀπὸ
-ישׁוּעָתִ֗mísúátídeliveranceH3444főnév, köznév, nőnem, egyes szám, constructusσωτηρίας
+ישׁוּעָתִ֗mísúátídeliveranceH3444főnév, köznév, nőnem, egyes szám, constructus σωτηρίας
 יmyH9020toldalék, névmási, első személy, közös (ige), egyes számμου
-דִּבְרֵ֥יdivré[the] words ofH1697főnév, köznév, hímnem, többes szám, constructusλόγοι
+דִּבְרֵ֥יdivré[the] words ofH1697főnév, köznév, hímnem, többes szám, constructus λόγοι
 שַׁאֲגָתִֽsaagátícry of distressH7581főnév, köznév, nőnem, egyes szám, constructusLXX: —
 יmyH9020toldalék, névmási, első személy, közös (ige), egyes számμου
 Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · LXX_OS (lxx_token): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
 ## [vers.lxx_csempe]
 Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
 A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.
-ὁG3588θεὸςG2316ὁG3588θεόςG2316μουG1473πρόσχεςG4337μοιG1473ἵναG2443τίG5100ἐγκατέλιπέςG1459μεG1473μακρὰνG3112ἀπὸG0575τῆςG3588σωτηρίαςG4991μουG1473οἱG3588λόγοιG3056τῶνG3588παραπτωμάτωνG3900μουG1473
+ὁG3588 θεὸςG2316 ὁG3588 θεόςG2316 μουG1473 πρόσχεςG4337 μοιG1473 ἵναG2443 τίG5100 ἐγκατέλιπέςG1459 μεG1473 μακρὰνG3112 ἀπὸG0575 τῆςG3588 σωτηρίαςG4991 μουG1473 οἱG3588 λόγοιG3056 τῶνG3588 παραπτωμάτωνG3900 μουG1473
 Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
 ## [vers.par]
 Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
