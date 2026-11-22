@@ -12,7 +12,7 @@ kovetkezo: "Indítható a #781 (F230) és a #232 merge-e után; első lépés: M
 munka: folyamat
 olvas: [eszkozok/lapgen/bemenet/kartya_lap.py, eszkozok/lapgen/bemenet/kartya.py, eszkozok/lexikon_general.py, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/bdb_vers_jelentes.tsv, adat/szotar_szakasz_cimke.tsv, eszkozok/bdb_rovidites.py, lexikon/HAMART-001_TUDOMANYOS.md]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szokartya.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/teszt_szokartya_egyseges.py]
-fugg: [232]
+fugg: [232, 235]
 ---
 
 # F231_SZOKARTYA_EGYSEGES_BRIEF.md — Egységes szókártya az olvasóban
