@@ -150,6 +150,22 @@ class Regresszio(unittest.TestCase):
             self._meres(jo, naplo=None)
         self.assertIn('hiányzik az új generátor olvasási naplója', '%s' % hiba.exception)
 
+    def test_hash_or_kivetel_b51(self):
+        """N240: a B51 olvasási napló-sora nem vetődik össze (a lapon használt része a szakasz-diffben mérődik),
+        a referencia-táblában álló B51-sor pedig kimondott hiba."""
+        jo = '## 2. Második\n\nA sor\nB sor\nC sor\n\n'
+        self.assertFalse(self._meres(jo, naplo=(('B03', 'adat/be.tsv', _sha('x\ty\n')),
+                                                ('B51', 'DONTESEK.md', _sha('bármi\n'))))['bukas'])
+        self.assertEqual(R.HASH_OR_KIVETEL, frozenset({'B51'}))
+        repo = _repo()
+        self.repok.append(repo)
+        ut = os.path.join(repo.gyoker, *R.REFERENCIA_TSV.split('/'))
+        with open(ut, 'a', encoding='utf-8', newline='') as f:
+            f.write('bemenet\tB51\tDONTESEK.md\t%s\t1\n' % _sha('x\n'))
+        with self.assertRaises(R.MerceHiba) as hiba:
+            R.hash_or(repo.gyoker)
+        self.assertIn('hash-őr kivétele', '%s' % hiba.exception)
+
     def test_a_naplo_fajlneve_egyezik_a_generatoreval(self):
         from lapgen import konfig
         self.assertEqual((R.NAPLO_FAJLNEV, R.NAPLO_OSZLOPOK), (konfig.NAPLO_FAJLNEV, konfig.NAPLO_OSZLOPOK))

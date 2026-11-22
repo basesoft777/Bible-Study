@@ -7,7 +7,8 @@ Mit ellenőriz:
    bemenetének hash-ét (sorvég-normalizált tartalomból). Ha egy hash eltér, a mérés megáll:
    „a mérce bemenete megváltozott”. Az új generátor olvasási naplója (`<ID>_olvasasi_naplo.tsv` a lap
    mellett) is összevetődik a táblával: ha az új generátor olyan fájlt olvasott, amely nincs a táblában,
-   vagy más tartalommal olvasta, a mérés megáll.
+   vagy más tartalommal olvasta, a mérés megáll. Kivétel a `HASH_OR_KIVETEL` (a B51, N240): a lapon használt
+   része a szakasz-diffben mérődik.
 2. **Szakasz-diff.** A lap a 2. szintű címsoroknál szakaszokra bomlik; az új lap minden szakasza
    soronként összevetődik a referencia azonos című szakaszával. `--teljes` nélkül a hiányzó szakasz
    „nincs kész” (részleges lap), `--teljes` mellett BUKÁS.
@@ -49,6 +50,12 @@ REFERENCIA_OSZLOPOK = ('tipus', 'b_id', 'utvonal', 'sha256', 'meret')
 NAPLO_FAJLNEV = '%s_olvasasi_naplo.tsv'   # egyezik a `konfig.NAPLO_FAJLNEV` értékével (teszt őrzi)
 NAPLO_OSZLOPOK = ('b_id', 'utvonal', 'sha256')
 NEM_FAJL = '-'
+# A bemenet-hash őr kivételei (N240, DT920 szerint technikai döntés, S9c): a B51 (`DONTESEK.md`, `dontesek/uj/*.md`)
+# minden számkiosztásnál és minden új ág-döntésnél megváltozik, így a fájlszintű hash minden merge után eltörne
+# (N200). A lap a B51-ből csak a hivatkozott döntések dátumát és érvényességét olvassa; ha ezek közül bármelyik
+# megváltozik, a lap szövege változik, és azt a szakasz-diff méri. A referencia-táblában ezért B51-sor nem áll, és
+# az olvasási napló B51-sorai nem vetődnek össze.
+HASH_OR_KIVETEL = frozenset({'B51'})
 
 
 class MerceHiba(Exception):
@@ -82,6 +89,9 @@ def hash_or(gyoker=GYOKER):
     elteres = []
     sorok = _tsv(os.path.join(gyoker, *REFERENCIA_TSV.split('/')), REFERENCIA_OSZLOPOK)
     for sor in sorok:
+        if sor['b_id'] in HASH_OR_KIVETEL:
+            raise MerceHiba('a referencia-táblában a hash-őr kivétele áll (%s %s): a sor törlendő (N240)'
+                            % (sor['b_id'], sor['utvonal']))
         teljes = os.path.join(gyoker, *sor['utvonal'].split('/'))
         if not os.path.isfile(teljes):
             elteres.append('%s %s (hiányzik)' % (sor['b_id'], sor['utvonal']))
@@ -104,7 +114,7 @@ def naplo_or(motivum, uj_konyvtar, gyoker=GYOKER):
                  for sor in _tsv(os.path.join(gyoker, *REFERENCIA_TSV.split('/')), REFERENCIA_OSZLOPOK)}
     elteres, db = [], 0
     for sor in _tsv(ut, NAPLO_OSZLOPOK):
-        if sor['utvonal'] == NEM_FAJL:
+        if sor['utvonal'] == NEM_FAJL or sor['b_id'] in HASH_OR_KIVETEL:
             continue
         db += 1
         if sor['utvonal'] not in rogzitett:

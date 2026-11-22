@@ -21,7 +21,7 @@ S8_GK19 = ('GK-19 (T6): nyitott, döntéssel elhalasztva (2026-11-21, „Későb
            'a mondat a JOHD-validáció után kerül a lapra')
 S3_MARADEK = ('az S3 kész, de ezt a követelményt nem teljesítette (a 6. ellenőrzés E9 tétele); a 218a végi '
               'átnézésén szeletet kap')
-HELY_EGYSEG = ('218c (a leendő #238; N-F218a, az orkesztrátor döntése, 2026-11-22): a névvel megadott szópár (1.4, '
+HELY_EGYSEG = ('218c (a leendő #238; N234, az orkesztrátor döntése (DT924), 2026-11-22): a névvel megadott szópár (1.4, '
                '`málé+chámász`) tagjait a modell nem köti Strong-számhoz; a kapu '
                'ehhez a bemeneti rétegben kér feloldást (N-tétel)')
 
