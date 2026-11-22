@@ -78,7 +78,9 @@ hányat nem lát. Ez a jelentés első sora.
 4/b. pontjának igehelyenkénti jelölt blokkjai a motívumforrás helyett; új ellenőrző logika nincs, csak új bemenet. A
 próza a rések szabályai szerint kerül egységekbe, a blokk olvasói szövegei (a `tanulmany_kinyer.py` elemzője és
 `olvasoi_szovegek`-e, importálva) a blokk saját igehelyére szólnak, mint a `kapcsolodas`-próza. A motívum-környezet
-(adatsorok, kapcsolat- és jelölt-sorok) a blokkok motívumaiból jön, vagy a `--motivum ID` (ismételhető) adja. A blokk
+(adatsorok, kapcsolat- és jelölt-sorok) egyetlen motívumé: a blokkok egyetlen motívuma, vagy a `--motivum ID`. Több
+blokkmotívumnál a `--motivum` kötelező (a számpróba alapja nem lehet az összevont darabszám; a futás motívumonként
+megy), és a más motívum blokkja kimarad. A blokk
 alaki hibáját (a kinyerő megállási okai) a jelentés fejléce sorolja; a hibás fejlécű blokk és a hibás pont kimarad,
 a hiányos blokk meglévő szövege a próbákon megy át. Ismert korlát: a
 tanulmány könyvnév nélküli helyei („(12:6)”) nem igehelyek a felismerés számára. Kimenet:
@@ -1821,8 +1823,9 @@ def ellenoriz_egysegek(mid, idk, forras, egysegek, elof_sorok, lap='', jelolt_ut
 TANULMANY_VALTOZAT = re.compile(r'^\*v\d+\b')   # a tanulmány fejléc-changelogja („*v4 — 2026.09.03 (…)*”)
 
 
-def tanulmany_egysegek(md_ut):
+def tanulmany_egysegek(md_ut, motivum=None):
     """(egységek, blokkok, blokk_hibák): az igeszakasz-tanulmány prózája és a jelölt blokkok olvasói szövegei.
+    `motivum` megadásakor a más (érvényes azonosítójú) motívum blokkja kimarad: annak szövege más lánc szavaira szól.
 
     A próza a rések szabályai szerint (`res_egysegek`): mondatonként, a címsor egyetlen Strong-száma a fejezet
     Strong-ja, a táblázat-, megjegyzés-, proveniencia- és kódblokk-sor kimarad; kimarad a fejléc-changelog és a
@@ -1863,6 +1866,8 @@ def tanulmany_egysegek(md_ut):
         for mo in mondatok(s):
             egysegek.append(Egyseg('rés:tanulmány', '%s:%d' % (nev, i), mo, fejezet_strong=fejezet_strong))
     for b in blokkok:
+        if motivum and TK.MOTIVUM_ID.match(b['motivum']) and b['motivum'] != motivum:
+            continue
         for p in b['pontok']:
             for pont, t in TK.olvasoi_szovegek({'pontok': [p]}):
                 for mo in mondatok(t.strip()):
@@ -1882,14 +1887,26 @@ def tanulmany_motivumok(blokkok):
     return ki
 
 
-def futtat_tanulmany(md_ut, motivumok=None, elof_ut=T_ELOF, jelolt_ut=None):
+class TobbMotivum(ValueError):
+    """A blokkok több motívumot neveznek meg, és nincs `--motivum`: a szám- és a kapcsolat-próba viszonyítási alapja
+    nem egyértelmű (az összevont darabszám egyik motívumé sem), ezért a futás motívumonként megy."""
+
+
+def futtat_tanulmany(md_ut, motivum=None, elof_ut=T_ELOF, jelolt_ut=None):
     """(ell, adat, szk, egységszám, motívumok, blokk_hibák). A motívum-környezet (az adatsorok, a kapcsolat- és a
-    jelölt-sorok, a lánc szavai) a blokkok motívumaiból jön, vagy a megadott `motivumok` listából; motívum nélkül a
-    próbák a vers adatára szűkülnek (a szám- és a kapcsolat-próbának nincs viszonyítási alapja)."""
+    jelölt-sorok, a lánc szavai) egyetlen motívumé: a megadott `motivum`, vagy a blokkok egyetlen motívuma. Több
+    blokkmotívumnál `motivum` nélkül `TobbMotivum`; motívum nélkül a próbák a vers adatára szűkülnek (a szám- és a
+    kapcsolat-próbának nincs viszonyítási alapja)."""
     with open(md_ut, 'r', encoding='utf-8') as f:
         forras = f.read()
-    egysegek, blokkok, blokk_hibak = tanulmany_egysegek(md_ut)
-    idk = list(motivumok) if motivumok else tanulmany_motivumok(blokkok)
+    egysegek, blokkok, blokk_hibak = tanulmany_egysegek(md_ut, motivum)
+    if motivum:
+        idk = [motivum]
+    else:
+        idk = tanulmany_motivumok(blokkok)
+        if len(idk) > 1:
+            raise TobbMotivum('a blokkok több motívumot neveznek meg (%s): a futás motívumonként megy, '
+                              '`--motivum <ID>`-vel' % ', '.join(idk))
     elof_sorok, _ = elof_beolvas(elof_ut, set(idk))
     mid = '+'.join(idk) or '–'
     ell, adat, szk = ellenoriz_egysegek(mid, set(idk), forras, egysegek, elof_sorok, '', jelolt_ut)
@@ -1947,7 +1964,11 @@ def main_tanulmany(a):
     """F205 M3: `--tanulmany <fájl>` — a jelentés ugyanaz a szerkezet, a forrás leírása és a cím a tanulmányé."""
     ut = a.tanulmany
     nev = os.path.splitext(os.path.basename(ut))[0]
-    ell, adat, szk, n_egyseg, idk, blokk_hibak = futtat_tanulmany(ut, a.motivum)
+    try:
+        ell, adat, szk, n_egyseg, idk, blokk_hibak = futtat_tanulmany(ut, a.motivum)
+    except TobbMotivum as h:
+        print('HIBA: %s' % h, file=sys.stderr)
+        return 2
     kimenet = a.kimenet or os.path.join(ROOT, 'naplok', 'ALLITAS_TANULMANY_%s.md' % nev)
     rel = os.path.relpath(os.path.abspath(ut), ROOT).replace(os.sep, '/')
     motiv = ', '.join(idk) if idk else 'nincs (a blokkok nem neveznek meg motívumot; szám- és kapcsolat-próba nélkül)'
@@ -1981,10 +2002,13 @@ def main(argv=None):
     ap.add_argument('--szigoru', action='store_true', help='1-es kilépőkód, ha van ELTÉR-sor')
     ap.add_argument('--tanulmany', metavar='FÁJL',
                     help='F205: igeszakasz-tanulmány (próza + jelölt blokkok) a motívumforrás helyett')
-    ap.add_argument('--motivum', action='append', metavar='ID',
-                    help='a tanulmány-mód motívum-környezete (ismételhető; alapértelmezés: a blokkok motívumai)')
+    ap.add_argument('--motivum', metavar='ID',
+                    help='a tanulmány-mód motívum-környezete (alapértelmezés: a blokkok egyetlen motívuma; több '
+                         'blokkmotívumnál kötelező, a futás motívumonként megy)')
     a = ap.parse_args(argv)
     if a.kapu:
+        if a.tanulmany or a.motivum or a.id:
+            ap.error('a --kapu mellett nem áll motívum-azonosító, --tanulmany és --motivum')
         return 1 if kapu() else 0
     if a.tanulmany:
         if a.id or a.forras:
