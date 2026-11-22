@@ -1,6 +1,6 @@
 # F218a — S9: a felhasználó nézési csomagja (a második, egyben utolsó kör)
 
-*A brief 6. pontja és az F218.12 szerint egy megállásban: a két renderelt lap, az osztályonkénti eltérés-összesítés, az S2–S9 új sablonmondatai és nevei. A nézés a felhasználóé. Készült: 2026-11-22, a 17. session (`claude-opus-5-5`), az S9a–S9b után.*
+*A brief 6. pontja és az F218.12 szerint egy megállásban: a két renderelt lap, az osztályonkénti eltérés-összesítés, az S2–S9 új sablonmondatai és nevei. A nézés a felhasználóé. Készült: 2026-11-22, a 17. session (`claude-opus-5-5`), az S9a–S9b után. **Előkészítve, még nem a felhasználónak:** a DT-F218a szerint a nézés az S9c után jön, a kész lapon; az S9c ezt a fájlt a saját változásaival frissíti (a számok, az új sorok), és a két lapot akkor generálja újra.*
 
 ## 1. A két renderelt lap
 
@@ -12,13 +12,13 @@ Mindkét lap az új generátor kimenete, munka módban, `PARDES_DATUM=2026-11-13
 
 ## 2. Eltérés-összesítés osztályonként (HAMART-001)
 
-Összesen **140 diff-sor**, 137 engedélysor (`naplok/F218_elteres_engedely.tsv`), mindegyik `tenyleges_db = elvart_db`.
+Összesen **139 diff-sor**, 136 engedélysor (`naplok/F218_elteres_engedely.tsv`), mindegyik `tenyleges_db = elvart_db`.
 
 | Osztály | Szakasz | Diff-sor | Mi változik és miért |
 |---|---|---|---|
 | Forráslista a valódi olvasásból (8.1 (b), GK-07) | a blokkfejlécek (1., 2., 3., 4., 5., 6., 7., 8., 12., Kolofon) és a rések jelölői | 12 | A generált blokk fejlécének forrás- és licenclistája (megjegyzés, nem látható) a szakasz valódi olvasásaiból jön, nem kódba írt listából. |
 | A Kolofon forrástáblája (DT901, DT911, **DT912**) | Kolofon | **53** | A tábla a lap valódi olvasásait mutatja. **27 új / 16 elmaradó / 10 változó sor.** Valódi új forrás **12**: BDB-szótár forrásjavításai; BDB-szótár rokon nyelvi írásai; Elutasítási okok táblája; Funkciókapcsolók táblája; Grammatikai szavak listája; Károli-kereszthivatkozások javított táblája; LSJ-szótár; Lap teljesség-mérése; Motívumközi kapcsolatok táblája; SDBH és SDGNT elemzetlen bejegyzései; Strong-szótár; Tematikus helyek saját szavai. Elmaradó forrás **1**: MCGED görög szótár (Mounce). A többi ugyanannak a forrásnak a szakaszlista-átsorolása (15 sor új–elmaradó párként, 10 változóként). *Az S9a után 13 sor szakaszlistájában a „3. Kizárt és vizsgált helyek” is áll; a bontás változatlan.* |
-| Kötelező forrásmegjelölés (DT911 (3)) | Kolofon | 2 | A Mounce megjelölése elmarad (nem olvasott forrás), az LSJ-é bekerül (olvasott forrás). |
+| Kötelező forrásmegjelölés (DT911 (3)) | Kolofon | 1 | A Mounce megjelölése elmarad (nem olvasott forrás); az LSJ-é bekerül (olvasott forrás). Az UBS-megjelölés kettős szóköze az N-F218x (N222) javításával megszűnt. |
 | A 12. szakasz forráslistája (DT901) | 12. Irodalom és idézés | 27 | 12 új, 2 elmaradó, 5 licenc szerint, 8 áthelyezett sor: a lista az olvasási naplóból, a jegyzék `irodalom` oszlopával szűrve. |
 | A kritérium egyetlen helye (DT872, DT874) | a lap eleje, 1., 3., Kolofon | 14 | A kritérium a lap elején áll egyszer, máshol hivatkozás: az 1.1 pont (−4 +1 látható, −3 üres), a horgony a lap elején, a 3. szakasz „Negatív kritérium” bekezdése helyett utalás a szakasz elején (−1 +1, üres −1 +1), a Kolofon „Negatív kritérium” sora. |
 | A funkció kézi magyarázata (M-CSERE) | 1. Döntési út | 15 | A régi generátor a kézi magyarázat kezdőbetűjét a listaelemben nagyra írta át; az új a kézi szöveget változatlanul adja. |

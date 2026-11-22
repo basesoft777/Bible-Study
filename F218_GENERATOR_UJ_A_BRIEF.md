@@ -5,11 +5,11 @@ kod: GENERATOR_UJ_A
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: megallt
+allapot: fut
 ag: claude/f218a-s9-722be2
 pr: -
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "Te: az S9 nézése (a két renderelt lap, az eltérés-összesítés és az S2–S9 új sorainak listája: naplok/F218_S9_nezes.md); utána a független ellenőrzés (2.) és az F218.13"
+kovetkezo: "Folytatás: S9c (F218.12) új sessionben a naplok/F218_folytatas.md-ből: a vázban maradt S3_MARADEK tételek és a leltártételek; utána a felhasználó nézése (naplok/F218_S9_nezes.md, frissítve)"
 munka: folyamat
 sav: CONTENT
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
@@ -300,7 +300,7 @@ Minden szelet: bemeneti függvények → számítás → sablonmondatok és neve
 - **F218.9 (S6)** — „7. Kapcsolatok”, Alátámasztás, „8. Kapcsolódó motívumok”.
 - **F218.10 (S7)** — „9. Hatástörténet” (ÓSZ, ÚSZ, tanúk), a szópár; GK-SZOPAR, GK-A6, GK-28.
 - **F218.11 (S8)** — a keret: cím, Tartalomjegyzék, Jelmagyarázat, a rések (Kivonat, Miért fontos, 10., 11.), „12. Irodalom és idézés”, Kolofon; GK-07, 10, 27, 28.
-- **F218.12 (S9)** — a teljes lap: HAMART teljes diff 0 engedélyen kívül; az ISTENTISZT 8.2 szerint; GK-11, 24, 26, 31; a festékpróba mindkét teljes bemeneten.
+- **F218.12 (S9)** — a teljes lap: HAMART teljes diff 0 engedélyen kívül; az ISTENTISZT 8.2 szerint; GK-11, 24, 26, 31; a festékpróba mindkét teljes bemeneten. *Bontása (DT-F218a, 2026-11-22): **S9a** a „3. Kizárt és vizsgált helyek” szakasz (egyik szelet sem építette meg) · **S9b** a teljes lap kapui és a 8.2/1 független számlálói · **S9c** a vázban maradt `S3_MARADEK` tételek és a leltártételek (GK-B9, A11, A14, A15, B5, B8, C3, C9, D3) · utána a felhasználó nézése, a kész, minden kaput teljesítő lapon. A `HELY_EGYSEG` (GK-04) a 218c-re kerül (N-F218a).*
   - ⛔ **A felhasználó** (a második, egyben utolsó kör) megnyitja a két renderelt lapot, és megkapja az osztályonkénti eltérés-összesítést meg az S2–S9 összes új sablonmondatát és nevét egy listában (6. pont).
   - ⛔ **Független ellenőrzés (2.)**, egy javítókör.
 - **F218.13** — zárás: jelentés, mérőszámok, a 13. pont N-tételei a `nyitott/uj/<ágnév>.md`-be; `kovetkezo`: „Te: a 218b és a 218c befogadása”.
@@ -363,6 +363,8 @@ Minden szelet: bemeneti függvények → számítás → sablonmondatok és neve
 **A T6 indoklása.** A `parok_<könyv>.tsv` `bizonyossag` mezője nem mért bizonytalanság, hanem a párosítás módjának címkéje: a „magas” az 1–2Móz, ahol két modell egyezett; az „alacsony” a többi könyv. A mérés szerint az összes pár 95,06%-ban helyes (93,81–96,32; 1 600 pár, 8 réteg), a külső összevetésben a fő-szó párok 98,72%-ban (98,22–99,08; n = 2 663), rétegenként 92–99%. *Proveniencia: `scope=naplok/KAROLI_PONTOSSAG_jelentes.md 11., 14., 55. sor | forras=cf68d0a9 | ts=2026-11-13`.*
 
 **A táblajegyzetek helye (nem nyitott kérdés).** A felhasználó döntése (az orkesztrátor közvetítésével, 2026-11-13): a táblajegyzetek a tábla alatt maradnak, ahogy a HAMART 1. kiadásánál eldőlt, és az új generátorban is így lesz; a mostani forma megtartandó (GK-25). A jegyzet áthelyezése tehát nem szándékolt eltérés, a regresszióban BUKÁS.
+
+**A Kolofon forrástáblája (DT912, 2026-11-22).** A DT901 halmaza a Kolofonra vetítve 53 diff-sort ad a mai laphoz képest: 27 új, 16 elmaradó, 10 változó sor; ebből valódi új forrás 12 (a 12. szakasszal azonos), elmaradó forrás 1 (MCGED, Mounce), a többi ugyanannak a forrásnak a szakaszlista-átsorolása. Szerkesztői döntés (az orkesztrátor, a felhasználó felhatalmazásával): elfogadva, az S9-es eltérés-összesítésben külön osztályként, ezzel a bontással (a végleges lapon újramérve: `naplok/F218_S9_nezes.md`).
 
 **Két megvalósítási megjegyzés, amelyet a befogadó erősítsen meg a felhasználóval** (a döntés tartalma nem változik, csak a helye): a T7 „adattáblája” a bemeneti tábla egy oszlopa; a T8 „beállítótáblája” egy konfig-modul. Ha a felhasználó külön, kézzel szerkeszthető táblát akar, az egy-egy új sor az `ir`-ben.
 

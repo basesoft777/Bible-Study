@@ -1824,3 +1824,53 @@ választotta). Mindkettő a 218a végi listára.
 **A nézési csomag.** `naplok/F218_S9_nezes.md`: a két lap állapota, az osztályonkénti eltérés-összesítés (140 diff-sor; a Kolofon forrástáblája külön osztályként, a DT912 bontásával: 27 új / 16 elmaradó / 10 változó, valódi új forrás 12, elmaradó 1: MCGED = Mounce; a végleges lapon újramérve), az S2–S9 41 új sablonmondata és 8 új neve egy listában, és a 218a végi lista egyéb tételei.
 
 *Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py kapuk vaz regresszio szerkezet szoveg; regresszio.py --szamlalok --id HAMART-001, --id ISTENTISZT-001 | forras=a munkafa az S9b commitja előtt | ts=2026-11-22`.*
+
+## F218.12 — Teljességi lista és skip-leltár (az orkesztrátor DT-F218a feltétele; 2026-11-22, a 17. session)
+
+**Miért.** A „3. Kizárt és vizsgált helyek” szakasz az S3 óta szelet nélkül maradt, és ezt a szeletenkénti mérés nem fogta meg (a részleges regresszió a hiányzó szakaszt „nincs kész”-ként jelezte, nem hibaként). A lista a régi lap minden szakaszát és mellékletét felsorolja; a `regresszio.py --teljes` a hiányzó szakaszt BUKÁS-nak veszi, ezért a lista az S9 után gépileg is zárt.
+
+**A régi HAMART-001 lap szakaszai és mellékletei** (`regresszio.py --id HAMART-001 --teljes`, a main `761290fa` behozása után; diff-sor / ebből engedély nélkül):
+
+| Nézet | Szakasz | Szelet | Diff-állapot |
+|---|---|---|---|
+| TUDOMANYOS | (a lap eleje) | S8a (DT872: horgony) | engedéllyel, 1 / 0 |
+| TUDOMANYOS | Kivonat | S8a | RENDBEN (egyezik) |
+| TUDOMANYOS | Tartalomjegyzék | S8a | RENDBEN (egyezik) |
+| TUDOMANYOS | Jelmagyarázat és rövidítések | S8a | RENDBEN (egyezik) |
+| TUDOMANYOS | 1. Döntési út | S2 | engedéllyel, 24 / 0 |
+| TUDOMANYOS | 2. Előfordulások (és 2.1) | S1 | engedéllyel, 1 / 0 |
+| TUDOMANYOS | 3. Kizárt és vizsgált helyek | **S9a** | engedéllyel, 6 / 0 |
+| TUDOMANYOS | 4. Szótári háttér (Áttekintés, 4.1–4.14, Miért fontos) | S3a–S3d, S4 (4.6), S8b (Miért fontos) | engedéllyel, 3 / 0 |
+| TUDOMANYOS | 5. LXX-fordítói döntések | S4 | engedéllyel, 1 / 0 |
+| TUDOMANYOS | 6. Kereszthivatkozások (és Minősítés) | S5 | engedéllyel, 4 / 0 |
+| TUDOMANYOS | 7. Kapcsolatok (és Alátámasztás) | S6 | engedéllyel, 4 / 0 |
+| TUDOMANYOS | 8. Kapcsolódó motívumok | S6 | engedéllyel, 2 / 0 |
+| TUDOMANYOS | 9. Hatástörténet: ókori fordítások és értelmezők | S7 | RENDBEN (egyezik) |
+| TUDOMANYOS | 10. Értelmezés | S8b | RENDBEN (egyezik) |
+| TUDOMANYOS | 11. Módszertan és nyitott kérdések | S8b | RENDBEN (egyezik) |
+| TUDOMANYOS | 12. Irodalom és idézés | S8c | engedéllyel, 28 / 0 |
+| TUDOMANYOS | Kolofon | S8d | engedéllyel, 57 / 0 (az N-F218x után; a DT912 53 sora) |
+| KIZARASOK | (a lap eleje) | S2 | RENDBEN (egyezik) |
+| KIZARASOK | Csoportosan kizárt versek, okonként | S2 | engedéllyel, 4 / 0 |
+| KIZARASOK | Egyenként elutasított versek, okonként | S2 | RENDBEN (egyezik) |
+| KIZARASOK | A teljesség-mérés forrássorai | S2 | engedéllyel, 4 / 0 |
+
+Összesen 139 diff-sor, mind engedéllyel (136 engedélysor, mindegyik `tenyleges_db = elvart_db`); a referencia minden szakaszának van párja az új lapon, és az új lapon nincs referencia nélküli szakasz. Az ISTENTISZT-001 szakaszrendje ugyanez (a szakaszmodellből), mércéje a 8.2.
+
+**Skip-leltár** (`teszt_vaz.py`, a 381 teszt közül 13 kihagyva):
+
+| Teszt | Ok | Gazda |
+|---|---|---|
+| GK-03 (pillanatkép-kapu: B18, B19, B21, B36, B38), GK-13, GK-14, GK-18, GK-A10, GK-A12, GK-N178, HN-12 (8 teszt; `S3_MARADEK`) | az S3 nem teljesítette (a 6. ellenőrzés E9) | **S9c** (DT-F218a) |
+| GK-B9; GK-A11, A14, A15, B5, B8, C3, C9, D3 (2 teszt) | a hibaleltár leírása szerinti újramérés (az F218.1 halasztott része) | **S9c** (DT-F218a) |
+| GK-19 (T6, a Károli-párosítás pontosság-mondata) | döntéssel elhalasztva (2026-11-21: „Később, a validáció után”; N219) | a JOHD-validáció után (N219) |
+| GK-04 `hely_egyseg` | a szópár-név tagjainak Strong-kötése a bemeneti rétegben | **218c** (a leendő #238; N-F218a) |
+| HN-03 (forrásnév a mondat közepén, zárójelben) | az S1 óta a felhasználó döntésére vár | az orkesztrátor (a kérdés, az opciók és a javaslat elküldve, 2026-11-22) |
+
+**N-F218x (N222).** Az `adat/licencek.tsv` UBS_DBH, SDBH és TBESG sorának `kotelezo_megjeloles` mezőjében két szóköz állt a mondatok között; egy szóközre javítva (a `forras_hely` szó szerinti idézetei változatlanok), az `S8D-MEGJ-2` engedélysor törölve, a B01-hash frissítve; a Kolofon diffje 58-ról 57 sorra csökkent.
+
+**A teljes tesztkör.** 381 teszt, 13 kihagyva (a fenti leltár); az első teljes futás három bukása (a Kolofon-teszt még a 3. szakasz hiányát várta; motívumazonosító a `regresszio.py` súgójában; a számlálók táblaútvonalai a GK-01 kivételei közé) javítva, egy `MemoryError` a párhuzamosan futó push előtti kapu memóriahasználatából (a teszt egyedül futtatva zöld). A futásidő hideg gyorsítótárral 65 s (HAMART-001), melegen 30–35 s; a GK-31 tesztje melegen mér.
+
+**A mérce a main-en.** A main mai állapotán a HAMART-mérce nem futott (a `szamkiosztas` a B51 `DONTESEK.md`-t és a B68 `lapgen_bemenetek.tsv`-t is átírta az S8d merge-e után). Az ág frissítette: B51, B68, B01, B04, B65, B66; a merge után a mérce a main-en is futtatható.
+
+**A menet állása.** S9a és S9b kész; az S9c új sessionben folytatódik (a kontextus 64%, az orkesztrátor 60%-os szabálya). A nézési csomag (`naplok/F218_S9_nezes.md`) előkészítve, az S9c után frissítendő; a felhasználó nézése az S9c után jön.
