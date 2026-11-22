@@ -47,7 +47,7 @@ A lexikonlap 4.2 „Mélységi szócikk” része (pl. `lexikon/HAMART-001_TUDOM
 1. **Egy kártyamodell, két megjelenítés.** A BDB és a Thayer ugyanazt a kártyát kapja:
    - a lemmafej;
    - a jelentések rendje rövid magyar meghatározással;
-   - a vers szónézetéből érkezve a vers jelentéspontja megjelölve, **a BDB besorolásaként címkézve** („A BDB besorolása: …”, nem „Ebben a versben”, mert ez a szótár besorolása, nem a vers ténye). Ahol a jelentéspont gépi bizonyossága `ketes`, vagy az útvonala `tagolatlan` vagy `fej` (`adat/SEMA.md` 2.29), ott nincs jelentéspont-jelölés. A felirat a fordítótáblából jön (DT897). Ez nem új hatókör, hanem ugyanennek a jelölésnek a helyes megírása (DT-F231c, a felhasználó, 2026-11-22). A lexikonlapot nem érinti;
+   - a vers szónézetéből érkezve a vers jelentéspontja megjelölve, **a BDB besorolásaként címkézve** („A BDB besorolása: …”, nem „Ebben a versben”, mert ez a szótár besorolása, nem a vers ténye). Ahol a jelentéspont gépi bizonyossága `ketes`, vagy az útvonala `tagolatlan` vagy `fej` (`adat/SEMA.md` 2.29), ott nincs jelentéspont-jelölés. A felirat a fordítótáblából jön (DT897). Ez nem új hatókör, hanem ugyanennek a jelölésnek a helyes megírása (DT914, a felhasználó, 2026-11-22). A lexikonlapot nem érinti;
    - alatta a szótári szöveg szakaszonként egybefüggő bekezdésben, az eredeti szórendben, hivatkozásmezőre bontás nélkül;
    - a magyar szöveg ott, ahol van, különben ugyanabban a kártyában az angol, nyitva, „Magyar fordítás nincs · az angol eredeti áll” felirattal;
    - ahol van magyar, ott az angol eredeti csukva;
