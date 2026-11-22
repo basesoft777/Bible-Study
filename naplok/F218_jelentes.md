@@ -1784,3 +1784,163 @@ a többi ugyanannak a forrásnak a szakaszlista-átsorolása (15 sor új és elm
 Az ellenőr két megjegyzése (nem ELTÉRÉS): a `teszt_kolofon` GK-07-tesztjének felső korlátja laza (bármely külső forrás
 neve megengedett); a brief 5. és 10. pontja a T8 helyét még `konfig.py`-ként írja (a DT911 1. a névtáblát
 választotta). Mindkettő a 218a végi listára.
+
+## F218.12 — S9a: „3. Kizárt és vizsgált helyek” (`claude-opus-5-5`, 2026-11-22, a 17. session)
+
+**Miért itt.** Az S9 teljes diffje a 3. szakaszon bukott (334 sor): a szakaszt egyik szelet sem építette meg (a brief 9. pontjának szeletlistájából kimaradt; a folytatási fájl az S3 óta „szelet nélkül” vezette). A kérdés és a javaslat (S9a = a 3. szakasz, S9b = a teljes lap kapui, utána a nézés) az orkesztrátorhoz ment; a munka a javaslat szerint indult.
+
+**Eredmény.** A HAMART-001 teljes regressziója **RENDBEN** (engedély nélküli diff-sor 0, a bemenet-hash őrrel), a 3. szakasz 334 sorából 6 tér el, mind engedéllyel: `S9A-FORRAS` (a blokkfejléc forráslistája az olvasási naplóból, 8.1 (b)), `S9A-KIEJTES` (a Jer 4:23 régi kiejtés-beszúrása, 8.1 (j), DT890; ugyanaz a sor, mint az S5-KIEJTES), `ISM3-*` (4 sor: DT872, a „Negatív kritérium” bekezdés helyett utalás a szakasz elején; látható −1 +1, üres −1 +1). Az ISTENTISZT-001 3. szakasza generálódik (115 sor, 579 vizsgált vers, négy forráscsoport). Festékpróba: 0 szivárgás mindkét lapon. A régi generátor HAMART-kimenete az adatjavítás után is bájtra azonos a referenciával.
+
+**Felépítés.**
+- `bemenet/vizsgalt.py`: a döntésnapló elutasított és nyitva maradt előfordulás-jelöltjei soronként. A `forras_kereses` belső szöveg: csak a szerkezete jön ki (forráscsoport, jelölésfajta, a keresett szavak, a hálók, a csoportos sor versszáma, a cellán túli jegyzet fajtája); a le nem képezett fajta BemenetHiba. Az indoklásról két szerkezet bomlik le: az összesítő sor eleje („Összesítő sor N versre (…):”) és a csoportos kizárás szerkesztői döntésének záró mondata; a többi a Minősítés `_indok`-ja (Strong- és motívum-hivatkozás, kapu a nem olvasói szövegre).
+- `szamitas/kizart.py`: a számok a vizsgálat közös modelljéből (`vizsgalat`, új mező: `csoport_egyedi`); okonként a versszám, a csoportonkénti versszám a csoportos sor egyedi verseivel (K34), a cellában a sor saját versszáma; összevonás (egymást követő azonos sorok tartománnyá), a közös proveniencia-jel (‹K1› …), kapu (az okok és a forráscsoportok versszám-összege a kizárt versek száma).
+- `megjelenites/md/kizart.py`: minden látható mondat sablonból (`k3.*`, a kereszthivatkozásos cella és az indoklás darabjai az `s6.*` sorai); a jegyzet a tábla alatt, azonos mondat egyszer.
+
+**Új sablon- és névtábla-sorok.** 61 sablonsor (`k3.*`), ebből 3 `eredet=uj`, `dontes=var`: `k3.kriterium` (a DT872-utalás), `k3.miert.tematikus` (a minta belső jelölése nélkül), `k3.miert.szopar` (a szó a Strong-szám helyett); a többi a régi lap szövege betűre. Névtábla: `vizsgalt_csoport` 4, `halo_kereses` 6, `korpusz` 2, `ok_cella` 30 (a cella eleji ok), `ok_leiras_cella` 18 (új típus: a névelővel kezdődő megjegyzés táblacella eleji alakja; a melléklet és a Döntési út a megjegyzést változatlanul közli; betöltő: `bemenet/nyelv.py` `ok_leiras_cellaalakok`, a megjegyzéstől csak a kezdőbetűben térhet el).
+
+**Adatjavítás (DT884 (a), az `ir`-en kívül, mint a DT884-nél).** `adat/jeloltek.tsv`, csak a HAMART-001 elutasított előfordulás-jelöltjeinek `indoklas` mezője: 14 egyenes idézőjel → „…”, 5 munkaszó („a teljesség-mérés egy másik csoportjában” → „a teljes keresés …”), 5 cella eleji kezdőbetű (az indoklás maga mondja ki az okot). A régi generátor kimenete ettől bájtra azonos (a régi lap ugyanezt cserével tette).
+
+**Kolofon (DT912).** A 3. szakasz olvasásai a forrástábla szakaszlistáiba is bekerülnek: a DT912 53 diff-sorából 13 sor tartalma ennyiben változott (a régi lapon is állt a „3. Kizárt és vizsgált helyek”); az engedélysorok `uj` hash-e frissült, a darabszám és a bontás (27 új / 16 elmaradó / 10 változó) változatlan.
+
+**Megfigyelés a 218a végi listába.** A HAMART-001 egyik csoportos indoklása (1Krón 7:22, 25 vers) a látható szövegben „blokk-kizárás (a H7451 és a H7043 blokkjának mintájára)” fordulatot hoz: munkaszó és csupasz Strong-szám a kézi szövegben, a mai lapon is betűre. Nem javítottam (tartalmi szövegcsere a döntésnaplóban).
+
+**Tesztek.** `teszt_kizart.py` (10): a táblák sorai csoportonként a döntésnapló független számlálása, a csoportok rendje, a kapu mutációval, az okok rendje, a TSK- és a csoportos sor jegyzet nélkül, a négyforrásos ellenőrzés jegyzete, ismeretlen jelölés → BemenetHiba, a DT872-utalás (a vázból ide költözött), a belső szöveg hiánya a látható lapon, a jegyzetek számozása.
+
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes; eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; general.py --cel lexikon --id HAMART-001 + cmp | forras=a munkafa az S9a commitja előtt | ts=2026-11-22`.*
+
+## F218.12 — S9b: a teljes lap kapui (`claude-opus-5-5`, 2026-11-22, a 17. session)
+
+**Eredmény.** A teljes lap követelményei teljesülnek mindkét mintalapon:
+- **GK-11** (nincs globális állapot): a két lap fordított sorrendben, egy folyamatban generálva bájtra azonos.
+- **GK-24** (alakosztály-kapu, típus szerint): új modul, `lapgen/alakosztaly.py`. A kész sor fajta-térképén fut: a sablonszövegen minden alakosztály tilos (aláhúzásos azonosító, `.tsv`/`.py`, döntés- és tételszám, nyitott tétel, nyers szótárfej, héber + számláló, `sz<n>`, `<br>`, tört írásjel), a kézi prózán a belső jelölések osztályai, az idézeten csak a proveniencia. Kalibrálás: mindkét lap minden nézetén 0 találat (0 hamis találat a prózán és az idézeten). A `fo.lap_keszit` a kész lapon futtatja (BUKÁS), festett futásban nem.
+- **GK-25** futásidejű része: új modul, `lapgen/szerkezet.py` (a számozott címsorok folytonossága; a 2.1 pontban minden igehely alatt „Funkció:” sor; a táblajegyzet nem ismétli a sora celláját; a táblacella „Címke: indoklás” alakjában az indoklás eleje nem ismétli a címkét). Az ismételt címke szabálya a régi `cimke_ismetles`-nél szigorúbb: legalább két tartalmas szónak kell visszatérnie (az ISTENTISZT-001 „Jogi fellebbezés: … fellebbezést jelenti” cellája egy közös szóval nem ismétlés). Mindkét lapon 0 hiba; a `fo.lap_keszit` futtatja.
+- **GK-26** (mutációs próba): a hat hibaváltozatot (szivárgó mezőnév, ismételt címke, tört írásjel, jegyzet = cella, belső szám a mondatban, hiányzó „Funkció:”) a kész lap sorain, a fajta-térképpel együtt rontja el; mind a hatot megfogja legalább egy kapu (alakosztály: mezőnév, tört írásjel, belső szám; szerkezet: ismételt címke, jegyzet = cella, „Funkció:”); az ép lapon egyik kapu sem jelez.
+- **GK-31** (futásidő): egy lap generálása ≤ 60 s (mérve párhuzamos tesztfutás mellett: HAMART-001 32 s, ISTENTISZT-001 22 s).
+- **A hibanapló S9-es példányai** (HN-02, 04, 05, 06, 07, 08, 09) a teljes lapon: 0 találat.
+- **A 8.2/1 független számlálói** (a 10. ellenőrzés 4. tétele): `regresszio.py --szamlalok` (a referencia-diff nélkül). A lapon kimondott számok a regresszió saját számlálásával az adattáblákból, `split('\t')`-vel: az igehelyek halmaza és száma (2.), a Döntési út összeadása (a motívum versei, csoportosan kizárt, egyenként elutasított, megvizsgált, döntés nélküli; a csoportlista unióján), a KH-darabszám (a TSK legalább 15 szavazatú utalásai a KJV-kulcson és a Károli-KH javított táblájának megerősített sorai; helyek és összes), az ószövetségi versek (5.) és a szópár-lánc (9.: a szópár igéje a héber szövegben). ISTENTISZT-001: 20/20 hely, 20 + 470 + 109 = 599, döntés nélkül 0, KH 8 hely / 19 utalás, 16 ószövetségi vers, a szópár igéje 16 versben — mind egyezik. HAMART-001: 49 hely, 56 + 1 542 + 242 = 1 840, KH 25 / 120, 48 ószövetségi vers — mind egyezik.
+
+**Tesztek.** `teszt_kapuk.py` (10: GK-11, GK-24 kétféle, GK-25, GK-26, GK-31, a három HN-teszt), a `teszt_regresszio.py` új `Szamlalok` osztálya (3). A vázból 7 S9-es csonk ide költözött; a vázban maradt: `S3_MARADEK` (10), `HELY_EGYSEG` (1), GK-B9 és GK-A11… (2, a leltár leírása az F218.1 halasztott részében), HN-03 (1, a felhasználó döntésére vár). Ezekről az orkesztrátortól kértem döntést (a nézés után S9c vagy kimondva a 218c).
+
+**A nézési csomag.** `naplok/F218_S9_nezes.md`: a két lap állapota, az osztályonkénti eltérés-összesítés (140 diff-sor; a Kolofon forrástáblája külön osztályként, a DT912 bontásával: 27 új / 16 elmaradó / 10 változó, valódi új forrás 12, elmaradó 1: MCGED = Mounce; a végleges lapon újramérve), az S2–S9 41 új sablonmondata és 8 új neve egy listában, és a 218a végi lista egyéb tételei.
+
+*Proveniencia: `scope=python eszkozok/lapgen/tesztek/futtat.py kapuk vaz regresszio szerkezet szoveg; regresszio.py --szamlalok --id HAMART-001, --id ISTENTISZT-001 | forras=a munkafa az S9b commitja előtt | ts=2026-11-22`.*
+
+## F218.12 — Teljességi lista és skip-leltár (az orkesztrátor DT-F218a feltétele; 2026-11-22, a 17. session)
+
+**Miért.** A „3. Kizárt és vizsgált helyek” szakasz az S3 óta szelet nélkül maradt, és ezt a szeletenkénti mérés nem fogta meg (a részleges regresszió a hiányzó szakaszt „nincs kész”-ként jelezte, nem hibaként). A lista a régi lap minden szakaszát és mellékletét felsorolja; a `regresszio.py --teljes` a hiányzó szakaszt BUKÁS-nak veszi, ezért a lista az S9 után gépileg is zárt.
+
+**A régi HAMART-001 lap szakaszai és mellékletei** (`regresszio.py --id HAMART-001 --teljes`, a main `761290fa` behozása után; diff-sor / ebből engedély nélkül):
+
+| Nézet | Szakasz | Szelet | Diff-állapot |
+|---|---|---|---|
+| TUDOMANYOS | (a lap eleje) | S8a (DT872: horgony) | engedéllyel, 1 / 0 |
+| TUDOMANYOS | Kivonat | S8a | RENDBEN (egyezik) |
+| TUDOMANYOS | Tartalomjegyzék | S8a | RENDBEN (egyezik) |
+| TUDOMANYOS | Jelmagyarázat és rövidítések | S8a | RENDBEN (egyezik) |
+| TUDOMANYOS | 1. Döntési út | S2 | engedéllyel, 24 / 0 |
+| TUDOMANYOS | 2. Előfordulások (és 2.1) | S1 | engedéllyel, 1 / 0 |
+| TUDOMANYOS | 3. Kizárt és vizsgált helyek | **S9a** | engedéllyel, 6 / 0 |
+| TUDOMANYOS | 4. Szótári háttér (Áttekintés, 4.1–4.14, Miért fontos) | S3a–S3d, S4 (4.6), S8b (Miért fontos) | engedéllyel, 3 / 0 |
+| TUDOMANYOS | 5. LXX-fordítói döntések | S4 | engedéllyel, 1 / 0 |
+| TUDOMANYOS | 6. Kereszthivatkozások (és Minősítés) | S5 | engedéllyel, 4 / 0 |
+| TUDOMANYOS | 7. Kapcsolatok (és Alátámasztás) | S6 | engedéllyel, 4 / 0 |
+| TUDOMANYOS | 8. Kapcsolódó motívumok | S6 | engedéllyel, 2 / 0 |
+| TUDOMANYOS | 9. Hatástörténet: ókori fordítások és értelmezők | S7 | RENDBEN (egyezik) |
+| TUDOMANYOS | 10. Értelmezés | S8b | RENDBEN (egyezik) |
+| TUDOMANYOS | 11. Módszertan és nyitott kérdések | S8b | RENDBEN (egyezik) |
+| TUDOMANYOS | 12. Irodalom és idézés | S8c | engedéllyel, 28 / 0 |
+| TUDOMANYOS | Kolofon | S8d | engedéllyel, 57 / 0 (az N-F218x után; a DT912 53 sora) |
+| KIZARASOK | (a lap eleje) | S2 | RENDBEN (egyezik) |
+| KIZARASOK | Csoportosan kizárt versek, okonként | S2 | engedéllyel, 4 / 0 |
+| KIZARASOK | Egyenként elutasított versek, okonként | S2 | RENDBEN (egyezik) |
+| KIZARASOK | A teljesség-mérés forrássorai | S2 | engedéllyel, 4 / 0 |
+
+Összesen 139 diff-sor, mind engedéllyel (136 engedélysor, mindegyik `tenyleges_db = elvart_db`); a referencia minden szakaszának van párja az új lapon, és az új lapon nincs referencia nélküli szakasz. Az ISTENTISZT-001 szakaszrendje ugyanez (a szakaszmodellből), mércéje a 8.2.
+
+**Skip-leltár** (`teszt_vaz.py`, a 381 teszt közül 13 kihagyva):
+
+| Teszt | Ok | Gazda |
+|---|---|---|
+| GK-03 (pillanatkép-kapu: B18, B19, B21, B36, B38), GK-13, GK-14, GK-18, GK-A10, GK-A12, GK-N178, HN-12 (8 teszt; `S3_MARADEK`) | az S3 nem teljesítette (a 6. ellenőrzés E9) | **S9c** (DT-F218a) |
+| GK-B9; GK-A11, A14, A15, B5, B8, C3, C9, D3 (2 teszt) | a hibaleltár leírása szerinti újramérés (az F218.1 halasztott része) | **S9c** (DT-F218a) |
+| GK-19 (T6, a Károli-párosítás pontosság-mondata) | döntéssel elhalasztva (2026-11-21: „Később, a validáció után”; N219) | a JOHD-validáció után (N219) |
+| GK-04 `hely_egyseg` | a szópár-név tagjainak Strong-kötése a bemeneti rétegben | **218c** (a leendő #238; N-F218a) |
+| HN-03 (forrásnév a mondat közepén, zárójelben) | az S1 óta a felhasználó döntésére vár | az orkesztrátor (a kérdés, az opciók és a javaslat elküldve, 2026-11-22) |
+
+**N-F218x (N222).** Az `adat/licencek.tsv` UBS_DBH, SDBH és TBESG sorának `kotelezo_megjeloles` mezőjében két szóköz állt a mondatok között; egy szóközre javítva (a `forras_hely` szó szerinti idézetei változatlanok), az `S8D-MEGJ-2` engedélysor törölve, a B01-hash frissítve; a Kolofon diffje 58-ról 57 sorra csökkent.
+
+**A teljes tesztkör.** 381 teszt, 13 kihagyva (a fenti leltár); az első teljes futás három bukása (a Kolofon-teszt még a 3. szakasz hiányát várta; motívumazonosító a `regresszio.py` súgójában; a számlálók táblaútvonalai a GK-01 kivételei közé) javítva, egy `MemoryError` a párhuzamosan futó push előtti kapu memóriahasználatából (a teszt egyedül futtatva zöld). A futásidő hideg gyorsítótárral 65 s (HAMART-001), melegen 30–35 s; a GK-31 tesztje melegen mér.
+
+**A mérce a main-en.** A main mai állapotán a HAMART-mérce nem futott (a `szamkiosztas` a B51 `DONTESEK.md`-t és a B68 `lapgen_bemenetek.tsv`-t is átírta az S8d merge-e után). Az ág frissítette: B51, B68, B01, B04, B65, B66; a merge után a mérce a main-en is futtatható.
+
+**A menet állása.** S9a és S9b kész; az S9c új sessionben folytatódik (a kontextus 64%, az orkesztrátor 60%-os szabálya). A nézési csomag (`naplok/F218_S9_nezes.md`) előkészítve, az S9c után frissítendő; a felhasználó nézése az S9c után jön.
+
+### Független ellenőrzés — 15. ellenőrzés (S9a–S9b, `761290fa..0e42a6fc`, `fuggetlen-ellenor`, `claude-opus-5-5`, 2026-11-22)
+
+*A jelentés változtatás nélkül (az ellenőr válasza). Az első futás API-hiba miatt megszakadt, a folytatás ugyanabban az ellenőr-kontextusban futott.*
+
+ELTÉRÉS: 11 tétel
+
+Brief: `F218_GENERATOR_UJ_A_BRIEF.md` · tartomány: `761290fa..0e42a6fc` (F218.12.1–F218.12.11) · szint: `teljes`
+
+A futások köre:
+- **A korábbi, megszakadt menetből:**
+  - generálás a repón kívül (`PARDES_DATUM=2026-11-13`);
+  - regresszió `--teljes`, `--szamlalok` mindkét lapra;
+  - a régi generátor futtatása `--kimenet`-tel, utána `cmp`;
+  - `futtat.py kizart kapuk regresszio szerkezet`: 53 teszt, OK, 817 s, ez befejeződött.
+- **`teszt_futtat.py --diff 761290fa`:** elindítottam, de a megszakadáskor félbemaradt (`teszt_angol_javitott.py`-nál állt). Az orkesztrátor utasítására nem indítom újra. Leállítani nem kellett: a folyamatlista szerint most csak egy másik session `feladatok.py ellenoriz` futása megy.
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0 Modell | OK | – | A saját modellem `claude-opus-5-5`, a kért `opus`. A 11 commit `Co-Authored-By: Claude Opus 5.5` sort visel (`git log … \| grep -i co-authored`: 11). A jelentés fejlécei `claude-opus-5-5`-öt írnak. Adattábla `modell` mezőjét a diff nem írja. |
+| G 11.1 HAMART-regresszió | OK | `naplok/F218_elteres_engedely.tsv` | `regresszio.py --id HAMART-001 --uj <tmp>/lexikon --teljes` → `EREDMÉNY: RENDBEN (engedély nélküli diff-sor: 0)`, a hash-őrrel. 139 diff-sor; 136 engedélysor (`grep -c '^  [A-Z0-9-]*: [0-9]*$'`), az `elvart_db` összege 139 (awk). Az S9a-sorok: `S9A-FORRAS`, `S9A-KIEJTES`, `ISM3-*` (4). Az `S8D-MEGJ-2` törölve. 13 S8D-sornak csak az `uj` hash-e változott (word-diff). |
+| G 11.2 / 8.2/1 független számlálók | ELTÉRÉS | `eszkozok/lapgen/regresszio.py:460` | `--szamlalok` mindkét lapon RENDBEN (HAMART: 49; 56/1542/242/1840/0; KH 25/120; 48 ÓSZ-vers. ISTENTISZT: 20; 20/470/109/599/0; 8/19; 16; szópár 16). A 8.2/1 „LXX-összesítés” pontjából azonban csak az ószövetségi versszámot számolja. Az ISTENTISZT 5. szakaszának összegző mondata 15 megállapított verset, 12 egyezőt, 3 szócsaládtagot és 1 hiányt mond; ezekre nincs független számláló (célzott olvasás: `awk '/^## 5\./…'`). A függetlenség megvan: nincs `lapgen`-import (`grep import`), saját `split('\t')`. Az algoritmus viszont a generátor másolata, a `len(tagok) != n` esetén `n`-re visszaeső ággal együtt. |
+| G 11.5 régi generátor bájtazonos | OK | – | `general.py --cel lexikon --id HAMART-001 --kimenet <tmp>`, utána `cmp <(git show HEAD:lexikon/HAMART-001_{TUDOMANYOS,KIZARASOK}.md)` → mindkettő azonos. A `lexikon/` a diffben 0 fájl. |
+| G 2 alapszabály (átírás nélkül) | ELTÉRÉS | `eszkozok/lapgen/bemenet/vizsgalt.py:115-123` | A brief 2.3 belső mezőként sorolja a `forras_kereses`-t. Ennek szabad maradéka regexes törléssel (`_ATIRAS_RX.sub`, `_STRONG_RX.sub`, `.strip`) `b.kezi('B04','kereses_megszoritas', …)`-ként látható jegyzetbe kerül. Példa: „Hif'íl-alakok”, 9 HAMART-sor (Grep `scan:` a `jeloltek.tsv`-ben: 473–481. sor). A festékpróba ezt szerkezetileg nem láthatja, mert a `jegyzek.py:336` `kezi()` a hívó kategóriáját jelöli. A DT884 csak az `indoklas`-t minősítette át. Erről döntés nincs (Grep `kereses_megszoritas\|Hif.íl` a `DONTESEK.md`, `dontesek/uj`, `naplok/F218_*`, `SEMA.md` fájlokban: 0 találat). A jelentés S9a azt állítja: „csak a szerkezete jön ki”. |
+| G 2 GK-24 / GK-25 / GK-26 / GK-11 / GK-31 | OK | `eszkozok/lapgen/alakosztaly.py`, `szerkezet.py`, `tesztek/teszt_kapuk.py` | A brief 2. pontjának minden sablon-alakosztálya megvan a mintákban. A `teszt_kapuk.py` a futtatott 53 teszt között zöld. GK-31: a `general.py --cel lexikon2 HAMART-001` friss folyamatban `real 0m32.471s`. Megjegyzés: a GK-24 kalibrálása az új lap prózáján és idézetein fut, nem a mai lapén. A regresszió miatt ez közelítésnek elfogadható. |
+| G GK-06 néma hiány | ELTÉRÉS | `vizsgalt.py:129-131, 151-157` | A `kollokacio` és a `csalad` ág Strong-szám nélkül, a `lanc` ág korpusz nélkül nem áll meg. A `szoveg.py:519-530` az üres listát elfogadja, így tört mondat keletkezne („…versben); .”). A `scan` ág ugyanezt `BemenetHiba`-val zárja. Ma latens: minden `lanc` sornak van `scope=TAHOT-teljes+TAGNT-teljes` korpusza (Grep, 655. sortól). |
+| G 5 rétegek / konfig | ELTÉRÉS | `eszkozok/lapgen/megjelenites/md/kizart.py:24-25, 121-130` | A brief 5. pontja szerint a küszöbök és heurisztikák helye a `konfig.py`. Itt az `_ATLAG_HATAR = 10` és a `_HATAR_KUSZOB = 0.40` a megjelenítőben áll. A következtetés eldöntése (átlag, „ez az ok húzza meg”) is a megjelenítésben történik, nem a modellben (`kovetkeztetes_kod`). Ugyanez a szelet a `KIZART_*` konstansokat a konfigba tette. |
+| G 1 M-NYERS (egy adat, egy út) | ELTÉRÉS | `bemenet/dontes.py:25-26, 90-93`; `bemenet/vizsgalt.py:41-42, 140, 164`; `szamitas/kizart.py:171` | A csoportos versszámot és az összesítő-jelölést két külön regex olvassa két úton. A `_suly` a kettőt keveri, néma tartalékkal (`egyedi.get(…, csoport_versszam)`). Ma nincs eltérés: Grep szerint a 100 összesítő sorból 100 illeszkedik a szigorúbb `_OSSZESITO_ELEJE_RX`-re is. |
+| D DT-F218a | OK | `dontesek/uj/f218a-s9-722be2.md:1` | Az S9a → S9b → S9c sorrend megvalósult; a `HELY_EGYSEG` N-tételre ment (N-F218a). A teljességi lista és a skip-leltár megvan (`naplok/F218_jelentes.md` 1844–1866). A skip-szám (13) mért: Grep `@unittest.skip` a `tesztek/`-ben → 13. |
+| D DT-F218b / HN-03 darabszám | ELTÉRÉS | `dontesek/uj/f218a-s9-722be2.md:2`; `naplok/F218_S9_nezes.md:100` | A „mind a 11 hely (HAMART 10, ISTENTISZT 1)” a main-en álló régi lapokon mért szám (`git show HEAD:lexikon/…` és a `teszt_vaz` HN-03 mintája → 10 és 1). Az új lapokon, ahol az S9c javít, és ahol a HN-03 teszt 0-t vár, a minta 9 és 7 találatot ad (HAMART: 2: 1, 4: 4, 9: 1, 12: 3; ISTENTISZT: 2: 1, 4: 2, 9: 1, 12: 3), összesen 16 helyet. |
+| D DT884 / DT890 / DT872 / DT912 | OK | `adat/jeloltek.tsv` | A `jeloltek.tsv` 24 sora csak HAMART-001, csak az 5. mező (`indoklas`) változott (awk mezőösszevetés: `mezo 5 24`). A tartalom: 6 + 6 + 2 idézőjel-sor, 5 „teljesség-mérés” → „teljes keresés”, 5 „semleges” → „Semleges” (word-diff). A DT890 a `S9A-KIEJTES` sorban (8.1 (j)), a DT872 az `ISM3-*` sorokban, `M-RÁRAKÓDÁS` mechanizmussal, meglévő osztályban. A DT912 bontása (27 / 16 / 10 = 53) a nézési csomagban változatlan. |
+| Adat: sablon- és névtábla | OK | `adat/lapgen_sablonok.tsv`, `adat/olvasoi_nevtabla.tsv` | Sablontábla: +61 `k3.*` sor, 0 törlés. Az `eredet=uj` sorok száma 49 = 8 (S1) + 41 (nézési A. lista). A `cim.*` sorok `uj_cimek_alkalmaz` eredetűek. Névtábla: +60 (`vizsgalt_csoport` 4, `halo_kereses` 6, `korpusz` 2, `ok_cella` 30, `ok_leiras_cella` 18; `cut -f1 \| uniq -c`). |
+| Adat: SEMA | ELTÉRÉS | `adat/SEMA.md:2561-2578` | A 2.68 pontot minden korábbi szelet kiegészítette (S5–S8d). Az S9a öt új vagy bővített típusa hiányzik belőle, köztük az `ok_leiras_cella` a saját kapujával („csak a kezdőbetűben térhet el”). A diffben a `SEMA.md` nem szerepel (numstat). |
+| Adat: licencek | OK | `adat/licencek.tsv` | Három sor 7. mezőjében (`kotelezo_megjeloles`) a két szóköz egyre változott (awk mezőhossz 158 → 157; word-diff). A szó szerinti idézet mezője változatlan. |
+| Adat: nyílt mag | ELTÉRÉS | `nyilt_mag/METHODS.md`, `nyilt_mag/MODSZER.md` | A 24 indoklás-cella javítása a nyílt magban 24 sorral több fordításhiányt okoz: a „missing … in 257 rows” helyett 281 (`git diff`). Ezt sem a jelentés S9a „Adatjavítás” bekezdése, sem a DT-F218b nem mondja ki; ugyanez a mechanizmus a 8. ellenőrzés E2 tétele volt. A CI 6× `FIGYELMEZTETES (F217, O4): generált nézet a PR-ban; felesleges` jelzést ad (`gh run view --log`), ez a 6 `nyilt_mag` fájl. |
+| A1 | ELTÉRÉS | `naplok/F218_jelentes.md:1822, 1824, 1874`; `naplok/F218_S9_nezes.md:11` | A jelentés S9b része „`S3_MARADEK` (10)”-et ír; a mért szám 8 (a base-en is 8: `git show 761290fa:…teszt_vaz.py \| grep`). A DT-F218a „22 skip, `S3_MARADEK` 10”-et ír; a base-en 21 volt, és a GK-19 kimaradt a felsorolásból. Az S9b „140 diff-sor”-a elavult; a mért szám 139. „A merge után a mérce a main-en is futtatható”: ez nem igaz, mert a B51 a `dontesek/uj/f218a-s9-722be2.md`-t méri, amelyet a `szamkiosztas` töröl (N200 mechanizmus; `naplok/F218_referencia.tsv` utolsó sora). A nézési csomag „GK-04 … zöld”-et ír, holott a `hely_egyseg` része skip (N-F218a). |
+| A2 | ELTÉRÉS | `NYITOTT_FELADATOK.md:1050` | Az N222 nyitottként áll, pedig az ág elvégezte (F218.12.4, `adat/licencek.tsv`). A lezárást a fő fájlban kellett volna jelölni. Az N200 (1012) visszatérő, valóban nyitott. Az N-F218a–d új és nyitott; az N-F218b tényállítását ellenőriztem (`jeloltek.tsv:922`, 25 vers). |
+| A3 | OK | – | Új párhuzam-címke nincs. A `k3.miert.tematikus` jelölési forrás, nem párhuzam-állítás. |
+| A4 | OK | – | Nincs tanulmány és nincs PaRDeS-réteg a diffben. |
+| A5 | OK | – | Nevesített tanító nincs. |
+| A6 / CI | OK | – | `gh run view 45044247480 --json headSha,conclusion,jobs`: headSha `0e42a6fc…`, `success`, minden lépés `success`. A lapgen-teszteket a CI nem futtatja, csak a mérce hash-őrét; ezeket magam futtattam: 53/53 OK. E12–E15 találat a naplóban nincs. A figyelmeztetések az F217 O4 hat sora (l. a nyílt mag sorát). |
+| ⛔ 5 / `ir` | ELTÉRÉS | `F218_GENERATOR_UJ_A_BRIEF.md:16` | Az `ir` mezőn kívüli írások: `adat/licencek.tsv`, `nyilt_mag/` (6 fájl), `dontesek/uj/f218a-s9-722be2.md`, `nyitott/uj/f218a-s9-722be2.md`. A korábbi szeletek a saját döntés- és nyitott fájljukat felvették az `ir`-be. A `jeloltek.tsv` a DT884 kimondott kivétele. CI-szabály erre nincs (`szabalyok.py` E27 csak lefedettséget néz). A brief ⛔ pontjai (a felhasználó nézése és a 2. független ellenőrzés) még nem esedékesek; a csomag „előkészítve” jelölésű, ez rendben van. |
+| Ellenőrzőlista 1: kiszűrt/törölt sorok | OK | – | Engedélyfájl: −1 sor (`S8D-MEGJ-2`), +6 S9a-sor, 13 hash-frissítés. Sablon- és névtábla: 0 törölt sor. A tesztvázból 7 S9-es és 1 `ISM_3` csonk került át (ezért 21 → 13 skip). |
+| Ellenőrzőlista 2: kulcslefedettség | OK | `eszkozok/lapgen/szamitas/kizart.py:286-298` | A 3. szakasz kapuja a táblasorok összegét a döntésnapló soraival veti össze. Az ISTENTISZT-en 579 = 470 + 109 vizsgált vers (`--szamlalok`). |
+| Ellenőrzőlista 3: a „nulla-diff” hatóköre | OK | – | A HAMART-001 TUDOMANYOS és KIZARASOK teljes nézetére vonatkozik, `munka` módban, `PARDES_DATUM=2026-11-13`, a hash-őrrel. Az ISTENTISZT-re nem vonatkozik: annak mércéje a 8.2. |
+| Ellenőrzőlista 4: sorszám-Δ | OK | – | `adat/jeloltek.tsv` 0, `adat/licencek.tsv` 0, `adat/lapgen_sablonok.tsv` +61, `adat/olvasoi_nevtabla.tsv` +60; a `konkordancia/` nem változott. Mindkét ≥10-es Δ bontása megvan a jelentés S9a részében, és egyezik a mérésemmel. |
+| Tesztek (Diéta 3) | OK, illetve NEM ELLENŐRIZHETŐ | – | `python eszkozok/lapgen/tesztek/futtat.py kizart kapuk regresszio szerkezet` → `Ran 53 tests … OK`, 0 kihagyva. A `teszt_futtat.py --diff` félbemaradt; az orkesztrátor utasítására nem futtatom újra. A teljes tesztkör 381/13 állítása nem ellenőrizhető, mert a teljes kört nem futtattam. |
+
+Az ELTÉRÉS-ek súlyosság szerint:
+1. **Alapszabály, tartalmi döntés kell.** A `forras_kereses` egy darabja kézi prózaként jelenik meg a lapon. A festékpróba ezt nem fogja meg, döntés nincs róla, és a jelentés állítása pontatlan.
+2. **Számlálók, mechanikus.** A 8.2/1 „LXX-összesítés” független számlálása részleges.
+3. **HN-03, mechanikus darabszám.** Az S9c-re szánt hely nem 11, hanem 16 (az új ISTENTISZT-lapon 7). A DT-F218b döntési alapja így megváltozott.
+4. **Nyílt mag, jelentés.** A +24 fordításhiány nincs kimondva; ehhez jön a 6 F217 figyelmeztetés.
+5. **Kisebb, mechanikus tételek:** az N222 lezárása; a SEMA 2.68; a GK-06 latens ágai; a küszöbök helye; a dupla regex; a jelentés számai; az `ir` mező.
+
+### A 15. ellenőrzés javítóköre (2026-11-22, a 17. session)
+
+| Tétel | Besorolás | Mi történt |
+|---|---|---|
+| 1. A `forras_kereses` megszorítása kézi szövegként a lapon („Hif'íl-alakok”) | tartalmi | ⛔ az orkesztrátorhoz (javaslat: (a) szerkezetként bontva, a név a névtábla `kereses_megszoritas` típusából; a lap nem változik). Ebben a körben nem változott; a jelentés S9a-beli „csak a szerkezete jön ki” állítása erre a darabra pontatlan volt. |
+| 2. A 8.2/1 LXX-összesítése részleges | mechanikus, de egy körben nem írható meg függetlenül | N-F218e (az S9c-é): az 5. szakasz összegző számainak független számlálása; a csoportos ág algoritmus-másolata ugyanott. |
+| 3. HN-03: 16 hely, nem 11 | mechanikus | A DT-F218b kérdésrésze, a nézési csomag D. pontja és a folytatás az új lapokon mért 16 helyet írja (HAMART 9, ISTENTISZT 7); az orkesztrátor tájékoztatva. |
+| 4. Nyílt mag: +24 fordításhiány, 6 F217-figyelmeztetés | mechanikus | A 6 `nyilt_mag/` fájl kikerült a PR-ból (a main-en az Action generálja, F217 O4). Kimondva: a `jeloltek.tsv` 24 indoklás-cellájának javítása után a nyílt mag `kizarasok.tsv` angol oszlopa ezekben a sorokban elavult fordításként jelölődik (257 → 281 sor fordításra vár); az újrafordítás a nyílt mag fordítási menetéé. |
+| 5a. N222 nyitottként állt | mechanikus | A sor a `NYITOTT_FELADATOK.md` nyitott listájából kikerült; a lezárás a `nyitott/uj/f218a-s9-722be2.md` lezárt-blokkjában. |
+| 5b. SEMA 2.68 | mechanikus | Kiegészítve: `vizsgalt_csoport`, `halo_kereses`, `korpusz`, az `ok_cella` 3. szakaszbeli használata, az `ok_leiras_cella` a kapujával. |
+| 5c. GK-06 latens ágai | mechanikus | `bemenet/vizsgalt.py`: a `kollokacio` és a `csalad` Strong-szám nélkül, a `lanc` korpusz nélkül BemenetHiba. |
+| 5d. A küszöbök a megjelenítőben | mechanikus | `konfig.KIZART_ATLAG_HATAR`, `konfig.KIZART_HATAR_KUSZOB`. A következtetés eldöntése (`kovetkeztetes_kod`) a megjelenítőben maradt: az S9c-ben a modellbe költöztethető (az N-F218e mellé). |
+| 5e. Dupla regex (M-NYERS) | mechanikus | A csoportos versszám a döntésnapló réteg egyetlen mintájából; az indoklás összesítő eleje és a forrás-mező versszáma eltérésnél BemenetHiba; a `_suly` néma tartaléka helyett KapuHiba. |
+| 5f. A jelentés számai | mechanikus | Javítva itt: az S9b „`S3_MARADEK` (10)” helyesen 8 teszt; a „140 diff-sor” az N-F218x után 139; a DT-F218a kérdése „21 skip … GK-19” szerint; a nézési csomag GK-04-e a `lxx_egyezes` részre szűkítve. A „merge után a mérce a main-en is futtatható” állítás pontatlan volt: a B51 az ág döntésfájlját is méri, amelyet a `szamkiosztas` töröl, ezért a merge után a mérce első futása előtt az N200 lépés kell (a sor törlése, a `DONTESEK.md` hash-e) — ez az S9c első lépése. |
+| 5g. `ir` | mechanikus | A brief `ir` mezője kiegészítve: `dontesek/uj/f218a-s9-722be2.md`, `nyitott/uj/f218a-s9-722be2.md`, `adat/licencek.tsv`. A `NYITOTT_FELADATOK.md` meglévő sorának szerkesztése a CLAUDE.md szerint az `ir`-en kívül megengedett. |

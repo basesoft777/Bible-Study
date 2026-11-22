@@ -188,3 +188,60 @@ class HashOrKapu(unittest.TestCase):
             self.assertEqual(H.main(['--valtozott-lista', lista]), 0)
         finally:
             shutil.rmtree(d)
+
+
+class Szamlalok(unittest.TestCase):
+    """A brief 8.2/1 független számlálói (S9b; a 10. ellenőrzés 4. tétele): a lapon kimondott számok és a regresszió
+    saját számlálása az adattáblákból, mindkét mintalapon."""
+
+    @classmethod
+    def setUpClass(cls):
+        import datetime
+        import kozos
+        from lapgen import fo
+        from lapgen.megjelenites.md.iro import lap_szoveg
+        from lapgen.szoveg import MotivumId
+        cls.konyvtar = tempfile.mkdtemp()
+        for azonosito in kozos.MINTALAPOK:
+            eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=datetime.date(2026, 11, 13))
+            with open(os.path.join(cls.konyvtar, '%s_TUDOMANYOS.md' % azonosito), 'w', encoding='utf-8',
+                      newline='\n') as f:
+                f.write(lap_szoveg(eredmeny.nezetek['TUDOMANYOS']))
+        cls.gyoker = kozos.GYOKER
+        cls.mintalapok = kozos.MINTALAPOK
+
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(cls.konyvtar)
+
+    def test_a_kuszob_egyezik_a_generatoreval(self):
+        from lapgen import konfig
+        self.assertEqual(R.TSK_KUSZOB, konfig.TSK_SZAVAZAT_KUSZOB)
+
+    def test_mindket_lapon_egyeznek(self):
+        """Minden kimondott szám egyezik a független számlálással; a Döntési út, a KH és az LXX számai mindkét
+        lapon állnak, az ISTENTISZT-001-en a szópár-lánc is."""
+        for azonosito in self.mintalapok:
+            sorok = R.szamlalok(azonosito, self.konyvtar, self.gyoker)
+            _szoveg, hiba = R.szamlalo_jelentes(sorok)
+            self.assertFalse(hiba, '%s: %s' % (azonosito, _szoveg))
+            meglevo = {nev for nev, lapon, _s in sorok if lapon is not None}
+            for nev in ('megvizsgált versek (1.)', 'KH: utalások összesen (6.)', 'ószövetségi versek (5.)'):
+                self.assertIn(nev, meglevo, azonosito)
+        self.assertIn('a szópár igéje a héber szövegben (9.)',
+                      {nev for nev, lapon, _s in R.szamlalok('ISTENTISZT-001', self.konyvtar, self.gyoker)
+                       if lapon is not None})
+
+    def test_az_elrontott_szamot_kimutatja(self):
+        ut = os.path.join(self.konyvtar, 'ISTENTISZT-001_TUDOMANYOS.md')
+        with open(ut, encoding='utf-8') as f:
+            eredeti = f.read()
+        try:
+            with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(eredeti.replace('versre terjednek', 'versre terjednek', 1).replace(
+                    'A motívum ószövetségi helyei 16 versre', 'A motívum ószövetségi helyei 17 versre', 1))
+            _szoveg, hiba = R.szamlalo_jelentes(R.szamlalok('ISTENTISZT-001', self.konyvtar, self.gyoker))
+            self.assertTrue(hiba)
+        finally:
+            with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+                f.write(eredeti)

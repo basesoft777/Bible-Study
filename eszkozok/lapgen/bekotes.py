@@ -12,6 +12,7 @@ from lapgen.megjelenites.md import hatastortenet as md_hatastortenet
 from lapgen.megjelenites.md import idezes as md_idezes
 from lapgen.megjelenites.md import kapcsolatok as md_kapcsolatok
 from lapgen.megjelenites.md import kereszthiv as md_kereszthiv
+from lapgen.megjelenites.md import kizart as md_kizart
 from lapgen.megjelenites.md import kizarasok as md_kizarasok
 from lapgen.megjelenites.md import kolofon as md_kolofon
 from lapgen.megjelenites.md import lxx as md_lxx
@@ -24,6 +25,7 @@ from lapgen.szamitas import hatastortenet as sz_hatastortenet
 from lapgen.szamitas import idezes as sz_idezes
 from lapgen.szamitas import kapcsolatok as sz_kapcsolatok
 from lapgen.szamitas import kereszthiv as sz_kereszthiv
+from lapgen.szamitas import kizart as sz_kizart
 from lapgen.szamitas import kizarasok as sz_kizarasok
 from lapgen.szamitas import kolofon as sz_kolofon
 from lapgen.szamitas import lxx as sz_lxx
@@ -39,6 +41,7 @@ def bekot(rend):
     rend.bekot(md_eleje.JELMAGYARAZAT, sz_eleje.szamit_ures, md_eleje.megjelenit_jelmagyarazat)
     rend.bekot(md_dontesi_ut.AZONOSITO, sz_dontesi_ut.szamit, md_dontesi_ut.megjelenit, kapu=sz_dontesi_ut.kapu)
     rend.bekot(md_elofordulas.AZONOSITO, sz_elofordulas.szamit, md_elofordulas.megjelenit)
+    rend.bekot(md_kizart.AZONOSITO, sz_kizart.szamit, md_kizart.megjelenit, kapu=sz_kizart.kapu)
     rend.bekot(md_szocikkek.AZONOSITO, sz_szocikkek.szamit, md_szocikkek.megjelenit, kapu=sz_szocikkek.kapu)
     rend.bekot(md_resek.AZONOSITO_MIERT_FONTOS, sz_resek.szamit_miert_fontos, md_resek.megjelenit_miert_fontos)
     rend.bekot(md_lxx.AZONOSITO, sz_lxx.szamit, md_lxx.megjelenit)

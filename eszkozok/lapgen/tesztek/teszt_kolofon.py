@@ -119,7 +119,7 @@ class Forrastabla(_Alap):
         vart = {rend.sorszam(rend.szulo(a)) for a, olv in self.elozo.items() if 'B02' in olv}
         self.assertEqual(set(motivumtabla[0].szakaszok), vart)
         self.assertEqual(list(motivumtabla[0].szakaszok), sorted(vart))
-        self.assertNotIn('3. Kizárt', self.lap)   # a 3. szakasznak nincs szelete: nem olvas
+        self.assertIn('3. Kizárt', self.lap)   # a 3. szakasz (S9a) is olvas: a szakaszlistákban áll
 
     def test_licenc_csak_a_licencleltarbol(self):
         """GK-07: a `licenc` alakú licenc a licencleltár címkéje szó szerint."""
