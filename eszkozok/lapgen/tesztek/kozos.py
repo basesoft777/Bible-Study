@@ -77,7 +77,7 @@ def tsv(*sorok):
 
 
 JEGYZEK_FEJLEC = ('id', 'utvonal', 'leiras', 'kotelezo', 'javitas', 'frissesseg', 'allapot',
-                  'licenc_kulcs', 'olvasoi_nev_kulcs', 'forras')
+                  'licenc_kulcs', 'olvasoi_nev_kulcs', 'irodalom', 'forras')
 NEVTABLA_FEJLEC = ('tipus', 'kulcs', 'olvasoi_nev', 'eredet')
 SABLON_FEJLEC = ('kulcs', 'mondat', 'parameterek', 'szakasz', 'eredet', 'dontes')
 
@@ -90,6 +90,8 @@ def alap_minirepo(nevek=(), sablonok=(), tovabbi=None, jegyzek_sorok=()):
                ('B66', 'adat/lapgen_sablonok.tsv', 'sablonok', 'igen', '-', '-', 'aktiv', '-', '-', 'manual'),
                ('B68', 'adat/lapgen_bemenetek.tsv', 'jegyzek', 'igen', '-', '-', 'aktiv', '-', '-', 'manual')]
     jegyzek.extend(jegyzek_sorok)
+    # a tesztek régi, `irodalom` nélküli sora: az oszlop `-` (nem áll a 12. szakaszban)
+    jegyzek = [jegyzek[0]] + [s[:9] + ('-',) + s[9:] if len(s) == len(JEGYZEK_FEJLEC) - 1 else s for s in jegyzek[1:]]
     fajlok = {
         'adat/lapgen_bemenetek.tsv': tsv('# teszt', *jegyzek),
         'adat/lap_befagyasztas.tsv': tsv(('id', 'ok', 'dontes', 'datum'), ('FAGYOTT-001', 'ok', 'd', '2026-11-12')),

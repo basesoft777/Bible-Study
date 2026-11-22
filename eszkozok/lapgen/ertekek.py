@@ -188,3 +188,13 @@ class ResElemFajta(enum.Enum):
     URES = 'ures'
     FORRAS = 'forras'               # a kézi forrássor helyén az olvasói forrássor
     SZAKIRODALOM = 'szakirodalom'   # a vitatott pont szakirodalom-sora
+
+
+class IrodLicenc(enum.Enum):
+    """A 12. szakasz forrássorának licencalakja (a jegyzék `irodalom` oszlopa, SEMA 2.66; S8c)."""
+    LICENC = 'licenc'               # a licencleltár címkéje
+    NYILT_MAG = 'nyilt_mag'         # a nyílt adatmagban kiadott saját adat
+    ELOFORDULAS = 'elofordulas'     # az előfordulás-tábla: az adatoszlopok a nyílt magban, a magyarázat a projekté
+    FORDITAS = 'forditas'           # a fordítástábla: a fordítás a projekté, a szótárszöveg licence a szótárnál
+    DOI = 'doi'                     # a Károli–Strong párosítás: a címke és a közlés DOI-ja
+    CHAIN_LINEAGE = 'chain_lineage' # a Chain Lineage Browser: licenc nincs megadva (konfig.IROD_KULSO_LICENC)

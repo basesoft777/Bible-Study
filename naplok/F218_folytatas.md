@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218a-s8b` (az S8b; alap: main `63be37cc`) · PR: #782 (draft; az S8a: #779, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
+Ág: `claude/f218a-s8c-5ffa99` (az S8c; alap: main `9730b829`) · PR: draft, a megnyitás után (az S8a: #779, az S8b: #782, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
@@ -48,7 +48,8 @@
 | 11. ellenőrzés (Fable, S8a) | **ELTÉRÉS: 5 tétel; a javítókör kész** (`15501bb4`) | a jelentés „Független ellenőrzés — 11. ellenőrzés” és „A 11. ellenőrzés javítóköre”; push előtti kapu: 0 HIBA |
 | N200 (a mérce hash-sorai a #779 merge-e után) | **kész** (a 14. session) | a B51 `DONTESEK.md` hash-e frissült, a törölt `dontesek/uj/f218a-s8.md` sora kikerült; regresszió RENDBEN, hash-őr 209 sor |
 | F218.11 (S8b): a kézi rések (Miért fontos, 10., 11.) | **kész** (a 14. session, `claude-opus-5-5`) | a 4. szakasz egészben, a 10. és a 11. bájtra egyezik, engedélysor nélkül; 7 sablonsor, 6 névtábla-sor, B40; `teszt_resek.py`; festékpróba 0. **⛔ GK-19 (T6):** a pontosság-mondat új tényállítás, a felhasználóé (a jelentés „F218.11 — S8b”) |
-| F218.11 (S8c–S8d) | nem indult | S8c: 12. Irodalom (a „Szakirodalom (a vitatott pontokhoz)” blokk is); S8d: Kolofon (GK-07, GK-27, GK-28 maradéka, `ISM-KOLOFON`) |
+| F218.11 (S8c): „12. Irodalom és idézés” | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 15. session, `claude-opus-5-5`) | DT-F218x (🟢, a felhasználó: „(a) mehet”): a forráslista a számozott szakaszok olvasási naplójából, a jegyzék új `irodalom` oszlopával szűrve; a tanúk és a Vulgata a tábláik ellenőrzött soraiból. 21 listasor és a blokkfejléc tér el (28 diff-sor, mind `S8C-*` engedéllyel); 16 sablonsor, 82 névtábla-sor (7 `uj`); `teszt_idezes.py` (10). A jelentés „F218.11 — S8c” szakasza |
+| F218.11 (S8d) | nem indult | Kolofon (GK-07 maradéka: a forrástábla ugyanabból a halmazból, DT-F218x; GK-27, GK-28 maradéka, `ISM-KOLOFON`) |
 | F218.12 (S9) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
@@ -73,6 +74,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 *Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
 
 ## Következő lépés
+
+**Az S8c kész (a 15. session, 2026-11-22).** A HAMART-001 regressziója RENDBEN; a 12. szakasz 28 diff-sora mind engedéllyel (DT-F218x, a brief 8.1 (b) osztálya); a jelentés „F218.11 — S8c” szakasza. **A merge után az S8d első lépése:** a mérce hash-sorai (N200: a `szamkiosztas` a `DONTESEK.md`-t módosítja, a `dontesek/uj/f218a-s8c-5ffa99.md`-t törli, mindkettő B51). **Az S8d-nek innen:** a Kolofon forrástáblája ugyanazt a halmazt használja (`bemenet/irodalom.py`, a szakaszleíró `gyujto` jelzője: a szakasz számítása a számozott szakaszok olvasásait kapja); a régi `blokk_kolofon` a `fajl_licenc_blokk_lista` szakaszonkénti bontását is kiírja (`KOLOFON_SZAKASZNEV`): a szakaszonkénti olvasás a `fo.lap_keszit` `tartalmi` szótárában megvan. A „3. Kizárt és vizsgált helyek” továbbra is szelet nélkül.
 
 **Az S8b kész (a 14. session, 2026-11-21).** A HAMART-001 regressziója RENDBEN, a jelentés „F218.11 — S8b” szakasza. **⛔ a felhasználóhoz:** a GK-19 T6-mondata (a Károli–Strong párosítás pontossága a Módszertanban). Az S8c csak kérésre indul (az orkesztrátor, 2026-11-21).
 

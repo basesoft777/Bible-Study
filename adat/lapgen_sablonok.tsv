@@ -882,3 +882,19 @@ res.olvasoi.modszertan	Hogyan készült a kutatás: a döntések, a korlátok é
 res.forras	*Forrás: {nevek|; }.*	nevek:lista(nev)	rések	olvasoi_atiras (_prov_olvasoi, a kész lapon a „Forrás:” sor)	-
 res.szakirodalom	*Szakirodalom:* {osszefoglalo} ({szerzo}, {ev}; a teljes hivatkozás {szakasz|a}. szakaszban.)	osszefoglalo:lathato, szerzo:lathato, ev:szam, szakasz:szam	10	szakirodalom_beszur	-
 res.szakirodalom.hiany	*Szakirodalom:* {osszefoglalo} (Keresve: OpenAlex, Crossref, {datum}.)	osszefoglalo:lathato, datum:datum	10	szakirodalom_beszur	-
+irod.olvasoi	Hogyan hivatkozz erre a szócikkre, és mely szótárakból, adatforrásokból készült.	-	12	OLVASOI_BLOKK (a kész lapon)	-
+irod.hatokor	*Ez a rész a motívum hivatkozási adatait, a ténylegesen felhasznált szótárakat (teljes névvel, forrásonként) és az adatforrásokat adja.*	-	12	blokk_idezes (a kész lapon)	-
+irod.hogyan	**Hogyan hivatkozz:** az idézési forma a [{kolofon}](#{horgony}) „Hogyan idézd” bekezdésében áll.	kolofon:lathato, horgony:horgony	12	blokk_idezes	-
+irod.szotarak	**Felhasznált szótárak:**	-	12	blokk_idezes	-
+irod.szotar	- {nev} ({forrasok|, }, {licencek|, })	nev:nev(irod_szotar), forrasok:lista(nev:irod_szotar_forras), licencek:lista(lathato)	12	blokk_idezes	-
+irod.szakirodalom	**Szakirodalom (a vitatott pontokhoz):**	-	12	szakirodalom_beszur	-
+irod.szakirodalom.doi	- {szerzo}, {ev}: *{cim}*. {megjelenes}. DOI: {doi}	szerzo:lathato, ev:szam, cim:lathato, megjelenes:lathato, doi:lathato	12	_szakirodalom_hivatkozas	-
+irod.szakirodalom.url	- {szerzo}, {ev}: *{cim}*. {megjelenes}. {url}	szerzo:lathato, ev:szam, cim:lathato, megjelenes:lathato, url:lathato	12	_szakirodalom_hivatkozas	-
+irod.adatforrasok	**Adatforrások:**	-	12	blokk_idezes	-
+irod.adat	- {nev} ({licencek|, })	nev:nev(irod_adat), licencek:lista(lathato)	12	blokk_idezes	-
+irod.kulso	- {nev} ({licencek|, })	nev:nev(irod_kulso), licencek:lista(lathato)	12	blokk_idezes	-
+irod.licenc.nyilt_mag	CC BY 4.0, a nyílt adatmagban	-	12	NYILT_MAG_LICENC	-
+irod.licenc.elofordulas	adatoszlopok: CC BY 4.0, a nyílt adatmagban; igehelyenkénti magyarázat: {cimke}	cimke:lathato	12	ELOFORDULAS_LICENC	-
+irod.licenc.forditas	magyar fordítás: {cimke}; a lefordított szótárszöveg licence a szótár saját soránál áll	cimke:lathato	12	FORDITAS_LICENC	-
+irod.licenc.doi	{cimke}, https://doi.org/10.5281/zenodo.24141884	cimke:lathato	12	olvasoi_licencek (KAROLI_STRONG_DOI)	-
+irod.licenc.chain_lineage	licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva	-	12	CHAIN_LINEAGE_LICENC_OLVASOI	-

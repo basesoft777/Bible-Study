@@ -14,7 +14,7 @@ KRITERIUM_HORGONY = Horgony('mi-tartozik-ide')
 
 
 class SzakaszLeiro:
-    __slots__ = ('azonosito', 'szamozott', 'nezet', 'szamit', 'megjelenit', 'kapu', 'sorszam', 'alresz')
+    __slots__ = ('azonosito', 'szamozott', 'nezet', 'szamit', 'megjelenit', 'kapu', 'sorszam', 'alresz', 'gyujto')
 
     def __init__(self, azonosito, szamozott, szamit=None, megjelenit=None, nezet=konfig.NEZET_TUDOMANYOS,
                  alresz=None):
@@ -28,6 +28,9 @@ class SzakaszLeiro:
         self.megjelenit = megjelenit
         self.kapu = None       # a szakasz kapuja a lapmodellen (pl. számegyezés); None, ha nincs
         self.sorszam = None
+        # a lap forráslistáját adó szakasz (12. Irodalom; S8d: a Kolofon): a számítása a megelőző számozott szakaszok
+        # (és alrészeik) olvasási naplóját is megkapja, GK-07
+        self.gyujto = False
 
 
 def _rend():
@@ -70,9 +73,9 @@ class Szakaszrend:
             if leiro.alresz is not None and (i == 0 or self._rend[i - 1].azonosito != leiro.alresz):
                 raise ValueError('a(z) %s alrész nem közvetlenül a szülője (%s) után áll' % (leiro.azonosito, leiro.alresz))
 
-    def bekot(self, azonosito, szamit, megjelenit, kapu=None):
+    def bekot(self, azonosito, szamit, megjelenit, kapu=None, gyujto=False):
         leiro = self._nev_szerint[azonosito]
-        leiro.szamit, leiro.megjelenit, leiro.kapu = szamit, megjelenit, kapu
+        leiro.szamit, leiro.megjelenit, leiro.kapu, leiro.gyujto = szamit, megjelenit, kapu, gyujto
 
     def sorszam(self, azonosito):
         """A számozott szakasz sorszáma; számozatlan szakaszra hiba."""
