@@ -143,13 +143,15 @@ _JAVITAS_ZAR = threading.Lock()
 
 
 def betolt_javitasok():
-    """A három gyorsítótár (sorrend, átírás, zárójel) egyetlen beolvasással, szálbiztosan: ha két szál egyszerre kéri (pl. az indulási
-    előmelegítés és az első kérés), a második megvárja az elsőt, nem olvassa be másodszor. Ismételt hívás nem csinál semmit."""
+    """A javítótábla gyorsítótárai szálbiztosan: a három osztály (sorrend, átírás, zárójel) egyetlen beolvasással, a betűjavítás (`pe_mem`,
+    `res_dalet`; `betu_javitasok`) a saját, zárolt beolvasásával. Ha két szál egyszerre kéri (pl. az indulási előmelegítés és az első kérés), a
+    második megvárja az elsőt, nem olvassa be másodszor. Ismételt hívás nem csinál semmit."""
     global _SORREND, _ATIRAS, _ZAROJEL
     with _JAVITAS_ZAR:
         if _SORREND is None or _ATIRAS is None or _ZAROJEL is None:
             r = _javitasok_tobb(('heber_sorrend', 'atiras', 'zarojel'))
             _ATIRAS, _ZAROJEL, _SORREND = r['atiras'], r['zarojel'], r['heber_sorrend']
+    betu_javitasok()
 
 
 def sorrend_javitasok(ut=None):
@@ -351,11 +353,23 @@ _BETU = None
 _TOKEN_RE = re.compile('[%s][%s%s]*' % (HEB_BETU, HEB_BETU, '\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4-\u05c7'))
 
 
+_BETU_ZAR = threading.Lock()
+
+
 def betu_javitasok(ut=None):
-    """Strong → {forrás-token (NFD): javított token (NFD)} a `pe_mem` / `res_dalet` `javitva` sorokból (a nem egyértelmű kimarad)."""
+    """Strong → {forrás-token (NFD): javított token (NFD)} a `pe_mem` / `res_dalet` `javitva` sorokból (a nem egyértelmű kimarad).
+    F235: a gyorsítótár szálbiztos (zár alatt, egyszer töltődik: az indulási előmelegítéssel egyidejű első kérés megvárja, nem olvassa be másodszor)."""
     global _BETU
-    if _BETU is not None and not ut:
-        return _BETU
+    if ut:
+        return _betu_szamol(ut)
+    if _BETU is None:
+        with _BETU_ZAR:
+            if _BETU is None:
+                _BETU = _betu_szamol(None)
+    return _BETU
+
+
+def _betu_szamol(ut):
     jav, tilt = {}, {}
     try:
         with open(ut or JAVITAS_UT, encoding='utf-8') as f:
@@ -373,11 +387,8 @@ def betu_javitasok(ut=None):
                 unicodedata.normalize('NFD', d['javitott_alak']).strip('׳'))
         else:
             tilt.setdefault(d['strong'], set()).add(a)
-    ki = {st: {a: next(iter(b)) for a, b in t.items() if len(b) == 1 and a not in tilt.get(st, set())}
-          for st, t in jav.items()}
-    if not ut:
-        _BETU = ki
-    return ki
+    return {st: {a: next(iter(b)) for a, b in t.items() if len(b) == 1 and a not in tilt.get(st, set())}
+            for st, t in jav.items()}
 
 
 def betu_javit(szoveg, strong, javitasok=None):

@@ -286,26 +286,32 @@ class EgyszeriBetoltes(unittest.TestCase):
 
     def test_egyszerre_kert_betoltes_egyszer_olvas(self):
         import threading
-        regi = (BR._SORREND, BR._ATIRAS, BR._ZAROJEL, BR._javitasok_tobb)
-        db = []
-        orig = BR._javitasok_tobb
+        regi = (BR._SORREND, BR._ATIRAS, BR._ZAROJEL, BR._javitasok_tobb, BR._BETU, BR._betu_szamol)
+        db, betu_db = [], []
+        orig, betu_orig = BR._javitasok_tobb, BR._betu_szamol
 
         def szamol(hibak, ut=None):
             db.append(tuple(hibak))
             return orig(hibak, ut)
-        BR._SORREND = BR._ATIRAS = BR._ZAROJEL = None
+        def betu_szamol(ut):
+            betu_db.append(ut)
+            return betu_orig(ut)
+        BR._SORREND = BR._ATIRAS = BR._ZAROJEL = BR._BETU = None
         BR._javitasok_tobb = szamol
+        BR._betu_szamol = betu_szamol
         try:
-            szalak = [threading.Thread(target=f) for f in (BR.sorrend_javitasok, BR.atiras_javitasok, BR.zarojel_javitasok, BR.betolt_javitasok) * 3]
+            szalak = [threading.Thread(target=f) for f in (BR.sorrend_javitasok, BR.atiras_javitasok, BR.zarojel_javitasok, BR.betolt_javitasok,
+                                                          BR.betu_javitasok) * 3]
             for t in szalak:
                 t.start()
             for t in szalak:
                 t.join()
-            self.assertEqual(len(db), 1, 'a táblát egyszer kell beolvasni: %r' % (db,))
-            BR.sorrend_javitasok(), BR.atiras_javitasok(), BR.zarojel_javitasok()
-            self.assertEqual(len(db), 1, 'a kész gyorsítótár nem olvas újra')
+            self.assertEqual(len(db), 1, 'a három osztály táblája egyszer olvasandó be: %r' % (db,))
+            self.assertEqual(len(betu_db), 1, 'a betűjavítás táblája egyszer olvasandó be: %r' % (betu_db,))
+            BR.sorrend_javitasok(), BR.atiras_javitasok(), BR.zarojel_javitasok(), BR.betu_javitasok()
+            self.assertEqual((len(db), len(betu_db)), (1, 1), 'a kész gyorsítótár nem olvas újra')
         finally:
-            BR._SORREND, BR._ATIRAS, BR._ZAROJEL, BR._javitasok_tobb = regi
+            BR._SORREND, BR._ATIRAS, BR._ZAROJEL, BR._javitasok_tobb, BR._BETU, BR._betu_szamol = regi
 
 
 if __name__ == '__main__':

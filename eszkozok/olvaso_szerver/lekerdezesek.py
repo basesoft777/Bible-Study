@@ -64,7 +64,7 @@ def _in(con, sql_elo, sql_uto, lista, elo_param=(), uto_param=(), csomag=400):
 # ---------------------------------------------------------------------------------------------------------------------
 # A kérés idejére nyitott, szálanként külön gyorsítótár (`with elotoltes():`): csak a hívó által kért kulcsokat tartalmazza, és a
 # kérés végén eldobódik, tehát nem állandó adat. Ugyanazokat a sorokat adja, ugyanabban a sorrendben, mint az egyedi lekérdezés
-# (a teszt_sebesseg.py és a teszt_olvaso_szerver.py egyezésvizsgálata). Nyitott gyorsítótár nélkül minden függvény a régi úton fut.
+# (`teszt_sebesseg.py` `test_az_elotoltes_ugyanazt_adja_mint_az_egyedi_lekerdezes`; a lap bájtazonosságát a `teszt_olvasoi_merce.py` mércéje őrzi). Nyitott gyorsítótár nélkül minden függvény a régi úton fut.
 _EL = threading.local()
 
 

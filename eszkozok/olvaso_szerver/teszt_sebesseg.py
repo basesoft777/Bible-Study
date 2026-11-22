@@ -8,7 +8,7 @@ Egy lap előállításának ideje MELEG szerveren, GYORSÍTÓTÁR NÉLKÜL (a la
 A mérés a Flask belső kliensével fut (nincs hálózat), a gyorsítótár ürítése a közvetlen `cache.urit()` (tesztkörnyezet: más kapu nincs, a szerver
 nem kínál ürítő végpontot). Minden oldalt egyszer bemelegítünk (a sablonok, a modulok és a lusta betöltések), utána háromszor mérünk, és a legjobb idő
 számít: a határ a kód lassulását őrzi, nem a gép pillanatnyi terhelését (a párhuzamos munkamenetek zaja ellen). Az SQL-utasítások számát a
-kapcsolat `set_trace_callback`-je adja (a `PRAGMA`-kat is beleértve).
+kapcsolat `set_trace_callback`-je adja (a `PRAGMA`-kat is beleértve); a határhoz a három mérés legkisebb SQL-száma számít.
 
 Futtatás (WSL `pardes`, venv): PARDES_DB=<pardes.db> python eszkozok/olvaso_szerver/teszt_sebesseg.py [-v]
 A teszt a `PARDES_DB` nélkül (vagy Flask nélkül) kimarad, kifejezetten jelölve (nem zöld). A határokat a `HATAROK` tartja; a megengedett
@@ -123,6 +123,82 @@ class TestSebesseg(unittest.TestCase):
             if talalat > TALALAT_HATAR_MS:
                 rossz.append('%s %s: %.1f ms > %d ms' % (tipus, ut, talalat, TALALAT_HATAR_MS))
         self.assertEqual(rossz, [], 'gyorsítótár-találat lassabb a határnál')
+
+    def test_az_elotoltes_ugyanazt_adja_mint_az_egyedi_lekerdezes(self):
+        """A lapszintű előtöltés (`elotoltes`) a vers- és strongszintű függvényeknek ugyanazt az értéket adja, mint az egyedi lekérdezés (a lap
+        szövege ezért nem változhat): kilenc fejezeten át (köztük arámi részek, a 400-as csomaghatáron átnyúló vers- és strongszám)."""
+        import lekerdezesek as q
+        con = self.con
+        igek = []
+        for kk, fej in (('Zsolt', 119), ('Zsolt', 78), ('Zsolt', 89), ('Zsolt', 105), ('1Móz', 1), ('1Móz', 2), ('1Móz', 3), ('Dán', 2), ('Ezsd', 4)):
+            igek += [ig for ig, _, _ in q.fejezet_versek(con, kk, fej)]
+        self.assertGreater(len(igek), 400, 'a minta nem lépi át a 400-as csomaghatárt')
+        strongok = q.heber_strongok_versekre(con, igek)
+        self.assertGreater(len(strongok), 400, 'a strongok száma nem lépi át a 400-as csomaghatárt')
+
+        def mind():
+            ki = {}
+            for ig in igek:
+                ki[('eredeti', ig)] = q.eredeti_szavak(con, ig)
+                ki[('macula', ig)] = q.macula(con, ig)
+                ki[('lxx', ig)] = q.lxx_szavak_sorrendben(con, ig)
+            xml = [m['xml_id'] for ig in igek for m in q.macula(con, ig) if m.get('xml_id')]
+            ki['aramai'] = q.aramai_xml(con, xml)
+            for st in strongok + ['H9999', 'G0001']:                # a nem létező strong: üres válasz
+                ki[('bdb_en', st)] = q.bdb_angol(con, st)
+                ki[('bdb_hu', st)] = q.bdb_magyar(con, st)
+                ki[('bdb_meta', st)] = q.bdb_magyar_meta(con, st)
+                ki[('lxx_h', st)] = q.lxx_bridge_h(con, st)
+            return ki
+        egyedi = mind()
+        with q.elotoltes():
+            q.elotolt_versek(con, igek)
+            q.elotolt_strongok(con, strongok + ['H9999', 'G0001'])
+            sorok = []
+            con.set_trace_callback(sorok.append)
+            try:
+                elotoltott = mind()
+            finally:
+                con.set_trace_callback(None)
+        self.assertLess(len(sorok), 20, 'az előtöltött hatókörben a lekérdezések gyorsítótárból válaszolnak: %d SQL' % len(sorok))
+        self.assertEqual(sorted(egyedi, key=repr), sorted(elotoltott, key=repr))
+        rossz = [k for k in egyedi if egyedi[k] != elotoltott[k]]
+        self.assertEqual(rossz, [], 'az előtöltött érték eltér az egyedi lekérdezésétől: %r' % (rossz[:5],))
+        # a hatókör vége után nincs szivárgás: az egyedi lekérdezés a régi úton fut
+        sorok2 = []
+        con.set_trace_callback(sorok2.append)
+        try:
+            q.bdb_magyar(con, strongok[0])
+        finally:
+            con.set_trace_callback(None)
+        self.assertTrue(sorok2, 'a hatókör után a függvény nem válaszolhat gyorsítótárból')
+
+    def test_a_tiltott_tabla_nem_olvasodik_az_elotoltesben(self):
+        """`elotolt_strongok(bdb=False)` nem érinti a `forditasok` és a `bdb` táblát (a kiadás által kizárt tábla olvasása hibát ad)."""
+        import lekerdezesek as q
+        sorok = []
+        self.con.set_trace_callback(sorok.append)
+        try:
+            with q.elotoltes():
+                q.elotolt_strongok(self.con, ['H0430', 'H1254'], bdb=False)
+        finally:
+            self.con.set_trace_callback(None)
+        szoveg = ' '.join(sorok).lower()
+        self.assertIn('lxx_bridge', szoveg)
+        self.assertNotIn('forditasok', szoveg)
+        self.assertNotIn('from bdb ', szoveg)
+
+    def test_az_elomelegites_lefut_es_a_lapgyorsitotarba_tolt(self):
+        """Az `alkalmazas.elomelegit` a háttérszálon lefut, nem nyel el hibát némán, és a bemelegítő oldalak a lapgyorsítótárba kerülnek."""
+        import alkalmazas
+        app = alkalmazas.letrehoz(DB, 'belso', elomelegit_ki=False)
+        ex = app.extensions['pardes']
+        self.assertFalse(ex['elomelegitve'].is_set())
+        alkalmazas.elomelegit(app)
+        self.assertTrue(ex['elomelegitve'].wait(300), 'az előmelegítés nem fejeződött be')
+        self.assertIsNone(ex.get('elomelegit_hiba'), 'az előmelegítés hibával állt le: %r' % (ex.get('elomelegit_hiba'),))
+        r = app.test_client().get('/1Moz/1')
+        self.assertEqual(r.headers.get('X-Cache'), 'HIT', 'a bemelegített oldal gyorsítótár-találat kell legyen')
 
     def test_a_kivetelek_szama_rogzitett(self):
         self.assertEqual(len(KIVETEL), KIVETEL_DB)

@@ -130,7 +130,7 @@ Kiadás: `PARDES_KIADAS=belso|nyilvanos|kereskedelmi` (vagy `konfig/szerver.toml
   Ugyanazokat a sorokat adja ugyanabban a sorrendben (a lap bájtra azonos). Cél: laponként legfeljebb 100 SQL-utasítás.
 - **Lábléc.** A git- és fájlolvasás (`allapot.LablecFigyelo`) háttérszálon fut `ttl` másodpercenként; a kérés csak a kész állapotot veszi át.
 - **Előmelegítés.** Az indulás után a háttérszál a Flask belső kliensével lefuttat három bemelegítő kérést (`alkalmazas.ELOMELEGITO_UTAK`); az `alkalmazas.py` (`main`) és
-  a `gunicorn_conf.py` kéri, a tesztek nem. `PARDES_ELOMELEGIT=0` kikapcsolja, `=1` bekapcsolja.
+  a `gunicorn_conf.py` kéri, a tesztek nem. `PARDES_ELOMELEGIT=0` kikapcsolja, `=1` bekapcsolja (hideg mérésnél, pl. `m4_meres.py`, `0` kell: különben a háttérszál versenyez a mért kéréssel).
 - **Sebességőr.** `teszt_tervor.py`: minden kéréskor futó lekérdezés `EXPLAIN QUERY PLAN`-ja egy üres, azonos sémájú adatbázison (`teszt_adat/pardes_sema.sql`,
   `--sema-ment` a valódi adatbázisból frissíti); 1000 sornál nagyobb táblán `SCAN` tilos, a ma még index nélküli lekérdezések kimondott, megszámolt listán állnak
   (`ELFOGADOTT`, célfeladattal). A CI-ben is fut. `teszt_sebesseg.py`: időkorlát (fejezet 300, vers 400, szó-lap 250, kereső 50 ms; gyorsítótár-találat 20 ms) és

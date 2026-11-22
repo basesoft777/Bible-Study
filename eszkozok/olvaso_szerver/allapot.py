@@ -374,7 +374,9 @@ class LablecFigyelo:
 
     F235: az újraolvasás háttérszálon fut (`ttl` másodpercenként), a kérés csak a kész állapotot veszi át, tehát a git- és fájlolvasás (27–133 ms)
     nem a kérés idejét növeli. Az első kérés (még nincs állapot) szinkron számol, és elindítja a szálat; a szál a figyelő megszűnésével kilép, és
-    elágazás (gunicorn `--preload`) után a gyermekfolyamatban újraindul. `ttl <= 0`: minden kérésnél szinkron újraolvas (a tesztek kapcsolója)."""
+    elágazás (gunicorn `--preload`) után a gyermekfolyamatban újraindul. `ttl <= 0`: minden kérésnél szinkron újraolvas (a tesztek kapcsolója).
+    Következmény: a szál az első kérés után üresjáratban is `ttl` másodpercenként újraolvas (git-állapot, fájlok, a forrás-adatbázis `epites_ts`-e); korábban
+    ez csak kérés esetén futott. A terhelés kicsi (néhány kis fájlolvasás), a kérés idejét viszont nem növeli."""
 
     def __init__(self, kiadas, epites_ts, kezdo=SZERVER_DIR, kornyezet=None, ttl=3.0):
         self._args = (kiadas, epites_ts, kezdo, kornyezet)
@@ -383,6 +385,7 @@ class LablecFigyelo:
         self._t = None
         self._lablec = None
         self._szal_pid = None
+        self._szal_zar = threading.Lock()
 
     def _frissit(self):
         lablec = Lablec.keszit(*self._args)
@@ -410,9 +413,12 @@ class LablecFigyelo:
             del f
 
     def _szal_indit(self):
-        if self._szal_pid != os.getpid():
-            self._szal_pid = os.getpid()
-            threading.Thread(target=LablecFigyelo._hatter, args=(weakref.ref(self),), name='lablec-figyelo', daemon=True).start()
+        if self._szal_pid == os.getpid():
+            return
+        with self._szal_zar:                      # két egyidejű első kérés se indítson két szálat
+            if self._szal_pid != os.getpid():
+                self._szal_pid = os.getpid()
+                threading.Thread(target=LablecFigyelo._hatter, args=(weakref.ref(self),), name='lablec-figyelo', daemon=True).start()
 
     def kap(self):
         if self._lablec is None or self.ttl <= 0:

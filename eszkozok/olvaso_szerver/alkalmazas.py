@@ -62,8 +62,9 @@ def elomelegit(app, utak=ELOMELEGITO_UTAK):
             c = app.test_client()
             for ut in utak:
                 c.get(ut)
-        except Exception:
-            pass
+        except Exception as hiba:                     # nem állítja le a szervert, de nem is néma: a hiba rögzül és kiíródik
+            ex['elomelegit_hiba'] = hiba
+            print('[előmelegítés] HIBA: %s: %s' % (type(hiba).__name__, hiba), file=sys.stderr, flush=True)
         finally:
             ex['elomelegitve'].set()
     ex['elomelegitve'] = threading.Event()

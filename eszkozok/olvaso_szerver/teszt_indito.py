@@ -197,6 +197,42 @@ class TesztLablecFigyelo(unittest.TestCase):
         self.assertEqual(L.ag, 'claude/masik')
         self.assertEqual(len(L.figyelmeztetesek), 1)
 
+    def test_a_hatterszal_ttl_utan_frissit_es_a_kerest_nem_szamol(self):
+        """F235: az újraolvasás a háttérszálon fut: a ttl után a következő `kap()` már az új állapotot adja anélkül, hogy a hívó számolna."""
+        import time
+        env = {'PARDES_AG': 'main', 'PARDES_COMMIT': 'aaaaaaaa', 'PARDES_LEMARADAS': '0'}
+        f = allapot.LablecFigyelo('belso', 'ts', kornyezet=env, ttl=1.0)
+        self.assertEqual(f.kap().ag, 'main')
+        env['PARDES_AG'] = 'claude/masik'
+        hivasok = []
+        eredeti = allapot.Lablec.keszit.__func__
+
+        def szamol(cls, *a, **k):
+            hivasok.append(__import__('threading').current_thread().name)
+            return eredeti(cls, *a, **k)
+        allapot.Lablec.keszit = classmethod(szamol)
+        try:
+            veg = time.monotonic() + 8
+            while time.monotonic() < veg and f.kap().ag != 'claude/masik':
+                time.sleep(0.2)
+        finally:
+            allapot.Lablec.keszit = classmethod(eredeti)
+        self.assertEqual(f.kap().ag, 'claude/masik', 'a háttérszál nem frissített')
+        self.assertTrue(hivasok and all(n == 'lablec-figyelo' for n in hivasok), 'az újraolvasás nem a háttérszálon futott: %r' % hivasok)
+
+    def test_ket_egyideju_elso_kerest_egy_hatterszalat_indit(self):
+        import threading
+        env = {'PARDES_AG': 'main', 'PARDES_COMMIT': 'aaaaaaaa', 'PARDES_LEMARADAS': '0'}
+        f = allapot.LablecFigyelo('belso', 'ts', kornyezet=env, ttl=3600)
+        elotte = sum(1 for t in threading.enumerate() if t.name == 'lablec-figyelo')
+        szalak = [threading.Thread(target=f.kap) for _ in range(8)]
+        for t in szalak:
+            t.start()
+        for t in szalak:
+            t.join()
+        utana = sum(1 for t in threading.enumerate() if t.name == 'lablec-figyelo')
+        self.assertEqual(utana - elotte, 1)
+
     def test_a_kulcs_valtozik_az_allapottal(self):
         a = allapot.Lablec('belso', 'main', 'aaaaaaaa', 'ts')
         b = allapot.Lablec('belso', 'claude/x', 'aaaaaaaa', 'ts', figyelmeztetesek=['f'])

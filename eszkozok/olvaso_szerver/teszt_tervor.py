@@ -10,6 +10,10 @@ sorszáma a `teszt_adat/pardes_meretek.tsv` (a valódi adatbázisból): az index
 CI-ben is fut (Python szabványkönyvtár, Flask nélkül, ezredmásodpercek). A két fájl generált: `python teszt_tervor.py --sema-ment` a PARDES_DB-ből
 írja újra (az `sqlite_epit.py` indexváltozása után kötelező; a helyi `test_sema_egyezik_az_adatbazissal` ezt őrzi, ha van PARDES_DB).
 
+Ismert korlátok (F235, független ellenőr): az `ELFOGADOTT` függvényszintű (egy elfogadott függvényben ugyanarra a táblára írt új, végigolvasó lekérdezés átmegy,
+amíg a függvény a listán áll); a `SEARCH ... USING AUTOMATIC INDEX` sort a teszt nem jelzi (az is teljes olvasás); az SQLite-verziók tervei eltérhetnek
+(ezért a tábla-halmaz tagjai többesek, pl. `ubs_dbh`).
+
 A kivételek (`ELFOGADOTT`) kimondott és megszámolt lista: minden tétel egy kéréskor futó, ma indexet nem használó lekérdezés, megnevezett célfeladattal.
 A teszt bukik, ha (a) egy lekérdezés a listán kívül olvas végig nagy táblát, vagy (b) a lista egy tétele már nem olvas végig (a javítás után a tételt
 törölni kell: a lista nem hízhat el), vagy (c) a lista darabszáma eltér a `ELFOGADOTT_DB`-től.
@@ -249,13 +253,21 @@ class TestTervor(unittest.TestCase):
     def test_sema_egyezik_az_adatbazissal(self):
         """A tárolt séma a valódi adatbázis táblái és indexei: egy indexváltozás után a `--sema-ment` nélkül a tervellenőr elavult tervet néz."""
         c = sqlite3.connect('file:%s?mode=ro' % os.environ['PARDES_DB'].replace('\\', '/'), uri=True)
-        valodi = {(t, n) for t, n in c.execute("SELECT type, name FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%'") if not FTS_VARAZS.match(n)}
+        lek ="SELECT type, name, sql FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%'"
+        valodi = {(t, n): re.sub(r'\s+', ' ', q) for t, n, q in c.execute(lek) if not FTS_VARAZS.match(n)}
         c.close()
-        tarolt = {(t, n) for t, n in self.con.execute("SELECT type, name FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%'")
-                  if not FTS_VARAZS.match(n)}
-        tarolt |= {('table', n) for n in ('fts_motivum',)} if ('table', 'fts_motivum') in valodi and ('table', 'fts_motivum') not in tarolt else set()
-        self.assertEqual(sorted(valodi - tarolt), [], 'a valódi adatbázisban van, a tárolt sémában nincs (--sema-ment)')
-        self.assertEqual(sorted(tarolt - valodi), [], 'a tárolt sémában van, a valódi adatbázisban nincs (--sema-ment)')
+        tarolt = {(t, n): re.sub(r'\s+', ' ', q) for t, n, q in self.con.execute(lek) if not FTS_VARAZS.match(n)}
+        valodi.pop(('table', 'fts_motivum'), None)                # a virtuális tábla az FTS5 hiányában kimaradhat: nem vizsgáljuk
+        tarolt.pop(('table', 'fts_motivum'), None)
+        self.assertEqual(sorted(set(valodi) - set(tarolt)), [], 'a valódi adatbázisban van, a tárolt sémában nincs (--sema-ment)')
+        self.assertEqual(sorted(set(tarolt) - set(valodi)), [], 'a tárolt sémában van, a valódi adatbázisban nincs (--sema-ment)')
+        # az oszlopok és az index-oszlopok is: egy azonos nevű, de más oszlopú index nem maradhat észrevétlen
+        self.assertEqual(sorted(k for k in valodi if valodi[k] != tarolt[k]), [], 'a tárolt séma eltér a valódi adatbázisétól (--sema-ment)')
+
+    def test_minden_tabla_szerepel_a_meretek_kozott(self):
+        """Egy hiányzó tábla 0 sornak számítana, és a tervellenőr nem jelezné a végigolvasását: minden séma-tábla szerepeljen a `pardes_meretek.tsv`-ben."""
+        tablak = {n for (n,) in self.con.execute("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%'") if not FTS_VARAZS.match(n)}
+        self.assertEqual(sorted(tablak - set(tablameretek()) - {'fts_motivum'}), [], 'hiányzik a méretek közül (--sema-ment)')
 
     def test_nincs_ervenytelen_kivetel_es_a_kivetelek_szama_rogzitett(self):
         self.assertEqual(len(ELFOGADOTT), ELFOGADOTT_DB, 'az ELFOGADOTT lista nem hízhat el: új tétel nem vehető fel a célfeladat megnevezése nélkül')
