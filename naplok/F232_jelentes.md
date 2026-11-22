@@ -45,3 +45,25 @@ Mindkettő **régi szöveget várt a teszt, a kód nem hibás**. Mérve a mai f�
 Javítás (teszt, nem kód): az első kettő a mai szöveghez igazítva; a harmadik a `data-blokk="szo.ebben"` hiányát nézi, és azt, hogy minden „Ebben a versben” felirat a BDB-dobozé. Eredmény: `teszt_visszhang_kapu` 22/22 OK (natívan, 12 s), a `teszt_szintek` teszt OK (WSL, 59 s).
 
 *Ok-lánc (hibanapló, mechanizmus szerint):* az olvasó tesztjei sehol nem futottak automatikusan, így a generátor/blokk szövegváltozása a teszt frissítése nélkül ment át; ezt a (b) kapu zárja.
+
+## F232.2 — a mérce és a bekötés (`bb260600`)
+
+**Mérce.** `eszkozok/olvaso_szerver/teszt_olvasoi_merce.py` + `merce/` (18 fájl, 540 KB): 10 szó-lap, 6 versnézet, 2 pilot-fejezet. A pillanatkép a lap blokksora (`## [data-blokk]`), a blokkcímek és a látható szöveg; a `<head>`, a `hidden` elemek, az ugrás-link, a láblécek és a figyelmeztető sávok (ág, commit, építési idő) kimaradnak, az ISO időbélyeg és a commit-hash kiszűrve; a csukott `<details>` sorai `▸ `-vel jelöltek. Frissítés csak `--merce-frissit`-tel. Eltérés = `MÉRCE-ELTÉRÉS` sorok (a diff első 60 sora oldalanként; figyelmeztetés, a `PARDES_MERCE_SZIGORU=1` hibává teszi). Hiba: nem 200-as mintaoldal, hiányzó mérce-fájl, nem determinisztikus kép. A normalizáló 7 egységtesztje DB nélkül is fut (a futás: 11 teszt, 3 kimarad DB nélkül, 14 s DB-vel).
+
+*Eltérés a briefhez:* a brief `Jn 1:1`-je a szerverben **`/Jan/1/1`** (a Károli-rövidítés ékezet nélkül: `Ján` → `Jan`; a `/Jn/1/1` és a `/Ján/1/1` 404-et ad). A mérce `Jan`-t használ; a 404 a futásban hiba.
+
+**Bekötés (DT-F232a (b)).** `push_elott.py`: ha az alap..fej diff az olvasó kódját érinti (`teszt_futtat.py` `_OLVASO_KOD`, az egy hely: `olvaso_erintett`), a kapu `teszt_futtat.py --diff <alap>`-ot futtat a helyi `pardes.db`-n; piros teszttel 1-et ad. A lépés nem része a részleges mód lépés-azonosítóinak (`LEPES_AZON` változatlan; a `teszt_push_elott.py` elvárásai érintetlenek), a saját feltétele a teljes diff. A `teszt_futtat.py` a zöld futásnál is kiírja a `MÉRCE-ELTÉRÉS` sorokat. A `--ci-egyezes` zöld (a lépés csak helyi; a CI-ben nem fut).
+
+### Mérések
+
+- **A teljes olvasó-tesztkészlet** (`python eszkozok/teszt_futtat.py`, WSL, natív `pardes.db`, a végleges `bb260600` kódon): **19 fájl, mind zöld**, 1 033 mp (a lassú `teszt_szintek.py` + `teszt_arculat.py` 286 mp, a többi 747 mp). Kimaradó teszt: `teszt_indito.py` 1 és `teszt_olvaso_szerver.py` 1 (nem azonosítottam külön, melyik; a `skipUnless` feltételek közt DB-s a `teszt_olvaso_szerver.py`-ban 10, de a futásban a DB és a Flask megvolt, ezért a kimaradó valószínűleg a `node`- vagy a Windows-ideiglenes-könyvtár-feltételes). *Nem ellenőrzött állítás.*
+- **A mérce eltérésének próbája** (detached HEAD, nem került az ágra): a `blokkok.py` `szo.szotar` blokkcíme „Strong-szótár (PRÓBA)”-ra írva; a `teszt_futtat.py --fajl teszt_olvasoi_merce` zöld, és mind a 10 szó-lapra kiírta a diffet (`-Strong-szótár forrásadat modell-kimenet` / `+Strong-szótár (PRÓBA) forrásadat modell-kimenet`, lap- és sorszámmal). *Első próbálkozásom a `szo.ebben` blokkcímmel semmit nem mutatott: az a blokk csak vers-kontextussal áll a lapon, a mintában nincs; a mérce ezt nem fedi, l. lent.*
+- **Piros teszt a kapun** (detached HEAD próbacommit `db565cf3`: egy szándékosan piros teszt a `teszt_ubs_dbh.py`-ban): `push_elott.py --lepes F232` → `HIBA F232 olvasó-tesztek (teszt_futtat.py --diff) [905 mp] (kilépési kód: 1)`, a sor `teszt_ubs_dbh.py: HIBA (1)`, a kapu „A push ne menjen” üzenettel 1-gyel lépett ki. A bizonyíték helyi futás (nincs CI-futás azonosító: a (b) a CI-ben nem fut; az (a2) lesz az, N-F232a).
+- **Zár-várakozás:** a `teszt_futtat.py` a közös helyi ellenőrzés-zárat veszi; a párhuzamos F218a S8c session futása alatt a mérce-próbám **1 145 mp-et** várt. Egy olvasót érintő push előtti kapu ezért 17 perc futás + a zárra várás; ez a (b) ára.
+
+### Ismert korlátok (nem hibák)
+
+1. A mérce a **mintán** véd: a `szo.ebben` (vers-kontextusos) blokk és az interlineáris/több-Bibliás nézet nincs benne; ezek az olvasó tesztjeiben vannak.
+2. A mérce a `pardes.db` egy építésére (2026-11-12) rögzített; újraépített DB eltérést adhat (adatváltozás, figyelmeztetés).
+3. A (b) csak helyi: a PR-t nem védi a CI-ben (N-F232a).
+4. A mérce a licenc alá eső táblák szövegét is tartalmazza (pl. `mcged` a G0264 lapon); a repó TSV-i már ugyanezeket tartalmazzák, új terjesztés nincs, de nyilvános repónál ezt a `merce/` mappánál is figyelembe kell venni.
