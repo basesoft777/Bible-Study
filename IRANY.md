@@ -6,6 +6,7 @@
 1. **Olvasó-javítás (#231).** Kész, ha a 60 felmért hiba mindegyike javítva, elvetve vagy „rád vár”, és a szerkesztő megnézte az ágas előnézetben. Következő lépés: indulás a #799 merge-e után.
 2. **Új generátor (F218a).** Kész, ha az F218.13 a main-en van. Következő lépés: #797 merge → S9c → a szerkesztő megnézi a nézési csomagot → F218.13.
 - Ma zárul, nem számít szálnak: #799 (olvasó-gyorsítás, 1. rész).
+- **Következő szál** (az olvasó-javítás után, gazdája az integrátor): a 15 perces kapu kettévágása; munka közben füstteszt, a teljes kapu egyszer, a merge-kész állapotra.
 - **Utána** (a 2026-11-11-i ütemezés): a motívumok ráillesztése az olvasóra, ez az „alap” olvasó.
 
 ## Most NEM csináljuk
