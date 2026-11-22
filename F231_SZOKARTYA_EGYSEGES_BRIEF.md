@@ -8,7 +8,7 @@ modell: opus
 sav: SERVER
 allapot: fut
 ad: az olvasó szó-lapján (/szo/<Strong>) a BDB és a Thayer ugyanazzal a kártyával jelenik meg, a lexikonlap 4.2 „Mélységi szócikk” mintájára (a jelentések rendje, alatta szakaszonként egybefüggő szöveg, magyar, ahol van, különben angol, ugyanabban a kártyában); a görög szó-lap blokksora a héberével egyenértékű; a látható szövegben nincs nyers BDB-jelölés, könyvnév nélküli hivatkozás és belső azonosító, ezt kapu védi
-kovetkezo: "Fut (olvasó egyben, 2026-11-22): a teljes hibalista (`naplok/OLVASO_EGYBEN_HIBALISTA.md`, 58 tétel) javítása egy ágon, gyors sávon (DT919); a végén ágas előnézet, a nézett hash a PR-fej"
+kovetkezo: "PR #810 (draft): a 60 tétel kimenete a naplok/F231_jelentes.md-ben, a tesztek és a kapu zöldek; következő: tételenkénti gépi ellenőrzés mind az 58 tételre (integrátori szabály), friss sessionnel ugyanazon az ágon; utána a szerkesztő nézése az ágas előnézeten (DT886)"
 munka: folyamat
 olvas: [naplok/OLVASO_EGYBEN_HIBALISTA.md, IRANY.md, eszkozok/lapgen/bemenet/kartya_lap.py, eszkozok/lapgen/bemenet/kartya.py, eszkozok/lexikon_general.py, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/bdb_vers_jelentes.tsv, adat/szotar_szakasz_cimke.tsv, eszkozok/bdb_rovidites.py, lexikon/HAMART-001_TUDOMANYOS.md]
 ir: [eszkozok/olvaso_szerver/, naplok/F231_jelentes.md, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szokartya.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/teszt_szokartya_egyseges.py]
