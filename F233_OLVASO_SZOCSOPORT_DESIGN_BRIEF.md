@@ -13,6 +13,7 @@ munka: folyamat
 olvas: [eszkozok/olvaso_szerver/lekerdezesek.py]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/szocsoport.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/teszt_szocsoport.py]
 fugg: [231]
+nem_fugg: [236]
 ---
 
 # F233_OLVASO_SZOCSOPORT_DESIGN_BRIEF.md — Szócsoport és tervezési pontok
