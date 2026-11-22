@@ -200,3 +200,30 @@ irod_kulso	glossa	Glossa Ordinaria (Migne, 1880)	OLVASOI_FORRASNEV
 irod_kulso	hcf	HistoricalChristianFaith kommentár-adatbázis (metaadat)	OLVASOI_FORRASNEV
 irod_kulso	sefaria	Sefaria kapcsolat-adata	OLVASOI_FORRASNEV
 irod_kulso	chain_lineage	Chain Lineage Browser (Blidstein, Inowlocki, Verheyden; a bibliai hivatkozások: BiblIndex, Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon)	OLVASOI_FORRASNEV
+kiadasi_adat	szerzo	Demeter Tamás	SZERZO_NEV
+kiadasi_adat	lexikon_cim	Logosz-lexikon	LEXIKON_CIM_HU
+kiadasi_adat	kanonikus_alap	https://logoszlexikon.hu	KANONIKUS_ALAP_URL
+kiadasi_adat	nyilt_mag_doi	10.5281/zenodo.24141612	NYILT_MAG_DOI
+kiadasi_adat	karoli_strong_doi	10.5281/zenodo.24141884	KAROLI_STRONG_DOI
+azonossag_tipus	lexikai	lexikai	AZONOSITO_MEZOK
+azonossag_tipus	formulaikus	formulaikus	AZONOSITO_MEZOK
+azonossag_tipus	referenciális	referenciális	AZONOSITO_MEZOK
+azonossag_tipus	fogalmi	fogalmi	AZONOSITO_MEZOK
+azonossag_tipus	strukturális	strukturális	AZONOSITO_MEZOK
+kolofon_szotar	konkordancia/BDB_teljes_unabridged.tsv	BDB-szótár	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/TBESG.txt	STEPBible görög rövid szótára (TBESG)	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/TBESH.txt	STEPBible héber rövid szótára (TBESH)	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/UBS_DNTG_referenciak.tsv	UBS Dictionary of New Testament Greek	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/UBS_DNTG_jelentesek.tsv	UBS Dictionary of New Testament Greek	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/UBS_DBH_referenciak.tsv	UBS Dictionary of Biblical Hebrew	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/UBS_DBH_jelentesek.tsv	UBS Dictionary of Biblical Hebrew	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/SDBH_domenek.tsv	SDBH szemantikai szótár	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/SDGNT_domenek.tsv	SDGNT szemantikai szótár	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/OSHL_lexikalis_index.tsv	Open Scriptures héber lexikona	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/TSK_kereszthivatkozasok.tsv	Treasury of Scripture Knowledge	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/SECE_G_teljes.tsv	SECE szólista	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/SECE_H_teljes.tsv	SECE szólista	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/tW_szocikkek.tsv	TranslationWords szócikkei	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/LXX_OS/*.tsv	Septuaginta szövege	OLVASOI_FORRASNEV
+kolofon_szotar	konkordancia/LSJ_teljes.tsv	LSJ-szótár	OLVASOI_FORRASNEV
+irod_kulso	macula_heber	MACULA héber nyelvi adatkészlet (Biblica)	OLVASOI_FORRASNEV

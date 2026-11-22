@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218a-s8c-5ffa99` (az S8c; alap: main `9730b829`) · PR: #789 (draft; az S8a: #779, az S8b: #782, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
+Ág: `claude/f218a-s8d-96a364` (az S8d; alap: main `8494ce00`) · PR: lent, a brief `pr` mezőjében (draft; az S8a: #779, az S8b: #782, az S8c: #789, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
@@ -50,7 +50,8 @@
 | F218.11 (S8b): a kézi rések (Miért fontos, 10., 11.) | **kész** (a 14. session, `claude-opus-5-5`) | a 4. szakasz egészben, a 10. és a 11. bájtra egyezik, engedélysor nélkül; 7 sablonsor, 6 névtábla-sor, B40; `teszt_resek.py`; festékpróba 0. **⛔ GK-19 (T6):** a pontosság-mondat új tényállítás, a felhasználóé (a jelentés „F218.11 — S8b”) |
 | F218.11 (S8c): „12. Irodalom és idézés” | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 15. session, `claude-opus-5-5`) | DT901 (🟢, a felhasználó: „(a) mehet”): a forráslista a számozott szakaszok olvasási naplójából, a jegyzék új `irodalom` oszlopával szűrve; a tanúk és a Vulgata a tábláik ellenőrzött soraiból. 21 listasor és a blokkfejléc tér el (28 diff-sor, mind `S8C-*` engedéllyel); 16 sablonsor, 82 névtábla-sor (7 `uj`); `teszt_idezes.py` (10). A jelentés „F218.11 — S8c” szakasza |
 | 13. ellenőrzés (S8c, `9730b829..f68fb347`) | **ELTÉRÉS: 3 tétel; a javítókör kész** | a jelentés „Független ellenőrzés — 13. ellenőrzés” és „A 13. ellenőrzés javítóköre”; a main behozva (`aad45b55`), a mérce B51, B68 hash-e frissült |
-| F218.11 (S8d) | nem indult | Kolofon (GK-07 maradéka: a forrástábla ugyanabból a halmazból, DT901; GK-27, GK-28 maradéka, `ISM-KOLOFON`) |
+| N200 (a mérce hash-sorai a #789 merge-e után) | **kész** (a 16. session, `6abf1ac7`) | a B51 `DONTESEK.md` hash-e frissült, a törölt `dontesek/uj/f218a-s8c-5ffa99.md` sora kikerült; regresszió RENDBEN |
+| F218.11 (S8d): a Kolofon | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 16. session, `claude-opus-5-5`) | DT-F218y (mind a négy (a), az orkesztrátor, a felhasználó felhatalmazásával): a T8 értékei a névtábla `kiadasi_adat` típusában; kiadás módban a kapu megáll (N-F218w); a megjelölések a régi halmazból (N-F218y licenckapu a 218c-re); a közel-keleti réteg B75, a Chain Lineage a B01 `allapot`-jából. 58 diff-sor, mind engedéllyel (52 a forrástábla, DT901; T9 1; ISM-KOLOFON 1; fejléc 1; megjelölés 2); `teszt_kolofon.py`; a jelentés „F218.11 — S8d” szakasza |
 | F218.12 (S9) – F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
@@ -75,6 +76,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 *Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
 
 ## Következő lépés
+
+**Az S8d kész (a 16. session, 2026-11-22).** A HAMART-001 regressziója RENDBEN; a Kolofon 58 diff-sora mind engedéllyel (a jelentés „F218.11 — S8d” szakasza). **A merge után az S9 első lépése:** a mérce hash-sorai (N200: a `szamkiosztas` a `DONTESEK.md`-t és a `NYITOTT_FELADATOK.md`-t módosítja, a `dontesek/uj/f218a-s8d-96a364.md`-t törli, ez a B51 két sora). **Az S9-nek innen:** a független számlálók (a 10. ellenőrzés 4. tétele); a felhasználó nézése a két renderelt lapon és az S2–S9 új sorainak listája (ebből a szeletből: 3 `uj` sablonsor, a `kiadasi_adat` 5 sora, a Kolofon Meghatározás- és tágabbkör-sora, az LSJ-mondat kódjelölése); a forrástábla darabszáma (a DT901 a 12. szakasz 20 ± 5 sorát fogadta el, a Kolofonban 52). A „3. Kizárt és vizsgált helyek” továbbra is szelet nélkül.
 
 **Az S8c kész (a 15. session, 2026-11-22).** A HAMART-001 regressziója RENDBEN; a 12. szakasz 28 diff-sora mind engedéllyel (DT901, a brief 8.1 (b) osztálya); a jelentés „F218.11 — S8c” szakasza. **A merge után az S8d első lépése:** a mérce hash-sorai (N200: a `szamkiosztas` a `DONTESEK.md`-t módosítja, a `dontesek/uj/f218a-s8c-5ffa99.md`-t törli, mindkettő B51). **Az S8d-nek innen:** a Kolofon forrástáblája ugyanazt a halmazt használja (`bemenet/irodalom.py`, a szakaszleíró `gyujto` jelzője: a szakasz számítása a számozott szakaszok olvasásait kapja); a régi `blokk_kolofon` a `fajl_licenc_blokk_lista` szakaszonkénti bontását is kiírja (`KOLOFON_SZAKASZNEV`): a szakaszonkénti olvasás a `fo.lap_keszit` `tartalmi` szótárában megvan. A „3. Kizárt és vizsgált helyek” továbbra is szelet nélkül.
 

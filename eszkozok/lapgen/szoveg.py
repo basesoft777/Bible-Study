@@ -353,6 +353,8 @@ _SKALAR_TIPUSOK = ('szam', 'tizedes', 'nev', 'igehely', 'konyvrov', 'versresz', 
                    'datum', 'lathato')
 _EZRES = 'ezres'            # `szam(ezres)`: ezres tagolás nem törő szóközzel (1 728)
 _EZRES_JEL = '\u00a0'
+# `datum(pont)`: pontozott alak (2026.11.12); `datum(nap)`: a nap k\u00e9t jegyen (a d\u00e1tumtartom\u00e1ny v\u00e9ge: 2026.11.11\u201313)
+_DATUM_FORMA = {'': '%Y-%m-%d', 'pont': '%Y.%m.%d', 'nap': '%d'}
 _MAGANHANGZO = 'aáeéiíoóöőuúüűAÁEÉIÍOÓÖŐUÚÜŰ'
 
 
@@ -401,6 +403,8 @@ class SablonSor:
                 raise SablonHiba('%s: ismeretlen paramétertípus: %r' % (kulcs, tipus))
             elif tipus == 'szam' and arg not in ('', _EZRES):
                 raise SablonHiba('%s: a szám formátuma csak `%s` lehet: %r' % (kulcs, _EZRES, arg))
+            elif tipus == 'datum' and arg not in _DATUM_FORMA:
+                raise SablonHiba('%s: a dátum formátuma csak `pont` vagy `nap` lehet: %r' % (kulcs, arg))
             if m.group('nev') in self.parameterek:
                 raise SablonHiba('%s: kétszer leírt paraméter: %r' % (kulcs, m.group('nev')))
             self.parameterek[m.group('nev')] = (tipus, arg)
@@ -468,7 +472,7 @@ def _skalar_szegmensek(kulcs, nev, tipus, arg, ertek, modosito):
     elif tipus == 'datum':
         if not isinstance(ertek, datetime.date) or isinstance(ertek, datetime.datetime):
             raise SzovegHiba('%s: a(z) %s paraméter dátum legyen' % (kulcs, nev))
-        szoveg = ertek.isoformat()
+        szoveg = ertek.strftime(_DATUM_FORMA[arg])
     else:  # a SablonSor már ellenőrizte
         raise SablonHiba('%s: ismeretlen paramétertípus: %r' % (kulcs, tipus))
     return [(Fajta.SABLON, szoveg)]

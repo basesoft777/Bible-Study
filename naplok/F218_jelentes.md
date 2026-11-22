@@ -1641,3 +1641,77 @@ determinizmusa, a Vulgata (a kérdés-fájl a tanúk külső forrásai közé so
 
 A javítókör után a main behozva (`aad45b55`, a `szamkiosztas` a `DONTESEK.md`-t módosította): a mérce B51 és B68
 hash-e frissült. HAMART-regresszió: RENDBEN (engedély nélküli diff-sor 0).
+
+## F218.11 — S8d: a Kolofon (`claude-opus-5-5`, 2026-11-22, a 16. session)
+
+**Modell-ellenőrzés.** A brief `modell: opus`, a session `claude-opus-5-5`: egyezik. Az ág a friss main-ről indult
+(`8494ce00`, a #789 és a `szamkiosztas` után). **N200:** a B51 `DONTESEK.md` hash-e frissült, a törölt
+`dontesek/uj/f218a-s8c-5ffa99.md` sora kikerült (`6abf1ac7`); regresszió RENDBEN.
+
+**⛔ és döntés.** Négy megvalósítási kérdés az orkesztrátornak (a T8 helye; a GK-27 kiadás módja; a kötelező
+forrásmegjelölések halmaza; a GK-28 maradéka); a válasz mind a négyre (a), szerkesztői döntés (az orkesztrátor, a
+felhasználó felhatalmazásával): **DT-F218y** (`dontesek/uj/f218a-s8d-96a364.md`). Két új N-tétel a 218c-re (N-F218w:
+a kiadás mód `lap_commit`-ja; N-F218y: licenckapu), egy adatjavítás (N-F218x: a B01 két szóköze).
+
+**Megvalósítás.**
+- **Bemenet** (`bemenet/kolofon.py`): B48 (`kiadasok.tsv`, `lap_atnezesek.tsv`, `lap_javitasok.tsv`: a kiadások, a
+  szerző átnézéseinek és a szerző által jóváhagyott javításoknak a dátuma; az átnézés `idezet` mezője nem kerül ki),
+  B49 (a modell-lektor kérdéslistája: modell, kérdésszám, dátum; opcionális), B50 (a közel-keleti határ), B75 (a
+  közel-keleti összehasonlító réteg: fájl nélküli, `nem_vizsgalt`; más állapotnál BemenetHiba, GK-28). A B02
+  sora a Kolofon kézi mezőivel bővült (`ui_cimke`, `tema`, `pardes_szint`, `sablon_verzio`). A B01 a licenc
+  `allapot`-át és a `kotelezo_megjeloles` mondatait is adja (a „.; ” határnál bontva, szó szerint).
+- **Számítás** (`szamitas/kolofon.py`): a szerzőségi mondat három alakja (generált; kiadatlan; kiadott); a
+  jóváhagyás dátuma a legutóbbi szerzői átnézésé, híján a legutóbbi kiadásé. **A kapu (GK-27, T9):** kiadás módban a
+  kézi résű lap megáll (N-F218w). A forrástábla a 12. szakasz forrás-halmaza (DT901), szakaszonként: a fájlok neve
+  szótárnál a névtábla új `kolofon_szotar` típusa (a régi `OLVASOI_FORRASNEV` névelő nélküli alakja), adatnál az
+  `irod_adat`, külső forrásnál az `irod_kulso`; az azonos nevűek egy sorba, a sorok a név rendjében (a régi szabály).
+  **A régi F212-es szabály megmaradt:** a származtatott `bdb_vers_jelentes.tsv` CC BY-os bemenetei (MACULA, OSHL,
+  TAHOT) saját soron, saját licencükkel (`konfig.KOLOFON_SZARMAZTATOTT`; a MACULA-sort az első mérés elhagyta volna).
+  A megjelölések a `konfig.KOLOFON_MEGJELOLES` kulcsai közül azok, amelyek bemenetét a lap olvasta (DT-F218y 3.).
+- **Megjelenítés** (`megjelenites/md/kolofon.py`): minden mondat `kolofon.*` sablonsor (63 új sor, ebből 3
+  `eredet=uj`: `kolofon.szerzoseg.kezi` és `kolofon.hogyan.kiadatlan.datum_nelkul` `var`, a T9-mondat és a
+  kritérium-hivatkozás a döntésük szavával); a szakasznevek a szakaszrendből, a rövid címmel, ahol van
+  (`cim.hatastortenet.rovid`; a régi `KOLOFON_SZAKASZNEV`). A „Negatív kritérium” sor: „a lap elején áll ([Mi tartozik
+  ide, és mi nem](#mi-tartozik-ide))” (DT874 9. tétel). A lap utolsó blokkja után nincs üres sor (`keret.blokk_zar`).
+- **A T8 értékei** (DT-F218y 1.): a névtábla `kiadasi_adat` típusa (5 sor); a 12. szakasz `irod.licenc.doi`
+  sorának DOI-ja is innen jön (a kimenet bájtra azonos). A lexikon címe a lapon ma „Logosz-lexikon”; a névcsere (N220)
+  ezeknek a soroknak a cseréje.
+- **A 12. szakasz is érintett** (kimenete nem változik): a Chain Lineage licencmondata a B01 `allapot`-jából
+  (`tisztazatlan`) jön, nem a konfig `None`-jából (GK-28); a licencalak-megjelenítés és a licenclista nyilvános
+  függvény lett (`licenc_szoveg`, `licenc_lista`), a Kolofon is ezt használja.
+- **A sablonnyelv** (`szoveg.py`, SEMA 2.67): a `datum(pont)` (ÉÉÉÉ.HH.NN) és a `datum(nap)` (a tartomány vége).
+- **Táblák:** jegyzék +4 sor (B48, B49, B50, B75); sablontábla +63 sor, 1 sor módosult (`irod.licenc.doi`); névtábla
+  +27 sor (5 `kiadasi_adat`, 5 `azonossag_tipus`, 16 `kolofon_szotar`, 1 `irod_kulso`: MACULA). SEMA 2.66–2.68.
+
+**Eredmény.** A HAMART-001 regressziója: **RENDBEN** (engedély nélküli diff-sor 0). A Kolofon 58 diff-sora mind
+engedéllyel:
+
+| Osztály | Engedélysor | Diff-sor | Ok |
+|---|---|---|---|
+| a brief 8.1 (b) | `S8D-FORRAS` | 1 | a blokkfejléc a Kolofon saját olvasásaiból (mint a 12. szakaszé) |
+| (h) T9 | `S8D-T9` | 1 | „a szerző a lap korábbi változatát hagyta jóvá (2026.11.12)”; előre megszámolva: 1 |
+| DT874 9. | `ISM-KOLOFON` | 1 | a kritérium helyén hivatkozás; előre megszámolva: 1 |
+| GK-07 | `S8D-MEGJ-1` | 1 | a Mounce-megjelölés elmarad, az LSJ-é új (DT-F218y 3.) |
+| GK-07 | `S8D-MEGJ-2` | 1 | a UBS DBH megjelölése szó szerint a B01-ből, két szóközzel (N-F218x) |
+| (b), DT901 | `S8D-UJ`, `S8D-ELMARAD`, `S8D-VALTOZIK` | 52 | a forrástábla: 26 új, 16 elmaradó, 10 változó diff-sor |
+
+**A forrástábla eltérése (a DT901 Kolofonra vetítve).** A tábla a régi 47 sor helyett 58 sort ad. A sorok
+többségében a „Szakasz” oszlop bővül, mert a mostani halmaz minden számozott szakasz olvasását számítja (a Döntési
+út, a 4.6, a 8. és a 9. szakasz is olvassa például a TAHOT-ot, a Károli-szöveget, a Vulgata-sorokat). Új forrássor
+(a 12. szakasszal egyezően): LSJ-szótár, a BDB forrásjavításai és rokon írásai, elutasítási okok, funkciókapcsolók,
+grammatikai szavak, javított Károli-KH, teljesség-mérés, motívumközi kapcsolatok, SDBH/SDGNT elemzetlen bejegyzései,
+Strong-szótár, tematikus saját szó. Elmarad: a Mounce-szótár (az új generátor nem olvassa); a teljes Thayer-szótár
+fájlja a régi táblában sem állt külön sorban („Thayer-szótár”). A licencalak a 12. szakaszéval egyezik: a héber
+glosszák és a BDB magyar szövege „magyar fordítás: …” (a 13. ellenőrzés 1. tétele), a lexikon szótári
+hivatkozástáblája a projekt licencével. **Az előre megszámolt érték nincs:** a DT901 a 12. szakasz 20 ± 5 sorát
+fogadta el, a Kolofon szakaszoszlopa ennél több sort mozdít; a darabszámot az orkesztrátor a merge előtt látja.
+
+**Mérések.** Lapgen-tesztek: az eredmény a lenti sorban. Festékpróba: HAMART-001 0 szivárgás (belső 368, kézi 841,
+idézet 2992), ISTENTISZT-001 0 szivárgás. Az ISTENTISZT-001 lapja elkészül (1551 sor); a Kolofonja a HAMART mintáján
+(a T9-mondat a szerző 2026.11.04-i átnézésének dátumával). Ismétlés-figyelő (figyelmeztetés, nem BUKÁS): HAMART 97
+találat, ebből 11 érinti a Kolofont (a Meghatározás sora és a forrásnév–licenc sorok átfedése a 12. szakasszal; a régi
+lapon is így állt).
+
+**A 218a végi listába.** A 3 `uj` sablonsor; a T8 sorai (a névtábla `kiadasi_adat`); a Kolofon táblájában a
+Meghatározás és a tágabb kör teljes szöveggel áll (a régi lapon is): a DT872 a tágabb kört is egy helyre tenné; az LSJ
+megjelölésének „`lexica` repó” kódjelölése (a régi mondat betűre).

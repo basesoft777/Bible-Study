@@ -35,10 +35,11 @@ def blokk_nyit(iro, keret, azonosito, forrasok):
     iro.ures()
 
 
-def blokk_zar(iro, keret, azonosito):
-    """A generált blokk záró jelölője, utána üres sor."""
+def blokk_zar(iro, keret, azonosito, lap_vege=False):
+    """A generált blokk záró jelölője, utána üres sor (a lap utolsó blokkja után nem: a fájl a jelölővel végződik)."""
     iro.sor(prov('GENERÁLT-VÉGE: {}#{}#{}', konfig.CEL_NEV, keret.motivum, azonosito))
-    iro.ures()
+    if not lap_vege:
+        iro.ures()
 
 
 def olvasoi_bekezdes(iro, szoveg):

@@ -181,7 +181,29 @@ GOROG_KETTOSHANGZO_ELOTAG = 'αεηο'   # ezek után az υ kettőshangzó rész
 
 # 12. Irodalom és idézés (S8c, DT-F a forráslistáról): a lap forráslistája a számozott szakaszok olvasási naplójából
 # (a jegyzék `irodalom` oszlopa szűr). A generátor által nem olvasott, de az adatsorokban megnevezett külső forrás
-# (az ókori fordítás a visszhang-táblában, a tanú forrása a tanúk táblájában) a licencleltár kulcsával; None: a lapon
-# a `irod.licenc.chain_lineage` mondat áll (az orkesztrátor döntése, 2026-11-11: a „tisztázatlan” félrevezető).
+# (az ókori fordítás a visszhang-táblában, a tanú forrása a tanúk táblájában) a licencleltár kulcsával. Ha a licencleltár
+# sorának állapota „tisztázatlan” (LICENC_TISZTAZATLAN), a lapon a címke helyett az `irod.licenc.chain_lineage` mondat áll
+# (az orkesztrátor döntése, 2026-11-11: a „tisztázatlan” szó félrevezető; a GK-28 maradéka, S8d: az állapot a B01-ből jön).
 IROD_KULSO_LICENC = {'vulgata': 'Vulgata_Clementina', 'glossa': 'Glossa_Ordinaria', 'hcf': 'Tanu_atyak_index',
-                     'sefaria': 'Tanu_rabbinikus_index', 'chain_lineage': None}
+                     'sefaria': 'Tanu_rabbinikus_index', 'chain_lineage': 'Chain_Lineage_Browser',
+                     'macula_heber': 'Macula_heber'}
+# A származtatott tábla CC BY-os bemenetei (F212, Kolofon-forrássor; SEMA 2.29: a `bdb_vers_jelentes.tsv` fejlécének
+# bemenetei): a Kolofon forrástáblájában saját soron, a saját licencükkel, a származtatott táblát olvasó szakaszokkal. A
+# kulcs a származtatott tábla bemenete; az érték a jegyzékbeli bemenetek és a jegyzékben nem álló külső források
+# (`IROD_KULSO_LICENC` kulcsai).
+KOLOFON_SZARMAZTATOTT = {'B19': (('B08', 'B30'), ('macula_heber',))}
+LICENC_TISZTAZATLAN = 'tisztazatlan'   # a licencleltár `allapot` értéke: a licenc nincs megadva vagy nem tisztázott
+
+# Kolofon (S8d). A forrástábla alatti kötelező forrásmegjelölések: a licencleltár kulcsai a lapon álló sorrendben (a régi
+# generátor halmaza és sorrendje, DT-F218y 3.); a megjelölés akkor áll, ha a lap számozott szakaszai a kulcshoz tartozó
+# bemenetet olvasták. A második elem None: a szöveg a licencleltár `kotelezo_megjeloles` mezője (a „.; ” határnál önálló
+# mondatokra bontva, az ismétlődő mondat egyszer); különben a `kolofon.megjeloles.<elem>` sablonsor (a lap saját
+# felhasználási mondata a forrásról).
+KOLOFON_MEGJELOLES = (('LSJ', 'lsj'), ('Karoli_versmegfeleltetes', None), ('LXX_versszintu_parok', None),
+                      ('OSHL', 'twot'), ('TAHOT', None), ('UBS_DBH', None), ('UBS_DNTG', None),
+                      ('tW_szocikkek', 'tw'))
+# a szerzőségi mondatban felsorolt értelmező rések (a kézi forrásból jövő rések), a lapon álló sorrendben; a rés neve a
+# szakaszrend címe
+SZERZOSEG_RESEK = ('kivonat', 'miert_fontos', 'minosites', 'alatamasztas', 'ertelmezes', 'modszertan')
+PROZA_MODELL_KEZI = 'manual'   # a kiadás `proza_modell` mezője, ha a modell nincs rögzítve (DT492)
+SZERZO_ATNEZES = 'felhasználó'   # a lapátnézés és a lapjavítás `ki` / `jovahagyta` értéke: a szerző

@@ -28,8 +28,8 @@ class SzakaszLeiro:
         self.megjelenit = megjelenit
         self.kapu = None       # a szakasz kapuja a lapmodellen (pl. számegyezés); None, ha nincs
         self.sorszam = None
-        # a lap forráslistáját adó szakasz (12. Irodalom; S8d: a Kolofon): a számítása a megelőző számozott szakaszok
-        # (és alrészeik) olvasási naplóját is megkapja, GK-07
+        # a lap forráslistáját adó szakasz (12. Irodalom, Kolofon): a számítása a megelőző számozott szakaszok (és
+        # alrészeik) olvasási naplóját is megkapja, GK-07
         self.gyujto = False
 
 
@@ -83,6 +83,10 @@ class Szakaszrend:
         if szam is None:
             raise KeyError('a(z) %s szakasz nem számozott' % azonosito)
         return szam
+
+    def szulo(self, azonosito):
+        """Az alrész szülő szakasza (a Kolofon forrástáblája a szülő szakasz nevét írja); önálló szakasznál maga."""
+        return self._nev_szerint[azonosito].alresz or azonosito
 
     def cim_kulcs(self, azonosito):
         """A szakasz címének sablonkulcsa."""

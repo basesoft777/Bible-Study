@@ -197,4 +197,4 @@ class IrodLicenc(enum.Enum):
     ELOFORDULAS = 'elofordulas'     # az előfordulás-tábla: az adatoszlopok a nyílt magban, a magyarázat a projekté
     FORDITAS = 'forditas'           # a fordítástábla: a fordítás a projekté, a szótárszöveg licence a szótárnál
     DOI = 'doi'                     # a Károli–Strong párosítás: a címke és a közlés DOI-ja
-    CHAIN_LINEAGE = 'chain_lineage' # a Chain Lineage Browser: licenc nincs megadva (konfig.IROD_KULSO_LICENC)
+    CHAIN_LINEAGE = 'chain_lineage' # tisztázatlan licencű külső forrás (a B01 `allapot`; ma a Chain Lineage Browser)

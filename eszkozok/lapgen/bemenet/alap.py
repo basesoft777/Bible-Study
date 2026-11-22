@@ -14,28 +14,54 @@ def b59_befagyasztott(b):
 
 
 class Licencek:
-    """A licencleltár: adatkészletenként a rövid licenccímke. Licencszöveg csak innen jön (GK-07)."""
+    """A licencleltár: adatkészletenként a rövid licenccímke, az állapot és a kötelező forrásmegjelölés. Licencszöveg
+    csak innen jön (GK-07)."""
 
-    def __init__(self, b, cimkek):
+    def __init__(self, b, cimkek, allapotok=None, megjelolesek=None):
         self._b, self._cimkek = b, cimkek
+        self._allapotok, self._megjelolesek = dict(allapotok or {}), dict(megjelolesek or {})
+
+    def _sor(self, kulcs):
+        if kulcs not in self._cimkek:
+            raise BemenetHiba('B01: nincs `%s` sor a licencleltárban (a licencjelölés egyetlen forrása)' % kulcs)
 
     def cimke(self, kulcs):
-        try:
-            return self._b.forrasszoveg('B01', 'cimke', self._cimkek[kulcs], None)
-        except KeyError:
-            raise BemenetHiba('B01: nincs `%s` sor a licencleltárban (a licencjelölés egyetlen forrása)' % kulcs) from None
+        self._sor(kulcs)
+        return self._b.forrasszoveg('B01', 'cimke', self._cimkek[kulcs], None)
+
+    def allapot(self, kulcs):
+        """A sor `allapot` értéke kulcsként (`tisztazott`, `kozkincs`, `tisztazatlan`): a licenc-állapot mondatához."""
+        self._sor(kulcs)
+        return self._b.kulcs('B01', 'allapot', self._allapotok.get(kulcs, ''))
+
+    def megjeloles(self, kulcs):
+        """A kötelező forrásmegjelölés önálló mondatai szó szerinti idézetként (a `kotelezo_megjeloles` mező a több
+        forrás megjelölését „.; ” határral fűzi össze: a határnál bont, a mondatok szövege változatlan). Üres mezőnél
+        BemenetHiba: a megjelölendő forrásnak megjelölése kell legyen."""
+        self._sor(kulcs)
+        szoveg = self._megjelolesek.get(kulcs, '')
+        reszek = [r.strip() for r in _MEGJELOLES_HATAR_RX.split(szoveg) if r.strip()]
+        if not reszek:
+            raise BemenetHiba('B01: üres `kotelezo_megjeloles` a(z) `%s` sorban' % kulcs)
+        return tuple(self._b.forrasszoveg('B01', 'kotelezo_megjeloles', r, None) for r in reszek)
+
+
+_MEGJELOLES_HATAR_RX = re.compile(r'(?<=\.);\s+')
 
 
 def b01_licencek(b):
-    """B01 — a licencleltár (`dataset` → `cimke`)."""
-    tabla = b._tabla('B01', oszlopok=('dataset', 'allapot', 'cimke'))
+    """B01 — a licencleltár (`dataset` → `cimke`, `allapot`, `kotelezo_megjeloles`)."""
+    tabla = b._tabla('B01', oszlopok=('dataset', 'allapot', 'cimke', 'kotelezo_megjeloles'))
     d, c = tabla.oszlop('dataset'), tabla.oszlop('cimke')
-    cimkek = {}
+    a, k = tabla.oszlop('allapot'), tabla.oszlop('kotelezo_megjeloles')
+    cimkek, allapotok, megjelolesek = {}, {}, {}
     for sor in tabla.sorok:
         if not sor[c]:
             raise BemenetHiba('B01: üres `cimke` a(z) `%s` sorban' % sor[d])
         cimkek[sor[d]] = sor[c]
-    return Licencek(b, cimkek)
+        allapotok[sor[d]] = sor[a] if a < len(sor) else ''
+        megjelolesek[sor[d]] = sor[k] if k < len(sor) else ''
+    return Licencek(b, cimkek, allapotok, megjelolesek)
 
 
 _DONTES_SOR_RX = re.compile(r'^\|\s*(DT-?F?\d+[a-z]{0,2})\s*\|')

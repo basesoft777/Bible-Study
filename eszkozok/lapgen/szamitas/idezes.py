@@ -59,7 +59,7 @@ class Idezes:
     adatforrasok: Tuple[AdatSor, ...]
 
 
-def _licencek(fajlok):
+def licenc_lista(fajlok):
     lat, ki = set(), []
     for f in sorted(fajlok, key=lambda f: (f.cimke.ertek if f.cimke is not None else '', f.licenc.value)):
         kulcs = (f.licenc, f.cimke.ertek if f.cimke is not None else None)
@@ -89,8 +89,8 @@ def szamit(korny, elozo):
             if f.forras_csoport not in latott:
                 latott.add(f.forras_csoport)
                 forrasok.append(f.kulcs)
-        szotarak.append(SzotarSor(nev=fs[0].kulcs, forrasok=tuple(forrasok), licencek=_licencek(fs)))
-    adat = [AdatSor(nev=fs[0].kulcs, licencek=_licencek(fs), kulso=False)
+        szotarak.append(SzotarSor(nev=fs[0].kulcs, forrasok=tuple(forrasok), licencek=licenc_lista(fs)))
+    adat = [AdatSor(nev=fs[0].kulcs, licencek=licenc_lista(fs), kulso=False)
             for fs in _csoportok([f for f in fajlok if not f.szotar]).values()]
     for k in irodalom_be.kulso_forrasok(korny.b, korny.motivum, azonositok):
         adat.append(AdatSor(nev=k.kulcs, licencek=(Licenc(k.licenc, idezet(k.cimke) if k.cimke is not None else None),),
