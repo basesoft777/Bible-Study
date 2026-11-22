@@ -304,6 +304,189 @@ def reszletes_szoveg(eredmeny):
     return '\n'.join(sorok) + '\n'
 
 
+# --- A 8.2/1 független számlálói ----------------------------------------------------------------------------------
+# A lapon kimondott számok összevetése a regresszió saját, egyszerű számlálásával az adattáblákból (nem a generátor
+# kódjával). A számok a kész lap szövegéből jönnek (a mondatok alakja a sablontáblából), a számlálás a táblákból,
+# `split('\t')`-vel.
+
+ELOFORDULAS_TSV = 'adat/elofordulasok.tsv'
+JELOLT_TSV = 'adat/jeloltek.tsv'
+BLOKK_TSV = 'naplok/F123_teljesseg_%s_blokkok.tsv'
+KONYV_TSV = 'konkordancia/Konyv_normalizalo_tabla.tsv'
+TAHOT_TSV = 'konkordancia/TAHOT_kivonat.tsv'
+TSK_TSV = 'konkordancia/TSK_kereszthivatkozasok.tsv'
+MEGFELELTETES_TSV = 'konkordancia/Karoli_versmegfeleltetes.tsv'
+KAROLI_KH_TSV = 'konkordancia/Karoli_KH_javitott.tsv'
+TSK_KUSZOB = 15   # egyezik a `konfig.TSK_SZAVAZAT_KUSZOB` értékével (a régi Votes ≥ 15)
+_KH_RX = re.compile(r'A motívum (\d+) helyéből (\d+) helyről mutat utalás[^.]*, összesen (\d+)')
+OSZ_KONYVEK_SZAMA = 39
+_TARTOMANY_RX = re.compile(r'(.+ \d+):(\d+)[-–](\d+)$')
+_CSOPORT_RX = re.compile(r'blokk-(?:kizárás|sor)[^:|]*:\s*(\d+) vers')
+_LISTA_RX = re.compile(r'\b(blokk|osztaly)=([^),\s]+)')
+_HALO_RX = re.compile(r'halo=(\w+)')
+_SZAM = r'(\d[\d\u00a0 ]*)'
+_OSSZEADAS_RX = re.compile(r'\*\*Összeadás:\*\* ' + _SZAM + r' \(a motívumhoz tartozik\) \+ ' + _SZAM
+                           + r' \(csoportosan kizárva\) \+ ' + _SZAM + r' \(egyenként elutasítva\) = ' + _SZAM
+                           + r' megvizsgált vers\. Döntés nélkül maradt vers: ' + _SZAM + r'\.')
+_OSZ_VERSEK_RX = re.compile(r'A motívum ószövetségi helyei (\d+) versre terjednek')
+_IGE_VERSEK_RX = re.compile(r'amelyekben az ige a héber szövegben áll \((\d+) vers\)')
+_TABLA_HELY_RX = re.compile(r'^\| \[([^\]]+)\]\(#ige-')
+
+
+def _szam(szoveg):
+    return int(re.sub(r'\D', '', szoveg))
+
+
+def _tabla_sorai(utvonal):
+    """Egy tábla sorai szótárként (a fejléc az első nem megjegyzés sor), `split('\\t')`-vel."""
+    sorok = [s for s in _olvas(utvonal).decode('utf-8').split('\n') if s and not s.startswith('#')]
+    fej = sorok[0].split('\t')
+    return [dict(zip(fej, s.split('\t'))) for s in sorok[1:]]
+
+
+def _versek(kod):
+    m = _TARTOMANY_RX.match(kod.strip())
+    if m and int(m.group(2)) <= int(m.group(3)):
+        return ['%s:%d' % (m.group(1), v) for v in range(int(m.group(2)), int(m.group(3)) + 1)]
+    return [kod.strip()]
+
+
+def _szakasz_szovege(lap, sorszam):
+    kezd = lap.find('\n## %d. ' % sorszam)
+    if kezd < 0:
+        return ''
+    veg = lap.find('\n## ', kezd + 1)
+    return lap[kezd:veg if veg >= 0 else len(lap)]
+
+
+def _szamolt_dontesi_ut(motivum, gyoker, bent):
+    """(csoport, egyen, nyitva) a döntésnaplóból és a csoportlistából: minden vers egyszer számít; a két csoportban
+    is álló vers az előbb álló csoportnál; az egyenként elbírált vers, ha a motívumhoz tartozik, nem számít."""
+    jeloltek = [r for r in _tabla_sorai(os.path.join(gyoker, JELOLT_TSV))
+                if r['id'] == motivum and r.get('jelolt_tipus') == 'elofordulas'
+                and r['dontes'] in ('elutasítva', 'nyitva')]
+    blokk_ut = os.path.join(gyoker, BLOKK_TSV % motivum)
+    lista = _tabla_sorai(blokk_ut) if os.path.isfile(blokk_ut) else []
+    kulon = {r['igehely'] for r in jeloltek
+             if 'külön sor' in r['forras_kereses'] and not _CSOPORT_RX.search(r['forras_kereses'].split(' | ')[0])}
+    latott, csoport, nyitva = set(), 0, 0
+    egyen = {}
+    for r in jeloltek:
+        m = _CSOPORT_RX.search(r['forras_kereses'].split(' | ')[0])
+        if m is None:
+            for v in _versek(r['igehely']):
+                if v not in bent:
+                    egyen.setdefault(v, set()).add(r['dontes'])
+            continue
+        n = int(m.group(1))
+        lk, hk = _LISTA_RX.search(r['forras_kereses']), _HALO_RX.search(r['forras_kereses'])
+        tagok = None
+        if lk and lista:
+            tagok = sorted({s['igehely'] for s in lista if s.get(lk.group(1)) == lk.group(2)
+                            and (hk is None or 'halo' not in s or s['halo'] == hk.group(1))} - kulon)
+            if len(tagok) != n:
+                tagok = None
+        uj = n if tagok is None else len([t for t in tagok if t not in latott])
+        if tagok is not None:
+            latott.update(tagok)
+        if r['dontes'] == 'nyitva':
+            nyitva += uj
+        else:
+            csoport += uj
+    nyitva += sum(1 for d in egyen.values() if 'nyitva' in d)
+    return csoport, sum(1 for d in egyen.values() if 'nyitva' not in d), nyitva
+
+
+def _szamolt_kh(gyoker, helyek):
+    """(hány helyről van utalás, az utalások száma) a TSK-ból (legalább `TSK_KUSZOB` szavazat, a Károli-vers
+    KJV-kulcsán, a célvers Károli-megfelelőinként) és a Károli-KH javított táblájának megerősített soraiból; a
+    tartomány-igehely nem vizsgálható."""
+    konyv = {r['Magyar rövidítés']: r['STEPBible-rövidítés'] for r in _tabla_sorai(os.path.join(gyoker, KONYV_TSV))}
+    megf = {r['igehely_karoli']: r['igehely_kjv'] for r in _tabla_sorai(os.path.join(gyoker, MEGFELELTETES_TSV))}
+    kjv_karoli = {}
+    for karoli, kjv in megf.items():
+        kjv_karoli.setdefault(karoli.rsplit(' ', 1)[0] + ' ' + kjv, []).append(karoli)
+    tsk = {}
+    for r in _tabla_sorai(os.path.join(gyoker, TSK_TSV)):
+        tsk.setdefault(r['Igehely'], []).append((r['Kapcsolódó igehely'], int(r['Votes'] or 0)))
+    kh = {}
+    for r in _tabla_sorai(os.path.join(gyoker, KAROLI_KH_TSV)):
+        if r['szint'] == 'megerositett':
+            kh.setdefault(r['igehely'], set()).add(r['kapcsolodo'])
+    van, osszes = 0, 0
+    for hely in helyek:
+        if _TARTOMANY_RX.match(hely):
+            continue
+        konyvnev, fv = hely.rsplit(' ', 1)
+        kjv = konyvnev + ' ' + megf.get(hely, fv)
+        n = 0
+        if hely in kjv_karoli.get(kjv, [hely]):
+            n += sum(max(1, len(kjv_karoli.get(cel, [cel]))) for cel, sz in tsk.get(kjv, ()) if sz >= TSK_KUSZOB)
+        n += len(kh.get('%s.%s' % (konyv[konyvnev], fv.replace(':', '.')), ()))
+        osszes += n
+        van += 1 if n else 0
+    return van, osszes
+
+
+def szamlalok(motivum, uj_konyvtar, gyoker=GYOKER):
+    """A 8.2/1 számlálói: [(név, a lapon, számolva)]; a lapon nem álló szám None (a mondat a lapon nem szerepel)."""
+    lap = _olvas(os.path.join(uj_konyvtar, '%s_TUDOMANYOS.md' % motivum)).decode('utf-8')
+    elof = [r for r in _tabla_sorai(os.path.join(gyoker, ELOFORDULAS_TSV)) if r['id'] == motivum]
+    osz = {r['Magyar rövidítés'] for r in _tabla_sorai(os.path.join(gyoker, KONYV_TSV))[:OSZ_KONYVEK_SZAMA]}
+    ki = []
+    # az igehelyek halmaza: a 2. szakasz táblája és az előfordulás-tábla
+    helyek = [m.group(1) for m in (_TABLA_HELY_RX.match(s) for s in _szakasz_szovege(lap, 2).split('\n')) if m]
+    ki.append(('előfordulás-sorok (2. szakasz)', len(helyek), len(elof)))
+    ki.append(('az igehelyek halmaza egyezik (2. szakasz)', int(sorted(helyek) == sorted(r['igehely'] for r in elof)),
+               1))
+    # a Döntési út összeadása
+    bent = []
+    for r in elof:
+        bent.extend(v for v in _versek(r['igehely']) if v not in bent)
+    m = _OSSZEADAS_RX.search(_szakasz_szovege(lap, 1))
+    csoport, egyen, nyitva = _szamolt_dontesi_ut(motivum, gyoker, set(bent))
+    lapon = [_szam(x) for x in m.groups()] if m else [None] * 5
+    for nev, a, b in zip(('motívum versei (1.)', 'csoportosan kizárva (1.)', 'egyenként elutasítva (1.)',
+                          'megvizsgált versek (1.)', 'döntés nélkül (1.)'),
+                         lapon, (len(bent), csoport, egyen, len(bent) + csoport + egyen + nyitva, nyitva)):
+        ki.append((nev, a, b))
+    # a kereszthivatkozások: hány helyről van utalás, és összesen hány
+    m = _KH_RX.search(_szakasz_szovege(lap, 6))
+    van, osszes = _szamolt_kh(gyoker, [r['igehely'] for r in elof])
+    ki.append(('KH: helyek utalással (6.)', int(m.group(2)) if m else None, van))
+    ki.append(('KH: utalások összesen (6.)', int(m.group(3)) if m else None, osszes))
+    # az LXX-összesítés: a motívum ószövetségi versei
+    osz_versek = [v for v in bent if v.rsplit(' ', 1)[0] in osz]
+    m = _OSZ_VERSEK_RX.search(_szakasz_szovege(lap, 5))
+    ki.append(('ószövetségi versek (5.)', int(m.group(1)) if m else None, len(osz_versek)))
+    # a szópár-lánc: a szópár első (ige) tagja a héber szövegben
+    par = next((r['gerinc_elem'].split('+')[0] for r in elof if '+' in r.get('gerinc_elem', '')), None)
+    m = _IGE_VERSEK_RX.search(_szakasz_szovege(lap, 9))
+    if par is not None or m is not None:
+        tahot = {}
+        if par is not None:
+            halmaz = set(osz_versek)
+            for s in _olvas(os.path.join(gyoker, TAHOT_TSV)).decode('utf-8').split('\n')[1:]:
+                mezok = s.split('\t')
+                if len(mezok) > 1 and mezok[0] in halmaz and mezok[1] == par:
+                    tahot[mezok[0]] = True
+        ki.append(('a szópár igéje a héber szövegben (9.)', int(m.group(1)) if m else None, len(tahot)))
+    return ki
+
+
+def szamlalo_jelentes(sorok):
+    ki, hiba = [], False
+    for nev, lapon, szamolt in sorok:
+        if lapon is None:
+            ki.append('  %-45s a lapon nem áll · számolva: %d' % (nev, szamolt))
+            continue
+        jo = lapon == szamolt
+        hiba = hiba or not jo
+        ki.append('  %-45s lapon: %d · számolva: %d%s' % (nev, lapon, szamolt, '' if jo else '  ← ELTÉR'))
+    ki.append('SZÁMLÁLÓK: %s' % ('BUKÁS' if hiba else 'RENDBEN'))
+    return '\n'.join(ki), hiba
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description='Az új lap összevetése a referenciával')
     p.add_argument('--id', required=True)
@@ -311,7 +494,13 @@ def main(argv=None):
     p.add_argument('--teljes', action='store_true', help='a hiányzó szakasz is BUKÁS (teljes lap)')
     p.add_argument('--reszletes', help='az engedély nélküli diff-sorok ebbe a fájlba kerülnek')
     p.add_argument('--hash-or-nelkul', action='store_true', help='csak fejlesztés közben: a hash-őr kihagyása')
+    p.add_argument('--szamlalok', action='store_true',
+                   help='csak a 8.2/1 független számlálói (a referencia-diff nélkül; az ISTENTISZT-001 mércéje)')
     a = p.parse_args(argv)
+    if a.szamlalok:
+        szoveg, hiba = szamlalo_jelentes(szamlalok(a.id, a.uj))
+        print(szoveg)
+        return 1 if hiba else 0
     try:
         eredmeny = meres(a.id, a.uj, teljes=a.teljes, hash_ellenorzes=not a.hash_or_nelkul)
     except MerceHiba as hiba:

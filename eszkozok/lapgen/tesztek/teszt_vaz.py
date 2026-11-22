@@ -96,10 +96,6 @@ class Szerkezeti(unittest.TestCase):
 
 
 
-    @unittest.skip(S9)
-    def test_gk11_nincs_globalis_allapot(self):
-        """GK-11: a két mintalap fordított sorrendben generálva bájtra azonos."""
-
     @unittest.skip(S3_MARADEK)
     def test_gk13_lemma_kiejtes_es_valtozat(self):
         """GK-13: a szótári alak kiejtése ugyanabból a szolgáltatásból, a lemma-változattal: H2403a/b, H2398."""
@@ -118,21 +114,7 @@ class Szerkezeti(unittest.TestCase):
         kész: minden pár számít, és a 4.13–4.14 látható szövegében nincs bizonyossági címke és páronkénti jelölés:
         `teszt_szotari_karoli.py`.)"""
 
-    @unittest.skip(S9)
-    def test_gk24_alakosztaly_kapu_tipus_szerint(self):
-        """GK-24: a sablon-eredetű szövegen minden alakosztály tilos, az idézeten csak a proveniencia-alakok; 0
-        találat mindkét új lapon, 0 hamis találat a mai mintalap prózáján és idézetein."""
 
-    @unittest.skip(S9)
-    def test_gk26_mutacios_proba(self):
-        """GK-26: hat hibaváltozat (szivárgó mezőnév, ismételt címke, tört írásjel, jegyzet = cella, belső szám a
-        mondatban, hiányzó „Funkció:”); mindet megfogja legalább egy kapu; jelentés kapunként."""
-
-
-
-    @unittest.skip(S9)
-    def test_gk31_futasido(self):
-        """GK-31: egy lap generálása legfeljebb 60 s (a régi 46,5 s; 1,5-szeres túllépés megállás)."""
 
 
 class AtvettTetelek(unittest.TestCase):
@@ -170,19 +152,6 @@ class Hibanaplo(unittest.TestCase):
     @unittest.skip('a hatókör-sor zárójeles forráslistája a felhasználó döntésére vár (az S1 utáni átnézés)')
     def test_hn03_forrasnev_a_mondat_kozepen(self):
         """HN-03: forrásnév a mondat közepén, zárójelben („(a BDB-szótár)”): 0 találat."""
-
-    @unittest.skip(S9)
-    def test_hn02_hn04_cimke_ismetles_es_belso_mezonev(self):
-        """HN-02, HN-04: címke-ismétlés és belső mezőnév („hivatkozas_kezi,;”, „negativ_kriterium”): 0 találat."""
-
-    @unittest.skip(S9)
-    def test_hn05_hn06_munkaszereplo_es_gerinc(self):
-        """HN-05, HN-06: „felhasználó”, „orkesztrátor”, „gerinc” a látható szövegben: 0 találat."""
-
-    @unittest.skip(S9)
-    def test_hn07_hn08_hn09_belso_szam_es_nyers_szotarfej(self):
-        """HN-07, HN-08, HN-09: töredék („sz<n> sorok,;”), döntésszám és tételszám, nyers BDB-fej, héber
-        számláló: 0 találat mindkét új lapon."""
 
     @unittest.skip(S3_MARADEK)
     def test_hn12_angol_thayer_nyersen(self):
