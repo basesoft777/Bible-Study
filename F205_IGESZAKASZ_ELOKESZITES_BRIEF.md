@@ -14,7 +14,7 @@ olvas: [MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md, sablonok/9_PaRDeS_m
 ir: [MUNKAMENET.md, sablonok/2_PaRDeS_bovitett_sablon.md, adat/SEMA.md, adat/jelentespont_olvasat.tsv, eszkozok/tanulmany_kinyer.py, eszkozok/teszt_tanulmany_kinyer.py, eszkozok/szakasz_forditas.py, eszkozok/teszt_szakasz_forditas.py, eszkozok/proza_allitas.py, eszkozok/teszt_proza_allitas.py, F205_IGESZAKASZ_ELOKESZITES_BRIEF.md]
 fugg: [125]
 ag: claude/f205-tanulmany-mod
-pr: 752
+pr: 792
 ---
 
 # F205_IGESZAKASZ_ELOKESZITES_BRIEF.md — Az igeszakasz-tanulmány előkészíti a motívumcikket
