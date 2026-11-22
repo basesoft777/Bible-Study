@@ -123,3 +123,13 @@ ELTÉRÉS-ek súlyossági sorrendben:
 | 5 | nincs licenc-megjegyzés a `merce/` alatt, nincs N-tétel | `merce/README.md` + N-F232e |
 
 A mérce újragenerálása ugyanebben a PR-ban a normalizáló javításának következménye (a lapok tartalma nem változott, a pillanatkép formája igen); a PR leírása jelzi.
+
+## Zárás
+
+- **Kész:** a két piros teszt javítása (`dc138f6b`, 3 teszt, teszt-oldali: a várt szöveg volt régi); a mérce (`teszt_olvasoi_merce.py`, `merce/`, 18 oldal); a bekötés a push előtti kapuba (`push_elott.py`, `teszt_futtat.py`); az 1. ellenőrzés (ELTÉRÉS, 6 tétel) javítókörrel (`0d9c3a79`).
+- **Döntések:** DT-F232a 🟢 (felhasználó, 2026-11-22: „(b) + (a2) mehet”); nyitott: N-F232a (CI a TSV-ből épített DB-n), N-F232b (kovetkezo.md PUSH ELŐTT), N-F232c (teszt_arculat ingadozik), N-F232d (üres kimaradás a teszt_olvaso_szerver.py-ban), N-F232e (merce/ licenc-áttekintés).
+- **Nem teljesült teljesen:** a brief 4. feltétele („kihagyott DB-s teszt nélkül zöld”): az N-F232d kimaradás DB-tartalomfüggő, a `teszt_arculat.py` egy tesztje terhelés alatt ingadozik (N-F232c); a feltétel emiatt a (b)-ben csak a terheletlen, teljes futásra igaz. A (b) kapu költsége mért 17–22 perc + a zárra várás; a CI-futás azonosító (4. feltétel 3.) a (b)-nél nincs, a bizonyíték helyi (`db565cf3` próba).
+- **A javítókör után nem ellenőrzött újra független ellenőr** (egy javítókör a brief szerint); a javítás ellenőrzése: a normalizáló és a leképezés egységtesztjei, a mérce 14 teszt zöld WSL-ben, a `teszt_visszhang_kapu` zöld, a `E2-E39` zöld helyben.
+- **Eltérés a briefhez (egyeztetett):** a `Jn 1:1` mintaoldal a szerverben `/Jan/1/1`.
+- **Orkesztrátor figyelmébe:** a DT-F232a sorában az „kb. 2 perc” alulbecslés volt (l. F232.6 #3); a döntés alapja ezért módosul, a (b) a mért költséggel is a javasolt marad-e, azt az orkesztrátor ítéli meg.
+
