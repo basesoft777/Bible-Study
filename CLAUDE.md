@@ -17,7 +17,7 @@ a két changelogot (`PaRDeS_dontesek_CHANGELOG.md`, `motivumlog/PaRDeS_motivumok
 
 | Feladat | Amit megnyitsz |
 |---|---|
-| bármi | ez a fájl + `NYITOTT_FELADATOK.md` |
+| bármi | ez a fájl + `IRANY.md` (az irány: futó szálak, mit nem csinálunk, mi vár a szerkesztőre); a `NYITOTT_FELADATOK.md` csak egy tétel keresésekor |
 | adattábla írása/olvasása | `adat/SEMA.md` |
 | tanulmányírás | a megfelelő `sablonok/` fájl + `sablonok/PaRDeS_gyorsreferencia.md` |
 | lexikai kutatás | `adat/datasetek.tsv` + `konkordancia/README.md` |
