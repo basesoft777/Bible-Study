@@ -162,6 +162,9 @@ class Kapu(unittest.TestCase):
         kartya = _latszo(h[i:h.index('</section>', i)])
         self.assertIsNone(re.search('(?<![%s׳])׳[א-ת]' % HEB, kartya))
         self.assertIn('a Krónikák (31-szer); Dán 11:37', re.sub(r'\s+', ' ', kartya))   # a felsorolás egyben
+        # a Biblia által igazolt sorrend-javítás a rövidítőjel áthelyezése előtt fut (forrás: „׳א אברהם אדני”, 1Móz 24:12)
+        self.assertIn('א׳ אדני אברהם', kartya)
+        self.assertNotIn('א׳ אברהם אדני', kartya)
         self.assertIn('Di', kartya)
         self.assertIn('<abbr title="A. Dillmann">Di</abbr>', h)
 

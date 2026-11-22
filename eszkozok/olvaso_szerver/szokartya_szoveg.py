@@ -167,9 +167,12 @@ def elso_tagmondat(s, hatar=70):
     return t
 
 
-def olvasoi(s, magyar=True):
-    """A szakaszszöveg olvasói alakja (a linkelés és az escape előtt): rövidítőjel, párhuzam, ellentét, tanú-jel, takarítás."""
-    s = re.sub(r'^\s*_\d+\s*', '', s or '')    # a pont elején álló BDB-gyakoriság („_140”): a törzs fejében már áll
+def olvasoi(s, magyar=True, elotte=None):
+    """A szakaszszöveg olvasói alakja (a linkelés és az escape előtt): rövidítőjel, párhuzam, ellentét, tanú-jel, takarítás.
+    `elotte`: a Biblia által igazolt héber javítás (`bdb_rovidites.heber_sorrend_javit` a Strongra kötve), amely a forrás alakját
+    keresi, ezért a rövidítőjel áthelyezése ELŐTT kell lefutnia (különben a „׳א אברהם אדני” forrásalak nem ismerhető fel)."""
+    s = elotte(s or '') if elotte else (s or '')
+    s = re.sub(r'^\s*_\d+\s*', '', s)    # a pont elején álló BDB-gyakoriság („_140”): a törzs fejében már áll
     s = geresh_javit(s)
     s = nemi_tanu(s)
     if magyar:

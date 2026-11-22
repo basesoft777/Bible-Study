@@ -1691,7 +1691,7 @@ def _szk_inline(cx, s, dom, cimke):
     hivatkozásokkal (a vers helye kiemelve)."""
     vj, talalt = cx['vj'], cx['talalt']
     cx.setdefault('szovegek', []).append(s or '')
-    t = szokartya_szoveg.olvasoi(s or '', magyar=cx.get('hu', True))
+    t = szokartya_szoveg.olvasoi(s or '', magyar=cx.get('hu', True), elotte=cx.get('sorrend'))
     return vj.szoveg(t, talalt, dom, cimke) if vj.van else _jeles(t, talalt)
 
 
@@ -1748,11 +1748,11 @@ def _szk_szamozas(cx, dom):
     return Markup('<p class="megj szk-szamozas">%s %s</p>') % (F('szk.szamozas'), '; '.join(vsz))
 
 
-def _szk_angol(en, talalt=None):
+def _szk_angol(en, talalt=None, sorrend=None):
     if not en:
         return Markup('')
     return Markup('<details class="szk-en"><summary>%s</summary><p class="szk-en-szoveg" lang="en">%s</p></details>') % (
-        F('szk.angol_eredeti'), _jeles(szokartya_szoveg.olvasoi(en, magyar=False), talalt))
+        F('szk.angol_eredeti'), _jeles(szokartya_szoveg.olvasoi(en, magyar=False, elotte=sorrend), talalt))
 
 
 def _szk_en_terkep(en_fa):
@@ -1782,11 +1782,11 @@ def _szk_glossza(cx, n, tn, jel, al, cimke):
     sajat = jel if not al else '%s.%s' % (jel, al)
     gl = szotari_glossza.olvasoi_glossza(('%s %s' % (tn, sajat)).strip(), kezi, n['szoveg']) or ''
     if gl == 'szemben':         # „szemben עֶרֶב …” (H1242 1.e): a cím az olvasói alak „ellentétben: X” része, a héber szóval
-        m = re.match(r'\s*(%s)' % re.escape(F('szk.ellentetben', szo='')) + r'\s*\S+', szokartya_szoveg.olvasoi(n['szoveg'] or ''))
+        m = re.match(r'\s*(%s)' % re.escape(F('szk.ellentetben', szo='')) + r'\s*\S+', szokartya_szoveg.olvasoi(n['szoveg'] or '', elotte=cx.get('sorrend')))
         gl = m.group(0).strip() if m else gl
     if gl:
         return gl, kezi, False
-    return szokartya_szoveg.elso_tagmondat(szokartya_szoveg.olvasoi(n['szoveg'] or '', magyar=cx.get('hu', True))), kezi, True
+    return szokartya_szoveg.elso_tagmondat(szokartya_szoveg.olvasoi(n['szoveg'] or '', magyar=cx.get('hu', True), elotte=cx.get('sorrend'))), kezi, True
 
 
 def _szk_meta(cx, nid, n, kezi):
@@ -1879,7 +1879,7 @@ def _szk_torzsek(cx, tl, elotag, cimke):
             cx.setdefault('glosszak', {})[jid] = gl
             meta, szint, van_mot = _szk_meta(cx, jid, j, kezi)
             szov = _szk_szoveg(cx, j['szoveg'], jid, cimke)
-            also = _szk_szamozas(cx, jid) + _szk_angol(cx['en'].get((elotag, ti, j['jel'] or 'x%d' % i, '')), cx['talalt'])
+            also = _szk_szamozas(cx, jid) + _szk_angol(cx['en'].get((elotag, ti, j['jel'] or 'x%d' % i, '')), cx['talalt'], cx.get('sorrend'))
             alok = Markup('')
             for s in j['al']:
                 sid = _jel_id(elotag, ti, j['jel'], s['jel'])
@@ -1887,7 +1887,7 @@ def _szk_torzsek(cx, tl, elotag, cimke):
                 cx.setdefault('glosszak', {})[sid] = sgl
                 smeta, sszint, s_mot = _szk_meta(cx, sid, s, skezi)
                 van_mot = van_mot or s_mot
-                salso = _szk_szamozas(cx, sid) + _szk_angol(cx['en'].get((elotag, ti, j['jel'], s['jel'])), cx['talalt'])
+                salso = _szk_szamozas(cx, sid) + _szk_angol(cx['en'].get((elotag, ti, j['jel'], s['jel'])), cx['talalt'], cx.get('sorrend'))
                 alok += Markup('<li id="%s" data-jel="%s." class="szk-alpont%s"><p class="szk-alcim"><span class="szk-jelszam">%s.</span>'
                                '%s%s</p>%s<div class="szk-also">%s</div></li>') % (
                     sid, s['jel'], ' bdb-itt' if sszint else '', s['jel'], _szk_cim(sgl, spot), smeta,
@@ -1936,9 +1936,12 @@ def _r_bdb_egyszeru(d, K):
     ki = Markup('<span class="allapot%s">%s</span>') % ('' if hu else ' folyamat', F('szk.allapot_forditva_rovid') if hu else F('szk.allapot_angol'))
     if d['alias']:
         ki += _alias_megj(d['alias'])
-    ki += Markup('<p class="szk-szoveg jsz">%s</p>') % _jeles(szokartya_szoveg.olvasoi(_sor_kulcs_nelkul(hu or en), magyar=bool(hu)), talalt)
+    _st = d['alias']['tabla_strong'] if d.get('alias') else getattr(K, 'strong', '')
+    sorrend = lambda t: bdb_rovidites.heber_sorrend_javit(t, _st)              # noqa: E731
+    ki += Markup('<p class="szk-szoveg jsz">%s</p>') % _jeles(szokartya_szoveg.olvasoi(_sor_kulcs_nelkul(hu or en), magyar=bool(hu),
+                                                                                        elotte=sorrend), talalt)
     if hu and en:
-        ki += _szk_angol(_sor_kulcs_nelkul(en), talalt)
+        ki += _szk_angol(_sor_kulcs_nelkul(en), talalt, sorrend)
     if talalt:
         ki += Markup('<details class="szk-jelmagyarazat"><summary>%s</summary>%s</details>') % (F('szk.jelmagyarazat'), _jelmagyarazat_html(talalt))
     return _rovidites(K, Markup('<div class="szk" data-nezet="olvaso">%s</div>') % ki, magyar=bool(hu))
@@ -1961,6 +1964,8 @@ def _r_bdb_apparatus(d, K):
     cx = {'vj': vj, 'talalt': talalt, 'cimkek': d.get('cimkek') or {}, 'lxx': d.get('lxx') or {}, 'lem': d.get('lem') or {},
           'nyelvtani': d.get('nyelvtani') or set(), 'motiv': motiv, 'en': _szk_en_terkep(d.get('en_fa')),
           'nezet': d.get('nezet') or 'szo', 'hu': bool(hu)}
+    _st = d['alias']['tabla_strong'] if d.get('alias') else getattr(K, 'strong', '')
+    cx['sorrend'] = lambda t: bdb_rovidites.heber_sorrend_javit(t, _st)        # a Biblia által igazolt sorrend a rövidítőjel előtt
     ki = Markup('<span class="allapot%s" data-modell="%s">%s</span>') % (
         '' if hu else ' folyamat', (d['meta'] or '') if hu else '',
         F('szk.allapot_forditva', datum=(d['meta'] or '').rpartition(', ')[2]) if hu else F('szk.allapot_angol'))
@@ -1977,7 +1982,7 @@ def _r_bdb_apparatus(d, K):
     if a['alap']:
         cx.setdefault('szovegek', []).append(a['alap'])
         lemma += Markup('<p class="szk-alap jsz">%s</p>') % vj.szoveg(
-            szokartya_szoveg.olvasoi(re.sub(r'\s+([.,;])', r'\1', _NEMI_JEL.sub(' ', a['alap'])), magyar=bool(hu)), talalt)
+            szokartya_szoveg.olvasoi(re.sub(r'\s+([.,;])', r'\1', _NEMI_JEL.sub(' ', a['alap'])), magyar=bool(hu), elotte=cx['sorrend']), talalt)
     tagolatlan = not any(t['jelentesek'] for t in a['torzsek']) and not a.get('szakaszok')
     lenyilo = Markup('')
     if a.get('alaktan') and not tagolatlan:
@@ -2004,7 +2009,7 @@ def _r_bdb_apparatus(d, K):
         c = vj.szakasz_cimke.get(k)
         sz_t, sz_tj = _szk_torzsek(cx, x['torzsek'], 'bdb-s%d' % k, c)
         ny = Markup('<ul class="lista">%s</ul>') % Markup('').join(Markup('<li>%s</li>') % _szk_inline(cx, n, None, c) for n in x['nyelvi']) if x['nyelvi'] else Markup('')
-        alap = szokartya_szoveg.olvasoi(x['alap'] or '', magyar=bool(hu))
+        alap = szokartya_szoveg.olvasoi(x['alap'] or '', magyar=bool(hu), elotte=cx['sorrend'])
         teljes_alap = _szk_szoveg(cx, x['alap'], None, c) if len(alap) > 80 else Markup('')     # a 80 jel fölötti rész se vesszen el
         if alap and len(alap) <= 80:
             cx.setdefault('szovegek', []).append(x['alap'])
@@ -2032,7 +2037,7 @@ def _r_bdb_apparatus(d, K):
         ki += Markup('<details class="szk-teljes"%s><summary>%s</summary>%s%s</details>') % (
             Markup(' open') if nyitva else '', F('szk.teljes_szoveg'),
             Markup('<p class="megj">%s</p>') % F('szk.teljes_nyitva') if nyitva else '',
-            _szoveg(szokartya_szoveg.olvasoi(_sor_kulcs_nelkul(d['hu_nyers']))))
+            _szoveg(szokartya_szoveg.olvasoi(_sor_kulcs_nelkul(d['hu_nyers']), elotte=cx['sorrend'])))
     return _rovidites(K, Markup('<div class="szk" data-nezet="olvaso">%s</div>') % ki, magyar=bool(hu))
 
 
