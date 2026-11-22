@@ -1928,3 +1928,19 @@ Az ELTÉRÉS-ek súlyosság szerint:
 3. **HN-03, mechanikus darabszám.** Az S9c-re szánt hely nem 11, hanem 16 (az új ISTENTISZT-lapon 7). A DT-F218b döntési alapja így megváltozott.
 4. **Nyílt mag, jelentés.** A +24 fordításhiány nincs kimondva; ehhez jön a 6 F217 figyelmeztetés.
 5. **Kisebb, mechanikus tételek:** az N222 lezárása; a SEMA 2.68; a GK-06 latens ágai; a küszöbök helye; a dupla regex; a jelentés számai; az `ir` mező.
+
+### A 15. ellenőrzés javítóköre (2026-11-22, a 17. session)
+
+| Tétel | Besorolás | Mi történt |
+|---|---|---|
+| 1. A `forras_kereses` megszorítása kézi szövegként a lapon („Hif'íl-alakok”) | tartalmi | ⛔ az orkesztrátorhoz (javaslat: (a) szerkezetként bontva, a név a névtábla `kereses_megszoritas` típusából; a lap nem változik). Ebben a körben nem változott; a jelentés S9a-beli „csak a szerkezete jön ki” állítása erre a darabra pontatlan volt. |
+| 2. A 8.2/1 LXX-összesítése részleges | mechanikus, de egy körben nem írható meg függetlenül | N-F218e (az S9c-é): az 5. szakasz összegző számainak független számlálása; a csoportos ág algoritmus-másolata ugyanott. |
+| 3. HN-03: 16 hely, nem 11 | mechanikus | A DT-F218b kérdésrésze, a nézési csomag D. pontja és a folytatás az új lapokon mért 16 helyet írja (HAMART 9, ISTENTISZT 7); az orkesztrátor tájékoztatva. |
+| 4. Nyílt mag: +24 fordításhiány, 6 F217-figyelmeztetés | mechanikus | A 6 `nyilt_mag/` fájl kikerült a PR-ból (a main-en az Action generálja, F217 O4). Kimondva: a `jeloltek.tsv` 24 indoklás-cellájának javítása után a nyílt mag `kizarasok.tsv` angol oszlopa ezekben a sorokban elavult fordításként jelölődik (257 → 281 sor fordításra vár); az újrafordítás a nyílt mag fordítási menetéé. |
+| 5a. N222 nyitottként állt | mechanikus | A sor a `NYITOTT_FELADATOK.md` nyitott listájából kikerült; a lezárás a `nyitott/uj/f218a-s9-722be2.md` lezárt-blokkjában. |
+| 5b. SEMA 2.68 | mechanikus | Kiegészítve: `vizsgalt_csoport`, `halo_kereses`, `korpusz`, az `ok_cella` 3. szakaszbeli használata, az `ok_leiras_cella` a kapujával. |
+| 5c. GK-06 latens ágai | mechanikus | `bemenet/vizsgalt.py`: a `kollokacio` és a `csalad` Strong-szám nélkül, a `lanc` korpusz nélkül BemenetHiba. |
+| 5d. A küszöbök a megjelenítőben | mechanikus | `konfig.KIZART_ATLAG_HATAR`, `konfig.KIZART_HATAR_KUSZOB`. A következtetés eldöntése (`kovetkeztetes_kod`) a megjelenítőben maradt: az S9c-ben a modellbe költöztethető (az N-F218e mellé). |
+| 5e. Dupla regex (M-NYERS) | mechanikus | A csoportos versszám a döntésnapló réteg egyetlen mintájából; az indoklás összesítő eleje és a forrás-mező versszáma eltérésnél BemenetHiba; a `_suly` néma tartaléka helyett KapuHiba. |
+| 5f. A jelentés számai | mechanikus | Javítva itt: az S9b „`S3_MARADEK` (10)” helyesen 8 teszt; a „140 diff-sor” az N-F218x után 139; a DT-F218a kérdése „21 skip … GK-19” szerint; a nézési csomag GK-04-e a `lxx_egyezes` részre szűkítve. A „merge után a mérce a main-en is futtatható” állítás pontatlan volt: a B51 az ág döntésfájlját is méri, amelyet a `szamkiosztas` töröl, ezért a merge után a mérce első futása előtt az N200 lépés kell (a sor törlése, a `DONTESEK.md` hash-e) — ez az S9c első lépése. |
+| 5g. `ir` | mechanikus | A brief `ir` mezője kiegészítve: `dontesek/uj/f218a-s9-722be2.md`, `nyitott/uj/f218a-s9-722be2.md`, `adat/licencek.tsv`. A `NYITOTT_FELADATOK.md` meglévő sorának szerkesztése a CLAUDE.md szerint az `ir`-en kívül megengedett. |

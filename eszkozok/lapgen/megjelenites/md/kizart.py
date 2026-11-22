@@ -21,8 +21,6 @@ _SZAVAS = {JelolesFajta.SZO: 'k3.miert.szo', JelolesFajta.SZOCSALAD: 'k3.miert.s
 _EGYSZERU = {JelolesFajta.LANC: 'k3.miert.lanc', JelolesFajta.FRAZIS: 'k3.miert.frazis',
              JelolesFajta.AUDIT: 'k3.miert.audit', JelolesFajta.TEMATIKUS: 'k3.miert.tematikus',
              JelolesFajta.NAPLO: 'k3.miert.naplo'}
-_ATLAG_HATAR = 10     # a vizsgált/motívumhely arány fölötte átlaggal mondva (a régi `kizart` szabálya)
-_HATAR_KUSZOB = 0.40  # a leggyakoribb ok ennyi része felett „ez az ok húzza meg” (a régi `HATAR_KUSZOB`)
 
 
 def _szo(ny, sz):
@@ -120,11 +118,12 @@ def olvasoi(ny, m):
     kov = []
     if m.helyek:
         arany = vizsgalt / m.helyek
-        if round(arany) <= _ATLAG_HATAR:
-            raise ValueError('a 3. szakasz arány-mondata (legfeljebb %d-szeres arány) nincs leképezve' % _ATLAG_HATAR)
+        if round(arany) <= konfig.KIZART_ATLAG_HATAR:
+            raise ValueError('a 3. szakasz arány-mondata (legfeljebb %d-szeres arány) nincs leképezve (N-F218c)'
+                             % konfig.KIZART_ATLAG_HATAR)
         kov.append(ny.s('k3.kov.atlag', x=round(arany), v=vizsgalt, n=m.helyek))
     if m.okok and elutasitva:
-        hatar = m.okok[0].versszam / elutasitva >= _HATAR_KUSZOB
+        hatar = m.okok[0].versszam / elutasitva >= konfig.KIZART_HATAR_KUSZOB
         kulcs = 'k3.kov.hatar' if hatar else 'k3.kov.tobb'
         kulcs += '.elso' if not kov else ''
         kov.append(ny.s(kulcs, ok=m.okok[0].ok) if hatar else ny.s(kulcs))

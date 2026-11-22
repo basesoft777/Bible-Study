@@ -168,7 +168,9 @@ def _suly(s, egyedi):
     szerint: a más csoportban is álló vers egyszer számít), különben a versek (a tartomány kibontva). A cella a
     csoportos sor saját versszámát mondja (a forrás-mező szerint)."""
     if s.jeloles.csoport_versszam is not None:
-        return egyedi.get(s.igehely, s.jeloles.csoport_versszam)
+        if s.igehely not in egyedi:
+            raise KapuHiba('a 3. szakasz csoportos sora (%s) nincs a vizsgálat modelljében' % s.igehely.kod)
+        return egyedi[s.igehely]
     return len(s.versek)
 
 

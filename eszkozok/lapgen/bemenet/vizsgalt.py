@@ -38,7 +38,8 @@ _NYOM_ELVALASZTO = ' · '
 # olvasói neve a névtábla `halo_kereses` sora
 _HALOK = (('szópár-háló', 'szopar'), ('Strong-háló', 'strong'), ('szótár (', 'szotar'), ('Károli-szó', 'karoli'),
           ('LXX-többlet', 'lxx_tobblet'), ('Septuaginta-híd', 'lxx_hid'))
-_CSOPORT_RX = re.compile(r'(?:blokk-kizárás|blokk-sor)[^:|]*:\s*(\d+) vers')
+# a csoportos sor versszáma: egyetlen út, a döntésnapló réteg mintája (M-NYERS)
+_CSOPORT_RX = dontes_be._CSOPORT_VERSSZAM_RX
 _OSSZESITO_ELEJE_RX = re.compile(r'^Összesítő sor (\d+) versre \((?:a sor igehelye a blokk egy verse áll|az első itt '
                                  r'áll)\):\s*')
 _SZERKESZTOI_ZARO_RX = re.compile(r'\s*A felhasználó döntése \(\d{4}-\d\d-\d\d: „[^”]*”\) szerint blokk-kizárás\.$')
@@ -97,6 +98,14 @@ def _korpuszok(b, forras):
     return tuple(b.kulcs('B04', 'korpusz', k) for k in _KORPUSZOK if k in scope)
 
 
+def _strongok(fo, igehely):
+    """A keresés Strong-számai; üres lista BemenetHiba (GK-06: üres szólistával tört mondat lenne)."""
+    strongok = tuple(Strong(s) for s in _STRONG_RX.findall(fo))
+    if not strongok:
+        raise BemenetHiba('B04: %s: a keresés nem nevez meg Strong-számot: %s' % (igehely, fo[:80]))
+    return strongok
+
+
 def _jeloles(b, fo, forras, konyvek, igehely):
     """(csoport, jelölés, jegyzet) a forrás-mező első részéből (a régi `jeloles_oka` ágai, a lapon előforduló
     fajtákra). Ismeretlen fajta BemenetHiba: a lap nem találgat."""
@@ -127,8 +136,7 @@ def _jeloles(b, fo, forras, konyvek, igehely):
         return VizsgaltCsoport.KERESES, jeloles, Jegyzet(VizsgaltJegyzetFajta.KERESES_KORPUSZ, strongok=strongok,
                                                          korpuszok=korpuszok)
     if fo.startswith('kollokacio'):
-        return VizsgaltCsoport.KERESES, Jeloles(JelolesFajta.SZOPAR, strongok=tuple(
-            Strong(s) for s in _STRONG_RX.findall(fo))), None
+        return VizsgaltCsoport.KERESES, Jeloles(JelolesFajta.SZOPAR, strongok=_strongok(fo, igehely)), None
     if _TEMATIKUS_RX.match(fo):
         return VizsgaltCsoport.SZERKESZTOI, Jeloles(JelolesFajta.TEMATIKUS), None
     if fo.startswith('napló:') or (not fo and 'napló:' in forras):
@@ -149,10 +157,11 @@ def _jeloles(b, fo, forras, konyvek, igehely):
     if fo.startswith('pozíció-alapú frázis-keresés'):
         return VizsgaltCsoport.KERESES, Jeloles(JelolesFajta.FRAZIS), None
     if fo.startswith('csalad '):
-        return VizsgaltCsoport.KERESES, Jeloles(JelolesFajta.SZOCSALAD, strongok=tuple(
-            Strong(s) for s in _STRONG_RX.findall(fo))), None
+        return VizsgaltCsoport.KERESES, Jeloles(JelolesFajta.SZOCSALAD, strongok=_strongok(fo, igehely)), None
     if fo.startswith('lanc'):
         korpuszok = _korpuszok(b, forras)
+        if not korpuszok:   # GK-06: néma hiány nincs (üres korpuszlistával tört mondat lenne)
+            raise BemenetHiba('B04: %s: a lánc-keresés korpusza nem állapítható meg: %s' % (igehely, forras[:80]))
         return VizsgaltCsoport.KERESES, Jeloles(JelolesFajta.LANC), Jegyzet(VizsgaltJegyzetFajta.LANC,
                                                                              korpuszok=korpuszok)
     raise BemenetHiba('B04: %s: a jelölés forrása nincs leképezve a 3. szakasz táblájára: %s' % (igehely, fo[:120]))
@@ -195,6 +204,10 @@ def vizsgalt_sorok(b, motivum):
         csoport, jeloles, jegyzet = _jeloles(b, fo, forras, konyvek, igehely_kod)
         indok_fo, sep, farok = sor[idx['indoklas']].partition(_MEZO_ELVALASZTO)
         osszesito, zaro, indok = _indoklas(b, indok_fo, igehely_kod)
+        if osszesito is not None and osszesito != jeloles.csoport_versszam:
+            # az összesítő eleje és a forrás-mező versszáma ugyanaz az adat: eltérésnél a réteg megáll (M-NYERS)
+            raise BemenetHiba('B04: %s: az indoklás összesítő eleje (%d vers) és a forrás-mező versszáma (%s) eltér'
+                              % (igehely_kod, osszesito, jeloles.csoport_versszam))
         ok = okok.besorol(b.belso('B04', 'indoklas', indok_fo)) if dontes is Dontes.ELUTASITVA else None
         v = VizsgaltSor()
         v.igehely = dontes_be._igehely(igehely_kod, 'B04')

@@ -8,7 +8,7 @@ Mindkét lap az új generátor kimenete, munka módban, `PARDES_DATUM=2026-11-13
 - `HAMART-001_TUDOMANYOS.md` (3286 sor) és `HAMART-001_KIZARASOK.md` (431 sor);
 - `ISTENTISZT-001_TUDOMANYOS.md` (1703 sor) és `ISTENTISZT-001_KIZARASOK.md` (307 sor).
 
-**Állapot.** A HAMART-001 teljes lapja a mai jóváhagyott lappal szakaszonként egyezik, csak az alábbi engedélyezett eltérésekkel (engedély nélküli diff-sor 0, a bemenet-hash őrrel). Az ISTENTISZT-001 mércéje a 8.2: a független számlálók (a Döntési út összeadása, az igehelyek halmaza, a KH-darabszám, az ószövetségi versek, a szópár-lánc) mind egyeznek; GK-04, GK-24, GK-25, GK-SZOPAR zöld; festékpróba 0 szivárgás; a HN-esetek száma 0. A régi generátor HAMART-kimenete a 218a végén is bájtra azonos a referenciával.
+**Állapot.** A HAMART-001 teljes lapja a mai jóváhagyott lappal szakaszonként egyezik, csak az alábbi engedélyezett eltérésekkel (engedély nélküli diff-sor 0, a bemenet-hash őrrel). Az ISTENTISZT-001 mércéje a 8.2: a független számlálók (a Döntési út összeadása, az igehelyek halmaza, a KH-darabszám, az ószövetségi versek, a szópár-lánc) mind egyeznek; GK-04 `lxx_egyezes` része, GK-24, GK-25, GK-SZOPAR zöld (a GK-04 `hely_egyseg` része a 218c-é, N-F218a); festékpróba 0 szivárgás; a HN-esetek száma 0. A régi generátor HAMART-kimenete a 218a végén is bájtra azonos a referenciával.
 
 ## 2. Eltérés-összesítés osztályonként (HAMART-001)
 
@@ -97,7 +97,7 @@ Az elutasítási ok megjegyzésének táblacella eleji alakja a 3. szakasz okain
 
 ### D. HN-03: a forrásnév a mondat közepén, zárójelben (az S9c tölti ki; DT-F218b)
 
-*Külön tétel: mind a 11 hely (HAMART-001: 2. szakasz 1, 4. szakasz 4, 9. szakasz 1, 12. szakasz 4; ISTENTISZT-001: 1) a mondat előtte/utána alakjában, egyenként visszautasítható. A felhasználó döntésére vár az S1 óta; a végső szó az övé.*
+*Külön tétel: minden hely az új lapokon (a 15. független ellenőrzés mérése szerint az új lapokon 16 hely: HAMART-001 9 — 2. szakasz 1, 4. szakasz 4, 9. szakasz 1, 12. szakasz 3; ISTENTISZT-001 7 — 2. szakasz 1, 4. szakasz 2, 9. szakasz 1, 12. szakasz 3; a 10 + 1 a main-en álló régi lapokon mért szám), a mondat előtte/utána alakjában, egyenként visszautasítható. A felhasználó döntésére vár az S1 óta; a végső szó az övé.*
 
 **Adat helyére költözött, szövegében nem új (tájékoztatás):** a névtábla `kiadasi_adat` 5 sora (S8d, DT911: szerző, a lexikon címe — ma „Logosz-lexikon”, a webcím alapja, két DOI; a névcsere az N220); az `ok_cella` 45 és az új `ok_leiras_cella` típus 18 sora (S5, S9a: az elutasítási ok címkéjének és megjegyzésének táblacella eleji alakja, a régi lap nagybetűsítése szerint, betűre).
 
