@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-22",
-   "commit": "6627b037"
+   "commit": "d0273612"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -701,7 +701,7 @@
    "fazis": "folyamat",
    "allapot": "stop",
    "brief_allapot": "megallt",
-   "most": "Áll. Kész: M0–M3 (a #752 a main-en, 2026-11-16; a tanulmany_kinyer.py és a blokkok). Hátra: M5 és az M3 proza_allitas --tanulmany módja; előtte az ir visszabővítése és a függési kör (#74 #123 #156 #205 #218 #224) rendezése — a felhasználó dönt; a #729, #725 és #749 már a main-en.",
+   "most": "Áll. Kész: M0–M3 (a #752 a main-en: a tanulmany_kinyer.py és a blokkok; 2026-11-22: a proza_allitas.py --tanulmany módja, az ir a proza_allitas párral bővítve, függési kör nélkül). Hátra: M5 (SEMA 2.4 és a 9. sablon cikkszabálya, a general.py és az ellenoriz.py az ir-ben) — az F218a után; előtte az ir visszabővítése és a fuggesek újramérése.",
    "fugg": "#123*, #125 (kész), #218*",
    "tervezett": false,
    "reszletes": "",
@@ -717,7 +717,7 @@
    "fazis": "folyamat",
    "allapot": "run",
    "brief_allapot": "fut",
-   "most": "Te: az S8d (Kolofon: GK-07 maradéka, GK-27, GK-28 maradéka, ISM-KOLOFON); utána megállás",
+   "most": "\"Te: az S9 (a két renderelt lap a felhasználónak, az eltérés-összesítés és az S2–S9 új sorainak listája); utána megállás\"\u0001",
    "fugg": "#70*",
    "tervezett": false,
    "reszletes": "",
@@ -7235,6 +7235,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 260
+  "kesz_db": 262
  }
 }
