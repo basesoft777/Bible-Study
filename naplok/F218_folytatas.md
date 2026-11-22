@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218a-s8c-5ffa99` (az S8c; alap: main `9730b829`) · PR: draft, a megnyitás után (az S8a: #779, az S8b: #782, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
+Ág: `claude/f218a-s8c-5ffa99` (az S8c; alap: main `9730b829`) · PR: #789 (draft; az S8a: #779, az S8b: #782, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
