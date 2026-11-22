@@ -2,7 +2,7 @@
 
 *Végrehajtó: claude-sonnet-5-5 (a brief `modell: sonnet`, egyezik). Ág: `claude/f232-merce-192772`, alap: `origin/main` `d325f1ae`. 2026-11-22.*
 
-## M0 — a futtatás helye (⛔ DT-F232a): mérések
+## M0 — a futtatás helye (⛔ DT903): mérések
 
 Minden szám a `naplok/F232_m0_*` szkriptekkel mérve (WSL `pardes` disztró, natív `pardes.db`, `meta.epites_ts` = 2026-11-12T18:53:35Z; a mintakészlet oldalait a Flask-tesztkliens kérte le, a DB-kapcsolat SQLite-authorizere naplózta az olvasott táblákat). A méretek a `dbstat`-ból (tábla + indexei).
 
@@ -28,9 +28,9 @@ A 45003979537-es futás (main, `b9a168d1`) 3 perc 25 s: a checkout 26 s, az E1 2
 
 ### 5. A két piros teszt (a 2.4 pont tárgya): lásd a „F232.1” szakaszt lent
 
-## Döntés (DT-F232a)
+## Döntés (DT903)
 
-A felhasználó 2026-11-22-én: „(b) + (a2) mehet” (az orkesztrátor szó szerinti idézetével, a `local_c8cc3610…` session üzenetében). (b) most; (a2) az N-F232a nyitott tétel. Rögzítve: `dontesek/uj/f232-merce-192772.md` (DT-F232a, 🟢), `nyitott/uj/f232-merce-192772.md` (N-F232a, N-F232b).
+A felhasználó 2026-11-22-én: „(b) + (a2) mehet” (az orkesztrátor szó szerinti idézetével, a `local_c8cc3610…` session üzenetében). (b) most; (a2) az N-F232a nyitott tétel. Rögzítve: `dontesek/uj/f232-merce-192772.md` (DT903, 🟢), `nyitott/uj/f232-merce-192772.md` (N-F232a, N-F232b).
 
 ## F232.1 — a két piros teszt (`dc138f6b`)
 
@@ -52,7 +52,7 @@ Javítás (teszt, nem kód): az első kettő a mai szöveghez igazítva; a harma
 
 *Eltérés a briefhez:* a brief `Jn 1:1`-je a szerverben **`/Jan/1/1`** (a Károli-rövidítés ékezet nélkül: `Ján` → `Jan`; a `/Jn/1/1` és a `/Ján/1/1` 404-et ad). A mérce `Jan`-t használ; a 404 a futásban hiba.
 
-**Bekötés (DT-F232a (b)).** `push_elott.py`: ha az alap..fej diff az olvasó kódját érinti (`teszt_futtat.py` `_OLVASO_KOD`, az egy hely: `olvaso_erintett`), a kapu `teszt_futtat.py --diff <alap>`-ot futtat a helyi `pardes.db`-n; piros teszttel 1-et ad. A lépés nem része a részleges mód lépés-azonosítóinak (`LEPES_AZON` változatlan; a `teszt_push_elott.py` elvárásai érintetlenek), a saját feltétele a teljes diff. A `teszt_futtat.py` a zöld futásnál is kiírja a `MÉRCE-ELTÉRÉS` sorokat. A `--ci-egyezes` zöld (a lépés csak helyi; a CI-ben nem fut).
+**Bekötés (DT903 (b)).** `push_elott.py`: ha az alap..fej diff az olvasó kódját érinti (`teszt_futtat.py` `_OLVASO_KOD`, az egy hely: `olvaso_erintett`), a kapu `teszt_futtat.py --diff <alap>`-ot futtat a helyi `pardes.db`-n; piros teszttel 1-et ad. A lépés nem része a részleges mód lépés-azonosítóinak (`LEPES_AZON` változatlan; a `teszt_push_elott.py` elvárásai érintetlenek), a saját feltétele a teljes diff. A `teszt_futtat.py` a zöld futásnál is kiírja a `MÉRCE-ELTÉRÉS` sorokat. A `--ci-egyezes` zöld (a lépés csak helyi; a CI-ben nem fut).
 
 ### Mérések
 
@@ -80,8 +80,8 @@ Brief: `F232_OLVASO_MERCE_TESZT_BRIEF.md` · tartomány: `aad45b55..7d7e83f0` ·
 |---|---|---|---|
 | 0 modell | OK | – | A session modellje claude-opus-5-5, a kért modell `opus`: egyezik. A menet `modell`-mezői: a jelentés „claude-sonnet-5-5”-öt ír, az 5 commit `Co-Authored-By: Claude Sonnet 5.5` sort; ez egyezik a brief `modell: sonnet` mezőjével (`git log --format=%b aad45b55..7d7e83f0`). Hogy valóban Sonnet futott-e, azt nem tudom igazolni. Adattábla-sort a menet nem írt. |
 | 3 CI | OK | – | `gh run view 45011624326 --json headSha,status,conclusion,jobs`: a headSha `7d7e83f0…`, completed, success (`feladatkovetes`, `ellenorzes`). Generált kimenet nincs a diffben (`git diff --numstat … -- 'lexikon/*' 'nyilt_mag/*' 'generalt*'` → 0 sor). Az E28 és az E29 a CI-ből zöld; a `futtat.py`-t nem futtattam újra. |
-| D DT-F232a | OK / NEM ELLENŐRIZHETŐ | `dontesek/uj/f232-merce-192772.md:1` | A ⛔-nél a menet megállt (`cd4a80e0`, `allapot: dontesre_var`), utána 🟢 lett, a döntés szövegével. A felhasználó döntése csak az orkesztrátor idézetéből ismert, nem tudom ellenőrizni. |
-| D DT-F232a döntési alap | ELTÉRÉS | `dontesek/uj/f232-merce-192772.md:1` | A (b) változat sora „kb. 2 perc, a lassú tesztek a `--diff` szerint” költséget ír. A lépés viszont csak `_OLVASO_KOD`-találatra indul, és az a `LASSU_LEFEDETT` mindkét lassú fájljának része (`eszkozok/teszt_futtat.py`). Ezért a lassú tesztek mindig futnak. Mért idő: nálam 861,7 + 456,2 mp, a jelentésben 1 033 mp plusz zár-várakozás. A döntés alapjául szolgáló sor alulbecsült költséget mutat. |
+| D DT903 | OK / NEM ELLENŐRIZHETŐ | `dontesek/uj/f232-merce-192772.md:1` | A ⛔-nél a menet megállt (`cd4a80e0`, `allapot: dontesre_var`), utána 🟢 lett, a döntés szövegével. A felhasználó döntése csak az orkesztrátor idézetéből ismert, nem tudom ellenőrizni. |
+| D DT903 döntési alap | ELTÉRÉS | `dontesek/uj/f232-merce-192772.md:1` | A (b) változat sora „kb. 2 perc, a lassú tesztek a `--diff` szerint” költséget ír. A lépés viszont csak `_OLVASO_KOD`-találatra indul, és az a `LASSU_LEFEDETT` mindkét lassú fájljának része (`eszkozok/teszt_futtat.py`). Ezért a lassú tesztek mindig futnak. Mért idő: nálam 861,7 + 456,2 mp, a jelentésben 1 033 mp plusz zár-várakozás. A döntés alapjául szolgáló sor alulbecsült költséget mutat. |
 | 4.1 piros tesztek javítása (`teszt_visszhang_kapu`) | OK | `eszkozok/olvaso_szerver/teszt_visszhang_kapu.py:84-86, 204-207` | A régi elvárt szöveget igazítja, kódhibát nem fed el. Az új szöveg a `lexikon_general.py:9135-9138` `uj_szerkezet` ágában áll; a nagybetűs cella a `lexikon/HAMART-001_TUDOMANYOS.md:2107`-ben (Grep). `python eszkozok/olvaso_szerver/teszt_visszhang_kapu.py` → 22 teszt, OK. |
 | 4.1 piros teszt javítása (`teszt_szintek`) | OK | `eszkozok/olvaso_szerver/teszt_szintek.py:286-291` | A „Ebben a versben” felirat a `blokkok.py:1470/1488` és `2170` BDB-dobozában is áll, a `szo.ebben` blokktól függetlenül. Az új állítás erősebb: a `szo.ebben` hiánya, és minden felirat a BDB-dobozé. Az egyetlen tesztet WSL-ben külön is futtattam → OK, 126,8 s. |
 | 4.4 ok-lánc: „ezt a (b) kapu zárja” | ELTÉRÉS | `naplok/F232_jelentes.md:47`; `eszkozok/push_elott.py` `olvaso_erintett` | A `teszt_visszhang_kapu` attól lett piros, hogy a `cee76546` a `lexikon_general.py`-t és az `olvasoi_kapu.py`-t módosította (`git show --stat cee76546`). Egyik sincs az `_OLVASO_KOD`-ban, a `teszt_olvasoi_merce.py:218-220` pedig ki is mondja, hogy a `lexikon_general.py` nem érintett. Ugyanez a hiba ma is átjutna a kapun. Az állítás alátámasztatlan. Az `olvaso_erintett` egységtesztje csak helyben fut, a CI nem futtatja. |
@@ -106,7 +106,7 @@ Brief: `F232_OLVASO_MERCE_TESZT_BRIEF.md` · tartomány: `aad45b55..7d7e83f0` ·
 ELTÉRÉS-ek súlyossági sorrendben:
 1. A kapu nem fogja meg azt a hibamechanizmust, amely a `teszt_visszhang_kapu`-t pirosra vitte: a `lexikon_general.py` és az `olvasoi_kapu.py` nincs az `_OLVASO_KOD`-ban. A jelentés 47. sorának állítása emiatt téves.
 2. A `teszt_arculat` terhelésfüggően ingadozik, ezért a push előtti kapu hamis pirosat adhat. A jelentés „19 fájl, mind zöld” eredményét nem tudtam megismételni. Egy DB-tartalomtól függő kihagyás (`teszt_olvaso_szerver.py:526`) azonosítatlan maradt, holott az 1. elfogadási feltétel épp ezt tiltja.
-3. A DT-F232a sora „kb. 2 perc” költséggel került a felhasználó elé, a mért idő 17–22 perc.
+3. A DT903 sora „kb. 2 perc” költséggel került a felhasználó elé, a mért idő 17–22 perc.
 4. A normalizáló hibái: látható szöveg veszhet el, a szomszédos inline elemek összetapadnak, a CSS-sel rejtett tartalom jelöletlenül bekerül, és a navigáció zaja minden lapon ott van.
 5. A `merce/` alatt nincs licenc-megjegyzés, és a jelentés licenc-teendőjéhez nincs N-tétel.
 
@@ -118,7 +118,7 @@ ELTÉRÉS-ek súlyossági sorrendben:
 |---|---|---|
 | 1 | a kapu nem fogja a `lexikon_general.py`/`olvasoi_kapu.py` miatti piros tesztet | javítva: `teszt_futtat.py` `GYORS_FUGGO` + `push_elott.py` `fuggo_tesztek`, a `teszt_visszhang_kapu` külön fut a közvetlen bemenetei változásakor; egységteszt a `cee76546` fájljaival; az ok-lánc mondat javítva |
 | 2 | `teszt_arculat` ingadozik; DB-tartalom miatti kimaradás | az `ir`-en kívüli fájlok: N-F232c, N-F232d; a jelentés „mind zöld” állítása pontosítva; a brief 4. feltétele nem teljesül teljesen (l. fent) |
-| 3 | a DT-F232a „kb. 2 perc” sora alulbecslés | a döntés sorában utólagos pontosítás (mért 17–22 perc + zár); az orkesztrátornak jelezve |
+| 3 | a DT903 „kb. 2 perc” sora alulbecslés | a döntés sorában utólagos pontosítás (mért 17–22 perc + zár); az orkesztrátornak jelezve |
 | 4 | normalizáló: (a) rejtett elem előtti szöveg elvész, (b) szomszédos gombok/hivatkozások összetapadnak, (c) CSS-sel rejtett tartalom, (d) navigáció-zaj | (a) és (b) javítva + egységteszt, a mérce újragenerálva (13 fájl, csak az összetapadás/szóköz); (c) és (d) a modul „Ismert korlátok” szakaszába írva, nem javítva (a DOM-szöveg a mérce tárgya) |
 | 5 | nincs licenc-megjegyzés a `merce/` alatt, nincs N-tétel | `merce/README.md` + N-F232e |
 
@@ -141,9 +141,9 @@ Megvalósítás (`152df27f`): `push_elott.py` `olvaso_tesztek_futtatasa` (az els
 ## Zárás
 
 - **Kész:** a két piros teszt javítása (`dc138f6b`, 3 teszt, teszt-oldali: a várt szöveg volt régi); a mérce (`teszt_olvasoi_merce.py`, `merce/`, 18 oldal); a bekötés a push előtti kapuba (`push_elott.py`, `teszt_futtat.py`); az 1. ellenőrzés (ELTÉRÉS, 6 tétel) javítókörrel (`0d9c3a79`).
-- **Döntések:** DT-F232a 🟢 (felhasználó, 2026-11-22: „(b) + (a2) mehet”); nyitott: N-F232a (CI a TSV-ből épített DB-n), N-F232b (kovetkezo.md PUSH ELŐTT), N-F232c (teszt_arculat ingadozik), N-F232d (üres kimaradás a teszt_olvaso_szerver.py-ban), N-F232e (merce/ licenc-áttekintés).
+- **Döntések:** DT903 🟢 (felhasználó, 2026-11-22: „(b) + (a2) mehet”); nyitott: N-F232a (CI a TSV-ből épített DB-n), N-F232b (kovetkezo.md PUSH ELŐTT), N-F232c (teszt_arculat ingadozik), N-F232d (üres kimaradás a teszt_olvaso_szerver.py-ban), N-F232e (merce/ licenc-áttekintés).
 - **Nem teljesült teljesen:** a brief 4. feltétele („kihagyott DB-s teszt nélkül zöld”): az N-F232d kimaradás DB-tartalomfüggő, a `teszt_arculat.py` egy tesztje terhelés alatt ingadozik (N-F232c); a feltétel emiatt a (b)-ben csak a terheletlen, teljes futásra igaz. A (b) kapu költsége mért 17–22 perc + a zárra várás; a CI-futás azonosító (4. feltétel 3.) a (b)-nél nincs, a bizonyíték helyi (`db565cf3` próba).
 - **A javítókör után nem futott új független ellenőr** (az orkesztrátor döntése: 1 ellenőrzés és legfeljebb 1 javítókör); a javítás ellenőrzése: a normalizáló és a leképezés egységtesztjei, a mérce 14 teszt zöld WSL-ben, a `teszt_visszhang_kapu` zöld, a `E2-E39` zöld helyben.
 - **Eltérés a briefhez (egyeztetett):** a `Jn 1:1` mintaoldal a szerverben `/Jan/1/1`.
-- **Orkesztrátor figyelmébe:** a DT-F232a sorában az „kb. 2 perc” alulbecslés volt (l. F232.6 #3); az orkesztrátor döntött: a kapu `--gyors` módban fut (F232.8).
-- **Az orkesztrátor döntése (2026-11-22) beépítve:** a kapu `--gyors` + egyszeri újrafuttatás (F232.8); a 4. feltétel részleges teljesülése elfogadva; a DT-F232a sora kiegészítve a mért idővel.
+- **Orkesztrátor figyelmébe:** a DT903 sorában az „kb. 2 perc” alulbecslés volt (l. F232.6 #3); az orkesztrátor döntött: a kapu `--gyors` módban fut (F232.8).
+- **Az orkesztrátor döntése (2026-11-22) beépítve:** a kapu `--gyors` + egyszeri újrafuttatás (F232.8); a 4. feltétel részleges teljesülése elfogadva; a DT903 sora kiegészítve a mért idővel.
