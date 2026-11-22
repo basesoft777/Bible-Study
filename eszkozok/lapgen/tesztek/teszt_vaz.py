@@ -86,11 +86,6 @@ class HibanaploMintak(unittest.TestCase):
 
 
 class Szerkezeti(unittest.TestCase):
-    @unittest.skip(S3_MARADEK)
-    def test_gk03_pillanatkep_csak_kapuval(self):
-        """GK-03: elavított másolattal BUKÁS (B18, B19, B21, B36, B38); szeletenként bővül. A B05 kapuja kész
-        (`teszt_dontes.py`); a B06-ot a csoportos sor versszáma igazolja (a számítás megáll, ha nem egyezik)."""
-
     @unittest.skip(HELY_EGYSEG)
     def test_gk04_hely_egyseg_kapu(self):
         """GK-04, a `hely_egyseg` része (a régi `hely_egyseg_kapu`, F212 Sz4): a szavanként az 1.4 csoportjainak

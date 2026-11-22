@@ -19,6 +19,7 @@ import bdb_rovidites
 import bdb_tagolas
 import szotari_glossza
 
+from lapgen.bemenet import frissesseg
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.konyvek import b63_konyvek
 from lapgen.bemenet.nyelv import cimke_cellaalakok
@@ -704,7 +705,8 @@ def b17_bdb_szakaszok(b):
 
 
 def b18_bdb_szakasz_hu(b):
-    """B18 — a BDB-szakaszok magyar szövege; kulcs: Strong + sorszám."""
+    """B18 — a BDB-szakaszok magyar szövege; kulcs: Strong + sorszám. Frissességi kapu: GK-03 (fejléc-hash)."""
+    frissesseg.fejlec_kapu(b, 'B18')
     return {(r['strong'], r['sorszam']): r
             for r in _sorok(b, 'B18', ('strong', 'sorszam', 'kategoria', 'szoveg_hu'))}
 
@@ -723,7 +725,8 @@ class VersJelentes(dict):
 
 def b19_bdb_vers_jelentes(b):
     """B19 — a BDB saját példahelyei versenként (a kiszűrt és a Károli-vers nélküli sorok nélkül), és a törzsek
-    versenként (az útvonal első tagja, minden sorból)."""
+    versenként (az útvonal első tagja, minden sorból). Frissességi kapu: GK-03 (fejléc-hash)."""
+    frissesseg.fejlec_kapu(b, 'B19')
     ki, torzsek, feloldott = {}, {}, {}
     oszlopok = ('strong', 'sorszam', 'poz', 'nyers', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'utvonal', 'okkod',
                 'szurt', 'bizonyossag')
@@ -752,7 +755,8 @@ def b20_thayer_szakaszok(b):
 
 
 def b21_thayer_vers_jelentes(b):
-    """B21 — a Thayer saját példahelyei versenként."""
+    """B21 — a Thayer saját példahelyei versenként. Frissességi kapu: GK-03 (fejléc-hash)."""
+    frissesseg.fejlec_kapu(b, 'B21')
     ki = {}
     for r in _sorok(b, 'B21', ('strong', 'sorszam', 'karoli_vers', 'utvonal')):
         if r['karoli_vers']:
