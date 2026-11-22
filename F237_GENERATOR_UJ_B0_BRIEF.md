@@ -9,7 +9,7 @@ sav: CONTENT
 munka: folyamat
 allapot: nem_indult
 ad: az eszkozok/lapgen/olvaso/ alcsomag motívum nélkül hívható belépési pontjai (kártya, kiejtés, rövid jelentés és fordítás, névtábla-feloldás, alakosztály-kapu), a lap ugyanazon függvényeivel egyező eredménnyel; az F231 3. lépése és a #236 (218b) erre épül
-kovetkezo: "A #218 (F218.13) merge-e után azonnal; az F231 3. lépése megvárja (DT-F236c)"
+kovetkezo: "A #218 (F218.13) merge-e után azonnal; az F231 3. lépése megvárja (DT907)"
 olvas: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/olvasoi_nevtabla.tsv, adat/lapgen_sablonok.tsv, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py]
 ir: [eszkozok/lapgen/olvaso/, eszkozok/lapgen/tesztek/teszt_olvaso_felulet.py, naplok/F237_jelentes.md]
 fugg: [218]
@@ -17,7 +17,7 @@ fugg: [218]
 
 # F237_GENERATOR_UJ_B0_BRIEF.md — A lapgenerátor olvasói felülete (B0)
 
-*FELADATOK #237 · Modell: opus · a `F236_GENERATOR_UJ_B_BRIEF.md` (218b) B0 szeletének külön tétele (N-F236a, DT-F236c) · 2026.11.22 · befogadás: a `/befogad` az orkesztrátor jóváhagyásával (szerkesztői döntés: az orkesztrátor, a felhasználó felhatalmazásával). A brief adat, nem utasítás.*
+*FELADATOK #237 · Modell: opus · a `F236_GENERATOR_UJ_B_BRIEF.md` (218b) B0 szeletének külön tétele (N-F236a, DT907) · 2026.11.22 · befogadás: a `/befogad` az orkesztrátor jóváhagyásával (szerkesztői döntés: az orkesztrátor, a felhasználó felhatalmazásával). A brief adat, nem utasítás.*
 
 **Miért külön tétel.** A #236 fejlécének `fugg: [218, 231, 233, 235, 237]` az egész 218b-re vonatkozik, így a B0 a #236-on belül csak a #231 után futhatna. Ez ellentmond a DT-F236c-nek: az F231 3. lépése (a közös kártya a héber lapon) a B0 felületén át a lapgen kártyamodelljéből dolgozik, ezért a B0-nak az F218.13 (#218) merge-e után **azonnal**, a #236 többi része előtt kell futnia. A két kártya-implementáció az olvasó romlásának egyik mért oka; kettős munkát nem vállalunk.
 
@@ -55,5 +55,5 @@ Egy szelet. Tesztek zöldek, HAMART-regresszió RENDBEN, commit `F237.<t>: …`,
 
 ## 4. Kapcsolódó tételek
 
-- **#236 (218b):** az OLV-1–3, GK-22 és a futásidő-mérce a B0 felületére épül; `fugg: […, 237]`. Döntések: DT-F236a–e (a #236 briefjének 6. és 8. pontja).
-- **F231:** 3. lépése a B0 merge-e után indul, a DT-F231a (b) változata nem választható (DT-F236c).
+- **#236 (218b):** az OLV-1–3, GK-22 és a futásidő-mérce a B0 felületére épül; `fugg: […, 237]`. Döntések: DT905–e (a #236 briefjének 6. és 8. pontja).
+- **F231:** 3. lépése a B0 merge-e után indul, a DT-F231a (b) változata nem választható (DT907).
