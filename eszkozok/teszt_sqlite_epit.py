@@ -228,6 +228,26 @@ class Negativ(unittest.TestCase):
             shutil.rmtree(tmp, ignore_errors=True)
 
 
+class ForrasAzonosito(unittest.TestCase):
+    """#101 (DT-F101a): az építő a forrásfájlok ujjlenyomatát a `meta` táblába írja, az olvasó ebből dönt az újraépítésről."""
+
+    def test_az_epito_a_meta_ba_irja_a_forras_azonositot(self):
+        import forras_azonosito as FA
+        tmp = tempfile.mkdtemp()
+        try:
+            masolat(tmp)
+            ep = S.Epito(tmp, os.path.join(tmp, 'kimenet.db'), 'minta')
+            rel = {os.path.relpath(os.path.join(tmp, 'adat', f), tmp).replace(os.sep, '/') for f in os.listdir(os.path.join(tmp, 'adat'))}
+            self.assertTrue(rel <= set(ep.forras_azon), 'az adat/ minden fájlja benne van')
+            sorok = dict(FA.meta_sorok(ep.forras_azon))
+            self.assertIn(FA.META_OSSZEG, sorok)
+            self.assertEqual(len(sorok), len(ep.forras_azon) + 1)
+            self.assertEqual(FA.meta_olvas(sorok.items()), ep.forras_azon)
+            self.assertEqual(FA.osszehasonlit(tmp, FA.meta_olvas(sorok.items()))[0], 'friss')
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+
 class BsbOr(unittest.TestCase):
     """F120 (DT-F120a, átmeneti (c) út): a BSB-vers Károli-célját a tartalom igazolja; a nem igazolt és az ütköző vers
     kimarad, nem kerül más Károli-versre. Minták: naplok/F120_meres.md 3–5. (Jóel 3, Hós 2, az F117 hat esete)."""

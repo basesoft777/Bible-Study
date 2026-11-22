@@ -154,6 +154,11 @@ def meta(con):
     return {k: v for k, v in con.execute('SELECT kulcs, ertek FROM meta WHERE kulcs NOT LIKE ?', ('hash:%',))}
 
 
+def gyors_ellenorzes(con):
+    """#101: `PRAGMA quick_check` eredménye (['ok'], ha ép); az újraépítés után, a csere előtt futtatja az `allapot.py db_ellenoriz`."""
+    return [r[0] for r in con.execute('PRAGMA quick_check')]
+
+
 def meta_sorok(con):
     """A teljes `meta` tábla (kulcs, érték), kulcs szerint rendezve: az adatbázis-kulcs (gyorsítótár) ebből hash-elődik."""
     return con.execute('SELECT kulcs, ertek FROM meta ORDER BY kulcs').fetchall()

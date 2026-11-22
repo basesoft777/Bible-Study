@@ -7,13 +7,15 @@ fazis: 1
 modell: sonnet
 sav: SERVER
 munka: folyamat
-allapot: nem_indult
+allapot: megallt
+ag: claude/adatbazis-frissites
+pr: 780
 ad: az indító (indit.sh) észleli, ha a pardes.db régebbi a forrás-tábláinál (adat/, konkordancia/), és magától újraépíti (sqlite_epit.py, integritás-ellenőrzéssel), csak siker után cserél; a lábléc kiírja, ha az adatbázis régebbi az adatnál, és ha az újraépítés elbukott, miért; negyedik asztali parancsikon a kézi újraépítéshez
-kovetkezo: Halasztva: a #99 (BDB_SZELETELO) lezárásáig — a #99 az eszkozok/sqlite_epit.py-t olvassa, a #101 írja, és a felhasználó döntése szerint a #99 jön előbb; utána /kovetkezo; ⛔ M0 (mérés, DT-F101a–b), ⛔ M2 (a felhasználó kipróbálja)
+kovetkezo: "Te: ⛔ M2 — a felhasználó kipróbálja (valódi adatváltozás után az indítás újraépít, a lábléc jelzi); előtte a DT161 ütemezett feladat parancsába PARDES_EPIT=0 (repón kívül); a PR merge-e az orkesztrátoré"
 olvas: [eszkozok/olvaso_szerver/README.md, naplok/SQLITE_EPIT_meres.md, naplok/OLVASO_INDITO_zaras.md, eszkozok/olvaso_szerver/manifest_pardes_db.tsv]
-ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/ADATBAZIS_FRISSITES_zaras.md]
+ir: [eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/epit_hatter.sh, eszkozok/olvaso_szerver/forras_azonosito.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/teszt_indito.py, eszkozok/olvaso_szerver/README.md, eszkozok/sqlite_epit.py, eszkozok/teszt_sqlite_epit.py, naplok/ADATBAZIS_FRISSITES_zaras.md]
 fugg: []
-nem_fugg: [76]
+nem_fugg: [76, 122, 137]
 ---
 
 # F101_ADATBAZIS_FRISSITES_BRIEF.md — Az olvasó adatbázisának automatikus újraépítése
@@ -21,6 +23,8 @@ nem_fugg: [76]
 *Befogadásra váró brief-tervezet · v1 · 2026.10.15 · forrás: a felhasználó kérdése a chatben (2026-10-15): „ha az adatbázis frissül, pl. halad előre a BDB-fordítás vagy a Strong-ozás, hogyan frissül a szerver adatbázisa?” — és a kérés, hogy ez is automatikus legyen (a #100 OLVASO_INDITO folytatása: „én ezt nem tudom észben tartani, mikor mit kell indítani”).*
 
 **Javasolt fejléc-adatok:** `modell: sonnet` (szkript- és ellenőrzés-bővítés, értelmező munka nincs) · `munka: folyamat` · az `ir` az `eszkozok/olvaso_szerver/` néhány fájlját és az `eszkozok/sqlite_epit.py`-t írja — a #99 és a #76 a szerverkönyvtárat, a #93 és a #99 a `sqlite_epit.py`-t is írja; a sorrendet a `/befogad` függés-számítása adja.
+
+**A `nem_fugg` indoka (a felhasználó döntése: „mehet”, a #101 megy előre a #122 ↔ #137 körben):** a #101 az `eszkozok/sqlite_epit.py`-ban csak az integritás-ellenőrzést, a forrás-azonosító `meta`-ba írását és az újraépítés indítását érinti; a #122 `kjv_szoveg`, a #137 `szoveg_modern` és a kereső részéhez nem nyúl. Mindkettő `nem_indult` vagy `brief_kell`, ezért nincs futó ütközés; ha mégis ugyanazt a kódrészt érintenék, az ⛔, nem felülírás.
 
 ## 1. Háttér
 
@@ -42,7 +46,7 @@ Ha a 2. lépés elmarad, a szerver a régi adatot mutatja, és erre semmi nem fi
 ## 3. Hatókör
 
 - **Benne:**
-  - a forrás-állapot rögzítése építéskor: az `sqlite_epit.py` a `meta` táblába írja a betöltött forrásfájlok azonosítóját (útvonal + méret + `sha256` vagy legalább módosítási idő; az M0 dönt, DT-F101a), hogy az észlelés ne a fájl mtime-ján múljon;
+  - a forrás-állapot rögzítése építéskor: az `sqlite_epit.py` a `meta` táblába írja a betöltött forrásfájlok azonosítóját (útvonal + méret + `sha256` vagy legalább módosítási idő; az M0 dönt, DT916), hogy az észlelés ne a fájl mtime-ján múljon;
   - `allapot.py`: „az adatbázis régebbi az adatnál” döntés (a forrásfájlok mostani azonosítója vs. a `meta`-ban rögzített), olcsón (nem olvassa be a 938 MB-ot, és a TSV-ket sem, ha az mtime+méret egyezik);
   - `indit.sh`: ha a források újabbak → háttérben újraépítés (zárral, egyszerre egy), ideiglenes névre, integritással; siker → atomi átnevezés a Windows-oldali `pardes.db` helyére, majd a WSL-másolat frissítése a meglévő (#100) úton; a szerver a régi példánnyal indul, és a lábléc mutatja, hogy építés fut;
   - lábléc: „az adatbázis régebbi az adatnál”, „újraépítés folyamatban (kezdete)”, „az újraépítés elbukott (napló: …)”;
@@ -59,7 +63,7 @@ Ha a 2. lépés elmarad, a szerver a régi adatot mutatja, és erre semmi nem fi
 
 1. Az építés ideje integritás-ellenőrzéssel együtt, Windows-on (Python 3.14, a repó gyökerébe) és a WSL-ben (a projekt venv-jével, natív kimenetre, majd másolással) — melyik gyorsabb és megbízhatóbb.
 2. A forrás-észlelés: az `sqlite_epit.py` által ténylegesen olvasott fájlok listája (a kód `DATASETEK`-szerű listáiból és az `adat/` táblákból), darab és összméret; a teljes `sha256` ideje vs. mtime+méret.
-3. ⛔ **DT-F101a:** a forrás-azonosító módja ((a) mtime+méret, ütközéskor `sha256`; (b) mindig `sha256`; (c) csak mtime). **DT-F101b:** hol fusson az automatikus építés ((a) WSL venv, natív ideiglenes kimenet, utána másolás a Windows-oldalra; (b) Windows Python, közvetlenül a repó gyökerébe; (c) a mérés szerinti gyorsabb), és fusson-e bejelentkezéskor is, vagy csak parancsikonra. Megállás.
+3. ⛔ **DT916:** a forrás-azonosító módja ((a) mtime+méret, ütközéskor `sha256`; (b) mindig `sha256`; (c) csak mtime). **DT917:** hol fusson az automatikus építés ((a) WSL venv, natív ideiglenes kimenet, utána másolás a Windows-oldalra; (b) Windows Python, közvetlenül a repó gyökerébe; (c) a mérés szerinti gyorsabb), és fusson-e bejelentkezéskor is, vagy csak parancsikonra. Megállás.
 
 ### M1 — megvalósítás
 
@@ -82,5 +86,5 @@ Ha a 2. lépés elmarad, a szerver a régi adatot mutatja, és erre semmi nem fi
 
 ## 6. Döntésnapló
 
-- **DT-F101a** (M0): a forrás-azonosító módja.
-- **DT-F101b** (M0): hol és mikor fusson az automatikus építés.
+- **DT916** (M0): a forrás-azonosító módja.
+- **DT917** (M0): hol és mikor fusson az automatikus építés.
