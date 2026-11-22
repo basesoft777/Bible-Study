@@ -9,6 +9,7 @@ szándékosan rontott másolaton szabályonként jelez. A `teszt_futtat.py --gyo
     python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu
 """
 import os
+import re
 import sys
 import unittest
 
@@ -80,8 +81,9 @@ class Rontott(unittest.TestCase):
         self.assertIn('V2', szabalyok(r))
 
     def test_v3_nincs_a_nem_azonositott_helyen(self):
-        r = self.b.replace('a rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon '
-                           'nyelvi alak nem áll', 'a BDB-szócikkben nincs rokon nyelvi adat', 1)
+        # F232: a cella a lap-javit (F125.LJ1) óta nagybetűvel kezdődik („A rokon írások …”); a kis- és nagybetűs alak is cserélődik
+        r = re.sub(r'[Aa] rokon írások lekérdezése a BDB-szócikket nem azonosította; a helyi BDB-szövegben rokon '
+                   r'nyelvi alak nem áll', 'A BDB-szócikkben nincs rokon nyelvi adat', self.b, count=1)
         self.assertNotEqual(r, self.b)
         self.assertIn('V3', szabalyok(r))
 
@@ -199,7 +201,10 @@ class LancAMotivumadatbol(unittest.TestCase):
     def test_bevezeto_a_peshat_magot_es_a_kulcsszavak_szamat_mondja(self):
         blokk = self.LG.blokk_visszhang(self.m, self.sorai)
         self.assertIn('A lánc 6 kulcsszava', blokk)
-        self.assertIn('Peshat-magjának (1Móz 3–9) azon verse', blokk)
+        # F232: az új szerkezetű lap (HAMART-001) szövege a lap-javit (F125.LJ1, lektor 23–25.) óta „a Genezis láncának
+        # (1Móz 3–9) azok a versei”; a régi „Peshat-magjának … azon verse” a régi szerkezetű lapok ágán áll (SZOPAR/régi lap)
+        self.assertIn('A versek a Genezis láncának (1Móz 3–9) azok a versei, amelyekben a kulcsszó', blokk)
+        self.assertNotIn('Peshat-magjának', blokk)
         self.assertNotIn('genezisi mag', blokk)
         self.assertNotIn('l. 1.2)', blokk)
 

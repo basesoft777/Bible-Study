@@ -1,0 +1,289 @@
+# F232 olvasói pillanatkép: /1Moz/1/5
+# A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
+# Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
+Navigáció✕
+PaRDeS olvasó
+Károli 1908 · 1Móz 1 ▾
+▸ Biblia és könyv kiválasztása
+▸ Biblia
+▸ Magyar Károli 1908alapnézet · Strong Modernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · Strong Görög ÚjszövetségTAGNT · Strong Septuagintagörög Ószövetség · Strong
+▸ Angol KJVStrong
+▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
+▸ Könyv
+▸ Törvény
+▸ 1Móz 2Móz 3Móz 4Móz 5Móz
+▸ Történeti könyvek
+▸ Józs Bír Ruth 1Sám 2Sám 1Kir 2Kir 1Krón 2Krón Ezsd Neh Eszt
+▸ Költői és bölcsességi könyvek
+▸ Jób Zsolt Péld Préd Én
+▸ Nagypróféták
+▸ Ézs Jer Sir Ez Dán
+▸ Kispróféták
+▸ Hós Jóel Ámós Abd Jón Mik Náh Hab Sof Hag Zak Mal
+▸ Evangéliumok és Apostolok Cselekedetei
+▸ Mt Mk Luk Ján ApCsel
+▸ Pál levelei
+▸ Róm 1Kor 2Kor Gal Ef Fil Kol 1Thessz 2Thessz 1Tim 2Tim Tit Filem
+▸ Általános levelek
+▸ Zsid Jak 1Pét 2Pét 1Ján 2Ján 3Ján Júd
+▸ Jelenések
+▸ Jel
+▸ Mózes első könyve · fejezetek
+▸ 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50
+⌕
+›
+Aa
+▸ Betűméret 100%
+▸ A− A+
+▸ Sorköz
+▸ szűk közepes tág
+▸ Betűcsalád
+▸ Source Serif Noto Serif IBM Plex Sans
+▸ Sorszélesség
+▸ keskeny közepes széles teljes
+▸ Versenként új sor Alapértékek
+Strong számokStrong
+Tanulmányok jelölése
+⚙
+▸ Rétegek
+▸ Interlineáris sor
+▸ Szint nyilvanos regisztralt kutato
+▸ Téma
+▸ Rendszer Világos Sötét
+⌕
+Mózes első könyve 1
+Mózes első könyve 2. fejezet → Forrás és számlálók
+1 Kezdetben teremté Isten az eget és a földet. 2A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett. 3És monda Isten: Legyen világosság: és lőn világosság. 4És látá Isten, hogy jó a világosság; és elválasztá Isten a világosságot a setétségtől. 5És nevezé Isten a világosságot nappalnak, és a setétséget nevezé éjszakának: és lőn este és lőn reggel, első nap. 6És monda Isten: Legyen mennyezet a víz között, a mely elválaszsza a vizeket a vizektől. 7 Teremté tehát Isten a mennyezetet, és elválasztá a mennyezet alatt való vizeket, a mennyezet felett való vizektől. És úgy lőn. 8És nevezé Isten a mennyezetet égnek: és lőn este, és lőn reggel, második nap. 9És monda Isten: Gyűljenek egybe az ég alatt való vizek egy helyre, hogy tessék meg a száraz. És úgy lőn. 10És nevezé Isten a szárazat földnek; az egybegyűlt vizeket pedig tengernek nevezé. És látá Isten, hogy jó. 11Azután monda Isten: Hajtson a föld gyenge fűvet, maghozó fűvet, gyümölcsfát, a mely gyümölcsöt hozzon az ő neme szerint, a melyben legyen néki magva e földön. És úgy lőn. 12 Hajta tehát a föld gyenge fűvet, maghozó fűvet az ő neme szerint, és gyümölcstermő fát, a melynek gyümölcsében mag van az ő neme szerint. És látá Isten, hogy jó. 13És lőn este és lőn reggel, harmadik nap. 14És monda Isten: Legyenek világító testek az ég mennyezetén, hogy elválaszszák a nappalt az éjszakától, és legyenek jelek, és meghatározói ünnepeknek, napoknak és esztendőknek. 15És legyenek világítókul az ég mennyezetén hogy világítsanak a földre. És úgy lőn. 16 Teremté tehát Isten a két nagy világító testet: a nagyobbik világító testet, hogy uralkodjék nappal és a kisebbik világító testet, hogy uralkodjék éjjel; és a csillagokat. 17És helyezteté Isten azokat az ég mennyezetére, hogy világítsanak a földre; 18És hogy uralkodjanak a nappalon és az éjszakán, és elválaszszák a világosságot a setétségtől. És látá Isten, hogy jó. 19És lőn este és lőn reggel, negyedik nap. 20És monda Isten: Pezsdűljenek a vizek élő állatok nyüzsgésétől; és madarak repdessenek a föld felett, az ég mennyezetének színén. 21És teremté Isten a nagy vízi állatokat, és mindazokat a csúszó- mászó állatokat, a melyek nyüzsögnek a vizekben az ő nemök szerint, és mindenféle szárnyas repdesőt az ő neme szerint. És látá Isten, hogy jó. 22És megáldá azokat Isten, mondván: Szaporodjatok, és sokasodjatok, és töltsétek be a tenger vizeit; a madár is sokasodjék a földön. 23És lőn este és lőn reggel, ötödik nap. 24Azután monda az Isten: Hozzon a föld élő állatokat nemök szerint: barmokat, csúszó- mászó állatokat és szárazföldi vadakat nemök szerint. És úgy lőn. 25 Teremté tehát Isten a szárazföldi vadakat nemök szerint, a barmokat nemök szerint, és a földön csúszó- mászó mindenféle állatokat nemök szerint. És látá Isten, hogy jó. 26És monda Isten: Teremtsünk embert a mi képünkre és hasonlatosságunkra; és uralkodjék a tenger halain, az ég madarain, a barmokon, mind az egész földön, és a földön csúszó- mászó mindenféle állatokon. 27 Teremté tehát az Isten az embert az ő képére, Isten képére teremté őt: férfiúvá és asszonynyá teremté őket. 28És megáldá Isten őket, és monda nékik Isten: Szaporodjatok és sokasodjatok, és töltsétek be a földet és hajtsátok birodalmatok alá; és uralkodjatok a tenger halain, az ég madarain, és a földön csúszó- mászó mindenféle állatokon. 29És monda Isten: Ímé néktek adok minden maghozó fűvet az egész föld színén, és minden fát, a melyen maghozó gyümölcs van; az legyen néktek eledelül. 30A föld minden vadainak pedig, és az ég minden madarainak, és a földön csúszó- mászó mindenféle állatoknak, a melyekben élő lélek van, a zöld fűveket adom eledelűl. És úgy lőn. 31És látá Isten, hogy minden a mit teremtett vala, ímé igen jó. És lőn este és lőn reggel, hatodik nap.
+1Móz 1:5 És nevezé Isten a világosságot nappalnak, és a setétséget…
+⤢ ✕
+1Móz 1:5
+Vers Kereszthiv. Témák Motívum
+## [vers.karoli]
+Károli-szöveg forrásadat
+És nevezé Isten a világosságot nappalnak, és a setétséget nevezé éjszakának: és lőn este és lőn reggel, első nap.
+Forrás és licenc: Karoli_1908 (vers): közkincs
+## [vers.heber_csempe]
+Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
+Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.
+וַandH9001kötőszóκαὶ
+יִּקְרָ֨אvajjikráhe calledH7121ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám ἐκάλεσεν
+אֱלֹהִ֤יםelóhímGodH0430főnév, köznév, hímnem, többes szám, abszolút θεὸς
+לָ<to> theH9005elöljáró, határozott névelőτὸ
+אוֹר֙láórlightH0216főnév, köznév, mindkettő (főnév), egyes szám, abszolút φῶς
+י֔וֹםjómdayH3117főnév, köznév, hímnem, egyes szám, abszolút ἡμέραν
+וְandH9002partikula, határozott névelőLXX: —
+לַ<to> theH9005kötőszóκαὶ
+חֹ֖שֶׁךְvelachósechdarknessH2822főnév, köznév, hímnem, egyes szám, abszolút σκότος
+קָ֣רָאkáráhe calledH7121ige, qal, perfectum (qatal), harmadik személy, hímnem, egyes szám ἐκάλεσεν
+לָ֑יְלָהlájlánightH3915főnév, köznév, hímnem, egyes szám, abszolút νύκτα
+וַֽandH9001elöljáró, határozott névelőτὸ
+יְהִיvajehíthere wasH1961ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám ἐγένετο
+עֶ֥רֶבereveveningH6153főnév, köznév, hímnem, egyes szám, abszolút ἑσπέρα
+וַֽandH9001partikula, határozott névelőLXX: —
+יְהִיvajehíthere wasH1961ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám ἐγένετο
+בֹ֖קֶרbókermorningH1242főnév, köznév, hímnem, egyes szám, abszolút πρωί
+י֥וֹםjómdayH3117főnév, köznév, hímnem, egyes szám, abszolút ἡμέρα
+אֶחָֽדechádoneH0259melléknév, tőszámnév, hímnem, egyes szám, abszolút μία
+Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · LXX_OS (lxx_token): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+## [vers.lxx_csempe]
+Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
+A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.
+καὶG2532 ἐκάλεσενG2564 ὁG3588 θεὸςG2316 τὸG3588 φῶςG5457 ἡμέρανG2250 καὶG2532 τὸG3588 σκότοςG4655 ἐκάλεσενG2564 νύκταG3571 καὶG2532 ἐγένετοG1096 ἑσπέραG2073 καὶG2532 ἐγένετοG1096 πρωίG4404 ἡμέραG2250 μίαG1519
+Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
+## [vers.par]
+Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
+Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság
+1 | És | וַ | H9001 | magas
+2 | nevezé | יִּקְרָ֨א | H7121 | magas
+3 | Isten | אֱלֹהִ֤ים | H0430 | magas
+5 | világosságot | אוֹר֙ | H0216 | magas
+6 | nappalnak | לָ | H9005 | alacsony
+6 | nappalnak | י֔וֹם | H3117 | magas
+7 | és | וְ | H9002 | magas
+9 | setétséget | חֹ֖שֶׁךְ | H2822 | magas
+10 | nevezé | קָ֣רָא | H7121 | magas
+11 | éjszakának | לַ | H9005 | alacsony
+11 | éjszakának | לָ֑יְלָה | H3915 | magas
+12 | és | וַֽ | H9001 | magas
+13 | lőn | יְהִי | H1961 | magas
+14 | este | עֶ֥רֶב | H6153 | magas
+15 | és | וַֽ | H9001 | magas
+16 | lőn | יְהִי | H1961 | magas
+17 | reggel | בֹ֖קֶר | H1242 | magas
+18 | első | אֶחָֽד | H0259 | magas
+19 | nap | י֥וֹם | H3117 | magas
+Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0
+## [vers.eredeti]
+Eredeti szavak (TAHOT / TAGNT) forrásadat
+# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
+1 | וַ | | H9001 | ו | & | and
+2 | יִּקְרָ֨א | vajjikrá | H7121 | קָרָא | to call | he called
+3 | אֱלֹהִ֤ים | elóhím | H0430 | אֱלֹהִים | LORD | God
+4 | לָ | | H9005 | ל | to | <to> the
+5 | אוֹר֙ | láór | H0216 | אוֹר | light | light
+6 | י֔וֹם | jóm | H3117 | יוֹם | day;_when | day
+7 | וְ | | H9002 | ו | and | and
+8 | לַ | | H9005 | ל | to | <to> the
+9 | חֹ֖שֶׁךְ | velachósech | H2822 | חֹ֫שֶׁךְ | darkness | darkness
+10 | קָ֣רָא | kárá | H7121 | קָרָא | to call | he called
+11 | לָ֑יְלָה | lájlá | H3915 | לַ֫יְלָה | night | night
+12 | וַֽ | | H9001 | ו | & | and
+13 | יְהִי | vajehí | H1961 | הָיָה | to be | there was
+14 | עֶ֥רֶב | erev | H6153 | עֶ֫רֶב | evening | evening
+15 | וַֽ | | H9001 | ו | & | and
+16 | יְהִי | vajehí | H1961 | הָיָה | to be | there was
+17 | בֹ֖קֶר | bóker | H1242 | בֹּ֫קֶר | morning | morning
+18 | י֥וֹם | jóm | H3117 | יוֹם | day;_when | day
+19 | אֶחָֽד | echád | H0259 | אֶחָד | one | one
+Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0
+## [vers.macula_morf]
+Igealak-kód és szófaj (Macula) forrásadat
+Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss
+וַ | וְ | | C | conjunction | and
+יִּקְרָ֨א | קָרָא | H7121 | Vqw3ms | verb | he.called
+אֱלֹהִ֤ים | אֱלֹהִים | H0430 | Ncmpa | noun | God
+לָ | לְ | | Rd | preposition | (to)
+הַ | | Td | particle | the
+אוֹר֙ | אוֹר | H0216 | Ncbsa | noun | light
+י֔וֹם | יוֹם | H3117 | Ncmsa | noun | day
+וְ | וְ | | C | conjunction | and
+לַ | לְ | | Rd | preposition | (to)
+הַ | | Td | particle | the
+חֹ֖שֶׁךְ | חֹשֶׁךְ | H2822 | Ncmsa | noun | darkness
+קָ֣רָא | קָרָא | H7121 | Vqp3ms | verb | he.called
+לָ֑יְלָה | לַיְלָה | H3915 | Ncmsa | noun | night
+וַֽ | וְ | | C | conjunction | and
+יְהִי | הָיָה | H1961 | Vqw3ms | verb | it.was
+עֶ֥רֶב | עֶרֶב | H6153 | Ncmsa | noun | evening
+וַֽ | וְ | | C | conjunction | and
+יְהִי | הָיָה | H1961 | Vqw3ms | verb | it.was
+בֹ֖קֶר | בֹּקֶר | H1242 | Ncmsa | noun | morning
+י֥וֹם | יוֹם | H3117 | Ncmsa | noun | day
+אֶחָֽד | אֶחָד | H0259 | Acmsa | adjective | one
+Forrás és licenc: Macula_heber (token_macula): CC BY 4.0
+## [vers.macula_gorog]
+Héber–görög párosítás szavanként (Macula) forrásadat
+Héber szó | Gloss | Görög (Macula) | Görög Strong
+וַ | and | καὶ | G2532
+יִּקְרָ֨א | he.called | ἐκάλεσεν | G2564
+אֱלֹהִ֤ים | God | θεὸς | G2316
+לָ | (to) | τὸ | G3588
+אוֹר֙ | light | φῶς | G5457
+י֔וֹם | day | ἡμέραν | G2250
+וְ | and | καὶ | G2532
+לַ | (to) | τὸ | G3588
+חֹ֖שֶׁךְ | darkness | σκότος | G4655
+קָ֣רָא | he.called | ἐκάλεσεν | G2564
+לָ֑יְלָה | night | νύκτα | G3571
+וַֽ | and | καὶ | G2532
+יְהִי | it.was | ἐγένετο | G1096
+עֶ֥רֶב | evening | ἑσπέρα | G2073
+וַֽ | and | καὶ | G2532
+יְהִי | it.was | ἐγένετο | G1096
+בֹ֖קֶר | morning | πρωί | G4404
+י֥וֹם | day | ἡμέρα | G2250
+אֶחָֽד | one | μία | G3391
+Forrás és licenc: Macula_heber (token_macula): CC BY 4.0
+## [vers.lxx_szavak]
+Görög szóalak és LXX-vers szavai (LXX_OS) forrásadat
+Szóalak | Lemma | Strong | Morf
+καὶ | καί | G2532 | conjunction
+ἐκάλεσεν | καλέω | G2564 | verb aor ind act 3rd sg
+ὁ | ὁ | G3588 | article masc nom sg
+θεὸς | θεός | G2316 | noun masc nom sg
+τὸ | ὁ | G3588 | article neut nom/voc/acc sg
+φῶς | φῶς | G5457 | noun neut nom/voc/acc sg
+ἡμέραν | ἡμέρα | G2250 | noun fem acc sg
+καὶ | καί | G2532 | conjunction
+τὸ | ὁ | G3588 | article neut nom/voc/acc sg
+σκότος | σκότος | G4655 | noun neut nom/voc/acc sg
+ἐκάλεσεν | καλέω | G2564 | verb aor ind act 3rd sg
+νύκτα | νύξ | G3571 | noun fem acc sg
+καὶ | καί | G2532 | conjunction
+ἐγένετο | γίνομαι | G1096 | verb aor ind mid/pass 3rd sg
+ἑσπέρα | ἑσπέρα | G2073 | noun fem nom sg
+καὶ | καί | G2532 | conjunction
+ἐγένετο | γίνομαι | G1096 | verb aor ind mid/pass 3rd sg
+πρωί | πρωί | G4404 | adverb
+ἡμέρα | ἡμέρα | G2250 | noun fem nom sg
+μία | εἷς | G1519 | numeral fem nom/voc sg
+Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
+## [vers.lxx_versszam]
+LXX-versszám forrásadat
+Forrás | LXX-versszám
+LXX_OS | Genesis 1:5
+Forrás és licenc: LXX_OS+Versifikacios_tablak+Karoli_versmegfeleltetes (lxx_versszam): CC BY 4.0; minden jog fenntartva
+## [vers.versszamozas]
+Versszámozás (MT / KJV) forrásadat
+Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása
+KJV | 1:5 | 1:5 | szamlalas
+Forrás és licenc: Karoli_versmegfeleltetes+BSB_Strongs (vers_szamozas): minden jog fenntartva; CC0 1.0
+## [vers.bsb]
+Angol szavak szavanként (BSB) forrásadat gépi feldolgozás
+GodH0430calledH7121the lightH0216dayH3117and the darknessH2822He calledH7121nightH3915And there wasH1961eveningH6153and there wasH1961morningH1242the firstH0259dayH3117
+Forrás és licenc: BSB_Strongs (bsb): CC0 1.0
+## [vers.kjv]
+Angol szavak szavanként (KJV + Strong) forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
+GodH0430calledH7121lightH0216DayH3117darknessH2822calledH7121NightH3915eveningH6153morningH1242firstH0259dayH3117
+Forrás és licenc: KJV_Strongs_teljes (kjv): tisztázatlan [tisztázatlan]
+## [vers.morf_hu]
+Az igealak magyar feloldása gépi feldolgozás
+Szó | Kód | Magyar feloldás | Nyelv
+וַ | C | kötőszó | H
+יִּקְרָ֨א | Vqw3ms | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám | H
+אֱלֹהִ֤ים | Ncmpa | főnév, köznév, hímnem, többes szám, abszolút | H
+לָ | Rd | elöljáró, határozott névelő | H
+Td | partikula, határozott névelő | H
+אוֹר֙ | Ncbsa | főnév, köznév, mindkettő (főnév), egyes szám, abszolút | H
+י֔וֹם | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+וְ | C | kötőszó | H
+לַ | Rd | elöljáró, határozott névelő | H
+Td | partikula, határozott névelő | H
+חֹ֖שֶׁךְ | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+קָ֣רָא | Vqp3ms | ige, qal, perfectum (qatal), harmadik személy, hímnem, egyes szám | H
+לָ֑יְלָה | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+וַֽ | C | kötőszó | H
+יְהִי | Vqw3ms | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám | H
+עֶ֥רֶב | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+וַֽ | C | kötőszó | H
+יְהִי | Vqw3ms | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám | H
+בֹ֖קֶר | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+י֥וֹם | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+אֶחָֽד | Acmsa | melléknév, tőszámnév, hímnem, egyes szám, abszolút | H
+Forrás és licenc: morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+## [vers.lxx_dontes]
+LXX-fordítói döntések (adatréteg) forrásadat soronként saját proveniencia-mező
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: projekt_adat (lxx_dontesek): minden jog fenntartva
+## [vers.lxx_par]
+LXX versszintű együttelőfordulás forrásadat együttelőfordulás a versben, nem szóillesztés
+2 héber szó, 18 pár
+H0430 · אֱלֹהִיםG1096, G2073, G2250, G2316, G2564, G3571, G4404, G4655, G5457
+H7121 · קָרָאG1096, G2073, G2250, G2316, G2564, G3571, G4404, G4655, G5457
+Forrás és licenc: LXX_versszintu_parok (lxx_versszintu_parok): minden jog fenntartva
+## [vers.lxx_tobblet]
+LXX többlet és számozási eltérés forrásadat az adat ebben a kiadásban még nem érhető el
+Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.
+Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
+## [vers.ubs]
+UBS-jelentés az előfordulásra forrásadat
+Strong | Azonosító | Domén | Rövid definíció | Glosszák
+H0216 | 000206001001000 | Shine | = light as a physical phenomenon, mainly observed during daytime, and the opposite of darkness; ◄ one of God's most important attributes; first created by God and since produced by sun, moon, and stars, but also by fire; ► enables people and animals to see; ≈ associated with life, goodness, happiness, prosperity, security, favor, and wisdom, loved by the righteous, and hated by the wicked | light
+H0259 | 000243001001000 | Frequency | = state in which a countable entity is one in number | one
+H0259 | 000243001001000 | Quantity | = state in which a countable entity is one in number | one
+H0430 | 000396001003000 | Names of Deities | plural with singular meaning: = the highest God, creator of heaven and earth | God
+H1242 | 001148001001000 | Time | = first half of the day, ranging from daybreak until noon; ≈ used figuratively to denote relief after a time of suffering, and associated with good as opposed to evil | morning
+H2822 | 002602001001000 | Dark | = state in which there is no light, ◄ caused by the fact that the light of sun, moon, and stars cannot reach the location that is in focus, ► resulting in a state in which no one can readily see, and colors and shapes can no longer be distinguished; loved by the wicked only; ≈ associated with hardship, ignorance, death, and oblivion | darkness
+H3117 | 002858001002000 | Time | = a basic unit of time, including evening (עֶרֶב) and morning (בֹּקֶר); seven days make a week (שְׁבוּעָה); sometimes used in a figurative sense referring to a limited period of time, which may be shorter or slightly longer than a single day; the context often makes it difficult to determine | day; time; when
+H3915 | 003585001001000 | Time | = the time of day that is characterized by darkness; ≈ associated with sleep, fear, evil, and hardship | night
+H6153 | 005655001001000 | Time | = the time of day when the sun starts going down, when people leave their work and go home, have food, and go to sleep; this is also the time of the evening sacrifice, and the time when an unclean person who has gone through the cleansing rituals is declared clean, when fasting and mourning come to an end, and when the exposed body of an executed person needs to be removed | evening
+H7121 | 006562001008000 | Name | literally: to cry out; hence: = action by which humans or deities assign a name to a person, place, object, or phenomenon | to name
+Forrás és licenc: UBS_DBH (ubs_dbh_referenciak): CC BY-SA 4.0 [share-alike]
+## [vers.tsk]
+## [vers.kh]
+## [vers.nave]
+## [vers.tipnr]
+## [vers.motivum]
+## [vers.tanulmany]
+## [vers.kapcsolat]
