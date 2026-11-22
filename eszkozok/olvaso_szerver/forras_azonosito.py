@@ -27,6 +27,19 @@ META_ELOTAG = 'forras:'
 META_OSSZEG = 'forras_osszeg'
 
 
+# A háttér-újraépítés pillanatképébe másolt útvonalak (epit_hatter.sh): az építés által ténylegesen megnyitott könyvtárak és fájlok. Levezetés: az
+# `sqlite_epit.py --mod teljes` futása `sys.addaudithook('open')` figyelésével (F101.5, naplok/F101_jelentes.md): adat/, konkordancia/, genezis/,
+# melyelemzesek/, motivumok/, tematikus_lezart/, ujszovetseg/, eszkozok/ (a modulok), lexikon/ (a HAMART-001 lap) és a gyökér DONTESEK.md. Minden
+# más (.claude/ és benne a worktree-k, archivum/, generalt_proba/, naplok/, .git, kozlemeny/ …) kimarad. Új olvasott könyvtár esetén ide kell felvenni
+# (a `teszt_indito.py` `test_a_masolando_lista_lefedi_az_epito_forrasait` őrzi a forrás-azonosító könyvtáraira).
+MASOLANDO = RESZEK + TANULMANY_RESZEK + ('eszkozok', 'lexikon', 'DONTESEK.md')
+
+
+def masolando(gyoker):
+    """A `MASOLANDO` azon elemei, amelyek a gyökérben léteznek (a `tar` nem hibázik hiányzó útvonalon)."""
+    return [x for x in MASOLANDO if os.path.exists(os.path.join(gyoker, x))]
+
+
 def forrasfajlok(gyoker):
     """A forrásfájlok gyökérhez viszonyított, `/` elválasztós útvonalai, rendezve."""
     ki = []
@@ -133,3 +146,12 @@ def osszehasonlit(gyoker, tarolt, sha_tar=None):
             if sha != tsha:
                 valt.append('%s (módosult)' % rel)
     return ('regebbi' if valt else 'friss'), valt
+
+
+if __name__ == '__main__':
+    # `forras_azonosito.py --masolando <gyoker>`: soronként a pillanatképbe másolandó útvonalak (az epit_hatter.sh ezt hívja)
+    if len(sys.argv) == 3 and sys.argv[1] == '--masolando':
+        print('\n'.join(masolando(sys.argv[2])))
+        sys.exit(0)
+    print(__doc__, file=sys.stderr)
+    sys.exit(2)
