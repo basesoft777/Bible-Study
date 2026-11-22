@@ -119,7 +119,7 @@ def olvasoi(ny, m):
     if m.helyek:
         arany = vizsgalt / m.helyek
         if round(arany) <= konfig.KIZART_ATLAG_HATAR:
-            raise ValueError('a 3. szakasz arány-mondata (legfeljebb %d-szeres arány) nincs leképezve (N-F218c)'
+            raise ValueError('a 3. szakasz arány-mondata (legfeljebb %d-szeres arány) nincs leképezve'
                              % konfig.KIZART_ATLAG_HATAR)
         kov.append(ny.s('k3.kov.atlag', x=round(arany), v=vizsgalt, n=m.helyek))
     if m.okok and elutasitva:
