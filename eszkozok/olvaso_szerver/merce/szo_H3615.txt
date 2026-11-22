@@ -1,0 +1,654 @@
+# F232 olvasói pillanatkép: /szo/H3615
+# A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
+# Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
+PaRDeS olvasó
+⌕
+⚙
+▸ Rétegek
+▸ Interlineáris sor
+▸ Szint nyilvanos regisztralt kutato
+▸ Téma
+▸ Rendszer Világos Sötét
+H3615 כָּלָה
+kálá · ige
+Alapjelentés befejezni: elvégezni
+szó-lap önálló címen · előfordulások versenként
+## [szo.szotar]
+Strong-szótár forrásadat modell-kimenet
+Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás
+כָּלָה | kálá | ige | befejezni: elvégezni to end | a primitive root
+Forrás és licenc: Strong_szotar (strong_szotar): CC BY 4.0 · TBESH+TAHOT+projekt_adat (glosszak_heber_hu): CC BY 4.0; minden jog fenntartva
+## [szo.elofordulas]
+Előfordulás, könyvek száma gépi feldolgozás
+208 előfordulás, 29 könyvben.
+Forrás és licenc: TAHOT+TAGNT (token_strong): CC BY 4.0
+## [szo.karoli_alakok]
+Károli-alakok és pontosság modell-kimenet
+269 Károli-előfordulás. A párosítás mért pontossága 95%.
+Károli-alak | Darab
+el | 26
+elvégezé | 16
+elvégezte | 11
+meg | 7
+elvégezték | 6
+teljessé | 5
+teszem | 5
+megemészti | 4
+A 66 feldolgozott könyv (1Jan, 1Kir, 1Kor, 1Kron, 1Moz, 1Pet, 1Sam, 1Thessz, 1Tim, 2Jan, 2Kir, 2Kor, 2Kron, 2Moz, 2Pet, 2Sam, 2Thessz, 2Tim, 3Jan, 3Moz, 4Moz, 5Moz, Abd, Amos, ApCsel, Bir, Dan, Ef, En, Eszt, Ez, Ezs, Ezsd, Fil, Filem, Gal, Hab, Hag, Hos, Jak, Jan, Jel, Jer, Job, Joel, Jon, Jozs, Jud, Kol, Luk, Mal, Mik, Mk, Mt, Nah, Neh, Peld, Pred, Rom, Ruth, Sir, Sof, Tit, Zak, Zsid, Zsolt) szó szintű párjai alapján.
+Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0
+## [szo.bdb_apparatus]
+Szótár: BDB-szócikk (Brown–Driver–Briggs) forrásadat modell-kimenet gépi feldolgozás
+Lefordítva · gépi fordítás, 2026.10.02
+כָּלָהI. címszó206 előfordulás (BDB)226 hivatkozás a címszónál
+ige: teljesnek, véget érőnek, befejezettnek, beteljesültnek, elfogyottnak lenni
+Rokon nyelvek és eredet
+▸ késői héber ugyanígy, Pi`el; föníciai כלה; asszír kalû, véget vetni, és megszűnni, eltűnni Dl^HWB 329; késői arámi כְּלָא megszűnni, elveszni (nem ᵑ7); a bezárni gyökjelentéshez vö. כלא és Ba^ZMG 1887, 605
+▸ Ba^ZMGDl^HWBᵑ7
+A jelentések rendje a BDB szerint
+Qal
+1—25
+2elfogyni, elhasználódni46
+Pi'el
+1teljessé tenni, véghez vinni, befejezni egy dolgot, feladatot, munkát…66
+2véget vetni valaminek, megszüntetni42
+Pu'al
+Qal
+·—15 hivatkozásLXX ἐκλείπω 2 · ἀπέχομαι 1 · κοπάζω 1 · 11 megfelelő nélkül
+כ׳perfectum
+1Kir 6:38és máshol
+כָּֽלְתָה‎3. nőnemű egyes szám
+1Sám 20:7és máshol
+Angol eredeti
+▸ Perfect כ׳‎ 1Kin 6:38 +; 3 feminine singular כָּֽלְתָה‎ 1Sam 20:7 +; 1 singular כָּלִיתִי Psa 39:11; 3plural כָּלוּ Job 19:27 +; 2 masculine plural כְּלִיתֶם Mal 3:6; וּכְלִיתֶם consecutive Ezek 13:14; 1plural כָּלִינוּ Psa 90:7, etc.; Imperfect יִכְלֶה Prov 22:8; jussive יִ֫כֶל Job 33:21 (see Dr^§ 171-173 Ges^§ 109. 2 b Anm. Da^Synt. § 51 R. 5; 64 R. 6); 3 feminine singular תִּכְלָה‎ 1Kin 17:14; וַתֵּ֫כֶל Exod 39:32 + 2Sam 13:39 (see below); 3 masculine plural יִכְלוּ Isa 1:28 +, יִכְלָי֑וּן‎ 31:3, etc.; Infinitive construct כְּלוֺת Ruth 2:23 +, etc.; —
+perfectum כ׳‎ 1Kir 6:38 és máshol; 3. nőnemű egyes szám כָּֽלְתָה‎ 1Sám 20:7 és máshol;
+1—
+a.12 hivatkozásLXX παρέρχομαι 2 · συντέλεια 1 · 6 megfelelő nélkül
+כָּלִיתִי‎1. egyes szám
+Zsolt 39:11
+כָּלוּ‎3. többes szám
+Jób 19:27és máshol
+כְּלִיתֶם‎2. hímnemű többes szám
+Mal 3:6
+וּכְלִיתֶםconsecutivummal
+Ez 13:14
+כָּלִינוּ‎1. többes szám
+Zsolt 90:7stb.
+יִכְלֶהimperfectum
+Péld 22:8
+יִ֫כֶלjussivus
+Jób 33:21
+תִּכְלָה‎3. nőnemű egyes szám
+1Kir 17:14
+וַתֵּ֫כֶל‎
+2Móz 39:322Sám 13:39(l. lent)
+יִכְלוּ‎3. hímnemű többes szám
+Ézs 1:28és máshol, יִכְלָי֑וּן‎31:3stb.
+כְּלוֺתinfinitivus constructus
+Ruth 2:23és máshol, stb.
+—1. a. teljesnek, véget érőnek lenni, időszakról
+1Móz 41:53E; ellentéte III. חלל Hiph`il kezdődni41:54Jer 8:20(|| עבר)
+így cselekvésről vagy eseményről, az időre helyezett hangsúllyal
+Ézs 10:2524:13Ruth 2:232Krón 29:28ellentéte הֵחֵל‎29:2729:34Dán 12:7|| קֵץ‎12:612:9
+—l. még lent 2b
+Apparátus és szövegkritika 1
+▸ megjegyzés (l. Dr^§ 171-173 Ges^§ 109. 2 b Anm. Da^Synt. § 51 R. 5; 64 R. 6)
+Angol eredeti
+▸ be complete, at an end, of a period of time Gen 41:53 (E; opposed to III. חלל Hiph`il begin 41:54), Jer 8:20 (|| עבר); so of action or event, with emphasis on time Isa 10:25; 24:13; Ruth 2:23; 2Chr 29:28 (opposed to הֵחֵל‎ 29:27), 29:34; Dan 12:7 (|| קֵץ‎ 12:6; 12:9); — see also 2b below
+1. egyes szám כָּלִיתִי Zsolt 39:11; 3. többes szám כָּלוּ Jób 19:27 és máshol; 2. hímnemű többes szám כְּלִיתֶם Mal 3:6; וּכְלִיתֶם consecutivummal Ez 13:14; 1. többes szám כָּלִינוּ Zsolt 90:7, stb.; imperfectum יִכְלֶה Péld 22:8; jussivus יִ֫כֶל Jób 33:21 (l. Dr^§ 171-173 Ges^§ 109. 2 b Anm. Da^Synt. § 51 R. 5; 64 R. 6); 3. nőnemű egyes szám תִּכְלָה‎ 1Kir 17:14; וַתֵּ֫כֶל‎ 2Móz 39:32 + 2Sám 13:39 (l. lent); 3. hímnemű többes szám יִכְלוּ Ézs 1:28 és máshol, יִכְלָי֑וּן‎ 31:3, stb.; infinitivus constructus כְּלוֺת Ruth 2:23 és máshol, stb.; — 1. a. teljesnek, véget érőnek lenni, időszakról 1Móz 41:53 (E; ellentéte III. חלל Hiph`il kezdődni 41:54), Jer 8:20 (|| עבר); így cselekvésről vagy eseményről, az időre helyezett hangsúllyal Ézs 10:25; 24:13; Ruth 2:23; 2Krón 29:28 (ellentéte הֵחֵל‎ 29:27), 29:34; Dán 12:7 (|| קֵץ‎ 12:6; 12:9); — l. még lent 2b
+b.elkészülni, befejeződni, munkáról4 hivatkozás
+a templom
+1Kir 6:381Krón 28:202Krón 8:16(|| שָׁלֵם), a szent sátor2Móz 39:32
+Apparátus és szövegkritika 1
+▸ forrásjel (P)
+Angol eredeti
+▸ be completed, finished, of a work: temple 1Kin 6:38; 1Chr 28:20; 2Chr 8:16 (|| שָׁלֵם), tabernacle Exod 39:32 (P).
+elkészülni, befejeződni, munkáról: a templom 1Kir 6:38; 1Krón 28:20; 2Krón 8:16 (|| שָׁלֵם), a szent sátor 2Móz 39:32 (P).
+c.beteljesedni, valóra válni, csak4 hivatkozásLXX τελέω 1 · 4 megfelelő nélkül
+י׳eltökélt haragjáról vagy jövendöléséről
+Ez 5:13Dán 11:362Krón 36:22Ezsd 1:1
+Apparátus és szövegkritika 1
+▸ megjegyzés (|| כַּלּוֺתִי v^b, l. Pi`el)
+Angol eredeti
+▸ be accomplished, fulfilled, only of purposed wrath, or predicition of י׳, Ezek 5:13 (|| כַּלּוֺתִי v^b, see Pi`el), Dan 11:36; 2Chr 36:22 = Ezra 1:1.
+beteljesedni, valóra válni, csak י׳ eltökélt haragjáról vagy jövendöléséről, Ez 5:13 (|| כַּלּוֺתִי v^b, l. Pi`el), Dán 11:36; 2Krón 36:22 = Ezsd 1:1.
+d.gondolatban eldőlni, elhatároztatni, mindig rossz értelemben5 hivatkozás
+הָרָעָהkiterveltetni, alanya : utána מֵעִם a cselekvőről
+1Sám 20:7továbbá20:9(+עַל לָבוֺא), +20:33
+כ׳ הָרָעָה אֶל־אֲדֹנֵינוּ וְעַל־כָּל־בֵּיתוֺ‎
+1Sám 25:17
+מֵאֵתutána a cselekvőről
+Eszt 7:7(+ אֵלָיו)
+Apparátus és szövegkritika 1
+▸ megjegyzés (olv. כָּֽלְתָה, ᵐ5 הִיא, כָּלָה ᵑ0 helyett We Dr Kit Bu)
+Angol eredeti
+▸ be ideally complete, be determined, always in bad sense, plotted, subject הָרָעָה: followed by מֵעִם of agent 1Sam 20:7, also 20:9 (+עַל לָבוֺא), + 20:33 (read כָּֽלְתָה, for ᵐ5 הִיא, כָּלָה ᵑ0 We Dr Kit Bu); כ׳ הָרָעָה אֶל־אֲדֹנֵינוּ וְעַל־כָּל־בֵּיתוֺ‎ 25:17; followed by מֵאֵת of agent Est 7:7 (+ אֵלָיו).
+gondolatban eldőlni, elhatároztatni, mindig rossz értelemben: kiterveltetni, alanya הָרָעָה: utána מֵעִם a cselekvőről 1Sám 20:7, továbbá 20:9 (+עַל לָבוֺא), + 20:33 (olv. כָּֽלְתָה, ᵐ5 הִיא, כָּלָה ᵑ0 helyett We Dr Kit Bu); כ׳ הָרָעָה אֶל־אֲדֹנֵינוּ וְעַל־כָּל־בֵּיתוֺ‎ 25:17; utána מֵאֵת a cselekvőről Eszt 7:7 (+ אֵלָיו‎).
+2elfogyni, elhasználódni
+a.elfogyni, elhasználódni3 hivatkozásLXX ἐκλείπω 3
+(tulajdonképpen véget érni), vízről
+1Móz 21:15lisztről1Kir 17:1417:16
+Apparátus és szövegkritika 1
+▸ forrásjel (E)
+Angol eredeti
+▸ be spent, used up (properly come to an end), of water Gen 21:15 (E), meal 1Kin 17:14, 16.
+elfogyni, elhasználódni (tulajdonképpen véget érni), vízről 1Móz 21:15 (E), lisztről 1Kir 17:14, 16.
+b.elsorvadni, kimerülni, elfogyatkozni, szó szerint a hervadó fűről26 hivatkozásLXX ἐκλείπω 11 · ἀναλίσκω 1 · ἀπολλύω 1 · 9 megfelelő nélkül
+Ézs 15:6(|| היה לֹא יָבֵשׁ,), a szüretről32:10(ellentéte בּוֺא), az eloszló felhőrőlJób 7:9(hasonlatban, || הלך)
+átvitt értelemben az élet múló napjairól
+Jób 7:6(|| קלל), vö.Zsolt 102:4és כָּלוּ בְיָגוֺן חַיַּי‎31:11Jer 20:18
+l. még fent 1a
+a húsról
+Jób 33:21vö. az életerőrőlZsolt 71:9וּשְׁאֵר בָּשָׂרPéld 5:11וּלְבָבִי שְׁאֵרִי כ׳Zsolt 73:26alanya רוּחִי‎143:7
+י׳egyszer könyörületéről לֹא־כָלוּ רַחֲמָיו J
+Sir 3:32(|| תמם, a szövegről l. VB)
+különösen a sírástól kimerült szemekről
+Sir 2:11a szabadulásra vagy felüdülésre várakozó tekintettől megfeszült szemekről (átvitt értelemben): epedni, sóvárogni4:17Zsolt 69:4Jób 11:2017:4Jer 14:6(vadszamarakról)
+לְutána J
+Sir 4:17és szellemi értelembenZsolt 119:82119:123
+נפשׁhasonlóképpen (utána לְ) a vágyakozástól kimerült felől
+Zsolt 84:3(|| נכסף‎)119:81כָּלוּ כִלְֹיתַי בְּחֵקִיJób 19:27
+így
+2Sám 13:29is, ahol olv. הַמֶּלֶךְ רוּחַ וַתֵּכֶל (ᵑ0 הַמּ דָּוִד ׳וַתְּכַל helyett): és a király szelleme sóvárgott, hogy kimenjen Absolonhoz, vö. ᵐ5^L We Klo Dr Kit Bu
+Apparátus és szövegkritika 1
+▸ számozás a BDB a héber versszámozást követi; a Károliban: JSir 3:32 → Sir 3:32; JSir 2:11 → Sir 2:11; JSir 4:17 → Sir 4:17; Jób 17:5 → Jób 17:4
+Angol eredeti
+▸ waste away, be exhausted, fail, literally of fading grass Isa 15:6 (|| היה לֹא יָבֵשׁ,), of vintage 32:10 (opposed to בּוֺא), of vanishing cloud Job 7:9 (in simile, || הלך); figurative of fleeting days of life 7:6 (|| קלל), compare Psa 102:4 and כָּלוּ בְיָגוֺן חַיַּי‎ 31:11; Jer 20:18; see also 1a above; of flesh Job 33:21, compare of vital strength Psa 71:9, וּשְׁאֵר בָּשָׂר Prov 5:11, וּלְבָבִי שְׁאֵרִי כ׳ Psa 73:26, subject רוּחִי‎ 143:7; once of י׳s compassion לֹא־כָלוּ רַחֲמָיו Lam 3:32 (|| תמם, on text see VB); especially of eyes exhausted by weeping 2:11, strained by looking (figurative) for relief or refreshment, pine, languish 4:17; Psa 69:4; Job 11:20; 17:5; Jer 14:6 (of wild asses); followed by לְ Lam 4:17 and, in spiritual sense, Psa 119:82; 119:123; similarly (followed by לְ) of נפשׁ exhausted by longing 84:3 (|| נכסף‎), 119:81, כָּלוּ כִלְֹיתַי בְּחֵקִי Job 19:27; so also 2Sam 13:29 where read הַמֶּלֶךְ רוּחַ וַתֵּכֶל (for הַמּ דָּוִד ׳וַתְּכַל ᵑ0) and the spirit of the king pined to go forth unto Absalom, compare ᵐ5^L We Klo Dr Kit Bu.
+elsorvadni, kimerülni, elfogyatkozni, szó szerint a hervadó fűről Ézs 15:6 (|| היה לֹא יָבֵשׁ,), a szüretről 32:10 (ellentéte בּוֺא), az eloszló felhőről Jób 7:9 (hasonlatban, || הלך); átvitt értelemben az élet múló napjairól 7:6 (|| קלל), vö. Zsolt 102:4 és כָּלוּ בְיָגוֺן חַיַּי‎ 31:11; Jer 20:18; l. még fent 1a; a húsról Jób 33:21, vö. az életerőről Zsolt 71:9, וּשְׁאֵר בָּשָׂר Péld 5:11, וּלְבָבִי שְׁאֵרִי כ׳ Zsolt 73:26, alanya רוּחִי‎ 143:7; egyszer י׳ könyörületéről לֹא־כָלוּ רַחֲמָיו JSir 3:32 (|| תמם, a szövegről l. VB); különösen a sírástól kimerült szemekről 2:11, a szabadulásra vagy felüdülésre várakozó tekintettől megfeszült szemekről (átvitt értelemben): epedni, sóvárogni 4:17; Zsolt 69:4; Jób 11:20; 17:5; Jer 14:6 (vadszamarakról); utána לְ JSir 4:17 és szellemi értelemben Zsolt 119:82; 119:123; hasonlóképpen (utána לְ) a vágyakozástól kimerült נפשׁ felől 84:3 (|| נכסף‎), 119:81, כָּלוּ כִלְֹיתַי בְּחֵקִי Jób 19:27; így 2Sám 13:29 is, ahol olv. הַמֶּלֶךְ רוּחַ וַתֵּכֶל (ᵑ0 הַמּ דָּוִד ׳וַתְּכַל helyett): és a király szelleme sóvárgott, hogy kimenjen Absolonhoz, vö. ᵐ5^L We Klo Dr Kit Bu.
+c.véget érni, eltűnni17 hivatkozásLXX ἐκλείπω 3 · ἀπέχομαι 1 · ἀπολλύω 1 · ἀφανίζω 1 · 11 megfelelő nélkül
+י׳= elveszni, elpusztulni, ítélete által
+Ézs 1:28(|| שֶׁבֶר‎)16:4(|| תָּמַם אָפֵס‎,)29:20(|| נִכְרַת אָפֵס‎,)31:3(|| נפל כשׁל,), וּבַחֶרֶב וּבָרָעָב יִכְלוּJer 16:4vö.44:27(|| תָּמַם)Ez 5:12(|| נָפַל מוּת‎,)13:14Mal 3:6Zsolt 37:20(a versben kétszer)
+(|| אבד)
+Jób 4:9(|| ua.)Zsolt 71:13(|| בּוֺשׁ)
+túlzással a kemény fenyítésről
+Zsolt 39:1190:7(|| נבהל)
+egy nép jólétéről
+Ézs 21:16
+שֵׁבֶט עֶבְרָתוֺ יִכְלֶה
+Péld 22:8haragjának vesszeje elvész . —Dán 12:7talán olv. קֹדֶשׁ עַם נֹפֵץ יַד וְכִכְלוֺת: és amikor a szent nép összetörőjének hatalma véget ér, így Bev ᵐ5 nyomán (a nehéz ᵑ0 יַד־עַם־קֹדֶשׁ נַפֵּץ וּכְכַלּוֺת helyett)
+Apparátus és szövegkritika 1
+▸ megjegyzés (> Ew és mások: beteljesedik, Isten haragjáról)
+Angol eredeti
+▸ come to an end, vanish = perish, be destroyed, by י׳s judgment Isa 1:28 (|| שֶׁבֶר‎), 16:4 (|| תָּמַם אָפֵס‎,), 29:20 (|| נִכְרַת אָפֵס‎,), 31:3 (|| נפל כשׁל,), וּבַחֶרֶב וּבָרָעָב יִכְלוּ Jer 16:4, compare 44:27 (|| תָּמַם), Ezek 5:12 (|| נָפַל מוּת‎,), 13:14; Mal 3:6; Psa 37:20 (twice in verse); (|| אבד), Job 4:9 (|| id.), Psa 71:13 (|| בּוֺשׁ); hyperbole, of severe discipline 39:11; 90:7 (|| נבהל); of prosperity of a people Isa 21:16; שֵׁבֶט עֶבְרָתוֺ יִכְלֶה Prov 22:8 the rod of his wrath perishes (> Ew and others is accomplished, of God's wrath). — Dan 12:7 read perhaps קֹדֶשׁ עַם נֹפֵץ יַד וְכִכְלוֺת and when the power of the shatterer of the holy people should come to an end, so Bev after ᵐ5 (for difficult יַד־עַם־קֹדֶשׁ נַפֵּץ וּכְכַלּוֺת ᵑ0) .
+véget érni, eltűnni = elveszni, elpusztulni, י׳ ítélete által Ézs 1:28 (|| שֶׁבֶר‎), 16:4 (|| תָּמַם אָפֵס‎,), 29:20 (|| נִכְרַת אָפֵס‎,), 31:3 (|| נפל כשׁל,), וּבַחֶרֶב וּבָרָעָב יִכְלוּ Jer 16:4, vö. 44:27 (|| תָּמַם), Ez 5:12 (|| נָפַל מוּת‎,), 13:14; Mal 3:6; Zsolt 37:20 (a versben kétszer); (|| אבד), Jób 4:9 (|| ua.), Zsolt 71:13 (|| בּוֺשׁ); túlzással a kemény fenyítésről 39:11; 90:7 (|| נבהל); egy nép jólétéről Ézs 21:16; שֵׁבֶט עֶבְרָתוֺ יִכְלֶה Péld 22:8 haragjának vesszeje elvész (> Ew és mások: beteljesedik, Isten haragjáról). — Dán 12:7 talán olv. קֹדֶשׁ עַם נֹפֵץ יַד וְכִכְלוֺת: és amikor a szent nép összetörőjének hatalma véget ér, így Bev ᵐ5 nyomán (a nehéz ᵑ0 יַד־עַם־קֹדֶשׁ נַפֵּץ וּכְכַלּוֺת helyett) .
+Pi'el140 előfordulás a BDB szerint
+·—30 hivatkozásLXX πᾶς 3 · συντελέω 3 · παύω 2 · ἀπολλύω 1 · 15 megfelelő nélkül
+כִּלָּה‎_140 perfectum
+1Móz 18:33és máshol, כִּלָּאPéld 16:30Baer (van d. H כִּלָּה), suffixummal כִּלָּנוּ‎2Sám 21:5כִּלָּם JSir 2:22
+וְכִלְּתָה‎3. nőnemű egyes szám consecutivummal
+Hós 11:6suffixummal וְכִ֫לַּתּוּ consecutivummalZak 5:4
+2)
+כַּלּוּmasculine plural
+Exod 5:13
+כַּלֵּהInfinitive absolute
+1Sam 3:12
+לְכַלֵּאconstruct
+Dan 9:24(metaplastic form), כַּלּוֺת‎1Sam 2:33+, etc
+מְכַלֵּהParticiple
+Jer 14:12Job 9:22
+מְכַלּוֺתfeminine plural
+Lev 26:16
+—
+Apparátus és szövegkritika 1
+▸ számozás a BDB a héber versszámozást követi; a Károliban: JSir 2:22 → Sir 2:22
+Angol eredeti
+▸ Perfect כִּלָּה Gen 18:33 +, כִּלָּא Prov 16:30 Baer (van d. H כִּלָּה), suffix כִּלָּנוּ‎ 2Sam 21:5, כִּלָּם Lam 2:22; 3feminine singular וְכִלְּתָה consecutive Hosea 11:6, suffix וְכִ֫לַּתּוּ consecutive Zech 5:4; 1singular כִּלִּיתִי Num 25:11, כִּלֵּיתִי Isa 49:4, וְכִלֵּיתִ֫י Ezek 6:12 2t.; suffix כִּלִּיתִים‎ 22:31, וְכִלִּיתִיךָ consecutive Exod 33:5; 3plural כִּלּוּ Gen 24:19 +, etc.; Imperfect יְכַלֶּה Isa 10:18; וַיְכַל Gen 2:2-3;feminine singular וַתְּכַל‎ 24:19 + 2Sam 13:39 (but read וַתֵּכֶל We Dr and others, and see Qal 2 b); 1 singular אֲכַלֶּה Gen 24:25 4t.; וָאֲכַל Ezek 43:8; suffix אֲכֶלְךָ Exod 33:3 (Kö^i. 545); 3 masculine plural יְכַלּוּ Job 36:11 + 21:13 Qr (Kt יבלי; see בלה above), +, etc.; Imperative כַּלֵּה Psa 59:14 (twice in verse) + 74:11 (but text dubious, see below, 2); masculine plural כַּלּוּ Exod 5:13; Infinitive absolute כַּלֵּה‎ 1Sam 3:12 5t.; construct לְכַלֵּא Dan 9:24 (metaplastic form), כַּלּוֺת‎ 1Sam 2:33 +, etc.; Participle מְכַלֵּה Jer 14:12; Job 9:22; feminine plural מְכַלּוֺת Lev 26:16; —
+_140 perfectum כִּלָּה‎ 1Móz 18:33 és máshol, כִּלָּא Péld 16:30 Baer (van d. H כִּלָּה), suffixummal כִּלָּנוּ‎ 2Sám 21:5, כִּלָּם JSir 2:22; 3. nőnemű egyes szám וְכִלְּתָה consecutivummal Hós 11:6, suffixummal וְכִ֫לַּתּוּ consecutivummal Zak 5:4; 2); masculine plural כַּלּוּ Exod 5:13; Infinitive absolute כַּלֵּה‎ 1Sam 3:12 5t.; construct לְכַלֵּא Dan 9:24 (metaplastic form), כַּלּוֺת‎ 1Sam 2:33 +, etc.; Participle מְכַלֵּה Jer 14:12; Job 9:22; feminine plural מְכַלּוֺת Lev 26:16; —
+1teljessé tenni, véghez vinni, befejezni egy dolgot, feladatot, munkát…
+כִּלִּיתִיegyes szám
+4Móz 25:11כִּלֵּיתִיÉzs 49:4וְכִלֵּיתִ֫יEz 6:12összesen 2-szer
+כִּלִּיתִיםsuffixummal
+22:31וְכִלִּיתִיךָ consecutivummal2Móz 33:5
+כִּלּוּ‎3. többes szám
+1Móz 24:19és máshol, stb.
+יְכַלֶּהimperfectum
+Ézs 10:18
+וַיְכַל‎
+1Móz 2:2-3
+וַתְּכַלnőnemű egyes szám
+24:192Sám 13:39
+אֲכַלֶּה‎1. egyes szám
+1Móz 24:25összesen 4-szer
+וָאֲכַל
+Ez 43:8
+אֲכֶלְךָsuffixummal
+2Móz 33:3
+יְכַלּוּ‎3. hímnemű többes szám
+Jób 36:1121:13Qr (Kt יבלי; l. fent בלה), +, stb.
+כַּלֵּהimperativus
+Zsolt 59:14(a versben kétszer) +74:11(de a szöveg kétséges, l. lent, 2)
+כַּלּוּhímnemű többes szám
+2Móz 5:13
+כַּלֵּהinfinitivus absolutus
+1Sám 3:12összesen 5-ször
+לְכַלֵּאconstructus
+Dán 9:24(metaplasztikus alak), כַּלּוֺת‎1Sám 2:33és máshol, stb.
+מְכַלֵּהparticipium
+Jer 14:12Jób 9:22
+מְכַלּוֺתnőnemű többes szám
+3Móz 26:16
+—1
+a.teljessé tenni, véghez vinni, befejezni egy dolgot, feladatot, munkát…19 hivatkozásLXX συντελέω 6 · τελέω 2 · πληρόω 1 · τέλος 1 · 9 megfelelő nélkül
+teljessé tenni, véghez vinni, befejezni egy dolgot, feladatot, munkát stb., a dolog tárgyesetével
+2Móz 5:13–14(+ infinitivus; mindkettő J)1Kir 6:96:147:1Ez 42:151Móz 2:216:162Móz 40:33Ruth 2:212Krón 31:17:11Ezsd 9:1így לְכַלֵּא הַפֶּשַׁעDán 9:24hogy véget vessen a vétkezésnek3Móz 23:2219:9-ből módosítva, l. lentmég 5 hely
+a tárgyeset elmarad
+2Krón 31:7(ellentéte לְ הֵחֵל‎)24:1024:14Neh 4:2
+Apparátus és szövegkritika 3
+▸ forrásjel (P)
+▸ megjegyzés (vö. VB Bev)
+▸ számozás a BDB a héber versszámozást követi; a Károliban: Neh 3:34 → Neh 4:2
+Angol eredeti
+▸ complete, bring to an end, finish a thing, task, work, etc., with accusative of thing Exod 5:13-14, (+ infinitive; both J), 1Kin 6:9, 14; 7:1; Ezek 42:15; Gen 2:2; 16:16; Exod 40:33 (P), Ruth 2:21; 2Chr 31:1; 7:11; Ezra 9:1, so לְכַלֵּא הַפֶּשַׁע Dan 9:24 to make an end of the transgression (compare VB Bev); Lev 23:22 (modified from 19:9 q.see below); accusative omitted 2Chr 31:7 (opposed to לְ הֵחֵל‎), 24:10, 14; Nehemiah 3:34.
+teljessé tenni, véghez vinni, befejezni egy dolgot, feladatot, munkát stb., a dolog tárgyesetével 2Móz 5:13-14, (+ infinitivus; mindkettő J), 1Kir 6:9, 14; 7:1; Ez 42:15; 1Móz 2:2; 16:16; 2Móz 40:33 (P), Ruth 2:21; 2Krón 31:1; 7:11; Ezsd 9:1, így לְכַלֵּא הַפֶּשַׁע Dán 9:24 hogy véget vessen a vétkezésnek (vö. VB Bev); 3Móz 23:22 (a 19:9-ből módosítva, l. lent); a tárgyeset elmarad 2Krón 31:7 (ellentéte לְ הֵחֵל‎), 24:10, 14; Neh 3:34.
+b.egy időszakot betölteni5 hivatkozás
+יָמִים
+Ez 4:64:8
+napjait betölteni, az emberi élet teljes mértékét élvezni
+Jób 21:1336:11vagy éveit bevégezniZsolt 90:9a mulandóság mellékgondolatával
+Angol eredeti
+▸ complete a period of time יָמִים Ezek 4:6, 8; complete one's days, enjoy the full measure of human life Job 21:13; 36:11, or bring one's years to an end Psa 90:9, with added idea of transitoriness.
+egy időszakot betölteni יָמִים Ez 4:6, 8; napjait betölteni, az emberi élet teljes mértékét élvezni Jób 21:13; 36:11, vagy éveit bevégezni Zsolt 90:9, a mulandóság mellékgondolatával.
+c.befejezni valaminek a megtételét, rendszerint utána24 hivatkozásLXX συντελέω 5 · παύω 3 · πᾶς 1 · πορεύω 1 · 15 megfelelő nélkül
+ל+ infinitivus
+1Móz 18:3324:1524:19(a versben kétszer)24:2217:222Móz 31:184Móz 4:15Ámós 7:21Kir 1:412Krón 29:29Ruth 3:3összesen 31-szer, beleértve a2Sám 11:19helyet, ahol az infinitivus tárgya megelőzi azt, l. Dr, így3Móz 19:9vö. fent23:221Krón 27:24(לְ, az infinitivus elmarad; ellentéte לְ הֵחֵל‎)2Krón 29:17Dán 12:7(infinitivus לְ nélkül; de l. a Qal 2 c végét)még 7 hely
+מִןutána + infinitivus
+1Sám 10:132Sám 6:181Krón 16:22Móz 34:333Móz 16:20Józs 19:51Ez 43:23
+Apparátus és szövegkritika 1
+▸ forrásjel (mind J) (mind P) (mind P)
+Angol eredeti
+▸ finish doing a thing, usually followed by ל infinitive Gen 18:33; 24:15, 19 (twice in verse); 24:22 (all J), 17:22; Exod 31:18; Num 4:15 (all P), Amos 7:2; 1Kin 1:41; 2Chr 29:29; Ruth 3:3 31t. including 2Sam 11:19, where object of infin. precedes it, see Dr, so Lev 19:9 (compare 23:22 above); + 1Chr 27:24 (לְ infinitive omitted; opposed to לְ הֵחֵל‎), 2Chr 29:17; + Dan 12:7 (infinitive without לְ; but see Qal 2 c near the end); followed by מִן infinitive, 1Sam 10:13; 2Sam 6:18 = 1Chr 16:2; Exod 34:33; Lev 16:20; Josh 19:51 (all P), Ezek 43:23.
+befejezni valaminek a megtételét, rendszerint utána ל + infinitivus 1Móz 18:33; 24:15, 19 (a versben kétszer); 24:22 (mind J), 17:22; 2Móz 31:18; 4Móz 4:15 (mind P), Ámós 7:2; 1Kir 1:41; 2Krón 29:29; Ruth 3:3, összesen 31-szer, beleértve a 2Sám 11:19 helyet, ahol az infinitivus tárgya megelőzi azt, l. Dr, így 3Móz 19:9 (vö. fent 23:22); + 1Krón 27:24 (לְ, az infinitivus elmarad; ellentéte לְ הֵחֵל‎), 2Krón 29:17; + Dán 12:7 (infinitivus לְ nélkül; de l. a Qal 2 c végét); utána מִן + infinitivus, 1Sám 10:13; 2Sám 6:18 = 1Krón 16:2; 2Móz 34:33; 3Móz 16:20; Józs 19:51 (mind P), Ez 43:23.
+d.véget vetni, bevégezni, utána9 hivatkozásLXX συντέλεια 3 · ἔρχομαι 1 · πληρόω 1 · τελέω 1 · 3 megfelelő nélkül
+בְּvégezni valakivel, bevégezni a vele való dolgot
+2Krón 20:23Ezsd 10:17
+כִּלָּה וּבַקָּטֹן הֵחֵל בַּגָּדוֺל הֵחֵלabszolút használatban, ellentéte
+1Móz 44:12a legidősebbel kezdte, és a legfiatalabbal végezte
+הָחֵל וְכַלֵּהígy az infinitivus absolutus határozószóként
+1Sám 3:12kezdve és befejezve, azaz alaposan elvégezve
+עַד־כַּלֵּהtovábbá = teljesen
+2Kir 13:1713:19a végsőkigEzsd 9:14(י׳ haragjáról), עַד־לְכַלֵּה (késői) = teljesen2Krón 24:10(amíg mindenki nem adott)31:1(amíg mind el nem pusztult)
+Apparátus és szövegkritika 2
+▸ forrásjel (J)
+▸ megjegyzés (l. Dr)
+Angol eredeti
+▸ make an end, end, followed by בְּ make an end with, finish dealing with 2Chr 20:23; Ezra 10:17; absolute, opposed to כִּלָּה וּבַקָּטֹן הֵחֵל בַּגָּדוֺל הֵחֵל, Gen 44:12 (J) he began with the eldest and with the youngest he ended; so infinitive absolute adverb. הָחֵל וְכַלֵּה‎ 1Sam 3:12 a beginning and an ending, i.e. doing it thoroughly (see Dr); also עַד־כַּלֵּה = utterly 2Kin 13:17, 19, to extremity Ezra 9:14 (of י׳s anger), עַד־לְכַלֵּה (late) = completely2Chr 24:10 (until all had given), 31:1 (until all were destroyed).
+véget vetni, bevégezni, utána בְּ: végezni valakivel, bevégezni a vele való dolgot 2Krón 20:23; Ezsd 10:17; abszolút használatban, ellentéte כִּלָּה וּבַקָּטֹן הֵחֵל בַּגָּדוֺל הֵחֵל‎, 1Móz 44:12 (J) a legidősebbel kezdte, és a legfiatalabbal végezte; így az infinitivus absolutus határozószóként הָחֵל וְכַלֵּה‎ 1Sám 3:12 kezdve és befejezve, azaz alaposan elvégezve (l. Dr); továbbá עַד־כַּלֵּה = teljesen 2Kir 13:17, 19, a végsőkig Ezsd 9:14 (י׳ haragjáról), עַד־לְכַלֵּה (késői) = teljesen 2Krón 24:10 (amíg mindenki nem adott), 31:1 (amíg mind el nem pusztult).
+e.véghezvinni, beteljesíteni, megvalósítani valamit8 hivatkozásLXX συντελέω 4 · 5 megfelelő nélkül
+Ruth 3:18
+י׳haragjának tárgyesetével (חֲמָתוֺ) J
+Sir 4:11
+בígy (אַפִּי חֲמָתִי,) + és a személy
+Ez 5:136:127:813:1520:820:21
+Apparátus és szövegkritika 1
+▸ számozás a BDB a héber versszámozást követi; a Károliban: JSir 4:11 → Sir 4:11
+Angol eredeti
+▸ accomplish, fulfil, bring to pass, a thing Ruth 3:18; with accusative of י׳s wrath (חֲמָתוֺ) Lam 4:11; so (אַפִּי חֲמָתִי,) + ב person Ezek 5:13; 6:12; 7:8; 13:15; 20:8, 21.
+véghezvinni, beteljesíteni, megvalósítani valamit Ruth 3:18; י׳ haragjának tárgyesetével (חֲמָתוֺ) JSir 4:11; így (אַפִּי חֲמָתִי,) + ב és a személy Ez 5:13; 6:12; 7:8; 13:15; 20:8, 21.
+f.gondolatban véghezvinni, elhatározni1 hivatkozásLXX πᾶς 1
+רָעָה(vö. Qal 1 d), utána
+Péld 16:30(|| חשׁב)
+Angol eredeti
+▸ accomplish in thought, determine (compare Qal 1 d) followed by רָעָה Prov 16:30 (|| חשׁב).
+gondolatban véghezvinni, elhatározni (vö. Qal 1 d), utána רָעָה Péld 16:30 (|| חשׁב).
+Apparátus és szövegkritika 2
+▸ megjegyzés (de olv. וַתֵּכֶל We Dr és mások, és l. Qal 2 b)
+▸ megjegyzés (Kö^i. 545)
+egyes szám כִּלִּיתִי‎ 4Móz 25:11, כִּלֵּיתִי Ézs 49:4, וְכִלֵּיתִ֫י Ez 6:12 összesen 2-szer; suffixummal כִּלִּיתִים‎ 22:31, וְכִלִּיתִיךָ consecutivummal 2Móz 33:5; 3. többes szám כִּלּוּ‎ 1Móz 24:19 és máshol, stb.; imperfectum יְכַלֶּה Ézs 10:18; וַיְכַל‎ 1Móz 2:2-3; nőnemű egyes szám וַתְּכַל‎ 24:19 + 2Sám 13:39 (de olv. וַתֵּכֶל We Dr és mások, és l. Qal 2 b); 1. egyes szám אֲכַלֶּה‎ 1Móz 24:25 összesen 4-szer; וָאֲכַל Ez 43:8; suffixummal אֲכֶלְךָ‎ 2Móz 33:3 (Kö^i. 545); 3. hímnemű többes szám יְכַלּוּ Jób 36:11 + 21:13 Qr (Kt יבלי; l. fent בלה), +, stb.; imperativus כַּלֵּה Zsolt 59:14 (a versben kétszer) + 74:11 (de a szöveg kétséges, l. lent, 2); hímnemű többes szám כַּלּוּ‎ 2Móz 5:13; infinitivus absolutus כַּלֵּה‎ 1Sám 3:12 összesen 5-ször; constructus לְכַלֵּא Dán 9:24 (metaplasztikus alak), כַּלּוֺת‎ 1Sám 2:33 és máshol, stb.; participium מְכַלֵּה Jer 14:12; Jób 9:22; nőnemű többes szám מְכַלּוֺת‎ 3Móz 26:16; — 1
+2véget vetni valaminek, megszüntetni
+a.véget vetni valaminek, megszüntetni2 hivatkozásLXX ἐκλείπω 1 · 1 megfelelő nélkül
+4Móz 17:10(+ מֵעָלַי)
+וַיְכַל־בַּהֶבֶל יְמֵיהֶם
+Zsolt 78:33és elemésztette (eltüntette) hiábavalóságként napjaikat
+Apparátus és szövegkritika 1
+▸ számozás a BDB a héber versszámozást követi; a Károliban: 4Móz 17:25 → 4Móz 17:10
+Angol eredeti
+▸ put an end to, cause to cease Numbers 17:25 (+ מֵעָלַי); וַיְכַל־בַּהֶבֶל יְמֵיהֶם Psa 78:33 and he consumed (caused to vanish) as vanity their days.
+véget vetni valaminek, megszüntetni 4Móz 17:25 (+ מֵעָלַי); וַיְכַל־בַּהֶבֶל יְמֵיהֶם Zsolt 78:33 és elemésztette (eltüntette) hiábavalóságként napjaikat.
+b.elfogyatkoztatni, kimeríteni, elhasználni, elkölteni5 hivatkozásLXX δίδωμι 1 · συντελέω 1 · 3 megfelelő nélkül
+חִצַּי אֲכַלֶּה־בָּם‎
+5Móz 32:23nyilaimat kimerítem ellenük
+כֹּחַerejét kimeríteni
+Ézs 49:4(|| יָגַע)
+a szemeket (sírással; vö. Qal 2 b)
+1Sám 2:33Jób 31:16
+betegségről: a szemeket emészteni
+3Móz 26:16
+Apparátus és szövegkritika 1
+▸ forrásjel (H)
+Angol eredeti
+▸ cause to fail, exhaust, use up, spend, חִצַּי אֲכַלֶּה־בָּם Deut 32:23 my arrows will I exhaust against them; exhaust one's strength כֹּחַ Isa 49:4 (|| יָגַע); the eyes (by weeping; compare Qal 2 b) 1Sam 2:33; Job 31:16; of a disease, consume the eyes Lev 26:16 (H).
+elfogyatkoztatni, kimeríteni, elhasználni, elkölteni, חִצַּי אֲכַלֶּה־בָּם‎ 5Móz 32:23 nyilaimat kimerítem ellenük; erejét kimeríteni כֹּחַ Ézs 49:4 (|| יָגַע); a szemeket (sírással; vö. Qal 2 b) 1Sám 2:33; Jób 31:16; betegségről: a szemeket emészteni 3Móz 26:16 (H).
+c.elpusztítani, néha kiirtani35 hivatkozásLXX συντελέω 2 · ἀπολλύω 1 · καταπαύω 1 · πᾶς 1 · 26 megfelelő nélkül
+(1) alanya ember, a személy tárgyesetével
+2Sám 21:522:39(|| מחץ‎)5Móz 7:222Krón 8:8Jer 10:25(|| אכל), JSir 2:22Zsolt 119:87
+עַד כַּלּוֺתָםkülönösen a kifejezésben
+1Sám 15:1822Sám 22:38(|| השׁמיד) =Zsolt 18:3811Kir 22:112Krón 18:10
+(2) alanya Isten, a személy tárgyesetével
+Józs 24:20Ézs 10:18(az asszír sereg, az erdő képében)Jer 5:32Móz 32:1033:333:544Móz 16:2116:4525:1133Móz 26:44Ez 20:1322:3143:8Jób 9:22még 5 hely
+עַד כַּלֹּתוֺ אֹתְךָ‎
+5Móz 28:21עַד כַּלּוֺתִי אוֺתָםJer 9:1649:37
+abszolút használatban
+Zsolt 59:14(a versben kétszer)
+így (si vera lectio)
+Zsolt 74:11is
+בtárgyeset + eszközhatározóként
+Jer 14:12(karddal, éhséggel és dögvésszel)
+י׳néha ítéletének eszköze lesz a nyelvtani alany
+הַחֶרֶבalanya
+Hós 11:6(tárgya בַּדָּיו, városról; || אכל), alanya עֵגֶלÉzs 27:10(tárgya סְעִ־פֶיהָ; || רָעָה), alanya a repülő tekercsZak 5:4(tárgya a ház)
+Apparátus és szövegkritika 4
+▸ forrásjel (E) (JE) (mind P) (H)
+▸ megjegyzés (a szövegről l. Dr)
+▸ megjegyzés (l. VB; Bi Che תִּכְלָא חֵקְךָ בְּקֶרֶב: és jobbodat (miért) tartod kebeledben)
+▸ számozás a BDB a héber versszámozást követi; a Károliban: JSir 2:22 → Sir 2:22; 4Móz 17:10 → 4Móz 16:45; Jer 9:15 → Jer 9:16
+Angol eredeti
+▸ destroy, sometimes exterminate: (1) men subject, with accusative of person 2Sam 21:5; 22:39 (|| מחץ), Deut 7:22; 2Chr 8:8; Jer 10:25 (|| אכל), Lam 2:22; Psa 119:87; especially in phrase עַד כַּלּוֺתָם‎ 1Sam 15:18 (on text see Dr), 2Sam 22:38 (|| השׁמיד) = Psa 18:38, 1Kin 22:11 2Chr 18:10; (2) God subject, with accusative of person Josh 24:20 (E), Isa 10:18 (Assyrian host, under figure of forest); Jer 5:3; Exod 32:10; 33:3, 5 (JE), Num 16:21; 17:10; 25:11 (all P), Lev 26:44 (H), Ezek 20:13; 22:31; 43:8; Job 9:22; עַד כַּלֹּתוֺ אֹתְךָ Deut 28:21, עַד כַּלּוֺתִי אוֺתָם Jer 9:15; 49:37; absolute Psa 59:14 (twice in verse); so also (si vera lectio) 74:11 (see VB; Bi Che תִּכְלָא חֵקְךָ בְּקֶרֶב and thy right hand (why) keepest thou in thy bosom); accusative + ב instrumental Jer 14:12 (by sword, famine, and pestilence); sometimes the instrument of י׳s judgment becomes grammatical subject; subject הַחֶרֶב Hosea 11:6 (object בַּדָּיו, of city; || אכל), subject עֵגֶל Isa 27:10 (object סְעִ־פֶיהָ; || רָעָה), subject flying roll Zech 5:4 (object house).
+elpusztítani, néha kiirtani: (1) alanya ember, a személy tárgyesetével 2Sám 21:5; 22:39 (|| מחץ‎), 5Móz 7:22; 2Krón 8:8; Jer 10:25 (|| אכל), JSir 2:22; Zsolt 119:87; különösen a עַד כַּלּוֺתָם kifejezésben 1Sám 15:18 (a szövegről l. Dr), 2Sám 22:38 (|| השׁמיד) = Zsolt 18:38, 1Kir 22:11 2Krón 18:10; (2) alanya Isten, a személy tárgyesetével Józs 24:20 (E), Ézs 10:18 (az asszír sereg, az erdő képében); Jer 5:3; 2Móz 32:10; 33:3, 5 (JE), 4Móz 16:21; 17:10; 25:11 (mind P), 3Móz 26:44 (H), Ez 20:13; 22:31; 43:8; Jób 9:22; עַד כַּלֹּתוֺ אֹתְךָ‎ 5Móz 28:21, עַד כַּלּוֺתִי אוֺתָם Jer 9:15; 49:37; abszolút használatban Zsolt 59:14 (a versben kétszer); így (si vera lectio) 74:11 is (l. VB; Bi Che תִּכְלָא חֵקְךָ בְּקֶרֶב: és jobbodat (miért) tartod kebeledben); tárgyeset + ב eszközhatározóként Jer 14:12 (karddal, éhséggel és dögvésszel); néha י׳ ítéletének eszköze lesz a nyelvtani alany; alanya הַחֶרֶב Hós 11:6 (tárgya בַּדָּיו, városról; || אכל), alanya עֵגֶל Ézs 27:10 (tárgya סְעִ־פֶיהָ; || רָעָה), alanya a repülő tekercs Zak 5:4 (tárgya a ház).
+Pu'al
+·—2 hivatkozásLXX ἐκλείπω 1 · 1 megfelelő nélkül
+כָּלּוּperfectum 3. többes szám
+Zsolt 72:20befejeztetni, véget érni
+וַיְכֻלּוּimperfectum 3. hímnemű többes szám
+1Móz 2:1elkészíttetni
+Apparátus és szövegkritika 1
+▸ forrásjel (P)
+Angol eredeti
+▸ Perfect3plural כָּלּוּ Psa 72:20 be finished, ended; Imperfect3masculine plural וַיְכֻלּוּ Gen 2:1 be completed (P).
+perfectum 3. többes szám כָּלּוּ Zsolt 72:20 befejeztetni, véget érni; imperfectum 3. hímnemű többes szám וַיְכֻלּוּ‎ 1Móz 2:1 elkészíttetni (P).
+Jelmagyarázat
+▸ E
+▸ elohista forrás (a BDB forrásbesorolása a dokumentum-hipotézis szerint)
+▸ H
+▸ Szentség-törvény (Heiligkeitsgesetz, 3Móz 17–26; a BDB forrásbesorolása)
+▸ J
+▸ jahvista forrás (a BDB forrásbesorolása a dokumentum-hipotézis szerint)
+▸ JE
+▸ a jahvista és az elohista forrás együtt (a BDB forrásbesorolása)
+▸ P
+▸ papi irat (Priesterschrift; a BDB forrásbesorolása)
+▸ Kt
+▸ ketív: a leírt mássalhangzós szöveg
+▸ Qr
+▸ qeré: a felolvasandó maszoréta olvasat
+▸ ᵐ5
+▸ Septuaginta (LXX), görög fordítás
+▸ ᵑ7
+▸ Targum, arámi fordítás
+▸ י׳
+▸ JHVH, Isten neve
+▸ Bev
+▸ A. A. Bevan
+▸ Bi
+▸ G. Bickell
+▸ Bu
+▸ K. Budde
+▸ Che
+▸ T. K. Cheyne
+▸ Dr
+▸ S. R. Driver
+▸ Ew
+▸ H. Ewald
+▸ Ges
+▸ W. Gesenius
+▸ Kit
+▸ R. Kittel
+▸ Klo
+▸ A. Klostermann
+▸ Kö
+▸ E. König
+▸ We
+▸ J. Wellhausen
+▸ absolutus
+▸ status absolutus: önálló alak (a névszó nem birtokos szerkezetben áll)
+▸ constructus
+▸ status constructus: kapcsolati alak (a névszó a birtokos szerkezet első tagja)
+▸ A feloldás nem a BDB része; csak a fenti jelentésekben előforduló jelek. A szövegben a pontozottan aláhúzott jelre mutatva is megjelenik.
+A magyar szócikk teljes szövege (tagolás nélkül)
+▸ I. כָּלָה‎206 ige: teljesnek, véget érőnek, befejezettnek, beteljesültnek, elfogyottnak lenni (késői héber ugyanígy, Pi`el; föníciai כלה; asszír kalû, véget vetni, és megszűnni, eltűnni Dl^HWB 329; késői arámi כְּלָא megszűnni, elveszni (nem ᵑ7); a bezárni gyökjelentéshez vö. כלא és Ba^ZMG 1887, 605) — Qal. perfectum כ׳‎ 1Kir 6:38 és máshol; 3. nőnemű egyes szám כָּֽלְתָה‎ 1Sám 20:7 és máshol; 1. egyes szám כָּלִיתִי Zsolt 39:11; 3. többes szám כָּלוּ Jób 19:27 és máshol; 2. hímnemű többes szám כְּלִיתֶם Mal 3:6; וּכְלִיתֶם consecutivummal Ez 13:14; 1. többes szám כָּלִינוּ Zsolt 90:7, stb.; imperfectum יִכְלֶה Péld 22:8; jussivus יִ֫כֶל Jób 33:21 (l. Dr^§ 171-173 Ges^§ 109. 2 b Anm. Da^Synt. § 51 R. 5; 64 R. 6); 3. nőnemű egyes szám תִּכְלָה‎ 1Kir 17:14; וַתֵּ֫כֶל‎ 2Móz 39:32 + 2Sám 13:39 (l. lent); 3. hímnemű többes szám יִכְלוּ Ézs 1:28 és máshol, יִכְלָי֑וּן‎ 31:3, stb.; infinitivus constructus כְּלוֺת Ruth 2:23 és máshol, stb.; — 1. a. teljesnek, véget érőnek lenni, időszakról 1Móz 41:53 (E; ellentéte III. חלל Hiph`il kezdődni 41:54), Jer 8:20 (|| עבר); így cselekvésről vagy eseményről, az időre helyezett hangsúllyal Ézs 10:25; 24:13; Ruth 2:23; 2Krón 29:28 (ellentéte הֵחֵל‎ 29:27), 29:34; Dán 12:7 (|| קֵץ‎ 12:6; 12:9); — l. még lent 2b b. elkészülni, befejeződni, munkáról: a templom 1Kir 6:38; 1Krón 28:20; 2Krón 8:16 (|| שָׁלֵם), a szent sátor 2Móz 39:32 (P). c. beteljesedni, valóra válni, csak י׳ eltökélt haragjáról vagy jövendöléséről, Ez 5:13 (|| כַּלּוֺתִי v^b, l. Pi`el), Dán 11:36; 2Krón 36:22 = Ezsd 1:1. d. gondolatban eldőlni, elhatároztatni, mindig rossz értelemben: kiterveltetni, alanya הָרָעָה: utána מֵעִם a cselekvőről 1Sám 20:7, továbbá 20:9 (+עַל לָבוֺא), + 20:33 (olv. כָּֽלְתָה, ᵐ5 הִיא, כָּלָה ᵑ0 helyett We Dr Kit Bu); כ׳ הָרָעָה אֶל־אֲדֹנֵינוּ וְעַל־כָּל־בֵּיתוֺ‎ 25:17; utána מֵאֵת a cselekvőről Eszt 7:7 (+ אֵלָיו‎). 2. a. elfogyni, elhasználódni (tulajdonképpen véget érni), vízről 1Móz 21:15 (E), lisztről 1Kir 17:14, 16. b. elsorvadni, kimerülni, elfogyatkozni, szó szerint a hervadó fűről Ézs 15:6 (|| היה לֹא יָבֵשׁ,), a szüretről 32:10 (ellentéte בּוֺא), az eloszló felhőről Jób 7:9 (hasonlatban, || הלך); átvitt értelemben az élet múló napjairól 7:6 (|| קלל), vö. Zsolt 102:4 és כָּלוּ בְיָגוֺן חַיַּי‎ 31:11; Jer 20:18; l. még fent 1a; a húsról Jób 33:21, vö. az életerőről Zsolt 71:9, וּשְׁאֵר בָּשָׂר Péld 5:11, וּלְבָבִי שְׁאֵרִי כ׳ Zsolt 73:26, alanya רוּחִי‎ 143:7; egyszer י׳ könyörületéről לֹא־כָלוּ רַחֲמָיו JSir 3:32 (|| תמם, a szövegről l. VB); különösen a sírástól kimerült szemekről 2:11, a szabadulásra vagy felüdülésre várakozó tekintettől megfeszült szemekről (átvitt értelemben): epedni, sóvárogni 4:17; Zsolt 69:4; Jób 11:20; 17:5; Jer 14:6 (vadszamarakról); utána לְ JSir 4:17 és szellemi értelemben Zsolt 119:82; 119:123; hasonlóképpen (utána לְ) a vágyakozástól kimerült נפשׁ felől 84:3 (|| נכסף‎), 119:81, כָּלוּ כִלְֹיתַי בְּחֵקִי Jób 19:27; így 2Sám 13:29 is, ahol olv. הַמֶּלֶךְ רוּחַ וַתֵּכֶל (ᵑ0 הַמּ דָּוִד ׳וַתְּכַל helyett): és a király szelleme sóvárgott, hogy kimenjen Absolonhoz, vö. ᵐ5^L We Klo Dr Kit Bu. c. véget érni, eltűnni = elveszni, elpusztulni, י׳ ítélete által Ézs 1:28 (|| שֶׁבֶר‎), 16:4 (|| תָּמַם אָפֵס‎,), 29:20 (|| נִכְרַת אָפֵס‎,), 31:3 (|| נפל כשׁל,), וּבַחֶרֶב וּבָרָעָב יִכְלוּ Jer 16:4, vö. 44:27 (|| תָּמַם), Ez 5:12 (|| נָפַל מוּת‎,), 13:14; Mal 3:6; Zsolt 37:20 (a versben kétszer); (|| אבד), Jób 4:9 (|| ua.), Zsolt 71:13 (|| בּוֺשׁ); túlzással a kemény fenyítésről 39:11; 90:7 (|| נבהל); egy nép jólétéről Ézs 21:16; שֵׁבֶט עֶבְרָתוֺ יִכְלֶה Péld 22:8 haragjának vesszeje elvész (> Ew és mások: beteljesedik, Isten haragjáról). — Dán 12:7 talán olv. קֹדֶשׁ עַם נֹפֵץ יַד וְכִכְלוֺת: és amikor a szent nép összetörőjének hatalma véget ér, így Bev ᵐ5 nyomán (a nehéz ᵑ0 יַד־עַם־קֹדֶשׁ נַפֵּץ וּכְכַלּוֺת helyett) . Pi`el140 perfectum כִּלָּה‎ 1Móz 18:33 és máshol, כִּלָּא Péld 16:30 Baer (van d. H כִּלָּה), suffixummal כִּלָּנוּ‎ 2Sám 21:5, כִּלָּם JSir 2:22; 3. nőnemű egyes szám וְכִלְּתָה consecutivummal Hós 11:6, suffixummal וְכִ֫לַּתּוּ consecutivummal Zak 5:4; 1. egyes szám כִּלִּיתִי‎ 4Móz 25:11, כִּלֵּיתִי Ézs 49:4, וְכִלֵּיתִ֫י Ez 6:12 összesen 2-szer; suffixummal כִּלִּיתִים‎ 22:31, וְכִלִּיתִיךָ consecutivummal 2Móz 33:5; 3. többes szám כִּלּוּ‎ 1Móz 24:19 és máshol, stb.; imperfectum יְכַלֶּה Ézs 10:18; וַיְכַל‎ 1Móz 2:2-3; nőnemű egyes szám וַתְּכַל‎ 24:19 + 2Sám 13:39 (de olv. וַתֵּכֶל We Dr és mások, és l. Qal 2 b); 1. egyes szám אֲכַלֶּה‎ 1Móz 24:25 összesen 4-szer; וָאֲכַל Ez 43:8; suffixummal אֲכֶלְךָ‎ 2Móz 33:3 (Kö^i. 545); 3. hímnemű többes szám יְכַלּוּ Jób 36:11 + 21:13 Qr (Kt יבלי; l. fent בלה), +, stb.; imperativus כַּלֵּה Zsolt 59:14 (a versben kétszer) + 74:11 (de a szöveg kétséges, l. lent, 2); hímnemű többes szám כַּלּוּ‎ 2Móz 5:13; infinitivus absolutus כַּלֵּה‎ 1Sám 3:12 összesen 5-ször; constructus לְכַלֵּא Dán 9:24 (metaplasztikus alak), כַּלּוֺת‎ 1Sám 2:33 és máshol, stb.; participium מְכַלֵּה Jer 14:12; Jób 9:22; nőnemű többes szám מְכַלּוֺת‎ 3Móz 26:16; — 1 a. teljessé tenni, véghez vinni, befejezni egy dolgot, feladatot, munkát stb., a dolog tárgyesetével 2Móz 5:13-14, (+ infinitivus; mindkettő J), 1Kir 6:9, 14; 7:1; Ez 42:15; 1Móz 2:2; 16:16; 2Móz 40:33 (P), Ruth 2:21; 2Krón 31:1; 7:11; Ezsd 9:1, így לְכַלֵּא הַפֶּשַׁע Dán 9:24 hogy véget vessen a vétkezésnek (vö. VB Bev); 3Móz 23:22 (a 19:9-ből módosítva, l. lent); a tárgyeset elmarad 2Krón 31:7 (ellentéte לְ הֵחֵל‎), 24:10, 14; Neh 3:34. b. egy időszakot betölteni יָמִים Ez 4:6, 8; napjait betölteni, az emberi élet teljes mértékét élvezni Jób 21:13; 36:11, vagy éveit bevégezni Zsolt 90:9, a mulandóság mellékgondolatával. c. befejezni valaminek a megtételét, rendszerint utána ל + infinitivus 1Móz 18:33; 24:15, 19 (a versben kétszer); 24:22 (mind J), 17:22; 2Móz 31:18; 4Móz 4:15 (mind P), Ámós 7:2; 1Kir 1:41; 2Krón 29:29; Ruth 3:3, összesen 31-szer, beleértve a 2Sám 11:19 helyet, ahol az infinitivus tárgya megelőzi azt, l. Dr, így 3Móz 19:9 (vö. fent 23:22); + 1Krón 27:24 (לְ, az infinitivus elmarad; ellentéte לְ הֵחֵל‎), 2Krón 29:17; + Dán 12:7 (infinitivus לְ nélkül; de l. a Qal 2 c végét); utána מִן + infinitivus, 1Sám 10:13; 2Sám 6:18 = 1Krón 16:2; 2Móz 34:33; 3Móz 16:20; Józs 19:51 (mind P), Ez 43:23. d. véget vetni, bevégezni, utána בְּ: végezni valakivel, bevégezni a vele való dolgot 2Krón 20:23; Ezsd 10:17; abszolút használatban, ellentéte כִּלָּה וּבַקָּטֹן הֵחֵל בַּגָּדוֺל הֵחֵל‎, 1Móz 44:12 (J) a legidősebbel kezdte, és a legfiatalabbal végezte; így az infinitivus absolutus határozószóként הָחֵל וְכַלֵּה‎ 1Sám 3:12 kezdve és befejezve, azaz alaposan elvégezve (l. Dr); továbbá עַד־כַּלֵּה = teljesen 2Kir 13:17, 19, a végsőkig Ezsd 9:14 (י׳ haragjáról), עַד־לְכַלֵּה (késői) = teljesen 2Krón 24:10 (amíg mindenki nem adott), 31:1 (amíg mind el nem pusztult). e. véghezvinni, beteljesíteni, megvalósítani valamit Ruth 3:18; י׳ haragjának tárgyesetével (חֲמָתוֺ) JSir 4:11; így (אַפִּי חֲמָתִי,) + ב és a személy Ez 5:13; 6:12; 7:8; 13:15; 20:8, 21. f. gondolatban véghezvinni, elhatározni (vö. Qal 1 d), utána רָעָה Péld 16:30 (|| חשׁב‎). 2. a. véget vetni valaminek, megszüntetni 4Móz 17:25 (+ מֵעָלַי); וַיְכַל־בַּהֶבֶל יְמֵיהֶם Zsolt 78:33 és elemésztette (eltüntette) hiábavalóságként napjaikat. b. elfogyatkoztatni, kimeríteni, elhasználni, elkölteni, חִצַּי אֲכַלֶּה־בָּם‎ 5Móz 32:23 nyilaimat kimerítem ellenük; erejét kimeríteni כֹּחַ Ézs 49:4 (|| יָגַע); a szemeket (sírással; vö. Qal 2 b) 1Sám 2:33; Jób 31:16; betegségről: a szemeket emészteni 3Móz 26:16 (H). c. elpusztítani, néha kiirtani: (1) alanya ember, a személy tárgyesetével 2Sám 21:5; 22:39 (|| מחץ‎), 5Móz 7:22; 2Krón 8:8; Jer 10:25 (|| אכל), JSir 2:22; Zsolt 119:87; különösen a עַד כַּלּוֺתָם kifejezésben 1Sám 15:18 (a szövegről l. Dr), 2Sám 22:38 (|| השׁמיד) = Zsolt 18:38, 1Kir 22:11 2Krón 18:10; (2) alanya Isten, a személy tárgyesetével Józs 24:20 (E), Ézs 10:18 (az asszír sereg, az erdő képében); Jer 5:3; 2Móz 32:10; 33:3, 5 (JE), 4Móz 16:21; 17:10; 25:11 (mind P), 3Móz 26:44 (H), Ez 20:13; 22:31; 43:8; Jób 9:22; עַד כַּלֹּתוֺ אֹתְךָ‎ 5Móz 28:21, עַד כַּלּוֺתִי אוֺתָם Jer 9:15; 49:37; abszolút használatban Zsolt 59:14 (a versben kétszer); így (si vera lectio) 74:11 is (l. VB; Bi Che תִּכְלָא חֵקְךָ בְּקֶרֶב: és jobbodat (miért) tartod kebeledben); tárgyeset + ב eszközhatározóként Jer 14:12 (karddal, éhséggel és dögvésszel); néha י׳ ítéletének eszköze lesz a nyelvtani alany; alanya הַחֶרֶב Hós 11:6 (tárgya בַּדָּיו, városról; || אכל), alanya עֵגֶל Ézs 27:10 (tárgya סְעִ־פֶיהָ; || רָעָה), alanya a repülő tekercs Zak 5:4 (tárgya a ház). Pu`al perfectum 3. többes szám כָּלּוּ Zsolt 72:20 befejeztetni, véget érni; imperfectum 3. hímnemű többes szám וַיְכֻלּוּ‎ 1Móz 2:1 elkészíttetni (P).
+Forrás és licenc: BDB (bdb): közkincs · BDB+projekt_adat (bdb_alias): közkincs; minden jog fenntartva · projekt_adat (forditasok): minden jog fenntartva · BDB+Macula_heber+OSHL+TAHOT+projekt_adat (bdb_vers_jelentes): közkincs; CC BY 4.0; minden jog fenntartva · TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+## [szo.lxx_bridge]
+Görög megfelelő (Septuaginta) forrásadat
+Görög Strong | Szótő | Jelentés | Darab
+G4931 | συντελέω | to complete | 27
+G1587 | ἐκλείπω | to fail | 19
+G4930 | συντέλεια | consummation | 5
+G3973 | παύω | to cease | 5
+Forrás és licenc: lxx_bridge (lxx_bridge): CC BY 4.0
+## [szo.ubs_dbh]
+UBS DBH jelentések (a teljes szócikk, magyar fordítással) forrásadat modell-kimenet CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet
+Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)
+003315001001000 | Complete | (fordításra vár) | (fordításra vár) | to be finished; to be completed; to come to an end; to be past | = process by which an activity comes to full completion
+003315001002000 | Complete | (fordításra vár) | (fordításra vár) | to finish | = causative action by which deities, humans, or animals bring an activity to full completion
+003315001003000 | Alive | (fordításra vár) | (fordításra vár) | to spend (one's) days; to live (one's) life | literally: (one's) days are finished; hence: = process by which people go through life for a particular amount of time
+003315001004000 | Alive | (fordításra vár) | (fordításra vár) | to spend (one's) days; to live (one's) life | literally: to finish (one's) days; hence: = action by which people go through the motions of life for a particular amount of time
+003315001005000 | Alive | (fordításra vár) | (fordításra vár) | to cause (someone's) else to spend (their) days | literally: to finish (someone's) days; hence: = causative action by which deities cause humans go through the motions of life for a particular amount of time
+003315001006000 | Imminent | (fordításra vár) | (fordításra vár) | to be imminent | literally: to be finished; hence: = state in which a harmful action is about to be initiated
+003315001007000 | Imminent | (fordításra vár) | (fordításra vár) | to be bent (on something) | literally: to finish; hence: = causative action state in which humans are about to initiate a harmful action
+003315001008000 | Impact | (fordításra vár) | (fordításra vár) | to be ravaged; to be consumed; to waste away | literally: to be finished; hence: = process by which objects are heavily damaged to the extent that they are almost gone
+003315001009000 | Impact | (fordításra vár) | (fordításra vár) | to ravage; to consume | literally: to finish; hence: = causative action by which humans or deities cause heavy damage to objects to the extent that they are almost gone
+003315001010000 | Whole | (fordításra vár) | (fordításra vár) | to be completed; to be finished | literally: to be finished; hence: = process by which an object has come to the end of its construction phase
+003315001011000 | Whole | (fordításra vár) | (fordításra vár) | to finish; to complete | literally: to finish; hence: = causative action by which humans or deities bring an object to the end of its construction phase
+003315001012000 | Non-Exist | (fordításra vár) | (fordításra vár) | to perish; to vanish | literally: to finish; hence: = process by which humans and objects completely disappear from existence
+003315001013000 | Non-Exist | (fordításra vár) | (fordításra vár) | to consume; to destroy | = literally: to finish; hence: = causative action by which humans and deities cause (other) humans and objects to completely disappear from existance
+003315001014000 | Weak | (fordításra vár) | (fordításra vár) | to pine away | literally: to be finished; hence: = process by which humans feel physically weak as a result of hardship or a deeply felt wish for something to happen
+003315001015000 | Weak | (fordításra vár) | (fordításra vár) | (one's) eyes grow dim | literally: (one's) eyes are finished; hence: = process by which someone's eyes become affected by excessive weeping or hardship
+003315001016000 | Weak | (fordításra vár) | (fordításra vár) | to cause (someone's) eyes to grow dim | literally: to finish (someone's) eyes; hence: = causative action by which humans or deities cause the eyes of others to become affected by excessive weeping
+Forrás és licenc: UBS_DBH (ubs_dbh_jelentesek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+## [szo.sdbh]
+Szemantikai domén (SDBH) forrásadat modell-kimenet üres eredmény nem negatív lelet
+Domén kód | Domén | Glossza | Hivatkozás
+002001001003 | Alive | to spend (one's) days; to live (one's) life | 2
+002001001003 | Alive | to spend (one's) days; to live (one's) life | 7
+002001001003 | Alive | to cause (someone's) else to spend (their) days | 1
+002001001024 | Ütközés Impact | to be ravaged; to be consumed; to waste away | 3
+002001001024 | Ütközés Impact | to ravage; to consume | 6
+002001001064 | Weak | to pine away | 7
+002001001064 | Weak | (one's) eyes grow dim | 8
+002001001064 | Weak | to cause (someone's) eyes to grow dim | 3
+002001003003 | Complete | to be finished; to be completed; to come to an end; to be past | 24
+002001003003 | Complete | to finish | 81
+002001003011 | Imminent | to be imminent | 4
+002001003011 | Imminent | to be bent (on something) | 1
+002002002006 | Non-Exist | to perish; to vanish | 15
+002002002006 | Non-Exist | to consume; to destroy | 37
+002003001020 | Whole | to be completed; to be finished | 2
+002003001020 | Whole | to finish; to complete | 6
+Forrás és licenc: SDBH (sdbh_domenek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+## [szo.sece_h]
+SECE-szócikk (héber) forrásadat
+כָּלָה (kâlâh｜kaw-law'｜verb｜be complete) [Heb] כָּלָה ETCBC: כלה (verb｜be complete) OSHL: k.bk.aa TWOT: 982 983 984 GK: H3983 Greek: ἀναλίσκω, ἀπόλλυμι, ἀφανίζω, γινώσκω, διατελέω, δίδωμι, δύναμαι, ἐκλείπω, ἐκτελέω, ἐξολοθρεύω, ἐπιτελέω, κατεσθίω, κοπάζω, πάντοθεν, παρέρχομαι, παύω, πληρόω, σήπω, συντελέω, συντέμνω, τελειόω, τελέω, τέλος, τήκω Derivation: a primitive root; Strong's: to end, whether intransitive (to cease, be finished, perish) or transitived (to complete, prepare, consume) KJV: accomplish, cease, consume (away), determine, destroy (utterly), be (when... were) done, (be an) end (of), expire, (cause to) fail, faint, finish, fulfil, [idiom] fully, [idiom] have, leave (off), long, bring to pass, wholly reap, make clean riddance, spend, quite take away, waste.
+Forrás és licenc: SECE_H (sece_h): közkincs
+## [szo.oshl]
+OSHL: TWOT- és BDB-azonosító, BDB-helyek forrásadat
+TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás
+982 | k.bk.aa | heber | fsn | כָּלָה | kālâ | V | be complete
+Forrás és licenc: OSHL (oshl_lexikalis_index): CC BY 4.0 · OSHL_BDB (oshl_bdb_igehelyek): CC BY 4.0
+## [szo.oshl_csalad]
+Rokon szavak (OSHL-gyökcsalád) forrásadat az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet
+Gyök: כלה H3615
+Strong | Lemma | Átírás | Szófaj | Angol meghatározás
+H3616 | כָּלֶה | kāleh | A | failing
+H3617 | כָּלָה | kālâ | N | completion
+H3627 | כְּלִי | kĕlî | N | article
+H3631 | כִּלָּיוֹן | killāyôn | N | failing
+H4357 | מִכְלָה | miklâ | N | completeness
+H8502 | תִּכְלָה | tiklâ | N | completeness
+H8503 | תַּכְלִית | taklît | N | end
+Forrás és licenc: OSHL (oshl_lexikalis_index): CC BY 4.0
+## [szo.tbesh]
+Bővített Strong-szócikk (TBESH) forrásadat gépi feldolgozás modell-kimenet
+Szó | Átírás | Morf | Gloss | Jelentés
+כָּלָה | ka.lah | H:V | befejezni: elvégezni to end: finish | : finish
+1) to accomplish, cease, consume, determine, end, fail, finish, be complete, be accomplished, be ended, be at an end, be finished, be spent
+1a) (Qal)
+1a1) to be complete, be at an end
+1a2) to be completed, be finished
+1a3) to be accomplished, be fulfilled
+1a4) to be determined, be plotted (bad sense)
+1a5) to be spent, be used up
+1a6) to waste away, be exhausted, fail
+1a7) to come to an end, vanish, perish, be destroyed
+1b) (Piel)
+1b1) to complete, bring to an end, finish
+1b2) to complete (a period of time)
+1b3) to finish (doing a thing)
+1b4) to make an end, end
+1b5) to accomplish, fulfil, bring to pass
+1b6) to accomplish, determine (in thought)
+1b7) to put an end to, cause to cease
+1b8) to cause to fail, exhaust, use up, spend
+1b9) to destroy, exterminate
+1c) (Pual) to be finished, be ended, be completed
+כָּלָה | ka.lah | H:V | befejezni: elpusztítani to end: destroy | : destroy
+1) to accomplish, cease, consume, determine, end, fail, finish, be complete, be accomplished, be ended, be at an end, be finished, be spent
+1a) (Qal)
+1a1) to be complete, be at an end
+1a2) to be completed, be finished
+1a3) to be accomplished, be fulfilled
+1a4) to be determined, be plotted (bad sense)
+1a5) to be spent, be used up
+1a6) to waste away, be exhausted, fail
+1a7) to come to an end, vanish, perish, be destroyed
+1b) (Piel)
+1b1) to complete, bring to an end, finish
+1b2) to complete (a period of time)
+1b3) to finish (doing a thing)
+1b4) to make an end, end
+1b5) to accomplish, fulfil, bring to pass
+1b6) to accomplish, determine (in thought)
+1b7) to put an end to, cause to cease
+1b8) to cause to fail, exhaust, use up, spend
+1b9) to destroy, exterminate
+1c) (Pual) to be finished, be ended, be completed
+כָּלָה | ka.lah | H:V | befejezni: elhatározni to end: decides | : decides/determines/longs
+1) to accomplish, cease, consume, determine, end, fail, finish, be complete, be accomplished, be ended, be at an end, be finished, be spent
+1a) (Qal)
+1a1) to be complete, be at an end
+1a2) to be completed, be finished
+1a3) to be accomplished, be fulfilled
+1a4) to be determined, be plotted (bad sense)
+1a5) to be spent, be used up
+1a6) to waste away, be exhausted, fail
+1a7) to come to an end, vanish, perish, be destroyed
+1b) (Piel)
+1b1) to complete, bring to an end, finish
+1b2) to complete (a period of time)
+1b3) to finish (doing a thing)
+1b4) to make an end, end
+1b5) to accomplish, fulfil, bring to pass
+1b6) to accomplish, determine (in thought)
+1b7) to put an end to, cause to cease
+1b8) to cause to fail, exhaust, use up, spend
+1b9) to destroy, exterminate
+1c) (Pual) to be finished, be ended, be completed
+כָּלָה | ka.lah | H:V | befejezni: elkölteni to end: expend | : expend/spend/empty/fail
+1) to accomplish, cease, consume, determine, end, fail, finish, be complete, be accomplished, be ended, be at an end, be finished, be spent
+1a) (Qal)
+1a1) to be complete, be at an end
+1a2) to be completed, be finished
+1a3) to be accomplished, be fulfilled
+1a4) to be determined, be plotted (bad sense)
+1a5) to be spent, be used up
+1a6) to waste away, be exhausted, fail
+1a7) to come to an end, vanish, perish, be destroyed
+1b) (Piel)
+1b1) to complete, bring to an end, finish
+1b2) to complete (a period of time)
+1b3) to finish (doing a thing)
+1b4) to make an end, end
+1b5) to accomplish, fulfil, bring to pass
+1b6) to accomplish, determine (in thought)
+1b7) to put an end to, cause to cease
+1b8) to cause to fail, exhaust, use up, spend
+1b9) to destroy, exterminate
+1c) (Pual) to be finished, be ended, be completed
+Forrás és licenc: TBESH (tbesh): CC BY 4.0 · TBESH+TAHOT+projekt_adat (glosszak_heber_hu): CC BY 4.0; minden jog fenntartva · projekt_adat (forditasok): minden jog fenntartva
+## [szo.tw_h]
+translationWords forrásadat modell-kimenet
+consume, devour (other, other/consume)
+Definition:
+The term “consume” literally means to use up something. It has several figurative meanings.
+In the Bible, the word “consume” often refers to destroying things or people.
+A fire is said to consume things, which means it destroys them by burning them up.
+God is described as a “consuming fire,” which is a description of his anger against sin. His anger results in terrible punishment for sinners who do not repent.
+To consume food means to eat or drink something.
+The phrase, “consume the land” could be translated as “destroy the land.”
+Translation Suggestions
+In the context of consuming the land or people, this term could be translated as “destroy.”
+When fire is referred to, “consume” could be translated as “burn up.”
+The burning bush that Moses saw “was not consumed” which could be translated as “did not get burned up” or “did not burn up.”
+When referring to eating, “consume” could be translated as “eat” or “devour.”
+If someone’s strength is “consumed,” it means his strength is “used up” or “gone.”
+The expression, “God is a consuming fire” could be translated as “God is like a fire that burns things up” or “God is angry against sin and will destroy sinners like a fire.”
+(See also: devour, wrath)
+Bible References:
+1 Kings 18:38-40
+Deuteronomy 7:16
+Jeremiah 3:23-25
+Job 7:9
+Numbers 11:1-3
+Word Data:
+Strong’s: H0398, H0402, H1086, H1104, H1197, H2628, H3615, H3617, H3857, H4529, H5595, H8046, H8552, G03550, G26180, G26540, G27190, G53150
+pusztít, pusztulás, megsemmisít destroy, destruction, annihilate (other, other/destroyer)
+Definition:
+The term “destroy” means to completely make an end to something, so that it no longer exists.
+The term “destroyer” means “a person who destroys.”
+This term is often used in the Old Testament as a general reference to anyone who destroys other people, such as an invading army.
+When God sent the angel to kill all the firstborn males in Egypt, that angel was referred to as “the destroyer of the firstborn.” This could be translated as “the one (or angel) who killed the firstborn males.”
+In the book of Revelation about the end times, Satan or some other evil spirit is called “the Destroyer.” He is the “one who destroys” because his purpose is to destroy and ruin everything God created.
+(See also: angel, Egypt, firstborn, Passover)
+Bible References:
+Exodus 12:23
+Hebrews 11:28
+Jeremiah 6:26
+Judges 16:24
+Word Data:
+Strong’s: H0006, H0007, H0622, H0398, H1104, H1197, H1820, H1826, H1942, H2000, H2015, H2026, H2040, H2254, H2255, H2717, H2718, H2763, H2764, H3238, H3341, H3381, H3423, H3582, H3615, H3617, H3772, H3807, H4191, H4229, H4591, H4658, H4889, H5218, H5221, H5307, H5362, H5420, H5422, H5428, H5595, H5642, H6365, H6789, H6979, H7665, H7667, H7703, H7722, H7760, H7843, H7921, H8045, H8074, H8077, H8316, H8552, G03550, G03960, G06220, G08530, G13110, G18420, G20490, G25060, G25070, G26470, G26730, G27040, G30890, G36450, G41990, G53510, G53560
+pusztít, pusztaság devastate, devastation (other, other/devastated)
+Definition:
+The term “devastated” or “devastation” refers to having one’s property or land ruined or destroyed. It also often includes destroying or capturing the people living on that land.
+This refers to a very severe and complete destruction.
+For example, the city of Sodom was devastated by God as punishment for the sins of the people living there.
+The term “devastation” can also include causing great emotional grief resulting from the punishment or destruction.
+Translation Suggestions
+The term “devastate” could be translated as “completely destroy” or “completely ruin.”
+Depending on the context, “devastation” could be translated as “complete destruction” or “total ruin” or “disaster.”
+(See also: ruin)
+Bible References:
+Daniel 8:24-25
+Jeremiah 4:13
+Numbers 21:30
+Zephaniah 1:13
+Word Data:
+Strong’s: H1110, H1238, H2721, H1826, H3615, H3772, H4875, H7701, H7703, H7722, H7843, H8074, H8077
+devour (other, other/devour)
+Definition:
+The term “devour” means to eat or consume in an aggressive manner.
+Using this word in a figurative sense, Paul warned believers to not devour one another, meaning to not attack or destroy each other with words or actions (Galatians 5:15).
+Also in a figurative sense, the term “devour” is often used with a meaning of “completely destroy” as when talking about nations devouring each other or a fire devouring buildings and people.
+This term could also be translated as “completely consume” or “totally destroy.”
+(See also: consume)
+Bible References:
+1 Peter 5:8
+Amos 1:10
+Exodus 24:17
+Ezekiel 16:20
+Luke 15:30
+Matthew 23:13-15
+Psalms 21:9
+Word Data:
+Strong’s: H0398, H0399, H0400, H0402, H1104, H1105, H3216, H3615, H3857, H3898, H7462, H7602, G20680, G26660, G27190, G53150
+pusztaság, elpusztított, puszta vidék, elgyengül waste, wasted, wasteland, becomes weak (other, other/waste)
+Definition:
+To waste something means to carelessly throw it away or to use it unwisely. Something that is a “wasteland” or a “waste” refers to land or a city that has been destroyed so that nothing lives in it anymore.
+The term “waste away” is an expression that means to become more and more sick or ruined. A person who is wasting away usually becomes very thin due to illness or lack of food.
+To “lay waste” to a city or land means to destroy it.
+Another word for a “wasteland” could be “desert” or “wilderness.” But a wasteland also implies that people used to live there and the land used to have trees and plants that produced food.
+Bible References:
+Ezekiel 6:6
+Leviticus 26:39
+Matthew 26:8
+Revelation 18:15-17
+Zechariah 7:13-14
+Word Data:
+Strong’s: H0535, H1086, H1104, H1326, H2100, H2490, H2522, H2717, H2721, H2723, H3615, H3856, H4127, H4198, H4592, H4743, H5307, H5327, H7334, H7582, H7703, H7736, H7843, H8047, H8074, H8077, H8414, G06840, G12870, G20490, G26730
+Forrás és licenc: tW_szocikkek (tw_szocikkek): CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · projekt_adat (forditasok): minden jog fenntartva

@@ -28,6 +28,10 @@ változott fájl egyik mintára sem illeszkedik, vagy a fájl törlődött/átne
 olvasható, a teljes kapu fut. A jegyzés a `git rev-parse --git-dir` alatti `push_elott_zold.json`; csak tiszta fán, teljes
 (nem `--lepes`) futás után frissül, a bukott lépésé törlődik.
 
+Olvasó-tesztek (F232, DT-F232a (b)): ha az ág az olvasó kódját érinti (`teszt_futtat.py` `_OLVASO_KOD`), a kapu a `teszt_futtat.py --diff`
+fel is futtatja az olvasó tesztjeit és az olvasói mércét (`teszt_olvasoi_merce.py`) a helyi `pardes.db`-n; piros teszttel a kapu 1-et ad.
+A mérce eltérése figyelmeztetés (a diff a futás kimenetében). Ez a lépés CSAK helyi: a CI-ben nincs teszt-adatbázis (N-F232a).
+
 A lépéslista (LEPESEK) az egyetlen forrás a helyi futáshoz; a `--ci-egyezes` (a CI-ben is fut) megbukik, ha a
 `.github/workflows/ellenorzes.yml` bukó lépései eltérnek tőle: egy Python-hívás hiányzik valamelyik oldalról, vagy egy
 állandó argumentumú hívás szövege (pl. `--szigoru`) más, a futási adattól függő hívásokból kötelező argumentum hiányzik,
@@ -176,6 +180,20 @@ def erintett_lepesek(valtozasok, lekepezes=None):
             return None, 'ismeretlen útvonal (nincs rá minta): %s -- teljes kapu' % fajl
         erintett |= ln
     return erintett, ''
+
+
+def olvaso_erintett(fajlok):
+    """F232: a változott fájlok közül az olvasó kódja (a `teszt_futtat.py` `_OLVASO_KOD` listája: az egy hely; az `adat/` és a
+    `konkordancia/` nem: azok változására az olvasó tesztjei nem indulnak, a lassúakat a `--diff` a `LASSU_LEFEDETT` szerint választja)."""
+    if os.path.dirname(os.path.abspath(__file__)) not in sys.path:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    import teszt_futtat
+    ki = []
+    for f in fajlok:
+        n = f.replace('\\', '/')
+        if any(n == e or (e.endswith('/') and n.startswith(e)) for e in teszt_futtat._OLVASO_KOD):
+            ki.append(n)
+    return ki
 
 
 def zold_utvonal():
@@ -529,6 +547,26 @@ def main():
     # 5. feladatkövetés (E18) és tesztjei
     kihagyhato(L_E18, 'E18 feladatok.py ellenoriz', [PY, 'eszkozok/feladatok.py', 'ellenoriz', '--pr-alap', alap])
     kihagyhato(L_E18, 'feladatok.py tesztek', [PY, 'eszkozok/teszt_feladatok.py'])
+
+    # 6. F232 (DT-F232a (b)): az olvasó tesztjei és mércéje helyben, a helyi `pardes.db`-n, ha az ág az olvasó kódját érinti.
+    # A CI ezeket nem futtatja (nincs teszt-adatbázis; N-F232a: útvonal-szűrt CI a TSV-ből épített DB-n), ezért ez a kapu az
+    # egyetlen védelem: piros olvasó-teszttel az ág nem jut át. A lassú fájlokat a `teszt_futtat.py --diff` választja (F188 T4).
+    # Nem része a részleges módnak (L_* lépés-azonosító): a saját feltétele a teljes alap..fej diff.
+    olvaso_fajlok = olvaso_erintett(fajlok)
+    if olvaso_fajlok:
+        print('push_elott: az olvasó kódja változott (%d fájl, pl. %s): az olvasó tesztjei futnak a helyi pardes.db-n'
+              % (len(olvaso_fajlok), olvaso_fajlok[0]))
+        _, olv_ki = fut.lepes('F232 olvasó-tesztek (teszt_futtat.py --diff)', [PY, 'eszkozok/teszt_futtat.py', '--diff', alap])
+        for s in olv_ki.splitlines():
+            if s.startswith('MÉRCE-ELTÉRÉS'):
+                print('FIGYELEM ' + s)
+        if any(s.startswith('MÉRCE-ELTÉRÉS') for s in olv_ki.splitlines()):
+            print('FIGYELEM: az olvasói mérce eltér a mostani lapoktól: szándékos változásnál a mérce frissítése '
+                  '(`teszt_olvasoi_merce.py --merce-frissit`) csak a felhasználó jóváhagyásával történhet, és a PR leírása hivatkozik rá '
+                  '(jóváhagyás nélkül a mérce eltérése figyelmeztetés marad, a diffet a fenti MÉRCE-ELTÉRÉS sorok mutatják).')
+    if any(f.replace('\\', '/').startswith('eszkozok/olvaso_szerver/merce/') for f in fajlok):
+        print('FIGYELEM: az olvasói mérce fájljai változtak (eszkozok/olvaso_szerver/merce/): a PR leírása hivatkozzon a felhasználó '
+              'jóváhagyására (F232 2.2).')
 
     # F223: a zöld jegyzés frissítése (csak tiszta fán, nem `--lepes` futás után): a rendben lefutott lépés a mostani fejen
     # zöld, a bukott lépés jegyzése törlődik, a kihagyotté marad

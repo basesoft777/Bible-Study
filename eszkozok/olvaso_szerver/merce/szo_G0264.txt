@@ -1,0 +1,209 @@
+# F232 olvasói pillanatkép: /szo/G0264
+# A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
+# Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
+PaRDeS olvasó
+⌕
+⚙
+▸ Rétegek
+▸ Interlineáris sor
+▸ Szint nyilvanos regisztralt kutato
+▸ Téma
+▸ Rendszer Világos Sötét
+G0264 ἁμαρτάνω
+hamartanó · to sin
+Alapjelentés vétkezni
+szó-lap önálló címen · előfordulások versenként
+## [szo.tbesg]
+TBESG forrásadat modell-kimenet
+Szó | Átírás | Gloss
+ἁμαρτάνω | hamartanō | vétkezni to sin
+ἁμαρτάνω (present formed from aor. ἁμαρτεῖν), [in LXX for חָטָא, also for אָשַׁם, רָשַׁע, etc. ;] 1. to miss the mark (Hom., Æsch., al.), hence metaphorically (Hom., al.), to err, do wrong 2. In LXX and NT, to violate God's law, to sin (for non-Christian exx., see MM, VGT, see word): absol., Mat.18:25 27:4, Luk.17:3, Jhn.5:14 8:11 9:2-3 Rom.2:12 3:23 5:12, 14 5:16 6:15, 1Co.7:28 7:36 15:34, Eph.4:26, 1Ti.5:20, Tit.3:11, Heb.3:17 10:26, 1Pe.2:20, 2Pe.2:4 2:4 1Jn.1:10 Jn 2:1 Jn 3:6-9 Jn 5:18; with cogn. accusative, ἁ. ἁμαρτίαν (cf. Exo.32:30, חֲטָאָה חָטָא), 1Jn.5:16; before εἰς, Mat.18:21, Luk.15:18, 21 17:4, Act.25:8 (καίσαρα). 1Co.6:18 8:12 (Field, Notes, 173); ἐνώπιον, Luk.15:18, 21; πρὸς θάνατον (cf. Num.18:22, מוּת חֵטְא), 1Jn.5:16 (Cremer, 98, 633).† (AS)
+Forrás és licenc: TBESG (tbesg): CC BY 4.0 · projekt_adat (forditasok): minden jog fenntartva
+## [szo.thayer]
+Thayer (angol) forrásadat
+G264 — ἁμαρτάνω future ἁμαρτήσω (Mat 18:21; Rom 6:15; in the latter passage L T Tr WH give ἁμαρτήσωμεν for R G ἁμαρτήσομεν), in classical Greek ἁμαρτήσομαι; 1 aorist (later) ἡμάρτησα, Mat 18:15; Rom 5:14, Rom 5:16 (cf. Winers Grammar, 82 (79); Buttmann, 54 (47)); 2 aorist ἥμαρτον; perfect ἡμάρτηκα; (according to a conjecture of Alexander Buttmann (1873), Lexil. i., p. 137, from the alpha privative and μείρω, μείρομαι, μέρος, properly, to be without a share in, namely, the mark); properly, to miss the mark, (Homer, Iliad 8, 311, etc.; with the genitive of the thing missed, Homer, Iliad 10, 372; 4, 491; τοῦ σκοποῦ, Plato, Hipp. min., p. 375 a.; τῆς ὁδοῦ, Aristophanes Plutarch, 961, others); then to err, be mistaken; lastly to miss or wander from the path of uprightness and honor, to do or go wrong. ("Even the Sept., although the Hebrew חָטָא also means primarily to miss, endeavor to reserve ἁμαρτάνω exclusively for the idea of sin: and where the Hebrew signifies to miss one's aim in the literal sense, they avail themselves of expressive compounds, in particular ἐξαμαρτάνειν, Jdg 20:16." Zezschwitz, Profangraec, u. Biblical Sprachgeist, p. 63f) In the N. T. to wander from the law of God, violate God's law, sin; a. absolutely: Mat 27:4; Joh 5:14; Joh 8:11; Joh 9:2; 1Jo 1:10; 1Jo 2:1; 1Jo 3:6, 1Jo 3:8; 1Jo 5:18; Rom 2:12; Rom 3:23; Rom 5:12, Rom 5:14, Rom 5:16; Rom 6:15; 1Co 7:28, 1Co 7:36; 1Co 15:34; Eph 4:26; 1Ti 5:20; Tit 3:11; Heb 3:17; Heb 10:26 (ἑκουσίως); (2Pe 2:4); of the violation of civil laws, which Christians regard as also the transgression of divine law, 1Pe 2:20. b. ἁμαρτάνειν ἁμαρτίαν to commit (literally, sin) a sin, 1Jo 5:16 (μεγάλην ἁμαρτίαν, Exo 32:30f. Hebrew חֲטָאָה חָטָא; αἰσχρὰν ἁμαρτάνω Sophocles Phil. 1249; μεγάλα ἁμαρτήματα ἁμαρτάνειν, Plato, Phaedo, p. 113 e.); cf. ἀγαπάω, under the end ἁμαρτάνειν εἰς τινα (Buttmann, 173 (150); Winer's Grammar, 233 (219)): Mat 18:15 (L T WH omit; Tr marginal reading brackets εἰς σε), Mat 18:21; Luk 15:18, Luk 15:21; Luk 17:3 Rec., 4; 1Co 8:12; τί εἰς Καίσαρα, Act 25:8; εἰς τό ἴδιον σῶμα, 1Co 6:18 (εἰς αὑτούς τέ καί εἰς ἄλλους, Plato, rep. 3, p. 396 a.; εἰς τό θεῖον, Plato, Phaedr., p. 242 c.; εἰς Θεούς, Xenophon, Hell. 1, 7, 19, etc.; (cf. ἁμαρτάνω κυρίῳ Θεῷ, Baruch 1:13 Baruch 2:5)); Hebraistically, ἐνώπιον (לִפְּנֵי) τίνος (Buttmann, § 146, 1) in the presence of, before anyone, the one wronged by the sinful act being, as it were, present and looking on: Luk 15:18, Luk 15:21 (1Sa 7:6; Tobit 3:3, etc.; (cf. ἔναντι κυρίου, Baruch 1:17)). (For references see ἁμαρτία. Compare: προαμαρτάνω).
+Forrás és licenc: Thayer (thayer): közkincs
+## [szo.magyar_gorog]
+Magyar jelentés (Thayer, UBS DNTG) modell-kimenet gépi feldolgozás
+Magyar fordítás nincs · az angol eredeti áll.
+Forrás és licenc: projekt_adat (forditasok): minden jog fenntartva
+## [szo.usz]
+ÚSZ-előfordulás és versek forrásadat
+43 előfordulás 37 versben.
+Igehely | Károli-szöveg
+Mt 18:15 | Ha pedig a te atyádfia vétkezik ellened, menj el és dorgáld meg őt négy szem között: ha hallgat rád, megnyerted a te atyádfiát;
+Mt 18:21 | Ekkor hozzámenvén Péter, monda: Uram, hányszor lehet az én atyámfiának ellenem vétkezni, és néki megbocsátanom? még hétszer is?
+Mt 27:4 | Mondván: Vétkeztem, hogy elárultam az ártatlan vért. Azok pedig mondának: Mi közünk hozzá? Te lássad.
+Luk 15:18 | Fölkelvén elmegyek az én atyámhoz, és ezt mondom néki: Atyám, vétkeztem az ég ellen és te ellened.
+Luk 15:21 | És monda néki a fia: Atyám, vétkeztem az ég ellen és te ellened; és nem vagyok immár méltó, hogy a te fiadnak hivattassam!
+Forrás és licenc: TAHOT+TAGNT (token_strong): CC BY 4.0 · Karoli_1908 (vers): közkincs
+## [szo.heber_hatter]
+Héber háttér (Septuaginta) forrásadat
+Héber Strong | Szótő | Jelentés | Darab
+H2398 | חָטָא | to sin | 118
+H2400 | חַטָּא | sinner | 4
+H0816 | אָשַׁם | be guilty | 3
+Forrás és licenc: lxx_bridge (lxx_bridge): CC BY 4.0
+## [szo.sdgnt]
+Szemantikai domén (SDGNT) forrásadat üres eredmény nem negatív lelet
+Domén kód | Domén | Glossza | Hivatkozás
+088038 | Sin, Wrongdoing, Guilt | to sin; to engage in wrongdoing; sin | 43
+Forrás és licenc: SDGNT (sdgnt_domenek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+## [szo.sece_g]
+SECE-szócikk (görög) forrásadat
+ἁμαρτάνω (hamartánō｜ham-ar-tan'-o｜verb｜to sin) [Grk] ἁμαρτάνω LN: 88.289 GK: G279 Hebrew: אָשַׁם, חָטָא, מָעַל, עָוֺן, עָשָׂה, פָּשַׁע, רָשַׁע, שָׁחַת Derivation: perhaps from Α (as a negative particle) and the base of μέρος; Strong's: properly, to miss the mark (and so not share in the prize), i.e. (figuratively) to err, especially (morally) to sin KJV: --for your faults, offend, sin, trespass. See: Α See: μέρος
+Forrás és licenc: SECE_G (sece_g): közkincs
+## [szo.lsj]
+LSJ forrásadat
+ἁμαρτάνω [ ᾰμ.. ᾰν ]: fut. ἁμαρτήσομαι Od. 9.512, Th. 4.55, etc.; later -ήσω Mat 18:21, D.C. 59.20, Gal. 7.653, (δι-) Hp. Praec. 9, (ἐξ-) Id. Acut. (Sp.) 13: aor. 2 ἥμαρτον Thgn., Pi., Att.; ἤμβροτον, but only ind.; Aeol. 3 sg. ἄμβροτε Sapph. Supp. 1.5, inf. ἀμβρότην IG 12(2).1.15 (Mytilene); opt. ἁμάρτοιν (for ἁμάρτοιμι) Cratin. 55 (dub.): aor. 1 ἡμάρτησα Emp. 115.4 (dub.), AP 7.339 (Pall. or Luc.), D.S. 2.14: pf. ἡμάρτηκα Hdt. 9.79, Ar. Pl. 961, etc., Att.: - Pass., aor. ἡμαρτήθην Th. 2.65, X. Vect. 4.37: pf. ἡμάρτημαι S. OC 439, Antipho 5.77, etc.: plpf. ἡμάρτητο Th. 7.18, Lys. 31.20: - 1. miss the mark, esp. of spear thrown, abs., Il. 5.287, etc.; ἔρριψεν, οὐδ’ ἥμαρτε A. Fr. 80: c. gen., φωτὸς ἁ. Il. 10.372; also τῶν μεγάλων ψυχῶν ἱεὶς οὐκ ἂν ἁμάρτοις S. Aj. 155; ἁ. τῆς ὁδοῦ miss road, Ar. Pl. 961; τοῦ σκοποῦ Antipho 3.4.5. 2. generally, fail of one’s purpose, go wrong, abs., Od. 21.155, A. Ag. 1194, etc.: c. gen., οὔ τι νοήματος ἤμβροτεν ἐσθλοῦ Od. 7.292; μύθων ἡμάρτανε failed of good speech, 11.511; γνώμης, ἐλπίδων, βουλήσεως ἁ., Hdt. 1.207, E. Med. 498, Th. 1.33, 92; ἁ. τοῦ χρησμοῦ mistake it, Hdt. 1.71: c. acc., ἁ. τὸ ἀληθές Hdt. 7.139 (codd., τἀληθέος Schäfer). 3. fail of having, be deprived of, mostly c. gen., χειρῶν ἐξ Ὀδυσῆος ἁμαρτήσεσθαι ὀπωπῆς that I should lose my sight by Ulysses’ hands, Od. 9.512; τοῦ ῥυσίου θ’ ἥμαρτε A. Ag. 535; ἁ. πιστῆς ἀλόχου E. Alc. 879, cf. 144: - once with neut. Adj., οὐ γὰρ εἰκὸς.. ἐμὲ ὑμῶν ἁμαρτεῖν τοῦτό γ’ ’tis not seemly that I should ask this of you in vain, S. Ph. 231: - rare in Prose, ἡμάρτομεν τῆς Βοιωτίης Hdt. 9.7. β, cf. Th. 7.50; δυοῖν κακοῖν οὐκ ἦν ἁμαρτεῖν (i.e. either one or the other) And. 1.20, cf. S. El. 1320: - so μηδὲ δυοῖν φθάσαι ἁμάρτωσιν, ἢ.. ἢ.. fail to be before-hand in one of two things, Th. 1.33. 4. rarely, fail to do, neglect, φίλων ἡμάρτανε δώρων Il. 24.68; ξυμμαχίας ἁμαρτών A. Ag. 213. II abs., 1. do wrong, err, sin, Il. 9.501, Semon. 7.111, A. Pr. 262, S. El. 1207, etc.; ἄκοντες ἡμαρτάνομεν Pl. R. 336e, cf. 340e, etc.: - c. part., ἥμαρτε χρηστὰ μωμένη S. Tr. 1136; πρόθυμος ὢν ἥμαρτες E. Or. 1630, cf. Antipho 2.2.1: c. dat. rei, ἁ. ῥήματι Pl. Grg. 489b; ἐν λόγοις Id. R. 396a; τοιαῦθ’ ἁμαρτάνουσιν ἐν λόγοις ἔπη S. Aj. 1096: - with cognate acc., ἁμαρτίαν ἁ. S. Ph. 1249, E. Hipp. 320: with neut. Adj. or Pron., αὐτὸς ἐγὼ τόδε γ’ ἤμβροτον I erred in this, Od. 22.154; πόλλ’ ἁμαρτών A. Supp. 915; ἀνθρώπινα X. Cyr. 3.1.40: in Prose more freq. ἁ. περί τινος or τι do wrong in a matter, Pl. Lg. 891e, Phdr. 242e; ἐπί τινι Antipho 5.91 (codd.); ἁ. εἴς τινα sin against.., Hdt. 1.138, S. OC 968; ἐπὶ τὴν ἔλλειψιν, ἐπὶ τὸ πλεῖον, Arist. EN 1126b1, 1118b16; περί τινα Antipho 3.2.7; τινί LXX Jd. 10.10. 2. Pass., ἡμαρτήθη ὁ ἐς Σικελίαν πλοῦς Th. 2.65, etc.: in pf. part., τἀμὰ δ’ ἡμαρτημένα my plans are frustrate, S. OT 621; τῶν περὶ τὰ τοιαῦτα ἐς τὰ θεῖα ἁμαρτανομένων Pl. Lg. 759c; ἀπειρίἁ αὐτὸ μᾶλλον ἢ ἀδικία ἡμαρτῆσθαι Antipho 5.5: - τὰ ἡμαρτημένα, τὰ ἁμαρτηθέντα, S. OC 439, 1269, X. An. 5.8.20. 3. ἁμαρτανόμενος, as Adj., wrong, mistaken, Pl. Phlb. 37d, al.; αἱ ἡμαρτημέναι πολιτεῖαι Id. R. 449a, Arist. Pol. 1275b1, 1301a36; and of persons, ἡμαρτημένοι mistaken, Id. EN 1125a19.
+Forrás és licenc: LSJ (lsj): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+## [szo.mcged]
+MCGED (Mounce) forrásadat nem kereskedelmi: kereskedelmi kiadásból kimarad
+GK-szám | Lemma | Átírat | Gyakoriság | Glossza
+G50279 | αμαρτανω | hamartanō | 43 | pr. to miss a mark; to be in error, 1Cor 15:34 ; Titus 3:11 ; to sin, John 5:14 ; to be guilty of wrong, Matt 18:15
+Forrás és licenc: MCGED (mcged): © Mounce 1993 [nem kereskedelmi]
+## [szo.ubs_dntg]
+UBS DNTG jelentés forrásadat
+Azonosító | Domén | Rövid definíció | Glosszák
+000262001001000 | Sin, Wrongdoing, Guilt | to act contrary to the will and law of God | to sin; to engage in wrongdoing; sin
+Előfordulások (az első 40)
+000262001001000: 1Ján 1:10
+000262001001000: 1Ján 2:1
+000262001001000: 1Ján 2:1
+000262001001000: 1Ján 3:6
+000262001001000: 1Ján 3:6
+000262001001000: 1Ján 3:8
+000262001001000: 1Ján 3:9
+000262001001000: 1Ján 5:16
+000262001001000: 1Ján 5:16
+000262001001000: 1Ján 5:18
+000262001001000: 1Kor 15:34
+000262001001000: 1Kor 6:18
+000262001001000: 1Kor 7:28
+000262001001000: 1Kor 7:28
+000262001001000: 1Kor 7:36
+000262001001000: 1Kor 8:12
+000262001001000: 1Kor 8:12
+000262001001000: 1Pét 2:20
+000262001001000: 1Tim 5:20
+000262001001000: 2Pét 2:4
+000262001001000: ApCsel 25:8
+000262001001000: Ef 4:26
+000262001001000: Ján 5:14
+000262001001000: Ján 8:11
+000262001001000: Ján 9:2
+000262001001000: Ján 9:3
+000262001001000: Luk 15:18
+000262001001000: Luk 15:21
+000262001001000: Luk 17:3
+000262001001000: Luk 17:4
+000262001001000: Mt 18:15
+000262001001000: Mt 18:21
+000262001001000: Mt 27:4
+000262001001000: Róm 2:12
+000262001001000: Róm 2:12
+000262001001000: Róm 3:23
+000262001001000: Róm 5:12
+000262001001000: Róm 5:14
+000262001001000: Róm 5:16
+000262001001000: Róm 6:15
+Forrás és licenc: UBS_DNTG (ubs_dntg_jelentesek): CC BY-SA 4.0 [share-alike]
+## [szo.tw_g]
+translationWords forrásadat modell-kimenet
+bűn, bűnös, bűnös ember, vétkezés sin, sinful, sinner, sinning (kt, kt/sin)
+Definition:
+The term “sin” refers to actions, thoughts, and words that are against God’s will and laws. Sin can also refer to not doing something that God wants us to do.
+Sin includes anything we do that does not obey or please God, even things that other people do not know about.
+Thoughts and actions that disobey God’s will are called “sinful.”
+Because Adam sinned, all human beings are born with a “sinful nature,” a nature that that controls them and causes them to sin.
+A “sinner” is someone who sins, so every human being is a sinner.
+Sometimes the word “sinners” was used by religious people like the Pharisees to refer to people who did not keep the law as well as the Pharisees thought they should.
+The term “sinner” was also used for people who were considered to be worse sinners than other people. For example, this label was given to tax collectors and prostitutes.
+Translation Suggestions:
+The term “sin” could be translated with a word or phrase that means “disobedience to God” or “going against God’s will” or “evil behavior and thoughts” or “wrongdoing.”
+To “sin” could also be translated as to “disobey God” or to “do wrong.”
+Depending on the context “sinful” could be translated as “full of wrongdoing” or “wicked” or “immoral” or “evil” or “rebelling against God.”
+Depending on the context the term “sinner” could be translated with a word or phrase that means “person who sins” or “person who does wrong things” or “person who disobeys God” or “person who disobeys the law.”
+The term “sinners” could be translated by a word or phrase that means “very sinful people” or “people considered to be very sinful” or “immoral people.”
+Ways to translate “tax collectors and sinners” could include “people who collect money for the government, and other very sinful people” or “very sinful people, including (even) tax collectors.”
+Make sure the translation of this term can include sinful behavior and thoughts, even those that other people do not see or know about.
+The term “sin” should be general, and different from the terms for “wickedness” and “evil.”
+(See also: disobey, evil, flesh, tax collector)
+Bible References:
+1 Chronicles 9:1-3
+1 John 1:10
+1 John 2:2
+2 Samuel 7:12-14
+Acts 3:19
+Daniel 9:24
+Genesis 4:7
+Hebrews 12:2
+Isaiah 53:11
+Jeremiah 18:23
+Leviticus 4:14
+Luke 15:18
+Matthew 12:31
+Romans 6:23
+Romans 8:4
+Examples from the Bible stories:
+3:15 God said, “I promise I will never again curse the ground because of the evil things people do, or destroy the world by causing a flood, even though people are sinful from the time they are children.”
+13:12 God was very angry with them because of their sin and planned to destroy them.
+20:1 The kingdoms of Israel and Judah both sinned against God. They broke the covenant that God made with them at Sinai.
+21:13 The prophets also said that the Messiah would be perfect, having no sin. He would die to receive the punishment for other people’s sin.
+35:1 One day, Jesus was teaching many tax collectors and other sinners who had gathered to hear him.
+38:5 Then Jesus took a cup and said, “Drink this. It is my blood of the New Covenant that is poured out for the forgiveness of sins.”
+43:11 Peter answered them, “Every one of you should repent and be baptized in the name of Jesus Christ so that God will forgive your sins.”
+48:8 We all deserve to die for our sins!
+49:17 Even though you are a Christian, you will still be tempted to sin. But God is faithful and says that if you confess your sins, he will forgive you. He will give you strength to fight against sin.
+Word Data:
+Strong’s: H0817, H0819, H2398, H2399, H2400, H2401, H2402, H2403, H2408, H2409, H5771, H6588, H7683, H7686, G02640, G02650, G02660, G02680, G03610, G37810, G39000, G42580
+trespass (kt, kt/trespass)
+Definition:
+The term “trespass” means to cross a line or to violate a boundary. This term is often used figuratively, meaning to break a law or to violate the rights of another person.
+This term is very similar to the word “transgression,” but is generally used more often to describe violations against other people than against God.
+A trespass can be a violation of a moral law or a civil law.
+A trespass can also be a sin committed against another person.
+This term is related to the terms “sin” and “transgress,” especially as it relates to disobeying God. All sins are trespasses against God.
+Translation Suggestions:
+Depending on the context, to “trespass against” could be translated as to “sin against” or to “break the rule.”
+Some languages may have an expression like “cross the line” that could be used to translate “trespass.”
+Consider how this term fits with the meaning of the surrounding Bible text and compare it to other terms that have a similar meaning, such as “transgress” and “sin.”
+(See also: disobey, iniquity, sin, transgress)
+Bible References:
+1 Samuel 25:28
+2 Chronicles 26:16-18
+Colossians 2:13
+Ephesians 2:1
+Ezekiel 15:7-8
+Romans 5:17
+Romans 5:20-21
+Word Data:
+Strong’s: H0816, H0817, H0819, H2398, H4603, H4604, H6586, H6588, G02640, G39000
+elkövet, elkövetett commit, committed (other, other/commit)
+Definition:
+In the Bible the terms “commit” and “committed” most often refer to doing a certain wrong action such as “commit a sin” or “commit adultery” or “commit murder.”
+(See also: adultery, sin)
+Bible References:
+1 Chronicles 28:7
+1 Peter 2:21-23
+Jeremiah 2:12-13
+Matthew 13:41
+Psalm 58:2
+Word Data:
+Strong’s: H0539, H0817, H1361, H1497, H1500, H1540, H1556, H2181, H2388, H2398, H2399, H2403, H4560, H4603, H5003, H5753, H5766, H5771, H6213, H6466, H7683, H7760, H7847, G02640, G20380, G27160, G34290, G34310, G38600, G38720, G39080, G41020, G41600, G42030
+helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó wrong, wronged, wrongdoer, mistreat, hurt, hurtful (other, other/wrong)
+Definition:
+To “wrong” someone means to treat that person unjustly and dishonestly.
+The term “mistreat” means to act badly or roughly toward someone, causing physical or emotional harm to that person.
+The term “hurt” is more general and means to “cause someone harm in some way.” It often has the meaning of “physically injure.”
+Depending on the context, these terms could also be translated as “do wrong to” or “treat unjustly” or “cause harm to” or “treat in a harmful way” or “injure.”
+Bible References:
+Acts 7:26
+Exodus 22:21
+Genesis 16:5
+Luke 6:28
+Matthew 20:13-14
+Psalms 71:13
+Word Data:
+Strong’s: H0205, H0816, H2248, H2250, H2255, H2257, H2398, H2554, H2555, H3238, H3637, H4834, H5062, H5142, H5230, H5627, H5753, H5766, H5791, H5792, H5916, H6031, H6087, H6127, H6231, H6485, H6565, H6586, H7451, H7489, H7563, H7665, H7667, H7686, H8133, H8267, H8295, G00910, G00920, G00930, G00950, G02640, G08240, G09830, G09840, G15360, G16260, G16510, G17270, G19080, G25560, G25580, G25590, G26070, G30760, G30770, G37620, G41220, G51950, G51960
+Forrás és licenc: tW_szocikkek (tw_szocikkek): CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · projekt_adat (forditasok): minden jog fenntartva

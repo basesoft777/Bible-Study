@@ -1,0 +1,216 @@
+# F232 olvasói pillanatkép: /1Moz/1/1
+# A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
+# Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
+Navigáció✕
+PaRDeS olvasó
+Károli 1908 · 1Móz 1 ▾
+▸ Biblia és könyv kiválasztása
+▸ Biblia
+▸ Magyar Károli 1908alapnézet · StrongModernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · StrongGörög ÚjszövetségTAGNT · StrongSeptuagintagörög Ószövetség · Strong
+▸ Angol KJVStrong
+▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
+▸ Könyv
+▸ Törvény
+▸ 1Móz2Móz3Móz4Móz5Móz
+▸ Történeti könyvek
+▸ JózsBírRuth1Sám2Sám1Kir2Kir1Krón2KrónEzsdNehEszt
+▸ Költői és bölcsességi könyvek
+▸ JóbZsoltPéldPrédÉn
+▸ Nagypróféták
+▸ ÉzsJerSirEzDán
+▸ Kispróféták
+▸ HósJóelÁmósAbdJónMikNáhHabSofHagZakMal
+▸ Evangéliumok és Apostolok Cselekedetei
+▸ MtMkLukJánApCsel
+▸ Pál levelei
+▸ Róm1Kor2KorGalEfFilKol1Thessz2Thessz1Tim2TimTitFilem
+▸ Általános levelek
+▸ ZsidJak1Pét2Pét1Ján2Ján3JánJúd
+▸ Jelenések
+▸ Jel
+▸ Mózes első könyve · fejezetek
+▸ 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950
+⌕
+›
+Aa
+▸ Betűméret 100%
+▸ A−A+
+▸ Sorköz
+▸ szűkközepestág
+▸ Betűcsalád
+▸ Source SerifNoto SerifIBM Plex Sans
+▸ Sorszélesség
+▸ keskenyközepesszélesteljes
+▸ Versenként új sor Alapértékek
+Strong számokStrong
+Tanulmányok jelölése
+⚙
+▸ Rétegek
+▸ Interlineáris sor
+▸ Szint nyilvanos regisztralt kutato
+▸ Téma
+▸ Rendszer Világos Sötét
+⌕
+Mózes első könyve 1
+Mózes első könyve 2. fejezet → Forrás és számlálók
+1Kezdetben teremté Isten az eget és a földet. 2A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett. 3És monda Isten: Legyen világosság: és lőn világosság. 4És látá Isten, hogy jó a világosság; és elválasztá Isten a világosságot a setétségtől. 5És nevezé Isten a világosságot nappalnak, és a setétséget nevezé éjszakának: és lőn este és lőn reggel, első nap. 6És monda Isten: Legyen mennyezet a víz között, a mely elválaszsza a vizeket a vizektől. 7Teremté tehát Isten a mennyezetet, és elválasztá a mennyezet alatt való vizeket, a mennyezet felett való vizektől. És úgy lőn. 8És nevezé Isten a mennyezetet égnek: és lőn este, és lőn reggel, második nap. 9És monda Isten: Gyűljenek egybe az ég alatt való vizek egy helyre, hogy tessék meg a száraz. És úgy lőn. 10És nevezé Isten a szárazat földnek; az egybegyűlt vizeket pedig tengernek nevezé. És látá Isten, hogy jó. 11Azután monda Isten: Hajtson a föld gyenge fűvet, maghozó fűvet, gyümölcsfát, a mely gyümölcsöt hozzon az ő neme szerint, a melyben legyen néki magva e földön. És úgy lőn. 12Hajta tehát a föld gyenge fűvet, maghozó fűvet az ő neme szerint, és gyümölcstermő fát, a melynek gyümölcsében mag van az ő neme szerint. És látá Isten, hogy jó. 13És lőn este és lőn reggel, harmadik nap. 14És monda Isten: Legyenek világító testek az ég mennyezetén, hogy elválaszszák a nappalt az éjszakától, és legyenek jelek, és meghatározói ünnepeknek, napoknak és esztendőknek. 15És legyenek világítókul az ég mennyezetén hogy világítsanak a földre. És úgy lőn. 16Teremté tehát Isten a két nagy világító testet: a nagyobbik világító testet, hogy uralkodjék nappal és a kisebbik világító testet, hogy uralkodjék éjjel; és a csillagokat. 17És helyezteté Isten azokat az ég mennyezetére, hogy világítsanak a földre; 18És hogy uralkodjanak a nappalon és az éjszakán, és elválaszszák a világosságot a setétségtől. És látá Isten, hogy jó. 19És lőn este és lőn reggel, negyedik nap. 20És monda Isten: Pezsdűljenek a vizek élő állatok nyüzsgésétől; és madarak repdessenek a föld felett, az ég mennyezetének színén. 21És teremté Isten a nagy vízi állatokat, és mindazokat a csúszó-mászó állatokat, a melyek nyüzsögnek a vizekben az ő nemök szerint, és mindenféle szárnyas repdesőt az ő neme szerint. És látá Isten, hogy jó. 22És megáldá azokat Isten, mondván: Szaporodjatok, és sokasodjatok, és töltsétek be a tenger vizeit; a madár is sokasodjék a földön. 23És lőn este és lőn reggel, ötödik nap. 24Azután monda az Isten: Hozzon a föld élő állatokat nemök szerint: barmokat, csúszó-mászó állatokat és szárazföldi vadakat nemök szerint. És úgy lőn. 25Teremté tehát Isten a szárazföldi vadakat nemök szerint, a barmokat nemök szerint, és a földön csúszó-mászó mindenféle állatokat nemök szerint. És látá Isten, hogy jó. 26És monda Isten: Teremtsünk embert a mi képünkre és hasonlatosságunkra; és uralkodjék a tenger halain, az ég madarain, a barmokon, mind az egész földön, és a földön csúszó-mászó mindenféle állatokon. 27Teremté tehát az Isten az embert az ő képére, Isten képére teremté őt: férfiúvá és asszonynyá teremté őket. 28És megáldá Isten őket, és monda nékik Isten: Szaporodjatok és sokasodjatok, és töltsétek be a földet és hajtsátok birodalmatok alá; és uralkodjatok a tenger halain, az ég madarain, és a földön csúszó-mászó mindenféle állatokon. 29És monda Isten: Ímé néktek adok minden maghozó fűvet az egész föld színén, és minden fát, a melyen maghozó gyümölcs van; az legyen néktek eledelül. 30A föld minden vadainak pedig, és az ég minden madarainak, és a földön csúszó-mászó mindenféle állatoknak, a melyekben élő lélek van, a zöld fűveket adom eledelűl. És úgy lőn. 31És látá Isten, hogy minden a mit teremtett vala, ímé igen jó. És lőn este és lőn reggel, hatodik nap.
+1Móz 1:1 Kezdetben teremté Isten az eget és a földet.
+⤢ ✕
+1Móz 1:1
+Vers Kereszthiv. Témák Motívum
+## [vers.karoli]
+Károli-szöveg forrásadat
+Kezdetben teremté Isten az eget és a földet.
+Forrás és licenc: Karoli_1908 (vers): közkincs
+## [vers.heber_csempe]
+Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
+Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.
+בְּinH9003elöljáróἐν
+רֵאשִׁ֖יתberésítbeginningH7225főnév, köznév, nőnem, egyes szám, abszolútἀρχῇ
+בָּרָ֣אbáráhe createdH1254ige, qal, perfectum (qatal), harmadik személy, hímnem, egyes számἐποίησεν
+אֱלֹהִ֑יםelóhímGodH0430főnév, köznév, hímnem, többes szám, abszolútθεὸς
+אֵ֥תét<obj.>H0853partikula, tárgyjelLXX: —
+הַtheH9009partikula, határozott névelőτὸν
+שָּׁמַ֖יִםhassámajimheavensH8064főnév, köznév, hímnem, többes szám, abszolútοὐρανὸν
+וְandH9002kötőszóκαὶ
+אֵ֥תveét<obj.>H0853partikula, tárgyjelLXX: —
+הָtheH9009partikula, határozott névelőτὴν
+אָֽרֶץháárecearthH0776főnév, köznév, mindkettő (főnév), egyes szám, abszolútγῆν
+Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · LXX_OS (lxx_token): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+## [vers.lxx_csempe]
+Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
+A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.
+ἐνG1722ἀρχῇG0746ἐποίησενG4160ὁG3588θεὸςG2316τὸνG3588οὐρανὸνG3772καὶG2532τὴνG3588γῆνG1093
+Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
+## [vers.par]
+Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
+Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság
+1 | Kezdetben | בְּ | H9003 | magas
+1 | Kezdetben | רֵאשִׁ֖ית | H7225 | magas
+2 | teremté | בָּרָ֣א | H1254 | magas
+3 | Isten | אֱלֹהִ֑ים | H0430 | magas
+5 | eget | שָּׁמַ֖יִם | H8064 | magas
+6 | és | וְ | H9002 | magas
+8 | földet | אָֽרֶץ | H0776 | magas
+Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0
+## [vers.eredeti]
+Eredeti szavak (TAHOT / TAGNT) forrásadat
+# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
+1 | בְּ | | H9003 | ב | in | in
+2 | רֵאשִׁ֖ית | berésít | H7225 | רֵאשִׁית | first | beginning
+3 | בָּרָ֣א | bárá | H1254 | בָּרָא | to create | he created
+4 | אֱלֹהִ֑ים | elóhím | H0430 | אֱלֹהִים | LORD | God
+5 | אֵ֥ת | ét | H0853 | אֵת | [Obj.] | <obj.>
+6 | הַ | | H9009 | ה | the | the
+7 | שָּׁמַ֖יִם | hassámajim | H8064 | שָׁמַיִם | heaven | heavens
+8 | וְ | | H9002 | ו | and | and
+9 | אֵ֥ת | veét | H0853 | אֵת | [Obj.] | <obj.>
+10 | הָ | | H9009 | ה | the | the
+11 | אָֽרֶץ | háárec | H0776 | אֶ֫רֶץ | land | earth
+Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0
+## [vers.macula_morf]
+Igealak-kód és szófaj (Macula) forrásadat
+Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss
+בְּ | בְּ | | R | preposition | in
+רֵאשִׁ֖ית | רֵאשִׁית | H7225 | Ncfsa | noun | beginning
+בָּרָ֣א | בָּרָא | H1254 | Vqp3ms | verb | he.created
+אֱלֹהִ֑ים | אֱלֹהִים | H0430 | Ncmpa | noun | God
+אֵ֥ת | אֵת | H0853 | To | particle | (et)
+הַ | הַ | | Td | particle | the
+שָּׁמַ֖יִם | שָׁמַיִם | H8064 | Ncmpa | noun | heavens
+וְ | וְ | | C | conjunction | and
+אֵ֥ת | אֵת | H0853 | To | particle | (et)
+הָ | הַ | | Td | particle | the
+אָֽרֶץ | אֶרֶץ | H0776 | Ncbsa | noun | earth
+Forrás és licenc: Macula_heber (token_macula): CC BY 4.0
+## [vers.macula_gorog]
+Héber–görög párosítás szavanként (Macula) forrásadat
+Héber szó | Gloss | Görög (Macula) | Görög Strong
+בְּ | in | ἐν | G1722
+רֵאשִׁ֖ית | beginning | ἀρχῇ | G0746
+בָּרָ֣א | he.created | ἐποίησεν | G4160
+אֱלֹהִ֑ים | God | θεὸς | G2316
+הַ | the | τὸν | G3588
+שָּׁמַ֖יִם | heavens | οὐρανὸν | G3772
+וְ | and | καὶ | G2532
+הָ | the | τὴν | G3588
+אָֽרֶץ | earth | γῆν | G1093
+Forrás és licenc: Macula_heber (token_macula): CC BY 4.0
+## [vers.lxx_szavak]
+Görög szóalak és LXX-vers szavai (LXX_OS) forrásadat
+Szóalak | Lemma | Strong | Morf
+ἐν | ἐν | G1722 | preposition
+ἀρχῇ | ἀρχή | G0746 | noun fem dat sg
+ἐποίησεν | ποιέω | G4160 | verb aor ind act 3rd sg
+ὁ | ὁ | G3588 | article masc nom sg
+θεὸς | θεός | G2316 | noun masc nom sg
+τὸν | ὁ | G3588 | article masc acc sg
+οὐρανὸν | οὐρανός | G3772 | noun masc acc sg
+καὶ | καί | G2532 | conjunction
+τὴν | ὁ | G3588 | article fem acc sg
+γῆν | γῆ | G1093 | noun fem acc sg
+Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
+## [vers.lxx_versszam]
+LXX-versszám forrásadat
+Forrás | LXX-versszám
+LXX_OS | Genesis 1:1
+Forrás és licenc: LXX_OS+Versifikacios_tablak+Karoli_versmegfeleltetes (lxx_versszam): CC BY 4.0; minden jog fenntartva
+## [vers.versszamozas]
+Versszámozás (MT / KJV) forrásadat
+Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása
+KJV | 1:1 | 1:1 | szamlalas
+Forrás és licenc: Karoli_versmegfeleltetes+BSB_Strongs (vers_szamozas): minden jog fenntartva; CC0 1.0
+## [vers.bsb]
+Angol szavak szavanként (BSB) forrásadat gépi feldolgozás
+In the beginningH7225GodH0430—H0853createdH1254the heavensH8064andH0853the earthH0776
+Forrás és licenc: BSB_Strongs (bsb): CC0 1.0
+## [vers.kjv]
+Angol szavak szavanként (KJV + Strong) forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
+beginningH7225GodH0430createdH1254heavenH8064andH0853earthH0776
+Forrás és licenc: KJV_Strongs_teljes (kjv): tisztázatlan [tisztázatlan]
+## [vers.morf_hu]
+Az igealak magyar feloldása gépi feldolgozás
+Szó | Kód | Magyar feloldás | Nyelv
+בְּ | R | elöljáró | H
+רֵאשִׁ֖ית | Ncfsa | főnév, köznév, nőnem, egyes szám, abszolút | H
+בָּרָ֣א | Vqp3ms | ige, qal, perfectum (qatal), harmadik személy, hímnem, egyes szám | H
+אֱלֹהִ֑ים | Ncmpa | főnév, köznév, hímnem, többes szám, abszolút | H
+אֵ֥ת | To | partikula, tárgyjel | H
+הַ | Td | partikula, határozott névelő | H
+שָּׁמַ֖יִם | Ncmpa | főnév, köznév, hímnem, többes szám, abszolút | H
+וְ | C | kötőszó | H
+אֵ֥ת | To | partikula, tárgyjel | H
+הָ | Td | partikula, határozott névelő | H
+אָֽרֶץ | Ncbsa | főnév, köznév, mindkettő (főnév), egyes szám, abszolút | H
+Forrás és licenc: morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+## [vers.lxx_dontes]
+LXX-fordítói döntések (adatréteg) forrásadat soronként saját proveniencia-mező
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: projekt_adat (lxx_dontesek): minden jog fenntartva
+## [vers.lxx_par]
+LXX versszintű együttelőfordulás forrásadat együttelőfordulás a versben, nem szóillesztés
+1 héber szó, 5 pár
+H0430 · אֱלֹהִיםG0746, G1093, G2316, G3772, G4160
+Forrás és licenc: LXX_versszintu_parok (lxx_versszintu_parok): minden jog fenntartva
+## [vers.lxx_tobblet]
+LXX többlet és számozási eltérés forrásadat az adat ebben a kiadásban még nem érhető el
+Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.
+Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
+## [vers.ubs]
+UBS-jelentés az előfordulásra forrásadat
+Strong | Azonosító | Domén | Rövid definíció | Glosszák
+H0430 | 000396001003000 | Names of Deities | plural with singular meaning: = the highest God, creator of heaven and earth | God
+H0776 | 000714001001000 | Land | = the earth as opposed to the sky; sometimes used in a more specific sense to denote part of the earth, such as the dry land as opposed to the sea, or a specific region, area, country, or plot of land | earth; ground; land; country; region; area
+H0853 | 000791003001000 | Identifiers | marker identifying the entity that is directly targeted by the event in focus, and which usually is already part of the cognitive context; described in syntactic terms as the direct object marker; untranslatable in English unless accompanied by a suffix | -
+H1254 | 001155001001000 | Exist | = causative action by which a deity brings to existence something that did not exist before | to create
+H7225 | 006659001001000 | Begin | = point in time at which an event starts happening | beginning
+H8064 | 007464001001000 | Regions Above the Earth | = the area above the earth, the location of sun, moon, and stars, the realm of the birds and God's primary residence; seen as the source of dew, rain, hail, snow, thunder and lightning, and sometimes even food; associated with what is high and remote, created by God and bound to disappear one day | heaven; sky
+Forrás és licenc: UBS_DBH (ubs_dbh_referenciak): CC BY-SA 4.0 [share-alike]
+## [vers.tsk]
+## [vers.kh]
+## [vers.nave]
+## [vers.tipnr]
+## [vers.motivum]
+## [vers.tanulmany]
+## [vers.kapcsolat]

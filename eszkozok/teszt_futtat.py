@@ -109,6 +109,11 @@ def fut(fajl, kornyezet, reszletes):
     kimenet = p.stdout or ''
     if reszletes or p.returncode != 0:
         print(kimenet, end='' if kimenet.endswith('\n') else '\n')
+    else:
+        # F232: a mérce eltérése figyelmeztetés (a futás zöld), de a diff a sikeres futásnál is látszik
+        eltert_sorok = [s for s in kimenet.splitlines() if s.startswith('MÉRCE-ELTÉRÉS')]
+        if eltert_sorok:
+            print('\n'.join(eltert_sorok))
     sorok = [s for s in kimenet.splitlines() if s.strip()]
     osszegzo = ' | '.join(s for s in sorok[-4:] if re.match(r'^(Ran |OK|FAILED|skipped)', s)) or (sorok[-1] if sorok else '(nincs kimenet)')
     return p.returncode, mp, osszegzo

@@ -1,0 +1,67 @@
+# F232 olvasói pillanatkép: /Zsolt/22
+# A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
+# Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
+Navigáció✕
+PaRDeS olvasó
+Károli 1908 · Zsolt 22 ▾
+▸ Biblia és könyv kiválasztása
+▸ Biblia
+▸ Magyar Károli 1908alapnézet · StrongModernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · StrongGörög ÚjszövetségTAGNT · StrongSeptuagintagörög Ószövetség · Strong
+▸ Angol KJVStrong
+▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
+▸ Könyv
+▸ Törvény
+▸ 1Móz2Móz3Móz4Móz5Móz
+▸ Történeti könyvek
+▸ JózsBírRuth1Sám2Sám1Kir2Kir1Krón2KrónEzsdNehEszt
+▸ Költői és bölcsességi könyvek
+▸ JóbZsoltPéldPrédÉn
+▸ Nagypróféták
+▸ ÉzsJerSirEzDán
+▸ Kispróféták
+▸ HósJóelÁmósAbdJónMikNáhHabSofHagZakMal
+▸ Evangéliumok és Apostolok Cselekedetei
+▸ MtMkLukJánApCsel
+▸ Pál levelei
+▸ Róm1Kor2KorGalEfFilKol1Thessz2Thessz1Tim2TimTitFilem
+▸ Általános levelek
+▸ ZsidJak1Pét2Pét1Ján2Ján3JánJúd
+▸ Jelenések
+▸ Jel
+▸ Zsoltárok könyve · fejezetek
+▸ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150
+⌕
+‹›
+Aa
+▸ Betűméret 100%
+▸ A−A+
+▸ Sorköz
+▸ szűkközepestág
+▸ Betűcsalád
+▸ Source SerifNoto SerifIBM Plex Sans
+▸ Sorszélesség
+▸ keskenyközepesszélesteljes
+▸ Versenként új sor Alapértékek
+Strong számokStrong
+⚙
+▸ Rétegek
+▸ Interlineáris sor
+▸ Szint nyilvanos regisztralt kutato
+▸ Téma
+▸ Rendszer Világos Sötét
+⌕
+Zsoltárok könyve 22
+← 21. fejezet Zsoltárok könyve 23. fejezet → Forrás és számlálók
+1Az éneklőmesternek az ajjelethassakhar szerint; Dávid zsoltára. 2Én Istenem, én Istenem, miért hagytál el engemet? Távol van megtartásomtól jajgatásomnak szava. 3Én Istenem, kiáltok nappal, de nem hallgatsz meg; éjjel is és nincs nyugodalmam. 4Pedig te szent vagy, a ki Izráel dícséretei között lakozol. 5Benned bíztak atyáink; bíztak és te megszabadítottad őket. 6Hozzád kiáltottak és megmenekültek; benned bíztak és nem szégyenültek meg. 7De én féreg vagyok s nem férfiú; embereknek csúfja és a nép útálata. 8A kik engem látnak, mind csúfolkodnak rajtam, félrehúzzák ajkaikat és hajtogatják fejöket: 9Az Úrra bízta magát, mentse meg őt; szabadítsa meg őt, hiszen gyönyörködött benne! 10Mert te hoztál ki engem az anyám méhéből, és biztattál engem anyámnak emlőin. 11Születésem óta a te gondod voltam; anyám méhétől fogva te voltál Istenem. 12Ne légy messze tőlem, mert közel a nyomorúság, és nincs, a ki segítsen. 13Tulkok sokasága kerített be engem, körülfogtak engem Básán bikái. 14Feltátották rám szájokat, mint a ragadozó és ordító oroszlán. 15Mint a víz, úgy kiöntettem; csontjaim mind széthullottak; szívem olyan lett, mint a viasz, megolvadt belső részeim között. 16Erőm kiszáradt, mint cserép, nyelvem ínyemhez tapadt, és a halál porába fektetsz engemet. 17Mert ebek vettek körül engem, a gonoszok serege körülfogott; átlyukasztották kezeimet és lábaimat. 18Megszámlálhatnám minden csontomat, ők pedig csak néznek s bámulnak rám. 19Megosztoznak ruháimon, és köntösömre sorsot vetnek. 20De te, Uram, ne légy messze tőlem; én erősségem, siess segítségemre. 21Szabadítsd meg lelkemet a kardtól, s az én egyetlenemet a kutyák körmeiből. 22Ments meg engem az oroszlán torkából, és a bivalyok szarvai közül hallgass meg engem. 23Hadd hirdessem nevedet atyámfiainak, és dicsérjelek téged a gyülekezetben. 24Ti, a kik félitek az Urat, dicsérjétek őt! Jákób minden ivadékai dicsőítsétek őt, és féljétek őt Izráel minden magzata! 25Mert nem veti meg és nem útálja meg a szegény nyomorúságát; és nem rejti el az ő orczáját előle, és mikor kiált hozzá, meghallgatja. 26Felőled lesz dicséretem a nagy gyülekezetben. Az én fogadásaimat megadom azok előtt, a kik félik őt. 27Esznek a nyomorultak és megelégesznek, dicsérik az Urat, a kik őt keresik. Éljen szívetek örökké! 28Megemlékeznek és megtérnek az Úrhoz a föld minden határai, és leborul előtted a pogányok minden nemzetsége. 29Mert az Úré a királyi hatalom, uralkodik a pogányokon is. 30Esznek és leborulnak a föld gazdagai mind; ő előtte hajtanak térdet, a kik a porba hullanak, és a ki életben nem tarthatja lelkét. 31Őt szolgálják a fiak, az Úrról beszélnek az utódoknak. 32Eljőnek s hirdetik az ő igazságát az ő utánok való népnek, hogy ezt cselekedte!
+Zsoltárok könyve 22 Útmutató, forrás és számlálók
+⤢ ✕
+Hogyan olvasd ezt az oldalt?
+Koppints egy versszámra: itt nyílnak meg a vers részletei (Vers · Kereszthiv. · Témák · Motívum).
+Koppints egy pontozottan aláhúzott szóra: a szó lapja nyílik meg (jelentés, alakok, előfordulás, görög megfelelő). A két mód között bezárás nélkül válthatsz; a ‹ az előzőre lép.
+Minden blokk mellett a jellege áll: forrásadat, gépi feldolgozás, modell-kimenet (javaslat-értékű; a pontozott aláhúzás is ilyen). Arany számláló: a magyar BDB-fordítás még nem teljes.
+Károli-szöveg forrásadat
+Forrás és licenc: Karoli_1908 (vers): közkincs
+A szavak pontozott aláhúzása (a kattintható szó): Károli–Strong párosítás modell-kimenet
+Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0 · Karoli_Strong_szavak (token_karoli): CC BY 4.0
+32 vers 159 héber + 305 görög szó-lap BDB magyarul: 159/159 Károli–Strong: 66 könyv

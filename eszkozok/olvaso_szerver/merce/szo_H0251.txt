@@ -1,0 +1,238 @@
+# F232 olvasói pillanatkép: /szo/H0251
+# A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
+# Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
+PaRDeS olvasó
+⌕
+⚙
+▸ Rétegek
+▸ Interlineáris sor
+▸ Szint nyilvanos regisztralt kutato
+▸ Téma
+▸ Rendszer Világos Sötét
+H0251 אָח
+ách · főnév, hímnemű
+Alapjelentés fivér: fiútestvér
+szó-lap önálló címen · előfordulások versenként
+## [szo.szotar]
+Strong-szótár forrásadat modell-kimenet
+Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás
+אָח | ách | főnév, hímnemű | fivér: fiútestvér brother | a primitive word
+Forrás és licenc: Strong_szotar (strong_szotar): CC BY 4.0 · TBESH+TAHOT+projekt_adat (glosszak_heber_hu): CC BY 4.0; minden jog fenntartva
+## [szo.elofordulas]
+Előfordulás, könyvek száma gépi feldolgozás
+630 előfordulás, 33 könyvben.
+Forrás és licenc: TAHOT+TAGNT (token_strong): CC BY 4.0
+## [szo.karoli_alakok]
+Károli-alakok és pontosság modell-kimenet
+632 Károli-előfordulás. A párosítás mért pontossága 95%.
+Károli-alak | Darab
+atyjafiai | 47
+testvérei | 43
+atyjokfiai | 22
+atyádfia | 20
+testvére | 17
+atyjafiának | 17
+atyjafia | 16
+testvérének | 15
+A 66 feldolgozott könyv (1Jan, 1Kir, 1Kor, 1Kron, 1Moz, 1Pet, 1Sam, 1Thessz, 1Tim, 2Jan, 2Kir, 2Kor, 2Kron, 2Moz, 2Pet, 2Sam, 2Thessz, 2Tim, 3Jan, 3Moz, 4Moz, 5Moz, Abd, Amos, ApCsel, Bir, Dan, Ef, En, Eszt, Ez, Ezs, Ezsd, Fil, Filem, Gal, Hab, Hag, Hos, Jak, Jan, Jel, Jer, Job, Joel, Jon, Jozs, Jud, Kol, Luk, Mal, Mik, Mk, Mt, Nah, Neh, Peld, Pred, Rom, Ruth, Sir, Sof, Tit, Zak, Zsid, Zsolt) szó szintű párjai alapján.
+Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0
+## [szo.bdb_apparatus]
+Szótár: BDB-szócikk (Brown–Driver–Briggs) forrásadat modell-kimenet gépi feldolgozás
+Lefordítva · gépi fordítás, 2026.10.02
+אַחְבָּןI. címszó81 hivatkozás a címszónál
+אֶחָב, אַחְאָב, אָח stb. l. אחה.
+A jelentések rendje a BDB szerint
+I. További homonima ugyanezen a lemmán · אָח‎
+1fivér, ugyanattól az anyától22
+2határozatlanul29
+3átvitt értelemben a hasonlóságról2
+4az egyik . . . a másik szólásban13
+További homonima ugyanezen a lemmán · אחה
+I. További homonima ugyanezen a lemmán · אָח · hímnemű főnév: testvér, fivér81 hivatkozás
+föníciai אח, arab (status constructus stb.), szabeus אחֿ (suffixummal א־חיהו) CIS^iv.1, 17 és 24 és mások, etióp asszír a—u vö. Dl^W, arámi אַח, ; palmürai, nabateus suffixummal אחיה אחוהי‎,
+1fivér, ugyanattól az anyától22 hivatkozásLXX ἀδελφός 25 · 1 megfelelő nélkül
+(és apától) született
+1Móz 4:24:84:94:104:1127:627:1144:2049:5
+vö.
+1Móz 28:229:10(a versben kétszer) és2Móz 4:14és gyakran máshol
+a féltestvérről is
+1Móz 20:520:1320:16a származásról vö.20:1237:237:437:5és máshol2Sám 13:413:713:8és máshol
+Angol eredeti
+▸ brother, born of same mother (& father) Gen 4:2, 8, 9, 10, 11; 27:6, 11; 44:20; 49:5; compare 28:2; 29:10 (twice in verse) + Exod 4:14 + often; also of half-brother Gen 20:5, 13, 16 (on pa-rentage compare 20:12) 37:2, 4, 5 +, 2Sam 13:4, 7, 8 +.
+fivér, ugyanattól az anyától (és apától) született 1Móz 4:2, 8, 9, 10, 11; 27:6, 11; 44:20; 49:5; vö. 28:2; 29:10 (a versben kétszer) és 2Móz 4:14 és gyakran máshol; a féltestvérről is 1Móz 20:5, 13, 16 (a származásról vö. 20:12) 37:2, 4, 5 és máshol, 2Sám 13:4, 7, 8 és máshol.
+2határozatlanul29 hivatkozásLXX ἀδελφός 28
+= rokon
+Lót, Ábrahámé
+1Móz 13:814:1214:1414:16
+Jákób, Lábán rokona
+1Móz 29:1229:15(unokaöcs)
+ebből a tágabb értelemben vett rokonságról
+ugyanazon törzs tagja
+4Móz 16:1018:218:62Sám 19:12
+ugyanazon népé
+2Móz 2:11(a versben kétszer)4:185Móz 15:12Bír 14:3Ézs 66:20Neh 5:15:55:8l. különösen3Móz 19:17vö.19:18a jövevényre is kiterjesztve גֵּר‎19:34még 1 hely
+Izráelről és Júdáról
+2Sám 19:41
+Izráelről és Edomról
+4Móz 20:14
+vö. Izmaelről
+1Móz 16:1225:18
+barátról
+2Sám 1:261Kir 9:1320:32–33szövetségesekről בְּרִית א׳Ámós 1:9
+Apparátus és szövegkritika 1
+▸ számozás a BDB a héber versszámozást követi; a Károliban: 2Sám 19:13 → 2Sám 19:12; 2Sám 19:42 → 2Sám 19:41
+Angol eredeti
+▸ indefinite = relative; Lot, of Abraham Gen 13:8; 14:12, 14, 16; Jacob, of Laban 29:12, 15 (nephew); hence of kinship in wider sense; member of same tribe Num 16:10; 18:2, 6; 2Sam 19:13; of same people Exod 2:11 (twice in verse); 4:18; Deut 15:12; Judg 14:3; Isa 66:20; Neh 5:1, 5, 8 see especially Lev 19:17 compare 19:18 (ex-tended to include sojourner גֵּר‎ 19:34); of Israel & Judah 2Sam 19:42; Israel & Edom Num 20:14; compare of Ishmael Gen 16:12; 25:18; of friend 2Sam 1:26; 1Kin 9:13; 20:32-33, of allies בְּרִית א׳ Amos 1:9.
+határozatlanul = rokon; Lót, Ábrahámé 1Móz 13:8; 14:12, 14, 16; Jákób, Lábán rokona 29:12, 15 (unokaöcs); ebből a tágabb értelemben vett rokonságról; ugyanazon törzs tagja 4Móz 16:10; 18:2, 6; 2Sám 19:13; ugyanazon népé 2Móz 2:11 (a versben kétszer); 4:18; 5Móz 15:12; Bír 14:3; Ézs 66:20; Neh 5:1, 5, 8, l. különösen 3Móz 19:17, vö. 19:18 (a jövevényre is kiterjesztve גֵּר‎ 19:34); Izráelről és Júdáról 2Sám 19:42; Izráelről és Edomról 4Móz 20:14; vö. Izmaelről 1Móz 16:12; 25:18; barátról 2Sám 1:26; 1Kir 9:13; 20:32-33, szövetségesekről בְּרִית א׳ Ámós 1:9.
+3átvitt értelemben a hasonlóságról2 hivatkozásLXX ἀδελφός 2
+átvitt értelemben a hasonlóságról Jób 30:29 אָח הָיִיתִי לְתַנִּים (|| רֵעַ לִבְנוֺת יַעֲנָה azaz kiáltozása miatt, vö. Di
+Péld 18:9מִתְרַפֶּה בִּמְלַאכְתּוֺ אָח הוּא לְבַעַל מַשְׁחִית
+Angol eredeti
+▸ figurative of resemblance Job 30:29 אָח הָיִיתִי לְתַנִּים (|| רֵעַ לִבְנוֺת יַעֲנָה i.e. by reason of his crying, compare Di; Prov 18:9 מִתְרַפֶּה בִּמְלַאכְתּוֺ אָח הוּא לְבַעַל מַשְׁחִית.
+átvitt értelemben a hasonlóságról Jób 30:29 אָח הָיִיתִי לְתַנִּים (|| רֵעַ לִבְנוֺת יַעֲנָה azaz kiáltozása miatt, vö. Di; Péld 18:9 מִתְרַפֶּה בִּמְלַאכְתּוֺ אָח הוּא לְבַעַל מַשְׁחִית‎.
+4az egyik . . . a másik szólásban13 hivatkozásLXX ἀδελφός 9 · 3 megfelelő nélkül
+אִישׁ אָחִיו‎
+1Móz 9:5Jóel 2:8
+Ze
+Jóel 7:10
+אִישׁ ֗֗֗ אָחִיו‎ 1Móz 13:11 összesen 25-ször és 2Móz 32:27 (ahol ugyanez a szólás רֵעֵהוּ-vel és קְרֹבוֺ-vel is — l. ezeket a szavakat — és אֶחָד אִישׁ,-vel is
+az idióma fejlődéséhez vö.
+5Móz 15:2Ézs 19:2Jer 34:14(vö.15) 17Ez 38:21Hag 2:22
+rendszerint emberekről
+az arany kerubok arcáról
+2Móz 25:2037:9
+a krokodil pikkelyeiről
+Jób 41:17. (אָח tűzserpenyő. l. lent II. אחח.)
+Apparátus és szövegkritika 1
+▸ számozás a BDB a héber versszámozást követi; a Károliban: Jób 41:9 → Jób 41:17
+Angol eredeti
+▸ in phrase one . . . another אִישׁ אָחִיו Gen 9:5; Joel 2:8; Ze Joel 7:10; אִישׁ ֗֗֗ אָחִיוGen 13:11 25t + Exod 32:27 (where also same phrase with רֵעֵהוּ & קְרֹבוֺ — see these words — & also אֶחָד אִישׁ,; for development of idiom compare Deut 15:2; Isa 19:2; Jer 34:14 (compare15) 17 Ezek 38:21; Hag 2:22; usually of men; of faces of golden cherubim Exod 25:20; 37:9; of scales of crocodile Job 41:9. (אָח fire-pot. see below II. אחח.)
+az egyik . . . a másik szólásban אִישׁ אָחִיו‎ 1Móz 9:5; Jóel 2:8; Ze Jóel 7:10; אִישׁ ֗֗֗ אָחִיו‎ 1Móz 13:11 összesen 25-ször és 2Móz 32:27 (ahol ugyanez a szólás רֵעֵהוּ-vel és קְרֹבוֺ-vel is — l. ezeket a szavakat — és אֶחָד אִישׁ,-vel is; az idióma fejlődéséhez vö. 5Móz 15:2; Ézs 19:2; Jer 34:14 (vö.15) 17 Ez 38:21; Hag 2:22; rendszerint emberekről; az arany kerubok arcáról 2Móz 25:20; 37:9; a krokodil pikkelyeiről Jób 41:9. (אָח tűzserpenyő. l. lent II. אחח.)
+További homonima ugyanezen a lemmán · אחה · .
+a következő feltételezett gyöke; vö. bibliai héber אָח
+Jelmagyarázat
+▸ Di
+▸ A. Dillmann
+▸ status constructus
+▸ status constructus: kapcsolati alak (a névszó a birtokos szerkezet első tagja)
+▸ A feloldás nem a BDB része; csak a fenti jelentésekben előforduló jelek. A szövegben a pontozottan aláhúzott jelre mutatva is megjelenik.
+A magyar szócikk teljes szövege (tagolás nélkül)
+▸ I. אַחְבָּן אֶחָב, אַחְאָב, אָח stb. l. אחה. I. אָח‎630 hímnemű főnév: testvér, fivér (föníciai אח, arab (status constructus stb.), szabeus אחֿ (suffixummal א־חיהו) CIS^iv.1, 17 és 24 és mások, etióp asszír a—u vö. Dl^W, arámi אַח, ; palmürai, nabateus suffixummal אחיה אחוהי,); — status absolutus אָח‎ 1Móz 24:29 és máshol (Ez 18:10 törli Co, vö. ᵑ9 ᵑ6 ᵐ5; Ew Sm אַח; Dl Ba^Ez x mint = egy védi, vö. asszír a—u) soha nem névelővel; status constructus אֲחִי‎ 1Móz 10:21 és máshol; suffixummal אָחִי‎ 4:9 és máshol; אָחִיךָ‎ 4:9 és máshol; אָחִיו‎ 4:2 és máshol; אָחִיהוּ Jer 34:9 összesen 3-szor stb.; többes szám אַחִים‎ 1Móz 13:8 és máshol; így olvasandó Hós 13:15, l. De^Compl. Var. 23 vö. lent אָחוּ; status constructus אֲחֵי‎ 4Móz 27:10 és máshol; suffixummal אַחַי‎ 1Móz 19:7 és máshol; אֶחָ֑י‎ 1Sám 20:29 és máshol (de 30:23 ᵐ5 We אַחֲרֵי a את אֶחָ֑י helyett); אַחֶיךָ‎ 1Móz 37:13 és máshol; אֶחָיו‎ 44:14 és máshol? 1 fivér, ugyanattól az anyától (és apától) született 1Móz 4:2, 8, 9, 10, 11; 27:6, 11; 44:20; 49:5; vö. 28:2; 29:10 (a versben kétszer) és 2Móz 4:14 és gyakran máshol; a féltestvérről is 1Móz 20:5, 13, 16 (a származásról vö. 20:12) 37:2, 4, 5 és máshol, 2Sám 13:4, 7, 8 és máshol. 2 határozatlanul = rokon; Lót, Ábrahámé 1Móz 13:8; 14:12, 14, 16; Jákób, Lábán rokona 29:12, 15 (unokaöcs); ebből a tágabb értelemben vett rokonságról; ugyanazon törzs tagja 4Móz 16:10; 18:2, 6; 2Sám 19:13; ugyanazon népé 2Móz 2:11 (a versben kétszer); 4:18; 5Móz 15:12; Bír 14:3; Ézs 66:20; Neh 5:1, 5, 8, l. különösen 3Móz 19:17, vö. 19:18 (a jövevényre is kiterjesztve גֵּר‎ 19:34); Izráelről és Júdáról 2Sám 19:42; Izráelről és Edomról 4Móz 20:14; vö. Izmaelről 1Móz 16:12; 25:18; barátról 2Sám 1:26; 1Kir 9:13; 20:32-33, szövetségesekről בְּרִית א׳ Ámós 1:9. 3 átvitt értelemben a hasonlóságról Jób 30:29 אָח הָיִיתִי לְתַנִּים (|| רֵעַ לִבְנוֺת יַעֲנָה azaz kiáltozása miatt, vö. Di; Péld 18:9 מִתְרַפֶּה בִּמְלַאכְתּוֺ אָח הוּא לְבַעַל מַשְׁחִית‎. 4 az egyik . . . a másik szólásban אִישׁ אָחִיו‎ 1Móz 9:5; Jóel 2:8; Ze Jóel 7:10; אִישׁ ֗֗֗ אָחִיו‎ 1Móz 13:11 összesen 25-ször és 2Móz 32:27 (ahol ugyanez a szólás רֵעֵהוּ-vel és קְרֹבוֺ-vel is — l. ezeket a szavakat — és אֶחָד אִישׁ,-vel is; az idióma fejlődéséhez vö. 5Móz 15:2; Ézs 19:2; Jer 34:14 (vö.15) 17 Ez 38:21; Hag 2:22; rendszerint emberekről; az arany kerubok arcáról 2Móz 25:20; 37:9; a krokodil pikkelyeiről Jób 41:9. (אָח tűzserpenyő. l. lent II. אחח.) אחה (a következő feltételezett gyöke; vö. bibliai héber אָח).
+Forrás és licenc: BDB (bdb): közkincs · BDB+projekt_adat (bdb_alias): közkincs; minden jog fenntartva · projekt_adat (forditasok): minden jog fenntartva · BDB+Macula_heber+OSHL+TAHOT+projekt_adat (bdb_vers_jelentes): közkincs; CC BY 4.0; minden jog fenntartva · TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+## [szo.lxx_bridge]
+Görög megfelelő (Septuaginta) forrásadat
+Görög Strong | Szótő | Jelentés | Darab
+G0080 | ἀδελφός | brother | 565
+G3588 | ὁ | the/this/who | 11
+Forrás és licenc: lxx_bridge (lxx_bridge): CC BY 4.0
+## [szo.ubs_dbh]
+UBS DBH jelentések (a teljes szócikk, magyar fordítással) forrásadat modell-kimenet CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet
+Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)
+000237001001000 | Relatives | (fordításra vár) | (fordításra vár) | brother; half-brother | = son of one's father, whether from the same mother or not
+000237001002000 | Relatives | (fordításra vár) | (fordításra vár) | brother; cousin; nephew; kinsman; relative | = close relative, such as one's uncle's son and one's brother's son, or someone else regarded as closely related
+000237001003000 | Relatives | (fordításra vár) | (fordításra vár) | brother; countryman; kinsman; relative | = member of same family, clan, tribe, or ethnic group
+000237001004000 | Friends | (fordításra vár) | (fordításra vár) | brother; friend; companion; colleague | = fellow member of the same group of people, not necessarily relatives, sharing a bond of affection, employment, or a common purpose
+000237001005000 | Titles | (fordításra vár) | (fordításra vár) | brother; friend | only used in vocatives: = friendly and endearing way to address a man
+000237001006000 | Object Referents | (fordításra vár) | (fordításra vár) | a man ... his brother > one ... each other | = expression denoting a situation in which two people or objects that are regarded as masculine are involved in a reciprocal event
+000237001007000 | Identifiers | (fordításra vár) | (fordításra vár) | any | = marker identifying the activity that follows as one of a range of similar activities
+000237001008000 | Evaluators | (fordításra vár) | (fordításra vár) | brother! alas! | = exclamation expressing grief and dismay
+000237002001000 | Furnaces | (fordításra vár) | (fordításra vár) | brazier | = portable container containing burning coals, ► used for heating
+Forrás és licenc: UBS_DBH (ubs_dbh_jelentesek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+## [szo.sdbh]
+Szemantikai domén (SDBH) forrásadat üres eredmény nem negatív lelet
+Domén kód | Domén | Glossza | Hivatkozás
+001002007003 | Friends | brother; friend; companion; colleague | 14
+001002007012 | Relatives | brother; half-brother | 358
+001002007012 | Relatives | brother; cousin; nephew; kinsman; relative | 42
+001002007012 | Relatives | brother; countryman; kinsman; relative | 171
+001002008001007 | Furnaces | brazier | 3
+003001 | Object Referents | a man ... his brother > one ... each other | 33
+003001017 | Titles | brother; friend | 10
+004003 | Identifiers | any | 1
+004005 | Evaluators | brother! alas! | 3
+Forrás és licenc: SDBH (sdbh_domenek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+## [szo.sece_h]
+SECE-szócikk (héber) forrásadat
+אָח (ʼâch｜awkh｜noun｜masculine｜brother) [Heb] אָח ETCBC: אָח (subs｜brother) OSHL: a.ck.ab TWOT: 62a GK: H278 Greek: ἀδελφός, ἐγγύς, ἕτερος Derivation: a primitive word; Strong's: a brother (used in the widest sense of literal relationship and metaphorical affinity or resemblance (like father)) KJV: another, brother(-ly); kindred, like, other. Compare also the proper names beginning with 'Ah-' or 'Ahi-'.
+Forrás és licenc: SECE_H (sece_h): közkincs
+## [szo.oshl]
+OSHL: TWOT- és BDB-azonosító, BDB-helyek forrásadat
+TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás
+62a | a.ck.ab | heber | akn | אָח | ʾāḥ | N | brother
+Forrás és licenc: OSHL (oshl_lexikalis_index): CC BY 4.0 · OSHL_BDB (oshl_bdb_igehelyek): CC BY 4.0
+## [szo.oshl_csalad]
+Rokon szavak (OSHL-gyökcsalád) forrásadat az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet
+Gyök: אחה (Strong-szám nélküli gyök-bejegyzés)
+Strong | Lemma | Átírás | Szófaj | Angol meghatározás
+H0251 | אָח | ʾāḥ | N | brother
+H0264 | אַחֲוָה | ʾaḥăwâ | N | brotherhood
+H0269 | אָחוֹת | ʾāḥôt | N | sister
+Forrás és licenc: OSHL (oshl_lexikalis_index): CC BY 4.0
+## [szo.tbesh]
+Bővített Strong-szócikk (TBESH) forrásadat gépi feldolgozás modell-kimenet
+Szó | Átírás | Morf | Gloss | Jelentés
+אָח | ach | H:N-M | fivér: fiútestvér brother: male-sibling | : male-sibling
+1) brother
+1a) brother of same parents
+1b) half-brother (same father)
+1c) relative, kinship, same tribe
+1d) each to the other (reciprocal relationship)
+1e) (fig.) of resemblance
+אָח | ach | H:N-M | fivér: férfi rokon brother: male-relative | : male-relative
+1) brother
+1a) brother of same parents
+1b) half-brother (same father)
+1c) relative, kinship, same tribe
+1d) each to the other (reciprocal relationship)
+1e) (fig.) of resemblance
+אָח | ach | H:N-M | fivér: honfitárs brother: compatriot | : compatriot
+1) brother
+1a) brother of same parents
+1b) half-brother (same father)
+1c) relative, kinship, same tribe
+1d) each to the other (reciprocal relationship)
+1e) (fig.) of resemblance
+Forrás és licenc: TBESH (tbesh): CC BY 4.0 · TBESH+TAHOT+projekt_adat (glosszak_heber_hu): CC BY 4.0; minden jog fenntartva · projekt_adat (forditasok): minden jog fenntartva
+## [szo.tw_h]
+translationWords forrásadat
+companion, fellow worker, friend (other, other/companion)
+Definition:
+The term “companion” refers to a person who goes with someone else or who is associated with someone else, such as in a friendship or marriage. The term “fellow worker” refers to someone who works with another person.
+Companions go through experiences together, share meals together, and support and encourage each other.
+Depending on the context, this term could also be translated with a word or phrase that means, “friend” or “fellow traveler” or “supporting-person who goes with” or “person who works with.”
+Bible References:
+Ezekiel 37:16
+Hebrews 1:9
+Proverbs 2:17
+Psalms 38:11-12
+Word Data:
+Strong’s: H0251, H0441, H2269, H2270, H2273, H2278, H3674, H3675, H4828, H7453, H7462, H7464, G28440, G33530, G48980, G49040
+family, household (other, other/family)
+Definition:
+The term “family” refers to a group of people who are related by blood and usually includes a father, mother, and their children. In the Bible, this term sometimes includes other close relatives such as grandparents, grandchildren, uncles and aunts.
+In biblical times, usually the oldest man was the major authority of a family.
+Family could also include servants, concubines, and even foreigners.
+Some languages may have a broader word such as “clan” or “household” that would fit better in contexts where more than just parents and children are being referred to.
+The New Testament often uses terms related to the concept of “family” to refer to the Church, meaning people who believe in Jesus.
+(See also: clan, ancestor, house)
+Bible References:
+1 Kings 8:1-2
+1 Samuel 18:18
+Exodus 1:21
+Joshua 2:12-13
+Luke 2:4
+Word Data:
+Strong’s: H0001, H0251, H0272, H0504, H1004, H1121, H2233, H2859, H2945, H3187, H4138, H4940, H5387, H5712, G10850, G36140, G36240, G39650
+kin, kinfolk, kindred, kinsman (other, other/kin)
+Definition:
+The term “kin” refers to a person’s blood relatives, considered as a group. The word “kinsman” refers specifically to a male relative.
+“Kin” can only refer to a person’s close relatives, such as parents and siblings, or it can also include more distant relatives, such as an aunts, uncles, or cousins.
+In ancient Israel, if a man died, his nearest male relative was expected to marry his widow, manage his property, and help carry on his family name. This relative was called a “kinsman-redeemer.”
+This term “kin” could also be translated as “relative” or “family member.”
+Bible References:
+Romans 16:9-11
+Ruth 2:20
+Ruth 3:9
+Word Data:
+Strong’s: H0251, H1350, H4129, H4130, H7138, H7607, G47730
+Forrás és licenc: tW_szocikkek (tw_szocikkek): CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · projekt_adat (forditasok): minden jog fenntartva

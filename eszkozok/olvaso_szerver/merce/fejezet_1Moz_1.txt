@@ -1,0 +1,68 @@
+# F232 olvasói pillanatkép: /1Moz/1
+# A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
+# Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
+Navigáció✕
+PaRDeS olvasó
+Károli 1908 · 1Móz 1 ▾
+▸ Biblia és könyv kiválasztása
+▸ Biblia
+▸ Magyar Károli 1908alapnézet · StrongModernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · StrongGörög ÚjszövetségTAGNT · StrongSeptuagintagörög Ószövetség · Strong
+▸ Angol KJVStrong
+▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
+▸ Könyv
+▸ Törvény
+▸ 1Móz2Móz3Móz4Móz5Móz
+▸ Történeti könyvek
+▸ JózsBírRuth1Sám2Sám1Kir2Kir1Krón2KrónEzsdNehEszt
+▸ Költői és bölcsességi könyvek
+▸ JóbZsoltPéldPrédÉn
+▸ Nagypróféták
+▸ ÉzsJerSirEzDán
+▸ Kispróféták
+▸ HósJóelÁmósAbdJónMikNáhHabSofHagZakMal
+▸ Evangéliumok és Apostolok Cselekedetei
+▸ MtMkLukJánApCsel
+▸ Pál levelei
+▸ Róm1Kor2KorGalEfFilKol1Thessz2Thessz1Tim2TimTitFilem
+▸ Általános levelek
+▸ ZsidJak1Pét2Pét1Ján2Ján3JánJúd
+▸ Jelenések
+▸ Jel
+▸ Mózes első könyve · fejezetek
+▸ 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950
+⌕
+›
+Aa
+▸ Betűméret 100%
+▸ A−A+
+▸ Sorköz
+▸ szűkközepestág
+▸ Betűcsalád
+▸ Source SerifNoto SerifIBM Plex Sans
+▸ Sorszélesség
+▸ keskenyközepesszélesteljes
+▸ Versenként új sor Alapértékek
+Strong számokStrong
+Tanulmányok jelölése
+⚙
+▸ Rétegek
+▸ Interlineáris sor
+▸ Szint nyilvanos regisztralt kutato
+▸ Téma
+▸ Rendszer Világos Sötét
+⌕
+Mózes első könyve 1
+Mózes első könyve 2. fejezet → Forrás és számlálók
+1Kezdetben teremté Isten az eget és a földet. 2A föld pedig kietlen és puszta vala, és setétség vala a mélység színén, és az Isten Lelke lebeg vala a vizek felett. 3És monda Isten: Legyen világosság: és lőn világosság. 4És látá Isten, hogy jó a világosság; és elválasztá Isten a világosságot a setétségtől. 5És nevezé Isten a világosságot nappalnak, és a setétséget nevezé éjszakának: és lőn este és lőn reggel, első nap. 6És monda Isten: Legyen mennyezet a víz között, a mely elválaszsza a vizeket a vizektől. 7Teremté tehát Isten a mennyezetet, és elválasztá a mennyezet alatt való vizeket, a mennyezet felett való vizektől. És úgy lőn. 8És nevezé Isten a mennyezetet égnek: és lőn este, és lőn reggel, második nap. 9És monda Isten: Gyűljenek egybe az ég alatt való vizek egy helyre, hogy tessék meg a száraz. És úgy lőn. 10És nevezé Isten a szárazat földnek; az egybegyűlt vizeket pedig tengernek nevezé. És látá Isten, hogy jó. 11Azután monda Isten: Hajtson a föld gyenge fűvet, maghozó fűvet, gyümölcsfát, a mely gyümölcsöt hozzon az ő neme szerint, a melyben legyen néki magva e földön. És úgy lőn. 12Hajta tehát a föld gyenge fűvet, maghozó fűvet az ő neme szerint, és gyümölcstermő fát, a melynek gyümölcsében mag van az ő neme szerint. És látá Isten, hogy jó. 13És lőn este és lőn reggel, harmadik nap. 14És monda Isten: Legyenek világító testek az ég mennyezetén, hogy elválaszszák a nappalt az éjszakától, és legyenek jelek, és meghatározói ünnepeknek, napoknak és esztendőknek. 15És legyenek világítókul az ég mennyezetén hogy világítsanak a földre. És úgy lőn. 16Teremté tehát Isten a két nagy világító testet: a nagyobbik világító testet, hogy uralkodjék nappal és a kisebbik világító testet, hogy uralkodjék éjjel; és a csillagokat. 17És helyezteté Isten azokat az ég mennyezetére, hogy világítsanak a földre; 18És hogy uralkodjanak a nappalon és az éjszakán, és elválaszszák a világosságot a setétségtől. És látá Isten, hogy jó. 19És lőn este és lőn reggel, negyedik nap. 20És monda Isten: Pezsdűljenek a vizek élő állatok nyüzsgésétől; és madarak repdessenek a föld felett, az ég mennyezetének színén. 21És teremté Isten a nagy vízi állatokat, és mindazokat a csúszó-mászó állatokat, a melyek nyüzsögnek a vizekben az ő nemök szerint, és mindenféle szárnyas repdesőt az ő neme szerint. És látá Isten, hogy jó. 22És megáldá azokat Isten, mondván: Szaporodjatok, és sokasodjatok, és töltsétek be a tenger vizeit; a madár is sokasodjék a földön. 23És lőn este és lőn reggel, ötödik nap. 24Azután monda az Isten: Hozzon a föld élő állatokat nemök szerint: barmokat, csúszó-mászó állatokat és szárazföldi vadakat nemök szerint. És úgy lőn. 25Teremté tehát Isten a szárazföldi vadakat nemök szerint, a barmokat nemök szerint, és a földön csúszó-mászó mindenféle állatokat nemök szerint. És látá Isten, hogy jó. 26És monda Isten: Teremtsünk embert a mi képünkre és hasonlatosságunkra; és uralkodjék a tenger halain, az ég madarain, a barmokon, mind az egész földön, és a földön csúszó-mászó mindenféle állatokon. 27Teremté tehát az Isten az embert az ő képére, Isten képére teremté őt: férfiúvá és asszonynyá teremté őket. 28És megáldá Isten őket, és monda nékik Isten: Szaporodjatok és sokasodjatok, és töltsétek be a földet és hajtsátok birodalmatok alá; és uralkodjatok a tenger halain, az ég madarain, és a földön csúszó-mászó mindenféle állatokon. 29És monda Isten: Ímé néktek adok minden maghozó fűvet az egész föld színén, és minden fát, a melyen maghozó gyümölcs van; az legyen néktek eledelül. 30A föld minden vadainak pedig, és az ég minden madarainak, és a földön csúszó-mászó mindenféle állatoknak, a melyekben élő lélek van, a zöld fűveket adom eledelűl. És úgy lőn. 31És látá Isten, hogy minden a mit teremtett vala, ímé igen jó. És lőn este és lőn reggel, hatodik nap.
+Mózes első könyve 1 Útmutató, forrás és számlálók
+⤢ ✕
+Hogyan olvasd ezt az oldalt?
+Koppints egy versszámra: itt nyílnak meg a vers részletei (Vers · Kereszthiv. · Témák · Motívum).
+Koppints egy pontozottan aláhúzott szóra: a szó lapja nyílik meg (jelentés, alakok, előfordulás, görög megfelelő). A két mód között bezárás nélkül válthatsz; a ‹ az előzőre lép.
+Minden blokk mellett a jellege áll: forrásadat, gépi feldolgozás, modell-kimenet (javaslat-értékű; a pontozott aláhúzás is ilyen). Arany számláló: a magyar BDB-fordítás még nem teljes.
+Károli-szöveg forrásadat
+Forrás és licenc: Karoli_1908 (vers): közkincs
+A szavak pontozott aláhúzása (a kattintható szó): Károli–Strong párosítás modell-kimenet
+Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0 · Karoli_Strong_szavak (token_karoli): CC BY 4.0
+31 vers 92 héber + 184 görög szó-lap BDB magyarul: 92/92 Károli–Strong: 66 könyv

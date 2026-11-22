@@ -1,0 +1,259 @@
+# F232 olvasói pillanatkép: /Zsolt/22/2
+# A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
+# Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
+Navigáció✕
+PaRDeS olvasó
+Károli 1908 · Zsolt 22 ▾
+▸ Biblia és könyv kiválasztása
+▸ Biblia
+▸ Magyar Károli 1908alapnézet · StrongModernizált KároliStrong
+▸ Eredeti nyelv Héber ÓszövetségTAHOT · StrongGörög ÚjszövetségTAGNT · StrongSeptuagintagörög Ószövetség · Strong
+▸ Angol KJVStrong
+▸ A választott Biblia szövege áll az olvasóban; a könyvrács a választott Biblia könyveit mutatja. Minden itt álló szöveg szavanként Strong-számmal jelölt: a szóra koppintva a szó lapja nyílik.
+▸ Könyv
+▸ Törvény
+▸ 1Móz2Móz3Móz4Móz5Móz
+▸ Történeti könyvek
+▸ JózsBírRuth1Sám2Sám1Kir2Kir1Krón2KrónEzsdNehEszt
+▸ Költői és bölcsességi könyvek
+▸ JóbZsoltPéldPrédÉn
+▸ Nagypróféták
+▸ ÉzsJerSirEzDán
+▸ Kispróféták
+▸ HósJóelÁmósAbdJónMikNáhHabSofHagZakMal
+▸ Evangéliumok és Apostolok Cselekedetei
+▸ MtMkLukJánApCsel
+▸ Pál levelei
+▸ Róm1Kor2KorGalEfFilKol1Thessz2Thessz1Tim2TimTitFilem
+▸ Általános levelek
+▸ ZsidJak1Pét2Pét1Ján2Ján3JánJúd
+▸ Jelenések
+▸ Jel
+▸ Zsoltárok könyve · fejezetek
+▸ 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101102103104105106107108109110111112113114115116117118119120121122123124125126127128129130131132133134135136137138139140141142143144145146147148149150
+⌕
+‹›
+Aa
+▸ Betűméret 100%
+▸ A−A+
+▸ Sorköz
+▸ szűkközepestág
+▸ Betűcsalád
+▸ Source SerifNoto SerifIBM Plex Sans
+▸ Sorszélesség
+▸ keskenyközepesszélesteljes
+▸ Versenként új sor Alapértékek
+Strong számokStrong
+⚙
+▸ Rétegek
+▸ Interlineáris sor
+▸ Szint nyilvanos regisztralt kutato
+▸ Téma
+▸ Rendszer Világos Sötét
+⌕
+Zsoltárok könyve 22
+← 21. fejezet Zsoltárok könyve 23. fejezet → Forrás és számlálók
+1Az éneklőmesternek az ajjelethassakhar szerint; Dávid zsoltára. 2Én Istenem, én Istenem, miért hagytál el engemet? Távol van megtartásomtól jajgatásomnak szava. 3Én Istenem, kiáltok nappal, de nem hallgatsz meg; éjjel is és nincs nyugodalmam. 4Pedig te szent vagy, a ki Izráel dícséretei között lakozol. 5Benned bíztak atyáink; bíztak és te megszabadítottad őket. 6Hozzád kiáltottak és megmenekültek; benned bíztak és nem szégyenültek meg. 7De én féreg vagyok s nem férfiú; embereknek csúfja és a nép útálata. 8A kik engem látnak, mind csúfolkodnak rajtam, félrehúzzák ajkaikat és hajtogatják fejöket: 9Az Úrra bízta magát, mentse meg őt; szabadítsa meg őt, hiszen gyönyörködött benne! 10Mert te hoztál ki engem az anyám méhéből, és biztattál engem anyámnak emlőin. 11Születésem óta a te gondod voltam; anyám méhétől fogva te voltál Istenem. 12Ne légy messze tőlem, mert közel a nyomorúság, és nincs, a ki segítsen. 13Tulkok sokasága kerített be engem, körülfogtak engem Básán bikái. 14Feltátották rám szájokat, mint a ragadozó és ordító oroszlán. 15Mint a víz, úgy kiöntettem; csontjaim mind széthullottak; szívem olyan lett, mint a viasz, megolvadt belső részeim között. 16Erőm kiszáradt, mint cserép, nyelvem ínyemhez tapadt, és a halál porába fektetsz engemet. 17Mert ebek vettek körül engem, a gonoszok serege körülfogott; átlyukasztották kezeimet és lábaimat. 18Megszámlálhatnám minden csontomat, ők pedig csak néznek s bámulnak rám. 19Megosztoznak ruháimon, és köntösömre sorsot vetnek. 20De te, Uram, ne légy messze tőlem; én erősségem, siess segítségemre. 21Szabadítsd meg lelkemet a kardtól, s az én egyetlenemet a kutyák körmeiből. 22Ments meg engem az oroszlán torkából, és a bivalyok szarvai közül hallgass meg engem. 23Hadd hirdessem nevedet atyámfiainak, és dicsérjelek téged a gyülekezetben. 24Ti, a kik félitek az Urat, dicsérjétek őt! Jákób minden ivadékai dicsőítsétek őt, és féljétek őt Izráel minden magzata! 25Mert nem veti meg és nem útálja meg a szegény nyomorúságát; és nem rejti el az ő orczáját előle, és mikor kiált hozzá, meghallgatja. 26Felőled lesz dicséretem a nagy gyülekezetben. Az én fogadásaimat megadom azok előtt, a kik félik őt. 27Esznek a nyomorultak és megelégesznek, dicsérik az Urat, a kik őt keresik. Éljen szívetek örökké! 28Megemlékeznek és megtérnek az Úrhoz a föld minden határai, és leborul előtted a pogányok minden nemzetsége. 29Mert az Úré a királyi hatalom, uralkodik a pogányokon is. 30Esznek és leborulnak a föld gazdagai mind; ő előtte hajtanak térdet, a kik a porba hullanak, és a ki életben nem tarthatja lelkét. 31Őt szolgálják a fiak, az Úrról beszélnek az utódoknak. 32Eljőnek s hirdetik az ő igazságát az ő utánok való népnek, hogy ezt cselekedte!
+Zsolt 22:2 Én Istenem, én Istenem, miért hagytál el engemet? Távol van…
+⤢ ✕
+Zsolt 22:2
+Vers Kereszthiv. Témák Motívum
+## [vers.karoli]
+Károli-szöveg forrásadat
+Én Istenem, én Istenem, miért hagytál el engemet? Távol van megtartásomtól jajgatásomnak szava.
+Forrás és licenc: Karoli_1908 (vers): közkincs
+## [vers.heber_csempe]
+Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
+Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.
+אֵלִ֣élíO GodH0410főnév, köznév, hímnem, egyes szám, constructusὁ
+יmyH9020toldalék, névmási, első személy, közös (ige), egyes számθεὸς
+אֵ֭לִélíGodH0410főnév, köznév, hímnem, egyes szám, constructusθεός
+יmyH9020toldalék, névmási, első személy, közös (ige), egyes számμου
+לָ<to>H9005elöljáróἵνα
+מָ֣הlámáwhy?H4100partikula, kérdőτί
+עֲזַבְתָּ֑azavtáníhave you forsakenH5800ige, qal, perfectum (qatal), második személy, hímnem, egyes számἐγκατέλιπές
+נִיmeH9030toldalék, névmási, első személy, közös (ige), egyes számμε
+רָח֥וֹקráchók[are] farH7350melléknév, melléknév, hímnem, egyes szám, abszolútμακρὰν
+מִֽ֝fromH9006elöljáróἀπὸ
+ישׁוּעָתִ֗mísúátídeliveranceH3444főnév, köznév, nőnem, egyes szám, constructusσωτηρίας
+יmyH9020toldalék, névmási, első személy, közös (ige), egyes számμου
+דִּבְרֵ֥יdivré[the] words ofH1697főnév, köznév, hímnem, többes szám, constructusλόγοι
+שַׁאֲגָתִֽsaagátícry of distressH7581főnév, köznév, nőnem, egyes szám, constructusLXX: —
+יmyH9020toldalék, névmási, első személy, közös (ige), egyes számμου
+Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · LXX_OS (lxx_token): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+## [vers.lxx_csempe]
+Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
+A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.
+ὁG3588θεὸςG2316ὁG3588θεόςG2316μουG1473πρόσχεςG4337μοιG1473ἵναG2443τίG5100ἐγκατέλιπέςG1459μεG1473μακρὰνG3112ἀπὸG0575τῆςG3588σωτηρίαςG4991μουG1473οἱG3588λόγοιG3056τῶνG3588παραπτωμάτωνG3900μουG1473
+Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
+## [vers.par]
+Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
+Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság
+1 | Én | י | H9020 | alacsony
+2 | Istenem | אֵלִ֣ | H0410 | alacsony
+2 | Istenem | י | H9020 | alacsony
+3 | én | י | H9020 | alacsony
+4 | Istenem | אֵ֭לִ | H0410 | alacsony
+4 | Istenem | י | H9020 | alacsony
+5 | miért | לָ | H9005 | alacsony
+5 | miért | מָ֣ה | H4100 | alacsony
+6 | hagytál | עֲזַבְתָּ֑ | H5800 | alacsony
+7 | el | עֲזַבְתָּ֑ | H5800 | alacsony
+8 | engemet | נִי | H9030 | alacsony
+9 | Távol | רָח֥וֹק | H7350 | alacsony
+11 | megtartásomtól | מִֽ֝ | H9006 | alacsony
+11 | megtartásomtól | ישׁוּעָתִ֗ | H3444 | alacsony
+11 | megtartásomtól | י | H9020 | alacsony
+12 | jajgatásomnak | שַׁאֲגָתִֽ | H7581 | alacsony
+12 | jajgatásomnak | י | H9020 | alacsony
+13 | szava | דִּבְרֵ֥י | H1697 | alacsony
+Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0
+## [vers.eredeti]
+Eredeti szavak (TAHOT / TAGNT) forrásadat
+# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
+1 | אֵלִ֣ | élí | H0410 | אֵל | LORD | O God
+2 | י | | H9020 | Ps1c | my | my
+3 | אֵ֭לִ | élí | H0410 | אֵל | LORD | God
+4 | י | | H9020 | Ps1c | my | my
+5 | לָ | | H9005 | ל | to | <to>
+6 | מָ֣ה | lámá | H4100 | מָה | what? | why?
+7 | עֲזַבְתָּ֑ | azavtání | H5800 | עָזַב | to leave | have you forsaken
+8 | נִי | | H9030 | Os1c | me | me
+9 | רָח֥וֹק | ráchók | H7350 | רָחֹק | distant | [are] far
+10 | מִֽ֝ | | H9006 | מ | from | from
+11 | ישׁוּעָתִ֗ | mísúátí | H3444 | יְשׁוּעָה | salvation | deliverance
+12 | י | | H9020 | Ps1c | my | my
+13 | דִּבְרֵ֥י | divré | H1697 | דָּבָר | word | [the] words of
+14 | שַׁאֲגָתִֽ | saagátí | H7581 | שְׁאָגָה | roaring | cry of distress
+15 | י | | H9020 | Ps1c | my | my
+Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0
+## [vers.macula_morf]
+Igealak-kód és szófaj (Macula) forrásadat
+Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss
+אֵלִ֣ | אֵל | H0410 | Ncmsc | noun | my.God
+י | הוּא | | Sp1cs | suffix | my
+אֵ֭לִ | אֵל | H0410 | Ncmsc | noun | God
+י | הוּא | | Sp1cs | suffix | my
+לָ | לָמָה | | R | preposition |
+מָ֣ה | מָה | H4100 | Ti | particle | why?
+עֲזַבְתָּ֑ | עָזַב | H5800 | Vqp2ms | verb | have
+נִי | הוּא | | Sp1cs | suffix | you.forsaken.me
+רָח֥וֹק | רָחֹוק | H7350 | Aamsa | adjective | [are].far
+מִֽ֝ | מִן | H4480 | R | preposition | from
+ישׁוּעָתִ֗ | יְשׁוּעָה | H3444 | Ncfsc | noun | deliverance
+י | הוּא | | Sp1cs | suffix | my
+דִּבְרֵ֥י | דָּבָר | H1697 | Ncmpc | noun | the.words
+שַׁאֲגָתִֽ | שְׁאָגָה | H7581 | Ncfsc | noun | my.cry.of.distress
+י | הוּא | | Sp1cs | suffix | my
+Forrás és licenc: Macula_heber (token_macula): CC BY 4.0
+## [vers.macula_gorog]
+Héber–görög párosítás szavanként (Macula) forrásadat
+Héber szó | Gloss | Görög (Macula) | Görög Strong
+אֵלִ֣ | my.God | ὁ | G3588
+י | my | θεὸς | G2316
+אֵ֭לִ | God | θεός | G2316
+י | my | μου | G3450
+לָ | | ἵνα | G2443
+מָ֣ה | why? | τί | G5101
+עֲזַבְתָּ֑ | have | ἐγκατέλιπές | G1459
+נִי | you.forsaken.me | με | G3165
+רָח֥וֹק | [are].far | μακρὰν | G3112
+מִֽ֝ | from | ἀπὸ | G0575
+ישׁוּעָתִ֗ | deliverance | σωτηρίας | G4991
+י | my | μου | G3450
+דִּבְרֵ֥י | the.words | λόγοι | G3056
+י | my | μου | G3450
+Forrás és licenc: Macula_heber (token_macula): CC BY 4.0
+## [vers.lxx_szavak]
+Görög szóalak és LXX-vers szavai (LXX_OS) forrásadat
+Szóalak | Lemma | Strong | Morf
+ὁ | ὁ | G3588 | article masc nom sg
+θεὸς | θεός | G2316 | noun masc nom sg
+ὁ | ὁ | G3588 | article masc nom sg
+θεός | θεός | G2316 | noun masc nom sg
+μου | ἐγώ | G1473 | pronoun 1st gen sg
+πρόσχες | προσέχω | G4337 | verb aor imperat act 2nd sg
+μοι | ἐγώ | G1473 | pronoun 1st dat sg
+ἵνα | ἵνα | G2443 | conjunction
+τί | τίς | G5100 | pronoun neut nom/voc/acc sg
+ἐγκατέλιπές | ἐγκαταλείπω | G1459 | verb aor ind act 2nd sg
+με | ἐγώ | G1473 | pronoun 1st acc sg
+μακρὰν | μακράν | G3112 | adverb
+ἀπὸ | ἀπό | G0575 | preposition
+τῆς | ὁ | G3588 | article fem gen sg
+σωτηρίας | σωτηρία | G4991 | noun fem gen sg
+μου | ἐγώ | G1473 | pronoun 1st gen sg
+οἱ | ὁ | G3588 | article masc nom pl
+λόγοι | λόγος | G3056 | noun masc nom/voc pl
+τῶν | ὁ | G3588 | article masc/fem/neut gen pl
+παραπτωμάτων | παράπτωμα | G3900 | noun neut gen pl
+μου | ἐγώ | G1473 | pronoun 1st gen sg
+Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
+## [vers.lxx_versszam]
+LXX-versszám forrásadat
+Forrás | LXX-versszám
+LXX_OS | Psalms (LXX) 21:2
+térkép (KJV-kulcs) | Psa.21:1-2 | Psa.21:2
+Forrás és licenc: LXX_OS+Versifikacios_tablak+Karoli_versmegfeleltetes (lxx_versszam): CC BY 4.0; minden jog fenntartva
+## [vers.versszamozas]
+Versszámozás (MT / KJV) forrásadat
+Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása
+MT | 22:1 | 22:2 | lxx_os_etalon_f91
+Forrás és licenc: Karoli_versmegfeleltetes+BSB_Strongs (vers_szamozas): minden jog fenntartva; CC0 1.0
+## [vers.bsb]
+Angol szavak szavanként (BSB) forrásadat gépi feldolgozás
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: BSB_Strongs (bsb): CC0 1.0
+## [vers.kjv]
+Angol szavak szavanként (KJV + Strong) forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
+GodH0410GodH0410forsakenH5800farH7350helpingH3444wordsH1697roaringH7581
+Forrás és licenc: KJV_Strongs_teljes (kjv): tisztázatlan [tisztázatlan]
+## [vers.morf_hu]
+Az igealak magyar feloldása gépi feldolgozás
+Szó | Kód | Magyar feloldás | Nyelv
+אֵלִ֣ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
+י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+אֵ֭לִ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
+י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+לָ | R | elöljáró | H
+מָ֣ה | Ti | partikula, kérdő | H
+עֲזַבְתָּ֑ | Vqp2ms | ige, qal, perfectum (qatal), második személy, hímnem, egyes szám | H
+נִי | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+רָח֥וֹק | Aamsa | melléknév, melléknév, hímnem, egyes szám, abszolút | H
+מִֽ֝ | R | elöljáró | H
+ישׁוּעָתִ֗ | Ncfsc | főnév, köznév, nőnem, egyes szám, constructus | H
+י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+דִּבְרֵ֥י | Ncmpc | főnév, köznév, hímnem, többes szám, constructus | H
+שַׁאֲגָתִֽ | Ncfsc | főnév, köznév, nőnem, egyes szám, constructus | H
+י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+Forrás és licenc: morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+## [vers.lxx_dontes]
+LXX-fordítói döntések (adatréteg) forrásadat soronként saját proveniencia-mező
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: projekt_adat (lxx_dontesek): minden jog fenntartva
+## [vers.lxx_par]
+LXX versszintű együttelőfordulás forrásadat együttelőfordulás a versben, nem szóillesztés
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: LXX_versszintu_parok (lxx_versszintu_parok): minden jog fenntartva
+## [vers.lxx_tobblet]
+LXX többlet és számozási eltérés forrásadat az adat ebben a kiadásban még nem érhető el
+Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.
+Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
+## [vers.ubs]
+UBS-jelentés az előfordulásra forrásadat
+Strong | Azonosító | Domén | Rövid definíció | Glosszák
+H0410 | 000381001002000 | Names of Deities | with singular meaning: = the highest God, creator of heaven and earth | God
+H1697 | 001558001001000 | Speak | = words spoken by humans and deities and, in certain cases, written down | words; message
+H3444 | 003156001001000 | Safe | = causative action by which humans or deities come to the rescue or protection (of humans in need) implying success | success; salvation; deliverance; victory; protection
+H4100 | 003598001001000 | Perceptive Referents | = a reference to the cause, reason or purpose of an event; normally used in questions with the purpose of identifying that cause, reason, or purpose; sometimes used in rhetorical questions expressing one's conviction that these things cannot be identified | why?; for what purpose?
+H5800 | 005332001004000 | Unfaithful | = action by which animals, humans, or deities suspend their commitment to (other) objects, animals, humans, or deities, either temporarily or permanently | to desert; to abandon; to forsake
+H7350 | 006760001004000 | Non-Engage | literally: (to be) far (from an action); hence: = state in which deities do not seem to be willing or able to engage in any way | far (from doing something)
+H7581 | 007129001001000 | Sounds | = action by which animals, humans, or deities produce a full, deep, prolonged sound as made by a lion | roar; groaning
+Forrás és licenc: UBS_DBH (ubs_dbh_referenciak): CC BY-SA 4.0 [share-alike]
+## [vers.tsk]
+## [vers.kh]
+## [vers.nave]
+## [vers.tipnr]
+## [vers.motivum]
+## [vers.tanulmany]
+## [vers.kapcsolat]
