@@ -1404,6 +1404,10 @@ tulajdonsag = [
 ]
 
 [kizart]
+szamozas-sor = "a versszámozás egysoros összefoglalója a vers-lap tetején (F231 #37); a .megj tokenjein"
+he-szocsoport = "a héber szócsoport kerete (írott szavanként, F231 #30); a keret színe az accent token"
+he-szocsoport-fej = "a szócsoport fejsora: az egész írott szó és a kiejtése (F231 #30)"
+he-szocsoport-csempek = "a szócsoport csempéinek sora (F231 #30, flex, jobbról balra)"
 sav = "a Károli-alakok arányos sávja (<meter>, F231 #57); a szín a böngésző alapja, a méret a .sav szabályé"
 ubs-jelentes = "az UBS DNTG egy jelentésének tárolója a görög szó-lapon (F231, #27); a megjelenés a gyermek-elemeken"
 forrasszoveg = "a nyers forrásszöveg csukott lenyílója a görög szó-lap alján (F231, #21; details)"

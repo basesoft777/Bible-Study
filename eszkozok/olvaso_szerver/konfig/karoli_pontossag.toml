@@ -13,3 +13,27 @@ modszer = "rétegzett becslés, normál 95%"
 datum = "2026-11-05"
 leiras = "a teljes párkészlet egyezése a vak ellenőrrel, rétegzett véletlen mintán"
 proveniencia = "scope=F172 pontosságmérés, OSSZES (súlyozott) | forras=f172/meres_eredmeny.tsv | ts=git:8ff550e5"
+
+# F231 (#38, N-F175d, DT860): a pár könyvcsoportjának mért pontossága (a #172 rétegei, Wilson 95%); a vers párosítási táblája és a
+# szó-lap „Károli itt” sora ezt mutatja a modell-egyezés („magas/alacsony”) helyett. A Mózes-réteg a mérésben a két modell egyezése
+# szerint kettévált (magas: OSZ_mozes_magas): a pár ennek a rétegnek a számát kapja. Forrás: f172/meres_eredmeny.tsv `reteg` sorai.
+[reteg]
+proveniencia = "scope=F172 pontosságmérés, rétegek | forras=f172/meres_eredmeny.tsv (reteg) | ts=git:8ff550e5"
+OSZ_mozes_magas = { p = 0.9900, also = 0.9643, felso = 0.9973, cimke = "Mózes öt könyve" }
+OSZ_mozes = { p = 0.9200, also = 0.8740, felso = 0.9502, cimke = "Mózes öt könyve" }
+OSZ_tortenet = { p = 0.9500, also = 0.9104, felso = 0.9726, cimke = "történeti könyvek" }
+OSZ_koltoi = { p = 0.9500, also = 0.9104, felso = 0.9726, cimke = "költői könyvek" }
+OSZ_profeta = { p = 0.9300, also = 0.8859, felso = 0.9578, cimke = "prófétai könyvek" }
+USZ_evangelium = { p = 0.9800, also = 0.9497, felso = 0.9922, cimke = "evangéliumok és Apostolok Cselekedetei" }
+USZ_level = { p = 0.9550, also = 0.9167, felso = 0.9761, cimke = "levelek" }
+USZ_jelenesek = { p = 0.9650, also = 0.9295, felso = 0.9829, cimke = "Jelenések könyve" }
+
+# a könyvcsoportok (a könyv URL-rövidítése → réteg), az eszkozok/karoli_strong/pontossag_minta.py CSOPORT szótára szerint
+[csoport]
+OSZ_mozes = ["1Moz", "2Moz", "3Moz", "4Moz", "5Moz"]
+OSZ_tortenet = ["Jozs", "Bir", "Ruth", "1Sam", "2Sam", "1Kir", "2Kir", "1Kron", "2Kron", "Ezsd", "Neh", "Eszt"]
+OSZ_koltoi = ["Job", "Zsolt", "Peld", "Pred", "En", "Sir"]
+OSZ_profeta = ["Ezs", "Jer", "Ez", "Dan", "Hos", "Joel", "Amos", "Abd", "Jon", "Mik", "Nah", "Hab", "Sof", "Hag", "Zak", "Mal"]
+USZ_evangelium = ["Mt", "Mk", "Luk", "Jan", "ApCsel"]
+USZ_level = ["Rom", "1Kor", "2Kor", "Gal", "Ef", "Fil", "Kol", "1Thessz", "2Thessz", "1Tim", "2Tim", "Tit", "Filem", "Zsid", "Jak", "1Pet", "2Pet", "1Jan", "2Jan", "3Jan", "Jud"]
+USZ_jelenesek = ["Jel"]

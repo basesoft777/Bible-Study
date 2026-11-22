@@ -75,3 +75,17 @@ karoli.alak	Károli-alak
 karoli.darab	Darab	
 karoli.mind	Mind a %(n)s könyv szó szintű párjai alapján.	
 karoli.resz	A %(n)s feldolgozott könyv (%(konyvek)s) szó szintű párjai alapján; a többi könyv még hiányzik.	
+par.pontossag	%(p)s%% (%(csoport)s)	
+par.pontossag_sugo	a párosítás mért pontossága ebben a könyvcsoportban, 95%%-os intervallum: %(also)s–%(felso)s%%; proveniencia: %(prov)s	
+par.oszlop_sorszam	Károli-szó (sorszám)	
+par.oszlop_szo	Szó	
+par.oszlop_eredeti	Eredeti	
+par.oszlop_strong	Strong	
+par.oszlop_pontossag	Mért pontosság	
+ebben.tobb_heber	ez a magyar szó több héber szót ad vissza együtt:	
+ebben.pontossag	a párosítás mért pontossága: %(p)s	
+csempe.szocsoport_sugo	egy írott szó, %(db)s elemből (előtag, szótő, rag): a keret tetején az egész szó és a kiejtése	
+blokk.tablazatos	Táblázatos nézet (a csempék adatai soronként)	
+vers.szamozas_sor	Versszámozás: héber (MT) %(mt)s · angol (KJV) %(kjv)s	
+vers.szamozas_sugo	osztály: %(osztaly)s; a megfeleltetés forrása: %(forras)s	
+vers.lxx_sor	Septuaginta-versszám: %(lxx)s	

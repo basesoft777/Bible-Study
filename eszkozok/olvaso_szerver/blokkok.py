@@ -34,6 +34,7 @@ def _pilot_modul(nev):
 
 import bdb_szelet  # noqa: E402  (élesben a szerver mellett, DT-F99c (a); a pilot ugyanezt tölti be)
 import bdb_szokartya  # noqa: E402  (F213: a szókártya megjelenítési szabályai)
+import szocsoport  # noqa: E402  (F231: a héber elemek írott szó szerinti csoportja)
 import szokartya_szoveg  # noqa: E402  (F231: a szótári szöveg olvasói alakja)
 from feliratok import F  # noqa: E402  (DT897: a fordítótábla)
 
@@ -227,8 +228,22 @@ def _f_par(K):
 
 
 def _r_par(d, K):
-    sorok = [[str(hs), hu, _heb(erszo), strong_link(K, st), bz or ''] for hs, hu, ers, erszo, st, bz in d]
-    return _tabla(['Károli-szó (sorszám)', 'Szó', 'Eredeti', 'Strong', 'Bizonyosság'], sorok)
+    """A Károli–Strong párok a magyar szó szerint összevonva (F231, #30: a „Kezdetben” egy sor, „בְּ + רֵאשִׁ֖ית”); az utolsó oszlop a
+    könyvcsoport mért pontossága (#38, DT860), nem a modell-egyezés címkéje."""
+    csop = []
+    for hs, hu, ers, erszo, st, bz in d:
+        if csop and csop[-1][0] == hs:
+            csop[-1][2].append(erszo)
+            csop[-1][3].append(st)
+            csop[-1][4].append(bz)
+        else:
+            csop.append((hs, hu, [erszo], [st], [bz]))
+    sorok = []
+    for hs, hu, er, st, bz in csop:
+        p, sugo = par_pontossag(K, 'magas' if all(b == 'magas' for b in bz) else (bz[0] or ''))
+        sorok.append([str(hs), hu, Markup(' + ').join(_heb(x) for x in er), Markup(' + ').join(strong_link(K, x) for x in st),
+                      Markup('<span title="%s">%s</span>') % (sugo, p) if p else ''])
+    return _tabla([F('par.oszlop_sorszam'), F('par.oszlop_szo'), F('par.oszlop_eredeti'), F('par.oszlop_strong'), F('par.oszlop_pontossag')], sorok)
 
 
 def _f_eredeti(K):
@@ -238,7 +253,9 @@ def _f_eredeti(K):
 def _r_eredeti(d, K):
     sorok = []
     for sz, ny, sn, alak, kiej, szoto, rovid, tukor in d:
-        sorok.append([str(sz), _heb(alak) if ny == 'H' else _gor(alak), kiej or '', strong_link(K, sn), _heb(szoto) if ny == 'H' else _gor(szoto), rovid or '', tukor or ''])
+        # F231 (#35): a görög szóhoz tapadó központozás („λόγος,”) nem a szó része: a „Szó” oszlopban nélküle áll
+        sorok.append([str(sz), _heb(alak) if ny == 'H' else _gor((alak or '').rstrip(',.;:·')), kiej or '', strong_link(K, sn),
+                      _heb(szoto) if ny == 'H' else _gor(szoto), rovid or '', tukor or ''])
     return _tabla(['#', 'Szó', 'Kiejtés', 'Strong', 'Szótő', 'Rövid jelentés', 'Angol tükörfordítás'], sorok)
 
 
@@ -305,9 +322,16 @@ def _f_lxx_versszam(K):
 
 
 def _r_lxx_versszam(d, K):
+    """F231 (#37, #48): egysoros összefoglaló a lap tetején; a forrás belső azonosítója és a KJV-kulcsú térkép csak súgóban."""
     lxx, extra, terkep = d
-    sorok = [['LXX_OS', x] for x in lxx] + [[f, x] for f, x in extra] + [['térkép (KJV-kulcs)', x] for x in terkep]
-    return _tabla(['Forrás', 'LXX-versszám'], sorok)
+    kk = (K.ig or '').rpartition(' ')[0]
+    # a forrás angol könyvneve („Psalms (LXX) 21:2”) helyett a vers magyar könyvneve, a Septuaginta fejezet:vers-e
+    ertekek = list(dict.fromkeys(re.sub(r'^.*?(\d+:\d+(?:[-–]\d+)?)\s*$', lambda m: '%s %s' % (kk, m.group(1)), x)
+                                 for x in list(lxx) + [x for _f, x in extra]))
+    sugo = '; '.join(['LXX_OS: %s' % x for x in lxx] + ['%s: %s' % (f, x) for f, x in extra] + ['KJV: %s' % x for x in terkep])
+    if not ertekek:
+        return Markup('')
+    return Markup('<p class="szamozas-sor" title="%s">%s</p>') % (sugo, F('vers.lxx_sor', lxx=', '.join(ertekek)))
 
 
 def _f_versszamozas(K):
@@ -315,8 +339,10 @@ def _f_versszamozas(K):
 
 
 def _r_versszamozas(d, K):
+    """F231 (#37, #48): egysoros összefoglaló a lap tetején (héber és angol számozás); a megfeleltetés forrása csak súgóban."""
     osz, kjvi, mti, mf = d
-    return _tabla(['Osztály', 'KJV-versszám', 'MT-versszám', 'A megfeleltetés forrása'], [[osz or '', kjvi or '', mti or kjvi or '', mf or '']])
+    return Markup('<p class="szamozas-sor" title="%s">%s</p>') % (
+        F('vers.szamozas_sugo', osztaly=osz or '', forras=mf or ''), F('vers.szamozas_sor', mt=mti or kjvi or '', kjv=kjvi or ''))
 
 
 def _f_bsb(K):
@@ -647,14 +673,37 @@ def _f_heber_csempe(K):
     return _heber_csempek(K) or None
 
 
+def _heber_szocsoportok(th):
+    """F231 (#30, F233 2. pont): a csempék írott szavanként (`szocsoport.heber_csoport`: a Macula szóazonosítója, ennek híján a
+    JOHD-validáció tartalék szabálya a TAHOT-kiejtésből): [[csempe-index, ...], ...] a vers sorrendjében."""
+    tok = [{'s': w['strong'] or '', 'w': szocsoport.macula_szo((w.get('macula') or {}).get('xml_id'))} for w in th]
+    g = szocsoport.heber_csoport(tok, [w['atiras'] or '' for w in th]) if th else []
+    ki = []
+    for i, c in enumerate(g):
+        if ki and g[i - 1] == c:
+            ki[-1].append(i)
+        else:
+            ki.append([i])
+    return ki
+
+
 def _r_heber_csempe(th, K):
     ki = Markup('')
-    for w in th:
+    csoport = {i: cs for cs in _heber_szocsoportok(th) for i in cs}
+    for n, w in enumerate(th):
+        cs = csoport.get(n, [n])
+        if len(cs) > 1 and n == cs[0]:
+            # a keret nyitása: az egész írott szó és a kiejtése (a TAHOT a kiejtést az írott szóhoz adja, a csempén nem ismétlődik)
+            egesz = ''.join((th[i]['heber'] or '').rstrip('/') for i in cs)
+            kiejt = ''.join(th[i]['atiras'] or '' for i in cs)
+            ki += Markup('<div class="he-szocsoport" title="%s"><p class="he-szocsoport-fej"><span class="he" lang="he">%s</span>'
+                         '<span class="at">%s</span></p><div class="he-szocsoport-csempek">') % (F('csempe.szocsoport_sugo', db=len(cs)), egesz, kiejt)
         m = w.get('macula') or {}
         mf = m.get('morf_hu') or m.get('szofaj') or ''
         cim = ('Nyelvtani elem (prefixum, névelő, tárgyjelölő): nincs szó-lapja' if w['nyelvtani'] else '%s szó-lapja' % w['strong']) + (' · morfológia: %s' % m['morf'] if m.get('morf') else '')
         fo = Markup('<span class="he" lang="he">%s</span><span class="at">%s</span><span class="gl">%s</span><span class="st">%s</span>%s') % (
-            w['heber'], w['atiras'] or '', w['tukor'] or '', w['strong'] or '', Markup('<span class="mf">%s</span>') % mf if mf else '')
+            w['heber'], '' if len(cs) > 1 else (w['atiras'] or ''), w['tukor'] or '', w['strong'] or '',
+            Markup('<span class="mf">%s</span>') % mf if mf else '')
         if not w['nyelvtani']:
             fo = Markup('<a class="he-fo" href="%s" title="%s">%s</a>') % (_ctx_href(K, w['strong']), cim, fo)
         else:
@@ -667,6 +716,8 @@ def _r_heber_csempe(th, K):
         else:
             lx = Markup('<span class="lx ures">LXX: —</span>')
         ki += Markup('<div class="he-szo%s" data-strong="%s">%s%s</div>') % (' nyelvtani' if w['nyelvtani'] else '', w['strong'] or '', fo, lx)
+        if len(cs) > 1 and n == cs[-1]:
+            ki += Markup('</div></div>')
     return Markup('<p class="megj">Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). '
                   'Szaggatott keret: nyelvtani elem, nincs szó-lapja.</p><div class="heber-sor" lang="he" dir="rtl">%s</div>') % ki
 
@@ -729,8 +780,11 @@ def _r_ebben(d, K):
             for st, bz in fo:
                 lemma = _heb((lem.get(st) or (st,))[0] or st)
                 cim = Markup('<b>%s</b>') % lemma if st == K.strong else Markup('<a href="%s">%s</a>') % (_ctx_href(K, st), lemma)
-                reszek.append(Markup('%s (%s%s)') % (cim, st, ', %s bizonyosság' % bz if bz and bz != 'magas' else ''))
-            sor += Markup(' — ez a magyar szó több héber szót ad vissza együtt: ') + Markup(' + ').join(reszek)
+                reszek.append(Markup('%s (%s)') % (cim, st))
+            sor += Markup(' — ') + F('ebben.tobb_heber') + Markup(' ') + Markup(' + ').join(reszek)
+        p, sugo = par_pontossag(K, 'magas' if all(b == 'magas' for _s, b in fo) else (fo[0][1] if fo else ''))
+        if p:
+            sor += Markup(' <span class="megj" title="%s">(%s)</span>') % (sugo, F('ebben.pontossag', p=p))
         ki += Markup('<p class="megj karoli-itt">%s</p>') % sor
     if m.get('morf'):
         ki += Markup('<p class="megj alak">Alak: %s (%s) · %s (%s)</p>') % (_heb(w['heber']), w['atiras'] or '', m.get('morf_hu') or m.get('szofaj') or '', m['morf'])
@@ -827,6 +881,31 @@ def _karoli_pontossag_betolt(nev='karoli_pontossag.toml'):
 
 
 KAROLI_PONTOSSAG = _karoli_pontossag_betolt()
+
+
+def _karoli_retegek_betolt(nev='karoli_pontossag.toml'):
+    import tomllib
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'konfig', nev), 'rb') as f:
+        m = tomllib.load(f)
+    reteg = {k: v for k, v in m['reteg'].items() if isinstance(v, dict)}
+    konyv = {sl: cs for cs, lista in m['csoport'].items() for sl in lista}
+    return reteg, konyv, m['reteg']['proveniencia']
+
+
+KAROLI_RETEG, KAROLI_RETEG_KONYV, KAROLI_RETEG_PROV = _karoli_retegek_betolt()
+
+
+def par_pontossag(K, bz, ig=None):
+    """F231 (#38, N-F175d, DT860): a pár könyvcsoportjának mért pontossága olvasói alakban („99% (Mózes öt könyve)”) és a súgója; a
+    Mózes-rétegben a mérés szerint a „magas” egyezésű pár a saját rétegének számát kapja. ('', '') ha a könyv nem azonosítható."""
+    kk = (ig or K.ig or '').rpartition(' ')[0]
+    cs = KAROLI_RETEG_KONYV.get(K.kozos.slug.get(kk, ''))
+    if not cs:
+        return '', ''
+    r = KAROLI_RETEG[cs + '_magas' if cs + '_magas' in KAROLI_RETEG and bz == 'magas' else cs]
+    szam = lambda x: ('%.1f' % (100 * x)).replace('.', ',').replace(',0', '')
+    return (F('par.pontossag', p=szam(r['p']), csoport=r['cimke']),
+            F('par.pontossag_sugo', also=szam(r['also']), felso=szam(r['felso']), prov=KAROLI_RETEG_PROV))
 KAROLI_MERT_PONTOSSAG = 'A párosítás mért pontossága %d%%.' % round(100 * KAROLI_PONTOSSAG['p'])
 
 
@@ -2361,11 +2440,11 @@ def _r_ubs_dntg(d, K):
 B = Blokk
 
 
-def _csukva(render):
-    """F231 (#21): a nyers forrásszöveg blokkja csukva (a szókártya után, „forrásszöveg” felirattal)."""
+def _csukva(render, felirat='blokk.forrasszoveg'):
+    """F231 (#21, #36): a nyers forrásszöveg és a csempék adatát ismétlő táblázat blokkja csukva, a felirat a fordítótáblából."""
     def f(d, K):
         t = render(d, K)
-        return Markup('<details class="forrasszoveg"><summary>%s</summary>%s</details>') % (F('blokk.forrasszoveg'), t) if t else t
+        return Markup('<details class="forrasszoveg"><summary>%s</summary>%s</details>') % (F(felirat), t) if t else t
     return f
 
 
@@ -2379,21 +2458,21 @@ def _jelleg_hu(i):
 REGISZTER = [
     # vers-lap
     B('vers.karoli', 'vers', 'Károli-szöveg', 'forras', ('vers',), _f_karoli, _r_karoli),
+    B('vers.versszamozas', 'vers', 'Versszámozás (MT / KJV)', 'forras', ('vers_szamozas',), _f_versszamozas, _r_versszamozas),
+    B('vers.lxx_versszam', 'vers', 'LXX-versszám', 'forras', ('lxx_versszam',), _f_lxx_versszam, _r_lxx_versszam),
     B('vers.heber_csempe', 'vers', 'Héber szöveg', ('forras', 'gepi'), ('token_eredeti', 'token_macula', 'lxx_token', 'morf_kulcs_heber', 'morf_nyelv_aramai'), _f_heber_csempe, _r_heber_csempe,
       'szavankénti csempék; a táblázatos nézet alább'),
     B('vers.lxx_csempe', 'vers', 'Septuaginta (LXX, Rahlfs)', 'forras', ('lxx_token',), _f_lxx_csempe, _r_lxx_csempe, 'szavankénti csempék; a táblázatos nézet alább'),
-    B('vers.par', 'vers', 'Károli–Strong párosítás', 'modell', ('token_par',), _f_par, _r_par, 'a pontozott aláhúzás a szövegben is modell-kimenet'),
-    B('vers.eredeti', 'vers', 'Eredeti szavak (TAHOT / TAGNT)', 'forras', ('token_eredeti',), _f_eredeti, _r_eredeti),
-    B('vers.macula_morf', 'vers', 'Igealak-kód és szófaj (Macula)', 'forras', ('token_macula',), _f_macula, _r_macula_morf),
-    B('vers.macula_gorog', 'vers', 'Héber–görög párosítás szavanként (Macula)', 'forras', ('token_macula',), _f_macula, _r_macula_gorog),
-    B('vers.lxx_szavak', 'vers', 'Görög szóalak és LXX-vers szavai (LXX_OS)', 'forras', ('lxx_token',), _f_lxx_szavak, _r_lxx_szavak),
-    B('vers.lxx_versszam', 'vers', 'LXX-versszám', 'forras', ('lxx_versszam',), _f_lxx_versszam, _r_lxx_versszam),
-    B('vers.versszamozas', 'vers', 'Versszámozás (MT / KJV)', 'forras', ('vers_szamozas',), _f_versszamozas, _r_versszamozas),
+    B('vers.par', 'vers', 'Károli–Strong párosítás', 'modell', ('token_par',), _f_par, _csukva(_r_par, 'blokk.tablazatos'), 'a pontozott aláhúzás a szövegben is modell-kimenet'),
+    B('vers.eredeti', 'vers', 'Eredeti szavak (TAHOT / TAGNT)', 'forras', ('token_eredeti',), _f_eredeti, _csukva(_r_eredeti, 'blokk.tablazatos')),
+    B('vers.macula_morf', 'vers', 'Igealak-kód és szófaj (Macula)', 'forras', ('token_macula',), _f_macula, _csukva(_r_macula_morf, 'blokk.tablazatos')),
+    B('vers.macula_gorog', 'vers', 'Héber–görög párosítás szavanként (Macula)', 'forras', ('token_macula',), _f_macula, _csukva(_r_macula_gorog, 'blokk.tablazatos')),
+    B('vers.lxx_szavak', 'vers', 'Görög szóalak és LXX-vers szavai (LXX_OS)', 'forras', ('lxx_token',), _f_lxx_szavak, _csukva(_r_lxx_szavak, 'blokk.tablazatos')),
     B('vers.bsb', 'vers', 'Angol szavak szavanként (BSB)', ('forras', 'gepi'), ('bsb',), _f_bsb, _r_angol),
     B('vers.kjv', 'vers', 'Angol szavak szavanként (KJV + Strong)', ('forras', 'gepi'), ('kjv',), _f_kjv, _r_angol, 'a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad'),
     B('vers.nave', 'vers', 'Témák (Nave, versekre bontva)', ('forras', 'gepi'), ('nave_vers', 'nave_basokant', 'nave_tema_hu'), _f_nave, _r_nave),
     B('vers.tipnr', 'vers', 'Tulajdonnevek (TIPNR)', ('forras', 'gepi'), ('tipnr',), _f_tipnr, _r_tipnr),
-    B('vers.morf_hu', 'vers', 'Az igealak magyar feloldása', 'gepi', ('morf_kulcs_heber', 'token_macula', 'morf_nyelv_aramai'), _f_morf_hu, _r_morf_hu),
+    B('vers.morf_hu', 'vers', 'Az igealak magyar feloldása', 'gepi', ('morf_kulcs_heber', 'token_macula', 'morf_nyelv_aramai'), _f_morf_hu, _csukva(_r_morf_hu, 'blokk.tablazatos')),
     B('vers.motivum', 'vers', 'Motívumadat (adatréteg)', 'forras', ('elofordulasok', 'motivumok', 'vers'), _f_motivum, _r_motivum, 'soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből'),
     B('vers.tanulmany', 'vers', 'Tanulmányok erről a versről', ('forras', 'gepi'), ('tanulmany', 'tanulmany_tartomany', 'tanulmany_hivatkozas'), _f_tanulmany, _r_tanulmany,
       'a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül', opcionalis=True),

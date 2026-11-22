@@ -83,6 +83,12 @@ table.adat th { color: var(--muted); font-weight: 600; }
 .heber-sor { direction: rtl; display: flex; flex-wrap: wrap; gap: var(--space-he-sor); margin: 6px 0; }
 .he-szo { direction: ltr; display: grid; justify-items: center; gap: 1px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); background: var(--bg); text-align: center; }
 .he-szo.nyelvtani { opacity: .62; border-style: dashed; }
+/* F231 (#30): a héber szócsoport kerete (írott szavanként; a keret tetején az egész szó és a kiejtése) */
+.he-szocsoport { direction: rtl; display: grid; gap: 2px; padding: 2px 4px 4px; border: 1px solid var(--accent); border-radius: var(--radius-csempe); background: var(--panel); }
+.he-szocsoport-fej { direction: ltr; display: grid; justify-items: center; margin: 0; text-align: center; }
+.he-szocsoport-fej .he { font-family: var(--font-he); font-size: var(--fs-csempe-heber); line-height: var(--lh-csempe); direction: rtl; }
+.he-szocsoport-fej .at { color: var(--muted); font-style: italic; font-size: var(--fs-csempe-glossza); }
+.he-szocsoport-csempek { direction: rtl; display: flex; gap: 2px; }
 .he-fo { display: grid; justify-items: center; gap: 1px; color: inherit; text-decoration: none; }
 a.he-fo:hover, a.he-fo:focus-visible { background: var(--accent-soft); border-radius: var(--radius-kiemeles); }
 .he-szo .he { font-family: var(--font-he); line-height: var(--lh-csempe); direction: rtl; }
@@ -254,6 +260,7 @@ abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0;
 .szk-jel-inline { font-family: var(--font-mono); }
 .szk-potcim, .szk-tj-gl.szk-potcim { font-style: italic; font-weight: 400; }
 .szk-szamozas { margin: 4px 0 0; }
+.szamozas-sor { margin: 0; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
 meter.sav { width: 8rem; height: .7rem; vertical-align: middle; }
 sup { line-height: 0; }
 .szk-egyben { display: none; }
