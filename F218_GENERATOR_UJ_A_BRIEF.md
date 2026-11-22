@@ -7,7 +7,7 @@ fazis: folyamat
 modell: opus
 allapot: fut
 ag: claude/f218a-s9-722be2
-pr: -
+pr: 797
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
 kovetkezo: "Folytatás: S9c (F218.12) új sessionben a naplok/F218_folytatas.md-ből: a vázban maradt S3_MARADEK tételek és a leltártételek; utána a felhasználó nézése (naplok/F218_S9_nezes.md, frissítve)"
 munka: folyamat
