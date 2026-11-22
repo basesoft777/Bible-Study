@@ -8,11 +8,11 @@ modell: opus
 sav: SERVER
 allapot: nem_indult
 ad: az olvasó szó-lapján (/szo/<Strong>) a BDB és a Thayer ugyanazzal a kártyával jelenik meg, a lexikonlap 4.2 „Mélységi szócikk” mintájára (a jelentések rendje, alatta szakaszonként egybefüggő szöveg, magyar, ahol van, különben angol, ugyanabban a kártyában); a görög szó-lap blokksora a héberével egyenértékű; a látható szövegben nincs nyers BDB-jelölés, könyvnév nélküli hivatkozás és belső azonosító, ezt kapu védi
-kovetkezo: "Indítható a #781 (F230) merge-e után; első lépés: M0, a kártyamodell forrásának eldöntése (⛔ DT-F231a)"
+kovetkezo: "Indítható a #781 (F230) és a #232 merge-e után; első lépés: M0, a kártyamodell forrásának eldöntése (⛔ DT-F231a)"
 munka: folyamat
 olvas: [eszkozok/lapgen/bemenet/kartya_lap.py, eszkozok/lapgen/bemenet/kartya.py, eszkozok/lexikon_general.py, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/bdb_vers_jelentes.tsv, adat/szotar_szakasz_cimke.tsv, eszkozok/bdb_rovidites.py, lexikon/HAMART-001_TUDOMANYOS.md]
 ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szokartya.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/teszt_szokartya_egyseges.py]
-fugg: []
+fugg: [232]
 ---
 
 # F231_SZOKARTYA_EGYSEGES_BRIEF.md — Egységes szókártya az olvasóban
@@ -50,7 +50,8 @@ A lexikonlap 4.2 „Mélységi szócikk” része (pl. `lexikon/HAMART-001_TUDOM
    - a vers szónézetéből érkezve a vers jelentéspontja megjelölve;
    - alatta a szótári szöveg szakaszonként egybefüggő bekezdésben, az eredeti szórendben, hivatkozásmezőre bontás nélkül;
    - a magyar szöveg ott, ahol van, különben ugyanabban a kártyában az angol, nyitva, „Magyar fordítás nincs · az angol eredeti áll” felirattal;
-   - ahol van magyar, ott az angol eredeti csukva.
+   - ahol van magyar, ott az angol eredeti csukva;
+   - a szöveg igehelyei kattinthatók, és a vers szónézetéből érkezve a vers helye a szövegben ki van emelve. Ez a BDB-ben a `VersJelolo` mintájára már működik; a Thayer ugyanígy kapja meg. A felmérés rangsorában ez volt a 6. pont („Thayer kiemelés a szövegben + hivatkozás-feloldás”).
 
    A modell forrása az M0 döntése (⛔ DT-F231a). (a) Az olvasó a `lapgen` kártyamodelljét használja (`lapgen/bemenet/kartya_lap.py` → `szamitas.kartya`). Ez az „egy szabály, egy hely” megoldás. (b) Az olvasó saját modellt tart, a lexikonlap szabályaival és egy egyezést mérő teszttel. Az orkesztrátor az (a)-t javasolja, ha a modell motívum nélkül is hívható.
 2. **Tagolási jelző és visszaesés.** Szakaszonként gépi jelző dönti el, olvasható-e a tagolás. Rossz tagolás jelei: üres jelentéscím, alaktani paradigma jelentésként, hiányzó tagolás. Ahol a jelző rossz, a kártya a szakasz egybefüggő szövegét mutatja tagolás nélkül. A jelző eredménye mért szám a teljes állományon (BDB és Thayer külön).
