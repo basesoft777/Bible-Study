@@ -22,6 +22,7 @@ import subprocess
 import sys
 import threading
 import time
+import weakref
 
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
@@ -260,7 +261,11 @@ class Lablec:
 
 class LablecFigyelo:
     """Élő lábléc: a git-állapotot és a forrás-adatbázis építési idejét `ttl` másodpercenként újraolvassa (néhány kis fájlolvasás), így az ágváltás
-    vagy a Windows-oldali adatbázis újraépítése újraindítás nélkül is látszik. A futó adatbázis `epites_ts`-e a folyamat élettartamára rögzített."""
+    vagy a Windows-oldali adatbázis újraépítése újraindítás nélkül is látszik. A futó adatbázis `epites_ts`-e a folyamat élettartamára rögzített.
+
+    F235: az újraolvasás háttérszálon fut (`ttl` másodpercenként), a kérés csak a kész állapotot veszi át, tehát a git- és fájlolvasás (27–133 ms)
+    nem a kérés idejét növeli. Az első kérés (még nincs állapot) szinkron számol, és elindítja a szálat; a szál a figyelő megszűnésével kilép, és
+    elágazás (gunicorn `--preload`) után a gyermekfolyamatban újraindul. `ttl <= 0`: minden kérésnél szinkron újraolvas (a tesztek kapcsolója)."""
 
     def __init__(self, kiadas, epites_ts, kezdo=SZERVER_DIR, kornyezet=None, ttl=3.0):
         self._args = (kiadas, epites_ts, kezdo, kornyezet)
@@ -268,14 +273,47 @@ class LablecFigyelo:
         self._zar = threading.Lock()
         self._t = None
         self._lablec = None
+        self._szal_pid = None
+
+    def _frissit(self):
+        lablec = Lablec.keszit(*self._args)
+        with self._zar:
+            self._lablec = lablec
+            self._t = time.monotonic()
+
+    @staticmethod
+    def _hatter(gyenge):
+        """A háttérszál törzse: `ttl` másodpercenként frissít; ha a figyelőt eldobták, kilép; hiba esetén a régi állapot marad."""
+        while True:
+            f = gyenge()
+            if f is None:
+                return
+            varakozas = max(f.ttl, 1.0)
+            del f
+            time.sleep(varakozas)
+            f = gyenge()
+            if f is None:
+                return
+            try:
+                f._frissit()
+            except Exception:            # a lábléc olvasása nem állíthatja meg a szervert; a következő kör újra próbál
+                pass
+            del f
+
+    def _szal_indit(self):
+        if self._szal_pid != os.getpid():
+            self._szal_pid = os.getpid()
+            threading.Thread(target=LablecFigyelo._hatter, args=(weakref.ref(self),), name='lablec-figyelo', daemon=True).start()
 
     def kap(self):
-        with self._zar:
-            most = time.monotonic()
-            if self._lablec is None or most - self._t >= self.ttl:
-                self._lablec = Lablec.keszit(*self._args)
-                self._t = most
-            return self._lablec
+        if self._lablec is None or self.ttl <= 0:
+            with self._zar:
+                kell = self._lablec is None or self.ttl <= 0
+            if kell:
+                self._frissit()
+        if self.ttl > 0:
+            self._szal_indit()
+        return self._lablec
 
 
 def figyelmeztetesek(ag, epites_ts, forras_ts='', lemaradas=None):

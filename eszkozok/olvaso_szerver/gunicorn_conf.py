@@ -6,6 +6,7 @@ A hozzáférési napló az útvonalat írja, a lekérdezés-szöveget (a `?szo=�
 """
 import os
 
+os.environ.setdefault('PARDES_ELOMELEGIT', '1')      # F235: az alkalmazás-gyár az indulás után háttérszálon bemelegít (az első kérés ne várjon)
 chdir = os.path.dirname(os.path.abspath(__file__))
 bind = os.environ.get('PARDES_BIND', '127.0.0.1:8000')
 worker_class = 'gthread'
