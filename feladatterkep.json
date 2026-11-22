@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-22",
-   "commit": "58465073"
+   "commit": "4cb29c5e"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -717,7 +717,7 @@
    "fazis": "folyamat",
    "allapot": "run",
    "brief_allapot": "fut",
-   "most": "Te: az S8b a fő munka (a kézi rések: Miért fontos, 10., 11.); utána megállás",
+   "most": "Te: az S8d (Kolofon: GK-07 maradéka, GK-27, GK-28 maradéka, ISM-KOLOFON); utána megállás",
    "fugg": "#70*",
    "tervezett": false,
    "reszletes": "",
@@ -7158,6 +7158,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 259
+  "kesz_db": 260
  }
 }

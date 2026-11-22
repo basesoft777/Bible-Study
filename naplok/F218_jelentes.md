@@ -1557,7 +1557,7 @@ main-en is áll; most nem futtattam újra.
 (`fajl_licenc_blokk_lista`) állítja össze; a GK-07 szerint a forrás-halmaz az olvasási napló. A kettő eltér (a régi
 lista nevezi a Mounce-ot és a teljes Thayer-szótárt, amelyet az új generátor nem olvas; nem nevezi az LSJ-t, a
 Strong-szótárt, a teljesség-mérést, a motívumközi kapcsolatokat, a javított Károli-KH táblát és több projekttáblát).
-A kérdés a felhasználóé volt (a közös jegyzetmappa `F218_S8c_forraslista_dontes.md`); a döntés **DT-F218x (a)**, a
+A kérdés a felhasználóé volt (a közös jegyzetmappa `F218_S8c_forraslista_dontes.md`); a döntés **DT901 (a)**, a
 felhasználó szavaival (2026-11-22, az orkesztrátoron át): „(a) mehet”; a 20 ± 5 eltérő listasort és a 20%-os küszöböt
 ezzel együtt fogadta el, és a Kolofonra (S8d) is áll.
 
@@ -1566,7 +1566,7 @@ ezzel együtt fogadta el, és a Kolofonra (S8d) is áll.
   alrészeik olvasásait (B-azonosítók) gyűjti, és a gyűjtő szakasz számítása megkapja (`szamit(korny, elozo)`). A
   „számozott szakaszok” az 1–11. szakasz: a döntés kérdésének (a) pontja a Döntési út teljesség-mérését (B05, B06)
   kifejezetten a halmazba sorolta, a (b) zárta ki; az orkesztrátor üzenetében álló „2–11.” a kérdés-fájl elírását
-  követte (a DT-F218x sora kimondja).
+  követte (a DT901 sora kimondja).
 - **A szűrő:** a jegyzék (SEMA 2.66) új `irodalom` oszlopa: `-` (B01, B12, B13, B47, B51, B59, B63, B65, B66, B68,
   B73), `licenc`, és a licenc olvasói alakja: `nyilt_mag` (B02, B04, B45, B46, B56), `elofordulas` (B03), `forditas`
   (B14), `doi` (B54). Ismeretlen érték BemenetHiba.
