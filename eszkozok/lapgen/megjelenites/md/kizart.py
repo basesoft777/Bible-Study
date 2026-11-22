@@ -52,7 +52,8 @@ def miert(ny, j):
 def jegyzet(ny, g):
     """A sor jegyzetének mondata."""
     if g.fajta is VizsgaltJegyzetFajta.SZOKERESES:
-        return ny.s('k3.jegyzet.szokereses', szavak=tuple(_szo(ny, sz) for sz in g.szavak), megszoritas=g.megszoritas)
+        return ny.s('k3.jegyzet.szokereses', szavak=tuple(_szo(ny, sz) for sz in g.szavak),
+                    megszoritas=ny.nev('kereses_megszoritas', g.megszoritas))
     korpuszok = tuple(ny.nev('korpusz', k) for k in g.korpuszok)
     if g.fajta is VizsgaltJegyzetFajta.KERESES_KORPUSZ:
         return ny.s('k3.jegyzet.kereses', strongok=tuple(sz.strong for sz in g.szavak),

@@ -1015,7 +1015,7 @@ k3.miert.teljesseg	Motívum szavainak teljes bibliai keresése	-	3	szerep_kizart
 k3.miert.teljesseg.halo	A motívum szavainak teljes bibliai keresése ({halok|, })	halok:lista(nev:halo_kereses)	3	szerep_kizart._teljesseg (a lap cseréje, _HALO_OLVASOI)	-
 k3.miert.teljesseg.csoport	A motívum szavainak teljes bibliai keresése; a csoportosan kizárt {n} vers közül az első	n:szam	3	szerep_kizart._teljesseg (a lap cseréje)	-
 k3.miert.teljesseg.halo.csoport	A motívum szavainak teljes bibliai keresése ({halok|, }); a csoportosan kizárt {n} vers közül az első	halok:lista(nev:halo_kereses), n:szam	3	szerep_kizart._teljesseg (a lap cseréje, _HALO_OLVASOI)	-
-k3.jegyzet.szokereses	Forrás: szókeresés: {szavak|, } {megszoritas}.	szavak:lista(lathato), megszoritas:lathato	3	tablajegyzet.olvasoi_jegyzet	-
+k3.jegyzet.szokereses	Forrás: szókeresés: {szavak|, } {megszoritas}.	szavak:lista(lathato), megszoritas:nev(kereses_megszoritas)	3	tablajegyzet.olvasoi_jegyzet	-
 k3.jegyzet.kereses	Forrás: keresés {strongok|, }; {korpuszok|; }.	strongok:lista(strong), korpuszok:lista(nev:korpusz)	3	tablajegyzet.olvasoi_jegyzet	-
 k3.jegyzet.lanc	Forrás: lánc-keresés (két lánc-szó egy versben vagy a szomszédos versben); {korpuszok|; }.	korpuszok:lista(nev:korpusz)	3	tablajegyzet.olvasoi_jegyzet	-
 k3.jegyzet.teljesseg_egyenkent	Forrás: a motívum szavainak teljes bibliai keresése, egyenkénti döntés.	-	3	tablajegyzet.olvasoi_jegyzet	-

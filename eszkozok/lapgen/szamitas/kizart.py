@@ -51,7 +51,7 @@ class Jegyzet:
     """A sor jegyzete (a cellán túli jelölési forrás)."""
     fajta: VizsgaltJegyzetFajta
     szavak: Tuple[SzoNev, ...] = ()
-    megszoritas: Optional[Lathato] = None
+    megszoritas: Optional[Kulcs] = None
     korpuszok: Tuple[Kulcs, ...] = ()
 
 
@@ -251,7 +251,7 @@ def szamit(korny):
             if elso.jegyzet is not None:
                 g = elso.jegyzet
                 jegyzet = Jegyzet(fajta=g.fajta, szavak=szonevek(g.strongok),
-                                  megszoritas=proza(g.megszoritas) if g.megszoritas is not None else None,
+                                  megszoritas=g.megszoritas,
                                   korpuszok=g.korpuszok)
             ok = None
             if elso.ok is not None and not elso.ok_ismetles:

@@ -5,7 +5,8 @@ Bemenet: B04 (a jelöltek döntésnaplója: a motívum elutasított és nyitva m
 elutasítási okok). A sor két szabad mezője közül a `forras_kereses` belső szöveg: a réteg csak a szerkezetét olvassa
 ki (melyik gyűjtemény vagy keresés jelölte, melyik szóra, melyik hálóban, hány verset fed a csoportos sor), a lapra
 a szerkezetből sablonmondat kerül (a régi `szerep_kizart.jeloles_oka` és a lap utólagos cseréi helyett). A
-mezőben álló kézi megszorítás (pl. „Hif'íl-alakok”) kézi szöveg, kapuval.
+mezőben álló megszorítás (pl. „Hif'íl-alakok”) kulcs (DT926): az olvasói neve a névtábla `kereses_megszoritas`
+típusából jön, ismeretlen megszorításnál BemenetHiba.
 
 Az `indoklas` kézi próza, a DT884 szerint a végleges alakjában: a réteg nem tisztít, a nem olvasói szövegen megáll
 (`kereszthiv._indok`). Két szerkezet bomlik le róla: az összesítő sor eleje („Összesítő sor N versre (…):”, a régi
@@ -21,6 +22,7 @@ from lapgen.bemenet import dontes as dontes_be
 from lapgen.bemenet import kereszthiv as kh
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.konyvek import b63_konyvek
+from lapgen.bemenet.nyelv import b65_nevtabla
 from lapgen.ertekek import AjanlasFajta, Dontes, JelolesFajta, VizsgaltCsoport, VizsgaltJegyzetFajta
 from lapgen.szoveg import Strong, prov
 
@@ -31,6 +33,7 @@ _STRONG_RX = re.compile(r'\b[HG]\d{4}[a-z]?\b')
 _ATIRAS_RX = re.compile(r'\s*\([^()]*\)')
 _SCOPE_RX = re.compile(r'\bscope=([^|]*)')
 _KORPUSZOK = ('TAHOT', 'TAGNT')
+MEGSZORITAS_TIPUS = 'kereses_megszoritas'     # a névtábla típusa (DT926)
 _SZAM_U_RX = re.compile(r'^F\d+ U\d:')          # a mérés munkanaplóbeli tétele („F123 U2: …”): forrásleírás nélkül
 _HELYORZO_RX = re.compile(r'(?<![\w-])(?:DT|N|D)-F\d+[a-z]*\b')
 _NYOM_ELVALASZTO = ' · '
@@ -63,7 +66,7 @@ class Jeloles:
 
 
 class Jegyzet:
-    """A sor jegyzete (a cellán túli jelölési forrás): a fajta, a szavak, a kézi megszorítás és a korpuszok kulcsa."""
+    """A sor jegyzete (a cellán túli jelölési forrás): a fajta, a szavak, a megszorítás és a korpuszok kulcsa."""
     __slots__ = ('fajta', 'strongok', 'megszoritas', 'korpuszok')
 
     def __init__(self, fajta, strongok=(), megszoritas=None, korpuszok=()):
@@ -125,11 +128,11 @@ def _jeloles(b, fo, forras, konyvek, igehely):
             maradek = _ATIRAS_RX.sub('', _STRONG_RX.sub('', fo[len('scan:'):])).strip(' ,;')
             if not maradek:
                 return VizsgaltCsoport.KERESES, jeloles, None
-            hiba = kh.nem_olvasoi(maradek)
-            if hiba:
-                raise BemenetHiba('B04: %s: a szókeresés megszorítása nem olvasói szöveg (%r)' % (igehely, hiba))
+            if maradek not in b65_nevtabla(b).nyers_nevek(MEGSZORITAS_TIPUS):
+                raise BemenetHiba('B04: %s: a szókeresés megszorításának nincs olvasói neve (a névtábla `%s` típusa): '
+                                  '%r' % (igehely, MEGSZORITAS_TIPUS, maradek))
             return VizsgaltCsoport.KERESES, jeloles, Jegyzet(VizsgaltJegyzetFajta.SZOKERESES, strongok=strongok,
-                                                             megszoritas=b.kezi('B04', 'kereses_megszoritas', maradek))
+                                                             megszoritas=b.kulcs('B04', MEGSZORITAS_TIPUS, maradek))
         korpuszok = _korpuszok(b, forras)
         if not korpuszok:
             raise BemenetHiba('B04: %s: a szókeresés korpusza nem állapítható meg: %s' % (igehely, forras[:80]))
