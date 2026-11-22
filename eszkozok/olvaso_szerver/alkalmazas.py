@@ -402,11 +402,11 @@ def main():
     ap.add_argument('--ujratolt', action='store_true', help='kódváltozáskor magától újraindul (Werkzeug stat-újratöltő: a /mnt/c-n az inotify nem működik)')
     a = ap.parse_args()
     if not a.ujratolt:
-        letrehoz(a.db, a.kiadas, elomelegit_ki=True).run(host=a.host, port=a.port, threaded=True)
+        letrehoz(a.db, a.kiadas, elomelegit_ki=os.environ.get('PARDES_ELOMELEGIT') != '0').run(host=a.host, port=a.port, threaded=True)
         return
     # az újratöltővel a szülő-folyamat csak a figyelő: az alkalmazást (adatbázis, regiszter) csak a gyerek építi fel, így a mért indulás nem duplázódik
     from werkzeug.serving import is_running_from_reloader, run_simple
-    app = letrehoz(a.db, a.kiadas, elomelegit_ki=True) if is_running_from_reloader() else (lambda environ, start: [])
+    app = letrehoz(a.db, a.kiadas, elomelegit_ki=os.environ.get('PARDES_ELOMELEGIT') != '0') if is_running_from_reloader() else (lambda environ, start: [])
     if is_running_from_reloader():
         L = app.extensions['pardes']['gyar'].lablec.kap()
         print('[indítás] kiadás=%s ág=%s commit=%s kod_verzio=%s epites_ts=%s%s' % (
