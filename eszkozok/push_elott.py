@@ -596,7 +596,7 @@ def main():
         print('push_elott: az olvasó kódja változott (%d fájl, pl. %s): az olvasó gyors tesztjei futnak a helyi pardes.db-n'
               % (len(olvaso_fajlok), olvaso_fajlok[0]))
         print('FIGYELEM: a lassú tesztek (teszt_szintek.py, teszt_arculat.py) a kapuban nem futnak; a teljes sor a menet saját futása '
-              '(`python eszkozok/teszt_futtat.py`) a draft PR előtt (F232 DT-F232a).')
+              '(`python eszkozok/teszt_futtat.py`) a draft PR előtt (F232).')
         _, olv_ki, _ = olvaso_tesztek_futtatasa(fut, 'F232 olvasó-tesztek (teszt_futtat.py --gyors)',
                                                   [PY, 'eszkozok/teszt_futtat.py', '--gyors'])
         for s in olv_ki.splitlines():
