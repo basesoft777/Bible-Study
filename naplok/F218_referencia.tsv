@@ -1,6 +1,6 @@
 # F218.1: a régi lapgenerátor (general.py --cel lexikon --id HAMART-001) referencia-kimenete és ténylegesen olvasott bemenetei, a regressziós kapu alapjához. A sha256 és a meret sorvég-normalizált tartalomból számolt (minden CRLF → LF a bájtokban), hogy a Windows-os munkafa és a CI LF-es fájlja azonos hash-t adjon. scope=sys.addaudithook open-napló, HAMART-001, PARDES_DATUM=2026-11-13 | forras=5e4344f6 | ts=2026-11-13
 tipus	b_id	utvonal	sha256	meret
-bemenet	B51	DONTESEK.md	d177c7a95c71bc43aba1edbf03d71211a53322b29caa2c6d3252297fdd609675	1420574
+bemenet	B51	DONTESEK.md	ce6422139a2ec4317f64c10b0cbbe1b9db7960e505056a737fe1f66b6cdf1a73	1422065
 bemenet	B17	adat/bdb_forras_javitas.tsv	8234fa67f03cfa69b35fa4e2cda0a30be7654aff511de9acf96b47be91618fca	14239182
 bemenet	B18	adat/bdb_szakasz_hu.tsv	17322b60e26b630156f13341bab6f0989bd42dad4ac9e50f282578e50ebe8a83	13997748
 bemenet	B17	adat/bdb_szakaszok.tsv	44362398134539235ac7929ba10b69d7067a528b2d48f44d27fe7c7a86216f07	12680601
