@@ -8,7 +8,7 @@ modell: sonnet
 sav: SERVER
 allapot: nem_indult
 ad: az olvasó új fejezete legfeljebb 300 ms, verse legfeljebb 400 ms, szó-lapja legfeljebb 250 ms alatt jelenik meg meleg szerveren (gyorsítótár nélkül); laponként legfeljebb 100 lekérdezés; a kéréskor futó lekérdezések egyike sem olvas végig index nélkül 1000 sornál nagyobb táblát; mindezt teszt őrzi, a tervellenőr a CI-ben is fut
-kovetkezo: "Indítható a #232 (PR #786) és a #101 (PR #780) merge-e után; első lépés: M0 (⛔ DT-F235a: a fordítási javítótábla betöltésének helye)"
+kovetkezo: "Te: DT-F235a (az orkesztrátor dönt); az 1. rész fut: M0 kész, összevont lekérdezések, lábléc, előmelegítés, tervellenőr; a 2. rész (indexek, elérhetőségi tábla, indit.sh) a #101 merge-e után"
 munka: folyamat
 olvas: [eszkozok/bdb_rovidites.py, adat/SEMA.md]
 ir: [eszkozok/sqlite_epit.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bibliak.py, eszkozok/olvaso_szerver/allapot.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/indit.sh, eszkozok/olvaso_szerver/teszt_sebesseg.py, eszkozok/olvaso_szerver/teszt_tervor.py]
