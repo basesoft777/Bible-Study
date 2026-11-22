@@ -76,6 +76,8 @@ A lexikonlap 4.2 „Mélységi szócikk” része (pl. `lexikon/HAMART-001_TUDOM
 
    A mintán (lent) 0 sértés.
 
+7. **Fordítótábla a feliratokhoz (DT897).** Minden felirat, blokkcím, gombszöveg és rögzített olvasói mondat, amelyet ez a feladat új kódban ír vagy átír, egy közös fordítótáblából jön (kulcs → magyar szöveg; az angol oszlop üresen maradhat), nem a kódban álló szövegként. A tábla helyét és formáját az első ezt használó feladat (a #231) rögzíti; a #233 ugyanazt a táblát használja. Kapu (teszt): az általuk érintett megjelenítő függvényekben nem áll magyar betűs szövegliterál a táblán kívül. A meglévő, nem érintett feliratok kiemelése nem része a feladatnak. Ok: a felhasználó 2026-11-22-i döntése (az olvasó később kétnyelvű lehet; amit most úgyis újraírunk, az ne kerüljön újra a kódba).
+
 **Nincs benne:**
 - Újrafordítás vagy új fordítás. A görög glosszák (kb. 5 360) és a Thayer (kb. 5 070 szócikk) fordítása külön döntés; a lektor javasolt sorrendje: előbb a glosszák.
 - A görög „Ebben a versben” blokk (alaktani kulcs kell hozzá): N-F231c.
@@ -116,3 +118,4 @@ Az ág új nyitott tételként veszi fel (`nyitott/uj/<ágnév>.md`), forrásbó
 
 - DT-F231a (⛔ M0): a kártyamodell forrása, (a) `lapgen` vagy (b) saját modell egyezési teszttel.
 - Ez a feladat az F213 3. pontját („használati sorok: szerkezet → magyar magyarázat → igehelyek”) felváltja a szakaszonként egybefüggő szöveggel. A felhasználó 2026-11-21-i ítélete: „az md lapon jobb a szeletelő”. A DT-tétel ezt rögzíti.
+- DT897: fordítótábla a feliratokhoz (a #231 és a #233 közös szabálya, a felhasználó 2026-11-22-i döntése).

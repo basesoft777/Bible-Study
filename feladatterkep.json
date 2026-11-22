@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-22",
-   "commit": "d325f1ae"
+   "commit": "69ffc8f1"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5724,6 +5724,16 @@
      "🟢"
     ],
     "sor": 861
+   },
+   {
+    "id": "DT899",
+    "feladat": "#182 HAMART_JAVITO (a lexikon neve és a kanonikus cím; a DT782 név- és domainrészét váltja; 2026-11-22)",
+    "kerdes": "A „Logosz” név ütközik a Faithlife „LOGOS” védjegyével (WIPO 1883707, az EU-ra kiterjed; bibliatanulmányozó szoftver és elektronikus kiadás). Mi legyen a lexikon neve, és hogyan oszoljon meg a magyar mű és az angol változat a domainen?",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 867
    }
   ],
   "javasolt": [],
@@ -7131,6 +7141,6 @@
     "fejlec_oszlopszam": 8
    }
   ],
-  "kesz_db": 258
+  "kesz_db": 259
  }
 }

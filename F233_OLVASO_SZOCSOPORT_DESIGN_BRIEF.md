@@ -51,6 +51,8 @@ A felmérés a 16–33. pontot nem mérte végig egyenként, ezért ezt az M0 p�
 4. **Megvalósítás** a vászon-döntés szerint, ágas előnézettel (8775–8779). A nézett commit hash-e a PR-ban áll (DT886).
 5. **Alacsony súlyú pontok (29–32):** ha a diff csak CSS vagy `arculat.json`, külön `DESIGN-APRO`-menet.
 
+6. **Fordítótábla a feliratokhoz (DT897).** Minden felirat, blokkcím, gombszöveg és rögzített olvasói mondat, amelyet ez a feladat új kódban ír vagy átír, egy közös fordítótáblából jön (kulcs → magyar szöveg; az angol oszlop üresen maradhat), nem a kódban álló szövegként. A tábla helyét és formáját az első ezt használó feladat (a #231) rögzíti; a #233 ugyanazt a táblát használja. Kapu (teszt): az általuk érintett megjelenítő függvényekben nem áll magyar betűs szövegliterál a táblán kívül. A meglévő, nem érintett feliratok kiemelése nem része a feladatnak. Ok: a felhasználó 2026-11-22-i döntése (az olvasó később kétnyelvű lehet; amit most úgyis újraírunk, az ne kerüljön újra a kódba).
+
 **Nincs benne:**
 - a görög szócsoport (a TAGNT szó-szintű; a felmérés szerint nincs ilyen kérdés);
 - a görög szóhoz tapadó központozás és az „archēa” kiejtés gyanúja: N-F233a, mert nincs ellenőrizve;
@@ -77,3 +79,4 @@ Az F134 (`megallt`, a telefonos próbára vár) ugyanazokat a `sablonok/` és `s
 ## 6. Döntésnapló
 
 - DT-F233a (⛔): a csoportosítási szabály (Macula-azonosító, tartalékként a H9xxx-szabály) átvétele az olvasóba.
+- DT897: fordítótábla a feliratokhoz (a #231 és a #233 közös szabálya, a felhasználó 2026-11-22-i döntése).
