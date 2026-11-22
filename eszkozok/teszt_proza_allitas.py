@@ -27,6 +27,10 @@ Károli-párosítás). Így a HAMART-001 javítóköre nem töri el a tesztet.
     szabály-mondat K-tétel a gerinc-szavak helyenkénti sorrendjével; a K-számozás három szintje.
 14. F224.15: a mondaton kívüli adat (funkció-mező — csak a hely saját tételénél, N-F224f —, angol tükörfordítás, a lap más mondata ugyanarról a forrásról,
     Targum, szótári besorolás az elutasított jelöltekkel; a szótári kód és az útvonal illesztése).
+15. F205 M3: a `--tanulmany` mód fixture-ön — a próza és a blokkok egységei (a changelog, a tábla, a kódblokk, a
+    hibás fejlécű blokk és a hibás pont kimarad; a hiányos blokk meglévő szövege marad), a motívum-környezet a
+    blokkok egyetlen motívumából (több motívumnál `--motivum` kell, a más motívum blokkja kimarad), az idézetpróba a
+    prózán és a blokk saját versén, a jelentés forrás-leírása (a motívum-mód szövege változatlan), a CLI kizárásai.
 
 Futtatás: python eszkozok/teszt_proza_allitas.py
 """
@@ -614,6 +618,159 @@ class F224_15(unittest.TestCase):
         self.assertFalse(P.utvonal_illik('Qal/2/c', '2'))
         self.assertTrue(P.utvonal_illik('-/1/-', '1'))
         self.assertFalse(P.utvonal_illik('tagolatlan', '2.c'))
+
+
+JO_IDEZET = 'A fordulópont: „Nem átkozom meg többé a földet az emberért” (1Móz 8:21).'
+ROSSZ_IDEZET = 'Az ígéret így szól: „Nem átkozom meg soha a földet az ember miatt” (1Móz 8:21).'
+TANULMANY_FX = '\n'.join([
+    '# 1Mózes 8:20–22 — próba-tanulmány',
+    '',
+    '*v1 — 2026.11.22 (próba; a changelog nem próza: „Nem átkozom meg soha a földet az ember miatt” 1Móz 8:21)*',
+    '',
+    '## 2. Kulcsszavak — H0127',
+    '',
+    JO_IDEZET,
+    ROSSZ_IDEZET,
+    '',
+    '| Vers | Szó |',
+    '|---|---|',
+    '| 1Móz 8:21 | „Nem átkozom meg soha a földet az ember miatt” |',
+    '',
+    '```',
+    'Kódblokk: „Nem átkozom meg soha a földet az ember miatt” (1Móz 8:21).',
+    '```',
+    '',
+    '## 4/b. Igehelyenkénti jelölt blokkok',
+    '',
+    '<!-- IGEHELY-PÓTOLT: nem vak olvasás -->',
+    '<!-- IGEHELY-BLOKK: 1Móz 8:21 | motivum: PROBA-001 | gerinc: H0127 -->',
+    '- **funkció:** Az ígéret a föld újabb megátkozását zárja ki: „Nem átkozom meg soha a földet az ember miatt.”',
+    '- **negatív próba:** nem — a versben a föld szava áll. Az átok kérdéséről szól.',
+    '- **jelentéspont:** üres — a próbában nincs szótári pont',
+    '- **vita:** üres — a versre nincs nevesíthető képviselőjű vita',
+    '- **visszhang:** üres — a próbában nincs tanú',
+    '- **versszámozás:** üres — a próbában nem mérve',
+    '<!-- IGEHELY-BLOKK-VÉGE -->',
+    '',
+    '<!-- IGEHELY-BLOKK: 1Móz 8:22 | motivum: új | gerinc: — -->',
+    '- **funkció:** Hiányos blokk: „Nem átkozom meg soha a földet az ember miatt.”',
+    '- **negatív próba:** Hibás pont: „Nem átkozom meg soha a földet az ember miatt.”',
+    '<!-- IGEHELY-BLOKK-VÉGE -->',
+    '',
+    '<!-- IGEHELY-BLOKK: 1Móz 8:20 | motivum: PROBA-001 -->',
+    '- **funkció:** Hibás fejléc: „Nem átkozom meg soha a földet az ember miatt.”',
+    '<!-- IGEHELY-BLOKK-VÉGE -->',
+    '',
+])
+MAS_BLOKK = '\n'.join([
+    '<!-- IGEHELY-BLOKK: 1Móz 8:21 | motivum: MAS-001 | gerinc: H0127 -->',
+    '- **funkció:** Más motívum blokkja: „Nem átkozom meg soha a földet az ember miatt.”',
+    '- **negatív próba:** üres — próba',
+    '- **jelentéspont:** üres — próba',
+    '- **vita:** üres — próba',
+    '- **visszhang:** üres — próba',
+    '- **versszámozás:** üres — próba',
+    '<!-- IGEHELY-BLOKK-VÉGE -->',
+    '',
+])
+
+
+class Tanulmany(unittest.TestCase):
+    """F205 M3: a `--tanulmany` mód — a tanulmány prózája és a jelölt blokkok ugyanazokon a próbákon, fixture-ön
+    (repón kívüli ideiglenes könyvtárban); a motívum-környezet a blokkok motívumaiból."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.mkdtemp()
+        cls.fx = os.path.join(cls.tmp, 'Proba_8v20-22_bovitett.md')
+        with open(cls.fx, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(TANULMANY_FX)
+        cls.elof = os.path.join(cls.tmp, 'elof.tsv')
+        with open(cls.elof, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('id\tigehely\tgerinc_elem\tstrong\tkapcsolodas\n')
+            for d in ELOF:
+                f.write('\t'.join(['PROBA-001', d['igehely'], d['gerinc_elem'], d['strong'], '']) + '\n')
+            f.write('\t'.join(['MAS-001', '1Móz 8:21', 'H0127', 'H0127', '']) + '\n')
+        (cls.ell, cls.adat, cls.szk, cls.n, cls.idk, cls.hibak) = P.futtat_tanulmany(
+            cls.fx, elof_ut=cls.elof, jelolt_ut=os.path.join(cls.tmp, 'nincs.tsv'))
+
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def _sorok(self, forras):
+        return [s for s in self.ell.sorok if s.egyseg.forras == forras]
+
+    def test_egysegek_kijelolese(self):
+        egysegek, blokkok, hibak = P.tanulmany_egysegek(self.fx)
+        prozai = [e for e in egysegek if e.forras == 'rés:tanulmány']
+        self.assertEqual([e.szoveg for e in prozai], [JO_IDEZET, ROSSZ_IDEZET])   # changelog, tábla, kód kimarad
+        self.assertTrue(all(e.fejezet_strong == 'H0127' and e.alap_ref is None for e in prozai))
+        blokk = [e for e in egysegek if e.forras.startswith('rés:blokk-')]
+        self.assertEqual(sorted({e.forras for e in blokk}), ['rés:blokk-funkció', 'rés:blokk-negatív_próba'])
+        self.assertEqual({e.alap_ref for e in blokk}, {'1Móz 8:21', '1Móz 8:22'})   # a blokk saját verse
+        self.assertEqual(len([e for e in blokk if e.forras == 'rés:blokk-negatív_próba']), 2)   # mondatonként
+        # a hiányos blokk hibája jelentve (a kinyerő megáll rajta), a meglévő szövege a próbákon megy át; a hibás
+        # pont és a hibás fejlécű blokk kimarad, a hibájuk jelentve
+        self.assertEqual(len(blokkok), 2)
+        osszes = ' '.join(hibak)
+        self.assertIn('hiányzó pont', osszes)
+        self.assertIn('a negatív próba alakja', osszes)
+        self.assertIn('hibás IGEHELY-BLOKK fejléc', osszes)
+        self.assertTrue(any('Hiányos blokk' in e.szoveg and e.alap_ref == '1Móz 8:22' for e in egysegek))
+        self.assertFalse(any('Hibás pont' in e.szoveg or 'Hibás fejléc' in e.szoveg for e in egysegek))
+
+    def test_motivum_kornyezet(self):
+        self.assertEqual(self.idk, ['PROBA-001'])      # az „új” blokk nem ad motívumot
+        self.assertEqual(self.ell.mid, 'PROBA-001')
+        self.assertEqual({d['id'] for d in self.ell.elof}, {'PROBA-001'})
+
+    def test_tobb_motivum(self):
+        # több blokkmotívum: --motivum nélkül megáll (a számpróba alapja nem az összevont darabszám), vele a más
+        # motívum blokkja kimarad
+        fx2 = os.path.join(self.tmp, 'Ket_motivum_bovitett.md')
+        with open(fx2, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(TANULMANY_FX + MAS_BLOKK)
+        with self.assertRaises(P.TobbMotivum):
+            P.futtat_tanulmany(fx2, elof_ut=self.elof)
+        egysegek, _, _ = P.tanulmany_egysegek(fx2, 'PROBA-001')
+        self.assertFalse(any('Más motívum' in e.szoveg for e in egysegek))
+        self.assertTrue(any('Hiányos blokk' in e.szoveg for e in egysegek))   # az „új” blokk marad
+        egysegek, _, _ = P.tanulmany_egysegek(fx2, 'MAS-001')
+        self.assertTrue(any('Más motívum' in e.szoveg for e in egysegek))
+        self.assertFalse(any('megátkozását zárja ki' in e.szoveg for e in egysegek))
+        self.assertEqual(P.tanulmany_motivumok([{'motivum': 'ABC-001'}, {'motivum': '—'}, {'motivum': 'új'},
+                                                {'motivum': 'ABC-001'}, {'motivum': 'ÁBC-002'}]), ['ABC-001', 'ÁBC-002'])
+
+    def test_proza_ugyanazon_a_probakon(self):
+        sorok = self._sorok('rés:tanulmány')
+        idezet = {s.egyseg.szoveg: s.itelet for s in sorok if s.tipus == 'idézet'}
+        self.assertEqual(idezet.get(JO_IDEZET), 'egyezik')
+        self.assertEqual(idezet.get(ROSSZ_IDEZET), 'ELTÉR')
+
+    def test_blokk_a_sajat_versere(self):
+        sorok = [s for s in self._sorok('rés:blokk-funkció') if s.tipus == 'idézet']
+        self.assertEqual(sorted(s.vers for s in sorok), ['1Móz 8:21', '1Móz 8:22'])
+        self.assertTrue(all(s.itelet == 'ELTÉR' for s in sorok))
+
+    def test_jelentes_es_cli(self):
+        szoveg = P.jelentes('Proba_8v20-22_bovitett', self.ell, self.adat, None, 'teszt', self.ell.egysegek,
+                            forras_leiras='a tanulmány prózája és blokkjai')
+        self.assertIn('# ALLITAS Proba_8v20-22_bovitett', szoveg)
+        self.assertIn('Forrás: a tanulmány prózája és blokkjai.', szoveg)
+        self.assertNotIn('motivumok/', szoveg.split('## Gépi ítéletek')[0])
+        regi = P.jelentes('X-001', self.ell, self.adat, None, 'teszt', self.ell.egysegek)
+        self.assertIn('Forrás: `motivumok/X-001.md` értelmező rései és az `adat/elofordulasok.tsv` `kapcsolodas` '
+                      'mezője (id=X-001).', regi)
+        hiba = io.StringIO()
+        for argv in (['X-001', '--tanulmany', self.fx], ['--tanulmany', self.fx, '--forras', 'x.md'],
+                     ['X-001', '--motivum', 'X-001'], ['--kapu', '--tanulmany', self.fx]):
+            regi_err, sys.stderr = sys.stderr, hiba
+            try:
+                with self.assertRaises(SystemExit):
+                    P.main(argv)
+            finally:
+                sys.stderr = regi_err
 
 
 class Lektor(unittest.TestCase):
