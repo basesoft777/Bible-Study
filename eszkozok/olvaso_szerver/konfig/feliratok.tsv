@@ -1,0 +1,8 @@
+# Az olvasó fordítótáblája (DT897): a #231 és a #233 által írt vagy átírt feliratok. Betöltő és szabály: feliratok.py.
+# Oszlopok: kulcs, hu, en (az angol üresen maradhat; üresnél a magyar áll). Helyőrző: %(nev)s. Sortörés: \n.
+kulcs	hu	en
+szk.parhuzamos_hely	párhuzamos hely:	parallel passage:
+szk.parhuzamban	párhuzamban:	in parallel with:
+szk.ellentetben	ellentétben: %(szo)s	in contrast to: %(szo)s
+szk.es	és	and
+szk.es_mashol	és máshol	and elsewhere
