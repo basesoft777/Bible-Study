@@ -22,7 +22,9 @@ A `bdb_forras_javitas.tsv` 43 828 sor, 14 MB; a három osztály (`heber_sorrend`
 
 Mindhárom változat kimenete azonos a mai modulé (`A0 == A1 == A2`). Javaslat: (a), mert nincs építő-függés, a `bdb_rovidites.py` kimenete bájtra azonos marad (csak a beolvasás gyorsítótárazása), a `lapgen` és a `lexikon_general.py` ugyanazt a modult használja, míg a (b) két utat követelne (az adatbázis és a TSV). A kérdés elküldve az orkesztrátornak.
 
-**Állapot:** a döntés beérkezéséig a `bdb_rovidites.py` érintetlen. Az indulási előmelegítés (3. szakasz) már a mai modullal kiveszi a betöltés költségét az első felhasználói kérésből (a háttérszál tölti be); az egylépéses beolvasás a döntés függvénye.
+**Döntés (2026-11-22): (a)**, szerkesztői döntés (az orkesztrátor, a felhasználó felhatalmazásával). Feltételek: a `bdb_rovidites.py` kimenete bájtra azonos (HAMART-regresszió és lapgen-tesztek), a gyorsítótár szálbiztos (az előmelegítéssel egyidejű első kérés nem olvas be másodszor), és a `/mnt/e`-s 539 ms a 2. rész natív futtatásával tűnik el (az `indit.sh`-ban: a 2. részre jelölve, N-F235c).
+
+**Megvalósítás:** `bdb_rovidites._javitasok_tobb` (egyetlen beolvasás, osztályonként ugyanaz az eredmény), `betolt_javitasok()` (zárral védett, a három gyorsítótárat egyszerre tölti), az `alkalmazas.elomelegit` ezt hívja elsőként. Egységtesztek (`teszt_bdb_rovidites.py` `EgyszeriBetoltes`): a három osztály azonos a régi osztályonkénti beolvasással; kilenc egyidejű hívás (három osztály × három szál, plusz a közvetlen betöltő) pontosan egy beolvasást végez. Mért hatás az első héber szó-lapon előmelegítés nélkül, `/mnt/e`-ről: 3013–3555 → 1880 ms (a gépen közben másik munkamenet lapgen-futása ment: ±30% zaj); előmelegítéssel 131–143 ms.
 
 ## 3. Mi változott
 
@@ -89,3 +91,16 @@ A szándékosan index nélküli próbalekérdezésre a tervellenőr piros: egys�
 ## 7. Ami a 2. részre maradt
 
 Indexek és átírt lekérdezések az `sqlite_epit.py`-ban (a `forditasok(szotar, strong)` és a 6. szakasz 17 tétele; a `vers_szamozas` tartomány-lekérdezése; a `token_macula` fedő index), az előre számolt elérhetőségi tábla (`bibliak.Tar`), a natív futtatás és az indításkori háttér-beolvasás az `indit.sh`-ban, a hideg DB újramérése. Lásd: N-F235a–c.
+
+## 8. Ellenőrzések és leletek
+
+| Ellenőrzés | Eredmény |
+|---|---|
+| HAMART-001, `general.py --cel lexikon2`, a régi (`HEAD`) és az új `bdb_rovidites.py`-val | a három kimeneti fájl (`_TUDOMANYOS.md`, `_KIZARASOK.md`, `_olvasasi_naplo.tsv`) bájtra azonos (`diff -r`) |
+| HAMART-regressziós mérce (`lapgen/regresszio.py --id HAMART-001`) | **nem futtatható**: „a mérce bemenete megváltozott: B51 DONTESEK.md; B68 adat/lapgen_bemenetek.tsv; B51 dontesek/uj/f218a-s8d-96a364.md (hiányzik)”. Nem az F235 változása (a `naplok/F218_referencia.tsv` bemenet-hash őr a main saját változásaira vall; az F218a menetei vezetik); a bájtra azonos kimenet fent a közvetlen bizonyíték |
+| `python eszkozok/lapgen/tesztek/futtat.py` (az F235.4 commit után) | 367 teszt, 0 hiba, 0 bukás, 21 kihagyva; „RENDBEN F218 mérce hash-őr: a változás nem érinti a lapgenerátort” |
+| `python eszkozok/push_elott.py` (teljes, a beolvasztott `main` `4cbefcae` fölött, fej `5cfe8351`) | minden lépés RENDBEN, kivéve az E16 (a PR címe nem `[ELLENŐRZŐ]` előtagú, mert az `ellenorzes.yml` változott); a F232 olvasó-tesztek (`teszt_futtat.py --gyors`) 666 mp, RENDBEN. A cím javítása után `--lepes E2 --pr-cim …`: 0 HIBA |
+| `teszt_olvaso_szerver.py` | az első futás egy bukást mutatott (`test_alapjelentes_es_szamlalo_a_blokk_szuresen_at`, 500): az előtöltés a kizárt `forditasok` táblát is olvasta, amikor a BDB nem látszik. Javítva (F235.5: `elotolt_strongok(..., bdb=False)` ilyenkor csak az LXX-hidat tölti); a teljes fájl azóta RENDBEN |
+| `teszt_indito.py` (lábléc, beolvasztott main) | 111 teszt, RENDBEN |
+
+Tanulság: az előtöltés kapcsolatszintű authorizer-védelmet kerülhet meg, ha egy tiltott táblát feltétel nélkül tölt; a `szamlalok` a BDB-t csak `magyar_ok` esetén olvasta, az előtöltésnek is így kell. A `teszt_olvaso_szerver.py` ezt fogta meg, a `teszt_sebesseg.py` nem (a belső kiadásban minden tábla olvasható).
