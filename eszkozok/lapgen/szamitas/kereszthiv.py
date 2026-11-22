@@ -115,11 +115,11 @@ def _utalas(u):
     return KhUtalas(u.cel, u.gyujtemeny, u.szavazat)
 
 
-def _miert(a):
+def ajanlas_miert(a):
     return Miert(a.fajta, tuple(a.forrasok), a.cel, a.szavazatok, a.talalat, a.karoli_is)
 
 
-def _resz(rovid, d):
+def indok_resz(rovid, d):
     if d.motivum is not None:
         return IndokResz(motivum=d.motivum)
     if d.strong is not None:
@@ -172,7 +172,7 @@ def _minosites(b, motivum, sorok, utalasok, osszes):
         if j.ok is not None and not j.ok_ismetles:
             alak = cella.get(j.ok.cimke.ertek)
             ok = proza(alak if alak is not None else j.ok.cimke)
-        jeloltek.append(MinJelolt(j.igehely, _miert(j.ajanlas), j.dontes, ok, tuple(_resz(rovid, d) for d in j.indok)))
+        jeloltek.append(MinJelolt(j.igehely, ajanlas_miert(j.ajanlas), j.dontes, ok, tuple(indok_resz(rovid, d) for d in j.indok)))
     dontesek = tuple((d, sum(1 for j in jeloltek if j.dontes is d))
                      for d in (Dontes.BEEPITVE, Dontes.ELUTASITVA, Dontes.NYITVA))
     kozos_olvasoi, kozos_eredeti = _kozos(jeloltek_be)

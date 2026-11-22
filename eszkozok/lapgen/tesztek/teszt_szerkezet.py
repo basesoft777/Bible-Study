@@ -14,7 +14,13 @@ _UTVONAL_RX = re.compile(r'(?:^|[^A-Za-z_])(adat|konkordancia|naplok|motivumok|l
                          r'motivumlog|genezis|ujszovetseg|melyelemzesek)/')
 UTVONAL_KIVETEL = {
     'bemenet/jegyzek.py': {'adat/lapgen_bemenetek.tsv'},
-    'regresszio.py': {'naplok/F218_referencia.tsv', 'naplok/F218_elteres_engedely.tsv'},
+    'regresszio.py': {'naplok/F218_referencia.tsv', 'naplok/F218_elteres_engedely.tsv',
+                      # a 8.2/1 független számlálói (S9b): a regresszió a táblákat szándékosan a generátor
+                      # jegyzékén kívül, saját olvasással számolja (a mérce nem a generátor kódjával mér)
+                      'adat/elofordulasok.tsv', 'adat/jeloltek.tsv', 'naplok/F123_teljesseg_%s_blokkok.tsv',
+                      'konkordancia/Konyv_normalizalo_tabla.tsv', 'konkordancia/TAHOT_kivonat.tsv',
+                      'konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_versmegfeleltetes.tsv',
+                      'konkordancia/Karoli_KH_javitott.tsv'},
     # a mérce hash-őre (a regresszió része, a push előtti kapuban és a CI-ben): a generátor saját tábláinak előtagja
     'hash_or_kapu.py': {'adat/lapgen_'},
 }

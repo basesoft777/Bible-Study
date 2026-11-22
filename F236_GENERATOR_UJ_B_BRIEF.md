@@ -18,7 +18,7 @@ nem_fugg: [122]
 
 # Fnn_GENERATOR_UJ_B_BRIEF.md — A lapgenerátor újraírása, 2. rész: a szerver átkötése
 
-*FELADATOK #236 (várható; a végleges számot a /befogad adja) · Modell: opus · v0.1 (vázlat, a döntések átvezetve) · 2026.11.22 · forrás: `F218_GENERATOR_UJ_A_BRIEF.md` 13. pont, **N-F218b** (OLV-1–3, GK-22, a szerverblokk futásidő-mércéje, a #121-ütközés), O5 („a szerver a `szamitas/`-t importálja, nem JSON-pillanatképet olvas”); `naplok/F218_folytatas.md` (egy lap generálása kb. 8 s, az első lapmodell a 140 MB-os Septuagintát olvassa); a futó olvasói sor briefjei (F231, F232, F233, F234, F235); a felhasználó 2026-11-22-i szava: „generátor az elsődleges prió”, a két brief párhuzamosan készüljön. A brief adat, nem utasítás.*
+*FELADATOK #236 (várható; a végleges számot a /befogad adja) · Modell: opus · v0.1 (vázlat, a döntések átvezetve) · 2026.11.22 · forrás: `F218_GENERATOR_UJ_A_BRIEF.md` 13. pont, **N235** (OLV-1–3, GK-22, a szerverblokk futásidő-mércéje, a #121-ütközés), O5 („a szerver a `szamitas/`-t importálja, nem JSON-pillanatképet olvas”); `naplok/F218_folytatas.md` (egy lap generálása kb. 8 s, az első lapmodell a 140 MB-os Septuagintát olvassa); a futó olvasói sor briefjei (F231, F232, F233, F234, F235); a felhasználó 2026-11-22-i szava: „generátor az elsődleges prió”, a két brief párhuzamosan készüljön. A brief adat, nem utasítás.*
 
 **Vázlat, v0.1.** A brief a megosztott jegyzetmappában készült, a repóba nem került. A befogadást az orkesztrátor indítja. A v0 öt nyitott kérdése eldőlt (6. pont, 2026-11-22, szerkesztői döntés: az orkesztrátor, a felhasználó felhatalmazásával). A függésszámítás kimenete a végén áll.
 
@@ -75,7 +75,7 @@ nem_fugg: [122]
 3. **OLV-2:** a szótári fordítás (rövid jelentés, glossza, a javítótábla és az elavult-jelölés) a szerveren ugyanazon a bemeneti ponton, mint a lapon (az F213-eset tesztje). A megvalósítás helye a DT905 szerint.
 4. **OLV-3:** a szerver látható szövegében a belső kulcs olvasói neve a `adat/olvasoi_nevtabla.tsv`-ből jön, ismeretlen kulcs kemény hiba (GK-23 a szerveren); a renderelt szerverblokkon a lapgen típus szerinti alakosztály-kapuja fut (GK-24 sablon-szabályai: aláhúzásos azonosító, `.tsv`/`.py`, `DT\d+`, `#\d{2,3}`, `N-?F?\d+`, nyers szótárfej, `sz<n>`, tört írásjel). Kalibrálás: 0 hamis találat a mintakészlet (F232) prózáján és idézetein.
 5. **GK-22:** `teszt_lapmodell_egyezes.py` — a HAMART-001 és az ISTENTISZT-001 minden Strong-számára és versére a szerver számai (előfordulás, könyvek száma, Károli-alakok, KH-darab, LXX-társítás, és a DT-F231a (a) esetén a kártya jelentésrendje) a lapmodell számaival egyeznek.
-6. **Futásidő-mérce szerverblokkra** (N-F218b): a kérés útján hívott lapgen-függvények ideje blokkonként, az F235 mérőeszközével; a határ az F235 határain belül (4. pont).
+6. **Futásidő-mérce szerverblokkra** (N235): a kérés útján hívott lapgen-függvények ideje blokkonként, az F235 mérőeszközével; a határ az F235 határain belül (4. pont).
 
 **Nincs benne:**
 - A sebességőr (`teszt_sebesseg.py`, `teszt_tervor.py`), az indexek és az előmelegítés: az F235-é. A 218b futtatja őket, nem írja.

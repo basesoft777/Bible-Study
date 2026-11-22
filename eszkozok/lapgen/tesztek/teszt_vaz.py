@@ -21,9 +21,9 @@ S8_GK19 = ('GK-19 (T6): nyitott, döntéssel elhalasztva (2026-11-21, „Későb
            'a mondat a JOHD-validáció után kerül a lapra')
 S3_MARADEK = ('az S3 kész, de ezt a követelményt nem teljesítette (a 6. ellenőrzés E9 tétele); a 218a végi '
               'átnézésén szeletet kap')
-HELY_EGYSEG = ('a névvel megadott szópár (1.4, `málé+chámász`) tagjait a modell nem köti Strong-számhoz; a kapu '
+HELY_EGYSEG = ('218c (a leendő #238; N-F218a, az orkesztrátor döntése, 2026-11-22): a névvel megadott szópár (1.4, '
+               '`málé+chámász`) tagjait a modell nem köti Strong-számhoz; a kapu '
                'ehhez a bemeneti rétegben kér feloldást (N-tétel)')
-ISM_3 = 'a „3. Kizárt és vizsgált helyek” szakasz szelete (a briefben nincs külön szelete; a szakasz megépítésekor)'
 
 
 # A hibanapló példányainak szövegmintái (brief 7.3): HN → [(minta, lapszöveg-részlet a hibás lapról)]. A részlet a
@@ -97,15 +97,6 @@ class Szerkezeti(unittest.TestCase):
 
 
 
-    @unittest.skip(ISM_3)
-    def test_ism_a_3_szakasz_utal_nem_ismetel(self):
-        """DT-F218n: a „3. Kizárt és vizsgált helyek” szakasz végi „Negatív kritérium” bekezdése helyett utalás áll
-        a lap eleji meghatározásra, a szakasz elején."""
-
-    @unittest.skip(S9)
-    def test_gk11_nincs_globalis_allapot(self):
-        """GK-11: a két mintalap fordított sorrendben generálva bájtra azonos."""
-
     @unittest.skip(S3_MARADEK)
     def test_gk13_lemma_kiejtes_es_valtozat(self):
         """GK-13: a szótári alak kiejtése ugyanabból a szolgáltatásból, a lemma-változattal: H2403a/b, H2398."""
@@ -124,21 +115,7 @@ class Szerkezeti(unittest.TestCase):
         kész: minden pár számít, és a 4.13–4.14 látható szövegében nincs bizonyossági címke és páronkénti jelölés:
         `teszt_szotari_karoli.py`.)"""
 
-    @unittest.skip(S9)
-    def test_gk24_alakosztaly_kapu_tipus_szerint(self):
-        """GK-24: a sablon-eredetű szövegen minden alakosztály tilos, az idézeten csak a proveniencia-alakok; 0
-        találat mindkét új lapon, 0 hamis találat a mai mintalap prózáján és idézetein."""
 
-    @unittest.skip(S9)
-    def test_gk26_mutacios_proba(self):
-        """GK-26: hat hibaváltozat (szivárgó mezőnév, ismételt címke, tört írásjel, jegyzet = cella, belső szám a
-        mondatban, hiányzó „Funkció:”); mindet megfogja legalább egy kapu; jelentés kapunként."""
-
-
-
-    @unittest.skip(S9)
-    def test_gk31_futasido(self):
-        """GK-31: egy lap generálása legfeljebb 60 s (a régi 46,5 s; 1,5-szeres túllépés megállás)."""
 
 
 class AtvettTetelek(unittest.TestCase):
@@ -176,19 +153,6 @@ class Hibanaplo(unittest.TestCase):
     @unittest.skip('a hatókör-sor zárójeles forráslistája a felhasználó döntésére vár (az S1 utáni átnézés)')
     def test_hn03_forrasnev_a_mondat_kozepen(self):
         """HN-03: forrásnév a mondat közepén, zárójelben („(a BDB-szótár)”): 0 találat."""
-
-    @unittest.skip(S9)
-    def test_hn02_hn04_cimke_ismetles_es_belso_mezonev(self):
-        """HN-02, HN-04: címke-ismétlés és belső mezőnév („hivatkozas_kezi,;”, „negativ_kriterium”): 0 találat."""
-
-    @unittest.skip(S9)
-    def test_hn05_hn06_munkaszereplo_es_gerinc(self):
-        """HN-05, HN-06: „felhasználó”, „orkesztrátor”, „gerinc” a látható szövegben: 0 találat."""
-
-    @unittest.skip(S9)
-    def test_hn07_hn08_hn09_belso_szam_es_nyers_szotarfej(self):
-        """HN-07, HN-08, HN-09: töredék („sz<n> sorok,;”), döntésszám és tételszám, nyers BDB-fej, héber
-        számláló: 0 találat mindkét új lapon."""
 
     @unittest.skip(S3_MARADEK)
     def test_hn12_angol_thayer_nyersen(self):

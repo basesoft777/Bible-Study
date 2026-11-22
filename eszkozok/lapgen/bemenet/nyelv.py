@@ -16,6 +16,7 @@ KEZI_FORRASFAJL_TIPUS = 'kezi_forrasfajl'   # a kézi forrássorban nevezett, a 
 FOLERENDELT_MONDATKEZDO_TIPUS = 'folerendelt_mondatkezdo'   # a tágabb kör mondatkezdő alakja; kulcs: a motívum
 CIMKE_CELLA_TIPUS = 'cimke_cella'   # a szótári szakaszcímke cellakezdő alakja; kulcs: szótár|Strong|szócikk|szakasz
 OK_CELLA_TIPUS = 'ok_cella'   # az elutasítási ok címkéjének cellakezdő alakja (DT869); kulcs: a címke (B56)
+OK_LEIRAS_CELLA_TIPUS = 'ok_leiras_cella'   # az elutasítási ok megjegyzésének cellakezdő alakja (S9a); kulcs: a címke (B56)
 _KULCS_ELVALASZTO = '|'
 
 
@@ -152,6 +153,29 @@ def ok_cellaalakok(b):
             raise BemenetHiba('B65: a(z) %r ok cellakezdő alakja (%r) a címkétől csak a kezdő névelőben és a '
                               'kezdőbetűben térhet el' % (cimke, alak))
         ki[cimke] = b.kezi('B65', OK_CELLA_TIPUS, alak)
+    return ki
+
+
+def ok_leiras_cellaalakok(b):
+    """Az elutasítási okok megjegyzésének cellakezdő alakja (B65, `ok_leiras_cella` típus; a kulcs az ok címkéje)
+    kézi szövegként: {címke: Kezi}. A 3. szakasz okainak táblájában a „Mit jelent” cella ebben az alakban áll; a
+    melléklet és a Döntési út a megjegyzést változatlanul közli. Az alak adat (DT869); a megjegyzéstől csak a
+    kezdőbetűben térhet el, különben BemenetHiba."""
+    ki = {}
+    sorok = b65_nevtabla(b).nyers_nevek(OK_LEIRAS_CELLA_TIPUS)
+    if not sorok:
+        return ki
+    megjegyzesek = {_OSSZESITO_JELOLO_RX.sub('', r['cimke']): r['megjegyzes'].strip()
+                    for r in reversed(b._tabla('B56', oszlopok=('cimke', 'megjegyzes')).szotarak())}
+    for cimke, alak in sorok.items():
+        megj = megjegyzesek.get(cimke)
+        if not megj:
+            raise BemenetHiba('B65: a(z) %r `%s` sor kulcsa nem megjegyzéssel bíró elutasítási ok (B56)'
+                              % (cimke, OK_LEIRAS_CELLA_TIPUS))
+        if not alak[:1].isupper() or alak[:1].lower() + alak[1:] != megj[:1].lower() + megj[1:]:
+            raise BemenetHiba('B65: a(z) %r ok megjegyzésének cellakezdő alakja a megjegyzéstől csak a kezdőbetűben '
+                              'térhet el' % cimke)
+        ki[cimke] = b.kezi('B65', OK_LEIRAS_CELLA_TIPUS, alak)
     return ki
 
 

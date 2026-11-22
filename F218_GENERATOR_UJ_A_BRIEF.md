@@ -6,14 +6,14 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: fut
-ag: claude/f218a-s8d-96a364
-pr: 791
+ag: claude/f218a-s9-722be2
+pr: 797
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "Te: az S9 (a két renderelt lap a felhasználónak, az eltérés-összesítés és az S2–S9 új sorainak listája); utána megállás"
+kovetkezo: "Folytatás: S9c (F218.12) új sessionben a naplok/F218_folytatas.md-ből: a vázban maradt S3_MARADEK tételek és a leltártételek; utána a felhasználó nézése (naplok/F218_S9_nezes.md, frissítve)"
 munka: folyamat
 sav: CONTENT
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
-ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, dontesek/uj/f218a-s5-1402d5.md, nyitott/uj/f218a-s5-1402d5.md, dontesek/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s7-466f45.md, dontesek/uj/f218a-s8.md, nyitott/uj/f218a-s8.md, nyitott/uj/f218a-s8b.md, dontesek/uj/f218a-s8c-5ffa99.md, dontesek/uj/f218a-s8d-96a364.md, nyitott/uj/f218a-s8d-96a364.md, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
+ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, dontesek/uj/f218a-s5-1402d5.md, nyitott/uj/f218a-s5-1402d5.md, dontesek/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s7-466f45.md, dontesek/uj/f218a-s8.md, nyitott/uj/f218a-s8.md, nyitott/uj/f218a-s8b.md, dontesek/uj/f218a-s8c-5ffa99.md, dontesek/uj/f218a-s8d-96a364.md, nyitott/uj/f218a-s8d-96a364.md, dontesek/uj/f218a-s9-722be2.md, nyitott/uj/f218a-s9-722be2.md, adat/licencek.tsv, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_S9_nezes.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
 fugg: []
 nem_fugg: [121, 123, 146, 178, 179]
 ---
@@ -300,7 +300,7 @@ Minden szelet: bemeneti függvények → számítás → sablonmondatok és neve
 - **F218.9 (S6)** — „7. Kapcsolatok”, Alátámasztás, „8. Kapcsolódó motívumok”.
 - **F218.10 (S7)** — „9. Hatástörténet” (ÓSZ, ÚSZ, tanúk), a szópár; GK-SZOPAR, GK-A6, GK-28.
 - **F218.11 (S8)** — a keret: cím, Tartalomjegyzék, Jelmagyarázat, a rések (Kivonat, Miért fontos, 10., 11.), „12. Irodalom és idézés”, Kolofon; GK-07, 10, 27, 28.
-- **F218.12 (S9)** — a teljes lap: HAMART teljes diff 0 engedélyen kívül; az ISTENTISZT 8.2 szerint; GK-11, 24, 26, 31; a festékpróba mindkét teljes bemeneten.
+- **F218.12 (S9)** — a teljes lap: HAMART teljes diff 0 engedélyen kívül; az ISTENTISZT 8.2 szerint; GK-11, 24, 26, 31; a festékpróba mindkét teljes bemeneten. *Bontása (DT924, 2026-11-22): **S9a** a „3. Kizárt és vizsgált helyek” szakasz (egyik szelet sem építette meg) · **S9b** a teljes lap kapui és a 8.2/1 független számlálói · **S9c** a vázban maradt `S3_MARADEK` tételek és a leltártételek (GK-B9, A11, A14, A15, B5, B8, C3, C9, D3) · utána a felhasználó nézése, a kész, minden kaput teljesítő lapon. A `HELY_EGYSEG` (GK-04) a 218c-re kerül (N234).*
   - ⛔ **A felhasználó** (a második, egyben utolsó kör) megnyitja a két renderelt lapot, és megkapja az osztályonkénti eltérés-összesítést meg az S2–S9 összes új sablonmondatát és nevét egy listában (6. pont).
   - ⛔ **Független ellenőrzés (2.)**, egy javítókör.
 - **F218.13** — zárás: jelentés, mérőszámok, a 13. pont N-tételei a `nyitott/uj/<ágnév>.md`-be; `kovetkezo`: „Te: a 218b és a 218c befogadása”.
@@ -364,18 +364,20 @@ Minden szelet: bemeneti függvények → számítás → sablonmondatok és neve
 
 **A táblajegyzetek helye (nem nyitott kérdés).** A felhasználó döntése (az orkesztrátor közvetítésével, 2026-11-13): a táblajegyzetek a tábla alatt maradnak, ahogy a HAMART 1. kiadásánál eldőlt, és az új generátorban is így lesz; a mostani forma megtartandó (GK-25). A jegyzet áthelyezése tehát nem szándékolt eltérés, a regresszióban BUKÁS.
 
+**A Kolofon forrástáblája (DT912, 2026-11-22).** A DT901 halmaza a Kolofonra vetítve 53 diff-sort ad a mai laphoz képest: 27 új, 16 elmaradó, 10 változó sor; ebből valódi új forrás 12 (a 12. szakasszal azonos), elmaradó forrás 1 (MCGED, Mounce), a többi ugyanannak a forrásnak a szakaszlista-átsorolása. Szerkesztői döntés (az orkesztrátor, a felhasználó felhatalmazásával): elfogadva, az S9-es eltérés-összesítésben külön osztályként, ezzel a bontással (a végleges lapon újramérve: `naplok/F218_S9_nezes.md`).
+
 **Két megvalósítási megjegyzés, amelyet a befogadó erősítsen meg a felhasználóval** (a döntés tartalma nem változik, csak a helye): a T7 „adattáblája” a bemeneti tábla egy oszlopa; a T8 „beállítótáblája” egy konfig-modul. Ha a felhasználó külön, kézzel szerkeszthető táblát akar, az egy-egy új sor az `ir`-ben.
 
 ## 13. Külön befogadásra váró tételek (N-tételek; az F218.13 írja a `nyitott/uj/<ágnév>.md`-be)
 
-- **N-F218b — 218b: az olvasó szerver átkötése a lapmodellre.** `fugg: [218]`. A szerver blokkjai a `lapgen/szamitas/`-t hívják („egy számítás, két megjelenítés”).
+- **N235 — 218b: az olvasó szerver átkötése a lapmodellre.** `fugg: [218]`. A szerver blokkjai a `lapgen/szamitas/`-t hívják („egy számítás, két megjelenítés”).
   - OLV-1: a kiejtés a lap kiejtés-szolgáltatásából, nem a `strong_szotar.kiejtes` mezőből (`lekerdezesek.py`) és nem a `token_eredeti.kiejtes`-ből; teszt: H2398, H7121.
   - OLV-2: a szótári fordítás ugyanazon a bemeneti ponton, mint a lap (F213-eset).
   - OLV-3: a szerver felülete ugyanazt a névtáblát és alakosztály-kaput használja („lxx_bridge”, „token_par”, „(#121)”).
   - GK-22: a szerver és a lap számai gépi összevetésben azonosak.
   - Futásidő-mérce szerverblokkra (kérésenkénti számítás, pillanatkép nélkül).
   - Ütközik a #121-gyel (`blokkok.py`, `lekerdezesek.py`, `forditasok.tsv`): valódi `fugg` vagy sorrend kell.
-- **N-F218c — 218c: átállás.** `fugg: [217, 218]`.
+- **N236 — 218c: átállás.** `fugg: [217, 218]`.
   - A #217 jegyzékének G01/G02 sora az új generátorra mutat; a `bemenetek` oszlop a `lapgen_bemenetek.tsv` B-azonosítóira hivatkozik.
   - Az E28 és a `feladatok.yml`/#217 Action az új generátorral; a `--cel lexikon` az újra mutat.
   - A lapszövegre kereső kapuk átírása a modellre (`olvasoi_kapu.py`, `ellenoriz.py` lapszöveg-szabályai, E38, E39; HN-17: a „3. LXX” előtagú kapu), a fogyasztóikkal egy commitban.
