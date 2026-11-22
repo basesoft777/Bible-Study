@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SERVER
-allapot: dontesre_var
+allapot: fut
 ag: claude/f232-merce-192772
 ad: rögzített mintakészlet olvasói pillanatképe (szó-lapok és versnézetek látható szövege és blokksora), amelyhez minden olvasót érintő ág a változását mutatja; az olvasó-szerver tesztjei automatikusan futnak (CI vagy push előtti kapu, az M0 szerint) egy kis, hermetikus teszt-adatbázison; a main-en piros két teszt zöld vagy indokoltan átírt
-kovetkezo: "Te: DT-F232a (a futtatás helye: (a) CI teszt-adatbázissal / (a2) CI a TSV-kből épített DB-vel / (b) push előtti kapu), mérések: naplok/F232_jelentes.md; utána a 2. lépés (két piros teszt)"
+kovetkezo: "Folytatás: a teljes olvasó-tesztfuttatás (teszt_futtat.py) és a próbák (mérce-eltérés, piros teszt a kapun) a naplok/F232_jelentes.md-be; utána független ellenőr"
 munka: folyamat
 olvas: [eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/teszt_futtat.py, eszkozok/push_elott.py, eszkozok/sqlite_epit.py, .github/workflows/]
 ir: [eszkozok/olvaso_szerver/teszt_olvasoi_merce.py, eszkozok/olvaso_szerver/merce/, eszkozok/olvaso_szerver/teszt_visszhang_kapu.py, eszkozok/olvaso_szerver/teszt_szintek.py, eszkozok/teszt_futtat.py, eszkozok/push_elott.py, .github/workflows/olvaso_tesztek.yml]

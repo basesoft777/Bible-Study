@@ -26,10 +26,22 @@ Minden szám a `naplok/F232_m0_*` szkriptekkel mérve (WSL `pardes` disztró, na
 
 A 45003979537-es futás (main, `b9a168d1`) 3 perc 25 s: a checkout 26 s, az E1 24 s, az E38–E39 29 s, az E41 24 s, a szabály-tesztek 92 s. Az olvasó-tesztek nincsenek benne. Az olvasó-tesztek lokális ideje a `teszt_futtat.py` fejléce szerint kb. 2 perc natívan (a lassú `teszt_szintek.py` kb. 19, `teszt_arculat.py` ugyanebben a listában; **nem mértem újra**).
 
-### 5. A két piros teszt (a 2.4 pont tárgya, még nem vizsgáltam)
+### 5. A két piros teszt (a 2.4 pont tárgya): lásd a „F232.1” szakaszt lent
 
-`teszt_visszhang_kapu.py` két tesztje és `teszt_szintek.py` `test_ebben_a_versben_es_az_interlinearis_csempek_koveti_a_blokkok_lathatosagat` tesztje. Oka és javítása a ⛔ utáni 2. lépés.
+## Döntés (DT-F232a)
 
-## Állapot
+A felhasználó 2026-11-22-én: „(b) + (a2) mehet” (az orkesztrátor szó szerinti idézetével, a `local_c8cc3610…` session üzenetében). (b) most; (a2) az N-F232a nyitott tétel. Rögzítve: `dontesek/uj/f232-merce-192772.md` (DT-F232a, 🟢), `nyitott/uj/f232-merce-192772.md` (N-F232a, N-F232b).
 
-⛔ DT-F232a megállás. A döntésig semmi nem készült a kódban; a döntés `dontesek/uj/f232-merce-192772.md`-ben áll (helyőrző).
+## F232.1 — a két piros teszt (`dc138f6b`)
+
+Mindkettő **régi szöveget várt a teszt, a kód nem hibás**. Mérve a mai fán, natívan (`teszt_visszhang_kapu.py`) és WSL-ben a `pardes.db`-n (`teszt_szintek`):
+
+| Teszt | Mit vár | Mi a mai, jóváhagyott szöveg | Mikor változott |
+|---|---|---|---|
+| `teszt_visszhang_kapu` `test_bevezeto_a_peshat_magot_es_a_kulcsszavak_szamat_mondja` | „Peshat-magjának (1Móz 3–9) azon verse” | „A versek a Genezis láncának (1Móz 3–9) azok a versei, amelyekben a kulcsszó…” (az új szerkezetű lap ága, `lexikon_general.py` `uj_szerkezet`) | `cee76546` F125.LJ1 (lap-javit HAMART-001, lektor 23–25.) |
+| `teszt_visszhang_kapu` `test_v3_nincs_a_nem_azonositott_helyen` | a cella kisbetűvel kezd („a rokon írások lekérdezése…”) | a cella „A rokon írások…” nagybetűvel kezd (HAMART-001 lap 2107. sor; a generátor kisbetűs mondatrészt ad, `lexikon_general.py` 9803., a lapra a mondatkezdő nagybetűs alak kerül) | a változtató commit nem azonosítva (a `git log -S` a nagybetűs szövegre nem talált) |
+| `teszt_szintek` `test_ebben_a_versben_es_az_interlinearis_csempek_koveti_a_blokkok_lathatosagat` | az „Ebben a versben” szöveg a lapon nincs, ha a `vers.ubs` zárt | a BDB-blokk saját doboza (`bdb-ebben`, `blokkok.py` 1470., 2170.) is ezt a feliratot hordozza, és az a `szo.bdb_*` blokkoktól függ, nem a `vers.ubs`-től; a `szo.ebben` blokk valóban nincs a lapon | DT178 (BDB „Ebben a versben” doboz) |
+
+Javítás (teszt, nem kód): az első kettő a mai szöveghez igazítva; a harmadik a `data-blokk="szo.ebben"` hiányát nézi, és azt, hogy minden „Ebben a versben” felirat a BDB-dobozé. Eredmény: `teszt_visszhang_kapu` 22/22 OK (natívan, 12 s), a `teszt_szintek` teszt OK (WSL, 59 s).
+
+*Ok-lánc (hibanapló, mechanizmus szerint):* az olvasó tesztjei sehol nem futottak automatikusan, így a generátor/blokk szövegváltozása a teszt frissítése nélkül ment át; ezt a (b) kapu zárja.
