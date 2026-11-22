@@ -105,7 +105,8 @@ def szemben(s):
 
 
 # --- 6. tanú-jel, tudósjel ----------------------------------------------------------------------------------------------
-_NEMI_RE = re.compile(r'(?<=\S)\^(?=%s)' % _KONYV)
+# a könyvnév betűje bármely (akár felbontott, kombináló ékezetes) betű lehet
+_NEMI_RE = re.compile(r'(?<=\S)\s?\^(?=(?:[1-5]\s?)?[^\W\d_][^\W\d_]{0,7}\.?\s+\d+:\d+)')     # a jel előtt szóköz is állhat
 
 
 def nemi_tanu(s):

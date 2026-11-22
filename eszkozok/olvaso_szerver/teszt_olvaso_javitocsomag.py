@@ -152,7 +152,11 @@ class TestLapok(unittest.TestCase):
         self.assertIn('hamartanó', latszik(self.lap('/szo/G0264')))
         # versnézet: a héber csempe átírása a szolgáltatásé, nem a TAHOT-é
         b = self.blokk('/1Moz/1/1', 'vers.heber_csempe')
-        self.assertEqual(re.findall(r'<span class="at">(.*?)</span>', b)[:4], ['', 'berésít', 'bárá', 'elóhím'])       # az előtag csempéje üres
+        # F231 (#30, #32): az írott szó kerete viszi az egész szó kiejtését; a kereten belüli csempék nem ismétlik (az előtagé sem kap
+        # külön, félrevezető kiejtést)
+        self.assertEqual(re.findall(r'<p class="he-szocsoport-fej"><span class="he" lang="he">[^<]*</span><span class="at">(.*?)</span>', b)[:2],
+                         ['berésít', 'hassámajim'])
+        self.assertEqual(re.findall(r'<span class="at">(.*?)</span>', b)[:5], ['berésít', '', '', 'bárá', 'elóhím'])
         self.assertNotIn("'E.lo.Him", latszik(b))
 
     def test_2_bdb_egy_kartya(self):
@@ -162,12 +166,12 @@ class TestLapok(unittest.TestCase):
             self.assertIn('Angol eredeti', t)                        # a magyar elöl, az angol eredeti csukva a kártyában
 
     def test_2_bdb_szakasztabla_nelkul_a_magyar_szoveg_nem_vesz_el(self):
-        """Kilenc Strongnak van magyar BDB-fordítása, de nincs szakasztáblája (pl. H0747): kártya nincs, a nyers blokk a magyar szöveget adja,
-        az angol eredeti csukva (a külön magyar blokk megszűnése után sem vész el)."""
+        """Kilenc Strongnak van magyar BDB-fordítása, de nincs szakasztáblája (pl. H0747): F231 (#13, N225): a kártya ezeken is áll, a
+        magyar szöveg egyben, az angol eredeti csukva; a nyers blokk nem ismétli."""
         t = self.lap('/r/szo/H0747')
-        self.assertIn('data-blokk="szo.bdb_angol"', t)
-        b = self.blokk('/r/szo/H0747', 'szo.bdb_angol')
-        self.assertIn('<details class="angol-eredeti"><summary>Angol eredeti</summary>', b)
+        self.assertNotIn('data-blokk="szo.bdb_angol"', t)
+        b = self.blokk('/r/szo/H0747', 'szo.bdb_apparatus')
+        self.assertIn('<details class="szk-en"><summary>Angol eredeti</summary>', b)
         self.assertIn('Hámán fia', latszik(b))                       # a magyar szöveg elöl áll
         self.assertLess(latszik(b).index('Hámán fia'), latszik(b).index('Angol eredeti'))
 
@@ -175,7 +179,7 @@ class TestLapok(unittest.TestCase):
         """A tagolt kártya néhány szócikknél nem ad vissza minden magyar tagmondatot (H2416, H4723): a teljes magyar szöveg csukva a kártyában marad
         (a külön nyers blokk megszűnése után is: N-F76d)."""
         b = self.blokk('/szo/H2416', 'szo.bdb_apparatus')
-        self.assertIn('<details class="szk-teljes"><summary>A magyar szócikk teljes szövege (tagolás nélkül)</summary>', b)
+        self.assertRegex(b, r'<details class="szk-teljes"( open)?><summary>A magyar szócikk teljes szövege, tagolás nélkül</summary>')
         self.assertIn('Jeromos', latszik(b))                              # a kártya tagolt részéből hiányzó tagmondat a teljes szövegben megvan
 
     def test_2_bdb_modellnev_nincs_az_allapotsorban(self):
@@ -204,7 +208,7 @@ class TestLapok(unittest.TestCase):
         b = latszik(self.blokk('/szo/G0264', 'szo.magyar_gorog'))
         self.assertIn('Magyar fordítás nincs · az angol eredeti áll', b)
         self.assertNotIn('Nincs adat (üres eredmény', b)
-        self.assertIn('Thayer (angol)', latszik(self.lap('/szo/G0264')))
+        self.assertIn('Thayer, angol (forrásszöveg)', latszik(self.lap('/szo/G0264')))     # F231 (#21): alul, csukva
 
     def test_3_tbesh_nincs_nyers_br(self):
         for u in ('/szo/H1242', '/szo/H2398', '/szo/H7121'):

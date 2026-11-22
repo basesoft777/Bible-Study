@@ -108,29 +108,31 @@ class Szokartya(unittest.TestCase):
             self.assertNotIn('gépi bontás', b, u)
             self.assertNotIn('hibás határ előfordulhat', b, u)
             self.assertNotIn('Gépi szeletelés', b, u)
-            self.assertEqual(b.count('Forrás és licenc:'), 1, u)
+            self.assertEqual(b.count('<p class="forras"'), 1, u)            # F231 (#45/#46): a csukott „Forrás” lenyílóban, egyszer
+            self.assertIn('<details class="forras-reszlet"><summary>Forrás és licenc</summary>', b, u)
             self.assertNotIn('class="forrasnev"', b, u)
 
     def test_teljes_szoveg_megmarad(self):
-        """A „Szócikk egyben” bekezdései jelentésenként a teljes magyar szöveget hordozzák (semmi nem vész el, csak csukódik)."""
+        """F231: jelentésenként a teljes magyar szöveg egybefüggően áll (a lexikonlap 4.2 modellje), semmi nem csukódik el."""
         b = blokk(self.get('/szo/H0127'))
-        egyben = re.findall(r'<p class="szk-egyben jsz">(.*?)</p>', b, re.S)
-        self.assertEqual(len(egyben), 7)
-        szoveg = re.sub(r'<[^>]+>', '', ' '.join(egyben))
+        szoveg = re.sub(r'<[^>]+>', '', ' '.join(re.findall(r'<p class="szk-szoveg jsz">(.*?)</p>', b, re.S)))
         for darab in ('földdarab, földbirtok', 'öszvérterhek belőle', 'város Naftáliban', 'mint harmattal nedves'):
             self.assertIn(darab, szoveg)
+        self.assertNotIn('szk-egyben', b)
+        self.assertNotIn('szk-sor', b)                                       # a használati sorok megszűntek
 
     def test_jelentes_felepitese(self):
         b = blokk(self.get('/szo/H0216'))
         self.assertEqual(len(re.findall(r'<li id="bdb-0-\d+" data-jel="\d+" class="szk-jel', b)), 11)
         self.assertIn('<span class="szk-glossza">reggeli fény, hajnal</span>', b)
         self.assertIn('<span class="szk-glossza">villám</span>', b)
-        self.assertRegex(b, r'<span class="szk-szerk he" lang="he">[^<]*הַבֹּקֶר')
-        self.assertIn('<span class="szk-magy">hajnaltól délig</span>', b)
+        szoveg = ' '.join(re.findall(r'<p class="szk-szoveg jsz">(.*?)</p>', b, re.S))
+        self.assertIn('hajnaltól délig', szoveg)                             # F231: a szerkezet és a magyarázat a szövegben, eredeti rendben
+        self.assertRegex(szoveg, r'הַבֹּקֶר')
         self.assertIn('<details class="szk-en"><summary>Angol eredeti</summary>', b)
-        self.assertIn('<details class="szk-app"><summary>Apparátus és szövegkritika', b)
-        self.assertNotRegex(b, r'<details class="szk-(app|en)" open')           # az apparátus és az angol alapból csukva
-        self.assertRegex(b, r'<details class="szk-jel-d" open>')                 # szónézetben minden jelentés nyitva
+        self.assertNotIn('szk-app', b)                                       # az apparátus-zárójelek a szövegben maradnak
+        self.assertNotRegex(b, r'<details class="szk-en" open')
+        self.assertRegex(b, r'<details class="szk-jel-d" open>')
         self.assertNotIn('<details class="szk-jel-d">', b)
         self.assertIn('<details class="szk-alakok"><summary>Alakok</summary>', b)
         self.assertIn('<details class="szk-rokon"><summary>Rokon nyelvek és eredet</summary>', b)
@@ -140,12 +142,12 @@ class Szokartya(unittest.TestCase):
         b = blokk(self.get('/szo/H1242'))
         tj = re.search(r'<nav class="szk-tj".*?</nav>', b, re.S).group(0)
         db = re.findall(r'<span class="szk-tj-db">([^<]*)</span>', tj)
-        self.assertTrue(db[0].isdigit() and int(db[0]) > 0, db[:2])
+        self.assertRegex(db[0], r'^[1-9]\d* hivatkozás$')                   # F231 (#10): a szám felirattal
         self.assertNotIn('<span class="szk-tj-db">0</span>', tj)
 
     def test_nem_bonthato_sor(self):
         b = blokk(self.get('/szo/H0127'))
-        self.assertRegex(b, r'<li class="szk-sor szk-egesz"><span class="szk-magy">a bűnbánatéként')
+        self.assertRegex(b, r'<p class="szk-szoveg jsz">[^\n]*a bűnbánatéként')
 
     def test_tartalomjegyzek_es_motivum(self):
         b = blokk(self.get('/szo/H0127'))
@@ -169,33 +171,28 @@ class Szokartya(unittest.TestCase):
         self.assertNotIn('>ὁ<', b)                                                          # a névelő (nyelvtani Strong) nem pár
 
     def test_nezetkapcsolo(self):
+        """F231: a nézetkapcsoló megszűnt (a szöveg mindig egyben áll); a kártya tárolója változatlan."""
         b = blokk(self.get('/szo/H0127'))
         self.assertIn('<div class="szk" data-nezet="olvaso">', b)
-        self.assertEqual(re.findall(r'data-szk-nezet="([a-z]+)"', b), ['olvaso', 'egyben', 'app'])
-        js = open(os.path.join(D, 'statikus', 'olvaso.js'), encoding='utf-8').read()
-        self.assertIn("get('nezet')", js)
-        self.assertIn('pardes_szk_nezet', js)
-        css = open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8').read()
-        self.assertIn('.szk[data-nezet="egyben"] .szk-egyben { display: block; }', css)
+        self.assertEqual(re.findall(r'data-szk-nezet="([a-z]+)"', b), [])
 
     def test_meg_n_hely(self):
+        """F231: a helyek a szövegben állnak, rejtés nélkül (nincs „még N hely”)."""
         b = blokk(self.get('/szo/H0127'))
-        self.assertRegex(b, r'<button type="button" class="szk-tobb" data-db="\d+">még \d+ hely</button>')
-        sor = re.search(r'<li class="szk-sor">(?:(?!</li>).)*class="szk-tobb"(?:(?!</li>).)*</li>', b, re.S).group(0)
-        rejtett = re.findall(r'<span class="szk-rejt">(.*?)</span>', sor)
-        self.assertTrue(rejtett)
-        self.assertFalse([r for r in rejtett if 'szk-mot' in r or 'bdb-itt' in r])          # a kiemelt hely sosem rejtett
+        self.assertNotIn('szk-tobb', b)
+        self.assertNotIn('szk-rejt', b)
 
     def test_f104_eros_jeloles_versbol(self):
         b = blokk(self.get('/szo/H0216?vers=1Moz/1/3'))
         self.assertIn('class="bdb-ebben"', b)
         self.assertRegex(b, r'<li id="bdb-0-1" data-jel="1" class="szk-jel bdb-itt">')
+        self.assertIn('A BDB besorolása: 1Móz 1:3', b)                    # DT914: a szótár besorolásaként címkézve
         self.assertRegex(b, r'<a class="igehely bdb-itt" href="/1Moz/1/3" title="feloldva: 1Móz 1:3"')
         self.assertIn('<span class="szk-tag szk-tag-ez">ez a vers</span>', b)
 
     def test_f104_nem_idezi(self):
         b = blokk(self.get('/szo/H0216?vers=1Moz/1/4'))
-        self.assertIn('A BDB ezt a verset nem idézi.', b)
+        self.assertIn('A BDB ezt a verset nem idézi;', b)
         self.assertNotRegex(b, r'class="szk-jel bdb-')
 
     def test_alapjelentes_glossza_elol(self):
@@ -207,13 +204,13 @@ class Szokartya(unittest.TestCase):
 
     def test_strong_szotar_magyarul_elol(self):
         b = blokk(self.get('/szo/H1242'), 'szo.szotar')
-        self.assertIn('<td>reggel <span class="angol-kis" lang="en">morning</span></td>', b)
+        self.assertIn('<td><span title="angol eredeti: morning">reggel</span></td>', b)     # F231 (#58): az angol a súgóban
 
     def test_ebben_a_versben_glossza_es_ubs(self):
         b = blokk(self.get('/szo/H1242?vers=1Moz/1/5'), 'szo.ebben')
-        self.assertIn('Glossza: reggel <span class="angol-kis" lang="en">morning</span>', b)
+        self.assertIn('Glossza: <span title="angol eredeti: morning">reggel</span>', b)
         self.assertIn('A UBS-jelentés magyar fordítása ehhez a szóhoz még nincs.', b)
-        self.assertIn('Glosszák: reggel <span class="angol-kis" lang="en">morning</span>', b)          # az UBS-glossza magyarul elöl
+        self.assertIn('Glosszák: <span title="angol eredeti: morning">reggel</span>', b)          # az UBS-glossza magyarul elöl
         b2 = blokk(self.get('/szo/H0127?vers=1Moz/3/17'), 'szo.ebben')
         self.assertNotIn('még nincs', b2)                                                   # a H0127-nek van magyar UBS-fordítása
         self.assertRegex(b2, r'<span class="def">= [^<]*föld')
@@ -235,27 +232,27 @@ class MagyarForditasBekotve(unittest.TestCase):
 
     def test_tbesg_es_lsj(self):
         b = self.b('/szo/G0086', 'szo.tbesg')
-        self.assertIn('pokol: Hádész <span class="angol-kis" lang="en">hell: Hades</span>', b)
+        self.assertIn('<span title="angol eredeti: hell: Hades">pokol: Hádész</span>', b)
         self.assertIn('<details class="angol-eredeti"><summary>Angol eredeti</summary>', b)
         self.assertIn('<details class="angol-eredeti"><summary>Angol eredeti</summary>', self.b('/szo/G0086', 'szo.lsj'))
         self.assertNotIn('angol-eredeti', self.b('/szo/G3056', 'szo.lsj'))                 # fordítás nélkül az angol változatlan
 
     def test_domenek(self):
-        self.assertIn('Föld <span class="angol-kis" lang="en">Land</span>', self.b('/szo/H0127', 'szo.sdbh'))
-        self.assertIn('Pusztítás <span class="angol-kis" lang="en">Destroy</span>', self.b('/szo/G1311', 'szo.sdgnt'))
+        self.assertIn('<span title="angol eredeti: Land">Föld</span>', self.b('/szo/H0127', 'szo.sdbh'))
+        self.assertIn('<span title="angol eredeti: Destroy">Pusztítás</span>', self.b('/szo/G1311', 'szo.sdgnt'))
 
     def test_tbesh_es_tw(self):
         b = self.b('/szo/H7585', 'szo.tbesh')
-        self.assertIn('pokol: Seol <span class="angol-kis" lang="en">hell: Sheol</span>', b)
+        self.assertIn('<span title="angol eredeti: hell: Sheol">pokol: Seol</span>', b)
         self.assertIn('A szócikk magyarul:', b)
         tw = self.b('/szo/H7585', 'szo.tw_h')
         self.assertIn('Meghatározás', tw)
         self.assertIn('<details class="angol-eredeti"><summary>Angol eredeti</summary>', tw)
-        self.assertIn('sirat, siralom <span class="angol-kis" lang="en">lament, lamentation</span>', self.b('/szo/H0056', 'szo.tw_h'))
+        self.assertIn('<span title="angol eredeti: lament, lamentation">sirat, siralom</span>', self.b('/szo/H0056', 'szo.tw_h'))
 
     def test_nave_tema(self):
         b = self.b('/r/vers/Zak/8/21', 'vers.nave')
-        self.assertIn('ébredések <span class="angol-kis" lang="en">REVIVALS</span>', b)
+        self.assertIn('<span title="angol eredeti: REVIVALS">ébredések</span>', b)
         self.assertIn('CHURCH', b)                                                          # fordítás nélküli téma angolul
 
 

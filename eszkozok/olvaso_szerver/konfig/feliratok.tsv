@@ -118,3 +118,14 @@ szo.szam_elofordulas	előfordulás
 szo.szam_konyv	könyvben	
 szo.szam_karoli	Károli-előfordulás	
 szk.teljes_nyitva	A tagolt kártya ennek a szócikknek egy részét nem adja vissza (a szakasztábla itt hiányos), ezért a teljes magyar szöveg nyitva áll.	
+karoli.osszes	%(n)s Károli-előfordulás.	
+karoli.pontossag_sugo	%(leiras)s: %(p)s (95%%-os konfidencia-intervallum: %(also)s–%(felso)s%%); proveniencia: %(prov)s	
+ubs.domen	Domén	
+ubs.glossza_hu	Glossza (magyar)	
+ubs.definicio_hu	Definíció (magyar)	
+ubs.glossza_en	Glossza (angol)	
+ubs.definicio_en	Definíció (angol)	
+domen.domen	Domén	
+domen.glossza	Glossza	
+domen.hivatkozas	Hivatkozás	
+domen.kod_sugo	doménkód: %(kod)s	

@@ -870,16 +870,6 @@ tulajdonsag = [
 ]
 
 [[elem]]
-id = "bdb-vonatkozhat"
-nev = "Gyenge jelölés: vonatkozhat (bizonytalan hivatkozás vagy az igetörzs szakasza)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".bdb-vonatkozhat"
-tulajdonsag = [
-  { nev = "Háttér", token = "gold-soft" },
-  { nev = "Lekerekítés", token = "radius-kiemeles" },
-]
-
-[[elem]]
 id = "bdb-jelzes"
 nev = "A jelölés felirata („a BDB itt idézi ezt a verset” / „vonatkozhat”)"
 csoport = "BDB-jelentésszerkezet"
@@ -891,21 +881,6 @@ tulajdonsag = [
 ]
 
 # F213 (FELADATOK #213): a BDB-szókártya (a design-vászon „Szótári nézet” mockupja, jóváhagyva 2026-11-12)
-[[elem]]
-id = "szk-nezet"
-nev = "Szókártya: nézetkapcsoló (olvasói nézet / szócikk egyben / minden apparátus nyitva)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-nezet button"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-gomb-kis" },
-  { nev = "Kiválasztott háttér", token = "accent" },
-  { nev = "Háttér", token = "panel" },
-  { nev = "Keret", token = "rule" },
-  { nev = "Lekerekítés", token = "radius-kiemeles" },
-  { nev = "Belső térköz (függőleges)", token = "space-gomb-fugg" },
-  { nev = "Belső térköz (vízszintes)", token = "space-gomb-vizsz" },
-]
-
 [[elem]]
 id = "szk-cimszo"
 nev = "Szókártya: a címszó héberül"
@@ -1070,89 +1045,14 @@ tulajdonsag = [
 ]
 
 [[elem]]
-id = "szk-szerk"
-nev = "Szókártya: a használati sor szerkezete (héber kifejezés)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-szerk"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-cimszo-heber" },
-  { nev = "Sorköz", token = "lh-csempe" },
-]
-
-[[elem]]
-id = "szk-magy"
-nev = "Szókártya: a használati sor magyar magyarázata"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-magy"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-szocikk" },
-  { nev = "Sorköz", token = "lh-szocikk" },
-]
-
-[[elem]]
-id = "szk-helyek"
-nev = "Szókártya: igehely a használati sorban (és a nem azonosítható hely)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-helyek a.igehely, .szk-na"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-helyszam" },
-  { nev = "Szín", token = "accent" },
-  { nev = "Háttér", token = "panel" },
-  { nev = "Keret", token = "rule" },
-  { nev = "Lekerekítés", token = "radius-kiemeles" },
-]
-
-[[elem]]
 id = "szk-mot"
 nev = "Szókártya: a motívum helye (a sor ezen a szón: teli; más szón: pontozott keret)"
 csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-helyek a.szk-mot, .szk-helyek a.szk-mot2"
+szelektor = ".szk-szoveg a.szk-mot, .szk-szoveg a.szk-mot2"
 tulajdonsag = [
   { nev = "Háttér", token = "gold-soft" },
   { nev = "Keret és aláhúzás", token = "gold" },
   { nev = "Szín", token = "fg" },
-]
-
-[[elem]]
-id = "szk-tk"
-nev = "Szókártya: szó a helyek között (vö., héber kifejezés, „a versben kétszer”)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-tk"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-megjegyzes" },
-  { nev = "Szín", token = "muted" },
-]
-
-[[elem]]
-id = "szk-tobb"
-nev = "Szókártya: „még N hely” gomb"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-tobb"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-megjegyzes" },
-  { nev = "Szín", token = "accent" },
-]
-
-[[elem]]
-id = "szk-app-lista"
-nev = "Szókártya: Apparátus és szövegkritika (a jelentésnél)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-app-lista"
-tulajdonsag = [
-  { nev = "Háttér", token = "bg" },
-  { nev = "Betűméret", token = "fs-sor" },
-  { nev = "Sorköz", token = "lh-forrassor" },
-  { nev = "Lekerekítés", token = "radius-kiemeles" },
-]
-
-[[elem]]
-id = "szk-app-fajta"
-nev = "Szókártya: az apparátus-sor fajtája (forrásjel, megjegyzés, számozás)"
-csoport = "BDB-jelentésszerkezet"
-szelektor = ".szk-app-fajta"
-tulajdonsag = [
-  { nev = "Betűméret", token = "fs-forrascim" },
-  { nev = "Szín", token = "muted" },
 ]
 
 [[elem]]
@@ -1404,6 +1304,7 @@ tulajdonsag = [
 ]
 
 [kizart]
+bdb-vonatkozhat = "a szókártya szövegében a lap verse, ha a 2.29 sora kétes (F104; F231: a pont jelölése elmaradt, DT914): a kiemelés a .szk-szoveg a.bdb-itt szabályé"
 szo-szamok = "a szó-lap számkártyáinak sora a lapfej alatt (F231 #56; flex)"
 szo-szam = "egy számkártya (szám + felirat; F231 #56)"
 ures-osszesito = "az üres eredményű blokkok összesítő sora (F231 #47); a .ures tokenjein"
@@ -1416,7 +1317,6 @@ he-szocsoport-csempek = "a szócsoport csempéinek sora (F231 #30, flex, jobbró
 sav = "a Károli-alakok arányos sávja (<meter>, F231 #57); a szín a böngésző alapja, a méret a .sav szabályé"
 ubs-jelentes = "az UBS DNTG egy jelentésének tárolója a görög szó-lapon (F231, #27); a megjelenés a gyermek-elemeken"
 forrasszoveg = "a nyers forrásszöveg csukott lenyílója a görög szó-lap alján (F231, #21; details)"
-szk-szoveg = "a szótári szöveg egy jelentésnél, egybefüggően (F231; a megjelenés a .jsz tokenjein)"
 szk-jel-inline = "a rosszul tagolt törzs egybefüggő szövegében a pont jele (F231, félkövér; saját token nélkül)"
 szk-torzs-egyben = "állapot-osztály: a rosszul tagolt törzs egyben (F231, a tagolási jelző); saját token nélkül"
 szk-torzs-alakok = "a törzs „Alakok” sora (a jel nélküli alaktani pont, F231; a .jsz tokenjein)"

@@ -922,10 +922,11 @@ KAROLI_MERT_PONTOSSAG = 'A párosítás mért pontossága %d%%.' % round(100 * K
 def _r_karoli_alakok(d, K):
     ossz, _, top = d
     p = KAROLI_PONTOSSAG
-    ki = Markup('<p>%d Károli-előfordulás. <span title="%s: %s (95%%-os konfidencia-intervallum: '
-                '%s–%s%%); proveniencia: %s">%s</span></p>') % (
-        ossz, p['leiras'], ('%.2f%%' % (100 * p['p'])).replace('.', ','), ('%.2f' % (100 * p['ci_also'])).replace('.', ','),
-        ('%.2f' % (100 * p['ci_felso'])).replace('.', ','), p['proveniencia'], KAROLI_MERT_PONTOSSAG)
+    ki = Markup('<p>%s <span title="%s">%s</span></p>') % (
+        F('karoli.osszes', n=ossz), F('karoli.pontossag_sugo', leiras=p['leiras'], p=('%.2f%%' % (100 * p['p'])).replace('.', ','),
+                                      also=('%.2f' % (100 * p['ci_also'])).replace('.', ','),
+                                      felso=('%.2f' % (100 * p['ci_felso'])).replace('.', ','), prov=p['proveniencia']),
+        KAROLI_MERT_PONTOSSAG)
     # F231 (#57): arányos sáv (<meter>; a CSP inline stílust nem enged) az alakok darabszámához (a legnagyobbhoz mérve); a könyvek felsorolása csak akkor, ha nem mind párosított
     leg = max((n for _a, n in top), default=0) or 1
     ki += _tabla([F('karoli.alak'), F('karoli.darab')], [[a, Markup('<meter class="sav" min="0" max="%d" value="%d"></meter> %d') % (leg, n, n)]
@@ -1690,7 +1691,7 @@ def _szk_inline(cx, s, dom, cimke):
     hivatkozásokkal (a vers helye kiemelve)."""
     vj, talalt = cx['vj'], cx['talalt']
     cx.setdefault('szovegek', []).append(s or '')
-    t = szokartya_szoveg.olvasoi(s or '', magyar=cx['hu'])
+    t = szokartya_szoveg.olvasoi(s or '', magyar=cx.get('hu', True))
     return vj.szoveg(t, talalt, dom, cimke) if vj.van else _jeles(t, talalt)
 
 
@@ -1721,7 +1722,8 @@ def _szk_mot_cimkek(cx, dom):
     vj = cx['vj']
     if not (vj.van and dom):
         return Markup(''), False
-    versek = {r['karoli_vers'] for r in vj.csomopont_sorok.get(dom, ()) if r['karoli_vers'] and _vj_feloldott(r)}
+    # DT914: a motívum jelentése csak biztos besorolású helyről (a kétes pont nem hordozó; a lexikonlap 4.2 félkövérjével azonos)
+    versek = {r['karoli_vers'] for r in vj.csomopont_sorok.get(dom, ()) if r['karoli_vers'] and _vj_feloldott(r) and not _vj_bizonytalan(r)}
     ki = Markup('')
     for m, sv in sorted(cx['motiv'][1].items()):
         n = len(versek & sv)
@@ -1784,7 +1786,7 @@ def _szk_glossza(cx, n, tn, jel, al, cimke):
         gl = m.group(0).strip() if m else gl
     if gl:
         return gl, kezi, False
-    return szokartya_szoveg.elso_tagmondat(szokartya_szoveg.olvasoi(n['szoveg'] or '', magyar=cx['hu'])), kezi, True
+    return szokartya_szoveg.elso_tagmondat(szokartya_szoveg.olvasoi(n['szoveg'] or '', magyar=cx.get('hu', True))), kezi, True
 
 
 def _szk_meta(cx, nid, n, kezi):
@@ -2074,9 +2076,11 @@ def _r_lxx_bridge(d, K, irany='h'):
 
 
 def _r_sdbh(d, K):
+    """F231 (#27, a kapu 2.6): a 15 jegyű doménkód nem látható oszlop, csak a domén súgója."""
     sorok, hu = d if isinstance(d, tuple) else (d, {})
-    return _tabla(['Domén kód', 'Domén', 'Glossza', 'Hivatkozás'], [[a or '', _hu_en(hu.get((a, 'domen', 'glosszak_hu')), b), c or '', str(n or '')]
-                                                                    for a, b, c, n in sorok])
+    return _tabla([F('domen.domen'), F('domen.glossza'), F('domen.hivatkozas')],
+                  [[Markup('<span title="%s">%s</span>') % (F('domen.kod_sugo', kod=a or ''), _hu_en(hu.get((a, 'domen', 'glosszak_hu')), b)),
+                    c or '', str(n or '')] for a, b, c, n in sorok])
 
 
 def _domen_hu(K, szotar, sorok):
@@ -2279,13 +2283,13 @@ def _f_thayer(K):
 def _f_magyar_gorog(K):
     """F231: a Thayer-szókártya adatai: a szakaszok (útvonal, jel), a magyar fordítás szakaszonként, az angol szakaszszöveg, a vers →
     jelentéspont sorok és a jóváhagyott címkék. None, ha nincs Thayer-szakasztábla és fordítás sem."""
-    szakaszok = q.thayer_szakasz_sorok(K.con, K.strong)
+    sorok4 = q.thayer_szakasz_sorok(K.con, K.strong, szoveggel=True)
     th = [r for r in q.magyar_gorog(K.con, K.strong) if r[0] == 'Thayer']
-    if not szakaszok and not th:
+    if not sorok4 and not th:
         return None
     angol_ok = getattr(K, 'thayer_ok', True)
-    return {'szakaszok': szakaszok, 'th': th, 'en': q.thayer_szakasz_szovegek(K.con, K.strong) if angol_ok else {},
-            'sorok': q.thayer_vers_sorok(K.con, K.strong), 'cimke': q.thayer_cimkek(K.con, K.strong)}
+    return {'szakaszok': [r[:3] for r in sorok4], 'th': th, 'en': {r[0]: r[3] for r in sorok4} if angol_ok else {},
+            'sorok': q.thayer_vers_pontok(K.con, K.strong, None), 'cimke': q.thayer_cimkek(K.con, K.strong)}
 
 
 # F187 (a #186 T4-e): a Thayer vers -> jelentéspont hozzárendelés mért pontossága; egyetlen forrás a `konfig/thayer_pontossag.toml`
@@ -2448,8 +2452,10 @@ def _f_ubs_dbh(K):
 
 
 def _r_ubs_dbh(d, K):
-    return _tabla(['Azonosító', 'Domén', 'Glossza (magyar)', 'Definíció (magyar)', 'Glossza (angol)', 'Definíció (angol)'],
-                  [[lex, dom or '', gh or '(fordításra vár)', dh or '(fordításra vár)', ge or '', de or ''] for lex, dom, de, ge, dh, gh in d])
+    """F231 (#27): a 15 jegyű UBS-azonosító nem látható oszlop, csak a domén súgója."""
+    return _tabla([F('ubs.domen'), F('ubs.glossza_hu'), F('ubs.definicio_hu'), F('ubs.glossza_en'), F('ubs.definicio_en')],
+                  [[Markup('<span title="%s">%s</span>') % (F('usz.ubs_sugo', lex=lex), dom or ''), gh or F('szk.forditasra_var'),
+                    dh or F('szk.forditasra_var'), ge or '', de or ''] for lex, dom, de, ge, dh, gh in d])
 
 
 def _f_usz(K):
@@ -2521,9 +2527,8 @@ def _r_ubs_dntg(d, K):
     jelentés előfordulásai egy sorban, ismétlés nélkül. A belső azonosító (15 jegyű lexid) nem látható, csak súgóban."""
     jel, ref = d
     hu = {}
-    for _sz, jsz, fh, mezo in q.magyar_gorog(K.con, K.strong):
-        if _sz == 'UBS_DNTG':
-            hu.setdefault(jsz, {})[mezo] = fh
+    for (lex, _jsz, mezo), fh in q.forditas_bejegyzesek(K.con, 'UBS_DNTG', [x[0] for x in jel]).items():     # a bejegyzés kulcsa a lexid (entry_id)
+        hu.setdefault(lex, {})[mezo] = fh
     helyek = defaultdict(list)
     for lex, ig in ref:
         if ig not in helyek[lex]:

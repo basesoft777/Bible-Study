@@ -101,7 +101,7 @@ class TestOlvasoHibakLap(unittest.TestCase):
         self.assertEqual(r.status_code, 200)
         t = r.get_data(as_text=True)
         self.assertIn('class="bdb-ebben"', t)
-        self.assertIn('a BDB itt idézi ezt a verset', t)
+        self.assertIn('A BDB besorolása: 1Móz 1:5', t)                       # DT914 (DT-F231c)
         self.assertRegex(t, r'<li id="bdb-0-1e" data-jel="e\." class="szk-alpont bdb-itt">')
         self.assertIn('data-blokk="szo.ebben"', t)
         # vers nélkül nincs jelölés; érvénytelen vagy nem szigorú alak is figyelmen kívül marad

@@ -258,6 +258,7 @@ abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0;
 .szk-szoveg a.igehely { white-space: nowrap; }
 .szk-szoveg a.bdb-itt, .szk-szoveg a.bdb-vonatkozhat { background: var(--accent-soft); border-radius: var(--radius-kiemeles); font-weight: 600; padding: 0 2px; }
 .szk-szoveg a.szk-mot { background: var(--gold-soft); box-shadow: inset 0 -2px 0 var(--gold); }
+.szk-szoveg a.szk-mot2 { border-bottom: 1px dotted var(--gold); }
 .szk-torzs-alakok { margin: 0 0 8px; font: var(--fs-szocikk)/var(--lh-szocikk) var(--font-text); color: var(--muted); }
 .szk-torzs-egyben .szk-szoveg { padding-left: 0; }
 .szk-jel-inline { font-family: var(--font-mono); }

@@ -310,6 +310,9 @@ class TesztLablecSablon(unittest.TestCase):
             raise unittest.SkipTest('nincs Jinja2: a lábléc-sablon tesztje kimarad (nem zöld)')
         cls.env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.join(D, 'sablonok')), autoescape=jinja2.select_autoescape(['html']),
                                      trim_blocks=True, lstrip_blocks=True)
+        sys.path.insert(0, D)
+        import feliratok
+        cls.env.globals.update(F=feliratok.F, Fv=feliratok.Fv)       # F231 (DT897): a sablonok a fordítótáblát hívják
 
     def _lap(self, **kw):
         ctx = dict(cim='x', arculat_hash='h', reteg='', il=False, kiadas='belso', epites_ts='2026-10-14T09:35:00Z', tervezo=False, szint_vezerlo=False)

@@ -991,12 +991,13 @@ def magyar_gorog(con, g):
                        (g,)).fetchall()
 
 
-def thayer_szakasz_sorok(con, g):
+def thayer_szakasz_sorok(con, g, szoveggel=False):
     """F187: [(sorszam, utvonal, jel)] a Thayer-szakasztáblából (`adat/thayer_szakaszok.tsv`, SEMA 2.34), sorszám szerint, a
-    `cim` sor nélkül; [], ha a tábla hiányzik (régebbi adatbázis)."""
+    `cim` sor nélkül; [], ha a tábla hiányzik (régebbi adatbázis). F231: `szoveggel` = a negyedik elem az angol szakaszszöveg (a
+    szókártya fordítás nélkül ezt mutatja); ugyanaz a lekérdezés, a `strong`-index hiánya ugyanaz (F235 2. rész)."""
     try:
-        return [(str(s), u or '', j or '') for s, u, j in con.execute(
-            "SELECT sorszam, utvonal, jel FROM thayer_szakaszok WHERE strong=? AND utvonal <> 'cim' "
+        return [(str(s), u or '', j or '') + ((t or '',) if szoveggel else ()) for s, u, j, t in con.execute(
+            "SELECT sorszam, utvonal, jel, szoveg FROM thayer_szakaszok WHERE strong=? AND utvonal <> 'cim' "
             "ORDER BY CAST(sorszam AS INTEGER)", (g,))]
     except sqlite3.OperationalError:
         return []
@@ -1104,25 +1105,6 @@ def nave_tema_hu(con, tema_idk):
         return {}
 
 
-def thayer_szakasz_szovegek(con, g):
-    """F231: {sorszam: angol szöveg} a Thayer-szakasztáblából (a szókártya angol szövege fordítás nélkül); {}, ha a tábla hiányzik."""
-    try:
-        return {str(s): t or '' for s, t in con.execute(
-            "SELECT sorszam, szoveg FROM thayer_szakaszok WHERE strong=? AND utvonal <> 'cim'", (g,))}
-    except sqlite3.OperationalError:
-        return {}
-
-
-def thayer_vers_sorok(con, g):
-    """F231: a Thayer vers -> jelentéspont tábla sorai a szócikk hivatkozásainak sorrendjében: [(szakasz, fejezet, vers, karoli_vers)]
-    (a kártya szövegének hivatkozásai ezekre oldódnak fel, a BDB `VersJelolo` mintájára); [], ha a tábla hiányzik."""
-    try:
-        return [(str(sz), str(f or ''), str(v or ''), kv or '') for sz, f, v, kv in con.execute(
-            'SELECT szakasz, fejezet, vers, karoli_vers FROM thayer_vers_jelentes WHERE strong=? ORDER BY CAST(sorszam AS INTEGER)', (g,))]
-    except sqlite3.OperationalError:
-        return []
-
-
 def ubs_dntg_versek(con, g, igehelyek):
     """F231 (#28): {igehely: [lexid, ...]} az UBS DNTG előfordulás-tábla szerint a megadott versekre."""
     ki = {}
@@ -1144,7 +1126,14 @@ def thayer_cimkek(con, g):
 
 def thayer_vers_pontok(con, g, karoli_vers):
     """F187: a Thayer vers -> jelentéspont tábla (`adat/thayer_vers_jelentes.tsv`, SEMA 2.35) sorai egy versre:
-    [(szakasz, utvonal)]; None, ha a tábla hiányzik."""
+    [(szakasz, utvonal)]; None, ha a tábla hiányzik. F231: `karoli_vers=None` = a szócikk minden sora a hivatkozások sorrendjében,
+    [(szakasz, fejezet, vers, karoli_vers)] (a kártya szövegének hivatkozásai ezekre oldódnak fel, a BDB `VersJelolo` mintájára)."""
+    if karoli_vers is None:
+        try:
+            return [(str(sz), str(f or ''), str(v or ''), kv or '') for sz, f, v, kv in con.execute(
+                'SELECT szakasz, fejezet, vers, karoli_vers FROM thayer_vers_jelentes WHERE strong=? ORDER BY CAST(sorszam AS INTEGER)', (g,))]
+        except sqlite3.OperationalError:
+            return []
     try:
         return [(str(sz), u or '') for sz, u in con.execute(
             'SELECT szakasz, utvonal FROM thayer_vers_jelentes WHERE strong=? AND karoli_vers=? ORDER BY CAST(sorszam AS INTEGER)',
