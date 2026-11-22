@@ -21,6 +21,7 @@ import importlib.util
 import os
 import re
 import sys
+import threading
 import unicodedata
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -112,10 +113,11 @@ def _strong_kulcs(strong):
     return 'H%04d%s' % (int(m.group(1)), m.group(2)) if m else (strong or '')
 
 
-def _javitasok(hiba, ut=None):
-    """A `hiba` osztály `javitva` sorai: Strong → [(forrás alak, javított alak)], hosszabb elöl; egy alak, amelynek a
-    Strongon belül több javított alakja is van, kimarad (nem egyértelmű)."""
-    tab = {}
+def _javitasok_tobb(hibak, ut=None):
+    """A `hibak` osztályok `javitva` soraiból {hiba: {Strong: [(forrás alak, javított alak)]}}, a fájl EGYETLEN beolvasásával (F235, DT-F235a (a)).
+    Osztályonként: hosszabb alak elöl; egy alak, amelynek a Strongon belül több javított alakja is van, kimarad (nem egyértelmű)."""
+    hibak = tuple(hibak)
+    tab = {h: {} for h in hibak}
     try:
         with open(ut or JAVITAS_UT, encoding='utf-8') as f:
             sorok = [s.rstrip('\n').split('\t') for s in f if not s.startswith('#')]
@@ -124,10 +126,32 @@ def _javitasok(hiba, ut=None):
     fej = sorok[0] if sorok else []
     for s in sorok[1:]:
         d = dict(zip(fej, s))
-        if d.get('hiba') == hiba and d.get('allapot') == 'javitva' and d.get('javitott_alak'):
-            tab.setdefault(d['strong'], {}).setdefault(d['forras_alak'], set()).add(d['javitott_alak'])
-    return {st: sorted(((a, next(iter(b))) for a, b in t.items() if len(b) == 1), key=lambda p: -len(p[0]))
-            for st, t in tab.items()}
+        t = tab.get(d.get('hiba'))
+        if t is not None and d.get('allapot') == 'javitva' and d.get('javitott_alak'):
+            t.setdefault(d['strong'], {}).setdefault(d['forras_alak'], set()).add(d['javitott_alak'])
+    return {h: {st: sorted(((a, next(iter(b))) for a, b in x.items() if len(b) == 1), key=lambda p: -len(p[0]))
+                for st, x in tab[h].items()} for h in hibak}
+
+
+def _javitasok(hiba, ut=None):
+    """A `hiba` osztály `javitva` sorai: Strong → [(forrás alak, javított alak)], hosszabb elöl; egy alak, amelynek a
+    Strongon belül több javított alakja is van, kimarad (nem egyértelmű)."""
+    return _javitasok_tobb((hiba,), ut)[hiba]
+
+
+_JAVITAS_ZAR = threading.Lock()
+
+
+def betolt_javitasok():
+    """A javítótábla gyorsítótárai szálbiztosan: a három osztály (sorrend, átírás, zárójel) egyetlen beolvasással, a betűjavítás (`pe_mem`,
+    `res_dalet`; `betu_javitasok`) a saját, zárolt beolvasásával. Ha két szál egyszerre kéri (pl. az indulási előmelegítés és az első kérés), a
+    második megvárja az elsőt, nem olvassa be másodszor. Ismételt hívás nem csinál semmit."""
+    global _SORREND, _ATIRAS, _ZAROJEL
+    with _JAVITAS_ZAR:
+        if _SORREND is None or _ATIRAS is None or _ZAROJEL is None:
+            r = _javitasok_tobb(('heber_sorrend', 'atiras', 'zarojel'))
+            _ATIRAS, _ZAROJEL, _SORREND = r['atiras'], r['zarojel'], r['heber_sorrend']
+    betu_javitasok()
 
 
 def sorrend_javitasok(ut=None):
@@ -136,7 +160,7 @@ def sorrend_javitasok(ut=None):
     if ut:
         return _javitasok('heber_sorrend', ut)
     if _SORREND is None:
-        _SORREND = _javitasok('heber_sorrend')
+        betolt_javitasok()
     return _SORREND
 
 
@@ -146,7 +170,7 @@ def atiras_javitasok(ut=None):
     if ut:
         return _javitasok('atiras', ut)
     if _ATIRAS is None:
-        _ATIRAS = _javitasok('atiras')
+        betolt_javitasok()
     return _ATIRAS
 
 
@@ -163,7 +187,7 @@ def zarojel_javitasok(ut=None):
     if ut:
         return _javitasok('zarojel', ut)
     if _ZAROJEL is None:
-        _ZAROJEL = _javitasok('zarojel')
+        betolt_javitasok()
     return _ZAROJEL
 
 
@@ -329,11 +353,23 @@ _BETU = None
 _TOKEN_RE = re.compile('[%s][%s%s]*' % (HEB_BETU, HEB_BETU, '\u0591-\u05bd\u05bf\u05c1\u05c2\u05c4-\u05c7'))
 
 
+_BETU_ZAR = threading.Lock()
+
+
 def betu_javitasok(ut=None):
-    """Strong → {forrás-token (NFD): javított token (NFD)} a `pe_mem` / `res_dalet` `javitva` sorokból (a nem egyértelmű kimarad)."""
+    """Strong → {forrás-token (NFD): javított token (NFD)} a `pe_mem` / `res_dalet` `javitva` sorokból (a nem egyértelmű kimarad).
+    F235: a gyorsítótár szálbiztos (zár alatt, egyszer töltődik: az indulási előmelegítéssel egyidejű első kérés megvárja, nem olvassa be másodszor)."""
     global _BETU
-    if _BETU is not None and not ut:
-        return _BETU
+    if ut:
+        return _betu_szamol(ut)
+    if _BETU is None:
+        with _BETU_ZAR:
+            if _BETU is None:
+                _BETU = _betu_szamol(None)
+    return _BETU
+
+
+def _betu_szamol(ut):
     jav, tilt = {}, {}
     try:
         with open(ut or JAVITAS_UT, encoding='utf-8') as f:
@@ -351,11 +387,8 @@ def betu_javitasok(ut=None):
                 unicodedata.normalize('NFD', d['javitott_alak']).strip('׳'))
         else:
             tilt.setdefault(d['strong'], set()).add(a)
-    ki = {st: {a: next(iter(b)) for a, b in t.items() if len(b) == 1 and a not in tilt.get(st, set())}
-          for st, t in jav.items()}
-    if not ut:
-        _BETU = ki
-    return ki
+    return {st: {a: next(iter(b)) for a, b in t.items() if len(b) == 1 and a not in tilt.get(st, set())}
+            for st, t in jav.items()}
 
 
 def betu_javit(szoveg, strong, javitasok=None):

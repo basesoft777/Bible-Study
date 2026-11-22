@@ -12,6 +12,7 @@ import json
 import os
 import re
 import sys
+import threading
 import tomllib
 from urllib.parse import urlencode
 
@@ -26,6 +27,7 @@ import adatbazis
 import allapot as allapot_modul
 import arculat as arculat_modul
 import bibliak
+import blokkok
 import hozzaferes as hozz_modul
 import kereses as kereses_modul
 import lekerdezesek
@@ -44,8 +46,35 @@ def _konfig(konfig_dir=None):
         return tomllib.load(f), d
 
 
-def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
-    """Az alkalmazás-gyár. Paraméter > környezeti változó > konfiguráció."""
+# F235: az indulás utáni háttér-előmelegítés kérései: a fejezet-lap (sablonok, Macula-/LXX-lekérdezések, a számlálók), egy héber szó-lap (a BDB-javítótábla
+# egyszeri betöltése, a BDB-szócikk-feldolgozás) és a kereső. A kéréseket a Flask belső kliense futtatja (nincs hálózat), eredményük a lapgyorsítótárba kerül.
+ELOMELEGITO_UTAK = ('/1Moz/1', '/szo/H0430', '/kereses?q=szeretet')
+
+
+def elomelegit(app, utak=ELOMELEGITO_UTAK):
+    """Háttérszálon lefuttatja a bemelegítő kéréseket; az első felhasználói kérés nem várakozik rá (a szál független a kiszolgálástól).
+    A `app.extensions['pardes']['elomelegitve']` esemény jelzi a végét; hiba esetén sem áll le (a bemelegítés nem kötelező)."""
+    ex = app.extensions['pardes']
+
+    def fut():
+        try:
+            blokkok.bdb_rovidites.betolt_javitasok()      # DT-F235a (a): a BDB-javítótábla egyszeri betöltése (szálbiztos; az első kérés megvárja, nem olvassa be másodszor)
+            c = app.test_client()
+            for ut in utak:
+                c.get(ut)
+        except Exception as hiba:                     # nem állítja le a szervert, de nem is néma: a hiba rögzül és kiíródik
+            ex['elomelegit_hiba'] = hiba
+            print('[előmelegítés] HIBA: %s: %s' % (type(hiba).__name__, hiba), file=sys.stderr, flush=True)
+        finally:
+            ex['elomelegitve'].set()
+    ex['elomelegitve'] = threading.Event()
+    threading.Thread(target=fut, name='elomelegites', daemon=True).start()
+
+
+def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None, elomelegit_ki=None):
+    """Az alkalmazás-gyár. Paraméter > környezeti változó > konfiguráció. `elomelegit_ki` (F235): True esetén az alkalmazás elkészülte után
+    háttérszálon bemelegítő kéréseket futtat (a `main` és a gunicorn-konfiguráció kéri; alapból a `PARDES_ELOMELEGIT=1` környezeti változó dönt,
+    nélküle nincs bemelegítés, így a tesztek és az export nem indítanak háttérszálat)."""
     konf, kdir = _konfig(konfig_dir)
     db_ut = db_ut or os.environ.get('PARDES_DB') or konf.get('db') or (adatbazis.GY + 'pardes.db')
     kiadas = kiadas or os.environ.get('PARDES_KIADAS') or konf.get('kiadas', 'belso')
@@ -342,6 +371,11 @@ def letrehoz(db_ut=None, kiadas=None, konfig_dir=None, hozzaferes=None):
     def robots():
         return Response('User-agent: *\nDisallow: /\n', mimetype='text/plain')
 
+    if elomelegit_ki is None:
+        elomelegit_ki = os.environ.get('PARDES_ELOMELEGIT') == '1'
+    app.extensions['pardes']['elomelegitve'] = threading.Event()
+    if elomelegit_ki:
+        elomelegit(app)
     return app
 
 
@@ -371,11 +405,11 @@ def main():
     ap.add_argument('--ujratolt', action='store_true', help='kódváltozáskor magától újraindul (Werkzeug stat-újratöltő: a /mnt/c-n az inotify nem működik)')
     a = ap.parse_args()
     if not a.ujratolt:
-        letrehoz(a.db, a.kiadas).run(host=a.host, port=a.port, threaded=True)
+        letrehoz(a.db, a.kiadas, elomelegit_ki=os.environ.get('PARDES_ELOMELEGIT') != '0').run(host=a.host, port=a.port, threaded=True)
         return
     # az újratöltővel a szülő-folyamat csak a figyelő: az alkalmazást (adatbázis, regiszter) csak a gyerek építi fel, így a mért indulás nem duplázódik
     from werkzeug.serving import is_running_from_reloader, run_simple
-    app = letrehoz(a.db, a.kiadas) if is_running_from_reloader() else (lambda environ, start: [])
+    app = letrehoz(a.db, a.kiadas, elomelegit_ki=os.environ.get('PARDES_ELOMELEGIT') != '0') if is_running_from_reloader() else (lambda environ, start: [])
     if is_running_from_reloader():
         L = app.extensions['pardes']['gyar'].lablec.kap()
         print('[indítás] kiadás=%s ág=%s commit=%s kod_verzio=%s epites_ts=%s%s' % (
