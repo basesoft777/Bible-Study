@@ -23,6 +23,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
 import allapot
+import forras_azonosito as FA
 
 POSIX = os.name == 'posix' and shutil.which('bash') is not None and shutil.which('fuser') is not None and shutil.which('flock') is not None
 
@@ -448,7 +449,9 @@ class _InditAlap(unittest.TestCase):
         """Az `indit.sh` futtatása előkészítő módban. Alapból NEM előnézet és nincs főcheckout-frissítés (PARDES_ELONEZET=0, PARDES_FRISSIT=0): a
         szkript a tesztet futtató checkoutban áll, amelyet a teszt nem frissíthet és nem kezelhet előnézetként; az F225 tesztjei ezt felülírják."""
         kornyezet = dict(os.environ, PARDES_FORRAS_DB=self.f, PARDES_DB=self.c, PARDES_PY=sys.executable, PARDES_ZAR=os.path.join(self.t, 'zar'),
-                         PARDES_INDIT_CSAK_ELOKESZIT='1', PYTHONIOENCODING='utf-8', PARDES_ELONEZET='0', PARDES_FRISSIT='0')
+                         PARDES_INDIT_CSAK_ELOKESZIT='1', PYTHONIOENCODING='utf-8', PARDES_ELONEZET='0', PARDES_FRISSIT='0',
+                         PARDES_EPIT='0', PARDES_EPIT_ZAR=os.path.join(self.t, 'epit.zar'),
+                         PARDES_EPITES_ALLAPOT=os.path.join(self.t, 'epites_allapot.tsv'), PARDES_EPITES_NAPLO=os.path.join(self.t, 'epites.log'))
         kornyezet.pop('PARDES_FRISSITVE', None)
         kornyezet.update(env)
         for k in [k for k, v in kornyezet.items() if v is None]:
@@ -558,7 +561,7 @@ def szkript_repo(t):
     git(fo, 'checkout', '-q', '-B', 'main')
     fo_cel = os.path.join(fo, 'eszkozok', 'olvaso_szerver')
     os.makedirs(fo_cel)
-    for n in ('indit.sh', 'allapot.py', 'lekerdezesek.py'):
+    for n in ('indit.sh', 'allapot.py', 'lekerdezesek.py', 'forras_azonosito.py', 'epit_hatter.sh'):
         shutil.copy(os.path.join(D, n), os.path.join(fo_cel, n))
     git(fo, 'add', '-A')
     git(fo, 'commit', '-q', '-m', 'szkriptek')
@@ -1020,6 +1023,343 @@ class TesztInditGitExe(_InditAlap):
         self.assertIn('a munkafa nem tiszta', ki)
         self.assertEqual(git(self.fo, 'rev-parse', 'HEAD'), uj)
         self.assertNotEqual(uj, uj2)
+
+
+# -- #101: az adat frissessége és az automatikus újraépítés -------------------------------------------------------------------
+def adat_gyoker(ut, fajlok=None):
+    """Kis forrásfa (`adat/`, `konkordancia/`) az `ut` alatt."""
+    for r, tartalom in (fajlok or {'adat/a.tsv': 'egy\tketto\n', 'adat/b.tsv': 'x\ty\n', 'konkordancia/k.tsv': 'strong\tszo\nH1\talef\n'}).items():
+        f = os.path.join(ut, *r.split('/'))
+        os.makedirs(os.path.dirname(f), exist_ok=True)
+        with open(f, 'w', encoding='utf-8', newline='') as fh:
+            fh.write(tartalom)
+    return ut
+
+
+def db_forras_azonositoval(ut, gyoker, ts='2026-11-22T10:00:00Z'):
+    """Kis adatbázis, amelynek `meta` táblája a `gyoker` mostani forrás-azonosítóját tárolja (mintha az építő írta volna)."""
+    kis_db(ut, ts)
+    con = sqlite3.connect(ut)
+    con.executemany('INSERT INTO meta VALUES (?, ?)', FA.meta_sorok(FA.azonosito(gyoker)))
+    con.commit()
+    con.close()
+
+
+class TesztForrasAzonosito(unittest.TestCase):
+    def setUp(self):
+        self.t = tempfile.mkdtemp(prefix='forras_')
+        self.addCleanup(shutil.rmtree, self.t, True)
+        self.g = adat_gyoker(os.path.join(self.t, 'gy'))
+        self.db = os.path.join(self.t, 'x.db')
+        db_forras_azonositoval(self.db, self.g)
+
+    def _all(self):
+        return allapot.forras_allapot(self.g, self.db)
+
+    def test_valtozatlan_friss(self):
+        self.assertEqual(self._all(), ('friss', []))
+
+    def test_csak_az_mtime_valtozik_a_sha256_dont_friss(self):
+        # kicsekkoláskor / másoláskor az mtime tartalomváltozás nélkül is módosul: nem indulhat felesleges építés (DT-F101a)
+        f = os.path.join(self.g, 'adat', 'a.tsv')
+        os.utime(f, (time.time() - 5000, time.time() - 5000))
+        self.assertEqual(self._all(), ('friss', []))
+
+    def test_azonos_meretu_tartalomvaltozas_regebbi(self):
+        f = os.path.join(self.g, 'konkordancia', 'k.tsv')
+        with open(f, 'w', encoding='utf-8', newline='') as fh:
+            fh.write('strong\tszo\nH1\tbet!\n')                 # ugyanannyi bájt, más tartalom
+        os.utime(f, (time.time() + 100, time.time() + 100))
+        allapot_, valt = self._all()
+        self.assertEqual(allapot_, 'regebbi')
+        self.assertEqual(valt, ['konkordancia/k.tsv (módosult)'])
+
+    def test_meretvaltozas_regebbi(self):
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        self.assertEqual(self._all(), ('regebbi', ['adat/b.tsv (módosult)']))
+
+    def test_uj_es_torolt_fajl_regebbi(self):
+        adat_gyoker(self.g, {'adat/uj.tsv': 'a\n'})
+        os.remove(os.path.join(self.g, 'adat', 'b.tsv'))
+        allapot_, valt = self._all()
+        self.assertEqual(allapot_, 'regebbi')
+        self.assertEqual(valt, ['adat/b.tsv (törölt)', 'adat/uj.tsv (új)'])
+
+    def test_nem_forras_fajl_nem_szamit(self):
+        # dokumentáció (.md), LLM-hívásnapló (.jsonl), .html: az építő nem olvassa, a változásuk nem kérhet újraépítést (ELLENOR_F101)
+        for n in ('adat/x.db', 'adat/x.tmp', 'adat/.rejtett', 'adat/SEMA.md', 'adat/hivas.jsonl', 'konkordancia/README.md', 'konkordancia/o.html'):
+            adat_gyoker(self.g, {n: 'barmi'})
+        adat_gyoker(self.g, {'motivumlog/m.md': 'nem forras', 'motivumok/m.txt': 'nem .md'})
+        self.assertEqual(self._all(), ('friss', []))
+
+    def test_a_tanulmanyszoveg_valtozasa_regebbi(self):
+        # az építő a `motivumok/`, `tematikus_lezart/` stb. `.md` fájljait az FTS-be tölti: a változásuk után az adatbázis elavult (ELLENOR_F101)
+        adat_gyoker(self.g, {'motivumok/m.md': 'elso\n'})
+        db_forras_azonositoval(self.db, self.g)
+        self.assertEqual(self._all(), ('friss', []))
+        with open(os.path.join(self.g, 'motivumok', 'm.md'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('masodik\n')
+        self.assertEqual(self._all(), ('regebbi', ['motivumok/m.md (módosult)']))
+
+    def test_regi_adatbazis_forras_azonosito_nelkul(self):
+        kis_db(self.db, '2026-11-22T10:00:00Z')
+        self.assertEqual(self._all(), ('nincs_adat', []))
+        self.assertEqual(allapot.forras_allapot(self.g, os.path.join(self.t, 'nincs.db')), ('nincs_adat', []))
+
+    def test_az_osszeg_a_tartalomtol_fugg(self):
+        a = FA.osszeg(FA.azonosito(self.g))
+        self.assertEqual(a, FA.osszeg(FA.azonosito(self.g)))
+        with open(os.path.join(self.g, 'adat', 'a.tsv'), 'w', encoding='utf-8', newline='') as fh:
+            fh.write('masik\ttartalom\n')
+        self.assertNotEqual(a, FA.osszeg(FA.azonosito(self.g)))
+
+    def test_a_sha_gyorsitotar_nem_hasheli_ujra(self):
+        f = os.path.join(self.g, 'adat', 'a.tsv')
+        os.utime(f, (time.time() - 5000, time.time() - 5000))
+        tar = {}
+        self.assertEqual(allapot.forras_allapot(self.g, self.db, tar)[0], 'friss')
+        self.assertEqual(len(tar), 1)
+        sha = list(tar.values())[0]
+        k = list(tar)[0]
+        tar[k] = 'hamis'                                        # ha a gyorsítótárat használja, az eltérést a hamis érték okozza
+        self.assertEqual(allapot.forras_allapot(self.g, self.db, tar)[0], 'regebbi')
+        self.assertNotEqual(sha, 'hamis')
+
+    def test_cli_forras(self):
+        p = subprocess.run([sys.executable, os.path.join(D, 'allapot.py'), 'forras', self.g, self.db], stdout=subprocess.PIPE, text=True, encoding='utf-8')
+        self.assertEqual(p.stdout.strip().split('\t')[:2], ['friss', '0'])
+
+
+class TesztAdatAllapotLablec(unittest.TestCase):
+    def setUp(self):
+        self.t = tempfile.mkdtemp(prefix='adatlablec_')
+        self.addCleanup(shutil.rmtree, self.t, True)
+        self.g = adat_gyoker(os.path.join(self.t, 'gy'))
+        self.db = os.path.join(self.t, 'x.db')
+        db_forras_azonositoval(self.db, self.g)
+
+    def test_szinkron_es_hatterszal_ugyanazt_adja(self):
+        self.assertEqual(allapot.adat_allapot(self.g, self.db, szinkron=True), ('friss', []))
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        allapot.adat_allapot(self.g, self.db, ttl=0.0)           # háttérszámítás indul
+        ertek = None
+        for _ in range(100):
+            ertek = allapot.adat_allapot(self.g, self.db, ttl=3600.0)
+            if ertek and ertek[0] == 'regebbi':
+                break
+            time.sleep(0.05)
+        self.assertEqual(ertek, ('regebbi', ['adat/b.tsv (módosult)']))
+
+    def test_figyelmeztetes_regebbi_az_adatnal(self):
+        ki = allapot.figyelmeztetesek('main', 'T', 'T', None, ('regebbi', ['adat/a.tsv (módosult)', 'adat/b.tsv (új)']), None)
+        self.assertEqual(len(ki), 1)
+        self.assertIn('régebbi az adatnál', ki[0])
+        self.assertIn('2 változott forrásfájl', ki[0])
+        self.assertIn('adat/a.tsv (módosult)', ki[0])
+
+    def test_friss_adat_nincs_figyelmeztetes(self):
+        self.assertEqual(allapot.figyelmeztetesek('main', 'T', 'T', None, ('friss', []), None), [])
+        self.assertEqual(allapot.figyelmeztetesek('main', 'T', 'T', None, None, None), [])
+
+    def test_regi_epites_figyelmeztet(self):
+        ki = allapot.figyelmeztetesek('main', 'T', 'T', None, ('nincs_adat', []), None)
+        self.assertEqual(len(ki), 1)
+        self.assertIn('nincs forrás-azonosító', ki[0])
+
+    def test_epites_folyamatban_es_elbukott(self):
+        ki = allapot.figyelmeztetesek('main', 'T', 'T', None, None, ('fut', '2026-11-22T10:00:00', '', ''))
+        self.assertIn('újraépítése folyamatban', ki[0])
+        self.assertIn('2026-11-22T10:00:00', ki[0])
+        ki = allapot.figyelmeztetesek('main', 'T', 'T', None, None, ('elbukott', '2026-11-22T10:05:00', 'INTEGRITÁS-SÉRTÉS', '/x/epites.log'))
+        self.assertIn('elbukott', ki[0])
+        self.assertIn('INTEGRITÁS-SÉRTÉS', ki[0])
+        self.assertIn('/x/epites.log', ki[0])
+        self.assertEqual(allapot.figyelmeztetesek('main', 'T', 'T', None, None, ('kesz', 'x', '', '')), [])
+
+    def test_keszit_a_kornyezetbol(self):
+        env = {'PARDES_FORRAS_GYOKER': self.g, 'PARDES_DB': self.db, 'PARDES_AG': 'main', 'PARDES_COMMIT': 'abc', 'PARDES_LEMARADAS': '0'}
+        allapot.adat_allapot(self.g, self.db, szinkron=True)
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        allapot.adat_allapot(self.g, self.db, szinkron=True)
+        l = allapot.Lablec.keszit('belso', '2026-11-22T10:00:00Z', kornyezet=env)
+        self.assertTrue(any('régebbi az adatnál' in f for f in l.figyelmeztetesek), l.figyelmeztetesek)
+        self.assertEqual(l.adat[0], 'regebbi')
+        # környezeti változó nélkül (előnézet, teszt) nincs adat-ellenőrzés
+        l2 = allapot.Lablec.keszit('belso', '2026-11-22T10:00:00Z', kornyezet={'PARDES_AG': 'main', 'PARDES_COMMIT': 'abc', 'PARDES_LEMARADAS': '0'})
+        self.assertIsNone(l2.adat)
+        self.assertEqual(l2.figyelmeztetesek, [])
+
+    def test_epites_allapot_fajl(self):
+        f = os.path.join(self.t, 'allapot.tsv')
+        self.assertEqual(allapot.epites_allapot(f)[0], 'nincs')
+        with open(f, 'w', encoding='utf-8', newline='') as fh:
+            fh.write('kesz\t2026-11-22T10:00:00\t1\tkész\t/n.log\n')
+        self.assertEqual(allapot.epites_allapot(f), ('kesz', '2026-11-22T10:00:00', 'kész', '/n.log'))
+        with open(f, 'w', encoding='utf-8', newline='') as fh:
+            fh.write('fut\t2026-11-22T10:00:00\t%d\tfut\t/n.log\n' % os.getpid())
+        self.assertEqual(allapot.epites_allapot(f)[0], 'fut')
+        if os.name == 'posix':
+            with open(f, 'w', encoding='utf-8', newline='') as fh:
+                fh.write('fut\t2026-11-22T10:00:00\t4194999\tfut\t/n.log\n')       # nem élő pid: megszakadt, nem „fut”
+            self.assertEqual(allapot.epites_allapot(f)[0], 'elbukott')
+
+    def test_db_ellenoriz(self):
+        self.assertEqual(allapot.db_ellenoriz(self.db), 'ok')
+        kis_db(self.db, '2026-11-22T10:00:00Z')
+        self.assertEqual(allapot.db_ellenoriz(self.db), 'nincs forrás-azonosító')
+        kis_db(self.db, None)
+        self.assertEqual(allapot.db_ellenoriz(self.db), 'nincs epites_ts')
+        self.assertEqual(allapot.db_ellenoriz(os.path.join(self.t, 'nincs.db')), 'nincs fájl')
+        with open(self.db, 'wb') as fh:
+            fh.write(b'ez nem adatbazis' * 100)
+        self.assertNotEqual(allapot.db_ellenoriz(self.db), 'ok')
+
+
+@unittest.skipUnless(POSIX, 'az indit.sh tesztjéhez POSIX, bash, fuser és flock kell (WSL)')
+class TesztInditUjraepites(_InditAlap):
+    """Az `indit.sh` (2b) lépése és az `epit_hatter.sh`: háttér-újraépítés hamis építővel (kis adatbázis), a valódi forráshoz nem nyúl."""
+
+    EPIT_PARANCS = (
+        'python3 - "$1" <<"PY"\n'
+        'import sqlite3, sys, os\n'
+        'ut = sys.argv[1]\n'
+        'con = sqlite3.connect(ut)\n'
+        'con.execute("CREATE TABLE meta (kulcs TEXT PRIMARY KEY, ertek TEXT)")\n'
+        'con.execute("INSERT INTO meta VALUES (?, ?)", ("epites_ts", "2026-11-22T11:00:00Z"))\n'
+        'con.execute("INSERT INTO meta VALUES (?, ?)", ("forras_osszeg", "x"))\n'
+        'con.commit(); con.close()\n'
+        'PY\n')
+
+    def setUp(self):
+        super().setUp()
+        self.g = adat_gyoker(os.path.join(self.t, 'gy'))
+        self.allapot_f = os.path.join(self.t, 'epites_allapot.tsv')
+
+    def _epit(self, **env):
+        kod, ki = self._fut(PARDES_EPIT='1', PARDES_ADAT_GYOKER=self.g, PARDES_EPIT_PARANCS=env.pop('parancs', self.EPIT_PARANCS), **env)
+        return kod, ki
+
+    def _vegere_var(self):
+        for _ in range(1500):
+            a = allapot.epites_allapot(self.allapot_f)[0]
+            if a in ('kesz', 'elbukott'):
+                return a
+            time.sleep(0.05)
+        return allapot.epites_allapot(self.allapot_f)[0]
+
+    def test_friss_adat_nem_epit(self):
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        kod, ki = self._epit()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('adat: az adatbázis friss', ki)
+        self.assertNotIn('INDUL', ki)
+        self.assertFalse(os.path.exists(self.allapot_f))
+
+    def test_regebbi_adat_hatterben_ujraepit_a_windows_oldali_peldanyt_cserel_a_wsl_masolat_nem(self):
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        kod, ki = self._epit()
+        self.assertEqual(kod, 0, ki)
+        self.assertIn('az adatbázis régebbi az adatnál (1 változás', ki)
+        self.assertIn('újraépítés: INDUL a háttérben', ki)
+        self.assertEqual(self._vegere_var(), 'kesz', open(os.path.join(self.t, 'epites.log'), encoding='utf-8').read())
+        # a futó szerver alatt a WSL-másolat nem változik (ELLENOR_F101); a Windows-oldali példány az új, a következő indítás szinkronizálja
+        self.assertEqual(allapot.db_epites_ts(self.f), '2026-11-22T11:00:00Z')
+        self.assertEqual(allapot.db_epites_ts(self.c), '2026-11-22T10:00:00Z')
+        self.assertEqual([n for n in os.listdir(os.path.dirname(self.c)) if '.epit.' in n or '.forras.' in n], [])
+        kod2, ki2 = self._fut(PARDES_EPIT='0')
+        self.assertIn('MÁSOLÁS', ki2)
+        self.assertEqual(allapot.db_epites_ts(self.c), '2026-11-22T11:00:00Z')
+        self.assertIn('másolás a Windows-oldalra', allapot.epites_allapot(self.allapot_f)[2])
+
+    def test_az_epites_elbukasakor_a_regi_adatbazis_erintetlen(self):
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        elotte = open(self.c, 'rb').read()
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        kod, ki = self._epit(parancs='echo "INTEGRITÁS-SÉRTÉS: teszt"; exit 1')
+        self.assertEqual(kod, 0, ki)
+        self.assertEqual(self._vegere_var(), 'elbukott')
+        a = allapot.epites_allapot(self.allapot_f)
+        self.assertIn('INTEGRITÁS-SÉRTÉS', a[2])
+        self.assertEqual(open(self.c, 'rb').read(), elotte)
+        self.assertEqual(allapot.db_epites_ts(self.f), '2026-11-22T10:00:00Z')
+        # a lábléc elbukott figyelmeztetést ad
+        self.assertTrue(any('elbukott' in f for f in allapot.figyelmeztetesek('main', 'T', 'T', None, None, a)))
+
+    def test_hibas_uj_adatbazis_nem_cserel(self):
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        elotte = open(self.c, 'rb').read()
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        self._epit(parancs='head -c 2000 /dev/urandom > "$1"')   # nem adatbázis, de az építő „sikeresnek” jelzi
+        self.assertEqual(self._vegere_var(), 'elbukott')
+        self.assertEqual(open(self.c, 'rb').read(), elotte)
+
+    def test_ket_egyideju_inditas_egy_epitest_indit(self):
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        lassu = 'sleep 25; ' + self.EPIT_PARANCS
+        _, ki1 = self._epit(parancs=lassu)
+        _, ki2 = self._epit(parancs=lassu)
+        self.assertIn('INDUL a háttérben', ki1)
+        self.assertIn('már fut egy másik építés', ki2)
+        self.assertNotIn('INDUL', ki2)
+        self.assertEqual(self._vegere_var(), 'kesz')
+
+    def test_elonezetben_nem_epit(self):
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        with open(os.path.join(self.g, 'adat', 'b.tsv'), 'a', encoding='utf-8', newline='') as fh:
+            fh.write('uj\tsor\n')
+        kod, ki = self._epit(PARDES_ELONEZET='1')
+        self.assertIn('újraépítés: kihagyva — előnézeti mód', ki)
+        self.assertFalse(os.path.exists(self.allapot_f))
+
+    def test_epit_hatter_kezi_modja_a_zarat_veszi_es_kiirja_a_naplot(self):
+        # a „PaRDeS adatbázis újraépítése” asztali parancsikon belépési pontja: `epit_hatter.sh --kezi`
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        env = dict(os.environ, PARDES_GYOKER=self.g, PARDES_PY=sys.executable, PARDES_DB=self.c, PARDES_FORRAS_DB=self.f, PARDES_EPITES_ALLAPOT=self.allapot_f,
+                   PARDES_EPITES_NAPLO=os.path.join(self.t, 'kezi.log'), PARDES_EPIT_ZAR=os.path.join(self.t, 'kezi.zar'), PARDES_EPIT_PARANCS=self.EPIT_PARANCS)
+        p = subprocess.run(['bash', os.path.join(D, 'epit_hatter.sh'), '--kezi'], env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding='utf-8',
+                           timeout=120)
+        self.assertEqual(p.returncode, 0, p.stdout)
+        self.assertIn('[epit]', p.stdout)
+        self.assertEqual(allapot.epites_allapot(self.allapot_f)[0], 'kesz')
+        self.assertEqual(allapot.db_epites_ts(self.f), '2026-11-22T11:00:00Z')
+        # zár alatt: a második kézi indítás nem épít
+        zar = open(os.path.join(self.t, 'kezi.zar'), 'w')
+        import fcntl
+        fcntl.flock(zar, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        p2 = subprocess.run(['bash', os.path.join(D, 'epit_hatter.sh'), '--kezi'], env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True, encoding='utf-8',
+                            timeout=120)
+        zar.close()
+        self.assertNotEqual(p2.returncode, 0)
+        self.assertIn('már fut egy másik újraépítés', p2.stdout)
+
+    def test_kezi_ujraepites_frissnel_is_epit(self):
+        db_forras_azonositoval(self.c, self.g, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        kod, ki = self._epit(PARDES_EPIT_KEZI='1')
+        self.assertIn('kézi újraépítés kérve', ki)
+        self.assertEqual(self._vegere_var(), 'kesz')
+
+    def test_regi_adatbazis_forras_azonosito_nelkul_ujraepul(self):
+        kis_db(self.c, '2026-11-22T10:00:00Z')
+        kis_db(self.f, '2026-11-22T10:00:00Z')
+        kod, ki = self._epit()
+        self.assertIn('régi építés', ki)
+        self.assertEqual(self._vegere_var(), 'kesz')
 
 
 if __name__ == '__main__':

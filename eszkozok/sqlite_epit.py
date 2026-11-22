@@ -58,6 +58,8 @@ import ellenoriz as E  # noqa: E402
 import tsk_kulcs as TK  # noqa: E402
 import karoli_kh_szuro as KHSZ  # noqa: E402  (F177: csak a MEK-kel megerősített Károli-KH sorok)
 import tanulmany_regiszter as TR  # noqa: E402
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'olvaso_szerver'))
+import forras_azonosito as FA  # noqa: E402  (#101: a forrásfájlok ujjlenyomata a meta-ba; stdlib-only, az olvaso_szerver/ könyvtárban áll)
 from strong_util import strong_normalizal  # noqa: E402
 
 
@@ -397,6 +399,7 @@ class Epito(object):
         self.kimenet = kimenet
         self.mod = mod
         self.tmp = kimenet + '.epit'
+        self.forras_azon = FA.azonosito(gyoker)   # #101: az olvasás ELŐTT rögzítjük, hogy az építés közbeni változás újraépítést kérjen
         self.con = None
         self.licencek = {}
         self.tabla_lic = {}       # tabla -> (licenc_allapot, kereskedelmi, licenc_dataset, cimke)
@@ -1435,7 +1438,8 @@ class Epito(object):
         self.tabla('meta', [('kulcs', 'TEXT'), ('ertek', 'TEXT')],
                    [('mod', self.mod), ('epites_ts', ts_most()),
                     ('forras', 'adat/*.tsv, konkordancia/*.tsv (eszkozok/sqlite_epit.py, F79)'),
-                    ('kihagyott_tablak', '; '.join('%s (%s)' % k for k in self.kihagyott))] + self.olvasoi_meta,
+                    ('kihagyott_tablak', '; '.join('%s (%s)' % k for k in self.kihagyott))] + self.olvasoi_meta
+                   + FA.meta_sorok(self.forras_azon),
                    SZARMAZTATOTT_LICENC['meta'])
 
     def _tabla_licenc(self):
