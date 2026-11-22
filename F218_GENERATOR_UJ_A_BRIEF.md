@@ -6,10 +6,10 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 allapot: fut
-ag: claude/f218a-s8d-96a364
-pr: 791
+ag: claude/f218a-s9-722be2
+pr: -
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "Te: az S9 (a két renderelt lap a felhasználónak, az eltérés-összesítés és az S2–S9 új sorainak listája); utána megállás"
+kovetkezo: "S9 (F218.12): a teljes lap kapui, utána a felhasználó nézése"
 munka: folyamat
 sav: CONTENT
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
