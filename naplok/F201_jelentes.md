@@ -13,7 +13,7 @@
 **Miért a foglalás, és nem az `F-<ágnév>` helyőrző:** a helyőrző a fájlnevek, mappák, ágnevek és pontszámok merge utáni átnevezését kívánná.
 
 ## Teszt: a számkiosztás utáni E28/E35 (a workflow lépéseinek helyi szimulációja)
-Próba-állapot: a #182 számkiosztása előtti commit (`7095bc63^`, 31 helyőrző: DT783, DT-F182a…r, N-F182a…). A lépések: `szamkiosztas.py --ir`, majd E28 (teljes) és E35.
+Próba-állapot: a #182 számkiosztása előtti commit (`7095bc63^`, 31 helyőrző: DT783, DT899…r, N220…). A lépések: `szamkiosztas.py --ir`, majd E28 (teljes) és E35.
 
 | Lépés | E28 | E35 |
 |---|---|---|
