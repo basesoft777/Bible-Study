@@ -137,10 +137,11 @@ def sql_lista(ut=LEK):
 def tablameretek():
     """{tábla: sorszám} a `pardes_meretek.tsv`-ből."""
     m = {}
-    for sor in open(MERETEK, encoding='utf-8'):
-        p = sor.rstrip('\n').split('\t')
-        if len(p) == 2 and p[1].isdigit():
-            m[p[0]] = int(p[1])
+    with open(MERETEK, encoding='utf-8') as f:
+        for sor in f:
+            p = sor.rstrip('\n').split('\t')
+            if len(p) == 2 and p[1].isdigit():
+                m[p[0]] = int(p[1])
     return m
 
 
@@ -192,7 +193,9 @@ FTS_VARAZS = re.compile(r'^fts_[a-z_]+_(data|idx|content|docsize|config)$')
 def sema_adatbazis():
     """Üres, a valódi sémával megegyező memória-adatbázis a `pardes_sema.sql`-ből (a virtuális táblák árnyéktáblái kimaradnak: azokat az SQLite hozza létre)."""
     con = sqlite3.connect(':memory:')
-    for tagok in open(SEMA, encoding='utf-8').read().split('\n-- ;;\n'):
+    with open(SEMA, encoding='utf-8') as f:
+        szoveg = f.read()
+    for tagok in szoveg.split('\n-- ;;\n'):
         tagok = '\n'.join(l for l in tagok.split('\n') if not l.startswith('-- ')).strip()
         if not tagok:
             continue
