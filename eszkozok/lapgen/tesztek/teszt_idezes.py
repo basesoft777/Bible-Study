@@ -22,7 +22,8 @@ from lapgen.szoveg import MotivumId
 
 HAMART, ISTENTISZT = 'HAMART-001', 'ISTENTISZT-001'
 INFRASTRUKTURA = ('B01', 'B12', 'B13', 'B47', 'B51', 'B59', 'B63', 'B65', 'B66', 'B68')
-NEM_VIZSGALT = ('B73',)   # fájl nélküli, nem vizsgált forrás: a listán nem áll (SEMA 2.66)
+NEM_VIZSGALT = ('B73', 'B75')   # fájl nélküli, nem vizsgált forrás: a listán nem áll (SEMA 2.66)
+KOLOFON_SAJAT = ('B48', 'B49', 'B50')   # a Kolofon saját metaadata (kiadás, lektor, közel-keleti határ; S8d)
 
 
 def _tabla(rel):
@@ -78,7 +79,8 @@ class Forrashalmaz(_Alap):
             self.assertEqual(jegyzek[b]['irodalom'], '-', b)
         for b, sor in jegyzek.items():
             if sor['irodalom'] == '-':
-                self.assertIn(b, INFRASTRUKTURA + NEM_VIZSGALT, 'a `-` csak az infrastruktúráé és a B73-é')
+                self.assertIn(b, INFRASTRUKTURA + NEM_VIZSGALT + KOLOFON_SAJAT,
+                              'a `-` csak az infrastruktúráé, a nem vizsgált forrásé és a Kolofon metaadatáé')
         for b in ('B14', 'B15', 'B18'):
             self.assertEqual(jegyzek[b]['irodalom'], 'forditas', b)
 

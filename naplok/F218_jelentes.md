@@ -1641,3 +1641,146 @@ determinizmusa, a Vulgata (a kérdés-fájl a tanúk külső forrásai közé so
 
 A javítókör után a main behozva (`aad45b55`, a `szamkiosztas` a `DONTESEK.md`-t módosította): a mérce B51 és B68
 hash-e frissült. HAMART-regresszió: RENDBEN (engedély nélküli diff-sor 0).
+
+## F218.11 — S8d: a Kolofon (`claude-opus-5-5`, 2026-11-22, a 16. session)
+
+**Modell-ellenőrzés.** A brief `modell: opus`, a session `claude-opus-5-5`: egyezik. Az ág a friss main-ről indult
+(`8494ce00`, a #789 és a `szamkiosztas` után). **N200:** a B51 `DONTESEK.md` hash-e frissült, a törölt
+`dontesek/uj/f218a-s8c-5ffa99.md` sora kikerült (`6abf1ac7`); regresszió RENDBEN.
+
+**⛔ és döntés.** Négy megvalósítási kérdés az orkesztrátornak (a T8 helye; a GK-27 kiadás módja; a kötelező
+forrásmegjelölések halmaza; a GK-28 maradéka); a válasz mind a négyre (a), szerkesztői döntés (az orkesztrátor, a
+felhasználó felhatalmazásával): **DT-F218y** (`dontesek/uj/f218a-s8d-96a364.md`). Két új N-tétel a 218c-re (N-F218w:
+a kiadás mód `lap_commit`-ja; N-F218y: licenckapu), egy adatjavítás (N-F218x: a B01 két szóköze).
+
+**Megvalósítás.**
+- **Bemenet** (`bemenet/kolofon.py`): B48 (`kiadasok.tsv`, `lap_atnezesek.tsv`, `lap_javitasok.tsv`: a kiadások, a
+  szerző átnézéseinek és a szerző által jóváhagyott javításoknak a dátuma; az átnézés `idezet` mezője nem kerül ki),
+  B49 (a modell-lektor kérdéslistája: modell, kérdésszám, dátum; opcionális), B50 (a közel-keleti határ), B75 (a
+  közel-keleti összehasonlító réteg: fájl nélküli, `nem_vizsgalt`; más állapotnál BemenetHiba, GK-28). A B02
+  sora a Kolofon kézi mezőivel bővült (`ui_cimke`, `tema`, `pardes_szint`, `sablon_verzio`). A B01 a licenc
+  `allapot`-át és a `kotelezo_megjeloles` mondatait is adja (a „.; ” határnál bontva, szó szerint).
+- **Számítás** (`szamitas/kolofon.py`): a szerzőségi mondat három alakja (generált; kiadatlan; kiadott); a
+  jóváhagyás dátuma a legutóbbi szerzői átnézésé, híján a legutóbbi kiadásé. **A kapu (GK-27, T9):** kiadás módban a
+  kézi résű lap megáll (N-F218w). A forrástábla a 12. szakasz forrás-halmaza (DT901), szakaszonként: a fájlok neve
+  szótárnál a névtábla új `kolofon_szotar` típusa (a régi `OLVASOI_FORRASNEV` névelő nélküli alakja), adatnál az
+  `irod_adat`, külső forrásnál az `irod_kulso`; az azonos nevűek egy sorba, a sorok a név rendjében (a régi szabály).
+  **A régi F212-es szabály megmaradt:** a származtatott `bdb_vers_jelentes.tsv` CC BY-os bemenetei (MACULA, OSHL,
+  TAHOT) saját soron, saját licencükkel (`konfig.KOLOFON_SZARMAZTATOTT`; a MACULA-sort az első mérés elhagyta volna).
+  A megjelölések a `konfig.KOLOFON_MEGJELOLES` kulcsai közül azok, amelyek bemenetét a lap olvasta (DT-F218y 3.).
+- **Megjelenítés** (`megjelenites/md/kolofon.py`): minden mondat `kolofon.*` sablonsor (63 új sor, ebből 4
+  `eredet=uj`: `kolofon.szerzoseg.kezi` és `kolofon.hogyan.kiadatlan.datum_nelkul` `var`, a T9-mondat
+  (`kolofon.jovahagyas.korabbi`) és a kritérium-hivatkozás (`kolofon.ertek.kriterium`) a döntésük szavával); a szakasznevek a szakaszrendből, a rövid címmel, ahol van
+  (`cim.hatastortenet.rovid`; a régi `KOLOFON_SZAKASZNEV`). A „Negatív kritérium” sor: „a lap elején áll ([Mi tartozik
+  ide, és mi nem](#mi-tartozik-ide))” (DT874 9. tétel). A lap utolsó blokkja után nincs üres sor (`keret.blokk_zar`).
+- **A T8 értékei** (DT-F218y 1.): a névtábla `kiadasi_adat` típusa (5 sor); a 12. szakasz `irod.licenc.doi`
+  sorának DOI-ja is innen jön (a kimenet bájtra azonos). A lexikon címe a lapon ma „Logosz-lexikon”; a névcsere (N220)
+  ezeknek a soroknak a cseréje.
+- **A 12. szakasz is érintett** (kimenete nem változik): a Chain Lineage licencmondata a B01 `allapot`-jából
+  (`tisztazatlan`) jön, nem a konfig `None`-jából (GK-28); a licencalak-megjelenítés és a licenclista nyilvános
+  függvény lett (`licenc_szoveg`, `licenc_lista`), a Kolofon is ezt használja.
+- **A sablonnyelv** (`szoveg.py`, SEMA 2.67): a `datum(pont)` (ÉÉÉÉ.HH.NN) és a `datum(nap)` (a tartomány vége).
+- **Táblák:** jegyzék +4 sor (B48, B49, B50, B75); sablontábla +63 sor, 1 sor módosult (`irod.licenc.doi`); névtábla
+  +27 sor (5 `kiadasi_adat`, 5 `azonossag_tipus`, 16 `kolofon_szotar`, 1 `irod_kulso`: MACULA). SEMA 2.66–2.68.
+
+**Eredmény.** A HAMART-001 regressziója: **RENDBEN** (engedély nélküli diff-sor 0). A Kolofon 58 diff-sora mind
+engedéllyel:
+
+| Osztály | Engedélysor | Diff-sor | Ok |
+|---|---|---|---|
+| a brief 8.1 (b) | `S8D-FORRAS` | 1 | a blokkfejléc a Kolofon saját olvasásaiból (mint a 12. szakaszé) |
+| (h) T9 | `S8D-T9` | 1 | „a szerző a lap korábbi változatát hagyta jóvá (2026.11.12)”; előre megszámolva: 1 |
+| DT874 9. | `ISM-KOLOFON` | 1 | a kritérium helyén hivatkozás; előre megszámolva: 1 |
+| GK-07 | `S8D-MEGJ-1` | 1 | a Mounce-megjelölés elmarad, az LSJ-é új (DT-F218y 3.) |
+| GK-07 | `S8D-MEGJ-2` | 1 | a UBS DBH megjelölése szó szerint a B01-ből, két szóközzel (N-F218x) |
+| (b), DT901 | `S8D-UJ`, `S8D-ELMARAD`, `S8D-VALTOZIK` | 53 | a forrástábla: 27 új, 16 elmaradó, 10 változó diff-sor |
+
+**A forrástábla eltérése (a DT901 Kolofonra vetítve).** A tábla a régi 47 sor helyett 58 sort ad. A sorok
+többségében a „Szakasz” oszlop bővül, mert a mostani halmaz minden számozott szakasz olvasását számítja (a Döntési
+út, a 4.6, a 8. és a 9. szakasz is olvassa például a TAHOT-ot, a Károli-szöveget, a Vulgata-sorokat). Új forrássor
+(a 12. szakasszal egyezően): LSJ-szótár, a BDB forrásjavításai és rokon írásai, elutasítási okok, funkciókapcsolók,
+grammatikai szavak, javított Károli-KH, teljesség-mérés, motívumközi kapcsolatok, SDBH/SDGNT elemzetlen bejegyzései,
+Strong-szótár, tematikus saját szó. Elmarad: a Mounce-szótár (az új generátor nem olvassa); a teljes Thayer-szótár
+fájlja a régi táblában sem állt külön sorban („Thayer-szótár”). A licencalak a 12. szakaszéval egyezik: a héber
+glosszák és a BDB magyar szövege „magyar fordítás: …” (a 13. ellenőrzés 1. tétele), a lexikon szótári
+hivatkozástáblája a projekt licencével. **Az előre megszámolt érték nincs:** a DT901 a 12. szakasz 20 ± 5 sorát
+fogadta el, a Kolofon szakaszoszlopa ennél több sort mozdít; a darabszámot az orkesztrátor a merge előtt látja.
+
+**Mérések.** Lapgen-tesztek: az eredmény a lenti sorban. Festékpróba: HAMART-001 0 szivárgás (belső 368, kézi 841,
+idézet 2992), ISTENTISZT-001 0 szivárgás. Az ISTENTISZT-001 lapja elkészül (1551 sor); a Kolofonja a HAMART mintáján
+(a T9-mondat a szerző 2026.11.04-i átnézésének dátumával). Ismétlés-figyelő (figyelmeztetés, nem BUKÁS): HAMART 97
+találat, ebből 11 érinti a Kolofont (a Meghatározás sora és a forrásnév–licenc sorok átfedése a 12. szakasszal; a régi
+lapon is így állt).
+
+**A 218a végi listába.** A 4 `uj` sablonsor; a T8 sorai (a névtábla `kiadasi_adat`); a Kolofon táblájában a
+Meghatározás és a tágabb kör teljes szöveggel áll (a régi lapon is): a DT872 a tágabb kört is egy helyre tenné; az LSJ
+megjelölésének „`lexica` repó” kódjelölése (a régi mondat betűre).
+
+### Független ellenőrzés — 14. ellenőrzés (S8d, `8494ce00..a282ebea`, `fuggetlen-ellenor`)
+
+ELTÉRÉS: 4 tétel
+
+Brief: `F218_GENERATOR_UJ_A_BRIEF.md` (S8d, Kolofon) · Tartomány: `8494ce00..a282ebea` · Szint: `teljes` (2 kör)
+
+| pont | eredmény | fájl:sor | parancs / indok |
+|---|---|---|---|
+| 0. Modell | OK | — | Tényleges modell: `claude-opus-5-5`, kért: `opus`, egyezik. A menet `modell` mezői és Co-Authored-By sorai a tényleges modellt mutatják (`naplok/F218_jelentes.md` „F218.11 — S8d” fejléce; `git log --format='%h %s%n%b' 8494ce00..a282ebea`: mind a 4 commit „Claude Opus 5.5”). |
+| 3. CI a head-re | **ELTÉRÉS** | `naplok/F218_referencia.tsv:3` | `gh run view 45023918076 --json headSha,conclusion,jobs`: headSha `a282ebea…`, conclusion **failure**. Az egyetlen bukott lépés: „F218 mérce hash-őr”, `HIBA … a mérce bemenete megváltozott: B51 DONTESEK.md`. Az ok: a main a base óta kétszer írta a `DONTESEK.md`-t (`git log --oneline 8494ce00..origin/main -- DONTESEK.md`: `5e512c32`, `1e35762a` szamkiosztas), a PR-merge CI ezt a változatot hashelte. Az E2–E37 lépés zöld (7 warning, E12–E15 nincs köztük). A `51bafe84`-re futott `45023857851` is failure. Helyben (a branch-fán) a regresszió RENDBEN, de a PR így nem zöld. Teendő: a main behozása és a B51 hash-ének frissítése (N200-minta). |
+| GK-07 (forrás-halmaz = olvasási napló, licencszöveg csak B01-ből) | OK, megjegyzéssel | `eszkozok/lapgen/szamitas/kolofon.py:127-160` | A `_forrastabla` az `elozo` (a számozott szakaszok olvasásai) halmazából épül, ugyanazzal a `irodalom_fajlok`/`kulso_forrasok` úttal, mint a 12. szakasz (DT901). A licenc `LICENC` alakban a B01 címkéje (`teszt_kolofon.py` `test_licenc_csak_a_licencleltarbol`). Két engedélyezett eltérés: (1) a `KOLOFON_SZARMAZTATOTT` MACULA-sora a naplón kívül jön (F212, a régi lapon is állt; SEMA 2.66 rögzíti); (2) a `kolofon.megjeloles.tw` sablonsor a licencszöveget magában hordozza (DT-F218y 3.(a) kifejezetten jóváhagyta). |
+| GK-27 (T9) | OK | `szamitas/kolofon.py:200-206`, `:173-179` | `kiadas` módban a kézi résű lap kapuja mindig megáll, ez szigorúbb, mint a T9, és a DT-F218y 2.(a) és az N-F218w fedi. `munka` módban a mondat mindig „korábbi változat”, `lap_commit`-összevetés nélkül. A 218a-ban ez helytálló, mert a kimenet a repón kívülre megy. A dátum a HAMART-nál a kiadásé (2026.11.12), mert szerzői átnézés-sor nincs: Grep `^HAMART-001\t` az `adat/lap_atnezesek.tsv`-ben 0 találat, ISTENTISZT: 2026.11.04. |
+| GK-28 (maradék) | OK | `bemenet/kolofon.py:130-141`; `bemenet/irodalom.py` `_kulso_lista` | A közel-keleti mondatot a B75 `nem_vizsgalt` állapota köti, más állapotnál BemenetHiba. A Chain Lineage mondata a B01 `allapot`-jából jön: `adat/licencek.tsv:64` allapot = `tisztazatlan`. Mindkettőre van teszt (`Allapotmondat`). |
+| ISM-KOLOFON | OK | `naplok/F218_elteres_engedely.tsv:78` | Mechanizmus `M-RÁRAKÓDÁS`, egyezik a korábbi ISM-sorokkal (sor 20–25, 47). Az ok DT874 9. tétel, előre megszámolva 1 sor. A generált Kolofon „Negatív kritérium” sora hivatkozás (célzott olvasás: az ideiglenes kimenet Kolofon-blokkja, 2859. sor). |
+| T8 / DT-F218y 1. | OK | `adat/olvasoi_nevtabla.tsv` (+5 `kiadasi_adat`) | A brief 10. pontja `konfig.py`-t ír, a DT-F218y (szerkesztői döntés, felhatalmazással) a névtáblát választotta. Egy helyen van: Grep `zenodo\|Demeter\|logoszlexikon\|Logosz` az `eszkozok/lapgen` alatt 0 találat, a `lapgen_sablonok.tsv`-ben 0 találat. A brief 5. és 10. pontjának szövege nem frissült (dokumentációs sodródás). |
+| 8.1 engedélysorok, osztály és ok | OK | `naplok/F218_elteres_engedely.tsv:76-133` | 58 sor, `elvart_db` összege 58. A regresszió RENDBEN, 0 engedély nélküli diff-sor (lent). Minta: S8D-T9 → (h), S8D-FORRAS → (b), S8D-MEGJ-2 → N-F218x. A kettős szóközt ellenőriztem: `awk '$7 ~ /  /'` a licencek.tsv-n → SDBH, TBESG, UBS_DBH. Az UJ/ELMARAD/VALTOZIK sorok oka diszjunktív, általános szöveg („nem olvassa, vagy más licenccel, más szakaszlistával, más rendben áll”); soronként nem nevezi meg a tényleges okot. |
+| 8.1 ⛔ (20%-os küszöb, előre megszámolt `elvart_db`) | **ELTÉRÉS** | `naplok/F218_jelentes.md:1698-1707`; DT901 (`DONTESEK.md:868`) | A DT901 a „20 ± 5 eltérő listasort és a 20%-os küszöböt” fogadta el, „a Kolofonra (S8d) is áll”. A Kolofon forrástáblája 53 diff-sort ad (16+27+10), ez messze a küszöb felett van. A jelentés maga írja: „Az előre megszámolt érték nincs … a darabszámot az orkesztrátor a merge előtt látja”. A brief 8.1 ilyenkor megállást és ⛔-t kér, a menet viszont továbbment, és a kérdést a merge elé tolta. A DT-F218y négy kérdése ezt a pontot nem tartalmazta (a mérés csak a „Végrehajtva” részben áll). |
+| Darabszám-egyezés a dokumentációban | **ELTÉRÉS** | `dontesek/uj/f218a-s8d-96a364.md:1`; `naplok/F218_jelentes.md:1696`; `naplok/F218_folytatas.md` | `cut -f1 … \| sed 's/-[0-9]*$//' \| uniq -c` eredménye: S8D-UJ **27**, ELMARAD 16, VALTOZIK 10, azaz a forrástábla **53** sora. A DT-F218y, a jelentés és a folytatás „52 (26 új)”-at ír. A jelentés táblája 57-re összegződik, nem 58-ra. Ugyanígy: „3 `uj` sablonsor”, de `awk '$5 ~ /^uj/'` **4** sort ad (`kolofon.szerzoseg.kezi`, `kolofon.jovahagyas.korabbi`, `kolofon.hogyan.kiadatlan.datum_nelkul`, `kolofon.ertek.kriterium`). Az S9-es felhasználói lista így egy sort elveszíthet. |
+| Brief fejléc | **ELTÉRÉS** | `F218_GENERATOR_UJ_A_BRIEF.md:9` | Az `ag:` mező ma is `claude/f218a-s8c-5ffa99`. A `6abf1ac7` üzenete szerint „a brief fejléce az S8d ágára” került, de `git show 6abf1ac7 -- F218_…` csak a `kovetkezo` mezőt módosította. |
+| Látható szöveg forrása (DT-F212e) | OK | `megjelenites/md/kolofon.py` | Minden mondat `ny.s(...)` sablonsorból, `ny.nev(...)` névtáblából, `proza`/`b.kezi` kézi szövegből vagy `idezet` (B01) idézetből jön. `python eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001`: mindkettő **0 szivárgás** (HAMART belso=368, kezi=841, idezet=2992). |
+| Generátor és regresszió | OK | — | `PARDES_DATUM=2026-11-13 python eszkozok/general.py --cel lexikon2 --id HAMART-001 --kimenet <scratchpad>/gen` hiba nélkül lefutott. `python eszkozok/lapgen/regresszio.py --id HAMART-001 --uj <…>/lexikon --reszletes <…>`: `EREDMÉNY: RENDBEN (engedély nélküli diff-sor: 0)`, a hash-őr a branch-fán zöld. |
+| Tesztek (lapgen) | OK | — | `python eszkozok/lapgen/tesztek/futtat.py`: 367 futott, 0 hiba, 0 bukás, 21 kihagyás (1412 s). Megjegyzés: a `teszt_kolofon` `test_gk07` felső korlátja laza (bármely `irod_kulso`-név megengedett). |
+| Tesztek (`teszt_futtat.py --diff 8494ce00`, a lassúval) | NEM ELLENŐRIZHETŐ (az ok) | — | Kilépési kód 0, de két fájl HIBA: `teszt_szintek.py` (1 bukás, „Ebben a versben”, `teszt_szintek.py:286`) és `teszt_visszhang_kapu.py` (2 bukás, a HAMART 4.11 tartalma). A diff ezek kódútját nem érinti: `git diff --stat … -- eszkozok/olvaso_szerver lexikon motivumok eszkozok/lexikon_general.py eszkozok/olvaso_pilot` üres. Az olvasó-szerver a lapgen-táblákat nem olvassa (Grep: csak egy megjegyzés a `bdb_vers_jelentes.py:96`-ban). A base-en nem futtattam, ezért az okozati viszonyt nem igazoltam; valószínűleg main-szintű előzmény. |
+| A1 | OK | — | Új tartalmi állítás nincs. A Kolofon állapotmondatai adatból jönnek (B75, B01 allapot, B48). |
+| A2 | OK | `nyitott/uj/f218a-s8d-96a364.md` | Az N-F218w, -x és -y új és nyitott. Az N-F218x tényállítása igaz (lásd a 8.1-es sort). |
+| A3 / A4 / A5 | OK (nem érintett) | — | A diffben nincs tanulmány, motívumforrás vagy tanítói fájl. A `kolofon.modszer` Hays-mondata betűre a régi generátorból jött (a regresszió szerint bájtra egyezik). |
+| A6 | OK | — | A CI E2–E37 lépés zöld. A logban 7 `##[warning]` áll, E12–E15 nincs köztük (`grep -E "E1[2-5]"` 0 találat). |
+| Lista 1: kiszűrt és törölt sorok | OK | — | `adat/lapgen_sablonok.tsv`: 1 módosult sor (`irod.licenc.doi`), törölt 0. `naplok/F218_referencia.tsv`: 1 sor csere (B51, az s8c fájlja helyett az s8d-é), 4 hash frissült (B51, B65, B66, B68). Engedélyfájl: törölt 0. |
+| Lista 2: kulcstartomány | OK | `adat/lapgen_bemenetek.tsv` | Új B-azonosítók: B48, B49, B50 (a térképé), B75 (új, fájl nélküli). A `kolofon_szotar` 16 sora a 12. szakasz szótárfájljaival egyezik, kapu: `irodalom.py`. |
+| Lista 3: a „nulla-diff” hatóköre | OK | — | Vonatkozik: a HAMART-001 TUDOMANYOS és KIZARASOK, az engedélyeken kívül 0 sor. A 12. szakasz kimenete változatlan, annak ellenére, hogy a DOI forrása és a Chain Lineage állapota átkerült. Nem vonatkozik: a „3. Kizárt és vizsgált helyek” (szelet nélkül), az ISTENTISZT-001 (bájt-diff nincs, 8.2) és a main-re vetített hash-őr (CI piros). |
+| Lista 4: adattábla-Δ (E17) | OK | `naplok/F218_jelentes.md:1683-1684` | `git diff --numstat`: `lapgen_bemenetek.tsv` +4; `lapgen_sablonok.tsv` +63 (+64/−1, 1 módosítás); `olvasoi_nevtabla.tsv` +27. `konkordancia/` 0, a többi `adat/*.tsv` 0. A ≥10-es Δ-k bontása a jelentésben: névtábla 5+5+16+1 = 27, a diffből ellenőrizve. Sablontábla: 63 új + 1 módosult, az „uj”-szám hibás (lásd fent). |
+| Lista 5: a brief ⛔ pontjai | **ELTÉRÉS** (= a 8.1 ⛔-sor) | — | A négy megvalósítási kérdés DT-F218y-ként ment az orkesztrátorhoz, ez rendben van. A 8.1 20%-os ⛔-je viszont nem állította meg a menetet. |
+
+Az ELTÉRÉS-ek súlyossági sorrendben:
+1. **A CI piros a head-re** (F218 mérce hash-őr, B51 `DONTESEK.md`). A main a base óta kétszer módosította a fájlt, ezért a PR így nem mergelhető. A main behozása és a B51 hash-ének frissítése kell.
+2. **A brief 8.1 ⛔-je nem érvényesült.** A Kolofon forrástáblája 53 diff-sorral messze túllépi a DT901 20 ± 5-ös, 20%-os küszöbét. A menet nem állt meg; a döntést a merge előttre tolta.
+3. **Hibás darabszámok a döntéssorban, a jelentésben és a folytatásban.** 52/26 áll ott 53/27 helyett, a jelentés táblája 57-re összegződik 58 helyett, és „3” `uj` sablonsor áll 4 helyett. Ez a felhasználó S9-es listáját is érinti.
+4. **A brief fejlécében az `ag:` még az S8c ágát nevezi meg.**
+
+Releváns fájlok:
+- `E:\Claude\Bible-Study\f218a-s8d-96a364\naplok\F218_elteres_engedely.tsv`
+- `E:\Claude\Bible-Study\f218a-s8d-96a364\naplok\F218_referencia.tsv`
+- `E:\Claude\Bible-Study\f218a-s8d-96a364\dontesek\uj\f218a-s8d-96a364.md`
+- `E:\Claude\Bible-Study\f218a-s8d-96a364\naplok\F218_jelentes.md`
+- `E:\Claude\Bible-Study\f218a-s8d-96a364\F218_GENERATOR_UJ_A_BRIEF.md`
+- `E:\Claude\Bible-Study\f218a-s8d-96a364\eszkozok\lapgen\szamitas\kolofon.py`
+
+### A 14. ellenőrzés javítóköre (2026-11-22)
+
+| Tétel | Javítás |
+|---|---|
+| 1 (CI piros) | a main behozva (`1aba7d9b`): a mérce B51 `DONTESEK.md` hash-e frissült (N200-minta); a döntésfájl új sora miatt a `dontesek/uj/f218a-s8d-96a364.md` hash-e is. HAMART-regresszió: RENDBEN |
+| 2 (8.1 ⛔) | a kérdés az orkesztrátorhoz ment; a döntés **DT-F218z (a)**: az 53 sor a DT901 Kolofonra vetített következménye, előre megszámolt eltérésként (bontás lent); az `S8D-UJ`, `S8D-ELMARAD`, `S8D-VALTOZIK` engedélysorok oka ezt rögzíti. Folyamat: az ilyen túllépésnél a ⛔ a PR előtt jön |
+| 3 (darabszámok) | a forrástábla 53 diff-sora (27 új, nem 26) a döntéssorban, a jelentés táblájában (összesen 58) és a folytatásban javítva; az `uj` sablonsor 4 (a `kolofon.ertek.kriterium` is) |
+| 4 (`ag:`) | a brief fejlécében `ag: claude/f218a-s8d-96a364` (a `6abf1ac7` csere CRLF miatt nem illeszkedett) |
+
+**A forrástábla eltérése az S9-es összesítéshez (DT-F218z feltétele, külön osztály):** 53 diff-sor = 27 új + 16 elmaradó
++ 10 változó. Valódi új forrás 12 (BDB-szótár forrásjavításai és rokon nyelvi írásai, elutasítási okok, funkciókapcsolók,
+grammatikai szavak, javított Károli-KH, LSJ-szótár, teljesség-mérés, motívumközi kapcsolatok, SDBH/SDGNT elemzetlen
+bejegyzései, Strong-szótár, tematikus saját szó; a 12. szakasszal azonos); elmaradó forrás 1 (MCGED/Mounce, DT-F218y 3.);
+a többi ugyanannak a forrásnak a szakaszlista-átsorolása (15 sor új és elmaradó párként, 10 sor változóként). A régi tábla
+47 sora közül 21 bájtra azonos maradt. *Proveniencia: `scope=a régi és az új Kolofon forrástáblájának névoszlopa
+(`comm`) és a regresszió részletes diffje | forras=lexikon/HAMART-001_TUDOMANYOS.md (main) és a lapgen kimenete
+(PARDES_DATUM=2026-11-13) | ts=2026-11-22`.*
+
+Az ellenőr két megjegyzése (nem ELTÉRÉS): a `teszt_kolofon` GK-07-tesztjének felső korlátja laza (bármely külső forrás
+neve megengedett); a brief 5. és 10. pontja a T8 helyét még `konfig.py`-ként írja (a DT-F218y 1. a névtáblát
+választotta). Mindkettő a 218a végi listára.

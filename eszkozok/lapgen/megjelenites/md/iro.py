@@ -88,6 +88,7 @@ def mermaid_el_zar(cel):
     return _jel('| n' + _szam(cel))
 
 
+VIZSZINTES_VONAL = _jel('---')   # Markdown-elválasztó (a Kolofonban a kiadási adatok és a forrástábla között)
 LINK_NYIT = _jel('[')
 SORTORES = _jel('<br>')    # a táblacellán belüli sortörés (a 9. szakasz soraiban: a szó és a versei között)
 

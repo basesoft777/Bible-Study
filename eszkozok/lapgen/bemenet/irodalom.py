@@ -19,18 +19,25 @@ from lapgen.bemenet.nyelv import b65_nevtabla
 from lapgen.ertekek import IrodLicenc, TanuForras
 
 NEV_SZOTAR, NEV_SZOTAR_FORRAS, NEV_ADAT, NEV_KULSO = 'irod_szotar', 'irod_szotar_forras', 'irod_adat', 'irod_kulso'
+NEV_KOLOFON_SZOTAR = 'kolofon_szotar'   # a szótárfájl neve a Kolofon forrástáblájában (névelő nélkül, nagy kezdőbetűvel)
 _JEGYZEK_ELVALASZTO = ';'
 B_OKORI, B_TANUK = 'B38', 'B39'
 
 
 class IrodFajl:
-    """Egy listázandó fájl. A `rend`, a `csoport` és a `forras_csoport` belső érték (sorrend; a sor összevonása a név
-    szerint; a szótárfájl névelős nevének egyszeri kiírása), a lapra nem kerül."""
-    __slots__ = ('b_id', 'kulcs', 'szotar', 'licenc', 'cimke', 'rend', 'csoport', 'forras_csoport')
+    """Egy listázandó fájl. A `rend`, a `csoport`, a `forras_csoport` és a `kolofon_csoport` belső érték (sorrend; a sor
+    összevonása a név szerint; a szótárfájl névelős nevének egyszeri kiírása; a Kolofon forrástáblájának sora és
+    rendje), a lapra nem kerül. A `kolofon_tipus` a Kolofon-név névtábla-típusa (szótárfájlnál `kolofon_szotar`,
+    adatfájlnál `irod_adat`)."""
+    __slots__ = ('b_id', 'kulcs', 'szotar', 'licenc', 'cimke', 'rend', 'csoport', 'forras_csoport', 'kolofon_csoport',
+                 'kolofon_tipus', 'kolofon_rend')
 
-    def __init__(self, b_id, kulcs, szotar, licenc, cimke, rend, csoport, forras_csoport=None):
+    def __init__(self, b_id, kulcs, szotar, licenc, cimke, rend, csoport, forras_csoport=None, kolofon_csoport=None):
         self.b_id, self.kulcs, self.szotar, self.licenc, self.cimke = b_id, kulcs, szotar, licenc, cimke
         self.rend, self.csoport, self.forras_csoport = rend, csoport, forras_csoport
+        self.kolofon_csoport = kolofon_csoport if kolofon_csoport is not None else csoport
+        self.kolofon_tipus = NEV_KOLOFON_SZOTAR if szotar else NEV_ADAT
+        self.kolofon_rend = self.kolofon_csoport.lower()   # a Kolofon forrástáblájának rendje (kisbetűsítve, a régi szabály)
 
 
 def irodalom_fajlok(b, azonositok):
@@ -38,6 +45,7 @@ def irodalom_fajlok(b, azonositok):
     nyers = b65_nevtabla(b)
     szotarnev = nyers.nyers_nevek(NEV_SZOTAR)
     szotarforras = nyers.nyers_nevek(NEV_SZOTAR_FORRAS)
+    kolofonnev = nyers.nyers_nevek(NEV_KOLOFON_SZOTAR)
     adatnev = nyers.nyers_nevek(NEV_ADAT)
     licencek = b01_licencek(b)
     ki = []
@@ -52,21 +60,25 @@ def irodalom_fajlok(b, azonositok):
             if ut == NEM_FAJL:
                 continue
             szotar = ut in szotarnev
-            if szotar == (ut in adatnev) or (szotar and ut not in szotarforras):
-                raise BemenetHiba('%s: a(z) %s fájlnak a névtáblában pontosan egy neve legyen: szótárként (%s és %s) '
-                                  'vagy adatforrásként (%s)' % (b_id, ut, NEV_SZOTAR, NEV_SZOTAR_FORRAS, NEV_ADAT))
+            if szotar == (ut in adatnev) or (szotar and (ut not in szotarforras or ut not in kolofonnev)):
+                raise BemenetHiba('%s: a(z) %s fájlnak a névtáblában pontosan egy neve legyen: szótárként (%s, %s és '
+                                  '%s) vagy adatforrásként (%s)' % (b_id, ut, NEV_SZOTAR, NEV_SZOTAR_FORRAS,
+                                                                    NEV_KOLOFON_SZOTAR, NEV_ADAT))
             ki.append(IrodFajl(b_id, b.kulcs(b_id, 'utvonal', ut), szotar, IrodLicenc(sor.irodalom), cimke,
                                rend=ut, csoport=szotarnev[ut] if szotar else adatnev[ut],
-                               forras_csoport=szotarforras[ut] if szotar else None))
+                               forras_csoport=szotarforras[ut] if szotar else None,
+                               kolofon_csoport=kolofonnev[ut] if szotar else adatnev[ut]))
     return sorted(ki, key=lambda f: f.rend)
 
 
 class KulsoForras:
-    """A generátor által nem olvasott külső forrás: a kulcs (névtábla `irod_kulso`) és a licenc."""
-    __slots__ = ('kulcs', 'licenc', 'cimke')
+    """A generátor által nem olvasott külső forrás: a kulcs (névtábla `irod_kulso`) és a licenc. A `csoport` belső
+    érték (a név nyers szövege: a Kolofon forrástáblájának sora), a `rend` a sor rendezési kulcsa; a lapra nem kerül."""
+    __slots__ = ('kulcs', 'licenc', 'cimke', 'csoport', 'rend')
 
-    def __init__(self, kulcs, licenc, cimke):
-        self.kulcs, self.licenc, self.cimke = kulcs, licenc, cimke
+    def __init__(self, kulcs, licenc, cimke, csoport=''):
+        self.kulcs, self.licenc, self.cimke, self.csoport = kulcs, licenc, cimke, csoport
+        self.rend = csoport.lower()
 
 
 def kulso_forrasok(b, motivum, azonositok):
@@ -84,14 +96,35 @@ def kulso_forrasok(b, motivum, azonositok):
                 raise BemenetHiba('B39: a(z) %r tanú-forrásnak nincs licenckulcsa (konfig.IROD_KULSO_LICENC)'
                                   % t.forras.value)
             kulcsok.add(t.forras.value)
+    tanu = {f.value for f in TanuForras}
+    return _kulso_lista(b, [(B_TANUK if k in tanu else B_OKORI, k) for k in sorted(kulcsok)])
+
+
+def _kulso_lista(b, parok):
+    """A (B-azonosító, kulcs) párok külső forrásai: a név a névtábla `irod_kulso` sora, a licenc a licencleltárból."""
     nevek = b65_nevtabla(b).nyers_nevek(NEV_KULSO)
     licencek = b01_licencek(b)
     ki = []
-    for k in sorted(kulcsok):
+    for b_id, k in parok:
         if k not in nevek:
             raise BemenetHiba('a(z) %r külső forrásnak nincs `%s` névtábla-sora' % (k, NEV_KULSO))
         lk = konfig.IROD_KULSO_LICENC[k]
-        ki.append(KulsoForras(b.kulcs(B_TANUK if k in {f.value for f in TanuForras} else B_OKORI, 'forras', k),
-                              IrodLicenc.LICENC if lk else IrodLicenc.CHAIN_LINEAGE,
-                              licencek.cimke(lk) if lk else None))
+        # a licenc-állapot a licencleltárból (GK-28): a tisztázatlan licencű forrásnál a címke helyett a licenc-állapot
+        # mondata áll
+        tisztazatlan = licencek.allapot(lk).ertek == konfig.LICENC_TISZTAZATLAN
+        ki.append(KulsoForras(b.kulcs(b_id, 'forras', k),
+                              IrodLicenc.CHAIN_LINEAGE if tisztazatlan else IrodLicenc.LICENC,
+                              None if tisztazatlan else licencek.cimke(lk), csoport=nevek[k]))
     return ki
+
+
+def szarmaztatott_forrasok(b, azonositok):
+    """A megadott bemenetek közül a származtatott táblák CC BY-os bemenetei (`konfig.KOLOFON_SZARMAZTATOTT`; F212, a
+    Kolofon forrássora): a jegyzékbeli bemenetek listázandó fájljai és a jegyzékben nem álló külső források. A licenc a
+    forrás saját licence (a licencleltár címkéje), nem a származtatott tábláé."""
+    fajlok, kulsok = [], []
+    for b_id in sorted(set(azonositok) & set(konfig.KOLOFON_SZARMAZTATOTT)):
+        jegyzekbeli, kulso = konfig.KOLOFON_SZARMAZTATOTT[b_id]
+        fajlok.extend(irodalom_fajlok(b, jegyzekbeli))
+        kulsok.extend(_kulso_lista(b, [(b_id, k) for k in kulso]))
+    return fajlok, kulsok

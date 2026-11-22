@@ -12,12 +12,16 @@ AZONOSITO = 'idezes'
 _PARAMETER_NELKUL = (IrodLicenc.NYILT_MAG, IrodLicenc.CHAIN_LINEAGE)
 
 
-def _licenc(ny, licenc):
+def licenc_szoveg(ny, licenc):
+    """A forrássor egy licence a lapon (a 12. szakasz és a Kolofon forrástáblája közös alakja)."""
     if licenc.alak is IrodLicenc.LICENC:
         return licenc.cimke
     kulcs = ny.kulcs('irod.licenc', licenc.alak.value)
     if licenc.alak in _PARAMETER_NELKUL:
         return ny.s(kulcs)
+    if licenc.alak is IrodLicenc.DOI:
+        # a közlés DOI-ja a kiadási adatok egyetlen helyéről (a névtábla `kiadasi_adat` típusa, DT-F218y 1.)
+        return ny.s(kulcs, cimke=licenc.cimke, doi=ny.nev('kiadasi_adat', 'karoli_strong_doi'))
     return ny.s(kulcs, cimke=licenc.cimke)
 
 
@@ -41,7 +45,7 @@ def megjelenit(iro, m, keret, forrasok):
     for sz in m.szotarak:
         iro.sor(ny.s('irod.szotar', nev=ny.nev('irod_szotar', sz.nev),
                      forrasok=[ny.nev('irod_szotar_forras', f) for f in sz.forrasok],
-                     licencek=[_licenc(ny, lic) for lic in sz.licencek]))
+                     licencek=[licenc_szoveg(ny, lic) for lic in sz.licencek]))
     iro.ures()
     if m.szakirodalom:
         iro.sor(ny.s('irod.szakirodalom'))
@@ -52,6 +56,6 @@ def megjelenit(iro, m, keret, forrasok):
     iro.sor(ny.s('irod.adatforrasok'))
     for a in m.adatforrasok:
         iro.sor(ny.s('irod.kulso' if a.kulso else 'irod.adat', nev=ny.nev('irod_kulso' if a.kulso else 'irod_adat', a.nev),
-                     licencek=[_licenc(ny, lic) for lic in a.licencek]))
+                     licencek=[licenc_szoveg(ny, lic) for lic in a.licencek]))
     iro.ures()
     K.blokk_zar(iro, keret, AZONOSITO)

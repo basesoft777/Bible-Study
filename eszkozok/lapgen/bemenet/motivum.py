@@ -19,7 +19,9 @@ from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.ubs import b14_forditasok
 
 _MOTIVUM_OSZLOPOK = ('id', 'cim', 'negativ_kriterium', 'folerendelt_fogalom', 'meghatarozas', 'azonossag_tipusa',
-                     'forras_study')
+                     'forras_study', 'ui_cimke', 'tema', 'pardes_szint', 'sablon_verzio')
+# a Kolofon azonosító táblájának kézi mezői (S8d): a motívumtáblában kézzel írt érték, változatlanul
+KOLOFON_MEZOK = ('ui_cimke', 'tema', 'pardes_szint', 'sablon_verzio')
 _FORRAS_ELVALASZTO = ';'
 _NEM_TARTOZIK = 'Nem tartozik ide'
 _ZAROJEL_ELOTT = ' ('
@@ -41,15 +43,16 @@ class MotivumSor:
     """A motívum sora: a cím, a negatív kritérium két része (ami ide tartozik; ami nem) és egészben, a fölérendelt
     fogalom (a mező alakjában és mondatkezdő alakban), a meghatározás, kézi prózaként; az azonosság típusa kulcsként
     (a névtábla `azonossag` sora adja az olvasói mondatot); a kézi forrás útvonala(i) (csak proveniencia). A hiányzó
-    rész None."""
+    rész None. A `kolofon` a Kolofon kézi mezői ({mező: Kezi}; az üres mező nem áll benne)."""
     __slots__ = ('cim', 'ide_tartozik', 'nem_tartozik', 'kriterium', 'folerendelt', 'folerendelt_mondatkezdo',
-                 'meghatarozas', 'azonossag', 'forras_study')
+                 'meghatarozas', 'azonossag', 'forras_study', 'kolofon')
 
     def __init__(self, cim, ide_tartozik, nem_tartozik, folerendelt, kriterium=None, folerendelt_mondatkezdo=None,
-                 meghatarozas=None, azonossag=None, forras_study=()):
+                 meghatarozas=None, azonossag=None, forras_study=(), kolofon=None):
         self.cim, self.ide_tartozik, self.nem_tartozik, self.folerendelt = cim, ide_tartozik, nem_tartozik, folerendelt
         self.kriterium, self.folerendelt_mondatkezdo = kriterium, folerendelt_mondatkezdo
         self.meghatarozas, self.azonossag, self.forras_study = meghatarozas, azonossag, tuple(forras_study)
+        self.kolofon = dict(kolofon or {})
 
 
 def b02_motivum(b, motivum):
@@ -81,7 +84,8 @@ def b02_motivum(b, motivum):
                                  or b.kezi('B02', 'folerendelt_fogalom', fol)) if fol else None,
         meghatarozas=b.kezi('B02', 'meghatarozas', megh) if megh else None,
         azonossag=b.kulcs('B02', 'azonossag_tipusa', tipus) if tipus else None,
-        forras_study=[b.utvonal_ertek('B02', u) for u in forrasok])
+        forras_study=[b.utvonal_ertek('B02', u) for u in forrasok],
+        kolofon={m: b.kezi('B02', m, sor[m].strip()) for m in KOLOFON_MEZOK if sor[m].strip()})
 
 
 def kriterium_szoveg(b, motivum):
