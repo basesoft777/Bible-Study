@@ -228,6 +228,17 @@ class Bemenetek(unittest.TestCase):
         self.assertIn(nfc('חַטָּאת (chattát), bűn;'), szavak_lapon[0])
         self.assertTrue(szavak_lapon[0].startswith(nfc('**A motívum szavai:** אֲדָמָה (adámá), föld: talaj; ')))
 
+    def test_gk13_a_szotari_alak_kiejtese_egy_utrol(self):
+        """GK-13 (S9c): a szótári alak kiejtése ugyanabból a szolgáltatásból: H2398 „chátá”, H7121 „kárá”; a H2398
+        (lemma-változat nélküli szó) a versre szűrve is ugyanaz; a HAMART-001 lapján is így áll."""
+        k = szavak.kiejtes(bemenet.Bemenet(kozos.GYOKER))
+        for kod, kiejtes in (('H2398', 'chátá'), ('H7121', 'kárá')):
+            self.assertEqual(k.szotari(Strong(kod)).kiejtes.ertek, kiejtes)
+        self.assertEqual(k.szotari(Strong('H2398'), (Igehely('1Móz 4:7'),)).kiejtes.ertek, 'chátá')
+        eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId('HAMART-001'), datum=datetime.date(2026, 11, 13))
+        lap = nfc('\n'.join(lathato(s) for sorok in eredmeny.nezetek.values() for s in sorok))
+        self.assertIn(nfc('חָטָא (chátá)'), lap)
+
     def test_ismeretlen_hordozo_elotagnal_a_generalas_megall(self):
         """A hordozó elem fajtája zárt készlet (Strong-számok, kézzel elnevezett szópár, `tematikus:`): ismeretlen
         típusjelölő előtagnál (`referencia:`, `idézet:`, `formula:`) a bemenet kimondott hibával megáll, a lap nem

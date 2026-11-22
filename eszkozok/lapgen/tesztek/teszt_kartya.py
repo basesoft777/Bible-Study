@@ -363,5 +363,61 @@ class TiltottFordulat(unittest.TestCase):
         KL._tiltott_kapu(self._k(), type('S', (), {'kod': 'H0001'})(), [sz], KL.SZOTAR_THAYER)
 
 
+class Gk18BetuJavitas(unittest.TestCase):
+    def test_gk18_a_lapon_csak_javitott_bdb_alak_all(self):
+        """GK-18 (S9c): a BDB betűjavítása (B17, `pe_mem` / `res_dalet`) mindenütt érvényes: a motívum héber szavainak
+        javítótábla szerinti forrás-alakja a teljes látható lapon (a kártya, az olvasói pontok, a glosszák) egyszer sem
+        áll, a javított alak igen (a HAMART-001-en a H0127, a H2403 és a H2555 javított alakja). A javítótáblát a teszt
+        a közös javító modulból olvassa (a generátor is onnan)."""
+        import os
+        import unicodedata
+        import bdb_rovidites
+        import teszt_vaz
+        from lapgen import bemenet
+        from lapgen.bemenet import elofordulas
+        betu = bdb_rovidites.betu_javitasok(os.path.join(kozos.GYOKER, 'adat', 'bdb_forras_javitas.tsv'))
+        javitott_db = 0
+        for azonosito in MINTALAPOK:
+            sorok = elofordulas.b03_elofordulasok(bemenet.Bemenet(kozos.GYOKER), MotivumId(azonosito))
+            strongok = {st.kod for s in sorok for st in s.strongok if st.heber}
+            lap = unicodedata.normalize('NFD', teszt_vaz._lathato_szoveg(azonosito))
+            for kod in sorted(strongok):
+                for forras, javitott in (betu.get(kod) or {}).items():
+                    self.assertNotIn(forras, lap, '%s %s' % (azonosito, kod))
+                    javitott_db += lap.count(javitott)
+        self.assertGreater(javitott_db, 0)
+
+
+class AtvettTetelek(unittest.TestCase):
+    """Az N-F212a tételei közül az S9c-ben a teljes lapon mértek (GK-A10, GK-A12)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import teszt_vaz
+        cls.lap = {a: teszt_vaz._lathato_szoveg(a) for a in MINTALAPOK}
+
+    def test_gk_a10_nincs_csupasz_zarojeles_strong_szam(self):
+        """GK-A10: a lapon 0 csupasz, zárójeles Strong-szám („háttere: héberül a kárá (H7121)”); a Strong-szám a
+        `<sup class="strong">` jelölésben áll."""
+        import re
+        for azonosito, szoveg in self.lap.items():
+            self.assertEqual(re.findall(r'\(\s*[HG]\d{4}[a-z]?\s*\)', szoveg), [], azonosito)
+
+    def test_gk_a12_nem_letezo_karoli_vers_jellel_link_nelkul(self):
+        """GK-A12: a BDB-hivatkozásból képzett igehely csak akkor link, ha a vers a Károliban létezik. A HAMART-001
+        8 esete (N146: a szótár vagy a fordítás könyvnév-hibája) a lapon a „nincs ilyen vers” jellel áll, és egyik sem
+        link. (A könyvnév-hiba javítása az N146 tétele.)"""
+        import re
+        szoveg = self.lap['HAMART-001']
+        jel = '*(a Károliban nincs ilyen vers'
+        for vers in ('1Sám 3:26', '1Sám 26:29', 'Jób 14:23', 'Jer 12:18', 'Péld 57:1', 'Péld 58:1', 'Péld 59:1'):
+            helyek = [m.end() for m in re.finditer(r'(?<![\w:])%s(?![\d])' % re.escape(vers), szoveg)]
+            self.assertTrue(helyek, vers)
+            for h in helyek:
+                self.assertTrue(szoveg[h:h + len(jel) + 1].lstrip().startswith(jel), vers)
+            self.assertNotIn('[%s]' % vers, szoveg)
+        self.assertEqual(szoveg.count(jel), 8)
+
+
 if __name__ == '__main__':
     unittest.main()

@@ -94,18 +94,6 @@ class Szerkezeti(unittest.TestCase):
 
 
 
-    @unittest.skip(S3_MARADEK)
-    def test_gk13_lemma_kiejtes_es_valtozat(self):
-        """GK-13: a szótári alak kiejtése ugyanabból a szolgáltatásból, a lemma-változattal: H2403a/b, H2398."""
-
-    @unittest.skip(S3_MARADEK)
-    def test_gk14_osszevont_versek_kulcsa(self):
-        """GK-14: az összevont 9 versnél a szavak sorrendje a versösszevonás szerint áll."""
-
-    @unittest.skip(S3_MARADEK)
-    def test_gk18_bdb_betujavitas_mindenutt(self):
-        """GK-18: a kártya és az olvasói réteg ugyanazt a teljesen javított BDB-szöveget adja."""
-
     @unittest.skip(S8_GK19)
     def test_gk19_karoli_parositas(self):
         """GK-19 (T6): a párosítás mért pontossága egyszer, a Módszertanban áll, a konfigból. (A másik két fele
@@ -117,14 +105,6 @@ class Szerkezeti(unittest.TestCase):
 
 class AtvettTetelek(unittest.TestCase):
     """Az N-F212a tételei (a spec 6.1 táblája), az N178 és a szópár-követelmény."""
-
-    @unittest.skip(S3_MARADEK)
-    def test_gk_a10_csupasz_strong_szam(self):
-        """GK-A10: a lapon 0 csupasz, zárójeles Strong-szám."""
-
-    @unittest.skip(S3_MARADEK)
-    def test_gk_a12_nem_letezo_karoli_vers(self):
-        """GK-A12: BDB-hivatkozásból képzett igehely csak akkor link, ha a vers a Károliban létezik."""
 
     @unittest.skip(S9)
     def test_gk_b9(self):
