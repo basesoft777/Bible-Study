@@ -74,6 +74,16 @@ kimarad, és a kimenet ezt soronként kimondja (az ELTÉR-sorainak száma tájé
 tételek (a „Mi a gond” sor az 1. vagy a 4. kérdést nevezi) közül hányat fog meg gépileg, hányat tesz kézi listára,
 hányat nem lát. Ez a jelentés első sora.
 
+**`--tanulmany <fájl>` (F205 M3, a brief 2. szakaszának 8. pontja):** az igeszakasz-tanulmány prózája és a 2. sablon
+4/b. pontjának igehelyenkénti jelölt blokkjai a motívumforrás helyett; új ellenőrző logika nincs, csak új bemenet. A
+próza a rések szabályai szerint kerül egységekbe, a blokk olvasói szövegei (a `tanulmany_kinyer.py` elemzője és
+`olvasoi_szovegek`-e, importálva) a blokk saját igehelyére szólnak, mint a `kapcsolodas`-próza. A motívum-környezet
+(adatsorok, kapcsolat- és jelölt-sorok) a blokkok motívumaiból jön, vagy a `--motivum ID` (ismételhető) adja. A blokk
+alaki hibáját (a kinyerő megállási okai) a jelentés fejléce sorolja; a hibás fejlécű blokk és a hibás pont kimarad,
+a hiányos blokk meglévő szövege a próbákon megy át. Ismert korlát: a
+tanulmány könyvnév nélküli helyei („(12:6)”) nem igehelyek a felismerés számára. Kimenet:
+`naplok/ALLITAS_TANULMANY_<fájlnév>.md`. A tanulmány nem része a `--kapu`-nak (E41).
+
 A TSV-k olvasása `split('\t')` (CLAUDE.md); a `karoli_strong/parok_<könyv>.tsv` párosítás modell-kimenet (javaslat,
 SEMA 2.20): csak bizonyítékként és jelzésként áll, ítélet nem épül rá.
 
@@ -82,6 +92,7 @@ CLI:
     python eszkozok/proza_allitas.py HAMART-001
     python eszkozok/proza_allitas.py HAMART-001 --lektor naplok/KIADAS_HAMART-001_lektor.md
     python eszkozok/proza_allitas.py HAMART-001 --kimenet <fájl> --szigoru
+    python eszkozok/proza_allitas.py --tanulmany genezis/1Moz_8v20-22_bovitett.md [--motivum HAMART-001]
 """
 import argparse
 import datetime
@@ -1605,7 +1616,7 @@ def cella(s):
     return (s or '').replace('|', '¦').replace('\n', ' ')
 
 
-def jelentes(mid, ell, adat, lektor=None, scope_forras='', egysegek=()):
+def jelentes(mid, ell, adat, lektor=None, scope_forras='', egysegek=(), forras_leiras=None):
     sorok = ell.sorok
     kezi = [s for s in sorok if s.itelet == 'kézi']
     # kézi azonosító: egységenként és versenként egy
@@ -1641,10 +1652,11 @@ def jelentes(mid, ell, adat, lektor=None, scope_forras='', egysegek=()):
     ki.append('')
     ki.append('<!-- GENERÁLT: eszkozok/proza_allitas.py — kézzel nem szerkesztendő; újrafuttatással frissül. -->')
     ki.append('')
-    ki.append('Forrás: `motivumok/%s.md` értelmező rései és az `adat/elofordulasok.tsv` `kapcsolodas` mezője '
-              '(id=%s). Kapu-szint: JELENTÉS. Gépi ítélet: **egyezik** / **ELTÉR** / **kézi** (az ellenőrzési '
+    ki.append('Forrás: %s. Kapu-szint: JELENTÉS. Gépi ítélet: **egyezik** / **ELTÉR** / **kézi** (az ellenőrzési '
               'listán, `K<n>`). A ⚑ gépi jelzés a kézi sorban: a magyar szó a versben más héber/görög szót fordít, '
-              'mint a lánc szava, vagy a lánc szava nincs a versben.' % (mid, mid))
+              'mint a lánc szava, vagy a lánc szava nincs a versben.'
+              % (forras_leiras or '`motivumok/%s.md` értelmező rései és az `adat/elofordulasok.tsv` `kapcsolodas` '
+                                  'mezője (id=%s)' % (mid, mid)))
     ki.append('')
     ki.append('Összesen: %d gépi sor (ELTÉR %d, egyezik %d), %d kézi tétel (ebből ⚑ %d).'
               % (len(elter) + len(egyez), len(elter), len(egyez), len(kulcsok),
@@ -1738,10 +1750,8 @@ def cimsorok(*szovegek):
     return ki
 
 
-def futtat(mid, md_ut=None, elof_ut=T_ELOF, lap_ut=None, jelolt_ut=None):
-    md_ut = md_ut or os.path.join(ROOT, 'motivumok', '%s.md' % mid)
-    with open(md_ut, 'r', encoding='utf-8') as f:
-        forras = f.read()
+def elof_beolvas(elof_ut, idk):
+    """A motívum(ok) `elofordulasok.tsv`-sorai és a sorszámuk (igehely -> fájlsor)."""
     elof_sorok, elof_sorszam = [], {}
     sorszam = 0
     with open(elof_ut, 'r', encoding='utf-8') as f:
@@ -1755,12 +1765,32 @@ def futtat(mid, md_ut=None, elof_ut=T_ELOF, lap_ut=None, jelolt_ut=None):
                 fej = sor.split('\t')
                 continue
             d = dict(zip(fej, sor.split('\t')))
-            if d.get('id') == mid:
+            if d.get('id') in idk:
                 elof_sorok.append(d)
                 elof_sorszam[d['igehely']] = sorszam
+    return elof_sorok, elof_sorszam
+
+
+def futtat(mid, md_ut=None, elof_ut=T_ELOF, lap_ut=None, jelolt_ut=None):
+    md_ut = md_ut or os.path.join(ROOT, 'motivumok', '%s.md' % mid)
+    with open(md_ut, 'r', encoding='utf-8') as f:
+        forras = f.read()
+    elof_sorok, elof_sorszam = elof_beolvas(elof_ut, {mid})
+    egysegek = res_egysegek(md_ut) + kapcsolodas_egysegek(elof_sorok, elof_sorszam)
+    lap_ut = lap_ut or os.path.join(ROOT, 'lexikon', '%s_TUDOMANYOS.md' % mid)
+    lap = ''
+    if os.path.exists(lap_ut):
+        with open(lap_ut, 'r', encoding='utf-8') as f:
+            lap = f.read()
+    ell, adat, szk = ellenoriz_egysegek(mid, {mid}, forras, egysegek, elof_sorok, lap, jelolt_ut)
+    return ell, adat, szk, len(egysegek)
+
+
+def ellenoriz_egysegek(mid, idk, forras, egysegek, elof_sorok, lap='', jelolt_ut=None):
+    """A kinyert egységek ellenőrzése a vers és az adat mellett (a motívum- és a tanulmány-mód közös része): a
+    versek adata, a szókészlet a forrás megnevezéseiből, a motívum(ok) kapcsolat- és jelölt-sorai, a címsorok."""
     adat = Adat()
     igeh = Igehelyek()
-    egysegek = res_egysegek(md_ut) + kapcsolodas_egysegek(elof_sorok, elof_sorszam)
     versek = set()
     for e in egysegek:
         for _, _, refek in igeh.csoportok(e.szoveg):
@@ -1774,20 +1804,96 @@ def futtat(mid, md_ut=None, elof_ut=T_ELOF, lap_ut=None, jelolt_ut=None):
     adat.betolt_szavak(versek, fej_strongok)
     adat.betolt_parok(versek)
     szk = Szokeszlet(forras, elof_sorok, adat)
-    kapcsolatok = [d for d in tsv_dict(T_KAPCS) if d.get('id') == mid] if os.path.exists(T_KAPCS) else []
+    kapcsolatok = [d for d in tsv_dict(T_KAPCS) if d.get('id') in idk] if os.path.exists(T_KAPCS) else []
     ell = Ellenor(mid, adat, szk, elof_sorok, igeh, kapcsolatok)
     ell.egysegek = egysegek
     jelolt_ut = jelolt_ut or T_JELOLT
-    ell.jeloltek = [d for d in tsv_dict(jelolt_ut) if d.get('id') == mid] if os.path.exists(jelolt_ut) else []
-    lap_ut = lap_ut or os.path.join(ROOT, 'lexikon', '%s_TUDOMANYOS.md' % mid)
-    lap = ''
-    if os.path.exists(lap_ut):
-        with open(lap_ut, 'r', encoding='utf-8') as f:
-            lap = f.read()
+    ell.jeloltek = [d for d in tsv_dict(jelolt_ut) if d.get('id') in idk] if os.path.exists(jelolt_ut) else []
     ell.cimek = cimsorok(forras, lap)
     for e in egysegek:
         ell.egyseg(e)
-    return ell, adat, szk, len(egysegek)
+    return ell, adat, szk
+
+
+# ---------------------------------------------------------------------------
+# F205 M3: tanulmány-mód (`--tanulmany`) — új bemenet, új ellenőrző logika nélkül
+# ---------------------------------------------------------------------------
+TANULMANY_VALTOZAT = re.compile(r'^\*v\d+\b')   # a tanulmány fejléc-changelogja („*v4 — 2026.09.03 (…)*”)
+
+
+def tanulmany_egysegek(md_ut):
+    """(egységek, blokkok, blokk_hibák): az igeszakasz-tanulmány prózája és a jelölt blokkok olvasói szövegei.
+
+    A próza a rések szabályai szerint (`res_egysegek`): mondatonként, a címsor egyetlen Strong-száma a fejezet
+    Strong-ja, a táblázat-, megjegyzés-, proveniencia- és kódblokk-sor kimarad; kimarad a fejléc-changelog és a
+    blokkok belseje is. A blokk (2. sablon 4/b.; az elemzés a `tanulmany_kinyer.blokkok_elemez`, importálva) olvasói
+    szövegei (`tanulmany_kinyer.olvasoi_szovegek`: funkció, a negatív próba indoklása, a jelentéspont olvasata és
+    eltérés-indoka, a vita és a visszhang mondata) a blokk saját igehelyére szólnak (`alap_ref`), mint az adatsor
+    `kapcsolodas`-prózája. Mindkét fajta `rés:` forrású egység: a rés-próbák (hatókör, az F224 fajtái) rajtuk is
+    futnak."""
+    import tanulmany_kinyer as TK  # noqa: E402  (csak a tanulmány-mód: a blokk-elemző és az olvasói szövegek)
+    with open(md_ut, 'r', encoding='utf-8') as f:
+        szoveg = f.read()
+    nev = os.path.basename(md_ut)
+    blokkok, blokk_hibak = TK.blokkok_elemez(szoveg)
+    egysegek, fejezet_strong, kod, blokkban = [], None, False, False
+    for i, sor in enumerate(szoveg.replace('\r\n', '\n').split('\n'), 1):
+        s = sor.strip()
+        if s.startswith('```'):
+            kod = not kod
+            continue
+        if kod:
+            continue
+        if TK.BLOKK_KEZDET.match(sor):
+            blokkban = True
+            continue
+        if sor == TK.BLOKK_VEGE:
+            blokkban = False
+            continue
+        if blokkban:
+            continue
+        if s.startswith('#'):
+            fs = re.findall(r'\b([HG]\d{4})\b', s)
+            fejezet_strong = fs[0] if len(fs) == 1 else None
+            continue
+        if not s or s.startswith('<!--') or s.startswith('*Proveniencia') or s.startswith('【') \
+                or s.startswith('|') or TANULMANY_VALTOZAT.match(s):
+            continue
+        s = re.sub(r'<!--.*?-->', '', s)
+        for mo in mondatok(s):
+            egysegek.append(Egyseg('rés:tanulmány', '%s:%d' % (nev, i), mo, fejezet_strong=fejezet_strong))
+    for b in blokkok:
+        for p in b['pontok']:
+            for pont, t in TK.olvasoi_szovegek({'pontok': [p]}):
+                for mo in mondatok(t.strip()):
+                    egysegek.append(Egyseg('rés:blokk-' + pont.replace(' ', '_'), '%s:%d' % (nev, p['sor']), mo,
+                                           alap_ref=b['igehely']))
+    return egysegek, blokkok, blokk_hibak
+
+
+def tanulmany_motivumok(blokkok):
+    """A blokkok fejlécének érvényes motívum-azonosítói (az `új` és a `—` kimarad), sorrendben."""
+    import tanulmany_kinyer as TK  # noqa: E402
+    ki = []
+    for b in blokkok:
+        m = b.get('motivum', '')
+        if TK.MOTIVUM_ID.match(m) and m not in ki:
+            ki.append(m)
+    return ki
+
+
+def futtat_tanulmany(md_ut, motivumok=None, elof_ut=T_ELOF, jelolt_ut=None):
+    """(ell, adat, szk, egységszám, motívumok, blokk_hibák). A motívum-környezet (az adatsorok, a kapcsolat- és a
+    jelölt-sorok, a lánc szavai) a blokkok motívumaiból jön, vagy a megadott `motivumok` listából; motívum nélkül a
+    próbák a vers adatára szűkülnek (a szám- és a kapcsolat-próbának nincs viszonyítási alapja)."""
+    with open(md_ut, 'r', encoding='utf-8') as f:
+        forras = f.read()
+    egysegek, blokkok, blokk_hibak = tanulmany_egysegek(md_ut)
+    idk = list(motivumok) if motivumok else tanulmany_motivumok(blokkok)
+    elof_sorok, _ = elof_beolvas(elof_ut, set(idk))
+    mid = '+'.join(idk) or '–'
+    ell, adat, szk = ellenoriz_egysegek(mid, set(idk), forras, egysegek, elof_sorok, '', jelolt_ut)
+    return ell, adat, szk, len(egysegek), idk, blokk_hibak
 
 
 U3_JELOLES = '10_PaRDeS_U3_proza_prompt_sablon'   # az új formájú (10-es sablon szerinti) forrás NAPLÓ-sorában áll
@@ -1837,7 +1943,35 @@ def kapu(mappa=None, elof_ut=T_ELOF, kimenet=sys.stdout):
     return hibak
 
 
-def main():
+def main_tanulmany(a):
+    """F205 M3: `--tanulmany <fájl>` — a jelentés ugyanaz a szerkezet, a forrás leírása és a cím a tanulmányé."""
+    ut = a.tanulmany
+    nev = os.path.splitext(os.path.basename(ut))[0]
+    ell, adat, szk, n_egyseg, idk, blokk_hibak = futtat_tanulmany(ut, a.motivum)
+    kimenet = a.kimenet or os.path.join(ROOT, 'naplok', 'ALLITAS_TANULMANY_%s.md' % nev)
+    rel = os.path.relpath(os.path.abspath(ut), ROOT).replace(os.sep, '/')
+    motiv = ', '.join(idk) if idk else 'nincs (a blokkok nem neveznek meg motívumot; szám- és kapcsolat-próba nélkül)'
+    leiras = ('`%s` prózája és igehelyenkénti jelölt blokkjai (2. sablon 4/b.; a blokkok olvasói szövegei a blokk '
+              'igehelyére szólnak); motívum-környezet: %s' % (rel, motiv))
+    if blokk_hibak:
+        leiras += ('; **%d blokk-hiba** (a hibás fejlécű blokk és a hibás pont kimarad; a kinyerő, '
+                   '`eszkozok/tanulmany_kinyer.py`, megáll rajta): %s' % (len(blokk_hibak), ' · '.join(cella(h) for h in blokk_hibak)))
+    scope = '%s (próza + blokkok), motívum-környezet: %s, %d egység' % (rel, ', '.join(idk) or '–', n_egyseg)
+    szoveg = jelentes(nev, ell, adat, a.lektor, scope, ell.egysegek, forras_leiras=leiras)
+    with open(kimenet, 'w', encoding='utf-8', newline='\n') as f:
+        f.write(szoveg)
+    elter = sum(1 for s in ell.sorok if s.itelet == 'ELTÉR')
+    print('%s: %d egység; motívum-környezet: %s; blokk-hiba: %d' % (nev, n_egyseg, ', '.join(idk) or '–',
+                                                                  len(blokk_hibak)))
+    print('ELTÉR: %d, egyezik: %d, kézi sor: %d -> %s' % (
+        elter, sum(1 for s in ell.sorok if s.itelet == 'egyezik'), sum(1 for s in ell.sorok if s.itelet == 'kézi'),
+        kimenet))
+    if szoveg.startswith('**Próba'):
+        print(szoveg.split('\n', 1)[0])
+    return 1 if (a.szigoru and elter) else 0
+
+
+def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('id', nargs='?', help='motívum-azonosító, pl. HAMART-001 (`--kapu` nélkül kötelező)')
     ap.add_argument('--kapu', action='store_true', help='E41: minden új formájú forrás; ELTÉR-sorra 1-es kilépőkód')
@@ -1845,11 +1979,21 @@ def main():
     ap.add_argument('--lektor', help='lektori kérdéslista az összevetéshez (naplok/KIADAS_<ID>_lektor.md szerkezet)')
     ap.add_argument('--kimenet', help='a jelentés útja (alapértelmezés: naplok/ALLITAS_<ID>.md)')
     ap.add_argument('--szigoru', action='store_true', help='1-es kilépőkód, ha van ELTÉR-sor')
-    a = ap.parse_args()
+    ap.add_argument('--tanulmany', metavar='FÁJL',
+                    help='F205: igeszakasz-tanulmány (próza + jelölt blokkok) a motívumforrás helyett')
+    ap.add_argument('--motivum', action='append', metavar='ID',
+                    help='a tanulmány-mód motívum-környezete (ismételhető; alapértelmezés: a blokkok motívumai)')
+    a = ap.parse_args(argv)
     if a.kapu:
         return 1 if kapu() else 0
+    if a.tanulmany:
+        if a.id or a.forras:
+            ap.error('a --tanulmany mellett nem áll motívum-azonosító és --forras')
+        return main_tanulmany(a)
+    if a.motivum:
+        ap.error('a --motivum csak a --tanulmany mellett áll')
     if not a.id:
-        ap.error('motívum-azonosító kell (vagy --kapu)')
+        ap.error('motívum-azonosító kell (vagy --kapu, vagy --tanulmany)')
     ell, adat, szk, n_egyseg = futtat(a.id, a.forras)
     kimenet = a.kimenet or os.path.join(ROOT, 'naplok', 'ALLITAS_%s.md' % a.id)
     scope = 'motivumok/%s.md (rések) + adat/elofordulasok.tsv kapcsolodas (id=%s), %d egység' % (a.id, a.id, n_egyseg)
