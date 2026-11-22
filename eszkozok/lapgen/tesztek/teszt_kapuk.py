@@ -220,5 +220,57 @@ class Hibanaplo(unittest.TestCase):
         self.assertIsNotNone(re.search(minta, 'alapjelentés: bűn *(a STEPBible rövid szótára szerint)*\n'))
 
 
+_ANGOL_KONYV = re.compile(r'\b(?:Gen|Exod|Lev|Num|Deut|Josh|Judg|[12] ?Sam|[12] ?Kgs|[12] ?Chr|Esth|Pss?|Prov|Eccl|Isa|Lam|'
+                          r'Ezek|Hos|Obad|Mic|Nah|Zeph|Zech|Matt|Rom|Rev)\.? \d+:\d+')
+
+
+class Leltar(unittest.TestCase):
+    """A hibaleltár (`GENERATOR_HIBALELTAR_2026-11-11.md`, N-F212a) tételei a leírásuk szerint újramérve az új lapon
+    (S9c). A régi generátorra nyitott N-tételek a régi lapra szólnak; itt az új generátor mintalapjain 0 eltérés."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.lap = {a: teszt_vaz._lathato_szoveg(a) for a in MINTALAPOK}
+
+    def test_gk_b9_a_ts_a_megadott_datumbol(self):
+        """GK-B9 (N-F11d): a generált `ts=` determinisztikus: két különböző megadott dátummal a lap minden sora
+        egyezik, csak a megadott dátum cserélődik (a mai nap sehol nem áll); azonos dátummal bájtra azonos
+        (`teszt_futas.py` GK-29)."""
+        a, b = datetime.date(2026, 11, 13), datetime.date(2026, 11, 14)
+        sa, sb = ('\n'.join(_szoveg(fo.lap_keszit(kozos.GYOKER, MotivumId('HAMART-001'), datum=d)).values())
+                  for d in (a, b))
+        self.assertNotEqual(sa, sb)
+        self.assertEqual(sa.replace('2026-11-13', 'D').replace('2026.11.13', 'D'),
+                         sb.replace('2026-11-14', 'D').replace('2026.11.14', 'D'))
+
+    def test_gk_a11_a14_a15_b5_b8(self):
+        """A11 (N92): angol könyvnévvel álló igehely az idézeten kívül nincs (a BDB saját alakja csak „…” idézetben
+        áll, a szakirodalom dőlt angol címében is). A14 (N-F12h): a rokon nyelvi alak hiánya kimondott mondat
+        (HAMART-001). A15 (N-F12i): a Kolofon „Sablon-megfelelőség” cellája nem üres. B5 (N-F148a): a fordítatlan egység jelölt („(fordításra vár)”; a T5
+        kapuja: GK-15, `teszt_kartya.py`), a nyers angol Thayer nincs a lapon (HN-12). B8: 【NAPLO】 blokk nincs a
+        látható szövegben."""
+        for azonosito, szoveg in self.lap.items():
+            idezet_nelkul = re.sub(r'\*[^*\n]+\*', '', re.sub(r'„[^”]*”', '', szoveg))   # az idézet és a dőlt cím
+            self.assertEqual(_ANGOL_KONYV.findall(idezet_nelkul), [], 'A11 %s' % azonosito)
+            self.assertRegex(szoveg, r'Sablon-megfelelőség \| v\d+ \|', 'A15 %s' % azonosito)
+            self.assertNotIn('【', szoveg, 'B8 %s' % azonosito)
+        self.assertIn('Nincs rokon nyelvi alak a BDB szócikkében', self.lap['HAMART-001'])
+        self.assertGreater(self.lap['ISTENTISZT-001'].count('*(fordításra vár)*'), 0)
+
+    @unittest.skip('218c (#238): N98 és N113 — a BDB-gerinc al-szócikk szerinti átkulcsolása és a sorbelső fej a '
+                   'bemeneti rétegben; a két mintalapon nem fordul elő (a H2416 esete)')
+    def test_gk_c3_bdb_gerinc_atkulcsolas(self):
+        """GK-C3 (N98, N144, N145): a BDB-gerinc al-szócikk és útvonal szerint kulcsol; a sorbelső fej ismert."""
+
+    @unittest.skip('218c (#238): N-F114b — a TSK-index tartomány-igehelyre nem keres (a HAMART-001 6 tartomány-helye '
+                   'ma is utalás nélkül, a régi lappal egyezően); a bemeneti réteg bővítése')
+    def test_gk_c9_tsk_tartomany_igehely(self):
+        """GK-C9 (N-F114a, N-F114b): a tartomány-igehely TSK-utalásai versenként keresve."""
+
+    @unittest.skip('218b: N-F131i — a szótári gerinc vizuális elkülönítése az olvasói CSS-ben (nem a lapgen kimenete)')
+    def test_gk_d3_gerinc_vizualis_elkulonites(self):
+        """GK-D3 (N-F131i): a szótári gerinc vizuálisan elkülönül."""
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

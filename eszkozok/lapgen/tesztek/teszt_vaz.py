@@ -91,36 +91,11 @@ class Szerkezeti(unittest.TestCase):
         Az `lxx_egyezes` része kész (`teszt_lxx.py` `Gk04`)."""
 
 
-
     @unittest.skip(S8_GK19)
     def test_gk19_karoli_parositas(self):
         """GK-19 (T6): a párosítás mért pontossága egyszer, a Módszertanban áll, a konfigból. (A másik két fele
         kész: minden pár számít, és a 4.13–4.14 látható szövegében nincs bizonyossági címke és páronkénti jelölés:
         `teszt_szotari_karoli.py`.)"""
-
-
-
-
-class AtvettTetelek(unittest.TestCase):
-    """Az N-F212a tételei (a spec 6.1 táblája), az N178 és a szópár-követelmény."""
-
-    @unittest.skip(S9)
-    def test_gk_b9(self):
-        """GK-B9 (N-F212a, a spec 6.1 táblája): a hibaleltár leírása szerint újramérve, 0 eltérés. A leltár
-        leírását az F218.1 halasztott része veszi át; a két futás bájtra azonos kimenetét és a `ts=` eredetét a
-        `teszt_futas.py` `test_gk29_…` tesztjei már mérik."""
-
-    @unittest.skip(S9)
-    def test_gk_a11_a14_a15_b5_b8_c3_c9_d3(self):
-        """GK-A11, A14, A15, B5, B8, C3, C9, D3: a hibaleltár leírása szerint újramérve, 0 eltérés (a leírásokat
-        az F218.1 halasztott része veszi át)."""
-
-
-
-class Hibanaplo(unittest.TestCase):
-    """A hibanapló példányai (HN): szövegminta a lapon; elvárt 0 találat az új lapon. A minták a `HN_MINTAK`
-    táblában állnak; a kész szakaszokon a `HibanaploMintak` már ma méri őket, a teljes lapon az alábbi tesztek."""
-
 
 
 if __name__ == '__main__':

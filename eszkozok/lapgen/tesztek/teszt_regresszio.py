@@ -239,14 +239,24 @@ class Szamlalok(unittest.TestCase):
         lapon állnak, az ISTENTISZT-001-en a szópár-lánc is."""
         for azonosito in self.mintalapok:
             sorok = R.szamlalok(azonosito, self.konyvtar, self.gyoker)
-            _szoveg, hiba = R.szamlalo_jelentes(sorok)
+            _szoveg, hiba = R.szamlalo_jelentes(sorok, azonosito)
             self.assertFalse(hiba, '%s: %s' % (azonosito, _szoveg))
             meglevo = {nev for nev, lapon, _s in sorok if lapon is not None}
-            for nev in ('megvizsgált versek (1.)', 'KH: utalások összesen (6.)', 'ószövetségi versek (5.)'):
+            for nev in ('megvizsgált versek (1.)', 'KH: utalások összesen (6.)', 'ószövetségi versek (5.)',
+                        'LXX: az összesítés összege (5.)', 'LXX: egyező versek (5.)', 'LXX: LXX-minusz (5.)'):
                 self.assertIn(nev, meglevo, azonosito)
         self.assertIn('a szópár igéje a héber szövegben (9.)',
                       {nev for nev, lapon, _s in R.szamlalok('ISTENTISZT-001', self.konyvtar, self.gyoker)
                        if lapon is not None})
+
+    def test_az_ismert_elteres_csak_a_megnevezett_ertekparra_szol(self):
+        """N238: az LXX-összesítés független számlálója; az ismert eltérés (N196) kivétele csak a rögzített
+        értékpárra szól: más számnál, vagy más motívumnál BUKÁS."""
+        nev = 'LXX: egyező versek (5.)'
+        self.assertFalse(R.szamlalo_jelentes([(nev, 12, 13)], 'ISTENTISZT-001')[1])
+        self.assertTrue(R.szamlalo_jelentes([(nev, 11, 13)], 'ISTENTISZT-001')[1])
+        self.assertTrue(R.szamlalo_jelentes([(nev, 12, 13)], 'HAMART-001')[1])
+        self.assertTrue(R.szamlalo_jelentes([(nev, 12, 13)])[1])
 
     def test_az_elrontott_szamot_kimutatja(self):
         ut = os.path.join(self.konyvtar, 'ISTENTISZT-001_TUDOMANYOS.md')
