@@ -32,7 +32,10 @@ HELY_EGYSEG = ('218c (a leendő #238; N234, az orkesztrátor döntése (DT924), 
 HN_MINTAK = {
     'HN-02': [(r'A formula nincs a versben: Nincs meg a formula',
                'A formula nincs a versben: Nincs meg a formula a versben, a szó önállóan áll')],
-    'HN-03': [(r'\((?:a|az|A|Az) [^()\n]*(?:BDB|Thayer|TBESG|TBESH|STEPBible|MCGED|SDBH|LSJ|SECE)[^()\n]*szótár[^()\n]*\)',
+    # HN-03 (DT925 (2) (a), S9c): a forrásnév a mondat közepén, zárójelben; a zárójel után a sorban még szöveg áll
+    # (a sor végén álló zárójel, pl. a 12. szakasz forrásjegyzékének „(forrásnév, licenc)” megjegyzése, nem mondatközi)
+    'HN-03': [(r'(?m)\((?:a|az|A|Az) [^()\n]*(?:BDB|Thayer|TBESG|TBESH|STEPBible|MCGED|SDBH|LSJ|SECE)[^()\n]*szótár'
+               r'[^()\n]*\)(?![ \t]*$)',
                'a szó jelentése (a BDB-szótár szerint) a megművelt föld')],
     'HN-04': [(r'hivatkozas_kezi|negativ_kriterium|szerkesztő-chat|\bkollokacio\b',
                'a javítás forrása: hivatkozas_kezi,; kollokacio … szerkesztő-chat … negativ_kriterium')],
@@ -51,9 +54,8 @@ HN_MINTAK = {
     'HN-15': [(r'magyar rövid glossza-tábla a görögre még nincs',
                'A magyar rövid glossza-tábla a görögre még nincs meg.')],
 }
-# Az új lap kész szakaszain már ma mért esetek (a többi a szakaszával együtt lép be; a HN-03 a hatókör-sor
-# zárójeles forráslistája miatt a felhasználó döntésére vár).
-HN_MERT = ('HN-02', 'HN-04', 'HN-05', 'HN-06', 'HN-07', 'HN-08', 'HN-09', 'HN-10', 'HN-15')
+# Az új lap kész szakaszain már ma mért esetek (a HN-03 az S9c óta, DT925 (2) (a)).
+HN_MERT = ('HN-02', 'HN-03', 'HN-04', 'HN-05', 'HN-06', 'HN-07', 'HN-08', 'HN-09', 'HN-10', 'HN-15')
 _DATUM = datetime.date(2026, 11, 13)
 
 
@@ -149,10 +151,6 @@ class AtvettTetelek(unittest.TestCase):
 class Hibanaplo(unittest.TestCase):
     """A hibanapló példányai (HN): szövegminta a lapon; elvárt 0 találat az új lapon. A minták a `HN_MINTAK`
     táblában állnak; a kész szakaszokon a `HibanaploMintak` már ma méri őket, a teljes lapon az alábbi tesztek."""
-
-    @unittest.skip('a hatókör-sor zárójeles forráslistája a felhasználó döntésére vár (az S1 utáni átnézés)')
-    def test_hn03_forrasnev_a_mondat_kozepen(self):
-        """HN-03: forrásnév a mondat közepén, zárójelben („(a BDB-szótár)”): 0 találat."""
 
     @unittest.skip(S3_MARADEK)
     def test_hn12_angol_thayer_nyersen(self):

@@ -211,6 +211,14 @@ class Hibanaplo(unittest.TestCase):
         számláló: 0 találat mindkét új lapon."""
         self.assertEqual(_hn_talalatok(('HN-07', 'HN-08', 'HN-09')), [])
 
+    def test_hn03_forrasnev_a_mondat_kozepen(self):
+        """HN-03 (DT925 (2) (a)): forrásnév a mondat közepén, zárójelben („(a BDB-szótár szerint) a …”): 0 találat
+        mindkét új lapon; a sor végén álló jegyzék-megjegyzés nem találat (a minta próbája)."""
+        self.assertEqual(_hn_talalatok(('HN-03',)), [])
+        minta = teszt_vaz.HN_MINTAK['HN-03'][0][0]
+        self.assertIsNone(re.search(minta, '- BDB (Brown–Driver–Briggs, 1906) (a BDB-szótár, közkincs)\n'))
+        self.assertIsNotNone(re.search(minta, 'alapjelentés: bűn *(a STEPBible rövid szótára szerint)*\n'))
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=1)
