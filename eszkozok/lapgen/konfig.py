@@ -178,3 +178,10 @@ GOROG_BETU_ATIRAS = {
     'χ': 'ch', 'ψ': 'ps', 'ω': 'ō',
 }
 GOROG_KETTOSHANGZO_ELOTAG = 'αεηο'   # ezek után az υ kettőshangzó része: „u”
+
+# 12. Irodalom és idézés (S8c, DT-F a forráslistáról): a lap forráslistája a számozott szakaszok olvasási naplójából
+# (a jegyzék `irodalom` oszlopa szűr). A generátor által nem olvasott, de az adatsorokban megnevezett külső forrás
+# (az ókori fordítás a visszhang-táblában, a tanú forrása a tanúk táblájában) a licencleltár kulcsával; None: a lapon
+# a `irod.licenc.chain_lineage` mondat áll (az orkesztrátor döntése, 2026-11-11: a „tisztázatlan” félrevezető).
+IROD_KULSO_LICENC = {'vulgata': 'Vulgata_Clementina', 'glossa': 'Glossa_Ordinaria', 'hcf': 'Tanu_atyak_index',
+                     'sefaria': 'Tanu_rabbinikus_index', 'chain_lineage': None}

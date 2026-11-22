@@ -19,6 +19,7 @@ S2, S3, S4, S5, S6, S7, S8, S9 = ('S2 (F218.5)', 'S3 (F218.6)', 'S4 (F218.7)', '
 # felhasználó 2026-11-21-én „Később, a validáció után”; a JOHD-validáció után, a validált számmal (N-F218v)
 S8_GK19 = ('GK-19 (T6): nyitott, döntéssel elhalasztva (2026-11-21, „Később, a validáció után”; N-F218v); '
            'a mondat a JOHD-validáció után kerül a lapra')
+S8D = 'S8d (F218.11): a Kolofon'
 S3_MARADEK = ('az S3 kész, de ezt a követelményt nem teljesítette (a 6. ellenőrzés E9 tétele); a 218a végi '
               'átnézésén szeletet kap')
 HELY_EGYSEG = ('a névvel megadott szópár (1.4, `málé+chámász`) tagjait a modell nem köti Strong-számhoz; a kapu '
@@ -95,10 +96,11 @@ class Szerkezeti(unittest.TestCase):
         helyszáma (szópárban is) és az Áttekintés „Helyek a motívumban” oszlopa egyezik, a modellen, mindkét mintalapon.
         Az `lxx_egyezes` része kész (`teszt_lxx.py` `Gk04`)."""
 
-    @unittest.skip(S8)
+    @unittest.skip(S8D)
     def test_gk07_forrasmegjeloles_a_valodi_olvasasbol(self):
         """GK-07: a Kolofon, az Irodalom és a blokkfejlécek forrás-halmaza = az olvasási napló; licencszöveg csak
-        a licencleltárból."""
+        a licencleltárból. A blokkfejlécek és a 12. Irodalom része kész (`teszt_idezes.py`, DT-F218x); hátravan a
+        Kolofon forrástáblája (S8d)."""
 
     @unittest.skip(S8)
     def test_ism_a_kolofon_nem_ismetli_a_kriteriumot(self):

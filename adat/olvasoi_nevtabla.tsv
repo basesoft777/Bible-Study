@@ -118,3 +118,85 @@ forras	B35	a Septuaginta szövege	olvasoi_forrasnev (a kézi forrássor olvasói
 forras	B38	a visszhang-megfelelők táblája	olvasoi_forrasnev (a kézi forrássor olvasói neve)
 forras	B74	az SBL Greek New Testament apparátusa	olvasoi_forrasnev (a kézi forrássor olvasói neve)
 kezi_forrasfajl	konkordancia/Vulgata_Clementina.tsv	a Vulgata (Clementina)	olvasoi_forrasnev (a kézi forrássor olvasói neve)
+irod_szotar	konkordancia/BDB_teljes_unabridged.tsv	BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/TBESG.txt	TBESG (Tyndale Brief lexicon of Extended Strongs for Greek)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/TBESH.txt	TBESH (Tyndale Brief lexicon of Extended Strongs for Hebrew)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/UBS_DNTG_referenciak.tsv	UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/UBS_DNTG_jelentesek.tsv	UBS (UBS Dictionary of New Testament Greek — Louw–Nida szemantikai domének)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/UBS_DBH_referenciak.tsv	UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/UBS_DBH_jelentesek.tsv	UBS DBH (UBS Dictionary of Biblical Hebrew — Semantic Dictionary of Biblical Hebrew)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/SDBH_domenek.tsv	SDBH (Semantic Dictionary of Biblical Hebrew)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/SDGNT_domenek.tsv	SDGNT (Semantic Dictionary of Biblical Greek)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/OSHL_lexikalis_index.tsv	OSHL (Open Scriptures Hebrew Lexicon) — csak TWOT-szám	FAJL_TELJES_NEV
+irod_szotar	konkordancia/TSK_kereszthivatkozasok.tsv	TSK (Treasury of Scripture Knowledge)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/SECE_G_teljes.tsv	SECE (Strong's Exhaustive Concordance, Enhanced)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/SECE_H_teljes.tsv	SECE (Strong's Exhaustive Concordance, Enhanced)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/tW_szocikkek.tsv	tW (Translation Words — unfoldingWord)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/LXX_OS/*.tsv	LXX (Septuaginta — lxx-morph + GreekWordList szövegkorpusz)	FAJL_TELJES_NEV
+irod_szotar	konkordancia/LSJ_teljes.tsv	LSJ (Liddell-Scott-Jones, A Greek-English Lexicon)	FAJL_TELJES_NEV
+irod_szotar_forras	konkordancia/BDB_teljes_unabridged.tsv	a BDB-szótár	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/TBESG.txt	a STEPBible görög rövid szótára (TBESG)	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/TBESH.txt	a STEPBible héber rövid szótára (TBESH)	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/UBS_DNTG_referenciak.tsv	az UBS Dictionary of New Testament Greek	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/UBS_DNTG_jelentesek.tsv	az UBS Dictionary of New Testament Greek	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/UBS_DBH_referenciak.tsv	az UBS Dictionary of Biblical Hebrew	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/UBS_DBH_jelentesek.tsv	az UBS Dictionary of Biblical Hebrew	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/SDBH_domenek.tsv	az SDBH szemantikai szótár	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/SDGNT_domenek.tsv	az SDGNT szemantikai szótár	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/OSHL_lexikalis_index.tsv	az Open Scriptures héber lexikona	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/TSK_kereszthivatkozasok.tsv	a Treasury of Scripture Knowledge	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/SECE_G_teljes.tsv	a SECE szólista	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/SECE_H_teljes.tsv	a SECE szólista	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/tW_szocikkek.tsv	a translationWords szócikkei	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/LXX_OS/*.tsv	a Septuaginta szövege	OLVASOI_FORRASNEV
+irod_szotar_forras	konkordancia/LSJ_teljes.tsv	az LSJ-szótár	OLVASOI_FORRASNEV
+irod_adat	adat/elofordulasok.tsv	Motívum előfordulás-táblája	OLVASOI_FORRASNEV
+irod_adat	konkordancia/Karoli_1908.tsv	Károli-fordítás (1908)	OLVASOI_FORRASNEV
+irod_adat	adat/tematikus_sajat_szo.tsv	Tematikus helyek saját szavai	uj
+irod_adat	konkordancia/TAHOT_kivonat.tsv	STEPBible héber szövege (TAHOT)	OLVASOI_FORRASNEV
+irod_adat	konkordancia/TAGNT_kivonat.tsv	STEPBible görög szövege (TAGNT)	OLVASOI_FORRASNEV
+irod_adat	konkordancia/TAGNT_valtozatok.tsv	STEPBible görög szövege (TAGNT)	OLVASOI_FORRASNEV
+irod_adat	adat/forditasok.tsv	Lexikon fordítástáblája	OLVASOI_FORRASNEV
+irod_adat	konkordancia/Karoli_versmegfeleltetes.tsv	Károli-versmegfeleltetés	OLVASOI_FORRASNEV
+irod_adat	adat/szotar_szakasz_cimke.tsv	Szótári szakaszok címketáblája	OLVASOI_FORRASNEV
+irod_adat	adat/bdb_szakaszok.tsv	BDB-szótár	OLVASOI_FORRASNEV
+irod_adat	adat/bdb_forras_javitas.tsv	BDB-szótár forrásjavításai	uj
+irod_adat	adat/bdb_szakasz_hu.tsv	BDB-szótár	OLVASOI_FORRASNEV
+irod_adat	adat/bdb_vers_jelentes.tsv	BDB-szótár	OLVASOI_FORRASNEV
+irod_adat	adat/thayer_vers_jelentes.tsv	Thayer-szótár	OLVASOI_FORRASNEV
+irod_adat	adat/thayer_szakaszok.tsv	Thayer-szótár	OLVASOI_FORRASNEV
+irod_adat	adat/karoli_strong/parok_*.tsv	Károli–Strong párosítás	OLVASOI_FORRASNEV
+irod_adat	adat/jeloltek.tsv	Vizsgált helyek döntésnaplója	OLVASOI_FORRASNEV
+irod_adat	naplok/F123_teljesseg_<ID>.tsv	Lap teljesség-mérése	OLVASOI_FORRASNEV
+irod_adat	naplok/F123_teljesseg_<ID>_blokkok.tsv	Lap teljesség-mérése	OLVASOI_FORRASNEV
+irod_adat	adat/elutasitasi_okok.tsv	Elutasítási okok táblája	uj
+irod_adat	adat/motivumok.tsv	Motívumtábla	OLVASOI_FORRASNEV
+irod_adat	adat/glosszak_heber_hu.tsv	Héber glosszák magyar táblája	OLVASOI_FORRASNEV
+irod_adat	adat/szotar_szerepek.tsv	Szótári pontok rendje	OLVASOI_FORRASNEV
+irod_adat	konkordancia/SDBH_SDGNT_anomaliak.tsv	SDBH és SDGNT elemzetlen bejegyzései	uj
+irod_adat	konkordancia/LXX_versszintu_parok.tsv	Septuaginta versszintű szópárjai	OLVASOI_FORRASNEV
+irod_adat	konkordancia/Strong_szotar.tsv	Strong-szótár	uj
+irod_adat	adat/funkcio_kapcsolok.tsv	Funkciókapcsolók táblája	uj
+irod_adat	adat/szoto/karoli_szotari_alak.tsv	Károli-szavak szótári alakjai	OLVASOI_FORRASNEV
+irod_adat	adat/grammatikai_strongok.tsv	Grammatikai szavak listája	OLVASOI_FORRASNEV
+irod_adat	konkordancia/Nave_basokant.tsv	Nave tárgymutatója (1897)	OLVASOI_FORRASNEV
+irod_adat	adat/tematikus_temak.tsv	Tematikus index döntései	OLVASOI_FORRASNEV
+irod_adat	adat/nave_tema_hu.tsv	Nave-témák magyar nevei	OLVASOI_FORRASNEV
+irod_adat	adat/lexikon_hivatkozasok.tsv	Lexikon szótári hivatkozástáblája	OLVASOI_FORRASNEV
+irod_adat	adat/lxx_dontesek.tsv	LXX-fordítói döntések táblája	OLVASOI_FORRASNEV
+irod_adat	konkordancia/BDB_rokon_irasok.tsv	BDB-szótár rokon nyelvi írásai	OLVASOI_FORRASNEV
+irod_adat	adat/visszhang_megfelelok.tsv	Visszhang-megfelelők táblája	OLVASOI_FORRASNEV
+irod_adat	adat/tiltott_fordulatok.tsv	Tiltott fordulatok listája	OLVASOI_FORRASNEV
+irod_adat	konkordancia/Karoli_kereszthivatkozasok.tsv	Károli-kereszthivatkozások	OLVASOI_FORRASNEV
+irod_adat	konkordancia/Karoli_KH_javitott.tsv	Károli-kereszthivatkozások javított táblája	uj
+irod_adat	adat/kapcsolatok.tsv	Kapcsolat-tábla	OLVASOI_FORRASNEV
+irod_adat	adat/motivum_kapcsolatok.tsv	Motívumközi kapcsolatok táblája	OLVASOI_FORRASNEV
+irod_adat	adat/visszhang_tanuk.tsv	Ókori tanúk táblája	OLVASOI_FORRASNEV
+irod_adat	konkordancia/Targum_PD.tsv	Targum (közkincs)	OLVASOI_FORRASNEV
+irod_adat	konkordancia/SBLGNT_apparatus.tsv	SBL Greek New Testament apparátusa	OLVASOI_FORRASNEV
+irod_adat	adat/vitatott_forrasok.tsv	Vitatott pontok szakirodalom-táblája	OLVASOI_FORRASNEV
+irod_kulso	vulgata	Vulgata (Clementina)	OLVASOI_FORRASNEV
+irod_kulso	glossa	Glossa Ordinaria (Migne, 1880)	OLVASOI_FORRASNEV
+irod_kulso	hcf	HistoricalChristianFaith kommentár-adatbázis (metaadat)	OLVASOI_FORRASNEV
+irod_kulso	sefaria	Sefaria kapcsolat-adata	OLVASOI_FORRASNEV
+irod_kulso	chain_lineage	Chain Lineage Browser (Blidstein, Inowlocki, Verheyden; a bibliai hivatkozások: BiblIndex, Institut des Sources Chrétiennes, CNRS – HiSoMA, Lyon)	OLVASOI_FORRASNEV

@@ -17,8 +17,12 @@ from lapgen.szoveg import (FESTEK_ELOTAG, FESTEK_UTOTAG, Belso, Forrasszoveg, Ke
 
 JEGYZEK_UTVONAL = 'adat/lapgen_bemenetek.tsv'
 JEGYZEK_OSZLOPOK = ('id', 'utvonal', 'leiras', 'kotelezo', 'javitas', 'frissesseg', 'allapot',
-                    'licenc_kulcs', 'olvasoi_nev_kulcs', 'forras')
+                    'licenc_kulcs', 'olvasoi_nev_kulcs', 'irodalom', 'forras')
 ALLAPOTOK = ('aktiv', 'kivezetve', 'nem_vizsgalt', 'reszleges')
+# az `irodalom` oszlop értékei (SEMA 2.66): `-` a bemenet nem áll a 12. szakasz forráslistájában (a generátor saját
+# infrastruktúrája); `licenc` a licencleltár címkéjével áll; a többi a licenc olvasói alakja (sablon `irod.licenc.*`)
+IRODALOM_NINCS = '-'
+IRODALOM_ERTEKEK = (IRODALOM_NINCS, 'licenc', 'nyilt_mag', 'elofordulas', 'forditas', 'doi')
 ID_HELYORZO = '<ID>'
 NEM_FAJL = '-'
 
@@ -143,6 +147,8 @@ class Bemenet:
                 raise BemenetHiba('%s: %s: a kotelezo értéke igen/nem lehet' % (JEGYZEK_UTVONAL, sor['id']))
             if sor['allapot'] not in ALLAPOTOK:
                 raise BemenetHiba('%s: %s: ismeretlen állapot: %r' % (JEGYZEK_UTVONAL, sor['id'], sor['allapot']))
+            if sor['irodalom'] not in IRODALOM_ERTEKEK:
+                raise BemenetHiba('%s: %s: ismeretlen `irodalom` érték: %r' % (JEGYZEK_UTVONAL, sor['id'], sor['irodalom']))
             jegyzek[sor['id']] = JegyzekSor(**sor)
         sajat = [a for a, sor in jegyzek.items() if sor.utvonal.strip() == JEGYZEK_UTVONAL]
         if len(sajat) != 1:

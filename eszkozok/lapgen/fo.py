@@ -81,14 +81,17 @@ def lap_keszit(gyoker, motivum, mod=Mod.MUNKA, datum=None, festek=False):
     rend = szakaszrend()
     korny = Kornyezet(b, motivum, mod)
     modellek = {}
+    tartalmi = {}   # a számozott szakaszok és alrészeik olvasásai (B-azonosítók): a gyűjtő szakasz bemenete (GK-07)
     for leiro in rend.mind():
         if leiro.szamit is None:
             continue
         with b.figyel() as forrasok:
-            modell = leiro.szamit(korny)
+            modell = leiro.szamit(korny, dict(tartalmi)) if leiro.gyujto else leiro.szamit(korny)
             if leiro.kapu is not None:
                 leiro.kapu(modell)   # a szakasz kapuja a modellen fut, a megjelenítés előtt
             modellek[leiro.azonosito] = (modell, frozenset(forrasok))
+        if leiro.nezet == konfig.NEZET_TUDOMANYOS and (leiro.szamozott or leiro.alresz) and not leiro.gyujto:
+            tartalmi[leiro.azonosito] = modellek[leiro.azonosito][1]
     # a kritérium szövege a kapujához (a szakaszok forrásfigyelésén kívül: nem a szakasz olvasása)
     kriterium = motivum_be.kriterium_szoveg(b, motivum) if modellek and not festek else None
     keret = Keret(ny, motivum, rend, _ts(datum, b.olvasasi_naplo()), mod, b, datum)
