@@ -91,6 +91,14 @@ A betűre egyező mai szöveg (`eredet=<a régi generátor szimbóluma>`) nem k�
 | 7 | irod_adat | `adat/funkcio_kapcsolok.tsv` | Funkciókapcsolók táblája |
 | 8 | irod_adat | `konkordancia/Karoli_KH_javitott.tsv` | Károli-kereszthivatkozások javított táblája |
 
+### C. Új névtábla-típus: `ok_leiras_cella` (S9a; DT-F218b szerint a nézésen)
+
+Az elutasítási ok megjegyzésének táblacella eleji alakja a 3. szakasz okainak táblájában („Mit jelent” oszlop): a névelővel kezdődő megjegyzés nagy kezdőbetűvel (a régi lap szabálya szerint, betűre); a melléklet és a Döntési út a megjegyzést változatlanul közli. 18 sor, a megjegyzéstől csak a kezdőbetűben térhet el (a betöltő ellenőrzi). A sorok: `adat/olvasoi_nevtabla.tsv`, `ok_leiras_cella` típus.
+
+### D. HN-03: a forrásnév a mondat közepén, zárójelben (az S9c tölti ki; DT-F218b)
+
+*Külön tétel: mind a 11 hely (HAMART-001: 2. szakasz 1, 4. szakasz 4, 9. szakasz 1, 12. szakasz 4; ISTENTISZT-001: 1) a mondat előtte/utána alakjában, egyenként visszautasítható. A felhasználó döntésére vár az S1 óta; a végső szó az övé.*
+
 **Adat helyére költözött, szövegében nem új (tájékoztatás):** a névtábla `kiadasi_adat` 5 sora (S8d, DT911: szerző, a lexikon címe — ma „Logosz-lexikon”, a webcím alapja, két DOI; a névcsere az N220); az `ok_cella` 45 és az új `ok_leiras_cella` típus 18 sora (S5, S9a: az elutasítási ok címkéjének és megjegyzésének táblacella eleji alakja, a régi lap nagybetűsítése szerint, betűre).
 
 ## 4. A 218a végi lista egyéb tételei (megfigyelések és döntések, röviden)
