@@ -586,7 +586,7 @@ class OldalGyar:
                 for w in blokkok._heber_csempek(Kontekst(con, self.kozos, ig=ig)):
                     if (w.get('macula') or {}).get('lxx_strong'):
                         gorog.add(w['macula']['lxx_strong'])
-            q.elotolt_strongok(con, heber)
+            q.elotolt_strongok(con, heber, bdb=bool(magyar_ok))
             hu_db = 0
             for s in heber:
                 gorog.update(g for _, g in q.lxx_bridge_h(con, s)[:3])

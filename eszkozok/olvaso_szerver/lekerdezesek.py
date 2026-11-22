@@ -86,21 +86,22 @@ def _el():
     return getattr(_EL, 'd', None)
 
 
-def elotolt_strongok(con, strongok):
+def elotolt_strongok(con, strongok, bdb=True):
     """A strongokhoz tartozó BDB-angol szöveg (`bdb`), a magyar BDB-sorok (`forditasok`, `szotar='BDB'`) és az LXX-híd sorai (`lxx_bridge`),
-    strongonként egy lekérdezés helyett csomagonként (400 strong) egy."""
+    strongonként egy lekérdezés helyett csomagonként (400 strong) egy. `bdb=False`: csak az LXX-híd (a hívó lapján a BDB nem látszik: a tiltott
+    `forditasok` táblát olvasni sem szabad, l. `oldalak.szamlalok`)."""
     d = _el()
     if d is None:
         return
     st = sorted({s for s in strongok if s})
-    uj = [s for s in st if s not in d['bdb_en']]
+    uj = [s for s in st if s not in d['bdb_en']] if bdb else []
     if uj:
         for s in uj:
             d['bdb_en'][s] = None
         for s, t in _in(con, 'SELECT strong, teljes_szocikk FROM bdb WHERE strong IN ', ' ORDER BY rowid', uj):
             if d['bdb_en'][s] is None:               # az egyedi lekérdezés (`fetchone`) az első sort adja
                 d['bdb_en'][s] = (t,)
-    uj = [s for s in st if s not in d['bdb_hu']]
+    uj = [s for s in st if s not in d['bdb_hu']] if bdb else []
     if uj:
         for s in uj:
             d['bdb_hu'][s] = []
