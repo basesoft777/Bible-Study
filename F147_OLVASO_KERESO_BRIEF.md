@@ -13,7 +13,7 @@ kovetkezo: "Te: befogadás a /befogad-dal; utána M0 mérés, ⛔ a mérés utá
 olvas: [eszkozok/olvaso_szerver/kereses.py, eszkozok/olvaso_szerver/teszt_kereses.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/alkalmazas.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/README.md, konkordancia/Konyv_normalizalo_tabla.tsv, adat/SEMA.md, F76_OLVASOI_KONKORDANCIA_BRIEF.md, F95_SZOTOVEZES_DB_BRIEF.md, F134_OLVASO_ALAPNEZET_BRIEF.md, naplok/OLVASOI_KONKORDANCIA_M3.md, naplok/OLVASOI_KONKORDANCIA_meres.md]
 ir: [eszkozok/olvaso_szerver/kereses.py, eszkozok/olvaso_szerver/teszt_kereses.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/README.md, naplok/OLVASO_KERESO_naplo.md, naplok/OLVASO_KERESO_meres.py]
 fugg: []
-nem_fugg: [38]
+nem_fugg: [38, 236]
 ---
 
 # F147_OLVASO_KERESO_BRIEF.md — az olvasó keresőjének bemenet-tűrése

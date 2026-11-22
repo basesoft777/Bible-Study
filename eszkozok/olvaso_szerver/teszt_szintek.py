@@ -283,7 +283,12 @@ class TestSzintekValodiLapokon(unittest.TestCase):
         # szo.ebben: az UBS DBH blokkot követi (zárt vers.ubs: a blokk nem jelenik meg, nincs 500)
         self.assertNotIn('data-blokk="szo.ebben"', gyar.szo_fragment('H6440', lent, '1Móz 1:2'))
         self.assertIn('data-blokk="szo.ebben"', gyar.szo_fragment('H6440', fent, '1Móz 1:2'))
-        self.assertNotIn('Ebben a versben', gyar.fejezet_lap('1Moz', 1, 2, 'olvaso', lent, 'H6440', 'szo', '/'))
+        # F232: a DT178 óta a BDB-blokk saját „Ebben a versben: <vers>” doboza (`bdb-ebben`) is ezt a szöveget hordozza, és az a
+        # vers-adat blokkoktól független (szo.bdb_*); a zárt vers.ubs-nél a vers-kontextusos `szo.ebben` blokk nem jelenik meg,
+        # és az „Ebben a versben” felirat csak a BDB-doboz felirata lehet
+        lap = gyar.fejezet_lap('1Moz', 1, 2, 'olvaso', lent, 'H6440', 'szo', '/')
+        self.assertNotIn('data-blokk="szo.ebben"', lap)
+        self.assertEqual(lap.count('Ebben a versben'), lap.count('<div class="bdb-ebben"><p><b>Ebben a versben'))
         # Interlineáris csempék: a vers.eredeti blokkot követik
         l = gyar.fejezet_lap('1Moz', 1, None, 'interlinearis', lent, None, 'szo', '/')
         self.assertNotIn('class="er', l)

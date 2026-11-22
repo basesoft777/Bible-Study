@@ -6,9 +6,12 @@ tipus: feladat
 fazis: folyamat
 modell: sonnet
 sav: SERVER
-allapot: nem_indult
+allapot: lezarva
+ag: claude/f232-merce-192772
+pr: 786
+lezarva_osszegzes: az olvasói mérce a szó-lapra és a versnézetre (18 mintaoldal, merce/), a push előtti kapu olvasó-tesztjei a helyi pardes.db-n (DT903 (b)), a main két piros olvasó-tesztje a mai szöveghez igazítva; a CI-futtatás (a2) az N-F232a nyitott tétel
 ad: rögzített mintakészlet olvasói pillanatképe (szó-lapok és versnézetek látható szövege és blokksora), amelyhez minden olvasót érintő ág a változását mutatja; az olvasó-szerver tesztjei automatikusan futnak (CI vagy push előtti kapu, az M0 szerint) egy kis, hermetikus teszt-adatbázison; a main-en piros két teszt zöld vagy indokoltan átírt
-kovetkezo: "Indítható a #781 (F230) merge-e után; első lépés: M0 (⛔ DT-F232a: a futtatás helye és a teszt-adatbázis)"
+kovetkezo: ""
 munka: folyamat
 olvas: [eszkozok/olvaso_szerver/teszt_pilot_aranymintaval.py, eszkozok/olvaso_szerver/teszt_olvaso_szerver.py, eszkozok/teszt_futtat.py, eszkozok/push_elott.py, eszkozok/sqlite_epit.py, .github/workflows/]
 ir: [eszkozok/olvaso_szerver/teszt_olvasoi_merce.py, eszkozok/olvaso_szerver/merce/, eszkozok/olvaso_szerver/teszt_visszhang_kapu.py, eszkozok/olvaso_szerver/teszt_szintek.py, eszkozok/teszt_futtat.py, eszkozok/push_elott.py, .github/workflows/olvaso_tesztek.yml]
@@ -40,7 +43,7 @@ Ez a feladat a későbbi olvasói munkát védi. Az utána jövő olvasói felad
 2. **Olvasói pillanatkép.** Lapról lapra rögzíti a blokksort (`data-blokk`), a blokkcímeket és a látható szöveget normalizálva. A `<details>` csukott tartalma külön jelölve áll, a dátum- és verziósorok kiszűrve.
    - Formája: szöveges fájl lapranként, a `merce/` alatt, diffelhető.
    - Frissítése csak kifejezett paranccsal történik (`--merce-frissit`), és a PR leírásában a felhasználó jóváhagyására hivatkozik.
-3. **Automatikus futtatás.** Az M0 dönt (⛔ DT-F232a):
+3. **Automatikus futtatás.** Az M0 dönt (⛔ DT903):
    - (a) GitHub Actions egy kis, a repóban tárolt vagy a TSV-kből építhető teszt-adatbázison, amely csak a mintakészlethez szükséges sorokat tartalmazza;
    - (b) a `push_elott.py` futtatja az olvasó tesztjeit, ha az ág az `eszkozok/olvaso_szerver/`-t érinti, a helyi `pardes.db`-n.
 
@@ -54,7 +57,7 @@ Ez a feladat a későbbi olvasói munkát védi. Az utána jövő olvasói felad
 
 ## 3. Lépések
 
-1. Modell-ellenőrzés. M0: a teszt-adatbázis mérete és licence (mely táblák kellenek a mintához), a CI-futás ideje. ⛔ DT-F232a.
+1. Modell-ellenőrzés. M0: a teszt-adatbázis mérete és licence (mely táblák kellenek a mintához), a CI-futás ideje. ⛔ DT903.
 2. A két piros teszt oka és javítása, külön commitban.
 3. A pillanatkép-generátor és a mérce rögzítése a mintán.
 4. A futtatás bekötése (az M0 szerint) és a tiltás.
@@ -69,4 +72,4 @@ Ez a feladat a későbbi olvasói munkát védi. Az utána jövő olvasói felad
 
 ## 5. Döntésnapló
 
-- DT-F232a (⛔ M0): a futtatás helye, (a) CI teszt-adatbázissal vagy (b) push előtti kapu.
+- DT903 (⛔ M0): a futtatás helye, (a) CI teszt-adatbázissal vagy (b) push előtti kapu.
