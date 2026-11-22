@@ -198,3 +198,37 @@ class IrodLicenc(enum.Enum):
     FORDITAS = 'forditas'           # a fordítástábla: a fordítás a projekté, a szótárszöveg licence a szótárnál
     DOI = 'doi'                     # a Károli–Strong párosítás: a címke és a közlés DOI-ja
     CHAIN_LINEAGE = 'chain_lineage' # tisztázatlan licencű külső forrás (a B01 `allapot`; ma a Chain Lineage Browser)
+
+
+class VizsgaltCsoport(enum.Enum):
+    """A vizsgált hely jelölésének forráscsoportja a 3. szakasz táblájában (a régi `szerep_kizart.CSOPORTOK` rendje;
+    S9a)."""
+    TSK = 'tsk'                        # TSK-ajánlás
+    KAROLI = 'karoli'                  # Károli-kereszthivatkozás (a TSK-val együtt is)
+    KERESES = 'kereses'                # a szavak keresése (gépi keresés)
+    SZERKESZTOI = 'szerkesztoi'        # szerkesztői felvetés (a tanulmány, a napló, az ellenőrzés)
+
+
+class JelolesFajta(enum.Enum):
+    """A vizsgált hely jelölésének oka a döntésnapló `forras_kereses` mezőjének szerkezetéből (S9a)."""
+    AJANLAS = 'ajanlas'                # kereszthivatkozás-ajánlás (TSK, Károli)
+    SZO = 'szo'                        # a szó keresése (Strong-számok)
+    SZOCSALAD = 'szocsalad'            # a szócsalád keresése
+    SZOPAR = 'szopar'                  # két szó együtt egy versben
+    LANC = 'lanc'                      # legalább két lánc-szó egy versben vagy a szomszédos versben
+    TELJESSEG = 'teljesseg'            # a motívum szavainak teljes bibliai keresése (háló, csoportos kizárás)
+    FRAZIS = 'frazis'                  # a kifejezés keresése a szavak helyzete szerint
+    AUDIT = 'audit'                    # a motívum korábbi tanulmányának négyforrásos ellenőrzése
+    TEMATIKUS = 'tematikus'            # a tematikus tanulmány felvetése
+    NAPLO = 'naplo'                    # a kereszthivatkozás-napló minősítése
+
+
+class VizsgaltJegyzetFajta(enum.Enum):
+    """A 3. szakasz táblájának jegyzete: az a jelölési forrás, amelyet a „Miért került a vizsgálatba” cella nem mond
+    ki (a cellát ismétlő jegyzet nem áll; a régi `tablajegyzet.ismetlo_jegyzet`). S9a."""
+    SZOKERESES = 'szokereses'          # a szó keresése a cellán túli megszorítással (pl. igetörzs)
+    KERESES_KORPUSZ = 'kereses_korpusz'    # a szó keresése egy megnevezett szövegkorpuszban
+    LANC = 'lanc'                      # a lánc-keresés és a korpuszai
+    ADATTABLAK = 'adattablak'          # a motívum adattáblái (a forrásnak nincs olvasói leírása)
+    TELJESSEG_EGYENKENT = 'teljesseg_egyenkent'    # a teljes keresés, egyenkénti döntéssel
+    NAPLO = 'naplo'                    # a motívum korábbi kereszthivatkozás-naplója

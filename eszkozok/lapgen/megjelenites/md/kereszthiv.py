@@ -103,7 +103,7 @@ def miert(ny, a):
     return ny.s('s6.miert.tsk', forras=forras, tobbi=tuple(tobbi))
 
 
-def _darab(ny, d):
+def indok_darab(ny, d):
     if d.strong is not None:
         h = d.strong
         if h.glossza is None:
@@ -115,7 +115,7 @@ def _darab(ny, d):
 
 
 def _indok(ny, darabok):
-    return ny.s('s6.indok', darabok=tuple(_darab(ny, d) for d in darabok))
+    return ny.s('s6.indok', darabok=tuple(indok_darab(ny, d) for d in darabok))
 
 
 def indok_cella(ny, j):

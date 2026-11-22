@@ -1784,3 +1784,26 @@ a többi ugyanannak a forrásnak a szakaszlista-átsorolása (15 sor új és elm
 Az ellenőr két megjegyzése (nem ELTÉRÉS): a `teszt_kolofon` GK-07-tesztjének felső korlátja laza (bármely külső forrás
 neve megengedett); a brief 5. és 10. pontja a T8 helyét még `konfig.py`-ként írja (a DT911 1. a névtáblát
 választotta). Mindkettő a 218a végi listára.
+
+## F218.12 — S9a: „3. Kizárt és vizsgált helyek” (`claude-opus-5-5`, 2026-11-22, a 17. session)
+
+**Miért itt.** Az S9 teljes diffje a 3. szakaszon bukott (334 sor): a szakaszt egyik szelet sem építette meg (a brief 9. pontjának szeletlistájából kimaradt; a folytatási fájl az S3 óta „szelet nélkül” vezette). A kérdés és a javaslat (S9a = a 3. szakasz, S9b = a teljes lap kapui, utána a nézés) az orkesztrátorhoz ment; a munka a javaslat szerint indult.
+
+**Eredmény.** A HAMART-001 teljes regressziója **RENDBEN** (engedély nélküli diff-sor 0, a bemenet-hash őrrel), a 3. szakasz 334 sorából 6 tér el, mind engedéllyel: `S9A-FORRAS` (a blokkfejléc forráslistája az olvasási naplóból, 8.1 (b)), `S9A-KIEJTES` (a Jer 4:23 régi kiejtés-beszúrása, 8.1 (j), DT890; ugyanaz a sor, mint az S5-KIEJTES), `ISM3-*` (4 sor: DT872, a „Negatív kritérium” bekezdés helyett utalás a szakasz elején; látható −1 +1, üres −1 +1). Az ISTENTISZT-001 3. szakasza generálódik (115 sor, 579 vizsgált vers, négy forráscsoport). Festékpróba: 0 szivárgás mindkét lapon. A régi generátor HAMART-kimenete az adatjavítás után is bájtra azonos a referenciával.
+
+**Felépítés.**
+- `bemenet/vizsgalt.py`: a döntésnapló elutasított és nyitva maradt előfordulás-jelöltjei soronként. A `forras_kereses` belső szöveg: csak a szerkezete jön ki (forráscsoport, jelölésfajta, a keresett szavak, a hálók, a csoportos sor versszáma, a cellán túli jegyzet fajtája); a le nem képezett fajta BemenetHiba. Az indoklásról két szerkezet bomlik le: az összesítő sor eleje („Összesítő sor N versre (…):”) és a csoportos kizárás szerkesztői döntésének záró mondata; a többi a Minősítés `_indok`-ja (Strong- és motívum-hivatkozás, kapu a nem olvasói szövegre).
+- `szamitas/kizart.py`: a számok a vizsgálat közös modelljéből (`vizsgalat`, új mező: `csoport_egyedi`); okonként a versszám, a csoportonkénti versszám a csoportos sor egyedi verseivel (K34), a cellában a sor saját versszáma; összevonás (egymást követő azonos sorok tartománnyá), a közös proveniencia-jel (‹K1› …), kapu (az okok és a forráscsoportok versszám-összege a kizárt versek száma).
+- `megjelenites/md/kizart.py`: minden látható mondat sablonból (`k3.*`, a kereszthivatkozásos cella és az indoklás darabjai az `s6.*` sorai); a jegyzet a tábla alatt, azonos mondat egyszer.
+
+**Új sablon- és névtábla-sorok.** 61 sablonsor (`k3.*`), ebből 3 `eredet=uj`, `dontes=var`: `k3.kriterium` (a DT872-utalás), `k3.miert.tematikus` (a minta belső jelölése nélkül), `k3.miert.szopar` (a szó a Strong-szám helyett); a többi a régi lap szövege betűre. Névtábla: `vizsgalt_csoport` 4, `halo_kereses` 6, `korpusz` 2, `ok_cella` 30 (a cella eleji ok), `ok_leiras_cella` 18 (új típus: a névelővel kezdődő megjegyzés táblacella eleji alakja; a melléklet és a Döntési út a megjegyzést változatlanul közli; betöltő: `bemenet/nyelv.py` `ok_leiras_cellaalakok`, a megjegyzéstől csak a kezdőbetűben térhet el).
+
+**Adatjavítás (DT884 (a), az `ir`-en kívül, mint a DT884-nél).** `adat/jeloltek.tsv`, csak a HAMART-001 elutasított előfordulás-jelöltjeinek `indoklas` mezője: 14 egyenes idézőjel → „…”, 5 munkaszó („a teljesség-mérés egy másik csoportjában” → „a teljes keresés …”), 5 cella eleji kezdőbetű (az indoklás maga mondja ki az okot). A régi generátor kimenete ettől bájtra azonos (a régi lap ugyanezt cserével tette).
+
+**Kolofon (DT912).** A 3. szakasz olvasásai a forrástábla szakaszlistáiba is bekerülnek: a DT912 53 diff-sorából 13 sor tartalma ennyiben változott (a régi lapon is állt a „3. Kizárt és vizsgált helyek”); az engedélysorok `uj` hash-e frissült, a darabszám és a bontás (27 új / 16 elmaradó / 10 változó) változatlan.
+
+**Megfigyelés a 218a végi listába.** A HAMART-001 egyik csoportos indoklása (1Krón 7:22, 25 vers) a látható szövegben „blokk-kizárás (a H7451 és a H7043 blokkjának mintájára)” fordulatot hoz: munkaszó és csupasz Strong-szám a kézi szövegben, a mai lapon is betűre. Nem javítottam (tartalmi szövegcsere a döntésnaplóban).
+
+**Tesztek.** `teszt_kizart.py` (10): a táblák sorai csoportonként a döntésnapló független számlálása, a csoportok rendje, a kapu mutációval, az okok rendje, a TSK- és a csoportos sor jegyzet nélkül, a négyforrásos ellenőrzés jegyzete, ismeretlen jelölés → BemenetHiba, a DT872-utalás (a vázból ide költözött), a belső szöveg hiánya a látható lapon, a jegyzetek számozása.
+
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes; eszkozok/lapgen/festek.py --id HAMART-001 --id ISTENTISZT-001; general.py --cel lexikon --id HAMART-001 + cmp | forras=a munkafa az S9a commitja előtt | ts=2026-11-22`.*

@@ -961,3 +961,64 @@ kolofon.megjeloles.tw	*Translation Words (tW), CC BY-SA 4.0 (https://creativecom
 kolofon.megjeloles.twot	*TWOT: Theological Wordbook of the Old Testament — csak a szócikk száma áll hivatkozásként (az OSHL-indexből, Open Scriptures Hebrew Bible Project), a mű szövegét a lexikonoldal nem idézi.*	-	Kolofon	TWOT_MEGJELOLES	-
 kolofon.megjeloles.lsj	*LSJ forrás: Liddell-Scott-Jones, Perseus Digital Library (`lexica` repó), {cimke}.*	cimke:lathato	Kolofon	lsj_forrasmegjeloles	-
 kolofon.ertek.nev	{nev}	nev:nev	Kolofon	blokk_kolofon (a forrás és az azonosság típusa a cellában)	-
+k3.olvasoi	{reszek|}	reszek:lista(lathato)	3	olvasoi_kovetkeztetes.kizart_uj (a mondat részei)	-
+k3.olvasoi.ures	A motívumnak nincs elutasított vagy nyitva maradt vizsgált helye.	-	3	blokk_kizart (olvasoi('kizart_ures'))	-
+k3.ures	Ehhez a motívumhoz nincs kizárt vagy nyitva maradt jelölt.	-	3	blokk_kizart	-
+k3.olv.eleje.motivummal	A motívum {n} helyén túl további {v} vers került vizsgálat alá	n:szam(ezres), v:szam(ezres)	3	olvasoi_kovetkeztetes.kizart_uj	-
+k3.olv.eleje	{v} vers került vizsgálat alá	v:szam(ezres)	3	olvasoi_kovetkeztetes.kizart_uj	-
+k3.olv.kereses.ajanlas	: a motívum szavainak keresése a teljes Ó- és Újszövetségre kiterjedt, és a kereszthivatkozások ajánlásaira is.	-	3	olvasoi_kovetkeztetes.kizart_uj	-
+k3.olv.kereses	: a motívum szavainak keresése a teljes Ó- és Újszövetségre kiterjedt.	-	3	olvasoi_kovetkeztetes.kizart_uj	-
+k3.olv.jeloltkent	, jelöltként.	-	3	olvasoi_kovetkeztetes.kizart_uj	-
+k3.olv.nyitott	 Ezek közül {e} nem tartozik a motívumhoz, {ny} döntésre vár.	e:szam(ezres), ny:szam(ezres)	3	olvasoi_kovetkeztetes.kizart	-
+k3.olv.egyik_sem	 Egyik sem tartozik a motívumhoz	-	3	olvasoi_kovetkeztetes.kizart	-
+k3.olv.bontas	: {e} versről egyenként született döntés, {c} versről közös ok alapján, csoportosan.	e:szam(ezres), c:szam(ezres)	3	olvasoi_kovetkeztetes.kizart_uj	-
+k3.olv.bontas.kozulük	 Közülük {e} versről egyenként született döntés, {c} versről közös ok alapján, csoportosan.	e:szam(ezres), c:szam(ezres)	3	olvasoi_kovetkeztetes.kizart_uj	-
+k3.olv.pont	.	-	3	olvasoi_kovetkeztetes.kizart	-
+k3.olv.ok2	 A leggyakoribb ok: „{a}” ({n} vers), utána „{b}” ({m} vers).	a:lathato, n:szam, b:lathato, m:szam	3	olvasoi_kovetkeztetes.kizart	-
+k3.olv.ok1	 A leggyakoribb ok: „{a}” ({n} vers).	a:lathato, n:szam	3	olvasoi_kovetkeztetes.kizart	-
+k3.olv.forrasok	 A vizsgált helyek forrása (vers): {elemek|, }.	elemek:lista(lathato)	3	olvasoi_kovetkeztetes.kizart (_szamlista)	-
+k3.olv.kov	 **Következtetés:** {elemek|. }.	elemek:lista(lathato)	3	olvasoi_kovetkeztetes.kizart (KOVETKEZTETES)	-
+k3.kov.atlag	a motívum minden helyére átlagosan {x} vizsgált vers jut ({v} vizsgált vers, {n} motívumhely)	x:szam, v:szam, n:szam	3	olvasoi_kovetkeztetes.kizart	-
+k3.kov.hatar	A határt leginkább ez az ok húzza meg: „{ok}”	ok:lathato	3	olvasoi_kovetkeztetes.kizart (a második elem nagy kezdőbetűvel)	-
+k3.kov.hatar.elso	a határt leginkább ez az ok húzza meg: „{ok}”	ok:lathato	3	olvasoi_kovetkeztetes.kizart	-
+k3.kov.tobb	A határt több ok együtt húzza meg	-	3	olvasoi_kovetkeztetes.kizart (a második elem nagy kezdőbetűvel)	-
+k3.kov.tobb.elso	a határt több ok együtt húzza meg	-	3	olvasoi_kovetkeztetes.kizart	-
+k3.forras.elem	{csoport} {n}	csoport:nev(vizsgalt_csoport), n:szam	3	szerep_kizart.osszesito_sor	-
+k3.hatokor	*A táblázat a motívum {n} elutasított vagy nyitva maradt vizsgált sorát sorolja fel (forrás: {tabla}); egy sor több verset is fedhet.*	n:szam, tabla:nev(forras)	3	blokk_kizart (a hatókör-sor olvasói alakja)	-
+k3.kriterium	*A kizárás mércéje a lap elején álló meghatározás ([{cim}](#{horgony})).*	cim:lathato, horgony:horgony	3	uj (DT872: a „Negatív kritérium” bekezdés helyett utalás a szakasz elején)	var
+k3.okok.cim	**Az elutasítás okai:**	-	3	szerep_kizart.osszesito_sor	-
+k3.okok.nincs	**Az elutasítás okai:** —	-	3	szerep_kizart.osszesito_sor	-
+k3.okok.fejlec.ok	Ok	-	3	szerep_kizart.osszesito_sor	-
+k3.okok.fejlec.vers	Vers	-	3	szerep_kizart.osszesito_sor	-
+k3.okok.fejlec.leiras	Mit jelent	-	3	szerep_kizart.osszesito_sor	-
+k3.okok.fejlec.pelda	Példa	-	3	szerep_kizart.osszesito_sor	-
+k3.okok.peldak	{peldak|, }	peldak:lista(igehely)	3	szerep_kizart.osszesito_sor	-
+k3.okok.tobbi	További {n} ok, összesen {v} vers: {elemek|; }.	n:szam, v:szam, elemek:lista(lathato)	3	szerep_kizart.osszesito_sor (TABLA_OK_MAX)	-
+k3.okok.tobbi.elem	{ok} ({n})	ok:lathato, n:szam	3	szerep_kizart.osszesito_sor	-
+k3.nyitott	**Nyitott döntés:** {n}	n:szam	3	szerep_kizart.osszesito_sor	-
+k3.forras	**A jelölés forrása:** {elemek| · }	elemek:lista(lathato)	3	szerep_kizart.osszesito_sor	-
+k3.csoport.cim	**{csoport}** ({n})	csoport:nev(vizsgalt_csoport), n:szam	3	szerep_kizart.blokk_torzs	-
+k3.csoport.cim.vers	**{csoport}** ({n} sor, {v} vers)	csoport:nev(vizsgalt_csoport), n:szam, v:szam	3	szerep_kizart.blokk_torzs (F123.TUD1B)	-
+k3.hely.tartomany	{hely}–{veg}	hely:igehely, veg:szam	3	szerep_kizart.osszevon	-
+k3.szo	{alak} ({kiejtes})	alak:lathato, kiejtes:lathato	3	lexikon_general._szo_irassal	-
+k3.szo.kiejtes_nelkul	{alak}	alak:lathato	3	lexikon_general._szo_irassal	-
+k3.szo.szotar_nelkul	{strong}	strong:strong	3	lexikon_general._szo_irassal	-
+k3.miert.szo	Szó keresése: {szavak|, }	szavak:lista(lathato)	3	szerep_kizart.jeloles_oka (a lap cseréje: „gépi Strong-keresés” → „a szó keresése”)	-
+k3.miert.szocsalad	Szócsalád keresése: {szavak|, }	szavak:lista(lathato)	3	szerep_kizart.jeloles_oka (a lap cseréje: „a szócsalád keresése”)	-
+k3.miert.szopar	szópár keresése: {szavak| + }	szavak:lista(lathato)	3	uj (a régi „gépi szópár-keresés” a Strong-számmal; a szó a Strong-szám helyett)	var
+k3.miert.lanc	két lánc-szó egy versben vagy a szomszédos versben	-	3	szerep_kizart.jeloles_oka (a lap cseréje)	-
+k3.miert.frazis	kifejezés keresése a szavak helyzete szerint, szótári, TSK- és Septuaginta-ellenőrzéssel	-	3	szerep_kizart.jeloles_oka (a lap cseréje: „gépi frázis-keresés” → „kifejezés keresése”)	-
+k3.miert.audit	Motívum korábbi tanulmányának négyforrásos ellenőrzése	-	3	szerep_kizart.jeloles_oka (a lap cseréje: a rövid táblaelem névelő nélkül)	-
+k3.miert.tematikus	Tematikus tanulmány felvetése	-	3	uj (a régi „a tematikus tanulmány felvetése (C-minta)”: a minta belső jelölése nem kerül a lapra)	var
+k3.miert.naplo	Kereszthivatkozás-napló kutatói minősítése	-	3	szerep_kizart.jeloles_oka (a rövid táblaelem névelő nélkül)	-
+k3.miert.teljesseg	Motívum szavainak teljes bibliai keresése	-	3	szerep_kizart._teljesseg (a lap cseréje: a rövid táblaelem névelő nélkül)	-
+k3.miert.teljesseg.halo	A motívum szavainak teljes bibliai keresése ({halok|, })	halok:lista(nev:halo_kereses)	3	szerep_kizart._teljesseg (a lap cseréje, _HALO_OLVASOI)	-
+k3.miert.teljesseg.csoport	A motívum szavainak teljes bibliai keresése; a csoportosan kizárt {n} vers közül az első	n:szam	3	szerep_kizart._teljesseg (a lap cseréje)	-
+k3.miert.teljesseg.halo.csoport	A motívum szavainak teljes bibliai keresése ({halok|, }); a csoportosan kizárt {n} vers közül az első	halok:lista(nev:halo_kereses), n:szam	3	szerep_kizart._teljesseg (a lap cseréje, _HALO_OLVASOI)	-
+k3.jegyzet.szokereses	Forrás: szókeresés: {szavak|, } {megszoritas}.	szavak:lista(lathato), megszoritas:lathato	3	tablajegyzet.olvasoi_jegyzet	-
+k3.jegyzet.kereses	Forrás: keresés {strongok|, }; {korpuszok|; }.	strongok:lista(strong), korpuszok:lista(nev:korpusz)	3	tablajegyzet.olvasoi_jegyzet	-
+k3.jegyzet.lanc	Forrás: lánc-keresés (két lánc-szó egy versben vagy a szomszédos versben); {korpuszok|; }.	korpuszok:lista(nev:korpusz)	3	tablajegyzet.olvasoi_jegyzet	-
+k3.jegyzet.teljesseg_egyenkent	Forrás: a motívum szavainak teljes bibliai keresése, egyenkénti döntés.	-	3	tablajegyzet.olvasoi_jegyzet	-
+k3.jegyzet.naplo	Forrás: a motívum korábbi kereszthivatkozás-naplója.	-	3	tablajegyzet.olvasoi_jegyzet	-
+k3.indok.osszesito	A sor {n} verset foglal össze (az igehely az első közülük): {indok}	n:szam, indok:lathato	3	lexikon_general (F212 A1: az összesítő sor eleje)	-
+k3.indok.szerkesztoi_zaro	{indok} A szerkesztő ezeket a verseket együtt zárta ki.	indok:lathato	3	lexikon_general (F194: a szerkesztői döntés záró mondata)	-

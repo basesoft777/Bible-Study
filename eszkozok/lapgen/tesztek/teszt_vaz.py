@@ -23,7 +23,6 @@ S3_MARADEK = ('az S3 kész, de ezt a követelményt nem teljesítette (a 6. elle
               'átnézésén szeletet kap')
 HELY_EGYSEG = ('a névvel megadott szópár (1.4, `málé+chámász`) tagjait a modell nem köti Strong-számhoz; a kapu '
                'ehhez a bemeneti rétegben kér feloldást (N-tétel)')
-ISM_3 = 'a „3. Kizárt és vizsgált helyek” szakasz szelete (a briefben nincs külön szelete; a szakasz megépítésekor)'
 
 
 # A hibanapló példányainak szövegmintái (brief 7.3): HN → [(minta, lapszöveg-részlet a hibás lapról)]. A részlet a
@@ -96,11 +95,6 @@ class Szerkezeti(unittest.TestCase):
         Az `lxx_egyezes` része kész (`teszt_lxx.py` `Gk04`)."""
 
 
-
-    @unittest.skip(ISM_3)
-    def test_ism_a_3_szakasz_utal_nem_ismetel(self):
-        """DT-F218n: a „3. Kizárt és vizsgált helyek” szakasz végi „Negatív kritérium” bekezdése helyett utalás áll
-        a lap eleji meghatározásra, a szakasz elején."""
 
     @unittest.skip(S9)
     def test_gk11_nincs_globalis_allapot(self):

@@ -71,6 +71,7 @@ class Vizsgalat:
     csoport_okok: Tuple[OkCsoport, ...]
     egyen_okok: Tuple[OkCsoport, ...]
     keresesek: Optional[Tuple[Kereses, ...]]    # None: a motívumnak nincs teljesség-mérése (kimondott hiány)
+    csoport_egyedi: Tuple[Tuple[Igehely, int], ...] = ()   # a csoportos sorok egyedi versszáma (igehely, szám)
 
 
 def _tagok(jelolt, lista, kulon):
@@ -112,17 +113,19 @@ def szamit(korny):
 
     # a csoportos sorok egyedi tagjai: a két csoportban is álló vers a döntésnaplóban előbb álló csoportnál számít
     kulon = frozenset(j.igehely.kod for j in jeloltek if j.kulon_sor and j.osszesito_versszam is None)
-    latott, egyedi = set(), {}
+    latott, egyedi, egyedi_hely = set(), {}, {}
     for j in jeloltek:
         if j.csoport_versszam is None or j.dontes not in donteses:
             continue
         tagok = _tagok(j, lista, kulon)
         if tagok is None:
             egyedi[j.igehely.kod] = (j.csoport_versszam, None)
+            egyedi_hely[j.igehely.kod] = j.igehely
             continue
         ujak = [t for t in tagok if t not in latott]
         latott.update(ujak)
         egyedi[j.igehely.kod] = (len(ujak), ujak)
+        egyedi_hely[j.igehely.kod] = j.igehely
 
     ok_szerint, csoport_db, csoport_tagok, csoport_peldak, egyen = {}, {}, {}, {}, {}
     csoport = nyitva_csoportos = ajanlas = 0
@@ -183,7 +186,8 @@ def szamit(korny):
         egyen_okok=tuple(_okcsoport(ok_szerint[k], len(vv), vv)
                          for k, vv in sorted(egyen_versek.items(), key=lambda x: (-len(x[1]), x[0]))),
         keresesek=None if keresesek is None else tuple(
-            Kereses(k.kulcs, k.versszam, prov('{}', k.forrassor)) for k in keresesek))
+            Kereses(k.kulcs, k.versszam, prov('{}', k.forrassor)) for k in keresesek),
+        csoport_egyedi=tuple((egyedi_hely[kod], n) for kod, (n, _tagok) in egyedi.items()))
 
 
 def kapu(v):

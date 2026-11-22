@@ -42,6 +42,8 @@ MINOSITES_FELE = (45, 55)  # ebben a százalék-sávban „a fele (p%)”, egyé
 
 # --- Döntési út és a kizárások melléklete ----------------------------------------------------------------------
 CSOPORT_PELDA_DB = 5            # a csoportos ok alatt ennyi példavers áll a Károli-szöveggel
+KIZART_TABLA_OK_DB = 10         # a 3. szakasz okainak táblájában ennyi ok áll, a többi alatta egy mondatban (TABLA_OK_MAX)
+KIZART_PELDA_DB = 2             # a 3. szakasz okainak táblájában okonként ennyi példahely áll (a régi `szerep_kizart`)
 KIZARASOK_NYITVA_HATAR = 10     # a melléklet verslistája ennyi versig nyitva áll, fölötte lenyíló
 
 # az ismétlés kapui (lapgen.ismetles): a szavak száma az ablakban

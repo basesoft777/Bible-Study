@@ -2,7 +2,7 @@
 
 *Kézi munkanapló (a brief 9. pontja szerint minden commitban frissül). Ebből indul a következő session; a régi generátorból visszafejtett mondatszabályok is itt állnak.*
 
-Ág: `claude/f218a-s8d-96a364` (az S8d; alap: main `8494ce00`) · PR: #791 (draft; az S8a: #779, az S8b: #782, az S8c: #789, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
+Ág: `claude/f218a-s9-722be2` (az S9; alap: main `674be145`) · PR: (draft, a push után; az S8a: #779, az S8b: #782, az S8c: #789, az S8d: #791, a main-en) · Brief: `F218_GENERATOR_UJ_A_BRIEF.md`.
 
 ## Állás
 
@@ -52,7 +52,10 @@
 | 13. ellenőrzés (S8c, `9730b829..f68fb347`) | **ELTÉRÉS: 3 tétel; a javítókör kész** | a jelentés „Független ellenőrzés — 13. ellenőrzés” és „A 13. ellenőrzés javítóköre”; a main behozva (`aad45b55`), a mérce B51, B68 hash-e frissült |
 | N200 (a mérce hash-sorai a #789 merge-e után) | **kész** (a 16. session, `6abf1ac7`) | a B51 `DONTESEK.md` hash-e frissült, a törölt `dontesek/uj/f218a-s8c-5ffa99.md` sora kikerült; regresszió RENDBEN |
 | F218.11 (S8d): a Kolofon | **kész: a szakasz-diff 0 az engedélyeken kívül** (a 16. session, `claude-opus-5-5`) | DT911 (mind a négy (a), az orkesztrátor, a felhasználó felhatalmazásával): a T8 értékei a névtábla `kiadasi_adat` típusában; kiadás módban a kapu megáll (N221); a megjelölések a régi halmazból (N223 licenckapu a 218c-re); a közel-keleti réteg B75, a Chain Lineage a B01 `allapot`-jából. 58 diff-sor, mind engedéllyel (53 a forrástábla, DT901; T9 1; ISM-KOLOFON 1; fejléc 1; megjelölés 2); `teszt_kolofon.py`; a jelentés „F218.11 — S8d” szakasza |
-| F218.12 (S9) – F218.13 | nem indult | |
+| N200 (a mérce hash-sorai a #791 merge-e után) | **kész** (`3528b680`, a 17. session) | a B51 `DONTESEK.md` és a B68 hash-e frissült (a `szamkiosztas` a B68-ban is számot cserélt: DT-F218y → DT911), a törölt `dontesek/uj/f218a-s8d-96a364.md` sora kikerült |
+| F218.12 (S9a): „3. Kizárt és vizsgált helyek” | **kész: a HAMART-001 teljes diffje 0 az engedélyeken kívül** (a 17. session, `claude-opus-5-5`) | a szakasz egyik szeletben sem készült el (a brief szeletlistájából kimaradt): az orkesztrátor felé jelezve, a javaslat szerint S9a. 334 sorból 6 tér el, mind engedéllyel (`S9A-FORRAS`, `S9A-KIEJTES`, `ISM3-*` 4); 61 sablonsor (3 `uj`), 60 névtábla-sor (új típus: `ok_leiras_cella`); a `jeloltek.tsv` 24 cellája (DT884 (a)); a Kolofon 13 DT912-sorának hash-e; `teszt_kizart.py` (10); festékpróba 0. A jelentés „F218.12 — S9a” szakasza |
+| F218.12 (S9b): a teljes lap kapui; ⛔ a felhasználó nézése | nem indult | GK-11, 24, 26, 31, a HN-tesztek, a 8.2 független számlálói; utána a nézési csomag |
+| F218.13 | nem indult | |
 
 ## Az 1. független ellenőrzés után: ELTÉRÉS, 11 tétel
 
@@ -76,6 +79,8 @@ A jelentés változtatás nélkül: `naplok/F218_jelentes.md` „Független elle
 *Proveniencia: `scope=python eszkozok/teszt_futtat.py --fajl teszt_visszhang_kapu | forras=1352ac3c (a fő checkout) | ts=2026-11-13`.*
 
 ## Következő lépés
+
+**Az S9a kész (a 17. session, 2026-11-22).** A HAMART-001 teljes regressziója RENDBEN (a 3. szakasszal együtt), az ISTENTISZT-001 3. szakasza generálódik; a jelentés „F218.12 — S9a” szakasza. **Az S9b-nek innen:** a teljes lap kapui (GK-11 fordított sorrend, GK-24 alakosztály, GK-26 mutációs próba, GK-31 futásidő), a vázban álló S9-es HN-tesztek, a brief 8.2/1 független számlálói az ISTENTISZT-001-re (a 10. ellenőrzés 4. tétele); utána a nézési csomag. A vázban maradó `S3_MARADEK` (10), `HELY_EGYSEG`, GK-B9/A11… és HN-03 tételekről az orkesztrátor dönt (kérdés elküldve). A 218a végi listába ebből a szeletből: 3 `uj` sablonsor (`k3.kriterium`, `k3.miert.tematikus`, `k3.miert.szopar`) és az 1Krón 7:22 indoklásának „blokk-kizárás (H7451 …)” fordulata.
 
 **Az S8d kész (a 16. session, 2026-11-22).** A HAMART-001 regressziója RENDBEN; a Kolofon 58 diff-sora mind engedéllyel (a jelentés „F218.11 — S8d” szakasza). **A merge után az S9 első lépése:** a mérce hash-sorai (N200: a `szamkiosztas` a `DONTESEK.md`-t és a `NYITOTT_FELADATOK.md`-t módosítja, a `dontesek/uj/f218a-s8d-96a364.md`-t törli, ez a B51 két sora). **Az S9-nek innen:** a független számlálók (a 10. ellenőrzés 4. tétele); a felhasználó nézése a két renderelt lapon és az S2–S9 új sorainak listája (ebből a szeletből: 4 `uj` sablonsor, a `kiadasi_adat` 5 sora, a Kolofon Meghatározás- és tágabbkör-sora, az LSJ-mondat kódjelölése); a forrástábla eltérése külön osztályként, bontással (DT912: 53 diff-sor = 27 új / 16 elmaradó / 10 változó; valódi új forrás 12, elmaradó 1, a többi szakaszlista-átsorolás; a jelentés „A 14. ellenőrzés javítóköre”). A „3. Kizárt és vizsgált helyek” továbbra is szelet nélkül.
 
