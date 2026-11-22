@@ -495,7 +495,7 @@ def main(argv=None):
     p.add_argument('--reszletes', help='az engedély nélküli diff-sorok ebbe a fájlba kerülnek')
     p.add_argument('--hash-or-nelkul', action='store_true', help='csak fejlesztés közben: a hash-őr kihagyása')
     p.add_argument('--szamlalok', action='store_true',
-                   help='csak a 8.2/1 független számlálói (a referencia-diff nélkül; az ISTENTISZT-001 mércéje)')
+                   help='csak a 8.2/1 független számlálói (a referencia-diff nélkül; a második mintalap mércéje)')
     a = p.parse_args(argv)
     if a.szamlalok:
         szoveg, hiba = szamlalo_jelentes(szamlalok(a.id, a.uj))
