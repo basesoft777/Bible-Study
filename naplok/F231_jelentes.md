@@ -33,6 +33,7 @@ Technikai döntések (DT920, a session dönt):
 | Tagolási jelző, Thayer | 2 921 magyar szakasz, ebből 8 alaktani nyitású; a Thayer-kártya ezért nem bont törzsre, a szakaszok egyben állnak | uo. |
 | Lefedettség (#12) | 8 088 szócikk; a nyers magyar szövegből a kártyán átlag **91,7%**; 85% alatt 1 073 szócikk (itt a teljes szöveg nyitva). Ok: a szakasztábla egyes szakaszok szövegét nem adja vissza (pl. H1709 második szócikkének alakjai) | uo. |
 | BDB hivatkozás-javítás (#19) | **412 / 412** alkalmazva, 0 kihagyva (247 Strong) | `hiv.py` |
+| LXX-párok igazolhatósága (#14, integrátori kérés) | a Macula 323 263 H→G párjából **44 225-nél (13,7%)** nem fordul elő a görög Strong az LXX_OS adott versében; 190 Strong egyszer sem. A többség legitim pár más Strong-konvencióval (σου G4675 / LXX_OS G4771: 4 355; μου G3450: 3 507; εἶπεν G2036: 2 235; ισραηλ G2474: 2 284). Az elrejtés vagy a „nem igazolt” jelölés legitim párokat is érintene, ezért **nincs bevezetve**; a valódi hiba (πρωὶ → G5459) az N-F231a | `lxxpar.py` |
 | Görög iota-átírás (#34) | **1 471 token** (pl. τῇ „tēa”, ἀρχῇ „archēa”) | `iota.py` |
 | Szócsoport tartalék szabálya (#30) | a teljes Ószövetségen a versek **2,77%-ában** tér el a Maculától (a JOHD-mintán 0). A csempe a Macula-azonosítót használja, ahol van; a tartalék csak Macula-sor híján lép be | `teszt_szokartya_egyseges.Szocsoport` |
 | A F232 mérce frissítése | 18 fájl, minden megváltozott sor egy hibalista-tételhez rendelve, besorolatlan sor: 0 | `naplok/F231_merce_indoklas.md` |
@@ -56,7 +57,7 @@ Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) 
 | 11 | J | /szo/H7837, /szo/H3615 | H7837: a teljes szöveg az „Alakok ▸” alatt; H3615: „Qal ⏎ 1—25” | H7837: „A szótár ezt a szócikket nem tagolja … a teljes szöveg áll.” + a szöveg nyitva; H3615: „A szótár itt ragozott alakokat sorol …, ezért a törzs szövege egyben áll.” |
 | 12 | J | /szo/H2416 | a tagolt kártyából tagmondatok hiányoztak, csak a csukott teljes szöveg őrizte | a jelentések teljes szövege egyben áll; ahol a szakasztábla hiányos (1 073 szócikk), a teljes szöveg nyitva, kimondva |
 | 13 | J | /r/szo/H0747 | nyers „BDB-szócikk (nyers szöveg)” blokk | „Lefordítva · gépi fordítás ⏎ אֲרִיסַי tulajdonnév, hímnemű, Hámán fia …” a kártyában, csukva az „Angol eredeti” |
-| 14 | N | /szo/H1242 | „17 hivatkozás” mellett LXX πρωΐ 8 · φωσφόρος 6 · 5; a Görög megfelelő blokkban „φωσφόρος 88” | a súgó kimondja, hogy a pár versenként számol, ezért az összeg eltérhet (8+6+5 = 19 a 17 hivatkozás mellett: nem számolási hiba). **Mérve: adathiba.** A Macula LXX-párjaiban a „πρωὶ” alak Strong-száma G5459 (φωσφόρος) a G4404 helyett, 88-szor; az LXX_OS-ben a G5459 nem fordul elő; a `lxx_bridge` ezt viszi tovább. Az olvasó kódja jól számol: **N-F231a** (`nyitott/uj/olvaso-egyben-3464e1.md`) |
+| 14 | N | /szo/H1242 | „17 hivatkozás” mellett LXX πρωΐ 8 · φωσφόρος 6 · 5; a Görög megfelelő blokkban „φωσφόρος 88” | a súgó kimondja, hogy a pár versenként számol, ezért az összeg eltérhet (8+6+5 = 19 a 17 hivatkozás mellett: nem számolási hiba). **Mérve: adathiba.** A Macula LXX-párjaiban a „πρωὶ” alak Strong-száma G5459 (φωσφόρος) a G4404 helyett, 88-szor; az LXX_OS-ben a G5459 nem fordul elő; a `lxx_bridge` ezt viszi tovább. Az olvasó kódja jól számol: **N-F231a** (`nyitott/uj/olvaso-egyben-3464e1.md`; célfeladat: rövid adatjavító PR a #231 után, nehéz körrel). A „nem igazolt” jelölés mérve, de nincs bevezetve (2. szakasz) |
 | 15 | J | /szo/H1242 | „▸ forrásjel (J) (P) (mindkettő J E) …” leválasztva | a forrásjel a helye mellett, a mondatban: „2Móz 10:13 (J) 3Móz 6:2 (P)”, súgóval |
 | 16 | J | /1Moz/1/5?szo=H1242 | „Ebben a versben …” | „A BDB besorolása: 1Móz 1:5 ⏎ A szótár ezt a helyet ebbe a jelentésbe sorolja: 1. e. — ellentétben: עֶרֶב”; kétes, fej, tagolatlan: jelölés nélkül (DT914) |
 | 17 | V | /szo/H2403 | „Külön meghatározás nélkül”: a main-en már nem áll (0 találat); a „1.a — 5 hivatkozás” csukott sor | a csukott sorok megszűntek, a szám a tábla feloldott helyeiből (`vj.db`) |
@@ -129,4 +130,5 @@ Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) 
 
 ## 7. Futási eredmények
 
-(A lezáráskor kitöltve.)
+- `python eszkozok/teszt_futtat.py --gyors`: **zöld** (580 mp, minden fájl; a lassú `teszt_szintek` nélkül).
+- `python eszkozok/push_elott.py --reszleges`: az első futás az E5-ön bukott (a mérce-fájlokból törölt `## [blokk]` sorok: a rejtett üres blokkok, #47; a jelölés a commit-üzenet „TÖRLÉS-SZÁNDÉKOS:” sora). A mérce a sorrend-javítás után újra frissült (6 BDB-lap), a besorolás a main-hez mérve újra lefutott (besorolatlan sor: 0). A második futás eredménye a PR első sorában áll.

@@ -1,12 +1,12 @@
 # F231 — az F232 olvasói mérce frissítésének indoklása (2026-11-22)
 
-A `eszkozok/olvaso_szerver/merce/` 18 fájlja a `teszt_olvasoi_merce.py --merce-frissit` paranccsal frissült. Minden megváltozott sort (git diff, hozzáadott és törölt sor egyaránt) egy gépi besoroló rendelt egy okhoz: a sor blokkja (a `## [blokk]` jelölés a régi, illetve az új fájlban) vagy a sor mintája szerint. Az ok a hibalista sorszáma (`naplok/OLVASO_EGYBEN_HIBALISTA.md`). Besorolatlan sor: 0. A besoroló: a jegyzetmappa `olvaso-egyben-elokeszites/merce_ok.py` szkriptje (a session scratchpadjából).
+A `eszkozok/olvaso_szerver/merce/` 18 fájlja a `teszt_olvasoi_merce.py --merce-frissit` paranccsal frissült. Minden megváltozott sort (git diff a main-hez mérve, hozzáadott és törölt sor egyaránt) egy gépi besoroló rendelt egy okhoz: a sor blokkja (a `## [blokk]` jelölés a régi, illetve az új fájlban) vagy a sor mintája szerint. Az ok a hibalista sorszáma (`naplok/OLVASO_EGYBEN_HIBALISTA.md`). Besorolatlan sor: 0. A besoroló: a jegyzetmappa `olvaso-egyben-elokeszites/merce_ok.py` szkriptje (a session scratchpadjából).
 
 ## Okonként
 
 | Ok (hibalista) | Sor |
 |---|---|
-| 1–13, 15, 16, 19 (BDB-kártya: egybefüggő szöveg, olvasói jelölések, DT914) | 1298 |
+| 1–13, 15, 16, 19 (BDB-kártya: egybefüggő szöveg, olvasói jelölések, DT914) | 1280 |
 | 36 (csukva) | 920 |
 | 45, 46 (jelleg és forrássor a csukott Forrás-lenyílóban) | 630 |
 | 21, 22, 25 (Thayer-kártya) | 297 |
@@ -48,11 +48,11 @@ A `eszkozok/olvaso_szerver/merce/` 18 fájlja a `teszt_olvasoi_merce.py --merce-
 - `szo_G1311.txt`: 21, 22, 25 (54); 45, 46 (42); 27 (23); 28 (13); 21 (12); blokksorrend (11); 45 (11); 45, 46 (11); 57 (10); 27/2.6 (9); 21 (8); 45, 46, 58 (7); 56 (3); 58 (3); 51 (2); 52 (2); 50 (2); 45, 46 (2); 45, 46 (1); 45, 46, 49 (1)
 - `szo_G2671.txt`: 45, 46 (42); 21, 22, 25 (24); 27 (21); 28 (13); 21 (12); blokksorrend (11); 45 (11); 45, 46 (11); 27/2.6 (9); 57 (8); 21 (8); 56 (3); 58 (3); 45, 46, 58 (3); 51 (2); 52 (2); 50 (2); 45, 46 (2); 45, 46 (1); 45, 46, 49 (1)
 - `szo_G3056.txt`: 21, 22, 25 (207); 27 (81); 45, 46 (42); 27/2.6 (27); 28 (14); 21 (12); 57 (12); blokksorrend (11); 45 (11); 45, 46 (11); 21 (8); 56 (3); 58 (3); 51 (2); 52 (2); 50 (2); 45, 46 (2); 45, 46 (1); 45, 46, 49 (1); 45, 46, 58 (1)
-- `szo_H0251.txt`: 1–13, 15, 16, 19 (72); 45, 46 (36); 27 (21); 27/2.6 (21); 45 (12); 45, 46 (12); 45, 46, 58 (8); 45, 46 (4); 56 (3); 58 (3); 57 (3); 51 (2); 52 (2); 50 (2); 45, 46 (1)
-- `szo_H1242.txt`: 1–13, 15, 16, 19 (173); 45, 46 (33); 45 (12); 45, 46 (12); 27 (5); 27/2.6 (5); 45, 46 (4); 56 (3); 58 (3); 57 (3); 45, 46, 58 (3); 51 (2); 52 (2); 50 (2); 47 (2); 45, 46 (1); blokksorrend (1)
-- `szo_H2398.txt`: 1–13, 15, 16, 19 (291); 45, 46 (36); 27 (27); 27/2.6 (27); 45, 46, 58 (16); 45 (12); 45, 46 (12); 45, 46 (4); 56 (3); 58 (3); 57 (3); 51 (2); 52 (2); 50 (2); 45, 46 (1)
+- `szo_H0251.txt`: 1–13, 15, 16, 19 (70); 45, 46 (36); 27 (21); 27/2.6 (21); 45 (12); 45, 46 (12); 45, 46, 58 (8); 45, 46 (4); 56 (3); 58 (3); 57 (3); 51 (2); 52 (2); 50 (2); 45, 46 (1)
+- `szo_H1242.txt`: 1–13, 15, 16, 19 (165); 45, 46 (33); 45 (12); 45, 46 (12); 27 (5); 27/2.6 (5); 45, 46 (4); 56 (3); 58 (3); 57 (3); 45, 46, 58 (3); 51 (2); 52 (2); 50 (2); 47 (2); 45, 46 (1); blokksorrend (1)
+- `szo_H2398.txt`: 1–13, 15, 16, 19 (289); 45, 46 (36); 27 (27); 27/2.6 (27); 45, 46, 58 (16); 45 (12); 45, 46 (12); 45, 46 (4); 56 (3); 58 (3); 57 (3); 51 (2); 52 (2); 50 (2); 45, 46 (1)
 - `szo_H3615.txt`: 1–13, 15, 16, 19 (327); 45, 46 (36); 27 (35); 27/2.6 (35); 45, 46, 58 (16); 45 (12); 45, 46 (12); 45, 46 (4); 56 (3); 58 (3); 57 (3); 51 (2); 52 (2); 50 (2); 45, 46 (1)
-- `szo_H7451.txt`: 1–13, 15, 16, 19 (424); 45, 46 (33); 27/2.6 (33); 27 (21); 45, 46, 58 (13); 45 (12); 45, 46 (12); 45, 46 (4); 56 (3); 58 (3); 57 (3); 51 (2); 52 (2); 50 (2); 47 (2); 45, 46 (1); blokksorrend (1)
+- `szo_H7451.txt`: 1–13, 15, 16, 19 (418); 45, 46 (33); 27/2.6 (33); 27 (21); 45, 46, 58 (13); 45 (12); 45, 46 (12); 45, 46 (4); 56 (3); 58 (3); 57 (3); 51 (2); 52 (2); 50 (2); 47 (2); 45, 46 (1); blokksorrend (1)
 - `szo_H7837.txt`: 45, 46 (33); 45 (12); 45, 46 (12); 1–13, 15, 16, 19 (11); 27 (7); 27/2.6 (7); 45, 46 (4); 56 (3); 58 (3); 57 (3); 45, 46, 58 (3); 51 (2); 52 (2); 50 (2); 47 (2); 45, 46 (1); blokksorrend (1)
 - `vers_1Moz_1_1.txt`: 36 (98); 45, 46 (48); 34, 35, 36 (25); 45 (17); 45, 46 (17); 30, 38 (17); 30–32 (13); blokksorrend (7); 45, 46 (5); 37, 48 (4); 37, 48 (4); 51 (2); 52 (2); 47 (2); a mérce fejléce (1); 40 (1); 49 (1)
 - `vers_1Moz_1_5.txt`: 36 (178); 45, 46 (48); 34, 35, 36 (41); 30, 38 (40); 45 (17); 45, 46 (17); 30–32 (10); blokksorrend (9); 45, 46 (5); 37, 48 (4); 37, 48 (4); 51 (2); 52 (2); 47 (2); a mérce fejléce (1); 40 (1); 49 (1)
