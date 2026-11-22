@@ -10,6 +10,6 @@ alapertelmezett_szint = "kutato"
 # tartalmi szétválasztását (mi freemium, mi prémium: #86, DT-F86c) ez a fájl és a váltó NEM dönti el; a tesztek próba-konfigja a
 # `hozzaferes_proba.toml`, ezt az éles szerver nem tölti be.
 # Példa a későbbi tartalmi szétválasztásra (ma nincs kitöltve):
-#   "szo.bdb_magyar" = "regisztralt"
+#   "szo.bdb_apparatus" = "regisztralt"      # a magyar BDB a tagolt kártyában áll (F230: a külön szo.bdb_magyar blokk megszűnt)
 [blokk]
 default = "nyilvanos"

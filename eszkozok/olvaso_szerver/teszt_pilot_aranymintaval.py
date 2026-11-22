@@ -30,6 +30,7 @@ sys.path.insert(0, D)
 import adatbazis
 import blokkok
 import hozzaferes
+import kiejtes_szolg
 import lekerdezesek as q
 import oldalak
 from teszt_olvaso_szerver import DB, GY, KONFIG, VAN_DB, _pilot_json
@@ -72,6 +73,11 @@ class TestPilotAranymintaval(unittest.TestCase):
 
     def szo_panel(self, strong, ig=None):
         return self.gyar.szo_fragment(strong, self.hozz.szint(), ig)
+
+    def kiejtes_nyers(self, ig):
+        """F230: a vers héber tokenjeinek elvárt kiejtése a közös szolgáltatásból, a nyers `token_eredeti` sorokból (nem a `q.eredeti_szavak` burkolóból)."""
+        sorok = self.con.execute('SELECT nyelv, strong_nyers, alak, kiejtes FROM token_eredeti WHERE igehely=? ORDER BY sorszam', (ig,)).fetchall()
+        return [k for s, k in zip(sorok, kiejtes_szolg.vers_szavak(sorok)) if s[0] == 'H']
 
     def versek(self):
         for azon, adat in self.pilot.items():
@@ -156,10 +162,12 @@ class TestPilotAranymintaval(unittest.TestCase):
         for azon, adat, v in self.versek():
             th = blokkok._heber_csempek(self.K(ig=v['igehely']))
             self.assertEqual(len(th), len(v['heber']), v['igehely'])
+            self.assertEqual([w['atiras'] for w in th], self.kiejtes_nyers(v['igehely']), v['igehely'])
             for w, p in zip(th, v['heber']):
                 pm = p.get('macula') or {}
                 m = w.get('macula') or {}
-                self.assertEqual((w['heber'], w['atiras'], w['tukor'], w['strong'], w['nyelvtani']), (p['heber'], p['atiras'], p['tukor'], p['strong'], p['nyelvtani']), v['igehely'])
+                # F230: a kiejtés (atiras) a közös kiejtés-szolgáltatásé, nem a pilot TAHOT-átírása: tudatos eltérés, külön ellenőrzve (lent)
+                self.assertEqual((w['heber'], w['tukor'], w['strong'], w['nyelvtani']), (p['heber'], p['tukor'], p['strong'], p['nyelvtani']), v['igehely'])
                 self.assertEqual((m.get('lxx'), m.get('lxx_strong'), m.get('morf'), m.get('morf_hu')), (pm.get('lxx'), pm.get('lxx_strong'), pm.get('morf'), pm.get('morf_hu')),
                                  '%s %s' % (v['igehely'], p['heber']))
                 n += 1
@@ -226,7 +234,8 @@ class TestPilotAranymintaval(unittest.TestCase):
             t = szoveg(self.szo_panel(strong, ig))
             self.assertIn('Ebben a versben', t)
             self.assertIn('Károli itt: „%s”' % hu, t, ig)
-            self.assertIn('Alak: %s (%s) · %s (%s)' % (w['heber'], w['atiras'], m['morf_hu'], m['morf']), t, ig)
+            at = next(x for x in blokkok._heber_csempek(self.K(ig=ig)) if x['strong'] == strong)['atiras']      # F230: a kiejtés a közös szolgáltatásé, nem a pilot (TAHOT) átírása
+            self.assertIn('Alak: %s (%s) · %s (%s)' % (w['heber'], at, m['morf_hu'], m['morf']), t, ig)
             if m.get('lxx'):
                 self.assertIn('Görögül ebben a versben (LXX): %s' % m['lxx'], t, ig)
             if w['ubs']:
@@ -290,6 +299,8 @@ class TestPilotAranymintaval(unittest.TestCase):
                 # F104 (HAMART-001 F10 (5)): a BDB-sor kulcsa (Strong + STEP-átírás) nem jelenik meg, a gyakoriság-számláló
                 # („_560”) alsó index: a pilot szövegét ugyanígy normalizáljuk
                 pilot = re.sub(r'_(\d+)', r' \1 ', blokkok._sor_kulcs_nelkul(l['bdb_hu']))
+                # F230: a magyar BDB a tagolt kártyában áll, a teljes magyar szöveg a kártya csukott „A magyar szócikk teljes szövege” részében
+                # (a külön nyers blokk megszűnt): a pilot szövege változatlanul megvan a lapon
                 self.assertIn(latin(szoveg(pilot))[:30], latin(t), strong)
                 self.assertIn('%d előfordulás, %d könyvben' % (l['elofordulas'], l['konyvek_szama']), t, strong)
                 # a modell-egyezés nem minősítés (2026-11-14): a pilot darabszáma marad, a modell-egyezés helyén a mért pontosság
@@ -365,7 +376,7 @@ class TestPilotAranymintaval(unittest.TestCase):
         i = h.index('data-blokk="szo.bdb_apparatus"')
         blokk = h[i:h.index('</section>', i)]
         t = szoveg(blokk)
-        self.assertIn('Lefordítva · %s' % l['bdb_hu_meta'], t)
+        self.assertIn('Lefordítva · gépi fordítás, %s' % l['bdb_hu_meta'].rpartition(', ')[2], t)       # F230: modellnév nélkül
         self.assertNotIn('hibás határ előfordulhat', t)              # F213: az elavult címke kivezetve
         # F213: a szókártya részei (fej, alakok, a jelentések rendje, jelentésenként glossza és lenyílók)
         for resz in ('<div class="szk-lemma">', '<details class="szk-alakok"><summary>Alakok</summary>', '<nav class="szk-tj"',
@@ -388,17 +399,17 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertIn('&lt;script&gt;', h)
 
     def test_DT_F76h_lxx_tobblet_blokk_az_adat_meg_nincs_a_db_ben(self):
-        """DT-F76h (c): a blokk megjelenik, és kimondja, hogy az adat még nincs a DB-ben (üres eredmény nem negatív lelet); a forrássor a TSV-ket nevezi."""
+        """DT-F76h (c): a blokk megjelenik, és kimondja, hogy az adat ebben a kiadásban még nem érhető el (üres eredmény nem negatív lelet); F230: az olvasói felületen nincs fájlnév és N-szám."""
         h = self.vers_panel('1Móz 1:2')
         i = h.index('data-blokk="vers.lxx_tobblet"')
         blokk = h[i:h.index('</section>', i)]
         self.assertIn('LXX többlet és számozási eltérés', blokk)
         t = szoveg(blokk)
-        self.assertIn('Az adat még nincs a DB-ben', t)
-        self.assertIn('N-F76j', t)
-        self.assertIn('Verzifikacios_elteres_tabla.tsv', t)
+        self.assertIn('még nem érhető el', t)
+        self.assertNotIn('N-F76j', t)
+        self.assertNotIn('.tsv', t)
         self.assertIn('jelleg-forras', blokk)
-        self.assertIn('<p class="forras">Forrás és licenc: LXX_tobblet_szakaszok.tsv', blokk)
+        self.assertIn('<p class="forras">Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái', blokk)
 
     def test_DT_F76e_folyo_szoveg_az_interlinearis_reteg_versenkent(self):
         """DT-F76e (c): réteg nélkül folyó szöveg kis versszámokkal (a pilot elrendezése), az interlineáris réteggel versenként (#134)."""
@@ -452,7 +463,8 @@ class TestPilotAranymintaval(unittest.TestCase):
                 csempek = [tuple(html.unescape(x) for x in c) for c in csempek]
                 self.assertGreater(len(csempek), 0, v['igehely'])
                 # teljes egyezés: a csempék sorrendben a token_par párjai, mindegyik a pilot héber szavából (er_sorszam = a TAHOT-lista helye)
-                vart = [(v['heber'][ers - 1]['heber'], v['heber'][ers - 1]['atiras'], v['heber'][ers - 1]['tukor'], v['heber'][ers - 1]['strong'])
+                ek = self.kiejtes_nyers(v['igehely'])      # F230: a kiejtés a közös szolgáltatásé, nem a pilot TAHOT-átírása
+                vart = [(v['heber'][ers - 1]['heber'], ek[ers - 1], v['heber'][ers - 1]['tukor'], v['heber'][ers - 1]['strong'])
                         for hs, hu, ers, erszo, st, bz in q.par_szavak(self.con, v['igehely']) if st]
                 self.assertEqual(csempek, vart, '%s: az Interlineáris csempék nem egyeznek a pilot héber szavaival' % v['igehely'])
                 n += len(csempek)

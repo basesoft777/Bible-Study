@@ -40,7 +40,7 @@ BIBLIAK = (
     Biblia('karoli', 'Károli 1908', 'Károli 1908', 'magyar', 'alapnézet · Strong', 'vers', ('token_par',), 'hu', 'ltr', ('vers',), ''),
     Biblia('modern', 'Modernizált Károli', 'Modernizált Károli', 'magyar', 'Strong', 'szoveg_modern', ('token_modern', 'token_par'), 'hu', 'ltr',
            ('szoveg_modern', 'token_modern', 'token_par'),
-           'A Károli 1908 helyesírásban és igealakokban modernizált szövege (gépi szabálykészlet, #96); a szavak Strong-párja a Károli 1908-é.'),
+           'A Károli 1908 helyesírásban és igealakokban modernizált szövege (gépi szabálykészlet); a szavak Strong-párja a Károli 1908-é.'),
     Biblia('tahot', 'Héber Ószövetség', 'Héber ÓSZ', 'eredeti', 'TAHOT · Strong', 'token_eredeti:H', ('token_eredeti',), 'he', 'rtl',
            ('token_eredeti',),
            'A héber (és arámi) maszoréta szöveg a TAHOT szerint, a Károli-versek kulcsán (a TAHOT kulcsa a Károli-vers). Az előtagok és a szuffixumok a TAHOT-ban külön tokenek; a nyelvtani elemre nem lehet koppintani.'),

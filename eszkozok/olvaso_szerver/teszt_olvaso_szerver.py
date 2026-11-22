@@ -232,7 +232,8 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         # +1 (F99 M1): a „Rokon szavak (OSHL-gyökcsalád)” blokk (szo.oshl_csalad)
         # +1 (F121, DT393): az UBS DBH-jelentések szónézet-blokkja (szo.ubs_dbh)
         # +1 (F149): a „Tanulmányok erről a versről” blokk (vers.tanulmany)
-        self.assertEqual(len(blokkok.REGISZTER), 51)
+        # -1 (F230): a külön `szo.bdb_magyar` blokk megszűnt (a magyar BDB a `szo.bdb_apparatus` kártyában áll)
+        self.assertEqual(len(blokkok.REGISZTER), 50)
         self.assertEqual({b.oldal for b in blokkok.REGISZTER}, set(blokkok.OLDALAK))
 
     def test_minden_tablanak_van_licencsora(self):
@@ -257,7 +258,7 @@ class TestRegiszterEsAdatbazis(unittest.TestCase):
         'szo.ebben': ('Ebben a versben', True), 'szo.bdb_apparatus': ('BDB-szócikk', True), 'vers.lxx_tobblet': ('LXX többlet és számozási eltérés', True),
         'vers.tsk': ('Kereszthivatkozások (TSK', True), 'vers.kh': ('Károli-kereszthivatkozások', True), 'vers.ubs': ('Ebben a versben', False),
         'szo.szotar': ('Szó adatai (héber)', False), 'szo.elofordulas': ('Szó adatai (héber)', False), 'szo.karoli_alakok': ('Szó adatai (héber)', False),
-        'szo.bdb_angol': ('BDB-szócikk', False), 'szo.bdb_magyar': ('BDB-szócikk', False), 'szo.lxx_bridge': ('Görög megfelelő', True),
+        'szo.bdb_angol': ('BDB-szócikk', False), 'szo.lxx_bridge': ('Görög megfelelő', True),
         'szo.sdbh': ('Szemantikai domén (SDBH)', True), 'szo.sece_h': ('SECE-szócikk (héber)', True), 'szo.oshl': ('TWOT- és BDB-azonosító', True),
         'szo.oshl_csalad': ('TWOT- és BDB-azonosító', False),   # F99 M1: a pilotnak nincs gyökcsalád-blokkja; az OSHL-cím jellegét örökli
         'szo.tbesh': ('Bővített Strong-szócikk', True), 'szo.tw_h': ('translationWords', True), 'szo.nyelvtani': ('Szó adatai (héber)', False),
@@ -412,7 +413,10 @@ class TestLapok(unittest.TestCase):
             h = self.get('/r/szo/' + strong).get_data(as_text=True)
             ids = re.findall(r'data-blokk="([^"]+)"', h)
             # a vers-kontextust igénylő blokk (szo.ebben) önálló szó-lapon nem jelenik meg
-            self.assertEqual(ids, [b.id for b in blokkok.blokkok_oldalra(oldal) if not b.vers_kell], strong)
+            vart = [b.id for b in blokkok.blokkok_oldalra(oldal) if not b.vers_kell]
+            # F230: az `ures_rejt` blokk (a nyers angol BDB, ha a kártya áll; a nyelvtani blokk tartalmas szónál) üres adatnál nem jelenik meg
+            vart = [i for i in vart if i in ids or not blokkok.BLOKK_ID[i].ures_rejt]
+            self.assertEqual(ids, vart, strong)
             self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))
             self.assertEqual(len(re.findall(r'<p class="forras">Forrás és licenc: ', h)), len(ids))
 
@@ -559,7 +563,10 @@ class TestLapok(unittest.TestCase):
         (közös jelölő: eszkozok/bdb_rovidites.py); a címszó feloldása a TBESH-lemma a jóváhagyott kiejtéssel. Minden BDB-blokkban."""
         t = self.get('/r/szo/H7121').get_data(as_text=True)
         latott = 0
-        for b in ('szo.bdb_apparatus', 'szo.bdb_magyar', 'szo.bdb_angol'):
+        # F230: a nyers angol blokk ott áll, ahol a kártya nem látszik (hozzáférési szint): ugyanaz a jelölés
+        h = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'szo.bdb_apparatus': 'kutato'}, 'nyilvanos')
+        t_angol = app_keszit('belso', hozz=h).test_client().get('/r/szo/H7121').get_data(as_text=True)
+        for b, t in (('szo.bdb_apparatus', t), ('szo.bdb_angol', t_angol)):
             if 'data-blokk="%s"' % b not in t:
                 continue
             latott += 1
@@ -874,7 +881,7 @@ class TestKiadasKapcsolo(unittest.TestCase):
 class TestHozzaferesiSzintek(unittest.TestCase):
     def test_a_magasabb_szintu_blokk_nem_kerul_a_lapra_es_nem_fut(self):
         import unittest.mock as mock
-        h = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'vers.tsk': 'kutato', 'szo.bdb_magyar': 'kutato'}, 'nyilvanos')
+        h = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'vers.tsk': 'kutato', 'szo.bdb_apparatus': 'kutato'}, 'nyilvanos')
         app = app_keszit('belso', hozz=h)
         c = app.test_client()
         with mock.patch.object(q, 'tsk', side_effect=AssertionError('a tiltott blokk lekérdezése lefutott')):
@@ -890,7 +897,7 @@ class TestHozzaferesiSzintek(unittest.TestCase):
         kizárt `forditasok` táblánál az angol Strong-glosszára esik vissza (és a számláló elmarad), nem szivárog és nem ad 500-at."""
         import unittest.mock as mock
         # (1) hozzáférési szint: a szo.bdb_magyar nem látható
-        h = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'szo.bdb_magyar': 'kutato'}, 'nyilvanos')
+        h = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'szo.bdb_apparatus': 'kutato'}, 'nyilvanos')
         c = app_keszit('belso', hozz=h).test_client()
         r = c.get('/r/szo/H6440')
         self.assertEqual(r.status_code, 200)
@@ -1080,7 +1087,9 @@ class TestD2PilotEgyezes(unittest.TestCase):
     def szerver_vers(self, ig):
         con = self.con
         K = oldalak.Kontekst(con, self.kozos, ig=ig)
-        heber = q.heber_d2(con, ig)
+        # F230: a kiejtés a közös szolgáltatásé (nem a TAHOT-é): a D2 a DB nyers értékét méri a pilothoz, ezért itt a nyers TAHOT-átírás áll
+        heber = [(q.hnorm(sn) or sn, alak, kiej) for sn, alak, kiej in con.execute(
+            "SELECT strong_nyers, alak, kiejtes FROM token_eredeti WHERE igehely=? AND nyelv='H' ORDER BY sorszam", (ig,))]
         lxx, extra, _ = q.lxx_versszam(con, ig)
         return {'karoli': q.karoli_szoveg(con, ig), 'par': q.par(con, ig), 'heber': heber, 'tsk': q.tsk(con, ig), 'kh_db': q.kh_darab(con, ig),
                 'versszam': q.versszamozas(con, ig), 'lxx': lxx, 'lxx_extra': extra, 'ubs': q.ubs_d2(con, ig, {h[0] for h in heber}),
@@ -1091,7 +1100,7 @@ class TestD2PilotEgyezes(unittest.TestCase):
         con = self.con
         K = oldalak.Kontekst(con, self.kozos, strong=s)
         b = blokkok._bdb_adat(K)
-        sz = q.strong_szotar(con, s)
+        sz = con.execute('SELECT szoto, kiejtes, szofaj, jelentes FROM strong_szotar WHERE strong=?', (s,)).fetchone()      # F230: a nyers DB-érték (a kiejtés tudatos eltérés)
         ossz, magas, top = q.karoli_alakok(con, s)
         db, kony = q.elofordulas(con, s)
         return {'szotar': tuple(sz[:4]) if sz else None, 'bdb_en': b['en'] or '', 'bdb_hu': b['hu'], 'alias': b['alias'], 'elofordulas': db, 'konyvek': kony,
@@ -1590,8 +1599,11 @@ class TestF104BdbJeloles(unittest.TestCase):
         app = self.blokk('/r/szo/H7451')
         self.assertIn('<span class="szk-kiejtes">ra</span><span class="szk-db">I. címszó</span>', app)
         self.assertNotIn("ra &#39;", app)
-        for b in ('szo.bdb_magyar', 'szo.bdb_angol'):
-            nyers = self.blokk('/r/szo/H7451', b)
+        h = hozzaferes.Hozzaferes(['nyilvanos', 'kutato'], 'nyilvanos', {'szo.bdb_apparatus': 'kutato'}, 'nyilvanos')       # F230: a nyers angol blokk kártya nélkül áll
+        t_angol = app_keszit('belso', hozz=h).test_client().get('/r/szo/H7451').get_data(as_text=True)
+        for b in ('szo.bdb_angol',):
+            nyers = t_angol[t_angol.index('data-blokk="%s"' % b):]
+            nyers = nyers[:nyers.index('</section>')]
             self.assertNotRegex(nyers, r'_\d')
             self.assertNotIn('H7451.', nyers)
             self.assertNotIn("ra &#39;", nyers)

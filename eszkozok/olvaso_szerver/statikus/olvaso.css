@@ -5,6 +5,10 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--bg); color: var(--fg); }
 a { color: var(--accent); }
+/* F230: „Ugrás a tartalomra” (billentyűzet): a képernyőn kívül áll, fókuszra a bal felső sarokban látszik */
+.kihagy-link { position: absolute; left: -9999px; top: 0; z-index: 100; padding: 8px 14px; background: var(--panel); color: var(--fg); border: 1px solid var(--rule); border-radius: var(--radius-csempe); font: var(--fs-sor) var(--font-ui); }
+.kihagy-link:focus { left: var(--space-oldal); top: 8px; }
+#tartalom:focus { outline: none; }
 .fejlec { display: flex; flex-wrap: wrap; gap: var(--space-fejlec-sor) var(--space-fejlec-oszlop); align-items: center; padding: var(--space-fejlec-fugg) var(--space-oldal); border-bottom: 1px solid var(--rule); background: var(--panel); }
 .logo { text-decoration: none; color: var(--fg); white-space: nowrap; }
 /* a kereső (#134 M3, a mockup omni-mezője): a sor maradékát kitölti (legalább 280 px-es alapból), 32 px magas mező és ⌕ gomb */

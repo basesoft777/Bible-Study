@@ -135,9 +135,16 @@ def fejezet_szavak(con, kk, fej):
 def fejezet_eredeti(con, kk, fej):
     """{(igehely, sorszam): (kiejtes, angol_tukorford, rovid_jelentes)} a fejezet eredeti szavaira (az Interlineáris csempékhez; a
     `token_par.er_sorszam` a `token_eredeti.sorszam`-ra illeszkedik)."""
-    return {(ig, sz): (kiej or '', tukor or '', rovid or '') for ig, sz, kiej, tukor, rovid in con.execute(
-        "SELECT e.igehely, e.sorszam, e.kiejtes, e.angol_tukorford, e.rovid_jelentes FROM vers v JOIN token_eredeti e ON e.igehely=v.igehely "
-        "WHERE v.konyv=? AND v.fejezet=?", (kk, fej))}
+    ki, sorok = {}, {}
+    for ig, sz, ny, sn, alak, at, tukor, rovid in con.execute(
+            "SELECT e.igehely, e.sorszam, e.nyelv, e.strong_nyers, e.alak, e.kiejtes, e.angol_tukorford, e.rovid_jelentes FROM vers v "
+            "JOIN token_eredeti e ON e.igehely=v.igehely WHERE v.konyv=? AND v.fejezet=? ORDER BY e.igehely, e.sorszam", (kk, fej)):
+        sorok.setdefault(ig, []).append((sz, ny, sn, alak, at, tukor, rovid))
+    for ig, sor in sorok.items():                       # F230: a kiejtés a közös szolgáltatásból (nem a TAHOT/TAGNT átírása)
+        kiej = _kj().vers_szavak([(ny, sn, alak, at) for _sz, ny, sn, alak, at, _t, _r in sor])
+        for (sz, _ny, _sn, _alak, _at, tukor, rovid), k in zip(sor, kiej):
+            ki[(ig, sz)] = (k or '', tukor or '', rovid or '')
+    return ki
 
 
 def fejezet_parositatlan(con, kk, fej):
@@ -224,12 +231,15 @@ def par_szavak(con, ig):
 
 def eredeti_szavak(con, ig):
     """[(sorszam, nyelv, strong_nyers, alak, kiejtes, szoto, rovid_jelentes, angol_tukorford)]"""
-    return con.execute('SELECT sorszam, nyelv, strong_nyers, alak, kiejtes, szoto, rovid_jelentes, angol_tukorford FROM token_eredeti WHERE igehely=? ORDER BY sorszam', (ig,)).fetchall()
+    sorok = con.execute('SELECT sorszam, nyelv, strong_nyers, alak, kiejtes, szoto, rovid_jelentes, angol_tukorford FROM token_eredeti WHERE igehely=? ORDER BY sorszam', (ig,)).fetchall()
+    # F230: a kiejtés a közös kiejtés-szolgáltatásból (kiejtes_szolg), nem a TAHOT/TAGNT átírása
+    kiej = _kj().vers_szavak([(r[1], r[2], r[3], r[4]) for r in sorok])
+    return [(r[0], r[1], r[2], r[3], k, r[5], r[6], r[7]) for r, k in zip(sorok, kiej)]
 
 
 def heber_d2(con, ig):
-    return [(hnorm(sn) or sn, alak, kiej) for sn, alak, kiej in con.execute(
-        "SELECT strong_nyers, alak, kiejtes FROM token_eredeti WHERE igehely=? AND nyelv='H' ORDER BY sorszam", (ig,))]
+    sorok = con.execute("SELECT nyelv, strong_nyers, alak, kiejtes FROM token_eredeti WHERE igehely=? AND nyelv='H' ORDER BY sorszam", (ig,)).fetchall()
+    return [(hnorm(sn) or sn, alak, k) for (_ny, sn, alak, _at), k in zip(sorok, _kj().vers_szavak(sorok))]
 
 
 _MACULA_SQL = ('SELECT xml_id, szo, lemma, strong_nyers, morf, szofaj, gloss, lxx_szo, lxx_strong, lxx_szo_forras, lxx_szo_rahlfs '
@@ -451,11 +461,26 @@ def kh_darab(con, ig):
     return con.execute('SELECT COUNT(*) FROM kh WHERE igehely=?', (ig,)).fetchone()[0]
 
 
+_UBS_LEX = re.compile(r'\{L:([^<}]*)<SDBH:([^>}]*)>\}')
+_UBS_LEX2 = re.compile(r'\{L:([^}]*)\}')
+
+
+def ubs_tisztit(s):
+    """F230: az UBS-szövegben a feloldatlan lexéma-jelölő olvasható: `{L:evening<SDBH:עֶרֶב>}` → „evening (עֶרֶב)”; a kapcsos zárójel nem marad."""
+    if not s or '{L:' not in s:
+        return s
+    return _UBS_LEX2.sub(r'\1', _UBS_LEX.sub(r'\1 (\2)', s))
+
+
 def ubs_dbh(con, ig):
-    """[(strong, lexid, domen, definicio_rovid, glosszak)] az előfordulásra (referencia ∩ jelentés)."""
-    return con.execute(
+    """[(strong, lexid, domen, definicio_rovid, glosszak)] az előfordulásra (referencia ∩ jelentés). F230: csak a versben ténylegesen álló
+    Strong-számok (a vers `token_eredeti` Strongjai); az UBS a vers összes referenciáját tárolja, azonos lexémával a szomszédos számokat is
+    (1Móz 1:1: H0854, H0855 a H0853 mellett). Token nélküli versnél nincs szűrés. A feloldatlan `{L:…}` jelölő olvasható."""
+    vers = {hnorm(sn) or sn for (sn,) in con.execute('SELECT strong_nyers FROM token_eredeti WHERE igehely=?', (ig,)) if sn}
+    sorok = con.execute(
         'SELECT DISTINCT r.strong, r.lexid, j.domen, j.definicio_rovid, j.glosszak FROM ubs_dbh_referenciak r '
         'JOIN ubs_dbh_jelentesek j ON j.lexid=r.lexid WHERE r.igehely=? ORDER BY r.strong, r.lexid', (ig,)).fetchall()
+    return [(st, lex, dom, ubs_tisztit(df), ubs_tisztit(gl)) for st, lex, dom, df, gl in sorok if not vers or (hnorm(st) or st) in vers]
 
 
 def ubs_d2(con, ig, strongok):
@@ -463,6 +488,16 @@ def ubs_d2(con, ig, strongok):
     for st in set(strongok):
         ki[st] = sorted(x[0] for x in con.execute(
             'SELECT DISTINCT r.lexid FROM ubs_dbh_referenciak r JOIN ubs_dbh_jelentesek j ON j.lexid=r.lexid WHERE r.igehely=? AND r.strong=?', (ig, st)))
+    return ki
+
+
+def kjv_karoli_terkep(con, konyv):
+    """F230: {KJV „fejezet:vers”: Károli-igehely} a könyvnek azokra a verseire, ahol a KJV-számozás eltér a Károlitól (a `vers_szamozas`
+    `kjv_igehely` mezője). A Nave a KJV-számozást használja (Zsolt 22:1 = Károli 22:2); ami nincs a térképben, azonos számozású."""
+    ki = {}
+    for ig, kjv in con.execute("SELECT igehely, kjv_igehely FROM vers_szamozas WHERE substr(igehely, 1, ?) = ? AND kjv_igehely <> ''", (len(konyv) + 1, konyv + ' ')):
+        if kjv != ig[len(konyv) + 1:]:
+            ki.setdefault(kjv, ig)
     return ki
 
 
@@ -518,8 +553,29 @@ def hu_par_szavak(con, ig):
 # ---------------------------------------------------------------------------------------------------------------------
 # szó-lap blokkok (héber)
 # ---------------------------------------------------------------------------------------------------------------------
+def _kj():
+    """A kiejtés-szolgáltatás lustán töltődik (F230): az `allapot.py` és az indító csak a `lekerdezesek`-et importálja, kiejtés nélkül."""
+    import kiejtes_szolg
+    return kiejtes_szolg
+
+
 def strong_szotar(con, s):
-    return con.execute('SELECT szoto, kiejtes, szofaj, jelentes, gyok_szarmaztatas FROM strong_szotar WHERE strong=?', (s,)).fetchone()
+    """A Strong-szótár sora (szótő, kiejtés, szófaj, jelentés, gyök). F230: a `kiejtes` mező a közös kiejtés-szolgáltatásé
+    (`szo_kiejtes`), nem a `strong_szotar.kiejtes` oszlopé (az a ragozott alak STEP-átírása: H2398 „cha.tov-”)."""
+    r = con.execute('SELECT szoto, kiejtes, szofaj, jelentes, gyok_szarmaztatas FROM strong_szotar WHERE strong=?', (s,)).fetchone()
+    return (r[0], szo_kiejtes(con, s, r[0]), r[2], r[3], r[4]) if r else r
+
+
+def szo_kiejtes(con, s, szoto=''):
+    """A szó kiejtése a közös szolgáltatásból (`kiejtes_szolg`, F230): héber szótőnél a TBESH-lemma kivétele vagy gépi kiejtése (a
+    BDB-kártya és a lexikonlap szabálya), görögnél a TBESG átírásából a magyaros alak; '' ha nincs (tartalék: nincs kiejtés)."""
+    if s[:1] == 'G':
+        r = tbesg(con, s)
+        return _kj().gorog(r[1]) if r else ''
+    r = tbesh_lemma(con, s)
+    if r:
+        return _kj().heber_szoto(r[0], r[1])
+    return _kj().heber_szoto(szoto)
 
 
 def strong_van(con, s):
@@ -943,7 +999,7 @@ def ubs_dbh_szo(con, h):
         if lex in lat:
             continue
         lat.add(lex)
-        ki.append((lex, dom, df, gl, hu.get((lex, 'definicio_hu'), ''), hu.get((lex, 'glosszak_hu'), '')))
+        ki.append((lex, dom, ubs_tisztit(df), ubs_tisztit(gl), ubs_tisztit(hu.get((lex, 'definicio_hu'), '')), ubs_tisztit(hu.get((lex, 'glosszak_hu'), ''))))
     return ki
 
 
