@@ -1,6 +1,6 @@
 # F218a — S9: a felhasználó nézési csomagja (a második, egyben utolsó kör)
 
-*A brief 6. pontja és az F218.12 szerint egy megállásban: a két renderelt lap, az osztályonkénti eltérés-összesítés, az S2–S9 új sablonmondatai és nevei. A nézés a felhasználóé. Készült: 2026-11-22, a 17. session (`claude-opus-5-5`), az S9a–S9b után. **Előkészítve, még nem a felhasználónak:** a DT-F218a szerint a nézés az S9c után jön, a kész lapon; az S9c ezt a fájlt a saját változásaival frissíti (a számok, az új sorok), és a két lapot akkor generálja újra.*
+*A brief 6. pontja és az F218.12 szerint egy megállásban: a két renderelt lap, az osztályonkénti eltérés-összesítés, az S2–S9 új sablonmondatai és nevei. A nézés a felhasználóé. Készült: 2026-11-22, a 17. session (`claude-opus-5-5`), az S9a–S9b után. **Előkészítve, még nem a felhasználónak:** a DT924 szerint a nézés az S9c után jön, a kész lapon; az S9c ezt a fájlt a saját változásaival frissíti (a számok, az új sorok), és a két lapot akkor generálja újra.*
 
 ## 1. A két renderelt lap
 
@@ -8,7 +8,7 @@ Mindkét lap az új generátor kimenete, munka módban, `PARDES_DATUM=2026-11-13
 - `HAMART-001_TUDOMANYOS.md` (3286 sor) és `HAMART-001_KIZARASOK.md` (431 sor);
 - `ISTENTISZT-001_TUDOMANYOS.md` (1703 sor) és `ISTENTISZT-001_KIZARASOK.md` (307 sor).
 
-**Állapot.** A HAMART-001 teljes lapja a mai jóváhagyott lappal szakaszonként egyezik, csak az alábbi engedélyezett eltérésekkel (engedély nélküli diff-sor 0, a bemenet-hash őrrel). Az ISTENTISZT-001 mércéje a 8.2: a független számlálók (a Döntési út összeadása, az igehelyek halmaza, a KH-darabszám, az ószövetségi versek, a szópár-lánc) mind egyeznek; GK-04 `lxx_egyezes` része, GK-24, GK-25, GK-SZOPAR zöld (a GK-04 `hely_egyseg` része a 218c-é, N-F218a); festékpróba 0 szivárgás; a HN-esetek száma 0. A régi generátor HAMART-kimenete a 218a végén is bájtra azonos a referenciával.
+**Állapot.** A HAMART-001 teljes lapja a mai jóváhagyott lappal szakaszonként egyezik, csak az alábbi engedélyezett eltérésekkel (engedély nélküli diff-sor 0, a bemenet-hash őrrel). Az ISTENTISZT-001 mércéje a 8.2: a független számlálók (a Döntési út összeadása, az igehelyek halmaza, a KH-darabszám, az ószövetségi versek, a szópár-lánc) mind egyeznek; GK-04 `lxx_egyezes` része, GK-24, GK-25, GK-SZOPAR zöld (a GK-04 `hely_egyseg` része a 218c-é, N234); festékpróba 0 szivárgás; a HN-esetek száma 0. A régi generátor HAMART-kimenete a 218a végén is bájtra azonos a referenciával.
 
 ## 2. Eltérés-összesítés osztályonként (HAMART-001)
 
@@ -91,11 +91,11 @@ A betűre egyező mai szöveg (`eredet=<a régi generátor szimbóluma>`) nem k�
 | 7 | irod_adat | `adat/funkcio_kapcsolok.tsv` | Funkciókapcsolók táblája |
 | 8 | irod_adat | `konkordancia/Karoli_KH_javitott.tsv` | Károli-kereszthivatkozások javított táblája |
 
-### C. Új névtábla-típus: `ok_leiras_cella` (S9a; DT-F218b szerint a nézésen)
+### C. Új névtábla-típus: `ok_leiras_cella` (S9a; DT925 szerint a nézésen)
 
 Az elutasítási ok megjegyzésének táblacella eleji alakja a 3. szakasz okainak táblájában („Mit jelent” oszlop): a névelővel kezdődő megjegyzés nagy kezdőbetűvel (a régi lap szabálya szerint, betűre); a melléklet és a Döntési út a megjegyzést változatlanul közli. 18 sor, a megjegyzéstől csak a kezdőbetűben térhet el (a betöltő ellenőrzi). A sorok: `adat/olvasoi_nevtabla.tsv`, `ok_leiras_cella` típus.
 
-### D. HN-03: a forrásnév a mondat közepén, zárójelben (az S9c tölti ki; DT-F218b)
+### D. HN-03: a forrásnév a mondat közepén, zárójelben (az S9c tölti ki; DT925)
 
 *Külön tétel: minden hely az új lapokon (a 15. független ellenőrzés mérése szerint az új lapokon 16 hely: HAMART-001 9 — 2. szakasz 1, 4. szakasz 4, 9. szakasz 1, 12. szakasz 3; ISTENTISZT-001 7 — 2. szakasz 1, 4. szakasz 2, 9. szakasz 1, 12. szakasz 3; a 10 + 1 a main-en álló régi lapokon mért szám), a mondat előtte/utána alakjában, egyenként visszautasítható. A felhasználó döntésére vár az S1 óta; a végső szó az övé.*
 
