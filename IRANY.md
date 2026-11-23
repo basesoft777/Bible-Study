@@ -3,10 +3,10 @@
 **Cél:** a Biblialex motívumlexikon. Most: hibátlan olvasó, és kész új lapgenerátor a TEREMT-001-próbához.
 
 ## Futó szálak (legfeljebb 2)
-1. **Olvasó-javítás:** a 60 felmért olvasóhibából 58 kijavítása (kívül: a fizetős Thayer-fordítás és a motívumlap) (#231, PR #810). Kész: mind az 58 gépi ellenőrzése zöld, és megnézted az ágas előnézetet; a merge után az integrátor újraindítja a tükröt.
+1. **Olvasó-javítás:** a felmért olvasóhibák javítása (#231, PR #810). A #810 egyszer bemegy (kódszintű független olvasás és a nézésed után), de nem „kész”: a belső nevek a felületen maradtak, mert a mérce a mai állapotot rögzítette, hibáival együtt, nem kapu. Ezért nincs több példányjavító kör (2026-11-23: „ezt a módszert nem fogadom el”); helyette: alak-kapu, amely minden oldaltípust bejár, és minden belső alakra bukik (a kimenete a hátralék); a forrássor a névtáblából; egy névtábla; blokk-jegyzék, hogy a vers- és a szónézet blokkjai kódírás nélkül be- és kivehetők legyenek (2026-11-23: „modulárisan … be és ki tudja venni blokkokat”).
 2. **Új lapgenerátor:** a lexikonlapot előállító program újraírása (F218a, PR #809). Kész: a HAMART-001 és az ISTENTISZT-001 új generátoros lapját átnézted és jóváhagytad (2026-11-23: „hamart az istentisztelettel - átnézésre / jóváhagyás után teremt”); utána a záró lépés (F218.13) a main-en.
 - **Következő szálak**, ebben a sorrendben:
-  - kis adatjavítás: a görög LXX-párok közt 88 helyen hamis „hajnalcsillag” a „reggel” szónál (N-F231a);
+  - kis adatjavítás: a görög LXX-párok közt 88 helyen hamis „hajnalcsillag” a „reggel” szónál (N-F231a), nyelvtani szó (μου) az LXX-megfelelők közt, csonka fejléc és dupla könyvnév a fordított BDB-szövegben;
   - **a JOHD-cikk kéziratának végső köre**, amint a validáció számai megvannak (decemberi beküldés; a kapu előtt);
   - a 15 perces push előtti ellenőrzés kettévágása: munka közben gyors próba, a teljes csak a végén (integrátor);
   - TEREMT-001 (tehóm) cikk nulláról, az új generátorral, a két lap jóváhagyása után.
