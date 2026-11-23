@@ -1,17 +1,17 @@
 ---
 feladat: 240
-cim: Kis adatjavítás — hamis görög LXX-megfelelés, nyelvtani szó az LXX-megfelelők közt, kettőzött könyvnév a fordított BDB-szövegben
+cim: Kis adatjavítás — hamis görög LXX-megfelelés, nyelvtani szó az LXX-megfelelők közt, kettőzött könyvnév a fordított BDB-szövegben, hamis jelentés a BDB-utalás miatt
 kod: LXXBDB
 tipus: feladat
 fazis: folyamat
 modell: opus
 sav: CONTENT
 allapot: nem_indult
-ad: a szólapon és a BDB-kártyán nem áll hamis görög megfelelő (φωσφόρος a „reggel” szónál), nyelvtani szó (μου, σου) az LXX-megfelelők közt, sem kettőzött könyvnév („Zsolt Zsolt 97:7”) és belőle csonka fejléc; mindhárom a forrásban javítva, gépi kapuval
+ad: a szólapon és a BDB-kártyán nem áll hamis görög megfelelő (φωσφόρος a „reggel” szónál), nyelvtani szó (μου, σου) az LXX-megfelelők közt, sem kettőzött könyvnév („Zsolt Zsolt 97:7”) és belőle csonka fejléc, és a versenkénti jelentés nem ugrik egy „see N infra” utalásra (tehóm: „örvény · 5”); mind a négy a forrásban javítva, gépi kapuval
 kovetkezo: vár: szabad szálhely (IRANY)
 munka: adat
-olvas: [IRANY.md, adat/SEMA.md, adat/grammatikai_strongok.tsv, adat/kulso/lxx_bridge.tsv, adat/forditasok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_aranyminta.tsv, konkordancia/BDB_teljes_unabridged.tsv, "konkordancia/Macula_heber_*.tsv", konkordancia/LXX_OS/, konkordancia/Strong_szotar.tsv, eszkozok/grammatikai_strongok_general.py, eszkozok/sqlite_epit.py, eszkozok/bdb_adatblokk.py, eszkozok/bdb_psi_javit.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, naplok/F34_M0_felmeres.md]
-ir: [F240_LXX_BDB_ADATJAVITAS_BRIEF.md, adat/grammatikai_strongok.tsv, adat/lxx_strong_javitas.tsv, adat/forditasok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_aranyminta.tsv, adat/SEMA.md, konkordancia/BDB_teljes_unabridged.tsv, eszkozok/grammatikai_strongok_general.py, eszkozok/lxx_strong_javitas.py, eszkozok/bdb_konyvketto_javit.py, eszkozok/sqlite_epit.py, eszkozok/bdb_adatblokk.py, eszkozok/ellenoriz.py, "eszkozok/teszt_lxxbdb*.py", "naplok/LXXBDB_*", naplok/F240_jelentes.md, nyitott/uj/lxx-bdb-adatjavitas-213252.md, dontesek/uj/lxx-bdb-adatjavitas-213252.md]
+olvas: [IRANY.md, adat/SEMA.md, adat/grammatikai_strongok.tsv, adat/kulso/lxx_bridge.tsv, adat/forditasok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_aranyminta.tsv, konkordancia/BDB_teljes_unabridged.tsv, "konkordancia/Macula_heber_*.tsv", konkordancia/LXX_OS/, konkordancia/Strong_szotar.tsv, eszkozok/grammatikai_strongok_general.py, eszkozok/sqlite_epit.py, eszkozok/bdb_adatblokk.py, eszkozok/bdb_psi_javit.py, eszkozok/bdb_jelolt/hu_illeszt.py, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, adat/bdb_szakaszok.tsv, naplok/F34_M0_felmeres.md]
+ir: [F240_LXX_BDB_ADATJAVITAS_BRIEF.md, adat/grammatikai_strongok.tsv, adat/lxx_strong_javitas.tsv, adat/forditasok.tsv, adat/bdb_szakasz_hu.tsv, adat/bdb_aranyminta.tsv, adat/SEMA.md, konkordancia/BDB_teljes_unabridged.tsv, eszkozok/grammatikai_strongok_general.py, eszkozok/lxx_strong_javitas.py, eszkozok/bdb_konyvketto_javit.py, eszkozok/olvaso_szerver/bdb_vers_jelentes.py, adat/bdb_vers_jelentes.tsv, eszkozok/sqlite_epit.py, eszkozok/bdb_adatblokk.py, eszkozok/ellenoriz.py, "eszkozok/teszt_lxxbdb*.py", "naplok/LXXBDB_*", naplok/F240_jelentes.md, nyitott/uj/lxx-bdb-adatjavitas-213252.md, dontesek/uj/lxx-bdb-adatjavitas-213252.md]
 fugg: []
 nem_fugg: [7, 101, 106, 122, 133, 134, 135, 137, 138, 139, 147, 153, 154, 164, 231, 233, 235, 236]
 helyi_gep: igen
@@ -52,7 +52,13 @@ helyi_gep: igen
 3. **Kapu:** az `ellenoriz.py`-ben: a BDB angol forrásában és a magyar fordításban hivatkozás előtt nem áll kettőzött könyvszó, kivéve a csere-napló `marad` sorait.
 4. A csonka fejléc ellenőrzése: a H0430 „c.” jelentés fejléce a javítás után „angyalok”; az összes fejléc közül, amely könyvszóra végződik, a mérésnaplóba (előtte / utána).
 
-**L4 — Ellenőrzés.** Az olvasó-szerver tesztjei (`python eszkozok/teszt_futtat.py --gyors`), egy próba-adatbázis a repón kívül (a 8765-ös tükör adatbázisát és más session szerverét nem érinti), azon a `/szo/H0430`, `/szo/H1242` és két további érintett szó ágas előnézetben (szabad 8776–8779-es port), a független ellenőr (`fuggetlen-ellenor`) a base..head diffen, legfeljebb egy javítókör, teljes `push_elott.py`. A PR első sora: „Mérce · Állapot · Következő · Akadály”.
+**L5 — Hamis versenkénti jelentés a BDB „see N infra” utalása miatt (4. osztály; az integrátor bővítése, 2026-11-23).** A tehóm (H8415, TEREMT-001 próbalap) 1. táblájának jelentés-oszlopa minden ószövetségi helyen „örvény · 5”-öt mutat. Mérve (`adat/bdb_vers_jelentes.tsv`, csak olvasva): a H8415 44 sorából 38 a `-/5` útvonalat kapja, a „Psa 71:20 (but see 5 infra)” utalástól (táblapozíció ≈ 322) kezdve, holott az 1–4. jelentés szakaszai (`adat/bdb_szakaszok.tsv`) utána állnak; a lábjegyzet ezért hamisan mondja, hogy a BDB az 5. szakaszban maga idézi a helyet (pl. 1Móz 49:25, 7:11). A BDB-ben 37 szócikkben 47 ilyen utalás áll („see/compare N infra/supra/below/above”); ezek közül a mérés szerint csak a H8415 sorai csúsznak el (a H1696, H2403, H5927, H7462 útvonal-sorrendje rendben). A gyártó: `eszkozok/olvaso_szerver/bdb_vers_jelentes.py` (`TablaPont`, a hivatkozás → jelentéspont leképezés).
+1. A gyökérok pontos helyének igazolása a gyártóban (melyik lépés olvassa az utalást jelentéskezdetnek), és javítása **minden szóra**: a „see N infra/supra/below/above” típusú utalás nem jelentéskezdet.
+2. A teljes `adat/bdb_vers_jelentes.tsv` újragenerálása; soronkénti diff a `naplok/LXXBDB_vers_jelentes_diff.tsv`-be, összesítve: hány szó, hány igehely változik.
+3. **Kapu:** (a) az utalás-minta a jelentéskezdet-felismerésben bukás (egységteszt a H8415-re és egy szintetikus esetre); (b) általános konzisztencia: a sor nem kaphat olyan jelentéspontot, amelynek szakasza a sor táblapozíciója után kezdődik (a javítás előtti állapoton a H8415-ön bukik; a mérésnapló rögzíti, hány további szót jelez, és azok ítéletét).
+4. A kiadott lapok ellenőrzése: a mérés szerint a H8415 a kiadott lapok közül csak az ALVIL-001 proveniencia-sorában áll, az 1. táblában nem; a végrehajtáskor a kiadott lapok (HAMART-001, ISTENTISZT-001, ALVIL-001 és a többi `lexikon/*_TUDOMANYOS.md`) 1. táblájának jelentés-oszlopát a diff alapján újra ellenőrizni, és ha bármelyik érintett, azonnal jelezni az integrátornak.
+
+**L4 — Ellenőrzés.** Az olvasó-szerver tesztjei (`python eszkozok/teszt_futtat.py --gyors`), egy próba-adatbázis a repón kívül (a 8765-ös tükör adatbázisát és más session szerverét nem érinti), azon a `/szo/H0430`, `/szo/H1242` és két további érintett szó és a TEREMT-001 próbalapjának tehóm-sorai ágas előnézetben (szabad 8776–8779-es port), a független ellenőr (`fuggetlen-ellenor`) a base..head diffen, legfeljebb egy javítókör, teljes `push_elott.py`. A PR első sora: „Mérce · Állapot · Következő · Akadály”.
 
 ## Döntések (az integrátor, a felhasználó felhatalmazásával, 2026-11-23)
 
@@ -61,6 +67,6 @@ helyi_gep: igen
 
 ## Kész, ha
 
-- a három osztály minden mért példánya javítva vagy a naplóban `marad` / `nem_eldontheto` ítélettel, egy sor indokkal (hamis tartalom nem marad elvetve);
-- a három kapu él, és a javítás előtti állapoton bukik (próbával igazolva);
+- a négy osztály minden mért példánya javítva vagy a naplóban `marad` / `nem_eldontheto` ítélettel, egy sor indokkal (hamis tartalom nem marad elvetve);
+- a négy osztály kapui élnek, és a javítás előtti állapoton bukik (próbával igazolva);
 - a független ellenőr jelentése a `naplok/F240_jelentes.md`-ben; a `push_elott.py` zöld; a PR nyitva.
