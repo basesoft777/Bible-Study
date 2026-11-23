@@ -409,7 +409,9 @@ def lexikon_general(azon, kimenet, datum, gyoker=ROOT):
     Az EGYETLEN belépési pont a lapgenerátorhoz: a jegyzék G01-sorának parancsát futtatja.
     (kilépési kód, kimenet-részlet)."""
     sablon = sor(LAP_SOR, gyoker)['parancs']
-    tagok = _parancs(sablon, id=azon, gyoker=kimenet)
+    # F241.2: a kiadott lap kiadás módban generálódik (a Kolofon jóváhagyás-mondata és a GK-27 kapuja), a többi munka
+    # módban
+    tagok = _parancs(sablon, id=azon, gyoker=kimenet, mod='kiadas' if kiadott(azon, gyoker) else 'munka')
     return _futtat(tagok, gyoker, {'PARDES_DATUM': datum})
 
 

@@ -55,11 +55,12 @@ def csere_beolvas(ut):
 
 
 def generalt_lap(kimenet, motivum_id):
-    """A lap generálása a `kimenet/lexikon/` alá (a `general.py --cel lexikon --id ... --kimenet ...` útja,
-    ugyanabban a folyamatban, hogy a memóriában cserélt forrás érvényesüljön)."""
+    """A lap generálása a `kimenet/lexikon/` alá (a `general.py --cel lexikon_regi --id ... --kimenet ...` útja,
+    ugyanabban a folyamatban, hogy a memóriában cserélt forrás érvényesüljön). A régi generátor célja (F241.2): a
+    memóriában cserélt forrás a régi generátor olvasóján át érvényesül."""
     regi_argv = sys.argv
     try:
-        sys.argv = ['general.py', '--cel', 'lexikon', '--id', motivum_id, '--kimenet', kimenet]
+        sys.argv = ['general.py', '--cel', 'lexikon_regi', '--id', motivum_id, '--kimenet', kimenet]
         G.main()
     finally:
         sys.argv = regi_argv

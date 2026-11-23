@@ -1821,11 +1821,11 @@ def build_parser():
         description='A motivumlexikon generatorai -- F4_GENERATOR_BRIEF.md.',
     )
     p.add_argument('--cel', required=True,
-                    choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon', 'lexikon2',
+                    choices=['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon', 'lexikon_regi', 'lexikon2',
                              'torzscikk', 'forras', 'kinyeres', 'mind'])
     p.add_argument('--mod', choices=['munka', 'kiadas'], default='munka',
-                    help='F218a, --cel lexikon2: munka (alapértelmezés) vagy kiadas; kiadas módban elavult '
-                         'fordítás vagy nem friss jóváhagyás BUKÁS')
+                    help='F218a/F241, --cel lexikon (új generátor) és lexikon2: munka (alapértelmezés) vagy kiadas; '
+                         'kiadas módban elavult fordítás vagy nem friss jóváhagyás BUKÁS')
     p.add_argument('--id', help='egyetlen motívum-ID-re szűkítés (opcionális)')
     p.add_argument('--kimenet', default=os.path.join(ROOT, 'generalt_proba'),
                     help='alapértelmezés: generalt_proba/')
@@ -1853,9 +1853,24 @@ def build_parser():
     return p
 
 
-ELESITHETO = {'naplo', 'index', 'nyitott', 'lexikon', 'torzscikk'}
+ELESITHETO = {'naplo', 'index', 'nyitott', 'lexikon', 'lexikon_regi', 'torzscikk'}
 
 CEL_FAJL = {'naplo': NAPLO_MD, 'index': INDEX_MD, 'nyitott': NYITOTT_MD}
+
+# F241.2 (218c) — átállás motívumonként. A `--cel lexikon` az új generátor; a commitolt lap azonban a régi generátor
+# kimenete, amíg a motívum nem áll át, és a lap (kiadott lapnál új kiadás nélkül nem változhat, E28) addig a régi
+# generátorral készül (visszaút, `--cel lexikon_regi`). A motívum a saját új generátoros kiadásának commitjában kerül
+# erre a listára (ISTENTISZT-001: F241.7, HAMART-001: F241.10); lap nélküli (új) motívum mindig az új generátorral
+# készül. A lista és a visszaút az archiválással (F241.13) szűnik.
+ATALLT_MOTIVUMOK = ()
+
+
+def lexikon_generator(azonosito, gyoker=ROOT):
+    """A `--cel lexikon` generátora a motívumra: 'uj' (átállt, vagy nincs commitolt lapja) vagy 'regi' (visszaút)."""
+    if azonosito in ATALLT_MOTIVUMOK:
+        return 'uj'
+    lap = os.path.join(gyoker, 'lexikon', '%s_TUDOMANYOS.md' % azonosito)
+    return 'regi' if os.path.exists(lap) else 'uj'
 
 
 MEG_NEM_KESZ = {}
@@ -1930,7 +1945,7 @@ def main():
         print('FIGYELEM: a(z) %r cél NEM élesíthető (brief G7) -- a kimenet a '
               '--kimenet könyvtár alá megy.' % args.cel, file=sys.stderr)
 
-    celok = ['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon', 'torzscikk'] \
+    celok = ['naplo', 'index', 'naplok', 'study', 'nyitott', 'lexikon_regi', 'torzscikk'] \
         if args.cel == 'mind' else [args.cel]
     vegso_kod = 0
     konyv_sorrend = konyv_sorrend_betolt()
@@ -1942,9 +1957,14 @@ def main():
             vegso_kod = max(vegso_kod, 2)
             continue
 
-        if cel == 'lexikon2':
-            # F218a: az új lapgenerátor (eszkozok/lapgen/); a `lexikon` cél változatlanul a régi generátor.
-            # Csak repón kívüli --kimenet könyvtárba ír (az alapértelmezett generalt_proba/ nem az).
+        if cel == 'lexikon' and args.id and lexikon_generator(args.id) == 'regi':
+            # F241.2: visszaút — a régi generátor lapja a motívum átállásáig a régi generátorral készül
+            print('--- cél: lexikon (%s: a régi generátor, az átállásig; --cel lexikon_regi) ---' % args.id)
+            cel = 'lexikon_regi'
+        elif cel in ('lexikon', 'lexikon2'):
+            # F241.2: a `lexikon` cél az új lapgenerátor (eszkozok/lapgen/); a régi `lexikon_regi` néven fut a
+            # visszaútig. A `lexikon2` (a 218a próbaneve) azonos vele. Csak repón kívüli --kimenet könyvtárba ír
+            # (az alapértelmezett generalt_proba/ nem az; a lexikon/ végleges helye: F241.7).
             from lapgen import fo as lapgen_fo
             print('--- cél: %s ---' % cel)
             vegso_kod = max(vegso_kod, lapgen_fo.futtat(ROOT, args.id, args.kimenet, args.mod))
@@ -2059,7 +2079,7 @@ def main():
             hianylista_sorok = naplo_hianylista_sorok(jeloltek_teljes)
             hianylista_ir(args, hianylista_sorok, jeloltek_teljes)
 
-        elif cel == 'lexikon':
+        elif cel == 'lexikon_regi':
             import lexikon_general
             vegso_kod = max(vegso_kod, lexikon_general.run(
                 args, motivumok, elofordulasok, konyv_sorrend, hianyzo_konyvek))
@@ -2087,7 +2107,7 @@ def main():
                 relativ = alap + '_1_pont_GENERALT.md'
                 kimenet_ir(args, relativ, tartalom, forras_ut)
 
-        if args.ellenoriz and cel not in ('lexikon', 'torzscikk'):
+        if args.ellenoriz and cel not in ('lexikon_regi', 'torzscikk'):
             # A naplok/study célok NEM élesíthetők ebben a fázisban (brief G7),
             # tehát nincs marker-pár, amihez a blokkot mérni lehetne. A
             # lexikon cél (F6.5) a saját --ellenoriz-jelentését a

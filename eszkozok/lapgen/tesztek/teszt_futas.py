@@ -1,8 +1,10 @@
-"""A teljes futás tesztjei: determinizmus (GK-29), a befagyasztás-kivétel (GK-30)."""
+"""A teljes futás tesztjei: determinizmus (GK-29), a befagyasztás-kivétel (GK-30), a célnév és a G01 módja (F241.2)."""
+import contextlib
 import datetime
 import io
 import os
 import shutil
+import sys
 import tempfile
 import unittest
 
@@ -88,6 +90,82 @@ class Befagyasztas(unittest.TestCase):
                 self.assertEqual(fo.futtat(kozos.GYOKER, azonosito, os.path.join(kozos.GYOKER, 'generalt_proba'),
                                            ki=ki), 0)
                 self.assertIn('kihagyva', ki.getvalue())
+
+
+class Celnev(unittest.TestCase):
+    """F241.2 (N243 (2), (4)): a `--cel lexikon` az új generátor; a még át nem állt motívum commitolt lapja a régi
+    generátorral készül (visszaút, `ATALLT_MOTIVUMOK`); a régi generátor `--cel lexikon_regi` néven fut. A két generátor
+    hívását a teszt rögzíti (nem futtatja)."""
+
+    def setUp(self):
+        import general
+        import lexikon_general
+        self.general, self.lg = general, lexikon_general
+        self.hivasok = []
+        self._eredeti = (fo.futtat, lexikon_general.run, sys.argv, general.ATALLT_MOTIVUMOK)
+        fo.futtat = lambda gyoker, azon, kimenet, mod='munka', **_k: self.hivasok.append(('uj', azon, mod)) or 0
+        lexikon_general.run = lambda args, motivumok, *_a: self.hivasok.append(
+            ('regi', tuple(m['id'] for m in motivumok), args.cel)) or 0
+
+    def tearDown(self):
+        fo.futtat, self.lg.run, sys.argv, self.general.ATALLT_MOTIVUMOK = self._eredeti
+
+    def _hiv(self, *argv):
+        sys.argv = ['general.py'] + list(argv)
+        with contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO()):
+            return self.general.main()
+
+    def test_lap_nelkuli_motivum_az_uj_generatorral(self):
+        self.assertEqual(self._hiv('--cel', 'lexikon', '--id', 'NINCSLAP-001', '--kimenet', 'x', '--mod', 'kiadas'), 0)
+        self.assertEqual(self.hivasok, [('uj', 'NINCSLAP-001', 'kiadas')])
+
+    def test_visszaut_a_regi_generatorra(self):
+        """A commitolt régi lap (a HAMART-001 és a befagyasztott lapok) az átállásig a régi generátorral készül."""
+        self.assertNotIn('HAMART-001', self.general.ATALLT_MOTIVUMOK)
+        self.assertEqual(self._hiv('--cel', 'lexikon', '--id', 'HAMART-001', '--kimenet', 'x'), 0)
+        self.assertEqual(self.hivasok, [('regi', ('HAMART-001',), 'lexikon')])
+
+    def test_az_atallt_motivum_az_uj_generatorral(self):
+        self.general.ATALLT_MOTIVUMOK = ('HAMART-001',)
+        self.assertEqual(self._hiv('--cel', 'lexikon', '--id', 'HAMART-001', '--kimenet', 'x'), 0)
+        self.assertEqual(self.hivasok, [('uj', 'HAMART-001', 'munka')])
+
+    def test_a_regi_celnev(self):
+        self.assertEqual(self._hiv('--cel', 'lexikon_regi', '--id', 'TEREMT-001', '--kimenet', 'x'), 0)
+        self.assertEqual(self.hivasok, [('regi', ('TEREMT-001',), 'lexikon_regi')])
+
+
+class G01Mod(unittest.TestCase):
+    """F241.2: a jegyzék G01-sora (az egyetlen belépési pont) a kiadott lapot kiadás módban generálja (a Kolofon
+    jóváhagyás-mondata és a GK-27 kapuja), a többit munka módban; a parancs a `--cel lexikon`."""
+
+    def setUp(self):
+        import generalt_nezetek
+        self.gn = generalt_nezetek
+        self.tagok = []
+        self._eredeti = generalt_nezetek._futtat
+        generalt_nezetek._futtat = lambda tagok, cwd, env_kieg=None: self.tagok.append(tagok) or (0, '')
+
+    def tearDown(self):
+        self.gn._futtat = self._eredeti
+
+    def _kiadott(self):
+        with open(os.path.join(kozos.GYOKER, 'adat', 'kiadasok.tsv'), encoding='utf-8') as f:
+            return {s.split('\t')[0] for s in f if s.strip() and not s.startswith('#')}
+
+    def test_a_parancs_az_uj_celnev(self):
+        parancs = self.gn.sor(self.gn.LAP_SOR)['parancs'].split()
+        self.assertEqual(parancs[parancs.index('--cel') + 1], 'lexikon')
+        self.assertIn('{mod}', parancs)
+
+    def test_kiadott_lap_kiadas_modban(self):
+        kiadott = self._kiadott()
+        self.assertIn('HAMART-001', kiadott)
+        self.assertNotIn('TEREMT-001', kiadott)
+        self.gn.lexikon_general('HAMART-001', 'x', '2026-11-13')
+        self.gn.lexikon_general('TEREMT-001', 'x', '2026-11-13')
+        modok = [t[t.index('--mod') + 1] for t in self.tagok]
+        self.assertEqual(modok, ['kiadas', 'munka'])
 
 
 if __name__ == '__main__':

@@ -1084,7 +1084,7 @@ licenc-szövegen túli feltételt jelöl (pl. védjegy-szabály, UK Crown-jog).
 - Leképezés: `tisztazott` és `kozkincs` állapotú sor: nincs tisztázatlan-jelölés; `tisztazatlan` állapotú sor: van jelölés (a generátor motívumonkénti összegző sora, `tisztázatlan licencű forrás érintett-e`, a `szocikkek` blokk szótárkulcsaira).
 - A `cimke` csak a nézetek rövid címkéje; a kötelező forrásmegjelölések szó szerinti szövege a `kotelezo_megjeloles` mezőben áll (a Mounce- és LSJ-megjelölést a generátor ma is saját mondatként írja, az LSJ-mondat licencneve a táblából jön).
 - A mai kód és tábla eltérései, amelyek a bevezetéskor megszűntek: az `UBS` kulcs (a táblában `UBS_DBH` és `UBS_DNTG`), a `projekt-adat` / `projekt_adat` névkülönbség, az LSJ címkéje (CC BY-SA 3.0 → 4.0, Perseus nyilatkozata szerint).
-- A tábla és a generátor együttes helyességét a `python eszkozok/general.py --cel lexikon --ellenoriz` futása mutatja (hiányzó sor = hiba).
+- A tábla és a generátor együttes helyességét a `python eszkozok/general.py --cel lexikon_regi --ellenoriz` futása mutatja (hiányzó sor = hiba; a régi generátor, F241.2).
 
 ### 2.20 `adat/karoli_strong/parok_<könyv>.tsv` és `szavak_<könyv>.tsv` — Károli–Strong párosítás könyvenként
 

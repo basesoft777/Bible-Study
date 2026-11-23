@@ -220,7 +220,8 @@ def lista_keszit(motivum_id, kimenet):
 
     lg.forditas_ehhez = naplozo
     regi_argv = sys.argv
-    sys.argv = ['general.py', '--cel', 'lexikon', '--id', motivum_id, '--kimenet', kimenet]
+    # a régi generátor belső függvényét naplózza: a régi cél (F241.2; az archiválás a #241 C szeletében)
+    sys.argv = ['general.py', '--cel', 'lexikon_regi', '--id', motivum_id, '--kimenet', kimenet]
     try:
         general.main()
     finally:
