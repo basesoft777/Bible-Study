@@ -1,0 +1,32 @@
+OK   jeloltek: beépítve = 43 (várt 43)
+OK   jeloltek: elutasítva = 32 (várt 32)
+OK   jeloltek: nyitva = 0 (várt 0)
+OK   jeloltek: más döntésérték nincs ({})
+OK   jeloltek: Jel 20:1 = beépítve
+OK   jeloltek: Jel 20:3 = beépítve
+OK   jeloltek: Jel 20:1-3 tartomány nincs
+OK   jeloltek: kulcs-duplikátum nincs
+OK   jeloltek: motívumközi sor = 1 (várt 1)
+OK   jeloltek: motívumközi = ALVIL-001 Ez 31:15→Ez 31:15 beépítve
+info jeloltek: ALVIL-001 → TEREMT-001 irányú sor: 0
+OK   elofordulasok: 43 sor (várt 43)
+OK   elofordulasok: igehely-duplikátum nincs
+OK   elofordulasok: 44 vers (várt 44)
+OK   elofordulasok: Jel 20:1 és 20:3 külön, tartomány nincs
+OK   elofordulasok = jeloltek beépített igehelyei
+info elofordulasok: tartományok: ['Jel 9:1-2']
+info elofordulasok: üres funkcio: ['1Móz 1:2', '1Móz 7:11', '1Móz 8:2', '1Móz 49:25', '2Móz 15:5', '2Móz 15:8', '5Móz 8:7', '5Móz 33:13', 'Jób 28:14', 'Jób 38:16', 'Jób 38:30', 'Zsolt 33:7', 'Zsolt 36:7', 'Zsolt 42:8', 'Zsolt 71:20', 'Zsolt 77:17', 'Zsolt 78:15', 'Zsolt 104:6', 'Zsolt 106:9', 'Zsolt 107:26', 'Zsolt 135:6', 'Zsolt 148:7', 'Péld 3:20', 'Péld 8:24', 'Péld 8:27', 'Péld 8:28', 'Ézs 51:10', 'Ézs 63:13', 'Ez 26:19', 'Ez 31:4', 'Ez 31:15', 'Ámós 7:4', 'Hab 3:10', 'Jón 2:6', 'Luk 8:31', 'Róm 10:7', 'Jel 9:1-2', 'Jel 9:11', 'Jel 11:7', 'Jel 17:8', 'Jel 20:1', 'Jel 20:3', 'Jób 41:32']
+OK   motivum_kapcsolatok: 1 TEREMT-001 sor (várt 1)
+OK   motivum_kapcsolatok: ALVIL-001 Ez 31:15 – TEREMT-001 Ez 31:15 közös_igehely
+OK   tematikus_temak: 11 sor (várt 11)
+OK   tematikus_temak: duplikátum nincs
+OK   tematikus_temak: kiválasztott = ['DEW', 'EARTH', 'PIT', 'PSALMS']
+OK   tematikus_temak: kizárt = ['ANIMALS', 'CONTINENTS', 'EPHRAIM', 'EPIC', 'MANASSEH', 'POETRY', 'SONG']
+OK   tematikus_temak: tiltott = []
+info tematikus_temak forras: ['Nave']
+OK   motivumok: 1 sor
+OK   motivumok: a kizárási szabály új szövege benne van
+OK   motivumok: a régi „LXX-közvetített” fordulat nincs
+info negativ_kriterium: az igehelynek a תְּהוֹם (tehóm) gyököt kell tartalmaznia (az Újszövetségben a görög ἄβυσσος (abüsszosz) szót, a Septuaginta tehóm-fordításának szavát) — tematikus vízkép önmagában (pl. יָם – jám, "tenger") nem elég
+
+ÖSSZESEN: nincs eltérés
