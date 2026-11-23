@@ -12,6 +12,11 @@ versre szól-e, Strong-számra szól-e). A másik oldal a bekötés: a blokk-reg
 
 Futtatás (a repó gyökeréből):
     python eszkozok/olvaso_szerver/bekotesi_leltar.py [--db pardes.db] [--kimenet naplok/OLVASO_BEKOTESI_leltar.md]
+Összevető mód (a push előtti kapu futtatja, `push_elott.py`): ami az alapon (`git merge-base origin/main HEAD`) az olvasóban látszott
+(blokk, tábla, adatkészlet; vers-, szó-, fejezetlap-nézet és keresés), az az ágon is látsszon:
+    python eszkozok/olvaso_szerver/bekotesi_leltar.py --osszevet [ALAP]      # HIBA-kilépés (1), ha valami eltűnt, feltételhez kötődött vagy másik fülre került
+A kivételek (szándékos változás): `merce/bekotes_kivetel.tsv`, soronként egy indokkal. A „látszik” a blokk szintjén áll (kiadás, hozzáférési szint,
+feltételek, fül); a blokkon belüli lenyílót és a jelleg-címkét nem látja (az a renderelt HTML-ben van: `teszt_blokkfej.py`, #810).
 A DB útvonala: `--db`, majd a `PARDES_DB` környezeti változó, majd a `konfig/szerver.toml` `db` mezője, majd a repó gyökerének
 `pardes.db`-je, végül (linkelt munkafában) a fő checkout `pardes.db`-je.
 """
@@ -33,6 +38,9 @@ if hasattr(sys.stderr, 'reconfigure'):
 D = os.path.dirname(os.path.abspath(__file__))
 GYOKER = os.path.dirname(os.path.dirname(D))
 KONFIG = os.path.join(D, 'konfig')
+# A kód és a konfiguráció helye, amelyet a szkript elemez. Alapból a munkafa; az összevető mód ideiglenesen az alap (merge-base) kinyert másolatára állítja.
+KOD_DIR = D
+KONFIG_DIR = KONFIG
 ALAP_KIMENET = os.path.join(GYOKER, 'naplok', 'OLVASO_BEKOTESI_leltar.md')
 
 # A fogyasztó-csoportok: melyik függvények számítanak a fejezetlap közvetlen hívásainak. Ha a kód átnevezi őket, a szkript hibát jelez
@@ -110,7 +118,7 @@ def megnyit(ut):
 # a forráskód elemzése (ast): blokk-regiszter, lekérdezések táblái, a fogyasztók hívásai
 # ---------------------------------------------------------------------------------------------------------------------
 def _parse(fajl):
-    with open(os.path.join(D, fajl), encoding='utf-8') as f:
+    with open(os.path.join(KOD_DIR, fajl), encoding='utf-8') as f:
         return ast.parse(f.read(), fajl)
 
 
@@ -256,7 +264,7 @@ def fogyasztok(tablazo):
     csoportok = defaultdict(lambda: defaultdict(set))
     hianyzo = []
     for modul in FOGYASZTO_MODULOK:
-        ut = os.path.join(D, modul)
+        ut = os.path.join(KOD_DIR, modul)
         if not os.path.isfile(ut):
             continue
         fv = modul_fuggvenyek(_parse(modul))
@@ -394,7 +402,7 @@ def lefedettseg_szoveg(l, ossz):
 # ---------------------------------------------------------------------------------------------------------------------
 class Hozzaferes:
     def __init__(self):
-        with open(os.path.join(KONFIG, 'hozzaferes.toml'), 'rb') as f:
+        with open(os.path.join(KONFIG_DIR, 'hozzaferes.toml'), 'rb') as f:
             c = tomllib.load(f)
         self.szintek = c['szintek']
         self.alap = c['alapertelmezett_szint']
@@ -448,7 +456,8 @@ def nezet_kod(b):
 # ---------------------------------------------------------------------------------------------------------------------
 # a leltár összeállítása
 # ---------------------------------------------------------------------------------------------------------------------
-def osszeallit(con, ut_db, db_forras):
+def osszeallit(con, ut_db, db_forras, gyors=False):
+    """`gyors`: az összevető módhoz: a lefedettség (a lassú, táblánkénti lekérdezések) kimarad; a láthatóság és a kötés ugyanaz."""
     tablak = tablak_listaja(con)
     tabla_set = set(tablak)
     sorok = {t: con.execute('SELECT COUNT(*) FROM "%s"' % t).fetchone()[0] for t in tablak}
@@ -472,7 +481,7 @@ def osszeallit(con, ut_db, db_forras):
     fogy = fogyasztok(tablazo)
     hozz = Hozzaferes()
     kizaras = literal_valtozo('adatbazis.py', 'TABLA_KIZARAS')
-    with open(os.path.join(KONFIG, 'szerver.toml'), 'rb') as f:
+    with open(os.path.join(KONFIG_DIR, 'szerver.toml'), 'rb') as f:
         kiadas = tomllib.load(f).get('kiadas', 'belso')
     ful_nev = dict(literal_valtozo('oldalak.py', 'VERS_FULEK'))
     fulblokk = literal_valtozo('oldalak.py', 'FULBLOKK')
@@ -556,7 +565,7 @@ def osszeallit(con, ut_db, db_forras):
             magyar = 'a blokk magyar fordítással együtt mutatja (%s)' % ', '.join(parok)
         else:
             magyar = 'nincs'
-        l = lefedettseg(con, t, oszlopok, vers_cols, strong_cols, ossz) if (sorok[t] and (vers_cols or strong_cols)) else \
+        l = lefedettseg(con, t, oszlopok, vers_cols, strong_cols, ossz) if (sorok[t] and (vers_cols or strong_cols) and not gyors) else \
             {'vers': None, 'strong': None, 'frakcio': 0.0, 'tartomany': False}
         sorlista.append({'tabla': t, 'sor': sorok[t], 'oszlopok': oszlopok, 'kulcs': kulcs, 'kulcs_megj': kulcs_megj, 'vers_cols': vers_cols,
                          'strong_cols': strong_cols, 'licenc': lic, 'dataset': ds, 'tokenek': tokenek, 'blokkok': bl, 'nezetek': nezetek,
@@ -865,11 +874,204 @@ def generalt_szoveg(L):
     return '\n'.join(ki) + '\n', os_
 
 
+# ---------------------------------------------------------------------------------------------------------------------
+# az összevető mód: ami az alapon (a `git merge-base origin/main HEAD`) látszott, az az ágon is látsszon (adatkészlet-, tábla- és blokkszint)
+# ---------------------------------------------------------------------------------------------------------------------
+KIVETEL_UT = os.path.join(D, 'merce', 'bekotes_kivetel.tsv')
+KIVETEL_SZINTEK = ('blokk', 'tabla')
+NEZETEK = ('vers', 'szó', 'fejezetlap', 'keresés')
+RANG_SZOVEG = {2: 'látszik', 1: 'feltételhez kötve', 0: 'nem látszik'}
+
+
+def _feltetelek(b):
+    return [j for j in b['jegyzet'] if not j.startswith('kizárva')]
+
+
+def blokk_rang(b):
+    """2: feltétel nélkül látszik; 1: feltételhez kötve (vers-kontextus, üres eredménynél rejtve, hiányozhat, követ); 0: nem látszik."""
+    if not b['latszik']:
+        return 0
+    return 1 if _feltetelek(b) else 2
+
+
+def latszo(L, ds_sorok=None):
+    """A „látszik” halmaz: {(szint, kulcs, nézet): {'rang', 'hely', 'blokkok'}}. Szint: blokk | tabla | adatkeszlet. A tábla rangja a nézetben a
+    legjobb blokkjáé (a fejezetlap közvetlen hívása feltétel nélküli); az adatkészleté a legjobb tábláé. A kiadás és a hozzáférési szint
+    a blokk állapotában már benne van (konfigurált kiadás és alapszint)."""
+    ki = {}
+    for b in L['blokkok']:
+        ki[('blokk', b['id'], b['nezet'])] = {'rang': blokk_rang(b), 'hely': b['hely'], 'blokkok': frozenset([b['id']])}
+    tabla_rang = {}
+    for t in L['tablak']:
+        for nez in NEZETEK:
+            bl = [b for b in t['nezetek'].get(nez, ()) if blokk_rang(b) > 0]
+            rang = max([blokk_rang(b) for b in bl] + [2 if (nez == 'fejezetlap' and t['nezetek'].get('fejezetlap_hivas')) else 0])
+            if rang:
+                ki[('tabla', t['tabla'], nez)] = {'rang': rang, 'hely': '', 'blokkok': frozenset(b['id'] for b in bl)}
+                tabla_rang[(t['tabla'], nez)] = rang
+    for nev, info in (ds_sorok if ds_sorok is not None else dataset_sorok(L)):
+        for nez in NEZETEK:
+            rangok = [tabla_rang.get((t['tabla'], nez), 0) for t in info['tablak']]
+            if rangok and max(rangok):
+                ki[('adatkeszlet', nev, nez)] = {'rang': max(rangok), 'hely': '', 'blokkok': frozenset()}
+    return ki
+
+
+def osszevet(alap, ag):
+    """Az alap és az ág `latszo` halmazának összevetése. Kimenet: [{'szint', 'kulcs', 'nezet', 'alap', 'ag', 'ok', 'magyarazott'}].
+    A tábla- és adatkészlet-szintű eltérés `magyarazott`, ha a láthatóságot adó blokkok mind eltérnek (az ok a blokk-szintű sor), illetve
+    ha az adatkészlet egy táblája eltér (az ok a tábla-szintű sor): ezek csak következmények, a hibát az ok adja."""
+    ki = []
+    blokk_elt = set()
+    for k, a in sorted(alap.items()):
+        if k[0] != 'blokk' or a['rang'] == 0:
+            continue
+        g = ag.get(k)
+        rang_ag = g['rang'] if g else 0
+        if rang_ag < a['rang']:
+            ok = 'a blokk hiányzik a regiszterből' if g is None else 'a blokk %s' % RANG_SZOVEG[rang_ag]
+        elif a['hely'].startswith('Vers') and g and not g['hely'].startswith('Vers') and rang_ag > 0:
+            ok = 'a blokk másik fülre került (%s → %s)' % (a['hely'], g['hely'])
+        else:
+            continue
+        blokk_elt.add(k[1])
+        ki.append({'szint': 'blokk', 'kulcs': k[1], 'nezet': k[2], 'alap': RANG_SZOVEG[a['rang']] + (' (%s)' % a['hely'] if a['hely'] else ''),
+                   'ag': ok, 'ok': ok, 'magyarazott': False})
+    tabla_elt = set()
+    for k, a in sorted(alap.items()):
+        if k[0] != 'tabla' or a['rang'] == 0:
+            continue
+        rang_ag = ag.get(k, {'rang': 0})['rang']
+        if rang_ag < a['rang']:
+            tabla_elt.add((k[1], k[2]))
+            ki.append({'szint': 'tabla', 'kulcs': k[1], 'nezet': k[2], 'alap': RANG_SZOVEG[a['rang']], 'ag': RANG_SZOVEG[rang_ag],
+                       'ok': 'a tábla ebben a nézetben %s' % RANG_SZOVEG[rang_ag],
+                       'magyarazott': bool(a['blokkok']) and a['blokkok'] <= blokk_elt})
+    for k, a in sorted(alap.items()):
+        if k[0] != 'adatkeszlet' or a['rang'] == 0:
+            continue
+        rang_ag = ag.get(k, {'rang': 0})['rang']
+        if rang_ag < a['rang']:
+            ki.append({'szint': 'adatkeszlet', 'kulcs': k[1], 'nezet': k[2], 'alap': RANG_SZOVEG[a['rang']], 'ag': RANG_SZOVEG[rang_ag],
+                       'ok': 'az adatkészlet ebben a nézetben %s' % RANG_SZOVEG[rang_ag], 'magyarazott': True})
+    return ki
+
+
+def kivetelek_beolvas(ut=KIVETEL_UT):
+    """[(szint, kulcs, nézet, indok)]. A `*` bármire illik. Ismeretlen szint vagy 20 karakternél rövidebb indok: hiba (egy sor indok kötelező)."""
+    ki = []
+    if not os.path.isfile(ut):
+        return ki
+    with open(ut, encoding='utf-8') as f:
+        sorok = [l.rstrip('\r\n') for l in f if l.strip() and not l.startswith('#')]
+    for s in sorok[1:]:                                   # az első sor a fejléc
+        r = s.split('\t')
+        if len(r) != 4 or r[0] not in KIVETEL_SZINTEK or len(r[3].strip()) < 20:
+            raise ValueError('bekotes_kivetel.tsv: négy oszlop (szint, kulcs, nezet, indok), a szint %s, az indok legalább 20 karakter: %r'
+                             % ('/'.join(KIVETEL_SZINTEK), s))
+        ki.append(tuple(r))
+    return ki
+
+
+def kivetel_szerint(elteresek, kivetelek):
+    """(hibák, kivételesek): a nem magyarázott eltérés hiba, kivéve, ha egy kivétel-sor illik rá (szint, kulcs, nézet; `*` bármi)."""
+    hibak, kivetelesek = [], []
+    for e in elteresek:
+        if e['magyarazott']:
+            continue
+        k = next((k for k in kivetelek if k[0] == e['szint'] and k[1] in ('*', e['kulcs']) and k[2] in ('*', e['nezet'])), None)
+        (kivetelesek if k else hibak).append((e, k))
+    return [e for e, _ in hibak], kivetelesek
+
+
+def alap_kinyer(alap):
+    """Az alap (git-hivatkozás) `eszkozok/olvaso_szerver/*.py` és `konfig/*.toml` fájljainak kinyerése ideiglenes könyvtárba. A tar tagjainak
+    útját nem használja közvetlenül: a fájlnév alapján, a célkönyvtáron belülre ír. Visszaad: a kinyert olvaso_szerver könyvtár útja."""
+    import io
+    import tarfile
+    import tempfile
+    p = subprocess.run(['git', 'archive', '--format=tar', alap, '--', 'eszkozok/olvaso_szerver/*.py', 'eszkozok/olvaso_szerver/konfig/*.toml'],
+                       cwd=GYOKER, capture_output=True, timeout=300)
+    if p.returncode != 0:
+        raise SystemExit('git archive %s: %s' % (alap, p.stderr.decode('utf-8', 'replace').strip()))
+    tmp = tempfile.mkdtemp(prefix='bekotes_alap_')
+    cel = os.path.join(tmp, 'eszkozok', 'olvaso_szerver')
+    os.makedirs(os.path.join(cel, 'konfig'))
+    with tarfile.open(fileobj=io.BytesIO(p.stdout)) as t:
+        for m in t.getmembers():
+            if not m.isfile():
+                continue
+            reszek = m.name.split('/')
+            if reszek[:2] != ['eszkozok', 'olvaso_szerver'] or '..' in reszek:
+                continue
+            if len(reszek) == 3 and reszek[2].endswith('.py'):
+                ut = os.path.join(cel, reszek[2])
+            elif len(reszek) == 4 and reszek[2] == 'konfig' and reszek[3].endswith('.toml'):
+                ut = os.path.join(cel, 'konfig', reszek[3])
+            else:
+                continue
+            with open(ut, 'wb') as f:
+                f.write(t.extractfile(m).read())
+    return cel
+
+
+def merge_base(ref='origin/main'):
+    p = subprocess.run(['git', 'merge-base', ref, 'HEAD'], cwd=GYOKER, capture_output=True, text=True, timeout=60)
+    if p.returncode != 0 or not p.stdout.strip():
+        raise SystemExit('nincs merge-base (%s): %s' % (ref, p.stderr.strip()))
+    return p.stdout.strip()
+
+
+def osszevet_futtat(db_arg, alap_ref):
+    """A teljes összevetés: (alap sha, eltérések, hibák, kivételesek, a vizsgált alap-elemek száma). A munkafa állapota az „ág”."""
+    global KOD_DIR, KONFIG_DIR
+    alap = merge_base(alap_ref) if alap_ref in (None, 'origin/main') else alap_ref
+    ut, forras = db_utvonal(db_arg)
+    con = megnyit(ut)
+    try:
+        ag = latszo(osszeallit(con, ut, forras, gyors=True))
+        cel = alap_kinyer(alap)
+        regi = (KOD_DIR, KONFIG_DIR)
+        KOD_DIR, KONFIG_DIR = cel, os.path.join(cel, 'konfig')
+        try:
+            ma = latszo(osszeallit(con, ut, forras, gyors=True))
+        except SystemExit as e:
+            raise SystemExit('az alap (%s) elemzése nem sikerült, a leltár-szkript elavult lehet: %s' % (alap[:8], e))
+        finally:
+            KOD_DIR, KONFIG_DIR = regi
+    finally:
+        con.close()
+    elteresek = osszevet(ma, ag)
+    hibak, kivetelesek = kivetel_szerint(elteresek, kivetelek_beolvas())
+    return alap, elteresek, hibak, kivetelesek, sum(1 for v in ma.values() if v['rang'])
+
+
+def osszevet_kiir(alap, elteresek, hibak, kivetelesek, vizsgalt):
+    print('bekotesi_leltar --osszevet: alap %s, %d látszó elem vizsgálva (blokk, tábla, adatkészlet; nézetenként)' % (alap[:8], vizsgalt))
+    kovetkezmeny = [e for e in elteresek if e['magyarazott']]
+    for e, k in kivetelesek:
+        print('KIVÉTEL  %s %s (%s): %s -> %s; indok: %s' % (e['szint'], e['kulcs'], e['nezet'], e['alap'], e['ag'], k[3]))
+    for e in hibak:
+        print('HIBA     %s %s (%s): a main-en %s, az ágon %s' % (e['szint'], e['kulcs'], e['nezet'], e['alap'], e['ag']))
+    if kovetkezmeny:
+        print('(%d tábla- vagy adatkészlet-szintű következmény a fenti blokk-, illetve táblaszintű okok miatt; külön nem hiba)' % len(kovetkezmeny))
+    if hibak:
+        print('HIBA: %d elem látszott az alapon, az ágon nem látszik vagy rosszabb. Szándékos változás: egy sor kivétel a '
+              '`eszkozok/olvaso_szerver/merce/bekotes_kivetel.tsv`-ben (szint, kulcs, nézet, indok), a szerkesztő döntésével.' % len(hibak))
+    else:
+        print('0 HIBA: ami az alapon látszott, az az ágon is látszik%s.' % (' (%d kivétellel)' % len(kivetelesek) if kivetelesek else ''))
+    return 1 if hibak else 0
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split('\n')[0])
     ap.add_argument('--db', default=None, help='a pardes.db útvonala (alapból: PARDES_DB, szerver.toml, repó, fő checkout)')
     ap.add_argument('--kimenet', default=ALAP_KIMENET, help='a Markdown kimenet útvonala')
+    ap.add_argument('--osszevet', nargs='?', const='origin/main', default=None, metavar='ALAP',
+                    help='összevetés: ami az alapon (alap: git merge-base origin/main HEAD; vagy a megadott git-hivatkozáson) látszott, az az ágon is látsszon; HIBA-kilépés (1), ha nem')
     a = ap.parse_args()
+    if a.osszevet is not None:
+        sys.exit(osszevet_kiir(*osszevet_futtat(a.db, a.osszevet)))
     ut, forras = db_utvonal(a.db)
     con = megnyit(ut)
     try:

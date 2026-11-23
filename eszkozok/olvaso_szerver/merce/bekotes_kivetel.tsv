@@ -1,0 +1,3 @@
+# A bekötés-összevetés (bekotesi_leltar.py --osszevet) kivételei: ami az alapon (main) látszott, az ágon szándékosan nem. Egy sor = egy kivétel, a szerkesztő döntésével.
+# szint: blokk | tabla; kulcs: a blokk azonosítója vagy a tábla neve; nezet: vers | szó | fejezetlap | keresés (a `*` bármit jelent); indok: legalább 20 karakter, egy sor.
+szint	kulcs	nezet	indok
