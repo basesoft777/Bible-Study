@@ -608,7 +608,7 @@ class PrTerkepOrTest(unittest.TestCase):
 
 
 class AlapMezoTest(Alap):
-    """DT-F0a (a #842 esete): a #241 utáni brief kiinduló állapota kötelező mező."""
+    """DT952 (a #842 esete): a #241 utáni brief kiinduló állapota kötelező mező."""
     def hibak_szoveg(self):
         return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]
 

@@ -160,7 +160,7 @@ nem F8-tárgy (`F8_BRIEF.md` §3). A négy érintett szerep ma:
   a sorrenden kívül érkező döntések miatt a seól-kapcsolat és a Nave-sorok be-, majd kikerültek; a #810 F231.19-e: egy később
   visszavont sémadöntés végrehajtva, 2026-11-23.)*
 - **Kiinduló állapot:** a brief `alap:` mezője (`feladatok.py ellenoriz` kéri, `feladatok.py alap <n>` összeveti a mai
-  main-nel); brief nélkül, üzenettel indított sessionnél az indító üzenet első sora `alap: …` (DT-F0a; eset: a tervezőtábla).
+  main-nel); brief nélkül, üzenettel indított sessionnél az indító üzenet első sora `alap: …` (DT952; eset: a tervezőtábla).
 
 ## Kontextus-őrzés (F32, KONTEXTUS)
 

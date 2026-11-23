@@ -73,7 +73,7 @@ SAV_ATMENET_KIVETEL = (217, 218)
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
            'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav', 'lezar', 'alap')
-# DT-F0a elso alkalmazasa (a #842 esete, 2026-11-23): a brief kiindulo allapota (commit, cimke vagy
+# DT952 elso alkalmazasa (a #842 esete, 2026-11-23): a brief kiindulo allapota (commit, cimke vagy
 # `PR #<n> merge-e után`). A #241 utani feladat/naplozas/felmeres briefnel kotelezo; a regieknel nem.
 ALAP_KUSZOB = 241
 ALAP_MINTA = re.compile(r'^(?:[0-9a-f]{7,40}|[A-Za-z][A-Za-z0-9._/-]*|PR #\d+ merge-e után)$')
@@ -1593,7 +1593,7 @@ def main(argv=None):
                     help='F201: a tavoli agak (origin) gyokerebeli F<nn>_* fajljait es a foglalasokat is figyelembe veszi (git fetch)')
     ks.add_argument('--foglal', metavar='AGNEV',
                     help='F201: a szamot atomian lefoglalja az originen (foglalas/F<nn> ag; push!), igy mas ag nem kaphatja meg')
-    al = alp.add_parser('alap', help='a brief `alap`-ja és a mai main összevetése az `olvas` útjain (DT-F0a)')
+    al = alp.add_parser('alap', help='a brief `alap`-ja és a mai main összevetése az `olvas` útjain (DT952)')
     al.add_argument('feladatok', nargs='+', type=int, metavar='SZAM')
     sz = alp.add_parser('szint', help='F188 T5: az ellenőrzési szint és a javítókör-korlát (munka/ir mezőből)')
     sz.add_argument('feladatok', nargs='*', type=int, metavar='SZAM')
