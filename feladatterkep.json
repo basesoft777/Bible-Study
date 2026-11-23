@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-23",
-   "commit": "f51e147f"
+   "commit": "88de0029"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5939,6 +5939,16 @@
      "🟢"
     ],
     "sor": 898
+   },
+   {
+    "id": "DT952",
+    "feladat": "folyamat (a DT944 megfordítása: hibából gépi kapu, nem új bekezdés; 2026-11-23)",
+    "kerdes": "A DT944 (#826) szerint szabályhiánynál az integrátor ugyanabban a fordulóban a szabályhelyet javítja; ez szabálytermelő szabály lett: 2026-11-23-án egy nap alatt hét-nyolc új bekezdés került a mindig betöltött fájlokba (#817, #822, #823, #825, #826, #830, #835, #842). A Fable-tanácsadó (claude-fable-5-2) szerint a `CLAUDE.md` 9,8 KB-ról (09-15) 22,3 KB-ra nőtt, és a karcsúsítás enélkül visszanő; az „egy lépés”: a DT944 megfordítása. Eset: #842 (kiinduló commit megnevezése) újabb MUNKAMENET-bekezdésként.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 902
    }
   ],
   "javasolt": [],
