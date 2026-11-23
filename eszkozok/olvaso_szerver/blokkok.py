@@ -2649,7 +2649,7 @@ REGISZTER = [
     # ÚSZ-előfordulás, héber háttér, SDGNT, UBS DNTG; a nyers forrásszövegek alul, csukva)
     B('szo.magyar_gorog', 'szo_g', F('blokk.szo.magyar_gorog'), ('modell', 'gepi'), ('forditasok', 'thayer_szakaszok', 'thayer_vers_jelentes'), _f_magyar_gorog, _r_magyar_gorog,
       ures_html=_ures_magyar_gorog, jelleg_fn=lambda d: ('modell', 'gepi') if d.get('th') else ('forras', 'gepi')),
-    B('szo.usz', 'szo_g', 'ÚSZ-előfordulás és versek', 'forras', ('token_strong', 'vers', 'ubs_dntg_referenciak'), _f_usz, _r_usz),
+    B('szo.usz', 'szo_g', 'ÚSZ-előfordulás és versek', 'forras', ('token_strong', 'vers', 'ubs_dntg_jelentesek', 'ubs_dntg_referenciak'), _f_usz, _r_usz),
     B('szo.heber_hatter', 'szo_g', 'Héber háttér (Septuaginta)', 'forras', ('lxx_bridge',), _f_heber_hatter, _r_heber_hatter),
     B('szo.sdgnt', 'szo_g', 'Szemantikai domén (SDGNT)', 'forras', ('sdgnt_domenek', 'forditasok'), _f_sdgnt, _r_sdbh, 'üres eredmény nem negatív lelet',
       jelleg_fn=_jelleg_hu(1)),

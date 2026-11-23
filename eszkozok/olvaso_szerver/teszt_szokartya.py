@@ -175,6 +175,13 @@ class Szokartya(unittest.TestCase):
         b = blokk(self.get('/szo/H0127'))
         self.assertIn('<div class="szk" data-nezet="olvaso">', b)
         self.assertEqual(re.findall(r'data-szk-nezet="([a-z]+)"', b), [])
+        # F231.14 (regresszió-olvasás): a main-en tárolt vagy linkben kapott „egyben” nézet gomb nélkül nem ragadhat be
+        css = open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8').read()
+        js = open(os.path.join(D, 'statikus', 'olvaso.js'), encoding='utf-8').read()
+        self.assertNotIn('data-nezet="egyben"', css)
+        init = js[js.index('function szkInit'):js.index('document.addEventListener', js.index('function szkInit'))]
+        self.assertNotIn('szkNezet(', init)
+        self.assertIn('removeItem(SZK_KULCS)', init)
 
     def test_meg_n_hely(self):
         """F231: a helyek a szövegben állnak, rejtés nélkül (nincs „még N hely”)."""

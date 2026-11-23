@@ -43,12 +43,11 @@
     });
   }
   function szkInit(gyoker) {
-    var nezet = null;
-    try { nezet = new URLSearchParams(window.location.search).get('nezet'); } catch (e) { nezet = null; }
-    if (nezet !== 'egyben' && nezet !== 'app' && nezet !== 'olvaso') { nezet = olvas(SZK_KULCS); }
+    /* F231: a nézetkapcsoló gombjai megszűntek, a kártya egyetlen nézete az olvasói. A korábban tárolt vagy linkben
+       kapott „egyben”/„app” nézetet nem alkalmazzuk (gomb nélkül nem lehetne kilépni belőle), a tárolt kulcsot töröljük. */
+    try { window.localStorage.removeItem(SZK_KULCS); } catch (e) { /* tároló nélkül nincs mit törölni */ }
     gyoker.querySelectorAll('.szk').forEach(function (k) {
       k.querySelectorAll('.szk-nezet').forEach(function (s) { s.hidden = false; });
-      if (nezet === 'egyben' || nezet === 'app') { szkNezet(k, nezet); }
     });
   }
   document.addEventListener('click', function (ev) {

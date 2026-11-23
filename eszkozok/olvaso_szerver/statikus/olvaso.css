@@ -270,9 +270,6 @@ abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0;
 .szo-szam b { display: block; font: 600 var(--fs-jelentes-cim) var(--font-text); color: var(--fg); }
 meter.sav { width: 8rem; height: .7rem; vertical-align: middle; }
 sup { line-height: 0; }
-.szk-egyben { display: none; }
-.szk[data-nezet="egyben"] .szk-egyben { display: block; }
-.szk[data-nezet="egyben"] .szk-sorok, .szk[data-nezet="egyben"] .szk-also, .szk[data-nezet="egyben"] .szk-lenyilok { display: none; }
 .szk-jel:target > details > summary .szk-glossza, .szk-alpont:target .szk-alcim .szk-glossza { background: var(--accent-soft); border-radius: var(--radius-kiemeles); }
 .angol-kis { margin-left: 6px; font-size: var(--fs-megjegyzes); color: var(--muted); }
 .angol-eredeti > summary { cursor: pointer; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
