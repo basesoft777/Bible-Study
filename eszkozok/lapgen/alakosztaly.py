@@ -62,7 +62,9 @@ _CIMKE_RX = re.compile(r' — [\u0590-\u05FF\u0370-\u03FF\u1F00-\u1FFF]')
 
 # Az ismert eltérések (DT-F218f (4)): (csoport, Strong-szám, a szövegrész, amelyben áll, legfeljebb ennyi előfordulás egy
 # lapon). A javításuk az N-F218i. A: a TSK-kizárás indoklása (16 cella, a HAMART-001-en 29 látható sor); B: a Károli-
-# csoport blokk-sorai (57 cella, soronként 1); D: egy kapcsolat-indoklás (1 sor, 2 szám).
+# csoport blokk-sorai (57 cella, soronként 1); D: egy kapcsolat-indoklás (1 sor, 2 szám); N235: a két csoportos
+# indoklás („blokk-kizárás (a H7451 és a H7043 blokkjának mintájára)”, 2 cella, 2 sor): javul az F218.13-ban (N235;
+# DT-F218e (2) (b): a kiadott lap és a bájt-referencia a szerkesztő nézése előtt nem mozdul).
 _B_STRONGOK = (
     'G0173', 'G0174', 'G0331', 'G0332', 'G0685', 'G0862', 'G0942', 'G0971',
     'G2647', 'G2653', 'G2692', 'G3639', 'G4485', 'G4647', 'G4938', 'G5146',
@@ -77,6 +79,9 @@ ISMERT_CSUPASZ_STRONG = (
     (('A', 'H6093', 'de nem a H6093 iccávón-t', 29),)
     + tuple(('B', s, 'ezekben a versekben a %s szót fordítja' % s, 1) for s in _B_STRONGOK)
     + (('D', 'H7121', 'azonos H7121+H8034 pár', 1), ('D', 'H8034', 'azonos H7121+H8034 pár', 1))
+    # javul az F218.13-ban (N235)
+    + (('N235', 'H7451', 'a H7451 és a H7043 blokkjának mintájára', 2),
+       ('N235', 'H7043', 'a H7451 és a H7043 blokkjának mintájára', 2))
 )
 
 

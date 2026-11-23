@@ -143,7 +143,7 @@ class Alakosztaly(unittest.TestCase):
         self.assertEqual([t[2] for t in alakosztaly.talalatok([sor])], ['proveniencia-mező'])
 
 
-# Az S9c leltára (N235, DT-F218f (4)), befagyasztva: az ismert eltérések listája ennek részhalmaza lehet, bővülni nem.
+# Az S9c leltára (DT-F218f (4); a két N235-hely: DT-F218e (2) (b)), befagyasztva: az ismert eltérések listája ennek részhalmaza lehet, bővülni nem.
 # A másolat nem változik (a hash-e rögzített); a javított tétel csak az `alakosztaly.ISMERT_CSUPASZ_STRONG`-ból kerül ki.
 _S9C_B = (
     'G0173', 'G0174', 'G0331', 'G0332', 'G0685', 'G0862', 'G0942', 'G0971',
@@ -157,9 +157,11 @@ _S9C_B = (
 )
 _S9C_LELTAR = frozenset(
     {('A', 'H6093', 'de nem a H6093 iccávón-t', 29),
-     ('D', 'H7121', 'azonos H7121+H8034 pár', 1), ('D', 'H8034', 'azonos H7121+H8034 pár', 1)}
+     ('D', 'H7121', 'azonos H7121+H8034 pár', 1), ('D', 'H8034', 'azonos H7121+H8034 pár', 1),
+     ('N235', 'H7451', 'a H7451 és a H7043 blokkjának mintájára', 2),
+     ('N235', 'H7043', 'a H7451 és a H7043 blokkjának mintájára', 2)}
     | {('B', s, 'ezekben a versekben a %s szót fordítja' % s, 1) for s in _S9C_B})
-_S9C_LELTAR_HASH = '4bc1f88adfd9ad3597e663b9f8c22d32caa103abf8604ef3160f5239cdfb5b45'   # a leltár sha256-a
+_S9C_LELTAR_HASH = 'e756373b28afe70bffbe1b7571ceb2da38b687e6c46794adb8abf2f4c8f997c7'   # a leltár sha256-a
 
 
 class CsupaszStrong(unittest.TestCase):
@@ -172,7 +174,7 @@ class CsupaszStrong(unittest.TestCase):
         import hashlib
         lista = alakosztaly.ISMERT_CSUPASZ_STRONG
         self.assertEqual(len(lista), len(set(lista)), 'ismétlődő tétel')
-        self.assertEqual(len(_S9C_LELTAR), 60)
+        self.assertEqual(len(_S9C_LELTAR), 62)
         lenyomat = hashlib.sha256(repr(sorted(_S9C_LELTAR)).encode('utf-8')).hexdigest()
         self.assertEqual(lenyomat, _S9C_LELTAR_HASH, 'a befagyasztott leltár nem változhat')
         self.assertEqual(set(lista) - _S9C_LELTAR, set(), 'új tétel nem kerülhet az ismert eltérések közé')
