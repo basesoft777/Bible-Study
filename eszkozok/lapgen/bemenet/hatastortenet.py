@@ -128,7 +128,7 @@ def _okori_betolt(b, motivum):
             betoldas=sor['betoldas'] == _IGEN, ellenorzott=bool(sor['ellenorzes'].strip()),
             van_alak=bool(sor['alak']), van_lemma=bool(sor['lemma'])))
     szoveg = szavak_be.b08_tahot(b)
-    frissesseg.b38_ellenoriz(motivum.kod, [(r.strong.kod, r.igehely.kod, r.betoldas) for r in ki],
+    frissesseg.lefedettseg_b38(motivum.kod, [(r.strong.kod, r.igehely.kod, r.betoldas) for r in ki],
                              lambda v: [s[0] for s in szoveg.sorok(v)])
     return tuple(ki)
 

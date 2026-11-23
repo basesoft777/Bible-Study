@@ -79,7 +79,7 @@ def _alap(strong_kod):
     return _STRONG_UTOTAG_RX.sub('', strong_kod)
 
 
-def b36_ellenoriz(strong_kod, b36_versek, versben):
+def lefedettseg_b36(strong_kod, b36_versek, versben):
     """A B36 lefedettségi kapuja egy héber szóra: a tábla minden verse a mai héber szövegben is hordozza a szót.
     `versben(vers_kod)`: a vers Strong-kódjai a mai héber szövegben."""
     kint = sorted(v for v in b36_versek if _alap(strong_kod) not in {_alap(s) for s in versben(v)})
@@ -89,7 +89,7 @@ def b36_ellenoriz(strong_kod, b36_versek, versben):
                           % (strong_kod, ', '.join(kint[:5]), ' …' if len(kint) > 5 else ''))
 
 
-def b38_ellenoriz(motivum_kod, sorok, versben):
+def lefedettseg_b38(motivum_kod, sorok, versben):
     """A B38 lefedettségi kapuja a motívum ókori fordítás-soraira: (héber szó, vers) párja a mai héber szövegben
     áll, vagy a pár csoportjában betoldás-sor van. `sorok`: [(strong kódja, vers kódja, betoldás-e)]."""
     betoldasos = {(s, v) for s, v, bet in sorok if bet}

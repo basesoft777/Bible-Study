@@ -20,10 +20,15 @@ UTVONAL_KIVETEL = {
                       'adat/elofordulasok.tsv', 'adat/jeloltek.tsv', 'naplok/F123_teljesseg_%s_blokkok.tsv',
                       'konkordancia/Konyv_normalizalo_tabla.tsv', 'konkordancia/TAHOT_kivonat.tsv',
                       'konkordancia/TSK_kereszthivatkozasok.tsv', 'konkordancia/Karoli_versmegfeleltetes.tsv',
-                      'konkordancia/Karoli_KH_javitott.tsv'},
+                      'konkordancia/Karoli_KH_javitott.tsv',
+                      # az LXX-összesítés független számlálója (N238, S9c): ugyanígy saját olvasás
+                      'konkordancia/LXX_OS', 'adat/lxx_dontesek.tsv'},
     # a mérce hash-őre (a regresszió része, a push előtti kapuban és a CI-ben): a generátor saját tábláinak előtagja
     'hash_or_kapu.py': {'adat/lapgen_'},
 }
+# GK-05 kivétele: a regresszió `ISMERT_ELTERES` listája (N238) a független számláló ismert, döntésre váró eltérését
+# motívumhoz és értékpárhoz köti (N196); a generátor kódjában motívumazonosító továbbra sem állhat.
+GK05_KIVETEL = {'regresszio.py': {'ISTENTISZT-001'}}
 # Fájlt nyitó hívások: olvasás csak a bemeneti rétegben és a regresszióban, írás a belépési pontban.
 FAJLNYITO = {'open', 'glob', 'iglob', 'listdir', 'walk', 'scandir', 'read_text', 'read_bytes', 'isfile', 'exists'}
 FAJLNYITAS_ENGEDETT = {'bemenet/jegyzek.py', 'regresszio.py', 'hash_or_kapu.py', 'fo.py'}
@@ -168,7 +173,7 @@ class Motivumazonosito(unittest.TestCase):
         hibak = []
         for rel in kodfajlok():
             for n, sor in enumerate(forras(rel).split('\n'), start=1):
-                if rx.search(sor):
+                if set(rx.findall(sor)) - GK05_KIVETEL.get(rel, set()):
                     hibak.append('%s:%d %s' % (rel, n, sor.strip()[:80]))
         self.assertEqual(hibak, [])
 

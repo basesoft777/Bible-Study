@@ -240,10 +240,10 @@ class Gk03Pillanatkep(unittest.TestCase):
         betűjeles Strong-változat az alapszámmal egyezik."""
         szoveg = {'1Móz 3:17': ['H0127', 'H0779'], '1Móz 3:18': ['H2403a']}
         versben = lambda v: szoveg.get(v, [])
-        self.F.b36_ellenoriz('H0127', {'1Móz 3:17': ()}, versben)
-        self.F.b36_ellenoriz('H2403', {'1Móz 3:18': ()}, versben)
+        self.F.lefedettseg_b36('H0127', {'1Móz 3:17': ()}, versben)
+        self.F.lefedettseg_b36('H2403', {'1Móz 3:18': ()}, versben)
         with self.assertRaises(BemenetHiba):
-            self.F.b36_ellenoriz('H0127', {'1Móz 3:17': (), '1Móz 3:18': ()}, versben)
+            self.F.lefedettseg_b36('H0127', {'1Móz 3:17': (), '1Móz 3:18': ()}, versben)
 
     def test_b38_elavult_sor_bukas_betoldas_kivetel(self):
         """B38: a (héber szó, vers) pár a mai héber szövegben áll; a betoldásos csoport kivétel; más pár BemenetHiba."""
@@ -251,9 +251,9 @@ class Gk03Pillanatkep(unittest.TestCase):
         versben = lambda v: szoveg.get(v, [])
         jo = [('H0127', '1Móz 3:17', False), ('H2403', '1Móz 8:21', True), ('H2403', '1Móz 8:21', False),
               ('G1941', 'Róm 10:13', False)]
-        self.F.b38_ellenoriz('PROBA-001', jo, versben)
+        self.F.lefedettseg_b38('PROBA-001', jo, versben)
         with self.assertRaises(BemenetHiba):
-            self.F.b38_ellenoriz('PROBA-001', jo + [('H0127', '1Móz 8:22', False)], versben)
+            self.F.lefedettseg_b38('PROBA-001', jo + [('H0127', '1Móz 8:22', False)], versben)
 
     def test_a_mintalapok_b36_es_b38_kapuja_atmegy(self):
         """A két mintalap szavain a B36 és a B38 kapuja a mai adaton átmegy (a lapgenerálás is futtatja)."""

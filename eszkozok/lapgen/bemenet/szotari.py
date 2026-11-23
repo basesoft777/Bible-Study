@@ -170,7 +170,7 @@ class LxxParok:
         if versek is not None and strong.kod not in self._ellenorzott:
             from lapgen.bemenet.szavak import b08_tahot
             szoveg = b08_tahot(self._b)
-            frissesseg.b36_ellenoriz(strong.kod, versek, lambda v: [s[0] for s in szoveg.sorok(v)])
+            frissesseg.lefedettseg_b36(strong.kod, versek, lambda v: [s[0] for s in szoveg.sorok(v)])
             self._ellenorzott.add(strong.kod)
         return versek
 
