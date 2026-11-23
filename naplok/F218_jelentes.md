@@ -2052,3 +2052,8 @@ A szerkesztő 2026-11-23-án a nézési csomag 4. pontjának három döntendő t
 | N237 (ISTENTISZT-001, 3. szakasz, a rövid okcímke) | (a) névelővel, ahogy most | nincs | – |
 
 Mellékhatás nélkül: a HAMART-001 lapján csak a pe/mem sora változott, a KIZARASOK-nézet és az ISTENTISZT-001 többi sora bájtra azonos az előző generálással; a Zsolt 116:13 sorában az alak kiejtése elmarad (a szakaszban először álló alak kapja; most az 1Kir 18:24 az első), ahogy a kiadott lapon is. Az ISTENTISZT előtte–utána diff darabszáma változatlan (2302); a jegyzetmappában frissítve. Az N196 és az N237 lezárt-blokkba került (`nyitott/uj/f218a-s9c-d1312a.md`), a döntés: DT-F218h (`dontesek/uj/f218a-s9c-d1312a.md`).
+
+## F218.12 — A szerkesztő jóváhagyása (2026-11-23)
+
+A szerkesztő 2026-11-23-án jóváhagyta a két lapot, szó szerint: „Igen, mindkettőt” (a HAMART-001 és az ISTENTISZT-001 új generátoros lapja; az integrátor továbbította). **A nézett hash: `4b20d591`** (az `1b634d08` lapjai és a három átvezetett döntés, DT-F218h). A 45 sablonmondat, a 9 név és a HN-03 helyek tételenként nem kerültek a szerkesztő elé (a szerkesztő: „ennyi sem kell mert mechanikusak”); a jóváhagyás ezekre is a lapokon át szól. A brief F218.12 ⛔ pontja ezzel teljesült; következik az F218.13 (zárás).
+
