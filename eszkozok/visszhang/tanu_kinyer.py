@@ -90,7 +90,7 @@ def tabla_ir(sorok):
 _konyv = None
 
 
-def karoli_alak(ref):
+def karoli_alak(ref, gorog_zsoltar=False):
     global _konyv
     if _konyv is None:
         _konyv = {}
@@ -110,7 +110,20 @@ def karoli_alak(ref):
     if not m:
         return None
     k = _konyv.get(m.group(1)) or _konyv.get(m.group(1)[:3])
-    return '%s %s:%s' % (k, m.group(2), m.group(3)) if k else None
+    if not k:
+        return None
+    if k == 'Zsolt' and gorog_zsoltar:
+        import kozos as KZ
+        p = KZ.lxx_zsoltar(m.group(2), m.group(3))
+        return 'Zsolt %d:%d' % p if p else None
+    return '%s %s:%s' % (k, m.group(2), m.group(3))
+
+
+def cl_gorog_zsoltar(mu):
+    """F239 U4b: a Chain Lineage Browser egyházatyai hivatkozásai a BiblIndexből jönnek, a zsoltárokat görög (LXX)
+    számozással adják (Hippolütosz „ps 117.24” = Károli Zsolt 118:24; a héber 117. zsoltár kétverses); a Sefaria
+    rabbinikus forrásai a héber számozást (Mekhilta: „ps 77.17” = Károli Zsolt 77:17)."""
+    return not mu.startswith('[Sefaria]')
 
 
 def atnezes_ellenoriz(sorok):
@@ -170,7 +183,8 @@ def cl(a):
             print('  NINCS TALÁLAT (sor nem íródik): %s | %s | %s' % (s['q'], s['szerzo'], s['mu']))
             continue
         fam, mag, szerzo, mu, szazad, nyelv, n_bi = talalat[0]
-        versek = [karoli_alak(v) or v for v in mag.split(' ; ')]
+        gz = cl_gorog_zsoltar(mu)
+        versek = [karoli_alak(v, gz) or v for v in mag.split(' ; ')]
         url = CL.csaladok_url(s['q'])
         r = {o: '' for o in OSZLOPOK}
         r.update({

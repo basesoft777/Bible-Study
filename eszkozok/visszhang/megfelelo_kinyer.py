@@ -97,24 +97,27 @@ def versszoveg(forras):
     if forras == 'vulgata':
         szov = {r['igehely']: r['szoveg']
                 for r in tsv_olvas(os.path.join(GYOKER, 'konkordancia', 'Vulgata_Clementina.tsv'))}
-        # a tábla `igehely`-e Károli-kulcs, a Vulgata saját számozású: a különbség átvezetve (F239.U1b; a 11 sor a számozás
-        # miatt maradt ellenőrizetlen): a zsoltárok MT−1 (11–146.), a 116. a Vulgata 114–115.-ből; a 114–115. és a 147. nincs átvezetve (a két szám
-        # felosztása eltér), Jób 41:10–34 → Vulgata 41:1–25
-        ki = {k: v for k, v in szov.items() if not (k.startswith('Zsolt ') and 10 <= int(k[6:].split(':')[0]) <= 146)}
-        for k, v in szov.items():
-            konyv, _, hely = k.partition(' ')
-            f, _, vs = hely.partition(':')
-            if konyv == 'Zsolt' and f.isdigit() and 10 <= int(f) <= 145 and int(f) not in (113, 114, 115):
-                ki['Zsolt %d:%s' % (int(f) + 1, vs)] = v   # Vulgata f → Károli f+1
-            elif konyv == 'Zsolt' and f == '114' and vs.isdigit():
-                ki['Zsolt 116:%s' % vs] = v                 # Vulgata 114 = MT 116:1–9
-            elif konyv == 'Zsolt' and f == '115' and vs.isdigit():
-                ki['Zsolt 116:%d' % (int(vs) + 9)] = v      # Vulgata 115:1–10 = MT 116:10–19
-        for n in range(10, 35):
-            if 'Jób 41:%d' % (n - 9) in szov:
-                ki['Jób 41:%d' % n] = szov['Jób 41:%d' % (n - 9)]
-        return ki
+        return vulgata_karoli_kulcson(szov)
     return {}
+
+
+def vulgata_karoli_kulcson(szov):
+    """A Vulgata-tábla (`Vulgata_Clementina.tsv`: magyar könyvnév, de a Vulgata saját számozása) a Károli-kulcson.
+    F239 U4b: a zsoltárok és a Jób 38–41 a `kozos.vulgata_karoli` szerint (a korábbi átvezetés a Jób 41:1–9 és a
+    Zsolt 147:1–9 kulcsán más vers szövegét hagyta, a 10., 114., 115. zsoltárt kihagyta); a pár nélküli vers kimarad."""
+    import kozos as KZ
+    ki = {}
+    for k, v in szov.items():
+        konyv, _, hely = k.rpartition(' ')
+        f, _, vs = hely.partition(':')
+        if not (f.isdigit() and vs.isdigit()):
+            ki[k] = v
+            continue
+        p = KZ.vulgata_karoli(konyv, f, vs)
+        if p:
+            kk = '%s %d:%d' % p
+            ki[kk] = ki[kk] + ' ' + v if kk in ki else v   # két latin vers egy Károli-versben (Zsolt 10:1–2 = 11:1)
+    return ki
 
 
 def kanon(s):
