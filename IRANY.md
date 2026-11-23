@@ -25,6 +25,7 @@
 - Egyszerre legfeljebb 2 szál; egy szál = egy ág + egy PR, a session cserélhető: kb. 150–200 ezer token kontextusnál csere (teljes átadó jegyzettel) vagy tömörítés, a végrehajtó subagenteknél is; mert minden lépés a teljes kontextust újraolvassa (a HAMART-mérés, 2026-11-23). Cikkírásnál a plafon a lépéshatáron érvényes, prózaírás közben nem: az U3 a prózát egy menetben végigírja, és csak utána cserél; minden lépéshatáron átadó jegyzet, minden döntés indoklással azonnal fájlba („egy kéz” = egy modell, amely az egész prózát olvassa, nem egy session; 2026-11-23).
 - A hibának három kimenete van: javítva / elvetve egy sor indokkal / rád vár; hamis tartalmat mutató hiba nem vethető el.
 - Csak olvasó-kód: gyors sáv. Adat, generátor, próza: nehéz kör, független ellenőrrel (DT919).
+- Új szabály helyett gépi kapu (teszt, hook); az elvárt kimenetet ember írja vagy hagyja jóvá (kézzel írt minta, nem a gép előző kimenete); egy feladat = egy kis PR, nem 50 fájl egy menetben (2026-11-23).
 - Technikai kérdésben a session dönt; tartalmi kérdés az integrátorhoz (DT920).
 - Az állapot csak leírva él: ez a lap, a PR-ok első sora (Mérce · Állapot · Következő · Akadály), a DONTESEK. Az integrátor kb. 300 ezer token kontextusnál vagy naponta cserél, amelyik előbb jön (a fix induló teher kb. 140 ezer, a 150–200 ezres plafon a munkasessionöké), és karcsún indul: csak ez a lap és egy rövid átadó jegyzet (állapot, a nap döntései, ami rád vár); memóriát és régi átadót csak akkor olvas, ha egy kérdés arról szól (2026-11-23).
 
