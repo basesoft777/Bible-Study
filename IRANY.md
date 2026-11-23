@@ -11,6 +11,7 @@
   - a 15 perces push előtti ellenőrzés kettévágása: munka közben gyors próba, a teljes csak a végén (integrátor);
   - TEREMT-001 (tehóm) cikk nulláról, az új generátorral, a két lap jóváhagyása után.
 - **Utána** (a 2026-11-11-i ütemezés): a motívumok megjelenítése az olvasóban, ez az „alap” olvasó.
+- **Az ISTENTISZT-001 2. kiadása** az átállás (218c) első eredménye; a mostani jóváhagyásod érvényes marad, mert az átállás csak gépi részt változtathat (DT-F218i, 2026-11-23). Ezzel a cikk a lexikonban kész; az olvasó a lapot nem olvassa, az adatbázisból maga számol, ezért ott előbb csak adatként frissül, cikként az olvasó átkötése (#236) és a motívumok olvasóba vitele után látszik. Addig minden lapjavítás az olvasóba is kell (mint a 4Móz 16:30 héber betűje).
 
 ## Most NEM csináljuk
 - Új lexikonlap: csak a TEREMT-001 (tehóm), nulláról (2026-11-12: „ez a következő a többi fagyasztva”). Befagyasztva: KIRALY, ALVIL, MENNY, ANTROP, HODIT, TEREMT-002.
