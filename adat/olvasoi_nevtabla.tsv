@@ -161,6 +161,7 @@ irod_adat	konkordancia/Karoli_versmegfeleltetes.tsv	Károli-versmegfeleltetés	O
 irod_adat	adat/szotar_szakasz_cimke.tsv	Szótári szakaszok címketáblája	OLVASOI_FORRASNEV
 irod_adat	adat/bdb_szakaszok.tsv	BDB-szótár	OLVASOI_FORRASNEV
 irod_adat	adat/bdb_forras_javitas.tsv	BDB-szótár forrásjavításai	uj
+irod_adat	adat/thayer_forras_javitas.tsv	Thayer-szótár forrásjavításai	uj
 irod_adat	adat/bdb_szakasz_hu.tsv	BDB-szótár	OLVASOI_FORRASNEV
 irod_adat	adat/bdb_vers_jelentes.tsv	BDB-szótár	OLVASOI_FORRASNEV
 irod_adat	adat/thayer_vers_jelentes.tsv	Thayer-szótár	OLVASOI_FORRASNEV
@@ -287,3 +288,4 @@ ok_leiras_cella	a hívás és a név nem egy szerkezetben	A kárá és a sém eg
 ok_leiras_cella	név nélküli forma	A formula része (pl. a hívás) megvan, a név nincs	az elutasítási ok megjegyzése (adat/elutasitasi_okok.tsv) cellakezdő alakban, a 3. szakasz okainak táblájában (S9a; a régi lap a cella elején nagybetűsített)
 ok_leiras_cella	erkölcsi intelem, nem a formula	A kereszthivatkozás az erkölcsi intelmet köti össze	az elutasítási ok megjegyzése (adat/elutasitasi_okok.tsv) cellakezdő alakban, a 3. szakasz okainak táblájában (S9a; a régi lap a cella elején nagybetűsített)
 ok_leiras_cella	jogi fellebbezés	A görög ige jogi értelme (fellebbezni)	az elutasítási ok megjegyzése (adat/elutasitasi_okok.tsv) cellakezdő alakban, a 3. szakasz okainak táblájában (S9a; a régi lap a cella elején nagybetűsített)
+kereses_megszoritas	Hif'íl-alakok	Hif'íl-alakok	forras_kereses (B04, DT926)

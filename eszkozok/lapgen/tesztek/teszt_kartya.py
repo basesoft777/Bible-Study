@@ -363,5 +363,133 @@ class TiltottFordulat(unittest.TestCase):
         KL._tiltott_kapu(self._k(), type('S', (), {'kod': 'H0001'})(), [sz], KL.SZOTAR_THAYER)
 
 
+class Gk18BetuJavitas(unittest.TestCase):
+    def test_gk18_a_lapon_csak_javitott_bdb_alak_all(self):
+        """GK-18 (S9c): a BDB betűjavítása (B17, `pe_mem` / `res_dalet`) mindenütt érvényes: a motívum héber szavainak
+        javítótábla szerinti forrás-alakja a teljes látható lapon (a kártya, az olvasói pontok, a glosszák) egyszer sem
+        áll, a javított alak igen (a HAMART-001-en a H0127, a H2403 és a H2555 javított alakja). A javítótáblát a teszt
+        a közös javító modulból olvassa (a generátor is onnan)."""
+        import os
+        import unicodedata
+        import bdb_rovidites
+        import teszt_vaz
+        from lapgen import bemenet
+        from lapgen.bemenet import elofordulas
+        betu = bdb_rovidites.betu_javitasok(os.path.join(kozos.GYOKER, 'adat', 'bdb_forras_javitas.tsv'))
+        javitott_db = 0
+        for azonosito in MINTALAPOK:
+            sorok = elofordulas.b03_elofordulasok(bemenet.Bemenet(kozos.GYOKER), MotivumId(azonosito))
+            strongok = {st.kod for s in sorok for st in s.strongok if st.heber}
+            lap = unicodedata.normalize('NFD', teszt_vaz._lathato_szoveg(azonosito))
+            for kod in sorted(strongok):
+                for forras, javitott in (betu.get(kod) or {}).items():
+                    self.assertNotIn(forras, lap, '%s %s' % (azonosito, kod))
+                    javitott_db += lap.count(javitott)
+        self.assertGreater(javitott_db, 0)
+
+
+class ForrasjavitasSorrend(unittest.TestCase):
+    """DT-F218h (1) és a 17. független ellenőrzés E1/E2 tétele: a betűjavítás a rafe-maqqéf feloldása előtt és után
+    is fut. A bemenet a BDB-forrás (`adat/bdb_szakaszok.tsv`) rafés alakja, a javítótábla a valódi tábla."""
+
+    @classmethod
+    def setUpClass(cls):
+        import os
+        import bdb_rovidites as R
+        ut = os.path.join(kozos.GYOKER, 'adat', 'bdb_forras_javitas.tsv')
+        cls.javitasok = (R.atiras_javitasok(ut), R.sorrend_javitasok(ut), R.betu_javitasok(ut))
+
+    def _javit(self, szoveg, strong):
+        import unicodedata
+        return unicodedata.normalize('NFC', K.futam_javit(unicodedata.normalize('NFD', szoveg), strong,
+                                                          self.javitasok))
+
+    def test_a_rafes_alakra_kulcsolt_javitas_a_feloldas_elott(self):
+        """H0127, 4Móz 16:30: a tábla kulcsa a rafés „אֶתמִּֿיהָ”; a javított alak maqqéffal „אֶת־פִּיהָ”."""
+        uj = self._javit('אֶתמִּֿיהָ Num 16:30', 'H0127')
+        self.assertIn('אֶת־פִּיהָ', uj)
+        self.assertNotIn('מִּיהָ', uj)
+
+    def test_a_feloldott_tagra_kulcsolt_javitas_a_feloldas_utan(self):
+        """H4480, Ezsd 9:11: a rafés lánc első tagjára („מִמֶּה”) kulcsol a tábla; a feloldás után javul „מִפֶּה”-re."""
+        uj = self._javit('מִמֶּהאֶֿלמֶּֿה; Psa 144:13', 'H4480')
+        self.assertTrue(uj.startswith('מִפֶּה־אֶל־'), repr(uj))
+
+
+class AtvettTetelek(unittest.TestCase):
+    """Az N-F212a tételei közül az S9c-ben a teljes lapon mértek (GK-A10, GK-A12)."""
+
+    @classmethod
+    def setUpClass(cls):
+        import teszt_vaz
+        cls.lap = {a: teszt_vaz._lathato_szoveg(a) for a in MINTALAPOK}
+
+    def test_gk_a10_nincs_csupasz_zarojeles_strong_szam(self):
+        """GK-A10: a lapon 0 csupasz, zárójeles Strong-szám („háttere: héberül a kárá (H7121)”); a Strong-szám a
+        `<sup class="strong">` jelölésben áll."""
+        import re
+        for azonosito, szoveg in self.lap.items():
+            self.assertEqual(re.findall(r'\(\s*[HG]\d{4}[a-z]?\s*\)', szoveg), [], azonosito)
+
+    def test_gk_a12_nem_letezo_karoli_vers_jellel_link_nelkul(self):
+        """GK-A12: a BDB-hivatkozásból képzett igehely csak akkor link, ha a vers a Károliban létezik. A HAMART-001
+        8 esete (N146: a szótár vagy a fordítás könyvnév-hibája) a lapon a „nincs ilyen vers” jellel áll, és egyik sem
+        link. (A könyvnév-hiba javítása az N146 tétele.)"""
+        import re
+        szoveg = self.lap['HAMART-001']
+        jel = '*(a Károliban nincs ilyen vers'
+        for vers in ('1Sám 3:26', '1Sám 26:29', 'Jób 14:23', 'Jer 12:18', 'Péld 57:1', 'Péld 58:1', 'Péld 59:1'):
+            helyek = [m.end() for m in re.finditer(r'(?<![\w:])%s(?![\d])' % re.escape(vers), szoveg)]
+            self.assertTrue(helyek, vers)
+            for h in helyek:
+                self.assertTrue(szoveg[h:h + len(jel) + 1].lstrip().startswith(jel), vers)
+            self.assertNotIn('[%s]' % vers, szoveg)
+        self.assertEqual(szoveg.count(jel), 8)
+
+
+class Thayer(unittest.TestCase):
+    """GK-N178 és HN-12 (S9c): a Thayer-kártya szakaszai a javított forrásból; nyers angol Thayer nem kerül a lapra."""
+
+    @classmethod
+    def setUpClass(cls):
+        from lapgen import bemenet
+        cls.b = bemenet.Bemenet(kozos.GYOKER)
+
+    def test_gk_n178_a_15_strong_a_javitott_forrasbol(self):
+        """GK-N178: a `javitassal` illesztésű 15 Strong (a Thayer-javítótábla) minden szakaszának szövege a lapgen
+        bemenetében a közös `thayer_bemenet.szakaszok` javított szövege; legalább egy sorban a javítás látszik."""
+        from thayer_jelolt import thayer_bemenet
+        from lapgen.bemenet import gerinc
+        szakaszok = gerinc.b20_thayer_szakaszok(self.b)
+        javitott = sorted({st for st, _sz in thayer_bemenet.javitas_olvas()})
+        self.assertEqual(len(javitott), 15)
+        elter = 0
+        for st in javitott:
+            vart = [x['szoveg'] for x in thayer_bemenet.szakaszok(st)]
+            kapott = [' '.join(x for x in (r['jel'], r['szoveg']) if x) for r in szakaszok[st]]
+            self.assertEqual(kapott, vart, st)
+            nyers = thayer_bemenet.tabla_olvas()[st]
+            elter += sum(1 for r, k in zip(nyers, szakaszok[st]) if r['szoveg'] != k['szoveg'])
+        self.assertGreater(elter, 0)
+
+    def test_hn12_nyers_angol_thayer_nincs_a_lapon(self):
+        """HN-12 (N178): a motívum görög szavainak angol Thayer-szakaszai (a forrás szövege) a látható lapon nem
+        állnak: a kártya a magyar fordítást adja (fordítás hiányában JeloltHiba, `kartya_lap`)."""
+        import teszt_vaz
+        from lapgen.bemenet import elofordulas, gerinc
+        szakaszok = gerinc.b20_thayer_szakaszok(self.b)
+        mert = 0
+        for azonosito in MINTALAPOK:
+            lap = teszt_vaz._lathato_szoveg(azonosito)
+            sorok = elofordulas.b03_elofordulasok(self.b, MotivumId(azonosito))
+            for kod in sorted({st.kod for s in sorok for st in s.strongok if not st.heber}):
+                for r in szakaszok.get(kod, ()):
+                    angol = r['szoveg'].strip()
+                    if len(angol) >= 40:
+                        mert += 1
+                        self.assertNotIn(angol[:40], lap, '%s %s#%s' % (azonosito, kod, r['sorszam']))
+        self.assertGreater(mert, 0)
+
+
 if __name__ == '__main__':
     unittest.main()

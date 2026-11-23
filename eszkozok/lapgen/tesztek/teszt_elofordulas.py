@@ -166,6 +166,35 @@ class Kiejtes(unittest.TestCase):
         self.assertEqual(szo.alak.hely, Igehely('Gal 3:13'))
         self.assertIsNone(self._szo('1Móz 1:1', 'H7451'))
 
+    def test_gk14_osszevont_versek_szosorrendje(self):
+        """GK-14, az összevont versek (S9c): a Károli által összevont 9 ószövetségi versnél (`f22/versosszevonas.tsv`)
+        a közös Károli-kulcson a beolvasztott TAHOT-vers szavai a versösszevonás `er_tol`–`er_ig` helyén állnak a lapgen
+        B08-sorrendjében (a fájl sorrendje; a kiválasztás szabálya, T4, erre a sorrendre épül). A sorok száma legalább
+        `er_ig`; ha a kulcs sorai a fájlban két darabban állnak, a második darab a beolvasztott vers. A tábla tartalmát
+        a generátor nem használja (a sorrend a B08-ból jön), ezért nem bemenet: a próbája ez a teszt."""
+        import os
+        ut = os.path.join(kozos.GYOKER, 'f22', 'versosszevonas.tsv')
+        with open(ut, encoding='utf-8') as f:
+            sorok = [s.rstrip('\n').split('\t') for s in f if s.strip() and not s.startswith('#')]
+        fej, sorok = sorok[0], sorok[1:]
+        k, e, et, ei = (fej.index(o) for o in ('karoli', 'eredeti', 'er_tol', 'er_ig'))
+        tahot = szavak.b08_tahot(self.b)
+        with open(os.path.join(kozos.GYOKER, 'konkordancia', 'TAHOT_kivonat.tsv'), encoding='utf-8') as f:
+            kulcsok = [s.split('\t', 1)[0] for s in f]
+        osz = 0
+        for r in sorok:
+            if len(r) <= ei or not tahot.sorok(r[k]):
+                continue          # újszövetségi összevonás (TAGNT): nem a B08 kulcsa
+            osz += 1
+            n, tol, ig = len(tahot.sorok(r[k])), int(r[et]), int(r[ei])
+            self.assertGreaterEqual(n, ig, r[k])
+            idx = [i for i, x in enumerate(kulcsok) if x == r[k]]
+            hatarok = [j + 1 for j, (a, b) in enumerate(zip(idx, idx[1:])) if b != a + 1]
+            self.assertLessEqual(len(hatarok), 1, r[k])
+            if hatarok:
+                self.assertEqual((hatarok[0] + 1, n), (tol, ig), '%s (%s)' % (r[k], r[e]))
+        self.assertEqual(osz, 9)
+
 
 class Konyvnev(unittest.TestCase):
     def test_gk17_nincs_kodba_irt_konyvnev(self):

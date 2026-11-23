@@ -7,7 +7,8 @@ Mit ellenőriz:
    bemenetének hash-ét (sorvég-normalizált tartalomból). Ha egy hash eltér, a mérés megáll:
    „a mérce bemenete megváltozott”. Az új generátor olvasási naplója (`<ID>_olvasasi_naplo.tsv` a lap
    mellett) is összevetődik a táblával: ha az új generátor olyan fájlt olvasott, amely nincs a táblában,
-   vagy más tartalommal olvasta, a mérés megáll.
+   vagy más tartalommal olvasta, a mérés megáll. Kivétel a `HASH_OR_KIVETEL` (a B51, N240): a lapon használt
+   része a szakasz-diffben mérődik.
 2. **Szakasz-diff.** A lap a 2. szintű címsoroknál szakaszokra bomlik; az új lap minden szakasza
    soronként összevetődik a referencia azonos című szakaszával. `--teljes` nélkül a hiányzó szakasz
    „nincs kész” (részleges lap), `--teljes` mellett BUKÁS.
@@ -49,6 +50,12 @@ REFERENCIA_OSZLOPOK = ('tipus', 'b_id', 'utvonal', 'sha256', 'meret')
 NAPLO_FAJLNEV = '%s_olvasasi_naplo.tsv'   # egyezik a `konfig.NAPLO_FAJLNEV` értékével (teszt őrzi)
 NAPLO_OSZLOPOK = ('b_id', 'utvonal', 'sha256')
 NEM_FAJL = '-'
+# A bemenet-hash őr kivételei (N240, DT920 szerint technikai döntés, S9c): a B51 (`DONTESEK.md`, `dontesek/uj/*.md`)
+# minden számkiosztásnál és minden új ág-döntésnél megváltozik, így a fájlszintű hash minden merge után eltörne
+# (N200). A lap a B51-ből csak a hivatkozott döntések dátumát és érvényességét olvassa; ha ezek közül bármelyik
+# megváltozik, a lap szövege változik, és azt a szakasz-diff méri. A referencia-táblában ezért B51-sor nem áll, és
+# az olvasási napló B51-sorai nem vetődnek össze.
+HASH_OR_KIVETEL = frozenset({'B51'})
 
 
 class MerceHiba(Exception):
@@ -82,6 +89,9 @@ def hash_or(gyoker=GYOKER):
     elteres = []
     sorok = _tsv(os.path.join(gyoker, *REFERENCIA_TSV.split('/')), REFERENCIA_OSZLOPOK)
     for sor in sorok:
+        if sor['b_id'] in HASH_OR_KIVETEL:
+            raise MerceHiba('a referencia-táblában a hash-őr kivétele áll (%s %s): a sor törlendő (N240)'
+                            % (sor['b_id'], sor['utvonal']))
         teljes = os.path.join(gyoker, *sor['utvonal'].split('/'))
         if not os.path.isfile(teljes):
             elteres.append('%s %s (hiányzik)' % (sor['b_id'], sor['utvonal']))
@@ -104,7 +114,7 @@ def naplo_or(motivum, uj_konyvtar, gyoker=GYOKER):
                  for sor in _tsv(os.path.join(gyoker, *REFERENCIA_TSV.split('/')), REFERENCIA_OSZLOPOK)}
     elteres, db = [], 0
     for sor in _tsv(ut, NAPLO_OSZLOPOK):
-        if sor['utvonal'] == NEM_FAJL:
+        if sor['utvonal'] == NEM_FAJL or sor['b_id'] in HASH_OR_KIVETEL:
             continue
         db += 1
         if sor['utvonal'] not in rogzitett:
@@ -317,6 +327,16 @@ TAHOT_TSV = 'konkordancia/TAHOT_kivonat.tsv'
 TSK_TSV = 'konkordancia/TSK_kereszthivatkozasok.tsv'
 MEGFELELTETES_TSV = 'konkordancia/Karoli_versmegfeleltetes.tsv'
 KAROLI_KH_TSV = 'konkordancia/Karoli_KH_javitott.tsv'
+LXX_KONYVTAR = 'konkordancia/LXX_OS'
+LXX_DONTES_TSV = 'adat/lxx_dontesek.tsv'
+LXX_MINUSZ = 'lxx_minusz'
+_OSSZESITES_RX = re.compile(r'\*Összesítés: ([^*\n]+)\.\*')
+_OSSZ_ELEM_RX = re.compile(r'([^=,]+)=(\d+)')
+_MEGALLAPITOTT_RX = re.compile(r'ezek (\d+) megállapított versében')
+# A független számlálás ismert, döntésre váró eltérései (motívum, számláló) → a nyitott tétel: a sor „ELTÉR (ismert)”
+# jelzést kap, és nem buktat. Csak a megnevezett számra és értékpárra szól (más eltérés BUKÁS marad). Üres: az
+# egyetlen tétele (N196) szerkesztői döntéssel (2026-11-23, részenként) megszűnt.
+ISMERT_ELTERES = {}
 TSK_KUSZOB = 15   # egyezik a `konfig.TSK_SZAVAZAT_KUSZOB` értékével (a régi Votes ≥ 15)
 _KH_RX = re.compile(r'A motívum (\d+) helyéből (\d+) helyről mutat utalás[^.]*, összesen (\d+)')
 OSZ_KONYVEK_SZAMA = 39
@@ -428,6 +448,30 @@ def _szamolt_kh(gyoker, helyek):
     return van, osszes
 
 
+def _lxx_egyezo(gyoker, versek, gorog):
+    """Az ószövetségi versek közül azok, amelyeknek Septuaginta-szövegében a motívum valamely görög Strong-száma áll
+    (a Septuaginta könyvenkénti fájljai, a Károli-kulcson; a generátor kódja nélkül)."""
+    ki = set()
+    for nev in sorted(os.listdir(os.path.join(gyoker, *LXX_KONYVTAR.split('/')))):
+        if not nev.endswith('.tsv'):
+            continue
+        fej = None
+        for sor in _olvas(os.path.join(gyoker, *LXX_KONYVTAR.split('/'), nev)).decode('utf-8').split('\n'):
+            if not sor or sor.startswith('#'):
+                continue
+            mezok = sor.split('\t')
+            if fej is None:
+                fej = mezok
+                if 'igehely_karoli' not in fej or 'strong' not in fej:
+                    break          # a könyvtár segédtáblája, nem szövegkönyv
+                k, s = fej.index('igehely_karoli'), fej.index('strong')
+                continue
+            if len(mezok) > s and mezok[k] in versek and re.sub(r'\D', '', mezok[s]) \
+                    and int(re.sub(r'\D', '', mezok[s])) in gorog:
+                ki.add(mezok[k])
+    return ki
+
+
 def szamlalok(motivum, uj_konyvtar, gyoker=GYOKER):
     """A 8.2/1 számlálói: [(név, a lapon, számolva)]; a lapon nem álló szám None (a mondat a lapon nem szerepel)."""
     lap = _olvas(os.path.join(uj_konyvtar, '%s_TUDOMANYOS.md' % motivum)).decode('utf-8')
@@ -459,6 +503,25 @@ def szamlalok(motivum, uj_konyvtar, gyoker=GYOKER):
     osz_versek = [v for v in bent if v.rsplit(' ', 1)[0] in osz]
     m = _OSZ_VERSEK_RX.search(_szakasz_szovege(lap, 5))
     ki.append(('ószövetségi versek (5.)', int(m.group(1)) if m else None, len(osz_versek)))
+    # az LXX-összesítés részei (N238): az egyező versek (a Septuaginta-versben a motívum görög szava) és az LXX-minusz
+    # (a döntéstábla sora) saját számlálással; az összesítés összege a motívum ószövetségi verseinek száma. A „szócsalád”
+    # felosztás a generátor szótő-algoritmusa: azt a számláló nem ismétli meg, csak a megállapított versek számának
+    # azonosságát méri a lap saját összesítésével (egyező + szócsalád + eltérő)
+    otodik = _szakasz_szovege(lap, 5)
+    m = _OSSZESITES_RX.search(otodik)
+    if m:
+        ertek = {k.strip(): int(v) for k, v in _OSSZ_ELEM_RX.findall(m.group(1))}
+        ki.append(('LXX: az összesítés összege (5.)', sum(ertek.values()), len(osz_versek)))
+        gorog = {int(t[1:]) for r in elof for t in re.findall(r'\bG\d{1,4}\b', r['strong'] + ' ' + r['gerinc_elem'])}
+        egyezo = _lxx_egyezo(gyoker, set(osz_versek), gorog)
+        ki.append(('LXX: egyező versek (5.)', ertek.get('egyező'), len(egyezo)))
+        minusz = {r['igehely'] for r in _tabla_sorai(os.path.join(gyoker, LXX_DONTES_TSV))
+                  if r['tipus'].strip() == LXX_MINUSZ and r['igehely'] in osz_versek and r['igehely'] not in egyezo}
+        ki.append(('LXX: LXX-minusz (5.)', ertek.get('LXX-minusz'), len(minusz)))
+        m2 = _MEGALLAPITOTT_RX.search(otodik)
+        if m2:
+            ki.append(('LXX: megállapított = egyező + szócsalád + eltérő (5.)', int(m2.group(1)),
+                       ertek.get('egyező', 0) + ertek.get('ugyanaz a szócsalád', 0) + ertek.get('eltérő', 0)))
     # a szópár-lánc: a szópár első (ige) tagja a héber szövegben
     par = next((r['gerinc_elem'].split('+')[0] for r in elof if '+' in r.get('gerinc_elem', '')), None)
     m = _IGE_VERSEK_RX.search(_szakasz_szovege(lap, 9))
@@ -474,15 +537,17 @@ def szamlalok(motivum, uj_konyvtar, gyoker=GYOKER):
     return ki
 
 
-def szamlalo_jelentes(sorok):
+def szamlalo_jelentes(sorok, motivum=None):
     ki, hiba = [], False
     for nev, lapon, szamolt in sorok:
         if lapon is None:
             ki.append('  %-45s a lapon nem áll · számolva: %d' % (nev, szamolt))
             continue
         jo = lapon == szamolt
-        hiba = hiba or not jo
-        ki.append('  %-45s lapon: %d · számolva: %d%s' % (nev, lapon, szamolt, '' if jo else '  ← ELTÉR'))
+        ismert = None if jo else ISMERT_ELTERES.get((motivum, nev, lapon, szamolt))
+        hiba = hiba or (not jo and ismert is None)
+        ki.append('  %-45s lapon: %d · számolva: %d%s' % (
+            nev, lapon, szamolt, '' if jo else ('  ← ELTÉR (ismert: %s)' % ismert if ismert else '  ← ELTÉR')))
     ki.append('SZÁMLÁLÓK: %s' % ('BUKÁS' if hiba else 'RENDBEN'))
     return '\n'.join(ki), hiba
 
@@ -498,7 +563,7 @@ def main(argv=None):
                    help='csak a 8.2/1 független számlálói (a referencia-diff nélkül; a második mintalap mércéje)')
     a = p.parse_args(argv)
     if a.szamlalok:
-        szoveg, hiba = szamlalo_jelentes(szamlalok(a.id, a.uj))
+        szoveg, hiba = szamlalo_jelentes(szamlalok(a.id, a.uj), a.id)
         print(szoveg)
         return 1 if hiba else 0
     try:

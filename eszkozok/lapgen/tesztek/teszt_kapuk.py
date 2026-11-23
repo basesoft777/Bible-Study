@@ -143,6 +143,82 @@ class Alakosztaly(unittest.TestCase):
         self.assertEqual([t[2] for t in alakosztaly.talalatok([sor])], ['proveniencia-mező'])
 
 
+# Az S9c leltára (DT-F218f (4); a két N235-hely: DT-F218e (2) (b)), befagyasztva: az ismert eltérések listája ennek részhalmaza lehet, bővülni nem.
+# A másolat nem változik (a hash-e rögzített); a javított tétel csak az `alakosztaly.ISMERT_CSUPASZ_STRONG`-ból kerül ki.
+_S9C_B = (
+    'G0173', 'G0174', 'G0331', 'G0332', 'G0685', 'G0862', 'G0942', 'G0971',
+    'G2647', 'G2653', 'G2692', 'G3639', 'G4485', 'G4647', 'G4938', 'G5146',
+    'H0006', 'H0329', 'H0423', 'H2254', 'H2255', 'H2312', 'H2336', 'H2554',
+    'H2723', 'H2738', 'H3238', 'H3905', 'H4072', 'H4288', 'H4384', 'H4835',
+    'H4893', 'H5285', 'H5518', 'H5544', 'H5636', 'H6217', 'H6231', 'H6234',
+    'H6530', 'H6563', 'H6796', 'H6895', 'H7045', 'H7057', 'H7612', 'H7621',
+    'H7667', 'H7701', 'H7703', 'H7722', 'H7898', 'H8045', 'H8047', 'H8068',
+    'H8395',
+)
+_S9C_LELTAR = frozenset(
+    {('A', 'H6093', 'de nem a H6093 iccávón-t', 29),
+     ('D', 'H7121', 'azonos H7121+H8034 pár', 1), ('D', 'H8034', 'azonos H7121+H8034 pár', 1),
+     ('N235', 'H7451', 'a H7451 és a H7043 blokkjának mintájára', 2),
+     ('N235', 'H7043', 'a H7451 és a H7043 blokkjának mintájára', 2)}
+    | {('B', s, 'ezekben a versekben a %s szót fordítja' % s, 1) for s in _S9C_B})
+_S9C_LELTAR_HASH = 'e756373b28afe70bffbe1b7571ceb2da38b687e6c46794adb8abf2f4c8f997c7'   # a leltár sha256-a
+
+
+class CsupaszStrong(unittest.TestCase):
+    """N235 (DT-F218e (2), DT-F218f): a kézi prózán a zárójel nélküli Strong-szám tilos; a szótári címke tartós
+    kivétel, az ismert eltérések listája csak fogyhat."""
+
+    def test_a_lista_csak_fogyhat(self):
+        """A lista a befagyasztott leltár részhalmaza (darabszámmal együtt: a megengedett darabszám sem nőhet); a leltár
+        maga nem változik (hash)."""
+        import hashlib
+        lista = alakosztaly.ISMERT_CSUPASZ_STRONG
+        self.assertEqual(len(lista), len(set(lista)), 'ismétlődő tétel')
+        self.assertEqual(len(_S9C_LELTAR), 62)
+        lenyomat = hashlib.sha256(repr(sorted(_S9C_LELTAR)).encode('utf-8')).hexdigest()
+        self.assertEqual(lenyomat, _S9C_LELTAR_HASH, 'a befagyasztott leltár nem változhat')
+        self.assertEqual(set(lista) - _S9C_LELTAR, set(), 'új tétel nem kerülhet az ismert eltérések közé')
+
+    def test_minden_tetel_elofordul_a_mintalapokon(self):
+        """A javított tétel kikerül a listából: minden tétel legalább az egyik mintalapon áll."""
+        hasznalt = {}
+        for azonosito in MINTALAPOK:
+            for sorok in _lap(azonosito).nezetek.values():
+                alakosztaly.talalatok(sorok, hasznalt)
+        self.assertEqual(set(alakosztaly.ISMERT_CSUPASZ_STRONG) - set(hasznalt), set(),
+                         'a mintalapokon már nem álló tétel törlendő a listából (és a leltár másolatából)')
+
+    def test_a_kivetelek_hatara(self):
+        def fajtak(szoveg):
+            return [t[2] for t in alakosztaly.talalatok([KeszSor(szoveg, ((0, len(szoveg), Fajta.PROZA),))])]
+        nev = alakosztaly.CSUPASZ_STRONG
+        # új csupasz Strong-szám a prózában: tilos
+        self.assertEqual(fajtak('a H1234 szó'), [nev])
+        # szótári címke a címsorban: tartós kivétel; címsoron kívül, vagy „ — ” nélkül nem
+        self.assertEqual(fajtak('#### H0779 — אָרַר (árar) · BDB'), [])
+        self.assertEqual(fajtak('H0779 — אָרַר (árar)'), [nev])
+        self.assertEqual(fajtak('#### a H0779 szó'), [nev])
+        # ismert eltérés: csak a megnevezett szövegrészben, csak a megnevezett számra
+        self.assertEqual(fajtak('szót, de nem a H6093 iccávón-t — a három'), [])
+        self.assertEqual(fajtak('szót, de nem a H6093 iccávón-t, és a H6093 máshol'), [nev])
+        self.assertEqual(fajtak('de nem a H6094 iccávón-t'), [nev])
+        # a zárójeles alak (GK-A10) és a link nem csupasz; a nem négyjegyű és a betű-utótagos alak igen
+        self.assertEqual(fajtak('[עֶצֶב](/szo/H6089)'), [])
+        self.assertEqual(fajtak('a H7451A és a H779 szó'), [nev, nev])
+        # a címke után héber vagy görög szónak kell állnia
+        self.assertEqual(fajtak('#### H0779 — a szó'), [nev])
+        self.assertEqual(fajtak('#### G1941 — ἐπικαλέω (epikaleó) · Thayer'), [])
+
+    def test_a_darabszam_folott_bukas(self):
+        """Az ismert eltérés a megengedett darabszám fölött a kapun BUKÁS (új cella ugyanazzal a fordulattal)."""
+        def sor(szoveg):
+            return KeszSor(szoveg, ((0, len(szoveg), Fajta.PROZA),))
+        b = 'ezekben a versekben a G0331 szót fordítja'
+        alakosztaly.kapu({'TUDOMANYOS': [sor(b)]})
+        with self.assertRaises(BemenetHiba):
+            alakosztaly.kapu({'TUDOMANYOS': [sor(b), sor(b)]})
+
+
 class Szerkezet(unittest.TestCase):
     def test_gk25_nulla_hiba_mindket_lapon(self):
         for azonosito in MINTALAPOK:
@@ -210,6 +286,66 @@ class Hibanaplo(unittest.TestCase):
         """HN-07, HN-08, HN-09: töredék („sz<n> sorok,;”), döntésszám és tételszám, nyers BDB-fej, héber
         számláló: 0 találat mindkét új lapon."""
         self.assertEqual(_hn_talalatok(('HN-07', 'HN-08', 'HN-09')), [])
+
+    def test_hn03_forrasnev_a_mondat_kozepen(self):
+        """HN-03 (DT925 (2) (a)): forrásnév a mondat közepén, zárójelben („(a BDB-szótár szerint) a …”): 0 találat
+        mindkét új lapon; a sor végén álló jegyzék-megjegyzés nem találat (a minta próbája)."""
+        self.assertEqual(_hn_talalatok(('HN-03',)), [])
+        minta = teszt_vaz.HN_MINTAK['HN-03'][0][0]
+        self.assertIsNone(re.search(minta, '- BDB (Brown–Driver–Briggs, 1906) (a BDB-szótár, közkincs)\n'))
+        self.assertIsNotNone(re.search(minta, 'alapjelentés: bűn *(a STEPBible rövid szótára szerint)*\n'))
+
+
+_ANGOL_KONYV = re.compile(r'\b(?:Gen|Exod|Lev|Num|Deut|Josh|Judg|[12] ?Sam|[12] ?Kgs|[12] ?Chr|Esth|Pss?|Prov|Eccl|Isa|Lam|'
+                          r'Ezek|Hos|Obad|Mic|Nah|Zeph|Zech|Matt|Rom|Rev)\.? \d+:\d+')
+
+
+class Leltar(unittest.TestCase):
+    """A hibaleltár (`GENERATOR_HIBALELTAR_2026-11-11.md`, N-F212a) tételei a leírásuk szerint újramérve az új lapon
+    (S9c). A régi generátorra nyitott N-tételek a régi lapra szólnak; itt az új generátor mintalapjain 0 eltérés."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.lap = {a: teszt_vaz._lathato_szoveg(a) for a in MINTALAPOK}
+
+    def test_gk_b9_a_ts_a_megadott_datumbol(self):
+        """GK-B9 (N-F11d): a generált `ts=` determinisztikus: két különböző megadott dátummal a lap minden sora
+        egyezik, csak a megadott dátum cserélődik (a mai nap sehol nem áll); azonos dátummal bájtra azonos
+        (`teszt_futas.py` GK-29)."""
+        a, b = datetime.date(2026, 11, 13), datetime.date(2026, 11, 14)
+        sa, sb = ('\n'.join(_szoveg(fo.lap_keszit(kozos.GYOKER, MotivumId('HAMART-001'), datum=d)).values())
+                  for d in (a, b))
+        self.assertNotEqual(sa, sb)
+        self.assertEqual(sa.replace('2026-11-13', 'D').replace('2026.11.13', 'D'),
+                         sb.replace('2026-11-14', 'D').replace('2026.11.14', 'D'))
+
+    def test_gk_a11_a14_a15_b5_b8(self):
+        """A11 (N92): angol könyvnévvel álló igehely az idézeten kívül nincs (a BDB saját alakja csak „…” idézetben
+        áll, a szakirodalom dőlt angol címében is). A14 (N-F12h): a rokon nyelvi alak hiánya kimondott mondat
+        (HAMART-001). A15 (N-F12i): a Kolofon „Sablon-megfelelőség” cellája nem üres. B5 (N-F148a): a fordítatlan egység jelölt („(fordításra vár)”; a T5
+        kapuja: GK-15, `teszt_kartya.py`), a nyers angol Thayer nincs a lapon (HN-12). B8: 【NAPLO】 blokk nincs a
+        látható szövegben."""
+        for azonosito, szoveg in self.lap.items():
+            idezet_nelkul = re.sub(r'\*[^*\n]+\*', '', re.sub(r'„[^”]*”', '', szoveg))   # az idézet és a dőlt cím
+            self.assertEqual(_ANGOL_KONYV.findall(idezet_nelkul), [], 'A11 %s' % azonosito)
+            self.assertRegex(szoveg, r'Sablon-megfelelőség \| v\d+ \|', 'A15 %s' % azonosito)
+            self.assertNotIn('【', szoveg, 'B8 %s' % azonosito)
+        self.assertIn('Nincs rokon nyelvi alak a BDB szócikkében', self.lap['HAMART-001'])
+        self.assertGreater(self.lap['ISTENTISZT-001'].count('*(fordításra vár)*'), 0)
+
+    @unittest.skip('218c (#238): N98 és N113 — a BDB-gerinc al-szócikk szerinti átkulcsolása és a sorbelső fej a '
+                   'bemeneti rétegben; a két mintalapon nem fordul elő (a H2416 esete)')
+    def test_gk_c3_bdb_gerinc_atkulcsolas(self):
+        """GK-C3 (N98, N144, N145): a BDB-gerinc al-szócikk és útvonal szerint kulcsol; a sorbelső fej ismert."""
+
+    @unittest.skip('218c (#238): N-F114b — a TSK-index tartomány-igehelyre nem keres (a HAMART-001 6 tartomány-helye '
+                   'ma is utalás nélkül, a régi lappal egyezően); a bemeneti réteg bővítése')
+    def test_gk_c9_tsk_tartomany_igehely(self):
+        """GK-C9 (N-F114a, N-F114b): a tartomány-igehely TSK-utalásai versenként keresve."""
+
+    @unittest.skip('218b: N-F131i — a szótári gerinc vizuális elkülönítése az olvasói CSS-ben (nem a lapgen kimenete)')
+    def test_gk_d3_gerinc_vizualis_elkulonites(self):
+        """GK-D3 (N-F131i): a szótári gerinc vizuálisan elkülönül."""
 
 
 if __name__ == '__main__':

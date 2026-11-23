@@ -128,6 +128,19 @@ class Jeloles(unittest.TestCase):
             vizsgalt_be._jeloles(b, 'ismeretlen keresés X', 'ismeretlen keresés X', None, 'Ter 1:1')
 
 
+    def test_a_megszoritas_kulcs_a_nevtablabol(self):
+        """DT926: a szókeresés megszorítása kulcs (nem kézi szöveg), a névtábla `kereses_megszoritas` típusában
+        ismert; ismeretlen megszorításnál BemenetHiba."""
+        from lapgen.szoveg import Kulcs
+        b = bemenet.Bemenet(kozos.GYOKER)
+        sorok = vizsgalt_be.vizsgalt_sorok(b, MotivumId('HAMART-001'))
+        megszoritott = [s for s in sorok if s.jegyzet is not None and s.jegyzet.megszoritas is not None]
+        self.assertEqual(len(megszoritott), 9)
+        self.assertTrue(all(isinstance(s.jegyzet.megszoritas, Kulcs) for s in megszoritott))
+        with self.assertRaises(BemenetHiba):
+            vizsgalt_be._jeloles(b, 'scan: H7843 Piél-alakok', 'scan: H7843 Piél-alakok', None, 'Ter 1:1')
+
+
 class Lap(unittest.TestCase):
     def test_ism_a_3_szakasz_utal_nem_ismetel(self):
         """DT872: a „3. Kizárt és vizsgált helyek” szakasz végi „Negatív kritérium” bekezdése helyett utalás áll a

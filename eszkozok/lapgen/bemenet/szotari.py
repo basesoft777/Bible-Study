@@ -10,6 +10,7 @@ import json
 import re
 import unicodedata
 
+from lapgen.bemenet import frissesseg
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.szoveg import Strong, prov
 
@@ -160,10 +161,18 @@ class LxxParok:
 
     def __init__(self, b, szavak, proveniencia):
         self._b, self._szavak, self._proveniencia = b, szavak, proveniencia
+        self._ellenorzott = set()
 
     def versek(self, strong):
-        """{vers: (görög Strong-kód, …)} a héber szóra; None, ha a táblában a szónak nincs sora."""
-        return self._szavak.get(strong.kod)
+        """{vers: (görög Strong-kód, …)} a héber szóra; None, ha a táblában a szónak nincs sora. Frissességi kapu
+        (GK-03): a szó versei a mai héber szövegben is hordozzák a szót."""
+        versek = self._szavak.get(strong.kod)
+        if versek is not None and strong.kod not in self._ellenorzott:
+            from lapgen.bemenet.szavak import b08_tahot
+            szoveg = b08_tahot(self._b)
+            frissesseg.lefedettseg_b36(strong.kod, versek, lambda v: [s[0] for s in szoveg.sorok(v)])
+            self._ellenorzott.add(strong.kod)
+        return versek
 
     def proveniencia(self, strong):
         """A szó sorainak proveniencia-sora (az első soré), belső szövegként; None, ha nincs sora."""

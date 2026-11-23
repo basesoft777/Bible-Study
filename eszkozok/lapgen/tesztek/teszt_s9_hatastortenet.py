@@ -111,13 +111,17 @@ class Szamok(unittest.TestCase):
 
 class Regresszio(unittest.TestCase):
     def test_a_hamart_kilencedik_szakasza_bajtra_a_mai_lap(self):
-        """A 9. szakasz a jóváhagyott lap szövegével bájtra egyezik (a szakaszban engedélysor nincs)."""
+        """A 9. szakasz a jóváhagyott lap szövegével bájtra egyezik, egyetlen engedélyezett sor kivételével: a HN-03
+        (S9c, `S9C-HN03-6`) a lánc rokon nyelvi hátterének mondatában a forrásnevet a mondat végére teszi."""
         with open(os.path.join(kozos.GYOKER, 'lexikon', HAMART + '_TUDOMANYOS.md'), encoding='utf-8') as f:
             ref = f.read().replace('\r\n', '\n').split('\n')
         eleje = next(i for i, s in enumerate(ref) if s.startswith('## 9. Hatástörténet'))
         vege = next(i for i in range(eleje + 1, len(ref)) if ref[i].startswith('## '))
         uj = [s.szoveg for s in szakasz_sorai(HAMART)]
-        self.assertEqual(uj, ref[eleje:vege])
+        regi_hn03 = 'A lánc szavainak rokon nyelvi hátterét (a BDB-szótár szerint) a héber szavak 4.8 pontja adja.'
+        uj_hn03 = 'A lánc szavainak rokon nyelvi hátterét a héber szavak 4.8 pontja adja, a BDB-szótár szerint.'
+        self.assertEqual(sum(s == regi_hn03 for s in ref[eleje:vege]), 1)
+        self.assertEqual(uj, [uj_hn03 if s == regi_hn03 else s for s in ref[eleje:vege]])
 
 
 class Szopar(unittest.TestCase):

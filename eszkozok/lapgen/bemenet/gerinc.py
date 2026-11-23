@@ -18,7 +18,9 @@ import re
 import bdb_rovidites
 import bdb_tagolas
 import szotari_glossza
+from thayer_jelolt import thayer_bemenet
 
+from lapgen.bemenet import frissesseg
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.konyvek import b63_konyvek
 from lapgen.bemenet.nyelv import cimke_cellaalakok
@@ -704,7 +706,8 @@ def b17_bdb_szakaszok(b):
 
 
 def b18_bdb_szakasz_hu(b):
-    """B18 — a BDB-szakaszok magyar szövege; kulcs: Strong + sorszám."""
+    """B18 — a BDB-szakaszok magyar szövege; kulcs: Strong + sorszám. Frissességi kapu: GK-03 (fejléc-hash)."""
+    frissesseg.fejlec_kapu(b, 'B18')
     return {(r['strong'], r['sorszam']): r
             for r in _sorok(b, 'B18', ('strong', 'sorszam', 'kategoria', 'szoveg_hu'))}
 
@@ -723,7 +726,8 @@ class VersJelentes(dict):
 
 def b19_bdb_vers_jelentes(b):
     """B19 — a BDB saját példahelyei versenként (a kiszűrt és a Károli-vers nélküli sorok nélkül), és a törzsek
-    versenként (az útvonal első tagja, minden sorból)."""
+    versenként (az útvonal első tagja, minden sorból). Frissességi kapu: GK-03 (fejléc-hash)."""
+    frissesseg.fejlec_kapu(b, 'B19')
     ki, torzsek, feloldott = {}, {}, {}
     oszlopok = ('strong', 'sorszam', 'poz', 'nyers', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'utvonal', 'okkod',
                 'szurt', 'bizonyossag')
@@ -741,18 +745,33 @@ def b19_bdb_vers_jelentes(b):
 
 def b20_thayer_szakaszok(b):
     """B20 — a Thayer-szócikkek szakaszai Strong-számonként (a szakasztábla rendjében; a magyar szöveg a
-    fordítástáblából jön, B14)."""
+    fordítástáblából jön, B14). A szakasz angol szövege a javított forrásé (GK-N178, N178): a `javitassal` illesztésű
+    sorba a javítótábla (a B20 második útvonala) beszúrja a hiányzó szöveget, a közös `thayer_bemenet` útján (ugyanaz a
+    javítás, mint a fordításé). A `javitassal` szócikk javítás nélkül, illetve a nem illeszkedő javítás BemenetHiba."""
+    szakasz_ut, javitas_ut = b._utvonalak('B20')
+
     def betolt():
+        jav = thayer_bemenet.javitas_olvas(b._teljes_utvonal(javitas_ut))
         ki = {}
-        for r in _sorok(b, 'B20', ('strong', 'sorszam', 'utvonal', 'jel', 'szoveg')):
-            ki.setdefault(r['strong'], []).append(r)
+        sorok = _sorok(b, 'B20', ('strong', 'sorszam', 'utvonal', 'jel', 'szoveg', 'illesztes'), szakasz_ut)
+        javitott = {st for st, _sorszam in jav}
+        for st in {r['strong'] for r in sorok if r['illesztes'] == 'javitassal'} - javitott:
+            raise BemenetHiba('B20: %s: `javitassal` illesztés, de nincs `javitva` sora a javítótáblában' % st)
+        for r in sorok:
+            try:
+                szoveg = thayer_bemenet.javitott_szoveg(r, jav)
+            except ValueError as hiba:
+                raise BemenetHiba('B20: %s' % hiba) from None
+            ki.setdefault(r['strong'], []).append(dict(r, szoveg=szoveg))
         return ki
-    b._tabla('B20', oszlopok=('strong',))      # az olvasás naplózása minden hívásnál (a forráslistához)
+    b._tabla('B20', utvonal=szakasz_ut, oszlopok=('strong',))      # az olvasás naplózása minden hívásnál
+    b._szoveg('B20', utvonal=javitas_ut)                            # (a forráslistához), a javítótábláé is
     return b.egyszer('B20', betolt)
 
 
 def b21_thayer_vers_jelentes(b):
-    """B21 — a Thayer saját példahelyei versenként."""
+    """B21 — a Thayer saját példahelyei versenként. Frissességi kapu: GK-03 (fejléc-hash)."""
+    frissesseg.fejlec_kapu(b, 'B21')
     ki = {}
     for r in _sorok(b, 'B21', ('strong', 'sorszam', 'karoli_vers', 'utvonal')):
         if r['karoli_vers']:

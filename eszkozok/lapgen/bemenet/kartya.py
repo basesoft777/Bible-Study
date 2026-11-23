@@ -307,16 +307,22 @@ def kiemel(jelolt, celok, extra, igehely):
     return talalt, hianyzik
 
 
-def forrasjavitas(bek, strong, javitasok):
-    """A forrás javításai (B17): a torz átírás, a Biblia által igazolt héber betűsorrend, a rafe-maqqéf és a betűjavítás.
-    A magyar szövegben a javított átírás magyar alakja áll."""
+def futam_javit(t, strong, javitasok):
+    """Egy futam forrásjavítása (B17): a torz átírás, a Biblia által igazolt héber betűsorrend, a betűjavítás és a
+    rafe-maqqéf. A magyar szövegben a javított átírás magyar alakja áll. A betűjavítás a rafe-maqqéf feloldása előtt
+    és után is fut: a javítótábla (`adat/bdb_forras_javitas.tsv`) kulcsa hol a forrás rafés alakja (a pe/mem javítás a
+    maqqéfos szón, 4Móz 16:30; szerkesztői döntés, 2026-11-23), hol egy rafés lánc feloldott tagja (a H4480 láncának
+    első tagja, Ezsd 9:11; a 17. független ellenőrzés E1 tétele)."""
     atiras, sorrend, betu = javitasok
+    t = bdb_rovidites.atiras_javit(t, strong, javitasok=atiras, magyar=True)
+    t = bdb_rovidites.betu_javit(bdb_rovidites._sorrend_csere(t, strong, javitasok=sorrend), strong, javitasok=betu)
+    t = bdb_rovidites.maqqef_javit(t)
+    return bdb_rovidites.betu_javit(t, strong, javitasok=betu)
 
-    def f(t):
-        t = bdb_rovidites.atiras_javit(t, strong, javitasok=atiras, magyar=True)
-        t = bdb_rovidites.maqqef_javit(bdb_rovidites._sorrend_csere(t, strong, javitasok=sorrend))
-        return bdb_rovidites.betu_javit(t, strong, javitasok=betu)
-    bek.futamonkent(f)
+
+def forrasjavitas(bek, strong, javitasok):
+    """A forrás javításai futamonként (`futam_javit`)."""
+    bek.futamonkent(lambda t: futam_javit(t, strong, javitasok))
 
 
 _IZOLAL_RE = re.compile(r'(?<=[%s%s׳״])(?=(?:[\s,;:()\[\].*_=–—-]|<[^>]*>)*\d)'
