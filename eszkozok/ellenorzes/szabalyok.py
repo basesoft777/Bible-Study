@@ -3680,6 +3680,116 @@ SZABALY_LEIRAS['E42'] = ('a generált nézetek jegyzéke (`adat/generalt_nezetek
 
 
 
+# ---------------------------------------------------------------------------
+# E43 -- az U3 előfeltétele: a 9. Hatástörténet adata a próza előtt (MUNKAMENET C-w, C-vh; DT940, DT942)
+# ---------------------------------------------------------------------------
+# Ismétlődő hiba (TEREMT-001, #239): a próza a visszhang (adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv) előtt készült
+# el; a szövegszabály (C-w „Az U3 előfeltétele”, 4. pont) nem védett, ezért gépi kapu. HIBA, ha a diff egy motívum kézi
+# forrásában (`motivumok/<ID>.md`) prózai rést (`<!-- RÉS-KEZDET: … -->` … `<!-- RÉS-VÉGE: … -->`, jelölőkkel együtt) ír vagy
+# módosít, és a fej-állapot két visszhang-táblájában a motívumnak nincs ellenőrzött (nem üres `ellenorzes`) sora.
+# Kivétel: a base-ben már kiadott motívum (`adat/kiadasok.tsv`), ahol a javítás (/lap-javit) a visszhangot a #10 lezárás
+# lépéseként pótolja. A (b) szerkesztői-döntés-jel nincs építve: a `jeloltek.tsv` `nyitva` sora nem megbízható jel (a régi,
+# kiadatlan motívumokon is áll, és a kiadottakon is), a kérdésfájl nyitott pontja nem gépi.
+E43_MOTIVUM_UT = re.compile(r'^motivumok/([A-Z][A-Z0-9]*-\d+)\.md$')
+E43_RES_KEZDET = re.compile(r'<!--\s*RÉS-KEZDET:\s*([A-Za-z0-9_]+)\s*-->')
+E43_RES_VEGE = re.compile(r'<!--\s*RÉS-VÉGE:\s*([A-Za-z0-9_]+)\s*-->')
+E43_VISSZHANG_TABLAK = ('adat/visszhang_megfelelok.tsv', 'adat/visszhang_tanuk.tsv')
+E43_KIADASOK = 'adat/kiadasok.tsv'
+E43_UZENET = ('a próza (RÉS-blokk) a 9. Hatástörténet adata előtt készül: a `%s` motívumnak nincs ellenőrzött sora az '
+              '`adat/visszhang_megfelelok.tsv`-ben és az `adat/visszhang_tanuk.tsv`-ben (C-vh); a visszhang 1–2 előbb, '
+              'a próza (U3) csak utána (MUNKAMENET C-w, DT940/DT942)')
+
+
+def _e43_git(root, *args):
+    try:
+        return subprocess.check_output(['git'] + list(args), cwd=root, stderr=subprocess.DEVNULL).decode('utf-8', errors='replace')
+    except (subprocess.CalledProcessError, OSError):
+        return None
+
+
+def _e43_tabla_sorok(szoveg):
+    """(fejléc, adatsorok) a `#`-sorok nélkül; split('\\t'), nem csv."""
+    sorok = [x for x in (szoveg or '').split('\n') if x.strip() and not x.startswith('#')]
+    if not sorok:
+        return [], []
+    return sorok[0].rstrip('\r').split('\t'), [x.rstrip('\r').split('\t') for x in sorok[1:]]
+
+
+def _e43_ellenorzott(root, head_ref, az):
+    for relut in E43_VISSZHANG_TABLAK:
+        fejlec, sorok = _e43_tabla_sorok(_e43_git(root, 'show', '%s:%s' % (head_ref, relut)))
+        if 'motivum' not in fejlec or 'ellenorzes' not in fejlec:
+            continue
+        mi, ei = fejlec.index('motivum'), fejlec.index('ellenorzes')
+        if any(len(r) > ei and r[mi] == az and r[ei].strip() for r in sorok):
+            return True
+    return False
+
+
+def _e43_kiadott(root, base_ref, az):
+    fejlec, sorok = _e43_tabla_sorok(_e43_git(root, 'show', '%s:%s' % (base_ref, E43_KIADASOK)))
+    return 'id' in fejlec and any(r and r[fejlec.index('id')] == az for r in sorok)
+
+
+def _e43_erintett_sorok(root, base_ref, head_ref, relut):
+    """A diff által hozzáadott vagy módosított sorok (a fej sorszámai); a csak törlő hunk a törlés előtti sort jelöli."""
+    ki = _e43_git(root, 'diff', '--unified=0', '%s..%s' % (base_ref, head_ref), '--', relut)
+    sorok = set()
+    for sor in (ki or '').splitlines():
+        m = re.match(r'^@@ -\d+(?:,\d+)? \+(\d+)(?:,(\d+))? @@', sor)
+        if m:
+            kezdo, hossz = int(m.group(1)), int(m.group(2)) if m.group(2) is not None else 1
+            sorok.update(range(kezdo, kezdo + hossz) if hossz else (kezdo, kezdo + 1))
+    return sorok
+
+
+def _e43_res_hataron(sorok_szoveg):
+    """[(kezdő sor, záró sor, rés)] 1-alapú, a jelölőkkel együtt; a záratlan rés a fájl végéig tart."""
+    ki, nyitott = [], None
+    for n, s in enumerate(sorok_szoveg, 1):
+        m = E43_RES_KEZDET.search(s)
+        if m and nyitott is None:
+            nyitott = (n, m.group(1))
+        elif E43_RES_VEGE.search(s) and nyitott is not None:
+            ki.append((nyitott[0], n, nyitott[1]))
+            nyitott = None
+    if nyitott is not None:
+        ki.append((nyitott[0], len(sorok_szoveg), nyitott[1]))
+    return ki
+
+
+def e43_u3_elofeltetel(base_ref, head_ref, esemeny='', root=None):
+    """E43: HIBA, ha a diff a nem kiadott motívum kézi forrásának prózai rését érinti, és nincs ellenőrzött visszhang-sora."""
+    root = root or ROOT
+    if not base_ref or not head_ref or esemeny == 'push':
+        return []
+    nevek = _e43_git(root, 'diff', '--name-only', '%s..%s' % (base_ref, head_ref), '--', 'motivumok/') or ''
+    talalatok = []
+    for relut in sorted(x.strip() for x in nevek.splitlines() if x.strip()):
+        m = E43_MOTIVUM_UT.match(relut)
+        if not m:
+            continue
+        az = m.group(1)
+        if _e43_kiadott(root, base_ref, az) or _e43_ellenorzott(root, head_ref, az):
+            continue
+        fej = _e43_git(root, 'show', '%s:%s' % (head_ref, relut))
+        if fej is None:
+            continue    # a fájl törlése: nincs hova írni prózát
+        erintett = _e43_erintett_sorok(root, base_ref, head_ref, relut)
+        for kezdo, vege, res in _e43_res_hataron(fej.split('\n')):
+            tal = sorted(n for n in erintett if kezdo <= n <= vege)
+            if tal:
+                talalatok.append(Talalat('E43', SZINT['E43'], relut, tal[0],
+                                         '`%s` rés: %s' % (res, E43_UZENET % az)))
+    return talalatok
+
+
+SZINT['E43'] = 'HIBA'
+FAJLSZINTU_SZABALYOK.add('E43')
+SZABALY_LEIRAS['E43'] = ('az U3 előfeltétele: a nem kiadott motívum kézi forrásának prózai rését (`RÉS-KEZDET`…`RÉS-VÉGE`) a diff csak akkor '
+                         'érinti, ha a motívumnak van ellenőrzött sora a visszhang-táblákban (C-vh; a kiadott motívum kivétel, DT940)')
+
+
 if __name__ == '__main__':
     import argparse
     _ap = argparse.ArgumentParser(description='A kapuk szabálylistája (adat/SEMA.md 3.11), F184 D3.')

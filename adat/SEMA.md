@@ -3032,6 +3032,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | E40 | HIBA | a nyers `Karoli_kereszthivatkozasok.tsv`-t csak a KH-modulok nyitják meg; minden más fogyasztó a `karoli_kh_szuro` hozzáférési pontját hívja (a Károli-KH döntés) | `eszkozok/ellenorzes/szabalyok.py` |
 | E41 | HIBA | próza-állítás kapu: a kézi forrás versre hivatkozó állításainak gépi ítélete (ELTÉR-sor) HIBA az új formájú forrásokon; a régi formájú forrás kimarad, és ezt a kimenet kimondja (`--kapu`) | `eszkozok/proza_allitas.py` |
 | E42 | HIBA | a generált nézetek jegyzéke (`adat/generalt_nezetek.tsv`): oszlopok és értékek, a G- és B-hivatkozások épsége, az `utana` körmentessége, futtatható parancs; a kivezetett E28-listában nincs adatsor | `eszkozok/ellenorzes/szabalyok.py` |
+| E43 | HIBA | az U3 előfeltétele: a nem kiadott motívum kézi forrásának prózai rését (`RÉS-KEZDET`…`RÉS-VÉGE`) a diff csak akkor érinti, ha a motívumnak van ellenőrzött sora a visszhang-táblákban (C-vh; a kiadott motívum kivétel, DT940) | `eszkozok/ellenorzes/szabalyok.py` |
 <!-- GENERÁLT-VÉGE: szabalyok.py --kapulista -->
 
 ---

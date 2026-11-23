@@ -2475,5 +2475,84 @@ class E28CsakTeszt(unittest.TestCase):
         self.assertTrue(any('szűkítve' in j and 'kihagyva: A-001' in j for j in SZ.E28_JEGYZETEK), SZ.E28_JEGYZETEK)
 
 
+class E43Teszt(unittest.TestCase):
+    """E43: az U3 előfeltétele -- a próza (RÉS-blokk) nem előzheti meg az ellenőrzött visszhang-sort (TEREMT-001, #239)."""
+
+    FEJ_MF = 'motivum\tstrong\tellenorzes\n'
+    FEJ_TANU = 'motivum\tigehely\tellenorzes\n'
+    KIADASOK = '# kiadasok\nid\tkiadas\nHAMART-001\t1\n'
+    FORRAS_ELOTT = '# Cím\n\n<!-- RÉS-KEZDET: kivonat -->\nrégi\n<!-- RÉS-VÉGE: kivonat -->\n\n## Más\n'
+    FORRAS_UTAN = '# Cím\n\n<!-- RÉS-KEZDET: kivonat -->\núj próza\n<!-- RÉS-VÉGE: kivonat -->\n\n## Más\n'
+
+    def _git(self, gyoker, *a):
+        subprocess.check_call(['git', '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false'] + list(a),
+                              cwd=gyoker, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    def _iras(self, gyoker, relut, szoveg):
+        ut = os.path.join(gyoker, *relut.split('/'))
+        os.makedirs(os.path.dirname(ut), exist_ok=True)
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(szoveg)
+
+    def _repo(self, az, forras_utan, megfelelo_sor='', tanu_sor='', alap_forras=None):
+        """(gyoker, alap, fej): az alap a próza előtti állapot, a fej a próza + a megadott visszhang-sorok."""
+        gyoker = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, gyoker, True)
+        self._git(gyoker, 'init', '-q')
+        self._iras(gyoker, 'adat/kiadasok.tsv', self.KIADASOK)
+        self._iras(gyoker, 'adat/visszhang_megfelelok.tsv', self.FEJ_MF)
+        self._iras(gyoker, 'adat/visszhang_tanuk.tsv', self.FEJ_TANU)
+        if alap_forras is not None:
+            self._iras(gyoker, 'motivumok/%s.md' % az, alap_forras)
+        self._git(gyoker, 'add', '-A')
+        self._git(gyoker, 'commit', '-q', '-m', 'alap')
+        alap = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=gyoker).decode().strip()
+        self._iras(gyoker, 'motivumok/%s.md' % az, forras_utan)
+        self._iras(gyoker, 'adat/visszhang_megfelelok.tsv', self.FEJ_MF + megfelelo_sor)
+        self._iras(gyoker, 'adat/visszhang_tanuk.tsv', self.FEJ_TANU + tanu_sor)
+        self._git(gyoker, 'add', '-A')
+        self._git(gyoker, 'commit', '-q', '-m', 'fej')
+        fej = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=gyoker).decode().strip()
+        return gyoker, alap, fej
+
+    def test_proza_ures_visszhanggal_hiba(self):
+        gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, alap_forras=self.FORRAS_ELOTT)
+        t = SZ.e43_u3_elofeltetel(alap, fej, root=gy)
+        self.assertEqual([(x.szabaly, x.szint, x.fajl) for x in t], [('E43', 'HIBA', 'motivumok/TEREMT-001.md')])
+        self.assertEqual(t[0].sor, 4)
+
+    def test_uj_fajl_proza_hiba(self):
+        gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN)
+        self.assertEqual(len(SZ.e43_u3_elofeltetel(alap, fej, root=gy)), 1)
+
+    def test_ellenorizetlen_sor_nem_eleg(self):
+        gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, megfelelo_sor='TEREMT-001\tH8415\t\n',
+                                   alap_forras=self.FORRAS_ELOTT)
+        self.assertEqual(len(SZ.e43_u3_elofeltetel(alap, fej, root=gy)), 1)
+
+    def test_ellenorzott_sor_nincs_hiba(self):
+        for megf, tanu in (('TEREMT-001\tH8415\tclaude-opus-5-5, kézi\n', ''), ('', 'TEREMT-001\t1Móz 1:2\tkézi\n')):
+            gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, megf, tanu, alap_forras=self.FORRAS_ELOTT)
+            self.assertEqual(SZ.e43_u3_elofeltetel(alap, fej, root=gy), [])
+
+    def test_mas_motivum_visszhangja_nem_szamit(self):
+        gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, 'HAMART-001\tH0127\tkézi\n', alap_forras=self.FORRAS_ELOTT)
+        self.assertEqual(len(SZ.e43_u3_elofeltetel(alap, fej, root=gy)), 1)
+
+    def test_kiadott_motivum_javitasa_kivetel(self):
+        gy, alap, fej = self._repo('HAMART-001', self.FORRAS_UTAN, alap_forras=self.FORRAS_ELOTT)
+        self.assertEqual(SZ.e43_u3_elofeltetel(alap, fej, root=gy), [])
+
+    def test_res_kivuli_valtozas_nem_proza(self):
+        utan = self.FORRAS_ELOTT.replace('## Más', '## Más\nújabb sor a rés kívül\n')
+        gy, alap, fej = self._repo('TEREMT-001', utan, alap_forras=self.FORRAS_ELOTT)
+        self.assertEqual(SZ.e43_u3_elofeltetel(alap, fej, root=gy), [])
+
+    def test_push_es_hianyzo_ref_nem_fut(self):
+        gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, alap_forras=self.FORRAS_ELOTT)
+        self.assertEqual(SZ.e43_u3_elofeltetel(alap, fej, 'push', root=gy), [])
+        self.assertEqual(SZ.e43_u3_elofeltetel(None, None, root=gy), [])
+
+
 if __name__ == '__main__':
     unittest.main()
