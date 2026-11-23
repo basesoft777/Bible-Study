@@ -1,11 +1,14 @@
-# IRÁNY — kelt: 2026-11-22 · gazdája: a szerkesztő · legfeljebb 40 sor
+# IRÁNY — kelt: 2026-11-23 · gazdája: a szerkesztő · legfeljebb 40 sor
 
 **Cél:** a Biblialex motívumlexikon. Most: hibátlan olvasó, és kész új generátor a TEREMT-próbához.
 
 ## Futó szálak (legfeljebb 2)
-1. **Olvasó-javítás (#231).** Lefedi: a 60 felmért hibát, benne a héber szócsoport-csempéket (F233: írott szó szerinti keret, a teljes szó felül, nem létező alak nélkül; a lista 30–31.), az F233 többi tervezési pontját (36., 37., 53.) és az F234 pontjait. Nem fedi (a 60-ból kettő): a motívumlapot (59., az „Utána” szál) és a pénzes fordítást (lent, „Rád vár”). Kész (gépi mérce, a PR első sorában „Mérce: n/58”): az 58 tétel mindegyike zöld ellenőrzés az olvasói mércében (F232) vagy célzott tesztben (elvetve / rád vár: a jelentés sora), utána a szerkesztő egyszer megnézi az ágas előnézetet; a merge után az integrátor újraindítja a tükröt, és ellenőrzi az adatbázis-másolatot (az új építés 2026-11-22 18:58). Fut (a #799 2026-11-22-én bent).
-2. **Új generátor (F218a).** Lefedi: az új lapgenerátor 1. részét, a HAMART-lapon mérve; az S9c az utolsó szelet és a nézési csomag (a 11 hely előtte/utána). Kész (gépi mérce, a PR első sorában): a HAMART-referencia és a 8.2/1 számlálók zöldek, a TEREMT-próba bemenete lefut, és az F218.13 a main-en van. A #797 bent; fut az S9c → a szerkesztő megnézi a nézési csomagot → F218.13.
-- **Következő szál** (az olvasó-javítás után, gazdája az integrátor; előtte egy rövid adat-PR, N-F231a: a Macula LXX-párjaiban a „πρωὶ” 88-szor a G5459-re (φωσφόρος) illesztve; ékezet-normalizálás, lxx_bridge, DB-újraépítés): a 15 perces kapu kettévágása; munka közben füstteszt, a teljes kapu egyszer, a merge-kész állapotra; benne a main-en bukó `teszt_sqlite_epit.py` test_11 és a merge-enkénti BEHIND-kör.
+1. **Olvasó-javítás (#231, PR #810).** Az 58 tétel (a 60-ból; kívül: 23. fordítás, 59. motívumlap). Kész: „Mérce: 58/58 zöld” a PR-ban, utána egy nézés az ágas előnézeten; merge után tükör-újraindítás és DB-másolat ellenőrzése (integrátor).
+2. **Új generátor (F218a, PR #809).** Kész: a HAMART-referencia és a 8.2/1 számlálók zöldek, a TEREMT-próba bemenete lefut, a nézésed után az F218.13 a main-en.
+- **Következő szálak**, ebben a sorrendben:
+  - rövid adat-PR az N-F231a-ra (hamis LXX-pár: „πρωὶ” → G5459, 88 hely);
+  - **a JOHD-kézirat végső köre**, amint a validáció számai megvannak (decemberi beküldés; elsőbbsége van a kapu előtt);
+  - a 15 perces kapu kettévágása (integrátor; benne a bukó test_11 és a BEHIND-kör).
 - **Utána** (a 2026-11-11-i ütemezés): a motívumok ráillesztése az olvasóra, ez az „alap” olvasó.
 
 ## Most NEM csináljuk
@@ -18,17 +21,18 @@
 - Fizetős fordítás (N177, #24 görög glossza): a szerkesztő döntéséig nem.
 
 ## Így dolgozunk
-- Egyszerre legfeljebb 2 szál. Az integrátor viszi az egyiket, és merge-el.
-- A hibának három kimenete van: javítva / elvetve egy sor indokkal / rád vár. „Majd egyszer” nincs; hamis vagy félrevezető tartalmat mutató hiba nem vethető el.
+- Egyszerre legfeljebb 2 szál; egy szál = egy ág + egy PR, a session cserélhető.
+- A hibának három kimenete van: javítva / elvetve egy sor indokkal / rád vár; hamis tartalmat mutató hiba nem vethető el.
 - Csak olvasó-kód: gyors sáv. Adat, generátor, próza: nehéz kör (DT919).
 - Technikai kérdésben a session dönt; tartalmi kérdés az integrátorhoz (DT920).
-- Az állapot csak leírva él: ez a lap, a nyitott PR-ok első sora (Állapot · Következő · Akadály), a DONTESEK. Az integrátor naponta vagy fél kontextusnál cserél; az utód briefje: „olvasd el az IRANY.md-t és a nyitott PR-ok első sorát”.
+- Az állapot csak leírva él: ez a lap, a PR-ok első sora (Mérce · Állapot · Következő · Akadály), a DONTESEK. Az integrátor naponta cserél; az utód briefje: „olvasd el az IRANY.md-t és a nyitott PR-ok első sorát”.
 
 ## Rád vár
-- Fordítás (pénz), igen vagy elvetve: #24 a görög rövid jelentések (N177); #23 a Thayer magyarja (354 / 5 426 kész; a következő adag kb. 10 USD).
-- JOHD (#762, #763, draft): az emberi validáció és a 21 fejezetes újramérés bemásolása; a deposit formátuma.
-- Külső lépések: a Biblialex domain; a BiblIndex-levél (patrisztikus igehely-index, a visszhang-réteghez: küldés vagy elvetve; a tervezetben még a régi „Logosz-lexikon” név áll); a KJV-licenc kérdése a CrossWire-nek (csak a fizetős megjelenítés előtt).
-- Az F134 telefonos próbája. A BDB harmadik tanúja (N212: a mintán 70%-ban a mi táblánk téved): a tábla javítása feladat legyen, vagy elvetve.
-- Archiválható-e: levelek-uj-cimzettek; betu-szin-elonezet (6 merge-eletlen commit: a betűválasztó előnézete).
+- **JOHD-validátor megkeresése** (pénz, külső közlés; 568 tétel, ~5–6 óra, bruttó 60–100 ezer Ft): Susánszki Judit, tartalék Grüll Tiborné. Erre vár a #762, a #763 és a decemberi beküldés.
+- STEPBible: a modul 1.1-ből vagy 1.2-ből; a levél Davidnek (a KJV-eltéréslista és levéltervezet egy kártyán).
+- Fordítás (pénz), igen vagy elvetve: #24 görög rövid jelentések; #23 Thayer (a következő adag kb. 10 USD).
+- Külső lépések: Biblialex domain; BiblIndex-levél (a tervezetben még „Logosz”); SzPA-levél; KJV-licenc (csak fizetős megjelenítés előtt).
+- F134 telefonos próba. BDB harmadik tanú (N212): a tábla javítása feladat legyen, vagy elvetve.
+- Archiválható-e: levelek-uj-cimzettek; betu-szin-elonezet (6 merge-eletlen commit).
 
-*Frissítés: amit a szerkesztő irányként kimond, azt az integrátor még ugyanabban a válaszában beírja ide, és megmutatja. Új irányt magától nem ír bele, csak az állapotot (lezárult szál, megválaszolt kérdés). Új sor csak egy másik törlésével; legfeljebb 40 sor.*
+*Frissítés: amit a szerkesztő irányként kimond, azt az integrátor még ugyanabban a válaszában beírja ide, és megmutatja; az állapotot kötegelve frissíti (szálváltáskor vagy naponta). Részlet a PR-ba és a jelentésbe. Legfeljebb 40 sor.*
