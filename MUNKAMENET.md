@@ -159,12 +159,8 @@ nem F8-tárgy (`F8_BRIEF.md` §3). A négy érintett szerep ma:
   (`CLAUDE.md`). Az előre látható lépésrend a briefbe kerül, nem menet közbeni üzenetbe. *(Eset: a TEREMT-001 U2-je, #820:
   a sorrenden kívül érkező döntések miatt a seól-kapcsolat és a Nave-sorok be-, majd kikerültek; a #810 F231.19-e: egy később
   visszavont sémadöntés végrehajtva, 2026-11-23.)*
-- **Minden sessionindítás megnevezi a kiinduló állapotot** (2026-11-23). Az integrátor a brief vagy az indító üzenet első
-  soraiban megadja, melyik commitból (címkéből) dolgozik a session. Ha a munka egy még nem merge-elt PR eredményére épül
-  (pl. egy alapvonalra), a session a merge után indul, vagy a merge után újramér, és a kimenete a fejlécében megnevezi az
-  alapját. A szerkesztő elé vitel előtt az integrátor összeveti ezt az alapot a mai alapvonallal; eltérésnél előbb igazíttat.
-  *(Eset: az olvasó blokk-tervezőtáblája a #810 előtti main-ből (81af0cb1) készült, holott az újraépítés alapja a #810
-  (`olvaso-alapvonal-2026-11-23`, a3405522); három szónézet-blokk és több felirat eltért, a szerkesztő vette észre.)*
+- **Kiinduló állapot:** a brief `alap:` mezője (`feladatok.py ellenoriz` kéri, `feladatok.py alap <n>` összeveti a mai
+  main-nel); brief nélkül, üzenettel indított sessionnél az indító üzenet első sora `alap: …` (DT-F0a; eset: a tervezőtábla).
 
 ## Kontextus-őrzés (F32, KONTEXTUS)
 

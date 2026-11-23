@@ -14,6 +14,7 @@ fazis: 1
 modell: sonnet
 sav: CONTENT
 allapot: nem_indult
+alap: a3405522
 ad: mit ad, ha kész (egy mondat)
 kovetkezo: következő lépés (egy sor; „Te:” kezdetű, ha felhasználói lépés; „Folytatás:” kezdetű, ha `fut` állapotban félbemaradt)
 munka: adat
@@ -35,6 +36,7 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `munka` | `feladat` típusnál | `adat` · `ertelmezo` · `folyamat` |
 | `modell` | igen | `sonnet` · `opus` · `haiku` · `fable` · `külső:<név>` (a `fable` brief Fable-sessionben, közvetlenül fut, végrehajtó subagent nincs hozzá; a felhasználó, 2026-11-13: a generátor-újraírás Fable-on); a régi `Modell:` sor megmarad, a kettő egyezik; a session modelljét nem állítja, a futtató ellenőrzi |
 | `sav` | `feladat`, `naplozas` és `felmeres` típusnál | `SYSTEMS` (fejlesztői infrastruktúra: CI, Actionök, kapuk, tesztek, feladatrendszer, parancsok) · `CONTENT` (tartalomkészítés: motívumok, lapok, lapgenerátor, adat, nyílt adatcsomagok, közlemények) · `SERVER` (olvasó-szerver) · `USER` (az olvasó-szerver felhasználókezelése minden tervezett elemével: regisztráció és belépés, szintek (nyilvános, regisztrált, kutató), az előfizetés és a vásárlás hozzáférése az olvasóban, jogosultságok, fiók és adatkezelés) · `BUSINESS` (a #86 üzleti oldala: bevételi modell, árak, eladói forma, adó és jog, fizetési szolgáltató, számlázás) · `DESIGN` (az olvasó-szerver kinézete és arculata: CSS, arculat-konfig, vászon/mockup, design-system). Kétes esetben a fő termék szerint; a `FELADATOK.md` generált táblái sávonként csoportosítanak, a session címe a sávval kezdődik |
+| `alap` | a #241 utáni `feladat`, `naplozas`, `felmeres` briefnél | a kiinduló állapot: commit-hash, címke (pl. `olvaso-alapvonal-2026-11-23`) vagy `PR #<n> merge-e után` (ekkor a session a merge után indul). Összevetés a mai main-nel a brief `olvas` útjain: `python eszkozok/feladatok.py alap <szám>` (`AZONOS` / `ELTER` / `VAR`); a kimenet első sora is megnevezi az alapot (DT-F0a, a #842 esete) |
 | `allapot` | igen | `nem_indult` · `brief_kell` · `fut` · `dontesre_var` · `megallt` · `lezarva` |
 | `ad` | igen* | „Mit ad, ha kész” |
 | `kovetkezo` | igen* | „Következő lépés”; „Te:” = a felhasználóra vár; „Folytatás:” (`fut` állapotban) = félbemaradt, a `/kovetkezo` folytatási jelöltként ajánlja |
