@@ -1056,6 +1056,28 @@ tulajdonsag = [
 ]
 
 [[elem]]
+id = "szk-app-lista"
+nev = "Szókártya: Apparátus és szövegkritika (a jelentésnél)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-app-lista"
+tulajdonsag = [
+  { nev = "Háttér", token = "bg" },
+  { nev = "Betűméret", token = "fs-sor" },
+  { nev = "Sorköz", token = "lh-forrassor" },
+  { nev = "Lekerekítés", token = "radius-kiemeles" },
+]
+
+[[elem]]
+id = "szk-app-fajta"
+nev = "Szókártya: az apparátus-sor fajtája (forrásjel, megjegyzés, számozás)"
+csoport = "BDB-jelentésszerkezet"
+szelektor = ".szk-app-fajta"
+tulajdonsag = [
+  { nev = "Betűméret", token = "fs-forrascim" },
+  { nev = "Szín", token = "muted" },
+]
+
+[[elem]]
 id = "szk-en-szoveg"
 nev = "Szókártya: Angol eredeti (a jelentésnél)"
 csoport = "BDB-jelentésszerkezet"
@@ -1307,9 +1329,6 @@ tulajdonsag = [
 bdb-vonatkozhat = "a szókártya szövegében a lap verse, ha a 2.29 sora kétes (F104; F231: a pont jelölése elmaradt, DT914): a kiemelés a .szk-szoveg a.bdb-itt szabályé"
 szo-szamok = "a szó-lap számkártyáinak sora a lapfej alatt (F231 #56; flex)"
 szo-szam = "egy számkártya (szám + felirat; F231 #56)"
-ures-osszesito = "az üres eredményű blokkok összesítő sora (F231 #47); a .ures tokenjein"
-forras-reszlet = "a blokk csukott forrás-lenyílója (F231 #45/#46: jelleg-címkék és forrássor); a felirat a .forras tokenjein"
-jellegek = "a jelleg-címkék sora a forrás-lenyílóban (F231 #45)"
 szamozas-sor = "a versszámozás egysoros összefoglalója a vers-lap tetején (F231 #37); a .megj tokenjein"
 he-szocsoport = "a héber szócsoport kerete (írott szavanként, F231 #30); a keret színe az accent token"
 he-szocsoport-fej = "a szócsoport fejsora: az egész írott szó és a kiejtése (F231 #30)"
@@ -1482,6 +1501,7 @@ szk-jel-d = "a jelentés lenyílója (details; szónézetben nyitva, motívumlap
 szk-kinyitva = "állapot-osztály: a használati sor minden helye látszik (a JS adja a „még N hely” gombra)"
 szk-alpont = "egy alpont (a., b. …) tárolója (behúzás literál)"
 szk-alcim = "az alpont címsora (jelölő, glossza, adatsor): flex-tároló"
+szk-app = "az Apparátus és szövegkritika lenyílója (details; F231.17: a main szerint visszaállítva); a felirat a szk-lenyilo, a lista a szk-app-lista elem"
 szk-en = "az Angol eredeti lenyílója (details); a felirat a szk-lenyilo, a szöveg a szk-en-szoveg elem"
 szk-lxx = "a jelentés LXX-párja az adatsorban; a görög szó a .gr horog, a méret és a szín a szk-meta elemé"
 glossza-sor = "az „Ebben a versben” glossza-sora (F213); a megjegyzés (megj) tokenjeit örökli"

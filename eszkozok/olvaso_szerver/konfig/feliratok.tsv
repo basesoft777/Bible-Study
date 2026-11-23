@@ -43,6 +43,11 @@ szk.kezi_cimke	szerkesztői címke
 szk.kezi_cimke_sugo	a jóváhagyott szerkesztői címke	
 szk.szamozas	Versszámozás: a BDB a héber számozást követi;	
 szk.szamozas_par	%(mt)s = Károli %(karoli)s	
+szk.apparatus	Apparátus és szövegkritika	
+szk.app_db	%(n)s tétel	
+szk.app_forrasjel	forrásjel	
+szk.app_megjegyzes	megjegyzés	
+szk.app_szamozas	számozás	
 szk.szakasz.elo	Zárójeles előszócikk (más gyök)	
 szk.szakasz.aramit	Arámi (Pe'al) rész	
 szk.szakasz.azonos_lemma	További homonima ugyanezen a lemmán	
@@ -70,7 +75,6 @@ usz.oszlop_igehely	Igehely
 usz.oszlop_karoli	Károli-szöveg	
 usz.oszlop_ubs	Jelentés (UBS)	
 usz.ubs_sugo	UBS DNTG jelentés-azonosító: %(lex)s	
-szk.angol_sugo	angol eredeti: %(en)s	
 karoli.alak	Károli-alak	
 karoli.darab	Darab	
 karoli.mind	Mind a %(n)s könyv szó szintű párjai alapján.	
@@ -89,7 +93,6 @@ blokk.tablazatos	Táblázatos nézet (a csempék adatai soronként)
 vers.szamozas_sor	Versszámozás: héber (MT) %(mt)s · angol (KJV) %(kjv)s	
 vers.szamozas_sugo	osztály: %(osztaly)s; a megfeleltetés forrása: %(forras)s	
 vers.lxx_sor	Septuaginta-versszám: %(lxx)s	
-blokk.forras	Forrás és licenc	
 forras.projekt_adat	a projekt saját adata	
 olvaso.nev	Biblialex olvasó	Biblialex reader
 szint.nyilvanos	nyilvános	public
@@ -111,7 +114,6 @@ mot.hol	Hol merült fel:
 tsk.osszeg	%(n)s kereszthivatkozás; az első %(db)s áll, a szavazatszám szerint.	
 tsk.hivatkozas	Hivatkozás	
 tsk.szavazat	Szavazat	
-blokk.ures_osszesito	Ezekben a forrásokban erre nincs adat (üres eredmény, nem negatív lelet): %(nevek)s.	
 bsb.hianyzik	A BSB-forrás ehhez a vershez nem ad szavakat (a forrásból hiányzik).	
 kezdolap.cim	Károli-bibliaszöveg	
 szo.szam_elofordulas	előfordulás	

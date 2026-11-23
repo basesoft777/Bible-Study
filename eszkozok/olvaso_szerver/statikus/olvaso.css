@@ -63,9 +63,6 @@ h4 { font-size: var(--fs-kiscim); margin: 10px 0 4px; }
 .jelleg-gepi { color: var(--muted); border-color: var(--rule); }
 .jelleg-modell { color: var(--gold); border-color: var(--gold); background: var(--gold-soft); }
 .forras { color: var(--muted); margin: 6px 0 0; }
-.forras-reszlet { margin: 6px 0 0; }
-.forras-reszlet > summary { cursor: pointer; font: var(--fs-forrassor)/var(--lh-forrassor) var(--font-ui); color: var(--muted); }
-.jellegek { margin: 4px 0 0; }
 .ures { color: var(--muted); font-style: italic; }
 table.adat { border-collapse: collapse; width: 100%; font-size: var(--fs-adat-tabla); }
 table.adat th, table.adat td { text-align: left; padding: 2px 8px 2px 0; vertical-align: top; border-bottom: 1px solid var(--rule); }
@@ -557,7 +554,7 @@ details[open] > summary.morzsa { border-color: var(--accent); }
 
 /* F231 (#55): érintőképernyőn a kezelőelemek legalább 44 px magasak (WCAG 2.5.5); az egérrel használt elrendezés változatlan */
 @media (pointer: coarse) {
-  .szintvalto a, .reteg-kapcsolo, .tema button, .ful, .fejezetgomb, .konyvgomb, .szk-tobb, .forras-reszlet > summary,
+  .szintvalto a, .reteg-kapcsolo, .tema button, .ful, .fejezetgomb, .konyvgomb, .szk-tobb,
   .szk-lenyilok > details > summary, .szk-also > details > summary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
   .fejezetgomb, .konyvgomb { display: flex; }
 }

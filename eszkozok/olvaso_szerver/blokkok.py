@@ -852,10 +852,10 @@ def _glossza_hu(K):
 
 
 def _hu_en(hu, en):
-    """F213, F231 (#58): magyar híján az angol; magyarnál csak a magyar látszik, az angol eredeti a súgóban („angol csak magyar
-    híján”)."""
+    """F213: magyar elöl, mellette kisebben az angol eredeti; magyar híján az angol. (Az F231 #58 súgóba vitte az angolt; F231.17:
+    a main szerint visszaállítva, a szerkesztő szabálya: ami a main-en látszott, az látsszon.)"""
     if hu and en:
-        return Markup('<span title="%s">%s</span>') % (F('szk.angol_sugo', en=en), hu)
+        return Markup('%s <span class="angol-kis" lang="en">%s</span>') % (hu, en)
     return escape(hu or en or '')
 
 
@@ -1759,6 +1759,93 @@ def _szk_szamozas(cx, dom):
     return Markup('<p class="megj szk-szamozas">%s %s</p>') % (F('szk.szamozas'), '; '.join(vsz))
 
 
+_SZERZO_RE = re.compile(r'(?<![\w])(%s)(?![\w])' % '|'.join(re.escape(j) for j in sorted(_SZERZO_JEL, key=len, reverse=True)))
+
+
+def _app_e(belso):
+    """A zárójeles rész apparátus-megjegyzés: kérdőjeles alternatíva, szerzői hivatkozás (`szerző^mű`, a jelmagyarázat szerzői)."""
+    return '?' in belso or '^' in belso or bool(_SZERZO_RE.search(belso))
+
+
+def _szk_forras_parok(s):
+    """A forrásjel-csoportok a helyükkel (F231.17, a hibalista 15. pontja: a forrásjel ne álljon a versek nélkül): a felső szintű
+    „(J)”, „(mindkettő J E)” csoport előtt közvetlenül álló hely, a „mind…” csoportnál a közvetlenül előtte álló, csak vesszővel
+    vagy pontosvesszővel elválasztott helyek sora. A könyvnév nélküli hely („44:3”) a szövegben előtte álló könyvnevet kapja.
+    [(hely-szöveg, csoport)]."""
+    refek = _ref_tokenek(s)
+    konyv, hely = '', []
+    for a, b, (fej, vers) in refek:
+        m = re.match(r'^(.*?)\s*\d{1,3}:\d', s[a:b])           # a könyvnév a „fejezet:vers” előtt („2Móz 21:6” → „2Móz”)
+        if m and m.group(1).strip():
+            konyv = m.group(1).strip()
+        hely.append((konyv, fej, vers))
+
+    def lista(sor):
+        """„2Móz 16:7, 12, 13; 3Móz 6:13”: a könyvnév és a fejezet csak változáskor."""
+        ki, elozo = '', None
+        for j in sor:
+            k, f, v = hely[j]
+            if elozo and elozo[:2] == (k, f):
+                ki += ', %d' % v
+            elif elozo and elozo[0] == k:
+                ki += '; %d:%d' % (f, v)
+            else:
+                ki += ('; ' if ki else '') + ('%s %d:%d' % (k, f, v) if k else '%d:%d' % (f, v))
+            elozo = (k, f)
+        return ki
+    ki = []
+    for m in _FORRAS_ZAROJEL_RE.finditer(s):
+        elotte = s[:m.start()]
+        if elotte.count('(') != elotte.count(')'):
+            continue                                    # zárójelen belüli csoport: a szövegben marad
+        # a hely és a csoport között legfeljebb hivatkozás nélküli zárójeles megjegyzés áll („34:2 (a versben kétszer) (mindkettő J E)”)
+        utolso = [i for i, (a, b, _k) in enumerate(refek) if b <= m.start() and re.fullmatch(r'(?:\s*\([^()]*\))*\s*', s[b:m.start()])]
+        if not utolso:
+            ki.append(('', m.group(0)))
+            continue
+        i = utolso[-1]
+        sor = [i]
+        if re.match(r'\((?:mind|mindkettő|mindhárom)\s', m.group(0)):
+            while sor[0] > 0 and re.fullmatch(r'[\s,;]*', s[refek[sor[0] - 1][1]:refek[sor[0]][0]]):
+                sor.insert(0, sor[0] - 1)
+        ki.append((lista(sor), m.group(0)))
+    return ki
+
+
+def _szk_apparatus(cx, doms, szovegek):
+    """Az „Apparátus és szövegkritika” lenyíló a jelentésnél, ahogy a main-en (F231.17: a #810 elvitte, a szerkesztő visszakérte):
+    forrásjel (a helyével, #15), apparátus-megjegyzés (a felső szintű, hivatkozás nélküli kérdőjeles vagy szerzői zárójel) és
+    versszámozás. A darabszám felirattal (a hibalista 10. pontja: felirat nélküli szám). `doms`: a csomópontok (a számozáshoz),
+    `szovegek`: a csomópontok magyar szövege."""
+    vj, talalt = cx['vj'], cx['talalt']
+    parok, app = [], []
+    for s in szovegek:
+        if not s:
+            continue
+        parok += _szk_forras_parok(s)
+        app += bdb_szokartya.apparatusba(s, _ref_tokenek, _app_e, _FORRAS_ZAROJEL_RE)[2]
+    elemek = []
+    if parok:
+        elemek.append((F('szk.app_forrasjel'), Markup(' · ').join(
+            (Markup('%s ') % h if h else Markup('')) + _jeles(cs, talalt) for h, cs in parok)))
+    for a in app:
+        elemek.append((F('szk.app_megjegyzes'), _jeles(a, talalt)))
+    if vj.van:
+        vsz, lat = [], set()
+        for dom in doms:
+            for r in vj.csomopont_sorok.get(dom, ()) if dom else ():
+                if _vj_feloldott(r) and r['mt_vers'] and r['karoli_vers'] and r['mt_vers'] != r['karoli_vers'] and r['karoli_vers'] not in lat:
+                    lat.add(r['karoli_vers'])
+                    vsz.append(F('szk.szamozas_par', mt=r['mt_vers'], karoli=r['karoli_vers']))
+        if vsz:
+            elemek.append((F('szk.app_szamozas'), Markup('%s %s') % (F('szk.szamozas'), '; '.join(vsz))))
+    if not elemek:
+        return Markup('')
+    return Markup('<details class="szk-app"><summary>%s <span class="szk-db">%s</span></summary><ul class="szk-app-lista">%s</ul>'
+                  '</details>') % (F('szk.apparatus'), F('szk.app_db', n=len(elemek)), Markup('').join(
+                      Markup('<li><span class="szk-app-fajta">%s</span> %s</li>') % (f, t) for f, t in elemek))
+
+
 def _szk_angol(en, talalt=None, sorrend=None):
     if not en:
         return Markup('')
@@ -1852,7 +1939,12 @@ def _szk_torzs_egyben(cx, t, elotag, ti, cimke):
             sid = _jel_id(elotag, ti, j['jel'], s['jel'])
             darab.append(Markup('<b class="szk-jel-inline">%s.</b> ') % s['jel'] + _szk_inline(cx, s['szoveg'], sid, cimke))
     db = sum(_szk_reszfa_db(vj, _jel_id(elotag, ti, j['jel'] or 'x%d' % i), j, elotag, ti) for i, j in enumerate(t['jelentesek']))
-    return Markup('<p class="megj">%s</p><p class="szk-szoveg jsz">%s</p>') % (F('szk.egyben_megj'), Markup(' ').join(darab)), db
+    doms = [_jel_id(elotag, ti, j['jel'] or 'x%d' % i) for i, j in enumerate(t['jelentesek'])] + [
+        _jel_id(elotag, ti, j['jel'], x['jel']) for j in t['jelentesek'] for x in j['al']]
+    szov = [j['szoveg'] for j in t['jelentesek']] + [x['szoveg'] for j in t['jelentesek'] for x in j['al']]
+    app = _szk_apparatus(cx, doms, szov)
+    return Markup('<p class="megj">%s</p><p class="szk-szoveg jsz">%s</p>%s') % (
+        F('szk.egyben_megj'), Markup(' ').join(darab), Markup('<div class="szk-also">%s</div>') % app if app else ''), db
 
 
 def _szk_torzsek(cx, tl, elotag, cimke):
@@ -1890,7 +1982,7 @@ def _szk_torzsek(cx, tl, elotag, cimke):
             cx.setdefault('glosszak', {})[jid] = gl
             meta, szint, van_mot = _szk_meta(cx, jid, j, kezi)
             szov = _szk_szoveg(cx, j['szoveg'], jid, cimke)
-            also = _szk_szamozas(cx, jid) + _szk_angol(cx['en'].get((elotag, ti, j['jel'] or 'x%d' % i, '')), cx['talalt'], cx.get('sorrend'))
+            also = _szk_apparatus(cx, [jid], [j['szoveg']]) + _szk_szamozas(cx, jid) + _szk_angol(cx['en'].get((elotag, ti, j['jel'] or 'x%d' % i, '')), cx['talalt'], cx.get('sorrend'))
             alok = Markup('')
             for s in j['al']:
                 sid = _jel_id(elotag, ti, j['jel'], s['jel'])
@@ -1898,7 +1990,7 @@ def _szk_torzsek(cx, tl, elotag, cimke):
                 cx.setdefault('glosszak', {})[sid] = sgl
                 smeta, sszint, s_mot = _szk_meta(cx, sid, s, skezi)
                 van_mot = van_mot or s_mot
-                salso = _szk_szamozas(cx, sid) + _szk_angol(cx['en'].get((elotag, ti, j['jel'], s['jel'])), cx['talalt'], cx.get('sorrend'))
+                salso = _szk_apparatus(cx, [sid], [s['szoveg']]) + _szk_szamozas(cx, sid) + _szk_angol(cx['en'].get((elotag, ti, j['jel'], s['jel'])), cx['talalt'], cx.get('sorrend'))
                 alok += Markup('<li id="%s" data-jel="%s." class="szk-alpont%s"><p class="szk-alcim"><span class="szk-jelszam">%s.</span>'
                                '%s%s</p>%s<div class="szk-also">%s</div></li>') % (
                     sid, s['jel'], ' bdb-itt' if sszint else '', s['jel'], _szk_cim(sgl, spot), smeta,
@@ -2573,10 +2665,12 @@ B = Blokk
 
 
 def _csukva(render, felirat='blokk.forrasszoveg'):
-    """F231 (#21, #36): a nyers forrásszöveg és a csempék adatát ismétlő táblázat blokkja csukva, a felirat a fordítótáblából."""
+    """F231 (#21, #36): a nyers forrásszöveg és a csempék adatát ismétlő táblázat lenyílóban, a felirat a fordítótáblából. F231.17:
+    a lenyíló alapból nyitva, ahogy a main-en a tartalom nyitva állt (a szerkesztő szabálya: ami a main-en látszott, az látsszon);
+    az olvasó becsukhatja."""
     def f(d, K):
         t = render(d, K)
-        return Markup('<details class="forrasszoveg"><summary>%s</summary>%s</details>') % (F(felirat), t) if t else t
+        return Markup('<details class="forrasszoveg" open><summary>%s</summary>%s</details>') % (F(felirat), t) if t else t
     return f
 
 
@@ -2701,15 +2795,11 @@ def forras_sor(b, kozos):
 
 
 def osszefuz(lista):
-    """F231 (#47): a blokkok HTML-je egymás után; az üres eredményű (rejtett) blokkok neve a végén egy sorban („Ezekben a
-    forrásokban nincs adat: …”), nem blokkonként külön „Nincs adat” sorral. `lista`: [(Blokk, html)]."""
-    ki, ures = Markup(''), []
-    for b, h in lista:
+    """A blokkok HTML-je egymás után. `lista`: [(Blokk, html)]. (Az F231 #47 összesítő sora visszavonva, F231.17: az üres
+    eredményű blokk a main szerint a saját helyén, a saját „Nincs adat” sorával áll.)"""
+    ki = Markup('')
+    for _b, h in lista:
         ki += h
-        if 'data-ures="1"' in str(h)[:300]:
-            ures.append(b.cim)
-    if ures:
-        ki += Markup('<p class="ures ures-osszesito">%s</p>') % F('blokk.ures_osszesito', nevek=', '.join(ures))
     return ki
 
 
@@ -2733,25 +2823,22 @@ def _forras_olvasoi(forras):
 
 
 def blokk_html(b, K):
-    """A blokk teljes HTML-je. Hibát dob, ha a jelleg- vagy a forrássor hiányozna. F231 (#45, #46, #49): a jelleg-címkék, a blokk
-    belső megjegyzése és a forrás- és licencsor a blokk alján, csukott „Forrás” lenyílóban állnak (a proveniencia megmarad, a
-    felületen nem belső kategória áll); a forrássor olvasói alakú, a belső táblanév a súgóban."""
+    """A blokk teljes HTML-je. Hibát dob, ha a jelleg- vagy a forrássor hiányozna. A jelleg-címkék és a blokk rövid
+    forrásmegjegyzése a cím mellett, a forrás- és licencsor nyitva a blokk alján áll, ahogy a main-en (F231.17, a szerkesztő
+    szabálya: ami a main-en látszott, az látsszon; kapu: `teszt_blokkfej.py`). A forrássor olvasói alakú (#46), a belső táblanevű
+    teljes sor a súgóban; az üres eredményű blokk a saját „Nincs adat” sorával áll (#47 visszavonva)."""
     forras = forras_sor(b, K.kozos)
     adat = b.fetch(K)
     cimkek = jelleg_cimkek(b.jelleg_fn(adat) if (b.jelleg_fn and adat) else b.jelleg)
     torzs = None
     if adat:
         torzs = b.render(adat, K)
-    ures = not torzs and not b.ures_html
     if not torzs:
         torzs = b.ures_html(K) if b.ures_html else _ures()
-    megj = Markup(' <span class="megj">%s</span>') % b.jelleg_megj if b.jelleg_megj else Markup('')
-    # F231 (#47): az üres eredményű blokk rejtve áll (a forrássora megmarad), a lap az ilyen blokkok nevét egy összesítő sorban adja
+    megj = Markup('<span class="megj">%s</span>') % b.jelleg_megj if b.jelleg_megj else Markup('')
     html = Markup(
-        '<section class="blokk" id="b-%s" data-blokk="%s"%s><h3>%s</h3>%s<details class="forras-reszlet"><summary>%s</summary>'
-        '<p class="jellegek">%s%s</p><p class="forras" title="%s">%s</p></details></section>') % (
-            b.id.replace('.', '-'), b.id, Markup(' data-ures="1" hidden') if ures else '', b.cim, torzs, F('blokk.forras'), cimkek, megj,
-            forras, _forras_olvasoi(forras))
+        '<section class="blokk" id="b-%s" data-blokk="%s"><h3>%s %s %s</h3>%s<p class="forras" title="%s">%s</p></section>') % (
+            b.id.replace('.', '-'), b.id, b.cim, cimkek, megj, torzs, forras, _forras_olvasoi(forras))
     if 'class="jelleg ' not in html or 'class="forras"' not in html:
         raise BlokkHiba('hiányzó jelleg-címke vagy forrássor: %s' % b.id)
     return html

@@ -261,8 +261,7 @@ class TestSzintekValodiLapokon(unittest.TestCase):
         """F213 (a jóváhagyott mockup): a szónézetben minden jelentés alapállapotban nyitva; csukva csak a lenyílók (alakok, rokon nyelvek,
         apparátus, angol eredeti, jelmagyarázat), amelyek a „Minden apparátus nyitva” nézetben nyílnak."""
         n = 0
-        lenyilo = ('szk-alakok', 'szk-rokon', 'szk-app', 'szk-en', 'szk-jelmagyarazat', 'szk-teljes',      # F230: a teljes magyar szöveg is csukott lenyíló
-                   'forras-reszlet')                                    # F231 (#45/#46): a blokk Forrás és licenc lenyílója
+        lenyilo = ('szk-alakok', 'szk-rokon', 'szk-app', 'szk-en', 'szk-jelmagyarazat', 'szk-teljes')      # F230: a teljes magyar szöveg is csukott lenyíló
         for azon, adat in self.pilot.items():
             for strong, l in adat['lapok'].items():
                 if not l['appar']:

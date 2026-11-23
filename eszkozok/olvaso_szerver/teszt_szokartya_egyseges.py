@@ -154,7 +154,9 @@ class Kapu(unittest.TestCase):
             self.assertIsNone(re.search(r'\d{13,}', t), st)
             self.assertIsNone(rag.search(t), st)
             self.assertNotIn('szk-helyek', h, st)                       # a könyvnév nélküli chipek megszűntek
-            for belso in ('forrásadat', 'gépi feldolgozás', 'modell-kimenet', 'lxx_os_etalon', 'PaRDeS olvasó'):
+            # F231.17: a jelleg-címke („forrásadat”, „gépi feldolgozás”, „modell-kimenet”) a szerkesztő szabálya szerint a blokkcím
+            # mellett látszik, ahogy a main-en (kapu: teszt_blokkfej.py); itt csak a belső nevek tiltottak
+            for belso in ('lxx_os_etalon', 'PaRDeS olvasó'):
                 self.assertNotIn(belso, t, (st, belso))
 
     def test_leading_geres_nincs_a_mintan(self):

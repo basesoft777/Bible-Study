@@ -53,12 +53,12 @@ Kimenet (három kimenet, IRANY.md „Így dolgozunk”; a K a megbízáson kív�
 | 7 | J | /szo/H0430 | „Di 7:13” link és magyarázat nélkül | „(R, l. Di 7:13)”, a „Di” rövidítés súgója „A. Dillmann”, és a jelmagyarázatban is áll; a „7:13” nem könyvnév (a „Di” szerzőjel, nem könyv) |
 | 8 | J | /szo/H1242 | „׳לַבּ reggelen …” | „לַבּ׳ Ámós 4:4 7-szer; … לַבּ׳‎ 2Móz 34:2”; a H0430 kártyáján szó eleji ׳: 0 |
 | 9 | J | /szo/H0430 | „א׳ אדני אברהם” magyarázat nélkül | „א׳” rövidítés-súgóval („a címszó: אֱלֹהִים (elóhím)”); a szórend a Biblia által igazolt javítással |
-| 10 | J | /szo/H1242 | „1reggel131 ⏎ 2holnap, másnap71”, „Apparátus és szövegkritika 2” | „1reggel131 hivatkozás ⏎ 2holnap, másnap71 hivatkozás”; az apparátus-szám megszűnt |
+| 10 | J | /szo/H1242 | „1reggel131 ⏎ 2holnap, másnap71”, „Apparátus és szövegkritika 2” | „1reggel131 hivatkozás ⏎ 2holnap, másnap71 hivatkozás”; az apparátus a helyén marad, a szám felirattal: „Apparátus és szövegkritika 2 tétel” (F231.17; a #810 első menete a blokkot vitte el, nem a számot javította) |
 | 11 | J | /szo/H7837, /szo/H3615 | H7837: a teljes szöveg az „Alakok ▸” alatt; H3615: „Qal ⏎ 1—25” | H7837: „A szótár ezt a szócikket nem tagolja … a teljes szöveg áll.” + a szöveg nyitva; H3615: „A szótár itt ragozott alakokat sorol …, ezért a törzs szövege egyben áll.” |
 | 12 | J | /szo/H2416 | a tagolt kártyából tagmondatok hiányoztak, csak a csukott teljes szöveg őrizte | a jelentések teljes szövege egyben áll; ahol a szakasztábla hiányos (1 073 szócikk), a teljes szöveg nyitva, kimondva |
 | 13 | J | /r/szo/H0747 | nyers „BDB-szócikk (nyers szöveg)” blokk | „Lefordítva · gépi fordítás ⏎ אֲרִיסַי tulajdonnév, hímnemű, Hámán fia …” a kártyában, csukva az „Angol eredeti” |
 | 14 | R | /szo/H1242 | „17 hivatkozás” mellett LXX πρωΐ 8 · φωσφόρος 6 · 5; a Görög megfelelő blokkban „φωσφόρος 88” | **Rád vár: adat-PR a #231 után, a kapu-szál előtt (IRANY.md).** A súgó kimondja, hogy a pár versenként számol, ezért az összeg eltérhet (8+6+5 = 19 a 17 hivatkozás mellett: nem számolási hiba). **Mérve: adathiba.** A Macula LXX-párjaiban a „πρωὶ” alak Strong-száma G5459 (φωσφόρος) a G4404 helyett, 88-szor; az LXX_OS-ben a G5459 nem fordul elő; a `lxx_bridge` ezt viszi tovább. Az olvasó kódja jól számol: **N-F231a** (`nyitott/uj/olvaso-egyben-3464e1.md`; célfeladat: rövid adatjavító PR a #231 után, nehéz körrel). A „nem igazolt” jelölés mérve, de nincs bevezetve (2. szakasz) |
-| 15 | J | /szo/H1242 | „▸ forrásjel (J) (P) (mindkettő J E) …” leválasztva | a forrásjel a helye mellett, a mondatban: „2Móz 10:13 (J) 3Móz 6:2 (P)”, súgóval |
+| 15 | J | /szo/H1242 | „▸ forrásjel (J) (P) (mindkettő J E) …” leválasztva | a forrásjel a helye mellett, a mondatban: „2Móz 10:13 (J) 3Móz 6:2 (P)”, súgóval; az apparátusban is a helyével: „▸ forrásjel 2Móz 10:13 (J) · 3Móz 6:2 (P) · 2Móz 23:18; 34:25 (mindkettő J E) …” (F231.17) |
 | 16 | J | /1Moz/1/5?szo=H1242 | „Ebben a versben …” | „A BDB besorolása: 1Móz 1:5 ⏎ A szótár ezt a helyet ebbe a jelentésbe sorolja: 1. e. — ellentétben: עֶרֶב”; kétes, fej, tagolatlan: jelölés nélkül (DT914) |
 | 17 | V | /szo/H2403 | „Külön meghatározás nélkül”: a main-en már nem áll (0 találat); a „1.a — 5 hivatkozás” csukott sor | a csukott sorok megszűntek, a szám a tábla feloldott helyeiből (`vj.db`) |
 | 18 | R | /szo/H7451 | „172 hivatkozás jelentéspontja … nem azonosítható” | a szöveg olvasói („… a szövegben kattintható, de a jelentéspontja ebben a tagolásban nem azonosítható”). **Rád vár (#237):** a `bdb_tagolas.py` sorbelső feje és a két szócikk azonos címkéje (N144, N145), a régi generátorral közös kód |
@@ -79,7 +79,7 @@ Kimenet (három kimenet, IRANY.md „Így dolgozunk”; a K a megbízáson kív�
 | 33 | V | /1Moz/3/6 | „gam” kötőjel nélkül (az F230 óta) | elvetve, mert már javult: az F230 kiejtés-szolgáltatása óta a csempén „גַּם gam” áll, kötőjel nélkül (a tételmérce élőben nézi). |
 | 34 | J | /Jan/1/1 | „ἀρχῇ ¦ arkhéa” | „arkhé”; a TAGNT „ēa” átírása az alsó iotás étánál (1 471 token) a kiejtés-szolgáltatásban javítva |
 | 35 | J | /Jan/1/1 | „λόγος, ¦ logosz” | „λόγος ¦ logosz” (a központozás nélkül; a tükörfordítás változatlan) |
-| 36 | J | /1Moz/1/1 | a csempék adatai 6 nyitott táblázatban | „Táblázatos nézet (a csempék adatai soronként)” csukva (Károli–Strong, TAHOT/TAGNT, Macula ×2, LXX_OS, igealak) |
+| 36 | V | /1Moz/1/1 | a csempék adatai 6 nyitott táblázatban | elvetve, a szerkesztő 2026-11-23-i szabálya (amit a main a lapon mutatott, az maradjon látható; „Igen, hozza vissza”): a táblázatok a main szerint nyitva állnak, a „Táblázatos nézet (a csempék adatai soronként)” lenyíló becsukható; a csempék adatán túl a táblázat is hordoz adatot (szótő, mért pontosság, Macula-kód). |
 | 37 | J | /Zsolt/22/2 | „Osztály ¦ KJV-versszám ¦ MT-versszám …” a fül közepén | a Károli-szöveg alatt: „Versszámozás: héber (MT) 22:2 · angol (KJV) 22:1”, „Septuaginta-versszám: Zsolt 21:2” |
 | 38 | J | /1Moz/1/5 | „¦ magas” | „¦ 99% (Mózes öt könyve)” (a könyvcsoport mért pontossága, súgóban a 95%-os intervallum és a proveniencia) |
 | 39 | R | /1Moz/1/1 | „Ez az adat ebben a kiadásban még nem érhető el” | változatlan, igaz szöveg. **Rád vár (F235 2. rész):** az LXX-többlet táblái nincsenek betöltve (`sqlite_epit` + újraépítés) |
@@ -88,11 +88,11 @@ Kimenet (három kimenet, IRANY.md „Így dolgozunk”; a K a megbízáson kív�
 | 42 | J | /Zsolt/22/2 | „PROPHECY ¦ . ¦” | „PROPHECY ¦ ¦” (a „.” helyőrző nélkül; a fordítás nélküli téma angolul, a szabály szerint) |
 | 43 | J | /1Moz/1/1 | „Összesen 68 hivatkozás; az első 15 látszik …” a táblázat alatt | „68 kereszthivatkozás; az első 15 áll, a szavazatszám szerint.” a táblázat előtt |
 | 44 | J | /1Moz/4/7 | „PaRDeS-szint” | „Értelmezési szint” |
-| 45 | J | /szo/H1242 | „Strong-szótár forrásadat modell-kimenet” | „Strong-szótár”; a jelleg-címkék a csukott „Forrás és licenc” lenyílóban |
-| 46 | J | /szo/H1242 | „Forrás és licenc: Strong_szotar (strong_szotar): CC BY 4.0 · … projekt_adat …” nyitva | csukva: „Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: …”; a belső nevű sor a súgóban |
-| 47 | J | /Jan/1/1 | 16× „Nincs adat (üres eredmény, nem negatív lelet).” | egy sor fülenként: „Ezekben a forrásokban erre nincs adat (üres eredmény, nem negatív lelet): Versszámozás (MT / KJV), LXX-versszám, …” |
+| 45 | V | /szo/H1242 | „Strong-szótár forrásadat modell-kimenet” | elvetve, a szerkesztő 2026-11-23-i szabálya (amit a main a lapon mutatott, az maradjon látható; „Igen, hozza vissza”): a jelleg-címke a blokk címe mellett áll, súgóval (a #810 első menete csukott lenyílóba vitte). |
+| 46 | J | /szo/H1242 | „Forrás és licenc: Strong_szotar (strong_szotar): CC BY 4.0 · … projekt_adat …” nyitva | nyitva, a main szerint, olvasói névvel: „Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: …”; a belső nevű sor a súgóban (a zárt alapállapot elvetve, F231.17) |
+| 47 | V | /Jan/1/1 | 16× „Nincs adat (üres eredmény, nem negatív lelet).” | elvetve, a szerkesztő 2026-11-23-i szabálya (amit a main a lapon mutatott, az maradjon látható; „Igen, hozza vissza”): az üres eredményű blokk a saját helyén, a címével, jelleg-címkéjével, forrássorával és a „Nincs adat” sorával áll; az összesítő sor visszavonva. |
 | 48 | J | /Zsolt/22/2 | „… ¦ lxx_os_etalon_f91” | az összefoglaló sorban nincs; a forrásazonosító csak súgóban |
-| 49 | J | /Zsolt/22/2 | „a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad” a blokkcím mellett | a csukott Forrás-lenyílóban |
+| 49 | V | /Zsolt/22/2 | „a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad” a blokkcím mellett | elvetve, a szerkesztő 2026-11-23-i szabálya (amit a main a lapon mutatott, az maradjon látható; „Igen, hozza vissza”): a megjegyzés a main szerint a blokkcím mellett áll. |
 | 50 | J | /szo/H1242 | „szó-lap önálló címen · előfordulások versenként” | „A szó saját lapja · Minden előfordulás versenként (keresés)” |
 | 51 | J | / | „PaRDeS olvasó” | „Biblialex olvasó” (egy kulcs: `olvaso.nev`) |
 | 52 | J | / | „Szint nyilvanos regisztralt kutato” | „Szint nyilvános regisztrált kutató” |
@@ -101,7 +101,7 @@ Kimenet (három kimenet, IRANY.md „Így dolgozunk”; a K a megbízáson kív�
 | 55 | J | / (mobil) | 24–32 px-es érintési célok; tanulmányjel 3,73:1 | érintőképernyőn (`pointer: coarse`) legalább 44 px; a tanulmányjel átlátszóság nélkül 6,65:1 |
 | 56 | J | /szo/H1242 | „214 előfordulás, 29 könyvben.” mondatként egy blokkban | a lapfej alatt három számkártya: „214 előfordulás · 29 könyvben · 221 Károli-előfordulás” |
 | 57 | J | /szo/H1242 | „A 66 feldolgozott könyv (1Jan, 1Kir, 1Kor, …)” | „Mind a 66 könyv szó szintű párjai alapján.”; arányos sáv (`<meter>`) az alakok mellett |
-| 58 | J | /szo/H1242 | „reggel morning” | „reggel” (az angol a súgóban: „angol eredeti: morning”) |
+| 58 | V | /szo/H1242 | „reggel morning” | elvetve, a szerkesztő 2026-11-23-i szabálya (amit a main a lapon mutatott, az maradjon látható; „Igen, hozza vissza”): az angol eredeti a magyar mellett kisebben áll (F213; a hibalista maga is „nem biztos, hogy hiba” jelzést adott). |
 | 59 | K | /motivum/HAMART-001 | 404 | kimarad: F164, új funkció |
 | 60 | J | /1Moz/1, /szo/H1242 | lassú (új fejezet 0,8–3 s) | az F235 1. része (#799) a main-en; az ág a main-ről indul (a mintalapok lekérése az előnézeten 0,1–0,4 s) |
 

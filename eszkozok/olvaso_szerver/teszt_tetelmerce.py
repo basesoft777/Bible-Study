@@ -88,7 +88,8 @@ TETELEK = {
     9: ('J', [E(H0430, 'html', r'<abbr class="rovidites" title="a címszó: אֱלֹהִים \(elóhím\)"[^>]*>א׳</abbr>'),
               E(H0430, 'van', r'א׳ אדני אברהם'), E(H0430, 'nincs_kep', r'א׳ אברהם אדני')]),
     10: ('J', [E(H1242, 'van', r'^1reggel131 hivatkozás$'), E(H1242, 'van', r'^2holnap, másnap71 hivatkozás$'),
-               E(H1242, 'nincs_kep', r'Apparátus és szövegkritika \d')]),
+               E(H1242, 'van', r'^Apparátus és szövegkritika \d+ tétel$'),       # F231.17: a blokk marad, a szám felirattal
+               E(H1242, 'nincs', r'^Apparátus és szövegkritika \d+$')]),
     11: ('J', [E('/szo/H7837', 'van', r'^A szótár ezt a szócikket nem tagolja számozott jelentésekre; a teljes szöveg áll\.$'),
                E('/szo/H3615', 'van', r'^A szótár itt ragozott alakokat sorol; .*a törzs szövege egyben áll\.$'),
                E('/szo/H3615', 'nincs', r'^1—25$')]),
@@ -97,7 +98,9 @@ TETELEK = {
     13: ('J', [E('/r/szo/H0747', 'van', r'^Lefordítva · gépi fordítás'), E('/r/szo/H0747', 'van', r'Hámán fia'),
                E('/r/szo/H0747', 'nincs_kep', r'nyers szöveg')]),
     14: ('R', []),          # az adathiba (N-F231a) rád vár: adat-PR a #231 után (integrátori döntés, 2026-11-23)
-    15: ('J', [E(H1242, 'van', r'2Móz 10:13 \(J\) 3Móz 6:2 \(P\)'), E(H1242, 'nincs_kep', r'^(▸ )?forrásjel')]),
+    15: ('J', [E(H1242, 'van', r'2Móz 10:13 \(J\) 3Móz 6:2 \(P\)'),
+               E(H1242, 'van_kep', r'^▸ forrásjel 2Móz 10:13 \(J\) · 3Móz 6:2 \(P\) · 2Móz 23:18; 34:25 \(mindkettő J E\)'),
+               E(H1242, 'nincs_kep', r'^▸ forrásjel \(')]),                                 # F231.17: az apparátusban a helyével
     16: ('J', [E('/szo/H1242?vers=1Moz/1/5', 'van', r'^A BDB besorolása: 1Móz 1:5$'),
                E('/szo/H1242?vers=1Moz/1/5', 'van', r'^A szótár ezt a helyet ebbe a jelentésbe sorolja: 1\. e\.'),
                E('/szo/H1242?vers=1Moz/1/5', 'blokk_db', ('szo.bdb_apparatus', r'Ebben a versben', 0))]),   # a kártyában (a szo.ebben blokk más)
@@ -120,14 +123,14 @@ TETELEK = {
                E('/szo/G0264', 'van', r'^Igehely \| Károli-szöveg \| Jelentés \(UBS\)$')]),
     29: ('J/R', [E('/szo/G0264?vers=Rom/3/23', 'van', r'^A szótár ezt a helyet ebbe a jelentésbe sorolja: ')]),
     30: ('J', [E('/1Moz/1/1', 'van', r'^בְּרֵאשִׁ֖ית ?berésít$'),
-               E('/1Moz/1/1', 'van_kep', r'^▸ 1 \| Kezdetben \| בְּ \+ רֵאשִׁ֖ית \| H9003 \+ H7225 \|')]),
+               E('/1Moz/1/1', 'van', r'^1 \| Kezdetben \| בְּ \+ רֵאשִׁ֖ית \| H9003 \+ H7225 \|')]),
     31: ('J', [E('/1Moz/3/6', 'van', r'^לְאִישָׁ֛הּ ?leísáh$')]),
     32: ('J', [E('/1Moz/1/1', 'blokk_db', ('vers.heber_csempe', r'berésít', 1))]),     # a kiejtés a kereten, a csempék nem ismétlik
     33: ('V', [E('/1Moz/3/6', 'van', r'^גַּם ?gam(?!-)')]),
     34: ('J', [E('/Jan/1/1', 'van_kep', r'\| ἀρχῇ \| arkhé \|'), E('/Jan/1/1', 'nincs_kep', r'arkhéa|ēa\b')]),
     35: ('J', [E('/Jan/1/1', 'van_kep', r'\| λόγος \| logosz \|'), E('/Jan/1/1', 'nincs_kep', r'λόγος, \| logosz')]),
-    36: ('J', [E('/1Moz/1/1', 'html', r'<details(?![^>]*\bopen\b)[^>]*>\s*<summary[^>]*>Táblázatos nézet \(a csempék adatai soronként\)'),
-               E('/1Moz/1/1', 'nincs', r'^Igealak-kód \|')]),
+    36: ('V', [E('/1Moz/1/1', 'html', r'<details class="forrasszoveg" open>\s*<summary[^>]*>Táblázatos nézet \(a csempék adatai soronként\)'),
+               E('/1Moz/1/1', 'van', r'^Táblázatos nézet \(a csempék adatai soronként\)$')]),    # F231.17: nyitva, a main szerint
     37: ('J', [E('/Zsolt/22/2', 'van', r'^Versszámozás: héber \(MT\) 22:2 · angol \(KJV\) 22:1$'),
                E('/Zsolt/22/2', 'van', r'^Septuaginta-versszám: Zsolt 21:2$'), E('/Zsolt/22/2', 'nincs_kep', r'Osztály \| KJV-versszám')]),
     38: ('J', [E('/1Moz/1/5', 'van_kep', r'\| 99% \(Mózes öt könyve\)$'), E('/1Moz/1/5', 'nincs_kep', r'\| magas$')]),
@@ -139,13 +142,14 @@ TETELEK = {
                E('/1Moz/1/1', 'nincs_kep', r'Összesen \d+ hivatkozás', KUTATO)]),
     44: ('J', [E('/r/vers/1Moz/4/7', 'html', r'<th>Értelmezési szint</th>'),    # a Motívum fül töredéke
                E('/r/vers/1Moz/4/7', 'nincs_kep', r'PaRDeS-szint'), E('/r/vers/Zsolt/116/4', 'nincs_kep', r'PaRDeS-szint')]),
-    45: ('J', [E(H1242, 'nincs', r'forrásadat|modell-kimenet'), E(H1242, 'van_kep', r'^▸ forrásadat modell-kimenet$')]),
-    46: ('J', [E(H1242, 'nincs_kep', r'Strong_szotar \(strong_szotar\)|projekt_adat'),
-               E(H1242, 'html', r'<details class="forras-reszlet"><summary>'), E(H1242, 'nincs', r'^Forrás és licenc: ')]),
-    47: ('J', [E('/Jan/1/1', 'van', r'^Ezekben a forrásokban erre nincs adat \(üres eredmény, nem negatív lelet\): Versszámozás'),
-               E('/Jan/1/1', 'nincs', r'^Nincs adat \(üres eredmény, nem negatív lelet\)\.$')]),
+    45: ('V', [E(H1242, 'van', r'^Strong-szótár forrásadat modell-kimenet$'),      # F231.17: a jelleg-címke a cím mellett, a main szerint
+               E(H1242, 'html', r'<h3>Strong-szótár <span class="jelleg jelleg-forras" title="[^"]+">forrásadat</span>')]),
+    46: ('J', [E(H1242, 'nincs_kep', r'Strong_szotar \(strong_szotar\)|projekt_adat'), E(H1242, 'nincs_html', r'forras-reszlet'),
+               E(H1242, 'van', r'^Forrás és licenc: Strong szotar: CC BY 4\.0 · TBESH\+TAHOT\+a projekt saját adata: ')]),
+    47: ('V', [E('/Jan/1/1', 'nincs', r'^Ezekben a forrásokban erre nincs adat'),         # F231.17: az üres blokk a helyén, a main szerint
+               E('/Jan/1/1', 'blokk_db', ('vers.lxx_par', r'Nincs adat \(üres eredmény, nem negatív lelet\)\.', 1))]),
     48: ('J', [E('/Zsolt/22/2', 'nincs_kep', r'lxx_os_etalon')]),
-    49: ('J', [E('/Zsolt/22/2', 'nincs', r'GPL-eredetű'), E('/Zsolt/22/2', 'van_kep', r'^▸ .*a Strong-címkék GPL-eredetűek')]),
+    49: ('V', [E('/Zsolt/22/2', 'van', r'forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad$')]),
     50: ('J', [E(H1242, 'van', r'^A szó saját lapja · Minden előfordulás versenként \(keresés\)$'),
                E(H1242, 'nincs_kep', r'szó-lap önálló címen')]),
     51: ('J', [E('/', 'van', r'^Biblialex olvasó$'), E('/', 'nincs_kep', r'PaRDeS olvasó')]),
@@ -156,7 +160,7 @@ TETELEK = {
     56: ('J', [E(H1242, 'van', r'^214 előfordulás$'), E(H1242, 'van', r'^29 könyvben$'), E(H1242, 'van', r'^221 Károli-előfordulás$')]),
     57: ('J', [E(H1242, 'van', r'^Mind a 66 könyv szó szintű párjai alapján\.$'), E(H1242, 'html', r'<meter class="sav"'),
                E(H1242, 'nincs_kep', r'A 66 feldolgozott könyv \(')]),
-    58: ('J', [E(H1242, 'html', r'<span title="angol eredeti: morning">reggel</span>'), E(H1242, 'nincs_kep', r'reggel morning')]),
+    58: ('V', [E(H1242, 'html', r'reggel <span class="angol-kis" lang="en">morning</span>')]),     # F231.17: a main szerint
     60: ('J', []),          # sebesség: test_t60
 }
 assert len(TETELEK) == OSSZES and not set(KIMARAD) & set(TETELEK)
@@ -342,7 +346,7 @@ class TetelMerce(unittest.TestCase):
         m = re.search(r'@media \(pointer: coarse\) \{(.*?)\n\}', css, re.S)
         self.assertIsNotNone(m, 'nincs pointer: coarse szabály')
         self.assertIn('min-height: 44px', m.group(1))
-        for sz in ('.szintvalto a', '.ful', '.fejezetgomb', '.konyvgomb', '.forras-reszlet > summary'):
+        for sz in ('.szintvalto a', '.ful', '.fejezetgomb', '.konyvgomb'):
             self.assertIn(sz, m.group(1))
         tj = css_szabaly(r'\n\.tan-jel')
         self.assertIsNotNone(tj, 'nincs .tan-jel szabály')

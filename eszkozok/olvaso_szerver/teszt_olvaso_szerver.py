@@ -395,7 +395,7 @@ class TestLapok(unittest.TestCase):
         # a fülek sorrendjében (#134 M1, FULBLOKK): Vers · Kereszthiv. · Témák · Motívum; fülön belül a regiszter sorrendje
         sorrend = [k for k, _ in oldalak.VERS_FULEK]
         self.assertEqual(ids, sorted([b.id for b in blokkok.blokkok_oldalra('vers')], key=lambda i: sorrend.index(oldalak.FULBLOKK.get(i, 'vers'))))
-        self.assertEqual(len(re.findall(r'<p class="jellegek"><span class="jelleg jelleg-', h)), len(ids))      # blokkonként legalább egy címke
+        self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))      # blokkonként legalább egy címke, a cím mellett (F231.17)
         self.assertEqual(len(re.findall(r'<p class="forras" title="Forrás és licenc: ', h)), len(ids))
 
     def test_szovegoszlop_jelleg_es_forras_retegekkel(self):
@@ -417,7 +417,7 @@ class TestLapok(unittest.TestCase):
             # F230: az `ures_rejt` blokk (a nyers angol BDB, ha a kártya áll; a nyelvtani blokk tartalmas szónál) üres adatnál nem jelenik meg
             vart = [i for i in vart if i in ids or not blokkok.BLOKK_ID[i].ures_rejt]
             self.assertEqual(ids, vart, strong)
-            self.assertEqual(len(re.findall(r'<p class="jellegek"><span class="jelleg jelleg-', h)), len(ids))
+            self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))
             self.assertEqual(len(re.findall(r'<p class="forras" title="Forrás és licenc: ', h)), len(ids))
 
     def test_szo_lap_vers_kontextussal_az_ebben_a_versben_blokkal(self):
