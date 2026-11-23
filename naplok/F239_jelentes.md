@@ -52,6 +52,84 @@ Modell-ellenőrzés: a session `claude-opus-5-5`, a brief `modell` mezője `opus
 
 **Nem javítottam:** a `naplok/ALLITAS_TEREMT-001.md` (az U4 F1-jelentése) nem futott újra, mert a K-tételek számozása az ítéletfájl (`_itelet.md`) hivatkozása; a javított eszköz mai képe fent.
 
+### U6 — egy javítókör (2026-11-23, `claude-opus-5-5`)
+
+*A próza gazdája (kért: `opus`, egyezik), a teljes próza (négy rés, 43 × 1/a) újraolvasva (K1). Bemenet: a szerkesztő U5-döntései (`naplok/F239_dontesek.md` D2–D26), az U5-csomag (b) csoportja (F2: K2, K9, K19, K20, K36, K47, K69, K70, K99; az F1 79. sora; a független ellenőr két prózai eltérése). A (c) csoport (N-F239c) nem e kör része. A lekérdezések: `naplok/F239_U6_lekerdezesek.py`.*
+
+**Hibahely-tábla.** A diff-kapu (brief 2. pont): a `motivumok/TEREMT-001.md` minden változott sora és az `adat/elofordulasok.tsv` négy változott sora az alábbi tételek egyikéhez tartozik; ezen kívül a forrásban nem változott sor (a NAPLÓ-sorok a menet bejegyzései).
+
+| # | hely (forrás) | tétel | régi → új (röviden) |
+|---|---|---|---|
+| H1 | Kivonat 1. bek. | D2 | egy bekezdés → kettő, a fordulópontnál |
+| H2 | Kivonat 1. bek. | D6, F1 79., L20 | „a mélység áldásaival, mely alant terül” (1Móz 49:25, 5Móz 33:13) → az idézet csak az 1Móz 49:25-é; az 5Móz 33:13 a saját Károli-szövegével |
+| H3 | Kivonat 1. bek. | K2, D7 | „A költői könyvekben a mélység Isten tárháza (Zsolt 33:7) … ahonnan Isten felhoz (Jón 2:6, Zsolt 71:20)” → Isten tárházakba rakja a mélységeket; Jóbnál elérhetetlen; Jónás imájában és a Zsolt 71:20-ban a halál közelsége, a felhozás csak a zsoltáré |
+| H4 | Kivonat 2. bek. | D3, D4, K36, L18 | „az ÓSZ-ben a tehóm víz, amelyet Isten megnyit, bezár …; az ÚSZ helyein zárt hely …, egyszer bezár és lepecsétel” → „szinte mindenütt víz” (kivétel: Zsolt 71:20), az ÚSZ-ben „többnyire zárt hely” (a sárkányt vetik bele és zárják be), a nem zárásról szóló helyek külön (Luk 8:31, Jel 11:7, 17:8, Róm 10:7) |
+| H5 | Kivonat 2. bek. vége | D9 | „a görög Ószövetség” → „a Septuaginta (a görög Ószövetség)”, utána a lapon végig „Septuaginta” |
+| H6 | Kivonat 3. bek. | K9, O7 | a Károli-szavak listája + „mély vizek”; „„mélység” szava 95 más versben” → „mélység-szavai … 96 más versben” |
+| H7 | Kivonat 3. bek. | D9 | „a görög fordítás / a görög szöveg” (Ézs 44:27, Jób 36:16, Zsolt 71:21) → „a Septuaginta” |
+| H8 | Kivonat 4. bek. | D24, D11 | a tohu va-vohu mint szomszéd motívum kimarad; „Két szomszédos motívum” → „Egy szomszédos motívum …, a holtak helyéé”; a tenger szörnyei: a Zsolt 148:7 és a Jób 41:32 a mélység szava miatt tartozik ide |
+| H9 | Miért fontos, H8415 | K19, K20, L28 | a BDB 1. és 2. jelentésének helyei „többek között”, a felsorolás válogatás volta kimondva; „Jób kérdései” → „a Jób-könyv két helye”; a Zsolt 33:7 „valószínűként”; a 2. jelentésnél a kivonulás visszatekintései (Zsolt 106:9, Ézs 63:13) |
+| H10 | Miért fontos, H8415 | D8 | „nagy mélység öt versben” → négy biztosan, a Zsolt 78:15-ben vitatott |
+| H11 | Miért fontos, G0012 és a Septuaginta hídja | D9, D23 | „görög Ószövetség / görög fordítás” → „Septuaginta”; 1Móz 49:25: „a görög átfogalmaz, a mélység szava nem áll” → „a Septuaginta szövegében a mélység helyén a »föld« (γῆ) áll” |
+| H12 | Miért fontos, Károli | D10, L23 | „A Tengeri énekben … „hullámok”” → „A 2Móz 15:5-ben … „hullámok” (a 15:8-ban „mélységes vizek”)” |
+| H13 | Miért fontos, proveniencia | D8, K19/K20, D23 | a „nagy mélység” n-je, a BDB-helyek és az 1Móz 49:25 görög szavának forrása |
+| H14 | Peshat 1. | D6, K36, L17 | az áldáspárban az 5Móz 33:13 a saját szavával; „Ahol cselekvés tárgya, Isten cselekszik vele: megnyitja és bezárja a forrásait (1Móz 7:11, 8:2)” → „Több helyen Isten cselekszik vele …”; az özönvíz két mondata szenvedő, a cselekvőt nem nevezi meg |
+| H15 | Remez, Genezis | D14, D6, F1 79. | „a négy hely négy különböző dolgot mond” → olvasatként jelölve; „a későbbi könyvek ezeket hozzák vissza” → „ugyanezek a kifejezések térnek vissza”; „A „mélység, mely alant terül” Jákob áldásából Mózes áldásába kerül” → a két vers saját szövegével |
+| H16 | Remez, Újszövetség | K47, D13, D15, L8 | „szó szerint … idézi” → „egy szó (ἡμῖν) elhagyásával”; „hét versben áll együtt” → „három vers mondja a mélységbe/-ből való mozgást”; tény és nyitott kérdés külön mondatban |
+| H17 | Remez, Újszövetség | D5, L29 | „a mélységnek királya van, a Vesztő” → „a sáskák királya a mélység angyala, a Vesztő” |
+| H18 | Remez, Újszövetség | D4 | „bezárja és lepecsételi” → „bezárja, és pecsétet tesz fölé” |
+| H19 | Remez, proveniencia | K47, D15 | a Róm 10:6 × 5Móz 30:12 sora; „n=7” → „n=7, ebből 3 a mélységbe vagy onnan” |
+| H20 | Drash | D7, L24 | „a mélység … a halál közelsége, de onnan Isten felhoz. Jónást „mély ár kerített be” (Jón 2:6)” → a Jón 2:6 körülzárás, a szabadítást a 2:7 mondja más szóval; a felhozás csak a Zsolt 71:20-é |
+| H21 | Sod | D19, L21 | „a mélység határa mindig kívülről, felülről szabott” (43 helyre) → a határról beszélő helyekre (Péld 8:27, Zsolt 33:7, 1Móz 8:2); „Isten akaratából” olvasatként jelölve |
+| H22 | Sod | D20, L22 | „a kulcs egyszer sem a mélységé” → „a mélység kulcsa nem a mélységnél van, hanem másnak adják”; kikötés: a kulcs és a nyit–zár a Jelenések általános szókincse (Jel 1:18, 3:7; „megnyit” 25, „bezár” 5 vers) |
+| H23 | Sod, proveniencia | D7, D20 | a Jón 2:6–7 és a Jelenések szókincsének forrása |
+| H24 | V1 (Tiámat) | D17, L12 | új mondat: a „nem cselekszik Isten ellen” hiányérv, mindkét olvasattal összefér |
+| H25 | V2 (Jelenések és özönvíz) | D4, D18, L30, L36 | „mindkét helyen a mélységet zárják be” → bezárás a mélységnél, de más tárggyal (források ↔ sárkány); TR/kritikai szöveg jelölve, a pecsét mindkettőben a sárkány fölött; „szóbeli kapcsolat nincs” kimarad; a (b) a görög szint hiányára szűkül |
+| H26 | V4 (Róm 10:7) | D15, L15 | „hét versben áll együtt” → három versben mozgás a mélységbe/-ből, négy külön mondatban; a (b) olvasat „nem csak a két zsoltárban” érve kimarad |
+| H27 | V-proveniencia | D15, D4 | a mozgás iránya versenként; a Jel 20:3 bezárásának tárgya (TAGNT, Kritikai kiadás) |
+| H28 | Módszertan, 1. bek. | K69, K70, O7 | az öt alak + a „mély-” kezdetű rokon alakok; „Ezek közül 95 …” → 40 motívumvers + 96 más; 94 csoportosan, az Ézs 44:27 a Septuaginta többlete miatt, a 2Pét 2:4 egyenként |
+| H29 | Módszertan, 1. bek. | D22, O8 | „négy versben a görög hozza a szót” → a négy vers megnevezve; három a Septuaginta többlete okkal, a Jób 41:31 a magyar szó keresése (mecólá) szerint kizárva |
+| H30 | Módszertan, 2. bek. | D12, L41 | új mondat: a helyek száma 43 (korábban 42), egy hely kettébomlott, új nem került be |
+| H31 | Módszertan, proveniencia | K69, K70, D22 | a Károli-háló felbontása, a csoportos kizárások és a Septuaginta-többlet n-jei |
+| H32 | Nyitott kérdések 2. | D11, L6 | „saját szavaikkal szerepelnek, a mélység szava nélkül, ezért a lexikai keresés nem hozza őket” → az Ézs 51:9-ben nincs a szó, a Zsolt 148:7-ben és a Jób 41:32-ben igen, de a szó miatt tartoznak ide; „lexikai keresés” → „a mélység szavának keresése” |
+| H33 | záró NAPLÓ-sor | K70 | „ebből 95 más szó” → „ebből 96 nem motívumvers” |
+| H34 | 1/a, 1Móz 7:11 (`elofordulasok.tsv`) | K99, a független ellenőr | „a mélység forrásai a héberben csak itt és a 8:2-ben állnak együtt” → „a 8:2-n kívül csak a Péld 8:24-ben áll még együtt” |
+| H35 | 1/a, Zsolt 36:7 | D21, O45 | az ismétlő „hasonlat … két végpontjával méri” mondat kimarad |
+| H36 | 1/a, Jel 9:11 (funkció + kapcsolódás) | D5, L44 | „a mélységnek királya / uralkodója van” → „a sáskák királya a mélység angyala” |
+| H37 | 1/a, Jel 20:3 (funkció + kapcsolódás) | D4, L27 | „bezárják és lepecsételik” (a mélységet) → a sárkányt vetik a mélységbe és zárják be, pecsét fölé; „a lezárás” → „a fogság időre szól” |
+
+**Az F2-újramérés utáni pontosítások** (ugyanezen hibahelyeken belül, a saját új szövegemben; az F2 javasolt legkisebb pontosítása szerint, az adaton magam ellenőrizve):
+
+| # | hely | F2 U6 tétel | régi → új (röviden) |
+|---|---|---|---|
+| H38 | Kivonat 2. bek. (H4) | 6. vitatott | „az abüsszosz többnyire zárt hely” → „a Jelenések négy versében zárt hely”; a Jel 9:11 a többi hely közé |
+| H39 | Kivonat 3. bek. (H6) | 8. hamis | a Károli-szavak listája + „mélységes vizek” |
+| H40 | Miért fontos, Károli (H12) | 24. hamis | „(a 15:8-ban »mélységes vizek«)” → „(a 15:8-ban, az 5Móz 33:13-ban és a Zsolt 78:15-ben …)” |
+| H41 | Remez, Genezis (H15) | 30. hamis | „a saját szavaival tér vissza” → „a héberben szinte szó szerint, a Károliban más szavakkal” |
+| H42 | Peshat (H14) és V1 (H24) | 26. vitatott | „tűzzel megemészti (Ámós 7:4)” → „tüzet hív elő ítéletre, amely megemészti”; a V1-ben ugyanígy |
+| H43 | Remez, Újszövetség (H16) | 31. vitatott | „idézi, egy szó … elhagyásával” → „a kérdés első tagját idézi …, a folytatását nem hozza” |
+| H44 | Remez (H16) és V4 (H26) | 32., 51. vitatott | „három vers mondja” → „a leszállás és a felhozás igéjével három vers mondja” (a Bölcs 10:19 más igével mondja a mélységből való kivetést) |
+| H45 | Sod (H21) | 40. vitatott | az 1Móz 8:2 kikerül a „felülről szabott határ” példái közül, és csak az olvasatként jelölt mondatban áll |
+| H46 | Sod (H22) | 42. vitatott | „hanem másnak adják” → „hanem másnál” |
+| H47 | Módszertan (H28) | 54. hamis | a példaalak „mélyedés” → „mélyede” (a háló ezt az alakot fogta) |
+| H48 | Módszertan, proveniencia (H31) | 57. nem eldönthető | a 94 levezetése: 96 − Ézs 44:27 − 2Pét 2:4; a csoportsorok 103-as összege a blokkok átfedéséből (a blokklista Károli-hálós 106 sora 95 különböző vers) |
+| H49 | 1/a, 1Móz 7:11 (H34) | 63. vitatott | a „források” szó megnevezve; a Péld 8:28 „mélység forrásai” kifejezésében más héber szó áll |
+
+**F2 a javított helyeken** (`allitas-ellenor`, friss, `claude-opus-5-5`; a bemenet: a `8af3d242..29671fb5` diff „+” sorai): 65 állítás — **52 igazolt, 4 hamis, 8 vitatott, 1 nem eldönthető** (1,5%). A korábbi kilenc hamis tétel új szövege (K2, K9, K19, K20, K36, K47, K69, K70, K99) mind igazolt; a hamis és a vitatott tételek mind az U6 új mondataiban álltak, és a H38–H49 szerint javultak. A H38–H49-et nem mérte újra független ellenőr (takarékos irány: egy ellenőrzés, egy javítókör); a pontosítások az F2 javasolt szövegét követik, a számokat magam ellenőriztem.
+
+**Adat és kód (nem próza).**
+- D25: a Chain Lineage `century` a szerző **születési** százada (Eusebius → 3., Hippolytus → 2.), a HCF-sorok a halálév szerint állnak. A `tanu_kinyer.py cl` SPEC-je kap egy nem kötelező `kor` oszlopot (a CL-értéket felülírja), teszttel (`teszt_visszhang.py`, `test_chain_lineage_kor_felulirasa`); a `naplok/F239_U1b_cl_spec.tsv` `kor` oszlopa és az `adat/visszhang_tanuk.tsv` négy sora: Euszébiosz `4. sz. (HCF: 339)` ×3, Hippolütosz `3. sz. (HCF: 235)` (ugyanaz a mechanizmus, második eset; a HCF-év a `konkordancia/Tanu_atyak_index.tsv`-ből, a szkript ellenőrzi). `naplok/F239_U6_tanu_kor.py`.
+- D16: az érvnapló V3 (b) új bizonyítéka (`naplok/ERVNAPLO_TEREMT-001.md` D4.1); D4, D7, D15, D17, D18 alkalmazása: D4.2–D4.5.
+- D22: a lekérdezés szerint a Septuaginta-többlet **4 vers** (Ézs 44:27, Jób 36:16, Jób 41:31, Zsolt 71:21); a `jeloltek.tsv` hármat a „Septuaginta többlete” okkal zár ki, a Jób 41:31-et a Károli-háló mecólá-blokkjában. A próza mindkét helyen ehhez igazodik; adat nem változott.
+- D26: nincs teendő (a határ szövege marad).
+
+**Kapuk az előnézeten** (a H38–H49 után újragenerálva) (`general.py --cel lexikon2 --id TEREMT-001 --kimenet <repón kívül>`, a két ideiglenes kerülőúttal, utána visszaállítva; előtte `python.exe`-lista: lapgen nem futott):
+- 1/a: 43/43 kerek (`proza_1a.lap_meres`).
+- olvasói kapu: 7 BUKÁS, 23 FIGYELMEZTETÉS, ugyanannyi, mint az U5-előnézeten; a bukások mind generált blokkban (Thayer-zárójel, „jelölt”, Bekken-cím ×2, „teljesség-mérése”, „ellenőriztük”, „a lap elején áll”), a prózában 0.
+- E41 (`proza_allitas.py --kapu`): 0-s kilépés; TEREMT-001: ELTÉR 0, egyezik 82.
+- `ellenoriz.py`: SÉRTÉS 0.
+- `teszt_visszhang.py`: 25/25.
+
 ## Független ellenőrzés — 1. ellenőrzés
 
 *A `fuggetlen-ellenor` (Fable) válasza szó szerint; mentette a hívó (`claude-opus-5-5`, U4). Bemenet: a brief, `fe37880b..e1484e2d`, `teljes` szint, a CI-futás azonosítója. A futás a 5 órás keret kimerülésekor megszakadt, és a keret visszatérése után ugyanaz az ügynök folytatta. Egyetlen változtatás: az utolsó sor abszolút útvonalai repó-relatívra rövidítve.*
