@@ -1,5 +1,5 @@
 # F231.17: a main-összevetés (teszt_blokkfej.py) kivételei. Egy sor = egy eltérés, amely nem hiba vagy a szerkesztő döntésére vár.
-# Oszlopok: url, fajta, blokk, szoveg (a * bármire illik; a szoveg a blokkfej.norm alakja), allapot (átalakítva | döntésre vár | a main-en sem látszott), indok (egy mondat).
+# Oszlopok: url, fajta, blokk, szoveg (a * bármire illik; a szoveg a blokkfej.norm alakja), allapot (átalakítva | döntésre vár | eldöntve | a main-en sem látszott), indok (egy mondat).
 url	fajta	blokk	szoveg	allapot	indok
 *	fej	szo.bdb_apparatus	még # hely	átalakítva	A szótár szövege jelentésenként egyben áll, minden hely látszik (hibalista 1–3.); rejtett hely nincs, ezért a „még N hely” gomb sem kell.
 /1Moz/1/2?szo=H8415&ful=szo	fej	szo.bdb_apparatus	#örvény# hivatkozásLXX ἄβυσσος # · ἄνεμος # · γῆ # · οὐρανός # · # megfelelő nélkülTEREMT-# · # helya BDB itt idézi ezt a verset	átalakítva	A jelentés felirata ugyanaz, csak a „a BDB itt idézi ezt a verset” jelzés helyett „a BDB besorolása ennél a versnél” áll (DT914, hibalista 16.).
@@ -9,10 +9,5 @@ url	fajta	blokk	szoveg	allapot	indok
 *	fej	szo.magyar_gorog	Szótári apparátus: a teljes magyar Thayer-szöveg	átalakítva	A main csukott lenyílójának tartalma a jelentésenként tagolt, nyitott Thayer-szövegben áll (hibalista 21.); az 53 sorából csak a helyőrzők és a belső nevű forrássor nincs meg.
 *	fej	szo.magyar_gorog	a szócikk eleje — az egyik a beszédre, a másik a gondolkodásra vonatkozik	átalakítva	A szócikk elejének szövege nyitva áll a kártya élén; csak a belső „a szócikk eleje —” címke nincs előtte.
 *	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	átalakítva	A táblázat nyitva áll; a „Bizonyosság” (magas/alacsony) oszlop helyén a könyvcsoport mért pontossága áll (hibalista 38., N-F175d).
-*	tabla	vers.versszamozas	Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása	döntésre vár	A táblázat helyén egysoros összefoglaló áll (hibalista 37.): a héber és az angol versszám látszik, az „Osztály” és „A megfeleltetés forrása” oszlop (pl. „szamlalas”) nem.
-*	tabla	vers.lxx_versszam	Forrás | LXX-versszám	döntésre vár	A táblázat helyén egysoros összefoglaló áll (hibalista 37.): a Septuaginta-versszám látszik, a „Forrás” oszlop (LXX_OS) csak a forrássorban.
-*	tabla	szo.sdbh	Domén kód | Domén | Glossza | Hivatkozás	döntésre vár	A doménkód-oszlop a súgóba került (hibalista 27., a nyers kódokról); a domén, a glossza és a hivatkozás látszik.
-*	tabla	szo.sdgnt	Domén kód | Domén | Glossza | Hivatkozás	döntésre vár	A doménkód-oszlop a súgóba került (hibalista 27., a nyers kódokról); a domén, a glossza és a hivatkozás látszik.
-*	tabla	szo.ubs_dbh	Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)	döntésre vár	Az UBS-azonosító oszlopa a súgóba került (hibalista 27.: nyers 15 jegyű azonosító); a többi oszlop látszik.
-*	tabla	szo.ubs_dntg	Azonosító | Domén | Rövid definíció | Glosszák	döntésre vár	A táblázat helyén jelentésenként tagolt lista áll (hibalista 27–28.), az UBS-azonosító a súgóban; a domén, a definíció és a glosszák látszanak.
-*	jelleg	szo.magyar_gorog	modell-kimenet	döntésre vár	A G0264-nek nincs magyar Thayer-fordítása, a blokk az angol eredetit mutatja; a main a „modell-kimenet” címkét fordítás nélkül is kiírta, ezt nem állítottam vissza, mert hamis jelölés lenne.
+*	tabla	szo.ubs_dntg	Azonosító | Domén | Rövid definíció | Glosszák	átalakítva	A táblázat helyén jelentésenként tagolt lista áll (hibalista 27–28.); az azonosító, a domén, a definíció és a glosszák minden jelentésnél látszanak (DT-F231e).
+*	jelleg	szo.magyar_gorog	modell-kimenet	eldöntve	DT-F231f: a G0264-nek nincs magyar Thayer-fordítása, a blokk az angol eredetit mutatja; a fordítás nélküli „modell-kimenet” címke hamis jelölés lenne, ezért nem jön vissza.

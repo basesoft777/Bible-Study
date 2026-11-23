@@ -45,6 +45,14 @@ HEB = 'א-תיִ-ﭏ֑-ׇ'
 
 
 class SzovegAtalakitas(unittest.TestCase):
+    def test_potcim_zarojele_ep(self):
+        """F231.17 (az integrátori main-összevetés hibája, H8415 2.): a pótcím zárójele nem csonkul, a félbevágott zárójel kimarad."""
+        self.assertEqual(S.elso_tagmondat('(mély) tenger, amely elborítja Tírust Ez 26:19 (párhuzamban: הַמַּיִם הָרַבִּים), a teofániánál'),
+                         '(mély) tenger, amely elborítja Tírust')
+        for be in ('x (párhuzamban: y)', '(a versben kétszer) valami: más', 'a) b (c: d'):
+            t = S.elso_tagmondat(be)
+            self.assertEqual(t.count('('), t.count(')'), (be, t))
+
     def test_rovidito_jel_a_helyen(self):
         for be, ki in (('holnap reggel ׳הַבּ Bír 6:31', 'holnap reggel הַבּ׳ Bír 6:31'),
                        ('továbbá ׳לַבּ ׳לַבּ, ugyanebben', 'továbbá לַבּ׳ לַבּ׳, ugyanebben'),
@@ -151,7 +159,7 @@ class Kapu(unittest.TestCase):
             self.assertNotIn('||', t, st)
             self.assertNotIn('‖', t, st)
             self.assertNotIn('^', t, st)
-            self.assertIsNone(re.search(r'\d{13,}', t), st)
+            # F231.17 (DT-F231e): a doménkód és az UBS-azonosító a main szerint látható, ezért a hosszú számsor nem tiltott
             self.assertIsNone(rag.search(t), st)
             self.assertNotIn('szk-helyek', h, st)                       # a könyvnév nélküli chipek megszűntek
             # F231.17: a jelleg-címke („forrásadat”, „gépi feldolgozás”, „modell-kimenet”) a szerkesztő szabálya szerint a blokkcím

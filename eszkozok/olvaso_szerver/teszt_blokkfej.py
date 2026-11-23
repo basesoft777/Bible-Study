@@ -52,7 +52,7 @@ try:
 except ImportError:
     VAN_FLASK = False
 ELO = os.path.exists(DB) and VAN_FLASK
-KIVETEL_ALLAPOT = ('átalakítva', 'döntésre vár', 'a main-en sem látszott')
+KIVETEL_ALLAPOT = ('átalakítva', 'döntésre vár', 'eldöntve', 'a main-en sem látszott')
 
 
 def kivetelek():

@@ -117,8 +117,8 @@ TETELEK = {
     25: ('J', [E('/szo/G0264?vers=Rom/3/23', 'van', r'^A Thayer besorolása: Róm 3:23$'),
                E('/szo/G0264?vers=Rom/3/23', 'html', r'class="igehely bdb-itt" href="/Rom/3/23"')]),
     26: ('R', []),
-    27: ('J', [E('/szo/G0264', 'van', r'^1\. to sin; to engage in wrongdoing; sin · Sin, Wrongdoing, Guilt$'),
-               E('/szo/G0264', 'nincs_kep', r'\d{13,}'), E('/szo/H0251', 'nincs_kep', r'\d{13,}')]),
+    27: ('V', [E('/szo/G0264', 'van', r'^1\. to sin; to engage in wrongdoing; sin · Sin, Wrongdoing, Guilt · azonosító: \d{15}$'),
+               E('/szo/H0251', 'van', r'^Azonosító \| Domén \| Glossza \(magyar\)')]),      # F231.17 (DT-F231e): az azonosító látható
     28: ('J', [E('/szo/G0264', 'van', r'^43 előfordulás 37 versben\.$'), E('/szo/G0264', 'van', r'^Az első 5 vers áll a 37 közül\.$'),
                E('/szo/G0264', 'van', r'^Igehely \| Károli-szöveg \| Jelentés \(UBS\)$')]),
     29: ('J/R', [E('/szo/G0264?vers=Rom/3/23', 'van', r'^A szótár ezt a helyet ebbe a jelentésbe sorolja: ')]),
@@ -132,7 +132,8 @@ TETELEK = {
     36: ('V', [E('/1Moz/1/1', 'html', r'<details class="forrasszoveg" open>\s*<summary[^>]*>Táblázatos nézet \(a csempék adatai soronként\)'),
                E('/1Moz/1/1', 'van', r'^Táblázatos nézet \(a csempék adatai soronként\)$')]),    # F231.17: nyitva, a main szerint
     37: ('J', [E('/Zsolt/22/2', 'van', r'^Versszámozás: héber \(MT\) 22:2 · angol \(KJV\) 22:1$'),
-               E('/Zsolt/22/2', 'van', r'^Septuaginta-versszám: Zsolt 21:2$'), E('/Zsolt/22/2', 'nincs_kep', r'Osztály \| KJV-versszám')]),
+               E('/Zsolt/22/2', 'van', r'^Septuaginta-versszám: Zsolt 21:2$'), E('/Zsolt/22/2', 'van', r'^Osztály \| KJV-versszám \| MT-versszám \| A megfeleltetés forrása$'),
+               E('/Zsolt/22/2', 'van', r'^Forrás \| LXX-versszám$'), E('/Zsolt/22/2', 'nincs_kep', r'lxx_os_etalon')]),   # F231.17 (DT-F231d)
     38: ('J', [E('/1Moz/1/5', 'van_kep', r'\| 99% \(Mózes öt könyve\)$'), E('/1Moz/1/5', 'nincs_kep', r'\| magas$')]),
     39: ('R', [E('/1Moz/1/1', 'van', r'^Ez az adat ebben a kiadásban még nem érhető el\.')]),
     40: ('J (+N49)', [E('/Zsolt/22/2', 'van', r'^A BSB-forrás ehhez a vershez nem ad szavakat \(a forrásból hiányzik\)\.$')]),

@@ -163,11 +163,25 @@ def elso_tagmondat(s, hatar=70):
     """A meghatározás nélküli pont címe: a szöveg első tagmondata (az első „;” vagy „:” előtt), szóhatáron rövidítve „…” jellel."""
     t = _HEBER_RE.sub(' ', s or '')
     t = re.sub(r'(?:[1-5]\s?)?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]{0,6}\.?\s+\d+(?::\d+)?(?:[-–]\d+)?', ' ', t)    # igehely
-    t = re.sub(r'\s+', ' ', t).strip(' ,.=‎‏()')
-    t = re.split(r'[;:]|\s—\s', t, maxsplit=1)[0].strip(' ,.=()')
-    if len(t) > hatar:
-        t = t[:hatar].rsplit(' ', 1)[0].rstrip(' ,;') + '…'
-    return t
+    t = re.sub(r'\s+', ' ', t).strip(' ,.=‎‏')
+    t = re.split(r'[;:]|\s—\s', t, maxsplit=1)[0].strip(' ,.=')
+    vagott = len(t) > hatar
+    if vagott:
+        t = t[:hatar].rsplit(' ', 1)[0].rstrip(' ,;')
+    # F231.17: a zárójel ép marad (a H8415 2. pontja „(mély) tenger …”); a tagmondat-határon vagy a rövidítésnél félbevágott
+    # zárójel („(párhuzamban”) elhagyva, a pár nélküli záró zárójel törölve; a csak zárójeles maradék zárójel nélkül
+    melyseg, ki = 0, []
+    for c in t:
+        if c == ')' and melyseg == 0:
+            continue
+        melyseg += (c == '(') - (c == ')')
+        ki.append(c)
+    t = ''.join(ki).strip(' ,.=')
+    while t.count('(') > t.count(')'):
+        t = t[:t.rfind('(')].rstrip(' ,.=')
+    if re.fullmatch(r'\(.*\)', t) and t.count('(') == 1:
+        t = t[1:-1].strip()
+    return t + '…' if vagott and t else t
 
 
 def olvasoi(s, magyar=True, elotte=None):

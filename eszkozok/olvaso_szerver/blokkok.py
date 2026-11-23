@@ -36,7 +36,7 @@ import bdb_szelet  # noqa: E402  (élesben a szerver mellett, DT-F99c (a); a pil
 import bdb_szokartya  # noqa: E402  (F213: a szókártya megjelenítési szabályai)
 import szocsoport  # noqa: E402  (F231: a héber elemek írott szó szerinti csoportja)
 import szokartya_szoveg  # noqa: E402  (F231: a szótári szöveg olvasói alakja)
-from feliratok import F  # noqa: E402  (DT897: a fordítótábla)
+from feliratok import F, Fv  # noqa: E402  (DT897: a fordítótábla)
 
 
 def _eszkoz_modul(nev):
@@ -329,9 +329,13 @@ def _r_lxx_versszam(d, K):
     ertekek = list(dict.fromkeys(re.sub(r'^.*?(\d+:\d+(?:[-–]\d+)?)\s*$', lambda m: '%s %s' % (kk, m.group(1)), x)
                                  for x in list(lxx) + [x for _f, x in extra]))
     sugo = '; '.join(['LXX_OS: %s' % x for x in lxx] + ['%s: %s' % (f, x) for f, x in extra] + ['KJV: %s' % x for x in terkep])
+    # F231.17 (DT-F231d): a main táblázata is áll (Forrás · LXX-versszám), ahogy a main-en; a forrás olvasói nevén
+    sorok = [['LXX_OS', x] for x in lxx] + [[Fv('vers.lxx_forras.' + f, f), x] for f, x in extra] + \
+        [[F('vers.lxx_terkep'), x] for x in terkep]
+    tabla = _tabla([F('vers.lxx_forras_fej'), F('vers.lxx_versszam_fej')], sorok) if sorok else Markup('')
     if not ertekek:
-        return Markup('')
-    return Markup('<p class="szamozas-sor" title="%s">%s</p>') % (sugo, F('vers.lxx_sor', lxx=', '.join(ertekek)))
+        return tabla
+    return Markup('<p class="szamozas-sor" title="%s">%s</p>%s') % (sugo, F('vers.lxx_sor', lxx=', '.join(ertekek)), tabla)
 
 
 def _f_versszamozas(K):
@@ -341,8 +345,13 @@ def _f_versszamozas(K):
 def _r_versszamozas(d, K):
     """F231 (#37, #48): egysoros összefoglaló a lap tetején (héber és angol számozás); a megfeleltetés forrása csak súgóban."""
     osz, kjvi, mti, mf = d
-    return Markup('<p class="szamozas-sor" title="%s">%s</p>') % (
-        F('vers.szamozas_sugo', osztaly=osz or '', forras=mf or ''), F('vers.szamozas_sor', mt=mti or kjvi or '', kjv=kjvi or ''))
+    # F231.17 (DT-F231d): a main táblázata is áll (Osztály · KJV · MT · a megfeleltetés forrása), ahogy a main-en; az osztály és a
+    # megfeleltetés forrása olvasói nevén (a belső kód a súgóban)
+    tabla = _tabla([F('vers.szamozas_fej.osztaly'), F('vers.szamozas_fej.kjv'), F('vers.szamozas_fej.mt'), F('vers.szamozas_fej.forras')],
+                   [[Fv('vers.osztaly.' + (osz or ''), osz or ''), kjvi or '', mti or kjvi or '',
+                     Markup('<span title="%s">%s</span>') % (mf or '', Fv('vers.megfeleltetes.' + (mf or ''), (mf or '').replace('_', ' ')))]])
+    return Markup('<p class="szamozas-sor" title="%s">%s</p>%s') % (
+        F('vers.szamozas_sugo', osztaly=osz or '', forras=mf or ''), F('vers.szamozas_sor', mt=mti or kjvi or '', kjv=kjvi or ''), tabla)
 
 
 def _f_bsb(K):
@@ -2187,11 +2196,10 @@ def _r_lxx_bridge(d, K, irany='h'):
 
 
 def _r_sdbh(d, K):
-    """F231 (#27, a kapu 2.6): a 15 jegyű doménkód nem látható oszlop, csak a domén súgója."""
+    """A doménkód látható oszlop, ahogy a main-en (F231.17, DT-F231e: a #27 súgóba vitte, a szerkesztő szabálya szerint vissza)."""
     sorok, hu = d if isinstance(d, tuple) else (d, {})
-    return _tabla([F('domen.domen'), F('domen.glossza'), F('domen.hivatkozas')],
-                  [[Markup('<span title="%s">%s</span>') % (F('domen.kod_sugo', kod=a or ''), _hu_en(hu.get((a, 'domen', 'glosszak_hu')), b)),
-                    c or '', str(n or '')] for a, b, c, n in sorok])
+    return _tabla([F('domen.kod'), F('domen.domen'), F('domen.glossza'), F('domen.hivatkozas')],
+                  [[a or '', _hu_en(hu.get((a, 'domen', 'glosszak_hu')), b), c or '', str(n or '')] for a, b, c, n in sorok])
 
 
 def _domen_hu(K, szotar, sorok):
@@ -2563,10 +2571,10 @@ def _f_ubs_dbh(K):
 
 
 def _r_ubs_dbh(d, K):
-    """F231 (#27): a 15 jegyű UBS-azonosító nem látható oszlop, csak a domén súgója."""
-    return _tabla([F('ubs.domen'), F('ubs.glossza_hu'), F('ubs.definicio_hu'), F('ubs.glossza_en'), F('ubs.definicio_en')],
-                  [[Markup('<span title="%s">%s</span>') % (F('usz.ubs_sugo', lex=lex), dom or ''), gh or F('szk.forditasra_var'),
-                    dh or F('szk.forditasra_var'), ge or '', de or ''] for lex, dom, de, ge, dh, gh in d])
+    """Az UBS-azonosító látható oszlop, ahogy a main-en (F231.17, DT-F231e: a #27 súgóba vitte, a szerkesztő szabálya szerint vissza)."""
+    return _tabla([F('ubs.azonosito'), F('ubs.domen'), F('ubs.glossza_hu'), F('ubs.definicio_hu'), F('ubs.glossza_en'), F('ubs.definicio_en')],
+                  [[lex, dom or '', gh or F('szk.forditasra_var'), dh or F('szk.forditasra_var'), ge or '', de or '']
+                   for lex, dom, de, ge, dh, gh in d])
 
 
 def _f_usz(K):
@@ -2648,8 +2656,10 @@ def _r_ubs_dntg(d, K):
     for i, (lex, dom, defi, gl) in enumerate(jel, 1):
         h = hu.get(lex, {})
         cim = h.get('glosszak_hu') or gl or ''
-        ki += Markup('<div class="ubs-jelentes" title="%s"><p><b>%d. %s</b>%s</p>%s%s</div>') % (
+        # F231.17 (DT-F231e): az azonosító látható, ahogy a main táblázatában
+        ki += Markup('<div class="ubs-jelentes" title="%s"><p><b>%d. %s</b>%s <span class="megj">%s</span></p>%s%s</div>') % (
             F('usz.ubs_sugo', lex=lex), i, cim, Markup(' · <span class="megj">%s</span>') % dom if dom else '',
+            F('ubs.azonosito_sor', lex=lex),
             Markup('<p>%s</p>') % (h.get('definicio_hu') or defi or ''),
             Markup('<p class="megj">%s %s</p>') % (F('ubs.elofordulasok', db=len(helyek[lex])),
                                                      Markup(', ').join(ig_link(K, ig) for ig in helyek[lex])) if helyek.get(lex) else '')

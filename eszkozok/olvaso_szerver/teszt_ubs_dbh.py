@@ -90,7 +90,7 @@ class MagyarGorogSzetvalasztas(unittest.TestCase):
         html = str(blokkok._r_ubs_dntg((jel, []), k))
         self.assertIn('ügyében fellebbezni', html)                     # glosszak_hu
         self.assertIn('a törvényes jog érvényesítése', html)      # definicio_hu
-        self.assertNotIn('001957003000', re.sub(r'title="[^"]*"', '', html))     # a 15 jegyű azonosító csak súgóban
+        self.assertIn('azonosító: 001957003000', re.sub(r'title="[^"]*"', '', html))     # F231.17 (DT-F231e): az azonosító látható, a main szerint
 
 
 if __name__ == '__main__':

@@ -93,6 +93,23 @@ blokk.tablazatos	Táblázatos nézet (a csempék adatai soronként)
 vers.szamozas_sor	Versszámozás: héber (MT) %(mt)s · angol (KJV) %(kjv)s	
 vers.szamozas_sugo	osztály: %(osztaly)s; a megfeleltetés forrása: %(forras)s	
 vers.lxx_sor	Septuaginta-versszám: %(lxx)s	
+vers.szamozas_fej.osztaly	Osztály	
+vers.szamozas_fej.kjv	KJV-versszám	
+vers.szamozas_fej.mt	MT-versszám	
+vers.szamozas_fej.forras	A megfeleltetés forrása	
+vers.osztaly.KEZI	kézi	
+vers.megfeleltetes.szamlalas	versszámlálás	
+vers.megfeleltetes.tvtms	TVTMS (STEPBible-versmegfeleltetés)	
+vers.megfeleltetes.szoveg_osszevetes_f117	szövegösszevetés	
+vers.megfeleltetes.kezi_identitas_javitas	kézi javítás (azonos vers)	
+vers.megfeleltetes.kezi	kézi megfeleltetés	
+vers.megfeleltetes.macula_mt_f146	Macula (héber számozás)	
+vers.megfeleltetes.kezi_tobbforrasu_osszevonas	kézi, több forrás összevonásával	
+vers.megfeleltetes.lxx_os_etalon_f91	Septuaginta-etalon (LXX_OS)	
+vers.lxx_forras_fej	Forrás	
+vers.lxx_versszam_fej	LXX-versszám	
+vers.lxx_forras.nincs	nincs	
+vers.lxx_terkep	térkép (KJV-kulcs)	
 forras.projekt_adat	a projekt saját adata	
 olvaso.nev	Biblialex olvasó	Biblialex reader
 szint.nyilvanos	nyilvános	public
@@ -122,11 +139,14 @@ szo.szam_karoli	Károli-előfordulás
 szk.teljes_nyitva	A tagolt kártya ennek a szócikknek egy részét nem adja vissza (a szakasztábla itt hiányos), ezért a teljes magyar szöveg nyitva áll.	
 karoli.osszes	%(n)s Károli-előfordulás.	
 karoli.pontossag_sugo	%(leiras)s: %(p)s (95%%-os konfidencia-intervallum: %(also)s–%(felso)s%%); proveniencia: %(prov)s	
+ubs.azonosito	Azonosító	
+ubs.azonosito_sor	· azonosító: %(lex)s	
 ubs.domen	Domén	
 ubs.glossza_hu	Glossza (magyar)	
 ubs.definicio_hu	Definíció (magyar)	
 ubs.glossza_en	Glossza (angol)	
 ubs.definicio_en	Definíció (angol)	
+domen.kod	Domén kód	
 domen.domen	Domén	
 domen.glossza	Glossza	
 domen.hivatkozas	Hivatkozás	
