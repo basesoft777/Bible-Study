@@ -143,6 +143,61 @@ class Alakosztaly(unittest.TestCase):
         self.assertEqual([t[2] for t in alakosztaly.talalatok([sor])], ['proveniencia-mező'])
 
 
+# Az S9c leltára (N235, DT-F218f (4)), befagyasztva: az ismert eltérések listája ennek részhalmaza lehet, bővülni nem.
+# Ezt a másolatot csak törlés érintheti (a javított tétel kikerül a listából és innen is).
+_S9C_B = (
+    'G0173', 'G0174', 'G0331', 'G0332', 'G0685', 'G0862', 'G0942', 'G0971',
+    'G2647', 'G2653', 'G2692', 'G3639', 'G4485', 'G4647', 'G4938', 'G5146',
+    'H0006', 'H0329', 'H0423', 'H2254', 'H2255', 'H2312', 'H2336', 'H2554',
+    'H2723', 'H2738', 'H3238', 'H3905', 'H4072', 'H4288', 'H4384', 'H4835',
+    'H4893', 'H5285', 'H5518', 'H5544', 'H5636', 'H6217', 'H6231', 'H6234',
+    'H6530', 'H6563', 'H6796', 'H6895', 'H7045', 'H7057', 'H7612', 'H7621',
+    'H7667', 'H7701', 'H7703', 'H7722', 'H7898', 'H8045', 'H8047', 'H8068',
+    'H8395',
+)
+_S9C_LELTAR = frozenset(
+    {('A', 'H6093', 'de nem a H6093 iccávón-t'),
+     ('D', 'H7121', 'azonos H7121+H8034 pár'), ('D', 'H8034', 'azonos H7121+H8034 pár')}
+    | {('B', s, 'ezekben a versekben a %s szót fordítja' % s) for s in _S9C_B})
+
+
+class CsupaszStrong(unittest.TestCase):
+    """N235 (DT-F218e (2), DT-F218f): a kézi prózán a zárójel nélküli Strong-szám tilos; a szótári címke tartós
+    kivétel, az ismert eltérések listája csak fogyhat."""
+
+    def test_a_lista_csak_fogyhat(self):
+        lista = alakosztaly.ISMERT_CSUPASZ_STRONG
+        self.assertEqual(len(lista), len(set(lista)), 'ismétlődő tétel')
+        self.assertLessEqual(len(_S9C_LELTAR), 60)
+        self.assertEqual(set(lista) - _S9C_LELTAR, set(), 'új tétel nem kerülhet az ismert eltérések közé')
+
+    def test_minden_tetel_elofordul_a_mintalapokon(self):
+        """A javított tétel kikerül a listából: minden tétel legalább az egyik mintalapon áll."""
+        hasznalt = set()
+        for azonosito in MINTALAPOK:
+            for sorok in _lap(azonosito).nezetek.values():
+                alakosztaly.talalatok(sorok, hasznalt)
+        self.assertEqual(set(alakosztaly.ISMERT_CSUPASZ_STRONG) - hasznalt, set(),
+                         'a mintalapokon már nem álló tétel törlendő a listából (és a leltár másolatából)')
+
+    def test_a_kivetelek_hatara(self):
+        def fajtak(szoveg):
+            return [t[2] for t in alakosztaly.talalatok([KeszSor(szoveg, ((0, len(szoveg), Fajta.PROZA),))])]
+        nev = alakosztaly.CSUPASZ_STRONG
+        # új csupasz Strong-szám a prózában: tilos
+        self.assertEqual(fajtak('a H1234 szó'), [nev])
+        # szótári címke a címsorban: tartós kivétel; címsoron kívül, vagy „ — ” nélkül nem
+        self.assertEqual(fajtak('#### H0779 — אָרַר (árar) · BDB'), [])
+        self.assertEqual(fajtak('H0779 — אָרַר (árar)'), [nev])
+        self.assertEqual(fajtak('#### a H0779 szó'), [nev])
+        # ismert eltérés: csak a megnevezett szövegrészben, csak a megnevezett számra
+        self.assertEqual(fajtak('szót, de nem a H6093 iccávón-t — a három'), [])
+        self.assertEqual(fajtak('szót, de nem a H6093 iccávón-t, és a H6093 máshol'), [nev])
+        self.assertEqual(fajtak('de nem a H6094 iccávón-t'), [nev])
+        # a zárójeles alak (GK-A10) és a link nem csupasz
+        self.assertEqual(fajtak('[עֶצֶב](/szo/H6089)'), [])
+
+
 class Szerkezet(unittest.TestCase):
     def test_gk25_nulla_hiba_mindket_lapon(self):
         for azonosito in MINTALAPOK:
