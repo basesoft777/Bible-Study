@@ -23,7 +23,7 @@
 - Fizetős fordítás: a te döntésedig nem (lent, „Rád vár”).
 
 ## Így dolgozunk
-- Egyszerre legfeljebb 2 szál; egy szál = egy ág + egy PR, a session cserélhető.
+- Egyszerre legfeljebb 2 szál; egy szál = egy ág + egy PR, a session cserélhető: kb. 150–200 ezer token kontextusnál csere (teljes átadó jegyzettel) vagy tömörítés, a végrehajtó subagenteknél is; mert minden lépés a teljes kontextust újraolvassa (a HAMART-mérés, 2026-11-23). Cikkírásnál a plafon a lépéshatáron érvényes, prózaírás közben nem: az U3 a prózát egy menetben végigírja, és csak utána cserél; minden lépéshatáron átadó jegyzet, minden döntés indoklással azonnal fájlba („egy kéz” = egy modell, amely az egész prózát olvassa, nem egy session; 2026-11-23).
 - A hibának három kimenete van: javítva / elvetve egy sor indokkal / rád vár; hamis tartalmat mutató hiba nem vethető el.
 - Csak olvasó-kód: gyors sáv. Adat, generátor, próza: nehéz kör, független ellenőrrel (DT919).
 - Technikai kérdésben a session dönt; tartalmi kérdés az integrátorhoz (DT920).
