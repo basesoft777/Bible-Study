@@ -199,7 +199,7 @@ def szamit(korny, elozo):
 
 def kapu(modell):
     """GK-27 (T9): kiadás módban kézi résű lap csak friss jóváhagyással adható ki; a frissességet a lap `lap_commit`-ja
-    igazolná, ezt az új generátor a 218c-ig nem olvassa (N-F218w): a kapu megáll."""
+    igazolná, ezt az új generátor a 218c-ig nem olvassa (N221): a kapu megáll."""
     if modell.kiadas and modell.szerzoseg is not Szerzoseg.GENERALT:
         raise BemenetHiba('Kolofon (kiadás mód): a jóváhagyás frissessége nem igazolható, amíg az új generátor nem a lap '
                           'végleges helyére ír (a lap_commit egyezése a 218c-ben)')
