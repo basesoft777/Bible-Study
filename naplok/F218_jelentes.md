@@ -2071,7 +2071,7 @@ A 218a (építés a regresszióig) lezárul; a brief `allapot`: `lezarva`, `kove
 | 4 | A 7. pont tesztjei zöldek; `skip` csak kimondva | teljesül | kimondott skipek: GK-04 `hely_egyseg` (218c, N234), GK-19 (a JOHD-validáció után, N219), a leltár C3, C9 (218c) és D3 (218b); „F218.12 — Teljességi lista és skip-leltár” |
 | 5 | A `lapgen/` kódjában 0 motívumazonosító, 0 útvonal a `bemenet/`-en kívül; a régi generátor HAMART-kimenete bájtra a referencia | teljesül | GK-01, GK-05 (`478fb306`); a kiadott lap és a `jeloltek.tsv` két cellája a 3bef2871-hez képest visszaállt (DT-F218e (2) (b)) |
 | 6 | A szerkesztő a két renderelt lapot megnyitotta és jóváhagyta | teljesül | „Igen, mindkettőt”, 2026-11-23, nézett hash `4b20d591` („F218.12 — A szerkesztő jóváhagyása”) |
-| 7 | A független ellenőrzések `TISZTA`-k, vagy egy javítókör után azok | l. lent | a 16. ellenőrzés javítóköre kész; a 17. (célzott) lent |
+| 7 | A független ellenőrzések `TISZTA`-k, vagy egy javítókör után azok | teljesül | a 16. ellenőrzés javítóköre kész; a 17. (célzott): ELTÉRÉS, 2 mechanikus tétel, mindkettő javítva az egy javítókörben (lent) |
 | 8 | A leltár minden tétele követelményre vagy „nem portolandó”-ra képezve | teljesül | „F218.12 — S9c” (B9, A11, A14, A15, B5, B8; C3, C9 a 218c-re, D3 a 218b-re) |
 
 ### Mérőszámok (a teljes 218a)
@@ -2084,12 +2084,29 @@ A 218a (építés a regresszióig) lezárul; a brief `allapot`: `lezarva`, `kove
 | Adattáblák | `lapgen_bemenetek.tsv` 69 bemenet, `lapgen_sablonok.tsv` 1 022 sablonsor, `olvasoi_nevtabla.tsv` 289 név |
 | Mérce | HAMART-001: 149 diff-sor, mind engedéllyel (146 engedélysor); ISTENTISZT-001: a 8.2 öt pontja |
 | Tesztek | a teljes tesztkör 391 teszt; a célzott kör (`futtat.py lxx regresszio szerkezet kartya kapuk szocikkek`) 125 teszt, kb. 12 perc |
-| Független ellenőrzések | 16 + a 17. célzott ellenőrzés (lent) |
+| Független ellenőrzések | 17 (a 17. célzott, a `3bef2871..8754ce6d` tartományon) |
 | Keret (a 20. session indulásakor, `get_usage`) | heti, minden modell 43%; heti Fable 11%; 5 órás 53% |
 
 ### A 13. pont N-tételei (`nyitott/uj/f218a-s9c-d1312a.md`)
 
 - **218b** (a brief 13. pontjának „N235 — 218b” tétele): már befogadva, #236 (GENERATOR_UJ_B), a B0: #237 (GENERATOR_UJ_B0); új tétel nem kell.
-- **N-F218j — 218c: átállás** (helyőrző, a `szamkiosztas` ad számot): a brief 13. pontjának „N236 — 218c” tétele, a DT-F218i szerint az ISTENTISZT-001 2. kiadásával mint első átvehető eredménnyel, és a 218c-re mutató tételekkel (N188, N221, N223, N234, N235, N236, N-F218h, N-F218i, N-F218k, a leltár C3, C9).
+- **N-F218j — 218c: átállás** (helyőrző, a `szamkiosztas` ad számot): a brief 13. pontjának „N236 — 218c” tétele, a DT-F218i szerint az ISTENTISZT-001 2. kiadásával mint első átvehető eredménnyel, és a 218c-re mutató tételekkel (N188, N221, N223, N234, N235, N236, N-F218h, N-F218i, N-F218k, N-F218l, a leltár C3, C9).
 - **N-F218k** (helyőrző): az ISTENTISZT-001 34 hiányzó fordítása (a 4. szakasz SDBH/UBS-glosszái és doménnevei; a H7121, H8034, G1941 kártyái), a 2. kiadás előtt, az előfizetésből.
 - Technikai javítás (DT920): a döntésfájl DT-F218e és DT-F218i sorában az árva `N-F218w` helyőrző a végleges számára, `N221`-re cserélve (a GK-27 kiadás mód tétele; a `szamkiosztas` a definíciós sor nélküli helyőrzőnek nem adott volna számot). A `eszkozok/lapgen/szamitas/kolofon.py` 202. sorának kommentje még `N-F218w`-t ír; a generátorkódhoz ebben a zárásban nem nyúltam, a 218c első érintésekor javítandó.
+
+### Független ellenőrzés — 17. ellenőrzés (célzott: a 16. javítóköre és a DT-F218h kódja, `3bef2871..8754ce6d`, `fuggetlen-ellenor`, `claude-fable-5-2`, 2026-11-23)
+
+Keret előtte (`get_usage`): heti Fable 11% (plafon 50%). Az ellenőr első futása a modell-ellenőrzésnél tévesen megállt: a subagent-fájl (`.claude/agents/fuggetlen-ellenor.md`) fejléce `model: fable`, de a 40. sora még „`model` mezője: `opus`”-t ír; a helyesbítés után lefutott. **Ítélet: ELTÉRÉS, 2 tétel**, mindkettő mechanikus.
+
+| Tétel | Hely | Lelet | Javítás |
+|---|---|---|---|
+| E1 | `eszkozok/lapgen/bemenet/kartya.py` (`forrasjavitas`) | A DT-F218h (1) sorrendcseréje (betűjavítás a rafe-maqqéf feloldása előtt) egy meglévő javítást elveszít: a H4480 BDB-szócikkének 30. szakaszában (Ezsd 9:11) a rafés lánc `מִמֶּהאֶֿלמֶּֿה` egy token, a tábla a feloldott első tagra kulcsol (`מִמֶּה` → `מִפֶּה`). Az ellenőr mérése a teljes `bdb_szakaszok.tsv`-n: 11 923 érintett szakaszból 180-ban tér el a két sorrend, 1-ben az új veszít. A két mintalapot nem érinti. | Kész: új `futam_javit` (betű → maqqéf → betű); a `forrasjavitas` ezt hívja futamonként. |
+| E2 | `eszkozok/lapgen/tesztek/teszt_kartya.py` | A sorrendet csak a HAMART bájt-regressziója őrizte (az `S9C-PEMEM` engedélysor), egységteszt nem. | Kész: `ForrasjavitasSorrend`, két eset a valódi javítótáblával és a forrás rafés alakjával (H0127, 4Móz 16:30; H4480, Ezsd 9:11); 2 teszt OK. |
+
+Rendben talált pontok: a részenkénti LXX-egyezés nem ad hamis „egyező”-t (a szűrés, a párkeresés és a `_kapu_egyforras` ugyanazt a `lemmak()`-ot hívja, halmaztagsággal; ma egyetlen több részes ellenőrzött sor van, az ISTENTISZT-001 1Kir 18:24); a GK-24 leltára és plafonja csak fogyhat; a két N235-hely címkéje „218c”; GK-05: 0 motívumazonosító a generátorkódban; a `jeloltek.tsv` két cellája azonos a main-nel.
+
+Megjegyzések, a javítókörön kívül: (1) a `naplok/F218_S9_nezes.md` két sora még az „F218.13”-at írta az N235-re: javítva „218c”-re (szöveg, nem kód); (2) a régi javító lépés (`bdb_rovidites.heber_sorrend_javit`, az olvasó és a régi generátor) a régi sorrendben maradt: új tétel, **N-F218l** (218b/218c); (3) a subagent-fájl 40. sorának ellentmondása a munkamenet-fájlokat érinti, nem e brief hatóköre: jelezve az integrátornak.
+
+**A javítókör ellenőrzése** (`PARDES_DATUM=2026-11-13`, a két lap a repón kívülre): HAMART-001 `regresszio.py --teljes`: RENDBEN, engedély nélküli diff-sor 0; `--szamlalok` mindkét lapon RENDBEN (LXX: 14/14, illetve 15/15); a H4480 javított szakasza egyik lapon sem áll (a javított és a javítatlan alak 0 előfordulás mindkét lapon), így a mérce nem mozdul.
+
+*Proveniencia: `scope=fuggetlen-ellenor (claude-fable-5-2) a 3bef2871..8754ce6d tartományon; general.py --cel lexikon2 (HAMART-001, ISTENTISZT-001), regresszio.py --teljes / --szamlalok; python -m unittest teszt_kartya.ForrasjavitasSorrend | forras=a munkafa a javítókör után | ts=2026-11-23`*

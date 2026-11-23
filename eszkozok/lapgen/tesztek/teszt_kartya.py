@@ -388,6 +388,34 @@ class Gk18BetuJavitas(unittest.TestCase):
         self.assertGreater(javitott_db, 0)
 
 
+class ForrasjavitasSorrend(unittest.TestCase):
+    """DT-F218h (1) és a 17. független ellenőrzés E1/E2 tétele: a betűjavítás a rafe-maqqéf feloldása előtt és után
+    is fut. A bemenet a BDB-forrás (`adat/bdb_szakaszok.tsv`) rafés alakja, a javítótábla a valódi tábla."""
+
+    @classmethod
+    def setUpClass(cls):
+        import os
+        import bdb_rovidites as R
+        ut = os.path.join(kozos.GYOKER, 'adat', 'bdb_forras_javitas.tsv')
+        cls.javitasok = (R.atiras_javitasok(ut), R.sorrend_javitasok(ut), R.betu_javitasok(ut))
+
+    def _javit(self, szoveg, strong):
+        import unicodedata
+        return unicodedata.normalize('NFC', K.futam_javit(unicodedata.normalize('NFD', szoveg), strong,
+                                                          self.javitasok))
+
+    def test_a_rafes_alakra_kulcsolt_javitas_a_feloldas_elott(self):
+        """H0127, 4Móz 16:30: a tábla kulcsa a rafés „אֶתמִּֿיהָ”; a javított alak maqqéffal „אֶת־פִּיהָ”."""
+        uj = self._javit('אֶתמִּֿיהָ Num 16:30', 'H0127')
+        self.assertIn('אֶת־פִּיהָ', uj)
+        self.assertNotIn('מִּיהָ', uj)
+
+    def test_a_feloldott_tagra_kulcsolt_javitas_a_feloldas_utan(self):
+        """H4480, Ezsd 9:11: a rafés lánc első tagjára („מִמֶּה”) kulcsol a tábla; a feloldás után javul „מִפֶּה”-re."""
+        uj = self._javit('מִמֶּהאֶֿלמֶּֿה; Psa 144:13', 'H4480')
+        self.assertTrue(uj.startswith('מִפֶּה־אֶל־'), repr(uj))
+
+
 class AtvettTetelek(unittest.TestCase):
     """Az N-F212a tételei közül az S9c-ben a teljes lapon mértek (GK-A10, GK-A12)."""
 
