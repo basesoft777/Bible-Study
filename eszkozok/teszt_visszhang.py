@@ -333,6 +333,29 @@ class Szamozas(unittest.TestCase):
         self.assertEqual(TK.karoli_alak('ps 148.7', True), 'Zsolt 148:7')
         self.assertEqual(TK.karoli_alak('rev 20.3', True), 'Jel 20:3')
 
+    def test_chain_lineage_kor_felulirasa(self):
+        """F239 U6 (D25): a SPEC `kor` oszlopa felülírja a CL `century` értékét (a születési századot); üresen a CL-é."""
+        import types
+        import tanu_kinyer as TK
+        import chain_lineage as CL
+        valasz = [(1, 'gen 1.2 ; rom 10.7', 'Eusebius of Caesarea', 'De ecclesiastica theologia', '3', 'grc', 0)]
+        with tempfile.TemporaryDirectory() as d:
+            spec = os.path.join(d, 'spec.tsv')
+            with open(spec, 'w', encoding='utf-8', newline='\n') as f:
+                f.write('motivum\tigehely\thagyomany\tq\tszerzo\tmu\ttanu_nev\tkor\n')
+                f.write('X-001\tRóm 10:7\tgorog\tgen 1.2 + rom 10.7\tEusebius of Caesarea\tDe ecclesiastica theologia'
+                        '\tEuszébiosz\t4. sz. (HCF: 339)\n')
+                f.write('X-001\tJób 38:16\tgorog\tgen 1.2 + job 38.16\tEusebius of Caesarea\tDe ecclesiastica theologia'
+                        '\tEuszébiosz\t\n')
+            regi_tabla, regi_lek = TK.TABLA, CL.lekerdez
+            TK.TABLA, CL.lekerdez = os.path.join(d, 't.tsv'), (lambda q, n=None: valasz)
+            try:
+                TK.cl(types.SimpleNamespace(spec=spec))
+                kor = {r['igehely']: r['kor'] for r in TK.tsv_olvas(TK.TABLA)}
+            finally:
+                TK.TABLA, CL.lekerdez = regi_tabla, regi_lek
+        self.assertEqual(kor, {'Róm 10:7': '4. sz. (HCF: 339)', 'Jób 38:16': '3. sz.'})
+
 
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -1,11 +1,11 @@
-motivum	igehely	hagyomany	q	szerzo	mu	tanu_nev
-TEREMT-001	Róm 10:7	gorog	gen 1.2 + rom 10.7	Eusebius of Caesarea	De ecclesiastica theologia	Euszébiosz
-TEREMT-001	Jób 38:16	gorog	gen 1.2 + job 38.16	Eusebius of Caesarea	De ecclesiastica theologia	Euszébiosz
-TEREMT-001	Zsolt 148:7	gorog	gen 1.2 + ps 148.7	Eusebius of Caesarea	De ecclesiastica theologia	Euszébiosz
-TEREMT-001	1Móz 1:2	gorog	gen 1.2 + prov 8.24	Severian of Gabala	In cosmogoniam homilia 1	Gabalai Szeverianosz
-TEREMT-001	Péld 8:24	gorog	gen 1.2 + prov 8.24	Severian of Gabala	In cosmogoniam homilia 1	Gabalai Szeverianosz
-TEREMT-001	Jel 20:3	latin	rev 20.1 + rev 20.3	Gregorius I	Moralia II	Nagy Szent Gergely
-TEREMT-001	Jel 20:3	gorog	rev 20.1 + rev 20.3	Hippolytus	[BiblIndex] Capita contra Gaium (Apologia)*	Hippolütosz
-TEREMT-001	Jel 9:1-2	gorog	rev 9.1 + rev 9.2	Oecumenius	Commentarius in Apocalypsin	Oikumeniosz
-TEREMT-001	Hab 3:10	rabbinikus	hab 3.10 + ps 77.17	Tannaitic midrash	[Sefaria] Mekhilta DeRabbi Yishmael	Tannaita midrás
-TEREMT-001	Zsolt 77:17	rabbinikus	hab 3.10 + ps 77.17	Tannaitic midrash	[Sefaria] Mekhilta DeRabbi Yishmael	Tannaita midrás
+motivum	igehely	hagyomany	q	szerzo	mu	tanu_nev	kor
+TEREMT-001	Róm 10:7	gorog	gen 1.2 + rom 10.7	Eusebius of Caesarea	De ecclesiastica theologia	Euszébiosz	4. sz. (HCF: 339)
+TEREMT-001	Jób 38:16	gorog	gen 1.2 + job 38.16	Eusebius of Caesarea	De ecclesiastica theologia	Euszébiosz	4. sz. (HCF: 339)
+TEREMT-001	Zsolt 148:7	gorog	gen 1.2 + ps 148.7	Eusebius of Caesarea	De ecclesiastica theologia	Euszébiosz	4. sz. (HCF: 339)
+TEREMT-001	1Móz 1:2	gorog	gen 1.2 + prov 8.24	Severian of Gabala	In cosmogoniam homilia 1	Gabalai Szeverianosz	
+TEREMT-001	Péld 8:24	gorog	gen 1.2 + prov 8.24	Severian of Gabala	In cosmogoniam homilia 1	Gabalai Szeverianosz	
+TEREMT-001	Jel 20:3	latin	rev 20.1 + rev 20.3	Gregorius I	Moralia II	Nagy Szent Gergely	
+TEREMT-001	Jel 20:3	gorog	rev 20.1 + rev 20.3	Hippolytus	[BiblIndex] Capita contra Gaium (Apologia)*	Hippolütosz	3. sz. (HCF: 235)
+TEREMT-001	Jel 9:1-2	gorog	rev 9.1 + rev 9.2	Oecumenius	Commentarius in Apocalypsin	Oikumeniosz	
+TEREMT-001	Hab 3:10	rabbinikus	hab 3.10 + ps 77.17	Tannaitic midrash	[Sefaria] Mekhilta DeRabbi Yishmael	Tannaita midrás	
+TEREMT-001	Zsolt 77:17	rabbinikus	hab 3.10 + ps 77.17	Tannaitic midrash	[Sefaria] Mekhilta DeRabbi Yishmael	Tannaita midrás	

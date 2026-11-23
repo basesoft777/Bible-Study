@@ -20,6 +20,9 @@ ennek a táblának ellenőrzött sora kerül (CLAUDE.md 2. szabály). Három út
              sort, ha a megadott szerző és mű a válaszban mindkét magverset idézi. A `kapcsolat` gépi mondat (a lánc
              magversei Károli-alakban); az `ellenorzes` a lekérdezés újrafuttatása (gépi), a válasz szövege nem kerül át.
              A SPEC `tanu_nev` oszlopa (nem kötelező) a szerző magyar névalakja a lapon (Origen → Órigenész).
+             A SPEC `kor` oszlopa (nem kötelező) felülírja a Chain Lineage `century` értékét, amely a szerző születési
+             századát adja (Eusebius → 3., Hippolytus → 2.); a kézi érték a HCF-index évével, a HCF-sorok alakjában
+             (pl. `4. sz. (HCF: 339)`; `konkordancia/Tanu_atyak_index.tsv`).
     ellenoriz
              a tábla szerkezete: oszlopszám, zárt értékek, kulcs-egyediség, hagyományonként helyenként legfeljebb egy
              sor, proveniencia; kilépési kód 1 hibánál.
@@ -192,7 +195,8 @@ def cl(a):
             # a `tanu_nev` a szerző magyar névalakja (a SPEC adja; a lekérdezés a forrás névalakjára illeszt)
             'hagyomany': s['hagyomany'], 'tanu': (s.get('tanu_nev') or '').strip() or szerzo,
             'mu': mu.replace('[BiblIndex] ', ''),
-            'kor': '%s. sz.' % szazad, 'forras': 'chain_lineage', 'forras_url': url, 'lekerdezve': ma(),
+            # a `kor` kézi felülírása (SPEC, nem kötelező): a CL `century` a születési század (F239 U6, D25)
+            'kor': (s.get('kor') or '').strip() or '%s. sz.' % szazad, 'forras': 'chain_lineage', 'forras_url': url, 'lekerdezve': ma(),
             'biblindex': 'igen' if mu.startswith('[BiblIndex]') else '',
             'kapcsolat': 'Egy versláncban idézi a következő helyeket: %s.' % ', '.join(versek),
             'kinyeres': 'gepi',
