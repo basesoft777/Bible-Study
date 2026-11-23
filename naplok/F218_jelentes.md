@@ -2057,3 +2057,39 @@ Mellékhatás nélkül: a HAMART-001 lapján csak a pe/mem sora változott, a KI
 
 A szerkesztő 2026-11-23-án jóváhagyta a két lapot, szó szerint: „Igen, mindkettőt” (a HAMART-001 és az ISTENTISZT-001 új generátoros lapja; az integrátor továbbította). **A nézett hash: `4b20d591`** (az `1b634d08` lapjai és a három átvezetett döntés, DT-F218h). A 45 sablonmondat, a 9 név és a HN-03 helyek tételenként nem kerültek a szerkesztő elé (a szerkesztő: „ennyi sem kell mert mechanikusak”); a jóváhagyás ezekre is a lapokon át szól. A brief F218.12 ⛔ pontja ezzel teljesült; következik az F218.13 (zárás).
 
+## F218.13 — Zárás (`claude-opus-5-5`, 2026-11-23, a 20. session)
+
+A 218a (építés a regresszióig) lezárul; a brief `allapot`: `lezarva`, `kovetkezo`: „Te: a 218b és a 218c befogadása”. Az új generátor a 218a-ban nem ad ki lapot és a `lexikon/` réteget nem írja (GK-27, N221; DT-F218e (2) (b), DT-F218i): a #809 merge-e után a kiadott HAMART-001 és ISTENTISZT-001 lap, valamint a bájt-referencia változatlan. Az N235 a 218c-é (a DT-F218e (2) (b) módosítása, `8754ce6d`), ezért az F218.13 csak zárás: adat nem változik.
+
+### Az elfogadási feltételek (a brief 11. pontja)
+
+| # | Feltétel | Állapot | Hol igazolva |
+|---|---|---|---|
+| 1 | HAMART-001: csak az engedélyfájl sorai szerinti eltérés, `tenyleges_db = elvart_db`, a bemenet-hashek egyeznek | teljesül | `regresszio.py --id HAMART-001 --teljes`: RENDBEN, 149 diff-sor, 146 engedélysor (az utolsó `S9C-PEMEM`); „F218.12 — S9c: a nézési csomag három döntése” |
+| 2 | ISTENTISZT-001: a 8.2 öt pontja | teljesül | `--szamlalok` RENDBEN mindkét lapon; az LXX-összesítés 13 egyező / 2 szócsalád (N196 részenként, DT-F218h (2)), az N238 független számlálójával |
+| 3 | Festékpróba 0 szivárgás, a mutációs próba hat változata megfogva | teljesül | festékpróba a `8754ce6d` fején (`festek.py --id HAMART-001 --id ISTENTISZT-001`, 2026-11-23, ebben a sessionben): HAMART-001 0 szivárgás (belső 432, idézet 3 168, kézi 1 412 látott jelzőszó, 30 horgonyban), ISTENTISZT-001 0 (354, 1 577, 540; 18 horgony); a mutációs próba: GK-26 („F218.12 — S9b”) |
+| 4 | A 7. pont tesztjei zöldek; `skip` csak kimondva | teljesül | kimondott skipek: GK-04 `hely_egyseg` (218c, N234), GK-19 (a JOHD-validáció után, N219), a leltár C3, C9 (218c) és D3 (218b); „F218.12 — Teljességi lista és skip-leltár” |
+| 5 | A `lapgen/` kódjában 0 motívumazonosító, 0 útvonal a `bemenet/`-en kívül; a régi generátor HAMART-kimenete bájtra a referencia | teljesül | GK-01, GK-05 (`478fb306`); a kiadott lap és a `jeloltek.tsv` két cellája a 3bef2871-hez képest visszaállt (DT-F218e (2) (b)) |
+| 6 | A szerkesztő a két renderelt lapot megnyitotta és jóváhagyta | teljesül | „Igen, mindkettőt”, 2026-11-23, nézett hash `4b20d591` („F218.12 — A szerkesztő jóváhagyása”) |
+| 7 | A független ellenőrzések `TISZTA`-k, vagy egy javítókör után azok | l. lent | a 16. ellenőrzés javítóköre kész; a 17. (célzott) lent |
+| 8 | A leltár minden tétele követelményre vagy „nem portolandó”-ra képezve | teljesül | „F218.12 — S9c” (B9, A11, A14, A15, B5, B8; C3, C9 a 218c-re, D3 a 218b-re) |
+
+### Mérőszámok (a teljes 218a)
+
+| Mérőszám | Érték |
+|---|---|
+| Időtartam | 2026-11-13 – 2026-11-23; 20 session (az S3d-ig és a 4. ellenőrzés javítóköréig `claude-fable-5-2`, utána `claude-opus-5-5`) |
+| Commitok | 156 `F218`-előtagú commit, két PR-ban (#729: T, S1–S4; #809: S5–F218.13) |
+| Új kód | `eszkozok/lapgen/`: 110 Python-fájl, kb. 18 400 sor generátorkód és kb. 6 400 sor teszt |
+| Adattáblák | `lapgen_bemenetek.tsv` 69 bemenet, `lapgen_sablonok.tsv` 1 022 sablonsor, `olvasoi_nevtabla.tsv` 289 név |
+| Mérce | HAMART-001: 149 diff-sor, mind engedéllyel (146 engedélysor); ISTENTISZT-001: a 8.2 öt pontja |
+| Tesztek | a teljes tesztkör 391 teszt; a célzott kör (`futtat.py lxx regresszio szerkezet kartya kapuk szocikkek`) 125 teszt, kb. 12 perc |
+| Független ellenőrzések | 16 + a 17. célzott ellenőrzés (lent) |
+| Keret (a 20. session indulásakor, `get_usage`) | heti, minden modell 43%; heti Fable 11%; 5 órás 53% |
+
+### A 13. pont N-tételei (`nyitott/uj/f218a-s9c-d1312a.md`)
+
+- **218b** (a brief 13. pontjának „N235 — 218b” tétele): már befogadva, #236 (GENERATOR_UJ_B), a B0: #237 (GENERATOR_UJ_B0); új tétel nem kell.
+- **N-F218j — 218c: átállás** (helyőrző, a `szamkiosztas` ad számot): a brief 13. pontjának „N236 — 218c” tétele, a DT-F218i szerint az ISTENTISZT-001 2. kiadásával mint első átvehető eredménnyel, és a 218c-re mutató tételekkel (N188, N221, N223, N234, N235, N236, N-F218h, N-F218i, N-F218k, a leltár C3, C9).
+- **N-F218k** (helyőrző): az ISTENTISZT-001 34 hiányzó fordítása (a 4. szakasz SDBH/UBS-glosszái és doménnevei; a H7121, H8034, G1941 kártyái), a 2. kiadás előtt, az előfizetésből.
+- Technikai javítás (DT920): a döntésfájl DT-F218e és DT-F218i sorában az árva `N-F218w` helyőrző a végleges számára, `N221`-re cserélve (a GK-27 kiadás mód tétele; a `szamkiosztas` a definíciós sor nélküli helyőrzőnek nem adott volna számot). A `eszkozok/lapgen/szamitas/kolofon.py` 202. sorának kommentje még `N-F218w`-t ír; a generátorkódhoz ebben a zárásban nem nyúltam, a 218c első érintésekor javítandó.
