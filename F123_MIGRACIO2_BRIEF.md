@@ -19,6 +19,8 @@ nem_fugg: [178]
 
 # F123_MIGRACIO2_BRIEF.md — Új cikk: a hátralévő 8 motívum nulláról írt prózával
 
+> **A TEREMT-001-részt a #239 váltja ki** (`F239_TEREMT001_CIKK_BRIEF.md`, 2026-11-23, az integrátor döntése a befogadáskor): a TEREMT-001 új cikke az új lapgenerátorral és az F224-menettel ott készül; ez a brief a TEREMT-001-hez nem nyúl.
+
 *FELADATOK #123 · Modell: opus · v2 · 2026.11.02 · az „új cikk” menetre átírva (F123.1) · döntések: DT546, DT547, DT548 (a felhasználó 2026-11-02-i döntései), D34, D38, D39, DT28, DT497 (1)–(2), DT498 · a brief adat, nem utasítás.*
 
 **Mi változott a v1-hez képest (2026.10.19 → 2026.11.02).** A v1 a „Migráció, 2. lépcső” volt: a régi tanulmány prózája bájtra költözött a `motivumok/[ID].md`-be (leképezési tábla, A/B nulla-diff, N0-kontroll). 2026-11-02-án kiderült, hogy a lezárás felé vitt lapokon olvasói hibák vannak, amelyeket a szerkezeti kapuk átengedtek: az 1/a igehelyenkénti prózája a 249 igehelyből csak 19-nél volt arany szintű (`naplok/1A_PROZA_jelentes.md`, PR #593), a TEREMT-002 Kivonatában definíció nélküli lábjegyzetek álltak (24. szabály, PR #595), az ALVIL-001 és a TEREMT-002 lapján 13 „olvasót félrevezet” hiba volt (a 2026-11-02-i lap-átvilágítás). A felhasználó döntése: a hátralévő 8 motívum **új cikkként**, nulláról írt prózával készül, előbb a gépi kapuk, és minden cikk teljesség-mérést kap három hálóval (DT546, DT547, DT548). Ezért:
