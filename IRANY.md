@@ -1,20 +1,21 @@
 # IRÁNY — kelt: 2026-11-23 · gazdája: a szerkesztő · legfeljebb 40 sor
 
-**Cél:** a Biblialex motívumlexikon. Most: hibátlan olvasó, és kész új generátor a TEREMT-próbához.
+**Cél:** a Biblialex motívumlexikon. Most: hibátlan olvasó, és kész új generátor a TEREMT-001-próbához.
 
 ## Futó szálak (legfeljebb 2)
 1. **Olvasó-javítás (#231, PR #810).** Az 58 tétel (a 60-ból; kívül: 23. fordítás, 59. motívumlap). Kész: „Mérce: 58/58 zöld” a PR-ban, utána egy nézés az ágas előnézeten; merge után tükör-újraindítás és DB-másolat ellenőrzése (integrátor).
-2. **Új generátor (F218a, PR #809).** Kész: a HAMART-referencia és a 8.2/1 számlálók zöldek, a TEREMT-próba bemenete lefut, a nézésed után az F218.13 a main-en.
+2. **Új generátor (F218a, PR #809).** Kész: a HAMART-referencia és a 8.2/1 számlálók zöldek, a nézési csomag kész, a nézésed után az F218.13 a main-en.
 - **Következő szálak**, ebben a sorrendben:
   - rövid adat-PR az N-F231a-ra (hamis LXX-pár: „πρωὶ” → G5459, 88 hely);
   - **a JOHD-kézirat végső köre**, amint a validáció számai megvannak (decemberi beküldés; elsőbbsége van a kapu előtt);
-  - a 15 perces kapu kettévágása (integrátor; benne a bukó test_11 és a BEHIND-kör).
+  - a 15 perces kapu kettévágása (integrátor; benne a bukó test_11 és a BEHIND-kör);
+  - a TEREMT-001 (tehóm) nulláról, az új generátorral és az új cikkmenettel (saját brief, az F218.13 után).
 - **Utána** (a 2026-11-11-i ütemezés): a motívumok ráillesztése az olvasóra, ez az „alap” olvasó.
 
 ## Most NEM csináljuk
-- Új lexikonlap: az új generátorral csak a TEREMT készül (próba).
+- Új lexikonlap: az új generátorral csak a TEREMT-001 (tehóm) készül, nulláról (próba). Befagyasztva: KIRALY, ALVIL, MENNY, ANTROP, HODIT, TEREMT-002.
 - Új olvasó-felmérés, amíg a #231 nincs lezárva.
-- Új motívumcikk a homonima-jelzés előtt (kivétel: TEREMT).
+- Új motívumcikk a homonima-jelzés előtt (kivétel: TEREMT-001).
 - BDB-szerkesztői javaslat a lapon: egy jövőbeli kiadásba.
 - 218b, 218c, B0 (#236–#238): az F218.13 előtt nem indul.
 - F235 2. rész (indexek, natív futás): a szerkesztő szaváig nem indul.
