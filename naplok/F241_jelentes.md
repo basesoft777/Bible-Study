@@ -43,3 +43,24 @@ A Workflow-fájlok (`.github/workflows/*.yml`) a `lexikon_general`-t név szerin
 - a `naplok/` 15 régi mérőszkriptje importálja: napló, nem fogyasztó; az archiválás után nem futtathatók (brief 2. pont).
 
 **Lapgen-futás:** az F241.0-ban nem volt. Indításkor egy `python.exe` futott (PID 21132, 14 MB, nem lapgen-méret).
+
+## F241.1 — Kiadás mód és frissesség (N221; DT933 (1); GK-27, T9)
+
+*Végrehajtó: `claude-opus-5-5` (kért: `opus`, egyezik) · 2026-11-23.*
+
+**Megvalósítás.**
+- **Új bemeneti modul** `eszkozok/lapgen/bemenet/jovahagyas.py`: a szerzői jóváhagyás frissessége kiadás módban. A legutóbbi érvényes átnézés-sor (`lap_atnezesek.tsv`, SEMA 2.48: `ki` = `felhasználó`, nem üres `idezet`, a `lap_commit` őse a HEAD-nek) `lap_commit`-ja és a lap (`lexikon/<ID>_TUDOMANYOS.md`) mai utolsó commitja: egyezésnél **FRISS**. Egyezés nélkül a motívum kézi bemeneteinek lenyomata dönt (a jóváhagyott commitban, `git show`, és a munkafán): azonos → **CSAK_GENERALT** (változásjegyzék-sort kér, új nézést nem); eltérő → **ELAVULT** (új nézés). Átnézés-sor nélkül **NINCS_ATNEZES**, a repóban nem álló lapnál **NINCS_LAP**. A git-olvasás nem tartalmi olvasás, nem kerül az olvasási naplóba (a `bemenet/frissesseg.py` mintájára); csak kiadás módban fut.
+- **A jóváhagyás tárgya** (`konfig.JOVAHAGYAS_BEMENETEK`, technikai döntés, DT920): a jegyzék azon bemenetei, amelyek a motívum kézi forrását vagy a motívumra kulcsolt kézi adatát hordozzák — B02, B03, B04, B38, B39, B40, B45, B46, B47, B50, B53, B56, B67, B70. A lenyomat a motívum saját fájljából (`motivumok/<ID>.md`) az egészet, a táblákból a fejlécet és azokat a sorokat veszi, amelyeknek valamely cellája pontosan a motívum azonosítója (más motívum sorának változása nem érinti). Nincs benne: a kiadási és átnézési napló (B48), a befagyasztás (B59), a generátor saját táblái (B65, B66, B68), a több motívum közös forrás- és szótári adata (konkordancia, fordítások): ezek változása a generált blokkokat érinti. A halmaz a mérés óvatos oldala: a vitás eset (pl. a B38/B39 visszhang-sorai) inkább új nézést kér.
+- **Kapu** (`szamitas/kolofon.py` `kapu`): kiadás módban a kézi résű lap csak FRISS vagy CSAK_GENERALT állapotban megy át; mérés nélkül, NINCS_LAP, NINCS_ATNEZES és ELAVULT esetén BemenetHiba, az okkal. A modell új mezője: `frissesseg`.
+- **A mondat** kiadás módban: „a szerző jóváhagyta” (új sablonsor: `kolofon.jovahagyas.friss`, a régi lap szövege; a kapu után áll, ezért nem állíthat hamisat). Munka módban változatlan („a szerző a lap korábbi változatát hagyta jóvá (dátum)”), git nélkül.
+- **A változásjegyzék-sor** (CSAK_GENERALT): a kapu nem kéri számon, mert a kiadás sora (`kiadasok.tsv`) a `/kiadas` lépése (F241.7), és a kiadott lap új kiadás nélküli változását az E28 őrzi (F241.2). Technikai döntés: így nincs két őr ugyanarra.
+
+**Teszt** (`teszt_kolofon.py`): `Jovahagyas` — a kapu mind az öt állapotra és a generált lapra; a kiadás módú mondat. Új `Frissesseg` osztály (hamis git-olvasóval, az ISTENTISZT-001 mai átnézés-sorával): egyező `lap_commit` → FRISS; csak a lap változott → CSAK_GENERALT; közös tábla más motívumra eső sorának változása → CSAK_GENERALT; kézi próza (`motivumok/<ID>.md`) változása → ELAVULT; adat (`kapcsolatok.tsv` motívumsora) változása → ELAVULT; lap nélkül és átnézés nélkül; a valódi git-olvasó. `futtat.py kolofon`: 21 teszt, 0 bukás; `bemenet szoveg kapuk`: 58 teszt, 0 bukás (3 kihagyva).
+
+**Mérés a valós repón** (kiadás módú frissesség, a munkafán): ISTENTISZT-001 → **ELAVULT** (átnézés `ee33a860`, 2026.11.04; azóta a kézi forrás és az adat változott — a 2. kiadáshoz új nézés kell, ez az F241.7 ⛔-je); HAMART-001 → **NINCS_ATNEZES** (a `lap_atnezesek.tsv`-ben nincs HAMART-sor; a B szelet HAMART-kiadásához (F241.10) átnézés-sor kell); ALVIL-001 → ELAVULT (befagyasztott, nem generálódik).
+
+**Regresszió.** A sablontábla (B66) új sora miatt a hash-őr megállt; `PARDES_DATUM=2026-11-13 general.py --cel lexikon2 --id HAMART-001` + `regresszio.py --id HAMART-001 --teljes`: **RENDBEN**, engedély nélküli diff-sor 0 (munka módban a lap bájtra változatlan). A B66 hash-sora a `naplok/F218_referencia.tsv`-ben külön commitban frissült (a brief 8.1 pontja); utána `hash_or_kapu`: RENDBEN, 210 sor.
+
+**Lapgen-futás:** egy (a regresszió generálása), előtte a `python.exe`-lista: egy másik session `push_elott --reszleges` / `teszt_futtat` (olvasó-tesztek, 25–27 MB), nem lapgen-futás.
+
+*Proveniencia: `scope=futtat.py kolofon; futtat.py bemenet szoveg kapuk; general.py --cel lexikon2 --id HAMART-001 (PARDES_DATUM=2026-11-13); regresszio.py --id HAMART-001 --teljes; hash_or_kapu.py; jovahagyas.frissesseg (ISTENTISZT-001, HAMART-001, ALVIL-001) | forras=a munkafa a commit előtt | ts=2026-11-23`.*

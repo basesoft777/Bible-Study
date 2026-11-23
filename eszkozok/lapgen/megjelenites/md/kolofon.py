@@ -46,7 +46,8 @@ def _szerzoseg(ny, m):
             else:
                 kezdet = ny.s('kolofon.szerzoseg.kezi', resek=resek)
             torzs = ny.s('kolofon.szerzoseg.kiadott', kezdet=kezdet,
-                         jovahagyas=ny.s('kolofon.jovahagyas.korabbi', datum=m.jovahagyas))
+                         jovahagyas=(ny.s('kolofon.jovahagyas.friss') if m.kiadas   # a kapu igazolta
+                                     else ny.s('kolofon.jovahagyas.korabbi', datum=m.jovahagyas)))
     return ny.s('kolofon.szerzoseg', torzs=torzs)
 
 

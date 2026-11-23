@@ -12,8 +12,9 @@ az azonos nevű fájlok egy sorba vonódnak, a sorok a név szerinti rendben. A 
 `konfig.KOLOFON_MEGJELOLES`; a szöveg a licencleltárból jön (GK-07).
 
 A jóváhagyás (T9, GK-27): munka módban a szerzőségi mondat a szerző korábbi jóváhagyását mondja, a legutóbbi átnézés
-(híján a legutóbbi kiadás) dátumával; kiadás módban a jóváhagyás frissességét a lap `lap_commit`-ja igazolná, ezt az új
-generátor a 218c-ig nem tudja: a kapu megáll (DT-F218y 2.).
+(híján a legutóbbi kiadás) dátumával. Kiadás módban a kézi résű lap jóváhagyásának frissessége a `lap_commit`-ból és a
+kézi bemenetek lenyomatából jön (`bemenet/jovahagyas.py`, N221, DT933 (1)): friss jóváhagyásnál, vagy ha a jóváhagyott
+változat óta csak generált blokk változott, a mondat „a szerző jóváhagyta”; különben a kapu megáll (új nézés kell).
 """
 import datetime
 import enum
@@ -23,6 +24,7 @@ from typing import Optional, Tuple
 from lapgen import konfig
 from lapgen.bemenet import b01_licencek
 from lapgen.bemenet import irodalom as irodalom_be
+from lapgen.bemenet import jovahagyas as jovahagyas_be
 from lapgen.bemenet import kolofon as kolofon_be
 from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet.jegyzek import BemenetHiba
@@ -122,6 +124,7 @@ class Kolofon:
     kozel_keleti_emlites: Optional[Lathato]
     forrasok: Tuple[ForrasSor, ...]
     megjelolesek: Tuple[Megjeloles, ...]
+    frissesseg: Optional[jovahagyas_be.Jovahagyas] = None   # kiadás módban, kézi résű lapnál (GK-27); különben None
 
 
 def _forrastabla(korny, elozo):
@@ -177,6 +180,12 @@ def szamit(korny, elozo):
     else:
         szerzoseg = Szerzoseg.KIADOTT
         jovahagyas = adatok.atnezesek[-1] if adatok.atnezesek else utolso.datum
+    kiadas = korny.mod.value == konfig.MOD_KIADAS
+    frissesseg = None
+    if kiadas and resek:
+        frissesseg = jovahagyas_be.frissesseg(korny.b, korny.motivum)
+        if frissesseg.kiadhato:
+            jovahagyas = kolofon_be.datum_ertek('B48', frissesseg.atnezes_datum, 'átnézés')
     lektor = kolofon_be.b49_lektor(korny.b, korny.motivum)
     kk = kolofon_be.b50_kozel_keleti(korny.b, korny.motivum)
     kolofon_be.b75_kozel_keleti_reteg(korny.b)
@@ -184,7 +193,7 @@ def szamit(korny, elozo):
     return Kolofon(
         szerzoseg=szerzoseg, resek=resek,
         proza_modell=proza(utolso.modell) if utolso is not None and utolso.modell is not None else None,
-        jovahagyas=jovahagyas, kiadas=korny.mod.value == konfig.MOD_KIADAS,
+        jovahagyas=jovahagyas, kiadas=kiadas,
         cim=proza(sor.cim), meghatarozas=proza(sor.meghatarozas) if sor.meghatarozas is not None else None,
         azonossag=sor.azonossag, folerendelt=proza(sor.folerendelt_mondatkezdo),
         mezok=tuple((KolofonMezo(m), proza(sor.kolofon[m])) for m in motivum_be.KOLOFON_MEZOK if m in sor.kolofon),
@@ -194,13 +203,29 @@ def szamit(korny, elozo):
         kozel_keleti=kk is not None,
         kozel_keleti_emlites=proza(kk.emlites) if kk is not None and kk.emlites is not None else None,
         forrasok=_forrastabla(korny, elozo),
-        megjelolesek=_megjelolesek(korny, azonositok))
+        megjelolesek=_megjelolesek(korny, azonositok),
+        frissesseg=frissesseg)
+
+
+_KAPU_OK = {
+    jovahagyas_be.Frissesseg.NINCS_LAP: 'a lap (%s) nincs a repóban: a jóváhagyott változat nem azonosítható',
+    jovahagyas_be.Frissesseg.NINCS_ATNEZES: 'a lapnak (%s) nincs érvényes szerzői átnézés-sora (lap_atnezesek.tsv, '
+                                            'SEMA 2.48), amelynek lap_commit-ja őse a mai változatnak',
+    jovahagyas_be.Frissesseg.ELAVULT: 'a jóváhagyott változat (%s) óta a kézi próza vagy a motívum adata változott: '
+                                      'új nézés kell (DT933 (1))',
+}
 
 
 def kapu(modell):
-    """GK-27 (T9): kiadás módban kézi résű lap csak friss jóváhagyással adható ki; a frissességet a lap `lap_commit`-ja
-    igazolná, ezt az új generátor a 218c-ig nem olvassa (N221): a kapu megáll."""
-    if modell.kiadas and modell.szerzoseg is not Szerzoseg.GENERALT:
-        raise BemenetHiba('Kolofon (kiadás mód): a jóváhagyás frissessége nem igazolható, amíg az új generátor nem a lap '
-                          'végleges helyére ír (a lap_commit egyezése a 218c-ben)')
-    return modell
+    """GK-27 (T9): kiadás módban kézi résű lap csak friss jóváhagyással adható ki (N221): a szerző átnézés-sorának
+    `lap_commit`-ja a lap mai utolsó commitja, vagy azóta csak generált blokk változott (a kézi bemenetek lenyomata
+    azonos; ez változásjegyzék-sort kér, új nézést nem). Más esetben BUKÁS."""
+    if not modell.kiadas or modell.szerzoseg is Szerzoseg.GENERALT:
+        return modell
+    f = modell.frissesseg
+    if f is None:
+        raise BemenetHiba('Kolofon (kiadás mód): a jóváhagyás frissessége nincs megmérve')
+    if f.kiadhato:
+        return modell
+    hol = f.atnezes_commit[:12] if f.allapot is jovahagyas_be.Frissesseg.ELAVULT else (f.lap_commit or '')[:12]
+    raise BemenetHiba('Kolofon (kiadás mód, GK-27): ' + _KAPU_OK[f.allapot] % (hol or 'lexikon/'))

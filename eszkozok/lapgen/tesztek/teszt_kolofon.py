@@ -4,7 +4,8 @@ A HAMART-001 mai lapjával való egyezést (az engedélysorokkal) a regresszió 
 forrástábla sorai pontosan a számozott szakaszok olvasásai a jegyzék `irodalom` oszlopa szerint (GK-07, DT901), a
 származtatott tábla CC BY-os bemenetei saját soron (F212); a licencszöveg és a kötelező megjelölés a licencleltárból;
 a „Negatív kritérium” sor hivatkozás a lap elejére (DT874, 9. tétel); a jóváhagyás-mondat munka módban a korábbi
-változatot mondja, kiadás módban a kapu megáll (GK-27, T9); a közel-keleti és a Chain Lineage-mondat az állapotból jön
+változatot mondja, kiadás módban a kapu a jóváhagyás frissességét méri (GK-27, T9, N221: egyező `lap_commit`;
+csak generált változás; kézi próza vagy adat változása → BUKÁS); a közel-keleti és a Chain Lineage-mondat az állapotból jön
 (GK-28). A táblákat a teszt maga olvassa (`split('\t')`), nem a generátor kódjával.
 """
 import dataclasses
@@ -16,6 +17,7 @@ import kozos
 from lapgen import bemenet, fo, konfig
 from lapgen.bemenet import alap as alap_be
 from lapgen.bemenet import irodalom as irodalom_be
+from lapgen.bemenet import jovahagyas as jovahagyas_be
 from lapgen.bemenet import kolofon as kolofon_be
 from lapgen.bemenet.jegyzek import BemenetHiba, JegyzekSor
 from lapgen.ertekek import IrodLicenc
@@ -172,12 +174,30 @@ class Jovahagyas(_Alap):
         self.assertNotIn('a szerző jóváhagyta', self.lap)
         self.assertIs(SZ.kapu(self.modell), self.modell)
 
-    def test_gk27_kiadas_modban_a_kapu_megall(self):
-        """GK-27 (T9, DT-F218y 2.): kiadás módban a kézi résű lap kapuja megáll (a `lap_commit` a 218c-ben)."""
+    def test_gk27_kiadas_mod_kapuja(self):
+        """GK-27 (T9, N221): kiadás módban a kézi résű lap csak kiadható frissességgel megy át; mérés nélkül,
+        átnézés nélkül, a lap nélkül és elavult jóváhagyással BUKÁS; a generált lapnak nincs mit jóváhagyni."""
+        F, J = jovahagyas_be.Frissesseg, jovahagyas_be.Jovahagyas
         with self.assertRaises(BemenetHiba):
             SZ.kapu(dataclasses.replace(self.modell, kiadas=True))
+        for allapot in (F.NINCS_LAP, F.NINCS_ATNEZES, F.ELAVULT):
+            with self.assertRaises(BemenetHiba, msg=allapot):
+                SZ.kapu(dataclasses.replace(self.modell, kiadas=True,
+                                            frissesseg=J(allapot, 'a' * 40, '2026.11.04', 'b' * 40)))
+        for allapot in (F.FRISS, F.CSAK_GENERALT):
+            m = dataclasses.replace(self.modell, kiadas=True, frissesseg=J(allapot, 'a' * 40, '2026.11.04', 'b' * 40))
+            self.assertIs(SZ.kapu(m), m)
         generalt = dataclasses.replace(self.modell, kiadas=True, szerzoseg=SZ.Szerzoseg.GENERALT, resek=())
         self.assertIs(SZ.kapu(generalt), generalt)
+
+    def test_gk27_kiadas_modban_a_mondat_friss(self):
+        """T9: kiadás módban (a kapu után) a mondat „a szerző jóváhagyta”, a korábbi változat említése nélkül."""
+        m = dataclasses.replace(self.modell, kiadas=True, frissesseg=jovahagyas_be.Jovahagyas(
+            jovahagyas_be.Frissesseg.FRISS, 'a' * 40, '2026.11.04', 'a' * 40))
+        lap = _lap(self.korny, m)
+        self.assertIn('; a szerző jóváhagyta. A többi szakasz', lap)
+        self.assertNotIn('korábbi változatát', lap)
+
 
     def test_kiadasi_adatok(self):
         adatok = kolofon_be.b48_kiadasi_adatok(self.korny.b, self.korny.motivum)
@@ -188,6 +208,99 @@ class Jovahagyas(_Alap):
         self.assertEqual([d.strftime('%Y.%m.%d') for d in adatok.javitasok], sorted(javitasok))
         self.assertIn('vetette el (2026.11.11–13) |', self.lap)   # a dátumok tartománya (azonos hónap)
         self.assertIn('| Kiadás | %d |' % adatok.kiadasok[-1].szam, self.lap)
+
+
+class _HamisGit:
+    """A `bemenet.jovahagyas.Git` helyett: a lap utolsó commitja rögzített, minden commit létezik és őse a HEAD-nek, a
+    commitbeli tartalom a munkafáé, kivéve a `mas` szerinti fájlokat ({útvonal: szöveg})."""
+
+    def __init__(self, utolso, mas=None):
+        self.utolso, self.mas = utolso, dict(mas or {})
+
+    def utolso_commit(self, _utvonal):
+        return self.utolso
+
+    def teljes(self, commit):
+        return commit
+
+    def ose_a_headnek(self, _commit):
+        return True
+
+    def tartalom(self, _commit, utvonal):
+        if utvonal in self.mas:
+            return self.mas[utvonal]
+        teljes = os.path.join(kozos.GYOKER, *utvonal.split('/'))
+        if not os.path.exists(teljes):
+            return None
+        with open(teljes, encoding='utf-8') as f:
+            return f.read().replace('\r\n', '\n')
+
+
+class Frissesseg(unittest.TestCase):
+    """GK-27 (T9, N221, DT933 (1)) a frissesség három ágán, az ISTENTISZT-001 mai átnézés-sorával
+    (`lap_atnezesek.tsv`; a teszt maga olvassa) és hamis git-olvasóval."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.b, cls.motivum = bemenet.Bemenet(kozos.GYOKER), MotivumId(ISTENTISZT)
+        sorok = [s for s in _tabla('adat/lap_atnezesek.tsv')
+                 if s['id'] == ISTENTISZT and s['ki'] == 'felhasználó' and s['idezet'].strip()]
+        cls.atnezes = sorok[-1]['lap_commit']
+
+    def _f(self, git):
+        return jovahagyas_be.frissesseg(self.b, self.motivum, git=git)
+
+    def test_egyezo_lap_commit(self):
+        j = self._f(_HamisGit(self.atnezes))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.FRISS)
+        self.assertTrue(j.kiadhato)
+
+    def test_csak_generalt_valtozas(self):
+        """A lap azóta változott, a kézi bemenetek nem: változásjegyzék-sor, új nézés nem."""
+        j = self._f(_HamisGit('f' * 40))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.CSAK_GENERALT)
+        self.assertTrue(j.kiadhato)
+        self.assertEqual(j.atnezes_commit, self.atnezes)
+
+    def test_a_kozos_adat_mas_motivumanak_valtozasa_csak_generalt(self):
+        """A közös tábla más motívumra eső sora nem a jóváhagyás tárgya."""
+        with open(os.path.join(kozos.GYOKER, 'adat', 'jeloltek.tsv'), encoding='utf-8') as f:
+            jeloltek = f.read().replace('\r\n', '\n')
+        adatsorok = [s for s in jeloltek.split('\n') if s and not s.startswith('#')][1:]   # a fejléc nélkül
+        sor = next(s for s in adatsorok if ISTENTISZT not in s.split('\t'))
+        mas = jeloltek.replace(sor + '\n', '', 1)
+        j = self._f(_HamisGit('f' * 40, {'adat/jeloltek.tsv': mas}))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.CSAK_GENERALT)
+
+    def test_kezi_proza_valtozasa(self):
+        ut = 'motivumok/%s.md' % ISTENTISZT
+        with open(os.path.join(kozos.GYOKER, *ut.split('/')), encoding='utf-8') as f:
+            regi = f.read().replace('\r\n', '\n') + '\nRégi mondat.\n'
+        j = self._f(_HamisGit('f' * 40, {ut: regi}))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.ELAVULT)
+        self.assertFalse(j.kiadhato)
+
+    def test_adat_valtozasa(self):
+        with open(os.path.join(kozos.GYOKER, 'adat', 'kapcsolatok.tsv'), encoding='utf-8') as f:
+            kapcs = f.read().replace('\r\n', '\n')
+        sor = next(s for s in kapcs.split('\n') if ISTENTISZT in s.split('\t'))
+        j = self._f(_HamisGit('f' * 40, {'adat/kapcsolatok.tsv': kapcs.replace(sor, sor + 'x', 1)}))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.ELAVULT)
+
+    def test_nincs_lap_es_nincs_atnezes(self):
+        self.assertIs(self._f(_HamisGit(None)).allapot, jovahagyas_be.Frissesseg.NINCS_LAP)
+        j = jovahagyas_be.frissesseg(self.b, MotivumId(HAMART), git=_HamisGit('f' * 40))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.NINCS_ATNEZES)
+
+    def test_valodi_git(self):
+        """A valódi olvasó: a lap utolsó commitja teljes hash, a commitbeli tartalom olvasható."""
+        git = jovahagyas_be.Git(kozos.GYOKER)
+        utolso = git.utolso_commit(jovahagyas_be.lap_utvonal(MotivumId(ISTENTISZT)))
+        self.assertRegex(utolso, r'^[0-9a-f]{40}$')
+        self.assertEqual(git.teljes(utolso[:12]), utolso)
+        self.assertTrue(git.ose_a_headnek(utolso))
+        self.assertIsNotNone(git.tartalom(utolso, jovahagyas_be.lap_utvonal(MotivumId(ISTENTISZT))))
+        self.assertIsNone(git.teljes('0' * 40))
 
 
 class Allapotmondat(_Alap):

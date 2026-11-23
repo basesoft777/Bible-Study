@@ -211,3 +211,11 @@ KOLOFON_MEGJELOLES = (('LSJ', 'lsj'), ('Karoli_versmegfeleltetes', None), ('LXX_
 SZERZOSEG_RESEK = ('kivonat', 'miert_fontos', 'minosites', 'alatamasztas', 'ertelmezes', 'modszertan')
 PROZA_MODELL_KEZI = 'manual'   # a kiadás `proza_modell` mezője, ha a modell nincs rögzítve (DT492)
 SZERZO_ATNEZES = 'felhasználó'   # a lapátnézés és a lapjavítás `ki` / `jovahagyta` értéke: a szerző
+# A szerzői jóváhagyás tárgya (GK-27, T9; DT933 (1): „a kézi prózára és az adatra”): a jegyzék azon bemenetei, amelyek
+# a motívum kézi forrását vagy a motívumra kulcsolt kézi adatát hordozzák. A lenyomat (`bemenet/jovahagyas.py`) a
+# motívum saját fájljából az egészet, a táblákból a fejlécet és a motívum sorait veszi. Ha a jóváhagyott lapváltozat
+# óta ezek közül egy sem változott, a lapváltozás csak generált: változásjegyzék-sort kér, új nézést nem. Nincs itt:
+# a kiadási és átnézési napló (B48), a befagyasztás (B59), a generátor saját táblái (B65, B66, B68) és a több
+# motívum közös forrás- és szótári adata (konkordancia, fordítások): ezek változása a generált blokkokat érinti.
+JOVAHAGYAS_BEMENETEK = ('B02', 'B03', 'B04', 'B38', 'B39', 'B40', 'B45', 'B46', 'B47', 'B50', 'B53', 'B56', 'B67',
+                        'B70')
