@@ -19,7 +19,7 @@ Változatlan, indokkal (napló 8–11. pont): a Kivonat (a zárómondat a 9. LXX
 
 ## Mérve (az előnézeten, repón kívül)
 
-Az előnézet: `python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <repón kívül>`, az N-F239a ideiglenes kerülőútjával (a `adat/motivum_kapcsolatok.tsv` `DT-F239a` → `DT9991`; a `lapgen/megjelenites/md/kizart.py` arány-mondatának hibája kikapcsolva), futás után visszaállítva; előtte `python.exe`-lista, egyszerre egy futás. Eredmény: az 1/a 43/43 kerek; az olvasói kapu 8 BUKÁS, mind generált részben, a prózában 0; `ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 0 hiba.
+Az előnézet: `python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <repón kívül>`, az N-F239a ideiglenes kerülőútjával (a `adat/motivum_kapcsolatok.tsv` `DT-F239a` → egy végleges alakú, a main-en nem létező DT-számra (a `DT` előtag után `9991`); a `lapgen/megjelenites/md/kizart.py` arány-mondatának hibája kikapcsolva), futás után visszaállítva; előtte `python.exe`-lista, egyszerre egy futás. Eredmény: az 1/a 43/43 kerek; az olvasói kapu 8 BUKÁS, mind generált részben, a prózában 0; `ellenoriz.py` SÉRTÉS 0; `feladatok.py ellenoriz` 0 hiba.
 
 ## Talált olvasói hibák, nem a próza hatáskörében (az integrátornak jelentve)
 
