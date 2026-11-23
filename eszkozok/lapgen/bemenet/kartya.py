@@ -308,14 +308,16 @@ def kiemel(jelolt, celok, extra, igehely):
 
 
 def forrasjavitas(bek, strong, javitasok):
-    """A forrás javításai (B17): a torz átírás, a Biblia által igazolt héber betűsorrend, a rafe-maqqéf és a betűjavítás.
-    A magyar szövegben a javított átírás magyar alakja áll."""
+    """A forrás javításai (B17): a torz átírás, a Biblia által igazolt héber betűsorrend, a betűjavítás és a rafe-maqqéf.
+    A magyar szövegben a javított átírás magyar alakja áll. A betűjavítás a rafe-maqqéf feloldása előtt fut: a
+    javítótábla (`adat/bdb_forras_javitas.tsv`) a forrás rafés alakjára kulcsol (a pe/mem javítás a maqqéfos szón,
+    4Móz 16:30; szerkesztői döntés, 2026-11-23)."""
     atiras, sorrend, betu = javitasok
 
     def f(t):
         t = bdb_rovidites.atiras_javit(t, strong, javitasok=atiras, magyar=True)
-        t = bdb_rovidites.maqqef_javit(bdb_rovidites._sorrend_csere(t, strong, javitasok=sorrend))
-        return bdb_rovidites.betu_javit(t, strong, javitasok=betu)
+        t = bdb_rovidites.betu_javit(bdb_rovidites._sorrend_csere(t, strong, javitasok=sorrend), strong, javitasok=betu)
+        return bdb_rovidites.maqqef_javit(t)
     bek.futamonkent(f)
 
 

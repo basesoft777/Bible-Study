@@ -334,12 +334,9 @@ _OSSZESITES_RX = re.compile(r'\*Összesítés: ([^*\n]+)\.\*')
 _OSSZ_ELEM_RX = re.compile(r'([^=,]+)=(\d+)')
 _MEGALLAPITOTT_RX = re.compile(r'ezek (\d+) megállapított versében')
 # A független számlálás ismert, döntésre váró eltérései (motívum, számláló) → a nyitott tétel: a sor „ELTÉR (ismert)”
-# jelzést kap, és nem buktat. Csak a megnevezett számra és értékpárra szól (más eltérés BUKÁS marad).
-ISMERT_ELTERES = {
-    ('ISTENTISZT-001', 'LXX: egyező versek (5.)', 12, 13):
-        'N196: az 1Kir 18:24 Septuaginta-versében a motívum szava áll, a több lemmás társítás („βοάω · ἐπικαλέω”) a '
-        'saját-pár szűrésen egészben esik ki; a felhasználó dönt',
-}
+# jelzést kap, és nem buktat. Csak a megnevezett számra és értékpárra szól (más eltérés BUKÁS marad). Üres: az
+# egyetlen tétele (N196) szerkesztői döntéssel (2026-11-23, részenként) megszűnt.
+ISMERT_ELTERES = {}
 TSK_KUSZOB = 15   # egyezik a `konfig.TSK_SZAVAZAT_KUSZOB` értékével (a régi Votes ≥ 15)
 _KH_RX = re.compile(r'A motívum (\d+) helyéből (\d+) helyről mutat utalás[^.]*, összesen (\d+)')
 OSZ_KONYVEK_SZAMA = 39

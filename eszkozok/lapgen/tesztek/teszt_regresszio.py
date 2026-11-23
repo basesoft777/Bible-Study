@@ -249,14 +249,13 @@ class Szamlalok(unittest.TestCase):
                       {nev for nev, lapon, _s in R.szamlalok('ISTENTISZT-001', self.konyvtar, self.gyoker)
                        if lapon is not None})
 
-    def test_az_ismert_elteres_csak_a_megnevezett_ertekparra_szol(self):
-        """N238: az LXX-összesítés független számlálója; az ismert eltérés (N196) kivétele csak a rögzített
-        értékpárra szól: más számnál, vagy más motívumnál BUKÁS."""
+    def test_nincs_ismert_elteres(self):
+        """N238: az LXX-összesítés független számlálója; az egyetlen ismert eltérés (N196) szerkesztői döntéssel
+        (2026-11-23, részenként) megszűnt: az eltérés minden motívumnál BUKÁS."""
+        self.assertEqual(R.ISMERT_ELTERES, {})
         nev = 'LXX: egyező versek (5.)'
-        self.assertFalse(R.szamlalo_jelentes([(nev, 12, 13)], 'ISTENTISZT-001')[1])
-        self.assertTrue(R.szamlalo_jelentes([(nev, 11, 13)], 'ISTENTISZT-001')[1])
-        self.assertTrue(R.szamlalo_jelentes([(nev, 12, 13)], 'HAMART-001')[1])
-        self.assertTrue(R.szamlalo_jelentes([(nev, 12, 13)])[1])
+        self.assertTrue(R.szamlalo_jelentes([(nev, 12, 13)], 'ISTENTISZT-001')[1])
+        self.assertFalse(R.szamlalo_jelentes([(nev, 13, 13)], 'ISTENTISZT-001')[1])
 
     def test_az_elrontott_szamot_kimutatja(self):
         ut = os.path.join(self.konyvtar, 'ISTENTISZT-001_TUDOMANYOS.md')

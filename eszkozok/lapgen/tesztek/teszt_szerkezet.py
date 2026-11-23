@@ -27,8 +27,9 @@ UTVONAL_KIVETEL = {
     'hash_or_kapu.py': {'adat/lapgen_'},
 }
 # GK-05 kivétele: a regresszió `ISMERT_ELTERES` listája (N238) a független számláló ismert, döntésre váró eltérését
-# motívumhoz és értékpárhoz köti (N196); a generátor kódjában motívumazonosító továbbra sem állhat.
-GK05_KIVETEL = {'regresszio.py': {'ISTENTISZT-001'}}
+# motívumhoz és értékpárhoz köti; ma üres (az N196 döntve, 2026-11-23), így kivétel sincs. A generátor kódjában
+# motívumazonosító nem állhat.
+GK05_KIVETEL = {}
 # Fájlt nyitó hívások: olvasás csak a bemeneti rétegben és a regresszióban, írás a belépési pontban.
 FAJLNYITO = {'open', 'glob', 'iglob', 'listdir', 'walk', 'scandir', 'read_text', 'read_bytes', 'isfile', 'exists'}
 FAJLNYITAS_ENGEDETT = {'bemenet/jegyzek.py', 'regresszio.py', 'hash_or_kapu.py', 'fo.py'}
