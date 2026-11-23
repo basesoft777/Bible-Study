@@ -27,7 +27,7 @@
 
 ## Az előnézet előállítása
 
-`python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <repón kívüli könyvtár>` (előtte `python.exe`-lista, egyszerre egy nehéz futás). Két akadály miatt ma csak ideiglenes, nem commitolt kerülőúttal fut (l. a Generátor-hiányok 1. és 2. pontját): a `adat/motivum_kapcsolatok.tsv`-ben a `DT-F239a` helyőrző ideiglenesen `DT9991`, és az `eszkozok/lapgen/megjelenites/md/kizart.py` 10-szeresnél kisebb arány-mondatának hibája kikapcsolva; futás után mindkettő visszaáll.
+`python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <repón kívüli könyvtár>` (előtte `python.exe`-lista, egyszerre egy nehéz futás). Két akadály miatt ma csak ideiglenes, nem commitolt kerülőúttal fut (l. a Generátor-hiányok 1. és 2. pontját): a `adat/motivum_kapcsolatok.tsv`-ben a `DT-F239a` helyőrző ideiglenesen egy végleges alakú, a main-en nem létező DT-számra (a `DT` előtag után `9991`), és az `eszkozok/lapgen/megjelenites/md/kizart.py` 10-szeresnél kisebb arány-mondatának hibája kikapcsolva; futás után mindkettő visszaáll.
 
 ## Generátor-hiányok (nem az U3 hatásköre; az integrátornál)
 

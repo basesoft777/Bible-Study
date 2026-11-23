@@ -13,11 +13,12 @@ Az U4b végén a kontextus kb. 334 ezer token volt (plafon: 150–200 ezer, CLAU
 - Számozás-átvezetés (görög/latin → Károli) közös függvényben, teszttel (F239.29); a két hibás tanúsor javítva (F239.30: Zsolt 118:24, Zsolt 29:7).
 - Az index két hivatkozása: a forrás helyes, a generált blokkot a main-en az Action írja.
 - Mérőtábla +5 sor; a brief `ir` és `kovetkezo` mezője frissítve (F239.31).
-- **Nyitott, az integrátornál:** a SZIVARGAS-tábla `hol` értéke az U3b-ben megfogott hibához (szabályhiány; kérdés elküldve).
+- A SZIVARGAS-tábla `hol` értéke az U3b-ben megfogott hibához: az integrátor döntése (`naplok/F239_dontesek.md` D1) szerint új `visszhang` érték, S022 sor; szabályhely: SEMA 2.72, MUNKAMENET C-sz.
+- A teljes push előtti kapu az E2–E39-ben három, a CI-ben eddig rejtett hibát mutatott (E5, E26, E27); javítva (F239.32).
 
 ## Az U5-csomag (a következő session feladata; az integrátor döntése szerint)
 
-1. **A lapnézet** az új generátor előnézetéből, pontosan az `F239_atado_U4.md` 1. pontja szerint: `python.exe`-lista (egyszerre egy lapgen-futás, más session folyamatát soha nem állítod le); a két ideiglenes kerülőút (`adat/motivum_kapcsolatok.tsv` `DT-F239a` → `DT9991`; `eszkozok/lapgen/megjelenites/md/kizart.py` arány-ág), `python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <repón kívül>`, utána a két fájl visszaállítva (`git status` tiszta); a lapnézet a `eszkozok/lektor_felulet/lapnezet.py` `epit()`-jével, a TUDOMANYOS-út az előnézetre irányítva. **Fájlként a repón kívül; nem publikálod**, a megjelenítést az integrátor végzi.
+1. **A lapnézet** az új generátor előnézetéből, pontosan az `F239_atado_U4.md` 1. pontja szerint: `python.exe`-lista (egyszerre egy lapgen-futás, más session folyamatát soha nem állítod le); a két ideiglenes kerülőút (`adat/motivum_kapcsolatok.tsv` `DT-F239a` → egy végleges alakú, a main-en nem létező DT-számra (a `DT` előtag után `9991`); `eszkozok/lapgen/megjelenites/md/kizart.py` arány-ág), `python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <repón kívül>`, utána a két fájl visszaállítva (`git status` tiszta); a lapnézet a `eszkozok/lektor_felulet/lapnezet.py` `epit()`-jével, a TUDOMANYOS-út az előnézetre irányítva. **Fájlként a repón kívül; nem publikálod**, a megjelenítést az integrátor végzi.
 2. **A lektori lista három csoportban:** a `naplok/KIADAS_TEREMT-001_lektor.md` 142 tétele (lektor 23 + 3/b 119), tételenként egy olvasói mondattal:
    - (a) **a szerkesztő dönt:** a próza tartalma, a lektor kérdései, a 3/b tartalmi tételei;
    - (b) **javítandó, gazdával (U6), csak tájékoztatás:** az F2 hamis tételei (K2, K9, K19, K20, K36, K47, K69, K70, K99, `naplok/ALLITAS_TEREMT-001_itelet.md`), az F1 79. sora, és a független ellenőr prózai ELTÉRÉS-ei (az 1Móz 7:11 „csak itt és a 8:2-ben”, a „95”);

@@ -6,7 +6,7 @@
 
 1. **A lapnézet** az új generátor előnézetéből, nem a repó `lexikon/` lapjából (az befagyasztott régi lap). Előállítása:
    - `python.exe`-lista (egyszerre egy lapgen-futás);
-   - ideiglenes, nem commitolt kerülőút: az `adat/motivum_kapcsolatok.tsv`-ben `DT-F239a` → `DT9991`, az `eszkozok/lapgen/megjelenites/md/kizart.py`-ban a `round(arany) <= KIZART_ATLAG_HATAR` ág `ValueError` helyett kihagyja az arány-mondatot (N-F239a);
+   - ideiglenes, nem commitolt kerülőút: az `adat/motivum_kapcsolatok.tsv`-ben `DT-F239a` → egy végleges alakú, a main-en nem létező DT-számra (a `DT` előtag után `9991`), az `eszkozok/lapgen/megjelenites/md/kizart.py`-ban a `round(arany) <= KIZART_ATLAG_HATAR` ág `ValueError` helyett kihagyja az arány-mondatot (N-F239a);
    - `python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <repón kívül>` (kb. 35 mp), utána a két fájl visszaállítva (`git status` tiszta);
    - lapnézet: a `eszkozok/lektor_felulet/lapnezet.py` `epit()`-je, a `_fajl` olvasást a `lexikon/<ID>_TUDOMANYOS.md` útvonalon az előnézetre irányítva (egy kis burkoló szkripttel; a kimenet a repón kívül, a brief szerint privát artifact, világos téma).
 2. **A szerkesztő elé kerülő lista** (minden tétel nyitott): `naplok/KIADAS_TEREMT-001_lektor.md` — a lektor 23 kérdése (44 tételből) és a 3/b 119 olvasói kérdése, a blokkjelekkel (a jelek a fenti lapnézet jelei: `<szakasz>·<n>`). A tételek eredete: `naplok/F239_U4_lektor_munkafajl.md`.

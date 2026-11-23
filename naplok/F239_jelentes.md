@@ -44,7 +44,11 @@ Modell-ellenőrzés: a session `claude-opus-5-5`, a brief `modell` mezője `opus
 
 **A független ellenőr többi ELTÉRÉS-e:** az 1Móz 7:11 „csak itt és a 8:2-ben” (`elofordulasok.tsv` kapcsolodás, F2 K99) és a Kivonat „95” száma (F2 K9/K70) prózai → U6. Az U1b sorrendje (dokumentált, integrátori döntés), az előnézet kerülőútja és az olvasói kapu generátor-bukásai (N-F239a, N-F239b, 218c) már gazdával állnak. Az `F239.11` kétszeres tételszáma történeti; nem írható át.
 
-**Az integrátorra vár:** a `naplok/SZIVARGAS_TEREMT-001.tsv`-ben az U3b-ben megfogott pontossági hiba (2Móz 15:5 βυθός → πόντος) sora — a SEMA 2.72 `hol` értékkészletében nincs helye (szabályhiány; javaslat: új `visszhang` érték és S022 sor).
+**Az integrátor döntése (D1, `naplok/F239_dontesek.md`):** az U3b-ben megfogott pontossági hiba (2Móz 15:5 βυθός → πόντος) az S022 sor, új `hol` értékkel (`visszhang`); szabályhely: SEMA 2.72 és MUNKAMENET C-sz (F239.33). Gépi kapu az értékkészletet nem ellenőrzi.
+
+**A teljes push előtti kapu** (`push_elott.py`) az E2–E39-ben három, a CI-ben eddig rejtett hibát mutatott (a CI ezt a lépést az F217-bukás miatt kihagyta): E5 — a régi `motivumok/TEREMT-001.md` címsorai jelölés nélkül törlődtek (a régi forrás az `archivum/TEREMT-001/TEREMT-001_forrasreteg_regi.md`-ben áll; a jelölés az F239.32 commit-üzenetében); E26 — a kerülőút végleges alakú DT-száma három átadóban (leírásra cserélve); E27 — a `NYITOTT_FELADATOK.md` lezárt N58-címe a törölt tanulmányra mutatott (az archív útra cserélve). F239.32.
+
+**A brief határán túl javítva:** `NYITOTT_FELADATOK.md` 796. sor (E27-mutató); `adat/SEMA.md` 2.72 és `MUNKAMENET.md` C-sz (a D1 szabályhelye, az integrátor kérésére).
 
 **Nem javítottam:** a `naplok/ALLITAS_TEREMT-001.md` (az U4 F1-jelentése) nem futott újra, mert a K-tételek számozása az ítéletfájl (`_itelet.md`) hivatkozása; a javított eszköz mai képe fent.
 
