@@ -1976,7 +1976,7 @@ Az ELTÉRÉS-ek súlyosság szerint:
 
 *Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes; --szamlalok (mindkét lap); futtat.py bemenet, kizart, kartya, elofordulas, dontesi_ut, vaz, kapuk, regresszio (célzott) | forras=a munkafa az egyes commitok előtt | ts=2026-11-22`.*
 
-## F218.12 — S9c, 2. rész: az N235, a teljes tesztkör, a nézési csomag és a TEREMT-próba (`claude-opus-5-5`, 2026-11-23, a 19. session)
+## F218.12 — S9c, 2. rész: az N235, a teljes tesztkör és a nézési csomag (`claude-opus-5-5`, 2026-11-23, a 19. session)
 
 **Modell-ellenőrzés.** A session `claude-opus-5-5`, a brief `opus`-t kér: egyezik. Ág: `claude/f218a-s9c-d1312a` (a 18. session átadása után, ugyanott).
 
@@ -1986,7 +1986,7 @@ Az ELTÉRÉS-ek súlyosság szerint:
 | N235, második fele (DT-F218f) | kész (`71281a60`) | A GK-24 kézi prózai osztályai közé a csupasz Strong-szám. Az előkészített patch a két lapon 96 találatot adott (lent); az integrátor döntése (c): a szótári címke tartós kivétel, az A, B, D csoport 60 név szerinti ismert eltérés, csak fogyhat (`teszt_kapuk.CsupaszStrong`), a javítás N-F218i. A lap nem változik. |
 | A teljes tesztkör örökölt bukásai | kész (`b1917172`) | 391 teszt, 4 bukás, mind a 18. session commitjaiból (a 9. szakasz HN-03-sora; GK-01: a `b36_`/`b38_` nevű lefedettségi kapuk; GK-01 és GK-05: az N238 számlálójának útvonalai és az N196 ismert eltérése a regresszióban). Technikai javítás (DT920). |
 | A nézési csomag (`naplok/F218_S9_nezes.md`) | kész | 2. pont: 150 diff-sor / 147 engedélysor, a Kolofon 55 (28 új / 16 elmaradó / 10 változó; valódi új forrás 13), a 12. szakasz 28, új sorok: HN-03 6, N235 2. 3.A: +4 sablonsor (42–45, HN-03). 3.B: +1 név (Thayer-szótár forrásjavításai), az új `kereses_megszoritas` típus. 3.D: mind a 16 HN-03 hely előtte/utána (10 változik, 6 sor végi jegyzéksor nem). 4.: az N196 és az N237 döntendő tételként, a DT-F218f tájékoztatásként. |
-| A TEREMT-próba bemenete | kész: akadálylista (DT-F218g (a)) | Egyik TEREMT sem fut az új generátoron (lent). Az integrátor döntése: a #809 mércéjében „a TEREMT-próba bemenetének akadálylistája dokumentálva”; az akadályok N-F218j-be, a TEREMT-próba briefjébe, az F218.13 után. |
+| A TEREMT-próba | kikerült a #809 kész-feltételéből (DT-F218g (c)) | A próba egyetlen lap, a TEREMT-001, nulláról, saját briefben, az F218.13 után (a szerkesztő 2026-11-12-i döntése); a TEREMT-001 „nincs migrálva” állapota a várt állapot. |
 
 **A GK-24 csupasz Strong-szám leltára** (a két mintalap, a kapu kicserélésével mért teljes lista; a jóváhagyott lapokon mind betűre így áll):
 
@@ -1997,10 +1997,6 @@ Az ELTÉRÉS-ek súlyosság szerint:
 | C. „Miért fontos” címsorai | HAMART 4, ISTENTISZT 3 sor | 7 | `motivumok/*.md` (rés) | tartós kivétel: szótári címke |
 | D. Kapcsolat-indoklás | ISTENTISZT 7. szakasz | 1 | `adat/kapcsolatok.tsv`: „azonos H7121+H8034 pár” | ismert eltérés (2 tétel), N-F218i |
 
-**A TEREMT-próba bemenete** (`general.py --cel lexikon2 --id <ID> --kimenet <repón kívül>`; a további akadályokat scratch-futás tárta fel, a hibás elem átugrásával):
-- TEREMT-001: `B47: a(z) kivonat rés forrása (tematikus_lezart/Tehom_tematikus.md) nem a motívum kézi forrása` — a motívum nincs migrálva (a kézi forrás 23 soros archív kivonat, rés-jelölő nélkül; a rések a régi tanulmányra mutatnak); a #123 migrációja kell.
-- TEREMT-002 (migrált): (1) a `tanitoi` rés a tanítói fájlból jönne (`motivumok/naplok/TEREMT-002_tanitoi_kereses.md`; a tanitoi kivezetés alatt, DT643); (2) a Kivonatban belső munkajelölés: `【NAPLO: F12.6 …】`; (3) a `jeloltek.tsv` 66 TEREMT-002 sorából 19 a régi „scan H8414” / „kollokacio …” forrás-alakot használja, a generátor a „scan:” alakot ismeri (`B04: 1Sám 12:21: a szókeresés korpusza nem állapítható meg`). A 3. után a felmérés nem ment tovább.
-- Mindhárom javítás a 218a hatókörén túli adat vagy forrás. DT-F218g (a): az akadálylista ez a szakasz, az N-F218j viszi tovább (a TEREMT-próba briefje, az F218.13 után); az ágon kézi forrás és jelöltadat nem változik.
-- A felmérő scratch-futás módja: a B47-ben a nem a kézi forrásra mutató rés kimarad, a B47 szövegéből a `【NAPLO: …】` jelölő kiszűrődik; a lap így sem kiadható, a futás csak a következő akadályt keresi.
+**TEREMT-002:** befagyasztott lap, az akadálylista a jegyzetmappában, a befagyasztott lapok újragondolásáig marad.
 
-*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes (PARDES_DATUM=2026-11-13); futtat.py (teljes: 391 teszt; célzott: kapuk, szerkezet, s9_hatastortenet, bemenet: 71 teszt, 0 bukás); general.py --cel lexikon2 (HAMART-001, ISTENTISZT-001, TEREMT-001, TEREMT-002) | forras=a munkafa az egyes commitok előtt | ts=2026-11-23`.*
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes (PARDES_DATUM=2026-11-13); futtat.py (teljes: 391 teszt; célzott: kapuk, szerkezet, s9_hatastortenet, bemenet: 71 teszt, 0 bukás); general.py --cel lexikon2 (HAMART-001, ISTENTISZT-001) | forras=a munkafa az egyes commitok előtt | ts=2026-11-23`.*
