@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-23",
-   "commit": "c9453137"
+   "commit": "eeb485ee"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5929,6 +5929,16 @@
      "🟢"
     ],
     "sor": 897
+   },
+   {
+    "id": "DT946",
+    "feladat": "folyamat (az egyverses lánc a határ-lépés kérdése; 2026-11-23)",
+    "kerdes": "A TEREMT-001 visszhang-kinyerése (U1b) után derült ki, hogy a 6-os sablon „A 4.11 visszhang-blokk szabályai” 0. pontja szerint a lánc egyetlen versből (1Móz 1:2) áll, mert a motívumnak egy Pesat-sora van, és a negatív kritérium nem nevezi meg a láncot; a 9. Hatástörténet ószövetségi táblázata így 1/1 lett volna. A kérdés a határ-lépésben (U2) nem merült fel, mert a szabály nem mondta, hogy ilyenkor a láncmegnevezés a szerkesztőé.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 898
    }
   ],
   "javasolt": [],
