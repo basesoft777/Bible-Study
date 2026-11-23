@@ -7,7 +7,7 @@
 2. **TEREMT-001 (tehóm) cikk:** nulláról, az új lapgenerátorral (F218a, #809); a te szavad: „a TEREMT-001 legyen az első”. Lépéshatárokkal (adat → határ és érvvázlat → próza egy menetben → javítókör); most az U5, a nézésed. Kiadni csak az átállás (218c) után lehet.
 - **Következő szálak**, ebben a sorrendben (2026-11-23):
   - az átállás (218c), a #810 merge-e után azonnal, az olvasó szálhelyén: a 3/b-ben talált generátorhibák javítása, a régi generátor archívumba, az ISTENTISZT-001 2. kiadása (előtte a 34 hiányzó fordítás), és ezzel válik kiadhatóvá a TEREMT-001; előtte az olvasóban a forrássor a névtáblából, egy névtábla;
-  - kis adatjavítás (#821): 88 hamis „hajnalcsillag” a görög LXX-párokban (N-F231a), nyelvtani szó (μου) az LXX-megfelelők közt, csonka fejléc és dupla könyvnév a fordított BDB-szövegben;
+  - kis adatjavítás (#821): 88 hamis „hajnalcsillag” a görög LXX-párokban (N247), nyelvtani szó (μου) az LXX-megfelelők közt, csonka fejléc és dupla könyvnév a fordított BDB-szövegben;
   - a rendszer karcsúsítása: rövid tanulságfájl a teljes memória helyett; a lezárt tételek és memóriafájlok archiválása (nem törlés); a CLAUDE.md rövidítése a te jóváhagyásoddal (a tervre „mehet”, a diff merge előtt eléd); mérce: a CLAUDE.md sorszáma és az induló kontextus előtte és utána;
   - a 15 perces push előtti ellenőrzés kettévágása: munka közben gyors próba, a teljes csak a végén.
 - **Utána** (2026-11-11): a motívumok megjelenítése az olvasóban, ez az „alap” olvasó.

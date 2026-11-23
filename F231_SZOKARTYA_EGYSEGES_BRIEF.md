@@ -120,7 +120,7 @@ A lexikonlap 4.2 „Mélységi szócikk” része (pl. `lexikon/HAMART-001_TUDOM
 ## 5. Közben talált adathibák (nem ebben a feladatban javítandók)
 
 Az ág új nyitott tételként veszi fel (`nyitott/uj/<ágnév>.md`), forrásból ellenőrizve:
-- **N-F231a — LXX-híd, H1242.** A kártya LXX-sora szerint „17 hivatkozás” mellett πρωΐ 8 · φωσφόρος 6 · 5 megfelelő nélkül, az összeg 19. A lexikális LXX-blokk szerint „φωσφόρος 88 · πρωΐ 47”. A lektor gyanúja szerint a φωσφόρος ilyen gyakorisággal nem áll az LXX-ben. Ellenőrzés a nyers `lxx_bridge`-ből és egy LXX-szövegből.
+- **N247 — LXX-híd, H1242.** A kártya LXX-sora szerint „17 hivatkozás” mellett πρωΐ 8 · φωσφόρος 6 · 5 megfelelő nélkül, az összeg 19. A lexikális LXX-blokk szerint „φωσφόρος 88 · πρωΐ 47”. A lektor gyanúja szerint a φωσφόρος ilyen gyakorisággal nem áll az LXX-ben. Ellenőrzés a nyers `lxx_bridge`-ből és egy LXX-szövegből.
 - **N-F231b — `strong_szotar`, G0264 kiejtés:** „hamartēsē”, a szótári alak hamartanō. Forrásból ellenőrizendő, és meg kell mérni, hány görög sort érint.
 - **N-F231c — a görög „Ebben a versben” blokk** (alaktani kulcs).
 
