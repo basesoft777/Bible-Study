@@ -173,7 +173,7 @@ A munkát a `/kovetkezo` parancs indítja. Egy session = egy feladat. Tartalmi d
 - pénzt vagy fizetős API-keretet költő lépés;
 - külső közlés (levél, Zenodo, domain, nyilvános közzététel);
 - adat végleges törlése;
-- a motívum határa, a negatív kritérium és új motívum-azonosító kiosztása (a határ-ellenőrzés kérdései is), hacsak a felhasználó egy konkrét kérdést kifejezetten át nem ad; az integrátor ilyenkor javaslatot, indokot és a negatív kritériumhoz mérést ad, és a session addig nem rögzíti (DT938);
+- a motívum határa, a negatív kritérium és új motívum-azonosító kiosztása (a határ-ellenőrzés kérdései és a bíráló határt, negatív kritériumot vagy új ID-t érintő pontjai is), hacsak a felhasználó egy konkrét kérdést kifejezetten át nem ad; az integrátor ilyenkor javaslatot, indokot és a negatív kritériumhoz mérést ad, és a session addig nem rögzíti (DT938);
 - ha az integrátor a kérdést kifejezetten a felhasználónak adja tovább.
 
 **Rövid design-menet (DT886).** Két fokozat, mindkettő az ágas előnézetben (8775–8779) jóváhagyott lappal; a 8765 a `main` tükre, oda meg nem nézett változás nem kerül.
