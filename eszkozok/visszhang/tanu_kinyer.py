@@ -103,6 +103,9 @@ def karoli_alak(ref):
                     for alt in (c[3].split(',') if len(c) > 3 else []):
                         if alt.strip():
                             _konyv.setdefault(alt.strip().lower(), c[1])
+        # a Chain Lineage Browser a zsoltárokat „ps”-szel jelöli (a normalizáló tábla STEP-alakja „psa”)
+        if 'psa' in _konyv:
+            _konyv.setdefault('ps', _konyv['psa'])
     m = re.match(r'^\s*([1-3]?[a-z]+)\s+(\d+)\.(\d+)\s*$', ref.lower())
     if not m:
         return None
