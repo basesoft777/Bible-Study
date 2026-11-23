@@ -2,7 +2,7 @@
 
 *A „Gépi rész” generált (`python eszkozok/motivum_hatar.py --motivum TEREMT-001`, determinisztikus; újrafuttatáskor felülíródik); a „Modelles rész” jelölői közötti tartalom megmarad. Minden pont **kérdés** a felhasználóhoz, nem javítás; adatot, motívumfájlt, lapot ez a fájl nem módosít.*
 
-*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=TEREMT-001 | ts=2026-11-08T15:08Z | bemenet=adat/elofordulasok.tsv@dfb0de82a1,adat/motivumok.tsv@e1d84722b1,adat/motivum_kapcsolatok.tsv@a5c617b93b,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
+*(proveniencia: scope=elofordulasok.tsv (beépített igehelyek, verssé bontva) + motivumok.tsv (azonossag_tipusa, negativ_kriterium) + motivum_kapcsolatok.tsv | forras=motivum_hatar.py (jelolt_eloszures.vizsgal; szerep_karoli.vers_strongok: TAHOT+TAGNT; lexikon_general.igehely_lista) | motivum=TEREMT-001 | ts=2026-11-16T14:07Z | bemenet=adat/elofordulasok.tsv@9bc79289d1,adat/motivumok.tsv@2f73593719,adat/motivum_kapcsolatok.tsv@11ca35ce25,adat/grammatikai_strongok.tsv@1cc1be084e,konkordancia/TAHOT_kivonat.tsv@a337d3c858,konkordancia/TAGNT_kivonat.tsv@d3ae4ed4a2,konkordancia/Karoli_1908.tsv@cba0ca127a)*
 
 **Motívum:** TEREMT-001 — Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma · hordozó: `lexikai` · fölérendelt fogalom: „vízi/kozmikus káosz-képzetek általában, a תְּהוֹם (tehóm) / ἄβυσσος (abüsszosz) lexémán kívül” · beépített sor: 42 (45 vers)
 
@@ -22,7 +22,7 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 | ANTROP-001 | 45 | 11 | 0 | 0% | 0% | nincs |
 | HAMART-001 | 45 | 56 | 0 | 0% | 0% | nincs |
 | HODIT-001 | 45 | 33 | 0 | 0% | 0% | nincs |
-| ISTENTISZT-001 | 45 | 22 | 0 | 0% | 0% | nincs |
+| ISTENTISZT-001 | 45 | 20 | 0 | 0% | 0% | nincs |
 | KIRALY-001 | 45 | 38 | 0 | 0% | 0% | nincs |
 | MENNY-001 | 45 | 11 | 0 | 0% | 0% | nincs |
 | TEREMT-002 | 45 | 3 | 1 | 2% | 33% | nincs |
@@ -34,5 +34,6 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 ## Modelles rész
 
 <!-- MODELLES-KEZDET -->
+
 nem futott (DT-F151a után)
 <!-- MODELLES-VEGE -->

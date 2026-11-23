@@ -54,3 +54,9 @@ F239	adhoc	scope=range:Zsolt 148:7 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.
 F239	adhoc	scope=range:Ámós 7:4 | forras=LXX_OS/amos.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-11-23T12:00Z | csatorna=cli	2026.11.23
 F239	adhoc	scope=range:Ézs 51:10 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-23T12:00Z | csatorna=cli	2026.11.23
 F239	adhoc	scope=range:Ézs 63:13 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=12 | ts=2026-11-23T12:00Z | csatorna=cli	2026.11.23
+F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H4599 | n=3 | ts=2026-11-23T12:23Z | csatorna=cli	2026.11.23
+F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H4688 | n=1 | ts=2026-11-23T12:24Z | csatorna=cli	2026.11.23
+F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H6683 | n=0 | ts=2026-11-23T12:24Z | csatorna=cli	2026.11.23
+F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H7585 | n=1 | ts=2026-11-23T12:24Z | csatorna=cli	2026.11.23
+F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H2822 | n=1 | ts=2026-11-23T12:24Z | csatorna=cli	2026.11.23
+F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H1293 | n=1 | ts=2026-11-23T12:24Z | csatorna=cli	2026.11.23

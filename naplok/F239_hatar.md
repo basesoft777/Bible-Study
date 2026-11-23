@@ -1,0 +1,59 @@
+# F239 — a TEREMT-001 (tehóm) határa: a négy ID-kérdés és a kizárások (U2)
+
+*2026-11-23 · író: `claude-opus-5-5` (kért: `opus`, egyezik) · ág: `claude/nervous-kare-9d2361` (PR #820) · bemenet: `naplok/F239_U1_TEREMT-001.md` és TSV-i, `adat/motivumok.tsv` 5. sor, a régi tanulmány Kivonata és 3. szakasza (célzottan). A határt a kizárások rajzolják (CLAUDE.md „Új motívum-ID kiosztása”). Az érvelés vitatott pontjai nem itt, hanem az érvnaplóban élnek (`naplok/ERVNAPLO_TEREMT-001.md`).*
+
+## 1. A négy kérdés
+
+**1. Az azonosság hordozója: `lexikai`.** Az Ószövetségben a תְּהוֹם (tehóm, H8415), az Újszövetségben az ἄβυσσος (abüsszosz, G0012). A gerinc-levezetés (U1 1. pont) mindkét nyelven egyetlen szót ad: a három genezisi vers metszete a grammatikai szűrő után H8415, a 35 H8415-vers metszete H8415, a 9 G0012-vers metszete G0012; az ÓSZ–ÚSZ kontroll (1Móz 1:2 + Jel 20:1) metszete üres. A két nyelvet nem közös Strong, hanem a Septuaginta köti össze: a 35 tehóm-versből 30-ban áll az LXX-ben ἄβυσσος (`naplok/F239_U1_TEREMT-001_lxx_hid.tsv`). A motívum tehát egy héber szó és annak görög öröksége; a görög szó az ÚSZ-ben hordozó, az ÓSZ-ben híd.
+
+**2. A negatív kritérium** (`adat/motivumok.tsv`, változatlanul): *az igehelynek a תְּהוֹם gyököt kell tartalmaznia (ÚSZ-ben az LXX-közvetített ἄβυσσος megfelelőjét) — tematikus vízkép önmagában (pl. יָם, „tenger”) nem elég.* Az U2 pontosítása (nem új kritérium, a meglévő alkalmazása a felmerült esetekre):
+- **ÓSZ: a héber vers dönt.** Bent van minden vers, amelynek héber szövegében a H8415 áll, egyes vagy többes számban, bármely előtaggal, akkor is, ha a Septuaginta ott nem ἄβυσσος-t hoz (2Móz 15:5 βυθός, 2Móz 15:8, 1Móz 49:25, Péld 8:27, 8:28), és akkor is, ha a Károli nem „mélység”-nek fordítja (Jób 41:32 „tenger”).
+- **ÚSZ: a görög vers dönt.** Bent van minden vers, amelynek görög szövegében a G0012 áll (9 vers). Az ÚSZ-nek nincs héber eredetije, ezért itt a görög szó az egyetlen tanú.
+- **A Septuaginta nem hordozó.** Ahol a görög ἄβυσσος-t hoz, de a héberben nem a tehóm áll, a hely kint van (K2).
+
+*A kritérium két változata (próba a határeseteken):* a **szűkebb** változat (csak az egyes számú, ősvízi tehóm) kivetné a többes számú helyeket (2Móz 15:5, 15:8; Zsolt 106:9; Péld 3:20 …) és az egész ÚSZ-t: a motívum a Genezis négy versére zsugorodna, pedig a többes szám ugyanaz a lexéma, és a Tengeri ének a Genezis tehómjával egy szóval beszél. A **tágabb** változat (minden ἄβυσσος, a Septuagintában is) behozná az Ézs 44:27, a Jób 41:31, a Jób 36:16 és a Zsolt 71:21 versét, ahol a héberben a צוּלָה, a מְצוֹלָה, a רַחַב áll, vagy semmi: ez a görög fordítás értelmezését tenné a héber szöveg fölé, és a magyar olvasó Károli-szövegében nem létező szót mutatna. A választott változat (héber szó az ÓSZ-ben, görög szó az ÚSZ-ben) az egyetlen, amely mindkét irányban ugyanazt a szót követi, és nem fordítás-tanúra épít.
+
+**3. A funkció-kérdés két motívumnál** (a közös versek és fejezetek: U1 3. és 9. pont; `naplok/F239_U1_TEREMT-001_felmeres_szomszedok.tsv`):
+- **TEREMT-002 (tohu va-vohu), közös vers: 1Móz 1:2.** A tohu va-vohu a *föld* teremtés előtti állapota, a tehóm a *vízmélység*, amelyen sötétség van, és amely fölött a Lélek lebeg. Egy versben két elem, két funkció: a motívumok különállnak. (A TEREMT-002 adatához nem nyúlunk.)
+- **ALVIL-001 (seól / hádész), közös vers: Ez 31:15; közös fejezet: Jón 2 (2:3 seól, 2:6 tehóm), Jel 20.** Az Ez 31:15-ben a seól a hely, ahová a cédrus leszáll, a tehóm a kozmikus víz, amelyet Isten gyászba borít és visszatart: más funkció. Az Újszövetség szélén a két szó funkciója közeledik: a Róm 10:7 ἄβυσσος-a a halottak helye („Krisztust a halálból felhozni”), a Luk 8:31 és a Jelenések ἄβυσσος-a börtön. A közeledés a görög szó jelentéstörténete (az LXX-ben a mélység a halál mélye is: Jón 2:6, Zsolt 71:20, 107:26), nem azonosság: a hordozó szó más, és az ÓSZ-ben a tehóm sehol nem a holtak lakóhelye. Döntés: két motívum; a közeledés a motívumközi kapcsolat tárgya, nem összevonásé (l. 5. pont, ⛔).
+- **HAMART-001 (1Móz 7, 8; Jel 11), MENNY-001 (Jób 38), ISTENTISZT-001 (Róm 10):** közös vers nincs; a fejezeti szomszédság más funkció (a romlás lánca, az ég, a hívás).
+
+**4. Részhalmaz-e?** Nem. A gépi rész (U1 9. pont, `naplok/F239_U1_TEREMT-001_hatar_gepi.md`): egyik motívummal sincs A ⊆ B vagy legalább 80%-os átfedés; a legnagyobb közös arány a TEREMT-002 oldaláról 33% (1 vers a 3-ból).
+
+**A fölérendelt fogalom:** „vízi/kozmikus káosz-képzetek általában, a tehóm / ἄβυσσος lexémán kívül”. Próba minden beépített soron: *csak ezen keresztül tartozik ide?* A 42 beépített sor (45 vers) mindegyikében a hordozó szó áll (a scan és az adat eltérése 0; a Jel 20:2 a Jel 20:1–3 tartomány-sor középső verse, a szó a 20:1-ben és a 20:3-ban áll): **egyik sor sem csak a fölérendelt fogalmon át tartozik ide.** A hígulás veszélye nem az adatban, hanem a prózában van: a Ráháb, a Leviatán, a tenger (jám, thalassza), Tiámat, a seól csak egy tehóm-vers kontextusaként jelenhet meg a lapon, saját előfordulásként nem.
+
+## 2. A kizárások (a határ rajza)
+
+| | osztály | versek | mit mutat | jelölt-sor |
+|---|---|---|---|---|
+| **K1** | **a Károli mélység-szava más szót fordít** | 95 vers (a Károli „mély, mélység, mélységes, örvény, fenékig” szava; a teljesség-mérés Károli-szó hálója) | a magyar „mélység” nem jele a tehómnak: a motívum 44 versének Károli-szövegében a „mélység” alak 28-szor áll (a többi helyen „tenger”, „víz”, „örvény”, „fenékig” is), a Károli mélység-szavai viszont 95 további versben más szót fordít (עָמֹק, מְצוֹלָה, בּוֹר, מַעֲמַקִּים, תַּרְדֵּמָה, βάθος, βυθός, πέλαγος …) vagy körülírás | 26 összesítő sor, `elutasítva` (az Ézs 44:27 a K2-ben) |
+| **K2** | **a Septuaginta többlete** | 4 vers: Ézs 44:27 (צוּלָה), Jób 41:31 (מְצוֹלָה), Jób 36:16 (רַחַב), Zsolt 71:21 (az LXX a 71:20 mondatát ismétli) | a görög ἄβυσσος tágabb a tehómnál: a tenger mélyének más héber szavait is fordítja; ezt az ÚSZ örökli | Ézs 44:27, Jób 36:16, Zsolt 71:21 `elutasítva` (a két utóbbi új sor); a Jób 41:31 a מְצוֹלָה-sorban, az indoklás kimondja |
+| **K3** | **szótári adathiba** | Jób 42:8 | a BDB a tehóm szócikkében a Zsolt 42:8-at idézi; a feldolgozás a könyv nevét elhagyta (a szótár-tábla sora már `ketes` jelzésű) | `elutasítva` |
+| **K4** | **tematikus párhuzam, a szó nélkül** | 2Pét 2:4 (ταρταρόω), Jel 21:1 (θάλασσα) | a börtön- és a tenger-kép a szó nélkül nem a motívum | a régi két `elutasítva` sor (a 2Pét 2:4 indoklásában a vegyes írású „ábüσσος” javítva) |
+| **K5** | **a Septuaginta deuterokanonikus helyei** | 14 G0012-token a görög Dániel-többletben és az Ódákban | Károli-vers nincs hozzájuk; a lap a Károli-kánon verseit veszi | nincs sor (nincs Károli-kulcs) |
+| **K6** | **vízi és alvilági kép a szó nélkül** (osztály, nem lekérdezés-találat) | pl. Ráháb, Leviatán, „a tenger”, a seól, a „föld mélye” | a fölérendelt fogalom felé hígítana | nincs sor; a próza szabálya (1. pont vége) |
+
+*Proveniencia:* K1, K3: `scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z`; `scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z`. K2: `scope=LXX_OS-teljes (G0012) × TAHOT_kivonat.tsv (H8415) + TAGNT_kivonat.tsv (G0012) | forras=konkordancia/LXX_OS/*.tsv | ts=2026-11-23`; a Jób 36:16 és a Zsolt 71:20–21 héber és Károli szövege: `scope=range:Jób 36:16+Zsolt 71:20+Zsolt 71:21+Ézs 44:27+Jób 41:31 | forras=TAHOT_kivonat.tsv+Karoli_1908.tsv | ts=2026-11-23` (U2 segédkiírás). A K1 blokkjainak lexéma-hozzárendelését (gépi glossza-illesztés) versenként átnéztem; az egyverses blokkok közül ötnél (Jób 12:22, Ján 4:11, Mt 18:6, Zsolt 7:16, Zsolt 69:16) a Károli szava más szót fordít, mint amit a gép hozzárendelt: az indoklás a ténylegeset mondja.
+
+**A határon belül maradó nehéz esetek:**
+- **B1 — a tehóm-vers, ahol az LXX nem ἄβυσσος-t hoz** (5 vers): bent; a héber dönt.
+- **B2 — Jób 41:32** (Károli: „a tenger megőszült”): bent; a régi tanulmány számai (35-ször, 34 vers) e vers felvétele előtt íródtak (N58). Az N58 a régi tanulmány archiválásával zárul (U3): az új próza a mai adatból számol (35 vers, 36 előfordulás), a régi szöveget nem javítjuk.
+- **B3 — Jel 9:1–2, Jel 20:1–3** tartomány-sor: bent, egységként; a próza a szó verseit (9:1, 9:2; 20:1, 20:3) nevezi meg.
+- **B4 — Zsolt 71:20, Jón 2:6, Zsolt 107:26, Ez 26:19** (a halál mélye): bent; a funkció a seól felé hajlik, ez az érvnapló kérdése (az 1. pont 3. kérdése szerint).
+- **B5 — Róm 10:7:** bent; Pál az 5Móz 30:13 „tengeren túl”-ját ἄβυσσος-ra cseréli: a szó áll, a hely az ÚSZ lexikai előfordulása.
+
+## 3. A szemantikai mező-hipotézis (a hét lépés 2. lépése; az egyetlen generatív lépés)
+
+**Mező-szavak** (a kollokációs mérésből, U1 4. pont és az U2 hat célzott párja; `naplok/F239_lekerdezesek.tsv` B3-sorai): מַיִם „víz” 14 vers · רַב „sok, nagy” 8 (a „nagy mélység”, tehóm rabbá: 1Móz 7:11, Ézs 51:10, Ámós 7:4, Zsolt 36:7, 78:15 …) · שָׁמַיִם „ég” 7 · יָם „tenger” 7 · אֶרֶץ „föld” 6 · מַעְיָן „forrás” 3 (1Móz 7:11, 8:2, Péld 8:24) · מְצוֹלָה „a tenger mélye” 1 (2Móz 15:5) · שְׁאוֹל „seól” 1 (Ez 31:15) · חֹשֶׁךְ „sötétség” 1 (1Móz 1:2) · בְּרָכָה „áldás” 1 (1Móz 49:25); צוּלָה 0.
+*Proveniencia:* `scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H4599 | n=3 | ts=2026-11-23T12:23Z`; `… strong=H8415+H4688 | n=1 | ts=2026-11-23T12:24Z`; `… strong=H8415+H6683 | n=0 | ts=2026-11-23T12:24Z`; `… strong=H8415+H7585 | n=1 | ts=2026-11-23T12:24Z`; `… strong=H8415+H2822 | n=1 | ts=2026-11-23T12:24Z`; `… strong=H8415+H1293 | n=1 | ts=2026-11-23T12:24Z`.
+
+**A hipotézis** (értelmezés, nem adat; a próza előtt az érvnapló bizonyítékot rendel hozzá): a tehóm világkép-szó, az ég–föld–mélység hármasának alsó tagja, a „lent” vize. Funkciói hat csoportba esnek: (a) **a teremtés előtti állapot** és a formálás anyaga (1Móz 1:2; Péld 8:24, 27, 28; Zsolt 104:6); (b) **a visszatartott és elengedett víz**, ítélet és szabadítás eszköze (1Móz 7:11, 8:2; 2Móz 15:5, 8; Zsolt 106:9; Ézs 51:10, 63:13; Zsolt 77:17; Hab 3:10; Ámós 7:4); (c) **az áldás forrása** (1Móz 49:25; 5Móz 8:7, 33:13; Zsolt 78:15; Ez 31:4); (d) **Isten tudásának és uralmának mértéke** (Jób 28:14, 38:16, 38:30, 41:32; Zsolt 33:7, 36:7, 135:6, 148:7; Péld 3:20); (e) **a halál mélye** (Jón 2:6; Zsolt 42:8, 71:20, 107:26; Ez 26:19, 31:15); (f) az ÚSZ-ben **a bezárt mélység**, a démonok és a fenevad helye (Luk 8:31; Jel 9:1–11, 11:7, 17:8, 20:1–3), és a halottak helye (Róm 10:7). Ellenhipotézis, amelyet az érvnapló mér: a tehóm a szövegben személy vagy Istennel szembenálló erő (a Tiámat-olvasat).
+
+## 4. A jelöltdöntések (`adat/jeloltek.tsv`)
+
+A 28 `nyitva` sor (U1) mind `elutasítva`, az 1–2. pont szerint: 26 a K1 (Károli-szó), 1 a K2 (Ézs 44:27; a Jób 41:31 a K1 sorában, a K2 megjegyzésével), 1 a K3 (Jób 42:8). Új sor: 2 (Jób 36:16, Zsolt 71:21, K2). Javítás: 1 (2Pét 2:4 indoklásának „ábüσσος” szava → „ἄβυσσος”). A TEREMT-001 jelöltjei ezzel: beépítve 42, elutasítva 32, nyitva 0. Írta: `naplok/F239_U2_jelolt_dontes.py --ir` (soronkénti összevetés írás előtt és után; más sor bájtra azonos). Az elutasítási okok mintaszótára két TEREMT-001 sorral bővült (`adat/elutasitasi_okok.tsv` 101, 102; `naplok/F239_U2_okok.py`): mind a 32 elutasított sor besorolható (Károli-szó 26, Septuaginta-többlet 3, adathiba 1, tematikus párhuzam 2).
+
+## 5. Nyitva maradt, az integrátornál (⛔)
+
+- **Motívumközi kapcsolat** (ALVIL-001: Ez 31:15, a halál mélye; TEREMT-002: 1Móz 1:2): adatsor legyen-e (`jeloltek.tsv` motívumközi sor + `motivum_kapcsolatok.tsv`), vagy csak a próza említse. A kérdés és a válasz: `naplok/F239_naplo.md`.
+- **Nave-döntések** (11 jelölt): a javaslat és a döntés: `naplok/F239_naplo.md`, a sorok `adat/tematikus_temak.tsv`-ben a döntés után.
