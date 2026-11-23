@@ -33,6 +33,8 @@ móddal fel is futtatja az olvasó gyors tesztjeit (a lassú `teszt_szintek.py` 
 futása) és az olvasói mércét (`teszt_olvasoi_merce.py`) a helyi `pardes.db`-n; egy elbukott tesztfájl egyszer újrafut (ingadozás:
 jelzés, nem bukás); másodszor is piros: a kapu 1-et ad.
 A mérce eltérése figyelmeztetés (a diff a futás kimenetében). Ez a lépés CSAK helyi: a CI-ben nincs teszt-adatbázis (N-F232a).
+Bekötés-összevetés (OLVASO-GYORS, 2026-11-23): ugyanitt fut a `bekotesi_leltar.py --osszevet <alap>`: HIBA, ha az olvasóban az alapon (merge-base)
+látszó blokk, tábla vagy adatkészlet az ágon nem látszik, feltételhez kötött vagy másik fülön áll (`olvaso_szerver/merce/bekotes_kivetel.tsv`: kivétel, indokkal).
 
 A lépéslista (LEPESEK) az egyetlen forrás a helyi futáshoz; a `--ci-egyezes` (a CI-ben is fut) megbukik, ha a
 `.github/workflows/ellenorzes.yml` bukó lépései eltérnek tőle: egy Python-hívás hiányzik valamelyik oldalról, vagy egy
@@ -600,6 +602,11 @@ def main():
               '(`python eszkozok/teszt_futtat.py`) a draft PR előtt (F232).')
         _, olv_ki, _ = olvaso_tesztek_futtatasa(fut, 'F232 olvasó-tesztek (teszt_futtat.py --gyors)',
                                                   [PY, 'eszkozok/teszt_futtat.py', '--gyors'])
+        # A bekötés-összevetés: ami az alapon (merge-base) az olvasóban látszott (blokk, tábla, adatkészlet, nézetenként), az az ágon is látsszon.
+        # Bukik (HIBA), ha valami eltűnt, feltételhez kötődött vagy másik fülre került; kivétel csak a `merce/bekotes_kivetel.tsv`-ben, indokkal.
+        # Csak helyi (a CI-ben nincs adatbázis); a Windows-oldali Python futtatja, mert a git a munkafán itt olvasható.
+        fut.lepes('olvasó bekötés-összevetés (bekotesi_leltar.py --osszevet)',
+                  [PY, 'eszkozok/olvaso_szerver/bekotesi_leltar.py', '--osszevet', alap])
         for s in olv_ki.splitlines():
             if s.startswith('MÉRCE-ELTÉRÉS'):
                 print('FIGYELEM ' + s)
