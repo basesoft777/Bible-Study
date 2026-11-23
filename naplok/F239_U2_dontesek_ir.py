@@ -1,8 +1,7 @@
 """F239 U2 — két javaslat adatsorai (egyszeri szkript; DT-F239a, DT-F239b helyőrzővel).
 
-ÁLLAPOT: javaslat, a szerkesztő döntésére vár (naplok/F239_szerkeszto_kerdesek.md). Az F239.5 egyszer lefuttatta,
-az F239.6 a sorokat kivette. Csak a szerkesztő szava után futtatandó újra; előtte a FORRAS és a kapcsolat-indoklás
-„az integrátor” szava és a dátum a tényleges döntéshez igazítandó.
+ÁLLAPOT: az F239.5 lefuttatta (az integrátor visszavont döntésére), az F239.6 a sorokat kivette; a szerkesztő
+2026-11-23-án a javaslatot fogadta el, az F239.7 újrafuttatta (a forrás: szerkesztői döntés).
 
 DT-F239a: az ALVIL-001–TEREMT-001 motívumközi kapcsolat az Ez 31:15-ön (jelölt-sor `beépítve` + kapcsolat-sor).
 DT-F239b: a 11 Nave-jelölt döntése (4 kivalasztott, 7 kizart, tiltott nincs).
@@ -16,8 +15,8 @@ sys.stdout.reconfigure(encoding='utf-8')
 sys.stderr.reconfigure(encoding='utf-8')
 
 TS = '2026-11-23'
-FORRAS = ('F239 TEREMT-001 új cikk, U2 (a session javaslata, claude-opus-5-5; az integrátor döntése a felhasználó '
-          'felhatalmazásával, 2026-11-23: %s)')
+FORRAS = ('F239 TEREMT-001 új cikk, U2 (a session javaslata, claude-opus-5-5; szerkesztői döntés (a felhasználó, '
+          '2026-11-23): %s)')
 
 NAVE = [
     ('NAVE-3885', 'PIT', 'kivalasztott', 'funkció-téma: a feneketlen mélység, a Jelenések ἄβυσσος-a (Jel 9:11, 11:7, 17:8)'),
@@ -53,7 +52,7 @@ KAPCSOLAT = {
     'bizonyossag': 'magas', 'pardes_szint': 'Peshat',
     'indoklas': ('Mért: közös vers, mindkét motívum szava áll benne (a tehóm és a seól); mindkét vers előfordulás a '
                  'saját motívumában. A két szó funkciója más (a mélység és a holtak helye), ezért két motívum; a vers '
-                 'az érintkezésük helye. Döntés: DT-F239a (az integrátor, 2026-11-23).'),
+                 'az érintkezésük helye. Döntés: DT-F239a (szerkesztői döntés, a felhasználó, 2026-11-23).'),
     'dontes_ref': 'jeloltek.tsv;TEREMT-001;Ez 31:15;motivumkozi;ALVIL-001',
     'proveniencia': ('scope=TEREMT-001 Ez 31:15 ↔ ALVIL-001 Ez 31:15 | forras=elofordulasok.tsv+TAHOT_kivonat.tsv '
                      '(kollokáció H8415+H7585) | ts=2026-11-23T12:24Z'),

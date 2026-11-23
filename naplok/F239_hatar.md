@@ -38,7 +38,7 @@
 **A határon belül maradó nehéz esetek:**
 - **B1 — a tehóm-vers, ahol az LXX nem ἄβυσσος-t hoz** (5 vers): bent; a héber dönt.
 - **B2 — Jób 41:32** (Károli: „a tenger megőszült”): bent; a régi tanulmány számai (35-ször, 34 vers) e vers felvétele előtt íródtak (N58). Az N58 a régi tanulmány archiválásával zárul (U3): az új próza a mai adatból számol (35 vers, 36 előfordulás), a régi szöveget nem javítjuk.
-- **B3 — Jel 9:1–2, Jel 20:1–3** tartomány-sor: bent, egységként; a próza a szó verseit (9:1, 9:2; 20:1, 20:3) nevezi meg.
+- **B3 — Jel 9:1–2** tartomány-sor: bent, egységként (mindkét versében áll a szó). A Jel 20:1–3 sor a DT-F239d szerint kettévált: Jel 20:1 és Jel 20:3.
 - **B4 — Zsolt 71:20, Jón 2:6, Zsolt 107:26, Ez 26:19** (a halál mélye): bent; a funkció a seól felé hajlik, ez az érvnapló kérdése (az 1. pont 3. kérdése szerint).
 - **B5 — Róm 10:7:** bent; Pál az 5Móz 30:13 „tengeren túl”-ját ἄβυσσος-ra cseréli: a szó áll, a hely az ÚSZ lexikai előfordulása.
 
@@ -51,13 +51,16 @@
 
 ## 4. A jelöltdöntések (`adat/jeloltek.tsv`)
 
-A 28 `nyitva` sor (U1) mind `elutasítva`, az 1–2. pont szerint: 26 a K1 (Károli-szó), 1 a K2 (Ézs 44:27; a Jób 41:31 a K1 sorában, a K2 megjegyzésével), 1 a K3 (Jób 42:8). Új sor: 2 (Jób 36:16, Zsolt 71:21, K2). Javítás: 1 (2Pét 2:4 indoklásának „ábüσσος” szava → „ἄβυσσος”). A TEREMT-001 jelöltjei ezzel: beépítve 42, elutasítva 32, nyitva 0. Írta: `naplok/F239_U2_jelolt_dontes.py --ir` (soronkénti összevetés írás előtt és után; más sor bájtra azonos). Az elutasítási okok mintaszótára két TEREMT-001 sorral bővült (`adat/elutasitasi_okok.tsv` 101, 102; `naplok/F239_U2_okok.py`): mind a 32 elutasított sor besorolható (Károli-szó 26, Septuaginta-többlet 3, adathiba 1, tematikus párhuzam 2).
+A 28 `nyitva` sor (U1) mind `elutasítva`, az 1–2. pont szerint: 26 a K1 (Károli-szó), 1 a K2 (Ézs 44:27; a Jób 41:31 a K1 sorában, a K2 megjegyzésével), 1 a K3 (Jób 42:8). Új sor: 2 (Jób 36:16, Zsolt 71:21, K2). Javítás: 1 (2Pét 2:4 indoklásának „ábüσσος” szava → „ἄβυσσος”). A TEREMT-001 jelöltjei ezzel: beépítve 42, elutasítva 32, nyitva 0 (a DT-F239d után beépítve 43: a Jel 20:1–3 helyén Jel 20:1 és 20:3). Írta: `naplok/F239_U2_jelolt_dontes.py --ir` (soronkénti összevetés írás előtt és után; más sor bájtra azonos). Az elutasítási okok mintaszótára két TEREMT-001 sorral bővült (`adat/elutasitasi_okok.tsv` 101, 102; `naplok/F239_U2_okok.py`): mind a 32 elutasított sor besorolható (Károli-szó 26, Septuaginta-többlet 3, adathiba 1, tematikus párhuzam 2).
 
-## 5. A szerkesztő döntésére vár (⛔)
+## 5. A szerkesztő döntései (⛔, lezárva 2026-11-23)
 
-**Ez a határ egésze javaslat** (az integrátor, 2026-11-23: a motívumhatár, a negatív kritérium és az új motívum-ID a szerkesztő döntése). A határt meghúzó pontok, a javaslattal: `naplok/F239_szerkeszto_kerdesek.md`.
-- **Motívumközi kapcsolat** (javaslat: az ALVIL-001–TEREMT-001 kapcsolat az Ez 31:15-ön adatsor; a TEREMT-002-vel az 1Móz 1:2 csak a prózában). Felvevő szkript: `naplok/F239_U2_dontesek_ir.py`, a szerkesztő szava után.
-- **Nave-témák** (javaslat: 4 kiválasztott: PIT, EARTH, DEW, PSALMS; 7 kizárt; tiltott nincs). Ugyanaz a szkript.
+Forrás: szerkesztői döntés (a felhasználó, 2026-11-23), az integrátor közvetítésével; a kérdések: `naplok/F239_szerkeszto_kerdesek.md`. Minden pontban a javaslat.
+- **A határ és a kizárási szabály** (DT-F239c): ez a határ (1–4. pont) érvényes; a szabály új szövege: „az Újszövetségben a görög ἄβυσσος (abüsszosz) szót, a Septuaginta tehóm-fordításának szavát” (`adat/motivumok.tsv`).
+- **Seól** (DT-F239a): két motívum; az ALVIL-001–TEREMT-001 kapcsolat az Ez 31:15-ön adatsor (`közös_igehely`); a tohu va-vohu csak a prózában.
+- **Nave-témák** (DT-F239b): 4 kiválasztott (PIT, EARTH, DEW, PSALMS), 7 kizárt, tiltott nincs.
+- **Jel 20:1–3** (DT-F239d): két igehely, Jel 20:1 és Jel 20:3; a motívum 44 verse a szó előfordulásai.
+- **A határ-ellenőr többi pontja** (6. pont: K2, K3, K5): elfogadva.
 
 ## 6. Válasz a határ-ellenőrnek (`naplok/HATAR_TEREMT-001.md`, Modelles rész, K1–K5)
 

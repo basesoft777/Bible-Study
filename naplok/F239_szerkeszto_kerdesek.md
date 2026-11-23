@@ -2,7 +2,9 @@
 
 *2026-11-23 · összeállította: `claude-opus-5-5` (#239 U2) · ág: `claude/nervous-kare-9d2361` (PR #820). A motívumhatár, a kizárási szabály (negatív kritérium) és a kapcsolódó motívum a szerkesztő döntése. Minden pont: miről szól · igehelyek · dilemma · javaslat · indok · viszony a kizárási szabályhoz. A javaslatok részletes indoka: `naplok/F239_hatar.md`; a második vélemény: `naplok/HATAR_TEREMT-001.md` („Modelles rész”, K1–K5).*
 
-**A mai kizárási szabály** (`adat/motivumok.tsv`): *az igehelynek a תְּהוֹם (tehóm) szót kell tartalmaznia, az Újszövetségben az LXX-közvetített ἄβυσσος (abüsszosz) megfelelőjét; tematikus vízkép önmagában (pl. „tenger”) nem elég.*
+**Lezárva — a szerkesztő döntése (a felhasználó, 2026-11-23), az integrátor közvetítésével: minden pontban a javaslat.** A szavai: 1–5. és 9. pont, a határ: „A javaslat (Recommended)”; 2. pont, a szabály szövege: „Új szöveg (Recommended)”; 6. pont: „Két igehely (Recommended)”; 7. pont: „Adatsor is (Recommended)”; 8. pont: „A javaslat (Recommended)”; a határ-ellenőr többi pontja (K2, K3, K5): „Elfogadom (Recommended)”. Rögzítve: DT-F239a–d (`dontesek/uj/nervous-kare-9d2361.md`); alkalmazva: F239.7.
+
+**A kizárási szabály a döntés előtt** (`adat/motivumok.tsv`): *az igehelynek a תְּהוֹם (tehóm) szót kell tartalmaznia, az Újszövetségben az LXX-közvetített ἄβυσσος (abüsszosz) megfelelőjét; tematikus vízkép önmagában (pl. „tenger”) nem elég.*
 
 ---
 

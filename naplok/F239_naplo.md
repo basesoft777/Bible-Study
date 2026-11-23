@@ -15,7 +15,7 @@
 
 **⛔ Tartalmi kérdés 1 — motívumközi kapcsolat** (az integrátornak elküldve, 2026-11-23):
 A közös vers az ALVIL-001-gyel az Ez 31:15 (a cédrus a seólba száll, a tehóm gyászba borul), a TEREMT-002-vel az 1Móz 1:2. A funkció mindkét párnál más (két motívum marad). Javaslat: az ALVIL-001-gyel az Ez 31:15-ön adatsor (motívumközi jelölt `beépítve` + `motivum_kapcsolatok.tsv`, típus: azonos vers), mert a halál mélye (Jón 2:6, Zsolt 71:20, Róm 10:7) a két motívum valódi érintkezése; a TEREMT-002-vel csak a próza említse az 1Móz 1:2-t (a TEREMT-002 fagyasztott, az adatához nem nyúlunk).
-Állapot: **javaslat, a szerkesztő döntésére vár.** Az integrátor előbb (a) döntést küldött (F239.5-ben alkalmazva), majd visszavonta: a motívumhatár a szerkesztő döntése, nem az integrátoré (a szerkesztő, 2026-11-23: „ez nem az én döntésem kell legye?”). A sorok az F239.6-ban kivéve; a felvevő szkript (`naplok/F239_U2_dontesek_ir.py`) a szerkesztő szava után változatlanul újrafuttatható. Feltétel (az integrátortól): a befagyasztott ALVIL-001 lapfájljához nem nyúlunk (az E28 a befagyasztott lapot nem veti össze). A kérdés: `naplok/F239_szerkeszto_kerdesek.md`.
+Döntés: **(a), a javaslat** (DT-F239a, szerkesztői döntés, a felhasználó, 2026-11-23: „Adatsor is (Recommended)”; alkalmazva: F239.7). Előzmény: az integrátor előbb (a) döntést küldött (F239.5-ben alkalmazva), majd visszavonta: a motívumhatár a szerkesztő döntése, nem az integrátoré (a szerkesztő, 2026-11-23: „ez nem az én döntésem kell legye?”). A sorok az F239.6-ban kivéve; a felvevő szkript (`naplok/F239_U2_dontesek_ir.py`) a szerkesztő szava után változatlanul újrafuttatható. Feltétel (az integrátortól): a befagyasztott ALVIL-001 lapfájljához nem nyúlunk (az E28 a befagyasztott lapot nem veti össze). A kérdés: `naplok/F239_szerkeszto_kerdesek.md`.
 
 **⛔ Tartalmi kérdés 2 — Nave-döntések** (a mérce a funkció; az integrátornak elküldve, 2026-11-23). Javaslat (11 jelölt, `naplok/F239_U1_TEREMT-001_nave_jeloltek.tsv`):
 
@@ -31,14 +31,14 @@ A közös vers az ALVIL-001-gyel az Ez 31:15 (a cédrus a seólba száll, a teh�
 | NAVE-3189 MANASSEH, NAVE-1676 EPHRAIM | 1Móz 49:25, 5Móz 33:13 | kizart | az áldás címzettjét indexelik, nem a mélység funkcióját |
 
 `tiltott` sor nem kell: egyik jelölt sem a fölérendelt fogalom (vízi és kozmikus káosz általában) felé visz. A négy kiválasztott téma magyar neve az `adat/nave_tema_hu.tsv`-ben még nincs: az U3 technikai része (`glossza_lexikon_forditas.py nave`).
-Állapot: **javaslat, a szerkesztő döntésére vár** (mint az 1. kérdésnél: az integrátor (a) döntése visszavonva; a sorok az F239.6-ban kivéve, a felvevő szkript újrafuttatható). A kérdés: `naplok/F239_szerkeszto_kerdesek.md`.
+Döntés: **(a), a javaslat** (DT-F239b, szerkesztői döntés, a felhasználó, 2026-11-23: „A javaslat (Recommended)”; alkalmazva: F239.7). Előzmény (mint az 1. kérdésnél: az integrátor (a) döntése visszavonva; a sorok az F239.6-ban kivéve, a felvevő szkript újrafuttatható). A kérdés: `naplok/F239_szerkeszto_kerdesek.md`.
 
-**A határ státusza (az integrátor, 2026-11-23):** az F239.3 határa (`naplok/F239_hatar.md`) és a 28 jelölt döntése javaslat, a szerkesztő döntésére vár; nem vonjuk vissza, de végleges lépés nem épül rá. A határt meghúzó, nem triviális pontok a szerkesztői kérdéslistán.
+**A határ státusza:** a szerkesztő 2026-11-23-án a határt és a 28 jelölt döntését elfogadta („A javaslat (Recommended)”, DT-F239c), a határ-ellenőr többi pontjára adott válaszokkal együtt („Elfogadom (Recommended)”). Előzmény (az integrátor, 2026-11-23): az F239.3 határa (`naplok/F239_hatar.md`) és a 28 jelölt döntése javaslat, a szerkesztő döntésére vár; nem vonjuk vissza, de végleges lépés nem épül rá. A határt meghúzó, nem triviális pontok a szerkesztői kérdéslistán.
 
 **A határ-ellenőr** (`hatar-ellenor`, `claude-sonnet-5-5`, a mai adaton; az első indítás a session leállásakor megszakadt, újraindítva): 5 kérdés a `naplok/HATAR_TEREMT-001.md` Modelles részében; a válaszok a `naplok/F239_hatar.md` 6. pontjában (K2 elfogadva: U3-feladat; K3 javítva; K5 elvetve indokkal; K1 és K4 az alábbi két kérdés).
 
 **⛔ Tartalmi kérdés 3 — a negatív kritérium szövege** (az integrátornak elküldve, 2026-11-23): a `motivumok.tsv` „ÚSZ-ben az LXX-közvetített ἄβυσσος (abüsszosz) megfelelőjét” helyett: „az Újszövetségben a görög ἄβυσσος (abüsszosz) szót, a Septuaginta tehóm-fordításának szavát”. A tagság nem változik; a mostani szöveg azt sugallja, hogy a Luk 8:31-nél és a Róm 10:7-nél a Septuagintát kell nézni.
-Állapot: a szerkesztő döntésére vár (`naplok/F239_szerkeszto_kerdesek.md`).
+Döntés: a javaslat (szerkesztői döntés, a felhasználó, 2026-11-23; DT-F239c: „Új szöveg (Recommended)”, DT-F239d: „Két igehely (Recommended)”; alkalmazva: F239.7, `naplok/F239_U2_szerkesztoi_dontes.py`).
 
 **⛔ Tartalmi kérdés 4 — a Jel 20:1–3 tartomány-sor** (az integrátornak elküldve, 2026-11-23): a sor kettéválik Jel 20:1-re és Jel 20:3-ra (a 20:2-ben a szó nem áll), így a motívum versszáma a scanével egyezik (44); a lapon két igehely áll egy helyett. A Jel 9:1–2 marad (mindkét versben áll a szó).
-Állapot: a szerkesztő döntésére vár (`naplok/F239_szerkeszto_kerdesek.md`).
+Döntés: a javaslat (szerkesztői döntés, a felhasználó, 2026-11-23; DT-F239c: „Új szöveg (Recommended)”, DT-F239d: „Két igehely (Recommended)”; alkalmazva: F239.7, `naplok/F239_U2_szerkesztoi_dontes.py`).
