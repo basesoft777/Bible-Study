@@ -9,7 +9,6 @@ angol_cimke_lexikon	blokk:szo.tw_h
 angol_cimke_lexikon	blokk:vers.lxx_versszam
 angol_cimke_tw	blokk:szo.tw_g
 angol_cimke_tw	blokk:szo.tw_h
-dataset_kod	blokk:szo.magyar_gorog
 dataset_kod	blokk:vers.lxx_dontes
 dataset_kod	blokk:vers.lxx_szavak
 dataset_kod	blokk:vers.lxx_versszam
@@ -53,7 +52,6 @@ dataset_kod	forrássor:vers.ubs
 dataset_kod	forrássor:vers.versszamozas
 dataset_kod	lapváz:div.szoveg-jegy
 dataset_kod	lapváz:div.tan-szoveg
-dataset_kod	lapváz:p.ures
 fajlnev	lapváz:div.tan-szoveg
 fajlnev	lapváz:footer.labjegyzet
 gepi_datum	blokk:szo.bdb_apparatus
@@ -74,7 +72,6 @@ licenc_ellentmondas	forrássor:vers.nave
 licenc_ellentmondas	lapváz:div.szoveg-jegy
 proveniencia_sor	blokk:szo.ebben
 proveniencia_sor	blokk:szo.karoli_alakok
-proveniencia_sor	blokk:szo.magyar_gorog
 proveniencia_sor	blokk:vers.par
 tablanev	forrássor:szo.bdb_apparatus
 tablanev	forrássor:szo.ebben

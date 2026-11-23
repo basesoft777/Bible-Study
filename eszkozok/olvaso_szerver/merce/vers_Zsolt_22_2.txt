@@ -66,7 +66,7 @@ Forrás és licenc: Karoli 1908: közkincs
 Versszámozás (MT / KJV) forrásadat
 Versszámozás: héber (MT) 22:2 · angol (KJV) 22:1
 Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása
-MT | 22:1 | 22:2 | Septuaginta-etalon (LXX_OS)
+MT | 22:1 | 22:2 | Septuaginta-etalon
 Forrás és licenc: Karoli versmegfeleltetes+BSB Strongs: minden jog fenntartva; CC0 1.0
 ## [vers.lxx_versszam]
 LXX-versszám forrásadat

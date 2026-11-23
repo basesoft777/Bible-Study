@@ -105,3 +105,8 @@ Besorolatlan sor: 0. A besoroló: a jegyzetmappa `local_8f20af99-ee88-4120-8e81-
 - `vers_Jan_1_1.txt`: F231.17, #36/#21 (72); F231.17, #45/#46/#49 visszavonva (46); F231.17, #47 visszavonva (27)
 - `vers_Zsolt_22_2.txt`: F231.17, #36/#21 (226); F231.17, #45/#46/#49 visszavonva (64); F231.17, #47 visszavonva (8); F231.21, DT-F231d (#37) (5)
 
+## F231.25 (2026-11-23): a D10 felirat-javítása
+
+A `vers_Zsolt_22_2.txt` 1 sora változott (a versszámozás-tábla „A megfeleltetés forrása” cellája): „Septuaginta-etalon (LXX_OS)” →
+„Septuaginta-etalon”. Ok: **D10** (az alak-kapu „dataset_kod” osztálya: az adatkészlet-kód nem áll az olvasói névben). Más mérce-fájl
+nem változott.
