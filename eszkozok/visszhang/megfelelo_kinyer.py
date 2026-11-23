@@ -95,8 +95,25 @@ def versszoveg(forras):
         return {r['igehely']: r['szoveg'] for r in tsv_olvas(os.path.join(GYOKER, 'konkordancia', 'Targum_PD.tsv'))
                 if r['targum'] == 'Onkelos'}
     if forras == 'vulgata':
-        return {r['igehely']: r['szoveg']
+        szov = {r['igehely']: r['szoveg']
                 for r in tsv_olvas(os.path.join(GYOKER, 'konkordancia', 'Vulgata_Clementina.tsv'))}
+        # a tábla `igehely`-e Károli-kulcs, a Vulgata saját számozású: a különbség átvezetve (F239.U1b; a 11 sor a számozás
+        # miatt maradt ellenőrizetlen): a zsoltárok MT−1 (11–146.), a 116. a Vulgata 114–115.-ből; a 114–115. és a 147. nincs átvezetve (a két szám
+        # felosztása eltér), Jób 41:10–34 → Vulgata 41:1–25
+        ki = {k: v for k, v in szov.items() if not (k.startswith('Zsolt ') and 10 <= int(k[6:].split(':')[0]) <= 146)}
+        for k, v in szov.items():
+            konyv, _, hely = k.partition(' ')
+            f, _, vs = hely.partition(':')
+            if konyv == 'Zsolt' and f.isdigit() and 10 <= int(f) <= 145 and int(f) not in (113, 114, 115):
+                ki['Zsolt %d:%s' % (int(f) + 1, vs)] = v   # Vulgata f → Károli f+1
+            elif konyv == 'Zsolt' and f == '114' and vs.isdigit():
+                ki['Zsolt 116:%s' % vs] = v                 # Vulgata 114 = MT 116:1–9
+            elif konyv == 'Zsolt' and f == '115' and vs.isdigit():
+                ki['Zsolt 116:%d' % (int(vs) + 9)] = v      # Vulgata 115:1–10 = MT 116:10–19
+        for n in range(10, 35):
+            if 'Jób 41:%d' % (n - 9) in szov:
+                ki['Jób 41:%d' % n] = szov['Jób 41:%d' % (n - 9)]
+        return ki
     return {}
 
 
