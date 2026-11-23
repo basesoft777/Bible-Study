@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-23",
-   "commit": "fe34001c"
+   "commit": "c7f976d5"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5869,6 +5869,26 @@
      "🟢"
     ],
     "sor": 881
+   },
+   {
+    "id": "DT935",
+    "feladat": "folyamat (javítás a brief határán túl; 2026-11-23)",
+    "kerdes": "A „Munkamód” 5. pontja („ami a saját területeden helyben javítható … ugyanabban a menetben javítod”) és a „Döntés az integrátoron át” bekezdés („a brief határának átlépése” döntési kérdés) együtt azt eredményezte, hogy a session a brief fájllistáját vette saját területnek: a határon kívüli apró hibát nem javította, nem is kérdezett, csak a jelentésbe írta. Eset: az F218.13 jelentése (#809, 2026-11-23) két egysoros hibát hagyott „kívül esik” jelöléssel (`.claude/agents/fuggetlen-ellenor.md` 40. sor: „opus” a `model: fable` helyett, ami egy hamis leállást okozott; egy `N-F218w` komment), és egy olvasót érintő javítást a 218b/218c-re tolt (N245).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 892
+   },
+   {
+    "id": "DT936",
+    "feladat": "folyamat (az irány sorrendje felhatalmazás; 2026-11-23)",
+    "kerdes": "Az F218a lezárása után (#809) az integrátor nem indította a következő szálat, hanem lehetőségeket sorolt a szerkesztőnek. Okok: a régi orkesztrátor átadója („Sessiont csak a felhasználó szavára indítasz”, „új ötletből … csak a szavára”); a „Munkamód” 1., 2. és 6. pontja a kéretlen tartalomra született, de minden lépésre olvasható; a `CLAUDE.md` ellentmondása (új feladat „a felhasználó jóváhagyásával” ⟂ „a `/befogad` egyeztetése” az integrátor döntése).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 893
    }
   ],
   "javasolt": [],
