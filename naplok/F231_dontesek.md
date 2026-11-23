@@ -11,6 +11,7 @@ A végrehajtó session: `claude-opus-5-5`, ág: `claude/olvaso-egyben-3464e1`.
 | D4 | 2026-11-23 | #27: a „Domén kód” és az „Azonosító” oszlop visszajön, ahol a main-en látszott (ugyanaz az indok). | ✅ (DT-F231e) | F231.21 (`0643b13a`) |
 | D5 | 2026-11-23 | G0264: a Thayer-blokk „modell-kimenet” címkéje nem jön vissza, mert nincs mögötte fordítás (a hamis jelleg-címke félrevezető). | ✅ (DT-F231f) | F231.21 (`0643b13a`): a kapu kivétellistáján „eldöntve” |
 | D6 | 2026-11-23 | A H8415 csonka jelentéscíme („mély) tenger, amely elborítja Tírust (párhuzamban”) nem állhat a felületen; a technikai mód a végrehajtóé. | ✅ | F231.21 (`0643b13a`): a pótcím zárójele ép, a félbevágott zárójel kimarad; most „(mély) tenger, amely elborítja Tírust” |
-| D7 | 2026-11-23 | Az F232 pillanatkép-mérce (`merce/*.txt`) frissítése csak a szerkesztő nézése után. | 🟢 alkalmazásra vár | — (a PR „Akadály” mezőjében) |
+| D7 | 2026-11-23 | Az F232 pillanatkép-mérce (`merce/*.txt`) frissítése csak a szerkesztő nézése után. | ✅ | F231.23 (a D8 szerint külön PR-ban) |
+| D8 | 2026-11-23 | Kérdés: a D7 szerinti F232-mérce-frissítés a nézés után ugyanabba a PR-ba kerüljön-e? Döntés: nem; a #810 a nézett fejen (88fd78b7) merge-elt, a mérce-frissítés külön gyors sávos PR a main-ből (OLVASO-GYORS: merce/*.txt + naplók), soronkénti besorolással (naplok/F231_merce_indoklas.md). Indok: a nézett hash szabálya (DT886) szerint a jóváhagyás utáni commit új nézést kérne; a mérce a jóváhagyott, most a main-en álló állapotot rögzíti. Forrás: szerkesztői döntés (az integrátor, a felhasználó felhatalmazásával). | ✅ | F231.23 (ez a PR); a D7 ezzel alkalmazva |
 
 A D3–D5 a `dontesek/uj/olvaso-egyben-3464e1.md`-ben is áll (helyőrzővel: DT-F231d, DT-F231e, DT-F231f).

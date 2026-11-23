@@ -59,25 +59,24 @@ Zsolt 22:2 Én Istenem, én Istenem, miért hagytál el engemet? Távol van…
 Zsolt 22:2
 Vers Kereszthiv. Témák Motívum
 ## [vers.karoli]
-Károli-szöveg
+Károli-szöveg forrásadat
 Én Istenem, én Istenem, miért hagytál el engemet? Távol van megtartásomtól jajgatásomnak szava.
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Karoli 1908: közkincs
+Forrás és licenc: Karoli 1908: közkincs
 ## [vers.versszamozas]
-Versszámozás (MT / KJV)
+Versszámozás (MT / KJV) forrásadat
 Versszámozás: héber (MT) 22:2 · angol (KJV) 22:1
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Karoli versmegfeleltetes+BSB Strongs: minden jog fenntartva; CC0 1.0
+Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása
+MT | 22:1 | 22:2 | Septuaginta-etalon (LXX_OS)
+Forrás és licenc: Karoli versmegfeleltetes+BSB Strongs: minden jog fenntartva; CC0 1.0
 ## [vers.lxx_versszam]
-LXX-versszám
+LXX-versszám forrásadat
 Septuaginta-versszám: Zsolt 21:2
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: LXX OS+Versifikacios tablak+Karoli versmegfeleltetes: CC BY 4.0; minden jog fenntartva
+Forrás | LXX-versszám
+LXX_OS | Psalms (LXX) 21:2
+térkép (KJV-kulcs) | Psa.21:1-2 | Psa.21:2
+Forrás és licenc: LXX OS+Versifikacios tablak+Karoli versmegfeleltetes: CC BY 4.0; minden jog fenntartva
 ## [vers.heber_csempe]
-Héber szöveg
+Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
 Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.
 אֵלִ֣יélí
 אֵלִ֣O GodH0410főnév, köznév, hímnem, egyes szám, constructus ὁ
@@ -100,170 +99,156 @@ Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, i
 שַׁאֲגָתִֽיsaagátí
 שַׁאֲגָתִֽcry of distressH7581főnév, köznév, nőnem, egyes szám, constructusLXX: —
 יmyH9020toldalék, névmási, első személy, közös (ige), egyes számμου
-Forrás és licenc
-▸ forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
-▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0 · Macula heber: CC BY 4.0 · LXX OS: CC BY 4.0 · morf kulcs heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
+Forrás és licenc: TAHOT+TAGNT: CC BY 4.0 · Macula heber: CC BY 4.0 · LXX OS: CC BY 4.0 · morf kulcs heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
 ## [vers.lxx_csempe]
-Septuaginta (LXX, Rahlfs)
+Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
 A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.
 ὁG3588 θεὸςG2316 ὁG3588 θεόςG2316 μουG1473 πρόσχεςG4337 μοιG1473 ἵναG2443 τίG5100 ἐγκατέλιπέςG1459 μεG1473 μακρὰνG3112 ἀπὸG0575 τῆςG3588 σωτηρίαςG4991 μουG1473 οἱG3588 λόγοιG3056 τῶνG3588 παραπτωμάτωνG3900 μουG1473
-Forrás és licenc
-▸ forrásadat szavankénti csempék; a táblázatos nézet alább
-▸ Forrás és licenc: LXX OS: CC BY 4.0
+Forrás és licenc: LXX OS: CC BY 4.0
 ## [vers.par]
-Károli–Strong párosítás
+Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
 Táblázatos nézet (a csempék adatai soronként)
-▸ Károli-szó (sorszám) | Szó | Eredeti | Strong | Mért pontosság
-▸ 1 | Én | י | H9020 | 95% (költői könyvek)
-▸ 2 | Istenem | אֵלִ֣ + י | H0410 + H9020 | 95% (költői könyvek)
-▸ 3 | én | י | H9020 | 95% (költői könyvek)
-▸ 4 | Istenem | אֵ֭לִ + י | H0410 + H9020 | 95% (költői könyvek)
-▸ 5 | miért | לָ + מָ֣ה | H9005 + H4100 | 95% (költői könyvek)
-▸ 6 | hagytál | עֲזַבְתָּ֑ | H5800 | 95% (költői könyvek)
-▸ 7 | el | עֲזַבְתָּ֑ | H5800 | 95% (költői könyvek)
-▸ 8 | engemet | נִי | H9030 | 95% (költői könyvek)
-▸ 9 | Távol | רָח֥וֹק | H7350 | 95% (költői könyvek)
-▸ 11 | megtartásomtól | מִֽ֝ + ישׁוּעָתִ֗ + י | H9006 + H3444 + H9020 | 95% (költői könyvek)
-▸ 12 | jajgatásomnak | שַׁאֲגָתִֽ + י | H7581 + H9020 | 95% (költői könyvek)
-▸ 13 | szava | דִּבְרֵ֥י | H1697 | 95% (költői könyvek)
-Forrás és licenc
-▸ modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
-▸ Forrás és licenc: Karoli Strong parok: CC BY 4.0
+Károli-szó (sorszám) | Szó | Eredeti | Strong | Mért pontosság
+1 | Én | י | H9020 | 95% (költői könyvek)
+2 | Istenem | אֵלִ֣ + י | H0410 + H9020 | 95% (költői könyvek)
+3 | én | י | H9020 | 95% (költői könyvek)
+4 | Istenem | אֵ֭לִ + י | H0410 + H9020 | 95% (költői könyvek)
+5 | miért | לָ + מָ֣ה | H9005 + H4100 | 95% (költői könyvek)
+6 | hagytál | עֲזַבְתָּ֑ | H5800 | 95% (költői könyvek)
+7 | el | עֲזַבְתָּ֑ | H5800 | 95% (költői könyvek)
+8 | engemet | נִי | H9030 | 95% (költői könyvek)
+9 | Távol | רָח֥וֹק | H7350 | 95% (költői könyvek)
+11 | megtartásomtól | מִֽ֝ + ישׁוּעָתִ֗ + י | H9006 + H3444 + H9020 | 95% (költői könyvek)
+12 | jajgatásomnak | שַׁאֲגָתִֽ + י | H7581 + H9020 | 95% (költői könyvek)
+13 | szava | דִּבְרֵ֥י | H1697 | 95% (költői könyvek)
+Forrás és licenc: Karoli Strong parok: CC BY 4.0
 ## [vers.eredeti]
-Eredeti szavak (TAHOT / TAGNT)
+Eredeti szavak (TAHOT / TAGNT) forrásadat
 Táblázatos nézet (a csempék adatai soronként)
-▸ # | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
-▸ 1 | אֵלִ֣ | élí | H0410 | אֵל | LORD | O God
-▸ 2 | י | | H9020 | Ps1c | my | my
-▸ 3 | אֵ֭לִ | élí | H0410 | אֵל | LORD | God
-▸ 4 | י | | H9020 | Ps1c | my | my
-▸ 5 | לָ | | H9005 | ל | to | <to>
-▸ 6 | מָ֣ה | lámá | H4100 | מָה | what? | why?
-▸ 7 | עֲזַבְתָּ֑ | azavtání | H5800 | עָזַב | to leave | have you forsaken
-▸ 8 | נִי | | H9030 | Os1c | me | me
-▸ 9 | רָח֥וֹק | ráchók | H7350 | רָחֹק | distant | [are] far
-▸ 10 | מִֽ֝ | | H9006 | מ | from | from
-▸ 11 | ישׁוּעָתִ֗ | mísúátí | H3444 | יְשׁוּעָה | salvation | deliverance
-▸ 12 | י | | H9020 | Ps1c | my | my
-▸ 13 | דִּבְרֵ֥י | divré | H1697 | דָּבָר | word | [the] words of
-▸ 14 | שַׁאֲגָתִֽ | saagátí | H7581 | שְׁאָגָה | roaring | cry of distress
-▸ 15 | י | | H9020 | Ps1c | my | my
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
+# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
+1 | אֵלִ֣ | élí | H0410 | אֵל | LORD | O God
+2 | י | | H9020 | Ps1c | my | my
+3 | אֵ֭לִ | élí | H0410 | אֵל | LORD | God
+4 | י | | H9020 | Ps1c | my | my
+5 | לָ | | H9005 | ל | to | <to>
+6 | מָ֣ה | lámá | H4100 | מָה | what? | why?
+7 | עֲזַבְתָּ֑ | azavtání | H5800 | עָזַב | to leave | have you forsaken
+8 | נִי | | H9030 | Os1c | me | me
+9 | רָח֥וֹק | ráchók | H7350 | רָחֹק | distant | [are] far
+10 | מִֽ֝ | | H9006 | מ | from | from
+11 | ישׁוּעָתִ֗ | mísúátí | H3444 | יְשׁוּעָה | salvation | deliverance
+12 | י | | H9020 | Ps1c | my | my
+13 | דִּבְרֵ֥י | divré | H1697 | דָּבָר | word | [the] words of
+14 | שַׁאֲגָתִֽ | saagátí | H7581 | שְׁאָגָה | roaring | cry of distress
+15 | י | | H9020 | Ps1c | my | my
+Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
 ## [vers.macula_morf]
-Igealak-kód és szófaj (Macula)
+Igealak-kód és szófaj (Macula) forrásadat
 Táblázatos nézet (a csempék adatai soronként)
-▸ Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss
-▸ אֵלִ֣ | אֵל | H0410 | Ncmsc | noun | my.God
-▸ י | הוּא | | Sp1cs | suffix | my
-▸ אֵ֭לִ | אֵל | H0410 | Ncmsc | noun | God
-▸ י | הוּא | | Sp1cs | suffix | my
-▸ לָ | לָמָה | | R | preposition |
-▸ מָ֣ה | מָה | H4100 | Ti | particle | why?
-▸ עֲזַבְתָּ֑ | עָזַב | H5800 | Vqp2ms | verb | have
-▸ נִי | הוּא | | Sp1cs | suffix | you.forsaken.me
-▸ רָח֥וֹק | רָחֹוק | H7350 | Aamsa | adjective | [are].far
-▸ מִֽ֝ | מִן | H4480 | R | preposition | from
-▸ ישׁוּעָתִ֗ | יְשׁוּעָה | H3444 | Ncfsc | noun | deliverance
-▸ י | הוּא | | Sp1cs | suffix | my
-▸ דִּבְרֵ֥י | דָּבָר | H1697 | Ncmpc | noun | the.words
-▸ שַׁאֲגָתִֽ | שְׁאָגָה | H7581 | Ncfsc | noun | my.cry.of.distress
-▸ י | הוּא | | Sp1cs | suffix | my
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Macula heber: CC BY 4.0
+Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss
+אֵלִ֣ | אֵל | H0410 | Ncmsc | noun | my.God
+י | הוּא | | Sp1cs | suffix | my
+אֵ֭לִ | אֵל | H0410 | Ncmsc | noun | God
+י | הוּא | | Sp1cs | suffix | my
+לָ | לָמָה | | R | preposition |
+מָ֣ה | מָה | H4100 | Ti | particle | why?
+עֲזַבְתָּ֑ | עָזַב | H5800 | Vqp2ms | verb | have
+נִי | הוּא | | Sp1cs | suffix | you.forsaken.me
+רָח֥וֹק | רָחֹוק | H7350 | Aamsa | adjective | [are].far
+מִֽ֝ | מִן | H4480 | R | preposition | from
+ישׁוּעָתִ֗ | יְשׁוּעָה | H3444 | Ncfsc | noun | deliverance
+י | הוּא | | Sp1cs | suffix | my
+דִּבְרֵ֥י | דָּבָר | H1697 | Ncmpc | noun | the.words
+שַׁאֲגָתִֽ | שְׁאָגָה | H7581 | Ncfsc | noun | my.cry.of.distress
+י | הוּא | | Sp1cs | suffix | my
+Forrás és licenc: Macula heber: CC BY 4.0
 ## [vers.macula_gorog]
-Héber–görög párosítás szavanként (Macula)
+Héber–görög párosítás szavanként (Macula) forrásadat
 Táblázatos nézet (a csempék adatai soronként)
-▸ Héber szó | Gloss | Görög (Macula) | Görög Strong
-▸ אֵלִ֣ | my.God | ὁ | G3588
-▸ י | my | θεὸς | G2316
-▸ אֵ֭לִ | God | θεός | G2316
-▸ י | my | μου | G3450
-▸ לָ | | ἵνα | G2443
-▸ מָ֣ה | why? | τί | G5101
-▸ עֲזַבְתָּ֑ | have | ἐγκατέλιπές | G1459
-▸ נִי | you.forsaken.me | με | G3165
-▸ רָח֥וֹק | [are].far | μακρὰν | G3112
-▸ מִֽ֝ | from | ἀπὸ | G0575
-▸ ישׁוּעָתִ֗ | deliverance | σωτηρίας | G4991
-▸ י | my | μου | G3450
-▸ דִּבְרֵ֥י | the.words | λόγοι | G3056
-▸ י | my | μου | G3450
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Macula heber: CC BY 4.0
+Héber szó | Gloss | Görög (Macula) | Görög Strong
+אֵלִ֣ | my.God | ὁ | G3588
+י | my | θεὸς | G2316
+אֵ֭לִ | God | θεός | G2316
+י | my | μου | G3450
+לָ | | ἵνα | G2443
+מָ֣ה | why? | τί | G5101
+עֲזַבְתָּ֑ | have | ἐγκατέλιπές | G1459
+נִי | you.forsaken.me | με | G3165
+רָח֥וֹק | [are].far | μακρὰν | G3112
+מִֽ֝ | from | ἀπὸ | G0575
+ישׁוּעָתִ֗ | deliverance | σωτηρίας | G4991
+י | my | μου | G3450
+דִּבְרֵ֥י | the.words | λόγοι | G3056
+י | my | μου | G3450
+Forrás és licenc: Macula heber: CC BY 4.0
 ## [vers.lxx_szavak]
-Görög szóalak és LXX-vers szavai (LXX_OS)
+Görög szóalak és LXX-vers szavai (LXX_OS) forrásadat
 Táblázatos nézet (a csempék adatai soronként)
-▸ Szóalak | Lemma | Strong | Morf
-▸ ὁ | ὁ | G3588 | article masc nom sg
-▸ θεὸς | θεός | G2316 | noun masc nom sg
-▸ ὁ | ὁ | G3588 | article masc nom sg
-▸ θεός | θεός | G2316 | noun masc nom sg
-▸ μου | ἐγώ | G1473 | pronoun 1st gen sg
-▸ πρόσχες | προσέχω | G4337 | verb aor imperat act 2nd sg
-▸ μοι | ἐγώ | G1473 | pronoun 1st dat sg
-▸ ἵνα | ἵνα | G2443 | conjunction
-▸ τί | τίς | G5100 | pronoun neut nom/voc/acc sg
-▸ ἐγκατέλιπές | ἐγκαταλείπω | G1459 | verb aor ind act 2nd sg
-▸ με | ἐγώ | G1473 | pronoun 1st acc sg
-▸ μακρὰν | μακράν | G3112 | adverb
-▸ ἀπὸ | ἀπό | G0575 | preposition
-▸ τῆς | ὁ | G3588 | article fem gen sg
-▸ σωτηρίας | σωτηρία | G4991 | noun fem gen sg
-▸ μου | ἐγώ | G1473 | pronoun 1st gen sg
-▸ οἱ | ὁ | G3588 | article masc nom pl
-▸ λόγοι | λόγος | G3056 | noun masc nom/voc pl
-▸ τῶν | ὁ | G3588 | article masc/fem/neut gen pl
-▸ παραπτωμάτων | παράπτωμα | G3900 | noun neut gen pl
-▸ μου | ἐγώ | G1473 | pronoun 1st gen sg
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: LXX OS: CC BY 4.0
+Szóalak | Lemma | Strong | Morf
+ὁ | ὁ | G3588 | article masc nom sg
+θεὸς | θεός | G2316 | noun masc nom sg
+ὁ | ὁ | G3588 | article masc nom sg
+θεός | θεός | G2316 | noun masc nom sg
+μου | ἐγώ | G1473 | pronoun 1st gen sg
+πρόσχες | προσέχω | G4337 | verb aor imperat act 2nd sg
+μοι | ἐγώ | G1473 | pronoun 1st dat sg
+ἵνα | ἵνα | G2443 | conjunction
+τί | τίς | G5100 | pronoun neut nom/voc/acc sg
+ἐγκατέλιπές | ἐγκαταλείπω | G1459 | verb aor ind act 2nd sg
+με | ἐγώ | G1473 | pronoun 1st acc sg
+μακρὰν | μακράν | G3112 | adverb
+ἀπὸ | ἀπό | G0575 | preposition
+τῆς | ὁ | G3588 | article fem gen sg
+σωτηρίας | σωτηρία | G4991 | noun fem gen sg
+μου | ἐγώ | G1473 | pronoun 1st gen sg
+οἱ | ὁ | G3588 | article masc nom pl
+λόγοι | λόγος | G3056 | noun masc nom/voc pl
+τῶν | ὁ | G3588 | article masc/fem/neut gen pl
+παραπτωμάτων | παράπτωμα | G3900 | noun neut gen pl
+μου | ἐγώ | G1473 | pronoun 1st gen sg
+Forrás és licenc: LXX OS: CC BY 4.0
 ## [vers.bsb]
-Angol szavak szavanként (BSB)
+Angol szavak szavanként (BSB) forrásadat gépi feldolgozás
 A BSB-forrás ehhez a vershez nem ad szavakat (a forrásból hiányzik).
-Forrás és licenc
-▸ forrásadat gépi feldolgozás
-▸ Forrás és licenc: BSB Strongs: CC0 1.0
+Forrás és licenc: BSB Strongs: CC0 1.0
 ## [vers.kjv]
-Angol szavak szavanként (KJV + Strong)
+Angol szavak szavanként (KJV + Strong) forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
 GodH0410GodH0410forsakenH5800farH7350helpingH3444wordsH1697roaringH7581
-Forrás és licenc
-▸ forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
-▸ Forrás és licenc: KJV Strongs teljes: tisztázatlan [tisztázatlan]
+Forrás és licenc: KJV Strongs teljes: tisztázatlan [tisztázatlan]
 ## [vers.morf_hu]
-Az igealak magyar feloldása
+Az igealak magyar feloldása gépi feldolgozás
 Táblázatos nézet (a csempék adatai soronként)
-▸ Szó | Kód | Magyar feloldás | Nyelv
-▸ אֵלִ֣ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
-▸ י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
-▸ אֵ֭לִ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
-▸ י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
-▸ לָ | R | elöljáró | H
-▸ מָ֣ה | Ti | partikula, kérdő | H
-▸ עֲזַבְתָּ֑ | Vqp2ms | ige, qal, perfectum (qatal), második személy, hímnem, egyes szám | H
-▸ נִי | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
-▸ רָח֥וֹק | Aamsa | melléknév, melléknév, hímnem, egyes szám, abszolút | H
-▸ מִֽ֝ | R | elöljáró | H
-▸ ישׁוּעָתִ֗ | Ncfsc | főnév, köznév, nőnem, egyes szám, constructus | H
-▸ י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
-▸ דִּבְרֵ֥י | Ncmpc | főnév, köznév, hímnem, többes szám, constructus | H
-▸ שַׁאֲגָתִֽ | Ncfsc | főnév, köznév, nőnem, egyes szám, constructus | H
-▸ י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
-Forrás és licenc
-▸ gépi feldolgozás
-▸ Forrás és licenc: morf kulcs heber: CC BY 4.0 · Macula heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
+Szó | Kód | Magyar feloldás | Nyelv
+אֵלִ֣ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
+י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+אֵ֭לִ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
+י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+לָ | R | elöljáró | H
+מָ֣ה | Ti | partikula, kérdő | H
+עֲזַבְתָּ֑ | Vqp2ms | ige, qal, perfectum (qatal), második személy, hímnem, egyes szám | H
+נִי | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+רָח֥וֹק | Aamsa | melléknév, melléknév, hímnem, egyes szám, abszolút | H
+מִֽ֝ | R | elöljáró | H
+ישׁוּעָתִ֗ | Ncfsc | főnév, köznév, nőnem, egyes szám, constructus | H
+י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+דִּבְרֵ֥י | Ncmpc | főnév, köznév, hímnem, többes szám, constructus | H
+שַׁאֲגָתִֽ | Ncfsc | főnév, köznév, nőnem, egyes szám, constructus | H
+י | Sp1cs | toldalék, névmási, első személy, közös (ige), egyes szám | H
+Forrás és licenc: morf kulcs heber: CC BY 4.0 · Macula heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
+## [vers.lxx_dontes]
+LXX-fordítói döntések (adatréteg) forrásadat soronként saját proveniencia-mező
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: a projekt saját adata: minden jog fenntartva
+## [vers.lxx_par]
+LXX versszintű együttelőfordulás forrásadat együttelőfordulás a versben, nem szóillesztés
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: LXX versszintu parok: minden jog fenntartva
 ## [vers.lxx_tobblet]
-LXX többlet és számozási eltérés
+LXX többlet és számozási eltérés forrásadat az adat ebben a kiadásban még nem érhető el
 Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.
-Forrás és licenc
-▸ forrásadat az adat ebben a kiadásban még nem érhető el
-▸ Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
+Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
 ## [vers.ubs]
-UBS-jelentés az előfordulásra
+UBS-jelentés az előfordulásra forrásadat
 Strong | Azonosító | Domén | Rövid definíció | Glosszák
 H0410 | 000381001002000 | Names of Deities | with singular meaning: = the highest God, creator of heaven and earth | God
 H1697 | 001558001001000 | Speak | = words spoken by humans and deities and, in certain cases, written down | words; message
@@ -272,11 +257,11 @@ H4100 | 003598001001000 | Perceptive Referents | = a reference to the cause, rea
 H5800 | 005332001004000 | Unfaithful | = action by which animals, humans, or deities suspend their commitment to (other) objects, animals, humans, or deities, either temporarily or permanently | to desert; to abandon; to forsake
 H7350 | 006760001004000 | Non-Engage | literally: (to be) far (from an action); hence: = state in which deities do not seem to be willing or able to engage in any way | far (from doing something)
 H7581 | 007129001001000 | Sounds | = action by which animals, humans, or deities produce a full, deep, prolonged sound as made by a lion | roar; groaning
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: UBS DBH: CC BY-SA 4.0 [share-alike]
-Ezekben a forrásokban erre nincs adat (üres eredmény, nem negatív lelet): LXX-fordítói döntések (adatréteg), LXX versszintű együttelőfordulás.
+Forrás és licenc: UBS DBH: CC BY-SA 4.0 [share-alike]
 ## [vers.tsk]
 ## [vers.kh]
 ## [vers.nave]
 ## [vers.tipnr]
+## [vers.motivum]
+## [vers.tanulmany]
+## [vers.kapcsolat]
