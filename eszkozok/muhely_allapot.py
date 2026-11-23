@@ -293,10 +293,11 @@ def kriterium_3(motivum):
     with open(lap, encoding='utf-8') as f:
         eredeti = f.read().replace('\r', '')
     m = re.search(r'\bts=(\d{4}-\d{2}-\d{2})', eredeti)
-    env = {'PARDES_DATUM': m.group(1)} if m else {}
+    import generalt_nezetek   # F241.2: az egyetlen belépési pont a lapgenerátorhoz (a motívum generátora és módja)
+    datum = m.group(1) if m else generalt_nezetek.head_datum(GYOKER)
     with tempfile.TemporaryDirectory(prefix='muhely_nulladiff_') as tmp:
-        rc, o, e = futtat([sys.executable, 'eszkozok/general.py', '--cel', 'lexikon', '--id', motivum,
-                           '--kimenet', tmp], env=env)
+        rc, o = generalt_nezetek.lexikon_general(motivum, tmp, datum, GYOKER)
+        e = ''
         ujlap = os.path.join(tmp, 'lexikon', motivum + '_TUDOMANYOS.md')
         if rc != 0 or not os.path.exists(ujlap):
             return uj(HIBA, 'az újragenerálás nem futott', mero, motivum, [(e or o).strip()[-500:]])
