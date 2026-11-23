@@ -9,6 +9,7 @@ sav: CONTENT
 munka: folyamat
 allapot: fut
 ag: claude/f241a-kiadasi-ut
+pr: 841
 ad: a lexikonlapokat az új lapgenerátor (eszkozok/lapgen/) adja ki: az ISTENTISZT-001 2. kiadása és a HAMART-001 új generátoros kiadása megvan, a kiadás mód a jóváhagyás frissességét a kézi rések és az adat hash-éből méri, a lapszövegre kereső kapuk a lapmodellen dolgoznak, a TEREMT-001 generátoroldalról kiadható, a régi generátor (lexikon_general) egy kiadásnyi visszaút után archívumban van
 kovetkezo: "Folytatás: F241.1 (kiadás mód és frissesség, N221) az A szelet ágán (claude/f241a-kiadasi-ut); az F241.0 kész, átadó: naplok/F241_atado_F241.0.md"
 olvas: ["tematikus_lezart/HAMART-001*", "tematikus_lezart/naplok/HAMART-001*", "tematikus_lezart/ISTENTISZT-001*", "tematikus_lezart/naplok/ISTENTISZT-001*", eszkozok/lapgen/, eszkozok/lexikon_general.py, eszkozok/general.py, adat/, konkordancia/, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, motivumok/TEREMT-001.md, "motivumok/naplok/HAMART-001*", "motivumok/naplok/ISTENTISZT-001*", lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/HIBA_MECHANIZMUSOK.md, .claude/commands/kiadas.md]
