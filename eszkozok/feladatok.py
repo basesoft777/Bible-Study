@@ -72,7 +72,11 @@ SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'DESIGN')
 SAV_ATMENET_KIVETEL = (217, 218)
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
-           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav', 'lezar')
+           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav', 'lezar', 'alap')
+# DT952 elso alkalmazasa (a #842 esete, 2026-11-23): a brief kiindulo allapota (commit, cimke vagy
+# `PR #<n> merge-e után`). A #241 utani feladat/naplozas/felmeres briefnel kotelezo; a regieknel nem.
+ALAP_KUSZOB = 241
+ALAP_MINTA = re.compile(r'^(?:[0-9a-f]{7,40}|[A-Za-z][A-Za-z0-9._/-]*|PR #\d+ merge-e után)$')
 LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg', 'motivum_kesz', 'lezar')
 # F219 (DT-F219a): a `lezar` azoknak az N-tetelnek a listaja, amelyeket a brief teljesit; a merge-kor a
 # `feladatok.yml` gepi lepese (eszkozok/brief_lezaras.py) zarja le oket a NYITOTT_FELADATOK.md-ben.
@@ -449,6 +453,12 @@ def ellenoriz(briefek, gyoker=REPO):
             for ut in fej.get('ir', []):
                 if ut.startswith(('eszkozok/', '.github/', '.claude/')) or ut.endswith('.py'):
                     hibak.append((b.fajl, 'felmeres típusú brief kódot nem ír (ir: %s); a kimenete döntés vagy brief-javaslat' % ut))
+        if (tipus in ('feladat', 'naplozas', 'felmeres') and b.szam is not None
+                and b.szam > ALAP_KUSZOB):
+            if not fej.get('alap'):
+                hibak.append((b.fajl, 'hiányzó kötelező mező: alap (a kiinduló commit, címke vagy `PR #<n> merge-e után`)'))
+            elif not ALAP_MINTA.match(fej['alap']):
+                hibak.append((b.fajl, 'alap: commit-hash, címke vagy `PR #<n> merge-e után` (kapott: %r)' % fej['alap']))
         for azon in fej.get('lezar', []):
             if not LEZAR_AZON.match(azon):
                 hibak.append((b.fajl, 'lezar: N-tétel azonosítók (`N12` vagy `N-F219a`), kapott: %r' % azon))
@@ -1543,6 +1553,23 @@ def pr_terkep_ellenorzes(gyoker, alap_ref, fej_ref='HEAD'):
 # CLI
 # ---------------------------------------------------------------------------
 
+def alap_osszevet(b, gyoker=REPO):
+    """(allapot, sorok): a brief `alap`-ja es a mai main osszevetese az `olvas` utjain.
+    allapot: 'AZONOS' | 'ELTER' | 'VAR' (merge-re var) | 'NINCS' (nincs alap) | 'ISMERETLEN' (nem feloldhato)."""
+    alap = b.fej.get('alap')
+    if not alap:
+        return 'NINCS', []
+    if alap.startswith('PR #'):
+        return 'VAR', ['az alap egy még nem merge-elt PR: %s' % alap]
+    ref = main_ref(gyoker)
+    if _git(gyoker, 'rev-parse', '--verify', '-q', alap + '^{commit}') is None or ref is None:
+        return 'ISMERETLEN', ['nem feloldható: %s' % alap]
+    utak = [u.rstrip('*') for u in b.fej.get('olvas', []) if u not in KONTEXTUS_OLVAS]
+    ki = _git(gyoker, 'diff', '--name-only', alap, ref, '--', *utak) if utak else ''
+    sorok = [s for s in (ki or '').splitlines() if s.strip()]
+    return ('ELTER' if sorok else 'AZONOS'), sorok
+
+
 def main(argv=None):
     p = argparse.ArgumentParser(description=__doc__.split('\n\n')[0],
                                 formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -1566,6 +1593,8 @@ def main(argv=None):
                     help='F201: a tavoli agak (origin) gyokerebeli F<nn>_* fajljait es a foglalasokat is figyelembe veszi (git fetch)')
     ks.add_argument('--foglal', metavar='AGNEV',
                     help='F201: a szamot atomian lefoglalja az originen (foglalas/F<nn> ag; push!), igy mas ag nem kaphatja meg')
+    al = alp.add_parser('alap', help='a brief `alap`-ja és a mai main összevetése az `olvas` útjain (DT952)')
+    al.add_argument('feladatok', nargs='+', type=int, metavar='SZAM')
     sz = alp.add_parser('szint', help='F188 T5: az ellenőrzési szint és a javítókör-korlát (munka/ir mezőből)')
     sz.add_argument('feladatok', nargs='*', type=int, metavar='SZAM')
     sz.add_argument('--extra', action='append', default=[], metavar='FAJL',
@@ -1648,6 +1677,21 @@ def main(argv=None):
             else:
                 print(kovetkezo_szam(briefek))
             return 0
+        if arg.parancs == 'alap':
+            by = {b.szam: b for b in briefek if b.szam is not None}
+            rossz = 0
+            for n in arg.feladatok:
+                b = by.get(n)
+                if b is None:
+                    print('NINCS\t#%d' % n)
+                    rossz += 1
+                    continue
+                allapot, sorok = alap_osszevet(b, arg.gyoker)
+                print('%s\t#%d\t%s' % (allapot, n, b.fej.get('alap', '')))
+                for s in sorok:
+                    print('\t' + s)
+                rossz += allapot != 'AZONOS'
+            return 1 if rossz else 0
         if arg.parancs == 'szint':
             regi = {id(b) for b in briefek}
             briefek = extra_hozzaad(briefek, arg.extra)
