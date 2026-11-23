@@ -3,6 +3,7 @@
   <p class="szoalcim">{{ atiras }}{% if atiras and jelentes %} · {% endif %}{{ jelentes }}</p>
   {% if alapjel %}<p class="alapjel" lang="{{ alapjel.nyelv }}" title="{{ alapjel.sugo }}" data-forras="{{ alapjel.forras }}"><span class="fcim">Alapjelentés</span> {{ alapjel.szoveg }}</p>{% endif %}
   {% if vers_ut %}<p class="lap-versre-sor"><a class="lap-versre" href="{{ vers_ut }}">A vers: {{ vers_cim }} →</a></p>{% endif %}
-  <p><a href="/szo/{{ strong }}">szó-lap önálló címen</a> · <a href="/kereses?strong={{ strong }}">előfordulások versenként</a></p>
+  {% if szamok %}<div class="szo-szamok">{% for n, f in szamok %}<p class="szo-szam"><b>{{ n }}</b> {{ f }}</p>{% endfor %}</div>{% endif %}
+  <p><a href="/szo/{{ strong }}">{{ F('szo.sajat_lap') }}</a> · <a href="/kereses?strong={{ strong }}">{{ F('szo.minden_elofordulas') }}</a></p>
   {{ blokkok }}
 </article>

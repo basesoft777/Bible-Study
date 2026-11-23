@@ -2,7 +2,7 @@
 # A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
 # Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
 Navigáció✕
-PaRDeS olvasó
+Biblialex olvasó
 Károli 1908 · Ján 1 ▾
 ▸ Biblia és könyv kiválasztása
 ▸ Biblia
@@ -47,7 +47,7 @@ Strong számokStrong
 ⚙
 ▸ Rétegek
 ▸ Interlineáris sor
-▸ Szint nyilvanos regisztralt kutato
+▸ Szint nyilvános regisztrált kutató
 ▸ Téma
 ▸ Rendszer Világos Sötét
 ⌕
@@ -59,107 +59,72 @@ Ján 1:1 Kezdetben vala az Íge, és az Íge vala az Istennél, és Isten…
 Ján 1:1
 Vers Kereszthiv. Témák Motívum
 ## [vers.karoli]
-Károli-szöveg forrásadat
+Károli-szöveg
 Kezdetben vala az Íge, és az Íge vala az Istennél, és Isten vala az Íge.
-Forrás és licenc: Karoli_1908 (vers): közkincs
-## [vers.heber_csempe]
-Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · LXX_OS (lxx_token): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
-## [vers.lxx_csempe]
-Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: Karoli 1908: közkincs
 ## [vers.par]
-Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
-Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság
-1 | Kezdetben | Ἐν | G1722 | alacsony
-1 | Kezdetben | ἀρχῇ | G0746 | alacsony
-2 | vala | ἦν | G1510 | alacsony
-4 | Íge | λόγος, | G3056 | alacsony
-5 | és | καὶ | G2532 | alacsony
-7 | Íge | λόγος | G3056 | alacsony
-8 | vala | ἦν | G1510 | alacsony
-10 | Istennél | πρὸς | G4314 | alacsony
-10 | Istennél | θεόν, | G2316 | alacsony
-11 | és | καὶ | G2532 | alacsony
-12 | Isten | θεὸς | G2316 | alacsony
-13 | vala | ἦν | G1510 | alacsony
-15 | Íge | λόγος. | G3056 | alacsony
-Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0
+Károli–Strong párosítás
+Táblázatos nézet (a csempék adatai soronként)
+▸ Károli-szó (sorszám) | Szó | Eredeti | Strong | Mért pontosság
+▸ 1 | Kezdetben | Ἐν + ἀρχῇ | G1722 + G0746 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 2 | vala | ἦν | G1510 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 4 | Íge | λόγος, | G3056 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 5 | és | καὶ | G2532 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 7 | Íge | λόγος | G3056 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 8 | vala | ἦν | G1510 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 10 | Istennél | πρὸς + θεόν, | G4314 + G2316 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 11 | és | καὶ | G2532 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 12 | Isten | θεὸς | G2316 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 13 | vala | ἦν | G1510 | 98% (evangéliumok és Apostolok Cselekedetei)
+▸ 15 | Íge | λόγος. | G3056 | 98% (evangéliumok és Apostolok Cselekedetei)
+Forrás és licenc
+▸ modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
+▸ Forrás és licenc: Karoli Strong parok: CC BY 4.0
 ## [vers.eredeti]
-Eredeti szavak (TAHOT / TAGNT) forrásadat
-# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
-1 | Ἐν | En | G1722 | ἐν | in/on/among | In [the]
-2 | ἀρχῇ | arkhéa | G0746 | ἀρχή | beginning | beginning
-3 | ἦν | én | G1510 | εἰμί | to be | was
-4 | ὁ | ho | G3588 | ὁ | the/this/who | the
-5 | λόγος, | logosz | G3056 | λόγος | word | Word,
-6 | καὶ | kai | G2532 | καί | and | and
-7 | ὁ | ho | G3588 | ὁ | the/this/who | the
-8 | λόγος | logosz | G3056 | λόγος | word | Word
-9 | ἦν | én | G1510 | εἰμί | to be | was
-10 | πρὸς | prosz | G4314 | πρός | to/with | with
-11 | τὸν | ton | G3588 | ὁ | the/this/who | <the>
-12 | θεόν, | theon | G2316 | θεός | God | God,
-13 | καὶ | kai | G2532 | καί | and | and
-14 | θεὸς | theosz | G2316 | θεός | God | God
-15 | ἦν | én | G1510 | εἰμί | to be | was
-16 | ὁ | ho | G3588 | ὁ | the/this/who | the
-17 | λόγος. | logosz | G3056 | λόγος | word | Word.
-Forrás és licenc: TAHOT+TAGNT (token_eredeti): CC BY 4.0
-## [vers.macula_morf]
-Igealak-kód és szófaj (Macula) forrásadat
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: Macula_heber (token_macula): CC BY 4.0
-## [vers.macula_gorog]
-Héber–görög párosítás szavanként (Macula) forrásadat
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: Macula_heber (token_macula): CC BY 4.0
-## [vers.lxx_szavak]
-Görög szóalak és LXX-vers szavai (LXX_OS) forrásadat
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: LXX_OS (lxx_token): CC BY 4.0
-## [vers.lxx_versszam]
-LXX-versszám forrásadat
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: LXX_OS+Versifikacios_tablak+Karoli_versmegfeleltetes (lxx_versszam): CC BY 4.0; minden jog fenntartva
-## [vers.versszamozas]
-Versszámozás (MT / KJV) forrásadat
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: Karoli_versmegfeleltetes+BSB_Strongs (vers_szamozas): minden jog fenntartva; CC0 1.0
+Eredeti szavak (TAHOT / TAGNT)
+Táblázatos nézet (a csempék adatai soronként)
+▸ # | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
+▸ 1 | Ἐν | En | G1722 | ἐν | in/on/among | In [the]
+▸ 2 | ἀρχῇ | arkhé | G0746 | ἀρχή | beginning | beginning
+▸ 3 | ἦν | én | G1510 | εἰμί | to be | was
+▸ 4 | ὁ | ho | G3588 | ὁ | the/this/who | the
+▸ 5 | λόγος | logosz | G3056 | λόγος | word | Word,
+▸ 6 | καὶ | kai | G2532 | καί | and | and
+▸ 7 | ὁ | ho | G3588 | ὁ | the/this/who | the
+▸ 8 | λόγος | logosz | G3056 | λόγος | word | Word
+▸ 9 | ἦν | én | G1510 | εἰμί | to be | was
+▸ 10 | πρὸς | prosz | G4314 | πρός | to/with | with
+▸ 11 | τὸν | ton | G3588 | ὁ | the/this/who | <the>
+▸ 12 | θεόν | theon | G2316 | θεός | God | God,
+▸ 13 | καὶ | kai | G2532 | καί | and | and
+▸ 14 | θεὸς | theosz | G2316 | θεός | God | God
+▸ 15 | ἦν | én | G1510 | εἰμί | to be | was
+▸ 16 | ὁ | ho | G3588 | ὁ | the/this/who | the
+▸ 17 | λόγος | logosz | G3056 | λόγος | word | Word.
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
 ## [vers.bsb]
-Angol szavak szavanként (BSB) forrásadat gépi feldolgozás
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: BSB_Strongs (bsb): CC0 1.0
+Angol szavak szavanként (BSB)
+A BSB-forrás ehhez a vershez nem ad szavakat (a forrásból hiányzik).
+Forrás és licenc
+▸ forrásadat gépi feldolgozás
+▸ Forrás és licenc: BSB Strongs: CC0 1.0
 ## [vers.kjv]
-Angol szavak szavanként (KJV + Strong) forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
+Angol szavak szavanként (KJV + Strong)
 InG1722beginningG0746wasG2258WordG3056andG2532WordG3056wasG2258withG4314GodG2316andG2532WordG3056wasG2258GodG2316
-Forrás és licenc: KJV_Strongs_teljes (kjv): tisztázatlan [tisztázatlan]
-## [vers.morf_hu]
-Az igealak magyar feloldása gépi feldolgozás
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
-## [vers.lxx_dontes]
-LXX-fordítói döntések (adatréteg) forrásadat soronként saját proveniencia-mező
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: projekt_adat (lxx_dontesek): minden jog fenntartva
-## [vers.lxx_par]
-LXX versszintű együttelőfordulás forrásadat együttelőfordulás a versben, nem szóillesztés
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: LXX_versszintu_parok (lxx_versszintu_parok): minden jog fenntartva
+Forrás és licenc
+▸ forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
+▸ Forrás és licenc: KJV Strongs teljes: tisztázatlan [tisztázatlan]
 ## [vers.lxx_tobblet]
-LXX többlet és számozási eltérés forrásadat az adat ebben a kiadásban még nem érhető el
+LXX többlet és számozási eltérés
 Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.
-Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
-## [vers.ubs]
-UBS-jelentés az előfordulásra forrásadat
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: UBS_DBH (ubs_dbh_referenciak): CC BY-SA 4.0 [share-alike]
+Forrás és licenc
+▸ forrásadat az adat ebben a kiadásban még nem érhető el
+▸ Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
+Ezekben a forrásokban erre nincs adat (üres eredmény, nem negatív lelet): Versszámozás (MT / KJV), LXX-versszám, Héber szöveg, Septuaginta (LXX, Rahlfs), Igealak-kód és szófaj (Macula), Héber–görög párosítás szavanként (Macula), Görög szóalak és LXX-vers szavai (LXX_OS), Az igealak magyar feloldása, LXX-fordítói döntések (adatréteg), LXX versszintű együttelőfordulás, UBS-jelentés az előfordulásra.
 ## [vers.tsk]
-## [vers.kh]
 ## [vers.nave]
-## [vers.tipnr]
-## [vers.motivum]
 ## [vers.tanulmany]
-## [vers.kapcsolat]

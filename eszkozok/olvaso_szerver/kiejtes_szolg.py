@@ -71,5 +71,20 @@ def vers_szavak(sorok):
                 a, elotag, makkef = HK.teljes_szo(het, i)
                 ki.append(HK.kiejt(a, elotag, makkef))
         else:
-            ki.append(gorog(at))
+            ki.append(gorog(iota_atiras(alak, at)))
     return ki
+
+
+def iota_atiras(alak, at):
+    """F231 (#34): a TAGNT átírása a szóvégi alsó iotás étát (ῇ, ῃ) „ēa”-nak írja („ἀρχῇ” → „archēa”, „τῇ” → „tēa”; a korpuszon
+    1471 token): az alsó iota néma, a magyaros kiejtésben nem áll külön hang. Csak ott javít, ahol a görög alak szóvégén valóban
+    alsó iotás éta áll."""
+    jelek = '.,;:·'
+    if not at or not at.rstrip(jelek).endswith('ēa'):
+        return at
+    d = unicodedata.normalize('NFD', (alak or '').rstrip(jelek + '᾿’\''))
+    alap = ''.join(c for c in d if c in 'ηΗ\u0345' or unicodedata.category(c).startswith('L'))
+    if not (alap.endswith('η\u0345') or alap.endswith('Η\u0345')):
+        return at
+    vege = len(at) - len(at.rstrip(jelek))
+    return at[:len(at) - vege - 1] + at[len(at) - vege:]

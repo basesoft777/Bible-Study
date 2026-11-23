@@ -83,6 +83,12 @@ table.adat th { color: var(--muted); font-weight: 600; }
 .heber-sor { direction: rtl; display: flex; flex-wrap: wrap; gap: var(--space-he-sor); margin: 6px 0; }
 .he-szo { direction: ltr; display: grid; justify-items: center; gap: 1px; border: 1px solid var(--rule); border-radius: var(--radius-csempe); background: var(--bg); text-align: center; }
 .he-szo.nyelvtani { opacity: .62; border-style: dashed; }
+/* F231 (#30): a héber szócsoport kerete (írott szavanként; a keret tetején az egész szó és a kiejtése) */
+.he-szocsoport { direction: rtl; display: grid; gap: 2px; padding: 2px 4px 4px; border: 1px solid var(--accent); border-radius: var(--radius-csempe); background: var(--panel); }
+.he-szocsoport-fej { direction: ltr; display: grid; justify-items: center; margin: 0; text-align: center; }
+.he-szocsoport-fej .he { font-family: var(--font-he); font-size: var(--fs-csempe-heber); line-height: var(--lh-csempe); direction: rtl; }
+.he-szocsoport-fej .at { color: var(--muted); font-style: italic; font-size: var(--fs-csempe-glossza); }
+.he-szocsoport-csempek { direction: rtl; display: flex; gap: 2px; }
 .he-fo { display: grid; justify-items: center; gap: 1px; color: inherit; text-decoration: none; }
 a.he-fo:hover, a.he-fo:focus-visible { background: var(--accent-soft); border-radius: var(--radius-kiemeles); }
 .he-szo .he { font-family: var(--font-he); line-height: var(--lh-csempe); direction: rtl; }
@@ -114,7 +120,7 @@ a.he-fo:hover, a.he-fo:focus-visible { background: var(--accent-soft); border-ra
 .kapcs { display: inline-flex; gap: 6px; align-items: center; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); margin: 0 0 8px; }
 .nincs-jeloles .szo { text-decoration: none; }
 /* F149: a tanulmányok halvány margójele a tartomány első verse előtt; kikapcsolható, mobilon nincs (csak a vers paneljén él) */
-.tan-jel { display: block; margin: 10px 0 2px; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); opacity: .75; text-decoration: none; }
+.tan-jel { display: block; margin: 10px 0 2px; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); text-decoration: none; }   /* F231 (#55): átlátszóság nélkül (3,73:1 → 6,65:1) */
 .tan-jel::before { content: attr(data-jel); }   /* a szöveg attribútumban él: a fejezet szövegébe (másolás, kereső) nem kerül bele */
 .tan-jel:hover, .tan-jel:focus-visible { opacity: 1; text-decoration: underline; }
 .nincs-tan-jeloles .tan-jel { display: none; }
@@ -243,9 +249,24 @@ abbr.rovidites:focus::after { content: attr(title); position: absolute; left: 0;
 .szk-alcim { margin: 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; }
 .szk-alpont .szk-glossza { font-size: var(--fs-sor); }
 .szk-alpont .szk-sorok, .szk-alpont .szk-also { padding-left: 0; }
-.szk-egyben { display: none; }
-.szk[data-nezet="egyben"] .szk-egyben { display: block; }
-.szk[data-nezet="egyben"] .szk-sorok, .szk[data-nezet="egyben"] .szk-also, .szk[data-nezet="egyben"] .szk-lenyilok { display: none; }
+/* F231 (olvasó egyben): a szótári szöveg jelentésenként egybefüggően; a törzs alakjai; a meghatározás nélküli pont pótcíme */
+.szk-szoveg { margin: 8px 0 0; padding-left: 2.3rem; font: var(--fs-szocikk)/var(--lh-szocikk) var(--font-text); }
+.szk-alpont .szk-szoveg { padding-left: 0; }
+.szk-szoveg a.igehely { white-space: nowrap; }
+.szk-szoveg a.bdb-itt, .szk-szoveg a.bdb-vonatkozhat { background: var(--accent-soft); border-radius: var(--radius-kiemeles); font-weight: 600; padding: 0 2px; }
+.szk-szoveg a.szk-mot { background: var(--gold-soft); box-shadow: inset 0 -2px 0 var(--gold); }
+.szk-szoveg a.szk-mot2 { border-bottom: 1px dotted var(--gold); }
+.szk-torzs-alakok { margin: 0 0 8px; font: var(--fs-szocikk)/var(--lh-szocikk) var(--font-text); color: var(--muted); }
+.szk-torzs-egyben .szk-szoveg { padding-left: 0; }
+.szk-jel-inline { font-family: var(--font-mono); }
+.szk-potcim, .szk-tj-gl.szk-potcim { font-style: italic; font-weight: 400; }
+.szk-szamozas { margin: 4px 0 0; }
+.szamozas-sor { margin: 0; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
+.szo-szamok { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+.szo-szam { margin: 0; padding: 6px 12px; border: 1px solid var(--rule); border-radius: var(--radius-kiemeles); background: var(--panel); font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
+.szo-szam b { display: block; font: 600 var(--fs-jelentes-cim) var(--font-text); color: var(--fg); }
+meter.sav { width: 8rem; height: .7rem; vertical-align: middle; }
+sup { line-height: 0; }
 .szk-jel:target > details > summary .szk-glossza, .szk-alpont:target .szk-alcim .szk-glossza { background: var(--accent-soft); border-radius: var(--radius-kiemeles); }
 .angol-kis { margin-left: 6px; font-size: var(--fs-megjegyzes); color: var(--muted); }
 .angol-eredeti > summary { cursor: pointer; font: var(--fs-megjegyzes) var(--font-ui); color: var(--muted); }
@@ -464,7 +485,7 @@ details[open] > summary.morzsa { border-color: var(--accent); }
 .kanon-konyv[data-mufaj="kis"], .mufaj[data-mufaj="kis"] .mufaj-cim::before { color: var(--g-kis); }
 .mufaj[data-mufaj="kis"] .konyvgomb { border-color: color-mix(in srgb, var(--g-kis) 40%, transparent); background: color-mix(in srgb, var(--g-kis) 10%, transparent); }
 .mufaj[data-mufaj="kis"] .konyvgomb:hover, .mufaj[data-mufaj="kis"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-kis) 28%, transparent); }
-.mufaj[data-mufaj="kis"] .konyvgomb.itt { background: var(--g-kis); border-color: var(--g-kis); color: var(--panel); }
+.mufaj[data-mufaj="kis"] .konyvgomb.itt { background: color-mix(in srgb, var(--g-kis) 85%, black); border-color: var(--g-kis); color: var(--panel); }   /* F231 (#54): a token a mockupé (#a0702a, 4,26:1); az aktív gombon sötétítve ≈ 5,4:1 (WCAG AA) */
 .kanon-konyv[data-mufaj="ev"], .mufaj[data-mufaj="ev"] .mufaj-cim::before { color: var(--g-ev); }
 .mufaj[data-mufaj="ev"] .konyvgomb { border-color: color-mix(in srgb, var(--g-ev) 40%, transparent); background: color-mix(in srgb, var(--g-ev) 10%, transparent); }
 .mufaj[data-mufaj="ev"] .konyvgomb:hover, .mufaj[data-mufaj="ev"] .konyvgomb:focus-visible { background: color-mix(in srgb, var(--g-ev) 28%, transparent); }
@@ -530,3 +551,10 @@ details[open] > summary.morzsa { border-color: var(--accent); }
 .tan-szoveg table.tan-tabla th, .tan-szoveg table.tan-tabla td { border: 1px solid var(--rule); padding: 3px 8px; vertical-align: top; }
 .tan-toc ul { list-style: none; padding-left: 0; }
 .tan-toc li.szint-3 { padding-left: 1.2em; }
+
+/* F231 (#55): érintőképernyőn a kezelőelemek legalább 44 px magasak (WCAG 2.5.5); az egérrel használt elrendezés változatlan */
+@media (pointer: coarse) {
+  .szintvalto a, .reteg-kapcsolo, .tema button, .ful, .fejezetgomb, .konyvgomb, .szk-tobb,
+  .szk-lenyilok > details > summary, .szk-also > details > summary { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .fejezetgomb, .konyvgomb { display: flex; }
+}

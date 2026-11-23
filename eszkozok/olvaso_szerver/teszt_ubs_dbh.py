@@ -9,6 +9,7 @@ szétválasztása (`szo.magyar_gorog`: glossza / definíció). Hermetikus: memó
 import os
 import sqlite3
 import sys
+import re
 import unittest
 from types import SimpleNamespace
 
@@ -83,9 +84,13 @@ class MagyarGorogSzetvalasztas(unittest.TestCase):
         con = adatbazis()
         d = q.magyar_gorog(con, 'G1941')
         self.assertEqual({x[3] for x in d}, {'glosszak_hu', 'definicio_hu'})
-        html = str(blokkok._r_magyar_gorog(d, SimpleNamespace(con=con, strong='G1941')))
-        self.assertIn('56.15. jelentés · glossza', html)
-        self.assertIn('56.15. jelentés · definíció', html)
+        # F231 (#27): az UBS DNTG magyar fordítása a jelentésenkénti UBS-blokkban áll (a kulcs a lexid), a Thayer-kártyában nem
+        k = SimpleNamespace(con=con, strong='G1941')
+        jel = [('001957003000', 'Judicial Hearing, Inquiry', 'to claim one’s legal right', 'to appeal one’s case')]
+        html = str(blokkok._r_ubs_dntg((jel, []), k))
+        self.assertIn('ügyében fellebbezni', html)                     # glosszak_hu
+        self.assertIn('a törvényes jog érvényesítése', html)      # definicio_hu
+        self.assertIn('azonosító: 001957003000', re.sub(r'title="[^"]*"', '', html))     # F231.17 (DT-F231e): az azonosító látható, a main szerint
 
 
 if __name__ == '__main__':

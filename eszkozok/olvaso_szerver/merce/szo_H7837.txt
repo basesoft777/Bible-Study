@@ -1,29 +1,36 @@
 # F232 olvasói pillanatkép: /szo/H7837
 # A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
 # Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
-PaRDeS olvasó
+Biblialex olvasó
 ⌕
 ⚙
 ▸ Rétegek
 ▸ Interlineáris sor
-▸ Szint nyilvanos regisztralt kutato
+▸ Szint nyilvános regisztrált kutató
 ▸ Téma
 ▸ Rendszer Világos Sötét
 H7837 שַׁ֫חַר
 sachar · főnév, hímnemű
 Alapjelentés hajnal
-szó-lap önálló címen · előfordulások versenként
+24 előfordulás
+13 könyvben
+24 Károli-előfordulás
+A szó saját lapja · Minden előfordulás versenként (keresés)
 ## [szo.szotar]
-Strong-szótár forrásadat modell-kimenet
+Strong-szótár
 Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás
-שַׁ֫חַר | sachar | főnév, hímnemű | hajnal dawn | from H7836
-Forrás és licenc: Strong_szotar (strong_szotar): CC BY 4.0 · TBESH+TAHOT+projekt_adat (glosszak_heber_hu): CC BY 4.0; minden jog fenntartva
+שַׁ֫חַר | sachar | főnév, hímnemű | hajnal | from H7836
+Forrás és licenc
+▸ forrásadat modell-kimenet
+▸ Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva
 ## [szo.elofordulas]
-Előfordulás, könyvek száma gépi feldolgozás
+Előfordulás, könyvek száma
 24 előfordulás, 13 könyvben.
-Forrás és licenc: TAHOT+TAGNT (token_strong): CC BY 4.0
+Forrás és licenc
+▸ gépi feldolgozás
+▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
 ## [szo.karoli_alakok]
-Károli-alakok és pontosság modell-kimenet
+Károli-alakok és pontosság
 24 Károli-előfordulás. A párosítás mért pontossága 95%.
 Károli-alak | Darab
 hajnal | 12
@@ -34,17 +41,19 @@ hajnalok | 1
 keletkezését | 1
 hajnalra | 1
 alkonyat | 1
-A 66 feldolgozott könyv (1Jan, 1Kir, 1Kor, 1Kron, 1Moz, 1Pet, 1Sam, 1Thessz, 1Tim, 2Jan, 2Kir, 2Kor, 2Kron, 2Moz, 2Pet, 2Sam, 2Thessz, 2Tim, 3Jan, 3Moz, 4Moz, 5Moz, Abd, Amos, ApCsel, Bir, Dan, Ef, En, Eszt, Ez, Ezs, Ezsd, Fil, Filem, Gal, Hab, Hag, Hos, Jak, Jan, Jel, Jer, Job, Joel, Jon, Jozs, Jud, Kol, Luk, Mal, Mik, Mk, Mt, Nah, Neh, Peld, Pred, Rom, Ruth, Sir, Sof, Tit, Zak, Zsid, Zsolt) szó szintű párjai alapján.
-Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0
+Mind a 66 könyv szó szintű párjai alapján.
+Forrás és licenc
+▸ modell-kimenet
+▸ Forrás és licenc: Karoli Strong parok: CC BY 4.0
 ## [szo.bdb_apparatus]
-Szótár: BDB-szócikk (Brown–Driver–Briggs) forrásadat modell-kimenet gépi feldolgozás
+Szótár: BDB-szócikk (Brown–Driver–Briggs)
 Lefordítva · gépi fordítás, 2026.10.26
 שַׁ֫חַר‎28 hivatkozás a címszónál
 főnév hímnemű 1Móz 19:15 hajnal
-Alakok
-▸ önálló שׁ׳‎ 1Sám 9:26 +, שָׁ֑חַר Bír 19:25 +; suffixummal שַׁחְרָךְ Ézs 47:11 (de olvasandó valószínűleg שַׁחֲדָהּ) — hajnal, עָלָה-val felkel 1Móz 19:15; 32:25, 27; Józs 6:15 (mind J), Bír 19:25; 1Sám 9:26; Neh 4:15; Jón 4:7; szemben עֵיפָה-val Ámós 4:13; határozószóként hajnalban Zsolt 57:9 = 108:3; ׳עַפְעַפֵּישֿׁ Jób 3:9; 41:10; ׳כַּנְפֵישֿׁ Zsolt 139:9; 110:3 olvasandó valószínűleg שׁ ׳רֶחֶם (l. מִשְׁחָר alább); שׁ׳ Jób 38:12 is, hasonlatban Hós 6:3 (de olvasandó נִמְצָאֵהוּ כֵּן כְּשַׁחֲרֵנוּ mint infinitivus, l. a következőt, Gie^Beitr. 208 We Now GASm Marti), Ézs 58:8; Én 6:10; Jóel 2:2 (al. feketeség, || עָנָן וַעֲרָפֶל); ׳בֶּןשֿׁ Ézs 14:12 (csillagról, átvitten a királyi fényről — szó szerint mint mítosz RS^K 300); אֵין לוֺ שׁ׳‎ 8:20 homályos, így ׳בַּשּׁ Hós 10:15 is (We viharban, azaz בַּשַּׂעַר). — Ézs 47:11 rendszerint, de valószínűtlenül, a csapás hajnala (eredete): JHMich Hi Ew Rö (Thes) De Di és mások elvarázsolja (RVm) (arab megbűvöl (We^Heid. 2. 159, 200), varázslat [= szabeus סחר DHM^Hofmus. 24. 1]); de l. [ שָׁחַד].
 Rokon nyelvek és eredet
-▸ DHM^Hofmus.Gie^Beitr.RS^KWe^Heid.
+▸ DHMHofmus.GieBeitr.RSKWeHeid.
+A szótár ezt a szócikket nem tagolja számozott jelentésekre; a teljes szöveg áll.
+önálló שׁ׳‎ 1Sám 9:26 és máshol, שָׁ֑חַר Bír 19:25 és máshol; suffixummal שַׁחְרָךְ Ézs 47:11 (de olvasandó valószínűleg שַׁחֲדָהּ) — hajnal, עָלָה-val felkel 1Móz 19:15; 32:25, 27; Józs 6:15 (mind J), Bír 19:25; 1Sám 9:26; Neh 4:15; Jón 4:7; ellentétben: עֵיפָה Ámós 4:13; határozószóként hajnalban Zsolt 57:9 = 108:3; ׳עַפְעַפֵּישֿׁ Jób 3:9; 41:10; ׳כַּנְפֵישֿׁ Zsolt 139:9; 110:3 olvasandó valószínűleg שׁ׳ רֶחֶם (l. מִשְׁחָר alább); שׁ׳ Jób 38:12 is, hasonlatban Hós 6:3 (de olvasandó נִמְצָאֵהוּ כֵּן כְּשַׁחֲרֵנוּ mint infinitivus, l. a következőt, GieBeitr. 208 We Now GASm Marti), Ézs 58:8; Én 6:10; Jóel 2:2 (al. feketeség, párhuzamban: עָנָן וַעֲרָפֶל); בֶּן־שׁ׳ Ézs 14:12 (csillagról, átvitten a királyi fényről — szó szerint mint mítosz RSK 300); אֵין לוֺ שׁ׳‎ 8:20 homályos, így בַּשּׁ׳ Hós 10:15 is (We viharban, azaz בַּשַּׂעַר). — Ézs 47:11 rendszerint, de valószínűtlenül, a csapás hajnala (eredete): JHMich Hi Ew Rö (Thes) De Di és mások elvarázsolja (RVm) (arab megbűvöl (WeHeid. 2. 159, 200), varázslat [= szabeus סחר DHMHofmus. 24. 1]); de l. [ שָׁחַד].
 Jelmagyarázat
 ▸ J
 ▸ jahvista forrás (a BDB forrásbesorolása a dokumentum-hipotézis szerint)
@@ -67,51 +76,64 @@ Jelmagyarázat
 ▸ We
 ▸ J. Wellhausen
 ▸ A feloldás nem a BDB része; csak a fenti jelentésekben előforduló jelek. A szövegben a pontozottan aláhúzott jelre mutatva is megjelenik.
-A magyar szócikk teljes szövege (tagolás nélkül)
-▸ שַׁ֫חַר főnév hímnemű^1Móz 19:15 hajnal; — önálló שׁ׳‎ 1Sám 9:26 +, שָׁ֑חַר Bír 19:25 +; suffixummal שַׁחְרָךְ Ézs 47:11 (de olvasandó valószínűleg שַׁחֲדָהּ); — hajnal, עָלָה-val felkel 1Móz 19:15; 32:25, 27; Józs 6:15 (mind J), Bír 19:25; 1Sám 9:26; Neh 4:15; Jón 4:7; szemben עֵיפָה-val Ámós 4:13; határozószóként hajnalban Zsolt 57:9 = 108:3; ׳עַפְעַפֵּישֿׁ Jób 3:9; 41:10; ׳כַּנְפֵישֿׁ Zsolt 139:9; 110:3 olvasandó valószínűleg שׁ ׳רֶחֶם (l. מִשְׁחָר alább); שׁ׳ Jób 38:12 is, hasonlatban Hós 6:3 (de olvasandó נִמְצָאֵהוּ כֵּן כְּשַׁחֲרֵנוּ mint infinitivus, l. a következőt, Gie^Beitr. 208 We Now GASm Marti), Ézs 58:8; Én 6:10; Jóel 2:2 (al. feketeség, || עָנָן וַעֲרָפֶל); ׳בֶּןשֿׁ Ézs 14:12 (csillagról, átvitten a királyi fényről; — szó szerint mint mítosz RS^K 300); אֵין לוֺ שׁ׳‎ 8:20 homályos, így ׳בַּשּׁ Hós 10:15 is (We viharban, azaz בַּשַּׂעַר). — Ézs 47:11 rendszerint, de valószínűtlenül, a csapás hajnala (eredete): JHMich Hi Ew Rö (Thes) De Di és mások elvarázsolja (RVm) (arab megbűvöl (We^Heid. 2. 159, 200), varázslat [= szabeus סחר DHM^Hofmus. 24. 1]); de l. [ שָׁחַד].
-Forrás és licenc: BDB (bdb): közkincs · BDB+projekt_adat (bdb_alias): közkincs; minden jog fenntartva · projekt_adat (forditasok): minden jog fenntartva · BDB+Macula_heber+OSHL+TAHOT+projekt_adat (bdb_vers_jelentes): közkincs; CC BY 4.0; minden jog fenntartva · TAHOT+TAGNT (token_eredeti): CC BY 4.0 · Macula_heber (token_macula): CC BY 4.0 · morf_kulcs_heber (morf_kulcs_heber): CC BY 4.0 · morf_nyelv_aramai (morf_nyelv_aramai): CC BY 4.0
+A magyar szócikk teljes szövege, tagolás nélkül
+▸ שַׁ֫חַר főnév hímnemű 1Móz 19:15 hajnal; — önálló שׁ׳‎ 1Sám 9:26 és máshol, שָׁ֑חַר Bír 19:25 és máshol; suffixummal שַׁחְרָךְ Ézs 47:11 (de olvasandó valószínűleg שַׁחֲדָהּ); — hajnal, עָלָה-val felkel 1Móz 19:15; 32:25, 27; Józs 6:15 (mind J), Bír 19:25; 1Sám 9:26; Neh 4:15; Jón 4:7; ellentétben: עֵיפָה Ámós 4:13; határozószóként hajnalban Zsolt 57:9 = 108:3; ׳עַפְעַפֵּישֿׁ Jób 3:9; 41:10; ׳כַּנְפֵישֿׁ Zsolt 139:9; 110:3 olvasandó valószínűleg שׁ׳ רֶחֶם (l. מִשְׁחָר alább); שׁ׳ Jób 38:12 is, hasonlatban Hós 6:3 (de olvasandó נִמְצָאֵהוּ כֵּן כְּשַׁחֲרֵנוּ mint infinitivus, l. a következőt, GieBeitr. 208 We Now GASm Marti), Ézs 58:8; Én 6:10; Jóel 2:2 (al. feketeség, párhuzamban: עָנָן וַעֲרָפֶל); בֶּן־שׁ׳ Ézs 14:12 (csillagról, átvitten a királyi fényről; — szó szerint mint mítosz RSK 300); אֵין לוֺ שׁ׳‎ 8:20 homályos, így בַּשּׁ׳ Hós 10:15 is (We viharban, azaz בַּשַּׂעַר). — Ézs 47:11 rendszerint, de valószínűtlenül, a csapás hajnala (eredete): JHMich Hi Ew Rö (Thes) De Di és mások elvarázsolja (RVm) (arab megbűvöl (WeHeid. 2. 159, 200), varázslat [= szabeus סחר DHMHofmus. 24. 1]); de l. [ שָׁחַד].
+Forrás és licenc
+▸ forrásadat modell-kimenet gépi feldolgozás
+▸ Forrás és licenc: BDB: közkincs · BDB+a projekt saját adata: közkincs; minden jog fenntartva · a projekt saját adata: minden jog fenntartva · BDB+Macula heber+OSHL+TAHOT+a projekt saját adata: közkincs; CC BY 4.0; minden jog fenntartva · TAHOT+TAGNT: CC BY 4.0 · Macula heber: CC BY 4.0 · morf kulcs heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
 ## [szo.lxx_bridge]
-Görög megfelelő (Septuaginta) forrásadat
+Görög megfelelő (Septuaginta)
 Görög Strong | Szótő | Jelentés | Darab
 G3722 | ὄρθρος | dawn | 8
-Forrás és licenc: lxx_bridge (lxx_bridge): CC BY 4.0
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: lxx bridge: CC BY 4.0
 ## [szo.ubs_dbh]
-UBS DBH jelentések (a teljes szócikk, magyar fordítással) forrásadat modell-kimenet CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet
-Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)
-007306001001000 | Time | (fordításra vár) | (fordításra vár) | dawn | = the first appearance of light in the sky in the early morning
-007306001002000 | Dark | (fordításra vár) | (fordításra vár) | darkness | literally: dawn; hence: = state in which there is (almost) no light, ► resulting in a state in which no one can readily see, and colors and shapes cannot yet be distinguished
-Forrás és licenc: UBS_DBH (ubs_dbh_jelentesek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+UBS DBH jelentések (a teljes szócikk, magyar fordítással)
+Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)
+Time | (fordításra vár) | (fordításra vár) | dawn | = the first appearance of light in the sky in the early morning
+Dark | (fordításra vár) | (fordításra vár) | darkness | literally: dawn; hence: = state in which there is (almost) no light, ► resulting in a state in which no one can readily see, and colors and shapes cannot yet be distinguished
+Forrás és licenc
+▸ forrásadat modell-kimenet CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet
+▸ Forrás és licenc: UBS DBH: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.sdbh]
-Szemantikai domén (SDBH) forrásadat üres eredmény nem negatív lelet
-Domén kód | Domén | Glossza | Hivatkozás
-002001001018 | Dark | darkness | 1
-002002002010 | Time | dawn | 23
-Forrás és licenc: SDBH (sdbh_domenek): CC BY-SA 4.0 [share-alike] · projekt_adat (forditasok): minden jog fenntartva
+Szemantikai domén (SDBH)
+Domén | Glossza | Hivatkozás
+Dark | darkness | 1
+Time | dawn | 23
+Forrás és licenc
+▸ forrásadat üres eredmény nem negatív lelet
+▸ Forrás és licenc: SDBH: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.sece_h]
-SECE-szócikk (héber) forrásadat
+SECE-szócikk (héber)
 שַׁחַר (shachar｜shakh'-ar｜noun｜masculine｜dawn) [Heb] שַׁחַר ETCBC: שַׁחַר (subs｜dawn) OSHL: v.cp.ab TWOT: 2369a GK: H8840 Greek: ὄρθρος, πρωΐ Derivation: from שָׁחַר; Strong's: dawn (literal, figurative or adverbial) KJV: day(-spring), early, light, morning, whence riseth.
-Forrás és licenc: SECE_H (sece_h): közkincs
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: SECE H: közkincs
 ## [szo.oshl]
-OSHL: TWOT- és BDB-azonosító, BDB-helyek forrásadat
+OSHL: TWOT- és BDB-azonosító, BDB-helyek
 TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás
 2369a | v.cp.ab | heber | mqb | שַׁ֫חַר | šaḥar | N | dawn
-Forrás és licenc: OSHL (oshl_lexikalis_index): CC BY 4.0 · OSHL_BDB (oshl_bdb_igehelyek): CC BY 4.0
+Forrás és licenc
+▸ forrásadat
+▸ Forrás és licenc: OSHL: CC BY 4.0 · OSHL BDB: CC BY 4.0
 ## [szo.oshl_csalad]
-Rokon szavak (OSHL-gyökcsalád) forrásadat az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet
+Rokon szavak (OSHL-gyökcsalád)
 Gyök: שׁחר (Strong-szám nélküli gyök-bejegyzés)
 Strong | Lemma | Átírás | Szófaj | Angol meghatározás
 H4891 | מִשְׁחָר | mišḥār | N | dawn
 H7837 | שַׁ֫חַר | šaḥar | N | dawn
 H7836 | שָׁחַר | šāḥar | V | look early
-Forrás és licenc: OSHL (oshl_lexikalis_index): CC BY 4.0
+Forrás és licenc
+▸ forrásadat az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet
+▸ Forrás és licenc: OSHL: CC BY 4.0
 ## [szo.tbesh]
-Bővített Strong-szócikk (TBESH) forrásadat gépi feldolgozás modell-kimenet
+Bővített Strong-szócikk (TBESH)
 Szó | Átírás | Morf | Gloss | Jelentés
-שַׁ֫חַר | sha.char | H:N-M | hajnal dawn | 1) dawn
+שַׁ֫חַר | sha.char | H:N-M | hajnal | 1) dawn
 1a) dawn
 1b) at dawn (as adverb)
-Forrás és licenc: TBESH (tbesh): CC BY 4.0 · TBESH+TAHOT+projekt_adat (glosszak_heber_hu): CC BY 4.0; minden jog fenntartva · projekt_adat (forditasok): minden jog fenntartva
-## [szo.tw_h]
-translationWords forrásadat
-Nincs adat (üres eredmény, nem negatív lelet).
-Forrás és licenc: tW_szocikkek (tw_szocikkek): CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · projekt_adat (forditasok): minden jog fenntartva
+Forrás és licenc
+▸ forrásadat gépi feldolgozás modell-kimenet
+▸ Forrás és licenc: TBESH: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva · a projekt saját adata: minden jog fenntartva
+Ezekben a forrásokban erre nincs adat (üres eredmény, nem negatív lelet): translationWords.

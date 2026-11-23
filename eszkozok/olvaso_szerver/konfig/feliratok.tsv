@@ -1,0 +1,153 @@
+# Az olvasó fordítótáblája (DT897): a #231 és a #233 által írt vagy átírt feliratok. Betöltő és szabály: feliratok.py.
+# Oszlopok: kulcs, hu, en (az angol üresen maradhat; üresnél a magyar áll). Helyőrző: %(nev)s. Sortörés: \n.
+kulcs	hu	en
+szk.parhuzamos_hely	párhuzamos hely:	parallel passage:
+szk.parhuzamban	párhuzamban:	in parallel with:
+szk.ellentetben	ellentétben: %(szo)s	in contrast to: %(szo)s
+szk.es	és	and
+szk.es_mashol	és máshol	and elsewhere
+szk.allapot_forditva	Lefordítva · gépi fordítás, %(datum)s	
+szk.allapot_angol	Magyar fordítás nincs · az angol eredeti áll	
+szk.besorolas_cim	A BDB besorolása: %(ig)s	
+szk.besorolas_pont	A szótár ezt a helyet ebbe a jelentésbe sorolja:	
+szk.besorolas_heber_szamozas	(a BDB a héber versszámozással: %(mt)s)	
+szk.besorolas_ketes	A BDB idézi ezt a verset, de a jelentéspont gépi besorolása kétes, vagy a hely a szócikk fejében, illetve tagolatlan részén áll: jelentéspontot nem jelölünk.	
+szk.besorolas_nem_idezi	A BDB ezt a verset nem idézi; jelentéspontot idézet nélkül nem jelölünk.	
+szk.besorolas_torzs	A szó igetörzse ebben a versben:	
+szk.besorolas_nincs_tabla	A vers → jelentés tábla ebben az adatbázisban nem érhető el; a szócikk jelölés nélkül áll.	
+szk.besorolas_jelzes	a BDB besorolása ennél a versnél	
+szk.ez_a_vers	ez a vers	
+szk.hivatkozas_db	%(n)s hivatkozás	
+szk.hivatkozas_cimszo	%(n)s hivatkozás a címszónál	
+szk.hivatkozas_szocikk	%(n)s igehely-hivatkozás a szócikkben	
+szk.homonima	%(n)s. címszó	
+szk.elofordulas_bdb	%(n)s előfordulás (BDB)	
+szk.torzs_db	%(n)s előfordulás a BDB szerint	
+szk.alakok	Alakok	
+szk.rokon	Rokon nyelvek és eredet	
+szk.irodalom_sugo	BDB irodalmi hivatkozás (szerző és mű)	
+szk.krit_sugo	a BDB jele	
+szk.tagolatlan_megj	A szótár ezt a szócikket nem tagolja számozott jelentésekre; a teljes szöveg áll.	
+szk.egyben_megj	A szótár itt ragozott alakokat sorol; a gépi tagolás ennél a törzsnél nem ad jelentéspontokat, ezért a törzs szövege egyben áll.	
+szk.rendje	A jelentések rendje a BDB szerint	
+szk.nem_azonosithato	%(n)s hivatkozás a szövegben kattintható, de a jelentéspontja ebben a tagolásban nem azonosítható; a pontok számában nem szerepel.	
+szk.jelmagyarazat	Jelmagyarázat	
+szk.teljes_szoveg	A magyar szócikk teljes szövege, tagolás nélkül	
+szk.angol_eredeti	Angol eredeti	English original
+szk.lxx_elotag	LXX	LXX
+szk.lxx_nelkul	%(n)s megfelelő nélkül	
+szk.lxx_sugo	A görög megfelelő a Septuagintában ennél a jelentésnél: a BDB által itt idézett versekben a szó szószintű LXX-párja és a párok száma (egy versben több pár is lehet, ezért az összeg eltérhet a hivatkozások számától).	
+szk.motivum_sugo	a %(mot)s motívum helyei ennél a jelentésnél (a motívum sora ezen a szón)	
+szk.motivum_cimke	%(mot)s · %(n)s hely	
+szk.kezi_cimke	szerkesztői címke	
+szk.kezi_cimke_sugo	a jóváhagyott szerkesztői címke	
+szk.szamozas	Versszámozás: a BDB a héber számozást követi;	
+szk.szamozas_par	%(mt)s = Károli %(karoli)s	
+szk.apparatus	Apparátus és szövegkritika	
+szk.app_db	%(n)s tétel	
+szk.app_forrasjel	forrásjel	
+szk.app_megjegyzes	megjegyzés	
+szk.app_szamozas	számozás	
+szk.szakasz.elo	Zárójeles előszócikk (más gyök)	
+szk.szakasz.aramit	Arámi (Pe'al) rész	
+szk.szakasz.azonos_lemma	További homonima ugyanezen a lemmán	
+szk.szakasz.masik_lemma	Másik szó (más lemma)	
+szk.szakasz.tagolas	rész (a címszó fő tagolása)	
+szk.alakok_sor	Alakok:	
+szk.allapot_forditva_rovid	Lefordítva · gépi fordítás	
+blokk.forrasszoveg	Forrásszöveg (nyers, angol) megnyitása	
+blokk.szo.magyar_gorog	Szótár: Thayer-szócikk	
+blokk.szo.tbesg	TBESG (forrásszöveg)	
+blokk.szo.thayer	Thayer, angol (forrásszöveg)	
+szk.feloldva	feloldva: %(ig)s	
+szk.forditasra_var	(fordításra vár)	
+szk.th_besorolas_cim	A Thayer besorolása: %(ig)s	
+szk.th_besorolas_pont	A szótár ezt a helyet ebbe a jelentésbe sorolja:	
+szk.th_nem_idezi	A Thayer ezt a verset nem idézi; jelentéspontot idézet nélkül nem jelölünk.	
+szk.th_rendje	A jelentések rendje a Thayer szerint	
+szk.th_szocikk_eleje	a szócikk eleje	
+ubs.elofordulasok	Előfordulások (%(db)s):	
+ubs.elso40	Az előfordulások közül az első 40 áll.	
+usz.osszeg	%(n)s előfordulás %(v)s versben.	
+usz.lanc	A számlálás bontása: %(n)s előfordulás, ebből %(lanc)s láncelemként (a TAGNT „+” Strong-láncában, pl. krázis-alaknál); az egész mezős előfordulás %(egesz)s.	
+usz.elso	Az első %(db)s vers áll a %(v)s közül.	
+usz.oszlop_igehely	Igehely	
+usz.oszlop_karoli	Károli-szöveg	
+usz.oszlop_ubs	Jelentés (UBS)	
+usz.ubs_sugo	UBS DNTG jelentés-azonosító: %(lex)s	
+karoli.alak	Károli-alak	
+karoli.darab	Darab	
+karoli.mind	Mind a %(n)s könyv szó szintű párjai alapján.	
+karoli.resz	A %(n)s feldolgozott könyv (%(konyvek)s) szó szintű párjai alapján; a többi könyv még hiányzik.	
+par.pontossag	%(p)s%% (%(csoport)s)	
+par.pontossag_sugo	a párosítás mért pontossága ebben a könyvcsoportban, 95%%-os intervallum: %(also)s–%(felso)s%%; proveniencia: %(prov)s	
+par.oszlop_sorszam	Károli-szó (sorszám)	
+par.oszlop_szo	Szó	
+par.oszlop_eredeti	Eredeti	
+par.oszlop_strong	Strong	
+par.oszlop_pontossag	Mért pontosság	
+ebben.tobb_heber	ez a magyar szó több héber szót ad vissza együtt:	
+ebben.pontossag	a párosítás mért pontossága: %(p)s	
+csempe.szocsoport_sugo	egy írott szó, %(db)s elemből (előtag, szótő, rag): a keret tetején az egész szó és a kiejtése	
+blokk.tablazatos	Táblázatos nézet (a csempék adatai soronként)	
+vers.szamozas_sor	Versszámozás: héber (MT) %(mt)s · angol (KJV) %(kjv)s	
+vers.szamozas_sugo	osztály: %(osztaly)s; a megfeleltetés forrása: %(forras)s	
+vers.lxx_sor	Septuaginta-versszám: %(lxx)s	
+vers.szamozas_fej.osztaly	Osztály	
+vers.szamozas_fej.kjv	KJV-versszám	
+vers.szamozas_fej.mt	MT-versszám	
+vers.szamozas_fej.forras	A megfeleltetés forrása	
+vers.osztaly.KEZI	kézi	
+vers.megfeleltetes.szamlalas	versszámlálás	
+vers.megfeleltetes.tvtms	TVTMS (STEPBible-versmegfeleltetés)	
+vers.megfeleltetes.szoveg_osszevetes_f117	szövegösszevetés	
+vers.megfeleltetes.kezi_identitas_javitas	kézi javítás (azonos vers)	
+vers.megfeleltetes.kezi	kézi megfeleltetés	
+vers.megfeleltetes.macula_mt_f146	Macula (héber számozás)	
+vers.megfeleltetes.kezi_tobbforrasu_osszevonas	kézi, több forrás összevonásával	
+vers.megfeleltetes.lxx_os_etalon_f91	Septuaginta-etalon (LXX_OS)	
+vers.lxx_forras_fej	Forrás	
+vers.lxx_versszam_fej	LXX-versszám	
+vers.lxx_forras.nincs	nincs	
+vers.lxx_terkep	térkép (KJV-kulcs)	
+forras.projekt_adat	a projekt saját adata	
+olvaso.nev	Biblialex olvasó	Biblialex reader
+szint.nyilvanos	nyilvános	public
+szint.regisztralt	regisztrált	registered
+szint.kutato	kutató	researcher
+szo.sajat_lap	A szó saját lapja	
+szo.minden_elofordulas	Minden előfordulás versenként (keresés)	
+mot.azonosito	Azonosító	
+mot.motivum	Motívum	
+mot.szint	Értelmezési szint	
+mot.funkcio	Funkció	
+mot.strong	Strong	
+mot.karoli_szo	Károli-szó	
+mot.megbizhatosag	Megbízhatóság	
+mot.proveniencia	Proveniencia	
+mot.elozo	Előző előfordulás	
+mot.kovetkezo	Következő előfordulás	
+mot.hol	Hol merült fel:	
+tsk.osszeg	%(n)s kereszthivatkozás; az első %(db)s áll, a szavazatszám szerint.	
+tsk.hivatkozas	Hivatkozás	
+tsk.szavazat	Szavazat	
+bsb.hianyzik	A BSB-forrás ehhez a vershez nem ad szavakat (a forrásból hiányzik).	
+kezdolap.cim	Károli-bibliaszöveg	
+szo.szam_elofordulas	előfordulás	
+szo.szam_konyv	könyvben	
+szo.szam_karoli	Károli-előfordulás	
+szk.teljes_nyitva	A tagolt kártya ennek a szócikknek egy részét nem adja vissza (a szakasztábla itt hiányos), ezért a teljes magyar szöveg nyitva áll.	
+karoli.osszes	%(n)s Károli-előfordulás.	
+karoli.pontossag_sugo	%(leiras)s: %(p)s (95%%-os konfidencia-intervallum: %(also)s–%(felso)s%%); proveniencia: %(prov)s	
+ubs.azonosito	Azonosító	
+ubs.azonosito_sor	· azonosító: %(lex)s	
+ubs.domen	Domén	
+ubs.glossza_hu	Glossza (magyar)	
+ubs.definicio_hu	Definíció (magyar)	
+ubs.glossza_en	Glossza (angol)	
+ubs.definicio_en	Definíció (angol)	
+domen.kod	Domén kód	
+domen.domen	Domén	
+domen.glossza	Glossza	
+domen.hivatkozas	Hivatkozás	
+domen.kod_sugo	doménkód: %(kod)s	

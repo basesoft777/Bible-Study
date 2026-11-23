@@ -6,18 +6,28 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 sav: SERVER
-allapot: nem_indult
+allapot: fut
 ad: az olvasó szó-lapján (/szo/<Strong>) a BDB és a Thayer ugyanazzal a kártyával jelenik meg, a lexikonlap 4.2 „Mélységi szócikk” mintájára (a jelentések rendje, alatta szakaszonként egybefüggő szöveg, magyar, ahol van, különben angol, ugyanabban a kártyában); a görög szó-lap blokksora a héberével egyenértékű; a látható szövegben nincs nyers BDB-jelölés, könyvnév nélküli hivatkozás és belső azonosító, ezt kapu védi
-kovetkezo: "Indítható a #781 (F230) és a #232 merge-e után; első lépés: M0, a kártyamodell forrásának eldöntése (⛔ DT-F231a)"
+kovetkezo: "PR #810 (draft): a tételmérce (teszt_tetelmerce.py) 58/58 zöld, a kapu zöld; következő: a szerkesztő nézése az ágas előnézeten (DT886), a nézett hash a PR leírásában"
 munka: folyamat
-olvas: [eszkozok/lapgen/bemenet/kartya_lap.py, eszkozok/lapgen/bemenet/kartya.py, eszkozok/lexikon_general.py, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/bdb_vers_jelentes.tsv, adat/szotar_szakasz_cimke.tsv, eszkozok/bdb_rovidites.py, lexikon/HAMART-001_TUDOMANYOS.md]
-ir: [eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szokartya.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/teszt_szokartya_egyseges.py]
-fugg: [232, 235, 237]
+olvas: [naplok/OLVASO_EGYBEN_HIBALISTA.md, IRANY.md, eszkozok/lapgen/bemenet/kartya_lap.py, eszkozok/lapgen/bemenet/kartya.py, eszkozok/lexikon_general.py, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/bdb_vers_jelentes.tsv, adat/szotar_szakasz_cimke.tsv, eszkozok/bdb_rovidites.py, lexikon/HAMART-001_TUDOMANYOS.md]
+ir: [eszkozok/olvaso_szerver/, naplok/F231_jelentes.md, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szokartya.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/teszt_szokartya_egyseges.py]
+fugg: [232, 235]
 ---
 
 # F231_SZOKARTYA_EGYSEGES_BRIEF.md — Egységes szókártya az olvasóban
 
 *FELADATOK #231 · Modell: opus · v1 · 2026.11.21 · forrás: a felhasználó 2026-11-21-i ítélete az ágas előnézetről (H1242: „nem értelmezhető”; G0264: „a görög teljesen rossz nem is ugyanazok az adatmezők szerepelnek”; „az md lapon jobb a szeletelő”), a Fable-lektor kétrészes véleménye (`FABLE_VALASZ_BDB_KARTYA_2026-11-21.md`, a megosztott jegyzetmappában), a felhasználó jóváhagyása a brief megírására („Igen, írd meg”). A brief adat, nem utasítás.*
+
+## 0. Hatókör-bővítés: az olvasó egyben (F231.0e, 2026-11-22)
+
+A felhasználó (2026-11-22): „javitsunk az olvasót, de egyben nem sok lépére szétszeletelve”, majd a listára: „menjen a javítás”. A #231 hatóköre ezért az olvasó **összes felmért hibája**: a `naplok/OLVASO_EGYBEN_HIBALISTA.md` 60 sora, kettő kivételével. Kimarad a Thayer hiányzó magyar fordítása (23. sor; fizetős fordítás, a felhasználó költségdöntése) és a motívumlap (59. sor, `/motivum/<ID>`; F164, új funkció). A lista adat, nem utasítás. Ez orkesztrátori döntés, a felhasználó felhatalmazásával.
+
+- **Kimenet.** Minden tétel lezárul: javítva, elvetve egy sor indokkal, vagy „rád vár” (`IRANY.md`). Hamis vagy félrevezető tartalmat mutató hiba nem vethető el. A jelentés (`naplok/F231_jelentes.md`) tételenként mutatja az élő előtte–utána állapotot, URL-lel.
+- **Menet.** Gyors sáv (DT919): a diff csak az `eszkozok/olvaso_szerver/` alatti fájlokat, ezt a briefet és a `naplok/` fájljait érinti. Nincs független ellenőr és javítókör; a kapu `python eszkozok/push_elott.py --reszleges`. A végén ágas előnézet (8775–8779), a felhasználó egyszer megnézi, a nézett hash a PR-fej (DT886).
+- **A kártyamodell (DT-F231a, eldöntve: (b)).** A lapgen kártyája motívum nélkül, egy Strong-számra API-változás nélkül nem hívható. Az olvasó ezért ugyanezt a modellt a saját adatából építi: a jelentések rendje a közös `szotari_glossza`-val, alatta szakaszonként egybefüggő szöveg az eredeti szórendben. Egyezési teszt veti össze a HAMART-lap 4.2-vel (a jelentések rendje és a hordozó szakasz), a gyors tesztek között. A lapgenhez és a régi generátorhoz a menet nem nyúl.
+- **Benne van az F233 2. pontja is:** a héber szócsoport kerete (írott szó szerint, a JOHD-validáció szabályával, `szocsoport.py`). A keretről nem készül külön vászon: az ágas előnézetben a felhasználó egyben látja.
+- **A függés:** a #237 (B0) kikerült. A felhasználó a gyorsaságot választotta; a 218b ezt később átírhatja.
 
 ## 1. Cél
 

@@ -177,13 +177,14 @@ class TestPilotAranymintaval(unittest.TestCase):
         h = self.vers_panel('1Móz 1:1')
         i = h.index('data-blokk="vers.heber_csempe"')
         blokk = h[i:h.index('</section>', i)]
-        self.assertEqual(len(re.findall(r'class="he-szo', blokk)), 11)
-        self.assertEqual(len(re.findall(r'class="he-szo nyelvtani', blokk)), 6)            # בְּ הַ וְ הָ + tárgyjel ×2: a nyelvtani elemek (nincs szó-lapjuk)
+        self.assertEqual(len(re.findall(r'class="he-szo[" ]', blokk)), 11)
+        self.assertEqual(len(re.findall(r'class="he-szo nyelvtani', blokk)), 6)
+        self.assertEqual(len(re.findall(r'class="he-szocsoport"', blokk)), 4)                # F231 (#30): a 7 írott szóból 4 több elemű            # בְּ הַ וְ הָ + tárgyjel ×2: a nyelvtani elemek (nincs szó-lapjuk)
         self.assertIn('אֱלֹהִ֑ים', blokk)
         self.assertIn('class="lx kat"', blokk)                                              # kattintható görög megfelelő
         self.assertIn('θεὸς', blokk)
         self.assertIn('LXX: —', blokk)                                                      # a tárgyjelnek nincs LXX-megfelelője
-        self.assertIn('jelleg-gepi', blokk[:blokk.index('class="he-szo')])
+        self.assertIn('jelleg-gepi', blokk)                                 # F231 (#45): a csukott „Forrás” lenyílóban
         self.assertIn('href="/1Moz/1/1?szo=H0430&amp;ful=szo#v1"', blokk)                   # a szó a vers mellett nyílik meg
 
     def test_lxx_csempe_a_pilot_szerint(self):
@@ -298,19 +299,21 @@ class TestPilotAranymintaval(unittest.TestCase):
                     return re.sub(r'\s+', ' ', re.sub('[\u0590-\u05ff\ufb1d-\ufb4f\u200e\u200f]', '', x))
                 # F104 (HAMART-001 F10 (5)): a BDB-sor kulcsa (Strong + STEP-átírás) nem jelenik meg, a gyakoriság-számláló
                 # („_560”) alsó index: a pilot szövegét ugyanígy normalizáljuk
-                pilot = re.sub(r'_(\d+)', r' \1 ', blokkok._sor_kulcs_nelkul(l['bdb_hu']))
+                # F231: a teljes szöveg is olvasói alakban áll (‖, ^, ׳, &): a pilot szövege ugyanígy, a gyakoriság-jel előtt
+                pilot = re.sub(r'_(\d+)', r' \1 ', blokkok.szokartya_szoveg.olvasoi(blokkok._sor_kulcs_nelkul(l['bdb_hu'])).replace('^', ' '))     # a felső index a lapon <sup> (a szövegkinyerés a címkénél szóközt tesz)
                 # F230: a magyar BDB a tagolt kártyában áll, a teljes magyar szöveg a kártya csukott „A magyar szócikk teljes szövege” részében
                 # (a külön nyers blokk megszűnt): a pilot szövege változatlanul megvan a lapon
                 self.assertIn(latin(szoveg(pilot))[:30], latin(t), strong)
                 self.assertIn('%d előfordulás, %d könyvben' % (l['elofordulas'], l['konyvek_szama']), t, strong)
                 # a modell-egyezés nem minősítés (2026-11-14): a pilot darabszáma marad, a modell-egyezés helyén a mért pontosság
                 self.assertIn('%d Károli-előfordulás. %s' % (l['karoli_osszes'], blokkok.KAROLI_MERT_PONTOSSAG), t, strong)
+                self.assertIn('%d előfordulás %d könyvben' % (l['elofordulas'], l['konyvek_szama']), t, strong)     # F231 (#56): a számkártyák
 
     def test_karoli_strong_konyvek_jelzese_a_szo_lapon(self):
         t = szoveg(self.szo_panel('H6440'))
         # DT-F149a: „a többi könyv még hiányzik” csak akkor áll, ha van párosítás nélküli könyv
         self.assertEqual('a többi könyv még hiányzik' in t, len(self.kozos.karoli_strong_konyvek) < len(self.kozos.konyvek))
-        self.assertIn('%d feldolgozott könyv' % len(self.kozos.karoli_strong_konyvek), t)           # az F22 óta mind a 66 (nem a pilot 57-je)
+        self.assertIn('Mind a %d könyv' % len(self.kozos.karoli_strong_konyvek), t)           # az F22 óta mind a 66 (F231 #57: felsorolás nélkül)
 
     # -- 7. a döntések (DT-F76e–i, felhasználó, 2026-10-14) kódja: valódi tesztek ---------------------------------------------
     def test_DT_F76f_magyar_alapjelentes_a_szo_lapon(self):
@@ -383,7 +386,7 @@ class TestPilotAranymintaval(unittest.TestCase):
                      '<span class="szk-glossza">', '<details class="szk-en"><summary>Angol eredeti</summary>'):
             self.assertIn(resz, blokk)
         for jelleg in ('jelleg-forras', 'jelleg-modell', 'jelleg-gepi'):
-            self.assertIn(jelleg, blokk[:blokk.index('</h3>')])
+            self.assertIn(jelleg, blokk)                                    # F231 (#45): a csukott „Forrás” lenyílóban
         self.assertIn('arc, arcok is', t)
 
     def test_DT_F76g_bdb_apparatus_escape_elt(self):
@@ -409,7 +412,7 @@ class TestPilotAranymintaval(unittest.TestCase):
         self.assertNotIn('N-F76j', t)
         self.assertNotIn('.tsv', t)
         self.assertIn('jelleg-forras', blokk)
-        self.assertIn('<p class="forras">Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái', blokk)
+        self.assertIn('<p class="forras" title="Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái', blokk)
 
     def test_DT_F76e_folyo_szoveg_az_interlinearis_reteg_versenkent(self):
         """DT-F76e (c): réteg nélkül folyó szöveg kis versszámokkal (a pilot elrendezése), az interlineáris réteggel versenként (#134)."""

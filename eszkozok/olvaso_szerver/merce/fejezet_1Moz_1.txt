@@ -2,7 +2,7 @@
 # A mai állapot rögzítése, hibáival együtt; frissítés: teszt_olvasoi_merce.py --merce-frissit (csak jóváhagyással).
 # Jelölés: „## [blokk]” = data-blokk; „▸ ” = csukott <details> tartalma.
 Navigáció✕
-PaRDeS olvasó
+Biblialex olvasó
 Károli 1908 · 1Móz 1 ▾
 ▸ Biblia és könyv kiválasztása
 ▸ Biblia
@@ -48,7 +48,7 @@ Tanulmányok jelölése
 ⚙
 ▸ Rétegek
 ▸ Interlineáris sor
-▸ Szint nyilvanos regisztralt kutato
+▸ Szint nyilvános regisztrált kutató
 ▸ Téma
 ▸ Rendszer Világos Sötét
 ⌕

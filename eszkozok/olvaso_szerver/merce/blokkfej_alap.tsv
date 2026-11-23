@@ -1,0 +1,2366 @@
+# GENERÁLT: teszt_blokkfej.py --alap-ment (blokkfej.py); kézzel szerkeszteni tilos
+# a main állapota: 7371ebb868f06087a8b1ef4e7b4472d3e260529c; adatbázis: PARDES_DB
+url	szint	fajta	blokk	szoveg	lathatosag
+/1Moz/1/7	alap	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/7	alap	fej		⌕	lathato
+/1Moz/1/7	alap	fej		Aa	csukott
+/1Moz/1/7	alap	fej		A−	csukott
+/1Moz/1/7	alap	fej		A+	csukott
+/1Moz/1/7	alap	fej		szűk	csukott
+/1Moz/1/7	alap	fej		közepes	csukott
+/1Moz/1/7	alap	fej		tág	csukott
+/1Moz/1/7	alap	fej		Source Serif	csukott
+/1Moz/1/7	alap	fej		Noto Serif	csukott
+/1Moz/1/7	alap	fej		IBM Plex Sans	csukott
+/1Moz/1/7	alap	fej		keskeny	csukott
+/1Moz/1/7	alap	fej		közepes	csukott
+/1Moz/1/7	alap	fej		széles	csukott
+/1Moz/1/7	alap	fej		teljes	csukott
+/1Moz/1/7	alap	fej		Alapértékek	csukott
+/1Moz/1/7	alap	fej		⚙	csukott
+/1Moz/1/7	alap	fej		Tervező	rejtett
+/1Moz/1/7	alap	fej		Rendszer	csukott
+/1Moz/1/7	alap	fej		Világos	csukott
+/1Moz/1/7	alap	fej		Sötét	csukott
+/1Moz/1/7	alap	fej		Mózes első könyve #	lathato
+/1Moz/1/7	alap	fej		‹	rejtett
+/1Moz/1/7	alap	fej		⤢	lathato
+/1Moz/1/7	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/7	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/7	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7	alap	forras			rejtett
+/1Moz/1/7	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7	alap	forras			rejtett
+/1Moz/1/7	alap	fej		#Móz #:#	lathato
+/1Moz/1/7	alap	blokk	vers.karoli	Károli-szöveg	lathato
+/1Moz/1/7	alap	jelleg	vers.karoli	forrásadat	lathato
+/1Moz/1/7	alap	forras	vers.karoli		lathato
+/1Moz/1/7	alap	blokk	vers.heber_csempe	Héber szöveg	lathato
+/1Moz/1/7	alap	jelleg	vers.heber_csempe	forrásadat	lathato
+/1Moz/1/7	alap	jelleg	vers.heber_csempe	gépi feldolgozás	lathato
+/1Moz/1/7	alap	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	lathato
+/1Moz/1/7	alap	ures	vers.heber_csempe	LXX: —	lathato
+/1Moz/1/7	alap	ures	vers.heber_csempe	LXX: —	lathato
+/1Moz/1/7	alap	ures	vers.heber_csempe	LXX: —	lathato
+/1Moz/1/7	alap	ures	vers.heber_csempe	LXX: —	lathato
+/1Moz/1/7	alap	ures	vers.heber_csempe	LXX: —	lathato
+/1Moz/1/7	alap	ures	vers.heber_csempe	LXX: —	lathato
+/1Moz/1/7	alap	forras	vers.heber_csempe		lathato
+/1Moz/1/7	alap	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	lathato
+/1Moz/1/7	alap	jelleg	vers.lxx_csempe	forrásadat	lathato
+/1Moz/1/7	alap	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	lathato
+/1Moz/1/7	alap	forras	vers.lxx_csempe		lathato
+/1Moz/1/7	alap	blokk	vers.par	Károli–Strong párosítás	lathato
+/1Moz/1/7	alap	jelleg	vers.par	modell-kimenet	lathato
+/1Moz/1/7	alap	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	lathato
+/1Moz/1/7	alap	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	lathato
+/1Moz/1/7	alap	forras	vers.par		lathato
+/1Moz/1/7	alap	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	lathato
+/1Moz/1/7	alap	jelleg	vers.eredeti	forrásadat	lathato
+/1Moz/1/7	alap	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	lathato
+/1Moz/1/7	alap	forras	vers.eredeti		lathato
+/1Moz/1/7	alap	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	lathato
+/1Moz/1/7	alap	jelleg	vers.macula_morf	forrásadat	lathato
+/1Moz/1/7	alap	tabla	vers.macula_morf	Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss	lathato
+/1Moz/1/7	alap	forras	vers.macula_morf		lathato
+/1Moz/1/7	alap	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	lathato
+/1Moz/1/7	alap	jelleg	vers.macula_gorog	forrásadat	lathato
+/1Moz/1/7	alap	tabla	vers.macula_gorog	Héber szó | Gloss | Görög (Macula) | Görög Strong	lathato
+/1Moz/1/7	alap	forras	vers.macula_gorog		lathato
+/1Moz/1/7	alap	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	lathato
+/1Moz/1/7	alap	jelleg	vers.lxx_szavak	forrásadat	lathato
+/1Moz/1/7	alap	tabla	vers.lxx_szavak	Szóalak | Lemma | Strong | Morf	lathato
+/1Moz/1/7	alap	forras	vers.lxx_szavak		lathato
+/1Moz/1/7	alap	blokk	vers.lxx_versszam	LXX-versszám	lathato
+/1Moz/1/7	alap	jelleg	vers.lxx_versszam	forrásadat	lathato
+/1Moz/1/7	alap	tabla	vers.lxx_versszam	Forrás | LXX-versszám	lathato
+/1Moz/1/7	alap	forras	vers.lxx_versszam		lathato
+/1Moz/1/7	alap	blokk	vers.versszamozas	Versszámozás (MT / KJV)	lathato
+/1Moz/1/7	alap	jelleg	vers.versszamozas	forrásadat	lathato
+/1Moz/1/7	alap	tabla	vers.versszamozas	Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása	lathato
+/1Moz/1/7	alap	forras	vers.versszamozas		lathato
+/1Moz/1/7	alap	blokk	vers.bsb	Angol szavak szavanként (BSB)	lathato
+/1Moz/1/7	alap	jelleg	vers.bsb	forrásadat	lathato
+/1Moz/1/7	alap	jelleg	vers.bsb	gépi feldolgozás	lathato
+/1Moz/1/7	alap	forras	vers.bsb		lathato
+/1Moz/1/7	alap	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	lathato
+/1Moz/1/7	alap	jelleg	vers.kjv	forrásadat	lathato
+/1Moz/1/7	alap	jelleg	vers.kjv	gépi feldolgozás	lathato
+/1Moz/1/7	alap	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	lathato
+/1Moz/1/7	alap	forras	vers.kjv		lathato
+/1Moz/1/7	alap	blokk	vers.morf_hu	Az igealak magyar feloldása	lathato
+/1Moz/1/7	alap	jelleg	vers.morf_hu	gépi feldolgozás	lathato
+/1Moz/1/7	alap	tabla	vers.morf_hu	Szó | Kód | Magyar feloldás | Nyelv	lathato
+/1Moz/1/7	alap	forras	vers.morf_hu		lathato
+/1Moz/1/7	alap	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	lathato
+/1Moz/1/7	alap	jelleg	vers.lxx_dontes	forrásadat	lathato
+/1Moz/1/7	alap	megj	vers.lxx_dontes	soronként saját proveniencia-mező	lathato
+/1Moz/1/7	alap	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/1Moz/1/7	alap	forras	vers.lxx_dontes		lathato
+/1Moz/1/7	alap	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	lathato
+/1Moz/1/7	alap	jelleg	vers.lxx_par	forrásadat	lathato
+/1Moz/1/7	alap	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	lathato
+/1Moz/1/7	alap	fej	vers.lxx_par	# héber szó, # pár	lathato
+/1Moz/1/7	alap	forras	vers.lxx_par		lathato
+/1Moz/1/7	alap	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	lathato
+/1Moz/1/7	alap	jelleg	vers.lxx_tobblet	forrásadat	lathato
+/1Moz/1/7	alap	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	lathato
+/1Moz/1/7	alap	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	lathato
+/1Moz/1/7	alap	forras	vers.lxx_tobblet		lathato
+/1Moz/1/7	alap	blokk	vers.ubs	UBS-jelentés az előfordulásra	lathato
+/1Moz/1/7	alap	jelleg	vers.ubs	forrásadat	lathato
+/1Moz/1/7	alap	tabla	vers.ubs	Strong | Azonosító | Domén | Rövid definíció | Glosszák	lathato
+/1Moz/1/7	alap	forras	vers.ubs		lathato
+/1Moz/1/7	alap	blokk	vers.tsk	Kereszthivatkozások (TSK)	rejtett
+/1Moz/1/7	alap	jelleg	vers.tsk	forrásadat	rejtett
+/1Moz/1/7	alap	tabla	vers.tsk	Hivatkozás | Szavazat	rejtett
+/1Moz/1/7	alap	forras	vers.tsk		rejtett
+/1Moz/1/7	alap	blokk	vers.kh	Károli-kereszthivatkozások	rejtett
+/1Moz/1/7	alap	jelleg	vers.kh	forrásadat	rejtett
+/1Moz/1/7	alap	forras	vers.kh		rejtett
+/1Moz/1/7	alap	blokk	vers.nave	Témák (Nave, versekre bontva)	rejtett
+/1Moz/1/7	alap	jelleg	vers.nave	forrásadat	rejtett
+/1Moz/1/7	alap	jelleg	vers.nave	gépi feldolgozás	rejtett
+/1Moz/1/7	alap	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	rejtett
+/1Moz/1/7	alap	fej	vers.nave	Fejezet-szintű hivatkozások (#)	rejtett
+/1Moz/1/7	alap	tabla	vers.nave	Téma | Cím | Nave-hely	rejtett
+/1Moz/1/7	alap	forras	vers.nave		rejtett
+/1Moz/1/7	alap	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	rejtett
+/1Moz/1/7	alap	jelleg	vers.tipnr	forrásadat	rejtett
+/1Moz/1/7	alap	jelleg	vers.tipnr	gépi feldolgozás	rejtett
+/1Moz/1/7	alap	ures	vers.tipnr	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7	alap	forras	vers.tipnr		rejtett
+/1Moz/1/7	alap	blokk	vers.motivum	Motívumadat (adatréteg)	rejtett
+/1Moz/1/7	alap	jelleg	vers.motivum	forrásadat	rejtett
+/1Moz/1/7	alap	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	rejtett
+/1Moz/1/7	alap	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7	alap	forras	vers.motivum		rejtett
+/1Moz/1/7	alap	blokk	vers.tanulmany	Tanulmányok erről a versről	rejtett
+/1Moz/1/7	alap	jelleg	vers.tanulmany	forrásadat	rejtett
+/1Moz/1/7	alap	jelleg	vers.tanulmany	gépi feldolgozás	rejtett
+/1Moz/1/7	alap	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	rejtett
+/1Moz/1/7	alap	forras	vers.tanulmany		rejtett
+/1Moz/1/7	alap	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	rejtett
+/1Moz/1/7	alap	jelleg	vers.kapcsolat	forrásadat	rejtett
+/1Moz/1/7	alap	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7	alap	forras	vers.kapcsolat		rejtett
+/1Moz/1/7?ful=kh	kutato	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/7?ful=kh	kutato	fej		⌕	lathato
+/1Moz/1/7?ful=kh	kutato	fej		Aa	csukott
+/1Moz/1/7?ful=kh	kutato	fej		A−	csukott
+/1Moz/1/7?ful=kh	kutato	fej		A+	csukott
+/1Moz/1/7?ful=kh	kutato	fej		szűk	csukott
+/1Moz/1/7?ful=kh	kutato	fej		közepes	csukott
+/1Moz/1/7?ful=kh	kutato	fej		tág	csukott
+/1Moz/1/7?ful=kh	kutato	fej		Source Serif	csukott
+/1Moz/1/7?ful=kh	kutato	fej		Noto Serif	csukott
+/1Moz/1/7?ful=kh	kutato	fej		IBM Plex Sans	csukott
+/1Moz/1/7?ful=kh	kutato	fej		keskeny	csukott
+/1Moz/1/7?ful=kh	kutato	fej		közepes	csukott
+/1Moz/1/7?ful=kh	kutato	fej		széles	csukott
+/1Moz/1/7?ful=kh	kutato	fej		teljes	csukott
+/1Moz/1/7?ful=kh	kutato	fej		Alapértékek	csukott
+/1Moz/1/7?ful=kh	kutato	fej		⚙	csukott
+/1Moz/1/7?ful=kh	kutato	fej		Tervező	rejtett
+/1Moz/1/7?ful=kh	kutato	fej		Rendszer	csukott
+/1Moz/1/7?ful=kh	kutato	fej		Világos	csukott
+/1Moz/1/7?ful=kh	kutato	fej		Sötét	csukott
+/1Moz/1/7?ful=kh	kutato	fej		Mózes első könyve #	lathato
+/1Moz/1/7?ful=kh	kutato	fej		‹	rejtett
+/1Moz/1/7?ful=kh	kutato	fej		⤢	lathato
+/1Moz/1/7?ful=kh	kutato	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	forras			rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7?ful=kh	kutato	forras			rejtett
+/1Moz/1/7?ful=kh	kutato	fej		#Móz #:#	lathato
+/1Moz/1/7?ful=kh	kutato	blokk	vers.karoli	Károli-szöveg	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.karoli	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.karoli		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.heber_csempe	Héber szöveg	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.heber_csempe	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.heber_csempe	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.heber_csempe		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.lxx_csempe	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.lxx_csempe		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.par	Károli–Strong párosítás	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.par	modell-kimenet	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.par		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.eredeti	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.eredeti		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.macula_morf	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.macula_morf	Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.macula_morf		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.macula_gorog	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.macula_gorog	Héber szó | Gloss | Görög (Macula) | Görög Strong	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.macula_gorog		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.lxx_szavak	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.lxx_szavak	Szóalak | Lemma | Strong | Morf	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.lxx_szavak		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.lxx_versszam	LXX-versszám	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.lxx_versszam	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.lxx_versszam	Forrás | LXX-versszám	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.lxx_versszam		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.versszamozas	Versszámozás (MT / KJV)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.versszamozas	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.versszamozas	Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.versszamozas		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.bsb	Angol szavak szavanként (BSB)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.bsb	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.bsb	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.bsb		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.kjv	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.kjv	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.kjv		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.morf_hu	Az igealak magyar feloldása	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.morf_hu	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.morf_hu	Szó | Kód | Magyar feloldás | Nyelv	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.morf_hu		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.lxx_dontes	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.lxx_dontes	soronként saját proveniencia-mező	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.lxx_dontes		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.lxx_par	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	rejtett
+/1Moz/1/7?ful=kh	kutato	fej	vers.lxx_par	# héber szó, # pár	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.lxx_par		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.lxx_tobblet	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.lxx_tobblet		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.ubs	UBS-jelentés az előfordulásra	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.ubs	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.ubs	Strong | Azonosító | Domén | Rövid definíció | Glosszák	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.ubs		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.tsk	Kereszthivatkozások (TSK)	lathato
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.tsk	forrásadat	lathato
+/1Moz/1/7?ful=kh	kutato	tabla	vers.tsk	Hivatkozás | Szavazat	lathato
+/1Moz/1/7?ful=kh	kutato	forras	vers.tsk		lathato
+/1Moz/1/7?ful=kh	kutato	blokk	vers.kh	Károli-kereszthivatkozások	lathato
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.kh	forrásadat	lathato
+/1Moz/1/7?ful=kh	kutato	forras	vers.kh		lathato
+/1Moz/1/7?ful=kh	kutato	blokk	vers.nave	Témák (Nave, versekre bontva)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.nave	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.nave	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	rejtett
+/1Moz/1/7?ful=kh	kutato	fej	vers.nave	Fejezet-szintű hivatkozások (#)	rejtett
+/1Moz/1/7?ful=kh	kutato	tabla	vers.nave	Téma | Cím | Nave-hely	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.nave		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.tipnr	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.tipnr	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.tipnr	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.tipnr		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.motivum	Motívumadat (adatréteg)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.motivum	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.motivum		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.tanulmany	Tanulmányok erről a versről	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.tanulmany	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.tanulmany	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=kh	kutato	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.tanulmany		rejtett
+/1Moz/1/7?ful=kh	kutato	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	rejtett
+/1Moz/1/7?ful=kh	kutato	jelleg	vers.kapcsolat	forrásadat	rejtett
+/1Moz/1/7?ful=kh	kutato	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=kh	kutato	forras	vers.kapcsolat		rejtett
+/1Moz/1/7?ful=temak	alap	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/7?ful=temak	alap	fej		⌕	lathato
+/1Moz/1/7?ful=temak	alap	fej		Aa	csukott
+/1Moz/1/7?ful=temak	alap	fej		A−	csukott
+/1Moz/1/7?ful=temak	alap	fej		A+	csukott
+/1Moz/1/7?ful=temak	alap	fej		szűk	csukott
+/1Moz/1/7?ful=temak	alap	fej		közepes	csukott
+/1Moz/1/7?ful=temak	alap	fej		tág	csukott
+/1Moz/1/7?ful=temak	alap	fej		Source Serif	csukott
+/1Moz/1/7?ful=temak	alap	fej		Noto Serif	csukott
+/1Moz/1/7?ful=temak	alap	fej		IBM Plex Sans	csukott
+/1Moz/1/7?ful=temak	alap	fej		keskeny	csukott
+/1Moz/1/7?ful=temak	alap	fej		közepes	csukott
+/1Moz/1/7?ful=temak	alap	fej		széles	csukott
+/1Moz/1/7?ful=temak	alap	fej		teljes	csukott
+/1Moz/1/7?ful=temak	alap	fej		Alapértékek	csukott
+/1Moz/1/7?ful=temak	alap	fej		⚙	csukott
+/1Moz/1/7?ful=temak	alap	fej		Tervező	rejtett
+/1Moz/1/7?ful=temak	alap	fej		Rendszer	csukott
+/1Moz/1/7?ful=temak	alap	fej		Világos	csukott
+/1Moz/1/7?ful=temak	alap	fej		Sötét	csukott
+/1Moz/1/7?ful=temak	alap	fej		Mózes első könyve #	lathato
+/1Moz/1/7?ful=temak	alap	fej		‹	rejtett
+/1Moz/1/7?ful=temak	alap	fej		⤢	lathato
+/1Moz/1/7?ful=temak	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	forras			rejtett
+/1Moz/1/7?ful=temak	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7?ful=temak	alap	forras			rejtett
+/1Moz/1/7?ful=temak	alap	fej		#Móz #:#	lathato
+/1Moz/1/7?ful=temak	alap	blokk	vers.karoli	Károli-szöveg	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.karoli	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.karoli		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.heber_csempe	Héber szöveg	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.heber_csempe	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.heber_csempe	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.heber_csempe		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.lxx_csempe	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.lxx_csempe		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.par	Károli–Strong párosítás	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.par	modell-kimenet	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.par		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.eredeti	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.eredeti		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.macula_morf	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.macula_morf	Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.macula_morf		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.macula_gorog	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.macula_gorog	Héber szó | Gloss | Görög (Macula) | Görög Strong	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.macula_gorog		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.lxx_szavak	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.lxx_szavak	Szóalak | Lemma | Strong | Morf	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.lxx_szavak		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.lxx_versszam	LXX-versszám	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.lxx_versszam	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.lxx_versszam	Forrás | LXX-versszám	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.lxx_versszam		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.versszamozas	Versszámozás (MT / KJV)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.versszamozas	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.versszamozas	Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.versszamozas		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.bsb	Angol szavak szavanként (BSB)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.bsb	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.bsb	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.bsb		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.kjv	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.kjv	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.kjv		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.morf_hu	Az igealak magyar feloldása	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.morf_hu	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.morf_hu	Szó | Kód | Magyar feloldás | Nyelv	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.morf_hu		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.lxx_dontes	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.lxx_dontes	soronként saját proveniencia-mező	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.lxx_dontes		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.lxx_par	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	rejtett
+/1Moz/1/7?ful=temak	alap	fej	vers.lxx_par	# héber szó, # pár	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.lxx_par		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.lxx_tobblet	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.lxx_tobblet		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.ubs	UBS-jelentés az előfordulásra	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.ubs	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.ubs	Strong | Azonosító | Domén | Rövid definíció | Glosszák	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.ubs		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.tsk	Kereszthivatkozások (TSK)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.tsk	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	tabla	vers.tsk	Hivatkozás | Szavazat	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.tsk		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.kh	Károli-kereszthivatkozások	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.kh	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.kh		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.nave	Témák (Nave, versekre bontva)	lathato
+/1Moz/1/7?ful=temak	alap	jelleg	vers.nave	forrásadat	lathato
+/1Moz/1/7?ful=temak	alap	jelleg	vers.nave	gépi feldolgozás	lathato
+/1Moz/1/7?ful=temak	alap	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	lathato
+/1Moz/1/7?ful=temak	alap	fej	vers.nave	Fejezet-szintű hivatkozások (#)	lathato
+/1Moz/1/7?ful=temak	alap	tabla	vers.nave	Téma | Cím | Nave-hely	lathato
+/1Moz/1/7?ful=temak	alap	forras	vers.nave		lathato
+/1Moz/1/7?ful=temak	alap	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	lathato
+/1Moz/1/7?ful=temak	alap	jelleg	vers.tipnr	forrásadat	lathato
+/1Moz/1/7?ful=temak	alap	jelleg	vers.tipnr	gépi feldolgozás	lathato
+/1Moz/1/7?ful=temak	alap	ures	vers.tipnr	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/1Moz/1/7?ful=temak	alap	forras	vers.tipnr		lathato
+/1Moz/1/7?ful=temak	alap	blokk	vers.motivum	Motívumadat (adatréteg)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.motivum	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.motivum		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.tanulmany	Tanulmányok erről a versről	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.tanulmany	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.tanulmany	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=temak	alap	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.tanulmany		rejtett
+/1Moz/1/7?ful=temak	alap	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	rejtett
+/1Moz/1/7?ful=temak	alap	jelleg	vers.kapcsolat	forrásadat	rejtett
+/1Moz/1/7?ful=temak	alap	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=temak	alap	forras	vers.kapcsolat		rejtett
+/1Moz/1/7?ful=motivum	kutato	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		⌕	lathato
+/1Moz/1/7?ful=motivum	kutato	fej		Aa	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		A−	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		A+	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		szűk	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		közepes	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		tág	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		Source Serif	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		Noto Serif	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		IBM Plex Sans	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		keskeny	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		közepes	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		széles	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		teljes	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		Alapértékek	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		⚙	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		Tervező	rejtett
+/1Moz/1/7?ful=motivum	kutato	fej		Rendszer	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		Világos	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		Sötét	csukott
+/1Moz/1/7?ful=motivum	kutato	fej		Mózes első könyve #	lathato
+/1Moz/1/7?ful=motivum	kutato	fej		‹	rejtett
+/1Moz/1/7?ful=motivum	kutato	fej		⤢	lathato
+/1Moz/1/7?ful=motivum	kutato	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras			rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras			rejtett
+/1Moz/1/7?ful=motivum	kutato	fej		#Móz #:#	lathato
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.karoli	Károli-szöveg	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.karoli	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.karoli		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.heber_csempe	Héber szöveg	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.heber_csempe	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.heber_csempe	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=motivum	kutato	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.heber_csempe		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.lxx_csempe	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.lxx_csempe		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.par	Károli–Strong párosítás	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.par	modell-kimenet	rejtett
+/1Moz/1/7?ful=motivum	kutato	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.par		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.eredeti	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.eredeti		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.macula_morf	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.macula_morf	Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.macula_morf		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.macula_gorog	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.macula_gorog	Héber szó | Gloss | Görög (Macula) | Görög Strong	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.macula_gorog		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.lxx_szavak	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.lxx_szavak	Szóalak | Lemma | Strong | Morf	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.lxx_szavak		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.lxx_versszam	LXX-versszám	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.lxx_versszam	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.lxx_versszam	Forrás | LXX-versszám	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.lxx_versszam		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.versszamozas	Versszámozás (MT / KJV)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.versszamozas	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.versszamozas	Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.versszamozas		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.bsb	Angol szavak szavanként (BSB)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.bsb	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.bsb	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.bsb		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.kjv	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.kjv	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=motivum	kutato	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.kjv		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.morf_hu	Az igealak magyar feloldása	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.morf_hu	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.morf_hu	Szó | Kód | Magyar feloldás | Nyelv	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.morf_hu		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.lxx_dontes	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	megj	vers.lxx_dontes	soronként saját proveniencia-mező	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.lxx_dontes		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.lxx_par	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	rejtett
+/1Moz/1/7?ful=motivum	kutato	fej	vers.lxx_par	# héber szó, # pár	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.lxx_par		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.lxx_tobblet	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.lxx_tobblet		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.ubs	UBS-jelentés az előfordulásra	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.ubs	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.ubs	Strong | Azonosító | Domén | Rövid definíció | Glosszák	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.ubs		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.tsk	Kereszthivatkozások (TSK)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.tsk	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.tsk	Hivatkozás | Szavazat	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.tsk		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.kh	Károli-kereszthivatkozások	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.kh	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.kh		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.nave	Témák (Nave, versekre bontva)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.nave	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.nave	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	rejtett
+/1Moz/1/7?ful=motivum	kutato	fej	vers.nave	Fejezet-szintű hivatkozások (#)	rejtett
+/1Moz/1/7?ful=motivum	kutato	tabla	vers.nave	Téma | Cím | Nave-hely	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.nave		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.tipnr	forrásadat	rejtett
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.tipnr	gépi feldolgozás	rejtett
+/1Moz/1/7?ful=motivum	kutato	ures	vers.tipnr	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/7?ful=motivum	kutato	forras	vers.tipnr		rejtett
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.motivum	Motívumadat (adatréteg)	lathato
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.motivum	forrásadat	lathato
+/1Moz/1/7?ful=motivum	kutato	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	lathato
+/1Moz/1/7?ful=motivum	kutato	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/1Moz/1/7?ful=motivum	kutato	forras	vers.motivum		lathato
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.tanulmany	Tanulmányok erről a versről	lathato
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.tanulmany	forrásadat	lathato
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.tanulmany	gépi feldolgozás	lathato
+/1Moz/1/7?ful=motivum	kutato	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	lathato
+/1Moz/1/7?ful=motivum	kutato	forras	vers.tanulmany		lathato
+/1Moz/1/7?ful=motivum	kutato	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	lathato
+/1Moz/1/7?ful=motivum	kutato	jelleg	vers.kapcsolat	forrásadat	lathato
+/1Moz/1/7?ful=motivum	kutato	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/1Moz/1/7?ful=motivum	kutato	forras	vers.kapcsolat		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		⌕	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Aa	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		A−	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		A+	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		szűk	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		közepes	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		tág	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Source Serif	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Noto Serif	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		IBM Plex Sans	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		keskeny	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		közepes	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		széles	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		teljes	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Alapértékek	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		⚙	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Tervező	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Rendszer	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Világos	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Sötét	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Mózes első könyve #	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		‹	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		⤢	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras			rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras			rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej		H# מַי	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.szotar	Strong-szótár	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.szotar	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.szotar	modell-kimenet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	tabla	szo.szotar	Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.szotar		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.elofordulas	Előfordulás, könyvek száma	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.elofordulas	gépi feldolgozás	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.elofordulas		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.ebben	Ebben a versben	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.ebben	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.ebben	gépi feldolgozás	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.ebben	modell-kimenet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.ebben		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.karoli_alakok	Károli-alakok és pontosság	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.karoli_alakok	modell-kimenet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	tabla	szo.karoli_alakok	Károli-alak | Darab	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.karoli_alakok		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.bdb_apparatus	Szótár: BDB-szócikk (Brown–Driver–Briggs)	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.bdb_apparatus	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.bdb_apparatus	modell-kimenet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.bdb_apparatus	gépi feldolgozás	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Olvasói nézet	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Szócikk egyben	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Minden apparátus nyitva	rejtett
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	További homonima ugyanezen a lemmán · מַי · hímnemű főnév^#Sám #:#, csak többes szám מַ֫יִם: vizek, víz# hivatkozás	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	#forrás vagy kút vize	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	#helynevekkel# hivatkozásLXX ὕδωρ, ὕδατος # · # megfelelő nélkül	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	#különleges használatok# hivatkozásLXX ὕδωρ, ὕδατος # · # megfelelő nélkül	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	#átvitt használatai közül	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	#a bőséges igazságról	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	Jelmagyarázat	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.bdb_apparatus	A magyar szócikk teljes szövege (tagolás nélkül)	csukott
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.bdb_apparatus		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.lxx_bridge	Görög megfelelő (Septuaginta)	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.lxx_bridge	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	tabla	szo.lxx_bridge	Görög Strong | Szótő | Jelentés | Darab	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.lxx_bridge		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.ubs_dbh	UBS DBH jelentések (a teljes szócikk, magyar fordítással)	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.ubs_dbh	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.ubs_dbh	modell-kimenet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	megj	szo.ubs_dbh	CC BY-SA # (UBS); a magyar glossza és definíció modell-kimenet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	tabla	szo.ubs_dbh	Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.ubs_dbh		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.sdbh	Szemantikai domén (SDBH)	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.sdbh	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.sdbh	modell-kimenet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	megj	szo.sdbh	üres eredmény nem negatív lelet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	tabla	szo.sdbh	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.sdbh		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.sece_h	SECE-szócikk (héber)	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.sece_h	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.sece_h		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.oshl	OSHL: TWOT- és BDB-azonosító, BDB-helyek	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.oshl	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	tabla	szo.oshl	TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.oshl		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.oshl_csalad	Rokon szavak (OSHL-gyökcsalád)	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.oshl_csalad	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	megj	szo.oshl_csalad	az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	fej	szo.oshl_csalad	Gyök: מַי H#	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	ures	szo.oshl_csalad	A gyök-bejegyzésnek nincs felsorolt származéka.	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.oshl_csalad		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.tbesh	Bővített Strong-szócikk (TBESH)	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.tbesh	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.tbesh	gépi feldolgozás	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.tbesh	modell-kimenet	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	tabla	szo.tbesh	Szó | Átírás | Morf | Gloss | Jelentés	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.tbesh		lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	blokk	szo.tw_h	translationWords	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	jelleg	szo.tw_h	forrásadat	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	ures	szo.tw_h	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/1Moz/1/7?szo=H4325&ful=szo	alap	forras	szo.tw_h		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		⌕	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Aa	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		A−	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		A+	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		szűk	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		közepes	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		tág	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Source Serif	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Noto Serif	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		IBM Plex Sans	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		keskeny	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		közepes	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		széles	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		teljes	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Alapértékek	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		⚙	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Tervező	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Rendszer	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Világos	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Sötét	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Mózes első könyve #	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		‹	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		⤢	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras			rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras			rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej		H# תְּהוֹם	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.szotar	Strong-szótár	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.szotar	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.szotar	modell-kimenet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	tabla	szo.szotar	Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.szotar		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.elofordulas	Előfordulás, könyvek száma	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.elofordulas	gépi feldolgozás	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.elofordulas		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.ebben	Ebben a versben	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.ebben	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.ebben	gépi feldolgozás	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.ebben	modell-kimenet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.ebben		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.karoli_alakok	Károli-alakok és pontosság	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.karoli_alakok	modell-kimenet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	tabla	szo.karoli_alakok	Károli-alak | Darab	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.karoli_alakok		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.bdb_apparatus	Szótár: BDB-szócikk (Brown–Driver–Briggs)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.bdb_apparatus	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.bdb_apparatus	modell-kimenet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.bdb_apparatus	gépi feldolgozás	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Olvasói nézet	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Szócikk egyben	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Minden apparátus nyitva	rejtett
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Alakok	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Rokon nyelvek és eredet	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	#mélység, a föld alatti vizeké	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	#—# hivatkozásLXX ἄβυσσος #TEREMT-# · # hely	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	#az ősóceán, mélység a héber kozmogóniában	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	#mély, mélység, folyóról	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	#örvény# hivatkozásLXX ἄβυσσος # · ἄνεμος # · γῆ # · οὐρανός # · # megfelelő nélkülTEREMT-# · # helya BDB itt idézi ezt a verset	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	Jelmagyarázat	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.bdb_apparatus	A magyar szócikk teljes szövege (tagolás nélkül)	csukott
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.bdb_apparatus		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.lxx_bridge	Görög megfelelő (Septuaginta)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.lxx_bridge	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	tabla	szo.lxx_bridge	Görög Strong | Szótő | Jelentés | Darab	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.lxx_bridge		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.ubs_dbh	UBS DBH jelentések (a teljes szócikk, magyar fordítással)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.ubs_dbh	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.ubs_dbh	modell-kimenet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	megj	szo.ubs_dbh	CC BY-SA # (UBS); a magyar glossza és definíció modell-kimenet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	tabla	szo.ubs_dbh	Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.ubs_dbh		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.sdbh	Szemantikai domén (SDBH)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.sdbh	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	megj	szo.sdbh	üres eredmény nem negatív lelet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	tabla	szo.sdbh	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.sdbh		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.sece_h	SECE-szócikk (héber)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.sece_h	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.sece_h		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.oshl	OSHL: TWOT- és BDB-azonosító, BDB-helyek	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.oshl	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	tabla	szo.oshl	TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.oshl		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.oshl_csalad	Rokon szavak (OSHL-gyökcsalád)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.oshl_csalad	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	megj	szo.oshl_csalad	az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	fej	szo.oshl_csalad	Gyök: תהם (Strong-szám nélküli gyök-bejegyzés)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	tabla	szo.oshl_csalad	Strong | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.oshl_csalad		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.tbesh	Bővített Strong-szócikk (TBESH)	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.tbesh	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.tbesh	gépi feldolgozás	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.tbesh	modell-kimenet	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	tabla	szo.tbesh	Szó | Átírás | Morf | Gloss | Jelentés	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.tbesh		lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	blokk	szo.tw_h	translationWords	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	jelleg	szo.tw_h	forrásadat	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	ures	szo.tw_h	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/1Moz/1/2?szo=H8415&ful=szo	alap	forras	szo.tw_h		lathato
+/1Moz/1/1	alap	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/1	alap	fej		⌕	lathato
+/1Moz/1/1	alap	fej		Aa	csukott
+/1Moz/1/1	alap	fej		A−	csukott
+/1Moz/1/1	alap	fej		A+	csukott
+/1Moz/1/1	alap	fej		szűk	csukott
+/1Moz/1/1	alap	fej		közepes	csukott
+/1Moz/1/1	alap	fej		tág	csukott
+/1Moz/1/1	alap	fej		Source Serif	csukott
+/1Moz/1/1	alap	fej		Noto Serif	csukott
+/1Moz/1/1	alap	fej		IBM Plex Sans	csukott
+/1Moz/1/1	alap	fej		keskeny	csukott
+/1Moz/1/1	alap	fej		közepes	csukott
+/1Moz/1/1	alap	fej		széles	csukott
+/1Moz/1/1	alap	fej		teljes	csukott
+/1Moz/1/1	alap	fej		Alapértékek	csukott
+/1Moz/1/1	alap	fej		⚙	csukott
+/1Moz/1/1	alap	fej		Tervező	rejtett
+/1Moz/1/1	alap	fej		Rendszer	csukott
+/1Moz/1/1	alap	fej		Világos	csukott
+/1Moz/1/1	alap	fej		Sötét	csukott
+/1Moz/1/1	alap	fej		Mózes első könyve #	lathato
+/1Moz/1/1	alap	fej		‹	rejtett
+/1Moz/1/1	alap	fej		⤢	lathato
+/1Moz/1/1	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/1	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/1	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/1	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/1	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/1	alap	forras			rejtett
+/1Moz/1/1	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/1	alap	forras			rejtett
+/1Moz/1/1	alap	fej		#Móz #:#	lathato
+/1Moz/1/1	alap	blokk	vers.karoli	Károli-szöveg	lathato
+/1Moz/1/1	alap	jelleg	vers.karoli	forrásadat	lathato
+/1Moz/1/1	alap	forras	vers.karoli		lathato
+/1Moz/1/1	alap	blokk	vers.heber_csempe	Héber szöveg	lathato
+/1Moz/1/1	alap	jelleg	vers.heber_csempe	forrásadat	lathato
+/1Moz/1/1	alap	jelleg	vers.heber_csempe	gépi feldolgozás	lathato
+/1Moz/1/1	alap	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	lathato
+/1Moz/1/1	alap	ures	vers.heber_csempe	LXX: —	lathato
+/1Moz/1/1	alap	ures	vers.heber_csempe	LXX: —	lathato
+/1Moz/1/1	alap	forras	vers.heber_csempe		lathato
+/1Moz/1/1	alap	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	lathato
+/1Moz/1/1	alap	jelleg	vers.lxx_csempe	forrásadat	lathato
+/1Moz/1/1	alap	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	lathato
+/1Moz/1/1	alap	forras	vers.lxx_csempe		lathato
+/1Moz/1/1	alap	blokk	vers.par	Károli–Strong párosítás	lathato
+/1Moz/1/1	alap	jelleg	vers.par	modell-kimenet	lathato
+/1Moz/1/1	alap	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	lathato
+/1Moz/1/1	alap	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	lathato
+/1Moz/1/1	alap	forras	vers.par		lathato
+/1Moz/1/1	alap	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	lathato
+/1Moz/1/1	alap	jelleg	vers.eredeti	forrásadat	lathato
+/1Moz/1/1	alap	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	lathato
+/1Moz/1/1	alap	forras	vers.eredeti		lathato
+/1Moz/1/1	alap	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	lathato
+/1Moz/1/1	alap	jelleg	vers.macula_morf	forrásadat	lathato
+/1Moz/1/1	alap	tabla	vers.macula_morf	Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss	lathato
+/1Moz/1/1	alap	forras	vers.macula_morf		lathato
+/1Moz/1/1	alap	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	lathato
+/1Moz/1/1	alap	jelleg	vers.macula_gorog	forrásadat	lathato
+/1Moz/1/1	alap	tabla	vers.macula_gorog	Héber szó | Gloss | Görög (Macula) | Görög Strong	lathato
+/1Moz/1/1	alap	forras	vers.macula_gorog		lathato
+/1Moz/1/1	alap	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	lathato
+/1Moz/1/1	alap	jelleg	vers.lxx_szavak	forrásadat	lathato
+/1Moz/1/1	alap	tabla	vers.lxx_szavak	Szóalak | Lemma | Strong | Morf	lathato
+/1Moz/1/1	alap	forras	vers.lxx_szavak		lathato
+/1Moz/1/1	alap	blokk	vers.lxx_versszam	LXX-versszám	lathato
+/1Moz/1/1	alap	jelleg	vers.lxx_versszam	forrásadat	lathato
+/1Moz/1/1	alap	tabla	vers.lxx_versszam	Forrás | LXX-versszám	lathato
+/1Moz/1/1	alap	forras	vers.lxx_versszam		lathato
+/1Moz/1/1	alap	blokk	vers.versszamozas	Versszámozás (MT / KJV)	lathato
+/1Moz/1/1	alap	jelleg	vers.versszamozas	forrásadat	lathato
+/1Moz/1/1	alap	tabla	vers.versszamozas	Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása	lathato
+/1Moz/1/1	alap	forras	vers.versszamozas		lathato
+/1Moz/1/1	alap	blokk	vers.bsb	Angol szavak szavanként (BSB)	lathato
+/1Moz/1/1	alap	jelleg	vers.bsb	forrásadat	lathato
+/1Moz/1/1	alap	jelleg	vers.bsb	gépi feldolgozás	lathato
+/1Moz/1/1	alap	forras	vers.bsb		lathato
+/1Moz/1/1	alap	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	lathato
+/1Moz/1/1	alap	jelleg	vers.kjv	forrásadat	lathato
+/1Moz/1/1	alap	jelleg	vers.kjv	gépi feldolgozás	lathato
+/1Moz/1/1	alap	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	lathato
+/1Moz/1/1	alap	forras	vers.kjv		lathato
+/1Moz/1/1	alap	blokk	vers.morf_hu	Az igealak magyar feloldása	lathato
+/1Moz/1/1	alap	jelleg	vers.morf_hu	gépi feldolgozás	lathato
+/1Moz/1/1	alap	tabla	vers.morf_hu	Szó | Kód | Magyar feloldás | Nyelv	lathato
+/1Moz/1/1	alap	forras	vers.morf_hu		lathato
+/1Moz/1/1	alap	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	lathato
+/1Moz/1/1	alap	jelleg	vers.lxx_dontes	forrásadat	lathato
+/1Moz/1/1	alap	megj	vers.lxx_dontes	soronként saját proveniencia-mező	lathato
+/1Moz/1/1	alap	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/1Moz/1/1	alap	forras	vers.lxx_dontes		lathato
+/1Moz/1/1	alap	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	lathato
+/1Moz/1/1	alap	jelleg	vers.lxx_par	forrásadat	lathato
+/1Moz/1/1	alap	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	lathato
+/1Moz/1/1	alap	fej	vers.lxx_par	# héber szó, # pár	lathato
+/1Moz/1/1	alap	forras	vers.lxx_par		lathato
+/1Moz/1/1	alap	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	lathato
+/1Moz/1/1	alap	jelleg	vers.lxx_tobblet	forrásadat	lathato
+/1Moz/1/1	alap	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	lathato
+/1Moz/1/1	alap	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	lathato
+/1Moz/1/1	alap	forras	vers.lxx_tobblet		lathato
+/1Moz/1/1	alap	blokk	vers.ubs	UBS-jelentés az előfordulásra	lathato
+/1Moz/1/1	alap	jelleg	vers.ubs	forrásadat	lathato
+/1Moz/1/1	alap	tabla	vers.ubs	Strong | Azonosító | Domén | Rövid definíció | Glosszák	lathato
+/1Moz/1/1	alap	forras	vers.ubs		lathato
+/1Moz/1/1	alap	blokk	vers.tsk	Kereszthivatkozások (TSK)	rejtett
+/1Moz/1/1	alap	jelleg	vers.tsk	forrásadat	rejtett
+/1Moz/1/1	alap	tabla	vers.tsk	Hivatkozás | Szavazat	rejtett
+/1Moz/1/1	alap	forras	vers.tsk		rejtett
+/1Moz/1/1	alap	blokk	vers.kh	Károli-kereszthivatkozások	rejtett
+/1Moz/1/1	alap	jelleg	vers.kh	forrásadat	rejtett
+/1Moz/1/1	alap	forras	vers.kh		rejtett
+/1Moz/1/1	alap	blokk	vers.nave	Témák (Nave, versekre bontva)	rejtett
+/1Moz/1/1	alap	jelleg	vers.nave	forrásadat	rejtett
+/1Moz/1/1	alap	jelleg	vers.nave	gépi feldolgozás	rejtett
+/1Moz/1/1	alap	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	rejtett
+/1Moz/1/1	alap	fej	vers.nave	Fejezet-szintű hivatkozások (#)	rejtett
+/1Moz/1/1	alap	tabla	vers.nave	Téma | Cím | Nave-hely	rejtett
+/1Moz/1/1	alap	forras	vers.nave		rejtett
+/1Moz/1/1	alap	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	rejtett
+/1Moz/1/1	alap	jelleg	vers.tipnr	forrásadat	rejtett
+/1Moz/1/1	alap	jelleg	vers.tipnr	gépi feldolgozás	rejtett
+/1Moz/1/1	alap	tabla	vers.tipnr	Név | Névváltozat | Strong | Nyelv	rejtett
+/1Moz/1/1	alap	forras	vers.tipnr		rejtett
+/1Moz/1/1	alap	blokk	vers.motivum	Motívumadat (adatréteg)	rejtett
+/1Moz/1/1	alap	jelleg	vers.motivum	forrásadat	rejtett
+/1Moz/1/1	alap	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	rejtett
+/1Moz/1/1	alap	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/1	alap	forras	vers.motivum		rejtett
+/1Moz/1/1	alap	blokk	vers.tanulmany	Tanulmányok erről a versről	rejtett
+/1Moz/1/1	alap	jelleg	vers.tanulmany	forrásadat	rejtett
+/1Moz/1/1	alap	jelleg	vers.tanulmany	gépi feldolgozás	rejtett
+/1Moz/1/1	alap	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	rejtett
+/1Moz/1/1	alap	forras	vers.tanulmany		rejtett
+/1Moz/1/1	alap	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	rejtett
+/1Moz/1/1	alap	jelleg	vers.kapcsolat	forrásadat	rejtett
+/1Moz/1/1	alap	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/1	alap	forras	vers.kapcsolat		rejtett
+/1Moz/1/1?ful=kh	kutato	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/1?ful=kh	kutato	fej		⌕	lathato
+/1Moz/1/1?ful=kh	kutato	fej		Aa	csukott
+/1Moz/1/1?ful=kh	kutato	fej		A−	csukott
+/1Moz/1/1?ful=kh	kutato	fej		A+	csukott
+/1Moz/1/1?ful=kh	kutato	fej		szűk	csukott
+/1Moz/1/1?ful=kh	kutato	fej		közepes	csukott
+/1Moz/1/1?ful=kh	kutato	fej		tág	csukott
+/1Moz/1/1?ful=kh	kutato	fej		Source Serif	csukott
+/1Moz/1/1?ful=kh	kutato	fej		Noto Serif	csukott
+/1Moz/1/1?ful=kh	kutato	fej		IBM Plex Sans	csukott
+/1Moz/1/1?ful=kh	kutato	fej		keskeny	csukott
+/1Moz/1/1?ful=kh	kutato	fej		közepes	csukott
+/1Moz/1/1?ful=kh	kutato	fej		széles	csukott
+/1Moz/1/1?ful=kh	kutato	fej		teljes	csukott
+/1Moz/1/1?ful=kh	kutato	fej		Alapértékek	csukott
+/1Moz/1/1?ful=kh	kutato	fej		⚙	csukott
+/1Moz/1/1?ful=kh	kutato	fej		Tervező	rejtett
+/1Moz/1/1?ful=kh	kutato	fej		Rendszer	csukott
+/1Moz/1/1?ful=kh	kutato	fej		Világos	csukott
+/1Moz/1/1?ful=kh	kutato	fej		Sötét	csukott
+/1Moz/1/1?ful=kh	kutato	fej		Mózes első könyve #	lathato
+/1Moz/1/1?ful=kh	kutato	fej		‹	rejtett
+/1Moz/1/1?ful=kh	kutato	fej		⤢	lathato
+/1Moz/1/1?ful=kh	kutato	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	forras			rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/1?ful=kh	kutato	forras			rejtett
+/1Moz/1/1?ful=kh	kutato	fej		#Móz #:#	lathato
+/1Moz/1/1?ful=kh	kutato	blokk	vers.karoli	Károli-szöveg	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.karoli	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.karoli		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.heber_csempe	Héber szöveg	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.heber_csempe	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.heber_csempe	gépi feldolgozás	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/1Moz/1/1?ful=kh	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/1?ful=kh	kutato	ures	vers.heber_csempe	LXX: —	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.heber_csempe		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.lxx_csempe	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.lxx_csempe		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.par	Károli–Strong párosítás	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.par	modell-kimenet	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.par		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.eredeti	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.eredeti		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.macula_morf	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.macula_morf	Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.macula_morf		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.macula_gorog	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.macula_gorog	Héber szó | Gloss | Görög (Macula) | Görög Strong	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.macula_gorog		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.lxx_szavak	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.lxx_szavak	Szóalak | Lemma | Strong | Morf	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.lxx_szavak		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.lxx_versszam	LXX-versszám	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.lxx_versszam	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.lxx_versszam	Forrás | LXX-versszám	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.lxx_versszam		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.versszamozas	Versszámozás (MT / KJV)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.versszamozas	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.versszamozas	Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.versszamozas		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.bsb	Angol szavak szavanként (BSB)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.bsb	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.bsb	gépi feldolgozás	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.bsb		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.kjv	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.kjv	gépi feldolgozás	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.kjv		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.morf_hu	Az igealak magyar feloldása	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.morf_hu	gépi feldolgozás	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.morf_hu	Szó | Kód | Magyar feloldás | Nyelv	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.morf_hu		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.lxx_dontes	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.lxx_dontes	soronként saját proveniencia-mező	rejtett
+/1Moz/1/1?ful=kh	kutato	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.lxx_dontes		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.lxx_par	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	rejtett
+/1Moz/1/1?ful=kh	kutato	fej	vers.lxx_par	# héber szó, # pár	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.lxx_par		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.lxx_tobblet	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	rejtett
+/1Moz/1/1?ful=kh	kutato	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.lxx_tobblet		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.ubs	UBS-jelentés az előfordulásra	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.ubs	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.ubs	Strong | Azonosító | Domén | Rövid definíció | Glosszák	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.ubs		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.tsk	Kereszthivatkozások (TSK)	lathato
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.tsk	forrásadat	lathato
+/1Moz/1/1?ful=kh	kutato	tabla	vers.tsk	Hivatkozás | Szavazat	lathato
+/1Moz/1/1?ful=kh	kutato	forras	vers.tsk		lathato
+/1Moz/1/1?ful=kh	kutato	blokk	vers.kh	Károli-kereszthivatkozások	lathato
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.kh	forrásadat	lathato
+/1Moz/1/1?ful=kh	kutato	forras	vers.kh		lathato
+/1Moz/1/1?ful=kh	kutato	blokk	vers.nave	Témák (Nave, versekre bontva)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.nave	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.nave	gépi feldolgozás	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	rejtett
+/1Moz/1/1?ful=kh	kutato	fej	vers.nave	Fejezet-szintű hivatkozások (#)	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.nave	Téma | Cím | Nave-hely	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.nave		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.tipnr	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.tipnr	gépi feldolgozás	rejtett
+/1Moz/1/1?ful=kh	kutato	tabla	vers.tipnr	Név | Névváltozat | Strong | Nyelv	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.tipnr		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.motivum	Motívumadat (adatréteg)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.motivum	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	rejtett
+/1Moz/1/1?ful=kh	kutato	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.motivum		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.tanulmany	Tanulmányok erről a versről	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.tanulmany	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.tanulmany	gépi feldolgozás	rejtett
+/1Moz/1/1?ful=kh	kutato	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.tanulmany		rejtett
+/1Moz/1/1?ful=kh	kutato	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	rejtett
+/1Moz/1/1?ful=kh	kutato	jelleg	vers.kapcsolat	forrásadat	rejtett
+/1Moz/1/1?ful=kh	kutato	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/1Moz/1/1?ful=kh	kutato	forras	vers.kapcsolat		rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Károli # · #Móz # ▾	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		⌕	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Aa	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		A−	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		A+	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		szűk	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		közepes	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		tág	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Source Serif	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Noto Serif	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		IBM Plex Sans	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		keskeny	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		közepes	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		széles	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		teljes	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Alapértékek	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		⚙	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Tervező	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Rendszer	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Világos	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Sötét	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Mózes első könyve #	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		‹	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		⤢	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras			rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras			rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej		H# בֹּ֫קֶר	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.szotar	Strong-szótár	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.szotar	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.szotar	modell-kimenet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	tabla	szo.szotar	Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.szotar		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.elofordulas	Előfordulás, könyvek száma	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.elofordulas	gépi feldolgozás	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.elofordulas		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.ebben	Ebben a versben	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.ebben	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.ebben	gépi feldolgozás	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.ebben	modell-kimenet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.ebben		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.karoli_alakok	Károli-alakok és pontosság	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.karoli_alakok	modell-kimenet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	tabla	szo.karoli_alakok	Károli-alak | Darab	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.karoli_alakok		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.bdb_apparatus	Szótár: BDB-szócikk (Brown–Driver–Briggs)	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.bdb_apparatus	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.bdb_apparatus	modell-kimenet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.bdb_apparatus	gépi feldolgozás	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Olvasói nézet	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Szócikk egyben	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Minden apparátus nyitva	rejtett
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Alakok	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	#reggel	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	#holnap, másnap# hivatkozásLXX φωσφόρος # · πρωΐ # · ὄρθρος # · # megfelelő nélkül	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	Jelmagyarázat	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.bdb_apparatus	A magyar szócikk teljes szövege (tagolás nélkül)	csukott
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.bdb_apparatus		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.lxx_bridge	Görög megfelelő (Septuaginta)	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.lxx_bridge	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	tabla	szo.lxx_bridge	Görög Strong | Szótő | Jelentés | Darab	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.lxx_bridge		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.ubs_dbh	UBS DBH jelentések (a teljes szócikk, magyar fordítással)	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.ubs_dbh	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.ubs_dbh	modell-kimenet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	megj	szo.ubs_dbh	CC BY-SA # (UBS); a magyar glossza és definíció modell-kimenet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	tabla	szo.ubs_dbh	Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.ubs_dbh		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.sdbh	Szemantikai domén (SDBH)	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.sdbh	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	megj	szo.sdbh	üres eredmény nem negatív lelet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	tabla	szo.sdbh	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.sdbh		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.sece_h	SECE-szócikk (héber)	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.sece_h	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.sece_h		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.oshl	OSHL: TWOT- és BDB-azonosító, BDB-helyek	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.oshl	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	tabla	szo.oshl	TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.oshl		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.oshl_csalad	Rokon szavak (OSHL-gyökcsalád)	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.oshl_csalad	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	megj	szo.oshl_csalad	az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	fej	szo.oshl_csalad	Gyök: בקר H#	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	tabla	szo.oshl_csalad	Strong | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.oshl_csalad		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.tbesh	Bővített Strong-szócikk (TBESH)	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.tbesh	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.tbesh	gépi feldolgozás	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.tbesh	modell-kimenet	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	tabla	szo.tbesh	Szó | Átírás | Morf | Gloss | Jelentés	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.tbesh		lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	blokk	szo.tw_h	translationWords	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	jelleg	szo.tw_h	forrásadat	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	ures	szo.tw_h	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/1Moz/1/5?szo=H1242&ful=szo	alap	forras	szo.tw_h		lathato
+/Zsolt/22/2	alap	fej		Károli # · Zsolt # ▾	csukott
+/Zsolt/22/2	alap	fej		⌕	lathato
+/Zsolt/22/2	alap	fej		Aa	csukott
+/Zsolt/22/2	alap	fej		A−	csukott
+/Zsolt/22/2	alap	fej		A+	csukott
+/Zsolt/22/2	alap	fej		szűk	csukott
+/Zsolt/22/2	alap	fej		közepes	csukott
+/Zsolt/22/2	alap	fej		tág	csukott
+/Zsolt/22/2	alap	fej		Source Serif	csukott
+/Zsolt/22/2	alap	fej		Noto Serif	csukott
+/Zsolt/22/2	alap	fej		IBM Plex Sans	csukott
+/Zsolt/22/2	alap	fej		keskeny	csukott
+/Zsolt/22/2	alap	fej		közepes	csukott
+/Zsolt/22/2	alap	fej		széles	csukott
+/Zsolt/22/2	alap	fej		teljes	csukott
+/Zsolt/22/2	alap	fej		Alapértékek	csukott
+/Zsolt/22/2	alap	fej		⚙	csukott
+/Zsolt/22/2	alap	fej		Tervező	rejtett
+/Zsolt/22/2	alap	fej		Rendszer	csukott
+/Zsolt/22/2	alap	fej		Világos	csukott
+/Zsolt/22/2	alap	fej		Sötét	csukott
+/Zsolt/22/2	alap	fej		Zsoltárok könyve #	lathato
+/Zsolt/22/2	alap	fej		‹	rejtett
+/Zsolt/22/2	alap	fej		⤢	lathato
+/Zsolt/22/2	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/Zsolt/22/2	alap	jelleg-mashol		forrásadat	rejtett
+/Zsolt/22/2	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/Zsolt/22/2	alap	jelleg-mashol		modell-kimenet	rejtett
+/Zsolt/22/2	alap	jelleg-mashol		forrásadat	rejtett
+/Zsolt/22/2	alap	forras			rejtett
+/Zsolt/22/2	alap	jelleg-mashol		modell-kimenet	rejtett
+/Zsolt/22/2	alap	forras			rejtett
+/Zsolt/22/2	alap	fej		Zsolt #:#	lathato
+/Zsolt/22/2	alap	blokk	vers.karoli	Károli-szöveg	lathato
+/Zsolt/22/2	alap	jelleg	vers.karoli	forrásadat	lathato
+/Zsolt/22/2	alap	forras	vers.karoli		lathato
+/Zsolt/22/2	alap	blokk	vers.heber_csempe	Héber szöveg	lathato
+/Zsolt/22/2	alap	jelleg	vers.heber_csempe	forrásadat	lathato
+/Zsolt/22/2	alap	jelleg	vers.heber_csempe	gépi feldolgozás	lathato
+/Zsolt/22/2	alap	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	lathato
+/Zsolt/22/2	alap	ures	vers.heber_csempe	LXX: —	lathato
+/Zsolt/22/2	alap	forras	vers.heber_csempe		lathato
+/Zsolt/22/2	alap	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	lathato
+/Zsolt/22/2	alap	jelleg	vers.lxx_csempe	forrásadat	lathato
+/Zsolt/22/2	alap	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	lathato
+/Zsolt/22/2	alap	forras	vers.lxx_csempe		lathato
+/Zsolt/22/2	alap	blokk	vers.par	Károli–Strong párosítás	lathato
+/Zsolt/22/2	alap	jelleg	vers.par	modell-kimenet	lathato
+/Zsolt/22/2	alap	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	lathato
+/Zsolt/22/2	alap	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	lathato
+/Zsolt/22/2	alap	forras	vers.par		lathato
+/Zsolt/22/2	alap	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	lathato
+/Zsolt/22/2	alap	jelleg	vers.eredeti	forrásadat	lathato
+/Zsolt/22/2	alap	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	lathato
+/Zsolt/22/2	alap	forras	vers.eredeti		lathato
+/Zsolt/22/2	alap	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	lathato
+/Zsolt/22/2	alap	jelleg	vers.macula_morf	forrásadat	lathato
+/Zsolt/22/2	alap	tabla	vers.macula_morf	Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss	lathato
+/Zsolt/22/2	alap	forras	vers.macula_morf		lathato
+/Zsolt/22/2	alap	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	lathato
+/Zsolt/22/2	alap	jelleg	vers.macula_gorog	forrásadat	lathato
+/Zsolt/22/2	alap	tabla	vers.macula_gorog	Héber szó | Gloss | Görög (Macula) | Görög Strong	lathato
+/Zsolt/22/2	alap	forras	vers.macula_gorog		lathato
+/Zsolt/22/2	alap	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	lathato
+/Zsolt/22/2	alap	jelleg	vers.lxx_szavak	forrásadat	lathato
+/Zsolt/22/2	alap	tabla	vers.lxx_szavak	Szóalak | Lemma | Strong | Morf	lathato
+/Zsolt/22/2	alap	forras	vers.lxx_szavak		lathato
+/Zsolt/22/2	alap	blokk	vers.lxx_versszam	LXX-versszám	lathato
+/Zsolt/22/2	alap	jelleg	vers.lxx_versszam	forrásadat	lathato
+/Zsolt/22/2	alap	tabla	vers.lxx_versszam	Forrás | LXX-versszám	lathato
+/Zsolt/22/2	alap	forras	vers.lxx_versszam		lathato
+/Zsolt/22/2	alap	blokk	vers.versszamozas	Versszámozás (MT / KJV)	lathato
+/Zsolt/22/2	alap	jelleg	vers.versszamozas	forrásadat	lathato
+/Zsolt/22/2	alap	tabla	vers.versszamozas	Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása	lathato
+/Zsolt/22/2	alap	forras	vers.versszamozas		lathato
+/Zsolt/22/2	alap	blokk	vers.bsb	Angol szavak szavanként (BSB)	lathato
+/Zsolt/22/2	alap	jelleg	vers.bsb	forrásadat	lathato
+/Zsolt/22/2	alap	jelleg	vers.bsb	gépi feldolgozás	lathato
+/Zsolt/22/2	alap	ures	vers.bsb	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Zsolt/22/2	alap	forras	vers.bsb		lathato
+/Zsolt/22/2	alap	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	lathato
+/Zsolt/22/2	alap	jelleg	vers.kjv	forrásadat	lathato
+/Zsolt/22/2	alap	jelleg	vers.kjv	gépi feldolgozás	lathato
+/Zsolt/22/2	alap	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	lathato
+/Zsolt/22/2	alap	forras	vers.kjv		lathato
+/Zsolt/22/2	alap	blokk	vers.morf_hu	Az igealak magyar feloldása	lathato
+/Zsolt/22/2	alap	jelleg	vers.morf_hu	gépi feldolgozás	lathato
+/Zsolt/22/2	alap	tabla	vers.morf_hu	Szó | Kód | Magyar feloldás | Nyelv	lathato
+/Zsolt/22/2	alap	forras	vers.morf_hu		lathato
+/Zsolt/22/2	alap	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	lathato
+/Zsolt/22/2	alap	jelleg	vers.lxx_dontes	forrásadat	lathato
+/Zsolt/22/2	alap	megj	vers.lxx_dontes	soronként saját proveniencia-mező	lathato
+/Zsolt/22/2	alap	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Zsolt/22/2	alap	forras	vers.lxx_dontes		lathato
+/Zsolt/22/2	alap	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	lathato
+/Zsolt/22/2	alap	jelleg	vers.lxx_par	forrásadat	lathato
+/Zsolt/22/2	alap	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	lathato
+/Zsolt/22/2	alap	ures	vers.lxx_par	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Zsolt/22/2	alap	forras	vers.lxx_par		lathato
+/Zsolt/22/2	alap	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	lathato
+/Zsolt/22/2	alap	jelleg	vers.lxx_tobblet	forrásadat	lathato
+/Zsolt/22/2	alap	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	lathato
+/Zsolt/22/2	alap	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	lathato
+/Zsolt/22/2	alap	forras	vers.lxx_tobblet		lathato
+/Zsolt/22/2	alap	blokk	vers.ubs	UBS-jelentés az előfordulásra	lathato
+/Zsolt/22/2	alap	jelleg	vers.ubs	forrásadat	lathato
+/Zsolt/22/2	alap	tabla	vers.ubs	Strong | Azonosító | Domén | Rövid definíció | Glosszák	lathato
+/Zsolt/22/2	alap	forras	vers.ubs		lathato
+/Zsolt/22/2	alap	blokk	vers.tsk	Kereszthivatkozások (TSK)	rejtett
+/Zsolt/22/2	alap	jelleg	vers.tsk	forrásadat	rejtett
+/Zsolt/22/2	alap	tabla	vers.tsk	Hivatkozás | Szavazat	rejtett
+/Zsolt/22/2	alap	forras	vers.tsk		rejtett
+/Zsolt/22/2	alap	blokk	vers.kh	Károli-kereszthivatkozások	rejtett
+/Zsolt/22/2	alap	jelleg	vers.kh	forrásadat	rejtett
+/Zsolt/22/2	alap	forras	vers.kh		rejtett
+/Zsolt/22/2	alap	blokk	vers.nave	Témák (Nave, versekre bontva)	rejtett
+/Zsolt/22/2	alap	jelleg	vers.nave	forrásadat	rejtett
+/Zsolt/22/2	alap	jelleg	vers.nave	gépi feldolgozás	rejtett
+/Zsolt/22/2	alap	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	rejtett
+/Zsolt/22/2	alap	fej	vers.nave	Fejezet-szintű hivatkozások (#)	rejtett
+/Zsolt/22/2	alap	tabla	vers.nave	Téma | Cím | Nave-hely	rejtett
+/Zsolt/22/2	alap	forras	vers.nave		rejtett
+/Zsolt/22/2	alap	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	rejtett
+/Zsolt/22/2	alap	jelleg	vers.tipnr	forrásadat	rejtett
+/Zsolt/22/2	alap	jelleg	vers.tipnr	gépi feldolgozás	rejtett
+/Zsolt/22/2	alap	tabla	vers.tipnr	Név | Névváltozat | Strong | Nyelv	rejtett
+/Zsolt/22/2	alap	forras	vers.tipnr		rejtett
+/Zsolt/22/2	alap	blokk	vers.motivum	Motívumadat (adatréteg)	rejtett
+/Zsolt/22/2	alap	jelleg	vers.motivum	forrásadat	rejtett
+/Zsolt/22/2	alap	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	rejtett
+/Zsolt/22/2	alap	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Zsolt/22/2	alap	forras	vers.motivum		rejtett
+/Zsolt/22/2	alap	blokk	vers.tanulmany	Tanulmányok erről a versről	rejtett
+/Zsolt/22/2	alap	jelleg	vers.tanulmany	forrásadat	rejtett
+/Zsolt/22/2	alap	jelleg	vers.tanulmany	gépi feldolgozás	rejtett
+/Zsolt/22/2	alap	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	rejtett
+/Zsolt/22/2	alap	ures	vers.tanulmany	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Zsolt/22/2	alap	forras	vers.tanulmany		rejtett
+/Zsolt/22/2	alap	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	rejtett
+/Zsolt/22/2	alap	jelleg	vers.kapcsolat	forrásadat	rejtett
+/Zsolt/22/2	alap	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Zsolt/22/2	alap	forras	vers.kapcsolat		rejtett
+/Zsolt/22	alap	fej		Károli # · Zsolt # ▾	csukott
+/Zsolt/22	alap	fej		⌕	lathato
+/Zsolt/22	alap	fej		Aa	csukott
+/Zsolt/22	alap	fej		A−	csukott
+/Zsolt/22	alap	fej		A+	csukott
+/Zsolt/22	alap	fej		szűk	csukott
+/Zsolt/22	alap	fej		közepes	csukott
+/Zsolt/22	alap	fej		tág	csukott
+/Zsolt/22	alap	fej		Source Serif	csukott
+/Zsolt/22	alap	fej		Noto Serif	csukott
+/Zsolt/22	alap	fej		IBM Plex Sans	csukott
+/Zsolt/22	alap	fej		keskeny	csukott
+/Zsolt/22	alap	fej		közepes	csukott
+/Zsolt/22	alap	fej		széles	csukott
+/Zsolt/22	alap	fej		teljes	csukott
+/Zsolt/22	alap	fej		Alapértékek	csukott
+/Zsolt/22	alap	fej		⚙	csukott
+/Zsolt/22	alap	fej		Tervező	rejtett
+/Zsolt/22	alap	fej		Rendszer	csukott
+/Zsolt/22	alap	fej		Világos	csukott
+/Zsolt/22	alap	fej		Sötét	csukott
+/Zsolt/22	alap	fej		Zsoltárok könyve #	lathato
+/Zsolt/22	alap	fej		‹	rejtett
+/Zsolt/22	alap	fej		⤢	lathato
+/Zsolt/22	alap	fej		Hogyan olvasd ezt az oldalt?	lathato
+/Zsolt/22	alap	jelleg-mashol		forrásadat	lathato
+/Zsolt/22	alap	jelleg-mashol		gépi feldolgozás	lathato
+/Zsolt/22	alap	jelleg-mashol		modell-kimenet	lathato
+/Zsolt/22	alap	jelleg-mashol		forrásadat	lathato
+/Zsolt/22	alap	forras			lathato
+/Zsolt/22	alap	jelleg-mashol		modell-kimenet	lathato
+/Zsolt/22	alap	forras			lathato
+/Jan/1/1	alap	fej		Károli # · Ján # ▾	csukott
+/Jan/1/1	alap	fej		⌕	lathato
+/Jan/1/1	alap	fej		Aa	csukott
+/Jan/1/1	alap	fej		A−	csukott
+/Jan/1/1	alap	fej		A+	csukott
+/Jan/1/1	alap	fej		szűk	csukott
+/Jan/1/1	alap	fej		közepes	csukott
+/Jan/1/1	alap	fej		tág	csukott
+/Jan/1/1	alap	fej		Source Serif	csukott
+/Jan/1/1	alap	fej		Noto Serif	csukott
+/Jan/1/1	alap	fej		IBM Plex Sans	csukott
+/Jan/1/1	alap	fej		keskeny	csukott
+/Jan/1/1	alap	fej		közepes	csukott
+/Jan/1/1	alap	fej		széles	csukott
+/Jan/1/1	alap	fej		teljes	csukott
+/Jan/1/1	alap	fej		Alapértékek	csukott
+/Jan/1/1	alap	fej		⚙	csukott
+/Jan/1/1	alap	fej		Tervező	rejtett
+/Jan/1/1	alap	fej		Rendszer	csukott
+/Jan/1/1	alap	fej		Világos	csukott
+/Jan/1/1	alap	fej		Sötét	csukott
+/Jan/1/1	alap	fej		János evangéliuma #	lathato
+/Jan/1/1	alap	fej		‹	rejtett
+/Jan/1/1	alap	fej		⤢	lathato
+/Jan/1/1	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/Jan/1/1	alap	jelleg-mashol		forrásadat	rejtett
+/Jan/1/1	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/Jan/1/1	alap	jelleg-mashol		modell-kimenet	rejtett
+/Jan/1/1	alap	jelleg-mashol		forrásadat	rejtett
+/Jan/1/1	alap	forras			rejtett
+/Jan/1/1	alap	jelleg-mashol		modell-kimenet	rejtett
+/Jan/1/1	alap	forras			rejtett
+/Jan/1/1	alap	fej		Ján #:#	lathato
+/Jan/1/1	alap	blokk	vers.karoli	Károli-szöveg	lathato
+/Jan/1/1	alap	jelleg	vers.karoli	forrásadat	lathato
+/Jan/1/1	alap	forras	vers.karoli		lathato
+/Jan/1/1	alap	blokk	vers.heber_csempe	Héber szöveg	lathato
+/Jan/1/1	alap	jelleg	vers.heber_csempe	forrásadat	lathato
+/Jan/1/1	alap	jelleg	vers.heber_csempe	gépi feldolgozás	lathato
+/Jan/1/1	alap	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	lathato
+/Jan/1/1	alap	ures	vers.heber_csempe	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.heber_csempe		lathato
+/Jan/1/1	alap	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	lathato
+/Jan/1/1	alap	jelleg	vers.lxx_csempe	forrásadat	lathato
+/Jan/1/1	alap	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	lathato
+/Jan/1/1	alap	ures	vers.lxx_csempe	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.lxx_csempe		lathato
+/Jan/1/1	alap	blokk	vers.par	Károli–Strong párosítás	lathato
+/Jan/1/1	alap	jelleg	vers.par	modell-kimenet	lathato
+/Jan/1/1	alap	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	lathato
+/Jan/1/1	alap	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	lathato
+/Jan/1/1	alap	forras	vers.par		lathato
+/Jan/1/1	alap	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	lathato
+/Jan/1/1	alap	jelleg	vers.eredeti	forrásadat	lathato
+/Jan/1/1	alap	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	lathato
+/Jan/1/1	alap	forras	vers.eredeti		lathato
+/Jan/1/1	alap	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	lathato
+/Jan/1/1	alap	jelleg	vers.macula_morf	forrásadat	lathato
+/Jan/1/1	alap	ures	vers.macula_morf	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.macula_morf		lathato
+/Jan/1/1	alap	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	lathato
+/Jan/1/1	alap	jelleg	vers.macula_gorog	forrásadat	lathato
+/Jan/1/1	alap	ures	vers.macula_gorog	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.macula_gorog		lathato
+/Jan/1/1	alap	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	lathato
+/Jan/1/1	alap	jelleg	vers.lxx_szavak	forrásadat	lathato
+/Jan/1/1	alap	ures	vers.lxx_szavak	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.lxx_szavak		lathato
+/Jan/1/1	alap	blokk	vers.lxx_versszam	LXX-versszám	lathato
+/Jan/1/1	alap	jelleg	vers.lxx_versszam	forrásadat	lathato
+/Jan/1/1	alap	ures	vers.lxx_versszam	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.lxx_versszam		lathato
+/Jan/1/1	alap	blokk	vers.versszamozas	Versszámozás (MT / KJV)	lathato
+/Jan/1/1	alap	jelleg	vers.versszamozas	forrásadat	lathato
+/Jan/1/1	alap	ures	vers.versszamozas	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.versszamozas		lathato
+/Jan/1/1	alap	blokk	vers.bsb	Angol szavak szavanként (BSB)	lathato
+/Jan/1/1	alap	jelleg	vers.bsb	forrásadat	lathato
+/Jan/1/1	alap	jelleg	vers.bsb	gépi feldolgozás	lathato
+/Jan/1/1	alap	ures	vers.bsb	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.bsb		lathato
+/Jan/1/1	alap	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	lathato
+/Jan/1/1	alap	jelleg	vers.kjv	forrásadat	lathato
+/Jan/1/1	alap	jelleg	vers.kjv	gépi feldolgozás	lathato
+/Jan/1/1	alap	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	lathato
+/Jan/1/1	alap	forras	vers.kjv		lathato
+/Jan/1/1	alap	blokk	vers.morf_hu	Az igealak magyar feloldása	lathato
+/Jan/1/1	alap	jelleg	vers.morf_hu	gépi feldolgozás	lathato
+/Jan/1/1	alap	ures	vers.morf_hu	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.morf_hu		lathato
+/Jan/1/1	alap	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	lathato
+/Jan/1/1	alap	jelleg	vers.lxx_dontes	forrásadat	lathato
+/Jan/1/1	alap	megj	vers.lxx_dontes	soronként saját proveniencia-mező	lathato
+/Jan/1/1	alap	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.lxx_dontes		lathato
+/Jan/1/1	alap	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	lathato
+/Jan/1/1	alap	jelleg	vers.lxx_par	forrásadat	lathato
+/Jan/1/1	alap	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	lathato
+/Jan/1/1	alap	ures	vers.lxx_par	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.lxx_par		lathato
+/Jan/1/1	alap	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	lathato
+/Jan/1/1	alap	jelleg	vers.lxx_tobblet	forrásadat	lathato
+/Jan/1/1	alap	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	lathato
+/Jan/1/1	alap	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	lathato
+/Jan/1/1	alap	forras	vers.lxx_tobblet		lathato
+/Jan/1/1	alap	blokk	vers.ubs	UBS-jelentés az előfordulásra	lathato
+/Jan/1/1	alap	jelleg	vers.ubs	forrásadat	lathato
+/Jan/1/1	alap	ures	vers.ubs	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1	alap	forras	vers.ubs		lathato
+/Jan/1/1	alap	blokk	vers.tsk	Kereszthivatkozások (TSK)	rejtett
+/Jan/1/1	alap	jelleg	vers.tsk	forrásadat	rejtett
+/Jan/1/1	alap	tabla	vers.tsk	Hivatkozás | Szavazat	rejtett
+/Jan/1/1	alap	forras	vers.tsk		rejtett
+/Jan/1/1	alap	blokk	vers.kh	Károli-kereszthivatkozások	rejtett
+/Jan/1/1	alap	jelleg	vers.kh	forrásadat	rejtett
+/Jan/1/1	alap	ures	vers.kh	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1	alap	forras	vers.kh		rejtett
+/Jan/1/1	alap	blokk	vers.nave	Témák (Nave, versekre bontva)	rejtett
+/Jan/1/1	alap	jelleg	vers.nave	forrásadat	rejtett
+/Jan/1/1	alap	jelleg	vers.nave	gépi feldolgozás	rejtett
+/Jan/1/1	alap	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	rejtett
+/Jan/1/1	alap	forras	vers.nave		rejtett
+/Jan/1/1	alap	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	rejtett
+/Jan/1/1	alap	jelleg	vers.tipnr	forrásadat	rejtett
+/Jan/1/1	alap	jelleg	vers.tipnr	gépi feldolgozás	rejtett
+/Jan/1/1	alap	ures	vers.tipnr	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1	alap	forras	vers.tipnr		rejtett
+/Jan/1/1	alap	blokk	vers.motivum	Motívumadat (adatréteg)	rejtett
+/Jan/1/1	alap	jelleg	vers.motivum	forrásadat	rejtett
+/Jan/1/1	alap	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	rejtett
+/Jan/1/1	alap	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1	alap	forras	vers.motivum		rejtett
+/Jan/1/1	alap	blokk	vers.tanulmany	Tanulmányok erről a versről	rejtett
+/Jan/1/1	alap	jelleg	vers.tanulmany	forrásadat	rejtett
+/Jan/1/1	alap	jelleg	vers.tanulmany	gépi feldolgozás	rejtett
+/Jan/1/1	alap	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	rejtett
+/Jan/1/1	alap	forras	vers.tanulmany		rejtett
+/Jan/1/1	alap	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	rejtett
+/Jan/1/1	alap	jelleg	vers.kapcsolat	forrásadat	rejtett
+/Jan/1/1	alap	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1	alap	forras	vers.kapcsolat		rejtett
+/Jan/1/1?ful=kh	kutato	fej		Károli # · Ján # ▾	csukott
+/Jan/1/1?ful=kh	kutato	fej		⌕	lathato
+/Jan/1/1?ful=kh	kutato	fej		Aa	csukott
+/Jan/1/1?ful=kh	kutato	fej		A−	csukott
+/Jan/1/1?ful=kh	kutato	fej		A+	csukott
+/Jan/1/1?ful=kh	kutato	fej		szűk	csukott
+/Jan/1/1?ful=kh	kutato	fej		közepes	csukott
+/Jan/1/1?ful=kh	kutato	fej		tág	csukott
+/Jan/1/1?ful=kh	kutato	fej		Source Serif	csukott
+/Jan/1/1?ful=kh	kutato	fej		Noto Serif	csukott
+/Jan/1/1?ful=kh	kutato	fej		IBM Plex Sans	csukott
+/Jan/1/1?ful=kh	kutato	fej		keskeny	csukott
+/Jan/1/1?ful=kh	kutato	fej		közepes	csukott
+/Jan/1/1?ful=kh	kutato	fej		széles	csukott
+/Jan/1/1?ful=kh	kutato	fej		teljes	csukott
+/Jan/1/1?ful=kh	kutato	fej		Alapértékek	csukott
+/Jan/1/1?ful=kh	kutato	fej		⚙	csukott
+/Jan/1/1?ful=kh	kutato	fej		Tervező	rejtett
+/Jan/1/1?ful=kh	kutato	fej		Rendszer	csukott
+/Jan/1/1?ful=kh	kutato	fej		Világos	csukott
+/Jan/1/1?ful=kh	kutato	fej		Sötét	csukott
+/Jan/1/1?ful=kh	kutato	fej		János evangéliuma #	lathato
+/Jan/1/1?ful=kh	kutato	fej		‹	rejtett
+/Jan/1/1?ful=kh	kutato	fej		⤢	lathato
+/Jan/1/1?ful=kh	kutato	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg-mashol		forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg-mashol		gépi feldolgozás	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg-mashol		modell-kimenet	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg-mashol		forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	forras			rejtett
+/Jan/1/1?ful=kh	kutato	jelleg-mashol		modell-kimenet	rejtett
+/Jan/1/1?ful=kh	kutato	forras			rejtett
+/Jan/1/1?ful=kh	kutato	fej		Ján #:#	lathato
+/Jan/1/1?ful=kh	kutato	blokk	vers.karoli	Károli-szöveg	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.karoli	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.karoli		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.heber_csempe	Héber szöveg	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.heber_csempe	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.heber_csempe	gépi feldolgozás	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.heber_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.heber_csempe	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.heber_csempe		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.lxx_csempe	Septuaginta (LXX, Rahlfs)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.lxx_csempe	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.lxx_csempe	szavankénti csempék; a táblázatos nézet alább	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.lxx_csempe	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.lxx_csempe		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.par	Károli–Strong párosítás	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.par	modell-kimenet	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.par	a pontozott aláhúzás a szövegben is modell-kimenet	rejtett
+/Jan/1/1?ful=kh	kutato	tabla	vers.par	Károli-szó (sorszám) | Szó | Eredeti | Strong | Bizonyosság	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.par		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.eredeti	Eredeti szavak (TAHOT / TAGNT)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.eredeti	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	tabla	vers.eredeti	# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.eredeti		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.macula_morf	Igealak-kód és szófaj (Macula)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.macula_morf	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.macula_morf	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.macula_morf		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.macula_gorog	Héber–görög párosítás szavanként (Macula)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.macula_gorog	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.macula_gorog	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.macula_gorog		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.lxx_szavak	Görög szóalak és LXX-vers szavai (LXX_OS)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.lxx_szavak	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.lxx_szavak	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.lxx_szavak		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.lxx_versszam	LXX-versszám	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.lxx_versszam	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.lxx_versszam	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.lxx_versszam		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.versszamozas	Versszámozás (MT / KJV)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.versszamozas	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.versszamozas	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.versszamozas		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.bsb	Angol szavak szavanként (BSB)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.bsb	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.bsb	gépi feldolgozás	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.bsb	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.bsb		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.kjv	Angol szavak szavanként (KJV + Strong)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.kjv	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.kjv	gépi feldolgozás	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.kjv	a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.kjv		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.morf_hu	Az igealak magyar feloldása	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.morf_hu	gépi feldolgozás	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.morf_hu	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.morf_hu		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.lxx_dontes	LXX-fordítói döntések (adatréteg)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.lxx_dontes	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.lxx_dontes	soronként saját proveniencia-mező	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.lxx_dontes	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.lxx_dontes		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.lxx_par	LXX versszintű együttelőfordulás	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.lxx_par	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.lxx_par	együttelőfordulás a versben, nem szóillesztés	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.lxx_par	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.lxx_par		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.lxx_tobblet	LXX többlet és számozási eltérés	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.lxx_tobblet	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.lxx_tobblet	az adat ebben a kiadásban még nem érhető el	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.lxx_tobblet	Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.lxx_tobblet		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.ubs	UBS-jelentés az előfordulásra	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.ubs	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.ubs	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.ubs		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.tsk	Kereszthivatkozások (TSK)	lathato
+/Jan/1/1?ful=kh	kutato	jelleg	vers.tsk	forrásadat	lathato
+/Jan/1/1?ful=kh	kutato	tabla	vers.tsk	Hivatkozás | Szavazat	lathato
+/Jan/1/1?ful=kh	kutato	forras	vers.tsk		lathato
+/Jan/1/1?ful=kh	kutato	blokk	vers.kh	Károli-kereszthivatkozások	lathato
+/Jan/1/1?ful=kh	kutato	jelleg	vers.kh	forrásadat	lathato
+/Jan/1/1?ful=kh	kutato	ures	vers.kh	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/Jan/1/1?ful=kh	kutato	forras	vers.kh		lathato
+/Jan/1/1?ful=kh	kutato	blokk	vers.nave	Témák (Nave, versekre bontva)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.nave	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.nave	gépi feldolgozás	rejtett
+/Jan/1/1?ful=kh	kutato	tabla	vers.nave	Téma | Cím | Nave-hely | Jelleg	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.nave		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.tipnr	Tulajdonnevek (TIPNR)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.tipnr	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.tipnr	gépi feldolgozás	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.tipnr	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.tipnr		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.motivum	Motívumadat (adatréteg)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.motivum	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.motivum	soronként saját proveniencia-mező; az előző/következő előfordulás a kánoni sorrendből	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.motivum	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.motivum		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.tanulmany	Tanulmányok erről a versről	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.tanulmany	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.tanulmany	gépi feldolgozás	rejtett
+/Jan/1/1?ful=kh	kutato	megj	vers.tanulmany	a tanulmány saját szöveg; a szakasz-jegyzék a címsorokból és a hivatkozásokból gépi úton készül	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.tanulmany		rejtett
+/Jan/1/1?ful=kh	kutato	blokk	vers.kapcsolat	Igehely-kapcsolatok (adatréteg)	rejtett
+/Jan/1/1?ful=kh	kutato	jelleg	vers.kapcsolat	forrásadat	rejtett
+/Jan/1/1?ful=kh	kutato	ures	vers.kapcsolat	Nincs adat (üres eredmény, nem negatív lelet).	rejtett
+/Jan/1/1?ful=kh	kutato	forras	vers.kapcsolat		rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Károli # · Ján # ▾	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		⌕	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Aa	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		A−	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		A+	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		szűk	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		közepes	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		tág	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Source Serif	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Noto Serif	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		IBM Plex Sans	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		keskeny	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		közepes	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		széles	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		teljes	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Alapértékek	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		⚙	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Tervező	rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Rendszer	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Világos	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Sötét	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		János evangéliuma #	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		‹	rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		⤢	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	forras			rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	forras			rejtett
+/Jan/1/1?szo=G3056&ful=szo	alap	fej		G# λόγος	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.tbesg	TBESG	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.tbesg	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	tabla	szo.tbesg	Szó | Átírás | Gloss	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.tbesg		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.thayer	Thayer (angol)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.thayer	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.thayer		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.magyar_gorog	Magyar jelentés (Thayer, UBS DNTG)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.magyar_gorog	modell-kimenet	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.magyar_gorog	gépi feldolgozás	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	Szótári apparátus: a teljes magyar Thayer-szöveg	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	a szócikk eleje — az egyik a beszédre, a másik a gondolkodásra vonatkozik	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I — I. A beszéd vonatkozásában	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I # — szó, de nem nyelvtani értelemben	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I # — amit valaki mondott	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I #.a — általánosan	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I #.b — (fordításra vár)	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I #.c — (fordításra vár)	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I # — beszéd	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I #.a — a beszélés cselekvése, beszéd	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I #.b — a beszédkészség	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I #.c — a beszéd fajtája	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I #.d — folyamatos beszéd, előadás, amilyen az Újszövetségben a tanítókra…	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I #.e — tanítás	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I # — tárgyi értelemben az, amit tanítás útján közölnek, tanítás	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I # — bármi, amit szóban elmondanak	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I # — a tárgyalt ügy, a szóban forgó dolog, ügy	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	I # — dolog, amelyről beszélnek vagy szó van	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	II — II. Használata pusztán az elme vonatkozásában, latin ratio	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	II # — ész, a gondolkodás, elmélkedés, okoskodás, számítás	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	II # — figyelembevétel, azaz tekintet, megfontolás	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	II # — számla, azaz számvetés, elszámolás	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	II # — számadás, azaz válasz vagy magyarázat az ítélettel kapcsolatban	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	II # — viszony	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	II # — ok, indok, alap	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	III — III. János több írásában	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.magyar_gorog	III d — Evang. des Johan. #. kiadás, i., o. #-#	csukott
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.magyar_gorog		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.usz	ÚSZ-előfordulás és versek	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.usz	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	tabla	szo.usz	Igehely | Károli-szöveg	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.usz		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.heber_hatter	Héber háttér (Septuaginta)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.heber_hatter	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	tabla	szo.heber_hatter	Héber Strong | Szótő | Jelentés | Darab	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.heber_hatter		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.sdgnt	Szemantikai domén (SDGNT)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.sdgnt	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	megj	szo.sdgnt	üres eredmény nem negatív lelet	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	tabla	szo.sdgnt	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.sdgnt		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.sece_g	SECE-szócikk (görög)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.sece_g	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.sece_g		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.lsj	LSJ	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.lsj	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.lsj		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.mcged	MCGED (Mounce)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.mcged	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	megj	szo.mcged	nem kereskedelmi: kereskedelmi kiadásból kimarad	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	tabla	szo.mcged	GK-szám | Lemma | Átírat | Gyakoriság | Glossza	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.mcged		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.ubs_dntg	UBS DNTG jelentés	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.ubs_dntg	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	tabla	szo.ubs_dntg	Azonosító | Domén | Rövid definíció | Glosszák	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.ubs_dntg	Előfordulások (az első #)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.ubs_dntg		lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	blokk	szo.tw_g	translationWords	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	jelleg	szo.tw_g	forrásadat	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.tw_g	word of God, word of Yahweh, word of the Lord, word of truth, scripture (kt, kt/wordofgod)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	fej	szo.tw_g	report, reported, tell, reputation (other, other/report)	lathato
+/Jan/1/1?szo=G3056&ful=szo	alap	forras	szo.tw_g		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Károli # · Róm # ▾	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		⌕	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Aa	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		A−	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		A+	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		szűk	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		közepes	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		tág	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Source Serif	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Noto Serif	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		IBM Plex Sans	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		keskeny	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		közepes	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		széles	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		teljes	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Alapértékek	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		⚙	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Tervező	rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Rendszer	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Világos	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Sötét	csukott
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Rómabeliekhez írt levél #	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		‹	rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		⤢	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		Hogyan olvasd ezt az oldalt?	rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg-mashol		gépi feldolgozás	rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg-mashol		forrásadat	rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	forras			rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg-mashol		modell-kimenet	rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	forras			rejtett
+/Rom/3/23?szo=G0264&ful=szo	alap	fej		G# ἁμαρτάνω	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.tbesg	TBESG	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.tbesg	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.tbesg	modell-kimenet	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	tabla	szo.tbesg	Szó | Átírás | Gloss	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.tbesg		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.thayer	Thayer (angol)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.thayer	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.thayer		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.magyar_gorog	Magyar jelentés (Thayer, UBS DNTG)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.magyar_gorog	modell-kimenet	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.magyar_gorog	gépi feldolgozás	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	ures	szo.magyar_gorog	Magyar fordítás nincs · az angol eredeti áll.	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.magyar_gorog		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.usz	ÚSZ-előfordulás és versek	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.usz	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	tabla	szo.usz	Igehely | Károli-szöveg	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.usz		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.heber_hatter	Héber háttér (Septuaginta)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.heber_hatter	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	tabla	szo.heber_hatter	Héber Strong | Szótő | Jelentés | Darab	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.heber_hatter		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.sdgnt	Szemantikai domén (SDGNT)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.sdgnt	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	megj	szo.sdgnt	üres eredmény nem negatív lelet	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	tabla	szo.sdgnt	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.sdgnt		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.sece_g	SECE-szócikk (görög)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.sece_g	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.sece_g		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.lsj	LSJ	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.lsj	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.lsj		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.mcged	MCGED (Mounce)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.mcged	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	megj	szo.mcged	nem kereskedelmi: kereskedelmi kiadásból kimarad	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	tabla	szo.mcged	GK-szám | Lemma | Átírat | Gyakoriság | Glossza	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.mcged		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.ubs_dntg	UBS DNTG jelentés	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.ubs_dntg	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	tabla	szo.ubs_dntg	Azonosító | Domén | Rövid definíció | Glosszák	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej	szo.ubs_dntg	Előfordulások (az első #)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.ubs_dntg		lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	blokk	szo.tw_g	translationWords	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.tw_g	forrásadat	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	jelleg	szo.tw_g	modell-kimenet	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej	szo.tw_g	bűn, bűnös, bűnös ember, vétkezés sin, sinful, sinner, sinning (kt, kt/sin)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej	szo.tw_g	trespass (kt, kt/trespass)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej	szo.tw_g	elkövet, elkövetett commit, committed (other, other/commit)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	fej	szo.tw_g	helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó wrong, wronged, wrongdoer, mistreat, hurt, hurtful (other, other/wrong)	lathato
+/Rom/3/23?szo=G0264&ful=szo	alap	forras	szo.tw_g		lathato
+/szo/H1242	alap	fej		⌕	lathato
+/szo/H1242	alap	fej		⚙	csukott
+/szo/H1242	alap	fej		Tervező	rejtett
+/szo/H1242	alap	fej		Rendszer	csukott
+/szo/H1242	alap	fej		Világos	csukott
+/szo/H1242	alap	fej		Sötét	csukott
+/szo/H1242	alap	fej		H# בֹּ֫קֶר	lathato
+/szo/H1242	alap	blokk	szo.szotar	Strong-szótár	lathato
+/szo/H1242	alap	jelleg	szo.szotar	forrásadat	lathato
+/szo/H1242	alap	jelleg	szo.szotar	modell-kimenet	lathato
+/szo/H1242	alap	tabla	szo.szotar	Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás	lathato
+/szo/H1242	alap	forras	szo.szotar		lathato
+/szo/H1242	alap	blokk	szo.elofordulas	Előfordulás, könyvek száma	lathato
+/szo/H1242	alap	jelleg	szo.elofordulas	gépi feldolgozás	lathato
+/szo/H1242	alap	forras	szo.elofordulas		lathato
+/szo/H1242	alap	blokk	szo.karoli_alakok	Károli-alakok és pontosság	lathato
+/szo/H1242	alap	jelleg	szo.karoli_alakok	modell-kimenet	lathato
+/szo/H1242	alap	tabla	szo.karoli_alakok	Károli-alak | Darab	lathato
+/szo/H1242	alap	forras	szo.karoli_alakok		lathato
+/szo/H1242	alap	blokk	szo.bdb_apparatus	Szótár: BDB-szócikk (Brown–Driver–Briggs)	lathato
+/szo/H1242	alap	jelleg	szo.bdb_apparatus	forrásadat	lathato
+/szo/H1242	alap	jelleg	szo.bdb_apparatus	modell-kimenet	lathato
+/szo/H1242	alap	jelleg	szo.bdb_apparatus	gépi feldolgozás	lathato
+/szo/H1242	alap	fej	szo.bdb_apparatus	Olvasói nézet	rejtett
+/szo/H1242	alap	fej	szo.bdb_apparatus	Szócikk egyben	rejtett
+/szo/H1242	alap	fej	szo.bdb_apparatus	Minden apparátus nyitva	rejtett
+/szo/H1242	alap	fej	szo.bdb_apparatus	Alakok	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	#reggel	lathato
+/szo/H1242	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H1242	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H1242	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	#holnap, másnap# hivatkozásLXX φωσφόρος # · πρωΐ # · ὄρθρος # · # megfelelő nélkül	lathato
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H1242	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H1242	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	Jelmagyarázat	csukott
+/szo/H1242	alap	fej	szo.bdb_apparatus	A magyar szócikk teljes szövege (tagolás nélkül)	csukott
+/szo/H1242	alap	forras	szo.bdb_apparatus		lathato
+/szo/H1242	alap	blokk	szo.lxx_bridge	Görög megfelelő (Septuaginta)	lathato
+/szo/H1242	alap	jelleg	szo.lxx_bridge	forrásadat	lathato
+/szo/H1242	alap	tabla	szo.lxx_bridge	Görög Strong | Szótő | Jelentés | Darab	lathato
+/szo/H1242	alap	forras	szo.lxx_bridge		lathato
+/szo/H1242	alap	blokk	szo.ubs_dbh	UBS DBH jelentések (a teljes szócikk, magyar fordítással)	lathato
+/szo/H1242	alap	jelleg	szo.ubs_dbh	forrásadat	lathato
+/szo/H1242	alap	jelleg	szo.ubs_dbh	modell-kimenet	lathato
+/szo/H1242	alap	megj	szo.ubs_dbh	CC BY-SA # (UBS); a magyar glossza és definíció modell-kimenet	lathato
+/szo/H1242	alap	tabla	szo.ubs_dbh	Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)	lathato
+/szo/H1242	alap	forras	szo.ubs_dbh		lathato
+/szo/H1242	alap	blokk	szo.sdbh	Szemantikai domén (SDBH)	lathato
+/szo/H1242	alap	jelleg	szo.sdbh	forrásadat	lathato
+/szo/H1242	alap	megj	szo.sdbh	üres eredmény nem negatív lelet	lathato
+/szo/H1242	alap	tabla	szo.sdbh	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/szo/H1242	alap	forras	szo.sdbh		lathato
+/szo/H1242	alap	blokk	szo.sece_h	SECE-szócikk (héber)	lathato
+/szo/H1242	alap	jelleg	szo.sece_h	forrásadat	lathato
+/szo/H1242	alap	forras	szo.sece_h		lathato
+/szo/H1242	alap	blokk	szo.oshl	OSHL: TWOT- és BDB-azonosító, BDB-helyek	lathato
+/szo/H1242	alap	jelleg	szo.oshl	forrásadat	lathato
+/szo/H1242	alap	tabla	szo.oshl	TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/szo/H1242	alap	forras	szo.oshl		lathato
+/szo/H1242	alap	blokk	szo.oshl_csalad	Rokon szavak (OSHL-gyökcsalád)	lathato
+/szo/H1242	alap	jelleg	szo.oshl_csalad	forrásadat	lathato
+/szo/H1242	alap	megj	szo.oshl_csalad	az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet	lathato
+/szo/H1242	alap	fej	szo.oshl_csalad	Gyök: בקר H#	lathato
+/szo/H1242	alap	tabla	szo.oshl_csalad	Strong | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/szo/H1242	alap	forras	szo.oshl_csalad		lathato
+/szo/H1242	alap	blokk	szo.tbesh	Bővített Strong-szócikk (TBESH)	lathato
+/szo/H1242	alap	jelleg	szo.tbesh	forrásadat	lathato
+/szo/H1242	alap	jelleg	szo.tbesh	gépi feldolgozás	lathato
+/szo/H1242	alap	jelleg	szo.tbesh	modell-kimenet	lathato
+/szo/H1242	alap	tabla	szo.tbesh	Szó | Átírás | Morf | Gloss | Jelentés	lathato
+/szo/H1242	alap	forras	szo.tbesh		lathato
+/szo/H1242	alap	blokk	szo.tw_h	translationWords	lathato
+/szo/H1242	alap	jelleg	szo.tw_h	forrásadat	lathato
+/szo/H1242	alap	ures	szo.tw_h	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/szo/H1242	alap	forras	szo.tw_h		lathato
+/szo/H0430	alap	fej		⌕	lathato
+/szo/H0430	alap	fej		⚙	csukott
+/szo/H0430	alap	fej		Tervező	rejtett
+/szo/H0430	alap	fej		Rendszer	csukott
+/szo/H0430	alap	fej		Világos	csukott
+/szo/H0430	alap	fej		Sötét	csukott
+/szo/H0430	alap	fej		H# אֱלֹהִים	lathato
+/szo/H0430	alap	blokk	szo.szotar	Strong-szótár	lathato
+/szo/H0430	alap	jelleg	szo.szotar	forrásadat	lathato
+/szo/H0430	alap	jelleg	szo.szotar	modell-kimenet	lathato
+/szo/H0430	alap	tabla	szo.szotar	Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás	lathato
+/szo/H0430	alap	forras	szo.szotar		lathato
+/szo/H0430	alap	blokk	szo.elofordulas	Előfordulás, könyvek száma	lathato
+/szo/H0430	alap	jelleg	szo.elofordulas	gépi feldolgozás	lathato
+/szo/H0430	alap	forras	szo.elofordulas		lathato
+/szo/H0430	alap	blokk	szo.karoli_alakok	Károli-alakok és pontosság	lathato
+/szo/H0430	alap	jelleg	szo.karoli_alakok	modell-kimenet	lathato
+/szo/H0430	alap	tabla	szo.karoli_alakok	Károli-alak | Darab	lathato
+/szo/H0430	alap	forras	szo.karoli_alakok		lathato
+/szo/H0430	alap	blokk	szo.bdb_apparatus	Szótár: BDB-szócikk (Brown–Driver–Briggs)	lathato
+/szo/H0430	alap	jelleg	szo.bdb_apparatus	forrásadat	lathato
+/szo/H0430	alap	jelleg	szo.bdb_apparatus	modell-kimenet	lathato
+/szo/H0430	alap	jelleg	szo.bdb_apparatus	gépi feldolgozás	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	Olvasói nézet	rejtett
+/szo/H0430	alap	fej	szo.bdb_apparatus	Szócikk egyben	rejtett
+/szo/H0430	alap	fej	szo.bdb_apparatus	Minden apparátus nyitva	rejtett
+/szo/H0430	alap	fej	szo.bdb_apparatus	Rokon nyelvek és eredet	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	#többes számú jelentésben	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	#Intenzív többes szám	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	#az Isten# hivatkozásLXX θεός # · κύριος # · ἐστί # · # megfelelő nélkül	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	#—# hivatkozás	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H0430	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	Jelmagyarázat	csukott
+/szo/H0430	alap	fej	szo.bdb_apparatus	A magyar szócikk teljes szövege (tagolás nélkül)	csukott
+/szo/H0430	alap	forras	szo.bdb_apparatus		lathato
+/szo/H0430	alap	blokk	szo.lxx_bridge	Görög megfelelő (Septuaginta)	lathato
+/szo/H0430	alap	jelleg	szo.lxx_bridge	forrásadat	lathato
+/szo/H0430	alap	tabla	szo.lxx_bridge	Görög Strong | Szótő | Jelentés | Darab	lathato
+/szo/H0430	alap	forras	szo.lxx_bridge		lathato
+/szo/H0430	alap	blokk	szo.ubs_dbh	UBS DBH jelentések (a teljes szócikk, magyar fordítással)	lathato
+/szo/H0430	alap	jelleg	szo.ubs_dbh	forrásadat	lathato
+/szo/H0430	alap	jelleg	szo.ubs_dbh	modell-kimenet	lathato
+/szo/H0430	alap	megj	szo.ubs_dbh	CC BY-SA # (UBS); a magyar glossza és definíció modell-kimenet	lathato
+/szo/H0430	alap	tabla	szo.ubs_dbh	Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)	lathato
+/szo/H0430	alap	forras	szo.ubs_dbh		lathato
+/szo/H0430	alap	blokk	szo.sdbh	Szemantikai domén (SDBH)	lathato
+/szo/H0430	alap	jelleg	szo.sdbh	forrásadat	lathato
+/szo/H0430	alap	megj	szo.sdbh	üres eredmény nem negatív lelet	lathato
+/szo/H0430	alap	tabla	szo.sdbh	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/szo/H0430	alap	forras	szo.sdbh		lathato
+/szo/H0430	alap	blokk	szo.sece_h	SECE-szócikk (héber)	lathato
+/szo/H0430	alap	jelleg	szo.sece_h	forrásadat	lathato
+/szo/H0430	alap	forras	szo.sece_h		lathato
+/szo/H0430	alap	blokk	szo.oshl	OSHL: TWOT- és BDB-azonosító, BDB-helyek	lathato
+/szo/H0430	alap	jelleg	szo.oshl	forrásadat	lathato
+/szo/H0430	alap	tabla	szo.oshl	TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/szo/H0430	alap	forras	szo.oshl		lathato
+/szo/H0430	alap	blokk	szo.oshl_csalad	Rokon szavak (OSHL-gyökcsalád)	lathato
+/szo/H0430	alap	jelleg	szo.oshl_csalad	forrásadat	lathato
+/szo/H0430	alap	megj	szo.oshl_csalad	az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet	lathato
+/szo/H0430	alap	fej	szo.oshl_csalad	Gyök: אלה (Strong-szám nélküli gyök-bejegyzés)	lathato
+/szo/H0430	alap	tabla	szo.oshl_csalad	Strong | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/szo/H0430	alap	forras	szo.oshl_csalad		lathato
+/szo/H0430	alap	blokk	szo.tbesh	Bővített Strong-szócikk (TBESH)	lathato
+/szo/H0430	alap	jelleg	szo.tbesh	forrásadat	lathato
+/szo/H0430	alap	jelleg	szo.tbesh	gépi feldolgozás	lathato
+/szo/H0430	alap	jelleg	szo.tbesh	modell-kimenet	lathato
+/szo/H0430	alap	tabla	szo.tbesh	Szó | Átírás | Morf | Gloss | Jelentés	lathato
+/szo/H0430	alap	forras	szo.tbesh		lathato
+/szo/H0430	alap	blokk	szo.tw_h	translationWords	lathato
+/szo/H0430	alap	jelleg	szo.tw_h	forrásadat	lathato
+/szo/H0430	alap	fej	szo.tw_h	angel, archangel (kt, kt/angel)	lathato
+/szo/H0430	alap	fej	szo.tw_h	anoint, anointed, anointing (kt, kt/anoint)	lathato
+/szo/H0430	alap	fej	szo.tw_h	god, false god, goddess, idol, idolater, idolatrous, idolatry (kt, kt/falsegod)	lathato
+/szo/H0430	alap	fej	szo.tw_h	God (kt, kt/god)	lathato
+/szo/H0430	alap	fej	szo.tw_h	godly, godliness, ungodly, godless, ungodliness, godlessness (kt, kt/godly)	lathato
+/szo/H0430	alap	fej	szo.tw_h	holy, holiness, unholy, sacred (kt, kt/holy)	lathato
+/szo/H0430	alap	fej	szo.tw_h	house of God, your house, his house, Yahweh’s house, a house for my name, the house for my name, the house, a house, a house of Yahweh (kt, kt/houseofgod)	lathato
+/szo/H0430	alap	fej	szo.tw_h	judge, judgment (kt, kt/judge)	lathato
+/szo/H0430	alap	fej	szo.tw_h	law, law of Moses, law of Yahweh, law of God (kt, kt/lawofmoses)	lathato
+/szo/H0430	alap	fej	szo.tw_h	Lord Yahweh, Yahweh God (kt, kt/lordyahweh)	lathato
+/szo/H0430	alap	fej	szo.tw_h	people of God (kt, kt/peopleofgod)	lathato
+/szo/H0430	alap	fej	szo.tw_h	Son of God, the Son (kt, kt/sonofgod)	lathato
+/szo/H0430	alap	fej	szo.tw_h	sons of God, children of God (kt, kt/sonsofgod)	lathato
+/szo/H0430	alap	fej	szo.tw_h	Yahweh of hosts, Yahweh of armies, God of armies, God of hosts, host of heaven, host of the heavens, Lord of hosts (kt, kt/yahwehofhosts)	lathato
+/szo/H0430	alap	fej	szo.tw_h	judge (other, other/judgeposition)	lathato
+/szo/H0430	alap	fej	szo.tw_h	might, mighty, mighty works (other, other/mighty)	lathato
+/szo/H0430	alap	forras	szo.tw_h		lathato
+/szo/H7451	alap	fej		⌕	lathato
+/szo/H7451	alap	fej		⚙	csukott
+/szo/H7451	alap	fej		Tervező	rejtett
+/szo/H7451	alap	fej		Rendszer	csukott
+/szo/H7451	alap	fej		Világos	csukott
+/szo/H7451	alap	fej		Sötét	csukott
+/szo/H7451	alap	fej		H# רַע	lathato
+/szo/H7451	alap	blokk	szo.szotar	Strong-szótár	lathato
+/szo/H7451	alap	jelleg	szo.szotar	forrásadat	lathato
+/szo/H7451	alap	jelleg	szo.szotar	modell-kimenet	lathato
+/szo/H7451	alap	tabla	szo.szotar	Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás	lathato
+/szo/H7451	alap	forras	szo.szotar		lathato
+/szo/H7451	alap	blokk	szo.elofordulas	Előfordulás, könyvek száma	lathato
+/szo/H7451	alap	jelleg	szo.elofordulas	gépi feldolgozás	lathato
+/szo/H7451	alap	forras	szo.elofordulas		lathato
+/szo/H7451	alap	blokk	szo.karoli_alakok	Károli-alakok és pontosság	lathato
+/szo/H7451	alap	jelleg	szo.karoli_alakok	modell-kimenet	lathato
+/szo/H7451	alap	tabla	szo.karoli_alakok	Károli-alak | Darab	lathato
+/szo/H7451	alap	forras	szo.karoli_alakok		lathato
+/szo/H7451	alap	blokk	szo.bdb_apparatus	Szótár: BDB-szócikk (Brown–Driver–Briggs)	lathato
+/szo/H7451	alap	jelleg	szo.bdb_apparatus	forrásadat	lathato
+/szo/H7451	alap	jelleg	szo.bdb_apparatus	modell-kimenet	lathato
+/szo/H7451	alap	jelleg	szo.bdb_apparatus	gépi feldolgozás	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Olvasói nézet	rejtett
+/szo/H7451	alap	fej	szo.bdb_apparatus	Szócikk egyben	rejtett
+/szo/H7451	alap	fej	szo.bdb_apparatus	Minden apparátus nyitva	rejtett
+/szo/H7451	alap	fej	szo.bdb_apparatus	Alakok	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, kellemetlen, ártalmas	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, kellemetlen, fájdalmat, boldogtalanságot, nyomorúságot okozó	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, nem tetsző	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#a maga nemében rossz# hivatkozásLXX πονηρός # · αἰσχρός # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, azaz csekély értékű# hivatkozásLXX πονηρός # · κακός # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rosszabb# hivatkozásLXX κακός # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#szomorú, boldogtalan# hivatkozásLXX ἕτερος # · πονηρός # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#gonosz tervet kigondolni# hivatkozásLXX πονηρός # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, barátságtalan, rosszindulatú hajlamú vagy természetű# hivatkozásLXX ἀνήρ # · πονηρός # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#erkölcsileg rossz, gonosz, istentelen	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	II. További homonima ugyanezen a lemmán · רַע · hímnemű főnév^Jób #:#: rossz, szorongattatás, nyomorúság, sérelem, csapás# hivatkozás	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, szorongattatás, balszerencse# hivatkozásLXX κακός # · πονηρός # · γνῶσις # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, sérelem, jogtalanság# hivatkozásLXX κακός # · πονηρός # · κακόω # · πονηρία # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	még # hely	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#erkölcsi rossz# hivatkozásLXX πονηρός # · κακός # · κακία # · ἀδικία # · # megfelelő nélkül	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	További homonima ugyanezen a lemmán · רָעָה · nőnemű főnév: rossz, nyomorúság, szorongattatás, sérelem# hivatkozás	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, nyomorúság, szorongattatás	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#rossz, sérelem, jogtalanság	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	#erkölcsi rossz	lathato
+/szo/H7451	alap	fej	szo.bdb_apparatus	Apparátus és szövegkritika #	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Angol eredeti	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	Jelmagyarázat	csukott
+/szo/H7451	alap	fej	szo.bdb_apparatus	A magyar szócikk teljes szövege (tagolás nélkül)	csukott
+/szo/H7451	alap	forras	szo.bdb_apparatus		lathato
+/szo/H7451	alap	blokk	szo.lxx_bridge	Görög megfelelő (Septuaginta)	lathato
+/szo/H7451	alap	jelleg	szo.lxx_bridge	forrásadat	lathato
+/szo/H7451	alap	tabla	szo.lxx_bridge	Görög Strong | Szótő | Jelentés | Darab	lathato
+/szo/H7451	alap	forras	szo.lxx_bridge		lathato
+/szo/H7451	alap	blokk	szo.ubs_dbh	UBS DBH jelentések (a teljes szócikk, magyar fordítással)	lathato
+/szo/H7451	alap	jelleg	szo.ubs_dbh	forrásadat	lathato
+/szo/H7451	alap	jelleg	szo.ubs_dbh	modell-kimenet	lathato
+/szo/H7451	alap	megj	szo.ubs_dbh	CC BY-SA # (UBS); a magyar glossza és definíció modell-kimenet	lathato
+/szo/H7451	alap	tabla	szo.ubs_dbh	Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)	lathato
+/szo/H7451	alap	forras	szo.ubs_dbh		lathato
+/szo/H7451	alap	blokk	szo.sdbh	Szemantikai domén (SDBH)	lathato
+/szo/H7451	alap	jelleg	szo.sdbh	forrásadat	lathato
+/szo/H7451	alap	jelleg	szo.sdbh	modell-kimenet	lathato
+/szo/H7451	alap	megj	szo.sdbh	üres eredmény nem negatív lelet	lathato
+/szo/H7451	alap	tabla	szo.sdbh	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/szo/H7451	alap	forras	szo.sdbh		lathato
+/szo/H7451	alap	blokk	szo.sece_h	SECE-szócikk (héber)	lathato
+/szo/H7451	alap	jelleg	szo.sece_h	forrásadat	lathato
+/szo/H7451	alap	forras	szo.sece_h		lathato
+/szo/H7451	alap	blokk	szo.oshl	OSHL: TWOT- és BDB-azonosító, BDB-helyek	lathato
+/szo/H7451	alap	jelleg	szo.oshl	forrásadat	lathato
+/szo/H7451	alap	tabla	szo.oshl	TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/szo/H7451	alap	forras	szo.oshl		lathato
+/szo/H7451	alap	blokk	szo.oshl_csalad	Rokon szavak (OSHL-gyökcsalád)	lathato
+/szo/H7451	alap	jelleg	szo.oshl_csalad	forrásadat	lathato
+/szo/H7451	alap	megj	szo.oshl_csalad	az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet	lathato
+/szo/H7451	alap	fej	szo.oshl_csalad	Gyök: רעע (Strong-szám nélküli gyök-bejegyzés)	lathato
+/szo/H7451	alap	tabla	szo.oshl_csalad	Strong | Lemma | Átírás | Szófaj | Angol meghatározás	lathato
+/szo/H7451	alap	forras	szo.oshl_csalad		lathato
+/szo/H7451	alap	blokk	szo.tbesh	Bővített Strong-szócikk (TBESH)	lathato
+/szo/H7451	alap	jelleg	szo.tbesh	forrásadat	lathato
+/szo/H7451	alap	jelleg	szo.tbesh	gépi feldolgozás	lathato
+/szo/H7451	alap	ures	szo.tbesh	Nincs adat (üres eredmény, nem negatív lelet).	lathato
+/szo/H7451	alap	forras	szo.tbesh		lathato
+/szo/H7451	alap	blokk	szo.tw_h	translationWords	lathato
+/szo/H7451	alap	jelleg	szo.tw_h	forrásadat	lathato
+/szo/H7451	alap	jelleg	szo.tw_h	modell-kimenet	lathato
+/szo/H7451	alap	fej	szo.tw_h	démon, gonosz szellem, tisztátalan szellem demon, evil spirit, unclean spirit (kt, kt/demon)	lathato
+/szo/H7451	alap	fej	szo.tw_h	gonosz, rossz, gonoszság, kellemetlen evil, wicked, wickedness, unpleasant (kt, kt/evil)	lathato
+/szo/H7451	alap	fej	szo.tw_h	sanyargat, nyomorúság, szorongatás afflict, affliction, distress (other, other/afflict)	lathato
+/szo/H7451	alap	fej	szo.tw_h	rom, romok, romba dőlt ruin, ruins, ruined (other, other/ruin)	lathato
+/szo/H7451	alap	fej	szo.tw_h	zaklat, megzavar, felkavar, szorongatás, nehézség, csapás trouble, disturb, stir up, distress, hardship, calamity (other, other/trouble)	lathato
+/szo/H7451	alap	fej	szo.tw_h	helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó wrong, wronged, wrongdoer, mistreat, hurt, hurtful (other, other/wrong)	lathato
+/szo/H7451	alap	forras	szo.tw_h		lathato
+/szo/G0264	alap	fej		⌕	lathato
+/szo/G0264	alap	fej		⚙	csukott
+/szo/G0264	alap	fej		Tervező	rejtett
+/szo/G0264	alap	fej		Rendszer	csukott
+/szo/G0264	alap	fej		Világos	csukott
+/szo/G0264	alap	fej		Sötét	csukott
+/szo/G0264	alap	fej		G# ἁμαρτάνω	lathato
+/szo/G0264	alap	blokk	szo.tbesg	TBESG	lathato
+/szo/G0264	alap	jelleg	szo.tbesg	forrásadat	lathato
+/szo/G0264	alap	jelleg	szo.tbesg	modell-kimenet	lathato
+/szo/G0264	alap	tabla	szo.tbesg	Szó | Átírás | Gloss	lathato
+/szo/G0264	alap	forras	szo.tbesg		lathato
+/szo/G0264	alap	blokk	szo.thayer	Thayer (angol)	lathato
+/szo/G0264	alap	jelleg	szo.thayer	forrásadat	lathato
+/szo/G0264	alap	forras	szo.thayer		lathato
+/szo/G0264	alap	blokk	szo.magyar_gorog	Magyar jelentés (Thayer, UBS DNTG)	lathato
+/szo/G0264	alap	jelleg	szo.magyar_gorog	modell-kimenet	lathato
+/szo/G0264	alap	jelleg	szo.magyar_gorog	gépi feldolgozás	lathato
+/szo/G0264	alap	ures	szo.magyar_gorog	Magyar fordítás nincs · az angol eredeti áll.	lathato
+/szo/G0264	alap	forras	szo.magyar_gorog		lathato
+/szo/G0264	alap	blokk	szo.usz	ÚSZ-előfordulás és versek	lathato
+/szo/G0264	alap	jelleg	szo.usz	forrásadat	lathato
+/szo/G0264	alap	tabla	szo.usz	Igehely | Károli-szöveg	lathato
+/szo/G0264	alap	forras	szo.usz		lathato
+/szo/G0264	alap	blokk	szo.heber_hatter	Héber háttér (Septuaginta)	lathato
+/szo/G0264	alap	jelleg	szo.heber_hatter	forrásadat	lathato
+/szo/G0264	alap	tabla	szo.heber_hatter	Héber Strong | Szótő | Jelentés | Darab	lathato
+/szo/G0264	alap	forras	szo.heber_hatter		lathato
+/szo/G0264	alap	blokk	szo.sdgnt	Szemantikai domén (SDGNT)	lathato
+/szo/G0264	alap	jelleg	szo.sdgnt	forrásadat	lathato
+/szo/G0264	alap	megj	szo.sdgnt	üres eredmény nem negatív lelet	lathato
+/szo/G0264	alap	tabla	szo.sdgnt	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/szo/G0264	alap	forras	szo.sdgnt		lathato
+/szo/G0264	alap	blokk	szo.sece_g	SECE-szócikk (görög)	lathato
+/szo/G0264	alap	jelleg	szo.sece_g	forrásadat	lathato
+/szo/G0264	alap	forras	szo.sece_g		lathato
+/szo/G0264	alap	blokk	szo.lsj	LSJ	lathato
+/szo/G0264	alap	jelleg	szo.lsj	forrásadat	lathato
+/szo/G0264	alap	forras	szo.lsj		lathato
+/szo/G0264	alap	blokk	szo.mcged	MCGED (Mounce)	lathato
+/szo/G0264	alap	jelleg	szo.mcged	forrásadat	lathato
+/szo/G0264	alap	megj	szo.mcged	nem kereskedelmi: kereskedelmi kiadásból kimarad	lathato
+/szo/G0264	alap	tabla	szo.mcged	GK-szám | Lemma | Átírat | Gyakoriság | Glossza	lathato
+/szo/G0264	alap	forras	szo.mcged		lathato
+/szo/G0264	alap	blokk	szo.ubs_dntg	UBS DNTG jelentés	lathato
+/szo/G0264	alap	jelleg	szo.ubs_dntg	forrásadat	lathato
+/szo/G0264	alap	tabla	szo.ubs_dntg	Azonosító | Domén | Rövid definíció | Glosszák	lathato
+/szo/G0264	alap	fej	szo.ubs_dntg	Előfordulások (az első #)	lathato
+/szo/G0264	alap	forras	szo.ubs_dntg		lathato
+/szo/G0264	alap	blokk	szo.tw_g	translationWords	lathato
+/szo/G0264	alap	jelleg	szo.tw_g	forrásadat	lathato
+/szo/G0264	alap	jelleg	szo.tw_g	modell-kimenet	lathato
+/szo/G0264	alap	fej	szo.tw_g	bűn, bűnös, bűnös ember, vétkezés sin, sinful, sinner, sinning (kt, kt/sin)	lathato
+/szo/G0264	alap	fej	szo.tw_g	trespass (kt, kt/trespass)	lathato
+/szo/G0264	alap	fej	szo.tw_g	elkövet, elkövetett commit, committed (other, other/commit)	lathato
+/szo/G0264	alap	fej	szo.tw_g	helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó wrong, wronged, wrongdoer, mistreat, hurt, hurtful (other, other/wrong)	lathato
+/szo/G0264	alap	forras	szo.tw_g		lathato
+/szo/G3056	alap	fej		⌕	lathato
+/szo/G3056	alap	fej		⚙	csukott
+/szo/G3056	alap	fej		Tervező	rejtett
+/szo/G3056	alap	fej		Rendszer	csukott
+/szo/G3056	alap	fej		Világos	csukott
+/szo/G3056	alap	fej		Sötét	csukott
+/szo/G3056	alap	fej		G# λόγος	lathato
+/szo/G3056	alap	blokk	szo.tbesg	TBESG	lathato
+/szo/G3056	alap	jelleg	szo.tbesg	forrásadat	lathato
+/szo/G3056	alap	tabla	szo.tbesg	Szó | Átírás | Gloss	lathato
+/szo/G3056	alap	forras	szo.tbesg		lathato
+/szo/G3056	alap	blokk	szo.thayer	Thayer (angol)	lathato
+/szo/G3056	alap	jelleg	szo.thayer	forrásadat	lathato
+/szo/G3056	alap	forras	szo.thayer		lathato
+/szo/G3056	alap	blokk	szo.magyar_gorog	Magyar jelentés (Thayer, UBS DNTG)	lathato
+/szo/G3056	alap	jelleg	szo.magyar_gorog	modell-kimenet	lathato
+/szo/G3056	alap	jelleg	szo.magyar_gorog	gépi feldolgozás	lathato
+/szo/G3056	alap	fej	szo.magyar_gorog	Szótári apparátus: a teljes magyar Thayer-szöveg	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	a szócikk eleje — az egyik a beszédre, a másik a gondolkodásra vonatkozik	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I — I. A beszéd vonatkozásában	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I # — szó, de nem nyelvtani értelemben	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I # — amit valaki mondott	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I #.a — általánosan	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I #.b — (fordításra vár)	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I #.c — (fordításra vár)	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I # — beszéd	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I #.a — a beszélés cselekvése, beszéd	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I #.b — a beszédkészség	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I #.c — a beszéd fajtája	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I #.d — folyamatos beszéd, előadás, amilyen az Újszövetségben a tanítókra…	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I #.e — tanítás	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I # — tárgyi értelemben az, amit tanítás útján közölnek, tanítás	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I # — bármi, amit szóban elmondanak	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I # — a tárgyalt ügy, a szóban forgó dolog, ügy	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	I # — dolog, amelyről beszélnek vagy szó van	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	II — II. Használata pusztán az elme vonatkozásában, latin ratio	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	II # — ész, a gondolkodás, elmélkedés, okoskodás, számítás	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	II # — figyelembevétel, azaz tekintet, megfontolás	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	II # — számla, azaz számvetés, elszámolás	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	II # — számadás, azaz válasz vagy magyarázat az ítélettel kapcsolatban	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	II # — viszony	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	II # — ok, indok, alap	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	III — III. János több írásában	csukott
+/szo/G3056	alap	fej	szo.magyar_gorog	III d — Evang. des Johan. #. kiadás, i., o. #-#	csukott
+/szo/G3056	alap	forras	szo.magyar_gorog		lathato
+/szo/G3056	alap	blokk	szo.usz	ÚSZ-előfordulás és versek	lathato
+/szo/G3056	alap	jelleg	szo.usz	forrásadat	lathato
+/szo/G3056	alap	tabla	szo.usz	Igehely | Károli-szöveg	lathato
+/szo/G3056	alap	forras	szo.usz		lathato
+/szo/G3056	alap	blokk	szo.heber_hatter	Héber háttér (Septuaginta)	lathato
+/szo/G3056	alap	jelleg	szo.heber_hatter	forrásadat	lathato
+/szo/G3056	alap	tabla	szo.heber_hatter	Héber Strong | Szótő | Jelentés | Darab	lathato
+/szo/G3056	alap	forras	szo.heber_hatter		lathato
+/szo/G3056	alap	blokk	szo.sdgnt	Szemantikai domén (SDGNT)	lathato
+/szo/G3056	alap	jelleg	szo.sdgnt	forrásadat	lathato
+/szo/G3056	alap	megj	szo.sdgnt	üres eredmény nem negatív lelet	lathato
+/szo/G3056	alap	tabla	szo.sdgnt	Domén kód | Domén | Glossza | Hivatkozás	lathato
+/szo/G3056	alap	forras	szo.sdgnt		lathato
+/szo/G3056	alap	blokk	szo.sece_g	SECE-szócikk (görög)	lathato
+/szo/G3056	alap	jelleg	szo.sece_g	forrásadat	lathato
+/szo/G3056	alap	forras	szo.sece_g		lathato
+/szo/G3056	alap	blokk	szo.lsj	LSJ	lathato
+/szo/G3056	alap	jelleg	szo.lsj	forrásadat	lathato
+/szo/G3056	alap	forras	szo.lsj		lathato
+/szo/G3056	alap	blokk	szo.mcged	MCGED (Mounce)	lathato
+/szo/G3056	alap	jelleg	szo.mcged	forrásadat	lathato
+/szo/G3056	alap	megj	szo.mcged	nem kereskedelmi: kereskedelmi kiadásból kimarad	lathato
+/szo/G3056	alap	tabla	szo.mcged	GK-szám | Lemma | Átírat | Gyakoriság | Glossza	lathato
+/szo/G3056	alap	forras	szo.mcged		lathato
+/szo/G3056	alap	blokk	szo.ubs_dntg	UBS DNTG jelentés	lathato
+/szo/G3056	alap	jelleg	szo.ubs_dntg	forrásadat	lathato
+/szo/G3056	alap	tabla	szo.ubs_dntg	Azonosító | Domén | Rövid definíció | Glosszák	lathato
+/szo/G3056	alap	fej	szo.ubs_dntg	Előfordulások (az első #)	lathato
+/szo/G3056	alap	forras	szo.ubs_dntg		lathato
+/szo/G3056	alap	blokk	szo.tw_g	translationWords	lathato
+/szo/G3056	alap	jelleg	szo.tw_g	forrásadat	lathato
+/szo/G3056	alap	fej	szo.tw_g	word of God, word of Yahweh, word of the Lord, word of truth, scripture (kt, kt/wordofgod)	lathato
+/szo/G3056	alap	fej	szo.tw_g	report, reported, tell, reputation (other, other/report)	lathato
+/szo/G3056	alap	forras	szo.tw_g		lathato

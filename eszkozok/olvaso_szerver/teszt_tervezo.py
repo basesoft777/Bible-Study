@@ -67,8 +67,8 @@ class TestRegiszter(unittest.TestCase):
 
     def test_101_elem_egyedi_id(self):
         # F104: +5 (a BDB vers szerinti jelölése); F210: +2 (biblia-gomb, biblia-jegy); F213: +26 (a szókártya), −12 (a régi vázlat és jelölő)
-        self.assertEqual(len(self.r.elemek), 83 + 18 + 5 + 2 + 26 - 12)
-        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5 + 2 + 26 - 12)      # F104: +5; F210: +2; F213: +26, −12
+        self.assertEqual(len(self.r.elemek), 83 + 18 + 5 + 2 + 26 - 12 - 9 + 2)
+        self.assertEqual(len({e['id'] for e in self.r.elemek}), 83 + 18 + 5 + 2 + 26 - 12 - 9 + 2)      # F104: +5; F210: +2; F213: +26, −12; F231: −9 (a használati sorok); F231.17: +2 (az apparátus, vissza)
         self.assertNotIn('tajolo', {e['id'] for e in self.r.elemek})
 
     def test_a_mufajszinek_irhatok(self):
@@ -760,7 +760,7 @@ class TestMentes(_Ideiglenes, unittest.TestCase):
         self.assertEqual(r.headers['Cache-Control'], 'no-cache')
         self.assertEqual(self.c.get('/tervezo/terkep.json', headers={'If-None-Match': r.headers['ETag']}).status_code, 304)
         t = r.get_json()
-        self.assertEqual(len(t['regiszter']), 83 + 18 + 5 + 2 + 26 - 12)  # a tájoló pirula kikerült (DT-F134n); F104: +5; F210: +2; F213: +26, −12
+        self.assertEqual(len(t['regiszter']), 83 + 18 + 5 + 2 + 26 - 12 - 9 + 2)  # a tájoló pirula kikerült (DT-F134n); F104: +5; F210: +2; F213: +26, −12
         self.assertEqual(t['arculat_hash'], self.gyar.arculat.hash)
         self.assertEqual(t['tokenek']['bg'], {'csoport': 'szin', 'tipus': 'szin', 'ertek': {'light': '#f5f2ea', 'dark': '#151918'}, 'irhato': True})
         self.assertFalse(t['tokenek']['fs-csempe-megj']['irhato'])                            # regiszteren kívüli: csak előnézet

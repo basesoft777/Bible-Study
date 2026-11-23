@@ -8,7 +8,7 @@ modell: sonnet
 sav: SERVER
 allapot: nem_indult
 ad: a két régi felmérés minden pontjáról kiderül, hogy a main-en fennáll-e még (élő lekéréssel vagy a kód soraival igazolva), a fennállók súlyosság szerint N-tételként a nyitott-fájlba kerülnek; a régi lexikongenerátorra vonatkozó, az F218 által kiváltott pontok lezárva, indokkal
-kovetkezo: "Indítható a #231 és a #233 merge-e után (hogy a már javított pontokat ne hozza vissza)"
+kovetkezo: "a #231 (olvasó egyben, 2026-11-22) fedi; a maradék a #231 lezárása után nézendő"
 munka: folyamat
 olvas: [eszkozok/olvaso_szerver/, eszkozok/lapgen/, eszkozok/lexikon_general.py]
 ir: [naplok/FELMERES_MARADEK_2026-11.md]

@@ -310,6 +310,9 @@ class TesztLablecSablon(unittest.TestCase):
             raise unittest.SkipTest('nincs Jinja2: a lábléc-sablon tesztje kimarad (nem zöld)')
         cls.env = jinja2.Environment(loader=jinja2.FileSystemLoader(os.path.join(D, 'sablonok')), autoescape=jinja2.select_autoescape(['html']),
                                      trim_blocks=True, lstrip_blocks=True)
+        sys.path.insert(0, D)
+        import feliratok
+        cls.env.globals.update(F=feliratok.F, Fv=feliratok.Fv)       # F231 (DT897): a sablonok a fordítótáblát hívják
 
     def _lap(self, **kw):
         ctx = dict(cim='x', arculat_hash='h', reteg='', il=False, kiadas='belso', epites_ts='2026-10-14T09:35:00Z', tervezo=False, szint_vezerlo=False)
@@ -1282,6 +1285,12 @@ class TesztInditUjraepites(_InditAlap):
         for _ in range(1500):
             a = allapot.epites_allapot(self.allapot_f)[0]
             if a in ('kesz', 'elbukott'):
+                # az `epit_hatter.sh` az állapotot a kilépés ELŐTT írja, a pillanatképet (`.forras.<pid>`) az EXIT-trap törli utána:
+                # terhelt gépen a teszt különben a még élő ideiglenes fájlt látja (F231.11, a push előtti kapu kétszer így bukott)
+                for _ in range(200):
+                    if not [n for n in os.listdir(os.path.dirname(self.c)) if '.epit.' in n or '.forras.' in n]:
+                        break
+                    time.sleep(0.05)
                 return a
             time.sleep(0.05)
         return allapot.epites_allapot(self.allapot_f)[0]

@@ -396,8 +396,8 @@ class TestLapok(unittest.TestCase):
         # a fülek sorrendjében (#134 M1, FULBLOKK): Vers · Kereszthiv. · Témák · Motívum; fülön belül a regiszter sorrendje
         sorrend = [k for k, _ in oldalak.VERS_FULEK]
         self.assertEqual(ids, sorted([b.id for b in blokkok.blokkok_oldalra('vers')], key=lambda i: sorrend.index(oldalak.FULBLOKK.get(i, 'vers'))))
-        self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))      # blokkonként legalább egy címke
-        self.assertEqual(len(re.findall(r'<p class="forras">Forrás és licenc: ', h)), len(ids))
+        self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))      # blokkonként legalább egy címke, a cím mellett (F231.17)
+        self.assertEqual(len(re.findall(r'<p class="forras" title="Forrás és licenc: ', h)), len(ids))
 
     def test_szovegoszlop_jelleg_es_forras_retegekkel(self):
         for n in ('', 'il'):
@@ -419,7 +419,7 @@ class TestLapok(unittest.TestCase):
             vart = [i for i in vart if i in ids or not blokkok.BLOKK_ID[i].ures_rejt]
             self.assertEqual(ids, vart, strong)
             self.assertEqual(len(re.findall(r'<h3>[^<]*<span class="jelleg jelleg-', h)), len(ids))
-            self.assertEqual(len(re.findall(r'<p class="forras">Forrás és licenc: ', h)), len(ids))
+            self.assertEqual(len(re.findall(r'<p class="forras" title="Forrás és licenc: ', h)), len(ids))
 
     def test_szo_lap_vers_kontextussal_az_ebben_a_versben_blokkal(self):
         h = self.get('/1Moz/1/2?szo=H6440&ful=szo').get_data(as_text=True)
@@ -433,8 +433,8 @@ class TestLapok(unittest.TestCase):
         self.assertEqual(q.usz(con, 'G4218')[0], 54)
         self.assertEqual(q.usz_lanc(con, 'G4218'), 25)
         h = self.get('/r/szo/G4218').get_data(as_text=True)
-        self.assertIn('<b>54</b> előfordulás', h)
-        self.assertIn('ebből <b>25</b> láncelemként', h)
+        self.assertIn('54 előfordulás', h)
+        self.assertIn('ebből 25 láncelemként', h)
         self.assertIn('az egész mezős előfordulás 29', h)
         # invariáns: összes = egész mezős + láncelem (több szóra, független számolás a nyers tábla egész mezős soraiból)
         for g in ('G2532', 'G0746', 'G3056', 'G1504', 'G4218', 'G1161'):
@@ -514,7 +514,7 @@ class TestLapok(unittest.TestCase):
         c = self.get
         hu = c('/r/szo/H6440').get_data(as_text=True)
         i = hu.index('data-blokk="szo.bdb_apparatus"')
-        self.assertIn('jelleg-modell', hu[i:hu.index('</h3>', i)])
+        self.assertIn('jelleg-modell', hu[i:hu.index('</section>', i)])
         for s in ('H0002', 'H0003', 'H0005'):          # ahol nincs magyar BDB: angol bontás (vagy nincs szócikk)
             t = c('/r/szo/' + s).get_data(as_text=True)
             if 'data-blokk="szo.bdb_apparatus"' not in t:
@@ -613,7 +613,7 @@ class TestLapok(unittest.TestCase):
         t = self.get('/r/szo/H7451').get_data(as_text=True)
         self.assertNotIn('Gépi szeletelés', t)                          # F213: az elavult címke és bekezdés kivezetve
         self.assertNotIn('(próba)', t)
-        self.assertIn('kétes pontjai', self.get('/r/szo/H7451?ig=1Moz/2/9').get_data(as_text=True))
+        self.assertIn('A BDB besorolása: 1Móz 2:9', self.get('/r/szo/H7451?ig=1Moz/2/9').get_data(as_text=True))     # DT914
         # F185 (DT-F185h, a felhasználó döntése): a mért pontosság a dobozban nem áll (az adat a konfigban marad)
         self.assertNotIn('Mért pontosság', t)
         self.assertNotIn('94,0%', t)
@@ -1341,7 +1341,7 @@ class TestNavigacio(unittest.TestCase):
         self.assertIn('aria-label="Következő fejezet"', self.h('/1Moz/1'))
 
     def test_a_tobbi_lap_fejlece_valtozatlan(self):
-        for u in ('/', '/1Moz', '/kereses', '/szo/H0216'):
+        for u in ('/1Moz', '/kereses', '/szo/H0216'):      # F231 (#53): a főoldalon a fejezet-lap navigációja áll
             h = self.h(u)
             self.assertIn('<header class="fejlec" id="navigacio">', h, u)
             for resz in ('class="konyvvalaszto"', 'class="kanon"', 'class="tajolo"', 'class="hatter"', 'id="aa"'):
@@ -1477,7 +1477,7 @@ class TestF104Egysegek(unittest.TestCase):
         self.assertEqual(vj.jel, {})
         self.assertEqual(vj.torzs_jel, {'bdb-t1'})
         h = str(blokkok._szk_torzsek(self._cx(vj), self._a()['torzsek'], 'bdb', '')[0])
-        self.assertIn('<div class="torzs szk-torzs bdb-vonatkozhat" id="bdb-t1">', h)
+        self.assertIn('<div class="torzs szk-torzs" id="bdb-t1">', h)      # DT914: a törzs nem kap „vonatkozhat” jelölést (a doboz szövegesen mondja)
         self.assertNotRegex(h, r'<li [^>]*class="szk-(?:jel|alpont) bdb-')
         # tábla nélkül (régi adatbázis): jelölés nincs, a gépi szám marad
         vj = blokkok.VersJelolo(self._a(), None, '1Móz 1:1', {'1Móz': '1Moz'}, {'qal': 'qal'})
@@ -1529,42 +1529,38 @@ class TestF104BdbJeloles(unittest.TestCase):
 
     def test_eros_jeloles(self):
         b = self.blokk('/r/szo/H1242?ig=1Moz/1/5')
-        self.assertIn('a BDB itt idézi ezt a verset', b)
+        self.assertIn('A BDB besorolása: 1Móz 1:5', b)                     # DT914 (DT-F231c): a szótár besorolásaként
+        self.assertIn('a BDB besorolása ennél a versnél', b)
         self.assertRegex(b, r'<li id="bdb-0-1e" data-jel="e\." class="szk-alpont bdb-itt">')
         self.assertEqual(len(re.findall(r'<a class="igehely bdb-itt" href="/1Moz/1/5"', b)), 2)       # az alaktanban és az 1. e.-ben
-        self.assertIn('<a href="#bdb-0-1e">1. e.</a>', b)
+        self.assertIn('<a href="#bdb-0-1e">1. e. — ', b)
 
     def test_nem_idezi_nincs_kiemeles(self):
         b = self.blokk('/r/szo/H7451?ig=1Moz/19/19')
-        self.assertIn('A BDB ezt a verset nem idézi.', b)
+        self.assertIn('A BDB ezt a verset nem idézi;', b)
         self.assertNotIn('bdb-itt', b)
         self.assertNotIn('bdb-vonatkozhat', b)
-        # idézet nélküli versnél jelentéspont nem kap jelölést, csak az igetörzs szakasza (DT178 (b))
+        # idézet nélküli versnél jelentéspont nem kap jelölést; az igetörzs a dobozban szövegesen áll, jelölés nélkül (DT914)
         b = self.blokk('/r/szo/H3615?ig=1Moz/6/16')
-        self.assertIn('A BDB ezt a verset nem idézi.', b)
+        self.assertIn('A BDB ezt a verset nem idézi;', b)
         self.assertNotRegex(b, r'<li [^>]*class="szk-(?:jel|alpont) bdb-')
         self.assertNotIn('igehely bdb-', b)
-        self.assertRegex(b, r'<div class="torzs szk-torzs bdb-vonatkozhat" id="bdb-t\d+"><h4 class="szk-torzsnev">Pi&#39;el')
+        self.assertIn('A szó igetörzse ebben a versben:', b)
 
     def test_gyenge_kulonbozik_az_erostol(self):
+        """DT914 (DT-F231c): kétes besorolásnál nincs jelentéspont-jelölés (a „vonatkozhat” kivezetve), a doboz ezt kimondja."""
         gy = self.blokk('/r/szo/H1802?ig=2Moz/2/6')            # forras_hiba: a BDB nyomtatott igehelye hibás (F99 M049)
-        self.assertRegex(gy, r'<li id="[^"]+" data-jel="[^"]*" class="szk-(?:jel|alpont) bdb-vonatkozhat[^"]*">')
-        self.assertIn('>vonatkozhat</span>', gy)
-        self.assertIn('a BDB nyomtatott igehelye hibás', gy)
-        self.assertNotIn('a BDB itt idézi', gy)
-        css = open(os.path.join(D, 'statikus', 'olvaso.css'), encoding='utf-8').read()
-        eros = re.search(r'\n\.bdb-itt \{([^}]*)\}', css).group(1)
-        gyenge = re.search(r'\n\.bdb-vonatkozhat \{([^}]*)\}', css).group(1)
-        self.assertIn('var(--accent-soft)', eros)
-        self.assertIn('var(--gold-soft)', gyenge)
-        self.assertRegex(css, r'\.bdb-vonatkozhat \.bdb-jelzes \{[^}]*font-style: italic')
+        self.assertNotRegex(gy, r'<li id="[^"]+" data-jel="[^"]*" class="szk-(?:jel|alpont) bdb-')
+        self.assertNotIn('>vonatkozhat</span>', gy)
+        self.assertIn('a jelentéspont gépi besorolása kétes', gy)
+        self.assertNotIn('A szótár ezt a helyet ebbe a jelentésbe sorolja', gy)
 
     def test_proba_es_pontossag_a_kiemeles_mellett(self):
         for u in ('/r/szo/H1242?ig=1Moz/1/5', '/r/szo/H3615?ig=1Moz/6/16', '/r/szo/H7451?ig=1Moz/19/19'):
             b = self.blokk(u)
             doboz = re.search(r'<div class="bdb-ebben">.*?</div>', b, re.S).group(0)
-            self.assertIn('kétes pontjai', doboz, u)
-            self.assertNotIn('Mért pontosság', doboz, u)          # DT-F185h
+            self.assertIn('A BDB besorolása:', doboz, u)
+            self.assertNotIn('Mért pontosság', doboz, u)          # DT-F185h, DT733
 
     def test_pontos_hivatkozasszam(self):
         """A szám a tábla feloldott, szűrt hivatkozásaié (szurt=0, maszoréta vers), csomópontonként és a címszónál."""
@@ -1590,10 +1586,11 @@ class TestF104BdbJeloles(unittest.TestCase):
         self.assertIn('href="/Ez/28/24"', b)
 
     def test_hasznalati_sorok(self):
-        """F213: a jelentés szövege használati sorokban (a régi csoportsorok helyett; a teljes szöveg a „Szócikk egyben” bekezdésben)."""
+        """F231 (DT-F231a (b)): a jelentés szövege egyben, a lexikonlap 4.2 modelljével (a használati sorok és a „Szócikk egyben”
+        nézet helyett)."""
         b = self.blokk('/r/szo/H0430')
-        self.assertIn('<li class="szk-sor">', b)
-        self.assertIn('<p class="szk-egyben jsz">', b)
+        self.assertNotIn('<li class="szk-sor">', b)
+        self.assertIn('<p class="szk-szoveg jsz">', b)
 
     def test_cimszo_es_nyers_blokk_belso_jel_nelkul(self):
         """HAMART-001 F10 (5): a STEP-átírás és a gyakoriság-számláló („_226”) nem renderel; a kiejtés a projekt jóváhagyott alakja."""
@@ -1637,15 +1634,17 @@ class TestF187ThayerKartya(unittest.TestCase):
                                  ('sz3~4', 'TAGSOR szöveg', 'elavult')):
             con.execute('INSERT INTO forditasok VALUES (?,?,?,?,?,?,?,?,?,?,?,?)',
                         ('Thayer', 'G1311', 'G1311', jsz, 'forditas_hu', 'h', hu, allapot, 'm', 'd', 'v', ''))
-        con.execute('CREATE TABLE thayer_szakaszok (strong TEXT, sorszam TEXT, utvonal TEXT, jel TEXT)')
-        con.executemany('INSERT INTO thayer_szakaszok VALUES (?,?,?,?)',
-                        [('G1311', '0', 'cim', ''), ('G1311', '1', 'fej', ''), ('G1311', '2', '-/1/-', '1.'),
-                         ('G1311', '3', '-/2/-', '2.'), ('G1311', '4', '-/2/a', 'a.')])
+        con.execute('CREATE TABLE thayer_szakaszok (strong TEXT, sorszam TEXT, utvonal TEXT, jel TEXT, szoveg TEXT)')
+        con.executemany('INSERT INTO thayer_szakaszok VALUES (?,?,?,?,?)',
+                        [('G1311', '0', 'cim', '', ''), ('G1311', '1', 'fej', '', 'cursed: Gal 3:13'),
+                         ('G1311', '2', '-/1/-', '1.', 'to change for the worse: Rev 11:18'),
+                         ('G1311', '3', '-/2/-', '2.', 'to destroy: Rev 8:9'), ('G1311', '4', '-/2/a', 'a.', 'of the soul: 1Tim 6:5')])
         con.execute('CREATE TABLE szotar_szakasz_cimke (szotar TEXT, strong TEXT, bdb_id TEXT, szakasz TEXT, '
                     'lexikon_jelentes_szam TEXT, cimke_hu TEXT)')
         con.execute("INSERT INTO szotar_szakasz_cimke VALUES ('Thayer', 'G1311', '', '-/1/-', '1', 'megront, rosszabbá tesz')")
-        con.execute('CREATE TABLE thayer_vers_jelentes (strong TEXT, sorszam TEXT, szakasz TEXT, karoli_vers TEXT, utvonal TEXT)')
-        con.execute("INSERT INTO thayer_vers_jelentes VALUES ('G1311', '1', '2', 'Jel 11:18', '-/1')")
+        con.execute('CREATE TABLE thayer_vers_jelentes (strong TEXT, sorszam TEXT, szakasz TEXT, fejezet TEXT, vers TEXT, karoli_vers TEXT, '
+                    'utvonal TEXT)')
+        con.execute("INSERT INTO thayer_vers_jelentes VALUES ('G1311', '1', '2', '11', '18', 'Jel 11:18', '-/1')")
         return con
 
     def _html(self, ig=None):
@@ -1653,9 +1652,16 @@ class TestF187ThayerKartya(unittest.TestCase):
 
         class K:
             pass
+
+        class Kozos:
+            slug = {'Jel': 'Jel', 'Gal': 'Gal'}
         k = K()
-        k.con, k.strong, k.ig = con, 'G1311', ig
-        return str(blokkok._r_magyar_gorog(q.magyar_gorog(con, 'G1311'), k))
+        k.con, k.strong, k.ig, k.kozos = con, 'G1311', ig, Kozos()
+        return str(blokkok._r_magyar_gorog(blokkok._f_magyar_gorog(k), k))
+
+    @staticmethod
+    def _szoveg(h):
+        return re.sub(r'\s+', ' ', re.sub(r'<[^>]+>', ' ', h))
 
     def test_csak_ervenyes_sor(self):
         sorok = q.magyar_gorog(self._con(), 'G1311')
@@ -1666,32 +1672,32 @@ class TestF187ThayerKartya(unittest.TestCase):
         self.assertNotIn('sz3~4', h)
 
     def test_ket_reteg_a_lap_glossza_szabalyaval(self):
+        """F231: a jelentések rendje a lap glossza-szabályával és a jóváhagyott címkével; alatta szakaszonként a szöveg egyben
+        (magyarul, ahol van; a hivatkozás kattintható); a mért pontosság a lapon nem áll (DT733)."""
         h = self._html()
-        olvasoi, app = h.split('<details>', 1)
-        self.assertIn('A jelentések rendje a Thayer szerint', olvasoi)
-        self.assertIn('a szócikk eleje — átkozott, utálatos', olvasoi)
-        # a jóváhagyott címke a lappal azonosan (adat/szotar_szakasz_cimke.tsv: Thayer G1311 -/1/-)
-        self.assertIn('1 — megront, rosszabbá tesz', olvasoi)
-        self.assertIn('2 — elpusztítani', olvasoi)
-        self.assertNotIn('Gal 3:13', olvasoi)
-        self.assertNotIn('sz1', olvasoi)                      # munkaszó (sorszám) nincs az olvasói rétegben
-        self.assertIn('Szótári apparátus', app)
-        self.assertIn('Gal 3:13', app)
-        self.assertIn(blokkok.THAYER_MERT_PONTOSSAG.split(':')[0], olvasoi)
-        # egy szabály, egy hely: a szó-lap a közös modul glossza-szabályát hívja
+        rendje = self._szoveg(re.search(r'<nav class="szk-tj".*?</nav>', h, re.S).group(0))
+        self.assertIn('A jelentések rendje a Thayer szerint', rendje)
+        self.assertIn('1 megront, rosszabbá tesz', rendje)                # a jóváhagyott címke (szotar_szakasz_cimke)
+        self.assertIn('2 elpusztítani', rendje)
+        self.assertNotIn('sz1', h)                                         # munkaszó (sorszám) nincs a lapon
+        self.assertIn('átkozott, utálatos', self._szoveg(h))
+        self.assertIn('Gal 3:13', self._szoveg(h))
+        self.assertNotIn(blokkok.THAYER_MERT_PONTOSSAG.split(':')[0], h)
         forras = open(os.path.join(D, 'blokkok.py'), encoding='utf-8').read()
         self.assertIn('szotari_glossza.thayer_glossza(', forras)
         self.assertNotIn('def _th_glossza', forras)
 
     def test_forditas_nelkuli_pont_jelolve(self):
-        olvasoi = self._html().split('<details>', 1)[0]
-        self.assertIn('2.a — <i>(fordításra vár)</i>', olvasoi)
+        """F231 (#22): fordítás nélküli pontnál az angol eredeti áll a kártyában (nem külön blokkban, nem „fordításra vár”)."""
+        h = self._html()
+        self.assertIn('of the soul', self._szoveg(h))
+        self.assertIn('lang="en"', h)
 
     def test_ebben_a_versben(self):
-        h = self._html('Jel 11:18')
-        self.assertIn('Ebben a versben: Jel 11:18', h)
-        self.assertIn('A Thayer itt idézi: 1 — megront, rosszabbá tesz', h)
-        self.assertIn('A Thayer ezt a verset nem idézi', self._html('Jel 1:1'))
+        h = self._szoveg(self._html('Jel 11:18'))
+        self.assertIn('A Thayer besorolása: Jel 11:18', h)
+        self.assertIn('A szótár ezt a helyet ebbe a jelentésbe sorolja: 1 — megront, rosszabbá tesz', h)
+        self.assertIn('A Thayer ezt a verset nem idézi', self._szoveg(self._html('Jel 1:1')))
 
     def test_thayer_pontossag_egy_forrasbol(self):
         p = blokkok.THAYER_PONTOSSAG

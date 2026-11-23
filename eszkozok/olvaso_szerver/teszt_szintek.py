@@ -31,6 +31,7 @@ D = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, D)
 
 import adatbazis
+import feliratok  # noqa: E402
 import blokkok
 import hozzaferes
 import lekerdezesek as q
@@ -94,7 +95,8 @@ class TestSzintvaltoSuti(unittest.TestCase):
         self.assertIn('SameSite=Lax', suti[0])
         self.assertIn('Path=/', suti[0])
         self.assertEqual(self.sutik(c.get('/1Moz/1')), [])                # a lap sem hoz létre sütit
-        self.assertIn('class="aktiv" aria-current="true">%s<' % FELSO, c.get('/1Moz/1').get_data(as_text=True).replace('\n', ''))
+        # F231 (#52): a szint olvasói (ékezetes) nevével áll
+        self.assertIn('class="aktiv" aria-current="true">%s<' % feliratok.Fv('szint.' + FELSO, FELSO), c.get('/1Moz/1').get_data(as_text=True).replace('\n', ''))
         self.assertEqual(c.get('/szint/nincs_ilyen').status_code, 404)    # ismeretlen szint: 404, nincs süti
         self.assertEqual(self.sutik(c.get('/szint/nincs_ilyen')), [])
         # érvénytelen süti-érték: az alapértelmezett szint, nem hiba

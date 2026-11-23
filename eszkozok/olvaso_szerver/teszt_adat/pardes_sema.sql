@@ -40,9 +40,17 @@ CREATE VIRTUAL TABLE fts_motivum USING fts5(szoveg, motivum_id UNINDEXED, rovat 
 -- ;;
 CREATE TABLE "funkcio_kapcsolok" ("kapcsolo" TEXT, "id" TEXT, "allapot" TEXT, "szerep_cim_resz" TEXT, "indok" TEXT, "proveniencia" TEXT)
 -- ;;
+CREATE TABLE "generalt_nezetek" ("id" TEXT, "utvonal" TEXT, "leiras" TEXT, "parancs" TEXT, "bemenetek" TEXT, "utana" TEXT, "orzes" TEXT, "determinizmus" TEXT, "kapuk" TEXT, "gazda" TEXT, "futtato" TEXT, "allapot" TEXT, "forras" TEXT)
+-- ;;
 CREATE TABLE "glosszak_heber_hu" ("strong" TEXT, "entry_id" TEXT, "kapcsolat" TEXT, "fo" TEXT, "glossza_en" TEXT, "forras_hash" TEXT, "glossza_hu" TEXT, "allapot" TEXT, "modell" TEXT, "datum" TEXT, "megjegyzes" TEXT)
 -- ;;
 CREATE TABLE "grammatikai_strongok" ("strong" TEXT, "rovid_jelentes" TEXT, "kategoria" TEXT, "kizaras_oka" TEXT)
+-- ;;
+CREATE TABLE "heti_keret" ("het" TEXT, "sav" TEXT, "elhasznalt_szazalek" TEXT, "ts" TEXT, "forras" TEXT)
+-- ;;
+CREATE TABLE "heti_keret_meres" ("ts" TEXT, "heti_szazalek" TEXT, "fable_szazalek" TEXT, "forras" TEXT)
+-- ;;
+CREATE TABLE "heti_terv" ("het" TEXT, "sav" TEXT, "sorrend" TEXT, "tetel" TEXT, "cel_a_het_vegere" TEXT, "modell" TEXT, "becsult_keret_szazalek" TEXT, "allapot_kezi" TEXT, "jovahagyva" TEXT, "eredeti_keret_szazalek" TEXT, "session_minta" TEXT, "megjegyzes" TEXT)
 -- ;;
 CREATE TABLE "igehely_tartomany" ("forras_tabla" TEXT, "forras_kulcs" TEXT, "oszlop" TEXT, "ertek" TEXT, "igehely" TEXT)
 -- ;;
@@ -53,6 +61,10 @@ CREATE TABLE "kapcsolatok" ("forras_igehely" TEXT, "cel_igehely" TEXT, "id" TEXT
 CREATE TABLE "karoli_strong_kivonat" ("igehely" TEXT, "step_nyers" TEXT, "strong" TEXT, "strong_nyers" TEXT, "karoli_szo" TEXT, "azonositas_modja" TEXT, "forras_tanulmany" TEXT, "megbizhatosag" TEXT, "szofaj" TEXT, "gyok_szarmaztatas" TEXT)
 -- ;;
 CREATE TABLE "karoli_variancia" ("tipus" TEXT, "konyv" TEXT, "kulcs" TEXT, "ertek" TEXT, "darab" TEXT, "bizonyossag" TEXT, "id" TEXT, "igehely" TEXT, "karoli_szo" TEXT, "reszleges" TEXT, "nincs_gepi_par" TEXT, "mas_strong" TEXT, "proveniencia" TEXT)
+-- ;;
+CREATE TABLE "keret_munkamappa" ("munkamappa" TEXT, "sav" TEXT, "megjegyzes" TEXT)
+-- ;;
+CREATE TABLE "keret_sulyok" ("modell" TEXT, "csalad" TEXT, "input" TEXT, "cache_5m" TEXT, "cache_1h" TEXT, "cache_olvasas" TEXT, "output" TEXT, "forras" TEXT)
 -- ;;
 CREATE TABLE "kh" ("igehely" TEXT, "step_nyers" TEXT, "cel_tol" TEXT, "cel_ig" TEXT, "cel_step_nyers" TEXT, "van_vers" INTEGER)
 -- ;;
@@ -76,7 +88,13 @@ CREATE TABLE "kulcsszavak" ("tanulmany" TEXT, "igehely" TEXT, "szo" TEXT, "stron
 -- ;;
 CREATE TABLE "lap_atnezesek" ("id" TEXT, "lap_commit" TEXT, "datum" TEXT, "ki" TEXT, "idezet" TEXT, "forras" TEXT)
 -- ;;
+CREATE TABLE "lap_befagyasztas" ("id" TEXT, "ok" TEXT, "dontes" TEXT, "datum" TEXT)
+-- ;;
 CREATE TABLE "lap_javitasok" ("id" TEXT, "hely" TEXT, "tipus" TEXT, "gond" TEXT, "regi" TEXT, "uj" TEXT, "javasolta" TEXT, "jovahagyta" TEXT, "datum" TEXT, "proveniencia" TEXT)
+-- ;;
+CREATE TABLE "lapgen_bemenetek" ("id" TEXT, "utvonal" TEXT, "leiras" TEXT, "kotelezo" TEXT, "javitas" TEXT, "frissesseg" TEXT, "allapot" TEXT, "licenc_kulcs" TEXT, "olvasoi_nev_kulcs" TEXT, "irodalom" TEXT, "forras" TEXT)
+-- ;;
+CREATE TABLE "lapgen_sablonok" ("kulcs" TEXT, "mondat" TEXT, "parameterek" TEXT, "szakasz" TEXT, "eredet" TEXT, "dontes" TEXT)
 -- ;;
 CREATE TABLE "lexikon_hivatkozasok" ("strong" TEXT, "szotar" TEXT, "entry_id" TEXT, "jelentes_szam" TEXT, "szoveg_en" TEXT, "forrasfajl" TEXT)
 -- ;;
@@ -118,9 +136,13 @@ CREATE TABLE "nyilt_angol" ("tabla" TEXT, "oszlop" TEXT, "sorkulcs" TEXT, "forra
 -- ;;
 CREATE TABLE "nyilt_kodkonyv" ("tabla" TEXT, "oszlop" TEXT, "ertek" TEXT, "leiras_hu" TEXT, "leiras_en" TEXT, "cimke_en" TEXT, "proveniencia" TEXT)
 -- ;;
+CREATE TABLE "olvasoi_nevtabla" ("tipus" TEXT, "kulcs" TEXT, "olvasoi_nev" TEXT, "eredet" TEXT)
+-- ;;
 CREATE TABLE "oshl_bdb_igehelyek" ("strong" TEXT, "bdb_id" TEXT, "sorszam" TEXT, "konyv" TEXT, "fejezet" TEXT, "vers" TEXT)
 -- ;;
 CREATE TABLE "oshl_lexikalis_index" ("strong" TEXT, "strong_eredeti" TEXT, "twot" TEXT, "bdb_id" TEXT, "nyelv" TEXT, "oshl_id" TEXT, "lemma" TEXT, "atiras" TEXT, "szofaj" TEXT, "def_en" TEXT, "etym_tipus" TEXT, "etym_cel" TEXT, "gyok" TEXT)
+-- ;;
+CREATE TABLE "otlettar" ("id" TEXT, "sav" TEXT, "cim" TEXT, "forras" TEXT, "allapot" TEXT, "megjegyzes" TEXT)
 -- ;;
 CREATE TABLE "res_forras" ("id" TEXT, "res" TEXT, "fejlec" TEXT, "forras" TEXT, "tanulmany" TEXT)
 -- ;;
@@ -163,6 +185,8 @@ CREATE TABLE "tanulmany_tartomany" ("tanulmany_id" TEXT, "resz" INTEGER, "kezdo"
 CREATE TABLE "tbesg" ("strong" TEXT, "estrong_nyers" TEXT, "dstrong" TEXT, "ustrong" TEXT, "szo" TEXT, "atiras" TEXT, "morf" TEXT, "gloss" TEXT, "jelentes" TEXT)
 -- ;;
 CREATE TABLE "tbesh" ("strong" TEXT, "estrong_nyers" TEXT, "dstrong" TEXT, "ustrong" TEXT, "szo" TEXT, "atiras" TEXT, "morf" TEXT, "gloss" TEXT, "jelentes" TEXT)
+-- ;;
+CREATE TABLE "tematikus_sajat_szo" ("id" TEXT, "igehely" TEXT, "strong" TEXT, "forras" TEXT)
 -- ;;
 CREATE TABLE "tematikus_temak" ("id" TEXT, "forras" TEXT, "tema_id" TEXT, "tema" TEXT, "dontes" TEXT, "indok" TEXT, "proveniencia" TEXT)
 -- ;;
