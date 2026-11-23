@@ -26,6 +26,28 @@ Modell-ellenőrzés: a session `claude-opus-5-5`, a brief `modell` mezője `opus
 - két hivatkozás a törölt `tematikus_lezart/Tehom_tematikus.md`-re: a `Lezart_tematikus_tanulmanyok_index.md:24` és a `NYITOTT_FELADATOK.md:1149` — mindkettő generált blokk (`GENERÁLT: index`), a forrásuk az adattáblákban nem a fájlnév, ezért nem a táblában javul; a generátor forrását nem kerestem meg;
 - a mérőtábla (`naplok/F239_meres.md`) U1b, U3, U3b sorai.
 
+### U4b — a nem prózai hibák javítása (2026-11-23, `claude-opus-5-5`)
+
+Modell-ellenőrzés: a session `claude-opus-5-5`, a brief `modell` mezője `opus`, egyezik. Ág: a `claude/nervous-kare-9d2361` (PR #820), a `blissful-carson-c3627e` worktree-ből pusholva. Bemenet: az integrátor döntése (a független ellenőr és a CI nem prózai ELTÉRÉS-ei ebben a lépésben, gyökérokkal és teszttel).
+
+| tétel | gyökérok | javítás és teszt | commit |
+|---|---|---|---|
+| CI F217 (G07) | kilenc új zárt érték (négy `kizaras_oka`, a `motivum_kapcsolatok.tsv` új sorának öt értéke) angol kódkönyv-címke nélkül; az adatírás után a teljes push előtti kapu nem futott | 9 sor az `adat/nyilt_kodkonyv.tsv`-ben; a `nyilt_mag_export.py` helyben lefut (0 címkehiány); a menet a teljes `push_elott.py`-vel zár | F239.27 |
+| E41 (8 ELTÉR) | 7 az eszköz hozzárendelési hibája: könyv nélküli versszám; görög szó zárójeles glosszája versidézetnek olvasva; „héber vers” az összeshez mérve; a fordulat csoportja puszta távolságból; a fordulat-minta az első előtag-egyezésből (Ézs 51:10 „mélység vizeit”); a fordulat más szót fordít a versben; részhalmaz-szám a csoport egészéhez mérve | `proza_allitas.py`, 8 új teszt (`F239_U4b`), 76/76 OK; minden motívum minden gépi sora előtte/utána összevetve: új ELTÉR nincs, eltűnt 7 (TEREMT-001) + 1 hamis riasztás (ANTROP-001, régi formájú) | F239.28 |
+| E41 maradék | a 79. sor idézete (5Móz 33:13): a „mélység, mely alant terül” sem az 1Móz 49:25, sem az 5Móz 33:13 Károli-szövege — **prózai, az U6-é; az E41 ezért piros marad** | – | – |
+| `tanu_kinyer.py` `ps` | a Chain Lineage hivatkozásai a BiblIndexből jönnek, görög zsoltárszámmal (Hippolütosz „ps 117.24”; a héber 117. zsoltár kétverses); a Sefaria-tanú héber számozású | közös `kozos.lxx_zsoltar`, a Chain Lineage-sornál forrás szerint; teszt a TVTMS-térkép minden zsoltársorával | F239.29 |
+| Vulgata-átvezetés | eseti szabály: a Jób 41:1–9 és a Zsolt 147:1–9 kulcsán más vers, a Zsolt 10., 114., 115. és a Jób 39–40. nem átvezetve | `kozos.vulgata_karoli` (zsoltárok a térkép latin oszlopával, Jób 38–41 teljes lefedéssel); 4 teszt, 24/24 OK; a `visszhang_megfelelok.tsv` 102 Vulgata-sorának alapja nem változik | F239.29 |
+| tanúsorok | a fenti hiba két TEREMT-001-soron | `tanu_kinyer.py cl` újrafuttatva ideiglenes másolaton, soronként összevetve: Hippolütosz Zsolt 117:24 → 118:24, Oikumeniosz Zsolt 28:7 → 29:7; `ellenoriz`: 0 hiba | F239.30 |
+| index-hivatkozás | a forrás (`motivumok.tsv` `forras_study`) már helyes (`motivumok/TEREMT-001.md`); a két hivatkozás a generált blokk elavult, ágon nem írandó állapota | ideiglenes újragenerálás: mindkét blokk a helyes utat adja; a main-en az Action írja | – |
+| mérőtábla | az U1b–U4 sora hiányzott | `naplok/F239_meres.md` +5 sor a commitokból; a keret- és tokenadat nem pótolható, jelölve | F239.31 |
+| `ir` lista, `kovetkezo` | a menet az `ir`-en kívül is írt | a brief fejléce a ténylegesen írt fájlokkal | F239.31 |
+
+**A független ellenőr többi ELTÉRÉS-e:** az 1Móz 7:11 „csak itt és a 8:2-ben” (`elofordulasok.tsv` kapcsolodás, F2 K99) és a Kivonat „95” száma (F2 K9/K70) prózai → U6. Az U1b sorrendje (dokumentált, integrátori döntés), az előnézet kerülőútja és az olvasói kapu generátor-bukásai (N-F239a, N-F239b, 218c) már gazdával állnak. Az `F239.11` kétszeres tételszáma történeti; nem írható át.
+
+**Az integrátorra vár:** a `naplok/SZIVARGAS_TEREMT-001.tsv`-ben az U3b-ben megfogott pontossági hiba (2Móz 15:5 βυθός → πόντος) sora — a SEMA 2.72 `hol` értékkészletében nincs helye (szabályhiány; javaslat: új `visszhang` érték és S022 sor).
+
+**Nem javítottam:** a `naplok/ALLITAS_TEREMT-001.md` (az U4 F1-jelentése) nem futott újra, mert a K-tételek számozása az ítéletfájl (`_itelet.md`) hivatkozása; a javított eszköz mai képe fent.
+
 ## Független ellenőrzés — 1. ellenőrzés
 
 *A `fuggetlen-ellenor` (Fable) válasza szó szerint; mentette a hívó (`claude-opus-5-5`, U4). Bemenet: a brief, `fe37880b..e1484e2d`, `teljes` szint, a CI-futás azonosítója. A futás a 5 órás keret kimerülésekor megszakadt, és a keret visszatérése után ugyanaz az ügynök folytatta. Egyetlen változtatás: az utolsó sor abszolút útvonalai repó-relatívra rövidítve.*
