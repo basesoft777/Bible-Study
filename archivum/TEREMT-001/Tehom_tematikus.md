@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/Tehom_tematikus.md @ ad972a16 · F239 TEREMT-001 új cikk, U3 · 2026-11-23 · nem forrás, nem szerkesztendő -->
 # Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma, a teremtés visszafordítása és helyreállítása
 
 ## Kivonat

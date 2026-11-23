@@ -71,6 +71,8 @@ Az összevetés teljes táblája (nem kérdés; a küszöb alatti sorok is láts
 *(proveniencia: scope=adat/motivumok.tsv:5, adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/elutasitasi_okok.tsv, naplok/HATAR_TEREMT-001.md, naplok/F239_hatar.md, naplok/ERVNAPLO_TEREMT-001.md, naplok/F239_U1_TEREMT-001_lxx_g0012.tsv, naplok/F239_U1_TEREMT-001_teljesseg_blokkok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TAGNT_kivonat.tsv | forras=modell:claude-sonnet-5-5 (hatar-ellenor) | ts=2026-11-23T12:48Z)*
 *A határ lezárt: a fenti kérdések (K1–K5) és a szerkesztő kilenc kérdésének döntései a `jeloltek.tsv`-n és az adattáblákon át (F239.3, F239.7); a sorállapot a döntés állapota. Új modelles kör csak új, nem a határdöntésből eredő sor-változásnál.*
 
-<!-- HATÁRDÖNTÉS: n=43 ujjd=9a04e9b685b8 | DT-F239a, DT-F239b, DT-F239c, DT-F239d -->
+*A jel frissítve a próza után (F239 U3, 2026-11-23): az előfordulás-sorokban csak határon kívüli mező változott (funkcio, jelentes_szam, kapcsolodas, karoli_szo, lexikon_entry_id, lexikon_szotar, proveniencia; `naplok/F239_U3_hatarjel_frissit.py`); az igehelyek és a döntések azonosak.*
+
+<!-- HATÁRDÖNTÉS: n=43 ujjd=0a017634e94d | DT-F239a, DT-F239b, DT-F239c, DT-F239d -->
 
 <!-- MODELLES-VEGE -->

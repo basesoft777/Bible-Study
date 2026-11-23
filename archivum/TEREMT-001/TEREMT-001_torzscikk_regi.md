@@ -1,3 +1,4 @@
+<!-- ARCHÍV: lexikon/TEREMT-001_TORZSCIKK.md @ ad972a16 · F239 TEREMT-001 új cikk, U3 · 2026-11-23 · nem forrás, nem szerkesztendő -->
 # TEREMT-001 — Tehóm (תְּהוֹם) — Abüsszosz (ἄβυσσος): a mélység motívuma
 
 *Kereszthivatkozási törzscikk — ugyanannak a tartalomnak az olvasói nézete, mint a [tudományos lexikonoldal](TEREMT-001_TUDOMANYOS.md).*

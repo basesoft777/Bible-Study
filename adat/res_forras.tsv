@@ -16,15 +16,13 @@ ISTENTISZT-001	minosites	### Minősítés	adat
 ISTENTISZT-001	alatamasztas	### Alátámasztás	adat	
 ISTENTISZT-001	ertelmezes	## 6. Értelmezés	tanulmany	motivumok/ISTENTISZT-001.md
 ISTENTISZT-001	modszertan	## 7. Módszertan és nyitott kérdések	tanulmany	motivumok/ISTENTISZT-001.md
-TEREMT-001	kivonat	## Kivonat	tanulmany	tematikus_lezart/Tehom_tematikus.md
-TEREMT-001	2b	### 2/b. Kiegészítő szótári adatok	tanulmany	tematikus_lezart/Tehom_tematikus.md
-TEREMT-001	miert_fontos	### Miért fontos ez a lelet	tanulmany	tematikus_lezart/Tehom_tematikus.md
-TEREMT-001	minosites	### Minősítés	tanulmany	tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md
+TEREMT-001	kivonat	## Kivonat	tanulmany	motivumok/TEREMT-001.md
+TEREMT-001	2b	### 2/b. Kiegészítő szótári adatok	adat	
+TEREMT-001	miert_fontos	### Miért fontos ez a lelet	tanulmany	motivumok/TEREMT-001.md
+TEREMT-001	minosites	### Minősítés	adat	
 TEREMT-001	alatamasztas	### Alátámasztás	adat	A motívumhoz nincs rögzített kapcsolat.
-TEREMT-001	ertelmezes	## 6. Értelmezés	tanulmany	tematikus_lezart/Tehom_tematikus.md
-TEREMT-001	alkalmazas	### Alkalmazás és tanítványság	adat	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
-TEREMT-001	tanitoi	### Tanítói egyezés	adat	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság” szakaszában áll.
-TEREMT-001	modszertan	## 7. Módszertan és nyitott kérdések	tanulmany	tematikus_lezart/Tehom_tematikus.md
+TEREMT-001	ertelmezes	## 6. Értelmezés	tanulmany	motivumok/TEREMT-001.md
+TEREMT-001	modszertan	## 7. Módszertan és nyitott kérdések	tanulmany	motivumok/TEREMT-001.md
 ALVIL-001	kivonat	## Kivonat	tanulmany	motivumok/ALVIL-001.md
 ALVIL-001	2b	### 2/b. Kiegészítő szótári adatok	adat	
 ALVIL-001	miert_fontos	### Miért fontos ez a lelet	tanulmany	motivumok/ALVIL-001.md
