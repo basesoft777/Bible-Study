@@ -17,20 +17,16 @@ Alapjelentés vétkezni
 304 Károli-előfordulás
 A szó saját lapja · Minden előfordulás versenként (keresés)
 ## [szo.szotar]
-Strong-szótár
+Strong-szótár forrásadat modell-kimenet
 Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás
-חָטָא | chátá | ige | vétkezni | a primitive root
-Forrás és licenc
-▸ forrásadat modell-kimenet
-▸ Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva
+חָטָא | chátá | ige | vétkezni to sin | a primitive root
+Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva
 ## [szo.elofordulas]
-Előfordulás, könyvek száma
+Előfordulás, könyvek száma gépi feldolgozás
 238 előfordulás, 27 könyvben.
-Forrás és licenc
-▸ gépi feldolgozás
-▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
+Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
 ## [szo.karoli_alakok]
-Károli-alakok és pontosság
+Károli-alakok és pontosság modell-kimenet
 304 Károli-előfordulás. A párosítás mért pontossága 95%.
 Károli-alak | Darab
 vétkeztünk | 23
@@ -42,11 +38,9 @@ meg | 15
 ejtette | 13
 bűnbe | 12
 Mind a 66 könyv szó szintű párjai alapján.
-Forrás és licenc
-▸ modell-kimenet
-▸ Forrás és licenc: Karoli Strong parok: CC BY 4.0
+Forrás és licenc: Karoli Strong parok: CC BY 4.0
 ## [szo.bdb_apparatus]
-Szótár: BDB-szócikk (Brown–Driver–Briggs)
+Szótár: BDB-szócikk (Brown–Driver–Briggs) forrásadat modell-kimenet gépi feldolgozás
 Lefordítva · gépi fordítás, 2026.10.25
 חָטָא‎238 előfordulás (BDB)302 hivatkozás a címszónál
 ige elvéti (a célt vagy az utat), téved, vétkezik
@@ -81,11 +75,18 @@ Angol eredeti
 vétkezik, elvéti a jog és kötelesség célját vagy ösvényét:
 a.ember ellen, önállóan16 hivatkozásLXX ἁμαρτάνω 8 · ἀδικέω 1 · 7 megfelelő nélkül
 ember ellen, önállóan 2Móz 5:16 (E), 1Sám 26:21; 2Sám 19:21; 1Kir 18:9; 2Kir 18:14; לְ-val annak a személynek, aki ellen vagy aki felé vétkezik, 1Móz 40:1 (E), Bír 11:27; 1Sám 2:25; 19:4; 24:12, 11Kir 8:31 2Krón 6:22; מה חטאתי לך miben vétkeztem ellened ? 1Móz 20:9 (E) Jer 37:18; בילד תחטאו אל בְּ-val, 1Móz 42:22 (E) ne vétkezz a fiú ellen, Dávid ellen 1Sám 19:4-5,.
+Apparátus és szövegkritika 2 tétel
+▸ forrásjel 2Móz 5:16 (E) · 1Móz 40:1 (E) · 1Móz 20:9 (E) · 1Móz 42:22 (E)
+▸ számozás Versszámozás: a BDB a héber számozást követi; 2Sám 19:21 = Károli 2Sám 19:20
 Versszámozás: a BDB a héber számozást követi; 2Sám 19:21 = Károli 2Sám 19:20
 Angol eredeti
 ▸ against man, absolute Exod 5:16 (E), 1Sam 26:21; 2Sam 19:21; 1Kin 18:9; 2Kin 18:14; with לְ of the person against whom or towards whom one sins, Gen 40:1 (E), Judg 11:27; 1Sam 2:25; 19:4; 24:12, 1Kin 8:31 2Chr 6:22; מה חטאתי לך wherein have I sinned against thee ? Gen 20:9 (E) Jer 37:18; with בילד תחטאו אל בְּ, Gen 42:22 (E) do not sin against the lad, against David 1Sam 19:4-5,.
 b.másutt mindig Isten ellen, önállóan150 hivatkozásLXX ἁμαρτάνω 102 · ἁμαρτωλός 3 · ἁμαρτία 2 · ἀγαπάω 1 · 43 megfelelő nélkül
 másutt mindig Isten ellen, önállóan 2Móz 20:20 (E), 9:34 (J) Józs 7:11 (D) 3Móz 4:3; 5:1, 11, 17 (a versben kétszer); 3Móz 5:21; 3Móz 5:23; 4Móz 16:22 (P), Neh 6:13; Jób 1:5, 22; 7:20; 10:14; 24:19; 35:6; Zsolt 4:5; 78:32; Ézs 43:27; 64:4; Jer 2:35; JSir 5:7; Ez 3:21 (a versben kétszer); 16:51; 28:16; 33:12; Hós 8:11 (húzd ki WeKl. Proph.) 8:11; 10:9; 13:2; לא נתתי לחטא חכי nem engedtem, hogy szájpadlásom vétkezzék Jób 31:30; participium חֹטֵא, melléknévként használva, vétkes nemzet Ézs 1:4; vétkes személy Ez 18:4, 20; de rendszerint főnévként, bűnös Péld 11:31; 13:22; 14:21; Préd 2:26; 7:26; 8:12; 9:2, 18; Ézs 65:20. A bűnt megvallják: חָטָאנוּ vétkeztünk 4Móz 14:40; 21:7 (E) Bír 10:15; 1Sám 12:10; 1Kir 8:47 2Krón 6:37; Neh 1:6; Zsolt 106:6; JSir 5:16; Dán 9:5, 15; חטאתי vétkeztem 2Móz 9:27; 4Móz 22:34 (J) 1Sám 15:24, 30; 2Sám 24:10, 17; 1Krón 21:8, 17; Jób 33:27. A bűn egyetemes: אין אדם אשׁר לא יחטא nincs ember, aki ne vétkeznék 1Kir 8:46 2Krón 6:36, כי אדם אין צדיק בארץ אשׁר יעשׂה טוב ולא יחטא Préd 7:20 mert nincs igaz ember a földön, aki jót cselekszik és nem vétkezik; לְ-val, Isten ellen 1Móz 20:6 (E), 39:9 (J), 2Móz 32:33; 4Móz 32:33 (mindkettő J E), 5Móz 9:16; 20:18; 1Sám 2:25; 12:23; 14:33-34, 11Kir 8:33, 35, 46, 50 2Krón 6:24, 26, 36, 39; 2Kir 17:7; Hós 4:7; Mik 7:9; Sof 1:17; Jer 40:3; 44:23; 50:7, 14; Ez 14:13; Ézs 42:24; Jób 8:4; Zsolt 78:17; 119:11; Neh 1:6; vallomásban חטאתי ל‎ 2Móz 10:16; Józs 7:20 (J), 2Sám 12:13 3 Zsolt 41:5; 51:6; חטאנו ל‎ 5Móz 1:41; Bír 10:10; 1Sám 7:6; Jer 3:25; 8:14; 14:7, 20; Dán 9:8, 11; בְּ-val eszközről, ajkak Jób 2:10, nyelv Zsolt 39:2; amiben Ez 37:23; 3Móz 4:23 (P), abban 3Móz 5:22 (P); a בְּ kihagyása a fordulatban עונם אשׁר ח׳ לי (az ő) bűnük, amellyel vétkeztek ellenem Jer 33:8 (a versben kétszer); בשׁגגה tévedésből, akaratlanul 3Móz 4:2, 22, 27; 5:15; 4Móz 15:27-28, (mind P); ítéleteid ellen Neh 9:29; עַל-val tekintetében 3Móz 5:5; 4Móz 6:11(P) Neh 13:26; rokon értelmű tárgyesettel ח׳ חֲטָאָה‎ 2Móz 32:30-31, (JE); ח׳ אשׁר חַטָּאת‎ 4Móz 12:11(J) 3Móz 4:3, 28 (a versben kétszer); 4:35; 5:6, 10, 13 (mind P) 19:22 (a versben kétszer) (H), 5Móz 9:18; 1Kir 14:16, 22; 15:30; 16:13, 19; 2Kir 21:17; Ez 18:24; 33:16; חטאת אשׁר ח׳ ל Jer 16:10; Neh 1:6; חטאת אשׁר ח׳ על‎ 3Móz 4:14 (P); חֵטְא ח׳ JSir 1:8; ח׳ אשׁר חֵטְא‎ 5Móz 19:15.
+Apparátus és szövegkritika 3 tétel
+▸ forrásjel 2Móz 20:20 (E) · 2Móz 9:34 (J) · Józs 7:11 (D) · 4Móz 16:22 (P) · 4Móz 21:7 (E) · 4Móz 22:34 (J) · 1Móz 20:6 (E) · 1Móz 39:9 (J) · 2Móz 32:33; 4Móz 32:33 (mindkettő J E) · Józs 7:20 (J) · 3Móz 4:23 (P) · 3Móz 5:22 (P) · (mind P) · 4Móz 6:11 (P) · (JE) · 4Móz 12:11 (J) · 3Móz 4:35; 5:6, 10, 13 (mind P) · 3Móz 19:22 (H) · 3Móz 4:14 (P)
+▸ megjegyzés (húzd ki WeKl. Proph.)
+▸ számozás Versszámozás: a BDB a héber számozást követi; 3Móz 5:21 = Károli 3Móz 6:2; 3Móz 5:23 = Károli 3Móz 6:4; JSir 5:7 = Károli Sir 5:7; Préd 9:2 = Károli Préd 9:4; Préd 9:18 = Károli Préd 9:20; JSir 5:16 = Károli Sir 5:16; 3Móz 5:22 = Károli 3Móz 6:3; JSir 1:8 = Károli Sir 1:8
 Versszámozás: a BDB a héber számozást követi; 3Móz 5:21 = Károli 3Móz 6:2; 3Móz 5:23 = Károli 3Móz 6:4; JSir 5:7 = Károli Sir 5:7; Préd 9:2 = Károli Préd 9:4; Préd 9:18 = Károli Préd 9:20; JSir 5:16 = Károli Sir 5:16; 3Móz 5:22 = Károli 3Móz 6:3; JSir 1:8 = Károli Sir 1:8
 Angol eredeti
 ▸ elsewhere always against God, absolute Exod 20:20 (E), 9:34 (J) Josh 7:11 (D) Lev 4:3; 5:1, 11, 17 (twice in verse); Leviticus 5:21; Leviticus 5:23; Num 16:22 (P), Neh 6:13; Job 1:5, 22; 7:20; 10:14; 24:19; 35:6; Psa 4:5; 78:32; Isa 43:27; 64:4; Jer 2:35; Lam 5:7; Ezek 3:21 (twice in verse); 16:51; 28:16; 33:12; Hosea 8:11 (strike out WeKl. Proph.) 8:11; 10:9; 13:2; לא נתתי לחטא חכי I have not permitted my palate to sin Job 31:30; Participle חֹטֵא, used as adjective, sinful nation Isa 1:4; sinful person Ezek 18:4, 20; but usually as noun, sinner Prov 11:31; 13:22; 14:21; Eccl 2:26; 7:26; 8:12; 9:2, 18; Isa 65:20. Sin is confessed: חָטָאנוּ we have sinned Num 14:40; 21:7 (E) Judg 10:15; 1Sam 12:10; 1Kin 8:47 2Chr 6:37; Neh 1:6; Psa 106:6; Lam 5:16; Dan 9:5, 15; חטאתי I have sinned Exod 9:27; Num 22:34 (J) 1Sam 15:24, 30; 2Sam 24:10, 17; 1Chr 21:8, 17; Job 33:27. Sin is universal: אין אדם אשׁר לא יחטא there is no man who sinneth not 1Kin 8:46 2Chr 6:36, כי אדם אין צדיק בארץ אשׁר יעשׂה טוב ולא יחטא Eccl 7:20 for man there is none righteous in the earth who doeth good and sinneth not; with לְ, against God Gen 20:6 (E), 39:9 (J), Exod 32:33; Num 32:33 (both J E), Deut 9:16; 20:18; 1Sam 2:25; 12:23; 14:33-34, 1Kin 8:33, 35, 46, 50 2Chr 6:24, 26, 36, 39; 2Kin 17:7; Hosea 4:7; Micah 7:9; Zeph 1:17; Jer 40:3; 44:23; 50:7, 14; Ezek 14:13; Isa 42:24; Job 8:4; Psa 78:17; 119:11; Neh 1:6; in confession חטאתי ל Exod 10:16; Josh 7:20 (J), 2Sam 12:13 Psa 41:5; 51:6; חטאנו ל Deut 1:41; Judg 10:10; 1Sam 7:6; Jer 3:25; 8:14; 14:7, 20; Dan 9:8, 11; with בְּ of instrument, lips Job 2:10, tongue Psa 39:2; wherein Ezek 37:23; Lev 4:23 (P), therein Leviticus 5:22 (P); ellipsis of בְּ in pharse עונם אשׁר ח׳ לי (their) iniquity wherein they sinned against me Jer 33:8 (twice in verse); בשׁגגה by error, unwittingly Lev 4:2, 22, 27; 5:15; Num 15:27-28, (all P); against thy judgements Neh 9:29; with עַל with regard to Lev 5:5; Num 6:11(P) Neh 13:26; with cognate accusative ח׳ חֲטָאָה Exod 32:30-31, (JE); ח׳ אשׁר חַטָּאת Num 12:11(J) Lev 4:3, 28 (twice in verse); 4:35; 5:6, 10, 13 (all P) 19:22 (twice in verse) (H), Deut 9:18; 1Kin 14:16, 22; 15:30; 16:13, 19; 2Kin 21:17; Ezek 18:24; 33:16; חטאת אשׁר ח׳ ל Jer 16:10; Neh 1:6; חטאת אשׁר ח׳ על Lev 4:14 (P); חֵטְא ח׳ Lam 1:8; ח׳ אשׁר חֵטְא Deut 19:15.
@@ -93,6 +94,8 @@ Angol eredeti
 ▸ sin, miss the goal or path of right and duty:
 3bűn által bűnt, büntetést von magára, elveszít4 hivatkozásLXX ἔσομαι 2 · ἁμαρτάνω 1 · 1 megfelelő nélkül
 bűn által bűnt, büntetést von magára, elveszít: וחטאתי לך כל הימים‎ 1Móz 43:9 magamra vonom a vádat, hogy vétkeztem ellened egész életemben, vö. 44:32 (J); tárgyesettel חוֺטֵא נפשׁ elveszíti önmagát, életét Péld 20:2; Hab 2:10 a legtöbben így, de l. alább
+Apparátus és szövegkritika 1 tétel
+▸ forrásjel 1Móz 44:32 (J)
 Angol eredeti
 ▸ incur guilt, penalty by sin, forfeit: וחטאתי לך כל הימים Gen 43:9 I shall incur the blame of sinning against thee all my days, compare 44:32 (J); with accusative חוֺטֵא נפשׁ for feiting oneself, one's life Prov 20:2; Hab 2:10 according to most, yet see below
 1— hozza el vétekáldozatát, amelyet bűnével magára vont
@@ -103,19 +106,28 @@ Pi'el
 Alakok: perfectum חִטֵּא‎ 3Móz 14:52; suffixummal חִטְּאוֺ‎ 4Móz 19:19, חִטֵּאתָ‎ 2Móz 29:36 2-szer; 3. többes szám חִטְּאוּ Ez 43:22 (a versben kétszer); imperfectum יַיְחַטֵּא‎ 3Móz 8:15; suffixummal וַיְהַטְּאֵהוּ‎ 9:15, תְּחַטְּאֵנִי Zsolt 51:9, אֲחַטֶּנָּה‎ 1Móz 31:39, וַיְחַטְּאוּ‎ 2Krón 29:24; infinitivus חַטֵּא‎ 3Móz 14:49; Ez 43:23; participium הִמְחַטֵּא‎ 3Móz 6:19; —
 1viseli a veszteséget1 hivatkozás
 viseli a veszteséget: אָנֹכִי אֲחַטֶּנָּה viseltem a kárát 1Móz 31:39 (E; szó szerint hiányozni hagytam ? esetleg olvasd אֲחֻטּנה hiányozni kényszerültem ?).
+Apparátus és szövegkritika 1 tétel
+▸ megjegyzés (E; szó szerint hiányozni hagytam ? esetleg olvasd אֲחֻטּנה hiányozni kényszerültem ?)
 Angol eredeti
 ▸ bear loss: אָנֹכִי אֲחַטֶּנָּה I bare the loss of it Gen 31:39 (E; lit I let it be missing ? possibly read אֲחֻטּנה I was made to miss it ?).
 2vétekáldozatot mutat be4 hivatkozásLXX ἀναφέρω 1 · 3 megfelelő nélkül
 vétekáldozatot mutat be: a שׁעיר-re vonatkozó suffixummal 3Móz 9:15 (P); a vétekáldozatra 6:19 (P); המזבח על az oltáron 2Móz 29:36 (P; nem megtisztítja az oltárt RV); ח׳ את דמם המזבחה‎ 2Krón 29:24 vétekáldozatot mutattak be vérükkel az oltáron.
+Apparátus és szövegkritika 2 tétel
+▸ forrásjel 3Móz 9:15 (P) · 3Móz 6:19 (P)
+▸ számozás Versszámozás: a BDB a héber számozást követi; 3Móz 6:19 = Károli 3Móz 6:26
 Versszámozás: a BDB a héber számozást követi; 3Móz 6:19 = Károli 3Móz 6:26
 Angol eredeti
 ▸ make a sin-offering: with suffix referring to שׁעיר Lev 9:15 (P); to sin-offering 6:19 (P); המזבח על upon the altar Exod 29:36 (P; not cleanse the altar RV); ח׳ את דמם המזבחה‎2Chr 29:24 made a sin-offering with their blood on the altar.
 3bűntől való megtisztítás5 hivatkozásLXX καθαρίζω 1 · 5 megfelelő nélkül
 bűntől való megtisztítás: az oltár, azzal, hogy a vétekáldozat vérét szarvaira teszik, 3Móz 8:15 (P), Ez 43:20, 22 (a versben kétszer); 43:23; a szentély, azzal, hogy a vétekáldozat vérét ráviszik 45:18.
+Apparátus és szövegkritika 1 tétel
+▸ forrásjel 3Móz 8:15 (P)
 Angol eredeti
 ▸ purity from sin: the altar, by putting the blood of the sin-offering on its horns, Lev 8:15 (P), Ezek 43:20, 22 (twice in verse); 43:23; the sanctuary, by applying to it the blood of the sin-offering 45:18.
 4tisztátalanságtól való megtisztítás4 hivatkozás
 tisztátalanságtól való megtisztítás: a leprás háza az élő víz és a madár vére keverékének felvitelével 3Móz 14:49, 52 (P); egy személy az élő víz és a vörös üsző hamva keverékének felvitelével 4Móz 19:19 (P), izsópággal való meghintéssel Zsolt 51:9.
+Apparátus és szövegkritika 1 tétel
+▸ forrásjel 3Móz 14:52 (P) · 4Móz 19:19 (P)
 Angol eredeti
 ▸ purity from uncleanness: the house of the leper by application of the mixture of living water and blood of the bird Lev 14:49, 52 (P); a person, by application of then mixture of living water and ashes of the red heifer Num 19:19 (P), by sprinkling with a hyssop spring Psa 51:9.
 Hiph'il
@@ -126,6 +138,8 @@ Angol eredeti
 ▸ miss the mark: קֹלֵעַ בָּאֶבֶן אֶל־הַשַּׂעְרָה וְלֹא יַחֲטִא Judg 20:16 slinging with stones at an hair and would not miss.
 2vétekre késztet vagy bír43 hivatkozásLXX ἁμαρτάνω 2 · ἐκκλίνω 1 · ποιέω 1 · 29 megfelelő nélkül
 vétekre késztet vagy bír: tárgyesettel 2Móz 23:33(JE), Neh 13:26; másutt a החטיא את ישׂראל fordulatban vétekre vitte Izráelt 1Kir 14:16; 15:26, 30, 34; 16:2, 13, 19, 26; 21:22; 22:53; 2Kir 3:3; 10:29, 31; 13:2, 6, 11; 14:24; 15:9, 18, 24, 28; 23:15; Izráelre vonatkozó suffixummal 17:21; את יהודה‎ 21:11, 16; Jer 32:35 (néha 2. tárgyesettel — חטאת, vagy אשׁר az חטאת-ra vonatkozással: — 1Kir 15:26, 34; 16:26; 2Kir 17:21; 21:16; valószínűleg 1Kir 14:16; 15:30; 16:13 is; nincs 2. tárgyeset 16:2, 19; 21:22; 22:53; 2Kir 21:11; 23:15; Jer 32:35; a többi kétértelmű).
+Apparátus és szövegkritika 1 tétel
+▸ forrásjel 2Móz 23:33 (JE)
 Angol eredeti
 ▸ induce or cause to sin: with accusative Exod 23:33(JE), Neh 13:26; elsewhere in the phrase החטיא את ישׂראל (he) caused Israel to sin 1Kin 14:16; 15:26, 30, 34; 16:2, 13, 19, 26; 21:22; 22:53; 2Kin 3:3; 10:29, 31; 13:2, 6, 11; 14:24; 15:9, 18, 24, 28; 23:15; with suffix reference to Israel 17:21; את יהודה‎ 21:11, 16; Jer 32:35 (sometimes with 2nd accusative — חטאת, or אשׁר reference to חטאת‎: — 1Kin 15:26, 34; 16:26; 2Kin 17:21; 21:16; peob. also 1Kin 14:16; 15:30; 16:13; no 2nd accusative 16:2, 19; 21:22; 22:53; 2Kin 21:11; 23:15; Jer 32:35; the rest are ambiguous).
 3bűnbe, elítélésbe, büntetésbe juttat3 hivatkozás
@@ -136,6 +150,8 @@ Hithpa'el
 Alakok: imperfectum יִתְחַטָּא‎ 4Móz 19:12 4-szer, יִתְחַטְּאוּ‎ 8:21; יִתְחַטָּ֑אוּ Jób 41:17, תִּתְחַטְּאוּ‎ 4Móz 31:19, תִּתְחַטָּ֑אוּ‎ 31:20; —
 1elveszíti önmagát, átvitten megzavarodik, magán kívül van1 hivatkozás
 elveszíti önmagát, átvitten megzavarodik, magán kívül van, מִשְּׁבָרִים יִתְחַטָּאוּ Jób 41:17 a megdöbbenéstől magukon kívül vannak (párhuzamban: יגורו félnek).
+Apparátus és szövegkritika 1 tétel
+▸ számozás Versszámozás: a BDB a héber számozást követi; Jób 41:17 = Károli Jób 41:25
 Versszámozás: a BDB a héber számozást követi; Jób 41:17 = Károli Jób 41:25
 Angol eredeti
 ▸ miss oneself, lose oneself, figurative for be bewildered, beside oneself, מִשְּׁבָרִים יִתְחַטָּאוּ Job 41:17 by reason of consternation they are beside themselves (|| יגורו are afraid).
@@ -180,69 +196,57 @@ Jelmagyarázat
 ▸ A feloldás nem a BDB része; csak a fenti jelentésekben előforduló jelek. A szövegben a pontozottan aláhúzott jelre mutatva is megjelenik.
 A magyar szócikk teljes szövege, tagolás nélkül
 ▸ חָטָא ige elvéti (a célt vagy az utat), téved, vétkezik (késői héber ua.; arámi חֲטָא asszír —a‰û. ZimBP 46; szabeus ה־חטא חֿטא, ua., DHM in MV; arab helytelenül cselekszik, hibát vagy tévedést követ el; II. célt téveszt; IV. célt téveszt, utat téveszt; etióp nem talál vagy nem bír valamit; néha vétkezik, különösen a származékokban) — Qal perfectum ח׳‎ 2Móz 32:31 + 29-szer, 3. nőnemű egyes szám חָֽטְאָה‎ 3Móz 5:15; JSir 1:8, חָטָֽאָה Jer 50:14; Ez 16:15, חָטָאת‎ 2Móz 5:16, stb., + 82-szer perfectum; imperfectum יֶחֱטָא‎ 3Móz 4:3 12-szer, תֶּחֱטָ֫אוּ‎ 2Móz 20:20; Zsolt 4:5, stb. + 20-szor imperfectum; infinitivus חֲטֹא Ez 3:21 8-szor, מֵחֲטוֺא Zsolt 39:2, מֵחֲטוֺ (szövegromlás a מחטא helyett) 1Móz 20:6, בְּחֶטְאָה‎ 4Móz 15:28, חֲטאֹתוֺ Ez 33:12 (húzd ki Co); participium חוֺטֵא Péld 13:22 6-szor, חֹטֵא Ézs 1:4; Préd 9:2, חוֺטֶא Ézs 65:20 2-szer, חֹטֶא Préd 8:12, suffixummal חֹטְאִי Péld 8:36, többes szám חֹטִ֯אֿים‎ 1Sám 14:33, suffixummal חֹטֵאת Ez 18:4, 20; — 1 elvéti: לא תחטא semmit sem fogsz elvéteni Jób 5:24, אָץ בְּרַגְּלַיִם חוֺטֵא Péld 19:2 aki lábával siet, elvéti (az utat vagy a célt); חֹטְאִי חֹמֵסנַפְשׁוֺ‎ 8:36 aki engem (a Bölcsességet) elvét, önmagát bántja (ellentétben: מֹצְאִי); elvét, azaz veszélyeztet, valakinek az életét 20:2; Hab 2:10 De VB szerint (mások alább 3 q. v.) 2 vétkezik, elvéti a jog és kötelesség célját vagy ösvényét: a. ember ellen, önállóan 2Móz 5:16 (E), 1Sám 26:21; 2Sám 19:21; 1Kir 18:9; 2Kir 18:14; לְ-val annak a személynek, aki ellen vagy aki felé vétkezik, 1Móz 40:1 (E), Bír 11:27; 1Sám 2:25; 19:4; 24:12, 1Kir 8:31 2Krón 6:22; מה חטאתי לך miben vétkeztem ellened ? 1Móz 20:9 (E) Jer 37:18; בילד תחטאו אל בְּ-val, 1Móz 42:22 (E) ne vétkezz a fiú ellen, Dávid ellen 1Sám 19:4-5,. b. másutt mindig Isten ellen, önállóan 2Móz 20:20 (E), 9:34 (J) Józs 7:11 (D) 3Móz 4:3; 5:1, 11, 17 (a versben kétszer); 3Móz 5:21; 3Móz 5:23; 4Móz 16:22 (P), Neh 6:13; Jób 1:5, 22; 7:20; 10:14; 24:19; 35:6; Zsolt 4:5; 78:32; Ézs 43:27; 64:4; Jer 2:35; JSir 5:7; Ez 3:21 (a versben kétszer); 16:51; 28:16; 33:12; Hós 8:11 (húzd ki WeKl. Proph.) 8:11; 10:9; 13:2; לא נתתי לחטא חכי nem engedtem, hogy szájpadlásom vétkezzék Jób 31:30; participium חֹטֵא, melléknévként használva, vétkes nemzet Ézs 1:4; vétkes személy Ez 18:4, 20; de rendszerint főnévként, bűnös Péld 11:31; 13:22; 14:21; Préd 2:26; 7:26; 8:12; 9:2, 18; Ézs 65:20. A bűnt megvallják: חָטָאנוּ vétkeztünk 4Móz 14:40; 21:7 (E) Bír 10:15; 1Sám 12:10; 1Kir 8:47 2Krón 6:37; Neh 1:6; Zsolt 106:6; JSir 5:16; Dán 9:5, 15; חטאתי vétkeztem 2Móz 9:27; 4Móz 22:34 (J) 1Sám 15:24, 30; 2Sám 24:10, 17; 1Krón 21:8, 17; Jób 33:27. A bűn egyetemes: אין אדם אשׁר לא יחטא nincs ember, aki ne vétkeznék 1Kir 8:46 2Krón 6:36, כי אדם אין צדיק בארץ אשׁר יעשׂה טוב ולא יחטא Préd 7:20 mert nincs igaz ember a földön, aki jót cselekszik és nem vétkezik; לְ-val, Isten ellen 1Móz 20:6 (E), 39:9 (J), 2Móz 32:33; 4Móz 32:33 (mindkettő J E), 5Móz 9:16; 20:18; 1Sám 2:25; 12:23; 14:33-34, 1Kir 8:33, 35, 46, 50 2Krón 6:24, 26, 36, 39; 2Kir 17:7; Hós 4:7; Mik 7:9; Sof 1:17; Jer 40:3; 44:23; 50:7, 14; Ez 14:13; Ézs 42:24; Jób 8:4; Zsolt 78:17; 119:11; Neh 1:6; vallomásban חטאתי ל‎ 2Móz 10:16; Józs 7:20 (J), 2Sám 12:13 Zsolt 41:5; 51:6; חטאנו ל‎ 5Móz 1:41; Bír 10:10; 1Sám 7:6; Jer 3:25; 8:14; 14:7, 20; Dán 9:8, 11; בְּ-val eszközről, ajkak Jób 2:10, nyelv Zsolt 39:2; amiben Ez 37:23; 3Móz 4:23 (P), abban 3Móz 5:22 (P); a בְּ kihagyása a fordulatban עונם אשׁר ח׳ לי (az ő) bűnük, amellyel vétkeztek ellenem Jer 33:8 (a versben kétszer); בשׁגגה tévedésből, akaratlanul 3Móz 4:2, 22, 27; 5:15; 4Móz 15:27-28, (mind P); ítéleteid ellen Neh 9:29; עַל-val tekintetében 3Móz 5:5; 4Móz 6:11(P) Neh 13:26; rokon értelmű tárgyesettel ח׳ חֲטָאָה‎ 2Móz 32:30-31, (JE); ח׳ אשׁר חַטָּאת‎ 4Móz 12:11(J) 3Móz 4:3, 28 (a versben kétszer); 4:35; 5:6, 10, 13 (mind P) 19:22 (a versben kétszer) (H), 5Móz 9:18; 1Kir 14:16, 22; 15:30; 16:13, 19; 2Kir 21:17; Ez 18:24; 33:16; חטאת אשׁר ח׳ ל Jer 16:10; Neh 1:6; חטאת אשׁר ח׳ על‎ 3Móz 4:14 (P); חֵטְא ח׳ JSir 1:8; ח׳ אשׁר חֵטְא‎ 5Móz 19:15. 3 bűn által bűnt, büntetést von magára, elveszít: וחטאתי לך כל הימים‎ 1Móz 43:9 magamra vonom a vádat, hogy vétkeztem ellened egész életemben, vö. 44:32 (J); tárgyesettel חוֺטֵא נפשׁ elveszíti önmagát, életét Péld 20:2; Hab 2:10 a legtöbben így, de l. alább 1 — ח׳ אשׁר אשׁמו והביא‎ 3Móz 5:7 hozza el vétekáldozatát, amelyet bűnével magára vont; קרבנו אשׁר ח׳‎ 5:11; ישׁלּם ח אשׁר את׳ מן־הקדשׁ‎ 5:16 amit a szent dolog elvételével magára vont, azt fizesse meg. Pi`el perfectum חִטֵּא‎ 3Móz 14:52; suffixummal חִטְּאוֺ‎ 4Móz 19:19, חִטֵּאתָ‎ 2Móz 29:36 2-szer; 3. többes szám חִטְּאוּ Ez 43:22 (a versben kétszer); imperfectum יַיְחַטֵּא‎ 3Móz 8:15; suffixummal וַיְהַטְּאֵהוּ‎ 9:15, תְּחַטְּאֵנִי Zsolt 51:9, אֲחַטֶּנָּה‎ 1Móz 31:39, וַיְחַטְּאוּ‎ 2Krón 29:24; infinitivus חַטֵּא‎ 3Móz 14:49; Ez 43:23; participium הִמְחַטֵּא‎ 3Móz 6:19; — 1 viseli a veszteséget: אָנֹכִי אֲחַטֶּנָּה viseltem a kárát 1Móz 31:39 (E; szó szerint hiányozni hagytam ? esetleg olvasd אֲחֻטּנה hiányozni kényszerültem ?). 2 vétekáldozatot mutat be: a שׁעיר-re vonatkozó suffixummal 3Móz 9:15 (P); a vétekáldozatra 6:19 (P); המזבח על az oltáron 2Móz 29:36 (P; nem megtisztítja az oltárt RV); ח׳ את דמם המזבחה‎ 2Krón 29:24 vétekáldozatot mutattak be vérükkel az oltáron. 3 bűntől való megtisztítás: az oltár, azzal, hogy a vétekáldozat vérét szarvaira teszik, 3Móz 8:15 (P), Ez 43:20, 22 (a versben kétszer); 43:23; a szentély, azzal, hogy a vétekáldozat vérét ráviszik 45:18. 4 tisztátalanságtól való megtisztítás: a leprás háza az élő víz és a madár vére keverékének felvitelével 3Móz 14:49, 52 (P); egy személy az élő víz és a vörös üsző hamva keverékének felvitelével 4Móz 19:19 (P), izsópággal való meghintéssel Zsolt 51:9. Hiph`il perfectum הֶחֱטִיא‎ 1Kir 14:16-17-szer, הֶחֶטִ֯י (Kt hiba a החטִיא helyett) 2Kir 13:6; suffixummal הֶחֱטִיאָם‎ 17:21; többes szám הֶחֱטִיאוּ‎ 1Kir 16:13; Neh 13:26; imperfectum יַחֲטִא Bír 20:16; 2Kir 21:11; תַּחֲטִיא‎ 5Móz 24:4; וַתַּחֲטִא‎ 1Kir 16:2; 21:22; többes szám יַחֲטִיאוּ‎ 2Móz 23:33; infinitivus הַחֲטִיא Préd 5:5; 1Kir 16:19; Jer 32:35 (Qr), הַחֲ֯טִי‎ 32:35 (Kt hiba); participium többes szám constructus מַחֲטִיאֵי Ézs 29:21; — 1 célt téveszt: קֹלֵעַ בָּאֶבֶן אֶל־הַשַּׂעְרָה וְלֹא יַחֲטִא Bír 20:16 hajszálra parittyáztak kövekkel és nem tévesztettek célt. 2 vétekre késztet vagy bír: tárgyesettel 2Móz 23:33(JE), Neh 13:26; másutt a החטיא את ישׂראל fordulatban vétekre vitte Izráelt 1Kir 14:16; 15:26, 30, 34; 16:2, 13, 19, 26; 21:22; 22:53; 2Kir 3:3; 10:29, 31; 13:2, 6, 11; 14:24; 15:9, 18, 24, 28; 23:15; Izráelre vonatkozó suffixummal 17:21; את יהודה‎ 21:11, 16; Jer 32:35 (néha 2. tárgyesettel — חטאת, vagy אשׁר az חטאת-ra vonatkozással: — 1Kir 15:26, 34; 16:26; 2Kir 17:21; 21:16; valószínűleg 1Kir 14:16; 15:30; 16:13 is; nincs 2. tárgyeset 16:2, 19; 21:22; 22:53; 2Kir 21:11; 23:15; Jer 32:35; a többi kétértelmű). 3 bűnbe, elítélésbe, büntetésbe juttat: מחטיאי אדם Ézs 29:21 akik elítélésbe juttatnak egy embert; לא תחטיא את הארץ‎ 5Móz 24:4 ne juttasd bűnbe a földet; אל תתן את־פיך לחטיא אתבֿשׂרך Préd 5:4 ne engedd, hogy szád büntetésbe juttassa testedet. Hithpa`el imperfectum יִתְחַטָּא‎ 4Móz 19:12 4-szer, יִתְחַטְּאוּ‎ 8:21; יִתְחַטָּ֑אוּ Jób 41:17, תִּתְחַטְּאוּ‎ 4Móz 31:19, תִּתְחַטָּ֑אוּ‎ 31:20; — 1 elveszíti önmagát, átvitten megzavarodik, magán kívül van, מִשְּׁבָרִים יִתְחַטָּאוּ Jób 41:17 a megdöbbenéstől magukon kívül vannak (párhuzamban: יגורו félnek). 2 megtisztítja magát a tisztátalanságtól, csak P-ben: a. a léviták 4Móz 8:21. b. a halottal érintkezők 4Móz 19:12-13, 20; 31:19-20, נִּדָּה בְּמֵי בְּ-val, 31:23; a vörös üsző hamvának friss vízzel való keverékével 19:12.
-Forrás és licenc
-▸ forrásadat modell-kimenet gépi feldolgozás
-▸ Forrás és licenc: BDB: közkincs · BDB+a projekt saját adata: közkincs; minden jog fenntartva · a projekt saját adata: minden jog fenntartva · BDB+Macula heber+OSHL+TAHOT+a projekt saját adata: közkincs; CC BY 4.0; minden jog fenntartva · TAHOT+TAGNT: CC BY 4.0 · Macula heber: CC BY 4.0 · morf kulcs heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
+Forrás és licenc: BDB: közkincs · BDB+a projekt saját adata: közkincs; minden jog fenntartva · a projekt saját adata: minden jog fenntartva · BDB+Macula heber+OSHL+TAHOT+a projekt saját adata: közkincs; CC BY 4.0; minden jog fenntartva · TAHOT+TAGNT: CC BY 4.0 · Macula heber: CC BY 4.0 · morf kulcs heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
 ## [szo.lxx_bridge]
-Görög megfelelő (Septuaginta)
+Görög megfelelő (Septuaginta) forrásadat
 Görög Strong | Szótő | Jelentés | Darab
 G0264 | ἁμαρτάνω | to sin | 118
 G0268 | ἁμαρτωλός | sinful | 3
 G0048 | ἁγνίζω | to purify | 3
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: lxx bridge: CC BY 4.0
+Forrás és licenc: lxx bridge: CC BY 4.0
 ## [szo.ubs_dbh]
-UBS DBH jelentések (a teljes szócikk, magyar fordítással)
-Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)
-Move | (fordításra vár) | (fordításra vár) | to withdraw; to draw back | = action by which a human being moves in a backward direction
-Fail | (fordításra vár) | (fordításra vár) | to fail; to miss; to forfeit | = state in which a human being is unable to succeed in what s/he intend to do
-Guilty | (fordításra vár) | (fordításra vár) | to stand guilty; to be at fault; to bear the blame for (a specific sinful action) | = state in which a human being bears the responsibility for a wrongful act against God or someone else, ► which results in a state of guilt which may require atonement, restitution, and retribution
-Non-Possess | (fordításra vár) | (fordításra vár) | to take responsibility; to bear the loss | = action by which a human being takes the responsibility for something that has been killed or destroyed and makes restitution for it
-Guilty | (fordításra vár) | (fordításra vár) | to bring guilt upon oneself | literally: to bring guilt upon (one's) flesh; hence: = causative action by which a human being commits a wrongful act against God or someone else ► and so brings his/her own body in a state of guilt which may require atonement, restitution, and retribution
-Guilty | (fordításra vár) | (fordításra vár) | to bring guilt upon; to cause to be declared guilty | = causative action by which a human being brings upon someone else the responsibility for a wrongful act against God or someone else, ► which brings upon that person a state of guilt which may require atonement, restitution, and retribution
-Sin | (fordításra vár) | (fordításra vár) | to sin; to commit sin | = action by which a human being commits a wrongful act against God or someone else, whether or not on purpose, ► which may require atonement, restitution, and/or retribution
-Sin | (fordításra vár) | (fordításra vár) | to cause to sin; to lead to sin | = action by which a human being causes or compels another human being to commit a wrongful act against God or someone else, whether on purpose or not, ► which may require atonement, restitution, and/or retribution
-Clean | (fordításra vár) | (fordításra vár) | to purify oneself | = action by which a human being performs the ritual of removing the state of guilt or uncleanness from oneself
-Clean | (fordításra vár) | (fordításra vár) | to cleanse; to purify | = causative action by which a human being performs the ritual of removing the state of guilt or uncleanness from another person or object
-Sacrifice | (fordításra vár) | (fordításra vár) | to sacrifice as sin-offering; to present as sin-offering | = action by which a human being performs the sacrificial ritual that is intended to remove the state of guilt from oneself or someone else
-Sin | (fordításra vár) | (fordításra vár) | sin | = action by which a human being commits a wrongful act against God or someone else, whether or not on purpose, ► which may require atonement, restitution, and/or retribution
-Forrás és licenc
-▸ forrásadat modell-kimenet CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet
-▸ Forrás és licenc: UBS DBH: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
+UBS DBH jelentések (a teljes szócikk, magyar fordítással) forrásadat modell-kimenet CC BY-SA 4.0 (UBS); a magyar glossza és definíció modell-kimenet
+Azonosító | Domén | Glossza (magyar) | Definíció (magyar) | Glossza (angol) | Definíció (angol)
+002214001001000 | Move | (fordításra vár) | (fordításra vár) | to withdraw; to draw back | = action by which a human being moves in a backward direction
+002214002001000 | Fail | (fordításra vár) | (fordításra vár) | to fail; to miss; to forfeit | = state in which a human being is unable to succeed in what s/he intend to do
+002214002002000 | Guilty | (fordításra vár) | (fordításra vár) | to stand guilty; to be at fault; to bear the blame for (a specific sinful action) | = state in which a human being bears the responsibility for a wrongful act against God or someone else, ► which results in a state of guilt which may require atonement, restitution, and retribution
+002214002003000 | Non-Possess | (fordításra vár) | (fordításra vár) | to take responsibility; to bear the loss | = action by which a human being takes the responsibility for something that has been killed or destroyed and makes restitution for it
+002214002004000 | Guilty | (fordításra vár) | (fordításra vár) | to bring guilt upon oneself | literally: to bring guilt upon (one's) flesh; hence: = causative action by which a human being commits a wrongful act against God or someone else ► and so brings his/her own body in a state of guilt which may require atonement, restitution, and retribution
+002214002005000 | Guilty | (fordításra vár) | (fordításra vár) | to bring guilt upon; to cause to be declared guilty | = causative action by which a human being brings upon someone else the responsibility for a wrongful act against God or someone else, ► which brings upon that person a state of guilt which may require atonement, restitution, and retribution
+002214002006000 | Sin | (fordításra vár) | (fordításra vár) | to sin; to commit sin | = action by which a human being commits a wrongful act against God or someone else, whether or not on purpose, ► which may require atonement, restitution, and/or retribution
+002214002007000 | Sin | (fordításra vár) | (fordításra vár) | to cause to sin; to lead to sin | = action by which a human being causes or compels another human being to commit a wrongful act against God or someone else, whether on purpose or not, ► which may require atonement, restitution, and/or retribution
+002214002008000 | Clean | (fordításra vár) | (fordításra vár) | to purify oneself | = action by which a human being performs the ritual of removing the state of guilt or uncleanness from oneself
+002214002009000 | Clean | (fordításra vár) | (fordításra vár) | to cleanse; to purify | = causative action by which a human being performs the ritual of removing the state of guilt or uncleanness from another person or object
+002214002010000 | Sacrifice | (fordításra vár) | (fordításra vár) | to sacrifice as sin-offering; to present as sin-offering | = action by which a human being performs the sacrificial ritual that is intended to remove the state of guilt from oneself or someone else
+002219001001000 | Sin | (fordításra vár) | (fordításra vár) | sin | = action by which a human being commits a wrongful act against God or someone else, whether or not on purpose, ► which may require atonement, restitution, and/or retribution
+Forrás és licenc: UBS DBH: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.sdbh]
-Szemantikai domén (SDBH)
-Domén | Glossza | Hivatkozás
-Tisztaság | to purify oneself | 6
-Tisztaság | to cleanse; to purify | 12
-Move | to withdraw; to draw back | 1
-Non-Possess | to take responsibility; to bear the loss | 1
-Áldozat | to sacrifice as sin-offering; to present as sin-offering | 4
-Fail | to fail; to miss; to forfeit | 7
-Guilty | to stand guilty; to be at fault; to bear the blame for (a specific sinful action) | 3
-Guilty | to bring guilt upon oneself | 1
-Guilty | to bring guilt upon; to cause to be declared guilty | 2
-Bűn | to sin; to commit sin | 172
-Bűn | to cause to sin; to lead to sin | 30
-Bűn | sin | 1
-Forrás és licenc
-▸ forrásadat modell-kimenet üres eredmény nem negatív lelet
-▸ Forrás és licenc: SDBH: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
+Szemantikai domén (SDBH) forrásadat modell-kimenet üres eredmény nem negatív lelet
+Domén kód | Domén | Glossza | Hivatkozás
+002001001012 | Tisztaság Clean | to purify oneself | 6
+002001001012 | Tisztaság Clean | to cleanse; to purify | 12
+002002001012 | Move | to withdraw; to draw back | 1
+002003002017 | Non-Possess | to take responsibility; to bear the loss | 1
+002003002020 | Áldozat Sacrifice | to sacrifice as sin-offering; to present as sin-offering | 4
+002003003013 | Fail | to fail; to miss; to forfeit | 7
+002003003014 | Guilty | to stand guilty; to be at fault; to bear the blame for (a specific sinful action) | 3
+002003003014 | Guilty | to bring guilt upon oneself | 1
+002003003014 | Guilty | to bring guilt upon; to cause to be declared guilty | 2
+002003003018 | Bűn Sin | to sin; to commit sin | 172
+002003003018 | Bűn Sin | to cause to sin; to lead to sin | 30
+002003003018 | Bűn Sin | sin | 1
+Forrás és licenc: SDBH: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.sece_h]
-SECE-szócikk (héber)
+SECE-szócikk (héber) forrásadat
 חָטָא (châṭâʼ｜khaw-taw'｜verb｜miss) [Heb] חָטָא, חֶטְאָה ETCBC: חטא (verb｜miss), חֶטְאָה (subs｜error) OSHL: h.bu.aa TWOT: 638 GK: H2627, H2630, H3148 Greek: ἀγαπάω, ἁγνίζω, ἀδικέω, ἁμαρτάνω, ἁμαρτία, ἁμαρτωλός, ἀναφέρω, ἀσεβής, ἐκκλίνω, καθαρίζω, μιαίνω, ποιέω, ῥαντίζω Derivation: a primitive root; Strong's: properly, to miss; hence (figuratively and generally) to sin; by inference, to forfeit, lack, expiate, repent, (causatively) lead astray, condemn KJV: bear the blame, cleanse, commit (sin), by fault, harm he hath done, loss, miss, (make) offend(-er), offer for sin, purge, purify (self), make reconciliation, (cause, make) sin(-ful, -ness), trespass.
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: SECE H: közkincs
+Forrás és licenc: SECE H: közkincs
 ## [szo.oshl]
-OSHL: TWOT- és BDB-azonosító, BDB-helyek
+OSHL: TWOT- és BDB-azonosító, BDB-helyek forrásadat
 TWOT | BDB-azonosító | Nyelv | OSHL-azonosító | Lemma | Átírás | Szófaj | Angol meghatározás
 638 | h.bu.aa | heber | dsy | חָטָא | ḥāṭāʾ | V | miss
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: OSHL: CC BY 4.0 · OSHL BDB: CC BY 4.0
+Forrás és licenc: OSHL: CC BY 4.0 · OSHL BDB: CC BY 4.0
 ## [szo.oshl_csalad]
-Rokon szavak (OSHL-gyökcsalád)
+Rokon szavak (OSHL-gyökcsalád) forrásadat az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet
 Gyök: חטא H2398
 Strong | Lemma | Átírás | Szófaj | Angol meghatározás
 H2399 | חֵטְא | ḥēṭĕʾ | N | sin
@@ -250,13 +254,11 @@ H2400 | חַטָּא | ḥaṭṭāʾ | N | sinful
 H2401 | חֲטָאָה | ḥăṭāʾâ | N | sin
 H2403 | חַטָּאָה | ḥaṭṭāʾâ | N | sinful thing
 H2403 | חַטָּאת | ḥaṭṭāʾt | N | sin
-Forrás és licenc
-▸ forrásadat az OSHL <etym> eleme: a gyök és a származékai; üres család nem negatív lelet
-▸ Forrás és licenc: OSHL: CC BY 4.0
+Forrás és licenc: OSHL: CC BY 4.0
 ## [szo.tbesh]
-Bővített Strong-szócikk (TBESH)
+Bővített Strong-szócikk (TBESH) forrásadat gépi feldolgozás modell-kimenet
 Szó | Átírás | Morf | Gloss | Jelentés
-חָטָא | cha.ta | H:V | vétkezni | 1) to sin, miss, miss the way, go wrong, incur guilt, forfeit, purify from uncleanness
+חָטָא | cha.ta | H:V | vétkezni to sin | 1) to sin, miss, miss the way, go wrong, incur guilt, forfeit, purify from uncleanness
 1a) (Qal)
 1a1) to miss
 1a2) to sin, miss the goal or path of right and duty
@@ -273,12 +275,10 @@ Szó | Átírás | Morf | Gloss | Jelentés
 1d) (Hithpael)
 1d1) to miss oneself, lose oneself, wander from the way
 1d2) to purify oneself from uncleanness
-Forrás és licenc
-▸ forrásadat gépi feldolgozás modell-kimenet
-▸ Forrás és licenc: TBESH: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva · a projekt saját adata: minden jog fenntartva
+Forrás és licenc: TBESH: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva · a projekt saját adata: minden jog fenntartva
 ## [szo.tw_h]
-translationWords
-tiszta, megtisztít, megtisztulás (kt, kt/purify)
+translationWords forrásadat modell-kimenet
+tiszta, megtisztít, megtisztulás pure, purify, purification (kt, kt/purify)
 Definition:
 To be “pure” means to have no flaw or to have nothing mixed in that is not supposed to be there. To purify something is to cleanse it and remove anything that contaminates or pollutes it.
 In regard to Old Testament laws, “purify” and “purification” refer mainly to the cleansing from things that make an object or a person ritually unclean, such as disease, body fluids, or childbirth.
@@ -318,7 +318,7 @@ Proverbs 13:17-18
 Romans 5:10
 Word Data:
 Strong’s: H2398, H3722, G06040, G12590, G24330, G26430, G26440
-bűn, bűnös, bűnös ember, vétkezés (kt, kt/sin)
+bűn, bűnös, bűnös ember, vétkezés sin, sinful, sinner, sinning (kt, kt/sin)
 Definition:
 The term “sin” refers to actions, thoughts, and words that are against God’s will and laws. Sin can also refer to not doing something that God wants us to do.
 Sin includes anything we do that does not obey or please God, even things that other people do not know about.
@@ -387,7 +387,7 @@ Romans 5:17
 Romans 5:20-21
 Word Data:
 Strong’s: H0816, H0817, H0819, H2398, H4603, H4604, H6586, H6588, G02640, G39000
-elkövet, elkövetett (other, other/commit)
+elkövet, elkövetett commit, committed (other, other/commit)
 Definition:
 In the Bible the terms “commit” and “committed” most often refer to doing a certain wrong action such as “commit a sin” or “commit adultery” or “commit murder.”
 (See also: adultery, sin)
@@ -399,7 +399,7 @@ Matthew 13:41
 Psalm 58:2
 Word Data:
 Strong’s: H0539, H0817, H1361, H1497, H1500, H1540, H1556, H2181, H2388, H2398, H2399, H2403, H4560, H4603, H5003, H5753, H5766, H5771, H6213, H6466, H7683, H7760, H7847, G02640, G20380, G27160, G34290, G34310, G38600, G38720, G39080, G41020, G41600, G42030
-áldozat, felajánlás (other, other/sacrifice)
+áldozat, felajánlás sacrifice, offering (other, other/sacrifice)
 Definition:
 In the Bible, the terms “sacrifice” and “offering” refer to special gifts given to God as an act of worshiping him. People also offered sacrifices to false gods.
 sacrifice
@@ -435,7 +435,7 @@ Examples from the Bible stories:
 49:11 Because Jesus sacrificed himself, God can forgive any sin, even terrible sins.
 Word Data:
 Strong’s: H0801, H0817, H0819, H1685, H1890, H1974, H2076, H2077, H2281, H2282, H2398, H2401, H2402, H2403, H2409, H3632, H4394, H4503, H4504, H5066, H5068, H5071, H5257, H5258, H5261, H5262, H5927, H5928, H5930, H6453, H6944, H6999, H7133, H7311, H8002, H8426, H8548, H8573, H8641, G02660, G03340, G10490, G14350, G14940, G23780, G23800, G36460, G43760, G54850
-bűnáldozat, megtisztulási áldozat (other, other/sinoffering)
+bűnáldozat, megtisztulási áldozat sin offering, purification offering (other, other/sinoffering)
 Definition:
 The “sin offering” was one of several sacrifices that God required the Israelites to offer.
 This offering involved sacrificing a bull, burning its blood and fat on the altar, and taking the rest of the animal’s body and burning it on the ground outside the Israelite camp.
@@ -452,7 +452,7 @@ Leviticus 5:11
 Numbers 7:15-17
 Word Data:
 Strong’s: H2401, H2402, H2398, H2403
-helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó (other, other/wrong)
+helytelen, megbántott, gonosztevő, rosszul bánik, bánt, bántó wrong, wronged, wrongdoer, mistreat, hurt, hurtful (other, other/wrong)
 Definition:
 To “wrong” someone means to treat that person unjustly and dishonestly.
 The term “mistreat” means to act badly or roughly toward someone, causing physical or emotional harm to that person.
@@ -467,6 +467,4 @@ Matthew 20:13-14
 Psalms 71:13
 Word Data:
 Strong’s: H0205, H0816, H2248, H2250, H2255, H2257, H2398, H2554, H2555, H3238, H3637, H4834, H5062, H5142, H5230, H5627, H5753, H5766, H5791, H5792, H5916, H6031, H6087, H6127, H6231, H6485, H6565, H6586, H7451, H7489, H7563, H7665, H7667, H7686, H8133, H8267, H8295, G00910, G00920, G00930, G00950, G02640, G08240, G09830, G09840, G15360, G16260, G16510, G17270, G19080, G25560, G25580, G25590, G26070, G30760, G30770, G37620, G41220, G51950, G51960
-Forrás és licenc
-▸ forrásadat modell-kimenet
-▸ Forrás és licenc: tW szocikkek: CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · a projekt saját adata: minden jog fenntartva
+Forrás és licenc: tW szocikkek: CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · a projekt saját adata: minden jog fenntartva
