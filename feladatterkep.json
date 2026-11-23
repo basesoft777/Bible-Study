@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-23",
-   "commit": "fe37880b"
+   "commit": "efddb040"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5889,6 +5889,16 @@
      "🟢"
     ],
     "sor": 893
+   },
+   {
+    "id": "DT938",
+    "feladat": "folyamat (a motívumhatár a szerkesztőé; 2026-11-23)",
+    "kerdes": "A 10-28-i és 10-29-i „vedd át a döntéseket” felhatalmazás három kivételt tartott fenn a szerkesztőnek: a motívumhatárt, a negatív kritériumot és az új ID-t (ok: a #110 átvett határdöntése 10-21-én hibásnak bizonyult, a JSir 3:55 és az 5Móz 32:3 a negatív kritériummal ellenkezett). A `CLAUDE.md` 11-22-i „Döntés az integrátoron át” bekezdéséből ez kimaradt (csak pénz, külső közlés, végleges törlés), ezért a TEREMT-001 U2-ben (#239, PR #820) az integrátor a seól- és a Nave-határkérdést maga döntötte el.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 894
    }
   ],
   "javasolt": [],
