@@ -50,7 +50,9 @@ DONTES = {
     'Ján 4:11': lex(1, '„mély”', 'βαθύς', 'bathüsz', 'mély', ' A „kút” a φρέαρ (phrear).'),
     'Jób 12:22': lex(1, '„mélységes (titkok)”', 'עָמֹק', 'ámók', 'mély dolog'),
     'Jób 41:31': lex(10, '„mélység/örvény” csoportjának', 'מְצוֹלָה', 'mecólá', 'a tenger mélye',
-                     ' A Jób 41:31-ben a görög fordítás erre a szóra ἄβυσσος-t hoz, de a héberben nem a tehóm áll.'),
+                     ' A Jób 41:31-ben a görög fordítás erre a szóra ἄβυσσος-t hoz, de a héberben nem a tehóm áll;'
+                     ' a többi kilenc versben (köztük a Jón 2:4, a Mik 7:19 és a Neh 9:11) a görög fordítás sem'
+                     ' ἄβυσσος-t hoz.'),
     'Luk 6:48': lex(1, '„mélyre”', 'βαθύνω', 'bathünó', 'mélyre ás'),
     'Mt 18:6': lex(1, '„(a tenger) mélysége”', 'πέλαγος', 'pelagosz', 'nyílt tenger'),
     'Péld 9:18': lex(1, '„(a pokol) mélye”', 'עָמֵק', 'ámék', 'mély'),

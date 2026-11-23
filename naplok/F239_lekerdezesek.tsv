@@ -60,3 +60,4 @@ F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat
 F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H7585 | n=1 | ts=2026-11-23T12:24Z | csatorna=cli	2026.11.23
 F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H2822 | n=1 | ts=2026-11-23T12:24Z | csatorna=cli	2026.11.23
 F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H1293 | n=1 | ts=2026-11-23T12:24Z | csatorna=cli	2026.11.23
+F239	B3	scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H7257 | n=2 | ts=2026-11-23T12:33Z | csatorna=cli	2026.11.23

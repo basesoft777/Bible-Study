@@ -20,7 +20,7 @@
 
 **4. Részhalmaz-e?** Nem. A gépi rész (U1 9. pont, `naplok/F239_U1_TEREMT-001_hatar_gepi.md`): egyik motívummal sincs A ⊆ B vagy legalább 80%-os átfedés; a legnagyobb közös arány a TEREMT-002 oldaláról 33% (1 vers a 3-ból).
 
-**A fölérendelt fogalom:** „vízi/kozmikus káosz-képzetek általában, a tehóm / ἄβυσσος lexémán kívül”. Próba minden beépített soron: *csak ezen keresztül tartozik ide?* A 42 beépített sor (45 vers) mindegyikében a hordozó szó áll (a scan és az adat eltérése 0; a Jel 20:2 a Jel 20:1–3 tartomány-sor középső verse, a szó a 20:1-ben és a 20:3-ban áll): **egyik sor sem csak a fölérendelt fogalmon át tartozik ide.** A hígulás veszélye nem az adatban, hanem a prózában van: a Ráháb, a Leviatán, a tenger (jám, thalassza), Tiámat, a seól csak egy tehóm-vers kontextusaként jelenhet meg a lapon, saját előfordulásként nem.
+**A fölérendelt fogalom:** „vízi/kozmikus káosz-képzetek általában, a tehóm / ἄβυσσος lexémán kívül”. Próba minden beépített soron: *csak ezen keresztül tartozik ide?* A 42 beépített sor (45 vers) mindegyikében a hordozó szó áll (a scan és az adat eltérése 0; a Jel 20:2 a Jel 20:1–3 tartomány-sor középső verse, a szó a 20:1-ben és a 20:3-ban áll): **egyik sor sem csak a fölérendelt fogalmon át tartozik ide** (verssel számolva a Jel 20:2 kivétel: a tartomány-forma hozza be, l. 6. pont, K4). A hígulás veszélye nem az adatban, hanem a prózában van: a Ráháb, a Leviatán, a tenger (jám, thalassza), Tiámat, a seól csak egy tehóm-vers kontextusaként jelenhet meg a lapon, saját előfordulásként nem.
 
 ## 2. A kizárások (a határ rajza)
 
@@ -53,7 +53,15 @@
 
 A 28 `nyitva` sor (U1) mind `elutasítva`, az 1–2. pont szerint: 26 a K1 (Károli-szó), 1 a K2 (Ézs 44:27; a Jób 41:31 a K1 sorában, a K2 megjegyzésével), 1 a K3 (Jób 42:8). Új sor: 2 (Jób 36:16, Zsolt 71:21, K2). Javítás: 1 (2Pét 2:4 indoklásának „ábüσσος” szava → „ἄβυσσος”). A TEREMT-001 jelöltjei ezzel: beépítve 42, elutasítva 32, nyitva 0. Írta: `naplok/F239_U2_jelolt_dontes.py --ir` (soronkénti összevetés írás előtt és után; más sor bájtra azonos). Az elutasítási okok mintaszótára két TEREMT-001 sorral bővült (`adat/elutasitasi_okok.tsv` 101, 102; `naplok/F239_U2_okok.py`): mind a 32 elutasított sor besorolható (Károli-szó 26, Septuaginta-többlet 3, adathiba 1, tematikus párhuzam 2).
 
-## 5. Nyitva maradt, az integrátornál (⛔)
+## 5. Az integrátor döntései (⛔, lezárva 2026-11-23)
 
-- **Motívumközi kapcsolat** (ALVIL-001: Ez 31:15, a halál mélye; TEREMT-002: 1Móz 1:2): adatsor legyen-e (`jeloltek.tsv` motívumközi sor + `motivum_kapcsolatok.tsv`), vagy csak a próza említse. A kérdés és a válasz: `naplok/F239_naplo.md`.
-- **Nave-döntések** (11 jelölt): a javaslat és a döntés: `naplok/F239_naplo.md`, a sorok `adat/tematikus_temak.tsv`-ben a döntés után.
+- **Motívumközi kapcsolat** (DT-F239a): az ALVIL-001–TEREMT-001 kapcsolat az Ez 31:15-ön adatsor (`jeloltek.tsv` motívumközi sor `beépítve` + `motivum_kapcsolatok.tsv`, `közös_igehely`); a TEREMT-002-vel az 1Móz 1:2 csak a prózában. Részletek: `naplok/F239_naplo.md`.
+- **Nave-döntések** (DT-F239b): 4 kiválasztott (PIT, EARTH, DEW, PSALMS), 7 kizárt, tiltott nincs; `adat/tematikus_temak.tsv` +11 sor.
+
+## 6. Válasz a határ-ellenőrnek (`naplok/HATAR_TEREMT-001.md`, Modelles rész, K1–K5)
+
+- **K1 (Róm 10:7 és a Septuaginta-többlet):** *nem következetlen, a kritérium szövege pontosítandó.* A mérce mindkét oldalon ugyanaz: **a vers eredeti nyelvű szövege** dönt. Az ÓSZ-ben ez a héber, ezért a görög fordítás többlete kint van; az ÚSZ-ben a görög maga az eredeti, ezért Pál saját szóválasztása (ἄβυσσος) a Róm 10:7 szövege, nem fordítás-tanú. A `negativ_kriterium` „LXX-közvetített ἄβυσσος megfelelőjét” szövege valóban félreérthető (a Luk 8:31-re és a Róm 10:7-re nem az LXX-et kell nézni, hanem a szó eredetét jelzi): a pontosítás javaslata az integrátornál (⛔, `naplok/F239_naplo.md`, tartalmi kérdés 3).
+- **K2 (Jób 41:31/32, Jón 2:4/6):** *elfogadva, a próza feladata.* A határ szándékosan a héber szón áll (`naplok/ERVNAPLO_TEREMT-001.md` A5). Az U3 kötelező eleme: a Kivonat vagy a Módszertan kimondja az olvasónak, hogy a Károli „mélység” szava nem jelzi a tehómot, és a két szomszéd pár (Jón 2:4 és 2:6; Jób 41:31 és 41:32) példaként áll; az 1/b. lista a kizárt helyeket okkal mutatja.
+- **K3 (Mik 7:19, Jón 2:4, Neh 9:11 saját sor nélkül):** *javítva.* Az összesítő sor a blokk-minta szerint hordozza a döntést (a versek listája a blokkok-fájlban); a Jób 41:31 sor indoklása most a többi kilenc vers Septuaginta-állapotát is kimondja (`naplok/F239_U2_jelolt_javit.py`; forrás: a `…_lxx_g0012.tsv`-ben a mecólá-blokkból csak a Jób 41:31 áll).
+- **K4 (Jel 20:2 a szó nélkül):** *elfogadva; az 1. pont állítása verssel számolva pontatlan.* A Jel 20:2 csak a tartomány-sor miatt tartozik a 45 vershez. Javaslat: a `Jel 20:1-3` sor kettéválik (Jel 20:1 és Jel 20:3), így a motívum versszáma a scanével egyezik (44). ⛔ az integrátornál (`naplok/F239_naplo.md`, tartalmi kérdés 4).
+- **K5 („tartalom-alapú”):** *elvetve, nincs ellentmondás.* Az `azonositas_modja` mező a Károli-szó azonosításának módját rögzíti (`adat/SEMA.md` 2.2, „kötelező, ha `karoli_szo` ki van töltve”), nem a tagság alapját; a tagság minden sornál a TAHOT/TAGNT-scanen áll (a scan és az adat eltérése 0). A 36 sor címkéje a 2026-09-10-i betöltés öröksége; a szó-szintű-gépi átállás a megerősítő sorok mechanizmusa (`adat/SEMA.md`, a `megerosites` sor szabálya), nem ennek a lépésnek a tárgya, és olvasói tartalmat nem érint.
