@@ -27,7 +27,7 @@
 - A hibának három kimenete van: javítva / elvetve egy sor indokkal / rád vár; hamis tartalmat mutató hiba nem vethető el.
 - Csak olvasó-kód: gyors sáv. Adat, generátor, próza: nehéz kör, független ellenőrrel (DT919).
 - Technikai kérdésben a session dönt; tartalmi kérdés az integrátorhoz (DT920).
-- Az állapot csak leírva él: ez a lap, a PR-ok első sora (Mérce · Állapot · Következő · Akadály), a DONTESEK. Az integrátor naponta cserél.
+- Az állapot csak leírva él: ez a lap, a PR-ok első sora (Mérce · Állapot · Következő · Akadály), a DONTESEK. Az integrátor kb. 300 ezer token kontextusnál vagy naponta cserél, amelyik előbb jön (a fix induló teher kb. 140 ezer, a 150–200 ezres plafon a munkasessionöké), és karcsún indul: csak ez a lap és egy rövid átadó jegyzet (állapot, a nap döntései, ami rád vár); memóriát és régi átadót csak akkor olvas, ha egy kérdés arról szól (2026-11-23).
 
 ## Rád vár
 - **A JOHD-cikk validátorának megkeresése** (pénz, külső közlés; 568 tétel, ~5–6 óra, bruttó 60–100 ezer Ft): Susánszki Judit, tartalék Grüll Tiborné. Erre vár a két JOHD-PR (#762, #763) és a decemberi beküldés.
