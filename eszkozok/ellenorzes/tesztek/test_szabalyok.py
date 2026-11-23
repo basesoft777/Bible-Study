@@ -500,6 +500,48 @@ class E5CimAtszamozasTeszt(unittest.TestCase):
             ['## 3. Döntés (DT-F124a)'])
 
 
+class SzamkiosztasTorlesTeszt(unittest.TestCase):
+    """A szamkiosztas Action a beolvasztott kis fajlt torli (main-CI ketszer piros):
+    az E5 ezt nem nezi adatvesztesnek, az E27 a ket gyujtokonyvtarat ures allapotban is letezonek veszi;
+    a valodi, jeloletlen cimsor-torles tovabbra is talalat."""
+
+    def _git(self, gy, *arg):
+        subprocess.check_call(['git', '-c', 'user.name=t', '-c', 'user.email=t@t', '-c', 'commit.gpgsign=false']
+                              + list(arg), cwd=gy, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+
+    def _e5(self, torolt_fajl, marad_fajl=None):
+        """Ket commit egy ideiglenes repoban: az elsoben mindket fajl, a masodikban `torolt_fajl` torlodik."""
+        with _IdeiglenesGyoker() as gy:
+            self._git(gy, 'init', '-q')
+            tartalom = '### 2026-11-23 (lezárt, N1)\n\n- tétel\n'
+            _ir(gy, torolt_fajl, tartalom)
+            if marad_fajl:
+                _ir(gy, marad_fajl, tartalom)
+            self._git(gy, 'add', '-A')
+            self._git(gy, 'commit', '-q', '-m', 'alap')
+            self._git(gy, 'rm', '-q', torolt_fajl)
+            self._git(gy, 'commit', '-q', '-m', 'szamkiosztas')
+            return SZ.e5_tartalomvesztes_or('HEAD~1', 'HEAD', 'szamkiosztas')
+
+    def test_beolvasztott_kis_fajl_torlese_nem_hiba(self):
+        self.assertEqual(self._e5('nyitott/uj/ag_x.md'), [])
+        self.assertEqual(self._e5('dontesek/uj/ag_x.md'), [])
+
+    def test_valodi_jeloletlen_cimsor_torles_tovabbra_hiba(self):
+        t = self._e5('DONTESEK_proba.md')
+        self.assertEqual(len(t), 1)
+        self.assertIn('jeloles nelkul', t[0].reszlet)
+
+    def test_nem_gyujtokonyvtar_alatti_torles_hiba(self):
+        self.assertEqual(len(self._e5('nyitott/masik/ag_x.md')), 1)
+
+    def test_gyujtokonyvtar_e27_ures_allapotban_letezik(self):
+        with _IdeiglenesGyoker():
+            self.assertTrue(SZ._e27_van_ut('dontesek/uj/'))
+            self.assertTrue(SZ._e27_van_ut('nyitott/uj'))
+            self.assertFalse(SZ._e27_van_ut('dontesek/masik/'))
+
+
 class D8DiffHatokorTeszt(unittest.TestCase):
     """D8: a HIBA csak a diff altal hozzaadott sorra vonatkozik, a fajl
     regi sorai csak JELENTES-t kapnak."""
