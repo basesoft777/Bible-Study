@@ -4,7 +4,27 @@
 
 ### U4 — ellenőrzés (2026-11-23, `claude-opus-5-5`)
 
-*A részletek a „Zárás” előtt, az U4 végén kerülnek ide (külön commitban, a független ellenőr szakasza után).*
+Modell-ellenőrzés: a session `claude-opus-5-5`, a brief `modell` mezője `opus`, egyezik. Ág: a `claude/nervous-kare-9d2361` (PR #820), a `quirky-curran-f1e689` worktree-ből pusholva.
+
+| lépés | eredmény | hol |
+|---|---|---|
+| az integrátor javítási döntése | a `visszhang_megfelelok.tsv` 2Móz 15:8 lxx-sora: `kiejtes` „kümata” → „küma” (a κῦμα lemmáé); ugyanazzal a mechanizmussal a 15:5 „pontó” → „pontosz” (a tábla többi lxx-sora is a lemma kiejtését hordozza); az előnézeten az ATIRAS-bukás megszűnt | F239.22 |
+| N-tétel | N-F239b: az olvasói kapu a Bekken-könyv eredeti angol címét ANGOL- és MUNKASZO-bukásnak olvassa; a kapunak kivétel kell (a 218c-re) | `nyitott/uj/nervous-kare-9d2361.md`, F239.22 |
+| F1 | `proza_allitas.py TEREMT-001`: 78 gépi sor, **ELTÉR 8**, egyezik 70; 128 kézi K-tétel. A 8 ELTÉR-ből 7 a kinyerő hozzárendelési hibája (könyv nélküli versszám: „a 41:32-ben”; glossza idézetnek olvasva: „a tenger mélye”; résszám az összeshez mérve: 35, „két”; a mondat másik verséhez rendelt idézet: „mély vizek”, „minden mélységben”), **1 valódi**: a 79. sor „mélység, mely alant terül” idézete az 5Móz 33:13-ra nem szó szerinti (az 1Móz 49:25 szövege). Az E41 a CI-ben ezért piros. | `naplok/ALLITAS_TEREMT-001.md` |
+| F2 (független mérés, DT881) | három friss `allitas-ellenor` (Opus), szeletenként: **102 igazolt, 9 hamis, 16 vitatott, 1 nem eldönthető (0,8%)**; hamis: K2, K9, K19, K20, K36, K47, K69, K70, K99 | `naplok/ALLITAS_TEREMT-001_itelet.md`, F239.23 |
+| gépi kapuk az előnézeten | 1/a **43/43 kerek** + Funkció (`proza_1a.lap_meres(gyoker=<előnézet>)`); olvasói kapu **7 BUKÁS**, mind generált részben (a prózában 0; az U3b 8-ából az ATIRAS a kiejtés-javítással megszűnt); `ellenoriz.py` SÉRTÉS 0 (a 24. RENDBEN; a 25. a befagyasztott régi lapot méri, ott a TEREMT-001 41/41 nem arany — az új lapra a fenti 43/43 áll); próza-lefedettség üres (43/43 előfordulás, 1/1 motívumközi kapcsolat) | előnézet a repón kívül |
+| független ellenőr | **ELTÉRÉS: 11 tétel** (l. lent) | F239.24 |
+| lektor (Fable) | 44 tételes vak lista, **23 kérdés**; a vak minta (11) tiszta; az **F2 megfogása 14/17 = 82%** (küszöb 80%) | `naplok/KIADAS_TEREMT-001_lektor.md`, F239.25 |
+| 3/b (az integrátor döntése) | minta-kapu 1 találat (generált); friss olvasó a teljes lapon **119 kérdés** (idegen 36, ismétlődő 25, érthetetlen 23, ellentmondás 23, tört 12); mechanizmusok: M-CSERE, M-NYERS, M-RÁRAKÓDÁS a lapon nyitott | ugyanott, F239.25 |
+| mérőtábla | `naplok/SZIVARGAS_TEREMT-001.tsv`: 21 sor (F1 1, F2 17, F3 3) | F239.25 |
+
+**Ismert, nem a próza hatáskörébe tartozó kapubukások** (generátor-szöveg, az U3b átadója szerint): ZAROJEL 663 (Thayer-zárójel), MINTA 1059 („jelölt”), MUNKASZO 1290 („teljesség-mérése”), MI_HANG 1312 („ellenőriztük”), LISTA_NEVELO 1324 („a lap elején áll”); ANGOL + MUNKASZO 1248 (a Bekken-cím, N-F239b).
+
+**Nem javítottam, gazdát kér (az integrátornak):**
+- a CI két bukása a fejen: az F217 (`nyilt_mag_export.py` G07: az új zárt értékek — négy `kizaras_oka`, a `motivum_kapcsolatok.tsv` új sorának értékei — angol kódkönyv-címke nélkül), emiatt az E2–E37 nem fut; és az E41 (a 8 ELTÉR: 7 eszközhiba + 1 prózahiba);
+- a független ellenőr 3–4. tétele: a `tanu_kinyer.py` `ps` álneve görög zsoltárszámozást ír Károli-alakba („Zsolt 117:24” a tanúsorban), és a Vulgata-átvezetés teszt nélkül, hiányosan (Jób 41:1–9, Zsolt 147:1–9);
+- két hivatkozás a törölt `tematikus_lezart/Tehom_tematikus.md`-re: a `Lezart_tematikus_tanulmanyok_index.md:24` és a `NYITOTT_FELADATOK.md:1149` — mindkettő generált blokk (`GENERÁLT: index`), a forrásuk az adattáblákban nem a fájlnév, ezért nem a táblában javul; a generátor forrását nem kerestem meg;
+- a mérőtábla (`naplok/F239_meres.md`) U1b, U3, U3b sorai.
 
 ## Független ellenőrzés — 1. ellenőrzés
 
