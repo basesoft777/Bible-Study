@@ -148,6 +148,18 @@ nem F8-tárgy (`F8_BRIEF.md` §3). A négy érintett szerep ma:
   briefnél fut; a szabály: `.claude/commands/kovetkezo.md` 6. lépés. A `fuggetlen-ellenor` mindig subagent
   (friss kontextus kell hozzá).
 
+- **Az integrátor döntése a sessionnek fájlban él, nem üzenetben** (2026-11-23; a szerkesztő: „mehet”). Az integrátor a futó
+  sessionnek szóló döntést (tartalmi döntés, lépésrend, egy korábbi döntés visszavonása) teljes szövegével és sorszámmal (`D1`, `D2`, …)
+  küldi; a session első lépésként szó szerint beírja az ág döntésfájljába: `naplok/<tétel>_dontesek.md` (briefes menetben
+  `F<nn>`, gyors sávon az ág neve a `claude/` nélkül). Egy sor: sorszám, dátum, kérdés – döntés – indok, a szerkesztő szava,
+  ha van, és a visszavont sor sorszáma („visszavonja: D<n>”). A session **a fájl aktuális állapotát hajtja végre**, nem az
+  üzenetek érkezési sorrendjét: végrehajtás előtt megnézi, jött-e újabb integrátori üzenet, és ha igen, előbb azt is beírja;
+  a visszavont sort nem hajtja végre. Lépéshatáron és commit előtt újraolvassa; az átadó jegyzet hivatkozik rá, így session-
+  és integrátor-cserénél sem vész el. A `DONTESEK.md`-be menő döntés ezen felül a `dontesek/uj/<ágnév>.md`-be is kerül
+  (`CLAUDE.md`). Az előre látható lépésrend a briefbe kerül, nem menet közbeni üzenetbe. *(Eset: a TEREMT-001 U2-je, #820:
+  a sorrenden kívül érkező döntések miatt a seól-kapcsolat és a Nave-sorok be-, majd kikerültek; a #810 F231.19-e: egy később
+  visszavont sémadöntés végrehajtva, 2026-11-23.)*
+
 ## Kontextus-őrzés (F32, KONTEXTUS)
 
 Az ISTENTISZT-001 pilot minősége abból jött, hogy egyetlen összefüggő tematikus
