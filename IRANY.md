@@ -4,12 +4,11 @@
 
 ## Futó szálak (legfeljebb 2)
 1. **Olvasó-javítás:** a felmért olvasóhibák javítása (#231, PR #810). A #810 egyszer bemegy (kódszintű független olvasás és a nézésed után), de nem „kész”: a belső nevek a felületen maradtak, mert a mérce a mai állapotot rögzítette, hibáival együtt, nem kapu. Ezért nincs több példányjavító kör (2026-11-23: „ezt a módszert nem fogadom el”); helyette: alak-kapu, amely minden oldaltípust bejár, és minden belső alakra bukik (a kimenete a hátralék); a forrássor a névtáblából; egy névtábla; blokk-jegyzék, hogy a vers- és a szónézet blokkjai kódírás nélkül be- és kivehetők legyenek (2026-11-23: „modulárisan … be és ki tudja venni blokkokat”).
-2. **Új lapgenerátor:** a lexikonlapot előállító program újraírása (F218a, PR #809). Kész: a HAMART-001 és az ISTENTISZT-001 új generátoros lapját átnézted és jóváhagytad (2026-11-23: „hamart az istentisztelettel - átnézésre / jóváhagyás után teremt”); utána a záró lépés (F218.13) a main-en.
+2. **TEREMT-001 (tehóm) cikk:** nulláról, az új lapgenerátorral (az lezárult: F218a, #809, 2026-11-23); a te szavad 2026-11-23: „a TEREMT-001 legyen az első”. Lépéshatárokkal: adat-előkészítés → határ és érvvázlat → próza egy menetben → javítókör; a próza a táblákból készül. Kiadni az átállás (218c) után lehet, mert az új generátor addig nem ad ki lapot.
 - **Következő szálak**, ebben a sorrendben:
-  - kis adatjavítás: a görög LXX-párok közt 88 helyen hamis „hajnalcsillag” a „reggel” szónál (N-F231a), nyelvtani szó (μου) az LXX-megfelelők közt, csonka fejléc és dupla könyvnév a fordított BDB-szövegben;
-  - **a JOHD-cikk kéziratának végső köre**, amint a validáció számai megvannak (decemberi beküldés; a kapu előtt);
-  - a 15 perces push előtti ellenőrzés kettévágása: munka közben gyors próba, a teljes csak a végén (integrátor);
-  - TEREMT-001 (tehóm) cikk nulláról, az új generátorral, a két lap jóváhagyása után.
+  - kis adatjavítás: a görög LXX-párok közt 88 helyen hamis „hajnalcsillag” a „reggel” szónál (N-F231a), nyelvtani szó (μου) az LXX-megfelelők közt, csonka fejléc és dupla könyvnév a fordított BDB-szövegben (a brief elkészül, a futás a TEREMT-001 mellett, amint hely szabadul);
+  - az átállás (218c): a régi generátor archívumba, az ISTENTISZT-001 2. kiadása (előtte a 34 hiányzó fordítás), és ezzel válik kiadhatóvá a TEREMT-001; előtte az olvasóban a forrássor a névtáblából, és egy névtábla;
+  - a 15 perces push előtti ellenőrzés kettévágása: munka közben gyors próba, a teljes csak a végén (integrátor).
 - **Utána** (a 2026-11-11-i ütemezés): a motívumok megjelenítése az olvasóban, ez az „alap” olvasó.
 - **Az ISTENTISZT-001 2. kiadása** az átállás (218c) első eredménye; a mostani jóváhagyásod érvényes marad, mert az átállás csak gépi részt változtathat (DT933, 2026-11-23). Ezzel a cikk a lexikonban kész; az olvasó a lapot nem olvassa, az adatbázisból maga számol, ezért ott előbb csak adatként frissül, cikként az olvasó átkötése (#236) és a motívumok olvasóba vitele után látszik. Addig minden lapjavítás az olvasóba is kell (mint a 4Móz 16:30 héber betűje).
 
@@ -30,8 +29,8 @@
 - Az állapot csak leírva él: ez a lap, a PR-ok első sora (Mérce · Állapot · Következő · Akadály), a DONTESEK. Az integrátor kb. 300 ezer token kontextusnál vagy naponta cserél, amelyik előbb jön (a fix induló teher kb. 140 ezer, a 150–200 ezres plafon a munkasessionöké), és karcsún indul: csak ez a lap és egy rövid átadó jegyzet (állapot, a nap döntései, ami rád vár); memóriát és régi átadót csak akkor olvas, ha egy kérdés arról szól (2026-11-23).
 
 ## Rád vár
-- **A JOHD-cikk validátorának megkeresése** (pénz, külső közlés; 568 tétel, ~5–6 óra, bruttó 60–100 ezer Ft): Susánszki Judit, tartalék Grüll Tiborné. Erre vár a két JOHD-PR (#762, #763) és a decemberi beküldés.
-- STEPBible-modul: az 1.1-es vagy az 1.2-es adatverzióból készüljön; a levél Davidnek (a KJV-eltéréslista és a levéltervezet egy kártyán).
+- **A JOHD-cikk validátorának megkeresése** (pénz, külső közlés; 568 tétel, ~5–6 óra, bruttó 60–100 ezer Ft): Susánszki Judit, tartalék Grüll Tiborné. Erre vár a két JOHD-PR (#762, #763), a kézirat végső köre és a decemberi beküldés (2026-11-23: „a JOHD rám vár”).
+- STEPBible-modul: az 1.1-es vagy az 1.2-es adatverzióból készüljön; a levél Davidnek (a KJV-eltéréslista és a levéltervezet egy kártyán) (2026-11-23: „stepbible feladatok rám vár”).
 - Fizetős fordítás, igen vagy elvetve: a görög szavak rövid magyar jelentése (~5 300 szó; N177, #24); a Thayer-szótár magyarja (354 / 5 426 kész; a következő adag kb. 10 USD; #23).
 - Külső lépések: a Biblialex domain; a BiblIndex-levél (patrisztikus igehely-index; a tervezetben még „Logosz”); az SzPA-levél; a KJV-licenc kérdése (csak fizetős megjelenítés előtt).
 - Az olvasó telefonos próbája (az alapnézet kis képernyőn; F134). A BDB-szótár harmadik tanúja: a mintán 70%-ban a mi táblánk téved; a javítás feladat legyen, vagy elvetve (N212).
