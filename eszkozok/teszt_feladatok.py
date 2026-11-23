@@ -607,6 +607,36 @@ class PrTerkepOrTest(unittest.TestCase):
         return F.pr_terkep_ellenorzes(self.ut, alap)
 
 
+class AlapMezoTest(Alap):
+    """DT952 (a #842 esete): a #241 utáni brief kiinduló állapota kötelező mező."""
+    def hibak_szoveg(self):
+        return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]
+
+    def test_uj_brief_alap_nelkul_hiba(self):
+        self.g.brief('F242_A_BRIEF.md', brief_szoveg(242, olvas=['a'], ir=['a']))
+        self.assertTrue(any('alap' in h for h in self.hibak_szoveg()))
+
+    def test_regi_brief_alap_nelkul_rendben(self):
+        self.g.brief('F241_A_BRIEF.md', brief_szoveg(241, olvas=['a'], ir=['a']))
+        self.assertEqual(self.hibak_szoveg(), [])
+
+    def test_ervenyes_alapok(self):
+        for ertek in ('a3405522', 'olvaso-alapvonal-2026-11-23', 'PR #810 merge-e után'):
+            self.g.brief('F242_A_BRIEF.md', brief_szoveg(242, olvas=['a'], ir=['a'], alap=ertek))
+            self.assertEqual(self.hibak_szoveg(), [], ertek)
+
+    def test_ervenytelen_alap_hiba(self):
+        self.g.brief('F242_A_BRIEF.md', brief_szoveg(242, olvas=['a'], ir=['a'], alap='a mai main'))
+        self.assertTrue(any('alap:' in h for h in self.hibak_szoveg()))
+
+    def test_osszevetes_var_es_nincs(self):
+        self.g.brief('F242_A_BRIEF.md', brief_szoveg(242, olvas=['a'], ir=['a'], alap='PR #810 merge-e után'))
+        self.g.brief('F243_B_BRIEF.md', brief_szoveg(243, olvas=['b'], ir=['b']))
+        by = {b.szam: b for b in self.g.briefek()}
+        self.assertEqual(F.alap_osszevet(by[242], self.g.ut)[0], 'VAR')
+        self.assertEqual(F.alap_osszevet(by[243], self.g.ut)[0], 'NINCS')
+
+
 class SavTest(Alap):
     def hibak_szoveg(self):
         return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]

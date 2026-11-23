@@ -65,3 +65,48 @@ A `eszkozok/olvaso_szerver/merce/` 18 fájlja a `teszt_olvasoi_merce.py --merce-
 ## F231.11 (2026-11-23): a tételmérce után
 
 A `szo_H1242.txt` 2 sora változott (a „holnap, másnap” pont magyar szövege és a csukott teljes szöveg): „1Sám 9:19 (szemben הַיּוֺם ma)” → „(ellentétben: הַיּוֺם ma)”. Ok: **5** (a „szemben” rag nélküli héber szó előtt, `szokartya_szoveg.szemben`). Más mérce-fájl nem változott.
+
+## F231.23 (2026-11-23): a #810 utolsó menete (F231.17–21) után, a merge-elt main állapotán (D7, D8)
+
+A #810 a szerkesztő nézésén („Megnéztem, mehet”, a nézett fej `88fd78b7`) a main-be került (`a3405522`). A mérce a main állapotán
+frissült (`teszt_olvasoi_merce.py --merce-frissit`, a WSL-natív `pardes.db`-n), külön gyors sávos PR-ban (D8, `naplok/F231_dontesek.md`).
+16 fájl változott (a két fejezet-lap nem). Minden megváltozott sort (git diff a main-hez, hozzáadott és törölt egyaránt) egy gépi
+besoroló rendelt egy okhoz a blokkja vagy a sor mintája szerint; a csak a csukás jelében (`▸ `) eltérő sorpár a „nyitva” ok.
+Besorolatlan sor: 0. A besoroló: a jegyzetmappa `local_8f20af99-ee88-4120-8e81-53c814eaba45/merce_ok2.py` szkriptje
+(az előző, `merce_ok.py` mintájára).
+
+### Okonként
+
+| Ok | Sor |
+|---|---|
+| F231.17, #36/#21: a táblázat és a forrásszöveg lenyílója alapból nyitva | 1800 |
+| F231.17, #45/#46/#49 visszavonva: a jelleg-címke és a megjegyzés a blokkcím mellett, a forrássor nyitva | 880 |
+| F231.21, DT-F231e (#27): a doménkód és az UBS-azonosító látható | 316 |
+| F231.17, #10/#15: az „Apparátus és szövegkritika” lenyíló vissza (darabszám felirattal, forrásjel a helyével) | 122 |
+| F231.17, #58 visszavonva: az angol eredeti a magyar mellett | 82 |
+| F231.17, #47 visszavonva: az üres eredményű blokk a helyén, a „Nincs adat” sorával | 66 |
+| F231.21, DT-F231d (#37): a versszámozás és az LXX-versszám táblája vissza | 21 |
+| F231.21, D6: a pótcím zárójele ép (szokartya_szoveg.elso_tagmondat) | 8 |
+
+- `szo_G0264.txt`: F231.17, #45/#46/#49 visszavonva (56); F231.17, #36/#21 (40); F231.17, #58 visszavonva (8); F231.21, DT-F231e (#27) (6); F231.21, D6 (4)
+- `szo_G1311.txt`: F231.17, #45/#46/#49 visszavonva (56); F231.17, #36/#21 (40); F231.21, DT-F231e (#27) (14); F231.17, #58 visszavonva (8)
+- `szo_G2671.txt`: F231.17, #45/#46/#49 visszavonva (56); F231.17, #36/#21 (40); F231.21, DT-F231e (#27) (14); F231.17, #58 visszavonva (4)
+- `szo_G3056.txt`: F231.17, #45/#46/#49 visszavonva (56); F231.21, DT-F231e (#27) (50); F231.17, #36/#21 (40); F231.21, D6 (4)
+- `szo_H0251.txt`: F231.17, #45/#46/#49 visszavonva (48); F231.21, DT-F231e (#27) (40); F231.17, #36/#21 (22); F231.17, #58 visszavonva (8); F231.17, #10/#15 (6)
+- `szo_H1242.txt`: F231.17, #45/#46/#49 visszavonva (46); F231.17, #10/#15 (23); F231.17, #36/#21 (20); F231.21, DT-F231e (#27) (8); F231.17, #58 visszavonva (4); F231.17, #47 visszavonva (3)
+- `szo_H2398.txt`: F231.21, DT-F231e (#27) (52); F231.17, #45/#46/#49 visszavonva (48); F231.17, #10/#15 (24); F231.17, #36/#21 (22); F231.17, #58 visszavonva (16)
+- `szo_H3615.txt`: F231.21, DT-F231e (#27) (68); F231.17, #45/#46/#49 visszavonva (48); F231.17, #36/#21 (22); F231.17, #10/#15 (18); F231.17, #58 visszavonva (16)
+- `szo_H7451.txt`: F231.21, DT-F231e (#27) (52); F231.17, #10/#15 (49); F231.17, #45/#46/#49 visszavonva (46); F231.17, #36/#21 (20); F231.17, #58 visszavonva (14); F231.17, #47 visszavonva (3)
+- `szo_H7837.txt`: F231.17, #45/#46/#49 visszavonva (46); F231.17, #36/#21 (20); F231.21, DT-F231e (#27) (12); F231.17, #58 visszavonva (4); F231.17, #47 visszavonva (3); F231.17, #10/#15 (2)
+- `vers_1Moz_1_1.txt`: F231.17, #36/#21 (160); F231.17, #45/#46/#49 visszavonva (66); F231.17, #47 visszavonva (5); F231.21, DT-F231d (#37) (4)
+- `vers_1Moz_1_5.txt`: F231.17, #36/#21 (278); F231.17, #45/#46/#49 visszavonva (66); F231.17, #47 visszavonva (7); F231.21, DT-F231d (#37) (4)
+- `vers_1Moz_3_6.txt`: F231.17, #36/#21 (474); F231.17, #45/#46/#49 visszavonva (64); F231.17, #47 visszavonva (8); F231.21, DT-F231d (#37) (4)
+- `vers_1Moz_4_7.txt`: F231.17, #36/#21 (304); F231.17, #45/#46/#49 visszavonva (68); F231.21, DT-F231d (#37) (4); F231.17, #47 visszavonva (2)
+- `vers_Jan_1_1.txt`: F231.17, #36/#21 (72); F231.17, #45/#46/#49 visszavonva (46); F231.17, #47 visszavonva (27)
+- `vers_Zsolt_22_2.txt`: F231.17, #36/#21 (226); F231.17, #45/#46/#49 visszavonva (64); F231.17, #47 visszavonva (8); F231.21, DT-F231d (#37) (5)
+
+## F231.25 (2026-11-23): a D10 felirat-javítása
+
+A `vers_Zsolt_22_2.txt` 1 sora változott (a versszámozás-tábla „A megfeleltetés forrása” cellája): „Septuaginta-etalon (LXX_OS)” →
+„Septuaginta-etalon”. Ok: **D10** (az alak-kapu „dataset_kod” osztálya: az adatkészlet-kód nem áll az olvasói névben). Más mérce-fájl
+nem változott.

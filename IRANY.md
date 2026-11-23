@@ -10,7 +10,7 @@
   - a rendszer karcsúsítása: rövid tanulságfájl a teljes memória helyett; a lezárt tételek és memóriafájlok archiválása (nem törlés); a CLAUDE.md rövidítése a te jóváhagyásoddal (a tervre „mehet”, a diff merge előtt eléd); mérce: a CLAUDE.md sorszáma és az induló kontextus előtte és utána;
   - a 15 perces push előtti ellenőrzés kettévágása: munka közben gyors próba, a teljes csak a végén.
 - **Utána** (2026-11-11 és 2026-11-23): az olvasó újraépítése a generátor után: blokk-jegyzék adatként, a te jóváhagyásoddal (nézet × nyelv HU/EN × mélység három fokozatban × jogosultság; a tervezőtábla kész, az elrendezésed vár); egy névtábla, a forrássor a névtáblából; az olvasó a jegyzékből renderel, a kapuk mérik. Benne a motívumok megjelenítése: ez az „alap” olvasó.
-- **Az ISTENTISZT-001 2. kiadása** után a cikk a lexikonban kész (a jóváhagyásod érvényes, az átállás csak gépi részt változtat; DT933); az olvasóban előbb csak adatként frissül, cikként az átkötés (#236) után látszik, addig minden lapjavítás az olvasóba is kell.
+- **Az ISTENTISZT-001 2. kiadása** után a cikk a lexikonban kész (a kézi prózára és adatra adott jóváhagyásod érvényes, DT933; az új generátoros lapra 2026-11-23-án adott jóváhagyás olvasói átolvasás nélkül született, ezért feltételes: az F241.7 és az F241.10 nézése rendezi); az olvasóban előbb csak adatként frissül, cikként az átkötés (#236) után látszik, addig minden lapjavítás az olvasóba is kell.
 
 ## Most NEM csináljuk
 - Új lexikonlap: csak a TEREMT-001 (2026-11-12: „ez a következő a többi fagyasztva”). Befagyasztva: KIRALY, ALVIL, MENNY, ANTROP, HODIT, TEREMT-002.
