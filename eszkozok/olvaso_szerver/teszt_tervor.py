@@ -10,6 +10,12 @@ sorszáma a `teszt_adat/pardes_meretek.tsv` (a valódi adatbázisból): az index
 CI-ben is fut (Python szabványkönyvtár, Flask nélkül, ezredmásodpercek). A két fájl generált: `python teszt_tervor.py --sema-ment` a PARDES_DB-ből
 írja újra (az `sqlite_epit.py` indexváltozása után kötelező; a helyi `test_sema_egyezik_az_adatbazissal` ezt őrzi, ha van PARDES_DB).
 
+A séma-egyezés (N246) csak az olvasó tábláira szigorú: azokra, amelyek neve a `lekerdezesek.py`-ban (az olvasó egyetlen SQL-helyén) előfordul, és az
+ezekre épülő indexekre. Ezeknél a hiány, a más definíció és a többlet (pl. egy új index `--sema-ment` nélkül) bukás: ez a tervellenőr terveit
+érinti. A többi tábla és index eltérése csak `SÉMA-TÁJÉKOZTATÓ` sor. Ok: minden új `adat/*.tsv` táblát kap (`sqlite_epit.py` `_adat_tablak`), és az
+olvasó tesztje nem pirosodhat egy olyan táblától, amelyet az olvasó nem olvas (2026-11-23: 12 ilyen tábla a tárolt séma óta, egyiket sem olvassa az
+olvasó). Az olvasó új táblája a `test_a_lekerdezesek_elemezhetok`-on bukik, amíg a tárolt séma nem frissül.
+
 Ismert korlátok (F235, független ellenőr): az `ELFOGADOTT` függvényszintű (egy elfogadott függvényben ugyanarra a táblára írt új, végigolvasó lekérdezés átmegy,
 amíg a függvény a listán áll); a `SEARCH ... USING AUTOMATIC INDEX` sort a teszt nem jelzi (az is teljes olvasás); az SQLite-verziók tervei eltérhetnek
 (ezért a tábla-halmaz tagjai többesek, pl. `ubs_dbh`).
@@ -211,6 +217,32 @@ def sema_adatbazis():
     return con
 
 
+def sema_objektumok(con):
+    """{(típus, név): (tábla, normalizált SQL)} a táblákra és indexekre, az FTS5 árnyéktáblái nélkül."""
+    lek = "SELECT type, name, tbl_name, sql FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%'"
+    return {(t, n): (tb, re.sub(r'\s+', ' ', q)) for t, n, tb, q in con.execute(lek) if not FTS_VARAZS.match(n)}
+
+
+def olvaso_tablak(nevek, ut=LEK):
+    """A `nevek` közül azok, amelyek szóként előfordulnak a `lekerdezesek.py`-ban (a dinamikusan összerakott táblanév is: a teljes forrást nézi)."""
+    with open(ut, encoding='utf-8') as f:
+        szavak = set(re.findall(r'[A-Za-z_][A-Za-z0-9_]*', f.read()))
+    return {n for n in nevek if n in szavak}
+
+
+def sema_osszevet(valodi, tarolt, olvaso):
+    """(bukás, tájékoztató): [(fajta, típus, név)] listák, fajta: 'hiány' (a tárolt sémában van, a valódi adatbázisban nincs), 'eltérés' (más
+    definíció), 'többlet' (a valódi adatbázisban van, a tárolt sémában nincs). Bukás az olvasó tábláin (`olvaso`) és az azokra épülő indexeken,
+    a többi csak tájékoztató (N246). Az `fts_motivum` virtuális tábla az FTS5 hiányában kimaradhat: nem vizsgáljuk."""
+    v = {k: x for k, x in valodi.items() if k != ('table', 'fts_motivum')}
+    t = {k: x for k, x in tarolt.items() if k != ('table', 'fts_motivum')}
+    elter = [('hiány',) + k for k in sorted(set(t) - set(v))] + \
+            [('eltérés',) + k for k in sorted(k for k in t if k in v and v[k][1] != t[k][1])] + \
+            [('többlet',) + k for k in sorted(set(v) - set(t))]
+    bukas = [e for e in elter if (t.get(e[1:]) or v.get(e[1:]))[0] in olvaso]
+    return bukas, [e for e in elter if e not in bukas]
+
+
 def sema_ment(db_ut):
     """A pardes_sema.sql és a pardes_meretek.tsv újraírása a valódi adatbázisból (a `--sema-ment` hívja)."""
     con = sqlite3.connect('file:%s?mode=ro' % db_ut.replace('\\', '/'), uri=True)
@@ -251,18 +283,33 @@ class TestTervor(unittest.TestCase):
 
     @unittest.skipUnless(os.environ.get('PARDES_DB') and os.path.isfile(os.environ.get('PARDES_DB', '')), 'nincs PARDES_DB: a séma-egyezés helyben ellenőrzendő (nem zöld, kimarad)')
     def test_sema_egyezik_az_adatbazissal(self):
-        """A tárolt séma a valódi adatbázis táblái és indexei: egy indexváltozás után a `--sema-ment` nélkül a tervellenőr elavult tervet néz."""
+        """A tárolt séma (a fa saját objektumai) megvan a valódi adatbázisban, azonos definícióval: egy indexváltozás után a `--sema-ment` nélkül
+        a tervellenőr elavult tervet néz. A valódi adatbázis többlete csak kiírás (N246: a közös adatbázist több ág építi)."""
         c = sqlite3.connect('file:%s?mode=ro' % os.environ['PARDES_DB'].replace('\\', '/'), uri=True)
-        lek ="SELECT type, name, sql FROM sqlite_master WHERE sql IS NOT NULL AND name NOT LIKE 'sqlite_%'"
-        valodi = {(t, n): re.sub(r'\s+', ' ', q) for t, n, q in c.execute(lek) if not FTS_VARAZS.match(n)}
+        valodi = sema_objektumok(c)
         c.close()
-        tarolt = {(t, n): re.sub(r'\s+', ' ', q) for t, n, q in self.con.execute(lek) if not FTS_VARAZS.match(n)}
-        valodi.pop(('table', 'fts_motivum'), None)                # a virtuális tábla az FTS5 hiányában kimaradhat: nem vizsgáljuk
-        tarolt.pop(('table', 'fts_motivum'), None)
-        self.assertEqual(sorted(set(valodi) - set(tarolt)), [], 'a valódi adatbázisban van, a tárolt sémában nincs (--sema-ment)')
-        self.assertEqual(sorted(set(tarolt) - set(valodi)), [], 'a tárolt sémában van, a valódi adatbázisban nincs (--sema-ment)')
+        tarolt = sema_objektumok(self.con)
+        olvaso = olvaso_tablak({x[0] for x in list(valodi.values()) + list(tarolt.values())})
+        bukas, tajek = sema_osszevet(valodi, tarolt, olvaso)
+        for e in tajek:
+            print('SÉMA-TÁJÉKOZTATÓ (nem bukás, N246: az olvasó nem olvassa): %s: %s %s' % e)
         # az oszlopok és az index-oszlopok is: egy azonos nevű, de más oszlopú index nem maradhat észrevétlen
-        self.assertEqual(sorted(k for k in valodi if valodi[k] != tarolt[k]), [], 'a tárolt séma eltér a valódi adatbázisétól (--sema-ment)')
+        self.assertEqual(bukas, [], 'az olvasó tábláinak sémája eltér a valódi adatbázisétól (--sema-ment; hiánynál régebbi adatbázis is lehet)')
+
+    def test_sema_osszevetes_a_tobbletre_nem_bukik(self):
+        """N246 (DB nélkül): az olvasó tábláján (és az arra épülő indexen) minden eltérés bukás, a többi tábláé csak tájékoztató."""
+        tarolt = {('table', 'a'): ('a', 'CREATE TABLE a (x)'), ('index', 'ix_a'): ('a', 'CREATE INDEX ix_a ON a (x)'),
+                  ('table', 'fts_motivum'): ('fts_motivum', 'V'), ('table', 'b'): ('b', 'CREATE TABLE b (z)')}
+        valodi = dict(tarolt)
+        valodi.pop(('table', 'fts_motivum'))
+        valodi.update({('table', 'uj_adat'): ('uj_adat', 'CREATE TABLE uj_adat (y)'), ('index', 'ix_b'): ('b', 'CREATE INDEX ix_b ON b (z)')})
+        self.assertEqual(sema_osszevet(valodi, tarolt, {'a'}), ([], [('többlet', 'index', 'ix_b'), ('többlet', 'table', 'uj_adat')]))
+        valodi[('index', 'ix_uj')] = ('a', 'CREATE INDEX ix_uj ON a (x)')        # új index az olvasó tábláján: bukás
+        valodi[('index', 'ix_a')] = ('a', 'CREATE INDEX ix_a ON a (x, y)')       # más oszlopú index: bukás
+        self.assertEqual(sema_osszevet(valodi, tarolt, {'a'})[0], [('eltérés', 'index', 'ix_a'), ('többlet', 'index', 'ix_uj')])
+        valodi.pop(('table', 'a'))
+        self.assertIn(('hiány', 'table', 'a'), sema_osszevet(valodi, tarolt, {'a'})[0])
+        self.assertEqual(olvaso_tablak({'vers', 'otlettar_nem_letezo_nev'}), {'vers'})
 
     def test_minden_tabla_szerepel_a_meretek_kozott(self):
         """Egy hiányzó tábla 0 sornak számítana, és a tervellenőr nem jelezné a végigolvasását: minden séma-tábla szerepeljen a `pardes_meretek.tsv`-ben."""
