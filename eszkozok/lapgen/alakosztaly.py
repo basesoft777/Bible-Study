@@ -61,7 +61,7 @@ _ALAKOK = {Fajta.SABLON: SABLON_ALAKOK, Fajta.PROZA: PROZA_ALAKOK, Fajta.IDEZET:
 _CIMKE_RX = re.compile(r' — [\u0590-\u05FF\u0370-\u03FF\u1F00-\u1FFF]')
 
 # Az ismert eltérések (DT-F218f (4)): (csoport, Strong-szám, a szövegrész, amelyben áll, legfeljebb ennyi előfordulás egy
-# lapon). A javításuk az N-F218i. A: a TSK-kizárás indoklása (16 cella, a HAMART-001-en 29 látható sor); B: a Károli-
+# lapon). A javításuk az N-F218i. A: a TSK-kizárás indoklása (16 cella, a mintalapon 29 látható sor); B: a Károli-
 # csoport blokk-sorai (57 cella, soronként 1); D: egy kapcsolat-indoklás (1 sor, 2 szám); N235: a két csoportos
 # indoklás („blokk-kizárás (a H7451 és a H7043 blokkjának mintájára)”, 2 cella, 2 sor): javul az F218.13-ban (N235;
 # DT-F218e (2) (b): a kiadott lap és a bájt-referencia a szerkesztő nézése előtt nem mozdul).
