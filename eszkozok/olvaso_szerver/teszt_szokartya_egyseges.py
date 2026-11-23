@@ -59,6 +59,8 @@ class SzovegAtalakitas(unittest.TestCase):
         self.assertEqual(S.parhuzam('(nem || Zsolt 18:3), || שֹׁד Ámós 3:10'),
                          '(nem párhuzamos hely: Zsolt 18:3), párhuzamban: שֹׁד Ámós 3:10')
         self.assertEqual(S.szemben('és szemben לֵילוֺת-val'), 'és ellentétben: לֵילוֺת')
+        self.assertEqual(S.szemben('1Sám 9:19 (szemben הַיּוֺם ma)'), '1Sám 9:19 (ellentétben: הַיּוֺם ma)')    # F231 #5: rag nélkül
+        self.assertEqual(S.szemben('vele szemben áll'), 'vele szemben áll')                                   # magyar szó előtt marad
 
     def test_tanu_takaritas_felso_index(self):
         self.assertEqual(S.nemi_tanu('főnév hímnemű^2Móz 10:13 reggel'), 'főnév hímnemű 2Móz 10:13 reggel')

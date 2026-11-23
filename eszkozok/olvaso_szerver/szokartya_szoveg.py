@@ -95,13 +95,16 @@ def parhuzam(s):
 
 
 _SZEMBEN_RE = re.compile(r'szemben\s+(%s?[%s][%s%s%s\s]*?)-?[vV]?[ae]l\b' % (GERES, BETU, BETU, JEL, GERES + MAQQEF))
+_SZEMBEN_RAG_NELKUL_RE = re.compile(r'(?<!\w)szemben\s+(?=%s?[%s])' % (GERES, BETU))
 
 
 def szemben(s):
     """„szemben X-val/-vel” (X héber) → „ellentétben: X” (a héber szón magyar rag nélkül)."""
     if not s or 'szemben' not in s:
         return s
-    return _SZEMBEN_RE.sub(lambda m: F('szk.ellentetben', szo=m.group(1).strip()), s)
+    s = _SZEMBEN_RE.sub(lambda m: F('szk.ellentetben', szo=m.group(1).strip()), s)
+    # F231 (#5): rag nélkül is („(szemben הַיּוֺם ma)”, H1242 2.); csak közvetlenül héber szó előtt (a magyar „vele szemben” marad)
+    return _SZEMBEN_RAG_NELKUL_RE.sub(lambda m: F('szk.ellentetben', szo='').rstrip() + ' ', s) if 'szemben' in s else s
 
 
 # --- 6. tanú-jel, tudósjel ----------------------------------------------------------------------------------------------

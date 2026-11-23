@@ -61,3 +61,7 @@ A `eszkozok/olvaso_szerver/merce/` 18 fájlja a `teszt_olvasoi_merce.py --merce-
 - `vers_Jan_1_1.txt`: 34, 35, 36 (37); 30, 38 (28); 45, 46 (18); 45 (17); 45, 46 (17); blokksorrend (15); 47 (13); 51 (2); 52 (2); 45, 46 (2); 40 (2); a mérce fejléce (1); 49 (1)
 - `vers_Zsolt_22_2.txt`: 36 (146); 45, 46 (45); 30, 38 (34); 34, 35, 36 (33); 30–32 (19); 45 (17); 45, 46 (17); blokksorrend (9); 37, 48 (5); 45, 46 (4); 37, 48 (4); 47 (4); 51 (2); 52 (2); 40 (2); a mérce fejléce (1); 49 (1)
 
+
+## F231.11 (2026-11-23): a tételmérce után
+
+A `szo_H1242.txt` 2 sora változott (a „holnap, másnap” pont magyar szövege és a csukott teljes szöveg): „1Sám 9:19 (szemben הַיּוֺם ma)” → „(ellentétben: הַיּוֺם ma)”. Ok: **5** (a „szemben” rag nélküli héber szó előtt, `szokartya_szoveg.szemben`). Más mérce-fájl nem változott.

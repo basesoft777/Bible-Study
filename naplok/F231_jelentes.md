@@ -40,7 +40,7 @@ Technikai döntések (DT920, a session dönt):
 
 ## 3. A tételek (60 sor)
 
-Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) · **J** = javítva · **V** = már javult vagy nem hiba (elvetve, egy sor indokkal) · **R** = rád vár (IRANY.md „Rád vár”; az integrátor vezeti át) · **K** = kimarad a megbízás szerint. Az „előtte” a main (`24e1d2bd`), az „utána” az ág élő lapja.
+Kimenet (három kimenet, IRANY.md „Így dolgozunk”; a K a megbízáson kívüli két sor): **J** = javítva · **V** = már javult vagy nem hiba (elvetve, egy sor indokkal) · **R** = rád vár (IRANY.md „Rád vár”; az integrátor vezeti át) · **K** = kimarad a megbízás szerint. Az „előtte” a main (`24e1d2bd`), az „utána” az ág élő lapja.
 
 | # | Kimenet | URL | Előtte (látott) | Utána (látott) |
 |---|---|---|---|---|
@@ -48,7 +48,7 @@ Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) 
 | 2 | J | /szo/H1242 | „a.az éjszaka végéről17 hivatkozás … ⏎ (szemben” (sorfej + hivatkozásmező) | „az éjszaka végéről (ellentétben: לַיְלָה‎) 2Móz 10:13 (J) 3Móz 6:2 (P) Bír 19:25; Ruth 3:13 …” |
 | 3 | J | /szo/H1242 | magában álló „l.”, „vö.” sorfej, „—” helyőrző, „&”, „+,” | a szöveg egyben, „&” → „és”, „+” → „és máshol”; a helyőrző „—” helyén a pont első tagmondata (dőlten) |
 | 4 | J | /szo/H1242 | „34:25” típusú chip könyvnév nélkül (68/201) | a chipek megszűntek: a hely a mondatban áll, a folytatólagos hivatkozás a BDB idézési rendje szerint, és a link súgója a teljes helyet adja („feloldva: 2Móz 22:9”) |
-| 5 | J | /szo/H1242 | „(szemben לַיְלָה-val)”, „‖” | „ellentétben: לֵילוֺת”, „(párhuzamban: מחר …)”, „(nem párhuzamos hely: Zsolt 18:3)” |
+| 5 | J | /szo/H1242 | „(szemben לַיְלָה-val)”, „(szemben הַיּוֺם ma)”, „‖” | „ellentétben: לֵילוֺת”, „(ellentétben: הַיּוֺם ma)” (a rag nélküli alakot a tételmérce fogta meg), „(párhuzamban: מחר …)”, „(nem párhuzamos hely: Zsolt 18:3)” |
 | 6 | J | /szo/H0430 | „Ézs^2 (9-szer)”, „Dl^HWB”, „ᵑ7” | „Ézs² (9-szer)” (felső index), „Dl<sup>HWB</sup>”, „Targum” / „LXX” / „Pesitta” / „Vulgata” (súgóval) |
 | 7 | J | /szo/H0430 | „Di 7:13” link és magyarázat nélkül | „(R, l. Di 7:13)”, a „Di” rövidítés súgója „A. Dillmann”, és a jelmagyarázatban is áll; a „7:13” nem könyvnév (a „Di” szerzőjel, nem könyv) |
 | 8 | J | /szo/H1242 | „׳לַבּ reggelen …” | „לַבּ׳ Ámós 4:4 7-szer; … לַבּ׳‎ 2Móz 34:2”; a H0430 kártyáján szó eleji ׳: 0 |
@@ -57,13 +57,13 @@ Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) 
 | 11 | J | /szo/H7837, /szo/H3615 | H7837: a teljes szöveg az „Alakok ▸” alatt; H3615: „Qal ⏎ 1—25” | H7837: „A szótár ezt a szócikket nem tagolja … a teljes szöveg áll.” + a szöveg nyitva; H3615: „A szótár itt ragozott alakokat sorol …, ezért a törzs szövege egyben áll.” |
 | 12 | J | /szo/H2416 | a tagolt kártyából tagmondatok hiányoztak, csak a csukott teljes szöveg őrizte | a jelentések teljes szövege egyben áll; ahol a szakasztábla hiányos (1 073 szócikk), a teljes szöveg nyitva, kimondva |
 | 13 | J | /r/szo/H0747 | nyers „BDB-szócikk (nyers szöveg)” blokk | „Lefordítva · gépi fordítás ⏎ אֲרִיסַי tulajdonnév, hímnemű, Hámán fia …” a kártyában, csukva az „Angol eredeti” |
-| 14 | N | /szo/H1242 | „17 hivatkozás” mellett LXX πρωΐ 8 · φωσφόρος 6 · 5; a Görög megfelelő blokkban „φωσφόρος 88” | a súgó kimondja, hogy a pár versenként számol, ezért az összeg eltérhet (8+6+5 = 19 a 17 hivatkozás mellett: nem számolási hiba). **Mérve: adathiba.** A Macula LXX-párjaiban a „πρωὶ” alak Strong-száma G5459 (φωσφόρος) a G4404 helyett, 88-szor; az LXX_OS-ben a G5459 nem fordul elő; a `lxx_bridge` ezt viszi tovább. Az olvasó kódja jól számol: **N-F231a** (`nyitott/uj/olvaso-egyben-3464e1.md`; célfeladat: rövid adatjavító PR a #231 után, nehéz körrel). A „nem igazolt” jelölés mérve, de nincs bevezetve (2. szakasz) |
+| 14 | R | /szo/H1242 | „17 hivatkozás” mellett LXX πρωΐ 8 · φωσφόρος 6 · 5; a Görög megfelelő blokkban „φωσφόρος 88” | **Rád vár: adat-PR a #231 után, a kapu-szál előtt (IRANY.md).** A súgó kimondja, hogy a pár versenként számol, ezért az összeg eltérhet (8+6+5 = 19 a 17 hivatkozás mellett: nem számolási hiba). **Mérve: adathiba.** A Macula LXX-párjaiban a „πρωὶ” alak Strong-száma G5459 (φωσφόρος) a G4404 helyett, 88-szor; az LXX_OS-ben a G5459 nem fordul elő; a `lxx_bridge` ezt viszi tovább. Az olvasó kódja jól számol: **N-F231a** (`nyitott/uj/olvaso-egyben-3464e1.md`; célfeladat: rövid adatjavító PR a #231 után, nehéz körrel). A „nem igazolt” jelölés mérve, de nincs bevezetve (2. szakasz) |
 | 15 | J | /szo/H1242 | „▸ forrásjel (J) (P) (mindkettő J E) …” leválasztva | a forrásjel a helye mellett, a mondatban: „2Móz 10:13 (J) 3Móz 6:2 (P)”, súgóval |
 | 16 | J | /1Moz/1/5?szo=H1242 | „Ebben a versben …” | „A BDB besorolása: 1Móz 1:5 ⏎ A szótár ezt a helyet ebbe a jelentésbe sorolja: 1. e. — ellentétben: עֶרֶב”; kétes, fej, tagolatlan: jelölés nélkül (DT914) |
 | 17 | V | /szo/H2403 | „Külön meghatározás nélkül”: a main-en már nem áll (0 találat); a „1.a — 5 hivatkozás” csukott sor | a csukott sorok megszűntek, a szám a tábla feloldott helyeiből (`vj.db`) |
 | 18 | R | /szo/H7451 | „172 hivatkozás jelentéspontja … nem azonosítható” | a szöveg olvasói („… a szövegben kattintható, de a jelentéspontja ebben a tagolásban nem azonosítható”). **Rád vár (#237):** a `bdb_tagolas.py` sorbelső feje és a két szócikk azonos címkéje (N144, N145), a régi generátorral közös kód |
 | 19 | J | /szo/H0026 | az angol eredetiben „2Sam” | „1Sam 25:18” (a 412 hivatkozás-javítás a kártya angol szövegében is) |
-| 20 | J | /szo/H0127 | „4Móz 16:30 ‖ ארץ …”, a pe/mem javítás nem illeszkedett | „פָּֽצְתָה אֶת־פִּיהָ‎ 4Móz 16:30 (P)”; a `bdb_rovidites` változatlan, a betűjavítás az olvasó hívásában a maqqef előtt is fut |
+| 20 | J | /szo/H0127 | „4Móz 16:30 ‖ ארץ …”, a pe/mem javítás nem illeszkedett | „פָּֽצְתָה הָא׳ אֶת־פִּיהָ‎ 4Móz 16:30 (P)”; a `bdb_rovidites` változatlan, a betűjavítás az olvasó hívásában a sorrend-csere után, a maqqéf feloldása előtt is fut (`blokkok._heber_sorrend`; a tételmérce fogta meg, l. 4. szakasz) |
 | 21 | J | /szo/G0264 | a lap a nyers TBESG-gel kezdődött, nem volt Strong-szótár, Előfordulás, Károli-alakok | blokksor: Strong-szótár, Előfordulás, Károli-alakok, Szótár: Thayer-szócikk, ÚSZ, héber háttér, SDGNT, UBS DNTG, alul csukva a forrásszövegek |
 | 22 | J | /szo/G0264 | „Magyar fordítás nincs · az angol eredeti áll.” (az angol egy másik blokkban) | ugyanez a felirat a kártya tetején, alatta a jelentések rendje és szakaszonként az angol szöveg a kártyában, kattintható helyekkel |
 | 23 | K | /szo/G0264 | a Thayer magyar fordítása 354/5 426 | kimarad: fizetős fordítás, a felhasználó költségdöntése |
@@ -76,7 +76,7 @@ Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) 
 | 30 | J | /1Moz/1/1 | 11 csempe külön, „1 ¦ Kezdetben ¦ בְּ” és „1 ¦ Kezdetben ¦ רֵאשִׁ֖ית” | írott szavanként keret: „בְּרֵאשִׁ֖ית berésít” fölötte, alatta a két csempe; „1 ¦ Kezdetben ¦ בְּ + רֵאשִׁ֖ית ¦ H9003 + H7225” |
 | 31 | J | /1Moz/3/6 | „אִישָׁ֛ leísáh” (a ה nélkül) | a keret tetején „לְאִישָׁ֛הּ leísáh”, alatta לְ · אִישָׁ֛ · הּ |
 | 32 | J | /1Moz/1/1 | az előtagcsempén nincs kiejtés, a szótőcsempén az egész szóé („berésít”) | a kiejtés az írott szóé, a kereten áll; a csempék nem ismétlik |
-| 33 | V | /1Moz/3/6 | „gam” kötőjel nélkül (az F230 óta) | javult (F230 kiejtés-szolgáltatás) |
+| 33 | V | /1Moz/3/6 | „gam” kötőjel nélkül (az F230 óta) | elvetve, mert már javult: az F230 kiejtés-szolgáltatása óta a csempén „גַּם gam” áll, kötőjel nélkül (a tételmérce élőben nézi). |
 | 34 | J | /Jan/1/1 | „ἀρχῇ ¦ arkhéa” | „arkhé”; a TAGNT „ēa” átírása az alsó iotás étánál (1 471 token) a kiejtés-szolgáltatásban javítva |
 | 35 | J | /Jan/1/1 | „λόγος, ¦ logosz” | „λόγος ¦ logosz” (a központozás nélkül; a tükörfordítás változatlan) |
 | 36 | J | /1Moz/1/1 | a csempék adatai 6 nyitott táblázatban | „Táblázatos nézet (a csempék adatai soronként)” csukva (Károli–Strong, TAHOT/TAGNT, Macula ×2, LXX_OS, igealak) |
@@ -111,10 +111,12 @@ Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) 
 - **Az UBS DNTG magyar fordítása nem jelent meg**, mert a lekérés a Strong-számot adta a bejegyzés-azonosító (lexid) helyett. A teszt fogta meg, javítva.
 - **A görög iota-átírás** (#34) nem egyedi eset: 1 471 token, a kiejtés-szolgáltatásban javítva.
 - **A 15 jegyű azonosító** nemcsak a DNTG-ben, hanem az UBS DBH- és az SDBH-táblában is látszott (a 2.6-os kapu fogta meg). Javítva: csak súgóban áll.
+- **A tételmérce (F231.11) három hibát fogott, amelyet a jelentés javítottnak írt.** (1) #20: a sorrend-javítás előre hozása (F231.7) után a pe/mem betűjavítás a rafe-maqqéf feloldása után futott, ezért a H0127 „אֶתמִּֿיהָ” kulcsa nem illeszkedett, a lapon „אֶת־מִּיהָ” állt. Javítva: `blokkok._heber_sorrend` (sorrend-csere → betűjavítás → a közös `heber_sorrend_javit`). A lexikon-generátor (`lexikon_general.py` 4657. sor) a közös `heber_sorrend_javit`-ot hívja, amelynek belső sorrendje ugyanez (sorrend-csere → maqqéf → betűjavítás), ezért ott a sorrend-javítással érintett pe/mem alak ugyanígy javítatlan maradhat: ez a generátor nehéz körébe tartozik, az integrátornak jelezve (a gyors sávon nem javítható). (2) #5: a „szemben” rag nélküli héber szó előtt („(szemben הַיּוֺם ma)”, H1242 2.) maradt; javítva (`szokartya_szoveg.szemben`, a magyar „vele szemben” érintetlen). (3) #35: a Jn 1:1 csukott „Táblázatos nézet” Károli–Strong sorában „λόγος,” áll: elvetve, mert ez a párosítás forrásadat-sora a forrás tokenjével (a csempe és a TAGNT-sor írásjel nélküli, a tétel tárgya ez volt).
 - **A motívum jelentése a kétes pontból is** hordozónak látszott (H7451 10.c). Javítva a DT914 szerint; az egyezési teszt fogta meg.
 
 ## 5. Rád vár (az integrátor vezeti át az IRANY.md-be)
 
+- **#14** — a hamis LXX-pár („πρωὶ” → G5459, N-F231a): adat-PR a #231 után, a kapu-szál előtt (IRANY.md).
 - **#18** — a `bdb_tagolas.py` sorbelső feje és a két szócikk azonos címkéje (N144, N145): #237 (B0).
 - **#24** — a görög rövid jelentések fordítása (pénz): igen vagy elvetve (N177).
 - **#26** — a Thayer-besorolás javítatlan esetei (N123, N125, N126): #237 (B0).
@@ -126,6 +128,7 @@ Kimenet: **N** = adathiba, N-tételként célfeladattal (integrátori döntés) 
 
 - Új: `teszt_szokartya_egyseges.py` (10 teszt): az olvasói szövegátalakítás, a 2.6-os kapu a mérési mintán (‖, ^, 13+ jegyű szám, „szemben X-val”, belső címkék), a fordítótábla-kapu, az egyezési teszt a HAMART-001 4.2-vel, a szócsoport-szabály a Macula ellen.
 - A meglévő tesztek a szándékosan megváltozott szerkezethez igazítva (szókártya, Thayer-kártya, Forrás-lenyíló, DT914, a főoldal navigációja, a tervező regisztere: −9 elem, a használati sorok elemei).
+- **A tételmérce (F231.11, IRANY.md 1. szál „kész” mércéje):** `teszt_tetelmerce.py`, tételenként egy teszt (`test_t01` … `test_t60`, a 23. és az 59. nélkül: 58). A `J` tétel az élő lapon a javított alakot keresi és a hibásat tiltja (a F232 pillanatképén, a csukott tartalommal vagy anélkül, vagy a nyers HTML-ben; #54/#55 a CSS-ből számolt WCAG-kontraszttal, #60 új fejezet idejével); a `V`/`R` tétel a 3. szakasz sorát nézi (kimenet, legalább egy mondatnyi indok; `R`: „rád vár”); a kimenet-oszlop csak J / V / R lehet (a K a két megbízáson kívüli sor), ezt a `Keszlet` is őrzi, és ahol a lapon is van mit nézni, azt is. Kimenet: `TÉTELMÉRCE: n/58 zöld`. A `Keszlet` osztály őrzi, hogy a mérce a jelentés 60 sorából pontosan az 58-at fedi. Az első futás 51/58 volt: 3 valódi hiba (#5, #20 javítva; #35 elvetve, l. 4. szakasz) és 4 pontatlan minta (#6, #16, #22, #44: rossz lapra vagy blokkra nézett).
 - A gyors kör és a push előtti kapu eredménye: l. 7. szakasz.
 
 ## 7. Futási eredmények

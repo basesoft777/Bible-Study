@@ -1285,6 +1285,12 @@ class TesztInditUjraepites(_InditAlap):
         for _ in range(1500):
             a = allapot.epites_allapot(self.allapot_f)[0]
             if a in ('kesz', 'elbukott'):
+                # az `epit_hatter.sh` az állapotot a kilépés ELŐTT írja, a pillanatképet (`.forras.<pid>`) az EXIT-trap törli utána:
+                # terhelt gépen a teszt különben a még élő ideiglenes fájlt látja (F231.11, a push előtti kapu kétszer így bukott)
+                for _ in range(200):
+                    if not [n for n in os.listdir(os.path.dirname(self.c)) if '.epit.' in n or '.forras.' in n]:
+                        break
+                    time.sleep(0.05)
                 return a
             time.sleep(0.05)
         return allapot.epites_allapot(self.allapot_f)[0]

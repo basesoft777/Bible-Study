@@ -970,6 +970,15 @@ def _bdb_cimszo(K):
 _CIMKE_RE = re.compile(r'(<[^>]*>)')
 
 
+def _heber_sorrend(t, strong):
+    """A kártya héber javítása a rövidítőjel áthelyezése előtt: a Biblia által igazolt sorrend-csere a forrás alakján, utána a
+    pe/mem és rés/dálet betűjavítás MÉG a rafe-maqqéf feloldása előtt (a javítótábla kulcsa a rafés forrásalak: `אֶתמִּֿיהָ`;
+    a feloldás után `אֶת־מִּיהָ` két token, és nem illeszkedik: H0127 4Móz 16:30, F231 #20), végül a közös
+    `heber_sorrend_javit` (maqqéf, betűjavítás; a sorrend-csere másodszor már nem talál)."""
+    t = bdb_rovidites.betu_javit(bdb_rovidites._sorrend_csere(t, strong), strong)
+    return bdb_rovidites.heber_sorrend_javit(t, strong)
+
+
 def _rovidites(K, html, magyar=False):
     """A BDB egybetűs rövidítései (׳י → י׳) <abbr class="rovidites">-ként a kész, escape-elt blokk-HTML szövegrészeiben (N-F131x; a jelölő
     közös a lexikon-generátorral: `eszkozok/bdb_rovidites.py`). A címkék (és attribútumaik) érintetlenek; a jelölő csak héber betűt és
@@ -1942,7 +1951,7 @@ def _r_bdb_egyszeru(d, K):
     if d['alias']:
         ki += _alias_megj(d['alias'])
     _st = d['alias']['tabla_strong'] if d.get('alias') else getattr(K, 'strong', '')
-    sorrend = lambda t: bdb_rovidites.heber_sorrend_javit(t, _st)              # noqa: E731
+    sorrend = lambda t: _heber_sorrend(t, _st)                                 # noqa: E731
     ki += Markup('<p class="szk-szoveg jsz">%s</p>') % _jeles(szokartya_szoveg.olvasoi(_sor_kulcs_nelkul(hu or en), magyar=bool(hu),
                                                                                         elotte=sorrend), talalt)
     if hu and en:
@@ -1970,7 +1979,7 @@ def _r_bdb_apparatus(d, K):
           'nyelvtani': d.get('nyelvtani') or set(), 'motiv': motiv, 'en': _szk_en_terkep(d.get('en_fa')),
           'nezet': d.get('nezet') or 'szo', 'hu': bool(hu)}
     _st = d['alias']['tabla_strong'] if d.get('alias') else getattr(K, 'strong', '')
-    cx['sorrend'] = lambda t: bdb_rovidites.heber_sorrend_javit(t, _st)        # a Biblia által igazolt sorrend a rövidítőjel előtt
+    cx['sorrend'] = lambda t: _heber_sorrend(t, _st)                           # a Biblia által igazolt sorrend a rövidítőjel előtt
     ki = Markup('<span class="allapot%s" data-modell="%s">%s</span>') % (
         '' if hu else ' folyamat', (d['meta'] or '') if hu else '',
         F('szk.allapot_forditva', datum=(d['meta'] or '').rpartition(', ')[2]) if hu else F('szk.allapot_angol'))
