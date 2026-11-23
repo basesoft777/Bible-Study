@@ -64,6 +64,7 @@ Forrás mindegyiknél: **szerkesztői döntés (a felhasználó, 2026-11-23)**, 
 ## Mi kész, mi nincs
 
 **Kész (fent a PR-ágon, 720959bd):** a határ; a 28 jelölt döntése; mind a kilenc szerkesztői döntés az adatban (az integrátor kérte, hogy ezt új session vigye, de az üzenete előtt már feltoltam: F239.7); a határ-ellenőr és a bíráló, a válaszokkal; az érvnapló v2; a mérési sor; `ellenoriz.py` SÉRTÉS 0.
+**A bírálat kész** (`naplok/BIRALAT_TEREMT-001.md`, F239.8; az U3 nem futtatja újra): mind a 22 tételre válasz az érvnapló D szakaszában (20 elfogadva, 1 elutasítva: az A3 független ellenőrzése, mert a versenkénti LXX-tábla maga az; 1 elfogadva, kimarad: a szerzői mondatok és a Targum a Róm 10:7-hez, repón kívüli forrás). **Nyitva maradt:** a bírálat 5. kérdése (a lap két helyének egyezése: V1 Kivonat, V2 Remez, V5 Sod/Módszertan, V4 külön mondat) csak a próza után ellenőrizhető: az U4 listáján.
 **Nincs kész (az U3-é):** a próza (`motivumok/TEREMT-001.md`); a `res_forras.tsv` átkötése; a Jób 41:32 `forras_kereses`-alakja; a négy Nave-téma magyar neve; a régi fájlok archiválása; a Jel 20:1 és 20:3 új sorának `funkcio`-ja; a fordítás-lista; az új generátor előnézete; az U1b (visszhang). A teljes push előtti kapu nem futott (a CI futtatja).
 
 ## Nyitott döntések
