@@ -7,6 +7,7 @@
 2. **TEREMT-001 (tehóm) cikk:** nulláról, az új lapgenerátorral (az lezárult: F218a, #809, 2026-11-23); a te szavad 2026-11-23: „a TEREMT-001 legyen az első”. Lépéshatárokkal: adat-előkészítés → határ és érvvázlat → próza egy menetben → javítókör; a próza a táblákból készül. Kiadni az átállás (218c) után lehet, mert az új generátor addig nem ad ki lapot.
 - **Következő szálak**, ebben a sorrendben:
   - kis adatjavítás: a görög LXX-párok közt 88 helyen hamis „hajnalcsillag” a „reggel” szónál (N-F231a), nyelvtani szó (μου) az LXX-megfelelők közt, csonka fejléc és dupla könyvnév a fordított BDB-szövegben (a brief elkészül, a futás a TEREMT-001 mellett, amint hely szabadul);
+  - a rendszer karcsúsítása: egy rövid tanulságfájl, amelyet minden session induláskor olvas a teljes memória helyett; a lezárt tételek és memóriafájlok archiválása (nem törlés); a CLAUDE.md rövidítése a te jóváhagyásoddal; mérce: a CLAUDE.md sorszáma és a session induló kontextusa előtte és utána (2026-11-23: „#821 után, 218c előtt”);
   - az átállás (218c): a régi generátor archívumba, az ISTENTISZT-001 2. kiadása (előtte a 34 hiányzó fordítás), és ezzel válik kiadhatóvá a TEREMT-001; előtte az olvasóban a forrássor a névtáblából, és egy névtábla;
   - a 15 perces push előtti ellenőrzés kettévágása: munka közben gyors próba, a teljes csak a végén (integrátor).
 - **Utána** (a 2026-11-11-i ütemezés): a motívumok megjelenítése az olvasóban, ez az „alap” olvasó.
@@ -36,5 +37,4 @@
 - Külső lépések: a Biblialex domain; a BiblIndex-levél (patrisztikus igehely-index; a tervezetben még „Logosz”); az SzPA-levél; a KJV-licenc kérdése (csak fizetős megjelenítés előtt).
 - Az olvasó telefonos próbája (az alapnézet kis képernyőn; F134). A BDB-szótár harmadik tanúja: a mintán 70%-ban a mi táblánk téved; a javítás feladat legyen, vagy elvetve (N212).
 - Archiválható-e két tétlen session: levelek-uj-cimzettek; betu-szin-elonezet (6 merge-eletlen commit).
-
 *Frissítés: amit a szerkesztő irányként kimond, azt az integrátor ugyanabban a válaszában beírja ide; az állapotot kötegelve frissíti. Minden sor egy olvasói mondattal mondja meg, miről szól; azonosító csak zárójelben. Legfeljebb 40 sor.*
