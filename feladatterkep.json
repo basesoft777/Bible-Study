@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-23",
-   "commit": "7b4e9cce"
+   "commit": "0213899a"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5909,6 +5909,16 @@
      "🟢"
     ],
     "sor": 895
+   },
+   {
+    "id": "DT942",
+    "feladat": "folyamat (a Hatástörténet adata a próza előtt; 2026-11-23)",
+    "kerdes": "A TEREMT-001 prózaírója (U3) azt kérdezte, írhat-e prózát, amikor a 9. Hatástörténet adata (C-vh, visszhang 1–2) még nem készült el. A brief „U1b”-ként az első szakaszba sorolta, de a lánc a határ (U2) után véglegesedik, így a lépés kimaradt; a `MUNKAMENET.md` cikkírási sorrendje (A → … → határ → E próza) nem tartalmazta, és a 2026-11-23-i U3-előfeltétel (#823) sem. Az integrátor az esetet helyesen döntötte el („előbb az adat”), de a szabályhelyet nem javította.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 896
    }
   ],
   "javasolt": [],
