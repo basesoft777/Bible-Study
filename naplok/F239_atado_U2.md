@@ -44,6 +44,28 @@ A régi tanulmány egészét (`tematikus_lezart/Tehom_tematikus.md`: alapanyag, 
 - A régi tanulmány, a KH-napló, a régi `motivumok/TEREMT-001.md` és a törzscikk `archivum/TEREMT-001/` alá, ARCHÍV fejléccel; a hivatkozások ugyanabban a commitban (E27).
 - Az U1b (visszhang 1–2, Sonnet + másik kéz) a lánc véglegesítése után futhat: a lánc-szavak H8415 és G0012, a láncversek a 43 beépített sor (44 vers; a lánc a szerkesztő döntésével lezárva). A `nyilt_angol.tsv`-ben a régi `Jel 20:1-3` sor angol fordítása elárvult: a nyílt mag fordításának következő futása (`nyilt_mag_angol.py`) pótolja a két új sorét.
 
-## Nyitott döntések (a szerkesztőnél: `naplok/F239_szerkeszto_kerdesek.md`)
+## A szerkesztő döntései (a kérdéslista kilenc pontja)
+
+Forrás mindegyiknél: **szerkesztői döntés (a felhasználó, 2026-11-23)**, az integrátor közvetítésével; a kérdések: `naplok/F239_szerkeszto_kerdesek.md`; a rögzítés: `dontesek/uj/nervous-kare-9d2361.md`.
+
+| pont | kérdés | döntés (szó szerint) | helyőrző | alkalmazva |
+|---|---|---|---|---|
+| 1 | mi dönt: héber szó, görög fordítás vagy magyar szó | „A javaslat (Recommended)”: ÓSZ héber, ÚSZ görög szó; a négy görög többlet-vers kint | DT-F239c | F239.3 (jelöltek) |
+| 2 | a kizárási szabály szövege | „Új szöveg (Recommended)” | DT-F239c | F239.7 (`adat/motivumok.tsv`) |
+| 3 | Róm 10:7 | „A javaslat (Recommended)”: bent | DT-F239c | változás nem kellett |
+| 4 | a Károli „mélység” nem jel; az olvasó felé | „Elfogadom (Recommended)”: a határ a héber szón, a próza kimondja | DT-F239c | az U3 kötelező eleme |
+| 5 | az öt tehóm-vers, ahol az LXX nem ἄβυσσος | „A javaslat (Recommended)”: bent | DT-F239c | változás nem kellett |
+| 6 | Jel 20:1–3 | „Két igehely (Recommended)” | DT-F239d | F239.7 (`elofordulasok.tsv`, `jeloltek.tsv`) |
+| 7 | seól (ALVIL-001) | „Adatsor is (Recommended)”: két motívum, kapcsolat az Ez 31:15-ön; tohu va-vohu csak próza | DT-F239a | F239.7, a szövegek a bírálat után: F239.8 |
+| 8 | Nave-témák | „A javaslat (Recommended)”: 4 kiválasztott, 7 kizárt | DT-F239b | F239.7 (`tematikus_temak.tsv`) |
+| 9 | Jób 41:32 | „A javaslat (Recommended)”: bent | DT-F239c | változás nem kellett |
+| K3, K5 | a határ-ellenőr kérdései | „Elfogadom (Recommended)” | DT-F239c | K3: F239.5; K5: nincs változás |
+
+## Mi kész, mi nincs
+
+**Kész (fent a PR-ágon, 720959bd):** a határ; a 28 jelölt döntése; mind a kilenc szerkesztői döntés az adatban (az integrátor kérte, hogy ezt új session vigye, de az üzenete előtt már feltoltam: F239.7); a határ-ellenőr és a bíráló, a válaszokkal; az érvnapló v2; a mérési sor; `ellenoriz.py` SÉRTÉS 0.
+**Nincs kész (az U3-é):** a próza (`motivumok/TEREMT-001.md`); a `res_forras.tsv` átkötése; a Jób 41:32 `forras_kereses`-alakja; a négy Nave-téma magyar neve; a régi fájlok archiválása; a Jel 20:1 és 20:3 új sorának `funkcio`-ja; a fordítás-lista; az új generátor előnézete; az U1b (visszhang). A teljes push előtti kapu nem futott (a CI futtatja).
+
+## Nyitott döntések
 
 Nincs: a szerkesztő 2026-11-23-án mind a kilenc pontban a javaslatot fogadta el (DT-F239a–d, `dontesek/uj/nervous-kare-9d2361.md`), és az F239.7 alkalmazta: a határ és a 28 jelölt döntése érvényes; a kizárási szabály új szövege az `adat/motivumok.tsv`-ben; a Jel 20:1–3 két igehely (Jel 20:1, 20:3; a motívum 44 verse); a seól-kapcsolat (Ez 31:15) és a 11 Nave-sor az adatban. Mostantól minden határt, kizárási szabályt vagy új ID-t érintő kérdés a szerkesztőé (az integrátoron át).
