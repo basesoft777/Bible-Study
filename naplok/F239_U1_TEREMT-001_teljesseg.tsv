@@ -1,0 +1,226 @@
+# GENERÁLT: eszkozok/teljesseg_meres.py TEREMT-001 — kézzel nem szerkesztendő (DT548)
+halo	igehely	allapot	gerinc_a_versben	reszlet	proveniencia
+strong	1Móz 1:2	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	1Móz 7:11	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	1Móz 8:2	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	1Móz 49:25	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	2Móz 15:5	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	2Móz 15:8	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	5Móz 8:7	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	5Móz 33:13	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Ez 26:19	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Ez 31:4	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Ez 31:15	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Hab 3:10	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jel 9:1	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jel 9:2	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jel 9:11	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jel 11:7	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jel 17:8	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jel 20:1	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jel 20:3	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jób 28:14	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jób 38:16	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jób 38:30	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jób 41:32	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Jón 2:6	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Luk 8:31	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Péld 3:20	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Péld 8:24	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Péld 8:27	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Péld 8:28	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Róm 10:7	E	igen	G0012	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 33:7	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 36:7	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 42:8	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 71:20	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 77:17	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 78:15	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 104:6	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 106:9	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 107:26	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 135:6	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Zsolt 148:7	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Ámós 7:4	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Ézs 51:10	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+strong	Ézs 63:13	E	igen	H8415	scope=TAHOT-teljes+TAGNT-teljes | forras=TAHOT_kivonat.tsv+TAGNT_kivonat.tsv | strong=G0012+H8415 | n=44 | ts=2026-11-23T11:55Z
+karoli	1Kir 4:29	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Kor 2:10	ELTÉRÉS	nem	mélységeit	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Móz 1:2	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Móz 2:21	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Móz 7:11	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Móz 8:2	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Móz 15:12	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Móz 49:25	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Sám 17:49	ELTÉRÉS	nem	mélyede	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	1Sám 26:12	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	2Kor 11:25	ELTÉRÉS	nem	mélységben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	2Móz 15:5	E	igen	mélységbe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	2Móz 15:8	E	igen	mélységes	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	2Pét 2:4	J:elutasítva	nem	mélységbe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	2Sám 22:16	ELTÉRÉS	nem	örvényei	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	2Sám 22:17	ELTÉRÉS	nem	mélységes	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	3Móz 10:4	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	3Móz 13:3	ELTÉRÉS	nem	mélyebben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	3Móz 13:4	ELTÉRÉS	nem	mélyebben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	3Móz 13:25	ELTÉRÉS	nem	mélyebben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	3Móz 13:30	ELTÉRÉS	nem	mélyebben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	3Móz 13:31	ELTÉRÉS	nem	mélyebben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	3Móz 13:32	ELTÉRÉS	nem	mélyebbé	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	3Móz 13:34	ELTÉRÉS	nem	mélyebben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	5Móz 8:7	E	igen	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	5Móz 33:13	E	igen	mélységes	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	ApCsel 20:9	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Bír 4:21	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Dán 2:22	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ef 3:18	ELTÉRÉS	nem	mélysége	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 6:3	ELTÉRÉS	nem	mélységeknek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 23:32	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 23:34	ELTÉRÉS	nem	fenékig	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 26:19	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 26:20	ELTÉRÉS	nem	mélységek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 27:34	ELTÉRÉS	nem	mélységébe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 31:4	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 31:12	ELTÉRÉS	nem	mélységében	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 31:14	ELTÉRÉS	nem	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 31:15	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 31:16	ELTÉRÉS	nem	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 31:18	ELTÉRÉS	nem	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 32:6	ELTÉRÉS	nem	mélységek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 32:18	ELTÉRÉS	nem	mélységek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 32:24	ELTÉRÉS	nem	mélységek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 34:13	ELTÉRÉS	nem	mélységekben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 35:8	ELTÉRÉS	nem	mélységed	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 36:4	ELTÉRÉS	nem	mélységeknek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ez 36:6	ELTÉRÉS	nem	mélységeknek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Hós 9:9	ELTÉRÉS	nem	Mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jel 2:24	ELTÉRÉS	nem	mélységeit	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jel 9:1	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jel 9:2	E	igen	mélységnek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jel 9:11	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jel 11:7	E	igen	mélységből	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jel 17:8	E	igen	mélységből	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jel 20:1	E	igen	mélységnek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jel 20:3	E	igen	mélységbe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jer 49:8	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jer 49:30	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ján 4:11	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 4:13	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 4:16	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 6:17	ELTÉRÉS	nem	fenékig	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 11:7	ELTÉRÉS	nem	mélységét	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 11:8	ELTÉRÉS	nem	Mélyebb	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 12:22	ELTÉRÉS	nem	mélységes	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 13:5	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 28:14	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 33:15	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 38:16	E	igen	mélységnek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 38:30	E	igen	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 40:8	ELTÉRÉS	nem	mélységes	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jób 41:31	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jón 2:4	ELTÉRÉS	nem	mélységbe; örvényeid	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Jón 2:6	E	igen	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Luk 5:4	ELTÉRÉS	nem	mélyre	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Luk 6:48	ELTÉRÉS	nem	mélyre	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Luk 8:31	E	igen	mélységbe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Mik 7:19	ELTÉRÉS	nem	mélységébe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Mk 4:5	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Mt 13:5	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Mt 18:6	ELTÉRÉS	nem	mélységébe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Neh 9:11	ELTÉRÉS	nem	mélységbe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Préd 7:24	ELTÉRÉS	nem	mélységes	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 1:12	ELTÉRÉS	nem	mélységbe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 3:20	E	igen	mélységből	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 8:24	E	igen	mélységek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 8:27	E	igen	mélységek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 8:28	E	igen	mélységeknek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 9:18	ELTÉRÉS	nem	mélyébe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 18:4	ELTÉRÉS	nem	Mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 20:5	ELTÉRÉS	nem	Mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 22:14	ELTÉRÉS	nem	Mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 23:27	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 25:3	ELTÉRÉS	nem	mélységre	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Péld 30:19	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Róm 8:38	ELTÉRÉS	nem	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Róm 10:7	E	igen	mélységbe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Róm 11:33	ELTÉRÉS	nem	mélysége	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zak 10:11	ELTÉRÉS	nem	örvényei	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 7:16	ELTÉRÉS	nem	mélyre	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 36:7	E	igen	mélységek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 42:8	E	igen	Örvény; örvényt	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 63:10	ELTÉRÉS	nem	mélységeibe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 68:23	ELTÉRÉS	nem	mélységéből	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 69:3	ELTÉRÉS	nem	Mély; örvénybe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 69:16	ELTÉRÉS	nem	örvény	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 71:20	E	igen	mélységéből	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 77:17	E	igen	mélységek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 78:15	E	igen	mélységes	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 86:13	ELTÉRÉS	nem	mélységes	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 88:7	ELTÉRÉS	nem	Mély; örvények	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 92:6	ELTÉRÉS	nem	mélységesek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 95:4	ELTÉRÉS	nem	mélységei	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 106:9	E	igen	mélységeken	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 106:43	ELTÉRÉS	nem	mélyebben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 107:24	ELTÉRÉS	nem	mélységben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 107:26	E	igen	fenékig	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 130:1	ELTÉRÉS	nem	mélységből	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 135:6	E	igen	mélységben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 137:7	ELTÉRÉS	nem	fenékig	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 139:15	ELTÉRÉS	nem	mélyében	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 140:11	ELTÉRÉS	nem	örvényekbe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Zsolt 148:7	E	igen	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ámós 7:4	E	igen	mélységet	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 7:11	ELTÉRÉS	nem	mélységben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 14:15	ELTÉRÉS	nem	mélységébe	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 29:10	ELTÉRÉS	nem	mély	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 29:15	ELTÉRÉS	nem	mélységesen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 30:33	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 42:17	ELTÉRÉS	nem	mélyen	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 44:23	ELTÉRÉS	nem	mélységei	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 44:27	ELTÉRÉS	nem	mélységnek	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 51:10	E	igen	mélység	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+karoli	Ézs 63:13	E	igen	mélységekben	scope=Karoli_1908-teljes | forras=Karoli_1908.tsv+adat/szoto/karoli_szotari_alak.tsv | szotari_alak=fenékig+mély+mélység+mélységes+örvény | n=136 | ts=2026-11-23T11:55Z
+szotar	1Móz 1:2	E	igen	BDB H8415 sorszam 3 (fej); BDB H8415 sorszam 37 (-/5); Thayer G0012 sorszam 1 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	1Móz 7:11	E	igen	BDB H8415 sorszam 1 (fej); BDB H8415 sorszam 10 (-/5); Thayer G0012 sorszam 2 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	1Móz 8:2	E	igen	BDB H8415 sorszam 11 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	1Móz 49:25	E	igen	BDB H8415 sorszam 8 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	2Móz 15:5	E	igen	BDB H8415 sorszam 28 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	2Móz 15:8	E	igen	BDB H8415 sorszam 29 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	5Móz 8:7	E	igen	BDB H8415 sorszam 42 (-/5); Thayer G0012 sorszam 3 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	5Móz 33:13	E	igen	BDB H8415 sorszam 9 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Ez 26:19	E	igen	BDB H8415 sorszam 22 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Ez 31:4	E	igen	BDB H8415 sorszam 40 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Ez 31:15	E	igen	BDB H8415 sorszam 41 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Hab 3:10	E	igen	BDB H8415 sorszam 23 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jel 9:1	E	igen	Thayer G0012 sorszam 6 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jel 9:11	E	igen	Thayer G0012 sorszam 7 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jel 11:7	E	igen	Thayer G0012 sorszam 8 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jel 17:8	E	igen	Thayer G0012 sorszam 9 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jel 20:1	E	igen	Thayer G0012 sorszam 10 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jel 20:3	E	igen	Thayer G0012 sorszam 11 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jób 28:14	E	igen	BDB H8415 sorszam 2 (fej); BDB H8415 sorszam 13 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jób 38:16	E	igen	BDB H8415 sorszam 14 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jób 38:30	E	igen	BDB H8415 sorszam 24 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jób 41:32	E	igen	BDB H8415 sorszam 26 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jób 42:8	ELTÉRÉS	nem	BDB H8415 sorszam 27 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Jón 2:6	E	igen	BDB H8415 sorszam 25 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Luk 8:31	E	igen	Thayer G0012 sorszam 5 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Péld 3:20	E	igen	BDB H8415 sorszam 19 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Péld 8:24	E	igen	BDB H8415 sorszam 18 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Péld 8:27	E	igen	BDB H8415 sorszam 38 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Péld 8:28	E	igen	BDB H8415 sorszam 12 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Róm 10:7	E	igen	Thayer G0012 sorszam 4 (fej)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 33:7	E	igen	BDB H8415 sorszam 20 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 36:7	E	igen	BDB H8415 sorszam 16 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 42:8	E	igen	BDB H8415 sorszam 43 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 71:20	E	igen	BDB H8415 sorszam 7 (-/5); BDB H8415 sorszam 44 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 77:17	E	igen	BDB H8415 sorszam 4 (fej); BDB H8415 sorszam 32 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 78:15	E	igen	BDB H8415 sorszam 33 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 104:6	E	igen	BDB H8415 sorszam 39 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 106:9	E	igen	BDB H8415 sorszam 6 (-/2); BDB H8415 sorszam 31 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 107:26	E	igen	BDB H8415 sorszam 34 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 135:6	E	igen	BDB H8415 sorszam 21 (-/5); BDB H8415 sorszam 35 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Zsolt 148:7	E	igen	BDB H8415 sorszam 36 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Ámós 7:4	E	igen	BDB H8415 sorszam 15 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Ézs 51:10	E	igen	BDB H8415 sorszam 17 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
+szotar	Ézs 63:13	E	igen	BDB H8415 sorszam 5 (fej); BDB H8415 sorszam 30 (-/5)	scope=G0012+H8415 | forras=adat/bdb_vers_jelentes.tsv+adat/thayer_vers_jelentes.tsv (karoli_vers) | n=44 | ts=2026-11-23T11:55Z
