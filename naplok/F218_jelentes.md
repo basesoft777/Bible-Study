@@ -1997,6 +1997,8 @@ Az ELTÉRÉS-ek súlyosság szerint:
 | C. „Miért fontos” címsorai | HAMART 4, ISTENTISZT 3 sor | 7 | `motivumok/*.md` (rés) | tartós kivétel: szótári címke |
 | D. Kapcsolat-indoklás | ISTENTISZT 7. szakasz | 1 | `adat/kapcsolatok.tsv`: „azonos H7121+H8034 pár” | ismert eltérés (2 tétel), N-F218i |
 
+**A pe/mem betűjavítás a maqqéfos szón (az integrátor mérési kérése, a #810 lelete):** az új generátor a HAMART-001-en 1 helyen ad hibás alakot (4. szakasz, H0127: „אֶת־מִּיהָ” a „אֶת־פִּיהָ” helyett; a `kartya.forrasjavitas` a maqqéfot a betűjavítás előtt oldja fel, a javítótábla kulcsa rafés), az ISTENTISZT-001-en 0 (a 256 rafés kulcsú betűjavítás mind végignézve); a jóváhagyott lapon is így áll. Nem javítottam: a nézési csomag 4. pontjában döntendő tétel, a javítás helyével.
+
 **TEREMT-002:** befagyasztott lap, az akadálylista a jegyzetmappában, a befagyasztott lapok újragondolásáig marad.
 
 *Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes (PARDES_DATUM=2026-11-13); futtat.py (teljes: 391 teszt; célzott: kapuk, szerkezet, s9_hatastortenet, bemenet: 71 teszt, 0 bukás); general.py --cel lexikon2 (HAMART-001, ISTENTISZT-001) | forras=a munkafa az egyes commitok előtt | ts=2026-11-23`.*
