@@ -130,6 +130,7 @@ class Bemenet:
         self._naplo_sorrend = []
         self._epitett = {}
         self._tar = {}
+        self._kapu_hash = {}
         self._jegyzek = self._jegyzek_betolt()
 
     # --- jegyzék -------------------------------------------------------------
@@ -185,6 +186,15 @@ class Bemenet:
             return bajtok.decode('utf-8'), sha
         self._tar[utvonal] = (bajtok.decode('utf-8'), sha)
         return self._tar[utvonal]
+
+    def _hash_kapuhoz(self, utvonal):
+        """Egy fájl sorvég-normalizált sha256-a a frissességi kapuhoz (GK-03, `bemenet/frissesseg.py`). Nem tartalmi
+        olvasás: nem kerül az olvasási naplóba (a lap forráslistája a tartalmi olvasásokból jön)."""
+        if utvonal in self._tar:
+            return self._tar[utvonal][1]
+        if utvonal not in self._kapu_hash:
+            self._kapu_hash[utvonal] = self._fajl(utvonal, tarol=False)[1]
+        return self._kapu_hash[utvonal]
 
     def _fejsorok(self, b_id, utvonal, darab):
         """Egy bemeneti fájl első sorai (annak megállapítására, mit tartalmaz a fájl: pl. melyik könyv

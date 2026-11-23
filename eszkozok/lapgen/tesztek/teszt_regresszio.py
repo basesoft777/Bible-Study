@@ -150,6 +150,22 @@ class Regresszio(unittest.TestCase):
             self._meres(jo, naplo=None)
         self.assertIn('hiányzik az új generátor olvasási naplója', '%s' % hiba.exception)
 
+    def test_hash_or_kivetel_b51(self):
+        """N240: a B51 olvasási napló-sora nem vetődik össze (a lapon használt része a szakasz-diffben mérődik),
+        a referencia-táblában álló B51-sor pedig kimondott hiba."""
+        jo = '## 2. Második\n\nA sor\nB sor\nC sor\n\n'
+        self.assertFalse(self._meres(jo, naplo=(('B03', 'adat/be.tsv', _sha('x\ty\n')),
+                                                ('B51', 'DONTESEK.md', _sha('bármi\n'))))['bukas'])
+        self.assertEqual(R.HASH_OR_KIVETEL, frozenset({'B51'}))
+        repo = _repo()
+        self.repok.append(repo)
+        ut = os.path.join(repo.gyoker, *R.REFERENCIA_TSV.split('/'))
+        with open(ut, 'a', encoding='utf-8', newline='') as f:
+            f.write('bemenet\tB51\tDONTESEK.md\t%s\t1\n' % _sha('x\n'))
+        with self.assertRaises(R.MerceHiba) as hiba:
+            R.hash_or(repo.gyoker)
+        self.assertIn('hash-őr kivétele', '%s' % hiba.exception)
+
     def test_a_naplo_fajlneve_egyezik_a_generatoreval(self):
         from lapgen import konfig
         self.assertEqual((R.NAPLO_FAJLNEV, R.NAPLO_OSZLOPOK), (konfig.NAPLO_FAJLNEV, konfig.NAPLO_OSZLOPOK))
@@ -223,14 +239,23 @@ class Szamlalok(unittest.TestCase):
         lapon állnak, az ISTENTISZT-001-en a szópár-lánc is."""
         for azonosito in self.mintalapok:
             sorok = R.szamlalok(azonosito, self.konyvtar, self.gyoker)
-            _szoveg, hiba = R.szamlalo_jelentes(sorok)
+            _szoveg, hiba = R.szamlalo_jelentes(sorok, azonosito)
             self.assertFalse(hiba, '%s: %s' % (azonosito, _szoveg))
             meglevo = {nev for nev, lapon, _s in sorok if lapon is not None}
-            for nev in ('megvizsgált versek (1.)', 'KH: utalások összesen (6.)', 'ószövetségi versek (5.)'):
+            for nev in ('megvizsgált versek (1.)', 'KH: utalások összesen (6.)', 'ószövetségi versek (5.)',
+                        'LXX: az összesítés összege (5.)', 'LXX: egyező versek (5.)', 'LXX: LXX-minusz (5.)'):
                 self.assertIn(nev, meglevo, azonosito)
         self.assertIn('a szópár igéje a héber szövegben (9.)',
                       {nev for nev, lapon, _s in R.szamlalok('ISTENTISZT-001', self.konyvtar, self.gyoker)
                        if lapon is not None})
+
+    def test_nincs_ismert_elteres(self):
+        """N238: az LXX-összesítés független számlálója; az egyetlen ismert eltérés (N196) szerkesztői döntéssel
+        (2026-11-23, részenként) megszűnt: az eltérés minden motívumnál BUKÁS."""
+        self.assertEqual(R.ISMERT_ELTERES, {})
+        nev = 'LXX: egyező versek (5.)'
+        self.assertTrue(R.szamlalo_jelentes([(nev, 12, 13)], 'ISTENTISZT-001')[1])
+        self.assertFalse(R.szamlalo_jelentes([(nev, 13, 13)], 'ISTENTISZT-001')[1])
 
     def test_az_elrontott_szamot_kimutatja(self):
         ut = os.path.join(self.konyvtar, 'ISTENTISZT-001_TUDOMANYOS.md')

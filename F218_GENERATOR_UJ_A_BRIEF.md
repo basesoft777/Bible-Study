@@ -5,15 +5,15 @@ kod: GENERATOR_UJ_A
 tipus: feladat
 fazis: folyamat
 modell: opus
-allapot: fut
-ag: claude/f218a-s9-722be2
-pr: 797
+allapot: lezarva
+ag: claude/f218a-s9c-d1312a
+pr: 809
 ad: új lapgenerátor az `eszkozok/lapgen/` alatt, amely a HAMART-001 lapját a mai lappal szakaszonként egyezően állítja elő (csak a felsorolt, darabszámhoz kötött eltérésekkel), és az ISTENTISZT-001 lapját belső szöveg nélkül; a látható szöveg cserével nem készülhet, ezt típus és festékpróba bizonyítja; a régi generátor és minden mai kapu érintetlen marad
-kovetkezo: "Folytatás: S9c (F218.12) új sessionben a naplok/F218_folytatas.md-ből: a vázban maradt S3_MARADEK tételek és a leltártételek; utána a felhasználó nézése (naplok/F218_S9_nezes.md, frissítve)"
+kovetkezo: "Te: a 218b és a 218c befogadása"
 munka: folyamat
 sav: CONTENT
 olvas: ["eszkozok/lexikon_general.py", "eszkozok/szerep_*.py", eszkozok/olvasoi_kovetkeztetes.py, eszkozok/olvasoi_utofeldolg.py, eszkozok/tablajegyzet.py, eszkozok/kiejtes.py, eszkozok/heber_kiejtes.py, eszkozok/kiejtes_szoveg.py, eszkozok/bdb_tagolas.py, eszkozok/bdb_rovidites.py, eszkozok/bdb_vj_szabaly.py, eszkozok/karoli_kh_szuro.py, eszkozok/lap_befagyasztas.py, eszkozok/lekerdez.py, eszkozok/olvasoi_kapu.py, eszkozok/ellenoriz.py, adat/, konkordancia/, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_befagyasztas.tsv, adat/licencek.tsv, naplok/HIBA_MECHANIZMUSOK.md, naplok/KAROLI_PONTOSSAG_jelentes.md, motivumok/HAMART-001.md, motivumok/ISTENTISZT-001.md, lexikon/HAMART-001_TUDOMANYOS.md, lexikon/HAMART-001_KIZARASOK.md, lexikon/ISTENTISZT-001_TUDOMANYOS.md]
-ir: [eszkozok/lapgen/, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, dontesek/uj/f218a-s5-1402d5.md, nyitott/uj/f218a-s5-1402d5.md, dontesek/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s7-466f45.md, dontesek/uj/f218a-s8.md, nyitott/uj/f218a-s8.md, nyitott/uj/f218a-s8b.md, dontesek/uj/f218a-s8c-5ffa99.md, dontesek/uj/f218a-s8d-96a364.md, nyitott/uj/f218a-s8d-96a364.md, dontesek/uj/f218a-s9-722be2.md, nyitott/uj/f218a-s9-722be2.md, adat/licencek.tsv, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_S9_nezes.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
+ir: [dontesek/uj/f218a-s9c-d1312a.md, nyitott/uj/f218a-s9c-d1312a.md, eszkozok/lapgen/, adat/jeloltek.tsv, adat/lapgen_bemenetek.tsv, adat/lapgen_sablonok.tsv, adat/olvasoi_nevtabla.tsv, adat/tematikus_sajat_szo.tsv, dontesek/uj/f218-generator-uj-a.md, dontesek/uj/f218a-s5-1402d5.md, nyitott/uj/f218a-s5-1402d5.md, dontesek/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s6-3896f7.md, nyitott/uj/f218a-s7-466f45.md, dontesek/uj/f218a-s8.md, nyitott/uj/f218a-s8.md, nyitott/uj/f218a-s8b.md, dontesek/uj/f218a-s8c-5ffa99.md, dontesek/uj/f218a-s8d-96a364.md, nyitott/uj/f218a-s8d-96a364.md, dontesek/uj/f218a-s9-722be2.md, nyitott/uj/f218a-s9-722be2.md, adat/licencek.tsv, adat/SEMA.md, adat/elofordulasok.tsv, konkordancia/Konyv_normalizalo_tabla.tsv, eszkozok/general.py, sablonok/6_PaRDeS_lexikon_oldal_sablon.md, naplok/F218_jelentes.md, naplok/F218_folytatas.md, naplok/F218_S9_nezes.md, naplok/F218_referencia.tsv, naplok/F218_elteres_engedely.tsv]
 fugg: []
 nem_fugg: [121, 123, 146, 178, 179]
 ---
@@ -254,7 +254,7 @@ Az F218.1 a súlyossági leltár minden tételéhez `kovetelmeny` oszlopot ír: 
 ### 8.1 HAMART-001 — szakaszonkénti bájt-egyezés, darabszámhoz kötött engedéllyel
 
 - **Referencia:** a main-en commitolt `lexikon/HAMART-001_TUDOMANYOS.md` és `_KIZARASOK.md` az F218.1 commitján. Az F218.1 ellenőrzi, hogy a régi generátor rögzített `PARDES_DATUM`-mal bájtra ugyanezt adja.
-- **Bemenet-hash őr:** a `naplok/F218_referencia.tsv` rögzíti a referencia hash-ét és **minden olvasott bemenet hash-ét** (az új generátor olvasási naplója + a régi generátor B-sorai + a `motivumok/HAMART-001.md`). Ha egy hash a main változása miatt eltér, a `regresszio.py` kimondott hibával megáll („a mérce bemenete megváltozott: <B…>”); a referencia újrafelvétele külön commit, okkal.
+- **Bemenet-hash őr:** a `naplok/F218_referencia.tsv` rögzíti a referencia hash-ét és **minden olvasott bemenet hash-ét** (az új generátor olvasási naplója + a régi generátor B-sorai + a `motivumok/HAMART-001.md`). *Kivétel (N240, S9c, technikai döntés, DT920): a B51 (`DONTESEK.md`, `dontesek/uj/*.md`) minden számkiosztásnál változik, ezért nem áll a hash-őrben (`regresszio.HASH_OR_KIVETEL`); a lap a B51-ből csak a hivatkozott döntések dátumát és érvényességét olvassa, ennek változását a szakasz-diff méri, amely nem önműködő: a `regresszio.py --teljes` futtatásakor (a lapgen teljes tesztkörében és kézzel) jelez, a CI és a `push_elott.py` csak a hash-őrt futtatja. Az ISTENTISZT-001-re (8.2) szakasz-diff nincs.* Ha egy hash a main változása miatt eltér, a `regresszio.py` kimondott hibával megáll („a mérce bemenete megváltozott: <B…>”); a referencia újrafelvétele külön commit, okkal.
 - **Engedélyfájl** (`naplok/F218_elteres_engedely.tsv`): `id` · `szakasz` · `mechanizmus` (HN/GK/T) · `kotes` (`sor`: a régi és az új sor hash-e; vagy `minta`: régi minta → új minta) · **`elvart_db`** · `ok`.
   - Minden diff-sor pontosan egy engedélysorhoz tartozik, különben BUKÁS.
   - **A fel nem használt és a túlhasznált engedélysor is BUKÁS** (`tenyleges_db ≠ elvart_db`).

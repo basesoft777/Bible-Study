@@ -3,7 +3,8 @@
 A motívum ószövetségi helyeit versenként veti össze a Septuagintával (a régi `lxx_osszevetes`,
 `_lxx_ujraminosit`, `lxx_egyforras_ellenoriz`). Egy vers ítélete:
 
-- **egyező**: a versben a motívum egy görög szava áll (a héber kulcsszó 4.11 szerinti saját párjára szűrve);
+- **egyező**: a versben a motívum egy görög szava áll (a héber kulcsszó 4.11 szerinti saját párjára szűrve; a több
+  lemmás társítást („βοάω · ἐπικαλέω”) részenként: bármelyik része saját pár, N196 (b));
 - különben a megjelenő fordítói döntés sora (hídszóra váltott versben csak a hídszóé): **eltérő** (LXX-minuszt
   **LXX-minusz**, ha a döntés szerint a szó a görögből hiányzik);
 - különben a 4.11 ellenőrzött társítása: **eltérő**, „(társítás)” jellel;
@@ -223,15 +224,16 @@ class _Szamito:
         lxx = self._lxx_hely(vers, szavak[0].lxx_hely)
         egyezo = [w for w in szavak if w.strong is not None and w.strong in self.gorog]
         if egyezo:
-            sajat = {lxx_be.ekezet_nelkul(self.tarsitas[(vers.kod, t.kod)].lemma.ertek) for t in tokenek
-                     if (vers.kod, t.kod) in self.tarsitas}
+            # N196 (b), szerkesztői döntés: a több lemmás társítás részenként szűr
+            sajat = {r for t in tokenek if (vers.kod, t.kod) in self.tarsitas
+                     for r in self.tarsitas[(vers.kod, t.kod)].lemmak()}
             if sajat:
                 egyezo = [w for w in egyezo if lxx_be.ekezet_nelkul(w.lemma.ertek) in sajat]
         if egyezo:
             w = egyezo[0]
             lemma_kulcs = lxx_be.ekezet_nelkul(w.lemma.ertek)
             par = next((t for t in tokenek if (vers.kod, t.kod) in self.tarsitas
-                        and lxx_be.ekezet_nelkul(self.tarsitas[(vers.kod, t.kod)].lemma.ertek) == lemma_kulcs), None)
+                        and lemma_kulcs in self.tarsitas[(vers.kod, t.kod)].lemmak()), None)
             if par is not None and self.heber_szo(vers, par) is not None:
                 heber = self.heber_szo(vers, par)
             gorog = Gorog(GorogFajta.SZOVEG, alak=idezet(w.alak), alak_kiejtes=self._potlas(w.strong, w.alak),
@@ -329,7 +331,8 @@ def _kapu_szavankent(modell, szamolt, motivum):
 
 def _kapu_egyforras(szamito, modell, nyers_gorog, motivum):
     """F182 (A19, K72; a régi `lxx_egyforras_ellenoriz`): ugyanarra a (vers, héber szó) párra az 5. szakasz és a 4.11
-    nem adhat eltérő LXX-megfelelőt."""
+    nem adhat eltérő LXX-megfelelőt. A több lemmás 4.11-sor minden részének a cellában kell állnia; az egyező sorban
+    (a Septuaginta egy szava, részenkénti saját pár, N196 (b)) elég az egyiknek."""
     elter = []
     for sor, nyers in zip(modell.sorok, nyers_gorog):
         if sor.itelet not in (Itelet.EGYEZO, Itelet.ELTERO, Itelet.SZOCSALAD, Itelet.NINCS_PAR) or sor.heber is None:
@@ -338,7 +341,8 @@ def _kapu_egyforras(szamito, modell, nyers_gorog, motivum):
         for (v, st), ta in szamito.tarsitas.items():
             if v != sor.vers.kod or szamito.heber_szo(sor.vers, Strong(st)) != sor.heber:
                 continue
-            if not all(x in g_szavak for x in ta.lemmak()):
+            resz = any if sor.itelet is Itelet.EGYEZO else all
+            if not resz(x in g_szavak for x in ta.lemmak()):
                 elter.append((v, st))
     if elter:
         raise KapuHiba('%s: az 5. szakasz és a 4.11 LXX-megfelelője eltér: %r' % (motivum.kod, elter))

@@ -153,7 +153,9 @@ class OlvasasiNaplo(unittest.TestCase):
                   if isinstance(c, ast.Call) and isinstance(c.func, ast.Name) and c.func.id == 'open']
         self.assertEqual(len(nyitok), 1)
         for fuggveny in ast.walk(fa('bemenet/jegyzek.py')):
-            if not isinstance(fuggveny, ast.FunctionDef) or fuggveny.name == '_fajl':
+            # kivétel: a frissességi kapu hash-olvasása (GK-03) nem tartalmi olvasás; ha naplózna, a forrás a
+            # szakaszok forráslistájába is bekerülne (a lap forráslistája a tartalmi olvasásokból jön)
+            if not isinstance(fuggveny, ast.FunctionDef) or fuggveny.name in ('_fajl', '_hash_kapuhoz'):
                 continue
             hivasok = {c.func.attr for c in ast.walk(fuggveny)
                        if isinstance(c, ast.Call) and isinstance(c.func, ast.Attribute)}
@@ -203,6 +205,66 @@ class EloTablak(unittest.TestCase):
         ny = bemenet.nyelv(b)
         self.assertIsNotNone(ny)
         self.assertIsInstance(bemenet.b59_befagyasztott(b), frozenset)
+
+
+class Gk03Pillanatkep(unittest.TestCase):
+    """GK-03 (S9c, DT-F218d (a)): a pillanatkép csak kapuval bemenet (B18, B19, B21, B36, B38); elavított
+    másolattal BUKÁS. A B05 kapuja: `teszt_dontes.py`; a B06-ot a csoportos sor versszáma igazolja."""
+
+    @classmethod
+    def setUpClass(cls):
+        from lapgen.bemenet import frissesseg
+        cls.F = frissesseg
+        cls.b = Bemenet(kozos.GYOKER)
+
+    def test_a_mai_pillanatkepek_atmennek(self):
+        """A mai táblák fejlécében minden jegyzékbeli forrás hash-e egyezik (B18 1, B19 8, B21 2 forrásfájl)."""
+        self.assertEqual([len(self.F.fejlec_kapu(self.b, x)) for x in ('B18', 'B19', 'B21')], [1, 8, 2])
+
+    def test_elavult_fejlec_bukas(self):
+        """Elavított másolat: egy forrás hash-e más, a fejléc hiányzik, vagy nem nevezi meg a forrást: BemenetHiba."""
+        for b_id in ('B18', 'B19', 'B21'):
+            fejsorok = self.b._fejsorok(b_id, self.b._egy_utvonal(b_id), 5)
+            mai = [(f, u, self.b._hash_kapuhoz(u)[:12]) for f in self.F.FEJLEC_KAPU[b_id] for u in self.b._utvonalak(f)]
+            self.F.fejlec_ellenoriz(b_id, fejsorok, mai)
+            elavult = [(f, u, '0' * 12) for f, u, _h in mai]
+            with self.assertRaises(BemenetHiba, msg=b_id):
+                self.F.fejlec_ellenoriz(b_id, fejsorok, elavult)
+            with self.assertRaises(BemenetHiba, msg=b_id):
+                self.F.fejlec_ellenoriz(b_id, [s for s in fejsorok if not s.startswith('# forras:')], mai)
+            with self.assertRaises(BemenetHiba, msg=b_id):
+                self.F.fejlec_ellenoriz(b_id, fejsorok, mai + [('B99', 'adat/nincs_ilyen.tsv', '0' * 12)])
+
+    def test_b36_elavult_vers_bukas(self):
+        """B36: a tábla verse, amelyben a szó a mai héber szövegben nem áll (pl. átkulcsolás után), BemenetHiba; a
+        betűjeles Strong-változat az alapszámmal egyezik."""
+        szoveg = {'1Móz 3:17': ['H0127', 'H0779'], '1Móz 3:18': ['H2403a']}
+        versben = lambda v: szoveg.get(v, [])
+        self.F.lefedettseg_b36('H0127', {'1Móz 3:17': ()}, versben)
+        self.F.lefedettseg_b36('H2403', {'1Móz 3:18': ()}, versben)
+        with self.assertRaises(BemenetHiba):
+            self.F.lefedettseg_b36('H0127', {'1Móz 3:17': (), '1Móz 3:18': ()}, versben)
+
+    def test_b38_elavult_sor_bukas_betoldas_kivetel(self):
+        """B38: a (héber szó, vers) pár a mai héber szövegben áll; a betoldásos csoport kivétel; más pár BemenetHiba."""
+        szoveg = {'1Móz 3:17': ['H0127'], '1Móz 8:21': ['H0127']}
+        versben = lambda v: szoveg.get(v, [])
+        jo = [('H0127', '1Móz 3:17', False), ('H2403', '1Móz 8:21', True), ('H2403', '1Móz 8:21', False),
+              ('G1941', 'Róm 10:13', False)]
+        self.F.lefedettseg_b38('PROBA-001', jo, versben)
+        with self.assertRaises(BemenetHiba):
+            self.F.lefedettseg_b38('PROBA-001', jo + [('H0127', '1Móz 8:22', False)], versben)
+
+    def test_a_mintalapok_b36_es_b38_kapuja_atmegy(self):
+        """A két mintalap szavain a B36 és a B38 kapuja a mai adaton átmegy (a lapgenerálás is futtatja)."""
+        from lapgen.bemenet import hatastortenet as ht_be
+        from lapgen.bemenet import szotari as szotari_be
+        from lapgen.szoveg import Strong
+        parok = szotari_be.b36_lxx_parok(self.b)
+        for kod in ('H0127', 'H7121', 'H8034'):
+            self.assertIsNotNone(parok.versek(Strong(kod)), kod)
+        for azonosito in kozos.MINTALAPOK:
+            self.assertTrue(ht_be.okori_sorok(self.b, MotivumId(azonosito)))
 
 
 if __name__ == '__main__':

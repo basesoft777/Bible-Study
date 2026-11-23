@@ -82,7 +82,8 @@ class ALapon(unittest.TestCase):
             konfig.NEZET_TUDOMANYOS]]
         self.assertIn('| Zsolt 116:17 | Zsolt(LXX) 115:8 | אֶקְרָֽא (ekrá) | nincs megfelelő a görögben (LXX-minusz) '
                       '| LXX-minusz |', sorok)
-        self.assertIn('*Összesítés: egyező=12, ugyanaz a szócsalád=3, eltérő=0, nincs újszövetségi pár=0, LXX-minusz=1, '
+        # N196 (b), szerkesztői döntés (2026-11-23): az 1Kir 18:24 a több lemmás társítás részenkénti szűrésével egyező
+        self.assertIn('*Összesítés: egyező=13, ugyanaz a szócsalád=2, eltérő=0, nincs újszövetségi pár=0, LXX-minusz=1, '
                       'a megfelelő nincs megállapítva=0, versszámozás miatt nem párosítva=0.*', sorok)
         self.assertEqual(sum(1 for s in sorok if s == '#### 4.6. LXX-híd'), 2)
 

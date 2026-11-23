@@ -21,6 +21,7 @@ import unicodedata
 from lapgen import konfig
 from lapgen.bemenet import szavak as szavak_be
 from lapgen.bemenet import szotari as szotari_be
+from lapgen.bemenet import frissesseg
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.konyvek import b63_konyvek
 from lapgen.ertekek import ForrasAllapot, TanuForras
@@ -126,6 +127,9 @@ def _okori_betolt(b, motivum):
             jelentes=b.forrasszoveg('B38', 'jelentes', jel, hely) if jel else None,
             betoldas=sor['betoldas'] == _IGEN, ellenorzott=bool(sor['ellenorzes'].strip()),
             van_alak=bool(sor['alak']), van_lemma=bool(sor['lemma'])))
+    szoveg = szavak_be.b08_tahot(b)
+    frissesseg.lefedettseg_b38(motivum.kod, [(r.strong.kod, r.igehely.kod, r.betoldas) for r in ki],
+                             lambda v: [s[0] for s in szoveg.sorok(v)])
     return tuple(ki)
 
 
