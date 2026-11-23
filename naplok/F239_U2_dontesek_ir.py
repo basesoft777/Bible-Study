@@ -1,4 +1,8 @@
-"""F239 U2 — az integrátor két döntésének adatsorai (egyszeri szkript; DT-F239a, DT-F239b).
+"""F239 U2 — két javaslat adatsorai (egyszeri szkript; DT-F239a, DT-F239b helyőrzővel).
+
+ÁLLAPOT: javaslat, a szerkesztő döntésére vár (naplok/F239_szerkeszto_kerdesek.md). Az F239.5 egyszer lefuttatta,
+az F239.6 a sorokat kivette. Csak a szerkesztő szava után futtatandó újra; előtte a FORRAS és a kapcsolat-indoklás
+„az integrátor” szava és a dátum a tényleges döntéshez igazítandó.
 
 DT-F239a: az ALVIL-001–TEREMT-001 motívumközi kapcsolat az Ez 31:15-ön (jelölt-sor `beépítve` + kapcsolat-sor).
 DT-F239b: a 11 Nave-jelölt döntése (4 kivalasztott, 7 kizart, tiltott nincs).

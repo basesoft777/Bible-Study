@@ -56,7 +56,7 @@ A motívum láncának csomópontjai, szerepükkel. A szakaszbeli szerep (az igeh
 
 ### V5 — A halál mélye: a tehóm és a seól viszonya
 - *Állítás:* a tehóm több helyen (Jón 2:6, Zsolt 71:20, 107:26, Ez 26:19, 31:15) a halál közelségének képe, a seól mellett, de nem azonos vele; a holtak lakóhelye az ÓSZ-ben a seól, nem a tehóm. Az ÚSZ ἄβυσσος-a (Róm 10:7) közeledik a hádészhez. · **szövegtanú** · bizonyíték: Ez 31:15 tehóm + seól egy versben (kollokáció n=1); Jón 2:3 seól, 2:6 tehóm; a 35 tehóm-vers egyikében sem „lakik” halott a tehómban; Róm 10:7 ἐκ νεκρῶν.
-- *Döntés:* **eldöntve** (a határ 3. kérdése: két motívum, érintkezéssel). A lap a seól-motívumot kapcsolódó motívumként nevezi; az Ez 31:15 a két motívum adatbeli kapcsolata (DT-F239a: `jeloltek.tsv` motívumközi sor + `motivum_kapcsolatok.tsv`, `közös_igehely`); a tohu va-vohuval az 1Móz 1:2 csak a prózában áll.
+- *Döntés:* **eldöntve** (a határ 3. kérdése: két motívum, érintkezéssel). A lap a seól-motívumot kapcsolódó motívumként nevezi; hogy az Ez 31:15 adatbeli kapcsolat legyen-e (javaslat: igen, `közös_igehely`; a tohu va-vohuval az 1Móz 1:2 csak a prózában), a szerkesztő döntése (`naplok/F239_szerkeszto_kerdesek.md`).
 
 ### V6 — A Genezis négy helye szándékos ív-e (teremtés → ítélet → helyreállítás → áldás)?
 - *Állítás:* a szerkesztett Genezis szándékosan viszi végig a szót négy regiszteren (a régi tanulmány Remeze). · **recepció** + **hiány** · bizonyíték: a négy hely és a négy funkció szöveg-szintű (B1–B3); a szándékra a szöveg nem tanú.
