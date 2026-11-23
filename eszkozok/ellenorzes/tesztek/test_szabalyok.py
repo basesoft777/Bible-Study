@@ -2530,10 +2530,18 @@ class E43Teszt(unittest.TestCase):
                                    alap_forras=self.FORRAS_ELOTT)
         self.assertEqual(len(SZ.e43_u3_elofeltetel(alap, fej, root=gy)), 1)
 
-    def test_ellenorzott_sor_nincs_hiba(self):
-        for megf, tanu in (('TEREMT-001\tH8415\tclaude-opus-5-5, kézi\n', ''), ('', 'TEREMT-001\t1Móz 1:2\tkézi\n')):
+    def test_mindket_tablaban_ellenorzott_sor_nincs_hiba(self):
+        gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, 'TEREMT-001\tH8415\tclaude-opus-5-5, kézi\n',
+                                   'TEREMT-001\t1Móz 1:2\tkézi\n', alap_forras=self.FORRAS_ELOTT)
+        self.assertEqual(SZ.e43_u3_elofeltetel(alap, fej, root=gy), [])
+
+    def test_csak_az_egyik_tabla_hiba(self):
+        for megf, tanu, hianyzik in (('TEREMT-001\tH8415\tkézi\n', '', 'visszhang_tanuk'),
+                                     ('', 'TEREMT-001\t1Móz 1:2\tkézi\n', 'visszhang_megfelelok')):
             gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, megf, tanu, alap_forras=self.FORRAS_ELOTT)
-            self.assertEqual(SZ.e43_u3_elofeltetel(alap, fej, root=gy), [])
+            t = SZ.e43_u3_elofeltetel(alap, fej, root=gy)
+            self.assertEqual(len(t), 1)
+            self.assertIn(hianyzik, t[0].reszlet)
 
     def test_mas_motivum_visszhangja_nem_szamit(self):
         gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, 'HAMART-001\tH0127\tkézi\n', alap_forras=self.FORRAS_ELOTT)

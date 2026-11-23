@@ -3686,7 +3686,7 @@ SZABALY_LEIRAS['E42'] = ('a generált nézetek jegyzéke (`adat/generalt_nezetek
 # Ismétlődő hiba (TEREMT-001, #239): a próza a visszhang (adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv) előtt készült
 # el; a szövegszabály (C-w „Az U3 előfeltétele”, 4. pont) nem védett, ezért gépi kapu. HIBA, ha a diff egy motívum kézi
 # forrásában (`motivumok/<ID>.md`) prózai rést (`<!-- RÉS-KEZDET: … -->` … `<!-- RÉS-VÉGE: … -->`, jelölőkkel együtt) ír vagy
-# módosít, és a fej-állapot két visszhang-táblájában a motívumnak nincs ellenőrzött (nem üres `ellenorzes`) sora.
+# módosít, és a fej-állapot két visszhang-táblája közül bármelyikben a motívumnak nincs ellenőrzött (nem üres `ellenorzes`) sora (DT integrátor, 2026-11-23: mindkettő az 1. kiadás feltétele).
 # Kivétel: a base-ben már kiadott motívum (`adat/kiadasok.tsv`), ahol a javítás (/lap-javit) a visszhangot a #10 lezárás
 # lépéseként pótolja. A (b) szerkesztői-döntés-jel nincs építve: a `jeloltek.tsv` `nyitva` sora nem megbízható jel (a régi,
 # kiadatlan motívumokon is áll, és a kiadottakon is), a kérdésfájl nyitott pontja nem gépi.
@@ -3695,8 +3695,8 @@ E43_RES_KEZDET = re.compile(r'<!--\s*RÉS-KEZDET:\s*([A-Za-z0-9_]+)\s*-->')
 E43_RES_VEGE = re.compile(r'<!--\s*RÉS-VÉGE:\s*([A-Za-z0-9_]+)\s*-->')
 E43_VISSZHANG_TABLAK = ('adat/visszhang_megfelelok.tsv', 'adat/visszhang_tanuk.tsv')
 E43_KIADASOK = 'adat/kiadasok.tsv'
-E43_UZENET = ('a próza (RÉS-blokk) a 9. Hatástörténet adata előtt készül: a `%s` motívumnak nincs ellenőrzött sora az '
-              '`adat/visszhang_megfelelok.tsv`-ben és az `adat/visszhang_tanuk.tsv`-ben (C-vh); a visszhang 1–2 előbb, '
+E43_UZENET = ('a próza (RÉS-blokk) a 9. Hatástörténet adata előtt készül: a `%s` motívumnak nincs ellenőrzött sora ebben: %s '
+              '(mindkét tábla kell, C-vh); a visszhang 1–2 előbb, '
               'a próza (U3) csak utána (MUNKAMENET C-w, DT940/DT942)')
 
 
@@ -3715,15 +3715,18 @@ def _e43_tabla_sorok(szoveg):
     return sorok[0].rstrip('\r').split('\t'), [x.rstrip('\r').split('\t') for x in sorok[1:]]
 
 
-def _e43_ellenorzott(root, head_ref, az):
+def _e43_hianyzo_tablak(root, head_ref, az):
+    """Azok a visszhang-táblák, amelyekben a motívumnak nincs ellenőrzött (nem üres `ellenorzes`) sora."""
+    hiany = []
     for relut in E43_VISSZHANG_TABLAK:
         fejlec, sorok = _e43_tabla_sorok(_e43_git(root, 'show', '%s:%s' % (head_ref, relut)))
-        if 'motivum' not in fejlec or 'ellenorzes' not in fejlec:
-            continue
-        mi, ei = fejlec.index('motivum'), fejlec.index('ellenorzes')
-        if any(len(r) > ei and r[mi] == az and r[ei].strip() for r in sorok):
-            return True
-    return False
+        ok = False
+        if 'motivum' in fejlec and 'ellenorzes' in fejlec:
+            mi, ei = fejlec.index('motivum'), fejlec.index('ellenorzes')
+            ok = any(len(r) > ei and r[mi] == az and r[ei].strip() for r in sorok)
+        if not ok:
+            hiany.append(relut)
+    return hiany
 
 
 def _e43_kiadott(root, base_ref, az):
@@ -3770,7 +3773,10 @@ def e43_u3_elofeltetel(base_ref, head_ref, esemeny='', root=None):
         if not m:
             continue
         az = m.group(1)
-        if _e43_kiadott(root, base_ref, az) or _e43_ellenorzott(root, head_ref, az):
+        if _e43_kiadott(root, base_ref, az):
+            continue
+        hiany = _e43_hianyzo_tablak(root, head_ref, az)
+        if not hiany:
             continue
         fej = _e43_git(root, 'show', '%s:%s' % (head_ref, relut))
         if fej is None:
@@ -3780,14 +3786,14 @@ def e43_u3_elofeltetel(base_ref, head_ref, esemeny='', root=None):
             tal = sorted(n for n in erintett if kezdo <= n <= vege)
             if tal:
                 talalatok.append(Talalat('E43', SZINT['E43'], relut, tal[0],
-                                         '`%s` rés: %s' % (res, E43_UZENET % az)))
+                                         '`%s` rés: %s' % (res, E43_UZENET % (az, ', '.join(hiany)))))
     return talalatok
 
 
 SZINT['E43'] = 'HIBA'
 FAJLSZINTU_SZABALYOK.add('E43')
 SZABALY_LEIRAS['E43'] = ('az U3 előfeltétele: a nem kiadott motívum kézi forrásának prózai rését (`RÉS-KEZDET`…`RÉS-VÉGE`) a diff csak akkor '
-                         'érinti, ha a motívumnak van ellenőrzött sora a visszhang-táblákban (C-vh; a kiadott motívum kivétel, DT940)')
+                         'érinti, ha a motívumnak mindkét visszhang-táblában van ellenőrzött sora (C-vh; a kiadott motívum kivétel, DT940)')
 
 
 if __name__ == '__main__':
