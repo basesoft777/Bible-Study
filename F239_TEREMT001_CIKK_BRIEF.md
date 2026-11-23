@@ -119,6 +119,7 @@ A C-vh sor szerint, a próza előtt: Targum, Vulgata, a tanúréteg; két kézze
 - **Független ellenőr** (`fuggetlen-ellenor`, friss) a base..head diffen → `naplok/F239_jelentes.md`.
 - **Lektor** (`/kiadas` 1–3. lépése, `lektor` subagent, friss): csak a jelölt helyeket olvassa, listát ad, nem javít.
 - A Fable-modellű szerepek (lektor, független ellenőr) előtt keret-ellenőrzés (`get_usage`).
+- **Olvasói átolvasás** (`/kiadas` 3/b, DT824; az integrátor döntése, 2026-11-23): minta-kapu a renderelt lapon (0 találat), friss kontextusú olvasó a teljes renderelt lapon (az új generátor előnézetéből; brief és döntéslista nélkül, a generált blokkokkal együtt), a `naplok/HIBA_MECHANIZMUSOK.md` lapot érintő nyitott mechanizmusai ellenőrizve; a lista a `naplok/KIADAS_TEREMT-001_lektor.md`-be, nyitott tételként az U5-be.
 
 ### U5 — ⛔ a szerkesztő átnézése
 A renderelt előnézet (lapnézet, privát artifact, világos téma) a lektor listájával; a lektor (U4) listája a lapnézettel együtt, **nyitott tételként** kerül a szerkesztő elé, az egyetlen felület a lapnézet; lezárt lektortétel nem megy vissza hozzá (az integrátor kiegészítése a befogadáskor, 2026-11-23, a 2026-11-23-i döntés szerint). A szerkesztő tételenként dönt; a jóváhagyás szó szerint, dátummal (`naplok/F239_atnezes_TEREMT-001.md`, `adat/lap_atnezesek.tsv`).
