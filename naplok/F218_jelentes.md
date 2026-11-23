@@ -1975,3 +1975,31 @@ Az ELTÉRÉS-ek súlyosság szerint:
 **A tesztváz** (`teszt_vaz.py`) skipjei most: GK-04 `hely_egyseg` (218c, N234) és GK-19 (a JOHD-validáció után, N219). A `teszt_kapuk.Leltar` skipjei: C3, C9 (218c), D3 (218b).
 
 *Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes; --szamlalok (mindkét lap); futtat.py bemenet, kizart, kartya, elofordulas, dontesi_ut, vaz, kapuk, regresszio (célzott) | forras=a munkafa az egyes commitok előtt | ts=2026-11-22`.*
+
+## F218.12 — S9c, 2. rész: az N235, a teljes tesztkör, a nézési csomag és a TEREMT-próba (`claude-opus-5-5`, 2026-11-23, a 19. session)
+
+**Modell-ellenőrzés.** A session `claude-opus-5-5`, a brief `opus`-t kér: egyezik. Ág: `claude/f218a-s9c-d1312a` (a 18. session átadása után, ugyanott).
+
+| Tétel | Kimenet | Mi történt |
+|---|---|---|
+| N235, első fele (DT-F218e (2)) | kész (`96bafed4`) | A két csoportos indoklás (`adat/jeloltek.tsv`, 1Krón 7:22 és 1Kir 8:31) olvasói alakja: „csoportos kizárás (a רַע (ra) és a קָלַל (kálal) csoportjának mintájára)”. A 3. szakaszban 2 diff-sor, engedély: `N235-1`, `N235-2` (8.1 (e)); a B04-hash frissítve. |
+| N235, második fele (DT-F218f) | kész (`71281a60`) | A GK-24 kézi prózai osztályai közé a csupasz Strong-szám. Az előkészített patch a két lapon 96 találatot adott (lent); az integrátor döntése (c): a szótári címke tartós kivétel, az A, B, D csoport 60 név szerinti ismert eltérés, csak fogyhat (`teszt_kapuk.CsupaszStrong`), a javítás N-F218i. A lap nem változik. |
+| A teljes tesztkör örökölt bukásai | kész (`b1917172`) | 391 teszt, 4 bukás, mind a 18. session commitjaiból (a 9. szakasz HN-03-sora; GK-01: a `b36_`/`b38_` nevű lefedettségi kapuk; GK-01 és GK-05: az N238 számlálójának útvonalai és az N196 ismert eltérése a regresszióban). Technikai javítás (DT920). |
+| A nézési csomag (`naplok/F218_S9_nezes.md`) | kész | 2. pont: 150 diff-sor / 147 engedélysor, a Kolofon 55 (28 új / 16 elmaradó / 10 változó; valódi új forrás 13), a 12. szakasz 28, új sorok: HN-03 6, N235 2. 3.A: +4 sablonsor (42–45, HN-03). 3.B: +1 név (Thayer-szótár forrásjavításai), az új `kereses_megszoritas` típus. 3.D: mind a 16 HN-03 hely előtte/utána (10 változik, 6 sor végi jegyzéksor nem). 4.: az N196 és az N237 döntendő tételként, a DT-F218f tájékoztatásként. |
+| A TEREMT-próba bemenete | rád vár: az integrátor | Egyik TEREMT sem fut az új generátoron (lent); a döntési kérdés elküldve. |
+
+**A GK-24 csupasz Strong-szám leltára** (a két mintalap, a kapu kicserélésével mért teljes lista; a jóváhagyott lapokon mind betűre így áll):
+
+| Csoport | Hely | Látható sor | Forrás | Kezelés (DT-F218f) |
+|---|---|---|---|---|
+| A. TSK-kizárás indoklása | HAMART 3. szakasz és a TSK-rész | 29 | `adat/jeloltek.tsv`, 16 cella: „…de nem a H6093 iccávón-t…” | ismert eltérés (1 tétel), N-F218i |
+| B. Károli-csoport blokk-sorai | HAMART 3. szakasz | 57 | `adat/jeloltek.tsv`, 57 cella (F212): „…ezekben a versekben a G0331 szót fordítja…” | ismert eltérés (57 tétel), N-F218i |
+| C. „Miért fontos” címsorai | HAMART 4, ISTENTISZT 3 sor | 7 | `motivumok/*.md` (rés) | tartós kivétel: szótári címke |
+| D. Kapcsolat-indoklás | ISTENTISZT 7. szakasz | 1 | `adat/kapcsolatok.tsv`: „azonos H7121+H8034 pár” | ismert eltérés (2 tétel), N-F218i |
+
+**A TEREMT-próba bemenete** (`general.py --cel lexikon2 --id <ID> --kimenet <repón kívül>`; a további akadályokat scratch-futás tárta fel, a hibás elem átugrásával):
+- TEREMT-001: `B47: a(z) kivonat rés forrása (tematikus_lezart/Tehom_tematikus.md) nem a motívum kézi forrása` — a motívum nincs migrálva (a kézi forrás 23 soros archív kivonat, rés-jelölő nélkül; a rések a régi tanulmányra mutatnak); a #123 migrációja kell.
+- TEREMT-002 (migrált): (1) a `tanitoi` rés a tanítói fájlból jönne (`motivumok/naplok/TEREMT-002_tanitoi_kereses.md`; a tanitoi kivezetés alatt, DT643); (2) a Kivonatban belső munkajelölés: `【NAPLO: F12.6 …】`; (3) a `jeloltek.tsv` 66 TEREMT-002 sorából 19 a régi „scan H8414” / „kollokacio …” forrás-alakot használja, a generátor a „scan:” alakot ismeri (`B04: 1Sám 12:21: a szókeresés korpusza nem állapítható meg`). A 3. után a felmérés nem ment tovább.
+- Mindhárom javítás a 218a hatókörén túli adat vagy forrás; a kérdés az integrátornál.
+
+*Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes (PARDES_DATUM=2026-11-13); futtat.py (teljes: 391 teszt; célzott: kapuk, szerkezet, s9_hatastortenet, bemenet: 71 teszt, 0 bukás); general.py --cel lexikon2 (HAMART-001, ISTENTISZT-001, TEREMT-001, TEREMT-002) | forras=a munkafa az egyes commitok előtt | ts=2026-11-23`.*
