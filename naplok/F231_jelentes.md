@@ -3,7 +3,7 @@
 - **Feladat:** `F231_SZOKARTYA_EGYSEGES_BRIEF.md` (0. szakasz: a hatókör a `naplok/OLVASO_EGYBEN_HIBALISTA.md` 60 sora, a 23. és az 59. sor kivételével).
 - **Modell:** a brief `opus`; a végrehajtó session `claude-opus-5-5` (egyezik).
 - **Ág:** `claude/olvaso-egyben-3464e1`; a main a F235 (#799) után behozva (`f8a6844f`).
-- **Független ellenőrzés: elmarad, DT-F0a gyors sáv** (DT919: a diff a brief fejlécén, ezen a jelentésen és a `naplok/` fájljain túl csak az `eszkozok/olvaso_szerver/` alatti fájlokat érinti).
+- **Független ellenőrzés:** a gyors sáv szerint elmaradt (DT919), a merge előtt egy kódszintű, regresszió-kérdéses olvasás fut a main…fej diffen (integrátori döntés, 2026-11-23; 6. szakasz). A gyors sáv feltétele (DT919: a diff a brief fejlécén, ezen a jelentésen és a `naplok/` fájljain túl csak az `eszkozok/olvaso_szerver/` alatti fájlokat érinti).
 - **Élő ellenőrzés:** az ágas előnézet (8775, a worktree-ből) a main állapotán („előtte”: 34 mintalap) és a javítás után („utána”). A pillanatkép a F232 normalizálójával készült (`teszt_olvasoi_merce.pillanatkep`; a rejtett fülek tartalmával is). A képek és a szkriptek: a jegyzetmappa `olvaso-egyben-elokeszites/` almappája.
 
 ## 1. Döntések
@@ -122,6 +122,7 @@ Kimenet (három kimenet, IRANY.md „Így dolgozunk”; a K a megbízáson kív�
 - **#26** — a Thayer-besorolás javítatlan esetei (N123, N125, N126): #237 (B0).
 - **#29** (a görög alaktani rész) — görög alaktani kulcs kell (adat).
 - **#39** — az LXX-többlet táblái: F235 2. rész.
+- **A belső nevek a felületen (a szerkesztő nézése, 2026-11-23, 8775)** — a szerkesztő belső neveket talált a lapon („Karoli_Strong_parok (token_par)”, „CC BY 4.0; minden jog fenntartva”, „Lefordítva · gépi fordítás, 2026.10.01”, a translationWords nyers Markdownja), és a módszert nem fogadta el: „ezt a módszert nem fogadom el”. A gyökérok: a F232 mérce a mai állapotot rögzítette a hibáival együtt (a `PARDES_MERCE_SZIGORU` nélkül csak figyelmeztet), a `_forras_olvasoi()` pedig regex-cserével „javít”. A #45 és a #46 a tételtáblában J, de éppen ezzel a módszerrel; a belső nevek kérdése **nyitva**, és **rád vár: az alak-kapu szála javítja** (alak-kapu, egy névtábla, blokk-jegyzék; integrátori döntés, 2026-11-23). A #810 egyszeri merge, nem „kész”; példányjavító kör nincs több.
 - **Két megvalósítás (DT-F231a feltétele)** — ha a lapgen olvasói felülete elkészül (#237, B0), az olvasó arra áll át, és a saját kártyamodell kivezetendő.
 
 ## 6. Tesztek és kapu
