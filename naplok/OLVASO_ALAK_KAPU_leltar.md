@@ -3,7 +3,7 @@
 
 A hátralék és a bekötési leltár: minden belső alak, amely ma az olvasó lapjain látszik, mintánként és kódhelyenként. A darabszám a találatok (előfordulások) száma a bejárt lapokon; a kapu (`alak_kapu_hatralek.tsv`) a (minta, kódhely) osztályokat tartja, és új osztályra bukik.
 
-- Szerverek: **main** = `http://localhost:8765` (main @ `0052c1f5`), **pr810** = `http://localhost:8775` (claude/olvaso-egyben-3464e1 @ `e0328691`)
+- Szerverek: **main** = `http://localhost:8765` (main @ `d649461e`), **pr810** = `http://localhost:8775` (claude/olvaso-egyben-3464e1 @ `508a232c`)
 - Bejárt lapok: 77 (egyéb 6, fejezet 3, kereső 6, szó 25, szókártya 3, vers 32, vers-töredék 2); a `merce/` 18 lapja, a vers fülei és rétege, szókártya, kereső, egyéb lapok, és rögzített magú (20261123) véletlen minta: 12 vers, 12 szó.
 - A kódhely ennek a checkoutnak a kódjából áll (a sorszám a `main`-é); a blokk-azonosító (`data-blokk`) mindkét ágon azonos.
 - Nem 200-as lapok: main: /szo/H9999=404; pr810: /szo/H9999=404
@@ -22,13 +22,14 @@ A hátralék és a bekötési leltár: minden belső alak, amely ma az olvasó l
 | `md_link` — nyers Markdown hivatkozás (`[…](…)`) | 0 | 0 | 0 | 0 |
 | `md_cimsor` — nyers Markdown címsor (sor eleji `#`) | 0 | 0 | 0 | 0 |
 | `angol_cimke_tw` — angol szótárcímke, translationWords (pl. `Definition:`) | 180 | 180 | 2 | 2 |
-| `angol_cimke_lexikon` — angol szótárcímke, lexikon (pl. `Derivation:`, `See:`, `KJV:`) | 159 | 163 | 3 | 4 |
+| `angol_cimke_lexikon` — angol szótárcímke, lexikon (pl. `Derivation:`, `See:`, `KJV:`) | 1 | 5 | 1 | 2 |
 | `hosszu_szamazonosito` — hosszú számazonosító (12+ jegy, pl. a 15 jegyű UBS-azonosító) | 555 | 372 | 4 | 5 |
 | `kalap_index` — nyers `^` index | 147 | 4 | 3 | 3 |
 | `licenc_ellentmondas` — ellentmondó licencmondat (`CC BY` és „minden jog fenntartva” egy mondatban) | 80 | 158 | 7 | 7 |
 | `gepi_datum` — nyers dátumos gépi jelölés (pl. „Lefordítva · gépi fordítás, 2026.10.01”) | 16 | 16 | 1 | 1 |
 | `fajlnev` — belső fájlnév (`.db`, `.tsv`, `.py`, `.md`, `.json`, `.toml`) | 81 | 81 | 2 | 2 |
-| **összesen** | **3739** | **4100** | **122** | **121** |
+| `idegen_nyelvu_forras` — idegen nyelvű forrás: angol címke az idézett angol forrásban (nem belső alak, csak jelzés) | 158 | 158 | 2 | 2 |
+| **összesen (a buktató minták)** | **3581** | **3942** | **120** | **119** |
 
 ## Eltérés a szerverek között (hibaosztály: minta · kódhely)
 
@@ -174,8 +175,6 @@ A hátralék és a bekötési leltár: minden belső alak, amely ma az olvasó l
 
 | kódhely | forráshely | main | pr810 | oldaltípus | példa URL | példa |
 |---|---|---:|---:|---|---|---|
-| `blokk:szo.sece_g` | blokkok.py:1887 '_r_szoveg' | 81 | 81 | szó, szókártya | `/szo/G0264` `/szo/G3056` | m-ar-tan'-o｜verb｜to sin) [Grk] ἁμαρτάνω LN: 88.289 GK: G279 Hebrew: אָשַׁם, חָטָא, מ |
-| `blokk:szo.sece_h` | blokkok.py:1887 '_r_szoveg' | 77 | 77 | szó, szókártya | `/szo/H1242` `/szo/H7451` | (subs｜morning) OSHL: b.cu.ad TWOT: 274c GK: H1331, H1332 Greek: ἡμέρα, ὄρθρος, πρωΐ |
 | `blokk:szo.tw_h` | blokkok.py:2013 '_r_tw' | 1 | 1 | szó | `/szo/H7451` | lated in a local or national language. (See: How to Translate Unknowns) |
 | `blokk:vers.lxx_versszam` (attr:title) | blokkok.py:305 '_r_lxx_versszam' | 0 | 4 | vers | `/Zsolt/22/2` `/Zsolt/126/4` | LXX_OS: Psalms (LXX) 21:2; KJV: Psa.21:1-2 \| Psa.21:2 |
 
@@ -221,3 +220,10 @@ A hátralék és a bekötési leltár: minden belső alak, amely ma az olvasó l
 |---|---|---:|---:|---|---|---|
 | `lapváz:div.tan-szoveg` | sablonok/tanulmany.html:10 | 9 | 9 | egyéb | `/tanulmany/1Moz_10v1-11v32` `/tanulmany/1Moz_12v1-20` | Forrás-hivatkozási fegyelem: Strong_szotar.tsv, BDB_teljes_unabridged.tsv, TAHOT_kivon |
 | `lapváz:footer.labjegyzet` | sablonok/alap.html:29 | 72 | 72 | egyéb, fejezet, kereső, szó, vers | `/szo/H1242` `/szo/H7451` | datok a repó TSV-táblázataiból generált pardes.db-ből jönnek; a blokkok és a szövegoszlop |
+
+## `idegen_nyelvu_forras` — idegen nyelvű forrás: angol címke az idézett angol forrásban (nem belső alak, csak jelzés)
+
+| kódhely | forráshely | main | pr810 | oldaltípus | példa URL | példa |
+|---|---|---:|---:|---|---|---|
+| `blokk:szo.sece_g` | blokkok.py:1887 '_r_szoveg' | 81 | 81 | szó, szókártya | `/szo/G0264` `/szo/G3056` | m-ar-tan'-o｜verb｜to sin) [Grk] ἁμαρτάνω LN: 88.289 GK: G279 Hebrew: אָשַׁם, חָטָא, מ |
+| `blokk:szo.sece_h` | blokkok.py:1887 '_r_szoveg' | 77 | 77 | szó, szókártya | `/szo/H1242` `/szo/H7451` | (subs｜morning) OSHL: b.cu.ad TWOT: 274c GK: H1331, H1332 Greek: ἡμέρα, ὄρθρος, πρωΐ |

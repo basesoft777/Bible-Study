@@ -74,7 +74,15 @@ class Minta:
     regex: str
     flags: int = 0
     szuro: object = None      # (talalat, nevek) -> bool; nevek: {'tabla': set, 'dataset': set}
+    idegen: bool = False      # idegen nyelvű forrásban (IDEGEN_NYELVU_BLOKKOK, „Angol eredeti”) nem belső alak: `idegen_nyelvu_forras` lesz
+    kapu: bool = True         # False: csak jelzés (a leltárban áll), a kaput nem buktatja, a hátralékba nem kerül
 
+
+# Az integrátor döntése (2026-11-23): a kifejezetten angol forrásként jelölt blokk eredeti angol címkéi (`Derivation:`, `See:`, `KJV:`,
+# `GK:`) az idézett forrás szövegének részei, nem belső alakok. Ahol a blokk magyar fordítást mutat, és angol címke maradt benne (a tW
+# `Definition:`-ja a fő szövegben), az belső alak. Idegen nyelvű forrás: az alábbi blokkok és a csukott „Angol eredeti” rész.
+IDEGEN_NYELVU_BLOKKOK = frozenset(('szo.sece_h', 'szo.sece_g', 'szo.thayer', 'szo.bdb_angol', 'szo.mcged'))
+IDEGEN_NYELVU_OSZTALY = 'angol-eredeti'
 
 _AZON = r'(?<![\w/.-])[A-Za-z][A-Za-z0-9]*(?:_[A-Za-z0-9]+)+(?![\w-])'
 _ANGOL_TW = ('Definition', 'Facts', 'Bible References', 'Translation Suggestions', 'Word Data', 'Examples from the Bible stories', 'See also')
@@ -94,9 +102,10 @@ MINTAK = (
     Minta('md_felkover', 'nyers Markdown félkövér (`**…**`)', r'\*\*[^*\n]+\*\*'),
     Minta('md_link', 'nyers Markdown hivatkozás (`[…](…)`)', r'\[[^\]\n]+\]\([^)\n]+\)'),
     Minta('md_cimsor', 'nyers Markdown címsor (sor eleji `#`)', r'(?m)^[ \t]*#{1,6}[ \t]+\S'),
-    Minta('angol_cimke_tw', 'angol szótárcímke, translationWords (pl. `Definition:`)', r'\b(?:%s):' % '|'.join(map(re.escape, _ANGOL_TW))),
+    Minta('angol_cimke_tw', 'angol szótárcímke, translationWords (pl. `Definition:`)', r'\b(?:%s):' % '|'.join(map(re.escape, _ANGOL_TW)),
+          idegen=True),
     Minta('angol_cimke_lexikon', 'angol szótárcímke, lexikon (pl. `Derivation:`, `See:`, `KJV:`)',
-          r'(?<![\w-])(?:%s):' % '|'.join(map(re.escape, _ANGOL_LEX))),
+          r'(?<![\w-])(?:%s):' % '|'.join(map(re.escape, _ANGOL_LEX)), idegen=True),
     Minta('hosszu_szamazonosito', 'hosszú számazonosító (12+ jegy, pl. a 15 jegyű UBS-azonosító)', r'(?<!\d)\d{12,}(?!\d)'),
     Minta('kalap_index', 'nyers `^` index', r'\^'),
     Minta('licenc_ellentmondas', 'ellentmondó licencmondat (`CC BY` és „minden jog fenntartva” egy mondatban)',
@@ -104,7 +113,10 @@ MINTAK = (
     Minta('gepi_datum', 'nyers dátumos gépi jelölés (pl. „Lefordítva · gépi fordítás, 2026.10.01”)',
           r'(?:Lefordítva|gépi fordítás)[^\n]{0,40}?\d{4}[.-]\d{2}[.-]\d{2}'),
     Minta('fajlnev', 'belső fájlnév (`.db`, `.tsv`, `.py`, `.md`, `.json`, `.toml`)', r'(?<![\w/])[\w-]+\.(?:db|tsv|py|md|json|toml)\b'),
+    Minta('idegen_nyelvu_forras', 'idegen nyelvű forrás: angol címke az idézett angol forrásban (nem belső alak, csak jelzés)',
+          r'(?!)', kapu=False),      # a találatai az `idegen=True` mintákból jönnek (`talalatok`), saját regexe nincs
 )
+IDEGEN_KULCS = 'idegen_nyelvu_forras'
 MINTA_KULCS = {m.kulcs: m for m in MINTAK}
 _REGEX = {m.kulcs: re.compile(m.regex, m.flags) for m in MINTAK}
 LATHATO_ATTR = ('title', 'alt', 'aria-label', 'placeholder')
@@ -210,6 +222,7 @@ class Szegmens:
     szoveg: str
     hely: str          # 'szöveg' | 'attr:title' | ... | 'fül-cím'
     kodhely: str       # stabil kulcs: 'blokk:<id>' | 'forrássor:<id>' | 'jelleg-címke:<id>' | 'lapváz:<tag.osztály>'
+    idegen: bool = False   # idegen nyelvű forrásban áll (IDEGEN_NYELVU_BLOKKOK törzse, vagy a csukott „Angol eredeti” rész)
 
 
 class _Kinyer(HTMLParser):
@@ -223,6 +236,10 @@ class _Kinyer(HTMLParser):
 
     def _kihagy(self):
         return any(e[1] for e in self.verem)
+
+    def _idegen(self):
+        k = self._kodhely()
+        return (k.startswith('blokk:') and k[6:] in IDEGEN_NYELVU_BLOKKOK) or any(IDEGEN_NYELVU_OSZTALY in e[3] for e in self.verem)
 
     def _kodhely(self):
         blokk = None
@@ -245,7 +262,7 @@ class _Kinyer(HTMLParser):
 
     def _flush(self):
         if self.sor.strip() and not self._kihagy():
-            self.szeg.append(Szegmens(_normal(self.sor), 'szöveg', self._kodhely()))
+            self.szeg.append(Szegmens(_normal(self.sor), 'szöveg', self._kodhely(), self._idegen()))
         self.sor = ''
 
     def handle_starttag(self, tag, attrs):
@@ -274,7 +291,7 @@ class _Kinyer(HTMLParser):
     def _attr(self, a, tag):
         for n in LATHATO_ATTR:
             if a.get(n) and a[n].strip():
-                self.szeg.append(Szegmens(_normal(a[n]), 'attr:' + n, self._kodhely()))
+                self.szeg.append(Szegmens(_normal(a[n]), 'attr:' + n, self._kodhely(), self._idegen()))
 
     def handle_endtag(self, tag):
         if tag == 'title' and self.cim is not None:
@@ -338,7 +355,8 @@ def talalatok(url, html, nv):
                     continue
                 a, b = t.start(), t.end()
                 korny = sz.szoveg[max(0, a - 40):b + 40].replace('\n', ' ⏎ ')
-                ki.append(Talalat(m.kulcs, sz.kodhely, url, sz.hely, t.group(0), korny))
+                kulcs = IDEGEN_KULCS if (m.idegen and sz.idegen) else m.kulcs
+                ki.append(Talalat(kulcs, sz.kodhely, url, sz.hely, t.group(0), korny))
     return ki
 
 
@@ -403,7 +421,8 @@ def bejaras(lekero, urlek, nv):
 
 
 def osztalyok(talalat_lista):
-    return sorted({(t.minta, t.kodhely) for t in talalat_lista})
+    """A kapu hibaosztályai: (minta, kódhely); a nem buktató (`kapu=False`) minták jelzései nélkül."""
+    return sorted({(t.minta, t.kodhely) for t in talalat_lista if MINTA_KULCS[t.minta].kapu})
 
 
 def hatralek_olvas(szoveg=None):
@@ -509,6 +528,17 @@ class TestMintak(unittest.TestCase):
         k = sorted((t.minta, t.szoveg) for t in talalatok('/x', '<p>projekt_adat <span hidden>token_par</span> utana</p>', self.NV))
         self.assertEqual(k, [('dataset_kod', 'projekt_adat')])
 
+    def test_idegen_nyelvu_forras_jelzes_nem_hibaosztaly(self):
+        # az integrátor döntése (2026-11-23): a SECE eredeti angol címkéje idézett forrás; a tW fő szövegében maradt `Definition:` belső alak
+        h = ('<section data-blokk="szo.sece_h"><div>OSHL: x GK: H1331 Derivation: from y</div></section>'
+             '<section data-blokk="szo.tw_h"><div>Definition: a word</div><details class="angol-eredeti"><summary>Angol eredeti</summary>'
+             '<div>See: How to Translate</div></details></section>')
+        t = talalatok('/x', h, self.NV)
+        self.assertEqual(sorted((x.minta, x.kodhely, x.szoveg) for x in t),
+                         [('angol_cimke_tw', 'blokk:szo.tw_h', 'Definition:'), ('idegen_nyelvu_forras', 'blokk:szo.sece_h', 'Derivation:'),
+                          ('idegen_nyelvu_forras', 'blokk:szo.sece_h', 'GK:'), ('idegen_nyelvu_forras', 'blokk:szo.tw_h', 'See:')])
+        self.assertEqual(osztalyok(t), [('angol_cimke_tw', 'blokk:szo.tw_h')])
+
     def test_oldaltipus(self):
         self.assertEqual([oldaltipus(u) for u in ('/', '/1Moz', '/1Moz/1', '/1Moz/1/1?ful=kh', '/szo/H1', '/r/szo/H1', '/r/vers/a/1/1',
                                                   '/kereses?q=x', '/tanulmany/x')],
@@ -603,8 +633,8 @@ def leltar(szerverek):
         dbk = [sum(1 for t in eredm[n][0] if t.minta == m.kulcs) for n in nevsor]
         osz = [len({t.kodhely for t in eredm[n][0] if t.minta == m.kulcs}) for n in nevsor]
         ki.append('| `%s` — %s | %s | %s |' % (m.kulcs, m.leiras, ' | '.join(map(str, dbk)), ' | '.join(map(str, osz))))
-    ossz = [len(eredm[n][0]) for n in nevsor]
-    ki.append('| **összesen** | %s | %s |' % (' | '.join('**%d**' % x for x in ossz),
+    ossz = [sum(1 for t in eredm[n][0] if MINTA_KULCS[t.minta].kapu) for n in nevsor]
+    ki.append('| **összesen (a buktató minták)** | %s | %s |' % (' | '.join('**%d**' % x for x in ossz),
                                              ' | '.join('**%d**' % len(osztalyok(eredm[n][0])) for n in nevsor)))
     ki.append('')
     if len(nevsor) > 1:
