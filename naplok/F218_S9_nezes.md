@@ -4,6 +4,8 @@
 
 ## 1. A két renderelt lap
 
+**A szerkesztő szava (2026-11-23):** „hamart az istentisztelettel - átnézésre / jóváhagyás után teremt”. A két lap együtt megy átnézésre, mindkettő előtte–utána eltéréseivel (HAMART-001: 2. pont; ISTENTISZT-001: 2/b pont); a TEREMT-001 a jóváhagyás után, saját briefben.
+
 Mindkét lap az új generátor kimenete, munka módban, `PARDES_DATUM=2026-11-13`, a repón kívül; a session végén a felhasználónak külön is elküldve:
 - `HAMART-001_TUDOMANYOS.md` (3288 sor) és `HAMART-001_KIZARASOK.md` (431 sor);
 - `ISTENTISZT-001_TUDOMANYOS.md` (1705 sor) és `ISTENTISZT-001_KIZARASOK.md` (307 sor).
@@ -29,6 +31,32 @@ Mindkét lap az új generátor kimenete, munka módban, `PARDES_DATUM=2026-11-13
 | A melléklet könyvnevei és forrássorai (GK-17, DT823) | KIZARASOK | 8 | A könyv az adat szerinti rövidítéssel és a Károli-rend helyén (4); a mérés forrássora megjegyzésben, a látható sor a keresés olvasói nevével (4). |
 | **HN-03: a mondatközi, zárójeles forrásnév** (8.1 (f), DT925 (2) (a), DT-F218e (1)); S9c | 2., 4., 9. | 6 | A forrásnév a mondat végére vagy „forrás:” alakba kerül (4 új sablonmondat: 3.A 42–45). Minden hely előtte/utána: 3.D. |
 | **A csoportos kizárás indoklása** (8.1 (e), N235, DT-F218e (2) (a)); S9c | 3. Kizárt és vizsgált helyek | 2 | Az adatban (`adat/jeloltek.tsv`, az 1Krón 7:22 és az 1Kir 8:31 csoportsora): „a többi előfordulása ezért blokk-kizárás (a H7451 és a H7043 blokkjának mintájára).” → „a többi előfordulása ezért csoportos kizárás (a רַע (ra) és a קָלַל (kálal) csoportjának mintájára).” |
+
+## 2/b. Előtte–utána: ISTENTISZT-001
+
+**Előtte:** a jóváhagyott lap, `lexikon/ISTENTISZT-001_TUDOMANYOS.md` — az 1. kiadás (2026.11.04), a régi generátorral, a régi forrásból; a motívum lapja be van fagyasztva, a 2. kiadás az új generátorral készül (DT835, `adat/lap_befagyasztas.tsv`). **Utána:** az új generátor lapja a mai forrásból és adatból (a forrás és az adat a 2. kiadásra kész, 2026-11-12/13). Az eltérés tehát három rétegből áll együtt: (1) az új szakaszrend és a generátor eltérései (ugyanazok az osztályok, mint a HAMART-001-nél: forráslista az olvasásból, a kritérium egyetlen helye, a Kolofon forrástáblája, HN-03, a belső jelölések nélküli sablonmondatok); (2) az adat változása az 1. kiadás óta; (3) a migrált, újraírt kézi forrás (`motivumok/ISTENTISZT-001.md`). A HAMART-nál alkalmazott soronkénti engedély-mérce (8.1) itt nem alkalmazható; a mérce a 8.2 (a független számlálók: mind egyezik, az N196 ismert eltéréssel). A teljes soronkénti diff (2302 sor, 414 KB) a nézéskor külön fájlként megy (a jegyzetmappa `F218_S9_ISTENTISZT_elotte_utana.diff` fájlja).
+
+| Szakasz (régi → új) | Diff-sor (− / +) | A fő változás |
+|---|---|---|
+| (a lap eleje) | 0 / 8 | Új: „A motívum”, „Mi tartozik ide, és mi nem”, „A tágabb kör” (a kritérium egyetlen helye, DT872, a HAMART mintájára). |
+| Kivonat | 2 / 6 | Új kézi Kivonat a HAMART mintájára (DT-F218w): a formula, a 20 hely bontása, a 2Móz 33:19 és 34:5 határesete, a tágabb kör. |
+| Tartalomjegyzék, Jelmagyarázat | 31 / 30 | Az új szakaszrend (15 szakasz); „lap” → „szócikk”; a belső hivatkozások (`adat/SEMA.md`, `sablonok/…`, a proveniencia-sor magyarázata) helyett olvasói szöveg; új: a szótári pontok magyarázata. |
+| — → 1. Döntési út | új szakasz | A keresés lépései és számai (a HAMART-on már jóváhagyott szakasz). |
+| 1. Előfordulások → 2. | 105 / 74 | **22 → 20 hely** (16 ószövetségi, 6 → 4 újszövetségi; az adat 2026-11-12-i állapota); a soronkénti lábjegyzetek közös forrásmegjelölésbe; az igehelyek szövege alatt új kézi mondatok és funkciók; „1/a” → „2.1”. |
+| 1/b. Kizárt és vizsgált helyek → 3. | 204 / 122 | 560 → 579 vizsgált vers, 109 → 115 elutasított/nyitott sor; a kizárás mércéje hivatkozás a lap elejére; az okok táblája olvasói címkékkel (N237: a rövid címke névelője). |
+| 2. Szótári háttér → 4. | 407 / 416 | A számozott szótári pontok (4.1–4.14) rendje, a „Miért fontos ez a lelet” új kézi szövege; a belső fájl- és szerepmátrix-hivatkozások helyett olvasói forrásnevek. |
+| 3. LXX-fordítói döntések → 5. | 22 / 24 | Az összesítés a mai adatból; az 1Kir 18:24 ítélete „ugyanaz a szócsalád” (N196, döntendő). |
+| 4. Kereszthivatkozások → 6. | 151 / 86 | 22 → 20 hely, 9 → 8 utaló hely, 20 → 19 utalás; „Votes” → „szavazat”; a javított Károli-KH tábla; a Minősítés a mai adatból. |
+| 5. Kapcsolatok → 7. | 32 / 27 | 18 → 16 kapcsolat (15 → 13 párhuzam; 14 magas, 3 közepes); az indoklások a mai `kapcsolatok.tsv`-ből. |
+| 5/b. → 8. Kapcsolódó motívumok | 5 / 5 | Forráslista és szöveg. |
+| — → 9. Hatástörténet | új szakasz | Ókori fordítások (ÓSZ, ÚSZ) és ókori értelmezők (a HAMART-on már jóváhagyott szakasz; GK-SZOPAR: a szópáros lánc). |
+| 6. Értelmezés → 10. | 198 / 13 | A régi hosszú értelmezés (PaRDeS-keret, „Új felismerés — a D-minta görög folytatása”) helyett a migrált kézi forrás rövid Értelmezése és „Vitatott pontok” része; a régi szöveg az archívumban (`archivum/ISTENTISZT-001/`). |
+| 6/b. Alkalmazás és tanítói egyezés | csak a régin | Kivezetve (az `alkalmazas` rés: DT756; a `tanitoi`: DT643). |
+| 7. Módszertan és nyitott kérdések → 11. | 65 / 10 | A régi A/B/C/D tipológia helyett a migrált forrás rövid Módszertana és „Nyitott kérdések” része. |
+| 8. Irodalom és idézés → 12. | 52 / 60 | A forráslista az olvasásból (DT901); a hivatkozási adatok a `kiadasi_adat` névtáblából; HN-03 (3 jegyzéksor nem változik). |
+| Kolofon | 72 / 75 | A forrástábla a valódi olvasásból (DT912); a szerzőségi mondat a 6/b nélkül; a „Hogyan idézd” a kiadási adatokkal kitöltve (a helyőrzők helyett). |
+
+**Az ISTENTISZT-001-en döntendő:** az N196 és az N237 (4. pont). A 3. pont sablonmondatai és nevei a két lapra közösek.
 
 ## 3. Az S2–S9 új sablonmondatai és nevei
 
