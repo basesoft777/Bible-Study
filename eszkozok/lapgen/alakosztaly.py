@@ -10,10 +10,13 @@ megjegyzés, jelölés). A kapu ezen fut, nem a nyers szövegen:
 A megjegyzés, a horgony és a szerkezeti jelölés nem látható szöveg, a kapu nem nézi.
 
 A csupasz Strong-szám (N235, DT-F218e (2), DT-F218f) két kivétele:
-- tartós: a szótári címke a címsorban („#### H0779 — אָרַר (árar) · BDB”): a Strong-szám után „ — ” és a szó áll;
-- ismert eltérés: az `ISMERT_CSUPASZ_STRONG` név szerinti listája (az S9c leltára, a két mintalap kézi adatában).
-  A lista csak fogyhat: új tétel nem kerülhet rá, és minden tételének legalább az egyik mintalapon elő kell fordulnia
-  (`teszt_kapuk.CsupaszStrong`); a javítás az N-F218i (a 218c adatköre, az F218.13 után).
+- tartós: a szótári címke a címsorban („#### H0779 — אָרַר (árar) · BDB”): a Strong-szám után „ — ” és héber vagy
+  görög betűvel a szó áll;
+- ismert eltérés: az `ISMERT_CSUPASZ_STRONG` név szerinti listája (az S9c leltára, a két mintalap kézi adatában), a
+  tételenként egy lapon megengedett legnagyobb darabszámmal; a darabszám fölötti előfordulás a kapun BUKÁS.
+  A lista csak fogyhat: új tétel nem kerülhet rá (a befagyasztott leltár hash-sel rögzített), és minden tételének
+  legalább az egyik mintalapon elő kell fordulnia (`teszt_kapuk.CsupaszStrong`); a javítás az N-F218i (a 218c
+  adatköre, az F218.13 után).
 
 Kalibrálás: a két jóváhagyott mintalap prózáján és idézetein 0 hamis találat
 (`teszt_kapuk.py`). Szólista nem kapu: a minták alakot keresnek, nem szavakat.
@@ -44,8 +47,9 @@ PROZA_ALAKOK = (
     ('tételszám', SABLON_ALAKOK[3][1]),
     ('proveniencia-mező', re.compile(r'\b(?:scope|forras)=')),
     ('tört írásjel', SABLON_ALAKOK[9][1]),
-    # N235 (DT-F218e (2), DT-F218f): a zárójel nélküli Strong-szám belső jelölés (a zárójeles: GK-A10)
-    (CSUPASZ_STRONG, re.compile(r'(?<![\w/])[HG]\d{4}[a-z]?\b')),
+    # N235 (DT-F218e (2), DT-F218f): a zárójel nélküli Strong-szám belső jelölés (a zárójeles: GK-A10); a nem négyjegyű
+    # és a betű-utótagos alak (TBESH: H7451A) is
+    (CSUPASZ_STRONG, re.compile(r'(?<![\w/])[HG]\d{1,5}[A-Za-z]?\b')),
 )
 # az idézeten tilos alakok: csak a proveniencia
 IDEZET_ALAKOK = (
@@ -53,11 +57,12 @@ IDEZET_ALAKOK = (
 )
 _ALAKOK = {Fajta.SABLON: SABLON_ALAKOK, Fajta.PROZA: PROZA_ALAKOK, Fajta.IDEZET: IDEZET_ALAKOK}
 
-# A szótári címke (tartós kivétel, DT-F218f (3)): címsorban a Strong-szám után „ — ” és a szó.
-_CIMKE_UTAN = ' — '
+# A szótári címke (tartós kivétel, DT-F218f (3)): címsorban a Strong-szám után „ — ” és héber vagy görög betűvel a szó.
+_CIMKE_RX = re.compile(r' — [\u0590-\u05FF\u0370-\u03FF\u1F00-\u1FFF]')
 
-# Az ismert eltérések (DT-F218f (4)): (csoport, Strong-szám, a szövegrész, amelyben áll). A javításuk az N-F218i.
-# A: a TSK-kizárás indoklása (16 cella); B: a Károli-csoport blokk-sorai (57 cella); D: egy kapcsolat-indoklás.
+# Az ismert eltérések (DT-F218f (4)): (csoport, Strong-szám, a szövegrész, amelyben áll, legfeljebb ennyi előfordulás egy
+# lapon). A javításuk az N-F218i. A: a TSK-kizárás indoklása (16 cella, a HAMART-001-en 29 látható sor); B: a Károli-
+# csoport blokk-sorai (57 cella, soronként 1); D: egy kapcsolat-indoklás (1 sor, 2 szám).
 _B_STRONGOK = (
     'G0173', 'G0174', 'G0331', 'G0332', 'G0685', 'G0862', 'G0942', 'G0971',
     'G2647', 'G2653', 'G2692', 'G3639', 'G4485', 'G4647', 'G4938', 'G5146',
@@ -69,9 +74,9 @@ _B_STRONGOK = (
     'H8395',
 )
 ISMERT_CSUPASZ_STRONG = (
-    (('A', 'H6093', 'de nem a H6093 iccávón-t'),)
-    + tuple(('B', s, 'ezekben a versekben a %s szót fordítja' % s) for s in _B_STRONGOK)
-    + (('D', 'H7121', 'azonos H7121+H8034 pár'), ('D', 'H8034', 'azonos H7121+H8034 pár'))
+    (('A', 'H6093', 'de nem a H6093 iccávón-t', 29),)
+    + tuple(('B', s, 'ezekben a versekben a %s szót fordítja' % s, 1) for s in _B_STRONGOK)
+    + (('D', 'H7121', 'azonos H7121+H8034 pár', 1), ('D', 'H8034', 'azonos H7121+H8034 pár', 1))
 )
 
 
@@ -94,7 +99,7 @@ def _darabok(sor):
 
 def _csupasz_kivetel(sor, szoveg, m):
     """A csupasz Strong-szám kivétele: None, ha nincs; 'címke' a szótári címkénél; különben az ismert eltérés tétele."""
-    if sor.szoveg.startswith('#') and szoveg.startswith(_CIMKE_UTAN, m.end()):
+    if sor.szoveg.startswith('#') and _CIMKE_RX.match(szoveg, m.end()):
         return 'címke'
     for tetel in ISMERT_CSUPASZ_STRONG:
         if tetel[1] != m.group(0):
@@ -108,8 +113,8 @@ def _csupasz_kivetel(sor, szoveg, m):
 
 
 def talalatok(sorok, hasznalt=None):
-    """Az alakosztály-találatok a kész sorokon: [(sorszám, fajta, osztály, a talált alak)]. A `hasznalt` halmazba
-    (ha meg van adva) az ismert eltérések azon tételei kerülnek, amelyek a sorokon előfordultak."""
+    """Az alakosztály-találatok a kész sorokon: [(sorszám, fajta, osztály, a talált alak)]. A `hasznalt` szótárba
+    (ha meg van adva) az ismert eltérések tételei kerülnek, előfordulásuk számával."""
     ki = []
     for n, sor in enumerate(sorok, start=1):
         for fajta, szoveg in _darabok(sor):
@@ -119,7 +124,7 @@ def talalatok(sorok, hasznalt=None):
                         kivetel = _csupasz_kivetel(sor, szoveg, m)
                         if kivetel is not None:
                             if hasznalt is not None and kivetel != 'címke':
-                                hasznalt.add(kivetel)
+                                hasznalt[kivetel] = hasznalt.get(kivetel, 0) + 1
                             continue
                     ki.append((n, fajta, nev, m.group(0)))
     return ki
@@ -127,9 +132,13 @@ def talalatok(sorok, hasznalt=None):
 
 def kapu(nezetek):
     """A kapu a lap minden nézetén. Találatnál AlakHiba a találatok felsorolásával."""
-    hibak = []
+    hibak, hasznalt = [], {}
     for nezet, sorok in nezetek.items():
-        hibak.extend((nezet,) + t for t in talalatok(sorok))
+        hibak.extend((nezet,) + t for t in talalatok(sorok, hasznalt))
+    tobb = sorted((t, db) for t, db in hasznalt.items() if db > t[3])
+    if tobb:
+        raise AlakHiba('alakosztály-kapu (GK-24): az ismert eltérés a megengedettnél többször áll a lapon: %s' % '; '.join(
+            '%s „%s”: %d (legfeljebb %d)' % (t[1], t[2], db, t[3]) for t, db in tobb))
     if hibak:
         raise AlakHiba('alakosztály-találat a látható szövegen (GK-24): %s' % '; '.join(
             '%s %d. sor, %s: %s „%s”' % (nezet, n, fajta.value, nev, alak) for nezet, n, fajta, nev, alak in hibak[:10]))

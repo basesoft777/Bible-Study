@@ -144,7 +144,7 @@ class Alakosztaly(unittest.TestCase):
 
 
 # Az S9c leltára (N235, DT-F218f (4)), befagyasztva: az ismert eltérések listája ennek részhalmaza lehet, bővülni nem.
-# Ezt a másolatot csak törlés érintheti (a javított tétel kikerül a listából és innen is).
+# A másolat nem változik (a hash-e rögzített); a javított tétel csak az `alakosztaly.ISMERT_CSUPASZ_STRONG`-ból kerül ki.
 _S9C_B = (
     'G0173', 'G0174', 'G0331', 'G0332', 'G0685', 'G0862', 'G0942', 'G0971',
     'G2647', 'G2653', 'G2692', 'G3639', 'G4485', 'G4647', 'G4938', 'G5146',
@@ -156,9 +156,10 @@ _S9C_B = (
     'H8395',
 )
 _S9C_LELTAR = frozenset(
-    {('A', 'H6093', 'de nem a H6093 iccávón-t'),
-     ('D', 'H7121', 'azonos H7121+H8034 pár'), ('D', 'H8034', 'azonos H7121+H8034 pár')}
-    | {('B', s, 'ezekben a versekben a %s szót fordítja' % s) for s in _S9C_B})
+    {('A', 'H6093', 'de nem a H6093 iccávón-t', 29),
+     ('D', 'H7121', 'azonos H7121+H8034 pár', 1), ('D', 'H8034', 'azonos H7121+H8034 pár', 1)}
+    | {('B', s, 'ezekben a versekben a %s szót fordítja' % s, 1) for s in _S9C_B})
+_S9C_LELTAR_HASH = '4bc1f88adfd9ad3597e663b9f8c22d32caa103abf8604ef3160f5239cdfb5b45'   # a leltár sha256-a
 
 
 class CsupaszStrong(unittest.TestCase):
@@ -166,18 +167,23 @@ class CsupaszStrong(unittest.TestCase):
     kivétel, az ismert eltérések listája csak fogyhat."""
 
     def test_a_lista_csak_fogyhat(self):
+        """A lista a befagyasztott leltár részhalmaza (darabszámmal együtt: a megengedett darabszám sem nőhet); a leltár
+        maga nem változik (hash)."""
+        import hashlib
         lista = alakosztaly.ISMERT_CSUPASZ_STRONG
         self.assertEqual(len(lista), len(set(lista)), 'ismétlődő tétel')
-        self.assertLessEqual(len(_S9C_LELTAR), 60)
+        self.assertEqual(len(_S9C_LELTAR), 60)
+        lenyomat = hashlib.sha256(repr(sorted(_S9C_LELTAR)).encode('utf-8')).hexdigest()
+        self.assertEqual(lenyomat, _S9C_LELTAR_HASH, 'a befagyasztott leltár nem változhat')
         self.assertEqual(set(lista) - _S9C_LELTAR, set(), 'új tétel nem kerülhet az ismert eltérések közé')
 
     def test_minden_tetel_elofordul_a_mintalapokon(self):
         """A javított tétel kikerül a listából: minden tétel legalább az egyik mintalapon áll."""
-        hasznalt = set()
+        hasznalt = {}
         for azonosito in MINTALAPOK:
             for sorok in _lap(azonosito).nezetek.values():
                 alakosztaly.talalatok(sorok, hasznalt)
-        self.assertEqual(set(alakosztaly.ISMERT_CSUPASZ_STRONG) - hasznalt, set(),
+        self.assertEqual(set(alakosztaly.ISMERT_CSUPASZ_STRONG) - set(hasznalt), set(),
                          'a mintalapokon már nem álló tétel törlendő a listából (és a leltár másolatából)')
 
     def test_a_kivetelek_hatara(self):
@@ -194,8 +200,21 @@ class CsupaszStrong(unittest.TestCase):
         self.assertEqual(fajtak('szót, de nem a H6093 iccávón-t — a három'), [])
         self.assertEqual(fajtak('szót, de nem a H6093 iccávón-t, és a H6093 máshol'), [nev])
         self.assertEqual(fajtak('de nem a H6094 iccávón-t'), [nev])
-        # a zárójeles alak (GK-A10) és a link nem csupasz
+        # a zárójeles alak (GK-A10) és a link nem csupasz; a nem négyjegyű és a betű-utótagos alak igen
         self.assertEqual(fajtak('[עֶצֶב](/szo/H6089)'), [])
+        self.assertEqual(fajtak('a H7451A és a H779 szó'), [nev, nev])
+        # a címke után héber vagy görög szónak kell állnia
+        self.assertEqual(fajtak('#### H0779 — a szó'), [nev])
+        self.assertEqual(fajtak('#### G1941 — ἐπικαλέω (epikaleó) · Thayer'), [])
+
+    def test_a_darabszam_folott_bukas(self):
+        """Az ismert eltérés a megengedett darabszám fölött a kapun BUKÁS (új cella ugyanazzal a fordulattal)."""
+        def sor(szoveg):
+            return KeszSor(szoveg, ((0, len(szoveg), Fajta.PROZA),))
+        b = 'ezekben a versekben a G0331 szót fordítja'
+        alakosztaly.kapu({'TUDOMANYOS': [sor(b)]})
+        with self.assertRaises(BemenetHiba):
+            alakosztaly.kapu({'TUDOMANYOS': [sor(b), sor(b)]})
 
 
 class Szerkezet(unittest.TestCase):

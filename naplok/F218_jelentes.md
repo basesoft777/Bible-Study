@@ -2002,3 +2002,38 @@ Az ELTÉRÉS-ek súlyosság szerint:
 **TEREMT-002:** befagyasztott lap, az akadálylista a jegyzetmappában, a befagyasztott lapok újragondolásáig marad.
 
 *Proveniencia: `scope=python eszkozok/lapgen/regresszio.py --id HAMART-001 --teljes (PARDES_DATUM=2026-11-13); futtat.py (teljes: 391 teszt; célzott: kapuk, szerkezet, s9_hatastortenet, bemenet: 71 teszt, 0 bukás); general.py --cel lexikon2 (HAMART-001, ISTENTISZT-001) | forras=a munkafa az egyes commitok előtt | ts=2026-11-23`.*
+
+## F218.12 — S9c: a 16. független ellenőrzés (`fuggetlen-ellenor`, `claude-fable-5-2`, 2026-11-23)
+
+*A hívó session menti (a `fuggetlen-ellenor` válasza, változatlan tartalommal, tömörített táblával). Az első indítás a brief `modell: opus` mezőjét vette kért modellnek, és megállt; a CLAUDE.md szerint az ellenőrnél a saját subagent-fájl `model: fable` mezője a mérvadó, az újraindítás egyezett. A Fable-keret az indításkor 9%.*
+
+**ELTÉRÉS: 7 tétel.** Brief: `F218_GENERATOR_UJ_A_BRIEF.md` · tartomány: `cfe883a4..3bef2871` (13 commit, 34 fájl) · szint: `teljes` · CI: `ellenorzes` 45130623030, `headSha` = `3bef2871…`, `conclusion: failure`. Lapgen-futást nem indított, fájlt nem írt; ami csak futással dönthető el, jelölve.
+
+| pont | eredmény | fájl:sor | indok |
+|---|---|---|---|
+| 0. Modell | OK | `.claude/agents/fuggetlen-ellenor.md:5` | `claude-fable-5-2` = `model: fable`. Megfigyelés: a fájl 40. sora még „`model` mezője: `opus`”-t ír, a brief 293. sora „Az ellenőr modellje nem Fable”-t. |
+| 3. CI a head-re | ELTÉRÉS (tartalmi, súlyos) | `lexikon/HAMART-001_TUDOMANYOS.md:948` | A CI (F217): „a kiadott lap … tartalma változna új kiadás nélkül: nincs új adat/kiadasok.tsv- vagy adat/lap_javitasok.tsv-sor … Út: /kiadas HAMART-001 … vagy /lap-javit HAMART-001”. A 948–949. sor a két N235-sor. |
+| 3. CI a head-re | ELTÉRÉS (mechanikus) | `naplok/F218_S9_nezes.md` | 3 HIBA: átnevezett címsor „TÖRLÉS-SZÁNDÉKOS:” jelölés nélkül (3.A, 3.B, 3.D). |
+| G: 11/5 (a régi generátor kimenete bájtra azonos) | ELTÉRÉS (az 1. tétellel egy) | `naplok/F218_S9_nezes.md:11` | A head-en a régi generátor a javított `jeloltek.tsv`-ből a 948–949. sort másként adja. |
+| G: `ir` mező | ELTÉRÉS (mechanikus) | `F218_GENERATOR_UJ_A_BRIEF.md:16` | Az `adat/jeloltek.tsv` nincs az `ir`-ben. |
+| 1: GK-24 kivételei | ELTÉRÉS (tartalmi, közepes) | `eszkozok/lapgen/alakosztaly.py`, `teszt_kapuk.py` | (a) az ismert eltérés szövegrészhez és számhoz kötött, darabszámhoz nem: új cella ugyanazzal a fordulattal átmegy; (b) a minta a betű-utótagos (`H7451A`) és a nem négyjegyű (`H779`) alakot nem fogja (ma 0 ilyen); (c) a 60-as plafon rögzített, a két másolat együtt újra bővíthető. |
+| 1: egyezés a DT-F218f (c)-vel | OK | `alakosztaly.py` | A négy pont teljesül; a címke-szabály a „ — ” utáni szót nem nézi. |
+| 2: N235, csak két cella | OK | `adat/jeloltek.tsv:922-923` | Soronként három csere, más mező nem; a רַע (ra) és a קָלַל (kálal) lekérdezéssel igazolva. Megfigyelés: a csoport saját sora a kiadott lapon „qalal” átírással áll (`:872`), az új cella „kálal”-t ír (a szótári kiejtés, `:2245`). |
+| 2: B04-hash | OK (közvetve) | `naplok/F218_referencia.tsv:13` | +52 bájt = 2 × 26; a CI hash-őr lépése nem bukott. |
+| 2: N235-1/-2 | futás nélkül nem eldönthető | `naplok/F218_elteres_engedely.tsv:148-149` | A kész lapon a két új sor áll, „blokk” a látható lapon 0. |
+| 3: b1917172 | OK | `teszt_szerkezet.py` | A `GK05_KIVETEL` csak a megnevezett azonosítót engedi; a 9. szakasz tesztje pontosan egy sort. |
+| 3: a teljes tesztkör a javítások után | futás nélkül nem eldönthető | – | A javítás után csak célzott 71 teszt futott. |
+| 4: HN-03 | OK | `teszt_vaz.py`, `lapgen_sablonok.tsv` | 6 mondatközi hely = 6 engedélysor; `lapE` 9 + 7 = 16. A `s4.p2.app.tartomany` a forrásnevet elhagyja (a csomag kimondja). |
+| 4: DT926 | OK | `bemenet/vizsgalt.py` | – |
+| 4: GK-03 | OK, megfigyeléssel | `bemenet/frissesseg.py` | A B36 kapu egyirányú (új vers hiányát a táblából nem veszi észre; N-F218h részben fedi). |
+| 4: GK-N178 / HN-12 | OK, megfigyeléssel | `bemenet/gerinc.py:746-769` | A javítótáblát két olvasó nyitja (a `thayer_bemenet` és a `b._szoveg`). |
+| 4: N238 | ELTÉRÉS (tartalmi, közepes) | `regresszio.py:339-342`, `naplok/F218_S9_nezes.md:11` | Az „egyező versek” 12 ≠ 13 kivétellel megy át; a csomag állapotmondata ezt nem mondja ki. Megfigyelés: az `LXX-minusz` nem szűr a motívum héber szavára; a `_lxx_egyezo` a változat-szövegeket is olvassa. |
+| 4: N240 | ELTÉRÉS (tartalmi, közepes) | `regresszio.py:53-58`, `.github/workflows/ellenorzes.yml:232-236` | A „szakasz-diff méri” csak futtatáskor áll (a CI és a `push_elott.py` csak a hash-őrt futtatja); az ISTENTISZT-re szakasz-diff nincs; a brief 8.1 szövege nem követi. |
+| 5: a nézési csomag számai | OK | `naplok/F218_elteres_engedely.tsv` | 147 sor, 150 diff-sor; Kolofon 55; 12. szakasz 28; HN-03 6; N235 2; a D. pont 16 helye. |
+| A1 | OK | – | – |
+| A2 | ELTÉRÉS (mechanikus) | `NYITOTT_FELADATOK.md` | N238–N240 lezárt-blokk nélkül törölve; N235 és N200 nyitva maradt. |
+| A3–A5 | OK (nem érintett) | – | – |
+| A6 | nem ellenőrizhető | – | – |
+| Lista 1–5 | OK (az A2 és a „nulla-diff” hatóköre kivételével) | – | A „lap nem változik” az új generátor HAMART-lapjára szól, a régi generátorra nem (1. tétel). |
+
+**Súly szerint:** (1) tartalmi, súlyos: a CI piros, az N235 adatjavítása a kiadott lapot változtatná; (2) tartalmi, közepes: a GK-24 kivétellistája nem darabszámhoz kötött; (3) tartalmi, közepes: N240; (4) tartalmi, közepes: N238 a csomag állapotmondatában; (5) mechanikus: TÖRLÉS-SZÁNDÉKOS; (6) mechanikus: az `ir` mező; (7) mechanikus: a nyitott tételek lezárása.
