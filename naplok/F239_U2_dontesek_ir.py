@@ -39,8 +39,8 @@ JELOLT = {
                        '| strong=H8415+H7585 | n=1 | ts=2026-11-23T12:24Z'),
     'dontes': 'beépítve',
     'indoklas': ('Egy versben áll a mélység és a seól: a cédrus, vagyis a fáraó a seólba száll, és miatta Isten gyászba '
-                 'borítja és visszatartja a mélységet. A két szó két külön motívum, itt érintkeznek: a mélység a halál '
-                 'közelségének képe (vö. Jón 2:6, Zsolt 71:20), a seól a holtak helye.'),
+                 'borítja és visszatartja a mélységet. A két szó két külön motívum, itt érintkeznek: a mélység a kozmikus '
+                 'víz, a seól a holtak helye.'),
     'datum': '2026.11.23', 'jelolt_tipus': 'motivumkozi', 'cel_id': 'ALVIL-001', 'cel_igehely': 'Ez 31:15',
     'dontes_ref': 'DT-F239a · naplok/F239_hatar.md 1. pont, 3. kérdés · naplok/ERVNAPLO_TEREMT-001.md V5',
 }
@@ -48,7 +48,8 @@ JELOLT = {
 KAPCSOLAT = {
     'id_a': 'ALVIL-001', 'igehely_a': 'Ez 31:15', 'id_b': 'TEREMT-001', 'igehely_b': 'Ez 31:15',
     'tipus': 'közös_igehely',
-    'funkcio': 'a cédrus a seólba száll, a mélység gyászba borul: a halál helye és a halál mélye egy versben',
+    'funkcio': ('a cédrus a seólba száll, Isten miatta gyászba borítja és visszatartja a mélységet: a holtak helye és '
+                'a kozmikus víz egy versben'),
     'bizonyossag': 'magas', 'pardes_szint': 'Peshat',
     'indoklas': ('Mért: közös vers, mindkét motívum szava áll benne (a tehóm és a seól); mindkét vers előfordulás a '
                  'saját motívumában. A két szó funkciója más (a mélység és a holtak helye), ezért két motívum; a vers '

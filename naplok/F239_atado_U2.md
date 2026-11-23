@@ -31,6 +31,8 @@ A régi tanulmány egészét (`tematikus_lezart/Tehom_tematikus.md`: alapanyag, 
 - **A Septuaginta szerepe**: híd, nem hordozó; az ÚSZ ἄβυσσος-a tágabb a tehómnál (érvnapló A3–A4).
 - **A seól-motívum** kapcsolódó motívumként (DT-F239a; az Ez 31:15 a közös vers, adatsor); a tohu va-vohu (1Móz 1:2) csak a prózában.
 - **Számok a mai adatból**: 35 héber vers, 36 előfordulás; 9 újszövetségi vers; a régi tanulmány számai (35-ször, 34 vers) elavultak (N58: a régi tanulmány archiválásával zárul, a régi szöveget nem javítjuk).
+- **Az érvnapló v2 (a bírálat után) a mérce**: a tehóm névelőtlenségét a próza nem mondja és nem használja érvnek; a Tiámat-rokonság nem „szótári tény”, hanem a vallástörténeti irodalom felvetése (név csak a Gunkelé); „a halál mélye” csak a Jón 2:6 és a Zsolt 71:20; a Péld 8:24 a megteremtett mélység, nem a teremtés előtti állapot; a „nagy mélység” 5 vers; a „mélység forrásai” csak az 1Móz 7:11 és 8:2; a Róm 10:7 és a két zsoltár azonos szótövei, nem „ugyanazok a szavak”; a szerep-nevek (kezdőpont, áldásforrás, keret) olvasatok, a próza így jelöli.
+- **Az U4 ellenőrzési listájába** (a bírálat 5. kérdése, a próza után): a Kivonat „a mélység nem cselekszik Isten ellen” mondata és a V1 Vitatott pontja egyezik-e; a Remez nem mondja-e, hogy a Jel 20 „megismétli” vagy „keretezi” a 8:2-t; a Sod és a Módszertan nem mondja-e „a halál mélyét” az Ez 31:15-re; a V4 ténye és nyitott kérdése külön mondatban áll-e.
 - **Az 1/a minden igehelye** kerek mondat + „Funkció:” sor; belső jel (DT-, N-, F-szám, `.tsv`, „gerinc”) az olvasói rétegben nincs.
 
 ## Az U3 technikai teendői (az U1–U2-ből)

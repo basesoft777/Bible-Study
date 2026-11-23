@@ -50,7 +50,7 @@
 - *Indok:* a lexikai motívumban minden igehely a szó egy előfordulása legyen; a lapon két igehely áll egy helyett.
 - *A szabályhoz:* a szabály szerint a 20:2 maga nem tartozna ide.
 
-**7. A halál mélye és a seól — kapcsolódó motívum legyen-e a seól (ALVIL-001)?**
+**7. A halál mélye és a seól — kapcsolódó motívum legyen-e a seól (ALVIL-001)?** *(Utólagos megjegyzés, a bírálat után: a „halál mélye” igazoltan csak a Jón 2:6 és a Zsolt 71:20; az Ez 26:19 a Tíruszt elborító tenger, a Zsolt 107:26 a viharhullámok mélye, az Ez 31:15-ben a mélység a Nílus kozmikus vize a seól mellett. A két motívum különállása és az Ez 31:15 kapcsolata ettől nem változik.)*
 - *Igehelyek:* Ez 31:15 (a tehóm és a seól egy versben); a halál mélyeként: Jón 2:6, Zsolt 71:20, Zsolt 107:26, Ez 26:19; az Újszövetségben Róm 10:7.
 - *Dilemma:* a tehóm több helyen a halál közelségének képe, a seól mellett; két motívum ez, vagy egy?
 - *Javaslat:* két motívum marad; az Ez 31:15 legyen a kettő adatbeli kapcsolata (közös igehely), így a lap a seólt kapcsolódó motívumként mutatja. A tohu va-vohu (TEREMT-002) az 1Móz 1:2-ben csak a prózában, adatsor nélkül (fagyasztott motívum).
