@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-23",
-   "commit": "fe34001c"
+   "commit": "c9453137"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5869,6 +5869,66 @@
      "🟢"
     ],
     "sor": 881
+   },
+   {
+    "id": "DT935",
+    "feladat": "folyamat (javítás a brief határán túl; 2026-11-23)",
+    "kerdes": "A „Munkamód” 5. pontja („ami a saját területeden helyben javítható … ugyanabban a menetben javítod”) és a „Döntés az integrátoron át” bekezdés („a brief határának átlépése” döntési kérdés) együtt azt eredményezte, hogy a session a brief fájllistáját vette saját területnek: a határon kívüli apró hibát nem javította, nem is kérdezett, csak a jelentésbe írta. Eset: az F218.13 jelentése (#809, 2026-11-23) két egysoros hibát hagyott „kívül esik” jelöléssel (`.claude/agents/fuggetlen-ellenor.md` 40. sor: „opus” a `model: fable` helyett, ami egy hamis leállást okozott; egy `N-F218w` komment), és egy olvasót érintő javítást a 218b/218c-re tolt (N245).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 892
+   },
+   {
+    "id": "DT936",
+    "feladat": "folyamat (az irány sorrendje felhatalmazás; 2026-11-23)",
+    "kerdes": "Az F218a lezárása után (#809) az integrátor nem indította a következő szálat, hanem lehetőségeket sorolt a szerkesztőnek. Okok: a régi orkesztrátor átadója („Sessiont csak a felhasználó szavára indítasz”, „új ötletből … csak a szavára”); a „Munkamód” 1., 2. és 6. pontja a kéretlen tartalomra született, de minden lépésre olvasható; a `CLAUDE.md` ellentmondása (új feladat „a felhasználó jóváhagyásával” ⟂ „a `/befogad` egyeztetése” az integrátor döntése).",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 893
+   },
+   {
+    "id": "DT938",
+    "feladat": "folyamat (a motívumhatár a szerkesztőé; 2026-11-23)",
+    "kerdes": "A 10-28-i és 10-29-i „vedd át a döntéseket” felhatalmazás három kivételt tartott fenn a szerkesztőnek: a motívumhatárt, a negatív kritériumot és az új ID-t (ok: a #110 átvett határdöntése 10-21-én hibásnak bizonyult, a JSir 3:55 és az 5Móz 32:3 a negatív kritériummal ellenkezett). A `CLAUDE.md` 11-22-i „Döntés az integrátoron át” bekezdéséből ez kimaradt (csak pénz, külső közlés, végleges törlés), ezért a TEREMT-001 U2-ben (#239, PR #820) az integrátor a seól- és a Nave-határkérdést maga döntötte el.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 894
+   },
+   {
+    "id": "DT940",
+    "feladat": "folyamat (a próza előfeltétele, állandó szabályként; 2026-11-23)",
+    "kerdes": "A TEREMT-001 U2→U3 átadásánál (#820) a próza egységét három dolog veszélyeztette: a session az üzeneteket sorrenden kívül kapta (a seól-kapcsolat és a Nave-sorok beírva, majd kivéve), a döntések csak hivatkozással álltak volna az átadóban, és a bíráló határt érintő pontjáról nem volt kimondva, hogy kié a döntés. A feltételeket az integrátor eseti utasításként kapta; a szerkesztő szerint ez foltozás.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 895
+   },
+   {
+    "id": "DT942",
+    "feladat": "folyamat (a Hatástörténet adata a próza előtt; 2026-11-23)",
+    "kerdes": "A TEREMT-001 prózaírója (U3) azt kérdezte, írhat-e prózát, amikor a 9. Hatástörténet adata (C-vh, visszhang 1–2) még nem készült el. A brief „U1b”-ként az első szakaszba sorolta, de a lánc a határ (U2) után véglegesedik, így a lépés kimaradt; a `MUNKAMENET.md` cikkírási sorrendje (A → … → határ → E próza) nem tartalmazta, és a 2026-11-23-i U3-előfeltétel (#823) sem. Az integrátor az esetet helyesen döntötte el („előbb az adat”), de a szabályhelyet nem javította.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 896
+   },
+   {
+    "id": "DT944",
+    "feladat": "folyamat (az integrátor a szabályhelyet is javítja; 2026-11-23)",
+    "kerdes": "A TEREMT-001 prózaírójának kérdésére (a 9. Hatástörténet adata hiányzott) az integrátor az esetet helyesen eldöntötte, de a szabályhiányt (a C-vh kimaradt a sorrendből és az U3-előfeltételből) nem javította; a javítást a szerkesztő kérte (#825). Az integrátor a saját jegyzetébe rögzítette, hogy ezentúl javít, de ez integrátor-cserénél elvész.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 897
    }
   ],
   "javasolt": [],

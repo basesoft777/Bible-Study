@@ -335,6 +335,22 @@ def _study_vagy_sablon_fajl(fajl, study_halmaz):
     return fajl.startswith('sablonok/')
 
 
+def _szamkiosztas_beolvasztott_torles(fajl, head_ref):
+    """True, ha `fajl` a `dontesek/uj/` vagy `nyitott/uj/` alatti kis fájl, amely a head-ben
+    már nincs meg: a számkiosztás a tartalmát a fő fájlba olvasztotta, és szándékosan törölte
+    (nem adatvesztés). A fájl a head-ben meglévő módosítása továbbra is a szokásos szabály alá esik."""
+    if not fajl or not any(fajl.startswith(k + '/') for k in E27_GYUJTO_KONYVTARAK):
+        return False
+    try:
+        subprocess.check_output(['git', 'cat-file', '-e', '%s:%s' % (head_ref, fajl)],
+                                cwd=ROOT, stderr=subprocess.DEVNULL)
+        return False
+    except subprocess.CalledProcessError:
+        return True
+    except OSError:
+        return False
+
+
 def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
     """Git diff `base_ref..head_ref` -- ha torol ##/### cimsort (barmely
     fajlban), vagy egy study-/sablonfajlbol 30-nal tobb sort, a
@@ -365,6 +381,8 @@ def e5_tartalomvesztes_or(base_ref, head_ref, commit_uzenet=''):
         if aktualis_fajl is None:
             return
         if van_szandekos:
+            return
+        if _szamkiosztas_beolvasztott_torles(aktualis_fajl, head_ref):
             return
         torolt = _tenylegesen_torolt_cimsorok(torolt_cimsor, hozzaadott_cimsor)
         if torolt:
@@ -1740,8 +1758,15 @@ def _e27_opcionalis_nyers(relut, sor):
     return relut.startswith(E27_OPCIONALIS_NYERS_ELOTAG) and E27_OPCIONALIS_JELOLO in sor
 
 
+# A számkiosztás az utolsó kis fájlt is törli, a git üres könyvtárat nem tart: a két
+# gyűjtőkönyvtár ezért akkor is létezőnek számít, ha épp nincs benne fájl.
+E27_GYUJTO_KONYVTARAK = ('dontesek/uj', 'nyitott/uj')
+
+
 def _e27_van_ut(relut):
-    teljes = os.path.join(ROOT, *relut.rstrip('/').split('/'))
+    if relut.rstrip('/') in E27_GYUJTO_KONYVTARAK:
+        return True
+    teljes =os.path.join(ROOT, *relut.rstrip('/').split('/'))
     if relut.endswith('/'):
         return os.path.isdir(teljes)
     if os.path.exists(teljes):
