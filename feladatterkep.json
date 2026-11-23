@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-23",
-   "commit": "efddb040"
+   "commit": "2de1391d"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5899,6 +5899,16 @@
      "🟢"
     ],
     "sor": 894
+   },
+   {
+    "id": "DT940",
+    "feladat": "folyamat (a próza előfeltétele, állandó szabályként; 2026-11-23)",
+    "kerdes": "A TEREMT-001 U2→U3 átadásánál (#820) a próza egységét három dolog veszélyeztette: a session az üzeneteket sorrenden kívül kapta (a seól-kapcsolat és a Nave-sorok beírva, majd kivéve), a döntések csak hivatkozással álltak volna az átadóban, és a bíráló határt érintő pontjáról nem volt kimondva, hogy kié a döntés. A feltételeket az integrátor eseti utasításként kapta; a szerkesztő szerint ez foltozás.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 895
    }
   ],
   "javasolt": [],
