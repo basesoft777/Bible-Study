@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-23",
-   "commit": "0213899a"
+   "commit": "c9453137"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -5919,6 +5919,16 @@
      "🟢"
     ],
     "sor": 896
+   },
+   {
+    "id": "DT944",
+    "feladat": "folyamat (az integrátor a szabályhelyet is javítja; 2026-11-23)",
+    "kerdes": "A TEREMT-001 prózaírójának kérdésére (a 9. Hatástörténet adata hiányzott) az integrátor az esetet helyesen eldöntötte, de a szabályhiányt (a C-vh kimaradt a sorrendből és az U3-előfeltételből) nem javította; a javítást a szerkesztő kérte (#825). Az integrátor a saját jegyzetébe rögzítette, hogy ezentúl javít, de ez integrátor-cserénél elvész.",
+    "allapot": "alkalmazasra_var",
+    "jelek": [
+     "🟢"
+    ],
+    "sor": 897
    }
   ],
   "javasolt": [],
