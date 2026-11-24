@@ -65,4 +65,4 @@ Károli-szöveg forrásadat
 Forrás és licenc: Karoli_1908 (vers): közkincs
 A szavak pontozott aláhúzása (a kattintható szó): Károli–Strong párosítás modell-kimenet
 Forrás és licenc: Karoli_Strong_parok (token_par): CC BY 4.0 · Karoli_Strong_szavak (token_karoli): CC BY 4.0
-31 vers 92 héber + 184 görög szó-lap BDB magyarul: 92/92 Károli–Strong: 66 könyv
+31 vers 92 héber + 183 görög szó-lap BDB magyarul: 92/92 Károli–Strong: 66 könyv
