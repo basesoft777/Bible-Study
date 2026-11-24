@@ -2750,5 +2750,37 @@ class KimenetiCsereTilalomTeszt(unittest.TestCase):
             shutil.rmtree(os.path.dirname(ut), ignore_errors=True)
 
 
+class VisszaesesKapuTeszt(unittest.TestCase):
+    """DT952, 0. kapu (`eszkozok/visszaeses_kapu.py`): az új lap egyik olvasói kategóriában sem hozhat több találatot,
+    mint a régi (a main-en kiadott) lap; a régi lap hibáit nem kell megőrizni, az egyezés nem cél."""
+
+    REGI = '# X\n\n## 1. Döntési út\n\nA motívum a bűn útja; a szöveg „idézett” szót tartalmaz.\n'
+    UJ_ROSSZABB = REGI + '\nItt "egyenes" idézőjel áll, és fordításra vár a szó.\n'
+
+    @classmethod
+    def setUpClass(cls):
+        sys.path.insert(0, os.path.dirname(_ELLENORZES))
+        import visszaeses_kapu
+        cls.V = visszaeses_kapu
+
+    def test_tobb_talalat_visszaeses(self):
+        rossz = self.V.visszaesesek(self.V.osszevet(self.REGI, self.UJ_ROSSZABB))
+        self.assertEqual([k for k, _r, _u in rossz], ['FORDITASRA_VAR', 'IDEZOJEL BUKÁS'])
+
+    def test_kevesebb_talalat_nem_visszaeses(self):
+        # a régi lap hibáit nem kell lemásolni: ha az új lapon kevesebb a hiba, az rendben van
+        self.assertEqual(self.V.visszaesesek(self.V.osszevet(self.UJ_ROSSZABB, self.REGI)), [])
+
+    def test_azonos_lap_rendben(self):
+        self.assertEqual(self.V.visszaesesek(self.V.osszevet(self.REGI, self.REGI)), [])
+
+    def test_mindket_lap_szigoru_szaballyal(self):
+        # a régi szerkezetű lapot sem méri enyhébben: az új szerkezet jele nélkül is a kivétel nélküli szabály fut
+        self.assertNotRegex(self.REGI.replace('## 1. Döntési út', '## 1. Más'), self.V.OK.UJ_SZERKEZET_RX)
+        eredeti = self.V.OK.UJ_SZERKEZET_RX
+        self.V.kategoriak(self.REGI.replace('## 1. Döntési út', '## 1. Más'))
+        self.assertIs(self.V.OK.UJ_SZERKEZET_RX, eredeti)
+
+
 if __name__ == '__main__':
     unittest.main()
