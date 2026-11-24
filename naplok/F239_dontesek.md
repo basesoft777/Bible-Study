@@ -6,7 +6,7 @@
 
 ## Az U5 döntései (a szerkesztő, 2026-11-23)
 
-*Forrás mindegyiknél: **a szerkesztő döntése** (az U5-nézés, 2026-11-23; az integrátor kérdései, a szerkesztő minden pontnál a javasolt változatot választotta). A tétel-jelek a `naplok/F239_U5_csomag.md` jelei. A D24 és a D25 a motívum határának szövegéről szól (a motívum határáról szóló szabály szerint): a szerkesztő szava, nem az integrátoré.*
+*Forrás mindegyiknél: **a szerkesztő döntése** (az U5-nézés, 2026-11-23; az integrátor kérdései, a szerkesztő minden pontnál a javasolt változatot választotta). A tétel-jelek a `naplok/F239_U5_csomag.md` jelei. A motívum határáról a D26 szól (a motívum határáról szóló szabály szerint): a szerkesztő szava, nem az integrátoré. A D24 és a D25 a határ szövegéről, a lapon álló megfogalmazásról szól. *(A fejléc a D27 szerint javítva, 2026-11-24.)*
 
 **D2** (L37) *Kérdés:* tagolódjon-e a Kivonat első bekezdése (8 mondat, 21 igehely, a fordulópont középen)? — *Döntés:* két bekezdés; a fordulópontnál (ÓSZ víz → ÚSZ zárt hely) új bekezdés, a tartalom nem változik. — *Indok:* olvashatóság.
 
@@ -60,3 +60,15 @@
 
 ## A (b) csoport (javítás gazdával, döntés nélkül)
 Az L17 (= K36) és az O7 (= K9, K70, a „95”), valamint a 12 forrástétel (F2: K2, K9, K19, K20, K36, K47, K69, K70, K99; F1 79. sor; a független ellenőr két prózai ELTÉRÉS-e) a javítókörben javul, a fenti döntésekkel összhangban (a K2 Kivonat-része: D7; a K19/K20: a BDB-helyek válogatás voltának jelzése; az F1 79. sora: D6).
+
+## Az U6 utáni döntések (az integrátor, 2026-11-24)
+
+*Forrás mindegyiknél: szerkesztői döntés (az integrátor, `local_5140778b`, a felhasználó felhatalmazásával; MUNKAMENET „Szereposztás”).*
+
+**D27** *Kérdés:* a döntésnapló fejléce szerint „a D24 és a D25 a motívum határának szövegéről szól”, a határ-döntés viszont a D26; javuljon-e? — *Döntés:* igen: a fejléc szerint a motívum határáról a D26 szól, a D24 és a D25 a határ szövegéről (a lapon álló megfogalmazásról). — *Indok:* a fejléc félrevezető, és a határ a szerkesztőé, ezért pontosan kell látszania, melyik döntés az. — *Végrehajtva:* a fejléc javítva (F239.41).
+
+**D28** *Kérdés:* behozza-e most az ág a main-t (az ág 127 committal a main mögött jár)? — *Döntés:* most nem; a kiadás az átállás (218c) után jön, akkor egyszer, a végleges generátorral. — *Indok:* kétszeri összefésülés helyett egy.
+
+**D29** *Kérdés:* a szerkesztő elé kerül-e most az U6 változásnézete (33 blokk)? — *Döntés:* most nem; a kiadás nézési csomagjába kerül (C-v: próza, nyitott döntések, változáslista), egyetlen nézéssel. Az `adat/lap_javitasok.tsv` `jovahagyta` sora akkor kerül be. — *Indok:* a szerkesztő egyszer nézze a végleges, új generátoros lapot.
+
+**D30** *Kérdés:* kell-e külön újramérés a 13, az U6-ban javított F2-kifogásra (a jelentés H38–H49 sorai)? — *Döntés:* nem; a kiadás előtti lektor és átnézés (2.7) a hibahely-táblán át célzottan nézi őket. — *Indok:* egy ellenőrzés, egy javítókör; a célzott nézés a kiadás menetében úgyis lefut.
