@@ -2623,6 +2623,15 @@ def _f_lsj(K):
     return (sz, q.forditas_bejegyzesek(K.con, 'LSJ', [K.strong])) if sz else sz     # F213: az LSJ magyar fordítása
 
 
+def _ures_lsj(K):
+    """F0.43: ahol az `lsj` táblában a szónak üres szövegű sora van (`adat/lsj_forras_javitas.tsv` `nincs_szocikk` döntése: a nyers modul
+    pótszövege — név-helyőrző, Strong-mondat — kiesett), a forrás határát mondja ki a blokk, a szöveg helyett; ahol nincs sor
+    (nincs döntés), a szokásos üres jelzés áll."""
+    if K.strong and q.lsj_dontott_nincs(K.con, K.strong):
+        return Markup('<p class="ures">%s</p>') % F('lsj.nincs_szocikk')
+    return _ures()
+
+
 def _r_lsj(d, K):
     sz, ford = d if isinstance(d, tuple) else (d, {})
     return _ford_szoveg(ford, sz)
@@ -2760,7 +2769,7 @@ REGISZTER = [
     B('szo.ubs_dntg', 'szo_g', 'UBS DNTG jelentés', 'forras', ('ubs_dntg_jelentesek', 'ubs_dntg_referenciak'), _f_ubs_dntg, _r_ubs_dntg),
     B('szo.tbesg', 'szo_g', F('blokk.szo.tbesg'), 'forras', ('tbesg', 'forditasok'), _f_tbesg, _csukva(_r_tbesg), jelleg_fn=_jelleg_hu(1)),
     B('szo.thayer', 'szo_g', F('blokk.szo.thayer'), 'forras', ('thayer',), _f_thayer, _csukva(_r_szoveg)),
-    B('szo.lsj', 'szo_g', 'LSJ', 'forras', ('lsj', 'forditasok'), _f_lsj, _csukva(_r_lsj), jelleg_fn=_jelleg_hu(1)),
+    B('szo.lsj', 'szo_g', 'LSJ', 'forras', ('lsj', 'forditasok'), _f_lsj, _csukva(_r_lsj), jelleg_fn=_jelleg_hu(1), ures_html=_ures_lsj),
     B('szo.mcged', 'szo_g', 'MCGED (Mounce)', 'forras', ('mcged',), _f_mcged, _r_mcged, 'nem kereskedelmi: kereskedelmi kiadásból kimarad'),
     B('szo.sece_g', 'szo_g', 'SECE-szócikk (görög)', 'forras', ('sece_g',), _f_sece_g, _csukva(_r_szoveg)),
     B('szo.tw_g', 'szo_g', 'translationWords', 'forras', ('tw_szocikkek', 'forditasok'), _f_tw, _r_tw, jelleg_fn=_jelleg_hu(1)),
