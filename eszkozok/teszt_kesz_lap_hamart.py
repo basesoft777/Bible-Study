@@ -688,6 +688,20 @@ class Onreferencia(unittest.TestCase):
         self.assertFalse(kapu(uj_lap('## 2. Előfordulások\n\nA HODIT-001 motívum lapján áll.\n'), 'ONREF'))
         self.assertFalse(kapu(uj_lap('## Kolofon\n\nA lap technikai adatai.\n'), 'ONREF'))
 
+    def test_kapu_ragozott_alakok(self):
+        """F241.5b (D23): a regex vakfoltja — a ragozott, a jelzős és a névelő nélküli „lap eleje” alak is jelez."""
+        import tablajegyzet as TJ
+        jelez = ('Ehhez a laphoz nincs adat.', 'Ennek a lapnak a célja más.', 'A teljes lapot átnézte.',
+                 'Ebben a lapban áll.', 'E lapon nem szerepel.', 'A keresés tárgyát lap eleje adja meg.',
+                 'A lap végén áll.', 'A laptól független.', 'a lappal együtt')
+        for mondat in jelez:
+            self.assertTrue(TJ.ONREF_RX.search(mondat), mondat)
+        nem = ('A lapok közt eltér.', 'A lapgenerátor írja.', 'A lexikonlapon áll.', 'Lapos a kő.',
+               'a laphámozás', 'a lapát', 'A meghatározás adja meg.')
+        for mondat in nem:
+            self.assertIsNone(TJ.ONREF_RX.search(mondat), mondat)
+        self.assertTrue(kapu(uj_lap('## 2. Előfordulások\n\nEhhez a laphoz nincs adat.\n'), 'ONREF'))
+
     def test_a_lapon(self):
         import tablajegyzet as TJ
         lap = _olvas(LAP)

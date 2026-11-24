@@ -358,8 +358,13 @@ def onref_csere(szoveg):
 
 
 # az olvasói kapu figyelmeztetése (a felhasználó v8-átnézése, 4.): önreferáló „lap” az új szerkezetű lap látható
-# szövegében; kivétel a Kolofon (technikai adatok) és a más motívum lapjára utaló fordulat
-ONREF_RX = re.compile(r'(?<![\w-])(?:[Aa] lap|[Ee]rre a lapra|[Aa] lapon|[Aa] lapra|[Aa] lapról)(?![\w-])')
+# szövegében; kivétel a Kolofon (technikai adatok) és a más motívum lapjára utaló fordulat.
+# F241.5b (D23): a névelős vagy mutató névmásos „lap” minden esetragos alakja (a laphoz, a lapnak, a lapot,
+# a lapban, e lapon …), egy közbeékelt jelzővel is (a teljes lapot), és a névelő nélküli „lap eleje / vége /
+# teteje / alja”; a többes szám („a lapok”) és az összetétel („lapgenerátor”, „lexikonlap”) nem önreferencia.
+ONREF_RAG = r'(?:ot|on|ra|ról|hoz|nak|ban|ba|ból|tól|nál|lal|pal)?'
+ONREF_RX = re.compile(r'(?<![\w-])(?:(?:[Aa]|[Ee])(?: (?:teljes|egész|mai|új|régi|jelen))? lap' + ONREF_RAG
+                      + r'|[Ll]ap (?:elej|vég|tetej|alj)\w*)(?![\w-])')
 ONREF_KIVETEL_RX = re.compile(r'motívum lapján|\[[^\]]*lap\]\(')
 
 
