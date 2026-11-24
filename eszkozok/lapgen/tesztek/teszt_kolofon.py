@@ -162,7 +162,7 @@ class Kriterium(_Alap):
         """DT-F218n, DT874 9. tétel: a „Negatív kritérium” sor a lap elejére hivatkozik, a kritériumot nem ismétli."""
         krit = [s['negativ_kriterium'] for s in _tabla('adat/motivumok.tsv') if s['id'] == HAMART][0]
         self.assertNotIn(krit[:60], self.lap)
-        self.assertIn('| Negatív kritérium | a lap elején áll ([Mi tartozik ide, és mi nem](#mi-tartozik-ide)) |',
+        self.assertIn('| Negatív kritérium | A lap elején áll ([Mi tartozik ide, és mi nem](#mi-tartozik-ide)). |',
                       self.lap)
 
 
@@ -418,7 +418,7 @@ class Istentiszt(_Alap):
     AZONOSITO = ISTENTISZT
 
     def test_a_lap_elkeszul(self):
-        self.assertIn('| Negatív kritérium | a lap elején áll', self.lap)
+        self.assertIn('| Negatív kritérium | A lap elején áll', self.lap)
         self.assertIn('| ID | ISTENTISZT-001 |', self.lap)
 
     def test_n223_licenckapu(self):

@@ -935,7 +935,7 @@ kolofon.mezo.proza_modell	Próza modellje	-	Kolofon	kolofon_kiadas_sorok	-
 kolofon.mezo.szerkesztoi	Szerkesztői átnézés és javítás	-	Kolofon	kolofon_lektor_uj	-
 kolofon.mezo.lektor	Modell-lektor ({modell})	modell:lathato	Kolofon	kolofon_lektor_uj	-
 kolofon.ertek.motivum	{motivum}	motivum:motivum	Kolofon	blokk_kolofon	-
-kolofon.ertek.kriterium	a lap elején áll ([{cim}](#{horgony}))	cim:lathato, horgony:horgony	Kolofon	uj (DT874, 9. tétel: a kritérium egyetlen teljes helye a lap eleje)	DT874 (az orkesztrátor, a felhasználó felhatalmazásával, 2026-11-13)
+kolofon.ertek.kriterium	A lap elején áll ([{cim}](#{horgony})).	cim:lathato, horgony:horgony	Kolofon	uj (DT874, 9. tétel: a kritérium egyetlen teljes helye a lap eleje; F241.5b, D16 (a): mondat)	F241 D16 (a) (az integrátor, a felhasználó felhatalmazásával, 2026-11-24)
 kolofon.ertek.datum	{datum}	datum:datum	Kolofon	blokk_kolofon (G.TS)	-
 kolofon.ertek.szam	{n}	n:szam	Kolofon	kolofon_kiadas_sorok	-
 kolofon.ures	—	-	Kolofon	EM_DASH	-
