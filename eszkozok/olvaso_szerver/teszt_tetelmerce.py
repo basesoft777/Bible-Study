@@ -49,7 +49,7 @@ except ImportError:
 ELO = VAN_DB and VAN_FLASK
 
 JELENTES = os.path.join(GY, 'naplok', 'F231_jelentes.md')
-NYITOTT_AG = os.path.join(GY, 'nyitott', 'uj', 'olvaso-egyben-3464e1.md')
+NYITOTT = os.path.join(GY, 'NYITOTT_FELADATOK.md')   # az N-tétel a `nyitott/uj/` kis fájlból a merge után ide kerül (számkiosztás): a kis fájlra nem hivatkozunk
 CSS = os.path.join(D, 'statikus', 'olvaso.css')
 ARCULAT = os.path.join(D, 'konfig', 'arculat.json')
 KIMARAD = (23, 59)          # a megbízás szerint kívül esik (fizetős fordítás; motívumlap, F164)
@@ -321,11 +321,13 @@ class TetelMerce(unittest.TestCase):
 
     # --- egyedi ellenőrzések ----------------------------------------------------------------------------------------------------------
     def _kulon_14(self):
-        """N-F231a: az adathiba N-tétele az ág nyitott-fájljában áll, célfeladattal."""
-        with open(NYITOTT_AG, encoding='utf-8') as f:
-            s = f.read()
-        self.assertIn('N-F231a', s)
-        self.assertRegex(s, r'πρωὶ|G5459')
+        """Az adathiba (#14) N-tétele a `NYITOTT_FELADATOK.md`-ben áll: a tompa ékezetes „πρωὶ” alak hibás G5459-párja. A tételt a tartalma
+        azonosítja (nem a helyőrző vagy a szám: a számkiosztás a `nyitott/uj/` kis fájlt a merge után törli, és számot ad)."""
+        with open(NYITOTT, encoding='utf-8') as f:
+            tetelek = re.split(r'\n(?=- \*\*N\d+\*\*)', f.read())
+        van = [t for t in tetelek if t.startswith('- **N') and 'πρωὶ' in t and 'G5459' in t]
+        self.assertEqual(len(van), 1, 'a „πρωὶ”–G5459 adathiba tétele nem található egyértelműen a NYITOTT_FELADATOK.md-ben (%d egyező)' % len(van))
+        self.assertIn('adathiba', van[0])
 
     def _kulon_54(self):
         """#54: az aktív „kis próféták” gomb (`color-mix(g-kis 85%, black)` háttér, `--panel` betű) mindkét témában ≥ 4,5:1."""
