@@ -174,6 +174,31 @@ def main():
     # 10e. a leképezés lefedi a `--ci-egyezes` lépéslistát: a teljes kaput a --reszleges nem gyengíti
     ellenoriz(P.ci_egyezes() == [], 'a részleges mód nem változtatja a CI-egyezést')
 
+    # 11. gyors próba (--gyors): a lépések, a tesztek és a lapgenerálás a változáshoz kötve
+    ellenoriz(P.gyors_lepesek(['eszkozok/gepsor.py']) == set(), 'gyors: egy kódfájl nem indítja az E1/E38–E39/E18 lépést')
+    ellenoriz(P.gyors_lepesek(['adat/elofordulasok.tsv']) == {P.L_E1, P.L_GYOKEROK, P.L_TESZT_KINYER},
+              'gyors: az adat az adatkapukat indítja')
+    ellenoriz(P.gyors_lepesek(['F241_GENERATOR_UJ_C_BRIEF.md', 'eszkozok/feladatok.py']) == {P.L_E18}, 'gyors: brief és feladatok.py: E18')
+    ellenoriz(P.gyors_lepesek(['eszkozok/ellenoriz.py']) == {P.L_E1}, 'gyors: az ellenoriz.py az E1-et indítja')
+    forrasok = {'t/a.py': 'import gepsor\n', 't/b.py': 'import gepsorok\n', 't/c.py': 'semmi\n'}
+    ellenoriz(P.gyors_tesztek(['eszkozok/gepsor.py'], ['t/a.py', 't/b.py', 't/c.py'], forrasok.get) == ['t/a.py'],
+              'gyors: csak a változott modulra név szerint hivatkozó teszt fut')
+    ellenoriz(P.gyors_tesztek(['t/c.py'], ['t/a.py', 't/c.py'], forrasok.get) == ['t/c.py'], 'gyors: a változott tesztfájl fut')
+    ellenoriz(P.gyors_tesztek(['adat/x.tsv'], ['t/a.py'], forrasok.get) == [], 'gyors: adatváltozásra kódteszt nem fut')
+    ellenoriz('eszkozok/teszt_push_elott.py' in P.gyors_tesztek(['eszkozok/push_elott.py']), 'gyors: valódi lista, a push_elott tesztje')
+    forrasok2 = {'t/d.py': "LISTA = ['eszkozok/gepsor.py']\n", 't/e.py': "x = os.path.join(R, 'gepsor.py')\n",
+                 't/f.py': 'from eszkozok import gepsor\n', 't/g.py': 'import os, gepsor\n'}
+    ellenoriz(P.gyors_tesztek(['eszkozok/gepsor.py'], sorted(forrasok2), forrasok2.get) == ['t/e.py', 't/f.py', 't/g.py'],
+              'gyors: a könyvtárral idézett útvonal adat, nem betöltés; a fájlútról és a csomagból betöltés igen')
+    ellenoriz('eszkozok/ellenorzes/tesztek/test_szabalyok.py' not in P.gyors_tesztek(['eszkozok/teszt_push_elott.py']),
+              'gyors: a test_szabalyok fixture-listája nem indítja a lassú tesztet')
+    ellenoriz(P.lap_erintes(['eszkozok/gepsor.py']) == (False, []), 'gyors: nem lapbemenet: nincs lapgenerálás')
+    ellenoriz(P.lap_erintes(['eszkozok/lapgen/x.py']) == (True, None), 'gyors: a generátor kódja: minden lap')
+    ellenoriz(P.lap_erintes(['adat/elofordulasok.tsv']) == (True, None), 'gyors: közös bemenet: minden lap')
+    ellenoriz(P.lap_erintes(['motivumok/TEREMT-001.md']) == (True, ['TEREMT-001']), 'gyors: motivumok/<ID>.md: csak az a lap')
+    ellenoriz(P.lap_erintes(['naplok/KIADAS_HAMART-001_lektor.md', 'motivumok/TEREMT-001.md']) == (True, ['HAMART-001', 'TEREMT-001']),
+              'gyors: két <ID>-s bemenet: két lap')
+
     print()
     if HIBAK:
         print('BUKOTT: %d teszt: %s' % (len(HIBAK), '; '.join(HIBAK)))
