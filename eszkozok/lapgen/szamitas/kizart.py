@@ -21,6 +21,9 @@ from lapgen.szamitas.kereszthiv import Miert, ajanlas_miert, indok_resz
 from lapgen.szoveg import Igehely, Kulcs, Lathato, Proveniencia, Strong, idezet, prov, prov_fuz, proza
 
 CSOPORT_REND = (VizsgaltCsoport.TSK, VizsgaltCsoport.KAROLI, VizsgaltCsoport.KERESES, VizsgaltCsoport.SZERKESZTOI)
+# a kereszthivatkozásból vizsgált sorok táblája a 6. szakasz Minősítésében áll (`kereszthiv_jeloltek`, ugyanazokból a
+# döntésnapló-sorokból); itt a csoport csak a számaival szerepel, a sorai nem ismétlődnek (F241.5b, D15 (2))
+KH_CSOPORTOK = (VizsgaltCsoport.TSK, VizsgaltCsoport.KAROLI)
 _NEVELOK = ('a ', 'az ')
 
 
@@ -76,7 +79,8 @@ class CsoportTabla:
     csoport: VizsgaltCsoport
     sorok_szama: int                 # a döntésnapló sorai (az összevonás előtt)
     versszam: int
-    sorok: Tuple[TablaSor, ...]
+    sorok: Tuple[TablaSor, ...]      # üres, ha a tábla máshol áll (`masutt`)
+    masutt: bool = False             # a sorok a 6. szakasz Minősítésének táblájában állnak (KH_CSOPORTOK)
 
 
 @dataclasses.dataclass(frozen=True)
@@ -226,6 +230,8 @@ def szamit(korny):
     osszevont = {c: _osszevon(ss) for c, ss in csoportonkent.items()}
     nyers = []
     for c in CSOPORT_REND:
+        if c in KH_CSOPORTOK:
+            continue
         for elso, _veg in osszevont[c]:
             nyers.append(elso.jegyzet_nyers)
     szamlalo, peldany = {}, {}
@@ -239,6 +245,12 @@ def szamit(korny):
     tablak, forrasok, sorszam = [], [], 0
     for c in CSOPORT_REND:
         if not csoportonkent[c]:
+            continue
+        versszam = sum(_suly(s, egyedi) for s in csoportonkent[c])
+        forrasok.append((c, versszam))
+        if c in KH_CSOPORTOK:
+            tablak.append(CsoportTabla(csoport=c, sorok_szama=len(csoportonkent[c]), versszam=versszam, sorok=(),
+                                       masutt=True))
             continue
         sorok = []
         for elso, veg in osszevont[c]:
@@ -261,10 +273,8 @@ def szamit(korny):
                 ok_ismetles=elso.ok_ismetles, osszesito=elso.osszesito, szerkesztoi_zaro=elso.szerkesztoi_zaro,
                 indok=tuple(indok_resz(rovid, d) for d in elso.indok), jegyzet=jegyzet,
                 eredeti=prov('[^k{}]: {}', sorszam, vizsgalt_be.proveniencia_csere(elso.jegyzet_nyers, sorszamok))))
-        versszam = sum(_suly(s, egyedi) for s in csoportonkent[c])
         tablak.append(CsoportTabla(csoport=c, sorok_szama=len(csoportonkent[c]), versszam=versszam,
                                    sorok=tuple(sorok)))
-        forrasok.append((c, versszam))
 
     kozos_olvasoi = kozos_eredeti = None
     if kozos:

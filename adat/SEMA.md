@@ -2694,6 +2694,27 @@ a futás naplójában (`naplok/ALLITAS_<ID>_itelet.md`), nem ebben a táblában.
 `hol` azt a lépést nevezi, amely a próbán megfogta; amit a próba nem mért (a 3/b, a lektor), az a próba naplójában
 „nem mérve”, és a tételt a lektor fogta meg (`F3`).
 
+### 2.74 `olvasoi_indoklasok.tsv` — a döntésnapló indoklásának olvasói alakja (F241.5b, D15, 2026-11-24)
+
+A döntésnapló (`jeloltek.tsv`, 2.4) `indoklas` mezője döntési nyom: olvasói célból nem íródik át (D13 (b)). Ahol a
+lapra kerülő indoklás belső szót hordoz (a szókincs-kapu listája: `eszkozok/lapgen/szokincs.py`), a lap 3. és 6.
+szakaszának Indok cellájában ennek a táblának a kézzel írt mondata áll (B76). Kimeneti csere nincs.
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | a motívum azonosítója |
+| `indoklas_hash` | a lapra kerülő indoklás-szöveg SHA-1-e, 12 kisbetűs hexa jegy (`lapgen.bemenet.olvasoi_indok.indok_hash`): az `indoklas` első ` \| ` előtti része, a 3. szakaszban az összesítő eleje és a szerkesztői záró mondat nélkül, két végén levágva |
+| `olvasoi_indoklas` | az olvasói mondat; a döntésnapló szövegétől csak a belső szóban tér el |
+| `proveniencia` | `PROVENIENCIA` (1.5) |
+| `dontes_ref` | a döntés, amely a mondatot jóváhagyta |
+
+**Kulcs:** `id` + `indoklas_hash`. **Kapuk (betöltéskor, `bemenet/olvasoi_indok.py`):** az olvasói mondat átmegy a
+szókincs-kapun; a fölérendelt fogalomra csak a lap fejének neve áll („tágabb kör”, a sablontábla `fej.tagabb`
+sora); minden sor hash-e a motívum egy élő döntésnapló-indoklására mutat (árva sor: hiba — az indoklás változott,
+az olvasói alak elavult). Ha a lapra kerülő indoklásnak nincs olvasói alakja, és belső szót hordoz, a generálás
+megáll. A tábla a szerzői jóváhagyás tárgya (`konfig.JOVAHAGYAS_BEMENETEK`); a mondatai az első kiadásuk nézési
+csomagjának változáslistájába kerülnek.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

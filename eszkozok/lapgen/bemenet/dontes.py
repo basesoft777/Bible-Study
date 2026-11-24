@@ -15,6 +15,7 @@ A jelöltek és a csoportlista igehelyei a Károli-fájl kulcsai: a könyv rövi
 """
 import re
 
+from lapgen import szokincs
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.ertekek import Dontes  # noqa: F401 (a réteg neve is)
 from lapgen.szoveg import Igehely, SzovegHiba
@@ -130,6 +131,13 @@ def b56_okok(b, motivum):
     címke végén álló „(összesítő sor)” belső jelölő, nem a címke része; az azonos címkéjű sorok közül az első
     megjegyzése számít."""
     tabla = b._tabla('B56', oszlopok=('sorrend', 'id', 'minta', 'cimke', 'megjegyzes'))
+    # szókincs-kapu a tábla minden során (D12, D15 (3), D17): a címke és a megjegyzés a lapon áll
+    for r in tabla.szotarak():
+        for mezo in ('cimke', 'megjegyzes'):
+            talalt = szokincs.talalatok(r[mezo])
+            if talalt:
+                raise BemenetHiba('B56: a(z) %s. sorrendű sor `%s` mezője belső szót vagy egy fogalom második nevét hordoz: %s'
+                                  % (r['sorrend'], mezo, ', '.join(sorted(set(talalt)))))
     try:
         sorok = sorted((r for r in tabla.szotarak() if r['id'] in (_MINDEN_MOTIVUM, motivum.kod)),
                        key=lambda r: int(r['sorrend']))

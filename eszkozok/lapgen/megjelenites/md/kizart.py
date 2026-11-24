@@ -2,7 +2,8 @@
 
 Minden látható mondat a sablontáblából jön (`k3.*`; a „Miért került a vizsgálatba” cella kereszthivatkozásos alakja
 és az indoklás darabjai a Minősítéséi: `s6.*`); az ok címkéje és megjegyzése, valamint az indoklás kézi adat. A
-lap eleji meghatározást a szakasz nem ismétli, hivatkozik rá (DT872). A jegyzet a tábla alá kerül, az azonos
+lap eleji meghatározást a szakasz nem ismétli, hivatkozik rá (DT872); a kereszthivatkozásból vizsgált sorok táblája
+a 6. szakasz Minősítésében áll, itt egy mondat hivatkozik rá (F241.5b, D15 (2)). A jegyzet a tábla alá kerül, az azonos
 mondatú jegyzet egyszer áll; a forrás-mező, a proveniencia-farok és a döntés nyoma a jegyzet megjegyzésében marad.
 """
 from lapgen import konfig
@@ -209,9 +210,17 @@ def megjelenit(iro, modell, keret, forrasok):
         iro.sor(ny.s('k3.forras', elemek=tuple(ny.s('k3.forras.elem', csoport=ny.nev('vizsgalt_csoport', c), n=n)
                                                for c, n in modell.forrasok if n)))
         iro.ures()
+        masutt = [t for t in modell.tablak if t.masutt]
+        if masutt:
+            iro.sor(ny.s('k3.kh_masutt', n=sum(t.sorok_szama for t in masutt), elemek=tuple(
+                ny.s('k3.forras.elem', csoport=ny.nev('vizsgalt_csoport', t.csoport), n=t.sorok_szama)
+                for t in masutt), cim=K.szamozott_cim(keret, md_kh.AZONOSITO),
+                horgony=K.szakasz_horgony(keret, md_kh.AZONOSITO), minosites=ny.s('cim.minosites')))
+            iro.ures()
         jegyzetek = []
         for t in modell.tablak:
-            _tabla(iro, ny, t, szakasz, jegyzetek)
+            if not t.masutt:
+                _tabla(iro, ny, t, szakasz, jegyzetek)
     if modell.kozos_olvasoi is not None:
         iro.sor(prov('közös forrásmegjelölés: {}', modell.kozos_olvasoi), prov('eredeti: {}', modell.kozos_eredeti))
         iro.ures()

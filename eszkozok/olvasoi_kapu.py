@@ -1681,8 +1681,10 @@ def arany_szoszam():
 # látható szöveg olvasói mintái. A szkript heurisztikus; az álpozitívok szűrése: a link célja (`](#…)`), a „Forrás:”
 # sor és jegyzet, az Irodalom szakasz (forrásnév-felsorolás), a BDB saját szövegének héber szó utáni „,;” jele, a négy
 # szónál rövidebb cella (szótári glossza: „gonosz/kár: gonosz”).
-MINTA_SZAKSZO = ('fölérendelt fogalom', 'invokáló szerkezet', 'gerinc', 'token', 'kutatói hozzárendelés',
-                 'Szövegigazolás nélkül', 'proveniencia', 'jelölt')
+# a szakszó-lista egy helyen áll (F241.5b, D15, D17): a lapgen szókincs-kapuja a forrásnál ugyanezt méri; a tiltólista
+# csak a magyarázatlan belső eljárásra utaló szavakat tartja (D17 (1)), egy fogalom második neve névazonossági hiba (D17 (2))
+from lapgen import szokincs as _szokincs  # noqa: E402
+from lapgen.szokincs import SZAKSZO as MINTA_SZAKSZO  # noqa: E402
 MINTA_SZAKSZO_RX = re.compile(r'(?<!\w)(?:%s)' % '|'.join(re.escape(x) for x in MINTA_SZAKSZO), re.I)
 MINTA_FORRASNEV_RX = re.compile(r'\((?:a BDB-szótár|a STEPBible[^)]*\)?|TAHOT|TAGNT|a Thayer[^)]*)\)\s*[,;]')
 MINTA_BELSO_RX = re.compile(r'\b[a-z]+_[a-z_]+\b|:,|\(,|,;|\bN-F\d|\bDT-?F?\d|\bF\d{2,3}\b|#\d{2,3}\b')
@@ -1725,6 +1727,9 @@ def ell_minta(szoveg):
             ki.append(talalat('MINTA', BUKAS, n, kornyezet(t, m), 'belső név vagy tört írásjel: ' + m.group(0)))
         for m in MINTA_SZAKSZO_RX.finditer(t):
             ki.append(talalat('MINTA', BUKAS, n, kornyezet(t, m), 'szakszó: ' + m.group(0)))
+        for m in _szokincs.MASODIK_RX.finditer(t):
+            ki.append(talalat('MINTA', BUKAS, n, kornyezet(t, m), 'egy fogalom második neve: %s (a lapon: %s)'
+                              % (m.group(0), _szokincs.bevezetett(m.group(0)))))
     for n, sz, jt in jegyzetek:
         mag = re.sub(r'^(?:Forrás|Szövegigazolás nélkül|A héber szöveg \(TAHOT\) igazolja)[:;.]?\s*', '', jt).strip(' .')
         kulcs = re.findall(r'\d?[A-ZÁÉÍÓÖŐÚÜŰ][a-záéíóöőúüű]*\.? ?\d+:\d+', mag)

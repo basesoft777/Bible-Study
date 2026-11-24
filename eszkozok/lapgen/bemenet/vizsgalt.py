@@ -9,7 +9,7 @@ mezőben álló megszorítás (pl. „Hif'íl-alakok”) kulcs (DT926): az olvas
 típusából jön, ismeretlen megszorításnál BemenetHiba.
 
 Az `indoklas` kézi próza, a DT884 szerint a végleges alakjában: a réteg nem tisztít, a nem olvasói szövegen megáll
-(`kereszthiv._indok`). Két szerkezet bomlik le róla: az összesítő sor eleje („Összesítő sor N versre (…):”, a régi
+(`kereszthiv._indok`); ahol az indoklás belső szót hordoz, a lapon a kézzel írt olvasói alakja áll (B76, D15). Két szerkezet bomlik le róla: az összesítő sor eleje („Összesítő sor N versre (…):”, a régi
 lap „A sor N verset foglal össze …” cseréje helyett sablonmondat) és a csoportos kizárás szerkesztői döntésének
 záró mondata (a dátum és az idézet a döntés nyoma, a lapon sablonmondat áll).
 
@@ -20,6 +20,7 @@ import re
 
 from lapgen.bemenet import dontes as dontes_be
 from lapgen.bemenet import kereszthiv as kh
+from lapgen.bemenet import olvasoi_indok as olvasoi_be
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.bemenet.konyvek import b63_konyvek
 from lapgen.bemenet.nyelv import b65_nevtabla
@@ -170,8 +171,9 @@ def _jeloles(b, fo, forras, konyvek, igehely):
     raise BemenetHiba('B04: %s: a jelölés forrása nincs leképezve a 3. szakasz táblájára: %s' % (igehely, fo[:120]))
 
 
-def _indoklas(b, szoveg, igehely):
-    """(összesítő versszám vagy None, szerkesztői záró mondat volt-e, az indoklás darabjai)."""
+def indoklas_bontas(szoveg):
+    """Az indoklás két lebontott szerkezete: (összesítő versszám vagy None, szerkesztői záró mondat volt-e, a lapra
+    kerülő maradék szöveg). Az olvasói indoklások táblája (B76) is ezzel számolja a lapra kerülő szöveget."""
     osszesito = None
     m = _OSSZESITO_ELEJE_RX.match(szoveg)
     if m:
@@ -180,7 +182,17 @@ def _indoklas(b, szoveg, igehely):
     zaro = _SZERKESZTOI_ZARO_RX.search(szoveg)
     if zaro:
         szoveg = szoveg[:zaro.start()]
-    return osszesito, bool(zaro), (kh._indok(b, szoveg, igehely) if szoveg.strip() else ())
+    return osszesito, bool(zaro), szoveg
+
+
+def _indoklas(b, olvasoi, szoveg, igehely):
+    """(összesítő versszám vagy None, szerkesztői záró mondat volt-e, az indoklás darabjai, a lapra kerülő szöveg).
+    A lapra kerülő szöveg az olvasói alak, ha van (B76, D15), különben a szókincs-kapun átmenő indoklás."""
+    osszesito, zaro, szoveg = indoklas_bontas(szoveg)
+    if not szoveg.strip():
+        return osszesito, zaro, (), ''
+    lathato, b_id, mezo = olvasoi.lapra(szoveg, igehely)
+    return osszesito, zaro, kh._indok(b, lathato, igehely, b_id, mezo), lathato
 
 
 def vizsgalt_sorok(b, motivum):
@@ -188,6 +200,7 @@ def vizsgalt_sorok(b, motivum):
     táblájához."""
     konyvek = b63_konyvek(b)
     okok = dontes_be.b56_okok(b, motivum)
+    olvasoi = olvasoi_be.b76_olvasoi_indoklasok(b, motivum)
     tabla = dontes_be.jeloltnaplo_tabla(b, tovabbi=('dontes_ref',))
     idx = {o: tabla.oszlop(o) for o in dontes_be._JELOLT_OSZLOPOK + ('dontes_ref',)}
     ki = []
@@ -206,7 +219,7 @@ def vizsgalt_sorok(b, motivum):
         fo = _NAPLO_RX.split(forras.split(_MEZO_ELVALASZTO)[0].strip())[0].strip()
         csoport, jeloles, jegyzet = _jeloles(b, fo, forras, konyvek, igehely_kod)
         indok_fo, sep, farok = sor[idx['indoklas']].partition(_MEZO_ELVALASZTO)
-        osszesito, zaro, indok = _indoklas(b, indok_fo, igehely_kod)
+        osszesito, zaro, indok, lathato = _indoklas(b, olvasoi, indok_fo, igehely_kod)
         if osszesito is not None and osszesito != jeloles.csoport_versszam:
             # az összesítő eleje és a forrás-mező versszáma ugyanaz az adat: eltérésnél a réteg megáll (M-NYERS)
             raise BemenetHiba('B04: %s: az indoklás összesítő eleje (%d vers) és a forrás-mező versszáma (%s) eltér'
@@ -218,7 +231,7 @@ def vizsgalt_sorok(b, motivum):
         v.dontes, v.csoport, v.jeloles, v.jegyzet, v.indok = dontes, csoport, jeloles, jegyzet, indok
         v.osszesito, v.szerkesztoi_zaro, v.ok = osszesito, zaro, ok
         v.ok_ismetles = bool(ok is not None and indok and osszesito is None
-                             and kh.cimke_ismetles(ok.cimke.ertek, indok_fo))
+                             and kh.cimke_ismetles(ok.cimke.ertek, lathato))
         nyom = nyom_lapra(sor[idx['dontes_ref']])
         lj = 'forrás: `%s`' % forras
         if sep:

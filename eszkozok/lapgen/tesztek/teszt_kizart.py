@@ -153,6 +153,17 @@ class Lap(unittest.TestCase):
             self.assertEqual(len(utalas), 1, azonosito)
             self.assertLess(utalas[0], okok[0], azonosito)
 
+    def test_a_kereszthivatkozasos_tabla_egyszer_all(self):
+        """D15 (2): a kereszthivatkozásból vizsgált sorok táblája a 6. szakasz Minősítésében áll; a 3. szakaszban
+        nincs TSK- vagy Károli-csoporttábla, helyette egy mondat hivatkozik a 6. szakaszra."""
+        for azonosito in MINTALAPOK:
+            sorok = _szakasz(azonosito)
+            self.assertFalse([l for l, _t in sorok if l.startswith(('**TSK-ajánlás**', '**Károli-kereszthivatkozás**'))],
+                             azonosito)
+            hivatkozo = [t for l, t in sorok if l.startswith('A kereszthivatkozásból vizsgált ')]
+            self.assertEqual(len(hivatkozo), 1, azonosito)
+            self.assertIn('](#6-kereszthivatkozások)', hivatkozo[0], azonosito)
+
     def test_nincs_belso_szoveg_a_lathato_lapon(self):
         """A döntésnapló belső jelölése nem kerül a látható szövegbe: az összesítő sor nyers eleje, a szerkesztői
         döntés munkaszereplője, a forrás-mező kulcsszavai."""

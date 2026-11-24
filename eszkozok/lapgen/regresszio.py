@@ -20,10 +20,15 @@ Mit ellenőriz:
    (`naplok/F218_elteres_engedely.tsv`); az engedélysor tényleges darabszáma egyezzen az elvárttal.
    A fel nem használt és a túlhasznált engedélysor is BUKÁS.
 
-Az engedélyfájl oszlopai: `id` · `fajl` · `szakasz` · `mechanizmus` · `kotes` (`sor` | `minta`) · `regi` · `uj`
-· `elvart_db` · `ok`. `sor` kötésnél a `regi` és az `uj` a sor sha256-ának első 16 jegye (`-`: nincs ilyen
+Az engedélyfájl oszlopai: `id` · `fajl` · `szakasz` · `mechanizmus` · `kotes` (`sor` | `minta` | `ok`) · `regi` ·
+`uj` · `elvart_db` · `ok`. `sor` kötésnél a `regi` és az `uj` a sor sha256-ának első 16 jegye (`-`: nincs ilyen
 oldal, azaz tiszta beszúrás vagy törlés); `minta` kötésnél a `regi` reguláris kifejezés, az `uj` a csere:
 a diff-sor akkor illik, ha a minta illik a régi sorra, és a cserével épp az új sort adja.
+`ok` kötés (D19, a szerkesztő 2026-11-24): egy szándékos eltérés egy sorban, okonként (az `ok` mezőben a döntés vagy
+a tétel azonosítója), soronkénti engedély nélkül. A `regi` és az `uj` oldalanként: `*` bármi (a sor állhat vagy
+hiányozhat), `-` nincs ilyen oldal, egyéb reguláris kifejezés, amelynek az adott oldal sorára illenie kell. Az `ok`
+sor csak arra a diff-sorra illik, amelyre `sor` vagy `minta` kötésű sor nem; a nem okhoz kötött eltérést a pontos
+darabszám (`elvart_db`) és a szakasz jelzi.
 
 Kilépési kód: 0 rendben, 1 BUKÁS, 2 a mérce nem futtatható (hash-őr, hiányzó fájl).
 """
@@ -178,6 +183,18 @@ def sor_diff(regi, uj):
     return ki
 
 
+OK_KOTES = 'ok'
+
+
+def _oldal_illik(minta, sor):
+    """Az `ok` kötés egy oldala: `*` bármi, `-` nincs ilyen oldal, egyéb reguláris kifejezés a sorra."""
+    if minta == '*':
+        return True
+    if minta == '-':
+        return sor is None
+    return sor is not None and bool(re.search(minta, sor))
+
+
 def _illik(engedely, regi, uj):
     if engedely['kotes'] == 'sor':
         return (engedely['regi'] == (sor_hash(regi) if regi is not None else '-')
@@ -187,6 +204,8 @@ def _illik(engedely, regi, uj):
             return False
         minta = re.compile(engedely['regi'])
         return bool(minta.search(regi)) and minta.sub(engedely['uj'], regi) == uj
+    if engedely['kotes'] == OK_KOTES:
+        return _oldal_illik(engedely['regi'], regi) and _oldal_illik(engedely['uj'], uj)
     raise MerceHiba('ismeretlen kötés az engedélyfájlban: %r (%s)' % (engedely['kotes'], engedely['id']))
 
 
@@ -217,8 +236,10 @@ def osszevet(fajl, referencia_szoveg, uj_szoveg, engedelyek, teljes=False):
         diff = sor_diff(regi_sorok, uj[cim])
         kint = 0
         for regi_sor, uj_sor in diff:
-            illok = [e for e in engedelyek
-                     if e['fajl'] == fajl and e['szakasz'] in (cim, '*') and _illik(e, regi_sor, uj_sor)]
+            jeloltek = [e for e in engedelyek
+                        if e['fajl'] == fajl and e['szakasz'] in (cim, '*') and _illik(e, regi_sor, uj_sor)]
+            # a soronkénti (`sor`, `minta`) kötés előbb; az okonkénti (`ok`) csak a többire (D19)
+            illok = [e for e in jeloltek if e['kotes'] != OK_KOTES] or jeloltek
             if len(illok) == 1:
                 hasznalat[illok[0]['id']] += 1
             else:
