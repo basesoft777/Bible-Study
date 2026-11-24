@@ -133,10 +133,40 @@ def _fv_nev(csomo):
     return csomo.id if isinstance(csomo, ast.Name) else None
 
 
+def feliratok_hu():
+    """{kulcs: magyar felirat} a `konfig/feliratok.tsv`-ből (`split('\t')`, a `csv` modul nélkül); hiányzó fájl: üres. Az `F('kulcs')` blokkcímek feloldásához."""
+    ut = os.path.join(KONFIG_DIR, 'feliratok.tsv')
+    if not os.path.isfile(ut):
+        return {}
+    ki = {}
+    with open(ut, encoding='utf-8') as f:
+        for sor in f:
+            sor = sor.rstrip('\r\n')
+            if not sor or sor.startswith('#'):
+                continue
+            r = sor.split('\t')
+            if len(r) >= 2 and r[0] != 'kulcs':
+                ki[r[0]] = r[1].replace('\\n', '\n')
+    return ki
+
+
+def blokk_cim(csomo):
+    """A blokk címe a regiszterből: szöveg-literál, vagy `F('kulcs')` hívás (a `feliratok.tsv` magyar szövege). Ha a kulcs nincs a táblában, a
+    cím a nyers `F('kulcs')` jelzés (a leltár nem találgat); más alakú kifejezésnél `?`."""
+    szoveg = _lit(csomo)
+    if isinstance(szoveg, str):
+        return szoveg
+    if isinstance(csomo, ast.Call) and isinstance(csomo.func, ast.Name) and csomo.func.id == 'F' and csomo.args:
+        kulcs = _lit(csomo.args[0])
+        if isinstance(kulcs, str):
+            return feliratok_hu().get(kulcs) or "F('%s')" % kulcs
+    return '?'
+
+
 def _blokk(hivas, csoport):
     """Egy `B(...)` hívás a regiszterből: a literál mezők kiolvasva, a függvény-argumentumok neve."""
     a = hivas.args
-    b = {'id': _lit(a[0]), 'oldal': _lit(a[1]), 'cim': _lit(a[2]), 'jelleg': _lit(a[3]), 'tablak': tuple(_lit(a[4], ()) or ()),
+    b = {'id': _lit(a[0]), 'oldal': _lit(a[1]), 'cim': blokk_cim(a[2]), 'jelleg': _lit(a[3]), 'tablak': tuple(_lit(a[4], ()) or ()),
          'fetch': _fv_nev(a[5]) if len(a) > 5 else None, 'render': _fv_nev(a[6]) if len(a) > 6 else None,
          'jelleg_megj': _lit(a[7], '') if len(a) > 7 else '', 'csoport': csoport,
          'opcionalis': False, 'vers_kell': False, 'ures_rejt': False, 'kovet': (), 'forras_szoveg': '', 'jelleg_fn': False}
@@ -859,8 +889,8 @@ def generalt_szoveg(L):
               'azt jelenti, hogy a blokk csak bizonyos feltétellel áll a lapon (vers-kontextus, üres eredménynél rejtve, a régebbi DB-ből hiányozhat, másik blokkot követ). '
               'A **csukva** állapotot a regiszter nem rögzíti (a lenyílók a blokkok belsejében vannak), ezért ez a leltár nem mutatja.')
     ki.append('- **Olvasói név**: az `adat/olvasoi_nevtabla.tsv` `forras` sorai a lapgenerátor bemenet-jegyzékén (`adat/lapgen_bemenetek.tsv`) át, tábla- (a fájlnév azonos a táblanévvel) '
-              'vagy adatkészlet-szinten. A `konfig/feliratok.tsv` %s. Az olvasón látható blokk-cím a 4. szakaszban áll.' % (
-                  'létezik, de a leltár még nem olvassa' if L['feliratok_van'] else 'nem létezik a repóban, ezért nem szerepel'))
+              'vagy adatkészlet-szinten. A blokkcímek (4. szakasz) az olvasón látható magyar címek: a regiszter szöveg-literálja, vagy az `F("kulcs")` hívás a `konfig/feliratok.tsv`-ből; %s.' % (
+                  'a tábla olvasói neve (3. szakasz) nem a feliratokból jön' if L['feliratok_van'] else 'a `konfig/feliratok.tsv` nem létezik, ezért az `F(...)` címek nyers kulcsként állnak'))
     ki.append('- **Magyar fordítás**: a `forditasok` tábla mezői (szótár szerint), a magyar glosszák/Nave/BDB-bontás táblái, és a blokk, amely a táblát a fordítással együtt olvassa. '
               'A `—` azt jelenti, hogy a táblában nincs szöveges oszlop. A `nincs` szöveges táblára gépileg nem talált fordítást.')
     ki.append('- **Licenc**: a `tabla_licenc` (cimke, jelzések) és a `licencek` (share-alike).')
@@ -990,7 +1020,8 @@ def alap_kinyer(alap):
     import io
     import tarfile
     import tempfile
-    p = subprocess.run(['git', 'archive', '--format=tar', alap, '--', 'eszkozok/olvaso_szerver/*.py', 'eszkozok/olvaso_szerver/konfig/*.toml'],
+    p = subprocess.run(['git', 'archive', '--format=tar', alap, '--', 'eszkozok/olvaso_szerver/*.py', 'eszkozok/olvaso_szerver/konfig/*.toml',
+                        'eszkozok/olvaso_szerver/konfig/feliratok.tsv'],
                        cwd=GYOKER, capture_output=True, timeout=300)
     if p.returncode != 0:
         raise SystemExit('git archive %s: %s' % (alap, p.stderr.decode('utf-8', 'replace').strip()))
@@ -1006,7 +1037,7 @@ def alap_kinyer(alap):
                 continue
             if len(reszek) == 3 and reszek[2].endswith('.py'):
                 ut = os.path.join(cel, reszek[2])
-            elif len(reszek) == 4 and reszek[2] == 'konfig' and reszek[3].endswith('.toml'):
+            elif len(reszek) == 4 and reszek[2] == 'konfig' and (reszek[3].endswith('.toml') or reszek[3] == 'feliratok.tsv'):
                 ut = os.path.join(cel, 'konfig', reszek[3])
             else:
                 continue
