@@ -2723,6 +2723,43 @@ def szabaly47_bdb_konyvketto(adat_dir):
                megjegyzes='javítás: eszkozok/bdb_konyvketto_javit.py; napló: naplok/LXXBDB_konyvketto_csere.tsv')
 
 
+# 48. szabály (F240 L5): a BDB vers → jelentés táblában a beragadt kurzor nyoma — legalább 5 egymást követő, nem illesztett
+# (`ketes:jp_illesztes`) sor ugyanazon a számozott jelentésponton — a plafon alatt (csak csökkenhet). A javítás előtt 45 futam
+# / 1 188 sor (pl. a tehóm „-/5”, H8415), utána 2 futam / 10 sor (H2320 -/2/b, H6677 -/-/l: hosszú felsorolás, a szomszédos
+# sorok ugyanott biztosan illesztve; naplok/LXXBDB_meres.md).
+VJ_BERAGADT_PLAFON = (2, 10)
+
+
+def vj_beragadt_futamok(adat_dir, min_hossz=5):
+    """[(Strong, útvonal, hossz)] a beragadt kurzor futamai a számozott jelentéspontokon."""
+    ki, elozo, n = [], None, 0
+    fej, sorok = G.tsv_beolvas(os.path.join(adat_dir, 'bdb_vers_jelentes.tsv'))
+    for r in sorok + [None]:
+        k = None
+        if r is not None and (r.get('bizonyossag') or '').startswith('ketes:jp_illesztes') and r.get('utvonal') not in ('fej', 'tagolatlan'):
+            k = (r['strong'], r['utvonal'])
+        if k is not None and k == elozo:
+            n += 1
+            continue
+        if elozo is not None and n >= min_hossz:
+            ki.append((elozo[0], elozo[1], n))
+        elozo, n = k, (1 if k else 0)
+    return ki
+
+
+def szabaly48_vj_beragadt(adat_dir):
+    cim = '48. A BDB vers → jelentés táblában nincs beragadt kurzor (F240 L5, a tehóm „örvény · 5” esete)'
+    if not os.path.exists(os.path.join(adat_dir, 'bdb_vers_jelentes.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs bdb_vers_jelentes.tsv')
+    f = vj_beragadt_futamok(adat_dir)
+    db, sor = len(f), sum(x[2] for x in f)
+    peldak = ['%s %s: %d egymást követő nem illesztett sor' % x for x in f]
+    if db > VJ_BERAGADT_PLAFON[0] or sor > VJ_BERAGADT_PLAFON[1]:
+        return Sor(cim, 'SÉRTÉS', db, peldak, megjegyzes='%d futam / %d sor a %d / %d plafon fölött' % ((db, sor) + VJ_BERAGADT_PLAFON))
+    return Sor(cim, 'JELENTÉS' if (db, sor) != VJ_BERAGADT_PLAFON else 'RENDBEN', None, [] if (db, sor) == VJ_BERAGADT_PLAFON else peldak,
+               megjegyzes='%d futam / %d sor (plafon %d / %d)' % ((db, sor) + VJ_BERAGADT_PLAFON))
+
+
 # 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez
 # (JELENTÉS), a szöveg a közlemény javítókörében javul (a lapon: olvasói kapu, a nyílt magban: SZERKESZTO).
 def szabaly41_kozlemeny_szerkeszto(adat_dir):
@@ -2854,6 +2891,7 @@ def main():
         tabla_sorok.append(szabaly45_lxx_nyelvtani(args.adat))
         tabla_sorok.append(szabaly46_lxx_os_homograf(args.adat))
         tabla_sorok.append(szabaly47_bdb_konyvketto(args.adat))
+        tabla_sorok.append(szabaly48_vj_beragadt(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

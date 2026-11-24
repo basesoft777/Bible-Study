@@ -3034,6 +3034,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | 45 | Nyelvtani szó nem LXX-megfelelő: az alakszám a nyelvtani listán (F240 L2) |
 | 46 | Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6, N-F240a) |
 | 47 | Nincs kettőzött könyvszó a BDB-hivatkozás előtt, angolul és magyarul (F240 L3) |
+| 48 | A BDB vers → jelentés táblában nincs beragadt kurzor (F240 L5, a tehóm „örvény · 5” esete) |
 
 **CI-szabályok** (`.github/workflows/ellenorzes.yml`)
 
