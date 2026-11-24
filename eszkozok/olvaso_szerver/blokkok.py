@@ -2624,10 +2624,12 @@ def _f_lsj(K):
 
 
 def _ures_lsj(K):
-    """F0.43: ahol az `lsj` táblában nincs sor, a szónak az LSJ-ben nincs megfelelő szócikke (a nyers modul pótszövege — név-helyőrző,
-    Strong-mondat — az építésnél kiesik: `adat/lsj_forras_javitas.tsv`): ez nem „üres eredmény”, hanem a forrás határa, és az olvasó
-    ezt mondja ki, a szöveg helyett."""
-    return Markup('<p class="ures">%s</p>') % F('lsj.nincs_szocikk')
+    """F0.43: ahol az `lsj` táblában a szónak üres szövegű sora van (`adat/lsj_forras_javitas.tsv` `nincs_szocikk` döntése: a nyers modul
+    pótszövege — név-helyőrző, Strong-mondat — kiesett), a forrás határát mondja ki a blokk, a szöveg helyett; ahol nincs sor
+    (nincs döntés), a szokásos üres jelzés áll."""
+    if K.strong and q.lsj_dontott_nincs(K.con, K.strong):
+        return Markup('<p class="ures">%s</p>') % F('lsj.nincs_szocikk')
+    return _ures()
 
 
 def _r_lsj(d, K):

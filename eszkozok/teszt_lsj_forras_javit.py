@@ -70,11 +70,13 @@ class Betolto(unittest.TestCase):
 class Alkalmazas(unittest.TestCase):
     def test_csere_kihagyas_hash(self):
         nyers = [['G0001', 'G1', 'a'], ['G0002', 'G2', 'név-helyőrző'], ['G0003', 'G3', 'Strong-mondat'], ['G0004', 'G4', 'LSJ']]
-        j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('név-helyőrző'), 'szoveg': ''},
+        j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('név-helyőrző'), 'szoveg': '', 'jelzes': ''},
              'G0003': {'strong': 'G0003', 'tipus': 'perseus_csere', 'modul_hash': L.modul_hash('Strong-mondat'), 'szoveg': 'LSJ-szöveg', 'jelzes': ''}}
         ki, db = L.alkalmaz(nyers, 0, 2, j)
-        self.assertEqual([r[0] for r in ki], ['G0001', 'G0003', 'G0004'])
-        self.assertEqual(ki[1][2], 'LSJ-szöveg')
+        self.assertEqual([r[0] for r in ki], ['G0001', 'G0002', 'G0003', 'G0004'])
+        self.assertEqual(ki[1][2], '', 'a nincs_szocikk sor üres szöveggel marad (az olvasó így ismeri fel a döntést)')
+        self.assertEqual(ki[2][2], 'LSJ-szöveg')
+        self.assertEqual(ki[0][2], 'a', 'a döntés nélküli sor változatlan')
         self.assertEqual(nyers[2][2], 'Strong-mondat', 'a bemenet nem módosul')
         self.assertEqual(db, {'perseus_csere': 1, 'perseus_szulo': 0, 'nincs_szocikk': 1})
 
@@ -119,11 +121,10 @@ class MaiTabla(unittest.TestCase):
         fej, sorok = G.tsv_beolvas(os.path.join(L.ROOT, L.NYERS))
         rows = [[r[f] for f in fej] for r in sorok]
         ki, db = L.alkalmaz(rows, fej.index('Strong_padded'), fej.index('Teljes_szocikk'), self.j)
-        self.assertEqual(len(ki), len(rows) - db['nincs_szocikk'])
+        self.assertEqual(len(ki), len(rows))
         self.assertEqual(sum(db.values()), 942 + 68)
-        maradt = {r[0] for r in ki}
-        for s, r in self.j.items():
-            self.assertEqual(s in maradt, r['tipus'] != 'nincs_szocikk', s)
+        uresek = {r[0] for r in ki if not r[2].strip()}
+        self.assertEqual(uresek, {s for s, r in self.j.items() if r['tipus'] == 'nincs_szocikk'})
 
     def test_a_csere_szoveg_nem_potszoveg(self):
         for s, r in self.j.items():
@@ -138,11 +139,31 @@ class MaiTabla(unittest.TestCase):
             self.assertFalse(L.csonka(sz), s)
 
     def test_csere_kulcs_a_tbesg_lemmaval_egyezik(self):
+        """A `gepi_lemma_egyezes` sor Perseus-kulcsa (Beta-kódból Unicode-ra) pontosan egyezik a TBESG-lemmával."""
         lemma = L.tbesg_lemmak(os.path.join(L.ROOT, L.TBESG))
+        db = 0
         for s, r in self.j.items():
             if r['modszer'] == 'gepi_lemma_egyezes':
-                self.assertTrue(r['perseus_kulcs'], s)
-                self.assertIn(s, lemma, s)
+                db += 1
+                kulcsok = {L.kulcs_pontos(L.beta_unicode(k)) for k in r['perseus_kulcs'].split(';')}
+                self.assertEqual(kulcsok, {L.kulcs_pontos(lemma[s])}, s)
+        self.assertGreater(db, 150)
+
+    def test_kezi_kulcsok_megvannak(self):
+        for s, k in L.KEZI_KULCS.items():
+            self.assertEqual(self.j[s]['modszer'], 'kezi_lemma_valtozat', s)
+            self.assertEqual(self.j[s]['perseus_kulcs'], k, s)
+        self.assertEqual(self.j['G4326']['perseus_kulcs'], 'prosde/w2')       # προσδέω „szükséget szenved”, nem a „megköt”
+        self.assertEqual(self.j['G4483']['perseus_kulcs'], 'e)rw=')           # ἐρῶ „mondani”, nem az ἐρέω „kérdez”
+        self.assertEqual(self.j['G2748']['tipus'], 'nincs_szocikk')           # Kidron (helynév), nem a κέδρος (cédrus)
+
+    def test_a_szerkesztoi_jeloles_es_a_morfema_hatar_megmarad(self):
+        """A független ellenőrzés két szövegrontó hibája: a ⟨ ⟩ kiegészítés nem tűnhet el, a szigma morféma-határon nem szóvégi."""
+        self.assertEqual(L.szocikk_szoveg('<foreign lang="greek">a)sfa/l&amp;lt;e&amp;gt;ia</foreign>').strip(), 'ἀσφάλ⟨ε⟩ια')
+        self.assertEqual(L.beta_unicode('h(ss-a/omai'), 'ἡσσ-άομαι')
+        for s, r in self.j.items():
+            self.assertNotRegex(r['szoveg'], r'\wς-\w', s)
+            self.assertNotIn('&lt;', r['szoveg'], s)
 
     def test_kezi_kizart_sorok(self):
         for s in L.KEZI_KIZART:
@@ -173,9 +194,51 @@ class MaiTabla(unittest.TestCase):
 
     def test_b_pontos_cserek(self):
         self.assertEqual(self.j['G3041']['perseus_kulcs'], 'li/mnh')                       # λίμνη (nem λῐμήν)
-        self.assertEqual(self.j['G1650']['perseus_kulcs'], 'e)/legxos1+e)/legxos2')         # ἔλεγχος, a hozzáfűzött ἐν nélkül
+        self.assertEqual(self.j['G1650']['perseus_kulcs'], 'e)/legxos1;e)/legxos2')         # ἔλεγχος, a hozzáfűzött ἐν nélkül
         self.assertNotIn('OF PLACE', self.j['G1650']['szoveg'])                              # az ἐν szócikke
         self.assertEqual(self.j['G0838']['tipus'], 'perseus_csere')                         # αὔξησις (nem γάρ)
+
+
+class OlvasoJelzes(unittest.TestCase):
+    """Az olvasó `szo.lsj` blokkja: a döntött `nincs_szocikk` sor kimondja a forrás határát, a döntés nélküli hiány a szokásos jelzést adja."""
+
+    def test_dontott_nincs_vs_nincs_sor(self):
+        import sqlite3
+        sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'olvaso_szerver'))
+        import lekerdezesek as Q
+        con = sqlite3.connect(':memory:')
+        con.execute('CREATE TABLE lsj (strong_padded TEXT, strong_eredeti TEXT, teljes_szocikk TEXT, strong TEXT)')
+        con.executemany('INSERT INTO lsj VALUES (?,?,?,?)', [('G0002', 'G2', '', 'G0002'), ('G0004', 'G4', 'ἀβαρής, ές', 'G0004')])
+        self.assertTrue(Q.lsj_dontott_nincs(con, 'G0002'))      # döntött: a modul pótszövege kiesett
+        self.assertFalse(Q.lsj_dontott_nincs(con, 'G0004'))     # van szöveg
+        self.assertFalse(Q.lsj_dontott_nincs(con, 'G6000'))     # nincs sor (nincs döntés): a szokásos üres jelzés
+        self.assertEqual(Q.lsj(con, 'G0002'), '')
+
+    def test_felirat_igaz_allitast_tesz(self):
+        t = open(os.path.join(L.ROOT, 'eszkozok', 'olvaso_szerver', 'konfig', 'feliratok.tsv'), encoding='utf-8').read()
+        sor = [x for x in t.split('\n') if x.startswith('lsj.nincs_szocikk\t')][0].split('\t')[1]
+        self.assertIn('Perseus', sor)                           # a forrásról állít, nem az LSJ-ről általában
+        self.assertNotIn('nincs megfelelő szócikk', sor)
+
+
+class EpitesiAg(unittest.TestCase):
+    """A `sqlite_epit.py` `lsj`-ága: a javítás a táblába épül, a darabszám a megjegyzésekbe kerül (mint a teljes építésben)."""
+
+    def test_lsj_tabla_epitese(self):
+        import sqlite_epit as S
+        e = object.__new__(S.Epito)
+        e.gyoker, e.mod, e.minta, e.norm_jelentes, e.megjegyzesek = L.ROOT, 'teljes', None, {}, []
+        e.licenc_ellenorzes = lambda n, lic: True
+        kapott = {}
+        e.tabla = lambda nev, oszlopok, sorok, lic, indexek=(): kapott.update(sorok=[tuple(s) for s in sorok], oszlopok=oszlopok)
+        e._altalanos_betolt('lsj', 'konkordancia/LSJ_teljes.tsv', 'Strong_padded', None, ['LSJ'])
+        self.assertEqual([o[0] for o in kapott['oszlopok']], ['strong_padded', 'strong_eredeti', 'teljes_szocikk', 'strong'])
+        d = {r[0]: r for r in kapott['sorok']}
+        self.assertEqual(d['G0002'][2], '')                                  # Ἀαρών: üres szöveggel marad
+        self.assertTrue(d['G1941'][2].startswith('ἐπικᾰλέω'))                 # a Perseus-szócikk
+        self.assertTrue(d['G0264'][2].startswith('ἁμαρτάνω'))                # a döntés nélküli sor változatlan
+        self.assertEqual(len(kapott['sorok']), len(L.nyers_tabla()))
+        self.assertTrue(any(m.startswith('lsj_forras_javitas:') for m in e.megjegyzesek))
 
 
 class Kulcsok(unittest.TestCase):
