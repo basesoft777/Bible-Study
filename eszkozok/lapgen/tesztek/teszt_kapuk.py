@@ -331,7 +331,8 @@ class Leltar(unittest.TestCase):
             self.assertRegex(szoveg, r'Sablon-megfelelőség \| v\d+ \|', 'A15 %s' % azonosito)
             self.assertNotIn('【', szoveg, 'B8 %s' % azonosito)
         self.assertIn('Nincs rokon nyelvi alak a BDB szócikkében', self.lap['HAMART-001'])
-        self.assertGreater(self.lap['ISTENTISZT-001'].count('*(fordításra vár)*'), 0)
+        # B5: az F241.5 (N244) óta az ISTENTISZT-001-en sincs fordítatlan egység, így a jel a mintalapokon nem áll;
+        # a jelölés szabályát a GK-15 méri szintetikus bemeneten (`teszt_kartya.py`)
 
     @unittest.skip('218c (#238): N98 és N113 — a BDB-gerinc al-szócikk szerinti átkulcsolása és a sorbelső fej a '
                    'bemeneti rétegben; a két mintalapon nem fordul elő (a H2416 esete)')

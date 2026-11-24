@@ -226,4 +226,4 @@ SZERZO_ATNEZES = 'felhasználó'   # a lapátnézés és a lapjavítás `ki` / `
 # a kiadási és átnézési napló (B48), a befagyasztás (B59), a generátor saját táblái (B65, B66, B68) és a több
 # motívum közös forrás- és szótári adata (konkordancia, fordítások): ezek változása a generált blokkokat érinti.
 JOVAHAGYAS_BEMENETEK = ('B02', 'B03', 'B04', 'B38', 'B39', 'B40', 'B45', 'B46', 'B47', 'B50', 'B53', 'B56', 'B67',
-                        'B70')
+                        'B70', 'B76')

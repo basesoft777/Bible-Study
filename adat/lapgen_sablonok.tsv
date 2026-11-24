@@ -998,6 +998,7 @@ k3.okok.tobbi	További {n} ok, összesen {v} vers: {elemek|; }.	n:szam, v:szam, 
 k3.okok.tobbi.elem	{ok} ({n})	ok:lathato, n:szam	3	szerep_kizart.osszesito_sor	-
 k3.nyitott	**Nyitott döntés:** {n}	n:szam	3	szerep_kizart.osszesito_sor	-
 k3.forras	**A jelölés forrása:** {elemek| · }	elemek:lista(lathato)	3	szerep_kizart.osszesito_sor	-
+k3.kh_masutt	A kereszthivatkozásból vizsgált {n} sor ({elemek|, | és }) a [{cim}](#{horgony}) szakaszban, a {minosites} táblájában áll.	n:szam, elemek:lista(lathato), cim:lathato, horgony:horgony, minosites:lathato	3	uj (F241.5b, D15 (2): a kettőzött tábla egyszer, a 6. szakaszban)	var
 k3.csoport.cim	**{csoport}** ({n})	csoport:nev(vizsgalt_csoport), n:szam	3	szerep_kizart.blokk_torzs	-
 k3.csoport.cim.vers	**{csoport}** ({n} sor, {v} vers)	csoport:nev(vizsgalt_csoport), n:szam, v:szam	3	szerep_kizart.blokk_torzs (F123.TUD1B)	-
 k3.hely.tartomany	{hely}–{veg}	hely:igehely, veg:szam	3	szerep_kizart.osszevon	-

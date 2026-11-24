@@ -68,15 +68,19 @@ class Git:
 
 def _motivum_resz(utvonal, szoveg, kod):
     """A fájl motívumra eső része: az `<ID>`-s útvonalnál (a motívum saját fájlja) az egész; táblánál a fejléc (az első
-    nem `#` sor) és azok a sorok, amelyeknek valamely cellája pontosan a motívum azonosítója."""
-    if szoveg is None:
-        return '\x00nincs'
+    nem `#` sor) és azok a sorok, amelyeknek valamely cellája pontosan a motívum azonosítója. Ha a táblában a
+    motívumnak nincs sora (vagy a tábla nem áll), a rész üres: a fejléc csak a motívum soraival együtt jóváhagyás
+    tárgya, így egy új tábla (B76, F241.5b) vagy egy fejléc változása nem avultatja el a sor nélküli motívum
+    jóváhagyását."""
     if ID_HELYORZO in utvonal:
-        return szoveg
-    sorok = [s for s in szoveg.split('\n') if s.strip() and not s.startswith('#')]
-    if not sorok:
+        return '\x00nincs' if szoveg is None else szoveg
+    if szoveg is None:
         return ''
-    return '\n'.join([sorok[0]] + [s for s in sorok[1:] if kod in s.split('\t')])
+    sorok = [s for s in szoveg.split('\n') if s.strip() and not s.startswith('#')]
+    sajat = [s for s in sorok[1:] if kod in s.split('\t')]
+    if not sajat:
+        return ''
+    return '\n'.join([sorok[0]] + sajat)
 
 
 def lenyomat(b, motivum, olvas):

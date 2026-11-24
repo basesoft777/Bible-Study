@@ -12,7 +12,8 @@ pontja: a nyers sorok és a csak a MEK-ben álló megerősített sorok, azonos k
 forrásversenként kimondva áll.
 
 A döntésnapló kereszthivatkozásos sorainak két szabad mezője közül az `indoklas` itt kézi próza: a lapon a vizsgált hely
-indokaként áll, változatlanul (a régi lap is ezt közölte). Ezért a réteg kapuval ellenőrzi, hogy olvasói szöveg-e:
+indokaként áll, változatlanul (a régi lap is ezt közölte), vagy ha belső szót hordoz, a kézzel írt olvasói alakja
+(B76, `bemenet.olvasoi_indok`, D15). Ezért a réteg kapuval ellenőrzi, hogy olvasói szöveg-e:
 belső jelölés, egyenes idézőjel vagy kódjel esetén megáll, nem tisztít. A szövegben álló motívum-hivatkozás
 (`[ID: <azonosító>]`) szerkezet: a réteg darabokra bontja (kézi szöveg és motívumazonosító). A `forras_kereses`
 belső szöveg: a réteg csak a szerkezetét olvassa ki (melyik gyűjtemény, melyik helyről, hány szavazattal).
@@ -21,6 +22,7 @@ import re
 
 from lapgen.bemenet import dontes as dontes_be
 from lapgen.bemenet.jegyzek import BemenetHiba
+from lapgen.bemenet import olvasoi_indok as olvasoi_be
 from lapgen.bemenet.konyvek import b63_konyvek
 from lapgen.ertekek import AjanlasFajta, Dontes, Gyujtemeny
 from lapgen.szoveg import Igehely, MotivumId, Strong, SzovegHiba, prov
@@ -361,8 +363,9 @@ def nem_olvasoi(szoveg):
     return m.group(0) if m else None
 
 
-def _indok(b, szoveg, igehely):
-    """Az indoklás darabjai; ami nem olvasói szöveg, azon a réteg megáll (nem tisztít)."""
+def _indok(b, szoveg, igehely, b_id='B04', mezo='indoklas_kh'):
+    """Az indoklás darabjai; ami nem olvasói szöveg, azon a réteg megáll (nem tisztít). A `b_id`/`mezo` a lapra
+    kerülő szöveg forrása: a döntésnapló indoklása, vagy az olvasói alakja (B76, `olvasoi_indoklas`)."""
     darabok, veg = [], 0
     for m in _MOTIVUM_HIV_RX.finditer(szoveg):
         if m.start() > veg:
@@ -381,16 +384,16 @@ def _indok(b, szoveg, igehely):
             continue
         hiba = _NEM_OLVASOI_RX.search(d)
         if hiba:
-            raise BemenetHiba('B04: %s: az indoklás nem olvasói szöveg (%r): a lap nem tisztít, a forrás javítandó'
-                              % (igehely, hiba.group(0)))
+            raise BemenetHiba('%s: %s: az indoklás nem olvasói szöveg (%r): a lap nem tisztít, a forrás javítandó'
+                              % (b_id, igehely, hiba.group(0)))
         veg = 0
         for m in _STRONG_HIV_RX.finditer(d):
             if m.start() > veg:
-                ki.append(IndokDarab(kezi=b.kezi('B04', 'indoklas_kh', d[veg:m.start()])))
-            ki.append(IndokDarab(kezi=b.kezi('B04', 'indoklas_kh', m.group('szo')), strong=Strong(m.group('strong'))))
+                ki.append(IndokDarab(kezi=b.kezi(b_id, mezo, d[veg:m.start()])))
+            ki.append(IndokDarab(kezi=b.kezi(b_id, mezo, m.group('szo')), strong=Strong(m.group('strong'))))
             veg = m.end()
         if veg < len(d):
-            ki.append(IndokDarab(kezi=b.kezi('B04', 'indoklas_kh', d[veg:])))
+            ki.append(IndokDarab(kezi=b.kezi(b_id, mezo, d[veg:])))
     return tuple(ki)
 
 
@@ -398,6 +401,7 @@ def kereszthiv_jeloltek(b, motivum):
     """A B04 kereszthivatkozásos sorai: a motívum kereszthivatkozásból vizsgált előfordulás-jelöltjei a döntésnapló sorrendjében."""
     konyvek = b63_konyvek(b)
     okok = dontes_be.b56_okok(b, motivum)
+    olvasoi = olvasoi_be.b76_olvasoi_indoklasok(b, motivum)
     tabla = dontes_be.jeloltnaplo_tabla(b)
     idx = {o: tabla.oszlop(o) for o in _JELOLT_OSZLOPOK}
     ki = []
@@ -415,10 +419,13 @@ def kereszthiv_jeloltek(b, motivum):
         fo = _NAPLO_RX.split(reszek[0].strip())[0].strip()
         p = _PROV_RX.search(forras)
         indok_fo = sor[idx['indoklas']].partition(_MEZO_ELVALASZTO)[0]
-        indok = _indok(b, indok_fo, igehely.kod) if indok_fo.strip() else ()
+        lathato, indok = '', ()
+        if indok_fo.strip():
+            lathato, b_id, mezo = olvasoi.lapra(indok_fo, igehely.kod)
+            indok = _indok(b, lathato, igehely.kod, b_id, mezo)
         ok = okok.besorol(b.belso('B04', 'indoklas', indok_fo)) if dontes is Dontes.ELUTASITVA else None
         ki.append(KhJelolt(
             igehely=igehely, dontes=dontes, ajanlas=_ajanlas(fo, konyvek), indok=indok, ok=ok,
-            ok_ismetles=bool(ok is not None and indok and cimke_ismetles(ok.cimke.ertek, indok_fo)),
+            ok_ismetles=bool(ok is not None and indok and cimke_ismetles(ok.cimke.ertek, lathato)),
             prov=ProvSor(p.group('scope'), p.group('forras'), p.group('ts')) if p else None))
     return tuple(ki)
