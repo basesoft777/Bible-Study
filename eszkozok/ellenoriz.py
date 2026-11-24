@@ -2612,9 +2612,13 @@ def lxx_nyers_olvasok(gyoker):
             continue
         with open(ut, encoding='utf-8', errors='replace') as f:
             t = f.read()
-        if 'import lxx_strong_javitas' in t:
-            continue          # a segéden át olvas (sqlite_epit, bdb_adatblokk)
-        if re.search(r"'lxx_bridge\.tsv'\s*\)", t) or ('Macula_heber' in t and 'gorog_strong' in t):
+        if 'import lxx_strong_javitas' in t and ('.javit(' in t or '.bridge_sorok(' in t):
+            continue          # a segéden át olvas (sqlite_epit, bdb_adatblokk, olvaso_pilot/adat.py)
+        # a nyers híd útvonal-literálként (önálló sztring, nem proveniencia-szöveg része), vagy a Macula görög Strong-oszlopa
+        # névvel vagy oszlopindexszel (a független ellenőr esete: `sorok('adat/kulso/lxx_bridge.tsv')`, `r[14]`)
+        hid = re.search(r"""['"](?:[^'"\s]*/)?lxx_bridge\.tsv['"]""", t)
+        macula = 'Macula_heber' in t and ('gorog_strong' in t or re.search(r'\br\[14\]', t))
+        if hid or macula:
             ki.append(rel)
     return ki
 
@@ -2631,6 +2635,8 @@ def szabaly44_lxx_macula_strong(adat_dir):
             sertes.append('ítélet nélküli eltérés: %s → LXX_OS %s (%s), %d token, pl. „%s” — naplok/LXXBDB_lxx_jeloltek.tsv' % (s, t or '–', lem, n, pel))
         elif it == 'macula_hiba':
             sertes.append('javítatlan Macula-hiba: %s → %s (%s), %d token — adat/lxx_strong_javitas.tsv' % (s, t or '–', lem, n))
+    for (s, a), n in sorted(m['marado'].items()):
+        sertes.append('javítatlan token: %s „%s” (%d) — a Strong a javítótáblában hibásként áll; új javítósor vagy MARADO_HELYES' % (s, a, n))
     for rel in lxx_nyers_olvasok(os.path.dirname(os.path.abspath(adat_dir))):
         sertes.append('%s: a nyers Macula gorog_strong / lxx_bridge.tsv közvetlen olvasása (helyette eszkozok/lxx_strong_javitas.py)' % rel)
     return Sor(cim, _verdikt(sertes, []), len(sertes) or None, sertes,
@@ -2658,7 +2664,7 @@ def szabaly45_lxx_nyelvtani(adat_dir):
 
 
 def szabaly46_lxx_os_homograf(adat_dir):
-    cim = '46. Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6, N-F240a)'
+    cim = '46. Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6; az LXX_OS homográf-tétele)'
     m = _lxx_meres(adat_dir)
     if m is None:
         return Sor(cim, 'KÉZI', megjegyzes='nincs konkordancia/')
@@ -2679,7 +2685,7 @@ def szabaly46_lxx_os_homograf(adat_dir):
     for (s, szt, lem), n in sorted(db.items()):
         sertes.append('Macula: a kisbetűs „%s” a %s %s tulajdonnévi Strongot viseli (%d token)' % (lem, s, szt, n))
     return Sor(cim, _verdikt(sertes, jelentes), len(sertes) or None, sertes + jelentes,
-               megjegyzes='LXX_OS: %d pár / %d token (plafon %d / %d; N-F240a)' % ((par, tok) + LXX_OS_HOMOGRAF_PLAFON))
+               megjegyzes='LXX_OS: %d pár / %d token (plafon %d / %d; az LXX_OS homográf-tétele)' % ((par, tok) + LXX_OS_HOMOGRAF_PLAFON))
 
 
 # 47. szabály (F240 L3): a BDB-szövegben a hivatkozás előtt nem áll kettőzött könyvszó („angels Psalm Psa 97:7”,
@@ -2727,6 +2733,10 @@ def szabaly47_bdb_konyvketto(adat_dir):
 # / 1 188 sor (pl. a tehóm „-/5”, H8415), utána 2 futam / 10 sor (H2320 -/2/b, H6677 -/-/l: hosszú felsorolás, a szomszédos
 # sorok ugyanott biztosan illesztve; naplok/LXXBDB_meres.md).
 VJ_BERAGADT_PLAFON = (2, 10)
+# A választott táblapozíció a várttól messze (> 600 karakter) esik: `ketes:jp_tavol` (a javítókör óta; a hamisan „biztos” illesztés
+# jele). A brief L5.3(b)-je („a sor nem kaphat utána kezdődő szakaszt”) ezt a generátoron belül méri: a táblapozíció és az angol
+# pozíció eltérését. Plafon: csak csökkenhet.
+VJ_TAVOL_PLAFON = 19
 
 
 def vj_beragadt_futamok(adat_dir, min_hossz=5):
@@ -2753,10 +2763,16 @@ def szabaly48_vj_beragadt(adat_dir):
     f = vj_beragadt_futamok(adat_dir)
     db, sor = len(f), sum(x[2] for x in f)
     peldak = ['%s %s: %d egymást követő nem illesztett sor' % x for x in f]
+    _fej, vjs = G.tsv_beolvas(os.path.join(adat_dir, 'bdb_vers_jelentes.tsv'))
+    tavol = [r for r in vjs if (r.get('bizonyossag') or '').startswith('ketes:jp_tavol')]
+    if len(tavol) > VJ_TAVOL_PLAFON:
+        return Sor(cim, 'SÉRTÉS', len(tavol), ['%s %s: %s' % (r['strong'], r['karoli_vers'], r['utvonal']) for r in tavol],
+                   megjegyzes='%d messze illesztett sor a %d plafon fölött' % (len(tavol), VJ_TAVOL_PLAFON))
     if db > VJ_BERAGADT_PLAFON[0] or sor > VJ_BERAGADT_PLAFON[1]:
         return Sor(cim, 'SÉRTÉS', db, peldak, megjegyzes='%d futam / %d sor a %d / %d plafon fölött' % ((db, sor) + VJ_BERAGADT_PLAFON))
     return Sor(cim, 'JELENTÉS' if (db, sor) != VJ_BERAGADT_PLAFON else 'RENDBEN', None, [] if (db, sor) == VJ_BERAGADT_PLAFON else peldak,
-               megjegyzes='%d futam / %d sor (plafon %d / %d)' % ((db, sor) + VJ_BERAGADT_PLAFON))
+               megjegyzes='%d futam / %d sor (plafon %d / %d); messze illesztett sor: %d (plafon %d)' % (
+                   (db, sor) + VJ_BERAGADT_PLAFON + (len(tavol), VJ_TAVOL_PLAFON)))
 
 
 # 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez

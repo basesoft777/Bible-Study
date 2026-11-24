@@ -260,6 +260,7 @@ TABLA_JAVITASOK = {'osszegzo', 'egyenlo', 'torzsfej', 'egyes'}      # mérési k
 
 
 VART_TAV = 200   # F240 L5: ennél messzebb a várt pozíciótól a kurzor utáni találat gyanús (karakter)
+TAVOL_HATAR = 600  # F240 L5 (javítókör): ennél messzebb a választott hely a várttól: kétes illesztés (`jp_tavol`)
 
 
 class TablaPont:
@@ -383,6 +384,8 @@ class TablaPont:
                     k = legjobb
         if k < 0:
             return (vart if vart is not None else self.utolso), False
+        # a választott hely messze esik a várttól: az illesztés gyanús (a sor `ketes:jp_tavol`), a 48. kapu méri
+        self.tavol = vart is not None and abs(k - vart) > TAVOL_HATAR
         self.kurzor = k + len(nyers)
         self.utolso = k
         return k, True
@@ -618,6 +621,7 @@ def general(ts, strongok=None, sefaria_tanu=None):
             if t_ut == '-/-':
                 tag = next((t for a, b, c, t in szsav if a <= h['poz'] < b), True)
                 t_ut = 'fej' if tag else 'tagolatlan'
+            tp.tavol = False
             tpoz, illeszt = tp.keres(h)
             szak, resz, ut, hatar = tp.pont(tpoz)
             if not tabla.get(strong):
@@ -630,6 +634,8 @@ def general(ts, strongok=None, sefaria_tanu=None):
                 ketes.append('jp_tanu_elter')
             elif hatar:
                 ketes.append('jp_hatar')
+            elif getattr(tp, 'tavol', False):
+                ketes.append('jp_tavol')
             kezi = JELENTESPONT_KEZI.get((strong, h['poz']))
             if kezi:
                 szak, resz, ut = kezi[:3]

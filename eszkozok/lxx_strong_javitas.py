@@ -17,8 +17,8 @@ marad”):
 A `helyes_strong` üres lehet (DT-F240b): ha a helyes lemmának nincs Strong-száma, a pár „megfelelő nélkül” lesz, és
 ezt a tábla `indok` mezője kimondja.
 
-Futtatás a repó gyökeréből (mérés, fájlt nem ír, csak `--naplo` esetén a megadott útra):
-    python eszkozok/lxx_strong_javitas.py [--naplo naplok/LXXBDB_lxx_jeloltek.tsv]
+Futtatás a repó gyökeréből (mérés; `--ir` esetén a jelöltlista frissítése, a kézi ítéletek megmaradnak):
+    python eszkozok/lxx_strong_javitas.py [--ir]
 I/O: split('\\t') / '\\t'.join (csv modul nélkül).
 """
 import argparse
@@ -37,6 +37,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 JAVITAS = os.path.join('adat', 'lxx_strong_javitas.tsv')
 BRIDGE = os.path.join('adat', 'kulso', 'lxx_bridge.tsv')
+BRIDGE_KUSZOB = 3   # az lxx_bridge forrásának küszöbe (count ≥ 3, adat/kulso/LICENC.md)
 JAVITAS_OSZLOPOK = ['alak_norm', 'hibas_strong', 'helyes_strong', 'ok', 'indok', 'proveniencia']
 
 
@@ -107,17 +108,19 @@ def macula_tokenek(konk, jt):
 
 def bridge_sorok(gyoker=GYOKER, konk=None, jt=None):
     """A `lxx_bridge.tsv` sorai (dict: hebrew_strong, greek_strong, count) a javított Macula-tokenek különbségével.
-    A forrás a Macula összesítése (count ≥ 3); a különbség csak ott lép be, ahol a hibás pár a forrásban áll, a
-    helyes pár pedig hozzáadódik (ha a forrásban nem volt, új sor, a többi sor sorrendje változatlan)."""
+    A forrás a Macula összesítése (count ≥ 3); a különbség csak ott lép be, ahol a hibás pár a forrásban áll; a
+    helyes pár hozzáadódik, és ha a forrásban nem volt, csak a forrás küszöbével (a teljes darabszám ≥ 3) lesz új sor."""
     konk = konk or os.path.join(gyoker, 'konkordancia')
     jt = javitasok(gyoker) if jt is None else jt
     fej, sorok = tsv(os.path.join(gyoker, BRIDGE))
-    delta = collections.Counter()
+    delta, teljes = collections.Counter(), collections.Counter()
     for r, g, jv in macula_tokenek(konk, jt):
-        if not jv:
-            continue
         h = (r.get('strong') or '').strip()
         if not h:
+            continue
+        if g:
+            teljes[(h, g)] += 1
+        if not jv:
             continue
         delta[(h, strong_g(r.get('gorog_strong')))] -= 1
         if g:
@@ -129,9 +132,11 @@ def bridge_sorok(gyoker=GYOKER, konk=None, jt=None):
         n = int(r['count']) + delta.get(k, 0)
         if n > 0:
             ki.append({'hebrew_strong': r['hebrew_strong'], 'greek_strong': r['greek_strong'], 'count': str(n)})
+    # új pár (a forrásban nem volt): a forrás küszöbével (count ≥ 3), a teljes javított Macula-darabszámmal — nem a puszta
+    # különbséggel, amely 1–2 darabos, hamis megfelelőt hozna („marha” → πρωΐ; F240 független ellenőr)
     for (h, g), d in sorted(delta.items()):
-        if (h, g) not in latott and d > 0:
-            ki.append({'hebrew_strong': h, 'greek_strong': g, 'count': str(d)})
+        if (h, g) not in latott and d > 0 and teljes[(h, g)] >= BRIDGE_KUSZOB:
+            ki.append({'hebrew_strong': h, 'greek_strong': g, 'count': str(teljes[(h, g)])})
     return ki
 
 
@@ -218,6 +223,25 @@ def illesztes(konk, jt, ix=None):
     return db, pelda
 
 
+# A javítótábla hibás Strongjainak helyes, nem javítandó alakjai (a 44. kapu teljességi próbájához): a Βοος (Boáz) a G1003
+# helyes címkéje, a δῆλος alakjai a G1212-é.
+MARADO_HELYES = {'G1003': {'βοοσ', 'βοοζ'}, 'G1212': {'δηλοισ', 'δηλουσ', 'δηλων', 'δηλοσ', 'δηλοι'}}
+
+
+def marado_hibas(konk, jt):
+    """Counter{(Strong, alak_norm): token}: a javítótáblában hibásként szereplő Strong még javítatlan tokenjei (a versillesztéstől
+    függetlenül), a `MARADO_HELYES` alakok nélkül. Üres, ha a javítás teljes (F240 független ellenőr: „ἀγόμεναι”, Sir 1:5)."""
+    hibas = {h for (_a, h) in jt}
+    ki = collections.Counter()
+    for r, _g, jv in macula_tokenek(konk, jt):
+        s = strong_g(r.get('gorog_strong'))
+        if s in hibas and not jv:
+            a = alak_norm(r.get('gorog_lxx', ''))
+            if a not in MARADO_HELYES.get(s, ()):
+                ki[(s, a)] += 1
+    return ki
+
+
 JELOLT = os.path.join('naplok', 'LXXBDB_lxx_jeloltek.tsv')
 JELOLT_OSZLOPOK = ['macula_strong', 'macula_szoto', 'lxx_os_strong', 'lxx_os_lemma', 'token', 'macula_strong_osszes',
                    'pelda_alak', 'itelet', 'indok']
@@ -269,7 +293,7 @@ def meres(gyoker=GYOKER):
     sz = strong_szotar(konk)
     db, _p = illesztes(konk, jt, ix)
     m = {'jt': jt, 'osszes': osszes, 'sz': sz, 'illesztes': db, 'jeloltek': jeloltek(konk, jt, ix, osszes, sz),
-         'iteletek': iteletek(gyoker), 'homograf': lxx_os_homograf(konk, sz)}
+         'iteletek': iteletek(gyoker), 'homograf': lxx_os_homograf(konk, sz), 'marado': marado_hibas(konk, jt)}
     _GYORSITO[gyoker] = m
     return m
 
@@ -288,7 +312,7 @@ def main():
     print('jelölt pár: %d (token: %d); ítélet nélkül: %d' % (len(sorok), sum(int(x[4]) for x in sorok), uj))
     for k in ITELETEK:
         print('  %-15s %3d pár' % (k, sum(1 for x in sorok if x[7] == k)))
-    print('LXX_OS homográf (N-F240a): %d lemma–Strong pár, %d token' % (len(m['homograf']), sum(m['homograf'].values())))
+    print('LXX_OS homográf (az LXX_OS homográf-tétele): %d lemma–Strong pár, %d token' % (len(m['homograf']), sum(m['homograf'].values())))
     if a.ir:
         with open(os.path.join(GYOKER, JELOLT), 'w', encoding='utf-8', newline='\n') as f:
             f.write('# GENERÁLT jelöltrész + kézi ítélet: eszkozok/lxx_strong_javitas.py --ir (F240 L1); az itelet/indok oszlop kézi, '

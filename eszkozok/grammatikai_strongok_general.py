@@ -190,8 +190,8 @@ GOROG_KEZI = [
     ("G4862", "-val együtt",    "eloljaro",   "Elöljáró (σύν)."),
     ("G0846", "ő, az, maga",    "nevmas",     "Személyes/visszaható névmás (αὐτός). Héber párja a H9023 stb. névmási szuffixum-sor, a gépi alapban."),
     ("G1473", "én",             "nevmas",     "Személyes névmás (ἐγώ, alanyeset)."),
-    ("G3165", "engem, én, mi",  "nevmas",     "Személyes névmás (ἐγώ, függő esetek). A TAGNT a TÖBBES SZÁMÚ alakokat is ide sorolja (ἡμῶν), ezért a G2249 (ἡμεῖς) nem kap sort — a kivonatban 0 előfordulású."),
-    ("G4771", "te, ti",         "nevmas",     "Személyes névmás (σύ). A TAGNT a többes számú alakokat is ide sorolja, ezért a G5210 (ὑμεῖς) nem kap sort — a kivonatban 0 előfordulású."),
+    ("G3165", "engem, én, mi",  "nevmas",     "Személyes névmás (ἐγώ, függő esetek). A TAGNT a TÖBBES SZÁMÚ alakokat is ide sorolja (ἡμῶν); a G2249 (ἡμεῖς) és a többi alakszám a GOROG_ALAK-on (F240 L2)."),
+    ("G4771", "te, ti",         "nevmas",     "Személyes névmás (σύ). A TAGNT a többes számú alakokat is ide sorolja; a G5210 (ὑμεῖς) és a többi alakszám a GOROG_ALAK-on (F240 L2)."),
     ("G3778", "ez",             "nevmas",     "Mutató névmás (οὗτος)."),
     ("G1565", "az",             "nevmas",     "Mutató névmás (ἐκεῖνος)."),
     ("G3739", "aki, amely",     "vonatkozo_nevmas", "Vonatkozó névmás (ὅς). Héber párja a H0834 (אֲשֶׁר), kézi kiegészítésként."),
@@ -318,7 +318,7 @@ def main():
               "n=%d | elofordulas=%d | ts=%s" % (len(h9), h9_db, ts))
     g_db = sum(g_freq.get(s, 0) for s, _, _, _ in GOROG_KEZI)
     prov_g = ("scope=NT-full | forras=TAGNT_kivonat.tsv | modszer=teteles-lista | "
-              "n=%d | elofordulas=%d | ts=%s" % (len(GOROG_KEZI), g_db, ts))
+              "n=%d | alakszam=%d (F240 L2) | elofordulas=%d | ts=%s" % (len(GOROG_KEZI), len(GOROG_ALAK), g_db, ts))
 
     mezok = ["strong", "rovid_jelentes", "kategoria", "kizaras_oka"]
     with open(KIMENET, "w", encoding="utf-8", newline="") as f:

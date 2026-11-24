@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-teszt_gyokerok_kapuk.py -- F196: az állítás–adat kapu (`eszkozok/ellenorzes/allitas_adat.py`) és a követelménylista-kapu
+teszt_gyokerok_kapuk.py -- F196 (és F240: az ellenoriz.py 44–48. szabálya, áladattal): az állítás–adat kapu (`eszkozok/ellenorzes/allitas_adat.py`) és a követelménylista-kapu
 (`eszkozok/ellenorzes/kovetelmeny_kapu.py`) tesztjei.
 
 A tiszta esetek áladattal futnak (gyorsak); a `Valodi` osztály a commitolt HAMART-001 lapot és a valódi adatot méri,
@@ -299,6 +299,154 @@ class KovetelmenyMeres(unittest.TestCase):
         e = K.meres('X-001', self.sorok()[:1], futtato=f)
         self.assertEqual(e[0].osztaly, K.NEM_GYUJTHETO)
         self.assertEqual(K.osszegzo_sor('X-001', e), 'X-001: 0/0 követelmény teljesül (gépi)')
+
+
+# ---------------------------------------------------------------------------------------------------------------------
+# F240 (LXXBDB): az ellenoriz.py 44–48. szabálya és a két új modul (lxx_strong_javitas, bdb_konyvketto_javit), áladattal.
+# A javítás előtti állapoton bukniuk kell, a javítotton nem (a független ellenőr kérése: a „régi állapoton bukik” próba
+# reprodukálható legyen).
+
+import shutil  # noqa: E402
+import tempfile  # noqa: E402
+
+import ellenoriz as E  # noqa: E402
+import lxx_strong_javitas as LXJ  # noqa: E402
+import bdb_konyvketto_javit as KK  # noqa: E402
+
+_MACULA_FEJ = ['xml_id', 'ref', 'karoli', 'kk_mod', 'allapot', 'szo', 'lemma', 'strong', 'strong_x', 'strong_illesztes', 'morf',
+               'szofaj', 'gloss', 'gorog_lxx', 'gorog_strong', 'gorog_lxx_forras', 'gorog_lxx_rahlfs']
+_LXX_FEJ = ['igehely_lxx', 'igehely_kjv', 'igehely_karoli', 'karoli_ok', 'pozicio', 'szoalak', 'normalizalt', 'lemma', 'morf', 'strong',
+            'strong_ok', 'proveniencia']
+
+
+def _ir(ut, sorok):
+    os.makedirs(os.path.dirname(ut), exist_ok=True)
+    with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('\n'.join('\t'.join(s) for s in sorok) + '\n')
+
+
+class LxxGyoker(object):
+    """Áladat-gyökér: három vers, πρωὶ (G5459, a hibás címke) és μου (G3450, alakszám) a Macula-oldalon."""
+
+    def __init__(self, javitva=False, alakszam=False):
+        self.d = tempfile.mkdtemp(prefix='lxxbdb_')
+        k = os.path.join(self.d, 'konkordancia')
+        mac, lxx = [_MACULA_FEJ], [_LXX_FEJ]
+        for n, ig in enumerate(('1Móz 1:5', '1Móz 1:8', '1Móz 1:13')):
+            mac.append(['x%d' % n, '', ig, '', '', 'בֹּקֶר', '', 'H1242', '', '', '', '', '', 'πρωὶ', 'G5459', '', ''])
+            mac.append(['y%d' % n, '', ig, '', '', 'אֱלֹהַי', '', 'H0430', '', '', '', '', '', 'μου', 'G3450', '', ''])
+            lxx.append(['', '', ig, '', '1', 'πρωί', 'πρωι', 'πρωΐ', '', '4404', '', ''])
+            lxx.append(['', '', ig, '', '2', 'μου', 'μου', 'ἐγώ', '', '1473', '', ''])
+        _ir(os.path.join(k, 'Macula_heber_Genezis.tsv'), mac)
+        _ir(os.path.join(k, 'LXX_OS', 'genesis.tsv'), lxx)
+        _ir(os.path.join(k, 'Strong_szotar.tsv'), [['Strong-szám', 'Szótő', 'Kiejtés', 'Szófaj', 'Gyök/Származtatás', 'Jelentés'],
+                                                   ['G5459', 'φωσφόρος', '', '', '', ''], ['G4404', 'πρωΐ', '', '', '', ''],
+                                                   ['G3450', 'μου', '', '', '', ''], ['G1473', 'ἐγώ', '', '', '', '']])
+        a = os.path.join(self.d, 'adat')
+        _ir(os.path.join(a, 'kulso', 'lxx_bridge.tsv'), [['hebrew_strong', 'greek_strong', 'count'], ['H1242', 'G5459', '3'],
+                                                         ['H0430', 'G3450', '3']])
+        jav = [LXJ.JAVITAS_OSZLOPOK]
+        if javitva:
+            jav.append(['πρωι', 'G5459', 'G4404', 'masik_lemma', 'teszt', 'manual'])
+        _ir(os.path.join(a, 'lxx_strong_javitas.tsv'), jav)
+        gs = [['strong', 'rovid_jelentes', 'kategoria', 'kizaras_oka'], ['G1473', 'én', 'nevmas', 'teszt']]
+        if alakszam:
+            gs.append(['G3450', 'enyém', 'nevmas', 'teszt'])
+        _ir(os.path.join(a, 'grammatikai_strongok.tsv'), gs)
+        jel = [LXJ.JELOLT_OSZLOPOK]
+        if javitva:
+            jel.append(['G3450', 'μου', 'G1473', 'ἐγώ', '3', '3', 'μου', 'konvencio', 'teszt'])
+        _ir(os.path.join(self.d, 'naplok', 'LXXBDB_lxx_jeloltek.tsv'), jel)
+        self.adat = a
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *a):
+        shutil.rmtree(self.d, ignore_errors=True)
+
+
+class LxxStrongKapuk(unittest.TestCase):
+    def test_alak_norm_es_javit(self):
+        self.assertEqual(LXJ.alak_norm('πρωὶ'), LXJ.alak_norm('πρωί'))
+        self.assertEqual(LXJ.javit('πρωὶ', 'G5459', {('πρωι', 'G5459'): ('G4404', '')}), ('G4404', True))
+        self.assertEqual(LXJ.javit('μου', '3450', {}), ('G3450', False))
+
+    def test_44_bukik_javitas_elott_es_atmegy_utana(self):
+        with LxxGyoker() as g:
+            s = E.szabaly44_lxx_macula_strong(g.adat)
+            self.assertEqual(s.verdict, 'SÉRTÉS')
+            self.assertTrue(any('G5459' in p for p in s.peldak))
+        with LxxGyoker(javitva=True) as g:
+            self.assertEqual(E.szabaly44_lxx_macula_strong(g.adat).verdict, 'RENDBEN')
+
+    def test_45_nyelvtani_alakszam(self):
+        with LxxGyoker(javitva=True) as g:
+            self.assertEqual(E.szabaly45_lxx_nyelvtani(g.adat).verdict, 'SÉRTÉS')
+        with LxxGyoker(javitva=True, alakszam=True) as g:
+            self.assertEqual(E.szabaly45_lxx_nyelvtani(g.adat).verdict, 'RENDBEN')
+
+    def test_bridge_kulonbseg_es_kuszob(self):
+        with LxxGyoker(javitva=True) as g:
+            br = {(r['hebrew_strong'], r['greek_strong']): int(r['count']) for r in LXJ.bridge_sorok(g.d)}
+            self.assertNotIn(('H1242', 'G5459'), br)                  # 3 − 3 = 0: kiesik
+            self.assertEqual(br.get(('H1242', 'G4404')), 3)           # új pár a teljes darabszámmal (≥ 3)
+
+    def test_nyers_olvaso(self):
+        d = tempfile.mkdtemp(prefix='lxxbdb_')
+        try:
+            _ir(os.path.join(d, 'eszkozok', 'x.py'), [["sorok('adat/kulso/lxx_bridge.tsv')"]])
+            _ir(os.path.join(d, 'eszkozok', 'y.py'), [["import lxx_strong_javitas as LXJ"], ["LXJ.bridge_sorok(GY)"],
+                                                      ["# forras=adat/kulso/lxx_bridge.tsv"]])
+            self.assertEqual(E.lxx_nyers_olvasok(d), ['eszkozok/x.py'])
+        finally:
+            shutil.rmtree(d, ignore_errors=True)
+
+
+class BdbKonyvkettoKapu(unittest.TestCase):
+    def test_angol_jeloltek(self):
+        j = KK.en_jeloltek('H0430', 'c. angels Psalm Psa 97:7 (x)')
+        self.assertEqual([(x[1], x[5]) for x in j], [('Psalm Psa 97:7', 'javit')])
+        j = KK.en_jeloltek('H0464', 'b. friend of Job Job 2:11')
+        self.assertEqual([x[5] for x in j], ['marad'])
+        self.assertEqual(KK.en_javit('c. angels Psalm Psa 97:7 (x)', KK.en_jeloltek('H0430', 'c. angels Psalm Psa 97:7 (x)')),
+                         'c. angels Psa 97:7 (x)')
+
+    def test_47_bukik_kettozesen(self):
+        d = tempfile.mkdtemp(prefix='lxxbdb_')
+        try:
+            ford_fej = ['szotar', 'strong', 'entry_id', 'jelentes_szam', 'mezo', 'forras_hash', 'forditas_hu', 'allapot', 'modell', 'datum',
+                        'terminologia_verzio', 'megjegyzes']
+            for en, hu, vart in (('c. angels Psalm Psa 97:7', 'c. angyalok Zsolt Zsolt 97:7', 'SÉRTÉS'),
+                                 ('c. angels Psa 97:7', 'c. angyalok Zsolt 97:7', 'RENDBEN')):
+                _ir(os.path.join(d, 'konkordancia', 'BDB_teljes_unabridged.tsv'),
+                    [['Strong_padded', 'Strong_eredeti', 'Teljes_szocikk'], ['H0430', 'H430', en]])
+                _ir(os.path.join(d, 'adat', 'forditasok.tsv'),
+                    [ford_fej, ['BDB', 'H0430', 'H430', 'teljes', 'forditas_hu', 'x', hu, '', '', '', '', '']])
+                self.assertEqual(E.szabaly47_bdb_konyvketto(os.path.join(d, 'adat')).verdict, vart, en)
+        finally:
+            shutil.rmtree(d, ignore_errors=True)
+
+
+class VersJelentesKapu(unittest.TestCase):
+    def _tabla(self, d, n):
+        fej = ['strong', 'bdb_id', 'sorszam', 'poz', 'nyers', 'konyv_feloldas', 'mt_vers', 'karoli_vers', 'vers_feloldas', 'szakasz',
+               'resz', 'utvonal', 'okkod', 'szurt', 'csoport', 'csoport_jel', 'proveniencia', 'bizonyossag']
+        sorok = [fej] + [['H8415', '', str(i), str(i), 'Gen 1:%d' % i, '', '', '1Móz 1:%d' % i, '', '', '', '-/5', '', '', '', '', '',
+                          'ketes:jp_illesztes'] for i in range(1, n + 1)]
+        _ir(os.path.join(d, 'bdb_vers_jelentes.tsv'), sorok)
+
+    def test_48_beragadt_futam(self):
+        d = tempfile.mkdtemp(prefix='lxxbdb_')
+        try:
+            self._tabla(d, 11)
+            self.assertEqual(E.vj_beragadt_futamok(d), [('H8415', '-/5', 11)])
+            self.assertEqual(E.szabaly48_vj_beragadt(d).verdict, 'SÉRTÉS')
+            self._tabla(d, 4)
+            self.assertEqual(E.vj_beragadt_futamok(d), [])
+            self.assertNotEqual(E.szabaly48_vj_beragadt(d).verdict, 'SÉRTÉS')
+        finally:
+            shutil.rmtree(d, ignore_errors=True)
 
 
 if __name__ == '__main__':

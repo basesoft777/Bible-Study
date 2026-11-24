@@ -3032,7 +3032,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | 43 | A szótári szöveg hivatkozása létező Károli-versre mutat (F182, F32) |
 | 44 | A Macula LXX-párok görög Strongja: minden eltérés ítélve, a nyers forrás csak a segéden át (F240 L1) |
 | 45 | Nyelvtani szó nem LXX-megfelelő: az alakszám a nyelvtani listán (F240 L2) |
-| 46 | Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6, N-F240a) |
+| 46 | Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6; az LXX_OS homográf-tétele) |
 | 47 | Nincs kettőzött könyvszó a BDB-hivatkozás előtt, angolul és magyarul (F240 L3) |
 | 48 | A BDB vers → jelentés táblában nincs beragadt kurzor (F240 L5, a tehóm „örvény · 5” esete) |
 
