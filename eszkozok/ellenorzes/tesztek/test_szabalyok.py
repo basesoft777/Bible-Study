@@ -997,7 +997,10 @@ class E27Teszt(unittest.TestCase):
             with _IdeiglenesGyoker() as gy:
                 self._fixture(gy, feladatok, extra)
                 FU.ROOT = gy
-                sys.argv = ['futtat.py', '--valtozott', 'FELADATOK.md', '--esemeny', 'push']
+                # F0.30: a változott fájl az ideiglenes gyökér alatti teljes útvonal, nem a cwd-relatív név: a
+                # futtat.py a ROOT-hoz relpath-ol, és a cwd (pl. E:) más meghajtón lehet, mint a temp-gyökér (C:)
+                # (`ValueError: path is on mount`)
+                sys.argv = ['futtat.py', '--valtozott', os.path.join(gy, 'FELADATOK.md'), '--esemeny', 'push']
                 if diff:
                     sys.argv += ['--diff-alap', 'A', '--diff-fej', 'B']
                 with contextlib.redirect_stdout(io.StringIO()):
