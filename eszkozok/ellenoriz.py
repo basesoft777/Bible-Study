@@ -2736,7 +2736,9 @@ VJ_BERAGADT_PLAFON = (2, 10)
 # A választott táblapozíció a várttól messze (> 600 karakter) esik: `ketes:jp_tavol` (a javítókör óta; a hamisan „biztos” illesztés
 # jele). A brief L5.3(b)-je („a sor nem kaphat utána kezdődő szakaszt”) ezt a generátoron belül méri: a táblapozíció és az angol
 # pozíció eltérését. Plafon: csak csökkenhet.
-VJ_TAVOL_PLAFON = 19
+# F240.L7: 19 → 20 — a H4161 javított hivatkozása (Num 33:2, korábban hamisan „biztos” a 2Krón 33:2-n) a táblában messze
+# esik a várttól, ezért őszintén kétes; ez javulás, nem visszaesés (naplok/LXXBDB_meres.md L7).
+VJ_TAVOL_PLAFON = 20
 
 
 def vj_beragadt_futamok(adat_dir, min_hossz=5):
@@ -2773,6 +2775,20 @@ def szabaly48_vj_beragadt(adat_dir):
     return Sor(cim, 'JELENTÉS' if (db, sor) != VJ_BERAGADT_PLAFON else 'RENDBEN', None, [] if (db, sor) == VJ_BERAGADT_PLAFON else peldak,
                megjegyzes='%d futam / %d sor (plafon %d / %d); messze illesztett sor: %d (plafon %d)' % (
                    (db, sor) + VJ_BERAGADT_PLAFON + (len(tavol), VJ_TAVOL_PLAFON)))
+
+
+# 49. szabály (F240.L7): a BDB-szövegben a „könyvszó + MÁS könyv hivatkozása” minta („Joel 1Sam 4:13”) a teljes táblán
+# vagy javítva van, vagy a kivétellistán áll indokkal (név, közszó, nem eldönthető; bdb_konyvfeloldas_javit.KIVETEL). D11–D13.
+def szabaly49_bdb_konyvfeloldas(adat_dir):
+    cim = '49. A BDB-hivatkozás előtt nem áll más könyv szava, angolul és magyarul (F240.L7)'
+    gyoker = os.path.dirname(os.path.abspath(adat_dir))
+    if not os.path.exists(os.path.join(gyoker, 'konkordancia', 'BDB_teljes_unabridged.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs konkordancia/')
+    import bdb_konyvfeloldas_javit as KF
+    en, hu = KF.maradek(gyoker)
+    sertes = ['angol forrás: %s %s „%s”' % x for x in en] + ['fordítás: %s %s „%s”' % x for x in hu]
+    return Sor(cim, _verdikt(sertes, []), len(sertes) or None, sertes,
+               megjegyzes='javítás: eszkozok/bdb_konyvfeloldas_javit.py (CSERE, KIVETEL); napló: naplok/LXXBDB_konyvfeloldas_csere.tsv')
 
 
 # 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez
@@ -2907,6 +2923,7 @@ def main():
         tabla_sorok.append(szabaly46_lxx_os_homograf(args.adat))
         tabla_sorok.append(szabaly47_bdb_konyvketto(args.adat))
         tabla_sorok.append(szabaly48_vj_beragadt(args.adat))
+        tabla_sorok.append(szabaly49_bdb_konyvfeloldas(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

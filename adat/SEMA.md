@@ -3086,6 +3086,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | 46 | Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6; az LXX_OS homográf-tétele) |
 | 47 | Nincs kettőzött könyvszó a BDB-hivatkozás előtt, angolul és magyarul (F240 L3) |
 | 48 | A BDB vers → jelentés táblában nincs beragadt kurzor (F240 L5, a tehóm „örvény · 5” esete) |
+| 49 | A BDB-hivatkozás előtt nem áll más könyv szava, angolul és magyarul (F240.L7) |
 
 **CI-szabályok** (`.github/workflows/ellenorzes.yml`)
 

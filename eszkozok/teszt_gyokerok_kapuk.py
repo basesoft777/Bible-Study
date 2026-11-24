@@ -449,5 +449,19 @@ class VersJelentesKapu(unittest.TestCase):
             shutil.rmtree(d, ignore_errors=True)
 
 
+class BdbKonyvfeloldasKapu(unittest.TestCase):
+    """F240.L7: a „könyvszó + más könyv hivatkozása” minta (49. szabály) — a hiba bukik, a név és a kettőzés nem."""
+
+    def test_minta(self):
+        import bdb_konyvfeloldas_javit as KF
+        self.assertEqual([x[0] for x in KF.en_maradek('H9999', 'Qal Perfect Joel 1Sam 4:13')], ['4:13'])
+        self.assertEqual([x[0] for x in KF.en_maradek('H9999', 'on marchNum 2Chr 33:2')], ['33:2'])     # tapadt könyvszó
+        self.assertEqual(KF.en_maradek('H0295', 'a chief of Dan Num 1:12'), [])                        # név, kivétel
+        self.assertEqual(KF.en_maradek('H9999', '16t. Daniel; Ezra 5:11'), [])                          # darabszám-összegzés
+        self.assertEqual(KF.en_maradek('H9999', 'angels Psalm Psa 97:7'), [])                           # kettőzés: a 47. méri
+        self.assertEqual([x[0] for x in KF.hu_maradek('H9999', 'csak Jóel 1Sám 4:13')], ['4:13'])
+        self.assertEqual(KF.hu_maradek('H9999', 'csak Jóel 4:13'), [])
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

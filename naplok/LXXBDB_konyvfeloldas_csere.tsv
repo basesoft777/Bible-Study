@@ -1,0 +1,18 @@
+# GENERÁLT: eszkozok/bdb_konyvfeloldas_javit.py --ir (F240.L7) — a rosszul feloldott könyvhivatkozások csere-naplója; a kivételek (név, nem eldönthető) a szkript KIVETEL listájában, indokkal.
+strong	regi	uj	magyar	tanu
+H1310	Joel 1Sam 4:13	Joel 4:13	Jóel 1Sám 4:13 → Jóel 4:13	TAHOT: H1310 a Jóel 3:13-ban (MT 4:13) áll, az 1Sám 4:13-ban nem
+H2505	Joel 1Chr 4:2	Joel 4:2	Joel 1Krón 4:2 → Jóel 4:2	TAHOT: H2505 a Jóel 3:2-ben (MT 4:2) áll, az 1Krón 4:2-ben nem
+H3092	Joel 1Chr 4:2	Joel 4:2	Joel 1Krón 4:2 → Jóel 4:2; Jóel 1Krón 4:2 → Jóel 4:2	TAHOT: H3092 a Jóel 3:2-ben (MT 4:2) áll, az 1Krón 4:2-ben nem
+H4649	Isa 1Chr 16:4	Isa 16:4	Ézs 1Krón 16:4 → Ézs 16:4	OpenScriptures BDB-XML (m.bw.ab: „מֵץ … only הַמֵּץ Is 16:4”); TAHOT: H4160 az Ézs 16:4-ben
+H0689	for Amos Deut 8:8	for Amos 8:8	Ámós 5Móz 8:8 → Ámós 8:8	TAHOT: H2975 (יְאֹר) az Ámós 8:8-ban áll, az 5Móz 8:8-ban nem
+H4136	Joel Josh 8:33	Josh 8:33	Jóel Józs 8:33 → Józs 8:33	TAHOT: H4136 a Józs 8:33-ban áll; a „Joel” fölös könyvszó
+H5186	against Joel Jer 51:25	against Jer 51:25	Joel Jer 51:25 → Jer 51:25	TAHOT: H5186 a Jer 51:25-ben áll; a „Joel” fölös könyvszó
+H5327	Lev Jer 1:16	Lev 1:16	3Móz Jer 1:16 → 3Móz 1:16	TAHOT: H5133 (נוֹצָה) a 3Móz 1:16-ban áll, a Jer 1:16-ban nem
+H2023	CanaanNum Ezek 20:22	Canaan Num 20:22	4Móz Ez 20:22 → 4Móz 20:22	TAHOT: H2023 a 4Móz 20:22-ben áll, az Ez 20:22-ben nem
+H4673	feetJosh Isa 4:3	feet Josh 4:3	Józs Ézs 4:3 → Józs 4:3	TAHOT: H4673 a Józs 4:3-ban áll, az Ézs 4:3-ban nem
+H6981	Levites: 1 Chron Judg 9:19	Levites: 1Chr 9:19	1Krón Bír 9:19 → 1Krón 9:19	TAHOT: H6981 az 1Krón 9:19-ben áll, a Bír 9:19-ben nem
+H7655	pluralEzra Dan 7:14	plural Ezra 7:14	Ezsd Dán 7:14 → Ezsd 7:14	TAHOT: H7655 az Ezsd 7:14-ben áll, a Dán 7:14-ben nem
+H7650	by me Psalms; Psa 102:9	by me Psa 102:9	Zsoltárok; Zsolt 102:9 → Zsolt 102:9	kettőzött könyvszó (ψ → „Psalms;”, F240 L3 mintája); TAHOT: H7650 a Zsolt 102:9-ben
+H4161	marchNum 2Chr 33:2	march Num 33:2	helye4Móz 2Krón 33:2 → helye 4Móz 33:2	TAHOT: H4161 a 4Móz 33:2-ben áll, a 2Krón 33:2-ben nem
+H4196	30, Songs 2Chr 4:1	30, 2Chr 4:1	30, Én 2Krón 4:1 → 30, 2Krón 4:1	TAHOT: H4196 a 2Krón 4:1-ben áll; a „Songs” fölös könyvszó
+H1740	Ezek 40:38, Songs 2Chr 4:6	Ezek 40:38, 2Chr 4:6	Ez 40:38, Énekek 2Krón 4:6 → Ez 40:38, 2Krón 4:6	TAHOT: H1740 a 2Krón 4:6-ban áll; a „Songs” fölös könyvszó
