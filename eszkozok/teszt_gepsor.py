@@ -194,6 +194,71 @@ class GepsorTeszt(unittest.TestCase):
             f.write('{nem json')
         self.assertFalse(gepsor.halott_torol(self.kv, '00000000000000000001_1_aa.jegy', folyamat_fn=lambda pid: (False, None)))
 
+    # --- alacsony elsőbbség (--hatul) ------------------------------------------------------------------------------------
+    def test_hatul_ures_sorban_azonnal_fut_es_futas_kozben_rendes_jegy(self):
+        with self._sor(hatul=True) as s:
+            self.assertTrue(s.jegy.endswith(gepsor.JEGY_UTOTAG))
+            self.assertEqual(gepsor.jegyek(self.kv), [s.jegy])
+            # aki most áll be, a futó hátsó munka mögött vár
+            uj = self._sor(folyamat_fn=lambda pid: (True, None))
+            uj.beall()
+            self.assertEqual([n for n, _ in uj.elottem()], [s.jegy])
+            os.remove(os.path.join(self.kv, uj.jegy))
+        self.assertEqual(os.listdir(self.kv), [])
+
+    def test_varakozo_hatsot_a_rendes_atugorja_es_a_regi_kod_nem_latja(self):
+        h = self._sor(hatul=True, folyamat_fn=lambda pid: (True, None))
+        h.beall()
+        self.assertTrue(h.jegy.endswith(gepsor.HATUL_UTOTAG))
+        self.assertEqual(gepsor.jegyek(self.kv), [])   # a régi kód csak a .jegy-et listázza: nem vár rá
+        time.sleep(0.01)
+        r = self._sor(folyamat_fn=lambda pid: (True, None))
+        r.beall()
+        self.assertEqual(r.elottem(), [])               # a később érkező rendes jegy nem vár a hátsóra
+        self.assertEqual([n for n, _ in h.elottem()], [r.jegy])   # a hátsó a mögötte álló rendesre is vár
+
+    def test_hatul_var_amig_rendes_jegy_van_es_utana_indul(self):
+        elo = self._jegy('00000000000000000001_4242_aa.jegy')
+        korok = []
+
+        def alvas(_mp):
+            korok.append(1)
+            if len(korok) == 1:
+                self._jegy('99999999999999999999_4243_bb.jegy')   # közben valaki beáll (mögé)
+            if len(korok) == 2:
+                os.remove(os.path.join(self.kv, elo))
+            if len(korok) == 4:
+                os.remove(os.path.join(self.kv, '99999999999999999999_4243_bb.jegy'))
+
+        with self._sor(hatul=True, alvas=alvas, folyamat_fn=lambda pid: (True, 1)) as s:
+            self.assertEqual(gepsor.jegyek(self.kv), [s.jegy])
+        self.assertEqual(len(korok), 4)
+        self.assertTrue(any('hátul' in u for u in self.uzenetek), self.uzenetek)
+
+    def test_hatul_indulaskor_beallt_rendes_jegyre_visszaall(self):
+        h = self._sor(hatul=True, folyamat_fn=lambda pid: (True, None))
+        h.beall()
+        self._jegy('99999999999999999999_4243_bb.jegy')
+        varok = h._hatul_indul()
+        self.assertEqual([n for n, _ in varok], ['99999999999999999999_4243_bb.jegy'])
+        self.assertTrue(h.jegy.endswith(gepsor.HATUL_UTOTAG))
+        self.assertEqual(gepsor.jegyek(self.kv, gepsor.HATUL_UTOTAG), [h.jegy])
+
+    def test_hatsok_egymas_kozt_erkezesi_sorrendben(self):
+        h1 = self._sor(hatul=True, folyamat_fn=lambda pid: (True, None))
+        h1.beall()
+        time.sleep(0.01)
+        h2 = self._sor(hatul=True, folyamat_fn=lambda pid: (True, None))
+        h2.beall()
+        self.assertEqual(h1.elottem(), [])
+        self.assertEqual([n for n, _ in h2.elottem()], [h1.jegy])
+
+    def test_halott_hatso_jegy_torlodik(self):
+        self._jegy('00000000000000000001_4242_aa.hatul', hatul=True)
+        with self._sor(hatul=True, folyamat_fn=lambda pid: (pid == os.getpid(), None)) as s:
+            self.assertEqual(gepsor.jegyek(self.kv, gepsor.HATUL_UTOTAG), [])
+            self.assertEqual(gepsor.jegyek(self.kv), [s.jegy])
+
     # --- valódi folyamatok ----------------------------------------------------------------------------------------------
     def test_valodi_folyamat_azonossag(self):
         el, indulas = gepsor.folyamat(os.getpid())
@@ -246,6 +311,7 @@ class GepsorTeszt(unittest.TestCase):
             self.assertEqual(gepsor.main(['futtat', '--leiras', 'x', '--', sys.executable, '-c', 'import sys; sys.exit(3)']), 3)
             self.assertEqual(gepsor.main(['futtat', '--', sys.executable, '-c', 'pass']), 0)
             self.assertEqual(gepsor.main(['futtat']), 2)
+            self.assertEqual(gepsor.main(['futtat', '--hatul', '--', sys.executable, '-c', 'import sys; sys.exit(4)']), 4)
             self.assertEqual(gepsor.main(['allapot']), 0)
         finally:
             os.environ.pop(gepsor.KONYVTAR_VALTOZO, None)
