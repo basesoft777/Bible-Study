@@ -2715,6 +2715,31 @@ az olvasói alak elavult). Ha a lapra kerülő indoklásnak nincs olvasói alakj
 megáll. A tábla a szerzői jóváhagyás tárgya (`konfig.JOVAHAGYAS_BEMENETEK`); a mondatai az első kiadásuk nézési
 csomagjának változáslistájába kerülnek.
 
+### 2.75 `lsj_forras_javitas.tsv` — az LSJ pótszöveg-soraihoz rendelt döntés (F0.43, 2026-11-24)
+
+A `konkordancia/LSJ_teljes.tsv` az Eliran Wong-modulból származik; a mérés (`naplok/LSJ_HIBAOSZTALYOK_2026-11-24.md`) szerint
+942 sora nem LSJ-szöveg, hanem a modul készítőjének pótszövege (név-helyőrző, Strong-mondat, nyelvtani megjegyzés). A nyers
+tábla érintetlen marad (kimeneti csere nincs); ez a tábla Strong-számonként döntést rögzít, az `lsj` tábla építésekor
+(`eszkozok/sqlite_epit.py`) alkalmazódik, külön db-tábla nem lesz belőle. A tábla a `eszkozok/lsj_forras_javit.py --keszit`
+kimenete, a kézi kizárásokat a szkript `KEZI_KIZART` és `KEZI_ELFOGADOTT` listája rögzíti.
+
+| Oszlop | Tartalom |
+|---|---|
+| `strong` | `G####` (a nyers tábla `Strong_padded` oszlopa); kulcs |
+| `tipus` | `perseus_csere`: a Strong TBESG-lemmájával azonos kulcsú Perseus-LSJ-szócikk szövege kerül a szócikk helyére; `nincs_szocikk`: az olvasó nem mutat szöveget, hanem azt mondja, hogy az LSJ-ben nincs megfelelő szócikk |
+| `osztaly` | a #864 mérés osztálya (`A1`–`A5`) |
+| `modul_hash` | a nyers modul-szöveg SHA-256-jának első 16 jegye: ha a nyers sor megváltozik, az építés megáll |
+| `perseus_kulcs`, `perseus_azonosito` | a Perseus-szócikk kulcsa és `fájl#azonosító`-ja (csak `perseus_csere`); homográfoknál `+`-szal |
+| `modszer` | `gepi_lemma_egyezes` (pontos, ékezettel egyező lemma), `kezi_lemma_valtozat` (kézzel elfogadott írásmód-változat), `gepi_nincs_lemma_egyezes`, `gepi_csonka_szocikk` (a Perseus-forrás csonka), `kezi_kizaras` (a lemma egyezik, de más szó vagy más személy szócikke) |
+| `szoveg` | a Perseus-szöveg (csak `perseus_csere`): CC BY-SA 4.0, Perseus Digital Library; módosítás: a jelölés eltávolítása és a szóközök az írásjelek körül |
+| `indoklas` | a döntés oka egy mondatban |
+| `proveniencia` | `PROVENIENCIA` (1.5): `scope=… \| forras=PerseusDL/lexica@1c34cdf… \| ts=` |
+
+**Kulcs:** `strong`. **Kapuk:** a betöltő (`lsj_forras_javit.betolt`) elutasítja az ismeretlen típust és módszert, a kétszer
+szereplő Strong-számot, a szöveg nélküli `perseus_csere` és a szöveges `nincs_szocikk` sort, a proveniencia vagy indoklás
+nélküli sort; az építés (`alkalmaz`) megáll, ha a `modul_hash` nem egyezik vagy a Strong-szám nincs a nyers táblában;
+`python eszkozok/lsj_forras_javit.py --ellenoriz` és `eszkozok/teszt_lsj_forras_javit.py` ellenőrzi.
+
 ## 3. Integritási szabályok
 
 Ezeket az `ellenoriz.py` (F4/commit-hook) kényszeríti ki. Amíg az nem készül el, kézi

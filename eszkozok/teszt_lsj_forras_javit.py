@@ -1,0 +1,168 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+eszkozok/teszt_lsj_forras_javit.py -- F0.43: az `lsj_forras_javit.py` és az `adat/lsj_forras_javitas.tsv` tesztjei.
+
+    python eszkozok/teszt_lsj_forras_javit.py
+
+  séma és kapuk:  a betöltő elutasítja a hibás sort; a mai tábla ép és egyezik a nyers táblával
+  alkalmazás:     a nyers `lsj` sorokra (a build olvasójával, `general.tsv_beolvas`) a csere és a kihagyás darabszáma
+  tartalom:       a csere-szöveg nem pótszöveg; a kizárt és az elfogadott kézi sorok; a lemma-kulcsok
+"""
+import os
+import sys
+import unittest
+
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import general as G  # noqa: E402
+import lsj_forras_javit as L  # noqa: E402
+
+TABLA_FEJ = '\t'.join(L.FEJLEC)
+
+
+def sor(**kw):
+    r = {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'osztaly': 'A1_nev_helyorzo', 'modul_hash': 'h', 'perseus_kulcs': '',
+         'perseus_azonosito': '', 'modszer': 'gepi_nincs_lemma_egyezes', 'szoveg': '', 'indoklas': 'ok',
+         'proveniencia': 'scope=x | forras=y | ts=2026-11-24'}
+    r.update(kw)
+    return '\t'.join(r[o] for o in L.FEJLEC)
+
+
+class Betolto(unittest.TestCase):
+    def _tabla(self, *sorok, fej=TABLA_FEJ):
+        import tempfile
+        d = tempfile.mkdtemp()
+        ut = os.path.join(d, 't.tsv')
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write('# megjegyzés\n' + fej + '\n' + '\n'.join(sorok) + '\n')
+        return ut
+
+    def test_ep_sor_betoltheto(self):
+        j = L.betolt(self._tabla(sor(), sor(strong='G0003', tipus='perseus_csere', szoveg='x', perseus_kulcs='k',
+                                             perseus_azonosito='eng1#n1', modszer='gepi_lemma_egyezes')))
+        self.assertEqual(sorted(j), ['G0002', 'G0003'])
+
+    def test_hibas_sorok_elutasitva(self):
+        for nev, s in (('ketszer', None), ('tipus', sor(tipus='torles')), ('modszer', sor(modszer='fejbol')),
+                       ('csere_szoveg_nelkul', sor(tipus='perseus_csere')),
+                       ('nincs_szoveggel', sor(szoveg='szöveg')),
+                       ('csere_kulcs_nelkul', sor(tipus='perseus_csere', szoveg='x')),
+                       ('proveniencia_nelkul', sor(proveniencia='')), ('indoklas_nelkul', sor(indoklas='')),
+                       ('strong', sor(strong='G2')), ('oszlopszam', sor() + '\tfelesleg')):
+            with self.subTest(nev):
+                sorok = (sor(), sor()) if s is None else (s,)
+                with self.assertRaises(L.JavitasHiba):
+                    L.betolt(self._tabla(*sorok))
+
+    def test_fejlec_hiba(self):
+        with self.assertRaises(L.JavitasHiba):
+            L.betolt(self._tabla(sor(), fej='strong\ttipus'))
+
+
+class Alkalmazas(unittest.TestCase):
+    def test_csere_kihagyas_hash(self):
+        nyers = [['G0001', 'G1', 'a'], ['G0002', 'G2', 'név-helyőrző'], ['G0003', 'G3', 'Strong-mondat'], ['G0004', 'G4', 'LSJ']]
+        j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('név-helyőrző'), 'szoveg': ''},
+             'G0003': {'strong': 'G0003', 'tipus': 'perseus_csere', 'modul_hash': L.modul_hash('Strong-mondat'), 'szoveg': 'LSJ-szöveg'}}
+        ki, db = L.alkalmaz(nyers, 0, 2, j)
+        self.assertEqual([r[0] for r in ki], ['G0001', 'G0003', 'G0004'])
+        self.assertEqual(ki[1][2], 'LSJ-szöveg')
+        self.assertEqual(nyers[2][2], 'Strong-mondat', 'a bemenet nem módosul')
+        self.assertEqual(db, {'perseus_csere': 1, 'nincs_szocikk': 1})
+
+    def test_megvaltozott_nyers_sor_megallit(self):
+        j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('régi'), 'szoveg': ''}}
+        with self.assertRaises(L.JavitasHiba):
+            L.alkalmaz([['G0002', 'G2', 'új szöveg']], 0, 2, j)
+
+    def test_hianyzo_strong_megallit(self):
+        j = {'G0009': {'strong': 'G0009', 'tipus': 'nincs_szocikk', 'modul_hash': 'h', 'szoveg': ''}}
+        with self.assertRaises(L.JavitasHiba):
+            L.alkalmaz([['G0002', 'G2', 'x']], 0, 2, j)
+
+
+class MaiTabla(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.j = L.betolt()
+
+    def test_ellenorzes_zold(self):
+        self.assertEqual(L.ellenoriz(), [])
+
+    def test_darabszam_a_meres_szerint(self):
+        """A #864 mérés A-osztályai: 942 Strong; mindegyik pontosan egyszer."""
+        self.assertEqual(len(self.j), 942)
+        self.assertEqual(set(self.j), set(L.osztalyok()))
+
+    def test_a_build_olvasojaval(self):
+        """A `sqlite_epit` olvasója (`general.tsv_beolvas`) ugyanazt a modul-lenyomatot adja, mint a nyers tábla."""
+        fej, sorok = G.tsv_beolvas(os.path.join(L.ROOT, L.NYERS))
+        rows = [[r[f] for f in fej] for r in sorok]
+        ki, db = L.alkalmaz(rows, fej.index('Strong_padded'), fej.index('Teljes_szocikk'), self.j)
+        self.assertEqual(len(ki), len(rows) - db['nincs_szocikk'])
+        self.assertEqual(db['perseus_csere'] + db['nincs_szocikk'], 942)
+        maradt = {r[0] for r in ki}
+        for s, r in self.j.items():
+            self.assertEqual(s in maradt, r['tipus'] == 'perseus_csere', s)
+
+    def test_a_csere_szoveg_nem_potszoveg(self):
+        for s, r in self.j.items():
+            if r['tipus'] != 'perseus_csere':
+                continue
+            sz = r['szoveg']
+            self.assertNotIn('Defined by LSJ', sz, s)
+            self.assertNotIn('no Definition found', sz, s)
+            self.assertNotRegex(sz, r'\b(?:from|of) G\d{2,4}\b', s)
+            self.assertRegex(sz[:3], r'[Ͱ-Ͽἀ-῿]', s)       # a szócikk görög fejszóval kezdődik
+            self.assertNotRegex(sz, r'\s[,.;:)]', s)         # a jelölés-eltávolítás szóközei rendezve
+            self.assertFalse(L.csonka(sz), s)
+
+    def test_csere_kulcs_a_tbesg_lemmaval_egyezik(self):
+        lemma = L.tbesg_lemmak(os.path.join(L.ROOT, L.TBESG))
+        for s, r in self.j.items():
+            if r['modszer'] == 'gepi_lemma_egyezes':
+                self.assertTrue(r['perseus_kulcs'], s)
+                self.assertIn(s, lemma, s)
+
+    def test_kezi_kizart_sorok(self):
+        for s in L.KEZI_KIZART:
+            self.assertEqual((self.j[s]['tipus'], self.j[s]['modszer']), ('nincs_szocikk', 'kezi_kizaras'), s)
+        # a lapon szereplő szó: az ἐπικαλέω (G1941) valódi szócikket kap, nem „csak átirányít” szöveget
+        self.assertEqual(self.j['G1941']['tipus'], 'perseus_csere')
+        self.assertIn('invoke', self.j['G1941']['szoveg'])
+
+    def test_nevek_nincs_szocikk(self):
+        self.assertEqual(self.j['G0002']['tipus'], 'nincs_szocikk')   # Ἀαρών
+        self.assertEqual(self.j['G3165']['tipus'], 'nincs_szocikk')   # μέ
+        self.assertEqual(self.j['G1097']['tipus'], 'perseus_csere')   # γινώσκω ~ γιγνώσκω (a név-besorolás tévedése)
+
+
+class Kulcsok(unittest.TestCase):
+    def test_pontos_kulcs_ekezettel_egyezik(self):
+        self.assertEqual(L.kulcs_pontos('ἐπικᾰλέω'), L.kulcs_pontos('ἐπικαλέω'))        # a hosszúságjel nem számít
+        self.assertNotEqual(L.kulcs_pontos('εἷς'), L.kulcs_pontos('εἰς'))              # az ékezet igen
+        self.assertNotEqual(L.kulcs_pontos('Σίμων'), L.kulcs_pontos('σίμων'))          # a név nem közszó
+        self.assertEqual(L.kulcs_pontos('δοῦλος2'), L.kulcs_pontos('δοῦλος'))          # a homográf-szám nem számít
+
+    def test_laza_kulcs_irasmod(self):
+        self.assertEqual(L.kulcs_laza('γινώσκω'), L.kulcs_laza('γιγνώσκω'))
+        self.assertEqual(L.kulcs_laza('κρείττων'), L.kulcs_laza('κρείσσων'))
+
+    def test_csonka_szocikk(self):
+        self.assertTrue(L.csonka('καταπλέω , lon.'))
+        self.assertTrue(L.csonka('ἐπιδέχομαι, Ion. etc.'))
+        self.assertFalse(L.csonka('ἐπενδύω, v. ἐπενδύνω.'))
+        self.assertFalse(L.csonka('μία, fem. of εἷς (q. v.).'))
+
+    def test_beta_unicode(self):
+        self.assertEqual(L.beta_unicode('e)pikale/w'), 'ἐπικαλέω')
+        self.assertEqual(L.beta_unicode('*)/efesos'), 'Ἔφεσος')
+
+
+if __name__ == '__main__':
+    unittest.main(verbosity=2)

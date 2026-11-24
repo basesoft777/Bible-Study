@@ -58,6 +58,7 @@ import ellenoriz as E  # noqa: E402
 import tsk_kulcs as TK  # noqa: E402
 import karoli_kh_szuro as KHSZ  # noqa: E402  (F177: csak a MEK-kel megerősített Károli-KH sorok)
 import tanulmany_regiszter as TR  # noqa: E402
+import lsj_forras_javit as LJ  # noqa: E402  (F0.43: az LSJ pótszöveg-soraihoz döntés: adat/lsj_forras_javitas.tsv)
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'olvaso_szerver'))
 import forras_azonosito as FA  # noqa: E402  (#101: a forrásfájlok ujjlenyomata a meta-ba; stdlib-only, az olvaso_szerver/ könyvtárban áll)
 from strong_util import strong_normalizal  # noqa: E402
@@ -179,7 +180,8 @@ ADAT_LICENC = {'morf_kulcs_heber': ['morf_kulcs_heber'], 'morf_nyelv_aramai': ['
                # F197: a Sefaria /api/words BDB-jelentésfájából (közkincs, DT631; a licencsor a BDB_rokon_irasok-é, ugyanez a forrás)
                'bdb_jp_sefaria': ['BDB_rokon_irasok', 'projekt_adat']}
 
-ADAT_KIHAGYOTT = {'karoli_variancia'}  # külön kezelve (szarmaztatott licenc)
+# a `lsj_forras_javitas` az `lsj` tábla építésébe olvad (F0.43), külön tábla nem lesz belőle (az olvasó nem érti: a sémát nem bővíti)
+ADAT_KIHAGYOTT = {'karoli_variancia', 'lsj_forras_javitas'}  # külön kezelve (szarmaztatott licenc)
 
 STRONG_RE = re.compile(r'^[HG]\d{4,5}$')
 HU_IGEHELY_RE = re.compile(r'^(\S+) (\d+):(\d+)[a-z]?(?:-(?:(\d+):)?(\d+)[a-z]?)?$')
@@ -1072,6 +1074,11 @@ class Epito(object):
                 else:
                     vals.append(s)
             ki.append(vals)
+        if nev == 'lsj':
+            # F0.43: a pótszöveg-sorok javítása (perseus_csere / nincs_szocikk); a nyers tábla érintetlen
+            ki, db = LJ.alkalmaz(ki, fej.index('Strong_padded'), fej.index('Teljes_szocikk'),
+                                 LJ.betolt(os.path.join(self.gyoker, LJ.TABLA)))
+            self.lsj_javitas = db
         ix = ['strong'] if strong_idx is not None else []
         if ig_idx is not None:
             ix.append(nevek[ig_idx])
