@@ -10,6 +10,7 @@ eszkozok/teszt_lsj_forras_javit.py -- F0.43: az `lsj_forras_javit.py` és az `ad
   tartalom:       a csere-szöveg nem pótszöveg; a kizárt és az elfogadott kézi sorok; a lemma-kulcsok
 """
 import os
+import re
 import sys
 import unittest
 
@@ -137,6 +138,20 @@ class MaiTabla(unittest.TestCase):
             self.assertRegex(sz[:3], r'[Ͱ-Ͽἀ-῿]', s)       # a szócikk görög fejszóval kezdődik
             self.assertNotRegex(sz, r'\s[,.;:)]', s)         # a jelölés-eltávolítás szóközei rendezve
             self.assertFalse(L.csonka(sz), s)
+
+    def test_a_kartyan_a_megjelenitett_cimszo_all(self):
+        """Az integrátor feltétele (2026-11-24): a kártyán mindig a ténylegesen megjelenített LSJ-szócikk címszava áll — a szöveg első
+        szava az első Perseus-szócikk címszava (a `perseus_szulo` sorban a jelzés is megnevezi)."""
+        def kl(x):
+            return L.kulcs_laza(re.sub(r'[-\[\]]', '', x))
+        for s, r in self.j.items():
+            if r['tipus'] == 'nincs_szocikk':
+                continue
+            elso = re.split(r'[\s,;(:]', r['szoveg'].strip())[0]
+            cimszo = L.beta_unicode(r['perseus_kulcs'].split(';')[0].rstrip('0123456789'))
+            self.assertEqual(kl(elso), kl(cimszo), s)
+            if r['tipus'] == 'perseus_szulo':
+                self.assertIn(cimszo, r['jelzes'], s)
 
     def test_csere_kulcs_a_tbesg_lemmaval_egyezik(self):
         """A `gepi_lemma_egyezes` sor Perseus-kulcsa (Beta-kódból Unicode-ra) pontosan egyezik a TBESG-lemmával."""
