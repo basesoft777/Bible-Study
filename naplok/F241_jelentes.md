@@ -130,3 +130,17 @@ A Workflow-fájlok (`.github/workflows/*.yml`) a `lexikon_general`-t név szerin
 **Lapgen-futás:** a mérés két generálása, a tesztek és egy HAMART-001 repón kívüli generálás a regresszióhoz; egy alkalommal egy másik session push előtti lapgen-futását (`general.py --cel lexikon --id HAMART-001`) megvártam.
 
 *Proveniencia: `scope=lapgen.fo.lap_keszit (ISTENTISZT-001, HAMART-001, munka mód) a Kolofon bemenetén; futtat.py kolofon szerkezet kapuk bemenet szoveg; PARDES_DATUM=2026-11-13 general.py --cel lexikon2 --id HAMART-001; regresszio.py --id HAMART-001 --teljes; hash_or_kapu.py | forras=a munkafa a commit előtt | ts=2026-11-24`.*
+
+## F241.5 — Az ISTENTISZT-001 hiányzó fordításai (N244)
+
+*2026-11-24 · `claude-opus-5-5` (kért: `opus`, egyezik).*
+
+**Mérés.** Az új generátoros ISTENTISZT-001 lapon 34 „fordításra vár” jel (a 35. találat a 2. szakasz magyarázó mondata, nem jel): a 4.3 (Teológiai szócikk) 12 tW-címe és a 4.4 (Szemantikai domén) 22 doménneve a G1941, a H7121 és a H8034 szónál. A kulcsok a generátor saját bemenetéből (`b29_tw`, `b31_domenek`; a tW-cím kulcsa a cikk első Strongja + `tw_id`, a doméné a szó Strongja + `domen_kod`): 32 egyedi sor (a `kt/call-speakloudly` és az `other/renown` cím két szónál is áll), egyik sem volt a táblában. Azonos forrásszövegű (`forras_hash`) meglévő fordítás egy volt: „Names of People” → „Személynevek” (SDBH, más Strongnál); átvéve.
+
+**Fordítás** (`adat/forditasok.tsv`, 32 új sor, csak hozzáfűzés: `allapot=opus`, `modell=claude-opus-5-5`, `datum=2026.11.24`, `terminologia_verzio=v5`, a `megjegyzes`-ben a forrásszöveg; `forras_hash` = a forrásszöveg SHA-1-e). A meglévő tW-cím- és doménfordítások formája szerint: a tW-cím kisbetűs szólista, a doménnév nagybetűs főnév vagy melléknév. Nyelvközi egység: a görög (SDGNT 033009) és a héber (SDBH 002004002010) „Name” egyaránt „Név”; a „proclaim” a declare- és a preach-címben egyaránt „hirdet”; a „renown” és a „reputation” „hírnév”; a „call”/„cry out” „hív”/„kiált”. A terminológiatáblában (v1–v5) ezekre nincs kötött szó. Meglévő, kiadott fordítást nem írtam át (a brief ⛔ feltétele nem állt elő).
+
+**Ellenőrzés.** Az ISTENTISZT-001 új generátoros lapja: 0 „fordításra vár” jel, 0 elavult jel. `ellenoriz.py`: 13. szabály JELENTÉS (a 158 elavult sor és a Thayer-szakaszok, mind a meglévő állapot), SÉRTÉS 0. A mérce B14 hash-sora (`naplok/F218_referencia.tsv`) külön commitban; utána a HAMART-001 regressziója (`--teljes`): RENDBEN, engedély nélküli diff-sor 0 (a HAMART-001 lapja nem használja az új sorokat).
+
+**Hatás:** az ISTENTISZT-001 4.3 és 4.4 pontja (generált blokk) magyarul; a D9 szerint változásjegyzék-sor, új nézés nem.
+
+*Proveniencia: `scope=general.py --cel lexikon2 --id ISTENTISZT-001 (előtte/utána); lapgen.bemenet.szotari b29_tw, b31_domenek; ellenoriz.py; PARDES_DATUM=2026-11-13 general.py --cel lexikon2 --id HAMART-001; regresszio.py --id HAMART-001 --teljes | forras=a munkafa a commit előtt | ts=2026-11-24`.*
