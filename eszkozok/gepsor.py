@@ -31,6 +31,8 @@ Működés:
   * Újrabelépés: a sorban állás a `PARDES_SOR_TARTVA` környezeti változót a gyerekfolyamatokra is ráteszi; a gyerek (pl. a teljes
     kapu által indított lapgen-futás) ilyenkor nem áll be újra (különben önmagára várna).
   * A GitHub-futás (`GITHUB_ACTIONS`) nem áll sorba.
+  * Holtpont-védelem: a helyi ellenőrzés-zár alatt futó folyamat (`PARDES_ZAR_TARTVA`, a `HelyiZar` állítja) nem áll sorba, csak jelzi.
+    Különben az E28 (a zár alatt lapot generál) a sorra várna, a sor eleje pedig (pl. egy teljes kapu) a zárra.
 A helyi ellenőrzés-zár (`ellenorzes.zar`, `eszkozok/ellenorzes/futtat.py` `HelyiZar`) mellette marad: az az E2–E39-et és az olvasó
 tesztjeit védi; a sor a nehéz futások sorrendjét adja. A sor mindig kívül van (sor → zár), így a kettő nem akad össze.
 A szabály: MUNKAMENET.md „Menet-ellenőrzés”, 5. pont.
@@ -52,6 +54,7 @@ if hasattr(sys.stderr, 'reconfigure'):
 
 KONYVTAR_VALTOZO = 'PARDES_ZAR_KONYVTAR'   # közös a helyi ellenőrzés-zárral (`futtat.py` `ZAR_KONYVTAR_VALTOZO`)
 TARTVA_VALTOZO = 'PARDES_SOR_TARTVA'
+ZAR_TARTVA_VALTOZO = 'PARDES_ZAR_TARTVA'   # a helyi ellenőrzés-zár tartója állítja (`futtat.py` `HelyiZar`)
 JELZES_VALTOZO = 'PARDES_SOR_JELZES_PERC'
 SOR_NEV = 'gepsor'
 JEGY_UTOTAG = '.jegy'
@@ -215,6 +218,9 @@ class Sor(object):
         self.folyamat_fn = folyamat_fn
         self.varakozas = varakozas
         self.aktiv = not os.environ.get('GITHUB_ACTIONS') and not os.environ.get(TARTVA_VALTOZO)
+        if self.aktiv and os.environ.get(ZAR_TARTVA_VALTOZO):
+            self.aktiv = False
+            self.kiir('[sor] nem áll sorba: a helyi ellenőrzés-zár alatt fut (holtpont-védelem): %s' % leiras)
         self.jegy = None
         self.vart = 0.0
         self._regi_tartva = None

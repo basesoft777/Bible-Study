@@ -36,7 +36,7 @@ class GepsorTeszt(unittest.TestCase):
         self.tmp = tempfile.mkdtemp(prefix='gepsor_teszt_')
         self.kv = os.path.join(self.tmp, 'gepsor')
         self.uzenetek = []
-        self._env = {k: os.environ.pop(k, None) for k in ('GITHUB_ACTIONS', gepsor.TARTVA_VALTOZO)}
+        self._env = {k: os.environ.pop(k, None) for k in ('GITHUB_ACTIONS', gepsor.TARTVA_VALTOZO, gepsor.ZAR_TARTVA_VALTOZO)}
 
     def tearDown(self):
         for k, v in self._env.items():
@@ -86,6 +86,28 @@ class GepsorTeszt(unittest.TestCase):
         with self._sor() as s:
             self.assertIsNone(s.jegy)
         self.assertEqual(gepsor.jegyek(self.kv), [])
+
+    def test_zar_alatt_nem_all_sorba(self):
+        """Holtpont-védelem: a helyi ellenőrzés-zár alatt futó folyamat nem áll sorba (különben az E28 a sorra, a sor eleje a zárra várna)."""
+        os.environ[gepsor.ZAR_TARTVA_VALTOZO] = 'zar-azon'
+        with self._sor() as s:
+            self.assertIsNone(s.jegy)
+        self.assertEqual(gepsor.jegyek(self.kv), [])
+        self.assertTrue(any('holtpont-védelem' in u for u in self.uzenetek), self.uzenetek)
+
+    def test_a_helyi_zar_jelzi_a_tartast(self):
+        """A `HelyiZar` a tartás alatt beállítja a `PARDES_ZAR_TARTVA`-t (a gyerekfolyamatok öröklik), kilépéskor törli."""
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('futtat_zar', os.path.join(ITT, 'ellenorzes', 'futtat.py'))
+        sys.path.insert(0, os.path.join(ITT, 'ellenorzes'))
+        FT = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(FT)
+        self.assertEqual(FT.ZAR_TARTVA_VALTOZO, gepsor.ZAR_TARTVA_VALTOZO)
+        with FT.HelyiZar('teszt', ut=os.path.join(self.tmp, 'zar', 'ellenorzes.zar'), kiir=lambda s: None):
+            self.assertTrue(os.environ.get(gepsor.ZAR_TARTVA_VALTOZO))
+            with self._sor() as s:
+                self.assertIsNone(s.jegy)
+        self.assertIsNone(os.environ.get(gepsor.ZAR_TARTVA_VALTOZO))
 
     # --- várakozás, sorrend ---------------------------------------------------------------------------------------------
     def test_elo_elozo_utan_var_es_sorra_kerul(self):
@@ -205,6 +227,7 @@ class GepsorTeszt(unittest.TestCase):
         for i in range(3):
             env = dict(os.environ)
             env.pop(gepsor.TARTVA_VALTOZO, None)
+            env.pop(gepsor.ZAR_TARTVA_VALTOZO, None)
             procok.append(subprocess.Popen([sys.executable, '-c', kod, str(i)], env=env))
             # a következő csak akkor indul, ha az előző jegye már a sorban van
             hatar = time.time() + 20
