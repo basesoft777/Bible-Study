@@ -323,7 +323,8 @@ class Leltar(unittest.TestCase):
         """A11 (N92): angol könyvnévvel álló igehely az idézeten kívül nincs (a BDB saját alakja csak „…” idézetben
         áll, a szakirodalom dőlt angol címében is). A14 (N-F12h): a rokon nyelvi alak hiánya kimondott mondat
         (HAMART-001). A15 (N-F12i): a Kolofon „Sablon-megfelelőség” cellája nem üres. B5 (N-F148a): a fordítatlan egység jelölt („(fordításra vár)”; a T5
-        kapuja: GK-15, `teszt_kartya.py`), a nyers angol Thayer nincs a lapon (HN-12). B8: 【NAPLO】 blokk nincs a
+        kapuja: GK-15, `teszt_kartya.py`; a jelölés: `teszt_szocikkek.py`), a nyers angol Thayer nincs a lapon (HN-12);
+        N244 (F241.5): az ISTENTISZT-001 lapján 0 „fordításra vár” jel (a brief 5. pontjának 1. feltétele). B8: 【NAPLO】 blokk nincs a
         látható szövegben."""
         for azonosito, szoveg in self.lap.items():
             idezet_nelkul = re.sub(r'\*[^*\n]+\*', '', re.sub(r'„[^”]*”', '', szoveg))   # az idézet és a dőlt cím
@@ -331,7 +332,8 @@ class Leltar(unittest.TestCase):
             self.assertRegex(szoveg, r'Sablon-megfelelőség \| v\d+ \|', 'A15 %s' % azonosito)
             self.assertNotIn('【', szoveg, 'B8 %s' % azonosito)
         self.assertIn('Nincs rokon nyelvi alak a BDB szócikkében', self.lap['HAMART-001'])
-        self.assertGreater(self.lap['ISTENTISZT-001'].count('*(fordításra vár)*'), 0)
+        self.assertEqual(self.lap['ISTENTISZT-001'].count('*(fordításra vár)*'), 0,
+                         'N244: az ISTENTISZT-001 minden fordítása a táblában (F241.5)')
 
     @unittest.skip('218c (#238): N98 és N113 — a BDB-gerinc al-szócikk szerinti átkulcsolása és a sorbelső fej a '
                    'bemeneti rétegben; a két mintalapon nem fordul elő (a H2416 esete)')
