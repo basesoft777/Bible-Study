@@ -190,3 +190,30 @@ A Workflow-fájlok (`.github/workflows/*.yml`) a `lexikon_general`-t név szerin
 **Lapgen-futás:** három, egymás után (ISTENTISZT-001 előtte és utána, HAMART-001), előtte a `python.exe`-lista (két másik session BDB-szkriptje, lapgen-méretű nem).
 
 *Proveniencia: `scope=general.py --cel lexikon2 --id ISTENTISZT-001 / HAMART-001 (repón kívül) → olvasoi_kapu.lap_meres; regresszio.py --id HAMART-001 --teljes | forras=a munkafa (99ff3d6a + a menet változásai) | ts=2026-11-24`.*
+
+## F241.5b — 3. menet: az (1) lezárása (#855) és a (2) rész (D16 (a)–(c))
+
+*2026-11-24 · `claude-opus-5-5` (kért: `opus`, egyezik) · ágak: `claude/f241-5b-1` (#855), `claude/f241-5b-2` (a #855 fejéből).*
+
+**Az (1) lezárása (#855).** A lapgen „szabad” jele után (az integrátor, az A1 futásai után) a két lap a D17-es kóddal újragenerálva (repón kívül): ISTENTISZT-001 MINTA 1 (az ismert BDB „arab,;”, a #821 fájlja), a HAMART-001 regressziója `--teljes`, hash-őrrel RENDBEN (0 engedély nélküli diff-sor). A menetben talált hiba (javítva, `dca97f1b`): a `teszt_szerkezet` GK-01 próbája (adatútvonal csak a jegyzékből) a B76 hibaüzenetének `adat/…tsv` literálján bukott; az (1) tesztköre a `szerkezet`-et nem futtatta. A D18 (a kiadási minimum) a #855-ön: döntésfájl, a brief lépéseinek jelölése, N-F241a. A main közbeni számkiosztása (N-F231a → N247) miatt a #855 a main-re igazítva (merge, a brief egy sora).
+
+**(2) (a) Kolofon (D16 (a)).** `kolofon.ertek.kriterium`: „A lap elején áll ([…](#…)).” — mondat; a LISTA_NEVELO kapu eddig a kisbetűs névtöredéket mérte (mindkét lapon 1).
+
+**(2) (b) Irodalom (D16 (b)).** `olvasoi_nevtabla.tsv` `irod_adat` két sora (a teljességmérés két naplója): „A szócikk teljességmérése”, `eredet=uj`; a MUNKASZO kapu eddig mérte (mindkét lapon 1).
+
+**(2) (c) A névelő-kapu a cella típusa szerint (D16 (c)).** Technikai döntés: a szabály (minta és elembontás) egy helyen, `lapgen/nevelo.py`; a lapgen a kész lap fajta-térképén méri (a névelő karakterének fajtája dönt: idézet és kézi próza mentes, sablon BUKÁS, a lap nem íródik ki), az alakosztály-kapu után; az `olvasoi_kapu.ell_lista_nevelo` ugyanazt a szabályt használja (a régi és az új 81 lapon, 1091 találaton azonos), és ha a mérő a fajta-térképet átadja (`lap_meres(..., mentes=nevelo.mentes_fv(sorok))`), a mentes elem ott sem mérődik. A Markdown-ág a kiadott lapon a 11. szabály átkötésével együtt dől el (F241.7).
+
+| Lap | LISTA_NEVELO (fajta nélkül → fajta-térképpel) | MUNKASZO | MINTA | sablon-névelő (lapgen-kapu) |
+|---|---|---|---|---|
+| ISTENTISZT-001 | 9 → 8 → 0 (a 8 mind idézet — Károli-szó — vagy kézi kifejezés; a Kolofon az (a)-val javult) | 1 → 0 | 1 (BDB „arab,;”) | 0 |
+| HAMART-001 | 1 → 0 | 1 → 0 | 0 | 0 |
+
+**Mérce:** `naplok/F218_referencia.tsv` (B65, B66 hash-sora), `naplok/F218_elteres_engedely.tsv` (S8C-UJ-12, ISM-KOLOFON, S8D-UJ-10 új hash-e). A HAMART-001 regressziója `--teljes`: RENDBEN (0 engedély nélküli diff-sor).
+
+**Változáslista:** F241.7 (ISTENTISZT-001) és F241.10 (HAMART-001): a Kolofon „Negatív kritérium” cellája mondat; az Irodalom és a Kolofon forrástáblájában „A szócikk teljességmérése”. Generált blokk (DT933 (1): változásjegyzék-sor, új nézés nem).
+
+**Tesztek:** `futtat.py kolofon nevelo szerkezet kizart kereszthiv bemenet vaz festek kapuk olvasoi_indok regresszio`; `teszt_olvasoi_kapu.py` 80/80, `teszt_f194_szopar.py` 19/19, `teszt_kesz_lap_hamart.py` 66/66.
+
+**Lapgen-futás:** négy generálás (a két lap az (1) és a (2) kódjával) és két in-process mérés, egymás után; előtte a `python.exe`-lista (egy `ellenorzes/futtat.py`, lapgen nem).
+
+*Proveniencia: `scope=general.py --cel lexikon2 --id ISTENTISZT-001 / HAMART-001 (repón kívül) → olvasoi_kapu.lap_meres (fajta-térképpel és anélkül, lapgen.fo.lap_keszit); regresszio.py --id HAMART-001 --teljes | forras=a munkafa (02046e23; 20d16985 + a mérce) | ts=2026-11-24`.*
