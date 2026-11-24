@@ -99,8 +99,20 @@ def _dj(dias):
     return ''.join(_DIA[d] for d in sorted(dias, key=lambda x: _SORREND.get(x, 9)))
 
 
+_SZERK_ZAROJEL = re.compile(r'\(([A-Za-z])\)')
+
+
 def beta_unicode(s):
-    """Beta-kód → Unicode görög (a Perseus-kulcsok és a görög elemek)."""
+    """Beta-kód → Unicode görög (a Perseus-kulcsok és a görög elemek). Az egy betűt záró zárójel (`kt(e)iron`, `ka\\(t) ta\\`) szerkesztői
+    kiegészítés, nem lehelet: „(ε)” lesz (a független ellenőrzés, 2026-11-24: ᾤκτ̔ἐιρον helyett ᾤκτ(ε)ιρον)."""
+    reszek = _SZERK_ZAROJEL.split(s)
+    if len(reszek) > 1:
+        return unicodedata.normalize('NFC', ''.join(
+            _beta_alap(r) if j % 2 == 0 else '(' + _beta_alap(r) + ')' for j, r in enumerate(reszek)))
+    return _beta_alap(s)
+
+
+def _beta_alap(s):
     ki, i, n = [], 0, len(s)
     while i < n:
         c = s[i]
@@ -161,7 +173,8 @@ def szocikk_szoveg(nyers):
         # a szerkesztői ⟨ ⟩ jelölés nem tag: a beta-átírás és a tag-eltávolítás előtt védeni kell
         return ' ' + beta_unicode(t.replace('<', '⟨').replace('>', '⟩')) + ' '
     t = _TAG.sub(' ', _GOROG_EL.sub(g, nyers))
-    return _WS.sub(' ', unicodedata.normalize('NFC', html.unescape(t))).strip()
+    t = html.unescape(t).replace('[schwa]', 'ə').replace('^_', '˘¯')      # a forrás hangjelölései: schwa; rövid-hosszú jel
+    return _WS.sub(' ', unicodedata.normalize('NFC', t)).strip()
 
 
 _KOZ_ELOTT = re.compile(r'\s+([,.;:!?)\]])')
@@ -404,7 +417,7 @@ def betolt(fajl=None):
             if (r['tipus'] == 'perseus_szulo') != bool(r['jelzes']):
                 raise JavitasHiba('a jelzés kötelező és csak a perseus_szulo sorban áll: %s' % r['strong'])
             if r['tipus'] != 'nincs_szocikk' and not (r['perseus_kulcs'] and r['perseus_azonosito']):
-                raise JavitasHiba('a perseus_csere sorban kell a Perseus-kulcs és -azonosító: %s' % r['strong'])
+                raise JavitasHiba('a perseus_* sorban kell a Perseus-kulcs és -azonosító: %s' % r['strong'])
             if not r['indoklas'] or not r['proveniencia'].startswith('scope=') or ' | forras=' not in r['proveniencia']:
                 raise JavitasHiba('indoklás vagy proveniencia-sor hiányzik: %s' % r['strong'])
             ki[r['strong']] = r
@@ -412,7 +425,8 @@ def betolt(fajl=None):
 
 
 def alkalmaz(sorok, strong_idx, szoveg_idx, javitasok):
-    """A nyers `lsj` sorok (lista-listák) javítása: a `perseus_csere` sor szövege cserélődik, a `nincs_szocikk` sor kimarad.
+    """A nyers `lsj` sorok (lista-listák) javítása: a `perseus_csere` és a `perseus_szulo` (jelzéssel elöl) sor szövege cserélődik, a
+    `nincs_szocikk` soré üres lesz (a sor marad).
     A `modul_hash` eltérése (a nyers sor megváltozott) kivétel. Visszaad: (új sorok, {tipus: darab})."""
     ki, db = [], {'perseus_csere': 0, 'perseus_szulo': 0, 'nincs_szocikk': 0}
     latott = set()

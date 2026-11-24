@@ -111,8 +111,8 @@ class MaiTabla(unittest.TestCase):
         """A #864 mérés A-osztályai (942) és a 2. osztály 82 sorából a `megtartas` nélküliek (68): mindegyik pontosan egyszer."""
         b = L.b_dontesek()
         tartott = {s for s, r in b.items() if r['dontes'] != 'megtartas'}
-        self.assertEqual((len(b), len(tartott)), (82, 68))
-        self.assertEqual(len(self.j), 942 + 68)
+        self.assertEqual((len(b), len(tartott)), (82, 82))
+        self.assertEqual(len(self.j), 942 + 82)
         self.assertEqual(set(self.j), set(L.osztalyok()) | tartott)
         self.assertFalse(set(L.osztalyok()) & set(b), 'az A- és a B-osztály külön halmaz')
 
@@ -122,7 +122,7 @@ class MaiTabla(unittest.TestCase):
         rows = [[r[f] for f in fej] for r in sorok]
         ki, db = L.alkalmaz(rows, fej.index('Strong_padded'), fej.index('Teljes_szocikk'), self.j)
         self.assertEqual(len(ki), len(rows))
-        self.assertEqual(sum(db.values()), 942 + 68)
+        self.assertEqual(sum(db.values()), 942 + 82)
         uresek = {r[0] for r in ki if not r[2].strip()}
         self.assertEqual(uresek, {s for s, r in self.j.items() if r['tipus'] == 'nincs_szocikk'})
 
@@ -164,6 +164,8 @@ class MaiTabla(unittest.TestCase):
         for s, r in self.j.items():
             self.assertNotRegex(r['szoveg'], r'\wς-\w', s)
             self.assertNotIn('&lt;', r['szoveg'], s)
+            self.assertNotIn('[schwa]', r['szoveg'], s)
+            self.assertNotIn('^_', r['szoveg'], s)
 
     def test_kezi_kizart_sorok(self):
         for s in L.KEZI_KIZART:
@@ -179,18 +181,26 @@ class MaiTabla(unittest.TestCase):
 
 
     def test_b_osztaly_darabszam_es_jelzes(self):
-        """A szerkesztői döntés (2026-11-24): 36 pontos csere, 27 szülőszócikk kimondott jelzéssel, 5 nincs; 14 marad."""
+        """A szerkesztői döntés (2026-11-24) és a független ellenőrzés utáni átsorolás: 54 pontos csere (az írásmód-változatok és az
+        utalás-láncok is jelzés nélkül), 24 szülőszócikk kimondott jelzéssel, 4 nincs; megtartott sor nincs."""
         from collections import Counter
         b = Counter(r['dontes'] for r in L.b_dontesek().values())
-        self.assertEqual(b, {'csere_pontos': 36, 'csere_szulo': 27, 'nincs_szocikk': 5, 'megtartas': 14})
+        self.assertEqual(b, {'csere_pontos': 54, 'csere_szulo': 24, 'nincs_szocikk': 4})
         szulok = [r for r in self.j.values() if r['tipus'] == 'perseus_szulo']
-        self.assertEqual(len(szulok), 27)
+        self.assertEqual(len(szulok), 24)
+        for r in szulok:       # a jelzés szülőszava a Perseus-kulcs Unicode-alakja (nem torz, nem más szócikké)
+            self.assertIn(L.beta_unicode(r['perseus_kulcs'].split(';')[0].rstrip('0123456789')), r['jelzes'], r['strong'])
         for r in szulok:
             self.assertRegex(r['jelzes'], r'^Az LSJ-ben önálló szócikke nincs; a\(z\) \S+ szócikke, amely ezt az alakot tárgyalja\.$', r['strong'])
         self.assertIn('ὅμοιος', self.j['G3668']['jelzes'])      # ὁμοίως → ὅμοιος
         self.assertIn('πρέσβυς', self.j['G4245']['jelzes'])     # πρεσβύτερος → πρέσβυς
-        for s in ('G0149', 'G0976', 'G1166'):                    # a megtartott sorok nincsenek a táblában
-            self.assertNotIn(s, self.j)
+        # az ellenőrzés tételei: a G3644 a ὀλοθρεύω szócikke jelzéssel, a G1888 mindkét lemmája pontos, az εἶ/μήτι kizárt
+        self.assertEqual(self.j['G3644']['tipus'], 'perseus_szulo')
+        self.assertEqual(set(self.j['G1888']['perseus_kulcs'].split(';')), {'e)pauto/fwros', 'au)to/fwros'})
+        self.assertEqual(self.j['G4500']['tipus'], 'perseus_csere')
+        self.assertEqual(self.j['G2534']['tipus'], 'nincs_szocikk')
+        for s in ('G0149', 'G2102'):
+            self.assertEqual(self.j[s]['tipus'], 'perseus_szulo', s)
 
     def test_b_pontos_cserek(self):
         self.assertEqual(self.j['G3041']['perseus_kulcs'], 'li/mnh')                       # λίμνη (nem λῐμήν)
@@ -257,6 +267,10 @@ class Kulcsok(unittest.TestCase):
         self.assertTrue(L.csonka('ἐπιδέχομαι, Ion. etc.'))
         self.assertFalse(L.csonka('ἐπενδύω, v. ἐπενδύνω.'))
         self.assertFalse(L.csonka('μία, fem. of εἷς (q. v.).'))
+
+    def test_szerkesztoi_zarojel_nem_lehelet(self):
+        self.assertEqual(L.beta_unicode('w)/|kt(e)iron'), 'ᾤκτ(ε)ιρον')
+        self.assertEqual(L.beta_unicode('ka\\(t) ta\\'), 'κὰ(τ) τὰ')
 
     def test_beta_unicode(self):
         self.assertEqual(L.beta_unicode('e)pikale/w'), 'ἐπικαλέω')
