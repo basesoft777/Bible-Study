@@ -18,9 +18,11 @@ Mindkét lap az új szerkezet szigorú szabályával mérődik (kivétel nélkü
 (Tartalomjegyzék, Jelmagyarázat, Kolofon) itt nem mentesülnek, mert az olvasó mindkét lapon mindent lát.
 
 Használat:
-    python eszkozok/visszaeses_kapu.py ID --uj UJ_LAP [--regi REGI_LAP | --regi-ref REF] [--json FAJL]
+    python eszkozok/visszaeses_kapu.py ID --uj UJ_LAP [--regi REGI_LAP | --regi-ref REF] [--json FAJL] [--elfogadas TSV]
 A régi lap alapból a `REF:lexikon/<ID>_TUDOMANYOS.md` (REF: `origin/main`, ha nincs, `main`).
-Kilépési kód: 0 = egyik kategóriában sem több; 1 = BUKÁS (a kategóriák listájával); 2 = hívási hiba.
+Elfogadás: az `adat/visszaeses_elfogadas.tsv` (SEMA 2.76) pontosan egyező sora (lap, kategória, régi → új) a növekedést
+átengedi; a kimenet `ELFOGADVA` sora a nézési csomagba kerül. Az elavult sort (a mérés már nem ez) `ELAVULT ELFOGADÁS` jelzi.
+Kilépési kód: 0 = egyik kategóriában sem több (az elfogadottakon túl); 1 = BUKÁS (a kategóriák listájával); 2 = hívási hiba.
 """
 
 import argparse
@@ -41,6 +43,11 @@ sys.path.insert(0, os.path.join(GYOKER, 'eszkozok'))
 import olvasoi_kapu as OK  # noqa: E402
 
 FORDITASRA_VAR = 'FORDITASRA_VAR'
+# Az elfogadási tábla (SEMA 2.76; az integrátor döntése, 2026-11-24): egy növekedés csak lapra és kategóriára szóló,
+# indokolt, döntéshez kötött sorral engedhető át, a pontos régi → új darabszámmal (a D19 okonkénti engedélyének mintája).
+# Téves szabálytalálatnál nem elfogadás jár, hanem a szabály javítása.
+ELFOGADAS_TSV = 'adat/visszaeses_elfogadas.tsv'
+ELFOGADAS_OSZLOPOK = ('id', 'kategoria', 'regi', 'uj', 'ok', 'dontes_ref', 'proveniencia')
 _MINDIG = re.compile('')     # az új szerkezet jele helyett: minden lap a szigorú szabállyal mérődik
 
 
@@ -73,6 +80,59 @@ def visszaesesek(sorok):
     return [s for s in sorok if s[2] > s[1]]
 
 
+def elfogadasok(ut):
+    """Az elfogadási tábla sorai ({oszlop: érték}); hiányzó fájl: üres. Hibás sornál ValueError (SEMA 2.76)."""
+    if not os.path.isfile(ut):
+        return []
+    with open(ut, encoding='utf-8') as f:
+        sorok = [s.rstrip('\r\n') for s in f if s.strip()]
+    if not sorok or tuple(sorok[0].split('\t')) != ELFOGADAS_OSZLOPOK:
+        raise ValueError('%s: a fejléc %s kell' % (ut, '\t'.join(ELFOGADAS_OSZLOPOK)))
+    ki, kulcsok = [], set()
+    for n, sor in enumerate(sorok[1:], 2):
+        mezok = sor.split('\t')
+        if len(mezok) != len(ELFOGADAS_OSZLOPOK):
+            raise ValueError('%s:%d: %d mező kell' % (ut, n, len(ELFOGADAS_OSZLOPOK)))
+        s = dict(zip(ELFOGADAS_OSZLOPOK, mezok))
+        try:
+            s['regi'], s['uj'] = int(s['regi']), int(s['uj'])
+        except ValueError:
+            raise ValueError('%s:%d: a regi és az uj egész szám' % (ut, n)) from None
+        if s['uj'] <= s['regi']:
+            raise ValueError('%s:%d: csak növekedés fogadható el (uj > regi)' % (ut, n))
+        for m in ('id', 'kategoria', 'ok', 'dontes_ref', 'proveniencia'):
+            if not s[m].strip():
+                raise ValueError('%s:%d: üres mező: %s' % (ut, n, m))
+        if not s['proveniencia'].startswith(('scope=', 'manual')):
+            raise ValueError('%s:%d: a proveniencia `scope=… | forras=… | ts=…` vagy `manual`' % (ut, n))
+        kulcs = (s['id'], s['kategoria'])
+        if kulcs in kulcsok:
+            raise ValueError('%s:%d: kétszer szereplő lap és kategória: %s %s' % ((ut, n) + kulcs))
+        kulcsok.add(kulcs)
+        ki.append(s)
+    return ki
+
+
+def szetvalaszt(azonosito, rossz, tabla):
+    """(elfogadott, maradék): az elfogadott az a növekedés, amelyhez a táblában pontosan egyező sor áll (lap, kategória,
+    régi és új darabszám); minden más növekedés megmarad, és BUKÁS-t ad. Elfogadott: [((kat, régi, új), sor)]."""
+    by = {(s['id'], s['kategoria']): s for s in tabla}
+    elfogadott, maradek = [], []
+    for k, r, u in rossz:
+        s = by.get((azonosito, k))
+        if s is not None and (s['regi'], s['uj']) == (r, u):
+            elfogadott.append(((k, r, u), s))
+        else:
+            maradek.append((k, r, u))
+    return elfogadott, maradek
+
+
+def elavult_elfogadasok(azonosito, sorok, tabla):
+    """A lap azon elfogadási sorai, amelyek a mai mérésre már nem illenek (a növekedés megszűnt vagy más lett)."""
+    mert = {k: (r, u) for k, r, u in sorok}
+    return [s for s in tabla if s['id'] == azonosito and mert.get(s['kategoria']) != (s['regi'], s['uj'])]
+
+
 def regi_lap(azonosito, ref=None):
     """A régi (kiadott) lap szövege a git-refből; None, ha nincs (új lap: nincs mihez mérni)."""
     utvonal = 'lexikon/%s_TUDOMANYOS.md' % azonosito
@@ -90,6 +150,8 @@ def main(argv=None):
     ap.add_argument('--regi', help='a régi lap fájlja (alapból a --regi-ref lexikon/<ID>_TUDOMANYOS.md-je)')
     ap.add_argument('--regi-ref', help='a régi lap git-refje (alapból origin/main, ha nincs: main)')
     ap.add_argument('--json', help='a kategóriánkénti összevetés JSON-fájlba')
+    ap.add_argument('--elfogadas', default=os.path.join(GYOKER, *ELFOGADAS_TSV.split('/')),
+                    help='az elfogadási tábla (alapból %s)' % ELFOGADAS_TSV)
     a = ap.parse_args(argv)
     try:
         with open(a.uj, encoding='utf-8') as f:
@@ -105,20 +167,35 @@ def main(argv=None):
     if regi is None:
         print('NINCS RÉGI LAP\t%s\tnincs kiadott lap, nincs mihez mérni (új lap)' % a.id)
         return 0
+    try:
+        tabla = elfogadasok(a.elfogadas)
+    except (OSError, ValueError) as e:
+        print('HIBA: %s' % e, file=sys.stderr)
+        return 2
     sorok = osszevet(regi, uj)
     rossz = visszaesesek(sorok)
+    elfogadott, maradek = szetvalaszt(a.id, rossz, tabla)
     if a.json:
         with open(a.json, 'w', encoding='utf-8', newline='\n') as f:
             json.dump({'id': a.id, 'kategoriak': [{'kategoria': k, 'regi': r, 'uj': u} for k, r, u in sorok],
-                       'visszaeses': [k for k, _r, _u in rossz]}, f, ensure_ascii=False, indent=1)
+                       'visszaeses': [k for k, _r, _u in maradek],
+                       'elfogadva': [dict(s) for _x, s in elfogadott]},
+                      f, ensure_ascii=False, indent=1)
     for k, r, u in sorok:
         jel = 'TÖBB' if u > r else ('kevesebb' if u < r else '')
         print('%-28s régi %4d · új %4d  %s' % (k, r, u, jel))
-    if rossz:
+    # az elfogadott növekedés a nézési csomagba kerül: mindig kiíródik, a döntés hivatkozásával
+    for (k, r, u), s in elfogadott:
+        print('ELFOGADVA\t%s\t%s (%d → %d)\t%s\t%s' % (a.id, k, r, u, s['ok'], s['dontes_ref']))
+    for s in elavult_elfogadasok(a.id, sorok, tabla):
+        print('ELAVULT ELFOGADÁS\t%s\t%s (%d → %d)\ta mért növekedés már nem ez: a sor törlendő vagy újra eldöntendő'
+              % (a.id, s['kategoria'], s['regi'], s['uj']))
+    if maradek:
         print('BUKÁS\t%s\tvisszaesés a régi laphoz képest %d kategóriában: %s'
-              % (a.id, len(rossz), ', '.join('%s (%d → %d)' % s for s in rossz)))
+              % (a.id, len(maradek), ', '.join('%s (%d → %d)' % s for s in maradek)))
         return 1
-    print('RENDBEN\t%s\tegyik kategóriában sincs több találat, mint a régi lapon' % a.id)
+    print('RENDBEN\t%s\tegyik kategóriában sincs több találat, mint a régi lapon%s'
+          % (a.id, ' (az elfogadott növekedésen túl: %d)' % len(elfogadott) if elfogadott else ''))
     return 0
 
 

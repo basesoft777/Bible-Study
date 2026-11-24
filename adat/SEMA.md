@@ -30,6 +30,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valam
 | `lap_atnezesek.tsv` | `id` + `lap_commit` | kézzel, a felhasználó szavával (2.48) |
 | `lap_javitasok.tsv` | `id` + `hely` + `datum` | a `/lap-javit` parancs, a jóváhagyó szavával (2.49) |
 | `lap_befagyasztas.tsv` | `id` | kézzel, a felhasználó döntésével (2.59) |
+| `visszaeses_elfogadas.tsv` | `id` + `kategoria` | kézzel, az integrátor vagy a szerkesztő döntésével (2.76) |
 
 ---
 
@@ -2759,6 +2760,30 @@ kimenete, a kézi kizárásokat a szkript `KEZI_KIZART` és `KEZI_ELFOGADOTT` li
 szereplő Strong-számot, a szöveg nélküli `perseus_*` és a szöveges `nincs_szocikk` sort, a jelzés nélküli `perseus_szulo` és a jelzéses más sort, a proveniencia vagy indoklás
 nélküli sort; az építés (`alkalmaz`) megáll, ha a `modul_hash` nem egyezik vagy a Strong-szám nincs a nyers táblában;
 `python eszkozok/lsj_forras_javit.py --ellenoriz` és `eszkozok/teszt_lsj_forras_javit.py` ellenőrzi.
+
+### 2.76 `visszaeses_elfogadas.tsv` — a visszaesés-kapu elfogadott növekedései (F0.47, DT952, 2026-11-24)
+
+A visszaesés-kapu (`eszkozok/visszaeses_kapu.py`, a `/kiadas` 5/b. lépése) az új lapot a main-en kiadott lappal veti
+össze az olvasói kapuk kategóriái szerint, és BUKÁS-t ad, ha bármely kategóriában több a találat (a figyelmeztetés-
+kategóriákban is: a szerkesztő célja bármilyen visszaesés kizárása, „ne legyen visszaesés a régi laphoz képest”). Ez a
+tábla az egyetlen kivétel: lapra és kategóriára szóló, indokolt, döntéshez kötött sor, a pontos régi → új darabszámmal
+(az F218 okonkénti engedélyének, D19, mintájára). A kapu az egyező növekedést átengedi, és `ELFOGADVA` sorként kiírja:
+így a nézési csomagba kerül. **Téves szabálytalálatnál nem elfogadás jár, hanem a szabály javítása** (az integrátor
+döntése, 2026-11-24). A tábla üresen indul.
+
+| Oszlop | Tartalom |
+|---|---|
+| `id` | motívum-azonosító (`HAMART-001`) |
+| `kategoria` | a kapu kategóriája szó szerint, ahogy a kimenet írja: `<azonosító> <súlyosság>` (pl. `ANGOL_SOR FIGYELMEZTETÉS`) vagy `FORDITASRA_VAR` |
+| `regi`, `uj` | a mért darabszám a régi és az új lapon; `uj > regi`. Más mért szám esetén a sor nem enged át |
+| `ok` | miért nem visszaesés ez a növekedés, olvasói mondatban |
+| `dontes_ref` | a döntés helye (`DT<n>`, ágon `DT-F<nn>`, vagy a jóváhagyó szava dátummal) |
+| `proveniencia` | a mérő futás sora: `scope=visszaeses_kapu <ID> \| forras=<az új lap commitja> \| ts=…`, vagy `manual` (1.5) |
+
+**Kulcs:** `id` + `kategoria`. **Kapuk:** a betöltő (`visszaeses_kapu.elfogadasok`) megáll a rossz fejlécen, a nem egész
+vagy nem növekvő darabszámon, az üres `ok` / `dontes_ref` / `proveniencia` mezőn, a nem `scope=`/`manual` provenienciánál
+és a kétszer szereplő kulcson; a kapu `ELAVULT ELFOGADÁS`-t ír, ha egy sor a mai mérésre már nem illik. Teszt:
+`eszkozok/ellenorzes/tesztek/test_szabalyok.py` `VisszaesesKapuTeszt`.
 
 ## 3. Integritási szabályok
 
