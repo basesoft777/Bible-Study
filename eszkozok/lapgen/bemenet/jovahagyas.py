@@ -3,7 +3,9 @@
 A szerző jóváhagyása a lap egy változatára szól (`adat/lap_atnezesek.tsv`, SEMA 2.48: `lap_commit`), és tartalmilag
 a kézi prózára és a motívum adatára (DT933 (1)). A frissesség három esete:
 
-- **friss** — a legutóbbi érvényes átnézés `lap_commit`-ja a lap (`lexikon/<ID>_TUDOMANYOS.md`) mai utolsó commitja;
+- **friss** — egy érvényes átnézés `lap_commit`-ja a lap (`lexikon/<ID>_TUDOMANYOS.md`) mai utolsó commitja, és a
+  motívum kézi bemeneteinek lenyomata abban a commitban és ma azonos (a lap még a jóváhagyott, de a kézi próza vagy
+  az adat a munkafán azóta változhatott: akkor elavult);
 - **csak generált változás** — a lap azóta változott, de a jóváhagyás tárgya nem: a motívum kézi bemeneteinek
   lenyomata (`konfig.JOVAHAGYAS_BEMENETEK`: a kézi forrás egésze és az adattáblák motívumsorai) a jóváhagyott
   commitban és ma azonos. Ez új nézést nem kér, csak változásjegyzék-sort (a kiadás sora, `kiadasok.tsv`; a
@@ -137,11 +139,14 @@ def frissesseg(b, motivum, git=None):
             ervenyes.append((teljes, datum, i))
     if not ervenyes:
         return Jovahagyas(Frissesseg.NINCS_ATNEZES, lap_commit=utolso)
-    for teljes, datum, _i in ervenyes:
-        if teljes == utolso:
-            return Jovahagyas(Frissesseg.FRISS, teljes, datum, utolso)
-    teljes, datum, _i = max(ervenyes, key=lambda e: (_datum_kulcs(e[1]), e[2]))
+    egyezo = [e for e in ervenyes if e[0] == utolso]
+    teljes, datum, _i = egyezo[0] if egyezo else max(ervenyes, key=lambda e: (_datum_kulcs(e[1]), e[2]))
+    # A lenyomat az egyező `lap_commit` mellett is mér (A1 független ellenőrzés): a lap lehet még a jóváhagyott, a
+    # kézi próza vagy az adat a munkafán azóta változhatott (DT933 (1): új nézés).
     akkor = lenyomat(b, motivum, lambda u: git.tartalom(teljes, u))
     ma = lenyomat(b, motivum, _munkafa_olvaso(b))
-    allapot = Frissesseg.CSAK_GENERALT if akkor == ma else Frissesseg.ELAVULT
+    if akkor != ma:
+        allapot = Frissesseg.ELAVULT
+    else:
+        allapot = Frissesseg.FRISS if teljes == utolso else Frissesseg.CSAK_GENERALT
     return Jovahagyas(allapot, teljes, datum, utolso)

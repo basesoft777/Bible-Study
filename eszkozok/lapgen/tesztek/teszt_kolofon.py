@@ -282,6 +282,16 @@ class Frissesseg(unittest.TestCase):
         self.assertIs(j.allapot, jovahagyas_be.Frissesseg.FRISS)
         self.assertTrue(j.kiadhato)
 
+    def test_egyezo_lap_commit_de_valtozott_kezi_proza(self):
+        """A lap még a jóváhagyott (egyező `lap_commit`), de a kézi próza azóta változott: elavult, nem friss (A1
+        független ellenőrzés; DT933 (1))."""
+        ut = 'motivumok/%s.md' % ISTENTISZT
+        with open(os.path.join(kozos.GYOKER, *ut.split('/')), encoding='utf-8') as f:
+            regi = f.read().replace('\r\n', '\n') + '\nRégi mondat.\n'
+        j = self._f(_HamisGit(self.atnezes, {ut: regi}))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.ELAVULT)
+        self.assertFalse(j.kiadhato)
+
     def test_csak_generalt_valtozas(self):
         """A lap azóta változott, a kézi bemenetek nem: változásjegyzék-sor, új nézés nem."""
         j = self._f(_HamisGit('f' * 40))

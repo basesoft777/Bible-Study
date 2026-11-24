@@ -1957,9 +1957,12 @@ def main():
             vegso_kod = max(vegso_kod, 2)
             continue
 
-        if cel == 'lexikon' and args.id and lexikon_generator(args.id) == 'regi':
-            # F241.2: visszaút — a régi generátor lapja a motívum átállásáig a régi generátorral készül
-            print('--- cél: lexikon (%s: a régi generátor, az átállásig; --cel lexikon_regi) ---' % args.id)
+        if cel == 'lexikon' and ((args.id and lexikon_generator(args.id) == 'regi')
+                                 or (not args.id and not ATALLT_MOTIVUMOK)):
+            # F241.2: visszaút — a régi generátor lapja a motívum átállásáig a régi generátorral készül; `--id` nélkül
+            # (az összes lap, `--ir`: sablon 6, MUNKAMENET C1) a régi generátor, amíg egy motívum sem állt át
+            print('--- cél: lexikon (%s: a régi generátor, az átállásig; --cel lexikon_regi) ---'
+                  % (args.id or 'minden lap'))
             cel = 'lexikon_regi'
         elif cel in ('lexikon', 'lexikon2'):
             # F241.2: a `lexikon` cél az új lapgenerátor (eszkozok/lapgen/); a régi `lexikon_regi` néven fut a
@@ -2001,7 +2004,7 @@ def main():
             vegso_kod = max(vegso_kod, kinyeres_futtat(args, args.id, motivumok, konyv_sorrend))
             continue
 
-        if cel in ELESITHETO and cel not in ('lexikon', 'torzscikk') and (args.ir or args.ellenoriz):
+        if cel in ELESITHETO and cel not in ('lexikon', 'lexikon_regi', 'torzscikk') and (args.ir or args.ellenoriz):
             path = CEL_FAJL[cel]
             blokkok, hianyzo = blokk_lista_eles(cel, motivumok, elofordulasok,
                                                   konyv_sorrend, hianyzo_konyvek)
