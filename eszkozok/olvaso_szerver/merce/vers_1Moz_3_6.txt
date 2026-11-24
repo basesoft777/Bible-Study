@@ -60,25 +60,23 @@ Mózes első könyve 3
 1Móz 3:6
 Vers Kereszthiv. Témák Motívum
 ## [vers.karoli]
-Károli-szöveg
+Károli-szöveg forrásadat
 És látá az asszony, hogy jó az a fa eledelre s hogy kedves a szemnek, és kivánatos az a fa a bölcseségért: szakaszta azért annak gyümölcséből, és evék, és ada vele levő férjének is, és az is evék.
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Karoli 1908: közkincs
+Forrás és licenc: Karoli 1908: közkincs
 ## [vers.versszamozas]
-Versszámozás (MT / KJV)
+Versszámozás (MT / KJV) forrásadat
 Versszámozás: héber (MT) 3:6 · angol (KJV) 3:6
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Karoli versmegfeleltetes+BSB Strongs: minden jog fenntartva; CC0 1.0
+Osztály | KJV-versszám | MT-versszám | A megfeleltetés forrása
+KJV | 3:6 | 3:6 | versszámlálás
+Forrás és licenc: Karoli versmegfeleltetes+BSB Strongs: minden jog fenntartva; CC0 1.0
 ## [vers.lxx_versszam]
-LXX-versszám
+LXX-versszám forrásadat
 Septuaginta-versszám: 1Móz 3:6
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: LXX OS+Versifikacios tablak+Karoli versmegfeleltetes: CC BY 4.0; minden jog fenntartva
+Forrás | LXX-versszám
+LXX_OS | Genesis 3:6
+Forrás és licenc: LXX OS+Versifikacios tablak+Karoli versmegfeleltetes: CC BY 4.0; minden jog fenntartva
 ## [vers.heber_csempe]
-Héber szöveg
+Héber szöveg forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
 Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, igealak (magyarul), alul a görög LXX-megfelelő (kattintható). Szaggatott keret: nyelvtani elem, nincs szó-lapja.
 וַתֵּ֣רֶאvattére
 וַandH9001kötőszóκαὶ
@@ -135,294 +133,280 @@ Jobbról balra. Szavanként: átírás, angol tükörfordítás, Strong-szám, i
 וַיֹּאכַֽלvajjóchal
 וַandH9001kötőszóκαὶ
 יֹּאכַֽלhe ateH0398ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám ἔφαγον
-Forrás és licenc
-▸ forrásadat gépi feldolgozás szavankénti csempék; a táblázatos nézet alább
-▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0 · Macula heber: CC BY 4.0 · LXX OS: CC BY 4.0 · morf kulcs heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
+Forrás és licenc: TAHOT+TAGNT: CC BY 4.0 · Macula heber: CC BY 4.0 · LXX OS: CC BY 4.0 · morf kulcs heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
 ## [vers.lxx_csempe]
-Septuaginta (LXX, Rahlfs)
+Septuaginta (LXX, Rahlfs) forrásadat szavankénti csempék; a táblázatos nézet alább
 A keretes, aláhúzott görög szavakra kattintva megnyílik a görög szó-lap (jelentés, újszövetségi előfordulások, héber háttér). A szó alatt a Strong-szám; „nincs Strong”: a szónak nincs újszövetségi Strong-száma.
 καὶG2532 εἶδενG3708 ἡG3588 γυνὴG1135 ὅτιG3754 καλὸνG2570 τὸG3588 ξύλονG3586 εἰςG1519 βρῶσινG1035 καὶG2532 ὅτιG3754 ἀρεστὸνG0701 τοῖςG3588 ὀφθαλμοῖςG3788 ἰδεῖνG3708 καὶG2532 ὡραῖόνG5611 ἐστινG1510 τοῦG3588 κατανοῆσαιG2657 καὶG2532 λαβοῦσαG2983 τοῦG3588 καρποῦG2591 αὐτοῦG0846 ἔφαγενG2068 καὶG2532 ἔδωκενG1325 καὶG2532 τῷG3588 ἀνδρὶG0435 αὐτῆςG0846 μετ᾿G3326 αὐτῆςG0846 καὶG2532 ἔφαγονG2068
-Forrás és licenc
-▸ forrásadat szavankénti csempék; a táblázatos nézet alább
-▸ Forrás és licenc: LXX OS: CC BY 4.0
+Forrás és licenc: LXX OS: CC BY 4.0
 ## [vers.par]
-Károli–Strong párosítás
+Károli–Strong párosítás modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
 Táblázatos nézet (a csempék adatai soronként)
-▸ Károli-szó (sorszám) | Szó | Eredeti | Strong | Mért pontosság
-▸ 1 | És | וַ | H9001 | 99% (Mózes öt könyve)
-▸ 2 | látá | תֵּ֣רֶא | H7200 | 99% (Mózes öt könyve)
-▸ 4 | asszony | אִשָּׁ֡ה | H0802 | 99% (Mózes öt könyve)
-▸ 5 | hogy | כִּ֣י | H3588 | 99% (Mózes öt könyve)
-▸ 6 | jó | טוֹב֩ | H2896 | 99% (Mózes öt könyve)
-▸ 9 | fa | עֵ֨ץ | H6086 | 99% (Mózes öt könyve)
-▸ 10 | eledelre | לְ + מַאֲכָ֜ל | H9005 + H3978 | 99% (Mózes öt könyve)
-▸ 11 | s | וְ | H9002 | 99% (Mózes öt könyve)
-▸ 12 | hogy | כִ֧י | H3588 | 99% (Mózes öt könyve)
-▸ 13 | kedves | תַֽאֲוָה | H8378 | 99% (Mózes öt könyve)
-▸ 15 | szemnek | לָ + עֵינַ֗יִם | H9005 + H5869 | 99% (Mózes öt könyve)
-▸ 16 | és | וְ | H9002 | 99% (Mózes öt könyve)
-▸ 17 | kivánatos | נֶחְמָ֤ד | H2530 | 99% (Mózes öt könyve)
-▸ 20 | fa | עֵץ֙ | H6086 | 99% (Mózes öt könyve)
-▸ 22 | bölcseségért | לְ + הַשְׂכִּ֔יל | H9005 + H7919 | 99% (Mózes öt könyve)
-▸ 23 | szakaszta | וַ + תִּקַּ֥ח | H9001 + H3947 | 99% (Mózes öt könyve)
-▸ 25 | annak | וֹ | H9023 | 99% (Mózes öt könyve)
-▸ 26 | gyümölcséből | מִ + פִּרְי֖ + וֹ | H9006 + H6529 + H9023 | 99% (Mózes öt könyve)
-▸ 27 | és | וַ | H9001 | 99% (Mózes öt könyve)
-▸ 28 | evék | תֹּאכַ֑ל | H0398 | 99% (Mózes öt könyve)
-▸ 29 | és | וַ | H9001 | 99% (Mózes öt könyve)
-▸ 30 | ada | תִּתֵּ֧ן | H5414 | 99% (Mózes öt könyve)
-▸ 31 | vele | עִמָּ֖ + הּ | H5973 + H9034 | 99% (Mózes öt könyve)
-▸ 33 | férjének | לְ + אִישָׁ֛ + הּ | H9005 + H0376 + H9024 | 99% (Mózes öt könyve)
-▸ 34 | is | גַּם | H1571 | 99% (Mózes öt könyve)
-▸ 35 | és | וַ | H9001 | 99% (Mózes öt könyve)
-▸ 38 | evék | יֹּאכַֽל | H0398 | 99% (Mózes öt könyve)
-Forrás és licenc
-▸ modell-kimenet a pontozott aláhúzás a szövegben is modell-kimenet
-▸ Forrás és licenc: Karoli Strong parok: CC BY 4.0
+Károli-szó (sorszám) | Szó | Eredeti | Strong | Mért pontosság
+1 | És | וַ | H9001 | 99% (Mózes öt könyve)
+2 | látá | תֵּ֣רֶא | H7200 | 99% (Mózes öt könyve)
+4 | asszony | אִשָּׁ֡ה | H0802 | 99% (Mózes öt könyve)
+5 | hogy | כִּ֣י | H3588 | 99% (Mózes öt könyve)
+6 | jó | טוֹב֩ | H2896 | 99% (Mózes öt könyve)
+9 | fa | עֵ֨ץ | H6086 | 99% (Mózes öt könyve)
+10 | eledelre | לְ + מַאֲכָ֜ל | H9005 + H3978 | 99% (Mózes öt könyve)
+11 | s | וְ | H9002 | 99% (Mózes öt könyve)
+12 | hogy | כִ֧י | H3588 | 99% (Mózes öt könyve)
+13 | kedves | תַֽאֲוָה | H8378 | 99% (Mózes öt könyve)
+15 | szemnek | לָ + עֵינַ֗יִם | H9005 + H5869 | 99% (Mózes öt könyve)
+16 | és | וְ | H9002 | 99% (Mózes öt könyve)
+17 | kivánatos | נֶחְמָ֤ד | H2530 | 99% (Mózes öt könyve)
+20 | fa | עֵץ֙ | H6086 | 99% (Mózes öt könyve)
+22 | bölcseségért | לְ + הַשְׂכִּ֔יל | H9005 + H7919 | 99% (Mózes öt könyve)
+23 | szakaszta | וַ + תִּקַּ֥ח | H9001 + H3947 | 99% (Mózes öt könyve)
+25 | annak | וֹ | H9023 | 99% (Mózes öt könyve)
+26 | gyümölcséből | מִ + פִּרְי֖ + וֹ | H9006 + H6529 + H9023 | 99% (Mózes öt könyve)
+27 | és | וַ | H9001 | 99% (Mózes öt könyve)
+28 | evék | תֹּאכַ֑ל | H0398 | 99% (Mózes öt könyve)
+29 | és | וַ | H9001 | 99% (Mózes öt könyve)
+30 | ada | תִּתֵּ֧ן | H5414 | 99% (Mózes öt könyve)
+31 | vele | עִמָּ֖ + הּ | H5973 + H9034 | 99% (Mózes öt könyve)
+33 | férjének | לְ + אִישָׁ֛ + הּ | H9005 + H0376 + H9024 | 99% (Mózes öt könyve)
+34 | is | גַּם | H1571 | 99% (Mózes öt könyve)
+35 | és | וַ | H9001 | 99% (Mózes öt könyve)
+38 | evék | יֹּאכַֽל | H0398 | 99% (Mózes öt könyve)
+Forrás és licenc: Karoli Strong parok: CC BY 4.0
 ## [vers.eredeti]
-Eredeti szavak (TAHOT / TAGNT)
+Eredeti szavak (TAHOT / TAGNT) forrásadat
 Táblázatos nézet (a csempék adatai soronként)
-▸ # | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
-▸ 1 | וַ | | H9001 | ו | & | and
-▸ 2 | תֵּ֣רֶא | vattére | H7200 | רָאָה | to see | she saw
-▸ 3 | הָֽ | | H9009 | ה | the | the
-▸ 4 | אִשָּׁ֡ה | háissá | H0802 | אִשָּׁה | woman | woman
-▸ 5 | כִּ֣י | kí | H3588 | כִּי | for | that
-▸ 6 | טוֹב֩ | tóv | H2896 | טוֹב | good | [was] good
-▸ 7 | הָ | | H9009 | ה | the | the
-▸ 8 | עֵ֨ץ | háéc | H6086 | עֵץ | tree | tree
-▸ 9 | לְ | | H9005 | ל | to | for
-▸ 10 | מַאֲכָ֜ל | lemaachol | H3978 | מַאֲכָל | food | food
-▸ 11 | וְ | | H9002 | ו | and | and
-▸ 12 | כִ֧י | vekí | H3588 | כִּי | for | that
-▸ 13 | תַֽאֲוָה | taavá | H8378 | תַּאֲוָה | desire | [was] a delight
-▸ 14 | ה֣וּא | hú | H1931 | הוּא | he;_she;_it | it
-▸ 15 | לָ | | H9005 | ל | to | to the
-▸ 16 | עֵינַ֗יִם | láénajim | H5869 | עַ֫יִן | eye | eyes
-▸ 17 | וְ | | H9002 | ו | and | and
-▸ 18 | נֶחְמָ֤ד | venechmád | H2530 | חָמַד | to desire | [it was] desirable
-▸ 19 | הָ | | H9009 | ה | the | the
-▸ 20 | עֵץ֙ | háéc | H6086 | עֵץ | tree | tree
-▸ 21 | לְ | | H9005 | ל | to | to
-▸ 22 | הַשְׂכִּ֔יל | lehaszkíl | H7919 | שָׂכַל | be prudent | make wise
-▸ 23 | וַ | | H9001 | ו | & | and
-▸ 24 | תִּקַּ֥ח | vattikkach | H3947 | לָקַח | to take | she took
-▸ 25 | מִ | | H9006 | מ | from | some of
-▸ 26 | פִּרְי֖ | mippirjó | H6529 | פְּרִי | fruit | fruit
-▸ 27 | וֹ | | H9023 | Ps3m | his | its
-▸ 28 | וַ | | H9001 | ו | & | and
-▸ 29 | תֹּאכַ֑ל | vattóchal | H0398 | אָכַל | to eat | she ate
-▸ 30 | וַ | | H9001 | ו | & | and
-▸ 31 | תִּתֵּ֧ן | vattittén | H5414 | נָתַן | to give | she gave [it]
-▸ 32 | גַּם | gam | H1571 | גַּם | also | also
-▸ 33 | לְ | | H9005 | ל | to | to
-▸ 34 | אִישָׁ֛ | leísáh | H0376 | אִישׁ | man | husband
-▸ 35 | הּ | | H9024 | Ps3f | her | her
-▸ 36 | עִמָּ֖ | immáh | H5973 | עִם | with | with
-▸ 37 | הּ | | H9034 | Os3f | her | her
-▸ 38 | וַ | | H9001 | ו | & | and
-▸ 39 | יֹּאכַֽל | vajjóchal | H0398 | אָכַל | to eat | he ate
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
+# | Szó | Kiejtés | Strong | Szótő | Rövid jelentés | Angol tükörfordítás
+1 | וַ | | H9001 | ו | & | and
+2 | תֵּ֣רֶא | vattére | H7200 | רָאָה | to see | she saw
+3 | הָֽ | | H9009 | ה | the | the
+4 | אִשָּׁ֡ה | háissá | H0802 | אִשָּׁה | woman | woman
+5 | כִּ֣י | kí | H3588 | כִּי | for | that
+6 | טוֹב֩ | tóv | H2896 | טוֹב | good | [was] good
+7 | הָ | | H9009 | ה | the | the
+8 | עֵ֨ץ | háéc | H6086 | עֵץ | tree | tree
+9 | לְ | | H9005 | ל | to | for
+10 | מַאֲכָ֜ל | lemaachol | H3978 | מַאֲכָל | food | food
+11 | וְ | | H9002 | ו | and | and
+12 | כִ֧י | vekí | H3588 | כִּי | for | that
+13 | תַֽאֲוָה | taavá | H8378 | תַּאֲוָה | desire | [was] a delight
+14 | ה֣וּא | hú | H1931 | הוּא | he;_she;_it | it
+15 | לָ | | H9005 | ל | to | to the
+16 | עֵינַ֗יִם | láénajim | H5869 | עַ֫יִן | eye | eyes
+17 | וְ | | H9002 | ו | and | and
+18 | נֶחְמָ֤ד | venechmád | H2530 | חָמַד | to desire | [it was] desirable
+19 | הָ | | H9009 | ה | the | the
+20 | עֵץ֙ | háéc | H6086 | עֵץ | tree | tree
+21 | לְ | | H9005 | ל | to | to
+22 | הַשְׂכִּ֔יל | lehaszkíl | H7919 | שָׂכַל | be prudent | make wise
+23 | וַ | | H9001 | ו | & | and
+24 | תִּקַּ֥ח | vattikkach | H3947 | לָקַח | to take | she took
+25 | מִ | | H9006 | מ | from | some of
+26 | פִּרְי֖ | mippirjó | H6529 | פְּרִי | fruit | fruit
+27 | וֹ | | H9023 | Ps3m | his | its
+28 | וַ | | H9001 | ו | & | and
+29 | תֹּאכַ֑ל | vattóchal | H0398 | אָכַל | to eat | she ate
+30 | וַ | | H9001 | ו | & | and
+31 | תִּתֵּ֧ן | vattittén | H5414 | נָתַן | to give | she gave [it]
+32 | גַּם | gam | H1571 | גַּם | also | also
+33 | לְ | | H9005 | ל | to | to
+34 | אִישָׁ֛ | leísáh | H0376 | אִישׁ | man | husband
+35 | הּ | | H9024 | Ps3f | her | her
+36 | עִמָּ֖ | immáh | H5973 | עִם | with | with
+37 | הּ | | H9034 | Os3f | her | her
+38 | וַ | | H9001 | ו | & | and
+39 | יֹּאכַֽל | vajjóchal | H0398 | אָכַל | to eat | he ate
+Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
 ## [vers.macula_morf]
-Igealak-kód és szófaj (Macula)
+Igealak-kód és szófaj (Macula) forrásadat
 Táblázatos nézet (a csempék adatai soronként)
-▸ Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss
-▸ וַ | וְ | | C | conjunction | and
-▸ תֵּ֣רֶא | רָאָה | H7200 | Vqw3fs | verb | she.saw
-▸ הָֽ | הַ | | Td | particle | the
-▸ אִשָּׁ֡ה | אִשָּׁה | H0802 | Ncfsa | noun | woman
-▸ כִּ֣י | כִּי | H3588 | C | conjunction | (dm).that
-▸ טוֹב֩ | טוֹב | H2896 | Aamsa | adjective | [was].good
-▸ הָ | הַ | | Td | particle | the
-▸ עֵ֨ץ | עֵץ | H6086 | Ncmsa | noun | tree
-▸ לְ | לְ | | R | preposition | for
-▸ מַאֲכָ֜ל | מַאֲכָל | H3978 | Ncmsa | noun | food
-▸ וְ | וְ | | C | conjunction | and.(dm)
-▸ כִ֧י | כִּי | H3588 | C | conjunction | that
-▸ תַֽאֲוָה | תַּאֲוָה | H8378 | Ncfsa | noun | [was].a.delight
-▸ ה֣וּא | הוּא | H1931 | Pp3ms | pronoun | it
-▸ לָ | לְ | | Rd | preposition | to
-▸ הַ | | Td | particle | the
-▸ עֵינַ֗יִם | עַיִן | H5869 | Ncbda | noun | eyes
-▸ וְ | וְ | | C | conjunction | and.[was]
-▸ נֶחְמָ֤ד | חָמַד | H2530 | VNrmsa | verb | desirable
-▸ הָ | הַ | | Td | particle | the
-▸ עֵץ֙ | עֵץ | H6086 | Ncmsa | noun | tree
-▸ לְ | לְ | | R | preposition | to
-▸ הַשְׂכִּ֔יל | שָׂכַל | H7919 | Vhc | verb | make.wise
-▸ וַ | וְ | | C | conjunction | and
-▸ תִּקַּ֥ח | לָקַח | H3947 | Vqw3fs | verb | she.took
-▸ מִ | מִן | H4480 | R | preposition | some
-▸ פִּרְי֖ | פְּרִי | H6529 | Ncmsc | noun | of
-▸ וֹ | הוּא | | Sp3ms | suffix | its.fruit
-▸ וַ | וְ | | C | conjunction | and
-▸ תֹּאכַ֑ל | אָכַל | H0398 | Vqw3fs | verb | she.ate
-▸ וַ | וְ | | C | conjunction | and
-▸ תִּתֵּ֧ן | נָתַן | H5414 | Vqw3fs | verb | she.gave.[it]
-▸ גַּם | גַּם | H1571 | Ta | particle | also
-▸ לְ | לְ | | R | preposition | to
-▸ אִישָׁ֛ | אִישׁ | H0376 | Ncmsc | noun | husband
-▸ הּ | הוּא | | Sp3fs | suffix | her
-▸ עִמָּ֖ | עִם | H5973 | R | preposition | with
-▸ הּ | הוּא | | Sp3fs | suffix | her
-▸ וַ | וְ | | C | conjunction | and
-▸ יֹּאכַֽל | אָכַל | H0398 | Vqw3ms | verb | he.ate
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Macula heber: CC BY 4.0
+Szó | Lemma | Strong | Morfológiai kód | Szófaj | Gloss
+וַ | וְ | | C | conjunction | and
+תֵּ֣רֶא | רָאָה | H7200 | Vqw3fs | verb | she.saw
+הָֽ | הַ | | Td | particle | the
+אִשָּׁ֡ה | אִשָּׁה | H0802 | Ncfsa | noun | woman
+כִּ֣י | כִּי | H3588 | C | conjunction | (dm).that
+טוֹב֩ | טוֹב | H2896 | Aamsa | adjective | [was].good
+הָ | הַ | | Td | particle | the
+עֵ֨ץ | עֵץ | H6086 | Ncmsa | noun | tree
+לְ | לְ | | R | preposition | for
+מַאֲכָ֜ל | מַאֲכָל | H3978 | Ncmsa | noun | food
+וְ | וְ | | C | conjunction | and.(dm)
+כִ֧י | כִּי | H3588 | C | conjunction | that
+תַֽאֲוָה | תַּאֲוָה | H8378 | Ncfsa | noun | [was].a.delight
+ה֣וּא | הוּא | H1931 | Pp3ms | pronoun | it
+לָ | לְ | | Rd | preposition | to
+הַ | | Td | particle | the
+עֵינַ֗יִם | עַיִן | H5869 | Ncbda | noun | eyes
+וְ | וְ | | C | conjunction | and.[was]
+נֶחְמָ֤ד | חָמַד | H2530 | VNrmsa | verb | desirable
+הָ | הַ | | Td | particle | the
+עֵץ֙ | עֵץ | H6086 | Ncmsa | noun | tree
+לְ | לְ | | R | preposition | to
+הַשְׂכִּ֔יל | שָׂכַל | H7919 | Vhc | verb | make.wise
+וַ | וְ | | C | conjunction | and
+תִּקַּ֥ח | לָקַח | H3947 | Vqw3fs | verb | she.took
+מִ | מִן | H4480 | R | preposition | some
+פִּרְי֖ | פְּרִי | H6529 | Ncmsc | noun | of
+וֹ | הוּא | | Sp3ms | suffix | its.fruit
+וַ | וְ | | C | conjunction | and
+תֹּאכַ֑ל | אָכַל | H0398 | Vqw3fs | verb | she.ate
+וַ | וְ | | C | conjunction | and
+תִּתֵּ֧ן | נָתַן | H5414 | Vqw3fs | verb | she.gave.[it]
+גַּם | גַּם | H1571 | Ta | particle | also
+לְ | לְ | | R | preposition | to
+אִישָׁ֛ | אִישׁ | H0376 | Ncmsc | noun | husband
+הּ | הוּא | | Sp3fs | suffix | her
+עִמָּ֖ | עִם | H5973 | R | preposition | with
+הּ | הוּא | | Sp3fs | suffix | her
+וַ | וְ | | C | conjunction | and
+יֹּאכַֽל | אָכַל | H0398 | Vqw3ms | verb | he.ate
+Forrás és licenc: Macula heber: CC BY 4.0
 ## [vers.macula_gorog]
-Héber–görög párosítás szavanként (Macula)
+Héber–görög párosítás szavanként (Macula) forrásadat
 Táblázatos nézet (a csempék adatai soronként)
-▸ Héber szó | Gloss | Görög (Macula) | Görög Strong
-▸ וַ | and | καὶ | G2532
-▸ תֵּ֣רֶא | she.saw | εἶδεν | G1492
-▸ הָֽ | the | ἡ | G3588
-▸ אִשָּׁ֡ה | woman | γυνὴ | G1135
-▸ כִּ֣י | (dm).that | ὅτι | G3754
-▸ טוֹב֩ | [was].good | καλὸν | G2570
-▸ הָ | the | τὸ | G3588
-▸ עֵ֨ץ | tree | ξύλον | G3586
-▸ לְ | for | εἰς | G1519
-▸ מַאֲכָ֜ל | food | βρῶσιν | G1035
-▸ וְ | and.(dm) | καὶ | G2532
-▸ כִ֧י | that | ὅτι | G3754
-▸ תַֽאֲוָה | [was].a.delight | ἀρεστὸν | G0701
-▸ עֵינַ֗יִם | eyes | ὀφθαλμοῖς | G3788
-▸ וְ | and.[was] | καὶ | G2532
-▸ לְ | to | τοῦ | G3588
-▸ הַשְׂכִּ֔יל | make.wise | κατανοῆσαι | G2657
-▸ וַ | and | καὶ | G2532
-▸ תִּקַּ֥ח | she.took | λαβοῦσα | G2983
-▸ מִ | some | τοῦ | G3588
-▸ פִּרְי֖ | of | καρποῦ | G2590
-▸ וֹ | its.fruit | αὐτοῦ | G0846
-▸ תֹּאכַ֑ל | she.ate | ἔφαγεν | G5315
-▸ וַ | and | καὶ | G2532
-▸ תִּתֵּ֧ן | she.gave.[it] | ἔδωκεν | G1325
-▸ גַּם | also | καὶ | G2532
-▸ לְ | to | τῷ | G3588
-▸ אִישָׁ֛ | husband | ἀνδρὶ | G0435
-▸ הּ | her | αὐτῆς | G0846
-▸ עִמָּ֖ | with | μετ’ | G3326
-▸ הּ | her | αὐτῆς | G0846
-▸ וַ | and | καὶ | G2532
-▸ יֹּאכַֽל | he.ate | ἔφαγον | G5315
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Macula heber: CC BY 4.0
+Héber szó | Gloss | Görög (Macula) | Görög Strong
+וַ | and | καὶ | G2532
+תֵּ֣רֶא | she.saw | εἶδεν | G1492
+הָֽ | the | ἡ | G3588
+אִשָּׁ֡ה | woman | γυνὴ | G1135
+כִּ֣י | (dm).that | ὅτι | G3754
+טוֹב֩ | [was].good | καλὸν | G2570
+הָ | the | τὸ | G3588
+עֵ֨ץ | tree | ξύλον | G3586
+לְ | for | εἰς | G1519
+מַאֲכָ֜ל | food | βρῶσιν | G1035
+וְ | and.(dm) | καὶ | G2532
+כִ֧י | that | ὅτι | G3754
+תַֽאֲוָה | [was].a.delight | ἀρεστὸν | G0701
+עֵינַ֗יִם | eyes | ὀφθαλμοῖς | G3788
+וְ | and.[was] | καὶ | G2532
+לְ | to | τοῦ | G3588
+הַשְׂכִּ֔יל | make.wise | κατανοῆσαι | G2657
+וַ | and | καὶ | G2532
+תִּקַּ֥ח | she.took | λαβοῦσα | G2983
+מִ | some | τοῦ | G3588
+פִּרְי֖ | of | καρποῦ | G2590
+וֹ | its.fruit | αὐτοῦ | G0846
+תֹּאכַ֑ל | she.ate | ἔφαγεν | G5315
+וַ | and | καὶ | G2532
+תִּתֵּ֧ן | she.gave.[it] | ἔδωκεν | G1325
+גַּם | also | καὶ | G2532
+לְ | to | τῷ | G3588
+אִישָׁ֛ | husband | ἀνδρὶ | G0435
+הּ | her | αὐτῆς | G0846
+עִמָּ֖ | with | μετ’ | G3326
+הּ | her | αὐτῆς | G0846
+וַ | and | καὶ | G2532
+יֹּאכַֽל | he.ate | ἔφαγον | G5315
+Forrás és licenc: Macula heber: CC BY 4.0
 ## [vers.lxx_szavak]
-Görög szóalak és LXX-vers szavai (LXX_OS)
+Görög szóalak és LXX-vers szavai (LXX_OS) forrásadat
 Táblázatos nézet (a csempék adatai soronként)
-▸ Szóalak | Lemma | Strong | Morf
-▸ καὶ | καί | G2532 | conjunction
-▸ εἶδεν | ὁράω | G3708 | verb aor ind act 3rd sg
-▸ ἡ | ὁ | G3588 | article fem nom sg
-▸ γυνὴ | γυνή | G1135 | noun fem nom sg
-▸ ὅτι | ὅτι | G3754 | conjunction
-▸ καλὸν | καλός | G2570 | adjective neut nom/voc/acc sg
-▸ τὸ | ὁ | G3588 | article neut nom/voc/acc sg
-▸ ξύλον | ξύλον | G3586 | noun neut nom/voc/acc sg
-▸ εἰς | εἰς | G1519 | preposition
-▸ βρῶσιν | βρῶσις | G1035 | noun fem acc sg
-▸ καὶ | καί | G2532 | conjunction
-▸ ὅτι | ὅτι | G3754 | conjunction
-▸ ἀρεστὸν | ἀρεστός | G0701 | adjective neut nom/voc/acc sg
-▸ τοῖς | ὁ | G3588 | article masc/neut dat pl
-▸ ὀφθαλμοῖς | ὀφθαλμός | G3788 | noun masc dat pl
-▸ ἰδεῖν | ὁράω | G3708 | verb aor inf act
-▸ καὶ | καί | G2532 | conjunction
-▸ ὡραῖόν | ὡραῖος | G5611 | adjective neut nom/voc/acc sg
-▸ ἐστιν | εἰμί | G1510 | verb pres ind act 3rd sg
-▸ τοῦ | ὁ | G3588 | article masc/neut gen sg
-▸ κατανοῆσαι | κατανοέω | G2657 | verb aor inf act
-▸ καὶ | καί | G2532 | conjunction
-▸ λαβοῦσα | λαμβάνω | G2983 | participle aor ptc act fem nom/voc sg
-▸ τοῦ | ὁ | G3588 | article masc/neut gen sg
-▸ καρποῦ | καρπός | G2591 | noun masc gen sg
-▸ αὐτοῦ | αὐτός | G0846 | pronoun 3rd gen sg
-▸ ἔφαγεν | ἐσθίω | G2068 | verb aor ind act 3rd sg
-▸ καὶ | καί | G2532 | conjunction
-▸ ἔδωκεν | δίδωμι | G1325 | verb aor ind act 3rd sg
-▸ καὶ | καί | G2532 | conjunction
-▸ τῷ | ὁ | G3588 | article masc/neut dat sg
-▸ ἀνδρὶ | ἀνήρ | G0435 | noun masc dat sg
-▸ αὐτῆς | αὐτός | G0846 | pronoun 3rd gen sg
-▸ μετ᾿ | μετά | G3326 | preposition
-▸ αὐτῆς | αὐτός | G0846 | pronoun 3rd gen sg
-▸ καὶ | καί | G2532 | conjunction
-▸ ἔφαγον | ἐσθίω | G2068 | verb aor ind act 3rd pl
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: LXX OS: CC BY 4.0
+Szóalak | Lemma | Strong | Morf
+καὶ | καί | G2532 | conjunction
+εἶδεν | ὁράω | G3708 | verb aor ind act 3rd sg
+ἡ | ὁ | G3588 | article fem nom sg
+γυνὴ | γυνή | G1135 | noun fem nom sg
+ὅτι | ὅτι | G3754 | conjunction
+καλὸν | καλός | G2570 | adjective neut nom/voc/acc sg
+τὸ | ὁ | G3588 | article neut nom/voc/acc sg
+ξύλον | ξύλον | G3586 | noun neut nom/voc/acc sg
+εἰς | εἰς | G1519 | preposition
+βρῶσιν | βρῶσις | G1035 | noun fem acc sg
+καὶ | καί | G2532 | conjunction
+ὅτι | ὅτι | G3754 | conjunction
+ἀρεστὸν | ἀρεστός | G0701 | adjective neut nom/voc/acc sg
+τοῖς | ὁ | G3588 | article masc/neut dat pl
+ὀφθαλμοῖς | ὀφθαλμός | G3788 | noun masc dat pl
+ἰδεῖν | ὁράω | G3708 | verb aor inf act
+καὶ | καί | G2532 | conjunction
+ὡραῖόν | ὡραῖος | G5611 | adjective neut nom/voc/acc sg
+ἐστιν | εἰμί | G1510 | verb pres ind act 3rd sg
+τοῦ | ὁ | G3588 | article masc/neut gen sg
+κατανοῆσαι | κατανοέω | G2657 | verb aor inf act
+καὶ | καί | G2532 | conjunction
+λαβοῦσα | λαμβάνω | G2983 | participle aor ptc act fem nom/voc sg
+τοῦ | ὁ | G3588 | article masc/neut gen sg
+καρποῦ | καρπός | G2591 | noun masc gen sg
+αὐτοῦ | αὐτός | G0846 | pronoun 3rd gen sg
+ἔφαγεν | ἐσθίω | G2068 | verb aor ind act 3rd sg
+καὶ | καί | G2532 | conjunction
+ἔδωκεν | δίδωμι | G1325 | verb aor ind act 3rd sg
+καὶ | καί | G2532 | conjunction
+τῷ | ὁ | G3588 | article masc/neut dat sg
+ἀνδρὶ | ἀνήρ | G0435 | noun masc dat sg
+αὐτῆς | αὐτός | G0846 | pronoun 3rd gen sg
+μετ᾿ | μετά | G3326 | preposition
+αὐτῆς | αὐτός | G0846 | pronoun 3rd gen sg
+καὶ | καί | G2532 | conjunction
+ἔφαγον | ἐσθίω | G2068 | verb aor ind act 3rd pl
+Forrás és licenc: LXX OS: CC BY 4.0
 ## [vers.bsb]
-Angol szavak szavanként (BSB)
+Angol szavak szavanként (BSB) forrásadat gépi feldolgozás
 When the womanH0802sawH7200thatH3588the treeH6086was goodH2896for foodH3978andH3588—H1931pleasingH8378to the eyesH5869and that it wasH6086desirableH2530for obtaining wisdomH7919she tookH3947the fruitH6529and ate itH0398She also gave someH5414—H1571to her husbandH0376who was with herH5973and he ate itH0398
-Forrás és licenc
-▸ forrásadat gépi feldolgozás
-▸ Forrás és licenc: BSB Strongs: CC0 1.0
+Forrás és licenc: BSB Strongs: CC0 1.0
 ## [vers.kjv]
-Angol szavak szavanként (KJV + Strong)
+Angol szavak szavanként (KJV + Strong) forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
 womanH0802sawH7200treeH6086goodH2896foodH3978itH1931pleasantH8378eyesH5869treeH6086desiredH2530wiseH7919tookH3947thereofH6529eatH0398gaveH5414alsoH1571husbandH0376eatH0398
-Forrás és licenc
-▸ forrásadat gépi feldolgozás a Strong-címkék GPL-eredetűek: nyilvános kiadásból kimarad
-▸ Forrás és licenc: KJV Strongs teljes: tisztázatlan [tisztázatlan]
+Forrás és licenc: KJV Strongs teljes: tisztázatlan [tisztázatlan]
 ## [vers.morf_hu]
-Az igealak magyar feloldása
+Az igealak magyar feloldása gépi feldolgozás
 Táblázatos nézet (a csempék adatai soronként)
-▸ Szó | Kód | Magyar feloldás | Nyelv
-▸ וַ | C | kötőszó | H
-▸ תֵּ֣רֶא | Vqw3fs | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám | H
-▸ הָֽ | Td | partikula, határozott névelő | H
-▸ אִשָּׁ֡ה | Ncfsa | főnév, köznév, nőnem, egyes szám, abszolút | H
-▸ כִּ֣י | C | kötőszó | H
-▸ טוֹב֩ | Aamsa | melléknév, melléknév, hímnem, egyes szám, abszolút | H
-▸ הָ | Td | partikula, határozott névelő | H
-▸ עֵ֨ץ | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
-▸ לְ | R | elöljáró | H
-▸ מַאֲכָ֜ל | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
-▸ וְ | C | kötőszó | H
-▸ כִ֧י | C | kötőszó | H
-▸ תַֽאֲוָה | Ncfsa | főnév, köznév, nőnem, egyes szám, abszolút | H
-▸ ה֣וּא | Pp3ms | névmás, személyes, harmadik személy, hímnem, egyes szám | H
-▸ לָ | Rd | elöljáró, határozott névelő | H
-▸ Td | partikula, határozott névelő | H
-▸ עֵינַ֗יִם | Ncbda | főnév, köznév, mindkettő (főnév), kettes szám, abszolút | H
-▸ וְ | C | kötőszó | H
-▸ נֶחְמָ֤ד | VNrmsa | ige, nifal, participium, cselekvő, hímnem, egyes szám, abszolút | H
-▸ הָ | Td | partikula, határozott névelő | H
-▸ עֵץ֙ | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
-▸ לְ | R | elöljáró | H
-▸ הַשְׂכִּ֔יל | Vhc | ige, hifil, infinitivus constructus | H
-▸ וַ | C | kötőszó | H
-▸ תִּקַּ֥ח | Vqw3fs | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám | H
-▸ מִ | R | elöljáró | H
-▸ פִּרְי֖ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
-▸ וֹ | Sp3ms | toldalék, névmási, harmadik személy, hímnem, egyes szám | H
-▸ וַ | C | kötőszó | H
-▸ תֹּאכַ֑ל | Vqw3fs | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám | H
-▸ וַ | C | kötőszó | H
-▸ תִּתֵּ֧ן | Vqw3fs | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám | H
-▸ גַּם | Ta | partikula, megerősítő | H
-▸ לְ | R | elöljáró | H
-▸ אִישָׁ֛ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
-▸ הּ | Sp3fs | toldalék, névmási, harmadik személy, nőnem, egyes szám | H
-▸ עִמָּ֖ | R | elöljáró | H
-▸ הּ | Sp3fs | toldalék, névmási, harmadik személy, nőnem, egyes szám | H
-▸ וַ | C | kötőszó | H
-▸ יֹּאכַֽל | Vqw3ms | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám | H
-Forrás és licenc
-▸ gépi feldolgozás
-▸ Forrás és licenc: morf kulcs heber: CC BY 4.0 · Macula heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
+Szó | Kód | Magyar feloldás | Nyelv
+וַ | C | kötőszó | H
+תֵּ֣רֶא | Vqw3fs | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám | H
+הָֽ | Td | partikula, határozott névelő | H
+אִשָּׁ֡ה | Ncfsa | főnév, köznév, nőnem, egyes szám, abszolút | H
+כִּ֣י | C | kötőszó | H
+טוֹב֩ | Aamsa | melléknév, melléknév, hímnem, egyes szám, abszolút | H
+הָ | Td | partikula, határozott névelő | H
+עֵ֨ץ | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+לְ | R | elöljáró | H
+מַאֲכָ֜ל | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+וְ | C | kötőszó | H
+כִ֧י | C | kötőszó | H
+תַֽאֲוָה | Ncfsa | főnév, köznév, nőnem, egyes szám, abszolút | H
+ה֣וּא | Pp3ms | névmás, személyes, harmadik személy, hímnem, egyes szám | H
+לָ | Rd | elöljáró, határozott névelő | H
+Td | partikula, határozott névelő | H
+עֵינַ֗יִם | Ncbda | főnév, köznév, mindkettő (főnév), kettes szám, abszolút | H
+וְ | C | kötőszó | H
+נֶחְמָ֤ד | VNrmsa | ige, nifal, participium, cselekvő, hímnem, egyes szám, abszolút | H
+הָ | Td | partikula, határozott névelő | H
+עֵץ֙ | Ncmsa | főnév, köznév, hímnem, egyes szám, abszolút | H
+לְ | R | elöljáró | H
+הַשְׂכִּ֔יל | Vhc | ige, hifil, infinitivus constructus | H
+וַ | C | kötőszó | H
+תִּקַּ֥ח | Vqw3fs | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám | H
+מִ | R | elöljáró | H
+פִּרְי֖ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
+וֹ | Sp3ms | toldalék, névmási, harmadik személy, hímnem, egyes szám | H
+וַ | C | kötőszó | H
+תֹּאכַ֑ל | Vqw3fs | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám | H
+וַ | C | kötőszó | H
+תִּתֵּ֧ן | Vqw3fs | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, nőnem, egyes szám | H
+גַּם | Ta | partikula, megerősítő | H
+לְ | R | elöljáró | H
+אִישָׁ֛ | Ncmsc | főnév, köznév, hímnem, egyes szám, constructus | H
+הּ | Sp3fs | toldalék, névmási, harmadik személy, nőnem, egyes szám | H
+עִמָּ֖ | R | elöljáró | H
+הּ | Sp3fs | toldalék, névmási, harmadik személy, nőnem, egyes szám | H
+וַ | C | kötőszó | H
+יֹּאכַֽל | Vqw3ms | ige, qal, szekvenciális imperfectum (wayyiqtol), harmadik személy, hímnem, egyes szám | H
+Forrás és licenc: morf kulcs heber: CC BY 4.0 · Macula heber: CC BY 4.0 · morf nyelv aramai: CC BY 4.0
+## [vers.lxx_dontes]
+LXX-fordítói döntések (adatréteg) forrásadat soronként saját proveniencia-mező
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: a projekt saját adata: minden jog fenntartva
+## [vers.lxx_par]
+LXX versszintű együttelőfordulás forrásadat együttelőfordulás a versben, nem szóillesztés
+Nincs adat (üres eredmény, nem negatív lelet).
+Forrás és licenc: LXX versszintu parok: minden jog fenntartva
 ## [vers.lxx_tobblet]
-LXX többlet és számozási eltérés
+LXX többlet és számozási eltérés forrásadat az adat ebben a kiadásban még nem érhető el
 Ez az adat ebben a kiadásban még nem érhető el. Az üres lap itt nem jelenti azt, hogy a versnek nincs Septuaginta-többlete vagy számozási eltérése.
-Forrás és licenc
-▸ forrásadat az adat ebben a kiadásban még nem érhető el
-▸ Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
+Forrás és licenc: a Septuaginta-többlet és a versszámozási eltérések táblái (a licenc a betöltéskor rögzül; ebben a kiadásban még nincsenek betöltve)
 ## [vers.ubs]
-UBS-jelentés az előfordulásra
+UBS-jelentés az előfordulásra forrásadat
 Strong | Azonosító | Domén | Rövid definíció | Glosszák
 H0376 | 000354001003000 | — | = a male adult animal or human being | man; male; husband
 H0398 | 000372001001000 | Ingest | = action by which someone consumes food; with or without explicit object | to eat
@@ -438,11 +422,11 @@ H6529 | 006013001001000 | Fruits | = produce from crop-bearing trees and plants 
 H7200 | 006640001001000 | See | = process or action by which living creatures perceive something, primarily --though not necessarily exclusively-- with their eyes, either as a spontaneous incident or as the result of focusing the eyes on something | to see; to look; to notice
 H7919 | 007043002002000 | Wise | = causative action or process by which humans, deities, or plants cause humans to have the ability to understand things | to make wise; to give understanding; to instruct
 H8378 | 007690001003000 | Wish | = something desirable | choice; delight; bounty
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: UBS DBH: CC BY-SA 4.0 [share-alike]
-Ezekben a forrásokban erre nincs adat (üres eredmény, nem negatív lelet): LXX-fordítói döntések (adatréteg), LXX versszintű együttelőfordulás.
+Forrás és licenc: UBS DBH: CC BY-SA 4.0 [share-alike]
 ## [vers.tsk]
 ## [vers.kh]
 ## [vers.nave]
+## [vers.tipnr]
+## [vers.motivum]
 ## [vers.tanulmany]
+## [vers.kapcsolat]

@@ -120,6 +120,38 @@ class Regresszio(unittest.TestCase):
         self.assertEqual(sorted(e['hasznalat'].items()), [('E1', 1), ('E2', 1)])
         self.assertFalse(e['bukas'])
 
+    def test_ok_kotes_egy_sor_egy_okra_darabszammal(self):
+        """D19: egy szándékos eltérés okonként egy sorban: a törölt és a beszúrt sorok egy engedélyre, pontos számmal."""
+        eng = [('O1', 'TUDOMANYOS', '2. Második', 'D19', 'ok', '*', '*', '3', 'D-teszt: a tábla helyett mondat')]
+        e = self._meres('## 2. Második\n\nA sor\núj mondat\n\n', engedelyek=eng)
+        self.assertFalse(e['bukas'])
+        self.assertEqual(e['hasznalat'], {'O1': 3})
+
+    def test_ok_kotes_a_nem_okhoz_kotott_elterest_jelzi(self):
+        """Egy további, nem okhoz kötött eltérés a darabszámot elrontja: BUKÁS; más szakaszban engedély nélküli."""
+        eng = [('O1', 'TUDOMANYOS', '2. Második', 'D19', 'ok', '*', '*', '3', 'D-teszt')]
+        e = self._meres('## 2. Második\n\nA más\núj mondat\n\n', engedelyek=eng)
+        self.assertTrue(e['bukas'])
+        self.assertEqual(len(e['engedely_hiba']), 1)
+        self.assertNotEqual(e['engedely_hiba'][0][2], 3)
+        e = self._meres('## 1. Első\n\nelső sor\nmásik\n\n## 2. Második\n\nA sor\núj mondat\n\n',
+                        engedelyek=eng)
+        self.assertTrue(e['bukas'])
+
+    def test_ok_kotes_oldalmintaja(self):
+        """A `-` oldal hiányt kér, a reguláris kifejezés az oldal sorára illik."""
+        eng = [('O1', 'TUDOMANYOS', '2. Második', 'D19', 'ok', r'^[BC] sor$', '-', '2', 'D-teszt: törlés')]
+        self.assertFalse(self._meres('## 2. Második\n\nA sor\n\n', engedelyek=eng)['bukas'])
+        self.assertTrue(self._meres('## 2. Második\n\nA sor\nB más\n\n', engedelyek=eng)['bukas'])
+
+    def test_a_soronkenti_engedely_elobb_az_ok_utana(self):
+        """Ha egy diff-sorra soronkénti és okonkénti engedély is illik, a soronkénti viszi; nem kettős illés."""
+        eng = [('E1', 'TUDOMANYOS', '2. Második', 'T', 'sor', R.sor_hash('C sor'), '-', '1', 'ok'),
+               ('O1', 'TUDOMANYOS', '2. Második', 'D19', 'ok', '*', '*', '2', 'D-teszt')]
+        e = self._meres('## 2. Második\n\nA sor\nB más\n\n', engedelyek=eng)
+        self.assertFalse(e['bukas'])
+        self.assertEqual(sorted(e['hasznalat'].items()), [('E1', 1), ('O1', 2)])
+
     def test_a_meg_nem_kesz_szakasz_engedelye_nem_szamit(self):
         """Részleges lapnál a még el nem készült szakasz engedélysora nem BUKÁS."""
         eng = [('E9', 'TUDOMANYOS', '1. Első', 'T', 'sor', R.sor_hash('első sor'), R.sor_hash('x'), '1', 'ok')]

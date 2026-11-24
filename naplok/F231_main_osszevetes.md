@@ -34,8 +34,8 @@ A javítás előtt a kapu 570 eltérést talált (jelleg-címke 265, forrássor 
 | 5 | A versnézet táblázatai (Károli–Strong, TAHOT/TAGNT, Macula ×2, LXX-szavak, igealak) | /1Moz/1/1, /1Moz/1/7, /Zsolt/22/2, /Jan/1/1 | #36 | a „Táblázatos nézet” lenyíló alapból nyitva (becsukható) |
 | 6 | A görög szó-lap forrásszövegei (TBESG, Thayer angol, LSJ, SECE) | /szo/G0264, /szo/G3056 | #21 | a lenyíló alapból nyitva; a #21 új blokksorrendje marad |
 | 7 | Az angol eredeti a magyar mellett („reggel morning”, „víz water”, a tW-címszavak angolja) | Strong-szótár, TBESH, „Ebben a versben”, SDBH, SDGNT, tW, UBS | #58 | vissza a magyar mellé, kisebben (a súgó helyett) |
-| 8 | A versszámozás-tábla („Osztály · KJV · MT · A megfeleltetés forrása”) és az LXX-versszám táblája („Forrás · LXX-versszám”) | minden verslap | #37 | DT-F231d (F231.21): az egysoros összefoglaló alatt a main táblázata; a megfeleltetés forrása olvasói néven („versszámlálás”, „Septuaginta-etalon (LXX_OS)”), a belső kód a súgóban |
-| 9 | Az SDBH/SDGNT doménkód és az UBS DBH/DNTG azonosító | szónézetek | #27 | DT-F231e (F231.21): a „Domén kód” és az „Azonosító” oszlop vissza; a tagolt UBS DNTG-listában jelentésenként „azonosító: …” |
+| 8 | A versszámozás-tábla („Osztály · KJV · MT · A megfeleltetés forrása”) és az LXX-versszám táblája („Forrás · LXX-versszám”) | minden verslap | #37 | DT948 (F231.21): az egysoros összefoglaló alatt a main táblázata; a megfeleltetés forrása olvasói néven („versszámlálás”, „Septuaginta-etalon (LXX_OS)”), a belső kód a súgóban |
+| 9 | Az SDBH/SDGNT doménkód és az UBS DBH/DNTG azonosító | szónézetek | #27 | DT949 (F231.21): a „Domén kód” és az „Azonosító” oszlop vissza; a tagolt UBS DNTG-listában jelentésenként „azonosító: …” |
 
 ## Átalakítva (a tartalom más alakban látszik; a kapu kivétellistáján „átalakítva”)
 
@@ -50,9 +50,9 @@ A javítás előtt a kapu 570 eltérést talált (jelleg-címke 265, forrássor 
 
 Az első két pont visszaállítva (8–9. sor fent), a harmadik nem jön vissza. A döntések: `dontesek/uj/olvaso-egyben-3464e1.md`.
 
-1. **Versszámozás (#37) — DT-F231d: vissza.** a „Versszámozás (MT / KJV)” és az „LXX-versszám” táblázata helyén egysoros összefoglaló áll. A versszámok látszanak; az „Osztály” és „A megfeleltetés forrása” oszlop (pl. „szamlalas”) és az LXX „Forrás” oszlopa (LXX_OS, ez a forrássorban megvan) nem. Indok, hogy nem állítottam vissza: a #37 a pilot egysoros alakját kérte, és a két oszlop belső módszerkód.
-2. **Doménkódok és UBS-azonosítók (#27) — DT-F231e: vissza.** az SDBH/SDGNT „Domén kód”, az UBS DBH és DNTG „Azonosító” oszlopa a súgóba került. Indok: a #27 a nyers 15 jegyű azonosítót kifogásolta; a domén, a glossza, a definíció és a hivatkozás látszik.
-3. **A G0264 Thayer-blokkjának „modell-kimenet” címkéje — DT-F231f: nem jön vissza.** a G0264-nek nincs magyar Thayer-fordítása, a blokk az angol eredetit mutatja; a main a címkét fordítás nélkül is kiírta. Indok: a visszaállítása hamis jelölés lenne.
+1. **Versszámozás (#37) — DT948: vissza.** a „Versszámozás (MT / KJV)” és az „LXX-versszám” táblázata helyén egysoros összefoglaló áll. A versszámok látszanak; az „Osztály” és „A megfeleltetés forrása” oszlop (pl. „szamlalas”) és az LXX „Forrás” oszlopa (LXX_OS, ez a forrássorban megvan) nem. Indok, hogy nem állítottam vissza: a #37 a pilot egysoros alakját kérte, és a két oszlop belső módszerkód.
+2. **Doménkódok és UBS-azonosítók (#27) — DT949: vissza.** az SDBH/SDGNT „Domén kód”, az UBS DBH és DNTG „Azonosító” oszlopa a súgóba került. Indok: a #27 a nyers 15 jegyű azonosítót kifogásolta; a domén, a glossza, a definíció és a hivatkozás látszik.
+3. **A G0264 Thayer-blokkjának „modell-kimenet” címkéje — DT950: nem jön vissza.** a G0264-nek nincs magyar Thayer-fordítása, a blokk az angol eredetit mutatja; a main a címkét fordítás nélkül is kiírta. Indok: a visszaállítása hamis jelölés lenne.
 
 ## Az integrátori összevetés új hibája (javítva, F231.21)
 

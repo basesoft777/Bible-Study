@@ -6,9 +6,9 @@ tipus: feladat
 fazis: folyamat
 modell: opus
 sav: SERVER
-allapot: fut
+allapot: lezarva
 ad: az olvasó szó-lapján (/szo/<Strong>) a BDB és a Thayer ugyanazzal a kártyával jelenik meg, a lexikonlap 4.2 „Mélységi szócikk” mintájára (a jelentések rendje, alatta szakaszonként egybefüggő szöveg, magyar, ahol van, különben angol, ugyanabban a kártyában); a görög szó-lap blokksora a héberével egyenértékű; a látható szövegben nincs nyers BDB-jelölés, könyvnév nélküli hivatkozás és belső azonosító, ezt kapu védi
-kovetkezo: "PR #810 (draft): a tételmérce (teszt_tetelmerce.py) 58/58 zöld, a kapu zöld; következő: a szerkesztő nézése az ágas előnézeten (DT886), a nézett hash a PR leírásában"
+kovetkezo: "lezárva: a PR #810 mergelve (2026-11-23, a3405522; a szerkesztő nézése: „Megnéztem, mehet”, a nézett fej 88fd78b7); az F232-mérce frissítése a D8 szerinti külön PR-ban (F231.23); nincs — az olvasó újraépítése a 218c után, IRANY"
 munka: folyamat
 olvas: [naplok/OLVASO_EGYBEN_HIBALISTA.md, IRANY.md, eszkozok/lapgen/bemenet/kartya_lap.py, eszkozok/lapgen/bemenet/kartya.py, eszkozok/lexikon_general.py, adat/bdb_szakaszok.tsv, adat/bdb_szakasz_hu.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/bdb_vers_jelentes.tsv, adat/szotar_szakasz_cimke.tsv, eszkozok/bdb_rovidites.py, lexikon/HAMART-001_TUDOMANYOS.md]
 ir: [eszkozok/olvaso_szerver/, naplok/F231_jelentes.md, eszkozok/olvaso_szerver/blokkok.py, eszkozok/olvaso_szerver/bdb_szokartya.py, eszkozok/olvaso_szerver/lekerdezesek.py, eszkozok/olvaso_szerver/oldalak.py, eszkozok/olvaso_szerver/sablonok/, eszkozok/olvaso_szerver/statikus/, eszkozok/olvaso_szerver/teszt_szokartya_egyseges.py]
@@ -120,7 +120,7 @@ A lexikonlap 4.2 „Mélységi szócikk” része (pl. `lexikon/HAMART-001_TUDOM
 ## 5. Közben talált adathibák (nem ebben a feladatban javítandók)
 
 Az ág új nyitott tételként veszi fel (`nyitott/uj/<ágnév>.md`), forrásból ellenőrizve:
-- **N-F231a — LXX-híd, H1242.** A kártya LXX-sora szerint „17 hivatkozás” mellett πρωΐ 8 · φωσφόρος 6 · 5 megfelelő nélkül, az összeg 19. A lexikális LXX-blokk szerint „φωσφόρος 88 · πρωΐ 47”. A lektor gyanúja szerint a φωσφόρος ilyen gyakorisággal nem áll az LXX-ben. Ellenőrzés a nyers `lxx_bridge`-ből és egy LXX-szövegből.
+- **N247 — LXX-híd, H1242.** A kártya LXX-sora szerint „17 hivatkozás” mellett πρωΐ 8 · φωσφόρος 6 · 5 megfelelő nélkül, az összeg 19. A lexikális LXX-blokk szerint „φωσφόρος 88 · πρωΐ 47”. A lektor gyanúja szerint a φωσφόρος ilyen gyakorisággal nem áll az LXX-ben. Ellenőrzés a nyers `lxx_bridge`-ből és egy LXX-szövegből.
 - **N-F231b — `strong_szotar`, G0264 kiejtés:** „hamartēsē”, a szótári alak hamartanō. Forrásból ellenőrizendő, és meg kell mérni, hány görög sort érint.
 - **N-F231c — a görög „Ebben a versben” blokk** (alaktani kulcs).
 

@@ -308,8 +308,8 @@ class TesztHatarFrissesseg(unittest.TestCase):
         self.assertEqual(ELL.hatar_frissesseg(adat, 'Z-001', naplo)[0], 'nincs_naplo')
 
     def test_hamart_a_valos_adaton_hatardontessel_lezart(self):
-        """F182 (F26): a HAMART-001 modelles része 48 soros állapotra készült; a K1–K6 döntései után (47 sor) a határ
-        döntéssel lezárt, a határdöntés-jel szerint friss."""
+        """F182 (F26): a HAMART-001 modelles része 48 soros állapotra készült; a K1–K6 döntései után (47 sor), majd a
+        DT819 két tematikus helyével (49 sor) a határ döntéssel lezárt, a határdöntés-jel szerint friss."""
         import ellenoriz as ELL
         allapot, szoveg = ELL.hatar_frissesseg(os.path.join(M.GYOKER, 'adat'), 'HAMART-001')
         self.assertEqual(allapot, 'friss')
@@ -324,7 +324,7 @@ class TesztHatarFrissesseg(unittest.TestCase):
         import ellenoriz as ELL
         elotte = ('X-001\t1Móz 1:1\ta DT-F9a', 'X-001\t1Móz 1:2\tb')
         adat, _ = self._kornyezet(None, sorok=elotte)
-        nd, ujjd = ELL.hatar_ujjlenyomat(adat, 'X-001', dt_nelkul=True)
+        nd, ujjd = ELL.hatar_ujjlenyomat(adat, 'X-001', tagsag=True)
         modelles = ('<!-- SORÁLLAPOT: n=3 ujj=000000000000 -->\n' + 'második vélemény ' * 5 +
                     '\n<!-- HATÁRDÖNTÉS: n=%d ujjd=%s | DT-F9a -->' % (nd, ujjd))
         adat, naplo = self._kornyezet(modelles, sorok=sorok_utana)
@@ -341,9 +341,18 @@ class TesztHatarFrissesseg(unittest.TestCase):
         adat, naplo = self._hd_kornyezet(('X-001\t1Móz 1:1\ta DT777', 'X-001\t1Móz 1:2\tb'))
         self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'friss')
 
-    def test_hatardontes_utani_sorvaltozas_elavult(self):
+    def test_hatardontes_utani_szovegvaltozas_friss(self):
+        """F0.30: a szövegmező javítása nem határ-változás: az ujjd csak a tagságot (azonosító + igehely) méri."""
         import ellenoriz as ELL
         adat, naplo = self._hd_kornyezet(('X-001\t1Móz 1:1\ta DT-F9a', 'X-001\t1Móz 1:2\tMÓDOSÍTVA'))
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'friss')
+
+    def test_hatardontes_utani_igehely_valtozas_elavult(self):
+        """F0.30: új vagy kivett igehely (tagság-változás) elavulttá teszi a határdöntés-jelet."""
+        import ellenoriz as ELL
+        adat, naplo = self._hd_kornyezet(('X-001\t1Móz 1:1\ta DT-F9a', 'X-001\t1Móz 1:2\tb', 'X-001\t1Móz 1:3\tc'))
+        self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'elavult')
+        adat, naplo = self._hd_kornyezet(('X-001\t1Móz 1:1\ta DT-F9a', 'X-001\t1Móz 1:9\tb'))
         self.assertEqual(ELL.hatar_frissesseg(adat, 'X-001', naplo)[0], 'elavult')
 
     def test_ervenytelen_hatardontes_nem_friss(self):

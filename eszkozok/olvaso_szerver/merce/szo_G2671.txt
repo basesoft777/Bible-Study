@@ -17,20 +17,16 @@ Alapjelentés átok
 6 Károli-előfordulás
 A szó saját lapja · Minden előfordulás versenként (keresés)
 ## [szo.szotar]
-Strong-szótár
+Strong-szótár forrásadat modell-kimenet
 Szótő | Kiejtés | Szófaj | Rövid jelentés | Gyök / származtatás
-κατάρα | katara | főnév | átok | κατα, αρα.1 (nem önálló Strong-számos szócikk)
-Forrás és licenc
-▸ forrásadat modell-kimenet
-▸ Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva
+κατάρα | katara | főnév | átok curse | κατα, αρα.1 (nem önálló Strong-számos szócikk)
+Forrás és licenc: Strong szotar: CC BY 4.0 · TBESH+TAHOT+a projekt saját adata: CC BY 4.0; minden jog fenntartva
 ## [szo.elofordulas]
-Előfordulás, könyvek száma
+Előfordulás, könyvek száma gépi feldolgozás
 6 előfordulás, 4 könyvben.
-Forrás és licenc
-▸ gépi feldolgozás
-▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
+Forrás és licenc: TAHOT+TAGNT: CC BY 4.0
 ## [szo.karoli_alakok]
-Károli-alakok és pontosság
+Károli-alakok és pontosság modell-kimenet
 6 Károli-előfordulás. A párosítás mért pontossága 95%.
 Károli-alak | Darab
 átok | 3
@@ -38,21 +34,17 @@ Károli-alak | Darab
 átokká | 1
 átokhoz | 1
 Mind a 66 könyv szó szintű párjai alapján.
-Forrás és licenc
-▸ modell-kimenet
-▸ Forrás és licenc: Karoli Strong parok: CC BY 4.0
+Forrás és licenc: Karoli Strong parok: CC BY 4.0
 ## [szo.magyar_gorog]
-Szótár: Thayer-szócikk
+Szótár: Thayer-szócikk modell-kimenet gépi feldolgozás
 Lefordítva · gépi fordítás
 kárhoztatás, átkozódás, átok7 hivatkozás
 κατάρας, ἡ (κατά és ἄρα, vö. német Verfiuchung,Verwünschung (vö. κατά, III. 4)); a Septuaginta főként כְּלָלָה megfelelője; kárhoztatás, átkozódás, átok; szemben εὐλογία szóval: átkozottnak lenni (l. ott), Jak 3:10; γῆ κατάρας ἐγγύς, Isten közelében, azaz a terméketlenségnek átadva (utalás 1Móz 3:17 kk.), Zsid 6:8; ὑπό κατάραν εἶναι, átok alatt lenni, azaz az átkozottá levés megszabott büntetésének alávetve lenni, Gal 3:10; ἐξαγοράζειν τινα ἐκ τῆς κατάρας, megváltani valakit, aki ki van téve az átok fenyegető büntetésének, Gal 3:13; τέκνα κατάρας, kárhoztatásra méltó emberek, 2Pét 2:14; elvont a konkrét helyett: az, akiben az átok megmutatkozik, azaz aki az átkozás megszabott büntetését szenvedi, Gal 3:13; ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi, c. 3. (Aiszkhülosz, Eurípidész, Platón, mások.)
 Angol eredeti
 ▸ κατάρας, ἡ (κατά and ἄρα, cf. German Verfiuchung,Verwünschung (cf. κατά, III. 4)); the Sept. chiefly for כְּלָלָה; an execration, imprecation, curse: opposed to εὐλογία to being cursed (which see), Jam 3:10; γῆ κατάρας ἐγγύς, near by God, i. e. to being given up to barrenness (the allusion is to Gen 3:17f), Heb 6:8; ὑπό κατάραν εἶναι, to be under a curse, i. e. liable to the appointed penalty of being cursed, Gal 3:10; ἐξαγοράζειν τινα ἐκ τῆς κατάρας, to redeem one exposed to the threatened penalty of a curse, Gal 3:13; τέκνα κατάρας, men worthy of execration, 2Pe 2:14; abstract for the concrete, one in whom the curse is exhibited, i. e. undergoing the appointed penalty of cursing, Gal 3:13; ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi, c. 3. (Aeschylus, Euripides, Plato, others.)
-Forrás és licenc
-▸ modell-kimenet gépi feldolgozás
-▸ Forrás és licenc: a projekt saját adata: minden jog fenntartva
+Forrás és licenc: a projekt saját adata: minden jog fenntartva
 ## [szo.usz]
-ÚSZ-előfordulás és versek
+ÚSZ-előfordulás és versek forrásadat
 6 előfordulás 5 versben.
 Igehely | Károli-szöveg | Jelentés (UBS)
 Gal 3:10 | Mert a kik törvény cselekedeteiből vannak, átok alatt vannak; minthogy meg van írva: Átkozott minden, a ki meg nem marad mindazokban, a mik megirattak a törvény könyvében, hogy azokat cselekedje. | curse
@@ -60,79 +52,61 @@ Gal 3:13 | Krisztus váltott meg minket a törvény átkától, átokká levén 
 Zsid 6:8 | A mely pedig töviseket és bojtorjánokat terem, megvetett és közel van az átokhoz, annak vége megégetés. | cursed; accursed
 Jak 3:10 | Ugyanabból a szájból jő ki áldás és átok. Atyámfiai, nem kellene ezeknek így lenni! | to curse; curse
 2Pét 2:14 | A kiknek szemei paráznasággal telvék, bűnnel telhetetlenek; elhitetik az állhatatlan lelkeket, szívök gyakorlott a telhetetlenségben, átok gyermekei; | cursed; accursed
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: TAHOT+TAGNT: CC BY 4.0 · Karoli 1908: közkincs · UBS DNTG: CC BY-SA 4.0 [share-alike]
+Forrás és licenc: TAHOT+TAGNT: CC BY 4.0 · Karoli 1908: közkincs · UBS DNTG: CC BY-SA 4.0 [share-alike]
 ## [szo.heber_hatter]
-Héber háttér (Septuaginta)
+Héber háttér (Septuaginta) forrásadat
 Héber Strong | Szótő | Jelentés | Darab
 H7045 | קְלָלָה | curse | 23
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: lxx bridge: CC BY 4.0
+Forrás és licenc: lxx bridge: CC BY 4.0
 ## [szo.sdgnt]
-Szemantikai domén (SDGNT)
-Domén | Glossza | Hivatkozás
-Áldás, átok | to curse; curse | 1
-Áldás, átok | curse | 2
-Áldás, átok | cursed; accursed | 3
-Forrás és licenc
-▸ forrásadat modell-kimenet üres eredmény nem negatív lelet
-▸ Forrás és licenc: SDGNT: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
+Szemantikai domén (SDGNT) forrásadat modell-kimenet üres eredmény nem negatív lelet
+Domén kód | Domén | Glossza | Hivatkozás
+033055 | Áldás, átok Bless, Curse | to curse; curse | 1
+033055 | Áldás, átok Bless, Curse | curse | 2
+033055 | Áldás, átok Bless, Curse | cursed; accursed | 3
+Forrás és licenc: SDGNT: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.ubs_dntg]
-UBS DNTG jelentés
-1. megátkozni; átok · Bless, Curse
+UBS DNTG jelentés forrásadat
+1. megátkozni; átok · Bless, Curse · azonosító: 002680001001000
 kárt vagy sérelmet okozni olyan kijelentés által, amelyről azt tartják, hogy természetfeletti ereje van, gyakran azért, mert egy istenséget vagy természetfeletti erőt idéztek meg
 Előfordulások (1): Jak 3:10
-2. átok · Bless, Curse
+2. átok · Bless, Curse · azonosító: 002680001002000
 az átokban kifejezett tartalom
 Előfordulások (2): Gal 3:10, Gal 3:13
-3. átkozott; elátkozott · Bless, Curse
+3. átkozott; elátkozott · Bless, Curse · azonosító: 002680001003000
 az, amit megátkoztak
 Előfordulások (3): 2Pét 2:14, Gal 3:13, Zsid 6:8
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: UBS DNTG: CC BY-SA 4.0 [share-alike]
+Forrás és licenc: UBS DNTG: CC BY-SA 4.0 [share-alike]
 ## [szo.tbesg]
-TBESG (forrásszöveg)
+TBESG (forrásszöveg) forrásadat modell-kimenet
 Forrásszöveg (nyers, angol) megnyitása
-▸ Szó | Átírás | Gloss
-▸ κατάρα | katara | átok
-▸ κατ-άρα, -ας, -ἡ [in LXX chiefly for קְלָלָה ;] a curse: Gal.3:10, 13 Heb.6:8, 2Pe.2:14; opposite to εὐλογία, Jas.3:10; concrete, of Christ, Gal.3:13 (see Lft. in l).† (AS)
-Forrás és licenc
-▸ forrásadat modell-kimenet
-▸ Forrás és licenc: TBESG: CC BY 4.0 · a projekt saját adata: minden jog fenntartva
+Szó | Átírás | Gloss
+κατάρα | katara | átok curse
+κατ-άρα, -ας, -ἡ [in LXX chiefly for קְלָלָה ;] a curse: Gal.3:10, 13 Heb.6:8, 2Pe.2:14; opposite to εὐλογία, Jas.3:10; concrete, of Christ, Gal.3:13 (see Lft. in l).† (AS)
+Forrás és licenc: TBESG: CC BY 4.0 · a projekt saját adata: minden jog fenntartva
 ## [szo.thayer]
-Thayer, angol (forrásszöveg)
+Thayer, angol (forrásszöveg) forrásadat
 Forrásszöveg (nyers, angol) megnyitása
-▸ G2671 — κατάρα κατάρας, ἡ (κατά and ἄρα, cf. German Verfiuchung,Verwünschung (cf. κατά, III. 4)); the Sept. chiefly for כְּלָלָה; an execration, imprecation, curse: opposed to εὐλογία to being cursed (which see), Jam 3:10; γῆ κατάρας ἐγγύς, near by God, i. e. to being given up to barrenness (the allusion is to Gen 3:17f), Heb 6:8; ὑπό κατάραν εἶναι, to be under a curse, i. e. liable to the appointed penalty of being cursed, Gal 3:10; ἐξαγοράζειν τινα ἐκ τῆς κατάρας, to redeem one exposed to the threatened penalty of a curse, Gal 3:13; τέκνα κατάρας, men worthy of execration, 2Pe 2:14; abstract for the concrete, one in whom the curse is exhibited, i. e. undergoing the appointed penalty of cursing, Gal 3:13; ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi, c. 3. (Aeschylus, Euripides, Plato, others.)
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: Thayer: közkincs
+G2671 — κατάρα κατάρας, ἡ (κατά and ἄρα, cf. German Verfiuchung,Verwünschung (cf. κατά, III. 4)); the Sept. chiefly for כְּלָלָה; an execration, imprecation, curse: opposed to εὐλογία to being cursed (which see), Jam 3:10; γῆ κατάρας ἐγγύς, near by God, i. e. to being given up to barrenness (the allusion is to Gen 3:17f), Heb 6:8; ὑπό κατάραν εἶναι, to be under a curse, i. e. liable to the appointed penalty of being cursed, Gal 3:10; ἐξαγοράζειν τινα ἐκ τῆς κατάρας, to redeem one exposed to the threatened penalty of a curse, Gal 3:13; τέκνα κατάρας, men worthy of execration, 2Pe 2:14; abstract for the concrete, one in whom the curse is exhibited, i. e. undergoing the appointed penalty of cursing, Gal 3:13; ἐγώ κατάρα ἐγενήθην, Protevangelium Jacobi, c. 3. (Aeschylus, Euripides, Plato, others.)
+Forrás és licenc: Thayer: közkincs
 ## [szo.lsj]
-LSJ
+LSJ forrásadat
 Forrásszöveg (nyers, angol) megnyitása
-▸ κατ-άρα [ᾰρ], Ion. κατ-άρη, ἡ, curse, κατάρας ποιέεσθαί τινι to lay curses upon one, Hdt. 1.165; ἐποιήσαντο νόμον τε καὶ κατάρην μὴ.. θρέψειν κόμην.. μηδένα ib. 82; ἐκ κατάρης τευ in consequence of.., Id. 4.30; διδόναι τινὰ κατάρᾳ E. Hec. 945 (lyr.), cf. El. 1324 (pl., anap.), A. Th. 725 (pl., lyr.); opp. εὐχή, Pl. Alc. 2.143b (pl.), cf. SIG 1241 (Lyttus, iii A.D.), etc.; opp. εὐλογία, Jas 3:10; κατάραι γίγνονται κατά τινος Plb. 23.10.7; τὴν κ. ἀναγράψαι, στηλιτεῦσαι, D.S. 1.45, Plu. 2.354b; cursing, κ. καὶ λοιδορία Phld. Lib. p.11 O.
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: LSJ: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
+κατ-άρα [ᾰρ], Ion. κατ-άρη, ἡ, curse, κατάρας ποιέεσθαί τινι to lay curses upon one, Hdt. 1.165; ἐποιήσαντο νόμον τε καὶ κατάρην μὴ.. θρέψειν κόμην.. μηδένα ib. 82; ἐκ κατάρης τευ in consequence of.., Id. 4.30; διδόναι τινὰ κατάρᾳ E. Hec. 945 (lyr.), cf. El. 1324 (pl., anap.), A. Th. 725 (pl., lyr.); opp. εὐχή, Pl. Alc. 2.143b (pl.), cf. SIG 1241 (Lyttus, iii A.D.), etc.; opp. εὐλογία, Jas 3:10; κατάραι γίγνονται κατά τινος Plb. 23.10.7; τὴν κ. ἀναγράψαι, στηλιτεῦσαι, D.S. 1.45, Plu. 2.354b; cursing, κ. καὶ λοιδορία Phld. Lib. p.11 O.
+Forrás és licenc: LSJ: CC BY-SA 4.0 [share-alike] · a projekt saját adata: minden jog fenntartva
 ## [szo.mcged]
-MCGED (Mounce)
+MCGED (Mounce) forrásadat nem kereskedelmi: kereskedelmi kiadásból kimarad
 GK-szám | Lemma | Átírat | Gyakoriság | Glossza
 G52932 | καταρα | katara | 6 | a cursing, execration, imprecation, Jas 3:10 ; from the Hebrew, condemnation, doom, Gal 3:10 ; Heb 6:8 ; 2Pet 2:14 ; meton., a doomed one, one on whom condemnation falls, Gal 3:13 *
-Forrás és licenc
-▸ forrásadat nem kereskedelmi: kereskedelmi kiadásból kimarad
-▸ Forrás és licenc: MCGED: © Mounce 1993 [nem kereskedelmi]
+Forrás és licenc: MCGED: © Mounce 1993 [nem kereskedelmi]
 ## [szo.sece_g]
-SECE-szócikk (görög)
+SECE-szócikk (görög) forrásadat
 Forrásszöveg (nyers, angol) megnyitása
-▸ κατάρα (katára｜kat-ar'-ah｜noun｜curse) [Grk] κατάρα LN: 33.471, 33.473, 33.474 GK: G2932 Hebrew: בֶּהָלָה, מְאֵרָה, עָלָה, קָבַב, קְלָלָה, שְׁמָמָה Derivation: from κατά (intensive) and ἀρά; Strong's: imprecation, execration KJV: --curse(-d, ing). See: κατά See: ἀρά
-Forrás és licenc
-▸ forrásadat
-▸ Forrás és licenc: SECE G: közkincs
+κατάρα (katára｜kat-ar'-ah｜noun｜curse) [Grk] κατάρα LN: 33.471, 33.473, 33.474 GK: G2932 Hebrew: בֶּהָלָה, מְאֵרָה, עָלָה, קָבַב, קְלָלָה, שְׁמָמָה Derivation: from κατά (intensive) and ἀρά; Strong's: imprecation, execration KJV: --curse(-d, ing). See: κατά See: ἀρά
+Forrás és licenc: SECE G: közkincs
 ## [szo.tw_g]
-translationWords
-átok, átkozott, átkozódás (kt, kt/curse)
+translationWords forrásadat modell-kimenet
+átok, átkozott, átkozódás curse, cursed, cursing (kt, kt/curse)
 Definition:
 The term “curse” means to cause negative things to happen to the person or thing that is being cursed.
 A curse can be a statement that harm will happen to someone or something.
@@ -164,6 +138,4 @@ Examples from the Bible stories:
 50:16 Because Adam and Eve disobeyed God and brought sin into this world, God cursed it and decided to destroy it.
 Word Data:
 Strong’s: H0422, H0423, H0779, H1288, H2763, H2764, H3994, H5344, H6895, H7043, H7045, H7621, H8381, G03310, G03320, G06850, G19440, G25510, G26520, G26530, G26710, G26720, G60350
-Forrás és licenc
-▸ forrásadat modell-kimenet
-▸ Forrás és licenc: tW szocikkek: CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · a projekt saját adata: minden jog fenntartva
+Forrás és licenc: tW szocikkek: CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] · a projekt saját adata: minden jog fenntartva

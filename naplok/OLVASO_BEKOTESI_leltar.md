@@ -20,7 +20,7 @@ A leltár azt mutatja meg, milyen adatunk van, és ebből mi nincs még a versn�
 - **Kulcs** (az oszlopnevekből, gépileg): `igehely`-jellegű oszlop (vagy `konyv`+`fejezet`+`vers`) → versnézet; `strong`-jellegű oszlop → szónézet; mindkettő → mindkettő; különben egyik sem. Egy kivétel van, a `KULCS_KIVETEL` a szkriptben (`strong_parok`).
 - **Bekötött**: a tábla szerepel egy blokk `tablak` mezőjében, vagy a blokk adatlekérője/megjelenítője (a `lekerdezesek.py` hívásain át) olvassa, vagy a fejezetlap közvetlen hívása (`oldalak.py`: `fejezet_lap`, `_biblia_fejezet_lap`; `bibliak.py`) olvassa, vagy keresési blokk. Ha csak a kód olvassa máshol (fejléc, számlálók, ellenőrzések), az a „máshol” jelzés; ez nem kötés.
 - **Látszik**: a konfigurált kiadásban (`konfig/szerver.toml`) és az alapszinten (`konfig/hozzaferes.toml`) a blokk látszik-e. A „feltételhez kötve” azt jelenti, hogy a blokk csak bizonyos feltétellel áll a lapon (vers-kontextus, üres eredménynél rejtve, a régebbi DB-ből hiányozhat, másik blokkot követ). A **csukva** állapotot a regiszter nem rögzíti (a lenyílók a blokkok belsejében vannak), ezért ez a leltár nem mutatja.
-- **Olvasói név**: az `adat/olvasoi_nevtabla.tsv` `forras` sorai a lapgenerátor bemenet-jegyzékén (`adat/lapgen_bemenetek.tsv`) át, tábla- (a fájlnév azonos a táblanévvel) vagy adatkészlet-szinten. A `konfig/feliratok.tsv` nem létezik a repóban, ezért nem szerepel. Az olvasón látható blokk-cím a 4. szakaszban áll.
+- **Olvasói név**: az `adat/olvasoi_nevtabla.tsv` `forras` sorai a lapgenerátor bemenet-jegyzékén (`adat/lapgen_bemenetek.tsv`) át, tábla- (a fájlnév azonos a táblanévvel) vagy adatkészlet-szinten. A blokkcímek (4. szakasz) az olvasón látható magyar címek: a regiszter szöveg-literálja, vagy az `F("kulcs")` hívás a `konfig/feliratok.tsv`-ből; a tábla olvasói neve (3. szakasz) nem a feliratokból jön.
 - **Magyar fordítás**: a `forditasok` tábla mezői (szótár szerint), a magyar glosszák/Nave/BDB-bontás táblái, és a blokk, amely a táblát a fordítással együtt olvassa. A `—` azt jelenti, hogy a táblában nincs szöveges oszlop. A `nincs` szöveges táblára gépileg nem talált fordítást.
 - **Licenc**: a `tabla_licenc` (cimke, jelzések) és a `licencek` (share-alike).
 - **Lefedettség**: hány versre vagy Strong-számra van legalább egy sor. Verseknél a Károli-igehellyel egyező kulcsok, Strong-számnál a `strong_szotar`-ral egyezők.
@@ -71,7 +71,7 @@ A kulcsa versre is és szóra is szól (például a vers és a Strong-szám egy�
 | 5 | `bsb` | BSB_Strongs | a szónézeten nincs | `vers.bsb`, fejezetlap-hívás | 21 424 vers (68,8%) · H 7 642 · G 0 szó (53,3%) | — | CC0 1.0 |
 | 6 | `tipnr` | TIPNR | a szónézeten nincs | `vers.tipnr` | 15 005 vers (48,2%) · H 2 826 · G 634 szó (24,1%) | — | CC BY 4.0 |
 | 7 | `thayer_vers_jelentes` | projekt_adat | a versnézeten nincs | `szo.magyar_gorog` | 12 466 vers (40,0%), becslés: a kulcs nem Károli-igehely · H 0 · G 5 357 szó (37,3%) | a Thayer-szótár | minden jog fenntartva |
-| 8 | `ubs_dntg_referenciak` | UBS_DNTG | a versnézeten nincs | `szo.ubs_dntg` | 7 938 vers (25,5%) · H 0 · G 5 312 szó (37,0%) | — | CC BY-SA 4.0 [share-alike] |
+| 8 | `ubs_dntg_referenciak` | UBS_DNTG | a versnézeten nincs | `szo.usz`, `szo.ubs_dntg` | 7 938 vers (25,5%) · H 0 · G 5 312 szó (37,0%) | — | CC BY-SA 4.0 [share-alike] |
 | 9 | `lxx_versszintu_parok` | LXX_versszintu_parok | a szónézeten nincs | `vers.lxx_par` | 8 764 vers (28,1%) · H 26 · G 0 szó (0,2%) | — | minden jog fenntartva |
 | 10 | `oshl_bdb_igehelyek` | OSHL_BDB | a versnézeten nincs | `szo.oshl` | 3 047 vers (9,8%), becslés: a kulcs nem Károli-igehely · H 2 814 · G 0 szó (19,6%) | — | CC BY 4.0 |
 | 11 | `lxx_dontesek` | projekt_adat | a szónézeten nincs | `vers.lxx_dontes` | 93 vers (0,3%) · H 20 · G 0 szó (0,1%) | — | minden jog fenntartva |
@@ -159,15 +159,15 @@ Blokk-oszlop: a regiszter `tablak` mezőjében szereplő blokk-azonosító; csil
 | `bdb_igehely_javitas` | projekt_adat | Strong → szónézet | 93 | — | nincs blokk | — | minden jog fenntartva | — | H 63 · G 0 szó (0,4%) |
 | `bdb_jp_sefaria` | BDB_rokon_irasok+projekt_adat | vers + Strong → mindkettő | 161 244 | — | nincs blokk | — | közkincs; minden jog fenntartva | — | 22 622 vers (72,6%) · H 8 026 · G 0 szó (55,9%) |
 | `bdb_karoli` | projekt_adat | Strong → szónézet | 62 526 | — | nincs blokk | — | minden jog fenntartva | — | H 674 · G 0 szó (4,7%) |
-| `bdb_szakasz_hu` | projekt_adat | Strong → szónézet | 36 621 | `szo.bdb_apparatus`*, `szo.bdb_angol`* | látszik | — | minden jog fenntartva | maga a fordítás-tábla (36 621 sor) | H 8 089 · G 0 szó (56,4%) |
-| `bdb_szakaszok` | projekt_adat | Strong → szónézet | 36 621 | `szo.bdb_apparatus`*, `szo.bdb_angol`* | látszik | — | minden jog fenntartva | nincs | H 8 089 · G 0 szó (56,4%) |
+| `bdb_szakasz_hu` | projekt_adat | Strong → szónézet | 36 621 | `szo.bdb_apparatus`* | látszik | — | minden jog fenntartva | maga a fordítás-tábla (36 621 sor) | H 8 089 · G 0 szó (56,4%) |
+| `bdb_szakaszok` | projekt_adat | Strong → szónézet | 36 621 | `szo.bdb_apparatus`* | látszik | — | minden jog fenntartva | nincs | H 8 089 · G 0 szó (56,4%) |
 | `bdb_vers_jelentes` | BDB+Macula_heber+OSHL+TAHOT+projekt_adat | vers + Strong → mindkettő | 162 053 | `szo.bdb_apparatus` | látszik | a BDB-szótár | közkincs; CC BY 4.0; minden jog fenntartva | — | 22 707 vers (72,9%) · H 8 027 · G 0 szó (55,9%) |
 | `bsb` | BSB_Strongs | vers + Strong → mindkettő | 275 042 | `vers.bsb`, fejezetlap-hívás | látszik | — | CC0 1.0 | nincs | 21 424 vers (68,8%) · H 7 642 · G 0 szó (53,3%) |
 | `datasetek` | projekt_adat | egyik sem | 136 | — | nincs blokk | — | minden jog fenntartva | — | — |
 | `dontes_hatas` | projekt_adat | egyik sem | 10 | — | nincs blokk | — | minden jog fenntartva | — | — |
 | `elofordulasok` | projekt_adat | vers + Strong → mindkettő | 250 | `vers.motivum`, `szo.bdb_apparatus` | látszik | a motívum előfordulás-táblája | minden jog fenntartva | magyar oszlop a táblában (jelentes_hu) | 232 vers (0,7%) · H 17 · G 12 szó (0,2%) |
 | `elutasitasi_okok` | projekt_adat | egyik sem | 63 | — | nincs blokk | — | minden jog fenntartva | — | — |
-| `forditasok` | projekt_adat | Strong → szónézet | 33 623 | `szo.szotar`*, `szo.ebben`, `szo.bdb_apparatus`, `szo.bdb_angol`*, `szo.ubs_dbh`, `szo.sdbh`, … (+7) | látszik | a lexikon fordítástáblája | minden jog fenntartva | maga a fordítás-tábla (33 623 sor) | H 8 098 · G 539 szó (60,2%) |
+| `forditasok` | projekt_adat | Strong → szónézet | 33 623 | `szo.szotar`*, `szo.ebben`, `szo.bdb_apparatus`, `szo.bdb_angol`*, `szo.ubs_dbh`, `szo.sdbh`, … (+8) | látszik | a lexikon fordítástáblája | minden jog fenntartva | maga a fordítás-tábla (33 623 sor) | H 8 098 · G 539 szó (60,2%) |
 | `frazis_pozicio` | Karoli_Strong_parok | vers + Strong → mindkettő | 1 144 551 | — | nincs blokk | — | CC BY 4.0 | magyar eredetű (Károli) | 31 125 vers (99,9%) · H 8 553 · G 5 333 szó (96,8%) |
 | `fts_motivum` | projekt_adat | egyik sem | 580 | — | nincs blokk | — | minden jog fenntartva | nincs | — |
 | `funkcio_kapcsolok` | projekt_adat | egyik sem | 14 | — | nincs blokk | — | minden jog fenntartva | — | — |
@@ -265,8 +265,8 @@ Blokk-oszlop: a regiszter `tablak` mezőjében szereplő blokk-azonosító; csil
 | `tw_szocikkek` | tW_szocikkek | Strong → szónézet | 598 | `szo.tw_h`, `szo.tw_g` | látszik | — | CC BY-SA 4.0 [feltételesen kereskedelmi, share-alike] | igen: 29 fordított mező (forditasok) | H 21 · G 21 szó (0,3%), figyelem: a kulcsok csak 42/580 egyezik a Strong-szótárral |
 | `ubs_dbh_jelentesek` | UBS_DBH | Strong → szónézet | 20 182 | `vers.ubs`, `szo.ebben`, `szo.ubs_dbh` | látszik | az UBS Dictionary of Biblical Hebrew | CC BY-SA 4.0 [share-alike] | igen: 237 fordított mező (forditasok) | H 7 924 · G 0 szó (55,2%) |
 | `ubs_dbh_referenciak` | UBS_DBH | vers + Strong → mindkettő | 389 212 | `vers.ubs`, `szo.ebben` | látszik | az UBS Dictionary of Biblical Hebrew | CC BY-SA 4.0 [share-alike] | — | 23 057 vers (74,0%) · H 7 924 · G 0 szó (55,2%) |
-| `ubs_dntg_jelentesek` | UBS_DNTG | Strong → szónézet | 9 075 | `szo.ubs_dntg` | látszik | — | CC BY-SA 4.0 [share-alike] | van fordítás (102 mező), de ez a blokk nem mutatja | H 0 · G 5 312 szó (37,0%) |
-| `ubs_dntg_referenciak` | UBS_DNTG | vers + Strong → mindkettő | 130 948 | `szo.ubs_dntg` | látszik | — | CC BY-SA 4.0 [share-alike] | — | 7 938 vers (25,5%) · H 0 · G 5 312 szó (37,0%) |
+| `ubs_dntg_jelentesek` | UBS_DNTG | Strong → szónézet | 9 075 | `szo.usz`, `szo.ubs_dntg` | látszik | — | CC BY-SA 4.0 [share-alike] | van fordítás (102 mező), de ez a blokk nem mutatja | H 0 · G 5 312 szó (37,0%) |
+| `ubs_dntg_referenciak` | UBS_DNTG | vers + Strong → mindkettő | 130 948 | `szo.usz`, `szo.ubs_dntg` | látszik | — | CC BY-SA 4.0 [share-alike] | — | 7 938 vers (25,5%) · H 0 · G 5 312 szó (37,0%) |
 | `vers` | Karoli_1908 | vers → versnézet | 31 158 | `vers.karoli`, `vers.nave`*, `vers.motivum`, `vers.tanulmany`*, `szo.usz`, `szoveg.karoli`, … (+5) | látszik | — | közkincs | magyar eredetű (Károli) | 31 158 vers (100%) |
 | `vers_szamozas` | Karoli_versmegfeleltetes+BSB_Strongs | vers → versnézet | 23 195 | `vers.versszamozas`, `vers.nave`* | látszik | a Károli-versmegfeleltetés (adatkészlet-szinten) | minden jog fenntartva; CC0 1.0 | — | 23 195 vers (74,4%) |
 | `visszhang_megfelelok` | projekt_adat | vers + Strong → mindkettő | 196 | — | nincs blokk | — | minden jog fenntartva | nincs | 48 vers (0,2%) · H 10 · G 6 szó (0,1%) |
@@ -280,6 +280,8 @@ Minden blokk egy sor: azonosító, nézet, hely, látszik-e, a `tablak` mező é
 | Blokk | Cím | Nézet | Hely | Látszik | `tablak` | Kódban olvasott többlet | Jelzések |
 |---|---|---|---|---|---|---|---|
 | `vers.karoli` | Károli-szöveg | vers | Vers fül | igen | vers | — | — |
+| `vers.versszamozas` | Versszámozás (MT / KJV) | vers | Vers fül | igen | vers_szamozas | — | — |
+| `vers.lxx_versszam` | LXX-versszám | vers | Vers fül | igen | lxx_versszam | — | — |
 | `vers.heber_csempe` | Héber szöveg | vers | Vers fül | igen | token_eredeti, token_macula, lxx_token, morf_kulcs_heber, morf_nyelv_aramai | — | — |
 | `vers.lxx_csempe` | Septuaginta (LXX, Rahlfs) | vers | Vers fül | igen | lxx_token | — | — |
 | `vers.par` | Károli–Strong párosítás | vers | Vers fül | igen | token_par | — | — |
@@ -287,8 +289,6 @@ Minden blokk egy sor: azonosító, nézet, hely, látszik-e, a `tablak` mező é
 | `vers.macula_morf` | Igealak-kód és szófaj (Macula) | vers | Vers fül | igen | token_macula | — | — |
 | `vers.macula_gorog` | Héber–görög párosítás szavanként (Macula) | vers | Vers fül | igen | token_macula | — | — |
 | `vers.lxx_szavak` | Görög szóalak és LXX-vers szavai (LXX_OS) | vers | Vers fül | igen | lxx_token | — | — |
-| `vers.lxx_versszam` | LXX-versszám | vers | Vers fül | igen | lxx_versszam | — | — |
-| `vers.versszamozas` | Versszámozás (MT / KJV) | vers | Vers fül | igen | vers_szamozas | — | — |
 | `vers.bsb` | Angol szavak szavanként (BSB) | vers | Vers fül | igen | bsb | — | — |
 | `vers.kjv` | Angol szavak szavanként (KJV + Strong) | vers | Vers fül | igen | kjv | — | kizárva a(z) kereskedelmi és nyilvános kiadásból |
 | `vers.nave` | Témák (Nave, versekre bontva) | vers | Témák fül | igen | nave_vers, nave_basokant, nave_tema_hu | vers, vers_szamozas | — |
@@ -308,7 +308,7 @@ Minden blokk egy sor: azonosító, nézet, hely, látszik-e, a `tablak` mező é
 | `szo.ebben` | Ebben a versben | szó | szó-panel | igen | token_par, token_eredeti, token_macula, lxx_token, ubs_dbh_referenciak, ubs_dbh_jelentesek, morf_kulcs_heber, morf_nyelv_aramai, glosszak_heber_hu, strong_szotar, forditasok | tbesg, tbesh | csak vers-kontextussal; követi: vers.ubs, vers.heber_csempe, vers.par |
 | `szo.karoli_alakok` | Károli-alakok és pontosság | szó | szó-panel | igen | token_par | — | — |
 | `szo.bdb_apparatus` | Szótár: BDB-szócikk (Brown–Driver–Briggs) | szó | szó-panel | igen | bdb, bdb_alias, forditasok, bdb_vers_jelentes, token_eredeti, token_macula, morf_kulcs_heber, morf_nyelv_aramai, szotar_szakasz_cimke, elofordulasok | bdb_szakasz_hu, bdb_szakaszok, tbesh | — |
-| `szo.bdb_angol` | BDB-szócikk (nyers szöveg) | szó | szó-panel | igen | bdb, bdb_alias | bdb_szakasz_hu, bdb_szakaszok, forditasok, tbesh | üres eredménynél rejtve |
+| `szo.bdb_angol` | BDB-szócikk (nyers szöveg) | szó | szó-panel | igen | bdb, bdb_alias | forditasok, tbesh | üres eredménynél rejtve |
 | `szo.lxx_bridge` | Görög megfelelő (Septuaginta) | szó | szó-panel | igen | lxx_bridge | — | — |
 | `szo.ubs_dbh` | UBS DBH jelentések (a teljes szócikk, magyar fordítással) | szó | szó-panel | igen | ubs_dbh_jelentesek, forditasok | — | — |
 | `szo.sdbh` | Szemantikai domén (SDBH) | szó | szó-panel | igen | sdbh_domenek, forditasok | — | — |
@@ -318,16 +318,16 @@ Minden blokk egy sor: azonosító, nézet, hely, látszik-e, a `tablak` mező é
 | `szo.tbesh` | Bővített Strong-szócikk (TBESH) | szó | szó-panel | igen | tbesh, glosszak_heber_hu, forditasok | — | — |
 | `szo.tw_h` | translationWords | szó | szó-panel | igen | tw_szocikkek, forditasok | — | — |
 | `szo.nyelvtani` | Nyelvtani Strong-számok szűrése | szó | szó-panel | igen | grammatikai_strongok | — | üres eredménynél rejtve |
-| `szo.tbesg` | TBESG | szó | szó-panel | igen | tbesg, forditasok | — | — |
-| `szo.thayer` | Thayer (angol) | szó | szó-panel | igen | thayer | thayer_forras_javitas | — |
-| `szo.magyar_gorog` | Magyar jelentés (Thayer, UBS DNTG) | szó | szó-panel | igen | forditasok, thayer_szakaszok, thayer_vers_jelentes | szotar_szakasz_cimke | — |
-| `szo.usz` | ÚSZ-előfordulás és versek | szó | szó-panel | igen | token_strong, vers | token_eredeti | — |
+| `szo.magyar_gorog` | Szótár: Thayer-szócikk | szó | szó-panel | igen | forditasok, thayer_szakaszok, thayer_vers_jelentes | szotar_szakasz_cimke | — |
+| `szo.usz` | ÚSZ-előfordulás és versek | szó | szó-panel | igen | token_strong, vers, ubs_dntg_jelentesek, ubs_dntg_referenciak | token_eredeti | — |
 | `szo.heber_hatter` | Héber háttér (Septuaginta) | szó | szó-panel | igen | lxx_bridge | — | — |
 | `szo.sdgnt` | Szemantikai domén (SDGNT) | szó | szó-panel | igen | sdgnt_domenek, forditasok | — | — |
-| `szo.sece_g` | SECE-szócikk (görög) | szó | szó-panel | igen | sece_g | — | — |
+| `szo.ubs_dntg` | UBS DNTG jelentés | szó | szó-panel | igen | ubs_dntg_jelentesek, ubs_dntg_referenciak | forditasok | — |
+| `szo.tbesg` | TBESG (forrásszöveg) | szó | szó-panel | igen | tbesg, forditasok | — | — |
+| `szo.thayer` | Thayer, angol (forrásszöveg) | szó | szó-panel | igen | thayer | thayer_forras_javitas | — |
 | `szo.lsj` | LSJ | szó | szó-panel | igen | lsj, forditasok | — | — |
 | `szo.mcged` | MCGED (Mounce) | szó | szó-panel | igen | mcged | — | kizárva a(z) kereskedelmi kiadásból |
-| `szo.ubs_dntg` | UBS DNTG jelentés | szó | szó-panel | igen | ubs_dntg_jelentesek, ubs_dntg_referenciak | — | — |
+| `szo.sece_g` | SECE-szócikk (görög) | szó | szó-panel | igen | sece_g | — | — |
 | `szo.tw_g` | translationWords | szó | szó-panel | igen | tw_szocikkek, forditasok | — | — |
 | `szoveg.karoli` | szövegoszlop | fejezetlap | fejezetlap szövegoszlopa | igen | vers | — | — |
 | `szoveg.par` | szövegoszlop | fejezetlap | fejezetlap szövegoszlopa | igen | token_par, token_karoli | — | — |

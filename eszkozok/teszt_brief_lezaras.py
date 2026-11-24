@@ -29,7 +29,7 @@ def brief(szam=900, allapot='megallt', kovetkezo='Te: a draft PR áttekintése; 
           ag='claude/proba-x', lezar=None, tipus='feladat', pr=None):
     sorok = ['---', 'feladat: %d' % szam, 'cim: Próba', 'kod: PROBA', 'tipus: %s' % tipus, 'fazis: folyamat',
              'modell: sonnet', 'allapot: %s' % allapot, 'ad: próba', 'kovetkezo: "%s"' % kovetkezo,
-             'munka: folyamat', 'ir: [x.py]', 'fugg: []']
+             'munka: folyamat', 'ir: [x.py]', 'fugg: []', 'alap: abc1234']
     if ag:
         sorok.append('ag: %s' % ag)
     if pr is not None:
