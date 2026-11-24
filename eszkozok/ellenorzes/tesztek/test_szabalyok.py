@@ -2781,6 +2781,48 @@ class VisszaesesKapuTeszt(unittest.TestCase):
         self.V.kategoriak(self.REGI.replace('## 1. Döntési út', '## 1. Más'))
         self.assertIs(self.V.OK.UJ_SZERKEZET_RX, eredeti)
 
+    # --- az elfogadási tábla (SEMA 2.76; az integrátor döntése, 2026-11-24) ---------------------------------------------
+    FEJ = 'id\tkategoria\tregi\tuj\tok\tdontes_ref\tproveniencia\n'
+    SOR = 'X-001\tIDEZOJEL BUKÁS\t0\t1\ta forrásidézet egyenes idézőjele\tDT-F00a\tmanual\n'
+
+    def _tabla(self, *sorok):
+        d = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, d, True)
+        ut = os.path.join(d, 'visszaeses_elfogadas.tsv')
+        with open(ut, 'w', encoding='utf-8', newline='\n') as f:
+            f.write(self.FEJ + ''.join(sorok))
+        return ut
+
+    def test_pontosan_egyezo_elfogadas_atenged(self):
+        rossz = [('IDEZOJEL BUKÁS', 0, 1), ('FORDITASRA_VAR', 0, 1)]
+        elf, mar = self.V.szetvalaszt('X-001', rossz, self.V.elfogadasok(self._tabla(self.SOR)))
+        self.assertEqual([e[0] for e in elf], [('IDEZOJEL BUKÁS', 0, 1)])
+        self.assertEqual(mar, [('FORDITASRA_VAR', 0, 1)])
+
+    def test_mas_szam_vagy_mas_lap_nem_enged_at(self):
+        tabla = self.V.elfogadasok(self._tabla(self.SOR))
+        self.assertEqual(self.V.szetvalaszt('X-001', [('IDEZOJEL BUKÁS', 0, 2)], tabla)[1], [('IDEZOJEL BUKÁS', 0, 2)])
+        self.assertEqual(self.V.szetvalaszt('Y-001', [('IDEZOJEL BUKÁS', 0, 1)], tabla)[1], [('IDEZOJEL BUKÁS', 0, 1)])
+
+    def test_hibas_sor_megallit(self):
+        for sor in ('X-001\tIDEZOJEL BUKÁS\t1\t1\tok\tDT-F00a\tmanual\n',        # nem növekedés
+                    'X-001\tIDEZOJEL BUKÁS\t0\t1\t\tDT-F00a\tmanual\n',          # nincs ok
+                    'X-001\tIDEZOJEL BUKÁS\t0\t1\tok\t\tmanual\n',               # nincs döntés
+                    'X-001\tIDEZOJEL BUKÁS\t0\t1\tok\tDT-F00a\tellenőrizve\n',   # rossz proveniencia
+                    'X-001\tIDEZOJEL BUKÁS\t0\tegy\tok\tDT-F00a\tmanual\n'):     # nem szám
+            with self.assertRaises(ValueError, msg=sor):
+                self.V.elfogadasok(self._tabla(sor))
+        with self.assertRaises(ValueError):
+            self.V.elfogadasok(self._tabla(self.SOR, self.SOR))                 # kétszer ugyanaz
+
+    def test_elavult_elfogadas_jelzett(self):
+        tabla = self.V.elfogadasok(self._tabla(self.SOR))
+        self.assertEqual(self.V.elavult_elfogadasok('X-001', [('IDEZOJEL BUKÁS', 0, 0)], tabla), tabla)
+        self.assertEqual(self.V.elavult_elfogadasok('X-001', [('IDEZOJEL BUKÁS', 0, 1)], tabla), [])
+
+    def test_a_repo_elfogadasi_tablaja_ervenyes(self):
+        self.V.elfogadasok(os.path.join(K.ROOT, *self.V.ELFOGADAS_TSV.split('/')))
+
 
 if __name__ == '__main__':
     unittest.main()
