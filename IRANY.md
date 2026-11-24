@@ -7,8 +7,8 @@
 2. **Kis adatjavítás (#821):** indult 2026-11-24, a TEREMT-001 szünetében: 88 hamis „hajnalcsillag” a görög LXX-párokban (N247), nyelvtani szó (μου) az LXX-megfelelők közt, csonka fejléc és dupla könyvnév a fordított BDB-szövegben. Az átállás a közös LXX-táblát csak utána írja.
 - **Szünetel: a TEREMT-001 (tehóm) cikk** (a te szavad: „a TEREMT-001 legyen az első”): a javítókör a 29 döntéseddel elkészült, a PR-ba kerülése folyamatban (2026-11-24); kiadni az átállás után lehet.
 - **Következő szálak**, ebben a sorrendben (2026-11-23):
-  - a rendszer karcsúsítása: rövid tanulságfájl a teljes memória helyett; a lezárt tételek és memóriafájlok archiválása (nem törlés); a CLAUDE.md rövidítése. A brief kész (#243), a CLAUDE.md-tervre a „Mehet így”-ed megvan (2026-11-24); a #821 után indul, a diff merge előtt eléd kerül; mérce: a CLAUDE.md 192 sor → legfeljebb 110, az induló kontextus kb. 91 600 → 86 000 token;
-  - a 15 perces push előtti ellenőrzés kettévágása: munka közben gyors próba, a teljes csak a végén.
+  - a push előtti ellenőrzés kettévágása (előrehozva, 2026-11-24: minden lépést lassít; a lapgen teljes tesztkészlete 30 percnél tovább fut): munka közben gyors próba, a teljes csak a végén;
+  - a rendszer karcsúsítása: rövid tanulságfájl a teljes memória helyett; a lezárt tételek és memóriafájlok archiválása (nem törlés); a CLAUDE.md rövidítése. A brief kész (#243), a CLAUDE.md-tervre a „Mehet így”-ed megvan (2026-11-24); a kettévágás után indul, a diff merge előtt eléd kerül; mérce: a CLAUDE.md 192 sor → legfeljebb 110, az induló kontextus kb. 91 600 → 86 000 token.
 - **Utána** (2026-11-11 és 2026-11-23): az olvasó újraépítése a generátor után: blokk-jegyzék adatként, a te jóváhagyásoddal (nézet × nyelv HU/EN × mélység három fokozatban × jogosultság; a tervezőtábla kész, az elrendezésed vár); egy névtábla, a forrássor a névtáblából; az olvasó a jegyzékből renderel, a kapuk mérik. Benne a motívumok megjelenítése: ez az „alap” olvasó.
 - **Az ISTENTISZT-001 2. kiadása** után a cikk a lexikonban kész (a kézi prózára és adatra adott jóváhagyásod érvényes, DT933; az új generátoros lapra 2026-11-23-án adott jóváhagyás olvasói átolvasás nélkül született, ezért feltételes: az F241.7 és az F241.10 nézése rendezi); az olvasóban előbb csak adatként frissül, cikként az átkötés (#236) után látszik, addig minden lapjavítás az olvasóba is kell.
 
@@ -25,7 +25,7 @@
 - Egyszerre legfeljebb 2 szál; egy szál = egy ág + egy PR, a session cserélhető (150–200 ezer token kontextusnál csere átadó jegyzettel; cikkírásnál a lépéshatáron, a prózát egy modell egy menetben írja; minden döntés indoklással azonnal fájlba).
 - A hibának három kimenete van: javítva / elvetve egy sor indokkal / rád vár; hamis tartalmat mutató hiba nem vethető el.
 - Csak olvasó-kód: gyors sáv. Adat, generátor, próza: nehéz kör, független ellenőrrel (DT919).
-- Új szabály helyett gépi kapu; az elvárt kimenetet ember írja vagy hagyja jóvá; egy feladat = egy kis PR.
+- Új szabály helyett gépi kapu; az elvárt kimenetet ember írja vagy hagyja jóvá. Egy lépés = egy kis PR, és kész lépés rögtön a main-be megy; a menet közben talált hiba külön tétel, nem bővíti a futó lépést, kivéve a pár soros javítást (a te szavad, 2026-11-24: „Igen, így”).
 - Technikai kérdésben a session dönt; tartalmi kérdés az integrátorhoz, a döntés a session döntésfájljába (DT920).
 - Az állapot csak leírva él: ez a lap, a PR-ok első sora (Mérce · Állapot · Következő · Akadály), a DONTESEK. Az integrátor kb. 300 ezer tokennél vagy naponta cserél, és karcsún indul: ez a lap és egy rövid átadó jegyzet.
 
