@@ -2694,6 +2694,25 @@ a futás naplójában (`naplok/ALLITAS_<ID>_itelet.md`), nem ebben a táblában.
 `hol` azt a lépést nevezi, amely a próbán megfogta; amit a próba nem mért (a 3/b, a lektor), az a próba naplójában
 „nem mérve”, és a tételt a lektor fogta meg (`F3`).
 
+### 2.73 `lxx_strong_javitas.tsv` — a Macula LXX-párok hibás görög Strongjának javítótáblája (F240 L1, FELADATOK #240, 2026-11-24)
+
+Kézi tábla (`manual` proveniencia). A `konkordancia/Macula_heber_*.tsv` `gorog_strong` oszlopa (és belőle az `adat/kulso/lxx_bridge.tsv`)
+néhány alakon más lemmára mutat (pl. „πρωὶ” → G5459 φωσφόρος a G4404 πρωΐ helyett). A nyers fájlok változatlanok; a javítást
+egyetlen segéd alkalmazza (`eszkozok/lxx_strong_javitas.py`), és minden fogyasztó azon át olvas (`sqlite_epit.py`: `token_macula`,
+`lxx_bridge`; `bdb_adatblokk.py`). Őre: `ellenoriz.py` 44. szabály.
+
+| Oszlop | Érték |
+|---|---|
+| `alak_norm` | a görög szóalak ékezet, lehelet és írásjel nélkül, kisbetűvel, végső szigma nélkül (`lxx_strong_javitas.alak_norm`) |
+| `hibas_strong` | a Macula címkéje (`G####`) |
+| `helyes_strong` | a helyes Strong (`G####`), vagy **üres**: a helyes lemmának nincs Strong-száma, a pár „megfelelő nélkül” (DT-F240b) |
+| `ok` | `masik_lemma` · `nincs_strong` |
+| `indok` | egy mondat: mi a szó, mit visel, mi a helyes, és mi igazolja (LXX_OS, héber pár) |
+| `proveniencia` | `manual \| scope=F240 L1 \| forras=… \| ts=…` |
+
+Kulcs: (`alak_norm`, `hibas_strong`), egyedi. A jelöltek és ítéletük (`konvencio` · `macula_hiba` · `lxx_os_hiba` ·
+`illesztesi_zaj` · `nem_eldontheto`): `naplok/LXXBDB_lxx_jeloltek.tsv` (`python eszkozok/lxx_strong_javitas.py --ir`).
+
 ### 2.74 `olvasoi_indoklasok.tsv` — a döntésnapló indoklásának olvasói alakja (F241.5b, D15, 2026-11-24)
 
 A döntésnapló (`jeloltek.tsv`, 2.4) `indoklas` mezője döntési nyom: olvasói célból nem íródik át (D13 (b)). Ahol a
@@ -3011,6 +3030,9 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | 41 | „Felhasználó” / „orkesztrátor” a közleményben (F178.6) |
 | 42 | A lapon szereplő Strong érvényes fordítása a lapon is áll (F182, F31) |
 | 43 | A szótári szöveg hivatkozása létező Károli-versre mutat (F182, F32) |
+| 44 | A Macula LXX-párok görög Strongja: minden eltérés ítélve, a nyers forrás csak a segéden át (F240 L1) |
+| 45 | Nyelvtani szó nem LXX-megfelelő: az alakszám a nyelvtani listán (F240 L2) |
+| 46 | Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6, N-F240a) |
 
 **CI-szabályok** (`.github/workflows/ellenorzes.yml`)
 

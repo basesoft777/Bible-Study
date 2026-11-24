@@ -28,6 +28,8 @@ Kilepesi kod: 0 = rendben, 1 = szabalysertes, 2 = hiba.
 """
 
 import argparse
+import collections
+import glob
 import hashlib
 import os
 import re
@@ -2570,6 +2572,117 @@ def szabaly43_szotari_hivatkozas(adat_dir, lex_dir=None):
                megjegyzes='a szótár hivatkozása; a megjelenítő Károli-számozása: lexikon_general.karoli_szamozas')
 
 
+# 44–46. szabály (F240 LXXBDB): a görög LXX-megfelelők címkéi. A mérés közös: eszkozok/lxx_strong_javitas.py (`meres`).
+# A nyers Macula `gorog_strong` és az `adat/kulso/lxx_bridge.tsv` csak a segéden át olvasható; az alábbi fájlok régi mérő-
+# vagy importeszközök, olvasói tartalmat nem állítanak elő (F240 L1, indokkal).
+LXX_NYERS_KIVETEL = {
+    'eszkozok/f17/macula_futtat.py': 'a Macula import maga (a nyers oszlop írója)',
+    'eszkozok/f17/macula_import.py': 'a Macula import segédje',
+    'eszkozok/f08/f08_bemenet.py': 'F08 mérőeszköz (naplók), olvasói tartalmat nem ír',
+    'eszkozok/f08/f08_dontesek.py': 'F08 mérőeszköz (naplók), olvasói tartalmat nem ír',
+    'eszkozok/macula_chi_xi_felmeres.py': 'F115 felmérés (napló)',
+    'eszkozok/lxx_bridge_egyezes.py': 'F43 felmérés (naplok/LXX_BRIDGE_egyezes.tsv), a döntéstáblát nem írja',
+    'eszkozok/olvaso_pilot/adat.py': 'a #60 pilot (a látvány mércéje), nem az élő olvasó',
+    'eszkozok/olvaso_pilot/db_meres.py': 'a #60 pilot mérése',
+    'eszkozok/olvaso_pilot/felmeres.py': 'a #60 pilot felmérése',
+    'eszkozok/olvaso_pilot/meres.py': 'a #60 pilot mérése',
+    'eszkozok/grammatikai_strongok_general.py': 'csak megjegyzésben nevezi meg',
+    'eszkozok/lexikon_general.py': 'csak forrásnévként (Kolofon), a gorog_strong itt az lxx_dontesek oszlopa',
+    'eszkozok/ellenoriz.py': 'ez a kapu',
+}
+# N-F240a (DT-F240a): az LXX_OS homográf-hibáinak plafonja (lemma–Strong pár, token); csak csökkenhet, az N-F240a PR-ja nullázza.
+LXX_OS_HOMOGRAF_PLAFON = (35, 3370)
+
+
+def _lxx_meres(adat_dir):
+    gyoker = os.path.dirname(os.path.abspath(adat_dir))
+    if not os.path.exists(os.path.join(gyoker, 'konkordancia', 'Strong_szotar.tsv')):
+        return None
+    import lxx_strong_javitas as LXJ
+    return LXJ.meres(gyoker)
+
+
+def lxx_nyers_olvasok(gyoker):
+    """A nyers Macula `gorog_strong`-ot vagy az `lxx_bridge.tsv`-t olvasó eszközök a segéden és a kivételeken kívül."""
+    ki = []
+    for ut in sorted(glob.glob(os.path.join(gyoker, 'eszkozok', '**', '*.py'), recursive=True)):
+        rel = os.path.relpath(ut, gyoker).replace(os.sep, '/')
+        nev = os.path.basename(rel)
+        if rel in LXX_NYERS_KIVETEL or nev == 'lxx_strong_javitas.py' or nev.startswith('teszt_') or nev.startswith('test_') \
+                or '/tesztek/' in rel:
+            continue
+        with open(ut, encoding='utf-8', errors='replace') as f:
+            t = f.read()
+        if 'import lxx_strong_javitas' in t:
+            continue          # a segéden át olvas (sqlite_epit, bdb_adatblokk)
+        if re.search(r"'lxx_bridge\.tsv'\s*\)", t) or ('Macula_heber' in t and 'gorog_strong' in t):
+            ki.append(rel)
+    return ki
+
+
+def szabaly44_lxx_macula_strong(adat_dir):
+    cim = '44. A Macula LXX-párok görög Strongja: minden eltérés ítélve, a nyers forrás csak a segéden át (F240 L1)'
+    m = _lxx_meres(adat_dir)
+    if m is None:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs konkordancia/')
+    sertes = []
+    for s, t, lem, n, _o, pel in m['jeloltek']:
+        it = m['iteletek'].get((s, t, lem), ('', ''))[0]
+        if not it:
+            sertes.append('ítélet nélküli eltérés: %s → LXX_OS %s (%s), %d token, pl. „%s” — naplok/LXXBDB_lxx_jeloltek.tsv' % (s, t or '–', lem, n, pel))
+        elif it == 'macula_hiba':
+            sertes.append('javítatlan Macula-hiba: %s → %s (%s), %d token — adat/lxx_strong_javitas.tsv' % (s, t or '–', lem, n))
+    for rel in lxx_nyers_olvasok(os.path.dirname(os.path.abspath(adat_dir))):
+        sertes.append('%s: a nyers Macula gorog_strong / lxx_bridge.tsv közvetlen olvasása (helyette eszkozok/lxx_strong_javitas.py)' % rel)
+    return Sor(cim, _verdikt(sertes, []), len(sertes) or None, sertes,
+               megjegyzes='%d jelölt pár; javítósor: %d' % (len(m['jeloltek']), len(m['jt'])))
+
+
+def szabaly45_lxx_nyelvtani(adat_dir):
+    cim = '45. Nyelvtani szó nem LXX-megfelelő: az alakszám a nyelvtani listán (F240 L2)'
+    m = _lxx_meres(adat_dir)
+    if m is None:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs konkordancia/')
+    nyt = {r['strong'] for r in G.tsv_beolvas(os.path.join(adat_dir, 'grammatikai_strongok.tsv'))[1]}
+    ossz, nyt_db = collections.Counter(), collections.Counter()
+    for (s, t, _lem), n in m['illesztes'].items():
+        ossz[s] += n
+        if t in nyt:
+            nyt_db[s] += n
+    kivetel = {s for (s, _t, _l), (it, _o) in m['iteletek'].items() if it in ('lxx_os_hiba', 'illesztesi_zaj')}
+    sertes = []
+    for s, n in sorted(nyt_db.items()):
+        if s in nyt or s in kivetel or ossz[s] < 3 or n < 0.9 * ossz[s]:
+            continue
+        sertes.append('%s: %d/%d tokenje nyelvtani lista-elemmel esik egybe, de nincs a listán (grammatikai_strongok_general.py GOROG_ALAK)' % (s, n, ossz[s]))
+    return Sor(cim, _verdikt(sertes, []), len(sertes) or None, sertes)
+
+
+def szabaly46_lxx_os_homograf(adat_dir):
+    cim = '46. Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6, N-F240a)'
+    m = _lxx_meres(adat_dir)
+    if m is None:
+        return Sor(cim, 'KÉZI', megjegyzes='nincs konkordancia/')
+    par, tok = len(m['homograf']), sum(m['homograf'].values())
+    sertes, jelentes = [], []
+    if par > LXX_OS_HOMOGRAF_PLAFON[0] or tok > LXX_OS_HOMOGRAF_PLAFON[1]:
+        sertes.append('LXX_OS homográf: %d pár / %d token a %d / %d plafon fölött' % ((par, tok) + LXX_OS_HOMOGRAF_PLAFON))
+    elif (par, tok) != LXX_OS_HOMOGRAF_PLAFON:
+        jelentes.append('LXX_OS homográf: %d pár / %d token — a plafon (%d / %d) csökkenthető' % ((par, tok) + LXX_OS_HOMOGRAF_PLAFON))
+    sz = m['sz']
+    db = collections.Counter()
+    for (s, t, lem), n in m['illesztes'].items():
+        szt = (sz.get(s, '') or '').split(',')[0].strip()
+        if szt[:1].isupper() and lem[:1].islower() and s != t:
+            it = m['iteletek'].get((s, t, lem), ('', ''))[0]
+            if it not in ('lxx_os_hiba', 'illesztesi_zaj', 'konvencio'):
+                db[(s, szt, lem)] += n
+    for (s, szt, lem), n in sorted(db.items()):
+        sertes.append('Macula: a kisbetűs „%s” a %s %s tulajdonnévi Strongot viseli (%d token)' % (lem, s, szt, n))
+    return Sor(cim, _verdikt(sertes, jelentes), len(sertes) or None, sertes + jelentes,
+               megjegyzes='LXX_OS: %d pár / %d token (plafon %d / %d; N-F240a)' % ((par, tok) + LXX_OS_HOMOGRAF_PLAFON))
+
+
 # 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez
 # (JELENTÉS), a szöveg a közlemény javítókörében javul (a lapon: olvasói kapu, a nyílt magban: SZERKESZTO).
 def szabaly41_kozlemeny_szerkeszto(adat_dir):
@@ -2697,6 +2810,9 @@ def main():
         tabla_sorok.append(szabaly41_kozlemeny_szerkeszto(args.adat))
         tabla_sorok.append(szabaly42_forditas_a_lapon(args.adat))
         tabla_sorok.append(szabaly43_szotari_hivatkozas(args.adat))
+        tabla_sorok.append(szabaly44_lxx_macula_strong(args.adat))
+        tabla_sorok.append(szabaly45_lxx_nyelvtani(args.adat))
+        tabla_sorok.append(szabaly46_lxx_os_homograf(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)
