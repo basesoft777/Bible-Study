@@ -32,12 +32,17 @@ TABLA = os.path.join('adat', 'lsj_forras_javitas.tsv')
 NYERS = os.path.join('konkordancia', 'LSJ_teljes.tsv')
 TBESG = os.path.join('konkordancia', 'TBESG.txt')
 OSZTALYOK = os.path.join('naplok', 'LSJ_HIBAOSZTALYOK_2026-11-24_strongok.tsv')
+B_DONTESEK = os.path.join('naplok', 'LSJ_B_DONTESEK_2026-11-24.tsv')
 
 PERSEUS_COMMIT = '1c34cdf756c63cf37db61bd366d733431dbd7aa0'
-FEJLEC = ('strong', 'tipus', 'osztaly', 'modul_hash', 'perseus_kulcs', 'perseus_azonosito', 'modszer', 'szoveg', 'indoklas',
-          'proveniencia')
-TIPUSOK = ('perseus_csere', 'nincs_szocikk')
-MODSZEREK = ('gepi_lemma_egyezes', 'kezi_lemma_valtozat', 'gepi_nincs_lemma_egyezes', 'gepi_csonka_szocikk', 'kezi_kizaras')
+FEJLEC = ('strong', 'tipus', 'osztaly', 'modul_hash', 'perseus_kulcs', 'perseus_azonosito', 'modszer', 'szoveg', 'jelzes',
+          'indoklas', 'proveniencia')
+TIPUSOK = ('perseus_csere', 'perseus_szulo', 'nincs_szocikk')
+MODSZEREK = ('gepi_lemma_egyezes', 'kezi_lemma_valtozat', 'gepi_nincs_lemma_egyezes', 'gepi_csonka_szocikk', 'kezi_kizaras',
+             'dontes_pontos', 'dontes_szulo', 'dontes_nincs')
+
+# A szülőszócikk olvasói jelzése (a szerkesztői döntés szövege, 2026-11-24): a kártya kimondja, hogy a szónak nincs önálló LSJ-szócikke.
+JELZES = 'Az LSJ-ben önálló szócikke nincs; a(z) %s szócikke, amely ezt az alakot tárgyalja.'
 
 # A pontos (ékezettel egyező) kulcs mellett a kézi átnézéssel elfogadott írásmód-változatok: a Strong lemmája és a Perseus-
 # szócikk ugyanaz a szó (γινώσκω ~ γιγνώσκω, az attikai -ττ-/-σσ- stb.); az ékezet-érzéketlen egyezésű többi sort (név és
@@ -94,8 +99,20 @@ def _dj(dias):
     return ''.join(_DIA[d] for d in sorted(dias, key=lambda x: _SORREND.get(x, 9)))
 
 
+_SZERK_ZAROJEL = re.compile(r'\(([A-Za-z])\)')
+
+
 def beta_unicode(s):
-    """Beta-kód → Unicode görög (a Perseus-kulcsok és a görög elemek)."""
+    """Beta-kód → Unicode görög (a Perseus-kulcsok és a görög elemek). Az egy betűt záró zárójel (`kt(e)iron`, `ka\\(t) ta\\`) szerkesztői
+    kiegészítés, nem lehelet: „(ε)” lesz (a független ellenőrzés, 2026-11-24: ᾤκτ̔ἐιρον helyett ᾤκτ(ε)ιρον)."""
+    reszek = _SZERK_ZAROJEL.split(s)
+    if len(reszek) > 1:
+        return unicodedata.normalize('NFC', ''.join(
+            _beta_alap(r) if j % 2 == 0 else '(' + _beta_alap(r) + ')' for j, r in enumerate(reszek)))
+    return _beta_alap(s)
+
+
+def _beta_alap(s):
     ki, i, n = [], 0, len(s)
     while i < n:
         c = s[i]
@@ -156,7 +173,8 @@ def szocikk_szoveg(nyers):
         # a szerkesztői ⟨ ⟩ jelölés nem tag: a beta-átírás és a tag-eltávolítás előtt védeni kell
         return ' ' + beta_unicode(t.replace('<', '⟨').replace('>', '⟩')) + ' '
     t = _TAG.sub(' ', _GOROG_EL.sub(g, nyers))
-    return _WS.sub(' ', unicodedata.normalize('NFC', html.unescape(t))).strip()
+    t = html.unescape(t).replace('[schwa]', 'ə').replace('^_', '˘¯')      # a forrás hangjelölései: schwa; rövid-hosszú jel
+    return _WS.sub(' ', unicodedata.normalize('NFC', t)).strip()
 
 
 _KOZ_ELOTT = re.compile(r'\s+([,.;:!?)\]])')
@@ -279,7 +297,7 @@ def keszit(perseus_mappa, ts, gyoker=ROOT):
             sz = ' '.join(e['text'] for e in talalat)
             sorok.append((strong, 'perseus_csere', osz[strong], h, ';'.join(e['key'] for e in talalat),
                           ';'.join(e['file'].replace('grc.lsj.perseus-', '').replace('.xml', '') + '#' + e['id']
-                                   for e in talalat), modszer, sz,
+                                   for e in talalat), modszer, sz, '',
                           'a TBESG-lemma (%s) azonos kulcsú Perseus-LSJ-szócikk; a modul-sor nem LSJ-szöveg (%s)'
                           % (lem, osz[strong]),
                           'scope=Strong→TBESG-lemma→Perseus-kulcs | forras=PerseusDL/lexica@%s %s | ts=%s'
@@ -288,16 +306,75 @@ def keszit(perseus_mappa, ts, gyoker=ROOT):
             ok = {'kezi_kizaras': 'a Perseus-szócikk nem ennek a szónak a szócikke (%s)' % KEZI_KIZART.get(strong, ''),
                   'gepi_csonka_szocikk': 'a Perseus-forrás szócikke csonka (csak nyelvjárás-jelölés), tartalma nincs',
                   }.get(modszer, 'a TBESG-lemma kulcsával a Perseus-LSJ-ben nincs önálló szócikk')
-            sorok.append((strong, 'nincs_szocikk', osz[strong], h, '', '', modszer, '',
+            sorok.append((strong, 'nincs_szocikk', osz[strong], h, '', '', modszer, '', '',
                           '%s (TBESG-lemma: %s); a modul-sor nem LSJ-szöveg (%s)' % (ok, lem or 'nincs', osz[strong]),
                           'scope=Strong→TBESG-lemma × a Perseus-LSJ `main` szócikkeinek kulcsai | forras=PerseusDL/lexica@%s | ts=%s'
                           % (PERSEUS_COMMIT, ts)))
+    sorok += b_sorok(perseus, nyers, lemma, ts, gyoker)
+    return sorok
+
+
+def b_dontesek(fajl=None):
+    """{'G0089': {oszlop: érték}} a 2. hibaosztály döntés-tábláiból (`naplok/LSJ_B_DONTESEK_*.tsv`)."""
+    ki, fej = {}, None
+    with open(fajl or os.path.join(ROOT, B_DONTESEK), encoding='utf-8') as fh:
+        for sor in fh.read().split('\n'):
+            if not sor or sor.startswith('#'):
+                continue
+            p = sor.split('\t')
+            if fej is None:
+                fej = p
+                continue
+            r = dict(zip(fej, p))
+            if r['dontes'] not in ('csere_pontos', 'csere_szulo', 'nincs_szocikk', 'megtartas') or r['strong'] in ki:
+                raise JavitasHiba('a döntés-táblában ismeretlen döntés vagy kettős sor: %s' % r['strong'])
+            ki[r['strong']] = r
+    return ki
+
+
+def b_sorok(perseus, nyers, lemma, ts, gyoker=ROOT):
+    """A 2. hibaosztály (téves Strong → szócikk kötés) sorai a szerkesztői döntés szerint: `csere_pontos` → `perseus_csere`;
+    `csere_szulo` → `perseus_szulo` (a kártya kimondja, hogy a szónak nincs önálló szócikke); `nincs_szocikk`; a `megtartas`
+    sor nem kerül a táblába (a modul-szöveg a megfelelő szócikk)."""
+    per_kulcs = {}
+    for e in perseus:
+        per_kulcs.setdefault(e['key'], []).append(e)
+        per_kulcs.setdefault(e['key'].rstrip('0123456789'), []).append(e)
+    sorok = []
+    for strong, r in sorted(b_dontesek(os.path.join(gyoker, B_DONTESEK)).items()):
+        if r['dontes'] == 'megtartas':
+            continue
+        h = modul_hash(nyers[strong])
+        lem = lemma.get(strong, '')
+        if r['dontes'] == 'nincs_szocikk':
+            sorok.append((strong, 'nincs_szocikk', r['osztaly'], h, '', '', 'dontes_nincs', '', '',
+                          'szerkesztői döntés: %s' % r['bizonyitek'],
+                          'scope=Strong→TBESG-lemma × a Perseus-LSJ main szócikkeinek kulcsai | forras=PerseusDL/lexica@%s; %s | ts=%s'
+                          % (PERSEUS_COMMIT, r['dontes_ref'], ts)))
+            continue
+        talalat = []
+        for k in r['perseus_kulcs'].split(';'):
+            es = [e for e in per_kulcs.get(k, []) if e['key'] == k] or per_kulcs.get(k, [])
+            if not es:
+                raise JavitasHiba('%s: nincs Perseus-szócikk a(z) %s kulccsal' % (strong, k))
+            talalat += es
+        talalat = sorted({(e['file'], e['id']): e for e in talalat}.values(), key=lambda e: (e['file'], e['id']))
+        sz = ' '.join(e['text'] for e in talalat)
+        szulo = r['dontes'] == 'csere_szulo'
+        sorok.append((strong, 'perseus_szulo' if szulo else 'perseus_csere', r['osztaly'], h,
+                      ';'.join(e['key'] for e in talalat),
+                      ';'.join(e['file'].replace('grc.lsj.perseus-', '').replace('.xml', '') + '#' + e['id'] for e in talalat),
+                      'dontes_szulo' if szulo else 'dontes_pontos', sz,
+                      JELZES % talalat[0]['key_uni'] if szulo else '',
+                      'szerkesztői döntés: %s' % r['bizonyitek'],
+                      'scope=Strong→Perseus-kulcs (%s) | forras=PerseusDL/lexica@%s %s; %s | ts=%s'
+                      % (r['perseus_kulcs'], PERSEUS_COMMIT, ' '.join(e['file'] + '#' + e['id'] for e in talalat), r['dontes_ref'], ts)))
     return sorok
 
 
 def kiir(sorok, ts, gyoker=ROOT):
     fej = ('# LSJ forrás-javítás (F0.43; séma: adat/SEMA.md 2.75): a `konkordancia/LSJ_teljes.tsv` pótszöveg-soraihoz döntés — '
-           '`perseus_csere` (a Perseus-LSJ szócikke) vagy `nincs_szocikk`. Készítette: eszkozok/lsj_forras_javit.py --keszit (ts=%s); '
+           '`perseus_csere` (a Perseus-LSJ szócikke), `perseus_szulo` (a szülőszócikk, kimondott jelzéssel) vagy `nincs_szocikk`. Készítette: eszkozok/lsj_forras_javit.py --keszit (ts=%s); '
            'a Perseus-szöveg CC BY-SA 4.0 (Perseus Digital Library), módosítva: a TEI-jelölés eltávolítva, a Beta-kód Unicode-ra átírva, '
            'a szóközök az írásjelek körül rendezve, a szerkesztői ⟨ ⟩ jelölés megtartva; a homográf szócikkek szóközzel összefűzve.\n' % ts)
     with open(os.path.join(gyoker, TABLA), 'w', encoding='utf-8', newline='\n') as f:
@@ -335,10 +412,12 @@ def betolt(fajl=None):
                 raise JavitasHiba('a Strong-szám nem G####: %s' % r['strong'])
             if r['tipus'] not in TIPUSOK or r['modszer'] not in MODSZEREK:
                 raise JavitasHiba('ismeretlen típus vagy módszer: %s' % r['strong'])
-            if (r['tipus'] == 'perseus_csere') != bool(r['szoveg']):
-                raise JavitasHiba('a szöveg csak a perseus_csere sorban áll: %s' % r['strong'])
-            if r['tipus'] == 'perseus_csere' and not (r['perseus_kulcs'] and r['perseus_azonosito']):
-                raise JavitasHiba('a perseus_csere sorban kell a Perseus-kulcs és -azonosító: %s' % r['strong'])
+            if (r['tipus'] != 'nincs_szocikk') != bool(r['szoveg']):
+                raise JavitasHiba('a szöveg csak a perseus_* sorban áll: %s' % r['strong'])
+            if (r['tipus'] == 'perseus_szulo') != bool(r['jelzes']):
+                raise JavitasHiba('a jelzés kötelező és csak a perseus_szulo sorban áll: %s' % r['strong'])
+            if r['tipus'] != 'nincs_szocikk' and not (r['perseus_kulcs'] and r['perseus_azonosito']):
+                raise JavitasHiba('a perseus_* sorban kell a Perseus-kulcs és -azonosító: %s' % r['strong'])
             if not r['indoklas'] or not r['proveniencia'].startswith('scope=') or ' | forras=' not in r['proveniencia']:
                 raise JavitasHiba('indoklás vagy proveniencia-sor hiányzik: %s' % r['strong'])
             ki[r['strong']] = r
@@ -346,9 +425,10 @@ def betolt(fajl=None):
 
 
 def alkalmaz(sorok, strong_idx, szoveg_idx, javitasok):
-    """A nyers `lsj` sorok (lista-listák) javítása: a `perseus_csere` sor szövege cserélődik, a `nincs_szocikk` sor kimarad.
+    """A nyers `lsj` sorok (lista-listák) javítása: a `perseus_csere` és a `perseus_szulo` (jelzéssel elöl) sor szövege cserélődik, a
+    `nincs_szocikk` soré üres lesz (a sor marad).
     A `modul_hash` eltérése (a nyers sor megváltozott) kivétel. Visszaad: (új sorok, {tipus: darab})."""
-    ki, db = [], {'perseus_csere': 0, 'nincs_szocikk': 0}
+    ki, db = [], {'perseus_csere': 0, 'perseus_szulo': 0, 'nincs_szocikk': 0}
     latott = set()
     for r in sorok:
         j = javitasok.get(r[strong_idx])
@@ -361,7 +441,7 @@ def alkalmaz(sorok, strong_idx, szoveg_idx, javitasok):
         latott.add(r[strong_idx])
         db[j['tipus']] += 1
         r = list(r)
-        r[szoveg_idx] = j['szoveg']       # `nincs_szocikk`: üres szöveg; a sor marad, hogy az olvasó a döntött sort megkülönböztesse a többitől
+        r[szoveg_idx] = (j['jelzes'] + ' ' if j['jelzes'] else '') + j['szoveg']   # `nincs_szocikk`: üres szöveg, a sor marad
         ki.append(r)
     hiany = sorted(set(javitasok) - latott)
     if hiany:
@@ -382,7 +462,7 @@ def ellenoriz(gyoker=ROOT):
             hibak.append('%s: nincs a nyers táblában' % s)
         elif r['modul_hash'] != modul_hash(nyers[s]):
             hibak.append('%s: a modul-hash nem egyezik' % s)
-        if r['tipus'] == 'perseus_csere' and ('This entry is a name' in r['szoveg'] or 'Defined by LSJ' in r['szoveg']):
+        if r['tipus'] != 'nincs_szocikk' and ('This entry is a name' in r['szoveg'] or 'Defined by LSJ' in r['szoveg']):
             hibak.append('%s: a csere-szöveg pótszöveg' % s)
     return hibak
 

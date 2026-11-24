@@ -10,6 +10,7 @@ eszkozok/teszt_lsj_forras_javit.py -- F0.43: az `lsj_forras_javit.py` és az `ad
   tartalom:       a csere-szöveg nem pótszöveg; a kizárt és az elfogadott kézi sorok; a lemma-kulcsok
 """
 import os
+import re
 import sys
 import unittest
 
@@ -27,7 +28,7 @@ TABLA_FEJ = '\t'.join(L.FEJLEC)
 
 def sor(**kw):
     r = {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'osztaly': 'A1_nev_helyorzo', 'modul_hash': 'h', 'perseus_kulcs': '',
-         'perseus_azonosito': '', 'modszer': 'gepi_nincs_lemma_egyezes', 'szoveg': '', 'indoklas': 'ok',
+         'perseus_azonosito': '', 'modszer': 'gepi_nincs_lemma_egyezes', 'szoveg': '', 'jelzes': '', 'indoklas': 'ok',
          'proveniencia': 'scope=x | forras=y | ts=2026-11-24'}
     r.update(kw)
     return '\t'.join(r[o] for o in L.FEJLEC)
@@ -52,6 +53,9 @@ class Betolto(unittest.TestCase):
                        ('csere_szoveg_nelkul', sor(tipus='perseus_csere')),
                        ('nincs_szoveggel', sor(szoveg='szöveg')),
                        ('csere_kulcs_nelkul', sor(tipus='perseus_csere', szoveg='x')),
+                       ('szulo_jelzes_nelkul', sor(tipus='perseus_szulo', szoveg='x', perseus_kulcs='k', perseus_azonosito='e#n')),
+                       ('jelzes_a_cserenel', sor(tipus='perseus_csere', szoveg='x', perseus_kulcs='k', perseus_azonosito='e#n',
+                                                 jelzes='j')),
                        ('proveniencia_nelkul', sor(proveniencia='')), ('indoklas_nelkul', sor(indoklas='')),
                        ('strong', sor(strong='G2')), ('oszlopszam', sor() + '\tfelesleg')):
             with self.subTest(nev):
@@ -67,15 +71,23 @@ class Betolto(unittest.TestCase):
 class Alkalmazas(unittest.TestCase):
     def test_csere_kihagyas_hash(self):
         nyers = [['G0001', 'G1', 'a'], ['G0002', 'G2', 'név-helyőrző'], ['G0003', 'G3', 'Strong-mondat'], ['G0004', 'G4', 'LSJ']]
-        j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('név-helyőrző'), 'szoveg': ''},
-             'G0003': {'strong': 'G0003', 'tipus': 'perseus_csere', 'modul_hash': L.modul_hash('Strong-mondat'), 'szoveg': 'LSJ-szöveg'}}
+        j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('név-helyőrző'), 'szoveg': '', 'jelzes': ''},
+             'G0003': {'strong': 'G0003', 'tipus': 'perseus_csere', 'modul_hash': L.modul_hash('Strong-mondat'), 'szoveg': 'LSJ-szöveg', 'jelzes': ''}}
         ki, db = L.alkalmaz(nyers, 0, 2, j)
         self.assertEqual([r[0] for r in ki], ['G0001', 'G0002', 'G0003', 'G0004'])
         self.assertEqual(ki[1][2], '', 'a nincs_szocikk sor üres szöveggel marad (az olvasó így ismeri fel a döntést)')
         self.assertEqual(ki[2][2], 'LSJ-szöveg')
         self.assertEqual(ki[0][2], 'a', 'a döntés nélküli sor változatlan')
         self.assertEqual(nyers[2][2], 'Strong-mondat', 'a bemenet nem módosul')
-        self.assertEqual(db, {'perseus_csere': 1, 'nincs_szocikk': 1})
+        self.assertEqual(db, {'perseus_csere': 1, 'perseus_szulo': 0, 'nincs_szocikk': 1})
+
+    def test_szulo_jelzessel_elol(self):
+        nyers = [['G0003', 'G3', 'Strong-mondat']]
+        j = {'G0003': {'strong': 'G0003', 'tipus': 'perseus_szulo', 'modul_hash': L.modul_hash('Strong-mondat'),
+                       'szoveg': 'ὅμοιος, α, ον', 'jelzes': 'Jelzés.'}}
+        ki, db = L.alkalmaz(nyers, 0, 2, j)
+        self.assertEqual(ki[0][2], 'Jelzés. ὅμοιος, α, ον')
+        self.assertEqual(db['perseus_szulo'], 1)
 
     def test_megvaltozott_nyers_sor_megallit(self):
         j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('régi'), 'szoveg': ''}}
@@ -97,9 +109,13 @@ class MaiTabla(unittest.TestCase):
         self.assertEqual(L.ellenoriz(), [])
 
     def test_darabszam_a_meres_szerint(self):
-        """A #864 mérés A-osztályai: 942 Strong; mindegyik pontosan egyszer."""
-        self.assertEqual(len(self.j), 942)
-        self.assertEqual(set(self.j), set(L.osztalyok()))
+        """A #864 mérés A-osztályai (942) és a 2. osztály 82 sorából a `megtartas` nélküliek (68): mindegyik pontosan egyszer."""
+        b = L.b_dontesek()
+        tartott = {s for s, r in b.items() if r['dontes'] != 'megtartas'}
+        self.assertEqual((len(b), len(tartott)), (82, 82))
+        self.assertEqual(len(self.j), 942 + 82)
+        self.assertEqual(set(self.j), set(L.osztalyok()) | tartott)
+        self.assertFalse(set(L.osztalyok()) & set(b), 'az A- és a B-osztály külön halmaz')
 
     def test_a_build_olvasojaval(self):
         """A `sqlite_epit` olvasója (`general.tsv_beolvas`) ugyanazt a modul-lenyomatot adja, mint a nyers tábla."""
@@ -107,13 +123,13 @@ class MaiTabla(unittest.TestCase):
         rows = [[r[f] for f in fej] for r in sorok]
         ki, db = L.alkalmaz(rows, fej.index('Strong_padded'), fej.index('Teljes_szocikk'), self.j)
         self.assertEqual(len(ki), len(rows))
-        self.assertEqual(db['perseus_csere'] + db['nincs_szocikk'], 942)
+        self.assertEqual(sum(db.values()), 942 + 82)
         uresek = {r[0] for r in ki if not r[2].strip()}
         self.assertEqual(uresek, {s for s, r in self.j.items() if r['tipus'] == 'nincs_szocikk'})
 
     def test_a_csere_szoveg_nem_potszoveg(self):
         for s, r in self.j.items():
-            if r['tipus'] != 'perseus_csere':
+            if r['tipus'] == 'nincs_szocikk':
                 continue
             sz = r['szoveg']
             self.assertNotIn('Defined by LSJ', sz, s)
@@ -122,6 +138,20 @@ class MaiTabla(unittest.TestCase):
             self.assertRegex(sz[:3], r'[Ͱ-Ͽἀ-῿]', s)       # a szócikk görög fejszóval kezdődik
             self.assertNotRegex(sz, r'\s[,.;:)]', s)         # a jelölés-eltávolítás szóközei rendezve
             self.assertFalse(L.csonka(sz), s)
+
+    def test_a_kartyan_a_megjelenitett_cimszo_all(self):
+        """Az integrátor feltétele (2026-11-24): a kártyán mindig a ténylegesen megjelenített LSJ-szócikk címszava áll — a szöveg első
+        szava az első Perseus-szócikk címszava (a `perseus_szulo` sorban a jelzés is megnevezi)."""
+        def kl(x):
+            return L.kulcs_laza(re.sub(r'[-\[\]]', '', x))
+        for s, r in self.j.items():
+            if r['tipus'] == 'nincs_szocikk':
+                continue
+            elso = re.split(r'[\s,;(:]', r['szoveg'].strip())[0]
+            cimszo = L.beta_unicode(r['perseus_kulcs'].split(';')[0].rstrip('0123456789'))
+            self.assertEqual(kl(elso), kl(cimszo), s)
+            if r['tipus'] == 'perseus_szulo':
+                self.assertIn(cimszo, r['jelzes'], s)
 
     def test_csere_kulcs_a_tbesg_lemmaval_egyezik(self):
         """A `gepi_lemma_egyezes` sor Perseus-kulcsa (Beta-kódból Unicode-ra) pontosan egyezik a TBESG-lemmával."""
@@ -149,6 +179,8 @@ class MaiTabla(unittest.TestCase):
         for s, r in self.j.items():
             self.assertNotRegex(r['szoveg'], r'\wς-\w', s)
             self.assertNotIn('&lt;', r['szoveg'], s)
+            self.assertNotIn('[schwa]', r['szoveg'], s)
+            self.assertNotIn('^_', r['szoveg'], s)
 
     def test_kezi_kizart_sorok(self):
         for s in L.KEZI_KIZART:
@@ -161,6 +193,35 @@ class MaiTabla(unittest.TestCase):
         self.assertEqual(self.j['G0002']['tipus'], 'nincs_szocikk')   # Ἀαρών
         self.assertEqual(self.j['G3165']['tipus'], 'nincs_szocikk')   # μέ
         self.assertEqual(self.j['G1097']['tipus'], 'perseus_csere')   # γινώσκω ~ γιγνώσκω (a név-besorolás tévedése)
+
+
+    def test_b_osztaly_darabszam_es_jelzes(self):
+        """A szerkesztői döntés (2026-11-24) és a független ellenőrzés utáni átsorolás: 54 pontos csere (az írásmód-változatok és az
+        utalás-láncok is jelzés nélkül), 24 szülőszócikk kimondott jelzéssel, 4 nincs; megtartott sor nincs."""
+        from collections import Counter
+        b = Counter(r['dontes'] for r in L.b_dontesek().values())
+        self.assertEqual(b, {'csere_pontos': 54, 'csere_szulo': 24, 'nincs_szocikk': 4})
+        szulok = [r for r in self.j.values() if r['tipus'] == 'perseus_szulo']
+        self.assertEqual(len(szulok), 24)
+        for r in szulok:       # a jelzés szülőszava a Perseus-kulcs Unicode-alakja (nem torz, nem más szócikké)
+            self.assertIn(L.beta_unicode(r['perseus_kulcs'].split(';')[0].rstrip('0123456789')), r['jelzes'], r['strong'])
+        for r in szulok:
+            self.assertRegex(r['jelzes'], r'^Az LSJ-ben önálló szócikke nincs; a\(z\) \S+ szócikke, amely ezt az alakot tárgyalja\.$', r['strong'])
+        self.assertIn('ὅμοιος', self.j['G3668']['jelzes'])      # ὁμοίως → ὅμοιος
+        self.assertIn('πρέσβυς', self.j['G4245']['jelzes'])     # πρεσβύτερος → πρέσβυς
+        # az ellenőrzés tételei: a G3644 a ὀλοθρεύω szócikke jelzéssel, a G1888 mindkét lemmája pontos, az εἶ/μήτι kizárt
+        self.assertEqual(self.j['G3644']['tipus'], 'perseus_szulo')
+        self.assertEqual(set(self.j['G1888']['perseus_kulcs'].split(';')), {'e)pauto/fwros', 'au)to/fwros'})
+        self.assertEqual(self.j['G4500']['tipus'], 'perseus_csere')
+        self.assertEqual(self.j['G2534']['tipus'], 'nincs_szocikk')
+        for s in ('G0149', 'G2102'):
+            self.assertEqual(self.j[s]['tipus'], 'perseus_szulo', s)
+
+    def test_b_pontos_cserek(self):
+        self.assertEqual(self.j['G3041']['perseus_kulcs'], 'li/mnh')                       # λίμνη (nem λῐμήν)
+        self.assertEqual(self.j['G1650']['perseus_kulcs'], 'e)/legxos1;e)/legxos2')         # ἔλεγχος, a hozzáfűzött ἐν nélkül
+        self.assertNotIn('OF PLACE', self.j['G1650']['szoveg'])                              # az ἐν szócikke
+        self.assertEqual(self.j['G0838']['tipus'], 'perseus_csere')                         # αὔξησις (nem γάρ)
 
 
 class OlvasoJelzes(unittest.TestCase):
@@ -221,6 +282,10 @@ class Kulcsok(unittest.TestCase):
         self.assertTrue(L.csonka('ἐπιδέχομαι, Ion. etc.'))
         self.assertFalse(L.csonka('ἐπενδύω, v. ἐπενδύνω.'))
         self.assertFalse(L.csonka('μία, fem. of εἷς (q. v.).'))
+
+    def test_szerkesztoi_zarojel_nem_lehelet(self):
+        self.assertEqual(L.beta_unicode('w)/|kt(e)iron'), 'ᾤκτ(ε)ιρον')
+        self.assertEqual(L.beta_unicode('ka\\(t) ta\\'), 'κὰ(τ) τὰ')
 
     def test_beta_unicode(self):
         self.assertEqual(L.beta_unicode('e)pikale/w'), 'ἐπικαλέω')

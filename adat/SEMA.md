@@ -2745,17 +2745,18 @@ kimenete, a kézi kizárásokat a szkript `KEZI_KIZART` és `KEZI_ELFOGADOTT` li
 | Oszlop | Tartalom |
 |---|---|
 | `strong` | `G####` (a nyers tábla `Strong_padded` oszlopa); kulcs |
-| `tipus` | `perseus_csere`: a Strong TBESG-lemmájával azonos kulcsú Perseus-LSJ-szócikk szövege kerül a szócikk helyére; `nincs_szocikk`: az olvasó nem mutat szöveget, hanem azt mondja, hogy az LSJ-ben nincs megfelelő szócikk |
-| `osztaly` | a #864 mérés osztálya (`A1`–`A5`) |
+| `tipus` | `perseus_csere`: a Strong lemmájával azonos kulcsú Perseus-LSJ-szócikk szövege kerül a szócikk helyére; `perseus_szulo`: a szónak (határozó, ragozott vagy összetett alak) nincs önálló szócikke, a szülőszócikk szövege kerül a helyére, a `jelzes` mondattal elöl; `nincs_szocikk`: az olvasó nem mutat szöveget, hanem azt mondja, hogy az LSJ-ben nincs megfelelő szócikk |
+| `osztaly` | a #864 mérés osztálya (`naplok/LSJ_HIBAOSZTALYOK_2026-11-24_strongok.tsv`): `A1_…`–`A5_…` (pótszöveg, F0.43), `B1_…`–`B3_…`, `V_vizsgalando` (téves kötés, F0.44) |
 | `modul_hash` | a nyers modul-szöveg SHA-256-jának első 16 jegye: ha a nyers sor megváltozik, az építés megáll |
 | `perseus_kulcs`, `perseus_azonosito` | a Perseus-szócikk kulcsa és `fájl#azonosító`-ja (a `perseus_*` sorokban); homográfoknál `;`-vel |
-| `modszer` | `gepi_lemma_egyezes` (pontos, ékezettel egyező lemma), `kezi_lemma_valtozat` (kézzel elfogadott írásmód-változat), `gepi_nincs_lemma_egyezes`, `gepi_csonka_szocikk` (a Perseus-forrás csonka), `kezi_kizaras` (a lemma egyezik, de más szó vagy más személy szócikke) |
-| `szoveg` | a Perseus-szöveg (csak `perseus_csere`): CC BY-SA 4.0, Perseus Digital Library; módosítás: a jelölés eltávolítása és a szóközök az írásjelek körül |
+| `modszer` | `gepi_lemma_egyezes` (pontos, ékezettel egyező lemma), `kezi_lemma_valtozat` (kézzel elfogadott írásmód-változat), `gepi_nincs_lemma_egyezes`, `gepi_csonka_szocikk` (a Perseus-forrás csonka), `kezi_kizaras` (a lemma egyezik, de más szó vagy más személy szócikke); a 2. osztály soraiban a szerkesztői döntés (`naplok/LSJ_B_DONTESEK_2026-11-24.tsv`): `dontes_pontos`, `dontes_szulo`, `dontes_nincs` |
+| `szoveg` | a Perseus-szöveg (`perseus_csere`, `perseus_szulo`): CC BY-SA 4.0, Perseus Digital Library; módosítás: a jelölés eltávolítása és a szóközök az írásjelek körül |
+| `jelzes` | csak `perseus_szulo`: az olvasói mondat, amely a szöveg elé kerül: „Az LSJ-ben önálló szócikke nincs; a(z) ⟨szülőszó⟩ szócikke, amely ezt az alakot tárgyalja.” (szerkesztői döntés, 2026-11-24); a kártya így nem állít másik szó szócikkéről a szóról |
 | `indoklas` | a döntés oka egy mondatban |
 | `proveniencia` | `PROVENIENCIA` (1.5): `scope=… \| forras=PerseusDL/lexica@1c34cdf… \| ts=` |
 
 **Kulcs:** `strong`. **Kapuk:** a betöltő (`lsj_forras_javit.betolt`) elutasítja az ismeretlen típust és módszert, a kétszer
-szereplő Strong-számot, a szöveg nélküli `perseus_csere` és a szöveges `nincs_szocikk` sort, a proveniencia vagy indoklás
+szereplő Strong-számot, a szöveg nélküli `perseus_*` és a szöveges `nincs_szocikk` sort, a jelzés nélküli `perseus_szulo` és a jelzéses más sort, a proveniencia vagy indoklás
 nélküli sort; az építés (`alkalmaz`) megáll, ha a `modul_hash` nem egyezik vagy a Strong-szám nincs a nyers táblában;
 `python eszkozok/lsj_forras_javit.py --ellenoriz` és `eszkozok/teszt_lsj_forras_javit.py` ellenőrzi.
 
