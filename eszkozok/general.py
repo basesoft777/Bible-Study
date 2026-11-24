@@ -1969,8 +1969,10 @@ def main():
             # visszaútig. A `lexikon2` (a 218a próbaneve) azonos vele. Csak repón kívüli --kimenet könyvtárba ír
             # (az alapértelmezett generalt_proba/ nem az; a lexikon/ végleges helye: F241.7).
             from lapgen import fo as lapgen_fo
+            import gepsor   # a lapgenerálás (3–4 GB) a gép közös sorában (MUNKAMENET „Menet-ellenőrzés” 5. pont)
             print('--- cél: %s ---' % cel)
-            vegso_kod = max(vegso_kod, lapgen_fo.futtat(ROOT, args.id, args.kimenet, args.mod))
+            with gepsor.Sor('general.py --cel %s --id %s (%s)' % (cel, args.id or 'mind', ROOT)):
+                vegso_kod = max(vegso_kod, lapgen_fo.futtat(ROOT, args.id, args.kimenet, args.mod))
             continue
 
         _, motivumok = tsv_beolvas(MOTIVUMOK_TSV)

@@ -259,10 +259,15 @@ def osszegzo_sorok(sorok):
 TABLA_JAVITASOK = {'osszegzo', 'egyenlo', 'torzsfej', 'egyes'}      # mérési kapcsoló (N212); alapból mind
 
 
+VART_TAV = 200   # F240 L5: ennél messzebb a várt pozíciótól a kurzor utáni találat gyanús (karakter)
+TAVOL_HATAR = 600  # F240 L5 (javítókör): ennél messzebb a választott hely a várttól: kétes illesztés (`jp_tavol`)
+
+
 class TablaPont:
     """Egy Strong táblaszövege és a hivatkozások leképezése rá."""
 
-    def __init__(self, sorok):
+    def __init__(self, sorok, en_hossz=None):
+        self.en_hossz = en_hossz               # F240 L5: az angol szócikk hossza (a várt táblapozícióhoz)
         self.darabok, self.fejek = [], []      # (kezdet, vég, sor, szakasz) ; (abszolút eltolás, útvonal, szakasz, rész)
         p, alcim, fo = 0, '', ''
         szoveg = []
@@ -361,9 +366,26 @@ class TablaPont:
                 self.utolso = m.start()
                 self.kurzor = m.end()
                 return m.start(), True
+        # F240 L5 (a tehóm „örvény · 5” esete): a tábla szövege (a nyers JSON) a hivatkozás könyvét néha másként írja
+        # („Isa 71:20” a „Psa 71:20” helyett); a csak előre kereső kurzor ilyenkor a szöveg egy későbbi, azonos
+        # hivatkozására ugrott (H8415: az 5. jelentés „Psa 71:20”-ára), és onnan minden további hivatkozás a beragadt
+        # pozíciót örökölte. Javítás: több előfordulás közül a várt pozícióhoz (az angol pozíció arányos képe) legközelebbi,
+        # ha a kurzor utáni első messze esik; nem talált hivatkozás a várt pozíciót kapja, nem a legutóbbi ugrást.
+        vart = int(h['poz'] * len(self.t) / self.en_hossz) if self.en_hossz and h.get('poz') is not None else None
         k = self.t.find(nyers, self.kurzor)
+        if vart is not None:
+            jeloltek, i = [], self.t.find(nyers)
+            while i >= 0:
+                jeloltek.append(i)
+                i = self.t.find(nyers, i + 1)
+            if jeloltek:
+                legjobb = min(jeloltek, key=lambda x: abs(x - vart))
+                if k < 0 or (abs(k - vart) > VART_TAV and abs(legjobb - vart) < abs(k - vart)):
+                    k = legjobb
         if k < 0:
-            return self.utolso, False
+            return (vart if vart is not None else self.utolso), False
+        # a választott hely messze esik a várttól: az illesztés gyanús (a sor `ketes:jp_tavol`), a 48. kapu méri
+        self.tavol = vart is not None and abs(k - vart) > TAVOL_HATAR
         self.kurzor = k + len(nyers)
         self.utolso = k
         return k, True
@@ -591,7 +613,7 @@ def general(ts, strongok=None, sefaria_tanu=None):
         csav = B.csoport_savok(szoveg, B.csoport_bont(r, 'en'))
         # DT-F99g (felhasználó, 2026-10-15): a kód-hash csak a fájl fejlécében áll; a sor a forrásra és a generátorra hivatkozik
         prov = 'scope=%s | forras=bdb_vers_jelentes.py (fejléc) | ts=%s' % (strong, ts)
-        tp = TablaPont(tabla.get(strong, []))
+        tp = TablaPont(tabla.get(strong, []), len(szoveg))
         for n, h in enumerate(hivatkozas_javit(strong, B.hivatkozasok(szoveg), javitasok.get(strong, [])), 1):
             # a szeletelő pontja: csak tanú (P2), a döntés a tábláé (DT-F185a)
             t_cimke, t_ut = B.jelentespont(h['poz'], savok, szsav)
@@ -599,6 +621,7 @@ def general(ts, strongok=None, sefaria_tanu=None):
             if t_ut == '-/-':
                 tag = next((t for a, b, c, t in szsav if a <= h['poz'] < b), True)
                 t_ut = 'fej' if tag else 'tagolatlan'
+            tp.tavol = False
             tpoz, illeszt = tp.keres(h)
             szak, resz, ut, hatar = tp.pont(tpoz)
             if not tabla.get(strong):
@@ -611,6 +634,8 @@ def general(ts, strongok=None, sefaria_tanu=None):
                 ketes.append('jp_tanu_elter')
             elif hatar:
                 ketes.append('jp_hatar')
+            elif getattr(tp, 'tavol', False):
+                ketes.append('jp_tavol')
             kezi = JELENTESPONT_KEZI.get((strong, h['poz']))
             if kezi:
                 szak, resz, ut = kezi[:3]

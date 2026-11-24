@@ -633,7 +633,9 @@ class CsoportOszlop(unittest.TestCase):
     # könyvnév-hibás helye (F202.4, a 2.31 kézi sorai): új érték
     # N212 (naplok/F197_jelentes.md 9.): a 2.30 négy ismétlődő szerkezeti hibaosztályának javítása a pont meghatározásakor
     # (633 sor szakasza/útvonala): új érték
-    REGI_OSZLOPOK_SHA256 = '25caf4244bb7bc197ca608843592bb26ac731057a0901253cf028e6a2511885a'
+    # F240 L3/L5: a kettőzött könyvnév törlése a forrásban (pozíció-eltolás 26 szócikkben) és a beragadt kurzor javítása
+    # (1186 sor / 79 Strong jelentéspontja; naplok/LXXBDB_vers_jelentes_diff.tsv): új érték
+    REGI_OSZLOPOK_SHA256 = 'edff3f1bac3c5603f8b9cade0a5e341682f61ef955c80db857fc662e1be10608'
 
     @classmethod
     def setUpClass(cls):
@@ -784,6 +786,35 @@ class TablaJavitasok(unittest.TestCase):
             r = vj[(k['strong'], k['sorszam'])]
             self.assertEqual(ST.itelet(tanu, r['strong'], r['sorszam'], r['mt_vers'], r['szakasz'], r['resz'], r['utvonal']), 'egyezik', azon)
 
+
+
+class BeragadtKurzor(unittest.TestCase):
+    """F240 L5: ha a tábla szövege a hivatkozás könyvét másként írja („Isa 71:20” a „Psa 71:20” helyett), a kurzor nem
+    ugorhat a szöveg egy későbbi, azonos hivatkozására úgy, hogy onnan minden további hely a beragadt pontot örökölje
+    (a tehóm „örvény · 5” esete, H8415)."""
+
+    def test_szintetikus(self):
+        sorok = [_t('fej', 'fej', 'tehom deep; Isa 106:9; Isa 71:20 (but see 5 infra); — '),
+                 _t('point', '-/1/-', 'deep, subterranean waters, Gen 49:25, Deut 33:13; Gen 7:11', jel='1'),
+                 _t('point', '-/5/-', 'abyss = Sheol, Psa 71:20', jel='5.')]
+        tp = V.TablaPont(sorok, len('tehom deep; Psa 106:9; Psa 71:20 (but see 5 infra); — 1 deep, subterranean waters, '
+                                    'Gen 49:25, Deut 33:13; Gen 7:11 5. abyss = Sheol, Psa 71:20'))
+        en = 'tehom deep; Psa 106:9; Psa 71:20 (but see 5 infra); — 1 deep, subterranean waters, Gen 49:25, Deut 33:13; Gen 7:11 '
+        for nyers in ('Psa 106:9', 'Psa 71:20'):
+            tp.keres({'nyers': nyers, 'konyv_mod': 'kiirt', 'poz': en.find(nyers)})
+        poz, illeszt = tp.keres({'nyers': 'Gen 49:25', 'konyv_mod': 'kiirt', 'poz': en.find('Gen 49:25')})
+        self.assertTrue(illeszt)
+        self.assertEqual(tp.pont(poz)[2], '-/1')
+
+    def test_tehom(self):
+        sorok, _ = V.general('2026-11-24', ['H8415'])
+        i = {k: n for n, k in enumerate(V.FEJ)}
+        ut = {s[i['karoli_vers']]: s[i['utvonal']] for s in sorok if s[i['nyers']] in ('Gen 49:25', 'Deut 33:13', 'Ezek 26:19')}
+        self.assertEqual(ut.get('1Móz 49:25'), '-/1')
+        self.assertEqual(ut.get('5Móz 33:13'), '-/1')
+        self.assertEqual(ut.get('Ez 26:19'), '-/2')
+        otos = sum(1 for s in sorok if s[i['utvonal']] == '-/5')
+        self.assertLessEqual(otos, 2, 'a H8415 5. jelentésére legfeljebb a Zsolt 71:20 esik (a fejben és az 5. pontban)')
 
 class Ujrageneralas(unittest.TestCase):
     """ELLENOR_F99 3.: platformtól függetlenül fut (a kód- és a forrás-hash LF-re normalizált tartalomból számolódik)."""

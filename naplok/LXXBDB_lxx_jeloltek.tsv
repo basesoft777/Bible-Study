@@ -1,0 +1,128 @@
+# GENERÁLT jelöltrész + kézi ítélet: eszkozok/lxx_strong_javitas.py --ir (F240 L1); az itelet/indok oszlop kézi, újrafuttatáskor megmarad. Ítélet: konvencio / macula_hiba / lxx_os_hiba / illesztesi_zaj / nem_eldontheto.
+macula_strong	macula_szoto	lxx_os_strong	lxx_os_lemma	token	macula_strong_osszes	pelda_alak	itelet	indok
+G4675	σοῦ	G4771	σύ	4691	4691	σου	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G3450	μου	G1473	ἐγώ	3495	3495	μου	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2036	ἔπω, ἐρῶ, εἶπον	G3004	λέγω	3166	3166	εἶπεν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G0848	αὑτοῦ	G0846	αὐτός	2132	2132	αὐτὴν	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5216	ὑμῶν	G4771	σύ	1333	1333	ὑμῶν	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G3165	ἐγώ	G1473	ἐγώ	1330	1330	με	konvencio	Összevont vagy alakszám (κἀγώ, οὐ μή, ὅ ἐστι …); ugyanaz a szó.
+G4571	σέ	G4771	σύ	1301	1301	σε	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2071	ἔσομαι	G1510	εἰμί	1213	1213	ἔσται	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5101	τίς	G5100	τίς	1085	1090	τίς	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G4671	σοί	G4771	σύ	982	982	σοι	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2257	ἡμῶν	G1473	ἐγώ	840	840	ἡμῶν	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G3427	μοι	G1473	ἐγώ	649	649	μοι	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5124	τοῦτο	G3778	οὗτος	648	648	τοῦτο	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2076	ἐστί	G1510	εἰμί	600	600	ἐστιν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G1492	εἴδω	G3708	ὁράω	584	774	εἶδεν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5213	ὑμῖν	G4771	σύ	523	523	ὑμῖν	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2258	ἦν	G1510	εἰμί	514	515	ἦτε	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5209	ὑμᾶς	G4771	σύ	483	483	ὑμᾶς	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G1520	εἷς	G1519	εἷς	448	467	εἷς	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G5023	ταῦτα	G3778	οὗτος	401	401	ταῦτα	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2248	ἡμᾶς	G1473	ἐγώ	333	333	ἡμᾶς	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5026	ταύτῃ	G3778	οὗτος	329	329	ταύτης	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G1700	ἐμοῦ	G1473	ἐγώ	324	324	ἐμοῦ	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2046	ἔπω, ἐρῶ, εἶπον	G3004	λέγω	321	322	ἐρεῖ	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5315	φαγεῖν	G2068	ἐσθίω	314	314	ἐφάγετε	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2254	ἡμῖν	G1473	ἐγώ	262	262	ἡμῖν	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G3391	μία	G1519	εἷς	261	261	μιᾷ	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G1691	ἐμέ	G1473	ἐγώ	207	207	ἐμὲ	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G3376	μήν	G3375	μήν	198	198	μηνὶ	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G1492	εἴδω		οἶδα	190	774	εἰδότας	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G1698	ἐμοί	G1473	ἐγώ	185	185	ἐμοί	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5127	τοῦτου	G3778	οὗτος	151	151	τούτου	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5126	τοῦτον	G3778	οὗτος	148	148	τοῦτον	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5552	χρύσεος		χρυσοῦς	137	137	χρυσᾶ	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G3415	μνάομαι	G3403	μιμνήσκω	119	120	ἐμνήσθησαν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2249	ἡμεῖς	G1473	ἐγώ	114	114	ἡμεῖς	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5129	τούτῳ	G3778	οὗτος	113	113	τούτῳ	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G1526	εἰσί	G1510	εἰμί	102	102	εἰσιν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2590	καρπός	G2591	καρπός	94	94	καρπὸν	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G0297	ἀμφότερος		ἀμφότεροι	82	82	ἀμφοτέρους	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G4459	πως	G4458	πῶς	82	82	πῶς	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G0039	ἅγιος	G0040	ἅγιος	80	80	ἅγιόν	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G1166	δεικνύω		δείκνυμι	77	77	ἔδειξέν	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G4226	ποῦ	G4225	ποῦ	76	81	ποῦ	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G5130	τούτων	G3778	οὗτος	74	74	τούτων	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2504	κἀγώ	G1473	ἐγώ	64	64	κἀγὼ	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5128	τοῦτους	G3778	οὗτος	64	64	τούτους	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5607	ὤν	G1510	εἰμί	64	64	οὖσαν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G1511	εἰμί	G1510	εἰμί	61	61	εἶναί	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2077	ἔστω	G1510	εἰμί	61	61	ἔστω	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G4130	πλήθω		πίμπλημι	61	61	ἐπλήσθη	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G3397	μικρόν	G3398	μικρός	58	58	μικρὸν	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G1666	Ἐλισσαῖος		Ελισαιε	57	57	ελισαιε	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G5125	τοῦτοις	G3778	οὗτος	57	57	τούτοις	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G0756	ἄρχομαι	G0757	ἄρχω	54	54	ἤρξατο	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G1181	δεκάτη	G1182	δέκατος	47	47	δεκάτην	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G3508	Νεφθαλείμ		Νεφθαλι	46	46	νεφθαλι	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G1488	εἶ	G1510	εἰμί	45	48	εἶ	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2396	ἴδε	G3708	ὁράω	42	42	ἰδὲ	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5600	ὦ	G1510	εἰμί	42	50	ᾖ	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2466	Ἰσαχάρ		Ισσαχαρ	38	38	ισσαχαρ	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G5522	χόος		χοῦς	38	38	χοῦν	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G2252	ἤμην	G1510	εἰμί	35	35	ἤμην	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2229	ἦ	G2228	ἦ	34	36	ἦ	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G4219	πότε	G4218	πότε	34	36	πότε	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G5025	ταύταις	G3778	οὗτος	33	33	ταύτας	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5599	ὦ	G5598	ὦ	31	31	ὦ	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G3378	μὴ οὐκ	G3361	μή	27	27	μη	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2070	ἐσμέν	G1510	εἰμί	26	26	ἐσμεν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G1003	Βοόζ		Βοος	22	22	βοος	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G2075	ἐστέ	G1510	εἰμί	22	22	ἐστε	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5404	φοῖνιξ	G5405	φοῖνιξ	22	24	φοινίκων	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G2908	κρείσσων	G2909	κρείσσων	19	19	κρεῖσσον	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G1623	ἕκτος	G1622	ἕκτος	17	17	ἕκτῳ	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G5224	ὑπάρχοντα	G5225	ὑπάρχω	17	17	ὑπάρχοντα	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G1498	εἴην	G1510	εἰμί	16	16	εἴη	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2435	ἱλαστήριος		ἱλαστήριον	13	13	ἱλαστήριον	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G1520	εἷς	G1519	εἰς	12	467	εἷς	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G5024	ταὐτά	G3778	οὗτος	11	11	ταῦτά	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G1047	γάζα	G1048	Γάζα	10	10	γάζης	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G3187	μείζων	G3173	μέγας	10	10	μείζονα	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G3364	οὐ μή	G3756	οὐ	9	9	οὖκ	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G3603	ὅ ἐστι	G3739	ὅς	9	9	ὅ	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G4735	στέφανος	G4736	στέφανος	9	9	στέφανον	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G3755	ὅτου	G3748	ὅστις	8	8	ὅτου	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G1520	εἷς	G1722	ἐν	7	467	ἓν	illesztesi_zaj	Az ékezet nélküli alak-illesztés a vers más szavára esett (pl. ἓν / ἐν, ᾖ / ἤ); nem címkehiba.
+G0567	ἀπέχομαι	G0568	ἀπέχω	5	5	ἀπέχου	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G3785	ὄφελον	G3784	ὀφείλω	5	5	ὄφελον	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G4226	ποῦ	G4225	πού	5	81	ποῦ	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G4415	πρωτοτόκια		πρωτοτόκιον	5	5	πρωτοτόκια	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G4483	ἔπω, ἐρῶ, εἶπον	G3004	λέγω	5	5	ἐρρέθη	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5600	ὦ	G3588	ὁ	5	50	ᾖ	illesztesi_zaj	Az ékezet nélküli alak-illesztés a vers más szavára esett (pl. ἓν / ἐν, ᾖ / ἤ); nem címkehiba.
+G0471	ἀντεῖπον	G0483	ἀντιλέγω	4	6	ἀντιλέγων	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2468	ἴσθι	G1510	εἰμί	4	4	ἴσθι	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G3063	λοιπόν	G3062	λοιπός	4	4	λοιπὸν	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G5101	τίς	G5100	τις	4	1090	τίς	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G0566	ἀπέχει	G0568	ἀπέχω	3	3	ἀπόσχῃ	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G1101	γλωσσόκομον		γλωσσόκομος	3	3	γλωσσόκομον	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G1488	εἶ	G1487	εἰ	3	48	εἶ	illesztesi_zaj	Az ékezet nélküli alak-illesztés a vers más szavára esett (pl. ἓν / ἐν, ᾖ / ἤ); nem címkehiba.
+G2651	καταμόνας	G3441	μόνος	3	3	μόνας	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G4666	σμύρνα	G4667	σμύρνα	3	3	σμύρναν	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G4719	στάχυς	G4720	στάχυς	3	3	στάχυν	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G5600	ὦ	G2228	ἤ	3	50	ᾖ	illesztesi_zaj	Az ékezet nélküli alak-illesztés a vers más szavára esett (pl. ἓν / ἐν, ᾖ / ἤ); nem címkehiba.
+G0633	ἀπονίπτω		ἀπονίζω	2	2	ἀπένιψαν	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G2229	ἦ	G3588	ὁ	2	36	ἦ	illesztesi_zaj	Az ékezet nélküli alak-illesztés a vers más szavára esett (pl. ἓν / ἐν, ᾖ / ἤ); nem címkehiba.
+G2546	κἀκεῖ	G1563	ἐκεῖ	2	2	κἀκεῖ	konvencio	Összevont vagy alakszám (κἀγώ, οὐ μή, ὅ ἐστι …); ugyanaz a szó.
+G4219	πότε	G4218	ποτε	2	36	πότε	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G5009	ταμεῖον		ταμιεῖον	2	2	ταμιεῖον	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G0471	ἀντεῖπον		ἀντερῶ	1	6	ἀντεροῦμεν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G0549	ἄπειμι	G0548	ἄπειμι	1	1	ἀπιόντος	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G1303	διατίθημι		διαθέω	1	66	διαθῶ	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G1400	δοῦλον	G1401	δοῦλος	1	1	δοῦλα	konvencio	A Strong-szótár ugyanannak a szónak külön számot ad (melléknév ↔ határozószó, fokozott alak, alakváltozat).
+G1769	ἐννεός		ἐνεός	1	1	ἐνεοί	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G2046	ἔπω, ἐρῶ, εἶπον		ἐρέω	1	322	ἐροῦσίν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2258	ἦν	G3739	ὅς	1	515	ἦν	illesztesi_zaj	Az ékezet nélküli alak-illesztés a vers más szavára esett (pl. ἓν / ἐν, ᾖ / ἤ); nem címkehiba.
+G2277	ἤτω	G1510	εἰμί	1	1	ἤτω	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G2548	κἀκεῖνος	G1565	ἐκεῖνος	1	1	κἀκεῖνοι	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G2579	κἄν	G0302	ἄν	1	1	κἂν	konvencio	Összevont vagy alakszám (κἀγώ, οὐ μή, ὅ ἐστι …); ugyanaz a szó.
+G3415	μνάομαι		μιμνήσκομαι	1	120	ἐμνήσθην	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G4541	Σαμαρείτης		Σαμαρίτης	1	1	σαμαρῖται	konvencio	Ugyanaz a szó más írásmóddal vagy alakkal (átírt tulajdonnév, összevont alak, rokon képzés: a legközelebbi Strong-szám).
+G4894	συνείδω		σύνοιδα	1	1	σύνοιδα	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5101	τίς	G4822	συμβιβάζω	1	1090	συμβιβᾷ	illesztesi_zaj	A Macula szóalakja (συμβιβᾷ) a vers szomszédos szava; a Strong (τίς) a héber מי (H4310) megfelelője, az olvasó a Strong lemmáját mutatja: helyes.
+G5123	τουτέστι	G3778	οὗτος	1	1	τοῦτ’	konvencio	A Strong-szótár alakszáma (névmás- vagy mutató névmás-alak); a lemma nyelvtani (adat/grammatikai_strongok.tsv, F240 L2).
+G5237	ὑπερείδω		ὑπεροράω	1	1	ὑπεριδὼν	konvencio	Az ige alakjának vagy szuppletív tövének külön Strong-száma (pl. εἶπον ↔ λέγω, ἔσται ↔ εἰμί); ugyanaz a szó.
+G5404	φοῖνιξ	G5403	Φοινίκη	1	24	φοινίκων	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.
+G5404	φοῖνιξ	G5405	Φοίνιξ	1	24	φοίνικες	lxx_os_hiba	Az LXX_OS ékezet és kisbetű nélküli lemma-keresésének homográf-hibája (a Macula címkéje helyes); N249.

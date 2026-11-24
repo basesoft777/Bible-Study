@@ -55,6 +55,7 @@ ZAR_KORLAT_VALTOZO = 'PARDES_ZAR_KORLAT_PERC'
 ZAR_NEV = 'ellenorzes.zar'
 ZAR_ALAP_KORLAT_PERC = 120
 ZAR_VARAKOZAS_MP = 5
+ZAR_TARTVA_VALTOZO = 'PARDES_ZAR_TARTVA'   # a zár tartója a gyerekfolyamatokra is ráteszi (a gép sora olvassa: `gepsor.py`)
 
 
 def json_betolt(f):
@@ -316,12 +317,16 @@ class HelyiZar(object):
                            'munkakonyvtar': os.getcwd()}, f, ensure_ascii=False)
             if jelezve:
                 self.kiir('[zár] megszerezve %.0f mp várakozás után' % self.vart)
+            # a gép sora (`eszkozok/gepsor.py`) ebből tudja, hogy a zár alatt fut: ott nem áll sorba (holtpont-védelem)
+            os.environ[ZAR_TARTVA_VALTOZO] = self.azon
             return self
 
     def __exit__(self, *exc):
         import time as _time
         if not self.aktiv:
             return False
+        if os.environ.get(ZAR_TARTVA_VALTOZO) == self.azon:
+            os.environ.pop(ZAR_TARTVA_VALTOZO, None)
         # A saját zár törlése is az átvételi OS-zár alatt (2): így a törlés nem kerülhet egy átvevő újraolvasása és
         # törlése közé. Ha az OS-zár ZAR_KILEPES_VARAKOZAS_MP alatt sem szerezhető meg, a saját zárat nem töröljük
         # (zár nélkül nem szabad); a pid a kilépés után halott, így a következő váró elavultként átveszi.

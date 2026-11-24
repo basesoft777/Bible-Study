@@ -4,6 +4,7 @@
     python eszkozok/lapgen/tesztek/futtat.py szoveg     # csak a megnevezett fájl(ok): teszt_szoveg.py
 
 Kilépési kód: 0, ha minden teszt zöld (a kihagyott teszt nem hiba; a számukat a futás kiírja).
+A futás a gép közös sorában (`eszkozok/gepsor.py`; MUNKAMENET „Menet-ellenőrzés” 5. pont): egyszerre egy lapgen-futás a gépen.
 """
 import os
 import sys
@@ -25,7 +26,9 @@ def main(argv):
         csomag = unittest.TestSuite(betolto.loadTestsFromName('teszt_%s' % nev) for nev in argv)
     else:
         csomag = betolto.discover(ITT, pattern='teszt_*.py', top_level_dir=ITT)
-    eredmeny = unittest.TextTestRunner(verbosity=1).run(csomag)
+    import gepsor
+    with gepsor.Sor('lapgen-tesztek%s (%s)' % ((': ' + ' '.join(argv)) if argv else '', os.getcwd())):
+        eredmeny = unittest.TextTestRunner(verbosity=1).run(csomag)
     print('futott: %d, hiba: %d, bukás: %d, kihagyva: %d' % (
         eredmeny.testsRun, len(eredmeny.errors), len(eredmeny.failures), len(eredmeny.skipped)))
     return 0 if eredmeny.wasSuccessful() else 1

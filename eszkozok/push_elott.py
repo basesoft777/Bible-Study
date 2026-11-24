@@ -16,6 +16,7 @@ Használat (a repó gyökeréből, az ág commitjai után, push előtt):
     python eszkozok/push_elott.py --lepes E18          # csak a nevében a szöveget tartalmazó lépések (javítás utáni gyors újrafutás;
                                                        # a push előtti kapu a teljes futás)
     python eszkozok/push_elott.py --reszleges          # F223: csak az érintett lépések (l. lent); ismeretlen fájlnál a teljes kapu
+    python eszkozok/push_elott.py --gyors              # munka közbeni gyors próba (cél: legfeljebb 5 perc); NEM push előtti kapu
     python eszkozok/push_elott.py --ci-egyezes         # csak annak ellenőrzése, hogy a lépéslista egyezik a workflow-val
 Kilépési kód: 0 = 0 HIBA (push mehet), 1 = van HIBA, 2 = futási hiba.
 
@@ -27,6 +28,14 @@ mintájára illeszkedik. Az E2-E39 (futtat.py) minden változott fájlra fut: ma
 változott fájl egyik mintára sem illeszkedik, vagy a fájl törlődött/átneveződött/típust váltott, vagy a jegyzés/diff nem
 olvasható, a teljes kapu fut. A jegyzés a `git rev-parse --git-dir` alatti `push_elott_zold.json`; csak tiszta fán, teljes
 (nem `--lepes`) futás után frissül, a bukott lépésé törlődik.
+
+Gyors próba (`--gyors`; munka közben, a push előtti kapu helyett soha): csak a változáshoz kötött ellenőrzések. A változás az utolsó zöld
+gyors próba óta (a `.git` alatti `push_elott_gyors.json`; nincs, vagy nem őse a fejnek: az ág teljes diffje). Fut: az E2–E39 a változott
+fájlokra (a diff alapja a gyors pont), a hash-őr, és a `GYORS_LEKEPEZES` szerint érintett lépés (E1, E38–E39, kinyerő-ellenőrzés, E18); a
+tesztfájl csak akkor, ha maga változott, vagy a forrása név szerint hivatkozik egy változott `eszkozok/` modulra (`gyors_tesztek`). A
+lapgenerálás (F217) csak akkor, ha a diff a generátort vagy a lap bemenetét érinti (`lap_erintes`: a bemeneti jegyzék útvonalai), és
+`motivumok/<ID>.md`-nél csak az érintett lapra (`--id`). Az olvasó-tesztek nem futnak (a teljes kapu futtatja). Ismeretlen fájl nem kér
+teljes kaput. A zöld jegyzéshez (`--reszleges`) nem nyúl. A push előtt, a PR előtt egyszer: a teljes kapu.
 
 Olvasó-tesztek (F232, DT-F232a (b)): ha az ág az olvasó kódját érinti (`teszt_futtat.py` `_OLVASO_KOD`), a kapu a `teszt_futtat.py --gyors`
 móddal fel is futtatja az olvasó gyors tesztjeit (a lassú `teszt_szintek.py` és `teszt_arculat.py` nélkül; a teljes sor a menet saját
@@ -242,6 +251,123 @@ def olvaso_tesztek_futtatasa(fut, nev, argv, py=None):
     return rc2, ki + ki2, ingadozott
 
 
+# Gyors próba (`--gyors`): lépés -> a változott útvonalak, amelyek érintik (a kód általános sora nélkül: kódnál csak a lépés saját szkriptje).
+GYORS_LEKEPEZES = [
+    (L_E1, r'^' + _ADAT_KONYVTAR + r'/|^sablonok/|^(?:DONTESEK|NYITOTT_FELADATOK)\.md$|^eszkozok/(?:ellenoriz\.py|ellenorzes/study_fajlok_szurese\.py)$'),
+    (L_GYOKEROK, r'^' + _ADAT_KONYVTAR + r'/|^sablonok/|^eszkozok/ellenorzes/(?:kovetelmeny_kapu|allitas_adat)\.py$'),
+    (L_TESZT_KINYER, r'^adat/|^eszkozok/visszhang/|^eszkozok/szakirodalom_kinyer\.py$'),
+    (L_E18, r'^(?:F\d+_[\w]+_BRIEF|FELADATOK|CLAUDE|CSAPDAK|MUNKAMENET|BRIEF_SABLON)\.md$|^(?:FELADATTERKEP\.html|feladatterkep\.json)$'
+            r'|^eszkozok/(?:teszt_)?feladatok\.py$'),
+]
+GYORS_FAJL = 'push_elott_gyors.json'
+# a lapgenerátor saját kódja és táblái; a többi bemenet a bemeneti jegyzékből (`adat/lapgen_bemenetek.tsv` `utvonal`)
+LAP_KOD = r'^eszkozok/(?:lapgen/|general\.py$|generalt_nezetek\.py$)|^adat/(?:lapgen_|generalt_nezetek\.tsv$)'
+
+
+def gyors_lepesek(fajlok):
+    """A gyors próbában futó kihagyható lépések (set)."""
+    ki = set()
+    for f in fajlok:
+        f = f.replace('\\', '/')
+        for l, minta in GYORS_LEKEPEZES:
+            if re.search(minta, f):
+                ki.add(l)
+    return ki
+
+
+def gyors_tesztek(fajlok, tesztek=None, olvas=None):
+    """A gyors próbában futó tesztfájlok: a változott tesztfájl, és az a teszt, amely egy változott `eszkozok/` alatti Python-modult betölt:
+    `import M` / `from M import` (csomagon át is), vagy fájlútról, a puszta `'M.py'` névvel (a könyvtárral együtt idézett útvonal adat, nem
+    betöltés: pl. egy lépéslista-fixture)."""
+    tesztek = STATIKUS_TESZTEK if tesztek is None else tesztek
+    olvas = olvas or (lambda t: open(os.path.join(ROOT, t), encoding='utf-8', errors='replace').read())
+    valtozott = {f.replace('\\', '/') for f in fajlok}
+    modulok = {os.path.splitext(os.path.basename(f))[0] for f in valtozott if f.startswith('eszkozok/') and f.endswith('.py')}
+    ki = []
+    for t in tesztek:
+        if t in valtozott:
+            ki.append(t)
+            continue
+        try:
+            forras = olvas(t)
+        except OSError:
+            ki.append(t)   # nem olvasható: inkább fut
+            continue
+        if any(re.search(r'(?m)^\s*(?:import|from)\s+(?:[\w.]+\.)?' + re.escape(m) + r'(?![\w])', forras)
+               or re.search(r'(?m)^\s*(?:from\s+[\w.]+\s+)?import\s+[\w., ]*(?<![\w.])' + re.escape(m) + r'(?![\w])', forras)
+               or re.search(r'[\'"]' + re.escape(m) + r'\.py[\'"]', forras) for m in modulok):
+            ki.append(t)
+    return ki
+
+
+def _bemenet_mintak(gyoker=ROOT):
+    """A bemeneti jegyzék útvonalai regexként (a `<ID>` csoport: a lap azonosítója; a `*` egy útvonaltag)."""
+    mintak = []
+    try:
+        with open(os.path.join(gyoker, 'adat', 'lapgen_bemenetek.tsv'), encoding='utf-8') as f:
+            sorok = f.read().split('\n')
+    except OSError:
+        return None
+    fej = None
+    for sor in sorok:
+        if not sor or sor.startswith('#'):
+            continue
+        mezok = sor.split('\t')
+        if fej is None:
+            fej = mezok
+            continue
+        if 'utvonal' not in fej or len(mezok) <= fej.index('utvonal'):
+            continue
+        for ut in mezok[fej.index('utvonal')].split(';'):
+            ut = ut.strip()
+            if not ut or ut == '-':
+                continue
+            r = re.escape(ut).replace(re.escape('<ID>'), r'(?P<id>[A-Z0-9]+-\d+)').replace(r'\*', r'[^/]*')
+            mintak.append(re.compile('^' + r + '$'))
+    return mintak
+
+
+def lap_erintes(fajlok, gyoker=ROOT):
+    """(érintett-e a lap, ID-lista vagy None = minden lap). A generátor kódja és a közös bemenet minden lapot érint; a `motivumok/<ID>.md`
+    és az `<ID>`-s bemenet csak a sajátját. A jegyzék olvashatatlan: minden lap."""
+    mintak = _bemenet_mintak(gyoker)
+    if mintak is None:
+        return True, None
+    idk, mind = set(), False
+    for f in fajlok:
+        f = f.replace('\\', '/')
+        if re.search(LAP_KOD, f):
+            mind = True
+            continue
+        for m in mintak:
+            t = m.match(f)
+            if t:
+                if 'id' in m.groupindex and t.group('id'):
+                    idk.add(t.group('id'))
+                else:
+                    mind = True
+    if mind:
+        return True, None
+    return bool(idk), sorted(idk)
+
+
+def gyors_pont(fej):
+    """Az utolsó zöld gyors próba feje, ha a mostani fej őse (különben None)."""
+    import json
+    rc, gitdir, _ = git('rev-parse', '--git-dir')
+    if rc != 0:
+        return None, None
+    ut = os.path.join(gitdir if os.path.isabs(gitdir) else os.path.join(ROOT, gitdir), GYORS_FAJL)
+    try:
+        with open(ut, encoding='utf-8') as f:
+            sha = json.load(f).get('fej')
+    except (OSError, ValueError, AttributeError):
+        return None, ut
+    if not isinstance(sha, str) or git('merge-base', '--is-ancestor', sha, fej)[0] != 0:
+        return None, ut
+    return sha, ut
+
+
 def zold_utvonal():
     rc, gitdir, _ = git('rev-parse', '--git-dir')
     if rc != 0 or not gitdir:
@@ -455,6 +581,8 @@ def main():
     ap.add_argument('--lepes', default=None, help='csak a nevében ezt a szöveget tartalmazó lépések futnak (a teljes futás a kapu)')
     ap.add_argument('--reszleges', action='store_true',
                     help='F223: csak az érintett lépések futnak (l. a modul leírását); ismeretlen fájlnál a teljes kapu')
+    ap.add_argument('--gyors', action='store_true',
+                    help='munka közbeni gyors próba (l. a modul leírását); nem push előtti kapu')
     ap.add_argument('--ci-egyezes', action='store_true', help='csak a lépéslista és a workflow egyezését ellenőrzi')
     args = ap.parse_args()
 
@@ -472,7 +600,10 @@ def main():
 def sorban(args):
     """A teljes kapu a gép közös sorában (`gepsor.py`); a részleges és a `--lepes` futás csak a lapot generáló lépéseknél áll sorba
     (`lap_sor`). A sorban állás a gyerekfolyamatokra öröklődik (`PARDES_SOR_TARTVA`), így a lépések nem állnak be újra."""
-    if args.reszleges or args.lepes:
+    if args.gyors and (args.reszleges or args.lepes):
+        print('HIBA: a --gyors nem kombinálható a --reszleges / --lepes kapcsolóval.', file=sys.stderr)
+        return 2
+    if args.reszleges or args.lepes or args.gyors:
         return kapu(args)
     import gepsor
     with gepsor.Sor('push_elott.py teljes kapu (%s)' % ROOT):
@@ -519,6 +650,19 @@ def kapu(args):
         except (OSError, subprocess.SubprocessError):
             pass
     print('push_elott: alap %s, fej %s, %d változott fájl, PR-cím: %s' % (alap[:8], fej[:8], len(fajlok), pr_cim or '(nincs)'))
+    gyors_ut = None
+    if args.gyors:
+        pont, gyors_ut = gyors_pont(fej)
+        if pont == fej:
+            print('push_elott --gyors: a fej (%s) az utolsó zöld gyors próba óta nem változott; nincs mit futtatni.' % fej[:8])
+            return 0
+        if pont:
+            alap = pont
+            rc, valtozott, _ = git('diff', '--name-only', alap, fej)
+            fajlok = [s for s in valtozott.splitlines() if s]
+            rc, uzenetek, _ = git('log', '--format=%B', '%s..%s' % (alap, fej))
+        print('push_elott --gyors: GYORS PRÓBA, nem push előtti kapu; a változás %s óta (%s): %d fájl'
+              % (alap[:8], 'az utolsó zöld gyors próba' if pont else 'az ág alapja', len(fajlok)))
 
     fut = Futas(args.lepes)
     global TMP_KONYVTAR
@@ -528,6 +672,12 @@ def kapu(args):
     zold_ut = zold_utvonal()
     zold = zold_beolvas(zold_ut) if zold_ut else {}
     futo = set(LEPES_AZON)
+    if args.gyors:
+        futo = gyors_lepesek(fajlok) | {L_TESZT_SZABALY, L_TESZT_KAPU}   # a tesztfájlok egyenként szűrve (gyors_tesztek)
+        teszt_szuro = set(gyors_tesztek(fajlok))
+        print('push_elott --gyors: lépések: %s; tesztek: %s' % (
+            ', '.join(l for l in LEPES_AZON if l in futo - {L_TESZT_SZABALY, L_TESZT_KAPU}) or '-',
+            ', '.join(os.path.basename(t) for t in STATIKUS_TESZTEK if t in teszt_szuro) or '-'))
     if args.reszleges:
         futo, indokok = lepesek_futtatasa(zold, fej)
         if futo:
@@ -564,10 +714,15 @@ def kapu(args):
     modositott_fajl = os.path.join(tmp, 'pr_modositott.txt')
     with open(modositott_fajl, 'w', encoding='utf-8') as f:
         f.write(modositott + '\n')
-    with lap_sor('F217 generált nézetek'):
-        rc_gen, ki_gen = fut.lepes('F217 generált nézetek (generalt_nezetek.py --ir)', [
-            PY, 'eszkozok/generalt_nezetek.py', '--ir', '--jelentes', os.path.join(tmp, 'generalt_jelentes.md'),
-            '--pr-modositott', modositott_fajl])
+    lap_kell, lap_idk = lap_erintes(fajlok) if args.gyors else (True, None)
+    if not lap_kell:
+        print('KIHAGYVA F217 generált nézetek (gyors próba: a diff nem érinti a generátort és a lap bemenetét)')
+    else:
+        id_arg = [x for i in (lap_idk or []) for x in ('--id', i)]
+        with lap_sor('F217 generált nézetek'):
+            rc_gen, ki_gen = fut.lepes('F217 generált nézetek (generalt_nezetek.py --ir%s)' % (' ' + ' '.join(id_arg) if id_arg else ''), [
+                PY, 'eszkozok/generalt_nezetek.py', '--ir', '--jelentes', os.path.join(tmp, 'generalt_jelentes.md'),
+                '--pr-modositott', modositott_fajl] + id_arg)
 
     # 1. E2-E39 (mindig fut: diff-hatókörű szabályok; az E35/E28 maguk is csak az érintő fájlokra)
     uzenet_fajl = os.path.join(tmp, 'commit_uzenetek.txt')
@@ -606,15 +761,20 @@ def kapu(args):
 
     # 4. szabály-tesztek
     for t in STATIKUS_TESZTEK[:2]:
+        if args.gyors and t not in teszt_szuro:
+            continue
         kihagyhato(L_TESZT_SZABALY, 'teszt: ' + t, [PY, t])
     kihagyhato(L_TESZT_KINYER, 'teszt: eszkozok/visszhang/tanu_kinyer.py ellenoriz', [PY, 'eszkozok/visszhang/tanu_kinyer.py', 'ellenoriz'])
     kihagyhato(L_TESZT_KINYER, 'teszt: eszkozok/szakirodalom_kinyer.py ellenoriz', [PY, 'eszkozok/szakirodalom_kinyer.py', 'ellenoriz'])
     for t in STATIKUS_TESZTEK[2:]:
+        if args.gyors and t not in teszt_szuro:
+            continue
         kihagyhato(L_TESZT_KAPU, 'teszt: ' + t, [PY, t])
 
     # 5. feladatkövetés (E18) és tesztjei
     kihagyhato(L_E18, 'E18 feladatok.py ellenoriz', [PY, 'eszkozok/feladatok.py', 'ellenoriz', '--pr-alap', alap])
-    kihagyhato(L_E18, 'feladatok.py tesztek', [PY, 'eszkozok/teszt_feladatok.py'])
+    if not args.gyors or any(f in ('eszkozok/feladatok.py', 'eszkozok/teszt_feladatok.py') for f in fajlok):
+        kihagyhato(L_E18, 'feladatok.py tesztek', [PY, 'eszkozok/teszt_feladatok.py'])
 
     # 6. F232 (DT-F232a (b)): az olvasó tesztjei és mércéje helyben, a helyi `pardes.db`-n, ha az ág az olvasó kódját érinti.
     # A CI ezeket nem futtatja (nincs teszt-adatbázis; N-F232a: útvonal-szűrt CI a TSV-ből épített DB-n), ezért ez a kapu az
@@ -623,7 +783,9 @@ def kapu(args):
     # menet saját futása a draft PR előtt. Egy elbukott tesztfájl egyszer újrafut (ingadozás-védelem, N-F232c).
     # Nem része a részleges módnak (L_* lépés-azonosító): a saját feltétele a teljes alap..fej diff.
     olvaso_fajlok = olvaso_erintett(fajlok)
-    if olvaso_fajlok:
+    if args.gyors and (olvaso_fajlok or fuggo_tesztek(fajlok)):
+        print('KIHAGYVA olvasó-tesztek (gyors próba; az olvasó kódja vagy egy teszt bemenete változott: a teljes kapu futtatja)')
+    elif olvaso_fajlok:
         print('push_elott: az olvasó kódja változott (%d fájl, pl. %s): az olvasó gyors tesztjei futnak a helyi pardes.db-n'
               % (len(olvaso_fajlok), olvaso_fajlok[0]))
         print('FIGYELEM: a lassú tesztek (teszt_szintek.py, teszt_arculat.py) a kapuban nem futnak; a teljes sor a menet saját futása '
@@ -654,7 +816,7 @@ def kapu(args):
 
     # F223: a zöld jegyzés frissítése (csak tiszta fán, nem `--lepes` futás után): a rendben lefutott lépés a mostani fejen
     # zöld, a bukott lépés jegyzése törlődik, a kihagyotté marad
-    if zold_ut and not args.lepes and not nem_commitolt:
+    if zold_ut and not args.lepes and not args.gyors and not nem_commitolt:
         for l, ok in lepes_eredmeny.items():
             if ok:
                 zold[l] = fej
@@ -674,6 +836,16 @@ def kapu(args):
         return 1
     if args.lepes:
         print('0 HIBA a futtatott lépésekben (részleges futás: ez nem a push előtti kapu).')
+        return 0
+    if args.gyors:
+        if gyors_ut and not nem_commitolt:
+            import json
+            try:
+                with open(gyors_ut, 'w', encoding='utf-8') as f:
+                    json.dump({'fej': fej}, f)
+            except OSError as exc:
+                print('FIGYELEM: a gyors pont nem menthető (%s): %s' % (gyors_ut, exc))
+        print('0 HIBA a gyors próbában. Ez NEM push előtti kapu: a PR előtt egyszer a teljes `python eszkozok/push_elott.py`.')
         return 0
     if args.reszleges and len(futo) < len(LEPES_AZON):
         print('0 HIBA: a push mehet (részleges mód: a kihagyott lépések zöldek az utolsó futásuk óta, a változás nem érinti őket).')

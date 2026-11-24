@@ -496,6 +496,7 @@ def atiras_sorok(stat, ts):
 F34_CSERE = os.path.join(GYOKER, 'naplok', 'F34_M2_csere.tsv')
 F46_CSERE = os.path.join(GYOKER, 'naplok', 'BDB_KONYVFELOLDAS_csere.tsv')
 F46_KEZI = os.path.join(GYOKER, 'naplok', 'BDB_KONYVFELOLDAS_kezi.tsv')
+F240_CSERE = os.path.join(GYOKER, 'naplok', 'LXXBDB_konyvketto_csere.tsv')   # F240 L3: a kettőzött könyvszó törlése
 TSV = os.path.join(GYOKER, 'konkordancia', 'BDB_teljes_unabridged.tsv')
 
 
@@ -541,6 +542,16 @@ def forrasjavitas_index():
     return idx
 
 
+def f240_index():
+    """(strong, a hivatkozás kulcsa) → az F240 L3 forrása (a kettőzött könyvszó törlése, naplok/LXXBDB_konyvketto_csere.tsv)."""
+    idx = {}
+    for d in _tsv_olvas(F240_CSERE):
+        k = ref_kulcs(d.get('uj', ''))
+        if d.get('dontes') == 'javit' and k:
+            idx.setdefault((d['strong'], k), 'F240 L3 (naplok/LXXBDB_konyvketto_csere.tsv)')
+    return idx
+
+
 def token_elofordulas(szoveg, token):
     """Az egész-token (szóközzel határolt) előfordulások kezdőpozíciói."""
     return [m.start() for m in re.finditer(r'(?<!\S)' + re.escape(token) + r'(?!\S)', szoveg)]
@@ -579,6 +590,7 @@ def hivatkozas_sorok(stat, ts):
     for r in tabla_sorok():
         tabla.setdefault(r['strong'], []).append(r)
     idx = forrasjavitas_index()
+    idx240 = f240_index()
     ki = []
     for st in tabla:
         if st not in tsv or st not in ujra or _ws(tsv[st]) == _ws(ujra[st]):
@@ -595,13 +607,22 @@ def hivatkozas_sorok(stat, ts):
             poz = token_elofordulas(nezet, x) if x else []
             sor = next((h[2] for h in hatar if poz and len(poz) >= k and h[0] <= poz[k - 1] < h[1]), None)
             # az új hivatkozás: ha a szakasz csak könyvnév, a fejezet:vers a TSV következő tokenje
-            if not re.search(r'\d+:\d+', y):
+            if not y:
+                # F240 L3: tiszta törlés („Joel Joel 4:14” → „Joel 4:14”, „Joel Dan 4:14” → „Joel 4:14”): a megmaradt hivatkozás
+                if j2 < len(b) and re.match(r'^\d+:\d+', b[j2]) and j1 > 0:
+                    uj_ref = b[j1 - 1] + ' ' + b[j2]
+                else:
+                    uj_ref = ' '.join(b[j2:j2 + 2])
+            elif not re.search(r'\d+:\d+', y):
                 uj_ref = y + ' ' + (b[j2] if j2 < len(b) else '')
             elif not re.search(r'[A-Za-z]{2,}\.?\s+\d+:\d+', y) and j1 > 0:
                 uj_ref = b[j1 - 1] + ' ' + y          # csak fejezet:vers változott: a könyvnév az előző token
             else:
                 uj_ref = y
             forras = idx.get((st, ref_kulcs(uj_ref))) or GIT_FORRAS.get((st, x, y))
+            f240 = idx240.get((st, ref_kulcs(uj_ref)))
+            if f240:
+                forras = '%s; %s' % (forras, f240) if forras else f240
             if sor is None:
                 allapot, indok = 'jelolt_marad', 'a forrás-alak a tábla nézet-szövegében nem található (%d. előfordulás)' % k
                 stat['hivatkozas_jelolt_marad'] += 1
