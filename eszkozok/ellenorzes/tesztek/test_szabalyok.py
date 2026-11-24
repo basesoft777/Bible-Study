@@ -2634,5 +2634,121 @@ class NincsAgFajlHivatkozasTeszt(unittest.TestCase):
         self.assertFalse(H("re.compile(r'^nyitott/uj/[^/]+\\.md$')"))
 
 
+class KimenetiCsereTilalomTeszt(unittest.TestCase):
+    """DT952 (a 218c esete): a lapgenerátor a kész lapszövegen nem cserél szöveget utólag.
+
+    Ok: a régi generátor a kapuk kizöldítésére a kimeneti szövegen végzett cserékkel foltozott, a forrás javítása helyett;
+    a hiba így a forrásban maradt, és a szerkesztő nem látta. A javítás helye a forrás (kézi próza, adat, sablonmondat), a
+    bemeneti rétegben a megnevezett forrásjavítás.
+
+    A teszt a `eszkozok/lapgen/` minden kódfájlján (a `KIVETT` könyvtárak és fájlok kivételével) bukik, ha egy függvény `.sub`,
+    `.subn`, `.replace` vagy `.translate` hívást tartalmaz, vagy a `re` modulból `sub`/`subn` nevet importál, és a függvény nincs
+    a `MEGENGEDETT` listán. A listán csak egyetlen értéket formázó vagy a lapot nem író (mérő) függvény állhat, indokkal; az ide
+    felvett függvénynek ténylegesen tartalmaznia kell ilyen hívást (a lista nem hízhat el).
+
+    Mérés a bevezetéskor (c23d4ebe): a renderelő és a számító réteg (`megjelenites/`, `szamitas/`, `fo.py`) 0 találat; a többi
+    11 találat egyetlen érték formázása vagy mérőeszköz, ezek állnak lent; a 218c futó ágain még két mérő függvény (a kapuk
+    címazonosítása és a névelő-kapu elembontása), szintén lent."""
+
+    LAPGEN = os.path.join('eszkozok', 'lapgen')
+    HIVASOK = ('sub', 'subn', 'replace', 'translate')
+    KIVETT = {
+        'bemenet/': 'bemeneti réteg: a forrásadat beolvasása és tisztítása, még a lap összerakása előtt; a kártya kódba írt '
+                    'forrásjavításait a `teszt_kartya.KodbeliForrasjavitas` jegyzéke őrzi (DT-F218q)',
+        'tesztek/': 'tesztek: nem állítanak elő lapot',
+        'regresszio.py': 'mérőeszköz: a régi és az új lapot veti össze (az okonkénti engedélyt is), a lapot nem írja',
+        'hash_or_kapu.py': 'mérőeszköz: a változott fájlok útvonalát normalizálja, a lapot nem írja',
+    }
+    MEGENGEDETT = {
+        ('ismetles.py', '_jeloles_nelkul'): 'mérés: a szószámláláshoz a jelölést azonos hosszú szóközre takarja; a kiírt lap nem '
+                                            'változik',
+        ('szoveg.py', '_tizedes'): 'egyetlen szám formázása: tizedesvessző',
+        ('szoveg.py', '_skalar_szegmensek'): 'egyetlen szám formázása: az ezres tagolás jele',
+        ('szoveg.py', 'horgony'): 'egyetlen érték horgony-azonosítója (nem látható szöveg)',
+        ('szoveg.py', 'cim_horgony'): 'egy cím horgony-azonosítója (nem látható szöveg)',
+        ('lapszakasz.py', 'cim_alap'): 'mérés: a kész lap címsorát a kapu szakasz-azonosításához számozás nélkül olvassa; '
+                                       'a lap nem változik (F241.3)',
+        ('nevelo.py', 'elemek'): 'mérés: a névelő-kapu a lista- és táblaelemeket a megjegyzés kitakarásával bontja; a lap '
+                                 'nem változik (F241.5b)',
+    }
+    # a 218c futó ágain készülő fájlok (F241.3, F241.5b): a merge-ükig a main-en nincsenek, a hiányuk nem hiba
+    FUTO_AGON = ('lapszakasz.py', 'nevelo.py')
+
+    def _hivasok(self, rel):
+        return self.csere_hivasok(os.path.join(K.ROOT, self.LAPGEN, *rel.split('/')))
+
+    @classmethod
+    def csere_hivasok(cls, ut):
+        """{függvénynév: [sorszám, …]} a fájl csere-hívásaival; a modulszintű hívás neve `<modul>`."""
+        import ast
+        with open(ut, encoding='utf-8') as f:
+            fa = ast.parse(f.read(), filename=ut)
+        ki = {}
+
+        def bejar(csomopont, nev):
+            for gyerek in ast.iter_child_nodes(csomopont):
+                if isinstance(gyerek, (ast.FunctionDef, ast.AsyncFunctionDef)):
+                    bejar(gyerek, gyerek.name)
+                    continue
+                if (isinstance(gyerek, ast.Call) and isinstance(gyerek.func, ast.Attribute)
+                        and gyerek.func.attr in cls.HIVASOK):
+                    ki.setdefault(nev, []).append(gyerek.lineno)
+                if (isinstance(gyerek, ast.ImportFrom) and gyerek.module == 're'
+                        and any(a.name in ('sub', 'subn') for a in gyerek.names)):
+                    ki.setdefault(nev, []).append(gyerek.lineno)
+                bejar(gyerek, nev)
+        bejar(fa, '<modul>')
+        return ki
+
+    def _fajlok(self):
+        gyoker = os.path.join(K.ROOT, self.LAPGEN)
+        ki = []
+        for dir_, konyvtarak, fajlok in os.walk(gyoker):
+            konyvtarak[:] = sorted(k for k in konyvtarak if k != '__pycache__')
+            for f in sorted(fajlok):
+                if f.endswith('.py'):
+                    rel = os.path.relpath(os.path.join(dir_, f), gyoker).replace(os.sep, '/')
+                    if not any(rel == k or (k.endswith('/') and rel.startswith(k)) for k in self.KIVETT):
+                        ki.append(rel)
+        return ki
+
+    def test_a_kivett_ut_letezik(self):
+        if not os.path.isdir(os.path.join(K.ROOT, self.LAPGEN)):
+            self.skipTest('nincs lapgenerátor')
+        hianyzik = [k for k in self.KIVETT if not os.path.exists(os.path.join(K.ROOT, self.LAPGEN, *k.rstrip('/').split('/')))]
+        self.assertEqual(hianyzik, [], 'a KIVETT listán nem létező út áll: töröld a listáról')
+
+    def test_nincs_kimeneti_csere(self):
+        if not os.path.isdir(os.path.join(K.ROOT, self.LAPGEN)):
+            self.skipTest('nincs lapgenerátor')
+        rossz = []
+        for rel in self._fajlok():
+            for nev, sorok in sorted(self._hivasok(rel).items()):
+                if (rel, nev) not in self.MEGENGEDETT:
+                    rossz.append('%s:%s (%s. sor)' % (rel, nev, ', '.join(str(s) for s in sorok)))
+        self.assertEqual(rossz, [], 'szövegcsere a lapgenerátor kimeneti oldalán: a hibát a forrásban (próza, adat, sablonmondat) '
+                                    'vagy a bemeneti rétegben megnevezett forrásjavításként javítsd, ne a kész szövegen')
+
+    def test_a_megengedett_fuggveny_valoban_cserel(self):
+        if not os.path.isdir(os.path.join(K.ROOT, self.LAPGEN)):
+            self.skipTest('nincs lapgenerátor')
+        felesleges = [k for k in self.MEGENGEDETT
+                      if not (k[0] in self.FUTO_AGON
+                              and not os.path.isfile(os.path.join(K.ROOT, self.LAPGEN, *k[0].split('/'))))
+                      and k[1] not in self._hivasok(k[0])]
+        self.assertEqual(felesleges, [], 'a MEGENGEDETT listán áll, de nincs benne csere-hívás: töröld a listáról')
+
+    def test_a_minta_felismeri_a_cseret(self):
+        minta = ('import re\nfrom re import sub\ndef kesz(lap):\n    return lap.replace("x", "y")\n'
+                 'def jo(lap):\n    return lap.upper()\n')
+        ut = os.path.join(tempfile.mkdtemp(), 'm.py')
+        with open(ut, 'w', encoding='utf-8') as f:
+            f.write(minta)
+        try:
+            self.assertEqual(self.csere_hivasok(ut), {'<modul>': [2], 'kesz': [4]})
+        finally:
+            shutil.rmtree(os.path.dirname(ut), ignore_errors=True)
+
+
 if __name__ == '__main__':
     unittest.main()
