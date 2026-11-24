@@ -633,7 +633,9 @@ class CsoportOszlop(unittest.TestCase):
     # könyvnév-hibás helye (F202.4, a 2.31 kézi sorai): új érték
     # N212 (naplok/F197_jelentes.md 9.): a 2.30 négy ismétlődő szerkezeti hibaosztályának javítása a pont meghatározásakor
     # (633 sor szakasza/útvonala): új érték
-    REGI_OSZLOPOK_SHA256 = '25caf4244bb7bc197ca608843592bb26ac731057a0901253cf028e6a2511885a'
+    # F240 L3/L5: a kettőzött könyvnév törlése a forrásban (pozíció-eltolás 26 szócikkben) és a beragadt kurzor javítása
+    # (1186 sor / 79 Strong jelentéspontja; naplok/LXXBDB_vers_jelentes_diff.tsv): új érték
+    REGI_OSZLOPOK_SHA256 = 'edff3f1bac3c5603f8b9cade0a5e341682f61ef955c80db857fc662e1be10608'
 
     @classmethod
     def setUpClass(cls):
