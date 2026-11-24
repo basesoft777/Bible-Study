@@ -6,7 +6,8 @@ származtatott tábla CC BY-os bemenetei saját soron (F212); a licencszöveg é
 a „Negatív kritérium” sor hivatkozás a lap elejére (DT874, 9. tétel); a jóváhagyás-mondat munka módban a korábbi
 változatot mondja, kiadás módban a kapu a jóváhagyás frissességét méri (GK-27, T9, N221: egyező `lap_commit`;
 csak generált változás; kézi próza vagy adat változása → BUKÁS); a közel-keleti és a Chain Lineage-mondat az állapotból jön
-(GK-28). A táblákat a teszt maga olvassa (`split('\t')`), nem a generátor kódjával.
+(GK-28); a licenckapu (N223, D14): a lap adatát adó minden kötelező megjelölésű forrás minden megjelölés-mondata a
+Kolofonban, és minden forrás neve a forrástáblában, a tisztázatlan licencű a licencállapot mondatával. A táblákat a teszt maga olvassa (`split('\t')`), nem a generátor kódjával.
 """
 import dataclasses
 import datetime
@@ -138,10 +139,13 @@ class Forrastabla(_Alap):
 
 class Megjeloles(_Alap):
     def test_a_megjelolesek_a_licencleltarbol(self):
-        """A megjelölendő források a `konfig.KOLOFON_MEGJELOLES` kulcsai közül azok, amelyek bemenetét a lap
-        olvasta; a nem saját mondatú megjelölés a licencleltár `kotelezo_megjeloles` mezőjének mondata, szó szerint."""
+        """A megjelölendő források a `konfig.KOLOFON_MEGJELOLES` kulcsai közül azok, amelyek a lapra adatot adnak (a
+        bemenetet a lap olvasta, vagy külső forrásként áll; D14); a nem saját mondatú megjelölés a licencleltár `kotelezo_megjeloles` mezőjének mondata, szó szerint."""
         jegyzek = {s['id']: s for s in _tabla('adat/lapgen_bemenetek.tsv')}
         olvasott = {jegyzek[b]['licenc_kulcs'] for b in self.unio}
+        # a több forrású bemenet társai és a külső források (D14: a MACULA, a Sefaria) is adatot adnak a lapra
+        olvasott.update(*(t for b, t in konfig.LICENC_TARS.items() if b in self.unio))
+        olvasott.update(konfig.IROD_KULSO_LICENC.values())
         mezo = {s['dataset']: s['kotelezo_megjeloles'] for s in _tabla('adat/licencek.tsv')}
         vart_sablon = [s for k, s in konfig.KOLOFON_MEGJELOLES if k in olvasott and s is not None]
         self.assertEqual([m.sablon.value for m in self.modell.megjelolesek if m.sablon], vart_sablon)
@@ -334,12 +338,92 @@ class Allapotmondat(_Alap):
         self.assertIsNotNone(k['chain_lineage'].cimke)
 
 
+class Licenckapu(_Alap):
+    """N223 (F241.4, D14): minden licencleltár-forrás, amelynek adata a lapra kerül és `kotelezo_megjeloles`-e nem üres,
+    megjelölés-mondataival a Kolofonban áll (a saját mondatával, vagy a mező minden mondata idézetként); minden forrás
+    neve a forrástáblában, a tisztázatlan licencű a licencállapot mondatával (GK-28)."""
+
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.meres = SZ.licenc_meres(cls.korny, cls.elozo)
+
+    def _mas(self, **csere):
+        return dict(self.meres, **csere)
+
+    def test_n223_a_merce_a_lapon_allo_forrasokbol(self):
+        """A mérce forrásai a táblákból, független számlálással: a számozott szakaszok olvasott, forráslistára kerülő
+        bemeneteinek licenckulcsa (a több forrású bemenet társaival), a MACULA (a B19 bemenete) és a tanúk külső
+        forrásai."""
+        jegyzek = {s['id']: s for s in _tabla('adat/lapgen_bemenetek.tsv')}
+        mezo = {s['dataset']: s['kotelezo_megjeloles'] for s in _tabla('adat/licencek.tsv')}
+        olvasott = {jegyzek[b]['licenc_kulcs'] for b in self.unio if jegyzek[b]['irodalom'] != '-'} - {'-'}
+        for b_id, tarsak in konfig.LICENC_TARS.items():
+            if b_id in self.unio:
+                olvasott.update(tarsak)
+        self.assertTrue(olvasott <= set(self.meres['lapon_allo']), olvasott - set(self.meres['lapon_allo']))
+        vart = {k for k in olvasott if mezo.get(k)}
+        self.assertTrue(vart <= set(self.meres['kotelezo']), vart - set(self.meres['kotelezo']))
+        self.assertIn('Macula_heber', self.meres['kotelezo'])            # a származtatott tábla bemenete (F212)
+        self.assertIn('Tanu_rabbinikus_index', self.meres['kotelezo'])   # a tanúk külső forrása (Sefaria)
+        self.assertNotIn('BDB', self.meres['kotelezo'])                  # üres megjelölésű forrás nem tárgya
+
+    def test_n223_a_lap_minden_kotelezo_megjelolest_hordoz(self):
+        """A lap minden kötelező megjelölést hordoz: a kapu nem talál hiányt, és a mondatok a lapon állnak."""
+        self.assertEqual(SZ.licenc_hianyok(self.meres), [])
+        self.assertEqual(self.modell.licenc_hiany, ())
+        self.assertIs(SZ.kapu(self.modell), self.modell)
+        for kulcs, mondatok in self.meres['kotelezo'].items():
+            if kulcs not in self.meres['sablonos']:
+                for mondat in mondatok:
+                    self.assertIn(mondat, self.lap, kulcs)
+
+    def test_n223_hiany_bukas(self):
+        """Ha egy kötelező megjelölés hiányzik, a hiány a forrást nevezi meg, és a kapu megáll; a saját mondatú forrás
+        (LSJ) a sablonjával megjelölt."""
+        hianyok = SZ.licenc_hianyok(self._mas(idezett=set()))
+        self.assertIn('TAHOT', hianyok)
+        self.assertIn('TBESH', hianyok)
+        self.assertNotIn('LSJ', hianyok)
+        hianyos = dataclasses.replace(self.modell, licenc_hiany=(self.korny.b.kulcs('B01', 'dataset', 'TAHOT'),))
+        with self.assertRaises(BemenetHiba) as h:
+            SZ.kapu(hianyos)
+        self.assertIn('licenckapu', str(h.exception))
+        self.assertIn('TAHOT', str(h.exception))
+
+    def test_d14_a_forras_neve_a_kolofonban(self):
+        """D14 (c): a lap adatát adó minden forrást a forrástábla megnevez; a tisztázatlan licencű forrást (Chain
+        Lineage) a licencállapot mondatával (GK-28), és a mondat-kapu nem méri (a mezője leírás, nem előírt szöveg)."""
+        self.assertIs(self.meres['lapon_allo']['Chain_Lineage_Browser'], True)
+        self.assertNotIn('Chain_Lineage_Browser', self.meres['kotelezo'])
+        self.assertIn(IrodLicenc.CHAIN_LINEAGE, self.meres['fedett']['Chain_Lineage_Browser'])
+        nevtelen = {k: a for k, a in self.meres['fedett'].items() if k != 'TSK'}
+        self.assertEqual(SZ.licenc_hianyok(self._mas(fedett=nevtelen)), ['TSK'])
+        cimkes = dict(self.meres['fedett'], Chain_Lineage_Browser={IrodLicenc.LICENC})
+        self.assertEqual(SZ.licenc_hianyok(self._mas(fedett=cimkes)), ['Chain_Lineage_Browser'])
+
+    def test_n223_mondathatar(self):
+        """A mező mondatokra bontása a „.; ” és a „); ” határon (a STEPBible-mondat zárójeles licenccel végződik):
+        a TBESH első mondata azonos a TAHOT megjelölésével, így a lapon egyszer áll."""
+        lic = alap_be.b01_licencek(bemenet.Bemenet(kozos.GYOKER))
+        tahot, tbesh = lic.megjeloles_mondatok('TAHOT'), lic.megjeloles_mondatok('TBESH')
+        self.assertEqual(len(tbesh), 3)
+        self.assertEqual(tbesh[0], tahot[0])
+        self.assertTrue(tbesh[1].startswith('Refer others'))
+        self.assertEqual(lic.megjeloles_mondatok('BDB'), ())
+        self.assertEqual(self.lap.count(tahot[0]), 1)
+
+
 class Istentiszt(_Alap):
     AZONOSITO = ISTENTISZT
 
     def test_a_lap_elkeszul(self):
         self.assertIn('| Negatív kritérium | a lap elején áll', self.lap)
         self.assertIn('| ID | ISTENTISZT-001 |', self.lap)
+
+    def test_n223_licenckapu(self):
+        self.assertEqual(SZ.licenc_hianyok(SZ.licenc_meres(self.korny, self.elozo)), [])
+        self.assertEqual(self.modell.licenc_hiany, ())
 
 
 class Datumforma(unittest.TestCase):

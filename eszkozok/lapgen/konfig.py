@@ -199,13 +199,21 @@ KOLOFON_SZARMAZTATOTT = {'B19': (('B08', 'B30'), ('macula_heber',))}
 LICENC_TISZTAZATLAN = 'tisztazatlan'   # a licencleltár `allapot` értéke: a licenc nincs megadva vagy nem tisztázott
 
 # Kolofon (S8d). A forrástábla alatti kötelező forrásmegjelölések: a licencleltár kulcsai a lapon álló sorrendben (a régi
-# generátor halmaza és sorrendje, DT-F218y 3.); a megjelölés akkor áll, ha a lap számozott szakaszai a kulcshoz tartozó
-# bemenetet olvasták. A második elem None: a szöveg a licencleltár `kotelezo_megjeloles` mezője (a „.; ” határnál önálló
+# generátor halmaza és sorrendje, DT-F218y 3., a D14 bővítésével); a megjelölés akkor áll, ha a lap adatát a kulcshoz
+# tartozó forrás adja (a számozott szakaszok olvasott bemenetei, a származtatott táblák bemenetei, a külső források). A második elem None: a szöveg a licencleltár `kotelezo_megjeloles` mezője (a „.; ” határnál önálló
 # mondatokra bontva, az ismétlődő mondat egyszer); különben a `kolofon.megjeloles.<elem>` sablonsor (a lap saját
 # felhasználási mondata a forrásról).
+# A licenckapu (N223, F241.4): minden licencleltár-forrás, amelynek adatát a lap olvassa és `kotelezo_megjeloles`-e nem
+# üres, megjelölve áll (a saját mondatával, vagy a mező minden mondata idézetként). A jegyzék egy `licenc_kulcs`-ot visz
+# bemenetenként; a több forrás fájlját olvasó bemenet többi forrása itt áll (bemenet -> további licenckulcsok).
+LICENC_TARS = {'B10': ('TBESG',), 'B31': ('SDGNT',)}
 KOLOFON_MEGJELOLES = (('LSJ', 'lsj'), ('Karoli_versmegfeleltetes', None), ('LXX_versszintu_parok', None),
                       ('OSHL', 'twot'), ('TAHOT', None), ('UBS_DBH', None), ('UBS_DNTG', None),
-                      ('tW_szocikkek', 'tw'))
+                      ('tW_szocikkek', 'tw'),
+                      # D14 (F241.4, N223): a lap adatát adó további kötelező megjelölésű források
+                      ('TBESH', None), ('TBESG', None), ('Strong_szotar', None), ('LXX_OS', None),
+                      ('SBLGNT_apparatus', None), ('Macula_heber', None), ('Karoli_KH_javitott', None),
+                      ('Tanu_rabbinikus_index', None))
 # a szerzőségi mondatban felsorolt értelmező rések (a kézi forrásból jövő rések), a lapon álló sorrendben; a rés neve a
 # szakaszrend címe
 SZERZOSEG_RESEK = ('kivonat', 'miert_fontos', 'minosites', 'alatamasztas', 'ertelmezes', 'modszertan')
