@@ -142,7 +142,7 @@ class Celnev(unittest.TestCase):
                      ('--cel', 'lexikon_regi', '--id', 'HAMART-001', '--ir')):
             self.hivasok = []
             self._hiv(*argv)
-            self.assertEqual(self.hivasok, [('regi', ('HAMART-001',), 'lexikon_regi')], argv)
+            self.assertEqual(self.hivasok, [('regi', ('HAMART-001',), argv[1])], argv)   # a hívás célneve marad
 
     def test_id_nelkul_a_regi_generator_az_atallasig(self):
         """`--cel lexikon` `--id` nélkül (sablon 6, MUNKAMENET C1: az összes lap) a régi generátor, amíg egy motívum
