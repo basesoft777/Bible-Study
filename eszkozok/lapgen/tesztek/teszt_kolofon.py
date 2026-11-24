@@ -175,6 +175,7 @@ class Megjeloles(_Alap):
         self.assertTrue(lsj.endswith('lexica/ 2026-09-07.'))
         self.assertIn('Az adat Eliran Wong biblematedata-moduljából származik, letöltve 2026-09-07.',
                       sablonok['kolofon.megjeloles.lsj']['mondat'])
+        self.assertIn('Perseus Digital Library (`lexica` repó), átdolgozott változat,', self.lap)   # D22
         self.assertNotIn('Mounce', self.lap)   # az új generátor a Mounce-szótárt nem olvassa
         self.assertIn('*LSJ forrás: Liddell-Scott-Jones', self.lap)
 
