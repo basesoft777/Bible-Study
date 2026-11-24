@@ -49,7 +49,8 @@ LASSU = ('teszt_szintek.py', 'teszt_arculat.py')  # ~19 perc (#98, párhuzamos f
 # ezért az `adat/` és a `konkordancia/` változása is érinti. A `test_zar.py` statikusan ellenőrzi, hogy az olvasó-szerver
 # fájlútról betöltött moduljai a listán vannak.
 _OLVASO_KOD = ('eszkozok/olvaso_szerver/', 'eszkozok/olvaso_pilot/', 'eszkozok/bdb_jelolt/', 'eszkozok/bdb_rovidites.py',
-               'eszkozok/kiejtes.py', 'eszkozok/heber_kiejtes.py', 'eszkozok/tanulmany_regiszter.py', 'eszkozok/bdb_konyv_javit.py',
+               'eszkozok/kiejtes.py', 'eszkozok/heber_kiejtes.py', 'eszkozok/bdb_tagolas.py', 'eszkozok/bdb_vj_szabaly.py',
+               'eszkozok/szotari_glossza.py', 'eszkozok/tanulmany_regiszter.py', 'eszkozok/bdb_konyv_javit.py',
                'eszkozok/normalizal.py', 'eszkozok/forditas_kapuk.py', 'naplok/FORDITAS_P4_ellenoriz.py',
                'eszkozok/tsk_kulcs.py', 'eszkozok/karoli_kh_szuro.py', 'eszkozok/teszt_futtat.py')
 LASSU_LEFEDETT = {
