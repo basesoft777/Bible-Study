@@ -33,6 +33,9 @@ móddal fel is futtatja az olvasó gyors tesztjeit (a lassú `teszt_szintek.py` 
 futása) és az olvasói mércét (`teszt_olvasoi_merce.py`) a helyi `pardes.db`-n; egy elbukott tesztfájl egyszer újrafut (ingadozás:
 jelzés, nem bukás); másodszor is piros: a kapu 1-et ad.
 A mérce eltérése figyelmeztetés (a diff a futás kimenetében). Ez a lépés CSAK helyi: a CI-ben nincs teszt-adatbázis (N-F232a).
+Gép sora (`eszkozok/gepsor.py`; MUNKAMENET „Menet-ellenőrzés”, 5. pont): a teljes kapu (nem `--reszleges`, nem `--lepes`) egészében a gép
+közös FIFO-sorában fut; a részleges és a `--lepes` futás csak a lapot generáló lépéseket (F217 generált nézetek, E2–E39: az E28 is generál)
+futtatja a sorban. A sor mindig a helyi ellenőrzés-zár (`ellenorzes.zar`) előtt veendő, soha nem utána.
 Bekötés-összevetés (OLVASO-GYORS, 2026-11-23): ugyanitt fut a `bekotesi_leltar.py --osszevet <alap>`: HIBA, ha az olvasóban az alapon (merge-base)
 látszó blokk, tábla vagy adatkészlet az ágon nem látszik, feltételhez kötött vagy másik fülön áll (`olvaso_szerver/merce/bekotes_kivetel.tsv`: kivétel, indokkal).
 
@@ -78,6 +81,7 @@ STATIKUS_TESZTEK = [
     'eszkozok/teszt_hatastortenet.py',
     'eszkozok/teszt_proza_allitas.py',
     'eszkozok/teszt_push_elott.py',
+    'eszkozok/teszt_gepsor.py',
     'eszkozok/teszt_brief_lezaras.py',
     'eszkozok/teszt_lepes_jelzes.py',
     'eszkozok/teszt_generalt_nezetek.py',
@@ -461,6 +465,26 @@ def main():
             return 1
         print('RENDBEN: a push_elott.py lépéslistája és a workflow egyezik.')
         return 0
+    return sorban(args)
+
+
+def sorban(args):
+    """A teljes kapu a gép közös sorában (`gepsor.py`); a részleges és a `--lepes` futás csak a lapot generáló lépéseknél áll sorba
+    (`lap_sor`). A sorban állás a gyerekfolyamatokra öröklődik (`PARDES_SOR_TARTVA`), így a lépések nem állnak be újra."""
+    if args.reszleges or args.lepes:
+        return kapu(args)
+    import gepsor
+    with gepsor.Sor('push_elott.py teljes kapu (%s)' % ROOT):
+        return kapu(args)
+
+
+def lap_sor(nev):
+    """A lapot generáló lépés sora (a teljes kapuban már sorban áll: akkor nem csinál semmit)."""
+    import gepsor
+    return gepsor.Sor('push_elott.py: %s (%s)' % (nev, ROOT))
+
+
+def kapu(args):
 
     rc, fej, _ = git('rev-parse', 'HEAD')
     if rc != 0:
@@ -539,19 +563,21 @@ def main():
     modositott_fajl = os.path.join(tmp, 'pr_modositott.txt')
     with open(modositott_fajl, 'w', encoding='utf-8') as f:
         f.write(modositott + '\n')
-    rc_gen, ki_gen = fut.lepes('F217 generált nézetek (generalt_nezetek.py --ir)', [
-        PY, 'eszkozok/generalt_nezetek.py', '--ir', '--jelentes', os.path.join(tmp, 'generalt_jelentes.md'),
-        '--pr-modositott', modositott_fajl])
+    with lap_sor('F217 generált nézetek'):
+        rc_gen, ki_gen = fut.lepes('F217 generált nézetek (generalt_nezetek.py --ir)', [
+            PY, 'eszkozok/generalt_nezetek.py', '--ir', '--jelentes', os.path.join(tmp, 'generalt_jelentes.md'),
+            '--pr-modositott', modositott_fajl])
 
     # 1. E2-E39 (mindig fut: diff-hatókörű szabályok; az E35/E28 maguk is csak az érintő fájlokra)
     uzenet_fajl = os.path.join(tmp, 'commit_uzenetek.txt')
     with open(uzenet_fajl, 'w', encoding='utf-8') as f:
         f.write(uzenetek + '\n')
     if fajlok:
-        fut.lepes('E2-E39 (futtat.py)', [
-            PY, 'eszkozok/ellenorzes/futtat.py', '--valtozott'] + fajlok + [
-            '--diff-alap', alap, '--diff-fej', fej, '--pr-cim', pr_cim, '--esemeny', 'pull_request',
-            '--commit-uzenet-fajl', uzenet_fajl, '--minta', MINTA])
+        with lap_sor('E2-E39'):
+            fut.lepes('E2-E39 (futtat.py)', [
+                PY, 'eszkozok/ellenorzes/futtat.py', '--valtozott'] + fajlok + [
+                '--diff-alap', alap, '--diff-fej', fej, '--pr-cim', pr_cim, '--esemeny', 'pull_request',
+                '--commit-uzenet-fajl', uzenet_fajl, '--minta', MINTA])
     else:
         print('RENDBEN  E2-E39 (nincs változott fájl)')
     if args.lepes:
