@@ -249,3 +249,23 @@ Mellék-megjegyzések az ellenőrtől (nem eltérés): a jelentés F241.0 szakas
 **Lapgen-futás:** négy generálás (a két lap az (1) és a (2) kódjával) és két in-process mérés, egymás után; előtte a `python.exe`-lista (egy `ellenorzes/futtat.py`, lapgen nem).
 
 *Proveniencia: `scope=general.py --cel lexikon2 --id ISTENTISZT-001 / HAMART-001 (repón kívül) → olvasoi_kapu.lap_meres (fajta-térképpel és anélkül, lapgen.fo.lap_keszit); regresszio.py --id HAMART-001 --teljes | forras=a munkafa (02046e23; 20d16985 + a mérce) | ts=2026-11-24`.*
+
+## F241.5b — 4. menet: a (2) licencmondatai (D20 (1), D21, D22) és a #855 main-re igazítása
+
+*2026-11-24 · `claude-opus-5-5` (kért: `opus`, egyezik) · alap: `claude/f241-5b-2` `9d1339e5`.*
+
+**#855.** A main-re igazítva az A1 (#860) után (`47083035`): két ütközés — `teszt_kapuk.py` (a main „0 fordításra vár” állítása marad), `F241_jelentes.md` (mindkét szakasz). A diff ezután csak az (1) rész (27 fájl). A CI E5-je az átadó két régi címsorán bukott (az átadó 3. menetbeli átírása cserélte őket): `TÖRLÉS-SZÁNDÉKOS:` jelölő commit (`14d39d2a`, a fa változatlan); helyben az E5 üres.
+
+**D20 (1).** A Kolofon saját mondata (`kolofon.megjeloles.lsj`, `.twot`, `.tw`) a licencleltár `kotelezo_megjeloles` mezőjét szó szerinti idézetként hordozza (`{megjeloles}`, `lathato`); a megjelenítő `{megjeloles}` nélküli sablonsornál megáll (SablonHiba). A licenckapu `sablonos` kivétele megszűnt: a saját mondatú forrás mezőjét is mondatszinten méri (`licenc_hianyok`). A tW-leltár mezője a LICENSE.md szó szerinti mondata („… available from unfoldingword.org/utw”; a korábbi `https://www.`-alak és a zárójeles megjegyzés nem volt szó szerinti, a megjegyzés a `megjegyzes` oszlopba került). A tW- és a TWOT-mondat a lapon változatlan.
+
+**D21, D22 (az integrátor döntései, a D22 a szerkesztő szavával).** Az LSJ „[date of access]” helyén 2026-09-07, az adat letöltésének napja (`konkordancia/lexikonok_nyers/README.md`); a kötelező mondat után a lap saját mondata: „Az adat Eliran Wong biblematedata-moduljából származik, letöltve 2026-09-07.” (származást nem állít; a #858 összevetése szerint tartalmilag igazolt, de átdolgozott, ezért D22: az előtag „… Perseus Digital Library (`lexica` repó), átdolgozott változat, CC BY-SA 4.0.”).
+
+**Változáslista (Kolofon, mindkét lap):** az LSJ-sor új szövege (az előírt Perseus-mondat, a letöltési út mondata, „átdolgozott változat”).
+
+**Mérce:** `naplok/F218_referencia.tsv` B01 és B66 hash-sora; `naplok/F218_elteres_engedely.tsv` S8D-MEGJ-1 (az új LSJ-sor hash-e, az ok kiegészítve).
+
+**Mérés (gépsorral, `eszkozok/gepsor.py`):** HAMART-001 és ISTENTISZT-001 `general.py --cel lexikon2` repón kívülre; `regresszio.py --id HAMART-001 --teljes`: RENDBEN (0 engedély nélküli diff-sor); `futtat.py kolofon` 29/29; az ISTENTISZT-001 Kolofonja: a három mondat szó szerint, „[date of access]” nincs. Lapgen nélkül: `futtat.py szoveg szerkezet nevelo` 45/45. **Szabálysértés (jelezve az integrátornak):** a lapgen nélkülinek hitt körben a `teszt_regresszio` `Szamlalok` osztálya két mintalapot generált gépsor nélkül; kár nem történt.
+
+**(3) előkészítés:** a „lánc”/„szónézet” sablonsorok lapon-mérése (a használt sablonkulcsok számlálása in-process): 43 sor (27 „lánc”, 16 „szónézet”), a munkalista az átadóban hivatkozott jegyzetfájlban. A TEREMT-001 a main-en az új generátorral nem generálható (B47: a kézi forrása a #820-on), nem mérve.
+
+*Proveniencia: `scope=general.py --cel lexikon2 --id HAMART-001 / ISTENTISZT-001 (repón kívül) → regresszio.py --teljes; lapgen/tesztek/futtat.py kolofon; in-process fo.lap_keszit (ISTENTISZT-001, HAMART-001) a sablonkulcsok számlálásával | forras=a munkafa (claude/f241-5b-2 + a 4. menet commitjai, 04c998e0) | ts=2026-11-24`*
