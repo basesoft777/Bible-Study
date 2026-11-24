@@ -77,7 +77,7 @@ Mérés utána ugyanígy: az F243.1 mérőszkriptje (`eszkozok/indulo_teher.py`)
    **⛔ Az integrátor jóváhagyja a memória-archiválás listáját és a tanulságfájl sorait** (a tanulságfájl tervezete a repón kívül, a közös jegyzetmappában: `F243_TANULSAG_TERVEZET.md`). Jóváhagyás nélkül a memóriához nem nyúlsz.
 3. **F243.3** — Memória: az új `MEMORY.md` (tanulságfájl), a 74 fájl az `archivum/`-ba ARCHÍV fejléccel. A memória a repón kívül van, commit nincs; a jelentésbe: a fájllista, az áthelyezés előtti és utáni sha256 a fejléc nélküli törzsre (bájtra egyezés), és az új `MEMORY.md` mérete. A `CSAPDAK.md` három új szakasza, az M-MÉRCE szövege az integrátornak, a `KESZ_LAP_KOVETELMENY.md` 30 hivatkozása (F pont) — commit.
 4. **F243.4** — `NYITOTT_FELADATOK.md` → `archivum/NYITOTT_FELADATOK_lezart.md` (C pont): olvasó-lista a jelentésbe, átkötés, a két kötelező teszt, bájt előtte és utána.
-5. **⛔ A CLAUDE.md-terv (6. szakasz) — FELOLDVA:** a szerkesztő 2026-11-24-én jóváhagyta („Mehet így”; DT-F243a, l. a 8. szakaszt), a két kieső bekezdéssel együtt. A terv így megy; ha a végrehajtásban egy sora mégsem tartható, az eltérés kérdésként az integrátorhoz kerül, nem a session dönti el.
+5. **⛔ A CLAUDE.md-terv (6. szakasz) — FELOLDVA:** a szerkesztő 2026-11-24-én jóváhagyta („Mehet így”; DT954, l. a 8. szakaszt), a két kieső bekezdéssel együtt. A terv így megy; ha a végrehajtásban egy sora mégsem tartható, az eltérés kérdésként az integrátorhoz kerül, nem a session dönti el.
 6. **F243.5** — A `CLAUDE.md` rövidítése a jóváhagyott terv szerint; a kiköltöző szöveg a célhelyre; a hivatkozások frissítése; `python eszkozok/feladatok.py ellenoriz` és a helyi E-ellenőrzés (E27, E36) zöld.
 7. **F243.6** — CI-kapu a `CLAUDE.md` méretére (E pont 2.), teszttel; ha a #241 közben a `.github/workflows/ellenorzes.yml`-t is módosította, a main behozása után.
 8. **F243.7** — „Utána” mérés (2. szakasz minden sora), a régi és az új `CLAUDE.md` szabálylistájának tételes összevetése a jelentésben (minden szabály: hol áll most). `python eszkozok/teszt_futtat.py --gyors` és a push előtti kapu. Egy független ellenőrzés (`fuggetlen-ellenor`; eszköz és szabályhely változik, nehéz kör), legfeljebb egy javítókör.
@@ -99,7 +99,7 @@ A 74 fájl végigolvasva 2026-11-24-én. A tanulságfájlba csak az kerül, amin
 
 **Projektállapot, háttér, magánadat → archív (nem töltődik be, kérdésre olvasható):** doktori-ut-kizarva, technologia-nem-nyilt, orcid, f86-dontesek-2026-10-28, nyilt-adat-kozles, kulso-lektor, fable-kreditbol, forditas-keret-es-menet, utemezes-2026-11-11, befogadasra-var, olvaso-felmeresek-nyitva, olvaso-ketnyelvu-jegyzek, olvaso-alapnezet-es-felvetesek, visszhang-reteg-terv, f125-kiejtes-es-lepesek, lexikon-ag-lezaras-2026-11-08, a régi MEMORY.md. *Ezekben csak itt él több azonosító (artifact-URL-ek, DOI-k, kapcsolattartók, vászon-azonosítók): az archívum ezért megmarad, és a tanulságfájl utolsó sora rá mutat.*
 
-## 6. A `CLAUDE.md` terve — szakaszonként (jóváhagyva: a szerkesztő, 2026-11-24, DT-F243a)
+## 6. A `CLAUDE.md` terve — szakaszonként (jóváhagyva: a szerkesztő, 2026-11-24, DT954)
 
 Jelölés: **M** = megmarad · **R** = rövidül (a mag marad) · **H** = hivatkozássá rövidül, a szöveg a célhelyre költözik (ha ott már áll, csak a hivatkozás marad) · **K** = kiesik (a feltétele megszűnt). A kódból hivatkozott szakaszcímek megmaradnak.
 
@@ -108,7 +108,7 @@ Jelölés: **M** = megmarad · **R** = rövidül (a mag marad) · **H** = hivatk
 | 1 | Cím és bevezető (423) | M | — | 420 |
 | 2 | „Ezt olvasd, ezt ne”: az archív-figyelmeztetés és a feladattábla (1 718) | R: a 96 KB-os archívumra egy sor; a tábla marad, a „hol áll egy szabály” sor tömörebben | — | 1 100 |
 | 3 | Rétegek táblázata (932) | M | — | 930 |
-| 4 | „Átmenet (D34)” bekezdés | K: a feltétele, a #11 lezárása teljesült (F11 `lezarva`); a szerkesztő jóváhagyta (DT-F243a) | DONTESEK D34 | 0 |
+| 4 | „Átmenet (D34)” bekezdés | K: a feltétele, a #11 lezárása teljesült (F11 `lezarva`); a szerkesztő jóváhagyta (DT954) | DONTESEK D34 | 0 |
 | 5 | „Egyirányúság (DT28)” (~900) | R: három mondat (egy fájl egy réteg; forrás → adat → kimenet; forrásba adatot visszaírni tilos) | DONTESEK DT28 | 500 |
 | 6 | A nyolc rés bekezdése (~800) | H: „A lexikonlap réseit csak a forrásban szerkeszted” + mutató | RENDER_BRIEF G1/G4, sablon 6 | 200 |
 | 7 | Az értelmező próza egy kézben (K1) és a `generalt_proba/` (~400) | M, soronként egy mondat | — | 350 |
@@ -138,6 +138,6 @@ Jelölés: **M** = megmarad · **R** = rövidül (a mag marad) · **H** = hivatk
 ## 8. Döntésnapló
 
 - **Befogadás (2026-11-24), szerkesztői döntés (az integrátor, a felhasználó felhatalmazásával, DT936):** „a befogadás mehet így”. Elfogadva az is, hogy a memória-archívum a memóriamappában van, nem a repóban („helyes, elfogadva”). A CLAUDE.md-terv (6. szakasz) itt tervként áll; a ⛔ (4. szakasz, 5. lépés) a végrehajtásban marad: a szerkesztő válaszát az integrátor továbbítja, és ha a szerkesztő módosít, a brief a PR-on igazodik.
-- **A CLAUDE.md-terv (6. szakasz), szerkesztői döntés, 2026-11-24:** „Mehet így” (a kérdés: mehet-e a rövidítési terv így, a két kieső bekezdéssel, az „Átmenet (D34)”-gyel és a „Felmérési szünet”-tel együtt). Az integrátor továbbította; döntéstétel: DT-F243a (`dontesek/uj/karcsusitas-brief.md`). A ⛔ a 9. lépésben (a diff merge előtt) a szerkesztőé marad.
+- **A CLAUDE.md-terv (6. szakasz), szerkesztői döntés, 2026-11-24:** „Mehet így” (a kérdés: mehet-e a rövidítési terv így, a két kieső bekezdéssel, az „Átmenet (D34)”-gyel és a „Felmérési szünet”-tel együtt). Az integrátor továbbította; döntéstétel: DT954 (`dontesek/uj/karcsusitas-brief.md`). A ⛔ a 9. lépésben (a diff merge előtt) a szerkesztőé marad.
 - Szám: a briefet 242-re írtam, de a `kovetkezo_szam --foglal` a helyi, még commitolatlan briefet is foglaltnak vette, és a 243-at foglalta le (`foglalas/F243`). A brief ezért 243 lett, így foglalóágat nem kellett törölni; a 242 szabad maradt.
 - (A további ⛔ pontok jóváhagyása ide kerül, idézettel és dátummal. Új döntés helyőrzővel a `dontesek/uj/<ágnév>.md`-be.)
