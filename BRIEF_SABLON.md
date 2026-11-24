@@ -16,6 +16,7 @@ sav: CONTENT
 allapot: nem_indult
 alap: a3405522
 merce_vakfolt: a bájtra azonos kimenet nem veszi észre a régi lap hibáit
+szerkeszto_szava: „fontos hogy most már visszaesés ne legyen innen” (2026-11-08, chat)
 ad: mit ad, ha kész (egy mondat)
 kovetkezo: következő lépés (egy sor; „Te:” kezdetű, ha felhasználói lépés; „Folytatás:” kezdetű, ha `fut` állapotban félbemaradt)
 munka: adat
@@ -38,7 +39,8 @@ Soronként `kulcs: érték`; lista `[a, b]`; idézőjel csak glob mintánál. A 
 | `modell` | igen | `sonnet` · `opus` · `haiku` · `fable` · `külső:<név>` (a `fable` brief Fable-sessionben, közvetlenül fut, végrehajtó subagent nincs hozzá; a felhasználó, 2026-11-13: a generátor-újraírás Fable-on); a régi `Modell:` sor megmarad, a kettő egyezik; a session modelljét nem állítja, a futtató ellenőrzi |
 | `sav` | `feladat`, `naplozas` és `felmeres` típusnál | `SYSTEMS` (fejlesztői infrastruktúra: CI, Actionök, kapuk, tesztek, feladatrendszer, parancsok) · `CONTENT` (tartalomkészítés: motívumok, lapok, lapgenerátor, adat, nyílt adatcsomagok, közlemények) · `SERVER` (olvasó-szerver) · `USER` (az olvasó-szerver felhasználókezelése minden tervezett elemével: regisztráció és belépés, szintek (nyilvános, regisztrált, kutató), az előfizetés és a vásárlás hozzáférése az olvasóban, jogosultságok, fiók és adatkezelés) · `BUSINESS` (a #86 üzleti oldala: bevételi modell, árak, eladói forma, adó és jog, fizetési szolgáltató, számlázás) · `DESIGN` (az olvasó-szerver kinézete és arculata: CSS, arculat-konfig, vászon/mockup, design-system). Kétes esetben a fő termék szerint; a `FELADATOK.md` generált táblái sávonként csoportosítanak, a session címe a sávval kezdődik |
 | `alap` | a #241 utáni `feladat`, `naplozas`, `felmeres` briefnél | a kiinduló állapot: commit-hash, címke (pl. `olvaso-alapvonal-2026-11-23`) vagy `PR #<n> merge-e után` (ekkor a session a merge után indul). Összevetés a mai main-nel a brief `olvas` útjain: `python eszkozok/feladatok.py alap <szám>` (`AZONOS` / `ELTER` / `VAR`); a kimenet első sora is megnevezi az alapot (DT952, a #842 esete) |
-| `merce_vakfolt` | a #243 utáni `feladat`, `naplozas`, `felmeres` briefnél | egy olvasói mondat a brief mércéje mellé (elfogadási feltétel, regresszió, kapu): mit **nem** fog meg a mérce, pl. „a bájtra azonos kimenet nem veszi észre a régi lap hibáit”. A `feladatok.py ellenoriz` hibát ad, ha hiányzik, üres, csak belső szakszóból áll (kódjelölés, azonosító, „hash”, „regresszió” …), vagy nem mondja ki, mit nem fog meg; a `/befogad` a szerkesztőnek szóló kérdésben szó szerint idézi (DT952, a 218c esete: a „ne legyen visszaesés” helyett bájtra azonos regresszió) |
+| `merce_vakfolt` | a #243 utáni `feladat`, `naplozas`, `felmeres` briefnél | egy olvasói mondat a brief mércéje mellé (elfogadási feltétel, regresszió, kapu): mit **nem** fog meg a mérce, pl. „a bájtra azonos kimenet nem veszi észre a régi lap hibáit”. A `feladatok.py ellenoriz` hibát ad, ha hiányzik, üres, csak belső szakszóból áll (kódjelölés, azonosító, „hash”, „regresszió” …), vagy nem mondja ki, mit nem fog meg; a `/befogad` a szerkesztőnek szóló kérdésben szó szerint idézi (DT952, a 218c esete: a „ne legyen visszaesés” helyett bájtra azonos regresszió). **Elbírálás:** ha a vakfolt a `szerkeszto_szava` magját érinti (a mondat tartalmi szava vagy legalább háromszavas darabja a vakfoltban áll), a mérce nem „kész”: a `feladatok.py jovahagyando` `SZERKESZTOI_KERDES` sort ad, a `/befogad` kötelező kérdést tesz fel a szerkesztőnek, a tartalmi ítéletet az integrátor mondja ki |
+| `szerkeszto_szava` | a #243 utáni `feladat`, `naplozas`, `felmeres` briefnél | a szerkesztő célmondata **szó szerint**, dátummal és forrással: `„<idézet>” (ÉÉÉÉ-HH-NN, <forrás: chat, IRANY …>)`, több idézet `/`-rel. A mérce ehhez mér, nem a helyettesítőjéhez. Az átadó jegyzet és a jelentés első sora változatlanul idézi (lent). A `feladatok.py ellenoriz` hibát ad, ha hiányzik, ha nem ilyen alakú, ha egy `naplok/F<nn>_atado*.md` nem idézi szó szerint, vagy ha a `naplok/F<nn>_jelentes.md` első tartalmi sora nem `**A szerkesztő szava:** „…”` (DT952: a cél átírásról átírásra csúszott, és a jelentés a helyettesítő mércéről szólt) |
 | `allapot` | igen | `nem_indult` · `brief_kell` · `fut` · `dontesre_var` · `megallt` · `lezarva` |
 | `ad` | igen* | „Mit ad, ha kész” |
 | `kovetkezo` | igen* | „Következő lépés”; „Te:” = a felhasználóra vár; „Folytatás:” (`fut` állapotban) = félbemaradt, a `/kovetkezo` folytatási jelöltként ajánlja |
@@ -79,11 +81,13 @@ Közös koordinációs fájlok (`FELADATOK.md`, `DONTESEK.md`, `NYITOTT_FELADATO
 ## 5. Döntésnapló
 ```
 
-**Jelentés (F184 D4, F188 T1).** Feladatonként egy jelentésfájl: `naplok/F<nn>_jelentes.md`. Benne, külön szakaszokban:
+**Jelentés (F184 D4, F188 T1).** Feladatonként egy jelentésfájl: `naplok/F<nn>_jelentes.md`. Az első tartalmi sora (a cím után), ha a briefnek van `szerkeszto_szava` mezője: `**A szerkesztő szava:** „<idézet>” — a mért eredmény: <hogyan felel rá>`; a helyettesítő mérce eredménye csak utána jöhet (gépi ellenőrzés: `feladatok.py ellenoriz`). Benne, külön szakaszokban:
 
 1. a menet szakaszai tételenként (proveniencia-sorral);
 2. **„Független ellenőrzés — <n>. ellenőrzés”**: a `fuggetlen-ellenor` jelentése szó szerint (első sora `TISZTA` / `ELTÉRÉS: <n> tétel` / `⛔ DÖNTÉS KELL: …`). Az ügynöknek nincs írási joga: a jelentést válaszként adja, és a hívó session menti a szakaszba, változtatás nélkül, külön commitban, `F<nn>.<t>: ellenőri jelentés (<n>. ellenőrzés: <első sor>)` címmel (ezt a címet méri az `eszkozok/ellenorzes/teher_meres.py`). A szövegéhez utána sem nyúlsz. Tanulmány-ellenőrzésnél tanulmányonként egy ilyen szakasz, a címben a tanulmány nevével. A `/elteres` `teves` válasza a szakasz alá kerül, „Válasz az <n>. ellenőrzéshez” alcímmel;
 3. a végén **„Zárás”** (≤20 sor: mi készült, a cserék vagy mérések száma, a tesztek eredménye, a nyitott pontok, a PR); félbemaradt futásnál a „Folytatási pont” is ide kerül.
+
+**Átadó jegyzet (DT952).** A `naplok/F<nn>_atado*.md` a brief `szerkeszto_szava` idézetét változatlanul, szó szerint hordozza (nem átfogalmazva); a `feladatok.py ellenoriz` hibát ad, ha valamelyik idézet hiányzik belőle.
 
 Külön `naplok/<feladat>_zaras.md` és `naplok/ELLENOR_<tétel>.md` nem készül. A régi fájlok változatlanok: a korábban indult feladatnál, amelynek már van `naplok/ELLENOR_F<nn>*.md` jelentése, a `/elteres` azt olvassa, és a sorozatot abban a formában folytatja.
 

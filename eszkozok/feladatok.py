@@ -34,9 +34,10 @@ Parancsok:
                     a fejlec `munka` es `ir` mezojebol levezetve (uj mezo nincs); --extra FAJL:
                     a befogadando brief javasolt fejlece (mint a `fuggesek`-nel); --jelentes FAJL:
                     az ellenori jelentes(ek): az eszkalacio (`SZINT-ESZKALÁCIÓ:` sor) teljesre emel
-    jovahagyando SZAM..  DT952: a befogadasi jegyzek jovahagyando tartalmi pontjai (a `merce_vakfolt`: a meres
-                    modja tartalmi kerdes, nem technikai; DT920 hatara); --extra FAJL: a befogadando brief;
-                    1-es kilepesi kod, ha a mezo hianyzik vagy nem olvasoi mondat
+    jovahagyando SZAM..  DT952: a befogadasi jegyzek jovahagyando tartalmi pontjai (`szerkeszto_szava`,
+                    `merce_vakfolt`: a meres modja tartalmi kerdes, nem technikai; DT920 hatara); SZERKESZTOI_KERDES,
+                    ha a vakfolt a szerkeszto mondatanak magjat erinti; --extra FAJL: a befogadando brief;
+                    1-es kilepesi kod, ha egy mezo hianyzik/hibas, vagy kotelezo szerkesztoi kerdes all
 
 Kilepesi kod: 0 = rendben, 1 = szabalysertes, 2 = hiba.
 """
@@ -75,7 +76,8 @@ SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'DESIGN')
 SAV_ATMENET_KIVETEL = (217, 218)
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
-           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav', 'lezar', 'alap', 'merce_vakfolt')
+           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav', 'lezar', 'alap', 'merce_vakfolt',
+           'szerkeszto_szava')
 # DT952 elso alkalmazasa (a #842 esete, 2026-11-23): a brief kiindulo allapota (commit, cimke vagy
 # `PR #<n> merge-e után`). A #241 utani feladat/naplozas/felmeres briefnel kotelezo; a regieknel nem.
 ALAP_KUSZOB = 241
@@ -94,6 +96,20 @@ MERCE_OLVASOI_SZO = re.compile(r'^[a-záéíóöőúüű]{3,}$')
 MERCE_TAGADAS = re.compile(r'(?<![^\W\d_])(?:nem|sem|nincs\w*|nélkül\w*|kimarad\w*|észrevétlen\w*|kívül)(?![^\W\d_])',
                            re.IGNORECASE)
 MERCE_MIN_SZO = 4
+# DT952, második kiegészítés: a szerkesztő célmondata átírásról átírásra csúszik (szerkesztő → brief → átadó → következő
+# session), és a jelentés a helyettesítő mércéről szól. Ezért a #243 utáni brief a célmondatot szó szerint hordozza:
+# `szerkeszto_szava: „<idézet>” (ÉÉÉÉ-HH-NN, <forrás: chat, IRANY …>)`, több idézet `/`-rel elválasztva. Az átadó jegyzet
+# (`naplok/F<nn>_atado*.md`) és a jelentés (`naplok/F<nn>_jelentes.md`) első sora változatlanul idézi.
+SZERKESZTO_SZAVA_MINTA = re.compile(r'^(„[^”]+”(?:\s*/\s*„[^”]+”)*)\s*\((\d{4}-\d{2}-\d{2}),\s*([^)]+)\)$')
+SZERKESZTO_IDEZET_RX = re.compile(r'„([^”]+)”')
+JELENTES_ELSO_SOR = '**A szerkesztő szava:**'
+# a vakfolt elbírálása (harmadik kiegészítés, a célhűség-próba E1 és E5 esete): a szerkesztő mondatának tartalmi
+# szavai (legalább 5 betű, nem kötőszó vagy töltelék); egyezés a szótő (az első 5 betű) szerint, vagy a mondat legalább
+# 3 szavas szó szerinti darabja áll a vakfoltban
+CEL_TOLTELEK = frozenset(('fontos', 'legyen', 'innen', 'szerintem', 'kellene', 'minden', 'ennek', 'nagyon', 'akkor',
+                          'amikor', 'mert', 'hogy', 'most', 'csak', 'lesz', 'igaz', 'ahol', 'nincs', 'kell', 'már'))
+CEL_SZOTO = 5
+CEL_DARAB = 3
 LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg', 'motivum_kesz', 'lezar')
 # F219 (DT-F219a): a `lezar` azoknak az N-tetelnek a listaja, amelyeket a brief teljesit; a merge-kor a
 # `feladatok.yml` gepi lepese (eszkozok/brief_lezaras.py) zarja le oket a NYITOTT_FELADATOK.md-ben.
@@ -449,6 +465,84 @@ def merce_vakfolt_hiba(ertek):
     return None
 
 
+def szerkeszto_szava_hiba(ertek):
+    """None, ha a `szerkeszto_szava` szó szerinti idézet dátummal és forrással; különben a hibaüzenet (DT952)."""
+    if not ertek or not ertek.strip(' "\''):
+        return ('hiányzó kötelező mező: szerkeszto_szava (a szerkesztő célmondata szó szerint: '
+                '„<idézet>” (ÉÉÉÉ-HH-NN, <forrás: chat, IRANY …>))')
+    if not SZERKESZTO_SZAVA_MINTA.match(ertek.strip()):
+        return ('szerkeszto_szava: „<idézet>” (ÉÉÉÉ-HH-NN, <forrás>) alak kell, több idézet `/`-rel '
+                '(kapott: %r)' % ertek)
+    return None
+
+
+def szerkeszto_idezetek(ertek):
+    """A `szerkeszto_szava` idézetei („…” nélkül), a fejléc sorrendjében."""
+    return SZERKESZTO_IDEZET_RX.findall(ertek or '')
+
+
+def _szavak(szoveg):
+    return re.findall(r'[^\W\d_]+', (szoveg or '').lower())
+
+
+def vakfolt_erinti_a_celt(vakfolt, szava):
+    """A szerkesztő mondatának azok a részei, amelyek a vakfoltban állnak (üres lista: nem érinti).
+
+    Két jel (a célhűség-próba E1 és E5 esete): (1) a mondat tartalmi szavának töve (az első CEL_SZOTO betű; legalább
+    CEL_SZOTO betűs, nem töltelékszó) a vakfolt egy szavának eleje; (2) a mondat legalább CEL_DARAB szavas, szó szerinti
+    darabja a vakfoltban áll. A gép csak jelez: a tartalmi ítéletet az integrátor mondja ki."""
+    vf = _szavak(vakfolt)
+    talalt = []
+    for idezet in szerkeszto_idezetek(szava):
+        sz = _szavak(idezet)
+        for i in range(len(sz) - CEL_DARAB + 1):
+            darab = sz[i:i + CEL_DARAB]
+            if any(vf[j:j + CEL_DARAB] == darab for j in range(len(vf) - CEL_DARAB + 1)):
+                talalt.append('„%s”' % ' '.join(darab))
+                break
+        for szo in sz:
+            if len(szo) < CEL_SZOTO or szo in CEL_TOLTELEK:
+                continue
+            to = szo[:CEL_SZOTO]
+            if any(v.startswith(to) for v in vf) and szo not in talalt:
+                talalt.append(szo)
+    return talalt
+
+
+def _elso_tartalmi_sor(ut):
+    with open(ut, encoding='utf-8', errors='replace') as f:
+        for sor in f:
+            s = sor.strip()
+            if s and not s.startswith('#') and not s.startswith('<!--') and s != '---':
+                return s
+    return ''
+
+
+def szerkeszto_szava_naplohibak(b, gyoker=REPO):
+    """Az átadó jegyzet és a jelentés a `szerkeszto_szava` idézetét változatlanul hordozza (DT952).
+
+    `naplok/F<nn>_atado*.md`: minden idézet szó szerint benne áll. `naplok/F<nn>_jelentes.md`: az első tartalmi sor
+    `**A szerkesztő szava:**`-val kezdődik, benne az idézetekkel; utána mondja meg, hogyan felel rájuk a mért eredmény."""
+    idezetek = szerkeszto_idezetek(b.fej.get('szerkeszto_szava'))
+    if not idezetek or b.szam is None:
+        return []
+    hibak = []
+    for ut in sorted(glob.glob(os.path.join(gyoker, 'naplok', 'F%d_atado*.md' % b.szam))):
+        with open(ut, encoding='utf-8', errors='replace') as f:
+            szoveg = f.read()
+        hiany = [i for i in idezetek if i not in szoveg]
+        if hiany:
+            hibak.append('az átadó jegyzet (%s) nem idézi szó szerint a szerkesztő szavát: „%s”'
+                         % (os.path.relpath(ut, gyoker).replace(os.sep, '/'), '”, „'.join(hiany)))
+    jel = os.path.join(gyoker, 'naplok', 'F%d_jelentes.md' % b.szam)
+    if os.path.isfile(jel):
+        elso = _elso_tartalmi_sor(jel)
+        if not elso.startswith(JELENTES_ELSO_SOR) or any(i not in elso for i in idezetek):
+            hibak.append('a jelentés (naplok/F%d_jelentes.md) első sora: `%s „<idézet>” — a mért eredmény: …` '
+                         '(a szerkesztő mondatára felel, nem a helyettesítő mércére)' % (b.szam, JELENTES_ELSO_SOR))
+    return hibak
+
+
 def ellenoriz(briefek, gyoker=REPO):
     """Hibak listaja: (fajl, uzenet)."""
     hibak = []
@@ -503,6 +597,12 @@ def ellenoriz(briefek, gyoker=REPO):
             vh = merce_vakfolt_hiba(fej.get('merce_vakfolt'))
             if vh:
                 hibak.append((b.fajl, vh))
+            sh = szerkeszto_szava_hiba(fej.get('szerkeszto_szava'))
+            if sh:
+                hibak.append((b.fajl, sh))
+        if fej.get('szerkeszto_szava'):
+            for uzenet in szerkeszto_szava_naplohibak(b, gyoker):
+                hibak.append((b.fajl, uzenet))
         for azon in fej.get('lezar', []):
             if not LEZAR_AZON.match(azon):
                 hibak.append((b.fajl, 'lezar: N-tétel azonosítók (`N12` vagy `N-F219a`), kapott: %r' % azon))
@@ -1605,15 +1705,33 @@ def jovahagyando_pontok(b):
     határa). A pont a `merce_vakfolt` mező: a #243 utáni briefnél kötelező (`HIBA`, ha hiányzik vagy nem olvasói mondat),
     a régebbinél akkor áll, ha a fejlécben szerepel."""
     ertek = b.fej.get('merce_vakfolt')
+    szava = b.fej.get('szerkeszto_szava')
     kotelezo = (b.fej.get('tipus') in ('feladat', 'naplozas', 'felmeres') and b.szam is not None
                 and b.szam > MERCE_VAKFOLT_KUSZOB)
-    if not kotelezo and not ertek:
+    if not kotelezo and not ertek and not szava:
         return []
-    hiba = merce_vakfolt_hiba(ertek)
+    ki = []
+    if kotelezo or szava:
+        sh = szerkeszto_szava_hiba(szava)
+        if sh:
+            ki.append(('HIBA', 'szerkeszto_szava', szava or '', sh))
+        else:
+            ki.append(('TARTALMI', 'szerkeszto_szava', szava,
+                       'a szerkesztő célmondata: a mérce ehhez mér, nem a helyettesítőjéhez'))
+    hiba = merce_vakfolt_hiba(ertek) if (kotelezo or ertek) else None
     if hiba:
-        return [('HIBA', 'merce_vakfolt', ertek or '', hiba)]
-    return [('TARTALMI', 'merce_vakfolt', ertek,
-             'a mérés módja a cél része: az integrátorhoz, onnan olvasói mondattal a szerkesztőhöz (DT920 határa)')]
+        ki.append(('HIBA', 'merce_vakfolt', ertek or '', hiba))
+        return ki
+    if not ertek:
+        return ki
+    ki.append(('TARTALMI', 'merce_vakfolt', ertek,
+               'a mérés módja a cél része: az integrátorhoz, onnan olvasói mondattal a szerkesztőhöz (DT920 határa)'))
+    erintett = vakfolt_erinti_a_celt(ertek, szava)
+    if erintett:
+        ki.append(('SZERKESZTOI_KERDES', 'merce_vakfolt', ', '.join(erintett),
+                   'a vakfolt a szerkesztő mondatának magját érinti: a mérce nem „kész”; kötelező kérdés a '
+                   'szerkesztőnek olvasói mondattal, az ítéletet az integrátor mondja ki (a /befogad nem hagyhatja ki)'))
+    return ki
 
 
 def alap_osszevet(b, gyoker=REPO):
@@ -1779,7 +1897,7 @@ def main(argv=None):
                     print('NINCS_PONT\t#%d\ta #%d előtti brief, merce_vakfolt nélkül' % (n, MERCE_VAKFOLT_KUSZOB + 1))
                 for fajta, mezo, ertek, megj in pontok:
                     print('%s\t#%d\t%s\t%s\t%s' % (fajta, n, mezo, ertek, megj))
-                    rossz += fajta == 'HIBA'
+                    rossz += fajta in ('HIBA', 'SZERKESZTOI_KERDES')
             return 1 if rossz else 0
         if arg.parancs == 'szint':
             regi = {id(b) for b in briefek}

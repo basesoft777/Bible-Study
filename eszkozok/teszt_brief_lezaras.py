@@ -30,7 +30,8 @@ def brief(szam=900, allapot='megallt', kovetkezo='Te: a draft PR áttekintése; 
     sorok = ['---', 'feladat: %d' % szam, 'cim: Próba', 'kod: PROBA', 'tipus: %s' % tipus, 'fazis: folyamat',
              'modell: sonnet', 'allapot: %s' % allapot, 'ad: próba', 'kovetkezo: "%s"' % kovetkezo,
              'munka: folyamat', 'ir: [x.py]', 'fugg: []', 'alap: abc1234',
-             'merce_vakfolt: a próba mércéje nem nézi, hogy a lap olvasói szövege érthető-e']
+             'merce_vakfolt: a próba mércéje nem nézi, hogy a lap olvasói szövege érthető-e',
+             'szerkeszto_szava: „a próba legyen rövid” (2026-11-24, chat)']
     if ag:
         sorok.append('ag: %s' % ag)
     if pr is not None:

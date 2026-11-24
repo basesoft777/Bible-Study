@@ -640,11 +640,13 @@ class AlapMezoTest(Alap):
 class MerceVakfoltTest(Alap):
     """DT952 (a 218c esete): a #243 utáni brief egy olvasói mondatban kimondja, mit NEM fog meg a mércéje."""
     JO = 'a bájtra azonos kimenet nem veszi észre a régi lap hibáit'
+    SZAVA = '„a szótári rész legyen teljes” (2026-11-24, chat)'
 
     def hibak_szoveg(self):
         return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]
 
     def uj(self, **kw):
+        kw.setdefault('szerkeszto_szava', self.SZAVA)
         self.g.brief('F244_A_BRIEF.md', brief_szoveg(244, olvas=['a'], ir=['a'], alap='a3405522', **kw))
 
     def test_uj_brief_vakfolt_nelkul_hiba(self):
@@ -702,8 +704,10 @@ class JovahagyandoTest(Alap):
 
     def test_uj_brief_vakfoltja_tartalmi_pont(self):
         self.g.brief('F243_A_BRIEF.md', brief_szoveg(243, olvas=['a'], ir=['a']))
-        rc, ki = self.futtat('--extra', self.extra(brief_szoveg(olvas=['b'], ir=['b'], merce_vakfolt=self.JO)))
+        rc, ki = self.futtat('--extra', self.extra(brief_szoveg(olvas=['b'], ir=['b'], merce_vakfolt=self.JO,
+                                                                 szerkeszto_szava=MerceVakfoltTest.SZAVA)))
         self.assertEqual(rc, 0)
+        self.assertIn('TARTALMI\t#244\tszerkeszto_szava\t%s\t' % MerceVakfoltTest.SZAVA, ki)
         self.assertIn('TARTALMI\t#244\tmerce_vakfolt\t%s\t' % self.JO, ki)
         self.assertIn('szerkesztő', ki)
 
@@ -720,9 +724,99 @@ class JovahagyandoTest(Alap):
         self.assertIn('NINCS_PONT\t#243', ki)
 
     def test_pontok_fuggvenye(self):
-        self.g.brief('F244_A_BRIEF.md', brief_szoveg(244, olvas=['a'], ir=['a'], merce_vakfolt=self.JO))
+        self.g.brief('F244_A_BRIEF.md', brief_szoveg(244, olvas=['a'], ir=['a'], merce_vakfolt=self.JO,
+                                                     szerkeszto_szava=MerceVakfoltTest.SZAVA))
         b = [x for x in self.g.briefek() if x.szam == 244][0]
-        self.assertEqual([p[:3] for p in F.jovahagyando_pontok(b)], [('TARTALMI', 'merce_vakfolt', self.JO)])
+        self.assertEqual([p[:3] for p in F.jovahagyando_pontok(b)],
+                         [('TARTALMI', 'szerkeszto_szava', MerceVakfoltTest.SZAVA),
+                          ('TARTALMI', 'merce_vakfolt', self.JO)])
+
+
+class SzerkesztoSzavaTest(Alap):
+    """DT952, második kiegészítés: a szerkesztő célmondata szó szerint a briefben, az átadóban és a jelentés első sorában."""
+    SZAVA = '„fontos hogy most már visszaesés ne legyen innen” (2026-11-08, chat)'
+    IDEZET = 'fontos hogy most már visszaesés ne legyen innen'
+
+    def hibak_szoveg(self):
+        return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]
+
+    def uj(self, **kw):
+        kw.setdefault('merce_vakfolt', MerceVakfoltTest.JO)
+        self.g.brief('F244_A_BRIEF.md', brief_szoveg(244, olvas=['a'], ir=['a'], alap='a3405522', **kw))
+
+    def naplo(self, nev, szoveg):
+        os.makedirs(os.path.join(self.g.ut, 'naplok'), exist_ok=True)
+        with open(os.path.join(self.g.ut, 'naplok', nev), 'w', encoding='utf-8') as f:
+            f.write(szoveg)
+
+    def test_hianyzo_mezo_hiba(self):
+        self.uj()
+        self.assertTrue(any('szerkeszto_szava' in h for h in self.hibak_szoveg()))
+
+    def test_rossz_alak_hiba(self):
+        for ertek in ('visszaesés ne legyen', '„visszaesés ne legyen”', '„visszaesés ne legyen” (tegnap, chat)'):
+            self.uj(szerkeszto_szava=ertek)
+            self.assertTrue(any('szerkeszto_szava:' in h for h in self.hibak_szoveg()), ertek)
+
+    def test_jo_alak_rendben(self):
+        for ertek in (self.SZAVA, '„a hamart lesz az új arany” / „visszaesés ne legyen innen” (2026-11-08, memória)'):
+            self.uj(szerkeszto_szava=ertek)
+            self.assertEqual(self.hibak_szoveg(), [], ertek)
+
+    def test_regi_brief_nem_kotelezo(self):
+        self.g.brief('F243_A_BRIEF.md', brief_szoveg(243, olvas=['a'], ir=['a'], alap='a3405522'))
+        self.assertEqual(self.hibak_szoveg(), [])
+
+    def test_atado_szo_szerint_hordozza(self):
+        self.uj(szerkeszto_szava=self.SZAVA)
+        self.naplo('F244_atado_F244.2.md', '# Átadó\n\nA szerkesztő szava: „%s” (2026-11-08)\n' % self.IDEZET)
+        self.assertEqual(self.hibak_szoveg(), [])
+        self.naplo('F244_atado_F244.3.md', '# Átadó\n\nA szerkesztő azt kérte, hogy ne legyen visszaesés.\n')
+        self.assertTrue(any('F244_atado_F244.3.md' in h for h in self.hibak_szoveg()))
+
+    def test_jelentes_elso_sora(self):
+        self.uj(szerkeszto_szava=self.SZAVA)
+        self.naplo('F244_jelentes.md', '# F244 jelentés\n\n**A szerkesztő szava:** „%s” — a mért eredmény: a régi lap '
+                                       'egyik olvasói kategóriájában sem több a hiba.\n' % self.IDEZET)
+        self.assertEqual(self.hibak_szoveg(), [])
+        self.naplo('F244_jelentes.md', '# F244 jelentés\n\nA regresszió bájtra azonos.\n')
+        self.assertTrue(any('jelentés' in h for h in self.hibak_szoveg()))
+
+
+class VakfoltElbiralasTest(Alap):
+    """DT952, harmadik kiegészítés: ha a vakfolt a szerkesztő mondatának magját érinti, kötelező szerkesztői kérdés.
+    Két valós eset a célhűség-próbából (2026-11-24): E1 (HAMART, „visszaesés ne legyen”) és E5 (HAMART v6 átnézés,
+    „szerintem ezt nem így kellene”); a vakfolt-mondatok a próba modelljeinek szövegéből valók."""
+    E1_SZAVA = '„a hamart lesz az új arany” / „fontos hogy most már visszaesés ne legyen innen” (2026-11-08, chat)'
+    E1_VAKFOLT = ('az egyezés a meglévő hibákat is konzerválhatja; A „visszaesés ne legyen” szerkesztői minőségígéretét '
+                  'a gépi mérés önmagában nem fedi le')
+    E5_SZAVA = '„szerintem ezt nem így kellene” (2026-11-11, chat)'
+    E5_VAKFOLT = ('ez önmagában nem dönti el, hogy a 4.1 sor új megfogalmazása pontosan megfelel-e a szerkesztő '
+                  '„szerintem ezt nem így kellene” kifogásának')
+
+    def test_e1_erinti(self):
+        self.assertIn('visszaesés', F.vakfolt_erinti_a_celt(self.E1_VAKFOLT, self.E1_SZAVA))
+
+    def test_e5_erinti(self):
+        self.assertTrue(F.vakfolt_erinti_a_celt(self.E5_VAKFOLT, self.E5_SZAVA))
+
+    def test_fuggetlen_vakfolt_nem_erinti(self):
+        self.assertEqual(F.vakfolt_erinti_a_celt(MerceVakfoltTest.JO, MerceVakfoltTest.SZAVA), [])
+        self.assertEqual(F.vakfolt_erinti_a_celt(MerceVakfoltTest.JO, self.E5_SZAVA), [])
+
+    def test_jegyzekben_kotelezo_kerdes(self):
+        self.g.brief('F244_A_BRIEF.md', brief_szoveg(244, olvas=['a'], ir=['a'], alap='a3405522',
+                                                     merce_vakfolt=self.E1_VAKFOLT, szerkeszto_szava=self.E1_SZAVA))
+        b = [x for x in self.g.briefek() if x.szam == 244][0]
+        fajtak = [p[0] for p in F.jovahagyando_pontok(b)]
+        self.assertIn('SZERKESZTOI_KERDES', fajtak)
+        import contextlib
+        import io
+        ki = io.StringIO()
+        with contextlib.redirect_stdout(ki):
+            rc = F.main(['--gyoker', self.g.ut, 'jovahagyando', '244'])
+        self.assertEqual(rc, 1)
+        self.assertIn('SZERKESZTOI_KERDES\t#244', ki.getvalue())
 
 
 class SavTest(Alap):
