@@ -144,3 +144,23 @@ A Workflow-fájlok (`.github/workflows/*.yml`) a `lexikon_general`-t név szerin
 **Hatás:** az ISTENTISZT-001 4.3 és 4.4 pontja (generált blokk) magyarul; a D9 szerint változásjegyzék-sor, új nézés nem.
 
 *Proveniencia: `scope=general.py --cel lexikon2 --id ISTENTISZT-001 (előtte/utána); lapgen.bemenet.szotari b29_tw, b31_domenek; ellenoriz.py; PARDES_DATUM=2026-11-13 general.py --cel lexikon2 --id HAMART-001; regresszio.py --id HAMART-001 --teljes | forras=a munkafa a commit előtt | ts=2026-11-24`.*
+
+## F241.5b — 1. menet: a 91 MINTA-hely mérése, KONYV, a HAMART-001 mérése, a D11-kapuk munkalistája
+
+*2026-11-24 · `claude-opus-5-5` (kért: `opus`, egyezik) · alap: `6bdff88e`.*
+
+**A 91 MINTA-hely forrása (D13 (c), ⛔ az integrátorhoz, válaszra vár).** Öt forrás: 87 hely a `jeloltek.tsv` `indoklas` mezője a 3. szakasz (43) és a 6. szakasz Minősítés-táblája (44) Indok oszlopában — mögöttük 10 egyedi szöveg („… került a jelöltek közé” 37 sorban, „… a fölérendelt fogalomhoz tartozik” 6 sorban); 2 hely az `elutasitasi_okok.tsv` `megjegyzes` mezője (1. Döntési út); 1 hely BDB-szöveg (4.2, a kiesett nem héber írású szó utáni „,;”); 1 hely a `kiadasok.tsv` leírása („jelölt alakban” = megjelölve). Mellék-lelet: a 61 kereszthivatkozásos sor a 3. és a 6. szakaszban is teljes táblában áll. A javaslat (külön olvasói-indoklás tábla hash-kulccsal; a kettőzés megszüntetése; helyben javítás a B56-ban és a kiadástörténetben) és a mérés: `side-session-notes/local_5140778b…/F241.5b_MINTA91_meres.md`.
+
+**KONYV (kész, `51bd1fa1`).** A „Zef 3:9” a döntésnapló `forras_kereses` mezőjéből jön (a Károli-KH forrásverse); a lapgen eddig „úgy, ahogy az adatban” tette ki (N195). Javítás: a normalizáló tábla meglévő `Forrás-alakok` oszlopa (a Sof sorban `Zef`), a B63-modul olvassa, a `kereszthiv._igehely` a tábla rövidítésére cserél, ismeretlen könyvnév BemenetHiba (a kódban alias nincs, GK-17). A tábla hash-ét rögzítő `adat/thayer_vers_jelentes.tsv` újragenerálva (`vers_jelentes.py --ts 2026-11-11`): csak a fejléc változott. A mérce B63/B21 hash-sora: `e7d93251`. Az ISTENTISZT-001 lapján előtte/utána: a KONYV-találat 2 → 0, a diff a 4 „Sof 3:9” sor és a blokkok `ts=b:` hash-e.
+
+**LISTA_NEVELO, MUNKASZO (mérve, a javítás új szöveget kér: ⛔ az integrátorhoz).** A 9 ISTENTISZT-hely: 6 a 2.1 tábla Kulcsszó oszlopa (Károli-szavak, a jóváhagyott régi lapon is így), 3 a Funkció cella (B03/B46 `funkcio`, kézi kifejezés); a 10. és a HAMART-001 egyetlen LISTA_NEVELO-ja: B66 `kolofon.ertek.kriterium` („a lap elején áll”). A MUNKASZO mindkét lapon: B65 `irod_adat` „Lap teljesség-mérése” (B05/B06).
+
+**A HAMART-001 és az `ellenoriz` 11. szabálya (D13 (e)).** A HAMART-001 új lapja: BUKÁS 2 (a fenti MUNKASZO és LISTA_NEVELO). A 11. szabály a lapon álló `minosites`/`alatamasztas` rést a régi generátor (`lexikon_general.res_torzs`) szövegével veti össze: a 99 vizsgált hely mindkét változatban azonos, soronként azonos tartalommal; az eltérés megfogalmazás, forráslista és a proveniencia-sor olvasói alakja. Tartalmi veszteség nincs. A szabály a régi generátor fogyasztója: az új generátor lapján (F241.7-től a `lexikon/`-ban) minden résen SÉRTÉST adna. **Gazdája: az F241.7 első lépése** (átkötés: az új generátoron a rés-forrás egyezést a GK-07, a GK-27 és a `regresszio.py` méri). A HAMART-001 regressziója (`--teljes`) a KONYV-javítás után: RENDBEN, engedély nélküli diff-sor 0.
+
+**A D11 (1) kapuinak munkalistája** (`side-session-notes/local_5140778b…/F241.5b_szokincs_munkalista.tsv`): a próbalista (a MINTA- és a MUNKASZO-kapu mintái + a forrásmérés belső szavai) a B66-ban 99, a B65-ben 16 sort talál (160 találat; „lánc” 86, „szónézet” 16); a névtábla-identitás 77 sor (45 `ok_cella`-másolat). A kapuk a javítással együtt kerülnek be (különben a teszt bukik); a szakszavak olvasói megfelelője ⛔ az integrátornál.
+
+**A brief határán túl javítva:** `konkordancia/Konyv_normalizalo_tabla.tsv` (egy cella, a Sof sor `Forrás-alakok` mezője; gépies, a tábla meglévő oszlopa) és a mérce `naplok/F218_referencia.tsv` hash-sorai.
+
+**Lapgen-futás:** három, egymás után (ISTENTISZT-001 előtte, HAMART-001, ISTENTISZT-001 utána), előtte a `python.exe`-lista (3 folyamat, a legnagyobb 296 MB, lapgen-méretű nem). Tesztek: `futtat.py kereszthiv` 18/18.
+
+*Proveniencia: `scope=general.py --cel lexikon2 --id ISTENTISZT-001 / HAMART-001 (repón kívül) → olvasoi_kapu.lap_meres; ellenoriz.res_elvart_es_tenyleges (HAMART-001 minosites, alatamasztas); a B65/B66 minden során a próbalista; regresszio.py --id HAMART-001 --teljes | forras=a munkafa (6bdff88e → e7d93251) | ts=2026-11-24`.*
