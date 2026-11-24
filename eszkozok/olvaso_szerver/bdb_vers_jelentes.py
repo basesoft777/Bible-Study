@@ -382,6 +382,19 @@ class TablaPont:
                 legjobb = min(jeloltek, key=lambda x: abs(x - vart))
                 if k < 0 or (abs(k - vart) > VART_TAV and abs(legjobb - vart) < abs(k - vart)):
                     k = legjobb
+        if k < 0 and vart is not None:
+            # F240.L7 (javítókör): a tábla nyers szövege a hivatkozás könyvét néha másként írja, mint a javított forrás
+            # („Isa 4:3” a „Josh 4:3” helyett); ilyenkor a fejezet:vers a várt pozíció közelében is azonosít.
+            cv = re.search(r'\d+:\d+$', nyers)
+            if cv:
+                jelolt = [m.start() for m in re.finditer(r'(?<![\d:])%s(?![\d])' % re.escape(cv.group(0)), self.t)]
+                # a kurzor utáni előfordulás előnyben (ugyanaz a vers a szócikkben többször is állhat: fej és jelentés)
+                elore = [x for x in jelolt if x >= self.kurzor and abs(x - vart) <= VART_TAV]
+                if elore or jelolt:
+                    legjobb = min(elore or jelolt, key=lambda x: abs(x - vart))
+                    if abs(legjobb - vart) <= VART_TAV:
+                        k = legjobb
+                        nyers = cv.group(0)
         if k < 0:
             return (vart if vart is not None else self.utolso), False
         # a választott hely messze esik a várttól: az illesztés gyanús (a sor `ketes:jp_tavol`), a 48. kapu méri

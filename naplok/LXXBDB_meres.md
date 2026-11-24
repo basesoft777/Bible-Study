@@ -97,7 +97,7 @@ a Zsolt 71:20 → 5. (ezt mondja a BDB).
 (HAMART-001: a változott Ézs 36:10 csak a BDB-idézetben), H0430 (ISTENTISZT-001, MENNY-001: a változott Zsolt 97:7 nincs a
 lapon). A kiadott és a jóváhagyott lapok 1. táblája nem érintett.
 
-**Kapu:** `ellenoriz.py` 48 (plafon 2 futam / 10 sor; a javítás előtt 45 / 1 188 → bukik), teszt `BeragadtKurzor` és
+**Kapu:** `ellenoriz.py` 48 (plafon 0 futam / 0 sor az F240.L7 óta; a javítás előtt 45 / 1 188 → bukik), teszt `BeragadtKurzor` és
 `teszt_gyokerok_kapuk.VersJelentesKapu`. A javítókörben: a várttól 600 karakternél messzebb választott hely `ketes:jp_tavol`
 (19 sor, ebből 17 már kétes volt; a brief L5.3(b) „utána kezdődő szakasz” próbája ezzel, a generátoron belül, a
 táblapozíció és az angol pozíció eltérésén mér); plafon 19.
@@ -118,22 +118,27 @@ engedélyével letöltve, a repón kívül) is csak 2 962 hivatkozást jelöl, a
 (H4649: „מֵץ … only הַמֵּץ Is 16:4”).
 
 **Mérés és javítás** (`eszkozok/bdb_konyvfeloldas_javit.py`, napló: `naplok/LXXBDB_konyvfeloldas_csere.tsv`). A teljes táblán
-a „könyvszó (önálló vagy az előző szóhoz tapadt, teljes név, szóközös rövidítés) + más könyv hivatkozása” minta: 16 hiba,
-mind TAHOT-tal igazolva (a hivatkozott szó Strongja a javított Károli-versben áll, a hibásban nem; a „see X” mini-szócikknél a
-hivatkozott szó saját Strongjával): H1310 Joel 4:13; H2505, H3092 Joel 4:2; H4649 Isa 16:4; H0689 Amos 8:8; H4136 Josh 8:33 és
-H5186 Jer 51:25 (fölös „Joel”); H5327 Lev 1:16; H2023 Num 20:22; H4673 Josh 4:3; H6981 1Chr 9:19; H7655 Ezra 7:14; H4161
-Num 33:2; H4196 2Chr 4:1 és H1740 2Chr 4:6 (fölös „Songs”); valamint a H7650 „Psalms; Psa 102:9” írásjeles kettőzése.
-Angolul 16 szócikk, magyarul 17 fordítássor javítva, 17 `forras_hash` frissítve, fizetős újrafordítás nélkül (elavult sor
-előtte és utána: 158). A vers → jelentés táblában 14 hivatkozás kap helyes Károli-verset (pl. 1Krón 4:2 → Jóel 3:2), 4 sor
-jelentéspontja változik.
+a „könyvszó (önálló vagy az előző szóhoz tapadt, teljes név, szóközös rövidítés) + más könyv hivatkozása” minta: 19 hely
+(20 csere; a független ellenőr javítókörével), mind igazolva — TAHOT (a hivatkozott szó Strongja a javított Károli-versben
+áll, a hibásban nem; a „see X” mini-szócikknél a hivatkozott szó saját Strongjával), a H4649-nél és a H1962-nél az
+OpenScriptures-XML, illetve -kivonat is: H1310 Joel 4:13; H2505, H3092 Joel 4:2; H4649 Isa 16:4; H0689 Amos 8:8; H4136 Josh 8:33,
+H5186 Jer 51:25 és H5920 1Sam 2:10 (fölös könyvszó); H5327 Lev 1:16; H2023 Num 20:22; H4673 Josh 4:3; H6981 1Chr 9:19; H7655
+Ezra 7:14 (és a csupasz „3:19” → Dan 3:19, hogy ne az Ezsdrást örökölje); H4161 Num 33:2; H4196 2Chr 4:1 és H1740 2Chr 4:6
+(fölös „Songs”); H4709 Hos 5:1; H1962 Job 6:2; valamint a H7650 „Psalms; Psa 102:9” írásjeles kettőzése. Angolul 19
+szócikk, magyarul 20 fordítássor javítva, 20 `forras_hash` frissítve, fizetős újrafordítás nélkül (elavult sor előtte és
+utána: 158). A szakasz-javítótábla (`bdb_forras_javitas.tsv`) új sorai az L7 naplójára hivatkoznak (`forras_javit.f240_index`),
+„nem azonosított” sor 0; a vers → jelentés tábla és a javítótábla a nyugalmi pontig felváltva generálódik (a héber
+szórend-javítások száma változatlan: 16 827). A vers → jelentés táblában 15 hivatkozás kap helyes Károli-verset, 3 sor
+jelentéspontja változik (H2505 és H4161 kétes jelöléssel; H4673: N-F240b).
 
 **Kivétel (a minta nem hiba-előfordulásai, indokkal; `KIVETEL`):** személy- és helynevek (Dán törzse és területe 10 hely,
 Jónás próféta, Ezsdrás és Nehémiás kortársai, Józsué főpap), közszó („all numbers”, „in Exodus”), a darabszám-összegzés
-(„3t. Jeremiah Lev 26:42”), a Jeruzsálemi targum jele (ᵑ7^Jer), a H5439 hivatkozás nélküli „Psalms,” jele. **Nem eldönthető
-(D11 (2), nem javítva):** H1962 „הַיָּתִי Hab Micah 6:2” (a szócikk szerint Job 6:2 Kt, a TAHOT a Qere-t címkézi); H5920
-„עָלָיו, Psalm 1Sam 2:10” (a TAHOT a szót nem H5920-ként címkézi); H2518 „contemp. of Ezra Neh 4:8” (a név helyes, a vers
-maga is gyanús).
+(„3t. Jeremiah Lev 26:42”), a Jeruzsálemi targum jele (ᵑ7^Jer), a H5439 hivatkozás nélküli „Psalms,” jele. A H2518 „Neh 4:8”
+számcsere-gyanúja más hibaosztály: N-F240b (a H6981 „22Chr 31:4”-ével és a H4673 egy jelentéspontjával együtt).
 
-**Kapu:** `ellenoriz.py` 49. szabály (a javítás előtti állapoton 27 sértés); teszt: `teszt_gyokerok_kapuk.BdbKonyvfeloldasKapu`.
-A 48. szabály `jp_tavol` plafonja 19 → 20: a H4161 javított Num 33:2-je a táblában messze esik a várttól, ezért őszintén
-kétes; előtte hamisan „biztos” volt a 2Krón 33:2-n (javulás, nem visszaesés).
+**Kapu:** `ellenoriz.py` 49. szabály (a javítás előtti állapoton 27 sértés; a javítókör óta a „Hos”, a magyar tapadás és az
+ékezet nélküli „Joel” is a mintában); teszt: `teszt_gyokerok_kapuk.BdbKonyvfeloldasKapu`. A vers → jelentés generátorban
+fejezet:vers-fallback: ha a javított hivatkozás a tábla nyers szövegében nincs meg (más könyvvel áll), a fejezet:vers a várt
+pozíció közelében azonosít (252 korábban nem illesztett sor lett biztos; a beragadt futam 2 / 10 → 0 / 0, a 48. szabály
+plafonja ennyire csökken). A `jp_tavol` plafon 19 → 20: a H4161 javított Num 33:2-je őszintén kétes; előtte hamisan „biztos”
+volt a 2Krón 33:2-n.

@@ -497,6 +497,7 @@ F34_CSERE = os.path.join(GYOKER, 'naplok', 'F34_M2_csere.tsv')
 F46_CSERE = os.path.join(GYOKER, 'naplok', 'BDB_KONYVFELOLDAS_csere.tsv')
 F46_KEZI = os.path.join(GYOKER, 'naplok', 'BDB_KONYVFELOLDAS_kezi.tsv')
 F240_CSERE = os.path.join(GYOKER, 'naplok', 'LXXBDB_konyvketto_csere.tsv')   # F240 L3: a kettőzött könyvszó törlése
+F240_L7_CSERE = os.path.join(GYOKER, 'naplok', 'LXXBDB_konyvfeloldas_csere.tsv')   # F240.L7: a rossz könyvfeloldás
 TSV = os.path.join(GYOKER, 'konkordancia', 'BDB_teljes_unabridged.tsv')
 
 
@@ -549,6 +550,12 @@ def f240_index():
         k = ref_kulcs(d.get('uj', ''))
         if d.get('dontes') == 'javit' and k:
             idx.setdefault((d['strong'], k), 'F240 L3 (naplok/LXXBDB_konyvketto_csere.tsv)')
+    for d in _tsv_olvas(F240_L7_CSERE) if os.path.exists(F240_L7_CSERE) else []:
+        # az új szöveg minden hivatkozása (pl. „Ezek 40:38, 2Chr 4:6”: a javított a második)
+        for m in re.finditer(r'[1-3]?\s*[A-Za-z]+\.?\s+\d+:\d+', d.get('uj', '')):
+            k = ref_kulcs(m.group(0))
+            if k:
+                idx.setdefault((d['strong'], k), 'F240.L7 (naplok/LXXBDB_konyvfeloldas_csere.tsv)')
     return idx
 
 

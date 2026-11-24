@@ -39,6 +39,7 @@ import bdb_konyvketto_javit as KK  # noqa: E402
 
 GYOKER = KK.GYOKER
 NAPLO = os.path.join(GYOKER, 'naplok', 'LXXBDB_konyvfeloldas_csere.tsv')
+VJ_TS = '2026-11-10'   # a vers -> jelentés tábla rögzített ts-e (a fejléc szerint)
 
 # (Strong, angol régi, angol új, [(magyar régi, magyar új)], tanú)
 CSERE = [
@@ -62,10 +63,12 @@ CSERE = [
      'TAHOT: H2023 a 4Móz 20:22-ben áll, az Ez 20:22-ben nem'),
     ('H4673', 'feetJosh Isa 4:3', 'feet Josh 4:3', [('Józs Ézs 4:3', 'Józs 4:3')],
      'TAHOT: H4673 a Józs 4:3-ban áll, az Ézs 4:3-ban nem'),
-    ('H6981', 'Levites: 1 Chron Judg 9:19', 'Levites: 1Chr 9:19', [('1Krón Bír 9:19', '1Krón 9:19')],
+    ('H6981', 'Levites: 1 Chron Judg 9:19', 'Levites: 1 1Chr 9:19', [('1Krón Bír 9:19', '1Krón 9:19')],
      'TAHOT: H6981 az 1Krón 9:19-ben áll, a Bír 9:19-ben nem'),
     ('H7655', 'pluralEzra Dan 7:14', 'plural Ezra 7:14', [('Ezsd Dán 7:14', 'Ezsd 7:14')],
      'TAHOT: H7655 az Ezsd 7:14-ben áll, a Dán 7:14-ben nem'),
+    ('H7655', '3:19 seven times', 'Dan 3:19 seven times', [('3:19 hétszer', 'Dán 3:19 hétszer')],
+     'a csupasz „3:19” eddig a Dánt örökölte; az Ezra 7:14 javítás után kiírt könyv kell. TAHOT: H7655 a Dán 3:19-ben (javítókör)'),
     ('H7650', 'by me Psalms; Psa 102:9', 'by me Psa 102:9', [('Zsoltárok; Zsolt 102:9', 'Zsolt 102:9')],
      'kettőzött könyvszó (ψ → „Psalms;”, F240 L3 mintája); TAHOT: H7650 a Zsolt 102:9-ben'),
     ('H4161', 'marchNum 2Chr 33:2', 'march Num 33:2', [('helye4Móz 2Krón 33:2', 'helye 4Móz 33:2')],
@@ -74,6 +77,12 @@ CSERE = [
      'TAHOT: H4196 a 2Krón 4:1-ben áll; a „Songs” fölös könyvszó'),
     ('H1740', 'Ezek 40:38, Songs 2Chr 4:6', 'Ezek 40:38, 2Chr 4:6', [('Ez 40:38, Énekek 2Krón 4:6', 'Ez 40:38, 2Krón 4:6')],
      'TAHOT: H1740 a 2Krón 4:6-ban áll; a „Songs” fölös könyvszó'),
+    ('H4709', 'exceptHos Josh 5:1', 'except Hos 5:1', [('kivéveHós Józs 5:1', 'kivéve Hós 5:1')],
+     'TAHOT: H4709 a Hós 5:1-ben áll, a Józs 5:1-ben nem (javítókör)'),
+    ('H1962', 'Hab Micah 6:2', 'Job 6:2', [('Hab Mik 6:2', 'Jób 6:2')],
+     'OpenScriptures-kivonat (OSHL_BDB_igehelyek: H1962 Jób 6:2); a szócikk saját szövege („הַיָּתִי Job 6:2 Kt”); TAHOT: H1942 a Jób 6:2-ben (javítókör)'),
+    ('H5920', 'Psalm 1Sam 2:10', '1Sam 2:10', [('Zsolt 1Sám 2:10', '1Sám 2:10')],
+     'TAHOT: H5921 (az עַל ragozott alakja) az 1Sám 2:10-ben; a „Psalm” fölös könyvszó (javítókör)'),
 ]
 
 # A minta nem hiba-előfordulásai: (Strong, fejezet:vers) → indok
@@ -89,16 +98,14 @@ KIVETEL = {
     ('H3494', '19:42'): 'helynév: „a location in (Southern) Dan”',
     ('H5175', '49:17'): 'személynév: „figurative of Dan”',
     ('H5905', '19:41'): 'helynév: „assigned to Dan”',
-    ('H2518', '4:8'): 'személynév: „contemp. of Ezra”; nem_eldontheto: a „Neh 4:8” verse maga is gyanús (Hilkija: Neh 8:4?), a TAHOT nem dönt',
+    ('H2518', '4:8'): 'személynév: „contemp. of Ezra”; a „Neh 4:8” maga számcsere-gyanús (TAHOT: H2518 a Neh 8:4-ben) — más hibaosztály, nyitott tétel',
     ('H3226', '8:7'): 'személynév: „time of Ezra” (Neh 8:7: Jámin)',
-    ('H1962', '6:2'): 'nem_eldontheto: „הַיָּתִי Hab Micah 6:2” — a szócikk saját szövege szerint Job 6:2 (Kt), de a TAHOT a versben a Qere-alakot címkézi; D11 (2)',
     ('H0223', '8:33'): 'személynév: „priest in time of Nehemiah” (Ezsd 8:33)',
     ('H0520', '3:3'): 'közszó: „all numbers” (számok), nem Numbers könyve',
     ('H3290', '26:42'): 'a BDB darabszám-összegzése („3t. Jeremiah”), utána új hivatkozás (Lev 26:42)',
     ('H3548', '1:1'): 'személynév: „of Joshua” (Józsué főpap, Hag 1:1)',
     ('H6290', '12:16'): 'közszó: „in Exodus” (a kivonulás), nem Exodus könyve',
     ('H1888', '2:9'): 'a „Jer” a Jeruzsálemi targum jele (ᵑ7^Jer), nem Jeremiás könyve',
-    ('H5920', '2:10'): 'nem_eldontheto: „עָלָיו, Psalm 1Sam 2:10” — a TAHOT az 1Sám 2:10-ben a szót nem H5920-ként címkézi; D11 (2)',
     ('H5439', '3:11'): 'a „Psalms,” a forrásban hivatkozás nélküli ψ-jel; a hivatkozás (Amos 3:11) helyes (TAHOT: H5439 az Ámós 3:11-ben)',
 }
 
@@ -106,13 +113,13 @@ TELJES_NEV = {'Genesis': 'Gen', 'Exodus': 'Exod', 'Leviticus': 'Lev', 'Numbers':
               'Judges': 'Judg', 'Nehemiah': 'Neh', 'Esther': 'Est', 'Psalm': 'Psa', 'Psalms': 'Psa', 'Paslm': 'Psa', 'Proverbs': 'Prov',
               'Ecclesiastes': 'Eccl', 'Isaiah': 'Isa', 'Jeremiah': 'Jer', 'Lamentations': 'Lam', 'Ezekiel': 'Ezek', 'Daniel': 'Dan',
               'Obadiah': 'Obad', 'Micah': 'Mic', 'Nahum': 'Nah', 'Habakkuk': 'Hab', 'Zephaniah': 'Zeph', 'Haggai': 'Hag',
-              'Zechariah': 'Zech', 'Malachi': 'Mal', 'Songs': 'Song', '1 Chron': '1Chr', '2 Chron': '2Chr', 'Esth': 'Est'}
+              'Zechariah': 'Zech', 'Malachi': 'Mal', 'Songs': 'Song', 'Hos': 'Hosea', '1 Chron': '1Chr', '2 Chron': '2Chr', 'Esth': 'Est'}
 _SZO = '|'.join(sorted(set(KK.REF.replace('Esth?', 'Esth|Est').split('|')) | set(TELJES_NEV), key=len, reverse=True))
 # könyvszó (önállóan vagy az előző szóhoz tapadva), majd szóköz és MÁS könyv hivatkozása; írásjel után nem (a BDB
 # darabszám-összegzése, „16t. Daniel; Ezra 5:11”, nem hiba)
 EN_MINTA = re.compile(r'(?:(?<=[a-z])|(?<![\w`^]))(' + _SZO + r') (' + KK.REF + r') (\d+:\d+)')
 HU_KONYV = sorted(set(KK.HU.values()), key=len, reverse=True)
-HU_MINTA = re.compile(r'(?<![\w])(%s|Zsoltárok|Zsoltár|Énekek) (%s) (\d+:\d+)' % ('|'.join(map(re.escape, HU_KONYV)),
+HU_MINTA = re.compile(r'(?:(?<=[a-záéíóöőúüű])|(?<![\w]))(%s|Zsoltárok|Zsoltár|Énekek|Joel) (%s) (\d+:\d+)' % ('|'.join(map(re.escape, HU_KONYV)),
                                                                                  '|'.join(map(re.escape, HU_KONYV))))
 
 
@@ -137,7 +144,7 @@ def hu_maradek(strong, t):
     ki = []
     for m in HU_MINTA.finditer(t):
         a, b, cv = m.groups()
-        if a == b or (b == 'Zsolt' and a in ('Zsoltár', 'Zsoltárok')):
+        if a == b or (b == 'Zsolt' and a in ('Zsoltár', 'Zsoltárok')) or (a, b) == ('Joel', 'Jóel'):
             continue          # kettőzés: a 47. kapu méri
         if (strong, cv) in KIVETEL:
             continue
@@ -169,22 +176,25 @@ def main():
     a = ap.parse_args()
     f_sorok = KK.tsv(KK.FORRAS)
     poz = {s.split('\t')[0]: i for i, s in enumerate(f_sorok) if s and not s.startswith('Strong_padded')}
-    en_uj, erintett = {}, set()
-    for st, regi, uj, _hu, _t in CSERE:
+    en_uj, erintett, alkalmazott = {}, set(), set()
+    for k, (st, regi, uj, _hu, _t) in enumerate(CSERE):
         i = poz[st]
         p = f_sorok[i].split('\t')
         t = en_uj.get(i, (p, p[-1]))[1]
-        if t.count(regi) == 0 and uj in t:
-            continue          # már javítva (újrafuttatás)
+        if uj in t:
+            continue          # már javítva (újrafuttatás; az új szöveg a régit is tartalmazhatja)
         if t.count(regi) != 1:
             sys.exit('%s: az angol régi szöveg nem egyszer áll (%d): %s' % (st, t.count(regi), regi))
         en_uj[i] = (p, t.replace(regi, uj))
         erintett.add(st)
+        alkalmazott.add(k)
     fsor = KK.tsv(KK.FORD)
     fej = next(s for s in fsor if s.startswith('szotar\t')).split('\t')
     ix = {n: i for i, n in enumerate(fej)}
     hu_uj, hu_db = {}, 0
-    for st, _r, _u, hu, _t in CSERE:
+    for k, (st, _r, _u, hu, _t) in enumerate(CSERE):
+        if k not in alkalmazott:
+            continue
         talalt = 0
         for i, s in enumerate(fsor):
             if not s.startswith('BDB\t'):
@@ -198,7 +208,7 @@ def main():
                     p[ix['forditas_hu']] = p[ix['forditas_hu']].replace(hr, hn)
                     talalt += n
                     hu_uj[i] = p
-        if not talalt and st in erintett:
+        if not talalt:
             sys.exit('%s: a magyar fordításban a régi alak nem található' % st)
         hu_db += talalt
     print('angol: %d csere %d szócikkben; magyar: %d csere %d sorban' % (len(CSERE), len(erintett), hu_db, len(hu_uj)))
@@ -210,16 +220,33 @@ def main():
         for x in hu[:40]:
             print('  HU', x)
         return
+    # a csere-napló a forras_javit előtt kell (a javítósorok forrás-attribúciója ebből jön)
+    with open(NAPLO, 'w', encoding='utf-8', newline='\n') as f:
+        f.write('# GENERÁLT: eszkozok/bdb_konyvfeloldas_javit.py --ir (F240.L7) — a rosszul feloldott könyvhivatkozások csere-naplója; '
+                'a kivételek (név, nem eldönthető) a szkript KIVETEL listájában, indokkal.\n')
+        f.write('\t'.join(['strong', 'regi', 'uj', 'magyar', 'tanu']) + '\n')
+        for st, regi, uj, hu, t in CSERE:
+            f.write('\t'.join([st, regi, uj, '; '.join('%s → %s' % x for x in hu), t]) + '\n')
     regi_sz = KK.szakasz_hashek(erintett)
     regi_en = {f_sorok[i].split('\t')[0]: KK.sha1(f_sorok[i].split('\t')[-1]) for i in en_uj}
     for i, (p, t) in en_uj.items():
         f_sorok[i] = '\t'.join(p[:-1] + [t])
     with open(KK.FORRAS, 'w', encoding='utf-8', newline='') as f:
         f.write('\n'.join(f_sorok))
-    r = subprocess.run([sys.executable, os.path.join(GYOKER, 'eszkozok', 'bdb_jelolt', 'forras_javit.py')] + KK.FJ_ARGS,
-                       cwd=GYOKER, capture_output=True, text=True, encoding='utf-8')
-    if r.returncode:
-        sys.exit('forras_javit.py hiba:\n' + r.stderr[-2000:])
+    # A forras_javit hivatkozott-vers-próbája a vers -> jelentés táblából olvas, a tábla a javítótáblából: a kettőt a
+    # nyugalmi pontig felváltva generáljuk (a független ellenőr: fordított sorrendben három heber_sorrend-javítás elveszett).
+    for _kor in range(4):
+        for parancs in (['olvaso_szerver/bdb_vers_jelentes.py', '--ts', VJ_TS], ['bdb_jelolt/forras_javit.py'] + KK.FJ_ARGS):
+            r = subprocess.run([sys.executable, os.path.join(GYOKER, 'eszkozok', parancs[0])] + parancs[1:],
+                               cwd=GYOKER, capture_output=True, text=True, encoding='utf-8')
+            if r.returncode:
+                sys.exit('%s hiba:\n%s' % (parancs[0], r.stderr[-2000:]))
+        e = subprocess.run([sys.executable, os.path.join(GYOKER, 'eszkozok', 'olvaso_szerver/bdb_vers_jelentes.py'), '--ts', VJ_TS,
+                            '--ellenoriz'], cwd=GYOKER, capture_output=True, text=True, encoding='utf-8')
+        if e.returncode == 0:
+            break
+    else:
+        sys.exit('a vers -> jelentés tábla és a javítótábla nem jutott nyugalmi pontra')
     uj_sz = KK.szakasz_hashek(erintett)
     uj_en = {p[0]: KK.sha1(t) for p, t in en_uj.values()}
     hash_db = 0
@@ -240,12 +267,6 @@ def main():
         sys.exit('kulcs- vagy sorszám-eltérés a fordítási táblában; nem írom')
     with open(KK.FORD, 'w', encoding='utf-8', newline='') as f:
         f.write('\n'.join(fsor))
-    with open(NAPLO, 'w', encoding='utf-8', newline='\n') as f:
-        f.write('# GENERÁLT: eszkozok/bdb_konyvfeloldas_javit.py --ir (F240.L7) — a rosszul feloldott könyvhivatkozások csere-naplója; '
-                'a kivételek (név, nem eldönthető) a szkript KIVETEL listájában, indokkal.\n')
-        f.write('\t'.join(['strong', 'regi', 'uj', 'magyar', 'tanu']) + '\n')
-        for st, regi, uj, hu, t in CSERE:
-            f.write('\t'.join([st, regi, uj, '; '.join('%s → %s' % x for x in hu), t]) + '\n')
     print('kiírva: forrás (%d szócikk), javítótábla, fordítás (%d sor, %d hash), napló' % (len(erintett), len(hu_uj), hash_db))
 
 

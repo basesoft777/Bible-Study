@@ -2732,7 +2732,8 @@ def szabaly47_bdb_konyvketto(adat_dir):
 # (`ketes:jp_illesztes`) sor ugyanazon a számozott jelentésponton — a plafon alatt (csak csökkenhet). A javítás előtt 45 futam
 # / 1 188 sor (pl. a tehóm „-/5”, H8415), utána 2 futam / 10 sor (H2320 -/2/b, H6677 -/-/l: hosszú felsorolás, a szomszédos
 # sorok ugyanott biztosan illesztve; naplok/LXXBDB_meres.md).
-VJ_BERAGADT_PLAFON = (2, 10)
+# F240.L7 (javítókör): a fejezet:vers-fallback után 0 futam (előtte 2 / 10).
+VJ_BERAGADT_PLAFON = (0, 0)
 # A választott táblapozíció a várttól messze (> 600 karakter) esik: `ketes:jp_tavol` (a javítókör óta; a hamisan „biztos” illesztés
 # jele). A brief L5.3(b)-je („a sor nem kaphat utána kezdődő szakaszt”) ezt a generátoron belül méri: a táblapozíció és az angol
 # pozíció eltérését. Plafon: csak csökkenhet.
