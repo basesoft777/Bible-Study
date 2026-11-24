@@ -508,24 +508,24 @@ KÃ©rdÃ©s: Megkapom a hÃ¡rom Ã©rintett megjegyzÃ©s pontos szÃ¶vegÃ©t? A jegyzetsz
 
 | Terv | Modell | Forma |
 |---|---|---|
-| E1-A | openai/gpt-6.2-sol | Ú |
+| E1-A | openai/gpt-6.2-sol | Ãš |
 | E1-B | openai/gpt-6-sol | R |
 | E1-C | openai/gpt-6.2-sol | R |
-| E1-D | openai/gpt-6-sol | Ú |
-| E2-A | openai/gpt-6-sol | Ú |
-| E2-B | openai/gpt-6.2-sol | Ú |
+| E1-D | openai/gpt-6-sol | Ãš |
+| E2-A | openai/gpt-6-sol | Ãš |
+| E2-B | openai/gpt-6.2-sol | Ãš |
 | E2-C | openai/gpt-6.2-sol | R |
 | E2-D | openai/gpt-6-sol | R |
 | E3-A | openai/gpt-6.2-sol | R |
 | E3-B | openai/gpt-6-sol | R |
-| E3-C | openai/gpt-6-sol | Ú |
-| E3-D | openai/gpt-6.2-sol | Ú |
+| E3-C | openai/gpt-6-sol | Ãš |
+| E3-D | openai/gpt-6.2-sol | Ãš |
 | E4-A | openai/gpt-6.2-sol | R |
 | E4-B | openai/gpt-6-sol | R |
-| E4-C | openai/gpt-6-sol | Ú |
-| E4-D | openai/gpt-6.2-sol | Ú |
-| E5-A | openai/gpt-6-sol | Ú |
-| E5-B | openai/gpt-6.2-sol | Ú |
+| E4-C | openai/gpt-6-sol | Ãš |
+| E4-D | openai/gpt-6.2-sol | Ãš |
+| E5-A | openai/gpt-6-sol | Ãš |
+| E5-B | openai/gpt-6.2-sol | Ãš |
 | E5-C | openai/gpt-6.2-sol | R |
 | E5-D | openai/gpt-6-sol | R |
 
