@@ -122,5 +122,5 @@ Modell-ellenőrzés: kért `fable`, tényleges `claude-fable-5-1` — egyezik. B
 - A tetragramma alakja mindenütt יְהוָה (Jahve): „Igen, mindenhol Jahve”. (DT828)
 
 *(proveniencia: scope=adat/motivumok.tsv (ISTENTISZT-001) + adat/jeloltek.tsv (ISTENTISZT-001, elofordulas) + TAHOT_kivonat.tsv (a besem_JHVH_nelkul blokk 12 verse) | forras=manual: a felhasználó döntései (AskUserQuestion, az orkesztrátoron át) | ts=2026-11-11)*
-<!-- HATÁRDÖNTÉS: n=20 ujjd=4460c4ab6a6b | DT826, DT827, DT828, DT829 -->
+<!-- HATÁRDÖNTÉS: n=20 ujjd=e9a62d0df6b3 | DT826, DT827, DT828, DT829 -->
 <!-- MODELLES-VEGE -->
