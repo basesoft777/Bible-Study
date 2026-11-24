@@ -7,6 +7,7 @@ indít, beáll a sorba, és a sor engedi tovább, ha az előtte állók végezte
 
 Használat (a repó gyökeréből, bármelyik worktree-ből; a sor a worktree-k között közös):
     python eszkozok/gepsor.py futtat --leiras "lapgen-tesztek" -- python eszkozok/lapgen/tesztek/futtat.py
+    python eszkozok/gepsor.py futtat --hatul --leiras "mérés" -- <parancs>   # alacsony elsőbbség: csak ha senki nem vár
     python eszkozok/gepsor.py allapot          # ki fut, ki vár (sorrendben); a halott jegyeket nem törli
 Kódból:
     import gepsor
@@ -31,6 +32,11 @@ Működés:
   * Újrabelépés: a sorban állás a `PARDES_SOR_TARTVA` környezeti változót a gyerekfolyamatokra is ráteszi; a gyerek (pl. a teljes
     kapu által indított lapgen-futás) ilyenkor nem áll be újra (különben önmagára várna).
   * A GitHub-futás (`GITHUB_ACTIONS`) nem áll sorba.
+  * Alacsony elsőbbség (`--hatul`, `Sor(..., hatul=True)`; diagnosztika, mérés): a jegy `.hatul` kiterjesztésű, és csak akkor indul, ha
+    egyetlen rendes jegy sincs a sorban (sem előtte, sem mögötte), és a hátsó jegyek közül ő az első. Induláskor `.jegy`-gé nevezi át
+    magát (atomi `os.replace`, a név, így a helye is marad): onnan rendes futónak látszik, és aki közben beáll, mögötte vár; a futó
+    hátsó munka nem áll le. Az átnevezés után újranéz: ha közben rendes jegy állt be, visszanevezi magát, és tovább vár. A régi
+    (a `.hatul`-t nem ismerő) kód a várakozó hátsó jegyet nem látja, így nem várhat rá (nincs holtpont).
   * Holtpont-védelem: a helyi ellenőrzés-zár alatt futó folyamat (`PARDES_ZAR_TARTVA`, a `HelyiZar` állítja) nem áll sorba, csak jelzi.
     Különben az E28 (a zár alatt lapot generál) a sorra várna, a sor eleje pedig (pl. egy teljes kapu) a zárra.
 A helyi ellenőrzés-zár (`ellenorzes.zar`, `eszkozok/ellenorzes/futtat.py` `HelyiZar`) mellette marad: az az E2–E39-et és az olvasó
@@ -58,6 +64,7 @@ ZAR_TARTVA_VALTOZO = 'PARDES_ZAR_TARTVA'   # a helyi ellenőrzés-zár tartója 
 JELZES_VALTOZO = 'PARDES_SOR_JELZES_PERC'
 SOR_NEV = 'gepsor'
 JEGY_UTOTAG = '.jegy'
+HATUL_UTOTAG = '.hatul'
 ALAP_JELZES_PERC = 90
 VARAKOZAS_MP = 2.0
 
@@ -147,12 +154,16 @@ def jegy_el(adat, folyamat_fn=folyamat, gep=None, plat=None):
 # a sor
 # ---------------------------------------------------------------------------
 
-def jegyek(konyvtar):
-    """A sor jegyfájljai érkezési sorrendben (fájlnevek)."""
+def jegyek(konyvtar, utotag=JEGY_UTOTAG):
+    """A sor jegyfájljai érkezési sorrendben (fájlnevek); alapból a rendes (és a már futó hátsó) jegyek."""
     try:
-        return sorted(n for n in os.listdir(konyvtar) if n.endswith(JEGY_UTOTAG) and not n.startswith('.'))
+        return sorted(n for n in os.listdir(konyvtar) if n.endswith(utotag) and not n.startswith('.'))
     except FileNotFoundError:
         return []
+
+
+def _tozs(nev):
+    return nev.rsplit('.', 1)[0]
 
 
 def jegy_olvas(konyvtar, nev):
@@ -190,7 +201,7 @@ def allapot(konyvtar=None, folyamat_fn=folyamat):
     """A sor állapota: [(jegynév, adat, él-e, ok)], érkezési sorrendben. Nem töröl."""
     konyvtar = konyvtar or sor_konyvtar()
     ki = []
-    for n in jegyek(konyvtar):
+    for n in jegyek(konyvtar) + jegyek(konyvtar, HATUL_UTOTAG):
         adat = jegy_olvas(konyvtar, n)
         if adat == 'nincs':
             continue
@@ -210,8 +221,9 @@ class Sor(object):
     """Context manager: beáll a gép közös sorába, és akkor tér vissza, ha ő a sor eleje. Kilépéskor törli a saját jegyét.
     `konyvtar`, `kiir`, `alvas`, `folyamat_fn`, `varakozas` a tesztekhez cserélhető."""
 
-    def __init__(self, leiras, konyvtar=None, kiir=None, alvas=None, folyamat_fn=folyamat, varakozas=VARAKOZAS_MP):
+    def __init__(self, leiras, konyvtar=None, kiir=None, alvas=None, folyamat_fn=folyamat, varakozas=VARAKOZAS_MP, hatul=False):
         self.leiras = leiras
+        self.hatul = hatul
         self.konyvtar = konyvtar or sor_konyvtar()
         self.kiir = kiir or (lambda s: print(s, file=sys.stderr, flush=True))
         self.alvas = alvas or time.sleep
@@ -230,18 +242,34 @@ class Sor(object):
         os.makedirs(self.konyvtar, exist_ok=True)
         pid = os.getpid()
         _, indulas = self.folyamat_fn(pid)
-        nev = '%020d_%d_%s%s' % (time.time_ns(), pid, uuid.uuid4().hex[:12], JEGY_UTOTAG)
+        nev = '%020d_%d_%s%s' % (time.time_ns(), pid, uuid.uuid4().hex[:12], HATUL_UTOTAG if self.hatul else JEGY_UTOTAG)
         tmp = os.path.join(self.konyvtar, '.%s.tmp' % uuid.uuid4().hex)
         with open(tmp, 'w', encoding='utf-8') as f:
             json.dump({'pid': pid, 'indulas': indulas, 'gep': socket.gethostname(), 'platform': platform_jel(),
-                       'leiras': self.leiras, 'munkakonyvtar': os.getcwd(), 'ts': time.time(),
+                       'leiras': self.leiras, 'munkakonyvtar': os.getcwd(), 'ts': time.time(), 'hatul': self.hatul,
                        'kezdet': time.strftime('%Y-%m-%d %H:%M:%S')}, f, ensure_ascii=False)
         os.replace(tmp, os.path.join(self.konyvtar, nev))
         self.jegy = nev
         return nev
 
+    def _elo(self, nevek):
+        """A nevek közül az élők (a halottakat közben törli): [(név, adat)]."""
+        ki = []
+        for n in nevek:
+            if halott_torol(self.konyvtar, n, self.folyamat_fn, kiir=self.kiir):
+                continue
+            adat = jegy_olvas(self.konyvtar, n)
+            if adat == 'nincs':
+                continue
+            ki.append((n, adat))
+        return ki
+
     def elottem(self):
-        """Az előttem álló jegyek (a halottakat közben törli). Visszaad: [(név, adat)]."""
+        """Akik előttem állnak (a halottakat közben törli). Visszaad: [(név, adat)]. Rendes jegynél: az előtte álló `.jegy`-ek (a
+        várakozó hátsó jegy nem). Hátsó jegynél: minden rendes jegy (előtte és mögötte is), és az előtte álló hátsó jegyek."""
+        sajat = _tozs(self.jegy)
+        if self.hatul:
+            return self._elo(jegyek(self.konyvtar) + [n for n in jegyek(self.konyvtar, HATUL_UTOTAG) if _tozs(n) < sajat])
         ki = []
         for n in jegyek(self.konyvtar):
             if n == self.jegy:
@@ -263,13 +291,16 @@ class Sor(object):
         jelzett_regi = set()
         while True:
             elotte = self.elottem()
+            if not elotte and self.hatul:
+                elotte = self._hatul_indul()
             if not elotte:
                 break
-            if self.jegy not in jegyek(self.konyvtar):
+            if self.jegy not in jegyek(self.konyvtar, HATUL_UTOTAG if self.jegy.endswith(HATUL_UTOTAG) else JEGY_UTOTAG):
                 raise RuntimeError('a saját jegy eltűnt a sorból: %s' % os.path.join(self.konyvtar, self.jegy))
             hely = len(elotte) + 1
             if hely != utolso:
-                self.kiir('[sor] vár: %d. a gép sorában (%s); fut: %s' % (hely, self.leiras, _jegy_leiras(elotte[0][1])))
+                self.kiir('[sor] vár%s: %d. a gép sorában (%s); fut: %s' % (' (hátul: csak ha senki nem vár)' if self.hatul else '', hely,
+                                                                           self.leiras, _jegy_leiras(elotte[0][1])))
                 utolso = hely
             eleje_nev, eleje = elotte[0]
             if isinstance(eleje, dict) and eleje_nev not in jelzett_regi:
@@ -285,6 +316,20 @@ class Sor(object):
         self._regi_tartva = os.environ.get(TARTVA_VALTOZO)
         os.environ[TARTVA_VALTOZO] = self.jegy
         return self
+
+    def _hatul_indul(self):
+        """A hátsó jegy indulása: `.jegy`-gé nevezi át magát (a helye marad), majd újranéz. Ha közben rendes jegy állt be, visszanevezi
+        magát, és a várakozók listáját adja vissza; különben [] (indulhat)."""
+        uj = _tozs(self.jegy) + JEGY_UTOTAG
+        os.replace(os.path.join(self.konyvtar, self.jegy), os.path.join(self.konyvtar, uj))
+        self.jegy = uj
+        masok = self._elo([n for n in jegyek(self.konyvtar) if n != uj])
+        if not masok:
+            return []
+        vissza = _tozs(uj) + HATUL_UTOTAG
+        os.replace(os.path.join(self.konyvtar, uj), os.path.join(self.konyvtar, vissza))
+        self.jegy = vissza
+        return masok
 
     def __exit__(self, *exc):
         if not self.aktiv or not self.jegy:
@@ -306,6 +351,7 @@ def main(argv=None):
     al = ap.add_subparsers(dest='parancs')
     f = al.add_parser('futtat', help='beáll a sorba, és sorra kerülve futtatja a parancsot (a -- után)')
     f.add_argument('--leiras', default=None, help='mi fut (a többi váró ezt látja)')
+    f.add_argument('--hatul', action='store_true', help='alacsony elsőbbség: csak akkor indul, ha senki nem vár (diagnosztika, mérés)')
     f.add_argument('cmd', nargs=argparse.REMAINDER)
     al.add_parser('allapot', help='a sor jegyei érkezési sorrendben')
     a = ap.parse_args(argv)
@@ -314,8 +360,13 @@ def main(argv=None):
         if not sor:
             print('A gép sora üres (%s).' % sor_konyvtar())
             return 0
-        for i, (n, adat, el, ok) in enumerate(sor):
-            allas = 'fut' if i == 0 else '%d. vár' % (i + 1)
+        rendes = 0
+        for n, adat, el, ok in sor:
+            if n.endswith(HATUL_UTOTAG):
+                allas = 'hátul'
+            else:
+                rendes += 1
+                allas = 'fut' if rendes == 1 else '%d. vár' % rendes
             print('%-7s %s%s' % (allas, _jegy_leiras(adat), '' if el else '  [HALOTT: %s; a következő váró törli]' % ok))
         return 0
     if a.parancs == 'futtat':
@@ -323,7 +374,7 @@ def main(argv=None):
         if not cmd:
             print('HIBA: a futtatandó parancs hiányzik (… futtat --leiras "…" -- <parancs>)', file=sys.stderr)
             return 2
-        with Sor(a.leiras or ' '.join(cmd)):
+        with Sor(a.leiras or ' '.join(cmd), hatul=a.hatul):
             return subprocess.call(cmd)
     ap.print_help()
     return 2
