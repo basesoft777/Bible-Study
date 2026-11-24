@@ -681,6 +681,50 @@ class MerceVakfoltTest(Alap):
         self.assertEqual(len([h for h in self.hibak_szoveg() if 'merce_vakfolt' in h]), 2)
 
 
+class JovahagyandoTest(Alap):
+    """DT952: a mérés módja a befogadási jegyzékben tartalmi pont (DT920 határa), a `merce_vakfolt` szó szerint."""
+    JO = MerceVakfoltTest.JO
+
+    def futtat(self, *argv):
+        import contextlib
+        import io
+        ki = io.StringIO()
+        with contextlib.redirect_stdout(ki):
+            rc = F.main(['--gyoker', self.g.ut, 'jovahagyando'] + list(argv))
+        return rc, ki.getvalue()
+
+    def extra(self, szoveg):
+        ut = os.path.join(self.g.ut, '..', 'extra_%d.md' % id(szoveg))
+        with open(ut, 'w', encoding='utf-8') as f:
+            f.write(szoveg)
+        self.addCleanup(os.remove, ut)
+        return ut
+
+    def test_uj_brief_vakfoltja_tartalmi_pont(self):
+        self.g.brief('F243_A_BRIEF.md', brief_szoveg(243, olvas=['a'], ir=['a']))
+        rc, ki = self.futtat('--extra', self.extra(brief_szoveg(olvas=['b'], ir=['b'], merce_vakfolt=self.JO)))
+        self.assertEqual(rc, 0)
+        self.assertIn('TARTALMI\t#244\tmerce_vakfolt\t%s\t' % self.JO, ki)
+        self.assertIn('szerkesztő', ki)
+
+    def test_hianyzo_vakfolt_hiba(self):
+        self.g.brief('F243_A_BRIEF.md', brief_szoveg(243, olvas=['a'], ir=['a']))
+        rc, ki = self.futtat('--extra', self.extra(brief_szoveg(olvas=['b'], ir=['b'])))
+        self.assertEqual(rc, 1)
+        self.assertIn('HIBA\t#244\tmerce_vakfolt', ki)
+
+    def test_regi_brief_nem_kotelezo(self):
+        self.g.brief('F243_A_BRIEF.md', brief_szoveg(243, olvas=['a'], ir=['a']))
+        rc, ki = self.futtat('243')
+        self.assertEqual(rc, 0)
+        self.assertIn('NINCS_PONT\t#243', ki)
+
+    def test_pontok_fuggvenye(self):
+        self.g.brief('F244_A_BRIEF.md', brief_szoveg(244, olvas=['a'], ir=['a'], merce_vakfolt=self.JO))
+        b = [x for x in self.g.briefek() if x.szam == 244][0]
+        self.assertEqual([p[:3] for p in F.jovahagyando_pontok(b)], [('TARTALMI', 'merce_vakfolt', self.JO)])
+
+
 class SavTest(Alap):
     def hibak_szoveg(self):
         return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]

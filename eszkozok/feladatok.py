@@ -34,6 +34,9 @@ Parancsok:
                     a fejlec `munka` es `ir` mezojebol levezetve (uj mezo nincs); --extra FAJL:
                     a befogadando brief javasolt fejlece (mint a `fuggesek`-nel); --jelentes FAJL:
                     az ellenori jelentes(ek): az eszkalacio (`SZINT-ESZKALÁCIÓ:` sor) teljesre emel
+    jovahagyando SZAM..  DT952: a befogadasi jegyzek jovahagyando tartalmi pontjai (a `merce_vakfolt`: a meres
+                    modja tartalmi kerdes, nem technikai; DT920 hatara); --extra FAJL: a befogadando brief;
+                    1-es kilepesi kod, ha a mezo hianyzik vagy nem olvasoi mondat
 
 Kilepesi kod: 0 = rendben, 1 = szabalysertes, 2 = hiba.
 """
@@ -1594,6 +1597,25 @@ def pr_terkep_ellenorzes(gyoker, alap_ref, fej_ref='HEAD'):
 # CLI
 # ---------------------------------------------------------------------------
 
+def jovahagyando_pontok(b):
+    """[(fajta, mezo, ertek, megjegyzes)]: a brief befogadási jegyzékének jóváhagyandó pontjai (DT952, a 218c esete).
+
+    A mérés módja (mérce, regresszió, elfogadási feltétel) a cél része, ezért tartalmi kérdés: a `/befogad` az
+    integrátorhoz küldi, az olvasói mondattal a szerkesztő elé viszi; a session nem döntheti el technikaiként (DT920
+    határa). A pont a `merce_vakfolt` mező: a #243 utáni briefnél kötelező (`HIBA`, ha hiányzik vagy nem olvasói mondat),
+    a régebbinél akkor áll, ha a fejlécben szerepel."""
+    ertek = b.fej.get('merce_vakfolt')
+    kotelezo = (b.fej.get('tipus') in ('feladat', 'naplozas', 'felmeres') and b.szam is not None
+                and b.szam > MERCE_VAKFOLT_KUSZOB)
+    if not kotelezo and not ertek:
+        return []
+    hiba = merce_vakfolt_hiba(ertek)
+    if hiba:
+        return [('HIBA', 'merce_vakfolt', ertek or '', hiba)]
+    return [('TARTALMI', 'merce_vakfolt', ertek,
+             'a mérés módja a cél része: az integrátorhoz, onnan olvasói mondattal a szerkesztőhöz (DT920 határa)')]
+
+
 def alap_osszevet(b, gyoker=REPO):
     """(allapot, sorok): a brief `alap`-ja es a mai main osszevetese az `olvas` utjain.
     allapot: 'AZONOS' | 'ELTER' | 'VAR' (merge-re var) | 'NINCS' (nincs alap) | 'ISMERETLEN' (nem feloldhato)."""
@@ -1636,6 +1658,10 @@ def main(argv=None):
                     help='F201: a szamot atomian lefoglalja az originen (foglalas/F<nn> ag; push!), igy mas ag nem kaphatja meg')
     al = alp.add_parser('alap', help='a brief `alap`-ja és a mai main összevetése az `olvas` útjain (DT952)')
     al.add_argument('feladatok', nargs='+', type=int, metavar='SZAM')
+    jv = alp.add_parser('jovahagyando', help='DT952: a befogadási jegyzék jóváhagyandó tartalmi pontjai (merce_vakfolt)')
+    jv.add_argument('feladatok', nargs='*', type=int, metavar='SZAM')
+    jv.add_argument('--extra', action='append', default=[], metavar='FAJL',
+                    help='a befogadandó brief (a repón kívüli fájl, fejléccel)')
     sz = alp.add_parser('szint', help='F188 T5: az ellenőrzési szint és a javítókör-korlát (munka/ir mezőből)')
     sz.add_argument('feladatok', nargs='*', type=int, metavar='SZAM')
     sz.add_argument('--extra', action='append', default=[], metavar='FAJL',
@@ -1732,6 +1758,28 @@ def main(argv=None):
                 for s in sorok:
                     print('\t' + s)
                 rossz += allapot != 'AZONOS'
+            return 1 if rossz else 0
+        if arg.parancs == 'jovahagyando':
+            regi = {id(b) for b in briefek}
+            briefek = extra_hozzaad(briefek, arg.extra)
+            by = {b.szam: b for b in briefek if b.szam is not None}
+            kert = list(arg.feladatok) + [b.szam for b in briefek if id(b) not in regi and b.szam is not None]
+            if not kert:
+                print('HIBA: SZAM vagy --extra kell', file=sys.stderr)
+                return 2
+            rossz = 0
+            for n in kert:
+                b = by.get(n)
+                if b is None:
+                    print('NINCS\t#%d' % n)
+                    rossz += 1
+                    continue
+                pontok = jovahagyando_pontok(b)
+                if not pontok:
+                    print('NINCS_PONT\t#%d\ta #%d előtti brief, merce_vakfolt nélkül' % (n, MERCE_VAKFOLT_KUSZOB + 1))
+                for fajta, mezo, ertek, megj in pontok:
+                    print('%s\t#%d\t%s\t%s\t%s' % (fajta, n, mezo, ertek, megj))
+                    rossz += fajta == 'HIBA'
             return 1 if rossz else 0
         if arg.parancs == 'szint':
             regi = {id(b) for b in briefek}
