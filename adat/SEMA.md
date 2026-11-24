@@ -2705,7 +2705,7 @@ egyetlen segéd alkalmazza (`eszkozok/lxx_strong_javitas.py`), és minden fogyas
 |---|---|
 | `alak_norm` | a görög szóalak ékezet, lehelet és írásjel nélkül, kisbetűvel, végső szigma nélkül (`lxx_strong_javitas.alak_norm`) |
 | `hibas_strong` | a Macula címkéje (`G####`) |
-| `helyes_strong` | a helyes Strong (`G####`), vagy **üres**: a helyes lemmának nincs Strong-száma, a pár „megfelelő nélkül” (DT-F240b) |
+| `helyes_strong` | a helyes Strong (`G####`), vagy **üres**: a helyes lemmának nincs Strong-száma, a pár „megfelelő nélkül” (DT957) |
 | `ok` | `masik_lemma` · `nincs_strong` |
 | `indok` | egy mondat: mi a szó, mit visel, mi a helyes, és mi igazolja (LXX_OS, héber pár) |
 | `proveniencia` | `manual \| scope=F240 L1 \| forras=… \| ts=…` |

@@ -9,7 +9,7 @@
 
 | # | Súly | Eltérés (röviden) | Kimenet |
 |---|---|---|---|
-| 1 | BLOKKOLÓ | CI piros: a PR címe nem `[ELLENŐRZŐ]`; `N-F240a` helyőrző string-literálban; HAMART-001; egy szabály-teszt | **javítva:** a cím `[ELLENŐRZŐ] …`; a literálok számfüggetlenek; a HAMART-001 a 2. sor szerint; a szabály-teszt (`test_push_ures_cimmel_nem_piros`) a PR-cím miatt bukott |
+| 1 | BLOKKOLÓ | CI piros: a PR címe nem `[ELLENŐRZŐ]`; `N249` helyőrző string-literálban; HAMART-001; egy szabály-teszt | **javítva:** a cím `[ELLENŐRZŐ] …`; a literálok számfüggetlenek; a HAMART-001 a 2. sor szerint; a szabály-teszt (`test_push_ures_cimmel_nem_piros`) a PR-cím miatt bukott |
 | 2 | BLOKKOLÓ | a kiadott HAMART-001 egy száma változna (H7843 „13 hely”) | **javítva:** lapjavító sor (`adat/lap_javitasok.tsv`, D15, a szerkesztő: „mehet”); „13 → 14 hely” és „Hiph'il 1 (54 → 53 hivatkozás)” — ugyanannak az áthelyezésnek (Ézs 36:10) a két oldala; a lapot a main-en az Action generálja újra |
 | 3 | KÖZEPES | a `bridge_sorok` 1–2 darabos, hamis új párt hoz (H1241 „marha” → πρωΐ) | **javítva:** új pár csak a forrás küszöbével (a teljes javított darabszám ≥ 3); a legkisebb darabszám 3 |
 | 4 | KÖZEPES | a `Sir 1:5` ἀγόμεναι (G0033) javítatlan | **javítva** (javítósor), és teljességi próba a versillesztéstől függetlenül (`marado_hibas`; a 44. kapu része) |
@@ -18,7 +18,7 @@
 | 7 | KÖZEPES | a 48. kapu nem a brief L5.3(b)-je; a 44–48-ra nincs teszt | **javítva:** a generátor a várttól > 600 karakterre választott helyet `ketes:jp_tavol`-ként jelöli (ez a L5.3(b) mérése a generátoron belül: a táblapozíció és az angol pozíció eltérése), 19 sor, plafon 19; tesztek: `eszkozok/teszt_gyokerok_kapuk.py` (`LxxStrongKapuk`, `BdbKonyvkettoKapu`, `VersJelentesKapu`; áladattal: a javítás előtt bukik, utána átmegy), a CI futtatja |
 | 8 | APRÓ/KÖZEPES | `bdb_forras_javitas.tsv`: 15 „nem azonosított” sor, elveszett F46-attribúció | **javítva:** a tiszta törlés hivatkozás-kulcsa; az F240 L3 forrásként (`forras_javit.f240_index`); „nem azonosított” sor 0; a H2742 és a H3856 az F46-ot is megtartja |
 | 9 | APRÓ | az N-F240a-ban nincs átvezetve a mért 3 370 / 35 | **javítva** |
-| 10 | APRÓ | rokon lemmák `konvencio` ítélettel (δῆλος/δήλωσις, ἁρπαγμός/ἅρπαγμα, κόσμιος/κόσμιον) | **javítva** a meglévő DT-F240b szerint: „megfelelő nélkül”, jelölve (6 javítósor, 16 token) |
+| 10 | APRÓ | rokon lemmák `konvencio` ítélettel (δῆλος/δήλωσις, ἁρπαγμός/ἅρπαγμα, κόσμιος/κόσμιον) | **javítva** a meglévő DT957 szerint: „megfelelő nélkül”, jelölve (6 javítósor, 16 token) |
 | 11 | APRÓ | naplószámok (89/87; 141 vs. 130), `--naplo` a docstringben | **javítva:** 90/88; „141 a javítás előtt, 126 utána”; `--ir` |
 | 12 | APRÓ | a `grammatikai_strongok.tsv` fejléce `n=31`; két régi indok ellentmond | **javítva:** `alakszam=34`; a G3165 és a G4771 indoka |
 
