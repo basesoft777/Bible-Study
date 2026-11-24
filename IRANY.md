@@ -14,7 +14,7 @@
 
 ## Most NEM csináljuk
 - Új lexikonlap: csak a TEREMT-001 (2026-11-12: „ez a következő a többi fagyasztva”). Befagyasztva: KIRALY, ALVIL, MENNY, ANTROP, HODIT, TEREMT-002.
-- Új olvasó-felmérés és javítókör a régi olvasón.
+- Új olvasó-felmérés és javítókör a régi olvasón. Az olvasó-szerverre csak nagyon indokolt esetben költünk (a te szavad, 2026-11-24: „olvasai serverre ne költsünk csak ha nagyon indokolt”): a kiadási minimum olvasói része csak a lapnézéshez kell; az LSJ-kártyák javítótáblája (PR-A, PR-B) az olvasó újraépítésére vár.
 - Új motívumcikk, amíg nincs homonima-jelzés a jelöltlistán; kivétel a TEREMT-001 (DT914).
 - A BDB-lektor többi javaslata a lapon: csak egy jövőbeli kiadásban (N228).
 - Az olvasó átkötése az új generátor számításaira (#236) és a szókártyák motívum nélküli belépési pontjai (#237): nincsenek a sorban.
