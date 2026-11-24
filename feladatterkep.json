@@ -8,7 +8,7 @@
   ],
   "belyeg": {
    "datum": "2026-11-24",
-   "commit": "a4455bfa"
+   "commit": "5135978d"
   },
   "generator": "eszkozok/feladatterkep.py"
  },
@@ -819,8 +819,8 @@
    "cim": "A lapgenerátor újraírása, 3. rész — átállás az új lapgenerátorra (218c)",
    "fazis": "folyamat",
    "allapot": "ready",
-   "brief_allapot": "nem_indult",
-   "most": "A #810 (F231, olvasó egyben) merge-e után, az integrátor jelére; első lépés: F241.0 (indítás, a #820 ágának N-F239-tételei, a döntésfájl)",
+   "brief_allapot": "fut",
+   "most": "Folytatás: F241.5b 2. menet (a 91 MINTA-hely javítása, a sablon- és névtábla-szövegek, a D11-kapuk) a D15–D16 szerint (a ⛔ 1–2 megválaszolva, 2026-11-24), az A szelet ágán (claude/f241a-kiadasi-ut); kész: KONYV, a HAMART-001 mérése; átadó: naplok/F241_atado_F241.5b.md",
    "fugg": "#217 (kész), #218 (kész)",
    "tervezett": false,
    "reszletes": "",
