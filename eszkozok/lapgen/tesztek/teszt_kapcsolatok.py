@@ -45,7 +45,7 @@ def szoveg(lathato):
 def szakasz_sorai(azonosito):
     """A kész lap 7. és 8. szakaszának sorai (a 7. címsortól a 9. szakaszig)."""
     if azonosito not in _LAP:
-        lap = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=_DATUM).nezetek['TUDOMANYOS']
+        lap = kozos.lap_keszit(azonosito, _DATUM).nezetek['TUDOMANYOS']
         eleje = next(i for i, s in enumerate(lap) if s.szoveg.startswith('## ') and 'Kapcsolatok' in s.szoveg)
         kapcsolodo = next(i for i in range(eleje + 1, len(lap)) if lap[i].szoveg.startswith('## '))
         vege = next((i for i in range(kapcsolodo + 1, len(lap)) if lap[i].szoveg.startswith('## ')), len(lap))

@@ -142,7 +142,7 @@ class AMintalapokon(unittest.TestCase):
         egyszer, a kapu megfogja. A részleges lapon a kritérium még nem áll (a lap eleje később készül el)."""
         for azonosito in MINTALAPOK:
             motivum = MotivumId(azonosito)
-            eredmeny = fo.lap_keszit(kozos.GYOKER, motivum)
+            eredmeny = kozos.lap_keszit(azonosito)
             lap = eredmeny.nezetek[konfig.NEZET_TUDOMANYOS]
             kriterium = motivum_be.kriterium_szoveg(bemenet.Bemenet(kozos.GYOKER), motivum)
             self.assertTrue(kriterium, azonosito)
@@ -155,7 +155,7 @@ class AMintalapokon(unittest.TestCase):
         mindegyikének látható szavai között, a megnevezett helyen, betűre ott áll. (Azt, hogy a találat az olvasó
         számára zavaró-e, a teszt nem méri: az a lap olvasójának ítélete.)"""
         for azonosito in MINTALAPOK:
-            eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito))
+            eredmeny = kozos.lap_keszit(azonosito)
             sorok = eredmeny.nezetek[konfig.NEZET_TUDOMANYOS]
             for talalat in eredmeny.figyelmeztetesek:
                 self.assertGreaterEqual(len(talalat.helyek), 2, azonosito)

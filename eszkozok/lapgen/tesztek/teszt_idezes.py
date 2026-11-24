@@ -21,7 +21,7 @@ from lapgen.szamitas import idezes as SZ
 from lapgen.szoveg import MotivumId
 
 HAMART, ISTENTISZT = 'HAMART-001', 'ISTENTISZT-001'
-INFRASTRUKTURA = ('B01', 'B12', 'B13', 'B47', 'B51', 'B59', 'B63', 'B65', 'B66', 'B68')
+INFRASTRUKTURA = ('B01', 'B12', 'B13', 'B47', 'B51', 'B59', 'B63', 'B65', 'B66', 'B68', 'B76')
 NEM_VIZSGALT = ('B73', 'B75')   # fájl nélküli, nem vizsgált forrás: a listán nem áll (SEMA 2.66)
 KOLOFON_SAJAT = ('B48', 'B49', 'B50')   # a Kolofon saját metaadata (kiadás, lektor, közel-keleti határ; S8d)
 

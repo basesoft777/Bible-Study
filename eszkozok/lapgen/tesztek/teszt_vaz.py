@@ -61,7 +61,7 @@ def _lathato_szoveg(azonosito):
     """A mintalap kész szakaszainak látható szövege (a megjegyzések és a link-célpontok nélkül: a horgony a
     Markdown-link célja, az olvasó nem látja; a Tartalomjegyzék „#10-értelmezés” horgonya nem tételszám), nézetenként
     összefűzve."""
-    eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=_DATUM)
+    eredmeny = kozos.lap_keszit(azonosito, _DATUM)
     return '\n'.join(''.join(sor.szoveg[k:v] for k, v, f in sor.tartomanyok if f not in (MEGJEGYZES, Fajta.HORGONY))
                      for sorok in eredmeny.nezetek.values() for sor in sorok)
 

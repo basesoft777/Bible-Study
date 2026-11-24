@@ -92,7 +92,7 @@ class ALapon(unittest.TestCase):
     @classmethod
     def lap(cls, azonosito):
         if azonosito not in cls._lapok:
-            cls._lapok[azonosito] = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito))
+            cls._lapok[azonosito] = kozos.lap_keszit(azonosito)
         return cls._lapok[azonosito]
 
     def _kartya_sorai(self, azonosito):

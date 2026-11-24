@@ -27,7 +27,7 @@ _J = ('igen', '-', '-', 'aktiv', '-', '-', 'manual')
 
 def lapok(azonosito):
     if azonosito not in _LAPOK:
-        _LAPOK[azonosito] = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=DATUM).nezetek
+        _LAPOK[azonosito] = kozos.lap_keszit(azonosito, DATUM).nezetek
     return _LAPOK[azonosito]
 
 
@@ -200,7 +200,7 @@ class Lap(unittest.TestCase):
             self.assertIn('([Mi tartozik ide, és mi nem](#%s))' % KRITERIUM_HORGONY.kod, mondat)
             self.assertIn('A keresés %s terjedt ki' % varhato[azonosito], mondat)
             self.assertIn('a szavakat az 1.2., a kizárás okait az 1.3., a megmaradt helyeket az 1.4. pont', mondat)
-            modell = fo.lap_keszit(kozos.GYOKER, motivum)   # a számok a modellből: a lánc szavai és a csoportok
+            modell = kozos.lap_keszit(azonosito)   # a számok a modellből: a lánc szavai és a csoportok
             self.assertTrue(modell.nezetek)
 
     def test_a_szakasz_lathato_szovegeben_nincs_belso_jeloles(self):
@@ -235,7 +235,7 @@ class Bemenetek(unittest.TestCase):
         for kod, kiejtes in (('H2398', 'chátá'), ('H7121', 'kárá')):
             self.assertEqual(k.szotari(Strong(kod)).kiejtes.ertek, kiejtes)
         self.assertEqual(k.szotari(Strong('H2398'), (Igehely('1Móz 4:7'),)).kiejtes.ertek, 'chátá')
-        eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId('HAMART-001'), datum=datetime.date(2026, 11, 13))
+        eredmeny = kozos.lap_keszit('HAMART-001', datetime.date(2026, 11, 13))
         lap = nfc('\n'.join(lathato(s) for sorok in eredmeny.nezetek.values() for s in sorok))
         self.assertIn(nfc('חָטָא (chátá)'), lap)
 

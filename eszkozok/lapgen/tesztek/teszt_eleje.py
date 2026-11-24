@@ -54,8 +54,10 @@ def _hibas_linkek(sorok):
     return sorted({h for sor in sorok for h in _LINK_RX.findall(sor) if h not in celok})
 
 
-def _lap(azonosito):
-    eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=_DATUM)
+def _lap(azonosito, friss=False):
+    """A lap sorai; `friss`: a közös gyorsítótár nélkül (a szakaszrendet átíró teszt, GK-10)."""
+    eredmeny = (fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=_DATUM) if friss
+                else kozos.lap_keszit(azonosito, _DATUM))
     return [s.szoveg for s in eredmeny.nezetek[konfig.NEZET_TUDOMANYOS]]
 
 
@@ -161,7 +163,7 @@ class Szakaszrend(unittest.TestCase):
         eredeti_rend = szakaszok._rend
         szakaszok._rend = _cserelt_rend
         try:
-            uj = _lap(HAMART)
+            uj = _lap(HAMART, friss=True)   # a cserélt szakaszrenddel: nem a gyorsítótárból
         finally:
             szakaszok._rend = eredeti_rend
         for elem in ('- [3. Szótári háttér](#3-szótári-háttér)', '- [5. Kereszthivatkozások](#5-kereszthivatkozások)',

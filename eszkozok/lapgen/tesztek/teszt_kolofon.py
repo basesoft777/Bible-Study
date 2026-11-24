@@ -233,7 +233,14 @@ class Jovahagyas(_Alap):
         javitasok = {s['datum'] for s in _tabla('adat/lap_javitasok.tsv')
                      if s['id'] == HAMART and s['jovahagyta'] == 'felhasználó' and s['datum']}
         self.assertEqual([d.strftime('%Y.%m.%d') for d in adatok.javitasok], sorted(javitasok))
-        self.assertIn('vetette el (2026.11.11–13) |', self.lap)   # a dátumok tartománya (azonos hónap)
+        # a dátumok tartománya az adatból (azonos hónapban: `ÉÉÉÉ.HH.NN–NN`); a 2026-11-24-i F240.9 sor óta 2026.11.11–24
+        elso, utolso = adatok.javitasok[0], adatok.javitasok[-1]
+        if (elso.year, elso.month) == (utolso.year, utolso.month):
+            vart = elso.strftime('%Y.%m.%d') + ('' if elso == utolso else '–' + utolso.strftime('%d'))
+            self.assertIn('vetette el (%s) |' % vart, self.lap)
+        else:
+            self.assertIn(elso.strftime('%Y.%m.%d'), self.lap)
+            self.assertIn(utolso.strftime('%Y.%m.%d'), self.lap)
         self.assertIn('| Kiadás | %d |' % adatok.kiadasok[-1].szam, self.lap)
 
 

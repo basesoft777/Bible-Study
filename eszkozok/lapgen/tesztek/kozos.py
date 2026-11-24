@@ -16,6 +16,25 @@ if ESZKOZOK not in sys.path:
 MINTALAPOK = ('HAMART-001', 'ISTENTISZT-001')
 REGRESSZIO_DATUM = '2026-11-13'
 
+# A közös, folyamatszintű lap-gyorsítótár (2026-11-24, az integrátor döntése; mérés: a készlet 71 percéből kb. 60–70% ugyanannak a két
+# mintalapnak az ismételt generálása volt, lapként kb. 20 s). A futtató (`futtat.py`) egy folyamatban futtatja a készletet, így minden
+# (lap, dátum) egyszer generálódik. A lefedettség nem változik: ugyanaz a lap, ugyanazok az állítások. Friss generálás marad (nem ezt hívja):
+# a GK-29 determinizmus (két futás bájtra), a GK-31 futásidő, a GK-11 / fordított sorrend, a más dátumú generálás, a festett futás, a
+# minirepós és a modellt módosító teszt. Az őrtesztje: `teszt_kozos_gyorsitotar.py`.
+_LAP_GYORSITOTAR = {}
+
+
+def lap_keszit(azonosito, datum=None):
+    """`fo.lap_keszit(GYOKER, MotivumId(azonosito), datum=datum)` egyszer folyamatonként. Minden hívó saját `Eredmeny`-t kap (a nézetek
+    szótára és a napló másolat; a kész sorok tuple-ök), így egy teszt a többiét nem módosíthatja."""
+    from lapgen import fo
+    from lapgen.szoveg import MotivumId
+    kulcs = (azonosito, datum)
+    if kulcs not in _LAP_GYORSITOTAR:
+        _LAP_GYORSITOTAR[kulcs] = fo.lap_keszit(GYOKER, MotivumId(azonosito), datum=datum)
+    e = _LAP_GYORSITOTAR[kulcs]
+    return fo.Eredmeny(dict(e.nezetek), list(e.naplo) if isinstance(e.naplo, list) else e.naplo, e.festo, tuple(e.figyelmeztetesek))
+
 
 def kodfajlok(alkonyvtar=None, tesztek_nelkul=True):
     """A lapgen Python-fájljai repó-relatív, `/` elválasztós útvonallal (a lapgen gyökeréhez képest)."""

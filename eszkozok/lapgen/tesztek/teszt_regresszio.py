@@ -251,7 +251,7 @@ class Szamlalok(unittest.TestCase):
         from lapgen.szoveg import MotivumId
         cls.konyvtar = tempfile.mkdtemp()
         for azonosito in kozos.MINTALAPOK:
-            eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=datetime.date(2026, 11, 13))
+            eredmeny = kozos.lap_keszit(azonosito, datetime.date(2026, 11, 13))
             with open(os.path.join(cls.konyvtar, '%s_TUDOMANYOS.md' % azonosito), 'w', encoding='utf-8',
                       newline='\n') as f:
                 f.write(lap_szoveg(eredmeny.nezetek['TUDOMANYOS']))

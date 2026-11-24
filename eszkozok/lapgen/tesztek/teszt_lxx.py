@@ -78,7 +78,7 @@ class ALapon(unittest.TestCase):
 
     def test_az_istentisztelet_lap_otodik_szakasza(self):
         from lapgen import fo, konfig
-        sorok = [s.szoveg for s in fo.lap_keszit(kozos.GYOKER, MotivumId('ISTENTISZT-001')).nezetek[
+        sorok = [s.szoveg for s in kozos.lap_keszit('ISTENTISZT-001').nezetek[
             konfig.NEZET_TUDOMANYOS]]
         self.assertIn('| Zsolt 116:17 | Zsolt(LXX) 115:8 | אֶקְרָֽא (ekrá) | nincs megfelelő a görögben (LXX-minusz) '
                       '| LXX-minusz |', sorok)
@@ -97,7 +97,7 @@ class Gk04(unittest.TestCase):
         """A kapuk a lap készítésekor futnak; mindkét mintalap elkészül (a szópáros ISTENTISZT-001 is)."""
         from lapgen import fo, konfig
         for azonosito in kozos.MINTALAPOK:
-            self.assertIn(konfig.NEZET_TUDOMANYOS, fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito)).nezetek)
+            self.assertIn(konfig.NEZET_TUDOMANYOS, kozos.lap_keszit(azonosito).nezetek)
 
     def test_lxx_egyezes_kapu(self):
         sz = LX.Szamlalo(egyezo=4, szocsalad=2, eltero=1, nincs_par=3, minusz=0, fuggoben=0, szamozas=0)   # 10 vers

@@ -29,7 +29,7 @@ def melleklet(azonosito):
 
 def melleklet_lap(azonosito):
     if azonosito not in _LAPOK:
-        _LAPOK[azonosito] = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito), datum=DATUM).nezetek['KIZARASOK']
+        _LAPOK[azonosito] = kozos.lap_keszit(azonosito, DATUM).nezetek['KIZARASOK']
     return _LAPOK[azonosito]
 
 

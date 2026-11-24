@@ -19,7 +19,7 @@ _LAPOK = {}
 
 def lap(azonosito):
     if azonosito not in _LAPOK:
-        _LAPOK[azonosito] = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito))
+        _LAPOK[azonosito] = kozos.lap_keszit(azonosito)
     return _LAPOK[azonosito]
 
 
