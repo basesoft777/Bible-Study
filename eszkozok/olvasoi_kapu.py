@@ -802,8 +802,13 @@ def ell_helyorzo(sorok):
 # megjelöltük” — második előfordulás; LISTA_NEVELO): a forrásnév a listában és a táblacellában névelő nélkül áll („BDB-szótár
 # (közkincs)”, nem „a BDB-szótár (közkincs)”); a névelőt csak a folyó szöveg teszi elé. A kisbetűs „a”/„az” a
 # névtöredék jele; a nagybetűs „A”/„Az” mondatkezdő listaelem (pl. a Nyitott kérdések pontjai), az megengedett.
-NEVELO_ELEM_RX = re.compile(r'^(?:\*\*|\*|\[|`)?(?:a|az)\s')
-NEVELO_LISTA_RX = re.compile(r'^\s*(?:[-*]|\d+\.)\s+(.*)$')
+# A szabály és az elembontás egy helyen áll (`lapgen/nevelo.py`, F241.5b, D16 (c)); a lapgen a cella típusa szerint
+# méri (az idézet és a jóváhagyott kézi kifejezés nem mérődik). Itt, a Markdown-szövegen a cella típusa nem látszik:
+# ha a mérő a kész lap fajta-térképét átadja (`lap_meres(..., mentes=...)`), a mentes elem itt sem mérődik.
+from lapgen import nevelo as _nevelo  # noqa: E402
+NEVELO_ELEM_RX = _nevelo.NEVELO_ELEM_RX
+# a kész lap fajta-térképéből: (sorszám, a névelő helye a sorban) → igaz, ha a kapu nem méri; None: mindent mér
+_NEVELO_MENTES = None
 
 
 def ell_lista_nevelo(sorok):
@@ -813,18 +818,8 @@ def ell_lista_nevelo(sorok):
     for s in sorok:
         if s.fajta in ('komment', 'kod', 'ures', 'cim'):
             continue
-        t = re.sub(r'<!--.*?-->', '', s.nyers).strip()
-        elemek = []
-        if t.startswith('|'):
-            if re.match(r'^\|[\s:|-]+\|$', t):
-                continue
-            elemek = [c.strip() for c in re.split(r'(?<!\\)\|', t.strip('|'))]
-        else:
-            m = NEVELO_LISTA_RX.match(t)
-            if m:
-                elemek = [m.group(1).strip()]
-        for e in elemek:
-            if NEVELO_ELEM_RX.match(e):
+        for e, kezdet in _nevelo.elemek(s.nyers):
+            if _nevelo.nevelos(e) and not (_NEVELO_MENTES and _NEVELO_MENTES(s.n, _nevelo.nevelo_helye(e, kezdet))):
                 ki.append(talalat('LISTA_NEVELO', BUKAS, s.n, e[:80], 'a lista- vagy táblaelem névelővel kezdődik: a név '
                                   'névelő nélkül álljon, a névelőt csak a folyó szöveg teszi elé'))
     return ki
@@ -1738,17 +1733,23 @@ def ell_minta(szoveg):
     return ki
 
 
-def lap_meres(szoveg, kh=True, atvett=True, arany=True):
-    """Egy lap szövegének mérése: (találatok, megjegyzések). Az új szerkezetű lapon kivétel nélkül (F178.4)."""
-    global KIVETEL_NELKUL, KIZART_SZAKASZ
+def lap_meres(szoveg, kh=True, atvett=True, arany=True, mentes=None):
+    """Egy lap szövegének mérése: (találatok, megjegyzések). Az új szerkezetű lapon kivétel nélkül (F178.4).
+    `mentes`: a lapgen kész lapjának fajta-térképéből (sorszám, hely) → igaz, ha a névelő-kapu nem méri (D16 (c));
+    a lapgen-lapon `lapgen.nevelo.mentes_fv(kesz_sorok)`."""
+    global KIVETEL_NELKUL, KIZART_SZAKASZ, _NEVELO_MENTES
     KIVETEL_NELKUL = bool(UJ_SZERKEZET_RX.search(szoveg))
     KIZART_SZAKASZ = () if KIVETEL_NELKUL else KIZART_SZAKASZ_REGI
     sorok = tagol(szoveg)
     ki = []
-    for f in ELLENORZESEK:
-        if f is ell_kh and not kh:
-            continue
-        ki += f(sorok)
+    _NEVELO_MENTES = mentes
+    try:
+        for f in ELLENORZESEK:
+            if f is ell_kh and not kh:
+                continue
+            ki += f(sorok)
+    finally:
+        _NEVELO_MENTES = None
     ki += ell_szint(sorok, arany_szoszam() if arany else None)
     if KIVETEL_NELKUL:
         import tablajegyzet as TJ

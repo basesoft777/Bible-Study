@@ -12,7 +12,7 @@ import hashlib
 import os
 import sys
 
-from lapgen import alakosztaly, bemenet, ismetles, konfig, szerkezet
+from lapgen import alakosztaly, bemenet, ismetles, konfig, nevelo, szerkezet
 from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet.jegyzek import NEM_FAJL
 from lapgen.megjelenites.md.iro import Lapiro, lap_szoveg
@@ -113,6 +113,8 @@ def lap_keszit(gyoker, motivum, mod=Mod.MUNKA, datum=None, festek=False):
         ismetles.kriterium_kapu(lap, kriterium, teljes=rend.kesz(FEJ))
         # a kész lap kapui a fajta-térképen (GK-24) és a szerkezeten (GK-25); festett futásban a jelzőszó miatt nem
         alakosztaly.kapu(nezetek)
+        # a lista- és táblaelem névelője a cella típusa szerint (D16 (c)): az idézet és a kézi próza nem mérődik
+        nevelo.kapu(nezetek)
         szerkezet.kapu(nezetek)
         figyelmeztetesek = tuple(ismetles.ismetlesek(lap))
     return Eredmeny(nezetek, b.olvasasi_naplo(), b.festo, figyelmeztetesek)
