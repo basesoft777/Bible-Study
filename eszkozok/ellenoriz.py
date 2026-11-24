@@ -2683,6 +2683,46 @@ def szabaly46_lxx_os_homograf(adat_dir):
                megjegyzes='LXX_OS: %d pár / %d token (plafon %d / %d; N-F240a)' % ((par, tok) + LXX_OS_HOMOGRAF_PLAFON))
 
 
+# 47. szabály (F240 L3): a BDB-szövegben a hivatkozás előtt nem áll kettőzött könyvszó („angels Psalm Psa 97:7”,
+# „angyalok Zsolt Zsolt 97:7”); kivétel a személynév és a tartalmi szó (bdb_konyvketto_javit.MARAD, Ezsdrás).
+def kettozes_maradek(gyoker):
+    """(angol hibák, magyar hibák): a még kettőzött helyek a forrásban és a BDB-fordításokban."""
+    import bdb_konyvketto_javit as KK
+    en, hu, marad = [], [], collections.defaultdict(set)
+    with open(os.path.join(gyoker, 'konkordancia', 'BDB_teljes_unabridged.tsv'), encoding='utf-8') as f:
+        for sor in f:
+            p = sor.rstrip('\n').rstrip('\r').split('\t')
+            if len(p) < 3 or p[0] == 'Strong_padded':
+                continue
+            for poz, regi, uj, konyv, cv, d, _ok in KK.en_jeloltek(p[0], p[-1]):
+                if d == 'javit':
+                    en.append('%s: „%s” (pozíció %d)' % (p[0], regi, poz))
+                else:
+                    marad[p[0]].add((KK.HU[konyv], cv))
+    hu_konyv = sorted(set(KK.HU.values()), key=len, reverse=True)
+    rx = re.compile(r'(?<![\w])(\S+) (%s) (\d+:\d+)' % '|'.join(map(re.escape, hu_konyv)))
+    fej, sorok = G.tsv_beolvas(os.path.join(gyoker, 'adat', 'forditasok.tsv'))
+    for r in sorok:
+        if r.get('szotar') != 'BDB':
+            continue
+        for m in rx.finditer(r.get('forditas_hu') or ''):
+            w, a, cv = m.groups()
+            if (w == a or (a == 'Zsolt' and w in ('Zsoltár', 'Zsoltárok'))) and (a, cv) not in marad.get(r['strong'], set()):
+                hu.append('%s %s: „%s”' % (r['strong'], r['jelentes_szam'], m.group(0)))
+    return en, hu
+
+
+def szabaly47_bdb_konyvketto(adat_dir):
+    cim = '47. Nincs kettőzött könyvszó a BDB-hivatkozás előtt, angolul és magyarul (F240 L3)'
+    gyoker = os.path.dirname(os.path.abspath(adat_dir))
+    if not os.path.exists(os.path.join(gyoker, 'konkordancia', 'BDB_teljes_unabridged.tsv')):
+        return Sor(cim, 'KÉZI', megjegyzes='nincs konkordancia/')
+    en, hu = kettozes_maradek(gyoker)
+    sertes = ['angol forrás: %s' % x for x in en] + ['fordítás: %s' % x for x in hu]
+    return Sor(cim, _verdikt(sertes, []), len(sertes) or None, sertes,
+               megjegyzes='javítás: eszkozok/bdb_konyvketto_javit.py; napló: naplok/LXXBDB_konyvketto_csere.tsv')
+
+
 # 41. szabály (F178.6): a munkafolyamat szereplője (felhasználó, orkesztrátor) nem áll a közleményben; a kapu jelez
 # (JELENTÉS), a szöveg a közlemény javítókörében javul (a lapon: olvasói kapu, a nyílt magban: SZERKESZTO).
 def szabaly41_kozlemeny_szerkeszto(adat_dir):
@@ -2813,6 +2853,7 @@ def main():
         tabla_sorok.append(szabaly44_lxx_macula_strong(args.adat))
         tabla_sorok.append(szabaly45_lxx_nyelvtani(args.adat))
         tabla_sorok.append(szabaly46_lxx_os_homograf(args.adat))
+        tabla_sorok.append(szabaly47_bdb_konyvketto(args.adat))
     except Exception as exc:
         print('HIBA: %s' % exc, file=sys.stderr)
         sys.exit(2)

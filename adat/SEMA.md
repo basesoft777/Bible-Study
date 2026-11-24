@@ -3033,6 +3033,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | 44 | A Macula LXX-párok görög Strongja: minden eltérés ítélve, a nyers forrás csak a segéden át (F240 L1) |
 | 45 | Nyelvtani szó nem LXX-megfelelő: az alakszám a nyelvtani listán (F240 L2) |
 | 46 | Az LXX_OS homográf- és tulajdonnév-címkéi a plafon alatt; a Macula kisbetűs szava nem tulajdonnév (F240 L6, N-F240a) |
+| 47 | Nincs kettőzött könyvszó a BDB-hivatkozás előtt, angolul és magyarul (F240 L3) |
 
 **CI-szabályok** (`.github/workflows/ellenorzes.yml`)
 
