@@ -57,6 +57,7 @@ maradhatnak a lépéslistán kívül (EGYEZES_KIVETEL).
 """
 
 import argparse
+import contextlib
 import os
 import re
 import shutil
@@ -730,7 +731,8 @@ def kapu(args):
     with open(uzenet_fajl, 'w', encoding='utf-8') as f:
         f.write(uzenetek + '\n')
     if fajlok:
-        with lap_sor('E2-E39'):
+        # gyors próbában a sor csak akkor kell, ha a diff a lapot érinti (különben az E28 nem generál lapot; a gyors próba ne várjon órákig)
+        with (lap_sor('E2-E39') if lap_kell else contextlib.nullcontext()):
             fut.lepes('E2-E39 (futtat.py)', [
                 PY, 'eszkozok/ellenorzes/futtat.py', '--valtozott'] + fajlok + [
                 '--diff-alap', alap, '--diff-fej', fej, '--pr-cim', pr_cim, '--esemeny', 'pull_request',
