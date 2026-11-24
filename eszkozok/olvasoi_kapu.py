@@ -431,8 +431,22 @@ def kornyezet(s, m, szel=50):
 FELHASZNALO_RX = re.compile(r'(?<!\w)[Ff]elhasználó\w*')
 
 
+# F241.5b (D23): a MOTIVUM_ID „más motívum azonosítója”; a lap saját azonosítója (a `# 📖 <ID> —` címben) nem az,
+# például a „Hogyan idézd” sorában: „(ISTENTISZT-001)”
+SAJAT_ID_RX = re.compile(r'^#\s*📖\s*([A-ZÁÉÍÓÖŐÚÜŰ]{3,}-\d{3})\b')
+
+
+def sajat_azonosito(sorok):
+    for s in sorok:
+        m = SAJAT_ID_RX.match(s.szoveg)
+        if m:
+            return m.group(1)
+    return None
+
+
 def ell_belso(sorok):
     ki = []
+    sajat = sajat_azonosito(sorok)
     for s in sorok:
         if not s.olvasoi:
             continue
@@ -450,6 +464,8 @@ def ell_belso(sorok):
                                   nev + m.group(0)))
         if s.fajta != 'cim':
             for m in MOTIVUM_ID.finditer(s.szoveg):
+                if m.group(1) == sajat:
+                    continue
                 ki.append(talalat('MOTIVUM_ID', FIGY, s.n, kornyezet(s.szoveg, m),
                                   'motívum-azonosító link nélkül: ' + m.group(1), m.group(1)))
     ki += ell_belso_strong(sorok)

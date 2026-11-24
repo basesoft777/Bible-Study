@@ -202,6 +202,12 @@ class Negativ(unittest.TestCase):
     def test_T14_motivum_id_link_nelkul(self):
         self.jelez(lap(kivonat='Precedens: KIRALY-001 2Móz 19:6 → 1Pét 2:9.'), 'MOTIVUM_ID', K.FIGY)
 
+    def test_motivum_id_a_lap_sajat_azonositoja_nem_jelez(self):
+        """F241.5b (D23): a „Hogyan idézd” sorában a lap saját azonosítója nem „más motívum azonosítója”."""
+        self.assertNotIn('MOTIVUM_ID', azonositok(lap(tobbi='*Hogyan idézd:* Biblialex, Próba (X-001), 1. kiadás.')))
+        # a saját mellett álló idegen azonosító továbbra is jelez
+        self.jelez(lap(tobbi='*Hogyan idézd:* Próba (X-001); vö. KIRALY-001.'), 'MOTIVUM_ID', K.FIGY)
+
     def test_strong_a_szo_es_kiejtese_mellett(self):
         """F123.INDOKLAS: ISTENTISZT-001, a Minősítés jelölt-táblája (Róm 10:12) és az LXX-tábla alakja."""
         t = self.jelez(lap(kivonat='A versben ἐπικαλέομαι áll, de ὄνομα (G3686) nélkül.'), 'BELSO')

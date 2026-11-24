@@ -138,8 +138,8 @@ d1.bevezeto	Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehe
 d1.szam	{n}	n:szam(ezres)	1	blokk_dontesi_ut	-
 d1.szam.kiemelt	**{n}**	n:szam(ezres)	1	blokk_dontesi_ut	-
 fej.hatar.cim	Mi tartozik ide, és mi nem	-	fej	a mai lap eleji meghatározás címe; a `fej` szakasz (S8) és a rá mutató hivatkozások közös szövege (DT872)	-
-d11.targy	A keresés tárgyát a lap eleje határozza meg ([{cim}](#{horgony})). A keresés {elemek|, | és } terjedt ki: a szavakat {szakasz|a}.{forrasok}., a kizárás okait {szakasz|a}.{kiesett}., a megmaradt helyeket {szakasz|a}.{maradt}. pont sorolja fel.	cim:lathato, horgony:horgony, elemek:lista(lathato), szakasz:szam, forrasok:szam, kiesett:szam, maradt:szam	1	uj (DT872: a kritérium ismétlése helyett hivatkozás és számolás)	var
-d11.targy.szavak_nelkul	A keresés tárgyát a lap eleje határozza meg ([{cim}](#{horgony})). A kizárás okait {szakasz|a}.{kiesett}., a megmaradt helyeket {szakasz|a}.{maradt}. pont sorolja fel.	cim:lathato, horgony:horgony, szakasz:szam, kiesett:szam, maradt:szam	1	uj (DT872)	var
+d11.targy	A keresés tárgyát a meghatározás adja meg ([{cim}](#{horgony})). A keresés {elemek|, | és } terjedt ki: a szavakat {szakasz|a}.{forrasok}., a kizárás okait {szakasz|a}.{kiesett}., a megmaradt helyeket {szakasz|a}.{maradt}. pont sorolja fel.	cim:lathato, horgony:horgony, elemek:lista(lathato), szakasz:szam, forrasok:szam, kiesett:szam, maradt:szam	1	uj (DT872: a kritérium ismétlése helyett hivatkozás és számolás)	F241 D23 (4)–(5) (az integrátor, a felhasználó felhatalmazásával, 2026-11-24)
+d11.targy.szavak_nelkul	A keresés tárgyát a meghatározás adja meg ([{cim}](#{horgony})). A kizárás okait {szakasz|a}.{kiesett}., a megmaradt helyeket {szakasz|a}.{maradt}. pont sorolja fel.	cim:lathato, horgony:horgony, szakasz:szam, kiesett:szam, maradt:szam	1	uj (DT872)	F241 D23 (4)–(5) (az integrátor, a felhasználó felhatalmazásával, 2026-11-24)
 d11.elem.heber	{n} héber szóra	n:szam	1	uj (DT872)	var
 d11.elem.gorog	{n} görög szóra	n:szam	1	uj (DT872)	var
 d11.elem.szopar	{n} szópárra	n:szam	1	uj (DT872)	var
@@ -986,7 +986,7 @@ k3.kov.tobb	A határt több ok együtt húzza meg	-	3	olvasoi_kovetkeztetes.kiza
 k3.kov.tobb.elso	a határt több ok együtt húzza meg	-	3	olvasoi_kovetkeztetes.kizart	-
 k3.forras.elem	{csoport} {n}	csoport:nev(vizsgalt_csoport), n:szam	3	szerep_kizart.osszesito_sor	-
 k3.hatokor	*A táblázat a motívum {n} elutasított vagy nyitva maradt vizsgált sorát sorolja fel (forrás: {tabla}); egy sor több verset is fedhet.*	n:szam, tabla:nev(forras)	3	blokk_kizart (a hatókör-sor olvasói alakja)	-
-k3.kriterium	*A kizárás mércéje a lap elején álló meghatározás ([{cim}](#{horgony})).*	cim:lathato, horgony:horgony	3	uj (DT872: a „Negatív kritérium” bekezdés helyett utalás a szakasz elején)	var
+k3.kriterium	*A kizárás mércéje a meghatározás ([{cim}](#{horgony})).*	cim:lathato, horgony:horgony	3	uj (DT872: a „Negatív kritérium” bekezdés helyett utalás a szakasz elején)	F241 D23 (4)–(5) (az integrátor, a felhasználó felhatalmazásával, 2026-11-24)
 k3.okok.cim	**Az elutasítás okai:**	-	3	szerep_kizart.osszesito_sor	-
 k3.okok.nincs	**Az elutasítás okai:** —	-	3	szerep_kizart.osszesito_sor	-
 k3.okok.fejlec.ok	Ok	-	3	szerep_kizart.osszesito_sor	-
