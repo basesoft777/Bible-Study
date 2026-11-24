@@ -60,6 +60,7 @@ import karoli_kh_szuro as KHSZ  # noqa: E402  (F177: csak a MEK-kel megerősíte
 import tanulmany_regiszter as TR  # noqa: E402
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'olvaso_szerver'))
 import forras_azonosito as FA  # noqa: E402  (#101: a forrásfájlok ujjlenyomata a meta-ba; stdlib-only, az olvaso_szerver/ könyvtárban áll)
+import lxx_strong_javitas as LXJ  # noqa: E402  (F240 L1: a Macula LXX-Strong javítása; a nyers gorog_strong / lxx_bridge.tsv csak ezen át)
 from strong_util import strong_normalizal  # noqa: E402
 
 
@@ -1048,6 +1049,9 @@ class Epito(object):
         if not self.licenc_ellenorzes(nev, lic):
             return
         fej, sorok = G.tsv_beolvas(os.path.join(self.gyoker, relfajl))
+        if nev == 'lxx_bridge':
+            # F240 L1: a Macula összesítése a javított tokenek különbségével (eszkozok/lxx_strong_javitas.py)
+            sorok = LXJ.bridge_sorok(self.gyoker, self.konk)
         nevek = oszlopnevek(fej)
         strong_idx = fej.index(strong_o) if strong_o and strong_o in fej else None
         ig_idx = fej.index(igehely_o) if igehely_o and igehely_o in fej else None
@@ -1116,6 +1120,8 @@ class Epito(object):
         # -- token_macula
         if self.licenc_ellenorzes('token_macula', SZARMAZTATOTT_LICENC['token_macula']):
             sorok, szam, db_nyers = [], {}, 0
+            lxj = LXJ.javitasok(self.gyoker)   # F240 L1: a hibás Macula LXX-Strong javítótáblája
+            lxj_db = 0
             for f in sorted(glob.glob(os.path.join(self.konk, 'Macula_heber_*.tsv'))):
                 for r in G.tsv_beolvas(f)[1]:
                     db_nyers += 1
@@ -1127,8 +1133,10 @@ class Epito(object):
                     except ValueError:
                         st = None
                         self.jelent_norm('token_macula', r['strong'], 'Strong-szám nem normalizálható')
+                    gs, javitva = LXJ.javit(r.get('gorog_lxx', ''), r['gorog_strong'], lxj)
+                    lxj_db += javitva
                     try:
-                        lst = strong_normalizal(r['gorog_strong']) if r['gorog_strong'] else None
+                        lst = strong_normalizal(gs) if gs else None
                     except ValueError:
                         lst = None
                         self.jelent_norm('token_macula', r['gorog_strong'], 'görög Strong-szám nem normalizálható')
@@ -1156,6 +1164,7 @@ class Epito(object):
                         ('lxx_strong', 'TEXT'), ('lxx_szo_forras', 'TEXT'), ('lxx_szo_rahlfs', 'TEXT')],
                        sorok, SZARMAZTATOTT_LICENC['token_macula'], ['igehely, sorszam', 'strong', 'xml_id'])
             meta.append(('token_macula:forras_sor', str(db_nyers)))
+            meta.append(('token_macula:lxx_strong_javitva', str(lxj_db)))   # F240 L1
             # F115 / DT-F115a: a gorog_lxx chi<->xi javitasanak Rahlfs-minosegjelolese (osztalyonkent darab; a minta-epiteskor a mintara)
             rahlfs_db = {}
             for x in sorok:

@@ -276,16 +276,14 @@ def szotar():
 def lxx_hid():
     """{heber_strong_szam: [(greek_padded, db)]}"""
     def be():
+        # F240 L1: a lxx_bridge a javított Macula-tokenek különbségével (a nyers fájlt csak a segéd olvassa)
+        import lxx_strong_javitas as LXJ
         d = {}
-        elso = True
-        for m in tsv_sorok(LXX_UT):
-            if elso:
-                elso = False
-                continue
-            mm = re.match(r'^H(\d+)$', m[0])
+        for m in LXJ.bridge_sorok(os.path.dirname(ADAT)):
+            mm = re.match(r'^H(\d+)$', m['hebrew_strong'])
             if not mm:
                 continue
-            d.setdefault(int(mm.group(1)), []).append((m[1], int(m[2])))
+            d.setdefault(int(mm.group(1)), []).append((m['greek_strong'], int(m['count'])))
         return d
     return _cache('lxx', be)
 
