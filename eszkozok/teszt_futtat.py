@@ -85,7 +85,12 @@ def wslben_ujra(argv):
     szkript = wsl_ut(os.path.abspath(__file__))
     parancs = 'cd "%s" && exec "%s" "%s" %s' % (wsl_ut(REPO), WSL_VENV_PY.replace('$HOME', '$HOME'), szkript, ' '.join(argv))
     print('[teszt_futtat] Windows észlelve: újraindítás a WSL "%s" disztribúcióban' % WSL_DISZTRO, flush=True)
-    return subprocess.call(['wsl', '-d', WSL_DISZTRO, '--', 'bash', '-lc', parancs])
+    # A kézzel megadott PARDES_DB (WSL-út, pl. egy ágból épített próba-adatbázis) a WSL-be is átmegy (WSLENV); nélküle a WSL-beli
+    # futás a main régi ~/pardes/pardes.db-jét nyitná meg (F240: a push_elott olvasó-tesztjei az ág adatán fussanak).
+    env = dict(os.environ)
+    if env.get('PARDES_DB'):
+        env['WSLENV'] = ':'.join(x for x in (env.get('WSLENV', ''), 'PARDES_DB') if x)
+    return subprocess.call(['wsl', '-d', WSL_DISZTRO, '--', 'bash', '-lc', parancs], env=env)
 
 
 def adatbazis_valasztas():

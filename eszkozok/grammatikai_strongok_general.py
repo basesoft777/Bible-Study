@@ -190,13 +190,57 @@ GOROG_KEZI = [
     ("G4862", "-val együtt",    "eloljaro",   "Elöljáró (σύν)."),
     ("G0846", "ő, az, maga",    "nevmas",     "Személyes/visszaható névmás (αὐτός). Héber párja a H9023 stb. névmási szuffixum-sor, a gépi alapban."),
     ("G1473", "én",             "nevmas",     "Személyes névmás (ἐγώ, alanyeset)."),
-    ("G3165", "engem, én, mi",  "nevmas",     "Személyes névmás (ἐγώ, függő esetek). A TAGNT a TÖBBES SZÁMÚ alakokat is ide sorolja (ἡμῶν), ezért a G2249 (ἡμεῖς) nem kap sort — a kivonatban 0 előfordulású."),
-    ("G4771", "te, ti",         "nevmas",     "Személyes névmás (σύ). A TAGNT a többes számú alakokat is ide sorolja, ezért a G5210 (ὑμεῖς) nem kap sort — a kivonatban 0 előfordulású."),
+    ("G3165", "engem, én, mi",  "nevmas",     "Személyes névmás (ἐγώ, függő esetek). A TAGNT a TÖBBES SZÁMÚ alakokat is ide sorolja (ἡμῶν); a G2249 (ἡμεῖς) és a többi alakszám a GOROG_ALAK-on (F240 L2)."),
+    ("G4771", "te, ti",         "nevmas",     "Személyes névmás (σύ). A TAGNT a többes számú alakokat is ide sorolja; a G5210 (ὑμεῖς) és a többi alakszám a GOROG_ALAK-on (F240 L2)."),
     ("G3778", "ez",             "nevmas",     "Mutató névmás (οὗτος)."),
     ("G1565", "az",             "nevmas",     "Mutató névmás (ἐκεῖνος)."),
     ("G3739", "aki, amely",     "vonatkozo_nevmas", "Vonatkozó névmás (ὅς). Héber párja a H0834 (אֲשֶׁר), kézi kiegészítésként."),
     ("G3756", "nem",            "tagadoszo",  "Tagadószó (οὐ). Héber párja a H3808 (לֹא), kézi kiegészítésként."),
     ("G3361", "ne, nem",        "tagadoszo",  "Tagadószó (μή)."),
+]
+
+
+# F240 (LXXBDB, L2): a felvett görög lemmák Strong-ALAKSZÁMAI. A Strong-szótár a névmások és a mutató névmás egyes
+# alakjainak külön számot ad (μου G3450, σου G4675 …); a TAGNT ezeket a lemma számára (G1473, G4771, G3778) vonja össze,
+# a Macula LXX-párjai (`konkordancia/Macula_heber_*.tsv` `gorog_strong`) viszont az alakszámot viszik. Új kategória és új
+# kritérium nincs: a sor akkor kerül ide, ha a lemmája már a GOROG_KEZI-n áll. Mérés és kapu: naplok/LXXBDB_meres.md,
+# eszkozok/ellenoriz.py (az LXX-alakszám kapuja). Nem kerül ide (számnév, a kapu kivétellistáján): G1520 εἷς, G3391 μία.
+GOROG_ALAK = [
+    # (strong, rövid jelentés, kategória, a lista-lemma, amelynek alakja)
+    ("G3450", "enyém, -m",          "nevmas",   "G1473"),   # μου
+    ("G1700", "enyém, -m",          "nevmas",   "G1473"),   # ἐμοῦ
+    ("G3427", "nekem",              "nevmas",   "G1473"),   # μοι
+    ("G1698", "nekem",              "nevmas",   "G1473"),   # ἐμοί
+    ("G1691", "engem",              "nevmas",   "G1473"),   # ἐμέ
+    ("G2248", "minket",             "nevmas",   "G1473"),   # ἡμᾶς
+    ("G2249", "mi",                 "nevmas",   "G1473"),   # ἡμεῖς
+    ("G2254", "nekünk",             "nevmas",   "G1473"),   # ἡμῖν
+    ("G2257", "miénk, -nk",         "nevmas",   "G1473"),   # ἡμῶν
+    ("G2504", "és én",              "nevmas",   "G1473"),   # κἀγώ (καί + ἐγώ)
+    ("G4675", "tiéd, -d",           "nevmas",   "G4771"),   # σου
+    ("G4571", "téged",              "nevmas",   "G4771"),   # σε
+    ("G4671", "neked",              "nevmas",   "G4771"),   # σοι
+    ("G5209", "titeket",            "nevmas",   "G4771"),   # ὑμᾶς
+    ("G5210", "ti",                 "nevmas",   "G4771"),   # ὑμεῖς
+    ("G5213", "nektek",             "nevmas",   "G4771"),   # ὑμῖν
+    ("G5216", "tiétek, -tok",       "nevmas",   "G4771"),   # ὑμῶν
+    ("G0848", "ő, őt, övé",         "nevmas",   "G0846"),   # αὑτοῦ — a Macula az αὐτός függő eseteire (αὐτούς, αὐτήν) használja
+    ("G5023", "ezek",               "nevmas",   "G3778"),   # ταῦτα
+    ("G5024", "ugyanazok",          "nevmas",   "G3778"),   # ταὐτά (az LXX-ben ταῦτά)
+    ("G5025", "ezeknek",            "nevmas",   "G3778"),   # ταύταις
+    ("G5026", "ennek, ezt",         "nevmas",   "G3778"),   # ταύτῃ, ταύτην
+    ("G5123", "azaz",               "nevmas",   "G3778"),   # τουτέστι
+    ("G5124", "ez",                 "nevmas",   "G3778"),   # τοῦτο
+    ("G5125", "ezeknek",            "nevmas",   "G3778"),   # τούτοις
+    ("G5126", "ezt",                "nevmas",   "G3778"),   # τοῦτον
+    ("G5127", "ennek",              "nevmas",   "G3778"),   # τούτου
+    ("G5128", "ezeket",             "nevmas",   "G3778"),   # τούτους
+    ("G5129", "ennek",              "nevmas",   "G3778"),   # τούτῳ
+    ("G5130", "ezeknek",            "nevmas",   "G3778"),   # τούτων
+    ("G2548", "és az",              "nevmas",   "G1565"),   # κἀκεῖνος (καί + ἐκεῖνος)
+    ("G3603", "az, ami",            "vonatkozo_nevmas", "G3739"),   # ὅ ἐστι
+    ("G3364", "semmiképp",          "tagadoszo", "G3756"),  # οὐ μή
+    ("G3378", "vajon nem",          "tagadoszo", "G3361"),  # μὴ οὐκ
 ]
 
 
@@ -259,6 +303,14 @@ def main():
             hianyzo_gorog.append(strong)
         felvesz(strong, jelentes, kat, ok)
 
+    # --- 4. Görög alakszámok (F240 L2) --------------------------------------
+    kezi = {x[0] for x in GOROG_KEZI}
+    for strong, jelentes, kat, lemma in GOROG_ALAK:
+        if lemma not in kezi:
+            sys.exit("GOROG_ALAK: a %s lemmája (%s) nincs a GOROG_KEZI-n" % (strong, lemma))
+        felvesz(strong, jelentes, kat, "A %s Strong-alakszáma (a Strong-szótár az alakot külön számozza; "
+                                     "a Macula LXX-párjai ezt viszik). F240 L2." % lemma)
+
     sorok.sort(key=lambda s: s["strong"])
 
     ts = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%MZ")
@@ -266,7 +318,7 @@ def main():
               "n=%d | elofordulas=%d | ts=%s" % (len(h9), h9_db, ts))
     g_db = sum(g_freq.get(s, 0) for s, _, _, _ in GOROG_KEZI)
     prov_g = ("scope=NT-full | forras=TAGNT_kivonat.tsv | modszer=teteles-lista | "
-              "n=%d | elofordulas=%d | ts=%s" % (len(GOROG_KEZI), g_db, ts))
+              "n=%d | alakszam=%d (F240 L2) | elofordulas=%d | ts=%s" % (len(GOROG_KEZI), len(GOROG_ALAK), g_db, ts))
 
     mezok = ["strong", "rovid_jelentes", "kategoria", "kizaras_oka"]
     with open(KIMENET, "w", encoding="utf-8", newline="") as f:
@@ -291,6 +343,7 @@ def main():
     print("  heber H9xxx (gepi):  %3d kod, %6d elofordulas" % (len(h9), h9_db))
     print("  heber kezi:          %3d kod" % len(HEBER_KEZI))
     print("  gorog teteles:       %3d kod, %6d elofordulas" % (len(GOROG_KEZI), g_db))
+    print("  gorog alakszam:      %3d kod (F240 L2)" % len(GOROG_ALAK))
     print("  kategoriak: %s" % ", ".join("%s=%d" % (k, v) for k, v in sorted(kat.items())))
     print("  tiltolista ervenyben: %s" % ", ".join(sorted(TILTOLISTA)))
     print("  hatareset (dokumentalt, nem aktiv): %s" % ", ".join(sorted(HATARESET)))
