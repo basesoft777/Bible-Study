@@ -53,13 +53,20 @@ def _szerzoseg(ny, m):
 
 def _hogyan(ny, m, keret):
     alap = dict(szerzo=_kiadasi(ny, 'szerzo'), lexikon=_kiadasi(ny, 'lexikon_cim'), cim=m.cim,
-                motivum=keret.motivum, url=_kiadasi(ny, 'kanonikus_alap'), doi=_kiadasi(ny, 'nyilt_mag_doi'))
+                motivum=keret.motivum, doi=_kiadasi(ny, 'nyilt_mag_doi'))
+    # amíg a domain nincs meg (a névtábla `kanonikus_alap` sora a helyőrző), a „Hogyan idézd” URL nélkül áll: nem létező
+    # webcím nem kerül a lapra (a szerkesztő döntése a névről, 2026-11-22; a domain a döntéséig nincs)
+    if ny.nevtabla.helyorzo(KIADASI_ADAT, 'kanonikus_alap'):
+        veg = '.url_nelkul'
+    else:
+        veg = ''
+        alap['url'] = _kiadasi(ny, 'kanonikus_alap')
     if m.kiadasok:
         u = m.kiadasok[-1]
-        return ny.s('kolofon.hogyan', kiadas=u.szam, datum=u.datum, **alap)
+        return ny.s('kolofon.hogyan' + veg, kiadas=u.szam, datum=u.datum, **alap)
     if keret.datum is not None:
-        return ny.s('kolofon.hogyan.kiadatlan', datum=keret.datum, **alap)
-    return ny.s('kolofon.hogyan.kiadatlan.datum_nelkul', **alap)
+        return ny.s('kolofon.hogyan.kiadatlan' + veg, datum=keret.datum, **alap)
+    return ny.s('kolofon.hogyan.kiadatlan.datum_nelkul' + veg, **alap)
 
 
 def _hatokor(ny, m):

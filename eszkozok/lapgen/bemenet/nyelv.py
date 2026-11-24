@@ -49,6 +49,12 @@ class Nevtabla:
     def van(self, tipus, kulcs):
         return (tipus, kulcs.ertek if isinstance(kulcs, Kulcs) else kulcs) in self._nevek
 
+    def helyorzo(self, tipus, kulcs):
+        """Igaz, ha a sor értéke a projekt helyőrzője (`<…>`, pl. `<KANONIKUS_FORRAS_URL>`): a valódi érték még nincs
+        meg (pl. a domain a szerkesztő döntéséig), ezért a megjelenítő a sort nem írja ki."""
+        ertek = self._nyers.get((tipus, kulcs), '')
+        return ertek.startswith('<') and ertek.endswith('>')
+
     def kulcsok(self, tipus):
         return tuple(k for (t, k) in self._nevek if t == tipus)
 

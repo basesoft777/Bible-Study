@@ -458,6 +458,30 @@ class Istentiszt(_Alap):
         self.assertEqual(self.modell.licenc_hiany, ())
 
 
+class LapNeve(_Alap):
+    """F0.49: a lap neve Biblialex (a szerkesztő döntése, 2026-11-22); a domain a döntéséig nincs, ezért a névtábla
+    `kanonikus_alap` sora a helyőrző, és a „Hogyan idézd” nem ír ki nem létező webcímet."""
+
+    def test_a_hivatkozas_biblialex_es_url_nelkul(self):
+        hogyan = [s for s in self.lap.split('
+') if s.startswith('**Hogyan idézd.**')]
+        self.assertEqual(len(hogyan), 1)
+        self.assertIn('*Biblialex*', hogyan[0])
+        self.assertNotIn('Logosz', self.lap)
+        self.assertNotIn('logoszlexikon', self.lap)
+        self.assertNotIn('<KANONIKUS_FORRAS_URL>', self.lap)
+        self.assertNotIn('/%s/' % self.AZONOSITO, hogyan[0])
+        self.assertIn('https://doi.org/', hogyan[0])
+
+    def test_helyorzo_felismerese(self):
+        from lapgen.bemenet.nyelv import Nevtabla
+        t = Nevtabla({}, {('kiadasi_adat', 'kanonikus_alap'): '<KANONIKUS_FORRAS_URL>',
+                          ('kiadasi_adat', 'lexikon_cim'): 'Biblialex'})
+        self.assertTrue(t.helyorzo('kiadasi_adat', 'kanonikus_alap'))
+        self.assertFalse(t.helyorzo('kiadasi_adat', 'lexikon_cim'))
+        self.assertFalse(t.helyorzo('kiadasi_adat', 'nincs_ilyen'))
+
+
 class Datumforma(unittest.TestCase):
     def test_datum_pont_es_nap(self):
         sor = SablonSor('x', '{a}–{b}', 'a:datum(pont), b:datum(nap)')
