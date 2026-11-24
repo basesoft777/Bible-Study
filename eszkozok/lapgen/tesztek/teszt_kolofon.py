@@ -170,6 +170,11 @@ class Megjeloles(_Alap):
                 self.assertIn('megjeloles:lathato', sor['parameterek'])
         self.assertIn('Text provided under a CC BY-SA license by Perseus Digital Library', self.lap)
         self.assertNotIn('[date of access]', self.lap)
+        # D21: a saját mondat a valódi letöltési utat mondja, a leltár dátumával; származást nem állít
+        lsj = [s['kotelezo_megjeloles'] for s in _tabla('adat/licencek.tsv') if s['dataset'] == 'LSJ'][0]
+        self.assertTrue(lsj.endswith('lexica/ 2026-09-07.'))
+        self.assertIn('Az adat Eliran Wong biblematedata-moduljából származik, letöltve 2026-09-07.',
+                      sablonok['kolofon.megjeloles.lsj']['mondat'])
         self.assertNotIn('Mounce', self.lap)   # az új generátor a Mounce-szótárt nem olvassa
         self.assertIn('*LSJ forrás: Liddell-Scott-Jones', self.lap)
 
