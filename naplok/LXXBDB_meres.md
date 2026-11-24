@@ -19,13 +19,13 @@ Macula-Strong szótöve. A javítás előtt 141 jelölt pár; a javítás (és a
 |---|---|---|
 | `macula_hiba` | 14 → a javítás után 0 | a címke más lemmára mutat; javítva (`adat/lxx_strong_javitas.tsv`, 36 alaksor) |
 | `konvencio` | 96 | a Strong-szótár alakszáma vagy szuppletív töve (μου G3450 ↔ ἐγώ; εἶπον ↔ λέγω; ἔσται ↔ εἰμί; átírt név) |
-| `lxx_os_hiba` | 23 | az LXX_OS homográf-hibája, a Macula címkéje helyes (N-F240a) |
+| `lxx_os_hiba` | 23 | az LXX_OS homográf-hibája, a Macula címkéje helyes (N249) |
 | `illesztesi_zaj` | 7 | az ékezet nélküli illesztés a vers más szavára esett (ἓν / ἐν, ᾖ / ἤ) |
 
 A javított hibák (token): πρωὶ → G4404 πρωΐ a G5459 φωσφόρος helyett (90; a H1242 „reggel” 88); az ἄγω 18 alakja → G0071 a
 G0033 ἄγε („rajta!”) helyett (41; a Sir 1:5 ἀγόμεναι a javítókörben, mert az LXX_OS a szomszédos versben adja); μόσχους → G3448 a G2353 θρέμμα helyett (42); βόες → G1016 βοῦς a G1003 Βοόζ helyett (26);
 ζητήσεις → G2212 (4); ἀνοίξει → G0455 (4); φόρου → G5411 (4); ἀπολλύων → G0622 (1); „megfelelő nélkül”, mert a helyes
-lemmának nincs Strong-száma (DT-F240b): ἀποστάτης (4), σμῆγμα (1), αἰτιᾶται (1), és a javítókörben a rokon, de más lemmák:
+lemmának nincs Strong-száma (DT957): ἀποστάτης (4), σμῆγμα (1), αἰτιᾶται (1), és a javítókörben a rokon, de más lemmák:
 ἅρπαγμα (12, a G0725 ἁρπαγμός helyett), δήλωσις (3, a G1212 δῆλος helyett), κόσμιον (1, a G2887 κόσμιος helyett).
 Összesen 234 javított token. Teljességi próba (a versillesztéstől függetlenül): a hibás Strongok javítatlan tokenje 0, a helyes
 alakok (Βοος = Boáz, 22; δῆλος) kivételével (`lxx_strong_javitas.MARADO_HELYES`).
@@ -48,7 +48,7 @@ homográf-hibája miatt esik egybe az εἰς-szel).
 
 **Kapu:** `ellenoriz.py` 45 (a javítás előtti listán 32 sértés).
 
-## 1b és L6 — az LXX_OS homográf- és tulajdonnév-címkéi (N-F240a, külön PR)
+## 1b és L6 — az LXX_OS homográf- és tulajdonnév-címkéi (N249, külön PR)
 
 **Hol keletkezik.** `eszkozok/lxx_os_import.py`: a lemmát ékezet és kisbetű nélkül keresi a GreekWordList-ben.
 **Mérés:** 35 lemma–Strong pár, 3 370 token: `masik_strong` 3 169 (τίς → G5100 1 506; εἷς → G1519 1 027; καρπός → G2591
@@ -56,7 +56,7 @@ homográf-hibája miatt esik egybe az εἰς-szel).
 χριστός → G5547 49; χλόη 14; δορκάς 13; βλαστός 12 …; **πόντος → G4195 Πόντος 2**, a TEREMT-001 2Móz 15:5 „Pontusz”-a).
 A Macula-párokban kisbetűs szó tulajdonnévi Strongot ítélet nélkül nem visel (a jelöltlistán a βόες → Βοόζ javítva).
 
-**Kapu:** `ellenoriz.py` 46, plafon 35 pár / 3 370 token (csak csökkenhet; az N-F240a PR-ja nullázza).
+**Kapu:** `ellenoriz.py` 46, plafon 35 pár / 3 370 token (csak csökkenhet; az N249 PR-ja nullázza).
 
 ## 3. osztály (L3) — kettőzött könyvnév és csonka fejléc
 
