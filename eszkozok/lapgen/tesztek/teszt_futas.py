@@ -134,6 +134,28 @@ class Celnev(unittest.TestCase):
         self.assertEqual(self._hiv('--cel', 'lexikon_regi', '--id', 'TEREMT-001', '--kimenet', 'x'), 0)
         self.assertEqual(self.hivasok, [('regi', ('TEREMT-001',), 'lexikon_regi')])
 
+    def test_a_visszaut_ir_es_ellenoriz_modja(self):
+        """A1 független ellenőrzés: a visszaút `--ir` és `--ellenoriz` módja a régi generátorig jut (a marker-fájlos
+        élesítés útja — `CEL_FAJL` — nem a lexikoné; SEMA 2.19, az `ellenoriz.py` javítási parancsai)."""
+        for argv in (('--cel', 'lexikon_regi', '--id', 'HAMART-001', '--ellenoriz'),
+                     ('--cel', 'lexikon', '--id', 'HAMART-001', '--ellenoriz'),
+                     ('--cel', 'lexikon_regi', '--id', 'HAMART-001', '--ir')):
+            self.hivasok = []
+            self._hiv(*argv)
+            self.assertEqual(self.hivasok, [('regi', ('HAMART-001',), argv[1])], argv)   # a hívás célneve marad
+
+    def test_id_nelkul_a_regi_generator_az_atallasig(self):
+        """`--cel lexikon` `--id` nélkül (sablon 6, MUNKAMENET C1: az összes lap) a régi generátor, amíg egy motívum
+        sem állt át; utána az új generátor `--id`-t kér."""
+        self._hiv('--cel', 'lexikon', '--kimenet', 'x')
+        self.assertEqual(len(self.hivasok), 1)
+        self.assertEqual(self.hivasok[0][0], 'regi')
+        self.assertIn('HAMART-001', self.hivasok[0][1])
+        self.general.ATALLT_MOTIVUMOK = ('HAMART-001',)
+        self.hivasok = []
+        self._hiv('--cel', 'lexikon', '--kimenet', 'x')
+        self.assertEqual(self.hivasok, [('uj', None, 'munka')])
+
 
 class G01Mod(unittest.TestCase):
     """F241.2: a jegyzék G01-sora (az egyetlen belépési pont) a kiadott lapot kiadás módban generálja (a Kolofon

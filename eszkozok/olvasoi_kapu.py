@@ -1504,7 +1504,7 @@ def ell_visszhang(sorok):
                 if szo and _niqqud_nelkul(szo[0]) in vh_nem_azonositott():
                     ki.append(talalat('VISSZHANG', BUKAS, s.n, t, 'V3 „nincs rokon nyelvi adat”, holott a BDB-szócikk '
                                                                   'nem azonosított (nem azonosítható ≠ nincs)'))
-        elif s.alszakasz.startswith('4.11.') and len(c) == 5 and c[0] != 'Lánc-szó · versek' \
+        elif s.alszakasz.startswith(('4.11.', 'Ókori fordítások: Ószövetség')) and len(c) == 5 and c[0] != 'Lánc-szó · versek' \
                 and not set(c[0]) <= set('-: '):
             mit = c[4]
             for i, nev in VH_FORDITASOK:
