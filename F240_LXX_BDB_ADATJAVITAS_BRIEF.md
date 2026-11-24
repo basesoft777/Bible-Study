@@ -7,7 +7,7 @@ fazis: folyamat
 modell: opus
 sav: CONTENT
 allapot: fut
-alap: c23d4ebe
+alap: e3427c6e
 ad: a szólapon és a BDB-kártyán nem áll hamis görög megfelelő (φωσφόρος a „reggel” szónál), nyelvtani szó (μου, σου) az LXX-megfelelők közt, sem kettőzött könyvnév („Zsolt Zsolt 97:7”) és belőle csonka fejléc, és a versenkénti jelentés nem ugrik egy „see N infra” utalásra (tehóm: „örvény · 5”); mind a négy a forrásban javítva, gépi kapuval
 kovetkezo: Te (integrátor): merge a zöld CI után; utána az F240.L7, majd az F240.L8 saját PR-ban (D13, D14)
 munka: adat
