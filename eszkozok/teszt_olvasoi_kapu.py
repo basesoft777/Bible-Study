@@ -538,5 +538,66 @@ class HamartLapMunkaszo(unittest.TestCase):
         self.assertTrue([t for t in talalatok(rontott, 'MUNKASZO') if t['sulyossag'] == K.BUKAS])
         self.assertTrue(talalatok(rontott, 'SZAKASZ_HIV'))
 
+
+def modell_lap(kivonat='', szoveg_21='', tobbi=''):
+    """Az új generátor szakaszrendje szerinti minimális lap: 1. Döntési út, 2. Előfordulások (2.1), 5. LXX, 12. Irodalom."""
+    return '\n'.join(['# 📖 X-001 — Minta', '', '## Kivonat', '', kivonat, '', '## 1. Döntési út', '', 'Semmi.', '',
+                      TABLA_FEJ.replace('## 1. Előfordulások', '## 2. Előfordulások') +
+                      '| [1Móz 4:26](#ige) | segítségül hívni | hívni | 🌱 alap-előfordulás | Drash |',
+                      '', '#### 2.1. Az igehelyek szövege', '', szoveg_21, '', tobbi, '', KOLOFON_JO])
+
+
+class ModellSzakasz(unittest.TestCase):
+    """F241.3 (N243 (3)): a kapu a szakaszt a lapmodell azonosítójával nevezi meg, nem a számával; az új generátor
+    szakaszrendjén (5. LXX, 2.1., 12. Irodalom) ugyanúgy mér, mint a régin (3. LXX, 1/a., 8. Irodalom)."""
+
+    def test_azonosito_regi_es_uj_cimre(self):
+        for cim, az in (('3. LXX-fordítói döntések', 'lxx'), ('5. LXX-fordítói döntések', 'lxx'),
+                        ('1/a. Az igehelyek szövege', 'elofordulasok.szoveg'),
+                        ('2.1. Az igehelyek szövege', 'elofordulasok.szoveg'),
+                        ('8. Irodalom és idézés', 'idezes'), ('12. Irodalom és idézés', 'idezes'),
+                        ('6. Értelmezés *(kézi)*', 'ertelmezes'), ('1/b. Kizárt és vizsgált helyek', 'kizart'),
+                        ('6/b. Alkalmazás és tanítói egyezés', 'alkalmazas'), ('Kolofon', 'kolofon'),
+                        ('7. Valami más', '')):
+            self.assertEqual(K.szakasz_az(cim), az, cim)
+
+    def test_HN17_lxx_osszesites_az_uj_szakaszrendben(self):
+        """HN-17: a „3. LXX” előtagú kapu az új lapon (5. LXX) vak volt; most a Kivonat LXX-számát ott is méri."""
+        szoveg = modell_lap(kivonat='A Septuaginta a párt mindhárom helyen másként fordítja.',
+                        tobbi='## 5. LXX-fordítói döntések\n\n*Összesítés: egyező=0, eltérő=2, LXX-minusz=0, '
+                              'kutatói azonosítás függőben=1, szamozas_elteres=0.*\n')
+        self.assertIsNotNone(K.lxx_osszesites(K.tagol(szoveg)))
+        self.assertIn('KIVONAT_SZAM', azonositok(szoveg, K.FIGY))
+
+    def test_idezet_a_21_blokkban(self):
+        """Az 1/a idézet-ellenőrzés az új „2.1.” blokkon is mér (korábban 0 blokkot látott)."""
+        jo = ('<a id="ige-1móz-4-26"></a>\n**1Móz 4:26**\n*Séthnek is született fia, és nevezé annak nevét Énósnak. '
+              'Akkor kezdték segítségül hívni az Úrnak nevét.*\nA formula első előfordulása — Séth fia, Énós '
+              'nemzedéke; a Kain-vonal önerős civilizációépítése utáni korszakváltás jele.\nFunkció: a motívum '
+              'legelső megjelenése a kánonban, minden későbbi eset erre vezethető vissza')
+        self.assertEqual(len(K.blokkok_1a(K.tagol(modell_lap(szoveg_21=jo)))), 1)
+        self.assertNotIn('IDEZET', azonositok(modell_lap(szoveg_21=jo)))
+        rossz = ('<a id="ige-1móz-37-35"></a>\n**1Móz 37:35**\n*Felkelének pedig minden ő fiai … hanem monda: Sírva '
+                 'megyek fiamhoz a sírba; és siratá őt az atyja.*\nJákób gyásza: „leszállok fiamhoz a Seolba, gyászolva”.')
+        self.assertIn('IDEZET', azonositok(modell_lap(szoveg_21=rossz), K.BUKAS))
+
+    def test_NF239b_szakirodalmi_mucim(self):
+        """N-F239b: a Szakirodalom-sor forrás-táblabeli eredeti műcíme nem angol maradék és nem munkaszó; ugyanaz a szó
+        a címen kívül továbbra is BUKÁS."""
+        cim = 'The Word is Near You: A Study of Deuteronomy 30:12-14'
+        regi = K._SZAKIRODALOM
+        K._SZAKIRODALOM = ('*%s*' % cim, 'In: Paul’s Use of the Old Testament. Walter de Gruyter')
+        try:
+            sor = '- Paul S. Bekken, 2007: *%s*. In: Paul’s Use of the Old Testament. Walter de Gruyter.' % cim
+            irod = '## 12. Irodalom és idézés\n\n**Szakirodalom (a vitatott pontokhoz):**\n\n' + sor + '\n'
+            self.assertFalse({'ANGOL', 'MUNKASZO'} & azonositok(modell_lap(tobbi=irod), K.BUKAS))
+            kivul = irod + '\nA study eredménye szerint.\n'
+            self.assertTrue({'ANGOL', 'MUNKASZO'} <= azonositok(modell_lap(tobbi=kivul), K.BUKAS))
+            ismeretlen = irod.replace(cim, 'Another Study of Romans')
+            self.assertIn('ANGOL', azonositok(modell_lap(tobbi=ismeretlen), K.BUKAS))
+        finally:
+            K._SZAKIRODALOM = regi
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)

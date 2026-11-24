@@ -11,8 +11,8 @@ A `teszt_f194_szopar.py` esetei az új generátoron (GK-SZOPAR): `SzoparLanc` �
 `TobbLemma` — itt (`test_tobb_lemmas_tarsitas`); `PontozatlanRokonAlak` (a táblarész) — a `teszt_szocikkek.py`
 `test_istentiszt_szopar_ut` tesztje; `SzoparJegyzet` — a 2. tábla jegyzete a szópáros lapon, a `teszt_elofordulas.py`
 jegyzet-tesztjei; a régi lapszöveg-kapuk esetei (`PontozatlanRokonAlak` kapurésze, `Szabaly42Cimke`, `NyersJelKapu`,
-`MintaKapu`) a régi `olvasoi_kapu.py`-t és `ellenoriz.py`-t mérik: a brief O6 pontja szerint a 218c-ben kerülnek a
-modellre.
+`MintaKapu`) az `olvasoi_kapu.py`-t és az `ellenoriz.py`-t mérik, a `teszt_f194_szopar.py`-ban maradnak; a 218c
+(F241.3) óta ezek a kapuk a szakaszt a lapmodell azonosítójával nevezik meg (`lapgen/lapszakasz.py`).
 """
 import datetime
 import os

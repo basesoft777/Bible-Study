@@ -38,15 +38,20 @@ class Licencek:
         """A kötelező forrásmegjelölés önálló mondatai szó szerinti idézetként (a `kotelezo_megjeloles` mező a több
         forrás megjelölését „.; ” határral fűzi össze: a határnál bont, a mondatok szövege változatlan). Üres mezőnél
         BemenetHiba: a megjelölendő forrásnak megjelölése kell legyen."""
-        self._sor(kulcs)
-        szoveg = self._megjelolesek.get(kulcs, '')
-        reszek = [r.strip() for r in _MEGJELOLES_HATAR_RX.split(szoveg) if r.strip()]
+        reszek = self.megjeloles_mondatok(kulcs)
         if not reszek:
             raise BemenetHiba('B01: üres `kotelezo_megjeloles` a(z) `%s` sorban' % kulcs)
         return tuple(self._b.forrasszoveg('B01', 'kotelezo_megjeloles', r, None) for r in reszek)
 
+    def megjeloles_mondatok(self, kulcs):
+        """A kötelező forrásmegjelölés önálló mondatai nyers szövegként (üres mezőnél üres tuple): a licenckapu
+        (N223) mércéje. A határ a „.; ” és a „); ” (a STEPBible-mondat zárójeles licenccel végződik)."""
+        self._sor(kulcs)
+        szoveg = self._megjelolesek.get(kulcs, '')
+        return tuple(r.strip() for r in _MEGJELOLES_HATAR_RX.split(szoveg) if r.strip())
 
-_MEGJELOLES_HATAR_RX = re.compile(r'(?<=\.);\s+')
+
+_MEGJELOLES_HATAR_RX = re.compile(r'(?<=[.)]);\s+')
 
 
 def b01_licencek(b):

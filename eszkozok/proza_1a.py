@@ -37,8 +37,9 @@ GYOKER = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 KEREK_MIN_SZO = 7      # az arany lap legrövidebb kerek prózája (ApCsel 22:16) 7 ilyen szó
 FUNKCIO_MIN_SZO = 3    # az arany lap legrövidebb funkció-magyarázata („a próbatétel kudarca”) 3 szó
 
-CIM_1A = '#### 1/a. Az igehelyek szövege'
-CIM_1A_UJ = '#### 2.1. Az igehelyek szövege'   # F178.4: az új lapszerkezetben (2. Előfordulások, 2.1)
+# F241.3 (N243 (3)): az igehelyek szövegének címsorát a lapmodell azonosítója nevezi meg (`lapgen.lapszakasz`), nem a
+# száma: a régi generátor lapján „#### 1/a. Az igehelyek szövege”, az új generátorén „#### 2.1. Az igehelyek szövege”.
+IGEHELY_SZOVEG = 'elofordulasok.szoveg'
 HORGONY = re.compile(r'^<a id="ige-[^"]*"></a>\s*$')
 IDEZET = re.compile(r'"[^"]*"|„[^”"]*[”"]|»[^«]*«|“[^”]*”')
 ZAROJEL = re.compile(r'\([^()]*\)')
@@ -71,10 +72,15 @@ def funkcio_osztaly(funkcio):
     return 'van'
 
 
+def _igehely_szoveg_cim(cim):
+    from lapgen import lapszakasz
+    return lapszakasz.azonosito(cim, GYOKER) == IGEHELY_SZOVEG
+
+
 def blokkok(szoveg):
     """[(igehely, próza, funkció)] az 1/a részből; üres lista, ha a lapon nincs 1/a."""
     sorok = szoveg.replace('\r', '').split('\n')
-    kezdet = next((i for i, s in enumerate(sorok) if s in (CIM_1A, CIM_1A_UJ)), None)
+    kezdet = next((i for i, s in enumerate(sorok) if s.startswith('#### ') and _igehely_szoveg_cim(s[5:])), None)
     if kezdet is None:
         return []
     ki, akt = [], None

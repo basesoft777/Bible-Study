@@ -159,9 +159,10 @@ def _datum(szoveg):
 
 
 def futtat(gyoker, azonosito, kimenet, mod='munka', datum=None, ki=sys.stdout):
-    """A `--cel lexikon2` törzse. Kilépési kód: 0 rendben vagy kimondott kihagyás, 1 BUKÁS, 2 hívási hiba."""
+    """A `--cel lexikon` (és a próbanév, `lexikon2`) törzse. Kilépési kód: 0 rendben vagy kimondott kihagyás, 1 BUKÁS,
+    2 hívási hiba."""
     if not azonosito:
-        print('  HIBA: a --cel lexikon2 --id-t kér.', file=ki)
+        print('  HIBA: a --cel lexikon --id-t kér (a régi generátor összes lapja: --cel lexikon_regi).', file=ki)
         return 2
     try:
         motivum = MotivumId(azonosito)
@@ -175,7 +176,7 @@ def futtat(gyoker, azonosito, kimenet, mod='munka', datum=None, ki=sys.stdout):
             print('  %s: kihagyva (befagyasztott motívum; próbageneráláshoz adj repón kívüli --kimenet könyvtárat)'
                   % azonosito, file=ki)
             return 0
-        print('  HIBA: a lexikon2 cél csak repón kívüli --kimenet könyvtárba ír.', file=ki)
+        print('  HIBA: az új generátor csak repón kívüli --kimenet könyvtárba ír.', file=ki)
         return 2
     try:
         eredmeny = lap_keszit(gyoker, motivum, mod_ertek, _datum(datum or os.environ.get(konfig.DATUM_VALTOZO)))

@@ -151,6 +151,12 @@ class Ajanlas(unittest.TestCase):
         self.assertIs(self.a('Károli-KH Ézs 12:4').fajta, KB.AjanlasFajta.KAROLI)
         self.assertIs(self.a('TSK/Károli-KH ApCsel 9:14').fajta, KB.AjanlasFajta.TSK_KAROLI)
 
+    def test_a_forrasalak_a_tabla_rovidítesere_csereldik(self):
+        # F241.5b (D13 (d), N195): a döntésnapló „Zef” alakja a lapon „Sof” (a normalizáló tábla Forrás-alakok oszlopa)
+        self.assertEqual(self.a('Károli-KH Zef 3:9').forrasok[0].kod, 'Sof 3:9')
+        with self.assertRaises(bemenet.BemenetHiba):
+            self.a('Károli-KH Xyz 3:9')
+
     def test_a_szokatlan_szavazatalak_megall(self):
         with self.assertRaises(bemenet.BemenetHiba):
             self.a('TSK 1Móz 6:5 (2 - 4)')

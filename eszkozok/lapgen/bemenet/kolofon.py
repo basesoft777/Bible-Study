@@ -26,6 +26,11 @@ _LEKTOR_TETEL_RX = re.compile(r'(?m)^\*\*\d+\. ')
 _LEKTOR_DATUM_RX = re.compile(r'(20\d\d)-(\d\d)-(\d\d)')
 
 
+def datum_ertek(b_id, ertek, hol):
+    """A tábla `ÉÉÉÉ.HH.NN` (vagy `ÉÉÉÉ-HH-NN`) dátuma; BemenetHiba, ha értelmezhetetlen."""
+    return _datum(b_id, ertek, hol)
+
+
 def _datum(b_id, ertek, hol):
     m = _DATUM_RX.match(ertek.strip())
     if not m:

@@ -133,17 +133,22 @@ VISSZHANG_ALSZABALYOK = (
 )
 ARANY = 'ISTENTISZT-001'
 
-KIZART_SZAKASZ_REGI = ('Tartalomjegyzék', 'Jelmagyarázat', 'Kolofon')
+# F241.3 (N243 (3), HN-17): a szakaszt a lapmodell azonosítója nevezi meg (`lapgen.lapszakasz`), nem a száma: a régi
+# generátor lapján az LXX a 3., az Irodalom a 8., az igehelyek szövege az „1/a.”, az új generátorén az 5., a 12. és a
+# „2.1.”. A `Sor.az` a szakasz, a `Sor.alaz` az alszakasz azonosítója ('' ha ismeretlen).
+KIZART_SZAKASZ_REGI = ('tartalom', 'jelmagyarazat', 'kolofon')
 KIZART_SZAKASZ = KIZART_SZAKASZ_REGI
-IRODALOM = '8. Irodalom'
+IRODALOM = 'idezes'
 # F178.4: az új szerkezetű lapon (1. Döntési út … 12. Irodalom) az olvasói kapu kivétel nélkül mér: a Tartalomjegyzék,
 # a Jelmagyarázat, a Kolofon és az Irodalom is olvasói szöveg, a technikai dőlt sor és a lábjegyzet is (a nyers
 # proveniencia-sor a lap forrásában HTML-megjegyzésben áll). A régi szerkezetű lapon a régi mérce, amíg a lap az új
 # körben újra nem generálódik (a felhasználó: „Előbb csak a hamart”, 2026-11-08).
 UJ_SZERKEZET_RX = re.compile(r'(?m)^## 1\. Döntési út[ \t]*$')
 KIVETEL_NELKUL = False
-ELOFORDULAS_SZAKASZ = ('1. Előfordulások', '2. Előfordulások')
-SZOTARI_SZAKASZ = ('2. Szótári', '4. Szótári')
+ELOFORDULAS_SZAKASZ = 'elofordulasok'
+SZOTARI_SZAKASZ = 'szocikkek'
+IGEHELY_SZOVEG = 'elofordulasok.szoveg'   # a régi „1/a.”, az új „2.1. Az igehelyek szövege”
+LXX_SZAKASZ = 'lxx'
 
 # --- BELSO: belső jelölések (az átvilágítás A4, A21, T3, T14, G4, G5, G7)
 BELSO = [
@@ -246,11 +251,12 @@ def kod_nelkul(s):
 
 
 class Sor:
-    __slots__ = ('n', 'nyers', 'szoveg', 'fajta', 'szakasz', 'alszakasz')
+    __slots__ = ('n', 'nyers', 'szoveg', 'fajta', 'szakasz', 'alszakasz', 'az', 'alaz')
 
-    def __init__(self, n, nyers, szoveg, fajta, szakasz, alszakasz):
+    def __init__(self, n, nyers, szoveg, fajta, szakasz, alszakasz, az='', alaz=''):
         self.n, self.nyers, self.szoveg, self.fajta = n, nyers, szoveg, fajta
         self.szakasz, self.alszakasz = szakasz, alszakasz
+        self.az, self.alaz = az, alaz   # a szakasz és az alszakasz azonosítója a lapmodell szerint (F241.3)
 
     @property
     def olvasoi(self):
@@ -259,7 +265,38 @@ class Sor:
             return self.fajta in ('proza', 'tabla', 'cim', 'labjegyzet', 'dolt', 'proveniencia')
         if self.fajta not in ('proza', 'tabla', 'cim', 'labjegyzet'):
             return False
-        return not self.szakasz.startswith(KIZART_SZAKASZ)
+        return self.az not in KIZART_SZAKASZ
+
+
+def szakasz_az(cim):
+    """A címsor szakaszazonosítója a lapmodell szerint (F241.3); ismeretlen címre ''."""
+    from lapgen import lapszakasz
+    return lapszakasz.azonosito(cim, GYOKER)
+
+
+_SZAKIRODALOM = None
+
+
+def szakirodalom_cimek():
+    """N-F239b: a vitatott pontok szakirodalmának eredeti nyelvű műcímei és megjelenési adatai (`adat/vitatott_forrasok.tsv`).
+    Az Irodalom szakirodalom-sorában ezek bibliográfiai adatok, nem olvasói szöveg: az angol- és munkaszó-kapu nem méri őket."""
+    global _SZAKIRODALOM
+    if _SZAKIRODALOM is None:
+        ut = os.path.join(GYOKER, 'adat', 'vitatott_forrasok.tsv')
+        _SZAKIRODALOM = ()
+        if os.path.exists(ut):
+            sorok = tsv('adat/vitatott_forrasok.tsv')
+            _SZAKIRODALOM = tuple(sorted({x for r in sorok for x in ('*%s*' % r['cim'] if r.get('cim') else '',
+                                                                         r.get('megjelenes', '')) if x.strip('* ')},
+                                         key=len, reverse=True))
+    return _SZAKIRODALOM
+
+
+def szakirodalom_nelkul(t):
+    """A sor a szakirodalom forrás-táblájában álló műcímek és megjelenési adatok nélkül (N-F239b)."""
+    for x in szakirodalom_cimek():
+        t = t.replace(x, ' ')
+    return t
 
 
 def tagol(szoveg):
@@ -267,6 +304,7 @@ def tagol(szoveg):
     ki = []
     komment = kod = False
     szakasz = alszakasz = ''
+    az = alaz = ''
     elozo = ''
     tabla_fej = None
     for n, nyers in enumerate(szoveg.replace('\r', '').split('\n'), 1):
@@ -274,18 +312,18 @@ def tagol(szoveg):
         if kod:
             if s.strip().startswith('```'):
                 kod = False
-            ki.append(Sor(n, nyers, '', 'kod', szakasz, alszakasz))
+            ki.append(Sor(n, nyers, '', 'kod', szakasz, alszakasz, az, alaz))
             continue
         if s.strip().startswith('```'):
             kod = True
-            ki.append(Sor(n, nyers, '', 'kod', szakasz, alszakasz))
+            ki.append(Sor(n, nyers, '', 'kod', szakasz, alszakasz, az, alaz))
             continue
         if komment:
             if '-->' in s:
                 komment = False
                 s = s.split('-->', 1)[1]
             else:
-                ki.append(Sor(n, nyers, '', 'komment', szakasz, alszakasz))
+                ki.append(Sor(n, nyers, '', 'komment', szakasz, alszakasz, az, alaz))
                 continue
         if '<!--' in s and '-->' not in s.split('<!--', 1)[1]:
             komment = True
@@ -296,8 +334,10 @@ def tagol(szoveg):
         if m:
             if len(m.group(1)) <= 2:
                 szakasz, alszakasz = m.group(2).strip(), ''
+                az, alaz = szakasz_az(szakasz), ''
             else:
                 alszakasz = m.group(2).strip()
+                alaz = szakasz_az(alszakasz)
             fajta = 'cim'
         elif not t:
             fajta = 'ures'
@@ -322,7 +362,9 @@ def tagol(szoveg):
             fajta = 'proza'
         if fajta != 'tabla':
             tabla_fej = None
-        ki.append(Sor(n, nyers, lat, fajta, szakasz, alszakasz))
+        if az == IRODALOM and t.startswith('- '):
+            lat = szakirodalom_nelkul(lat)   # N-F239b: a szakirodalmi mű eredeti címe bibliográfiai adat
+        ki.append(Sor(n, nyers, lat, fajta, szakasz, alszakasz, az, alaz))
         if fajta != 'ures':
             elozo = lat
     return ki
@@ -400,7 +442,7 @@ def ell_belso(sorok):
                 ki.append(talalat('BELSO', BUKAS, s.n, kornyezet(s.szoveg, m), 'munkafolyamat-szereplő: ' + m.group(0),
                                   'felhasznalo'))
         for rx, nev in BELSO:
-            if nev == 'belső fájl' and s.szakasz.startswith(IRODALOM) and not KIVETEL_NELKUL:
+            if nev == 'belső fájl' and s.az == IRODALOM and not KIVETEL_NELKUL:
                 continue  # az Irodalom a lapot és a forrásfájlt idézhetőként nevezi meg
             m = rx.search(s.szoveg)
             if m:
@@ -423,7 +465,7 @@ SZERZOSEG_JEL = re.compile(r'\((?:kézi|generált)(?:, ha van)?\)')
 def ell_belso_szerzoseg(sorok):
     ki = []
     for s in sorok:
-        if s.fajta in ('komment', 'kod', 'ures', 'proveniencia') or s.szakasz.startswith('Kolofon'):
+        if s.fajta in ('komment', 'kod', 'ures', 'proveniencia') or s.az == 'kolofon':
             continue
         m = SZERZOSEG_JEL.search(kod_nelkul(s.szoveg))
         if m:
@@ -811,7 +853,7 @@ def ell_meghatarozas(sorok):
                 or marad.rstrip('.') == cim.rstrip('.'):
             ki.append(talalat('MEGHATAROZAS', BUKAS, bek.n, t[:80], '„A motívum.” bekezdés üres, a címet ismétli, vagy '
                               'csak az azonosság típusát mondja: a motívum meghatározása hiányzik'))
-    kol = [s for s in sorok if s.szakasz.startswith('Kolofon') and re.match(r'^\|\s*Meghatározás\s*\|', s.nyers.strip())]
+    kol = [s for s in sorok if s.az == 'kolofon' and re.match(r'^\|\s*Meghatározás\s*\|', s.nyers.strip())]
     if not kol or not re.sub(r'[\s|—-]', '', kol[0].nyers.strip()[len('| Meghatározás'):]):
         ki.append(talalat('MEGHATAROZAS', BUKAS, kol[0].n if kol else 1, '', 'a Kolofonban nincs „Meghatározás” sor értékkel'))
     return ki
@@ -853,7 +895,7 @@ def ell_szakasz_hiv(sorok):
 def ell_angol(sorok):
     ki = []
     for s in sorok:
-        if not s.olvasoi or s.szakasz.startswith(IRODALOM):
+        if not s.olvasoi or (s.az == IRODALOM and not KIVETEL_NELKUL):
             continue
         t = kod_nelkul(s.szoveg)
         m = ANGOL_SZO.search(t)
@@ -949,7 +991,7 @@ def ell_atiras(sorok):
         if len(ekezet_nelkul(k)) >= 4 and k != ekezet_nelkul(k):
             ismert.setdefault(ekezet_nelkul(k), set()).add(k)
     for s in sorok:
-        if s.fajta in ('komment', 'kod', 'ures', 'karoli') or s.szakasz.startswith(KIZART_SZAKASZ):
+        if s.fajta in ('komment', 'kod', 'ures', 'karoli') or s.az in KIZART_SZAKASZ:
             continue  # a Károli-vers alakja („Seol”) nem a lap kiejtése
         if s.alszakasz.startswith('Háttér: rokon nyelvek'):
             continue  # F182 (A22): a rokon nyelvi alak (arab, arámi) más szó, saját kiejtéssel; nem a héber szó változata
@@ -980,12 +1022,12 @@ def ell_konyv(sorok):
     for s in sorok:
         if not s.olvasoi and s.fajta != 'dolt':
             continue
-        if s.szakasz.startswith(KIZART_SZAKASZ):
+        if s.az in KIZART_SZAKASZ:
             continue
         t = kod_nelkul(s.szoveg)
         # F183 (K67f): a szakirodalom bibliográfiai címe az eredeti alakjában áll (pl. „(Gen 6:5–9:17)”), nem olvasói
         # igehely-hivatkozás; a 12. Irodalom „Szakirodalom” listájának DOI-s sorai kivételek
-        if s.szakasz.startswith('12. Irodalom') and 'DOI: 10.' in t:
+        if s.az == IRODALOM and KIVETEL_NELKUL and 'DOI: 10.' in t:
             continue
         for m in KONYV_RX.finditer(t):
             if m.group(1) not in hu and not SZOTAR_ALAK.search(t[max(0, m.start() - 20):m.start()]):
@@ -997,7 +1039,7 @@ def ell_konyv(sorok):
 def ell_bdb(sorok):
     ki = []
     for s in sorok:
-        if s.fajta in ('komment', 'kod', 'ures', 'proveniencia') or s.szakasz.startswith(KIZART_SZAKASZ):
+        if s.fajta in ('komment', 'kod', 'ures', 'proveniencia') or s.az in KIZART_SZAKASZ:
             continue
         t = kod_nelkul(s.szoveg)
         for rx, nev in BDB_JEL:
@@ -1010,7 +1052,7 @@ def ell_bdb(sorok):
                     ki.append(zarojel_talalat(s, r))
                     break
     for s, b in bekezdesek(sorok):
-        if not s.szakasz.startswith(KIZART_SZAKASZ) and zarojel_nyitva(kod_nelkul(b)):
+        if s.az not in KIZART_SZAKASZ and zarojel_nyitva(kod_nelkul(b)):
             ki.append(zarojel_talalat(s, kod_nelkul(b)))
     return ki
 
@@ -1021,15 +1063,15 @@ def zarojel_nyitva(r):
 
 def zarojel_talalat(s, r):
     i = r.rfind('(')
-    szotar = s.szakasz.startswith(SZOTARI_SZAKASZ)
+    szotar = s.az == SZOTARI_SZAKASZ
     return talalat('ZAROJEL', BUKAS if szotar else FIGY, s.n, r[max(0, i - 60):i + 60], 'nyitva maradt zárójel')
 
 
-def elso_tabla(sorok, szakasz_kezd):
-    """Az adott szakasz első táblája: (fejléc-cellák, [(sor, cellák)])."""
+def elso_tabla(sorok, szakasz):
+    """Az adott azonosítójú szakasz első táblája: (fejléc-cellák, [(sor, cellák)])."""
     fej, ki = None, []
     for s in sorok:
-        if not s.szakasz.startswith(szakasz_kezd):
+        if s.az != szakasz:
             if fej:
                 break
             continue
@@ -1065,7 +1107,7 @@ def blokkok_1a(sorok):
     """[(igehely, sor, Károli-vers, [prózasorok])] az 1/a részből."""
     ki, akt = [], None
     for s in sorok:
-        if not s.alszakasz.startswith('1/a') and not s.szakasz.startswith('1/a'):
+        if s.alaz != IGEHELY_SZOVEG and s.az != IGEHELY_SZOVEG:
             if akt:
                 ki.append(akt)
                 akt = None
@@ -1161,7 +1203,7 @@ def elofordulas_szamok(sorok):
 
 def lxx_osszesites(sorok):
     for s in sorok:
-        if s.szakasz.startswith('3. LXX') and 'Összesítés:' in s.szoveg:
+        if s.az == LXX_SZAKASZ and 'Összesítés:' in s.szoveg:
             return {k.strip(): int(v) for k, v in re.findall(r'([\wáéíóöőúüű -]+)=(\d+)', s.szoveg)}
     return None
 
@@ -1181,7 +1223,7 @@ def ell_kivonat(sorok):
     ki = []
     szam = r'(\d+|%s)' % '|'.join(sorted((re.escape(k) for k in SZAMNEV), key=len, reverse=True))
     for s in sorok:
-        if not s.szakasz.startswith('Kivonat') or s.fajta != 'proza' or s.nyers.rstrip().endswith('<!-- olvasói -->'):
+        if s.az != 'kivonat' or s.fajta != 'proza' or s.nyers.rstrip().endswith('<!-- olvasói -->'):
             continue
         for mondat in re.split(r'(?<=[.!?])\s+(?=[A-ZÁÉÍÓÖŐÚÜŰ„])', s.szoveg):
             lxx_m = re.search(r'Septuaginta|LXX|görög fordítás', mondat)
@@ -1220,7 +1262,7 @@ KOLOFON_NEM_URES = ('Státusz', 'Kereszthivatkozás-napló', 'Sablon-megfelelős
 
 
 def ell_kolofon(sorok):
-    kol = [s for s in sorok if s.szakasz.startswith('Kolofon')]
+    kol = [s for s in sorok if s.az == 'kolofon']
     if not kol:
         return [talalat('KOLOFON', BUKAS, 0, '', 'a lapon nincs Kolofon')]
     mezok = {}
@@ -1248,7 +1290,7 @@ HIANYJEL_RX = re.compile(r'\*\((nincs [^)]*)\)\*|nincs a szakasztáblában')
 def ell_hianyjel(sorok):
     ki = []
     for s in sorok:
-        if s.fajta in ('komment', 'kod', 'ures', 'proveniencia') or s.szakasz.startswith(KIZART_SZAKASZ):
+        if s.fajta in ('komment', 'kod', 'ures', 'proveniencia') or s.az in KIZART_SZAKASZ:
             continue
         for m in HIANYJEL_RX.finditer(s.szoveg):
             ki.append(talalat('HIANYJEL', FIGY, s.n, kornyezet(s.szoveg, m, 30),
@@ -1262,16 +1304,16 @@ SZINT_ALATT_RX = re.compile(r'ennél a motívumnál még nincs|nem futott|üres 
 SZINT_ARANY = 0.25      # a szakasz szószáma az arany lap azonos szakaszáénak ennyi része alatt: figyelmeztetés
 SZINT_MIN_ARANY = 150   # csak az arany lapon legalább ennyi szavas szakaszokat mérjük
 # csak az értelmező (kézi) és a kapcsolati szakaszokat: az 1., 1/b., 2–4. hossza az előfordulások számával arányos
-SZINT_SZAKASZ = ('5. Kapcsolatok', '5/b.', '6. Értelmezés', '6/b.', '7. Módszertan',
-                 '7. Kapcsolatok', '8. Kapcsolódó', '9. Értelmezés', '10. Alkalmazás', '11. Módszertan',
-                 '10. Módszertan', '10. Értelmezés')   # F182 (A21); F183: a 9. a Hatástörténet, az Értelmezés a 10.
+# F182 (A21): a kézi prózás szakaszok; F241.3: a lapmodell azonosítójával, így a régi és az új szakaszrend azonos
+# szakaszát veti össze az arany lappal (a szám szerint a két szerkezet nem volt összevethető)
+SZINT_SZAKASZ = ('kapcsolatok', 'kapcsolodo', 'ertelmezes', 'alkalmazas', 'modszertan')
 
 
 def szakasz_szoszam(sorok):
     ki = {}
     for s in sorok:
         if s.fajta in ('proza', 'tabla', 'dolt', 'karoli', 'labjegyzet') and s.szakasz:
-            kulcs = re.sub(r'\s*\*\(.*\)\*\s*$', '', s.szakasz)
+            kulcs = s.az or re.sub(r'\s*\*\(.*\)\*\s*$', '', s.szakasz)
             ki[kulcs] = ki.get(kulcs, 0) + len(s.szoveg.split())
     return ki
 
@@ -1290,9 +1332,9 @@ def ell_szint(sorok, arany_szoszam=None):
         elso = {}
         for s in sorok:
             if s.fajta == 'cim' and s.szoveg.startswith('## '):
-                elso.setdefault(re.sub(r'\s*\*\(.*\)\*\s*$', '', s.szakasz), s.n)
+                elso.setdefault(s.az or re.sub(r'\s*\*\(.*\)\*\s*$', '', s.szakasz), s.n)
         for k, a in arany_szoszam.items():
-            if a < SZINT_MIN_ARANY or not k.startswith(SZINT_SZAKASZ) or k not in elso:
+            if a < SZINT_MIN_ARANY or k not in SZINT_SZAKASZ or k not in elso:
                 continue
             if sajat.get(k, 0) < SZINT_ARANY * a:
                 ki.append(talalat('SZINT_ALATT', FIGY, elso[k], k, 'a szakasz %d szó, az arany lapon %d (< %d%%)' % (
@@ -1462,7 +1504,7 @@ def ell_visszhang(sorok):
                 if szo and _niqqud_nelkul(szo[0]) in vh_nem_azonositott():
                     ki.append(talalat('VISSZHANG', BUKAS, s.n, t, 'V3 „nincs rokon nyelvi adat”, holott a BDB-szócikk '
                                                                   'nem azonosított (nem azonosítható ≠ nincs)'))
-        elif s.alszakasz.startswith('4.11.') and len(c) == 5 and c[0] != 'Lánc-szó · versek' \
+        elif s.alszakasz.startswith(('4.11.', 'Ókori fordítások: Ószövetség')) and len(c) == 5 and c[0] != 'Lánc-szó · versek' \
                 and not set(c[0]) <= set('-: '):
             mit = c[4]
             for i, nev in VH_FORDITASOK:
@@ -1659,7 +1701,7 @@ def ell_minta(szoveg):
         if kod:
             continue
         if s.startswith('## '):
-            szakasz = s[3:].strip()
+            szakasz = szakasz_az(s[3:].strip()) or s[3:].strip()
         t = re.sub(r'<[^>]+>', '', s)
         t = re.sub(r'\]\([^)]*\)', ']', t)                     # a link célja nem olvasói szöveg
         mj = re.match(r'- <span class="lj-szam" id="j-[\d-]+">[\d.]+</span>(.*)', s)
@@ -1674,7 +1716,7 @@ def ell_minta(szoveg):
                 if m and SZKZ.cimke_ismetles(m.group(1), m.group(2)):
                     ki.append(talalat('MINTA', BUKAS, n, c2[:120], 'címke-ismétlés a cellában'))
         forras_sor = re.match(r'^\W*(?:Forrás|forrás)\s*:', jegyzet if jegyzet is not None else t)
-        if not forras_sor and not szakasz.startswith('12. Irodalom'):
+        if not forras_sor and szakasz != IRODALOM:
             for m in MINTA_FORRASNEV_RX.finditer(t):
                 ki.append(talalat('MINTA', BUKAS, n, kornyezet(t, m), 'forrásnév zárójelben a mondat közepén'))
         for m in MINTA_BELSO_RX.finditer(t):

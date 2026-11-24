@@ -298,14 +298,13 @@ def cimke_ismetles(cimke, szoveg):
 
 
 def _igehely(nyers, konyvek):
-    """A forrás-mező igehelye. A mező belső szöveg, a könyvnevét a döntésnapló írója adta: ha a normalizáló táblában
-    nincs (pl. `Zef` a `Sof` helyett; N195), az igehely csak alakra ellenőrzött, és úgy áll, ahogy az adatban (a régi
-    lap is így közölte). Érvénytelen alak BemenetHiba."""
+    """A forrás-mező igehelye. A mező belső szöveg, a könyvnevét a döntésnapló írója adta: a lapra a normalizáló
+    tábla rövidítése kerül; a tábla `Forrás-alakok` oszlopában álló alak (pl. `Zef`, N195) a rövidítésre cserélődik
+    (F241.5b, D13 (d)). Érvénytelen alak vagy ismeretlen könyvnév BemenetHiba."""
     try:
-        hely = Igehely(nyers.strip())
-    except SzovegHiba as hiba:
-        raise BemenetHiba('B04: a forrás-mező igehelye érvénytelen: %r (%s)' % (nyers, hiba)) from None
-    return hely
+        return konyvek.forrasalak_igehely(nyers)
+    except BemenetHiba as hiba:
+        raise BemenetHiba('B04: a forrás-mező igehelye: %s' % hiba) from None
 
 
 def _szavazatok(szoveg):

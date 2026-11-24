@@ -6,16 +6,31 @@ Könyvnév csak innen jön: a kódban könyvnév-alias nincs (GK-17).
 from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.szoveg import Igehely, Nev, SzovegHiba
 
-_OSZLOPOK = ('STEPBible-rövidítés', 'Magyar rövidítés', 'Teljes magyar könyvnév')
+_OSZLOPOK = ('STEPBible-rövidítés', 'Magyar rövidítés', 'Teljes magyar könyvnév', 'Forrás-alakok')
 _USZ_ELSO, _USZ_UTOLSO, _USZ_DB = 'Mat', 'Rev', 27
 NEV_TIPUS = 'konyv'
 
 
 class Konyvek:
-    def __init__(self, sorrend, ujszovetsegi, nevek, step_rov=None):
+    def __init__(self, sorrend, ujszovetsegi, nevek, step_rov=None, forras_alak=None):
         self._sorrend, self._ujszovetsegi, self._nevek = sorrend, ujszovetsegi, nevek
         self._step_rov = dict(step_rov or {})
         self._rov_step = {rov: step for step, rov in self._step_rov.items()}
+        self._forras_alak = dict(forras_alak or {})
+
+    def forrasalak_igehely(self, nyers):
+        """Igehely egy belső adatmező szövegéből: ha a könyvnév a tábla `Forrás-alakok` oszlopában áll (pl. `Zef`),
+        a magyar rövidítésre cserélve (`Sof`); ismeretlen könyvnév BemenetHiba (a lapra csak a tábla alakja kerül)."""
+        try:
+            hely = Igehely(nyers.strip())
+        except SzovegHiba as hiba:
+            raise BemenetHiba('érvénytelen igehely: %r (%s)' % (nyers, hiba)) from None
+        if hely.konyv in self._sorrend:
+            return hely
+        if hely.konyv not in self._forras_alak:
+            raise BemenetHiba('B63: ismeretlen könyvnév: %s (a normalizáló tábla rövidítései és forrás-alakjai közt '
+                              'nincs)' % hely.konyv)
+        return Igehely(self._forras_alak[hely.konyv] + hely.kod[len(hely.konyv):])
 
     def ismert(self, konyv):
         return konyv in self._sorrend
@@ -80,15 +95,21 @@ class Konyvek:
 def b63_konyvek(b):
     """B63 — a könyvnév-normalizáló tábla: kánoni sorrend, szövetség, teljes név."""
     tabla = b._tabla('B63', oszlopok=_OSZLOPOK)
-    step, rov, teljes = (tabla.oszlop(o) for o in _OSZLOPOK)
-    sorrend, nevek, stepek = {}, {}, []
+    step, rov, teljes, alakok = (tabla.oszlop(o) for o in _OSZLOPOK)
+    sorrend, nevek, stepek, forras_alak = {}, {}, [], {}
     for i, sor in enumerate(tabla.sorok):
         if sor[rov] in sorrend:
             raise BemenetHiba('B63: ismétlődő magyar rövidítés: %s' % sor[rov])
         sorrend[sor[rov]] = i
         nevek[sor[rov]] = Nev(NEV_TIPUS, sor[rov], sor[teljes])
         stepek.append(sor[step])
+        for alak in sor[alakok].split(','):
+            alak = alak.strip()
+            if alak and alak != sor[rov]:
+                forras_alak[alak] = sor[rov]
     if _USZ_ELSO not in stepek or stepek[-1] != _USZ_UTOLSO or len(stepek) - stepek.index(_USZ_ELSO) != _USZ_DB:
         raise BemenetHiba('B63: az Újszövetség nem a tábla záró %d sora' % _USZ_DB)
     ujszov = frozenset(sor[rov] for sor in tabla.sorok[stepek.index(_USZ_ELSO):])
-    return Konyvek(sorrend, ujszov, nevek, {sor[step]: sor[rov] for sor in tabla.sorok})
+    # a forrás-alak csak akkor rövidítés-csere, ha maga nem magyar rövidítés (a tábla alakja mindig nyer)
+    forras_alak = {a: r for a, r in forras_alak.items() if a not in sorrend}
+    return Konyvek(sorrend, ujszov, nevek, {sor[step]: sor[rov] for sor in tabla.sorok}, forras_alak)
