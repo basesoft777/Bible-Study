@@ -6,7 +6,7 @@
 
 ## Az U5 döntései (a szerkesztő, 2026-11-23)
 
-*Forrás mindegyiknél: **a szerkesztő döntése** (az U5-nézés, 2026-11-23; az integrátor kérdései, a szerkesztő minden pontnál a javasolt változatot választotta). A tétel-jelek a `naplok/F239_U5_csomag.md` jelei. A D24 és a D25 a motívum határának szövegéről szól (DT938): a szerkesztő szava, nem az integrátoré.*
+*Forrás mindegyiknél: **a szerkesztő döntése** (az U5-nézés, 2026-11-23; az integrátor kérdései, a szerkesztő minden pontnál a javasolt változatot választotta). A tétel-jelek a `naplok/F239_U5_csomag.md` jelei. A D24 és a D25 a motívum határának szövegéről szól (a motívum határáról szóló szabály szerint): a szerkesztő szava, nem az integrátoré.*
 
 **D2** (L37) *Kérdés:* tagolódjon-e a Kivonat első bekezdése (8 mondat, 21 igehely, a fordulópont középen)? — *Döntés:* két bekezdés; a fordulópontnál (ÓSZ víz → ÚSZ zárt hely) új bekezdés, a tartalom nem változik. — *Indok:* olvashatóság.
 
@@ -56,7 +56,7 @@
 
 **D25** (O107) *Kérdés:* Euszébiosz, *De ecclesiastica theologia* „3. sz.”. — *Döntés:* adathiba: a visszhang-tábla kora 4. sz.-ra javítva, forrással igazolva, a javítókörben. — *Indok:* a mű 4. századi.
 
-**D26** (O3, O5 — a motívum határának szövege, DT938; **a szerkesztő szava**) *Kérdés:* a negatív kritérium „gyököt kell tartalmaznia” formulája (O3) és a fölérendelt fogalom „lexémán kívül” formulája (O5) maradjon-e? — *Döntés:* mindkettő marad. — *Indok:* minden lexémai motívum egységes formulája; csere csak az összesben egyszerre, külön döntéssel. A határ tartalma nem változik. (Az O3 kisbetű/pont-hibája generátorhiba, J1, a 218c-é.)
+**D26** (O3, O5 — a motívum határának szövege, a határ-szabály szerint; **a szerkesztő szava**) *Kérdés:* a negatív kritérium „gyököt kell tartalmaznia” formulája (O3) és a fölérendelt fogalom „lexémán kívül” formulája (O5) maradjon-e? — *Döntés:* mindkettő marad. — *Indok:* minden lexémai motívum egységes formulája; csere csak az összesben egyszerre, külön döntéssel. A határ tartalma nem változik. (Az O3 kisbetű/pont-hibája generátorhiba, J1, a 218c-é.)
 
 ## A (b) csoport (javítás gazdával, döntés nélkül)
 Az L17 (= K36) és az O7 (= K9, K70, a „95”), valamint a 12 forrástétel (F2: K2, K9, K19, K20, K36, K47, K69, K70, K99; F1 79. sor; a független ellenőr két prózai ELTÉRÉS-e) a javítókörben javul, a fenti döntésekkel összhangban (a K2 Kivonat-része: D7; a K19/K20: a BDB-helyek válogatás voltának jelzése; az F1 79. sora: D6).

@@ -5,7 +5,7 @@
 ## A lapnézet
 
 - **Fájl (a repón kívül, nem publikálva):** `C:\Users\bases\AppData\Local\Claude-Data\claude_pzs8sxrjxfjjc\side-session-notes\local_911d4923-53b0-4b46-9fc5-ccdde3608420\F239_U5_TEREMT-001_lapnezet.html` (373 blokkjel, mint a 3/b átolvasásban; a jelek a lenti lista jelei). A megjelenítés az integrátoré.
-- **Előállítás:** `python.exe`-lista előtte (nem futott lapgen); a két ideiglenes kerülőút (`adat/motivum_kapcsolatok.tsv`: `DT-F239a` → `DT9991`; `kizart.py`: a 10-szeresnél kisebb arány-mondat kihagyva, N-F239a); `python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <közös jegyzetmappa>/F239_U5_elonezet` (47 mp, 0-s kilépés; a generátor 68 ismétlődő szósort jelez a látható lapon); utána mindkét fájl visszaállítva, a `git status` tiszta. A nézet a `lapnezet.epit()`-jével készült, a `lexikon/TEREMT-001_TUDOMANYOS.md` olvasását egy burkoló az előnézetre irányította (a fejlécben: „előnézet @ e9e2a136”).
+- **Előállítás:** `python.exe`-lista előtte (nem futott lapgen); a két ideiglenes kerülőút (`adat/motivum_kapcsolatok.tsv`: `DT-F239a` → egy végleges alakú, a main-en nem létező DT-szám (a `DT` előtag után `9991`); `kizart.py`: a 10-szeresnél kisebb arány-mondat kihagyva, N-F239a); `python eszkozok/general.py --cel lexikon2 --id TEREMT-001 --kimenet <közös jegyzetmappa>/F239_U5_elonezet` (47 mp, 0-s kilépés; a generátor 68 ismétlődő szósort jelez a látható lapon); utána mindkét fájl visszaállítva, a `git status` tiszta. A nézet a `lapnezet.epit()`-jével készült, a `lexikon/TEREMT-001_TUDOMANYOS.md` olvasását egy burkoló az előnézetre irányította (a fejlécben: „előnézet @ e9e2a136”).
 
 ## Összegzés
 
@@ -54,7 +54,7 @@
 
 | # | jel | olvasói mondat |
 |---|---|---|
-| O5 | [fej·4] | A „lexémán kívül” a tágabb kör adatszövegében áll (a motívum határa). A szóhasználatról a szerkesztő dönt; a határ szövege a felhasználó hatásköre (DT938). |
+| O5 | [fej·4] | A „lexémán kívül” a tágabb kör adatszövegében áll (a motívum határa). A szóhasználatról a szerkesztő dönt; a határ szövege a felhasználó hatásköre (a motívum határáról szóló szabály szerint). |
 | O8 | [Kivonat·4], [11·2] ↔ [4·100] | A Septuaginta többlete a prózában hol 3, hol 4 vers, és a Jób 41:31 más ok alatt áll. Melyik szám a helyes, és hova tartozik a Jób 41:31? |
 | O45 | [2·35] (Zsolt 36:7, 1/a) | A „hasonlat a magasság és a mélység két végpontjával méri” mondat az előzőt ismétli. Marad-e? |
 | O87 | [5·4] ↔ [4·100] | A táblázat az 1Móz 49:25-höz a γῆ-t adja („eltérő”), a próza szerint a görögben nem áll a mélység szava. Melyik mondat maradjon, vagy hogyan olvasható a kettő együtt? |
@@ -210,7 +210,7 @@
 
 | # | jel | olvasói mondat |
 |---|---|---|
-| O3 | [fej·3], [fej·4] | A mondat kisbetűvel indul és pont nélkül ér véget. *(A „gyök” a „szó” helyett a negatív kritérium adatszövege; a határ szövege a felhasználóé, DT938.)* |
+| O3 | [fej·3], [fej·4] | A mondat kisbetűvel indul és pont nélkül ér véget. *(A „gyök” a „szó” helyett a negatív kritérium adatszövege; a határ szövege a felhasználóé.)* |
 | O6 | [fej·5] | „Az azonosító és technikai adatok (azonosító, …)”: az „azonosító” a zárójelben újra áll. |
 | O21 | [1·9], [1·10], [3·6], [3·9] | A görög szó ragozva, kiejtés nélkül áll a magyar átírás mellett („ἄβυσσος-t”). |
 | O22 | [1·9], [1·10], [3·6] | „Vagy a görög szöveg a héberen túl ismétel”: érthetetlen okszöveg. |
