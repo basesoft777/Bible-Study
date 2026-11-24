@@ -2582,7 +2582,6 @@ LXX_NYERS_KIVETEL = {
     'eszkozok/f08/f08_dontesek.py': 'F08 mérőeszköz (naplók), olvasói tartalmat nem ír',
     'eszkozok/macula_chi_xi_felmeres.py': 'F115 felmérés (napló)',
     'eszkozok/lxx_bridge_egyezes.py': 'F43 felmérés (naplok/LXX_BRIDGE_egyezes.tsv), a döntéstáblát nem írja',
-    'eszkozok/olvaso_pilot/adat.py': 'a #60 pilot (a látvány mércéje), nem az élő olvasó',
     'eszkozok/olvaso_pilot/db_meres.py': 'a #60 pilot mérése',
     'eszkozok/olvaso_pilot/felmeres.py': 'a #60 pilot felmérése',
     'eszkozok/olvaso_pilot/meres.py': 'a #60 pilot mérése',

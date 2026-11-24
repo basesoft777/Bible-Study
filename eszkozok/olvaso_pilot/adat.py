@@ -177,10 +177,12 @@ for r in sorok(LXX_F):
 
 # --- lxx_bridge
 bridge = defaultdict(list)
-for r in sorok('adat/kulso/lxx_bridge.tsv'):
-    n = hnorm(r[0])
-    if n and len(r) > 2:
-        bridge[n].append((int(r[2]), hnorm(r[1])))
+import lxx_strong_javitas as LXJ  # noqa: E402  (F240 L1: a Macula LXX-Strong javítása; a nyers lxx_bridge.tsv csak ezen át)
+_LXJ = LXJ.javitasok(GY)
+for r in LXJ.bridge_sorok(GY, jt=_LXJ):
+    n = hnorm(r['hebrew_strong'])
+    if n:
+        bridge[n].append((int(r['count']), hnorm(r['greek_strong'])))
 
 # --- kereszthivatkozások
 tsk = defaultdict(list)
@@ -367,7 +369,7 @@ for r in sorok(MACULA_F):
     if len(r) > 14 and r[2] in VERSEK:
         macula_vers[r[2]].append({'_xml': r[0], 'szo': r[5], 'lemma': r[6], 'strong': hnorm(r[7]) if r[7] else None,
                                   'morf': r[10], 'szofaj': r[11], 'gloss': r[12],
-                                  'lxx': r[13], 'lxx_strong': hnorm(r[14]) if r[14] else None})
+                                  'lxx': r[13], 'lxx_strong': (lambda g: hnorm(g) if g else None)(LXJ.javit(r[13], r[14], _LXJ)[0])})
 
 # UBS DBH: jelentés-besorolás előfordulásonként
 ubs_ref = defaultdict(set)
