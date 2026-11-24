@@ -17,6 +17,7 @@ vagy
 """
 
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -2563,6 +2564,74 @@ class E43Teszt(unittest.TestCase):
         gy, alap, fej = self._repo('TEREMT-001', self.FORRAS_UTAN, alap_forras=self.FORRAS_ELOTT)
         self.assertEqual(SZ.e43_u3_elofeltetel(alap, fej, 'push', root=gy), [])
         self.assertEqual(SZ.e43_u3_elofeltetel(None, None, root=gy), [])
+
+
+class NincsAgFajlHivatkozasTeszt(unittest.TestCase):
+    """F0.31: kód, teszt vagy CI nem hivatkozhat a `nyitott/uj/` és a `dontesek/uj/` mappa konkrét fájljára.
+
+    Ok: a PR-onkénti kis fájlt a `szamkiosztas` Action a merge után a `NYITOTT_FELADATOK.md` / `DONTESEK.md` megfelelő helyére olvasztja, és törli
+    (számot ad). Egy teszt, amely a kis fájlt olvassa, a merge után bukik a main-en (mért: a `teszt_tetelmerce` `_kulon_14`-e az N247 kis fájlját
+    olvasta; előtte a #824 szamkiosztó-commitja). A tartalom a fő fájlban áll, tartalom alapján keresendő (nem helyőrzővel vagy számmal).
+
+    Nem hiba: a mappa neve (glob, `<ágnév>`, `%s` mintával), és az a fájl, amely a számkiosztás saját működését vizsgálja ideiglenes gyökérben
+    (`IDEIGLENES_GYOKER_TESZTEK`: ott a konkrét fájlnév fixture, nem a valódi repó fájlja). Az ide felvett fájlnak ténylegesen tartalmaznia kell
+    ilyen hivatkozást (a lista nem hízhat el)."""
+
+    # a számkiosztás/döntésnézet/teher/kapu eszközök tesztjei: a `nyitott/uj/x.md` itt ideiglenes gyökérbe írt fixture
+    IDEIGLENES_GYOKER_TESZTEK = (
+        'eszkozok/ellenorzes/tesztek/test_dontes_nezet.py',
+        'eszkozok/ellenorzes/tesztek/test_szabalyok.py',
+        'eszkozok/ellenorzes/tesztek/test_szamkiosztas.py',
+        'eszkozok/ellenorzes/tesztek/test_teher_meres.py',
+        'eszkozok/teszt_feladatok.py',
+        'eszkozok/teszt_push_elott.py',
+    )
+    KIT = ('.py', '.yml', '.yaml', '.sh')
+    # konkrét fájl: `nyitott/uj/valami.md` szövegben, vagy `'nyitott', 'uj', 'valami.md'` os.path.join-alakban
+    _SZOVEG = re.compile(r'(?:nyitott|dontesek)/uj/[A-Za-z0-9_.-]+\.md')
+    _JOIN = re.compile(r'''['"](?:nyitott|dontesek)['"]\s*,\s*['"]uj['"]\s*,\s*['"][A-Za-z0-9_.-]+\.md['"]''')
+
+    @classmethod
+    def hivatkozas(cls, szoveg):
+        return bool(cls._SZOVEG.search(szoveg) or cls._JOIN.search(szoveg))
+
+    def _fajlok(self):
+        try:
+            ki = subprocess.run(['git', 'ls-files', '-z'], cwd=K.ROOT, capture_output=True, timeout=120, check=True).stdout
+        except (OSError, subprocess.SubprocessError):
+            self.skipTest('nem git-munkafa: a követett fájlok nem listázhatók')
+        return sorted(f for f in ki.decode('utf-8').split('\0') if f.endswith(self.KIT) and os.path.isfile(os.path.join(K.ROOT, f)))
+
+    def test_nincs_konkret_fajlra_hivatkozas(self):
+        rossz = []
+        for f in self._fajlok():
+            if f in self.IDEIGLENES_GYOKER_TESZTEK:
+                continue
+            with open(os.path.join(K.ROOT, f), encoding='utf-8', errors='replace') as fh:
+                for n, sor in enumerate(fh, 1):
+                    if self.hivatkozas(sor):
+                        rossz.append('%s:%d: %s' % (f, n, sor.strip()[:120]))
+        self.assertEqual(rossz, [], 'konkrét `nyitott/uj/` vagy `dontesek/uj/` fájlra hivatkozik (a számkiosztás merge után törli): a tartalmat a '
+                                    'NYITOTT_FELADATOK.md / DONTESEK.md-ben keresd, tartalom alapján')
+
+    def test_az_engedelyezett_fajl_valoban_hivatkozik(self):
+        felesleges = []
+        for f in self.IDEIGLENES_GYOKER_TESZTEK:
+            with open(os.path.join(K.ROOT, f), encoding='utf-8', errors='replace') as fh:
+                if not self.hivatkozas(fh.read()):
+                    felesleges.append(f)
+        self.assertEqual(felesleges, [], 'az IDEIGLENES_GYOKER_TESZTEK-ben szerepel, de nincs benne konkrét fájlra hivatkozás: töröld a listáról')
+
+    def test_a_minta_felismeri_a_hibas_alakot_es_nem_a_mappanevet(self):
+        H = self.hivatkozas
+        self.assertTrue(H("NYITOTT_AG = os.path.join(GY, 'nyitott', 'uj', 'olvaso-egyben-3464e1.md')"))
+        self.assertTrue(H('open("nyitott/uj/x.md")'))
+        self.assertTrue(H("p = 'dontesek/uj/ag_x.md'"))
+        self.assertFalse(H("fnmatch.fnmatch(ut, 'nyitott/uj/*')"))
+        self.assertFalse(H("# a PR-onkénti kis fájl: nyitott/uj/<ágnév>.md"))
+        self.assertFalse(H("ADMIN_KONYVTARAK = ('naplok/', 'dontesek/uj/', 'nyitott/uj/')"))
+        self.assertFalse(H("'dontesek/uj/%s.md' % ag"))
+        self.assertFalse(H("re.compile(r'^nyitott/uj/[^/]+\\.md$')"))
 
 
 if __name__ == '__main__':
