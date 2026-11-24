@@ -2720,7 +2720,7 @@ csomagjának változáslistájába kerülnek.
 A `konkordancia/LSJ_teljes.tsv` az Eliran Wong-modulból származik; a mérés (`naplok/LSJ_HIBAOSZTALYOK_2026-11-24.md`) szerint
 942 sora nem LSJ-szöveg, hanem a modul készítőjének pótszövege (név-helyőrző, Strong-mondat, nyelvtani megjegyzés). A nyers
 tábla érintetlen marad (kimeneti csere nincs); ez a tábla Strong-számonként döntést rögzít, az `lsj` tábla építésekor
-(`eszkozok/sqlite_epit.py`) alkalmazódik, külön db-tábla nem lesz belőle. A tábla a `eszkozok/lsj_forras_javit.py --keszit`
+(`eszkozok/sqlite_epit.py`) alkalmazódik (a `nincs_szocikk` sor üres szöveggel marad az `lsj` táblában: az olvasó így tudja, hogy döntött sor), külön db-tábla nem lesz belőle. A tábla a `eszkozok/lsj_forras_javit.py --keszit`
 kimenete, a kézi kizárásokat a szkript `KEZI_KIZART` és `KEZI_ELFOGADOTT` listája rögzíti.
 
 | Oszlop | Tartalom |
@@ -2729,7 +2729,7 @@ kimenete, a kézi kizárásokat a szkript `KEZI_KIZART` és `KEZI_ELFOGADOTT` li
 | `tipus` | `perseus_csere`: a Strong TBESG-lemmájával azonos kulcsú Perseus-LSJ-szócikk szövege kerül a szócikk helyére; `nincs_szocikk`: az olvasó nem mutat szöveget, hanem azt mondja, hogy az LSJ-ben nincs megfelelő szócikk |
 | `osztaly` | a #864 mérés osztálya (`A1`–`A5`) |
 | `modul_hash` | a nyers modul-szöveg SHA-256-jának első 16 jegye: ha a nyers sor megváltozik, az építés megáll |
-| `perseus_kulcs`, `perseus_azonosito` | a Perseus-szócikk kulcsa és `fájl#azonosító`-ja (csak `perseus_csere`); homográfoknál `+`-szal |
+| `perseus_kulcs`, `perseus_azonosito` | a Perseus-szócikk kulcsa és `fájl#azonosító`-ja (a `perseus_*` sorokban); homográfoknál `;`-vel |
 | `modszer` | `gepi_lemma_egyezes` (pontos, ékezettel egyező lemma), `kezi_lemma_valtozat` (kézzel elfogadott írásmód-változat), `gepi_nincs_lemma_egyezes`, `gepi_csonka_szocikk` (a Perseus-forrás csonka), `kezi_kizaras` (a lemma egyezik, de más szó vagy más személy szócikke) |
 | `szoveg` | a Perseus-szöveg (csak `perseus_csere`): CC BY-SA 4.0, Perseus Digital Library; módosítás: a jelölés eltávolítása és a szóközök az írásjelek körül |
 | `indoklas` | a döntés oka egy mondatban |

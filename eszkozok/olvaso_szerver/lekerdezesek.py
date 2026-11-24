@@ -1177,6 +1177,13 @@ def lsj(con, g):
     return r[0] if r else None
 
 
+def lsj_dontott_nincs(con, g):
+    """F0.43: igaz, ha az `lsj` táblában a szónak van sora, de üres szöveggel: az `adat/lsj_forras_javitas.tsv` `nincs_szocikk` döntése
+    (a modul pótszövege kiesett). A sor hiánya (nincs döntés) nem ez: ott a szokásos üres jelzés áll."""
+    r = con.execute('SELECT teljes_szocikk FROM lsj WHERE strong=?', (g,)).fetchone()
+    return bool(r) and not (r[0] or '').strip()
+
+
 def mcged(con, g):
     return con.execute('SELECT gk_szam, lemma_gorog, atirat, gyakorisag, glossza FROM mcged WHERE strong=? ORDER BY rowid', (g,)).fetchall()
 

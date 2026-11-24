@@ -180,8 +180,8 @@ ADAT_LICENC = {'morf_kulcs_heber': ['morf_kulcs_heber'], 'morf_nyelv_aramai': ['
                # F197: a Sefaria /api/words BDB-jelentésfájából (közkincs, DT631; a licencsor a BDB_rokon_irasok-é, ugyanez a forrás)
                'bdb_jp_sefaria': ['BDB_rokon_irasok', 'projekt_adat']}
 
-# a `lsj_forras_javitas` az `lsj` tábla építésébe olvad (F0.43), külön tábla nem lesz belőle (az olvasó nem érti: a sémát nem bővíti)
-ADAT_KIHAGYOTT = {'karoli_variancia', 'lsj_forras_javitas'}  # külön kezelve (szarmaztatott licenc)
+# a `lsj_forras_javitas` az `lsj` tábla építésébe olvad (F0.43), külön tábla nem lesz belőle (a db-sémát nem bővíti)
+ADAT_KIHAGYOTT = {'karoli_variancia', 'lsj_forras_javitas'}  # karoli_variancia: külön kezelve (származtatott licenc)
 
 STRONG_RE = re.compile(r'^[HG]\d{4,5}$')
 HU_IGEHELY_RE = re.compile(r'^(\S+) (\d+):(\d+)[a-z]?(?:-(?:(\d+):)?(\d+)[a-z]?)?$')
@@ -1079,6 +1079,8 @@ class Epito(object):
             ki, db = LJ.alkalmaz(ki, fej.index('Strong_padded'), fej.index('Teljes_szocikk'),
                                  LJ.betolt(os.path.join(self.gyoker, LJ.TABLA)))
             self.lsj_javitas = db
+            self.megjegyzesek.append('lsj_forras_javitas: %d perseus_csere, %d perseus_szulo, %d nincs_szocikk (üres szöveggel)'
+                                     % (db['perseus_csere'], db.get('perseus_szulo', 0), db['nincs_szocikk']))
         ix = ['strong'] if strong_idx is not None else []
         if ig_idx is not None:
             ix.append(nevek[ig_idx])
