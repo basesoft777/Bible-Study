@@ -2705,7 +2705,7 @@ egyetlen segéd alkalmazza (`eszkozok/lxx_strong_javitas.py`), és minden fogyas
 |---|---|
 | `alak_norm` | a görög szóalak ékezet, lehelet és írásjel nélkül, kisbetűvel, végső szigma nélkül (`lxx_strong_javitas.alak_norm`) |
 | `hibas_strong` | a Macula címkéje (`G####`) |
-| `helyes_strong` | a helyes Strong (`G####`), vagy **üres**: a helyes lemmának nincs Strong-száma, a pár „megfelelő nélkül” (DT-F240b) |
+| `helyes_strong` | a helyes Strong (`G####`), vagy **üres**: a helyes lemmának nincs Strong-száma, a pár „megfelelő nélkül” (DT957) |
 | `ok` | `masik_lemma` · `nincs_strong` |
 | `indok` | egy mondat: mi a szó, mit visel, mi a helyes, és mi igazolja (LXX_OS, héber pár) |
 | `proveniencia` | `manual \| scope=F240 L1 \| forras=… \| ts=…` |
@@ -2733,6 +2733,31 @@ sora); minden sor hash-e a motívum egy élő döntésnapló-indoklására mutat
 az olvasói alak elavult). Ha a lapra kerülő indoklásnak nincs olvasói alakja, és belső szót hordoz, a generálás
 megáll. A tábla a szerzői jóváhagyás tárgya (`konfig.JOVAHAGYAS_BEMENETEK`); a mondatai az első kiadásuk nézési
 csomagjának változáslistájába kerülnek.
+
+### 2.75 `lsj_forras_javitas.tsv` — az LSJ pótszöveg-soraihoz rendelt döntés (F0.43, 2026-11-24)
+
+A `konkordancia/LSJ_teljes.tsv` az Eliran Wong-modulból származik; a mérés (`naplok/LSJ_HIBAOSZTALYOK_2026-11-24.md`) szerint
+942 sora nem LSJ-szöveg, hanem a modul készítőjének pótszövege (név-helyőrző, Strong-mondat, nyelvtani megjegyzés). A nyers
+tábla érintetlen marad (kimeneti csere nincs); ez a tábla Strong-számonként döntést rögzít, az `lsj` tábla építésekor
+(`eszkozok/sqlite_epit.py`) alkalmazódik (a `nincs_szocikk` sor üres szöveggel marad az `lsj` táblában: az olvasó így tudja, hogy döntött sor), külön db-tábla nem lesz belőle. A tábla a `eszkozok/lsj_forras_javit.py --keszit`
+kimenete, a kézi kizárásokat a szkript `KEZI_KIZART` és `KEZI_ELFOGADOTT` listája rögzíti.
+
+| Oszlop | Tartalom |
+|---|---|
+| `strong` | `G####` (a nyers tábla `Strong_padded` oszlopa); kulcs |
+| `tipus` | `perseus_csere`: a Strong TBESG-lemmájával azonos kulcsú Perseus-LSJ-szócikk szövege kerül a szócikk helyére; `nincs_szocikk`: az olvasó nem mutat szöveget, hanem azt mondja, hogy az LSJ-ben nincs megfelelő szócikk |
+| `osztaly` | a #864 mérés osztálya (`A1`–`A5`) |
+| `modul_hash` | a nyers modul-szöveg SHA-256-jának első 16 jegye: ha a nyers sor megváltozik, az építés megáll |
+| `perseus_kulcs`, `perseus_azonosito` | a Perseus-szócikk kulcsa és `fájl#azonosító`-ja (a `perseus_*` sorokban); homográfoknál `;`-vel |
+| `modszer` | `gepi_lemma_egyezes` (pontos, ékezettel egyező lemma), `kezi_lemma_valtozat` (kézzel elfogadott írásmód-változat), `gepi_nincs_lemma_egyezes`, `gepi_csonka_szocikk` (a Perseus-forrás csonka), `kezi_kizaras` (a lemma egyezik, de más szó vagy más személy szócikke) |
+| `szoveg` | a Perseus-szöveg (csak `perseus_csere`): CC BY-SA 4.0, Perseus Digital Library; módosítás: a jelölés eltávolítása és a szóközök az írásjelek körül |
+| `indoklas` | a döntés oka egy mondatban |
+| `proveniencia` | `PROVENIENCIA` (1.5): `scope=… \| forras=PerseusDL/lexica@1c34cdf… \| ts=` |
+
+**Kulcs:** `strong`. **Kapuk:** a betöltő (`lsj_forras_javit.betolt`) elutasítja az ismeretlen típust és módszert, a kétszer
+szereplő Strong-számot, a szöveg nélküli `perseus_csere` és a szöveges `nincs_szocikk` sort, a proveniencia vagy indoklás
+nélküli sort; az építés (`alkalmaz`) megáll, ha a `modul_hash` nem egyezik vagy a Strong-szám nincs a nyers táblában;
+`python eszkozok/lsj_forras_javit.py --ellenoriz` és `eszkozok/teszt_lsj_forras_javit.py` ellenőrzi.
 
 ## 3. Integritási szabályok
 

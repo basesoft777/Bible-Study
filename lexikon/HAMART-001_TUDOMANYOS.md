@@ -24,7 +24,7 @@ Hat hely a lánc szavai nélkül is ide tartozik, mert a lánc szerkezetét más
 
 ## Tartalomjegyzék
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#tartalom | forrás:  | licenc: minden jog fenntartva | ts=2026-11-24 -->
 
 A szócikk szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mondata mondja meg.<!-- olvasói -->
 
@@ -50,7 +50,7 @@ A szócikk szakaszai. Hogy melyik szakaszt ki írta, a Kolofon szerzőségi mond
 
 ## Jelmagyarázat és rövidítések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#jelmagyarazat | forrás:  | licenc: minden jog fenntartva | ts=2026-11-24 -->
 
 A szócikkben használt rövidítések, jelek és forrásnevek feloldása. Ha a szócikk egy jelét nem érted, itt keresd.<!-- olvasói -->
 
@@ -107,7 +107,7 @@ A szótári fordításokban a πνεῦμα (pneuma) mindig *szellem*, a ψυχ�
 
 ## 1. Döntési út
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#dontesi_ut | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/elutasitasi_okok.tsv, konkordancia/Karoli_1908.tsv | licenc: minden jog fenntartva, közkincs | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#dontesi_ut | forrás: adat/jeloltek.tsv, adat/elofordulasok.tsv, adat/motivumok.tsv, adat/elutasitasi_okok.tsv, konkordancia/Karoli_1908.tsv | licenc: minden jog fenntartva, közkincs | ts=2026-11-24 -->
 
 Ez a szakasz azt mutatja meg, hogyan jutott el a vizsgálat az igehelyekig: mit keresett, hol, mi esett ki és miért, és mi maradt. Az 1 840 megvizsgált versből 56 tartozik a motívumhoz; minden vers egyszer számít, így a számok összeadódnak.<!-- olvasói -->
 
@@ -218,7 +218,7 @@ A kérdések kifejtése a 10. (Értelmezés) és a 11. szakaszban (Módszertan �
 
 ## 2. Előfordulások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#elofordulasok | forrás: adat/elofordulasok.tsv, konkordancia/Karoli_1908.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, adat/forditasok.tsv, adat/szotar_szakasz_cimke.tsv, adat/bdb_vers_jelentes.tsv, adat/thayer_vers_jelentes.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/TAHOT_kivonat.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva | ts=2026-11-24 -->
 
 A motívum 49 igehelyen fordul elő, 14 bibliai könyvben (43 ószövetségi, 6 újszövetségi hely). 42 hely azonosítása magas megbízhatóságú, 7 alacsonyabb. **Következtetés:** a motívum súlypontja Mózes első könyve (49 helyből 23); főként ószövetségi; az Újszövetségben 6 hely.<!-- olvasói -->
 
@@ -656,7 +656,7 @@ Funkció: a kánon zárása: az átok megszűnik
 
 ## 3. Kizárt és vizsgált helyek
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kizart | forrás: adat/jeloltek.tsv, adat/motivumok.tsv | licenc: minden jog fenntartva | ts=2026-11-24 -->
 
 A motívum 49 helyén túl további 1 784 vers került vizsgálat alá: a motívum szavainak keresése a teljes Ó- és Újszövetségre kiterjedt, és a kereszthivatkozások ajánlásaira is. Egyik sem tartozik a motívumhoz: 242 versről egyenként született döntés, 1 542 versről közös ok alapján, csoportosan. A leggyakoribb ok: „más szó áll a versben, nem a motívum lexémája” (925 vers), utána „a szó áll, de általános használatban, a lánc nélkül” (575 vers). A vizsgált helyek forrása (vers): A szavak keresése 1654, TSK-ajánlás 99, Szerkesztői felvetés 31. **Következtetés:** a motívum minden helyére átlagosan 36 vizsgált vers jut (1784 vizsgált vers, 49 motívumhely). A határt leginkább ez az ok húzza meg: „más szó áll a versben, nem a motívum lexémája”.<!-- olvasói -->
 
@@ -990,7 +990,7 @@ További 19 ok, összesen 124 vers: emberi átkozódás, nem a genezisi lánc fo
 
 ## 4. Szótári háttér
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#szocikkek | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/karoli_strong, adat/lexikon_hivatkozasok.tsv, adat/nave_tema_hu.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Karoli_1908.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, minden jog fenntartva, © Mounce 1993 | ts=2026-11-24 -->
 
 A motívumot 10 héber szó és 5 görög szó hordozza; héberül: אָבַל (ával), אֲדָמָה (adámá), אָלָה (álá), אָרַר (árar), חַטָּאת (chattát), חָמָס (chámász), עִצָּבוֹן (iccávón), קוֹץ (kóc), רַע (ra) és שָׁחַת (sáchat); görögül: διαφθείρω (diaftheiró), ἐπικατάρατος (epikataratosz), κατάρα (katara), φθείρω (ftheiró) és φθορά (fthora). Szavanként számozott pontok követik egymást (a pontok rendje a Jelmagyarázatban áll); a 4.2 pont a fő szótár (héberül a BDB, görögül a Thayer) szócikke. Ott elöl, kibontva állnak azok a jelentések, amelyek a motívumot hordozzák; a többi szótár utána következik.<!-- olvasói -->
 
@@ -1782,7 +1782,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
 - Pi'el — a szótár csak alakot közöl (5 hely)
   - **Pi'el 1** — elront, elpusztít
   - Pi'el 2 — elferdíteni, megrontani, a bölcsesség tárgyesetével
-- Hiph'il — a szótár csak alakot közöl (13 hely)
+- Hiph'il — a szótár csak alakot közöl (14 hely)
   - Hiph'il 1 — elront, tönkretesz (termést, földet)
   - **Hiph'il 2** — erkölcsileg megront, romlottan cselekszik
 - Hoph'al — elrontott, tönkretett, forrásról
@@ -1823,7 +1823,7 @@ A szó jelentéseinek teljes rendje a fő szótárban (BDB). Kibontva azok a jel
   > Hiphil perfectum 3. hímnemű egyes szám הִשְׁחִית‎ <mark class="motivumhely" title="a motívum helye: 1Móz 6:12">1Móz 6:12</mark> és máshol;
 
 <details>
-<summary>Hiph'il 1 — elront, tönkretesz (termést, földet) (54 hivatkozás)</summary>
+<summary>Hiph'il 1 — elront, tönkretesz (termést, földet) (53 hivatkozás)</summary>
 
 - Hiph'il 1 — elront, tönkretesz (termést, földet)
 
@@ -2204,7 +2204,7 @@ Egy régi, klasszikus bibliai tárgymutató (Nave, 1897) témái közül azok, a
   - <span title="Of Adam and Eve, from Eden">Ádámé és Éváé Édenből</span>: 1Móz 3:23
   - <span title="Of Cain, to be “a fugitive and vagabond,”">Kainé, hogy „bujdosó és vándorló” legyen</span>: 1Móz 4:14
 
-*(forrás: Nave tárgymutatója (1897); a tematikus index döntései; a Nave-témák magyar nevei)*<!-- eredeti: *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=7 | ts=2026-11-13)* -->
+*(forrás: Nave tárgymutatója (1897); a tematikus index döntései; a Nave-témák magyar nevei)*<!-- eredeti: *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001) | forras=Nave_basokant.tsv+adat/tematikus_temak.tsv+adat/nave_tema_hu.tsv (eszkozok/szerep_nave.py) | n=7 | ts=2026-11-24)* -->
 
 #### 4.13. Károli-megfelelők
 
@@ -2238,7 +2238,7 @@ A motívum 49 igehelyén a Károli 25 különböző magyar szót használ (szóc
 - **zsaroló** (1) — zsaroló: Zsolt 74:20
 - **álnokság** (1) — álnoksága: Ez 12:19
 
-*(forrás: a motívum előfordulás-táblája; a Károli-szavak szótári alakjai)*<!-- eredeti: *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=49 | ts=2026-11-13)* -->
+*(forrás: a motívum előfordulás-táblája; a Károli-szavak szótári alakjai)*<!-- eredeti: *(proveniencia: scope=adat/elofordulasok.tsv (id=HAMART-001, karoli_szo) | forras=adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv (eszkozok/szerep_karoli.py) | n=49 | ts=2026-11-24)* -->
 
 #### 4.14. Rejtett / hamis párhuzam
 
@@ -2314,7 +2314,7 @@ A rejtett és a hamis párhuzam a Károli állandó magyar kulcsszavával mérhe
 
 </details>
 
-*(forrás: a Károli-fordítás (1908); a STEPBible héber szövege (TAHOT); a STEPBible görög szövege (TAGNT); a motívum előfordulás-táblája; a Károli-szavak szótári alakjai)*<!-- eredeti: *(proveniencia: scope=Károli teljes (H0127: „föld”; H0779: „átkoz”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=2311 | ts=2026-11-13)* -->
+*(forrás: a Károli-fordítás (1908); a STEPBible héber szövege (TAHOT); a STEPBible görög szövege (TAGNT); a motívum előfordulás-táblája; a Károli-szavak szótári alakjai)*<!-- eredeti: *(proveniencia: scope=Károli teljes (H0127: „föld”; H0779: „átkoz”) | forras=Karoli_1908.tsv+TAHOT_kivonat.tsv+TAGNT_kivonat.tsv+adat/elofordulasok.tsv+adat/szoto/karoli_szotari_alak.tsv+adat/karoli_strong (eszkozok/szerep_karoli.py) | n=2311 | ts=2026-11-24)* -->
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#szocikkek -->
 
@@ -2350,7 +2350,7 @@ Miért jelentős a fenti szótári anyag a motívum szempontjából.<!-- olvasó
 
 ## 5. LXX-fordítói döntések
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: adat/lxx_dontesek.tsv, adat/visszhang_megfelelok.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#lxx | forrás: adat/lxx_dontesek.tsv, adat/visszhang_megfelelok.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv | licenc: CC BY 4.0, minden jog fenntartva | ts=2026-11-24 -->
 
 A motívum ószövetségi helyei 48 versre terjednek. A görög Ószövetség és az Újszövetség közti szóhíd két szón át vezet, az אָרַר (árar) és a שָׁחַת (sáchat) szaván: ezek 14 megállapított versében a görög fordítás 7 versben ugyanazt a szót használja, mint az Újszövetség, 6 versben ugyanannak a szócsaládnak egy másik tagját, 1 versben mást. A többi szónak a motívumban nincs újszövetségi párja (20 vers), ott egyezés nem várható. 13 versben a megfelelő nincs megállapítva és 1 versben a versszámozás eltérése miatt nincs párosítva. **Következtetés:** a nyelvi híd két szón át vezet, és ott erős: szócsalád szerint 13/14 vers.<!-- olvasói -->
 
@@ -2415,7 +2415,7 @@ A motívum ószövetségi helyei 48 versre terjednek. A görög Ószövetség é
 
 ## 6. Kereszthivatkozások
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kereszthivatkozasok | forrás: konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv | licenc: CC BY 4.0, közkincs | ts=2026-11-24 -->
 
 A motívum 49 helyéből 25 helyről mutat utalás más bibliai helyre a hagyományos gyűjteményekben (TSK, Károli), összesen 120. **Következtetés:** a helyek 51%-át a régi kereszthivatkozások is összekötik más helyekkel; hogy ezek közül melyik mutat a motívum saját helyeire, azt a Minősítés mondja meg.<!-- olvasói -->
 
@@ -2718,11 +2718,11 @@ A 120 utalásból 5 a motívum két saját helyét köti össze, ez 6 helyet ér
 
 <!-- közös forrásmegjelölés: Minden sor forrásmegjelölése (‹M1›): forrás: a motívum korábbi kereszthivatkozás-naplója; kézi szerkesztés, 2026-10-11 --><!-- eredeti: *Minden sor forrásmegjelölése (‹M1›): `scope=manual | forras=Bun_kovetkezmenyeinek_gyuruzese_kereszthivatkozas_naplo.md | ts=2026-10-11`* -->
 
-*Forrás: a vizsgált helyek döntésnaplója; a motívum előfordulás-táblája; a Treasury of Scripture Knowledge; a Károli-kereszthivatkozások.*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-13`* -->
+*Forrás: a vizsgált helyek döntésnaplója; a motívum előfordulás-táblája; a Treasury of Scripture Knowledge; a Károli-kereszthivatkozások.*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/jeloltek.tsv+adat/elofordulasok.tsv+konkordancia/TSK_kereszthivatkozasok.tsv+konkordancia/Karoli_kereszthivatkozasok.tsv | ts=2026-11-24`* -->
 
 ## 7. Kapcsolatok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolatok | forrás: adat/kapcsolatok.tsv | licenc: minden jog fenntartva | ts=2026-11-24 -->
 
 56 kapcsolat 42 helyet köt össze: 43 párhuzam, 7 kontraszt, 6 variáns; 26 magas, 30 közepes bizonyosságú. **Következtetés:** a motívum helyeit túlnyomórészt párhuzam köti össze: a későbbi hely ugyanazt a szót vagy szerkezetet hozza vissza, nem egy korábbi ígéretet teljesít be, és a kapcsolatok többsége közepes bizonyosságú.<!-- olvasói -->
 
@@ -2953,11 +2953,11 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 *Az egyezéseket a héber és a görög szöveg, a Septuaginta és a két kereszthivatkozás-gyűjtemény (TSK, Károli) méri; az indoklás a szerkesztőé.*<!-- DT748 | scope=manual | forras=adat/jeloltek.tsv (jelolt_tipus=kapcsolat) (bizonyíték: TSK, Károli-KH, TAHOT, TAGNT, LXX; naplok/F182_kapcsolat.py); a szöveg: naplok/F125_lapjavit_kapcsolat.py (lap-javit HAMART-001, ts=2026-11-11) | ts=2026-11-10 (2026-11-10) -->
 
-*Forrás: a kapcsolat-tábla.*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-13`* -->
+*Forrás: a kapcsolat-tábla.*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/kapcsolatok.tsv | ts=2026-11-24`* -->
 
 ## 8. Kapcsolódó motívumok
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kapcsolodo | forrás: adat/motivum_kapcsolatok.tsv, adat/jeloltek.tsv | licenc: minden jog fenntartva | ts=2026-11-24 -->
 
 1 kapcsolat 1 másik motívummal (ISTENTISZT-001 1), mind „szomszédos”; további 1 döntésre vár. **Következtetés:** a motívum más motívumokhoz eddig csak szövegközelség révén kapcsolódik, tartalmi kapcsolat még nincs igazolva.<!-- olvasói -->
 
@@ -2969,7 +2969,7 @@ Soronként, miért kapta a fenti kapcsolat a funkcióját és a bizonyossági sz
 
 *Még nem eldöntött motívumközi kapcsolat: 1 (ISTENTISZT-001: 1).*
 
-*Forrás: a motívumközi kapcsolatok táblája; a vizsgált helyek döntésnaplója.*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-13`* -->
+*Forrás: a motívumközi kapcsolatok táblája; a vizsgált helyek döntésnaplója.*<!-- eredeti: *Proveniencia: `scope=id:HAMART-001 | forras=adat/motivum_kapcsolatok.tsv+adat/jeloltek.tsv | ts=2026-11-24`* -->
 
 <!-- GENERÁLT-VÉGE: lexikon#HAMART-001#kapcsolodo -->
 
@@ -3094,7 +3094,7 @@ Hogyan készült a kutatás: a döntések, a korlátok és a nyitva maradt kérd
 
 ## 12. Irodalom és idézés
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#idezes | forrás:  | licenc: minden jog fenntartva | ts=2026-11-24 -->
 
 Hogyan hivatkozz erre a szócikkre, és mely szótárakból, adatforrásokból készült.<!-- olvasói -->
 
@@ -3162,7 +3162,7 @@ Hogyan hivatkozz erre a szócikkre, és mely szótárakból, adatforrásokból k
 
 ## Kolofon
 
-<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_javitasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, adat/vitatott_forrasok.tsv, chain-lineages, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Glossa_Ordinaria.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Targum_PD.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva, minden jog fenntartva, © Mounce 1993 | ts=2026-11-13 -->
+<!-- GENERÁLT-KEZDET: general.py --cel lexikon#HAMART-001#kolofon | forrás: adat/bdb_szakasz_hu.tsv, adat/bdb_szakaszok.tsv, adat/bdb_vers_jelentes.tsv, adat/elofordulasok.tsv, adat/forditasok.tsv, adat/glosszak_heber_hu.tsv, adat/jeloltek.tsv, adat/kapcsolatok.tsv, adat/karoli_strong, adat/kiadasok.tsv, adat/lap_atnezesek.tsv, adat/lap_javitasok.tsv, adat/lexikon_hivatkozasok.tsv, adat/lxx_dontesek.tsv, adat/motivumok.tsv, adat/nave_tema_hu.tsv, adat/res_forras.tsv, adat/szotar_szakasz_cimke.tsv, adat/szotar_szerepek.tsv, adat/szoto/karoli_szotari_alak.tsv, adat/tematikus_temak.tsv, adat/thayer_szakaszok.tsv, adat/thayer_vers_jelentes.tsv, adat/tiltott_fordulatok.tsv, adat/visszhang_megfelelok.tsv, adat/visszhang_tanuk.tsv, adat/vitatott_forrasok.tsv, chain-lineages, konkordancia/BDB_teljes_unabridged.tsv, konkordancia/Glossa_Ordinaria.tsv, konkordancia/Karoli_1908.tsv, konkordancia/Karoli_kereszthivatkozasok.tsv, konkordancia/Karoli_versmegfeleltetes.tsv, konkordancia/LXX_OS/deuteronomy.tsv, konkordancia/LXX_OS/ezekiel.tsv, konkordancia/LXX_OS/genesis.tsv, konkordancia/LXX_OS/habakkuk.tsv, konkordancia/LXX_OS/hosea.tsv, konkordancia/LXX_OS/isaiah.tsv, konkordancia/LXX_OS/jeremiah-lxx.tsv, konkordancia/LXX_OS/micah.tsv, konkordancia/LXX_OS/psalms-lxx.tsv, konkordancia/LXX_OS/zephaniah.tsv, konkordancia/LXX_versszintu_parok.tsv, konkordancia/MCGED_teljes.tsv, konkordancia/Nave_basokant.tsv, konkordancia/OSHL_lexikalis_index.tsv, konkordancia/SBLGNT_apparatus.tsv, konkordancia/SDBH_domenek.tsv, konkordancia/SDGNT_domenek.tsv, konkordancia/SECE_G_teljes.tsv, konkordancia/SECE_H_teljes.tsv, konkordancia/TAGNT_kivonat.tsv, konkordancia/TAGNT_valtozatok.tsv, konkordancia/TAHOT_kivonat.tsv, konkordancia/TBESG.txt, konkordancia/TBESH.txt, konkordancia/TSK_kereszthivatkozasok.tsv, konkordancia/Tanu_atyak_index.tsv, konkordancia/Tanu_rabbinikus_index.tsv, konkordancia/Targum_PD.tsv, konkordancia/Thayer_teljes.tsv, konkordancia/UBS_DBH_jelentesek.tsv, konkordancia/UBS_DBH_referenciak.tsv, konkordancia/UBS_DNTG_jelentesek.tsv, konkordancia/UBS_DNTG_referenciak.tsv, konkordancia/Vulgata_Clementina.tsv, konkordancia/tW_szocikkek.tsv | licenc: CC BY 4.0, CC BY-SA 4.0, közkincs, licenc nincs megadva; csak tényadatként, forrásmegjelöléssel használva, minden jog fenntartva, © Mounce 1993 | ts=2026-11-24 -->
 
 A lap technikai adatai: a motívum azonosítója és állapota, és minden forrás, amelyből a lap készült.<!-- olvasói -->
 
@@ -3189,10 +3189,10 @@ A lap technikai adatai: a motívum azonosítója és állapota, és minden forr�
 | Negatív kritérium | A versben az 1Mózes 3–9. fejezetének szóláncából egy szó áll, héberül: átok (árar), föld (adámá), fájdalom és fáradság (iccávón), bűn (chattát), erőszak (chámász) vagy a romlás igéje (sáchat); görögül: átkozott (ἐπικατάρατος, epikataratosz), átok (κατάρα, katara) vagy a romlás szócsaládja (φθείρω, ftheiró). Ugyanígy ide tartozik a vers, amelyben a lánc szópárja áll (tövis és bogáncs; megtelt erőszakkal), vagy az erőszak szava a hallás igéjével ugyanabban a versben. Mindhárom esetben a hely ezen a szón át az 1Móz 3–9 láncára utal vissza: az átkot a földön, a föld romlását, az erőszakkal megtelt földet vagy a föld színéről való eltörlést mondja ki, ismétli vagy fordítja meg. Nem tartozik ide a hely, amelyben a szó általános használatban áll (bűnáldozat, föld mint ország vagy talaj, katonai pusztítás, rituális vagy emberi átkozódás, az erőszak a megtelés és a hallás szava nélkül, romlandó test), és az sem, amely az átkot vagy a föld elvesztését a szövetség rendjében, a szövetség megszegésének büntetéseként mondja ki. A lánc szavai nélkül csak az a néhány hely tartozik ide, amely ugyanezt a szerkezetet más szavakkal mondja ki; ezeket a vizsgálat egyenként, tematikus helyként veszi fel. Az újszövetségi helyeknél a Károli alapszövege, a Textus Receptus a mérce. |
 | A tágabb kör | A bűn és következményei általában, a genezisi lánc szavai és szerkezete nélkül |
 | Sablon-megfelelőség | v14 |
-| Generálva | 2026-11-13 |
+| Generálva | 2026-11-24 |
 | Kiadás | 2 |
 | Próza modellje | claude-opus-5-5 |
-| Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által jelzett helyek javítását ő hagyta jóvá, módosította vagy vetette el (2026.11.11–13) |
+| Szerkesztői átnézés és javítás | A teljes lapot a szerkesztő átnézte; a modell-lektor által jelzett helyek javítását ő hagyta jóvá, módosította vagy vetette el (2026.11.11–24) |
 | Modell-lektor (claude-fable-5-2) | 43 jelzett hely (2026.11.11) |
 
 **Változásjegyzék**

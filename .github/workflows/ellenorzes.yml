@@ -284,10 +284,13 @@ jobs:
           # a gep kozos FIFO-sora (lapgen, teljes kapu): eszkozok/gepsor.py
           python eszkozok/teszt_gepsor.py
           K15=$?
+          # F0.43: az LSJ pótszöveg-soraihoz rendelt döntés (adat/lsj_forras_javitas.tsv) és az építésbe olvasztása
+          python eszkozok/teszt_lsj_forras_javit.py
+          K16=$?
           # F188: a helyi ellenorzes-zar es a lassu tesztek lefedett fajljai (a teszt_futtat.py _OLVASO_KOD listaja; csendben piros volt)
           python eszkozok/ellenorzes/tesztek/test_zar.py
-          K16=$?
-          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ] || [ "$K10" != "0" ] || [ "$K11" != "0" ] || [ "$K12" != "0" ] || [ "$K13" != "0" ] || [ "$K14" != "0" ] || [ "$K15" != "0" ] || [ "$K16" != "0" ]; then KILEPES=1; else KILEPES=0; fi
+          K17=$?
+          if [ "$K1" != "0" ] || [ "$K2" != "0" ] || [ "$K3" != "0" ] || [ "$K4" != "0" ] || [ "$K5" != "0" ] || [ "$K6" != "0" ] || [ "$K7" != "0" ] || [ "$K8" != "0" ] || [ "$K9" != "0" ] || [ "$K10" != "0" ] || [ "$K11" != "0" ] || [ "$K12" != "0" ] || [ "$K13" != "0" ] || [ "$K14" != "0" ] || [ "$K15" != "0" ] || [ "$K16" != "0" ] || [ "$K17" != "0" ]; then KILEPES=1; else KILEPES=0; fi
           echo "kilepes=$KILEPES" >> "$GITHUB_OUTPUT"
           exit $KILEPES
 
