@@ -20,7 +20,7 @@ helyi_gep: igen
 
 # F240 — Kis adatjavítás: LXX-megfelelés és BDB-könyvnév (LXXBDB)
 
-**Honnan:** `IRANY.md` „Következő szálak” első sora (a szerkesztő a #810-es olvasó-előnézeten látta, `/szo/H0430`, `/szo/H1242`). A tétel az IRANY-ban áll, ezért a jóváhagyás az integrátoré (DT-F0b). Az N-F231a (#231 ága, `nyitott/uj/olvaso-egyben-3464e1.md`) célfeladata ez a brief.
+**Honnan:** `IRANY.md` „Következő szálak” első sora (a szerkesztő a #810-es olvasó-előnézeten látta, `/szo/H0430`, `/szo/H1242`). A tétel az IRANY-ban áll, ezért a jóváhagyás az integrátoré (DT961). Az N-F231a (#231 ága, `nyitott/uj/olvaso-egyben-3464e1.md`) célfeladata ez a brief.
 
 **Nehéz kör** (DT919): adatot és adatbázis-építést érint → független ellenőr, legfeljebb egy javítókör, teljes `python eszkozok/push_elott.py`. Lapgen-futás nem kell (a mérés szerint egyik `lexikon/*_TUDOMANYOS.md` sem mutatja az érintett párokat vagy kettőzést); ha mégis kell: előtte `python.exe`-lista, egyszerre egy futás.
 
