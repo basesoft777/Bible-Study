@@ -232,3 +232,26 @@ class VizsgaltJegyzetFajta(enum.Enum):
     ADATTABLAK = 'adattablak'          # a motívum adattáblái (a forrásnak nincs olvasói leírása)
     TELJESSEG_EGYENKENT = 'teljesseg_egyenkent'    # a teljes keresés, egyenkénti döntéssel
     NAPLO = 'naplo'                    # a motívum korábbi kereszthivatkozás-naplója
+
+
+# --- a jóváhagyás frissessége (GK-27, F241.1): a bemenet méri (`bemenet/jovahagyas.py`), a Kolofon modellje hordozza
+
+class Frissesseg(enum.Enum):
+    FRISS = 'friss'
+    CSAK_GENERALT = 'csak_generalt'
+    ELAVULT = 'elavult'
+    NINCS_ATNEZES = 'nincs_atnezes'   # nincs érvényes szerzői átnézés-sor (vagy egyik sem őse a HEAD-nek)
+    NINCS_LAP = 'nincs_lap'           # a lap nincs a repóban (nincs utolsó commitja)
+
+
+class Jovahagyas:
+    """A frissesség eredménye: az állapot, az összevetett átnézés commitja és dátuma, a lap mai utolsó commitja."""
+    __slots__ = ('allapot', 'atnezes_commit', 'atnezes_datum', 'lap_commit')
+
+    def __init__(self, allapot, atnezes_commit=None, atnezes_datum=None, lap_commit=None):
+        self.allapot, self.atnezes_commit = allapot, atnezes_commit
+        self.atnezes_datum, self.lap_commit = atnezes_datum, lap_commit
+
+    @property
+    def kiadhato(self):
+        return self.allapot in (Frissesseg.FRISS, Frissesseg.CSAK_GENERALT)

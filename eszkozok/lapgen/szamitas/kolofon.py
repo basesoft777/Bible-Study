@@ -28,6 +28,7 @@ from lapgen.bemenet import jovahagyas as jovahagyas_be
 from lapgen.bemenet import kolofon as kolofon_be
 from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet.jegyzek import BemenetHiba
+from lapgen.ertekek import Jovahagyas
 from lapgen.szakaszok import Szakaszrend
 from lapgen.szamitas.idezes import Licenc, licenc_lista
 from lapgen.szoveg import Kulcs, Lathato, idezet, proza
@@ -124,7 +125,7 @@ class Kolofon:
     kozel_keleti_emlites: Optional[Lathato]
     forrasok: Tuple[ForrasSor, ...]
     megjelolesek: Tuple[Megjeloles, ...]
-    frissesseg: Optional[jovahagyas_be.Jovahagyas] = None   # kiadás módban, kézi résű lapnál (GK-27); különben None
+    frissesseg: Optional[Jovahagyas] = None   # kiadás módban, kézi résű lapnál (GK-27); különben None
 
 
 def _forrastabla(korny, elozo):
@@ -208,10 +209,10 @@ def szamit(korny, elozo):
 
 
 _KAPU_OK = {
-    jovahagyas_be.Frissesseg.NINCS_LAP: 'a lap (%s) nincs a repóban: a jóváhagyott változat nem azonosítható',
-    jovahagyas_be.Frissesseg.NINCS_ATNEZES: 'a lapnak (%s) nincs érvényes szerzői átnézés-sora (lap_atnezesek.tsv, '
+    jovahagyas_be.Frissesseg.NINCS_LAP: 'Kolofon (kiadás mód, GK-27): a lap (%s) nincs a repóban: a jóváhagyott változat nem azonosítható',
+    jovahagyas_be.Frissesseg.NINCS_ATNEZES: 'Kolofon (kiadás mód, GK-27): a lapnak (%s) nincs érvényes szerzői átnézés-sora (lap_atnezesek.tsv, '
                                             'SEMA 2.48), amelynek lap_commit-ja őse a mai változatnak',
-    jovahagyas_be.Frissesseg.ELAVULT: 'a jóváhagyott változat (%s) óta a kézi próza vagy a motívum adata változott: '
+    jovahagyas_be.Frissesseg.ELAVULT: 'Kolofon (kiadás mód, GK-27): a jóváhagyott változat (%s) óta a kézi próza vagy a motívum adata változott: '
                                       'új nézés kell (DT933 (1))',
 }
 
@@ -228,4 +229,4 @@ def kapu(modell):
     if f.kiadhato:
         return modell
     hol = f.atnezes_commit[:12] if f.allapot is jovahagyas_be.Frissesseg.ELAVULT else (f.lap_commit or '')[:12]
-    raise BemenetHiba('Kolofon (kiadás mód, GK-27): ' + _KAPU_OK[f.allapot] % (hol or 'lexikon/'))
+    raise BemenetHiba(_KAPU_OK[f.allapot] % (hol or '—'))

@@ -16,36 +16,16 @@ ilyen sor közül a legutóbbi (dátum, azonos napon a táblabeli sorrend szerin
 A git-olvasás és a lenyomat nem tartalmi olvasás: nem kerül az olvasási naplóba (a frissességi kapuk mintájára,
 `bemenet/frissesseg.py`). Csak kiadás módban fut; munka módban a mondat a korábbi változatot mondja, git nélkül.
 """
-import enum
 import hashlib
 import subprocess
 
 from lapgen import konfig
 from lapgen.bemenet.jegyzek import ID_HELYORZO, BemenetHiba
 
+from lapgen.ertekek import Frissesseg, Jovahagyas  # noqa: F401  (a fogyasztók `jovahagyas_be.` néven érik el)
+
 _ATNEZES_OSZLOPOK = ('id', 'lap_commit', 'datum', 'ki', 'idezet')
 _COMMIT_MIN = 7
-
-
-class Frissesseg(enum.Enum):
-    FRISS = 'friss'
-    CSAK_GENERALT = 'csak_generalt'
-    ELAVULT = 'elavult'
-    NINCS_ATNEZES = 'nincs_atnezes'   # nincs érvényes szerzői átnézés-sor (vagy egyik sem őse a HEAD-nek)
-    NINCS_LAP = 'nincs_lap'           # a lap nincs a repóban (nincs utolsó commitja)
-
-
-class Jovahagyas:
-    """A frissesség eredménye: az állapot, az összevetett átnézés commitja és dátuma, a lap mai utolsó commitja."""
-    __slots__ = ('allapot', 'atnezes_commit', 'atnezes_datum', 'lap_commit')
-
-    def __init__(self, allapot, atnezes_commit=None, atnezes_datum=None, lap_commit=None):
-        self.allapot, self.atnezes_commit = allapot, atnezes_commit
-        self.atnezes_datum, self.lap_commit = atnezes_datum, lap_commit
-
-    @property
-    def kiadhato(self):
-        return self.allapot in (Frissesseg.FRISS, Frissesseg.CSAK_GENERALT)
 
 
 def lap_utvonal(motivum):
