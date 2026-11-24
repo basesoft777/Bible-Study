@@ -345,3 +345,7 @@ jobs:
       # DT-F219a: a gepi lezaras (merge-kor) tesztje
       - name: brief_lezaras.py tesztek
         run: python eszkozok/teszt_brief_lezaras.py
+
+      # F0.33 (DT952): a tobb lepeses PR / allo draft jelzes (lepes_jelzes.yml) tesztje
+      - name: lepes_jelzes.py tesztek
+        run: python eszkozok/teszt_lepes_jelzes.py
