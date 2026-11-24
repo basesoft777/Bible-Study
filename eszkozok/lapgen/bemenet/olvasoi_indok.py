@@ -59,7 +59,7 @@ class OlvasoiIndoklasok:
         talalt = szokincs.talalatok(szoveg)
         if talalt:
             raise BemenetHiba('B76: %s %s: a lapra kerülő indoklásnak nincs olvasói alakja (hash %s), és belső szót '
-                              'vagy egy fogalom második nevét hordoz (%s): az adat/olvasoi_indoklasok.tsv-be kell a kézzel írt '
+                              'vagy egy fogalom második nevét hordoz (%s): az olvasói-indoklás táblába (B76) kell a kézzel írt '
                               'olvasói mondat'
                               % (self._motivum.kod, igehely, h, ', '.join(sorted(set(talalt)))))
         return szoveg, 'B04', 'indoklas_kh'
