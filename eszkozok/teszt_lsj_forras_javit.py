@@ -27,7 +27,7 @@ TABLA_FEJ = '\t'.join(L.FEJLEC)
 
 def sor(**kw):
     r = {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'osztaly': 'A1_nev_helyorzo', 'modul_hash': 'h', 'perseus_kulcs': '',
-         'perseus_azonosito': '', 'modszer': 'gepi_nincs_lemma_egyezes', 'szoveg': '', 'indoklas': 'ok',
+         'perseus_azonosito': '', 'modszer': 'gepi_nincs_lemma_egyezes', 'szoveg': '', 'jelzes': '', 'indoklas': 'ok',
          'proveniencia': 'scope=x | forras=y | ts=2026-11-24'}
     r.update(kw)
     return '\t'.join(r[o] for o in L.FEJLEC)
@@ -52,6 +52,9 @@ class Betolto(unittest.TestCase):
                        ('csere_szoveg_nelkul', sor(tipus='perseus_csere')),
                        ('nincs_szoveggel', sor(szoveg='szöveg')),
                        ('csere_kulcs_nelkul', sor(tipus='perseus_csere', szoveg='x')),
+                       ('szulo_jelzes_nelkul', sor(tipus='perseus_szulo', szoveg='x', perseus_kulcs='k', perseus_azonosito='e#n')),
+                       ('jelzes_a_cserenel', sor(tipus='perseus_csere', szoveg='x', perseus_kulcs='k', perseus_azonosito='e#n',
+                                                 jelzes='j')),
                        ('proveniencia_nelkul', sor(proveniencia='')), ('indoklas_nelkul', sor(indoklas='')),
                        ('strong', sor(strong='G2')), ('oszlopszam', sor() + '\tfelesleg')):
             with self.subTest(nev):
@@ -68,12 +71,20 @@ class Alkalmazas(unittest.TestCase):
     def test_csere_kihagyas_hash(self):
         nyers = [['G0001', 'G1', 'a'], ['G0002', 'G2', 'név-helyőrző'], ['G0003', 'G3', 'Strong-mondat'], ['G0004', 'G4', 'LSJ']]
         j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('név-helyőrző'), 'szoveg': ''},
-             'G0003': {'strong': 'G0003', 'tipus': 'perseus_csere', 'modul_hash': L.modul_hash('Strong-mondat'), 'szoveg': 'LSJ-szöveg'}}
+             'G0003': {'strong': 'G0003', 'tipus': 'perseus_csere', 'modul_hash': L.modul_hash('Strong-mondat'), 'szoveg': 'LSJ-szöveg', 'jelzes': ''}}
         ki, db = L.alkalmaz(nyers, 0, 2, j)
         self.assertEqual([r[0] for r in ki], ['G0001', 'G0003', 'G0004'])
         self.assertEqual(ki[1][2], 'LSJ-szöveg')
         self.assertEqual(nyers[2][2], 'Strong-mondat', 'a bemenet nem módosul')
-        self.assertEqual(db, {'perseus_csere': 1, 'nincs_szocikk': 1})
+        self.assertEqual(db, {'perseus_csere': 1, 'perseus_szulo': 0, 'nincs_szocikk': 1})
+
+    def test_szulo_jelzessel_elol(self):
+        nyers = [['G0003', 'G3', 'Strong-mondat']]
+        j = {'G0003': {'strong': 'G0003', 'tipus': 'perseus_szulo', 'modul_hash': L.modul_hash('Strong-mondat'),
+                       'szoveg': 'ὅμοιος, α, ον', 'jelzes': 'Jelzés.'}}
+        ki, db = L.alkalmaz(nyers, 0, 2, j)
+        self.assertEqual(ki[0][2], 'Jelzés. ὅμοιος, α, ον')
+        self.assertEqual(db['perseus_szulo'], 1)
 
     def test_megvaltozott_nyers_sor_megallit(self):
         j = {'G0002': {'strong': 'G0002', 'tipus': 'nincs_szocikk', 'modul_hash': L.modul_hash('régi'), 'szoveg': ''}}
@@ -95,9 +106,13 @@ class MaiTabla(unittest.TestCase):
         self.assertEqual(L.ellenoriz(), [])
 
     def test_darabszam_a_meres_szerint(self):
-        """A #864 mérés A-osztályai: 942 Strong; mindegyik pontosan egyszer."""
-        self.assertEqual(len(self.j), 942)
-        self.assertEqual(set(self.j), set(L.osztalyok()))
+        """A #864 mérés A-osztályai (942) és a 2. osztály 82 sorából a `megtartas` nélküliek (68): mindegyik pontosan egyszer."""
+        b = L.b_dontesek()
+        tartott = {s for s, r in b.items() if r['dontes'] != 'megtartas'}
+        self.assertEqual((len(b), len(tartott)), (82, 68))
+        self.assertEqual(len(self.j), 942 + 68)
+        self.assertEqual(set(self.j), set(L.osztalyok()) | tartott)
+        self.assertFalse(set(L.osztalyok()) & set(b), 'az A- és a B-osztály külön halmaz')
 
     def test_a_build_olvasojaval(self):
         """A `sqlite_epit` olvasója (`general.tsv_beolvas`) ugyanazt a modul-lenyomatot adja, mint a nyers tábla."""
@@ -105,14 +120,14 @@ class MaiTabla(unittest.TestCase):
         rows = [[r[f] for f in fej] for r in sorok]
         ki, db = L.alkalmaz(rows, fej.index('Strong_padded'), fej.index('Teljes_szocikk'), self.j)
         self.assertEqual(len(ki), len(rows) - db['nincs_szocikk'])
-        self.assertEqual(db['perseus_csere'] + db['nincs_szocikk'], 942)
+        self.assertEqual(sum(db.values()), 942 + 68)
         maradt = {r[0] for r in ki}
         for s, r in self.j.items():
-            self.assertEqual(s in maradt, r['tipus'] == 'perseus_csere', s)
+            self.assertEqual(s in maradt, r['tipus'] != 'nincs_szocikk', s)
 
     def test_a_csere_szoveg_nem_potszoveg(self):
         for s, r in self.j.items():
-            if r['tipus'] != 'perseus_csere':
+            if r['tipus'] == 'nincs_szocikk':
                 continue
             sz = r['szoveg']
             self.assertNotIn('Defined by LSJ', sz, s)
@@ -140,6 +155,27 @@ class MaiTabla(unittest.TestCase):
         self.assertEqual(self.j['G0002']['tipus'], 'nincs_szocikk')   # Ἀαρών
         self.assertEqual(self.j['G3165']['tipus'], 'nincs_szocikk')   # μέ
         self.assertEqual(self.j['G1097']['tipus'], 'perseus_csere')   # γινώσκω ~ γιγνώσκω (a név-besorolás tévedése)
+
+
+    def test_b_osztaly_darabszam_es_jelzes(self):
+        """A szerkesztői döntés (2026-11-24): 36 pontos csere, 27 szülőszócikk kimondott jelzéssel, 5 nincs; 14 marad."""
+        from collections import Counter
+        b = Counter(r['dontes'] for r in L.b_dontesek().values())
+        self.assertEqual(b, {'csere_pontos': 36, 'csere_szulo': 27, 'nincs_szocikk': 5, 'megtartas': 14})
+        szulok = [r for r in self.j.values() if r['tipus'] == 'perseus_szulo']
+        self.assertEqual(len(szulok), 27)
+        for r in szulok:
+            self.assertRegex(r['jelzes'], r'^Az LSJ-ben önálló szócikke nincs; a\(z\) \S+ szócikke, amely ezt az alakot tárgyalja\.$', r['strong'])
+        self.assertIn('ὅμοιος', self.j['G3668']['jelzes'])      # ὁμοίως → ὅμοιος
+        self.assertIn('πρέσβυς', self.j['G4245']['jelzes'])     # πρεσβύτερος → πρέσβυς
+        for s in ('G0149', 'G0976', 'G1166'):                    # a megtartott sorok nincsenek a táblában
+            self.assertNotIn(s, self.j)
+
+    def test_b_pontos_cserek(self):
+        self.assertEqual(self.j['G3041']['perseus_kulcs'], 'li/mnh')                       # λίμνη (nem λῐμήν)
+        self.assertEqual(self.j['G1650']['perseus_kulcs'], 'e)/legxos1+e)/legxos2')         # ἔλεγχος, a hozzáfűzött ἐν nélkül
+        self.assertNotIn('OF PLACE', self.j['G1650']['szoveg'])                              # az ἐν szócikke
+        self.assertEqual(self.j['G0838']['tipus'], 'perseus_csere')                         # αὔξησις (nem γάρ)
 
 
 class Kulcsok(unittest.TestCase):
