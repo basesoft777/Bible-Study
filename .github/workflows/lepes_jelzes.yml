@@ -1,0 +1,72 @@
+name: lepes-jelzes
+
+# F0.33 (DT952): a szerkeszto 2026-11-24-i munkarendjenek gepi jelzese -- minden kesz lepes sajat kis PR-kent megy a
+# main-be, a menet kozben talalt hiba kulon tetel. CSAK JELZES (PR-komment, egy PR-on egy komment), SOHA nem bukas:
+# a lepesek `continue-on-error`-ral futnak, a job nem lehet piros. A szabaly: eszkozok/lepes_jelzes.py.
+#   1. pr   -- a PR commit-targyai egynel tobb lepes tetelazonosítojat hordjak ugyanabbol a feladatbol;
+#   2. allo -- napi utemezes: egy ket napnal regebbi draft PR-nak a feladatabol egy lepes sincs a main-ben.
+# Nem resze az `ellenorzes` workflow-nak (nem kotelezo check), ezert a push_elott.py CI-egyezese nem erinti.
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  tobb-lepes:
+    if: ${{ github.event_name == 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: A PR commit-targyai (a kozos os es a PR fej kozott)
+        env:
+          PR_ALAP_SHA: ${{ github.event.pull_request.base.sha }}
+          PR_FEJ_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          BASE=$(git merge-base "$PR_ALAP_SHA" "$PR_FEJ_SHA" 2>/dev/null || echo "$PR_ALAP_SHA")
+          git log --no-merges --format=%s "$BASE".."$PR_FEJ_SHA" > "$RUNNER_TEMP/lepes_targyak.txt"
+          wc -l "$RUNNER_TEMP/lepes_targyak.txt"
+
+      - name: Tobb lepeses PR jelzese (nem bukas)
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PR_SZAM: ${{ github.event.pull_request.number }}
+        run: python eszkozok/lepes_jelzes.py pr --uzenetek "$RUNNER_TEMP/lepes_targyak.txt"
+
+  allo-draft:
+    if: ${{ github.event_name != 'pull_request' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (a main teljes tortenete)
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Python telepitese
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Allo draft PR-ok jelzese (nem bukas)
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python eszkozok/lepes_jelzes.py allo

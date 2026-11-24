@@ -118,5 +118,28 @@ class TesztOsszevet(unittest.TestCase):
             self.assertEqual(len(B.kivetelek_beolvas(ut)), 1)
 
 
+class TesztBlokkcim(unittest.TestCase):
+    """A leltár az `F('kulcs')`-os blokkcímet a `konfig/feliratok.tsv` magyar szövegére oldja fel (nem `None`, nem nyers kulcs)."""
+
+    def test_literal_es_felirat_kulcs(self):
+        import ast
+        csomo = lambda k: ast.parse(k, mode='eval').body
+        self.assertEqual(B.blokk_cim(csomo("'Károli-szöveg'")), 'Károli-szöveg')
+        self.assertEqual(B.blokk_cim(csomo("F('blokk.szo.thayer')")), B.feliratok_hu()['blokk.szo.thayer'])
+        self.assertEqual(B.blokk_cim(csomo("F('nincs.ilyen.kulcs')")), "F('nincs.ilyen.kulcs')")
+        self.assertEqual(B.blokk_cim(csomo("valami(1)")), '?')
+
+    def test_a_harom_blokk_cime_a_regiszterben(self):
+        cim = {b['id']: b['cim'] for b in B.regiszter_beolvas(B._parse('blokkok.py'))}
+        self.assertEqual(cim['szo.magyar_gorog'], 'Szótár: Thayer-szócikk')
+        self.assertEqual(cim['szo.tbesg'], 'TBESG (forrásszöveg)')
+        self.assertEqual(cim['szo.thayer'], 'Thayer, angol (forrásszöveg)')
+
+    def test_egy_blokk_cime_sem_nyers_kulcs_vagy_ismeretlen(self):
+        for b in B.regiszter_beolvas(B._parse('blokkok.py')):
+            self.assertIsInstance(b['cim'], str, b['id'])
+            self.assertFalse(b['cim'] in ('', '?') or b['cim'].startswith('F('), '%s: feloldatlan blokkcím: %r' % (b['id'], b['cim']))
+
+
 if __name__ == '__main__':
     unittest.main()
