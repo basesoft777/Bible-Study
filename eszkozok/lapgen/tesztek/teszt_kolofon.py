@@ -153,6 +153,29 @@ class Megjeloles(_Alap):
             if m.sablon is None:
                 self.assertTrue(any(m.szoveg is not None and kiir(m.szoveg) in mezo[k]
                                     for k, s in konfig.KOLOFON_MEGJELOLES if k in olvasott and s is None))
+            else:
+                # D20 (1): a saját mondat a leltár előírt mezőjét szó szerint hordozza
+                kulcs = [k for k, s in konfig.KOLOFON_MEGJELOLES if s == m.sablon.value][0]
+                self.assertEqual(kiir(m.szoveg), mezo[kulcs])
+                self.assertIn(mezo[kulcs], self.lap)
+
+    def test_d20_a_sajat_mondat_hordozza_a_megjelolest(self):
+        """D20 (1): minden saját mondatú forrás sablonsora `{megjeloles}` helyőrzővel áll (a megjelenítő e nélkül
+        megáll), és az előírt szöveg szó szerint benne; az LSJ-mondat helyőrzője kitöltve."""
+        sablonok = {s['kulcs']: s for s in _tabla('adat/lapgen_sablonok.tsv')}
+        for _k, sablon in konfig.KOLOFON_MEGJELOLES:
+            if sablon is not None:
+                sor = sablonok['kolofon.megjeloles.' + sablon]
+                self.assertIn('{megjeloles}', sor['mondat'])
+                self.assertIn('megjeloles:lathato', sor['parameterek'])
+        self.assertIn('Text provided under a CC BY-SA license by Perseus Digital Library', self.lap)
+        self.assertNotIn('[date of access]', self.lap)
+        # D21: a saját mondat a valódi letöltési utat mondja, a leltár dátumával; származást nem állít
+        lsj = [s['kotelezo_megjeloles'] for s in _tabla('adat/licencek.tsv') if s['dataset'] == 'LSJ'][0]
+        self.assertTrue(lsj.endswith('lexica/ 2026-09-07.'))
+        self.assertIn('Az adat Eliran Wong biblematedata-moduljából származik, letöltve 2026-09-07.',
+                      sablonok['kolofon.megjeloles.lsj']['mondat'])
+        self.assertIn('Perseus Digital Library (`lexica` repó), átdolgozott változat,', self.lap)   # D22
         self.assertNotIn('Mounce', self.lap)   # az új generátor a Mounce-szótárt nem olvassa
         self.assertIn('*LSJ forrás: Liddell-Scott-Jones', self.lap)
 
@@ -162,7 +185,7 @@ class Kriterium(_Alap):
         """DT-F218n, DT874 9. tétel: a „Negatív kritérium” sor a lap elejére hivatkozik, a kritériumot nem ismétli."""
         krit = [s['negativ_kriterium'] for s in _tabla('adat/motivumok.tsv') if s['id'] == HAMART][0]
         self.assertNotIn(krit[:60], self.lap)
-        self.assertIn('| Negatív kritérium | a lap elején áll ([Mi tartozik ide, és mi nem](#mi-tartozik-ide)) |',
+        self.assertIn('| Negatív kritérium | A lap elején áll ([Mi tartozik ide, és mi nem](#mi-tartozik-ide)). |',
                       self.lap)
 
 
@@ -384,17 +407,16 @@ class Licenckapu(_Alap):
         self.assertEqual(self.modell.licenc_hiany, ())
         self.assertIs(SZ.kapu(self.modell), self.modell)
         for kulcs, mondatok in self.meres['kotelezo'].items():
-            if kulcs not in self.meres['sablonos']:
-                for mondat in mondatok:
-                    self.assertIn(mondat, self.lap, kulcs)
+            for mondat in mondatok:   # D20 (1): a saját mondatú forrásé is, kivétel nélkül
+                self.assertIn(mondat, self.lap, kulcs)
 
     def test_n223_hiany_bukas(self):
         """Ha egy kötelező megjelölés hiányzik, a hiány a forrást nevezi meg, és a kapu megáll; a saját mondatú forrás
-        (LSJ) a sablonjával megjelölt."""
+        (LSJ) sem kivétel (D20 (1)): az előírt mondata nélkül hiány."""
         hianyok = SZ.licenc_hianyok(self._mas(idezett=set()))
         self.assertIn('TAHOT', hianyok)
         self.assertIn('TBESH', hianyok)
-        self.assertNotIn('LSJ', hianyok)
+        self.assertIn('LSJ', hianyok)
         hianyos = dataclasses.replace(self.modell, licenc_hiany=(self.korny.b.kulcs('B01', 'dataset', 'TAHOT'),))
         with self.assertRaises(BemenetHiba) as h:
             SZ.kapu(hianyos)
@@ -428,7 +450,7 @@ class Istentiszt(_Alap):
     AZONOSITO = ISTENTISZT
 
     def test_a_lap_elkeszul(self):
-        self.assertIn('| Negatív kritérium | a lap elején áll', self.lap)
+        self.assertIn('| Negatív kritérium | A lap elején áll', self.lap)
         self.assertIn('| ID | ISTENTISZT-001 |', self.lap)
 
     def test_n223_licenckapu(self):

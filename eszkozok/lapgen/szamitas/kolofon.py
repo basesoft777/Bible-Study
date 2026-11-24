@@ -10,8 +10,9 @@ CC BY-os bemenetei saját soron, a saját licencükkel: F212, `konfig.KOLOFON_SZ
 forrás neve szótárfájlnál a `kolofon_szotar`, adatfájlnál az `irod_adat`, külső forrásnál az `irod_kulso` névtábla-sor,
 az azonos nevű fájlok egy sorba vonódnak, a sorok a név szerinti rendben. A megjelölendő források halmaza és rendje a
 `konfig.KOLOFON_MEGJELOLES`; a szöveg a licencleltárból jön (GK-07). A licenckapu (N223) minden módban azt méri, hogy
-minden licencleltár-forrás, amelynek adatát a lap olvassa és `kotelezo_megjeloles`-e nem üres, megjelölve áll: a saját
-mondatával, vagy a mező minden mondata idézetként.
+minden licencleltár-forrás, amelynek adatát a lap olvassa és `kotelezo_megjeloles`-e nem üres, megjelölve áll: a mező
+minden mondata szó szerint, idézetként; a saját mondatú forrásnál (LSJ, OSHL, tW) a sablonmondat hordozza az idézetet
+(D20 (1)), kivétel nélkül.
 
 A jóváhagyás (T9, GK-27): munka módban a szerzőségi mondat a szerző korábbi jóváhagyását mondja, a legutóbbi átnézés
 (híján a legutóbbi kiadás) dátumával. Kiadás módban a kézi résű lap jóváhagyásának frissessége a `lap_commit`-ból és a
@@ -101,8 +102,9 @@ class ForrasSor:
 
 @dataclass(frozen=True)
 class Megjeloles:
-    """Egy kötelező forrásmegjelölés: szó szerinti idézet a licencleltárból (`szoveg`), vagy a lap saját mondata a
-    forrásról (`sablon`: a `kolofon.megjeloles.<sablon>` sor; a `cimke` a licencleltár címkéje, ha a mondat kéri)."""
+    """Egy kötelező forrásmegjelölés: szó szerinti idézet a licencleltárból (`szoveg`), önálló sorban; vagy a lap
+    saját mondata a forrásról (`sablon`: a `kolofon.megjeloles.<sablon>` sor, a `cimke` a licencleltár címkéje, ha a
+    mondat kéri), amely a `szoveg` idézetet a `{megjeloles}` helyén hordozza (D20 (1))."""
     szoveg: Optional[Lathato]
     sablon: Optional[MegjelolesMondat]
     cimke: Optional[Lathato]
@@ -172,7 +174,14 @@ def _megjelolesek(korny, kulcsok):
         if kulcs not in kulcsok:
             continue
         if sablon is not None:
-            ki.append(Megjeloles(szoveg=None, sablon=MegjelolesMondat(sablon), cimke=idezet(licencek.cimke(kulcs))))
+            # D20 (1): a saját mondat a leltár előírt megjelölését szó szerint hordozza (a `{megjeloles}` helyén)
+            reszek = licencek.megjeloles(kulcs)
+            if len(reszek) != 1:
+                raise BemenetHiba('B01: a saját mondatú forrás (`%s`) `kotelezo_megjeloles` mezője %d mondat; a '
+                                  'sablonmondat egyet hordoz' % (kulcs, len(reszek)))
+            latott.add(reszek[0].ertek)
+            ki.append(Megjeloles(szoveg=idezet(reszek[0]), sablon=MegjelolesMondat(sablon),
+                                 cimke=idezet(licencek.cimke(kulcs))))
             continue
         for resz in licencek.megjeloles(kulcs):
             if resz.ertek not in latott:
@@ -202,8 +211,8 @@ def licenc_meres(korny, elozo):
     """A licenckapu (N223, D14) bemenete egy szótárban: `lapon_allo` ({licenckulcs: tisztázatlan-e a licence}: a lap
     adatát adó források), `kotelezo` ({licenckulcs: a megjelölés mondatai}: közülük a nem üres megjelölésűek; a
     tisztázatlan licencű forrás mezője leírás, nem előírt szöveg, ezért nem tárgya, D14 (c)), `fedett` ({licenckulcs: a
-    forrástábla licencalakjai}), `idezett` (a Kolofon idézett megjelölés-mondatai) és `sablonos` (a saját mondatukkal
-    megjelölt források)."""
+    forrástábla licencalakjai}) és `idezett` (a Kolofon idézett megjelölés-mondatai; a saját mondatú forrásé is, mert a
+    mondata a leltár szövegét szó szerint hordozza, D20 (1))."""
     azonositok = frozenset().union(*elozo.values()) if elozo else frozenset()
     kulcsok = _lapon_allo_licencek(korny, azonositok)
     licencek = b01_licencek(korny.b)
@@ -215,19 +224,18 @@ def licenc_meres(korny, elozo):
             kotelezo[lk] = mondatok
     _tabla, fedett = _forrastabla(korny, elozo)
     _megj, idezett = _megjelolesek(korny, kulcsok)
-    sablonos = {k for k, sablon in konfig.KOLOFON_MEGJELOLES if sablon is not None and k in kulcsok}
-    return {'lapon_allo': lapon, 'kotelezo': kotelezo, 'fedett': fedett, 'idezett': idezett, 'sablonos': sablonos}
+    return {'lapon_allo': lapon, 'kotelezo': kotelezo, 'fedett': fedett, 'idezett': idezett}
 
 
 def licenc_hianyok(meres):
     """A licenckapu (N223, D14) hiányai a `licenc_meres` szótárából, a licenckulcsok rendjében. (1) A lap adatát adó,
-    kötelező megjelölésű forrás, amelynek megjelölése nem áll a Kolofonban: sem a saját mondata (`konfig.
-    KOLOFON_MEGJELOLES` sablonja), sem a mező minden mondata idézetként. (2) A lap adatát adó forrás, amelyet a
+    kötelező megjelölésű forrás, amelynek mezőjéből egy mondat nem áll szó szerint a Kolofonban (idézetként, vagy a
+    saját mondatú forrásnál a sablonmondat `{megjeloles}` helyén; D20 (1): kivétel nincs). (2) A lap adatát adó forrás, amelyet a
     forrástábla nem nevez meg, vagy tisztázatlan licencnél nem a licencállapot mondatával (GK-28) nevez meg."""
     ki = []
     for lk in sorted(meres['lapon_allo']):
         mondatok = meres['kotelezo'].get(lk, ())
-        mondat_hiany = lk not in meres['sablonos'] and any(m not in meres['idezett'] for m in mondatok)
+        mondat_hiany = any(m not in meres['idezett'] for m in mondatok)
         alakok = meres['fedett'].get(lk)
         nev_hiany = alakok is None or (meres['lapon_allo'][lk] and IrodLicenc.CHAIN_LINEAGE not in alakok)
         if mondat_hiany or nev_hiany:

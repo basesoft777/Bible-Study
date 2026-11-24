@@ -168,8 +168,8 @@ irod_adat	adat/thayer_vers_jelentes.tsv	Thayer-szótár	OLVASOI_FORRASNEV
 irod_adat	adat/thayer_szakaszok.tsv	Thayer-szótár	OLVASOI_FORRASNEV
 irod_adat	adat/karoli_strong/parok_*.tsv	Károli–Strong párosítás	OLVASOI_FORRASNEV
 irod_adat	adat/jeloltek.tsv	Vizsgált helyek döntésnaplója	OLVASOI_FORRASNEV
-irod_adat	naplok/F123_teljesseg_<ID>.tsv	Lap teljesség-mérése	OLVASOI_FORRASNEV
-irod_adat	naplok/F123_teljesseg_<ID>_blokkok.tsv	Lap teljesség-mérése	OLVASOI_FORRASNEV
+irod_adat	naplok/F123_teljesseg_<ID>.tsv	A szócikk teljességmérése	uj
+irod_adat	naplok/F123_teljesseg_<ID>_blokkok.tsv	A szócikk teljességmérése	uj
 irod_adat	adat/elutasitasi_okok.tsv	Elutasítási okok táblája	uj
 irod_adat	adat/motivumok.tsv	Motívumtábla	OLVASOI_FORRASNEV
 irod_adat	adat/glosszak_heber_hu.tsv	Héber glosszák magyar táblája	OLVASOI_FORRASNEV

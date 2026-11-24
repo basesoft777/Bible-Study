@@ -160,7 +160,10 @@ def _megjelolesek(iro, ny, m):
             iro.sor(ny.s('kolofon.megjeloles', szoveg=mj.szoveg))
         else:
             kulcs = ny.kulcs('kolofon.megjeloles', mj.sablon.value)
-            parameterek = {'cimke': mj.cimke} if 'cimke' in ny.s.sor(kulcs).parameterek else {}
+            # D20 (1): a saját mondat a leltár előírt szövegét hordozza; a sablonsor `{megjeloles}` nélkül nem állhat
+            parameterek = {'megjeloles': mj.szoveg}
+            if 'cimke' in ny.s.sor(kulcs).parameterek:
+                parameterek['cimke'] = mj.cimke
             iro.sor(ny.s(kulcs, **parameterek))
         iro.ures()
 
