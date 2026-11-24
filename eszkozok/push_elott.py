@@ -91,6 +91,7 @@ STATIKUS_TESZTEK = [
     'eszkozok/teszt_proza_allitas.py',
     'eszkozok/teszt_push_elott.py',
     'eszkozok/teszt_gepsor.py',
+    'eszkozok/ellenorzes/tesztek/test_zar.py',
     'eszkozok/teszt_brief_lezaras.py',
     'eszkozok/teszt_lepes_jelzes.py',
     'eszkozok/teszt_generalt_nezetek.py',

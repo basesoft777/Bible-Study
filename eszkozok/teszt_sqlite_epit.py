@@ -192,8 +192,15 @@ class Negativ(unittest.TestCase):
         self.futtat(m, '10')
 
     def test_11_res_forras_egyezes(self):
+        # a 11. szabály a befagyasztott lapot kihagyja (F212.3): a mutáció az első nem befagyasztott, nem `lap` forrású sorra kerül
+        import lap_befagyasztas as LB
+        fagy = LB.befagyasztott_idk()
+
         def m(t):
-            modosit(t, 'res_forras.tsv', lambda f, r: r[0].__setitem__(f.index('tanulmany'), 'tematikus_lezart/NINCS_ILYEN.md'))
+            def fn(f, r):
+                sor = next(x for x in r if len(x) == len(f) and x[f.index('id')] not in fagy and x[f.index('forras')] != 'lap')
+                sor[f.index('tanulmany')] = 'tematikus_lezart/NINCS_ILYEN.md'
+            modosit(t, 'res_forras.tsv', fn)
         self.futtat(m, '11')
 
     def test_az_epites_a_10_szabaly_serteskor_is_megall(self):
