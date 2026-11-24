@@ -35,5 +35,5 @@
 - STEPBible-modul: az 1.1-es vagy az 1.2-es adatverzióból; a levél Davidnek (a KJV-eltéréslista és a levéltervezet egy kártyán).
 - Fizetős fordítás, igen vagy elvetve: a görög szavak rövid magyar jelentése (~5 300 szó; N177, #24); a Thayer-szótár magyarja (354 / 5 426 kész; a következő adag kb. 10 USD; #23).
 - Külső lépések: a Biblialex domain, utána a nyílt adatmag és a CITATION.cff átnevezése (2026-11-24: „Várjon a domainig”); a BiblIndex-levél (a tervezetben még „Logosz”); az SzPA-levél; a KJV-licenc (csak fizetős megjelenítés előtt).
-- Az olvasó telefonos próbája (F134). A BDB-szótár harmadik tanúja: a mintán 70%-ban a mi táblánk téved; feladat legyen, vagy elvetve (N212).
+- Az olvasó telefonos próbája (F134).
 *Frissítés: amit a szerkesztő irányként kimond, azt az integrátor ugyanabban a válaszában beírja ide; az állapotot kötegelve frissíti. Minden sor egy olvasói mondattal mondja meg, miről szól; azonosító csak zárójelben. Legfeljebb 40 sor.*
