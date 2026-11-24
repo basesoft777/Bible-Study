@@ -637,6 +637,50 @@ class AlapMezoTest(Alap):
         self.assertEqual(F.alap_osszevet(by[243], self.g.ut)[0], 'NINCS')
 
 
+class MerceVakfoltTest(Alap):
+    """DT952 (a 218c esete): a #243 utáni brief egy olvasói mondatban kimondja, mit NEM fog meg a mércéje."""
+    JO = 'a bájtra azonos kimenet nem veszi észre a régi lap hibáit'
+
+    def hibak_szoveg(self):
+        return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]
+
+    def uj(self, **kw):
+        self.g.brief('F244_A_BRIEF.md', brief_szoveg(244, olvas=['a'], ir=['a'], alap='a3405522', **kw))
+
+    def test_uj_brief_vakfolt_nelkul_hiba(self):
+        self.uj()
+        self.assertTrue(any('merce_vakfolt' in h for h in self.hibak_szoveg()))
+
+    def test_uj_brief_ures_vakfolt_hiba(self):
+        self.uj(merce_vakfolt='""')
+        self.assertTrue(any('merce_vakfolt' in h for h in self.hibak_szoveg()))
+
+    def test_regi_brief_vakfolt_nelkul_rendben(self):
+        self.g.brief('F243_A_BRIEF.md', brief_szoveg(243, olvas=['a'], ir=['a'], alap='a3405522'))
+        self.assertEqual(self.hibak_szoveg(), [])
+
+    def test_olvasoi_mondat_rendben(self):
+        for ertek in (self.JO, 'A lap olvasói szövegének érthetőségét a gép nem méri, csak a számokat.',
+                      'Ha a forrás maga hibás, az `F218_referencia.tsv` egyezése ezt sem jelzi.'):
+            self.uj(merce_vakfolt=ertek)
+            self.assertEqual(self.hibak_szoveg(), [], ertek)
+
+    def test_csak_szakszo_hiba(self):
+        for ertek in ('`--teljes` hash RENDBEN', 'regresszió hash-őr F218, 0 BUKÁS', 'diff 0 sor, nem tér el'):
+            self.uj(merce_vakfolt=ertek)
+            self.assertTrue(any('olvasói mondat' in h for h in self.hibak_szoveg()), ertek)
+
+    def test_tagadas_nelkul_hiba(self):
+        self.uj(merce_vakfolt='a mérce minden olvasói hibát biztosan megfog')
+        self.assertTrue(any('NEM fog meg' in h for h in self.hibak_szoveg()))
+
+    def test_naplozas_es_felmeres_is(self):
+        self.g.brief('F244_A_BRIEF.md', brief_szoveg(244, tipus='naplozas', olvas=['a'], ir=['a'], alap='a3405522'))
+        self.g.brief('F245_B_BRIEF.md', brief_szoveg(245, tipus='felmeres', olvas=['b'], ir=['naplok/F245_f.md'],
+                                                     alap='a3405522'))
+        self.assertEqual(len([h for h in self.hibak_szoveg() if 'merce_vakfolt' in h]), 2)
+
+
 class SavTest(Alap):
     def hibak_szoveg(self):
         return [h[1] for h in F.ellenoriz(self.g.briefek(), self.g.ut)]

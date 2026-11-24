@@ -72,11 +72,25 @@ SAVOK = ('SYSTEMS', 'CONTENT', 'SERVER', 'USER', 'BUSINESS', 'DESIGN')
 SAV_ATMENET_KIVETEL = (217, 218)
 KULCSOK = ('feladat', 'cim', 'kod', 'tipus', 'fazis', 'modell', 'allapot', 'ad',
            'kovetkezo', 'olvas', 'ir', 'fugg', 'nem_fugg', 'helyi_gep', 'ag', 'pr',
-           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav', 'lezar', 'alap')
+           'forras', 'lezarva_osszegzes', 'munka', 'motivum_kesz', 'sav', 'lezar', 'alap', 'merce_vakfolt')
 # DT952 elso alkalmazasa (a #842 esete, 2026-11-23): a brief kiindulo allapota (commit, cimke vagy
 # `PR #<n> merge-e után`). A #241 utani feladat/naplozas/felmeres briefnel kotelezo; a regieknel nem.
 ALAP_KUSZOB = 241
 ALAP_MINTA = re.compile(r'^(?:[0-9a-f]{7,40}|[A-Za-z][A-Za-z0-9._/-]*|PR #\d+ merge-e után)$')
+# DT952 (a 218c esete, 2026-11-24): a mérce vakfoltja. A modell kétszer is könnyen mérhető helyettesítőt választott
+# a cél helyett (bájtra azonos regresszió a „ne legyen visszaesés” helyett; kimeneti szövegcsere a forrás javítása
+# helyett), és ezt a szerkesztő nem láthatta. Ezért a #243 utáni feladat/naplozas/felmeres brief egy olvasói
+# mondatban kimondja, mit NEM fog meg a mércéje; a régi briefekre nem visszamenőleg.
+MERCE_VAKFOLT_KUSZOB = 243
+# belső szakszavak: a vakfolt-mondatban nem számítanak olvasói szónak (a mondatnak e nélkül is értelmesnek kell lennie)
+MERCE_BELSO_SZAVAK = frozenset((
+    'hash', 'diff', 'regresszió', 'regresszio', 'bájt', 'bájtra', 'bájtos', 'kapu', 'kapuk', 'kapuja', 'kapun',
+    'teszt', 'tesztek', 'brief', 'commit', 'merge', 'push', 'lapgen', 'rendben', 'bukás', 'eltér', 'tsv', 'md',
+    'sha', 'ci', 'pr', 'kód', 'kódban', 'mérce', 'mércéje'))
+MERCE_OLVASOI_SZO = re.compile(r'^[a-záéíóöőúüű]{3,}$')
+MERCE_TAGADAS = re.compile(r'(?<![^\W\d_])(?:nem|sem|nincs\w*|nélkül\w*|kimarad\w*|észrevétlen\w*|kívül)(?![^\W\d_])',
+                           re.IGNORECASE)
+MERCE_MIN_SZO = 4
 LISTA_KULCSOK = ('olvas', 'ir', 'fugg', 'nem_fugg', 'motivum_kesz', 'lezar')
 # F219 (DT-F219a): a `lezar` azoknak az N-tetelnek a listaja, amelyeket a brief teljesit; a merge-kor a
 # `feladatok.yml` gepi lepese (eszkozok/brief_lezaras.py) zarja le oket a NYITOTT_FELADATOK.md-ben.
@@ -410,6 +424,28 @@ def terv_mutato_hibak(briefek, gyoker=REPO):
     return hibak
 
 
+def merce_vakfolt_hiba(ertek):
+    """None, ha a `merce_vakfolt` olvasói mondat; különben a hibaüzenet (DT952, a 218c esete).
+
+    Olvasói mondat: a kódjelölésen (`…`), a számot, aláhúzást, kötőjelet tartalmazó, a csupa nagybetűs és a belső
+    szakszavakon (MERCE_BELSO_SZAVAK) túl legalább MERCE_MIN_SZO köznyelvi szó marad, és a mondat kimondja, mit
+    NEM fog meg a mérce (tagadás: nem, sem, nincs, nélkül, kimarad, észrevétlen, kívül)."""
+    if not ertek or not ertek.strip(' "\''):
+        return ('hiányzó kötelező mező: merce_vakfolt (egy olvasói mondat: mit nem fog meg a mérce, '
+                'pl. „a bájtra azonos kimenet nem veszi észre a régi lap hibáit”)')
+    szoveg = re.sub(r'`[^`]*`', ' ', ertek)
+    olvasoi = [sz for sz in (t.strip('.,;:!?()„”"\'«»–—') for t in szoveg.split())
+               if MERCE_OLVASOI_SZO.match(sz.lower()) and not sz.isupper()
+               and sz.lower() not in MERCE_BELSO_SZAVAK]
+    if len(olvasoi) < MERCE_MIN_SZO:
+        return ('merce_vakfolt: olvasói mondat kell, nem belső szakszó (legalább %d, háromnál nem rövidebb köznyelvi szó a kódjelölésen, '
+                'azonosítón és szakszón túl; kapott: %r)' % (MERCE_MIN_SZO, ertek))
+    if not MERCE_TAGADAS.search(szoveg):
+        return ('merce_vakfolt: a mondat mondja ki, mit NEM fog meg a mérce (nem / sem / nincs / nélkül / kimarad; '
+                'kapott: %r)' % ertek)
+    return None
+
+
 def ellenoriz(briefek, gyoker=REPO):
     """Hibak listaja: (fajl, uzenet)."""
     hibak = []
@@ -459,6 +495,11 @@ def ellenoriz(briefek, gyoker=REPO):
                 hibak.append((b.fajl, 'hiányzó kötelező mező: alap (a kiinduló commit, címke vagy `PR #<n> merge-e után`)'))
             elif not ALAP_MINTA.match(fej['alap']):
                 hibak.append((b.fajl, 'alap: commit-hash, címke vagy `PR #<n> merge-e után` (kapott: %r)' % fej['alap']))
+        if (tipus in ('feladat', 'naplozas', 'felmeres') and b.szam is not None
+                and b.szam > MERCE_VAKFOLT_KUSZOB):
+            vh = merce_vakfolt_hiba(fej.get('merce_vakfolt'))
+            if vh:
+                hibak.append((b.fajl, vh))
         for azon in fej.get('lezar', []):
             if not LEZAR_AZON.match(azon):
                 hibak.append((b.fajl, 'lezar: N-tétel azonosítók (`N12` vagy `N-F219a`), kapott: %r' % azon))
