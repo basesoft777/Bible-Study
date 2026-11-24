@@ -7,7 +7,8 @@ a kézi prózára és a motívum adatára (DT933 (1)). A frissesség három eset
   motívum kézi bemeneteinek lenyomata abban a commitban és ma azonos (a lap még a jóváhagyott, de a kézi próza vagy
   az adat a munkafán azóta változhatott: akkor elavult);
 - **csak generált változás** — a lap azóta változott, de a jóváhagyás tárgya nem: a motívum kézi bemeneteinek
-  lenyomata (`konfig.JOVAHAGYAS_BEMENETEK`: a kézi forrás egésze és az adattáblák motívumsorai) a jóváhagyott
+  lenyomata (`konfig.JOVAHAGYAS_BEMENETEK`: a kézi forrás egésze, az adattáblák motívumsorai és minden motívumra
+  szóló `*` soraik, D20 (2)) a jóváhagyott
   commitban és ma azonos. Ez új nézést nem kér, csak változásjegyzék-sort (a kiadás sora, `kiadasok.tsv`; a
   kiadott lap új kiadás nélküli változását az E28 őrzi);
 - **elavult** — a kézi próza vagy a motívum adata a jóváhagyott változat óta változott: új nézés kell.
@@ -68,18 +69,33 @@ class Git:
         return r.stdout.replace(b'\r\n', b'\n').decode('utf-8')
 
 
-def _motivum_resz(utvonal, szoveg, kod):
+def _motivum_resz(utvonal, szoveg, kod, minden_oszlop=None):
     """A fájl motívumra eső része: az `<ID>`-s útvonalnál (a motívum saját fájlja) az egész; táblánál a fejléc (az első
     nem `#` sor) és azok a sorok, amelyeknek valamely cellája pontosan a motívum azonosítója. Ha a táblában a
     motívumnak nincs sora (vagy a tábla nem áll), a rész üres: a fejléc csak a motívum soraival együtt jóváhagyás
     tárgya, így egy új tábla (B76, F241.5b) vagy egy fejléc változása nem avultatja el a sor nélküli motívum
-    jóváhagyását."""
+    jóváhagyását. `minden_oszlop` (`konfig.JOVAHAGYAS_MINDEN_MOTIVUM`): az az oszlop, amelynek `*` értékű sora minden
+    motívumra szól, ezért minden motívum részébe tartozik (D20 (2))."""
     if ID_HELYORZO in utvonal:
         return '\x00nincs' if szoveg is None else szoveg
     if szoveg is None:
         return ''
     sorok = [s for s in szoveg.split('\n') if s.strip() and not s.startswith('#')]
-    sajat = [s for s in sorok[1:] if kod in s.split('\t')]
+    if not sorok:
+        return ''
+    m_i = None
+    if minden_oszlop is not None:
+        fej = sorok[0].split('\t')
+        if minden_oszlop not in fej:
+            raise BemenetHiba('GK-27: a minden motívumra szóló sorok oszlopa (%s) nincs a táblában (%s)'
+                              % (minden_oszlop, utvonal))
+        m_i = fej.index(minden_oszlop)
+
+    def sajat_sor(s):
+        cellak = s.split('\t')
+        return kod in cellak or (m_i is not None and len(cellak) > m_i
+                                 and cellak[m_i] == konfig.MINDEN_MOTIVUM_ID)
+    sajat = [s for s in sorok[1:] if sajat_sor(s)]
     if not sajat:
         return ''
     return '\n'.join([sorok[0]] + sajat)
@@ -94,7 +110,7 @@ def lenyomat(b, motivum, olvas):
             if '*' in minta:
                 raise BemenetHiba('GK-27: a jóváhagyás bemenete nem lehet glob (%s: %s)' % (b_id, minta))
             utvonal = minta.replace(ID_HELYORZO, motivum.kod)
-            resz = _motivum_resz(minta, olvas(utvonal), motivum.kod)
+            resz = _motivum_resz(minta, olvas(utvonal), motivum.kod, konfig.JOVAHAGYAS_MINDEN_MOTIVUM.get(b_id))
             h.update(('%s\t%s\t%s\n' % (b_id, utvonal, hashlib.sha256(resz.encode('utf-8')).hexdigest()))
                      .encode('utf-8'))
     return h.hexdigest()
