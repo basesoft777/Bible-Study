@@ -54,7 +54,8 @@ KAPUK = (
                     'más motívum lapjára utaló fordulat (a felhasználó v8-átnézése, 4.)'),
     ('PONT', BUKAS, '„N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS'),
     ('ANGOL', BUKAS, 'angol maradék és munkazsargon a szólistából'),
-    ('ANGOL_SOR', FIGY, '≥3 angol funkciószó egy sorban'),
+    ('ANGOL_SOR', FIGY, '≥3 angol funkciószó egy sorban (a forrás- és licencblokkon, a Kolofonon és a 12. Irodalom '
+                        'szakaszán kívül: ott a források címe és a licenc előírt szövege eredeti nyelvű, D20 (1))'),
     ('IDEZOJEL', BUKAS, 'egyenes " a magyar szövegben'),
     ('ATIRAS', BUKAS, 'ugyanaz a héber/görög szó két kiejtéssel'),
     ('ATIRAS_VALT', FIGY, 'a lapon álló kiejtés ékezet-eltérő változata dőlt/zárójeles helyen'),
@@ -64,7 +65,8 @@ KAPUK = (
     ('ZAROJEL', BUKAS, 'nyitva maradt zárójel (a 2. Szótári háttérben BUKÁS, máshol FIGYELMEZTETÉS)'),
     ('FUNKCIO_URES', BUKAS, 'az 1. tábla „Funkció” oszlopában üres cella'),
     ('IDEZET', BUKAS, 'az 1/a jegyzet idézete nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés'),
-    ('KIVONAT_SZAM', FIGY, 'a Kivonat darabszáma eltér a tábla összesítőjétől'),
+    ('KIVONAT_SZAM', FIGY, 'a Kivonat hely-darabszáma eltér a tábla összesítőjétől (a versszám nem helyszám: a versre '
+                           'szóló darabszámot a kapu nem veti össze)'),
     ('KOLOFON', BUKAS, 'hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező'),
     ('HIANYJEL', FIGY, 'belső hiányjelzés az olvasói cellában („(nincs …)”)'),
     ('SZINT_ALATT', FIGY, 'üres vagy az arany laphoz mérve szint alatti blokk'),
@@ -174,6 +176,10 @@ ANGOL_SZO = re.compile(r'\bgap\b|\bstudy\b|\bwas called\b|\bhaving been\b|\bscan
 ANGOL_FUNKCIO = re.compile(r'\b(the|and|of|with|which|from|that|this|are|was|were|by|to|in|for|not|or|as|an|it|'
                            r'its|his|her|their|who|whom|into|upon|unto)\b')
 ANGOL_SOR_MIN = 3
+# A forrás- és licencblokk (a Kolofon és a 12. Irodalom szakasza) a források eredeti nyelvű címét és a licenc előírt,
+# szó szerinti angol szövegét hordozza (D20 (1), 2026-11-24): az ANGOL_SOR itt nem mér. Blokk szerinti kivétel, nem
+# szövegminta szerinti; az ANGOL (zsargon) ott is mér, a többi szakasz angol címe és `title`-je mérve marad.
+ANGOL_SOR_FORRASBLOKK = ('kolofon', 'idezes')
 
 # --- BDB_JEL (A12, A23, T8)
 BDB_JEL = [
@@ -898,7 +904,7 @@ def ell_angol(sorok):
             ki.append(talalat('ANGOL', BUKAS, s.n, kornyezet(t, m), 'angol maradék / zsargon: ' + m.group(0),
                               m.group(0).lower()))
         fsz = ANGOL_FUNKCIO.findall(t)
-        if len(fsz) >= ANGOL_SOR_MIN:
+        if len(fsz) >= ANGOL_SOR_MIN and s.az not in ANGOL_SOR_FORRASBLOKK:
             ki.append(talalat('ANGOL_SOR', FIGY, s.n, t[:140], '%d angol funkciószó (%s)' % (
                 len(fsz), ', '.join(sorted(set(fsz))))))
     return ki
@@ -1227,6 +1233,10 @@ def ell_kivonat(sorok):
                 if n is None:
                     continue
                 fonev = m.group(0).lower()
+                # a versszám nem helyszám: az 1. tábla helyeket számol, egy hely több verset is átfoghat („56 versben”,
+                # „három vers”, „három ószövetségi vers”), ezért a versre szóló darabszám nem vethető össze vele
+                if 'vers' in fonev or re.match(r'\s*vers', mondat[m.end():], re.I):
+                    continue
                 # a testamentum: a darabszó saját jelzője, vagy a mondatban előtte álló utolsó testamentum-szó
                 # csak a főnév („az Újszövetségben”); a jelzői „újszövetségi folytatás” nem szűkít
                 elotte = re.findall(r'Újszövetség(?!i)|Ószövetség(?!i)', mondat[:m.start()])

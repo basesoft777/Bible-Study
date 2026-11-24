@@ -599,5 +599,40 @@ class ModellSzakasz(unittest.TestCase):
             K._SZAKIRODALOM = regi
 
 
+class ForrasblokkEsVersszam(unittest.TestCase):
+    """F0.48 (DT952, a visszaesés-kapu mérése, 2026-11-24): két téves szabálytalálat javítása.
+    (1) ANGOL_SOR: a forrás- és licencblokk (Kolofon, 12. Irodalom) előírt, szó szerinti angol szövege (D20 (1)) nem
+    figyelmeztetés; a kivétel szakasz szerinti, más szakasz angol sora mérve marad. (2) KIVONAT_SZAM: a versszám nem
+    helyszám (egy hely több verset is átfoghat), ezért a versre szóló darabszámot a kapu nem veti össze."""
+    LICENC = '*(You MAY make changes yourself, but you should include a note of changes that can be viewed by those who use your new data)*'
+    FORRAS = '- BDB (Brown–Driver–Briggs, A Hebrew and English Lexicon of the Old Testament, 1906) (a BDB-szótár, közkincs)'
+
+    def test_licencsor_a_kolofonban_nem_angol_sor(self):
+        szoveg = modell_lap() + '\n' + self.LICENC + '\n'
+        self.assertNotIn('ANGOL_SOR', azonositok(szoveg))
+
+    def test_forrascim_az_irodalomban_nem_angol_sor(self):
+        szoveg = modell_lap(tobbi='## 12. Irodalom és idézés\n\n**Felhasznált szótárak:**\n' + self.FORRAS + '\n')
+        self.assertNotIn('ANGOL_SOR', azonositok(szoveg))
+
+    def test_ugyanez_mas_szakaszban_mert(self):
+        szoveg = modell_lap(tobbi='## 9. Hatástörténet\n\n' + self.LICENC + '\n')
+        self.assertIn('ANGOL_SOR', azonositok(szoveg, K.FIGY))
+
+    def test_versszam_nem_helyszam(self):
+        sorok = ['| [1Móz %d:1](#ige) | x | y | f | Peshat |' % i for i in range(1, 21)]
+        for kivonat in ('A Királyok könyveiben a Kármel-hegyi jelenet három verse áll.',
+                        'A motívum 20 helyen, 56 versben áll.',
+                        'Az Ószövetségben három ószövetségi vers mondja ki.'):
+            szoveg = modell_lap(kivonat=kivonat).replace(
+                '| [1Móz 4:26](#ige) | segítségül hívni | hívni | 🌱 alap-előfordulás | Drash |', '\n'.join(sorok))
+            self.assertNotIn('KIVONAT_SZAM', azonositok(szoveg), kivonat)
+
+    def test_helyszam_tovabbra_is_mert(self):
+        sorok = ['| [Mt %d:1](#ige) | hádész | alvilág | f | Remez |' % i for i in range(1, 9)]
+        szoveg = lap(kivonat='A motívum tizenkét igehelyen áll.', tabla_sorok=sorok)
+        self.assertIn('KIVONAT_SZAM', azonositok(szoveg, K.FIGY))
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=1)
