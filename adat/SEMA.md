@@ -2988,7 +2988,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `ONREF` | FIGYELMEZTETÉS | önreferáló „a lap” fordulat az új szerkezetű lap látható szövegében (a lap az oldal önmagára utalva: helyette a valódi alany, a motívum, a vizsgálat, a keresés vagy a szócikk); kivétel a Kolofon és a más motívum lapjára utaló fordulat (a felhasználó v8-átnézése, 4.) |
 | `PONT` | BUKÁS | „N. pont” hivatkozás: nem létező szakaszra vagy rossz névvel BUKÁS, egyébként FIGYELMEZTETÉS |
 | `ANGOL` | BUKÁS | angol maradék és munkazsargon a szólistából |
-| `ANGOL_SOR` | FIGYELMEZTETÉS | ≥3 angol funkciószó egy sorban |
+| `ANGOL_SOR` | FIGYELMEZTETÉS | ≥3 angol funkciószó egy sorban (a forrás- és licencblokkon, a Kolofonon és a 12. Irodalom szakaszán kívül: ott a források címe és a licenc előírt szövege eredeti nyelvű, D20 (1)) |
 | `IDEZOJEL` | BUKÁS | egyenes " a magyar szövegben |
 | `ATIRAS` | BUKÁS | ugyanaz a héber/görög szó két kiejtéssel |
 | `ATIRAS_VALT` | FIGYELMEZTETÉS | a lapon álló kiejtés ékezet-eltérő változata dőlt/zárójeles helyen |
@@ -2997,7 +2997,7 @@ kanonikus helyén áll (`CLAUDE.md`, „Ezt olvasd”); ez a lista az azonosít�
 | `ZAROJEL` | BUKÁS | nyitva maradt zárójel (a 2. Szótári háttérben BUKÁS, máshol FIGYELMEZTETÉS) |
 | `FUNKCIO_URES` | BUKÁS | az 1. tábla „Funkció” oszlopában üres cella |
 | `IDEZET` | BUKÁS | az 1/a jegyzet idézete nem a fölötte álló Károli-vers szövege, és nincs „saját fordítás” jelölés |
-| `KIVONAT_SZAM` | FIGYELMEZTETÉS | a Kivonat darabszáma eltér a tábla összesítőjétől |
+| `KIVONAT_SZAM` | FIGYELMEZTETÉS | a Kivonat hely-darabszáma eltér a tábla összesítőjétől (a versszám nem helyszám: a versre szóló darabszámot a kapu nem veti össze) |
 | `KOLOFON` | BUKÁS | hiányzó Kiadás / Változásjegyzék / Próza modellje, üres törzsadat-mező |
 | `HIANYJEL` | FIGYELMEZTETÉS | belső hiányjelzés az olvasói cellában („(nincs …)”) |
 | `SZINT_ALATT` | FIGYELMEZTETÉS | üres vagy az arany laphoz mérve szint alatti blokk |
