@@ -324,6 +324,20 @@ class Frissesseg(unittest.TestCase):
         j = self._f(_HamisGit('f' * 40, {'adat/kapcsolatok.tsv': kapcs.replace(sor, sor + 'x', 1)}))
         self.assertIs(j.allapot, jovahagyas_be.Frissesseg.ELAVULT)
 
+    def test_minden_motivumra_szolo_sor_valtozasa(self):
+        """Az elutasítási okok `*` sora (a lapra kerülő kézi címke és megjegyzés) a jóváhagyás tárgya: a változása új
+        nézést kér (D20 (2)); más motívum saját sora nem."""
+        ut = 'adat/elutasitasi_okok.tsv'
+        with open(os.path.join(kozos.GYOKER, *ut.split('/')), encoding='utf-8') as f:
+            okok = f.read().replace('\r\n', '\n')
+        sorok = [s for s in okok.split('\n') if s and not s.startswith('#')][1:]
+        csillag = next(s for s in sorok if s.split('\t')[1] == '*')
+        j = self._f(_HamisGit('f' * 40, {ut: okok.replace(csillag, csillag + 'x', 1)}))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.ELAVULT)
+        mas = next(s for s in sorok if s.split('\t')[1] not in ('*', ISTENTISZT))
+        j = self._f(_HamisGit('f' * 40, {ut: okok.replace(mas, mas + 'x', 1)}))
+        self.assertIs(j.allapot, jovahagyas_be.Frissesseg.CSAK_GENERALT)
+
     def test_nincs_lap_es_nincs_atnezes(self):
         self.assertIs(self._f(_HamisGit(None)).allapot, jovahagyas_be.Frissesseg.NINCS_LAP)
         j = jovahagyas_be.frissesseg(self.b, MotivumId(HAMART), git=_HamisGit('f' * 40))

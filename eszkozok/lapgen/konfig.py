@@ -227,3 +227,8 @@ SZERZO_ATNEZES = 'felhasználó'   # a lapátnézés és a lapjavítás `ki` / `
 # motívum közös forrás- és szótári adata (konkordancia, fordítások): ezek változása a generált blokkokat érinti.
 JOVAHAGYAS_BEMENETEK = ('B02', 'B03', 'B04', 'B38', 'B39', 'B40', 'B45', 'B46', 'B47', 'B50', 'B53', 'B56', 'B67',
                         'B70', 'B76')
+# A jóváhagyás tárgyának minden motívumra szóló sorai (D20 (2), F241.5b): ezekben a táblákban az `id` oszlop `*` értékű
+# sora (az elutasítási okok lapra kerülő kézi címkéje és megjegyzése) minden motívum lapján megjelenik, ezért minden
+# motívum lenyomatában benne van; a változása új nézést kér.
+JOVAHAGYAS_MINDEN_MOTIVUM = {'B56': 'id'}
+MINDEN_MOTIVUM_ID = '*'
