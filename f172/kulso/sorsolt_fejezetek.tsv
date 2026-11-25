@@ -1,0 +1,23 @@
+# MANUAL: scope=F175.J10 a zárt kiadással való újramérés sorsolt fejezetei (könyvcsoportonként 3, mag=20261117; random.Random.sample a rendezett alkalmas fejezetlistán) | forras=adat/karoli_strong/, konkordancia/Karoli_versmegfeleltetes.tsv @ git:77d74132 | ts=git:77d74132 | manual (determinisztikus sorsolás); a forrás szövege nem kerül ide
+csoport	sorszam	jelleg	fejezet	step	versek	tartalmi_par	alkalmas_fejezet
+OSZ_mozes	1	kotelezo	1Móz 44	Gen.44	34	455	145
+OSZ_mozes	2	kotelezo	1Móz 7	Gen.7	24	354	145
+OSZ_mozes	3	ajanlott	2Móz 18	Exo.18	27	414	145
+OSZ_tortenet	1	kotelezo	2Kir 1	2Ki.1	18	416	183
+OSZ_tortenet	2	kotelezo	2Kir 6	2Ki.6	33	539	183
+OSZ_tortenet	3	ajanlott	2Krón 17	2Ch.17	19	238	183
+OSZ_koltoi	1	kotelezo	Préd 8	Ecc.8	15	239	103
+OSZ_koltoi	2	kotelezo	Jób 33	Job.33	33	268	103
+OSZ_koltoi	3	ajanlott	Péld 6	Pro.6	35	318	103
+OSZ_profeta	1	kotelezo	Ámós 1	Amo.1	15	236	165
+OSZ_profeta	2	kotelezo	Ez 11	Ezk.11	25	337	165
+OSZ_profeta	3	ajanlott	Dán 5	Dan.5	31	552	165
+USZ_evangelium	1	kotelezo	Mt 19	Mat.19	30	525	61
+USZ_evangelium	2	kotelezo	Mt 6	Mat.6	34	639	61
+USZ_evangelium	3	ajanlott	Ján 15	Jhn.15	27	502	61
+USZ_level	1	kotelezo	2Pét 1	2Pe.1	21	362	98
+USZ_level	2	kotelezo	2Kor 12	2Co.12	21	425	98
+USZ_level	3	ajanlott	Gal 6	Gal.6	18	283	98
+USZ_jelenesek	1	kotelezo	Jel 6	Rev.6	17	367	17
+USZ_jelenesek	2	kotelezo	Jel 18	Rev.18	24	576	17
+USZ_jelenesek	3	ajanlott	Jel 12	Rev.12	18	373	17

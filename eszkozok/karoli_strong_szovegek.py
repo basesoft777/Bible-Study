@@ -738,275 +738,407 @@ KOZLEMENY = [
 
 # ----------------------------------------------------------------------------- a második data paper kézirata (tervezet; a csomagon kívül)
 
-KEZIRAT_HU = """# A Károli-biblia 1908-as szövegének szavankénti párosítása a héber és görög eredetivel: nyílt adatkészlet mért pontossággal
+# A második data paper kézirata, a Journal of Open Humanities Data (JOHD) data paper-sablonjának szerkezetében
+# (Overview, Method, Dataset Description, Reuse Potential, nyilatkozatok; a sablon lekérése: 2026-11-16, l.
+# kozlemeny/data_paper/folyoirat_kovetelmenyek.md). A beküldési szöveg végét a VEGE_JEL jelzi; a szószám a jel előtti
+# részből számolódik (karoli_strong_export.szoszam), a jel utáni jegyzet a beküldött változatból kivehető.
+# A szögletes zárójeles mezőket (az emberi validáció eredménye, e-mail, nevek) a beküldés előtt kell kitölteni.
+KEZIRAT_HU = """# A Károli-biblia 1908-as szövegének szavankénti párosítása a héber és görög eredetivel: nyílt adatkészlet mért párprecizitással
 
-*Kézirat-tervezet (data paper) · {cim} · {lex_hu} · DOI: {doi}*
+*Data paper · kézirat-tervezet a Journal of Open Humanities Data számára · az adatkészlet DOI-ja: {doi}*
+
+**Demeter Tamás**, független kutató · ORCID: https://orcid.org/{orcid} · levelező szerző: [e-mail-cím]
 
 ## Kivonat
 
-Az adatkészlet a Károli-biblia 1908-as szövegének {hu_token} szavát és a héber és görög eredeti szöveg {er_token} szavát
-kapcsolja össze {par} szópárral, minden párt az eredeti szó Strong-számával. A párosítást nyelvi modell végezte egy
-írott szabálykészlet szerint; a modell csak sorszámot jelölt, a Strong-szám a STEPBible nyílt TAHOT és TAGNT adataiból
-jön. A pontosságot kétféleképpen mértük: {reteg_db} könyvcsoportból húzott véletlen mintán egy vak modell-ellenőrrel (a teljes
-párkészleten {p_osszes}%, 95%: {p_osszes_a}–{p_osszes_f}%), és egy független, Strong-számos Károli-kiadással a fő szavak
-párjain ({k_fs}%, 95%: {k_fs_a}–{k_fs_f}%). Az adatkészlet a mért állapotot adja közre, a megerősített hibák listájával
-és a következő kiadás előre rögzített minőségi céljával. Licenc: CC BY 4.0.
+Az adatkészlet a Károli-biblia, a klasszikus magyar fordítás 1908-as szövegének {hu_token} szavát kapcsolja a héber és
+görög eredetihez (STEPBible TAHOT/TAGNT) {par} párral, mindegyik az eredeti szó Strong-számával; egy nyelvi modell csak
+szósorszámokat jelölt. A párprecizitás (egyezés egy vak modell-ellenőrrel) rétegzett mintán {p_osszes}% (95%-os KI:
+{p_osszes_a}–{p_osszes_f}%); az emberi validáció szerint [precizitás]. A CC BY 4.0 licencű táblák Strong-alapú keresést szolgálnak.
+
+**Kulcsszavak:** Károli-biblia; Strong-számok; szóillesztés; magyar; bibliai héber; koiné görög
+
+**Szerzői szerepek (CRediT):** Demeter Tamás: Conceptualization, Methodology, Software, Data curation, Validation,
+Writing – original draft, Writing – review & editing.
 
 ## 1. Áttekintés
 
-**Háttér.** A Károli-fordítás négy évszázada a magyar protestáns bibliaolvasás alapszövege, de a mögötte álló héber és
-görög szavak szavankénti, szabadon használható hozzárendelése eddig hiányzott. Az angol nyelvterületen a Strong-számos
-King James-szöveg régóta az olvasók és a kutatók alapeszköze; magyarul hasonló nyílt adat nem volt hozzáférhető. Ez az
-adatkészlet ezt a hiányt pótolja, a {lex_hu} egyik nyílt adatmagjaként.
+### A tárhely helye
 
-**A kérdés, amelyre válaszol.** Melyik magyar szó melyik eredeti szót fordítja; mely magyar szó a fordító betoldása;
-mely eredeti szót nem ad vissza külön magyar szó. A harmadik kérdés ugyanolyan fontos, mint az első: a `szavak` tábla
-minden szót egyszer sorol fel, így a fordítás „hiányai” is kiolvashatók.
+https://doi.org/{doi} (concept DOI; jelenlegi változat: {verzio}).
+
+### Háttér
+
+A Strong-számok (Strong, 1890) egy
+fordítás szavait a héber és görög szókincshez kötik. A Károli-szövegnek, amely négy évszázada a magyar protestáns
+bibliaolvasás alapszövege, léteznek Strong-számos kiadásai; ez a párosítás nyílt licencű, szavanként dokumentált, és a
+precizitása mért. Versenként rögzíti, melyik magyar szó melyik eredeti szót adja vissza (egy–több és több–egy
+kapcsolattal is), a betoldásokat és a fordítatlan eredeti szavakat.
 
 ## 2. Módszer
 
-**Szövegek és szavakra bontás.** A magyar oldal a Károli 1908 közkincs szövege, az eredeti oldal a STEPBible TAHOT
-(héber és arámi Ószövetség) és TAGNT (görög Újszövetség) adatkészlete. A TAHOT a héber előtagokat és ragokat külön
-szóként kezeli (H9001–H9049); ezért egy magyar szóhoz gyakran több eredeti „szó” tartozik. A Károli versbeosztását a
-párosítás előtt determinisztikus vershossz-igazítással feleltettük meg az eredetiének; két vers egybeolvadását kézzel
-hagytuk jóvá.
+### Lépések
 
-**Párosítás.** A modell versenként sorszámozott magyar és eredeti szavakat kapott (az eredetinél alakkal,
-Strong-számmal és angol tükörfordítással), és sorszámpárokat adott vissza, a betoldásokkal és a fordítatlan szavakkal
-együtt. A vitás eseteket tizenkét írott szabály döntötte el: a névelőkről, a kettéírt kötőszóról és vonatkozó
-névmásról, a tárgyjelölőről, a birtokos ragról, a különírt igekötőről, a kitett alanyi névmásról és a segédigéről, a
-héber *ve-* kötőszóról, valamint a Textus Receptusban nem szereplő görög szóról. Minden választ program ellenőrzött
-(minden magyar szó pontosan egyszer, minden eredeti szó legalább egyszer, csak létező sorszám); a bukott választ a modell
-újra elkészítette. A párokat nyelvi modell (Claude Sonnet) javasolta; a táblák a mentett modellválaszokból bájtra
-azonosan újraépíthetők.
+**Szövegek.** A magyar oldal a Károli 1908 közkincs szövege (HunKar), az eredeti oldal a STEPBible TAHOT (héber és
+arámi Ószövetség) és TAGNT (görög Újszövetség) adata (Tyndale House, Cambridge; CC BY 4.0; commit efe428a, letöltve 2026-08-24). A
+TAHOT a héber előtagokat és ragokat külön szóként számolja (H9001–H9049). A versbeosztásokat determinisztikus
+vershossz-igazítás feleltette meg egymásnak; minden vers-egybeolvadást kézzel hagytunk jóvá.
 
-**Pontosságmérés.** (1) *Vak ellenőrzés.* A párkészletet könyvcsoportonként {reteg_db} rétegre osztottuk (Mózes öt
-könyve; történeti, költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként {reteg_n}
-véletlen párral (Mózes öt könyvéből {rn_OSZ_mozes} párral, két részmintában, pársúllyal összegezve). Egy második modell
-(Claude Opus) a cél magyar szóhoz maga jelölte ki az eredeti szavakat, ugyanazokkal a
-szabályokkal, a gépi pár ismerete nélkül. (2) *Kalibráció.* Egy korábbi, kézzel összeállított mintán az ellenőr
-{kal_ell}%-ban, a gépi párosítás {kal_gep}%-ban egyezett a mintával: az ellenőr nem pontosabb a párosításnál, ezért az
-egyezés csak akkor alsó becslés, ha a közös hiba elhanyagolható. (3) *Független összevetés.* Ezt a közös hibát egy
-Strong-számokkal jelölt Károli-kiadás méri, rétegenként egy, Mózes öt könyvében két teljes fejezeten ({kulso_fejezet} fejezet, {k_n} fő szó
-párja); a forrás csak a fő szót jelöli, a mellékszót és a morfémát nem. Az eltéréseket háromutasan (gépi pár, forrás,
-vak ellenőr) ítéltük meg. A külső forrás adata nem része az adatkészletnek, csak az összesített arány.
+**Párosítás.** Egy nyelvi modell versenként két számozott szólistát kapott: a Károli szavait, és az eredeti szavakat
+alakkal, Strong-számmal és rövid angol glosszával; a Strong-szám csak tájékoztatásul állt ott, a válaszban tilos volt. A
+rögzített utasítás egy kidolgozott példában egy választható, Strong-címkés KJV-sort is mutatott; versbemenet ilyet nem
+tartalmazott. A modell sorszámpárokat, betoldásokat és fordítatlan szavakat adott vissza. A Strong-számot ezután program tette
+hozzá a sorszám alapján. A vitás eseteket tizenkét írott szabály döntötte el. A
+funkciószavakra rögzített konvenció érvényes: a magyar névelő és az eredeti szó nélküli segédige betoldás, a héber és
+görög névelő fordítatlan (a névelőhasználat a nyelvek között eltér); a névmásként álló névelő párosított.
 
-## 3. Eredmények
+**Futtatás és megismételhetőség.** Minden könyvet a claude-sonnet-5-5 párosított (a futtatás részletei a
+letétben). Minden
+választ program ellenőrzött (minden magyar szó pontosan egyszer, minden eredeti szó legalább egyszer, csak létező
+sorszám); a bukott választ a modell újra elkészítette. A modell így nem tudott Strong-számot vagy szótári tételt
+kitalálni; legfeljebb rossz szót párosíthatott, és minden pár egy ellenőrizhető eredeti szóra mutat. A modellválaszok
+egyszer készültek, és archiválva vannak; a párok építése, a Strong-szám hozzárendelése és a kapu determinisztikus, ezért
+a táblák a válaszokból bájtra azonosan újraépíthetők, a modell újrafuttatása kis eltérést adhat.
 
-| mérés | becslés | 95% |
+### Mintavétel
+
+A vak ellenőrzéshez a párkészletet könyvcsoportonként {reteg_db_szo} rétegre osztottuk (Mózes öt könyve; történeti,
+költői és prófétai könyvek; evangéliumok és ApCsel; levelek; Jelenések), rétegenként {reteg_n} véletlen párral; Mózes
+öt könyvében {rn_OSZ_mozes} pár két részmintából, pársúllyal összegezve. Az emberi validáció mintája [N] pár és [M] pár
+nélküli szó ugyanezekből a rétegekből, és súlyozott túlmintaként az a {kb_legalabb1} pár, amelyet bármelyik
+gépi ellenőr hibásnak jelölt ({kb_opus} a Claude Opus, {kb_csak_kulso} csak a másik kettő). A zárt kiadással való keresztellenőrzés {kulso_fejezet_szo} célzottan kiválasztott fejezeten
+futott (rétegenként az, amelyben a legtöbb ellenőr-eltérés volt).
+
+### Minőség-ellenőrzés
+
+**Vak modell-ellenőrzés.** Egy második modell (Claude Opus) a mintába került magyar szóhoz maga jelölte ki az eredeti
+szavakat, ugyanazokkal a szabályokkal, a gépi pár ismerete nélkül; a pár helyes, ha az eredeti szava az ellenőr
+jelölései között van. A párprecizitás tehát egy modellel való egyezés, nem abszolút mérce.
+
+**Külső ellenőrmodellek.** Két további, más gyártótól származó ellenőrmodell ugyanazt a {minta} párt ugyanazzal a vak
+eljárással ítélte meg: {kb_gemini}% és {kb_gpt}%; a többségi ítélet {kb_tobbseg}%, az egyhangú gépi ítélet {kb_egyhangu}%. A
+három ellenőr a párok {kb_harom}%-ában egyezett, de a legalább egyikük által hibásnak jelölt {kb_legalabb1} párból csak {kb_mind3}
+volt mindhármuk szerint hibás; a gépi számok tájékoztató jellegűek, a fő eredmény az emberi validáció.
+
+**Emberi validáció.** Egy külső ellenőr, végzett teológus, bibliai héber és görög ismerettel, minden tételt megítélt;
+a második ellenőr, szintén végzett teológus, a szerző családtagja; egyikük sem dolgozott az adatkészlet
+előállításán. Az ítélet nem vak: az ellenőrök látják a gépi párt. A pár nélküli szavak mintájából a szabály által
+meghatározott funkciószavak kimaradtak. A fő szám a külső ellenőré: precizitás [precizitás] (95%-os KI: [KI]), a
+bizonytalan tételeket hibának számítva [konzervatív]. A második ellenőr száma ([precizitás 2]) és a kettejük egyezése
+(kappa = [kappa]) kiegészítő adat; döntnök nincs. Az egyezés a vak modell-ellenőrrel [egyezés a modell-ellenőrrel].
+
+**Keresztellenőrzés zárt kiadással.** Kiegészítő ellenőrzésként a fő szavak párjait helyben összevetettük a
+Bible-Discovery Strong-számos Károlijával (HUN modul), egy zárt licencű kiadással, amelyet az olvasó nem ellenőrizhet;
+csak az összesített egyezés nyilvános. A kiadás magyar szavanként egy fő Strong-számot jelöl, a mi felbontásunk
+részletesebb, ezért az eltérés nem feltétlenül hiba; a nevezők és az eltérések a letétben állnak.
+
+| mérés | becslés | 95%-os KI |
 |---|---|---|
-| teljes párkészlet, vak ellenőr, súlyozott | {p_osszes}% | {p_osszes_a}–{p_osszes_f}% |
-| ebből Ószövetség / Újszövetség | {p_osz}% / {p_usz}% | {p_osz_a}–{p_osz_f}% / {p_usz_a}–{p_usz_f}% |
+| párprecizitás, vak modell-ellenőr, súlyozott | {p_osszes}% | {p_osszes_a}–{p_osszes_f}% |
 | tartalmi szó / héber morféma | {p_tartalmi}% / {p_morf}% | {p_tartalmi_a}–{p_tartalmi_f}% / {p_morf_a}–{p_morf_f}% |
-| fő szavak, a független forrás szerint | {k_fs}% | {k_fs_a}–{k_fs_f}% |
-| fő szavak, háromutas ítélet után | {k_h3}% | {k_h3_a}–{k_h3_f}% |
+| emberi validáció (külső); a bizonytalan hibaként | [precizitás]; [konzervatív] | [KI] |
+| a fő szavak egyezése, zárt kiadás | {k_fs}% | – |
 
-A rétegek egyezése {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog; a rétegenkénti táblát az adatkészlet `data/meres.tsv` fájlja és módszertani leírása közli. A {minta} mintapárból
-{elteres} tért el az ellenőrtől; a leggyakoribb típus a szomszédos szó ({h_szomszedos_token}), jellemzően egy héber
-előtag, névelő vagy elöljáró hozzákötése a szóhoz a szabályok ellenére. A független összevetés {k_elter} eltéréséből
-{k_mi} maradt a párosítás hibája; ezeket és a többi megerősített hibát az adatkészlet név szerint felsorolja.
+A rétegek precizitása {r_min}% ({r_min_nev}) és {r_max}% ({r_max_nev}) között mozog.
+A {minta} mintapárból {elteres} tért el a Claude Opus ellenőrtől, leggyakrabban szomszédos szóval ({h_szomszedos_token}).
 
-## 4. Az adatkészlet
+## 3. Az adatkészlet leírása
 
-**Hely és azonosító.** Zenodo, DOI: {doi}; licenc: CC BY 4.0; nyelv: magyar (adat), magyar és angol (dokumentáció);
-adatállapot: {adatallapot}.
+- **Tárhely neve:** Zenodo
+- **Objektum neve:** `{objektum}`
+- **Formátumok és változatok:** TSV (UTF-8) az adathoz és a kódkönyvhöz;
+  Markdown a kétnyelvű dokumentációhoz; CFF hivatkozási fájl; SHA-256 ellenőrző összeg
+- **Létrehozás dátumai:** {kezdet} – {adatallapot}
+- **Az adatkészlet készítője:** Demeter Tamás (független kutató; ORCID: {orcid})
+- **Nyelv:** magyar (adat); magyar és angol (dokumentáció)
+- **Licenc:** CC BY 4.0
+- **Közzététel dátuma:** {kozzetetel}
 
-**Fájlok.** `data/parok/` (könyvenként, kapcsolatonként egy sor: vers, a magyar szó sorszáma és alakja, az eredeti szó
-sorszáma, Strong-szám, kapcsolattípus, állapot, Textus Receptus-jelölés); `data/szavak/` (könyvenként minden
-magyar és eredeti szó egyszer, állapottal: párosított, betoldás, fordítatlan, függőben); `data/versek.tsv` (a Károli 1908
-szövege); `data/meres.tsv` (a mérés minden száma); kétnyelvű kódkönyv, módszertani leírás, ismert hibák, ellenőrző összeg. A
-kulcs az OSIS-versazonosító és a szó sorszáma. A héber és görög szóalak nincs a csomagban: a sorszám a STEPBible
-TAHOT/TAGNT szövegéhez illeszthető.
+**Tartalom.** `data/parok/` (kapcsolatonként egy sor: sorszámok, Strong-szám, kapcsolattípus, állapot, Textus
+Receptus-jelölés), `data/szavak/` (minden szó egyszer, állapottal: párosított, betoldás, fordítatlan vagy függőben,
+azaz még nem párosított), `data/versek.tsv`, `data/meres.tsv` (a mérés minden száma); kulcs: OSIS-vers és szósorszám.
 
 **Méret.** {konyv} könyv, {vers} vers, {par} pár ({heber_par} héber, {gorog_par} görög; ebből {morfema} morféma),
 {hu_betoldas} betoldás, {er_forditatlan} fordítatlan eredeti szó, {hu_fuggoben} függőben lévő magyar szó
 ({fuggoben_vers} vers).
 
-## 5. Újrahasznosítás
+## 4. Újrahasznosítási lehetőségek
 
-Az adatkészlet bibliaolvasó és -tanulmányozó alkalmazásoknak Strong-alapú keresést ad a magyar szövegen: egy héber vagy
-görög szó minden Károli-megfelelője egy szűréssel összegyűjthető. Fordítástörténeti kutatásban vizsgálható a Károli
-fordítói következetessége, a betoldások és a fordítatlan szavak eloszlása. Nyelvtechnológiai célra kis erőforrású
-nyelvpár (magyar–héber, magyar–görög) szóillesztési adata, rétegenként mért hibával; a mintapárok és a hibatípusok
-szóillesztő programok értékeléséhez is használhatók. Ugyanezek a párok a Károli modernizált szövegén is megjelennek
-(https://doi.org/{doi_modern}); a két adatkészlet a vers és a szósorszám kulcsán szóról szóra összekapcsolható.
+Bibliaprogramok Strong-alapú keresést kínálhatnak a magyar szövegen. A fordítástörténet vizsgálhatja a Károli
+következetességét és betoldásait. Nyelvtechnológiai célra kis erőforrású nyelvpár szóillesztési adata, rétegenként
+mért hibával. A párosításra a {lex_hu}, a szerző független kutatási projektje, egy motívum-indexelt, kereszthivatkozott
+bibliai lexikon épül. Egy kísérő
+adatkészlet (Demeter, 2026b) ugyanezeket a párokat, szóról szóra, a szerző által modernizált szövegen adja.
 
-## 6. Korlátok és a következő kiadás
+### Korlátok
 
-A párosítás gépi javaslat. A vak ellenőr maga is modell; a független összevetés csak a fő szavakat méri, és kis
-klaszter-mintán; a héber morfémák párjainak ({morfema} pár) pontossága ({p_morf}%) csak a vak ellenőrrel mért. A Károli a Textus Receptust fordította, a párosítás alapja a TAGNT:
-{nem_tr_token} párosított görög szó nem szerepel a Textus Receptusban, és jelölve van.
+A vak ellenőr maga is modell, és az emberi validáció nem vak. A párprecizitás a fordítatlan eredeti szavakat nem méri.
+Az egyik külső ellenőrmodell ugyanabból a modellcsaládból való, mint az 1–2Mózes keresztellenőrző modellje, ezért ott
+nem teljesen független. Az 1–2Mózesben
+{nehez_par} pár ({nehez_vers} vers), amelyre a keresztellenőrző modell más párt javasolt, gyengébb: a mintából
+{nehez_minta} közül {nehez_helyes_szo} helyes, így nagyjából {nehez_hibas_a}–{nehez_hibas_f} lehet hibás; az ismert-hibák lista javítás
+nélkül felsorolja őket; az 1.2-es változat újrapárosítja és újra méri őket.
+A Textus Receptusban, amelyet Károli fordított, nem szereplő {nem_tr_token} párosított görög szó jelölve van.
 
-A közlés szerkesztői döntés: a párosítás azért jelenik meg nyílt adatként, mert a pontossága mérve és dokumentálva
-van — rétegenként és kapcsolattípusonként, konfidencia-intervallummal, hibatípusokkal. Nem egy előre kitűzött küszöb
-teljesülésén alapul. A 2. kiadás javítja a megerősített hibákat és a szomszédos szó szabályellenes eseteit, majd
-ugyanazzal a protokollal újra mér. Minőségi célját előre rögzítettük: a független fő-szó egyezés alsó széle legalább 98%,
-a vak ellenőrrel mért súlyozott egyezés alsó széle legalább 93%, és egyetlen réteg sem 90% alatti.
+## Adat-elérhetőség
 
-## Nyilatkozat a mesterséges intelligencia használatáról
+Mindkét adatkészlet nyíltan elérhető a Zenodón, CC BY 4.0 licenccel (l. Hivatkozások). Az 1.1-es változat,
+amely a beküldés előtt jelenik meg, hozzáadja a promptot (naplózott hash: 84f12ca7aafb), mind a {konyv} könyv nyers
+modellválaszát és a futtatás részleteit, a versmegfeleltetést és a vers-összevonásokat, az {minta} megítélt mintapárt
+a háromgépes ítélettáblával, a zárt kiadással való összevetés nevezőit és eltéréseit, az ismert-hibák listát és az
+emberi ítéleteket, a STEPBible-commit, a modellazonosítók, a router és a dátumok rögzítésével; kódot nem.
 
-A párosítást nyelvi modell (Claude Sonnet), a vak ellenőrzést egy második modell (Claude Opus) végezte, a fent leírt
-módon; a modellek Strong-számot nem írtak. A szavakra bontás, a gépi kapu, a táblák összeállítása és a
-statisztika determinisztikus program. A kézirat szövegét a claude-opus-5-5 modell fogalmazta az adatkészlet adataiból;
-a számok az adatokból generáltak. MI-eszköz nem szerző; az adatokért és a szövegért a szerző felel.
+## Köszönetnyilvánítás
+
+A szerző köszöni [a külső ellenőr neve] és [a második ellenőr neve] munkáját az emberi validációban.
+
+## Finanszírozás
+
+A munka külső finanszírozás nélkül készült.
+
+## Érdekütközés
+
+A szerzőnek nincs bejelentendő érdekütközése.
 
 ## Hivatkozások
 
-Demeter, T. (2026). *{cim_modern_hu}* [adatkészlet]. Zenodo. https://doi.org/{doi_modern}
+Demeter, T. (2026a). *Logosz Lexikon – Károli Bible (1908): Word alignment with Hebrew and Greek Strong's numbers*
+(változat: {verzio}) [adatkészlet]. Zenodo. https://doi.org/{doi_mert}
+
+Demeter, T. (2026b). *Logosz Lexikon – Modernized Károli Bible: Word alignment with Hebrew and Greek Strong's numbers*
+(változat: {verzio_modern}) [adatkészlet]. Zenodo. https://doi.org/{doi_modern}
 
 STEPBible. (é. n.). *Translators Amalgamated Hebrew OT (TAHOT) és Translators Amalgamated Greek NT (TAGNT)*
 [adatkészlet]. Tyndale House, Cambridge. https://www.STEPBible.org
+
+Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
+
+## Nyilatkozat a mesterséges intelligencia használatáról
+
+(1) Párosítás: a Claude Sonnet (Anthropic) csak sorszámpárokat adott vissza. Az 1Móz és a 2Móz
+párosításánál egy másik nyelvi modell (Google Gemini) is futott keresztellenőrzésként; egyetlen közölt pár sem csak
+tőle származik. (2) Minőség-ellenőrzés: a Claude Opus és két más gyártótól származó ellenőrmodell (Google Gemini,
+OpenAI GPT) a mintán vak ellenőr volt; az emberi validáció MI nélkül készült.
+(3) Kísérő adatkészlet: a ritka igealakokra modell tett javaslatot, amely csak független egyezés esetén lépett
+érvénybe. A kézirat szövegének megfogalmazásában és
+szerkesztésében a claude-opus-5-5 modell segített, az adatkészlet adataiból; a számok az adatokból generáltak. A
+kutatást a szerző tervezte, minden szerkesztői döntést ő hozott, minden állítást az adatokon ellenőrzött, és a
+tartalomért teljes felelősséget vállal; MI-eszköz nem szerző.
 
 <!-- BEKÜLDÉSI SZÖVEG VÉGE — az alábbi rész a beküldött változatból kivehető. -->
 
 ---
 
-## Csatornajavaslat
+## Beküldési jegyzet
 
-A kézirat data paper-alakban készült (áttekintés, módszer, adatkészlet, újrahasznosítás). Két csatornatípus illik hozzá.
-Az egyik egy bölcsészeti adatközlő folyóirat (például a Journal of Open Humanities Data), amelynek kimondott data
-paper-típusa és MI-nyilatkozati helye van, de a terjedelme 1000–1500 szó, ezért a 2. és a 3. szakasz rövidítendő. A
-másik egy nyelvi erőforrásokat közlő hely, ahol a szóillesztés kis erőforrású nyelvpárként és mért hibájú adatként kap
-közönséget. Díjmentes alternatíva a nyílt adatkészletekről rövid cikket fogadó adatbányászati és digitális bölcsészeti
-folyóirat. A Zenodo-letét mindhárom út előfeltétele; ugyanaz a kézirat egyszerre csak egy helyre küldhető.
+Szószám (a beküldési szöveg angol változatában): az 1–4. szakasz, a cím, a szerzői sor, a kivonat, a táblázat és a
+hivatkozások nélkül (a JOHD-sablon számítása) {szo_fo}; a számozatlan nyilatkozatokkal {szo_nyil}; a
+hivatkozásokkal is {szo_hiv} (a beküldési oldal szerint a korlát a hivatkozásokat is tartalmazza; a kivonatról nem
+szól); a kivonattal együtt {szo_kiv}. A JOHD data paper terjedelme 1000–1500 szó; a szerkesztőség megerősítheti, melyik
+számítás érvényes. A kivonattól az MI-nyilatkozatig minden szó, a címsorokkal, a kulcsszavakkal, a szerzői
+szerepekkel és a táblázattal: {szo_mind}.
+
+Beküldés előtt kitöltendő: az emberi validáció mezői ([N], pontosság, KI, kappa, egyezés a modell-ellenőrrel), a
+levelező szerző e-mail-címe, a két ellenőr neve. A szöveg a JOHD hivatalos Word- vagy LaTeX-sablonjába kerül; a
+kísérőlevél: `kozlemeny/data_paper/johd_cover_letter_en.md`.
 """
 
-KEZIRAT_EN = """# Word-by-word alignment of the 1908 Károli Bible with the Hebrew and Greek source text: an open dataset with measured accuracy
+# Csalik (elültetett hibás párok) a validációs mintában: a felhasználó még nem döntött róla (2026-11-17). Ha bekerülnek,
+# a „Human validation” bekezdésbe egy mondat kell a csalik számáról és a felismerési arányról ([decoy detection]).
+KEZIRAT_EN = """# Word-by-word alignment of the 1908 Károli Bible with the Hebrew and Greek source text: an open dataset with measured pair precision
 
-*Manuscript draft (data paper) · {cim_en} · {lex_en} · DOI: {doi}*
+*Data paper · submission draft for the Journal of Open Humanities Data · dataset DOI: {doi}*
+
+**Tamás Demeter**, independent researcher · ORCID: https://orcid.org/{orcid} · corresponding author: [e-mail address]
 
 ## Abstract
 
-The dataset links the {hu_token} words of the 1908 text of the Károli Bible, the classic Hungarian translation, to the
-{er_token} words of the Hebrew and Greek source text through {par} word pairs, each carrying the Strong's number of the
-source word. The alignment was produced by a language model following a written rule set; the model marked positions
-only, and the Strong's number comes from the open STEPBible TAHOT and TAGNT data. Accuracy was measured in two ways: with
-a blind model reviewer on a random sample drawn from {reteg_db} book groups ({p_osszes}% on the full pair set, 95%:
-{p_osszes_a}–{p_osszes_f}%), and against an independent Károli edition marked with Strong's numbers, on main-word pairs
-({k_fs}%, 95%: {k_fs_a}–{k_fs_f}%). The dataset publishes the measured state, with a list of confirmed errors and a
-quality target for the next release fixed in advance. Licence: CC BY 4.0.
+The dataset aligns the {hu_token} words of the 1908 Hungarian Károli Bible with the Hebrew
+and Greek source text (STEPBible TAHOT/TAGNT) in {par} pairs carrying the source word's Strong's number; a language
+model marked word positions only. Pair precision (agreement with a blind model reviewer) is {p_osszes}% (95% CI
+{p_osszes_a}–{p_osszes_f}%) on a stratified sample; human validation gives [precision]. The CC BY 4.0 tables support Strong-based search.
+
+**Keywords:** Károli Bible; Strong's numbers; word alignment; Hungarian; biblical Hebrew; Koine Greek
+
+**Author roles (CRediT):** Tamás Demeter: Conceptualization, Methodology, Software, Data curation, Validation,
+Writing – original draft, Writing – review & editing.
 
 ## 1. Overview
 
-**Context.** For four centuries the Károli translation has been the base text of Hungarian Protestant Bible reading, yet
-a free, word-by-word assignment of the Hebrew and Greek words behind it has been missing. In English, the King James
-text with Strong's numbers has long been a basic tool for readers and researchers; no comparable open data existed for
-Hungarian. This dataset fills that gap, as one of the open data cores of the {lex_en}.
+### Repository location
 
-**The question it answers.** Which Hungarian word translates which source word; which Hungarian word is a translator's
-addition; which source word is not rendered by a separate Hungarian word. The third question matters as much as the
-first: the `szavak` table lists every word once, so the "gaps" of the translation can be read off too.
+https://doi.org/{doi} (concept DOI).
+
+### Context
+
+Strong's numbers (Strong, 1890) link
+a translation's words to the Hebrew and Greek vocabulary. Strong-tagged editions of the Károli text, the Hungarian
+Protestant base text for four centuries, exist; this alignment is openly licensed, documented word by word, and its
+precision is measured. Per verse it records which Hungarian word renders which source word (one-to-many and
+many-to-one), the additions and the untranslated source words.
 
 ## 2. Method
 
-**Texts and tokenisation.** The Hungarian side is the public-domain 1908 Károli text; the source side is the STEPBible
-TAHOT (Hebrew and Aramaic Old Testament) and TAGNT (Greek New Testament) datasets. TAHOT treats Hebrew prefixes and
-suffixes as separate words (H9001–H9049), so one Hungarian word is often linked to several source "words". Before
-alignment, Károli's verse division was mapped to that of the source by deterministic alignment of verse lengths; each
-merge of two verses was approved by hand.
+### Steps
 
-**Alignment.** For each verse the model received numbered Hungarian and source words (the source with form, Strong's
-number and English gloss) and returned pairs of positions, together with additions and untranslated words. Disputed
-cases were decided by twelve written rules: on articles, split conjunctions and relative pronouns, the object marker,
-possessive suffixes, separated verbal prefixes, explicit subject pronouns and auxiliaries, the Hebrew conjunction *ve-*,
-and Greek words absent from the Textus Receptus. A program checked every answer (each Hungarian word exactly once, each
-source word at least once, only existing positions); a failed answer was redone by the model. The pairs were proposed by
-a language model (Claude Sonnet); the tables can be rebuilt byte-identically from the saved model answers.
+**Texts.** The Hungarian side is the public-domain 1908 Károli text (HunKar); the source side is STEPBible TAHOT
+(Hebrew/Aramaic) and TAGNT (Greek) (Tyndale House, Cambridge; CC BY 4.0;
+commit efe428a, downloaded 2026-08-24). TAHOT counts Hebrew prefixes and suffixes as separate words (H9001–H9049). Verse divisions
+were mapped by deterministic length alignment, each verse merge approved by hand.
 
-**Accuracy measurement.** (1) *Blind review.* The pair set was divided by book group into {reteg_db} strata (the five
-books of Moses; historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with {reteg_n} random
-pairs per stratum ({rn_OSZ_mozes} pairs from the five books of Moses, in two subsamples combined by pair weight). A
-second model (Claude Opus) marked the source words for each target Hungarian word itself,
-with the same rules, without seeing the machine pair. (2) *Calibration.* On an earlier manually compiled sample, the
-reviewer agreed with the sample in {kal_ell}% and the machine alignment in {kal_gep}%: the reviewer is not more accurate
-than the alignment, so the agreement is a lower bound only if shared errors are negligible. (3) *Independent
-comparison.* Shared errors are measured against a Károli edition marked with Strong's numbers, on one full chapter per
-stratum, two in the five books of Moses ({kulso_fejezet} chapters, {k_n} main-word pairs); the source marks the main word only, not secondary words or
-morphemes. Differences were judged three ways (machine pair, source, blind reviewer). The external source's data are not
-part of the dataset, only the aggregate rate.
+**Alignment.** For each verse a language model received two numbered word lists: the Károli words, and the source
+words with form, Strong's number and a short English gloss; the Strong's number was for information only and forbidden
+in the answer. The fixed instructions also showed an optional Strong-tagged KJV line in a worked example; no verse
+input contained one. The model returned position pairs, additions and untranslated words. A program then attached the Strong's numbers by position. Twelve written rules decided disputed cases. Fixed conventions apply to function words: Hungarian articles and auxiliaries without a source word are
+additions, Hebrew and Greek articles untranslated, as article use differs; an article used as a
+pronoun is linked.
 
-## 3. Results
+**Runs and reproducibility.** All books were aligned by claude-sonnet-5-5 (run details in the deposit). A program checked every
+answer (each Hungarian word exactly once, each source word at least once, only existing positions); a failed answer was
+redone. The model thus could not invent a Strong's number or lexicon entry; its possible error is a wrong pairing, and
+every pair points to one checkable source word. Model answers were generated once and archived; pair construction,
+Strong's number assignment and the gate are deterministic, so the tables rebuild byte-identically from the answers;
+re-running the model may differ slightly.
 
-| measurement | estimate | 95% |
+### Sampling strategy
+
+For the blind review, the pair set was divided by book group into {reteg_db_szo} strata (the five books of Moses;
+historical, poetic and prophetic books; Gospels and Acts; Epistles; Revelation), with {reteg_n} random pairs per
+stratum; in the five books of Moses {rn_OSZ_mozes} pairs from two subsamples, combined by pair weight. The human
+validation sample has [N] pairs and [M] unpaired words from the same strata, plus, as a weighted oversample, the
+{kb_legalabb1} pairs that any machine reviewer marked as wrong ({kb_opus} by Claude Opus, {kb_csak_kulso} only by the other two). The closed-edition cross-check used {kulso_fejezet_szo} purposively selected chapters (per stratum the one
+with most reviewer disagreements).
+
+### Quality control
+
+**Blind model review.** A second model (Claude Opus) independently marked the source words of each sampled Hungarian
+word with the same rules, blind to the machine pair; a pair is correct if its source word is among those marks. Pair precision is therefore agreement with a model, not ground truth.
+
+**External reviewer models.** Two further reviewer models from other vendors judged the same {minta} pairs under the
+same blind protocol: {kb_gemini}% and {kb_gpt}%; the majority judgement gives {kb_tobbseg}%, the unanimous machine judgement
+{kb_egyhangu}%. The three reviewers agreed on {kb_harom}% of pairs, but of the {kb_legalabb1} pairs flagged by at least one,
+only {kb_mind3} were flagged by all three; the model figures are indicative, and the human validation is the primary
+result.
+
+**Human validation.** An external validator, a theology graduate with knowledge of biblical Hebrew and Greek, judged
+every item; a second validator, also a theology graduate, is a family member of the author; neither validator was
+involved in producing the dataset. Judging is not blind: validators see the machine pair. Rule-determined function
+words were excluded from the unpaired sample. The external validator gives the main figure: precision [precision] (95%
+CI [CI]), or [conservative] counting uncertain items as errors. The second validator ([precision 2]) and inter-rater
+kappa ([kappa]) are supplementary; there is no adjudicator. Agreement with the blind model reviewer is [agreement
+with model reviewer].
+
+**Cross-check with a closed edition.** As a supplementary check, main-word pairs were compared locally with the
+Bible-Discovery Strong-tagged Károli (HUN module), a closed-licence edition that readers cannot check; only the
+aggregate agreement is published. The edition marks one main Strong's number per Hungarian word, while our
+segmentation is finer, so differences are not necessarily errors; denominators and differences are in the deposit.
+
+| measurement | estimate | 95% CI |
 |---|---|---|
-| full pair set, blind reviewer, weighted | {p_osszes}% | {p_osszes_a}–{p_osszes_f}% |
-| of which Old / New Testament | {p_osz}% / {p_usz}% | {p_osz_a}–{p_osz_f}% / {p_usz_a}–{p_usz_f}% |
+| pair precision, blind model reviewer, weighted | {p_osszes}% | {p_osszes_a}–{p_osszes_f}% |
 | content word / Hebrew morpheme | {p_tartalmi}% / {p_morf}% | {p_tartalmi_a}–{p_tartalmi_f}% / {p_morf_a}–{p_morf_f}% |
-| main words, by the independent source | {k_fs}% | {k_fs_a}–{k_fs_f}% |
-| main words, after three-way judgement | {k_h3}% | {k_h3_a}–{k_h3_f}% |
+| human validation (external); uncertain as errors | [precision]; [conservative] | [CI] |
+| main-word agreement, closed edition | {k_fs}% | – |
 
-Agreement per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}); the per-stratum table is in the dataset's `data/meres.tsv` and its methods description. Of the {minta}
-sample pairs, {elteres} differed from the reviewer; the most frequent type is the neighbouring word
-({h_szomszedos_token}), typically a Hebrew prefix, article or preposition attached to the word against the rules. Of the
-{k_elter} differences in the independent comparison, {k_mi} remained errors of the alignment; these and the other
-confirmed errors are listed by name in the dataset.
+Precision per stratum ranges from {r_min}% ({r_min_nev}) to {r_max}% ({r_max_nev}). Of the {minta} sample pairs,
+{elteres} differed from the Claude Opus reviewer, most often a neighbouring word ({h_szomszedos_token}).
 
-## 4. Dataset description
+## 3. Dataset Description
 
-**Location and identifier.** Zenodo, DOI: {doi}; licence: CC BY 4.0; language: Hungarian (data), Hungarian and English
-(documentation); data state: {adatallapot}.
+- **Repository name:** Zenodo
+- **Object name:** `{objektum}`
+- **Format names and versions:** TSV (UTF-8) for the data and
+  codebook; Markdown for the bilingual documentation; CFF; SHA-256 checksums
+- **Creation dates:** {kezdet} – {adatallapot}
+- **Dataset creators:** Tamás Demeter (independent researcher; ORCID: {orcid})
+- **Language:** Hungarian (data); Hungarian and English (documentation)
+- **License:** CC BY 4.0
+- **Publication date:** {kozzetetel}
 
-**Files.** `data/parok/` (per book, one row per link: verse, position and form of the Hungarian word, position of the source
-word, Strong's number, link type, state, Textus Receptus flag); `data/szavak/` (per book, every Hungarian and
-source word once, with its state: aligned, addition, untranslated, pending); `data/versek.tsv` (the 1908 Károli text);
-`data/meres.tsv` (every figure of the measurement); bilingual codebook, methods description, known issues, checksum. The key
-is the OSIS verse identifier and the word position. Hebrew and Greek word forms are not in the package: the position
-matches the STEPBible TAHOT/TAGNT text.
+**Contents.** `data/parok/` (one row per link: positions, Strong's number, link type, state, Textus Receptus flag),
+`data/szavak/` (every word once, with its state: aligned, addition, untranslated, or pending, i.e. not yet aligned),
+`data/versek.tsv`, `data/meres.tsv`; keyed by OSIS verse and word position.
 
 **Size.** {konyv} books, {vers} verses, {par} pairs ({heber_par} Hebrew, {gorog_par} Greek; of these {morfema}
 morphemes), {hu_betoldas} additions, {er_forditatlan} untranslated source words, {hu_fuggoben} pending Hungarian words
 ({fuggoben_vers} verses).
 
-## 5. Reuse potential
+## 4. Reuse Potential
 
-For Bible reading and study applications the dataset provides Strong-based search on the Hungarian text: every Károli
-rendering of a Hebrew or Greek word can be collected with one filter. In translation history, Károli's consistency and
-the distribution of additions and untranslated words can be studied. For language technology it is word-alignment data
-for a low-resource language pair (Hungarian–Hebrew, Hungarian–Greek) with error measured per stratum; the sample pairs
-and error types can also serve to evaluate word aligners. The same pairs also appear on the modernised Károli text
-(https://doi.org/{doi_modern}); the two datasets join word by word on the verse and word position key.
+Bible software can offer Strong-based search of the Hungarian text. For language technology it is alignment data for a low-resource pair with
+error measured per stratum. The {lex_en}, the author's independent research project and a
+motif-indexed, cross-referenced biblical lexicon, is built on this alignment. A companion dataset (Demeter, 2026b) carries the same pairs, word for word, on
+the author's modernised text.
 
-## 6. Limitations and the next release
+### Limitations
 
-The alignment is a machine proposal. The blind reviewer is itself a model; the independent comparison covers main words
-only, on a small cluster sample; the accuracy of the Hebrew morpheme pairs ({morfema} pairs; {p_morf}%) is measured by
-the blind reviewer only. Károli translated the Textus
-Receptus, while the alignment uses TAGNT: {nem_tr_token} aligned Greek words are not in the Textus Receptus, and are
-flagged.
+The blind reviewer is itself a model, and human validation is not blind. Pair precision does not cover untranslated
+source words. One external reviewer model belongs to the same model family as the Genesis–Exodus cross-check model, so it is not fully
+independent there. In Genesis–Exodus,
+{nehez_par} pairs ({nehez_vers} verses) where the cross-check model proposed a different pair are weaker:
+{nehez_helyes_szo} of {nehez_minta} sampled were correct, so roughly {nehez_hibas_a}–{nehez_hibas_f} may be wrong; listed uncorrected in the known-issues file, they
+will be re-aligned and remeasured in version 1.2. The {nem_tr_token} aligned Greek words
+absent from the Textus Receptus, which Károli translated, are flagged.
 
-Publication rests on an editorial decision: the alignment is released as open data because its accuracy is measured and
-documented — per stratum and link type, with confidence intervals and error types. It does not rest on meeting a
-threshold set in advance. Release 2 will correct the confirmed errors and the rule-violating neighbouring-word cases,
-then measure again with the same protocol. Its quality target was fixed in advance: lower bound of independent main-word
-agreement at least 98%, lower bound of weighted agreement with the blind reviewer at least 93%, and no stratum below 90%.
+## Data Accessibility Statement
 
-## AI declaration
+Both datasets: Zenodo, CC BY 4.0. Version 1.1, deposited
+before submission, adds the prompt (logged hash 84f12ca7aafb), raw model answers ({konyv} books) and run details,
+the verse mapping and merges, the {minta} judged sample pairs with the three-reviewer judgement table, the closed-edition
+denominators and differences, the known-issues list and the human judgements, with the STEPBible commit and the
+model identifiers, router and dates; no code.
 
-The alignment was done by a language model (Claude Sonnet) and the blind review by a second model (Claude Opus), as
-described above; the models wrote no Strong's numbers. Tokenisation, the machine gate, table assembly and the
-statistics are deterministic programs. The text of the manuscript was drafted by the claude-opus-5-5 model from the
-dataset's data; the figures are generated from the data. An AI tool is not an author; the author is responsible for the
-data and the text.
+## Acknowledgements
+
+The author thanks [name of the external validator] and [name of the second validator] for the human validation.
+
+## Funding Statement
+
+This work received no external funding.
+
+## Competing Interests
+
+The author has no competing interests to declare.
 
 ## References
 
-Demeter, T. (2026). *{cim_modern_en}* [dataset]. Zenodo. https://doi.org/{doi_modern}
+Demeter, T. (2026a). *Logosz Lexikon – Károli Bible (1908): Word alignment with Hebrew and Greek Strong's numbers*
+(Version {verzio}) [Data set]. Zenodo. https://doi.org/{doi_mert}
 
-STEPBible. (n.d.). *Translators Amalgamated Hebrew OT (TAHOT) and Translators Amalgamated Greek NT (TAGNT)* [dataset].
+Demeter, T. (2026b). *Logosz Lexikon – Modernized Károli Bible: Word alignment with Hebrew and Greek Strong's numbers*
+(Version {verzio_modern}) [Data set]. Zenodo. https://doi.org/{doi_modern}
+
+STEPBible. (n.d.). *Translators Amalgamated Hebrew OT (TAHOT) and Translators Amalgamated Greek NT (TAGNT)* [Data set].
 Tyndale House, Cambridge. https://www.STEPBible.org
+
+Strong, J. (1890). *The exhaustive concordance of the Bible*. Hunt & Eaton.
+
+## AI Declaration
+
+(1) Alignment: Claude Sonnet (Anthropic) returned position pairs only. For Genesis and Exodus, another
+language model (Google Gemini) was also run as a cross-check; no published pair derives from it alone. (2) Quality
+control: Claude Opus and two reviewer models from other vendors (Google Gemini, OpenAI GPT) served as blind
+reviewers on the sample; human validation used no AI. (3) Companion dataset:
+model-proposed rare verb forms, adopted only on independent agreement. The
+claude-opus-5-5 model assisted in drafting and editing the text; figures are generated from the
+data. The author designed the study, made all editorial decisions, verified every statement
+against the data, and takes full responsibility for the content; an AI tool is not an author.
 
 <!-- END OF SUBMISSION TEXT — the part below can be removed from the submitted version. -->
 
 ---
 
-## Venue suggestion
+## Submission notes
 
-The manuscript is written as a data paper (overview, method, dataset, reuse). Two kinds of venue fit it. One is a
-humanities data journal (for example the Journal of Open Humanities Data), with an explicit data paper type and a place
-for the AI declaration, but a length of 1000–1500 words, so sections 2 and 3 would need shortening. The other is a venue
-for language resources, where the alignment reaches readers as a low-resource language pair with measured error. A
-fee-free alternative is a data mining and digital humanities journal that accepts short articles on open datasets. A
-Zenodo deposit is a precondition for all three; the same manuscript may be submitted to only one venue at a time.
+Word count: sections 1–4 without title, author line, abstract, table and references (as the JOHD template counts)
+{szo_fo}; with the unnumbered statements {szo_nyil}; with the references as well {szo_hiv} (the submission page says
+the limit includes references; it does not say whether the abstract counts); with the abstract too {szo_kiv}. The JOHD
+data paper length is 1,000–1,500 words; the editorial office can confirm which count applies. Everything from the
+abstract to the AI Declaration, with headings, keywords, author roles and the table: {szo_mind}.
+
+To fill in before submission: the human validation fields ([N], accuracy, CI, kappa, agreement with the model
+reviewer), the corresponding author's e-mail address, the two validators' names. The text goes into the official JOHD
+Word or LaTeX template; cover letter: `kozlemeny/data_paper/johd_cover_letter_en.md`.
 """
 
 # a kézirat nem része a csomagnak: a repó gyökerében, a folyóiratcikkek mellett áll (DT-F175b)

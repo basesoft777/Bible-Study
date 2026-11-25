@@ -51,8 +51,18 @@ KIMENET = 'nyilt_karoli_strong'
 # a concept DOI (2026-11-15): a verzió-DOI nem áll a fájlokban; a verziót a szám jelöli (1.0)
 DOI = '10.5281/zenodo.24141883'
 DOI_MODERN = '10.5281/zenodo.24141949'
+DOI_MERT = '10.5281/zenodo.24141884'                     # a mért 1.0 verzió DOI-ja (a kézirat hivatkozásában; a lektor 7. köre)
 DOI_MAG = '10.5281/zenodo.24141611'                      # a motívum-adatmag concept DOI-ja (a nyilt_mag/ nem változik)
 KANONIKUS_HELY = 'https://doi.org/' + DOI
+# a kézirat (JOHD data paper) Dataset Description-mezői: a Zenodo-rekord adatai (lekérve 2026-11-16) és az első
+# párosító futás napja (a f22/valaszok első commitja, 2026-10-01); a záró dátum az adatállapot (szamok())
+OBJEKTUM = 'karoli-1908-strongs-1.0.zip'
+VERZIO = '1.0'
+VERZIO_MODERN = '1.0'
+KOZZETETEL = '2026-11-15'
+LETREHOZAS_KEZDET = '2026-10-01'
+SZAM_SZO = {'en': ('zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'),
+            'hu': ('nulla', 'egy', 'kettő', 'három', 'négy', 'öt', 'hat', 'hét', 'nyolc', 'kilenc')}
 CIM_HU = 'Károli 1908 – Strong szóillesztés'
 CIM_EN = 'Károli 1908 – Strong word alignment'
 # a motívum-adatmag címe a saját CITATION.cff-je szerint (F208; N-F175c)
@@ -68,6 +78,8 @@ KAROLI = 'konkordancia/Karoli_1908.tsv'
 F172_MERES = 'f172/meres_eredmeny.tsv'
 F172_KULSO = 'f172/kulso/kulso_eredmeny.tsv'
 F172_KERET = 'f172/keret.tsv'
+F172_OSSZEVETES = 'f172/kulso/osszevetes.tsv'
+F172_KULSO_BIRALO = 'f172/kulso_biralo/egyezes.tsv'    # a három vak gépi bíráló összevetése (#765)     # a zárt kiadással való összevetés párjai, osztállyal
 F172_OSSZEVONT = 'f172/reteg_osszevont.tsv'      # a két Mózes-réteg egy rétegben (karoli_strong/reteg_osszevonas.py)
 
 # a belső `bizonyossag` mező (két modell egyezése) nem minősítés, nem kerül a nyilvános táblákba (2026-11-14); a
@@ -360,6 +372,52 @@ def szamok(konyvek, vsorok, msorok):
         N[kulcs + '_h3'], N[kulcs + '_h3_a'], N[kulcs + '_h3_f'] = s[4], s[5], s[6]
         N[kulcs + '_mi'] = int(s[2]) - int(s[3])
     N['kulso_fejezet'] = len([s for s in tsv(F172_KULSO)[1] if re.match(r'^\S+ \d+$', s.get('csoport', ''))])
+    # a zárt kiadással való összevetés kizárásai (a fejezetek tartalmi párjai, osztályonként; n_fo = egyezik +
+    # konvencio + elter, a többi osztály nem összevethető)
+    osztaly = [s.get('osztaly', '') for s in tsv(F172_OSSZEVETES)[1]]
+    N['k_osszes'] = len(osztaly)
+    N['k_nincs'] = osztaly.count('forrasban_nincs')
+    N['k_masod'] = osztaly.count('masodlagos')
+    N['k_forma'] = osztaly.count('szovegforma')
+    if N['k_osszes'] - N['k_nincs'] - N['k_masod'] - N['k_forma'] != N['k_n']:
+        raise SystemExit('szám: a zárt összevetés osztályai nem adják ki a fő-szó párok számát')
+    # az 1–2Mózes gyengébb párjai (a fejlesztés közben futó második modell eltérő párt adott; a közölt pár a Sonneté):
+    # a forrástábla `forras` = S sorai; a #172 mintájának ezekre eső ítéletei (vak Opus-ellenőr); a becsült hibás párok
+    # a hibaarány Wilson-95%-ának szélei × a párszám, százasra kerekítve (ismert hibák, a felhasználó döntése 2026-11-17)
+    kulcs = {}
+    for k in ('1Moz', '2Moz'):
+        for r in tsv('adat/karoli_strong/parok_%s.tsv' % k)[1]:
+            if r.get('forras') == 'S':
+                kulcs[(r['vers'], r['hu_sorszam'], r['er_sorszam'])] = 1
+    N['nehez_par'] = len(kulcs)
+    N['nehez_vers'] = len({k[0] for k in kulcs})
+    itel = [r for r in tsv('f172/itelet_par.tsv')[1] if (r['vers'], r['hu_sorszam'], r['er_sorszam']) in kulcs]
+    N['nehez_minta'] = len(itel)
+    N['nehez_helyes'] = sum(1 for r in itel if r['helyes'] == '1')
+    n, x = N['nehez_minta'], N['nehez_minta'] - N['nehez_helyes']
+    z = 1.959963984540054
+    kozep = (x / n + z * z / (2 * n)) / (1 + z * z / n)
+    fel = z * ((x / n * (1 - x / n) / n + z * z / (4 * n * n)) ** 0.5) / (1 + z * z / n)
+    N['nehez_hibas_a'] = int(round(N['nehez_par'] * (kozep - fel), -2))
+    N['nehez_hibas_f'] = int(round(N['nehez_par'] * (kozep + fel), -2))
+    # a három vak gépi bíráló (Opus, Gemini, GPT) összevetése: f172/kulso_biralo/egyezes.tsv (#765)
+    kb = {(r['szakasz'], r['cimke']): r for r in tsv(F172_KULSO_BIRALO)[1]}
+
+    def _kb(szakasz, cimke):
+        if (szakasz, cimke) not in kb:
+            raise SystemExit('szám: hiányzó külső bírálói sor %s/%s' % (szakasz, cimke))
+        return kb[(szakasz, cimke)]
+    N['kb_gemini'] = _kb('pontossag', 'Gemini · OSSZES (súlyozott)')['p']
+    N['kb_gpt'] = _kb('pontossag', 'GPT · OSSZES (súlyozott)')['p']
+    N['kb_tobbseg'] = _kb('pontossag', 'többségi ítélet (2/3) · OSSZES')['p']
+    N['kb_egyhangu'] = _kb('pontossag', 'mindhárom helyesnek ítélte (egyhangú gépi ítélet) · OSSZES')['p']
+    N['kb_harom'] = _kb('egyezes_itelet', 'háromutas')['p']
+    N['kb_legalabb1'] = int(_kb('hibas_osztaly', 'legalább egy bíráló mondta hibásnak')['x'])
+    N['kb_mind3'] = int(_kb('hibas_osztaly', '3 bíráló mondta hibásnak')['x'])
+    N['kb_opus'] = int(_kb('hibas_osztaly', 'Opus hibajelölései')['x'])
+    N['kb_csak_kulso'] = N['kb_legalabb1'] - N['kb_opus']
+    if N['kb_opus'] != N['elteres']:
+        raise SystemExit('szám: az Opus hibajelölései (%d) nem a mért eltérések (%d)' % (N['kb_opus'], N['elteres']))
     # a keret: a mért párkészlet egyezik a csomagéval
     N['keret'] = int(_f172(F172_KERET, 'reteg', 'OSSZES')['parsor'])
     if N['keret'] != N['par']:
@@ -398,12 +456,15 @@ def fmt(N, nyelv):
     for k, v in N.items():
         if isinstance(v, int):
             F[k] = ezres(v, nyelv)
+            if 0 <= v <= 9:                      # JOHD: a nulla–kilenc betűvel (a kézirat `_szo` kulcsai)
+                F[k + '_szo'] = SZAM_SZO[nyelv][v]
         elif isinstance(v, str) and re.match(r'^0\.\d+$|^1\.0+$', v):
             F[k] = szazalek(v, nyelv)
     F['heber_morfema_arany'] = szazalek(N['heber_morfema_arany'], nyelv, 1)
     F['morfema_arany'] = szazalek(N['morfema'] / N['par'], nyelv, 1)
     F['doi'] = DOI
     F['doi_modern'] = DOI_MODERN
+    F['doi_mert'] = DOI_MERT
     F['doi_mag'] = DOI_MAG
     F['egyutt'] = EG.szakasz('strong', nyelv)
     F['lex_hu'] = NM.LEXIKON_CIM_HU
@@ -418,6 +479,11 @@ def fmt(N, nyelv):
     F['cim_modern_en'] = 'Modernised Károli – Strong'
     F['cim_mag_hu'] = CIM_MAG_HU
     F['cim_mag_en'] = CIM_MAG_EN
+    F['objektum'] = OBJEKTUM
+    F['verzio'] = VERZIO
+    F['verzio_modern'] = VERZIO_MODERN
+    F['kozzetetel'] = KOZZETETEL
+    F['kezdet'] = LETREHOZAS_KEZDET
     nev = RETEG_NEV_HU if nyelv == 'hu' else RETEG_NEV_EN
     F['r_min_nev'], F['r_max_nev'] = nev[N['rmin_kod']], nev[N['rmax_kod']]
     return F
@@ -473,11 +539,55 @@ def kezirat(N):
     """A második data paper kézirata (hu/en): a repó gyökeréhez viszonyított út -> (törzs, teljes szöveg). A törzs
     a nyilvános szöveg (a kapu ezt ellenőrzi), a teljes szöveg a GENERÁLT-jelöléssel kezdődik."""
     hu, en = fmt(N, 'hu'), fmt(N, 'en')
+    # a szószám az angol beküldési szövegből (a jegyzetbe kerül; a jel előtti részt nem befolyásolja)
+    sablon_en = [s for _, s, d in SZ.KEZIRAT if d == 'en'][0]
+    ures = dict(en, szo_fo='', szo_nyil='', szo_hiv='', szo_kiv='', szo_mind='')
+    sz = szoszam(sablon_en.format(**ures))
+    for F, nyelv in ((hu, 'hu'), (en, 'en')):
+        for k in ('fo', 'nyil', 'hiv', 'kiv', 'mind'):
+            F['szo_' + k] = ezres(sz[k], nyelv)
     ki = {}
     for rel, sablon, d in SZ.KEZIRAT:
         torzs = nevelo_javit(sablon.format(**hu)) if d == 'hu' else sablon.format(**en)
         ki[rel] = (torzs, SZ.KEZIRAT_FEJ + torzs)
     return ki
+
+
+VEGE_JEL = '<!-- END OF SUBMISSION TEXT'
+NYILATKOZAT = ('Data Accessibility Statement', 'Acknowledgements', 'Funding Statement', 'Competing Interests',
+               'AI Declaration')
+
+
+def szoszam(szoveg):
+    """A JOHD-terjedelem szószáma az angol kéziratból (a VEGE_JEL előtti rész): 'fo' az 1–4. szakasz a címsorok és a
+    táblázat nélkül (a sablon számítása: cím, szerzői sor, kivonat, táblázat, hivatkozások nélkül); 'nyil' ehhez a
+    számozatlan nyilatkozatok; 'hiv' ehhez a hivatkozások is (a beküldési oldal szerint a korlát a hivatkozásokat is
+    tartalmazza); 'kiv' ehhez a kivonat is; 'mind' a „## Abstract” címtől a VEGE_JEL-ig minden szó, a címsorokkal,
+    a kulcsszavakkal, a szerzői szerepekkel és a táblázat celláival együtt (a JOHD: „All word limits include
+    referencing and citation”; a legszigorúbb olvasat)."""
+    torzs = szoveg.split(VEGE_JEL)[0]
+    mind = 0
+    for sor in torzs[torzs.index('## Abstract'):].split('\n'):
+        if re.match(r'^\|[-| ]+\|$', sor):
+            continue
+        mind += len([t for t in sor.replace('|', ' ').split() if re.search(r'\w', t)])
+    db = {'fo': 0, 'nyilatkozat': 0, 'hivatkozas': 0, 'kivonat': 0}
+    resz = None
+    for sor in torzs.split('\n'):
+        if sor.startswith('## '):
+            cim = sor[3:].strip()
+            resz = ('fo' if re.match(r'^[1-4]\. ', cim) else 'nyilatkozat' if cim in NYILATKOZAT
+                    else 'hivatkozas' if cim == 'References' else 'kivonat' if cim == 'Abstract' else None)
+            continue
+        if resz is None or sor.startswith('#') or sor.startswith('|'):
+            continue
+        if resz == 'kivonat' and sor.startswith('**'):      # a kulcsszavak és a szerzői szerepek nem a kivonat
+            resz = None
+            continue
+        db[resz] += len([t for t in sor.split() if re.search(r'\w', t)])
+    return {'fo': db['fo'], 'nyil': db['fo'] + db['nyilatkozat'],
+            'hiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas'],
+            'kiv': db['fo'] + db['nyilatkozat'] + db['hivatkozas'] + db['kivonat'], 'mind': mind}
 
 
 def note(N):
