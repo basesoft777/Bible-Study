@@ -2,6 +2,9 @@ name: ellenorzes
 
 on:
   pull_request:
+    # CI-fogyás csökkentése (a szerkesztő, 2026-11-25: „Igen, előbb csökkentsük”): draft PR-on nem fut,
+    # a ready_for_review indítja; az azonos PR korábbi futását az újabb commit leállítja (concurrency).
+    types: [opened, synchronize, reopened, ready_for_review]
   push:
     branches: [main]
 
@@ -9,8 +12,14 @@ permissions:
   contents: read
   pull-requests: write
 
+concurrency:
+  # PR-onként egy élő futás; a main-en az újabb merge leállítja a régebbi, még futó ellenőrzést (a legfrissebb main számít).
+  group: ellenorzes-${{ github.event.pull_request.number || 'main' }}
+  cancel-in-progress: true
+
 jobs:
   ellenorzes:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -320,6 +329,7 @@ jobs:
   # F20 B6: a feladatkovetes szabalya (E18) -- kulon job, a fenti lepeseket
   # nem modositja (D6). A beerkezo/ mappa nincs a hatokoren.
   feladatkovetes:
+    if: github.event_name != 'pull_request' || !github.event.pull_request.draft
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
