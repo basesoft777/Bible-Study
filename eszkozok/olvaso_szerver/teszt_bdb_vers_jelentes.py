@@ -635,7 +635,8 @@ class CsoportOszlop(unittest.TestCase):
     # (633 sor szakasza/útvonala): új érték
     # F240 L3/L5: a kettőzött könyvnév törlése a forrásban (pozíció-eltolás 26 szócikkben) és a beragadt kurzor javítása
     # (1186 sor / 79 Strong jelentéspontja; naplok/LXXBDB_vers_jelentes_diff.tsv): új érték
-    REGI_OSZLOPOK_SHA256 = 'edff3f1bac3c5603f8b9cade0a5e341682f61ef955c80db857fc662e1be10608'
+    # F240.L7: a 19 könyvfeloldás-javítás és a fejezet:vers-fallback (a vers → jelentés tábla): új érték
+    REGI_OSZLOPOK_SHA256 = '3139a73addb3159132a093cfcdc4f0b372dbcca7dd56667e6a9e2f00ec03c054'
 
     @classmethod
     def setUpClass(cls):

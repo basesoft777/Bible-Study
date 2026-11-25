@@ -91,7 +91,7 @@ class TestAngolAdatbazis(unittest.TestCase):
         self.assertNotIn('Kt 2Sam 25:18', t)
 
     def test_bdb_hivatkozas_javitasok_az_angol_szovegben(self):
-        """Mind a 258 Strongon (F240 L3: +11 a kettőzött könyvszó törlésével): az angol szöveg könyvrövidítés-sora a javított nézetével egyezik (a szakasz-összefűzés szóköz-
+        """Mind a 269 Strongon (F240 L3: +11 a kettőzött könyvszó törlésével; F240.L7: +11 a könyvfeloldás javításával): az angol szöveg könyvrövidítés-sora a javított nézetével egyezik (a szakasz-összefűzés szóköz-
         zaját leszámítva), a nyers JSON-szakaszokétól viszont eltér."""
         import szakasz_bemenet
         tab, jav = szakasz_bemenet._betolt()
@@ -102,7 +102,7 @@ class TestAngolAdatbazis(unittest.TestCase):
             nyers = collections.Counter(_KONYV.findall(' '.join(x['szoveg'] for x in tab[strong])))
             eltero_javitott += en != javitott
             eltero_nyers += en != nyers
-        self.assertEqual(len(jav), 258)
+        self.assertEqual(len(jav), 269)
         self.assertLessEqual(eltero_javitott, 2, 'a javított nézettől eltérő Strong (tokenhatár-zaj legfeljebb 1-2)')
         self.assertGreater(eltero_nyers, 200, 'a nyers nézettől a javítandó Strongok többségében el kell térnie')
 
