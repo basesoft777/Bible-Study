@@ -1,3 +1,4 @@
+<!-- ARCHÍV: tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md @ ad972a16 · F239 TEREMT-001 új cikk, U3 · 2026-11-23 · nem forrás, nem szerkesztendő -->
 # Tehóm — Abüsszosz (`[ID: TEREMT-001]`) — kereszthivatkozás-napló
 
 *A `4_PaRDeS_tematikus_sablon.md` 1. pont "Kötelező napló" előírása szerint, retroaktívan pótolva (F0.5, 2026.09.13). Rögzíti a `Tehom_tematikus.md` v3-v4 (2026.09.10) lezárásakor ténylegesen elvégzett kutatást — minden vizsgált jelöltet, nem csak a bekerülteket. A tartalom a study saját szövegéből (0., 1., 2/b., 2/c., Q2 pont) lett rekonstruálva.*

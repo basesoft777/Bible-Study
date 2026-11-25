@@ -1,0 +1,17 @@
+# GENERÁLT: naplok/F239_U1_10_regi_adat.py | scope=adat/jeloltek.tsv + adat/res_forras.tsv TEREMT-001 sorai + tematikus_lezart/Tehom_tematikus.md | forras=split('	') | ts=2026-11-23 | csak lista
+mit	tartalom	dontes_vagy_forras	db	pelda	megjegyzes
+jeloltek_forras_kereses	TAHOT_kivonat.tsv visszakeresés (eszkozok/f3_2_betoltes.py), retroaktív F3.2 betöltés	beépítve	41	1Móz 1:2, 1Móz 7:11, 1Móz 8:2, 1Móz 49:25 …	nem `scan H…` alak (visszakeresés-felirat / napló-hivatkozás); a lapgen nem futott, a hatás nem mért
+jeloltek_forras_kereses	napló: Tehom_kereszthivatkozas_naplo.md §…	elutasítva	2	2Pét 2:4, Jel 21:1	nem `scan H…` alak (visszakeresés-felirat / napló-hivatkozás); a lapgen nem futott, a hatás nem mért
+jeloltek_forras_kereses	scan H8415	beépítve	1	Jób 41:32	EZ A RÉGI `scan H…` ALAK (a TEREMT-002-n B04-et adott): az U3 technikai része javítsa; a lapgen nem futott, a hatás nem mért
+res_forras	kivonat	tanulmany	1	tematikus_lezart/Tehom_tematikus.md	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+res_forras	2b	tanulmany	1	tematikus_lezart/Tehom_tematikus.md	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+res_forras	miert_fontos	tanulmany	1	tematikus_lezart/Tehom_tematikus.md	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+res_forras	minosites	tanulmany	1	tematikus_lezart/naplok/Tehom_kereszthivatkozas_naplo.md	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+res_forras	alatamasztas	adat	1	A motívumhoz nincs rögzített kapcsolat.	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+res_forras	ertelmezes	tanulmany	1	tematikus_lezart/Tehom_tematikus.md	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+res_forras	alkalmazas	adat	1	Az alkalmazási rész a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványs	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+res_forras	tanitoi	adat	1	A tanítói egyezés a motívum migrációjával kerül a lapra (#123); addig a `tematikus_lezart/Tehom_tematikus.md` „5. Alkalmazás és tanítványság	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+res_forras	modszertan	tanulmany	1	tematikus_lezart/Tehom_tematikus.md	NEM a kézi forrásra mutat (motivumok/TEREMT-001.md)
+N58	tematikus_lezart/Tehom_tematikus.md 51. sor		1	„35-ször” áll	a ma mért scan: 36 szó-előfordulás, 35 igehely; nyitva (a régi réteg, K1)
+N58	tematikus_lezart/Tehom_tematikus.md 84. sor		1	„egyedi versek száma emiatt 34” áll	ugyanez
+N58	Jób 41:32 említése a régi tanulmányban		1	nincs	az adatban E-sor + beépített jelölt van (lekerdez scan H8415: igen)

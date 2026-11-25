@@ -280,5 +280,82 @@ class Tablak(unittest.TestCase):
             self.assertEqual({B.irasa(c) for c in d['szoalak'] if B.irasa(c)}, {d['nyelv']})
 
 
+class Szamozas(unittest.TestCase):
+    """F239 U4b: a görög/latin igehely Károli-kulcsra vezetése (kozos.lxx_zsoltar, kozos.vulgata_karoli) a TVTMS-alapú
+    térképpel összevetve; a Chain Lineage zsoltárhelyei (tanu_kinyer) és a Vulgata Jób 38–41 (megfelelo_kinyer)."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.terkep = olvas('LXX_versificacios_terkep.tsv')[1]
+
+    def _sima_parok(self, oszlop):
+        for d in self.terkep:
+            h = re.match(r'^Psa\.(\d+):(\d+)$', d['Heber_vers'])
+            g = re.match(r'^Psa\.(\d+):(\d+)$', d[oszlop])
+            if h and g:
+                yield (g.group(1), g.group(2)), (int(h.group(1)), int(h.group(2)))
+
+    def test_gorog_zsoltar_a_terkep_szerint(self):
+        parok = list(self._sima_parok('Gorog_LXX_vers'))
+        self.assertGreater(len(parok), 2000)
+        for (f, v), heb in parok:
+            self.assertEqual(KZ.lxx_zsoltar(f, v), heb, (f, v))
+
+    def test_latin_zsoltar_a_terkep_szerint(self):
+        parok = list(self._sima_parok('Latin_vers'))
+        self.assertGreater(len(parok), 2000)
+        for (f, v), heb in parok:
+            self.assertEqual(KZ.vulgata_karoli('Zsolt', f, v), ('Zsolt',) + heb, (f, v))
+
+    def test_vulgata_jób_és_zsoltár_a_károli_kulcson(self):
+        import megfelelo_kinyer as MK
+        szov = {r['igehely']: r['szoveg'] for r in olvas('Vulgata_Clementina.tsv')[1]}
+        ki = MK.vulgata_karoli_kulcson(szov)
+        karoli = {r['Igehely'] for r in olvas('Karoli_1908.tsv')[1]}
+        for f in (38, 39, 40, 41):   # a Jób 38–41 minden Károli-verse pontosan egy Vulgata-verset kap
+            elotag = 'Jób %d:' % f
+            self.assertEqual({k for k in ki if k.startswith(elotag)}, {k for k in karoli if k.startswith(elotag)})
+        self.assertIn('Leviathan', ki['Jób 41:1'])            # korábban a Vulgata 41:1 („Non quasi crudelis”) állt itt
+        self.assertTrue(ki['Jób 39:34'].startswith('Et adjecit Dominus'))
+        self.assertTrue(ki['Zsolt 147:12'].startswith('Alleluja. [Lauda, Jerusalem'))   # korábban a Zsolt 147:1-en
+        self.assertTrue(ki['Zsolt 10:1'].startswith('Ut quid, Domine'))              # a Vulgata 9:22
+        self.assertTrue(ki['Zsolt 115:1'].startswith('Non nobis, Domine'))           # a Vulgata 113:9
+        self.assertIn('In Domino confido', ki['Zsolt 11:1'])                         # a Vulgata 10:1–2 együtt
+
+    def test_chain_lineage_zsoltar(self):
+        import tanu_kinyer as TK
+        self.assertTrue(TK.cl_gorog_zsoltar('[BiblIndex] Capita contra Gaium (Apologia)*'))
+        self.assertTrue(TK.cl_gorog_zsoltar('Commentarius in Apocalypsin'))
+        self.assertFalse(TK.cl_gorog_zsoltar('[Sefaria] Mekhilta DeRabbi Yishmael'))
+        self.assertEqual(TK.karoli_alak('ps 117.24', True), 'Zsolt 118:24')   # a héber 117. zsoltár kétverses
+        self.assertEqual(TK.karoli_alak('ps 28.7', True), 'Zsolt 29:7')
+        self.assertEqual(TK.karoli_alak('ps 77.17', False), 'Zsolt 77:17')
+        self.assertEqual(TK.karoli_alak('ps 148.7', True), 'Zsolt 148:7')
+        self.assertEqual(TK.karoli_alak('rev 20.3', True), 'Jel 20:3')
+
+    def test_chain_lineage_kor_felulirasa(self):
+        """F239 U6 (D25): a SPEC `kor` oszlopa felülírja a CL `century` értékét (a születési századot); üresen a CL-é."""
+        import types
+        import tanu_kinyer as TK
+        import chain_lineage as CL
+        valasz = [(1, 'gen 1.2 ; rom 10.7', 'Eusebius of Caesarea', 'De ecclesiastica theologia', '3', 'grc', 0)]
+        with tempfile.TemporaryDirectory() as d:
+            spec = os.path.join(d, 'spec.tsv')
+            with open(spec, 'w', encoding='utf-8', newline='\n') as f:
+                f.write('motivum\tigehely\thagyomany\tq\tszerzo\tmu\ttanu_nev\tkor\n')
+                f.write('X-001\tRóm 10:7\tgorog\tgen 1.2 + rom 10.7\tEusebius of Caesarea\tDe ecclesiastica theologia'
+                        '\tEuszébiosz\t4. sz. (HCF: 339)\n')
+                f.write('X-001\tJób 38:16\tgorog\tgen 1.2 + job 38.16\tEusebius of Caesarea\tDe ecclesiastica theologia'
+                        '\tEuszébiosz\t\n')
+            regi_tabla, regi_lek = TK.TABLA, CL.lekerdez
+            TK.TABLA, CL.lekerdez = os.path.join(d, 't.tsv'), (lambda q, n=None: valasz)
+            try:
+                TK.cl(types.SimpleNamespace(spec=spec))
+                kor = {r['igehely']: r['kor'] for r in TK.tsv_olvas(TK.TABLA)}
+            finally:
+                TK.TABLA, CL.lekerdez = regi_tabla, regi_lek
+        self.assertEqual(kor, {'Róm 10:7': '4. sz. (HCF: 339)', 'Jób 38:16': '3. sz.'})
+
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)

@@ -1,0 +1,13 @@
+# GENERÁLT: naplok/F239_U1_06_nave_jeloltek.py | scope=TEREMT-001 adat/elofordulasok.tsv (42 sor) × konkordancia/Nave_basokant.tsv, szabály: eszkozok/szerep_nave.py jeloltek() (min. 2 motívumvers, min. 1% arány, tiltott kizárva) | forras=split('	') | ts=2026-11-23 | döntés nincs: az U2-U4 dönti (kivalasztott / kizart / tiltott), adat/tematikus_temak.tsv
+tema_id	tema	motivumversek_szama	temavers_szama	arany	altetelek	motivumversek	meglevo_dontes
+NAVE-3885	PIT	3	19	0.158	The bottomless pit (3)	Jel 9:11, Jel 11:7, Jel 17:8	
+NAVE-0305	ANIMALS	3	260	0.012	BEASTS SYMBOLICAL (1); God's care of (1); Two of every sort preserved in the ark (1)	1Móz 7:11, Zsolt 36:7, Jel 11:7	
+NAVE-1400	DEW	2	16	0.125	A merciful providence (1); From the clouds (1)	5Móz 33:13, Péld 3:20	
+NAVE-1682	EPIC	2	20	0.100	Miriam's song (2)	2Móz 15:5, 2Móz 15:8	
+NAVE-1213	CONTINENTS	2	32	0.062	General scriptures concerning (2)	Jób 38:16, Zsolt 104:6	
+NAVE-4643	SONG	2	49	0.041	War (2)	2Móz 15:5, 2Móz 15:8	
+NAVE-3906	POETRY	2	89	0.022	Moses' song (2)	2Móz 15:5, 2Móz 15:8	
+NAVE-1502	EARTH	2	104	0.019	CREATED BY GOD (1); Primitive condition of (1)	Zsolt 104:6, Péld 8:24	
+NAVE-3189	MANASSEH	2	111	0.018	Blessing or Moses on (1); Prophecy concerning (1)	1Móz 49:25, 5Móz 33:13	
+NAVE-1676	EPHRAIM	2	125	0.016	Blessed by Moses (1); Prophecy concerning (1)	1Móz 49:25, 5Móz 33:13	
+NAVE-3986	PSALMS	2	156	0.013	Of Moses, celebrating the deliverance at the Red Sea (2)	2Móz 15:5, 2Móz 15:8	

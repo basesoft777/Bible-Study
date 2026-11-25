@@ -1,0 +1,1648 @@
+$ lekerdez.py scan --naplo F239 --lepes B2 "H8415"
+# scan H8415 — 35 igehely, 36 szó-előfordulás
+1Móz 1:2
+1Móz 7:11
+1Móz 8:2
+1Móz 49:25
+2Móz 15:5
+2Móz 15:8
+5Móz 8:7
+5Móz 33:13
+Ez 26:19
+Ez 31:4
+Ez 31:15
+Hab 3:10
+Jób 28:14
+Jób 38:16
+Jób 38:30
+Jób 41:32
+Jón 2:6
+Péld 3:20
+Péld 8:24
+Péld 8:27
+Péld 8:28
+Zsolt 33:7
+Zsolt 36:7
+Zsolt 42:8
+Zsolt 71:20
+Zsolt 77:17
+Zsolt 78:15
+Zsolt 104:6
+Zsolt 106:9
+Zsolt 107:26
+Zsolt 135:6
+Zsolt 148:7
+Ámós 7:4
+Ézs 51:10
+Ézs 63:13
+proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8415 | n=35 | ts=2026-11-23T11:57Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py scan --naplo F239 --lepes B2 "G0012"
+# scan G0012 — 9 igehely, 9 szó-előfordulás
+Jel 9:1
+Jel 9:2
+Jel 9:11
+Jel 11:7
+Jel 17:8
+Jel 20:1
+Jel 20:3
+Luk 8:31
+Róm 10:7
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0012 | n=9 | ts=2026-11-23T11:57Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py gerinc --naplo F239 --lepes B2 "1Móz 1:2" "1Móz 7:11" "1Móz 8:2"
+# gerinc-metszet — 3 szakasz
+#   1Móz 1:2: 14 egyedi Strong
+#   1Móz 7:11: 23 egyedi Strong
+#   1Móz 8:2: 11 egyedi Strong
+# metszet (szűretlen): 3
+# grammatikai szűrővel kiszűrve (2): H9002,H9009
+# gerinc-jelölt (marad): 1
+H8415
+proveniencia: scope=range:1Móz 1:2+1Móz 7:11+1Móz 8:2 | forras=TAHOT_kivonat.tsv | n=1 | ts=2026-11-23T11:57Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py gerinc --naplo F239 --lepes B2 "1Móz 1:2" "1Móz 7:11" "1Móz 8:2" "1Móz 49:25" "2Móz 15:5" "2Móz 15:8" "5Móz 8:7" "5Móz 33:13" "Ez 26:19" "Ez 31:4" "Ez 31:15" "Hab 3:10" "Jób 28:14" "Jób 38:16" "Jób 38:30" "Jób 41:32" "Jón 2:6" "Péld 3:20" "Péld 8:24" "Péld 8:27" "Péld 8:28" "Zsolt 33:7" "Zsolt 36:7" "Zsolt 42:8" "Zsolt 71:20" "Zsolt 77:17" "Zsolt 78:15" "Zsolt 104:6" "Zsolt 106:9" "Zsolt 107:26" "Zsolt 135:6" "Zsolt 148:7" "Ámós 7:4" "Ézs 51:10" "Ézs 63:13"
+# gerinc-metszet — 35 szakasz
+#   1Móz 1:2: 14 egyedi Strong
+#   1Móz 7:11: 23 egyedi Strong
+#   1Móz 8:2: 11 egyedi Strong
+#   1Móz 49:25: 18 egyedi Strong
+#   2Móz 15:5: 8 egyedi Strong
+#   2Móz 15:8: 15 egyedi Strong
+#   5Móz 8:7: 18 egyedi Strong
+#   5Móz 33:13: 15 egyedi Strong
+#   Ez 26:19: 24 egyedi Strong
+#   Ez 31:4: 19 egyedi Strong
+#   Ez 31:15: 31 egyedi Strong
+#   Hab 3:10: 14 egyedi Strong
+#   Jób 28:14: 10 egyedi Strong
+#   Jób 38:16: 10 egyedi Strong
+#   Jób 38:30: 8 egyedi Strong
+#   Jób 41:32: 8 egyedi Strong
+#   Jón 2:6: 12 egyedi Strong
+#   Péld 3:20: 9 egyedi Strong
+#   Péld 8:24: 7 egyedi Strong
+#   Péld 8:27: 11 egyedi Strong
+#   Péld 8:28: 9 egyedi Strong
+#   Zsolt 33:7: 10 egyedi Strong
+#   Zsolt 36:7: 13 egyedi Strong
+#   Zsolt 42:8: 14 egyedi Strong
+#   Zsolt 71:20: 14 egyedi Strong
+#   Zsolt 77:17: 8 egyedi Strong
+#   Zsolt 78:15: 9 egyedi Strong
+#   Zsolt 104:6: 9 egyedi Strong
+#   Zsolt 106:9: 11 egyedi Strong
+#   Zsolt 107:26: 9 egyedi Strong
+#   Zsolt 135:6: 11 egyedi Strong
+#   Zsolt 148:7: 10 egyedi Strong
+#   Ámós 7:4: 19 egyedi Strong
+#   Ézs 51:10: 16 egyedi Strong
+#   Ézs 63:13: 9 egyedi Strong
+# metszet (szűretlen): 1
+# grammatikai szűrővel kiszűrve (0): (nincs)
+# gerinc-jelölt (marad): 1
+H8415
+proveniencia: scope=range:1Móz 1:2+1Móz 7:11+1Móz 8:2+1Móz 49:25+2Móz 15:5+2Móz 15:8+5Móz 8:7+5Móz 33:13+Ez 26:19+Ez 31:4+Ez 31:15+Hab 3:10+Jób 28:14+Jób 38:16+Jób 38:30+Jób 41:32+Jón 2:6+Péld 3:20+Péld 8:24+Péld 8:27+Péld 8:28+Zsolt 33:7+Zsolt 36:7+Zsolt 42:8+Zsolt 71:20+Zsolt 77:17+Zsolt 78:15+Zsolt 104:6+Zsolt 106:9+Zsolt 107:26+Zsolt 135:6+Zsolt 148:7+Ámós 7:4+Ézs 51:10+Ézs 63:13 | forras=TAHOT_kivonat.tsv | n=1 | ts=2026-11-23T11:57Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py gerinc --naplo F239 --lepes B2 "Jel 9:1" "Jel 9:2" "Jel 9:11" "Jel 11:7" "Jel 17:8" "Jel 20:1" "Jel 20:3" "Luk 8:31" "Róm 10:7"
+# gerinc-metszet — 9 szakasz
+#   Jel 9:1: 17 egyedi Strong
+#   Jel 9:2: 14 egyedi Strong
+#   Jel 9:11: 14 egyedi Strong
+#   Jel 11:7: 15 egyedi Strong
+#   Jel 17:8: 28 egyedi Strong
+#   Jel 20:1: 15 egyedi Strong
+#   Jel 20:3: 24 egyedi Strong
+#   Luk 8:31: 10 egyedi Strong
+#   Róm 10:7: 12 egyedi Strong
+# metszet (szűretlen): 2
+# grammatikai szűrővel kiszűrve (1): G3588
+# gerinc-jelölt (marad): 1
+G0012
+proveniencia: scope=range:Jel 9:1+Jel 9:2+Jel 9:11+Jel 11:7+Jel 17:8+Jel 20:1+Jel 20:3+Luk 8:31+Róm 10:7 | forras=TAGNT_kivonat.tsv | n=1 | ts=2026-11-23T11:58Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py gerinc --naplo F239 --lepes B2 "Zsolt 33:7" "Jób 38:16" "Ézs 51:10" "Jón 2:6" "Hab 3:10"
+# gerinc-metszet — 5 szakasz
+#   Zsolt 33:7: 10 egyedi Strong
+#   Jób 38:16: 10 egyedi Strong
+#   Ézs 51:10: 16 egyedi Strong
+#   Jón 2:6: 12 egyedi Strong
+#   Hab 3:10: 14 egyedi Strong
+# metszet (szűretlen): 1
+# grammatikai szűrővel kiszűrve (0): (nincs)
+# gerinc-jelölt (marad): 1
+H8415
+proveniencia: scope=range:Zsolt 33:7+Jób 38:16+Ézs 51:10+Jón 2:6+Hab 3:10 | forras=TAHOT_kivonat.tsv | n=1 | ts=2026-11-23T11:58Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py gerinc --naplo F239 --lepes B2 "1Móz 1:2" "Jel 20:1"
+# gerinc-metszet — 2 szakasz
+#   1Móz 1:2: 14 egyedi Strong
+#   Jel 20:1: 15 egyedi Strong
+# metszet (szűretlen): 0
+# grammatikai szűrővel kiszűrve (0): (nincs)
+# gerinc-jelölt (marad): 0
+proveniencia: scope=range:1Móz 1:2+Jel 20:1 | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | n=0 | ts=2026-11-23T11:58Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "H8415" "H4325"
+# kollokáció H8415 + H4325 — 14 vers
+1Móz 1:2
+2Móz 15:8
+5Móz 8:7
+Ez 26:19
+Ez 31:4
+Ez 31:15
+Hab 3:10
+Jób 38:30
+Jón 2:6
+Péld 8:24
+Zsolt 33:7
+Zsolt 77:17
+Zsolt 104:6
+Ézs 51:10
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H4325 | n=14 | ts=2026-11-23T11:58Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "H8415" "H7227"
+# kollokáció H8415 + H7227 — 8 vers
+1Móz 7:11
+Ez 26:19
+Ez 31:15
+Zsolt 36:7
+Zsolt 71:20
+Zsolt 78:15
+Ámós 7:4
+Ézs 51:10
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H7227 | n=8 | ts=2026-11-23T11:58Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "H8415" "H8064"
+# kollokáció H8415 + H8064 — 7 vers
+1Móz 7:11
+1Móz 8:2
+1Móz 49:25
+5Móz 33:13
+Péld 8:27
+Zsolt 107:26
+Zsolt 135:6
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H8064 | n=7 | ts=2026-11-23T11:58Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "H8415" "H3220"
+# kollokáció H8415 + H3220 — 7 vers
+2Móz 15:8
+Jób 28:14
+Jób 38:16
+Zsolt 33:7
+Zsolt 106:9
+Zsolt 135:6
+Ézs 51:10
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H3220 | n=7 | ts=2026-11-23T11:58Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "H8415" "H0776"
+# kollokáció H8415 + H0776 — 6 vers
+1Móz 1:2
+5Móz 8:7
+5Móz 33:13
+Zsolt 71:20
+Zsolt 135:6
+Zsolt 148:7
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H0776 | n=6 | ts=2026-11-23T11:58Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "H8415" "H3605"
+# kollokáció H8415 + H3605 — 6 vers
+1Móz 7:11
+Ez 31:4
+Ez 31:15
+Zsolt 42:8
+Zsolt 135:6
+Zsolt 148:7
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H3605 | n=6 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "H8415" "H3068"
+# kollokáció H8415 + H3068 — 5 vers
+5Móz 8:7
+5Móz 33:13
+Zsolt 36:7
+Zsolt 135:6
+Zsolt 148:7
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=H8415+H3068 | n=5 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "G0012" "G1492"
+# kollokáció G0012 + G1492 — 3 vers
+Jel 9:1
+Jel 17:8
+Jel 20:1
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G0012+G1492 | n=3 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "G0012" "G0032"
+# kollokáció G0012 + G0032 — 3 vers
+Jel 9:1
+Jel 9:11
+Jel 20:1
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G0012+G0032 | n=3 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py kollokacio --naplo F239 --lepes B4 "G0012" "G0305"
+# kollokáció G0012 + G0305 — 3 vers
+Jel 9:2
+Jel 11:7
+Jel 17:8
+proveniencia: scope=TAHOT-teljes+TAGNT-teljes | forras=TAGNT_kivonat.tsv+TAHOT_kivonat.tsv | strong=G0012+G0305 | n=3 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py igealak --naplo F239 --lepes B4 "H8415"
+# igealak-ellenőrzés H8415 — 36 szó-előfordulás
+# igehely	ragozott_alak	kiejtes	rovid_jelentes	angol_tukorforditas
+1Móz 1:2	תְה֑וֹם	te.Hom	abyss	[the] deep
+1Móz 7:11	תְּה֣וֹם	te.Hom	abyss	[the] deep
+1Móz 8:2	תְּה֔וֹם	te.Hom	abyss	[the] deep
+1Móz 49:25	תְּה֖וֹם	te.Hom	abyss	[the] deep
+2Móz 15:5	תְּהֹמֹ֖ת	te.ho.Mot	abyss	[the] deeps
+2Móz 15:8	תְהֹמֹ֖ת	te.ho.Mot	abyss	[the] deeps
+5Móz 8:7	תְהֹמֹ֔ת	te.ho.Mot	abyss	deeps
+5Móz 33:13	תְּה֖וֹם	te.Hom	abyss	[the] deep
+Ez 26:19	תְּה֔וֹם	te.Hom	abyss	[the] deep
+Ez 31:4	תְּה֖וֹם	te.Hom	abyss	[the] deep
+Ez 31:15	תְּה֔וֹם	te.Hom	abyss	[the] deep
+Hab 3:10	תְּהוֹם֙	te.hOm	abyss	[the] deep
+Jób 28:14	תְּה֣וֹם	te.Hom	abyss	[the] deep
+Jób 38:16	תְּ֝ה֗וֹם	te.Hom	abyss	[the] deep
+Jób 38:30	תְ֝ה֗וֹם	te.Hom	abyss	[the] deep
+Jób 41:32	תְּה֣וֹם	te.Hom	abyss	[the] deep
+Jón 2:6	תְּה֖וֹם	te.Hom	abyss	[the] deep
+Péld 3:20	תְּהוֹמ֣וֹת	te.ho.Mot	abyss	[the] depths
+Péld 8:24	תְּהֹמ֥וֹת	te.ho.Mot	abyss	[were] [the] deeps
+Péld 8:27	תְהֽוֹם	te.Hom	abyss	[the] deep
+Péld 8:28	תְּהוֹם	te.hom	abyss	[the] deep
+Zsolt 33:7	תְּהוֹמֽוֹת	te.ho.Mot	abyss	[the] deeps
+Zsolt 36:7	תְּה֣וֹם	te.Hom	abyss	[are] [the] deep
+Zsolt 42:8	תְּהֽוֹם	te.hom-	abyss	deep
+Zsolt 42:8	תְּה֣וֹם	te.Hom	abyss	deep
+Zsolt 71:20	תְּהֹמ֥וֹת	te.ho.Mot	abyss	[the] depths of
+Zsolt 77:17	תְהֹמֽוֹת	te.ho.Mot	abyss	[the] deeps
+Zsolt 78:15	תְהֹמ֥וֹת	t.ho.Mot	abyss	deeps
+Zsolt 104:6	תְּ֭הוֹם	Te.hom	abyss	[the] deep
+Zsolt 106:9	תְּהֹמ֗וֹת	te.ho.Mot	abyss	deeps
+Zsolt 107:26	תְהוֹמ֑וֹת	te.ho.Mot	abyss	[the] deeps
+Zsolt 135:6	תְּהוֹמֽוֹת	te.ho.Mot	abyss	[the] deeps
+Zsolt 148:7	תְּהֹמֽוֹת	te.ho.Mot	abyss	[the] deeps
+Ámós 7:4	תְּה֣וֹם	te.Hom	abyss	[the] deep
+Ézs 51:10	תְּה֣וֹם	te.Hom	abyss	[the] deep
+Ézs 63:13	תְּהֹמ֑וֹת	te.ho.Mot	abyss	deeps
+# EMBERI DÖNTÉS: a fenti alakok binyan/igealak szerinti csoportosítása nem automatikus.
+proveniencia: scope=TAHOT-teljes | forras=TAHOT_kivonat.tsv | strong=H8415 | n=36 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py igealak --naplo F239 --lepes B4 "G0012"
+# igealak-ellenőrzés G0012 — 9 szó-előfordulás
+# igehely	ragozott_alak	kiejtes	rovid_jelentes	angol_tukorforditas
+Jel 9:1	ἀβύσσου,	abussou	abyss	abyss,
+Jel 9:2	ἀβύσσου·	abussou	abyss	abyss;
+Jel 9:11	ἀβύσσου·	abussou	abyss	abyss;
+Jel 11:7	ἀβύσσου	abussou	abyss	abyss
+Jel 17:8	ἀβύσσου	abussou	abyss	abyss
+Jel 20:1	ἀβύσσου	abussou	abyss	Abyss
+Jel 20:3	ἄβυσσον	abusson	abyss	Abyss
+Luk 8:31	ἄβυσσον	abusson	abyss	abyss
+Róm 10:7	ἄβυσσον;	abusson	abyss	abyss?’
+# EMBERI DÖNTÉS: a fenti alakok binyan/igealak szerinti csoportosítása nem automatikus.
+proveniencia: scope=TAGNT-teljes | forras=TAGNT_kivonat.tsv | strong=G0012 | n=9 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "1Móz 1:2"
+# LXX-híd 1Móz 1:2 — 19 görög szó-előfordulás
+# LXX-vers: Genesis 1:2 (karoli_ok=egyező)
+G3588	ἡ	article fem nom sg
+G1161	δὲ	particle
+G1093	γῆ	noun fem nom sg
+G1510	ἦν	verb imperf ind act 3rd sg
+G0517	ἀόρατος	adjective masc nom sg
+G2532	καὶ	conjunction
+	ἀκατασκεύαστος	adjective masc nom sg
+G2532	καὶ	conjunction
+G4655	σκότος	noun neut nom/voc/acc sg
+G1883	ἐπάνω	preposition
+G3588	τῆς	article fem gen sg
+G0012	ἀβύσσου	noun fem/neut gen sg
+G2532	καὶ	conjunction
+G4151	πνεῦμα	noun neut nom/voc/acc sg
+G2316	θεοῦ	noun masc gen sg
+G2018	ἐπεφέρετο	verb imperf ind mid/pass 3rd sg
+G1883	ἐπάνω	preposition
+G3588	τοῦ	article masc/neut gen sg
+G5204	ὕδατος	noun neut gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0517: 5 ÚSZ-vers — 1Tim 1:17, Kol 1:15, Kol 1:16, Róm 1:20, Zsid 11:27
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G1161: 2609 ÚSZ-vers — 1Ján 1:3, 1Ján 1:7, 1Ján 2:2, 1Ján 2:5, 1Ján 2:11, 1Ján 2:17, 1Ján 3:2, 1Ján 3:12, 1Ján 3:17, 1Ján 4:18 ...
+  G1510: 2044 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:4, 1Ján 1:5, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10, 1Ján 2:2, 1Ján 2:4 ...
+  G1883: 18 ÚSZ-vers — 1Kor 15:6, Jel 6:8, Jel 20:3, Ján 3:31, Luk 4:39, Luk 10:19, Luk 11:44, Luk 19:17, Luk 19:19, Mk 14:5 ...
+  G2018: 2 ÚSZ-vers — Júd 1:9, Róm 3:5
+  G2316: 1173 ÚSZ-vers — 1Ján 1:5, 1Ján 2:5, 1Ján 2:14, 1Ján 2:17, 1Ján 3:1, 1Ján 3:2, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:17 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G4151: 351 ÚSZ-vers — 1Ján 3:24, 1Ján 4:1, 1Ján 4:2, 1Ján 4:3, 1Ján 4:6, 1Ján 4:13, 1Ján 5:6, 1Ján 5:7, 1Ján 5:8, 1Kor 2:4 ...
+  G4655: 30 ÚSZ-vers — 1Ján 1:6, 1Kor 4:5, 1Pét 2:9, 1Thessz 5:4, 1Thessz 5:5, 2Kor 4:6, 2Kor 6:14, 2Pét 2:17, ApCsel 2:20, ApCsel 13:11 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:1Móz 1:2 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "1Móz 7:11"
+# LXX-híd 1Móz 7:11 — 32 görög szó-előfordulás
+# LXX-vers: Genesis 7:11 (karoli_ok=egyező)
+G1722	ἐν	preposition
+G3588	τῷ	article masc/neut dat sg
+	ἑξακοσιοστῷ	adjective neut dat sg
+G2094	ἔτει	noun neut dat sg
+G1722	ἐν	preposition
+G3588	τῇ	article fem dat sg
+G2222	ζωῇ	noun fem dat sg
+G3588	τοῦ	article masc/neut gen sg
+G3575	Νωε	proper noun
+G3588	τοῦ	article masc/neut gen sg
+G1208	δευτέρου	adjective masc gen sg
+G3375	μηνός	noun masc gen sg
+G1442	ἑβδόμῃ	adjective fem dat sg
+G2532	καὶ	conjunction
+	εἰκάδι	noun fem dat sg
+G3588	τοῦ	article masc/neut gen sg
+G3375	μηνός	noun masc gen sg
+G3588	τῇ	article fem dat sg
+G2250	ἡμέρᾳ	noun fem dat sg
+G3778	ταύτῃ	pronoun fem dat sg
+G4486	ἐρράγησαν	verb aor ind pass 3rd pl
+G3956	πᾶσαι	adjective fem nom pl
+G3588	αἱ	article fem nom pl
+G4077	πηγαὶ	noun fem nom pl
+G3588	τῆς	article fem gen sg
+G0012	ἀβύσσου	noun fem/neut gen sg
+G2532	καὶ	conjunction
+G3588	οἱ	article masc nom pl
+	καταρράκται	noun masc nom pl
+G3588	τοῦ	article masc/neut gen sg
+G3772	οὐρανοῦ	noun masc gen sg
+G0455	ἠνεῴχθησαν	verb aor ind pass 3rd pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0455: 75 ÚSZ-vers — 1Kor 16:9, 2Kor 2:12, 2Kor 6:11, ApCsel 5:19, ApCsel 5:23, ApCsel 8:32, ApCsel 8:35, ApCsel 9:8, ApCsel 9:40, ApCsel 10:11 ...
+  G1208: 45 ÚSZ-vers — 1Kor 12:28, 1Kor 15:47, 2Kor 1:15, 2Kor 13:2, 2Kor 13:13, 2Pét 3:1, 2Thessz 3:18, 2Tim 4:22, ApCsel 7:13, ApCsel 10:15 ...
+  G1442: 8 ÚSZ-vers — Jel 8:1, Jel 10:7, Jel 11:15, Jel 16:17, Jel 21:20, Ján 4:52, Júd 1:14, Zsid 4:4
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2094: 48 ÚSZ-vers — 1Tim 5:9, 2Kor 12:2, 2Pét 3:8, ApCsel 4:22, ApCsel 7:6, ApCsel 7:30, ApCsel 7:36, ApCsel 7:42, ApCsel 9:33, ApCsel 13:20 ...
+  G2222: 128 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 2:25, 1Ján 3:14, 1Ján 3:15, 1Ján 5:11, 1Ján 5:12, 1Ján 5:13, 1Ján 5:16, 1Ján 5:20 ...
+  G2250: 369 ÚSZ-vers — 1Ján 4:17, 1Kor 1:8, 1Kor 3:13, 1Kor 4:3, 1Kor 5:5, 1Kor 10:8, 1Kor 15:4, 1Kor 15:31, 1Pét 2:12, 1Pét 3:10 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3375: 1 ÚSZ-vers — Zsid 6:14
+  G3575: 8 ÚSZ-vers — 1Pét 3:20, 2Pét 2:5, Luk 3:36, Luk 17:26, Luk 17:27, Mt 24:37, Mt 24:38, Zsid 11:7
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3772: 261 ÚSZ-vers — 1Ján 5:7, 1Kor 8:5, 1Kor 15:47, 1Pét 1:4, 1Pét 1:12, 1Pét 3:22, 1Thessz 1:10, 1Thessz 4:16, 2Kor 5:1, 2Kor 5:2 ...
+  G3778: 1288 ÚSZ-vers — 1Ján 1:4, 1Ján 1:5, 1Ján 2:1, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:22, 1Ján 2:25, 1Ján 2:26, 1Ján 3:1 ...
+  G3956: 1100 ÚSZ-vers — 1Ján 1:7, 1Ján 1:9, 1Ján 2:16, 1Ján 2:19, 1Ján 2:20, 1Ján 2:21, 1Ján 2:23, 1Ján 2:27, 1Ján 2:29, 1Ján 3:3 ...
+  G4077: 11 ÚSZ-vers — 2Pét 2:17, Jak 3:11, Jak 3:12, Jel 7:17, Jel 8:10, Jel 14:7, Jel 16:4, Jel 21:6, Ján 4:6, Ján 4:14 ...
+  G4486: 7 ÚSZ-vers — Gal 4:27, Luk 5:37, Luk 9:42, Mk 2:22, Mk 9:18, Mt 7:6, Mt 9:17
+proveniencia: scope=range:1Móz 7:11 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=32 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "1Móz 8:2"
+# LXX-híd 1Móz 8:2 — 18 görög szó-előfordulás
+# LXX-vers: Genesis 8:2 (karoli_ok=egyező)
+G2532	καὶ	conjunction
+G1943	ἐπεκαλύφθησαν	verb aor ind pass 3rd pl
+G3588	αἱ	article fem nom pl
+G4077	πηγαὶ	noun fem nom pl
+G3588	τῆς	article fem gen sg
+G0012	ἀβύσσου	noun fem/neut gen sg
+G2532	καὶ	conjunction
+G3588	οἱ	article masc nom pl
+	καταρράκται	noun masc nom pl
+G3588	τοῦ	article masc/neut gen sg
+G3772	οὐρανοῦ	noun masc gen sg
+G2532	καὶ	conjunction
+G4912	συνεσχέθη	verb aor ind pass 3rd sg
+G3588	ὁ	article masc nom sg
+G5205	ὑετὸς	noun masc nom sg
+G0575	ἀπὸ	preposition
+G3588	τοῦ	article masc/neut gen sg
+G3772	οὐρανοῦ	noun masc gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0575: 623 ÚSZ-vers — 1Ján 1:1, 1Ján 1:5, 1Ján 1:7, 1Ján 1:9, 1Ján 2:7, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20, 1Ján 2:24, 1Ján 2:27 ...
+  G1943: 1 ÚSZ-vers — Róm 4:7
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3772: 261 ÚSZ-vers — 1Ján 5:7, 1Kor 8:5, 1Kor 15:47, 1Pét 1:4, 1Pét 1:12, 1Pét 3:22, 1Thessz 1:10, 1Thessz 4:16, 2Kor 5:1, 2Kor 5:2 ...
+  G4077: 11 ÚSZ-vers — 2Pét 2:17, Jak 3:11, Jak 3:12, Jel 7:17, Jel 8:10, Jel 14:7, Jel 16:4, Jel 21:6, Ján 4:6, Ján 4:14 ...
+  G4912: 12 ÚSZ-vers — 2Kor 5:14, ApCsel 7:57, ApCsel 18:5, ApCsel 28:8, Fil 1:23, Luk 4:38, Luk 8:37, Luk 8:45, Luk 12:50, Luk 19:43 ...
+  G5205: 6 ÚSZ-vers — ApCsel 14:17, ApCsel 28:2, Jak 5:7, Jak 5:18, Jel 11:6, Zsid 6:7
+proveniencia: scope=range:1Móz 8:2 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=18 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "1Móz 49:25"
+# LXX-híd 1Móz 49:25 — 28 görög szó-előfordulás
+# LXX-vers: Genesis 49:25 (karoli_ok=egyező)
+G3844	παρὰ	preposition
+G2316	θεοῦ	noun masc gen sg
+G3588	τοῦ	article masc/neut gen sg
+G3962	πατρός	noun masc gen sg
+G4771	σου	pronoun 2nd gen sg
+G2532	καὶ	conjunction
+G0997	ἐβοήθησέν	verb aor ind act 3rd sg
+G4771	σοι	pronoun 2nd dat sg
+G3588	ὁ	article masc nom sg
+G2316	θεὸς	noun masc nom sg
+G3588	ὁ	article masc nom sg
+G1699	ἐμὸς	adjective masc nom sg
+G2532	καὶ	conjunction
+G2127	εὐλόγησέν	verb aor ind act 3rd sg
+G4771	σε	pronoun 2nd acc sg
+G2129	εὐλογίαν	noun fem acc sg
+G3772	οὐρανοῦ	noun masc gen sg
+G0509	ἄνωθεν	adverb
+G2532	καὶ	conjunction
+G2129	εὐλογίαν	noun fem acc sg
+G1093	γῆς	noun fem gen sg
+G2192	ἐχούσης	participle pres ptc act fem gen sg
+G3956	πάντα	adjective neut nom/voc/acc pl
+G1752	ἕνεκεν	preposition
+G2129	εὐλογίας	noun fem gen sg
+G3149	μαστῶν	noun masc gen pl
+G2532	καὶ	conjunction
+G3388	μήτρας	noun fem gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0509: 13 ÚSZ-vers — ApCsel 26:5, Gal 4:9, Jak 1:17, Jak 3:15, Jak 3:17, Ján 3:3, Ján 3:7, Ján 3:31, Ján 19:11, Ján 19:23 ...
+  G0997: 8 ÚSZ-vers — 2Kor 6:2, ApCsel 16:9, ApCsel 21:28, Jel 12:16, Mk 9:22, Mk 9:24, Mt 15:25, Zsid 2:18
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G1699: 0 ÚSZ-vers — 
+  G1752: 23 ÚSZ-vers — 2Kor 3:10, 2Kor 7:12, ApCsel 19:32, ApCsel 26:21, ApCsel 28:20, Luk 4:18, Luk 6:22, Luk 9:24, Luk 18:29, Luk 21:12 ...
+  G2127: 40 ÚSZ-vers — 1Kor 4:12, 1Kor 10:16, 1Kor 14:16, 1Pét 3:9, ApCsel 3:26, Ef 1:3, Gal 3:9, Jak 3:9, Ján 12:13, Luk 1:28 ...
+  G2129: 14 ÚSZ-vers — 1Kor 10:16, 1Pét 3:9, 2Kor 9:5, 2Kor 9:6, Ef 1:3, Gal 3:14, Jak 3:10, Jel 5:12, Jel 5:13, Jel 7:12 ...
+  G2192: 632 ÚSZ-vers — 1Ján 1:3, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 2:1, 1Ján 2:7, 1Ján 2:20, 1Ján 2:23, 1Ján 2:27, 1Ján 2:28 ...
+  G2316: 1173 ÚSZ-vers — 1Ján 1:5, 1Ján 2:5, 1Ján 2:14, 1Ján 2:17, 1Ján 3:1, 1Ján 3:2, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:17 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3149: 3 ÚSZ-vers — Jel 1:13, Luk 11:27, Luk 23:29
+  G3388: 2 ÚSZ-vers — Luk 2:23, Róm 4:19
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3772: 261 ÚSZ-vers — 1Ján 5:7, 1Kor 8:5, 1Kor 15:47, 1Pét 1:4, 1Pét 1:12, 1Pét 3:22, 1Thessz 1:10, 1Thessz 4:16, 2Kor 5:1, 2Kor 5:2 ...
+  G3844: 185 ÚSZ-vers — 1Kor 3:11, 1Kor 3:19, 1Kor 7:24, 1Kor 12:15, 1Kor 12:16, 1Kor 16:2, 1Pét 2:4, 1Pét 2:20, 1Thessz 2:13, 1Thessz 4:1 ...
+  G3956: 1100 ÚSZ-vers — 1Ján 1:7, 1Ján 1:9, 1Ján 2:16, 1Ján 2:19, 1Ján 2:20, 1Ján 2:21, 1Ján 2:23, 1Ján 2:27, 1Ján 2:29, 1Ján 3:3 ...
+  G3962: 373 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 2:1, 1Ján 2:13, 1Ján 2:14, 1Ján 2:15, 1Ján 2:16, 1Ján 2:22, 1Ján 2:23, 1Ján 2:24 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+proveniencia: scope=range:1Móz 49:25 | forras=LXX_OS/genesis.tsv+TAGNT_kivonat.tsv | n=28 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "2Móz 15:5"
+# LXX-híd 2Móz 15:5 — 8 görög szó-előfordulás
+# LXX-vers: Exodus 15:5 (karoli_ok=egyező)
+G4195	πόντῳ	noun masc dat sg
+G2572	ἐκάλυψεν	verb aor ind act 3rd sg
+G0846	αὐτούς	pronoun 3rd acc pl
+	κατέδυσαν	verb aor ind act 3rd pl
+G1519	εἰς	preposition
+G1037	βυθὸν	noun masc acc sg
+G5616	ὡσεὶ	adverb
+G3037	λίθος	noun masc nom sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1037: 1 ÚSZ-vers — 2Kor 11:25
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G2572: 7 ÚSZ-vers — 1Pét 4:8, 2Kor 4:3, Jak 5:20, Luk 8:16, Luk 23:30, Mt 8:24, Mt 10:26
+  G3037: 55 ÚSZ-vers — 1Kor 3:12, 1Pét 2:4, 1Pét 2:5, 1Pét 2:6, 1Pét 2:7, 1Pét 2:8, 2Kor 3:7, ApCsel 4:11, ApCsel 17:29, Jel 4:3 ...
+  G4195: 2 ÚSZ-vers — 1Pét 1:1, ApCsel 2:9
+  G5616: 21 ÚSZ-vers — ApCsel 1:15, ApCsel 2:3, ApCsel 2:41, ApCsel 6:15, ApCsel 10:3, ApCsel 19:7, Luk 3:23, Luk 9:14, Luk 9:28, Luk 22:41 ...
+proveniencia: scope=range:2Móz 15:5 | forras=LXX_OS/exodus.tsv+TAGNT_kivonat.tsv | n=8 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "2Móz 15:8"
+# LXX-híd 2Móz 15:8 — 21 görög szó-előfordulás
+# LXX-vers: Exodus 15:8 (karoli_ok=egyező)
+G2532	καὶ	conjunction
+G1223	διὰ	preposition
+G4151	πνεύματος	noun neut gen sg
+G3588	τοῦ	article masc/neut gen sg
+G2372	θυμοῦ	noun masc gen sg
+G4771	σου	pronoun 2nd gen sg
+G1339	διέστη	verb aor ind act 3rd sg
+G3588	τὸ	article neut nom/voc/acc sg
+G5204	ὕδωρ	noun neut nom/voc/acc sg
+G4078	ἐπάγη	verb aor ind pass 3rd sg
+G5616	ὡσεὶ	adverb
+G5038	τεῖχος	noun neut nom/voc/acc sg
+G3588	τὰ	article neut nom/voc/acc pl
+G5204	ὕδατα	noun neut nom/voc/acc pl
+G4078	ἐπάγη	verb aor ind pass 3rd sg
+G3588	τὰ	article neut nom/voc/acc pl
+G2949	κύματα	noun neut nom/voc/acc pl
+G1722	ἐν	preposition
+G3319	μέσῳ	noun neut dat sg
+G3588	τῆς	article fem gen sg
+G2281	θαλάσσης	noun fem gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G1223: 616 ÚSZ-vers — 1Ján 2:12, 1Ján 3:1, 1Ján 4:5, 1Ján 4:9, 1Ján 5:6, 1Kor 1:1, 1Kor 1:9, 1Kor 1:10, 1Kor 1:21, 1Kor 2:10 ...
+  G1339: 3 ÚSZ-vers — ApCsel 27:28, Luk 22:59, Luk 24:51
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2281: 83 ÚSZ-vers — 1Kor 10:1, 1Kor 10:2, 2Kor 11:26, ApCsel 4:24, ApCsel 7:36, ApCsel 10:6, ApCsel 10:32, ApCsel 14:15, ApCsel 17:14, ApCsel 27:30 ...
+  G2372: 18 ÚSZ-vers — 2Kor 12:20, ApCsel 19:28, Ef 4:31, Gal 5:20, Jel 12:12, Jel 14:8, Jel 14:10, Jel 14:19, Jel 15:1, Jel 15:7 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2949: 5 ÚSZ-vers — ApCsel 27:41, Júd 1:13, Mk 4:37, Mt 8:24, Mt 14:24
+  G3319: 58 ÚSZ-vers — 1Kor 5:2, 1Kor 6:5, 1Thessz 2:7, 2Kor 6:17, 2Thessz 2:7, ApCsel 1:15, ApCsel 1:18, ApCsel 2:22, ApCsel 4:7, ApCsel 17:22 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G4078: 1 ÚSZ-vers — Zsid 8:2
+  G4151: 351 ÚSZ-vers — 1Ján 3:24, 1Ján 4:1, 1Ján 4:2, 1Ján 4:3, 1Ján 4:6, 1Ján 4:13, 1Ján 5:6, 1Ján 5:7, 1Ján 5:8, 1Kor 2:4 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5038: 9 ÚSZ-vers — 2Kor 11:33, ApCsel 9:25, Jel 21:12, Jel 21:14, Jel 21:15, Jel 21:17, Jel 21:18, Jel 21:19, Zsid 11:30
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+  G5616: 21 ÚSZ-vers — ApCsel 1:15, ApCsel 2:3, ApCsel 2:41, ApCsel 6:15, ApCsel 10:3, ApCsel 19:7, Luk 3:23, Luk 9:14, Luk 9:28, Luk 22:41 ...
+proveniencia: scope=range:2Móz 15:8 | forras=LXX_OS/exodus.tsv+TAGNT_kivonat.tsv | n=21 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "5Móz 8:7"
+# LXX-híd 5Móz 8:7 — 27 görög szó-előfordulás
+# LXX-vers: Deuteronomy 8:7 (karoli_ok=egyező)
+G3588	ὁ	article masc nom sg
+G1063	γὰρ	particle
+G2962	κύριος	noun masc nom sg
+G3588	ὁ	article masc nom sg
+G2316	θεός	noun masc nom sg
+G4771	σου	pronoun 2nd gen sg
+G1521	εἰσάγει	verb pres ind act 3rd sg
+G4771	σε	pronoun 2nd acc sg
+G1519	εἰς	preposition
+G1093	γῆν	noun fem acc sg
+G0018	ἀγαθὴν	adjective fem acc sg
+G2532	καὶ	conjunction
+G4183	πολλήν	adjective fem acc sg
+G3739	οὗ	pronoun masc/neut gen sg
+	χείμαρροι	noun masc nom pl
+G5204	ὑδάτων	noun neut gen pl
+G2532	καὶ	conjunction
+G4077	πηγαὶ	noun fem nom pl
+G0012	ἀβύσσων	noun fem/neut gen pl
+G1607	ἐκπορευόμεναι	participle pres ptc mid/pass fem nom/voc pl
+G1223	διὰ	preposition
+G3588	τῶν	article masc/fem/neut gen pl
+	πεδίων	noun neut gen pl
+G2532	καὶ	conjunction
+G1223	διὰ	preposition
+G3588	τῶν	article masc/fem/neut gen pl
+G3735	ὀρέων	noun neut gen pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0018: 91 ÚSZ-vers — 1Pét 2:18, 1Pét 3:10, 1Pét 3:11, 1Pét 3:13, 1Pét 3:16, 1Pét 3:21, 1Thessz 3:6, 1Thessz 5:15, 1Tim 1:5, 1Tim 1:19 ...
+  G1063: 1029 ÚSZ-vers — 1Ján 2:19, 1Ján 4:20, 1Ján 5:3, 1Kor 1:11, 1Kor 1:17, 1Kor 1:18, 1Kor 1:19, 1Kor 1:21, 1Kor 1:26, 1Kor 2:2 ...
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G1223: 616 ÚSZ-vers — 1Ján 2:12, 1Ján 3:1, 1Ján 4:5, 1Ján 4:9, 1Ján 5:6, 1Kor 1:1, 1Kor 1:9, 1Kor 1:10, 1Kor 1:21, 1Kor 2:10 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G1521: 11 ÚSZ-vers — ApCsel 7:45, ApCsel 9:8, ApCsel 21:28, ApCsel 21:29, ApCsel 21:37, ApCsel 22:24, Ján 18:16, Luk 2:27, Luk 14:21, Luk 22:54 ...
+  G1607: 34 ÚSZ-vers — ApCsel 9:28, ApCsel 19:12, ApCsel 25:4, Ef 4:29, Jel 1:16, Jel 4:5, Jel 9:17, Jel 9:18, Jel 11:5, Jel 16:14 ...
+  G2316: 1173 ÚSZ-vers — 1Ján 1:5, 1Ján 2:5, 1Ján 2:14, 1Ján 2:17, 1Ján 3:1, 1Ján 3:2, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:17 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2962: 691 ÚSZ-vers — 1Kor 1:2, 1Kor 1:3, 1Kor 1:7, 1Kor 1:8, 1Kor 1:9, 1Kor 1:10, 1Kor 1:31, 1Kor 2:8, 1Kor 2:16, 1Kor 3:5 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3735: 65 ÚSZ-vers — 1Kor 13:2, 2Pét 1:18, ApCsel 1:12, ApCsel 7:30, ApCsel 7:38, Gal 4:24, Gal 4:25, Jel 6:14, Jel 6:15, Jel 6:16 ...
+  G3739: 1248 ÚSZ-vers — 1Ján 1:1, 1Ján 1:3, 1Ján 1:5, 1Ján 2:5, 1Ján 2:7, 1Ján 2:8, 1Ján 2:24, 1Ján 2:25, 1Ján 2:27, 1Ján 3:11 ...
+  G4077: 11 ÚSZ-vers — 2Pét 2:17, Jak 3:11, Jak 3:12, Jel 7:17, Jel 8:10, Jel 14:7, Jel 16:4, Jel 21:6, Ján 4:6, Ján 4:14 ...
+  G4183: 342 ÚSZ-vers — 1Ján 2:18, 1Ján 4:1, 1Kor 1:26, 1Kor 2:3, 1Kor 4:15, 1Kor 8:5, 1Kor 10:17, 1Kor 10:33, 1Kor 11:30, 1Kor 12:12 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:5Móz 8:7 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=27 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "5Móz 33:13"
+# LXX-híd 5Móz 33:13 — 20 görög szó-előfordulás
+# LXX-vers: Deuteronomy 33:13 (karoli_ok=egyező)
+G2532	καὶ	conjunction
+G3588	τῷ	article masc/neut dat sg
+G2501	Ιωσηφ	proper noun
+G3004	εἶπεν	verb aor ind act 3rd sg
+G0575	ἀπ᾿	preposition
+G2129	εὐλογίας	noun fem gen sg
+G2962	κυρίου	noun masc gen sg
+G3588	ἡ	article fem nom sg
+G1093	γῆ	noun fem nom sg
+G0846	αὐτοῦ	pronoun 3rd gen sg
+G0575	ἀπὸ	preposition
+G5610	ὡρῶν	noun fem gen pl
+G3772	οὐρανοῦ	noun masc gen sg
+G2532	καὶ	conjunction
+	δρόσου	noun fem gen sg
+G2532	καὶ	conjunction
+G0575	ἀπὸ	preposition
+G0012	ἀβύσσων	noun fem/neut gen pl
+G4077	πηγῶν	noun fem gen pl
+	κάτωθεν	adverb
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0575: 623 ÚSZ-vers — 1Ján 1:1, 1Ján 1:5, 1Ján 1:7, 1Ján 1:9, 1Ján 2:7, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20, 1Ján 2:24, 1Ján 2:27 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G2129: 14 ÚSZ-vers — 1Kor 10:16, 1Pét 3:9, 2Kor 9:5, 2Kor 9:6, Ef 1:3, Gal 3:14, Jak 3:10, Jel 5:12, Jel 5:13, Jel 7:12 ...
+  G2501: 35 ÚSZ-vers — ApCsel 1:23, ApCsel 4:36, ApCsel 7:9, ApCsel 7:13, ApCsel 7:14, ApCsel 7:18, Jel 7:8, Ján 1:45, Ján 4:5, Ján 6:42 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2962: 691 ÚSZ-vers — 1Kor 1:2, 1Kor 1:3, 1Kor 1:7, 1Kor 1:8, 1Kor 1:9, 1Kor 1:10, 1Kor 1:31, 1Kor 2:8, 1Kor 2:16, 1Kor 3:5 ...
+  G3004: 1255 ÚSZ-vers — 1Ján 2:4, 1Ján 2:6, 1Ján 2:9, 1Ján 5:16, 1Kor 1:10, 1Kor 1:12, 1Kor 3:4, 1Kor 6:5, 1Kor 7:6, 1Kor 7:8 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3772: 261 ÚSZ-vers — 1Ján 5:7, 1Kor 8:5, 1Kor 15:47, 1Pét 1:4, 1Pét 1:12, 1Pét 3:22, 1Thessz 1:10, 1Thessz 4:16, 2Kor 5:1, 2Kor 5:2 ...
+  G4077: 11 ÚSZ-vers — 2Pét 2:17, Jak 3:11, Jak 3:12, Jel 7:17, Jel 8:10, Jel 14:7, Jel 16:4, Jel 21:6, Ján 4:6, Ján 4:14 ...
+  G5610: 100 ÚSZ-vers — 1Ján 2:18, 1Kor 4:11, 1Kor 15:30, 1Thessz 2:17, 2Kor 7:8, ApCsel 2:15, ApCsel 3:1, ApCsel 5:7, ApCsel 10:3, ApCsel 10:9 ...
+proveniencia: scope=range:5Móz 33:13 | forras=LXX_OS/deuteronomy.tsv+TAGNT_kivonat.tsv | n=20 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Ez 26:19"
+# LXX-híd Ez 26:19 — 29 görög szó-előfordulás
+# LXX-vers: Ezekiel 26:19 (karoli_ok=egyező)
+G3754	ὅτι	conjunction
+G3592	τάδε	pronoun neut nom/voc/acc pl
+G3004	λέγει	verb pres ind act 3rd sg
+G2962	κύριος	noun masc nom sg
+G2962	κύριος	noun masc nom sg
+G3752	ὅταν	conjunction
+G1325	δῶ	verb aor subj act 1st sg
+G4771	σε	pronoun 2nd acc sg
+G4172	πόλιν	noun fem acc sg
+G2049	ἠρημωμένην	participle perf ptc mid/pass fem acc sg
+	ὡς	conjunction
+G3588	τὰς	article fem acc pl
+G4172	πόλεις	noun fem acc pl
+G3588	τὰς	article fem acc pl
+G3361	μὴ	particle
+G2730	κατοικηθησομένας	participle fut ptc pass fem acc pl
+G1722	ἐν	preposition
+G3588	τῷ	article masc/neut dat sg
+G0321	ἀναγαγεῖν	verb aor inf act
+G1473	με	pronoun 1st acc sg
+G1909	ἐπὶ	preposition
+G4771	σὲ	pronoun 2nd acc sg
+G3588	τὴν	article fem acc sg
+G0012	ἄβυσσον	noun fem acc sg
+G2532	καὶ	conjunction
+G2619	κατακαλύψῃ	verb aor subj act 3rd sg
+G4771	σε	pronoun 2nd acc sg
+G5204	ὕδωρ	noun neut nom/voc/acc sg
+G4183	πολύ	adjective neut nom/voc/acc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0321: 23 ÚSZ-vers — ApCsel 7:41, ApCsel 9:39, ApCsel 12:4, ApCsel 13:13, ApCsel 16:11, ApCsel 16:34, ApCsel 18:21, ApCsel 20:3, ApCsel 20:13, ApCsel 21:1 ...
+  G1325: 379 ÚSZ-vers — 1Ján 3:1, 1Ján 3:23, 1Ján 3:24, 1Ján 4:13, 1Ján 5:11, 1Ján 5:16, 1Ján 5:20, 1Kor 1:4, 1Kor 3:5, 1Kor 3:10 ...
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G1909: 794 ÚSZ-vers — 1Ján 3:3, 1Kor 1:4, 1Kor 2:9, 1Kor 3:12, 1Kor 6:1, 1Kor 6:6, 1Kor 7:5, 1Kor 7:36, 1Kor 7:39, 1Kor 8:5 ...
+  G2049: 5 ÚSZ-vers — Jel 17:16, Jel 18:17, Jel 18:19, Luk 11:17, Mt 12:25
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2619: 2 ÚSZ-vers — 1Kor 11:6, 1Kor 11:7
+  G2730: 41 ÚSZ-vers — 2Pét 3:13, ApCsel 1:19, ApCsel 1:20, ApCsel 2:5, ApCsel 2:9, ApCsel 2:14, ApCsel 4:16, ApCsel 7:2, ApCsel 7:4, ApCsel 7:48 ...
+  G2962: 691 ÚSZ-vers — 1Kor 1:2, 1Kor 1:3, 1Kor 1:7, 1Kor 1:8, 1Kor 1:9, 1Kor 1:10, 1Kor 1:31, 1Kor 2:8, 1Kor 2:16, 1Kor 3:5 ...
+  G3004: 1255 ÚSZ-vers — 1Ján 2:4, 1Ján 2:6, 1Ján 2:9, 1Ján 5:16, 1Kor 1:10, 1Kor 1:12, 1Kor 3:4, 1Kor 6:5, 1Kor 7:6, 1Kor 7:8 ...
+  G3361: 935 ÚSZ-vers — 1Ján 2:1, 1Ján 2:4, 1Ján 2:15, 1Ján 2:22, 1Ján 2:28, 1Ján 3:10, 1Ján 3:13, 1Ján 3:14, 1Ján 3:18, 1Ján 3:21 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3592: 11 ÚSZ-vers — ApCsel 15:23, ApCsel 21:11, Jak 4:13, Jel 2:1, Jel 2:8, Jel 2:12, Jel 2:18, Jel 3:1, Jel 3:7, Jel 3:14 ...
+  G3752: 120 ÚSZ-vers — 1Ján 5:2, 1Kor 3:4, 1Kor 13:10, 1Kor 14:26, 1Kor 15:24, 1Kor 15:27, 1Kor 15:28, 1Kor 15:54, 1Kor 16:2, 1Kor 16:3 ...
+  G3754: 1215 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:8, 1Ján 2:11, 1Ján 2:12 ...
+  G4172: 156 ÚSZ-vers — 2Kor 11:26, 2Kor 11:32, 2Pét 2:6, ApCsel 4:27, ApCsel 5:16, ApCsel 7:58, ApCsel 8:5, ApCsel 8:8, ApCsel 8:9, ApCsel 8:40 ...
+  G4183: 342 ÚSZ-vers — 1Ján 2:18, 1Ján 4:1, 1Kor 1:26, 1Kor 2:3, 1Kor 4:15, 1Kor 8:5, 1Kor 10:17, 1Kor 10:33, 1Kor 11:30, 1Kor 12:12 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:Ez 26:19 | forras=LXX_OS/ezekiel.tsv+TAGNT_kivonat.tsv | n=29 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Ez 31:4"
+# LXX-híd Ez 31:4 — 26 görög szó-előfordulás
+# LXX-vers: Ezekiel 31:4 (karoli_ok=egyező)
+G5204	ὕδωρ	noun neut nom/voc/acc sg
+G1625	ἐξέθρεψεν	verb aor ind act 3rd sg
+G0846	αὐτόν	pronoun 3rd acc sg
+G3588	ἡ	article fem nom sg
+G0012	ἄβυσσος	noun fem nom sg
+G5312	ὕψωσεν	verb aor ind act 3rd sg
+G0846	αὐτόν	pronoun 3rd acc sg
+G3588	τοὺς	article masc acc pl
+G4215	ποταμοὺς	noun masc acc pl
+G0846	αὐτῆς	pronoun 3rd gen sg
+G0071	ἤγαγεν	verb aor ind act 3rd sg
+G2945	κύκλῳ	adverb
+G3588	τῶν	article masc/fem/neut gen pl
+	φυτῶν	noun neut gen pl
+G0846	αὐτοῦ	pronoun 3rd gen sg
+G2532	καὶ	conjunction
+G3588	τὰ	article neut nom/voc/acc pl
+	συστέματα	noun neut nom/voc/acc pl
+G0846	αὐτῆς	pronoun 3rd gen sg
+G1821	ἐξαπέστειλεν	verb aor ind act 3rd sg
+G1519	εἰς	preposition
+G3956	πάντα	adjective neut nom/voc/acc pl
+G3588	τὰ	article neut nom/voc/acc pl
+G3586	ξύλα	noun neut nom/voc/acc pl
+G3588	τοῦ	article masc/neut gen sg
+	πεδίου	noun neut gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0071: 68 ÚSZ-vers — 1Kor 12:2, 1Thessz 4:14, 2Tim 3:6, 2Tim 4:11, ApCsel 5:21, ApCsel 5:26, ApCsel 5:27, ApCsel 6:12, ApCsel 8:32, ApCsel 9:2 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G1625: 2 ÚSZ-vers — Ef 5:29, Ef 6:4
+  G1821: 13 ÚSZ-vers — ApCsel 7:12, ApCsel 9:30, ApCsel 11:22, ApCsel 12:11, ApCsel 13:26, ApCsel 17:14, ApCsel 22:21, Gal 4:4, Gal 4:6, Luk 1:53 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2945: 8 ÚSZ-vers — Jel 4:6, Jel 5:11, Jel 7:11, Luk 9:12, Mk 3:34, Mk 6:6, Mk 6:36, Róm 15:19
+  G3586: 18 ÚSZ-vers — 1Kor 3:12, 1Pét 2:24, ApCsel 5:30, ApCsel 10:39, ApCsel 13:29, ApCsel 16:24, Gal 3:13, Jel 2:7, Jel 18:12, Jel 22:2 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3956: 1100 ÚSZ-vers — 1Ján 1:7, 1Ján 1:9, 1Ján 2:16, 1Ján 2:19, 1Ján 2:20, 1Ján 2:21, 1Ján 2:23, 1Ján 2:27, 1Ján 2:29, 1Ján 3:3 ...
+  G4215: 17 ÚSZ-vers — 2Kor 11:26, ApCsel 16:13, Jel 8:10, Jel 9:14, Jel 12:15, Jel 12:16, Jel 16:4, Jel 16:12, Jel 22:1, Jel 22:2 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+  G5312: 16 ÚSZ-vers — 1Pét 5:6, 2Kor 11:7, ApCsel 2:33, ApCsel 5:31, ApCsel 13:17, Jak 4:10, Ján 3:14, Ján 8:28, Ján 12:32, Ján 12:34 ...
+proveniencia: scope=range:Ez 31:4 | forras=LXX_OS/ezekiel.tsv+TAGNT_kivonat.tsv | n=26 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Ez 31:15"
+# LXX-híd Ez 31:15 — 37 görög szó-előfordulás
+# LXX-vers: Ezekiel 31:15 (karoli_ok=egyező)
+G3592	τάδε	pronoun neut nom/voc/acc pl
+G3004	λέγει	verb pres ind act 3rd sg
+G2962	κύριος	noun masc nom sg
+G2962	κύριος	noun masc nom sg
+G1722	ἐν	preposition
+G3739	ᾗ	pronoun fem dat sg
+G2250	ἡμέρᾳ	noun fem dat sg
+G2597	κατέβη	verb aor ind act 3rd sg
+G1519	εἰς	preposition
+G0086	ᾅδου	noun masc gen sg
+G3996	ἐπένθησεν	verb aor ind act 3rd sg
+G0846	αὐτὸν	pronoun 3rd acc sg
+G3588	ἡ	article fem nom sg
+G0012	ἄβυσσος	noun fem nom sg
+G2532	καὶ	conjunction
+G2186	ἐπέστησα	verb aor ind act 1st sg
+G3588	τοὺς	article masc acc pl
+G4215	ποταμοὺς	noun masc acc pl
+G0846	αὐτῆς	pronoun 3rd gen sg
+G2532	καὶ	conjunction
+G2967	ἐκώλυσα	verb aor ind act 1st sg
+G4128	πλῆθος	noun neut nom/voc/acc sg
+G5204	ὕδατος	noun neut gen sg
+G2532	καὶ	conjunction
+	ἐσκότασεν	verb aor ind act 3rd sg
+G1909	ἐπ᾿	preposition
+G0846	αὐτὸν	pronoun 3rd acc sg
+G3588	ὁ	article masc nom sg
+	Λίβανος	proper noun masc nom sg
+G3956	πάντα	adjective neut nom/voc/acc pl
+G3588	τὰ	article neut nom/voc/acc pl
+G3586	ξύλα	noun neut nom/voc/acc pl
+G3588	τοῦ	article masc/neut gen sg
+	πεδίου	noun neut gen sg
+G1909	ἐπ᾿	preposition
+G0846	αὐτῷ	pronoun 3rd dat sg
+G1590	ἐξελύθησαν	verb aor ind pass 3rd pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0086: 10 ÚSZ-vers — ApCsel 2:27, ApCsel 2:31, Jel 1:18, Jel 6:8, Jel 20:13, Jel 20:14, Luk 10:15, Luk 16:23, Mt 11:23, Mt 16:18
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G1590: 5 ÚSZ-vers — Gal 6:9, Mk 8:3, Mt 15:32, Zsid 12:3, Zsid 12:5
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G1909: 794 ÚSZ-vers — 1Ján 3:3, 1Kor 1:4, 1Kor 2:9, 1Kor 3:12, 1Kor 6:1, 1Kor 6:6, 1Kor 7:5, 1Kor 7:36, 1Kor 7:39, 1Kor 8:5 ...
+  G2186: 21 ÚSZ-vers — 1Thessz 5:3, 2Tim 4:2, 2Tim 4:6, ApCsel 4:1, ApCsel 6:12, ApCsel 10:17, ApCsel 11:11, ApCsel 12:7, ApCsel 17:5, ApCsel 22:13 ...
+  G2250: 369 ÚSZ-vers — 1Ján 4:17, 1Kor 1:8, 1Kor 3:13, 1Kor 4:3, 1Kor 5:5, 1Kor 10:8, 1Kor 15:4, 1Kor 15:31, 1Pét 2:12, 1Pét 3:10 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2597: 82 ÚSZ-vers — 1Thessz 4:16, ApCsel 7:15, ApCsel 7:34, ApCsel 8:15, ApCsel 8:26, ApCsel 8:38, ApCsel 10:11, ApCsel 10:20, ApCsel 10:21, ApCsel 11:5 ...
+  G2962: 691 ÚSZ-vers — 1Kor 1:2, 1Kor 1:3, 1Kor 1:7, 1Kor 1:8, 1Kor 1:9, 1Kor 1:10, 1Kor 1:31, 1Kor 2:8, 1Kor 2:16, 1Kor 3:5 ...
+  G2967: 23 ÚSZ-vers — 1Kor 14:39, 1Thessz 2:16, 1Tim 4:3, 2Pét 2:16, 3Ján 1:10, ApCsel 8:36, ApCsel 10:47, ApCsel 11:17, ApCsel 16:6, ApCsel 24:23 ...
+  G3004: 1255 ÚSZ-vers — 1Ján 2:4, 1Ján 2:6, 1Ján 2:9, 1Ján 5:16, 1Kor 1:10, 1Kor 1:12, 1Kor 3:4, 1Kor 6:5, 1Kor 7:6, 1Kor 7:8 ...
+  G3586: 18 ÚSZ-vers — 1Kor 3:12, 1Pét 2:24, ApCsel 5:30, ApCsel 10:39, ApCsel 13:29, ApCsel 16:24, Gal 3:13, Jel 2:7, Jel 18:12, Jel 22:2 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3592: 11 ÚSZ-vers — ApCsel 15:23, ApCsel 21:11, Jak 4:13, Jel 2:1, Jel 2:8, Jel 2:12, Jel 2:18, Jel 3:1, Jel 3:7, Jel 3:14 ...
+  G3739: 1248 ÚSZ-vers — 1Ján 1:1, 1Ján 1:3, 1Ján 1:5, 1Ján 2:5, 1Ján 2:7, 1Ján 2:8, 1Ján 2:24, 1Ján 2:25, 1Ján 2:27, 1Ján 3:11 ...
+  G3956: 1100 ÚSZ-vers — 1Ján 1:7, 1Ján 1:9, 1Ján 2:16, 1Ján 2:19, 1Ján 2:20, 1Ján 2:21, 1Ján 2:23, 1Ján 2:27, 1Ján 2:29, 1Ján 3:3 ...
+  G3996: 10 ÚSZ-vers — 1Kor 5:2, 2Kor 12:21, Jak 4:9, Jel 18:11, Jel 18:15, Jel 18:19, Luk 6:25, Mk 16:10, Mt 5:4, Mt 9:15
+  G4128: 32 ÚSZ-vers — 1Pét 4:8, ApCsel 2:6, ApCsel 4:32, ApCsel 5:14, ApCsel 5:16, ApCsel 6:2, ApCsel 6:5, ApCsel 14:1, ApCsel 14:4, ApCsel 15:12 ...
+  G4215: 17 ÚSZ-vers — 2Kor 11:26, ApCsel 16:13, Jel 8:10, Jel 9:14, Jel 12:15, Jel 12:16, Jel 16:4, Jel 16:12, Jel 22:1, Jel 22:2 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:Ez 31:15 | forras=LXX_OS/ezekiel.tsv+TAGNT_kivonat.tsv | n=37 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Hab 3:10"
+# LXX-híd Hab 3:10 — 17 görög szó-előfordulás
+# LXX-vers: Habakkuk 3:10 (karoli_ok=egyező)
+G3708	ὄψονταί	verb fut ind mid 3rd pl
+G4771	σε	pronoun 2nd acc sg
+G2532	καὶ	conjunction
+G5605	ὠδινήσουσιν	verb fut ind act 3rd pl
+G2992	λαοί	noun masc nom pl
+G4650	σκορπίζων	participle pres ptc act masc nom sg
+G5204	ὕδατα	noun neut nom/voc/acc pl
+G4197	πορείας	noun fem acc pl
+G0846	αὐτοῦ	pronoun 3rd gen sg
+G1325	ἔδωκεν	verb aor ind act 3rd sg
+G3588	ἡ	article fem nom sg
+G0012	ἄβυσσος	noun fem nom sg
+G5456	φωνὴν	noun fem acc sg
+G0846	αὐτῆς	pronoun 3rd gen sg
+G5311	ὕψος	noun neut nom/voc/acc sg
+G5325	φαντασίας	noun fem gen sg
+G0846	αὐτῆς	pronoun 3rd gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1325: 379 ÚSZ-vers — 1Ján 3:1, 1Ján 3:23, 1Ján 3:24, 1Ján 4:13, 1Ján 5:11, 1Ján 5:16, 1Ján 5:20, 1Kor 1:4, 1Kor 3:5, 1Kor 3:10 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2992: 139 ÚSZ-vers — 1Kor 10:7, 1Kor 14:21, 1Pét 2:9, 1Pét 2:10, 2Kor 6:16, 2Pét 2:1, ApCsel 2:47, ApCsel 3:9, ApCsel 3:11, ApCsel 3:12 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3708: 58 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 3:6, 1Ján 4:20, 1Kor 9:1, 1Pét 1:8, 1Thessz 5:15, 3Ján 1:11, ApCsel 7:44 ...
+  G4197: 2 ÚSZ-vers — Jak 1:11, Luk 13:22
+  G4650: 5 ÚSZ-vers — 2Kor 9:9, Ján 10:12, Ján 16:32, Luk 11:23, Mt 12:30
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+  G5311: 6 ÚSZ-vers — Ef 3:18, Ef 4:8, Jak 1:9, Jel 21:16, Luk 1:78, Luk 24:49
+  G5325: 1 ÚSZ-vers — ApCsel 25:23
+  G5456: 129 ÚSZ-vers — 1Kor 14:7, 1Kor 14:8, 1Kor 14:10, 1Kor 14:11, 1Thessz 4:16, 2Pét 1:17, 2Pét 1:18, 2Pét 2:16, ApCsel 2:6, ApCsel 2:14 ...
+  G5605: 3 ÚSZ-vers — Gal 4:19, Gal 4:27, Jel 12:2
+proveniencia: scope=range:Hab 3:10 | forras=LXX_OS/habakkuk.tsv+TAGNT_kivonat.tsv | n=17 | ts=2026-11-23T11:59Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jób 28:14"
+# LXX-híd Jób 28:14 — 13 görög szó-előfordulás
+# LXX-vers: Job (LXX) 28:14 (karoli_ok=egyező)
+G0012	ἄβυσσος	noun fem nom sg
+G3004	εἶπεν	verb aor ind act 3rd sg
+G3756	οὐκ	particle
+G1510	ἔστιν	verb pres ind act 3rd sg
+G1722	ἐν	preposition
+G1473	ἐμοί	pronoun 1st dat sg
+G2532	καὶ	conjunction
+G2281	θάλασσα	noun fem nom sg
+G3004	εἶπεν	verb aor ind act 3rd sg
+G3756	οὐκ	particle
+G1510	ἔστιν	verb pres ind act 3rd sg
+G3326	μετ᾿	preposition
+G1473	ἐμοῦ	pronoun 1st gen sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1510: 2044 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:4, 1Ján 1:5, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10, 1Ján 2:2, 1Ján 2:4 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2281: 83 ÚSZ-vers — 1Kor 10:1, 1Kor 10:2, 2Kor 11:26, ApCsel 4:24, ApCsel 7:36, ApCsel 10:6, ApCsel 10:32, ApCsel 14:15, ApCsel 17:14, ApCsel 27:30 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3004: 1255 ÚSZ-vers — 1Ján 2:4, 1Ján 2:6, 1Ján 2:9, 1Ján 5:16, 1Kor 1:10, 1Kor 1:12, 1Kor 3:4, 1Kor 6:5, 1Kor 7:6, 1Kor 7:8 ...
+  G3326: 449 ÚSZ-vers — 1Ján 1:3, 1Ján 1:6, 1Ján 1:7, 1Ján 2:19, 1Ján 4:17, 1Kor 6:6, 1Kor 6:7, 1Kor 7:12, 1Kor 7:13, 1Kor 11:25 ...
+  G3756: 1413 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:8, 1Ján 1:10, 1Ján 2:2, 1Ján 2:4, 1Ján 2:7, 1Ján 2:10, 1Ján 2:11, 1Ján 2:15 ...
+proveniencia: scope=range:Jób 28:14 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=13 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jób 38:16"
+# LXX-híd Jób 38:16 — 10 görög szó-előfordulás
+# LXX-vers: Job (LXX) 38:16 (karoli_ok=versmegfeleltetes_tabla)
+G2064	ἦλθες	verb aor ind act 2nd sg
+G1161	δὲ	particle
+G1909	ἐπὶ	preposition
+G4077	πηγὴν	noun fem acc sg
+G2281	θαλάσσης	noun fem gen sg
+G1722	ἐν	preposition
+G1161	δὲ	particle
+G2487	ἴχνεσιν	noun neut dat pl
+G0012	ἀβύσσου	noun fem/neut gen sg
+G4043	περιεπάτησας	verb aor ind act 2nd sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G1161: 2609 ÚSZ-vers — 1Ján 1:3, 1Ján 1:7, 1Ján 2:2, 1Ján 2:5, 1Ján 2:11, 1Ján 2:17, 1Ján 3:2, 1Ján 3:12, 1Ján 3:17, 1Ján 4:18 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G1909: 794 ÚSZ-vers — 1Ján 3:3, 1Kor 1:4, 1Kor 2:9, 1Kor 3:12, 1Kor 6:1, 1Kor 6:6, 1Kor 7:5, 1Kor 7:36, 1Kor 7:39, 1Kor 8:5 ...
+  G2064: 606 ÚSZ-vers — 1Ján 2:18, 1Ján 4:2, 1Ján 4:3, 1Ján 5:6, 1Kor 2:1, 1Kor 4:5, 1Kor 4:18, 1Kor 4:19, 1Kor 4:21, 1Kor 11:26 ...
+  G2281: 83 ÚSZ-vers — 1Kor 10:1, 1Kor 10:2, 2Kor 11:26, ApCsel 4:24, ApCsel 7:36, ApCsel 10:6, ApCsel 10:32, ApCsel 14:15, ApCsel 17:14, ApCsel 27:30 ...
+  G2487: 3 ÚSZ-vers — 1Pét 2:21, 2Kor 12:18, Róm 4:12
+  G4043: 89 ÚSZ-vers — 1Ján 1:6, 1Ján 1:7, 1Ján 2:6, 1Ján 2:11, 1Kor 3:3, 1Kor 7:17, 1Pét 5:8, 1Thessz 2:12, 1Thessz 4:1, 1Thessz 4:12 ...
+  G4077: 11 ÚSZ-vers — 2Pét 2:17, Jak 3:11, Jak 3:12, Jel 7:17, Jel 8:10, Jel 14:7, Jel 16:4, Jel 21:6, Ján 4:6, Ján 4:14 ...
+proveniencia: scope=range:Jób 38:16 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=10 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jób 38:30"
+# LXX-híd Jób 38:30 — 10 görög szó-előfordulás
+# LXX-vers: Job (LXX) 38:30 (karoli_ok=versmegfeleltetes_tabla)
+G3739	ἣ	pronoun fem nom sg
+G2597	καταβαίνει	verb pres ind act 3rd sg
+G5618	ὥσπερ	adverb
+G5204	ὕδωρ	noun neut nom/voc/acc sg
+G4482	ῥέον	participle pres ptc act neut nom/voc/acc sg
+G4383	πρόσωπον	noun neut nom/voc/acc sg
+G1161	δὲ	particle
+G0012	ἀβύσσου	noun fem/neut gen sg
+G5100	τίς	pronoun masc nom sg
+G4078	ἔπηξεν	verb aor ind act 3rd sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G1161: 2609 ÚSZ-vers — 1Ján 1:3, 1Ján 1:7, 1Ján 2:2, 1Ján 2:5, 1Ján 2:11, 1Ján 2:17, 1Ján 3:2, 1Ján 3:12, 1Ján 3:17, 1Ján 4:18 ...
+  G2597: 82 ÚSZ-vers — 1Thessz 4:16, ApCsel 7:15, ApCsel 7:34, ApCsel 8:15, ApCsel 8:26, ApCsel 8:38, ApCsel 10:11, ApCsel 10:20, ApCsel 10:21, ApCsel 11:5 ...
+  G3739: 1248 ÚSZ-vers — 1Ján 1:1, 1Ján 1:3, 1Ján 1:5, 1Ján 2:5, 1Ján 2:7, 1Ján 2:8, 1Ján 2:24, 1Ján 2:25, 1Ján 2:27, 1Ján 3:11 ...
+  G4078: 1 ÚSZ-vers — Zsid 8:2
+  G4383: 73 ÚSZ-vers — 1Kor 13:12, 1Kor 14:25, 1Pét 3:12, 1Thessz 2:17, 1Thessz 3:10, 2Kor 1:11, 2Kor 2:10, 2Kor 3:7, 2Kor 3:13, 2Kor 3:18 ...
+  G4482: 1 ÚSZ-vers — Ján 7:38
+  G5100: 497 ÚSZ-vers — 1Ján 2:1, 1Ján 2:15, 1Ján 2:27, 1Ján 4:20, 1Ján 5:14, 1Ján 5:16, 1Kor 1:15, 1Kor 1:16, 1Kor 2:2, 1Kor 3:4 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+  G5618: 36 ÚSZ-vers — 1Kor 8:5, 1Kor 10:7, 1Kor 11:12, 1Kor 15:22, 1Kor 16:1, 1Thessz 5:3, 2Kor 8:7, ApCsel 2:2, ApCsel 3:17, ApCsel 11:15 ...
+proveniencia: scope=range:Jób 38:30 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=10 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jób 41:32"
+# LXX-híd Jób 41:32 — 11 görög szó-előfordulás
+# LXX-vers: Job (LXX) 41:24 (karoli_ok=egyező)
+G3588	τὸν	article masc acc sg
+G1161	δὲ	particle
+	τάρταρον	noun masc acc sg
+G3588	τῆς	article fem gen sg
+G0012	ἀβύσσου	noun fem/neut gen sg
+G5618	ὥσπερ	adverb
+G0164	αἰχμάλωτον	adjective masc acc sg
+G3049	ἐλογίσατο	verb aor ind mid/pass 3rd sg
+G0012	ἄβυσσον	noun fem acc sg
+G1519	εἰς	preposition
+	περίπατον	noun masc acc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0164: 1 ÚSZ-vers — Luk 4:18
+  G1161: 2609 ÚSZ-vers — 1Ján 1:3, 1Ján 1:7, 1Ján 2:2, 1Ján 2:5, 1Ján 2:11, 1Ján 2:17, 1Ján 3:2, 1Ján 3:12, 1Ján 3:17, 1Ján 4:18 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G3049: 40 ÚSZ-vers — 1Kor 4:1, 1Kor 13:5, 1Kor 13:11, 1Pét 5:12, 2Kor 3:5, 2Kor 5:19, 2Kor 10:2, 2Kor 10:7, 2Kor 10:11, 2Kor 11:5 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G5618: 36 ÚSZ-vers — 1Kor 8:5, 1Kor 10:7, 1Kor 11:12, 1Kor 15:22, 1Kor 16:1, 1Thessz 5:3, 2Kor 8:7, ApCsel 2:2, ApCsel 3:17, ApCsel 11:15 ...
+proveniencia: scope=range:Jób 41:32 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jón 2:6"
+# LXX-híd Jón 2:6 — 16 görög szó-előfordulás
+# LXX-vers: Jonah 2:6 (karoli_ok=mt_szamozas_kovetes)
+	περιεχύθη	verb aor ind pass 3rd sg
+G5204	ὕδωρ	noun neut nom/voc/acc sg
+G1473	μοι	pronoun 1st dat sg
+G2193	ἕως	preposition
+G5590	ψυχῆς	noun fem gen sg
+G0012	ἄβυσσος	noun fem nom sg
+G2944	ἐκύκλωσέν	verb aor ind act 3rd sg
+G1473	με	pronoun 1st acc sg
+G2078	ἐσχάτη	adjective fem nom sg
+	ἔδυ	verb aor ind act 3rd sg
+G3588	ἡ	article fem nom sg
+G2776	κεφαλή	noun fem nom sg
+G1473	μου	pronoun 1st gen sg
+G1519	εἰς	preposition
+	σχισμὰς	noun fem acc pl
+G3735	ὀρέων	noun neut gen pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G2078: 49 ÚSZ-vers — 1Ján 2:18, 1Kor 4:9, 1Kor 15:8, 1Kor 15:26, 1Kor 15:45, 1Kor 15:52, 1Pét 1:5, 1Pét 1:20, 2Pét 2:20, 2Pét 3:3 ...
+  G2193: 139 ÚSZ-vers — 1Ján 2:9, 1Kor 1:8, 1Kor 4:5, 1Kor 4:13, 1Kor 8:7, 1Kor 15:6, 1Kor 16:8, 1Tim 4:13, 2Kor 1:13, 2Kor 3:15 ...
+  G2776: 68 ÚSZ-vers — 1Kor 11:3, 1Kor 11:4, 1Kor 11:5, 1Kor 11:7, 1Kor 11:10, 1Kor 12:21, 1Pét 2:7, ApCsel 4:11, ApCsel 18:6, ApCsel 18:18 ...
+  G2944: 4 ÚSZ-vers — ApCsel 14:20, Ján 10:24, Luk 21:20, Zsid 11:30
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3735: 65 ÚSZ-vers — 1Kor 13:2, 2Pét 1:18, ApCsel 1:12, ApCsel 7:30, ApCsel 7:38, Gal 4:24, Gal 4:25, Jel 6:14, Jel 6:15, Jel 6:16 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+  G5590: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 15:45, 1Pét 1:9, 1Pét 1:22, 1Pét 2:11, 1Pét 2:25, 1Pét 3:20, 1Pét 4:19, 1Thessz 2:8, 1Thessz 5:23 ...
+proveniencia: scope=range:Jón 2:6 | forras=LXX_OS/jonah.tsv+TAGNT_kivonat.tsv | n=16 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Péld 3:20"
+# LXX-híd Péld 3:20 — 8 görög szó-előfordulás
+# LXX-vers: Proverbs 3:20 (karoli_ok=egyező)
+G1722	ἐν	preposition
+G0144	αἰσθήσει	noun fem dat sg
+G0012	ἄβυσσοι	noun fem nom pl
+G4486	ἐρράγησαν	verb aor ind pass 3rd pl
+G3509	νέφη	noun neut nom/voc/acc pl
+G1161	δὲ	particle
+G4482	ἐρρύησαν	verb aor ind pass 3rd pl
+	δρόσους	noun fem acc pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0144: 1 ÚSZ-vers — Fil 1:9
+  G1161: 2609 ÚSZ-vers — 1Ján 1:3, 1Ján 1:7, 1Ján 2:2, 1Ján 2:5, 1Ján 2:11, 1Ján 2:17, 1Ján 3:2, 1Ján 3:12, 1Ján 3:17, 1Ján 4:18 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G3509: 1 ÚSZ-vers — Zsid 12:1
+  G4482: 1 ÚSZ-vers — Ján 7:38
+  G4486: 7 ÚSZ-vers — Gal 4:27, Luk 5:37, Luk 9:42, Mk 2:22, Mk 9:18, Mt 7:6, Mt 9:17
+proveniencia: scope=range:Péld 3:20 | forras=LXX_OS/proverbs.tsv+TAGNT_kivonat.tsv | n=8 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Péld 8:24"
+# LXX-híd Péld 8:24 — 18 görög szó-előfordulás
+# LXX-vers: Proverbs 8:24 (karoli_ok=egyező)
+G4253	πρὸ	preposition
+G3588	τοῦ	article masc/neut gen sg
+G3588	τὴν	article fem acc sg
+G1093	γῆν	noun fem acc sg
+G4160	ποιῆσαι	verb aor inf act
+G2532	καὶ	conjunction
+G4253	πρὸ	preposition
+G3588	τοῦ	article masc/neut gen sg
+G3588	τὰς	article fem acc pl
+G0012	ἀβύσσους	noun fem acc pl
+G4160	ποιῆσαι	verb aor inf act
+G4253	πρὸ	preposition
+G3588	τοῦ	article masc/neut gen sg
+G4281	προελθεῖν	verb aor inf act
+G3588	τὰς	article fem acc pl
+G4077	πηγὰς	noun fem acc pl
+G3588	τῶν	article masc/fem/neut gen pl
+G5204	ὑδάτων	noun neut gen pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G4077: 11 ÚSZ-vers — 2Pét 2:17, Jak 3:11, Jak 3:12, Jel 7:17, Jel 8:10, Jel 14:7, Jel 16:4, Jel 21:6, Ján 4:6, Ján 4:14 ...
+  G4160: 522 ÚSZ-vers — 1Ján 1:6, 1Ján 1:10, 1Ján 2:17, 1Ján 2:29, 1Ján 3:4, 1Ján 3:7, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:22 ...
+  G4253: 47 ÚSZ-vers — 1Kor 2:7, 1Kor 4:5, 1Pét 1:20, 1Pét 4:8, 2Kor 12:2, 2Tim 1:9, 2Tim 4:21, ApCsel 5:36, ApCsel 12:6, ApCsel 12:14 ...
+  G4281: 9 ÚSZ-vers — 2Kor 9:5, ApCsel 12:10, ApCsel 20:5, ApCsel 20:13, Luk 1:17, Luk 22:47, Mk 6:33, Mk 14:35, Mt 26:39
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:Péld 8:24 | forras=LXX_OS/proverbs.tsv+TAGNT_kivonat.tsv | n=18 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Péld 8:27"
+# LXX-híd Péld 8:27 — 14 görög szó-előfordulás
+# LXX-vers: Proverbs 8:27 (karoli_ok=egyező)
+G2259	ἡνίκα	adverb
+G2090	ἡτοίμαζεν	verb imperf ind act 3rd sg
+G3588	τὸν	article masc acc sg
+G3772	οὐρανόν	noun masc acc sg
+G4840	συμπαρήμην	verb imperf ind mid 1st sg
+G0846	αὐτῷ	pronoun 3rd dat sg
+G2532	καὶ	conjunction
+G3753	ὅτε	conjunction
+G0873	ἀφώριζεν	verb imperf ind act 3rd sg
+G3588	τὸν	article masc acc sg
+G1438	ἑαυτοῦ	pronoun masc gen sg
+G2362	θρόνον	noun masc acc sg
+G1909	ἐπ᾿	preposition
+G0417	ἀνέμων	noun masc gen pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0417: 29 ÚSZ-vers — ApCsel 27:4, ApCsel 27:7, ApCsel 27:14, ApCsel 27:15, Ef 4:14, Jak 3:4, Jel 6:13, Jel 7:1, Ján 6:18, Júd 1:12 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G0873: 9 ÚSZ-vers — 2Kor 6:17, ApCsel 13:2, ApCsel 19:9, Gal 1:15, Gal 2:12, Luk 6:22, Mt 13:49, Mt 25:32, Róm 1:1
+  G1438: 305 ÚSZ-vers — 1Ján 1:8, 1Ján 3:3, 1Ján 5:10, 1Ján 5:18, 1Ján 5:21, 1Kor 3:18, 1Kor 6:7, 1Kor 6:19, 1Kor 7:2, 1Kor 7:37 ...
+  G1909: 794 ÚSZ-vers — 1Ján 3:3, 1Kor 1:4, 1Kor 2:9, 1Kor 3:12, 1Kor 6:1, 1Kor 6:6, 1Kor 7:5, 1Kor 7:36, 1Kor 7:39, 1Kor 8:5 ...
+  G2090: 40 ÚSZ-vers — 1Kor 2:9, 2Tim 2:21, ApCsel 23:23, Filem 1:22, Jel 8:6, Jel 9:7, Jel 9:15, Jel 12:6, Jel 16:12, Jel 19:7 ...
+  G2259: 2 ÚSZ-vers — 2Kor 3:15, 2Kor 3:16
+  G2362: 52 ÚSZ-vers — ApCsel 2:30, ApCsel 7:49, Jel 1:4, Jel 2:13, Jel 3:21, Jel 4:2, Jel 4:3, Jel 4:4, Jel 4:5, Jel 4:6 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3753: 105 ÚSZ-vers — 1Kor 12:2, 1Kor 13:11, 1Pét 3:20, 1Thessz 3:4, 2Thessz 3:10, 2Tim 4:3, 2Tim 4:22, ApCsel 1:13, ApCsel 8:12, ApCsel 8:39 ...
+  G3772: 261 ÚSZ-vers — 1Ján 5:7, 1Kor 8:5, 1Kor 15:47, 1Pét 1:4, 1Pét 1:12, 1Pét 3:22, 1Thessz 1:10, 1Thessz 4:16, 2Kor 5:1, 2Kor 5:2 ...
+  G4840: 1 ÚSZ-vers — ApCsel 25:24
+proveniencia: scope=range:Péld 8:27 | forras=LXX_OS/proverbs.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Péld 8:28"
+# LXX-híd Péld 8:28 — 14 görög szó-előfordulás
+# LXX-vers: Proverbs 8:28 (karoli_ok=egyező)
+G2259	ἡνίκα	adverb
+G2478	ἰσχυρὰ	adjective neut nom/voc/acc pl
+G4160	ἐποίει	verb imperf ind act 3rd sg
+G3588	τὰ	article neut nom/voc/acc pl
+	ἄνω	adverb
+G3509	νέφη	noun neut nom/voc/acc pl
+G2532	καὶ	conjunction
+	ὡς	conjunction
+G0804	ἀσφαλεῖς	noun masc acc pl
+G5087	ἐτίθει	verb imperf ind act 3rd sg
+G4077	πηγὰς	noun fem acc pl
+G3588	τῆς	article fem gen sg
+G5259	ὑπ᾿	preposition
+G3772	οὐρανὸν	noun masc acc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0804: 5 ÚSZ-vers — ApCsel 21:34, ApCsel 22:30, ApCsel 25:26, Fil 3:1, Zsid 6:19
+  G2259: 2 ÚSZ-vers — 2Kor 3:15, 2Kor 3:16
+  G2478: 27 ÚSZ-vers — 1Ján 2:14, 1Kor 1:25, 1Kor 1:27, 1Kor 4:10, 1Kor 10:22, 2Kor 10:10, Jel 5:2, Jel 6:15, Jel 10:1, Jel 18:2 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3509: 1 ÚSZ-vers — Zsid 12:1
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3772: 261 ÚSZ-vers — 1Ján 5:7, 1Kor 8:5, 1Kor 15:47, 1Pét 1:4, 1Pét 1:12, 1Pét 3:22, 1Thessz 1:10, 1Thessz 4:16, 2Kor 5:1, 2Kor 5:2 ...
+  G4077: 11 ÚSZ-vers — 2Pét 2:17, Jak 3:11, Jak 3:12, Jel 7:17, Jel 8:10, Jel 14:7, Jel 16:4, Jel 21:6, Ján 4:6, Ján 4:14 ...
+  G4160: 522 ÚSZ-vers — 1Ján 1:6, 1Ján 1:10, 1Ján 2:17, 1Ján 2:29, 1Ján 3:4, 1Ján 3:7, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:22 ...
+  G5087: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 3:10, 1Kor 3:11, 1Kor 9:18, 1Kor 12:18, 1Kor 12:28, 1Kor 15:25, 1Kor 16:2, 1Pét 2:6, 1Pét 2:8 ...
+  G5259: 206 ÚSZ-vers — 1Kor 1:11, 1Kor 2:12, 1Kor 2:15, 1Kor 4:3, 1Kor 6:12, 1Kor 7:25, 1Kor 8:3, 1Kor 9:20, 1Kor 10:1, 1Kor 10:9 ...
+proveniencia: scope=range:Péld 8:28 | forras=LXX_OS/proverbs.tsv+TAGNT_kivonat.tsv | n=14 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 33:7"
+# LXX-híd Zsolt 33:7 — 9 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 32:7 (karoli_ok=egyező)
+G4863	συνάγων	participle pres ptc act masc nom sg
+	ὡς	conjunction
+G0779	ἀσκὸν	noun masc acc sg
+G5204	ὕδατα	noun neut nom/voc/acc pl
+G2281	θαλάσσης	noun fem gen sg
+G5087	τιθεὶς	participle pres ptc act masc nom/voc sg
+G1722	ἐν	preposition
+G2344	θησαυροῖς	noun masc dat pl
+G0012	ἀβύσσους	noun fem acc pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0779: 4 ÚSZ-vers — Luk 5:37, Luk 5:38, Mk 2:22, Mt 9:17
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2281: 83 ÚSZ-vers — 1Kor 10:1, 1Kor 10:2, 2Kor 11:26, ApCsel 4:24, ApCsel 7:36, ApCsel 10:6, ApCsel 10:32, ApCsel 14:15, ApCsel 17:14, ApCsel 27:30 ...
+  G2344: 16 ÚSZ-vers — 2Kor 4:7, Kol 2:3, Luk 6:45, Luk 12:33, Luk 12:34, Luk 18:22, Mk 10:21, Mt 2:11, Mt 6:19, Mt 6:20 ...
+  G4863: 61 ÚSZ-vers — 1Kor 5:4, ApCsel 4:5, ApCsel 4:26, ApCsel 4:27, ApCsel 4:31, ApCsel 11:26, ApCsel 13:44, ApCsel 14:27, ApCsel 15:6, ApCsel 15:30 ...
+  G5087: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 3:10, 1Kor 3:11, 1Kor 9:18, 1Kor 12:18, 1Kor 12:28, 1Kor 15:25, 1Kor 16:2, 1Pét 2:6, 1Pét 2:8 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:Zsolt 33:7 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=9 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 36:7"
+# LXX-híd Zsolt 36:7 — 16 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 35:7 (karoli_ok=mt_szamozas_kovetes)
+G3588	ἡ	article fem nom sg
+G1343	δικαιοσύνη	noun fem nom/voc sg
+G4771	σου	pronoun 2nd gen sg
+G5616	ὡσεὶ	adverb
+G3735	ὄρη	noun neut nom/voc/acc pl
+G2316	θεοῦ	noun masc gen sg
+G3588	τὰ	article neut nom/voc/acc pl
+G2917	κρίματά	noun neut nom/voc/acc pl
+G4771	σου	pronoun 2nd gen sg
+G0012	ἄβυσσος	noun fem nom sg
+G4183	πολλή	adjective fem nom/voc sg
+G0444	ἀνθρώπους	noun masc acc pl
+G2532	καὶ	conjunction
+G2934	κτήνη	noun neut nom/voc/acc pl
+G4982	σώσεις	verb fut ind act 2nd sg
+G2962	κύριε	noun masc voc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0444: 503 ÚSZ-vers — 1Ján 5:9, 1Kor 1:25, 1Kor 2:5, 1Kor 2:9, 1Kor 2:11, 1Kor 2:14, 1Kor 3:3, 1Kor 3:4, 1Kor 3:21, 1Kor 4:1 ...
+  G1343: 87 ÚSZ-vers — 1Ján 2:29, 1Ján 3:7, 1Ján 3:10, 1Kor 1:30, 1Pét 2:24, 1Pét 3:14, 1Tim 6:11, 2Kor 3:9, 2Kor 5:21, 2Kor 6:7 ...
+  G2316: 1173 ÚSZ-vers — 1Ján 1:5, 1Ján 2:5, 1Ján 2:14, 1Ján 2:17, 1Ján 3:1, 1Ján 3:2, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:17 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2917: 28 ÚSZ-vers — 1Kor 6:7, 1Kor 11:29, 1Kor 11:34, 1Pét 4:17, 1Tim 3:6, 1Tim 5:12, 2Pét 2:3, ApCsel 24:25, Gal 5:10, Jak 3:1 ...
+  G2934: 4 ÚSZ-vers — 1Kor 15:39, ApCsel 23:24, Jel 18:13, Luk 10:34
+  G2962: 691 ÚSZ-vers — 1Kor 1:2, 1Kor 1:3, 1Kor 1:7, 1Kor 1:8, 1Kor 1:9, 1Kor 1:10, 1Kor 1:31, 1Kor 2:8, 1Kor 2:16, 1Kor 3:5 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3735: 65 ÚSZ-vers — 1Kor 13:2, 2Pét 1:18, ApCsel 1:12, ApCsel 7:30, ApCsel 7:38, Gal 4:24, Gal 4:25, Jel 6:14, Jel 6:15, Jel 6:16 ...
+  G4183: 342 ÚSZ-vers — 1Ján 2:18, 1Ján 4:1, 1Kor 1:26, 1Kor 2:3, 1Kor 4:15, 1Kor 8:5, 1Kor 10:17, 1Kor 10:33, 1Kor 11:30, 1Kor 12:12 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G4982: 102 ÚSZ-vers — 1Kor 1:18, 1Kor 1:21, 1Kor 3:15, 1Kor 5:5, 1Kor 7:16, 1Kor 9:22, 1Kor 10:33, 1Kor 15:2, 1Pét 3:21, 1Pét 4:18 ...
+  G5616: 21 ÚSZ-vers — ApCsel 1:15, ApCsel 2:3, ApCsel 2:41, ApCsel 6:15, ApCsel 10:3, ApCsel 19:7, Luk 3:23, Luk 9:14, Luk 9:28, Luk 22:41 ...
+proveniencia: scope=range:Zsolt 36:7 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=16 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 42:8"
+# LXX-híd Zsolt 42:8 — 19 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 41:8 (karoli_ok=mt_szamozas_kovetes)
+G0012	ἄβυσσος	noun fem nom sg
+G0012	ἄβυσσον	noun fem acc sg
+G1941	ἐπικαλεῖται	verb pres ind mid/pass 3rd sg
+G1519	εἰς	preposition
+G5456	φωνὴν	noun fem acc sg
+G3588	τῶν	article masc/fem/neut gen pl
+	καταρρακτῶν	noun masc gen pl
+G4771	σου	pronoun 2nd gen sg
+G3956	πάντες	adjective masc nom/voc pl
+G3588	οἱ	article masc nom pl
+	μετεωρισμοί	noun masc nom/voc pl
+G4771	σου	pronoun 2nd gen sg
+G2532	καὶ	conjunction
+G3588	τὰ	article neut nom/voc/acc pl
+G2949	κύματά	noun neut nom/voc/acc pl
+G4771	σου	pronoun 2nd gen sg
+G1909	ἐπ᾿	preposition
+G1473	ἐμὲ	pronoun 1st acc sg
+G1330	διῆλθον	verb aor ind act 3rd pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G1330: 43 ÚSZ-vers — 1Kor 10:1, 1Kor 16:5, 2Kor 1:16, ApCsel 8:4, ApCsel 8:40, ApCsel 9:32, ApCsel 9:38, ApCsel 10:38, ApCsel 11:19, ApCsel 11:22 ...
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G1909: 794 ÚSZ-vers — 1Ján 3:3, 1Kor 1:4, 1Kor 2:9, 1Kor 3:12, 1Kor 6:1, 1Kor 6:6, 1Kor 7:5, 1Kor 7:36, 1Kor 7:39, 1Kor 8:5 ...
+  G1941: 31 ÚSZ-vers — 1Kor 1:2, 1Pét 1:17, 2Kor 1:23, 2Tim 2:22, ApCsel 1:23, ApCsel 2:21, ApCsel 4:36, ApCsel 7:59, ApCsel 9:14, ApCsel 9:21 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2949: 5 ÚSZ-vers — ApCsel 27:41, Júd 1:13, Mk 4:37, Mt 8:24, Mt 14:24
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3956: 1100 ÚSZ-vers — 1Ján 1:7, 1Ján 1:9, 1Ján 2:16, 1Ján 2:19, 1Ján 2:20, 1Ján 2:21, 1Ján 2:23, 1Ján 2:27, 1Ján 2:29, 1Ján 3:3 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5456: 129 ÚSZ-vers — 1Kor 14:7, 1Kor 14:8, 1Kor 14:10, 1Kor 14:11, 1Thessz 4:16, 2Pét 1:17, 2Pét 1:18, 2Pét 2:16, ApCsel 2:6, ApCsel 2:14 ...
+proveniencia: scope=range:Zsolt 42:8 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=19 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 71:20"
+# LXX-híd Zsolt 71:20 — 20 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 70:20 (karoli_ok=egyező)
+G3745	ὅσας	pronoun fem acc pl
+	ἔδειξάς	verb aor ind act 2nd sg
+G1473	μοι	pronoun 1st dat sg
+G2347	θλίψεις	noun fem acc pl
+G4183	πολλὰς	adjective fem acc pl
+G2532	καὶ	conjunction
+G2556	κακάς	adjective fem acc pl
+G2532	καὶ	conjunction
+G1994	ἐπιστρέψας	participle aor ptc act masc nom/voc sg
+G2227	ἐζωοποίησάς	verb aor ind act 2nd sg
+G1473	με	pronoun 1st acc sg
+G2532	καὶ	conjunction
+G1537	ἐκ	preposition
+G3588	τῶν	article masc/fem/neut gen pl
+G0012	ἀβύσσων	noun fem/neut gen pl
+G3588	τῆς	article fem gen sg
+G1093	γῆς	noun fem gen sg
+G3825	πάλιν	adverb
+G0321	ἀνήγαγές	verb aor ind act 2nd sg
+G1473	με	pronoun 1st acc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0321: 23 ÚSZ-vers — ApCsel 7:41, ApCsel 9:39, ApCsel 12:4, ApCsel 13:13, ApCsel 16:11, ApCsel 16:34, ApCsel 18:21, ApCsel 20:3, ApCsel 20:13, ApCsel 21:1 ...
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1537: 773 ÚSZ-vers — 1Ján 2:16, 1Ján 2:19, 1Ján 2:21, 1Ján 2:29, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:12, 1Ján 3:14, 1Ján 3:19 ...
+  G1994: 35 ÚSZ-vers — 1Pét 2:25, 1Thessz 1:9, 2Kor 3:16, 2Pét 2:22, ApCsel 3:19, ApCsel 9:35, ApCsel 9:40, ApCsel 11:21, ApCsel 14:15, ApCsel 15:19 ...
+  G2227: 10 ÚSZ-vers — 1Kor 15:22, 1Kor 15:36, 1Kor 15:45, 1Pét 3:18, 2Kor 3:6, Gal 3:21, Ján 5:21, Ján 6:63, Róm 4:17, Róm 8:11
+  G2347: 43 ÚSZ-vers — 1Kor 7:28, 1Thessz 1:6, 1Thessz 3:3, 1Thessz 3:7, 2Kor 1:4, 2Kor 1:8, 2Kor 2:4, 2Kor 4:17, 2Kor 6:4, 2Kor 7:4 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2556: 45 ÚSZ-vers — 1Kor 10:6, 1Kor 13:5, 1Kor 15:33, 1Pét 3:9, 1Pét 3:10, 1Pét 3:11, 1Pét 3:12, 1Thessz 5:15, 1Tim 6:10, 2Kor 13:7 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3745: 100 ÚSZ-vers — 1Kor 7:39, 1Tim 6:1, 2Kor 1:20, 2Pét 1:13, 2Tim 1:18, ApCsel 2:39, ApCsel 3:22, ApCsel 3:24, ApCsel 4:6, ApCsel 4:23 ...
+  G3825: 140 ÚSZ-vers — 1Ján 2:8, 1Kor 3:20, 1Kor 7:5, 1Kor 12:21, 2Kor 1:16, 2Kor 2:1, 2Kor 3:1, 2Kor 5:12, 2Kor 10:7, 2Kor 11:16 ...
+  G4183: 342 ÚSZ-vers — 1Ján 2:18, 1Ján 4:1, 1Kor 1:26, 1Kor 2:3, 1Kor 4:15, 1Kor 8:5, 1Kor 10:17, 1Kor 10:33, 1Kor 11:30, 1Kor 12:12 ...
+proveniencia: scope=range:Zsolt 71:20 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=20 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 77:17"
+# LXX-híd Zsolt 77:17 — 16 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 76:17 (karoli_ok=mt_szamozas_kovetes)
+G3708	εἴδοσάν	verb aor ind act 3rd pl
+G4771	σε	pronoun 2nd acc sg
+G5204	ὕδατα	noun neut nom/voc/acc pl
+G3588	ὁ	article masc nom sg
+G2316	θεός	noun masc nom sg
+G3708	εἴδοσάν	verb aor ind act 3rd pl
+G4771	σε	pronoun 2nd acc sg
+G5204	ὕδατα	noun neut nom/voc/acc pl
+G2532	καὶ	conjunction
+	ἐφοβήθησαν	verb aor ind mid/pass 3rd pl
+G2532	καὶ	conjunction
+G5015	ἐταράχθησαν	verb aor ind pass 3rd pl
+G0012	ἄβυσσοι	noun fem nom/voc pl
+G4128	πλῆθος	noun neut nom/voc/acc sg
+G2279	ἤχους	noun masc acc pl
+G5204	ὑδάτων	noun neut gen pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G2279: 4 ÚSZ-vers — ApCsel 2:2, Luk 4:37, Luk 21:25, Zsid 12:19
+  G2316: 1173 ÚSZ-vers — 1Ján 1:5, 1Ján 2:5, 1Ján 2:14, 1Ján 2:17, 1Ján 3:1, 1Ján 3:2, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:17 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3708: 58 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 3:6, 1Ján 4:20, 1Kor 9:1, 1Pét 1:8, 1Thessz 5:15, 3Ján 1:11, ApCsel 7:44 ...
+  G4128: 32 ÚSZ-vers — 1Pét 4:8, ApCsel 2:6, ApCsel 4:32, ApCsel 5:14, ApCsel 5:16, ApCsel 6:2, ApCsel 6:5, ApCsel 14:1, ApCsel 14:4, ApCsel 15:12 ...
+  G4771: 2092 ÚSZ-vers — 1Ján 1:2, 1Ján 1:3, 1Ján 1:5, 1Ján 2:1, 1Ján 2:7, 1Ján 2:8, 1Ján 2:12, 1Ján 2:13, 1Ján 2:14, 1Ján 2:20 ...
+  G5015: 18 ÚSZ-vers — 1Pét 3:14, ApCsel 15:24, ApCsel 17:8, ApCsel 17:13, Gal 1:7, Gal 5:10, Ján 5:4, Ján 5:7, Ján 11:33, Ján 12:27 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:Zsolt 77:17 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=16 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 78:15"
+# LXX-híd Zsolt 78:15 — 11 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 77:15 (karoli_ok=egyező)
+	διέρρηξεν	verb aor ind act 3rd sg
+	πέτραν	noun fem acc sg
+G1722	ἐν	preposition
+G2048	ἐρήμῳ	noun fem dat sg
+G2532	καὶ	conjunction
+G4222	ἐπότισεν	verb aor ind act 3rd sg
+G0846	αὐτοὺς	pronoun 3rd acc pl
+	ὡς	conjunction
+G1722	ἐν	preposition
+G0012	ἀβύσσῳ	noun fem/neut dat sg
+G4183	πολλῇ	adjective fem dat sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2048: 50 ÚSZ-vers — 1Kor 10:5, ApCsel 1:20, ApCsel 7:30, ApCsel 7:36, ApCsel 7:38, ApCsel 7:42, ApCsel 7:44, ApCsel 8:26, ApCsel 13:18, ApCsel 21:38 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G4183: 342 ÚSZ-vers — 1Ján 2:18, 1Ján 4:1, 1Kor 1:26, 1Kor 2:3, 1Kor 4:15, 1Kor 8:5, 1Kor 10:17, 1Kor 10:33, 1Kor 11:30, 1Kor 12:12 ...
+  G4222: 15 ÚSZ-vers — 1Kor 3:2, 1Kor 3:6, 1Kor 3:7, 1Kor 3:8, 1Kor 12:13, Jel 14:8, Luk 13:15, Mk 9:41, Mk 15:36, Mt 10:42 ...
+proveniencia: scope=range:Zsolt 78:15 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 104:6"
+# LXX-híd Zsolt 104:6 — 11 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 103:6 (karoli_ok=egyező)
+G0012	ἄβυσσος	noun fem nom sg
+	ὡς	conjunction
+G2440	ἱμάτιον	noun neut nom/voc/acc sg
+G3588	τὸ	article neut nom/voc/acc sg
+G4018	περιβόλαιον	noun neut nom/voc/acc sg
+G0846	αὐτοῦ	pronoun 3rd gen sg
+G1909	ἐπὶ	preposition
+G3588	τῶν	article masc/fem/neut gen pl
+G3735	ὀρέων	noun neut gen pl
+G2476	στήσονται	verb fut ind mid 3rd pl
+G5204	ὕδατα	noun neut nom/voc/acc pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1909: 794 ÚSZ-vers — 1Ján 3:3, 1Kor 1:4, 1Kor 2:9, 1Kor 3:12, 1Kor 6:1, 1Kor 6:6, 1Kor 7:5, 1Kor 7:36, 1Kor 7:39, 1Kor 8:5 ...
+  G2440: 60 ÚSZ-vers — 1Pét 3:3, ApCsel 7:58, ApCsel 9:39, ApCsel 12:8, ApCsel 14:14, ApCsel 16:22, ApCsel 18:6, ApCsel 22:20, ApCsel 22:23, Jak 5:2 ...
+  G2476: 152 ÚSZ-vers — 1Kor 7:37, 1Kor 10:12, 1Kor 15:1, 1Pét 5:12, 2Kor 1:24, 2Kor 13:1, 2Tim 2:19, ApCsel 1:11, ApCsel 1:23, ApCsel 2:14 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3735: 65 ÚSZ-vers — 1Kor 13:2, 2Pét 1:18, ApCsel 1:12, ApCsel 7:30, ApCsel 7:38, Gal 4:24, Gal 4:25, Jel 6:14, Jel 6:15, Jel 6:16 ...
+  G4018: 2 ÚSZ-vers — 1Kor 11:15, Zsid 1:12
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:Zsolt 104:6 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 106:9"
+# LXX-híd Zsolt 106:9 — 15 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 105:9 (karoli_ok=egyező)
+G2532	καὶ	conjunction
+G2008	ἐπετίμησεν	verb aor ind act 3rd sg
+G3588	τῇ	article fem dat sg
+G2063	ἐρυθρᾷ	adjective fem dat sg
+G2281	θαλάσσῃ	noun fem dat sg
+G2532	καὶ	conjunction
+G3583	ἐξηράνθη	verb aor ind pass 3rd sg
+G2532	καὶ	conjunction
+G3594	ὡδήγησεν	verb aor ind act 3rd sg
+G0846	αὐτοὺς	pronoun 3rd acc pl
+G1722	ἐν	preposition
+G0012	ἀβύσσῳ	noun fem/neut dat sg
+	ὡς	conjunction
+G1722	ἐν	preposition
+G2048	ἐρήμῳ	adjective fem dat sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2008: 29 ÚSZ-vers — 2Tim 4:2, Júd 1:9, Luk 4:35, Luk 4:39, Luk 4:41, Luk 8:24, Luk 9:21, Luk 9:42, Luk 9:55, Luk 17:3 ...
+  G2048: 50 ÚSZ-vers — 1Kor 10:5, ApCsel 1:20, ApCsel 7:30, ApCsel 7:36, ApCsel 7:38, ApCsel 7:42, ApCsel 7:44, ApCsel 8:26, ApCsel 13:18, ApCsel 21:38 ...
+  G2063: 2 ÚSZ-vers — ApCsel 7:36, Zsid 11:29
+  G2281: 83 ÚSZ-vers — 1Kor 10:1, 1Kor 10:2, 2Kor 11:26, ApCsel 4:24, ApCsel 7:36, ApCsel 10:6, ApCsel 10:32, ApCsel 14:15, ApCsel 17:14, ApCsel 27:30 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3583: 15 ÚSZ-vers — 1Pét 1:24, Jak 1:11, Jel 14:15, Jel 16:12, Ján 15:6, Luk 8:6, Mk 3:1, Mk 4:6, Mk 5:29, Mk 9:18 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3594: 5 ÚSZ-vers — ApCsel 8:31, Jel 7:17, Ján 16:13, Luk 6:39, Mt 15:14
+proveniencia: scope=range:Zsolt 106:9 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 107:26"
+# LXX-híd Zsolt 107:26 — 15 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 106:26 (karoli_ok=egyező)
+G0305	ἀναβαίνουσιν	verb pres ind act 3rd pl
+G2193	ἕως	preposition
+G3588	τῶν	article masc/fem/neut gen pl
+G3772	οὐρανῶν	noun masc gen pl
+G2532	καὶ	conjunction
+G2597	καταβαίνουσιν	verb pres ind act 3rd pl
+G2193	ἕως	preposition
+G3588	τῶν	article masc/fem/neut gen pl
+G0012	ἀβύσσων	noun fem/neut gen pl
+G3588	ἡ	article fem nom sg
+G5590	ψυχὴ	noun fem nom sg
+G0846	αὐτῶν	pronoun 3rd gen pl
+G1722	ἐν	preposition
+G2556	κακοῖς	noun masc dat pl
+G5080	ἐτήκετο	verb imperf ind mid/pass 3rd sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0305: 78 ÚSZ-vers — 1Kor 2:9, ApCsel 1:13, ApCsel 2:34, ApCsel 3:1, ApCsel 7:23, ApCsel 8:31, ApCsel 8:39, ApCsel 10:4, ApCsel 10:9, ApCsel 11:2 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2193: 139 ÚSZ-vers — 1Ján 2:9, 1Kor 1:8, 1Kor 4:5, 1Kor 4:13, 1Kor 8:7, 1Kor 15:6, 1Kor 16:8, 1Tim 4:13, 2Kor 1:13, 2Kor 3:15 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2556: 45 ÚSZ-vers — 1Kor 10:6, 1Kor 13:5, 1Kor 15:33, 1Pét 3:9, 1Pét 3:10, 1Pét 3:11, 1Pét 3:12, 1Thessz 5:15, 1Tim 6:10, 2Kor 13:7 ...
+  G2597: 82 ÚSZ-vers — 1Thessz 4:16, ApCsel 7:15, ApCsel 7:34, ApCsel 8:15, ApCsel 8:26, ApCsel 8:38, ApCsel 10:11, ApCsel 10:20, ApCsel 10:21, ApCsel 11:5 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3772: 261 ÚSZ-vers — 1Ján 5:7, 1Kor 8:5, 1Kor 15:47, 1Pét 1:4, 1Pét 1:12, 1Pét 3:22, 1Thessz 1:10, 1Thessz 4:16, 2Kor 5:1, 2Kor 5:2 ...
+  G5080: 1 ÚSZ-vers — 2Pét 3:12
+  G5590: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 15:45, 1Pét 1:9, 1Pét 1:22, 1Pét 2:11, 1Pét 2:25, 1Pét 3:20, 1Pét 4:19, 1Thessz 2:8, 1Thessz 5:23 ...
+proveniencia: scope=range:Zsolt 107:26 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 135:6"
+# LXX-híd Zsolt 135:6 — 21 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 134:6 (karoli_ok=egyező)
+G3956	πάντα	adjective neut nom/voc/acc pl
+G3745	ὅσα	pronoun neut nom/voc/acc pl
+G2309	ἠθέλησεν	verb aor ind act 3rd sg
+G3588	ὁ	article masc nom sg
+G2962	κύριος	noun masc nom sg
+G4160	ἐποίησεν	verb aor ind act 3rd sg
+G1722	ἐν	preposition
+G3588	τῷ	article masc/neut dat sg
+G3772	οὐρανῷ	noun masc dat sg
+G2532	καὶ	conjunction
+G1722	ἐν	preposition
+G3588	τῇ	article fem dat sg
+G1093	γῇ	noun fem dat sg
+G1722	ἐν	preposition
+G3588	ταῖς	article fem dat pl
+G2281	θαλάσσαις	noun fem dat pl
+G2532	καὶ	conjunction
+G1722	ἐν	preposition
+G3956	πάσαις	adjective fem dat pl
+G3588	ταῖς	article fem dat pl
+G0012	ἀβύσσοις	noun fem/neut dat pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2281: 83 ÚSZ-vers — 1Kor 10:1, 1Kor 10:2, 2Kor 11:26, ApCsel 4:24, ApCsel 7:36, ApCsel 10:6, ApCsel 10:32, ApCsel 14:15, ApCsel 17:14, ApCsel 27:30 ...
+  G2309: 202 ÚSZ-vers — 1Kor 4:19, 1Kor 4:21, 1Kor 7:7, 1Kor 7:32, 1Kor 7:36, 1Kor 7:39, 1Kor 10:1, 1Kor 10:20, 1Kor 10:27, 1Kor 11:3 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2962: 691 ÚSZ-vers — 1Kor 1:2, 1Kor 1:3, 1Kor 1:7, 1Kor 1:8, 1Kor 1:9, 1Kor 1:10, 1Kor 1:31, 1Kor 2:8, 1Kor 2:16, 1Kor 3:5 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3745: 100 ÚSZ-vers — 1Kor 7:39, 1Tim 6:1, 2Kor 1:20, 2Pét 1:13, 2Tim 1:18, ApCsel 2:39, ApCsel 3:22, ApCsel 3:24, ApCsel 4:6, ApCsel 4:23 ...
+  G3772: 261 ÚSZ-vers — 1Ján 5:7, 1Kor 8:5, 1Kor 15:47, 1Pét 1:4, 1Pét 1:12, 1Pét 3:22, 1Thessz 1:10, 1Thessz 4:16, 2Kor 5:1, 2Kor 5:2 ...
+  G3956: 1100 ÚSZ-vers — 1Ján 1:7, 1Ján 1:9, 1Ján 2:16, 1Ján 2:19, 1Ján 2:20, 1Ján 2:21, 1Ján 2:23, 1Ján 2:27, 1Ján 2:29, 1Ján 3:3 ...
+  G4160: 522 ÚSZ-vers — 1Ján 1:6, 1Ján 1:10, 1Ján 2:17, 1Ján 2:29, 1Ján 3:4, 1Ján 3:7, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:22 ...
+proveniencia: scope=range:Zsolt 135:6 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=21 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Zsolt 148:7"
+# LXX-híd Zsolt 148:7 — 10 görög szó-előfordulás
+# LXX-vers: Psalms (LXX) 148:7 (karoli_ok=egyező)
+G0134	αἰνεῖτε	verb pres imperat act 2nd pl
+G3588	τὸν	article masc acc sg
+G2962	κύριον	noun masc acc sg
+G1537	ἐκ	preposition
+G3588	τῆς	article fem gen sg
+G1093	γῆς	noun fem gen sg
+G1404	δράκοντες	noun masc nom/voc pl
+G2532	καὶ	conjunction
+G3956	πᾶσαι	adjective fem nom pl
+G0012	ἄβυσσοι	noun fem nom/voc pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0134: 9 ÚSZ-vers — ApCsel 2:47, ApCsel 3:8, ApCsel 3:9, Jel 19:5, Luk 2:13, Luk 2:20, Luk 19:37, Luk 24:53, Róm 15:11
+  G1093: 228 ÚSZ-vers — 1Ján 5:8, 1Kor 8:5, 1Kor 10:26, 1Kor 10:28, 1Kor 15:47, 2Pét 3:5, 2Pét 3:7, 2Pét 3:10, 2Pét 3:13, ApCsel 1:8 ...
+  G1404: 12 ÚSZ-vers — Jel 12:3, Jel 12:4, Jel 12:7, Jel 12:9, Jel 12:13, Jel 12:16, Jel 12:17, Jel 13:2, Jel 13:4, Jel 13:11 ...
+  G1537: 773 ÚSZ-vers — 1Ján 2:16, 1Ján 2:19, 1Ján 2:21, 1Ján 2:29, 1Ján 3:8, 1Ján 3:9, 1Ján 3:10, 1Ján 3:12, 1Ján 3:14, 1Ján 3:19 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2962: 691 ÚSZ-vers — 1Kor 1:2, 1Kor 1:3, 1Kor 1:7, 1Kor 1:8, 1Kor 1:9, 1Kor 1:10, 1Kor 1:31, 1Kor 2:8, 1Kor 2:16, 1Kor 3:5 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3956: 1100 ÚSZ-vers — 1Ján 1:7, 1Ján 1:9, 1Ján 2:16, 1Ján 2:19, 1Ján 2:20, 1Ján 2:21, 1Ján 2:23, 1Ján 2:27, 1Ján 2:29, 1Ján 3:3 ...
+proveniencia: scope=range:Zsolt 148:7 | forras=LXX_OS/psalms-lxx.tsv+TAGNT_kivonat.tsv | n=10 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Ámós 7:4"
+# LXX-híd Ámós 7:4 — 22 görög szó-előfordulás
+# LXX-vers: Amos 7:4 (karoli_ok=egyező)
+G3779	οὕτως	adverb
+	ἔδειξέν	verb aor ind act 3rd sg
+G1473	μοι	pronoun 1st dat sg
+G2962	κύριος	noun masc nom sg
+G2532	καὶ	conjunction
+G2400	ἰδοὺ	interjection
+G2564	ἐκάλεσεν	verb aor ind act 3rd sg
+G3588	τὴν	article fem acc sg
+G1349	δίκην	noun fem acc sg
+G1722	ἐν	preposition
+G4442	πυρὶ	noun neut dat sg
+G2962	κύριος	noun masc nom sg
+G2532	καὶ	conjunction
+G2719	κατέφαγε	verb aor ind act 3rd sg
+G3588	τὴν	article fem acc sg
+G0012	ἄβυσσον	noun fem acc sg
+G3588	τὴν	article fem acc sg
+G4183	πολλὴν	adjective fem acc sg
+G2532	καὶ	conjunction
+G2719	κατέφαγεν	verb aor ind act 3rd sg
+G3588	τὴν	article fem acc sg
+G3310	μερίδα	noun fem acc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G1349: 3 ÚSZ-vers — 2Thessz 1:9, ApCsel 28:4, Júd 1:7
+  G1473: 621 ÚSZ-vers — 1Ján 1:3, 1Ján 2:2, 1Kor 1:12, 1Kor 1:15, 1Kor 3:4, 1Kor 3:6, 1Kor 4:3, 1Kor 4:4, 1Kor 4:6, 1Kor 4:15 ...
+  G1722: 2156 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:10, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6, 1Ján 2:8 ...
+  G2400: 200 ÚSZ-vers — 1Kor 15:51, 1Pét 2:6, 2Kor 5:17, 2Kor 6:2, 2Kor 6:9, 2Kor 7:11, 2Kor 12:14, ApCsel 1:10, ApCsel 2:7, ApCsel 5:9 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2564: 140 ÚSZ-vers — 1Ján 3:1, 1Kor 1:9, 1Kor 7:15, 1Kor 7:17, 1Kor 7:18, 1Kor 7:20, 1Kor 7:21, 1Kor 7:22, 1Kor 7:24, 1Kor 10:27 ...
+  G2719: 15 ÚSZ-vers — 2Kor 11:20, Gal 5:15, Jel 10:9, Jel 10:10, Jel 11:5, Jel 12:4, Jel 20:9, Ján 2:17, Luk 8:5, Luk 15:30 ...
+  G2962: 691 ÚSZ-vers — 1Kor 1:2, 1Kor 1:3, 1Kor 1:7, 1Kor 1:8, 1Kor 1:9, 1Kor 1:10, 1Kor 1:31, 1Kor 2:8, 1Kor 2:16, 1Kor 3:5 ...
+  G3310: 5 ÚSZ-vers — 2Kor 6:15, ApCsel 8:21, ApCsel 16:12, Kol 1:12, Luk 10:42
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3779: 208 ÚSZ-vers — 1Ján 2:6, 1Ján 4:11, 1Kor 2:11, 1Kor 3:15, 1Kor 4:1, 1Kor 5:3, 1Kor 6:5, 1Kor 7:7, 1Kor 7:17, 1Kor 7:26 ...
+  G4183: 342 ÚSZ-vers — 1Ján 2:18, 1Ján 4:1, 1Kor 1:26, 1Kor 2:3, 1Kor 4:15, 1Kor 8:5, 1Kor 10:17, 1Kor 10:33, 1Kor 11:30, 1Kor 12:12 ...
+  G4442: 73 ÚSZ-vers — 1Kor 3:13, 1Kor 3:15, 1Pét 1:7, 2Pét 3:7, 2Thessz 1:8, ApCsel 2:3, ApCsel 2:19, ApCsel 7:30, ApCsel 28:5, Jak 3:5 ...
+proveniencia: scope=range:Ámós 7:4 | forras=LXX_OS/amos.tsv+TAGNT_kivonat.tsv | n=22 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Ézs 51:10"
+# LXX-híd Ézs 51:10 — 15 görög szó-előfordulás
+# LXX-vers: Isaiah 51:10 (karoli_ok=egyező)
+G3588	ἡ	article fem nom sg
+G2049	ἐρημοῦσα	participle pres ptc act fem nom/voc sg
+G2281	θάλασσαν	noun fem acc sg
+G5204	ὕδωρ	noun neut nom/voc/acc sg
+G0012	ἀβύσσου	noun fem/neut gen sg
+G4128	πλῆθος	noun neut nom/voc/acc sg
+G3588	ἡ	article fem nom sg
+G5087	θεῖσα	participle aor ptc act fem nom/voc sg
+G3588	τὰ	article neut nom/voc/acc pl
+G0899	βάθη	noun neut nom/voc/acc pl
+G3588	τῆς	article fem gen sg
+G2281	θαλάσσης	noun fem gen sg
+G3598	ὁδὸν	noun fem acc sg
+	διαβάσεως	noun fem gen sg
+G4506	ῥυομένοις	participle pres ptc mid/pass masc/neut dat pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0899: 8 ÚSZ-vers — 1Kor 2:10, 2Kor 8:2, Ef 3:18, Luk 5:4, Mk 4:5, Mt 13:5, Róm 8:39, Róm 11:33
+  G2049: 5 ÚSZ-vers — Jel 17:16, Jel 18:17, Jel 18:19, Luk 11:17, Mt 12:25
+  G2281: 83 ÚSZ-vers — 1Kor 10:1, 1Kor 10:2, 2Kor 11:26, ApCsel 4:24, ApCsel 7:36, ApCsel 10:6, ApCsel 10:32, ApCsel 14:15, ApCsel 17:14, ApCsel 27:30 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3598: 99 ÚSZ-vers — 1Kor 4:17, 1Kor 12:31, 1Thessz 3:11, 2Pét 2:2, 2Pét 2:15, 2Pét 2:21, ApCsel 1:12, ApCsel 2:28, ApCsel 8:26, ApCsel 8:36 ...
+  G4128: 32 ÚSZ-vers — 1Pét 4:8, ApCsel 2:6, ApCsel 4:32, ApCsel 5:14, ApCsel 5:16, ApCsel 6:2, ApCsel 6:5, ApCsel 14:1, ApCsel 14:4, ApCsel 15:12 ...
+  G4506: 16 ÚSZ-vers — 1Thessz 1:10, 2Kor 1:10, 2Pét 2:7, 2Pét 2:9, 2Thessz 3:2, 2Tim 3:11, 2Tim 4:17, 2Tim 4:18, Kol 1:13, Luk 1:74 ...
+  G5087: 96 ÚSZ-vers — 1Ján 3:16, 1Kor 3:10, 1Kor 3:11, 1Kor 9:18, 1Kor 12:18, 1Kor 12:28, 1Kor 15:25, 1Kor 16:2, 1Pét 2:6, 1Pét 2:8 ...
+  G5204: 71 ÚSZ-vers — 1Ján 5:6, 1Ján 5:8, 1Pét 3:20, 2Pét 3:5, 2Pét 3:6, ApCsel 1:5, ApCsel 8:36, ApCsel 8:38, ApCsel 8:39, ApCsel 10:47 ...
+proveniencia: scope=range:Ézs 51:10 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=15 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Ézs 63:13"
+# LXX-híd Ézs 63:13 — 12 görög szó-előfordulás
+# LXX-vers: Isaiah 63:13 (karoli_ok=mt_szamozas_kovetes)
+G0071	ἤγαγεν	verb aor ind act 3rd sg
+G0846	αὐτοὺς	pronoun 3rd acc pl
+G1223	διὰ	preposition
+G3588	τῆς	article fem gen sg
+G0012	ἀβύσσου	noun fem/neut gen sg
+	ὡς	conjunction
+G2462	ἵππον	noun masc/fem acc sg
+G1223	δι᾿	preposition
+G2048	ἐρήμου	adjective fem gen sg
+G2532	καὶ	conjunction
+G3756	οὐκ	particle
+G2872	ἐκοπίασαν	verb aor ind act 3rd pl
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0071: 68 ÚSZ-vers — 1Kor 12:2, 1Thessz 4:14, 2Tim 3:6, 2Tim 4:11, ApCsel 5:21, ApCsel 5:26, ApCsel 5:27, ApCsel 6:12, ApCsel 8:32, ApCsel 9:2 ...
+  G0846: 3813 ÚSZ-vers — 1Ján 1:3, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:10, 1Ján 2:2, 1Ján 2:3, 1Ján 2:4, 1Ján 2:5, 1Ján 2:6 ...
+  G1223: 616 ÚSZ-vers — 1Ján 2:12, 1Ján 3:1, 1Ján 4:5, 1Ján 4:9, 1Ján 5:6, 1Kor 1:1, 1Kor 1:9, 1Kor 1:10, 1Kor 1:21, 1Kor 2:10 ...
+  G2048: 50 ÚSZ-vers — 1Kor 10:5, ApCsel 1:20, ApCsel 7:30, ApCsel 7:36, ApCsel 7:38, ApCsel 7:42, ApCsel 7:44, ApCsel 8:26, ApCsel 13:18, ApCsel 21:38 ...
+  G2462: 16 ÚSZ-vers — Jak 3:3, Jel 6:2, Jel 6:4, Jel 6:5, Jel 6:8, Jel 9:7, Jel 9:9, Jel 9:17, Jel 9:19, Jel 14:20 ...
+  G2532: 5262 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G2872: 21 ÚSZ-vers — 1Kor 4:12, 1Kor 15:10, 1Kor 16:16, 1Thessz 5:12, 1Tim 4:10, 1Tim 5:17, 2Tim 2:6, ApCsel 20:35, Ef 4:28, Fil 2:16 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G3756: 1413 ÚSZ-vers — 1Ján 1:5, 1Ján 1:6, 1Ján 1:8, 1Ján 1:10, 1Ján 2:2, 1Ján 2:4, 1Ján 2:7, 1Ján 2:10, 1Ján 2:11, 1Ján 2:15 ...
+proveniencia: scope=range:Ézs 63:13 | forras=LXX_OS/isaiah.tsv+TAGNT_kivonat.tsv | n=12 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: hozzáfűzve -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jób 41:32"
+# LXX-híd Jób 41:32 — 11 görög szó-előfordulás
+# LXX-vers: Job (LXX) 41:24 (karoli_ok=egyező)
+G3588	τὸν	article masc acc sg
+G1161	δὲ	particle
+	τάρταρον	noun masc acc sg
+G3588	τῆς	article fem gen sg
+G0012	ἀβύσσου	noun fem/neut gen sg
+G5618	ὥσπερ	adverb
+G0164	αἰχμάλωτον	adjective masc acc sg
+G3049	ἐλογίσατο	verb aor ind mid/pass 3rd sg
+G0012	ἄβυσσον	noun fem acc sg
+G1519	εἰς	preposition
+	περίπατον	noun masc acc sg
+# az LXX-Strongok ÚSZ-előfordulásai (híd-jelölt), max 10 versenként:
+  G0012: 9 ÚSZ-vers — Jel 9:1, Jel 9:2, Jel 9:11, Jel 11:7, Jel 17:8, Jel 20:1, Jel 20:3, Luk 8:31, Róm 10:7
+  G0164: 1 ÚSZ-vers — Luk 4:18
+  G1161: 2609 ÚSZ-vers — 1Ján 1:3, 1Ján 1:7, 1Ján 2:2, 1Ján 2:5, 1Ján 2:11, 1Ján 2:17, 1Ján 3:2, 1Ján 3:12, 1Ján 3:17, 1Ján 4:18 ...
+  G1519: 1529 ÚSZ-vers — 1Ján 2:17, 1Ján 3:8, 1Ján 3:14, 1Ján 4:1, 1Ján 4:9, 1Ján 5:8, 1Ján 5:10, 1Ján 5:13, 1Kor 1:9, 1Kor 1:13 ...
+  G3049: 40 ÚSZ-vers — 1Kor 4:1, 1Kor 13:5, 1Kor 13:11, 1Pét 5:12, 2Kor 3:5, 2Kor 5:19, 2Kor 10:2, 2Kor 10:7, 2Kor 10:11, 2Kor 11:5 ...
+  G3588: 7072 ÚSZ-vers — 1Ján 1:1, 1Ján 1:2, 1Ján 1:3, 1Ján 1:4, 1Ján 1:5, 1Ján 1:6, 1Ján 1:7, 1Ján 1:8, 1Ján 1:9, 1Ján 1:10 ...
+  G5618: 36 ÚSZ-vers — 1Kor 8:5, 1Kor 10:7, 1Kor 11:12, 1Kor 15:22, 1Kor 16:1, 1Thessz 5:3, 2Kor 8:7, ApCsel 2:2, ApCsel 3:17, ApCsel 11:15 ...
+proveniencia: scope=range:Jób 41:32 | forras=LXX_OS/job-lxx.tsv+TAGNT_kivonat.tsv | n=11 | ts=2026-11-23T12:00Z | csatorna=cli
+[stderr] # napló: már megvolt -> F239_lekerdezesek.tsv
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jel 9:1"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Jel
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jel 9:2"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Jel
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jel 9:11"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Jel
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jel 11:7"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Jel
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jel 17:8"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Jel
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jel 20:1"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Jel
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Jel 20:3"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Jel
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Luk 8:31"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Luk
+
+$ lekerdez.py lxx-hid --naplo F239 --lepes adhoc "Róm 10:7"
+[stderr] Nincs LXX_OS-fájl ehhez a könyvhöz: Róm

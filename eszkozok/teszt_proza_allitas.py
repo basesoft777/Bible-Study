@@ -773,6 +773,90 @@ class Tanulmany(unittest.TestCase):
                 sys.stderr = regi_err
 
 
+ELOF_TEHOM = [{'id': 'X-002', 'igehely': r, 'gerinc_elem': 'H8415', 'strong': 'H8415'}
+              for r in ('5Móz 8:7', 'Jób 38:30', 'Jób 41:32', 'Zsolt 33:7', 'Zsolt 71:20', 'Zsolt 135:6',
+                        'Zsolt 148:7', 'Jón 2:6')]
+VERSEK_TEHOM = [d['igehely'] for d in ELOF_TEHOM] + ['Jób 41:31', '2Móz 15:5']
+_KORNYEZET_TEHOM = {}
+
+
+def tehom_ell(mondatok, forras='rés:ertelmezes'):
+    """F239 U4b: a TEREMT-001 E41-mérésének hét hozzárendelési hibája, a motívum verseivel (egy bekezdés)."""
+    if not _KORNYEZET_TEHOM:
+        adat = P.Adat()
+        versek = set()
+        for r in VERSEK_TEHOM:
+            versek.update(adat.versek(r))
+        adat.betolt_szavak(versek)
+        adat.betolt_parok(versek)
+        _KORNYEZET_TEHOM.update(adat=adat, szk=P.Szokeszlet(FORRAS, ELOF_TEHOM, adat))
+    k = _KORNYEZET_TEHOM
+    ell = P.Ellenor('X-002', k['adat'], k['szk'], ELOF_TEHOM, P.Igehelyek())
+    ell.egysegek = [P.Egyseg(forras, 'teszt:1', m) for m in mondatok]
+    for e in ell.egysegek:
+        ell.egyseg(e)
+    return ell
+
+
+class F239_U4b(unittest.TestCase):
+    """F239 U4b (E41): a TEREMT-001 nyolc ELTÉR-sorából hét az eszköz hozzárendelési hibája volt."""
+
+    def test_konyv_nelkuli_versszam(self):
+        ig = P.Igehelyek()
+        refek = [r for _, _, rs in ig.csoportok('a Jób 41:31 helyén a mecólá áll, a 41:32-ben a tehóm') for r in rs]
+        self.assertEqual(refek, ['Jób 41:31', 'Jób 41:32'])
+        # könyves igehely nélkül (a mondat elején) nem igehely
+        self.assertEqual(ig.csoportok('Jónás imájában a 2:4 mondata más szó'), [])
+
+    def test_idezet_a_konyv_nelkuli_versbol(self):
+        ell = tehom_ell(['A Jób 41:31 helyén a mecólá áll, a 41:32-ben a tehóm, amelyet a Károli „tenger”-nek '
+                         'fordít: „azt hinné valaki, a tenger megőszült”.'])
+        self.assertIn(('Jób 41:32', 'egyezik'), iteletek(ell.sorok, 'idézet'))
+        self.assertFalse([s for s in ell.sorok if s.tipus == 'idézet' and s.itelet == 'ELTÉR'])
+
+    def test_szo_glossza_zarojelben(self):
+        for t, vart in (('a büthosz (βυθός, „a tenger mélye”) a mecólát', True),
+                        ('a vers (Zsolt 33:7, „a tenger mélye”)', False)):
+            self.assertEqual(P.szo_glossza(t, t.index('„')), vart)
+        ell = tehom_ell(['A 2Móz 15:5 görög szövegében álló büthosz (βυθός, „a tenger mélye”) a mecólát fordítja.'])
+        self.assertFalse([s for s in ell.sorok if s.tipus == 'idézet'])
+
+    def test_fordulat_mas_szot_fordit(self):
+        # a Jób 41:31-ben a „mély vizet” a mecólá: a mondat épp ezt mondja — kézi ⚑, nem ELTÉR
+        ell = tehom_ell(['A Jób 41:31 „mély vizet” mondó helyén a mecólá áll.'])
+        sorok = uj_sorok(ell, 'fordulat')
+        self.assertTrue(sorok)
+        self.assertEqual({s.itelet for s in sorok}, {'kézi'})
+        self.assertIn('H4688', sorok[0].bizonyitek)
+
+    def test_fordulat_ragos_felsorolas(self):
+        ell = tehom_ell(['Az 5Móz 8:7-ben, a Jób 38:30-ban és a Zsolt 148:7-ben „mély vizek”, a Jób 41:32-ben pedig '
+                         '„tenger” áll.'])
+        it = iteletek(ell.sorok, 'fordulat')
+        self.assertNotIn(('Jób 41:32', 'ELTÉR'), it)
+        self.assertIn(('Zsolt 148:7', 'egyezik'), it)
+
+    def test_fordulat_zarojeles_csoport(self):
+        ell = tehom_ell(['Isten tárházakba rakja a mélység vizét (Zsolt 33:7), és „minden mélységben” megteszi, amit '
+                         'akar (Zsolt 135:6).'])
+        it = iteletek(ell.sorok, 'fordulat')
+        self.assertEqual(it, {('Zsolt 135:6', 'egyezik')})
+
+    def test_szam_heber_versei(self):
+        ell = tehom_ell(['A Károli a tehómot a motívum 8 héber versének többségében a mélység szavával adja.'])
+        self.assertEqual([(s.itelet, 'ószövetségi' in s.bizonyitek) for s in uj_sorok(ell, 'szám')],
+                         [('egyezik', True)])
+
+    def test_szam_reszhalmaz_felsorolassal(self):
+        ell = tehom_ell(['A mélység a motívum két ószövetségi helyén a halál közelsége.',
+                         'Jónást „mély ár kerített be” (Jón 2:6), a zsoltáros szerint Isten felhoz (Zsolt 71:20).'])
+        sz = uj_sorok(ell, 'szám')
+        self.assertEqual([s.itelet for s in sz], ['kézi'])
+        # felsorolás nélkül a szám továbbra is a csoport egészére szól: ELTÉR
+        sz = uj_sorok(tehom_ell(['A mélység a motívum két ószövetségi helyén a halál közelsége.']), 'szám')
+        self.assertEqual([s.itelet for s in sz], ['ELTÉR'])
+
+
 class Lektor(unittest.TestCase):
     def test_pontossagi(self):
         self.assertTrue(P.lektor_pontossagi({'gond': '1. kérdés (az igehely maga). A versben …'}))

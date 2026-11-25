@@ -2680,7 +2680,7 @@ darabszáma. Kézi tábla; a sorokat a lépés gazdája írja, amikor a hiba el�
 | `hely` | a hiba helye: `<forrás-fájl>:<sor>`, `K<n>` (a kézi lista tétele, a lista dátumával a `forras`-ban), vagy a lap szakasza |
 | `allitas` | a hibás állítás rövid idézete (legfeljebb 200 karakter) |
 | `mechanizmus` | a `naplok/HIBA_MECHANIZMUSOK.md` kódja (`M-…`); versállítás-hibánál az állítás-ellenőr kérdése: `K-KI`, `K-MIT`, `K-SORREND`, `K-HANY`, `K-KVANTOR`, `K-CSOPORT`, `K-MASIK`; a kinyerés hézaga: `KINYERES`; érvelési hiba (a bíráló kérdései): `ERVELES` |
-| `hol` | melyik lépés fogta meg: `F1` / `F2` / `D` / `hatar` / `F3` / `3b` / `felhasznalo` / `kiadas_utan` |
+| `hol` | melyik lépés fogta meg: `F1` / `F2` / `D` / `hatar` / `visszhang` (a visszhang-réteg összevetése a prózával, `MUNKAMENET.md` C-vh; F239 D1) / `F3` / `3b` / `felhasznalo` / `kiadas_utan` |
 | `sulyos` | `igen` / `nem` / `jeloletlen` (a megtaláló nem minősítette) |
 | `generalt` | `igen` (a hiba generált blokkban áll) / `nem` |
 | `meres` | `menet` (a cikkírás rendes menete) / `visszajatszas` (elfogadási próba, a megnevezett futás) |

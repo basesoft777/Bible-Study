@@ -95,9 +95,29 @@ def versszoveg(forras):
         return {r['igehely']: r['szoveg'] for r in tsv_olvas(os.path.join(GYOKER, 'konkordancia', 'Targum_PD.tsv'))
                 if r['targum'] == 'Onkelos'}
     if forras == 'vulgata':
-        return {r['igehely']: r['szoveg']
+        szov = {r['igehely']: r['szoveg']
                 for r in tsv_olvas(os.path.join(GYOKER, 'konkordancia', 'Vulgata_Clementina.tsv'))}
+        return vulgata_karoli_kulcson(szov)
     return {}
+
+
+def vulgata_karoli_kulcson(szov):
+    """A Vulgata-tábla (`Vulgata_Clementina.tsv`: magyar könyvnév, de a Vulgata saját számozása) a Károli-kulcson.
+    F239 U4b: a zsoltárok és a Jób 38–41 a `kozos.vulgata_karoli` szerint (a korábbi átvezetés a Jób 41:1–9 és a
+    Zsolt 147:1–9 kulcsán más vers szövegét hagyta, a 10., 114., 115. zsoltárt kihagyta); a pár nélküli vers kimarad."""
+    import kozos as KZ
+    ki = {}
+    for k, v in szov.items():
+        konyv, _, hely = k.rpartition(' ')
+        f, _, vs = hely.partition(':')
+        if not (f.isdigit() and vs.isdigit()):
+            ki[k] = v
+            continue
+        p = KZ.vulgata_karoli(konyv, f, vs)
+        if p:
+            kk = '%s %d:%d' % p
+            ki[kk] = ki[kk] + ' ' + v if kk in ki else v   # két latin vers egy Károli-versben (Zsolt 10:1–2 = 11:1)
+    return ki
 
 
 def kanon(s):

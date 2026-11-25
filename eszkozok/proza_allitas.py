@@ -241,7 +241,25 @@ class Igehelyek:
                 veg += f.end()
             ki.append((m.start(), veg, refek))
             poz = veg
-        return ki
+        return self._konyv_nelkuliek(szoveg, ki)
+
+    # F239 U4b (E41): a könyv nélküli versszám („a Jób 41:31 … helyén …, a 41:32-ben a tehóm”) a mondat előző
+    # igehelyének könyvét örökli; könyves igehely nélkül (a mondat elején) nem igehely
+    KONYV_NELKUL = re.compile(r'(?<![%s0-9:./–-])(\d+):(\d+)(?:\s*[-–]\s*(\d+))?(?![0-9:])' % BETU)
+
+    def _konyv_nelkuliek(self, szoveg, csoportok):
+        if not csoportok:
+            return csoportok
+        ki = list(csoportok)
+        for m in self.KONYV_NELKUL.finditer(szoveg):
+            if any(k <= m.start() < v for k, v, _ in csoportok):
+                continue
+            elozo = [c for c in csoportok if c[1] <= m.start()]
+            if not elozo:
+                continue
+            konyv = elozo[-1][2][-1].rsplit(' ', 1)[0]
+            ki.append((m.start(), m.end(), [self._alak(konyv, m.group(1), m.group(2), m.group(3), None)]))
+        return sorted(ki, key=lambda c: c[0])
 
 
 # ---------------------------------------------------------------------------
@@ -698,6 +716,29 @@ def neg_ervenyes(szoveg, neg, kezdet, zaradek):
     return ',' not in kozte and ')' not in kozte
 
 
+HEBER = '֐-׿'
+# F239 U4b (E41): az igehely ragja az idézet előtt („…148:7-ben „mély vizek””, „…9:8-ban a „föld színéről””), és a
+# ragos igehelyek felsorolása („8:7-ben, a Jób 38:30-ban és a Zsolt …”)
+# az idézet-minta a szóközt az idézethez veszi; rag nélkül is köt, ha semmi sem áll köztük („a Jób 41:31 „mély vizet””)
+RAGOS_KOZ = re.compile(r'^(?:-[%s]{1,4})?(?:\s+(?:a|az))?\s*$' % BETU)
+RAGOS_FELSOROLAS = re.compile(r'^-[%s]{1,4}\s*(?:,|\s+és)\s+(?:a|az)\s+$' % BETU)
+
+
+def zarojeles(szoveg, csop):
+    """A csoport zárójelben áll-e („… vizét (Zsolt 33:7), és …”)."""
+    return szoveg[:csop[0]].rstrip().endswith('(') and szoveg[csop[1]:].lstrip().startswith(')')
+
+
+def szo_glossza(szoveg, kezdet):
+    """F239 U4b (E41): az idézet egy nyitott zárójelen belül áll, amely eredeti nyelvű (görög vagy héber) szóval
+    kezdődik, és az idézet előtt csak a szó (és átírása) áll vesszővel: „(βυθός, „a tenger mélye”)” — glossza."""
+    nyit = szoveg.rfind('(', 0, kezdet)
+    if nyit < 0 or ')' in szoveg[nyit:kezdet]:
+        return False
+    elotag = szoveg[nyit + 1:kezdet]
+    return bool(re.search('[%s%s]' % (GOROG, HEBER), elotag)) and bool(re.match(r'^[^„"]{1,60},\s*$', elotag))
+
+
 def szam_ertek(s):
     s = s.lower().replace(' ', '').replace(' ', '')
     return int(s) if s.isdigit() else SZAMSZAVAK.get(s)
@@ -759,7 +800,8 @@ class Ellenor:
             csop = 'Ószövetség többi'
         elif 'újszövetség' in k:
             csop = 'újszövetségi'
-        elif 'ószövetség' in k:
+        elif 'ószövetség' in k or re.match(r'\s*héber(?:\s*$|\s+(?:\S+-)?(?:vers|hely))', k):
+            # F239 U4b (E41): „a motívum 35 héber versének”: a héber versek az ószövetségi csoport
             csop = 'ószövetségi'
         else:
             return None
@@ -955,7 +997,9 @@ class Ellenor:
         ki = []
         for x in (self.egysegek or [e]):
             if x.hely == e.hely and x.forras == e.forras:
-                ki += [r for r in self._refek_lazan(x.szoveg) if r not in ki]
+                for r in self._refek_lazan(x.szoveg):
+                    if r not in ki:
+                        ki.append(r)
         return ki
 
     def _szam_kapcsolat(self, e, szoveg, tiszta):
@@ -1338,9 +1382,28 @@ class Ellenor:
                 csop = utana[0] if utana[0][0] - m.end() <= m.start() - elotte[-1][1] else elotte[-1]
             else:
                 csop = utana[0] if utana else (elotte[-1] if elotte else None)
+            # F239 U4b (E41): a magyar igehely-jelölés iránya. (1) Ragos igehely közvetlenül az idézet előtt („a Zsolt
+            # 148:7-ben „mély vizek””) az idézet helye, a ragos felsorolással együtt („az 5Móz 8:7-ben, a Jób 38:30-ban
+            # és a Zsolt 148:7-ben”). (2) Zárójeles igehely az előző tagmondatot zárja: ha az idézet előtti csoport
+            # zárójeles, és utána zárójeles csoport következik, az idézet az utóbbié.
+            ragos = elotte and RAGOS_KOZ.match(szoveg[elotte[-1][1]:m.start()])
+            egyertelmu = bool(ragos)
+            if ragos:
+                lanc = [elotte[-1]]
+                for c in reversed(elotte[:-1]):
+                    if not RAGOS_FELSOROLAS.match(szoveg[c[1]:lanc[0][0]]):
+                        break
+                    lanc.insert(0, c)
+                csop = (lanc[0][0], lanc[-1][1], [r for c in lanc for r in c[2]])
+            elif elotte and utana and zarojeles(szoveg, elotte[-1]) and zarojeles(szoveg, utana[0]):
+                csop, egyertelmu = utana[0], True
             if not csop:
                 continue
-            minta = self._fordulat_minta(szavak, motivum_versek)
+            # a minta a csoport nyelvének (héber / görög) motívumverseiből; az egyszavas minta („mély vizek” = tehóm)
+            # csak egyértelmű nyelvtani kötésnél (ragos vagy zárójeles igehely), különben a kétszavas, mint eddig
+            nyelv = self._nyelv(csop[2][0])
+            minta = self._fordulat_minta(szavak, [k for k in motivum_versek if self._nyelv(k) == nyelv],
+                                         egy_szo=egyertelmu)
             if not minta:
                 continue
             # „… is áll (A, B, C)”: minden versre szól; különben (pl. „… kerül a következmény alá (A, B, C)”)
@@ -1354,22 +1417,44 @@ class Ellenor:
                 if not versek:
                     continue
                 sor = self.tartalmi_sor(versek)
-                van = any(set(sor[x:x + 2]) == set(minta) for x in range(len(sor) - 1))
-                eredm.append((ref, sor, van))
+                eredm.append((ref, sor, self._fordulat_van(sor, minta)))
             if not mindre and any(v for _, _, v in eredm):
                 eredm = [x for x in eredm if x[2]]
             for ref, sor, van in eredm:
                 hiany = [x for x in minta if x not in sor]
-                self.sorok.append(Sor(e, ref, '„%s”' % idez, 'egyezik' if van else 'ELTÉR',
-                                      'a „%s” szavai (%s) a héber szórendben %s' % (
-                                          idez, '+'.join('%s (%s)' % (x, self._atiras(motivum_versek, x))
-                                                         for x in minta),
-                                          'egymás mellett állnak' if van else 'NEM állnak egymás mellett' + (
-                                              ' (a versből hiányzik: %s)' % ', '.join(hiany) if hiany else '')),
-                                      'fordulat'))
+                masik = None if van else self._fordulat_minta(szavak, self.adat.versek(ref))
+                if masik and set(masik) != set(minta):
+                    # F239 U4b (E41): a fordulat a vers Károli-szövegében áll, de ott más szavakat fordít („a Jób 41:31
+                    # „mély vizet” mondó helyén szintén a mecólá áll”): a mondat épp ezt mondhatja — kézi, nem ELTÉR
+                    self.sorok.append(Sor(e, ref, '„%s”' % idez, 'kézi',
+                                          '⚑ a „%s” a vers Károli-szövegében áll, de itt %s fordítja, nem a motívum '
+                                          'helyeinek %s szavait: a mondat ezt állítja-e — kézi' % (
+                                              idez, '+'.join('%s (%s)' % (x, self._atiras(self.adat.versek(ref), x))
+                                                             for x in masik),
+                                              '+'.join(minta)), 'fordulat', jelzes='⚑'))
+                    continue
+                nevek = '+'.join('%s (%s)' % (x, self._atiras(motivum_versek, x)) for x in minta)
+                if len(minta) == 1:
+                    biz = 'a „%s” a motívum verseiben egy szót fordít (%s); a versben %s' % (
+                        idez, nevek, 'áll' if van else 'NEM áll')
+                else:
+                    biz = 'a „%s” szavai (%s) a héber szórendben %s' % (
+                        idez, nevek, 'egymás mellett állnak' if van else 'NEM állnak egymás mellett' + (
+                            ' (a versből hiányzik: %s)' % ', '.join(hiany) if hiany else ''))
+                self.sorok.append(Sor(e, ref, '„%s”' % idez, 'egyezik' if van else 'ELTÉR', biz, 'fordulat'))
 
-    def _fordulat_minta(self, szavak, motivum_versek):
+    @staticmethod
+    def _nyelv(ref):
+        return 'G' if ref.rsplit(' ', 1)[0] in UJSZ_KONYVEK else 'H'
+
+    def _fordulat_minta(self, szavak, motivum_versek, egy_szo=True):
+        """A két magyar szó tartalmi Strong-száma a versekben, ahol a Károli egymás mellett hozza: két szám, vagy egy,
+        ha a két magyar szó egyetlen eredeti szót fordít („mély vizek” = tehóm). F239 U4b (E41): a versek többségi
+        mintája (döntetlennél a korábbi vers), nem az első előtag-egyezés — a „mély viz…” előtag az Ézs 51:10
+        „mélység vizeit” (tehóm+maj) szópárját is hozza, holott a motívum hét versében a „mély vizek” egyetlen tehóm.
+        `egy_szo=False`: csak a kétszavas minta, az első versből (a korábbi viselkedés)."""
         elotag = [w[:4] for w in szavak]
+        jeloltek = []
         for k in motivum_versek:
             szavankent = {}
             for poz, hu, s in self.adat.parok_poz.get(k, []):
@@ -1380,8 +1465,20 @@ class Ellenor:
                     a = [s for s in rend[x][1] if self._tartalmi(s)]
                     b = [s for s in rend[x + 1][1] if self._tartalmi(s)]
                     if a and b and a[0] != b[0]:
-                        return [a[0], b[0]]
-        return None
+                        if not egy_szo:
+                            return [a[0], b[0]]
+                        jeloltek.append((a[0], b[0]))
+                    elif a and b and egy_szo:
+                        jeloltek.append((a[0],))
+        if not jeloltek:
+            return None
+        return list(max(jeloltek, key=lambda j: (jeloltek.count(j), -jeloltek.index(j))))
+
+    def _fordulat_van(self, sor, minta):
+        """A minta a vers tartalmi Strong-sorában: két szám egymás mellett, vagy az egy szám."""
+        if len(minta) == 1:
+            return minta[0] in sor
+        return any(set(sor[x:x + 2]) == set(minta) for x in range(len(sor) - 1))
 
     def _implicit(self, zaradek, versek, strongok, ref):
         """A záradék lánc-szavai (magyar alak szerint) a vers Strong-sorai mellett: ⚑ jelzések."""
@@ -1476,6 +1573,8 @@ class Ellenor:
                 continue   # zárójeles glossza: nem versidézet (E34)
             if JELENTES_GLOSSZA.search(szoveg[max(0, m.start() - 40):m.start()] + ' ' + szoveg[m.end():m.end() + 25]):
                 continue   # szótári jelentés idézőjelben („néven nevezni” jelentésben): nem versidézet
+            if szo_glossza(szoveg, m.start()):
+                continue   # „(büthosz, βυθός, „a tenger mélye”)”: az eredeti nyelvű szó glosszája, nem versidézet
             idez = m.group(2) or m.group(3)
             if not idez or len(OK.normal_szoveg(idez).split()) < 3:
                 continue
@@ -1528,6 +1627,16 @@ class Ellenor:
                                       'szám; a viszonyítási alap a mondatból nem állapítható meg (a motívum adata: '
                                       '%d hely, %d vers)' % self.szamok['összes'], 'szám'))
                 continue
+            felsorolt = self._utana_felsorolt(e, szoveg, m.end(), csop) if alany else []
+            hely_n, vers_n = self.szamok[csop]
+            if felsorolt and len(felsorolt) == ertek and ertek < (vers_n if fonev == 'vers' else hely_n):
+                # F239 U4b (E41): „a motívum két ószövetségi helyén …”, és a bekezdés utána pontosan két ilyen helyet
+                # sorol (Jón 2:6, Zsolt 71:20): a szám a felsorolt helyeké, nem a csoport egészéé — kézi, nem ELTÉR
+                self.sorok.append(Sor(e, '–', m.group(0), 'kézi',
+                                      '⚑ a szám a bekezdés utána felsorolt %d helyére szólhat (%s), nem a csoport '
+                                      'egészére (%s: %d hely, %d vers): a mondat részhalmazt mond-e — kézi'
+                                      % (ertek, ', '.join(felsorolt), csop, hely_n, vers_n), 'szám', jelzes='⚑'))
+                continue
             self._szam_sor(e, szoveg, ertek, fonev, csop, m.group(0))
         if e.fejezet_strong:
             for m in STRONG_SZAM.finditer(szoveg):
@@ -1538,6 +1647,29 @@ class Ellenor:
                 self.sorok.append(Sor(e, '–', m.group(0), 'egyezik' if n == ertek else 'ELTÉR',
                                       '%s a TAHOT/TAGNT teljes táblán %d versben áll' % (e.fejezet_strong, n),
                                       'szám'))
+
+    def _utana_felsorolt(self, e, szoveg, poz, csop):
+        """A mondat `poz` utáni részének és a bekezdés következő mondatainak a motívumhoz és a `csop` csoporthoz
+        tartozó igehelyei, sorrendben, ismétlés nélkül."""
+        szovegek = [szoveg[poz:]]
+        if e in self.egysegek:
+            i = self.egysegek.index(e)
+            szovegek += [x.szoveg for x in self.egysegek[i + 1:] if x.hely == e.hely and x.forras == e.forras]
+        ki = []
+        for t in szovegek:
+            for _, _, refek in self.igeh.csoportok(t):
+                for r in refek:
+                    d = next((self.elof_vers[k] for k in self.adat.versek(r) if k in self.elof_vers), None)
+                    if d is None or r in ki:
+                        continue
+                    konyv = r.rsplit(' ', 1)[0]
+                    ujsz = konyv in UJSZ_KONYVEK
+                    alap = csop.replace(' lexikai', '')
+                    illik = {'összes': True, 'Genezis': konyv == '1Móz', 'Ószövetség többi': not ujsz and konyv != '1Móz',
+                             'ószövetségi': not ujsz, 'újszövetségi': ujsz}.get(alap, False)
+                    if illik:
+                        ki.append(r)
+        return ki
 
     def _szam_sor(self, e, szoveg, ertek, fonev, csop, allitas):
         hely, vers = self.szamok[csop]

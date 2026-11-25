@@ -20,6 +20,9 @@ ennek a táblának ellenőrzött sora kerül (CLAUDE.md 2. szabály). Három út
              sort, ha a megadott szerző és mű a válaszban mindkét magverset idézi. A `kapcsolat` gépi mondat (a lánc
              magversei Károli-alakban); az `ellenorzes` a lekérdezés újrafuttatása (gépi), a válasz szövege nem kerül át.
              A SPEC `tanu_nev` oszlopa (nem kötelező) a szerző magyar névalakja a lapon (Origen → Órigenész).
+             A SPEC `kor` oszlopa (nem kötelező) felülírja a Chain Lineage `century` értékét, amely a szerző születési
+             századát adja (Eusebius → 3., Hippolytus → 2.); a kézi érték a HCF-index évével, a HCF-sorok alakjában
+             (pl. `4. sz. (HCF: 339)`; `konkordancia/Tanu_atyak_index.tsv`).
     ellenoriz
              a tábla szerkezete: oszlopszám, zárt értékek, kulcs-egyediség, hagyományonként helyenként legfeljebb egy
              sor, proveniencia; kilépési kód 1 hibánál.
@@ -90,7 +93,7 @@ def tabla_ir(sorok):
 _konyv = None
 
 
-def karoli_alak(ref):
+def karoli_alak(ref, gorog_zsoltar=False):
     global _konyv
     if _konyv is None:
         _konyv = {}
@@ -103,11 +106,27 @@ def karoli_alak(ref):
                     for alt in (c[3].split(',') if len(c) > 3 else []):
                         if alt.strip():
                             _konyv.setdefault(alt.strip().lower(), c[1])
+        # a Chain Lineage Browser a zsoltárokat „ps”-szel jelöli (a normalizáló tábla STEP-alakja „psa”)
+        if 'psa' in _konyv:
+            _konyv.setdefault('ps', _konyv['psa'])
     m = re.match(r'^\s*([1-3]?[a-z]+)\s+(\d+)\.(\d+)\s*$', ref.lower())
     if not m:
         return None
     k = _konyv.get(m.group(1)) or _konyv.get(m.group(1)[:3])
-    return '%s %s:%s' % (k, m.group(2), m.group(3)) if k else None
+    if not k:
+        return None
+    if k == 'Zsolt' and gorog_zsoltar:
+        import kozos as KZ
+        p = KZ.lxx_zsoltar(m.group(2), m.group(3))
+        return 'Zsolt %d:%d' % p if p else None
+    return '%s %s:%s' % (k, m.group(2), m.group(3))
+
+
+def cl_gorog_zsoltar(mu):
+    """F239 U4b: a Chain Lineage Browser egyházatyai hivatkozásai a BiblIndexből jönnek, a zsoltárokat görög (LXX)
+    számozással adják (Hippolütosz „ps 117.24” = Károli Zsolt 118:24; a héber 117. zsoltár kétverses); a Sefaria
+    rabbinikus forrásai a héber számozást (Mekhilta: „ps 77.17” = Károli Zsolt 77:17)."""
+    return not mu.startswith('[Sefaria]')
 
 
 def atnezes_ellenoriz(sorok):
@@ -167,7 +186,8 @@ def cl(a):
             print('  NINCS TALÁLAT (sor nem íródik): %s | %s | %s' % (s['q'], s['szerzo'], s['mu']))
             continue
         fam, mag, szerzo, mu, szazad, nyelv, n_bi = talalat[0]
-        versek = [karoli_alak(v) or v for v in mag.split(' ; ')]
+        gz = cl_gorog_zsoltar(mu)
+        versek = [karoli_alak(v, gz) or v for v in mag.split(' ; ')]
         url = CL.csaladok_url(s['q'])
         r = {o: '' for o in OSZLOPOK}
         r.update({
@@ -175,7 +195,8 @@ def cl(a):
             # a `tanu_nev` a szerző magyar névalakja (a SPEC adja; a lekérdezés a forrás névalakjára illeszt)
             'hagyomany': s['hagyomany'], 'tanu': (s.get('tanu_nev') or '').strip() or szerzo,
             'mu': mu.replace('[BiblIndex] ', ''),
-            'kor': '%s. sz.' % szazad, 'forras': 'chain_lineage', 'forras_url': url, 'lekerdezve': ma(),
+            # a `kor` kézi felülírása (SPEC, nem kötelező): a CL `century` a születési század (F239 U6, D25)
+            'kor': (s.get('kor') or '').strip() or '%s. sz.' % szazad, 'forras': 'chain_lineage', 'forras_url': url, 'lekerdezve': ma(),
             'biblindex': 'igen' if mu.startswith('[BiblIndex]') else '',
             'kapcsolat': 'Egy versláncban idézi a következő helyeket: %s.' % ', '.join(versek),
             'kinyeres': 'gepi',

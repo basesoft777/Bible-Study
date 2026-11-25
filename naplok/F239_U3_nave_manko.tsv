@@ -1,0 +1,11 @@
+tema_id	cimke_en	angol	magyar	tiltott	terminologia	szojegyzek	karoli	osszegzes
+NAVE-3885		PIT	verem	rendben	egyezik: 1 kulcs	egyezik	egyezik: 1 szó	egyezik
+NAVE-3885	The bottomless pit	The bottomless pit	a feneketlen mélység	rendben	utkozik: pit→verem	nincs_adat	egyezik: 2 szó	kezi_iteletre: terminologia
+NAVE-1400		DEW	harmat	rendben	nincs_adat	egyezik	egyezik: 1 szó	egyezik
+NAVE-1400	A merciful providence	A merciful providence	az irgalmas gondviselés	rendben	nincs_adat	nincs_adat	egyezik: 2 szó	egyezik
+NAVE-1400	From the clouds	From the clouds	a felhőkből	rendben	nincs_adat	nincs_adat	egyezik: 1 szó	egyezik
+NAVE-1502		EARTH	föld	rendben	nincs_adat	egyezik	egyezik: 1 szó	egyezik
+NAVE-1502	CREATED BY GOD	CREATED BY GOD	Isten teremtette	rendben	nincs_adat	nincs_adat	egyezik: 2 szó	egyezik
+NAVE-1502	Primitive condition of	Primitive condition of	az eredeti állapota	rendben	nincs_adat	nincs_adat	egyezik: 2 szó	egyezik
+NAVE-3986		PSALMS	zsoltárok	rendben	nincs_adat	nincs_adat	egyezik: 1 szó	egyezik
+NAVE-3986	Of Moses, celebrating the deliverance at the Red Sea	Of Moses, celebrating the deliverance at the Red Sea	Mózesé, a Vörös-tengeren át való szabadítás ünneplése	rendben	nincs_adat	nincs_adat	egyezik: 6 szó	egyezik
