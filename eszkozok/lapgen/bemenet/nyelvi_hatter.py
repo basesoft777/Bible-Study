@@ -1,14 +1,19 @@
 """lapgen.bemenet.nyelvi_hatter — a 4.8 pont (Nyelvi háttér) görög részének bemenetei.
 
 Bemenetek: B25 (a lexikon szótári hivatkozástáblája: melyik szóhoz melyik szótárnak van szócikke), B26 (az LSJ
-teljes szövege: az utaló csonk felismerése), B37 (az LXX-fordítói döntések: a motívum verseiben megnevezett görög
-szavak, a rokon szavak forrása).
+teljes szövege: a javítás-sor lenyomatának őre), B77 (az LSJ forrás-javítása: a modul pótszöveg-soraihoz rendelt
+döntés, SEMA 2.75), B37 (az LXX-fordítói döntések: a motívum verseiben megnevezett görög szavak, a rokon szavak
+forrása).
 
-A régi generátor szabályai (`lexikon_general._hivatkozas_szoveg`, `lsj_csonk`, `rokon_szavak_strongok`,
-`lxx_dontesek_index`): az utaló csonk az a szócikk, amely csak a képzés leírása („… Middle voice from G1909 and
-G2564”); az alapige a csonk utolsó Strong-száma. A rokon szó a motívum verseinek LXX-döntéseiben megnevezett, a
-motívumon kívüli görög szó, amelynek a kiegészítő szótárakon kívül szócikke van.
+Az LSJ-szócikk helyzete a javítás-táblából jön, nem a nyers szövegből (PR-C, 2026-11-24): a régi generátor a modul
+Strong-mondatát („… Middle voice from G1909 and G2564”) „utaló csonk”-nak olvasta, és azt írta, hogy az összetett
+ige szócikke csak az alapigére utal. A mondat a modul készítőjének pótszövege, nem LSJ; a Perseus-LSJ-ben a 36 ilyen
+sorból 35-nek önálló szócikke van (G1941 ἐπικαλέω is; `naplok/LSJ_HIBAOSZTALYOK_2026-11-24.md`). Önálló szócikk
+hiányát most csak a javítás-tábla `perseus_szulo` sora mondja ki, a szerkesztő jóváhagyott jelzés-mondatával. A rokon
+szó a motívum verseinek LXX-döntéseiben megnevezett, a motívumon kívüli görög szó, amelynek a kiegészítő szótárakon
+kívül szócikke van (a régi `rokon_szavak_strongok`, `lxx_dontesek_index`).
 """
+import hashlib
 import re
 
 from lapgen import konfig
@@ -18,8 +23,10 @@ from lapgen.szoveg import Strong
 
 _HIV_OSZLOPOK = ('strong', 'szotar')
 _LSJ_OSZLOPOK = ('Strong_padded', 'Teljes_szocikk')
+_LSJ_JAV_OSZLOPOK = ('strong', 'tipus', 'modul_hash', 'jelzes')
+_LSJ_JAV_TIPUSOK = ('perseus_csere', 'perseus_szulo', 'nincs_szocikk')
+LSJ_SZULO = 'perseus_szulo'
 _LXX_OSZLOPOK = ('igehely', 'gorog_strong', 'tipus', 'bizonyossag')
-_LSJ_CSONK_RX = re.compile(r'^\S+ (?:Middle voice |Passive voice )?from G\d+(?: and G\d+)?\.?$')
 _STRONG_RX = re.compile(r'\bG(\d+)\b')
 _GOROG_STRONG_RX = re.compile(r'^G\d{4}$')
 
@@ -44,35 +51,48 @@ def b25_hivatkozasok(b):
     return Hivatkozasok({k: frozenset(v) for k, v in szotarak.items()})
 
 
-class Csonk:
-    """Az LSJ utaló csonkja: a szócikk szövege (idézet) és az alapige Strong-száma (a csonk utolsó száma)."""
-    __slots__ = ('szoveg', 'alap')
-
-    def __init__(self, szoveg, alap):
-        self.szoveg, self.alap = szoveg, alap
+def modul_hash(szoveg):
+    """A nyers modul-szöveg lenyomata (az `eszkozok/lsj_forras_javit.modul_hash` szabálya: a javítás-sor őre)."""
+    return hashlib.sha256(szoveg.strip().encode('utf-8')).hexdigest()[:16]
 
 
 class Lsj:
-    def __init__(self, b, szocikkek):
-        self._b, self._szocikkek = b, szocikkek
+    """Az LSJ-szócikkek helyzete a javítás-tábla (B77) szerint; a nyers modul-szöveg (B26) csak a lenyomat őre."""
 
-    def csonk(self, strong):
-        """A szó LSJ-szócikke, ha az csak utaló csonk; különben None."""
-        szoveg = (self._szocikkek.get(strong.kod) or '').strip()
-        if not szoveg or not _LSJ_CSONK_RX.match(szoveg):
+    def __init__(self, b, szocikkek, javitasok):
+        self._b, self._szocikkek, self._javitasok = b, szocikkek, javitasok
+
+    def szulo(self, strong):
+        """A szó jelzés-mondata, ha az LSJ-ben önálló szócikke nincs, csak a szülőszócikk tárgyalja (B77
+        `perseus_szulo`; a szerkesztő jóváhagyott mondata, Kezi); különben None. Ha a javítás-sor más modul-szövegre
+        szól, mint a mai nyers sor, a döntés elavult: hiba, nem találgatás."""
+        sor = self._javitasok.get(strong.kod)
+        if sor is None:
             return None
-        szamok = _STRONG_RX.findall(szoveg)
-        if not szamok:
-            raise BemenetHiba('B26: a(z) %s utaló csonkjában nincs Strong-szám' % strong.kod)
-        return Csonk(self._b.forrasszoveg('B26', 'Teljes_szocikk', szoveg, strong),
-                     Strong('G%04d' % int(szamok[-1])))
+        szoveg = self._szocikkek.get(strong.kod)
+        if szoveg is None or modul_hash(szoveg) != sor['modul_hash']:
+            raise BemenetHiba('B77: a(z) %s javítás-sora (%s) nem a mai modul-szövegre szól (B26): a döntést újra kell '
+                              'vizsgálni (`eszkozok/lsj_forras_javit.py --ellenoriz`)' % (strong.kod, sor['tipus']))
+        if sor['tipus'] != LSJ_SZULO:
+            return None
+        return self._b.kezi('B77', 'jelzes', sor['jelzes'])
 
 
 def b26_lsj(b):
-    """B26 — az LSJ teljes szövege Strong-szám szerint (csak az utaló csonk felismeréséhez)."""
+    """B26 és B77 — az LSJ teljes szövege Strong-szám szerint és a forrás-javítás döntései (l. a modul leírását)."""
     tabla = b._tabla('B26', oszlopok=_LSJ_OSZLOPOK)
     s, sz = tabla.oszlop('Strong_padded'), tabla.oszlop('Teljes_szocikk')
-    return Lsj(b, {sor[s]: sor[sz] for sor in tabla.sorok})
+    szocikkek = {sor[s]: sor[sz] for sor in tabla.sorok}
+    javitasok = {}
+    for sor in b._tabla('B77', oszlopok=_LSJ_JAV_OSZLOPOK).szotarak():
+        if sor['tipus'] not in _LSJ_JAV_TIPUSOK:
+            raise BemenetHiba('B77: ismeretlen típus (%s: %s)' % (sor['strong'], sor['tipus']))
+        if (sor['tipus'] == LSJ_SZULO) != bool(sor['jelzes'].strip()):
+            raise BemenetHiba('B77: a jelzés-mondat csak a `%s` sorban áll, ott kötelező (%s)' % (LSJ_SZULO, sor['strong']))
+        if sor['strong'] in javitasok:
+            raise BemenetHiba('B77: kétszer szereplő Strong-szám (%s)' % sor['strong'])
+        javitasok[sor['strong']] = sor
+    return Lsj(b, szocikkek, javitasok)
 
 
 class LxxDontesek:

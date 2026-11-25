@@ -137,24 +137,25 @@ class Versenkenti:
 
 
 class HatterFajta(enum.Enum):
-    """A 4.8 görög részének esetei (a régi `_hivatkozas_szoveg` három ága)."""
-    NINCS = 'nincs'      # sem a szavakhoz, sem a rokon szavakhoz nincs LSJ-szócikk
-    ROKON = 'rokon'      # a szavakhoz nincs, a rokon szavak közül egyeshez van
-    CSONK = 'csonk'      # minden szó LSJ-szócikke utaló csonk: az összetett ige az alapigére utal
+    """A 4.8 görög részének esetei. A lap az LSJ-szócikkek tartalmát nem dolgozza fel (az LSJ-kártya nincs portolva,
+    N-F218j): az eset azt mondja meg, mit tud a lap az LSJ-ről, nem azt, hogy az LSJ-ben van-e szócikk."""
+    NINCS = 'nincs'      # a szavak és a rokon szavak LSJ-szócikkei nincsenek feldolgozva
+    ROKON = 'rokon'      # a szavakéi nincsenek, a rokon szavak közül egyesekéi a lexikon adatai között állnak
+    SZULO = 'szulo'      # minden szónak csak szülőszócikke van az LSJ-ben (a forrás-javítás `perseus_szulo` sora)
 
 
 @dataclasses.dataclass(frozen=True)
-class LsjCsonk:
-    """Az utaló csonk: a szó és az alapige, amelyre a szócikke utal."""
+class LsjSzulo:
+    """A szó, amelynek az LSJ-ben önálló szócikke nincs, és a jelzés-mondata (a szerkesztő jóváhagyott mondata, B77)."""
     szo: Szo
-    alap: Szo
+    jelzes: object
 
 
 @dataclasses.dataclass(frozen=True)
 class GorogHatter:
-    """A 4.8 pont görög része: az eset, az utaló csonkok és a rokon szavak, amelyekhez LSJ-szócikk tartozik."""
+    """A 4.8 pont görög része: az eset, a szülőszócikkes szavak és a rokon szavak, amelyekhez LSJ-szócikk tartozik."""
     fajta: HatterFajta
-    csonkok: Tuple[LsjCsonk, ...]
+    szulok: Tuple[LsjSzulo, ...]
     rokon: Tuple[Szo, ...]
 
 
@@ -431,19 +432,19 @@ def _gorog_hatter(f, sajat, szavak):
         raise bemenet.BemenetHiba('4.8: a motívum %d szavához (az első: %s) LSJ-szócikk tartozik; az LSJ-szócikk '
                                   'kártyája nincs portolva, ez az ág nem generálható'
                                   % (len(sajat_lsj), sajat_lsj[0]))
-    csonkok = []
+    szulok = []
     for s in sajat:
-        csonk = lsj.csonk(s)
-        if csonk is not None:
-            csonkok.append(LsjCsonk(f.szo(s), f.szo(csonk.alap)))
+        jelzes = lsj.szulo(s)
+        if jelzes is not None:
+            szulok.append(LsjSzulo(f.szo(s), jelzes))
     rokon = tuple(f.szo(s) for s in _rokon_szavak(f, szavak, hiv) if konfig.SZOTAR_LSJ in hiv.szotarai(s))
-    if csonkok and len(csonkok) == len(sajat):
-        fajta = HatterFajta.CSONK
+    if szulok and len(szulok) == len(sajat):
+        fajta = HatterFajta.SZULO
     elif rokon:
         fajta = HatterFajta.ROKON
     else:
         fajta = HatterFajta.NINCS
-    return GorogHatter(fajta=fajta, csonkok=tuple(csonkok) if fajta is HatterFajta.CSONK else (), rokon=rokon)
+    return GorogHatter(fajta=fajta, szulok=tuple(szulok) if fajta is HatterFajta.SZULO else (), rokon=rokon)
 
 
 def _nyelvresz(f, nyelv, szavak, szerepek):

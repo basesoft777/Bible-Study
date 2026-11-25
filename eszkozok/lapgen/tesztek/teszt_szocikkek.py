@@ -10,6 +10,7 @@ import kozos
 from lapgen import bemenet, fo, konfig, regresszio
 from lapgen.bemenet import motivum as motivum_be
 from lapgen.bemenet import szotari as szotari_be
+from lapgen.bemenet.jegyzek import BemenetHiba
 from lapgen.megjelenites.md import szocikkek as md_szocikkek
 from lapgen.szamitas import szocikkek as sz
 from lapgen.szamitas.vizsgalat import KapuHiba
@@ -258,44 +259,67 @@ class MasikNyelv(unittest.TestCase):
 
 
 class NyelviHatterGorog(unittest.TestCase):
-    """A 4.8 pont görög része (LSJ): a régi `_hivatkozas_szoveg` három ága, a bemenetekből (B25, B26, B37)."""
+    """A 4.8 pont görög része (LSJ), a bemenetekből (B25, B26, B77, B37). A lap az LSJ-ről csak azt mondja, amit a
+    forrás-javítás (B77) kimond: a modul pótszövegéből (pl. a G1941 Strong-mondata) nem következtet (PR-C,
+    `naplok/LSJ_HIBAOSZTALYOK_2026-11-24.md`)."""
 
     @staticmethod
     def _gorog(azonosito):
         m, _b = modell(azonosito)
         return next(r for r in m.nyelvek if r.nyelv is sz.Nyelv.GOROG)
 
-    def test_hamart_nincs_adat(self):
-        """A HAMART-001 öt görög szavához és a rokon szavakhoz sincs LSJ-szócikk: a „nem ad adatot” mondat."""
+    def test_hamart_nincs_feldolgozva(self):
+        """A HAMART-001 szavainak és rokon szavainak LSJ-szócikke nincs a lexikon adatai között: a „nincsenek
+        feldolgozva” eset (nem az, hogy az LSJ-nek nincs szócikke: mind az öt szónak van)."""
         h = self._gorog('HAMART-001').gorog_hatter
         self.assertIs(h.fajta, sz.HatterFajta.NINCS)
-        self.assertEqual((h.csonkok, h.rokon), ((), ()))
+        self.assertEqual((h.szulok, h.rokon), ((), ()))
 
-    def test_istentiszt_utalo_csonk(self):
-        """Az ISTENTISZT-001 egyetlen görög szavának (G1941) LSJ-szócikke utaló csonk: az alapige (G2564) a csonk
-        utolsó Strong-száma, és rokon szóként szócikke is van."""
+    def test_istentiszt_valodi_szocikk(self):
+        """Az ISTENTISZT-001 szavának (G1941 ἐπικαλέω) a Perseus-LSJ-ben önálló szócikke van (B77 `perseus_csere`):
+        nem szülőszócikkes eset; a rokon szó (G2564) LSJ-szócikke a lexikon adatai között áll."""
         h = self._gorog('ISTENTISZT-001').gorog_hatter
-        self.assertIs(h.fajta, sz.HatterFajta.CSONK)
-        self.assertEqual([(c.szo.strong.kod, c.alap.strong.kod) for c in h.csonkok], [('G1941', 'G2564')])
+        self.assertIs(h.fajta, sz.HatterFajta.ROKON)
+        self.assertEqual(h.szulok, ())
         self.assertEqual([s.strong.kod for s in h.rokon], ['G2564'])
 
-    def test_a_csonk_felismerese(self):
-        """Utaló csonk csak a képzést leíró szócikk; a tartalmas szócikk nem az."""
+    def _lsj(self, szocikkek, javitasok):
         from lapgen.bemenet import nyelvi_hatter
-        lsj = nyelvi_hatter.Lsj(bemenet.Bemenet(kozos.GYOKER), {
-            'G1941': 'ἐπικαλεìομαι Middle voice from G1909 and G2564',
-            'G2564': 'καλέω, Ep. impf. κάλεον, call, summon, invite'})
-        csonk = lsj.csonk(Strong('G1941'))
-        self.assertEqual(csonk.alap.kod, 'G2564')
-        self.assertEqual(csonk.szoveg.forras, 'B26')
-        self.assertIsNone(lsj.csonk(Strong('G2564')))
-        self.assertIsNone(lsj.csonk(Strong('G0001')))
+        return nyelvi_hatter.Lsj(bemenet.Bemenet(kozos.GYOKER), szocikkek, javitasok)
+
+    def test_a_szulo_a_javitas_tablabol(self):
+        """Szülőszócikkes eset csak a javítás-tábla `perseus_szulo` sora; a Strong-mondatú modul-szöveg önmagában
+        nem az (a régi csonk-regex esete), és a `perseus_csere` sem."""
+        from lapgen.bemenet import nyelvi_hatter
+        modul = 'ἐπικαλεìομαι Middle voice from G1909 and G2564'
+        h = nyelvi_hatter.modul_hash(modul)
+        jelzes = 'Az LSJ-ben önálló szócikke nincs; a(z) καλέω szócikke, amely ezt az alakot tárgyalja.'
+        lsj = self._lsj({'G1941': modul, 'G0001': modul},
+                        {'G1941': {'strong': 'G1941', 'tipus': 'perseus_csere', 'modul_hash': h, 'jelzes': ''},
+                         'G0001': {'strong': 'G0001', 'tipus': 'perseus_szulo', 'modul_hash': h, 'jelzes': jelzes}})
+        self.assertIsNone(lsj.szulo(Strong('G1941')))
+        self.assertEqual(lsj.szulo(Strong('G0001')).ertek, jelzes)
+        self.assertIsNone(self._lsj({'G1941': modul}, {}).szulo(Strong('G1941')))
+
+    def test_elavult_javitas_sor(self):
+        """Ha a javítás-sor más modul-szövegre szól, mint a mai nyers sor, a döntés elavult: hiba, nem találgatás."""
+        lsj = self._lsj({'G1941': 'más szöveg'},
+                        {'G1941': {'strong': 'G1941', 'tipus': 'perseus_csere', 'modul_hash': '0' * 16,
+                                   'jelzes': ''}})
+        with self.assertRaises(BemenetHiba):
+            lsj.szulo(Strong('G1941'))
+
+    def test_a_valodi_tabla_g1941(self):
+        """A valódi B77: a G1941 sora `perseus_csere`, és a lenyomata a mai nyers sorra szól."""
+        from lapgen.bemenet import nyelvi_hatter
+        lsj = nyelvi_hatter.b26_lsj(bemenet.Bemenet(kozos.GYOKER))
+        self.assertIsNone(lsj.szulo(Strong('G1941')))
 
     def test_a_lapon(self):
-        """A két mintalap görög 4.8 pontja: a bevezető és az ág mondata; a görög pont a fájlnevet, a Strong-számot
-        vagy a nyers csonkot nem írja ki."""
-        for azonosito, mondat in (('HAMART-001', 'a motívum szavaihoz és rokon szavaikhoz nem ad adatot'),
-                                  ('ISTENTISZT-001', 'LSJ-szócikke csak az alapigére utal')):
+        """A két mintalap görög 4.8 pontja: a bevezető és az eset igaz mondata; a régi hamis mondatok („nem ad
+        adatot”, „csak az alapigére utal”) és a fájlnév, a Strong-szám, a nyers modul-szöveg nem áll a lapon."""
+        for azonosito, mondat in (('HAMART-001', 'Ez a szócikk az LSJ-szótár anyagát nem dolgozza fel.'),
+                                  ('ISTENTISZT-001', 'a rokon szavak közül ezekhez van LSJ-szócikk')):
             eredmeny = fo.lap_keszit(kozos.GYOKER, MotivumId(azonosito))
             sorok = [sor.szoveg for sor in eredmeny.nezetek[konfig.NEZET_TUDOMANYOS]]
             gorog = next(i for i, s in enumerate(sorok) if s.startswith('### Görög szavak'))
@@ -304,8 +328,9 @@ class NyelviHatterGorog(unittest.TestCase):
             eleje = next(i for i in cimek if i > gorog)
             pont = sorok[eleje:sorok.index('#### 4.9. Versenkénti jelentés', eleje)]
             self.assertTrue(any(mondat in s for s in pont), azonosito)
-            self.assertFalse([s for s in pont if 'LSJ_teljes' in s or 'Middle voice' in s or 'G2564' in s])
-            self.assertTrue({'B25', 'B26', 'B37'} <= {o.b_id for o in eredmeny.naplo})
+            self.assertFalse([s for s in pont if 'LSJ_teljes' in s or 'Middle voice' in s or 'G2564' in s
+                              or 'nem ad adatot' in s or 'alapigére utal' in s or 'laphoz' in s])
+            self.assertTrue({'B25', 'B26', 'B37', 'B77'} <= {o.b_id for o in eredmeny.naplo})
 
 
 class NyelviHatterHeber(unittest.TestCase):

@@ -356,7 +356,8 @@ def _heber_hatter(iro, ny, szakasz, h):
 
 
 def _nyelvi_hatter(iro, ny, szakasz, resz, keret):
-    """A 4.8 pont. Görögül (LSJ): nincs adat; rokon szavak szócikkel; vagy az összetett ige utaló csonkja.
+    """A 4.8 pont. Görögül (LSJ): a szócikkek nincsenek feldolgozva; rokon szavak szócikkel; vagy a szülőszócikk
+    jelzése (a forrás-javítás szerint).
     Héberül: a BDB-fej rövid alakja és a rokon nyelvi tábla."""
     if resz.heber_hatter is not None:
         _heber_hatter(iro, ny, szakasz, resz.heber_hatter)
@@ -368,10 +369,8 @@ def _nyelvi_hatter(iro, ny, szakasz, resz, keret):
     elif h.fajta is HatterFajta.ROKON:
         _bekezdes(iro, ny.s('s4.p8.gorog.rokon', rokon=tuple(szo_iras(ny, szo) for szo in h.rokon)))
     else:
-        csonkok = tuple(ny.s('s4.p8.gorog.csonk', szo=_szo_nagy_nevelovel(ny, c.szo), alap=szo_iras(ny, c.alap))
-                        for c in h.csonkok)
-        zaro = ny.s('s4.p8.gorog.csonk.rokon' if h.rokon else 's4.p8.gorog.csonk.nincs')
-        _bekezdes(iro, ny.s('s4.p8.gorog.csonkok', csonkok=csonkok, zaro=zaro))
+        szulok = tuple(ny.s('s4.p8.gorog.szulo', szo=szo_iras(ny, sz.szo), jelzes=sz.jelzes) for sz in h.szulok)
+        _bekezdes(iro, ny.s('s4.p8.gorog.szulok', szulok=szulok))
 
 
 def _melysegi(iro, ny, szakasz, resz, keret):

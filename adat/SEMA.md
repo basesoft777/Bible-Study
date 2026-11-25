@@ -2761,6 +2761,8 @@ szereplő Strong-számot, a szöveg nélküli `perseus_*` és a szöveges `nincs
 nélküli sort; az építés (`alkalmaz`) megáll, ha a `modul_hash` nem egyezik vagy a Strong-szám nincs a nyers táblában;
 `python eszkozok/lsj_forras_javit.py --ellenoriz` és `eszkozok/teszt_lsj_forras_javit.py` ellenőrzi.
 
+**A lapgenerátorban (B77, PR-C, F241 D23):** a 4.8 pont görög része az LSJ-szócikk helyzetét csak ebből a táblából veszi (a modul Strong-mondatából nem következtet): a `perseus_szulo` sor jelzése a lapra kerül, a többi típus nem; a `modul_hash` itt is őr (`lapgen/bemenet/nyelvi_hatter.py`).
+
 ### 2.76 `visszaeses_elfogadas.tsv` — a visszaesés-kapu elfogadott növekedései (F0.47, DT952, 2026-11-24)
 
 A visszaesés-kapu (`eszkozok/visszaeses_kapu.py`, a `/kiadas` 5/b. lépése) az új lapot a main-en kiadott lappal veti
