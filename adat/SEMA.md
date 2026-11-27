@@ -26,6 +26,7 @@ A kilenc tábla (és a modell-kimenetű `karoli_strong/` táblapár, 2.20, valam
 | `karoli_strong/parok_<könyv>.tsv`, `karoli_strong/szavak_<könyv>.tsv` | `vers` + `hu_sorszam` + `er_sorszam` / `vers` + `oldal` + `sorszam` | **generált** (modell-kimenet, javaslat) — `eszkozok/karoli_strong/egyesit.py` (2.20, F22) |
 | `karoli_variancia.tsv` | `tipus` + `konyv` + `kulcs` + `ertek` + `bizonyossag` (+ `id` + `igehely` a `megerosites` sornál) | **generált** — `eszkozok/karoli_ellenorzes.py --variancia` (2.24, F65) |
 | `karoli_strong/nem_tr_parositott.tsv` | `vers` + `er_sorszam` | **generált** — `eszkozok/karoli_strong/nem_tr_lista.py` (2.20, F22 D45) |
+| `karoli_strong_11/parok_<könyv>.tsv`, `karoli_strong_11/szavak_<könyv>.tsv` | mint a `karoli_strong/` táblapáré | **generált**, átmeneti — `eszkozok/karoli_strong/konvencio_egysegesites.py --general` (2.20, 1.1; csak a validációs eszközök olvassák) |
 | `kiadasok.tsv` | `id` + `kiadas` | kézzel / a `/kiadas` 5. lépése (2.46) |
 | `lap_atnezesek.tsv` | `id` + `lap_commit` | kézzel, a felhasználó szavával (2.48) |
 | `lap_javitasok.tsv` | `id` + `hely` + `datum` | a `/lap-javit` parancs, a jóváhagyó szavával (2.49) |
@@ -1129,6 +1130,8 @@ Olvasás/írás: `split('	')` / `'	'.join()` (a `csv` modul tilos, l. CLAUDE.md)
 `strong` minden értéke a TAHOT-ból levezethető; a `parok` és `szavak` szó-alakjai a forrásból. **Átnézési sor:**
 `naplok/F22_<könyv>_atnezes.tsv` (a `kezi` versek, linkek nélkül). A tábla `egyesit.py`-val újraépíthető, a két
 modell nyers válaszaiból (`f22/valaszok/sonnet/`, `f22/valaszok/c/`), API-hívás nélkül, bájtra azonosan.
+
+**1.1: konvenció-egységesítés (DT-F175vr) — átmeneti, külön könyvtárban.** Az `adat/karoli_strong/` változatlanul az 1.0 (minden fogyasztó, a két nyílt csomag és kapuik ezt olvassák). Az 1.1 az `adat/karoli_strong_11/` könyvtárban áll: az `eszkozok/karoli_strong/konvencio_egysegesites.py --general adat/karoli_strong_11` az 1.0-ból determinisztikusan törli a névelő (H9009, G3588) és az ʾet (H0853) kapcsolatait, a fagyasztott névmáslista kivételével (csak törlés: új pár nincs, a megmaradó `parok`-sorok bájtra azonosak; a `szavak`-ban a két érintett token partnerlistája szűkül, üres partnerlistával a magyar token `betoldas`, az eredeti `forditatlan`; a `bizonyossag`/`forras` változatlan; `--ellenoriz adat/karoli_strong_11`). Az első sor `# GENERÁLT: eszkozok/karoli_strong/konvencio_egysegesites.py — 1.1 … | torlolista_sha256=… | az 1.0 proveniencia-sora: …`. Csak a validációs eszközök (mintajelölés, kiértékelő, a felület kártyái, D1-betöltő) használják az 1.1-et. Az átállás (az 1.1 az `adat/karoli_strong/` helyére, minden fogyasztó egyszerre) a validáció után, a Zenodo-1.1 kiadással történik (N-F175vk).
 
 ### 2.21 `dontes_hatas.tsv` — döntések átvezetésének nyilvántartása (F51, FELADATOK #51, DT-F51-5)
 
