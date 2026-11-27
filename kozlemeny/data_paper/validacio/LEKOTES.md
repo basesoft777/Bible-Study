@@ -14,8 +14,8 @@ A minta (`minta.tsv`, a rétegjelöléssel), a csalik listája (`F175V_csalik.ts
 | `ellenorzo_masodik.html` | `7d250704c2c8d2fb99fd3cbe9ffe5e034cdb744cb57708cd6302002deae2031e` |
 | `harom_biralo_itelet.tsv` | `e236146d9f13a08e31427f95ccdbb692bfb3f102964f53184517fc8f083f28b7` |
 | `proba.tsv` | `8c794b379f30e568289c70c43318a98eb988a41619ba338d0edb5939aaefe736` |
-| `UTMUTATO.md` (a repóban) | `16c76f2c954c7a84c0bf0953c9a552b92231ebf95103eb11c35df5511cc0d855` |
-| `UTMUTATO.pdf` (a repóban) | `d27091ad7b4a11203e729708da845b55f6653a9649b4ebdb12a79f177b165da2` |
+| `UTMUTATO.md` (a repóban) | `9cc1495fa6a9556f72553fb01b1c4017644abff88cf2a9252e6cd19a2cd630ad` |
+| `UTMUTATO.pdf` (a repóban) | `af1c13c4a876f9fa398c0234a63b725e58fefc17256c84f7a3a72da7218094f1` |
 
 **Az online felület (F175.V21).** A kiküldött felület a Cloudflare Worker: a tételeket a linkbeli tokenre a D1 adatbázisból adja, minden választ azonnal ment (append-only napló). A Worker kódja és a tétel nélküli oldal a repóban áll; a tételek a letétből töltődnek a D1-be (`eszkozok/karoli_strong_validacio_d1.py`), és a betöltő a tételek kanonikus JSON-ját az itt lekötött SHA-256-tal veti össze. A próbatételek (`proba.tsv`) a mintán kívüli párok, a próba ítéletei a kiértékelésbe nem kerülnek.
 
